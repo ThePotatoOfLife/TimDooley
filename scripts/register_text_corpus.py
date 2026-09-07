@@ -1,13 +1,29 @@
 import json
 from pathlib import Path
+import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
 def load(path):
-    return json.loads((ROOT / path).read_text(encoding='utf-8'))
+    return json.loads((ROOT / path).read_text(encoding='utf-8-sig'))
 
 def save(path, obj):
     (ROOT / path).write_text(json.dumps(obj, ensure_ascii=False, separators=(',', ':')), encoding='utf-8')
+
+# Repair legacy religious foundation datasets before registering the text layer.
+for name in ['data/religious-foundations/enriched-records.json','data/religious-foundations/minor-traditions.json']:
+    path = ROOT / name
+    raw = path.read_text(encoding='utf-8-sig')
+    one = chr(92) + 'n'
+    two = chr(92) * 2 + 'n'
+    fixed = raw.replace(two, chr(10)).replace(one, chr(10))
+    fixed = re.sub(r',([\s]*[}\]])', r'\1', fixed)
+    if fixed != raw:
+        path.write_text(fixed, encoding='utf-8')
+        print('normalized', name)
+    with path.open(encoding='utf-8') as f:
+        json.load(f)
+    print('validated', name)
 
 # Atlas manifest
 manifest_path = 'data/atlas-manifest.json'
@@ -31,12 +47,11 @@ coverage = load(coverage_path)
 coverage['version'] = '1.2.0'
 coverage['updated'] = '2026-09-07'
 existing = {row.get('file') for row in coverage.get('layers', [])}
-new_rows = [
+for row in [
     {'file':'data/religious-text-library.json','owner':'beliefs/sources','consumer':['religious-texts.html','belief.html','node.html','text concordance'],'route':'religious-texts.html','graph_role':'edition-aware text catalogue','status':'canonical'},
     {'file':'data/religious-text-corpus.json','owner':'beliefs/sources','consumer':['religious-texts.html','concordance/search','validators'],'route':'religious-texts.html','graph_role':'full-text availability and edition registry','status':'canonical'},
     {'file':'data/texts/**','owner':'beliefs/sources/full-texts','consumer':['religious-texts.html','concordance/search','future text analyzers'],'route':'religious-texts.html','graph_role':'full-text source corpus','status':'public-domain-source-corpus'},
-]
-for row in new_rows:
+]:
     if row['file'] not in existing:
         coverage['layers'].append(row)
 save(coverage_path, coverage)
