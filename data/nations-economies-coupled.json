@@ -1,0 +1,272 @@
+{
+  "id": "nations-economies-coupled",
+  "version": "3.0.0",
+  "updated": "2026-09-07",
+  "title": "Nations & Economies - Rich Coupled Data Layer",
+  "purpose": "Integrate economic, trade, industrial and strategic data into nation profiles. Enable analysis of dependencies, vulnerabilities, and geopolitical leverage.",
+  "methodology": "Each nation is not isolated but defined through its relationships: who it trades with, what it depends on, who depends on it, what it makes, where its vulnerabilities lie, and what institutions/actors have influence.",
+  "schema": {
+    "nation_id": "string (ISO 3166-1 alpha-2)",
+    "name": "string",
+    "region": "string",
+    "economy_size_usd": "number (2025 estimate)",
+    "gdp_growth_percent": "number (2025 YoY)",
+    "primary_sectors": "array[{name, pct_gdp, strategic_importance}]",
+    "trade_dependencies": "array[{partner_nation, product_category, pct_imports, criticality}]",
+    "trade_advantages": "array[{product_category, export_share_global, competitive_edge}]",
+    "debt_profile": "object{total_external_debt_usd, debt_to_gdp_ratio, primary_creditors_array}",
+    "strategic_resources": "array[{resource, reserves_estimate, global_rank, export_status}]",
+    "key_industries": "array[{name, revenue_estimate, employment, export_focus, vulnerability}]",
+    "intelligence_actors": "array[{organization, focus, known_operations, international_partnerships}]",
+    "critical_infrastructure": "array[{type, status, vulnerabilities, international_dependencies}]",
+    "geopolitical_leverage_held": "array[string - what this nation can offer/restrict]",
+    "geopolitical_vulnerabilities": "array[string - what this nation needs/fears]",
+    "regional_relationships": "object{allies, competitors, dependent_partners, adversaries}",
+    "emerging_risks_2026": "array[string - forward-looking assessment]"
+  },
+  "nations": [
+    {
+      "nation_id": "US",
+      "name": "United States",
+      "region": "North America",
+      "economy_size_usd": 28500000000000,
+      "gdp_growth_percent": 2.8,
+      "primary_sectors": [
+        {"name": "Technology & Software", "pct_gdp": 12, "strategic_importance": "critical"},
+        {"name": "Defense & Aerospace", "pct_gdp": 8, "strategic_importance": "critical"},
+        {"name": "Finance & Services", "pct_gdp": 22, "strategic_importance": "high"},
+        {"name": "Agriculture", "pct_gdp": 1, "strategic_importance": "medium"}
+      ],
+      "trade_dependencies": [
+        {"partner_nation": "CN", "product_category": "Electronics & Consumer Goods", "pct_imports": 15, "criticality": "high"},
+        {"partner_nation": "MX", "product_category": "Energy & Agriculture", "pct_imports": 8, "criticality": "high"},
+        {"partner_nation": "DE", "product_category": "Automotive & Machinery", "pct_imports": 5, "criticality": "medium"}
+      ],
+      "trade_advantages": [
+        {"product_category": "Technology & Software IP", "export_share_global": 28, "competitive_edge": "innovation, capital, network effects"},
+        {"product_category": "Defense Systems", "export_share_global": 22, "competitive_edge": "military-industrial complex, R&D investment"},
+        {"product_category": "Financial Services", "export_share_global": 25, "competitive_edge": "reserve currency, market depth, institutional trust"}
+      ],
+      "debt_profile": {
+        "total_external_debt_usd": 8500000000000,
+        "debt_to_gdp_ratio": 0.30,
+        "primary_creditors": ["JP", "CN", "GB", "Internal US holders"]
+      },
+      "strategic_resources": [
+        {"resource": "Shale Oil & Natural Gas", "reserves_estimate": "substantial", "global_rank": 2, "export_status": "Net energy exporter 2023+"},
+        {"resource": "Rare Earth Elements", "reserves_estimate": "limited", "global_rank": 7, "export_status": "Primarily import-dependent"}
+      ],
+      "key_industries": [
+        {"name": "Tech Giants (GAFAM)", "revenue_estimate": 2200000000000, "employment": 1400000, "export_focus": "Software, Cloud, AI", "vulnerability": "Geopolitical tension with China affects supply chains"},
+        {"name": "Defense Contractors (Lockheed, Raytheon, Boeing)", "revenue_estimate": 280000000000, "employment": 450000, "export_focus": "Weapons, Aerospace", "vulnerability": "Dependent on alliance networks for market"},
+        {"name": "Agriculture & Food Processing", "revenue_estimate": 450000000000, "employment": 2000000, "export_focus": "Grain, Meat, Processed Foods", "vulnerability": "Climate & tariff dependent"}
+      ],
+      "intelligence_actors": [
+        {"organization": "CIA", "focus": "Foreign intelligence, covert operations", "known_operations": "Arctic operations expansion, AI warfare research, cyber operations against China", "international_partnerships": "Five Eyes (UK, AU, CA, NZ), allied nations"},
+        {"organization": "NSA", "focus": "Signals intelligence, cyber warfare", "known_operations": "Global surveillance, Chinese APT monitoring, Arctic network infrastructure", "international_partnerships": "Five Eyes, NATO signals alliance"},
+        {"organization": "DIA", "focus": "Military intelligence", "known_operations": "Russian military tracking, Arctic operations analysis, Chinese military technology assessment", "international_partnerships": "NATO intelligence network"}
+      ],
+      "critical_infrastructure": [
+        {"type": "Undersea Cable Networks", "status": "critical", "vulnerabilities": "Concentrated in few routes, vulnerable to state actors", "international_dependencies": "Shared with allies, contested routes with China"},
+        {"type": "Power Grid", "status": "aging", "vulnerabilities": "Decentralized but outdated, vulnerable to cyber attack and climate events", "international_dependencies": "Natural gas from Canada & Mexico, tech from abroad"},
+        {"type": "Semiconductor Manufacturing", "status": "dependent", "vulnerabilities": "Most advanced manufacturing in Taiwan; US producing lower nodes", "international_dependencies": "Taiwan (TSMC), South Korea (Samsung), Japan (Micron)"},
+        {"type": "Pharmaceutical Supply Chains", "status": "dependent", "vulnerabilities": "APIs (Active Pharmaceutical Ingredients) 60% from China & India", "international_dependencies": "China, India, Europe"}
+      ],
+      "geopolitical_leverage_held": [
+        "Dollar hegemony (reserve currency status)",
+        "Military capability (nuclear, conventional, technological)",
+        "Technology standards (semiconductors, software, AI frameworks)",
+        "Arctic military presence expansion",
+        "Supply chain access for allies (NATO, Japan, South Korea, Taiwan)",
+        "Capital markets & financial networks",
+        "Cultural soft power & media dominance"
+      ],
+      "geopolitical_vulnerabilities": [
+        "China as primary manufacturing & rare-earth source (structural dependency)",
+        "Divided political system (domestic fragmentation visible internationally)",
+        "Arctic region militarization by Russia & China (losing first-mover advantage)",
+        "Debt ceiling & fiscal sustainability questions",
+        "Taiwan Strait crisis (100 mile from TSMC - could cripple semiconductors globally)",
+        "Aging infrastructure requiring massive investment",
+        "Energy infrastructure vulnerable to both cyber & climate"
+      ],
+      "regional_relationships": {
+        "allies": ["CA", "MX", "GB", "FR", "DE", "JP", "KR", "AU", "NZ"],
+        "competitors": ["CN", "RU", "IN (selective)"],
+        "dependent_partners": ["TW", "PH", "TH", "VN"],
+        "adversaries": ["RU", "KP", "IR"]
+      },
+      "emerging_risks_2026": [
+        "Taiwan Crisis: Chinese military exercises; US support creates flashpoint. Risk of kinetic conflict: HIGH",
+        "Arctic Competition: Russian military expansion; Chinese shipping interest; US-Canada-Russia tensions",
+        "Chip War Intensification: US sanctions on advanced chip sales to China; Chinese self-sufficiency efforts",
+        "Dollar Hegemony Challenge: BRICS pushing alternative payment systems; de-dollarization accelerating",
+        "Election Cycle: 2026 midterms; geopolitical adversaries may engage in influence operations",
+        "Supply Chain Fragmentation: Reshoring efforts vs. cost pressures; allies competing for manufacturing",
+        "Debt Ceiling Crisis: Recurring; could force foreign asset sales or creditor concerns"
+      ]
+    },
+    {
+      "nation_id": "CN",
+      "name": "People's Republic of China",
+      "region": "East Asia",
+      "economy_size_usd": 19500000000000,
+      "gdp_growth_percent": 4.2,
+      "primary_sectors": [
+        {"name": "Manufacturing & Exports", "pct_gdp": 28, "strategic_importance": "critical"},
+        {"name": "Real Estate & Construction", "pct_gdp": 18, "strategic_importance": "high"},
+        {"name": "Technology & Software", "pct_gdp": 8, "strategic_importance": "critical"},
+        {"name": "Rare Earth Elements Processing", "pct_gdp": 3, "strategic_importance": "critical"}
+      ],
+      "trade_dependencies": [
+        {"partner_nation": "AU", "product_category": "Iron Ore & Coal", "pct_imports": 12, "criticality": "high"},
+        {"partner_nation": "BZ", "product_category": "Oil & Energy", "pct_imports": 8, "criticality": "high"},
+        {"partner_nation": "RU", "product_category": "Energy & Timber", "pct_imports": 5, "criticality": "high"}
+      ],
+      "trade_advantages": [
+        {"product_category": "Electronics Manufacturing", "export_share_global": 32, "competitive_edge": "labor cost, supply chain integration, scale"},
+        {"product_category": "Textiles & Apparel", "export_share_global": 25, "competitive_edge": "labor, integrated supply chain"},
+        {"product_category": "Rare Earth Elements", "export_share_global": 65, "competitive_edge": "geological deposits, processing capability"}
+      ],
+      "debt_profile": {
+        "total_external_debt_usd": 2200000000000,
+        "debt_to_gdp_ratio": 0.11,
+        "primary_creditors": ["Internal (state banks), Australia, Brazil, resource exporters"]
+      },
+      "strategic_resources": [
+        {"resource": "Rare Earth Elements", "reserves_estimate": "largest", "global_rank": 1, "export_status": "Strategic monopoly, export restrictions active"},
+        {"resource": "Lithium & Cobalt Processing", "reserves_estimate": "moderate", "global_rank": 3, "export_status": "Dominates global processing, not mining"}
+      ],
+      "key_industries": [
+        {"name": "Electronics & Components Manufacturing", "revenue_estimate": 4500000000000, "employment": 45000000, "export_focus": "Phones, Chips, Consumer Electronics", "vulnerability": "US sanctions pressure, supply chain diversification by Western companies"},
+        {"name": "Tech Companies (Alibaba, Tencent, Huawei)", "revenue_estimate": 850000000000, "employment": 800000, "export_focus": "Cloud, AI, Hardware", "vulnerability": "US restrictions on advanced tech, export bans"},
+        {"name": "Rare Earth Processing", "revenue_estimate": 180000000000, "employment": 350000, "export_focus": "REE oxides, compounds", "vulnerability": "Environmental regulations, geopolitical leverage concerns"}
+      ],
+      "intelligence_actors": [
+        {"organization": "MSS (Ministry of State Security)", "focus": "Foreign intelligence, counterintelligence, industrial espionage", "known_operations": "Western tech theft, Arctic resource surveys, Belt & Road intelligence", "international_partnerships": "Russia (selective), Iran, North Korea"},
+        {"organization": "PLA Strategic Support Force", "focus": "Cyber warfare, space operations, AI", "known_operations": "US infrastructure probing, Taiwan military monitoring, Arctic military expansion planning", "international_partnerships": "Russia cyber coordination"},
+        {"organization": "GSD (General Staff Department)", "focus": "Military intelligence", "known_operations": "Taiwan military assessment, US carrier group tracking, Arctic operations planning", "international_partnerships": "Russia military coordination"}
+      ],
+      "critical_infrastructure": [
+        {"type": "Port & Shipping Networks", "status": "critical", "vulnerabilities": "Concentrated in few mega-ports; US/India can blockade via choke points", "international_dependencies": "Suez, Malacca Strait transit rights; energy imports via sea"},
+        {"type": "Energy Infrastructure", "status": "dependent", "vulnerabilities": "Oil & gas 50%+ from Middle East/Russia; South China Sea disputes", "international_dependencies": "Saudi Arabia, Russia, Africa, Brazil"},
+        {"type": "Semiconductor Production Capacity", "status": "catching-up", "vulnerabilities": "SMIC lags TSMC/Intel; dependent on advanced tool imports from Netherlands, Japan", "international_dependencies": "ASML (Netherlands) for lithography, Japanese tools"},
+        {"type": "Agricultural Imports", "status": "dependent", "vulnerabilities": "1+ billion population; 60% grain from imports", "international_dependencies": "Brazil, Argentina, Ukraine, Russia, Australia, US"}
+      ],
+      "geopolitical_leverage_held": [
+        "Manufacturing monopoly (electronics, components, finished goods)",
+        "Rare earth elements (65% global export)",
+        "Belt & Road Initiative (infrastructure loans & political influence across 150+ countries)",
+        "Arctic resource claims & shipping interests",
+        "Taiwan proximity (military proximity to key semiconductor source)",
+        "Technology standards & AI development (competing with US framework)",
+        "Financial system influence (Asian Infrastructure Bank, BRICS)"
+      ],
+      "geopolitical_vulnerabilities": [
+        "Energy import dependency (50%+ oil from Middle East, vulnerable to blockade)",
+        "Demographic decline (aging, fewer workers for manufacturing)",
+        "Real estate bubble & debt concerns (Evergrande crisis 2021-2026 ongoing)",
+        "Taiwan Question (political sovereignty vs. Western alliance support)",
+        "Western sanctions ecosystem (expanding tech restrictions)",
+        "Resource dependencies (Australia iron ore, Brazil agriculture)",
+        "South China Sea disputes (Vietnam, Philippines, others challenge claims)"
+      ],
+      "regional_relationships": {
+        "allies": ["RU", "KP", "LA", "VN (complex)"],
+        "competitors": ["US", "JP", "IN", "AU"],
+        "dependent_partners": ["Many African, Latin American, SE Asian nations via Belt & Road"],
+        "adversaries": ["TW (claims)", "US (structural competition)"]
+      },
+      "emerging_risks_2026": [
+        "Taiwan Strait Escalation: Military exercises continue; US support for TW strengthens; Beijing may test kinetic options",
+        "US Chip War Intensification: CHIPS Act accelerates US semiconductor reshoring; China counters with indigenous push",
+        "Arctic Claims Assertion: China pushes 'polar Silk Road'; conflicts with Canada, US, Russia over passage rights",
+        "Debt Crisis Spreading: Real estate sector continues decline; banking system stress testing",
+        "South China Sea Militarization: Vietnam, Philippines pushback; US freedom-of-navigation operations increase",
+        "Belt & Road Backlash: Debt-trap concerns grow in Africa, Asia; political resistance to Chinese projects",
+        "Dollar Alternatives: BRICS expansion; de-dollarization accelerates but remains incomplete"
+      ]
+    },
+    {
+      "nation_id": "RU",
+      "name": "Russian Federation",
+      "region": "Europe / Asia",
+      "economy_size_usd": 2100000000000,
+      "gdp_growth_percent": 1.5,
+      "primary_sectors": [
+        {"name": "Energy (Oil & Gas)", "pct_gdp": 35, "strategic_importance": "critical"},
+        {"name": "Metals & Mining", "pct_gdp": 12, "strategic_importance": "high"},
+        {"name": "Defense & Military-Industrial", "pct_gdp": 8, "strategic_importance": "critical"},
+        {"name": "Agriculture", "pct_gdp": 4, "strategic_importance": "medium"}
+      ],
+      "trade_dependencies": [
+        {"partner_nation": "CN", "product_category": "Energy & Resource Exports", "pct_imports": 0, "criticality": "N/A - exports"},
+        {"partner_nation": "IN", "product_category": "Energy & Resource Exports", "pct_imports": 0, "criticality": "N/A - exports"},
+        {"partner_nation": "DE", "product_category": "Technology & Machinery", "pct_imports": 8, "criticality": "medium (declining due to sanctions)"}
+      ],
+      "trade_advantages": [
+        {"product_category": "Oil & Natural Gas", "export_share_global": 12, "competitive_edge": "geological reserves, Arctic access, low-cost extraction"},
+        {"product_category": "Metals (Nickel, Palladium, Platinum)", "export_share_global": 8, "competitive_edge": "geological richness, Cold War mining legacy"},
+        {"product_category": "Wheat & Grain", "export_share_global": 18, "competitive_edge": "black earth soil, vast agricultural land"}
+      ],
+      "debt_profile": {
+        "total_external_debt_usd": 450000000000,
+        "debt_to_gdp_ratio": 0.21,
+        "primary_creditors": ["Internal debt, some Western bank exposure (declining)", "China (growing)"]
+      },
+      "strategic_resources": [
+        {"resource": "Oil & Natural Gas", "reserves_estimate": "world's largest reserves (collectively)", "global_rank": 1, "export_status": "Strategic weapon, energy dependency tool"},
+        {"resource": "Palladium & Platinum", "reserves_estimate": "significant", "global_rank": 2, "export_status": "Strategic for electronics & catalysis"},
+        {"resource": "Uranium", "reserves_estimate": "moderate", "global_rank": 3, "export_status": "Nuclear fuel, enrichment capability"}
+      ],
+      "key_industries": [
+        {"name": "Gazprom & Lukoil (Energy)", "revenue_estimate": 850000000000, "employment": 650000, "export_focus": "Oil, Natural Gas, Refined Products", "vulnerability": "Western sanctions; pipeline routes under attack/contestation; climate warming reduces Arctic ice barriers"},
+        {"name": "Novatek, Surgutneftegaz (Energy)", "revenue_estimate": 180000000000, "employment": 250000, "export_focus": "LNG, Arctic extraction", "vulnerability": "LNG sanctions, Arctic ice melt creates competition for routes"},
+        {"name": "Defense Contractors (Rostec)", "revenue_estimate": 45000000000, "employment": 350000, "export_focus": "Weapons, Military Equipment", "vulnerability": "Sanctions on advanced components, technology lag behind Western systems"}
+      ],
+      "intelligence_actors": [
+        {"organization": "FSB", "focus": "Domestic security, counterintelligence, covert operations", "known_operations": "Ukraine cyber warfare, Western infrastructure probing, Arctic security", "international_partnerships": "Belarus, Syria, select African nations"},
+        {"organization": "GRU", "focus": "Military intelligence, special operations", "known_operations": "Ukraine operations, NATO cyber probing, Arctic military exercises", "international_partnerships": "Belarus, Syria, select African nations"},
+        {"organization": "SVR", "focus": "Foreign intelligence", "known_operations": "US tech theft (selective), Western government infiltration, Arctic intelligence gathering", "international_partnerships": "China (selective), Iran"}
+      ],
+      "critical_infrastructure": [
+        {"type": "Energy Export Infrastructure", "status": "critical-under-pressure", "vulnerabilities": "Pipelines vulnerable to sabotage (Nord Stream), LNG facilities under sanctions, Arctic routes contested", "international_dependencies": "Europe (dependent on Russian energy), China (growing buyer)"},
+        {"type": "Military-Industrial Complex", "status": "functioning-under-strain", "vulnerabilities": "Sanctions on advanced semiconductors, tool imports; war in Ukraine consuming military stocks", "international_dependencies": "China (secondary suppliers), select unauthorized channels"},
+        {"type": "Transportation Networks", "status": "aging", "vulnerabilities": "Soviet-era infrastructure; sanctions limit modernization capability", "international_dependencies": "Chinese rail technology, limited Western sources"}
+      ],
+      "geopolitical_leverage_held": [
+        "Energy monopoly over Europe (natural gas, oil) - being reduced by renewables & LNG alternatives",
+        "Arctic region dominance (military presence, bases, icebreakers)",
+        "Nuclear weapons & nuclear technology",
+        "Grain exports (food security leverage)",
+        "Syria & Middle East influence (military bases, proxy control)",
+        "Cyber warfare capabilities",
+        "Alliance with China (against US)"
+      ],
+      "geopolitical_vulnerabilities": [
+        "Energy-dependent economy (65%+ revenue from energy exports; vulnerable to price crashes, alternative sources)",
+        "Sanctions regime (technology access restricted, capital markets closed)",
+        "Ukraine War (ongoing drain on military, economy, diplomatic standing)",
+        "Demographic decline (population shrinking, brain drain)",
+        "Arctic competition (US, China, NATO increasing Arctic presence)",
+        "Pipeline vulnerability (Nord Stream sabotage shows infrastructure exposure)",
+        "Technology lag (semiconductors, advanced manufacturing)"
+      ],
+      "regional_relationships": {
+        "allies": ["BY", "KZ", "CN", "IR", "SY"],
+        "competitors": ["US", "EU", "TR"],
+        "dependent_partners": ["Kazakhstan (energy trade)", "Armenia (military support)"],
+        "adversaries": ["US", "NATO", "UA (Ukraine)"]
+      },
+      "emerging_risks_2026": [
+        "Ukraine Stalemate Escalation: War continues; risk of NATO involvement or chemical/nuclear escalation",
+        "Arctic Competition: US, China, NATO increase presence; Russia defends monopoly through military",
+        "Energy Transition Challenge: Europe reduces Russian gas dependency via renewables, LNG; Russia's leverage erodes",
+        "Sanctions Intensification: New tech restrictions; secondary sanctions on Chinese/Indian companies re-exporting to Russia",
+        "Demographic Crisis: Population decline affects military readiness, economic dynamism",
+        "China Dependency Risk: Economic reliance on China grows; China-Russia relationship becomes hierarchical",
+        "Currency Instability: Ruble pressures amid sanctions; capital flight concerns"
+      ]
+    }
+  ]
+}
