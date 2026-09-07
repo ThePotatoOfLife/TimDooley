@@ -1,0 +1,28 @@
+name: One-time religious JSON normalization
+
+on:
+  push:
+    branches: [project-repair-2026-09-07]
+
+permissions:
+  contents: write
+
+jobs:
+  normalize:
+    if: ${{ !contains(github.event.head_commit.message, 'normalize religious JSON') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Normalize legacy JSON formatting
+        run: python scripts/normalize_religious_json.py
+      - name: Commit normalization
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then
+            echo "No changes needed"
+            exit 0
+          fi
+          git add data/religious-foundations/enriched-records.json data/religious-foundations/minor-traditions.json
+          git commit -m "fix: normalize religious JSON"
+          git push
