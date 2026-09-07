@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-09-07T20:41:48.784806+00:00",
+  "updated_at": "2026-09-07T20:45:44.758695+00:00",
   "source": "world-bank",
   "countries": 194,
   "observations": 0,
@@ -9,39 +9,10 @@
       "expected": 195,
       "actual": 194,
       "message": "Canonical country index must contain 193 UN members plus Holy See and State of Palestine."
-    },
-    {
-      "indicator_group": [
-        "SP.POP.TOTL",
-        "NY.GDP.MKTP.CD",
-        "NY.GDP.PCAP.CD",
-        "NY.GDP.PCAP.PP.CD",
-        "NY.GDP.MKTP.KD.ZG"
-      ],
-      "error": "HTTP Error 502: Bad Gateway"
-    },
-    {
-      "indicator_group": [
-        "FP.CPI.TOTL.ZG",
-        "SL.UEM.TOTL.ZS",
-        "SL.TLF.CACT.ZS",
-        "SP.DYN.LE00.IN",
-        "SP.DYN.TFRT.IN"
-      ],
-      "error": "HTTP Error 502: Bad Gateway"
-    },
-    {
-      "indicator_group": [
-        "SP.URB.TOTL.IN.ZS",
-        "SI.POV.NAHC",
-        "EN.ATM.CO2E.PC",
-        "IT.NET.USER.ZS"
-      ],
-      "error": "HTTP Error 502: Bad Gateway"
     }
   ],
   "preserved_records": 194,
-  "bulk_indicator_requests": 0,
+  "bulk_indicator_requests": 3,
   "static_snapshot": "/home/runner/work/TimDooley/TimDooley/data/country-static.json",
   "canonical_count_from_index": 194,
   "static_countries": 194
