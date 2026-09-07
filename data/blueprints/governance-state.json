@@ -1,0 +1,20 @@
+{
+  "version":"1.0.0",
+  "status":"active-blueprint",
+  "purpose":"Deep blueprint for states, governments and governing systems, treating authority as a layered institutional and legal network rather than a single node.",
+  "entity":"governance_system",
+  "record_schema":{
+    "identity":["governance_id","name","jurisdiction","system_type","constitutional_order","status","valid_from","valid_to"],
+    "constitutional_structure":["constitution","constitutional_sources","head_of_state","head_of_government","legislature","executive","judiciary","constitutional_court","electoral_system","distribution_of_powers","emergency_powers"],
+    "administration":["ministries","agencies","local_government","independent_regulators","civil_service","public_service_units","appointments","delegations","administrative_law"],
+    "fiscal_state":["tax_authority","budget_process","appropriations","public_revenue","public_expenditure","transfers","fiscal_rules","audit","debt_management","public_assets"],
+    "accountability":["parliamentary_oversight","courts","ombudsman","audit_institutions","anti_corruption_bodies","freedom_of_information","procurement_oversight","media_oversight","civil_society_scrutiny"],
+    "territorial_power":["central_local_relations","regions","municipalities","autonomous_areas","federal_units","shared_competences","revenue_sharing","equalization"],
+    "policy_cycle":["agenda_setting","consultation","legislation","regulation","implementation","monitoring","evaluation","revision","sunset_or_expiry"],
+    "capacity":["staff","skills","digital_capacity","statistical_capacity","procurement_capacity","inspection_capacity","enforcement_capacity","service_delivery","bottlenecks"],
+    "relationships":["governs","delegates_to","regulated_by","overseen_by","funds","appoints","reports_to","shares_power_with","coordinates_with","succeeds","replaces"],
+    "evidence":["constitutional_text","law","budget","official_statistics","audit","court_decision","parliamentary_record","administrative_record","scholarship","retrieved_at","confidence"]
+  },
+  "relationship_templates":["state-governs-institution","ministry-oversees-agency","government-funds-service","government-regulates-company","central-government-transfers-to-local-government","court-reviews-government-action","audit-institution-reviews-spending","government-implements-law"],
+  "integrity_rules":["Separate formal authority from practical capacity.","Separate elected office from permanent administration.","Do not infer political control from proximity alone.","Historical constitutional arrangements require dates.","Budget authorization, expenditure and actual spending are distinct observations.","Emergency powers require their legal basis and temporal limits.","Governance descriptions must not turn normative judgments into empirical facts."]
+}
