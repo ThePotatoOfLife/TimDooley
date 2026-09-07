@@ -1,0 +1,34 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Machine-readable registry for full-text religious works, editions, local availability, reader routes and future concordance/comparison indexing. A catalogue entry is never presented as a local full text unless the complete text is actually stored in the repository.",
+  "search_model":{
+    "levels":["catalogue","local-full-text","external-full-text","corpus-library"],
+    "future_queries":["exact word","phrase","lemma","book","chapter","tradition","edition","cross-text overlap"],
+    "comparison_unit":"edition-aware text occurrence; translations are never silently merged with originals",
+    "overlap_fields":["term","work","tradition","edition","location","language","translation"]
+  },
+  "local_full_texts":[],
+  "external_full_texts":[
+    {"id":"bible-kjv","catalog":"data/christianity/bible-kjv.json","reader":"bible.html","source":"https://www.gutenberg.org/ebooks/30","status":"complete external source; browser reader currently uses the structured 1611 KJV mirror"},
+    {"id":"quran-rodwell","catalog":"data/religious-text-library.json","reader":"https://www.gutenberg.org/ebooks/2800","status":"complete external public-domain English translation; Arabic source remains edition-specific"},
+    {"id":"bhagavad-gita-arnold","catalog":"data/religious-text-library.json","reader":"https://www.gutenberg.org/ebooks/2388","status":"complete external public-domain English translation"},
+    {"id":"dao-de-jing-legge","catalog":"data/religious-text-library.json","reader":"taoism.html","status":"complete text reader; public-domain edition"},
+    {"id":"analects","catalog":"data/religious-text-library.json","reader":"https://ctext.org/analects","status":"complete external text/library"},
+    {"id":"zhuangzi","catalog":"data/religious-text-library.json","reader":"https://ctext.org/zhuangzi","status":"complete external text/library"},
+    {"id":"dhammapada","catalog":"data/religious-text-library.json","reader":"https://www.suttacentral.net/dhp","status":"complete external text/library"},
+    {"id":"guru-granth-sahib","catalog":"data/religious-text-library.json","reader":"https://gurdwaras.com/scriptures/sggs/1430","status":"complete external reader; translation editions must remain distinct"}
+  ],
+  "library_corpora":[
+    {"id":"tanakh","catalog":"data/religious-text-library.json","reader":"https://www.sefaria.org/texts/Tanakh"},
+    {"id":"pali-canon","catalog":"data/religious-text-library.json","reader":"https://suttacentral.net/"},
+    {"id":"upanishads","catalog":"data/religious-text-library.json","reader":"https://www.sacred-texts.com/hin/"},
+    {"id":"avesta","catalog":"data/religious-text-library.json","reader":"https://www.sacred-texts.com/zor/"},
+    {"id":"jain-agamas","catalog":"data/religious-text-library.json","reader":"https://www.sacred-texts.com/jai/"},
+    {"id":"kojiki-nihon-shoki","catalog":"data/religious-text-library.json","reader":"https://sacred-texts.com/shi/"},
+    {"id":"poetic-edda","catalog":"data/religious-text-library.json","reader":"https://sacred-texts.com/neu/poe/"},
+    {"id":"homeric-hymns","catalog":"data/religious-text-library.json","reader":"https://www.perseus.tufts.edu/"}
+  ],
+  "policy":"Do not claim a book is locally stored until its complete edition is present under data/texts/. Public-domain editions can be imported for local concordance; copyrighted translations should remain external or be replaced by legally redistributable editions.",
+  "next_import_priority":["KJV 1611 full text","Torah public-domain edition","Dao De Jing public-domain edition","Dhammapada public-domain edition","Bhagavad Gita public-domain edition","Qur'an public-domain translation","Analects public-domain edition","Zhuangzi public-domain edition"]
+}
