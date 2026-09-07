@@ -1,0 +1,17 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map education systems from early childhood through higher and vocational education, including institutions, curricula, teachers, finance, outcomes and knowledge transmission.","entity":"education_system",
+  "record_schema":{
+    "identity":["education_id","jurisdiction","level","system_type","period","status"],
+    "structure":["early_childhood","primary","secondary","vocational","higher_education","adult_learning","special_education","apprenticeships","informal_learning"],
+    "institutions":["ministry","local_authority","school","university","college","training_provider","research_institute","accreditor","inspection_body"],
+    "curriculum":["subjects","standards","exams","qualifications","language_of_instruction","religious_education","civic_education","digital_literacy","vocational_skills"],
+    "workforce":["teachers","lecturers","administrators","training","pay","workload","vacancies","qualification_requirements","geographic_distribution"],
+    "finance":["public_spending","private_spending","school_budget","higher_education_budget","student_support","fees","grants","capital_investment","procurement"],
+    "participation":["enrolment","attendance","completion","dropout","transition","adult_participation","international_students","mobility"],
+    "outcomes":["literacy","numeracy","science","graduation","employment","earnings","skills_match","research_output","social_mobility","regional_gap"],
+    "knowledge_network":["school-feeds-university","university-produces-research","institution-partners-with-company","credential-recognized-by-institution","teacher-trained-by-institution"],
+    "evidence":["education_statistics","budget","inspection","curriculum_document","exam_results","international_assessment","institutional_report","research","retrieved_at","confidence"]
+  },
+  "derived_measures":["spending_per_student","teacher_student_ratio","completion_rate","transition_rate","skills_gap","research_intensity","international_student_share"],
+  "integrity_rules":["Enrollment is not attendance or completion.","Spending must state current or constant prices where relevant.","Test scores are measurements under particular instruments, not complete measures of learning.","Institutional prestige is not an outcome metric.","Language and religious instruction require documented policy rather than inference.","Historical reforms must retain old system versions."]
+}
