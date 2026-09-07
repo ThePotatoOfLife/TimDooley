@@ -1,0 +1,25 @@
+name: Import public-domain religious texts
+
+on:
+  push:
+    branches: [project-repair-2026-09-07]
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    if: ${{ !contains(github.event.head_commit.message, 'import public-domain texts') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Download public-domain source editions
+        run: python scripts/import_public_domain_texts.py
+      - name: Commit imported texts
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/texts
+          git diff --cached --quiet && exit 0
+          git commit -m "feat: import public-domain religious texts"
+          git push
