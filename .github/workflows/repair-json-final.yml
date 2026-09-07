@@ -1,0 +1,44 @@
+name: Repair malformed religious JSON
+
+on:
+  push:
+    branches: [project-repair-2026-09-07]
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: ${{ !contains(github.event.head_commit.message, 'repair malformed religious JSON') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Repair separators
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          for name in ['data/religious-foundations/enriched-records.json','data/religious-foundations/minor-traditions.json']:
+              p=Path(name)
+              raw=p.read_text(encoding='utf-8')
+              slash_n=chr(92)+'n'
+              print(name, 'literal separators:', raw.count(slash_n))
+              fixed=raw.replace(slash_n, chr(10))
+              if fixed != raw:
+                  p.write_text(fixed, encoding='utf-8')
+                  print('REPAIRED', name)
+          PY
+      - name: Validate repaired files
+        run: python - <<'PY'
+          import json
+          for name in ['data/religious-foundations/enriched-records.json','data/religious-foundations/minor-traditions.json']:
+              with open(name,encoding='utf-8') as f: json.load(f)
+              print('VALID JSON', name)
+          PY
+      - name: Commit repair
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet; then exit 0; fi
+          git add data/religious-foundations/enriched-records.json data/religious-foundations/minor-traditions.json
+          git commit -m "fix: repair malformed religious JSON"
+          git push
