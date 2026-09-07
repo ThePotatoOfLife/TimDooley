@@ -4,14 +4,40 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 
 def repair(name):
-    p=ROOT/name
-    raw=p.read_text(encoding='utf-8-sig')
-    fixed=raw.replace(chr(92)+"'", "'")
-    if fixed!=raw:
-        p.write_text(fixed,encoding='utf-8')
-        print('normalized apostrophe escapes',name)
-    with p.open(encoding='utf-8') as f: json.load(f)
-    print('VALID JSON',name)
+    p=ROOT/name; raw=p.read_text(encoding='utf-8-sig')
+    try:
+        json.loads(raw); print('VALID JSON',name); return
+    except json.JSONDecodeError:
+        pass
+    lines=raw.splitlines()
+    records=[]
+    for line in lines:
+        s=line.strip()
+        if not s.startswith('{'): continue
+        if s.endswith(','): s=s[:-1]
+        try:
+            records.append(json.loads(s))
+        except json.JSONDecodeError:
+            continue
+    if not records:
+        raise RuntimeError(f'could not recover records from {name}')
+    version='2.0.0'; updated='2026-09-07'; purpose='Deep comparative records for the religious atlas.'; source_method=''
+    for line in lines[:8]:
+        if '"version"' in line:
+            version=line.split('"version":',1)[1].split(',',1)[0].strip().strip('"')
+        if '"updated"' in line:
+            updated=line.split('"updated":',1)[1].split(',',1)[0].strip().strip('"')
+        if '"purpose"' in line:
+            purpose=line.split('"purpose":',1)[1].rsplit('"',1)[0].strip().lstrip('"')
+        if '"source_method"' in line:
+            source_method=line.split('"source_method":',1)[1].rsplit('"',1)[0].strip().lstrip('"')
+    if 'minor-traditions' in name:
+        out={'version':version,'updated':updated,'purpose':purpose,'traditions':records}
+    else:
+        out={'version':version,'updated':updated,'purpose':purpose,'source_method':source_method,'profiles':records}
+    p.write_text(json.dumps(out,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
+    json.loads(p.read_text(encoding='utf-8'))
+    print('REPAIRED',name,'records=',len(records))
 
 repair('data/religious-foundations/enriched-records.json')
 repair('data/religious-foundations/minor-traditions.json')
