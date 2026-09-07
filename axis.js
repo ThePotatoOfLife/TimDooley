@@ -4,61 +4,54 @@ import {OrbitControls} from 'three/addons/controls/OrbitControls.js';
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 
-const scene=new THREE.Scene();
-scene.background=new THREE.Color(0x030605);
-const camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.01,100);
-camera.position.set(2.9,1.25,3.8);
-const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});
-renderer.setPixelRatio(Math.min(devicePixelRatio,2));
-renderer.setSize(innerWidth,innerHeight); renderer.outputColorSpace=THREE.SRGBColorSpace;
-$('viewport').appendChild(renderer.domElement);
-const controls=new OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.dampingFactor=.06; controls.target.set(0,0,0); controls.minDistance=1.8; controls.maxDistance=8;
-scene.add(new THREE.AmbientLight(0xffffff,.7));
-const key=new THREE.PointLight(0xffffff,2.2,8); key.position.set(2,3,3); scene.add(key);
-
+const scene=new THREE.Scene(); scene.background=new THREE.Color(0x020403);
+const camera=new THREE.PerspectiveCamera(42,innerWidth/innerHeight,.01,100); camera.position.set(3.4,1.5,4.2);
+const renderer=new THREE.WebGLRenderer({antialias:true}); renderer.setPixelRatio(Math.min(devicePixelRatio,2)); renderer.setSize(innerWidth,innerHeight); renderer.outputColorSpace=THREE.SRGBColorSpace; $('viewport').appendChild(renderer.domElement);
+const controls=new OrbitControls(camera,renderer.domElement); controls.enableDamping=true; controls.target.set(0,0,0); controls.minDistance=1.5; controls.maxDistance=8;
+scene.add(new THREE.AmbientLight(0xffffff,.8));
 const root=new THREE.Group(); scene.add(root);
-const COLORS={spirit:0xa58cff,matter:0xd9a14b,overlap:0x55e0b5,axis:0x35ff68,plane:0x8ad8ff,node:0xd9ffdc,edge:0x3a7548};
+const C={life:0x64ff86,serpent:0xd6a94d,spirit:0x9f8cff,matter:0x8d6b42,overlap:0x58e0b0,plane:0x80d8ff,node:0xe8ffe9,edge:0x315f3d,door:0xffffff};
 
-function ellipse(center,radii,color,opacity=.10){
- const g=new THREE.SphereGeometry(1,64,32); const m=new THREE.MeshBasicMaterial({color,transparent:true,opacity,depthWrite:false,side:THREE.DoubleSide});
- const mesh=new THREE.Mesh(g,m); mesh.position.set(...center); mesh.scale.set(...radii); root.add(mesh);
- const wire=new THREE.LineSegments(new THREE.EdgesGeometry(new THREE.SphereGeometry(1,32,16)),new THREE.LineBasicMaterial({color,transparent:true,opacity:.28})); wire.position.copy(mesh.position); wire.scale.copy(mesh.scale); root.add(wire); return mesh;
-}
-ellipse([0,.43,0],[.68,.78,.68],COLORS.spirit,.075);
-ellipse([0,-.43,0],[.82,.78,.82],COLORS.matter,.075);
+function ellipsoid(center,radii,color,opacity){const g=new THREE.SphereGeometry(1,64,32);const m=new THREE.MeshBasicMaterial({color,transparent:true,opacity,depthWrite:false,side:THREE.DoubleSide});const o=new THREE.Mesh(g,m);o.position.set(...center);o.scale.set(...radii);root.add(o);const w=new THREE.LineSegments(new THREE.WireframeGeometry(g),new THREE.LineBasicMaterial({color,transparent:true,opacity:.16}));w.position.copy(o.position);w.scale.copy(o.scale);root.add(w)}
+ellipsoid([0,.48,0],[.74,.82,.74],C.spirit,.055); ellipsoid([0,-.48,0],[.86,.82,.86],C.matter,.055);
 
-// Organic hourglass envelope: x²+z²=r(y)², sampled as a smooth surface.
-function envelope(){const verts=[],inds=[];const ny=56,nr=72;const radius=y=>.34+.72*(1-Math.pow(Math.abs(y),1.7));for(let j=0;j<=ny;j++){const y=-1+2*j/ny,r=radius(y);for(let i=0;i<nr;i++){const a=2*Math.PI*i/nr;verts.push(r*Math.cos(a),y,r*Math.sin(a));}}for(let j=0;j<ny;j++)for(let i=0;i<nr;i++){const a=j*nr+i,b=j*nr+(i+1)%nr,c=(j+1)*nr+(i+1)%nr,d=(j+1)*nr+i;inds.push(a,b,d,b,c,d)}const geo=new THREE.BufferGeometry();geo.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));geo.setIndex(inds);geo.computeVertexNormals();const mesh=new THREE.Mesh(geo,new THREE.MeshPhysicalMaterial({color:0x17351f,transparent:true,opacity:.13,roughness:.8,metalness:.05,side:THREE.DoubleSide,depthWrite:false}));root.add(mesh);const wire=new THREE.LineSegments(new THREE.WireframeGeometry(geo),new THREE.LineBasicMaterial({color:COLORS.axis,transparent:true,opacity:.07}));root.add(wire)}
-envelope();
+// Hourglass-like potato envelope: x²+z²=r(y)².
+const verts=[],inds=[],ny=64,nr=80; const R=y=>.30+.76*(1-Math.pow(Math.abs(y),1.65));
+for(let j=0;j<=ny;j++){const y=-1+2*j/ny,r=R(y);for(let i=0;i<nr;i++){const a=2*Math.PI*i/nr;verts.push(r*Math.cos(a),y,r*Math.sin(a))}}
+for(let j=0;j<ny;j++)for(let i=0;i<nr;i++){const a=j*nr+i,b=j*nr+(i+1)%nr,c=(j+1)*nr+(i+1)%nr,d=(j+1)*nr+i;inds.push(a,b,d,b,c,d)}
+const envGeo=new THREE.BufferGeometry();envGeo.setAttribute('position',new THREE.Float32BufferAttribute(verts,3));envGeo.setIndex(inds);envGeo.computeVertexNormals();root.add(new THREE.Mesh(envGeo,new THREE.MeshPhysicalMaterial({color:0x17351f,transparent:true,opacity:.09,roughness:.9,side:THREE.DoubleSide,depthWrite:false})));root.add(new THREE.LineSegments(new THREE.WireframeGeometry(envGeo),new THREE.LineBasicMaterial({color:C.life,transparent:true,opacity:.045})));
 
-// The continuous Axis / Spine: x=z=0, y∈[-1,1].
-const spineGeo=new THREE.BufferGeometry().setFromPoints([new THREE.Vector3(0,-1.18,0),new THREE.Vector3(0,1.18,0)]);
-root.add(new THREE.Line(spineGeo,new THREE.LineBasicMaterial({color:COLORS.axis,transparent:true,opacity:.9})));
+// Door is the origin. The Tree of Life grows upward; Hermes/serpent descends.
+const door=new THREE.Mesh(new THREE.TorusGeometry(.075,.018,16,48),new THREE.MeshBasicMaterial({color:C.door}));door.rotation.x=Math.PI/2;root.add(door);
+const spinePts=[];for(let i=0;i<=100;i++){const y=-1.15+2.3*i/100;spinePts.push(new THREE.Vector3(.035*Math.sin(y*7),y,.035*Math.cos(y*7)))}
+root.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(spinePts),new THREE.LineBasicMaterial({color:C.serpent,transparent:true,opacity:.9})));
 
-// Cardinal crosshair through the overlap.
-for(const pts of [[[-1.25,0,0],[1.25,0,0]],[[0,0,-1.25],[0,0,1.25]]]){const g=new THREE.BufferGeometry().setFromPoints(pts.map(p=>new THREE.Vector3(...p)));root.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:COLORS.axis,transparent:true,opacity:.16})))}
+// Tree of Life: trunk starts at Door and branches upward.
+const lifeTrunk=[];for(let i=0;i<=45;i++){const y=.03+.92*i/45;lifeTrunk.push(new THREE.Vector3(0,y,0))}root.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(lifeTrunk),new THREE.LineBasicMaterial({color:C.life,transparent:true,opacity:.95})));
+for(let b=0;b<7;b++){const y=.25+b*.095,side=b%2?1:-1;const p=[new THREE.Vector3(0,y,0),new THREE.Vector3(side*(.16+b*.055),y+.18,side*(.05+b*.025)),new THREE.Vector3(side*(.34+b*.07),y+.29,side*(.10+b*.03))];root.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(p),new THREE.LineBasicMaterial({color:C.life,transparent:true,opacity:.75})))}
 
-const nodes=new Map(), nodeObjects=[]; let relationships=[];
-function positionFor(levelIndex,childIndex,count){const t=(levelIndex+.5)/10;const y=1-2*t;const phase=levelIndex*Math.PI*.37;const theta=2*Math.PI*(childIndex/Math.max(1,count))+phase;const rho=Math.min(.76,.18+.48*Math.sqrt((childIndex+1)/Math.max(1,count)));return new THREE.Vector3(rho*Math.cos(theta),y,rho*Math.sin(theta))}
-function addNode(id,name,levelIndex,childIndex,count){const p=positionFor(levelIndex,childIndex,count);const inOverlap=Math.abs(p.y)<.22;const color=inOverlap?COLORS.overlap:(p.y>0?COLORS.spirit:COLORS.matter);const g=new THREE.SphereGeometry(inOverlap?.042:.032,16,10);const m=new THREE.MeshBasicMaterial({color,transparent:true,opacity:.95});const o=new THREE.Mesh(g,m);o.position.copy(p);o.userData={id,name,levelIndex};root.add(o);nodes.set(id,o);nodeObjects.push(o);}
+// Serpent coils around the downward Axis.
+for(let k=0;k<5;k++){const pts=[];for(let i=0;i<=50;i++){const y=-.04-(k+.15)*.18-.14*i/50;const a=i/50*Math.PI*2;pts.push(new THREE.Vector3(.10*Math.sin(a),y,.10*Math.cos(a)))}root.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(pts),new THREE.LineBasicMaterial({color:C.serpent,transparent:true,opacity:.6})))}
 
-async function json(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error(path+' '+r.status);return r.json()}
-const tree=await json('data/tree.json');
-const data=await json('data/nodes.json');
-const byId=new Map((data.nodes||[]).map(n=>[n.id,n]));
-(tree.levels||[]).forEach((level,li)=>(level.children||[]).forEach((id,ci,arr)=>addNode(id,byId.get(id)?.name||id,li,ci,arr.length)));
+// Cardinal directions through the Door/overlap.
+for(const p of [[[ -1.18,0,0],[1.18,0,0]],[[0,0,-1.18],[0,0,1.18]]]){root.add(new THREE.Line(new THREE.BufferGeometry().setFromPoints(p.map(v=>new THREE.Vector3(...v))),new THREE.LineBasicMaterial({color:C.overlap,transparent:true,opacity:.13})))}
 
-// Repository relationships become 3D graph edges when both records have positions.
-try{const rel=await json('data/relationships.json');relationships=rel.relationships||[];}catch{}
-for(const e of relationships){const a=nodes.get(e.from),b=nodes.get(e.to);if(!a||!b)continue;const g=new THREE.BufferGeometry().setFromPoints([a.position,b.position]);root.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:COLORS.edge,transparent:true,opacity:.20})))}
+const nodes=new Map(),nodeObjects=[];
+function place(level,idx,count){const t=(level+.5)/10;const y=1-2*t;const n=Math.max(1,count);const theta=2*Math.PI*idx/n+level*.61;const radius=Math.min(R(y)*.72,.16+.52*Math.sqrt((idx+1)/n));return new THREE.Vector3(radius*Math.cos(theta),y,radius*Math.sin(theta))}
+function addNode(id,name,level,idx,count){const p=place(level,idx,count);const isDoor=id==='door',isLife=id==='tree-of-life',isSerpent=['hermes','serpent'].includes(id);let color=p.y>.05?C.life:C.serpent;if(Math.abs(p.y)<.10)color=C.overlap;if(isDoor)color=C.door;if(isLife)color=C.life;if(isSerpent)color=C.serpent;const size=isDoor?.075:(isLife||isSerpent?.05:.032);const o=new THREE.Mesh(new THREE.SphereGeometry(size,16,10),new THREE.MeshBasicMaterial({color,transparent:true,opacity:.95}));o.position.copy(p);o.userData={id,name};root.add(o);nodes.set(id,o);nodeObjects.push(o)}
+async function json(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error(path);return r.json()}
+const tree=await json('data/tree.json'),data=await json('data/nodes.json');const byId=new Map((data.nodes||[]).map(n=>[n.id,n]));
+(tree.levels||[]).forEach((l,li)=>(l.children||[]).forEach((id,i,a)=>addNode(id,byId.get(id)?.name||id,li,i,a.length)));
+// Add structural records even if they are not direct canonical children.
+for(const id of ['father','fathers-house','heaven','axis','door','son','tree-of-life','tree-of-strife','roots','plane','hermes','serpent','eyes','eye','children','father','source'])if(!nodes.has(id)&&byId.has(id)){const n=byId.get(id);const y=id==='door'?0:id==='tree-of-life'?.52:id==='roots'?-0.72:id==='plane'?.0:(n.type==='concept'?.25:-.25);const p=new THREE.Vector3(.24*Math.cos(id.length),y,.24*Math.sin(id.length));const o=new THREE.Mesh(new THREE.SphereGeometry(id==='door'?.07:.035,16,10),new THREE.MeshBasicMaterial({color:y>=0?C.life:C.serpent}));o.position.copy(p);o.userData={id,name:n.name};root.add(o);nodes.set(id,o);nodeObjects.push(o)}
 
-// A movable analytical plane. Default is y=0, the overlap slice.
-const plane=new THREE.Mesh(new THREE.PlaneGeometry(2.25,2.25),new THREE.MeshBasicMaterial({color:COLORS.plane,transparent:true,opacity:.035,side:THREE.DoubleSide,depthWrite:false}));plane.rotation.x=-Math.PI/2;root.add(plane);
-const planeEdge=new THREE.LineSegments(new THREE.EdgesGeometry(plane.geometry),new THREE.LineBasicMaterial({color:COLORS.plane,transparent:true,opacity:.28}));planeEdge.rotation.copy(plane.rotation);root.add(planeEdge);
+try{const rel=await json('data/relationships.json');for(const e of rel.relationships||[]){const a=nodes.get(e.source||e.from),b=nodes.get(e.target||e.to);if(!a||!b)continue;const g=new THREE.BufferGeometry().setFromPoints([a.position,b.position]);root.add(new THREE.Line(g,new THREE.LineBasicMaterial({color:C.edge,transparent:true,opacity:.22})))} }catch(e){}
 
-const raycaster=new THREE.Raycaster(), pointer=new THREE.Vector2();
-renderer.domElement.addEventListener('pointerdown',ev=>{pointer.x=ev.clientX/innerWidth*2-1;pointer.y=-(ev.clientY/innerHeight)*2+1;raycaster.setFromCamera(pointer,camera);const hits=raycaster.intersectObjects(nodeObjects,false);if(!hits.length)return;const n=hits[0].object.userData;$('selected').innerHTML=`<span style="color:#35ff68">${esc(n.name)}</span><br>${esc(n.id)}`;setTimeout(()=>{location.href='node.html?id='+encodeURIComponent(n.id)},180)},{passive:true});
+// Arbitrary analytical plane, initially at Door. Drag with wheel to move through y.
+const plane=new THREE.Mesh(new THREE.PlaneGeometry(2.15,2.15),new THREE.MeshBasicMaterial({color:C.plane,transparent:true,opacity:.025,side:THREE.DoubleSide,depthWrite:false}));plane.rotation.x=-Math.PI/2;root.add(plane);const pe=new THREE.LineSegments(new THREE.EdgesGeometry(plane.geometry),new THREE.LineBasicMaterial({color:C.plane,transparent:true,opacity:.22}));pe.rotation.copy(plane.rotation);root.add(pe);
+let planeY=0;addEventListener('wheel',e=>{planeY=Math.max(-1,Math.min(1,planeY-e.deltaY*.001));plane.position.y=planeY;pe.position.y=planeY;$('plane-status').textContent='PLANE y='+planeY.toFixed(2)},{passive:true});
 
-$('load-status').textContent=`${nodeObjects.length} NODES`;
+const ray=new THREE.Raycaster(),ptr=new THREE.Vector2();renderer.domElement.addEventListener('click',e=>{ptr.x=e.clientX/innerWidth*2-1;ptr.y=-(e.clientY/innerHeight)*2+1;ray.setFromCamera(ptr,camera);const hit=ray.intersectObjects(nodeObjects,false)[0];if(!hit)return;const n=hit.object.userData;$('selected').textContent=n.name+'  ['+n.id+']';location.href='node.html?id='+encodeURIComponent(n.id)});
+$('load-status').textContent=nodeObjects.length+' NODES';
 function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight)}addEventListener('resize',resize);
-function animate(){requestAnimationFrame(animate);controls.update();renderer.render(scene,camera)}animate();
+(function loop(){requestAnimationFrame(loop);controls.update();renderer.render(scene,camera)})();
