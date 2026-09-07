@@ -10,8 +10,6 @@ on:
 permissions:
   contents: read
 
-# Keep every validation run for main. Rapid atlas carving should not cancel
-# the run that is actually validating the preceding commit.
 concurrency:
   group: atlas-check-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
@@ -27,3 +25,5 @@ jobs:
         run: python scripts/validate_atlas.py
       - name: Validate religious-adjacent layer
         run: python scripts/validate_religious_adjacent.py
+      - name: Validate Potatoism layer
+        run: python scripts/validate_potatoism.py
