@@ -42,5 +42,4 @@ jobs:
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
         run: python scripts/audit_web.py
-      # Full validator chain: keep later checks visible while repairing failures.
-      # CI trigger marker: validator fixes are being verified end-to-end.
+      # Full validator chain: repaired Atlas link audit; rerun from the current main state.
