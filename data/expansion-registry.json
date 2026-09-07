@@ -12,9 +12,11 @@
     {"id":"physics-deep-dive","file":"docs/TRAJECTORY-TOPOLOGY-STANDARD-MODEL-SPIN-DEEP-DIVE.md","status":"verified-present","domain":"physics synthesis"},
     {"id":"wave-015","file":"data/expansions/standard-model-representation-matrix-wave-015.json","status":"verified-present","domain":"exact gauge representations and anomaly checks"},
     {"id":"wave-019","file":"data/expansions/christianity-bible-denominations-wave-019.json","status":"verified-present","domain":"Christianity, Bible, denominations, theology, practice, demographics"},
-    {"id":"bible-source-web","file":"data/sources/bible-world-english-bible.json","status":"verified-present","domain":"public-domain World English Bible source material"}
+    {"id":"bible-source-web","file":"data/sources/bible-world-english-bible.json","status":"verified-present","domain":"public-domain World English Bible source material"},
+    {"id":"wave-020","file":"data/expansions/worldview-politics-culture-movement-field-wave-020.json","status":"verified-present","domain":"worldviews, religion, politics, culture, subculture, movements and multi-layer field architecture"},
+    {"id":"wave-021","file":"data/expansions/global-field-deep-carving-wave-021.json","status":"verified-present","domain":"global ontology, systems, evidence, temporal/spatial layers, cross-domain couplings and real-data anchors"}
   ],
   "promotion_rule":"A concept may first live in an expansion. Promote it into data/nodes.json only after its definition, evidence class, source status and graph role are clear.",
   "relationship_rule":"Expansion relationships must distinguish historical, observed, mathematical, comparative and project-interpretive edges.",
-  "validation_targets":["reference integrity","duplicate IDs","orphaned expansion relationships","source coverage","epistemic-status coverage","canonical-child coverage"]
+  "validation_targets":["reference integrity","duplicate IDs","orphaned expansion relationships","source coverage","epistemic-status coverage","canonical-child coverage","temporal coverage","spatial coverage","cross-domain coupling coverage"]
 }
