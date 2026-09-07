@@ -1,0 +1,32 @@
+{
+  "version":"1.0.0",
+  "purpose":"Machine-readable source registry used by the country blueprint. Sources are selected per field, normalized, timestamped and refreshed according to volatility.",
+  "sources":[
+    {"id":"world-bank","name":"World Bank","domains":["population","economy","poverty","health","education","trade","government","infrastructure","environment"],"priority":"international-official","refresh":"monthly/annual","access":"API/open data"},
+    {"id":"imf","name":"International Monetary Fund","domains":["GDP","inflation","public-finance","debt","balance-of-payments","external-position","exchange-rates","forecasts"],"priority":"international-official","refresh":"monthly/quarterly/annual","access":"Data APIs/open datasets"},
+    {"id":"un-stat","name":"United Nations Statistics Division","domains":["population","demography","national-accounts","trade","geography","SDG"],"priority":"international-official","refresh":"periodic","access":"UN data systems"},
+    {"id":"ipu-parline","name":"Inter-Parliamentary Union Parline","domains":["parliament","elections","members","party-composition","women","age","speakers","legislative-structure"],"priority":"institutional-primary","refresh":"monthly/latest","access":"API/open data"},
+    {"id":"pew-religion","name":"Pew Research Center","domains":["religious-composition","religious-switching","religious-demography"],"priority":"academic/research","refresh":"periodic","access":"published datasets/reports"},
+    {"id":"who","name":"World Health Organization","domains":["health","mortality","disease","health-workforce","health-spending"],"priority":"international-official","refresh":"periodic","access":"API/open data"},
+    {"id":"ilo","name":"International Labour Organization","domains":["employment","unemployment","wages","labour-force","working-hours","migration","social-protection"],"priority":"international-official","refresh":"annual/monthly depending field","access":"ILOSTAT"},
+    {"id":"unesco","name":"UNESCO Institute for Statistics","domains":["education","research","culture","science"],"priority":"international-official","refresh":"annual/periodic","access":"open data"},
+    {"id":"unhcr","name":"UNHCR","domains":["refugees","asylum","displacement","statelessness"],"priority":"international-official","refresh":"annual/quarterly","access":"Refugee Data Finder"},
+    {"id":"itu","name":"International Telecommunication Union","domains":["telecom","internet","mobile","broadband","digital-development"],"priority":"international-official","refresh":"annual","access":"ITU data"},
+    {"id":"wto","name":"World Trade Organization","domains":["trade","tariffs","trade-policy","merchandise","services"],"priority":"international-official","refresh":"monthly/annual","access":"WTO statistics"},
+    {"id":"unctad","name":"UN Trade and Development","domains":["trade","investment","FDI","shipping","commodities","development"],"priority":"international-official","refresh":"annual/quarterly","access":"UNCTADstat"},
+    {"id":"iea","name":"International Energy Agency","domains":["energy","electricity","oil","gas","coal","renewables","emissions","energy-security"],"priority":"international/intergovernmental","refresh":"monthly/annual","access":"published datasets"},
+    {"id":"irena","name":"International Renewable Energy Agency","domains":["renewable-energy","capacity","generation","employment"],"priority":"international-intergovernmental","refresh":"annual","access":"open statistics"},
+    {"id":"sipri","name":"SIPRI","domains":["military-spending","arms-transfers","defence","nuclear-policy","security"],"priority":"research-institute","refresh":"annual","access":"open databases"},
+    {"id":"wipo","name":"World Intellectual Property Organization","domains":["patents","trademarks","innovation","IP"],"priority":"international-official","refresh":"annual","access":"open data"},
+    {"id":"oecd","name":"OECD","domains":["tax","economy","education","labour","health","governance","productivity","innovation"],"priority":"international-official","refresh":"monthly/annual","access":"OECD data"},
+    {"id":"eurostat","name":"Eurostat","domains":["EU-economy","public-finance","population","trade","labour","energy","regional-data"],"priority":"regional-official","refresh":"monthly/quarterly/annual","access":"API/open data"},
+    {"id":"national-statistics","name":"National statistical offices","domains":["all national official statistics"],"priority":"primary-official","refresh":"field-dependent","access":"country-specific official APIs/downloads"},
+    {"id":"central-bank","name":"National central banks","domains":["rates","currency","reserves","banking","financial-stability","external-position"],"priority":"primary-official","refresh":"daily/monthly/quarterly","access":"country-specific official data"},
+    {"id":"national-government","name":"National governments and ministries","domains":["budget","tax","defence","foreign-policy","energy","infrastructure","law","leadership","symbols"],"priority":"primary-official","refresh":"event/annual","access":"official publications"},
+    {"id":"national-parliament","name":"National parliaments","domains":["law","party-composition","members","votes","committees","leadership"],"priority":"primary-institutional","refresh":"event/monthly","access":"official parliamentary records"},
+    {"id":"national-election-authority","name":"National election authorities","domains":["elections","turnout","results","candidates","party-votes"],"priority":"primary-official","refresh":"event","access":"official results"},
+    {"id":"iso-3166","name":"ISO 3166","domains":["country-identity","codes","subdivisions"],"priority":"standard","refresh":"as amended","access":"official standard data"}
+  ],
+  "selection_rules":["Prefer the primary national source when available.","Use international datasets for comparability and cross-checking.","Store both source-specific and normalized values when methodologies differ.","Never silently merge incompatible definitions.","When a source stops updating, preserve historical observations and mark the field stale rather than deleting it."],
+  "refresh_rules":{"leaders/elections":"event-driven","parliament":"monthly","markets/rates":"daily or monthly","trade/energy":"monthly where available","GDP/debt/labour":"quarterly/annual","population/religion/structural-demography":"annual/periodic","history":"append-only research updates"}
+}
