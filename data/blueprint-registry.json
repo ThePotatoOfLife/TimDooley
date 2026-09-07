@@ -1,0 +1,28 @@
+{
+  "version":"1.0.0",
+  "purpose":"Backend registry of reusable blueprints. A blueprint defines the fields, sources, normalization rules, temporal model, relationships and refresh logic inherited by many concrete records.",
+  "visibility":"backend-only",
+  "inheritance_rule":"Concrete records store observations and relationships; instructions belong to the parent blueprint.",
+  "blueprints":[
+    {"id":"country","file":"data/countries-blueprint.json","applies_to":"all canonical countries","status":"active"},
+    {"id":"religious-foundation","file":"data/blueprints/religious-foundation.json","applies_to":"religions, traditions and major religious families","status":"active"},
+    {"id":"denomination-school","file":"data/blueprints/denomination-school.json","applies_to":"denominations, schools, rites and theological movements","status":"active"},
+    {"id":"institution","file":"data/blueprints/institution.json","applies_to":"durable organizations and public institutions","status":"active"},
+    {"id":"political-organization","file":"data/blueprints/political-organization.json","applies_to":"political parties, movements and electoral organizations","status":"active"},
+    {"id":"company","file":"data/blueprints/company.json","applies_to":"companies and controlled corporate groups","status":"active"},
+    {"id":"infrastructure-asset","file":"data/blueprints/infrastructure-asset.json","applies_to":"physical and digital infrastructure assets and networks","status":"active"},
+    {"id":"technology","file":"data/blueprints/technology.json","applies_to":"technologies, platforms, technical systems and capabilities","status":"active"},
+    {"id":"historical-event","file":"data/blueprints/historical-event.json","applies_to":"events and turning points","status":"active"},
+    {"id":"place","file":"data/blueprints/place.json","applies_to":"cities, settlements, regions, sites and geographic nodes","status":"active"},
+    {"id":"person-public-role","file":"data/blueprints/person-public-role.json","applies_to":"public leaders, office-holders and historically documented persons","status":"active"},
+    {"id":"movement","file":"data/blueprints/movement.json","applies_to":"religious, political, cultural, scientific and social movements","status":"active"},
+    {"id":"source-document","file":"data/blueprints/source-document.json","applies_to":"texts, datasets, laws, archives, publications and source records","status":"active"},
+    {"id":"economic-sector","file":"data/blueprints/economic-sector.json","applies_to":"industries and productive sectors","status":"active"},
+    {"id":"treaty-alliance","file":"data/blueprints/treaty-alliance.json","applies_to":"treaties, alliances and international arrangements","status":"active"},
+    {"id":"resource-system","file":"data/blueprints/resource-system.json","applies_to":"energy, minerals, water, food and ecological resources","status":"active"},
+    {"id":"ecological-system","file":"data/blueprints/ecological-system.json","applies_to":"ecosystems, watersheds, forests, fisheries and biodiversity systems","status":"active"}
+  ],
+  "universal_inheritance":["identity","history","ideas-or-function","sources","interpretation","practice-or-operation","organization","population-or-users","geography","institutions","material-base","power-or-control","network","change","evidence","time","provenance"],
+  "promotion_rule":"Start a concrete record under the appropriate blueprint. Promote it into canonical nodes when its definition, evidence class, source coverage and graph role are clear.",
+  "automation_rule":"Blueprints are executable specifications: acquisition jobs read them to discover fields, sources, refresh intervals, validators, derived measures and relationship templates. Missing data is recorded as missing, not silently fabricated."
+}
