@@ -23,6 +23,8 @@ jobs:
         uses: actions/checkout@v4
       - name: Validate atlas structure
         run: python scripts/validate_atlas.py
+      - name: Validate content integrity
+        run: python scripts/validate_content_integrity.py
       - name: Validate religious-adjacent layer
         run: python scripts/validate_religious_adjacent.py
       - name: Validate Potatoism layer
