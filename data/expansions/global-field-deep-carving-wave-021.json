@@ -1,0 +1,258 @@
+{
+  "id": "wave-021",
+  "title": "Global Field Deep Carving — ontology, evidence, systems, couplings and real-data anchors",
+  "date": "2026-09-07",
+  "status": "additive-research-layer",
+  "purpose": "Deepen weak or thin regions across the repository without moving the canonical Frame. This wave treats the repository as a relationship-first atlas of reality, culture, religion, politics, economy, ecology, technology, institutions, history and the project mythology.",
+  "canonical_rule": "Do not reorder data/tree.json. Add depth beneath existing levels. Keep empirical, historical, mathematical, comparative and project-symbolic claims distinct.",
+  "coverage_strategy": {
+    "method": "carve-existing-branches-first",
+    "passes": [
+      "inspect-current-state",
+      "identify-thin-concepts",
+      "add reusable stacks",
+      "add cross-domain couplings",
+      "replace vague placeholders with observable data structures",
+      "attach source and time requirements",
+      "leave uncertain claims explicitly uncertain",
+      "promote only after evidence and graph role are clear"
+    ],
+    "weaknesses_found": [
+      "The World branch has broad nouns but needs finer system decomposition.",
+      "The North Programme has strong sector names but needs country-by-country system stacks and cross-border dependency edges.",
+      "Religion needs the same depth for every tradition that Christianity is beginning to receive.",
+      "Politics needs explicit separation between ideas, organizations, elections, office-holding and outcomes.",
+      "Culture needs transmission, production, consumption, geography and generation layers.",
+      "History needs an event ledger connected to institutions, people, places, resources and consequences.",
+      "Ownership and obligations need first-class claim and control models.",
+      "Infrastructure needs physical-network, operator, capacity, bottleneck, maintenance and dependency layers.",
+      "Science and technology need discovery, institution, funding, publication, patent, production and deployment chains.",
+      "Evidence needs source hierarchy, observation date, publication date, extraction date, uncertainty and contradiction handling.",
+      "The graph needs more explicit temporal and spatial semantics.",
+      "The mythology needs richer internal relations while remaining clearly separated from empirical claims."
+    ]
+  },
+  "universal_stack": {
+    "description": "Reusable stack that can be applied to a religion, ideology, country, institution, company, movement, technology, historical event, cultural system or infrastructure asset.",
+    "layers": [
+      {"id":"existence","question":"What is it?","fields":["id","type","name","aliases","status","scope"]},
+      {"id":"identity","question":"How is it named and recognized?","fields":["self-description","external-classification","alternative-names","boundary-cases"]},
+      {"id":"history","question":"How did it become what it is?","fields":["origin","predecessors","founding-events","splits","mergers","reforms","decline","revival"]},
+      {"id":"ideas","question":"What does it claim or value?","fields":["concepts","beliefs","norms","goals","principles","doctrines"]},
+      {"id":"sources","question":"What evidence or texts anchor it?","fields":["primary-sources","secondary-sources","archives","datasets","law","statistics"]},
+      {"id":"interpretation","question":"How are sources understood?","fields":["schools","commentary","contested-readings","method","tradition"]},
+      {"id":"practice","question":"What happens in lived reality?","fields":["ritual","behavior","production","consumption","attendance","participation"]},
+      {"id":"organization","question":"How is it organized?","fields":["leadership","membership","governance","branches","local-units","networks"]},
+      {"id":"population","question":"Who participates?","fields":["affiliation","membership","active-participation","age","sex","education","income","migration"]},
+      {"id":"geography","question":"Where does it exist?","fields":["country","region","city","rural-urban","diaspora","migration-route"]},
+      {"id":"institutions","question":"Which durable organizations carry it?","fields":["schools","hospitals","media","charities","companies","government-bodies","associations"]},
+      {"id":"material","question":"What physical and financial substrate supports it?","fields":["land","buildings","equipment","money","labor","energy","transport","digital-infrastructure"]},
+      {"id":"power","question":"Who can decide, allocate, constrain or veto?","fields":["authority","law","capital","votes","coercion","expertise","agenda-setting","network-position"]},
+      {"id":"network","question":"What does it connect to?","fields":["allies","opponents","suppliers","customers","funders","teachers","media","regulators","diaspora"]},
+      {"id":"change","question":"How is it changing?","fields":["growth","decline","switching","migration","innovation","conflict","institutionalization","fragmentation"]},
+      {"id":"evidence","question":"How do we know?","fields":["source","source-type","source-date","observation-date","last-verified","confidence","uncertainty","contradictions"]}
+    ]
+  },
+  "world_branch_deepening": {
+    "matter": ["elements","materials","water","minerals","metals","polymers","construction-materials","waste","recycling","critical-materials","hazardous-materials","material-flows"],
+    "biology": ["cells","genetics","microbiome","plants","animals","humans","ecosystems","food-webs","reproduction","disease","immunity","evolution","biodiversity","agriculture","fisheries","forestry"],
+    "people": ["birth","childhood","education","work","family","migration","aging","care","death","citizenship","language","belief","political-participation","digital-life"],
+    "families": ["household","kinship","marriage","parenthood","care","inheritance","intergenerational-transfer","housing","domestic-labor","family-policy","family-change"],
+    "animals": ["wildlife","livestock","pets","fisheries","working-animals","animal-welfare","veterinary-systems","zoonoses","habitat","food-production"],
+    "places": ["continent","country","subnational-region","city","town","village","neighborhood","land-use","watershed","coast","island","port","border","corridor","site"],
+    "nations": ["territory","population","constitution","government","parliament","courts","ministries","taxation","budget","currency","central-bank","military","police","education","health","foreign-policy","citizenship"],
+    "kingdoms": ["monarchy","crown","succession","constitutional-law","parliamentary-monarchy","absolute-monarchy","ceremonial-role","royal-house","regency","historical-kingdoms"],
+    "societies": ["class","status","occupation","ethnicity-as-self-description","language","religion","family","education","media","civil-society","associations","social-mobility","inequality","trust"],
+    "institutions": ["state","firm","university","hospital","bank","church","mosque","temple","museum","foundation","union","association","platform","regulator","court","military","media-organization"],
+    "laws": ["constitution","statute","regulation","court-decision","contract","property","tax","labor","competition","environment","health","education","criminal","civil","international-law","administrative-law","human-rights"],
+    "economies": ["households","firms","government","production","consumption","investment","savings","credit","tax","public-spending","trade","finance","labor","productivity","capital-stock","innovation","inequality","distribution"],
+    "technology": ["science","engineering","software","hardware","networks","semiconductors","ai","robotics","biotechnology","energy-technology","transport","telecommunications","cybersecurity","standards","deployment","maintenance"],
+    "infrastructure": ["electricity","gas","oil","district-heating","water","wastewater","roads","rail","ports","airports","shipping","pipelines","fiber","mobile","satellite","data-centers","housing","schools","hospitals"],
+    "history": ["prehistory","antiquity","medieval","early-modern","industrial","modern","contemporary","colonialism","decolonization","revolution","state-formation","migration","technological-change","economic-crises","wars","peace-processes"],
+    "war": ["causes","actors","alliances","mobilization","industry","logistics","finance","sanctions","occupation","civilian-impact","refugees","infrastructure-damage","reconstruction","peace-agreement","memory"],
+    "trade": ["goods","services","commodities","supply-chains","shipping","ports","rail-corridors","customs","tariffs","standards","trade-agreements","value-added","re-exports","strategic-dependencies"],
+    "money": ["cash","deposits","bank-credit","central-bank-money","government-bonds","corporate-debt","equity","foreign-exchange","payment-systems","reserves","collateral","liquidity","inflation","interest-rates"],
+    "ownership": ["legal-title","beneficial-ownership","voting-control","board-control","state-ownership","family-control","institutional-investors","cross-holdings","leases","concessions","intellectual-property","licenses"],
+    "obligations": ["sovereign-debt","corporate-debt","household-debt","pensions","insurance","guarantees","tax-liabilities","contracts","procurement","trade-credit","derivatives","maintenance-obligations","environmental-liabilities"],
+    "alliances": ["defense","intelligence-sharing-as-public-institutional-category","diplomacy","trade","energy","research","standards","development","sanctions-coordination","joint-procurement"]
+  },
+  "religion_stack": {
+    "universal_nodes": ["religious-family","tradition","school","denomination","movement","institution","congregation","practitioner","text","canon","commentary","ritual","festival","pilgrimage","ethics","law","theology","cosmology","anthropology","salvation-or-liberation","afterlife","sacred-time","sacred-space","leadership","clergy-or-specialists","education","charity","property","media","diaspora"],
+    "comparative_axes": ["ultimate-reality","god-or-gods","non-theism","creation","cosmos","human-nature","problem","evil-or-suffering","salvation-or-liberation","ethics","ritual","prayer-or-meditation","scripture","oral-tradition","authority","community","clergy","sacred-images","iconoclasm","sacred-law","afterlife","eschatology","conversion","mission","religious-freedom","state-relationship"],
+    "families_to_carve": ["Christianity","Islam","Hindu-traditions","Buddhist-traditions","Judaism","Sikhism","Jainism","Bahai-Faith","Daoist-traditions","Shinto","Zoroastrian-traditions","African-traditional-religions","Indigenous-religions","folk-religions","new-religious-movements","atheism","agnosticism","other-nonreligious-worldviews"],
+    "christianity_next_layers": ["Old-Testament/Hebrew-Bible-context","Second-Temple-Judaism","historical-Jesus","Pauline-communities","apostolic-literature","patristics","ecumenical-councils","creeds","Christology","Trinity","soteriology","sacramental-theology","canon-history","textual-criticism","monasticism","papacy","patriarchates","East-West-schism","Reformation","confessionalization","missions","colonialism-and-Christianity","indigenous-Christianities","Pentecostalism","charismatic-movements","ecumenism","secularization","religious-switching","Christian-media","Christian-education","Christian-healthcare","Christian-charity","church-property"],
+    "demographic_fields": ["affiliation","self-identification","membership","attendance","belief","practice","age","sex","education","income","urbanization","migration","conversion","disaffiliation","denomination","country","generation"]
+  },
+  "politics_stack": {
+    "rule": "Never collapse political identity into a single left-right coordinate when multidimensional data are available.",
+    "dimensions": ["economic-role-of-state","taxation","redistribution","public-ownership","market-regulation","labor-rights","social-traditionalism","social-liberalism","immigration","national-identity","minority-policy","authority","civil-liberties","police-and-security","democratic-participation","representation","executive-power","judicial-independence","institutional-trust","internationalism","sovereignty","trade-openness","military-posture","ecology","climate-policy","religion-state","secularism","regional-autonomy","constitutionalism","technocracy","populism"],
+    "organization_chain": ["idea","ideology-family","thinker","text","manifesto","movement","party","leader","candidate","member","donor","media","voter","constituency","election","office","coalition","government","law","budget","implementation","outcome","public-reaction"],
+    "ideology_families": ["liberalism","conservatism","social-democracy","democratic-socialism","socialism","communism","libertarianism","anarchism","christian-democracy","national-conservatism","nationalism","ethnonationalism","green-politics","agrarianism","populism","fascism","monarchism","republicanism","technocracy","communitarianism","centrism","regionalism","separatism","anti-establishment","feminism","environmentalism","liberal-nationalism","religious-democracy","authoritarianism","constitutionalism"],
+    "measurement": ["platform-text","vote-share","seat-share","coalition-role","government-role","membership-estimate","funding","campaign-spending","public-opinion","policy-output","law","budget","implementation","outcome"]
+  },
+  "culture_stack": {
+    "domains": ["language","religion","family","kinship","food","dress","music","art","literature","architecture","ritual","festival","sport","work","education","humor","sexual-and-family-norms","death-and-burial","political-memory","national-symbols","media","digital-culture","craft","design","fashion","games","film","television","online-community"],
+    "transmission": ["family","school","religious-institution","peer-group","workplace","club","association","media","publisher","platform","state","market","diaspora","algorithmic-recommendation"],
+    "production_chain": ["creator","institution","publisher-or-platform","distribution","audience","reception","imitation","adaptation","commercialization","archiving","canonization-or-forgetting"],
+    "subculture_dimensions": ["style","slang","music","media","platform","place","age","occupation","hobby","politics","religion","gender-and-sexual-identity","ritual","community-norms","boundary-markers"],
+    "integrity_rules": ["culture-is-not-ethnicity","culture-is-not-nationality","aesthetic-is-not-ideology","online-presence-is-not-membership","public-association-does-not-prove-private-belief"]
+  },
+  "movement_stack": {
+    "types": ["religious","political","social","labor","civil-rights","environmental","national","anti-war","reform","revolutionary","artistic","digital","scientific","consumer","local-community"],
+    "lifecycle": ["condition","grievance-or-vision","framing","founders","recruitment","symbols","communication","mobilization","organization","institutionalization","fragmentation","decline","revival","legacy"],
+    "movement_edges": ["responds-to","recruits-from","mobilizes","opposes","allies-with","splits-from","merges-with","institutionalizes-into","influences","is-influenced-by","migrates-through","remembers","forgets"]
+  },
+  "science_technology_stack": {
+    "chain": ["question","observation","hypothesis","experiment-or-model","measurement","dataset","analysis","publication","replication","critique","theory","engineering","prototype","standard","patent","manufacturing","deployment","maintenance","social-impact"],
+    "institutional_nodes": ["university","laboratory","research-institute","company","government-agency","standards-body","journal","publisher","funder","grant","patent-office","regulator","professional-society"],
+    "funding_edges": ["public-grant","private-investment","procurement","university-funding","philanthropy","defense-funding","venture-capital","corporate-r-and-d"],
+    "integrity": ["mathematical-result-is-not-metaphor","metaphor-is-not-physics","model-is-not-observation","correlation-is-not-causation","preprint-is-not-replicated-result"]
+  },
+  "energy_stack": {
+    "layers": ["resource","extraction","processing","generation","storage","transmission","distribution","retail","industrial-use","household-use","transport","regulation","finance","ownership","emissions","waste","decommissioning"],
+    "resources": ["oil","gas","coal","uranium","wind","solar","hydro","geothermal","biomass","waste-heat","district-heating","electricity-storage"],
+    "couplings": ["energy-to-industry","energy-to-trade","energy-to-inflation","energy-to-household-cost","energy-to-defense","energy-to-infrastructure","energy-to-climate","energy-to-research","energy-to-mining","energy-to-transport"]
+  },
+  "finance_stack": {
+    "layers": ["household","firm","bank","insurer","pension-fund","asset-manager","central-bank","treasury","government","bond-market","equity-market","commodity-market","foreign-exchange","payment-system","clearing","settlement"],
+    "claims": ["debt","equity","deposit","bond","loan","guarantee","insurance-policy","pension-claim","tax-claim","derivative","royalty","license","contract"],
+    "risk_edges": ["counterparty","liquidity","duration","currency","refinancing","concentration","sovereign","commodity","operational","cyber","climate","legal"]
+  },
+  "infrastructure_stack": {
+    "asset_fields": ["asset","owner","operator","location","capacity","technology","commissioned","expected-life","maintenance","replacement-cost","failure-mode","criticality","dependency","backup","interconnection","regulator","user-base"],
+    "network_types": ["electric-grid","gas-grid","oil-network","water-network","wastewater","road","rail","port","airport","shipping-route","pipeline","fiber","mobile","satellite","data-center","district-heating","housing","hospital","school"],
+    "criticality": ["single-point-of-failure","redundancy","bottleneck","substitutability","cross-border-dependency","seasonality","weather-exposure","maintenance-debt"]
+  },
+  "health_stack": {
+    "layers": ["population-health","determinants","exposure","prevention","primary-care","specialist-care","hospital","pharmacy","public-health","vaccination","mental-health","maternal-health","child-health","elder-care","long-term-care","research","medical-industry","insurance","financing","outcomes"],
+    "couplings": ["health-to-work","health-to-education","health-to-income","health-to-housing","health-to-food","health-to-environment","health-to-demography","health-to-public-finance"]
+  },
+  "education_stack": {
+    "layers": ["early-childhood","primary","secondary","vocational","higher-education","research","adult-learning","professional-training","informal-learning","religious-education","media-literacy","digital-literacy"],
+    "edges": ["education-to-skills","education-to-income","education-to-migration","education-to-politics","education-to-religion","education-to-innovation","education-to-social-mobility"]
+  },
+  "ecology_stack": {
+    "layers": ["climate","atmosphere","water-cycle","ocean","soil","forest","grassland","wetland","river","coast","biodiversity","agriculture","fisheries","urban-ecology","pollution","restoration"],
+    "couplings": ["ecology-to-food","ecology-to-health","ecology-to-migration","ecology-to-energy","ecology-to-industry","ecology-to-infrastructure","ecology-to-conflict","ecology-to-insurance"]
+  },
+  "media_information_stack": {
+    "layers": ["source","creator","publisher","editor","platform","algorithm","distribution","audience","engagement","monetization","moderation","archiving","citation","correction","reputation"],
+    "information_states": ["claim","report","opinion","analysis","dataset","primary-record","rumor","allegation","correction","retraction","consensus","dispute"],
+    "graph_edges": ["quotes","cites","embeds","amplifies","corrects","disputes","funds","owns","moderates","archives","translates","localizes"]
+  },
+  "law_governance_stack": {
+    "chain": ["constitution","statute","regulation","administrative-act","court-case","judgment","enforcement","compliance","appeal","precedent","amendment"],
+    "actors": ["legislature","executive","ministry","regulator","court","local-government","police","prosecutor","ombudsman","auditor","citizen","company","association"],
+    "couplings": ["law-to-budget","law-to-property","law-to-labor","law-to-religion","law-to-technology","law-to-trade","law-to-environment","law-to-health"]
+  },
+  "history_event_ledger": {
+    "event_fields": ["event-id","start","end","place","actors","institutions","cause","trigger","action","decision","resource-change","population-change","legal-change","territorial-change","economic-effect","cultural-effect","infrastructure-effect","consequence","memory","sources"],
+    "event_types": ["founding","election","revolution","war","treaty","migration","pandemic","invention","financial-crisis","bankruptcy","merger","schism","reform","law","court-decision","disaster","infrastructure-opening","scientific-discovery","religious-council","cultural-movement"],
+    "rule": "An event should connect backward to conditions and forward to consequences; do not store dates as isolated trivia."
+  },
+  "ownership_control_stack": {
+    "layers": ["legal-owner","beneficial-owner","voting-control","board-control","operator","licensor","lessee","creditor","debtor","regulator","supplier","customer"],
+    "asset_types": ["company","land","building","port","airport","pipeline","power-plant","grid","mine","forest","water-right","patent","software","brand","media-outlet","bank","fund"],
+    "control_tests": ["share-vote","board-appointment","contractual-control","concession","license","financing-condition","state-law","operational-control"],
+    "integrity": "Ownership, influence and use are different edges and must not be collapsed into one claim."
+  },
+  "spatial_temporal_stack": {
+    "space": ["global","continent","ocean","country","subnational-region","municipality","urban-area","rural-area","site","network-corridor","watershed","ecosystem"],
+    "time": ["prehistoric","ancient","medieval","early-modern","industrial","modern","contemporary","event-window","valid-from","valid-to","source-date","observation-date","last-verified"],
+    "rules": ["historical-state-must-not-be-read-as-current-state","current-state-must-not-be-backdated","territorial-boundaries-change","institutional-identities-change","ownership-changes","population-estimates-have-reference-years"]
+  },
+  "north_programme_deep_carving": {
+    "denmark": ["constitution","monarchy","parliament","public-finance","tax","labor","energy","wind","shipping","pharma","food","manufacturing","research","digital","defense","greenland","faroe-islands","EU","North-Sea"],
+    "greenland": ["autonomy","Kingdom-of-Denmark","Arctic","population","settlements","fisheries","minerals","energy","shipping","climate","research","infrastructure","airports","ports","telecommunications","foreign-relations","self-government"],
+    "canada": ["federalism","provinces","Arctic","Atlantic","Pacific","energy","minerals","agriculture","forestry","fisheries","manufacturing","technology","research","trade","US-integration","NATO","Indigenous-governance"],
+    "iceland": ["constitution","parliament","fisheries","geothermal","hydropower","aluminum","tourism","data-centers","Arctic","North-Atlantic","EU-relations","EEA","NATO","shipping","cables"],
+    "britain": ["UK-constitutional-system","England","Scotland","Wales","Northern-Ireland","devolution","financial-services","industry","energy","North-Sea","research","universities","defense","trade","EU-relations","Commonwealth","Ireland-relations"],
+    "ukraine": ["constitution","government","war","reconstruction","agriculture","metals","energy","electric-grid","rail","ports","Black-Sea","EU-integration","migration","defense-industry","research","digital-government"],
+    "turkey": ["presidency","parliament","Anatolia","Black-Sea","Mediterranean","Bosporus","manufacturing","automotive","textiles","construction","energy","pipelines","logistics","agriculture","defense-industry","EU-customs-union","NATO","Middle-East","Caucasus"],
+    "european-union": ["single-market","customs-union","competition","state-aid","cohesion","agriculture","trade","energy","climate","digital","research","industrial-policy","banking-union","capital-markets","euro-area","Schengen","migration","foreign-policy","security","standards"],
+    "network_corridors": ["Arctic-North-Atlantic","North-Sea","Baltic","North-Sea-Baltic","Atlantic-cables","European-rail","European-grid","gas-interconnectors","shipping","food","critical-minerals","semiconductor-supply","research-networks","labor-migration"],
+    "repair_logic": ["identify-bottleneck","measure-dependency","find-owner","find-obligation","find-alternative","price-capacity","fund-redundancy","build-maintenance","monitor-outcome"]
+  },
+  "high_value_cross_domain_couplings": [
+    {"source":"religion","target":"politics","edges":["influences","mobilizes","legitimizes","opposes","provides-institutions","shapes-law","forms-voters"]},
+    {"source":"religion","target":"culture","edges":["transmits-values","produces-art","shapes-calendar","shapes-food","shapes-family-practice","preserves-language","creates-memory"]},
+    {"source":"religion","target":"economy","edges":["owns-property","employs","charity","educates","pays-taxes-or-has-status","receives-donations","creates-demand"]},
+    {"source":"politics","target":"economy","edges":["taxes","spends","regulates","subsidizes","procures","licenses","nationalizes","privatizes","sanctions"]},
+    {"source":"politics","target":"culture","edges":["funds","regulates","educates","censors-or-protects","symbolizes","commemorates","shapes-curriculum"]},
+    {"source":"economy","target":"infrastructure","edges":["funds","builds","uses","maintains","depreciates","bottlenecks"]},
+    {"source":"energy","target":"economy","edges":["sets-input-cost","enables-production","creates-rents","drives-trade","affects-inflation"]},
+    {"source":"infrastructure","target":"geography","edges":["connects","concentrates","bypasses","creates-corridors","changes-land-use"]},
+    {"source":"migration","target":"religion","edges":["transmits","diversifies","relocalizes","creates-diaspora","changes-institutional-demand"]},
+    {"source":"migration","target":"labor","edges":["fills-skills","changes-wages","creates-remittances","changes-age-structure"]},
+    {"source":"technology","target":"culture","edges":["amplifies","changes-attention","creates-subcultures","accelerates-diffusion","archives"]},
+    {"source":"technology","target":"politics","edges":["changes-campaigning","changes-governance","changes-surveillance-capacity","changes-media","changes-public-participation"]},
+    {"source":"law","target":"ownership","edges":["defines-title","defines-control","defines-disclosure","enforces-contract","limits-concentration"]},
+    {"source":"ownership","target":"power","edges":["concentrates","distributes","constrains","funds","creates-dependency"]},
+    {"source":"war","target":"migration","edges":["displaces","kills","separates","reunites","changes-citizenship"]},
+    {"source":"war","target":"infrastructure","edges":["damages","redirects","militarizes","reconstructs"]},
+    {"source":"climate","target":"migration","edges":["changes-habitability","changes-food","changes-water","changes-insurance"]},
+    {"source":"health","target":"economy","edges":["changes-labor-supply","changes-productivity","changes-public-spending","changes-household-risk"]},
+    {"source":"education","target":"politics","edges":["forms-civic-capacity","changes-participation","changes-ideology-transmission"]},
+    {"source":"science","target":"industry","edges":["creates-knowledge","creates-processes","creates-products","reduces-cost","creates-new-markets"]}
+  ],
+  "relationship_vocabulary_expansion": [
+    "contains","part-of","member-of","located-in","operates-in","governs","regulates","funds","owns","controls","licenses","employs","educates","publishes","worships-at","affiliates-with","splits-from","merges-with","converts-to","migrates-to","descends-from","influences","responds-to","opposes","allies-with","depends-on","supplies","purchases-from","exports-to","imports-from","invests-in","borrows-from","lends-to","guarantees","insures","procures-from","uses","maintains","connects","transmits","amplifies","constrains","enables","causes","correlates-with","is-evidence-for","contradicts","interprets","commemorates","remembers","forgets","reconstructs","replaces","standardizes","localizes","centralizes","decentralizes"
+  ],
+  "evidence_model": {
+    "source_classes": ["primary-record","official-statistic","census","survey","administrative-register","law","court-record","financial-filing","company-report","scientific-publication","dataset","archive","museum-or-collection","academic-secondary","reputable-reporting","institutional-self-description","community-estimate","project-interpretation","creative-canon"],
+    "confidence": ["very-high","high","medium","low","contested","unknown"],
+    "epistemic_separation": ["observed","historical","textual","statistical","mathematical","comparative","interpretive","mythological","project-canonical","allegation","unverified"],
+    "required_fields": ["claim-id","subject","predicate","object","source","source-date","observation-date","last-verified","epistemic-status","confidence","notes"],
+    "contradiction_model": ["source-A-claim","source-B-claim","scope-difference","date-difference","method-difference","definition-difference","genuine-contradiction","unresolved"],
+    "rule": "Do not erase contradictions merely to make the graph look clean; represent why estimates differ."
+  },
+  "real_data_anchors": [
+    {"topic":"global-religion","anchor":"Pew Research Center 2025 global religious composition estimates","scope":"201 countries and territories; 2010 and 2020; seven broad categories; more than 2,700 censuses, surveys and population registers","use":"country-level religion baseline, population shares, migration and switching analysis","source":"Pew Research Center"},
+    {"topic":"Christianity","anchor":"Pew 2025 global Christian estimates","scope":"about 2.3 billion Christians and 28.8% of world population in 2020; Christian majority in 120 countries and territories","use":"global Christianity baseline, not denomination-level membership","source":"Pew Research Center"},
+    {"topic":"European-integration","anchor":"European Union institutional corpus","scope":"Treaties, legislation, institutions, single market, competition, trade, energy, climate, digital and research policy","use":"EU institutional and legal graph","source":"European Union"},
+    {"topic":"macroeconomy","anchor":"World Bank and IMF national accounts and macroeconomic datasets","scope":"GDP, population, inflation, fiscal and external indicators where available","use":"country economic time series","source":"World Bank; IMF"},
+    {"topic":"population","anchor":"UN demographic and population datasets","scope":"population, fertility, mortality, migration and age structure","use":"demographic stack and projections","source":"United Nations"},
+    {"topic":"labor","anchor":"ILOSTAT","scope":"employment, unemployment, labor-force participation, wages and working conditions","use":"labor-system graph","source":"International Labour Organization"},
+    {"topic":"energy","anchor":"IEA and energy statistical systems","scope":"energy balances, fuels, electricity, emissions and technology","use":"energy system graph","source":"International Energy Agency"},
+    {"topic":"trade","anchor":"UN Comtrade and WTO statistical resources","scope":"goods trade, tariff and trade-policy information","use":"value-chain and dependency graph","source":"United Nations; WTO"},
+    {"topic":"science","anchor":"OpenAlex and major bibliographic/patent datasets","scope":"publications, institutions, concepts, citations and research networks","use":"science and technology knowledge graph","source":"OpenAlex and public bibliographic sources"},
+    {"topic":"corporate","anchor":"company registries and public filings","scope":"legal entities, ownership disclosures, financial statements and directors where publicly available","use":"ownership and institutional graph","source":"national registries and securities regulators"}
+  ],
+  "canonical_tree_carving_targets": {
+    "source": ["origin","creation","being","possibility","word-or-expression","source-traditions","cosmology","sacred-texts","comparative-origin-models"],
+    "separation": ["difference","boundary","identity","otherness","inside-outside","subject-object","self-world","order-chaos","freedom-constraint","life-death-transition"],
+    "ladder": ["levels","rungs","thresholds","roles","education","initiation","pilgrimage","hierarchy","mobility","ascent","descent","return","north-south","east-west","mountain","spine","network-verticality"],
+    "door": ["threshold","choice","permission","access","translation","interface","attention","perception","embodiment","language","ritual","conversion","initiation","passage","liminality"],
+    "son": ["historical-Jesus","Christian-Christology","Son-of-Man-texts","Messianic-expectation","Thomas-tradition","twin-motif","Lion-of-Judah","death","crucifixion","resurrection","transformation","project-Son","Door-coupling","Ladder-coupling"],
+    "tree-of-life": ["root","soil","water","trunk","cambium","branch","leaf","flower","fruit","seed","pollination","growth","memory","inheritance","regeneration","ecosystem","forest","world-tree-comparisons"],
+    "tree-of-strife": ["competition","scarcity","fear","anger","extraction","debt","domination","corruption","alienation","fragmentation","stagnation","false-order","institutional-decay","ecological-depletion","repair","return"],
+    "potato": ["soil","seed","sprout","root","tuber","food","labor","farm","market","storage","bank","money","humor","body","matter","growth","decay","renewal","red-blue-polarity"],
+    "world": ["matter","biology","people","families","animals","places","nations","kingdoms","societies","institutions","law","religion","politics","culture","media","education","health","science","technology","economy","finance","energy","infrastructure","ecology","history","war","trade","ownership","obligations","alliances","migration","information"],
+    "north-programme": ["geography","demography","constitutions","public-finance","debt","tax","procurement","ownership","industry","energy","infrastructure","research","labor","technology","trade","food","health","education","housing","migration","strategic-dependencies","redundancy","repair","measurement"]
+  },
+  "project_symbolic_bridge": {
+    "status": "project-interpretation-only",
+    "spirit_side": ["meaning","belief","value","identity","ritual","memory","hope","fear","sacredness","ideology","narrative"],
+    "matter_side": ["people","population","land","buildings","money","food","energy","technology","labor","institutions","borders","infrastructure"],
+    "bridge_edges": ["belief-influences-practice","practice-produces-institution","institution-controls-resource","resource-supports-practice","migration-transmits-belief","law-constrains-practice","technology-amplifies-narrative","economic-change-alters-community","community-reproduces-identity","memory-shapes-politics","politics-shapes-law","law-shapes-material-life"],
+    "warning": "This bridge is a social-science and project-architecture relation. It is not evidence that spiritual entities are physical forces or that scientific physics validates the mythology."
+  },
+  "privacy_and_safety": {
+    "rules": ["country-or-region aggregation for sensitive populations","no private-person exact addresses","no inference of private belief from public association","no guilt-by-association","allegation remains allegation","no covert-operational intelligence mapping","no exploit instructions","public institutional mapping only"]
+  },
+  "next_promotion_targets": [
+    "country religion composition table",
+    "country political ideology table",
+    "Christian denomination comparison matrix",
+    "parallel Islam/Hindu/Buddhist/Jewish/Sikh/Jain/Bahai/Daoist/Shinto/Zoroastrian stacks",
+    "global event ledger",
+    "European country fiscal-energy-industry-labor stacks",
+    "company-to-asset ownership graph",
+    "infrastructure asset registry",
+    "migration corridor ledger",
+    "media-source evidence graph",
+    "science institution-publication-funding graph",
+    "law-to-policy-to-outcome chain",
+    "mythology comparison corpus with primary-text provenance"
+  ]
+}
