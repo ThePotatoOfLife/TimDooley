@@ -38,8 +38,11 @@ jobs:
       - name: Validate repository-wide integrity
         run: python scripts/validate_project_integrity.py
       - name: Audit backend ownership, duplicates and graph orphans
+        if: ${{ always() }}
         run: python scripts/audit_backend_coverage.py
       - name: Audit Atlas links and record coverage
+        if: ${{ always() }}
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
+        if: ${{ always() }}
         run: python scripts/audit_web.py
