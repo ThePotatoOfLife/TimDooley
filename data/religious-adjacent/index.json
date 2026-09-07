@@ -1,5 +1,5 @@
 {
-  "version":"1.1.0",
+  "version":"1.2.0",
   "updated":"2026-09-07",
   "name":"Religious-Adjacent Research Index",
   "purpose":"Machine-readable index for cults, mystery traditions, deity cults, occult orders, esoteric movements, Satanic movements and anti-religious currents that sit beside the main religion registry.",
@@ -14,8 +14,9 @@
   ],
   "deep_expansion_total":23,
   "relationship_graph":"data/religious-adjacent/relationships.json",
+  "external_graph_nodes":"data/religious-adjacent/graph-external-nodes.json",
   "audit":"data/religious-adjacent/integrity-audit.json",
   "base_categories":["ancient deity cult","mystery cult","state cult","esoteric religious-philosophical tradition","initiatory occult order","modern Satanism","new religious movement","anti-religious current"],
-  "coverage_status":"22 base records plus 23 dense field-by-field expansions/cluster records and an evidence-aware relationship graph.",
-  "integrity_rules":["Base records and deep expansions may overlap by id; deep expansions are enrichment layers, not duplicate canonical entities.","Ancient cults are not treated as continuous modern religions without evidence.","Self-identification, hostile labeling and scholarly classification remain separate.","Claims of secret lineage require documentary evidence.","Modern occult use of ancient symbols is not itself evidence of historical continuity.","Unknown or disputed material must be described explicitly rather than filled with invented facts.","Graph edges must either terminate at an expanded record or explicitly identify a documented external concept node."]
+  "coverage_status":"22 base records plus 23 dense field-by-field expansions/cluster records, 12 explicit external graph nodes and an evidence-aware relationship graph.",
+  "integrity_rules":["Base records and deep expansions may overlap by id; deep expansions are enrichment layers, not duplicate canonical entities.","Ancient cults are not treated as continuous modern religions without evidence.","Self-identification, hostile labeling and scholarly classification remain separate.","Claims of secret lineage require documentary evidence.","Modern occult use of ancient symbols is not itself evidence of historical continuity.","Unknown or disputed material must be described explicitly rather than filled with invented facts.","Graph edges must either terminate at an expanded record or explicitly identify a documented external concept node listed in graph-external-nodes.json."]
 }
