@@ -1,68 +1,11 @@
 {
-  "version": "1.0.2",
+  "version": "1.0.3",
   "updated": "2026-09-07",
   "purpose": "Canonical registry for full-text books stored as raw UTF-8 text so the Atlas can search words, phrases, passages and books directly.",
-  "search_policy": {
-    "raw_text_required": true,
-    "searchable": true,
-    "preserve_source_text": true,
-    "interpretation_is_separate": true,
-    "copyright_rule": "Only store full text when the selected edition is public domain or otherwise legally reusable."
-  },
+  "search_policy": {"raw_text_required": true,"searchable": true,"preserve_source_text": true,"interpretation_is_separate": true,"copyright_rule": "Only store full text when the selected edition is public domain or otherwise legally reusable."},
   "books": [
-    {
-      "id": "poetic-edda-bellows-1923",
-      "title": "The Poetic Edda",
-      "short_title": "Poetic Edda",
-      "tradition": "Norse",
-      "subtradition": "Old Norse / Eddic poetry",
-      "type": "primary-text-translation",
-      "author": "Anonymous / traditional Eddic poets",
-      "translator": "Henry Adams Bellows",
-      "publication_year": 1923,
-      "language": "English",
-      "source": "Project Gutenberg #73533",
-      "source_url": "https://www.gutenberg.org/ebooks/73533",
-      "raw_url": "https://www.gutenberg.org/cache/epub/73533/pg73533.txt",
-      "path": "books/norse-edda/poetic-edda-bellows-1923.txt",
-      "status": "imported-and-verified",
-      "repository_size_bytes": 977828,
-      "repository_blob_sha": "30289bca523f373d67edfcc3ace342f1c8c9c73f",
-      "notes": "Full Gutenberg plain-text edition. Includes introduction, notes, lays of the gods and lays of the heroes."
-    },
-    {
-      "id": "prose-edda-anderson-1897",
-      "title": "The Younger Edda; Also called Snorre's Edda, or the Prose Edda",
-      "short_title": "Prose Edda",
-      "tradition": "Norse",
-      "subtradition": "Old Norse / Snorri",
-      "type": "primary-text-translation",
-      "author": "Snorri Sturluson",
-      "translator": "Rasmus Björn Anderson",
-      "publication_year": 1897,
-      "language": "English",
-      "source": "Project Gutenberg #18947",
-      "source_url": "https://www.gutenberg.org/ebooks/18947",
-      "raw_url": "https://www.gutenberg.org/cache/epub/18947/pg18947.txt",
-      "path": "books/norse-edda/prose-edda-anderson.txt",
-      "status": "imported-and-verified",
-      "repository_size_bytes": 407617,
-      "repository_blob_sha": "c1bc90aa7d31b670b5b913e08bd0ccfd9792022b",
-      "notes": "Full Gutenberg plain-text edition covering the Foreword, Gylfaginning, Skaldskaparmal, Hattatal and associated material in this edition."
-    }
+    {"id":"poetic-edda-bellows-1923","title":"The Poetic Edda","short_title":"Poetic Edda","tradition":"Norse","subtradition":"Old Norse / Eddic poetry","type":"primary-text-translation","author":"Anonymous / traditional Eddic poets","translator":"Henry Adams Bellows","publication_year":1923,"language":"English","source":"Project Gutenberg #73533","source_url":"https://www.gutenberg.org/ebooks/73533","raw_url":"https://www.gutenberg.org/cache/epub/73533/pg73533.txt","path":"books/norse-edda/poetic-edda-bellows-1923.txt","reader":"books/norse-edda/reader.html","status":"imported-and-verified","repository_size_bytes":977828,"repository_blob_sha":"30289bca523f373d67edfcc3ace342f1c8c9c73f"},
+    {"id":"prose-edda-anderson-1897","title":"The Younger Edda; Also called Snorre's Edda, or the Prose Edda","short_title":"Prose Edda","tradition":"Norse","subtradition":"Old Norse / Snorri","type":"primary-text-translation","author":"Snorri Sturluson","translator":"Rasmus Björn Anderson","publication_year":1897,"language":"English","source":"Project Gutenberg #18947","source_url":"https://www.gutenberg.org/ebooks/18947","raw_url":"https://www.gutenberg.org/cache/epub/18947/pg18947.txt","path":"books/norse-edda/prose-edda-anderson.txt","reader":"books/norse-edda/reader.html","status":"imported-and-verified","repository_size_bytes":407617,"repository_blob_sha":"c1bc90aa7d31b670b5b913e08bd0ccfd9792022b"}
   ],
-  "future_book_families": [
-    "Bible",
-    "Apocrypha",
-    "Quran",
-    "Upanishads",
-    "Bhagavad Gita",
-    "Tripitaka",
-    "Avesta",
-    "Popol Vuh",
-    "Epic of Gilgamesh",
-    "Iliad and Odyssey",
-    "Finnish Kalevala",
-    "Sagas and medieval Norse literature"
-  ]
+  "future_book_families":["Bible","Apocrypha","Quran","Upanishads","Bhagavad Gita","Tripitaka","Avesta","Popol Vuh","Epic of Gilgamesh","Iliad and Odyssey","Finnish Kalevala","Sagas and medieval Norse literature"]
 }
