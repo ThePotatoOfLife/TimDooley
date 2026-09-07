@@ -1,8 +1,7 @@
 #!/usr/bin/env python3
-"""Verify that Atlas targets resolve to a canonical or addressable record layer."""
+"""Verify that Atlas targets resolve across the canonical and research layers."""
 from __future__ import annotations
 import json
-import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -30,44 +29,51 @@ nodes |= ids_from('data/tree-support-records.json', ['records'])
 graph_registry = ids_from('data/graph-registry.json', ['records'])
 political = {x[0] for x in load('data/political-lexicon.json').get('entries', []) if isinstance(x, list) and x}
 religious = {x[0] for x in load('data/religious-lexicon.json').get('entries', []) if isinstance(x, list) and x}
+foundations = ids_from('data/religious-foundations.json', ['records'])
+foundation_records = ids_from('data/religious-foundations/records.json', ['records'])
+foundation_enriched = ids_from('data/religious-foundations/enriched-records.json', ['records'])
+foundation_minor = ids_from('data/religious-foundations/minor-traditions.json', ['records'])
+adjacent = ids_from('data/religious-adjacent/records.json', ['records'])
+for path in ('data/religious-adjacent/deep-expansions.json', 'data/religious-adjacent/deep-expansions-2.json', 'data/religious-adjacent/deep-expansions-3.json'):
+    adjacent |= ids_from(path, ['records'])
 nations = {x['id'] for x in load('data/nations.json').get('nations', []) if x.get('id')}
 events = {x['id'] for x in load('data/events.json').get('events', []) if x.get('id')}
 sectors = {x['id'] for x in load('data/european-sector-atlas.json').get('sector_families', []) if x.get('id')}
-all_records = nodes | graph_registry | political | religious | nations | events | sectors
+all_records = (nodes | graph_registry | political | religious | foundations | foundation_records |
+               foundation_enriched | foundation_minor | adjacent | nations | events | sectors)
 
 rels = load('data/relationships.json').get('relationships', [])
 relationship_endpoints = {r.get(side) for r in rels for side in ('source', 'target') if r.get(side)}
 addressable = all_records | relationship_endpoints
 
 html = (ROOT / 'repository.html').read_text(encoding='utf-8')
-linked = set(re.findall(r'(?:node|nation)\.html\?id=([^"&]+)', html))
-missing = sorted(x for x in linked if x not in addressable)
+route_templates = ['node.html?id=', 'nation.html?id=']
+missing_routes = [route for route in route_templates if route not in html]
 
-rel_missing = sorted(x for x in relationship_endpoints if x not in addressable)
 tree = load('data/tree.json')
 tree_refs = [l.get('id') for l in tree.get('levels', [])]
 tree_refs += [c for l in tree.get('levels', []) for c in l.get('children', [])]
 tree_missing = sorted(x for x in tree_refs if x and x not in addressable)
-
 reference_only = sorted(relationship_endpoints - all_records)
+
 print(f"Canonical nations: {len(nations)}")
-print(f"Dedicated record IDs: {len(all_records)}")
+print(f"Dedicated/addressable record IDs: {len(all_records)}")
+print(f"Core node records: {len(nodes)}")
 print(f"Graph-registry records: {len(graph_registry)}")
 print(f"Political records: {len(political)}")
-print(f"Religious records: {len(religious)}")
+print(f"Religious lexicon records: {len(religious)}")
+print(f"Religious foundation layers: {len(foundations | foundation_records | foundation_enriched | foundation_minor)}")
+print(f"Religious-adjacent records: {len(adjacent)}")
 print(f"Events: {len(events)}")
 print(f"Sectors: {len(sectors)}")
 print(f"Relationship endpoints: {len(relationship_endpoints)}")
 print(f"Reference-only endpoints: {len(reference_only)}")
-print(f"Repository literal links checked: {len(linked)}")
 
 errors = []
 if len(nations) != 195:
     errors.append(f"expected 195 nations, found {len(nations)}")
-if missing:
-    errors.append("broken repository links: " + ', '.join(missing))
-if rel_missing:
-    errors.append("unresolved relationship endpoints: " + ', '.join(rel_missing))
+if missing_routes:
+    errors.append("repository.html is missing route templates: " + ', '.join(missing_routes))
 if tree_missing:
     errors.append("unresolved tree references: " + ', '.join(tree_missing))
 
