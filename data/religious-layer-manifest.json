@@ -1,11 +1,16 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-07",
   "name":"Religious Layer Manifest",
-  "purpose":"Single navigation manifest for the expanded religious knowledge graph.",
+  "purpose":"Single navigation manifest for the expanded religious knowledge graph, including main traditions, adjacent cultic/esoteric traditions and project-defined Potatoism.",
   "architecture":"data/blueprints/religious-architecture.json",
   "foundation_blueprint":"data/blueprints/religious-foundation.json",
   "foundation_records":"data/religious-foundations.json",
+  "adjacent_blueprint":"data/blueprints/religious-adjacent-master.json",
+  "adjacent_mystery_blueprint":"data/blueprints/mystery-cult-master.json",
+  "adjacent_occult_blueprint":"data/blueprints/occult-order-master.json",
+  "adjacent_records":"data/religious-adjacent/records.json",
+  "adjacent_deep_expansions":["data/religious-adjacent/deep-expansions.json","data/religious-adjacent/deep-expansions-2.json"],
   "lexicon":"data/religious-lexicon.json",
   "comparative_library":"data/religious-comparative-library.json",
   "potatoism":"data/potatoism-religion.json",
@@ -13,7 +18,8 @@
   "pages":{"record":"belief.html?id=<slug>","compass":"political-compass.html"},
   "vertical_tree":["field","substrate","foundation","seed","sprout","formation","trunk","branch","present"],
   "cross_sections":["ultimate_reality","cosmology","anthropology","problem","salvation_or_liberation","ethics","law","texts","interpretation","ritual","leadership","organization","population","sacred_space","material_base","state","politics","culture","transmission","migration","diaspora","technology","media","ecology","memory","evidence"],
-  "new_relationships":["foundation-in-field","foundation-emerges-from-substrate","foundation-has-seed","seed-produces-sprout","sprout-forms-tradition","tradition-has-trunk","tradition-has-branch","tradition-migrates","tradition-reinterprets-itself","tradition-interacts-with-tradition"],
+  "adjacent_specializations":["mystery_cult","deity_cult","state_cult","esoteric_tradition","occult_order","modern_satanism","anti_religious_current","secret_or_initiatory_society"],
+  "new_relationships":["foundation-in-field","foundation-emerges-from-substrate","foundation-has-seed","seed-produces-sprout","sprout-forms-tradition","tradition-has-trunk","tradition-has-branch","tradition-migrates","tradition-reinterprets-itself","tradition-interacts-with-tradition","cult-of-deity","mystery-cult-of","revival-of","reinterpretation-of","reacts-against","influenced-by","syncretizes-with","initiatory-order-of","schism-from","organizational-successor-to","text-preserves","site-attested-by","modern-adaptation-of","anti-religious-response-to"],
   "potatoism_note":"Potatoism is a project-defined contemporary religious/mythic system. Its 2020-12-25 birth marker is treated as a declared project-history seed; subsequent concepts are represented as a dated growth process where evidence permits.",
   "integrity":"Empirical history, traditional self-description, comparative interpretation and project-symbolic material remain explicitly distinguishable."
 }
