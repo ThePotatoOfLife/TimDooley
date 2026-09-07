@@ -1,0 +1,18 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map climate, ecosystems, environmental pressures, resource use, emissions, adaptation, governance and restoration as connected systems.","entity":"environment_climate_system",
+  "record_schema":{
+    "identity":["environment_id","system_name","ecosystem_or_climate_type","geography","jurisdiction","period"],
+    "physical_system":["temperature","precipitation","hydrology","soil","coast","ocean","ice","vegetation","species","seasonality"],
+    "climate":["baseline","trend","extreme_events","scenario","warming_level","sea_level","drought","flood","heat","storm","uncertainty"],
+    "pressures":["emissions","land_use","deforestation","pollution","extraction","urbanization","agriculture","fishing","invasive_species","fragmentation"],
+    "resources":["water","forest","soil","fisheries","minerals","energy","agricultural_land","biodiversity","ecosystem_services"],
+    "human_system":["population","settlement","industry","agriculture","infrastructure","health","food_security","water_security","economic_exposure"],
+    "governance":["protected_area","environmental_law","permit","monitoring","enforcement","international_agreement","local_management","indigenous_stewardship","restoration_program"],
+    "adaptation":["risk_assessment","early_warning","flood_protection","drought_management","coastal_defence","heat_plan","ecosystem_adaptation","relocation","insurance"],
+    "mitigation":["emissions_source","carbon_sink","renewable_energy","efficiency","electrification","industrial_change","transport_change","land_sink","carbon_removal"],
+    "evidence":["monitoring_station","satellite","inventory","scientific_assessment","government_statistics","environmental_impact_assessment","field_study","retrieved_at","confidence"]
+  },
+  "derived_measures":["emissions_per_capita","emissions_per_output","land_cover_change","water_stress","species_trend","protected_share","climate_exposure","adaptation_gap"],
+  "relationship_templates":["industry-emits-into-system","ecosystem-supports-population","country-governs-ecosystem","climate-hazard-affects-infrastructure","resource-use-affects-ecosystem","agreement-protects-system","restoration-improves-condition"],
+  "integrity_rules":["Observed climate trends and model projections must remain distinct.","Emissions require a defined scope and accounting standard.","Environmental condition is multidimensional and cannot be reduced to one score without methodology.","Protected status does not prove effective protection.","Resource extraction and ecological impact require spatial and temporal boundaries.","Uncertainty is retained rather than suppressed."]
+}
