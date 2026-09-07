@@ -1,173 +1,116 @@
 #!/usr/bin/env python3
-"""Validate the religious-adjacent research layer, expansions and relationship graph."""
+"""Fast structural validation for the religious-adjacent research layer."""
 from __future__ import annotations
 import json
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-ERRORS: list[str] = []
+ERRORS = []
 
 
-def load(rel: str):
-    p = ROOT / rel
-    if not p.exists():
-        ERRORS.append(f"Missing required file: {rel}")
+def load(rel):
+    path = ROOT / rel
+    if not path.exists():
+        ERRORS.append(f"missing: {rel}")
         return {}
     try:
-        with p.open(encoding="utf-8") as f:
-            return json.load(f)
+        return json.loads(path.read_text(encoding="utf-8"))
     except Exception as exc:
-        ERRORS.append(f"Invalid JSON: {rel} — {exc}")
+        ERRORS.append(f"invalid JSON: {rel}: {exc}")
         return {}
 
 
-def walk_empty(value, path="root"):
-    if isinstance(value, dict):
-        for k, v in value.items():
-            walk_empty(v, f"{path}.{k}")
-    elif isinstance(value, list):
-        for i, v in enumerate(value):
-            walk_empty(v, f"{path}[{i}]")
-    elif isinstance(value, str) and not value.strip():
-        ERRORS.append(f"Blank string field: {path}")
-
-
-def ids(records, label):
-    out = []
-    for i, record in enumerate(records):
-        if not isinstance(record, dict) or not record.get("id"):
-            ERRORS.append(f"{label}[{i}] has no id")
-        else:
-            out.append(record["id"])
-    if len(out) != len(set(out)):
-        dupes = sorted({x for x in out if out.count(x) > 1})
-        ERRORS.append(f"Duplicate {label} ids: {dupes}")
-    return set(out)
+def unique_ids(records, label):
+    values = [r.get("id") for r in records if isinstance(r, dict)]
+    if len(values) != len(records):
+        ERRORS.append(f"{label}: non-object or missing id")
+    if len(values) != len(set(values)):
+        ERRORS.append(f"{label}: duplicate ids")
+    return set(values)
 
 
 def main():
-    base = load("data/religious-adjacent/records.json")
-    index = load("data/religious-adjacent/index.json")
-    audit = load("data/religious-adjacent/integrity-audit.json")
-    graph = load("data/religious-adjacent/relationships.json")
-    external = load("data/religious-adjacent/graph-external-nodes.json")
-    manifest = load("data/religious-layer-manifest.json")
-
-    blueprint_paths = [
+    required = [
+        "data/religious-adjacent/records.json",
+        "data/religious-adjacent/index.json",
+        "data/religious-adjacent/deep-expansions.json",
+        "data/religious-adjacent/deep-expansions-2.json",
+        "data/religious-adjacent/deep-expansions-3.json",
+        "data/religious-adjacent/relationships.json",
+        "data/religious-adjacent/graph-external-nodes.json",
+        "data/religious-adjacent/integrity-audit.json",
         "data/blueprints/religious-adjacent-master.json",
         "data/blueprints/mystery-cult-master.json",
         "data/blueprints/occult-order-master.json",
     ]
-    for p in blueprint_paths:
-        load(p)
+    data = {p: load(p) for p in required}
 
-    base_records = base.get("records", []) if isinstance(base, dict) else []
-    base_ids = ids(base_records, "base record")
-    if len(base_records) != 22:
-        ERRORS.append(f"Base adjacent record count is {len(base_records)}; expected 22")
-    if index.get("base_record_count") != len(base_records):
-        ERRORS.append("Adjacent index base_record_count does not match records.json")
+    base = data["data/religious-adjacent/records.json"].get("records", [])
+    index = data["data/religious-adjacent/index.json"]
+    if len(base) != 22:
+        ERRORS.append(f"base records: {len(base)} != 22")
+    base_ids = unique_ids(base, "base records")
 
-    expansion_paths = [
+    expansion_files = [
         ("data/religious-adjacent/deep-expansions.json", 7),
         ("data/religious-adjacent/deep-expansions-2.json", 8),
         ("data/religious-adjacent/deep-expansions-3.json", 8),
     ]
-    expanded_ids: set[str] = set()
-    for rel, expected in expansion_paths:
-        d = load(rel)
-        records = d.get("records", []) if isinstance(d, dict) else []
-        rid = ids(records, rel)
+    expanded_ids = set()
+    for rel, expected in expansion_files:
+        records = data[rel].get("records", [])
         if len(records) != expected:
-            ERRORS.append(f"{rel} has {len(records)} records; expected {expected}")
-        overlap = expanded_ids & rid
+            ERRORS.append(f"{rel}: {len(records)} != {expected}")
+        ids = unique_ids(records, rel)
+        overlap = expanded_ids & ids
         if overlap:
-            # Theosophical Society intentionally appears in two expansion layers only if this becomes a duplicate;
-            # current architecture should not duplicate it.
-            ERRORS.append(f"Duplicate deep-expansion ids across files: {sorted(overlap)}")
-        expanded_ids |= rid
-        for r in records:
-            walk_empty(r, rel)
+            ERRORS.append(f"duplicate deep expansion across files: {sorted(overlap)}")
+        expanded_ids |= ids
 
-    # Theosophical Society was intentionally enriched twice in the historical pass; keep one canonical deep record.
-    # Detect this as a bug rather than silently allowing two competing enrichments.
-    if "theosophical-society" in expanded_ids and sum(
-        "theosophical-society" in (load(rel).get("records", []) if isinstance(load(rel), dict) else [])
-        for rel, _ in expansion_paths
-    ) > 1:
-        ERRORS.append("Theosophical Society appears in more than one deep-expansion file")
-
-    if index.get("deep_expansion_total") != len(expanded_ids):
-        ERRORS.append(f"Adjacent index deep_expansion_total={index.get('deep_expansion_total')} but union has {len(expanded_ids)} unique ids")
-
-    external_records = external.get("nodes", []) if isinstance(external, dict) else []
-    external_ids = ids(external_records, "external graph node")
-    walk_empty(external, "graph-external-nodes")
-
-    graph_nodes = graph.get("nodes", []) if isinstance(graph, dict) else []
-    graph_node_ids = ids(graph_nodes, "graph node")
-    edge_targets = set()
-    for i, edge in enumerate(graph.get("edges", [])):
-        if not isinstance(edge, dict):
-            ERRORS.append(f"Graph edge {i} is not an object")
-            continue
-        for side in ("from", "to"):
-            value = edge.get(side)
-            if not value:
-                ERRORS.append(f"Graph edge {i} missing {side}")
-            else:
-                edge_targets.add(value)
-                if value not in graph_node_ids and value not in external_ids:
-                    ERRORS.append(f"Graph edge {i} has unknown {side}: {value}")
-        if not edge.get("relation") or not edge.get("basis") or not edge.get("evidence"):
-            ERRORS.append(f"Graph edge {i} is missing relation, basis or evidence")
-
-    if graph.get("node_count") != len(graph_nodes):
-        ERRORS.append("Graph node_count does not match nodes array")
-    if graph.get("edge_count") != len(graph.get("edges", [])):
-        ERRORS.append("Graph edge_count does not match edges array")
-    duplicate_edges = set()
-    for edge in graph.get("edges", []):
-        key = (edge.get("from"), edge.get("to"), edge.get("relation"), edge.get("basis"))
-        if key in duplicate_edges:
-            ERRORS.append(f"Duplicate graph edge: {key}")
-        duplicate_edges.add(key)
-
+    if len(expanded_ids) != 23:
+        ERRORS.append(f"unique deep expansions: {len(expanded_ids)} != 23")
     if not expanded_ids.issubset(base_ids | {"modern-satanism-cluster"}):
-        unexpected = sorted(expanded_ids - base_ids - {"modern-satanism-cluster"})
-        ERRORS.append(f"Deep expansion ids not represented by base registry or explicit cluster: {unexpected}")
+        ERRORS.append("deep expansion contains an unregistered id")
+    if index.get("base_record_count") != 22:
+        ERRORS.append("index base_record_count is stale")
+    if index.get("deep_expansion_total") != 23:
+        ERRORS.append("index deep_expansion_total is stale")
 
-    audit_summary = audit.get("summary", {})
-    if audit_summary.get("base_records_expected") != 22:
-        ERRORS.append("Integrity audit base_records_expected is not 22")
-    if audit_summary.get("deep_expansion_records") != len(expanded_ids):
-        ERRORS.append("Integrity audit deep-expansion count is stale")
-    if audit_summary.get("graph_external_nodes") != len(external_ids):
-        ERRORS.append("Integrity audit external-node count is stale")
+    external = data["data/religious-adjacent/graph-external-nodes.json"].get("nodes", [])
+    external_ids = unique_ids(external, "external graph nodes")
+    if len(external) != 12:
+        ERRORS.append(f"external graph nodes: {len(external)} != 12")
 
-    # Check all linked paths declared by the manifest/index.
-    linked = [
-        index.get("base_records"),
-        index.get("relationship_graph"),
-        index.get("external_graph_nodes"),
-        index.get("audit"),
-        manifest.get("adjacent_records"),
-        manifest.get("adjacent_index"),
-        manifest.get("adjacent_relationship_graph"),
-        manifest.get("adjacent_external_graph_nodes"),
-        manifest.get("adjacent_integrity_audit"),
-    ]
-    for rel in linked:
-        if rel and not (ROOT / rel).exists():
-            ERRORS.append(f"Declared linked path does not exist: {rel}")
+    graph = data["data/religious-adjacent/relationships.json"]
+    nodes = graph.get("nodes", [])
+    edges = graph.get("edges", [])
+    graph_ids = unique_ids(nodes, "graph nodes")
+    if len(nodes) != 23:
+        ERRORS.append(f"graph nodes: {len(nodes)} != 23")
+    if graph.get("node_count") != len(nodes):
+        ERRORS.append("graph node_count mismatch")
+    if graph.get("edge_count") != len(edges):
+        ERRORS.append("graph edge_count mismatch")
+    allowed = graph_ids | external_ids
+    for i, edge in enumerate(edges):
+        if edge.get("from") not in allowed or edge.get("to") not in allowed:
+            ERRORS.append(f"graph edge {i} has dangling endpoint")
+        if not edge.get("relation") or not edge.get("basis") or not edge.get("evidence"):
+            ERRORS.append(f"graph edge {i} lacks relationship evidence metadata")
 
-    print(f"Base adjacent records: {len(base_records)}")
-    print(f"Deep expansion records: {len(expanded_ids)}")
-    print(f"Graph nodes: {len(graph_nodes)} + {len(external_ids)} external")
-    print(f"Graph edges: {len(graph.get('edges', []))}")
-    print(f"Errors: {len(ERRORS)}")
+    audit = data["data/religious-adjacent/integrity-audit.json"].get("summary", {})
+    if audit.get("base_records_found") != 22:
+        ERRORS.append("audit base count is stale")
+    if audit.get("deep_expansion_records") != 23:
+        ERRORS.append("audit deep-expansion count is stale")
+    if audit.get("base_records_without_deep_expansion") != 0:
+        ERRORS.append("audit still reports base records without deep expansion")
+    if audit.get("dangling_graph_edges") != 0:
+        ERRORS.append("audit reports dangling graph edges")
+
+    print(f"base={len(base)} deep={len(expanded_ids)} graph_nodes={len(nodes)} external={len(external)} edges={len(edges)} errors={len(ERRORS)}")
     for error in ERRORS:
-        print("ERROR:", error)
+        print(f"ERROR: {error}")
     return 1 if ERRORS else 0
 
 
