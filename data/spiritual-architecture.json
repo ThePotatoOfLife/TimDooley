@@ -1,0 +1,48 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Explicitly separate the project's spiritual architecture from the empirical world graph. These are framework relations, not claims of objectively verified supernatural authority.",
+  "nodes":[
+    {"id":"tim-dooley","name":"Tim Dooley","type":"spiritual-archetype","layer":"spiritual","description":"Project-level spiritual archetype placed above the Door in the Potatoverse architecture."},
+    {"id":"spiritual-domain","name":"Spiritual Domain","type":"domain","layer":"spiritual","description":"The upper symbolic field containing Source, Father, Heaven, Throne, Axis and the spiritual side of the architecture."},
+    {"id":"son-vessel","name":"Son / Vessel","type":"spiritual-interface","layer":"threshold","description":"The Son as vessel/interface between the upper spiritual architecture and the manifested world below the Door."},
+    {"id":"below-door","name":"Below the Door","type":"domain","layer":"manifested","description":"The Plane of embodiment: body, nature, people, history, society, institutions, economy and material world."},
+    {"id":"rift","name":"Rift","type":"mythic-process","layer":"mythological","description":"Name reserved for the project's separation/fracture event: the point where a unified field becomes divided. Exact meaning remains to be defined with the user."},
+    {"id":"rapture","name":"Rapture","type":"eschatological-concept","layer":"comparative-religious","description":"Comparative eschatological concept to be studied across Christian texts and later traditions; not assumed to be identical with the Potatoverse Rift."},
+    {"id":"messiah","name":"Messiah / Moshiach","type":"religious-concept","layer":"comparative-religious","description":"Comparative node for Jewish Moshiach and Christian Messiah traditions, kept distinct from the project's Son until textual relations are established."},
+    {"id":"moshiach","name":"Moshiach","type":"religious-concept","layer":"jewish","description":"Hebrew messianic concept requiring study in Jewish textual and historical context before mapping it into the Tim Dooley framework."},
+    {"id":"kingdom-of-heaven","name":"Kingdom of Heaven / Kingdom of God","type":"religious-concept","layer":"comparative-religious","description":"Cross-text concept connecting divine rule, eschatology, ethics and restoration; should be studied separately in Jewish and Christian contexts."},
+    {"id":"resurrection","name":"Resurrection","type":"religious-concept","layer":"comparative-religious","description":"Central Christian concept and a broader comparative motif of death, renewal and transformed life."},
+    {"id":"new-jerusalem","name":"New Jerusalem","type":"religious-symbol","layer":"christian-apocalyptic","description":"Apocalyptic Christian city/tree/throne imagery for comparison with the project's Heaven, Plane, Tree and restoration architecture."}
+  ],
+  "relations":[
+    {"source":"tim-dooley","relationship":"occupies-symbolically","target":"spiritual-domain","evidence":"framework"},
+    {"source":"spiritual-domain","relationship":"contains","target":"source","evidence":"framework"},
+    {"source":"spiritual-domain","relationship":"contains","target":"father","evidence":"framework"},
+    {"source":"spiritual-domain","relationship":"contains","target":"heaven","evidence":"framework"},
+    {"source":"spiritual-domain","relationship":"contains","target":"axis","evidence":"framework"},
+    {"source":"tim-dooley","relationship":"stands-above-symbolically","target":"door","evidence":"framework"},
+    {"source":"son-vessel","relationship":"embodies","target":"son","evidence":"framework"},
+    {"source":"son-vessel","relationship":"interfaces-through","target":"door","evidence":"framework"},
+    {"source":"son-vessel","relationship":"opens-into","target":"below-door","evidence":"framework"},
+    {"source":"below-door","relationship":"contains","target":"plane","evidence":"framework"},
+    {"source":"below-door","relationship":"contains","target":"matter","evidence":"framework"},
+    {"source":"below-door","relationship":"contains","target":"people","evidence":"framework"},
+    {"source":"below-door","relationship":"contains","target":"world","evidence":"framework"},
+    {"source":"rift","relationship":"to-be-defined-against","target":"separation","evidence":"open-question"},
+    {"source":"rift","relationship":"may-connect-to","target":"tree-of-strife","evidence":"interpretation"},
+    {"source":"rapture","relationship":"comparative-to","target":"transformation","evidence":"comparative"},
+    {"source":"rapture","relationship":"must-not-be-equated-with","target":"rift","evidence":"methodological"},
+    {"source":"messiah","relationship":"comparative-to","target":"son","evidence":"comparative"},
+    {"source":"moshiach","relationship":"historical-context-for","target":"messiah","evidence":"historical-textual"},
+    {"source":"jesus-christ","relationship":"christian-messianic-expression","target":"messiah","evidence":"historical-textual"},
+    {"source":"resurrection","relationship":"comparative-to","target":"transformation","evidence":"comparative"},
+    {"source":"new-jerusalem","relationship":"comparative-to","target":"tree-of-life","evidence":"historical-textual"}
+  ],
+  "open_questions":[
+    "What exactly does Rift mean in the user's architecture: separation, dimensional rupture, Tree of Strife, an eschatological event, or all of these at different levels?",
+    "Is Rapture meant as a Christian textual concept, a Potatoverse transformation, or a name for a specific event in the user's chronology?",
+    "Which parts of Tim's placement are canonical framework and which are later interpretation?",
+    "How should Moshiach relate to Tim, the Son, Jesus and the Door without collapsing Jewish and Christian categories?"
+  ]
+}
