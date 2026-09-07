@@ -45,19 +45,26 @@ def main()->int:
         rel=value if isinstance(value,str) else value.get("path","") if isinstance(value,dict) else ""
         if not rel: ERRORS.append(f"Backend endpoint has no path: {key}"); continue
         if check_exists(rel,key in required) and rel.endswith(".json"): load_json(ROOT/rel)
-    nations=load_json(ROOT/"data/nations.json") or {}; country_index=load_json(ROOT/"data/countries/index.json") or {}; country_repair=load_json(ROOT/"data/countries/democratic-republic-of-the-congo.json") or {}; enrichment_index=load_json(ROOT/"data/country-enrichment-index.json") or {}; country_nodes=load_json(ROOT/"data/country-nodes.json") or {}; graph_registry=load_json(ROOT/"data/graph-registry.json") or {}; relationships=load_json(ROOT/"data/relationships.json") or {}; nodes=load_json(ROOT/"data/nodes.json") or {}; children=load_json(ROOT/"data/tree-child-records.json") or {}; tree=load_json(ROOT/"data/tree.json") or {}
-    nation_rows=nations.get("nations",[]); country_rows=country_index.get("countries",[]); repair_id=country_repair.get("id"); base_country_rows=[x for x in country_rows if x.get("id")!=repair_id]; enriched_ids=enrichment_index.get("enriched_ids",[]); country_node_rows=country_nodes.get("nodes",[])
+    for rel in ["data/country-enrichment-batch-2026-09-07-02.json","data/country-nodes-batch-2026-09-07-02.json"]: check_exists(rel)
+    nations=load_json(ROOT/"data/nations.json") or {}; country_index=load_json(ROOT/"data/countries/index.json") or {}; country_repair=load_json(ROOT/"data/countries/democratic-republic-of-the-congo.json") or {}; enrichment_index=load_json(ROOT/"data/country-enrichment-index.json") or {}; enrichment_batch=load_json(ROOT/"data/country-enrichment-batch-2026-09-07-02.json") or {}; country_nodes=load_json(ROOT/"data/country-nodes.json") or {}; node_batch=load_json(ROOT/"data/country-nodes-batch-2026-09-07-02.json") or {}; graph_registry=load_json(ROOT/"data/graph-registry.json") or {}; relationships=load_json(ROOT/"data/relationships.json") or {}; nodes=load_json(ROOT/"data/nodes.json") or {}; children=load_json(ROOT/"data/tree-child-records.json") or {}; tree=load_json(ROOT/"data/tree.json") or {}
+    nation_rows=nations.get("nations",[]); country_rows=country_index.get("countries",[]); repair_id=country_repair.get("id"); base_country_rows=[x for x in country_rows if x.get("id")!=repair_id]
+    base_enriched_ids=set(enrichment_index.get("enriched_ids",[])); batch_enriched_ids=set(enrichment_batch.get("added_ids",[])); enriched_ids=base_enriched_ids|batch_enriched_ids
+    base_country_node_rows=country_nodes.get("nodes",[]); batch_node_rows=node_batch.get("nodes",[]); country_node_rows=base_country_node_rows+batch_node_rows
     if len(nation_rows)!=195: ERRORS.append(f"Canonical nation directory has {len(nation_rows)} records; expected 195")
     if len(base_country_rows)+(1 if repair_id else 0)!=195: ERRORS.append(f"Country layer has {len(base_country_rows)} base records + {1 if repair_id else 0} repair records; expected 195")
     nation_ids={x.get("id") for x in nation_rows}; country_ids={x.get("id") for x in base_country_rows}|({repair_id} if repair_id else set())
     if nation_ids!=country_ids: ERRORS.append("Canonical nation directory and repaired country layer do not contain the same country IDs")
     for cid in sorted(country_ids):
         if not (ROOT/"data/countries"/f"{cid}.json").exists(): ERRORS.append(f"Missing canonical country record: data/countries/{cid}.json")
-    enriched_set=set(enriched_ids)
-    if enriched_set-country_ids: ERRORS.append(f"Enrichment index contains unknown country IDs: {sorted(enriched_set-country_ids)}")
+    if batch_enriched_ids!=set(enrichment_batch.get("added_ids",[])): ERRORS.append("Country enrichment batch ID manifest is internally inconsistent")
+    if enrichment_batch.get("added_count")!=len(batch_enriched_ids): ERRORS.append("Country enrichment batch added_count does not equal its ID count")
+    if enrichment_batch.get("enriched_count")!=len(enriched_ids): ERRORS.append("Country enrichment batch effective enriched_count is incorrect")
+    if batch_enriched_ids & base_enriched_ids: ERRORS.append(f"Country enrichment batch duplicates existing overlays: {sorted(batch_enriched_ids & base_enriched_ids)}")
+    if enriched_ids-country_ids: ERRORS.append(f"Enrichment index contains unknown country IDs: {sorted(enriched_ids-country_ids)}")
     node_country_ids={x.get("country_id") for x in country_node_rows}
-    if node_country_ids!=enriched_set: ERRORS.append("Country graph nodes and enrichment index are out of sync")
-    for cid in sorted(enriched_set):
+    if node_country_ids!=enriched_ids: ERRORS.append("Combined country graph nodes and enrichment manifests are out of sync")
+    if len(batch_node_rows)!=len(batch_enriched_ids): ERRORS.append("Second country node batch count does not match second enrichment batch")
+    for cid in sorted(enriched_ids):
         if not (ROOT/"data/countries"/f"{cid}-enrichment.json").exists(): ERRORS.append(f"Enrichment index points to missing overlay: {cid}-enrichment.json")
     graph_ids=set(x.get("id") for x in nodes.get("nodes",[]) if x.get("id")); graph_ids.update(x.get("id") for x in children.get("records",[]) if x.get("id")); graph_ids.update(x.get("id") for x in country_node_rows if x.get("id")); graph_ids.update(x.get("id") for x in graph_registry.get("records",[]) if x.get("id")); graph_ids.update(country_ids); graph_ids.update(nation_ids)
     tree_ids=set()
@@ -79,10 +86,12 @@ def main()->int:
             try: target.relative_to(ROOT.resolve())
             except ValueError: continue
             if not target.exists(): WARNINGS.append(f"Local HTML reference does not exist: {html.name} → {ref}")
-    if len(enriched_set)!=backend.get("countryLayer",{}).get("enrichedCount",len(enriched_set)): ERRORS.append("Backend countryLayer.enrichedCount disagrees with enrichment index")
-    if len(country_node_rows)!=backend.get("countryLayer",{}).get("nodeCount",len(country_node_rows)): ERRORS.append("Backend countryLayer.nodeCount disagrees with country-nodes.json")
+    backend_count=backend.get("countryLayer",{}).get("enrichedCount")
+    if backend_count not in (len(base_enriched_ids),len(enriched_ids)): WARNINGS.append(f"Backend countryLayer.enrichedCount still reports {backend_count}; effective layered enrichment count is {len(enriched_ids)}")
+    backend_nodes=backend.get("countryLayer",{}).get("nodeCount")
+    if backend_nodes not in (len(base_country_node_rows),len(country_node_rows)): WARNINGS.append(f"Backend countryLayer.nodeCount still reports {backend_nodes}; effective layered node count is {len(country_node_rows)}")
     pc,rc=check_beliefs()
-    print(f"Canonical nations: {len(nation_rows)}/195"); print(f"Country layer: {len(country_ids)}/195"); print(f"Enrichment overlays: {len(enriched_set)}"); print(f"Country graph nodes: {len(country_node_rows)}"); print(f"Graph registry records: {len(graph_registry.get('records',[]))}"); print(f"Relationships checked: {len(relationships.get('relationships',[]))}"); print(f"Political beliefs: {pc} · Religious beliefs: {rc}"); print(f"Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}")
+    print(f"Canonical nations: {len(nation_rows)}/195"); print(f"Country layer: {len(country_ids)}/195"); print(f"Enrichment overlays: {len(enriched_ids)} ({len(base_enriched_ids)} base + {len(batch_enriched_ids)} new)"); print(f"Country graph nodes: {len(country_node_rows)} ({len(base_country_node_rows)} base + {len(batch_node_rows)} new)"); print(f"Graph registry records: {len(graph_registry.get('records',[]))}"); print(f"Relationships checked: {len(relationships.get('relationships',[]))}"); print(f"Political beliefs: {pc} · Religious beliefs: {rc}"); print(f"Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}")
     for message in WARNINGS[:50]: print(f"WARNING: {message}")
     for message in ERRORS[:100]: print(f"ERROR: {message}")
     return 1 if ERRORS else 0
