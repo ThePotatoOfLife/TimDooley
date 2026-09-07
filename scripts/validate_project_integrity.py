@@ -3,6 +3,9 @@
 Checks JSON syntax, duplicate IDs inside common registry collections, contract file
 existence, and canonical Potatoism relation endpoints. It intentionally does not
 interpret symbolic claims as empirical facts.
+
+This validator is intentionally run after the narrower layer validators so the
+repository-wide JSON parser sees the exact merge state being tested by CI.
 """
 from __future__ import annotations
 import json
@@ -37,8 +40,6 @@ for path in json_files:
             rid = str(row["id"])
             origin = f"{path.relative_to(ROOT)}:{key}"
             if rid in ids and ids[rid] != origin:
-                # Same semantic IDs are allowed across specialized layers; flag only
-                # exact duplicate IDs inside the same registry file below.
                 continue
             ids.setdefault(rid, origin)
 
