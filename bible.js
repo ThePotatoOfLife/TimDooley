@@ -1,5 +1,6 @@
 const CATALOG='data/christianity/bible-kjv.json';
 const MIRROR='https://raw.githubusercontent.com/aruljohn/Bible-kjv-1611/main/';
+const MIRROR_NAMES={'ecclesiasticus / sirach':'Ecclesiasticus','bel and the dragon':'Bel and the Dragon','prayer of manasses':'Prayer of Manasseh'};
 let catalog=null,book=null,chapter=1,bookData=null;
 const $=id=>document.getElementById(id);
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -11,7 +12,7 @@ function renderBooks(q=''){
   const rows=(catalog.books||[]).filter(b=>b.name.toLowerCase().includes(q.toLowerCase()));
   const groups=[['old','Old Testament'],['apocrypha','Apocrypha'],['new','New Testament']];
   $('bible-books').innerHTML=groups.map(([key,label])=>{
-    const group=rows.filter(b=>b.testament===key);if(!group.length)return '';
+    const group=rows.filter(b=>b.section===key||b.testament===key);if(!group.length)return '';
     return `<section class="bible-book-group"><h3>${label}</h3>${group.map(b=>`<button class="bible-book${book?.id===b.id?' active':''}" data-book="${esc(b.id)}"><span>${esc(b.name)}</span><small>${b.chapters} ch.</small></button>`).join('')}</section>`;
   }).join('')||'<p class="empty-state">No books match.</p>';
   document.querySelectorAll('.bible-book').forEach(x=>x.onclick=()=>selectBook(x.dataset.book));
@@ -26,13 +27,14 @@ async function selectBook(id,requestedChapter=1){
   book=found;chapter=Math.min(Math.max(1,requestedChapter),book.chapters);bookData=null;
   renderBooks($('bible-search').value);renderChapterSelect();updateUrl();
   $('bible-status').textContent=`Loading ${book.name}…`;
+  const mirrorName=MIRROR_NAMES[book.name.toLowerCase()]||book.name;
   try{
-    const response=await fetch(MIRROR+encodeURIComponent(book.name)+'.json',{cache:'force-cache'});
+    const response=await fetch(MIRROR+encodeURIComponent(mirrorName)+'.json',{cache:'force-cache'});
     if(!response.ok)throw new Error(`HTTP ${response.status}`);
     bookData=await response.json();renderChapter();
   }catch(error){
-    $('bible-status').innerHTML=`The catalogue is available, but the reader mirror could not be loaded. <a href="https://www.gutenberg.org/ebooks/30" target="_blank" rel="noopener">Open the complete KJV source</a>.`;
-    $('bible-text').innerHTML=`<div class="reader-error"><h3>${esc(book.name)}</h3><p>This is a browser/network loading problem, not missing Bible data.</p><p><a class="bible-source-button" href="https://www.gutenberg.org/ebooks/30" target="_blank" rel="noopener">Open complete KJV →</a></p></div>`;
+    $('bible-status').innerHTML=`The complete catalogue is present, but this particular text could not be fetched from the browser reader mirror. <a href="https://www.gutenberg.org/ebooks/30" target="_blank" rel="noopener">Open the complete KJV source</a>.`;
+    $('bible-text').innerHTML=`<div class="reader-error"><h3>${esc(book.name)}</h3><p>The reader source is unavailable from this browser right now; the catalogue itself is not missing.</p><p><a class="bible-source-button" href="https://www.gutenberg.org/ebooks/30" target="_blank" rel="noopener">Open complete KJV →</a></p></div>`;
   }
 }
 function renderChapter(){
@@ -54,7 +56,7 @@ async function init(){
     $('next-chapter').onclick=()=>{if(book&&chapter<book.chapters){chapter++;renderChapter()}};
     $('bible-home').onclick=()=>{history.replaceState(null,'','bible.html');book=null;bookData=null;chapter=1;renderBooks();$('bible-location').textContent='Select a book';$('bible-title').textContent='King James Version';$('bible-status').textContent='Select a book to begin reading.';$('bible-text').innerHTML='<p>Select a book to begin reading.</p>';$('bible-chapter').innerHTML='<option>Chapter</option>';$('bible-chapter').disabled=true};
     renderBooks();
-    const initial=bookIdFromUrl()||catalog.books?.[0]?.id;
+    const initial=bookIdFromUrl();
     if(initial)await selectBook(initial,chapterFromUrl());
   }catch(e){$('bible-status').textContent='The Bible catalogue could not be loaded.';}
 }
