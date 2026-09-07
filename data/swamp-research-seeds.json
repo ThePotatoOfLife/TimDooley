@@ -1,0 +1,46 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-08",
+  "status":"research-seeds",
+  "note":"Seed records from public sources. These are not exhaustive and should be independently refreshed before use as current totals.",
+  "reservoirs":[
+    {"id":"fec","name":"US Federal Election Commission","domain":"political-finance","scale":"very-large","source":"https://www.fec.gov/data/browse-data/","what_to_extract":["committees","committee_types","receipts","disbursements","donors","recipients","independent_expenditures","candidate_support","dates","jurisdictions"]},
+    {"id":"irs-990","name":"IRS tax-exempt organization filings","domain":"nonprofits","scale":"very-large","source":"https://www.irs.gov/charities-non-profits/search-for-tax-exempt-organizations","what_to_extract":["EIN","legal_name","revenue","expenses","assets","liabilities","officers","compensation","grants","related_organizations","filing_year"]},
+    {"id":"euromo","name":"Euromedia Ownership Monitor","domain":"media","scale":"3000-plus outlets and owners","source":"https://media-ownership.eu/","what_to_extract":["outlets","owners","direct_ownership","indirect_ownership","beneficial_owners","countries","revenues","funding","platform_relations","regulators"]},
+    {"id":"sipri-top100","name":"SIPRI Arms Industry Database","domain":"defense","scale":"Top 100 plus historical database","source":"https://www.sipri.org/databases/armsindustry","what_to_extract":["company","country","arms_revenue","rank","year","industry","corporate_structure"]},
+    {"id":"odni-ic","name":"US Intelligence Community","domain":"intelligence","scale":"18 elements","source":"https://www.odni.gov/","what_to_extract":["agency","department","mission","legal_authority","oversight","partnerships","public_programs"]},
+    {"id":"eu-terror-list","name":"EU terrorism sanctions","domain":"armed-groups","scale":"23 groups/entities plus separate regimes","source":"https://www.consilium.europa.eu/en/policies/sanctions-against-terrorism/","what_to_extract":["designation","legal_basis","date","group","aliases","geography","status"]},
+    {"id":"opencorporates","name":"OpenCorporates","domain":"corporate-ownership","scale":"200m-plus companies; very large relationship universe","source":"https://opencorporates.com/","what_to_extract":["company","jurisdiction","status","directors","officers","relationships","parent","subsidiary","filings"]}
+  ],
+  "entities":[
+    {"id":"aipac-pac","name":"American Israel Public Affairs Committee Political Action Committee","type":"pac","country":"United States","jurisdiction":"US federal","identifier":"C00797670","period":"2025-01-01 to 2026-07-31","metrics":{"receipts_usd":50061505.47,"contributions_usd":47779957.99,"individual_contributions_usd":47581957.99,"itemized_individual_contributions_usd":47051063.83},"source":"https://www.fec.gov/data/committee/C00797670/","confidence":"primary"},
+    {"id":"united-democracy-project","name":"United Democracy Project","type":"super-pac","country":"United States","jurisdiction":"US federal","identifier":"C00799031","period":"2025-01-01 to 2026-07-31","metrics":{"receipts_usd":107542702.64,"contributions_usd":104211071.04,"disbursements_usd":77208509.82,"independent_expenditures_usd":50927163.82,"operating_expenditures_usd":16338146.0,"contributions_to_other_committees_usd":9931200.0,"ending_cash_usd":59137087.92},"source":"https://www.fec.gov/data/committee/C00799031/","confidence":"primary"},
+    {"id":"citizens-against-aipac-corruption","name":"Citizens Against AIPAC Corruption","type":"hybrid-pac","country":"United States","jurisdiction":"US federal","identifier":"C00879080","period":"2025-01-01 to 2026-07-31","metrics":{"receipts_usd":1539546.32,"contributions_usd":838007.73,"other_receipts_usd":701531.89,"disbursements_usd":1396126.19,"independent_expenditures_usd":137228.39,"ending_cash_usd":166949.59},"source":"https://www.fec.gov/data/committee/C00879080/","confidence":"primary"},
+    {"id":"teach-for-israel","name":"Teach For Israel Inc","type":"nonprofit","country":"United States","identifier":"45-4041360","period":"FY2024","metrics":{"revenue_usd":2624801,"expenses_usd":2696925,"net_income_usd":-72124,"assets_usd":386433,"liabilities_usd":515403,"contributions_usd":2624801},"leaders":["Noam Lipshitz","Noah Weisz","Dr John Frank"],"source":"https://projects.propublica.org/nonprofits/organizations/454041360","confidence":"primary-derived"},
+    {"id":"sipri-lockheed-martin","name":"Lockheed Martin","type":"defense-contractor","country":"United States","rank":1,"year":2024,"arms_revenue_usd":64650000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-rtx","name":"RTX","type":"defense-contractor","country":"United States","rank":2,"year":2024,"arms_revenue_usd":43600000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-northrop","name":"Northrop Grumman","type":"defense-contractor","country":"United States","rank":3,"year":2024,"arms_revenue_usd":37850000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-bae","name":"BAE Systems","type":"defense-contractor","country":"United Kingdom","rank":4,"year":2024,"arms_revenue_usd":33790000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-general-dynamics","name":"General Dynamics","type":"defense-contractor","country":"United States","rank":5,"year":2024,"arms_revenue_usd":33630000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-boeing","name":"Boeing","type":"defense-contractor","country":"United States","rank":6,"year":2024,"arms_revenue_usd":30550000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-rostec","name":"Rostec","type":"defense-contractor","country":"Russia","rank":7,"year":2024,"arms_revenue_usd":27120000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-avic","name":"Aviation Industry Corporation of China","type":"defense-contractor","country":"China","rank":8,"year":2024,"arms_revenue_usd":20320000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-cetc","name":"China Electronics Technology Group Corporation","type":"defense-contractor","country":"China","rank":9,"year":2024,"arms_revenue_usd":18920000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"},
+    {"id":"sipri-l3harris","name":"L3Harris Technologies","type":"defense-contractor","country":"United States","rank":10,"year":2024,"arms_revenue_usd":16210000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024","confidence":"primary"}
+  ],
+  "aggregate_facts":[
+    {"metric":"sipri_top100_arms_revenue_2024_usd","value":679000000000,"source":"https://www.sipri.org/publications/2025/sipri-fact-sheets/sipri-top-100-arms-producing-and-military-services-companies-2024"},
+    {"metric":"euromo_media_outlets_and_owners","value":3000,"qualifier":"more than","source":"https://media-ownership.eu/"},
+    {"metric":"us_intelligence_community_elements","value":18,"source":"https://www.odni.gov/"},
+    {"metric":"eu_terror_list_groups_entities_2026","value":23,"qualifier":"framework list; separate sanctions regimes also exist","source":"https://www.consilium.europa.eu/en/policies/sanctions-against-terrorism/"}
+  ],
+  "next_extraction_jobs":[
+    "Download and normalize the FEC committee universe and transaction data.",
+    "Extract IRS Form 990 nonprofit financial/governance records for North Programme-relevant organizations.",
+    "Import the EurOMo EU media ownership universe and attach every outlet to country, owner and platform nodes.",
+    "Import SIPRI Top 100 and connect contractors to countries and economic graph nodes.",
+    "Create all 18 US Intelligence Community nodes and then expand into oversight, legal authority and public partnership records.",
+    "Create EU terrorism-sanctions nodes with designation authority and dates.",
+    "Use OpenCorporates selectively to expand ownership/control around already important graph nodes rather than attempting a blind 200m-company import."
+  ]
+}
