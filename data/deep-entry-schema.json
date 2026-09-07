@@ -1,0 +1,33 @@
+{
+  "version":"1.0.0",
+  "purpose":"Define what a genuinely deep Atlas entry is. A label, description, or snippet is not considered a completed record.",
+  "principle":"The Atlas is a reference work and relationship graph, not a catalogue of labels.",
+  "minimum_complete_entry":{
+    "identity":["id","name","type","layer","definition"],
+    "substance":["historical_or_systemic_context","internal_structure","development_or_chronology","major_components","important_people_or_entities","places_or_scope"],
+    "relationships":["parents","children","influences","contrasts","dependencies","consequences","related_texts"],
+    "evidence":["claims","sources","source_quality","uncertainty"],
+    "navigation":["canonical_url","related_record_urls","source_file"],
+    "for_texts":["work","edition","translator_or_editor","publication","language","copyright_status","local_full_text","structure","stable_locators","passage_search"]
+  },
+  "depth_levels":{
+    "0":"stub: identifier only",
+    "1":"label: name plus short description",
+    "2":"record: structured metadata and some relationships",
+    "3":"substantive: coherent explanatory article with chronology, structure and evidence",
+    "4":"deep: substantive article plus primary sources, internal subdivisions, people, places, concepts and dense relationships",
+    "5":"corpus: deep record plus complete reusable primary texts, stable passages and cross-text navigation"
+  },
+  "quality_rules":[
+    "Never mark a metadata-only record as deep.",
+    "Never use a generic placeholder as the substance of an entry.",
+    "A relationship must point to a real canonical ID or be explicitly marked unresolved.",
+    "Historical traditions must preserve internal diversity, chronology and disagreement.",
+    "Comparative similarities must be labelled as parallel, analogy, influence, contradiction or unknown rather than silently equated.",
+    "Primary text is kept separate from interpretation.",
+    "Where a complete text cannot legally be stored, retain provenance, structure, short quotations where permitted and an external source link.",
+    "Every important record should be useful without leaving the Atlas, while source links remain available for verification."
+  ],
+  "required_deep_sections":["What it is","How it emerged","How it works or is structured","Historical development","Internal diversity","Key people/entities","Key places/scope","Key texts/sources","Major concepts","Relationships","Evidence and uncertainty","Further reading"],
+  "status_values":["stub","label","record","substantive","deep","corpus","verified","needs-review"]
+}
