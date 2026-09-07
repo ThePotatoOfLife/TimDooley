@@ -1,0 +1,21 @@
+{
+  "version":"1.0.0",
+  "status":"active-blueprint",
+  "purpose":"Deep blueprint for money, banking, public finance, debt, securities and financial obligations, with explicit counterparties and time series.",
+  "entity":"financial_system_or_obligation",
+  "record_schema":{
+    "identity":["finance_id","name","instrument_or_system","jurisdiction","currency","status","valid_from","valid_to"],
+    "monetary_system":["central_bank","currency_issuer","payment_systems","cash","reserves","settlement","monetary_policy","exchange_rate_regime"],
+    "banking":["banks","ownership","capital","deposits","loans","securities","liquidity","interbank_exposure","central_bank_facilities","resolution_framework"],
+    "public_finance":["government_revenue","taxes","transfers","expenditure","primary_balance","interest_cost","fiscal_rule","budget","off_budget_entities","public_assets"],
+    "debt":["issuer","creditor","instrument","principal","currency","interest_rate","maturity","issuance_date","repayment_schedule","seniority","collateral","guarantee","default_status"],
+    "balance_sheet":["assets","liabilities","equity","cashflow","contingent_liabilities","pension_liabilities","guarantees","derivatives","intercompany_positions"],
+    "market_structure":["investors","dealers","exchanges","clearing","custody","ratings","benchmark","market_share","concentration","foreign_participation"],
+    "risk":["credit","liquidity","duration","currency","refinancing","counterparty","market","sovereign","contagion","concentration","stress_scenarios"],
+    "relationships":["owes","lent_to","borrowed_from","guarantees","holds","issues","clears_through","settles_through","controls","funds","depends_on"],
+    "evidence":["financial_statement","central_bank","treasury","regulator","securities_filing","market_data","international_database","methodology","publication_date","retrieved_at","confidence"]
+  },
+  "derived_measures":["debt_to_gdp","interest_to_revenue","maturity_weighted_average","foreign_currency_share","creditor_concentration","net_debt","gross_financial_assets","refinancing_need"],
+  "relationship_templates":["government-owes-creditor","bank-lends-to-company","investor-holds-security","central-bank-provides-liquidity","entity-guarantees-obligation","issuer-pays-interest-to-creditor","clearing-house-connects-counterparties"],
+  "integrity_rules":["Debt is an obligation of an identified issuer to an identified creditor or creditor class.","Gross debt and net debt must not be silently substituted.","A guarantee is not the same as realized debt.","Market value and face value are different measures.","Currency denomination and economic exposure are distinct.","Derived ratios retain numerator, denominator and reference period.","Publicly unavailable positions remain missing rather than estimated without a documented method."]
+}
