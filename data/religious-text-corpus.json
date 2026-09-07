@@ -1,19 +1,20 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-07",
-  "purpose":"Machine-readable registry for full-text religious works, editions, local availability, reader routes and future concordance/comparison indexing. A catalogue entry is never presented as a local full text unless the complete text is actually stored in the repository.",
+  "purpose":"Machine-readable registry for full-text religious works, editions, local availability, reader routes and concordance/comparison indexing. A catalogue entry is never presented as a local full text unless the complete text is actually stored in the repository.",
   "search_model":{
     "levels":["catalogue","local-full-text","external-full-text","corpus-library"],
-    "future_queries":["exact word","phrase","lemma","book","chapter","tradition","edition","cross-text overlap"],
+    "queries":["exact word","phrase","book","chapter","tradition","edition","cross-text overlap"],
     "comparison_unit":"edition-aware text occurrence; translations are never silently merged with originals",
     "overlap_fields":["term","work","tradition","edition","location","language","translation"]
   },
-  "local_full_texts":[],
+  "local_full_texts":[
+    {"id":"bible-kjv-1611-gutenberg","work":"Bible — King James Version","tradition":"Christianity","path":"data/texts/christianity/bible-kjv-1611-gutenberg.txt","reader":"bible.html","source":"https://www.gutenberg.org/ebooks/30","edition":"Project Gutenberg eBook 30; KJV 1611 tradition","status":"complete-local-public-domain-source"},
+    {"id":"quran-rodwell-gutenberg","work":"The Koran / Qur'an","tradition":"Islam","path":"data/texts/islam/quran-rodwell-gutenberg.txt","reader":"religious-texts.html?text=quran-rodwell-gutenberg","source":"https://www.gutenberg.org/ebooks/2800","edition":"J. M. Rodwell English translation","status":"complete-local-public-domain-translation"},
+    {"id":"bhagavad-gita-arnold-gutenberg","work":"Bhagavad-Gita / The Song Celestial","tradition":"Hinduism","path":"data/texts/hinduism/bhagavad-gita-arnold-gutenberg.txt","reader":"religious-texts.html?text=bhagavad-gita-arnold-gutenberg","source":"https://www.gutenberg.org/ebooks/2388","edition":"Sir Edwin Arnold English translation","status":"complete-local-public-domain-translation"}
+  ],
   "external_full_texts":[
-    {"id":"bible-kjv","catalog":"data/christianity/bible-kjv.json","reader":"bible.html","source":"https://www.gutenberg.org/ebooks/30","status":"complete external source; browser reader currently uses the structured 1611 KJV mirror"},
-    {"id":"quran-rodwell","catalog":"data/religious-text-library.json","reader":"https://www.gutenberg.org/ebooks/2800","status":"complete external public-domain English translation; Arabic source remains edition-specific"},
-    {"id":"bhagavad-gita-arnold","catalog":"data/religious-text-library.json","reader":"https://www.gutenberg.org/ebooks/2388","status":"complete external public-domain English translation"},
-    {"id":"dao-de-jing-legge","catalog":"data/religious-text-library.json","reader":"taoism.html","status":"complete text reader; public-domain edition"},
+    {"id":"dao-de-jing-legge","catalog":"data/religious-text-library.json","reader":"taoism.html","source":"https://en.wikisource.org/wiki/Translation:Tao_Te_Ching","status":"complete external reader; public-domain edition"},
     {"id":"analects","catalog":"data/religious-text-library.json","reader":"https://ctext.org/analects","status":"complete external text/library"},
     {"id":"zhuangzi","catalog":"data/religious-text-library.json","reader":"https://ctext.org/zhuangzi","status":"complete external text/library"},
     {"id":"dhammapada","catalog":"data/religious-text-library.json","reader":"https://www.suttacentral.net/dhp","status":"complete external text/library"},
@@ -30,5 +31,5 @@
     {"id":"homeric-hymns","catalog":"data/religious-text-library.json","reader":"https://www.perseus.tufts.edu/"}
   ],
   "policy":"Do not claim a book is locally stored until its complete edition is present under data/texts/. Public-domain editions can be imported for local concordance; copyrighted translations should remain external or be replaced by legally redistributable editions.",
-  "next_import_priority":["KJV 1611 full text","Torah public-domain edition","Dao De Jing public-domain edition","Dhammapada public-domain edition","Bhagavad Gita public-domain edition","Qur'an public-domain translation","Analects public-domain edition","Zhuangzi public-domain edition"]
+  "next_import_priority":["Torah public-domain edition","Dao De Jing public-domain edition","Dhammapada public-domain edition","Analects public-domain edition","Zhuangzi public-domain edition","additional public-domain Qur'an translations for translation comparison"]
 }
