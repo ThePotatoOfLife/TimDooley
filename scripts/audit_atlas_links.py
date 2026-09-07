@@ -26,6 +26,7 @@ def ids_from(path, keys):
 nodes = ids_from('data/nodes.json', ['nodes'])
 nodes |= ids_from('data/tree-child-records.json', ['records'])
 nodes |= ids_from('data/tree-support-records.json', ['records'])
+nodes |= ids_from('data/tree-concept-records.json', ['records'])
 graph_registry = ids_from('data/graph-registry.json', ['records'])
 political = {x[0] for x in load('data/political-lexicon.json').get('entries', []) if isinstance(x, list) and x}
 religious = {x[0] for x in load('data/religious-lexicon.json').get('entries', []) if isinstance(x, list) and x}
@@ -37,26 +38,53 @@ for path in ('data/religious-adjacent/deep-expansions.json', 'data/religious-adj
 nations = {x['id'] for x in load('data/nations.json').get('nations', []) if x.get('id')}
 events = {x['id'] for x in load('data/events.json').get('events', []) if x.get('id')}
 sectors = {x['id'] for x in load('data/european-sector-atlas.json').get('sector_families', []) if x.get('id')}
+
+def recursive_ids(value):
+    found = set()
+    if isinstance(value, dict):
+        if isinstance(value.get('id'), str) and value['id']:
+            found.add(value['id'])
+        for child in value.values():
+            found |= recursive_ids(child)
+    elif isinstance(value, list):
+        for child in value:
+            found |= recursive_ids(child)
+    return found
+
+canonical_id_files = (
+    'data/belief-records.json', 'data/belief-registry.json',
+    'data/potatoism-cosmology.json', 'data/potatoism-glossary.json',
+    'data/potatoism-canonical-corpus.json', 'data/potatoism-deep-layers.json',
+    'data/potatoism-timeline.json', 'data/tree-concept-records.json',
+    'data/tree.json', 'data/domain-coupling.json', 'data/global-graph-bridge.json',
+    'data/people-registry.json', 'data/indicator-catalog.json',
+    'data/research.json', 'data/full-text-coverage.json',
+    'data/canonical-texts.json', 'data/religious-comparative-library.json',
+)
+for path in canonical_id_files:
+    try:
+        nodes |= recursive_ids(load(path))
+    except FileNotFoundError:
+        pass
+
 all_records = (nodes | graph_registry | political | religious | foundations | foundation_records |
                adjacent | nations | events | sectors)
-
 rels = load('data/relationships.json').get('relationships', [])
 relationship_endpoints = {r.get(side) for r in rels for side in ('source', 'target') if r.get(side)}
 addressable = all_records | relationship_endpoints
-
 html = (ROOT / 'repository.html').read_text(encoding='utf-8')
 route_templates = ['node.html?id=', 'nation.html?id=']
 missing_routes = [route for route in route_templates if route not in html]
-
 tree = load('data/tree.json')
 tree_refs = [l.get('id') for l in tree.get('levels', [])]
 tree_refs += [c for l in tree.get('levels', []) for c in l.get('children', [])]
-tree_missing = sorted(x for x in tree_refs if x and x not in addressable)
+tree_refs = sorted(set(x for x in tree_refs if x))
+tree_missing = sorted(x for x in tree_refs if x not in addressable)
 reference_only = sorted(relationship_endpoints - all_records)
 
 print(f"Canonical nations: {len(nations)}")
 print(f"Dedicated/addressable record IDs: {len(all_records)}")
-print(f"Core node records: {len(nodes)}")
+print(f"Core/canonical ID-bearing records: {len(nodes)}")
 print(f"Graph-registry records: {len(graph_registry)}")
 print(f"Political records: {len(political)}")
 print(f"Religious lexicon records: {len(religious)}")
@@ -66,7 +94,6 @@ print(f"Events: {len(events)}")
 print(f"Sectors: {len(sectors)}")
 print(f"Relationship endpoints: {len(relationship_endpoints)}")
 print(f"Reference-only endpoints: {len(reference_only)}")
-
 errors = []
 if len(nations) != 195:
     errors.append(f"expected 195 nations, found {len(nations)}")
@@ -74,15 +101,12 @@ if missing_routes:
     errors.append("repository.html is missing route templates: " + ', '.join(missing_routes))
 if tree_missing:
     errors.append("unresolved tree references: " + ', '.join(tree_missing))
-
 if errors:
     print("\nATLAS LINK AUDIT FAILED")
     for error in errors:
         print("- " + error)
     raise SystemExit(1)
-
 if reference_only:
     print("\nReference-only relationship endpoints remain addressable through node.html and are intentionally tracked for later dedicated research:")
     print("- " + ', '.join(reference_only))
-
 print("\nATLAS LINK AUDIT PASSED")
