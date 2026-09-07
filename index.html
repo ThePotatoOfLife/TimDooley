@@ -6,6 +6,7 @@
 <meta name="description" content="The Potato of Life — a living knowledge atlas of people, places, ideas, systems, history and Potatoism.">
 <title>The Potato of Life — Tim Dooley</title>
 <link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="simple.css">
 </head>
 <body class="home">
 <header class="topbar">
@@ -18,7 +19,6 @@
     <a href="potatoism.html">Potatoism</a>
   </nav>
 </header>
-
 <main class="home-simple">
   <section class="home-intro">
     <p class="eyebrow">THE POTATO OF LIFE</p>
@@ -30,7 +30,6 @@
       <button type="submit">Search</button>
     </form>
   </section>
-
   <nav class="home-nav" aria-label="Atlas sections">
     <a href="repository.html"><strong>Atlas</strong><span>All records and connections</span></a>
     <a href="nations.html"><strong>World</strong><span>195 nations</span></a>
@@ -38,7 +37,6 @@
     <a href="belief.html"><strong>Ideas</strong><span>Beliefs and philosophies</span></a>
     <a href="potatoism.html"><strong>Potatoism</strong><span>The project's symbolic layer</span></a>
   </nav>
-
   <section class="home-note">
     <div><strong id="record-total">—</strong><span>atlas records</span></div>
     <div><strong>195</strong><span>nations</span></div>
@@ -46,21 +44,9 @@
     <p>The detailed material lives in the Atlas. This page is deliberately just the doorway.</p>
   </section>
 </main>
-
 <footer><span>THE POTATO OF LIFE · TIM DOOLEY</span><span><a href="repository.html">ATLAS</a> / <a href="nations.html">WORLD</a> / <a href="potatoism.html">POTATOISM</a></span></footer>
 <script>
-(async()=>{try{
-  const [n,c,s,r]=await Promise.all([
-    fetch('data/nodes.json').then(x=>x.json()),
-    fetch('data/tree-child-records.json').then(x=>x.json()),
-    fetch('data/tree-support-records.json').then(x=>x.json()),
-    fetch('data/relationships.json').then(x=>x.json())
-  ]);
-  const records=[...(n.nodes||[]),...(c.records||[]),...(s.records||[])];
-  document.getElementById('record-total').textContent=records.length.toLocaleString();
-  document.getElementById('relation-total').textContent=(r.relationships||[]).length.toLocaleString();
-}catch(e){}}
-)();
+(async()=>{try{const [n,c,s,r]=await Promise.all([fetch('data/nodes.json').then(x=>x.json()),fetch('data/tree-child-records.json').then(x=>x.json()),fetch('data/tree-support-records.json').then(x=>x.json()),fetch('data/relationships.json').then(x=>x.json())]);const records=[...(n.nodes||[]),...(c.records||[]),...(s.records||[])];document.getElementById('record-total').textContent=records.length.toLocaleString();document.getElementById('relation-total').textContent=(r.relationships||[]).length.toLocaleString()}catch(e){}})();
 </script>
 </body>
 </html>
