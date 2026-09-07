@@ -1,0 +1,64 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "name": "Axis and Symbolic Terrain",
+  "status": "canonical-symbolic-layer",
+  "purpose": "Give the project's Axis vocabulary a structured spatial grammar so that North, South, mountain, plane, mud and swamp describe relations, states and flows rather than becoming loose labels.",
+  "epistemic_status": "symbolic_and_interpretive",
+  "terrain": {
+    "axis": {
+      "role": "vertical continuity and orientation",
+      "properties": ["direction", "continuity", "alignment", "connection", "transition"],
+      "relations": ["ladder", "tree", "north", "south", "throne-of-north", "door"]
+    },
+    "mountain": {
+      "role": "elevation, perspective, difficulty and convergence",
+      "properties": ["height", "visibility", "gradient", "threshold", "summit"],
+      "relations": ["ascent", "descent", "north-gate", "throne-of-north", "source"]
+    },
+    "plane": {
+      "role": "horizontal manifestation and shared field",
+      "properties": ["surface", "spread", "coexistence", "distance", "intersection"],
+      "relations": ["world", "society", "network", "trade", "geography"]
+    },
+    "mud": {
+      "role": "low-visibility, high-friction substrate from which forms emerge",
+      "properties": ["density", "friction", "burial", "potential", "slow movement", "mixed signals"],
+      "relations": ["roots", "memory", "origin", "labour", "materiality", "emergence"]
+    },
+    "swamp": {
+      "role": "entangled, stagnant or difficult-to-navigate relational field",
+      "properties": ["low visibility", "feedback", "stagnation", "cross-currents", "traps", "hidden connections"],
+      "relations": ["strife", "fear", "extraction", "fragmentation", "drain", "dependency"],
+      "warning": "Swamp is a project metaphor. It must not be used to label real people or groups as inherently corrupt."
+    },
+    "roots": {
+      "role": "memory, origin, dependency and hidden support",
+      "properties": ["buried connection", "inheritance", "history", "resource", "dependency"]
+    },
+    "drain": {
+      "role": "path through which energy, attention, resources or meaning leave a system",
+      "properties": ["outflow", "loss", "concentration", "escape", "transformation"]
+    },
+    "door": {
+      "role": "threshold between states or layers",
+      "properties": ["boundary", "choice", "passage", "interface", "irreversibility"],
+      "relations": ["plane", "axis", "son", "experience"]
+    }
+  },
+  "spatial_questions": [
+    "Where is a node relative to the axis?",
+    "What terrain does the relationship cross?",
+    "What is above, below, inside, outside or at the boundary?",
+    "Where are the bottlenecks and bridges?",
+    "What flows through the terrain?",
+    "What becomes visible only after elevation or separation changes?",
+    "What is buried in roots or mud?",
+    "What is trapped in a swamp-like feedback loop?"
+  ],
+  "implementation": {
+    "coordinate_fields": ["axis_position", "elevation", "plane_position", "terrain", "boundary", "flow_direction"],
+    "graph_fields": ["source", "target", "relationship", "strength", "dependency", "feedback", "trajectory", "phase"],
+    "visualization": "Use terrain as a semantic layer over the graph; do not imply that symbolic terrain is geographic fact."
+  }
+}
