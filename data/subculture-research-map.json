@@ -1,0 +1,51 @@
+{
+  "version":"1.0.0",
+  "title":"Internet Subculture / Information Ecology Research Map",
+  "purpose":"Create contextual nodes around the information environment without making those environments causal explanations of Tim Dooley or the Son. The map exists to reduce information vacuums by preserving competing sources, provenance and boundaries.",
+  "principle":"Context is not causation. A source can be relevant because it documents an information environment without establishing that the subject participated in, belonged to, endorsed, or was shaped by it.",
+  "nodes":[
+    {"id":"internet-subculture","name":"Internet Subculture","layer":"contextual","description":"Broad field of online communities, memes, archives, forums, creators and counter-publics that can preserve otherwise poorly documented cultural material."},
+    {"id":"4chan","name":"4chan","layer":"contextual","description":"Anonymous imageboard ecosystem relevant to the study of internet meme and subcultural transmission. Inclusion does not establish participation by Tim, the Son, or the Potato of Life."},
+    {"id":"kiwi-farms","name":"Kiwi Farms","layer":"contextual","description":"Controversial online forum historically associated with documenting and discussing internet personalities. It should be treated as an adversarial/contextual archive with source-quality limitations, not as an authoritative biography."},
+    {"id":"the-farm","name":"The Farm","layer":"contextual","description":"Project label for the particular 'farm' information environment discussed in the research. Exact identity and scope must be resolved before attaching external claims."},
+    {"id":"josh-moon","name":"Josh Moon","layer":"contextual-person","description":"Research node for Josh Moon as a participant/observer in internet-culture documentation. Claims about individuals require direct sourcing and should not be inferred from association with a forum."},
+    {"id":"cow-chop-era-internet-culture","name":"Internet creator/documentation culture","layer":"contextual","description":"Broader ecosystem of creator drama, commentary, archives, memes and decentralized documentation that can generate both primary traces and distorted retellings."},
+    {"id":"archive-culture","name":"Archive Culture","layer":"methodological","description":"Practice of preserving posts, videos, screenshots, threads and metadata so that later researchers can reconstruct chronology without depending on one surviving platform."},
+    {"id":"information-vacuum","name":"Information Vacuum","layer":"methodological","description":"Condition in which primary material disappears, is scattered, is algorithmically buried, or is represented only through adversarial retellings. The repository exists partly to reduce this vacuum by building a larger source graph."},
+    {"id":"source-competition","name":"Source Competition","layer":"methodological","description":"Deliberate preservation of multiple independent accounts, primary traces, secondary histories and contradictory interpretations rather than allowing one archive to become the sole narrative authority."},
+    {"id":"identity-resolution","name":"Identity Resolution","layer":"methodological","description":"Evidence-based process for deciding whether two names/accounts/personas refer to the same entity. Requires multiple independent anchors rather than name similarity."},
+    {"id":"provenance","name":"Provenance","layer":"methodological","description":"Record of where a claim came from, when it appeared, how it was preserved, and what transformations occurred between original material and current representation."},
+    {"id":"negative-evidence","name":"Negative Evidence","layer":"methodological","description":"Explicit record of what has not been found, preventing absence of evidence from silently becoming evidence of absence."},
+    {"id":"adversarial-source","name":"Adversarial Source","layer":"methodological","description":"Source produced in a hostile, mocking, accusatory or conflict-heavy environment. Such sources can contain useful leads while requiring unusually careful corroboration."},
+    {"id":"primary-source","name":"Primary Source","layer":"methodological","description":"Contemporaneous material directly attributable to the relevant actor, platform, event or record system."},
+    {"id":"secondary-source","name":"Secondary Source","layer":"methodological","description":"Later reporting, commentary, scholarship or archive material interpreting primary evidence."},
+    {"id":"mythic-source","name":"Mythic Source","layer":"project","description":"Self-authored or project-internal material establishing the Potatoverse's symbolic canon. It is authoritative for project mythology but not automatically for external history."}
+  ],
+  "relationships":[
+    ["internet-subculture","contains","4chan"],
+    ["internet-subculture","contains","kiwi-farms"],
+    ["internet-subculture","contains","archive-culture"],
+    ["archive-culture","can-reduce","information-vacuum"],
+    ["source-competition","reduces-risk-of","information-vacuum"],
+    ["provenance","supports","source-competition"],
+    ["identity-resolution","required-for","person-identity-claims"],
+    ["adversarial-source","can-generate-leads-for","primary-source"],
+    ["adversarial-source","must-not-substitute-for","primary-source"],
+    ["mythic-source","should-be-compared-with","primary-source"],
+    ["negative-evidence","records","research-gaps"],
+    ["kiwi-farms","contextualizes","internet-subculture"],
+    ["josh-moon","research-context-for","internet-subculture"],
+    ["the-farm","requires-resolution-of","information-environment"],
+    ["4chan","requires-resolution-of","event-location-claims"]
+  ],
+  "research_questions":[
+    "What exactly is meant by 'the farm' in each source?",
+    "Which archives contain primary material rather than commentary about primary material?",
+    "Can original timestamps establish the 2019 meme-crucifixion without relying on later retellings?",
+    "What is the earliest independently preserved use of Tim Dooley?",
+    "What is the earliest independently preserved Potato of Life material?",
+    "Which claims about Josh Moon are directly sourced, and which are merely forum repetition?",
+    "Which information environments preserve the missing interval between the Son's death and Tim Dooley's emergence?",
+    "Where do sources disagree, and can the disagreement itself be represented as a graph rather than collapsed into one narrative?"
+  ]
+}
