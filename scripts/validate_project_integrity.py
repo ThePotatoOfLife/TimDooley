@@ -1,12 +1,4 @@
-"""Repository-wide lightweight integrity checks.
-
-Checks JSON syntax, duplicate IDs inside common registry collections, contract file
-existence, and canonical Potatoism relation endpoints. It intentionally does not
-interpret symbolic claims as empirical facts.
-
-This validator is intentionally run after the narrower layer validators so the
-repository-wide JSON parser sees the exact merge state being tested by CI.
-"""
+"""Repository-wide lightweight integrity checks."""
 from __future__ import annotations
 import json
 from pathlib import Path
@@ -16,8 +8,14 @@ errors: list[str] = []
 json_files = sorted((ROOT / "data").rglob("*.json"))
 
 for path in json_files:
+    raw = path.read_text(encoding="utf-8")
     try:
-        json.loads(path.read_text(encoding="utf-8"))
+        json.loads(raw)
+    except json.JSONDecodeError as exc:
+        start = max(0, exc.pos - 100)
+        end = min(len(raw), exc.pos + 140)
+        context = raw[start:end].replace("\n", "\\n")
+        errors.append(f"invalid JSON: {path.relative_to(ROOT)}: {exc}; context={context!r}")
     except Exception as exc:
         errors.append(f"invalid JSON: {path.relative_to(ROOT)}: {exc}")
 
@@ -43,7 +41,6 @@ for path in json_files:
                 continue
             ids.setdefault(rid, origin)
 
-# Exact duplicate IDs within a single registry collection.
 for path in json_files:
     try:
         obj = json.loads(path.read_text(encoding="utf-8"))
