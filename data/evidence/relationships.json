@@ -1,0 +1,67 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "purpose": "Normalized relationships whose edges are derived from empirical observations rather than project symbolism.",
+  "relationships": [
+    {
+      "id": "india-hinduism-global-concentration",
+      "from": "india",
+      "to": "hinduism",
+      "type": "contains_share_of_global_population",
+      "value": 95,
+      "unit": "percent_approx",
+      "reference_period": "2020",
+      "indicator": "religion.global_concentration_share",
+      "observation_id": "pew-hindu-india-concentration-2020",
+      "source": "Pew Research Center",
+      "source_url": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/",
+      "published": "2025-06-09",
+      "retrieved": "2026-09-07"
+    },
+    {
+      "id": "israel-judaism-global-concentration",
+      "from": "israel",
+      "to": "judaism",
+      "type": "contains_share_of_global_population",
+      "value": 46,
+      "unit": "percent_approx",
+      "reference_period": "2020",
+      "indicator": "religion.global_concentration_share",
+      "observation_id": "pew-jewish-israel-concentration-2020",
+      "source": "Pew Research Center",
+      "source_url": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/",
+      "published": "2025-06-09",
+      "retrieved": "2026-09-07"
+    },
+    {
+      "id": "united-states-judaism-global-concentration",
+      "from": "united-states",
+      "to": "judaism",
+      "type": "contains_share_of_global_population",
+      "value": 39,
+      "unit": "percent_approx",
+      "reference_period": "2020",
+      "indicator": "religion.global_concentration_share",
+      "observation_id": "pew-jewish-us-concentration-2020",
+      "source": "Pew Research Center",
+      "source_url": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/",
+      "published": "2025-06-09",
+      "retrieved": "2026-09-07"
+    },
+    {
+      "id": "world-christianity-majority-countries",
+      "from": "christianity",
+      "to": "world",
+      "type": "majority_in_country_or_territory_count",
+      "value": 120,
+      "unit": "countries_or_territories",
+      "reference_period": "2020",
+      "indicator": "religion.majority_country_count",
+      "observation_id": "pew-christian-majority-countries-2020",
+      "source": "Pew Research Center",
+      "source_url": "https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/",
+      "published": "2025-06-09",
+      "retrieved": "2026-09-07"
+    }
+  ]
+}
