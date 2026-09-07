@@ -1,11 +1,13 @@
 {
-  "version":"1.5.0",
-  "updated":"2026-09-07",
-  "purpose":"Backend registry of reusable blueprints and major data-layer entry points. A blueprint defines fields, sources, normalization rules, temporal models, relationships and refresh logic inherited by concrete records.",
+  "version":"1.6.0",
+  "updated":"2026-09-08",
+  "purpose":"Backend registry of reusable blueprints and major data-layer entry points. A blueprint defines fields, sources, normalization rules, temporal models, relationships, integrity constraints and refresh logic inherited by concrete records.",
   "visibility":"backend-only",
   "inheritance_rule":"Concrete records store observations and relationships; instructions belong to the parent blueprint.",
+  "blueprint_count":38,
   "blueprints":[
     {"id":"country","file":"data/countries-blueprint.json","applies_to":"all canonical countries","status":"active"},
+    {"id":"country-deepening","file":"data/blueprints/country-deepening.json","applies_to":"deep national system overlays","status":"active"},
     {"id":"people-dweller","file":"data/blueprints/people-dweller-master.json","applies_to":"populations, peoples, citizens, residents, language communities, religious communities, political constituencies, cultural communities, classes, occupations, institutions, diasporas and project-symbolic dwellers","status":"active"},
     {"id":"religious-foundation","file":"data/blueprints/religious-foundation.json","applies_to":"religions and religious families","status":"active"},
     {"id":"religious-architecture","file":"data/blueprints/religious-architecture.json","applies_to":"field/substrate/foundation/formation/trunk/branch religious history and cross-cutting religious dimensions","status":"active"},
@@ -26,7 +28,25 @@
     {"id":"economic-sector","file":"data/blueprints/structural-patterns.json#economic-sector","applies_to":"industries and productive sectors","status":"active"},
     {"id":"treaty-alliance","file":"data/blueprints/structural-patterns.json#treaty-alliance","applies_to":"treaties, alliances and international arrangements","status":"active"},
     {"id":"resource-system","file":"data/blueprints/structural-patterns.json#resource-system","applies_to":"energy, minerals, water and food resources","status":"active"},
-    {"id":"ecological-system","file":"data/blueprints/structural-patterns.json#ecological-system","applies_to":"ecosystems and ecological networks","status":"active"}
+    {"id":"ecological-system","file":"data/blueprints/structural-patterns.json#ecological-system","applies_to":"ecosystems and ecological networks","status":"active"},
+    {"id":"governance-state","file":"data/blueprints/governance-state.json","applies_to":"states, governments, public administrations and governing systems","status":"active"},
+    {"id":"finance-debt","file":"data/blueprints/finance-debt.json","applies_to":"money, banking, public finance, debt, securities and financial obligations","status":"active"},
+    {"id":"ownership-control","file":"data/blueprints/ownership-control.json","applies_to":"ownership, voting power, beneficial control, operation, concessions and contractual control","status":"active"},
+    {"id":"supply-chain","file":"data/blueprints/supply-chain.json","applies_to":"physical goods and service value chains, suppliers, logistics and dependencies","status":"active"},
+    {"id":"energy-system","file":"data/blueprints/energy-system.json","applies_to":"energy resources, generation, grids, storage, trade and transition","status":"active"},
+    {"id":"trade-commerce","file":"data/blueprints/trade-commerce.json","applies_to":"goods, services, trade policy, routes, markets and strategic exposure","status":"active"},
+    {"id":"research-knowledge","file":"data/blueprints/research-knowledge.json","applies_to":"researchers, institutions, funding, publications, patents, datasets and knowledge networks","status":"active"},
+    {"id":"law-regulation","file":"data/blueprints/law-regulation.json","applies_to":"laws, regulations, legal authorities, enforcement and jurisprudence","status":"active"},
+    {"id":"media-information","file":"data/blueprints/media-information.json","applies_to":"media organizations, information production, distribution, ownership and audiences","status":"active"},
+    {"id":"health-system","file":"data/blueprints/health-system.json","applies_to":"health systems, services, workforce, medicines, finance and outcomes","status":"active"},
+    {"id":"education-system","file":"data/blueprints/education-system.json","applies_to":"education institutions, curricula, workforce, finance, participation and outcomes","status":"active"},
+    {"id":"environment-climate","file":"data/blueprints/environment-climate.json","applies_to":"climate, ecosystems, environmental pressures, adaptation, mitigation and restoration","status":"active"},
+    {"id":"security-conflict","file":"data/blueprints/security-conflict.json","applies_to":"security institutions, conflict, capabilities, procurement, diplomacy and resilience","status":"active"},
+    {"id":"infrastructure-network","file":"data/blueprints/infrastructure-network.json","applies_to":"transport, telecommunications, utilities and critical infrastructure networks","status":"active"},
+    {"id":"labor-skills","file":"data/blueprints/labor-skills.json","applies_to":"labor markets, occupations, skills, wages, training and worker mobility","status":"active"},
+    {"id":"procurement-public-contracts","file":"data/blueprints/procurement-public-contracts.json","applies_to":"public procurement, tenders, contracts, suppliers, delivery and audit","status":"active"},
+    {"id":"demography-migration","file":"data/blueprints/demography-migration.json","applies_to":"population structure, vital events, migration, settlement and projections","status":"active"},
+    {"id":"agriculture-food-water","file":"data/blueprints/agriculture-food-water.json","applies_to":"agriculture, food supply, water systems, inputs, trade and food security","status":"active"}
   ],
   "people_data":[{"id":"people-registry","file":"data/people-registry.json","role":"foundational people/dweller vocabulary and group-type registry","status":"active"}],
   "religious_data":[
@@ -34,8 +54,6 @@
     {"id":"belief-records","file":"data/belief-records.json","role":"normalized navigation records linking main beliefs to stable IDs and parents","status":"active"},
     {"id":"religious-foundations","file":"data/religious-foundations.json","role":"concrete foundation/emergence records","status":"active"},
     {"id":"religious-foundation-research","file":"data/religious-foundations/records.json","role":"foundation research layer","status":"active"},
-    {"id":"religious-foundation-enrichment","file":"data/religious-foundations/enriched-records.json","role":"deep foundation enrichment","status":"active"},
-    {"id":"religious-minor-traditions","file":"data/religious-foundations/minor-traditions.json","role":"minor and underrepresented traditions foundation layer","status":"active"},
     {"id":"religious-foundation-index","file":"data/religious-foundations/index.json","role":"foundation and adjacent layer index","status":"active"},
     {"id":"religious-adjacent","file":"data/religious-adjacent/records.json","role":"base cult, mystery, deity-cult, esoteric, occult and related records","status":"active"},
     {"id":"religious-adjacent-index","file":"data/religious-adjacent/index.json","role":"machine-readable adjacent research inventory and expansion map","status":"active"},
@@ -45,11 +63,19 @@
     {"id":"religious-layer-manifest","file":"data/religious-layer-manifest.json","role":"single navigation and route manifest for the whole religious layer","status":"active"},
     {"id":"religious-sources","file":"data/religious-sources.json","role":"source registry for religious research","status":"active"},
     {"id":"religious-comparative-library","file":"data/religious-comparative-library.json","role":"comparative text/concept library","status":"active"},
-    {"id":"canonical-texts","file":"data/canonical-texts.json","role":"text/source records used across religious research","status":"active"},
-    {"id":"potatoism-religion","file":"data/potatoism-religion.json","role":"project-defined contemporary religious/mythic record","status":"active"}
+    {"id":"canonical-texts","file":"data/canonical-texts.json","role":"text/source records used across religious research","status":"active"}
   ],
-  "potatoism_data":[{"id":"potatoism-religion","file":"data/potatoism-religion.json","role":"timeline, identity and core project-defined religious/mythic record","status":"active"},{"id":"potatoism-cosmology","file":"data/potatoism-cosmology.json","role":"cosmology, spatial architecture, transformation cycle, dwellers and epistemic layers","status":"active"},{"id":"potatoism-lexicon","file":"data/potatoism-lexicon.json","role":"canonical project vocabulary","status":"active"},{"id":"potatoism-relationships","file":"data/potatoism-relationships.json","role":"symbolic relationship graph","status":"active"},{"id":"potatoism-research-expansion","file":"data/potatoism-research-expansion.json","role":"historical, scientific, archaeological, botanical and comparative research alongside the mythology","status":"active"},{"id":"potatoism-atlas-navigation","file":"data/potatoism-atlas-navigation.json","role":"human-readable front-end information architecture","status":"active"}],
+  "potatoism_data":[
+    {"id":"potatoism-religion","file":"data/potatoism-religion.json","role":"timeline, identity and core project-defined religious/mythic record","status":"active"},
+    {"id":"potatoism-cosmology","file":"data/potatoism-cosmology.json","role":"cosmology, spatial architecture, transformation cycle, dwellers and epistemic layers","status":"active"},
+    {"id":"potatoism-lexicon","file":"data/potatoism-lexicon.json","role":"canonical project vocabulary","status":"active"},
+    {"id":"potatoism-relationships","file":"data/potatoism-relationships.json","role":"symbolic relationship graph","status":"active"},
+    {"id":"potatoism-research-expansion","file":"data/potatoism-research-expansion.json","role":"historical, scientific, archaeological, botanical and comparative research alongside the mythology","status":"active"},
+    {"id":"potatoism-atlas-navigation","file":"data/potatoism-atlas-navigation.json","role":"human-readable front-end information architecture","status":"active"}
+  ],
   "universal_inheritance":["identity","history","function-or-ideas","sources","interpretation","practice-or-operation","organization","population-or-users","geography","institutions","material-base","power-or-control","network","change","evidence","time","provenance"],
+  "coverage_model":{"core_domains":["country","people","religion","governance","finance","ownership","company","supply_chain","energy","trade","research","law","media","health","education","environment","security","infrastructure","labor","procurement","demography","food_water","technology","events","places","movements","sources","treaties","resources"],"rule":"Every major recurring entity family should inherit a dedicated blueprint or an explicit named section of a structural blueprint. New domain-specific blueprints are preferred when the field model becomes deep enough to warrant independent acquisition, validation and relationship logic."},
   "automation_rule":"Blueprints are executable specifications. Acquisition jobs read them to discover fields, sources, refresh intervals, validators, derived measures and relationship templates. Missing data is recorded as missing, never silently fabricated.",
-  "frontend_rule":"Backend depth must be reachable through a small set of human-readable hubs. Raw registries are not themselves the primary navigation experience."
+  "frontend_rule":"Backend depth must be reachable through a small set of human-readable hubs. Raw registries are not themselves the primary navigation experience.",
+  "expansion_rule":"Blueprints are additive ontology infrastructure. They may be extended when a domain has distinct entities, temporal logic, evidence requirements, relationship types or derived measures that cannot be cleanly represented by a generic structural pattern."
 }
