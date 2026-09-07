@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="A record page in The Potato of Life living atlas.">
+<title>Node — The Frame</title><link rel="stylesheet" href="site.css">
+</head>
+<body>
+<header class="topbar"><a class="brand" href="index.html">THE FRAME</a><nav><a href="index.html#unfolding">Unfolding</a><a href="index.html#world">World</a><a href="index.html#north">North Programme</a><a href="index.html#repository">Repository</a></nav></header>
+<main id="node-page" class="section repository-section">
+  <div class="section-heading"><div><p class="section-label" id="node-layer">NODE</p><h1 id="node-name">Loading…</h1></div><p class="muted" id="node-type"></p></div>
+  <div class="north-grid">
+    <article><h3>Record</h3><p id="node-description"></p><div id="node-note" class="prose"></div></article>
+    <article><h3>Connected records</h3><div id="node-relations" class="children large"></div></article>
+  </div>
+  <section class="statement" id="node-evidence-section"><p class="section-label">EVIDENCE</p><h2>What the archive currently knows.</h2><div id="node-evidence" class="prose"></div></section>
+</main>
+<footer><span>THE FRAME</span><span><a href="index.html">Return to the unfolding</a></span></footer>
+<script src="site.js"></script>
+<script>
+(async function(){
+  const id=new URLSearchParams(location.search).get('id');
+  const name=document.getElementById('node-name');
+  if(!id){name.textContent='No node selected';return;}
+  try{
+    const [nodesData, relData, researchData]=await Promise.all([
+      fetch('data/nodes.json').then(r=>r.json()),
+      fetch('data/relationships.json').then(r=>r.json()),
+      fetch('data/research.json').then(r=>r.json())
+    ]);
+    const node=nodesData.nodes.find(n=>n.id===id);
+    if(!node){name.textContent='Node not found';return;}
+    document.title=node.name+' — The Frame';
+    name.textContent=node.name;
+    document.getElementById('node-layer').textContent=(node.layer||'record').replaceAll('-',' ').toUpperCase();
+    document.getElementById('node-type').textContent=node.type||'record';
+    document.getElementById('node-description').textContent=node.description||'This record has been created; its description is still being developed.';
+
+    const notes={
+      source:'This is the beginning of the symbolic vertical: the archive treats Source as the undivided origin from which distinction and relationship become possible. It remains a mythological/philosophical record, not an empirical claim.',
+      ladder:'The Ladder is the connective structure. It should eventually acquire children for levels, movement, ascent, descent, the 33-level architecture, the mountain, the North Gate and the relationship between vertical and horizontal coordinates.',
+      door:'The Door is treated as a threshold rather than merely an object. In the canonical architecture it is where the vertical structure becomes experience, perception and passage; the pineal-gland entry is explicitly kept as metaphor.',
+      'tree-of-life':'The Tree of Life is the living form of the Axis: roots preserve origin and memory, the trunk preserves continuity, branches differentiate, leaves expose the living system to its environment, fruit records manifestation, and seed carries renewal.',
+      'tree-of-strife':'The Tree of Strife is the failure-pattern of the same relational architecture. It names a system in which connection gives way to fear, competition, extraction, fragmentation and conflict. It is an interpretive model, not a literal geographic object.',
+      'potato-of-life':'The Potato of Life brings the architecture back into ordinary matter: buried, persistent, nourishing and capable of sprouting. The absurdity is part of the method rather than a claim that the metaphor is scientific evidence.',
+      'european-economic-graph':'This is the empirical research engine of the project. Its rule is to map relationships first: ownership, debt, obligations, procurement, infrastructure, energy, trade, technology, labour and strategic dependencies should become edges supported by evidence.',
+      'north-programme':'The North Programme is the applied framework sitting above the European Economic Graph. It is treated in the repository as a project framework, while real-world claims about states, institutions, finance and infrastructure must remain evidence-backed.'
+    };
+    document.getElementById('node-note').innerHTML=notes[id]?'<p>'+notes[id]+'</p>':'';
+
+    const rels=relData.relationships.filter(r=>r.source===id||r.target===id);
+    const lookup=new Map(nodesData.nodes.map(n=>[n.id,n]));
+    const relBox=document.getElementById('node-relations');
+    if(!rels.length){relBox.innerHTML='<p class="muted">No relationship records yet. This is a deliberate open space for the next carving round.</p>';} else {
+      rels.forEach(r=>{
+        const otherId=r.source===id?r.target:r.source;
+        const other=lookup.get(otherId);
+        const a=document.createElement('a');
+        a.href='node.html?id='+encodeURIComponent(otherId);
+        a.textContent=(r.source===id?'→ ':'← ')+(other?other.name:otherId)+' · '+r.relationship;
+        relBox.appendChild(a);
+      });
+    }
+
+    const evidence=document.getElementById('node-evidence');
+    const facts=(researchData.facts||[]).filter(f=>f.jurisdiction===node.name||f.claim.toLowerCase().includes(node.name.toLowerCase()));
+    if(facts.length){facts.forEach(f=>{const p=document.createElement('p');p.textContent=f.claim+' ['+f.evidence+', '+f.confidence+']';evidence.appendChild(p);});}
+    else evidence.innerHTML='<p class="muted">No dedicated sourced fact is attached yet. The record can be expanded without changing its place in the tree.</p>';
+  }catch(e){name.textContent='Record could not be loaded';document.getElementById('node-description').textContent=e.message;}
+})();
+</script>
+</body>
+</html>
