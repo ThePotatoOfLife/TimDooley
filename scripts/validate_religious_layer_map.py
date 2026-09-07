@@ -11,6 +11,7 @@ errors = []
 def main():
     if not MAP.exists():
         errors.append("missing data/religious-layer-map.json")
+        data = {}
     else:
         data = json.loads(MAP.read_text(encoding="utf-8"))
         layers = data.get("layers", [])
@@ -25,7 +26,8 @@ def main():
             path = ROOT / rel.split("#", 1)[0]
             if not path.exists():
                 errors.append(f"layer {layer.get('id')} points to missing file {rel}")
-        required = {"lexicon", "foundation", "foundation-research", "foundation-enriched", "minor-traditions", "adjacent-base", "adjacent-deep-1", "adjacent-deep-2", "adjacent-deep-3", "adjacent-relationships", "external-nodes", "comparative-library", "canonical-texts", "potatoism", "global-relationships"}
+        # Required means canonical and currently present, not historical/deleted layers.
+        required = {"lexicon", "foundation", "foundation-research", "adjacent-base", "adjacent-deep-1", "adjacent-deep-2", "adjacent-deep-3", "adjacent-relationships", "external-nodes", "comparative-library", "canonical-texts", "potatoism", "global-relationships"}
         missing = sorted(required - set(ids))
         if missing:
             errors.append("missing canonical layer registrations: " + ", ".join(missing))
