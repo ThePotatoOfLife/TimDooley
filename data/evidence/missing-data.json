@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "purpose": "Explicit missing-data registry. Missing means the field has been identified for research but no validated observation has yet been loaded; it does not mean zero.",
+  "statuses": {
+    "researched_missing": "Source/indicator identified, but a validated value is not yet stored in the atlas.",
+    "not_researched": "The field has not yet been investigated for this record.",
+    "observed": "A validated observation is stored with provenance."
+  },
+  "country_indicators": [
+    {
+      "indicator": "NY.GDP.MKTP.CD",
+      "name": "GDP (current US$)",
+      "source": "World Bank World Development Indicators",
+      "source_url": "https://data.worldbank.org/indicator/NY.GDP.MKTP.CD",
+      "status": "researched_missing",
+      "reason": "The canonical indicator and source have been identified; a cached country-by-country observation set has not yet been loaded."
+    },
+    {
+      "indicator": "SP.POP.TOTL",
+      "name": "Population, total",
+      "source": "World Bank World Development Indicators",
+      "source_url": "https://data.worldbank.org/indicator/SP.POP.TOTL",
+      "status": "researched_missing",
+      "reason": "The canonical indicator and source have been identified; a cached country-by-country observation set has not yet been loaded."
+    },
+    {
+      "indicator": "NY.GDP.PCAP.CD",
+      "name": "GDP per capita (current US$)",
+      "source": "World Bank World Development Indicators",
+      "source_url": "https://data.worldbank.org/indicator/NY.GDP.PCAP.CD",
+      "status": "researched_missing",
+      "reason": "Derived/canonical indicator identified; country observations are not yet cached in the repository."
+    },
+    {
+      "indicator": "FP.CPI.TOTL.ZG",
+      "name": "Inflation, consumer prices (annual %)",
+      "source": "World Bank World Development Indicators",
+      "source_url": "https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG",
+      "status": "researched_missing",
+      "reason": "Canonical source identified; country observations are not yet cached in the repository."
+    },
+    {
+      "indicator": "GC.DOD.TOTL.GD.ZS",
+      "name": "Central government debt, total (% of GDP)",
+      "source": "World Bank World Development Indicators",
+      "source_url": "https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS",
+      "status": "researched_missing",
+      "reason": "Canonical source identified; coverage varies by country and year, so absent values must remain explicitly missing."
+    }
+  ]
+}
