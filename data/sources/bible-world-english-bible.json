@@ -1,0 +1,54 @@
+{
+  "id":"source-bible-world-english-bible",
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "title":"World English Bible — public-domain Bible source",
+  "source_type":"primary-text-source",
+  "translation":"World English Bible (WEB)",
+  "language":"English",
+  "license":"Public domain",
+  "license_basis":"The official World English Bible site states that the WEB is a public-domain modern English translation and may be freely copied in electronic and print form.",
+  "official_source":"https://worldenglish.bible/",
+  "upstream_repository":"https://github.com/BibleAquifer/WorldEnglishBible",
+  "upstream_formats":["JSON","Markdown","USFM","USX","DOCX","PDF","audio"],
+  "repository_import_policy":"The repository may vendor the complete WEB text because the translation is public domain. Preserve attribution, translation name, book/chapter/verse boundaries and upstream version/date metadata. Do not silently replace the text with a different translation.",
+  "canon_profile":"protestant-66",
+  "book_count":66,
+  "books":[
+    "Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi","Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"
+  ],
+  "planned_local_layout":{
+    "root":"data/sources/bible/web/",
+    "index":"data/sources/bible/web/index.json",
+    "book_files":"one UTF-8 text/JSON file per book, preserving chapter and verse identifiers",
+    "search_index":"generated from the local book files; never treated as an independent source",
+    "annotations":"kept in separate files so the biblical text itself is never rewritten by interpretation"
+  },
+  "canon_variants":{
+    "protestant":"66 books in the standard Western Protestant order",
+    "roman_catholic":"73 books including Tobit, Judith, Wisdom, Sirach, Baruch, 1 Maccabees and 2 Maccabees plus additional Greek portions of Esther and Daniel",
+    "eastern_orthodox":"Broader Old Testament/deuterocanonical collections; exact canon varies by church and historical usage",
+    "oriental_orthodox":"Canon varies by church; Ethiopian/Eritrean traditions have especially broad biblical collections",
+    "church_of_the_east":"Historical East-Syriac traditions have their own canon history and liturgical use",
+    "rule":"Never describe the Protestant 66-book list as the universal Christian Bible. Canon is a denominational and historical relationship to a textual collection."
+  },
+  "source_layers":[
+    {"layer":"biblical-text","status":"primary","description":"The actual public-domain WEB wording."},
+    {"layer":"canon","status":"historical","description":"Which books a church recognizes and how that recognition developed."},
+    {"layer":"textual-history","status":"scholarly","description":"Manuscripts, textual variants, languages, editions and transmission history."},
+    {"layer":"context","status":"historical","description":"Ancient Near Eastern, Second Temple Jewish, Greco-Roman and early Christian settings."},
+    {"layer":"interpretation","status":"denominational/scholarly","description":"Commentary, theology, exegesis, preaching and doctrinal use."},
+    {"layer":"project-interpretation","status":"potatoverse","description":"Symbolic relations to Source, Separation, Ladder, Door, Son, Tree and Potato; never presented as biblical fact."
+    }
+  ],
+  "integrity_rules":[
+    "Quote the exact verse/book/chapter when making a textual claim.",
+    "Keep translation wording separate from the underlying Hebrew, Aramaic and Greek textual traditions.",
+    "Do not use one English translation as proof that all Christians interpret a passage identically.",
+    "Record disputed authorship, dating and composition as scholarly questions rather than silently fixing them as facts.",
+    "Distinguish what the text says from what a denomination teaches the text means.",
+    "Distinguish later Christian symbolism from the historical meaning of a biblical passage.",
+    "Keep deuterocanonical and other canonical traditions visible rather than treating them as missing or inferior books."
+  ],
+  "initial_book_map":"See data/expansions/christianity-bible-denominations-wave-019.json for the 66-book structural and thematic map."
+}
