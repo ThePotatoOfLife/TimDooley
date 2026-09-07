@@ -19,7 +19,9 @@
 <script src="site.js"></script>
 <script>
 (async function(){
-  const id=new URLSearchParams(location.search).get('id');
+  const params=new URLSearchParams(location.search);
+  const id=params.get('id');
+  const requestedName=params.get('name')||id;
   const name=document.getElementById('node-name');
   if(!id){name.textContent='No node selected';return;}
   try{
@@ -29,20 +31,23 @@
       fetch('data/research.json').then(r=>r.json())
     ]);
     const node=nodesData.nodes.find(n=>n.id===id);
-    if(!node){name.textContent='Node not found';return;}
-    document.title=node.name+' — The Frame';
-    name.textContent=node.name;
-    document.getElementById('node-layer').textContent=(node.layer||'record').replaceAll('-',' ').toUpperCase();
-    document.getElementById('node-type').textContent=node.type||'record';
-    document.getElementById('node-description').textContent=node.description||'This record has been created; its description is still being developed.';
+    const displayName=node?.name||requestedName||id;
+    document.title=displayName+' — The Frame';
+    name.textContent=displayName;
+    document.getElementById('node-layer').textContent=(node?.layer||'open-record').replaceAll('-',' ').toUpperCase();
+    document.getElementById('node-type').textContent=node?.type||'open record';
+    document.getElementById('node-description').textContent=node?.description||'This child has a route in the tree, but its dedicated repository record has not yet been carved out. The link is intentional: the space is reserved and can be filled without changing the architecture.';
 
     const notes={
       source:'This is the beginning of the symbolic vertical: the archive treats Source as the undivided origin from which distinction and relationship become possible. It remains a mythological/philosophical record, not an empirical claim.',
+      father:'Father is kept immediately downstream of Source. The repository uses the term as a mythic role within the architecture, not as a claim about a verified worldly identity.',
       ladder:'The Ladder is the connective structure. It should eventually acquire children for levels, movement, ascent, descent, the 33-level architecture, the mountain, the North Gate and the relationship between vertical and horizontal coordinates.',
       door:'The Door is treated as a threshold rather than merely an object. In the canonical architecture it is where the vertical structure becomes experience, perception and passage; the pineal-gland entry is explicitly kept as metaphor.',
+      son:'The Son is the person-bearing centre of the symbolic story and is deliberately kept distinct from the broader spiritual/source layer. Its relationships are the important part of the record.',
       'tree-of-life':'The Tree of Life is the living form of the Axis: roots preserve origin and memory, the trunk preserves continuity, branches differentiate, leaves expose the living system to its environment, fruit records manifestation, and seed carries renewal.',
       'tree-of-strife':'The Tree of Strife is the failure-pattern of the same relational architecture. It names a system in which connection gives way to fear, competition, extraction, fragmentation and conflict. It is an interpretive model, not a literal geographic object.',
       'potato-of-life':'The Potato of Life brings the architecture back into ordinary matter: buried, persistent, nourishing and capable of sprouting. The absurdity is part of the method rather than a claim that the metaphor is scientific evidence.',
+      potatoism:'Potatoism is the interpretive language that lets the archive examine life, identity and systems through the humble potato: grounded, humorous, persistent and capable of growth from mud.',
       'european-economic-graph':'This is the empirical research engine of the project. Its rule is to map relationships first: ownership, debt, obligations, procurement, infrastructure, energy, trade, technology, labour and strategic dependencies should become edges supported by evidence.',
       'north-programme':'The North Programme is the applied framework sitting above the European Economic Graph. It is treated in the repository as a project framework, while real-world claims about states, institutions, finance and infrastructure must remain evidence-backed.'
     };
@@ -56,14 +61,14 @@
         const otherId=r.source===id?r.target:r.source;
         const other=lookup.get(otherId);
         const a=document.createElement('a');
-        a.href='node.html?id='+encodeURIComponent(otherId);
+        a.href='node.html?id='+encodeURIComponent(otherId)+'&name='+encodeURIComponent(other?.name||otherId);
         a.textContent=(r.source===id?'→ ':'← ')+(other?other.name:otherId)+' · '+r.relationship;
         relBox.appendChild(a);
       });
     }
 
     const evidence=document.getElementById('node-evidence');
-    const facts=(researchData.facts||[]).filter(f=>f.jurisdiction===node.name||f.claim.toLowerCase().includes(node.name.toLowerCase()));
+    const facts=(researchData.facts||[]).filter(f=>f.jurisdiction===displayName||f.claim.toLowerCase().includes(displayName.toLowerCase()));
     if(facts.length){facts.forEach(f=>{const p=document.createElement('p');p.textContent=f.claim+' ['+f.evidence+', '+f.confidence+']';evidence.appendChild(p);});}
     else evidence.innerHTML='<p class="muted">No dedicated sourced fact is attached yet. The record can be expanded without changing its place in the tree.</p>';
   }catch(e){name.textContent='Record could not be loaded';document.getElementById('node-description').textContent=e.message;}
