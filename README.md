@@ -4,13 +4,45 @@ This repository is the source archive and research engine for the Tim Dooley / P
 
 It is deliberately being built as more than a themed website. The aim is a **living knowledge graph** in which the mythic architecture, philosophical interpretations, historical material and observable world are connected without pretending they have identical evidentiary status.
 
+## The mission: relations, entanglement and trajectory
+
+The project begins with **relationships first**. A node by itself is an object; a relationship tells us how it participates in a system. The next layer is **entanglement**: relationships can have distance, strength, direction, dependency, feedback, topology, temporal order and path dependence.
+
+Entanglement has several distinct meanings in the atlas. In physics, quantum entanglement is an experimentally established phenomenon involving joint quantum states and correlations that violate Bell inequalities; it should not be treated as a faster-than-light messaging mechanism or as evidence for spiritual fate. In the empirical atlas, entanglement means observable dependency and coupling among systems. In the philosophical and mythological layers, entanglement can describe fate, destiny, recurring patterns, topology and trajectory. These meanings are deliberately kept adjacent rather than falsely merged.
+
+The practical question is therefore not only **“what is connected?”** but also:
+
+- How strongly are things coupled?
+- How far apart are they physically, institutionally or conceptually?
+- Is the relationship causal, correlational, functional, symbolic or unknown?
+- What happens when one node changes?
+- What path did the system take to reach its present state?
+- Where are the bridges, bottlenecks, loops, boundaries, basins and attractors?
+- Which outcomes are constrained by history, and which remain genuinely open?
+
+This turns the graph into a study of **relations through space and time**, not merely a directory of links.
+
+## The terrain of the Axis
+
+The Axis is also being treated as a structured symbolic terrain. **Mountain** represents elevation, perspective, convergence and difficult ascent. **Plane** represents horizontal manifestation: the shared world where entities coexist and interact. **Mud** represents material substrate, buried history, friction and emergence. **Swamp** represents dense, low-visibility relational entanglement, feedback, stagnation and hidden crossings. **Roots** hold memory and dependency. **Drains** describe outflows of energy, resources, attention or meaning. **Doors** are thresholds between states.
+
+These are project-defined symbolic categories, not claims that geography or physics literally has spiritual terrain. Their value is that they give the graph a vocabulary for asking **where a relationship sits, what it crosses, what flows through it, and what kind of transformation it permits**.
+
+## The Hawkins layer
+
+The repository now also preserves David R. Hawkins' **Map of Consciousness** as a comparative interpretive layer. Hawkins' model assigns levels from 1–1000 to states such as Shame, Guilt, Fear, Anger, Courage, Acceptance, Reason, Love, Joy, Peace and Enlightenment.
+
+The atlas treats these numbers carefully. A Hawkins level is **not a Hertz measurement**, and there is no established scientific conversion from an emotion to a particular electromagnetic frequency or visible-light colour. Contemporary emotion research instead studies dimensions such as appraisal, arousal, action tendencies, cognition, physiology and social context. The project can therefore compare Hawkins' symbolic scale with psychology, neuroscience and measurable signal data without pretending that 500 means 500 Hz or that an emotion literally emits a corresponding colour.
+
+The Hawkins layer is useful here because it introduces another possible **phase model**: threat/loss → withdrawal/approach → conflict/status → agency → depolarization → engagement → integration → reasoning → care → joy → stabilization → transcendent symbolism. Those phases are a research vocabulary, not a fixed hierarchy of human worth.
+
 ## The architecture
 
 The main unfolding is:
 
 **Tim Dooley → Source → Separation → Ladder → Door → Son → Tree of Life → Tree of Strife → Potato → World → North Programme**
 
-The tree is the route through the archive. The graph is the underlying reality of the archive: children can connect across branches.
+The tree is the route through the archive. The graph is the underlying reality of the archive: children can connect across branches. Entanglement adds the question of how strongly and through what pathway those branches influence one another.
 
 ### Source
 
@@ -69,7 +101,7 @@ The Kingdom Atlas is the broad relationship ontology. It is not just a list of c
 - where labour and skills are concentrated;
 - where geopolitical and security relationships overlap with economic ones.
 
-The relationship families include genealogical, institutional, financial, political, religious, intellectual, geographic, cultural, technological, information, social, symbolic, functional and mythological relationships.
+The relationship families include genealogical, institutional, financial, political, religious, intellectual, geographic, cultural, technological, information, social, symbolic, functional and mythological relationships. The new entanglement layer adds strength, coupling, feedback, topology and trajectory to those families.
 
 ## European Economic Graph
 
@@ -116,6 +148,8 @@ The queue is intentionally concrete. It should grow into actual datasets and rel
 8. **Industrial base** — machinery, chemicals, pharmaceuticals, vehicles, aerospace, energy-intensive industry and productive capacity.
 9. **Labour and skills** — participation, shortages, migration, training, productivity and regional concentration.
 10. **Ownership and control** — corporate parents, subsidiaries, funds, state ownership, infrastructure operators and beneficial-control relationships.
+11. **Entanglement and trajectory** — identify high-dependency clusters, bridges, feedback loops, bottlenecks, path-dependent outcomes and phase transitions across the graph.
+12. **Emotion and state transitions** — compare the Hawkins model with established emotion science, neural/physiological measurements and action-tendency research without conflating their units or evidence.
 
 ## Evidence standard
 
@@ -144,6 +178,12 @@ A symbolic relationship can be preserved as part of the Tim Dooley architecture 
 
 `data/relationships.json` — relationship registry with evidence, confidence, date and notes.
 
+`data/entanglement.json` — relational coupling, topology and trajectory layer.
+
+`data/axis-topology.json` — symbolic Axis terrain vocabulary.
+
+`data/hawkins-scale.json` — Hawkins comparative emotion layer with psychology and frequency safeguards.
+
 `data/research.json` — sourced facts and active research queue.
 
 `data/frame.json` — canonical architecture and data policy.
@@ -152,10 +192,10 @@ A symbolic relationship can be preserved as part of the Tim Dooley architecture 
 
 ## The rule
 
-**Relationships first.**
+**Relationships first. Entanglement second. Evidence always.**
 
 A country is a node. A debt is a node. A company is a node. A symbol is a node. A cable is a node. A port is a node. A contract is a node. A research institute is a node.
 
-But the real object of study is the relationship between them.
+But the real object of study is the relationship between them — including its strength, direction, dependency, topology and trajectory through time.
 
 That is how the project stops being a generic mythology page and becomes a living atlas: every concept can acquire children, every child can acquire records, and every record can connect outward into the real world.
