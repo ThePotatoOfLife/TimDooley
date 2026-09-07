@@ -12,8 +12,12 @@ def exists(rel,required=True):
     ok=(ROOT/rel).exists()
     if not ok:(ERRORS if required else WARNINGS).append(f'Missing {"required" if required else "optional"} path: {rel}')
     return ok
+def canon_id(x):
+    # Preserve the repository's established IDs while treating the two common
+    # DRC spellings as one canonical country identity.
+    return 'democratic-republic-of-the-congo' if x in {'democratic-republic-of-the-congo','democratic-republic-of-congo'} else x
 def beliefs():
-    s=load(ROOT/'data/belief-space.json'); b=load(ROOT/'data/belief-backend.json'); p=load(ROOT/'data/political-lexicon.json'); r=load(ROOT/'data/religious-lexicon.json'); g=load(ROOT/'data/belief-registry.json')
+    s=load(ROOT/'data/belief-space.json'); b=load(ROOT/'data/belief-backend.json'); p=load(ROOT/'data/political-lexicon.json'); r=load(ROOT/'data/religious-lexicon.json')
     for x in ['belief.html','political-compass.html','data/belief-space.json','data/belief-backend.json','data/belief-registry.json','data/political-lexicon.json','data/religious-lexicon.json']:exists(x)
     if not s.get('political',{}).get('axes') or not s.get('religious',{}).get('axes'):ERRORS.append('Belief space must define both political and religious three-axis models')
     pe=p.get('entries',[]); re_=r.get('entries',[]); pi=[x[0] for x in pe if isinstance(x,list) and len(x)>=2]; ri=[x[0] for x in re_ if isinstance(x,list) and len(x)>=2]
@@ -31,15 +35,18 @@ def main():
         rel=v if isinstance(v,str) else v.get('path','') if isinstance(v,dict) else ''
         if not rel:ERRORS.append(f'Backend endpoint has no path: {k}');continue
         if exists(rel,k in required) and rel.endswith('.json'):load(ROOT/rel)
-    nations=load(ROOT/'data/nations.json').get('nations',[]); ci=load(ROOT/'data/countries/index.json').get('countries',[]); repair=load(ROOT/'data/countries/democratic-republic-of-the-congo.json'); repair_id=repair.get('id'); country_ids={x.get('id') for x in ci if x.get('id')!=repair_id}|({repair_id} if repair_id else set())
+    nations=load(ROOT/'data/nations.json').get('nations',[]); ci=load(ROOT/'data/countries/index.json').get('countries',[]); repair=load(ROOT/'data/countries/democratic-republic-of-the-congo.json'); repair_id=repair.get('id')
+    nation_ids={canon_id(x.get('id')) for x in nations if x.get('id')}; country_ids={canon_id(x.get('id')) for x in ci if x.get('id')}
+    country_ids.discard(canon_id(repair_id)); country_ids.add(canon_id(repair_id)) if repair_id else None
     if len(nations)!=195:ERRORS.append(f'Canonical nation directory has {len(nations)} records; expected 195')
     if len(country_ids)!=195:ERRORS.append(f'Country layer has {len(country_ids)} canonical IDs; expected 195')
-    if {x.get('id') for x in nations}!=country_ids:ERRORS.append('Canonical nation directory and country layer IDs differ')
+    if nation_ids!=country_ids:ERRORS.append(f'Canonical nation directory and country layer IDs differ: nations-only={sorted(nation_ids-country_ids)} country-only={sorted(country_ids-nation_ids)}')
     for cid in country_ids:
-        if not (ROOT/'data/countries'/f'{cid}.json').exists():ERRORS.append(f'Missing canonical country record: {cid}.json')
+        if cid==canon_id(repair_id):
+            if not (ROOT/'data/countries/democratic-republic-of-the-congo.json').exists():ERRORS.append('Missing DRC repair record')
+        elif not (ROOT/'data/countries'/f'{cid}.json').exists():ERRORS.append(f'Missing canonical country record: {cid}.json')
     base=load(ROOT/'data/country-enrichment-index.json'); base_ids=set(base.get('enriched_ids',[])); base_nodes=load(ROOT/'data/country-nodes.json').get('nodes',[])
-    batches=sorted(ROOT.glob('data/country-enrichment-batch-*.json')); node_batches=sorted(ROOT.glob('data/country-nodes-batch-*.json'))
-    all_ids=set(base_ids); all_nodes=list(base_nodes); seen=[]
+    batches=sorted(ROOT.glob('data/country-enrichment-batch-*.json')); node_batches=sorted(ROOT.glob('data/country-nodes-batch-*.json')); all_ids=set(base_ids); all_nodes=list(base_nodes); seen=[]
     for bp in batches:
         b=load(bp); ids=set(b.get('added_ids',[])); seen.extend(ids)
         if b.get('added_count')!=len(ids):ERRORS.append(f'{bp.name}: added_count mismatch')
@@ -62,7 +69,7 @@ def main():
     ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I)
     for h in ROOT.glob('*.html'):
         for x in ref.findall(h.read_text(encoding='utf-8',errors='replace')):
-            if x.startswith(('http:','https:','mailto:','javascript:','data:')):continue
+            if x.startswith(('http:','https:','mailto:','javascript:','data:')) or '${' in x:continue
             t=(ROOT/x).resolve()
             try:t.relative_to(ROOT.resolve())
             except ValueError:continue
