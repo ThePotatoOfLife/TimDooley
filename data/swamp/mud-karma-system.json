@@ -1,0 +1,91 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-08",
+  "status": "canonical-interpretive-and-empirical-crosswalk",
+  "purpose": "Formalize the Potatoverse idea that negative karma, sin, Moloch, milk, mud, smear, compromat, moral bankruptcy, entanglement and debt are different views of accumulated relational consequences, while keeping symbolic interpretation separate from empirical claims.",
+  "epistemic_rule": "Potatoverse terms are interpretive vocabulary. Empirical fields require observable evidence. Karma, sin, loosh and Moloch are not treated here as scientifically measured forces or as proof of hidden coordination.",
+  "core_formula": "action -> trace -> accumulation -> entanglement -> obligation/consequence -> redistribution -> memory -> repetition or repair",
+  "mud": {
+    "potatoverse_meaning": "Accumulated residue from harmful, deceptive, exploitative, humiliating or conflict-producing actions. Mud can cling to the actor who throws it, the target who receives it, and the relationship connecting them.",
+    "empirical_translation": ["documented allegations", "court records", "reputational claims", "corrections and retractions", "financial liabilities", "regulatory findings", "public controversy", "archived statements", "adverse events", "relationship rupture"],
+    "important_distinction": "A public allegation is not equivalent to a proven wrongdoing. Records must retain allegation, finding, denial, correction and adjudication as separate states."
+  },
+  "mud_transfer": {
+    "potatoverse_model": "One actor throws mud at a neighbour; the act may create a smear against the neighbour while simultaneously creating moral, reputational or relational exposure for the thrower.",
+    "observable_model": "claim -> publisher/speaker -> target -> evidence status -> audience exposure -> response -> correction/adjudication -> durable record",
+    "measurable_fields": ["claim_count", "source_count", "audience_reach", "engagement", "legal_action", "correction_count", "retraction_count", "adjudicated_findings", "financial_cost", "relationship_change"]
+  },
+  "compromat": {
+    "definition": "Documented compromising information used, threatened or circulated for reputational, political, legal or bargaining effect.",
+    "safe_graph_rule": "Only encode a person or organization as possessing or using compromising material when a reliable source documents the fact. Mere rumor is stored as an allegation with an explicit uncertainty state.",
+    "relationships": ["POSSESSES_DOCUMENTED_MATERIAL", "PUBLISHES_CLAIM", "THREATENS_RELEASE", "USES_AS_LEVERAGE", "REPORTS_ON", "DENIES", "INVESTIGATES", "ADJUDICATES"]
+  },
+  "moral_bankruptcy": {
+    "potatoverse_meaning": "A symbolic condition in which repeated harmful choices consume the actor's store of trust or legitimacy.",
+    "empirical_translation": ["loss of institutional trust", "loss of membership", "donor withdrawal", "advertiser withdrawal", "resignations", "sanctions", "regulatory action", "litigation exposure", "reputational decline"],
+    "measurement_rule": "Do not collapse these indicators into a supernatural or universal moral score; preserve each observable indicator separately."
+  },
+  "entanglement": {
+    "potatoverse_meaning": "The more traces, obligations and reciprocal consequences accumulate between neighbours, the harder it becomes to treat their stories as independent.",
+    "empirical_translation": ["shared ownership", "contracts", "funding", "employment", "litigation", "co-appearance", "shared boards", "supply dependence", "audience overlap", "information dependence", "political alliances"],
+    "graph_measurements": ["edge_count", "weighted_edge_sum", "reciprocal_edge_count", "shared-neighbour_count", "temporal_overlap", "dependency_count"]
+  },
+  "karmic_debt": {
+    "potatoverse_meaning": "A symbolic accounting of unresolved consequences owed between actors or accumulated through a system.",
+    "empirical_translation": ["legal liabilities", "contractual obligations", "unpaid debts", "restitution", "settlements", "damages", "regulatory remediation", "unresolved disputes", "public commitments not yet fulfilled"],
+    "accounting_rule": "Use the specific legal, financial or institutional quantity when available. Do not convert unrelated harms into a single monetary karma number without a stated methodology."
+  },
+  "karma_owed": {
+    "potatoverse_meaning": "The reciprocal side of karmic debt: a target, neighbour, institution or community may be represented as having an unresolved claim or consequence associated with another actor.",
+    "empirical_translation": ["claimant", "respondent", "creditor", "debtor", "injured party", "beneficiary of restitution", "counterparty", "regulator", "affected community"],
+    "graph_rule": "Represent direction explicitly: OWES, LIABLE_TO, CLAIMS_AGAINST, COMPENSATES, RESTORES_TO, or DISPUTES_WITH."
+  },
+  "milk_system": {
+    "potatoverse_meaning": "Milk is the harvest of the Farm: attention, reaction, conflict, emotional intensity, status and spectacle are symbolically treated as something cultivated and extracted.",
+    "empirical_translation": ["views", "watch time", "comments", "shares", "subscriptions", "donations", "advertising revenue", "membership revenue", "merchandise", "political donations", "fundraising", "media traffic"],
+    "loosh": {
+      "status": "metaphysical/project-defined concept",
+      "definition": "Within the Potatoverse, loosh is the symbolic name for energetic or experiential output associated with suffering and attention.",
+      "empirical_proxy_rule": "The repository may measure attention, engagement, revenue and other observable outputs, but must not label those measurements as proof that loosh is physically real."
+    }
+  },
+  "moloch_system": {
+    "potatoverse_meaning": "Moloch represents a system in which participants sacrifice resources, relationships, truth, wellbeing or neighbours to a larger incentive structure that rewards continued participation.",
+    "empirical_translation": ["competitive escalation", "collective-action failure", "arms-race dynamics", "attention competition", "status competition", "predatory incentives", "rent extraction", "tragedy-of-the-commons patterns", "institutional lock-in"],
+    "analysis_rule": "Treat Moloch as a model of incentive structure unless a specific historical, religious or political claim is separately sourced."
+  },
+  "ten_thousand_neighbours": {
+    "symbolic_definition": "The 10,000 neighbours are the scalable population of targets, counterparties, communities, institutions, rivals, litigants and subjects whose relationships can become part of the Farm/Swamp system.",
+    "implementation": "10,000 is a corpus-design target and symbolic capacity, not a claim that exactly 10,000 real people have been harmed or sold.",
+    "required_record_fields": ["neighbour_id", "entity_type", "jurisdiction", "relationship_to_farm", "event", "date", "source", "evidence_status", "consequence", "counterparty", "confidence"]
+  },
+  "farm_cycle": [
+    {"stage": 1, "name": "cultivation", "description": "An actor, platform or institution selects a subject, narrative, dispute or identity as an object of sustained attention."},
+    {"stage": 2, "name": "framing", "description": "The subject is framed through claims, labels, accusations, praise, ridicule, conflict or spectacle."},
+    {"stage": 3, "name": "reaction", "description": "Targets, supporters, opponents and audiences respond, producing more information and emotional intensity."},
+    {"stage": 4, "name": "harvest", "description": "Attention becomes measurable output such as engagement, revenue, donations, status or political mobilization."},
+    {"stage": 5, "name": "accumulation", "description": "Archives, screenshots, filings, clips, debts, allegations and relationships accumulate as system memory."},
+    {"stage": 6, "name": "entanglement", "description": "New links form among people, organizations, platforms, lawyers, advertisers, donors, journalists and audiences."},
+    {"stage": 7, "name": "reproduction", "description": "The accumulated material becomes fuel for new stories, disputes, fundraising, litigation, commentary or counterattack."},
+    {"stage": 8, "name": "repair_or_escalation", "description": "The system either produces correction, restitution, reconciliation and disengagement, or further conflict and accumulation."}
+  ],
+  "tree_of_strife_mapping": {
+    "root": "incentive to obtain attention, money, status, protection, leverage or victory",
+    "trunk": "institutional mechanism that converts conflict or information into durable records and rewards",
+    "branches": "actors and relationships",
+    "leaves": "claims, posts, lawsuits, broadcasts, donations, contracts, sanctions, filings and reactions",
+    "fruit": "money, reputation, status, punishment, restitution, polarization, audience growth or institutional change",
+    "seeds": "archives, algorithms, social norms, organizational memory and incentives that reproduce the pattern"
+  },
+  "research_program": [
+    "Build evidence records before interpreting them.",
+    "Attach every empirical relationship to a source and date.",
+    "Separate allegation from adjudicated fact.",
+    "Represent both sides of contested relationships where documented.",
+    "Measure flows rather than inventing hidden motives.",
+    "Use network structure to identify entanglement without assuming conspiracy.",
+    "Track unresolved obligations separately from completed consequences.",
+    "Allow repair events to reduce or transform an accumulated relationship rather than making every tree permanently negative.",
+    "Populate the repository with long-form dossiers and machine-readable records so every conceptual claim can be traced to observable evidence or clearly marked interpretation."
+  ]
+}
