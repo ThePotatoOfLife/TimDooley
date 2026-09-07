@@ -1,0 +1,24 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Canonical cross-domain coupling seeds for the Atlas. These are structural relationships, not claims of hidden coordination.",
+  "couplings":[
+    {"id":"couple-country-government","from":"country","to":"government","relation":"governed-by","why":"Connect national records to constitutional and administrative institutions."},
+    {"id":"couple-government-agency","from":"government","to":"security-agency","relation":"oversees-or-contains","why":"Connect public agencies to legal authority and oversight."},
+    {"id":"couple-agency-law","from":"security-agency","to":"law","relation":"operates-under","why":"Make legal mandates and oversight discoverable."},
+    {"id":"couple-country-company","from":"country","to":"company","relation":"hosts-or-regulates","why":"Connect economic actors to jurisdictions without implying ownership."},
+    {"id":"couple-company-finance","from":"company","to":"financial-institution","relation":"financed-by-or-served-by","why":"Expose documented financial relationships when sourced."},
+    {"id":"couple-company-infrastructure","from":"company","to":"infrastructure","relation":"operates-or-supplies","why":"Connect firms to physical systems and supply chains."},
+    {"id":"couple-energy-grid","from":"energy-system","to":"electricity-grid","relation":"connects-to","why":"Model generation, transmission and security as one system."},
+    {"id":"couple-grid-industry","from":"electricity-grid","to":"industry","relation":"enables","why":"Show industrial dependence on electricity infrastructure."},
+    {"id":"couple-port-trade","from":"port","to":"trade","relation":"facilitates","why":"Connect physical logistics to international flows."},
+    {"id":"couple-trade-industry","from":"trade","to":"industry","relation":"supplies-or-serves","why":"Connect trade corridors to productive sectors."},
+    {"id":"couple-belief-country","from":"belief-tradition","to":"country","relation":"has-presence-in","why":"Connect beliefs to geography while avoiding assumptions about individual adherence."},
+    {"id":"couple-belief-institution","from":"belief-tradition","to":"institution","relation":"represented-by","why":"Connect traditions to documented institutions and organizations."},
+    {"id":"couple-event-institution","from":"event","to":"institution","relation":"involves-or-affects","why":"Connect historical events to institutional change."},
+    {"id":"couple-event-country","from":"event","to":"country","relation":"occurs-in-or-affects","why":"Connect chronology to geography."},
+    {"id":"couple-source-record","from":"source","to":"record","relation":"supports","why":"Every empirical claim should be traceable to evidence."},
+    {"id":"couple-record-record","from":"record","to":"record","relation":"related-through-explicit-edge","why":"Prevent isolated backend datasets and expose the wider graph."}
+  ],
+  "guardrails":["Do not infer covert relationships from shared geography or sector","Do not infer ownership from business presence","Do not infer ideological affiliation from association alone","Do not infer individual religious adherence from country-level presence","Every empirical edge should carry provenance when available"]
+}
