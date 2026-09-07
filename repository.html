@@ -6,6 +6,7 @@
 <meta name="description" content="The Potato of Life — searchable atlas.">
 <title>The Potato of Life — Atlas</title>
 <link rel="stylesheet" href="site.css">
+<link rel="stylesheet" href="simple.css">
 </head>
 <body>
 <header class="topbar">
@@ -14,7 +15,6 @@
     <a href="index.html">Home</a><a href="repository.html">Atlas</a><a href="nations.html">World</a><a href="people.html">People</a><a href="belief.html">Ideas</a><a href="potatoism.html">Potatoism</a>
   </nav>
 </header>
-
 <main class="atlas-simple">
   <section class="atlas-head">
     <p class="eyebrow">ATLAS</p>
@@ -22,17 +22,10 @@
     <p>Search the records, then follow their connections. The internal architecture stays underneath the interface rather than becoming the interface.</p>
     <label class="atlas-search-simple"><span class="sr-only">Search the atlas</span><input id="record-search" type="search" placeholder="Search people, places, institutions, ideas, systems…" autofocus><span id="record-count"></span></label>
     <div class="atlas-filters" aria-label="Record filters">
-      <button class="active" data-filter="all">All</button>
-      <button data-filter="node">Core</button>
-      <button data-filter="country">World</button>
-      <button data-filter="event">History</button>
-      <button data-filter="sector">Systems</button>
-      <button data-filter="evidence">Evidence</button>
+      <button class="active" data-filter="all">All</button><button data-filter="node">Core</button><button data-filter="country">World</button><button data-filter="event">History</button><button data-filter="sector">Systems</button><button data-filter="evidence">Evidence</button>
     </div>
   </section>
-
   <section class="atlas-results" id="results" aria-live="polite"></section>
-
   <section class="atlas-lower">
     <a href="nations.html"><strong>World</strong><span>195 nations and their country layers →</span></a>
     <a href="people.html"><strong>People</strong><span>People, communities and social records →</span></a>
@@ -40,34 +33,22 @@
     <a href="potatoism.html"><strong>Potatoism</strong><span>The project's symbolic and mythological layer →</span></a>
   </section>
 </main>
-
 <footer><span>THE POTATO OF LIFE · ATLAS</span><span><a href="index.html">HOME</a> / <a href="nations.html">WORLD</a> / <a href="potatoism.html">POTATOISM</a></span></footer>
 <script>
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const link=(id,name)=>`<a href="node.html?id=${encodeURIComponent(id)}">${esc(name||id)}</a>`;
 async function j(p){const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw Error(p+' '+r.status);return r.json()}
-(async()=>{
- const results=document.getElementById('results'), search=document.getElementById('record-search'), count=document.getElementById('record-count');
- try{
-  const [n,c,s,r,e,events,sectors]=await Promise.all([j('data/nodes.json'),j('data/tree-child-records.json'),j('data/tree-support-records.json'),j('data/relationships.json'),j('data/research.json'),j('data/events.json'),j('data/european-sector-atlas.json')]);
-  const core=[...(n.nodes||[]).map(x=>({...x,_kind:'node'})),...(c.records||[]).map(x=>({...x,_kind:'node'})),...(s.records||[]).map(x=>({...x,_kind:'node'}))];
-  const history=(events.events||[]).map(x=>({id:x.id,name:x.name,description:x.description,type:x.type,layer:'history',_kind:'event',date:x.date_start||''}));
-  const systems=(sectors.sector_families||[]).map((x,i)=>({id:'sector-'+i,name:x.name,description:x.research||'',type:'sector',layer:'systems',_kind:'sector'}));
-  const evidence=(e.facts||[]).map((x,i)=>({id:'evidence-'+i,name:x.claim,description:x.source||'',type:'fact',layer:'evidence',_kind:'evidence'}));
-  const all=[...core,...history,...systems,...evidence];
-  let filter='all';
-  const labels={node:'Core',event:'History',sector:'Systems',evidence:'Evidence'};
-  function render(){
-   const q=search.value.trim().toLowerCase();
-   const shown=all.filter(x=>(filter==='all'||x._kind===filter)&&(!q||[x.id,x.name,x.type,x.layer,x.description,x.date].join(' ').toLowerCase().includes(q))).sort((a,b)=>(a.name||'').localeCompare(b.name||''));
-   count.textContent=shown.length.toLocaleString()+' records';
-   results.innerHTML=shown.slice(0,250).map(x=>`<article class="atlas-row"><div class="atlas-row-meta"><span>${esc(labels[x._kind]||x.layer||x.type||'Record')}</span>${x.date?`<span>${esc(x.date)}</span>`:''}</div><h2>${x._kind==='node'?link(x.id,x.name):esc(x.name)}</h2><p>${esc(x.description||'')}</p></article>`).join('')+(shown.length>250?'<p class="atlas-more">Showing 250 results. Refine the search to continue.</p>':'')||'<p class="atlas-empty">No matching records.</p>';
-  }
-  search.addEventListener('input',render);
-  document.querySelectorAll('.atlas-filters button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.atlas-filters button').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;render()}));
-  render();
- }catch(err){results.innerHTML=`<p class="error">The atlas could not load: ${esc(err.message)}</p>`}
-})();
+(async()=>{const results=document.getElementById('results'),search=document.getElementById('record-search'),count=document.getElementById('record-count');try{
+const [n,c,s,r,e,events,sectors]=await Promise.all([j('data/nodes.json'),j('data/tree-child-records.json'),j('data/tree-support-records.json'),j('data/relationships.json'),j('data/research.json'),j('data/events.json'),j('data/european-sector-atlas.json')]);
+const core=[...(n.nodes||[]).map(x=>({...x,_kind:'node'})),...(c.records||[]).map(x=>({...x,_kind:'node'})),...(s.records||[]).map(x=>({...x,_kind:'node'}))];
+const history=(events.events||[]).map(x=>({id:x.id,name:x.name,description:x.description,type:x.type,layer:'history',_kind:'event',date:x.date_start||''}));
+const systems=(sectors.sector_families||[]).map((x,i)=>({id:'sector-'+i,name:x.name,description:x.research||'',type:'sector',layer:'systems',_kind:'sector'}));
+const evidence=(e.facts||[]).map((x,i)=>({id:'evidence-'+i,name:x.claim,description:x.source||'',type:'fact',layer:'evidence',_kind:'evidence'}));
+const all=[...core,...history,...systems,...evidence];let filter='all';const labels={node:'Core',event:'History',sector:'Systems',evidence:'Evidence'};
+function render(){const q=search.value.trim().toLowerCase();const shown=all.filter(x=>(filter==='all'||x._kind===filter)&&(!q||[x.id,x.name,x.type,x.layer,x.description,x.date].join(' ').toLowerCase().includes(q))).sort((a,b)=>(a.name||'').localeCompare(b.name||''));count.textContent=shown.length.toLocaleString()+' records';results.innerHTML=shown.slice(0,250).map(x=>`<article class="atlas-row"><div class="atlas-row-meta"><span>${esc(labels[x._kind]||x.layer||x.type||'Record')}</span>${x.date?`<span>${esc(x.date)}</span>`:''}</div><h2>${x._kind==='node'?link(x.id,x.name):esc(x.name)}</h2><p>${esc(x.description||'')}</p></article>`).join('')+(shown.length>250?'<p class="atlas-more">Showing 250 results. Refine the search to continue.</p>':'')||'<p class="atlas-empty">No matching records.</p>'}
+search.addEventListener('input',render);document.querySelectorAll('.atlas-filters button').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.atlas-filters button').forEach(x=>x.classList.remove('active'));b.classList.add('active');filter=b.dataset.filter;render()}));
+const q=new URLSearchParams(location.search).get('q');if(q){search.value=q}render();
+}catch(err){results.innerHTML=`<p class="error">The atlas could not load: ${esc(err.message)}</p>`}})();
 </script>
 </body>
 </html>
