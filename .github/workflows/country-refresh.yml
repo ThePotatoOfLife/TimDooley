@@ -15,11 +15,14 @@ on:
 permissions:
   contents: write
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   refresh-country-atlas:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v5
       - name: Instantiate any missing country nodes
         run: python scripts/instantiate_country_nodes.py
       - name: Apply universal country deepening overlay
