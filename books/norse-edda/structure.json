@@ -1,5 +1,5 @@
 {
-  "version":"1.0.0",
+  "version":"1.0.1",
   "purpose":"Turn the stored Edda texts into navigable works rather than undifferentiated text blobs. The raw TXT remains authoritative for the edition; this file supplies structure and Atlas relationships.",
   "works":[
     {"id":"poetic-edda","title":"The Poetic Edda","edition_id":"poetic-edda-bellows-1923","source_type":"poetic corpus","organization":"poems","parts":[
@@ -21,13 +21,22 @@
       {"id":"helgakvitha-hjorvarthssonar","title":"Helgakviða Hjörvarðssonar","domain":"heroic legend","subjects":["Helgi","Sváva","fate","battle"]},
       {"id":"helgakvitha-hundingsbana-i","title":"Helgakviða Hundingsbana I","domain":"heroic legend","subjects":["Helgi","Sigrún","Völsungs","battle"]},
       {"id":"helgakvitha-hundingsbana-ii","title":"Helgakviða Hundingsbana II","domain":"heroic legend","subjects":["Helgi","Sigrún","death","return"]},
+      {"id":"fra-dautha-sinfjotla","title":"Frá dauða Sinfjötla","domain":"heroic prose bridge","subjects":["Sinfjötli","Sigmund","death","Völsungs"]},
+      {"id":"gripisspa","title":"Grípisspá","domain":"prophecy","subjects":["Sigurd","Grípir","fate","Völsung cycle"]},
       {"id":"reginsmol","title":"Reginsmál","domain":"Völsung cycle","subjects":["Sigurd","Regin","Fáfnir","Andvari","gold"]},
       {"id":"fafnismol","title":"Fáfnismál","domain":"Völsung cycle","subjects":["Sigurd","Fáfnir","wisdom","prophecy"]},
       {"id":"sigrdrifumol","title":"Sigrdrífumál","domain":"heroic wisdom","subjects":["Sigurd","Sigrdrifa","runes","counsel"]},
+      {"id":"brot-af-sigutharkvithu","title":"Brot af Sigurðarkviðu","domain":"heroic fragment","subjects":["Sigurd","Brynhild","death","Völsungs"]},
       {"id":"guthrunarkvitha-i","title":"Guðrúnarkviða I","domain":"heroic lament","subjects":["Guðrún","Sigurd","grief","memory"]},
-      {"id":"sigurtharkvitha-en-skammmа","title":"Sigurðarkviða en skamma","domain":"heroic tragedy","subjects":["Sigurd","Brynhild","Guðrún","betrayal"]},
+      {"id":"sigurtharkvitha-en-skamma","title":"Sigurðarkviða en skamma","domain":"heroic tragedy","subjects":["Sigurd","Brynhild","Guðrún","betrayal"]},
       {"id":"helreith-brynhildar","title":"Helreið Brynhildar","domain":"death journey","subjects":["Brynhild","Hel","judgment","memory"]},
-      {"id":"atlаmol","title":"Atlamál en grœnlenzku","domain":"heroic tragedy","subjects":["Atli","Guðrún","Gjúkungar","revenge"]},
+      {"id":"drap-niflunga","title":"Dráp Niflunga","domain":"heroic prose bridge","subjects":["Niflungar","Gjúkungar","death","legend"]},
+      {"id":"guthrunarkvitha-ii","title":"Guðrúnarkviða II","domain":"heroic lament","subjects":["Guðrún","Sigurd","memory","loss"]},
+      {"id":"guthrunarkvitha-iii","title":"Guðrúnarkviða III","domain":"heroic accusation","subjects":["Guðrún","Atli","Herkja","truth"]},
+      {"id":"oddrunargratr","title":"Oddrúnargrátr","domain":"heroic lament","subjects":["Oddrún","Gunnar","Atli","grief"]},
+      {"id":"atlakvitha-en-gronlenzka","title":"Atlakviða en grœnlenzka","domain":"heroic tragedy","subjects":["Atli","Gunnar","Högni","Guðrún","revenge"]},
+      {"id":"atlamol-en-gronlenzku","title":"Atlamál en grœnlenzku","domain":"heroic tragedy","subjects":["Atli","Guðrún","Gjúkungar","revenge"]},
+      {"id":"guthrunarhvot","title":"Guðrúnarhvöt","domain":"heroic exhortation","subjects":["Guðrún","Svanhild","revenge","memory"]},
       {"id":"hamthesmol","title":"Hamðismál","domain":"heroic tragedy","subjects":["Hamðir","Sörli","Jörmunrekkr","revenge"]}
     ]},
     {"id":"prose-edda","title":"The Younger Edda / Prose Edda","edition_id":"prose-edda-anderson-1897","source_type":"prose mythography and poetics","organization":"books and sections","parts":[
