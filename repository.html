@@ -1,1 +1,112 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="The Potato of Life — readable atlas and research archive."><title>The Potato of Life — Atlas</title><link rel="stylesheet" href="site.css"></head><body><header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">✦</span><span>THE POTATO OF LIFE</span></a><nav><a href="#tree">Structure</a><a href="#explore">Explore</a><a href="#evidence">Evidence</a><a href="#connections">Graph</a><a href="potatoism.html">Potatoism</a><a href="nations.html">World</a></nav></header><main><section class="repository-hero atlas-intro"><p class="eyebrow">THE REFERENCE ATLAS</p><h1>Find the <em>thing</em>, then understand its place.</h1><p class="lead">This is the readable face of the repository. Search when you know what you want; use the structure when you want to discover; open a record when you want deeper evidence and connections.</p><div class="hero-actions"><a class="button primary" href="#explore">Explore the archive</a><a class="button" href="potatoism.html">Potatoism hub</a><a class="button" href="nations.html">World gateway</a><a class="button" href="people.html">People & Dwellers</a></div><div class="atlas-search"><input id="record-search" type="search" placeholder="Search people, places, ideas, institutions, systems…" aria-label="Search repository"><span id="record-count" class="muted"></span></div></section><section class="section" id="tree"><div class="section-heading"><div><p class="section-label">THE CANONICAL FRAME</p><h2>The permanent structure.</h2></div><p class="muted">The backend can be enormous. The public interface should remain understandable.</p></div><div id="canonical-tree" class="atlas-tree">Loading…</div></section><section class="section" id="explore"><div class="section-heading"><div><p class="section-label">EXPLORE THE FIELD</p><h2>Where the dense material lives.</h2></div><p class="muted">Choose a field first. Then search within it instead of staring at the whole archive.</p></div><div id="field-guides" class="field-guides"></div><div id="node-list" class="record-index">Loading…</div></section><section class="section" id="evidence"><div class="section-heading"><div><p class="section-label">EVIDENCE</p><h2>Facts, sources and uncertainty.</h2></div><p class="muted">Observation, history, interpretation and project mythology remain distinguishable.</p></div><div id="research-list" class="research-list">Loading…</div></section><section class="section connections" id="connections"><div class="section-heading"><div><p class="section-label">RELATIONSHIPS</p><h2>The connective layer.</h2></div><p class="muted">A record becomes useful when you can see what it depends on, changes, belongs to, controls or connects with.</p></div><div id="relation-list" class="relationship-list">Loading…</div></section></main><footer><span>THE POTATO OF LIFE · ATLAS</span><span><a href="index.html">HOME</a> / <a href="potatoism.html">POTATOISM</a> / <a href="nations.html">WORLD</a></span></footer><script>const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));async function j(p){const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw Error(p+' '+r.status);return r.json()}const link=(id,name)=>`<a class="record-link" href="node.html?id=${encodeURIComponent(id)}">${esc(name||id)}</a>`;(async()=>{try{const [tree,n,research,children,relData]=await Promise.all([j('data/tree.json'),j('data/nodes.json'),j('data/research.json'),j('data/tree-child-records.json'),j('data/relationships.json')]);const records=[...(n.nodes||[]),...(children.records||[])],map=new Map(records.map(x=>[x.id,x]));document.getElementById('canonical-tree').innerHTML=(tree.levels||[]).map((l,i)=>`<article class="atlas-level"><div class="atlas-level-no">${esc(l.roman)}</div><div><div class="level-kicker">LEVEL ${String(i+1).padStart(2,'0')}</div><h3>${link(l.id,l.name)}</h3><p class="atlas-description">${esc(l.description)}</p><div class="atlas-child-grid">${(l.children||[]).map(id=>map.has(id)?`<a href="node.html?id=${encodeURIComponent(id)}"><strong>${esc(map.get(id).name)}</strong><span>${esc(map.get(id).description||'')}</span></a>`:`<span class="missing">${esc(id)}</span>`).join('')}</div></div></article>`).join('');const fields=[['WORLD','195 nations, places, people, institutions and physical/social systems.','Start at the country gateway when you want a geographic entry point.','nations.html'],['PEOPLE','Residents, citizens, peoples, language communities, religions, diasporas, classes and occupations.','Use overlapping identities rather than forcing populations into one box.','people.html'],['BELIEFS','Religions, philosophies, political ideas, nonreligious worldviews and adjacent traditions.','Follow ideas into texts, institutions, communities and history.','belief.html'],['POTATOISM','Project mythology, cosmology, lexicon, timeline, symbolic graph and real-world research.','Use the dedicated hub instead of hunting through raw backend files.','potatoism.html'],['SYSTEMS','Energy, finance, infrastructure, technology, ownership, procurement and trade.','Follow assets, operators, money, dependencies and bottlenecks.','#systems'],['HISTORY','Events, causes, actors, places, institutions, legal changes and consequences.','Events alter the nodes and relationships that exist afterward.','#history']];document.getElementById('field-guides').innerHTML=fields.map(f=>`<a class="field-guide" href="${f[3]}"><span>${f[0]}</span><h3>${f[1]}</h3><p>${f[2]}</p></a>`).join('');const list=document.getElementById('node-list'),search=document.getElementById('record-search'),count=document.getElementById('record-count');function render(){const q=search.value.trim().toLowerCase();const shown=records.filter(x=>!q||[x.id,x.name,x.type,x.layer,x.description].join(' ').toLowerCase().includes(q)).sort((a,b)=>(a.name||a.id).localeCompare(b.name||b.id));count.textContent=`${shown.length.toLocaleString()} records`;list.innerHTML=shown.slice(0,180).map(x=>`<a class="record-index-item" href="node.html?id=${encodeURIComponent(x.id)}"><strong>${esc(x.name||x.id)}</strong><span>${esc(x.type||'record')} · ${esc(x.layer||'')}</span><p>${esc(x.description||'')}</p></a>`).join('')+(shown.length>180?'<p class="muted">Showing the first 180 matches. Refine the search to move deeper into the archive.</p>':'')}search.addEventListener('input',render);render();document.getElementById('research-list').innerHTML=(research.facts||[]).slice(0,80).map(x=>`<article><span>${esc(x.evidence||'')} · ${esc(x.jurisdiction||'')} · ${esc(x.date||'')}</span><h3>${esc(x.claim)}</h3><p>${esc(x.source||'')} · confidence ${esc(x.confidence||'')}</p></article>`).join('');const rels=relData.relationships||[];document.getElementById('relation-list').innerHTML=rels.slice(0,160).map(x=>`<article><span>${esc(x.relationship||'RELATIONSHIP')} · ${esc(x.evidence||'')}</span><h3>${link(x.source,map.get(x.source)?.name||x.source)} <b>→</b> ${link(x.target,map.get(x.target)?.name||x.target)}</h3><p>${esc(x.notes||'')}</p></article>`).join('')}catch(e){document.querySelector('main').insertAdjacentHTML('beforeend',`<p class="error">Atlas could not be loaded: ${esc(e.message)}</p>`)}})();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Potato of Life — readable atlas and research archive.">
+<title>The Potato of Life — Atlas</title><link rel="stylesheet" href="site.css">
+<style>
+.atlas-systems,.atlas-history,.atlas-levels{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px}
+.atlas-card{padding:20px;border:1px solid var(--line);background:var(--paper);border-radius:10px}
+.atlas-card h3{margin:.25rem 0 .55rem;font-family:Georgia,serif;font-weight:400}
+.atlas-card span,.atlas-band{font-size:.68rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted)}
+.atlas-card p{margin:.4rem 0;line-height:1.55}
+.level-card{display:grid;grid-template-columns:48px 1fr;gap:12px;padding:16px;border:1px solid var(--line);background:var(--paper);border-radius:8px}
+.level-card strong{font:400 1.5rem Georgia,serif}.level-card h3{margin:0 0 .3rem;font-weight:500}
+.section-note{max-width:780px;color:var(--muted);line-height:1.6}
+</style>
+</head>
+<body>
+<header class="topbar">
+<a class="brand" href="index.html"><span class="brand-mark">✦</span><span>THE POTATO OF LIFE</span></a>
+<nav><a href="#tree">Structure</a><a href="#levels">33 Levels</a><a href="#explore">Explore</a><a href="#systems">Systems</a><a href="#history">History</a><a href="#evidence">Evidence</a><a href="#connections">Graph</a><a href="potatoism.html">Potatoism</a><a href="nations.html">World</a></nav>
+</header>
+<main>
+<section class="repository-hero atlas-intro">
+<p class="eyebrow">THE REFERENCE ATLAS</p>
+<h1>Find the <em>thing</em>, then understand its place.</h1>
+<p class="lead">The readable face of the repository. Search when you know what you want; use the structure to discover; then move from record to relationships, systems, history and evidence.</p>
+<div class="hero-actions"><a class="button primary" href="#explore">Explore the archive</a><a class="button" href="potatoism.html">Potatoism hub</a><a class="button" href="nations.html">World gateway</a><a class="button" href="people.html">People & Dwellers</a></div>
+<div class="atlas-search"><input id="record-search" type="search" placeholder="Search people, places, ideas, institutions, systems…" aria-label="Search repository"><span id="record-count" class="muted"></span></div>
+</section>
+
+<section class="section" id="tree">
+<div class="section-heading"><div><p class="section-label">THE CANONICAL FRAME</p><h2>The permanent structure.</h2></div><p class="muted">The backend can be enormous. The public interface remains ordered.</p></div>
+<div id="canonical-tree" class="atlas-tree">Loading…</div>
+</section>
+
+<section class="section" id="levels">
+<div class="section-heading"><div><p class="section-label">THE VERTICAL AXIS</p><h2>33 levels, 33 ways to locate a record.</h2></div>
+<p class="section-note">The 33-level axis is a project-defined information architecture. It does not claim that reality literally has 33 metaphysical layers. Each level can open onto a horizontal plane of real records and evidence.</p></div>
+<div id="level-bands" class="atlas-tree">Loading…</div>
+<div id="level-list" class="atlas-levels"></div>
+</section>
+
+<section class="section" id="explore">
+<div class="section-heading"><div><p class="section-label">EXPLORE THE FIELD</p><h2>Where the dense material lives.</h2></div><p class="muted">Choose a field first. Then search within it.</p></div>
+<div id="field-guides" class="field-guides"></div><div id="node-list" class="record-index">Loading…</div>
+</section>
+
+<section class="section" id="systems">
+<div class="section-heading"><div><p class="section-label">SYSTEMS</p><h2>Follow the productive world.</h2></div><p class="section-note">The sector atlas treats each sector as a network of inputs, firms, workers, infrastructure, regulation, finance, trade and outputs rather than an isolated category.</p></div>
+<div id="systems-list" class="atlas-systems"></div>
+</section>
+
+<section class="section" id="history">
+<div class="section-heading"><div><p class="section-label">HISTORY / EVENTS</p><h2>What changed, when, and why it matters.</h2></div><p class="section-note">Events are kept as empirical timeline records with explicit relationships and sources. A project interpretation can sit beside an event without replacing the event record.</p></div>
+<div id="history-list" class="atlas-history"></div>
+</section>
+
+<section class="section" id="evidence">
+<div class="section-heading"><div><p class="section-label">EVIDENCE</p><h2>Facts, sources and uncertainty.</h2></div><p class="muted">Observation, history, interpretation and project mythology remain distinguishable.</p></div>
+<div id="research-list" class="research-list">Loading…</div>
+</section>
+
+<section class="section connections" id="connections">
+<div class="section-heading"><div><p class="section-label">RELATIONSHIPS</p><h2>The connective layer.</h2></div><p class="muted">A record becomes useful when you can see what it depends on, changes, belongs to, controls or connects with.</p></div>
+<div id="relation-list" class="relationship-list">Loading…</div>
+</section>
+</main>
+<footer><span>THE POTATO OF LIFE · ATLAS</span><span><a href="index.html">HOME</a> / <a href="potatoism.html">POTATOISM</a> / <a href="nations.html">WORLD</a></span></footer>
+
+<script>
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function j(p){const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw Error(p+' '+r.status);return r.json()}
+const link=(id,name)=>`<a class="record-link" href="node.html?id=${encodeURIComponent(id)}">${esc(name||id)}</a>`;
+(async()=>{
+try{
+const [tree,n,research,children,relData,levels,sectors,events]=await Promise.all([
+j('data/tree.json'),j('data/nodes.json'),j('data/research.json'),j('data/tree-child-records.json'),
+j('data/relationships.json'),j('data/33-level-framework.json'),j('data/european-sector-atlas.json'),j('data/events.json')
+]);
+const records=[...(n.nodes||[]),...(children.records||[])],map=new Map(records.map(x=>[x.id,x]));
+document.getElementById('canonical-tree').innerHTML=(tree.levels||[]).map((l,i)=>`<article class="atlas-level"><div class="atlas-level-no">${esc(l.roman)}</div><div><div class="level-kicker">LEVEL ${String(i+1).padStart(2,'0')}</div><h3>${map.has(l.id)?link(l.id,l.name):esc(l.name)}</h3><p class="atlas-description">${esc(l.description)}</p><div class="atlas-child-grid">${(l.children||[]).map(id=>map.has(id)?`<a href="node.html?id=${encodeURIComponent(id)}"><strong>${esc(map.get(id).name)}</strong><span>${esc(map.get(id).description||'')}</span></a>`:`<span class="missing">${esc(id)}</span>`).join('')}</div></div></article>`).join('');
+
+document.getElementById('level-bands').innerHTML=(levels.bands||[]).map(b=>`<article class="atlas-level"><div class="atlas-level-no">↕</div><div><div class="level-kicker">${esc(b.levels)}</div><h3>${esc(b.name)}</h3><p class="atlas-description">${esc(b.meaning)}</p></div></article>`).join('');
+document.getElementById('level-list').innerHTML=(levels.levels||[]).map(x=>`<article class="level-card"><strong>${x.number}</strong><div><div class="atlas-band">${esc(x.band)}</div><h3>${esc(x.name)}</h3><p>${esc(x.description)}</p></div></article>`).join('');
+
+const fields=[
+['WORLD','195 nations, places, people, institutions and physical/social systems.','Start at the country gateway when you want a geographic entry point.','nations.html'],
+['PEOPLE','Residents, citizens, peoples, language communities, religions, diasporas, classes and occupations.','Use overlapping identities rather than forcing populations into one box.','people.html'],
+['BELIEFS','Religions, philosophies, political ideas, nonreligious worldviews and adjacent traditions.','Follow ideas into texts, institutions, communities and history.','belief.html'],
+['POTATOISM','Project mythology, cosmology, lexicon, timeline, symbolic graph and real-world research.','Use the dedicated hub instead of hunting through raw backend files.','potatoism.html'],
+['SYSTEMS','Energy, finance, infrastructure, technology, ownership, procurement and trade.','Follow assets, operators, money, dependencies and bottlenecks.','#systems'],
+['HISTORY','Events, causes, actors, places, institutions and consequences.','Open the timeline records and follow their relationship edges.','#history']
+];
+document.getElementById('field-guides').innerHTML=fields.map(f=>`<a class="field-guide" href="${f[3]}"><span>${f[0]}</span><h3>${f[1]}</h3><p>${f[2]}</p></a>`).join('');
+
+const list=document.getElementById('node-list'),search=document.getElementById('record-search'),count=document.getElementById('record-count');
+function render(){const q=search.value.trim().toLowerCase();const shown=records.filter(x=>!q||[x.id,x.name,x.type,x.layer,x.description].join(' ').toLowerCase().includes(q)).sort((a,b)=>(a.name||a.id).localeCompare(b.name||b.id));count.textContent=`${shown.length.toLocaleString()} records`;list.innerHTML=shown.slice(0,180).map(x=>`<a class="record-index-item" href="node.html?id=${encodeURIComponent(x.id)}"><strong>${esc(x.name||x.id)}</strong><span>${esc(x.type||'record')} · ${esc(x.layer||'')}</span><p>${esc(x.description||'')}</p></a>`).join('')+(shown.length>180?'<p class="muted">Showing the first 180 matches. Refine the search to move deeper into the archive.</p>':'')}
+search.addEventListener('input',render);render();
+
+document.getElementById('systems-list').innerHTML=(sectors.sector_families||[]).map(x=>`<article class="atlas-card"><span>${esc(x.layer||'world')}</span><h3>${esc(x.name)}</h3><p><strong>Inputs:</strong> ${esc((x.core_inputs||[]).join(', '))}</p><p><strong>Outputs:</strong> ${esc((x.outputs||[]).join(', '))}</p><p><strong>Dependencies:</strong> ${esc((x.dependencies||[]).join(', '))}</p><p>${esc(x.research||'')}</p></article>`).join('');
+
+document.getElementById('history-list').innerHTML=(events.events||[]).map(x=>`<article class="atlas-card"><span>${esc(x.date_start||'')} → ${esc(x.date_end||'')} · ${esc(x.type||'event')}</span><h3>${esc(x.name)}</h3><p>${esc(x.description)}</p><p><strong>Relations:</strong> ${esc((x.relations||[]).join(', '))}</p><p>${(x.sources||[]).map(s=>`<span class="source">${esc(s.publisher)} · ${esc(s.date)} · ${esc(s.title)}</span>`).join('<br>')}</p></article>`).join('');
+
+document.getElementById('research-list').innerHTML=(research.facts||[]).slice(0,80).map(x=>`<article><span>${esc(x.evidence||'')} · ${esc(x.jurisdiction||'')} · ${esc(x.date||'')}</span><h3>${esc(x.claim)}</h3><p>${esc(x.source||'')} · confidence ${esc(x.confidence||'')}</p></article>`).join('');
+
+const rels=relData.relationships||[];
+document.getElementById('relation-list').innerHTML=rels.slice(0,160).map(x=>`<article><span>${esc(x.relationship||'RELATIONSHIP')} · ${esc(x.evidence||'')}</span><h3>${link(x.source,map.get(x.source)?.name||x.source)} <b>→</b> ${link(x.target,map.get(x.target)?.name||x.target)}</h3><p>${esc(x.notes||'')}</p></article>`).join('');
+}catch(e){document.querySelector('main').insertAdjacentHTML('beforeend',`<p class="error">Atlas could not be loaded: ${esc(e.message)}</p>`)}
+})();
+</script>
+</body></html>
