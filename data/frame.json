@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "name": "Tim Dooley Frame",
+  "status": "canonical-project-architecture",
+  "rule": "relationships-first",
+  "layers": ["mythological", "philosophical", "empirical", "calculated", "estimated", "scenario", "historical", "creative"],
+  "vertical": [
+    "source",
+    "father",
+    "fathers-house",
+    "heaven",
+    "throne-of-north",
+    "ladder",
+    "door",
+    "son",
+    "axis",
+    "tree-of-life",
+    "plane",
+    "roots",
+    "potato-of-life"
+  ],
+  "directions": ["north", "south", "east", "west"],
+  "trees": {
+    "tree-of-life": {"roots":"origin-memory-potential", "trunk":"axis-continuity", "branches":"differentiation", "fruit":"manifestation", "seed":"renewal"},
+    "tree-of-strife": {"meaning":"fragmented-tree-pattern", "failure_mode":"relationships replaced by fear-competition-extraction-conflict"}
+  },
+  "archetypes": {
+    "red-potato": ["creativity", "love", "expansion", "emergence", "sprouting", "forward-movement"],
+    "blue-potato": ["memory", "precision", "contraction", "rootward-movement", "fear", "conservation"]
+  },
+  "geometry": {
+    "circle":"totality",
+    "vesica-piscis":"relationship-and-door",
+    "cross":"horizontal-vertical-intersection",
+    "axis":"vertical-orientation",
+    "plane":"horizontal-manifestation",
+    "spiral":"movement-through-time"
+  },
+  "cycle": ["source", "life", "world", "death", "memory", "renewal", "life"],
+  "canonical_transformations": [
+    {"from":"father-son-relationship", "to":"door", "layer":"mythological"},
+    {"from":"son", "to":"ladder", "layer":"mythological", "note":"crucifixion-transformation motif"},
+    {"from":"axis", "to":"tree", "layer":"mythological", "note":"living expression of vertical continuity"},
+    {"from":"tree", "to":"graph", "layer":"philosophical", "note":"relationship grammar applied to observable systems"}
+  ],
+  "data_policy": {
+    "metaphor_is_not_evidence": true,
+    "required_relationship_fields": ["source", "relationship", "target", "evidence", "confidence", "date", "notes"],
+    "evidence_classes": ["observed", "calculated", "estimated", "scenario", "interpretation", "historical", "mythological", "creative"]
+  }
+}
