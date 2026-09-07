@@ -1,0 +1,12 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Country graph node mappings for the final five enrichment overlays.",
+  "nodes":[
+    {"id":"country-holy-see","country_id":"holy-see","type":"nation","enrichment":"data/countries/holy-see-enrichment.json"},
+    {"id":"country-venezuela","country_id":"venezuela","type":"nation","enrichment":"data/countries/venezuela-enrichment.json"},
+    {"id":"country-yemen","country_id":"yemen","type":"nation","enrichment":"data/countries/yemen-enrichment.json"},
+    {"id":"country-zambia","country_id":"zambia","type":"nation","enrichment":"data/countries/zambia-enrichment.json"},
+    {"id":"country-zimbabwe","country_id":"zimbabwe","type":"nation","enrichment":"data/countries/zimbabwe-enrichment.json"}
+  ]
+}
