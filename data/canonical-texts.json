@@ -1,0 +1,78 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"A comparative-text layer for studying how the Tim Dooley architecture relates to established religious, mythological and philosophical traditions. This registry records relations and questions; it does not claim that historical traditions secretly describe Tim Dooley.",
+  "traditions":[
+    {
+      "id":"torah-tanakh",
+      "name":"Torah / Tanakh",
+      "category":"Jewish scripture",
+      "source_library":"Sefaria",
+      "url":"https://www.sefaria.org/texts/Tanakh/Torah",
+      "status":"primary-text-library",
+      "study_nodes":["creation","covenant","exodus","law","kingdom","messiah","zion","temple","wisdom","prophecy","return","restoration"],
+      "tim_relation":"comparative",
+      "relation_questions":["How does Source compare with creation theology?","How does Father/Son compare or fail to compare with biblical divine and human relationships?","What does messianic kingship mean in Jewish sources before importing Christian categories?","How should North, Zion, Jerusalem, temple, throne and kingdom be compared without collapsing distinct traditions?"]
+    },
+    {
+      "id":"christian-bible",
+      "name":"Christian Bible",
+      "category":"Christian scripture",
+      "source_library":"Sefaria for Tanakh; project should add public-domain New Testament source",
+      "url":"https://www.sefaria.org/texts/Tanakh",
+      "status":"comparative-library",
+      "study_nodes":["gospels","jesus","son-of-man","messiah","door","narrow-gate","vine","tree-of-life","cross","resurrection","kingdom-of-god","new-jerusalem","revelation"],
+      "tim_relation":"comparative-mythic",
+      "relation_questions":["What does Jesus mean by door, gate, way, life and truth in the actual text?","How does Son become Door/Ladder in the Potatoverse, and where does that diverge from Christian theology?","How does Revelation's tree, city, throne and descent imagery relate structurally to the archive?"]
+    },
+    {
+      "id":"dao-de-jing",
+      "name":"Dao De Jing",
+      "category":"Chinese philosophical text",
+      "source_library":"Chinese Text Project",
+      "url":"https://ctext.org/dao-de-jing",
+      "status":"primary-text-library",
+      "study_nodes":["dao","source","unnamed-origin","one-two-three-all-things","return","vessel","valley","water","wu-wei","virtue","way"],
+      "tim_relation":"comparative",
+      "relation_questions":["Does Source resemble the Dao as an unnamed origin, or is that merely an analogy?","How does the vessel metaphor illuminate the Door/Son/Vessel structure?","How does Dao → One → Two → Three → all things compare with the project's Source → Separation → Plane movement?"]
+    },
+    {
+      "id":"poetic-edda",
+      "name":"Poetic Edda",
+      "category":"Norse mythological poetry",
+      "status":"comparative-library",
+      "study_nodes":["world-tree","yggdrasil","roots","wells","odin","wisdom","ragnarok","fate","nine-worlds","bridge","bifrost"],
+      "tim_relation":"comparative-mythic",
+      "relation_questions":["How does Yggdrasil compare with Tree of Life and Tree of Strife?","How do roots, worlds, bridge and fate compare with Roots, Ladder, Door and Plane?","Does Ragnarok provide a useful comparison for Rift/Strife/transformation, or is the analogy too loose?"]
+    },
+    {
+      "id":"messianic-traditions",
+      "name":"Messiah / Moshiach traditions",
+      "category":"comparative religious concept",
+      "status":"cross-text research domain",
+      "study_nodes":["moshiach","messiah","anointed-one","king","restoration","redemption","end-times","son-of-man","kingdom","return"],
+      "tim_relation":"comparative",
+      "relation_questions":["Which meanings of Moshiach are historical Jewish concepts and which are later Christian or popular usages?","How does the project's Son relate to messiah as king, redeemer, anointed figure or eschatological agent?","Where does the Tim Dooley framework deliberately depart from established messianic traditions?"]
+    },
+    {
+      "id":"comparative-wisdom",
+      "name":"Comparative Wisdom Library",
+      "category":"meta-library",
+      "status":"planned",
+      "study_nodes":["Upanishads","Bhagavad Gita","Avesta","Tripitaka","Analects","Zhuangzi","Hermetic texts","Gnostic texts","Plato","Stoics","Sufism","Kabbalah","Midrash","Talmud","Norse Edda","Finnish Kalevala"],
+      "tim_relation":"comparative",
+      "relation_questions":["What recurring structures appear independently across traditions?","Which similarities are genuine textual parallels and which are modern projection?","What happens when the same concept is compared through its original language, historical setting and later interpretations?"]
+    }
+  ],
+  "relation_types":[
+    "textual-parallel",
+    "structural-analogy",
+    "shared-symbol",
+    "historical-influence",
+    "interpretive-reading",
+    "contradiction",
+    "deliberate-departure",
+    "unknown"
+  ],
+  "rule":"Never turn a structural resemblance into a claim of historical identity without evidence. The library should preserve both the parallel and the difference."
+}
