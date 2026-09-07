@@ -1,11 +1,12 @@
 {
-  "version":"1.2.0",
+  "version":"1.3.0",
   "updated":"2026-09-07",
   "purpose":"Backend registry of reusable blueprints. A blueprint defines fields, sources, normalization rules, temporal models, relationships and refresh logic inherited by concrete records.",
   "visibility":"backend-only",
   "inheritance_rule":"Concrete records store observations and relationships; instructions belong to the parent blueprint.",
   "blueprints":[
     {"id":"country","file":"data/countries-blueprint.json","applies_to":"all canonical countries","status":"active"},
+    {"id":"people-dweller","file":"data/blueprints/people-dweller-master.json","applies_to":"populations, peoples, citizens, residents, language communities, religious communities, political constituencies, cultural communities, classes, occupations, institutions, diasporas and project-symbolic dwellers","status":"active"},
     {"id":"religious-foundation","file":"data/blueprints/religious-foundation.json","applies_to":"religions and religious families","status":"active"},
     {"id":"religious-architecture","file":"data/blueprints/religious-architecture.json","applies_to":"field/substrate/foundation/formation/trunk/branch religious history and cross-cutting religious dimensions","status":"active"},
     {"id":"denomination-school","file":"data/blueprints/structural-patterns.json#denomination-school","applies_to":"denominations, schools, rites and theological movements","status":"active"},
@@ -24,6 +25,7 @@
     {"id":"resource-system","file":"data/blueprints/structural-patterns.json#resource-system","applies_to":"energy, minerals, water and food resources","status":"active"},
     {"id":"ecological-system","file":"data/blueprints/structural-patterns.json#ecological-system","applies_to":"ecosystems and ecological networks","status":"active"}
   ],
+  "people_data":[{"id":"people-registry","file":"data/people-registry.json","role":"foundational people/dweller vocabulary and group-type registry","status":"active"}],
   "religious_data":[{"id":"religious-foundations","file":"data/religious-foundations.json","role":"concrete foundation/emergence records","status":"active"},{"id":"potatoism-religion","file":"data/potatoism-religion.json","role":"project-defined contemporary religious/mythic record","status":"active"},{"id":"religious-comparative-library","file":"data/religious-comparative-library.json","role":"comparative text/concept library","status":"active"}],
   "universal_inheritance":["identity","history","function-or-ideas","sources","interpretation","practice-or-operation","organization","population-or-users","geography","institutions","material-base","power-or-control","network","change","evidence","time","provenance"],
   "automation_rule":"Blueprints are executable specifications. Acquisition jobs read them to discover fields, sources, refresh intervals, validators, derived measures and relationship templates. Missing data is recorded as missing, never silently fabricated."
