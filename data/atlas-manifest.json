@@ -1,19 +1,24 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-07",
   "name":"Tim Dooley Atlas — Unified Manifest",
-  "purpose":"One human-readable map of the entire repository. The project remains layered internally, but every layer is addressable through one canonical atlas manifest.",
+  "purpose":"The canonical map of the repository. Internal datasets remain modular, but the atlas presents them as one system with stable layers, routes, record identity, relationships and evidence.",
   "principle":"One atlas, many layers. Records are the objects; relationships explain how they connect; evidence explains what is known; architecture explains where things belong.",
+  "architecture":{"root":"Tim Dooley","spine":["Source","Separation","Ladder","Door","Son","Tree of Life","Tree of Strife","Potato","World","North Programme"],"directions":["North","South","East","West"],"rule":"The architecture is a project-defined interpretive frame; it does not convert metaphor into empirical evidence."},
   "layers":{
     "architecture":{"label":"Architecture","purpose":"Canonical Frame, Tree and 33-level information architecture.","files":["data/frame.json","data/tree.json","data/33-level-framework.json"]},
-    "graph":{"label":"Graph","purpose":"Nodes and explicit relationships joining the archive.","files":["data/nodes.json","data/relationships.json","data/graph-registry.json","data/graph-carvings.json"]},
-    "world":{"label":"World","purpose":"195 canonical nations and their geographic, institutional and social layers.","files":["data/countries/index.json","data/country-atlas.json","data/country-nodes.json","data/country-layer-manifest.json"]},
+    "graph":{"label":"Graph","purpose":"Canonical records and explicit relationships joining the archive.","files":["data/nodes.json","data/relationships.json","data/graph-registry.json","data/graph-carvings.json"]},
+    "world":{"label":"World","purpose":"The canonical 195-nation world layer and its geographic, institutional and social enrichment.","files":["data/countries/index.json","data/country-atlas.json","data/country-nodes.json","data/country-layer-manifest.json"]},
     "research":{"label":"Evidence","purpose":"Facts, sources, events and research material with provenance and confidence.","files":["data/research.json","data/events.json","data/country-source-registry.json"]},
     "systems":{"label":"Systems","purpose":"Economic, energy, infrastructure, technology, labour, finance and strategic-system studies.","files":["data/european-sector-atlas.json"]},
     "mythology":{"label":"Potatoism","purpose":"Project mythology, symbols, lore and interpretive architecture, kept distinct from empirical evidence.","files":["data/potatoverse-lore.json","potatoism.html"]}
   },
-  "canonical_world":{"nations":195,"effective_enriched_nations":195},
+  "canonical_world":{"nations":195,"effective_enriched_nations":195,"enrichment_status":"complete"},
+  "record_model":{"identity":"id","display":"name","classification":["type","layer"],"content":"description","connections":"relationships","proof":"evidence","geography":"country-id where applicable"},
+  "count_definitions":{"core_atlas_records":"nodes + tree-child records + tree-support records; this is a navigational core, not a repository file count.","relationships":"explicit records in data/relationships.json.","evidence_facts":"facts in data/research.json.","sources":"source records referenced by research/event/country evidence layers.","nations":"canonical country records in data/countries/index.json.","enriched_nations":"canonical nations with active enrichment overlays according to data/country-layer-manifest.json."},
   "navigation":{"home":"index.html","atlas":"repository.html","world":"nations.html","people":"people.html","beliefs":"belief.html","potatoism":"potatoism.html","record":"node.html?id=<id>","nation":"nation.html?id=<country-id>"},
   "workflow":["Find a record","Locate it in the architecture","Follow its relationships","Inspect evidence","Return to the wider system"],
+  "compatibility":{"backend_registry":"data/backend.json","status":"backend.json remains the machine health/endpoint registry; atlas-manifest.json is the human-facing canonical map."},
+  "retirement_policy":"Do not delete a legacy dataset merely because another layer overlaps it. First establish a canonical owner, migrate consumers, mark the old file as compatibility-only, then remove it only when no live route depends on it.",
   "rule":"Never require the user to understand the backend file structure before they can understand the project. The website is the map; the JSON files are the machinery beneath it."
 }
