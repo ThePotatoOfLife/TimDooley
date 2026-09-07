@@ -8,11 +8,12 @@ ROOT = Path(__file__).resolve().parents[1]
 for name in ['data/religious-foundations/enriched-records.json','data/religious-foundations/minor-traditions.json']:
     path = ROOT / name
     raw = path.read_text(encoding='utf-8-sig')
-    slash_n = chr(92) + 'n'
-    print(f'{name}: literal backslash-n separators={raw.count(slash_n)}')
-    # Normalize legacy token separators and trailing commas while preserving
-    # commas that occur inside quoted strings.
-    fixed = raw.replace(slash_n, chr(10))
+    one = chr(92) + 'n'
+    two = chr(92) * 2 + 'n'
+    print(f'{name}: one-slash-n={raw.count(one)} two-slash-n={raw.count(two)}')
+    fixed = raw.replace(two, chr(10)).replace(one, chr(10))
+    # The legacy files can also contain JSON-string-style escaped newlines at
+    # record boundaries. Normalize those separators before strict parsing.
     fixed = re.sub(r',([\s]*[}\]])', r'\1', fixed)
     if fixed != raw:
         path.write_text(fixed, encoding='utf-8')
