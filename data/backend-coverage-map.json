@@ -1,12 +1,26 @@
 {
-  "version":"1.1.0",
-  "updated":"2026-09-07",
-  "purpose":"Backend ownership, frontend consumption and audit map. Every populated dataset must either feed a visible route or be explicitly research-only.",
-  "frontend_contract":"data/frontend-atlas-bridge.json",
-  "country_contract":"data/country-fallback.json",
-  "coupling_contract":"data/cross-domain-couplings.json",
-  "rules":["one primary owner per dataset","declare frontend consumers","declare route or backend-only status","relationship endpoints must resolve or be explicitly unresolved","live sources are optional enrichment and cannot be the sole source for canonical navigation","unknown is not zero"],
-  "datasets":{
+  "version": "1.2.0",
+  "updated": "2026-09-08",
+  "purpose": "Backend ownership, frontend consumption and audit map. Every populated dataset must either feed a visible route or be explicitly backend-owned/research-only.",
+  "frontend_contract": "data/frontend-atlas-bridge.json",
+  "country_contract": "data/country-fallback.json",
+  "coupling_contract": "data/cross-domain-couplings.json",
+  "rules": [
+    "one primary owner per dataset",
+    "declare frontend consumers when applicable",
+    "declare route or backend-only status",
+    "relationship endpoints must resolve or be explicitly unresolved",
+    "live sources are optional enrichment and cannot be the sole source for canonical navigation",
+    "unknown is not zero"
+  ],
+  "layers": [
+    {"file":"data/countries/*.json","owner":"countries","consumers":["nation.html","repository.html","node.html"],"status":"backend-owned-country-layer"},
+    {"file":"data/expansions/*.json","owner":"expansion-research","consumers":["repository.html","node.html"],"status":"backend-owned-research-layer"},
+    {"file":"data/religious-adjacent/*.json","owner":"religious-adjacent","consumers":["repository.html","node.html"],"status":"backend-owned-research-layer"},
+    {"file":"data/religious-foundations/*.json","owner":"religious-foundations","consumers":["repository.html","node.html"],"status":"backend-owned-research-layer"},
+    {"file":"data/*.json","owner":"backend-registry","consumers":["repository.html","research views"],"status":"backend-owned-unclassified"}
+  ],
+  "datasets": {
     "data/atlas-expansion-matrix.json":{"owner":"architecture","consumers":["repository.html","index.html"],"status":"visible-research-control"},
     "data/research-frontier.json":{"owner":"research","consumers":["repository.html","research views"],"status":"visible-research-control"},
     "data/security-intelligence-organizations.json":{"owner":"security","consumers":["repository.html","node.html","country views"],"status":"frontend-required"},
@@ -16,5 +30,5 @@
     "data/north-europe-economic-network.json":{"owner":"systems","consumers":["repository.html","node.html"],"status":"frontend-required"},
     "data/cross-domain-couplings.json":{"owner":"relational_dynamics","consumers":["node.html","repository.html","country views"],"status":"frontend-required"}
   },
-  "country_resolution":"data/country-fallback.json"
+  "country_resolution": "data/country-fallback.json"
 }
