@@ -1,0 +1,34 @@
+name: Instantiate country nodes
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - 'data/countries/index.json'
+      - 'data/countries-blueprint.json'
+      - 'scripts/instantiate_country_nodes.py'
+
+permissions:
+  contents: write
+
+jobs:
+  instantiate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Instantiate all country nodes
+        run: python scripts/instantiate_country_nodes.py
+
+      - name: Commit generated nodes
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data/countries
+          if git diff --cached --quiet; then
+            echo 'No country-node changes.'
+          else
+            git commit -m 'Instantiate canonical country nodes'
+            git push
+          fi
