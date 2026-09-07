@@ -1,5 +1,5 @@
 {
-  "version":"2.1.0",
+  "version":"2.2.0",
   "updated":"2026-09-07",
   "name":"Tim Dooley Atlas — Unified Manifest",
   "purpose":"The canonical map of the repository. Internal datasets remain modular, but the atlas presents them as one system with stable layers, routes, record identity, relationships, entanglement and evidence.",
@@ -9,10 +9,11 @@
   "frontend_bridge":"data/frontend-atlas-bridge.json",
   "country_fallback":"data/country-fallback.json",
   "cross_domain_couplings":"data/cross-domain-couplings.json",
+  "record_model":{"entanglement":["strength","dependency","distance","feedback","topology","trajectory","phase"]},
   "layers":{
     "architecture":{"label":"Architecture","files":["data/frame.json","data/tree.json","data/33-level-framework.json","data/axis-topology.json","data/tree-concept-records.json"]},
     "graph":{"label":"Graph","files":["data/nodes.json","data/relationships.json","data/graph-registry.json","data/graph-carvings.json","data/evidence/relationships.json","data/entanglement.json","data/global-graph-bridge.json"]},
-    "world":{"label":"World","files":["data/countries/index.json","data/country-atlas.json","data/country-nodes.json","data/country-layer-manifest.json","data/indicator-catalog.json","data/indicator-source-matrix.json","data/country-fallback.json"]},
+    "world":{"label":"World","files":["data/countries/index.json","data/country-static.json","data/country-atlas.json","data/country-nodes.json","data/country-layer-manifest.json","data/indicator-catalog.json","data/indicator-source-matrix.json","data/country-fallback.json"]},
     "research":{"label":"Evidence","files":["data/research.json","data/events.json","data/country-source-registry.json","data/evidence/observations.json","data/evidence/missing-data.json","data/evidence-map.json"]},
     "systems":{"label":"Systems","files":["data/european-sector-atlas.json","data/north-europe-system-atlas.json","data/north-europe-economic-network.json","data/indicator-catalog.json","data/expansion-registry.json","data/atlas-expansion-matrix.json"]},
     "security":{"label":"Security, Intelligence and Extremism","files":["data/security-intelligence-organizations.json","data/security-intelligence-country-layer.json","data/intelligence-security-graph.json","data/extremist-hate-groups.json","data/extremism-terrorism-nrm-expansion.json"]},
