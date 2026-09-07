@@ -1,5 +1,5 @@
 {
-  "version": "1.0.1",
+  "version": "1.0.2",
   "updated": "2026-09-07",
   "purpose": "Canonical registry for full-text books stored as raw UTF-8 text so the Atlas can search words, phrases, passages and books directly.",
   "search_policy": {
@@ -25,7 +25,9 @@
       "source_url": "https://www.gutenberg.org/ebooks/73533",
       "raw_url": "https://www.gutenberg.org/cache/epub/73533/pg73533.txt",
       "path": "books/norse-edda/poetic-edda-bellows-1923.txt",
-      "status": "import-requested",
+      "status": "imported-and-verified",
+      "repository_size_bytes": 977828,
+      "repository_blob_sha": "30289bca523f373d67edfcc3ace342f1c8c9c73f",
       "notes": "Full Gutenberg plain-text edition. Includes introduction, notes, lays of the gods and lays of the heroes."
     },
     {
@@ -43,7 +45,9 @@
       "source_url": "https://www.gutenberg.org/ebooks/18947",
       "raw_url": "https://www.gutenberg.org/cache/epub/18947/pg18947.txt",
       "path": "books/norse-edda/prose-edda-anderson.txt",
-      "status": "import-requested",
+      "status": "imported-and-verified",
+      "repository_size_bytes": 407617,
+      "repository_blob_sha": "c1bc90aa7d31b670b5b913e08bd0ccfd9792022b",
       "notes": "Full Gutenberg plain-text edition covering the Foreword, Gylfaginning, Skaldskaparmal, Hattatal and associated material in this edition."
     }
   ],
