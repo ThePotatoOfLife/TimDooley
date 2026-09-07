@@ -1,0 +1,13 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Small canonical checklist for repository integrity milestones.",
+  "checks":[
+    {"id":"belief-integrity","owner":"data/belief-integrity.json","status":"active","test":"Visible belief labels must resolve to substantive definitions or explicit category records."},
+    {"id":"political-lexicon","owner":"data/political-lexicon.json","status":"active","test":"Political entries require definitions; coordinates are analytical approximations."},
+    {"id":"religious-lexicon","owner":"data/religious-lexicon.json","status":"active","test":"Religious entries require descriptive definitions and preserve internal diversity."},
+    {"id":"spatial-potato","owner":"data/potato-spatial-map.json","status":"active","test":"Spatial Potato concepts must resolve through the tree and canonical spatial map."},
+    {"id":"manifest-alignment","owner":"data/atlas-manifest.json","status":"active","test":"Canonical datasets added to the architecture must be declared by the manifest/backend."}
+  ],
+  "definition_of_pass":"No critical dangling reference, no claimed enrichment supported only by file existence, and no visible label represented solely by placeholder text."
+}
