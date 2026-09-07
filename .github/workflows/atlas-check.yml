@@ -10,6 +10,9 @@ on:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 concurrency:
   group: atlas-check-${{ github.workflow }}-${{ github.ref }}
   cancel-in-progress: false
@@ -20,7 +23,7 @@ jobs:
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Validate atlas structure
         run: python scripts/validate_atlas.py
       - name: Validate architecture layers
