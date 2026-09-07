@@ -1,9 +1,10 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-07",
   "name": "Tim Dooley Frame",
   "status": "canonical-project-architecture",
   "rule": "relationships-first",
+  "second_rule": "study_entanglement_without_collapsing_distinct_evidence_classes",
   "layers": ["mythological", "philosophical", "empirical", "calculated", "estimated", "scenario", "historical", "creative"],
   "vertical": [
     "source",
@@ -21,6 +22,7 @@
     "potato-of-life"
   ],
   "directions": ["north", "south", "east", "west"],
+  "terrain": ["axis", "mountain", "plane", "mud", "swamp", "roots", "drain", "door"],
   "trees": {
     "tree-of-life": {"roots":"origin-memory-potential", "trunk":"axis-continuity", "branches":"differentiation", "fruit":"manifestation", "seed":"renewal"},
     "tree-of-strife": {"meaning":"fragmented-tree-pattern", "failure_mode":"relationships replaced by fear-competition-extraction-conflict"}
@@ -37,16 +39,27 @@
     "plane":"horizontal-manifestation",
     "spiral":"movement-through-time"
   },
+  "relationship_model": {
+    "entanglement": "structured relational dependence, coupling, correlation, topology, feedback and path dependence",
+    "trajectory": "state transitions through time",
+    "topology": "connectivity, bridges, bottlenecks, boundaries, cycles, basins and attractors",
+    "fate_destiny": "interpretive model for perceived trajectory and constraint; never silently promoted to empirical causation"
+  },
   "cycle": ["source", "life", "world", "death", "memory", "renewal", "life"],
   "canonical_transformations": [
     {"from":"father-son-relationship", "to":"door", "layer":"mythological"},
     {"from":"son", "to":"ladder", "layer":"mythological", "note":"crucifixion-transformation motif"},
     {"from":"axis", "to":"tree", "layer":"mythological", "note":"living expression of vertical continuity"},
-    {"from":"tree", "to":"graph", "layer":"philosophical", "note":"relationship grammar applied to observable systems"}
+    {"from":"tree", "to":"graph", "layer":"philosophical", "note":"relationship grammar applied to observable systems"},
+    {"from":"relationship", "to":"entanglement", "layer":"philosophical", "note":"relations can have distance, coupling, feedback, topology and trajectories"}
   ],
   "data_policy": {
     "metaphor_is_not_evidence": true,
+    "hawkins_frequency_is_not_hz": true,
+    "quantum_entanglement_is_not_fate": true,
     "required_relationship_fields": ["source", "relationship", "target", "evidence", "confidence", "date", "notes"],
+    "recommended_relationship_fields": ["entanglement_type", "strength", "distance", "directionality", "dependency", "temporal_order", "path_dependence", "feedback", "topology", "trajectory", "phase", "counterfactual"],
     "evidence_classes": ["observed", "calculated", "estimated", "scenario", "interpretation", "historical", "mythological", "creative"]
-  }
+  },
+  "canonical_supporting_data": ["data/entanglement.json", "data/axis-topology.json", "data/hawkins-scale.json"]
 }
