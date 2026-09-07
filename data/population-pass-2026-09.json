@@ -1,0 +1,22 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Concrete work register for the September 2026 Atlas population pass. It records what should be populated next, how records become usable, and what must remain explicitly unknown.",
+  "principles":["identity before aggregation","source before assertion","relationship before isolation","latest available observation rather than invented current value","unknown is not zero","project mythology remains distinct from empirical layers"],
+  "workstreams":[
+    {"id":"country-core","priority":"P0","target":"195 canonical countries","actions":["populate latest available World Bank indicators","retain observation year per metric","attach provenance","preserve historical observations","render through repository snapshot"],"completion_rule":"Every canonical country has a stable record and an auditable observation state, even when some indicators are missing."},
+    {"id":"country-institutions","priority":"P1","target":"national political and institutional structure","actions":["head-of-state and head-of-government fields where sourced","constitutional form","legislature","judiciary","central bank","major ministries","international memberships"],"completion_rule":"No institution is inferred from a country name alone; each added institution gets a source."},
+    {"id":"economic-graph","priority":"P0","target":"European economic relationships","actions":["central banks","treasuries","major public financial institutions","debt relationships","ownership chains","procurement","state aid","energy dependencies","trade corridors"],"completion_rule":"Observed ownership, financing and contractual relationships are separated from policy proposals and hypotheses."},
+    {"id":"north-energy","priority":"P0","target":"North Sea energy system","actions":["offshore wind","transmission operators","interconnectors","ports","cables","hydrogen projects","grid investment","industrial suppliers"],"completion_rule":"Each infrastructure edge identifies an operator, location or source when known."},
+    {"id":"belief-graph","priority":"P1","target":"religion and worldview layer","actions":["stable IDs","family relationships","denomination trees","founding periods","texts","geographic spread","institutional links","historical schisms"],"completion_rule":"Descriptive classification is kept separate from theological truth claims and organizational claims."},
+    {"id":"security-graph","priority":"P1","target":"public security and intelligence structure","actions":["legal mandate","parent ministry","oversight","public budget","historical predecessor/successor","public liaison relationships"],"completion_rule":"No covert relationship is inferred without public evidence."},
+    {"id":"technology-industry","priority":"P1","target":"strategic industrial capacity","actions":["semiconductors","cloud","telecom","pharmaceuticals","advanced materials","robotics","industrial automation","research clusters"],"completion_rule":"Company and facility claims require attributable evidence and geography."},
+    {"id":"frontend-routing","priority":"P0","target":"every major record","actions":["route record to node.html","route collections to directory views","resolve local data before external links","surface source and relationship panels","remove dead placeholder states"],"completion_rule":"A user clicking a populated record reaches a useful local entry rather than an empty shell."}
+  ],
+  "next_batch":[
+    {"domain":"world","records":["Afghanistan","Albania","Algeria","Andorra","Angola","Antigua and Barbuda","Argentina","Armenia","Australia","Austria"]},
+    {"domain":"north-europe","records":["Denmark","Germany","Netherlands","Belgium","France","Norway","Sweden","Finland","Poland","United Kingdom"]},
+    {"domain":"belief","records":["Christianity","Protestantism","Adventism","Catholicism","Eastern Orthodoxy","Islam","Judaism","Hinduism","Buddhism","Sikhism","Jainism","Zoroastrianism","Bahá’í Faith","Taoism","Confucianism","Shinto"]}
+  ],
+  "quality_checks":["JSON parses","IDs are unique","relationship endpoints resolve or are explicitly queued","sources are attributable","observation dates are preserved","routes resolve","manifest references exist","no placeholder text remains in promoted records"]
+}
