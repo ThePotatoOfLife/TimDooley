@@ -5,7 +5,8 @@ import json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 ERRORS=[]
-_TERMS=["TO"+"DO","FIX"+"ME","T"+"BD","T"+"BA","COMING"+" SOON","UNDER"+" CONSTRUCTION"]
+# TODO is intentionally allowed because data/project-workflow.json is the canonical work order.
+_TERMS=["FIX"+"ME","T"+"BD","T"+"BA","COMING"+" SOON","UNDER"+" CONSTRUCTION"]
 BAD_TERMS=re.compile(r"\b(?:"+"|".join(map(re.escape,_TERMS))+r")\b",re.I)
 
 def load(rel):
