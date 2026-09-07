@@ -1,0 +1,17 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map public procurement and contracting from need identification through tender, award, delivery, payment, amendment, performance and audit.","entity":"public_procurement_system",
+  "record_schema":{
+    "identity":["procurement_id","contract_id","buyer","jurisdiction","procurement_type","status","publication_date"],
+    "need":["policy_goal","service_needed","asset_needed","estimated_value","budget_source","procurement_plan","urgency","legal_basis"],
+    "tender":["procedure","notice","specification","eligibility","evaluation_criteria","deadline","bidders","lots","framework_agreement"],
+    "award":["winner","award_value","currency","score","price_score","quality_score","award_reason","appeal","standstill"],
+    "contract":["scope","duration","start_date","end_date","milestones","deliverables","payment_terms","indexation","penalties","termination","change_control"],
+    "supplier":["legal_name","ownership_when public","parent","subcontractors","sector","jurisdiction","prior_contracts","performance_history"],
+    "delivery":["milestone_status","payments","variations","delays","cost_overrun","quality","acceptance","defects","termination"],
+    "integrity":["conflict_declaration","beneficial_owner_when public","audit","complaints","court_or_review","debarment","red_flags","transparency_status"],
+    "relationships":["government-buys-from-company","contract-awards-company","company-subcontracts-company","contract-funds-asset","audit-reviews-contract"],
+    "evidence":["tender_notice","award_notice","contract","procurement_portal","budget","audit","court_record","company_filing","retrieved_at","confidence"]
+  },
+  "derived_measures":["bidder_count","supplier_concentration","single_bid_rate","award_to_estimate_ratio","contract_variation_rate","delay_days","cost_overrun_rate","procurement_spend_share"],
+  "integrity_rules":["Tender estimate, award value and final spend are distinct.","A supplier winning a contract does not establish misconduct.","Subcontracting must be represented separately from the prime contract.","Contract amendments require their own dates and values.","Conflict-of-interest flags are evidence indicators, not findings of wrongdoing.","Procurement classifications and thresholds must be retained."]
+}
