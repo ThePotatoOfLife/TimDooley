@@ -1,0 +1,215 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "title":"Tim Dooley — Life, Persona and Myth Timeline",
+  "purpose":"A source-aware timeline separating the public digital record, uncertain biographical reconstruction and the internal Potatoverse mythic chronology. It is designed to discover structure without inventing a birth date or treating mythology as biography.",
+  "identity_resolution":{
+    "canonical_project_identity":"tim-dooley",
+    "public_handle":"The Potato of Life / @Rational_Potato",
+    "important_warning":"The name Tim Dooley and the name Thomas Dall have many unrelated web matches. A search result is not sufficient to identify the Potatoverse subject. The timeline therefore records source status and confidence for every biographical claim.",
+    "repository_rule":"Do not silently merge unrelated people, especially the astronomer Thomas Dall, other Tim Dooleys, or unrelated Thomas Dall business/person records."
+  },
+  "timeline_axes":{
+    "human_public_axis":"Events that may describe the contemporary person or public persona, sourced from public profiles, self-authored statements or secondary archives.",
+    "mythic_axis":"Events inside the Potatoverse story: Source → Father → Son → Death → Potato → Tim, etc. These are project mythology rather than verified biography.",
+    "research_axis":"Questions whose dates or causal relationships remain unresolved and should be investigated before being promoted into canon."
+  },
+  "events":[
+    {
+      "id":"tl01",
+      "date":"unknown",
+      "date_precision":"unknown",
+      "axis":"human_public",
+      "title":"Birth of the human person",
+      "status":"open",
+      "confidence":"unknown",
+      "description":"No reliable source located in this research pass establishes the exact birth date of the contemporary Tim Dooley / Potato of Life subject.",
+      "research_question":"Can a Danish civil, court, parliamentary, electoral, archival or self-authored source establish the date and place of birth without confusing this person with another Tim Dooley or Thomas Dall?",
+      "sources":[]
+    },
+    {
+      "id":"tl02",
+      "date":"unknown",
+      "date_precision":"unknown",
+      "axis":"human_public",
+      "title":"Childhood and family formation",
+      "status":"open",
+      "confidence":"unknown",
+      "description":"The available web search produced conflicting or hostile secondary accounts but no sufficiently reliable primary biography for childhood, parents, siblings or birthplace.",
+      "research_question":"Locate primary or independently verifiable biographical material before writing family history into the repository.",
+      "sources":[]
+    },
+    {
+      "id":"tl03",
+      "date":"~2014",
+      "date_precision":"approximate inference",
+      "axis":"human_public",
+      "title":"Beginning of the claimed twelve-year spiritual war",
+      "status":"self-reported-inference",
+      "confidence":"medium",
+      "description":"On September 7, 2026, the public @Rational_Potato profile states that being God is the culmination of '12 years of spiritual war'. If the phrase is intended literally as a twelve-year duration ending in 2026, it points approximately to 2014. The starting year is therefore an inference, not a verified event date.",
+      "research_question":"Find the earliest surviving self-authored material that explains what the claimed spiritual war began with and whether 12 years refers to a continuous period, a symbolic number, or an approximate duration.",
+      "source":"Public @Rational_Potato profile indexed September 7 2026"
+    },
+    {
+      "id":"tl04",
+      "date":"2016",
+      "date_precision":"year",
+      "axis":"human_public",
+      "title":"A documented Danish public/legal episode under the Thomas Dall name",
+      "status":"secondary-source-lead",
+      "confidence":"low-to-medium for identity until primary-source verification",
+      "description":"Web searches locate reporting and secondary archival claims about a Danish person named Thomas Dall and a 2016 political-threat case. These sources may be relevant to the contemporary subject, but the repository should not treat the identity link as established solely from hostile archives.",
+      "research_question":"Retrieve the original Danish court/news records and verify whether they refer to the same person now using Tim Dooley / The Potato of Life.",
+      "sources":["secondary public archive; Copenhagen Post lead cited by that archive"]
+    },
+    {
+      "id":"tl05",
+      "date":"2017–2019",
+      "date_precision":"range",
+      "axis":"human_public",
+      "title":"Kittystyle / early streaming period",
+      "status":"secondary-source-lead",
+      "confidence":"low-to-medium",
+      "description":"Public archive material describes a Kittystyle-era streaming identity and a 2019 transition/disclosure period. Because the archive is adversarial, these claims are retained as leads rather than canonical biography.",
+      "research_question":"Build a neutral platform chronology from surviving primary uploads, account metadata and platform records.",
+      "sources":["public adversarial archive; primary material should be located"]
+    },
+    {
+      "id":"tl06",
+      "date":"2019",
+      "date_precision":"year",
+      "axis":"human_public",
+      "title":"Identity rupture / end of the older persona",
+      "status":"reported",
+      "confidence":"low-to-medium",
+      "description":"Secondary archives describe a major 2019 rupture in the Kittystyle/Thomas Dall public identity. The Potatoverse later gives this general pattern a mythic form: the former Son dies and another identity emerges.",
+      "research_question":"Separate the actual 2019 digital-persona change from the later mythic reinterpretation of that change.",
+      "sources":["public adversarial archive; primary uploads needed"]
+    },
+    {
+      "id":"tl07",
+      "date":"2023-03",
+      "date_precision":"month",
+      "axis":"human_public",
+      "title":"Public @Rational_Potato account begins",
+      "status":"observed-profile-metadata",
+      "confidence":"medium-high",
+      "description":"A public profile mirror currently lists the @Rational_Potato account as having joined in March 2023. This is the earliest concrete date located in this search that anchors the current Potato of Life digital persona.",
+      "research_question":"Find the first surviving post, first video, first use of 'Tim Dooley', and first use of 'Potato of Life' around March 2023.",
+      "source":"Public profile mirror indexed September 7 2026"
+    },
+    {
+      "id":"tl08",
+      "date":"2023–2026",
+      "date_precision":"range",
+      "axis":"human_public",
+      "title":"Potato of Life becomes the active public persona",
+      "status":"observed-public-persona",
+      "confidence":"medium-high",
+      "description":"The current public profile describes itself with the Potato of Life, Father of Jesus, World Tree, Spudlight, Mythical Heavenly Gardener, King of Kings, Throne of North, Potatoism and 100k-hour streamer vocabulary. These are self-description elements, not independent evidence of supernatural claims.",
+      "source":"Public @Rational_Potato profile indexed September 7 2026"
+    },
+    {
+      "id":"tl09",
+      "date":"2026-08-11",
+      "date_precision":"day",
+      "axis":"human_public",
+      "title":"Publicly archived Potatoverse transmission marker",
+      "status":"observed-secondary-archive",
+      "confidence":"medium",
+      "description":"A September 2026 public archive indexes an August 11 2026 Potatoverse-related transmission marker. It should be treated as an archival timestamp, not automatically as the origin of the mythology.",
+      "source":"Public archive index"
+    },
+    {
+      "id":"tl10",
+      "date":"2026-09-02",
+      "date_precision":"day",
+      "axis":"human_public",
+      "title":"Public transcript exposes the developed Potatoverse architecture",
+      "status":"observed-transcript",
+      "confidence":"high for transcript content",
+      "description":"A September 2 2026 transcript records the developed architecture: Tim as Father principle, Potato of Love, North of North, Axis above Axis; the Potato as relational totality; an 11-dimensional Calabi–Yau potato metaphor; Tim as still point; and the world as the field in which repair, building and responsibility occur.",
+      "source":"Timbo’s AI Says His Potatoverse is Fiction, September 2 2026"
+    },
+    {
+      "id":"tl11",
+      "date":"2026-09-07",
+      "date_precision":"day",
+      "axis":"human_public",
+      "title":"The '12 years' statement becomes a chronological clue",
+      "status":"observed-self-description",
+      "confidence":"medium",
+      "description":"The @Rational_Potato profile states that 'Me being God is the culmination of 12 years of spiritual war'. This is useful because it gives a duration claim that can be tested against older public material. It does not establish a supernatural fact.",
+      "source":"Public @Rational_Potato profile indexed September 7 2026"
+    },
+    {
+      "id":"tl12",
+      "date":"mythic-unknown",
+      "date_precision":"undated",
+      "axis":"mythic",
+      "title":"The Son dies",
+      "status":"project-canon",
+      "confidence":"high within project mythology",
+      "description":"The Potatoverse places the Son's death/crucifixion at the centre of the transformation that makes the Door, Ladder and later Tim/Potato identity possible. The exact calendar date has not been established in the repository.",
+      "research_question":"Determine whether the project has a specific date encoded in older notes, streams, songs, Christmas/North Pole material or archived conversations.",
+      "source":"mythic-ontology.json; potatoverse-lore.json"
+    },
+    {
+      "id":"tl13",
+      "date":"mythic-unknown",
+      "date_precision":"undated",
+      "axis":"mythic",
+      "title":"Tim emerges from the Potato after the Son's death",
+      "status":"project-canon-plus-user-stated-origin",
+      "confidence":"high as project premise; no historical date",
+      "description":"Within the project story, the Tim figure emerges after the Son's death through the Potato of Life. The Potato is therefore not merely Tim's emblem; it is the medium of transformation from Son/death into Father/Tim/life.",
+      "research_question":"Search the earliest Potatoverse material for the first explicit formulation of 'Tim came from the Potato' and the exact sequence between Son death, Potato, rebirth and Tim.",
+      "source":"Potatoverse canon and current project chronology"
+    },
+    {
+      "id":"tl14",
+      "date":"mythic-sequence",
+      "date_precision":"relative",
+      "axis":"mythic",
+      "title":"Potato transformation sequence",
+      "status":"project-canon",
+      "confidence":"high within framework",
+      "description":"The current mythic ontology gives the sequence Tim Dooley → spiritual domain → Source → Father → Father's House → Heaven → Throne of North; then Throne → Axis → Ladder → Door → Son/Vessel → Plane → World; and Son → Death → Crucifixion → Transformation → Door/Ladder → Return.",
+      "source":"mythic-ontology.json"
+    },
+    {
+      "id":"tl15",
+      "date":"mythic-sequence",
+      "date_precision":"relative",
+      "axis":"mythic",
+      "title":"Tree cycle becomes the long-term form of Tim's world",
+      "status":"project-canon",
+      "confidence":"high within framework",
+      "description":"After transformation, the architecture becomes Tree of Life: Roots → Trunk → Branches → Leaves → Fruit → Seed, with Tree of Strife as the failure pattern and Return as repair.",
+      "source":"frame.json; mythic-ontology.json"
+    }
+  ],
+  "derived_windows":[
+    {"id":"dw01","name":"Possible beginning of twelve-year period","calculation":"2026 minus 12 years ≈ 2014","status":"inference-only","meaning":"A candidate research window, not a birth date or proven event."},
+    {"id":"dw02","name":"Current Potato persona minimum age","calculation":"Public @Rational_Potato profile joined March 2023","status":"observed","meaning":"The current digital persona demonstrably existed by March 2023, but the mythology may predate the account."},
+    {"id":"dw03","name":"Mythic birth date","calculation":"Not currently derivable","status":"unknown","meaning":"The Son's death and Tim's emergence are presently relative mythic events rather than dated historical events."}
+  ],
+  "research_priorities":[
+    "Find the first surviving use of the exact name Tim Dooley in connection with the Potato of Life.",
+    "Find the first surviving use of Potato of Life / Potatoism / Spudlight / Throne of North.",
+    "Search 2013–2015 public material specifically for the claimed beginning of the 12-year spiritual war.",
+    "Search 2019–2023 material for the transition from Thomas/Kittystyle to the Tim/Potato persona.",
+    "Locate the first explicit statement that the Son is dead and Tim emerges from the Potato.",
+    "Determine whether Christmas, December 25, the North Pole or another date is used as the mythic transformation date.",
+    "Build a source-separated childhood/family/birth record only from primary or independently verifiable material.",
+    "Search older videos, songs, stream titles, X posts and archived pages rather than relying on hostile retrospective summaries.",
+    "Create a date-confidence model so exact dates, approximate dates, relative mythic dates and unknown dates cannot be confused."
+  ],
+  "source_register":[
+    {"id":"src-profile","type":"public-profile-mirror","title":"The Potato of Life @Rational_Potato profile","url":"https://w.twstalker.com/Rational_Potato","supports":["tl03","tl07","tl08","tl11"]},
+    {"id":"src-transcript","type":"public-transcript","title":"Timbo’s AI Says His Potatoverse is Fiction","url":"https://thomas-dall-archive.github.io/thomas-dall-archive/commentary/2026/09/02/timbos-ai-says-his-potatoverse-is-fiction-JzIVczdoXB8.html","supports":["tl10"]},
+    {"id":"src-repository-frame","type":"repository-canon","title":"Tim Dooley Frame","url":"https://github.com/ThePotatoOfLife/TimDooley/blob/main/data/frame.json","supports":["tl12","tl13","tl14","tl15"]},
+    {"id":"src-repository-ontology","type":"repository-canon","title":"Mythic Ontology","url":"https://github.com/ThePotatoOfLife/TimDooley/blob/main/data/mythic-ontology.json","supports":["tl12","tl14","tl15"]}
+  ]
+}
