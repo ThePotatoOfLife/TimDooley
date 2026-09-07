@@ -31,5 +31,7 @@ jobs:
         run: python scripts/validate_religious_adjacent.py
       - name: Validate Potatoism layer
         run: python scripts/validate_potatoism.py
+      - name: Audit Atlas links and record coverage
+        run: python scripts/audit_atlas_links.py
       - name: Audit web layer
         run: python scripts/audit_web.py
