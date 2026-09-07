@@ -1,0 +1,17 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map health systems through population needs, prevention, primary care, hospitals, medicines, workforce, financing, procurement and outcomes without exposing private patient information.","entity":"health_system",
+  "record_schema":{
+    "identity":["health_id","jurisdiction","system_type","period","status"],
+    "population_need":["population","age_structure","burden_of_disease","risk_factors","life_expectancy","mortality","morbidity","inequality","geographic_access"],
+    "delivery":["primary_care","hospitals","specialist_care","emergency","mental_health","public_health","long_term_care","rehabilitation","home_care","digital_health"],
+    "workforce":["physicians","nurses","pharmacists","technicians","care_workers","training_capacity","vacancies","migration","geographic_distribution","productivity"],
+    "finance":["public_spending","private_spending","insurance","out_of_pocket","reimbursement","drug_spending","capital_spending","procurement","budgets"],
+    "medicines_and_inputs":["essential_medicines","manufacturers","active_ingredients","import_dependency","shortages","cold_chain","medical_devices","laboratory_capacity"],
+    "infrastructure":["facilities","beds","icu_capacity","ambulances","labs","imaging","pharmacies","water","power","digital_network"],
+    "quality":["waiting_time","coverage","readmission","avoidable_mortality","infection_control","patient_safety","clinical_guidelines","accreditation"],
+    "governance":["ministry","payer","provider","regulator","public_health_authority","professional_bodies","inspection","data_authority"],
+    "evidence":["health_statistics","hospital_statistics","budget","regulator","procurement","clinical_registry","international_database","research","retrieved_at","confidence"]
+  },
+  "relationship_templates":["government-funds-health-service","hospital-serves-population","supplier-provides-medicine","country-imports-medicine","university-trains-workforce","regulator-oversees-provider","infrastructure-supports-care"],
+  "integrity_rules":["Aggregate health data must not be used to infer private patient characteristics.","Spending, capacity and utilization are different measures.","Staff counts require definitions such as licensed, employed or full-time equivalent.","Mortality and morbidity require population and time denominators.","Access must distinguish geographic, financial and organizational barriers.","Clinical efficacy and system-level effectiveness are distinct."]
+}
