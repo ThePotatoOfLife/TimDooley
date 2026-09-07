@@ -6,7 +6,7 @@
 <title>Node — The Frame</title><link rel="stylesheet" href="site.css">
 </head>
 <body>
-<header class="topbar"><a class="brand" href="index.html">THE FRAME</a><nav><a href="index.html#unfolding">Unfolding</a><a href="index.html#world">World</a><a href="index.html#north">North Programme</a><a href="index.html#repository">Repository</a></nav></header>
+<header class="topbar"><a class="brand" href="index.html">THE FRAME</a><nav><a href="index.html">Axis</a><a href="repository.html">Repository</a></nav></header>
 <main id="node-page" class="section repository-section">
   <div class="section-heading"><div><p class="section-label" id="node-layer">NODE</p><h1 id="node-name">Loading…</h1></div><p class="muted" id="node-type"></p></div>
   <div class="north-grid">
@@ -15,63 +15,51 @@
   </div>
   <section class="statement" id="node-evidence-section"><p class="section-label">EVIDENCE</p><h2>What the archive currently knows.</h2><div id="node-evidence" class="prose"></div></section>
 </main>
-<footer><span>THE FRAME</span><span><a href="index.html">Return to the unfolding</a></span></footer>
-<script src="site.js"></script>
+<footer><span>THE FRAME</span><span><a href="index.html">Return to Axis</a></span></footer>
 <script>
-(async function(){
-  const params=new URLSearchParams(location.search);
-  const id=params.get('id');
-  const requestedName=params.get('name')||id;
-  const name=document.getElementById('node-name');
-  if(!id){name.textContent='No node selected';return;}
-  try{
-    const [nodesData, relData, researchData]=await Promise.all([
-      fetch('data/nodes.json').then(r=>r.json()),
-      fetch('data/relationships.json').then(r=>r.json()),
-      fetch('data/research.json').then(r=>r.json())
-    ]);
-    const node=nodesData.nodes.find(n=>n.id===id);
-    const displayName=node?.name||requestedName||id;
-    document.title=displayName+' — The Frame';
-    name.textContent=displayName;
-    document.getElementById('node-layer').textContent=(node?.layer||'open-record').replaceAll('-',' ').toUpperCase();
-    document.getElementById('node-type').textContent=node?.type||'open record';
-    document.getElementById('node-description').textContent=node?.description||'This child has a route in the tree, but its dedicated repository record has not yet been carved out. The link is intentional: the space is reserved and can be filled without changing the architecture.';
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function j(p){const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw Error(p+' '+r.status);return r.json()}
+(async()=>{
+ const id=new URLSearchParams(location.search).get('id');
+ if(!id){document.getElementById('node-name').textContent='No node selected';return;}
+ try{
+  const [nodesData,relData,researchData,treeData,childData]=await Promise.all([j('data/nodes.json'),j('data/relationships.json'),j('data/research.json'),j('data/tree.json'),j('data/tree-child-records.json')]);
+  const nodes=nodesData.nodes||[], rels=relData.relationships||[], research=researchData.facts||researchData.research||[];
+  const node=nodes.find(n=>n.id===id), child=(childData.records||[]).find(n=>n.id===id);
+  const record=node||child;
+  if(!record) throw Error('No backend record exists for '+id);
+  document.title=record.name+' — The Frame';
+  document.getElementById('node-name').textContent=record.name;
+  document.getElementById('node-layer').textContent=(record.layer||'archive').replaceAll('-',' ').toUpperCase();
+  document.getElementById('node-type').textContent=record.type||'record';
+  document.getElementById('node-description').textContent=record.description||'';
+  const notes={
+   source:'Undivided origin in the symbolic architecture.',father:"Upper/source principle associated with the Father's House.",ladder:'The connecting vertical structure; its children describe levels, movement and thresholds.',door:'The zero/bifurcation point of the spatial model: Tree of Life rises from it and Hermes/Serpent descends from it.',son:'The person-bearing centre of the story, coupled to the Door and the vertical transformation sequence.',
+   'tree-of-life':'The living form of the Axis: roots, trunk, branches, leaves, fruit and seed preserve continuity and renewal.',
+   'tree-of-strife':'The fractured form of the same relational grammar: fear, extraction, stagnation and fragmentation.',
+   'north-programme':'Applied layer of the archive. It uses the European Economic Graph as its empirical research layer while keeping framework claims distinct from observed facts.',
+   'european-economic-graph':'Relationship-first empirical mapping: ownership, obligations, debt, energy, infrastructure, trade, technology, research and labour are edges, not merely labels.',
+   spine:'Continuous central line of the Axis. The Door is its zero point; Tree of Life rises and Hermes/Serpent descends around it.'
+  };
+  document.getElementById('node-note').innerHTML=notes[id]?'<p>'+esc(notes[id])+'</p>':'';
 
-    const notes={
-      source:'This is the beginning of the symbolic vertical: the archive treats Source as the undivided origin from which distinction and relationship become possible. It remains a mythological/philosophical record, not an empirical claim.',
-      father:'Father is kept immediately downstream of Source. The repository uses the term as a mythic role within the architecture, not as a claim about a verified worldly identity.',
-      ladder:'The Ladder is the connective structure. It should eventually acquire children for levels, movement, ascent, descent, the 33-level architecture, the mountain, the North Gate and the relationship between vertical and horizontal coordinates.',
-      door:'The Door is treated as a threshold rather than merely an object. In the canonical architecture it is where the vertical structure becomes experience, perception and passage; the pineal-gland entry is explicitly kept as metaphor.',
-      son:'The Son is the person-bearing centre of the symbolic story and is deliberately kept distinct from the broader spiritual/source layer. Its relationships are the important part of the record.',
-      'tree-of-life':'The Tree of Life is the living form of the Axis: roots preserve origin and memory, the trunk preserves continuity, branches differentiate, leaves expose the living system to its environment, fruit records manifestation, and seed carries renewal.',
-      'tree-of-strife':'The Tree of Strife is the failure-pattern of the same relational architecture. It names a system in which connection gives way to fear, competition, extraction, fragmentation and conflict. It is an interpretive model, not a literal geographic object.',
-      'potato-of-life':'The Potato of Life brings the architecture back into ordinary matter: buried, persistent, nourishing and capable of sprouting. The absurdity is part of the method rather than a claim that the metaphor is scientific evidence.',
-      potatoism:'Potatoism is the interpretive language that lets the archive examine life, identity and systems through the humble potato: grounded, humorous, persistent and capable of growth from mud.',
-      'european-economic-graph':'This is the empirical research engine of the project. Its rule is to map relationships first: ownership, debt, obligations, procurement, infrastructure, energy, trade, technology, labour and strategic dependencies should become edges supported by evidence.',
-      'north-programme':'The North Programme is the applied framework sitting above the European Economic Graph. It is treated in the repository as a project framework, while real-world claims about states, institutions, finance and infrastructure must remain evidence-backed.'
-    };
-    document.getElementById('node-note').innerHTML=notes[id]?'<p>'+notes[id]+'</p>':'';
+  const lookup=new Map(nodes.map(n=>[n.id,n]));
+  const treeParents=[];
+  for(const level of treeData.levels||[])for(const childId of level.children||[])if(childId===id)treeParents.push(level);
+  const relBox=document.getElementById('node-relations');
+  const links=[];
+  for(const r of rels.filter(r=>r.source===id||r.target===id)){
+   const otherId=r.source===id?r.target:r.source, other=lookup.get(otherId)||(childData.records||[]).find(n=>n.id===otherId);
+   links.push(`<a href="node.html?id=${encodeURIComponent(otherId)}">${esc(r.source===id?'→ ':'← ')}${esc(other?.name||otherId)} · ${esc(r.relationship)}</a>`);
+  }
+  if(treeParents.length){for(const p of treeParents)links.unshift(`<a href="node.html?id=${encodeURIComponent(p.id)}">↑ ${esc(p.name)} · canonical level</a>`);}
+  if(!links.length)links.push('<p class="muted">No explicit relationship has been carved yet. This record is real and available for the next relationship pass.</p>');
+  relBox.innerHTML=links.join('');
 
-    const rels=relData.relationships.filter(r=>r.source===id||r.target===id);
-    const lookup=new Map(nodesData.nodes.map(n=>[n.id,n]));
-    const relBox=document.getElementById('node-relations');
-    if(!rels.length){relBox.innerHTML='<p class="muted">No relationship records yet. This is a deliberate open space for the next carving round.</p>';} else {
-      rels.forEach(r=>{
-        const otherId=r.source===id?r.target:r.source;
-        const other=lookup.get(otherId);
-        const a=document.createElement('a');
-        a.href='node.html?id='+encodeURIComponent(otherId)+'&name='+encodeURIComponent(other?.name||otherId);
-        a.textContent=(r.source===id?'→ ':'← ')+(other?other.name:otherId)+' · '+r.relationship;
-        relBox.appendChild(a);
-      });
-    }
-
-    const evidence=document.getElementById('node-evidence');
-    const facts=(researchData.facts||[]).filter(f=>f.jurisdiction===displayName||f.claim.toLowerCase().includes(displayName.toLowerCase()));
-    if(facts.length){facts.forEach(f=>{const p=document.createElement('p');p.textContent=f.claim+' ['+f.evidence+', '+f.confidence+']';evidence.appendChild(p);});}
-    else evidence.innerHTML='<p class="muted">No dedicated sourced fact is attached yet. The record can be expanded without changing its place in the tree.</p>';
-  }catch(e){name.textContent='Record could not be loaded';document.getElementById('node-description').textContent=e.message;}
+  const evidence=document.getElementById('node-evidence');
+  const facts=research.filter(f=>String(f.jurisdiction||'').toLowerCase()===String(record.name).toLowerCase()||String(f.claim||'').toLowerCase().includes(String(record.name).toLowerCase()));
+  evidence.innerHTML=facts.length?facts.map(f=>`<p>${esc(f.claim)} <span class="muted">[${esc(f.evidence)}, ${esc(f.confidence)}]</span></p>`).join(''):'<p class="muted">No dedicated sourced fact is attached yet. This is distinct from the record itself: the record exists, while empirical evidence can be added separately.</p>';
+ }catch(e){document.getElementById('node-name').textContent='Record could not be loaded';document.getElementById('node-description').textContent=e.message;}
 })();
 </script>
 </body>
