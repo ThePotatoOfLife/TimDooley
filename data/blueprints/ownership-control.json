@@ -1,0 +1,16 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map ownership, voting power, legal control, beneficial control, contracts and operational authority as separate observable relationships.","entity":"ownership_control_system",
+  "record_schema":{
+    "identity":["control_id","subject","object","relationship_type","jurisdiction","valid_from","valid_to"],
+    "legal_ownership":["title_holder","registered_owner","share_class","ownership_percentage","voting_percentage","usufruct","lease","concession","trust_or_nominee_when public"],
+    "beneficial_control":["beneficial_owner_when_public","control_chain","intermediate_entities","ultimate_parent","voting_agreement","board_control","appointment_rights"],
+    "operational_control":["operator","manager","licensee","concessionaire","service_provider","day_to_day_authority","maintenance_responsibility"],
+    "contractual_control":["contract_type","counterparty","term","renewal","termination","exclusivity","rights","obligations","change_of_control_clause"],
+    "state_control":["state_owner","golden_share","regulator","special_rights","national_security_review","public_interest_constraints"],
+    "history":["acquisition","divestment","merger","privatization","nationalization","restructuring","ownership_change","control_change"],
+    "network":["parent","subsidiary","affiliate","joint_venture","cross_holding","supplier","customer","financier","regulator"],
+    "evidence":["company_filing","land_registry","concession_document","contract","regulatory_decision","court_record","annual_report","official_register","source_date","confidence"]
+  },
+  "edge_types":["owns","beneficially_controls","votes","appoints","operates","licenses","leases","concessions","regulates","finances","contracts_with","controls_via","formerly_owned_by","formerly_controlled_by"],
+  "integrity_rules":["Ownership is not operation.","Operation is not regulation.","Shareholding percentage is not necessarily voting control.","Control chains must preserve every documented intermediate entity.","Beneficial ownership is included only when publicly documented or reliably sourced.","Historical control ends on a dated transition rather than being overwritten.","Do not infer hidden control from association alone."]
+}
