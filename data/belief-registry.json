@@ -1,12 +1,16 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-07",
   "purpose":"Navigation registry for the belief atlas. Keeps political ideologies, religious traditions and nonreligious worldviews addressable without collapsing them into one taxonomy.",
+  "space":"data/belief-space.json",
+  "visualization":"political-compass.html",
+  "individual_record":"belief.html?id=<slug>",
+  "backend":"data/belief-backend.json",
   "layers":[
-    {"id":"politics","name":"Political ideologies","endpoint":"data/political-lexicon.json","map":"political-compass.html","coordinate_system":"economic-left-right + authority-libertarian-authoritarian"},
-    {"id":"religion","name":"Religious traditions and worldviews","endpoint":"data/religious-lexicon.json","map":"political-compass.html","coordinate_system":"separate religious layer; no political score is implied by religious identity"}
+    {"id":"politics","name":"Political ideologies","endpoint":"data/political-lexicon.json","map":"political-compass.html","record":"belief.html?id=<slug>","coordinate_system":"three-dimensional political cube: economic organization × state authority × social-cultural openness","legacy_projection":"economic-left-right × authority-libertarian-authoritarian"},
+    {"id":"religion","name":"Religious traditions and worldviews","endpoint":"data/religious-lexicon.json","map":"political-compass.html","record":"belief.html?id=<slug>","coordinate_system":"three-dimensional worldview cube: communal-individual × institutional-experiential × immanent-transcendent","political_separation":"no political score is implied by religious identity"}
   ],
-  "navigation_policy":"Every entry receives a stable slug and can be opened from the belief compass. Political entries have analytical compass coordinates. Religious entries remain independently classified and are presented through a dedicated map layer rather than being assigned political beliefs merely because religion and politics can interact.",
-  "future_dimensions":["economic organization","state authority","civil liberties","social-cultural change","national identity","internationalism","environment","religious authority","technology","institutionalism","populism","foreign policy"],
-  "research_principles":["distinguish ideology from party","distinguish religion from religious politics","preserve historical variants","preserve internal disagreement","attach primary and scholarly sources to definitions","avoid treating labels as descriptions of every adherent"]
+  "navigation_policy":"Every entry has a stable slug and is searchable, hoverable and clickable in the 3D space. Clicking a mapped belief opens its canonical individual record page. The classic four-quadrant political compass remains available as the x/y slice of the political cube.",
+  "future_dimensions":["economic organization","state authority","civil liberties","social-cultural change","national identity","internationalism","environment","religious authority","technology","institutionalism","populism","foreign policy","property","labor","migration","constitutionalism","militarism","ecology","time/historical period"],
+  "research_principles":["distinguish ideology from party","distinguish religion from religious politics","preserve historical variants","preserve internal disagreement","attach primary and scholarly sources to definitions","avoid treating labels as descriptions of every adherent","make analytical coordinates explicit rather than presenting them as objective measurements"]
 }
