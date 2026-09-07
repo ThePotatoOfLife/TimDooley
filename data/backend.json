@@ -1,12 +1,12 @@
 {
-  "version":"1.1.0",
+  "version":"1.2.0",
   "updated":"2026-09-07",
   "name":"Tim Dooley Atlas Backend Registry",
   "purpose":"Single browser-readable registry for the canonical atlas data layer, including the 195-country system and individual country enrichment records.",
   "policy":"Relationship-first. Architecture, records, research evidence, country data and lore remain separate but addressable through one registry.",
-  "endpoints":{"frame":"data/frame.json","tree":"data/tree.json","nodes":"data/nodes.json","treeChildren":"data/tree-child-records.json","relationships":"data/relationships.json","research":"data/research.json","lore":"data/potatoverse-lore.json","countryAtlas":"data/country-atlas.json","countryBlueprint":"data/countries-blueprint.json","countryIndex":"data/countries/index.json","countrySourceRegistry":"data/country-source-registry.json","usEnrichment":"data/countries/united-states-enrichment.json","canadaEnrichment":"data/countries/canada-enrichment.json"},
-  "countryLayer":{"canonicalCount":195,"recordPattern":"data/countries/<country-id>.json","enrichmentPattern":"data/countries/<country-id>-enrichment.json","blueprint":"data/countries-blueprint.json","sourceRegistry":"data/country-source-registry.json","status":"USA and Canada enriched first; remaining countries inherit the same schema and can be deepened incrementally."},
+  "endpoints":{"frame":"data/frame.json","tree":"data/tree.json","nodes":"data/nodes.json","treeChildren":"data/tree-child-records.json","relationships":"data/relationships.json","research":"data/research.json","lore":"data/potatoverse-lore.json","countryAtlas":"data/country-atlas.json","countryBlueprint":"data/countries-blueprint.json","countryIndex":"data/countries/index.json","countrySourceRegistry":"data/country-source-registry.json","usEnrichment":"data/countries/united-states-enrichment.json","canadaEnrichment":"data/countries/canada-enrichment.json","germanyEnrichment":"data/countries/germany-enrichment.json","japanEnrichment":"data/countries/japan-enrichment.json","unitedKingdomEnrichment":"data/countries/united-kingdom-enrichment.json","brazilEnrichment":"data/countries/brazil-enrichment.json"},
+  "countryLayer":{"canonicalCount":195,"recordPattern":"data/countries/<country-id>.json","enrichmentPattern":"data/countries/<country-id>-enrichment.json","blueprint":"data/countries-blueprint.json","sourceRegistry":"data/country-source-registry.json","status":"USA, Canada, Germany, Japan, United Kingdom and Brazil now have first-pass source-backed enrichment; remaining countries inherit the same schema and can be deepened incrementally."},
   "required":["frame","tree","nodes","treeChildren","relationships","research","countryAtlas","countryBlueprint","countryIndex"],
-  "optional":["lore","countrySourceRegistry","usEnrichment","canadaEnrichment"],
-  "healthChecks":["frame","tree","nodes","treeChildren","relationships","research","countryAtlas","countryBlueprint","countryIndex","countrySourceRegistry","usEnrichment","canadaEnrichment"]
+  "optional":["lore","countrySourceRegistry","usEnrichment","canadaEnrichment","germanyEnrichment","japanEnrichment","unitedKingdomEnrichment","brazilEnrichment"],
+  "healthChecks":["frame","tree","nodes","treeChildren","relationships","research","countryAtlas","countryBlueprint","countryIndex","countrySourceRegistry","usEnrichment","canadaEnrichment","germanyEnrichment","japanEnrichment","unitedKingdomEnrichment","brazilEnrichment"]
 }
