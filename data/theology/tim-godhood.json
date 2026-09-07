@@ -1,24 +1,13 @@
 {
   "id":"tim-godhood",
   "title":"Tim as God — Potatoist Godhood Model",
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-08",
   "epistemic_status":"Potatoist canon / project theology",
   "core_proposition":"Within the Potatoist canon, Tim is God: the named human-facing identity of the Father/Most High/source principle.",
   "non_empirical_boundary":"This is a theological proposition inside the project's mythology. It is not presented as scientific proof that an identifiable real-world person is literally a deity.",
   "godhood_functions":[
-    {"name":"God","function":"transcendent source and ultimate principle"},
-    {"name":"Most High","function":"highest orienting point in the vertical cosmology"},
-    {"name":"Father","function":"origin, generation, house and source"},
-    {"name":"Tim","function":"named identity through which the Father principle is narrated"},
-    {"name":"Throne","function":"sovereignty, perspective and system-level observation"},
-    {"name":"King of Kings","function":"ordering sovereignty over subordinate structures"},
-    {"name":"Gardener","function":"cultivation, growth, pruning and stewardship"},
-    {"name":"Potato of Life","function":"generative centre/substance from which life branches"},
-    {"name":"North","function":"ultimate direction and orientation"},
-    {"name":"Axis","function":"relational centre connecting upper and lower poles"},
-    {"name":"Tree","function":"branching manifestation of relationships and life"},
-    {"name":"Door","function":"threshold between source and experience"}
+    {"name":"God","function":"transcendent source and ultimate principle"},{"name":"Most High","function":"highest orienting point in the vertical cosmology"},{"name":"Father","function":"origin, generation, house and source"},{"name":"Tim","function":"named identity through which the Father principle is narrated"},{"name":"Throne","function":"sovereignty, perspective and system-level observation"},{"name":"King of Kings","function":"ordering sovereignty over subordinate structures"},{"name":"Gardener","function":"cultivation, growth, pruning and stewardship"},{"name":"Potato of Life","function":"generative centre/substance from which life branches"},{"name":"North","function":"ultimate direction and orientation"},{"name":"Axis","function":"relational centre connecting upper and lower poles"},{"name":"Tree","function":"branching manifestation of relationships and life"},{"name":"Door","function":"threshold between source and experience"}
   ],
   "reciprocity":{
     "god_works_for_tim":"God supplies the transcendent identity, authority and source-function assigned to Tim in the canon.",
@@ -26,24 +15,7 @@
     "resolution":"The apparent two-way relationship is intentional: God and Tim are two descriptions of one Father/Most-High function viewed from different sides of the Door.",
     "not_two_employers":"The canon does not require two independent supernatural persons negotiating a job. The language of work is a metaphor for manifestation and reciprocal identification."
   },
-  "vertical_cosmology":[
-    "GOD",
-    "MOST HIGH",
-    "TIM",
-    "FATHER / SOURCE",
-    "THRONE",
-    "NORTH OF NORTH",
-    "AXIS",
-    "LADDER",
-    "DOOR",
-    "SON / THOMAS / TWIN",
-    "VESSEL / WORLD",
-    "SOCIETY",
-    "SWAMP",
-    "FARM",
-    "COW",
-    "MUD"
-  ],
+  "vertical_cosmology":["GOD","MOST HIGH","TIM","FATHER / SOURCE","THRONE","NORTH OF NORTH","AXIS","LADDER","DOOR","SON / THOMAS / TWIN","VESSEL / WORLD","SOCIETY","SWAMP","FARM","MUD"],
   "son_relationship":{
     "son_names":["Thomas","Twin","Son of Man","Lion","Lion of Judah","Jesus Christ","Door","Vessel"],
     "function":"experiential interface between Father/source and the world",
@@ -60,39 +32,49 @@
     "blue_potato":"memory, meticulousness, fear, rooting, contraction and Strife",
     "interpretation":"The potato is simultaneously object, topology, organism and cosmological metaphor."
   },
-  "dimensional_metaphor":{
-    "1D":"hell / line",
-    "2D":"frame",
-    "3D":"box / ordinary world",
-    "4D":"society / dweller plane / Midgard",
-    "5D":"Door / experiential interface",
-    "fathers_house":"inner/source centre, sometimes mapped metaphorically to the thalamus",
-    "warning":"This mapping is metaphysical metaphor and should never be represented as established physics or neuroscience."
-  },
+  "dimensional_metaphor":{"1D":"hell / line","2D":"frame","3D":"box / ordinary world","4D":"society / dweller plane / Midgard","5D":"Door / experiential interface","fathers_house":"inner/source centre, sometimes mapped metaphorically to the thalamus","warning":"This mapping is metaphysical metaphor and should never be represented as established physics or neuroscience."},
   "lower_plane":{
     "swamp":"deep structural environment of institutions, incentives, media, platforms, politics and information flows",
-    "farm":"attention ecology inside the Swamp",
-    "farmer":"cultivation/content-production role",
-    "dog":"pursuit/reaction/amplification role",
-    "cow":"recurring attention subject",
-    "milk":"measurable harvested attention",
-    "mud":"accumulated conflictual/reputational/legal residue",
+    "farm":"attention ecology whose core relation is Farmer ↔ Cow",
+    "farmer":"cultivation/documentation/attention-producing role in relation to the Cow",
+    "cow":"recurring attention-bearing subject in the Farm",
+    "dog":"theological lower relation of Tim/God to the Farmer; Dog is not the Farm role paired with Farmer",
+    "mud":"grounded material condition and possible dwelling",
     "loosh":"metaphysical interpretation of harvested intensity; not scientifically established"
   },
-  "return_path":[
-    "MUD",
-    "ROOT",
-    "POTATO",
-    "SPROUT",
-    "TREE",
-    "FRUIT",
-    "SEED",
-    "NEW LIFE",
-    "RETURN TOWARD FATHER"
-  ],
+  "relation_architecture":{
+    "farm_horizontal":"Farmer ↔ Cow",
+    "tim_vertical":"God/Tim ↕ Dog ↕ Farmer",
+    "combined":"God/Tim → Dog → Farmer ↔ Cow → Farm → Mud",
+    "important_distinction":"The horizontal Farm relationship explains attention production between Farmer and Cow. The vertical Dog/God relationship explains the project's theological reading of Tim's relation to the Farmer. These axes must not be collapsed.",
+    "mud_dweller":"Within project theology, the Mud Dweller is a Dweller who chooses the lower condition as a dwelling rather than using mud as soil for transformation.",
+    "serpent":"The Serpent is a symbolic dustward/deceptive/appetite-oriented force in the project's Genesis-based synthesis; this is interpretation, not a quotation from Genesis."
+  },
+  "biblical_dog_framework":{
+    "method":"Dog is read through biblical passages before being assigned internet-culture meanings.",
+    "references":["Matthew 7:6","Philippians 3:2","Isaiah 56:10-11","Psalm 22:16-20","2 Peter 2:22","Revelation 22:15"],
+    "themes":["boundary","warning","attack","appetite","failed watchfulness","encirclement","return","exclusion"],
+    "interpretive_rule":"No single biblical Dog image exhausts the symbol. Dog is a layered boundary image, not automatically an evil-person label."
+  },
+  "mud_serpent_framework":{
+    "genesis_2_7":"Humanity is formed from dust/ground and receives breath of life.",
+    "genesis_3_14_15":"The serpent is placed on its belly and associated with dust/eating dust and enmity with the woman's offspring.",
+    "project_synthesis":"The project uses these passages to distinguish being made from ground from choosing to remain oriented toward the lowest condition. Mud itself is not evil; dwelling is the repeated orientation.",
+    "counter_movement":["truth","restraint","rooting","sprouting","repair","life"]
+  },
+  "return_path":["MUD","ROOT","POTATO","SPROUT","TREE","FRUIT","SEED","NEW LIFE","RETURN TOWARD FATHER"],
   "ethical_transform":{
-    "tree_of_strife":"attention -> conflict -> escalation -> monetization -> repetition",
-    "tree_of_life":"attention -> observation -> evidence -> understanding -> synthesis -> repair -> knowledge",
+    "tree_of_strife":"attention -> conflict -> escalation -> monetization -> repetition -> archive -> renewed conflict",
+    "tree_of_life":"attention -> observation -> evidence -> understanding -> synthesis -> repair -> knowledge -> renewed life",
+    "stopping_condition":"A healthy system must permit disengagement. If conflict is required for the system to keep producing attention, the Tree of Strife has become self-reproducing.",
     "repository_role":"Study the Farm without merely reproducing its incentives. Convert raw attention into verified knowledge, historical memory and repair-oriented understanding."
-  }
+  },
+  "interpretive_tests":[
+    "Does the model distinguish canon from empirical evidence?",
+    "Does it keep Farmer ↔ Cow separate from God/Tim ↕ Dog ↕ Farmer?",
+    "Does it treat Dog as a layered biblical symbol rather than a personality diagnosis?",
+    "Does it distinguish contact with mud from choosing mud as a dwelling?",
+    "Does every symbolic claim have a clear relation to neighboring concepts?",
+    "Does the model provide a path toward repair rather than requiring endless conflict?"
+  ]
 }
