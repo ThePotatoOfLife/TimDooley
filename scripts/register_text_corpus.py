@@ -4,29 +4,33 @@ import re
 
 ROOT = Path(__file__).resolve().parents[1]
 
-for name in ['data/religious-foundations/enriched-records.json','data/religious-foundations/minor-traditions.json']:
+def repair_json_file(name):
     path = ROOT / name
     raw = path.read_text(encoding='utf-8-sig')
-    # These two legacy files contain literal escaped line separators between
-    # adjacent records. Repair the exact record boundary before strict parsing.
-    fixed, substitutions = re.subn(r'},\\+n(\s*{)', '},\n\\1', raw)
-    fixed, substitutions2 = re.subn(r'},\\\\+n(\s*{)', '},\n\\1', fixed)
+    # First make the legacy text easier to inspect without assuming the exact
+    # escaping style used by the historical generator.
+    fixed = raw.replace(chr(92)*2+'n', chr(10)).replace(chr(92)+'n', chr(10))
     fixed = re.sub(r',([\s]*[}\]])', r'\1', fixed)
-    print(name, 'record-boundary repairs:', substitutions + substitutions2)
     if fixed != raw:
         path.write_text(fixed, encoding='utf-8')
-    with path.open(encoding='utf-8') as f:
-        json.load(f)
+    try:
+        json.loads(fixed)
+    except json.JSONDecodeError as exc:
+        lines = fixed.splitlines()
+        lo=max(0,exc.lineno-3); hi=min(len(lines),exc.lineno+2)
+        print('FAILED FILE:', name)
+        for i in range(lo,hi): print(f'LINE {i+1}:', repr(lines[i]))
+        print('ERROR POSITION:', exc.pos, 'LINE:', exc.lineno, 'COLUMN:', exc.colno)
+        raise
     print('validated', name)
 
-# Atlas manifest
-manifest_path = 'data/atlas-manifest.json'
-manifest = load(manifest_path) if False else json.loads((ROOT / manifest_path).read_text(encoding='utf-8-sig'))
-manifest['version'] = '1.11.0'; manifest['updated'] = '2026-09-07'
-manifest['layers'].setdefault('texts', {'label':'Religious Texts','purpose':'Edition-aware catalogue, locally stored public-domain full texts and concordance/search infrastructure.','files':['data/religious-text-library.json','data/religious-text-corpus.json','data/texts/','religious-texts.html','religious-texts.js']})
+repair_json_file('data/religious-foundations/enriched-records.json')
+repair_json_file('data/religious-foundations/minor-traditions.json')
+
+manifest_path='data/atlas-manifest.json'; manifest=json.loads((ROOT/manifest_path).read_text(encoding='utf-8-sig')); manifest['version']='1.11.0'; manifest['updated']='2026-09-07'; manifest['layers'].setdefault('texts',{'label':'Religious Texts','purpose':'Edition-aware catalogue, locally stored public-domain full texts and concordance/search infrastructure.','files':['data/religious-text-library.json','data/religious-text-corpus.json','data/texts/','religious-texts.html','religious-texts.js']})
 for item in ['data/religious-text-library.json','data/religious-text-corpus.json','data/texts/']:
     if item not in manifest['layers']['beliefs']['files']: manifest['layers']['beliefs']['files'].append(item)
-(ROOT / manifest_path).write_text(json.dumps(manifest, ensure_ascii=False, separators=(',',':')), encoding='utf-8')
+(ROOT/manifest_path).write_text(json.dumps(manifest,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
 
 coverage_path='data/backend-coverage-map.json'; coverage=json.loads((ROOT/coverage_path).read_text(encoding='utf-8-sig')); coverage['version']='1.2.0'; coverage['updated']='2026-09-07'; existing={r.get('file') for r in coverage.get('layers',[])}
 for row in [
@@ -44,4 +48,3 @@ for row in [
  {'id':'religious-text-corpus','name':'Religious Text Corpus','type':'textual-corpus','status':'registry'}]:
     if row['id'] not in ids: registry['records'].append(row)
 (ROOT/registry_path).write_text(json.dumps(registry,ensure_ascii=False,separators=(',',':')),encoding='utf-8')
-print('registered full-text corpus')
