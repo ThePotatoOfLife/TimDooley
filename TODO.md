@@ -50,6 +50,27 @@ The project is not only a graph. The graph is the navigation layer. The actual p
 - [ ] Ensure every event has chronology, participants, causes, consequences, evidence and links.
 - [ ] Ensure political/philosophical/religious ideas have definitions plus history, variants, arguments, criticism and relationships.
 
+## Farm / Swamp / Sektur research — new deep layer
+
+- [x] Add `data/swamp/farmer-dog-psychology.json` with Farmer/Dog masks, psychological mechanisms, inversions, DARVO handling and biblical Dog crosswalk.
+- [x] Add `data/swamp/farmer-dog-deep-cartography.json` with the neighbour/selling-neighbour moral axis, seven deadly sins, demon archetypes, moral disengagement, Hawkins symbolic crosswalk and role archetypes.
+- [x] Add `data/swamp/farm-psychology-research-2026-09.json` as the sourced research synthesis and integration map.
+- [ ] Add person-level evidence dossiers for major Farmers and Dogs using the new schema.
+- [ ] For each person, distinguish public mask, observable behavior, incentives, rhetorical patterns, psychological mechanisms and counterevidence.
+- [ ] Map each person to possible deadly-sin temptations only where observable evidence supports the interpretation; never turn the taxonomy into diagnosis.
+- [ ] Record DARVO only as an evidenced sequence: allegation -> denial/minimization -> attack -> reversal -> audience response.
+- [ ] Record moral-disengagement mechanisms where actual language/actions support them.
+- [ ] Measure cult-like structural signals without automatically labeling communities as cults.
+- [ ] Add biblical cross-references to Dog, Watchman, Shepherd, Wolf, Serpent, Dragon, Goat and related archetypes while keeping textual interpretation separate from empirical classification.
+- [ ] Add a Christian virtue counter-map: humility, charity, mercy, temperance, patience, diligence, chastity and truthfulness as possible exits from Farm dynamics.
+- [ ] Add an explicit “inversion” field to every Farmer/Dog record: what virtue is claimed, what appetite may be operating, and what evidence would distinguish the two.
+- [ ] Track the stopping condition: when does documentation end, and when does extraction continue after the original research purpose is satisfied?
+- [ ] Track repair/disengagement alongside escalation: corrections, apologies, moderation, restitution, reconciliation, retirement and loss of interest.
+- [ ] Treat archive size as a measurement of attention infrastructure, not proof of guilt, importance, truth or moral worth.
+- [ ] Add Farmer -> Cow and Dog -> Farmer transition events wherever the evidence shows role inversion.
+- [ ] Add death/retirement as state transitions from live-reaction ecology to historical-archive ecology.
+- [ ] Build a Farm psychology matrix connecting people, roles, incentives, sins, mechanisms, masks, inversions, evidence and counterevidence.
+
 ## UI / reading experience
 
 - [ ] Keep the concise index pages fast and navigational.
@@ -59,12 +80,15 @@ The project is not only a graph. The graph is the navigation layer. The actual p
 - [ ] Add “read next” and “related research” sections.
 - [ ] Ensure mobile reading remains comfortable for very long records.
 - [ ] Keep typography optimized for long-form reading rather than dense dashboard presentation.
+- [ ] Surface Farm psychology, theological interpretation and evidence boundaries as separate sections rather than flattening them into one label.
 
 ## Integrity / CI
 
 - [ ] Add a validator that checks every canonical lexicon term has a valid long-form route.
 - [ ] Add a validator that flags entries below the minimum information-density target.
 - [ ] Add a validator that distinguishes missing content from intentionally uncertain content.
+- [ ] Add a validator that checks every research claim has a source or explicit project-theology status.
+- [ ] Add a validator that prevents speculative psychological labels from being rendered as diagnoses.
 - [ ] Keep backend coverage failures separate from artifact-upload failures in CI reporting.
 - [ ] Re-run the atlas and backend coverage workflows after the next data expansion.
 
@@ -76,3 +100,11 @@ The repository should let the reader do both things:
 2. **Read the substance.** Every important thing opened from the graph should contain enough history, explanation, evidence, interpretation and uncertainty to stand on its own.
 
 The goal is an information-rich atlas in which no important node is merely a pretty connection with an empty interior.
+
+### Farm research principle
+
+The Farm should be studied without becoming another Farm. The repository can document exploitation, cruelty, attention extraction, moral disengagement, group dynamics and theological inversion without turning documentation itself into a machine for harassment or humiliation.
+
+The deepest research question is:
+
+> **How does a person remain morally certain that they are doing good while the social system around them rewards turning a neighbour into material?**
