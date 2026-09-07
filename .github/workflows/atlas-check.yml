@@ -29,6 +29,8 @@ jobs:
         run: python scripts/validate_content_integrity.py
       - name: Validate religious-adjacent layer
         run: python scripts/validate_religious_adjacent.py
+      - name: Validate religious layer coupling map
+        run: python scripts/validate_religious_layer_map.py
       - name: Validate Potatoism layer
         run: python scripts/validate_potatoism.py
       - name: Audit Atlas links and record coverage
