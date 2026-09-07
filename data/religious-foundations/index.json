@@ -1,10 +1,11 @@
 {
-  "version":"1.2.0",
+  "version":"1.3.0",
   "updated":"2026-09-07",
   "blueprint":"data/blueprints/religious-foundation.json",
   "architecture":"data/blueprints/religious-architecture.json",
   "records":"data/religious-foundations/records.json",
   "enriched_records":"data/religious-foundations/enriched-records.json",
+  "minor_traditions":"data/religious-foundations/minor-traditions.json",
   "expanded_foundations":"data/religious-foundations.json",
   "potatoism":"data/potatoism-religion.json",
   "research_sources":[
@@ -16,9 +17,10 @@
     {"id":"academic-research","type":"secondary","role":"history, theology, anthropology, sociology and textual criticism","source":"academic literature","status":"triangulate"},
     {"id":"archaeology-and-manuscripts","type":"material-primary","role":"inscriptions, manuscripts, architecture, artifacts and archaeological context","source":"museum, excavation and manuscript catalogues","status":"triangulate"}
   ],
-  "record_count":19,
-  "enrichment_status":"deep-foundation-pass-complete; denomination, school, country, text, place and event graph still expanding",
+  "record_count":32,
+  "enrichment_status":"deep-foundation-pass-expanded; 19 major foundation profiles plus 13 significant smaller/historical traditions; denomination, school, country, text, place and event graph still expanding",
   "classification_rule":"Broad religious categories are demographic tools, not substitutes for traditions, denominations, schools, practices or theology.",
   "integrity_rule":"Every profile must distinguish historical reconstruction, community self-description, demographic estimate, interpretive comparison and project-symbolic material.",
+  "minor_tradition_rule":"Smaller traditions are first-class records when they illuminate a distinct historical, textual, geographic, social or comparative structure. Do not merge them merely because their populations are small.",
   "next_pass":"Instantiate denomination/school records and relationship edges; attach named texts, concepts, people, places, institutions and historical events; add country-by-country demographic snapshots and evidence citations."
 }
