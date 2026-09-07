@@ -1,45 +1,64 @@
 # Research Map
 
-The repository's research should grow outward from the existing architecture instead of becoming a pile of unrelated reports.
+The research layer should grow outward from the architecture rather than becoming a pile of unrelated reports. Every workstream should produce reusable nodes and relationships.
 
-## Civilizational domains
+## State and governance
 
-### State and governance
-Constitutions, ministries, agencies, regulation, public administration, courts and accountability.
+Map constitutions, ministries, agencies, regulators, courts, public enterprises, municipal structures, accountability and delegated powers.
 
-### Finance
-Public debt, bonds, banks, funds, ownership, monetary systems, capital flows, obligations and financial dependencies.
+**First cases:** France, Belgium, Denmark.
 
-### Production
-Industry, companies, agriculture, manufacturing, services, supply chains, productivity and productive capital.
+## Finance
 
-### Infrastructure
-Energy, grids, ports, rail, roads, telecommunications, data centres, housing and strategic facilities.
+Map public debt, bonds, central banks, commercial banks, funds, ownership, guarantees, monetary systems, capital markets and cross-border exposures.
 
-### Resources
-Energy, minerals, water, food, land and other strategic inputs.
+**First question:** Who ultimately carries a liability when a public or private financial relationship fails?
 
-### Technology
-Semiconductors, AI, software, communications, industrial technology, cybersecurity and emerging technologies.
+## Production
 
-### Knowledge
-Universities, research institutes, patents, scientific capacity, education and skills.
+Map industry, agriculture, manufacturing, services, productivity, supply chains, company ownership and productive capital.
 
-### Labour
-Employment, wages, demographics, migration, skills, productivity and workforce structure.
+**First cases:** automotive, pharmaceuticals, machinery, energy-intensive industry, food and advanced technology.
 
-### Society
-Health, welfare, families, communities, culture, religion, media and information systems.
+## Infrastructure
 
-### Geopolitics
-Alliances, treaties, trade relationships, sanctions, dependencies, military-industrial capacity and diplomatic networks.
+Map electricity grids, gas infrastructure, ports, rail, roads, telecommunications, subsea cables, data centres and strategic facilities.
 
-### History
-Events, institutions, migrations, wars, treaties, technological transitions and long-term institutional change.
+**First geographic corridor:** Greenland / Iceland / Denmark / North Sea / continental Europe.
 
-## Research unit
+## Resources
 
-Every investigation should ideally answer:
+Map energy, minerals, water, food, land and strategic inputs. For proposed resource development, distinguish geological potential from commercially recoverable reserves and from legally permissible production.
+
+## Technology
+
+Map semiconductors, AI compute, cloud, software, telecom equipment, industrial automation, cybersecurity, biotechnology and advanced materials.
+
+The key question is not simply “does Europe have the technology?” but “where in the chain does Europe own, control, depend on or merely consume the capability?”
+
+## Knowledge
+
+Map universities, research institutes, laboratories, patents, grants, research infrastructure and skills pipelines.
+
+## Labour
+
+Map employment, wages, demographics, migration, skills, participation, productivity and sectoral shortages.
+
+## Society
+
+Map health, welfare, families, communities, culture, religion, media and information systems without reducing social institutions to financial variables.
+
+## Geopolitics
+
+Map alliances, treaties, trade relationships, sanctions, dependencies, diplomatic networks and military-industrial capacity. Avoid treating political narratives as evidence of hidden control without documentation.
+
+## History
+
+Historical nodes should be tied to dated primary or scholarly sources. A historical interpretation should remain distinguishable from the event itself.
+
+## The research unit
+
+Every investigation should answer:
 
 1. What are the nodes?
 2. What relationship connects them?
@@ -48,8 +67,34 @@ Every investigation should ideally answer:
 5. When was it true?
 6. What changed it?
 7. What other relationships depend on it?
-8. What would happen if it failed or changed?
+8. What happens if it fails or changes?
 
-## Priority graph
+## Priority work queue
 
-The European Economic Graph is the first large empirical implementation. It should eventually become a structured dataset rather than remaining only prose.
+### A. France fiscal graph
+
+Build a function-by-function expenditure tree, then connect each branch to responsible institutions, beneficiaries, legal constraints and outcomes.
+
+### B. Belgium institutional graph
+
+Map federal, regional and community competences before judging whether duplication exists.
+
+### C. European energy graph
+
+Map generation, storage, grids, interconnectors, LNG, pipelines, nuclear, renewables, industrial demand and import exposure.
+
+### D. Procurement graph
+
+Map public buyers, purchasing bodies, framework agreements, major suppliers, subcontractors and cross-border purchasing opportunities.
+
+### E. Strategic technology graph
+
+Map supply chains and ownership/control in semiconductors, cloud, AI compute, telecom, industrial software and critical components.
+
+### F. North Atlantic graph
+
+Map ports, shipping, cables, aviation, energy, research, defence infrastructure and trade between Greenland, Iceland, Denmark, Norway, the UK and Canada.
+
+## Data discipline
+
+A research result is not complete until it can be represented as a relationship with provenance. Prose explains the relationship; structured data preserves it.
