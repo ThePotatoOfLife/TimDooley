@@ -1,1 +1,74 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="The Frame — a public, interconnected repository for understanding the world and how it is changing."><title>The Frame — Repository</title><link rel="stylesheet" href="site.css"></head><body><header class="topbar"><a class="brand" href="repository.html">THE FRAME</a><nav><a href="repository.html#about">About</a><a href="repository.html#tree">Tree</a><a href="repository.html#research">Research</a><a href="repository.html#relationships">Connections</a><a href="index.html">Spatial map</a></nav></header><main class="section" id="about"><div class="section-heading"><div><p class="section-label">PUBLIC KNOWLEDGE REPOSITORY</p><h1>The Frame</h1></div><p class="muted">An open, interconnected archive for understanding people, institutions, history, economics, technology, nature and the relationships that make the present world move. The spatial model is a map of the information—not the information itself.</p></div><div class="article-grid"><article><h2>What is this?</h2><p>The Frame is built as a large reference work rather than a game. Each subject can have its own record, sources, relationships, history and evidence. The central question is not only “what is this?” but also “what is it connected to?”</p></article><article><h2>How to use it</h2><p>Start with the canonical tree, search through the repository, or follow a relationship from one record to another. Read the evidence separately from interpretation. Follow sources outward. The structure is designed to grow without losing its connections.</p></article><article><h2>Why a graph?</h2><p>The world is not a collection of isolated encyclopedia entries. Countries depend on energy, companies depend on finance and suppliers, institutions make rules, people create organisations, technology changes production, and history leaves constraints behind. The graph makes those relationships visible.</p></article></div><div class="hero-actions"><a class="button primary" href="repository.html#tree">Explore the repository</a><a class="button" href="repository.html#research">Read the evidence</a><a class="button" href="index.html">Open spatial map</a></div></main><section class="section" id="tree"><div class="section-heading"><div><p class="section-label">CANONICAL STRUCTURE</p><h2>The ten-level tree</h2></div><p class="muted">The permanent architecture remains intact. It is an index into the records, not a replacement for them.</p></div><div id="canonical-tree" class="tree-branch">Loading…</div></section><section class="statement"><p class="section-label">THE PRINCIPLE</p><h2>Information first.<br><span>Connections second.</span></h2><p>A subject becomes more useful when its definition, history, evidence, institutions, actors, resources, dependencies and consequences can be followed from the same place. The repository therefore separates facts from interpretation while connecting both through an explicit structure.</p></section><section class="section" id="research"><div class="section-heading"><div><p class="section-label">EVIDENCE</p><h2>Research</h2></div><p class="muted">Observed facts, calculations, historical material, interpretations and scenarios are labelled rather than blended together.</p></div><div id="research-list" class="repository-grid">Loading…</div></section><section class="section" id="relationships"><div class="section-heading"><div><p class="section-label">CONNECTED WORLD</p><h2>Relationships</h2></div><p class="muted">Follow how one record leads to another. The graph is intended to become the connective tissue of the archive.</p></div><div id="relation-list" class="repository-grid">Loading…</div></section></main><footer><span>THE FRAME · PUBLIC KNOWLEDGE REPOSITORY</span><span>DATA / RESEARCH / RELATIONSHIPS / HISTORY</span></footer><script src="site.js"></script><script>async function loadRepository(){const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const j=async p=>{const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw Error(p+' '+r.status);return r.json()};try{const [n,r,s,c]=await Promise.all([j('data/nodes.json'),j('data/relationships.json'),j('data/research.json'),j('data/tree-child-records.json')]);const nodes=[...(n.nodes||[]),...(c.records||[])];const nm=new Map(nodes.map(x=>[x.id,x.name||x.id]));const rels=r.relationships||r||[];document.getElementById('relation-list').innerHTML=rels.slice(0,40).map(x=>`<article><span>${esc(x.relationship||'RELATIONSHIP')}</span><h3>${esc(nm.get(x.source)||x.source||'')} → ${esc(nm.get(x.target)||x.target||'')}</h3><p>${esc(x.notes||x.evidence||'')}</p></article>`).join('');document.getElementById('research-list').innerHTML=(s.facts||[]).map(x=>`<article><span>${esc(x.evidence||'EVIDENCE')} · ${esc(x.jurisdiction||'')}</span><h3>${esc(x.claim)}</h3><p>Source: ${esc(x.source||'')} · ${esc(x.date||'')}</p></article>`).join('')}catch(e){for(const id of ['relation-list','research-list']){const el=document.getElementById(id);if(el)el.innerHTML=`<p class="error">Repository data could not be loaded: ${esc(e.message)}</p>`}}}loadRepository();</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Potato of Life — a living knowledge atlas of the world, its systems, stories, relationships and evidence.">
+<title>The Potato of Life — Tim Dooley</title>
+<link rel="stylesheet" href="site.css">
+</head>
+<body class="home">
+<header class="topbar">
+  <a class="brand" href="index.html"><span class="brand-mark">✦</span><span>THE POTATO OF LIFE</span></a>
+  <nav>
+    <a href="#atlas">Atlas</a><a href="#tree">Tree</a><a href="#research">Research</a><a href="repository.html">Repository</a><a href="axis.html">Spatial model</a>
+  </nav>
+</header>
+
+<main>
+<section class="hero" id="atlas">
+  <div class="hero-copy">
+    <p class="eyebrow">A LIVING KNOWLEDGE ATLAS</p>
+    <h1>Everything is<br><em>connected.</em></h1>
+    <p class="hero-lead">The Potato of Life is a growing public archive for mapping the world as a living system — people, places, religions, politics, culture, institutions, economies, technology, nature, history and the relationships between them.</p>
+    <div class="hero-actions"><a class="button primary" href="repository.html">Enter the archive</a><a class="button" href="#tree">See the architecture</a><a class="button" href="axis.html">Open the spatial field</a></div>
+  </div>
+  <div class="hero-orbit" aria-hidden="true">
+    <div class="orbit orbit-1"></div><div class="orbit orbit-2"></div><div class="orbit orbit-3"></div>
+    <div class="core"><span>THE<br>POTATO</span></div>
+    <i class="node n1">belief</i><i class="node n2">people</i><i class="node n3">history</i><i class="node n4">energy</i><i class="node n5">law</i><i class="node n6">culture</i>
+  </div>
+</section>
+
+<section class="intro-strip">
+  <div><strong id="stat-records">—</strong><span>records</span></div><div><strong id="stat-links">—</strong><span>relationships</span></div><div><strong id="stat-levels">10</strong><span>canonical levels</span></div><div><strong>∞</strong><span>room to grow</span></div>
+</section>
+
+<section class="section philosophy">
+  <div class="section-heading"><div><p class="section-label">THE IDEA</p><h2>Not a collection of pages.<br><em>A field of relationships.</em></h2></div></div>
+  <div class="philosophy-grid">
+    <article><span class="glyph">01</span><h3>Start with things</h3><p>Every subject can become a record: a person, place, institution, text, belief, company, law, technology, event or physical system.</p></article>
+    <article><span class="glyph">02</span><h3>Then connect them</h3><p>Ownership, influence, membership, migration, trade, law, funding, conflict, belief and dependency turn isolated facts into a system.</p></article>
+    <article><span class="glyph">03</span><h3>Keep evidence visible</h3><p>Historical material, observed facts, interpretation, mathematics and project mythology are deliberately kept distinguishable.</p></article>
+  </div>
+</section>
+
+<section class="section dark-field" id="tree">
+  <div class="section-heading light"><div><p class="section-label">THE CANONICAL FRAME</p><h2>The tree beneath the world</h2></div><p class="muted">The permanent ten-level architecture is not replaced as the archive grows. New knowledge is carved into it.</p></div>
+  <div id="canonical-tree" class="tree-field">Loading the tree…</div>
+</section>
+
+<section class="section" id="research">
+  <div class="section-heading"><div><p class="section-label">THE CURRENT FIELD</p><h2>What is being carved now</h2></div><p class="muted">The repository keeps expanding from the structures already established.</p></div>
+  <div class="field-grid">
+    <a href="repository.html#nodes" class="field-card"><span>WORLD</span><h3>People · places · nations · institutions</h3><p>The observable plane: societies, law, economy, infrastructure, ownership and history.</p></a>
+    <a href="repository.html#nodes" class="field-card"><span>RELIGION</span><h3>Scripture · belief · practice · community</h3><p>Traditions are mapped through texts, interpretation, institutions, populations, geography and change.</p></a>
+    <a href="repository.html#nodes" class="field-card"><span>POLITICS</span><h3>Ideas · parties · voters · power</h3><p>Ideology is treated as multidimensional and separated from party labels, government action and outcomes.</p></a>
+    <a href="repository.html#nodes" class="field-card"><span>CULTURE</span><h3>Language · art · media · subculture</h3><p>Culture is followed through transmission, production, communities, platforms and generations.</p></a>
+    <a href="repository.html#nodes" class="field-card"><span>SYSTEMS</span><h3>Energy · finance · technology · trade</h3><p>Material systems become graphs of assets, owners, operators, flows, bottlenecks and dependencies.</p></a>
+    <a href="repository.html#relationships" class="field-card"><span>HISTORY</span><h3>Events · causes · consequences</h3><p>Time matters: relationships can begin, end, transform and leave inherited constraints behind.</p></a>
+  </div>
+</section>
+
+<section class="statement"><p class="section-label">THE POTATO PRINCIPLE</p><h2>Grow from the roots.<br><em>Follow the connections.</em></h2><p>The joke is that a potato is ordinary. The point is that ordinary things are where the world becomes real: soil, bodies, food, families, work, money, memory, institutions and the networks built between them.</p><a class="text-link" href="repository.html">Explore the full reference work →</a></section>
+</main>
+
+<footer><span>THE POTATO OF LIFE · TIM DOOLEY</span><span>DATA / RESEARCH / RELATIONSHIPS / HISTORY</span></footer>
+
+<script>
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+async function j(p){const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw Error(p+' '+r.status);return r.json()}
+(async()=>{try{const [tree,n,r,c]=await Promise.all([j('data/tree.json'),j('data/nodes.json'),j('data/relationships.json'),j('data/tree-child-records.json')]);const records=[...(n.nodes||[]),...(c.records||[])],map=new Map(records.map(x=>[x.id,x]));document.getElementById('stat-records').textContent=records.length.toLocaleString();document.getElementById('stat-links').textContent=(r.relationships||r||[]).length.toLocaleString();document.getElementById('stat-levels').textContent=(tree.levels||[]).length;document.getElementById('canonical-tree').innerHTML=(tree.levels||[]).map((l,i)=>`<article class="tree-level"><div class="level-number">${esc(l.roman||String(i+1).padStart(2,'0'))}</div><div><p class="level-kicker">LEVEL ${String(i+1).padStart(2,'0')}</p><h3><a href="node.html?id=${encodeURIComponent(l.id)}">${esc(l.name)}</a></h3><p>${esc(l.description)}</p><div class="tree-children">${(l.children||[]).slice(0,14).map(id=>map.has(id)?`<a href="node.html?id=${encodeURIComponent(id)}">${esc(map.get(id).name)}</a>`:`<span class="missing">${esc(id)}</span>`).join('')}</div></div></article>`).join('')}catch(e){document.getElementById('canonical-tree').innerHTML='<p class="error">The archive could not be loaded: '+esc(e.message)+'</p>'}})();
+</script>
+</body>
+</html>
