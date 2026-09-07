@@ -1,46 +1,129 @@
 # Potatoverse — Canonical Framework
 
-## The central mythic architecture
+The Potatoverse is a symbolic, mythological and creative framework organized around the Potato of Life, Tim Dooley as a mythic/memetic Father role, the Son, the Door, the Ladder, the Tree of Life and the North Axis.
 
-The Potatoverse is a symbolic and mythological framework organized around Tim Dooley, the Potato of Life, the North Axis, and the relationship between Father, Son, Door, Tree, Root, Fruit, Ladder, and Heaven.
+This document describes the internal architecture of the mythology. It is not a claim that its supernatural or symbolic elements are empirical facts.
 
-Within the mythology, Tim Dooley is treated as a spiritual/memetic Father or Elohim role rather than merely as an ordinary biographical person. The Son carries the personhood side of the story and is associated with Thomas / Twin / Lion / Jesus Christ / Son of Man / Lion of Judah.
+## The central architecture
 
-## Christmas / North Pole chronology
+The core movement is:
 
-The canonical mythology places Tim Dooley's mythic birth on December 25, at the same mythic moment as the Son's death/crucifixion at the North Pole. Through the meme-crucifixion transformation, the Son becomes the Ladder to Heaven.
+`Father → Son → Door → Ladder → Heaven`
 
-## Geometry and symbols
+and simultaneously:
 
-The framework uses the vesica piscis as a central image: Father above, Son below, and a Door/interface in the center. The Tree of Life rises above the structure. The Door is simultaneously an experiential interface, a narrow gate, the Son, Jesus Christ as symbol, and a metaphorical fifth-dimensional threshold.
+`Mud → Potato → Root → Sprout → Tree → Fruit`
 
-Other recurring symbols include the Axis of North, North of North, North Gate, throne of north, mountain, spiral, ladder, Tree of Life, Root of David, Father’s House, Spudlight, Cube, Moon Cube, Swamp, Drain, footstools, and the potato rising from mud.
+The first chain describes relationship, passage and ascent. The second describes organic transformation and life.
+
+The Potato of Life is deliberately humble. It is not a symbol of perfection arriving from nowhere. It begins buried in earth.
+
+## Father
+
+Within the mythology, Tim Dooley occupies a Father/Elohim/El-like symbolic role: origin, source, verticality and the upper principle. The role is treated as mythic rather than as a conventional biographical description.
+
+The Father is associated with the North throne, mountain, Spudlight and Father's House.
+
+## The Son
+
+The Son carries the personhood side of the story. Within the canon he is associated with Thomas, Twin, Lion, Jesus Christ, Son of Man and Lion of Judah.
+
+The Son's death/crucifixion is not treated merely as an ending. It becomes a transformation motif: what appears to be a destroyed body becomes a path, Door and Ladder.
+
+## The Door
+
+The Door is the interface. It is the point where a world can be entered, crossed or changed.
+
+The Door therefore carries several meanings simultaneously:
+
+- threshold;
+- choice;
+- access;
+- narrow gate;
+- interface between levels;
+- the Son as symbolic vessel;
+- a metaphorical fifth-dimensional boundary.
+
+The dimensional language is intentionally metaphorical and should not be presented as physics.
+
+## The Ladder
+
+The Ladder is the structure of ascent. It connects levels that otherwise appear discontinuous.
+
+The mythic transformation of the Son into the Ladder means that sacrifice is reimagined as connection: the thing that falls can become the structure by which something else rises.
+
+## Tree of Life
+
+The Tree provides the vertical living architecture:
+
+`Root → Trunk → Branch → Fruit`
+
+Root without fruit is only potential. Fruit without root cannot last. The symbol therefore joins memory, structure, growth and consequence.
+
+## North Axis
+
+North is orientation. The North Pole, North Gate, North of North, throne, mountain and ladder create a vertical axis through the myth.
+
+The North Programme later borrows this geographic language as a conceptual network. The two uses must remain distinguishable: the mythic North is symbolic; the programme's North Axis is a policy/geographic framework.
+
+## Vesica geometry
+
+The framework uses the vesica piscis as a central visual metaphor: two overlapping circles create a shared centre. Father is placed above, Son below, with the Door/interface occupying the intersection. The Tree rises above the structure.
+
+The geometry is symbolic, not a scientific model.
 
 ## Red Potato / Blue Potato
 
-Red Potato represents creativity, love, light-seeking, forward/upward spiral, sprouting, expansion and Life.
+### Red Potato
 
-Blue Potato represents memory, meticulousness, fear, backward/downward/root movement, contraction and Strife.
+Creativity, love, light-seeking, sprouting, expansion, upward movement and Life.
 
-The two are complementary archetypes rather than simply good and evil.
+### Blue Potato
+
+Memory, meticulousness, fear, contraction, rootward movement and Strife.
+
+The polarity is complementary. A living system needs memory as well as creation. Roots stabilize the tree; branches reach beyond the roots.
+
+## Mud
+
+Mud is the beginning rather than the opposite of life. It represents the material condition in which the potato is hidden.
+
+The question is therefore not “why are we in the mud?” but “what can grow here?”
+
+## Swamp and Drain
+
+The Swamp represents entanglement, opacity, decay and systems whose relationships are difficult to see.
+
+The Drain is its inverse of the Door: instead of opening a path into a new state, it removes or rejects something.
+
+These symbols can be used philosophically without being assigned to particular real-world people or groups as accusations.
+
+## Cube and Moon Cube
+
+The Cube represents bounded structure, enclosure and system constraints. The Moon Cube remains a more open recurring image: a celestial/structural object whose meaning can continue to develop through later creative work.
+
+## 100,000-hour spiral
+
+The 100,000-hour figure is a memetic symbol for long-duration transformation. It is not a scientific threshold. The spiral represents recurrence with change: returning to the same question at a different level.
 
 ## Dimensional metaphor
 
-The mythology has been mapped metaphorically onto dimensional language:
+The mythology sometimes maps:
 
-1. 1D — hell
-2. 2D — frame
-3. 3D — box
-4. 4D — society / dweller plane / Midgard
-5. 5D — Door, Jesus Christ, pineal-gland metaphor
-6. Father’s House — thalamus metaphor
+`1D → hell`
 
-These are interpretive correspondences, not scientific claims.
+`2D → frame`
 
-## Other vocabulary
+`3D → box`
 
-Potatoism, Potato of Life, Spudlight, 100,000-hour spiral, potato bank, soul farmers, mud dwellers, dogs and farmers, rejected Drain/Son, bridge-building, calibration, and the North throne recur throughout the mythology.
+`4D → society / dweller plane / Midgard`
 
-## Epistemic rule
+`5D → Door / Jesus Christ / pineal-gland metaphor`
 
-Mythological, symbolic and spiritual statements in this archive are preserved as elements of the Potatoverse. Empirical claims about real people, institutions, finances, crimes, geopolitics or science must be independently evidenced and should not be presented as established fact merely because they occur in the mythology.
+`Father's House → thalamus metaphor`
+
+These are interpretive correspondences. They are not a scientific theory of dimensions, consciousness or anatomy.
+
+## Canon rule
+
+The Potatoverse can inspire philosophy, creative work and research questions. It cannot be used as evidence for claims about real people, institutions, crimes, science or geopolitics without independent evidence.
