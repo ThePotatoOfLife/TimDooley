@@ -1,0 +1,13 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Country frontend resilience contract. A country page must remain usable when a live enrichment source, API or optional dataset fails.",
+  "resolution_order":["data/countries/index.json","data/country-atlas.json","data/country-nodes.json","data/country-layer-manifest.json","data/indicator-catalog.json","data/evidence/observations.json"],
+  "required_identity":["id","name"],
+  "required_display_fields":["description","capital","population","area","government","relationships","sources"],
+  "missing_value_policy":"Render Unknown / Not yet sourced / Not applicable according to field state. Never throw a fetch error merely because enrichment is unavailable.",
+  "live_fetch_policy":{"timeout_ms":5000,"retries":1,"failure_behavior":"continue with local repository data","error_label":"Live enrichment unavailable — repository data shown"},
+  "known_issue":"Previous country views could surface 'Failed to fetch' when an optional live source failed. The country route must treat live enrichment as additive, not foundational.",
+  "coupling_targets":["country","government","institutions","security","economy","finance","energy","infrastructure","technology","labour","beliefs","history","evidence"],
+  "acceptance":"Opening any canonical country ID must produce a useful local page even with network access disabled after the repository assets have loaded."
+}
