@@ -1,0 +1,48 @@
+{
+  "version":"1.0.0",
+  "purpose":"Turn the stored Edda texts into navigable works rather than undifferentiated text blobs. The raw TXT remains authoritative for the edition; this file supplies structure and Atlas relationships.",
+  "works":[
+    {"id":"poetic-edda","title":"The Poetic Edda","edition_id":"poetic-edda-bellows-1923","source_type":"poetic corpus","organization":"poems","parts":[
+      {"id":"voluspa","title":"Völuspá","domain":"cosmogony and eschatology","subjects":["creation","gods","humans","Yggdrasil","Norns","Ragnarök","renewal"]},
+      {"id":"havamal","title":"Hávamál","domain":"wisdom poetry","subjects":["Odin","wisdom","hospitality","speech","friendship","knowledge","magic","runes"]},
+      {"id":"vafthrudnismol","title":"Vafþrúðnismál","domain":"cosmological dialogue","subjects":["Odin","giant wisdom","cosmology","time","Ragnarök"]},
+      {"id":"grimnismol","title":"Grímnismál","domain":"cosmography","subjects":["Odin","worlds","Asgard","Yggdrasil","rivers","divine geography"]},
+      {"id":"skirnismol","title":"Skírnismál","domain":"courtship and mythic narrative","subjects":["Freyr","Gerðr","desire","curse","giants"]},
+      {"id":"harbarthsljoth","title":"Hárbarðsljóð","domain":"flyting","subjects":["Thor","Odin","identity","travel","conflict"]},
+      {"id":"hymiskvitha","title":"Hymiskviða","domain":"mythic narrative","subjects":["Thor","giants","sea","cauldron"]},
+      {"id":"lokasenna","title":"Lokasenna","domain":"flyting and accusation","subjects":["Loki","gods","social order","insult","sexual accusation"]},
+      {"id":"thrymskvitha","title":"Þrymskviða","domain":"comic myth","subjects":["Thor","Mjölnir","Þrymr","disguise"]},
+      {"id":"alvissmol","title":"Alvíssmál","domain":"cosmological vocabulary","subjects":["Thor","dwarf","names","worlds","language"]},
+      {"id":"baldrs-draumar","title":"Baldrs draumar","domain":"prophecy","subjects":["Baldr","Odin","death","Hel","fate"]},
+      {"id":"rigsthula","title":"Rígsþula","domain":"social genealogy","subjects":["Heimdall","social classes","genealogy","labor","kingship"]},
+      {"id":"hyndluljoth","title":"Hyndluljóð","domain":"genealogy","subjects":["Freyja","genealogy","memory","heroes"]},
+      {"id":"svipdagsmol","title":"Svipdagsmál","domain":"heroic and mythic dialogue","subjects":["Svipdag","Menglöð","journey","quest"]},
+      {"id":"volundarkvitha","title":"Völundarkviða","domain":"heroic legend","subjects":["Völund","craft","captivity","revenge"]},
+      {"id":"helgakvitha-hjorvarthssonar","title":"Helgakviða Hjörvarðssonar","domain":"heroic legend","subjects":["Helgi","Sváva","fate","battle"]},
+      {"id":"helgakvitha-hundingsbana-i","title":"Helgakviða Hundingsbana I","domain":"heroic legend","subjects":["Helgi","Sigrún","Völsungs","battle"]},
+      {"id":"helgakvitha-hundingsbana-ii","title":"Helgakviða Hundingsbana II","domain":"heroic legend","subjects":["Helgi","Sigrún","death","return"]},
+      {"id":"reginsmol","title":"Reginsmál","domain":"Völsung cycle","subjects":["Sigurd","Regin","Fáfnir","Andvari","gold"]},
+      {"id":"fafnismol","title":"Fáfnismál","domain":"Völsung cycle","subjects":["Sigurd","Fáfnir","wisdom","prophecy"]},
+      {"id":"sigrdrifumol","title":"Sigrdrífumál","domain":"heroic wisdom","subjects":["Sigurd","Sigrdrifa","runes","counsel"]},
+      {"id":"guthrunarkvitha-i","title":"Guðrúnarkviða I","domain":"heroic lament","subjects":["Guðrún","Sigurd","grief","memory"]},
+      {"id":"sigurtharkvitha-en-skammmа","title":"Sigurðarkviða en skamma","domain":"heroic tragedy","subjects":["Sigurd","Brynhild","Guðrún","betrayal"]},
+      {"id":"helreith-brynhildar","title":"Helreið Brynhildar","domain":"death journey","subjects":["Brynhild","Hel","judgment","memory"]},
+      {"id":"atlаmol","title":"Atlamál en grœnlenzku","domain":"heroic tragedy","subjects":["Atli","Guðrún","Gjúkungar","revenge"]},
+      {"id":"hamthesmol","title":"Hamðismál","domain":"heroic tragedy","subjects":["Hamðir","Sörli","Jörmunrekkr","revenge"]}
+    ]},
+    {"id":"prose-edda","title":"The Younger Edda / Prose Edda","edition_id":"prose-edda-anderson-1897","source_type":"prose mythography and poetics","organization":"books and sections","parts":[
+      {"id":"gylfaginning","title":"Gylfaginning","domain":"mythological narrative","subjects":["Gylfi","Odin","creation","gods","cosmology","Yggdrasil","Ragnarök"]},
+      {"id":"brage-speech","title":"Brage's Speech","domain":"mythological and poetic instruction","subjects":["Bragi","poetry","gods","myths"]},
+      {"id":"skaldskaparmal","title":"Skáldskaparmál","domain":"poetic diction and myth","subjects":["kennings","poetry","myths","heroes","gods"]},
+      {"id":"hattatal","title":"Háttatal","domain":"poetic metres","subjects":["verse forms","metre","Skaldic poetry","poetics"]}
+    ]}
+  ],
+  "cross_text_axes":[
+    {"id":"creation","label":"Creation and primordial order","works":["voluspa","vafthrudnismol","gylfaginning"]},
+    {"id":"world-tree","label":"Yggdrasil and cosmic geography","works":["voluspa","grimnismol","vafthrudnismol","gylfaginning"]},
+    {"id":"wisdom","label":"Knowledge, counsel and wisdom","works":["havamal","vafthrudnismol","fafnismol","sigrdrifumol"]},
+    {"id":"ragnarok","label":"Ragnarök and renewal","works":["voluspa","vafthrudnismol","baldrs-draumar","gylfaginning"]},
+    {"id":"poetry","label":"Poetry, naming and poetic technique","works":["havamal","alvissmol","skaldskaparmal","hattatal"]},
+    {"id":"heroic-cycle","label":"Völsung and related heroic material","works":["reginsmol","fafnismol","sigrdrifumol","guthrunarkvitha-i","helreith-brynhildar"]}
+  ]
+}
