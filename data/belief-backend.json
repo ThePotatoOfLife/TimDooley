@@ -1,15 +1,18 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-07",
   "purpose":"Canonical registry for the multidimensional belief atlas.",
   "space":"data/belief-space.json",
   "politicalLexicon":"data/political-lexicon.json",
   "religiousLexicon":"data/religious-lexicon.json",
   "beliefRegistry":"data/belief-registry.json",
+  "religiousFoundationRecords":"data/religious-foundations.json",
+  "religiousArchitecture":"data/blueprints/religious-architecture.json",
   "individualRecord":"belief.html?id=<slug>",
   "visualization":"political-compass.html",
-  "layers":["political","religious"],
-  "navigation":"Every lexicon entry is searchable, hoverable and clickable from the 3D space and resolves to a canonical belief record page.",
-  "counts":{"political":null,"religious":null},
-  "status":"Living taxonomy; entries, relationships, sources and coordinates are intended to be expanded over time."
+  "layers":["political","religious","religious-foundation","religious-comparative"],
+  "religious_pipeline":["lexicon entry","foundation record","field/substrate","seed/emergence","formation","texts/concepts","practice","people/places","institutions","branches","modern transformation"],
+  "navigation":"Every lexicon entry resolves to a canonical belief record; religious records can additionally resolve to their foundation and historical layers.",
+  "counts":{"political":null,"religious_lexicon_entries":null,"religious_foundations":19},
+  "status":"Living taxonomy; entries, relationships, sources, historical snapshots and coordinates are intended to expand over time."
 }
