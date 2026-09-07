@@ -1,5 +1,5 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-07",
   "purpose":"Bridge registry connecting backend-layer IDs to the global graph without forcing every schema or source record into data/nodes.json. Canonical records can be promoted; references remain resolvable through source-layer routing.",
   "global_graph":"data/relationships.json",
@@ -16,7 +16,9 @@
   ],
   "explicit_bridges":[
     {"id":"tim-dooley","owner":"data/tim-dooley-cosmology.json","graph_registry":"data/graph-registry.json","route":"node.html?id=tim-dooley","class":"project-mythic"},
-    {"id":"potatoism","owner":"data/potatoism-religion.json","graph_registry":"data/graph-registry.json","route":"belief.html?id=potatoism","class":"project-defined-symbolic"},
+    {"id":"potatoism","owner":"data/potatoism-religion.json + data/potatoism-master-corpus.json","graph_registry":"data/graph-registry.json","route":"potatoism.html","class":"project-defined-symbolic"},
+    {"id":"potatoism-entities","owner":"data/potatoism-entities.json","route":"potatoism.html","class":"project-symbolic-registry"},
+    {"id":"potatoism-events-relations","owner":"data/potatoism-event-and-relation-atlas.json","route":"potatoism.html","class":"project-symbolic-dynamics"},
     {"id":"the-turning","owner":"data/april-2025-turning-graph.json","route":"node.html?id=the-turning","class":"project-symbolic-event"},
     {"id":"potato-of-life","owner":"data/nodes.json + data/potatoism-religion.json","route":"node.html?id=potato-of-life","class":"project-symbolic"},
     {"id":"tree-of-life","owner":"data/nodes.json + data/potatoism-cosmology.json","route":"node.html?id=tree-of-life","class":"symbolic-comparative"},
@@ -36,6 +38,7 @@
     {"id_pattern":"country:<canonical-country-id>","source":"data/countries/index.json","owners":["data/countries/<id>.json","data/countries/<id>-enrichment.json","data/country-nodes*.json"],"route":"nation.html?id=<id>","graph_relation":"located-in / trades-with / depends-on / member-of / governed-by"},
     {"id_pattern":"belief:<slug>","source":"data/belief-registry.json","owners":["data/religious-lexicon.json","data/political-lexicon.json","data/potatoism-religion.json"],"route":"belief.html?id=<slug>","graph_relation":"influences / branches-from / practiced-in / interpreted-by"},
     {"id_pattern":"religion:<id>","source":"data/religious-layer-map.json","owners":["data/religious-foundations*.json","data/religious-adjacent/**/*.json","data/canonical-texts.json"],"route":"node.html?id=<id>","graph_relation":"emerges-from / branches-into / text-preserves / practiced-in / located-at / influenced-by"},
+    {"id_pattern":"potatoism:<id>","source":"data/potatoism-entities.json","owners":["data/potatoism-deep-layers.json","data/potatoism-glossary.json","data/potatoism-event-and-relation-atlas.json","data/potatoism-public-observations.json"],"route":"node.html?id=<id>","graph_relation":"embodies / manifests-as / connects / complements / extends / transforms"},
     {"id_pattern":"research:<wave-id>","source":"data/expansion-registry.json","owners":["data/expansions/*.json"],"route":"repository.html#research","graph_relation":"researches / expands / proposes / supports / contradicts"},
     {"id_pattern":"source:<id>","source":"data/religious-sources.json + data/country-source-registry.json + data/sources/**/*.json","owners":["source registries","source documents"],"route":"node.html?id=<id>","graph_relation":"supports / contradicts / updates / cites"}
   ],
