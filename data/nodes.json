@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.1.1",
   "updated": "2026-09-07",
   "nodes": [
     {"id":"potato-of-life","type":"symbol","name":"Potato of Life","layer":"mythological","description":"Central Potatoverse symbol for life emerging from ordinary matter, persistence, nourishment and transformation."},
@@ -10,12 +10,13 @@
     {"id":"north-axis","type":"symbol/place","name":"North Axis","layer":"mythological-geographic","description":"The organizing northward direction of the Potatoverse and the working North Programme geography."},
     {"id":"red-potato","type":"archetype","name":"Red Potato","layer":"mythological","description":"Creative, loving, expansive and upward-moving life principle."},
     {"id":"blue-potato","type":"archetype","name":"Blue Potato","layer":"mythological","description":"Memory, precision, contraction and rootward movement; complementary to the Red Potato."},
-    {"id":"european-union","type":"institution","name":"European Union","layer":"empirical","description":"Political and economic union; first major institutional node in the European Economic Graph."},
-    {"id":"denmark","type":"state","name":"Denmark","layer":"empirical","description":"EU and NATO member and northern anchor node in the working North Axis architecture."},
-    {"id":"greenland","type":"territory","name":"Greenland","layer":"empirical","description":"Autonomous territory within the Kingdom of Denmark and a major Arctic geographic and strategic node."},
+    {"id":"european-union","type":"institution","name":"European Union","layer":"empirical","description":"Political and economic union whose single market connects goods, services, capital and people across 27 member states."},
+    {"id":"denmark","type":"state","name":"Denmark","layer":"empirical","description":"EU member state and northern anchor node in the working North Axis architecture."},
+    {"id":"kingdom-of-denmark","type":"state-structure","name":"Kingdom of Denmark","layer":"empirical","description":"The constitutional realm comprising Denmark, Greenland and the Faroe Islands; Greenland is an autonomous part of the realm."},
+    {"id":"greenland","type":"territory","name":"Greenland","layer":"empirical","description":"Autonomous part of the Kingdom of Denmark and a major Arctic geographic, resource and strategic node."},
     {"id":"france","type":"state","name":"France","layer":"empirical","description":"Major EU economy and priority North Programme case for fiscal and institutional research."},
     {"id":"belgium","type":"state","name":"Belgium","layer":"empirical","description":"EU member and priority North Programme case for fiscal and institutional research."},
-    {"id":"energy-system","type":"system","name":"European Energy System","layer":"empirical","description":"Interlinked generation, grids, fuels, markets, infrastructure and industrial demand across Europe."},
+    {"id":"energy-system","type":"system","name":"European Energy System","layer":"empirical","description":"Interlinked generation, grids, fuels, markets and industrial demand across Europe."},
     {"id":"finance-debt","type":"system","name":"Finance & Public Debt","layer":"empirical","description":"Bonds, banks, funds, public liabilities, monetary institutions and capital markets."}
   ]
 }
