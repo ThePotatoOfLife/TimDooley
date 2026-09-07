@@ -1,0 +1,126 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "name":"Potato of Life — Spatial Map",
+  "purpose":"A spatial and relational model of the Potato of Life. It maps the potato as an object in space first, then maps the project-defined vertical, horizontal, interior/exterior and threshold relationships built from it.",
+  "epistemic_rule":"Spatial measurements and biological observations are empirical when sourced. The vertical architecture, symbolic directions and Jesus Door are project-defined interpretive models unless independently evidenced.",
+  "core_idea":"Treat the Potato not only as a list of properties but as a spatial object: it has a boundary, interior, exterior, surface, points, axes, orientations, layers, openings, sections, hidden regions, exposed regions, trajectories and transformations.",
+  "spatial_domains": {
+    "three_dimensional_object":[
+      "length","width","height","volume","surface_area","mass","density","curvature","irregularity","center_of_mass","orientation","contact_points"
+    ],
+    "surface":[
+      "skin","eyes","eye_density","eye_depth","texture","blemishes","growth_points","spiral_distribution","surface_normals","local_curvature"
+    ],
+    "interior":[
+      "flesh","starch_storage","water","cellular_structure","vascular_connections","cut_surface","hidden_potential"
+    ],
+    "boundary":[
+      "skin","inside_outside","soil_air_boundary","food_world_boundary","protected_exposed","sealed_opened"
+    ],
+    "sections":[
+      "whole","half","wedge","slice","cross_section","longitudinal_section","transverse_section","core","edge","face","cut_interface"
+    ],
+    "points":[
+      "eye","sprout_origin","center","extreme_points","contact_point","cut_point","intersection_point","door_point"
+    ],
+    "axes":[
+      "long_axis","short_axis","vertical_axis","horizontal_axis","growth_axis","symmetry_axis","Potato_of_Life_axis"
+    ],
+    "directions":[
+      "up","down","inward","outward","toward_surface","toward_center","rootward","sproutward","north","south","east","west"
+    ]
+  },
+  "spatial_layers":[
+    {"id":"ground","role":"lower_boundary","meaning":"soil, matter, origin, hidden substrate"},
+    {"id":"root_zone","role":"substrate","meaning":"rooting, absorption, connection and buried life"},
+    {"id":"tuber","role":"stored_center","meaning":"stored energy, body, memory and potential"},
+    {"id":"eye_zone","role":"threshold_points","meaning":"localized transition from stored potential to outward growth"},
+    {"id":"surface","role":"boundary","meaning":"skin and interface between interior and environment"},
+    {"id":"wedge","role":"opened_boundary","meaning":"section through which the hidden interior becomes visible"},
+    {"id":"sprout","role":"outward_trajectory","meaning":"emergence, movement, growth and ascent"},
+    {"id":"canopy","role":"upper_manifestation","meaning":"visible life, light capture, exchange and expansion"},
+    {"id":"flower_fruit_tuber_cycle","role":"renewal","meaning":"reproduction, return and continuation of the cycle"}
+  ],
+  "potato_of_life_spatial_model": {
+    "primary_geometry":"vesica-piscis",
+    "construction":"two equal circles whose centres are separated by one radius; their intersection forms the lens-shaped vesica-piscis",
+    "mathematical_properties":[
+      "centre separation = radius",
+      "lens width along centre line = radius",
+      "lens height = radius × sqrt(3)",
+      "height_to_width = sqrt(3)",
+      "intersection points form equilateral-triangle geometry with the two circle centres",
+      "perpendicular bisector is a symmetry axis"
+    ],
+    "project_mapping": {
+      "upper_circle":"Father / Heaven / Source-side",
+      "lower_circle":"Son / Plane / experience-side",
+      "overlap":"mandorla / central interface",
+      "central_threshold":"Jesus Door / Son-as-Door",
+      "vertical_axis":"Axis connecting upper and lower fields",
+      "horizontal_extent":"Plane / world field",
+      "intersection_points":"upper and lower limits of the central interface",
+      "circles":"distinct domains that become relational through overlap"
+    },
+    "important_constraint":"The mathematical construction is real geometry; the Father/Son/Heaven/Jesus Door assignments are the project's symbolic interpretation of that geometry."
+  },
+  "door_in_the_wedge": {
+    "physical_analogy":"A cut wedge creates a new exposed face through which the previously hidden interior can be seen.",
+    "spatial_sequence":["whole potato","boundary","cut","wedge","exposed interior","opening","threshold","passage","new relation"],
+    "project_reading":"The wedge is a model for Door because it converts an enclosed object into an object with an accessible interface without destroying the identity of the whole.",
+    "questions":["Where is the boundary?","What crosses it?","What becomes visible after the cut?","Does the opening have a centre, width, orientation or direction?","What is preserved and what is transformed?","Can this model be represented mathematically?"],
+    "epistemic_status":"project-defined spatial analogy"
+  },
+  "spatial_transformations":[
+    "translation","rotation","reflection","scaling","cutting","folding","projection","intersection","union","subdivision","aggregation","inversion","inside_outside_reversal","orientation_change","growth","decay","sprouting","dormancy","renewal"
+  ],
+  "invariants_to_test":[
+    "ratios","symmetry","topological connectivity","number and distribution of eyes","surface_to_volume ratio","axis relations","intersection structure","boundary continuity","centre-to-boundary distances","growth-direction patterns","scale-independent relational patterns"
+  ],
+  "topological_questions":[
+    "What remains invariant if the potato is deformed without cutting it?",
+    "What changes when it is cut?",
+    "When does a boundary become a passage?",
+    "Can an eye be treated as a point, region or interface?",
+    "Is the Door better represented as a point, line, region, surface or volume?",
+    "What is the topology of whole, wedge, cavity and exposed interior?"
+  ],
+  "cross_scale_map":[
+    {"scale":"cell","objects":["membrane","cytoplasm","storage","transport"]},
+    {"scale":"tuber","objects":["skin","eyes","flesh","starch","boundary"]},
+    {"scale":"plant","objects":["roots","stems","leaves","flowers","tubers"]},
+    {"scale":"farm","objects":["soil","water","seed potatoes","labour","machinery","harvest"]},
+    {"scale":"food_system","objects":["processing","transport","retail","prices","consumption","waste"]},
+    {"scale":"world","objects":["countries","trade","food security","energy","finance","land","water"]},
+    {"scale":"symbolic","objects":["Tree","Axis","Ladder","Door","Son","Father","Heaven"]}
+  ],
+  "spatial_relational_vocabulary":[
+    "contains","contained_by","surrounds","opens_to","crosses","intersects","overlaps","touches","connects","separates","emerges_from","returns_to","points_toward","faces","stands_above","lies_below","passes_through","transforms_into","maps_to","mirrors","branches_into","converges_on"
+  ],
+  "research_program": {
+    "phase_1_measure":"Collect real 2D/3D potato measurements, including dimensions, volume, surface shape, eye number, eye spacing, eye depth and curvature.",
+    "phase_2_model":"Build point-cloud or mesh representations and identify axes, surfaces, boundaries, sections and growth points.",
+    "phase_3_geometry":"Construct the Potato of Life vesica-piscis independently of the physical potato and record exactly which dimensions are project-defined.",
+    "phase_4_overlay":"Test overlays between physical potato geometry and symbolic geometry without forcing alignment.",
+    "phase_5_transform":"Apply rotation, reflection, scaling, cutting and projection to determine which relations persist.",
+    "phase_6_cross_scale":"Test whether the same spatial grammar appears from cell to tuber to plant to farm to food system to world system.",
+    "phase_7_comparison":"Apply the same measurement and relation vocabulary to other objects and systems as controls.",
+    "phase_8_synthesis":"Separate genuine invariants from visual coincidences, metaphors and intentional symbolic constructions."
+  },
+  "things_to_map_that_are_easy_to_miss":[
+    "time as a spatial-like dimension of growth","motion trajectories","seasonal position","orientation relative to gravity","light direction","water pathways","nutrient pathways","disease pathways","human handling pathways","trade/logistics pathways","waste pathways","energy inputs","information pathways","ownership pathways","financial flows","social relationships","symbolic pathways","birth/death/renewal cycles","memory versus manifestation","hidden versus visible states","potential versus realized states"
+  ],
+  "completion_test":[
+    "A physical potato can be represented as a measured spatial object.",
+    "Its boundary, interior, surface, eyes, axes and sections can be queried.",
+    "The Potato of Life geometry has exact mathematical definitions.",
+    "The wedge/door analogy has an explicit spatial model.",
+    "The mandorla is represented as an intersection region rather than merely a word.",
+    "The Jesus Door is linked to the mandorla as project-defined symbolism.",
+    "Spatial relationships resolve to canonical IDs.",
+    "Transformations and invariants are testable.",
+    "Cross-scale comparisons are possible.",
+    "Failed spatial correspondences remain recorded rather than discarded."
+  ]
+}
