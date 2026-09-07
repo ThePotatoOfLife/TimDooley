@@ -1,35 +1,33 @@
 {
-  "version":"1.1.0",
+  "version":"1.2.0",
   "updated":"2026-09-07",
-  "purpose":"Machine-readable registry for full-text religious works, editions, local availability, reader routes and concordance/comparison indexing. A catalogue entry is never presented as a local full text unless the complete text is actually stored in the repository.",
-  "search_model":{
-    "levels":["catalogue","local-full-text","external-full-text","corpus-library"],
-    "queries":["exact word","phrase","book","chapter","tradition","edition","cross-text overlap"],
-    "comparison_unit":"edition-aware text occurrence; translations are never silently merged with originals",
-    "overlap_fields":["term","work","tradition","edition","location","language","translation"]
-  },
+  "purpose":"Machine-readable registry for full-text religious works, editions, local availability, reader routes and concordance/comparison indexing. Catalogue entries are never presented as local full texts unless the complete edition is stored under data/texts/.",
+  "search_model":{"levels":["catalogue","local-full-text","external-full-text","corpus-library"],"queries":["exact word","phrase","book","chapter","section","tradition","edition","cross-text overlap"],"comparison_unit":"edition-aware text occurrence; translations are never silently merged with originals","overlap_fields":["term","work","tradition","edition","location","language","translation"]},
   "local_full_texts":[
     {"id":"bible-kjv-1611-gutenberg","work":"Bible — King James Version","tradition":"Christianity","path":"data/texts/christianity/bible-kjv-1611-gutenberg.txt","reader":"bible.html","source":"https://www.gutenberg.org/ebooks/30","edition":"Project Gutenberg eBook 30; KJV 1611 tradition","status":"complete-local-public-domain-source"},
     {"id":"quran-rodwell-gutenberg","work":"The Koran / Qur'an","tradition":"Islam","path":"data/texts/islam/quran-rodwell-gutenberg.txt","reader":"religious-texts.html?text=quran-rodwell-gutenberg","source":"https://www.gutenberg.org/ebooks/2800","edition":"J. M. Rodwell English translation","status":"complete-local-public-domain-translation"},
-    {"id":"bhagavad-gita-arnold-gutenberg","work":"Bhagavad-Gita / The Song Celestial","tradition":"Hinduism","path":"data/texts/hinduism/bhagavad-gita-arnold-gutenberg.txt","reader":"religious-texts.html?text=bhagavad-gita-arnold-gutenberg","source":"https://www.gutenberg.org/ebooks/2388","edition":"Sir Edwin Arnold English translation","status":"complete-local-public-domain-translation"}
+    {"id":"bhagavad-gita-arnold-gutenberg","work":"Bhagavad-Gita / The Song Celestial","tradition":"Hinduism","path":"data/texts/hinduism/bhagavad-gita-arnold-gutenberg.txt","reader":"religious-texts.html?text=bhagavad-gita-arnold-gutenberg","source":"https://www.gutenberg.org/ebooks/2388","edition":"Sir Edwin Arnold English translation","status":"complete-local-public-domain-translation"},
+    {"id":"torah-tyndale-gutenberg","work":"Torah / Pentateuch","tradition":"Judaism","path":"data/texts/judaism/torah-tyndale-pentateuch-gutenberg.txt","reader":"religious-texts.html?text=torah-tyndale-gutenberg","source":"https://www.gutenberg.org/ebooks/10553","edition":"William Tyndale Pentateuch, modernized spelling","status":"complete-local-public-domain-translation"},
+    {"id":"dao-de-jing-legge-gutenberg","work":"Dao De Jing / Tao Te Ching","tradition":"Taoism / Daoism","path":"data/texts/taoism/tao-teh-king-legge-gutenberg.txt","reader":"taoism.html","source":"https://www.gutenberg.org/ebooks/216","edition":"James Legge translation","status":"complete-local-public-domain-translation"},
+    {"id":"dao-de-jing-chinese-gutenberg","work":"Dao De Jing / 道德經","tradition":"Taoism / Daoism","path":"data/texts/taoism/dao-de-jing-chinese-gutenberg.txt","reader":"taoism.html","source":"https://www.gutenberg.org/ebooks/7337","edition":"Project Gutenberg Chinese text","status":"complete-local-public-domain-source"},
+    {"id":"analects-legge-gutenberg","work":"Analects / 論語","tradition":"Confucian traditions","path":"data/texts/confucianism/analects-legge-gutenberg.txt","reader":"religious-texts.html?text=analects-legge-gutenberg","source":"https://www.gutenberg.org/ebooks/4094","edition":"James Legge Chinese + English edition","status":"complete-local-public-domain-edition"},
+    {"id":"dhammapada-muller-gutenberg","work":"Dhammapada","tradition":"Buddhism","path":"data/texts/buddhism/dhammapada-muller-gutenberg.txt","reader":"religious-texts.html?text=dhammapada-muller-gutenberg","source":"https://www.gutenberg.org/ebooks/2017","edition":"F. Max Müller translation","status":"complete-local-public-domain-translation"},
+    {"id":"upanishads-paramananda-gutenberg","work":"The Upanishads","tradition":"Hinduism","path":"data/texts/hinduism/upanishads-paramananda-gutenberg.txt","reader":"religious-texts.html?text=upanishads-paramananda-gutenberg","source":"https://www.gutenberg.org/ebooks/3283","edition":"Swami Paramananda translation and commentary","status":"complete-local-public-domain-edition"},
+    {"id":"zhuangzi-giles-gutenberg","work":"Chuang Tzu / Zhuangzi","tradition":"Taoism / Daoism","path":"data/texts/taoism/zhuangzi-giles-gutenberg.txt","reader":"religious-texts.html?text=zhuangzi-giles-gutenberg","source":"https://www.gutenberg.org/ebooks/59709","edition":"Herbert Allen Giles translation","status":"complete-local-public-domain-translation"}
   ],
   "external_full_texts":[
-    {"id":"dao-de-jing-legge","catalog":"data/religious-text-library.json","reader":"taoism.html","source":"https://en.wikisource.org/wiki/Translation:Tao_Te_Ching","status":"complete external reader; public-domain edition"},
-    {"id":"analects","catalog":"data/religious-text-library.json","reader":"https://ctext.org/analects","status":"complete external text/library"},
-    {"id":"zhuangzi","catalog":"data/religious-text-library.json","reader":"https://ctext.org/zhuangzi","status":"complete external text/library"},
-    {"id":"dhammapada","catalog":"data/religious-text-library.json","reader":"https://www.suttacentral.net/dhp","status":"complete external text/library"},
-    {"id":"guru-granth-sahib","catalog":"data/religious-text-library.json","reader":"https://gurdwaras.com/scriptures/sggs/1430","status":"complete external reader; translation editions must remain distinct"}
+    {"id":"guru-granth-sahib","catalog":"data/religious-text-library.json","reader":"https://gurdwaras.com/scriptures/sggs/1430","status":"complete external reader; translation editions remain distinct"},
+    {"id":"kitab-i-aqdas","catalog":"data/religious-text-library.json","reader":"https://www.bahai.org/library/authoritative-texts/bahaullah/kitab-i-aqdas","status":"official authoritative library"}
   ],
   "library_corpora":[
     {"id":"tanakh","catalog":"data/religious-text-library.json","reader":"https://www.sefaria.org/texts/Tanakh"},
     {"id":"pali-canon","catalog":"data/religious-text-library.json","reader":"https://suttacentral.net/"},
-    {"id":"upanishads","catalog":"data/religious-text-library.json","reader":"https://www.sacred-texts.com/hin/"},
-    {"id":"avesta","catalog":"data/religious-text-library.json","reader":"https://www.sacred-texts.com/zor/"},
     {"id":"jain-agamas","catalog":"data/religious-text-library.json","reader":"https://www.sacred-texts.com/jai/"},
+    {"id":"avesta","catalog":"data/religious-text-library.json","reader":"https://www.sacred-texts.com/zor/"},
     {"id":"kojiki-nihon-shoki","catalog":"data/religious-text-library.json","reader":"https://sacred-texts.com/shi/"},
     {"id":"poetic-edda","catalog":"data/religious-text-library.json","reader":"https://sacred-texts.com/neu/poe/"},
     {"id":"homeric-hymns","catalog":"data/religious-text-library.json","reader":"https://www.perseus.tufts.edu/"}
   ],
-  "policy":"Do not claim a book is locally stored until its complete edition is present under data/texts/. Public-domain editions can be imported for local concordance; copyrighted translations should remain external or be replaced by legally redistributable editions.",
-  "next_import_priority":["Torah public-domain edition","Dao De Jing public-domain edition","Dhammapada public-domain edition","Analects public-domain edition","Zhuangzi public-domain edition","additional public-domain Qur'an translations for translation comparison"]
+  "policy":"Public-domain editions can be imported for local concordance. Copyrighted modern translations remain external or are replaced by legally redistributable editions. Original-language texts and translations always remain separate editions.",
+  "next_import_priority":["Pali Canon collections","Avesta public-domain editions","Kojiki and Nihon Shoki public-domain editions","Poetic Edda public-domain translation","Homeric Hymns public-domain translation","Guru Granth Sahib source editions where redistribution rights are clear","Kitab-i-Aqdas official library integration"]
 }
