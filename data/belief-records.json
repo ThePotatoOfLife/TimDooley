@@ -1,0 +1,29 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Canonical normalized belief records derived from the existing religious lexicon without duplicating its descriptive definitions.",
+  "record_policy":"The religious lexicon remains the source of concise definitions. These records provide stable IDs, types and parent relationships for navigation and future evidence attachment.",
+  "records":[
+    {"id":"christianity","name":"Christianity","type":"religious-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"protestantism","name":"Protestantism","type":"religious-family","definition_source":"data/religious-lexicon.json","parent_or_family":"christianity"},
+    {"id":"adventism","name":"Adventism","type":"denomination-or-movement","definition_source":"data/religious-lexicon.json","parent_or_family":"protestantism"},
+    {"id":"catholicism","name":"Catholicism","type":"tradition","definition_source":"data/religious-lexicon.json","parent_or_family":"christianity"},
+    {"id":"eastern-orthodoxy","name":"Eastern Orthodoxy","type":"tradition","definition_source":"data/religious-lexicon.json","parent_or_family":"christianity"},
+    {"id":"islam","name":"Islam","type":"religious-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"judaism","name":"Judaism","type":"religious-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"hinduism","name":"Hinduism","type":"religious-family","definition_source":"data/religious-lexicon.json"},
+    {"id":"buddhism","name":"Buddhism","type":"religious-family","definition_source":"data/religious-lexicon.json"},
+    {"id":"sikhism","name":"Sikhism","type":"religious-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"jainism","name":"Jainism","type":"religious-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"zoroastrianism","name":"Zoroastrianism","type":"religious-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"bahai-faith","name":"Bahá’í Faith","type":"religious-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"taoism","name":"Taoism","type":"religious-philosophical-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"confucianism","name":"Confucianism","type":"ethical-philosophical-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"shinto","name":"Shinto","type":"religious-tradition","definition_source":"data/religious-lexicon.json"},
+    {"id":"african-traditional-religions","name":"African Traditional Religions","type":"religious-family","definition_source":"data/religious-lexicon.json"},
+    {"id":"atheism","name":"Atheism","type":"worldview","definition_source":"data/religious-lexicon.json"},
+    {"id":"agnosticism","name":"Agnosticism","type":"worldview","definition_source":"data/religious-lexicon.json"},
+    {"id":"secular-humanism","name":"Secular Humanism","type":"worldview","definition_source":"data/religious-lexicon.json"},
+    {"id":"potatoism","name":"Potatoism","type":"project-defined-belief","definition_source":"data/religious-foundations.json","epistemic_status":"project-canon"}
+  ]
+}
