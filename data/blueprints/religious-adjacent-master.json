@@ -1,0 +1,35 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "title":"Religious-Adjacent / Cultic / Occult / Anti-Religious Master Blueprint",
+  "purpose":"Standardize records for traditions, cults, mystery cults, esoteric movements, occult orders, initiatory societies, anti-religious worldviews and historical deity cults that do not fit cleanly into the main religion registry.",
+  "classification":"Analytical classification only. 'Cult', 'occult', 'secret society', 'anti-religion' and 'sect' are not automatically judgments of legitimacy, danger or truth.",
+  "record_layers":{
+    "identity":["id","name","native_names","category","subcategories","status","period","regions","languages"],
+    "formation":["founder_or_attributed_origin","emergence_window","historical_field","predecessors","influences","schisms","decline_or_transformation"],
+    "worldview":["deities_or_ultimate_reality","cosmology","anthropology","problem","goal","afterlife","ethics","ritual_logic"],
+    "practice":["initiation","rituals","magic_or_meditation","sacred_objects","symbols","festivals","diet_or_body_rules","sexual_or_family_ethics"],
+    "texts":["primary_texts","ritual_texts","commentaries","languages","textual_status","manuscript_or_edition_evidence"],
+    "people":["founders","teachers","priests","prophets","major_interpreters","opponents_or_critics"],
+    "organization":["membership_model","degrees","offices","lodges_or_temples","authority","recruitment","initiation_structure","public_or_private_character"],
+    "geography":["origin_places","sacred_places","temples","lodges","diaspora","archaeological_sites"],
+    "society":["state_relation","law","politics","economy","class","gender","race_or_ethnicity_where_historically_relevant","art_and_culture","media"],
+    "relationships":["predecessor","influenced","borrowed_from","reacted_against","syncretized_with","split_from","revived_as","accused_of","misidentified_as"],
+    "evidence":["primary_sources","archaeology","inscriptions","manuscripts","institutional_sources","academic_sources","demography","confidence","contested_claims"],
+    "interpretation":["community_self_description","scholarly_description","outsider_polemics","modern_reconstruction","project_comparative_notes"],
+    "integrity":["historical_fact_vs_later_legend","self_description_vs_external_label","ancient_cult_vs_modern_revival","symbolic_similarity_vs_historical_influence","secret_claim_vs_documented_evidence"]
+  },
+  "mandatory_integrity_rules":[
+    "Do not call an ancient deity a modern religion without evidence of a living tradition.",
+    "Do not infer child sacrifice, Satan worship, criminality or abuse merely from hostile sources.",
+    "Do not treat medieval accusations of secret societies as proof of their alleged activities.",
+    "Separate ancient cult practice from modern occult revival and modern aesthetic appropriation.",
+    "Separate a group's self-designation from labels applied by opponents or journalists.",
+    "Record disputed etymologies and chronologies as disputed rather than selecting a convenient answer.",
+    "A small population does not make a tradition historically insignificant.",
+    "Secret or initiatory does not mean undocumented; use surviving constitutions, membership records, texts, buildings and correspondence where available.",
+    "No blank fields are used in completed records; unavailable information is represented by an explicit evidence statement such as 'no reliable surviving evidence identified'.",
+    "Modern groups using an ancient symbol are not automatically continuations of the ancient cult."
+  ],
+  "recommended_relationship_types":["cult-of-deity","mystery-cult-of","revival-of","reinterpretation-of","reacts-against","influenced-by","syncretizes-with","initiatory-order-of","schism-from","organizational-successor-to","text-preserves","site-attested-by","modern-adaptation-of","anti-religious-response-to"]
+}
