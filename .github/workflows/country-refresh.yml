@@ -10,6 +10,7 @@ on:
       - 'scripts/refresh_country_atlas.py'
       - 'scripts/instantiate_country_nodes.py'
       - 'scripts/merge_country_deepening.py'
+      - 'data/atlas-manifest.json'
 
 permissions:
   contents: write
