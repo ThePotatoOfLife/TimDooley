@@ -1,0 +1,47 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "name": "Potato of Life — Full Mapping Roadmap",
+  "purpose": "Turn the question 'what can a potato be?' into a complete, evidence-disciplined research programme that can be expanded across biology, geometry, history, symbolism, mythology, philosophy and the wider world graph.",
+  "central_question": "What properties and relationships belong to the potato itself, what properties have been assigned to potatoes by human cultures, and what new structures become visible when those two domains are mapped together?",
+  "method": "Start with the object. Map observable properties. Map external historical meanings. Map Potatoism's own meanings. Connect them through typed relationships. Test geometry and scale. Record contradictions. Only then interpret recurring structures.",
+  "mapping_stack": [
+    {"order":1,"layer":"object","question":"What is a potato?","work":["botany","anatomy","growth","reproduction","chemistry","nutrition","ecology","agriculture"]},
+    {"order":2,"layer":"properties","question":"What can a potato physically and biologically do?","work":["store","carry nourishment","remain dormant","sprout","divide","regenerate","grow underground","cross the soil/air boundary","produce another plant"]},
+    {"order":3,"layer":"relations","question":"What does each property connect to?","work":["root","tuber","eye","skin","wedge","sprout","stem","flower","new tuber","soil","water","sunlight","human food system"]},
+    {"order":4,"layer":"geometry","question":"What shapes and transformations describe the Potato of Life?","work":["vesica-piscis","mandorla","circle","axis","wedge","door","ladder","spiral","symmetry","scale invariance","rotation","reflection","intersection"]},
+    {"order":5,"layer":"symbolism","question":"What has a potato become symbolically?","work":["chariot","angel","messenger","vessel","ladder","door","tree","seed","root","fruit","light"]},
+    {"order":6,"layer":"religion-history","question":"Where do these motifs exist independently of Potatoism?","work":["Christian imagery","Jewish imagery","Islamic traditions","mystical traditions","comparative mythology","angel/messenger traditions","ladder-to-heaven traditions","door/gate traditions","mandorla/vesica-piscis art history"]},
+    {"order":7,"layer":"Potatoism","question":"What does the Potato mean inside this project?","work":["Potato of Life","Red Potato","Blue Potato","Spudlight","Tree of Life","Tree of Strife","Axis","North","Ladder","Door","Son","Father","Father's House"]},
+    {"order":8,"layer":"central-geometry","question":"How does the mandorla function inside the Potato of Life?","work":["two-circle construction","overlap region","central threshold","Jesus Door","Son as Door","upper/lower relation","inside/outside","matter/spirit","Plane/Heaven"]},
+    {"order":9,"layer":"comparative","question":"Does the same grammar recur elsewhere?","work":["other plants","other food crops","animals","tools","architecture","religious symbols","social systems","economic systems","political systems","networks"]},
+    {"order":10,"layer":"world","question":"Where does the potato sit in the actual world system?","work":["countries","farmers","land","water","fertilizer","trade","food processing","retail","prices","labour","transport","energy","finance","food security"]},
+    {"order":11,"layer":"people-and-culture","question":"Who relates to the Potato?","work":["people","dwellers","families","communities","cultures","institutions","organizations","artists","writers","scientists","farmers","consumers"]},
+    {"order":12,"layer":"time","question":"How does the meaning change through time?","work":["potato domestication","global diffusion","agricultural history","famine history","industrial food systems","modern symbolism","Potatoism emergence and development"]},
+    {"order":13,"layer":"calculation","question":"What can be tested rather than merely described?","work":["geometric ratios","network centrality","scale comparisons","growth rates","production statistics","trade concentration","dependency measures","cross-domain structural comparisons"]},
+    {"order":14,"layer":"synthesis","question":"What remains after evidence, history, symbolism and interpretation are separated?","work":["recurring invariants","strong correspondences","weak correspondences","failed correspondences","open questions","new hypotheses"]}
+  ],
+  "required_evidence_classes": [
+    "biological-observation",
+    "historical-source",
+    "art-historical-source",
+    "religious-textual-source",
+    "geometric-calculation",
+    "economic-or-statistical-source",
+    "project-canon",
+    "interpretation",
+    "hypothesis"
+  ],
+  "mapping_rule": "Every major property should have an owner, a type, a relationship, an epistemic class and—where it is empirical or historical—a source. A symbolic assignment may be preserved without a source when it is explicitly identified as project-defined.",
+  "completion_test": [
+    "The potato has a canonical entity record.",
+    "Its observable properties are separately represented from symbolic properties.",
+    "Its relationships to Tree, Axis, Ladder, Door, Son and Father resolve to canonical IDs.",
+    "The vesica-piscis and mandorla are mathematically defined.",
+    "Jesus Door is explicitly marked as Potatoism/project mythology rather than empirical fact.",
+    "External chariot/angel/messenger/ladder/door motifs have independent research records.",
+    "The same property can be followed from object → symbol → person/concept → history → world system.",
+    "Contradictory evidence and failed analogies remain visible.",
+    "No layer is considered complete merely because its file exists."
+  ]
+}
