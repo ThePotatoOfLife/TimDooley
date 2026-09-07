@@ -1,0 +1,12 @@
+{
+  "id":"taoism-scripture-layer",
+  "tradition":"Taoism / Daoism",
+  "texts":["dao-de-jing","zhuangzi"],
+  "primary_reader":"taoism.html",
+  "relationships":[
+    {"type":"has-scripture","from":"taoism","to":"dao-de-jing"},
+    {"type":"has-philosophical-text","from":"taoism","to":"zhuangzi"}
+  ],
+  "distinction":"Daoism includes religious, philosophical, ritual, textual and institutional traditions. The Dao De Jing is central but does not by itself exhaust Taoism.",
+  "source":"https://en.wikisource.org/wiki/Translation:Tao_Te_Ching"
+}
