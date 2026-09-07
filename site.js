@@ -6,12 +6,12 @@ const link=(id,name)=>`<a class="record-link" href="node.html?id=${encodeURIComp
 async function renderFrame(){
  const box=document.getElementById('canonical-tree'); const axis=document.getElementById('axis-levels'); if(!box)return;
  try{
-  const [tree,data]=await Promise.all([loadJSON('data/tree.json'),loadJSON('data/nodes.json')]);
-  const nodes=new Map((data.nodes||[]).map(n=>[n.id,n])); const levels=tree.levels||[];
+  const [tree,data,childData]=await Promise.all([loadJSON('data/tree.json'),loadJSON('data/nodes.json'),loadJSON('data/tree-child-records.json')]);
+  const records=[...(data.nodes||[]),...(childData.records||[])]; const nodes=new Map(records.map(n=>[n.id,n])); const levels=tree.levels||[];
   if(axis)axis.innerHTML=levels.map(l=>`<a class="axis-level" href="node.html?id=${encodeURIComponent(l.id)}"><span>${esc(l.roman)}</span><strong>${esc(l.name).toUpperCase()}</strong></a>`).join('');
-  box.innerHTML=`<article class="tree-root"><span>ROOT</span><h3>TIM DOOLEY</h3><p>The canonical entrance. The structure below comes directly from data/tree.json.</p></article><div class="tree-branch">${levels.map(l=>{const children=(l.children||[]).map(id=>link(id,nodes.get(id)?.name||titleCase(id))).join('');return `<article><span>${esc(l.roman)}</span><h3>${link(l.id,l.name)}</h3><p>${esc(l.description)}</p><div class="children">${children}</div></article>`}).join('')}</div>`;
+  box.innerHTML=`<article class="tree-root"><span>ROOT</span><h3>TIM DOOLEY</h3><p>The canonical entrance. The structure below comes directly from data/tree.json; child records are resolved from the backend record layer.</p></article><div class="tree-branch">${levels.map(l=>{const children=(l.children||[]).map(id=>{const n=nodes.get(id);return link(id,n?.name||titleCase(id));}).join('');return `<article><span>${esc(l.roman)}</span><h3>${link(l.id,l.name)}</h3><p>${esc(l.description)}</p><div class="children">${children}</div></article>`}).join('')}</div>`;
  }catch(e){box.innerHTML=`<p class="error">Repository data could not be loaded: ${esc(e.message)}</p>`;}
 }
-async function renderNorth(){const box=document.getElementById('north-questions');if(!box)return;try{const [tree,data]=await Promise.all([loadJSON('data/tree.json'),loadJSON('data/nodes.json')]);const nodes=new Map((data.nodes||[]).map(n=>[n.id,n]));box.innerHTML=(tree.northQuestions||[]).map(id=>link(id,nodes.get(id)?.name||titleCase(id))).join('')}catch(e){box.textContent=e.message}}
+async function renderNorth(){const box=document.getElementById('north-questions');if(!box)return;try{const [tree,data,childData]=await Promise.all([loadJSON('data/tree.json'),loadJSON('data/nodes.json'),loadJSON('data/tree-child-records.json')]);const nodes=new Map([...(data.nodes||[]),...(childData.records||[])].map(n=>[n.id,n]));box.innerHTML=(tree.northQuestions||[]).map(id=>link(id,nodes.get(id)?.name||titleCase(id))).join('')}catch(e){box.textContent=e.message}}
 function boot(){renderFrame();renderNorth()}
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
