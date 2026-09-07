@@ -1,0 +1,22 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Living frontier of research questions and high-value missing information across the Atlas.",
+  "rule":"The frontier is not a claim that information is absent from the world; it records what this repository still needs to research, normalize or connect.",
+  "frontiers":[
+    {"domain":"world","priority":"P0","targets":["complete sourced enrichment for 194 remaining countries","historical population series","government finance series","trade partner matrices","energy import dependencies","critical infrastructure","constitutional institutions"]},
+    {"domain":"intelligence-security","priority":"P0","targets":["complete country agency maps","parent ministries","legal mandates","oversight structures","public budgets","public staffing where credible","predecessor/successor chains","international liaison relationships","major public investigations and reforms"]},
+    {"domain":"extremism-terrorism","priority":"P0","targets":["source-specific group classifications","founding and successor histories","proscription status by jurisdiction","documented geographic presence","dated membership estimates where credible","attack and arrest series","splinter networks","online/offline organizational structure"]},
+    {"domain":"religion-belief","priority":"P1","targets":["denomination trees","founding movements","texts","rituals","institutions","geographic spread","historical schisms","new religious movements","source-defined controversial/cult classifications"]},
+    {"domain":"economic-graph","priority":"P0","targets":["company ownership chains","banking relationships","sovereign debt holders","pension capital","public procurement","state aid","subsidies","corporate dependencies","trade corridors","value chains"]},
+    {"domain":"energy","priority":"P0","targets":["generation capacity","interconnectors","pipelines","LNG infrastructure","refining","storage","offshore wind","nuclear fleet","grid bottlenecks","energy import exposure"]},
+    {"domain":"infrastructure","priority":"P1","targets":["major ports","rail corridors","airports","subsea cables","data centres","satellite systems","electricity interconnectors","water infrastructure","critical bottlenecks"]},
+    {"domain":"technology-industry","priority":"P1","targets":["semiconductor supply chains","AI compute","cloud concentration","telecom equipment","pharmaceutical manufacturing","advanced materials","robotics","industrial automation","research clusters"]},
+    {"domain":"people-labour","priority":"P1","targets":["age structure","labour participation","skills shortages","occupational structure","migration corridors","education pipelines","productivity","wage distribution","household formation"]},
+    {"domain":"governance","priority":"P1","targets":["ministries","regulators","budgets","procurement authorities","tax expenditures","public enterprises","pension systems","health systems","administrative duplication"]},
+    {"domain":"environment-resources","priority":"P1","targets":["critical minerals","water stress","fisheries","agricultural capacity","forest resources","climate exposure","Arctic resources","biodiversity","emissions"]},
+    {"domain":"history","priority":"P2","targets":["major wars","treaties","financial crises","institutional reforms","industrial transitions","migration waves","technology transitions","state formation"]},
+    {"domain":"potatoism","priority":"P2","targets":["canonical chronology","symbol relationships","text corpus","33-level framework","North Axis topology","Red/Blue Potato polarity","Door/Son architecture","comparative mythology","creative source archive"]}
+  ],
+  "next_actions":["promote researched records into canonical nodes","add relationships to every meaningful major record","attach source IDs and observation dates","generate derived metrics only from declared inputs","repair unresolved routes","audit duplicate IDs and aliases","recompute coverage statistics","repeat population pass"]
+}
