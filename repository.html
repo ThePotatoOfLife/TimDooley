@@ -74,11 +74,11 @@ async function j(p){const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw Err
 const link=(id,name)=>`<a class="record-link" href="node.html?id=${encodeURIComponent(id)}">${esc(name||id)}</a>`;
 (async()=>{
 try{
-const [tree,n,research,children,relData,levels,sectors,events]=await Promise.all([
+const [tree,n,research,children,relData,levels,sectors,events,supportData]=await Promise.all([
 j('data/tree.json'),j('data/nodes.json'),j('data/research.json'),j('data/tree-child-records.json'),
-j('data/relationships.json'),j('data/33-level-framework.json'),j('data/european-sector-atlas.json'),j('data/events.json')
+j('data/relationships.json'),j('data/33-level-framework.json'),j('data/european-sector-atlas.json'),j('data/events.json'),j('data/tree-support-records.json')
 ]);
-const records=[...(n.nodes||[]),...(children.records||[])],map=new Map(records.map(x=>[x.id,x]));
+const support=(supportData.records||[]),records=[...(n.nodes||[]),...(children.records||[]),...support],map=new Map(records.map(x=>[x.id,x]));
 document.getElementById('canonical-tree').innerHTML=(tree.levels||[]).map((l,i)=>`<article class="atlas-level"><div class="atlas-level-no">${esc(l.roman)}</div><div><div class="level-kicker">LEVEL ${String(i+1).padStart(2,'0')}</div><h3>${map.has(l.id)?link(l.id,l.name):esc(l.name)}</h3><p class="atlas-description">${esc(l.description)}</p><div class="atlas-child-grid">${(l.children||[]).map(id=>map.has(id)?`<a href="node.html?id=${encodeURIComponent(id)}"><strong>${esc(map.get(id).name)}</strong><span>${esc(map.get(id).description||'')}</span></a>`:`<span class="missing">${esc(id)}</span>`).join('')}</div></div></article>`).join('');
 
 document.getElementById('level-bands').innerHTML=(levels.bands||[]).map(b=>`<article class="atlas-level"><div class="atlas-level-no">↕</div><div><div class="level-kicker">${esc(b.levels)}</div><h3>${esc(b.name)}</h3><p class="atlas-description">${esc(b.meaning)}</p></div></article>`).join('');
