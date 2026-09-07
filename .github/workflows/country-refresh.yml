@@ -13,6 +13,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Instantiate any missing country nodes
+        run: python scripts/instantiate_country_nodes.py
       - name: Refresh normalized country observations
         run: python scripts/refresh_country_atlas.py
       - name: Commit refreshed country data
