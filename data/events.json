@@ -1,0 +1,36 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "events":[
+    {
+      "id":"greenland-arctic-crisis-2026",
+      "date_start":"2026-01-18",
+      "date_end":"2026-02-20",
+      "name":"2026 Greenland / Arctic political crisis",
+      "type":"geopolitical-timeline",
+      "layer":"empirical",
+      "description":"A 2026 sequence of U.S. pressure over Greenland, European and Danish responses, NATO Arctic-security discussion and heightened strategic attention to Greenland.",
+      "relations":["greenland","kingdom-of-denmark","north-axis","arctic","north-atlantic","alliances","war","strategic-dependencies"],
+      "sources":[
+        {"publisher":"Reuters","date":"2026-01-18","title":"Dutch minister calls Trump's Greenland tariff threat 'blackmail'","url":"https://www.reuters.com/world/china/dutch-minister-calls-trumps-greenland-tariff-threat-blackmail-2026-01-18/"},
+        {"publisher":"Reuters","date":"2026-01-20","title":"Trump says had a telephone call with NATO's Rutte concerning Greenland","url":"https://www.reuters.com/world/europe/trump-says-had-telephone-call-with-natos-rutte-concerning-greenland-2026-01-20/"},
+        {"publisher":"Reuters","date":"2026-02-06","title":"Britain expects Arctic security plans to be discussed by NATO next week","url":"https://www.reuters.com/business/aerospace-defense/britain-expects-arctic-security-plans-to-be-discussed-by-nato-next-week-2026-02-06/"},
+        {"publisher":"Reuters","date":"2026-01-29","title":"Denmark's king to visit Greenland amid Trump crisis","url":"https://www.reuters.com/world/europe/denmarks-king-frederik-visit-greenland-february-2026-01-29/"}
+      ],
+      "correction":"Do not encode this as 'Trump went to Greenland in February 2026' without a source. The February 2026 record located here concerns the Greenland crisis and related Arctic/NATO activity; Reuters reports King Frederik's February 18–20 visit to Greenland, while the sources located for Trump describe U.S. pressure and discussions rather than a Trump visit to Greenland."
+    },
+    {
+      "id":"greenland-climate-minerals-2026",
+      "date_start":"2026-01-01",
+      "date_end":"2026-02-04",
+      "name":"Greenland climate and minerals turning point",
+      "type":"economic-environmental-event",
+      "layer":"empirical",
+      "description":"Greenland's unusually warm January 2026 and its strategic mineral potential intensified the connection between climate, fisheries, transport, resources and geopolitical interest.",
+      "relations":["greenland","arctic","energy-system","strategic-dependencies","north-axis"],
+      "sources":[
+        {"publisher":"Reuters","date":"2026-02-04","title":"Greenland shatters temperature record, redrawing economy from fishing to minerals","url":"https://www.reuters.com/sustainability/cop/greenland-shatters-temperature-record-redrawing-economy-fishing-minerals-2026-02-04/"}
+      ]
+    }
+  ]
+}
