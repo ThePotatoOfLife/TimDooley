@@ -1,0 +1,14 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Canonical three-axis political cube configuration. The existing political lexicon supplies the first two normalized coordinates; the third axis is reserved for social-cultural openness and must not be fabricated where unsupported.",
+  "axes":{
+    "economic":{"min":-10,"max":10,"negative":"collective/public ownership and redistribution","positive":"private ownership and market allocation"},
+    "authority":{"min":-10,"max":10,"negative":"libertarian/decentralized authority","positive":"authoritarian/centralized authority"},
+    "social_cultural":{"min":-10,"max":10,"negative":"social-cultural openness/pluralism","positive":"social-cultural traditionalism/conformity"}
+  },
+  "data_policy":"Economic and authority coordinates may be read from data/political-lexicon.json. Social-cultural coordinates require explicit evidence or a documented analytical assignment; absence is preferable to invented precision.",
+  "visualization":{"name":"Political Compass Cube","legacy_2d_view":"economic × authority","default_projection":"economic × authority","third_axis":"social_cultural"},
+  "status":"active",
+  "epistemic_note":"Coordinates are comparative analytical instruments, not objective measurements of the moral value or total content of an ideology. Historical and country-specific variants should be modeled separately."
+}
