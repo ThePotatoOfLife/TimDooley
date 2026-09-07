@@ -1,0 +1,338 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "name": "Tim Dooley Atlas — Canonical Work Order",
+  "purpose": "Operational TODO and dependency order for maintaining, simplifying, validating and expanding the atlas. This file is a working instruction for future repository work, not another data layer.",
+  "core_rule": "Do not expand a broken or duplicated layer. Audit first, simplify second, validate third, then add sourced data and relationships.",
+  "working_loop": [
+    "inspect current repository state",
+    "identify failures and duplicates",
+    "fix structural and functional bugs",
+    "establish canonical owners and remove unnecessary paths",
+    "validate the cleaned architecture",
+    "ingest real sourced data",
+    "normalize identities and relationships",
+    "separate observed, calculated, estimated, historical, scenario and interpretive material",
+    "update views and manifests from canonical data",
+    "run integrity checks again",
+    "only then move to the next expansion area"
+  ],
+  "gates": [
+    {"id":"G0","name":"Repository snapshot","rule":"Before changing anything, inspect the current tree, manifests, routes, schemas, data counts and recent changes."},
+    {"id":"G1","name":"Bug gate","rule":"Broken JSON, broken links, JavaScript errors, missing files, invalid references and failing routes take priority over enrichment."},
+    {"id":"G2","name":"Duplication gate","rule":"Before creating a dataset, determine whether the information already has a canonical home. Merge, redirect or retire unnecessary duplicates."},
+    {"id":"G3","name":"Architecture gate","rule":"Every dataset must have one owner, a defined purpose, a stable schema and a known consumer."},
+    {"id":"G4","name":"Evidence gate","rule":"Empirical claims require source, indicator or claim type, value where applicable, reference period, publication/retrieval information and provenance."},
+    {"id":"G5","name":"Identity gate","rule":"Every entity and relationship must resolve to canonical IDs; aliases are not duplicate entities."},
+    {"id":"G6","name":"Validation gate","rule":"Run structural, semantic, reference, duplicate and completeness checks before publishing counts or declaring progress."},
+    {"id":"G7","name":"View gate","rule":"Website pages are views over canonical data. Do not create page-specific shadow databases unless there is a documented reason."},
+    {"id":"G8","name":"Release gate","rule":"Update manifests and counts only after the underlying data and integrity checks pass. Never use file existence as evidence of enrichment."
+    }
+  ],
+  "phases": [
+    {
+      "order": 1,
+      "id": "audit",
+      "name": "Full repository audit",
+      "priority": "critical",
+      "tasks": [
+        "inventory every file and directory",
+        "map every route and consumer",
+        "parse every JSON data file",
+        "find empty schemas and placeholders",
+        "find duplicate datasets and manifests",
+        "find duplicate entities and relationships",
+        "find broken references and links",
+        "find stale counts and false completeness claims",
+        "find unused files and unreachable routes",
+        "record all bugs before adding new layers"
+      ]
+    },
+    {
+      "order": 2,
+      "id": "stabilize",
+      "name": "Fix bugs and broken paths",
+      "priority": "critical",
+      "tasks": [
+        "fix invalid JSON",
+        "fix missing files",
+        "fix frontend loading errors",
+        "fix API failures and fallback behavior",
+        "fix broken navigation",
+        "fix dangling IDs",
+        "fix schema mismatches",
+        "fix manifest/backend disagreement",
+        "fix incorrect counts",
+        "make core pages render real content"
+      ]
+    },
+    {
+      "order": 3,
+      "id": "simplify",
+      "name": "Simplify and consolidate",
+      "priority": "critical",
+      "tasks": [
+        "choose one canonical owner for each dataset",
+        "remove redundant indexes where possible",
+        "collapse long chains of indirection",
+        "retire obsolete files only after consumers migrate",
+        "replace repeated page-specific data with canonical references",
+        "standardize naming",
+        "standardize IDs",
+        "standardize relationship vocabulary",
+        "keep website navigation shallow",
+        "prefer one atlas with many views over many competing mini-atlases"
+      ]
+    },
+    {
+      "order": 4,
+      "id": "integrity-system",
+      "name": "Build the permanent integrity checker",
+      "priority": "critical",
+      "tasks": [
+        "validate JSON and schemas",
+        "detect placeholders",
+        "detect duplicate entities and relationships",
+        "detect dangling references",
+        "detect stale manifests",
+        "detect unsupported completeness claims",
+        "detect pages referencing missing datasets",
+        "produce a machine-readable health report",
+        "make critical failures block release"
+      ]
+    },
+    {
+      "order": 5,
+      "id": "canonical-model",
+      "name": "Lock the canonical data model",
+      "priority": "critical",
+      "tasks": [
+        "define entity types",
+        "define relationship types",
+        "define observation model",
+        "define source model",
+        "define event model",
+        "define temporal fields",
+        "define calculated-value model",
+        "define missing-data states",
+        "define confidence/quality states",
+        "define aliases and canonical identity rules"
+      ]
+    },
+    {
+      "order": 6,
+      "id": "evidence",
+      "name": "Make provenance universal",
+      "priority": "critical",
+      "tasks": [
+        "expand normalized observations",
+        "create canonical source registry",
+        "link every empirical relationship to evidence",
+        "record source dates and retrieval dates",
+        "distinguish observed from estimated and derived",
+        "preserve methodology and source versions",
+        "record researched_missing separately from not_researched"
+      ]
+    },
+    {
+      "order": 7,
+      "id": "world-data",
+      "name": "Build the real country layer",
+      "priority": "high",
+      "tasks": [
+        "normalize all 195 canonical country identities",
+        "load core World Bank observations",
+        "load demographic observations",
+        "load government and institutional observations",
+        "load energy and infrastructure observations",
+        "load trade and external relationship observations",
+        "generate coverage states",
+        "stop calling a country enriched until validated evidence exists"
+      ]
+    },
+    {
+      "order": 8,
+      "id": "geography",
+      "name": "Build geographic relationships",
+      "priority": "high",
+      "tasks": [
+        "borders",
+        "regions and subregions",
+        "capitals",
+        "territories and dependencies",
+        "seas and oceans",
+        "rivers and basins",
+        "cities, ports and strategic corridors"
+      ]
+    },
+    {
+      "order": 9,
+      "id": "religion",
+      "name": "Build religion and belief as a real layer",
+      "priority": "high",
+      "tasks": [
+        "religious traditions",
+        "religious identities",
+        "belief and practice where measured",
+        "institutions",
+        "historical traditions",
+        "country-level composition",
+        "religious switching",
+        "religious diversity",
+        "geographic concentration",
+        "methodology and uncertainty",
+        "keep Potatoism as project-defined contemporary material rather than empirical demographic fact"
+      ]
+    },
+    {
+      "order": 10,
+      "id": "history",
+      "name": "Build the historical event layer",
+      "priority": "high",
+      "tasks": [
+        "events",
+        "wars and conflicts",
+        "treaties",
+        "state formation",
+        "independence",
+        "constitutional change",
+        "economic crises",
+        "religious and philosophical developments",
+        "connect causes, participants and consequences with sources"
+      ]
+    },
+    {
+      "order": 11,
+      "id": "people-organizations",
+      "name": "Connect people and organizations",
+      "priority": "high",
+      "tasks": [
+        "canonical people",
+        "canonical organizations",
+        "offices and roles",
+        "founding and succession",
+        "membership and control",
+        "writings and institutions",
+        "funding, ownership and governance relationships"
+      ]
+    },
+    {
+      "order": 12,
+      "id": "systems",
+      "name": "Build major world-system layers",
+      "priority": "medium-high",
+      "tasks": [
+        "economy and finance",
+        "trade and supply chains",
+        "energy and resources",
+        "infrastructure",
+        "technology",
+        "science and research",
+        "health and education",
+        "environment and climate",
+        "politics and institutions",
+        "security and defence"
+      ]
+    },
+    {
+      "order": 13,
+      "id": "ideas",
+      "name": "Expand philosophy, mythology and Potatoism",
+      "priority": "medium",
+      "tasks": [
+        "philosophical traditions and concepts",
+        "comparative mythology",
+        "mythological entities and symbols",
+        "Potatoism timeline",
+        "Potatoism vocabulary and architecture",
+        "Red/Blue Potato",
+        "Tree of Life / Tree of Strife",
+        "Axis / North / Ladder / Door / Son / Father architecture",
+        "clearly mark interpretive and project-defined material"
+      ]
+    },
+    {
+      "order": 14,
+      "id": "time",
+      "name": "Add temporal depth",
+      "priority": "medium",
+      "tasks": [
+        "valid-from and valid-to",
+        "historical snapshots",
+        "observation periods",
+        "source publication dates",
+        "change histories",
+        "current versus former relationships"
+      ]
+    },
+    {
+      "order": 15,
+      "id": "calculations",
+      "name": "Add derived analysis",
+      "priority": "medium",
+      "tasks": [
+        "ratios",
+        "growth calculations",
+        "rankings",
+        "regional aggregates",
+        "dependency measures",
+        "trade concentration",
+        "energy dependency",
+        "network measures",
+        "record inputs and formulas for every calculation"
+      ]
+    },
+    {
+      "order": 16,
+      "id": "scenarios",
+      "name": "Add scenario and policy layers",
+      "priority": "medium",
+      "tasks": [
+        "North Programme",
+        "policy proposals",
+        "forecasts",
+        "alternative futures",
+        "simulations",
+        "keep hypothetical material separate from observations"
+      ]
+    },
+    {
+      "order": 17,
+      "id": "website",
+      "name": "Simplify the interface around the finished data model",
+      "priority": "medium",
+      "tasks": [
+        "one primary navigation",
+        "shallow routes",
+        "search",
+        "country views",
+        "entity views",
+        "evidence trails",
+        "relationship views",
+        "clear observed/calculated/scenario/interpretive labels",
+        "remove redundant dashboard-style presentation"
+      ]
+    },
+    {
+      "order": 18,
+      "id": "release-audit",
+      "name": "Final audit before every declared milestone",
+      "priority": "critical",
+      "tasks": [
+        "run all integrity checks",
+        "recount canonical records",
+        "check duplicates again",
+        "check all references again",
+        "check source coverage",
+        "check stale data",
+        "check website routes",
+        "check manifests against actual data",
+        "record unresolved issues",
+        "only then declare the milestone complete"
+      ]
+    }
+  ],
+  "priority_rule": "Critical gates and bugs outrank new data. Structural simplification outranks enrichment. Evidence-backed core data outranks decorative expansion. New layers are added only when their canonical owner, evidence model, relationships and consumer are clear.",
+  "expansion_rule": "Before adding a new file, ask whether an existing canonical dataset can hold the information. If yes, extend it rather than creating another parallel dataset.",
+  "definition_of_done": "A phase is done only when its data exists, its consumers work, its references resolve, its provenance is adequate, its duplicates are controlled, its manifest is accurate and the integrity checker passes."
+}
