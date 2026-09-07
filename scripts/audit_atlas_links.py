@@ -31,8 +31,6 @@ political = {x[0] for x in load('data/political-lexicon.json').get('entries', []
 religious = {x[0] for x in load('data/religious-lexicon.json').get('entries', []) if isinstance(x, list) and x}
 foundations = ids_from('data/religious-foundations.json', ['records'])
 foundation_records = ids_from('data/religious-foundations/records.json', ['records'])
-foundation_enriched = ids_from('data/religious-foundations/enriched-records.json', ['records'])
-foundation_minor = ids_from('data/religious-foundations/minor-traditions.json', ['records'])
 adjacent = ids_from('data/religious-adjacent/records.json', ['records'])
 for path in ('data/religious-adjacent/deep-expansions.json', 'data/religious-adjacent/deep-expansions-2.json', 'data/religious-adjacent/deep-expansions-3.json'):
     adjacent |= ids_from(path, ['records'])
@@ -40,7 +38,7 @@ nations = {x['id'] for x in load('data/nations.json').get('nations', []) if x.ge
 events = {x['id'] for x in load('data/events.json').get('events', []) if x.get('id')}
 sectors = {x['id'] for x in load('data/european-sector-atlas.json').get('sector_families', []) if x.get('id')}
 all_records = (nodes | graph_registry | political | religious | foundations | foundation_records |
-               foundation_enriched | foundation_minor | adjacent | nations | events | sectors)
+               adjacent | nations | events | sectors)
 
 rels = load('data/relationships.json').get('relationships', [])
 relationship_endpoints = {r.get(side) for r in rels for side in ('source', 'target') if r.get(side)}
@@ -62,7 +60,7 @@ print(f"Core node records: {len(nodes)}")
 print(f"Graph-registry records: {len(graph_registry)}")
 print(f"Political records: {len(political)}")
 print(f"Religious lexicon records: {len(religious)}")
-print(f"Religious foundation layers: {len(foundations | foundation_records | foundation_enriched | foundation_minor)}")
+print(f"Religious foundation layers: {len(foundations | foundation_records)}")
 print(f"Religious-adjacent records: {len(adjacent)}")
 print(f"Events: {len(events)}")
 print(f"Sectors: {len(sectors)}")
