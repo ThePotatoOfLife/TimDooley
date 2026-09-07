@@ -1,0 +1,18 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map information systems, media organizations, ownership, production, distribution, audiences, platforms, advertising, public communication and archival persistence.","entity":"media_information_system",
+  "record_schema":{
+    "identity":["media_id","name","medium","language","jurisdiction","status","period"],
+    "organization":["publisher","broadcaster","platform","newsroom","owner","parent","subsidiaries","board","editorial_structure"],
+    "production":["journalists","editors","contributors","beats","bureau","content_types","publication_frequency","editorial_policy","corrections"],
+    "distribution":["website","broadcast","print","radio","podcast","social_platform","search","aggregator","app","cable","satellite"],
+    "economics":["revenue","advertising","subscriptions","public_funding","grants","donations","sponsorship","platform_revenue_share","cost_structure"],
+    "audience":["reach","circulation","viewership","listenership","subscribers","demographics_when aggregate and sourced","geography","engagement"],
+    "information_network":["cites","quotes","syndicates","republishes","links_to","embeds","moderates","fact_checks","corrects"],
+    "ownership_control":["legal_owner","beneficial_owner_when public","foreign_owner","state_owner","editorial_control","licensing_authority"],
+    "integrity":["source_policy","fact_checking","correction_record","known_errors","conflicts_of_interest","methodology","archive_policy"],
+    "evidence":["regulator","company_filing","media_kit","audience_measurement","public_budget","editorial_document","archive","academic_study","retrieved_at","confidence"]
+  },
+  "derived_measures":["ownership_concentration","audience_concentration","revenue_concentration","public_funding_share","platform_dependency","cross_ownership_count"],
+  "relationship_templates":["company-owns-media","publisher-publishes-content","media-distributes-through-platform","media-reports-on-event","media-cites-source","platform-distributes-media","state-funds-broadcaster"],
+  "integrity_rules":["Ownership is not editorial control unless documented.","Audience reach and influence are not interchangeable.","Content claims require source-level provenance.","Public funding must be distinguished from state editorial direction.","Algorithmic distribution is a dependency, not proof of censorship.","Corrections and revisions are part of the information record."]
+}
