@@ -1,0 +1,40 @@
+{
+  "version": "1.0.0",
+  "purpose": "Evidence-first registry for organizations, people, money, media, political activity, security actors and subcultural ecosystems.",
+  "principles": [
+    "Map relationships rather than isolated entities.",
+    "Separate documented facts from interpretation and hypotheses.",
+    "Never infer secret control from shared ideology, geography, funding category or social proximity alone.",
+    "Couple organizations to countries through explicit relationship types.",
+    "Track time, money, scale and confidence separately."
+  ],
+  "entity_types": [
+    "media", "ngo", "foundation", "think-tank", "watchdog", "political-organization", "pac", "super-pac", "lobby", "government-agency", "intelligence-agency", "military", "security-contractor", "technology-platform", "advertising-network", "pr-firm", "university", "religious-organization", "ideological-movement", "armed-group", "entertainment-company", "production-company", "publisher", "paparazzi", "person", "community", "platform"
+  ],
+  "relationship_types": [
+    "FOUNDED_IN", "HEADQUARTERED_IN", "INCORPORATED_IN", "OPERATES_IN", "OWNS", "CONTROLS", "PARENT_OF", "SUBSIDIARY_OF", "FUNDS", "RECEIVES_FUNDING_FROM", "GRANTS_TO", "CONTRACTS_WITH", "LOBBIES", "DONATES_TO", "ADVERTISES_WITH", "EMPLOYS", "ADVISES", "REPRESENTS", "PARTNERS_WITH", "REGULATES", "INVESTIGATES", "WATCHES", "REPORTS_ON", "CITES", "DISTRIBUTES", "BROADCASTS", "PRODUCES", "ACQUIRES", "SELLS", "MEMBER_OF", "ENDORSES", "OPPOSES", "INFLUENCED_BY", "IDENTIFIES_WITH", "HISTORICALLY_ASSOCIATED_WITH"
+  ],
+  "country_attachment_types": [
+    "origin", "legal_jurisdiction", "headquarters", "operations", "ownership", "funding_origin", "public_contracting", "political_activity", "audience", "infrastructure", "employment"
+  ],
+  "activity_metrics": {
+    "financial": ["revenue", "expenditure", "assets", "grants", "political_spending", "lobbying_spending", "contract_value", "advertising_revenue"],
+    "human": ["employees", "members", "volunteers", "researchers", "journalists", "audience"],
+    "information": ["publications", "broadcasts", "investigations", "citations", "web_reach", "social_activity"],
+    "political": ["lobbying_contacts", "endorsements", "campaign_contributions", "policy_papers", "litigation", "public_campaigns"],
+    "geographic": ["active_countries", "country_activity_by_year"]
+  },
+  "evidence_levels": {
+    "primary": "Official filings, contracts, registries, court records, audited accounts or direct organizational publications.",
+    "secondary": "Credible independent reporting or research that identifies and contextualizes the relationship.",
+    "interpretive": "Project interpretation derived from documented relationships.",
+    "hypothesis": "Unverified possibility retained for research and explicitly excluded from factual conclusions."
+  },
+  "special_rules": {
+    "people": "Do not assign faction, cult, handler or secret-network labels without evidence. Prefer observable affiliations and relationships.",
+    "armed_groups": "Record factual status, geography, dates, financing and designations; do not provide operational assistance.",
+    "ambiguous_names": "Do not create a canonical node until identity and jurisdiction can be established.",
+    "money": "Distinguish revenue, spending, grants, donations, contracts, assets and profit.",
+    "ownership": "Distinguish legal ownership from effective control and management influence."
+  }
+}
