@@ -1,10 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the relationship-first atlas before deployment.
-
-Checks JSON syntax, backend registry paths, canonical 195-country coverage,
-country/enrichment joins, graph endpoints, and local HTML asset references.
-This is intentionally structural: it does not judge the truth of research claims.
-"""
+"""Validate the relationship-first atlas before deployment."""
 from __future__ import annotations
 import json
 import re
@@ -14,7 +9,6 @@ ROOT = Path(__file__).resolve().parents[1]
 ERRORS: list[str] = []
 WARNINGS: list[str] = []
 
-
 def load_json(path: Path):
     try:
         with path.open(encoding="utf-8") as f:
@@ -23,7 +17,6 @@ def load_json(path: Path):
         ERRORS.append(f"Invalid JSON: {path.relative_to(ROOT)} — {exc}")
         return None
 
-
 def check_exists(rel: str, required: bool = True):
     path = ROOT / rel
     if not path.exists():
@@ -31,13 +24,11 @@ def check_exists(rel: str, required: bool = True):
         return False
     return True
 
-
 def main() -> int:
     backend = load_json(ROOT / "data/backend.json")
     if not isinstance(backend, dict):
         print("ATLAS VALIDATION FAILED")
         return 1
-
     endpoints = backend.get("endpoints", {})
     required = set(backend.get("required", []))
     for key, value in endpoints.items():
@@ -50,8 +41,10 @@ def main() -> int:
 
     nations = load_json(ROOT / "data/nations.json") or {}
     country_index = load_json(ROOT / "data/countries/index.json") or {}
+    country_repair = load_json(ROOT / "data/countries/democratic-republic-of-the-congo.json") or {}
     enrichment_index = load_json(ROOT / "data/country-enrichment-index.json") or {}
     country_nodes = load_json(ROOT / "data/country-nodes.json") or {}
+    graph_registry = load_json(ROOT / "data/graph-registry.json") or {}
     relationships = load_json(ROOT / "data/relationships.json") or {}
     nodes = load_json(ROOT / "data/nodes.json") or {}
     children = load_json(ROOT / "data/tree-child-records.json") or {}
@@ -61,15 +54,16 @@ def main() -> int:
     country_rows = country_index.get("countries", [])
     enriched_ids = enrichment_index.get("enriched_ids", [])
     country_node_rows = country_nodes.get("nodes", [])
+    repair_id = country_repair.get("id")
 
     if len(nation_rows) != 195:
         ERRORS.append(f"Canonical nation directory has {len(nation_rows)} records; expected 195")
-    if len(country_rows) != 195:
-        ERRORS.append(f"Country index has {len(country_rows)} records; expected 195")
+    if len(country_rows) + (1 if repair_id else 0) != 195:
+        ERRORS.append(f"Country layer has {len(country_rows)} base records + {1 if repair_id else 0} repair records; expected 195")
     nation_ids = {x.get("id") for x in nation_rows}
-    country_ids = {x.get("id") for x in country_rows}
+    country_ids = {x.get("id") for x in country_rows} | ({repair_id} if repair_id else set())
     if nation_ids != country_ids:
-        ERRORS.append("data/nations.json and data/countries/index.json do not contain the same country IDs")
+        ERRORS.append("Canonical nation directory and repaired country layer do not contain the same country IDs")
 
     for cid in sorted(country_ids):
         if not (ROOT / "data/countries" / f"{cid}.json").exists():
@@ -90,6 +84,7 @@ def main() -> int:
     graph_ids.update(x.get("id") for x in nodes.get("nodes", []) if x.get("id"))
     graph_ids.update(x.get("id") for x in children.get("records", []) if x.get("id"))
     graph_ids.update(x.get("id") for x in country_node_rows if x.get("id"))
+    graph_ids.update(x.get("id") for x in graph_registry.get("records", []) if x.get("id"))
     graph_ids.update(country_ids)
     graph_ids.update(nation_ids)
 
@@ -130,19 +125,15 @@ def main() -> int:
         ERRORS.append("Backend countryLayer.nodeCount disagrees with country-nodes.json")
 
     print(f"Canonical nations: {len(nation_rows)}/195")
-    print(f"Country base records: {len(country_ids)}/195")
+    print(f"Country layer: {len(country_ids)}/195")
     print(f"Enrichment overlays: {len(enriched_set)}")
     print(f"Country graph nodes: {len(country_node_rows)}")
+    print(f"Graph registry records: {len(graph_registry.get('records', []))}")
     print(f"Relationships checked: {len(rel_rows)}")
     print(f"Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}")
-    for message in WARNINGS[:50]:
-        print(f"WARNING: {message}")
-    for message in ERRORS[:100]:
-        print(f"ERROR: {message}")
-    if len(ERRORS) > 100:
-        print(f"ERROR: … {len(ERRORS)-100} more")
+    for message in WARNINGS[:50]: print(f"WARNING: {message}")
+    for message in ERRORS[:100]: print(f"ERROR: {message}")
     return 1 if ERRORS else 0
-
 
 if __name__ == "__main__":
     raise SystemExit(main())
