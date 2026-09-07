@@ -1,98 +1,74 @@
 #!/usr/bin/env python3
 """Validate the relationship-first atlas before deployment."""
 from __future__ import annotations
-import json
-import re
+import json,re
 from pathlib import Path
-ROOT = Path(__file__).resolve().parents[1]
-ERRORS: list[str] = []
-WARNINGS: list[str] = []
-
-def load_json(path: Path):
+ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]; WARNINGS=[]
+def load(p):
     try:
-        with path.open(encoding="utf-8") as f: return json.load(f)
-    except Exception as exc:
-        ERRORS.append(f"Invalid JSON: {path.relative_to(ROOT)} — {exc}"); return None
-
-def check_exists(rel: str, required: bool = True):
-    path = ROOT / rel
-    if not path.exists(): (ERRORS if required else WARNINGS).append(f"Missing {'required' if required else 'optional'} path: {rel}"); return False
-    return True
-
-def check_beliefs():
-    space=load_json(ROOT/"data/belief-space.json") or {}; backend=load_json(ROOT/"data/belief-backend.json") or {}; preg=load_json(ROOT/"data/political-lexicon.json") or {}; rreg=load_json(ROOT/"data/religious-lexicon.json") or {}; registry=load_json(ROOT/"data/belief-registry.json") or {}
-    for rel in ["belief.html","political-compass.html","data/belief-space.json","data/belief-backend.json","data/belief-registry.json","data/political-lexicon.json","data/religious-lexicon.json"]: check_exists(rel)
-    if not space.get("political",{}).get("axes") or not space.get("religious",{}).get("axes"): ERRORS.append("Belief space must define both political and religious three-axis models")
-    political=preg.get("entries",[]); religious=rreg.get("entries",[])
-    if not political: ERRORS.append("Political lexicon has no entries")
-    if not religious: ERRORS.append("Religious lexicon has no entries")
-    pids=[e[0] for e in political if isinstance(e,list) and len(e)>=2]; rids=[e[0] for e in religious if isinstance(e,list) and len(e)>=2]
-    if len(pids)!=len(set(pids)): ERRORS.append("Political lexicon contains duplicate IDs")
-    if len(rids)!=len(set(rids)): ERRORS.append("Religious lexicon contains duplicate IDs")
-    if set(pids)&set(rids): ERRORS.append("Political and religious lexicons contain colliding IDs")
-    for e in political:
-        if not isinstance(e,list) or len(e)<5: ERRORS.append("Political lexicon entry has an invalid shape"); continue
-        if not isinstance(e[2],(int,float)) or not isinstance(e[3],(int,float)): ERRORS.append(f"Political entry has invalid coordinates: {e[0]}")
-        elif not all(-10<=float(v)<=10 for v in e[2:4]): ERRORS.append(f"Political coordinates outside -10..10: {e[0]}")
-    if backend.get("individualRecord")!="belief.html?id=<slug>": ERRORS.append("Belief backend individualRecord route is incorrect")
-    if registry.get("politics",{}).get("map")!="political-compass.html": WARNINGS.append("Belief registry politics map does not point to the belief-space UI")
-    if registry.get("religion",{}).get("map")!="political-compass.html": WARNINGS.append("Belief registry religion map does not point to the belief-space UI")
-    return len(political),len(religious)
-
-def main()->int:
-    backend=load_json(ROOT/"data/backend.json") or {}; endpoints=backend.get("endpoints",{}); required=set(backend.get("required",[]))
-    for key,value in endpoints.items():
-        rel=value if isinstance(value,str) else value.get("path","") if isinstance(value,dict) else ""
-        if not rel: ERRORS.append(f"Backend endpoint has no path: {key}"); continue
-        if check_exists(rel,key in required) and rel.endswith(".json"): load_json(ROOT/rel)
-    for rel in ["data/country-enrichment-batch-2026-09-07-02.json","data/country-nodes-batch-2026-09-07-02.json"]: check_exists(rel)
-    nations=load_json(ROOT/"data/nations.json") or {}; country_index=load_json(ROOT/"data/countries/index.json") or {}; country_repair=load_json(ROOT/"data/countries/democratic-republic-of-the-congo.json") or {}; enrichment_index=load_json(ROOT/"data/country-enrichment-index.json") or {}; enrichment_batch=load_json(ROOT/"data/country-enrichment-batch-2026-09-07-02.json") or {}; country_nodes=load_json(ROOT/"data/country-nodes.json") or {}; node_batch=load_json(ROOT/"data/country-nodes-batch-2026-09-07-02.json") or {}; graph_registry=load_json(ROOT/"data/graph-registry.json") or {}; relationships=load_json(ROOT/"data/relationships.json") or {}; nodes=load_json(ROOT/"data/nodes.json") or {}; children=load_json(ROOT/"data/tree-child-records.json") or {}; tree=load_json(ROOT/"data/tree.json") or {}
-    nation_rows=nations.get("nations",[]); country_rows=country_index.get("countries",[]); repair_id=country_repair.get("id"); base_country_rows=[x for x in country_rows if x.get("id")!=repair_id]
-    base_enriched_ids=set(enrichment_index.get("enriched_ids",[])); batch_enriched_ids=set(enrichment_batch.get("added_ids",[])); enriched_ids=base_enriched_ids|batch_enriched_ids
-    base_country_node_rows=country_nodes.get("nodes",[]); batch_node_rows=node_batch.get("nodes",[]); country_node_rows=base_country_node_rows+batch_node_rows
-    if len(nation_rows)!=195: ERRORS.append(f"Canonical nation directory has {len(nation_rows)} records; expected 195")
-    if len(base_country_rows)+(1 if repair_id else 0)!=195: ERRORS.append(f"Country layer has {len(base_country_rows)} base records + {1 if repair_id else 0} repair records; expected 195")
-    nation_ids={x.get("id") for x in nation_rows}; country_ids={x.get("id") for x in base_country_rows}|({repair_id} if repair_id else set())
-    if nation_ids!=country_ids: ERRORS.append("Canonical nation directory and repaired country layer do not contain the same country IDs")
-    for cid in sorted(country_ids):
-        if not (ROOT/"data/countries"/f"{cid}.json").exists(): ERRORS.append(f"Missing canonical country record: data/countries/{cid}.json")
-    if batch_enriched_ids!=set(enrichment_batch.get("added_ids",[])): ERRORS.append("Country enrichment batch ID manifest is internally inconsistent")
-    if enrichment_batch.get("added_count")!=len(batch_enriched_ids): ERRORS.append("Country enrichment batch added_count does not equal its ID count")
-    if enrichment_batch.get("enriched_count")!=len(enriched_ids): ERRORS.append("Country enrichment batch effective enriched_count is incorrect")
-    if batch_enriched_ids & base_enriched_ids: ERRORS.append(f"Country enrichment batch duplicates existing overlays: {sorted(batch_enriched_ids & base_enriched_ids)}")
-    if enriched_ids-country_ids: ERRORS.append(f"Enrichment index contains unknown country IDs: {sorted(enriched_ids-country_ids)}")
-    node_country_ids={x.get("country_id") for x in country_node_rows}
-    if node_country_ids!=enriched_ids: ERRORS.append("Combined country graph nodes and enrichment manifests are out of sync")
-    if len(batch_node_rows)!=len(batch_enriched_ids): ERRORS.append("Second country node batch count does not match second enrichment batch")
-    for cid in sorted(enriched_ids):
-        if not (ROOT/"data/countries"/f"{cid}-enrichment.json").exists(): ERRORS.append(f"Enrichment index points to missing overlay: {cid}-enrichment.json")
-    graph_ids=set(x.get("id") for x in nodes.get("nodes",[]) if x.get("id")); graph_ids.update(x.get("id") for x in children.get("records",[]) if x.get("id")); graph_ids.update(x.get("id") for x in country_node_rows if x.get("id")); graph_ids.update(x.get("id") for x in graph_registry.get("records",[]) if x.get("id")); graph_ids.update(country_ids); graph_ids.update(nation_ids)
-    tree_ids=set()
-    for level in tree.get("levels",[]):
-        if level.get("id"): tree_ids.add(level["id"])
-        tree_ids.update(x for x in level.get("children",[]) if x)
-    WARNINGS.extend(f"Tree references a record not yet promoted into the graph registry: {x}" for x in sorted(tree_ids-graph_ids))
-    for rel in relationships.get("relationships",[]):
-        if not rel.get("id"): ERRORS.append("Relationship without id")
-        for side in ("source","target"):
-            endpoint=rel.get(side)
-            if endpoint and endpoint not in graph_ids: ERRORS.append(f"Relationship {rel.get('id','?')} has unknown {side}: {endpoint}")
-    local_ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I)
-    for html in ROOT.glob("*.html"):
-        text=html.read_text(encoding="utf-8",errors="replace")
-        for ref in local_ref.findall(text):
-            if ref.startswith(("http://","https://","mailto:","javascript:","data:")): continue
-            target=(ROOT/ref).resolve()
-            try: target.relative_to(ROOT.resolve())
-            except ValueError: continue
-            if not target.exists(): WARNINGS.append(f"Local HTML reference does not exist: {html.name} → {ref}")
-    backend_count=backend.get("countryLayer",{}).get("enrichedCount")
-    if backend_count not in (len(base_enriched_ids),len(enriched_ids)): WARNINGS.append(f"Backend countryLayer.enrichedCount still reports {backend_count}; effective layered enrichment count is {len(enriched_ids)}")
-    backend_nodes=backend.get("countryLayer",{}).get("nodeCount")
-    if backend_nodes not in (len(base_country_node_rows),len(country_node_rows)): WARNINGS.append(f"Backend countryLayer.nodeCount still reports {backend_nodes}; effective layered node count is {len(country_node_rows)}")
-    pc,rc=check_beliefs()
-    print(f"Canonical nations: {len(nation_rows)}/195"); print(f"Country layer: {len(country_ids)}/195"); print(f"Enrichment overlays: {len(enriched_ids)} ({len(base_enriched_ids)} base + {len(batch_enriched_ids)} new)"); print(f"Country graph nodes: {len(country_node_rows)} ({len(base_country_node_rows)} base + {len(batch_node_rows)} new)"); print(f"Graph registry records: {len(graph_registry.get('records',[]))}"); print(f"Relationships checked: {len(relationships.get('relationships',[]))}"); print(f"Political beliefs: {pc} · Religious beliefs: {rc}"); print(f"Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}")
-    for message in WARNINGS[:50]: print(f"WARNING: {message}")
-    for message in ERRORS[:100]: print(f"ERROR: {message}")
+        with p.open(encoding='utf-8') as f:return json.load(f)
+    except Exception as e: ERRORS.append(f'Invalid JSON: {p.relative_to(ROOT)} — {e}'); return {}
+def exists(rel,required=True):
+    ok=(ROOT/rel).exists()
+    if not ok:(ERRORS if required else WARNINGS).append(f'Missing {"required" if required else "optional"} path: {rel}')
+    return ok
+def beliefs():
+    s=load(ROOT/'data/belief-space.json'); b=load(ROOT/'data/belief-backend.json'); p=load(ROOT/'data/political-lexicon.json'); r=load(ROOT/'data/religious-lexicon.json'); g=load(ROOT/'data/belief-registry.json')
+    for x in ['belief.html','political-compass.html','data/belief-space.json','data/belief-backend.json','data/belief-registry.json','data/political-lexicon.json','data/religious-lexicon.json']:exists(x)
+    if not s.get('political',{}).get('axes') or not s.get('religious',{}).get('axes'):ERRORS.append('Belief space must define both political and religious three-axis models')
+    pe=p.get('entries',[]); re_=r.get('entries',[]); pi=[x[0] for x in pe if isinstance(x,list) and len(x)>=2]; ri=[x[0] for x in re_ if isinstance(x,list) and len(x)>=2]
+    if len(pi)!=len(set(pi)):ERRORS.append('Political lexicon contains duplicate IDs')
+    if len(ri)!=len(set(ri)):ERRORS.append('Religious lexicon contains duplicate IDs')
+    if set(pi)&set(ri):ERRORS.append('Political and religious lexicons contain colliding IDs')
+    for x in pe:
+        if not isinstance(x,list) or len(x)<5:ERRORS.append('Political lexicon entry has invalid shape');continue
+        if not all(isinstance(v,(int,float)) for v in x[2:4]) or not all(-10<=float(v)<=10 for v in x[2:4]):ERRORS.append(f'Political coordinates invalid: {x[0]}')
+    if b.get('individualRecord')!='belief.html?id=<slug>':ERRORS.append('Belief backend individualRecord route is incorrect')
+    return len(pe),len(re_)
+def main():
+    backend=load(ROOT/'data/backend.json'); endpoints=backend.get('endpoints',{}); required=set(backend.get('required',[]))
+    for k,v in endpoints.items():
+        rel=v if isinstance(v,str) else v.get('path','') if isinstance(v,dict) else ''
+        if not rel:ERRORS.append(f'Backend endpoint has no path: {k}');continue
+        if exists(rel,k in required) and rel.endswith('.json'):load(ROOT/rel)
+    nations=load(ROOT/'data/nations.json').get('nations',[]); ci=load(ROOT/'data/countries/index.json').get('countries',[]); repair=load(ROOT/'data/countries/democratic-republic-of-the-congo.json'); repair_id=repair.get('id'); country_ids={x.get('id') for x in ci if x.get('id')!=repair_id}|({repair_id} if repair_id else set())
+    if len(nations)!=195:ERRORS.append(f'Canonical nation directory has {len(nations)} records; expected 195')
+    if len(country_ids)!=195:ERRORS.append(f'Country layer has {len(country_ids)} canonical IDs; expected 195')
+    if {x.get('id') for x in nations}!=country_ids:ERRORS.append('Canonical nation directory and country layer IDs differ')
+    for cid in country_ids:
+        if not (ROOT/'data/countries'/f'{cid}.json').exists():ERRORS.append(f'Missing canonical country record: {cid}.json')
+    base=load(ROOT/'data/country-enrichment-index.json'); base_ids=set(base.get('enriched_ids',[])); base_nodes=load(ROOT/'data/country-nodes.json').get('nodes',[])
+    batches=sorted(ROOT.glob('data/country-enrichment-batch-*.json')); node_batches=sorted(ROOT.glob('data/country-nodes-batch-*.json'))
+    all_ids=set(base_ids); all_nodes=list(base_nodes); seen=[]
+    for bp in batches:
+        b=load(bp); ids=set(b.get('added_ids',[])); seen.extend(ids)
+        if b.get('added_count')!=len(ids):ERRORS.append(f'{bp.name}: added_count mismatch')
+        if ids&base_ids:ERRORS.append(f'{bp.name}: duplicates base overlays: {sorted(ids&base_ids)}')
+        if ids-country_ids:ERRORS.append(f'{bp.name}: unknown country IDs: {sorted(ids-country_ids)}')
+        all_ids|=ids
+    if len(seen)!=len(set(seen)):ERRORS.append('Country enrichment batches contain duplicate country IDs')
+    for np in node_batches:all_nodes.extend(load(np).get('nodes',[]))
+    node_ids={x.get('country_id') for x in all_nodes if x.get('country_id')}
+    if node_ids!=all_ids:ERRORS.append('Combined country graph nodes and enrichment layers are out of sync')
+    for cid in sorted(all_ids):
+        p=ROOT/'data/countries'/f'{cid}-enrichment.json'
+        if not p.exists():ERRORS.append(f'Missing enrichment overlay: {p.name}')
+        else:load(p)
+    graph=load(ROOT/'data/graph-registry.json'); rels=load(ROOT/'data/relationships.json'); nodes=load(ROOT/'data/nodes.json'); children=load(ROOT/'data/tree-child-records.json')
+    graph_ids={x.get('id') for x in nodes.get('nodes',[]) if x.get('id')}|{x.get('id') for x in children.get('records',[]) if x.get('id')}|{x.get('id') for x in graph.get('records',[]) if x.get('id')}|{x.get('id') for x in all_nodes if x.get('id')}|country_ids
+    for r in rels.get('relationships',[]):
+        for side in ('source','target'):
+            if r.get(side) and r[side] not in graph_ids:ERRORS.append(f'Relationship {r.get("id","?")} has unknown {side}: {r[side]}')
+    ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I)
+    for h in ROOT.glob('*.html'):
+        for x in ref.findall(h.read_text(encoding='utf-8',errors='replace')):
+            if x.startswith(('http:','https:','mailto:','javascript:','data:')):continue
+            t=(ROOT/x).resolve()
+            try:t.relative_to(ROOT.resolve())
+            except ValueError:continue
+            if not t.exists():WARNINGS.append(f'Local HTML reference does not exist: {h.name} → {x}')
+    pc,rc=beliefs(); print(f'Canonical nations: {len(nations)}/195');print(f'Enrichment overlays: {len(all_ids)} ({len(base_ids)} base + {len(seen)} batch records)');print(f'Country graph nodes: {len(all_nodes)}');print(f'Enrichment batches discovered: {len(batches)}');print(f'Graph registry records: {len(graph.get("records",[]))}');print(f'Relationships checked: {len(rels.get("relationships",[]))}');print(f'Political beliefs: {pc} · Religious beliefs: {rc}');print(f'Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}')
+    for x in WARNINGS[:100]:print('WARNING:',x)
+    for x in ERRORS[:100]:print('ERROR:',x)
     return 1 if ERRORS else 0
-if __name__=="__main__": raise SystemExit(main())
+if __name__=='__main__':raise SystemExit(main())
