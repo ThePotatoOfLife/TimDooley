@@ -37,6 +37,8 @@ jobs:
         run: python scripts/validate_potatoism_integration.py
       - name: Validate repository-wide integrity
         run: python scripts/validate_project_integrity.py
+      - name: Validate local religious text corpus
+        run: python scripts/validate_text_corpus.py
       - name: Audit backend ownership, duplicates and graph orphans
         if: ${{ always() }}
         run: python scripts/audit_backend_coverage.py
