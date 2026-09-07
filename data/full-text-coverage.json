@@ -1,28 +1,17 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-07",
-  "purpose":"Audit of whether comparative texts are actually stored as searchable raw text or only represented by metadata/links.",
+  "purpose":"Audit of whether comparative texts are actually stored as searchable raw text or only represented by metadata/links, with a separate distinction between raw text and structural depth.",
   "rule":"A text is full-text-ready only when the repository contains the reusable source text itself, preferably as UTF-8 TXT, and the frontend can search it without depending on an external website.",
   "coverage":[
-    {"id":"poetic-edda","label":"Poetic Edda","status":"verified-raw-text","paths":["books/norse-edda/poetic-edda-bellows-1923.txt"],"notes":"Stored locally as raw UTF-8 text; searchable through Books."},
-    {"id":"prose-edda","label":"Prose Edda / Younger Edda","status":"verified-raw-text","paths":["books/norse-edda/prose-edda-anderson.txt"],"notes":"Stored locally as raw UTF-8 text; searchable through Books."},
-    {"id":"christian-bible","label":"Christian Bible","status":"existing-working-layer","paths":[],"notes":"User reports the Bible text layer already works; preserve it while bringing other books up to the same raw-text standard."},
-    {"id":"torah-tanakh","label":"Torah / Tanakh","status":"metadata-or-external-library","paths":[],"source_library":"Sefaria","next_action":"Add a legally reusable local full-text edition where permitted, then register its book/chapter/verse structure."},
-    {"id":"dao-de-jing","label":"Dao De Jing","status":"metadata-or-external-library","paths":[],"source_library":"Chinese Text Project","next_action":"Add a legally reusable local edition where permitted, preserving chapter boundaries and translation metadata."},
-    {"id":"comparative-wisdom","label":"Comparative Wisdom Library","status":"planned","paths":[],"next_action":"Do not populate with summaries alone. Add each work as a distinct full-text asset when licensing/source provenance is adequate."
+    {"id":"poetic-edda","label":"Poetic Edda","status":"verified-raw-text","depth":"corpus","paths":["books/norse-edda/poetic-edda-bellows-1923.txt"],"reader":"books/norse-edda/reader.html","structure":"books/norse-edda/structure.json","notes":"Complete Bellows edition stored locally as raw UTF-8 text; reader searches the complete edition and exposes the poem structure."},
+    {"id":"prose-edda","label":"Prose Edda / Younger Edda","status":"verified-raw-text","depth":"corpus","paths":["books/norse-edda/prose-edda-anderson.txt"],"reader":"books/norse-edda/reader.html","structure":"books/norse-edda/structure.json","notes":"Complete Anderson edition stored locally as raw UTF-8 text; reader searches the complete edition and exposes its major sections."},
+    {"id":"christian-bible","label":"Christian Bible","status":"existing-working-layer","depth":"corpus-or-verify","paths":[],"notes":"Preserve the existing working Bible layer, but verify its actual local corpus and stable passage model rather than assuming it is equivalent to the Edda layer."},
+    {"id":"torah-tanakh","label":"Torah / Tanakh","status":"metadata-or-external-library","depth":"planned","paths":[],"source_library":"Sefaria","next_action":"Add a legally reusable local full-text edition where permitted, then register book/chapter/verse structure and provenance."},
+    {"id":"dao-de-jing","label":"Dao De Jing","status":"metadata-or-external-library","depth":"planned","paths":[],"source_library":"Chinese Text Project","next_action":"Add a legally reusable local edition where permitted, preserving chapter boundaries and translation metadata."},
+    {"id":"comparative-wisdom","label":"Comparative Wisdom Library","status":"planned","depth":"planned","paths":[],"next_action":"Build each work as a distinct corpus record. Do not populate the library with summaries alone."
     }
   ],
-  "next_targets":[
-    "Quran",
-    "Avesta",
-    "Upanishads",
-    "Bhagavad Gita",
-    "Tripitaka",
-    "Popol Vuh",
-    "Epic of Gilgamesh",
-    "Iliad",
-    "Odyssey",
-    "Kalevala",
-    "major Norse sagas"
-  ]
+  "next_targets":["Bible verification","Tanakh / Torah","Quran","Avesta","Upanishads","Bhagavad Gita","Tripitaka","Popol Vuh","Epic of Gilgamesh","Iliad","Odyssey","Kalevala","major Norse sagas"],
+  "architecture":"data/deep-entry-schema.json"
 }
