@@ -1,0 +1,33 @@
+/* Unified shell: loaded after page-specific styles so navigation, controls and links stay visually consistent. */
+:root{--shell-header-height:68px}
+.topbar,.portal-header{min-height:var(--shell-header-height);display:flex;align-items:center;justify-content:space-between;gap:30px;padding:0 max(24px,calc((100vw - 1440px)/2));border-bottom:1px solid var(--line);background:rgba(244,240,231,.94);backdrop-filter:blur(14px);position:sticky;top:0;z-index:50}
+.portal-header{margin:0!important}
+.brand,.portal-brand{display:flex;align-items:center;gap:10px;font-size:.76rem;letter-spacing:.13em;font-weight:800;color:var(--ink);white-space:nowrap}
+.brand-mark{width:26px;height:26px;border:1px solid var(--ink);border-radius:50%;display:grid;place-items:center;font-size:.7rem;flex:0 0 auto}
+.topbar nav,.portal-header nav{display:flex;align-items:center;justify-content:flex-end;gap:22px;flex-wrap:wrap;font-size:.79rem;font-weight:650;color:#4f4b44}
+.topbar nav a,.portal-header nav a{color:inherit;text-decoration:none;padding:4px 0;border-bottom:1px solid transparent;transition:color .15s ease,border-color .15s ease}
+.topbar nav a:hover,.portal-header nav a:hover{color:var(--accent);text-decoration:none}
+.topbar nav a[aria-current="page"],.portal-header nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--accent)}
+.button-primary,.button-secondary{display:inline-block;padding:11px 17px;border:1px solid #aaa293;font-size:.82rem;font-weight:750;transition:.2s ease;background:rgba(255,253,248,.55);color:var(--ink);text-decoration:none}
+.button-primary{background:var(--ink);border-color:var(--ink);color:#fff}
+.button-primary:hover,.button-secondary:hover{transform:translateY(-2px);border-color:var(--ink);text-decoration:none}
+.home-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:30px}
+.home-hero{max-width:1440px;margin:auto;padding:90px 6vw 75px;border-bottom:1px solid var(--line)}
+.home-hero h1{font-family:Georgia,"Times New Roman",serif;font-size:clamp(4rem,8vw,8rem);line-height:.82;font-weight:400;letter-spacing:-.055em;margin:18px 0 30px}
+.home-lead{max-width:760px;font-size:1.12rem;line-height:1.75;color:#4d4941}
+.home-grid{max-width:1440px;margin:auto;padding:55px 6vw;display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.home-card{display:block;padding:30px;background:var(--paper);border:1px solid var(--line);min-height:220px;transition:.2s ease;color:inherit}
+.home-card:hover{transform:translateY(-3px);border-color:#aaa08f;box-shadow:0 15px 35px rgba(55,45,30,.07);text-decoration:none}
+.home-card-wide{grid-column:span 2;min-height:250px}
+.card-label{font-size:.63rem;letter-spacing:.15em;color:var(--accent);font-weight:850}
+.home-card h2{font-family:Georgia,serif;font-size:1.8rem;font-weight:400;margin:20px 0 8px}
+.home-card p{max-width:650px;color:var(--muted);font-size:.88rem;margin:0}
+.card-link{display:block;margin-top:25px;color:var(--accent);font-size:.8rem;font-weight:750}
+.home-principles,.home-repository{max-width:1440px;margin:auto;padding:65px 6vw;border-top:1px solid var(--line);display:grid;grid-template-columns:.8fr 1.2fr;gap:60px}
+.home-principles h2,.home-repository h2{font-family:Georgia,serif;font-size:clamp(2.3rem,4vw,4rem);font-weight:400;line-height:1;margin:8px 0}
+.principles{display:grid;grid-template-columns:repeat(2,1fr);gap:25px}
+.principles div{border-top:1px solid var(--line);padding-top:13px}.principles strong{font-family:Georgia,serif;font-weight:400;font-size:1.15rem}.principles p{color:var(--muted);font-size:.82rem;margin:5px 0 0}
+.repo-links{display:grid;grid-template-columns:repeat(2,1fr);gap:1px;background:var(--line);border:1px solid var(--line)}
+.repo-links a{background:var(--paper);padding:18px;text-decoration:none}.repo-links a:hover{background:#fff}.repo-links strong{display:block;font-family:Georgia,serif;font-weight:400}.repo-links span{display:block;color:var(--muted);font-size:.75rem;margin-top:3px}
+@media(max-width:850px){.topbar,.portal-header{align-items:flex-start;padding:12px 24px;min-height:62px}.topbar nav,.portal-header nav{gap:9px 15px;font-size:.72rem}.home-principles,.home-repository{grid-template-columns:1fr;gap:30px}.home-grid{grid-template-columns:1fr}.home-card-wide{grid-column:auto}}
+@media(max-width:620px){.topbar,.portal-header{padding:12px 16px;gap:12px}.brand span:last-child{display:none}.home-hero{padding:55px 22px 45px}.home-hero h1{font-size:4.6rem}.home-grid{padding:35px 22px}.home-card{min-height:190px}.home-principles,.home-repository{padding:50px 22px}.principles,.repo-links{grid-template-columns:1fr}.home-actions{flex-direction:column;align-items:stretch}.button-primary,.button-secondary{text-align:center}}
