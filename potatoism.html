@@ -45,7 +45,7 @@
     </section>
 
     <section class="section" id="lexicon">
-      <div class="section-heading"><div><p class="section-label">LIVING LEXICON</p><h2>Find the word, then follow it.</h2></div><p class="muted">Search the vocabulary layer and then move outward into records and relationships.</p></div>
+      <div class="section-heading"><div><p class="section-label">LIVING LEXICON</p><h2>Find the word, then read the whole study.</h2></div><p class="muted">Every canonical Potatoism term now opens a long-form dossier rather than stopping at a one-line definition.</p></div>
       <div class="atlas-search"><input id="term-search" type="search" placeholder="Search Potato, Axis, Door, Son, Tree, North…" aria-label="Search Potatoism lexicon"><span id="term-count" class="muted"></span></div>
       <div id="term-list" class="record-index"></div>
     </section>
@@ -65,12 +65,7 @@
 
   <script>
     const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-    async function loadJSON(path) {
-      const response = await fetch(path, {cache:'no-store'});
-      if (!response.ok) throw new Error(`${path} ${response.status}`);
-      return response.json();
-    }
-    const recordLink = (id, name) => `node.html?id=${encodeURIComponent(id)}`;
+    const recordLink = id => `potatoism-entry.html?term=${encodeURIComponent(String(id).toLowerCase().replace(/['’]/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''))}`;
 
     (async () => {
       try {
@@ -101,7 +96,7 @@
           const query = search.value.trim().toLowerCase();
           const shown = terms.filter(x => !query || JSON.stringify(x).toLowerCase().includes(query));
           count.textContent = `${shown.length} terms`;
-          list.innerHTML = shown.slice(0,80).map(x => `<article class="record-index-item"><strong>${esc(x.term)}</strong><span>${esc(x.family || 'project vocabulary')}</span><p>${esc(x.definition)}</p></article>`).join('') + (shown.length > 80 ? '<p class="muted">Refine the search to continue deeper.</p>' : '');
+          list.innerHTML = shown.slice(0,80).map(x => `<article class="record-index-item"><a class="record-index-link" href="${recordLink(x.term)}"><strong>${esc(x.term)}</strong><span>${esc(x.family || 'project vocabulary')}</span><p>${esc(x.definition)}</p><small>Read the full dossier →</small></a></article>`).join('') + (shown.length > 80 ? '<p class="muted">Refine the search to continue deeper.</p>' : '');
         }
         search.addEventListener('input', renderTerms);
         renderTerms();
@@ -110,14 +105,15 @@
 
         const edges = Array.isArray(relations.edges) ? relations.edges : [];
         document.getElementById('graph-list').innerHTML = edges.map(x => {
-          const from = recordLink(x.from, x.from);
-          const to = recordLink(x.to, x.to);
+          const from = recordLink(x.from);
+          const to = recordLink(x.to);
           return `<article><span>${esc(x.relation)}</span><h3><a href="${from}">${esc(x.from)}</a> <b>→</b> <a href="${to}">${esc(x.to)}</a></h3></article>`;
         }).join('');
       } catch (error) {
         document.querySelector('main').insertAdjacentHTML('beforeend', `<p class="error">Potatoism layer could not be loaded: ${esc(error.message)}</p>`);
       }
     })();
+    async function loadJSON(path) { const response = await fetch(path, {cache:'no-store'}); if (!response.ok) throw new Error(`${path} ${response.status}`); return response.json(); }
   </script>
 </body>
 </html>
