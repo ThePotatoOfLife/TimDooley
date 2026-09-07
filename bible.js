@@ -1,1 +1,61 @@
-const CATALOG='data/christianity/bible-kjv.json';const TEXT='https://www.gutenberg.org/cache/epub/30/pg30.txt';let catalog=null,raw='',book=null,chapter=1;const $=id=>document.getElementById(id);function esc(s){return s.replace(/[&<>]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;'}[c]));}function renderBooks(q=''){const rows=(catalog.books||[]).filter(b=>b.name.toLowerCase().includes(q.toLowerCase()));$('bible-books').innerHTML=rows.map(b=>`<button class="bible-book" data-book="${b.id}">${b.name}<span>${b.testament==='old'?'OT':'NT'} · ${b.chapters}</span></button>`).join('');document.querySelectorAll('.bible-book').forEach(x=>x.onclick=()=>selectBook(x.dataset.book));}function locate(name){const patterns=[new RegExp('\\n'+name.toUpperCase()+'\\n'),new RegExp('\\n'+name.toUpperCase()+'\\s+\\n')];for(const p of patterns){const m=p.exec(raw);if(m)return m.index+m[0].length;}return -1;}function selectBook(id){book=catalog.books.find(b=>b.id===id);chapter=1;renderChapter();}function renderChapter(){if(!book)return;const start=locate(book.name);if(start<0){$('bible-status').textContent='The catalogue entry is available, but this source edition could not be automatically segmented for this book. Use the source link above.';return;}const nextBooks=catalog.books.slice(catalog.books.indexOf(book)+1);let end=raw.length;for(const b of nextBooks){const p=locate(b.name);if(p>start){end=p;break;}}const section=raw.slice(start,end);const re=new RegExp('\\n'+chapter+'\\s+([\\s\\S]*?)(?=\\n'+(chapter+1)+'\\s+|$)','i');const m=re.exec(section);const text=m?m[1]:section;$('bible-location').textContent=`${book.name} ${chapter}`;$('bible-title').textContent='King James Version';$('bible-status').textContent='Public-domain KJV text · Project Gutenberg';$('bible-text').innerHTML=`<h3>${book.name} ${chapter}</h3><p>${esc(text).replace(/\n+/g,'</p><p>')}</p>`;$('prev-chapter').disabled=chapter<=1;$('next-chapter').disabled=chapter>=book.chapters;}async function init(){try{catalog=await fetch(CATALOG).then(r=>r.json());renderBooks();$('bible-search').oninput=e=>renderBooks(e.target.value);$('prev-chapter').onclick=()=>{if(chapter>1){chapter--;renderChapter();}};$('next-chapter').onclick=()=>{if(book&&chapter<book.chapters){chapter++;renderChapter();}};raw=await fetch(TEXT).then(r=>{if(!r.ok)throw Error('text');return r.text()});$('bible-status').textContent='Public-domain KJV text loaded. Select a book.';}catch(e){$('bible-status').innerHTML='The catalogue is available, but the external reading text could not be loaded in this browser. <a href="https://www.gutenberg.org/ebooks/30">Open the complete KJV source</a>.';}}init();
+const CATALOG='data/christianity/bible-kjv.json';
+const MIRROR='https://raw.githubusercontent.com/aruljohn/Bible-kjv-1611/main/';
+let catalog=null,book=null,chapter=1,bookData=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const params=()=>new URLSearchParams(location.search);
+const bookIdFromUrl=()=>params().get('book')||'';
+const chapterFromUrl=()=>Math.max(1,Number(params().get('chapter')||1));
+const updateUrl=()=>book&&history.replaceState(null,'',`bible.html?book=${encodeURIComponent(book.id)}&chapter=${chapter}`);
+function renderBooks(q=''){
+  const rows=(catalog.books||[]).filter(b=>b.name.toLowerCase().includes(q.toLowerCase()));
+  const groups=[['old','Old Testament'],['apocrypha','Apocrypha'],['new','New Testament']];
+  $('bible-books').innerHTML=groups.map(([key,label])=>{
+    const group=rows.filter(b=>b.testament===key);if(!group.length)return '';
+    return `<section class="bible-book-group"><h3>${label}</h3>${group.map(b=>`<button class="bible-book${book?.id===b.id?' active':''}" data-book="${esc(b.id)}"><span>${esc(b.name)}</span><small>${b.chapters} ch.</small></button>`).join('')}</section>`;
+  }).join('')||'<p class="empty-state">No books match.</p>';
+  document.querySelectorAll('.bible-book').forEach(x=>x.onclick=()=>selectBook(x.dataset.book));
+}
+function renderChapterSelect(){
+  if(!book)return;
+  $('bible-chapter').innerHTML=Array.from({length:book.chapters},(_,i)=>`<option value="${i+1}">Chapter ${i+1}</option>`).join('');
+  $('bible-chapter').value=String(chapter);$('bible-chapter').disabled=false;
+}
+async function selectBook(id,requestedChapter=1){
+  const found=catalog.books.find(b=>b.id===id);if(!found)return;
+  book=found;chapter=Math.min(Math.max(1,requestedChapter),book.chapters);bookData=null;
+  renderBooks($('bible-search').value);renderChapterSelect();updateUrl();
+  $('bible-status').textContent=`Loading ${book.name}…`;
+  try{
+    const response=await fetch(MIRROR+encodeURIComponent(book.name)+'.json',{cache:'force-cache'});
+    if(!response.ok)throw new Error(`HTTP ${response.status}`);
+    bookData=await response.json();renderChapter();
+  }catch(error){
+    $('bible-status').innerHTML=`The catalogue is available, but the reader mirror could not be loaded. <a href="https://www.gutenberg.org/ebooks/30" target="_blank" rel="noopener">Open the complete KJV source</a>.`;
+    $('bible-text').innerHTML=`<div class="reader-error"><h3>${esc(book.name)}</h3><p>This is a browser/network loading problem, not missing Bible data.</p><p><a class="bible-source-button" href="https://www.gutenberg.org/ebooks/30" target="_blank" rel="noopener">Open complete KJV →</a></p></div>`;
+  }
+}
+function renderChapter(){
+  if(!book||!bookData)return;
+  const current=(bookData.chapters||[]).find(c=>Number(c.chapter)===chapter);
+  if(!current){$('bible-status').textContent='Chapter data was not found for this catalogue entry.';return;}
+  $('bible-location').textContent=`${book.name} ${chapter}`;
+  $('bible-title').textContent='King James Version';
+  $('bible-status').textContent=`${book.name} · Chapter ${chapter} · 1611 KJV text`;
+  $('bible-text').innerHTML=(current.verses||[]).map(v=>`<p class="bible-verse"><sup>${esc(v.verse)}</sup> ${esc(v.text)}</p>`).join('')||'<p>No verse data returned.</p>';
+  $('prev-chapter').disabled=chapter<=1;$('next-chapter').disabled=chapter>=book.chapters;$('bible-chapter').value=String(chapter);updateUrl();
+}
+async function init(){
+  try{
+    catalog=await fetch(CATALOG,{cache:'no-store'}).then(r=>{if(!r.ok)throw Error('catalog');return r.json()});
+    $('bible-search').oninput=e=>renderBooks(e.target.value);
+    $('bible-chapter').onchange=e=>{chapter=Number(e.target.value);renderChapter()};
+    $('prev-chapter').onclick=()=>{if(chapter>1){chapter--;renderChapter()}};
+    $('next-chapter').onclick=()=>{if(book&&chapter<book.chapters){chapter++;renderChapter()}};
+    $('bible-home').onclick=()=>{history.replaceState(null,'','bible.html');book=null;bookData=null;chapter=1;renderBooks();$('bible-location').textContent='Select a book';$('bible-title').textContent='King James Version';$('bible-status').textContent='Select a book to begin reading.';$('bible-text').innerHTML='<p>Select a book to begin reading.</p>';$('bible-chapter').innerHTML='<option>Chapter</option>';$('bible-chapter').disabled=true};
+    renderBooks();
+    const initial=bookIdFromUrl()||catalog.books?.[0]?.id;
+    if(initial)await selectBook(initial,chapterFromUrl());
+  }catch(e){$('bible-status').textContent='The Bible catalogue could not be loaded.';}
+}
+init();
