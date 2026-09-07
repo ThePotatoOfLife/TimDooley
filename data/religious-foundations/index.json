@@ -1,0 +1,16 @@
+{
+  "version":"1.0.0",
+  "blueprint":"data/blueprints/religious-foundation.json",
+  "records":"data/religious-foundations/records.json",
+  "research_sources":[
+    {"id":"pew-global-religious-composition-2010-2020","type":"demographic","role":"broad country baseline","source":"Pew Research Center","status":"authoritative-secondary"},
+    {"id":"world-religion-database","type":"demographic","role":"deeper country/religion estimates and historical trends","source":"Brill / World Religion Database","status":"specialist-database"},
+    {"id":"world-christian-database","type":"denominational","role":"Christian denominations, country and activity detail","source":"Brill / World Christian Database","status":"specialist-database"},
+    {"id":"national-census","type":"primary-demographic","role":"country-specific religion affiliation","source":"national statistical authorities","status":"preferred-when-available"},
+    {"id":"religious-self-description","type":"primary-institutional","role":"doctrine, organization and institutional self-description","source":"religious communities and official institutions","status":"triangulate"},
+    {"id":"academic-research","type":"secondary","role":"history, theology, anthropology, sociology and textual criticism","source":"academic literature","status":"triangulate"}
+  ],
+  "records_count":18,
+  "classification_rule":"Broad religious categories are demographic tools, not substitutes for traditions, denominations, schools, practices or theology.",
+  "next_pass":"Instantiate denomination/school records from each foundation and then connect each tradition to countries, institutions, texts, places, practices and historical events."
+}
