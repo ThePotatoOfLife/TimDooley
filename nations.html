@@ -1,16 +1,26 @@
 <!doctype html>
 <html lang="en">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="The canonical 195-nation World directory of The Potato of Life atlas.">
-<title>World — The Potato of Life</title><link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="consistency.css"></head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The canonical 195-nation World directory of The Potato of Life atlas.">
+<title>World — The Potato of Life</title>
+<link rel="stylesheet" href="portal.css">
+<link rel="stylesheet" href="consistency.css">
+</head>
 <body>
-<header class="portal-header"><a class="portal-brand" href="index.html">THE POTATO OF LIFE</a><nav aria-label="Primary"><a href="index.html">Home</a><a href="repository.html">Atlas</a><a href="nations.html" aria-current="page">World</a><a href="people.html">People</a><a href="belief.html">Ideas</a><a href="potatoism.html">Potatoism</a><a href="hawkins.html">Hawkins</a></nav></header>
+<header class="portal-header">
+<a class="portal-brand" href="index.html">THE POTATO OF LIFE</a>
+<nav aria-label="Primary"><a href="index.html">Home</a><a href="repository.html">Atlas</a><a href="nations.html" aria-current="page">World</a><a href="people.html">People</a><a href="belief.html">Ideas</a><a href="potatoism.html">Potatoism</a><a href="hawkins.html">Hawkins</a></nav>
+</header>
 <main class="world-page">
-<section class="world-head"><div><div class="live">WORLD / CANONICAL DIRECTORY</div><h1>195 nations.</h1><p class="lead">World is the geographic and national layer of the atlas. The directory is canonical; live public observations and local research overlays are separate layers joined by stable country IDs.</p></div></section>
-<div class="summary"><span><strong id="total">195</strong> canonical records</span><span><strong id="loaded">—</strong> live records loaded</span><span><strong id="overlays">—</strong> local overlays</span><span><strong id="shown">—</strong> shown</span></div>
+<section class="world-head"><div><div class="live">WORLD / CANONICAL DIRECTORY</div><h1>195 nations.</h1><p class="lead">The World layer starts with the canonical 195-country directory. Live public data enriches those records when available; it is never required for the directory itself to appear.</p></div></section>
+<div class="summary"><span><strong id="total">195</strong> canonical records</span><span><strong id="loaded">—</strong> live records</span><span><strong id="shown">—</strong> shown</span></div>
 <div class="toolbar"><input id="q" placeholder="Search country, capital, ISO or language…" aria-label="Search nations"><select id="region" aria-label="Filter by region"><option value="">All regions</option></select><select id="sub" aria-label="Filter by subregion"><option value="">All subregions</option></select></div>
-<p id="status">Loading live country data…</p><div id="list" class="nation-list"></div>
-<div class="sources">The 195-name directory is the canonical World layer. Individual countries open in <code>nation.html</code>; local overlays add research context; cross-layer relationships return to the Atlas.</div>
+<p id="status">Loading the canonical country directory…</p>
+<div id="list" class="nation-list"></div>
+<div class="sources">Every row is a stable link into <code>nation.html</code>. Local research overlays and live public indicators are separate layers.</div>
 </main>
-<script>
-const API='https://restcountries.com/v3.1/all?fields=name,cca2,cca3,capital,region,subregion,flag,independent,unMember,landlocked,area,population,languages,currencies,borders';const $=id=>document.getElementById(id);const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));let canonical=[],live=[];function render(){const term=$('q').value.trim().toLowerCase(),r=$('region').value,s=$('sub').value,out=live.filter(n=>{const languages=Object.values(n.languages||{}).join(' ');return(!term||[n.name?.common,n.name?.official,...(n.capital||[]),n.cca2,n.cca3,languages].join(' ').toLowerCase().includes(term))&&(!r||n.region===r)&&(!s||n.subregion===s)});$('shown').textContent=out.length;$('status').textContent=`${out.length} of ${live.length} live national records`;$('list').innerHTML=out.map(n=>{const canonicalRecord=canonical.find(c=>String(c.iso3||'').toUpperCase()===String(n.cca3||'').toUpperCase());const id=canonicalRecord?.id||String(n.cca3||n.name?.common||'').toLowerCase();const langs=Object.values(n.languages||{}).slice(0,3).join(', ');const currency=Object.values(n.currencies||{})[0]?.name||'—';return `<a class="nation-row" href="nation.html?id=${encodeURIComponent(id)}&iso3=${encodeURIComponent(n.cca3||'')}"><div><strong>${esc(n.name?.common)}</strong><small>${esc(n.name?.official||'')}</small></div><span>${esc((n.capital||[])[0]||'—')} · ${esc(n.region||'—')}</span><span>${esc(n.cca3||'—')}</span><span>${Number(n.population||0).toLocaleString()}</span><span>${esc(currency)}</span></a>`}).join('')||'<p>No live records match.</p>')}async function init(){try{const [local,manifest,response]=await Promise.all([fetch('data/nations.json',{cache:'no-store'}).then(r=>r.json()),fetch('data/atlas-manifest.json',{cache:'no-store'}).then(r=>r.json()),fetch(API,{cache:'no-store'})]);canonical=local.nations||[];if(!response.ok)throw Error('REST Countries returned HTTP '+response.status);const all=await response.json(),ids=new Set(canonical.map(n=>String(n.iso3||'').toUpperCase()).filter(Boolean));live=all.filter(n=>n.cca3&&ids.has(String(n.cca3).toUpperCase()));$('total').textContent=canonical.length;$('loaded').textContent=live.length;$('overlays').textContent=manifest.canonical_world?.country_overlay_coverage??'—';[...new Set(live.map(n=>n.region).filter(Boolean))].sort().forEach(v=>$('region').insertAdjacentHTML('beforeend',`<option value="${esc(v)}">${esc(v)}</option>`));[...new Set(live.map(n=>n.subregion).filter(Boolean))].sort().forEach(v=>$('sub').insertAdjacentHTML('beforeend',`<option value="${esc(v)}">${esc(v)}</option>`));render()}catch(e){$('status').innerHTML='<span class="error">Live country data could not be loaded: '+esc(e.message)+'</span>';try{const [local,manifest]=await Promise.all([fetch('data/nations.json').then(r=>r.json()),fetch('data/atlas-manifest.json').then(r=>r.json())]);canonical=local.nations||[];live=canonical.map(n=>({name:{common:n.name,official:n.name},cca2:n.iso2,cca3:n.iso3,capital:n.capital?[n.capital]:[],region:n.region,subregion:n.subregion,population:0,currencies:{},languages:{}}));$('total').textContent=canonical.length;$('loaded').textContent=live.length;$('overlays').textContent=manifest.canonical_world?.country_overlay_coverage??'—';render()}catch(_){}}}[$('q'),$('region'),$('sub')].forEach(x=>x.addEventListener(x.id==='q'?'input':'change',render));init();
-</script></body></html>
+<script src="nations.js" defer></script>
+</body>
+</html>
