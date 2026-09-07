@@ -1,0 +1,25 @@
+name: Backend coverage inventory
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Build backend coverage report
+        run: python scripts/audit_backend_coverage.py || true
+      - name: Upload backend coverage report
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-coverage-report
+          path: data/backend-coverage-report.json
+          if-no-files-found: error
