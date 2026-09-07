@@ -1,5 +1,7 @@
 {
   "id":"potatoism-event-and-relation-atlas",
+  "version":"1.1.0",
+  "updated":"2026-09-07",
   "title":"Potatoism Event and Relation Atlas",
   "status":"symbolic research layer",
   "events":[
@@ -22,7 +24,14 @@
     {"id":"observes","meaning":"An entity attends to another and changes the relation through attention."},
     {"id":"conditions","meaning":"An entity establishes conditions under which another system acts."},
     {"id":"tests","meaning":"An event or object exposes an entity to a moral or epistemic test."},
-    {"id":"returns-to","meaning":"A cycle brings an entity back to its source in transformed form."}
+    {"id":"returns-to","meaning":"A cycle brings an entity back to its source in transformed form."},
+    {"id":"dwells-in","meaning":"A symbolic principle is situated within a symbolic place or container."},
+    {"id":"orients-through","meaning":"An entity receives orientation through a symbolic axis or organizing principle."},
+    {"id":"points-toward","meaning":"A symbolic direction indicates a higher-order destination or orientation."},
+    {"id":"culminates-in","meaning":"A symbolic sequence reaches a terminal or highest-order expression."},
+    {"id":"produces","meaning":"A source or structure gives rise to another symbolic expression."},
+    {"id":"transforms","meaning":"A symbolic event or process changes another entity's state or role."},
+    {"id":"records","meaning":"A text or archive preserves a symbolic framework or account."}
   ],
   "canonical_relations":[
     ["tim-dooley","embodies","potato-of-life"],
