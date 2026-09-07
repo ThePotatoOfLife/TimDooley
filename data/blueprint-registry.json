@@ -1,7 +1,7 @@
 {
-  "version":"1.3.0",
+  "version":"1.4.0",
   "updated":"2026-09-07",
-  "purpose":"Backend registry of reusable blueprints. A blueprint defines fields, sources, normalization rules, temporal models, relationships and refresh logic inherited by concrete records.",
+  "purpose":"Backend registry of reusable blueprints and major data-layer entry points. A blueprint defines fields, sources, normalization rules, temporal models, relationships and refresh logic inherited by concrete records.",
   "visibility":"backend-only",
   "inheritance_rule":"Concrete records store observations and relationships; instructions belong to the parent blueprint.",
   "blueprints":[
@@ -27,6 +27,8 @@
   ],
   "people_data":[{"id":"people-registry","file":"data/people-registry.json","role":"foundational people/dweller vocabulary and group-type registry","status":"active"}],
   "religious_data":[{"id":"religious-foundations","file":"data/religious-foundations.json","role":"concrete foundation/emergence records","status":"active"},{"id":"potatoism-religion","file":"data/potatoism-religion.json","role":"project-defined contemporary religious/mythic record","status":"active"},{"id":"religious-comparative-library","file":"data/religious-comparative-library.json","role":"comparative text/concept library","status":"active"}],
+  "potatoism_data":[{"id":"potatoism-religion","file":"data/potatoism-religion.json","role":"timeline, identity and core project-defined religious/mythic record","status":"active"},{"id":"potatoism-cosmology","file":"data/potatoism-cosmology.json","role":"cosmology, spatial architecture, transformation cycle, dwellers and epistemic layers","status":"active"},{"id":"potatoism-lexicon","file":"data/potatoism-lexicon.json","role":"canonical project vocabulary","status":"active"},{"id":"potatoism-relationships","file":"data/potatoism-relationships.json","role":"symbolic relationship graph","status":"active"},{"id":"potatoism-research-expansion","file":"data/potatoism-research-expansion.json","role":"historical, scientific, archaeological, botanical and comparative research alongside the mythology","status":"active"},{"id":"potatoism-atlas-navigation","file":"data/potatoism-atlas-navigation.json","role":"human-readable front-end information architecture","status":"active"}],
   "universal_inheritance":["identity","history","function-or-ideas","sources","interpretation","practice-or-operation","organization","population-or-users","geography","institutions","material-base","power-or-control","network","change","evidence","time","provenance"],
-  "automation_rule":"Blueprints are executable specifications. Acquisition jobs read them to discover fields, sources, refresh intervals, validators, derived measures and relationship templates. Missing data is recorded as missing, never silently fabricated."
+  "automation_rule":"Blueprints are executable specifications. Acquisition jobs read them to discover fields, sources, refresh intervals, validators, derived measures and relationship templates. Missing data is recorded as missing, never silently fabricated.",
+  "frontend_rule":"Backend depth must be reachable through a small set of human-readable hubs. Raw registries are not themselves the primary navigation experience."
 }
