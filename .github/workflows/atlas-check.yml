@@ -42,3 +42,4 @@ jobs:
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
         run: python scripts/audit_web.py
+      # Keep the full validator chain running on every main push while repairing CI.
