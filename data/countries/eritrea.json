@@ -1,0 +1,48 @@
+{
+  "record_version": "1.0.0",
+  "record_type": "country",
+  "status": "instantiated",
+  "identity": {
+    "id": "eritrea",
+    "name": "Eritrea",
+    "iso2": "ER",
+    "iso3": "ERI"
+  },
+  "blueprint": "data/countries-blueprint.json",
+  "blueprint_version": "1.0.0",
+  "coverage": {
+    "node_instantiated": true,
+    "blueprint_inherited": true,
+    "observations": 0,
+    "relationships": 0,
+    "sources": 0,
+    "research_status": "ready-for-source-enrichment"
+  },
+  "observations": {},
+  "relationships": [],
+  "history": [],
+  "research_queue": [
+    "national statistical office",
+    "constitution and legal framework",
+    "head of state and government",
+    "parliament and electoral system",
+    "religious composition and denominations",
+    "historical timeline",
+    "public finance and debt",
+    "trade and value chains",
+    "energy and natural resources",
+    "infrastructure",
+    "health and education",
+    "labour and migration",
+    "military and public security institutions",
+    "science and technology",
+    "media and digital systems",
+    "international memberships and treaties",
+    "ownership and major institutions"
+  ],
+  "provenance": {
+    "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
+    "instantiation_method": "canonical country index + country blueprint",
+    "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale."
+  }
+}
