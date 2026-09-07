@@ -21,8 +21,6 @@ INDICATORS = {
     'co2_emissions': 'EN.ATM.CO2E.PC', 'internet_penetration': 'IT.NET.USER.ZS'
 }
 
-# A small number of bulk multi-indicator calls is much more reliable on CI than
-# opening fourteen large all-country connections concurrently.
 INDICATOR_GROUPS = [
     ['population', 'gdp', 'gdp_per_capita', 'gdp_per_capita_ppp', 'real_growth'],
     ['inflation', 'unemployment', 'labour_force_participation', 'life_expectancy', 'fertility'],
@@ -37,27 +35,27 @@ def get_json(url, timeout=180):
 
 
 def world_bank_group(fields):
-    codes = ';'.join(INDICATORS[field] for field in fields)
-    url = 'https://api.worldbank.org/v2/country/all/indicator/' + urllib.parse.quote(codes, safe=';') + '?format=json&per_page=10000&mrv=5'
-    payload = get_json(url)
-    rows = payload[1] if isinstance(payload, list) and len(payload) > 1 else []
+    # The World Bank indicator endpoint is one-indicator-per-request. Keep the
+    # acquisition deterministic instead of relying on an unsupported multi-code URL.
     result = {field: {} for field in fields}
-    code_to_field = {INDICATORS[field]: field for field in fields}
-    for row in rows:
-        indicator = row.get('indicator', {}).get('id')
-        field = code_to_field.get(indicator)
-        iso3 = str(row.get('countryiso3code') or '').upper()
-        if not field or not iso3 or row.get('value') is None:
-            continue
-        year = str(row.get('date') or '')
-        current = result[field].get(iso3)
-        if current is None or year > str(current.get('year') or ''):
-            result[field][iso3] = {
-                'value': row['value'],
-                'year': int(year) if year.isdigit() else year,
-                'source': 'world-bank',
-                'indicator': indicator
-            }
+    for field in fields:
+        indicator = INDICATORS[field]
+        url = f'https://api.worldbank.org/v2/country/all/indicator/{urllib.parse.quote(indicator, safe="")}?format=json&per_page=10000&mrv=5'
+        payload = get_json(url)
+        rows = payload[1] if isinstance(payload, list) and len(payload) > 1 else []
+        for row in rows:
+            iso3 = str(row.get('countryiso3code') or '').upper()
+            if not iso3 or row.get('value') is None:
+                continue
+            year = str(row.get('date') or '')
+            current = result[field].get(iso3)
+            if current is None or year > str(current.get('year') or ''):
+                result[field][iso3] = {
+                    'value': row['value'],
+                    'year': int(year) if year.isdigit() else year,
+                    'source': 'world-bank',
+                    'indicator': indicator
+                }
     return result
 
 
@@ -136,7 +134,7 @@ def main():
             result = world_bank_group(group)
             for field, values in result.items():
                 by_field[field].update(values)
-            summary['bulk_indicator_requests'] += 1
+            summary['bulk_indicator_requests'] += len(group)
         except Exception as exc:
             summary['errors'].append({'indicator_group': [INDICATORS[f] for f in group], 'error': str(exc)})
 
@@ -186,6 +184,8 @@ def main():
     with open(STATE, 'w', encoding='utf-8') as f:
         json.dump(summary, f, ensure_ascii=False, indent=2)
     print(json.dumps(summary, ensure_ascii=False, indent=2))
+    if summary['errors']:
+        raise SystemExit(1)
 
 
 if __name__ == '__main__':
