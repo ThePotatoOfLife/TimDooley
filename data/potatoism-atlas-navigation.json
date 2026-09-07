@@ -1,0 +1,34 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "title":"Potatoism Atlas Navigation",
+  "purpose":"A single front-end map for discovering the project's deepest Potato of Life material without exposing the entire backend at once.",
+  "design_principle":"Simple surface, deep archive. Every important backend layer must be reachable from a small number of stable hubs.",
+  "hubs":[
+    {"id":"potatoism","title":"Potatoism","page":"potatoism.html","description":"The project-defined mythology, timeline, vocabulary, cosmology and transformation model."},
+    {"id":"world","title":"World","page":"nations.html","description":"195 canonical nations plus country-level research, people, institutions and systems."},
+    {"id":"people","title":"People & Dwellers","page":"people.html","description":"Residents, citizens, peoples, language communities, religious communities, diasporas, classes, occupations and symbolic dwellers."},
+    {"id":"beliefs","title":"Beliefs","page":"belief.html","description":"Religions, philosophies, political ideas, nonreligious worldviews and adjacent traditions."},
+    {"id":"history","title":"History","page":"repository.html#history","description":"Events, movements, sources, chronology and transformation."},
+    {"id":"systems","title":"Systems","page":"repository.html#systems","description":"Economy, energy, technology, infrastructure, ownership, trade and dependencies."},
+    {"id":"graph","title":"Relationships","page":"repository.html#connections","description":"The graph layer connecting records rather than treating them as isolated pages."},
+    {"id":"evidence","title":"Evidence","page":"repository.html#evidence","description":"Sources, confidence, provenance and the separation of fact from interpretation."}
+  ],
+  "potatoism_sections":[
+    {"id":"origin","title":"Origin & timeline","source":"data/potatoism-religion.json"},
+    {"id":"cosmology","title":"Cosmology & architecture","source":"data/potatoism-cosmology.json"},
+    {"id":"lexicon","title":"Living lexicon","source":"data/potatoism-lexicon.json"},
+    {"id":"relationships","title":"Symbolic graph","source":"data/potatoism-relationships.json"},
+    {"id":"research","title":"Real-world research","source":"data/potatoism-research-expansion.json"}
+  ],
+  "important_distinction":"The project mythology is presented as project-defined symbolism. Historical, scientific and comparative material is presented with its own evidence status. The interface must never imply that a symbolic correspondence is established empirical fact.",
+  "front_end_rules":[
+    "Do not expose raw JSON registries as the primary navigation experience.",
+    "Do not show hundreds of records before a user has chosen a field or search term.",
+    "Use stable hubs and breadcrumbs so deep pages remain findable.",
+    "Use progressive disclosure for advanced evidence, relationships and provenance.",
+    "Keep search global and contextual search local.",
+    "Every major backend dataset must have at least one human-readable route.",
+    "Retire duplicate or superseded front-end presentations rather than leaving them visible beside canonical ones."
+  ]
+}
