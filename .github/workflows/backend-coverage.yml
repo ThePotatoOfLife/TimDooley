@@ -8,18 +8,22 @@ on:
 permissions:
   contents: read
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   audit:
     runs-on: ubuntu-latest
     timeout-minutes: 10
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
       - name: Build backend coverage report
-        run: python scripts/audit_backend_coverage.py || true
+        run: python scripts/audit_backend_coverage.py
       - name: Upload backend coverage report
-        uses: actions/upload-artifact@v4
+        if: always()
+        uses: actions/upload-artifact@v6
         with:
           name: backend-coverage-report
           path: data/backend-coverage-report.json
-          if-no-files-found: error
+          if-no-files-found: warn
