@@ -1,5 +1,5 @@
 {
-  "version":"2.6.3",
+  "version":"2.6.4",
   "updated":"2026-09-07",
   "name":"Tim Dooley Atlas — Unified Manifest",
   "purpose":"The canonical map of the repository. Internal datasets remain modular, but the atlas presents them as one system with stable layers, routes, record identity, relationships, entanglement and evidence.",
@@ -14,6 +14,7 @@
   "multiplication_round_02":"data/atlas-multiplication-round-02.json",
   "population_pass":"data/population-pass-2026-09.json",
   "book_registry":"data/books-registry.json",
+  "full_text_coverage":"data/full-text-coverage.json",
   "full_text_root":"books/",
   "record_model":{"entanglement":["strength","dependency","distance","feedback","topology","trajectory","phase"]},
   "layers":{
@@ -23,8 +24,8 @@
     "research":{"label":"Evidence","files":["data/research.json","data/events.json","data/country-source-registry.json","data/evidence/observations.json","data/evidence/missing-data.json","data/evidence-map.json","data/research-frontier.json","data/population-pass-2026-09.json"]},
     "systems":{"label":"Systems","files":["data/european-sector-atlas.json","data/north-europe-system-atlas.json","data/north-europe-economic-network.json","data/european-system-observations-2026-09.json","data/indicator-catalog.json","data/expansion-registry.json","data/atlas-expansion-matrix.json"]},
     "security":{"label":"Security, Intelligence and Extremism","files":["data/security-intelligence-organizations.json","data/security-intelligence-country-layer.json","data/intelligence-security-graph.json","data/extremist-hate-groups.json","data/extremism-terrorism-nrm-expansion.json"]},
-    "beliefs":{"label":"Beliefs and Religion","files":["data/belief-backend.json","data/belief-registry.json","data/belief-records.json","data/belief-integrity.json","data/religious-layer-manifest.json","data/religious-layer-map.json","data/religious-dimensions.json","data/religious-lexicon.json","data/religious-foundations.json","data/religious-comparative-library.json","data/religious-relationships.json","data/religious-category-records.json","data/canonical-texts.json","data/books-registry.json"]},
-    "books":{"label":"Books and Full Text","files":["data/books-registry.json","books/norse-edda/poetic-edda-bellows-1923.txt","books/norse-edda/prose-edda-anderson.txt"]},
+    "beliefs":{"label":"Beliefs and Religion","files":["data/belief-backend.json","data/belief-registry.json","data/belief-records.json","data/belief-integrity.json","data/religious-layer-manifest.json","data/religious-layer-map.json","data/religious-dimensions.json","data/religious-lexicon.json","data/religious-foundations.json","data/religious-comparative-library.json","data/religious-relationships.json","data/religious-category-records.json","data/canonical-texts.json","data/books-registry.json","data/full-text-coverage.json"]},
+    "books":{"label":"Books and Full Text","files":["data/books-registry.json","data/full-text-coverage.json","books/norse-edda/poetic-edda-bellows-1923.txt","books/norse-edda/prose-edda-anderson.txt"]},
     "emotion":{"label":"Emotion and State","files":["data/hawkins-scale.json","hawkins.html"]},
     "mythology":{"label":"Potatoism","files":["data/potatoverse-lore.json","data/potato-properties.json","data/potato-spatial-map.json","data/potato-research-roadmap.json","data/potatoism-religion.json","data/potatoism-cosmology.json","data/potatoism-lexicon.json","data/potatoism-relationships.json","data/potatoism-research-expansion.json","data/potatoism-atlas-navigation.json","data/mythic-ontology.json","data/tim-dooley-cosmology.json","data/potatoism-canonical-corpus.json","data/potatoism-timeline.json","data/potatoism-lexicon-expanded.json","data/potatoism-concept-map.json","data/potatoism-thalamus-brain-map.json","data/potatoism-vesica-coupling-atlas.json","data/potatoism-deep-extrapolation-atlas.json"]},
     "people":{"label":"People and Dwellers","files":["data/people-registry.json","data/people-seed-records.json","data/blueprints/people-dweller-master.json"]},
