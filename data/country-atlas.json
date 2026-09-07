@@ -1,0 +1,13 @@
+{
+  "version":"1.0.0",
+  "name":"Global Country Atlas",
+  "purpose":"Parent container for the country layer. The blueprint defines what every country should contain; the source registry defines where values come from; country records contain only normalized observations and provenance.",
+  "backend_only_blueprint":"data/countries-blueprint.json",
+  "source_registry":"data/country-source-registry.json",
+  "country_index":"data/countries/index.json",
+  "inheritance":"country -> countries-blueprint -> field definitions -> source registry -> automated refresh -> normalized country record",
+  "frontend_rule":"Do not expose blueprint instructions as country content. Frontend shows the resulting data, freshness, provenance and meaningful comparisons.",
+  "global_views":["world map","population","GDP","GDP per capita","debt/GDP","public debt","religion","denominations","political systems","leaders","parliaments","elections","monarchies","military capability","alliances","trade","energy","infrastructure","health","education","labour","migration","science","technology","climate","resources","ownership","law","rights","media","digital systems","historical timelines","North/East/South/West/Center configurations","network relationships"],
+  "country_record_generation":{"input":"country index + blueprint + source registry","output":"normalized country records","preserve_history":true,"preserve_source_values":true,"calculate_derived_metrics":true,"generate_relationships":true,"flag_missing_or_stale_data":true},
+  "epistemic_boundary":"Empirical country statistics remain empirical. Political classifications are sourced or explicitly analytical. Symbolic Tree/Axis/angel/demon material remains project interpretation and is never presented as measured population data."
+}
