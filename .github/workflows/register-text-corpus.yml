@@ -1,0 +1,24 @@
+name: Register religious text corpus
+
+on:
+  push:
+    branches: [project-repair-2026-09-07]
+
+permissions:
+  contents: write
+
+jobs:
+  register:
+    if: ${{ !contains(github.event.head_commit.message, 'register full-text corpus') }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: python scripts/register_text_corpus.py
+      - name: Commit registrations
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/atlas-manifest.json data/backend-coverage-map.json data/graph-registry.json
+          git diff --cached --quiet && exit 0
+          git commit -m "fix: register full-text corpus"
+          git push
