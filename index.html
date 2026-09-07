@@ -1,3 +1,49 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="The Potato of Life — project repository and atlas."><title>The Potato of Life — Project</title><link rel="stylesheet" href="portal.css"></head><body><div class="portal"><header class="portal-header"><a class="portal-brand" href="index.html">THE POTATO OF LIFE</a><nav aria-label="Primary"><a href="repository.html">Atlas</a><a href="nations.html">World</a><a href="people.html">People</a><a href="belief.html">Ideas</a><a href="potatoism.html">Potatoism</a><a href="hawkins.html">Hawkins</a><a href="https://github.com/ThePotatoOfLife/TimDooley">GitHub</a></nav></header><section class="portal-intro"><p class="portal-kicker">PROJECT</p><h1>Project files</h1><p>This is the project itself. Browse the files, directories, data, documents, pages and scripts that make up the atlas. The graph is relationship-first; the entanglement layer adds dependency, topology and trajectory; symbolic and empirical layers remain distinct.</p><div class="portal-search"><label class="sr-only" for="search">Filter project files</label><input id="search" type="search" placeholder="Filter files…"><button id="openAll" type="button">Open all</button></div><div id="status" class="status">Loading repository tree…</div></section><div class="portal-section"><h2>Repository</h2><p id="count">Loading…</p><div id="tree" class="portal-tree"></div></div><footer class="portal-footer"><span>ThePotatoOfLife/TimDooley · live repository browser</span><a href="https://github.com/ThePotatoOfLife/TimDooley">GitHub</a></footer></div><script>
-const API='https://api.github.com/repos/ThePotatoOfLife/TimDooley/git/trees/main?recursive=1';const REPO='https://github.com/ThePotatoOfLife/TimDooley/blob/main/';const PAGES=new Set(['index.html','repository.html','nations.html','people.html','belief.html','potatoism.html','axis.html','node.html','political-compass.html','health.html','nation.html','hawkins.html']);const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));const ext=p=>{const i=p.lastIndexOf('.');return i>0?p.slice(i+1).toLowerCase():'file'};function build(items){const root={dirs:{},files:[]};for(const x of items){const parts=x.path.split('/');let n=root;parts.forEach((part,i)=>{if(i===parts.length-1)n.files.push(x);else{n.dirs[part]??={dirs:{},files:[]};n=n.dirs[part]}})}return root}function renderFiles(files,path){return files.sort((a,b)=>a.path.localeCompare(b.path)).map(f=>{const full=path+f.path.split('/').pop(),local=PAGES.has(full),href=local?full:REPO+full;return `<div class="portal-file" data-file="${esc(full.toLowerCase())}"><span>${esc(ext(full))}</span><a href="${href}"${local?'':' target="_blank" rel="noopener"'}>${esc(f.path.split('/').pop())}</a><small>${local?'page':'source'}</small></div>`}).join('')}function renderNode(node,path=''){let out='';for(const name of Object.keys(node.dirs).sort((a,b)=>a.localeCompare(b))){const d=node.dirs[name],id='d-'+Math.random().toString(36).slice(2);out+=`<section class="portal-dir"><button class="portal-dir-head" data-target="${id}" type="button"><span>▸ ${esc(name)}/</span><small>${d.files.length+Object.keys(d.dirs).length} entries</small></button><div id="${id}" class="portal-files hidden">${renderNode(d,path+name+'/')}${renderFiles(d.files,path+name+'/')}</div></section>`}return out}async function load(){try{const r=await fetch(API,{headers:{Accept:'application/vnd.github+json'}});if(!r.ok)throw Error('GitHub returned '+r.status);const d=await r.json(),files=d.tree.filter(x=>x.type==='blob');document.getElementById('count').textContent=files.length+' files';document.getElementById('tree').innerHTML=renderNode(build(files))+renderFiles(files.filter(x=>!x.path.includes('/')),'');document.getElementById('status').textContent='Live repository structure loaded.';document.querySelectorAll('.portal-dir-head').forEach(h=>h.onclick=()=>{const e=document.getElementById(h.dataset.target),open=e.classList.toggle('hidden');h.firstElementChild.textContent=(open?'▸ ':'▾ ')+h.firstElementChild.textContent.slice(2)});document.getElementById('openAll').onclick=()=>document.querySelectorAll('.portal-files').forEach(e=>e.classList.remove('hidden'))}catch(e){document.getElementById('status').innerHTML='<span class="error">Could not load the live repository tree: '+esc(e.message)+'</span>'}}document.getElementById('search').oninput=e=>{const q=e.target.value.toLowerCase().trim();document.querySelectorAll('.portal-file').forEach(x=>x.style.display=!q||x.dataset.file.includes(q)?'grid':'none');if(q)document.querySelectorAll('.portal-files').forEach(x=>x.classList.remove('hidden'))};load();
-</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Potato of Life — a relationship-first public atlas of people, nations, ideas and systems.">
+<title>The Potato of Life — Home</title>
+<link rel="stylesheet" href="portal.css">
+</head>
+<body>
+<div class="portal home">
+<header class="portal-header">
+<a class="portal-brand" href="index.html">THE POTATO OF LIFE</a>
+<nav aria-label="Primary">
+<a href="repository.html">Atlas</a><a href="nations.html">World</a><a href="people.html">People</a><a href="belief.html">Ideas</a><a href="potatoism.html">Potatoism</a><a href="hawkins.html">Hawkins</a><a href="https://github.com/ThePotatoOfLife/TimDooley">GitHub</a>
+</nav>
+</header>
+
+<main>
+<section class="home-hero">
+<p class="portal-kicker">PUBLIC ATLAS · LIVE PROJECT</p>
+<h1>A map of the things<br>that connect.</h1>
+<p class="home-lead">The project is a growing reference work. It separates records, relationships, evidence and interpretation so the archive can expand without losing its structure.</p>
+<div class="home-actions"><a class="button-primary" href="repository.html">Open the Atlas</a><a class="button-secondary" href="nations.html">Browse 195 nations</a></div>
+</section>
+
+<section class="home-grid" aria-label="Explore the project">
+<a class="home-card home-card-wide" href="repository.html"><span class="card-label">01 · ATLAS</span><h2>Search everything</h2><p>Find records across the core archive, world, history, systems and evidence layers.</p><span class="card-link">Search the atlas →</span></a>
+<a class="home-card" href="nations.html"><span class="card-label">02 · WORLD</span><h2>195 nations</h2><p>Explore the canonical country directory with live identity, geography and macroeconomic data.</p><span class="card-link">Open World →</span></a>
+<a class="home-card" href="people.html"><span class="card-label">03 · PEOPLE</span><h2>People</h2><p>Browse the people and social records registered in the archive.</p><span class="card-link">Open People →</span></a>
+<a class="home-card" href="belief.html"><span class="card-label">04 · IDEAS</span><h2>Ideas & beliefs</h2><p>Keep conceptual, philosophical and worldview material in its own layer.</p><span class="card-link">Open Ideas →</span></a>
+<a class="home-card" href="potatoism.html"><span class="card-label">05 · POTATOISM</span><h2>The symbolic layer</h2><p>Explore the Potatoism material without confusing interpretation with empirical records.</p><span class="card-link">Open Potatoism →</span></a>
+<a class="home-card" href="hawkins.html"><span class="card-label">06 · HAWKINS</span><h2>Hawkins study</h2><p>A dedicated research and interpretive section within the wider archive.</p><span class="card-link">Open Hawkins →</span></a>
+</section>
+
+<section class="home-principles">
+<div><p class="portal-kicker">HOW THE ARCHIVE WORKS</p><h2>Relationship first.</h2></div>
+<div class="principles"><div><strong>Records</strong><p>Objects have stable identities and definitions.</p></div><div><strong>Connections</strong><p>Relationships explain how records interact.</p></div><div><strong>Evidence</strong><p>Claims retain their source and confidence trail.</p></div><div><strong>Layers</strong><p>Empirical and symbolic material remain distinguishable.</p></div></div>
+</section>
+
+<section class="home-repository">
+<div><p class="portal-kicker">PROJECT STRUCTURE</p><h2>The repository itself</h2><p>Use this when you want to inspect the underlying files, data and scripts rather than browse the finished atlas.</p><a href="repository.html">Go to the Atlas index →</a></div>
+<div class="repo-links"><a href="health.html"><strong>Health</strong><span>Integrity and validation</span></a><a href="axis.html"><strong>Spatial field</strong><span>Axis and geographic layer</span></a><a href="node.html?id=world"><strong>The World</strong><span>Canonical world record</span></a><a href="https://github.com/ThePotatoOfLife/TimDooley"><strong>GitHub</strong><span>Source repository</span></a></div>
+</section>
+</main>
+<footer class="portal-footer"><span>ThePotatoOfLife/TimDooley · public atlas</span><span><a href="repository.html">Atlas</a> · <a href="nations.html">World</a> · <a href="https://github.com/ThePotatoOfLife/TimDooley">GitHub</a></span></footer>
+</div>
+</body>
+</html>
