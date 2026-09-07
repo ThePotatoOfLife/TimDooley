@@ -24,7 +24,7 @@
     {"id":"resource-system","file":"data/blueprints/structural-patterns.json#resource-system","applies_to":"energy, minerals, water and food resources","status":"active"},
     {"id":"ecological-system","file":"data/blueprints/structural-patterns.json#ecological-system","applies_to":"ecosystems and ecological networks","status":"active"}
   ],
-  "religious_data":[{"id":"religious-foundations","file":"data/religious-foundations.json","role":"concrete foundation/emergence records","status":"active"}],
+  "religious_data":[{"id":"religious-foundations","file":"data/religious-foundations.json","role":"concrete foundation/emergence records","status":"active"},{"id":"potatoism-religion","file":"data/potatoism-religion.json","role":"project-defined contemporary religious/mythic record","status":"active"},{"id":"religious-comparative-library","file":"data/religious-comparative-library.json","role":"comparative text/concept library","status":"active"}],
   "universal_inheritance":["identity","history","function-or-ideas","sources","interpretation","practice-or-operation","organization","population-or-users","geography","institutions","material-base","power-or-control","network","change","evidence","time","provenance"],
   "automation_rule":"Blueprints are executable specifications. Acquisition jobs read them to discover fields, sources, refresh intervals, validators, derived measures and relationship templates. Missing data is recorded as missing, never silently fabricated."
 }
