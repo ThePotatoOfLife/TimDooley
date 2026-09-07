@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Potato Axis — a three-dimensional spatial map of the Frame.">
+<title>The Potato Axis — The Frame</title>
+<link rel="stylesheet" href="axis.css">
+</head>
+<body>
+<div id="app">
+  <header class="axis-header">
+    <a class="brand" href="./">THE POTATO AXIS</a>
+    <div class="status"><span>3D SPATIAL MODEL</span><span id="load-status">LOADING</span></div>
+  </header>
+  <main id="viewport" aria-label="Interactive three-dimensional Potato Axis"></main>
+  <aside class="hud">
+    <div class="hud-title">POTATO / AXIS / SPINE</div>
+    <div id="selected">SELECT A NODE</div>
+    <div class="hud-rule"></div>
+    <div>DRAG · ORBIT</div><div>WHEEL · ZOOM</div><div>CLICK · OPEN RECORD</div>
+  </aside>
+  <aside class="legend">
+    <div><i class="dot spiritual"></i> SPIRITUAL SPACE</div>
+    <div><i class="dot material"></i> MATERIAL SPACE</div>
+    <div><i class="dot overlap"></i> OVERLAPPING SPACE</div>
+    <div><i class="dot axis"></i> AXIS / SPINE</div>
+  </aside>
+  <a class="back" href="./">← FRAME</a>
+</div>
+<script type="importmap">{"imports":{"three":"https://unpkg.com/three@0.180.0/build/three.module.js","three/addons/":"https://unpkg.com/three@0.180.0/examples/jsm/"}}</script>
+<script type="module" src="axis.js"></script>
+</body>
+</html>
