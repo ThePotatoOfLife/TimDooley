@@ -1,0 +1,61 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "name": "Entanglement and Relation Layer",
+  "status": "canonical-project-architecture",
+  "purpose": "Extend the relationships-first rule by treating connection itself as an object of study: dependency, correlation, coupling, topology, path dependence, trajectory and symbolic fate can all be represented without collapsing their evidentiary status.",
+  "core_rule": "Entanglement is a relation with structure, not a synonym for quantum entanglement.",
+  "epistemic_guardrail": "Quantum entanglement is an experimentally established physical phenomenon; fate, destiny and spiritual entanglement are interpretive or symbolic models unless independently evidenced.",
+  "material_layer": {
+    "quantum_entanglement": {
+      "definition": "A quantum state of multiple systems that cannot be fully described as independent subsystem states.",
+      "observables": ["correlation", "measurement statistics", "Bell-inequality violation", "state preparation", "decoherence"],
+      "non_signalling_note": "Entanglement produces correlations that cannot be reproduced by local hidden-variable models, but it does not provide a simple faster-than-light messaging channel."
+    },
+    "network_entanglement": {
+      "definition": "Strong relational dependence or coupling among nodes in an observable system.",
+      "examples": ["ownership chains", "debt obligations", "supply chains", "infrastructure dependencies", "energy flows", "institutional authority", "information networks"]
+    }
+  },
+  "relational_dimensions": [
+    "source",
+    "target",
+    "relationship",
+    "distance",
+    "directionality",
+    "strength",
+    "dependency",
+    "coupling",
+    "correlation",
+    "causal_status",
+    "temporal_order",
+    "path_dependence",
+    "feedback",
+    "topology",
+    "boundary",
+    "trajectory",
+    "phase",
+    "counterfactual_sensitivity",
+    "evidence",
+    "confidence"
+  ],
+  "trajectory_model": {
+    "idea": "A node or relationship can be represented as a state moving through a sequence of conditions rather than as a static point.",
+    "fields": ["initial_state", "trigger", "transition", "phase", "constraint", "attractor", "outcome", "reversal_condition"],
+    "warning": "A trajectory is not automatically a prediction. Historical trajectory, modelled scenario and spiritual destiny must remain distinct evidence classes."
+  },
+  "topology_model": {
+    "idea": "Study what remains connected when the representation changes, and where boundaries, bottlenecks, holes, bridges and attractors occur.",
+    "concepts": ["connected_component", "bridge", "cut", "bottleneck", "cycle", "loop", "boundary", "basin", "attractor", "drain", "threshold", "phase_transition"],
+    "symbolic_correspondence": "The project's mountain, plane, mud and swamp can be treated as symbolic terrain describing stability, visibility, elevation, flow and entanglement rather than as literal physics."
+  },
+  "fate_and_destiny_layer": {
+    "status": "interpretive",
+    "definition": "A symbolic model of path dependence, constraint, recurring pattern and perceived direction through time.",
+    "use": "Store spiritual or mythological readings alongside, but never disguised as, empirical causal claims."
+  },
+  "relationship_record_extension": {
+    "required_fields": ["source", "relationship", "target", "evidence", "confidence", "date", "notes"],
+    "recommended_entanglement_fields": ["entanglement_type", "strength", "distance", "directionality", "dependency", "temporal_order", "path_dependence", "feedback", "topology", "trajectory", "phase", "counterfactual"]
+  }
+}
