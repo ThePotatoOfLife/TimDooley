@@ -1,0 +1,27 @@
+{
+  "version":"1.0.0",
+  "audit_date":"2026-09-07",
+  "scope":"Phase 1 full repository audit baseline",
+  "status":"in_progress",
+  "starting_commit":"8ce6d1cdb64154fafda4eeef632dca963847e9d0",
+  "repair_commit":"9d6bc3020dd3f29f5c6112f2b960fa3014a632dd",
+  "workflow_update_commit":"5518cb63768f7b74dd9ba3c6505fcd0074977477",
+  "todo_update_commit":"0a2fa815f4a07edcc2e8ed1fa63bdd33cf058828",
+  "inventory":{"repository_size_kb":4266,"canonical_country_count":195,"country_overlay_count":195,"country_graph_nodes":195,"enrichment_batches":9,"graph_registry_records":41,"relationships_checked_by_latest_validate_atlas":83,"political_beliefs":98,"religious_beliefs":80,"recent_commits_reviewed":30},
+  "ci_findings":{"latest_commit":"8ce6d1cdb64154fafda4eeef632dca963847e9d0","atlas_integrity":"failed_at_architecture_gate","validate_atlas":"passed","architecture_validator_errors":4,"errors":["Backend endpoint entanglement was missing from backend.json","Backend endpoint axisTopology was missing from backend.json","Backend endpoint hawkinsScale was missing from backend.json","Backend endpoint tree was missing from backend.json"],"repair_applied":true,"next_validation":"Push-triggered CI must confirm the endpoint repair and expose any subsequent failures."},
+  "audited_architecture":{"manifest":"data/atlas-manifest.json","backend":"data/backend.json","workflow":"data/project-workflow.json","tree":"data/tree.json","nodes":"data/nodes.json","relationships":"data/relationships.json","global_graph_bridge":"data/global-graph-bridge.json","frontend_bridge":"data/frontend-atlas-bridge.json","backend_audit_script":"scripts/audit_backend_coverage.py"},
+  "known_risk_areas":[
+    {"id":"manifest-drift","priority":"critical","description":"Large modular manifest must remain synchronized with backend endpoints and actual repository files."},
+    {"id":"graph-orphans","priority":"critical","description":"Relationship-first architecture requires every important endpoint to resolve through nodes, country indexes or explicit bridges."},
+    {"id":"route-depth","priority":"high","description":"Visible labels and cards can exist in backend registries without a substantive node page; route coverage must be tested separately from dataset existence."},
+    {"id":"duplicate-identities","priority":"high","description":"Country overlays, registries, expansions and research files can legitimately repeat IDs; duplicates must be classified rather than blindly deleted."},
+    {"id":"stale-completeness","priority":"high","description":"Counts such as 195/195 indicate coverage scaffolding, not substantive research depth."},
+    {"id":"religious-layer-fragmentation","priority":"high","description":"Religious lexicons, registries, foundations, comparative libraries, text libraries and relationship maps require canonical ownership and reciprocal routes."},
+    {"id":"security-layer-integration","priority":"high","description":"New intelligence/security/extremism datasets must be integrated into the canonical graph rather than remaining isolated registries."},
+    {"id":"north-programme-coupling","priority":"high","description":"North Programme evidence, theory, spiritual canon and empirical geopolitical records must remain connected but epistemically distinct."},
+    {"id":"full-text-coverage","priority":"medium","description":"Complete texts must be distinguished from metadata catalogues and linked copyrighted editions."},
+    {"id":"frontend-fallbacks","priority":"medium","description":"Optional live data must never blank repository-backed navigation."}
+  ],
+  "phase1_checklist":{"file_inventory":"partial","json_parse":"validated_by_CI_for_current_required_layers; full_recursive_audit_pending","schema_audit":"pending","duplicate_id_audit":"pending","exact_duplicate_audit":"pending","relationship_endpoint_audit":"pending_full_run","route_audit":"pending","manifest_backend_audit":"partial_and_repair_applied","workflow_audit":"partial","placeholder_audit":"pending","unused_file_audit":"pending","health_report":"this_file_is_the_initial_baseline"},
+  "rule":"This report is intentionally not a declaration of repository health. Passing one validator does not prove the whole Atlas is complete. Phase 1 remains active until structural, graph, route, provenance and consumer audits pass together."
+}
