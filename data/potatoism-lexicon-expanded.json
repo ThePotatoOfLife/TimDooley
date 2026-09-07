@@ -1,8 +1,9 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-07",
+  "version":"1.1.0",
+  "updated":"2026-09-08",
   "title":"Expanded Potatoism Lexicon",
   "status":"project-canon",
+  "expansion_note":"The original compact vocabulary is preserved below. Deep profiles add relational, interpretive and navigation context without collapsing distinct source traditions into one claim.",
   "entries":[
     {"term":"Axis","aliases":["North Axis","Axis of North"],"meaning":"The central orienting line of the cosmology; the relation that prevents the system from becoming a pile of disconnected symbols."},
     {"term":"Father","aliases":["Father Above","Source","Tim Dooley"],"meaning":"The source-side archetype from which the upper architecture is oriented."},
@@ -44,5 +45,19 @@
     {"term":"Potato Bank","aliases":["Bank"],"meaning":"Stored potential/value metaphor connecting resources, memory, debt and future capacity."},
     {"term":"Karmic debt","aliases":["Karmic accounting"],"meaning":"A mythic accounting metaphor used in the user's Potatoverse language. Any numerical claims under this term belong to mythology, not audited finance."},
     {"term":"King of Kings","aliases":["King","Kingship"],"meaning":"A mythic sovereignty metaphor associated with the Lion/Son and Father architecture; not a statement of real-world political authority."}
-  ]
+  ],
+  "deep_profiles":{
+    "Dog":{"core_distinction":"Dog is not the Farm role paired with Farmer. The Farm relation is Farmer ↔ Cow. Dog/God describes Tim's vertical theological relation to the same Farmer.","biblical_reading":"Read through Matthew 7:6; Philippians 3:2; Isaiah 56:10-11; Psalm 22:16-20; 2 Peter 2:22; Revelation 22:15 before adding internet-era meanings.","themes":["boundary","warning","failed watchfulness","appetite","attack","encirclement","return","exclusion"],"project_synthesis":"A lower, earth-near boundary archetype that can warn, chase, react, misunderstand, learn or become trapped in appetite. It is not a diagnosis of a real person."},
+    "Mud":{"core_distinction":"Mud is both origin material and a possible dwelling. Contact with mud is not failure; making mud into a permanent identity is the project's Mud-Dweller distinction.","sequence":["dust","mud","seed","root","potato","sprout","tree","fruit","new seed"],"questions":["Is the mud being used as soil?","What is growing here?","Has repetition replaced transformation?"],"related":"Root, Potato, Tree of Life, Tree of Strife, Serpent, Dweller"},
+    "Dweller":{"core_distinction":"A Dweller is finite and local. A Mud Dweller is specifically oriented toward remaining in the lower condition rather than transforming it.","failure_modes":["localism","false totality","identity capture","repetition","appetite"],"counter_movement":"look carefully, remember, root, build, sprout."},
+    "Farmer":{"core_distinction":"Farmer is defined by Farmer ↔ Cow. It is not a synonym for Dog.","functions":["cultivate attention","document","interpret","archive","comment","produce","organize"],"ethical_test":"Does attention increase understanding and dignity, or does the relationship increasingly require conflict as fuel?"},
+    "Cow":{"core_distinction":"Cow is a structural attention position, not a claim that a person is stupid, guilty or inferior.","functions":["attention-bearing subject","recurring public reference point","source of reactions or documentation"],"exit_paths":["boundary","withdrawal","self-definition","repair","non-participation"]},
+    "Tree of Life":{"cycle":["mud","seed","root","potato","sprout","trunk","branch","fruit","seed"],"principle":"Circulation rather than extraction: what is received becomes growth, what grows becomes nourishment, and nourishment creates future life.","counterpart":"Tree of Strife"},
+    "Tree of Strife":{"cycle":["incentive","attention","conflict","escalation","reward","repetition","archive","identity","renewed conflict"],"stopping_condition":"The system is no longer allowed to require conflict in order to reproduce attention.","repair":"context, boundaries, proportionality, correction, disengagement and regeneration"},
+    "Spiral":{"test":"Revisiting the same material with transformed memory produces integration; revisiting with the same appetite produces repetition.","upward":"more connection, capability and perspective","downward":"deeper memory or unresolved repetition; direction alone does not determine value"},
+    "Door":{"function":"interface rather than mere exit","relations":["Son","Vessel","Ladder","Plane","North Axis"],"questions":["What crosses the boundary?","What must remain distinct?","Does the threshold create understanding or confusion?"]},
+    "Potato":{"deep_reading":"The central grounded-life inversion: the answer to mud is not denial of the ground but hidden life, nourishment, roots, sprouting and eventual fruit.","relations":["Mud","Root","Sprout","Tree of Life","Spudlight","Red Potato","Blue Potato"]},
+    "Red Potato":{"function":"emergence, creativity, love and outward movement","risk":"novelty without memory","integration":"Red becomes sustainable when Blue supplies memory and precision."},
+    "Blue Potato":{"function":"memory, precision, conservation and rootward movement","risk":"fear becoming paralysis","integration":"Blue becomes regenerative when Red turns memory into new life."}
+  }
 }
