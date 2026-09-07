@@ -1,20 +1,24 @@
 {
-  "version":"1.1.0",
+  "version":"1.2.0",
   "updated":"2026-09-07",
   "blueprint":"data/blueprints/religious-foundation.json",
   "architecture":"data/blueprints/religious-architecture.json",
   "records":"data/religious-foundations/records.json",
+  "enriched_records":"data/religious-foundations/enriched-records.json",
   "expanded_foundations":"data/religious-foundations.json",
   "potatoism":"data/potatoism-religion.json",
   "research_sources":[
-    {"id":"pew-global-religious-composition","type":"demographic","role":"broad country baseline","source":"Pew Research Center","status":"authoritative-secondary"},
+    {"id":"pew-global-religious-composition","type":"demographic","role":"broad country baseline","source":"Pew Research Center","status":"authoritative-secondary","coverage":"201 countries/territories; 2010-2020 comparison"},
     {"id":"world-religion-database","type":"demographic","role":"deeper country/religion estimates and historical trends","source":"Brill / World Religion Database","status":"specialist-database"},
     {"id":"world-christian-database","type":"denominational","role":"Christian denominations, country and activity detail","source":"Brill / World Christian Database","status":"specialist-database"},
     {"id":"national-census","type":"primary-demographic","role":"country-specific religion affiliation","source":"national statistical authorities","status":"preferred-when-available"},
     {"id":"religious-self-description","type":"primary-institutional","role":"doctrine, organization and institutional self-description","source":"religious communities and official institutions","status":"triangulate"},
-    {"id":"academic-research","type":"secondary","role":"history, theology, anthropology, sociology and textual criticism","source":"academic literature","status":"triangulate"}
+    {"id":"academic-research","type":"secondary","role":"history, theology, anthropology, sociology and textual criticism","source":"academic literature","status":"triangulate"},
+    {"id":"archaeology-and-manuscripts","type":"material-primary","role":"inscriptions, manuscripts, architecture, artifacts and archaeological context","source":"museum, excavation and manuscript catalogues","status":"triangulate"}
   ],
-  "record_count_note":"The legacy foundation record set remains intact; expanded_foundations supplies the new field/substrate/foundation/seed/sprout/formation model and currently contains 19 foundation records, including Potatoism.",
+  "record_count":19,
+  "enrichment_status":"deep-foundation-pass-complete; denomination, school, country, text, place and event graph still expanding",
   "classification_rule":"Broad religious categories are demographic tools, not substitutes for traditions, denominations, schools, practices or theology.",
-  "next_pass":"Instantiate denomination/school records from each foundation and connect traditions to countries, institutions, texts, concepts, places, practices and historical events."
+  "integrity_rule":"Every profile must distinguish historical reconstruction, community self-description, demographic estimate, interpretive comparison and project-symbolic material.",
+  "next_pass":"Instantiate denomination/school records and relationship edges; attach named texts, concepts, people, places, institutions and historical events; add country-by-country demographic snapshots and evidence citations."
 }
