@@ -1,19 +1,38 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-07",
-  "purpose": "Explicit missing-data registry. Missing means the field has been identified for research but no validated observation has yet been loaded; it does not mean zero.",
+  "purpose": "Explicit missing-data registry. Missing means the field has been identified for research but no validated observation has yet been loaded in the relevant evidence layer; it does not mean zero.",
   "statuses": {
-    "researched_missing": "Source/indicator identified, but a validated value is not yet stored in the atlas.",
+    "researched_missing": "Source/indicator identified, but a validated value is not yet stored in the atlas for the relevant coverage unit.",
     "not_researched": "The field has not yet been investigated for this record.",
-    "observed": "A validated observation is stored with provenance."
+    "observed": "A validated observation is stored with provenance.",
+    "partially_observed": "Validated observations exist for some countries or periods while the wider target remains incomplete."
   },
   "country_indicators": [
     {"indicator":"NY.GDP.MKTP.CD","name":"GDP (current US$)","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/NY.GDP.MKTP.CD","status":"researched_missing","reason":"Canonical indicator identified; a validated repository-wide observation cache is not yet stored."},
-    {"indicator":"SP.POP.TOTL","name":"Population, total","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/SP.POP.TOTL","status":"researched_missing","reason":"Canonical indicator identified; a validated repository-wide observation cache is not yet stored."},
-    {"indicator":"NY.GDP.PCAP.CD","name":"GDP per capita (current US$)","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/NY.GDP.PCAP.CD","status":"researched_missing","reason":"Canonical indicator identified; country observations are not yet cached in the repository."},
-    {"indicator":"FP.CPI.TOTL.ZG","name":"Inflation, consumer prices (annual %)","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG","status":"researched_missing","reason":"Canonical source identified; country observations are not yet cached in the repository."},
-    {"indicator":"GC.DOD.TOTL.GD.ZS","name":"Central government debt, total (% of GDP)","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS","status":"researched_missing","reason":"Canonical source identified; coverage varies by country and year, so absent values remain explicitly missing."}
+    {"indicator":"SP.POP.TOTL","name":"Population, total","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/SP.POP.TOTL","status":"partially_observed","observed_country_count":1,"reason":"Denmark has a current population observation sourced from Statistics Denmark; a harmonized World Bank observation cache for all countries is not yet stored."},
+    {"indicator":"NY.GDP.PCAP.CD","name":"GDP per capita (current US$)","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/NY.GDP.PCAP.CD","status":"researched_missing","reason":"Canonical indicator identified; country observations are not yet cached in the repository-wide evidence layer."},
+    {"indicator":"FP.CPI.TOTL.ZG","name":"Inflation, consumer prices (annual %)","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/FP.CPI.TOTL.ZG","status":"researched_missing","reason":"Canonical source identified; Denmark has a monthly Statistics Denmark observation, but a harmonized annual cross-country cache is not yet stored."},
+    {"indicator":"GC.DOD.TOTL.GD.ZS","name":"Central government debt, total (% of GDP)","source":"World Bank World Development Indicators","source_url":"https://data.worldbank.org/indicator/GC.DOD.TOTL.GD.ZS","status":"researched_missing","reason":"Canonical source identified; country observations are not yet cached in the repository."}
   ],
+  "country_enrichment_status": {
+    "target_country_count": 195,
+    "validated_sourced_country_count": 1,
+    "countries": [
+      {
+        "country_id": "denmark",
+        "status": "observed",
+        "observations": 12,
+        "relationships": 7,
+        "sources": 9,
+        "last_updated": "2026-09-07",
+        "primary_sources": ["Statistics Denmark", "Danish Energy Agency", "Folketinget"],
+        "note": "Denmark is the first country promoted from scaffold/overlay status to sourced-core enrichment. This does not imply completeness of the Danish record."
+      }
+    ],
+    "remaining_country_count": 194,
+    "coverage_rule": "A country is empirically enriched only when validated observations with provenance have been loaded. Overlay-file existence alone never changes the count."
+  },
   "next_research_batches": [
     {"id":"macro-core","priority":"high","indicators":["NY.GDP.MKTP.CD","SP.POP.TOTL","NY.GDP.PCAP.CD","FP.CPI.TOTL.ZG"],"target":"195 canonical nations","definition_of_done":"Country observations stored with country_id, reference_period, source, publication/retrieval dates and status; no missing value is silently converted to zero."},
     {"id":"fiscal-core","priority":"high","indicators":["GC.DOD.TOTL.GD.ZS"],"target":"countries with comparable coverage","definition_of_done":"Debt observations stored with methodology notes where definitions differ; coverage gaps remain explicit."},
