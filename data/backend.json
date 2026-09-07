@@ -1,0 +1,19 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "name": "Tim Dooley Atlas Backend Registry",
+  "purpose": "Single browser-readable registry for the repository's canonical data layer. Pages can use this manifest to stay connected to the same backend sources.",
+  "policy": "The backend is relationship-first. Canonical architecture, records, research evidence, lore and graph relationships remain separate but addressable through one registry.",
+  "endpoints": {
+    "frame": "data/frame.json",
+    "tree": "data/tree.json",
+    "nodes": "data/nodes.json",
+    "treeChildren": "data/tree-child-records.json",
+    "relationships": "data/relationships.json",
+    "research": "data/research.json",
+    "lore": "data/potatoverse-lore.json"
+  },
+  "required": ["frame", "tree", "nodes", "treeChildren", "relationships", "research"],
+  "optional": ["lore"],
+  "healthChecks": ["frame", "tree", "nodes", "treeChildren", "relationships", "research", "lore"]
+}
