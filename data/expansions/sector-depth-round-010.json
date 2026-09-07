@@ -1,0 +1,153 @@
+{
+  "wave": 10,
+  "date": "2026-09-07",
+  "title": "Sector Depth Round 010 — Ten Least-Developed Sectors",
+  "method": "Selected from the current European Sector Atlas by looking for sectors whose existing records remained mostly one-line research prompts rather than institution/asset/supply-chain maps. The canonical ten-level Frame is unchanged.",
+  "selection": [
+    "water",
+    "waste-circularity",
+    "telecoms-connectivity",
+    "semiconductors-electronics",
+    "cloud-data-centres",
+    "insurance-pensions",
+    "public-administration",
+    "creative-media-information",
+    "maritime-ports",
+    "nuclear"
+  ],
+  "sectors": [
+    {
+      "id": "water",
+      "name": "Water, Wastewater & Water Resilience",
+      "why_underdeveloped": "The atlas names water as a dependency but does not yet expose the institutional, physical and financial chain that makes water a system-level input.",
+      "institutions": ["European Commission DG Environment", "European Environment Agency", "European Investment Bank", "European Water Association / EurEau", "national river-basin authorities", "municipal water utilities", "national environmental regulators"],
+      "major_assets": ["reservoirs", "aquifers", "abstraction wells", "water-treatment plants", "desalination plants", "drinking-water networks", "wastewater-treatment plants", "sewer networks", "pumping stations", "flood defences", "irrigation systems", "industrial-water systems", "water-quality laboratories"],
+      "supply_chain": ["watersheds -> abstraction -> raw-water transport -> treatment -> storage -> distribution -> households/industry/agriculture -> wastewater collection -> treatment -> discharge/reuse", "chemicals -> treatment plants", "pumps/pipes/meters -> utilities", "electricity -> pumping and treatment", "construction/engineering -> network renewal", "municipal finance -> capital expenditure"],
+      "dependencies": ["electricity", "chemicals", "pipes and valves", "pumps", "construction labour", "agriculture", "industry", "climate", "municipal budgets", "land use", "digital monitoring"],
+      "research_questions": ["Which European regions have the largest gap between available water and demand?", "Where are leakage and non-revenue-water losses highest?", "Which utilities depend on a small number of equipment or chemical suppliers?", "Which industrial clusters compete with households or agriculture for water?", "Where is wastewater reuse economically viable?", "Which assets are most exposed to drought, flooding or salinity?", "Who owns and finances the major water assets?", "Where are renewal backlogs hidden inside municipal balance sheets?"],
+      "source_leads": ["European Commission — European Water Resilience Strategy", "European Environment Agency — water resources and resilience indicators", "Eurostat — water statistics", "European Investment Bank — water investment/project database", "JRC — water scarcity and drought observatories"],
+      "source_urls": ["https://environment.ec.europa.eu/publications/european-water-resilience-strategy_en", "https://www.eea.europa.eu/en/topics/in-depth/water", "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Water_statistics", "https://www.eib.org/en/projects/sectors/water/index.htm"]
+    },
+    {
+      "id": "waste-circularity",
+      "name": "Waste, Recycling & Circularity",
+      "why_underdeveloped": "The repository treats waste as an output but has not yet mapped the reverse-flow economy in which discarded material becomes secondary feedstock, export, landfill or lost value.",
+      "institutions": ["European Commission DG Environment", "European Environment Agency", "Eurostat", "European Chemicals Agency", "national waste authorities", "municipal waste authorities", "recycling organisations"],
+      "major_assets": ["collection fleets", "transfer stations", "sorting plants", "mechanical-biological treatment plants", "incinerators", "landfills", "material-recovery facilities", "metals recyclers", "plastics recyclers", "construction-waste plants", "e-waste facilities", "hazardous-waste facilities", "repair/refurbishment networks"],
+      "supply_chain": ["consumer/industry -> collection -> sorting -> preparation -> recycling -> secondary material -> manufacturing", "waste -> export/import -> foreign treatment", "construction -> demolition -> aggregate/metals recovery", "electronics -> collection -> dismantling -> critical-material recovery", "organic waste -> anaerobic digestion/compost -> energy/soil products"],
+      "dependencies": ["municipal contracts", "energy prices", "secondary-material prices", "manufacturing demand", "transport", "land", "environmental permits", "sorting technology", "product design", "extended producer responsibility"],
+      "research_questions": ["Where does each major waste stream physically go?", "Which materials leave Europe rather than being recycled domestically?", "Where is recycling economically constrained by low secondary-material prices?", "Which European regions lack high-quality sorting or recovery capacity?", "How much critical material is embedded in existing buildings, vehicles, grids and electronics?", "Which producers are financially responsible for end-of-life costs?", "Where could repair and refurbishment substitute for new production?"],
+      "source_leads": ["EEA Circularity Metrics Lab", "Eurostat waste statistics", "European Commission Circular Economy Action Plan", "JRC material-flow and recycling studies", "European Environment Agency material-stock studies"],
+      "source_urls": ["https://www.eea.europa.eu/en/circularity", "https://ec.europa.eu/eurostat/statistics-explained/index.php?title=Waste_statistics", "https://environment.ec.europa.eu/strategy/circular-economy-action-plan_en", "https://www.eea.europa.eu/en/analysis/publications/material-stocks-in-a-circular-economy"]
+    },
+    {
+      "id": "telecoms-connectivity",
+      "name": "Telecommunications & Connectivity",
+      "why_underdeveloped": "The atlas identifies fibre and subsea cables but does not yet map operators, landing stations, backbone ownership, equipment vendors or repair capacity.",
+      "institutions": ["European Commission DG CONNECT", "BEREC", "ENISA", "national telecom regulators", "ITU", "European Union Agency for the Space Programme", "national spectrum authorities"],
+      "major_assets": ["fibre backbones", "mobile radio-access networks", "5G/6G sites", "internet exchange points", "submarine cables", "cable landing stations", "satellite ground stations", "microwave links", "core-network facilities", "network operation centres", "spectrum licences", "cable-repair vessels"],
+      "supply_chain": ["optical fibre -> cable -> terrestrial/subsea deployment -> landing station -> backbone -> exchange -> access network -> household/business", "radio spectrum -> operators -> base stations -> devices", "chips/electronics -> routers/switches/base stations", "power -> telecom sites/data centres", "subsea cable damage -> detection -> repair vessel -> replacement cable"],
+      "dependencies": ["electricity", "semiconductors", "optical components", "subsea cable manufacturers", "cloud", "satellites", "spectrum", "ports", "marine surveying", "cybersecurity", "repair vessels"],
+      "research_questions": ["Who owns each major European backbone and subsea route?", "Which landing stations are single points of failure?", "How concentrated is European telecom equipment supply?", "What is the repair-vessel capacity by sea basin?", "Which cables carry both economic and strategic traffic?", "Where do telecom networks depend on non-European cloud or equipment stacks?", "How resilient are Arctic and North Atlantic routes?"],
+      "source_leads": ["European Commission submarine-cable security programme", "ENISA", "BEREC", "JRC subsea cable risk studies", "ITU", "TeleGeography as a commercial mapping lead requiring source validation"],
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/factpages/joint-communication-strengthen-security-and-resilience-submarine-cables", "https://www.enisa.europa.eu/", "https://www.berec.europa.eu/", "https://publications.jrc.ec.europa.eu/repository/handle/JRC142001"]
+    },
+    {
+      "id": "semiconductors-electronics",
+      "name": "Semiconductors & Electronics",
+      "why_underdeveloped": "The existing node names chips and fabs but does not yet distinguish design, lithography, wafers, chemicals, fabrication, packaging, testing and downstream strategic users.",
+      "institutions": ["European Commission DG CONNECT", "European Chips Joint Undertaking", "European Semiconductor Board", "national semiconductor agencies", "imec", "Fraunhofer institutes", "CEA-Leti", "microelectronics research centres"],
+      "major_assets": ["fabs", "cleanrooms", "lithography systems", "deposition and etching equipment", "wafer plants", "advanced-packaging plants", "testing facilities", "design centres", "photomask facilities", "ultrapure-water plants", "specialty-gas systems", "chip-design IP"],
+      "supply_chain": ["silica/silicon -> polysilicon -> wafers -> fabrication -> packaging -> testing -> electronics assembly -> automotive/industrial/defence/cloud", "specialty chemicals -> fabs", "lithography/equipment -> fabs", "electricity + ultrapure water -> fabs", "EDA software/IP -> chip design"],
+      "dependencies": ["advanced manufacturing equipment", "specialty chemicals", "rare gases", "water", "electricity", "EDA software", "global foundries", "automotive", "telecoms", "defence", "cloud/AI demand"],
+      "research_questions": ["Which chip categories are actually fabricated in Europe?", "Where are Europe's largest single-source dependencies?", "Which fabs are strategically important and who controls them?", "Where is advanced packaging capacity located?", "How dependent are European firms on non-European EDA tools and IP?", "Which water and electricity systems are critical to fabs?", "Which European chip capabilities could be expanded fastest?"],
+      "source_leads": ["European Chips Act", "Chips Joint Undertaking", "European Commission strategic-dependencies reports", "European Semiconductor Industry Association", "JRC technology studies"],
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/policies/european-chips-act", "https://www.chips-ju.europa.eu/", "https://single-market-economy.ec.europa.eu/industry/strategy_en"]
+    },
+    {
+      "id": "cloud-data-centres",
+      "name": "Cloud, Data Centres & Compute",
+      "why_underdeveloped": "The repository recognises compute but has not yet treated data centres as physical infrastructure requiring land, electricity, cooling, fibre, chips, financing and grid capacity.",
+      "institutions": ["European Commission DG CONNECT", "ENISA", "European Data Protection Board", "national data-centre regulators/planning authorities", "energy regulators", "grid operators", "Gaia-X ecosystem"],
+      "major_assets": ["hyperscale data centres", "colocation facilities", "GPU clusters", "server halls", "cooling systems", "UPS systems", "backup generators", "substations", "fibre routes", "internet exchanges", "data-storage systems", "AI compute clusters"],
+      "supply_chain": ["land/building -> grid connection -> transformers/substation -> cooling -> servers -> chips -> fibre -> cloud platform -> enterprise/public users", "electricity -> compute -> heat -> cooling -> water/air systems", "capital -> data-centre construction -> long-term contracted revenue"],
+      "dependencies": ["electricity grids", "transformers", "chips", "fibre", "water", "land", "construction", "cooling equipment", "cloud software", "cybersecurity", "capital markets"],
+      "research_questions": ["Where is European compute physically located?", "Who owns the buildings, servers and cloud platforms?", "How much grid capacity is reserved for data centres?", "Which regions face water stress from cooling demand?", "What share of strategic workloads depends on non-European hyperscalers?", "Where can waste heat be reused?", "Which data centres have independent power or backup generation?"],
+      "source_leads": ["European Commission Digital Decade and cloud policy", "ENISA cloud-security work", "European Energy Agency/IEA electricity studies", "national grid operators", "Gaia-X", "Eurostat digital economy statistics"],
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/policies/cloud-computing", "https://www.enisa.europa.eu/topics/cloud-and-big-data", "https://www.gaia-x.eu/"]
+    },
+    {
+      "id": "insurance-pensions",
+      "name": "Insurance & Pensions",
+      "why_underdeveloped": "The repository has obligations and finance but barely exposes the institutional owners of Europe's long-duration capital and risk-bearing capacity.",
+      "institutions": ["EIOPA", "ECB", "ESMA", "national insurance supervisors", "national pension regulators", "occupational pension institutions", "public pension agencies"],
+      "major_assets": ["pension funds", "insurance portfolios", "government bonds", "corporate bonds", "equity portfolios", "real estate", "infrastructure funds", "reinsurance contracts", "annuity books", "liability databases"],
+      "supply_chain": ["households/employers -> contributions/premiums -> insurers/pension funds -> capital markets -> bonds/equities/infrastructure/real estate -> returns -> pensions/claims", "risk -> insurance -> reinsurance -> global capital", "demography -> liabilities -> required assets -> investment strategy"],
+      "dependencies": ["demography", "interest rates", "sovereign debt", "equity markets", "real estate", "infrastructure", "regulation", "longevity", "catastrophe risk", "financial-market liquidity"],
+      "research_questions": ["Who ultimately owns European infrastructure through pension and insurance capital?", "What proportion of pension assets is invested domestically?", "How exposed are insurers to sovereign debt and real estate?", "Where do demographic changes create asset-liability stress?", "Which infrastructure projects could match long-duration liabilities?", "How much European capital is managed by non-European firms?"],
+      "source_leads": ["EIOPA Financial Stability Reports", "ECB insurance/pension statistics", "ESMA market reports", "Eurostat pensions statistics", "OECD pension statistics"],
+      "source_urls": ["https://www.eiopa.europa.eu/", "https://www.ecb.europa.eu/stats/financial_corporations/insurance_corporations/html/index.en.html", "https://www.esma.europa.eu/", "https://www.oecd.org/pensions/"]
+    },
+    {
+      "id": "public-administration",
+      "name": "Public Administration & Government Services",
+      "why_underdeveloped": "The tree names institutions, laws and public finance but does not expose the machinery between legislation, budgets and actual service delivery.",
+      "institutions": ["European Commission", "national ministries", "tax administrations", "social-security agencies", "municipalities", "procurement authorities", "audit institutions", "statistical offices", "courts and administrative tribunals"],
+      "major_assets": ["government buildings", "digital identity systems", "tax databases", "population registers", "procurement platforms", "social-benefit systems", "land registries", "company registries", "public data centres", "administrative archives"],
+      "supply_chain": ["constitution/law -> ministry/agency -> budget appropriation -> procurement -> contractor -> service -> citizen/business -> measurement/audit", "tax base -> collection -> treasury -> transfers/services -> households/firms", "public data -> registers -> digital services -> policy evaluation"],
+      "dependencies": ["public finance", "labour", "IT vendors", "telecoms", "legal systems", "procurement", "statistics", "identity infrastructure", "political authority"],
+      "research_questions": ["Which functions are duplicated across ministries, agencies and levels of government?", "Where does procurement concentrate spending among a small supplier set?", "Which public registers are foundational infrastructure?", "How much administrative capacity is consumed by compliance versus service delivery?", "Where are digital systems interoperable or fragmented?", "Which government assets are underused or duplicated?", "Can service outcomes be mapped against staffing and expenditure?"],
+      "source_leads": ["Eurostat government finance and employment data", "OECD Government at a Glance", "European Commission digital-government and public-administration programmes", "European Court of Auditors", "national supreme audit institutions"],
+      "source_urls": ["https://ec.europa.eu/eurostat/web/government-finance-statistics", "https://www.oecd.org/en/topics/public-governance.html", "https://commission.europa.eu/strategy-and-policy/policies/digital-transformation_en", "https://www.eca.europa.eu/"]
+    },
+    {
+      "id": "creative-media-information",
+      "name": "Media, Culture & Information",
+      "why_underdeveloped": "The repository treats information as an output but does not map the physical, financial and institutional systems through which information is produced, distributed, archived and monetised.",
+      "institutions": ["European Commission DG CONNECT", "European Board for Media Services", "ERGA legacy network", "European Digital Media Observatory", "European Broadcasting Union", "national media regulators", "public-service broadcasters", "national archives"],
+      "major_assets": ["newsrooms", "broadcast studios", "transmitters", "streaming platforms", "archives", "newspaper printing facilities", "content libraries", "rights catalogues", "distribution networks", "public-service media infrastructure", "digital advertising systems"],
+      "supply_chain": ["reporting/research -> newsroom -> editing -> rights clearance -> publication -> platform/broadcast distribution -> audience -> advertising/subscription/public funding", "cultural production -> rights ownership -> licensing -> distribution -> royalties", "archives -> digitisation -> searchable public/private information"],
+      "dependencies": ["telecoms", "cloud", "platform algorithms", "advertising markets", "copyright law", "public funding", "journalism labour", "archives", "public trust"],
+      "research_questions": ["Who owns the major European news and media groups?", "Which platforms control distribution rather than production?", "How much public information depends on private platforms?", "Where are archives privately owned or at risk of disappearing?", "How are public-service media financed?", "What are the largest cross-border information flows?", "Which dependencies create information bottlenecks during crises?"],
+      "source_leads": ["European Commission European Media Freedom Act materials", "European Board for Media Services", "EDMO", "Eurostat culture statistics", "EBU datasets", "national media-ownership registers"],
+      "source_urls": ["https://digital-strategy.ec.europa.eu/en/policies/european-media-freedom-act", "https://digital-strategy.ec.europa.eu/en/policies/european-digital-media-observatory", "https://www.ebu.ch/"]
+    },
+    {
+      "id": "maritime-ports",
+      "name": "Maritime, Ports & Shipbuilding",
+      "why_underdeveloped": "The repository recognises ports and shipping but does not yet map the asset chain connecting harbours, shipyards, fleets, cargo, offshore energy, cables and repair capacity.",
+      "institutions": ["European Maritime Safety Agency", "European Commission DG MOVE", "European Maritime Transport Environmental Report partners", "national maritime administrations", "port authorities", "classification societies", "IMO"],
+      "major_assets": ["container ports", "bulk terminals", "LNG terminals", "oil terminals", "ferry terminals", "shipyards", "dry docks", "repair yards", "offshore-service vessels", "cable-laying vessels", "dredgers", "pilotage systems", "port rail/road connections", "offshore wind ports"],
+      "supply_chain": ["shipyard -> steel/engines/electronics -> vessel -> port -> cargo terminal -> rail/road -> industrial/consumer market", "offshore wind -> installation vessels -> ports -> turbines/cables -> grid", "subsea cable -> cable ship -> landing station -> telecom/energy network", "port -> customs -> logistics -> manufacturing/retail"],
+      "dependencies": ["steel", "engines", "marine electronics", "fuel", "ports", "skilled labour", "dredging", "trade", "insurance", "finance", "subsea infrastructure", "security"],
+      "research_questions": ["Which North Sea and North Atlantic ports are systemically important?", "Who owns the major ports and terminals?", "Where is European shipbuilding and repair capacity located?", "How many specialised cable and offshore vessels exist?", "Which ports can support offshore-wind expansion?", "Where do rail/road connections bottleneck port throughput?", "Which ports combine energy, trade and security functions?"],
+      "source_leads": ["EMSA", "Eurostat maritime transport statistics", "European Commission TEN-T and Motorways of the Sea", "European Sea Ports Organisation", "IMO", "national port authorities"],
+      "source_urls": ["https://www.emsa.europa.eu/", "https://ec.europa.eu/eurostat/web/transport/data/database", "https://transport.ec.europa.eu/transport-modes/maritime_en", "https://www.espo.be/"]
+    },
+    {
+      "id": "nuclear",
+      "name": "Nuclear Energy & Fuel Cycle",
+      "why_underdeveloped": "Nuclear exists as a node but the repository does not yet expose the fuel cycle, reactor fleet, engineering base, regulation, waste chain or ownership structure.",
+      "institutions": ["Euratom Supply Agency", "European Commission DG ENER", "JRC", "ENSREG", "IAEA", "national nuclear regulators", "national waste-management agencies"],
+      "major_assets": ["operating reactors", "new-build projects", "fuel fabrication plants", "uranium conversion/enrichment access", "spent-fuel storage", "interim storage facilities", "geological disposal programmes", "research reactors", "medical-isotope facilities", "nuclear engineering firms", "grid connections"],
+      "supply_chain": ["uranium mining -> conversion -> enrichment -> fuel fabrication -> reactor -> spent fuel -> storage -> reprocessing/disposal", "nuclear engineering -> reactor components -> construction/maintenance", "reactor -> electricity grid", "research reactors -> medical/industrial isotopes"],
+      "dependencies": ["uranium", "conversion", "enrichment", "specialised steel/forgings", "nuclear-grade components", "skilled engineers", "regulation", "long-term capital", "grid capacity", "waste repositories"],
+      "research_questions": ["Which parts of Europe's fuel cycle are domestic, allied or externally dependent?", "Who owns the operating reactor fleet?", "Which components have single-source suppliers?", "Where are the largest engineering and maintenance capabilities?", "What is the status of national spent-fuel and geological-disposal programmes?", "Which reactors provide medical isotopes or other non-electricity outputs?", "What grid and financing constraints govern new nuclear construction?"],
+      "source_leads": ["Euratom Supply Agency annual reports", "European Commission Euratom/JRC", "ENSREG country profiles", "IAEA PRIS and fuel-cycle data", "national nuclear regulators"],
+      "source_urls": ["https://energy.ec.europa.eu/topics/nuclear-energy_en", "https://energy.ec.europa.eu/topics/nuclear-energy/euratom-supply-agency_en", "https://www.ensreg.eu/", "https://www.iaea.org/resources/databases/power-reactor-information-system-pris"]
+    }
+  ],
+  "cross_sector_edges_to_add": [
+    {"source":"water","relationship":"enables","target":"semiconductors-electronics","why":"Fabs require large volumes of highly purified water."},
+    {"source":"energy-networks","relationship":"enables","target":"cloud-data-centres","why":"Compute expansion is physically constrained by grid connection and power availability."},
+    {"source":"telecoms-connectivity","relationship":"connects","target":"cloud-data-centres","why":"Cloud capacity is only useful at scale when connected through resilient fibre and exchange infrastructure."},
+    {"source":"waste-circularity","relationship":"feeds","target":"mining-raw-materials","why":"Secondary materials can substitute for some primary extraction and create domestic material flows."},
+    {"source":"insurance-pensions","relationship":"finances","target":"infrastructure","why":"Long-duration liabilities can hold long-duration infrastructure assets and debt."},
+    {"source":"public-administration","relationship":"procures-from","target":"all-sectors","why":"Government procurement is a cross-sector demand mechanism and a potential industrial-policy lever."},
+    {"source":"maritime-ports","relationship":"enables","target":"energy-networks","why":"Offshore energy, subsea cables and heavy components depend on ports and specialised vessels."},
+    {"source":"nuclear","relationship":"supports","target":"energy-generation","why":"Nuclear provides dispatchable low-carbon electricity and specialised industrial capabilities."},
+    {"source":"creative-media-information","relationship":"depends-on","target":"telecoms-connectivity","why":"Modern information distribution is physically carried by communications networks."},
+    {"source":"cloud-data-centres","relationship":"depends-on","target":"semiconductors-electronics","why":"Compute capacity ultimately requires processors, memory, networking and power electronics."}
+  ],
+  "epistemic_rule": "Institution and asset names are source leads, not claims of ownership or control. Ownership, capacity, dependency and financial relationships must be verified entity-by-entity from primary or high-quality institutional sources before promotion into the core graph."
+}
