@@ -1,0 +1,65 @@
+name: Import public-domain Edda full text
+
+on:
+  push:
+    paths:
+      - 'data/books-registry.json'
+      - '.github/workflows/import-edda-texts.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import-edda:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Download Project Gutenberg plain text
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p books/norse-edda
+          curl --fail --location --retry 5 --retry-delay 2 --connect-timeout 20 --max-time 180 \
+            'https://www.gutenberg.org/cache/epub/73533/pg73533.txt' \
+            -o books/norse-edda/poetic-edda-bellows-1923.txt
+          curl --fail --location --retry 5 --retry-delay 2 --connect-timeout 20 --max-time 180 \
+            'https://www.gutenberg.org/cache/epub/18947/pg18947.txt' \
+            -o books/norse-edda/prose-edda-anderson.txt
+
+      - name: Validate raw text
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s books/norse-edda/poetic-edda-bellows-1923.txt
+          test -s books/norse-edda/prose-edda-anderson.txt
+          grep -q 'THE POETIC EDDA' books/norse-edda/poetic-edda-bellows-1923.txt
+          grep -q 'THE YOUNGER EDDA' books/norse-edda/prose-edda-anderson.txt
+          grep -q 'Vafthruthnismol' books/norse-edda/poetic-edda-bellows-1923.txt
+          grep -q 'Gylfaginning' books/norse-edda/prose-edda-anderson.txt
+          python - <<'PY'
+          from pathlib import Path
+          for p in Path('books/norse-edda').glob('*.txt'):
+              data = p.read_text(encoding='utf-8')
+              if '\x00' in data:
+                  raise SystemExit(f'NUL byte in {p}')
+              if len(data.split()) < 10000:
+                  raise SystemExit(f'Unexpectedly short text: {p}')
+              print(p, len(data), 'characters', len(data.split()), 'words')
+          PY
+
+      - name: Commit imported text
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name 'Atlas Text Importer'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add books/norse-edda/*.txt
+          if git diff --cached --quiet; then
+            echo 'No text changes to commit.'
+            exit 0
+          fi
+          git commit -m 'Add raw searchable Norse Edda texts'
+          git push
