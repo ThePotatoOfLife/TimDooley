@@ -1,9 +1,9 @@
 {
-  "version":"1.0.0",
+  "version":"1.0.1",
   "updated":"2026-09-07",
   "name":"Mystery Cult Research Master",
   "purpose":"Specialized schema for ancient mystery and initiatory cults, complementing the general religious-adjacent blueprint.",
   "layers":{"identity":["name","ancient_name","category","period","geography","deities_or_figures"],"formation":["local_origin","historical_field","institutionalization","state_relationship","regional_variants"],"mystery_structure":["eligibility","preparation","purification","procession","initiation","secret_revelation","post_initiation_status","secrecy_evidence"],"sacred_world":["mythic_cycle","deity_relationship","death_and_renewal","afterlife_claims","cosmology"],"ritual":["calendar","sacrifice","food_or_drink","music","dance","procession","sacred_objects","sacred_space"],"organization":["priests","initiates","offices","associations","temple_governance"],"evidence":["inscriptions","architecture","iconography","burials","literary_sources","archaeological_context","uncertainties"],"reception":["ancient_reception","late_antique_reception","modern_reception","modern_reconstruction"]},
   "integrity_rules":["Never reconstruct a secret initiation as certain when evidence is indirect.","Separate mythic narrative from archaeological practice.","Distinguish a local cult from a centralized religion unless centralization is documented.","Do not infer universal membership rules from one inscription or literary account.","Do not treat modern occult reconstructions as ancient evidence.","Regional and chronological variation must remain visible."],
-  "completed_examples":["data/religious-adjacent/deep-expansions-2.json#mystery-cult-records"]
+  "completed_examples":["data/religious-adjacent/deep-expansions-2.json"]
 }
