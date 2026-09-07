@@ -8,10 +8,11 @@ TARGETS = [
 
 for path in TARGETS:
     raw = path.read_text(encoding='utf-8')
-    # These legacy files contain literal escaped newlines between JSON tokens.
-    # Convert only those formatting escapes; escaped newlines inside JSON strings
-    # are not present in these records and must remain untouched.
-    fixed = raw.replace('\\\\n', '\n')
+    # These legacy files contain literal backslash+n separators between JSON
+    # tokens. Convert those separators to real newlines so the documents become
+    # ordinary JSON again. These records do not use escaped newlines inside
+    # string values.
+    fixed = raw.replace('\\n', '\n')
     if fixed != raw:
         path.write_text(fixed, encoding='utf-8')
         print(f'normalized {path.relative_to(ROOT)}')
