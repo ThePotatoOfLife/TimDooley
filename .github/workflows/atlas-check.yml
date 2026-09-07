@@ -10,13 +10,16 @@ on:
 permissions:
   contents: read
 
+# Keep every validation run for main. Rapid atlas carving should not cancel
+# the run that is actually validating the preceding commit.
 concurrency:
-  group: atlas-check-${{ github.ref }}
-  cancel-in-progress: true
+  group: atlas-check-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   validate:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
