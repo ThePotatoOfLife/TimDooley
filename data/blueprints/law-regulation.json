@@ -1,0 +1,16 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map law and regulation from legal authority through drafting, enactment, delegated rules, enforcement, adjudication, review and repeal.","entity":"legal_regulatory_system",
+  "record_schema":{
+    "identity":["legal_id","title","jurisdiction","legal_type","issuer","status","effective_from","effective_to"],
+    "authority":["constitution_basis","statutory_basis","delegating_authority","issuer","competence","territorial_scope","subject_scope"],
+    "lifecycle":["proposal","consultation","draft","legislative_stage","adoption","publication","effective_date","amendment","suspension","repeal","sunset"],
+    "substance":["rights","duties","prohibitions","permissions","standards","licensing","taxes","penalties","reporting","disclosure","exceptions"],
+    "institutions":["legislature","ministry","regulator","inspectorate","court","prosecutor","ombudsman","standard_setter","local_authority"],
+    "enforcement":["covered_entities","inspection","licensing","compliance","sanctions","appeals","enforcement_statistics","capacity","implementation_gap"],
+    "jurisprudence":["court_decisions","interpretations","precedent","constitutional_review","administrative_review","international_review","conflicting_cases"],
+    "cross_border":["treaty_basis","international_standard","eu_or_regional_rule","mutual_recognition","extraterritorial_effect","conflict_of_laws"],
+    "evidence":["official_gazette","statute","regulation","court_decision","legislative_record","regulator_guidance","consultation","scholarship","retrieved_at","confidence"]
+  },
+  "relationship_templates":["law-authorizes-regulator","regulation-applies-to-company","court-interprets-law","law-amends-law","treaty-constrains-law","regulator-enforces-rule","law-creates-obligation"],
+  "integrity_rules":["A proposal is not law until its legal status is established.","Publication and effective date may differ.","Guidance is not automatically legally binding.","Formal legal authority and practical enforcement capacity are separate.","Court interpretation must be dated and tied to a specific decision.","Historical versions must remain addressable."]
+}
