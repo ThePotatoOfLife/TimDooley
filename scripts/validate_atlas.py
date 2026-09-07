@@ -13,9 +13,8 @@ def exists(rel,required=True):
     if not ok:(ERRORS if required else WARNINGS).append(f'Missing {"required" if required else "optional"} path: {rel}')
     return ok
 def canon_id(x):
-    # Preserve the repository's established IDs while treating the two common
-    # DRC spellings as one canonical country identity.
-    return 'democratic-republic-of-the-congo' if x in {'democratic-republic-of-the-congo','democratic-republic-of-congo'} else x
+    aliases={'democratic-republic-of-congo':'democratic-republic-of-the-congo','republic-of-the-congo':'congo','turkiye':'turkey','state-of-palestine':'palestine'}
+    return aliases.get(x,x)
 def beliefs():
     s=load(ROOT/'data/belief-space.json'); b=load(ROOT/'data/belief-backend.json'); p=load(ROOT/'data/political-lexicon.json'); r=load(ROOT/'data/religious-lexicon.json')
     for x in ['belief.html','political-compass.html','data/belief-space.json','data/belief-backend.json','data/belief-registry.json','data/political-lexicon.json','data/religious-lexicon.json']:exists(x)
@@ -37,14 +36,14 @@ def main():
         if exists(rel,k in required) and rel.endswith('.json'):load(ROOT/rel)
     nations=load(ROOT/'data/nations.json').get('nations',[]); ci=load(ROOT/'data/countries/index.json').get('countries',[]); repair=load(ROOT/'data/countries/democratic-republic-of-the-congo.json'); repair_id=repair.get('id')
     nation_ids={canon_id(x.get('id')) for x in nations if x.get('id')}; country_ids={canon_id(x.get('id')) for x in ci if x.get('id')}
-    country_ids.discard(canon_id(repair_id)); country_ids.add(canon_id(repair_id)) if repair_id else None
     if len(nations)!=195:ERRORS.append(f'Canonical nation directory has {len(nations)} records; expected 195')
     if len(country_ids)!=195:ERRORS.append(f'Country layer has {len(country_ids)} canonical IDs; expected 195')
     if nation_ids!=country_ids:ERRORS.append(f'Canonical nation directory and country layer IDs differ: nations-only={sorted(nation_ids-country_ids)} country-only={sorted(country_ids-nation_ids)}')
     for cid in country_ids:
+        p=ROOT/'data/countries'/f'{cid}.json'
         if cid==canon_id(repair_id):
-            if not (ROOT/'data/countries/democratic-republic-of-the-congo.json').exists():ERRORS.append('Missing DRC repair record')
-        elif not (ROOT/'data/countries'/f'{cid}.json').exists():ERRORS.append(f'Missing canonical country record: {cid}.json')
+            p=ROOT/'data/countries'/'democratic-republic-of-the-congo.json'
+        if not p.exists():ERRORS.append(f'Missing canonical country record: {p.relative_to(ROOT)}')
     base=load(ROOT/'data/country-enrichment-index.json'); base_ids=set(base.get('enriched_ids',[])); base_nodes=load(ROOT/'data/country-nodes.json').get('nodes',[])
     batches=sorted(ROOT.glob('data/country-enrichment-batch-*.json')); node_batches=sorted(ROOT.glob('data/country-nodes-batch-*.json')); all_ids=set(base_ids); all_nodes=list(base_nodes); seen=[]
     for bp in batches:
