@@ -42,4 +42,4 @@ jobs:
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
         run: python scripts/audit_web.py
-      # Full validator chain: repaired Atlas link audit; rerun from the current main state.
+      # Full validator chain: tree references now resolve through canonical ID-bearing layers.
