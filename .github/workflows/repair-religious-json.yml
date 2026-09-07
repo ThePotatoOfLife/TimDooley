@@ -14,7 +14,23 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Normalize legacy JSON formatting
-        run: python scripts/normalize_religious_json.py
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          targets = [
+              Path('data/religious-foundations/enriched-records.json'),
+              Path('data/religious-foundations/minor-traditions.json'),
+          ]
+          slash_n = chr(92) + 'n'
+          for path in targets:
+              raw = path.read_text(encoding='utf-8')
+              count = raw.count(slash_n)
+              print(f'{path}: literal backslash-n separators={count}')
+              fixed = raw.replace(slash_n, '\n')
+              if fixed != raw:
+                  path.write_text(fixed, encoding='utf-8')
+                  print(f'normalized {path}')
+          PY
       - name: Commit normalization
         run: |
           git config user.name "github-actions[bot]"
