@@ -1,0 +1,16 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Incremental manifest extension for the September 2026 population pass. These datasets are intended to be consumed by the graph, research and systems views without replacing existing canonical layers.",
+  "layers":[
+    {"id":"north-europe-systems","label":"North Europe Systems","owner":"data/north-europe-system-atlas.json","consumers":["data/relationships.json","data/graph-registry.json","data/global-graph-bridge.json","repository.html","node.html","nation.html"],"status":"populated-seed","promotion":"records can be promoted into canonical nodes after endpoint and provenance audit"},
+    {"id":"north-europe-economic-network","label":"North Europe Economic Network","owner":"data/north-europe-economic-network.json","consumers":["data/european-sector-atlas.json","data/relationships.json","data/global-graph-bridge.json","repository.html","node.html"],"status":"populated-seed","promotion":"company and infrastructure edges require asset/ownership/transaction evidence before high-confidence promotion"}
+  ],
+  "population_pass":"2026-09-07",
+  "new_records":49,
+  "new_relationships":87,
+  "new_source_records":9,
+  "domains_added":["EU institutions","single market","euro area","central banking","electricity transmission","North Seas energy cooperation","offshore wind","grid investment","ports","shipping","industrial technology","telecommunications","pharmaceuticals","chemicals","renewable fuels","construction","aerospace"],
+  "next_promotion":"Normalize IDs against data/nodes.json, resolve existing aliases, attach evidence relationships, then expose records through node.html and repository.html.",
+  "quality":"No covert or speculative relationship is promoted. Unknown ownership, financing and procurement remain explicitly missing."
+}
