@@ -29,3 +29,5 @@ jobs:
         run: python scripts/validate_religious_adjacent.py
       - name: Validate Potatoism layer
         run: python scripts/validate_potatoism.py
+      - name: Audit web layer
+        run: python scripts/audit_web.py
