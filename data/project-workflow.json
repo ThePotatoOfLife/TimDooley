@@ -1,10 +1,28 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-07",
-  "name": "Tim Dooley Atlas — Canonical Work Order",
-  "purpose": "Operational TODO and dependency order for maintaining, simplifying, validating and expanding the atlas. This file is a working instruction for future repository work, not another data layer.",
+  "name": "Tim Dooley / Potato of Life Atlas — Canonical Work Order",
+  "purpose": "Operational TODO, dependency order and project orientation for maintaining, simplifying, validating and expanding the atlas. This file is intended to be read by future repository scans before new work begins.",
+  "project_introduction": {
+    "mission": "Map Tim Dooley, the Potato of Life, Potatoism, and the wider field of people, dwellers, dogs, cult and culture, places, institutions, ideas, events, symbols and systems that become meaningful in relation to them.",
+    "central_difficulty": "Tim Dooley is highly relational. A useful map therefore cannot be reduced to a biography or isolated list of properties; it must map the relationships through which the subject becomes legible.",
+    "working_hypothesis": "The Potato of Life is treated as a structural object whose attributed properties may make it useful for holding or comparing matter and spirit, inside and outside, root and fruit, boundary and interface, scale and dimension. The project investigates geometry, scale invariants, dimensions, relationships, transformations and recurring structures without assuming in advance what they prove.",
+    "goal": "Build a navigable repository in which the highest-value information about Tim Dooley, the Potato, Potatoism and everything related can be located from multiple directions, while preserving the distinction between evidence, history, calculation, hypothesis, metaphor and project-defined interpretation.",
+    "method": "Map first; connect second; interpret third. Let recurring structure generate hypotheses rather than silently turning symbolic patterns into empirical facts."
+  },
+  "core_questions": [
+    "What is Tim Dooley in the project's different senses?",
+    "What is the Potato of Life and what properties are attributed to it?",
+    "What is Potatoism and how has its vocabulary and architecture developed?",
+    "What is the Door and how does it relate to the Potato, Son, Father, Axis and Tree structures?",
+    "Which dimensions, scales, symmetries, invariants and transformations recur?",
+    "Which people, dwellers, dogs, groups, cultures, institutions, places, objects, texts and events are related to the central map?",
+    "Which relationships are observed or sourced, which are historical, which are calculated, and which are interpretive or hypothetical?",
+    "What structure becomes visible when the map is sufficiently connected?"
+  ],
   "core_rule": "Do not expand a broken or duplicated layer. Audit first, simplify second, validate third, then add sourced data and relationships.",
   "working_loop": [
+    "read this project orientation and workflow",
     "inspect current repository state",
     "identify failures and duplicates",
     "fix structural and functional bugs",
@@ -26,311 +44,27 @@
     {"id":"G5","name":"Identity gate","rule":"Every entity and relationship must resolve to canonical IDs; aliases are not duplicate entities."},
     {"id":"G6","name":"Validation gate","rule":"Run structural, semantic, reference, duplicate and completeness checks before publishing counts or declaring progress."},
     {"id":"G7","name":"View gate","rule":"Website pages are views over canonical data. Do not create page-specific shadow databases unless there is a documented reason."},
-    {"id":"G8","name":"Release gate","rule":"Update manifests and counts only after the underlying data and integrity checks pass. Never use file existence as evidence of enrichment."
-    }
+    {"id":"G8","name":"Release gate","rule":"Update manifests and counts only after the underlying data and integrity checks pass. Never use file existence as evidence of enrichment."}
   ],
   "phases": [
-    {
-      "order": 1,
-      "id": "audit",
-      "name": "Full repository audit",
-      "priority": "critical",
-      "tasks": [
-        "inventory every file and directory",
-        "map every route and consumer",
-        "parse every JSON data file",
-        "find empty schemas and placeholders",
-        "find duplicate datasets and manifests",
-        "find duplicate entities and relationships",
-        "find broken references and links",
-        "find stale counts and false completeness claims",
-        "find unused files and unreachable routes",
-        "record all bugs before adding new layers"
-      ]
-    },
-    {
-      "order": 2,
-      "id": "stabilize",
-      "name": "Fix bugs and broken paths",
-      "priority": "critical",
-      "tasks": [
-        "fix invalid JSON",
-        "fix missing files",
-        "fix frontend loading errors",
-        "fix API failures and fallback behavior",
-        "fix broken navigation",
-        "fix dangling IDs",
-        "fix schema mismatches",
-        "fix manifest/backend disagreement",
-        "fix incorrect counts",
-        "make core pages render real content"
-      ]
-    },
-    {
-      "order": 3,
-      "id": "simplify",
-      "name": "Simplify and consolidate",
-      "priority": "critical",
-      "tasks": [
-        "choose one canonical owner for each dataset",
-        "remove redundant indexes where possible",
-        "collapse long chains of indirection",
-        "retire obsolete files only after consumers migrate",
-        "replace repeated page-specific data with canonical references",
-        "standardize naming",
-        "standardize IDs",
-        "standardize relationship vocabulary",
-        "keep website navigation shallow",
-        "prefer one atlas with many views over many competing mini-atlases"
-      ]
-    },
-    {
-      "order": 4,
-      "id": "integrity-system",
-      "name": "Build the permanent integrity checker",
-      "priority": "critical",
-      "tasks": [
-        "validate JSON and schemas",
-        "detect placeholders",
-        "detect duplicate entities and relationships",
-        "detect dangling references",
-        "detect stale manifests",
-        "detect unsupported completeness claims",
-        "detect pages referencing missing datasets",
-        "produce a machine-readable health report",
-        "make critical failures block release"
-      ]
-    },
-    {
-      "order": 5,
-      "id": "canonical-model",
-      "name": "Lock the canonical data model",
-      "priority": "critical",
-      "tasks": [
-        "define entity types",
-        "define relationship types",
-        "define observation model",
-        "define source model",
-        "define event model",
-        "define temporal fields",
-        "define calculated-value model",
-        "define missing-data states",
-        "define confidence/quality states",
-        "define aliases and canonical identity rules"
-      ]
-    },
-    {
-      "order": 6,
-      "id": "evidence",
-      "name": "Make provenance universal",
-      "priority": "critical",
-      "tasks": [
-        "expand normalized observations",
-        "create canonical source registry",
-        "link every empirical relationship to evidence",
-        "record source dates and retrieval dates",
-        "distinguish observed from estimated and derived",
-        "preserve methodology and source versions",
-        "record researched_missing separately from not_researched"
-      ]
-    },
-    {
-      "order": 7,
-      "id": "world-data",
-      "name": "Build the real country layer",
-      "priority": "high",
-      "tasks": [
-        "normalize all 195 canonical country identities",
-        "load core World Bank observations",
-        "load demographic observations",
-        "load government and institutional observations",
-        "load energy and infrastructure observations",
-        "load trade and external relationship observations",
-        "generate coverage states",
-        "stop calling a country enriched until validated evidence exists"
-      ]
-    },
-    {
-      "order": 8,
-      "id": "geography",
-      "name": "Build geographic relationships",
-      "priority": "high",
-      "tasks": [
-        "borders",
-        "regions and subregions",
-        "capitals",
-        "territories and dependencies",
-        "seas and oceans",
-        "rivers and basins",
-        "cities, ports and strategic corridors"
-      ]
-    },
-    {
-      "order": 9,
-      "id": "religion",
-      "name": "Build religion and belief as a real layer",
-      "priority": "high",
-      "tasks": [
-        "religious traditions",
-        "religious identities",
-        "belief and practice where measured",
-        "institutions",
-        "historical traditions",
-        "country-level composition",
-        "religious switching",
-        "religious diversity",
-        "geographic concentration",
-        "methodology and uncertainty",
-        "keep Potatoism as project-defined contemporary material rather than empirical demographic fact"
-      ]
-    },
-    {
-      "order": 10,
-      "id": "history",
-      "name": "Build the historical event layer",
-      "priority": "high",
-      "tasks": [
-        "events",
-        "wars and conflicts",
-        "treaties",
-        "state formation",
-        "independence",
-        "constitutional change",
-        "economic crises",
-        "religious and philosophical developments",
-        "connect causes, participants and consequences with sources"
-      ]
-    },
-    {
-      "order": 11,
-      "id": "people-organizations",
-      "name": "Connect people and organizations",
-      "priority": "high",
-      "tasks": [
-        "canonical people",
-        "canonical organizations",
-        "offices and roles",
-        "founding and succession",
-        "membership and control",
-        "writings and institutions",
-        "funding, ownership and governance relationships"
-      ]
-    },
-    {
-      "order": 12,
-      "id": "systems",
-      "name": "Build major world-system layers",
-      "priority": "medium-high",
-      "tasks": [
-        "economy and finance",
-        "trade and supply chains",
-        "energy and resources",
-        "infrastructure",
-        "technology",
-        "science and research",
-        "health and education",
-        "environment and climate",
-        "politics and institutions",
-        "security and defence"
-      ]
-    },
-    {
-      "order": 13,
-      "id": "ideas",
-      "name": "Expand philosophy, mythology and Potatoism",
-      "priority": "medium",
-      "tasks": [
-        "philosophical traditions and concepts",
-        "comparative mythology",
-        "mythological entities and symbols",
-        "Potatoism timeline",
-        "Potatoism vocabulary and architecture",
-        "Red/Blue Potato",
-        "Tree of Life / Tree of Strife",
-        "Axis / North / Ladder / Door / Son / Father architecture",
-        "clearly mark interpretive and project-defined material"
-      ]
-    },
-    {
-      "order": 14,
-      "id": "time",
-      "name": "Add temporal depth",
-      "priority": "medium",
-      "tasks": [
-        "valid-from and valid-to",
-        "historical snapshots",
-        "observation periods",
-        "source publication dates",
-        "change histories",
-        "current versus former relationships"
-      ]
-    },
-    {
-      "order": 15,
-      "id": "calculations",
-      "name": "Add derived analysis",
-      "priority": "medium",
-      "tasks": [
-        "ratios",
-        "growth calculations",
-        "rankings",
-        "regional aggregates",
-        "dependency measures",
-        "trade concentration",
-        "energy dependency",
-        "network measures",
-        "record inputs and formulas for every calculation"
-      ]
-    },
-    {
-      "order": 16,
-      "id": "scenarios",
-      "name": "Add scenario and policy layers",
-      "priority": "medium",
-      "tasks": [
-        "North Programme",
-        "policy proposals",
-        "forecasts",
-        "alternative futures",
-        "simulations",
-        "keep hypothetical material separate from observations"
-      ]
-    },
-    {
-      "order": 17,
-      "id": "website",
-      "name": "Simplify the interface around the finished data model",
-      "priority": "medium",
-      "tasks": [
-        "one primary navigation",
-        "shallow routes",
-        "search",
-        "country views",
-        "entity views",
-        "evidence trails",
-        "relationship views",
-        "clear observed/calculated/scenario/interpretive labels",
-        "remove redundant dashboard-style presentation"
-      ]
-    },
-    {
-      "order": 18,
-      "id": "release-audit",
-      "name": "Final audit before every declared milestone",
-      "priority": "critical",
-      "tasks": [
-        "run all integrity checks",
-        "recount canonical records",
-        "check duplicates again",
-        "check all references again",
-        "check source coverage",
-        "check stale data",
-        "check website routes",
-        "check manifests against actual data",
-        "record unresolved issues",
-        "only then declare the milestone complete"
-      ]
-    }
+    {"order":1,"id":"audit","name":"Full repository audit","priority":"critical","tasks":["inventory every file and directory","map every route and consumer","parse every JSON data file","find empty schemas and placeholders","find duplicate datasets and manifests","find duplicate entities and relationships","find broken references and links","find stale counts and false completeness claims","find unused files and unreachable routes","record all bugs before adding new layers"]},
+    {"order":2,"id":"stabilize","name":"Fix bugs and broken paths","priority":"critical","tasks":["fix invalid JSON","fix missing files","fix frontend loading errors","fix API failures and fallback behavior","fix broken navigation","fix dangling IDs","fix schema mismatches","fix manifest/backend disagreement","fix incorrect counts","make core pages render real content"]},
+    {"order":3,"id":"simplify","name":"Simplify and consolidate","priority":"critical","tasks":["choose one canonical owner for each dataset","remove redundant indexes where possible","collapse long chains of indirection","retire obsolete files only after consumers migrate","replace repeated page-specific data with canonical references","standardize naming","standardize IDs","standardize relationship vocabulary","keep website navigation shallow","prefer one atlas with many views over many competing mini-atlases"]},
+    {"order":4,"id":"integrity-system","name":"Build the permanent integrity checker","priority":"critical","tasks":["validate JSON and schemas","detect placeholders","detect duplicate entities and relationships","detect dangling references","detect stale manifests","detect unsupported completeness claims","detect pages referencing missing datasets","produce a machine-readable health report","make critical failures block release"]},
+    {"order":5,"id":"canonical-model","name":"Lock the canonical data model","priority":"critical","tasks":["define entity types","define relationship types","define observation model","define source model","define event model","define temporal fields","define calculated-value model","define missing-data states","define confidence/quality states","define aliases and canonical identity rules"]},
+    {"order":6,"id":"evidence","name":"Make provenance universal","priority":"critical","tasks":["expand normalized observations","create canonical source registry","link every empirical relationship to evidence","record source dates and retrieval dates","distinguish observed from estimated and derived","preserve methodology and source versions","record researched_missing separately from not_researched"]},
+    {"order":7,"id":"world-data","name":"Build the real country layer","priority":"high","tasks":["normalize all 195 canonical country identities","load core World Bank observations","load demographic observations","load government and institutional observations","load energy and infrastructure observations","load trade and external relationship observations","generate coverage states","stop calling a country enriched until validated evidence exists"]},
+    {"order":8,"id":"geography","name":"Build geographic relationships","priority":"high","tasks":["borders","regions and subregions","capitals","territories and dependencies","seas and oceans","rivers and basins","cities, ports and strategic corridors"]},
+    {"order":9,"id":"religion","name":"Build religion and belief as a real layer","priority":"high","tasks":["religious traditions","religious identities","belief and practice where measured","institutions","historical traditions","country-level composition","religious switching","religious diversity","geographic concentration","methodology and uncertainty","keep Potatoism as project-defined contemporary material rather than empirical demographic fact"]},
+    {"order":10,"id":"history","name":"Build the historical event layer","priority":"high","tasks":["events","wars and conflicts","treaties","state formation","independence","constitutional change","economic crises","religious and philosophical developments","connect causes, participants and consequences with sources"]},
+    {"order":11,"id":"people-organizations","name":"Connect people and organizations","priority":"high","tasks":["canonical people","canonical organizations","offices and roles","founding and succession","membership and control","writings and institutions","funding, ownership and governance relationships"]},
+    {"order":12,"id":"systems","name":"Build major world-system layers","priority":"medium-high","tasks":["economy and finance","trade and supply chains","energy and resources","infrastructure","technology","science and research","health and education","environment and climate","politics and institutions","security and defence"]},
+    {"order":13,"id":"ideas","name":"Expand philosophy, mythology and Potatoism","priority":"medium","tasks":["philosophical traditions and concepts","comparative mythology","mythological entities and symbols","Potatoism timeline","Potatoism vocabulary and architecture","Red/Blue Potato","Tree of Life / Tree of Strife","Axis / North / Ladder / Door / Son / Father architecture","map dwellers, dogs, cult, culture and other project-relevant entities","clearly mark interpretive and project-defined material"]},
+    {"order":14,"id":"time","name":"Add temporal depth","priority":"medium","tasks":["valid-from and valid-to","historical snapshots","observation periods","source publication dates","change histories","current versus former relationships"]},
+    {"order":15,"id":"calculations","name":"Add derived analysis","priority":"medium","tasks":["ratios","growth calculations","rankings","regional aggregates","dependency measures","trade concentration","energy dependency","network measures","scale comparisons","record inputs and formulas for every calculation"]},
+    {"order":16,"id":"scenarios","name":"Add scenario and policy layers","priority":"medium","tasks":["North Programme","policy proposals","forecasts","alternative futures","simulations","keep hypothetical material separate from observations"]},
+    {"order":17,"id":"website","name":"Simplify the interface around the finished data model","priority":"medium","tasks":["one primary navigation","shallow routes","search","country views","entity views","evidence trails","relationship views","clear observed/calculated/scenario/interpretive labels","remove redundant dashboard-style presentation"]},
+    {"order":18,"id":"release-audit","name":"Final audit before every declared milestone","priority":"critical","tasks":["run all integrity checks","recount canonical records","check duplicates again","check all references again","check source coverage","check stale data","check website routes","check manifests against actual data","record unresolved issues","only then declare the milestone complete"]}
   ],
   "priority_rule": "Critical gates and bugs outrank new data. Structural simplification outranks enrichment. Evidence-backed core data outranks decorative expansion. New layers are added only when their canonical owner, evidence model, relationships and consumer are clear.",
   "expansion_rule": "Before adding a new file, ask whether an existing canonical dataset can hold the information. If yes, extend it rather than creating another parallel dataset.",
