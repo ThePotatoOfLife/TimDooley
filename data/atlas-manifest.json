@@ -1,0 +1,19 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "name":"Tim Dooley Atlas — Unified Manifest",
+  "purpose":"One human-readable map of the entire repository. The project remains layered internally, but every layer is addressable through one canonical atlas manifest.",
+  "principle":"One atlas, many layers. Records are the objects; relationships explain how they connect; evidence explains what is known; architecture explains where things belong.",
+  "layers":{
+    "architecture":{"label":"Architecture","purpose":"Canonical Frame, Tree and 33-level information architecture.","files":["data/frame.json","data/tree.json","data/33-level-framework.json"]},
+    "graph":{"label":"Graph","purpose":"Nodes and explicit relationships joining the archive.","files":["data/nodes.json","data/relationships.json","data/graph-registry.json","data/graph-carvings.json"]},
+    "world":{"label":"World","purpose":"195 canonical nations and their geographic, institutional and social layers.","files":["data/countries/index.json","data/country-atlas.json","data/country-nodes.json","data/country-layer-manifest.json"]},
+    "research":{"label":"Evidence","purpose":"Facts, sources, events and research material with provenance and confidence.","files":["data/research.json","data/events.json","data/country-source-registry.json"]},
+    "systems":{"label":"Systems","purpose":"Economic, energy, infrastructure, technology, labour, finance and strategic-system studies.","files":["data/european-sector-atlas.json"]},
+    "mythology":{"label":"Potatoism","purpose":"Project mythology, symbols, lore and interpretive architecture, kept distinct from empirical evidence.","files":["data/potatoverse-lore.json","potatoism.html"]}
+  },
+  "canonical_world":{"nations":195,"effective_enriched_nations":195},
+  "navigation":{"home":"index.html","atlas":"repository.html","world":"nations.html","people":"people.html","beliefs":"belief.html","potatoism":"potatoism.html","record":"node.html?id=<id>","nation":"nation.html?id=<country-id>"},
+  "workflow":["Find a record","Locate it in the architecture","Follow its relationships","Inspect evidence","Return to the wider system"],
+  "rule":"Never require the user to understand the backend file structure before they can understand the project. The website is the map; the JSON files are the machinery beneath it."
+}
