@@ -1,16 +1,19 @@
 {
-  "version":"1.1.0",
+  "version":"1.2.0",
   "updated":"2026-09-07",
-  "purpose":"Navigation registry for the belief atlas. Keeps political ideologies, religious traditions and nonreligious worldviews addressable without collapsing them into one taxonomy.",
+  "purpose":"Navigation registry for the belief atlas. Political, religious, comparative and project-defined systems remain addressable without collapsing them into one taxonomy.",
   "space":"data/belief-space.json",
   "visualization":"political-compass.html",
   "individual_record":"belief.html?id=<slug>",
   "backend":"data/belief-backend.json",
   "layers":[
-    {"id":"politics","name":"Political ideologies","endpoint":"data/political-lexicon.json","map":"political-compass.html","record":"belief.html?id=<slug>","coordinate_system":"three-dimensional political cube: economic organization × state authority × social-cultural openness","legacy_projection":"economic-left-right × authority-libertarian-authoritarian"},
-    {"id":"religion","name":"Religious traditions and worldviews","endpoint":"data/religious-lexicon.json","map":"political-compass.html","record":"belief.html?id=<slug>","coordinate_system":"three-dimensional worldview cube: communal-individual × institutional-experiential × immanent-transcendent","political_separation":"no political score is implied by religious identity"}
+    {"id":"politics","name":"Political ideologies","endpoint":"data/political-lexicon.json","map":"political-compass.html","record":"belief.html?id=<slug>","coordinate_system":"economic organization × state authority × social-cultural openness"},
+    {"id":"religion","name":"Religious traditions and worldviews","endpoint":"data/religious-lexicon.json","map":"political-compass.html","record":"belief.html?id=<slug>","coordinate_system":"communal-individual × institutional-experiential × immanent-transcendent"},
+    {"id":"religious-foundation","name":"Religious emergence and foundation","endpoint":"data/religious-foundations.json","record":"foundation record","coordinate_system":"field → substrate → foundation → seed → sprout → formation → trunk → branches"},
+    {"id":"religious-comparative","name":"Comparative religious library","endpoint":"data/religious-comparative-library.json","record":"comparative record","coordinate_system":"text × concept × place × practice × history × relationship"},
+    {"id":"potatoism","name":"Potatoism project layer","endpoint":"data/potatoism-religion.json","record":"project-defined religious/mythic record","coordinate_system":"birth → growth → symbolic architecture → continuing development"}
   ],
-  "navigation_policy":"Every entry has a stable slug and is searchable, hoverable and clickable in the 3D space. Clicking a mapped belief opens its canonical individual record page. The classic four-quadrant political compass remains available as the x/y slice of the political cube.",
-  "future_dimensions":["economic organization","state authority","civil liberties","social-cultural change","national identity","internationalism","environment","religious authority","technology","institutionalism","populism","foreign policy","property","labor","migration","constitutionalism","militarism","ecology","time/historical period"],
-  "research_principles":["distinguish ideology from party","distinguish religion from religious politics","preserve historical variants","preserve internal disagreement","attach primary and scholarly sources to definitions","avoid treating labels as descriptions of every adherent","make analytical coordinates explicit rather than presenting them as objective measurements"]
+  "navigation_policy":"Every entry has a stable slug and can resolve to a canonical record. Religious records can resolve outward to their foundation, texts, concepts, places, institutions, branches and comparative relationships.",
+  "future_dimensions":["economic organization","state authority","civil liberties","social-cultural change","national identity","internationalism","environment","religious authority","technology","institutionalism","populism","foreign policy","property","labor","migration","constitutionalism","militarism","ecology","time/historical period","emergence","transmission","authority","power","sacred space","material evidence","memory"],
+  "research_principles":["distinguish ideology from party","distinguish religion from religious politics","preserve historical variants","preserve internal disagreement","attach primary and scholarly sources to definitions","avoid treating labels as descriptions of every adherent","make analytical coordinates explicit rather than presenting them as objective measurements","keep project-symbolic material visibly distinct from empirical historical evidence"]
 }
