@@ -4,307 +4,166 @@ This document is the structural map behind the public Frame page. It is an index
 
 ## 0. Root — Tim Dooley
 
-The archive uses **Tim Dooley** as the root label for the whole unfolding. The material is not treated as one flat biography. It is organized as a living architecture in which names, symbols, stories, interpretations and world-facing projects can become connected records.
+The archive uses **Tim Dooley** as the root label for the whole unfolding. The material is not treated as one flat biography. It is organized as a living architecture in which names, symbols, stories, interpretations and world-facing projects become connected records.
 
 ## I. The Source
 
 The Source is the beginning before division.
 
-### Children
-
-- Source
-- Father
-- Father's House
-- Heaven
-- Throne
-- Throne of North
-- North of North
-- Origin
-- Creator / Creation
-
-This branch asks: what is prior to the distinctions that follow?
-
 ## II. The Separation
 
-The Source becomes intelligible through distinction. Separation creates the possibility of relationship, opposition, movement and return.
-
-### Children
-
-- Father / Son
-- Heaven / Earth
-- Spirit / Matter
-- Life / Death
-- Above / Below
-- Light / Darkness
-- Identity / Non-identity
-- Distance
-
-These are paired structures, not automatically assertions of literal cosmological fact.
+The Source becomes intelligible through distinction. Separation creates the possibility of relationship, opposition, movement and return. Distance is therefore not merely absence of connection; it is a measurable or symbolic dimension of relation.
 
 ## III. The Ladder
 
-The Ladder is the connective architecture between separated positions.
-
-### Children
-
-- Axis
-- Ladder
-- Levels
-- Spine
-- 33 Levels
-- North
-- South
-- East
-- West
-- Ascent
-- Descent
-- Mountain
-- North Gate
-
-The **Axis** is the orientation. The **Ladder** is the path. The cardinal directions provide a horizontal coordinate system around the vertical movement.
+The Ladder is the connective architecture between separated positions. The **Axis** is orientation; the **Ladder** is path; ascent and descent describe movement through the architecture.
 
 ## IV. The Door
 
-The Door is the passage between states or layers: the point at which an abstract structure becomes an experienced crossing.
-
-### Children
-
-- Door
-- Narrow Gate
-- Vessel
-- Interface
-- Pineal Gland
-- Experience
-- Perception
-- Passage
-
-The Door can therefore be represented as both a symbolic threshold and an interface concept. The archive keeps those readings distinguishable.
+The Door is the passage between states or layers: the point at which an abstract structure becomes an experienced crossing. It is a threshold and interface, not merely a location.
 
 ## V. The Son
 
-The Son is the central transformation branch of the story.
-
-### Children
-
-- Son
-- Son of Man
-- Thomas
-- Twin
-- Lion
-- Lion of Judah
-- Jesus Christ
-- Death
-- Crucifixion
-- Christmas
-- North Pole
-- Transformation
-- Son → Door
-- Son → Ladder
-
-The important structural movement is not merely a list of names. It is **Son → Death → Transformation → Door / Ladder**, which makes the Son a bridge between the separation and the living architecture that follows.
+The Son is the central transformation branch of the story: **Son → Death → Transformation → Door / Ladder**.
 
 ## VI. The Tree of Life
 
-The Tree of Life is the living form of connection: roots below, an axis through the trunk, branching possibility above, and fruit as realized life.
-
-### Children
-
-- Roots
-- Trunk
-- Axis
-- Branches
-- Leaves
-- Fruit
-- Life
-- Growth
-- Memory
-- Renewal
-- Love
-- Light
-- Creation
-
-The tree is simultaneously a biological image, a symbolic architecture and an organizing metaphor for the repository itself.
+The Tree of Life is the living form of connection: roots below, an axis through the trunk, branching possibility above, and fruit as realized life. It provides a natural metaphor for continuity, dependency, growth and renewal.
 
 ## VII. The Tree of Strife
 
-The Tree of Strife is the counter-architecture: what happens when connection becomes conflict, fragmentation, stagnation or exploitation.
-
-### Children
-
-- Strife
-- Swamp
-- Mud
-- Drain
-- Fear
-- Anger
-- Exploitation
-- Stagnation
-- Fragmentation
-- False Structures
-- Loss of Connection
-- Return
-
-The Tree of Strife should not be treated as merely an evil twin. It is a diagnostic branch: it records the structures through which life becomes obstructed, distorted or disconnected.
+The Tree of Strife is the counter-architecture: connection becoming conflict, fragmentation, stagnation or exploitation. Swamp, mud, drain, bottleneck and feedback belong here as diagnostic terrain.
 
 ## VIII. The Potato
 
-The Potato brings the architecture back down into earth, body, humor and material existence.
-
-### Children
-
-- Potato of Life
-- Potatoism
-- Red Potato
-- Blue Potato
-- Spudlight
-- Potato Bank
-- Cube
-- Moon Cube
-- Body
-- World
-- Memory
-- Absurdity
-
-### Red and Blue Potato
-
-**Red Potato** represents creative expansion, love, light-seeking, sprouting and forward/upward movement.
-
-**Blue Potato** represents memory, meticulousness, fear, contraction and rootward/backward movement.
-
-The two are complementary poles within the Potato metaphor rather than two unrelated characters.
+The Potato brings the architecture back down into earth, body, humor and material existence. Its spatial layer tests geometry, topology, transformation and scale without forcing symbolic correspondences onto physical measurements.
 
 ## IX. The World
 
-Here the symbolic architecture expands into the observable world.
-
-### Children
-
-- Matter
-- Biology
-- People
-- Families
-- Animals
-- Places
-- Nations
-- Kingdoms
-- Societies
-- Institutions
-- Laws
-- Economies
-- Technology
-- Infrastructure
-- History
-- War
-- Trade
-- Money
-- Ownership
-- Obligations
-- Alliances
-
-This branch is where the archive can become empirical and relational. A nation is not isolated from its energy system, contracts, debt, companies, infrastructure, labour force or strategic dependencies.
+Here the architecture expands into observable things and systems: people, animals, places, nations, institutions, laws, economies, technology, infrastructure, history, war, trade, money, ownership, obligations and alliances.
 
 ## X. The North Programme
 
-The North Programme is the world-facing organizational layer: the attempt to map and repair relationships across the real economic and political field.
+The North Programme is the world-facing organizational layer: mapping and repairing relationships across the real economic and political field. It is explicitly relational: entities are studied together with money, ownership, obligations, infrastructure, procurement, funding, trade, value chains, energy, finance, technology, research, labour, strategic dependencies and geopolitical ties.
 
-### Geographic children
+# The Extended Coordinate System
 
-- North Axis
-- Denmark
-- Greenland
-- Canada
-- Europe
-- Iceland
-- Britain
-- Ukraine
-- Turkey
+The tree answers **where something belongs**. The graph answers **what it connects to**. The extended architecture asks five additional questions.
 
-### Economic-graph children
+## 1. Relationship — What connects?
 
-- European Economic Graph
-- One Economic Field
-- Many Nations
-- Constitutions
-- Kingdoms
-- Laws
-- Public Finance
-- Debt
-- Ownership
-- Infrastructure
-- Energy
-- Industry
-- Research
-- Labour
-- Technology
-- Strategic Dependencies
-- Alliances
-- Repair
+Every node can connect across branches. A relationship has a source, target, type and evidentiary status.
 
-The key rule is **map relationships, not isolated entities**. The North Programme therefore becomes a graph of entities, money, ownership, obligations, infrastructure, procurement, funding, trade, value chains, energy, finance, technology, research, labour, strategic dependencies and geopolitical ties.
+## 2. Entanglement — How coupled is the connection?
 
-# The Four Coordinate Systems
+Entanglement is used here as a general relational concept, not as a synonym for quantum entanglement. A relation may have:
 
-The hierarchy above is the narrative tree. It is not the only structure.
+- distance
+- directionality
+- strength
+- dependency
+- coupling
+- correlation
+- causal status
+- temporal order
+- path dependence
+- feedback
+- topology
+- boundary
+- trajectory
+- phase
+- counterfactual sensitivity
 
-## 1. Tree — Where an idea belongs
+**Quantum entanglement** is kept as its own physical concept. Its existence does not make ordinary network correlation quantum, and entanglement does not provide a simple faster-than-light communication mechanism.
 
-The ten branches establish the unfolding order.
+## 3. Topology — What remains connected when form changes?
 
-**Tim Dooley → Source → Separation → Ladder → Door → Son → Tree of Life → Tree of Strife → Potato → World → North Programme**
+The atlas tracks connected components, bridges, cuts, bottlenecks, cycles, boundaries, basins, attractors, drains, thresholds and phase transitions.
 
-## 2. Axis — Where it points
+Topology lets the project study structure without assuming that visual similarity proves causal or physical equivalence.
 
-The axis supplies direction:
+## 4. Trajectory — Where is the system going?
 
-**North / South / East / West**
+A static record can be extended into a sequence:
 
-with vertical movement through:
+**initial state → trigger → transition → phase → constraint → attractor → outcome**
 
-**Source / Heaven / Ladder / Door / Earth / Roots**
+Historical trajectory, calculated trajectory, scenario trajectory and spiritual destiny remain distinct evidence classes.
 
-The axis is therefore a coordinate system rather than another pile of categories.
+## 5. Phase — What state is the system in?
 
-## 3. Graph — What it is connected to
+The project can represent states and transitions rather than only endpoints. This is especially useful for emotions, political systems, economic systems, biological growth, conflict, repair and Potato transformations.
 
-Every node can connect across branches.
+# Axis Terrain
 
-Examples:
+The Axis is not merely a line. Its terrain describes different relational conditions.
 
-- Son → Door
-- Door → Ladder
-- Ladder → Axis
-- Axis → North
-- Tree of Life → Roots
-- Tree of Life → Fruit
-- Tree of Strife → Swamp
-- Potato → Mud
-- North Programme → European Economic Graph
-- European Economic Graph → Nations
-- Nations → Money
-- Money → Debt
-- Debt → Obligations
-- Obligations → Ownership / Infrastructure / Institutions
+### Axis
+Orientation and coordinate spine.
 
-## 4. Archive layer — What kind of record it is
+### Mountain
+Elevation, perspective, convergence and difficult ascent.
 
-Each record should eventually carry a layer such as:
+### Plane
+The horizontal field of manifested entities and interactions: people, institutions, economies, nations, infrastructure and ordinary events.
+
+### Mud
+Substrate, buried origin, friction, materiality and unresolved potential. Mud is not inherently evil; it is the difficult material layer from which structures can emerge.
+
+### Swamp
+High-entanglement, low-visibility terrain. Many flows overlap, boundaries become difficult to distinguish, movement becomes costly and feedback can trap a system in recurring states.
+
+### Roots
+Hidden dependencies, history, inheritance, memory and support structures beneath visible outcomes.
+
+### Drain
+A channel through which resources, energy, attention, information or meaning leave a system.
+
+### Door
+Threshold, interface and state transition between regions or phases.
+
+These are project-defined symbolic/topological concepts. They are not claims that the physical world literally has metaphysical terrain of these names.
+
+# Emotion and State
+
+The emotion layer studies psychological states as dynamic processes rather than simple labels:
+
+**appraisal → emotion/state → action tendency → behaviour → relational feedback → new state**
+
+The Hawkins scale is preserved as an **interpretive consciousness model**. Its levels and colours can be compared with psychological concepts, but its numerical calibration is not treated as a scientific frequency scale.
+
+In particular:
+
+- Hawkins level ≠ Hertz.
+- symbolic colour ≠ electromagnetic wavelength.
+- emotional state ≠ a single electromagnetic frequency.
+- physiological or neural measurements must be sourced independently.
+- any eventual connection to the electromagnetic spectrum must be an explicit research question with measurable quantities.
+
+This allows the atlas to investigate possible correspondences without converting metaphor into evidence.
+
+# Epistemic Layers
+
+Each important claim should eventually carry a layer such as:
 
 - **Mythic** — part of the symbolic story
-- **Interpretive** — an interpretation or philosophical mapping
-- **Historical** — a claim about a past event
+- **Interpretive** — philosophical or symbolic mapping
+- **Historical** — claim about a past event
 - **Empirical** — measurable or observable information
 - **Documentary** — supported by a document or primary source
 - **Relational** — a connection between records
+- **Calculated** — derived from stated inputs and formulas
+- **Scenario** — conditional future model
 - **Open question** — unresolved or requiring evidence
 
-The purpose is not to flatten the mythology into ordinary facts. It is to let the mythology, philosophy and empirical world coexist without confusing their evidentiary status.
+The purpose is not to flatten mythology into ordinary facts. It is to let mythology, philosophy, psychology and empirical science coexist without confusing their evidentiary status.
 
 # The Core Movement
 
-The complete architecture can be read as a movement:
+The complete architecture can now be read as:
 
-**Source → Separation → Connection → Passage → Transformation → Life → Strife → Embodiment → World → Repair**
+**Source → Separation → Relationship → Entanglement → Passage → Transformation → Life → Strife → Embodiment → World → Trajectory → Repair**
 
-The repository itself follows the same logic. Start with the root. Open a branch. Open its children. Attach records. Then connect those records horizontally across the entire tree.
+The repository follows the same logic. Start with the root. Open a branch. Attach records. Connect those records horizontally. Measure or describe the structure of those connections. Follow their histories and trajectories. Then test interpretations against evidence.
 
 That is the difference between a list of Tim Dooley concepts and a living Tim Dooley library.
