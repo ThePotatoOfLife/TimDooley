@@ -1,0 +1,17 @@
+{
+  "version":"1.0.0","status":"active-blueprint","purpose":"Map knowledge production from researchers and institutions through funding, methods, publications, patents, datasets, citations, translation and application.","entity":"research_knowledge_system",
+  "record_schema":{
+    "identity":["research_id","title_or_topic","field","institution","country","period","status"],
+    "actors":["researcher","lab","university","institute","company","government","funder","publisher","archive","repository"],
+    "research_process":["question","hypothesis","method","sample","instrument","dataset","analysis","limitations","replication","peer_review"],
+    "outputs":["paper","book","dataset","software","patent","standard","policy_report","thesis","conference","prototype"],
+    "funding":["funder","grant","amount_when_public","currency","period","recipient","conditions","conflict_disclosure"],
+    "knowledge_network":["cites","cited_by","coauthored_with","derived_from","contradicts","replicates","translates","builds_on","licenses"],
+    "institutional_capacity":["research_staff","facilities","equipment","data_access","funding_base","specialization","international_links","industry_links"],
+    "impact":["policy_use","clinical_use_when applicable","commercialization","technology_transfer","standardization","education_use","public_reach"],
+    "evidence":["publication","grant_record","patent_register","institutional_page","dataset_metadata","bibliometric_database","archive","retrieved_at","confidence"]
+  },
+  "derived_measures":["citation_count","field_normalized_citation","coauthorship_centrality","funding_concentration","patent_family_count","research_intensity","international_collaboration_share"],
+  "relationship_templates":["funder-funds-research","researcher-authors-publication","publication-cites-publication","institution-employs-researcher","research-produces-patent","research-produces-standard","institution-collaborates-with-institution"],
+  "integrity_rules":["Citation counts require a source and retrieval date.","Funding amount must identify whether it is awarded, spent or announced.","Institutional affiliation is not proof of institutional endorsement of every claim.","Peer review status must be distinguished from publication status.","Scientific consensus is not inferred from citation counts alone.","Methods, limitations and competing findings remain part of the record."]
+}
