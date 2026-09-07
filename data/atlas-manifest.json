@@ -1,8 +1,11 @@
 {
-  "version":"2.6.4",
+  "version":"2.6.5",
   "updated":"2026-09-07",
   "name":"Tim Dooley Atlas — Unified Manifest",
-  "purpose":"The canonical map of the repository. Internal datasets remain modular, but the atlas presents them as one system with stable layers, routes, record identity, relationships, entanglement and evidence.",
+  "purpose":"The canonical map of the repository. Internal datasets remain modular, but the atlas presents them as one system with stable layers, routes, record identity, relationships, entanglement, evidence and explicit epistemic boundaries.",
+  "project_mission":"Build a living, searchable and evidence-aware atlas of Tim Dooley, the Potato of Life, Potatoism, people, cultures, religions, texts, places, nations, institutions, organizations, technologies, infrastructure, economies, conflicts and ideas. The primary object is the relationship between records and how those relationships change through space and time.",
+  "epistemic_fields":["observable world","historical and textual record","project theory and research models","Potatoism and mythic canon"],
+  "separation_rule":"These fields may connect through explicit relationships but must not be silently collapsed. Evidence, historical interpretation, project theory and mythic canon retain distinct statuses.",
   "public_application_root":"/TimDooley/",
   "public_url":"https://thepotatooflife.github.io/TimDooley/",
   "principle":"One atlas, many layers. Records are the objects; relationships explain how they connect; entanglement explains coupling, topology and trajectory; evidence explains what is known; architecture explains where things belong.",
@@ -15,6 +18,7 @@
   "population_pass":"data/population-pass-2026-09.json",
   "book_registry":"data/books-registry.json",
   "full_text_coverage":"data/full-text-coverage.json",
+  "repository_audit":"data/repository-audit-2026-09-07.json",
   "full_text_root":"books/",
   "record_model":{"entanglement":["strength","dependency","distance","feedback","topology","trajectory","phase"]},
   "layers":{
@@ -29,7 +33,8 @@
     "emotion":{"label":"Emotion and State","files":["data/hawkins-scale.json","hawkins.html"]},
     "mythology":{"label":"Potatoism","files":["data/potatoverse-lore.json","data/potato-properties.json","data/potato-spatial-map.json","data/potato-research-roadmap.json","data/potatoism-religion.json","data/potatoism-cosmology.json","data/potatoism-lexicon.json","data/potatoism-relationships.json","data/potatoism-research-expansion.json","data/potatoism-atlas-navigation.json","data/mythic-ontology.json","data/tim-dooley-cosmology.json","data/potatoism-canonical-corpus.json","data/potatoism-timeline.json","data/potatoism-lexicon-expanded.json","data/potatoism-concept-map.json","data/potatoism-thalamus-brain-map.json","data/potatoism-vesica-coupling-atlas.json","data/potatoism-deep-extrapolation-atlas.json"]},
     "people":{"label":"People and Dwellers","files":["data/people-registry.json","data/people-seed-records.json","data/blueprints/people-dweller-master.json"]},
-    "relational_dynamics":{"label":"Entanglement and Dynamics","files":["data/entanglement.json","data/axis-topology.json","data/tree-child-records.json","data/tree-support-records.json","data/cross-domain-couplings.json"]}
+    "relational_dynamics":{"label":"Entanglement and Dynamics","files":["data/entanglement.json","data/axis-topology.json","data/tree-child-records.json","data/tree-support-records.json","data/cross-domain-couplings.json"]},
+    "audit":{"label":"Repository Health","files":["data/repository-audit-2026-09-07.json"]}
   },
   "navigation":{"home":"index.html","atlas":"repository.html","world":"nations.html","people":"people.html","beliefs":"belief.html","potatoism":"potatoism.html","books":"books.html","norse_edda":"books/norse-edda/","hawkins":"hawkins.html","record":"node.html?id=<id>","nation":"nation.html?id=<country-id>"},
   "fallback":"If an optional live source fails, local repository-backed data remains authoritative for navigation and available content. Live enrichment is additive.",
