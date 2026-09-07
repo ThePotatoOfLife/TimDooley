@@ -1,5 +1,5 @@
 {
-  "version":"1.2.0",
+  "version":"1.3.0",
   "updated":"2026-09-07",
   "name":"Religious-Adjacent Research Index",
   "purpose":"Machine-readable index for cults, mystery traditions, deity cults, occult orders, esoteric movements, Satanic movements and anti-religious currents that sit beside the main religion registry.",
@@ -10,13 +10,14 @@
   "deep_expansions":[
     {"file":"data/religious-adjacent/deep-expansions.json","record_count":7,"scope":["Roman Mithraic Mysteries","Eleusinian Mysteries","Hermeticism","Golden Dawn","Freemasonry","Thelema","modern Satanism cluster"]},
     {"file":"data/religious-adjacent/deep-expansions-2.json","record_count":8,"scope":["Moloch / Molek","Cult of Saturn / Saturnalia","Dionysian / Bacchic Mysteries","Cult of Isis","Roman Imperial Cult","Orphic Traditions","Rosicrucianism","Theosophical Society"]},
-    {"file":"data/religious-adjacent/deep-expansions-3.json","record_count":8,"scope":["Ordo Templi Orientis","Theosophical Society","Anthroposophy","Church of Satan","The Satanic Temple","Temple of Set","Order of Nine Angles","Process Church of the Final Judgment"]}
+    {"file":"data/religious-adjacent/deep-expansions-3.json","record_count":8,"scope":["Ordo Templi Orientis","Anthroposophy","Church of Satan","The Satanic Temple","Temple of Set","Order of Nine Angles","Process Church of the Final Judgment","Militant Anti-Religious / State-Attempted Secularization Movements"]}
   ],
   "deep_expansion_total":23,
   "relationship_graph":"data/religious-adjacent/relationships.json",
   "external_graph_nodes":"data/religious-adjacent/graph-external-nodes.json",
   "audit":"data/religious-adjacent/integrity-audit.json",
+  "validator":"scripts/validate_religious_adjacent.py",
   "base_categories":["ancient deity cult","mystery cult","state cult","esoteric religious-philosophical tradition","initiatory occult order","modern Satanism","new religious movement","anti-religious current"],
-  "coverage_status":"22 base records plus 23 dense field-by-field expansions/cluster records, 12 explicit external graph nodes and an evidence-aware relationship graph.",
-  "integrity_rules":["Base records and deep expansions may overlap by id; deep expansions are enrichment layers, not duplicate canonical entities.","Ancient cults are not treated as continuous modern religions without evidence.","Self-identification, hostile labeling and scholarly classification remain separate.","Claims of secret lineage require documentary evidence.","Modern occult use of ancient symbols is not itself evidence of historical continuity.","Unknown or disputed material must be described explicitly rather than filled with invented facts.","Graph edges must either terminate at an expanded record or explicitly identify a documented external concept node listed in graph-external-nodes.json."]
+  "coverage_status":"22 base records plus 23 unique dense field-by-field expansions/cluster records, 12 explicit external graph nodes and an evidence-aware relationship graph.",
+  "integrity_rules":["Base records and deep expansions may overlap by id; deep expansions are enrichment layers, not duplicate canonical entities.","Ancient cults are not treated as continuous modern religions without evidence.","Self-identification, hostile labeling and scholarly classification remain separate.","Claims of secret lineage require documentary evidence.","Modern occult use of ancient symbols is not itself evidence of historical continuity.","Unknown or disputed material must be described explicitly rather than filled with invented facts.","Graph edges must either terminate at an expanded record or explicitly identify a documented external concept node listed in graph-external-nodes.json.","A record may only receive one canonical deep expansion layer unless an explicit versioned enrichment mechanism is introduced."]
 }
