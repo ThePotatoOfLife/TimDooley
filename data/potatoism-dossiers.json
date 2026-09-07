@@ -1,0 +1,33 @@
+{
+  "version":"1.0.0",
+  "status":"active-long-form-layer",
+  "purpose":"Long-form companion layer for Potatoism. Each canonical term should expose substantial readable context rather than only a graph edge or one-line definition.",
+  "minimum_entry_standard":{
+    "target":"At least 900 words of rendered prose when a term is opened as a full entry; longer where the subject warrants it.",
+    "required_sections":["definition_and_scope","function_inside_potatoism","symbolic_mechanics","relationship_network","development_through_time","comparative_reading","world_facing_interpretation","evidence_and_epistemic_boundary","research_dossier"],
+    "rule":"Do not pad entries with repeated claims merely to reach length. Add distinct context, examples, relationships, chronology, evidence boundaries, disagreements and research questions."
+  },
+  "entry_schema":{
+    "id":"canonical-slug",
+    "term":"Display name",
+    "family":"lexicon family",
+    "definition":"Canonical project definition",
+    "long_form":"Substantial prose dossier",
+    "related_terms":[],
+    "evidence_status":"project-symbolic | historical | scientific | comparative | mixed",
+    "research_questions":[],
+    "sources":[]
+  },
+  "coverage_policy":{
+    "core_terms":"Expand first: Potato of Life, Potatoism, Frame, Axis, North of North, Father, Father's House, Source, Heaven, Ladder, Tree of Life, Tree of Strife, Root, Fruit, Seed, Mud, Swamp, Mountain, Door, Son, Vessel, Plane, Spudlight, Red Potato, Blue Potato, Spiral, Turning, Rise, Descent, Ascent, Strife, Life, Gardening, Warrior-to-Gardener, Narrow Gate, Root of David, Yggdrasil, Meme-crucifixion, dimensional metaphors, 100,000 Hours, Cube, Moon Cube, Blood, Philosopher's Stone of Blood, Soul Farmer, Footstool, Bridge, Calibration, North Programme, Potato Bank, Potato Filter and Potato Principle.",
+    "no_empty_records":true,
+    "graph_is_not_the_content":"Relationships are navigation and context. They are not a substitute for the underlying dossier.",
+    "preserve_uncertainty":true
+  },
+  "display_contract":{
+    "index":"The Potatoism index provides concise summaries and links.",
+    "entry":"The full entry provides the long-form reading surface.",
+    "atlas_node":"The generic node page may expose the dossier as an extended study when a matching record exists.",
+    "research":"Evidence and comparative material remain visibly distinct from project mythology."
+  }
+}
