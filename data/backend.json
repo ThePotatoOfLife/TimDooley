@@ -1,19 +1,12 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-07",
-  "name": "Tim Dooley Atlas Backend Registry",
-  "purpose": "Single browser-readable registry for the repository's canonical data layer. Pages can use this manifest to stay connected to the same backend sources.",
-  "policy": "The backend is relationship-first. Canonical architecture, records, research evidence, lore and graph relationships remain separate but addressable through one registry.",
-  "endpoints": {
-    "frame": "data/frame.json",
-    "tree": "data/tree.json",
-    "nodes": "data/nodes.json",
-    "treeChildren": "data/tree-child-records.json",
-    "relationships": "data/relationships.json",
-    "research": "data/research.json",
-    "lore": "data/potatoverse-lore.json"
-  },
-  "required": ["frame", "tree", "nodes", "treeChildren", "relationships", "research"],
-  "optional": ["lore"],
-  "healthChecks": ["frame", "tree", "nodes", "treeChildren", "relationships", "research", "lore"]
+  "version":"1.1.0",
+  "updated":"2026-09-07",
+  "name":"Tim Dooley Atlas Backend Registry",
+  "purpose":"Single browser-readable registry for the canonical atlas data layer, including the 195-country system and individual country enrichment records.",
+  "policy":"Relationship-first. Architecture, records, research evidence, country data and lore remain separate but addressable through one registry.",
+  "endpoints":{"frame":"data/frame.json","tree":"data/tree.json","nodes":"data/nodes.json","treeChildren":"data/tree-child-records.json","relationships":"data/relationships.json","research":"data/research.json","lore":"data/potatoverse-lore.json","countryAtlas":"data/country-atlas.json","countryBlueprint":"data/countries-blueprint.json","countryIndex":"data/countries/index.json","countrySourceRegistry":"data/country-source-registry.json","usEnrichment":"data/countries/united-states-enrichment.json","canadaEnrichment":"data/countries/canada-enrichment.json"},
+  "countryLayer":{"canonicalCount":195,"recordPattern":"data/countries/<country-id>.json","enrichmentPattern":"data/countries/<country-id>-enrichment.json","blueprint":"data/countries-blueprint.json","sourceRegistry":"data/country-source-registry.json","status":"USA and Canada enriched first; remaining countries inherit the same schema and can be deepened incrementally."},
+  "required":["frame","tree","nodes","treeChildren","relationships","research","countryAtlas","countryBlueprint","countryIndex"],
+  "optional":["lore","countrySourceRegistry","usEnrichment","canadaEnrichment"],
+  "healthChecks":["frame","tree","nodes","treeChildren","relationships","research","countryAtlas","countryBlueprint","countryIndex","countrySourceRegistry","usEnrichment","canadaEnrichment"]
 }
