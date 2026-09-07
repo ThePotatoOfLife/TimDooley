@@ -1,0 +1,14 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Tenth additive country-enrichment batch completing the remaining five canonical country overlays.",
+  "canonical_count":195,
+  "previous_enriched_count":190,
+  "added_count":5,
+  "enriched_count":195,
+  "added_ids":["holy-see","venezuela","yemen","zambia","zimbabwe"],
+  "record_pattern":"data/countries/<country-id>-enrichment.json",
+  "page_pattern":"nation.html?id=<country-id>",
+  "source_policy":"Country records are descriptive overlays; quantitative indicators should be sourced from current statistical providers and historical or contested claims retain provenance.",
+  "node_manifest":"data/country-nodes-batch-2026-09-07-10.json"
+}
