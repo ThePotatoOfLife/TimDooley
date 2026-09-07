@@ -1,0 +1,14 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Source registry supporting the religious atlas. Sources are used according to evidence type; no single source is treated as sufficient for every field.",
+  "sources":[
+    {"id":"pew-religious-landscape-2020","publisher":"Pew Research Center","title":"The World's Religious Groups: How Their Sizes Changed from 2010 to 2020","url":"https://www.pewresearch.org/religion/2025/06/09/how-the-global-religious-landscape-changed-from-2010-to-2020/","type":"demographic","use":"global affiliation and comparative demographic baseline","notes":"Uses more than 2,700 sources and covers 201 countries and territories; 2020 estimates."},
+    {"id":"pew-other-religions","publisher":"Pew Research Center","title":"Other Religions / Global Religious Landscape","url":"https://www.pewresearch.org/religion/2012/12/18/global-religious-landscape-other/","type":"demographic","use":"context for Baha'i, Daoism, Jainism, Shinto, Sikhism, Zoroastrianism and other smaller traditions"},
+    {"id":"openstax-world-religions","publisher":"OpenStax","title":"World Religions","url":"https://openstax.org/books/introduction-sociology-3e/pages/15-2-world-religions","type":"educational-secondary","use":"broad comparative orientation; not sole authority for specialist claims"},
+    {"id":"yale-religion-ecology","publisher":"Yale Forum on Religion and Ecology","title":"World Religions","url":"https://fore.yale.edu/World-Religions","type":"academic-reference","use":"tradition-specific overview, environmental thought, official statements and bibliographies"},
+    {"id":"sage-divine-concepts","publisher":"SAGE","title":"Concepts of the Divine and the Methodologies of its Venerations in World Religions","url":"https://journals.sagepub.com/doi/10.1177/26314541221114681","type":"academic","use":"comparative treatment of divine concepts and veneration across major traditions"},
+    {"id":"ku-egypt-mesopotamia","publisher":"University of Copenhagen","title":"Religion in Ancient Egypt and Mesopotamia","url":"https://kurser.ku.dk/course/hasb0106fu/2026-2027","type":"academic","use":"ancient Egyptian/Mesopotamian religion, texts, material culture, temples, ritual, magic, divination and afterlife"}
+  ],
+  "rules":["Use primary institutional sources for self-description but label them as self-description.","Use national censuses and representative surveys for demographic claims where available.","Use specialist academic literature for contested chronology and historical reconstruction.","Use archaeological and manuscript catalogues for material/textual evidence.","Do not convert theological claims into empirical facts.","Do not treat a broad demographic category as a denomination or theological school.","For Potatoism, repository/project records establish project chronology and self-description; external religious history is comparative evidence only."]
+}
