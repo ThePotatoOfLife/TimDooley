@@ -1,0 +1,133 @@
+{
+  "id":"cross-domain-depth-wave-018",
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "purpose":"Broad second-order carving across the repository: strengthen the World, North Programme, intelligence, information, infrastructure, finance, law, science, geography, internet, history and relational-graph layers without changing the canonical tree.",
+  "method":"Expand from existing nodes and relationships. Prefer mechanisms, dates, institutions, records, dependencies, ownership, flows and evidence over isolated labels.",
+  "epistemic_rule":"Historical and empirical claims require sources; project mythology and symbolic interpretations remain explicitly interpretive.",
+  "layers":{
+    "information_architecture":{
+      "records":"A record is a bounded evidence-bearing object with provenance, date, issuer, custody, transformation history and access status.",
+      "provenance_chain":["event","observation","record","archive","index","search","interpretation","claim"],
+      "transformation_chain":["raw_data","normalization","classification","aggregation","analysis","publication"],
+      "information_flow":"Actor -> collection point -> database -> processing -> analyst -> institution -> recipient -> archive/public record.",
+      "missingness":"Absence of a public record is not evidence that an event did not occur; it is a property of the observable archive.",
+      "versioning":"Every important relationship should eventually support valid_from, valid_to, source_date, confidence and evidence_status.",
+      "negative_evidence":"A search returning no public result should be represented as an observation about the searched corpus, not as proof of nonexistence."
+    },
+    "intelligence_network":{
+      "structural_nodes":["agency","ministry","military-command","police","customs","financial-intelligence-unit","oversight-body","court","database","archive","contractor","liaison-office","international-organization"],
+      "relationship_types":["reports-to","authorized-by","funded-by","shares-with","queries","receives-from","sends-to","overseen-by","audited-by","contracted-to","archives-with","subject-to-law","operates-in","coordinates-with"],
+      "important_distinction":"A liaison relationship, data-sharing agreement, operational partnership and command relationship are different edge types and must never be collapsed into a generic alliance edge.",
+      "five_eyes":"Represent the Five Eyes as an intelligence-sharing architecture rather than a single agency; retain each national service, legal basis and domain separately.",
+      "european_layer":"Model Europol, Eurojust, Frontex, INTERPOL relationships, national police, customs and intelligence services as overlapping but legally distinct systems.",
+      "military_layer":"Model geographic combatant commands, national armed forces and intelligence components separately from civilian intelligence agencies.",
+      "oversight":"Add parliamentary committees, inspectors general, judicial authorization, ombuds institutions, data-protection authorities and audit institutions where documented.",
+      "collection_categories":["signals","human","imagery","geospatial","financial","open-source","biometric","communications","travel","border","criminal","cyber","commercial"],
+      "non_operational_boundary":"The repository maps public institutional structure and historical information flows; it does not provide instructions for evading surveillance, accessing restricted systems or conducting intelligence operations."
+    },
+    "records_and_databases":{
+      "record_lifecycle":["creation","classification","retention","query","dissemination","review","redaction","declassification","archival_transfer","public_release","withdrawal_or_replacement"],
+      "database_fields":["system_name","owner","operator","legal_basis","launch_year","predecessor","successor","data_categories","contributors","authorized_users","cross_system_links","retention","oversight","public_documentation","status"],
+      "fbi_anchor":"The FBI states that most Bureau records are indexed in its Central Records System, while the Vault is the public electronic FOIA library. This distinction should be used as a model for separating internal records from public archives.",
+      "cia_anchor":"CIA historical declassification should be modeled as a release pipeline from classified records through review, redaction and public electronic reading-room publication.",
+      "nsa_anchor":"NSA declassification should be modeled separately from operational collection because its public archive is a filtered disclosure layer.",
+      "europol_anchor":"Europol's EIS and SIENA demonstrate two distinct functions: information storage/cross-checking versus secure exchange."
+    },
+    "finance":{
+      "system_components":["central-bank","commercial-bank","investment-bank","asset-manager","pension-fund","insurer","exchange","clearing-house","payment-network","financial-intelligence-unit","sovereign-debt-office","tax-authority","development-bank"],
+      "flow_types":["deposit","loan","bond","equity","derivative","insurance-premium","pension-contribution","tax","subsidy","grant","procurement-payment","dividend","royalty","remittance","capital-flow"],
+      "graph_rule":"Ownership, debt, revenue, cash flow, voting control and beneficial ownership are different relations.",
+      "sovereign_layer":"Every country record should eventually connect budget, debt, maturity structure, tax base, major expenditure categories, central bank, public companies, guarantees and contingent liabilities.",
+      "company_layer":"Major strategic companies should be represented through ownership chains, subsidiaries, financing, key infrastructure dependencies, procurement exposure and geographic footprint.",
+      "risk_layer":["liquidity","solvency","concentration","currency","interest-rate","refinancing","counterparty","geopolitical","supply-chain","regulatory"]
+    },
+    "infrastructure":{
+      "physical_networks":["electricity","gas","oil","district_heat","water","wastewater","rail","road","port","airport","pipeline","warehouse","telecom","subsea_cable","data_centre"],
+      "digital_networks":["internet_exchange","fiber","mobile","cloud","DNS","satellite","data-centre","content-delivery","payment-network"],
+      "dependency_chain":"resource -> generation -> conversion -> transmission -> distribution -> industrial/user demand -> maintenance -> financing -> regulation",
+      "resilience_fields":["capacity","redundancy","single_points_of_failure","spare_capacity","repair_time","supplier_concentration","cross-border_dependency","ownership","regulatory_control"],
+      "north_axis_priority":"For Denmark, Greenland, Canada, Iceland and northern Europe, add Arctic communications, shipping, ports, energy, undersea cables, satellite coverage, fisheries and critical-mineral dependencies."
+    },
+    "energy":{
+      "system":["oil","gas","coal","nuclear","hydro","wind","solar","biomass","geothermal","storage","interconnectors","hydrogen","synthetic_fuels"],
+      "graph_edges":["resource-to-plant","plant-to-grid","grid-to-market","market-to-industry","country-to-import","company-to-asset","asset-to-owner","project-to-financier"],
+      "security_metrics":["import_dependence","generation_concentration","grid_interconnection","storage_duration","fuel_stockpile","seasonality","price_exposure","repairability"]
+    },
+    "law_and_governance":{
+      "layers":["constitution","statute","regulation","administrative_rule","court_decision","contract","treaty","international_law","local_ordinance"],
+      "institutional_flow":"legislature -> statute -> executive regulation -> administration -> enforcement -> court review -> amendment",
+      "authority_fields":["jurisdiction","competence","delegation","oversight","appeal","sanction","budget","appointment","term","transparency"],
+      "eu_layer":["EU treaty","regulation","directive","decision","Court of Justice","Commission","Council","Parliament","national implementation"],
+      "north_programme_rule":"Policy proposals should be mapped to the legal authority that could actually implement them rather than treating government as one undifferentiated actor."
+    },
+    "science_and_technology":{
+      "research_chain":"question -> hypothesis -> experiment/model -> dataset -> publication -> replication -> technology -> deployment -> regulation -> social effect",
+      "institution_types":["university","public laboratory","private laboratory","research council","standards body","regulator","patent office","funding agency"],
+      "technology_chain":"fundamental science -> engineering -> prototype -> manufacturing -> deployment -> maintenance -> recycling",
+      "dependency_fields":["critical_material","specialized_equipment","patent","skilled_labour","compute","energy","capital","regulatory_approval"],
+      "standard_model_bridge":"Keep the Standard Model as an empirical physics branch. Symbolic Potatoverse correspondences can sit beside it but must never be encoded as physical equivalence."
+    },
+    "health_and_biology":{
+      "system":["primary_care","hospital","pharmacy","laboratory","public_health","insurance","care_work","medical_device","biotech","food_system"],
+      "flows":["patient","diagnosis","test","treatment","drug","payment","insurance_claim","public_health_signal","research_result"],
+      "resilience":["staffing","drug_supply","device_supply","beds","laboratory_capacity","vaccination","surveillance","emergency_capacity"]
+    },
+    "labour_and_demography":{
+      "population_flows":["birth","death","migration","education","employment","retirement","family_formation"],
+      "labour_graph":["skill","occupation","employer","sector","wage","training","migration","productivity","collective_bargaining"],
+      "fiscal_link":"population -> workers -> tax base -> public revenue -> services -> pensions -> health expenditure -> debt sustainability",
+      "north_axis_priority":"Map aging, migration, labour shortages, Arctic settlement, skilled-worker mobility and cross-border education."
+    },
+    "internet_information_ecology":{
+      "layers":["physical_network","hosting","platform","community","moderation","algorithm","user","content","archive","journalism","law_enforcement","offline_event"],
+      "platform_types":["imageboard","forum","social_network","messaging","video","livestream","search","archive","wiki","paste_site"],
+      "migration_model":"community -> moderation change -> migration -> new platform -> archive -> media attention -> institutional response -> migration again",
+      "4chan":"Treat as a decentralized collection of boards and cultures, not a single ideological organization.",
+      "kiwi_farms":"Treat as a distinct forum/community ecosystem with a documented history of harassment controversies and platform/deplatforming events; allegations must remain case-specific.",
+      "reddit":"Treat each subreddit/community, moderator structure and moderation policy as a potentially separate node while preserving Reddit as the platform-level parent.",
+      "heatmap_rule":"Geographic visualization should show documented event locations and uncertainty ranges, not imply geographic concentration merely from online participation."
+    },
+    "history_and_conflict":{
+      "event_model":["date","location","actors","institution","trigger","action","casualties","material_effect","legal_response","investigation","source","confidence"],
+      "conflict_chain":"political decision -> mobilization -> financing -> logistics -> operation -> infrastructure impact -> civilian effect -> diplomatic response -> reconstruction",
+      "controversy_chain":"claim -> allegation -> investigation -> evidence -> finding -> rebuttal -> unresolved questions",
+      "assassination_rule":"Deaths and assassination claims require separate fields for fact of death, cause of death, official attribution, alternative attribution and evidence quality."
+    },
+    "geography":{
+      "place_types":["country","region","city","port","border","island","arctic_zone","sea","river","mountain","resource_basin","infrastructure_site"],
+      "place_edges":["contains","borders","connects","supplies","depends-on","hosts","controls","transits","overlaps"],
+      "arctic_layer":["Greenland","Faroe Islands","Iceland","northern Canada","Norway","Sweden","Finland","Arctic Ocean","North Atlantic","North Sea","Barents region"],
+      "strategic_fields":["distance","route","seasonality","ice","port","airfield","cable","pipeline","resource","population","military_presence"]
+    },
+    "ownership_and_control":{
+      "control_types":["legal ownership","voting control","beneficial ownership","management control","contractual control","regulatory control","infrastructure control","dependency leverage"],
+      "chain":"ultimate owner -> holding company -> subsidiary -> asset -> operator -> customer -> revenue",
+      "public_private_boundary":"Government ownership, government regulation, government procurement and government financing must remain separate relations.",
+      "strategic_assets":["ports","airports","grids","telecom","subsea cables","data centres","banks","defence firms","energy assets","mineral projects","rail","water"]
+    },
+    "religion_and_culture":{
+      "transmission_chain":"text -> interpretation -> institution -> ritual -> family -> education -> property -> media -> law -> politics -> economy",
+      "sacred_geography":"Map texts, pilgrimage sites, institutions, migration routes and historical centres without collapsing theological traditions into one system.",
+      "comparative_rule":"Historical influence, textual borrowing, symbolic parallel and project mythology remain separate edge types."
+    },
+    "potatoverse":{
+      "growth_chain":"soil -> potato -> root -> connection -> shoot -> light -> branching -> fruit -> seed -> soil",
+      "system_analogy":"The Potato can function as an organizing metaphor for following relationships from an apparently ordinary object into the larger system around it.",
+      "tree_rule":"Tree of Life and Tree of Strife remain project mythology/philosophy; Qliphothic historical claims remain separated by source tradition.",
+      "door_rule":"Door is a project-symbolic interface, not a scientific object or literal neurological mechanism."
+    }
+  },
+  "priority_carving_targets":[
+    "Expand intelligence agency records into agency -> legal authority -> database -> oversight -> historical controversy -> archive.",
+    "Expand each European North Programme country into fiscal, energy, industrial, labour, ownership and infrastructure subgraphs.",
+    "Build a company-to-asset ownership layer for strategic European infrastructure.",
+    "Build an event ledger joining dates, places, organizations, investigations and public records.",
+    "Build a platform/community migration ledger for 4chan, Kiwi Farms, Reddit and adjacent forums.",
+    "Build a hate-symbol and extremist-group evidence ledger with identity, ideology, symbol, incident and allegation separated.",
+    "Expand religious institutions into property, education, demographic, legal and financial relationships.",
+    "Expand Standard Model records into fields, representations, interactions, symmetry breaking and experimental evidence.",
+    "Expand Tree/Strife/Qliphoth research into primary-text, scholarly and later-occult layers.",
+    "Add provenance and temporal validity to relationships throughout the empirical graph."
+  ]
+}
