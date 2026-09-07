@@ -1,0 +1,22 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-07",
+  "purpose": "Eighth additive country-enrichment batch with real country data and research queues.",
+  "canonical_count": 195,
+  "previous_enriched_count": 173,
+  "added_count": 8,
+  "enriched_count": 181,
+  "added_ids": [
+    "sri-lanka",
+    "sudan",
+    "suriname",
+    "syria",
+    "tajikistan",
+    "timor-leste",
+    "togo",
+    "tonga"
+  ],
+  "record_pattern": "data/countries/<country-id>-enrichment.json",
+  "page_pattern": "nation.html?id=<country-id>",
+  "node_manifest": "data/country-nodes-batch-2026-09-07-08.json"
+}
