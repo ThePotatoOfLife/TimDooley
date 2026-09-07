@@ -1,0 +1,24 @@
+name: Refresh country atlas
+
+on:
+  schedule:
+    - cron: '17 4 * * *'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  refresh-country-atlas:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Refresh normalized country observations
+        run: python scripts/refresh_country_atlas.py
+      - name: Commit refreshed country data
+        run: |
+          git config user.name 'country-atlas-bot'
+          git config user.email 'country-atlas-bot@users.noreply.github.com'
+          git add data/countries data/country-refresh-state.json
+          git diff --cached --quiet || git commit -m 'Refresh country atlas data'
+          git push
