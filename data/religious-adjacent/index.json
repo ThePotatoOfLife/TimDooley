@@ -1,0 +1,16 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-07",
+  "name":"Religious-Adjacent Research Index",
+  "purpose":"Machine-readable index for cults, mystery traditions, deity cults, occult orders, esoteric movements, Satanic movements and anti-religious currents that sit beside the main religion registry.",
+  "blueprint":"data/blueprints/religious-adjacent-master.json",
+  "specialized_blueprints":["data/blueprints/mystery-cult-master.json","data/blueprints/occult-order-master.json"],
+  "base_records":"data/religious-adjacent/records.json",
+  "base_record_count":22,
+  "deep_expansions":[{"file":"data/religious-adjacent/deep-expansions.json","record_count":7,"scope":["Roman Mithraic Mysteries","Eleusinian Mysteries","Hermeticism","Golden Dawn","Freemasonry","Thelema","modern Satanism cluster"]},{"file":"data/religious-adjacent/deep-expansions-2.json","record_count":8,"scope":["Moloch / Molek","Cult of Saturn / Saturnalia","Dionysian / Bacchic Mysteries","Cult of Isis","Roman Imperial Cult","Orphic Traditions","Rosicrucianism","Theosophical Society"]}],
+  "deep_expansion_total":15,
+  "base_categories":["ancient deity cult","mystery cult","state cult","esoteric religious-philosophical tradition","initiatory occult order","modern Satanism","new religious movement","anti-religious current"],
+  "coverage_status":"22 base records plus 15 dense field-by-field expansions. Expanded records are deliberately separate from the base registry so a compact public index can coexist with research-depth material.",
+  "integrity_rules":["Base records and deep expansions may overlap by id; deep expansions are enrichment layers, not duplicate canonical entities.","Ancient cults are not treated as continuous modern religions without evidence.","Self-identification, hostile labeling and scholarly classification remain separate.","Claims of secret lineage require documentary evidence.","Modern occult use of ancient symbols is not itself evidence of historical continuity.","Unknown or disputed material must be described explicitly rather than filled with invented facts."],
+  "next_research_targets":["Church of Satan","The Satanic Temple","Temple of Set","Order of Nine Angles","Process Church of the Final Judgment","Ordo Templi Orientis","Anthroposophy","militant anti-religious/state secularization movements","Magna Mater/Cybele","Attis","Serapis","Sol Invictus","Neoplatonic theurgy","Chaldean Oracles","Gnosticism and named Gnostic schools","Christian Cabala","alchemy","astrology","grimoires","Bavarian Illuminati","Carbonari","Odd Fellows","Skull and Bones","Wicca","Druid Revival","modern Heathenry"]
+}
