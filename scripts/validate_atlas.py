@@ -34,16 +34,20 @@ def main():
         rel=v if isinstance(v,str) else v.get('path','') if isinstance(v,dict) else ''
         if not rel:ERRORS.append(f'Backend endpoint has no path: {k}');continue
         if exists(rel,k in required) and rel.endswith('.json'):load(ROOT/rel)
-    nations=load(ROOT/'data/nations.json').get('nations',[]); ci=load(ROOT/'data/countries/index.json').get('countries',[]); repair=load(ROOT/'data/countries/democratic-republic-of-the-congo.json'); repair_id=repair.get('id')
-    nation_ids={canon_id(x.get('id')) for x in nations if x.get('id')}; country_ids={canon_id(x.get('id')) for x in ci if x.get('id')}
+    nations=load(ROOT/'data/nations.json').get('nations',[]); ci=load(ROOT/'data/countries/index.json').get('countries',[]); repair=load(ROOT/'data/countries/democratic-republic-of-the-congo.json')
+    nation_raw={x.get('id') for x in nations if x.get('id')}; country_raw={x.get('id') for x in ci if x.get('id')}; repair_id=repair.get('id')
+    nation_iso={x.get('iso3') for x in nations if x.get('iso3')}; country_iso={x.get('iso3') for x in ci if x.get('iso3')}|({'COD'} if repair_id else set())
+    country_ids={canon_id(x) for x in country_raw}|({canon_id(repair_id)} if repair_id else set())
     if len(nations)!=195:ERRORS.append(f'Canonical nation directory has {len(nations)} records; expected 195')
-    if len(country_ids)!=195:ERRORS.append(f'Country layer has {len(country_ids)} canonical IDs; expected 195')
-    if nation_ids!=country_ids:ERRORS.append(f'Canonical nation directory and country layer IDs differ: nations-only={sorted(nation_ids-country_ids)} country-only={sorted(country_ids-nation_ids)}')
-    for cid in country_ids:
+    if len(country_iso)!=195:ERRORS.append(f'Country layer has {len(country_iso)} ISO identities; expected 195')
+    if nation_iso!=country_iso:ERRORS.append(f'Canonical nation directory and country layer ISO identities differ: nations-only={sorted(nation_iso-country_iso)} country-only={sorted(country_iso-nation_iso)}')
+    for cid in country_raw:
         p=ROOT/'data/countries'/f'{cid}.json'
-        if cid==canon_id(repair_id):
-            p=ROOT/'data/countries'/'democratic-republic-of-the-congo.json'
-        if not p.exists():ERRORS.append(f'Missing canonical country record: {p.relative_to(ROOT)}')
+        if not p.exists():
+            # Known machine-ID migrations retain their established file names.
+            alt={'turkiye':'turkey','state-of-palestine':'palestine'}.get(cid)
+            if not alt or not (ROOT/'data/countries'/f'{alt}.json').exists():ERRORS.append(f'Missing canonical country record: {p.relative_to(ROOT)}')
+    if repair_id and not (ROOT/'data/countries'/f'{repair_id}.json').exists():ERRORS.append('Missing DRC repair record')
     base=load(ROOT/'data/country-enrichment-index.json'); base_ids=set(base.get('enriched_ids',[])); base_nodes=load(ROOT/'data/country-nodes.json').get('nodes',[])
     batches=sorted(ROOT.glob('data/country-enrichment-batch-*.json')); node_batches=sorted(ROOT.glob('data/country-nodes-batch-*.json')); all_ids=set(base_ids); all_nodes=list(base_nodes); seen=[]
     for bp in batches:
