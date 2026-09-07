@@ -52,19 +52,21 @@ def main():
             d=load(p)
             if not d:ERRORS.append(f'Empty or invalid canonical country record: {p.relative_to(ROOT)}')
     if repair_id and not (ROOT/'data/countries'/f'{repair_id}.json').exists():ERRORS.append('Missing DRC repair record')
-    base_nodes=load(ROOT/'data/country-nodes.json').get('nodes',[]); base_ids={canon_id(x.get('country_id')) for x in base_nodes if x.get('country_id')}; batches=sorted(ROOT.glob('data/country-enrichment-batch-*.json')); node_batches=sorted(ROOT.glob('data/country-nodes-batch-*.json')); all_ids=set(base_ids); all_nodes=list(base_nodes); seen=[]
+    base_nodes=load(ROOT/'data/country-nodes.json').get('nodes',[]); base_layer_ids={canon_id(x) for x in layer.get('enriched_ids',[])[:layer.get('base_enriched_count',0)]}; batches=sorted(ROOT.glob('data/country-enrichment-batch-*.json')); node_batches=sorted(ROOT.glob('data/country-nodes-batch-*.json')); all_ids=set(base_layer_ids); all_nodes=list(base_nodes); seen=[]
     if layer.get('canonical_count')!=195:ERRORS.append('Country layer manifest canonical_count is not 195')
     for bp in batches:
         b=load(bp); ids={canon_id(x) for x in b.get('added_ids',[])}; seen.extend(ids)
         if b.get('added_count')!=len(ids):ERRORS.append(f'{bp.name}: added_count mismatch')
-        if ids&base_ids:WARNINGS.append(f'{bp.name}: contains IDs already present in the base country node layer: {sorted(ids&base_ids)}')
+        if ids&base_layer_ids:WARNINGS.append(f'{bp.name}: contains IDs already represented by the declared base layer: {sorted(ids&base_layer_ids)}')
         if ids-country_ids:ERRORS.append(f'{bp.name}: unknown country IDs: {sorted(ids-country_ids)}')
         all_ids|=ids
     if len(seen)!=len(set(seen)):ERRORS.append('Country enrichment batches contain duplicate country IDs')
     for np in node_batches:all_nodes.extend(load(np).get('nodes',[]))
-    node_ids={canon_id(x.get('country_id')) for x in all_nodes if x.get('country_id')}
-    if node_ids!=all_ids:ERRORS.append(f'Combined country graph nodes and enrichment layers are out of sync: nodes-only={sorted(node_ids-all_ids)} enrichment-only={sorted(all_ids-node_ids)}')
-    if layer.get('effective_enriched_count')!=len(all_ids):ERRORS.append(f'Layer manifest effective_enriched_count={layer.get("effective_enriched_count")} but layered union contains {len(all_ids)} IDs')
+    node_ids={canon_id(x.get('country_id')) for x in all_nodes if x.get('country_id')}; repair_node_ids=node_ids-all_ids
+    if repair_node_ids:
+        if repair_node_ids!={canon_id(repair_id)}:ERRORS.append(f'Unexpected country graph repair nodes: {sorted(repair_node_ids)}')
+    if all_ids-node_ids:ERRORS.append(f'Enrichment layers missing graph nodes: {sorted(all_ids-node_ids)}')
+    if layer.get('effective_enriched_count')!=len(all_ids):ERRORS.append(f'Layer manifest effective_enriched_count={layer.get("effective_enriched_count")} but layered enrichment union contains {len(all_ids)} IDs')
     if layer.get('batch_count')!=len(seen):ERRORS.append(f'Layer manifest batch_count={layer.get("batch_count")} but batch manifests contain {len(seen)} records')
     for cid in sorted(all_ids):
         p=ROOT/'data/countries'/f'{cid}-enrichment.json'
@@ -84,7 +86,7 @@ def main():
             try:t.relative_to(ROOT.resolve())
             except ValueError:continue
             if not t.exists():WARNINGS.append(f'Local HTML reference does not exist: {h.name} → {x}')
-    pc,rc=beliefs(); print(f'Canonical nations: {len(nations)}/195');print(f'Enrichment overlays: {len(all_ids)} ({len(base_ids)} base + {len(seen)} batch records)');print(f'Country graph nodes: {len(all_nodes)}');print(f'Enrichment batches discovered: {len(batches)}');print(f'Graph registry records: {len(graph.get("records",[]))}');print(f'Relationships checked: {len(rels.get("relationships",[]))}');print(f'Political beliefs: {pc} · Religious beliefs: {rc}');print(f'Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}')
+    pc,rc=beliefs(); print(f'Canonical nations: {len(nations)}/195');print(f'Enrichment overlays: {len(all_ids)} ({len(base_layer_ids)} base + {len(seen)} batch records)');print(f'Country graph nodes: {len(all_nodes)} (+{len(repair_node_ids)} explicit repair node)');print(f'Enrichment batches discovered: {len(batches)}');print(f'Graph registry records: {len(graph.get("records",[]))}');print(f'Relationships checked: {len(rels.get("relationships",[]))}');print(f'Political beliefs: {pc} · Religious beliefs: {rc}');print(f'Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}')
     for x in WARNINGS[:100]:print('WARNING:',x)
     for x in ERRORS[:100]:print('ERROR:',x)
     return 1 if ERRORS else 0
