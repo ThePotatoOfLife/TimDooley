@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="Repository-backed national record with optional live enrichment.">
+<meta name="description" content="Repository-backed national record. No live API is required to display a country.">
 <title>Nation — The Potato of Life</title>
 <link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="consistency.css">
 </head>
@@ -11,64 +11,62 @@
 <main class="nation-page"><a class="back" href="nations.html">← All nations</a><div id="content"><p class="loading">Loading national record…</p></div></main>
 <script>
 const params=new URLSearchParams(location.search);
-const requested=(params.get('id')||params.get('iso3')||'').trim();
+const requested=(params.get('id')||params.get('iso3')||'').trim().toLowerCase();
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-const local=async path=>{const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status+' for '+path);return r.json()};
-const optional=async path=>{try{return await local(path)}catch{return null}};
-const latest=(rows,key)=>((rows||[]).filter(r=>r.indicator?.id===key&&r.value!==null&&r.value!==undefined).sort((a,b)=>Number(b.date)-Number(a.date))[0]||null);
+const load=async path=>{const r=await fetch(path);if(!r.ok)throw Error('HTTP '+r.status+' for '+path);return r.json()};
+const optional=async path=>{try{return await load(path)}catch{return null}};
+const fmt=v=>v===null||v===undefined||v===''?'Not yet sourced':typeof v==='number'?v.toLocaleString():String(v);
 const link=(id,label)=>`<a href="node.html?id=${encodeURIComponent(id)}">${esc(label||id)}</a>`;
-function metric(value,suffix='',prefix=''){return value===null||value===undefined||value===''?'Not yet sourced':prefix+value+suffix}
+
 async function init(){
   const content=document.getElementById('content');
   try{
-    // The archive is authoritative for page existence. No external service is required to render a country.
-    const directory=await local('data/nations.json');
+    // One repository snapshot is the primary source. There is deliberately no browser-side live API.
+    const snapshot=await optional('data/country-static.json');
+    const directory=await load('data/nations.json');
     const nations=Array.isArray(directory.nations)?directory.nations:[];
-    const n=nations.find(x=>x.id===requested||String(x.iso3||'').toLowerCase()===requested.toLowerCase()||String(x.iso2||'').toLowerCase()===requested.toLowerCase());
-    if(!n)throw Error('Nation not found in the canonical country directory: '+requested);
-    const [record,enrichment,atlas,countryNodes]=await Promise.all([
-      optional(`data/countries/${encodeURIComponent(n.id)}.json`),
-      optional(`data/countries/${encodeURIComponent(n.id)}-enrichment.json`),
-      optional('data/country-atlas.json'),
-      optional('data/country-nodes.json')
-    ]);
-    const ei=enrichment?.identity||{};
-    const ep=enrichment?.political_system||{};
-    const eeco=enrichment?.economy||{};
-    const rel=[...(Array.isArray(record?.relationships)?record.relationships:[]),...(Array.isArray(enrichment?.relationships)?enrichment.relationships:[])];
-    const uniqueRel=[];const seen=new Set();
-    for(const r of rel){const k=JSON.stringify([r.type,r.target,r.status]);if(!seen.has(k)){seen.add(k);uniqueRel.push(r)}}
-    const atlasEntry=Array.isArray(atlas?.countries)?atlas.countries.find(x=>x.id===n.id):null;
-    const nodeEntry=Array.isArray(countryNodes?.nodes)?countryNodes.nodes.find(x=>x.id===n.id):null;
-    const obs=record?.observations||{};
-    const pop=obs.population?.value??obs.population_total?.value??atlasEntry?.population??nodeEntry?.population;
-    const gdp=obs.gdp_current_usd?.value??obs.gdp?.value??eeco.gdp_current_usd_billion;
-    const description=ei.description||record?.description||atlasEntry?.description||`${n.name} — canonical national record in the Atlas.`;
-    const layers=Object.keys(enrichment||{}).filter(k=>!['country_id','iso2','iso3','blueprint','updated','provenance','relationships','research_queue'].includes(k));
-    document.title=`${n.name} — The Potato of Life`;
+    let country=(snapshot?.countries||[]).find(c=>c.id===requested||String(c.iso3||'').toLowerCase()===requested||String(c.iso2||'').toLowerCase()===requested);
+    const directoryCountry=nations.find(c=>c.id===requested||String(c.iso3||'').toLowerCase()===requested||String(c.iso2||'').toLowerCase()===requested);
+    if(!directoryCountry)throw Error('Country not found in the canonical 195-country directory: '+requested);
+
+    // During the first static build, fall back to the individual repository record. This is local-only.
+    if(!country){
+      country=await optional(`data/countries/${encodeURIComponent(directoryCountry.id)}.json`);
+      if(country){
+        country={
+          id:country.identity?.id||directoryCountry.id,name:country.identity?.name||directoryCountry.name,
+          status:directoryCountry.status,iso2:country.identity?.iso2||directoryCountry.iso2,iso3:country.identity?.iso3||directoryCountry.iso3,
+          capital:directoryCountry.capital,region:directoryCountry.region,subregion:directoryCountry.subregion,
+          record_status:country.status,coverage:country.coverage||{},observations:country.observations||{},relationships:country.relationships||[],history:country.history||[],research_queue:country.research_queue||[],provenance:country.provenance||{},enrichment:{}
+        };
+      }
+    }
+    if(!country)throw Error('The repository has not generated the static country snapshot for this record yet.');
+
+    const obs=country.observations||{};
+    const relationships=Array.isArray(country.relationships)?country.relationships:[];
+    const enrichment=country.enrichment||{};
+    const political=enrichment.political_system||{};
+    const identity=enrichment.identity||{};
+    const description=identity.description||`${country.name} is a canonical national record in the Atlas. The figures shown here are repository snapshots with source and year metadata preserved.`;
+    const metric=(key,label)=>{
+      const x=obs[key];
+      if(x&&typeof x==='object'&&'value' in x)return `<div class="fact"><h3>${esc(label)}</h3><div class="metric">${esc(fmt(x.value))}</div><p>${esc(x.year||x.reference_period||'Source year not stated')} · repository snapshot</p></div>`;
+      if(x!==undefined&&x!==null)return `<div class="fact"><h3>${esc(label)}</h3><div class="metric">${esc(fmt(x))}</div><p>repository snapshot</p></div>`;
+      return `<div class="fact"><h3>${esc(label)}</h3><div class="metric">Not yet sourced</div><p>Explicitly missing</p></div>`;
+    };
+    const links=relationships.slice(0,100).map(r=>`<li><strong>${esc(r.type||'related')}</strong> → ${r.target?link(r.target,r.target):'Unresolved target'}${r.status?' · '+esc(r.status):''}</li>`).join('');
+    const queue=(country.research_queue||[]).slice(0,30).map(x=>`<li>${esc(x)}</li>`).join('');
+    document.title=`${country.name} — The Potato of Life`;
     content.innerHTML=`
-      <section class="nation-hero"><div class="eyebrow">NATIONAL RECORD · ${esc(n.iso3)}</div><h1>${esc(n.name)}</h1><p>${esc(ei.official_name||n.name)}</p><div class="meta"><span>ISO-2 ${esc(n.iso2)}</span><span>ISO-3 ${esc(n.iso3)}</span><span>Capital ${esc(n.capital||'Not yet sourced')}</span><span>${esc(n.region||'')} · ${esc(n.subregion||'')}</span><span>${esc(n.status||'')}</span></div></section>
-      <section class="nation-section"><h2>Country record</h2><p>${esc(description)}</p><div class="facts"><div class="fact"><h3>Population</h3><div class="metric">${pop!==undefined&&pop!==null?Number(pop).toLocaleString():'Not yet sourced'}</div><p>Repository observation/state</p></div><div class="fact"><h3>Economy</h3><div class="metric">${gdp!==undefined&&gdp!==null?(typeof gdp==='number'&&gdp<1000000?'$'+Number(gdp).toFixed(1)+'B':'$'+Number(gdp).toLocaleString()):'Not yet sourced'}</div><p>Local archive value when available</p></div><div class="fact"><h3>Research layers</h3><div class="metric">${layers.length}</div><p>Populated local overlay sections</p></div></div></section>
-      <section class="nation-section"><h2>Canonical identity</h2><div class="grid"><div class="fact"><h3>Political record</h3><p>${esc(ep.system_type||'Not yet sourced')}</p><p>${ep.head_of_state?'Head of state: '+esc(ep.head_of_state):'Head of state: Not yet sourced'}</p><p>${ep.head_of_government?'Head of government: '+esc(ep.head_of_government):'Head of government: Not yet sourced'}</p></div><div class="fact"><h3>Repository state</h3><p>Node instantiated: ${record?.coverage?.node_instantiated?'Yes':'Unknown'}</p><p>Observations: ${record?.coverage?.observations??0}</p><p>Relationships: ${uniqueRel.length}</p><p>Sources: ${record?.coverage?.sources??0}</p></div></div></section>
-      ${uniqueRel.length?`<section class="nation-section"><h2>Explicit relationships</h2><ul>${uniqueRel.slice(0,100).map(r=>`<li><strong>${esc(r.type||'related')}</strong> → ${r.target?link(r.target,r.target):'Unresolved target'}${r.status?' · '+esc(r.status):''}</li>`).join('')}</ul></section>`:''}
-      <section class="nation-section"><h2>Research state</h2><p>${record?.research_queue?.length?`This country has ${record.research_queue.length} identified research areas still awaiting source enrichment.`:'The repository does not currently expose an open research queue for this record.'}</p><p class="source">Unknown values are intentionally shown as missing rather than invented. Local repository data is the primary page source.</p></section>
-      <section class="nation-section"><h2>Live enrichment</h2><p id="live-status">Optional live indicators are being checked in the background. They cannot prevent this local record from loading.</p><div id="live-data"></div></section>
-      <section class="nation-section"><h2>Repository layer</h2><p><a href="${esc(`https://github.com/ThePotatoOfLife/TimDooley/blob/main/data/countries/${encodeURIComponent(n.id)}.json`)}">Open local country record</a> · <a href="${esc(`https://github.com/ThePotatoOfLife/TimDooley/blob/main/data/countries/${encodeURIComponent(n.id)}-enrichment.json`)}">Open enrichment overlay</a></p><p class="source">Canonical directory: ${directory.count||nations.length} nations. External services are optional enrichment only.</p></section>`;
-    optionalLive(n);
-  }catch(e){content.innerHTML=`<section class="nation-section"><h1>National record unavailable</h1><p class="error">${esc(e.message)}</p><p>The repository could not resolve this country from its canonical local directory. No external live source is required for a valid country page.</p><p><a href="nations.html">Return to all nations</a> · <a href="repository.html">Open the Atlas</a></p></section>`}
-}
-async function optionalLive(n){
-  const status=document.getElementById('live-status'),out=document.getElementById('live-data');
-  if(!status||!out||!n.iso3)return;
-  try{
-    const url=`https://api.worldbank.org/v2/country/${encodeURIComponent(n.iso3)}/indicator/SP.POP.TOTL,NY.GDP.MKTP.CD,NY.GDP.PCAP.CD,NY.GDP.MKTP.KD.ZG,FP.CPI.TOTL.ZG,SL.UEM.TOTL.ZS,GC.DOD.TOTL.GD.ZS?format=json&per_page=100`;
-    const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('HTTP '+r.status);
-    const raw=await r.json();const rows=Array.isArray(raw?.[1])?raw[1]:[];
-    const names={SP.POP.TOTL:'Population',NY.GDP.MKTP.CD:'GDP current US$',NY.GDP.PCAP.CD:'GDP per capita',NY.GDP.MKTP.KD.ZG:'Real GDP growth',FP.CPI.TOTL.ZG:'Inflation',SL.UEM.TOTL.ZS:'Unemployment',GC.DOD.TOTL.GD.ZS:'Government debt / GDP'};
-    const items=Object.entries(names).map(([k,label])=>{const x=latest(rows,k);return x?`<li><strong>${esc(label)}</strong>: ${esc(Number(x.value).toLocaleString(undefined,{maximumFractionDigits:2}))} · ${esc(x.date)}</li>`:''}).filter(Boolean).join('');
-    out.innerHTML=items?`<ul>${items}</ul>`:'<p>No current World Bank observations were returned.</p>';
-    status.textContent='Live enrichment available. Repository data remains the canonical fallback.';
-  }catch(e){status.textContent='Live enrichment unavailable — repository data shown. This is non-fatal.';out.innerHTML=''}
+      <section class="nation-hero"><div class="eyebrow">NATIONAL RECORD · ${esc(country.iso3||directoryCountry.iso3)}</div><h1>${esc(country.name)}</h1><p>${esc(identity.official_name||country.name)}</p><div class="meta"><span>ISO-2 ${esc(country.iso2||directoryCountry.iso2)}</span><span>ISO-3 ${esc(country.iso3||directoryCountry.iso3)}</span><span>Capital ${esc(country.capital||'Not yet sourced')}</span><span>${esc(country.region||'')} · ${esc(country.subregion||'')}</span><span>${esc(country.status||'State')}</span></div></section>
+      <section class="nation-section"><h2>Country record</h2><p>${esc(description)}</p><div class="facts">${metric('population','Population')}${metric('gdp','GDP')}${metric('gdp_per_capita','GDP per capita')}${metric('real_growth','Real GDP growth')}${metric('inflation','Inflation')}${metric('unemployment','Unemployment')}${metric('life_expectancy','Life expectancy')}${metric('fertility','Fertility')}</div></section>
+      <section class="nation-section"><h2>Political and institutional layer</h2><div class="grid"><div class="fact"><h3>Political system</h3><p>${esc(political.system_type||'Not yet sourced')}</p><p>${political.head_of_state?'Head of state: '+esc(political.head_of_state):'Head of state: Not yet sourced'}</p><p>${political.head_of_government?'Head of government: '+esc(political.head_of_government):'Head of government: Not yet sourced'}</p></div><div class="fact"><h3>Archive coverage</h3><p>Status: ${esc(country.record_status||'instantiated')}</p><p>Observations: ${esc(country.coverage?.observations??Object.keys(obs).length)}</p><p>Relationships: ${esc(country.coverage?.relationships??relationships.length)}</p><p>Sources: ${esc(country.coverage?.sources??0)}</p></div></div></section>
+      ${relationships.length?`<section class="nation-section"><h2>Explicit relationships</h2><ul>${links}</ul></section>`:''}
+      <section class="nation-section"><h2>Research state</h2><p>${queue?`The repository has ${country.research_queue.length} identified research areas for further source enrichment.`:'No open research queue is currently recorded.'}</p>${queue?`<ul>${queue}</ul>`:''}<p class="source">Unknown values are shown as missing rather than invented. The browser does not query a live country API.</p></section>
+      <section class="nation-section"><h2>Data provenance</h2><p>Static repository snapshot generated by the country acquisition workflow. Individual observations retain their source and year where available.</p><p class="source">Last repository refresh: ${esc(country.provenance?.last_refresh||country.provenance?.retrieved||snapshot?.generated_at||'Not yet recorded')}</p></section>
+      <section class="nation-section"><h2>Repository layer</h2><p><a href="https://github.com/ThePotatoOfLife/TimDooley/blob/main/data/countries/${encodeURIComponent(country.id)}.json">Open local country record</a> · <a href="nations.html">Back to the 195-country directory</a></p><p class="source">Canonical directory: ${directory.count||nations.length} countries. Live internet access is not required to display this page.</p></section>`;
+  }catch(e){content.innerHTML=`<section class="nation-section"><h1>National record unavailable</h1><p class="error">${esc(e.message)}</p><p>The frontend is repository-only. If this is a newly generated static snapshot, the country acquisition workflow may still be rebuilding the data.</p><p><a href="nations.html">Return to all nations</a> · <a href="repository.html">Open the Atlas</a></p></section>`}
 }
 init();
 </script>
