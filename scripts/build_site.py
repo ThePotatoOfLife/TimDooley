@@ -1,32 +1,13 @@
 #!/usr/bin/env python3
-"""Build the GitHub Pages artifact as one self-contained index.html."""
+"""Build the GitHub Pages artifact from the existing site structure."""
 from __future__ import annotations
 
-import base64
-import json
 import shutil
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 EXCLUDE = {".git", ".github", "_site", "node_modules", "vendor", "__pycache__", "components", "scripts"}
-MARKER = '<script id="potato-data" type="application/json">null</script>'
-
-
-def load_json(path: Path):
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
-
-
-def build_embedded_data() -> str:
-    navigation = load_json(ROOT / "data" / "root-navigation.json")
-    record_index = load_json(ROOT / "data" / "root-record-index.json")
-    payload = {
-        "manifest": navigation,
-        "records": record_index.get("records", []),
-    }
-    raw = json.dumps(payload, ensure_ascii=False, separators=(",", ":"))
-    return base64.b64encode(raw.encode("utf-8")).decode("ascii")
 
 
 def copy_tree() -> None:
@@ -46,19 +27,20 @@ def copy_tree() -> None:
 
 def build() -> None:
     copy_tree()
-    source = OUT / "index.html"
-    text = source.read_text(encoding="utf-8")
-    if MARKER not in text:
-        raise SystemExit("index.html is missing the potato-data build marker")
-    encoded = build_embedded_data()
-    replacement = f'<script id="potato-data" type="application/json">{encoded}</script>'
-    source.write_text(text.replace(MARKER, replacement, 1), encoding="utf-8")
+    index = OUT / "index.html"
+    root_js = OUT / "root.js"
+    navigation = OUT / "data" / "root-navigation.json"
+    records = OUT / "data" / "root-record-index.json"
+    missing = [str(p.relative_to(OUT)) for p in (index, root_js, navigation, records) if not p.exists()]
+    if missing:
+        raise SystemExit(f"Required reader files are missing from _site: {missing}")
 
     pages = sorted(OUT.rglob("*.html"))
-    if pages != [OUT / "index.html"]:
+    if pages != [index]:
         found = [str(p.relative_to(OUT)) for p in pages]
         raise SystemExit(f"Public site must contain exactly one HTML document: {found}")
-    print(f"Built _site with 1 HTML document and embedded data ({len(encoded)} base64 characters).")
+
+    print("Built _site from the existing index/root.js/data navigation stack.")
 
 
 if __name__ == "__main__":
