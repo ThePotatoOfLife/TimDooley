@@ -40,6 +40,24 @@ This file records root causes and solutions discovered during repository scans. 
 
 **Remaining work:** Inspect the audit output for duplicate IDs that are legitimate overlays versus genuine competing owners; migrate stale integration references; and make canonical registry ownership decisions explicit for any family still classified as general.
 
+## 2026-09-08 — Source-of-truth audit false positives
+
+**Symptom:** The first CI execution of the new source-of-truth audit failed with hundreds of `duplicate canonical owner candidate` errors, including countries, graph concepts, research records and intelligence organizations. It also reported the research directories as missing and interpreted a prose stale-reference declaration as a file path.
+
+**Root cause:** The initial audit inferred canonical authority from the repository-index record role. That role is necessarily broad because the index discovers record-like objects everywhere. Consequently, projections, schemas, graph registries and overlays were falsely treated as canonical owners. The source map also stores `known_stale_references` as documentation, not executable source declarations, and Git does not preserve empty directories such as `data/research/` or `data/expansions/`.
+
+**Solution:** Canonical authority is now derived only from explicit `canonical_owner`/`adjacent_owner` declarations in `canonical-source-map.json`. Repository-index roles remain descriptive. Source-map validation distinguishes files, glob patterns and directories, and the stale-reference list is structured as metadata rather than a fake path. The research directory declarations were removed because there is no repository contract requiring empty directories to exist.
+
+**Actual result:** The failed run proved the repository contains substantial intentional duplication—4,206 record-like objects across 2,874 IDs in the canonical registry—but most of those repetitions are overlays or projections rather than competing owners. The next audit pass must classify the remaining *true* owner conflicts, not treat every repeated ID as an error.
+
+## 2026-09-08 — Potatoism integration stale references
+
+**Symptom:** `data/potatoism-integration.json` still declared `data/potatoism-master-corpus.json` and `data/potatoism-entities.json`, files that are not present in the current repository.
+
+**Root cause:** The integration contract survived a previous corpus restructuring while retaining the old filenames. This made the architecture describe a source-of-truth that no longer existed.
+
+**Solution:** The integration contract now points to `data/potatoism-dossiers.json` for canonical readable entities and `data/potatoism-canonical-corpus.json` for project-canon source material, while retaining deep layers, glossary and public observations as subordinate layers. The old filenames are no longer referenced.
+
 ## Working rule
 
 When a failure is discovered:
