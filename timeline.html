@@ -8,7 +8,7 @@
 <body>
 <header class="topbar"><a class="brand" href="index.html"><span class="brand-mark">✦</span><span>THE POTATO OF LIFE</span></a><nav aria-label="Primary"><a href="repository.html">Repository</a><a class="active" href="timeline.html">Timeline</a><a href="nations.html">World</a><a href="people.html">People</a><a href="belief.html">Ideas</a><a href="potatoism.html">Potatoism</a></nav></header>
 <main class="timeline-app">
-<section class="timeline-intro"><p class="section-label">TIME · EVENTS · FORMATION</p><h1>Timeline</h1><p>One temporal surface for religious foundations, geopolitical events, historical events and Potatoverse lore. Dots are evidence-bearing records, not decorative milestones.</p></section>
+<section class="timeline-intro"><p class="section-label">TIME · EVENTS · FORMATION</p><h1>Timeline</h1><p>One temporal surface for religious foundations, geopolitical events, historical events and Potatoverse lore. The center lens magnifies the year beneath it without changing the underlying time scale.</p></section>
 <section class="timeline-controls" aria-label="Timeline controls">
 <div class="timeline-readout"><strong id="range-label">Loading…</strong><span id="event-count"></span></div>
 <div class="timeline-actions"><button id="back" type="button">← Earlier</button><button id="today" type="button">Now</button><button id="forward" type="button">Later →</button></div>
@@ -17,12 +17,7 @@
 <section class="timeline-viewport" id="viewport" tabindex="0" aria-label="Draggable timeline">
 <div class="timeline-ruler" id="ruler"></div><div class="timeline-track" id="track"></div>
 <div class="timeline-focus-line" aria-hidden="true"></div>
-<div class="timeline-lens" aria-label="Magnified focus year">
-  <div class="lens-content" id="lens-content"></div>
-  <div class="lens-subtitle">focus / magnified</div>
-</div>
-<div class="timeline-door" aria-hidden="true" title="Central Door"></div>
-<div class="timeline-center" aria-hidden="true"></div><div class="timeline-tip" id="tip" hidden></div>
+<div class="timeline-lens" id="timeline-lens" aria-label="Magnifying timeline lens"><div class="lens-content" id="lens-content"></div><div class="lens-subtitle">drag lens or timeline</div></div>
 </section>
 <section class="timeline-detail" id="detail"><p class="muted">Select an event dot to inspect its full record.</p></section>
 <section class="timeline-legend"><strong>Layers</strong><span><i class="dot religion"></i>Religious foundation</span><span><i class="dot geopolitical"></i>Geopolitical</span><span><i class="dot historical"></i>Historical</span><span><i class="dot lore"></i>Potatoverse lore</span></section>
