@@ -1,14 +1,14 @@
 {
-  "version":"2.0.0",
+  "version":"3.0.0",
   "updated":"2026-09-08",
-  "purpose":"Frontend discovery and fallback bridge for the unified atlas. Backend datasets remain modular; humans enter through a small number of stable gateways.",
+  "purpose":"Bridge for the single public index. The repository keeps modular backend data, but the homepage is the only public navigation doorway.",
   "data_roots":["data/"],
-  "canonical_layers":["graph","world","research","systems","security","beliefs","emotion","mythology","people","relational_dynamics"],
-  "public_spine":{"home":"index.html","read":"scroll.html","atlas":"repository.html","timeline":"timeline.html","potatoism":"potatoism.html","explore":"explore.html"},
-  "deep_surfaces":{"center":"tim-dooley.html","thought":"thoughts.html","potato":"potato-of-life.html","world":"nations.html","spirit":"belief.html","culture":"culture.html","books":"books.html","state":"hawkins.html","bible":"bible.html","axis":"axis.html"},
-  "route_map":{"home":"index.html","read":"scroll.html","explore":"explore.html","atlas":"repository.html","world":"nations.html","country":"nation.html?id={id}","record":"node.html?id={id}","belief":"belief.html","people":"people.html","axis":"axis.html","potatoism":"potatoism.html","bible":"bible.html","hawkins":"hawkins.html"},
+  "canonical_layers":["graph","world","research","systems","security","beliefs","mythology","people","culture","potatoism","north-programme"],
+  "public_spine":{"home":"index.html"},
+  "deep_surfaces":{},
+  "route_map":{"home":"index.html","record":"index.html#node={id}","country":"index.html#node={id}","dataset":"index.html"},
   "record_resolution":{"id_fields":["id","slug","country_id","countryId","key"],"name_fields":["name","title","label"],"alias_fields":["aliases","alternative_names","aka"],"description_fields":["description","summary","overview"],"relationship_fields":["relationships","edges","links"],"source_fields":["source_ids","sources","evidence","source"]},
-  "fallback_policy":{"live_source_failure":"show repository-backed data and mark live enrichment unavailable","json_failure":"skip optional dataset and continue with canonical datasets","country_failure":"fall back from live country source to country index, country-atlas, country-nodes and local enrichment","empty_description":"show record identity plus available relationships and evidence rather than a blank page"},
-  "integrity_requirements":["Every visible Atlas entry has a route or explicit external-only state","Every relationship endpoint resolves or is explicitly marked unresolved","No single live-source request is allowed to blank the Atlas","Unknown data is represented as missing/unknown, never as zero","Backend-only datasets remain discoverable through the Atlas index","Canonical IDs remain stable while aliases may expand","Deep surfaces are linked from Explore rather than duplicated in the global header"],
-  "design_rule":"Navigation should reveal the structure of the knowledge without becoming the structure itself. The global header is intentionally small; Explore is the complete human-facing directory; Repository is the machine-backed record browser."
+  "fallback_policy":{"json_failure":"skip optional dataset and continue with canonical datasets","country_failure":"use the canonical country record in data/countries/","empty_description":"show record identity plus available relationships and evidence rather than a blank page"},
+  "integrity_requirements":["Every visible Atlas entry has a route into index.html or is explicitly external-only","Every relationship endpoint resolves or is explicitly marked unresolved","Unknown data is represented as missing/unknown, never as zero","Backend-only datasets remain discoverable through the index","Canonical IDs remain stable while aliases may expand","No stale standalone HTML reader is treated as a required navigation surface"],
+  "design_rule":"The index is the public Door. Data files remain modular for maintainability, but the reader should not have to know which historical subsystem owns a record."
 }
