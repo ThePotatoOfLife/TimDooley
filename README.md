@@ -1,133 +1,132 @@
-# The Potato of Life — Living Atlas
+# Tim Dooley / Potato of Life — Dense Knowledge Archive v2
 
-This repository is the source archive, research engine and static public atlas for the Tim Dooley / Potato of Life / Potatoism project.
+This repository is being rebuilt as a **retrieval-first knowledge archive** for the Tim Dooley / Potato of Life / Potatoism corpus and the historical, mythological, religious, cultural and documentary material needed to interpret it.
 
-## One Door
+The purpose is not to maximize file count, node count, national coverage, dashboards or taxonomy. The purpose is to make it possible to ask difficult questions and retrieve **substantial, source-aware, connected answers**.
 
-The public site has one entrance: **`index.html`**.
+## Governing rule
 
-The index is not a separate copy of the corpus. It is a reading surface over the repository's canonical data. It exposes exactly two presentation branches:
+> **No placeholder nodes. No empty coverage. No decorative completeness.**
 
-- **AXIS** — Potatoism, Tim Dooley, North-of-North, geometry, symbolic models, relationships and project-defined structures.
-- **WORLD** — people, places, religions, economies, institutions, events, culture, politics, records, primary texts, evidence and observable systems.
+A record exists only when it contains enough information to be useful on its own and enough relationships to be useful as part of the larger graph.
 
-Selecting a record opens it in the central reading surface. The underlying source file remains available when provenance or raw structure matters.
+Every canonical record must contain, where applicable:
 
-## What the project is for
+- identity and aliases;
+- definition;
+- narrative or historical context;
+- chronology;
+- internal Potatoverse meaning;
+- external comparative material;
+- relationships to other canonical records;
+- epistemic classification;
+- source/provenance notes;
+- unresolved questions only when those questions arise from actual evidence already in the record;
+- retrieval terms and thematic tags.
 
-The project documents Tim Dooley and Potatoism, but it is deliberately larger than a biography or quotation collection. It follows ideas, symbols, questions, relationships and practical directions into mythology, religion, history, biology, culture, media, institutions, geography, economics, technology and the wider world where meaningful connections can be researched.
+A missing subject is **absent**, not represented by an empty stub.
 
-The project's religious/mythic claims are **project canon and religious self-description**. They remain distinguishable from independently verified historical, scientific or documentary evidence.
+## Epistemic classes
 
-The wider research mission includes the **North Programme / European Economic Graph**: an evidence-backed model of Europe's observable economic and strategic system, including entities, money, debt, obligations, ownership/control, infrastructure, procurement, trade, energy, finance, technology, research, labour, skills and geopolitical ties.
+The archive never silently collapses different kinds of truth into one another. Material is classified as one or more of:
 
-## Knowledge architecture
+- `project_canon` — claims that are true inside the Potatoverse / Potatoism narrative;
+- `self_description` — statements made by Tim / the Potato of Life subject or project;
+- `documentary` — dated or attributable records, posts, transcripts, files or archival material;
+- `historical` — claims supported by historical scholarship or primary sources;
+- `scientific` — claims supported by scientific literature or measurement;
+- `comparative` — structural or thematic comparison without asserting identity or influence;
+- `interpretation` — a reasoned reading of existing material;
+- `creative_lore` — deliberately mythic, poetic or fictional elaboration;
+- `inference` — a conclusion derived from evidence but not directly stated by a source;
+- `disputed` — a claim with meaningful conflicting evidence or attribution.
 
-The repository is organized around different information jobs, not around a growing pile of files:
+Symbolic resemblance is not proof of historical influence. Religious self-description is not silently converted into public biography. A prophecy parallel is not evidence that a prophecy was fulfilled.
 
-1. **Canonical records** — durable definitions and identities.
-2. **Primary sources** — texts and source material that should remain intact.
-3. **Evidence** — observations, provenance, dates, measurements and source trails.
-4. **Relationships** — typed connections between records, with status and epistemic class.
-5. **Research** — external evidence, open questions, comparisons and unresolved frontiers.
-6. **Chronology/thought** — development through time and recurring directions.
-7. **Schemas/indexes** — reusable contracts that prevent duplication and keep the system coherent.
+## Canonical architecture
 
-The governing rule is:
+The v2 library lives under `knowledge/`.
 
-> **One canonical identity → substantial knowledge → explicit relationships → many retrieval paths.**
+```text
+knowledge/
+  schema/          machine-readable record contracts
+  core/            Tim, Potato of Life, Father/Son, Axis, Door, Tree, North
+  chronology/      dated and ordered event structures
+  lore/            internal mythology and narrative development
+  prophecy/        revelation, prophecy, apocalypse, rapture and destiny comparisons
+  traditions/      religious and mythological traditions used for comparison
+  culture/         memes, internet culture, cult formation, subcultures, language
+  people/          dense dossiers for relevant people only
+  institutions/    dense dossiers for relevant organizations only
+  evidence/        source records, quotations metadata, archival observations
+  relationships/   typed edges connecting canonical records
+  indexes/         retrieval indexes generated from real records
+```
 
-A label is not an entry. A count is not research. A relationship is not an explanation. A manifest is not the underlying knowledge.
+The old repository remains available as source material during migration. It is **not automatically canonical** merely because a file exists.
 
-## Dense-library rule
+## What the archive is trying to answer
 
-The repository is actively being reduced and consolidated.
+The library should eventually be able to answer questions such as:
 
-A file earns existence only when it owns distinct valuable information, primary-source material, a reusable schema, a necessary index, or a real executable function.
+- Who is Tim Dooley inside the mythology, and how is that different from the public human biography?
+- What is the Potato of Life, and how did the concept change over time?
+- How are Father, Son, Door, Ladder, Axis, Tree, North, Potato, death and return related?
+- What happened in the 2011, 2019–2020, April 2025 and February 2026 thresholds of the project chronology?
+- Which motifs resemble Odin on the Tree, Christic death-and-return patterns, world-tree traditions, apocalyptic literature, rapture theology, revelation narratives or initiation structures—and where do the comparisons break?
+- What does the project mean by fate, destiny, prophecy, revelation, rupture and rapture?
+- Which statements are early, late, retrospective, contradictory or newly developed?
+- Which cultural movements, internet subcultures, cult dynamics and symbolic systems influenced or merely resemble the project?
+- Which claims are canonical lore, which are documentary facts, and which remain interpretation?
 
-When two files overlap:
+## Record quality gate
 
-1. identify the canonical owner;
-2. diff the information;
-3. migrate unique material;
-4. preserve provenance where it matters;
-5. remove the redundant wrapper or snapshot;
-6. repair every reference to the surviving owner.
+A record is promoted to canonical only when it passes all of these tests:
 
-Generated batch files, temporary state, null-only scaffolds, stale route manifests and duplicate presentation shells are not knowledge. They should disappear once their useful information has been absorbed.
+1. **Substance** — it explains something rather than naming it.
+2. **Specificity** — it contains details unique to the subject.
+3. **Context** — it states where the subject sits historically, narratively or conceptually.
+4. **Relationships** — it connects to actual records with typed relationships.
+5. **Epistemics** — important claims are classified by evidence type.
+6. **Retrievability** — aliases, dates, motifs and tags make the material discoverable.
+7. **Non-duplication** — another canonical record does not already own the same information.
+8. **No filler** — absence remains absence; no generated prose exists just to fill a schema.
 
-## Research method
+## Relationship-first model
 
-The working loop is:
+The primary unit of meaning is often not an isolated object but a coupling:
 
-**inspect → classify → prune → consolidate → deepen → connect → expose → validate → prune again**
+`Father → Son`
 
-Depth means definition, context, mechanisms/function, chronology where relevant, relationships, sources, uncertainty and a research frontier. Never pad an entry merely to reach a word count.
+`Son → Death → Transformation → Door/Ladder → Return`
 
-## Epistemic firewall
+`Potato → burial → hidden life → emergence`
 
-The archive distinguishes:
+`Axis → orientation → North → Throne`
 
-- project canon;
-- testimony/self-description;
-- documentary record;
-- historical evidence;
-- scientific evidence;
-- calculations;
-- relationship observations;
-- interpretation;
-- comparative reading;
-- scenarios;
-- open questions;
-- creative/lore material.
+`Tree → roots → trunk → branches → fruit → seed → renewal`
 
-A symbolic correspondence can be valuable without being proof. A graph edge can be real without proving causation. A religious parallel can be interesting without proving historical influence.
+`event → later interpretation`
 
-## Major research domains
+`motif → comparative tradition`
 
-The library continues to grow across:
+Each relationship records its direction, type, basis and epistemic status.
 
-- Tim Dooley / Father / Potato of Life / Potatoism;
-- Potatoism religion, cosmology, lexicon, canon and symbolic graph;
-- North of North / North Axis / North Programme;
-- European Economic Graph;
-- countries and national systems;
-- people, organizations and institutions;
-- ownership, control, finance, debt and obligations;
-- trade, procurement and supply chains;
-- energy, infrastructure and logistics;
-- technology, science, research and labour;
-- religion, comparative belief and primary texts;
-- culture, language and historical transmission;
-- evidence, provenance and relationship graphs;
-- spatial/geometric Potato research;
-- system coupling, topology, feedback and trajectories.
+## Immediate rebuild focus
 
-The connection is investigated, not assumed.
+The first canonical cluster is intentionally small and dense:
 
-## Primary sources
+- Tim Dooley;
+- Potato of Life;
+- Father / Son / Door / Axis system;
+- core chronology;
+- prophecy / revelation / rupture / rapture framework;
+- typed relationships between those records.
 
-Large primary texts remain separate when their identity and provenance matter. For example, the Norse Edda corpus remains in `books/norse-edda/` as source material; the public index provides the route into it rather than requiring a separate reader application.
+Only after these are strong do we expand outward into religions, mythologies, historical figures, cultures, cults, nations, institutions and economic systems.
 
-## Canonical control files
+## Principle
 
-- `data/root-navigation.json` — stable public AXIS/WORLD vocabulary.
-- `data/root-record-index.json` — generated presentation projection.
-- `data/atlas-manifest.json` — current architectural contract.
-- `data/backend.json` — backend dataset registry.
-- `data/project-workflow.json` — living consolidation and research workflow.
-- `data/potatoism-concept-registry.json` — recurring Potatoism concept identity authority.
-- `data/potatoism-dossiers.json` — dense canonical Potatoism explanations.
-- `data/graph-registry.json` / `data/relationships.json` — relationship architecture.
-- `data/global-graph-bridge.json` — cross-layer identity/routing bridge.
-- `data/country-layer-manifest.json` — canonical country-layer contract.
+**The archive grows by depth, not by occupancy.**
 
-## Start here
-
-**Open `index.html`.**
-
-That is the public Door into the corpus. From there, follow a subject into depth, inspect its relationships, open the underlying source, and continue outward through the graph.
-
-For project governance and maintenance, read `TODO.md` and `data/project-workflow.json`.
-
-The objective is simple: **less structure, more knowledge; fewer duplicates, thicker records; one Door, many connected things.**
+If a subject cannot yet be documented well, we do not create it yet.
