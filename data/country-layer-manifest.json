@@ -1,16 +1,15 @@
 {
-  "version": "2.0.0",
-  "updated": "2026-09-07",
-  "purpose": "Canonical country library manifest. Each country owns one substantive record; reusable schema lives in the blueprints.",
-  "canonical_count": 195,
-  "base_enriched_count": 60,
-  "batch_count": 0,
-  "effective_enriched_count": 195,
-  "batch_manifests": [],
-  "node_manifests": [
-    "data/country-nodes.json"
-  ],
-  "record_pattern": "data/countries/<country-id>.json",
-  "enrichment_pattern": null,
-  "page_pattern": null
+  "version":"2.1.0",
+  "updated":"2026-09-08",
+  "purpose":"Canonical country library manifest. Each country owns one substantive record; reusable schema lives in the blueprints.",
+  "canonical_count":195,
+  "sourced_enriched_count":195,
+  "batch_count":0,
+  "batch_manifests":[],
+  "node_manifests":["data/country-nodes.json"],
+  "record_pattern":"data/countries/<country-id>.json",
+  "enrichment_pattern":null,
+  "page_pattern":null,
+  "ownership":"data/countries/<country-id>.json is the sole canonical country record. Country nodes are graph projections; blueprints are reusable schema; external APIs are acquisition sources only.",
+  "missing_data_policy":"Unknown and not-yet-sourced remain explicit; no missing observation is converted to zero."
 }
