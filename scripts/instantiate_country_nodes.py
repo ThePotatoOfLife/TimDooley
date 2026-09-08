@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Instantiate one backend country record for every country in the canonical index.
+"""Ensure every country in the canonical index has one substantive node file.
 
-This is intentionally conservative: it creates real graph nodes with identity,
-blueprint inheritance, research coverage, provenance slots and relationship hooks.
-It never invents observations. Later source adapters fill observations into the
-same files while preserving the scaffold and history.
+This creates only missing records. Reusable schema lives in the country blueprint;
+country files are for actual identity, observations, relationships, history,
+research queues and provenance. It never creates per-country null scaffolds.
 """
 from __future__ import annotations
 import json
@@ -18,8 +17,7 @@ OUT = ROOT / "data/countries"
 
 
 def load(path):
-    with path.open("r", encoding="utf-8") as f:
-        return json.load(f)
+    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def main():
@@ -28,70 +26,29 @@ def main():
     countries = index["countries"]
     now = datetime.now(timezone.utc).isoformat()
     blueprint_version = blueprint.get("version", "unknown")
-
     created = 0
-    preserved = 0
+
     for c in countries:
         path = OUT / f"{c['id']}.json"
-        existing = None
         if path.exists():
-            try:
-                existing = load(path)
-            except Exception:
-                existing = None
-        if existing:
-            existing.setdefault("blueprint", index["blueprint"])
-            existing.setdefault("blueprint_version", blueprint_version)
-            existing.setdefault("identity", {"id": c["id"], "name": c["name"], "iso2": c["iso2"], "iso3": c["iso3"]})
-            existing.setdefault("coverage", {})
-            existing["coverage"].setdefault("node_instantiated", True)
-            existing["coverage"]["blueprint_inherited"] = True
-            existing.setdefault("relationships", [])
-            existing.setdefault("history", [])
-            path.write_text(json.dumps(existing, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-            preserved += 1
             continue
-
         record = {
-            "record_version": "1.0.0",
+            "record_version": "1.1.0",
             "record_type": "country",
             "status": "instantiated",
-            "identity": {
-                "id": c["id"],
-                "name": c["name"],
-                "iso2": c["iso2"],
-                "iso3": c["iso3"]
-            },
+            "identity": {"id": c["id"], "name": c["name"], "iso2": c["iso2"], "iso3": c["iso3"]},
             "blueprint": index["blueprint"],
             "blueprint_version": blueprint_version,
-            "coverage": {
-                "node_instantiated": True,
-                "blueprint_inherited": True,
-                "observations": 0,
-                "relationships": 0,
-                "sources": 0,
-                "research_status": "ready-for-source-enrichment"
-            },
+            "coverage": {"node_instantiated": True, "blueprint_inherited": True, "observations": 0, "relationships": 0, "sources": 0, "research_status": "ready-for-source-enrichment"},
             "observations": {},
             "relationships": [],
             "history": [],
             "research_queue": [
-                "national statistical office",
-                "constitution and legal framework",
-                "head of state and government",
-                "parliament and electoral system",
-                "religious composition and denominations",
-                "historical timeline",
-                "public finance and debt",
-                "trade and value chains",
-                "energy and natural resources",
-                "infrastructure",
-                "health and education",
-                "labour and migration",
-                "military and public security institutions",
-                "science and technology",
-                "media and digital systems",
-                "international memberships and treaties",
+                "national statistical office", "constitution and legal framework", "head of state and government",
+                "parliament and electoral system", "religious composition and denominations", "historical timeline",
+                "public finance and debt", "trade and value chains", "energy and natural resources", "infrastructure",
+                "health and education", "labour and migration", "military and public security institutions",
+                "science and technology", "media and digital systems", "international memberships and treaties",
                 "ownership and major institutions"
             ],
             "provenance": {
@@ -103,17 +60,7 @@ def main():
         path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         created += 1
 
-    state = {
-        "generated_at": now,
-        "canonical_scope": index["scope"],
-        "countries_seen": len(countries),
-        "nodes_created": created,
-        "nodes_preserved": preserved,
-        "blueprint": index["blueprint"],
-        "rule": "Instantiation creates the graph node; source adapters are responsible for empirical enrichment."
-    }
-    (OUT / "instantiation-state.json").write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps(state, ensure_ascii=False, indent=2))
+    print(json.dumps({"countries_seen": len(countries), "nodes_created": created}, ensure_ascii=False))
 
 
 if __name__ == "__main__":
