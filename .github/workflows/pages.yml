@@ -23,6 +23,7 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
+    timeout-minutes: 25
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -32,8 +33,12 @@ jobs:
           python-version: '3.x'
       - name: Build repository index
         run: python scripts/build_repository_index.py
+      - name: Validate blueprint contract
+        run: python scripts/validate_blueprints.py
       - name: Build static site
         run: python scripts/build_site.py
+      - name: Run whole-project stability audit
+        run: python scripts/stability_audit.py
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
       - name: Configure Pages
