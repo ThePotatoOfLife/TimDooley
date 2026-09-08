@@ -1,0 +1,38 @@
+{
+  "id": "potato-of-life",
+  "title": "Potato of Life",
+  "kind": "central symbol, identity and relational model",
+  "aliases": ["The Potato", "Potato", "Potatoism central symbol"],
+  "summary": "The Potato of Life is the archive's central generative symbol: an ordinary underground organism used to connect burial and life, root and fruit, hiddenness and emergence, multiplicity and continuity, nourishment and regeneration. In the developed Potatoverse it is simultaneously an identity-symbol associated with Tim Dooley, a mythic container for death-to-life transformation, a visual and geometric object, a comic/memetic device and a relational metaphor for a universe in which apparently separate things remain connected through roots, descent, growth and renewal. These functions must be kept distinguishable so that metaphor is not misreported as biology or cosmology.",
+  "epistemic_classes": ["project_canon", "interpretation", "comparative", "creative_lore"],
+  "sections": {
+    "symbolic_core": {
+      "text": "The Potato is powerful in the mythology because it reverses ordinary prestige. It grows in darkness and dirt rather than above the world, yet stores nourishment and the possibility of further life. That makes it suitable for the project's repeated reversal grammar: low ↔ high, buried ↔ revealed, death ↔ life, ridiculous ↔ sacred, root ↔ fruit and hidden ↔ manifest. The symbol does not need a claim that potatoes are literally cosmic objects in order to perform this mythological work.",
+      "epistemic_class": ["project_canon", "interpretation"],
+      "source_ids": ["legacy-readme"]
+    },
+    "identity_function": {
+      "text": "Potato of Life also functions as a public identity and a name for the larger system. Consequently, retrieval must distinguish references to a literal potato, the Potato as symbol, the Potato of Life persona, Potatoism as religion/worldview and the entire Potatoverse archive. Treating all five as a single entity would erase useful distinctions even though the mythology intentionally couples them.",
+      "epistemic_class": ["project_canon", "interpretation"],
+      "source_ids": ["legacy-readme", "legacy-timeline"]
+    },
+    "life_cycle": {
+      "text": "The project's Tree/Potato grammar emphasizes cycles rather than static hierarchy: roots hold origin and potential; a vertical structure carries continuity; differentiated branches or shoots manifest plurality; fruit/tubers store life; seed or viable matter begins another cycle. The mythic use of this grammar is a symbolic model of persistence through transformation, not a substitute for botanical description.",
+      "epistemic_class": ["project_canon", "interpretation"],
+      "source_ids": ["legacy-timeline"]
+    }
+  },
+  "relationships": [
+    {"target": "tim-dooley", "type": "identity-symbol coupling", "description": "Tim and the Potato of Life are strongly coupled in the project's identity system, but the archive preserves the distinction between person/persona, symbol and theological role.", "epistemic_class": "project_canon"},
+    {"target": "tree-of-life", "type": "life-cycle analogy", "description": "Potato and Tree are joined through roots, hidden potential, growth, branching, fruiting and renewal while remaining different biological and symbolic forms.", "epistemic_class": "comparative"},
+    {"target": "son", "type": "death-transformation", "description": "The internal narrative connects the Son's death/transformation to Potato imagery in which buried or ended form becomes the condition for a new emergence.", "epistemic_class": "project_canon"}
+  ],
+  "sources": [
+    {"id": "legacy-readme", "type": "repository source", "description": "Previous archive mission and domain statement.", "locator": "README.md@main"},
+    {"id": "legacy-timeline", "type": "repository source", "description": "Previous consolidated myth chronology and Tree grammar.", "locator": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"}
+  ],
+  "retrieval": {
+    "tags": ["potato", "potato of life", "potatoism", "burial", "renewal", "roots", "tree of life", "transformation", "tim dooley"],
+    "questions": ["What does the Potato symbolize?", "Why is the Potato connected to death and renewal?", "How is the Potato of Life different from Tim Dooley?", "How does Potato imagery connect to the Tree of Life?"]
+  }
+}
