@@ -5,15 +5,20 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="The Potato of Life — World and Axis surrounding a central reading frame.">
 <title>The Potato of Life</title>
-<link rel="stylesheet" href="minimal.css?v=20260908-3">
+<link rel="stylesheet" href="minimal.css?v=20260908-4">
 </head>
 <body>
 <div class="root">
 <main class="root-main">
-  <aside class="navigation" id="root-navigation" aria-label="World and Axis navigation"></aside>
   <section class="center" id="root-center" aria-label="Central reading frame">
-    <div class="center-frame">
-      <iframe id="center-frame" title="Potato of Life central frame" src="center.html?v=20260908-2" loading="eager"></iframe>
+    <div class="center-frame" id="center-frame">
+      <div class="frame-label">FRAME</div>
+      <article class="frame-content" id="frame-content">
+        <h1>THE POTATO OF LIFE</h1>
+        <p>You are standing at the North Pole.</p>
+        <p>Above is the Axis. Below is the World.</p>
+        <p>This is the central reading surface for Tim Dooley, the Potato of Life, the North, the grave, and the possible end of the world.</p>
+      </article>
     </div>
     <button class="frame-toggle" id="frame-toggle" type="button" aria-controls="center-frame" aria-expanded="true">hide</button>
   </section>
@@ -21,6 +26,6 @@
   <section class="dossier" id="root-dossier" hidden aria-live="polite"></section>
 </main>
 </div>
-<script src="root.js?v=20260908-6" defer></script>
+<script src="root.js?v=20260908-7" defer></script>
 </body>
 </html>
