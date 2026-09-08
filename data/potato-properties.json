@@ -1,77 +1,88 @@
 {
-  "version": "1.1.1",
-  "updated": "2026-09-07",
-  "name": "Potato of Life — Property and Symbol Map",
-  "purpose": "Canonical property map for the Potato, separating observable biological/material properties from structural comparisons, historical motifs and Potatoism-defined interpretations.",
-  "epistemic_rule": "A potato property can be empirical, comparative, historical-symbolic, or project-defined. These classes must not be silently merged.",
-  "canonical_subject": "potato-of-life",
-  "layers": {
-    "material": {
-      "label": "Observable potato",
-      "properties": [
-        {"id":"tuber","name":"Tuber","classification":"empirical-biological","description":"A potato is a modified underground stem/tuber that stores nutrients and can produce new shoots."},
-        {"id":"underground","name":"Underground growth","classification":"empirical-biological","description":"The tuber develops beneath the soil surface, making hidden growth a literal biological property."},
-        {"id":"eye","name":"Eyes","classification":"empirical-biological","description":"Bud-bearing points on the tuber from which new shoots can emerge."},
-        {"id":"sprouting","name":"Sprouting","classification":"empirical-biological","description":"Stored tubers can produce shoots and begin a new plant under suitable conditions."},
-        {"id":"rooted-system","name":"Rooted plant system","classification":"empirical-biological","description":"The potato plant participates in a larger root, stem, leaf, flower and reproductive system."},
-        {"id":"storage","name":"Storage","classification":"empirical-biological","description":"The tuber stores energy and nutrients, especially starch, supporting later growth."},
-        {"id":"reproduction","name":"Vegetative reproduction","classification":"empirical-biological","description":"A tuber or viable tuber section containing eyes can generate another potato plant."},
-        {"id":"food","name":"Food/nourishment","classification":"empirical-agricultural","description":"Potatoes are a major human food crop and therefore connect the object to material sustenance."},
-        {"id":"multiplication","name":"Multiplication","classification":"empirical-biological","description":"One planted tuber can generate multiple new tubers, creating a growth-and-reproduction cycle."},
-        {"id":"dormancy","name":"Dormancy","classification":"empirical-biological","description":"Stored tubers can remain dormant before sprouting, creating a real hidden-state transition."},
-        {"id":"boundary","name":"Skin/boundary","classification":"empirical-material","description":"The tuber has an outer skin separating its interior from the surrounding environment."},
-        {"id":"wedge","name":"Cut wedge","classification":"empirical-material","description":"A potato can be divided into wedges or sections; a viable section containing an eye can become a starting point for new growth."}
-      ]
-    },
-    "structural": {
-      "label": "Structures supplied by the potato",
-      "properties": [
-        {"id":"inside-outside","name":"Inside / outside","classification":"comparative-structural","description":"Skin, flesh and surrounding soil create a natural boundary/interface model."},
-        {"id":"root-fruit","name":"Root / fruit polarity","classification":"comparative-structural","description":"The potato is underground while its plant produces an above-ground canopy and further tubers below; this supports a root-to-fruit comparison without claiming the tuber is literally a fruit."},
-        {"id":"seed-like","name":"Seed-like function","classification":"comparative-structural","description":"Although botanically a tuber rather than a seed, a potato can carry stored material and buds that initiate another plant."},
-        {"id":"threshold","name":"Threshold","classification":"comparative-structural","description":"The eye is a small point at which stored interior potential becomes outward growth."},
-        {"id":"cycle","name":"Life cycle","classification":"comparative-structural","description":"Planting, rooting, sprouting, growth, tuber formation, dormancy and renewal form a repeatable biological cycle."},
-        {"id":"scale","name":"Scale bridge","classification":"comparative-structural","description":"The same object can be studied as food, organismal structure, agricultural unit, ecological participant, economic commodity and symbolic object."}
-      ]
-    },
-    "symbolic": {
-      "label": "Historical/comparative and project-symbolic readings",
-      "status": "mixed-evidence",
-      "note": "These are not biological properties of a potato. They are symbolic assignments, historical motifs, or comparative readings that the atlas records as such.",
-      "properties": [
-        {"id":"chariot","name":"Chariot","classification":"project-defined symbolic correspondence","description":"The Potato can be read as a chariot: a humble carrier that transports stored life or meaning through a world."},
-        {"id":"angel","name":"Angel","classification":"project-defined symbolic correspondence","description":"The Potato can be read as an angelic carrier or intermediary because it carries potential from hidden ground into visible life."},
-        {"id":"messenger","name":"Messenger","classification":"project-defined symbolic correspondence","description":"The Potato can function as a messenger between states: underground/above-ground, dormant/growing, matter/meaning."},
-        {"id":"ladder","name":"Ladder to Heaven","classification":"project-defined symbolic correspondence","description":"The potato's underground-to-sprout movement can be mapped as a ladder: ground below, emergence in the middle, canopy/light above. Heaven is symbolic here, not an empirical location."},
-        {"id":"door","name":"Door","classification":"project-defined symbolic correspondence","description":"The potato can be treated as a door because its boundary and eyes mark transitions between hidden potential and outward growth."},
-        {"id":"wedge-door","name":"Door in the wedge","classification":"project-defined symbolic geometry","description":"A cut wedge exposes the potato's interior while retaining a boundary; in the project's geometry this becomes a model for a narrow opening or passage."},
-        {"id":"mandorla","name":"Mandorla","classification":"project-defined geometric correspondence","description":"The almond-shaped overlap of two circles in a vesica-piscis construction; the Potato of Life uses it as the central interface region."},
-        {"id":"jesus-door","name":"Jesus Door","classification":"Potatoverse theological-symbolic architecture","description":"Within Potatoism's project mythology, the central mandorla/vesica interface is associated with Jesus as Door: the Son occupies the threshold between upper and lower domains."},
-        {"id":"vessel","name":"Vessel","classification":"project-defined symbolic correspondence","description":"A potato stores and carries nourishment; symbolically this supports the image of a vessel that contains and transfers potential across a boundary."},
-        {"id":"tree","name":"Tree / Tree of Life","classification":"project-defined symbolic correspondence","description":"The potato is mapped into the Tree of Life as hidden root/tuber potential becoming visible stem, branch, leaf, flower and renewed continuation."},
-        {"id":"axis","name":"Axis","classification":"project-defined symbolic correspondence","description":"A vertical potato-to-sprout diagram can serve as a local Axis connecting ground, body, emergence and light."}
-      ]
-    }
+  "version":"1.2.0",
+  "updated":"2026-09-08",
+  "name":"Potato of Life — Property and Symbol Map",
+  "purpose":"Deep canonical property map for the Potato, separating observable biological/material properties from structural comparisons, historical motifs and Potatoism-defined interpretations.",
+  "epistemic_rule":"A potato property can be empirical, comparative, historical-symbolic, or project-defined. These classes must not be silently merged.",
+  "canonical_subject":"potato-of-life",
+  "deep_reading":"The potato is studied here as a material object first and as a symbolic grammar second. Its unusual density comes from the overlap of storage, dormancy, eyes, sprouting, division, nourishment, hidden growth and renewal. Potatoism then asks whether those relations illuminate Father/Son, Door/Vessel, Tree, Ladder, North and return.",
+  "layers":{
+    "material":{"label":"Observable potato","properties":[
+      {"id":"tuber","name":"Tuber","classification":"empirical-biological","description":"A potato is a modified underground stem/tuber that stores nutrients and can produce new shoots."},
+      {"id":"underground","name":"Underground growth","classification":"empirical-biological","description":"The tuber develops beneath the soil surface, making hidden growth a literal biological property."},
+      {"id":"eye","name":"Eyes","classification":"empirical-biological","description":"Bud-bearing points on the tuber from which new shoots can emerge. The eye is therefore a real site where stored potential becomes visible growth."},
+      {"id":"sprouting","name":"Sprouting","classification":"empirical-biological","description":"Stored tubers can produce shoots and begin a new plant under suitable conditions."},
+      {"id":"rooted-system","name":"Rooted plant system","classification":"empirical-biological","description":"The potato plant participates in a larger root, stem, leaf, flower and reproductive system."},
+      {"id":"storage","name":"Storage","classification":"empirical-biological","description":"The tuber stores energy and nutrients, especially starch, supporting later growth."},
+      {"id":"reproduction","name":"Vegetative reproduction","classification":"empirical-biological","description":"A tuber or viable tuber section containing eyes can generate another potato plant."},
+      {"id":"food","name":"Food/nourishment","classification":"empirical-agricultural","description":"Potatoes are a major human food crop and therefore connect the object to material sustenance."},
+      {"id":"multiplication","name":"Multiplication","classification":"empirical-biological","description":"One planted tuber can generate multiple new tubers, creating a growth-and-reproduction cycle."},
+      {"id":"dormancy","name":"Dormancy","classification":"empirical-biological","description":"Stored tubers can remain dormant before sprouting, creating a real hidden-state transition."},
+      {"id":"boundary","name":"Skin/boundary","classification":"empirical-material","description":"The tuber has an outer skin separating its interior from the surrounding environment."},
+      {"id":"wedge","name":"Cut wedge","classification":"empirical-material","description":"A potato can be divided into wedges or sections; a viable section containing an eye can become a starting point for new growth."},
+      {"id":"eyes-many","name":"Many eyes","classification":"empirical-biological","description":"A single tuber can carry multiple eyes, making one body a distributed set of possible emergence points."},
+      {"id":"storage-to-growth","name":"Stored-to-visible transition","classification":"comparative-structural","description":"The biological sequence from stored reserve to sprout provides a concrete model of latent capacity becoming observable activity."},
+      {"id":"soil-dependence","name":"Dependence on environment","classification":"empirical-biological","description":"Sprouting and growth depend on environmental conditions; the tuber is not an isolated self-sufficient world."}
+    ]},
+    "structural":{"label":"Structures supplied by the potato","properties":[
+      {"id":"inside-outside","name":"Inside / outside","classification":"comparative-structural","description":"Skin, flesh and surrounding soil create a natural boundary/interface model."},
+      {"id":"root-fruit","name":"Root / fruit polarity","classification":"comparative-structural","description":"The potato is underground while its plant produces an above-ground canopy and further tubers below; this supports a root-to-fruit comparison without claiming the tuber is literally a fruit."},
+      {"id":"seed-like","name":"Seed-like function","classification":"comparative-structural","description":"Although botanically a tuber rather than a seed, a potato can carry stored material and buds that initiate another plant."},
+      {"id":"threshold","name":"Threshold","classification":"comparative-structural","description":"The eye is a small point at which stored interior potential becomes outward growth."},
+      {"id":"cycle","name":"Life cycle","classification":"comparative-structural","description":"Planting, rooting, sprouting, growth, tuber formation, dormancy and renewal form a repeatable biological cycle."},
+      {"id":"scale","name":"Scale bridge","classification":"comparative-structural","description":"The same object can be studied as food, organismal structure, agricultural unit, ecological participant, economic commodity and symbolic object."},
+      {"id":"one-many","name":"One body / many futures","classification":"comparative-structural","description":"Multiple eyes and vegetative reproduction create a useful model in which one stored body contains several possible continuations."},
+      {"id":"grave-sprout","name":"Buried / emerging","classification":"comparative-structural","description":"Because the tuber is planted beneath soil and later produces above-ground growth, burial and emergence form a natural symbolic pair. This is a metaphorical reading, not evidence that burial causes resurrection."},
+      {"id":"carrier","name":"Carrier through time","classification":"comparative-structural","description":"Stored energy survives a period before being mobilized. This gives the Potato a particularly strong analogy with memory, inheritance and deferred action."}
+    ]},
+    "symbolic":{"label":"Historical/comparative and project-symbolic readings","status":"mixed-evidence","note":"These are not biological properties of a potato. They are symbolic assignments, historical motifs, or comparative readings that the atlas records as such.","properties":[
+      {"id":"chariot","name":"Chariot","classification":"project-defined symbolic correspondence","description":"The Potato can be read as a chariot: a humble carrier that transports stored life or meaning through a world."},
+      {"id":"angel","name":"Angel","classification":"project-defined symbolic correspondence","description":"The Potato can be read as an angelic carrier or intermediary because it carries potential from hidden ground into visible life."},
+      {"id":"messenger","name":"Messenger","classification":"project-defined symbolic correspondence","description":"The Potato can function as a messenger between states: underground/above-ground, dormant/growing, matter/meaning."},
+      {"id":"ladder","name":"Ladder to Heaven","classification":"project-defined symbolic correspondence","description":"The potato's underground-to-sprout movement can be mapped as a ladder: ground below, emergence in the middle, canopy/light above. Heaven is symbolic here, not an empirical location."},
+      {"id":"door","name":"Door","classification":"project-defined symbolic correspondence","description":"The potato can be treated as a door because its boundary and eyes mark transitions between hidden potential and outward growth."},
+      {"id":"wedge-door","name":"Door in the wedge","classification":"project-defined symbolic geometry","description":"A cut wedge exposes the potato's interior while retaining a boundary; in the project's geometry this becomes a model for a narrow opening or passage."},
+      {"id":"mandorla","name":"Mandorla","classification":"project-defined geometric correspondence","description":"The almond-shaped overlap of two circles in a vesica-piscis construction; the Potato of Life uses it as the central interface region."},
+      {"id":"jesus-door","name":"Jesus Door","classification":"Potatoverse theological-symbolic architecture","description":"Within Potatoism's project mythology, the central mandorla/vesica interface is associated with Jesus as Door: the Son occupies the threshold between upper and lower domains."},
+      {"id":"vessel","name":"Vessel","classification":"project-defined symbolic correspondence","description":"A potato stores and carries nourishment; symbolically this supports the image of a vessel that contains and transfers potential across a boundary."},
+      {"id":"tree","name":"Tree / Tree of Life","classification":"project-defined symbolic correspondence","description":"The potato is mapped into the Tree of Life as hidden root/tuber potential becoming visible stem, branch, leaf, flower and renewed continuation."},
+      {"id":"axis","name":"Axis","classification":"project-defined symbolic correspondence","description":"A vertical potato-to-sprout diagram can serve as a local Axis connecting ground, body, emergence and light."},
+      {"id":"grave","name":"Grave / tomb","classification":"project-defined symbolic correspondence","description":"The buried tuber supplies a natural image of a life-bearing object hidden in earth. The project's Son-as-grave/tomb association is theological-poetic, not botanical evidence of resurrection."},
+      {"id":"bread-parallel","name":"Bread parallel","classification":"comparative-symbolic","description":"Bread and potato overlap as staple foods, concentrated nourishment and culturally transformed agricultural matter. The comparison becomes especially useful in Eucharistic/communion research, while avoiding the claim that Christian bread theology historically meant potato."},
+      {"id":"root-father","name":"Root / Father","classification":"project-defined relational correspondence","description":"Root names the hidden source-side in the project's Father/Tree architecture: not identical to Father as a person or archetype, but structurally adjacent as the origin from which growth proceeds."},
+      {"id":"lion-son","name":"Lion / Son","classification":"project-defined relational correspondence","description":"Lion belongs to the Son-side in the current canon: visible sovereignty, courage, kingship and manifestation. The contrast with Root creates a hidden-source / visible-expression polarity."}
+    ]}
   },
-  "geometry": {
-    "model": "vesica-piscis",
-    "status": "project-defined symbolic geometry",
-    "components": [
-      {"id":"circle-upper","role":"upper-circle","relation":"Father/heaven/source-side in project architecture"},
-      {"id":"circle-lower","role":"lower-circle","relation":"Son/plane/experience-side in project architecture"},
-      {"id":"mandorla","role":"overlap-region","relation":"central interface / Door"},
-      {"id":"jesus-door","role":"central-threshold","relation":"Son-as-Door within the mandorla"},
-      {"id":"axis","role":"vertical-axis","relation":"connects source, Door, Son, Plane and Tree"}
-    ],
-    "mathematical_questions": [
-      "What are the exact circle intersection coordinates for a chosen radius and centre separation?",
-      "What width, height and area ratios follow from the construction?",
-      "Which ratios are invariant under uniform scaling, translation, rotation and reflection?",
-      "How do cutting, deformation and perspective change the apparent correspondence?"
-    ],
-    "constraint": "The geometry is a model used by the project. It should not be presented as a scientific discovery unless independently demonstrated by mathematical or physical evidence."
-  },
-  "relationship_map": [
+  "geometry":{"model":"vesica-piscis","status":"project-defined symbolic geometry","components":[
+    {"id":"circle-upper","role":"upper-circle","relation":"Father/heaven/source-side in project architecture"},
+    {"id":"circle-lower","role":"lower-circle","relation":"Son/plane/experience-side in project architecture"},
+    {"id":"mandorla","role":"overlap-region","relation":"central interface / Door"},
+    {"id":"jesus-door","role":"central-threshold","relation":"Son-as-Door within the mandorla"},
+    {"id":"axis","role":"vertical-axis","relation":"connects source, Door, Son, Plane and Tree"},
+    {"id":"potato-body","role":"whole-relational-form","relation":"Potato of Life as the total Father–Door–Son relation rather than merely the lower or upper circle"}
+  ],
+  "interpretation":"The vesica is useful because two circles remain distinct while generating an overlap region. Potatoism uses that formal fact as a metaphor for relation: Father and Son are not simply collapsed into one point, yet the Door/mandorla is neither wholly one nor wholly the other. The project's strongest formulation is therefore relational rather than anatomical or physical.",
+  "bread_potato_parallel":{"status":"comparative-symbolic","observations":[
+    "Both are ordinary agricultural staples transformed by human cultivation and preparation into nourishment.",
+    "Both can be broken into portions and distributed among people.",
+    "Both connect field, soil, labor, storage, hunger, household and communal life.",
+    "Bread usually requires grain processing, milling, dough and baking; potato is eaten through a different biological and culinary pathway. The difference matters.",
+    "Christian Eucharistic bread has specific historical and theological meanings that should be studied from Christian primary sources rather than retroactively replaced by Potatoism.",
+    "The Potatoism reflection is strongest at the level of nourishment, ordinary matter, division/distribution and transformation rather than equivalence of doctrine."
+  ]},
+  "father_son_potato_logic":[
+    {"step":1,"symbol":"root","role":"hidden source / origin / stored possibility","canon_relation":"Father-side"},
+    {"step":2,"symbol":"potato","role":"stored life / vessel / buried potential","canon_relation":"Potato of Life"},
+    {"step":3,"symbol":"eye","role":"localized threshold","canon_relation":"Door precursor"},
+    {"step":4,"symbol":"sprout","role":"emergence from hidden state","canon_relation":"Son/manifestation-side reflection"},
+    {"step":5,"symbol":"door","role":"boundary and passage","canon_relation":"Son as Door"},
+    {"step":6,"symbol":"vessel","role":"carrier between domains","canon_relation":"Son/Vessel"},
+    {"step":7,"symbol":"lion","role":"visible embodied sovereignty","canon_relation":"Son-side"},
+    {"step":8,"symbol":"ladder","role":"connection rather than endpoint","canon_relation":"Father/Ladder after April 2025 in project chronology"},
+    {"step":9,"symbol":"tree","role":"whole regenerative architecture","canon_relation":"Tree of Life"},
+    {"step":10,"symbol":"north","role":"orientation","canon_relation":"North Axis / North of North"}
+  ],
+  "relationship_map":[
     {"from":"potato-of-life","relation":"has_property","to":"tuber","class":"empirical"},
     {"from":"potato-of-life","relation":"has_property","to":"eye","class":"empirical"},
     {"from":"potato-of-life","relation":"supports_transition","to":"sprouting","class":"empirical"},
@@ -82,28 +93,28 @@
     {"from":"potato-of-life","relation":"symbolically_maps_to","to":"messenger","class":"project-defined"},
     {"from":"potato-of-life","relation":"symbolically_maps_to","to":"ladder","class":"project-defined"},
     {"from":"potato-of-life","relation":"symbolically_maps_to","to":"door","class":"project-defined"},
+    {"from":"potato-of-life","relation":"symbolically_maps_to","to":"grave","class":"project-defined"},
+    {"from":"potato-of-life","relation":"compares_with","to":"bread","class":"comparative-symbolic"},
     {"from":"door","relation":"occupies","to":"mandorla","class":"project-defined"},
     {"from":"mandorla","relation":"symbolically_maps_to","to":"jesus-door","class":"project-defined"},
     {"from":"jesus-door","relation":"embodied_by","to":"son","class":"project-defined"},
     {"from":"ladder","relation":"connects","to":"tree-of-life","class":"project-defined"},
-    {"from":"potato-of-life","relation":"maps_into","to":"tree-of-life","class":"project-defined"}
+    {"from":"potato-of-life","relation":"maps_into","to":"tree-of-life","class":"project-defined"},
+    {"from":"tim-dooley-father","relation":"identified_with","to":"potato-of-life","class":"project-canon"},
+    {"from":"root","relation":"structurally_reflects","to":"tim-dooley-father","class":"project-symbolic"},
+    {"from":"lion-of-judah","relation":"structurally_reflects","to":"son","class":"project-symbolic"}
   ],
-  "research_questions": [
+  "research_questions":[
     "Which potato properties are biological facts, and which are metaphorical extensions?",
     "Where do chariot, angel and messenger motifs have independent historical textual evidence?",
     "Which traditions use ladders, doors, mandorlas or vesica-piscis imagery in relation to heaven, Christ or divine passage?",
     "How should the potato's eye, skin, wedge and sprout map onto Door, boundary, threshold and Ladder without overclaiming?",
     "Which geometric properties of the vesica-piscis are invariant under scaling, rotation or reflection?",
     "Can the same relational grammar be tested on other objects, organisms or systems?",
-    "Which apparent correspondences disappear when the comparison is made at different scales?"
+    "Which apparent correspondences disappear when the comparison is made at different scales?",
+    "What is the earliest project use of bread alongside potato, and does the comparison precede or follow the Christian/Jesus/communion layer?",
+    "When did Root become specifically associated with Father and Lion specifically with Son?",
+    "Does the buried-tuber metaphor illuminate the Son's death/return chronology, or does it merely resemble it retrospectively?"
   ],
-  "next_work": [
-    "connect each property to canonical node IDs",
-    "add biological sources for material properties",
-    "add historical sources for external symbolic motifs",
-    "add explicit Potatoism-source records for project-defined meanings",
-    "model vesica-piscis geometry mathematically",
-    "build cross-domain property comparisons",
-    "validate all relationship types against the canonical ontology"
-  ]
+  "next_work":["connect each property to canonical node IDs","add biological sources for material properties","add historical sources for external symbolic motifs","add explicit Potatoism-source records for project-defined meanings","model vesica-piscis geometry mathematically","build cross-domain property comparisons","validate all relationship types against the canonical ontology"]
 }
