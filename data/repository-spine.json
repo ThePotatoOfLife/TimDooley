@@ -1,31 +1,34 @@
 {
-  "version":"1.0.0",
+  "version":"2.0.0",
   "updated":"2026-09-08",
   "status":"canonical-navigation-architecture",
-  "purpose":"Defines the Repository's primary vertical navigation without replacing the canonical graph or 33-level tree. Root is the spine; Spirit is future, Door is present, Matter is past.",
-  "temporal_model":{"spirit":"future","door":"present","matter":"past"},
-  "principle":"The three layers are temporal/relational positions, not mutually exclusive subject types. A record has a primary home, while relationships may cross every layer.",
-  "layers":[
-    {"id":"spirit","label":"SPIRIT","time":"FUTURE","question":"What may become?","meaning":"Possibility, intention, worldview, purpose, vision and potential.","manifest_groups":["architecture","beliefs","mythology"],"sections":["Cosmology & Origin","Worldviews & Traditions","Principles & Values","Possibility & Futures"]},
-    {"id":"door","label":"DOOR","time":"PRESENT","question":"What is happening between things now?","meaning":"Action, relation, exchange, encounter, communication, interpretation and immediate transition.","manifest_groups":["graph","research","relational_dynamics","books","emotion"],"sections":["Relations & Networks","Action & Change","Culture & Lived Experience","Knowledge & Evidence","Texts & Sources"]},
-    {"id":"matter","label":"MATTER","time":"PAST","question":"What has become and left a trace?","meaning":"Manifestation, people, places, institutions, systems, consequences, records and history.","manifest_groups":["world","systems","security","people"],"sections":["People & Populations","Places & Geography","Institutions & Organizations","Systems & Economy","Security & Conflict","History & Records"]}
+  "purpose":"Defines the Repository's primary vertical navigation from Source toward Ground while preserving the graph, the 33-level framework and the Potatoism interpretive coordinates as independent systems.",
+  "primary_axis":"data/repository-scale.json",
+  "principle":"The Repository tree answers where a record is best encountered at a useful scale. It does not rank truth, importance, value or power. Domain, time, epistemic status and graph relationships remain independent dimensions.",
+  "secondary_coordinates":{
+    "spirit_door_matter":"Interpretive temporal/relational coordinate: Spirit = future/possibility, Door = present/transition, Matter = manifestation/trace. It is not the primary filing system.",
+    "33_level_axis":"Project-defined vertical framework retained as a deeper navigational and interpretive coordinate.",
+    "domain":"Religion, mythology, geography, politics, economy, science, technology, culture, security and other domains can occur at every scale.",
+    "time":"Past, present and future can occur at every scale.",
+    "epistemic_status":"Observable world, historical/textual record, project theory/research model and Potatoism/mythic canon remain explicitly separated.",
+    "graph":"Relationships may connect any records across any scale. The graph is not subordinate to the tree."
+  },
+  "scale_layers":[
+    {"id":"source","label":"SOURCE","meaning":"Origin, premise, source or highest-order orientation."},
+    {"id":"principle","label":"PRINCIPLES","meaning":"Rules, values, laws, worldviews and organizing principles."},
+    {"id":"concept","label":"CONCEPTS & PATTERNS","meaning":"Concepts, symbols, theories, models and recurring patterns."},
+    {"id":"world","label":"WORLDS & DOMAINS","meaning":"Broad environments, fields, civilizations and domains of activity."},
+    {"id":"region","label":"REGIONS & TERRITORIES","meaning":"Geographic, ecological and jurisdictional fields."},
+    {"id":"institution","label":"INSTITUTIONS & STRUCTURES","meaning":"Durable organizations, authorities, infrastructures and coordinating structures."},
+    {"id":"network","label":"NETWORKS & GROUPS","meaning":"Connected populations, communities, markets, alliances and movements."},
+    {"id":"person","label":"PEOPLE & LIVING ACTORS","meaning":"Persons, populations and other living participants."},
+    {"id":"object","label":"BODIES & OBJECTS","meaning":"Embodied, built and material things."},
+    {"id":"event","label":"EVENTS & ACTIONS","meaning":"Things that happen, change, move or are done."},
+    {"id":"record","label":"RECORDS & SIGNALS","meaning":"Texts, measurements, documents, datasets and other observable traces."},
+    {"id":"ground","label":"GROUND / GRAIN / DUST","meaning":"Smallest concrete trace or material unit relevant to the investigation."}
   ],
-  "classification_rules":[
-    {"rule":"Project canon, cosmology, worldview, symbolic architecture and future-facing possibility default to Spirit."},
-    {"rule":"Relationships, graph structures, evidence, interpretation, research, lived culture, transactions and state changes default to Door."},
-    {"rule":"Observed entities, geography, institutions, infrastructure, economies, security structures and completed historical events default to Matter."},
-    {"rule":"A record may be referenced from other layers through graph relationships; duplication is not required merely because a record participates in multiple layers."},
-    {"rule":"Research does not make a claim true by itself; evidence status and epistemic class remain attached to the record."},
-    {"rule":"Unknown data remains unknown and is never converted to zero or implied completeness."}
-  ],
-  "legacy_tree_mapping":{"source":"spirit","separation":"door","ladder":"door","door":"door","son":"door","tree-of-life":"spirit","tree-of-strife":"door","potato":"door","world":"matter","north-programme":"door"},
-  "cross_layer_examples":[
-    {"subject":"Christianity","spirit":"beliefs and theology","door":"lived practice, interpretation and institutions-in-action","matter":"historical people, places, buildings and events"},
-    {"subject":"France","spirit":"future policy possibilities","door":"current government action and relationships","matter":"existing territory, institutions, population and historical record"},
-    {"subject":"Debt","spirit":"future obligation and expectation","door":"current contract, financing and settlement","matter":"recorded liability and historical balance"},
-    {"subject":"Potatoism","spirit":"developing canon and possibility","door":"language, interpretation and transformation","matter":"texts, dates, artifacts and documented project history"}
-  ],
-  "non_goals":["Do not delete the existing 33-level tree.","Do not pretend Spirit, Door and Matter are scientific ontological claims.","Do not flatten the graph into a tree.","Do not create duplicate records solely to satisfy navigation."],
-  "consumer":"repository.html",
-  "validation":"scripts/validate_repository_spine.py"
+  "placement_rule":"Give each record one primary scale home where it is most useful to read it. Use cross-links and graph edges rather than duplicating the record at every scale it touches.",
+  "canonical_overrides":"Use data/repository-scale.json for explicit record-level placements; do not let broad keyword classification override a canonical placement.",
+  "non_goals":["Do not delete or flatten the existing 33-level framework.","Do not treat scale as a hierarchy of value or reality.","Do not erase Spirit/Door/Matter; retain them as a secondary Potatoism coordinate.","Do not flatten the graph into a tree.","Do not create duplicate records solely to satisfy navigation."],
+  "consumer":"repository.html"
 }
