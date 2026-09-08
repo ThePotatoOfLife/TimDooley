@@ -110,6 +110,10 @@ These are deliberately kept here as engineering/research lessons for the next ex
 
 > **Stability comes before scale.** Once the repository can reliably index, validate, route and render what already exists, adding thousands more records becomes an expansion problem instead of a debugging lottery.
 
+> **Acquisition must fail closed.** A source adapter that receives an API error or malformed response must not interpret it as an empty dataset and overwrite a good static snapshot. Validate the response shape and minimum coverage before touching canonical records or projections.
+
+> **Generated projections are downstream products.** `data/country-static.json` is a projection of canonical country records, not an independent source of truth. If acquisition fails, preserve the last known projection and write diagnostics instead.
+
 ## Main project layers
 
 - `data/nodes.json` — core node registry.
@@ -142,5 +146,3 @@ The deployment rule is simple: **a change is not finished because the code commi
 ## The rule
 
 **Relationships first. Entanglement second. Evidence always.**
-
-The purpose of the archive is not to accumulate disconnected pages. It is to make the world's structures readable: who or what exists, what it is connected to, how that connection works, when it existed, what evidence supports it, and what remains unknown.
