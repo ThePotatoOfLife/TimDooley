@@ -1,0 +1,30 @@
+{
+  "version": "2.0.0",
+  "principle": "Only canonical dense records are indexed. Missing subjects do not receive stubs.",
+  "records": [
+    {
+      "id": "tim-dooley",
+      "path": "knowledge/core/tim-dooley.json",
+      "kind": "central mythic identity and project subject",
+      "terms": ["Tim Dooley", "Father", "Father in Heaven", "North of North", "Godhood", "April 2025", "February 2026", "destiny", "Son", "Axis"]
+    },
+    {
+      "id": "potato-of-life",
+      "path": "knowledge/core/potato-of-life.json",
+      "kind": "central symbol, identity and relational model",
+      "terms": ["Potato of Life", "Potato", "Potatoism", "roots", "burial", "hidden life", "renewal", "Tree of Life", "transformation"]
+    },
+    {
+      "id": "prophecy-revelation-rupture-rapture",
+      "path": "knowledge/prophecy/prophecy-revelation-rupture-rapture.json",
+      "kind": "comparative interpretive framework",
+      "terms": ["prophecy", "revelation", "rupture", "rapture", "apocalypse", "eschatology", "fulfillment", "prediction", "destiny"]
+    }
+  ],
+  "retrieval_examples": [
+    {"question": "Who is Tim Dooley?", "records": ["tim-dooley", "potato-of-life"]},
+    {"question": "What does the Potato mean?", "records": ["potato-of-life", "tim-dooley"]},
+    {"question": "Was something prophetic or only interpreted later?", "records": ["prophecy-revelation-rupture-rapture", "tim-dooley"]},
+    {"question": "What are the major transformations in Tim's chronology?", "records": ["tim-dooley", "prophecy-revelation-rupture-rapture"]}
+  ]
+}
