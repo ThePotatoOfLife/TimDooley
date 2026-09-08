@@ -1,0 +1,54 @@
+{
+  "version": "1.0.0",
+  "title": "The Potato of Life",
+  "root": "potato-of-life",
+  "center": {
+    "label": "POTATO OF LIFE",
+    "description": "The fixed center of the corpus. The visitor remains here while the structure unfolds.",
+    "records": [
+      {"id": "tim-dooley", "label": "TIM DOOLEY", "href": "tim-dooley.html"},
+      {"id": "potatoism", "label": "POTATOISM", "href": "potatoism.html"},
+      {"id": "thought", "label": "THOUGHT", "href": "thoughts.html"},
+      {"id": "canon", "label": "CANON", "href": "TIM-DOOLEY-CANON.md"}
+    ]
+  },
+  "branches": [
+    {
+      "id": "world",
+      "label": "WORLD/",
+      "kind": "world",
+      "description": "Things, people, places, institutions, events, texts and observable corpus material."
+    },
+    {
+      "id": "axis",
+      "label": "AXIS/",
+      "kind": "axis",
+      "description": "Orientation, structure, symbolic models, geometry and typed relationships."
+    }
+  ],
+  "world": {
+    "collections": [
+      {"id": "people", "label": "PEOPLE/", "types": ["person", "people", "individual", "human"], "legacy": "people.html"},
+      {"id": "places", "label": "PLACES/", "scales": ["region", "world"], "legacy": "nations.html"},
+      {"id": "religions", "label": "RELIGIONS/", "families": ["religion-texts"], "legacy": "belief.html"},
+      {"id": "culture", "label": "CULTURE/", "legacy": "culture.html"},
+      {"id": "politics", "label": "POLITICS/", "legacy": "politics.html"},
+      {"id": "economy", "label": "ECONOMY/", "families": ["north-europe-economic"], "legacy": "economy.html"},
+      {"id": "institutions", "label": "INSTITUTIONS/", "types": ["organization", "institution", "company", "bank", "university", "government", "authority", "system"], "legacy": "repository.html"},
+      {"id": "events", "label": "EVENTS/", "types": ["event", "action", "transaction", "war", "election", "geopolitical-timeline", "economic-environmental-event", "mythic-event"], "legacy": "timeline.html"},
+      {"id": "texts", "label": "TEXTS/", "families": ["religion-texts"], "legacy": "books.html"},
+      {"id": "records", "label": "ALL RECORDS/", "all": true, "legacy": "repository.html"}
+    ]
+  },
+  "axis": {
+    "collections": [
+      {"id": "north", "label": "NORTH/", "terms": ["north", "north-axis", "north-pole", "north-of-north"], "legacy": "axis.html"},
+      {"id": "geometry", "label": "GEOMETRY/", "legacy": "geometry.html"},
+      {"id": "symbolism", "label": "SYMBOLS/", "families": ["potatoism", "movements-swamp"], "legacy": "potatoism.html"},
+      {"id": "belief", "label": "BELIEF/", "legacy": "belief.html"},
+      {"id": "time", "label": "TIME/", "legacy": "timeline.html"},
+      {"id": "relations", "label": "RELATIONS/", "role": "relationship", "legacy": "explore.html"},
+      {"id": "models", "label": "MODELS/", "legacy": "axis.html"}
+    ]
+  }
+}
