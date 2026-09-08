@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Verify that the Pages artifact exposes the existing root navigation stack."""
+"""Verify that the Pages artifact exposes the unified root and the existing site material."""
 from __future__ import annotations
 from pathlib import Path
 
@@ -12,19 +12,20 @@ def main():
         errors.append('_site does not exist; build_site.py must run first')
     else:
         pages=sorted(SITE.rglob('*.html'))
-        if pages != [SITE/'index.html']:
-            errors.append('public site must contain exactly one HTML document: index.html')
         required_files=('index.html','root.js','data/root-navigation.json','data/root-record-index.json')
         for rel in required_files:
             if not (SITE/rel).exists(): errors.append(f'missing required reader file: {rel}')
-        if pages:
+        if not (SITE/'index.html').exists():
+            errors.append('index.html is missing')
+        else:
             text=(SITE/'index.html').read_text(encoding='utf-8',errors='replace')
             for required in ('id="root-tree"','id="center-frame"','id="frame-content"','WORLD','AXIS','./root.js'):
                 if required not in text: errors.append(f'index.html missing root reader feature: {required}')
-            js=(SITE/'root.js').read_text(encoding='utf-8',errors='replace') if (SITE/'root.js').exists() else ''
-            for required in ('root-record-index.json','root-navigation.json','navigation_path','function renderCollection','function recordRow'):
-                if required not in js: errors.append(f'root.js missing navigation feature: {required}')
-            if '<iframe' in text or 'center.html' in text: errors.append('index.html contains retired iframe/page dependency')
+            if '<iframe' in text: errors.append('index.html contains retired iframe dependency')
+        js=(SITE/'root.js').read_text(encoding='utf-8',errors='replace') if (SITE/'root.js').exists() else ''
+        for required in ('root-record-index.json','root-navigation.json','navigation_path','function collection','function row'):
+            if required not in js: errors.append(f'root.js missing navigation feature: {required}')
+        if SITE.exists() and not pages: errors.append('Pages artifact contains no HTML documents')
     count=len(list(SITE.rglob('*.html'))) if SITE.exists() else 0
     print(f'Built HTML pages checked: {count}')
     if errors:
