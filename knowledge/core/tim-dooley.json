@@ -1,0 +1,51 @@
+{
+  "id": "tim-dooley",
+  "title": "Tim Dooley",
+  "kind": "central mythic identity and project subject",
+  "aliases": ["The Potato of Life", "Father in Heaven", "Father", "North of North"],
+  "summary": "Tim Dooley is the central Father-side identity of the Potato of Life archive. The record deliberately separates the project's internal theological and mythological account from the public biography of the human subject. Inside the developed Potatoverse, Tim is not merely a character name: Tim functions as Father, organizing source-side intelligence, gardener, northern orientation and the identity that emerges through a sequence involving the Son, death, transformation, Potato, Door, Ladder and return. Historically, the exact development of those claims must be reconstructed from dated project material rather than projected backwards as though the complete system existed from the beginning.",
+  "epistemic_classes": ["project_canon", "self_description", "documentary", "interpretation"],
+  "sections": {
+    "identity_layers": {
+      "text": "The archive treats 'Tim Dooley' as a layered identity rather than a single undifferentiated biography. At minimum the corpus contains a human/public layer, an online persona layer, a religious self-description layer and a mythic Father-side layer. These layers may interact, but they are not interchangeable. A statement that Tim is Father in Heaven can be canonical within Potatoism without functioning as independent historical evidence about the human subject.",
+      "epistemic_class": ["project_canon", "interpretation"],
+      "source_ids": ["legacy-timeline", "legacy-readme"]
+    },
+    "mythic_function": {
+      "text": "Within the developed mythology, Tim occupies the upper or Father-side of a relational architecture rather than standing alone. Source, Father, Father's House, Heaven, Throne of North, Axis, Ladder, Door and Son form a descent-and-return grammar. Tim's meaning therefore comes from relationships: Father to Son, source to manifestation, upper to lower, observer to world, gardener to living structure and North to orientation. The mythology becomes less intelligible when Tim is extracted from this network and treated only as a title list.",
+      "epistemic_class": ["project_canon", "interpretation"],
+      "source_ids": ["legacy-timeline"]
+    },
+    "emergence_problem": {
+      "text": "A central research problem is that the fully developed Tim identity appears to have several possible 'births': biological birth, first online persona, first use of Tim Dooley, first Potato identity, the Son-side death/transformation threshold, emergence of the Father-side identity, public articulation of Potatoism and later archival formalization. The repository should therefore date individual motifs and transitions rather than inventing one total origin date for the finished mythology.",
+      "epistemic_class": ["documentary", "interpretation"],
+      "source_ids": ["legacy-timeline"]
+    },
+    "fate_and_destiny": {
+      "text": "In the Potatoverse, destiny is best represented as a retrospective pattern assembled from thresholds rather than as a demonstrated supernatural prediction. Events acquire meaning when later material connects them into sequences such as ordeal → death → transformation → emergence → recognition → responsibility. The archive can preserve the project's prophetic reading of those sequences while separately asking when each interpretation first appeared and whether it preceded or followed the event it interprets.",
+      "epistemic_class": ["project_canon", "interpretation"],
+      "source_ids": ["legacy-timeline"]
+    }
+  },
+  "chronology": [
+    {"date_or_period": "2011", "event": "Project chronology preserves a Son-side tree/hanging ordeal as an early threshold distinct from the later crucifixion/death transformation.", "status": "project chronology; requires primary-source dating"},
+    {"date_or_period": "2019–2020", "event": "The canonical working chronology places a major Son-side crucifixion/death-transformation threshold in this period; this must remain distinct from the 2011 tree ordeal.", "status": "project canon; source reconstruction required"},
+    {"date_or_period": "April 2025", "event": "The mythology treats April 2025 as the Godhood/Father-side turning or recognition threshold rather than the beginning of the entire story.", "status": "project canon with dedicated legacy dossier"},
+    {"date_or_period": "February 2026", "event": "The North Axis becomes explicit and organized as a later crystallization of the already developing system.", "status": "project chronology"},
+    {"date_or_period": "August–September 2026", "event": "The mythology is formalized into a large relational archive with explicit epistemic classes, graph structure and comparative research.", "status": "documentary repository history"}
+  ],
+  "relationships": [
+    {"target": "potato-of-life", "type": "identity-symbol coupling", "description": "Tim is identified with and interpreted through the Potato of Life, especially hidden life, burial, emergence, nourishment, roots and regenerative potential.", "epistemic_class": "project_canon"},
+    {"target": "son", "type": "father-son", "description": "The Father-side identity is defined relationally through the Son, whose descent, ordeal, death and transformation provide the lower/embodied side of the architecture.", "epistemic_class": "project_canon"},
+    {"target": "axis", "type": "orientation", "description": "Tim's Father/North identity is coupled to the Axis as the structure that orders levels, directions and transitions rather than merely a geographic northward claim.", "epistemic_class": "project_canon"},
+    {"target": "prophecy-revelation-rupture-rapture", "type": "interpretive", "description": "Later Potatoverse material reads Tim's sequence through revelation, rupture, destiny and apocalyptic motifs; the archive tracks those readings without converting resemblance into proof.", "epistemic_class": "interpretation"}
+  ],
+  "sources": [
+    {"id": "legacy-timeline", "type": "repository source", "description": "Earlier consolidated life/persona/myth chronology used as migration source.", "locator": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"},
+    {"id": "legacy-readme", "type": "repository governance", "description": "Earlier archive architecture and epistemic-firewall statement.", "locator": "README.md@main"}
+  ],
+  "retrieval": {
+    "tags": ["tim dooley", "father", "potato of life", "north", "axis", "son", "destiny", "chronology", "godhood", "potatoism"],
+    "questions": ["Who is Tim Dooley in the Potatoverse?", "When does Tim emerge in the mythology?", "How is Tim related to the Son?", "What happened in April 2025?", "How should claims about Tim be separated between biography and project canon?"]
+  }
+}
