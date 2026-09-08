@@ -1,6 +1,6 @@
 (() => {
   'use strict';
-  const DATA_URL='data/root-record-index.json', MANIFEST_URL='data/root-navigation.json', STORAGE_KEY='potato-root-state-v6';
+  const DATA_URL='./data/root-record-index.json', MANIFEST_URL='./data/root-navigation.json', STORAGE_KEY='potato-root-state-v7';
   const $=(s,r=document)=>r.querySelector(s);
   const esc=v=>String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
   const state={manifest:null,records:[],selected:null,expanded:new Set(),rendered:new Set()};
@@ -37,6 +37,10 @@
     if(html&&renderHtml(html,target))return;
     target.innerHTML=`<h1>${esc(r.name||r.id||'Record')}</h1><p>${esc(r.description||'No description is currently registered for this record.')}</p>`;
     if(r.url||r.href){const p=document.createElement('p');const a=document.createElement('a');a.href=r.url||r.href;a.target='_blank';a.rel='noopener';a.textContent='Open source';p.appendChild(a);target.appendChild(p);}
+  }
+  function showError(message){
+    const target=$('#frame-content');
+    if(target)target.innerHTML=`<h1>THE POTATO OF LIFE</h1><p>${esc(message)}</p><p>The reading frame is still available. The navigation data can be repaired without changing the shell.</p>`;
   }
   function select(r,path){state.selected=r.canonical_id||r.id;hash(state.selected);loadIntoFrame(r);save();}
   function recordRow(r,path){
@@ -77,10 +81,18 @@
     load();const button=$('#frame-toggle');if(button)button.onclick=toggleFrame;
     try{
       const [m,i]=await Promise.all([fetch(MANIFEST_URL,{cache:'no-store'}),fetch(DATA_URL,{cache:'no-store'})]);
-      if(!m.ok)throw Error(`manifest HTTP ${m.status}`);state.manifest=await m.json();
+      if(!m.ok)throw Error(`navigation manifest HTTP ${m.status}`);
+      state.manifest=await m.json();
       if(i.ok){const j=await i.json();state.records=Array.isArray(j.records)?j.records:[];}
-      tree();const wanted=hashId()||state.selected;if(wanted){const r=state.records.find(x=>(x.canonical_id||x.id)===wanted||x.id===wanted);if(r)loadIntoFrame(r);}
-    }catch(e){const t=$('#root-tree');if(t)t.innerHTML='<div class="tree-empty">navigation index unavailable</div>';}
+      else showError(`record index HTTP ${i.status}`);
+      tree();
+      const wanted=hashId()||state.selected;
+      if(wanted){const r=state.records.find(x=>(x.canonical_id||x.id)===wanted||x.id===wanted);if(r)loadIntoFrame(r);}
+    }catch(e){
+      const t=$('#root-tree');
+      if(t)t.innerHTML='<div class="tree-empty">navigation unavailable</div>';
+      showError(`Navigation could not start: ${e.message||e}`);
+    }
   }
   document.addEventListener('click',e=>{const a=e.target.closest('[data-action]')?.dataset.action;if(a==='collapse-all')collapse();if(a==='expand-roots')roots();});
   addEventListener('hashchange',()=>{const id=hashId();if(!id)return;const r=state.records.find(x=>(x.canonical_id||x.id)===id||x.id===id);if(r)loadIntoFrame(r);});
