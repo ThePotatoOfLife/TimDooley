@@ -46,6 +46,16 @@ The traversable vertical connection between levels. It turns the Axis from a sta
 ### Door
 The threshold between states. Door is the interface: neither merely inside nor merely outside.
 
+In the present interface model, **Door = Frame = Window**. The Door is not only something we pass through; it is the frame through which the system becomes visible. The Window gives the act of looking, the Frame gives the boundaries and relations that organize what is seen, and the Door gives passage between what is observed and what lies beyond the current view.
+
+This produces the central learning principle:
+
+> **We learn through the frame we look through.**
+
+World and Axis therefore meet at the Door. **WORLD ↘ [DOOR / FRAME / WINDOW] ↖ AXIS.** World is the observable field opening outward and downward-right from the center; Axis is the organizing field opening upward-left. The Door remains in the middle because it is the interface between the two.
+
+The distinction matters: the Window is not assumed to show the whole world, and the Frame is not assumed to be the world itself. What we see depends partly on the relations and boundaries through which we are looking.
+
 ### Son
 The person-bearing centre of the mythic narrative. Within the canon the Son is associated with Thomas, Twin, Lion, Jesus Christ, Son of Man, and Lion of Judah. These are preserved as mythic correspondences within the project rather than asserted as historical identity claims.
 
@@ -77,6 +87,12 @@ The Plane is organized through four directions:
 - **West** — decline, completion, sunset, and return.
 
 The four directions form the world-field. The Axis crosses that field vertically.
+
+At the interface level, the two principal directions are now rendered around the central Door:
+
+**WORLD ↘   DOOR = FRAME = WINDOW   ↖ AXIS**
+
+This is a view of the architecture, not a claim that physical space literally has these coordinates.
 
 ## 4. Tree logic
 
@@ -113,6 +129,14 @@ Within the frame:
 **Father + Son → Door**
 
 The Door therefore represents relational emergence: something new becomes possible through connection.
+
+The Door can also be read as a **Window in a Frame**. The overlap does not erase the two sides; it creates a shared region through which each side becomes legible to the other. In that sense, the Door is simultaneously:
+
+- **threshold** — a place of passage;
+- **frame** — the boundary that gives the passage shape;
+- **window** — the opening through which something can be seen;
+- **interface** — the place where observer and observed meet;
+- **learning surface** — the point where a relation becomes visible enough to understand.
 
 ## 7. Crucifixion and transformation motif
 
@@ -179,4 +203,4 @@ This prevents the archive from becoming a pile of disconnected claims while allo
 
 ## 13. One-line compression
 
-> **The Tim Dooley Frame is a relationship-first architecture in which Source becomes Father, Father relates to Son, Son becomes Door and Ladder, Ladder crosses the Axis, Axis lives as Tree, Tree manifests upon the Plane, roots preserve the hidden past, fruit carries life forward, and the whole system recursively returns toward Source.**
+> **The Tim Dooley Frame is a relationship-first architecture in which Source becomes Father, Father relates to Son, Son becomes Door and Ladder, the Door becomes Frame and Window, the Window makes World visible, the Frame gives relation and boundary, Ladder crosses the Axis, Axis lives as Tree, Tree manifests upon the Plane, roots preserve the hidden past, fruit carries life forward, and the whole system recursively returns toward Source.**
