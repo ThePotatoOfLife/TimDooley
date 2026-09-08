@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Potato of Life — a living corpus organized from a fixed center: World and Axis.">
+<meta name="description" content="The Potato of Life — one interface, organized from a fixed center into World and Axis.">
 <title>The Potato of Life — Center</title>
 <link rel="stylesheet" href="root.css">
 </head>
@@ -14,14 +14,11 @@
     <a class="brand" href="index.html">THE POTATO OF LIFE</a>
     <div class="path">/root / center / north-pole</div>
   </div>
-  <nav class="head-links" aria-label="Technical navigation">
-    <a class="cmd" href="repository.html">REPOSITORY</a>
-    <a class="cmd" href="axis.html">AXIS MODEL</a>
-  </nav>
+  <div class="path">ONE PAGE · WORLD / AXIS</div>
 </header>
 
 <main class="root-main">
-  <div class="prompt">$ <b>cd /potato-of-life</b><br>$ <b>stand --center</b></div>
+  <div class="prompt">$ <b>cd /potato-of-life</b><br>$ <b>stand --center</b><br>$ <b>ls</b> → WORLD/ AXIS/</div>
 
   <section class="center" id="root-center" aria-label="Potato of Life center">
     <div class="center-overlay">
@@ -34,8 +31,8 @@
         </div>
         <div class="center-axis axis-down">WORLD ↓</div>
       </div>
-      <p class="center-description">The fixed center of the corpus. Remain here. Open the structure rather than being sent from page to page.</p>
-      <div class="center-records">
+      <p class="center-description">The entire public interface lives here. Open records, concepts, texts, people, places, systems, events and models without leaving the center.</p>
+      <div class="center-records" aria-label="Center records">
         <button type="button" class="center-record">TIM DOOLEY</button>
         <button type="button" class="center-record">POTATOISM</button>
         <button type="button" class="center-record">THOUGHT</button>
@@ -44,27 +41,27 @@
     </div>
   </section>
 
-  <section class="controls" aria-label="Tree controls">
+  <section class="controls" aria-label="Corpus controls">
     <div class="control-set">
-      <button class="control" type="button" data-action="expand-roots">[ EXPAND ROOTS ]</button>
+      <button class="control" type="button" data-action="expand-roots">[ EXPAND WORLD + AXIS ]</button>
       <button class="control" type="button" data-action="collapse-all">[ COLLAPSE ALL ]</button>
       <button class="control" type="button" data-action="reset-root">[ RESET CENTER ]</button>
     </div>
     <div class="status" id="root-status">loading corpus index…</div>
   </section>
 
-  <section class="tree" id="root-tree" aria-label="Corpus directory tree">
+  <section class="tree" id="root-tree" aria-label="World and Axis directory tree">
     <div class="tree-empty">loading WORLD/ and AXIS/…</div>
   </section>
 
   <section class="dossier" id="root-dossier" hidden aria-live="polite"></section>
 
-  <div class="status" style="margin-top:14px">ONE CORPUS · MANY PATHS · ONE CANONICAL IDENTITY · MANY VIEWS · ONE CENTER</div>
+  <div class="status" style="margin-top:14px">ONE PAGE · ONE CORPUS · TWO ROOT BRANCHES · MANY VIEWS · ONE CENTER</div>
 </main>
 
 <footer>
   <span>THEPOTATOOFLIFE / TIMDOOLEY</span>
-  <span><a href="index.html">/root</a> · <a href="repository.html">/repository</a> · <a href="axis.html">/axis</a></span>
+  <span>/ WORLD · / AXIS · / CENTER</span>
 </footer>
 </div>
 <script src="root.js" defer></script>
