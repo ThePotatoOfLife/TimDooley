@@ -2,55 +2,55 @@
 
 ## Current priority — audit, stabilize, then deepen
 
-The project is an information archive whose graph is the navigation layer. The current canonical filing spine is **ROOT → SPIRIT / MIND / MATTER**; the deeper project mythology may additionally use Door/Axis as transformation and relational coordinates. Filing architecture and symbolic architecture must not be silently conflated.
+The project is an information archive whose graph is the navigation layer. The canonical filing spine is **ROOT → SPIRIT / MIND / MATTER**; Door/Axis remain transformation and relational coordinates rather than filing branches. Every substantial object is definition-first: define the thing itself, establish context and mechanism, then expose its directional couplings.
 
-### Immediate release blockers
+### Completed in the latest 2026-09-08 pass
 
-- [ ] Complete recursive repository audit across every JSON, HTML, JS, CSS, Python and workflow file.
-- [ ] Run the full validator chain after every structural repair and record the resulting commit.
-- [ ] Generate and inspect a persistent 2026-09-08 health report from the validators.
-- [ ] Resolve or explicitly classify high-connectivity graph orphan IDs.
-- [ ] Repair and validate `data/religious-foundations/enriched-records.json` before using it as evidence of coverage.
-- [ ] Audit every visible route for substantive content, not merely route existence.
-- [ ] Keep manifests, backend endpoints, frontend bridge and consumers synchronized.
-- [ ] Fix the current scheduled country-refresh failure before treating automated country acquisition as healthy.
+- [x] Standardize the public shell through one build-time canonical header.
+- [x] Keep page-local controls out of the global header.
+- [x] Make the build deterministic and prevent `components/` and `scripts/` source tooling from being copied into the public Pages artifact.
+- [x] Make the web audit recursive across nested HTML/CSS/JS assets.
+- [x] Make the religious foundation ownership explicit: `data/religious-foundations.json` is the canonical foundation layer and `data/religious-foundations/records.json` is the foundation research layer.
+- [x] Remove the phantom `enriched-records.json` dependency from the canonical foundation index and religious layer manifest rather than fabricating a missing dataset.
+- [x] Preserve the distinction between canonical foundation records, research records, adjacent religion research and the global relationship graph.
+- [x] Register and validate the 2026-09 research-carving layer.
+- [x] Keep Node 24-compatible GitHub Actions versions in the active workflows.
 
-### Findings from 2026-09-08 audit pass
+### Immediate next engineering blockers
 
-- [x] Inspect the latest commit chain rather than assuming the current branch inherited every previous repair cleanly.
-- [x] Confirm the latest Pages deployment succeeded.
-- [x] Confirm the Atlas expansion workflow succeeded.
-- [x] Confirm a separate country-refresh workflow currently fails during the normalized country observation step; acquisition needs a robustness repair and a successful rerun.
-- [x] Register `data/research-carvings-2026-09.json` in both the manifest and backend registry.
-- [x] Extend content-integrity validation so the new research layer cannot silently become an unvalidated orphan.
-- [ ] Add recursive static-link auditing for nested directories, generated routes, CSS `url()` assets and JavaScript route templates.
-- [ ] Add route-contract checks for every page that emits dynamic `node.html?id=...` or `nation.html?id=...` links.
+- [ ] Add and run a route-contract validator covering static pages plus dynamic `node.html`, `nation.html`, `belief.html`, `potatoism-entry.html`, Hawkins, event, research-carving and geometry IDs.
+- [ ] Verify the current `node.html` resolver against the actual schemas for Hawkins, events, research, geometry and Potatoism; repair any mismatched field names or unsupported routes.
+- [ ] Extend the recursive web audit to validate canonical-header presence/order on every generated page, not only the seven root canonical pages.
+- [ ] Run the full validator chain after the latest commits and record exact results in a dated health report.
+- [ ] Inspect and resolve high-connectivity graph orphan IDs, distinguishing true missing entities from intentional research-only endpoints.
+- [ ] Fix the scheduled country-refresh failure with retry/backoff, source failure handling and snapshot preservation; rerun successfully.
 
-### Canonical navigation architecture
+### Canonical navigation and information architecture
 
 - [x] Add `data/repository-spine.json` as the canonical Root/Spirit/Mind/Matter model.
-- [x] Preserve the existing 33-level tree as a deeper vertical scaffold rather than deleting it.
+- [x] Preserve the existing 33-level tree as a deeper vertical scaffold.
 - [x] Rebuild `repository.html` around the canonical repository tree.
-- [x] Standardize the public site shell through one canonical `components/header.html` component and a deterministic build step; page-local controls remain in page content rather than the global header.
-- [x] Add CI validation so every generated HTML page has exactly one canonical header.
-- [x] Remove the unused runtime header loader; GitHub Pages now builds the shared shell before deployment.
-- [x] Align `validate_repository_spine.py` with the actual Root/Spirit/Mind/Matter schema instead of the obsolete Root/Spirit/Door/Matter contract.
+- [x] Standardize the public site shell through `components/header.html` and build-time injection.
+- [x] Add CI validation for exactly one canonical header.
+- [x] Remove the unused runtime header-loader architecture.
+- [x] Align repository-spine validation with Root/Spirit/Mind/Matter.
 - [ ] Replace keyword-only classification with explicit layer metadata as records are enriched.
-- [ ] Add temporal fields to important records so past/present/future states become machine-readable where applicable.
+- [ ] Add machine-readable temporal fields to important records.
 - [ ] Add cross-layer temporal navigation to important record pages.
-- [ ] Explicitly map Spirit/Mind concepts such as geometry, Source and meaning into the repository tree instead of allowing them to disappear because a Matter bucket is unavailable.
+- [ ] Explicitly map Spirit/Mind concepts such as geometry, Source and meaning into the repository tree.
+- [ ] Add a stable route registry so navigation does not depend on scattered filename assumptions.
 
 ### Atlas-wide information density
 
-- [ ] Audit every `node.html?id=...` destination for information density.
+- [ ] Audit every dynamic record destination for information density.
 - [ ] Any node containing only a title, description or relationship list needs a real dossier.
 - [ ] Target at least one full page of substantive reading for every important entry; major subjects should be longer.
 - [ ] Never manufacture facts merely to satisfy length.
-- [ ] Where information is unavailable, state what is known, what is missing, the uncertainty and the research required.
+- [ ] Where information is unavailable, state what is known, what is missing, uncertainty and research required.
 - [ ] Turn structured JSON into readable sections/cards instead of exposing raw JSON as the only explanation.
 - [ ] Preserve canonical IDs while enriching records.
 - [ ] Keep graph edges as navigation/context, never as a replacement for content.
-- [ ] Rank shallow records by connectivity and importance, then deepen the highest-value records first.
+- [ ] Rank shallow records by connectivity and importance, then deepen highest-value records first.
 
 ### Definition-first dossier standard
 
@@ -60,6 +60,7 @@ The project is an information archive whose graph is the navigation layer. The c
 - [ ] Then expose directional couplings with relationship verbs where evidence permits.
 - [ ] Then expose evidence, questions, failure modes, uncertainty and deeper interpretation.
 - [ ] Every coupled record should itself be clickable and independently defined.
+- [ ] Add explicit `definition` fields to the symbolic meaning records that currently rely on purpose/context alone.
 
 ### Potatoism long-form standard
 
@@ -73,13 +74,13 @@ The project is an information archive whose graph is the navigation layer. The c
 
 ### Religious atlas
 
-- [ ] Repair and validate `data/religious-foundations/enriched-records.json`.
-- [ ] Establish one canonical owner for every religious dataset.
-- [ ] Expand major traditions into long-form comparative records.
+- [x] Establish one canonical owner for the foundation layer and remove the phantom enriched-file dependency.
+- [ ] Deep-expand major traditions into long-form comparative records.
 - [ ] Expand minor and adjacent traditions where practical.
 - [ ] Give each tradition history, emergence, texts, concepts, practices, institutions, branches, geography, demographics, evidence, internal diversity and modern development.
 - [ ] Preserve multiple founding/emergence clocks.
 - [ ] Link religion entries to textual, comparative and relationship layers.
+- [ ] Add named people, texts, places and events as first-class graph entities instead of embedding them only as strings.
 
 ### World / nations
 
@@ -138,6 +139,7 @@ The project is an information archive whose graph is the navigation layer. The c
 - [x] Keep GitHub Actions on Node 24-compatible action versions.
 - [x] Run Atlas link audit in CI.
 - [x] Run web-layer audit in CI.
+- [x] Register research-carving coverage in backend/content validators.
 - [ ] Validator for every canonical lexicon term → valid long-form route.
 - [ ] Validator for information-density status.
 - [ ] Validator distinguishing missing from intentionally uncertain data.
@@ -146,12 +148,12 @@ The project is an information archive whose graph is the navigation layer. The c
 - [ ] Validator for duplicate movement IDs and alias collisions.
 - [ ] Validator for predecessor/successor edges.
 - [ ] Validator for stale “active” movement sources.
-- [ ] Extend link audit beyond top-level HTML into nested pages and runtime-generated route contracts.
-- [ ] Add a dedicated country-refresh smoke test before external acquisition is allowed to write a new snapshot.
+- [x] Extend static web audit to nested HTML/CSS/JS references.
+- [ ] Add dedicated country-refresh smoke test before external acquisition can replace a snapshot.
 - [ ] Run all workflows after the next expansion and do not call the repository clean until critical checks pass.
 
 ## Research principle
 
 **See the connections. Read the substance.**
 
-The Atlas should never stop at a pretty node. Every important object should open into enough definition, history, explanation, evidence, interpretation, uncertainty and relationships to stand on its own.
+The repository should never stop at a pretty node. Every important object must open into enough definition, history, explanation, evidence, interpretation, uncertainty and relationships to stand on its own.
