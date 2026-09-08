@@ -31,8 +31,12 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+      - name: Build canonical record registry
+        run: python scripts/build_canonical_record_registry.py
       - name: Build repository index
         run: python scripts/build_repository_index.py
+      - name: Audit source-of-truth and routes
+        run: python scripts/audit_source_of_truth.py
       - name: Validate blueprint contract
         run: python scripts/validate_blueprints.py
       - name: Build static site
