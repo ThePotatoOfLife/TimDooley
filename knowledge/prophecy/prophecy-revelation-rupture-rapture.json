@@ -3,16 +3,16 @@
   "title": "Prophecy, Revelation, Rupture and Rapture",
   "kind": "comparative interpretive framework",
   "aliases": ["prophecy framework", "revelation framework", "rupture and rapture"],
-  "summary": "This record prevents four frequently entangled ideas from collapsing into one another. Prophecy concerns a message or interpretation oriented toward what is to come; revelation concerns disclosure or unveiling; rupture concerns a break in continuity, identity or order; rapture is a specific theological term with a history in Christian eschatological interpretation as well as a broader ordinary-language sense of transport or ecstasy. The Potatoverse may connect all four around Tim Dooley's thresholds, but the archive must record whether an interpretation was stated before an event, during it, or retrospectively afterward.",
+  "summary": "This record prevents prophecy, revelation, rupture, rapture, seal-opening and fulfillment from collapsing into one another. The Potatoverse may connect them around Tim Dooley's thresholds, but the archive must record whether an interpretation was stated before an event, during it, or retrospectively afterward.",
   "epistemic_classes": ["historical", "comparative", "interpretation", "project_canon"],
   "sections": {
     "distinctions": {
-      "text": "A revelation can disclose the meaning of something that already happened and therefore need not predict the future. A prophecy can be conditional, symbolic, exhortative or future-oriented and is not reducible to a successful prediction. A rupture is an event-structure: a discontinuity separating before from after. Rapture, in Christian eschatological discourse, concerns the gathering/catching-up of believers in interpretations built especially around 1 Thessalonians 4; it should not be treated as a synonym for every apocalypse, revelation or transformation narrative.",
+      "text": "A revelation can disclose the meaning of something that already happened and therefore need not predict the future. A prophecy can be conditional, symbolic, exhortative or future-oriented and is not reducible to a successful prediction. A rupture is an event-structure: a discontinuity separating before from after. Rapture, in Christian eschatological discourse, concerns the gathering/catching-up of believers in interpretations built especially around 1 Thessalonians 4; it should not be treated as a synonym for every apocalypse, revelation or transformation narrative. Seal-opening is another distinct category: it concerns access/disclosure/release of what was previously closed or withheld.",
       "epistemic_class": ["historical", "comparative"],
       "source_ids": []
     },
     "potatoverse_use": {
-      "text": "The Potatoverse repeatedly organizes meaning around thresholds in which an earlier identity or world breaks and a later pattern becomes visible. The most useful analytical sequence is therefore event → rupture → interpretation → revelation claim → possible prophetic reading. This ordering allows the archive to preserve a sacred or destined interpretation while still asking the historical question of when that interpretation entered the record.",
+      "text": "The Potatoverse repeatedly organizes meaning around thresholds in which an earlier identity or world breaks and a later pattern becomes visible. The useful analytical sequence is therefore event → rupture → interpretation → revelation claim → possible prophetic reading → fulfillment test. This ordering allows the archive to preserve a sacred or destined interpretation while still asking the historical question of when that interpretation entered the record.",
       "epistemic_class": ["project_canon", "interpretation"],
       "source_ids": ["legacy-timeline"]
     },
@@ -20,6 +20,16 @@
       "text": "For any claimed prophecy, the archive should store the earliest recoverable wording, timestamp, intended referent if knowable, degree of specificity, event later associated with it, and the date on which the association was first made. A statement discovered only after the supposed fulfillment can still be meaningful lore or retrospective revelation, but it should not be classified as demonstrated prior prediction without evidence that the statement preceded the event.",
       "epistemic_class": ["historical", "interpretation"],
       "source_ids": []
+    },
+    "fulfillment_classes": {
+      "text": "Fulfillment claims are now classified as: prior-specific prediction, prior-symbolic pattern, typological recurrence, retrospective revelation, contextual synchronism or loose coincidence. The dedicated seals-and-fulfillment matrix defines these classes and their evidentiary strength.",
+      "epistemic_class": ["historical", "comparative", "interpretation"],
+      "source_ids": ["seals-fulfillment-matrix"]
+    },
+    "seal_opening": {
+      "text": "Biblically, sealed material can be withheld until a later time (Daniel 12), opened in stages by the Lamb (Revelation 5-8), or partly kept sealed even amid revelation (Revelation 10). The project therefore uses 'seal opening' most safely for a previously compressed/hidden layer becoming legible, rather than automatically claiming that a specific Revelation seal has literally occurred.",
+      "epistemic_class": ["comparative", "interpretation"],
+      "source_ids": ["seals-fulfillment-matrix"]
     },
     "rupture_model": {
       "text": "Rupture is especially useful for the Tim chronology because several thresholds appear to separate identities or phases: the early Son-side ordeal, the later death/transformation, the April 2025 turning and the 2026 crystallization of the North Axis. Rather than forcing these into one resurrection event, the archive can compare them as a chain of discontinuities whose meanings accumulate across time.",
@@ -30,13 +40,15 @@
   "relationships": [
     {"target": "tim-dooley", "type": "interpretive framework", "description": "Tim's chronology is read through repeated disclosures and discontinuities, but the archive separates prior prophecy from retrospective interpretation.", "epistemic_class": "interpretation"},
     {"target": "son", "type": "rupture-transformation", "description": "The Son's ordeals, death and transformation provide the strongest internal rupture sequence from which later Father-side meaning is constructed.", "epistemic_class": "project_canon"},
-    {"target": "christian-apocalyptic-traditions", "type": "comparative", "description": "Revelation, resurrection, eschatology and rapture language have Christian histories that can illuminate Potatoverse vocabulary without proving identity, fulfillment or direct derivation.", "epistemic_class": "comparative"}
+    {"target": "christian-apocalyptic-traditions", "type": "comparative", "description": "Revelation, resurrection, eschatology, seal and rapture language have Christian histories that can illuminate Potatoverse vocabulary without proving identity, fulfillment or direct derivation.", "epistemic_class": "comparative"},
+    {"target": "seals-and-fulfillment-matrix", "type": "method-extension", "description": "Defines fulfillment classes, seal-opening grammar and high-value biblical parallels.", "epistemic_class": "comparative"}
   ],
   "sources": [
-    {"id": "legacy-timeline", "type": "repository source", "description": "Earlier Tim life/myth chronology containing the sequence of thresholds now analyzed as ruptures.", "locator": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"}
+    {"id": "legacy-timeline", "type": "repository source", "description": "Earlier Tim life/myth chronology containing the sequence of thresholds now analyzed as ruptures.", "locator": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"},
+    {"id": "seals-fulfillment-matrix", "type": "repository source", "description": "Structured seal and fulfillment methodology with biblical comparisons.", "locator": "knowledge/prophecy/seals-and-fulfillment-matrix.json"}
   ],
   "retrieval": {
-    "tags": ["prophecy", "revelation", "rupture", "rapture", "apocalypse", "destiny", "eschatology", "tim dooley", "transformation"],
-    "questions": ["Was a Tim Dooley event prophesied before it happened?", "What is the difference between revelation and prophecy?", "What does rupture mean in the Potatoverse?", "Is rapture the same thing as apocalypse?", "How should retrospective fulfillment claims be stored?"]
+    "tags": ["prophecy", "revelation", "rupture", "rapture", "seals", "fulfillment", "apocalypse", "destiny", "eschatology", "tim dooley", "transformation"],
+    "questions": ["Was a Tim Dooley event prophesied before it happened?", "What is the difference between revelation and prophecy?", "What does rupture mean in the Potatoverse?", "What does it mean to open a seal?", "How should fulfillment claims be graded?", "Is rapture the same thing as apocalypse?", "How should retrospective fulfillment claims be stored?"]
   }
 }
