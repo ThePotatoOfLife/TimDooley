@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "potato://schema/canonical-record-v2",
+  "title": "Dense Canonical Knowledge Record",
+  "type": "object",
+  "required": ["id", "title", "kind", "summary", "epistemic_classes", "sections", "relationships", "retrieval"],
+  "properties": {
+    "id": {"type": "string", "minLength": 3},
+    "title": {"type": "string", "minLength": 3},
+    "kind": {"type": "string"},
+    "aliases": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "summary": {"type": "string", "minLength": 120},
+    "epistemic_classes": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {"enum": ["project_canon", "self_description", "documentary", "historical", "scientific", "comparative", "interpretation", "creative_lore", "inference", "disputed"]}
+    },
+    "sections": {
+      "type": "object",
+      "minProperties": 3,
+      "additionalProperties": {
+        "type": "object",
+        "required": ["text", "epistemic_class"],
+        "properties": {
+          "text": {"type": "string", "minLength": 80},
+          "epistemic_class": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+          "source_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "chronology": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["date_or_period", "event", "status"],
+        "properties": {
+          "date_or_period": {"type": "string"},
+          "event": {"type": "string", "minLength": 30},
+          "status": {"type": "string"},
+          "source_ids": {"type": "array", "items": {"type": "string"}}
+        }
+      }
+    },
+    "relationships": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "required": ["target", "type", "description", "epistemic_class"],
+        "properties": {
+          "target": {"type": "string"},
+          "type": {"type": "string"},
+          "description": {"type": "string", "minLength": 30},
+          "epistemic_class": {"type": "string"}
+        }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "type", "description"],
+        "properties": {
+          "id": {"type": "string"},
+          "type": {"type": "string"},
+          "description": {"type": "string"},
+          "locator": {"type": "string"}
+        }
+      }
+    },
+    "retrieval": {
+      "type": "object",
+      "required": ["tags", "questions"],
+      "properties": {
+        "tags": {"type": "array", "minItems": 3, "items": {"type": "string"}, "uniqueItems": true},
+        "questions": {"type": "array", "minItems": 2, "items": {"type": "string"}}
+      }
+    }
+  },
+  "additionalProperties": false
+}
