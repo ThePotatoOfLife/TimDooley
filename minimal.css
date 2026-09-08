@@ -1,20 +1,21 @@
-/* Minimal North Pole plane: WORLD below, FRAME in the exact center, AXIS above. */
-:root{--plane-height:min(86vh,860px)}
+/* Minimal vertical plane: WORLD ↓ | invisible FRAME | ↑ AXIS. */
+:root{--plane-height:min(88vh,900px)}
+html,body{margin:0;min-height:100%;overflow-x:hidden}
 .root{width:100%;max-width:none;margin:0;padding:0}
-.root-main{width:100%;min-height:var(--plane-height);padding:0;position:relative}
-.root-head,.prompt,header,footer,.controls,.status,.dossier,.center-label,.center-map,.center-identity,.center-description,.center-records,.center-record,.north-introduction h1,.north-introduction p{display:none!important}
-.center{position:relative;width:100%;height:var(--plane-height);min-height:520px;border:0;background:transparent;overflow:hidden}
-.center-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0;background:transparent}
-.north-introduction{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none}
-.tree{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:0;border:0;pointer-events:none}
+.root-main{position:relative;width:100%;height:var(--plane-height);min-height:560px;padding:0}
+.root-head,.prompt,header,footer,.controls,.status,.dossier,.center-label,.center-map,.center-identity,.center-description,.center-records,.center-record,.north-introduction{display:none!important}
+.center{position:absolute;inset:0;width:100%;height:100%;min-height:0;border:0;background:transparent;overflow:hidden;pointer-events:none}
+.center-overlay{position:absolute;inset:0;background:transparent;pointer-events:none}
+/* Invisible frame/container at the exact midpoint. */
+.center-overlay::after{content:'';position:absolute;left:50%;top:50%;width:min(70vw,520px);height:min(34vh,340px);transform:translate(-50%,-50%);background:transparent;border:0;pointer-events:auto}
+.tree{position:absolute;inset:0;width:100%;height:100%;display:block;border:0;pointer-events:none}
 .branch-axis,.branch-world{position:absolute;left:50%;width:min(92vw,720px);transform:translateX(-50%);display:block!important;pointer-events:auto}
-.branch-axis{top:calc(50% - 120px);order:0}
-.branch-world{top:calc(50% + 72px);order:1}
-.branch-axis>summary,.branch-world>summary{display:flex;align-items:center;justify-content:center;gap:14px;padding:12px 18px;border:0;background:transparent;font-size:clamp(20px,4vw,34px);letter-spacing:.16em;text-align:center}
-.branch-axis>summary .tree-mark,.branch-world>summary .tree-mark{display:none}
+.branch-axis{top:calc(50% - 155px)}
+.branch-world{top:calc(50% + 125px)}
+.branch-axis>summary,.branch-world>summary{display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 16px;border:0;background:transparent;font-size:clamp(20px,4vw,34px);line-height:1.2;letter-spacing:.16em;text-align:center;cursor:pointer}
+.branch-axis>summary .tree-mark,.branch-world>summary .tree-mark,.branch-axis>summary .tree-note,.branch-world>summary .tree-note,.branch-axis>summary .tree-count,.branch-world>summary .tree-count{display:none}
 .branch-axis>summary .tree-name,.branch-world>summary .tree-name{font-weight:700}
-.branch-axis>summary .tree-note,.branch-world>summary .tree-note,.branch-axis>summary .tree-count,.branch-world>summary .tree-count{display:none}
-.branch-axis>summary::after{content:'↑';font-size:1.1em;line-height:1}
-.branch-world>summary::before{content:'↓';font-size:1.1em;line-height:1}
-.branch-axis[open]>.branch-children,.branch-world[open]>.branch-children{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:min(92vw,720px);max-height:45vh;overflow:auto;background:var(--bg);z-index:3}
-@media(max-width:600px){:root{--plane-height:88vh}.center{min-height:480px}.branch-axis{top:calc(50% - 105px)}.branch-world{top:calc(50% + 62px)}.branch-axis>summary,.branch-world>summary{font-size:20px;letter-spacing:.1em}}
+.branch-axis>summary::before{content:'↑';font-size:1.1em;line-height:1}
+.branch-world>summary::after{content:'↓';font-size:1.1em;line-height:1}
+.branch-axis[open]>.branch-children,.branch-world[open]>.branch-children{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:min(92vw,720px);max-height:45vh;overflow:auto;background:var(--bg);z-index:3;pointer-events:auto}
+@media(max-width:600px){:root{--plane-height:90vh}.root-main{min-height:520px}.branch-axis{top:calc(50% - 125px)}.branch-world{top:calc(50% + 95px)}.branch-axis>summary,.branch-world>summary{font-size:20px;letter-spacing:.1em}}
