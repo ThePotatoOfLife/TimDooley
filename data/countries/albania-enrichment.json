@@ -1,1 +1,94 @@
-{"version":"1.0.0","country_id":"albania","official_name":"Republic of Albania","capital":"Tirana","region":"Europe","subregion":"Southern Europe","currency":"ALL","government":"unitary parliamentary republic","national_day":"November 28","constitutional_basis":"Constitution of 1998","strategic_assets":["Adriatic ports","hydropower","tourism","chromium and mineral resources","Western Balkans logistics"],"relationships":[["albania","nato","member"],["albania","european-union","candidate"],["albania","adriatic-ionian-region","strategic-geography"]],"research_queue":["EU accession","energy interconnection","port and corridor infrastructure","diaspora and remittances","public finance","tourism value chains"]}
+{
+  "version":"2.0.0",
+  "country_id":"albania",
+  "record_role":"country-enrichment-child",
+  "official_name":"Republic of Albania",
+  "capital":"Tirana",
+  "region":"Europe",
+  "subregion":"Southern Europe",
+  "currency":{"code":"ALL","name":"lek"},
+  "government":"unitary parliamentary republic",
+  "constitutional_basis":"Constitution of 1998",
+  "historical_genealogy":[
+    {"period":"Antiquity","summary":"The territory of present-day Albania was inhabited by Illyrian communities and later incorporated into the Macedonian and Roman worlds. Greek colonies and Roman infrastructure connected the Adriatic coast to wider Mediterranean networks."},
+    {"period":"Late antiquity and medieval period","summary":"The region passed through Roman, Byzantine, Bulgarian, Serbian and local Albanian political spheres. Coastal cities such as Durrës retained major Adriatic connections while the interior developed distinct local political centers."},
+    {"period":"15th century","summary":"The resistance associated with Skanderbeg became a central element of later Albanian national memory. After Ottoman consolidation, Albanian-speaking populations became part of the Ottoman imperial system for several centuries."},
+    {"period":"Ottoman period","summary":"Albanian-speaking communities were distributed across multiple religious traditions, including Islam, Eastern Orthodoxy and Catholicism. Ottoman administrative, military and commercial networks deeply shaped the country's social and urban history."},
+    {"period":"1878–1912","summary":"The Albanian national movement developed through cultural associations, education initiatives and political demands. The League of Prizren in 1878 is a major milestone in the modern national movement. Independence was declared at Vlorë in November 1912."},
+    {"period":"1912–1944","summary":"The new state experienced unstable governments, international intervention and territorial disputes. King Zog consolidated a monarchy in the interwar period before Italian occupation in 1939 and German occupation after Italy's 1943 withdrawal."},
+    {"period":"1944–1990","summary":"Enver Hoxha's communist regime established one of Europe's most isolated state-socialist systems. The government pursued extensive industrialization and state ownership while imposing severe political repression, religious suppression and restrictions on foreign contact."},
+    {"period":"1990–present","summary":"The communist system collapsed in the early 1990s. Albania transitioned toward multiparty democracy and a market economy, joined NATO in 2009, obtained EU candidate status in 2014 and began EU accession negotiations in 2022. Integration with European institutions is now a major organizing principle of foreign and economic policy."
+    }
+  ],
+  "territory_and_geography":{
+    "landscape":"Albania combines Adriatic and Ionian coastlines with a mountainous interior. The Albanian Alps in the north, central mountain ranges and southern highlands create strong regional differences in settlement, agriculture, transport and tourism.",
+    "major_rivers":["Drin","Vjosa","Semani","Shkumbin","Mati"],
+    "major_ports":["Durrës","Vlorë","Shëngjin","Sarandë"],
+    "neighbors":["Montenegro","Kosovo","North Macedonia","Greece"],
+    "maritime_interfaces":["Adriatic Sea","Ionian Sea"],
+    "strategic_position":"Albania links the Western Balkans to the Adriatic and forms part of the wider Adriatic-Ionian transport and energy system. Its geography gives it a role in regional road, port, electricity and tourism networks."
+  },
+  "political_and_institutional_system":{
+    "parliament":"Unicameral Assembly of Albania (Kuvendi i Shqipërisë).",
+    "executive":"The Prime Minister leads the government; the President is head of state with constitutionally defined powers.",
+    "judiciary":"The post-2016 justice reform reorganized major judicial institutions and created or strengthened bodies including the Special Prosecution Office (SPAK) and National Bureau of Investigation as part of an anti-corruption and judicial-accountability architecture.",
+    "administration":"Albania is divided into 12 counties (qarks) and 61 municipalities following territorial-administrative reform.",
+    "political_competition":"The principal national political competition has historically centered on the Socialist Party and Democratic Party, alongside smaller parties and coalitions. Electoral institutions and judicial reform remain important components of EU accession monitoring.",
+    "security":"Albania is a NATO member and participates in European and regional security cooperation. Its security policy is closely connected to Euro-Atlantic institutions."
+  },
+  "society_and_population":{
+    "language":"Albanian is the official language. It forms its own branch of the Indo-European language family and has two major historical dialect groupings, Gheg and Tosk.",
+    "religion":"Albania is constitutionally secular and historically religiously diverse. Muslim, Bektashi, Catholic, Orthodox and nonreligious identities are all present. Census and survey classifications should be treated separately because religious self-identification can vary by instrument and period.",
+    "demography":"Albania has experienced substantial population decline and ageing pressures since the end of communism, driven by low fertility and emigration. Population concentration has increased around Tirana and other major urban centers.",
+    "diaspora":"Albanian migration has created large communities in Italy, Greece, the United States, the United Kingdom and elsewhere. Remittances and diaspora investment have been important economic links, while emigration also affects labour supply and human capital.",
+    "urban_system":["Tirana","Durrës","Elbasan","Vlorë","Shkodër","Fier","Korçë","Berat","Gjirokastër"],
+    "education":"Albania inherited a highly centralized education system from the communist period and has since undergone curriculum, institutional and access reforms. Universities and vocational education are increasingly linked to labour-market and European integration objectives.",
+    "health":"The health system combines public provision with private services. Primary care, hospital modernization, pharmaceutical spending and unequal access between urban and rural areas remain important policy questions."
+  },
+  "economy":{
+    "structure":"The economy combines services, tourism, construction, agriculture, manufacturing, extractive industries and energy. Tirana is the dominant administrative, financial and service center.",
+    "tourism":"Tourism has become a major growth sector, especially along the Adriatic and Ionian coasts and in mountain and heritage destinations. Growth creates infrastructure, housing, water, waste, seasonal employment and land-use pressures that should be mapped rather than represented simply as GDP gains.",
+    "energy":"Albania's electricity system is unusually dependent on hydropower, making output sensitive to rainfall and hydrological conditions. This creates both a renewable-energy advantage and a climate/seasonality vulnerability. Regional electricity interconnections therefore have strategic value.",
+    "minerals_and_industry":["chromium","copper","nickel","oil","construction materials","hydropower-related industries"],
+    "agriculture":"Agriculture remains socially important despite its declining share of total output. Small and fragmented holdings, irrigation, rural depopulation, market access and food-processing capacity are important structural variables.",
+    "trade":"Italy and neighboring Balkan states are major economic partners. The country's ports, road links and proximity to EU markets give trade geography a strong regional dimension.",
+    "public_finance":"Albania has pursued fiscal and debt-management reforms as part of European integration. Debt sustainability, tax administration, public investment quality and the treatment of public-private partnership obligations remain important research areas.",
+    "eu_integration":"EU accession negotiations opened in 2022. The accession process creates a large regulatory-transformation layer spanning competition, rule of law, public procurement, environment, energy, transport, agriculture, digital regulation and financial governance."
+  },
+  "infrastructure_and_connectivity":{
+    "ports":"Durrës is the country's principal commercial port and a major Adriatic logistics node. Port modernization and alternative port development are strategically relevant to trade and tourism.",
+    "roads":"The road network has expanded substantially since the 1990s, including north-south and east-west corridors connecting Albania to Montenegro, Kosovo, North Macedonia and Greece.",
+    "energy_interconnection":"Cross-border electricity links connect Albania to the regional Balkan power market. The system's hydrological dependence makes regional balancing especially important.",
+    "digital":"Mobile and internet connectivity expanded rapidly after the transition from communism. Digital government services and telecommunications infrastructure are increasingly part of Albania's European integration agenda.",
+    "corridors":["Adriatic-Ionian transport system","Durres–Kukës–Morinë corridor","Tirana–Durrës metropolitan corridor","north-south coastal and inland corridors"]
+  },
+  "international_relationships":[
+    {"target":"European Union","type":"accession-and-regulatory-integration","detail":"EU accession is the central long-term institutional integration project. The relationship reaches beyond trade into law, procurement, competition, environmental regulation, energy, transport and judicial standards."},
+    {"target":"NATO","type":"security-alliance","detail":"Albania joined NATO in 2009 and contributes to the Alliance's southeastern European security architecture."},
+    {"target":"Italy","type":"trade-investment-migration","detail":"Italy is one of Albania's most important economic partners and is closely linked through Adriatic geography, migration, trade and investment."},
+    {"target":"Greece","type":"border-trade-migration","detail":"Greece is a neighboring EU state with extensive historical migration, family, labour and trade links to Albania."},
+    {"target":"Kosovo","type":"cultural-trade-regional","detail":"Albania and Kosovo have dense linguistic and cultural ties and growing road, energy and commercial connectivity."},
+    {"target":"Western Balkans","type":"regional-integration","detail":"Albania participates in regional initiatives concerning transport, energy, trade, security and European integration."
+    }
+  ],
+  "strategic_assets":["Adriatic ports","hydropower","tourism","chromium and mineral resources","Western Balkans logistics","EU accession pathway","large diaspora network"],
+  "research_priorities":[
+    "EU accession chapter-by-chapter regulatory implementation",
+    "Durrës port and wider Adriatic logistics ownership/operator map",
+    "hydropower generation and rainfall sensitivity time series",
+    "tourism value chains and infrastructure pressure",
+    "diaspora, remittances and labour-market effects",
+    "public procurement and infrastructure concessions",
+    "municipal finance and territorial inequality",
+    "mining ownership, concessions and environmental liabilities",
+    "judicial reform institutions and case throughput",
+    "population decline, fertility and emigration by region"
+  ],
+  "sources":[
+    {"publisher":"World Bank","title":"Albania country overview","url":"https://www.worldbank.org/en/country/albania","accessed":"2026-09-08","use":"economic and development context"},
+    {"publisher":"International Monetary Fund","title":"Albania country information","url":"https://www.imf.org/en/Countries/ALB","accessed":"2026-09-08","use":"macroeconomic and fiscal context"},
+    {"publisher":"European Commission","title":"Albania accession and enlargement information","url":"https://neighbourhood-enlargement.ec.europa.eu/enlargement-policy/albania_en","accessed":"2026-09-08","use":"EU accession and institutional reform context"},
+    {"publisher":"NATO","title":"Albania and NATO","url":"https://www.nato.int/cps/en/natohq/topics_48843.htm","accessed":"2026-09-08","use":"security and alliance status"}
+  ],
+  "completion_note":"This child record turns the former short strategic-assets stub into a cross-domain Albania dossier. Numerical observations should be added as dated measurements from the relevant statistical or institutional source rather than copied into timeless narrative fields."
+}
