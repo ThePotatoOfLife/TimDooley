@@ -2,146 +2,204 @@
 
 ## Operating order
 
-The repository is now large enough that **reliability, canonical ownership and depth matter more than raw file count**. Work in this order:
+This is the working queue, not a wishlist. Work top-to-bottom. Do not add new data at scale while a higher-level contract is broken.
 
-1. **P0 — site loads and deploys reliably**
-2. **P0 — canonical ownership, duplicate paths and route integrity**
-3. **P1 — deepen high-connectivity records and close missing joins**
-4. **P1 — make People/Dwellers, Culture/Subculture, Religion and Movements analytically useful**
-5. **P1 — improve population, geography, network and temporal extraction**
-6. **P2 — expand evidence-backed research and project canon**
-7. **P2 — UI/cosmetic refinement after contracts remain stable**
+1. **P0 — establish one trustworthy source of truth for the repository**
+2. **P0 — make every route resolve and fail visibly**
+3. **P0 — make CI/build/deploy enforce the same contracts**
+4. **P1 — finish the blueprint system and migrate every consumer**
+5. **P1 — repair cross-domain joins and graph integrity**
+6. **P1 — deepen the highest-value entity families**
+7. **P1 — make books/full text and research archives robust**
+8. **P2 — expand the North Programme / European economic graph**
+9. **P2 — deepen Potatoism as a separate, explicitly project-defined layer**
+10. **P2 — improve UI/search/navigation after data contracts are trustworthy**
 
-## Completed in the current stabilization pass
+## Current sprint — do these first
 
-- [x] Fix the build-site header transformation/escaping failure.
-- [x] Replace fragile repository-page multi-fetch loading with the generated repository index.
-- [x] Add `scripts/build_repository_index.py` and generate a repository-wide record inventory.
-- [x] Fix the site-shell validator so HTML attributes are parsed independently of attribute order.
-- [x] Add `scripts/stability_audit.py` for JSON, Python, JavaScript, built-site links and source asset/reference checks.
-- [x] Run the stability audit before the deeper Atlas validators in CI.
-- [x] Save a stable checkpoint branch for the 2026-09-08 working state.
-- [x] Add a dedicated extremism/high-control blueprint.
-- [x] Add a dedicated culture/subculture blueprint.
-- [x] Add a dedicated technology-system blueprint.
-- [x] Expand the blueprint registry to include the new domain specifications.
-- [x] Update README with architecture rules and lessons learned.
+- [ ] Run the full CI suite after the latest blueprint and Pages changes; record the first failing job, not just the final red status.
+- [ ] Inventory every file in `data/blueprints/` and reconcile the real filenames against `data/blueprint-registry.json`.
+- [ ] Remove every stale reference to old blueprint filenames (`*-master.json`, bare blueprint `.json`, old system names) from scripts, data, docs and manifests.
+- [ ] Fix the blueprint registry's declared count so it equals the actual contractually registered standalone blueprints; do not count structural sections as files.
+- [ ] Audit every blueprint against the meta-blueprint and classify missing fields as required, recommended, optional, derived, unavailable or disputed.
+- [ ] Inspect `build_canonical_record_registry.py`; make its output a real ownership/deduplication contract rather than an informational report.
+- [ ] Generate a machine-readable canonical-record registry and make CI report duplicate IDs, aliases, slugs and conflicting owners.
+- [ ] Audit all `data/religious-foundations*` ownership paths and migrate consumers to the chosen canonical owner.
+- [ ] Audit `node.html` against every record family in `repository-index.json`; add explicit route families instead of silently falling through.
+- [ ] Add route diagnostics for unknown IDs, malformed IDs, missing data and unsupported record types.
+- [ ] Make the Pages deployment run the same essential data/build/stability gates as Atlas CI.
+- [ ] Run the deployed site smoke test against the actual GitHub Pages URL after the next successful deployment.
 
-## P0 — canonical ownership and duplicate cleanup
+## P0 — repository source-of-truth architecture
 
-- [ ] Generate `canonical-record-registry.json` from the complete data tree and expose duplicate-ID candidates in CI.
-- [ ] Assign one canonical owner to every important identifier.
-- [ ] Distinguish canonical records from indexes, mirrors, enrichments, graph projections, research and archives.
-- [ ] Audit stale paths such as `data/religious-foundations.json` versus `data/religious-foundations/records.json`; keep compatibility only where a deliberate contract requires it.
-- [ ] Search all HTML/JS/JSON/Markdown references for renamed or superseded files.
-- [ ] Detect duplicate IDs across unrelated domains and classify intentional shared identifiers versus collisions.
-- [ ] Detect alias/slug collisions that can send two records to the same route.
-- [ ] Add a machine-readable ownership manifest for important cross-domain IDs.
+- [ ] Define canonical owner / index / enrichment / projection / research / archive roles as a machine-readable contract.
+- [ ] Ensure every important ID has one canonical owner or an explicitly documented shared-ID rule.
+- [ ] Detect duplicate IDs across unrelated JSON domains.
+- [ ] Detect alias and slug collisions that can create ambiguous URLs.
+- [ ] Detect records whose declared `blueprint` points to a nonexistent file.
+- [ ] Detect records whose `source`, `path`, `owner` or `canonical` references are stale.
+- [ ] Detect mirrors that contain competing canonical values rather than derived copies.
+- [ ] Add migration metadata when a canonical owner moves.
+- [ ] Make generated indexes deterministic in ordering, counts and serialization.
+- [ ] Decide which generated files are committed and which are build artifacts; document the rule.
 
-## P0 — routing and page integrity
+## P0 — routing / frontend contract
 
-- [ ] Make `node.html` resolve every major record family represented by `repository-index.json`, not only the older core stores.
-- [ ] Audit `nation.html`/`nations.html`, `belief.html`, `people.html`, `books.html`, `extremism.html`, `potatoism.html`, `timeline.html`, `axis.html`, `geometry.html` and `health.html` against their actual data contracts.
-- [ ] Build a route matrix: page → data source → identifier field → resolver → fallback/error state.
-- [ ] Test static route references and dynamic `?id=` routes separately.
-- [ ] Ensure unknown IDs produce useful diagnostics rather than blank pages.
-- [ ] Ensure every high-value repository record has a reachable human-readable detail page.
-- [ ] Check URL encoding for IDs, aliases and Unicode names.
-- [ ] Add a small browser/runtime smoke-test layer when a headless browser is available in CI.
+- [ ] Build a route matrix: page → input → data source → ID field → resolver → detail renderer → fallback.
+- [ ] Make `node.html` the universal resolver for record families that do not have a specialized page.
+- [ ] Ensure specialized pages explicitly register their supported families and do not duplicate resolver logic.
+- [ ] Audit `repository.html`, `nation.html`, `nations.html`, `belief.html`, `people.html`, `books.html`, `extremism.html`, `potatoism.html`, `timeline.html`, `axis.html`, `geometry.html` and `health.html`.
+- [ ] Test literal links and dynamic `?id=` links separately.
+- [ ] Test URL encoding for spaces, punctuation, Unicode and long IDs.
+- [ ] Ensure empty arrays, missing optional fields and missing files render an explanatory state instead of a blank screen.
+- [ ] Add a browser/runtime smoke test for the highest-value routes when a headless browser is available.
+- [ ] Verify GitHub Pages base-path behavior for every root-relative asset and fetch URL.
+- [ ] Add a small frontend data-loader contract so cache busting, error handling and JSON parsing are consistent.
 
-## P0 — deployment and generated artifacts
+## P0 — CI / workflow / deployment
 
-- [ ] Confirm every main-branch Pages run completes through deployment after stabilization commits.
-- [ ] Make generated artifacts deterministic: same source tree should produce the same index ordering and counts.
-- [ ] Decide which generated files belong in Git and which should exist only in the Pages artifact.
-- [ ] Add cache/version strategy consistently to generated JSON fetches.
-- [ ] Keep Node.js GitHub Actions on supported runtime versions and remove obsolete workflows when their replacement is authoritative.
+- [ ] Run `atlas-check` and Pages after every architectural change until green.
+- [ ] Compare `atlas-check.yml` and `pages.yml`; keep their safety gates intentionally aligned without duplicating unrelated audits.
+- [ ] Decide whether `backend-coverage.yml`, `expansion-check.yml`, country workflows and text-import workflows overlap or have independent ownership.
+- [ ] Keep the disabled legacy Jekyll workflow documented only if it provides useful migration history; otherwise remove it.
+- [ ] Ensure workflow permissions are least-privilege.
+- [ ] Ensure every generated report has a deterministic path and cannot cause a misleading `upload-artifact` failure after an earlier error.
+- [ ] Add CI artifacts for audit reports where they materially help debugging.
+- [ ] Add explicit timeouts to long-running workflows.
+- [ ] Verify Node 24 compatibility across all JavaScript actions and local JS tooling.
+- [ ] Record successful deployment SHA/run IDs in the project log.
 
-## P1 — blueprint system
+## P0 — blueprint contract
 
-- [ ] Validate every blueprint's referenced file actually exists.
-- [ ] Validate blueprint IDs are unique.
-- [ ] Validate each blueprint has identity, evidence, temporal and relationship sections unless an explicit exception is documented.
-- [ ] Add acquisition/source/refresh metadata to blueprints that currently lack it.
-- [ ] Add validation rules and failure modes to older blueprints so the newer blueprints are not the only deep specifications.
-- [ ] Add dedicated blueprints where the structural model is still too generic: media ecosystems, legal cases/jurisprudence, intelligence/security networks, procurement contracts, digital/platform ecosystems, transport/logistics, ports, telecom/cables, science funding, heritage/archaeology and urban systems.
-- [ ] Add blueprint inheritance metadata so specialized blueprints can extend common fields without copying them.
-- [ ] Add field status vocabulary: required / recommended / optional / derived / unavailable / disputed.
-- [ ] Add source-type and confidence requirements per field family where appropriate.
+- [ ] Enforce the `<subject>-blueprint.json` filename rule for all standalone blueprints.
+- [ ] Treat `blueprint-blueprint.json` as the meta-contract, not an ordinary domain blueprint.
+- [ ] Reconcile the registry count with the actual files and registry entries.
+- [ ] Require purpose, entity, record schema, relationships, evidence, validation and implementation notes unless an explicit exception is recorded.
+- [ ] Add inheritance metadata so specialized blueprints can extend shared structures without copying them.
+- [ ] Add canonical-owner and frontend-routing metadata to every blueprint.
+- [ ] Add acquisition workflow: discovery → source selection → extraction → normalization → validation → provenance → refresh.
+- [ ] Add explicit failure modes and known traps to every mature blueprint.
+- [ ] Add temporal rules to blueprints where facts change over time.
+- [ ] Add uncertainty rules where population, membership, valuation, ownership or attribution cannot be exact.
+- [ ] Make each blueprint produce an actionable next-research task, not merely a list of fields.
 
-## P1 — People / Dwellers / populations
+## P1 — next dedicated blueprints, only where they earn their own contract
 
-- [ ] Build canonical joins among people-registry, nations, languages, religions, political organizations, culture/subculture and migration layers.
-- [ ] Separate nationality, citizenship, residence, ethnicity, language, religion, political affiliation and culture in every population dataset.
-- [ ] Add time-indexed population observations and reference years.
-- [ ] Detect population claims with no reference year or source.
-- [ ] Add country intersections: resident populations, citizenship groups, language communities, religious communities, cultural communities, political constituencies, occupational groups, age cohorts and diasporas.
+Create these in this order, and stop if a structural pattern is sufficient:
 
-## P1 — Culture / Subculture / Movements
+1. [ ] `legal-case-jurisprudence-blueprint.json` — cases, courts, parties, issues, judgments, precedent and procedural history.
+2. [ ] `transport-logistics-blueprint.json` — corridors, operators, capacity, throughput, chokepoints and dependencies.
+3. [ ] `port-terminal-blueprint.json` — terminals, owners/operators, cargo, capacity, concessions and connections.
+4. [ ] `telecom-cable-blueprint.json` — cables, landing stations, owners, operators, capacity, route and redundancy.
+5. [ ] `science-funding-blueprint.json` — funders, programmes, grants, recipients, amounts, topics, outputs and co-funding.
+6. [ ] `digital-platform-ecosystem-blueprint.json` — platforms, owners, users, business models, APIs, data flows, governance and dependencies.
+7. [ ] `urban-system-blueprint.json` — metropolitan systems, housing, transport, utilities, fiscal base, jobs and governance.
+8. [ ] `heritage-archaeology-blueprint.json` — sites, artifacts, dating, custody, provenance, designation and preservation.
+9. [ ] `geopolitical-dependency-blueprint.json` — dependency direction, magnitude, concentration, substitutability and strategic exposure.
+10. [ ] `dataset-statistical-series-blueprint.json` — statistical series, methodology, revisions, units, frequency, coverage and breaks.
 
-- [ ] Build the culture/subculture data layer from the new blueprint.
-- [ ] Add origins, turning points, geography, population/audience, institutions, media, practices and diffusion relationships.
-- [ ] Distinguish cultural visibility from population size.
-- [ ] Connect movements to their historical predecessors, successor organizations, institutions and media ecosystems.
-- [ ] Improve extremism/high-control records with designation authority/date, membership uncertainty, ideology evidence, organizational history and relationship provenance.
+Do not create separate blueprints for concepts already adequately governed by `structural-patterns-blueprint.json`.
 
-## P1 — Religion and adjacent layers
+## P1 — canonical joins and graph integrity
 
-- [ ] Repair all stale religious-foundations references and make `records.json` the clear canonical research owner where appropriate.
-- [ ] Make religious foundation, adjacent, mystery-cult and occult records resolve through the same route contract.
-- [ ] Expand comparative religion records with origin, historical development, doctrine/practice, institutions, geography, population, sources and uncertainty.
-- [ ] Preserve distinctions between historical description, insider theology, academic interpretation and project symbolism.
-
-## P1 — World / North Programme / economic graph
-
-- [ ] Complete canonical country joins for population, GDP, debt, trade, energy, infrastructure, ownership, procurement and research.
-- [ ] Detect missing country-level edges across major economic layers.
-- [ ] Add reference-year metadata to every country comparison.
-- [ ] Build company → owner → asset → country → sector → financing → procurement joins.
+- [ ] Build country → population → GDP → debt → trade → energy → infrastructure → ownership → procurement → research joins.
+- [ ] Build company → owner/control → asset → country → sector → financing → procurement chains.
 - [ ] Build infrastructure → operator → owner → supplier → energy → trade dependency chains.
-- [ ] Improve debt/finance records so issuer, creditor, instrument, currency, maturity and valuation are not conflated.
+- [ ] Detect phantom relationship endpoints.
+- [ ] Detect unresolved internal IDs versus legitimate external nodes.
+- [ ] Detect accidental self-loops.
+- [ ] Detect duplicate/conflicting edges.
+- [ ] Require relationship type, provenance and time where the relevant graph layer supports them.
+- [ ] Produce graph coverage statistics by domain and country.
+- [ ] Identify high-connectivity nodes with unusually shallow records and promote them to research priority.
 
-## P1 — books / full text
+## P1 — People / Dwellers / population
+
+- [ ] Canonically join people-registry, nations, languages, religions, political organizations, culture/subculture and migration layers.
+- [ ] Keep nationality, citizenship, residence, ethnicity, language, religion, political affiliation and culture separate.
+- [ ] Add reference years to population observations.
+- [ ] Detect population claims without a reference year or source.
+- [ ] Add resident populations, citizenship groups, language communities, religious communities, cultural communities, political constituencies, occupations, age cohorts and diasporas where evidence supports them.
+- [ ] Distinguish population size, audience size, membership and visibility.
+
+## P1 — religion / adjacent research
+
+- [ ] Finish the religious-foundations canonical-owner migration.
+- [ ] Update every religious blueprint reference to the standardized filename contract.
+- [ ] Make foundation, architecture, adjacent, mystery-cult and occult records share the same resolver contract.
+- [ ] Expand comparative religion records with origins, historical development, doctrine/practice, institutions, geography, population, evidence and uncertainty.
+- [ ] Keep historical description, insider theology, academic interpretation and project symbolism explicitly typed.
+
+## P1 — culture / movements / extremism
+
+- [ ] Build the actual culture/subculture data layer from its blueprint.
+- [ ] Add origins, turning points, geography, audience/population, institutions, media, practices and diffusion.
+- [ ] Connect movements to predecessors, successors, organizations, institutions and media ecosystems.
+- [ ] Improve extremist/high-control records with authority/date, membership uncertainty, ideology evidence, organizational history and provenance.
+- [ ] Keep designation, allegation, conviction, academic classification and project interpretation distinct.
+
+## P1 — books / full text / archives
 
 - [ ] Validate every book manifest against actual text files.
-- [ ] Check UTF-8 integrity, file size, chapter/section offsets and search indexes.
-- [ ] Ensure long texts remain readable without truncating useful passages.
-- [ ] Add source/edition metadata to each text.
+- [ ] Validate UTF-8, file size, chapter/section offsets and search indexes.
+- [ ] Ensure long texts remain readable without artificial truncation.
+- [ ] Add edition, translator, publication and source metadata.
+- [ ] Make full-text imports idempotent.
+- [ ] Detect partial imports and duplicate editions.
+- [ ] Keep canonical text separate from derived search/index files.
 
-## P1 — graph integrity
+## P1 — North Programme / European economic graph
 
-- [ ] Detect phantom relationship endpoints.
-- [ ] Detect self-loops where they are probably accidental.
-- [ ] Detect duplicate edges with conflicting metadata.
-- [ ] Detect edges with no relationship type, provenance or time where those are expected.
-- [ ] Distinguish external graph endpoints from unresolved internal nodes.
-- [ ] Add graph coverage statistics by domain and by country.
+- [ ] Complete country-level joins for fiscal, population, trade, energy, infrastructure, ownership, procurement and research.
+- [ ] Add reference-year and source metadata to every comparison.
+- [ ] Separate stock, flow, nominal, real, market-value and face-value concepts.
+- [ ] Improve finance records so issuer, creditor, instrument, currency, maturity and valuation cannot be conflated.
+- [ ] Map major European companies to owners/controllers, assets, financing, suppliers, procurement and countries.
+- [ ] Map infrastructure chokepoints and strategic dependencies.
+- [ ] Add public-budget and tax-expenditure layers before making large fiscal conclusions.
 
 ## P2 — research depth
 
-- [ ] Promote high-connectivity shallow records into independent dossiers.
-- [ ] Aim for substantive multi-section records rather than arbitrary word-count inflation.
-- [ ] Add explicit “known / unknown / disputed / interpretation” sections to important dossiers.
-- [ ] Add source dates and retrieval dates to research records.
-- [ ] Build comparative dossiers where multiple traditions, organizations or systems share a mechanism.
+- [ ] Promote high-connectivity shallow records into dossiers.
+- [ ] Prefer substantive sections and source diversity over arbitrary word counts.
+- [ ] Add explicit known / unknown / disputed / interpretation sections to major dossiers.
+- [ ] Record publication and retrieval dates.
+- [ ] Build comparative dossiers around mechanisms and relationships, not just biographies.
+- [ ] Preserve evidence trails back to source documents.
 
 ## P2 — Potatoism / project canon
 
 - [ ] Keep Potatoism vocabulary, cosmology, timeline, relationships and research layers separately addressable.
-- [ ] Ensure project-defined mythology remains explicitly distinguishable from empirical evidence.
-- [ ] Continue developing the Great Book of Potato as a coherent library rather than duplicating the same material across many files.
-- [ ] Add cross-references between canonical passages, symbols, geometry and timeline events.
+- [ ] Keep project-defined mythology visibly distinct from empirical evidence.
+- [ ] Develop the Great Book of Potato as a coherent library rather than repeated fragments.
+- [ ] Cross-reference symbols, geometry, canonical passages and timeline events.
+- [ ] Make the symbolic graph use the same relationship discipline as the empirical graph while retaining a different evidence type.
 
-## Engineering lessons to preserve
+## P2 — UI / information design
 
-- **Do not solve missing data by making another mirror.** Decide ownership first.
-- **A graph endpoint is not automatically a node.** Relationships cannot substitute for definitions.
-- **Silent failure is the enemy.** Empty states and diagnostics are better than pretending a page has no data.
-- **Blueprints should change collection and validation.** More fields are useful only when they expose mechanisms, evidence, time or relationships.
-- **Stability before scale.** Once indexing, validation, routing and deployment are reliable, expansion becomes much safer.
+- [ ] Keep the front page primarily navigational: clear layers, fast entry points, recent/high-value material and search.
+- [ ] Make detail pages prioritize readable substance before decorative graph visualization.
+- [ ] Add “what this is / evidence / relationships / timeline / sources / related records” consistently.
+- [ ] Avoid AltaVista-style link walls and avoid empty graph-only pages.
+- [ ] Make search return useful previews and direct detail routes.
+- [ ] Add breadcrumbs and stable back/navigation behavior.
+- [ ] Ensure mobile layouts remain usable even for dense dossiers.
 
-## Completion rule
+## Engineering lessons / rules
 
-A change is complete only when the relevant source data validates, canonical ownership remains coherent, the static site builds, the relevant page/route works, CI passes and the deployed behavior is checked. 
+- **Ownership before mirroring.** A missing field is not a reason to create another competing record.
+- **A graph endpoint is not a node.** Relationships do not define the target by themselves.
+- **Missing is a state.** Never invent values to make a page look complete.
+- **Time belongs to facts.** A value without a reference period can be misleading.
+- **Evidence has type.** Official data, academic interpretation, journalism, insider claims and project symbolism are not interchangeable.
+- **Depth is independent of connectivity.** A node can have many edges and still need a real dossier.
+- **Blueprints are executable research plans.** If a blueprint does not tell us what to collect, validate and connect next, it is unfinished.
+- **Silent failure is worse than visible incompleteness.** Errors should become diagnostics.
+- **Generated artifacts need contracts.** Every generated file needs an owner, producer, deterministic format and validation path.
+- **Stability before scale.** Fix the architecture that will be exercised by the next thousand records before adding those records.
+
+## Definition of done
+
+A task is done only when the relevant source data validates, ownership is coherent, references are current, the site builds, the route renders meaningful content, CI passes, and deployed behavior is checked where the change affects production.
 
 **See the connections. Read the substance. Preserve the evidence.**
