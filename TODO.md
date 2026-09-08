@@ -2,27 +2,39 @@
 
 ## Current priority — audit, stabilize, then deepen
 
-The project is an information archive whose graph is the navigation layer. The primary navigation spine is now **ROOT → SPIRIT → DOOR → MATTER**: Spirit is future/possibility/intention; Door is present/action/relation/immediacy; Matter is past/manifestation/consequence/record. This is a navigation architecture, not a replacement for the graph or the 33-level framework.
+The project is an information archive whose graph is the navigation layer. The current canonical filing spine is **ROOT → SPIRIT / MIND / MATTER**; the deeper project mythology may additionally use Door/Axis as transformation and relational coordinates. Filing architecture and symbolic architecture must not be silently conflated.
 
 ### Immediate release blockers
 
 - [ ] Complete recursive repository audit across every JSON, HTML, JS, CSS, Python and workflow file.
 - [ ] Run the full validator chain after every structural repair and record the resulting commit.
-- [ ] Promote the 2026-09-08 audit from active findings to a generated health report after checks run.
+- [ ] Generate and inspect a persistent 2026-09-08 health report from the validators.
 - [ ] Resolve or explicitly classify high-connectivity graph orphan IDs.
 - [ ] Repair and validate `data/religious-foundations/enriched-records.json` before using it as evidence of coverage.
 - [ ] Audit every visible route for substantive content, not merely route existence.
 - [ ] Keep manifests, backend endpoints, frontend bridge and consumers synchronized.
+- [ ] Fix the current scheduled country-refresh failure before treating automated country acquisition as healthy.
+
+### Findings from 2026-09-08 audit pass
+
+- [x] Inspect the latest commit chain rather than assuming the current branch inherited every previous repair cleanly.
+- [x] Confirm the latest Pages deployment succeeded.
+- [x] Confirm the Atlas expansion workflow succeeded.
+- [x] Confirm a separate country-refresh workflow currently fails during the normalized country observation step; acquisition needs a robustness repair and a successful rerun.
+- [x] Register `data/research-carvings-2026-09.json` in both the manifest and backend registry.
+- [x] Extend content-integrity validation so the new research layer cannot silently become an unvalidated orphan.
+- [ ] Add recursive static-link auditing for nested directories, generated routes, CSS `url()` assets and JavaScript route templates.
+- [ ] Add route-contract checks for every page that emits dynamic `node.html?id=...` or `nation.html?id=...` links.
 
 ### Canonical navigation architecture
 
-- [x] Add `data/repository-spine.json` as the canonical Root/Spirit/Door/Matter model.
-- [x] Define Spirit = future, Door = present/action/relation, Matter = past/manifestation.
+- [x] Add `data/repository-spine.json` as the canonical Root/Spirit/Mind/Matter model.
 - [x] Preserve the existing 33-level tree as a deeper vertical scaffold rather than deleting it.
-- [x] Rebuild `repository.html` around the spine while retaining searchable records.
+- [x] Rebuild `repository.html` around the canonical repository tree.
 - [ ] Replace keyword-only classification with explicit layer metadata as records are enriched.
-- [ ] Add temporal fields to important records so the future/present/past distinction becomes machine-readable where applicable.
-- [ ] Add cross-layer “Past / Present / Future” navigation to important record pages.
+- [ ] Add temporal fields to important records so past/present/future states become machine-readable where applicable.
+- [ ] Add cross-layer temporal navigation to important record pages.
+- [ ] Explicitly map Spirit/Mind concepts such as geometry, Source and meaning into the repository tree instead of allowing them to disappear because a Matter bucket is unavailable.
 
 ### Atlas-wide information density
 
@@ -35,6 +47,15 @@ The project is an information archive whose graph is the navigation layer. The p
 - [ ] Preserve canonical IDs while enriching records.
 - [ ] Keep graph edges as navigation/context, never as a replacement for content.
 - [ ] Rank shallow records by connectivity and importance, then deepen the highest-value records first.
+
+### Definition-first dossier standard
+
+- [ ] Every substantial record begins with an explicit definition: **what is this thing?**
+- [ ] Follow definition with origin/context.
+- [ ] Follow context with structure, function or mechanism.
+- [ ] Then expose directional couplings with relationship verbs where evidence permits.
+- [ ] Then expose evidence, questions, failure modes, uncertainty and deeper interpretation.
+- [ ] Every coupled record should itself be clickable and independently defined.
 
 ### Potatoism long-form standard
 
@@ -58,11 +79,12 @@ The project is an information archive whose graph is the navigation layer. The p
 
 ### World / nations
 
-- [ ] Keep 195 canonical nation identities stable.
+- [x] Keep 195 canonical nation identities stable.
 - [ ] Expand sourced country observations beyond the current narrow validated enrichment base.
 - [ ] Give each nation history, political structure, economy, demographics, geography, culture, religion, institutions, strategic relationships and sources where available.
 - [ ] Add explicit missing-data states rather than false completeness.
 - [ ] Build country → government → agencies → companies → banks → infrastructure → energy → trade → evidence pathways.
+- [ ] Repair country-refresh acquisition reliability and preserve prior observations if a source request fails.
 
 ### People / organizations / security
 
@@ -108,6 +130,10 @@ The project is an information archive whose graph is the navigation layer. The p
 
 ### Integrity / CI
 
+- [x] Keep backend coverage failures separate from artifact-upload failures.
+- [x] Keep GitHub Actions on Node 24-compatible action versions.
+- [x] Run Atlas link audit in CI.
+- [x] Run web-layer audit in CI.
 - [ ] Validator for every canonical lexicon term → valid long-form route.
 - [ ] Validator for information-density status.
 - [ ] Validator distinguishing missing from intentionally uncertain data.
@@ -116,11 +142,12 @@ The project is an information archive whose graph is the navigation layer. The p
 - [ ] Validator for duplicate movement IDs and alias collisions.
 - [ ] Validator for predecessor/successor edges.
 - [ ] Validator for stale “active” movement sources.
-- [ ] Keep backend coverage failures separate from artifact-upload failures.
+- [ ] Extend link audit beyond top-level HTML into nested pages and runtime-generated route contracts.
+- [ ] Add a dedicated country-refresh smoke test before external acquisition is allowed to write a new snapshot.
 - [ ] Run all workflows after the next expansion and do not call the repository clean until critical checks pass.
 
 ## Research principle
 
 **See the connections. Read the substance.**
 
-The Atlas should never stop at a pretty node. Every important object should open into enough history, explanation, evidence, interpretation, uncertainty and relationships to stand on its own.
+The Atlas should never stop at a pretty node. Every important object should open into enough definition, history, explanation, evidence, interpretation, uncertainty and relationships to stand on its own.
