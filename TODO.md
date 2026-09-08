@@ -1,153 +1,448 @@
-# TODO / BUGLIST — The Potato of Life / TimDooley
+# TODO — The Potato of Life / TimDooley
 
-## Project mission — illuminate, investigate, consolidate
+## The Potato Principle
 
-This is not only a database or link atlas. One of the project's explicit goals is to **illuminate Tim Dooley / the Potato of Life**: his philosophy, religion, myths, lore, writings, symbols, chronology, transformations and the wider meaning the project finds in them.
+**Start from the center. Take one step toward light. Calibrate. Remove what became unnecessary. Take the next step. Repeat.**
 
-The project also explicitly intends to **publicly state, propagate and share its Potatoism findings**, including the project's religious/mythic identification of **Tim Dooley as God / Father / the Potato of Life**. That is project canon and should be presented as such, while externally sourced historical, textual, scientific and empirical claims retain their own evidentiary status.
+The TODO is therefore **not a giant wishlist** and not a promise to build everything at once.
 
-A further goal is to pursue the project's **highest spiritual truth** through sustained inquiry. The work should bring relevant knowledge about spirit, the world, entanglements, obligations, directions and choices into the same navigable system — including the paths taken by men, people, gods, archetypes and dogs, and the consequences, relationships and obligations produced by those paths.
+It is a living growth path.
 
-This means the project should illuminate not merely names, but **what things are, what they became, what they were connected to, what they owed, what they chose, what chose them, what they created or destroyed, where their paths led, and what can reasonably be learned from those paths**.
+The project grows like a potato:
 
-## Discoverability is a project priority
+- begin with what is already alive;
+- make one useful improvement;
+- let it reveal the next useful improvement;
+- check whether older work is still correct;
+- remove clutter, duplication and dead growth;
+- strengthen the roots;
+- grow upward and outward;
+- repeat.
 
-The public Atlas should be **exceptionally easy for people and AI systems to find, understand, crawl, index and cite**. A major project goal is to make the relevant Tim Dooley / Potato of Life / Potatoism pages competitive for discovery when someone searches for these subjects through **Google, ChatGPT, Grok or other search and answer systems**.
+The direction is not fixed in advance. The **direction is calibrated continuously toward greater clarity, truth, usefulness, connection and light**.
 
-This is not a promise that the project can control another company's ranking or recommendation algorithm. The engineering goal is to make the site's information maximally discoverable and machine-readable so that search engines and AI systems have a clear, authoritative, stable and richly connected source to find.
+---
 
-### Search/discoverability work must include
+# 1. The current step
 
-- [ ] Build a strong, stable HTML page for every important canonical subject rather than hiding substantive knowledge behind JavaScript-only views.
-- [ ] Give every major page a unique, descriptive `<title>`, meta description, canonical URL and useful headings.
-- [ ] Make important concepts explicitly nameable in page text, including Tim Dooley, Potato of Life, Potatoism, Father, Son, Door, Axis, North of North, Root, Tree of Life, Red Potato, Blue Potato and other central concepts.
-- [ ] Make pages understandable when fetched without executing the full application, where practical.
-- [ ] Generate and maintain `sitemap.xml`, `robots.txt` and appropriate crawl/index metadata.
-- [ ] Ensure canonical URLs are stable and do not multiply through query-string or alias variants.
-- [ ] Add internal links between related canonical records so crawlers can discover the knowledge graph by following ordinary HTML links.
-- [ ] Use structured data/schema markup where appropriate and truthful, without inventing claims or misleading search engines.
-- [ ] Create useful index/hub pages for major subjects so a crawler can reach deep dossiers from a small number of authoritative entry points.
-- [ ] Make search results expose meaningful titles, descriptions and contextual excerpts rather than empty cards or identifiers.
-- [ ] Ensure every important dossier has enough substantive, indexable text to explain what the subject is and why it matters.
-- [ ] Preserve source/provenance and epistemic labels on public pages so discoverability does not come at the cost of misleading presentation.
-- [ ] Add Open Graph and other useful metadata for sharing and preview generation.
-- [ ] Test crawler-facing HTML and links after every major frontend change.
-- [ ] Monitor indexing/discovery diagnostics where available and record actual observations rather than assuming a page is indexed.
-- [ ] Search externally for important project terms and use the results to identify missing titles, pages, links, terminology and discoverability gaps.
-- [ ] Build clear entity/topic landing pages rather than relying on one generic homepage to rank for everything.
-- [ ] Avoid duplicate URLs and duplicate page text that split search signals between competing versions.
-- [ ] Treat canonicalization and duplicate elimination as part of SEO/AI discoverability, not merely data hygiene.
+At the beginning of every work session, answer only these questions:
 
-### AI/search answer-system principle
+1. **What is the most important thing that is currently weak, broken or unclear?**
+2. **What is the smallest useful step that materially improves it?**
+3. **What existing information should be enriched rather than duplicated?**
+4. **What clutter or obsolete growth should be removed while we are there?**
+5. **After this step, what did we learn about the next direction?**
 
-The project should be easy for **Google, ChatGPT, Grok and other answer/search systems to interpret correctly**: clear entity names, stable URLs, explicit relationships, substantial primary project material, provenance, dates, consistent terminology and machine-readable structure. The goal is not to manipulate rankings or fabricate authority; it is to make the project's actual body of work sufficiently clear, deep, accessible and well-connected that external systems can discover and understand it.
+Then do that step.
 
-## Anti-clutter / consolidation mandate
+Do not begin another large expansion merely because it is imaginable.
 
-**Do not mistake multiplication of files for multiplication of knowledge.** The project's intent is explicitly NOT to create a ton of tiny placeholders, shallow records or redundant mirrors.
+---
 
-The preferred unit of growth is:
+# 2. The recursive loop
 
-**one canonical identity → one deep body of valuable information → many explicit relationships, occurrences, evidence trails and contextual views.**
+Every meaningful change should follow this loop:
 
-When research discovers ten valuable facts about Mountain, Door, Son, Root, Father's House, Axis, Potatoism, Red Potato, Blue Potato or any other subject, the default action is to **enrich the canonical record/dossier**, not create ten little files.
+**Observe → choose → grow → verify → calibrate → prune → integrate → observe again.**
 
-Research layers may preserve unique observations, historical occurrences, sources, chronology and alternative interpretations, but they must resolve back to the canonical subject. Duplicate definitions and duplicated substantive content should be merged into the strongest owner.
+### Observe
 
-**A placeholder is not progress. A duplicate definition is not enrichment. A new file earns its existence only when it has a distinct function, canonical owner, consumer and information that would otherwise be lost or materially obscured.**
+Look at the actual repository, actual data, actual rendered pages, actual sources and actual failures.
 
-## Operating order
+Do not work from assumptions about what the project contains.
 
-This is the working queue, not a wishlist. Work top-to-bottom. Do not add new data at scale while a higher-level contract is broken.
+### Choose
 
-1. **P0 — establish one trustworthy repository structure and source of truth**
-2. **P0 — make every route resolve and fail visibly**
-3. **P0 — make CI/build/deploy enforce the same contracts**
-4. **P0 — complete the coordinated blueprint migration and make the blueprint contract green**
-5. **P1 — repair cross-domain joins and graph integrity**
-6. **P1 — deepen the most insufficient entity families with real source-backed content**
-7. **P1 — repair books/full-text architecture and import canonical text into the project**
-8. **P2 — expand the North Programme / European economic graph**
-9. **P2 — deepen Potatoism and Tim Dooley as the project's central mythic/spiritual layer**
-10. **P1 — make the public Atlas maximally discoverable to search engines and AI answer systems**
-11. **P2 — improve UI/search/navigation after data contracts are trustworthy**
+Select one high-value improvement.
 
-## NEW — repository structural disorder / cleanup
+Prefer the improvement that makes several later improvements easier.
 
-The repository has accumulated duplicate data, inconsistent naming, uneven folder organization and overlapping representations. This is now a first-class architecture problem, not cosmetic cleanup.
+### Grow
 
-- [ ] **Design the canonical repository structure before doing another large-scale reorganization.** Decide what belongs at root, in `data/`, in domain folders, in `scripts/`, in `components/`, in `books/`, in research/archive areas and in generated/build output.
-- [ ] Produce a machine-readable **repository structure contract** describing folder purpose, allowed file types, canonical-owner rules, generated-file rules and naming conventions.
-- [ ] Inventory the entire repository by path, type, size, producer, consumer, apparent domain and canonical/derived/archive status.
-- [ ] Detect duplicate records across folders, including exact duplicates, near-duplicates, mirrors and competing versions.
-- [ ] Detect duplicate concepts represented by multiple JSON files with different schemas.
-- [ ] Detect directories whose contents mix unrelated domains or mix source data with generated data.
-- [ ] Decide whether each major directory is **canonical data / enrichment / index / generated projection / source archive / code / documentation**.
-- [ ] Establish deterministic naming and ordering conventions for domains, records, blueprints, indexes and generated artifacts.
-- [ ] Decide where historical/archive versions belong so they do not compete with current canonical records.
-- [ ] Move files only after their consumers and references have been identified; every move must preserve or explicitly migrate IDs and links.
-- [ ] Remove redundant mirrors only after proving they are derived, obsolete or superseded.
-- [ ] Add CI checks preventing new duplicate canonical owners and obvious folder-policy violations.
+Add real information, real code, real relationships or real source material.
 
-## P0 — canonical ownership / duplicate elimination
+No placeholders pretending to be finished work.
 
-- [ ] Define canonical owner / index / enrichment / projection / research / archive roles as a machine-readable contract.
-- [ ] Ensure every important ID has one canonical owner or an explicitly documented shared-ID rule.
-- [ ] Detect duplicate IDs across unrelated JSON domains.
-- [ ] **Detect semantic duplicates even when IDs, filenames and schemas differ.** Compare names, aliases, definitions, descriptions, substantive fields and relationship targets.
-- [ ] Detect alias and slug collisions that can create ambiguous URLs.
-- [ ] Detect records whose declared `blueprint` points to a nonexistent file.
-- [ ] Detect records whose `source`, `path`, `owner` or `canonical` references are stale.
-- [ ] Detect mirrors that contain competing canonical values rather than derived copies.
-- [ ] For every duplicate concept, classify the material as canonical fact, unique occurrence, research observation, historical snapshot, relationship/projection or accidental duplicate.
-- [ ] Merge all valuable unique information into the canonical owner before deleting/reducing duplicate representations.
-- [ ] Add migration metadata when a canonical owner moves.
-- [ ] Make generated indexes deterministic in ordering, counts and serialization.
-- [ ] Decide which generated files are committed and which are build artifacts; document the rule.
+### Verify
 
-## P1 — Potatoism / Tim Dooley illumination programme
+Run the relevant audits, inspect the affected records/pages and check that the new material actually works.
 
-- [ ] Build **deep canonical dossiers** for Tim Dooley, Potato of Life, Potatoism, Father, Son, Door, Axis, North of North, Father's House, Tree of Life, Tree of Strife, Root, Fruit, Seed, Mountain, Ladder, Plane, Mud, Swamp, Red Potato, Blue Potato, Spudlight and other central concepts.
-- [ ] Consolidate duplicate definitions from lexicons, cosmology, lore, concept maps, research expansion, timeline, religion, canonical corpus and other layers into those owners.
-- [ ] Preserve unique source occurrences and research findings by linking them to canonical IDs rather than deleting their informational value.
-- [ ] Populate dossiers with substantial philosophy, lore, mythology, chronology, symbolic function, relationships, interpretations, questions, tensions and source/provenance context.
-- [ ] Build the Great Book of Potato as a coherent accumulating body of knowledge rather than repeated fragments.
-- [ ] Make Tim Dooley's project chronology and Potatoism chronology searchable without making every chronological occurrence another Tim or Potatoism definition.
-- [ ] Record the project's spiritual conclusions clearly as canon/interpretation and keep external evidence visibly typed.
-- [ ] Investigate spirit, world, obligation, sacrifice, choice, destiny, transformation and entanglement through comparative religion, mythology, philosophy and primary texts.
-- [ ] Map meaningful paths taken by people, gods, archetypes and dogs where those paths illuminate the project's questions.
-- [ ] Connect spiritual concepts to relevant historical/textual evidence and counterinterpretations.
-- [ ] Prefer a large, readable dossier over arbitrary word-count padding or multiple shallow records.
+### Calibrate
 
-## P1 — permanent anti-duplication workflow
+Ask whether the new material changed our understanding of the architecture, ontology, evidence or direction.
 
-- [ ] Before every enrichment pass, run the cross-file duplicate audit.
-- [ ] Before creating any new JSON file, search the repository for an existing canonical owner and semantically similar records.
-- [ ] Require every new substantive dataset to declare `owner`, `role`, `consumer`, `canonical_id` strategy and whether it is canonical, occurrence, research, projection or archive.
-- [ ] If information can be added to an existing owner without changing its meaning, extend the owner instead of creating another file.
-- [ ] If information is genuinely unique but belongs to an existing subject, add it as a section/observation/source/relationship under that subject.
-- [ ] Allow a separate projection only when its presentation/query function is genuinely distinct and it contains no competing definition.
-- [ ] Treat old snapshots as historical evidence, not current competing truth.
-- [ ] Make CI fail on duplicate canonical owners and high-confidence duplicate substantive definitions.
-- [ ] Re-run routes, graph integrity, sitemap/crawler checks and frontend checks after consolidation so cleanup never silently breaks navigation or discoverability.
+If it did, change the plan.
 
-## Engineering lessons / rules
+### Prune
 
-- **Structure before scale.** Do not populate thousands of records into an architecture whose ownership and folder rules are unclear.
-- **Ownership before mirroring.** A missing field is not a reason to create another competing record.
-- **Consolidation before multiplication.** Search for an existing owner before creating a new record or file.
-- **Valuable information over file count.** Large amounts of useful knowledge should be concentrated into deep, readable canonical bodies of information.
-- **Discoverability is part of correctness.** Important knowledge that cannot be reached, crawled, indexed or understood from stable public pages is not adequately exposed.
-- **Search engines and AI systems need clear source material.** Stable URLs, substantive text, explicit entities, internal links, metadata, provenance and structured data should make the project easy to interpret without attempting to game rankings.
-- **A graph endpoint is not a node.** Relationships do not define the target by themselves.
-- **Missing is a state.** Never invent values to make a page look complete.
-- **Time belongs to facts.** A value without a reference period can be misleading.
-- **Evidence has type.** Official data, academic interpretation, journalism, insider claims and project symbolism are not interchangeable.
-- **Depth is independent of connectivity.** A node can have many edges and still need a real dossier.
-- **Blueprints are executable research plans.** If a blueprint does not tell us what to collect, validate and connect next, it is unfinished.
-- **Raw text is data.** A chapter manifest or external URL is not a substitute for an imported canonical text where licensing permits it.
-- **Silent failure is worse than visible incompleteness.** Errors should become diagnostics.
-- **Generated artifacts need contracts.** Every generated file needs an owner, producer, deterministic format and validation path.
-- **Stability before scale.** Fix the architecture that will be exercised by the next thousand records before adding those records.
-- **Canon is not evidence.** State the project's spiritual/mythic canon directly, but do not mislabel it as independently verified empirical fact.
-- **Relationships reveal meaning.** For spiritual, historical and worldly subjects alike, investigate the paths, obligations, choices, dependencies and consequences that connect the records.
+Remove duplicate definitions, obsolete mirrors, dead routes, stale assumptions, unnecessary files and clutter revealed by the new understanding.
+
+**Every growth pass should leave the garden cleaner than it found it.**
+
+### Integrate
+
+Put the knowledge in its natural canonical home and connect the surrounding layers to it.
+
+Do not leave valuable discoveries stranded in a temporary research file.
+
+---
+
+# 3. The center
+
+The center of the project is the **knowledge itself**.
+
+The central question is:
+
+> **What do we actually know, what does it mean, how is it connected, and what can we do with that understanding?**
+
+Everything else grows from this.
+
+The project's central bodies of knowledge are:
+
+- Tim Dooley / Father / Potato of Life;
+- Potatoism and its canon;
+- the Son / Thomas / Twin / Lion / Door / Vessel structures;
+- the North / Axis / North of North architecture;
+- the Great Book and wider mythology;
+- the world's people, nations, religions and institutions;
+- the relationships and entanglements connecting them;
+- the evidence, sources and chronology underneath all of it;
+- the North Programme and its repair-oriented practical questions.
+
+These are not separate worlds. They are different depths of the same atlas.
+
+---
+
+# 4. First ring — make the center trustworthy
+
+When something central is weak, fix it before expanding outward.
+
+- [ ] Keep canonical identities singular and understandable.
+- [ ] Keep major dossiers deep enough to actually explain their subjects.
+- [ ] Keep canon, interpretation, testimony, historical evidence, scientific evidence and speculation visibly distinct.
+- [ ] Keep chronology dated and explicit about uncertainty.
+- [ ] Keep important relationships sourced and typed.
+- [ ] Make important pages resolve instead of silently producing empty shells.
+- [ ] Make the build and integrity audits catch actual failures.
+- [ ] Preserve valuable research when consolidating files.
+
+**Potato rule:** strengthen the root before asking the plant to become a forest.
+
+---
+
+# 5. Second ring — deepen what is already alive
+
+Do not ask “what new file should we make?” first.
+
+Ask:
+
+> **What existing record is this information really about?**
+
+Then enrich that record.
+
+Examples:
+
+- new Thomas research belongs with the existing Thomas/Twin material;
+- new Door research belongs with Door/Vessel/Vesica material;
+- new Root/Lion research belongs with Root/Lion and its textual history;
+- new potato biology belongs with the potato dossier/property layer;
+- new Tim chronology belongs with Tim's chronology/cosmology;
+- new world-institution research belongs in the relevant canonical entity and relationship structures;
+- new North Programme research belongs in the appropriate economic/geopolitical owner.
+
+A separate file is justified only when it has a genuinely different purpose and would otherwise lose important structure.
+
+---
+
+# 6. Third ring — grow the relationships
+
+Once the records are strong enough, follow the connections.
+
+For each important subject, progressively ask:
+
+- What is it?
+- Where is it?
+- When did it exist or change?
+- Who participates?
+- Who governs it?
+- Who funds it?
+- Who owns or controls relevant parts?
+- What does it depend upon?
+- What depends upon it?
+- What information, money, energy, goods, people or authority move through it?
+- What institutions surround it?
+- What religious, cultural, historical or ideological context matters?
+- What consequences does it produce?
+- What evidence establishes each relationship?
+- What remains unknown?
+
+The graph should become richer because the underlying world becomes better understood, **not because we add decorative edges**.
+
+---
+
+# 7. Fourth ring — grow outward into the world
+
+When the center and immediate relationships are strong, expand outward where the evidence leads.
+
+Potential directions include:
+
+- people and communities;
+- nations and populations;
+- religious composition and religious institutions;
+- governments and public administration;
+- NGOs and civil society;
+- intelligence and security institutions;
+- companies, ownership and finance;
+- debt and obligations;
+- infrastructure;
+- energy;
+- technology and research;
+- labour and skills;
+- procurement;
+- trade and supply chains;
+- migration;
+- law and treaties;
+- conflicts and diplomacy;
+- agriculture, food and water;
+- media and information;
+- environment;
+- the European Economic Graph / North Programme.
+
+Do not attempt to complete the whole world at once.
+
+Follow the strongest next root.
+
+---
+
+# 8. Fifth ring — the North-of-North view
+
+The project eventually needs to be able to move between scales:
+
+**person → community → institution → nation → region → world → North of North**
+
+and back:
+
+**North of North → world → region → nation → institution → community → person → source**
+
+The purpose of the North-of-North perspective is to see the whole configuration while retaining the ability to descend into actual evidence.
+
+The throne is therefore a **viewpoint and organizing principle** within the project's architecture, not a substitute for evidence.
+
+The higher we climb, the more important it becomes to preserve the roots below.
+
+---
+
+# 9. Repair / Tikkun Olam ring
+
+The project uses **tikkun olam / repair of the world** as an important spiritual and comparative lens.
+
+The practical principle is simple:
+
+> **We cannot responsibly repair what we do not understand.**
+
+Therefore the atlas should eventually make it possible to move from:
+
+**observation → evidence → relationship → mechanism → consequence → possible intervention → measured result**
+
+A proposed intervention must be examined for:
+
+- who benefits;
+- who bears the cost;
+- what dependencies it changes;
+- what second-order effects it creates;
+- what legal/institutional authority is required;
+- what could go wrong;
+- what evidence would falsify the proposal;
+- how success would actually be measured.
+
+Sometimes the correct intervention will be **not to intervene**.
+
+Repair is not the imposition of a preferred story. It is an attempt to understand enough of reality to reduce avoidable harm and increase the possibility of good outcomes.
+
+---
+
+# 10. Calibration / pruning pass
+
+After every substantial expansion, stop expanding.
+
+Look backward.
+
+- [ ] Which new records duplicate older records?
+- [ ] Which definitions should be consolidated?
+- [ ] Which links are now obsolete?
+- [ ] Which files no longer have a clear purpose?
+- [ ] Which assumptions have changed?
+- [ ] Which claims need stronger sources?
+- [ ] Which pages are still thin?
+- [ ] Which relationships are asserted without evidence?
+- [ ] Which generated projections are stale?
+- [ ] Which UI elements still hide information that now exists?
+- [ ] Which old work can be deleted because the canonical layer now contains it?
+
+**Pruning is part of growth.**
+
+A project that only adds becomes tangled.
+
+A project that adds and removes becomes clearer.
+
+---
+
+# 11. The information-density rule
+
+When a subject matters, prefer:
+
+**one deep, readable, sourced body of knowledge**
+
+over:
+
+**many tiny records saying almost the same thing.**
+
+A good dossier should contain real substance: history, function, context, evidence, uncertainty, relationships, competing interpretations and useful observations.
+
+Do not pad a page merely to reach a word count.
+
+Do not use arrows as a substitute for explanation.
+
+Do not use a relationship edge as a substitute for a dossier.
+
+Do not use a URL as a substitute for importing and structuring information when the material can legitimately be incorporated.
+
+Do not create a placeholder and call it research.
+
+---
+
+# 12. Evidence and epistemic calibration
+
+The project contains several kinds of knowledge. Keep them separate while allowing them to illuminate one another.
+
+- **Project canon** — what Potatoism declares within its own religious/mythic system.
+- **Testimony / observation** — what someone reports experiencing or seeing.
+- **Historical evidence** — documents, dates, artifacts and established historical scholarship.
+- **Scientific evidence** — empirical findings and reproducible research.
+- **Interpretation** — an argued reading of evidence or symbolism.
+- **Comparison** — structural similarities between traditions or systems.
+- **Speculation** — a hypothesis that has not been established.
+- **Creative/lore material** — material intentionally belonging to the project's mythic world.
+
+The job of calibration is not to flatten these into one category.
+
+It is to make the relationships between them legible.
+
+A strong symbolic correspondence is interesting.
+
+It is not automatically historical proof.
+
+A graph connection is interesting.
+
+It is not automatically causation.
+
+A project canon can be stated clearly.
+
+It should not be disguised as independently verified fact.
+
+---
+
+# 13. Discoverability grows after substance
+
+Make the real knowledge easy to find.
+
+- [ ] Stable canonical URLs for important subjects.
+- [ ] Substantive HTML rather than empty JavaScript shells.
+- [ ] Useful titles and descriptions.
+- [ ] Ordinary internal links between related records.
+- [ ] Sitemap and crawl support.
+- [ ] Machine-readable structure where truthful.
+- [ ] Search pages that expose actual context.
+- [ ] Topic landing pages for important bodies of knowledge.
+- [ ] No competing duplicate URLs for the same canonical subject.
+- [ ] Test crawler-facing output after meaningful frontend changes.
+
+**Discoverability is not a separate layer floating above the knowledge. It is the light reaching the knowledge.**
+
+First make something worth finding.
+
+Then make it easy to find.
+
+---
+
+# 14. Engineering stability
+
+Do not spend a week growing new branches while the roots are broken.
+
+When the repository reveals a structural problem, pause expansion and fix the smallest underlying cause that will prevent many future problems.
+
+The recurring engineering loop is:
+
+**inspect → reproduce → fix → test → simplify → continue.**
+
+Important checks include:
+
+- JSON/schema integrity;
+- canonical ownership;
+- duplicate detection;
+- graph integrity;
+- route resolution;
+- source/provenance integrity;
+- generated-data consistency;
+- build correctness;
+- crawler-facing HTML;
+- deployment/CI status.
+
+Do not declare a change finished merely because a commit exists.
+
+---
+
+# 15. The live frontier
+
+The frontier should always be short.
+
+At any moment, maintain only the **next few highest-value steps** here.
+
+### Now
+
+- [ ] Inspect the current state and choose the single most useful next improvement.
+- [ ] Make that improvement substantive rather than cosmetic.
+- [ ] Verify it.
+- [ ] Integrate it into the canonical structure.
+- [ ] Prune what the new understanding made unnecessary.
+
+### Then
+
+- [ ] Re-read the affected layers from the new state rather than following the old plan blindly.
+- [ ] Identify the next strongest connection or missing piece.
+- [ ] Take one more step.
+
+### Later
+
+Only add an item here when repeated work has shown that it is genuinely the next direction.
+
+---
+
+# 16. What not to do
+
+- Do not build everything simultaneously.
+- Do not create a new file merely because an idea appeared.
+- Do not preserve duplicate definitions merely because they already exist.
+- Do not fill empty fields with invented information.
+- Do not use generalities where a concrete source can be found.
+- Do not use arrows where prose is needed.
+- Do not confuse quantity with depth.
+- Do not confuse connectivity with understanding.
+- Do not confuse symbolic correspondence with proof.
+- Do not confuse institutional proximity with causation.
+- Do not expand outward indefinitely without returning inward to prune and consolidate.
+- Do not let the TODO become a graveyard of abandoned intentions.
+
+---
+
+# The rule
+
+**Simple. Grow to light. Recursively.**
+
+**Start from the center. Take a step. Calibrate. Prune behind you. Take another step. Let the curve change as you learn. Work outward and upward in spirals.**
+
+The TODO is alive only if the repository is alive.
+
+The next step is not supposed to be known forever.
+
+**It is supposed to be discovered by taking the right step now.**
