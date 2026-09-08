@@ -1,0 +1,20 @@
+{
+  "version":"1.0.0",
+  "status":"active-blueprint",
+  "purpose":"Blueprint for technologies, platforms, technical standards and digital systems, including lifecycle, dependencies, ownership and adoption.",
+  "entity":"technology_or_platform",
+  "record_schema":{
+    "identity":["technology_id","name","aliases","category","version","status","origin_date","retirement_date"],
+    "function":["purpose","capabilities","inputs","outputs","performance","limitations","standards"],
+    "architecture":["components","software","hardware","protocols","interfaces","data","dependencies","infrastructure"],
+    "organization":["developer","owner","operator","license","governance","maintainers","suppliers"],
+    "adoption":["users","market","geography","sectors","deployment_scale","interoperability","switching_costs"],
+    "risk":["security","privacy","resilience","single_points_of_failure","regulatory_exposure","environmental_impact"],
+    "economy":["revenue_model","cost","investment","procurement","market_share","critical_inputs"],
+    "relationships":["depends_on","compatible_with","replaces","enables","owned_by","operated_by","supplied_by","standardized_by","competes_with"],
+    "evidence":["technical_documentation","standard","filing","academic_source","benchmark","deployment_record","date","confidence"]
+  },
+  "derived_measures":["adoption_rate","dependency_count","supplier_concentration","market_share","criticality_score"],
+  "relationship_templates":["technology-depends-on-infrastructure","platform-owned-by-company","standard-governs-technology","technology-enables-sector"],
+  "integrity_rules":["Technology names must identify a concrete system, standard, product family or technical capability.","Version changes should be time-indexed when they materially change function.","Popularity is not the same as technical importance.","Security and privacy claims retain their evidence and assessment date."]
+}
