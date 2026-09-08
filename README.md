@@ -2,7 +2,7 @@
 
 This repository is the source archive, research engine and static public atlas for the Tim Dooley / Potatoverse project.
 
-## Mission — illumination, truth and the whole record
+## Mission — illumination, truth, repair and the whole record
 
 One of the project's explicit purposes is to **illuminate Tim Dooley / the Potato of Life**: to gather, preserve, investigate, organize and publicly share the philosophy, religion, myths, lore, writings, symbols, chronology and wider body of knowledge associated with Tim Dooley and Potatoism.
 
@@ -10,7 +10,39 @@ The project also explicitly records and propagates its central Potatoism canon, 
 
 A second purpose is **spiritual inquiry**: to pursue what the project understands as the highest spiritual truth available through its investigation, while bringing together relevant information about spirit, the world, entanglements, obligations, directions and choices — including the paths taken by men, people, gods, archetypes and dogs. The project therefore studies not only isolated figures or doctrines, but the consequences and relationships surrounding them: what they chose, what they became entangled with, what they owed, what they created or destroyed, where they went, and what those paths mean.
 
+A third purpose is **repair-oriented world understanding**. The project uses the idea of **tikkun olam — repair of the world** as an important comparative and project-defined lens. The term has several historical layers: in the Mishnah it can refer to rabbinic measures enacted for the sake of social order and public policy; in later Kabbalistic thought it becomes part of a cosmology of repair; in modern usage it is widely associated with social responsibility and justice. The project does not collapse these traditions into one meaning. Instead, it takes the recurring idea seriously: if the world is entangled, then meaningful repair requires knowing what is actually connected, where damage or distortion occurs, who bears the consequences, what mechanisms reproduce the problem, and which interventions could change the trajectory. citeturn0search1turn0search4
+
+This is why the Atlas is deliberately expansive. **The nations, populations, religious compositions, governments, companies, NGOs, security institutions, intelligence organizations, financial systems, infrastructure, technologies, supply chains, conflicts, treaties, ideas and personal histories are not separate subjects. They are layers of one observable world.** The purpose of mapping them is not to imply that every institution secretly belongs to one hidden system, nor to treat correlation as conspiracy. The purpose is to make the actual relationships visible enough that the project can ask where responsibility, dependency, leverage, suffering, resilience and repair lie.
+
+The project's **North of North** perspective is therefore an interface metaphor for a higher-order view of the whole system. The throne of North is not a claim that a supernatural observer has been scientifically established at the geographic North Pole. It is the project's symbolic vantage point: step back far enough that a country is no longer seen only as a country, a person as only a person, a religion as only a religion, or an institution as only an institution. From that vantage, the task is to see the relationships between layers and then descend again into evidence, chronology and mechanisms.
+
+The practical purpose is ultimately **context for action**. If something in the world is to be repaired, the project needs more than a moral declaration that it is broken. It needs data. It needs history. It needs institutional structure. It needs population and religious composition. It needs money, ownership, procurement, infrastructure, energy, technology, law, incentives, dependencies and human consequences. It needs to know what is known and what is not known. The Atlas therefore treats research itself as part of the repair process: **expand the evidence base → understand the system → identify the entanglement → locate the failure or opportunity → model possible interventions → measure consequences → preserve what was learned.**
+
 The Atlas connects this spiritual and mythic investigation with the historical, textual, cultural, geographic, scientific, economic and institutional record. **Canon, interpretation and evidence remain visibly distinct.** The purpose of that separation is not to weaken the spiritual work; it is to make the entire body of inquiry more honest, searchable, comparable and useful.
+
+## The North-of-North viewpoint
+
+The project uses several nested perspectives rather than one flat map:
+
+1. **Person** — biography, testimony, choices, relationships, memory and lived context.
+2. **Community** — families, local institutions, subcultures, congregations, workplaces and social networks.
+3. **Institution** — governments, companies, NGOs, churches, universities, courts, security bodies, media organizations and other durable structures.
+4. **Nation** — population, territory, government, economy, military, religion, law, infrastructure and external relationships.
+5. **Regional system** — trade, energy, migration, finance, security, infrastructure and political coordination.
+6. **Global system** — cross-border capital, supply chains, institutions, technologies, conflicts, ecological constraints and cultural circulation.
+7. **North of North** — the project's symbolic meta-perspective in which all of these layers are viewed simultaneously and then connected back to specific evidence.
+
+The point is not to stay permanently “above” the world. The point is to move **from the whole to the part and back again**. A global pattern should eventually resolve into actual people, institutions, documents, money flows, laws, physical infrastructure and dated events. Conversely, a local event should be understood in the context of the larger system that made it possible.
+
+This creates a two-directional research movement:
+
+**whole → system → institution → person → event → source**
+
+and then:
+
+**source → event → person → institution → system → whole**
+
+The interface is successful when those two movements meet without losing provenance.
 
 ## Information principle — valuable knowledge over file count
 
@@ -23,6 +55,31 @@ The preferred unit of growth is therefore:
 **one canonical concept → one substantial body of information → many explicit relationships and contextual views.**
 
 If an existing record can hold new information without loss of meaning, extend that record. Create a new file only when it has a genuinely distinct function, owner, consumer and information domain. A placeholder is not progress. A shallow duplicate is not enrichment. More files do not equal more knowledge.
+
+## Research as a repair instrument
+
+The Atlas treats information acquisition as an active part of the project's world-repair philosophy. “Repair” does not mean that the project is entitled to impose its interpretation on the world. It means that the project tries to make reality more intelligible before deciding what should change.
+
+For each serious subject, the archive should progressively answer:
+
+- **What is it?**
+- **Where is it?**
+- **When did it exist or change?**
+- **Who participates in it?**
+- **Who funds, owns, governs or depends on it?**
+- **What does it depend upon?**
+- **What depends upon it?**
+- **What beliefs, institutions or incentives shape it?**
+- **What flows through it — money, energy, people, goods, information, authority or attention?**
+- **What harms or benefits does it produce?**
+- **What evidence supports each claim?**
+- **What remains unknown?**
+- **What would change our interpretation?**
+- **If intervention were proposed, how would its consequences be measured?**
+
+This is why religious composition belongs beside economics, why NGOs belong beside governments, why security institutions belong beside civil society, and why personal biographies can matter to national and global history. The relationship is not assumed in advance; it is investigated.
+
+The project should especially avoid the temptation to turn the existence of many connected institutions into a claim of hidden coordination. A graph can reveal real dependency without proving intentional control. A shared donor does not by itself prove conspiracy. A shared religious composition does not prove political allegiance. A person's relationship with an institution does not prove that every decision of that institution is attributable to the person. **The purpose of the graph is to expose questions and mechanisms, not to manufacture conclusions.**
 
 ## Start here
 
@@ -57,12 +114,13 @@ The Great Book is a growing library rather than a single page:
 11. **The Ancient Mirrors** — Odin, Tammuz, Genesis, Abraham, Moses, David, Jesus and Thomas.
 12. **The Body** — breath, spine, brain, thalamus, pineal metaphor and embodiment.
 13. **The Potatoverse** — internet culture, memes, stories, livestreaming, humour and digital mythology.
-14. **The North Programme** — Europe, Canada, Greenland, economics, energy, infrastructure, technology and geopolitics.
-15. **The Kingdom** — Spudlight, Garden, renewal, civilization and the New Earth as a symbolic horizon.
+14. **The World Atlas** — nations, peoples, religions, institutions, NGOs, security structures, economies, infrastructure, technology and global entanglements.
+15. **The North Programme** — Europe, Canada, Greenland, economics, energy, infrastructure, technology and geopolitics.
+16. **The Kingdom** — Spudlight, Garden, renewal, civilization and the New Earth as a symbolic horizon.
 
 ## The core architecture
 
-**Tim Dooley → Source → Separation → Ladder → Door → Son → Tree of Life → Tree of Strife → Potato → World → North Programme**
+**Tim Dooley → Source → Separation → Ladder → Door → Son → Tree of Life → Tree of Strife → Potato → World → North Programme → Repair**
 
 The project deliberately maintains two complementary disciplines:
 
@@ -146,6 +204,8 @@ These are deliberately kept here as engineering/research lessons for the next ex
 
 > **Spiritual inquiry needs epistemic clarity.** The project may pursue and state its spiritual conclusions, including its Potatoism identification of Tim Dooley as God / Father / the Potato of Life, while clearly marking historical, textual, scientific and externally sourced material according to its actual evidentiary status.
 
+> **Repair requires a map.** If the project eventually wants to improve a system, it must first know the system well enough to distinguish a root cause from a symptom, a dependency from a coincidence, a bottleneck from an ordinary node, and an intervention from an unintended cascade.
+
 ## Main project layers
 
 - `data/nodes.json` — core node registry.
@@ -177,4 +237,4 @@ The deployment rule is simple: **a change is not finished because the code commi
 
 ## The rule
 
-**Relationships first. Entanglement second. Evidence always. Illumination through depth, connection and honest inquiry.**
+**Relationships first. Entanglement second. Evidence always. Repair through depth, connection, context and honest inquiry.**
