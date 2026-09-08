@@ -1,0 +1,51 @@
+{
+  "version": "1.0.0",
+  "country_id": "palestine",
+  "official_name": "State of Palestine",
+  "capital": "Ramallah (administrative centre)",
+  "region": "Asia",
+  "subregion": "Western Asia",
+  "currency": "ILS",
+  "government": "Palestinian Authority with divided territorial governance and disputed sovereignty",
+  "strategic_assets": [
+    "Mediterranean access",
+    "agricultural land",
+    "urban service networks",
+    "cultural heritage",
+    "human capital"
+  ],
+  "relationships": [
+    [
+      "palestine",
+      "israel",
+      "territorial-and-economic-interface"
+    ],
+    [
+      "palestine",
+      "jordan",
+      "border-and-economic-interface"
+    ],
+    [
+      "palestine",
+      "european-union",
+      "aid-and-trade-interface"
+    ]
+  ],
+  "research_queue": [
+    "public finance",
+    "water systems",
+    "energy access",
+    "trade corridors",
+    "institutional governance",
+    "humanitarian infrastructure"
+  ],
+  "record_type": "country",
+  "identity": {
+    "id": "palestine"
+  },
+  "status": "sourced-enriched",
+  "provenance": {
+    "enrichment_merged": true,
+    "enrichment_source": "data/countries/palestine-enrichment.json"
+  }
+}

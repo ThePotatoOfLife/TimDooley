@@ -1,12 +1,21 @@
 {
   "record_version": "1.0.0",
   "record_type": "country",
-  "status": "instantiated",
+  "status": "sourced-enriched",
   "identity": {
     "id": "united-states",
     "name": "United States of America",
     "iso2": "US",
-    "iso3": "USA"
+    "iso3": "USA",
+    "official_name": "United States of America",
+    "capital": "Washington, D.C.",
+    "sovereignty_status": "sovereign state",
+    "recognition_status": "widely recognized",
+    "continent": "North America",
+    "region": "North America",
+    "subregion": "Northern America",
+    "currency": "United States dollar (USD)",
+    "national_day": "July 4"
   },
   "blueprint": "data/countries-blueprint.json",
   "blueprint_version": "1.0.0",
@@ -20,26 +29,83 @@
     "deepening_overlay": true
   },
   "observations": {},
-  "relationships": [],
-  "history": [],
+  "relationships": [
+    {
+      "type": "borders",
+      "target": "canada",
+      "status": "active"
+    },
+    {
+      "type": "borders",
+      "target": "mexico",
+      "status": "active"
+    },
+    {
+      "type": "trade",
+      "target": "canada",
+      "status": "active"
+    },
+    {
+      "type": "security-alliance",
+      "target": "canada",
+      "status": "active"
+    },
+    {
+      "type": "security-alliance",
+      "target": "nato",
+      "status": "active"
+    },
+    {
+      "type": "member-of",
+      "target": "g7",
+      "status": "active"
+    },
+    {
+      "type": "member-of",
+      "target": "g20",
+      "status": "active"
+    }
+  ],
+  "history": {
+    "turning_points": [
+      {
+        "date": "1776-07-04",
+        "event": "Declaration of Independence"
+      },
+      {
+        "date": "1787-09-17",
+        "event": "Constitution adopted"
+      },
+      {
+        "date": "1861-1865",
+        "event": "American Civil War"
+      },
+      {
+        "date": "1941-12-07",
+        "event": "Attack on Pearl Harbor; U.S. enters World War II"
+      },
+      {
+        "date": "1945",
+        "event": "Postwar international-system leadership and UN founding role"
+      }
+    ]
+  },
   "research_queue": [
-    "national statistical office",
-    "constitution and legal framework",
-    "head of state and government",
-    "parliament and electoral system",
     "religious composition and denominations",
-    "historical timeline",
-    "public finance and debt",
-    "trade and value chains",
-    "energy and natural resources",
-    "infrastructure",
-    "health and education",
+    "Congress current composition and committees",
+    "Supreme Court membership and doctrine",
+    "federal budget and Treasury debt instruments",
+    "states and territories",
+    "energy production and grid",
+    "ports and logistics",
+    "major companies and ownership",
+    "research universities and R&D",
+    "health system",
+    "education system",
     "labour and migration",
-    "military and public security institutions",
-    "science and technology",
-    "media and digital systems",
-    "international memberships and treaties",
-    "ownership and major institutions"
+    "military spending and capabilities",
+    "media ownership",
+    "Canada-US economic graph"
   ],
   "provenance": {
     "instantiated_at": "2026-09-07T12:37:31.426393+00:00",
@@ -47,374 +113,152 @@
     "observation_policy": "No value is invented merely to fill a field; absent evidence remains missing/stale.",
     "last_refresh": "2026-09-07T21:59:50.659074+00:00",
     "source_priority": "international-official",
-    "historical_observations_preserved": true
-  },
-  "deepening": {
-    "overlay": "data/blueprints/country-deepening.json",
-    "overlay_version": "1.0.0",
-    "layers": {
-      "constitutional_genealogy": {
-        "constitution_origin": null,
-        "constitutional_versions": null,
-        "amendments": null,
-        "constitutional_crises": null,
-        "constitutional_court_doctrine": null,
-        "distribution_of_sovereignty": null,
-        "central_local_power": null,
-        "treaty_inheritance": null
-      },
-      "administrative_genealogy": {
-        "administrative_levels": null,
-        "current_units": null,
-        "historical_units": null,
-        "mergers": null,
-        "splits": null,
-        "capital_relocations": null,
-        "decentralization_reforms": null,
-        "special_autonomous_areas": null
-      },
-      "institutional_genealogy": {
-        "institution_id": null,
-        "founding_date": null,
-        "predecessor": null,
-        "successor": null,
-        "mandate": null,
-        "legal_basis": null,
-        "parent_body": null,
-        "subordinate_bodies": null,
-        "reforms": null,
-        "mergers": null,
-        "dissolutions": null,
-        "current_status": null
-      },
-      "national_calendar_and_time": {
-        "national_day": null,
-        "public_holidays": null,
-        "religious_holidays_recognized": null,
-        "school_calendar": null,
-        "fiscal_year": null,
-        "electoral_cycle": null,
-        "time_zones": null,
-        "daylight_saving": null,
-        "historical_calendar_changes": null
-      },
-      "language_and_script": {
-        "official_languages": null,
-        "recognized_languages": null,
-        "minority_languages": null,
-        "language_families": null,
-        "writing_systems": null,
-        "script_history": null,
-        "language_policy": null,
-        "education_language": null,
-        "administrative_language": null,
-        "media_language": null,
-        "language_change": null
-      },
-      "demographic_structure": {
-        "age_cohorts": null,
-        "generation_structure": null,
-        "dependency_ratio": null,
-        "household_forms": null,
-        "fertility_history": null,
-        "mortality_history": null,
-        "urbanization_history": null,
-        "migration_history": null,
-        "population_projections": null,
-        "regional_population_distribution": null
-      },
-      "state_capacity_and_service_delivery": {
-        "tax_capacity": null,
-        "administrative_capacity": null,
-        "statistical_capacity": null,
-        "health_service_coverage": null,
-        "education_service_coverage": null,
-        "digital_service_capacity": null,
-        "procurement_capacity": null,
-        "audit_capacity": null,
-        "regulatory_capacity": null,
-        "local_service_delivery": null,
-        "capacity_constraints": null
-      },
-      "national_balance_sheet": {
-        "public_assets": null,
-        "public_land": null,
-        "infrastructure_assets": null,
-        "state_owned_enterprises": null,
-        "sovereign_funds": null,
-        "pension_assets": null,
-        "public_debt": null,
-        "pension_liabilities": null,
-        "public_employee_obligations": null,
-        "guarantees": null,
-        "contingent_liabilities": null,
-        "environmental_liabilities": null,
-        "intergenerational_obligations": null
-      },
-      "obligation_graph": {
-        "debt_obligation": null,
-        "pension_obligation": null,
-        "social_transfer_obligation": null,
-        "treaty_obligation": null,
-        "trade_obligation": null,
-        "energy_import_obligation": null,
-        "defence_obligation": null,
-        "climate_obligation": null,
-        "infrastructure_maintenance_obligation": null,
-        "public_service_obligation": null
-      },
-      "control_graph": {
-        "legal_control": null,
-        "regulatory_control": null,
-        "ownership_control": null,
-        "voting_control": null,
-        "contractual_control": null,
-        "concession_control": null,
-        "licensing_control": null,
-        "public_operator": null,
-        "private_operator": null,
-        "foreign_operator": null,
-        "control_change_history": null
-      },
-      "dependency_graph": {
-        "energy_dependency": null,
-        "food_dependency": null,
-        "water_dependency": null,
-        "technology_dependency": null,
-        "financial_dependency": null,
-        "trade_dependency": null,
-        "security_dependency": null,
-        "medical_dependency": null,
-        "critical_mineral_dependency": null,
-        "transport_dependency": null,
-        "digital_dependency": null,
-        "dependency_concentration": null
-      },
-      "strategic_geography": {
-        "chokepoints": null,
-        "corridors": null,
-        "border_crossings": null,
-        "ports": null,
-        "canals": null,
-        "straits": null,
-        "mountain_passes": null,
-        "river_basins": null,
-        "maritime_routes": null,
-        "submarine_cable_landings": null,
-        "pipeline_corridors": null,
-        "logistics_nodes": null,
-        "buffer_regions": null
-      },
-      "food_water_system": {
-        "food_production": null,
-        "food_imports": null,
-        "food_exports": null,
-        "fertilizer_dependency": null,
-        "seed_dependency": null,
-        "irrigation": null,
-        "freshwater_withdrawal": null,
-        "water_stress": null,
-        "urban_water": null,
-        "wastewater": null,
-        "food_security": null,
-        "strategic_reserves": null
-      },
-      "energy_system_graph": {
-        "generation_assets": null,
-        "fuel_supply": null,
-        "refineries": null,
-        "lng_terminals": null,
-        "storage": null,
-        "grid_interconnectors": null,
-        "cross_border_flows": null,
-        "district_heat": null,
-        "critical_transformers": null,
-        "energy_subsidies": null,
-        "energy_price_exposure": null,
-        "energy_transition": null
-      },
-      "logistics_graph": {
-        "major_ports": null,
-        "rail_freight": null,
-        "road_corridors": null,
-        "air_cargo": null,
-        "warehouses": null,
-        "customs_nodes": null,
-        "border_waits_when_measured": null,
-        "shipping_dependencies": null,
-        "freight_concentration": null,
-        "last_mile_constraints": null
-      },
-      "digital_sovereignty": {
-        "telecom_operators": null,
-        "fixed_network": null,
-        "mobile_network": null,
-        "internet_exchange_points": null,
-        "data_centres": null,
-        "cloud_dependencies": null,
-        "submarine_cables": null,
-        "satellite_dependencies": null,
-        "national_id_system": null,
-        "digital_public_services": null,
-        "data_protection_authority": null,
-        "ai_policy": null,
-        "cyber_law": null
-      },
-      "knowledge_graph": {
-        "universities": null,
-        "research_institutes": null,
-        "research_specializations": null,
-        "major_labs": null,
-        "patent_clusters": null,
-        "citation_strength": null,
-        "research_funding": null,
-        "industry_academia_links": null,
-        "international_research_links": null,
-        "brain_drain": null,
-        "brain_gain": null
-      },
-      "cultural_transmission": {
-        "family": null,
-        "school": null,
-        "religious_institution": null,
-        "media": null,
-        "publisher": null,
-        "museum": null,
-        "archive": null,
-        "festival": null,
-        "sports": null,
-        "music": null,
-        "film": null,
-        "diaspora": null,
-        "digital_platform": null,
-        "language_transmission": null,
-        "heritage_site": null
-      },
-      "religious_institutional_graph": {
-        "tradition": null,
-        "denomination": null,
-        "school": null,
-        "institution": null,
-        "leader": null,
-        "congregation": null,
-        "monastery": null,
-        "seminary": null,
-        "charity": null,
-        "hospital": null,
-        "publisher": null,
-        "sacred_place": null,
-        "pilgrimage_route": null,
-        "diaspora_network": null
-      },
-      "media_ownership_graph": {
-        "public_broadcaster": null,
-        "private_media_groups": null,
-        "owners_when_public": null,
-        "parent_company": null,
-        "subsidiaries": null,
-        "foreign_ownership": null,
-        "advertising_dependencies": null,
-        "platform_dependencies": null,
-        "press_associations": null,
-        "journalism_training": null,
-        "historical_media_mergers": null
-      },
-      "corporate_and_ownership_graph": {
-        "major_company": null,
-        "sector": null,
-        "state_ownership": null,
-        "foreign_ownership": null,
-        "beneficial_owner_when_public": null,
-        "parent": null,
-        "subsidiary": null,
-        "joint_venture": null,
-        "strategic_asset": null,
-        "concession": null,
-        "procurement_relationship": null,
-        "pension_fund_holding": null,
-        "sovereign_fund_holding": null
-      },
-      "border_and_territorial_history": {
-        "current_border": null,
-        "historical_border": null,
-        "disputed_area": null,
-        "border_treaty": null,
-        "boundary_commission": null,
-        "territorial_transfer": null,
-        "secession": null,
-        "annexation_history": null,
-        "autonomy_history": null,
-        "maritime_boundary": null,
-        "exclusive_economic_zone": null
-      },
-      "crisis_and_resilience": {
-        "war": null,
-        "civil_conflict": null,
-        "financial_crisis": null,
-        "banking_crisis": null,
-        "pandemic": null,
-        "famine": null,
-        "drought": null,
-        "flood": null,
-        "earthquake": null,
-        "volcanic_event": null,
-        "industrial_disaster": null,
-        "cyber_incident_when public": null,
-        "energy_crisis": null,
-        "recovery_time": null,
-        "institutional_response": null,
-        "lessons_learned": null
-      },
-      "national_narratives_and_memory": {
-        "official_history": null,
-        "school_history": null,
-        "national_symbols_genealogy": null,
-        "commemorations": null,
-        "monuments": null,
-        "memory_laws": null,
-        "contested_memory": null,
-        "independence_narrative": null,
-        "war_memory": null,
-        "colonial_memory": null,
-        "religious_memory": null,
-        "migration_memory": null
-      },
-      "statistical_quality": {
-        "census_frequency": null,
-        "population_register": null,
-        "economic_statistics_capacity": null,
-        "survey_capacity": null,
-        "administrative_data_quality": null,
-        "revision_policy": null,
-        "data_timeliness": null,
-        "data_disaggregation": null,
-        "metadata_quality": null,
-        "international_comparability": null,
-        "known_breaks_in_series": null
-      },
-      "measurement_integrity": {
-        "value": null,
-        "unit": null,
-        "reference_period": null,
-        "publication_date": null,
-        "retrieved_at": null,
-        "source": null,
-        "source_type": null,
-        "methodology": null,
-        "revision": null,
-        "confidence": null,
-        "missingness": null,
-        "comparability_warning": null,
-        "historical_break": null,
-        "derived_formula": null
-      }
-    },
-    "relationships": [],
-    "missing_fields": [],
-    "last_schema_pass": "2026-09-08T09:14:07.162918+00:00"
+    "historical_observations_preserved": true,
+    "sources": [
+      "https://www.usa.gov/presidents",
+      "https://www.usa.gov/branches-of-government",
+      "https://www.usa.gov/historical-documents",
+      "https://data.worldbank.org/?locations=CA-US"
+    ],
+    "retrieved": "2026-09-07",
+    "policy": "Observed values retain source, year and methodology; missing fields remain open for later enrichment.",
+    "enrichment_merged": true,
+    "enrichment_source": "data/countries/united-states-enrichment.json"
   },
   "data_freshness": {
     "last_refresh_attempt": "2026-09-07T21:59:50.659074+00:00",
     "source": "world-bank"
+  },
+  "country_id": "united-states",
+  "iso2": "US",
+  "iso3": "USA",
+  "updated": "2026-09-07",
+  "political_system": {
+    "system_type": "federal presidential constitutional republic",
+    "head_of_state": "President",
+    "head_of_government": "President",
+    "current_leader": {
+      "name": "Donald J. Trump",
+      "office": "President",
+      "term_start": "2025-01-20",
+      "source": "USAGov",
+      "source_url": "https://www.usa.gov/presidents"
+    },
+    "vice_president": {
+      "name": "JD Vance",
+      "term_start": "2025-01-20",
+      "source": "USAGov",
+      "source_url": "https://www.usa.gov/presidents"
+    },
+    "branches": [
+      "Executive",
+      "Legislative",
+      "Judicial"
+    ],
+    "legislature": [
+      "Senate",
+      "House of Representatives"
+    ],
+    "judiciary": "Supreme Court and federal courts",
+    "next_presidential_election": "2028-11-07",
+    "source": "USAGov",
+    "source_url": "https://www.usa.gov/branches-of-government"
+  },
+  "constitutional_system": {
+    "founding_documents": [
+      "Declaration of Independence",
+      "United States Constitution",
+      "Bill of Rights"
+    ],
+    "constitution_adopted": "1787-09-17",
+    "amendments": 27,
+    "federal_structure": "federal government plus states, territories and local governments",
+    "source": "USAGov",
+    "source_url": "https://www.usa.gov/historical-documents"
+  },
+  "population": {
+    "value": 341784857,
+    "year": 2025,
+    "growth_rate": 0.5,
+    "life_expectancy": 79,
+    "net_migration": 1230663,
+    "source": "World Bank",
+    "source_url": "https://data.worldbank.org/?locations=CA-US"
+  },
+  "economy": {
+    "gdp_current_usd_trillion": 30.77,
+    "gdp_year": 2025,
+    "gdp_per_capita_usd": 90026.5,
+    "gdp_growth_percent": 2.2,
+    "unemployment_percent": 4.2,
+    "source": "World Bank",
+    "source_url": "https://data.worldbank.org/?locations=CA-US"
+  },
+  "public_finance": {
+    "central_government_debt_percent_gdp": 115.8,
+    "debt_year": 2024,
+    "source": "World Bank",
+    "source_url": "https://data.worldbank.org/?locations=CA-US"
+  },
+  "digital": {
+    "internet_use_percent": 95,
+    "year": 2024,
+    "source": "World Bank",
+    "source_url": "https://data.worldbank.org/?locations=CA-US"
+  },
+  "energy_and_resources": {
+    "strategic_assets": [
+      "large oil and gas production",
+      "coal",
+      "nuclear power",
+      "hydroelectric and renewable resources",
+      "major agricultural production",
+      "large freshwater systems",
+      "critical minerals"
+    ],
+    "note": "Detailed production, capacity and dependency series should be populated from national and international energy datasets."
+  },
+  "trade_and_value_chains": {
+    "major_relationships": [
+      "Canada",
+      "Mexico",
+      "European Union",
+      "China",
+      "Japan",
+      "South Korea"
+    ],
+    "frameworks": [
+      "United States-Mexico-Canada Agreement",
+      "World Trade Organization"
+    ],
+    "note": "Partner rankings and product-level flows should be stored as dated trade edges."
+  },
+  "security_and_external_relations": {
+    "major_organizations": [
+      "United Nations",
+      "NATO",
+      "G7",
+      "G20",
+      "OECD",
+      "WTO"
+    ],
+    "alliances": [
+      "NATO"
+    ],
+    "note": "Membership and treaty edges are time-sensitive and should retain effective dates."
+  },
+  "geography": {
+    "land_area_km2": 9831500,
+    "borders": [
+      "Canada",
+      "Mexico"
+    ],
+    "maritime_position": [
+      "Atlantic",
+      "Pacific",
+      "Arctic",
+      "Gulf of Mexico"
+    ],
+    "territorial_structure": "50 states plus federal district and territories"
   }
 }
