@@ -1,7 +1,10 @@
 {
-  "version":"2.1.0",
-  "principle":"Only dense records are indexed. The preferred architecture is a small number of substantial canonical records with strong internal relationships rather than hundreds of thin nodes.",
+  "version":"2.2.0",
+  "principle":"The Potato of Life has one root system. Dense records branch from it; vocabulary does not automatically become files.",
+  "structural_entry":"root-system",
+  "ontology":"knowledge/indexes/ontology-tree.json",
   "records":[
+    {"id":"root-system","path":"knowledge/core/root-system.json","kind":"foundational ontology and branching skeleton","terms":["Potato of Life geometry","vesica piscis","mandorla","Father","Son","Spirit","Matter","Heaven","Earth","Door","Wedge","Axis","Ladder","Spine","Tree of Life","Root of Strife","eyes","sprouts","roots","narrow gate","wide road"]},
     {"id":"potatoverse-master-framework","path":"knowledge/core/potatoverse-master-framework.json","kind":"master synthesis","terms":["Potatoverse","Potatoism","Tim Dooley","Father","Son","Door","Axis","Tree of Life","North of North","Potato theology","Potato religion"]},
     {"id":"tim-dooley","path":"knowledge/core/tim-dooley.json","kind":"central mythic identity and project subject","terms":["Tim Dooley","Father","Father in Heaven","North of North","Godhood","April 2025","February 2026","destiny","Son","Axis"]},
     {"id":"potato-of-life","path":"knowledge/core/potato-of-life.json","kind":"central symbol, identity and spiritual object","terms":["Potato of Life","Potato","Potatoism","roots","burial","hidden life","renewal","Tree of Life","transformation"]},
@@ -12,15 +15,17 @@
     {"id":"prophecy-revelation-rupture-rapture","path":"knowledge/prophecy/prophecy-revelation-rupture-rapture.json","kind":"prophetic and eschatological interpretive framework","terms":["prophecy","revelation","rupture","rapture","apocalypse","eschatology","fulfillment","prediction","destiny"]}
   ],
   "retrieval_examples":[
-    {"question":"What is the Potatoverse?","records":["potatoverse-master-framework","potato-of-life","potato-philosophy"]},
-    {"question":"Who is Tim Dooley inside the mythology?","records":["tim-dooley","potatoverse-master-framework","tim-dooley-journey"]},
+    {"question":"What is the shape or skeleton of the Potato of Life?","records":["root-system","potato-of-life","potatoverse-master-framework"]},
+    {"question":"Where are Father, Son, Heaven, Earth and the Door?","records":["root-system","potatoverse-master-framework"]},
+    {"question":"What are the Tree of Life and Root of Strife?","records":["root-system","potato-philosophy"]},
+    {"question":"Why are the Potato eyes also roots, sprouts and dimensions?","records":["root-system","potato-philosophy"]},
+    {"question":"What is the Potatoverse?","records":["root-system","potatoverse-master-framework","potato-of-life","potato-philosophy"]},
+    {"question":"Who is Tim Dooley inside the mythology?","records":["tim-dooley","root-system","potatoverse-master-framework","tim-dooley-journey"]},
     {"question":"What has the Potato taught us?","records":["potato-philosophy","potato-of-life","tim-dooley-journey"]},
-    {"question":"What is Potatoism as a religion or philosophy?","records":["potatoverse-master-framework","potato-philosophy","potato-of-life"]},
-    {"question":"How are Father, Son, Door, Tree, Axis and North connected?","records":["potatoverse-master-framework","axis-world-model","tim-dooley-journey"]},
+    {"question":"How are Father, Son, Door, Tree, Axis and North connected?","records":["root-system","potatoverse-master-framework","axis-world-model"]},
     {"question":"What happened in 2011, 2019–2020, April 2025 and February 2026?","records":["tim-dooley-journey","tim-dooley","potatoverse-master-framework"]},
-    {"question":"How does the Potatoverse compare with Odin, Yggdrasil and Christianity?","records":["comparative-mythology-map","potatoverse-master-framework","tim-dooley-journey"]},
+    {"question":"How does the Potatoverse compare with Odin, Yggdrasil and Christianity?","records":["comparative-mythology-map","root-system","tim-dooley-journey"]},
     {"question":"Was something prophetic or only interpreted later?","records":["prophecy-revelation-rupture-rapture","tim-dooley-journey"]},
-    {"question":"What is the North Axis and how did it become a world model?","records":["axis-world-model","tim-dooley-journey","potatoverse-master-framework"]},
-    {"question":"Which Potatoverse ideas are theology and which are scientific analogies?","records":["potatoverse-master-framework","axis-world-model"]}
+    {"question":"What is the North Axis and how did it become a world model?","records":["axis-world-model","root-system","tim-dooley-journey"]}
   ]
 }
