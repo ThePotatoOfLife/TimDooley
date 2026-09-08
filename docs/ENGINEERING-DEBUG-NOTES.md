@@ -26,6 +26,20 @@ This file records root causes and solutions discovered during repository scans. 
 
 **Regression still required:** Re-run Pages and confirm the stability audit reports zero false positives and allows deployment to continue to the remaining gates.
 
+## 2026-09-08 — Canonical record routing / Maersk
+
+**Symptom:** `repository.html` could expose a record such as `maersk`, but `node.html?id=maersk` returned `No record found`.
+
+**Root cause:** The repository index recursively discovers record-like objects across modular domain datasets, while the node resolver historically treated a small set of files as canonical node sources. `data/north-europe-economic-network.json` legitimately owns the Maersk network record, but the frontend did not resolve an indexed `source + exact JSON path` back to that record. The index was therefore broader than the resolver.
+
+**Solution:** Keep the domain record in its owning source file. The node route now uses the repository index as a navigation projection and follows the indexed source file plus exact JSON path when a record is not found in the legacy core sources. The canonical-source map now explicitly registers `data/north-europe-economic-network.json` as the owner of that North European economic network record family. The repository index also records an owner family and role so later routing can distinguish canonical records from enrichments, projections, relationships and research layers.
+
+**Important architectural lesson:** A record's physical location is not the same thing as its graph position. Do not copy domain records into `data/nodes.json` merely to make a route work. Resolve the canonical owner, then resolve the exact path. Parent/child navigation should be projections over one record, not duplicate record stores.
+
+**Regression added:** Pages now builds the canonical record registry, repository index, and source-of-truth audit before the site build. The audit verifies declared source paths, exact indexed JSON paths, ID/path consistency, and competing canonical-owner candidates.
+
+**Remaining work:** Inspect the audit output for duplicate IDs that are legitimate overlays versus genuine competing owners; migrate stale integration references; and make canonical registry ownership decisions explicit for any family still classified as general.
+
 ## Working rule
 
 When a failure is discovered:
