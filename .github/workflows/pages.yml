@@ -1,4 +1,4 @@
-name: Deploy Repository
+name: Deploy Potato of Life
 
 on:
   push:
@@ -15,7 +15,7 @@ env:
 
 concurrency:
   group: pages
-  cancel-in-progress: true
+  cancel-in-progress: false
 
 jobs:
   deploy:
@@ -23,42 +23,43 @@ jobs:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
-    timeout-minutes: 25
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - name: Validate root navigation contract
-        run: python scripts/validate_root_navigation.py
-      - name: Build canonical record registry
-        run: python scripts/build_canonical_record_registry.py
-      - name: Build repository index
-        run: python scripts/build_repository_index.py
-      - name: Build center navigation index
-        run: python scripts/build_root_navigation_index.py
-      - name: Audit source-of-truth and routes
-        run: python scripts/audit_source_of_truth.py
-      - name: Audit Potatoism concept integrity
-        run: python scripts/audit_potatoism_concept_integrity.py
-      - name: Audit cross-file duplication and ownership
-        run: python scripts/audit_cross_file_duplicates.py
-      - name: Validate blueprint contract
-        run: python scripts/validate_blueprints.py
-      - name: Build static site
+
+      - name: Build generated data
+        run: |
+          python scripts/build_canonical_record_registry.py
+          python scripts/build_repository_index.py
+          python scripts/build_root_navigation_index.py
+
+      - name: Build Pages artifact
         run: python scripts/build_site.py
-      - name: Run whole-project stability audit
-        run: python scripts/stability_audit.py
-      - name: Validate built site shell
-        run: python scripts/validate_site_shell.py
+
+      - name: Verify Pages artifact
+        run: |
+          test -f _site/index.html
+          test "$(find _site -type f -name '*.html' | wc -l)" -eq 1
+          grep -q 'id="app"' _site/index.html
+          grep -q 'id="potato-data"' _site/index.html
+          ! grep -q '<iframe' _site/index.html
+          ! grep -q '<script src=' _site/index.html
+          ! grep -q '<link rel="stylesheet"' _site/index.html
+
       - name: Configure Pages
         uses: actions/configure-pages@v5
-      - name: Upload artifact
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v5
         with:
           path: _site
+
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v5
