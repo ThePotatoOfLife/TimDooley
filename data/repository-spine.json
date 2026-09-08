@@ -1,26 +1,23 @@
 {
-  "version":"2.3.0",
+  "version":"3.0.0",
   "updated":"2026-09-08",
   "status":"canonical-navigation-architecture",
-  "purpose":"Defines the Repository root as three simple filing branches, Spirit, Mind and Matter, while preserving scale, domain, time, epistemic status and graph relationships as independent coordinates.",
+  "purpose":"Underlying filing and coordinate model for the repository. The public root is deliberately reduced to two branches, AXIS and WORLD; scale, domain, time, epistemic status and graph relationships remain independent coordinates.",
   "root_order":[
-    {"id":"spirit","label":"SPIRIT","meaning":"Meaning-bearing and spiritual repository content: Source, Meaning, Belief / Faith and Myths."},
-    {"id":"mind","label":"MIND","meaning":"Inner experience and its biological basis: Psychology, Hawkinscale and Neurobiology."},
-    {"id":"matter","label":"MATTER","meaning":"Concrete repository content organized by the canonical scale from Worlds & Domains toward Ground / Grain / Dust."}
+    {"id":"axis","label":"AXIS","meaning":"Meaning-bearing, spiritual, symbolic, psychological and project-defined structures."},
+    {"id":"world","label":"WORLD","meaning":"Observable people, places, institutions, networks, objects, events, records and material systems."}
   ],
-  "spirit_layers":[
-    {"id":"source","label":"SOURCE","meaning":"Origin, Father, creation and spiritual source."},
+  "axis_layers":[
+    {"id":"source","label":"SOURCE","meaning":"Origin, Father, creation and spiritual-source concepts."},
     {"id":"meaning","label":"MEANING","meaning":"Ideas, symbols, principles, visions and interpretations."},
     {"id":"belief","label":"BELIEF / FAITH","meaning":"Religions, theology, doctrines, traditions and spiritual convictions."},
-    {"id":"myths","label":"MYTHS","meaning":"Myths, sacred stories, mythological figures, narratives and cosmologies."}
-  ],
-  "mind_layers":[
+    {"id":"myths","label":"MYTHS","meaning":"Myths, sacred stories, mythological figures, narratives and cosmologies."},
     {"id":"psychology","label":"PSYCHOLOGY","meaning":"Behaviour, development, personality, cognition and inner life."},
-    {"id":"hawkinscale","label":"HAWKINSCALE","meaning":"The project's dedicated comparative consciousness/emotion model, including its levels, emotional labels, processes and evidence boundaries."},
-    {"id":"neurobiology","label":"NEUROBIOLOGY","meaning":"Brain, nervous system, thalamus, pineal gland and embodied cognition."}
+    {"id":"hawkinscale","label":"HAWKINSCALE","meaning":"The project's comparative consciousness/emotion model, including its evidence boundaries."},
+    {"id":"neurobiology","label":"NEUROBIOLOGY","meaning":"Brain, nervous system and embodied-cognition research."}
   ],
   "matter_scale":"data/repository-scale.json",
-  "matter_layers":[
+  "world_layers":[
     {"id":"world","label":"WORLDS & DOMAINS","meaning":"Broad environments, fields, civilizations and domains of activity."},
     {"id":"region","label":"REGIONS & TERRITORIES","meaning":"Geographic, ecological and jurisdictional fields."},
     {"id":"institution","label":"INSTITUTIONS & STRUCTURES","meaning":"Durable organizations, authorities, infrastructures and coordinating structures."},
@@ -31,15 +28,15 @@
     {"id":"record","label":"RECORDS & SIGNALS","meaning":"Texts, measurements, documents, datasets and other observable traces."},
     {"id":"ground","label":"GROUND / GRAIN / DUST","meaning":"Smallest concrete trace or material unit relevant to the investigation."}
   ],
-  "principle":"The visible repository is simple: Root → Spirit / Mind / Matter. Spirit holds meaning-bearing spiritual material. Mind holds inner experience and neurobiology. Matter uses the existing scale because scale is the strongest concrete organizing coordinate. Domain, time, epistemic status and graph relationships remain independent.",
-  "mind_rule":"Mind is a repository root, not a replacement for Spirit or Matter. Use it for psychology, Hawkinscale and the biological systems directly involved in mind. Fear, love, anger and other emotions are not separate folders: they are content inside Hawkinscale or the relevant psychological record. People remain Matter; relationships remain graph edges; spiritual doctrine and myth remain Spirit unless the record is specifically about their psychological or neurological interpretation.",
-  "hawkinscale_rule":"Hawkinscale is a framework record, not a claim that its numerical levels are physical frequencies or universally validated measurements. The existing data/hawkins-scale.json remains the substantive source for the model, its psychological interpretation and its explicit evidence safeguards.",
-  "lexicon_rule":"Small lexicon entries remain accessible reference material but are visually subdued in the Repository so substantive records carry the visual weight. Lexicon records are not removed from the archive.",
-  "door_rule":"Door is not a repository filing branch. It describes transformation, passage or an interface between things. The Repository stores and exposes records; it does not need a Door category. Door remains available as a concept and graph relationship where the corpus uses it.",
+  "principle":"The visible repository is simple: AXIS / WORLD. AXIS holds meaning-bearing, symbolic, spiritual and inner-experience material. WORLD uses the existing concrete scale because scale is the strongest organizing coordinate for observable systems. Domain, time, epistemic status and graph relationships remain independent.",
+  "axis_rule":"AXIS is a presentation branch, not a claim that symbolic material is empirically superior to the world. Project canon, interpretation, religious self-description, psychology and scientific interpretation retain their own epistemic classes.",
+  "hawkinscale_rule":"Hawkinscale is a framework record, not a claim that its numerical levels are physical frequencies or universally validated measurements. data/hawkins-scale.json remains the substantive source for the model and its evidence safeguards.",
+  "lexicon_rule":"Small lexicon entries remain accessible reference material but should not dominate navigation. Substantive records carry the visual weight.",
+  "door_rule":"Door is not a filing branch. It describes transformation, passage or interface and remains available as a concept and graph relationship.",
   "other_concept_rule":"Axis, Ladder, Tree of Life, Tree of Strife, transformation, return and similar interpretive structures remain concepts, relationships or framework elements rather than forced top-level filing categories.",
-  "placement_rule":"Give each record one primary repository home. Use cross-links and graph edges rather than duplicate records solely for navigation. A record's domain, time and epistemic status may cross the root branches.",
-  "canonical_overrides":"Use data/repository-scale.json for explicit scale placements where a Matter record needs a precise canonical home. Spirit and Mind placement is resolved by explicit project classification before broad keyword fallback.",
-  "independent_coordinates":{"scale":"Canonical Matter granularity from Worlds & Domains through Ground / Grain / Dust.","domain":"Religion, mythology, geography, politics, economy, science, technology, culture, security and other domains can occur at every scale.","time":"Past, present and future can occur at every scale.","epistemic_status":"Observable world, historical/textual record, project theory/research model and Potatoism/mythic canon remain explicitly separated.","graph":"Relationships may connect any records across Spirit, Mind and Matter and across any scale. The graph is not subordinate to the tree.","33_level_axis":"Project-defined vertical framework retained as a deeper navigational and interpretive coordinate."},
-  "non_goals":["Do not rename Repository to Atlas.","Do not delete or flatten the existing 33-level framework.","Do not treat Spirit, Mind or Matter as a hierarchy of truth, value or power.","Do not use Door as a filing category.","Do not flatten the graph into the tree.","Do not create duplicate records solely to satisfy navigation.","Do not proliferate small subcategories merely to make the taxonomy look complete."],
-  "consumer":"repository.html"
+  "placement_rule":"Give each record one primary repository home. Use cross-links and graph edges rather than duplicate records solely for navigation. A record's domain, time and epistemic status may cross the two branches.",
+  "canonical_overrides":"Use data/repository-scale.json for explicit WORLD scale placements. AXIS placement is resolved by explicit project classification before broad keyword fallback.",
+  "independent_coordinates":{"scale":"Canonical WORLD granularity from Worlds & Domains through Ground / Grain / Dust.","domain":"Religion, mythology, geography, politics, economy, science, technology, culture, security and other domains can occur at every scale.","time":"Past, present and future can occur at every scale.","epistemic_status":"Observable world, historical/textual record, project theory/research model and Potatoism/mythic canon remain explicitly separated.","graph":"Relationships may connect any records across AXIS and WORLD and across any scale. The graph is not subordinate to the tree.","33_level_axis":"Project-defined vertical framework retained as a deeper navigational and interpretive coordinate."},
+  "non_goals":["Do not create a third public root branch.","Do not delete or flatten the existing 33-level framework.","Do not treat AXIS or WORLD as a hierarchy of truth, value or power.","Do not use Door as a filing category.","Do not flatten the graph into the tree.","Do not create duplicate records solely to satisfy navigation.","Do not proliferate small subcategories merely to make the taxonomy look complete."],
+  "consumer":"index.html"
 }
