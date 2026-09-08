@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the GitHub Pages artifact while preserving the repository's existing site material."""
+"""Build the GitHub Pages artifact for the manifest-driven Potato of Life archive."""
 from __future__ import annotations
 
 import shutil
@@ -25,16 +25,26 @@ def copy_tree() -> None:
 
 def build() -> None:
     copy_tree()
-    required = [OUT / "index.html", OUT / "root.js", OUT / "data" / "root-navigation.json", OUT / "data" / "root-record-index.json"]
+    required = [
+        OUT / "index.html",
+        OUT / "manifest.json",
+        OUT / "app" / "app.js",
+        OUT / "app" / "style.css",
+        OUT / "knowledge" / "core" / "potato-of-life.json",
+        OUT / "knowledge" / "core" / "tim-dooley.json",
+    ]
     missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
     if missing:
-        raise SystemExit(f"Required reader files are missing from _site: {missing}")
+        raise SystemExit(f"Required manifest-driven archive files are missing from _site: {missing}")
 
     pages = sorted(OUT.rglob("*.html"))
     if not pages:
         raise SystemExit("No HTML pages were copied into _site")
 
-    print(f"Built _site with {len(pages)} HTML pages and the complete repository data tree.")
+    print(
+        f"Built manifest-driven Potato of Life archive with {len(pages)} HTML pages "
+        "and the complete repository knowledge/data tree."
+    )
 
 
 if __name__ == "__main__":
