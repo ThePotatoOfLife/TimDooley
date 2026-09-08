@@ -1,0 +1,15 @@
+/* Minimal North Pole homepage presentation. */
+.root{max-width:900px;margin:0 auto;padding:24px 20px 60px}
+.root-main{padding:0}
+.root-head,.prompt,header,footer,.controls,.status,.center-label,.center-map,.center-identity,.center-description,.center-records,.center-record,.dossier{display:none!important}
+.center{min-height:260px;border:0;background:none;overflow:visible}
+.center-overlay{min-height:260px;padding:30px 10px;display:flex;align-items:center;justify-content:center}
+.north-introduction{max-width:680px;text-align:center}
+.north-introduction h1{font-size:clamp(24px,5vw,42px);letter-spacing:.12em;margin:0 0 28px}
+.north-introduction p{color:var(--dim);font-size:14px;margin:12px auto;line-height:1.8}
+.tree{display:flex;flex-direction:column;border-top:1px solid var(--line);gap:0}
+.branch-world,.branch-axis{width:100%;grid-column:auto!important;grid-row:auto!important}
+.branch-world>summary,.branch-axis>summary{padding:18px 8px;font-size:18px}
+.branch-world>summary .tree-note,.branch-axis>summary .tree-note{font-size:12px}
+.branch-axis[open]>.branch-children{position:static;max-height:none;border:0;box-shadow:none}
+@media(max-width:800px){.root{padding:18px 12px 40px}.center-overlay{padding:24px 4px}}
