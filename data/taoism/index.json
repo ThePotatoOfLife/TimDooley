@@ -9,6 +9,24 @@
     {"type":"has-philosophical-text","from":"taoism","to":"zhuangzi"}
   ],
   "distinction":"Daoism includes religious, philosophical, ritual, textual and institutional traditions. The Dao De Jing is central but does not by itself exhaust Taoism.",
-  "dao_de_jing":{"status":"complete-local-text","chapters":81,"language":"Classical Chinese","edition":"Project Gutenberg eBook #7337","source":"https://www.gutenberg.org/ebooks/7337","source_text":"https://www.gutenberg.org/cache/epub/7337/pg7337.txt","rights_note":"The ancient work is public domain by age; this local page uses the public-domain Chinese electronic text edition."},
+  "dao_de_jing":{
+    "status":"complete-local-chinese-text-plus-external-editions",
+    "chapters":81,
+    "language":"Classical Chinese",
+    "local_text_edition":"Project Gutenberg eBook #7337",
+    "local_text_source":"https://www.gutenberg.org/cache/epub/7337/pg7337.txt",
+    "user_supplied_source_pdf":"https://ia601405.us.archive.org/9/items/340freeoccultbooks/Daode%20jing.pdf",
+    "user_supplied_source_edition":{
+      "translator":"A. Charles Muller",
+      "institution":"Tōyō Gakuen University",
+      "title":"Daode jing",
+      "format":"PDF",
+      "pages":17,
+      "scope":"81 chapters",
+      "source_verified":"The supplied PDF was inspected and identified as Charles Muller's English translation."
+    },
+    "muller_online_source":"https://www.acmuller.net/con-dao/daodejing.html",
+    "rights_note":"The ancient Dao De Jing is public-domain by age. Charles Muller's modern English translation is treated as a separate modern edition; the repository records and links the exact supplied source rather than silently substituting it with another translation."
+  },
   "external_reference":"https://en.wikisource.org/wiki/Translation:Tao_Te_Ching"
 }
