@@ -1,14 +1,14 @@
 {
-  "version":"3.0.0",
+  "version":"3.1.0",
   "updated":"2026-09-08",
   "purpose":"Bridge for the single public index. The repository keeps modular backend data, but the homepage is the only public navigation doorway.",
   "data_roots":["data/"],
   "canonical_layers":["graph","world","research","systems","security","beliefs","mythology","people","culture","potatoism","north-programme"],
   "public_spine":{"home":"index.html"},
-  "deep_surfaces":{},
-  "route_map":{"home":"index.html","record":"index.html#node={id}","country":"index.html#node={id}","dataset":"index.html"},
+  "deep_surfaces":{"taoism":"taoism.html"},
+  "route_map":{"home":"index.html","record":"index.html#node={id}","country":"index.html#node={id}","dataset":"index.html","taoism":"taoism.html"},
   "record_resolution":{"id_fields":["id","slug","country_id","countryId","key"],"name_fields":["name","title","label"],"alias_fields":["aliases","alternative_names","aka"],"description_fields":["description","summary","overview"],"relationship_fields":["relationships","edges","links"],"source_fields":["source_ids","sources","evidence","source"]},
   "fallback_policy":{"json_failure":"skip optional dataset and continue with canonical datasets","country_failure":"use the canonical country record in data/countries/","empty_description":"show record identity plus available relationships and evidence rather than a blank page"},
-  "integrity_requirements":["Every visible Atlas entry has a route into index.html or is explicitly external-only","Every relationship endpoint resolves or is explicitly marked unresolved","Unknown data is represented as missing/unknown, never as zero","Backend-only datasets remain discoverable through the index","Canonical IDs remain stable while aliases may expand","No stale standalone HTML reader is treated as a required navigation surface"],
+  "integrity_requirements":["Every visible Atlas entry has a route into index.html or is explicitly external-only","Every relationship endpoint resolves or is explicitly marked unresolved","Unknown data is represented as missing/unknown, never as zero","Backend-only datasets remain discoverable through the index","Canonical IDs remain stable while aliases may expand","Primary local readers are linked from the index and do not require external navigation"],
   "design_rule":"The index is the public Door. Data files remain modular for maintainability, but the reader should not have to know which historical subsystem owns a record."
 }
