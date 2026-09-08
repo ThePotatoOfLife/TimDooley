@@ -28,7 +28,7 @@ def main():
         record=merge(load(base),enriched) if base.exists() else enriched
         record=strip_nulls(record); record.setdefault('record_type','country'); record.setdefault('identity',{'id':cid})
         if 'deepening' in record and not substantive(record['deepening'].get('layers',{})):record.pop('deepening',None)
-        record['status']='sourced-enriched'; provenance=record.setdefault('provenance',{}); provenance.pop('enrichment_file',None); provenance['enrichment_merged']=True
+        record['status']='sourced-enriched'; provenance=record.setdefault('provenance',{}); provenance.pop('enrichment_file',None); provenance['enrichment_merged']=True; provenance['enrichment_layer']='retired overlay merged into canonical country record'
         base.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); enrichment.unlink(); merged+=1
     for pattern in ('country-enrichment-batch-*.json','country-nodes-batch-*.json','country-refresh-state.json','country-static.json','repository-audit-*.json','population-pass-*.json'):
         for path in sorted((ROOT/'data').glob(pattern)):
