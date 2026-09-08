@@ -21,15 +21,21 @@ def substantive(v):
     if isinstance(v,dict):return any(substantive(x) for x in v.values())
     if isinstance(v,list):return any(substantive(x) for x in v)
     return True
+def normalize(record):
+    record=strip_nulls(record); record.setdefault('record_type','country'); record.setdefault('identity',{})
+    record['status']='sourced-enriched'; record['record_role']='canonical-country-record'; record['record_version']='1.1.0'
+    coverage=record.setdefault('coverage',{}); coverage.pop('deepening_overlay',None); coverage['canonicalized']=True
+    provenance=record.setdefault('provenance',{}); provenance.pop('enrichment_file',None); provenance.pop('enrichment_source',None); provenance['enrichment_merged']=True; provenance['enrichment_layer']='retired overlay merged into canonical country record'
+    if 'deepening' in record and not substantive(record['deepening'].get('layers',{})):record.pop('deepening',None)
+    return record
 def main():
-    merged=0; removed=[]
+    merged=0; normalized=0; removed=[]
     for enrichment in sorted(COUNTRIES.glob('*-enrichment.json')):
-        cid=enrichment.name.removesuffix('-enrichment.json'); base=COUNTRIES/f'{cid}.json'; enriched=load(enrichment)
-        record=merge(load(base),enriched) if base.exists() else enriched
-        record=strip_nulls(record); record.setdefault('record_type','country'); record.setdefault('identity',{'id':cid})
-        if 'deepening' in record and not substantive(record['deepening'].get('layers',{})):record.pop('deepening',None)
-        record['status']='sourced-enriched'; provenance=record.setdefault('provenance',{}); provenance.pop('enrichment_file',None); provenance['enrichment_merged']=True; provenance['enrichment_layer']='retired overlay merged into canonical country record'
-        base.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); enrichment.unlink(); merged+=1
+        cid=enrichment.name.removesuffix('-enrichment.json'); base=COUNTRIES/f'{cid}.json'; enriched=load(enrichment); record=merge(load(base),enriched) if base.exists() else enriched
+        base.write_text(json.dumps(normalize(record),ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); enrichment.unlink(); merged+=1
+    for path in sorted(COUNTRIES.glob('*.json')):
+        if path.name=='index.json':continue
+        record=normalize(load(path)); path.write_text(json.dumps(record,ensure_ascii=False,indent=2)+'\n',encoding='utf-8'); normalized+=1
     for pattern in ('country-enrichment-batch-*.json','country-nodes-batch-*.json','country-refresh-state.json','country-static.json','repository-audit-*.json','population-pass-*.json'):
         for path in sorted((ROOT/'data').glob(pattern)):
             path.unlink(); removed.append(str(path.relative_to(ROOT)))
@@ -37,5 +43,5 @@ def main():
         if path.exists():path.unlink();removed.append(str(path.relative_to(ROOT)))
     layer=load(LAYER); layer.update({'version':'2.0.0','purpose':'Canonical country library manifest. Each country owns one substantive record; reusable schema lives in the blueprints.','batch_count':0,'batch_manifests':[],'node_manifests':['data/country-nodes.json'],'record_pattern':'data/countries/<country-id>.json','enrichment_pattern':None,'page_pattern':None}); layer.pop('enriched_ids',None); LAYER.write_text(json.dumps(layer,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     idx=load(INDEX); idx.update({'version':'3.0.0','purpose':'Compatibility country index. The canonical country record is data/countries/<country-id>.json; enrichment overlays have been merged.','remaining_count':0,'record_pattern':'data/countries/<country-id>.json','enrichment_pattern':None,'page_pattern':None,'layer_manifest':'data/country-layer-manifest.json','batch_manifests':[],'node_manifests':['data/country-nodes.json'],'legacy_nodes':'data/country-nodes.json'}); idx.pop('enrichment_overlay_count',None); INDEX.write_text(json.dumps(idx,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    print(json.dumps({'countries_merged':merged,'artifacts_removed':removed},ensure_ascii=False,indent=2))
+    print(json.dumps({'countries_merged':merged,'countries_normalized':normalized,'artifacts_removed':removed},ensure_ascii=False,indent=2))
 if __name__=='__main__':main()
