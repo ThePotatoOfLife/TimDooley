@@ -1,7 +1,7 @@
 {
-  "version":"1.10.0","updated":"2026-09-08","purpose":"Canonical registry of reusable blueprints and major data-layer entry points.",
+  "version":"1.10.1","updated":"2026-09-08","purpose":"Canonical registry of reusable blueprints and major data-layer entry points.",
   "blueprint_filename_contract":"Every standalone blueprint file uses <subject>-blueprint.json. The descriptive subject comes first. Legacy suffixes such as -master, -system and bare .json are not used for new standalone blueprints.",
-  "meta_blueprint":"data/blueprints/blueprint-blueprint.json","blueprint_count":34,
+  "meta_blueprint":"data/blueprints/blueprint-blueprint.json","blueprint_count":35,
   "blueprints":[
     {"id":"country","file":"data/countries-blueprint.json","applies_to":"canonical country acquisition and normalization","status":"active","migration_note":"Root-level filename retained until country generators migrate."},
     {"id":"country-deepening","file":"data/blueprints/country-deepening-blueprint.json","applies_to":"deep national system overlays","status":"active"},
