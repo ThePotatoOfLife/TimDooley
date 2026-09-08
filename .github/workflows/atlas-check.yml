@@ -20,12 +20,14 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 10
+    timeout-minutes: 15
     steps:
       - name: Checkout
         uses: actions/checkout@v5
       - name: Validate atlas structure
         run: python scripts/validate_atlas.py
+      - name: Validate repository spine
+        run: python scripts/validate_repository_spine.py
       - name: Validate architecture layers
         run: python scripts/validate_architecture_layers.py
       - name: Validate content integrity
@@ -42,4 +44,3 @@ jobs:
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
         run: python scripts/audit_web.py
-      # Full validator chain: tree references now resolve through canonical ID-bearing layers.
