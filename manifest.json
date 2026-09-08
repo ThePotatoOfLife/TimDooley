@@ -1,10 +1,10 @@
 {
-  "schema_version": "1.0",
+  "schema_version": "1.1",
   "updated": "2026-09-09",
   "root": {
     "id": "potato-of-life",
     "title": "POTATO OF LIFE",
-    "summary": "Canonical root map for the living Potato of Life archive. This file owns public navigation; knowledge files own the substantive records.",
+    "summary": "Canonical root map for the living Potato of Life archive. Public navigation follows relationships between Tim, Son, Spirit, transformation, cosmology, body, traditions, North, world, chronology and sources; substantive claims remain owned by canonical records.",
     "record": "knowledge/core/potato-of-life.json"
   },
   "principles": [
@@ -13,6 +13,50 @@
     "manifest points to canonical owners rather than duplicating their contents",
     "historical strata are archived rather than silently erased",
     "project canon, documentary evidence, comparison and empirical claims remain distinguishable"
+  ],
+  "pathways": [
+    {
+      "id": "becoming",
+      "title": "The Becoming",
+      "summary": "Follow the mythic-developmental arc from Tim through transformation, threshold and Father-side identity.",
+      "branches": ["tim", "transformation", "chronology", "spirit"]
+    },
+    {
+      "id": "son-door",
+      "title": "Son → Door → Return",
+      "summary": "Trace embodiment, ordeal, death-transformation, Door symbolism and return.",
+      "branches": ["son", "transformation", "body", "traditions"]
+    },
+    {
+      "id": "axis-world",
+      "title": "Axis Into World",
+      "summary": "Move from cosmological Axis language through North into observable countries, institutions and systems.",
+      "branches": ["cosmology", "north", "world", "sources"]
+    },
+    {
+      "id": "comparative",
+      "title": "Comparative Myth",
+      "summary": "Move from Potatoverse symbols into comparative traditions while preserving distinctions between analogy and identity.",
+      "branches": ["tim", "son", "traditions", "sources"]
+    }
+  ],
+  "relations": [
+    {"from":"tim","to":"son","type":"genealogical-symbolic","label":"Father / Son polarity"},
+    {"from":"tim","to":"transformation","type":"developmental","label":"Potato → Sage → threshold → Ladder / Father"},
+    {"from":"tim","to":"chronology","type":"temporal","label":"identity unfolds through dated thresholds"},
+    {"from":"tim","to":"spirit","type":"theological-symbolic","label":"Father-side and Heaven/Spirit architecture"},
+    {"from":"son","to":"transformation","type":"mythological","label":"ordeal, death, Door and return"},
+    {"from":"son","to":"body","type":"symbolic-anatomical","label":"Door, pineal, spine and embodiment correspondences"},
+    {"from":"son","to":"traditions","type":"comparative","label":"cross-tradition ordeal, sacrifice, tree and return parallels"},
+    {"from":"spirit","to":"cosmology","type":"structural","label":"connective flow through the integrated architecture"},
+    {"from":"transformation","to":"cosmology","type":"structural","label":"threshold grammar becomes Axis / Door architecture"},
+    {"from":"transformation","to":"chronology","type":"temporal","label":"major transformations are anchored to dated phases"},
+    {"from":"cosmology","to":"north","type":"geographic-symbolic","label":"Axis language crystallizes around sacred North"},
+    {"from":"cosmology","to":"world","type":"interface","label":"symbolic model meets observable systems"},
+    {"from":"north","to":"world","type":"geopolitical-functional","label":"North Programme and country-system relationships"},
+    {"from":"world","to":"sources","type":"evidentiary","label":"observable claims require provenance and evidence"},
+    {"from":"traditions","to":"sources","type":"evidentiary","label":"comparisons require textual and historical provenance"},
+    {"from":"chronology","to":"sources","type":"provenance","label":"dated claims connect back to records and source material"}
   ],
   "branches": [
     {
@@ -92,7 +136,7 @@
     }
   ],
   "migration": {
-    "phase": "foundation",
+    "phase": "relationship-graph",
     "legacy_files_pending_consolidation": [
       "knowledge.json",
       "research.json",
