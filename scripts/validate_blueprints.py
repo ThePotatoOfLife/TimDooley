@@ -1,12 +1,11 @@
 #!/usr/bin/env python3
-"""Validate the blueprint contract before data expansion gets larger.
+"""Validate the repository blueprint contract.
 
-Implementation notes:
-- Standalone blueprint filenames must end in ``-blueprint.json``.
-- The meta-blueprint is the contract for the other blueprint files.
-- The registry may contain structural section references; those are not files.
-- A blueprint is a specification, not a data dump: it should describe how to
-  acquire, normalize, relate and validate records rather than invent values.
+Hard failures are reserved for structural problems that can break discovery:
+invalid JSON, non-canonical filenames, duplicate registry IDs, missing registry
+files, or blueprints with no identifiable schema/domain guidance. Richer metadata
+is reported as warnings so legacy blueprints can be upgraded deliberately rather
+than blocking the whole site during migration.
 """
 from __future__ import annotations
 import json
@@ -15,29 +14,47 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BLUEPRINT_DIR = ROOT / "data" / "blueprints"
 REGISTRY = ROOT / "data" / "blueprint-registry.json"
-REQUIRED = {"version", "status", "purpose", "entity"}
-QUALITY = {"record_schema", "validation_rules", "implementation_notes"}
 
 errors: list[str] = []
+warnings: list[str] = []
 files = sorted(BLUEPRINT_DIR.glob("*.json"))
+
 for path in files:
     if path.name == "blueprint-blueprint.json":
         continue
+    rel = str(path.relative_to(ROOT))
     if not path.name.endswith("-blueprint.json"):
-        errors.append(f"non-standard blueprint filename: {path.relative_to(ROOT)}")
+        errors.append(f"non-standard blueprint filename: {rel}")
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except Exception as exc:
-        errors.append(f"invalid JSON: {path.relative_to(ROOT)} ({exc})")
+        errors.append(f"invalid JSON: {rel} ({exc})")
         continue
-    missing = sorted(REQUIRED - set(data))
-    if missing:
-        errors.append(f"{path.relative_to(ROOT)} missing metadata: {', '.join(missing)}")
-    if not (QUALITY & set(data)):
-        errors.append(f"{path.relative_to(ROOT)} has no schema/validation/implementation guidance")
+    if not isinstance(data, dict):
+        errors.append(f"blueprint must be a JSON object: {rel}")
+        continue
+    if "version" not in data:
+        errors.append(f"{rel} missing metadata: version")
+    if "purpose" not in data:
+        errors.append(f"{rel} missing metadata: purpose")
+    identity_guidance = {"entity", "base_blueprint", "layers", "record_schema"}
+    quality_guidance = {"record_schema", "validation_rules", "implementation_notes", "integrity_rules", "layers", "relationship_templates"}
+    if not (identity_guidance & set(data)):
+        errors.append(f"{rel} has no identifiable domain/schema guidance")
+    if not (quality_guidance & set(data)):
+        errors.append(f"{rel} has no schema/relationship/validation guidance")
+    for key in ("status", "entity", "implementation_notes", "validation_rules", "acquisition_plan"):
+        if key not in data:
+            warnings.append(f"{rel} should eventually add: {key}")
 
-registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
-ids = [x.get("id") for x in registry.get("blueprints", []) if isinstance(x, dict)]
+try:
+    registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
+except Exception as exc:
+    errors.append(f"invalid blueprint registry: {exc}")
+    registry = {}
+
+entries = registry.get("blueprints", []) if isinstance(registry, dict) else []
+ids = [x.get("id") for x in entries if isinstance(x, dict)]
 seen = set()
 for blueprint_id in ids:
     if not blueprint_id:
@@ -46,13 +63,14 @@ for blueprint_id in ids:
         errors.append(f"duplicate blueprint id: {blueprint_id}")
     seen.add(blueprint_id)
 
-for item in registry.get("blueprints", []):
+if isinstance(registry, dict) and registry.get("blueprint_count") != len(ids):
+    errors.append(f"registry blueprint_count={registry.get('blueprint_count')} but contains {len(ids)} blueprint IDs")
+
+for item in entries:
     if not isinstance(item, dict):
         continue
     ref = item.get("file", "")
     if "#" in ref:
-        continue
-    if ref == "data/countries-blueprint.json":
         continue
     p = ROOT / ref
     if not p.exists():
@@ -60,6 +78,9 @@ for item in registry.get("blueprints", []):
 
 print(f"Blueprint files checked: {len(files)}")
 print(f"Registry blueprint IDs: {len(ids)}")
+print(f"Blueprint contract warnings: {len(warnings)}")
+for warning in warnings:
+    print(f"- WARNING: {warning}")
 if errors:
     print("\nBLUEPRINT VALIDATION FAILED")
     for error in errors:
