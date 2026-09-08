@@ -1,0 +1,82 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-08",
+  "title":"Tim Dooley / Potato of Life — Unified Project Model",
+  "status":"project-architecture",
+  "purpose":"A compact machine-readable model of what the repository is, how its knowledge is produced, where information belongs and how the public atlas should grow.",
+  "mission":"Recover the whole record, reconstruct the developing thought-system, map its relationships, investigate its sources and consequences, test interpretations against evidence, and preserve what is learned for repair-oriented understanding.",
+  "subject":"Tim Dooley, the Potato of Life, Potatoism and the wider world of concepts, texts, people, institutions, systems and relationships that the corpus connects to.",
+  "core_question":"What do we actually have, what does it mean, how did it develop, what is it connected to, what evidence supports it, what remains uncertain, and what consequences follow?",
+  "architecture":{
+    "record":"Primary observations, statements, documents, dates and source material.",
+    "canonical":"Stable identities and deep dossiers for concepts and entities.",
+    "relationship":"Typed edges describing how records connect, depend, transform, influence, contrast or correspond.",
+    "thought":"Dated extraction of ideas, directions, questions, signals and concept development.",
+    "reflection":"Cross-cutting interpretations and hypotheses generated from multiple records.",
+    "research":"External historical, scientific, textual, economic and other evidence used to test or contextualize defined questions.",
+    "presentation":"Repository, Timeline, Thought, Dossiers, Books, Scroll and Atlas pages exposing the same underlying knowledge."
+  },
+  "epistemic_classes":[
+    "project-canon",
+    "self-description",
+    "documentary-record",
+    "historical-evidence",
+    "scientific-evidence",
+    "calculation",
+    "relationship-observation",
+    "interpretation",
+    "comparative-reading",
+    "scenario",
+    "open-question",
+    "creative-lore"
+  ],
+  "coordinates":{
+    "filing_root":["spirit","mind","matter"],
+    "matter_scale":["world","region","institution","network","person","object","event","record","ground"],
+    "domain":"Independent coordinate: religion, mythology, culture, biology, science, economics, politics, technology, security, geography and other domains.",
+    "time":"Independent coordinate: historical, current, projected/scenario.",
+    "epistemic_status":"Independent coordinate: what kind of knowledge or claim the record represents.",
+    "graph":"Independent coordinate: relationships can cross all filing roots, scales, domains and time periods."
+  },
+  "canonical_owners":{
+    "concept_identity":"data/potatoism-concept-registry.json",
+    "concept_depth":"data/potatoism-dossiers.json",
+    "tim_timeline":"data/tim-dooley-timeline.json",
+    "tim_cosmology":"data/tim-dooley-cosmology.json",
+    "thought_archive":"data/tim-dooley-thought-archive.json",
+    "thought_synthesis":"data/tim-dooley-thought-synthesis.json",
+    "project_method":"docs/TIM-DOOLEY-THOUGHT-METHOD.md",
+    "project_structure":"docs/PROJECT-STRUCTURE.md",
+    "repository_spine":"data/repository-spine.json",
+    "blueprint_registry":"data/blueprint-registry.json"
+  },
+  "public_surfaces":{
+    "home":"index.html",
+    "repository":"repository.html",
+    "tim":"tim-dooley.html",
+    "potato":"potato-of-life.html",
+    "potatoism":"potatoism.html",
+    "timeline":"timeline.html",
+    "scroll":"scroll.html",
+    "world":"nations.html",
+    "books":"books.html"
+  },
+  "research_loop":["acquire","preserve","normalize","extract","canonicalize","relate","trace","reflect","research","challenge","integrate","publish","verify","prune","repeat"],
+  "thought_loop":["record","extract_direction","cluster_concepts","trace_change","generate_reflection","state_research_question","test","calibrate","integrate"],
+  "consolidation_rule":"If several files describe one recurring concept, retain unique provenance and occurrences but resolve identity to one canonical owner. Never create a second identity merely because another layer needs navigation.",
+  "depth_rule":"A graph edge, alias, URL or short definition is not a dossier. Important concepts need substantial explanation, chronology, relationships, evidence boundaries, uncertainty and research questions.",
+  "failure_rule":"Missing, unknown, disputed, unavailable and not-yet-researched are explicit states. Build and acquisition failures must never silently become empty datasets or fabricated records.",
+  "interpretation_rule":"Elegant symbolic correspondence is a research lead, not proof. Historical and scientific claims require evidence appropriate to their domain. Project canon remains identifiable as project canon.",
+  "scope_rule":"The project can expand from Tim Dooley and Potatoism into religion, mythology, biology, culture, media, institutions, economics, technology, geography and world systems when the corpus or research establishes a meaningful connection. Scope does not justify assuming causation.",
+  "end_state":"A reader can move from statement → idea → concept → relationship → history → evidence → reflection → consequence and reverse the path back to the originating record without losing provenance.",
+  "next_frontier":[
+    "Backfill the primary Tim Dooley corpus beyond the current supplied 2025–2026 seed.",
+    "Attach every thought-archive entry to exact source records or source locations where available.",
+    "Build concept mutation timelines for the highest-frequency concepts.",
+    "Create a typed thought-transition graph rather than only a concept graph.",
+    "Diff older Markdown research against newer machine-readable layers and migrate unique material before deleting anything.",
+    "Expose the Thought Archive as a first-class public reading surface.",
+    "Strengthen canonical dossiers using the newly reconstructed trajectories instead of creating parallel dossiers.",
+    "Use audits to identify duplicate definitions, orphaned relationships, thin records and stale projections before adding new breadth."
+  ]
+}
