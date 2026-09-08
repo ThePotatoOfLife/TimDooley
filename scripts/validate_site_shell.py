@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Verify the generated Pages artifact is the single center interface."""
+"""Verify the generated Pages artifact uses the self-contained reader shell."""
 from __future__ import annotations
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]; SITE=ROOT/'_site'
+ROOT=Path(__file__).resolve().parents[1]
+SITE=ROOT/'_site'
 
 def main():
     errors=[]
@@ -14,12 +15,12 @@ def main():
             errors.append('public site must contain exactly one HTML document: index.html')
         if pages:
             text=(SITE/'index.html').read_text(encoding='utf-8',errors='replace')
-            for required in ('root-tree','root-dossier','root.js','WORLD','AXIS'):
+            for required in ('id="app"','id="rail"','id="reader"','id="content"','WORLD','AXIS','data/root-navigation.json','data/root-record-index.json'):
                 if required not in text:
-                    errors.append(f'index.html missing required center surface: {required}')
-            for forbidden in ('repository.html','axis.html','node.html','people.html','nations.html','timeline.html'):
+                    errors.append(f'index.html missing required self-contained reader feature: {required}')
+            for forbidden in ('<iframe','center.html','<link rel="stylesheet"','<script src=','repository.html','axis.html','node.html','people.html','nations.html','timeline.html'):
                 if forbidden in text:
-                    errors.append(f'index.html still references retired page: {forbidden}')
+                    errors.append(f'index.html contains forbidden fragile dependency or retired page: {forbidden}')
     count=len(list(SITE.rglob('*.html'))) if SITE.exists() else 0
     print(f'Built HTML pages checked: {count}')
     if errors:
