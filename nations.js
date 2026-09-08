@@ -34,18 +34,21 @@ function populateFilters() {
 
 async function init() {
   try {
-    const response = await fetch('data/nations.json');
-    if (!response.ok) throw new Error(`Canonical nation data returned HTTP ${response.status}`);
-    const data = await response.json();
-    canonical = Array.isArray(data.nations) ? data.nations : [];
-    if (!canonical.length) throw new Error('Canonical nation directory is empty');
+    const indexResponse = await fetch('data/countries/index.json');
+    if (!indexResponse.ok) throw new Error(`Canonical country index returned HTTP ${indexResponse.status}`);
+    const index = await indexResponse.json();
+    const snapshotResponse = await fetch('data/country-static.json');
+    const snapshot = snapshotResponse.ok ? await snapshotResponse.json() : {countries: []};
+    const snapshotById = new Map((snapshot.countries || []).map(c => [c.id, c]));
+    canonical = (index.countries || []).map(c => ({...c, ...(snapshotById.get(c.id) || {})}));
+    if (!canonical.length) throw new Error('Canonical country index is empty');
     $('total').textContent = canonical.length;
     $('loaded').textContent = canonical.length;
     populateFilters();
     render();
   } catch (error) {
     $('status').innerHTML = `<span class="error">World directory could not be loaded: ${esc(error.message)}</span>`;
-    $('list').innerHTML = '<p class="empty-state">The canonical country file is unavailable. Open Atlas Health to inspect the project.</p>';
+    $('list').innerHTML = '<p class="empty-state">The canonical country index is unavailable. Open Atlas Health to inspect the project.</p>';
   }
 }
 
