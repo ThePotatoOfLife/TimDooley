@@ -59,6 +59,29 @@ A canonical node exists once. A node may appear through multiple directory paths
 many paths ---> ONE NODE
 ```
 
+## Backend versus presentation
+
+The existing repository taxonomy is deliberately preserved underneath the new interface. `Spirit -> Mind -> Matter` remains a filing/classification coordinate used by audits and source data; it is not exposed as the homepage's primary tree.
+
+The center interface adds a **presentation projection**:
+
+```text
+repository-index.json
+        |
+        v
+build_root_navigation_index.py
+        |
+        v
+root-record-index.json
+        |
+        v
+WORLD / AXIS tree
+```
+
+This is important: World/Axis is a view over the corpus, not a destructive replacement of the existing backend taxonomy.
+
+A record therefore retains its original backend classification while receiving a generated `navigation_path` for presentation.
+
 ## Center invariant
 
 The visitor does not travel through the website as a game.
@@ -137,7 +160,7 @@ A graph edge is not a dossier and is not proof of causation.
 
 The entire repository must be accessible, but the entire repository must not be rendered into the initial DOM.
 
-The front page should initially expose only the highest-level structure. Expanding a branch loads or renders its children.
+The front page initially exposes only the highest-level structure. Expanding a branch renders its children. Large collections are grouped before their individual records are rendered.
 
 Required controls:
 
@@ -150,7 +173,7 @@ Required controls:
 
 ## State persistence
 
-The interface should preserve useful navigation state using both URL state and local browser state where appropriate.
+The interface preserves useful navigation state using URL state and local browser state where appropriate.
 
 At minimum:
 
@@ -163,9 +186,27 @@ Reloading the page should not unnecessarily destroy the user's position in the c
 
 ## Data source
 
-The navigation must be generated from the repository's canonical/generated registries rather than becoming a second manually maintained corpus.
+The navigation is generated from the repository's canonical/generated registries rather than becoming a second manually maintained corpus.
 
-Current deployment already builds `data/repository-index.json` before the static site is assembled. The new front-end consumes that generated index and a small navigation manifest rather than hard-coding thousands of records into `index.html`.
+The deployment sequence is now:
+
+```text
+canonical record registry
+        |
+repository index
+        |
+root navigation index
+        |
+static site
+```
+
+`data/root-navigation.json` contains only stable semantic vocabulary and presentation rules. `data/root-record-index.json` is generated and disposable. It must never become a second identity store.
+
+## Build boundary
+
+The center homepage intentionally has its own shell. The generic site-header transformation must not overwrite `index.html` or its compatibility alias `root.html`.
+
+The center page is therefore a deliberate exception to the generic presentation shell, and its validator checks for the center tree instead of requiring the standard header.
 
 ## Non-goals
 
