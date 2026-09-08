@@ -7,19 +7,28 @@ ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_site'
 HEADER_RE=re.compile(r'<header\b[^>]*data-site-header=["\']canonical["\'][^>]*>.*?</header>',re.I|re.S)
 ALL_HEADER_RE=re.compile(r'<header\b[^>]*>',re.I)
-NAV_LINK_RE=re.compile(r'<a\b([^>]*)data-nav=["\']([^"\']+)["\'][^>]*>(.*?)</a>',re.I|re.S)
+# Capture the complete opening <a> tag. href and data-nav may appear in either order.
+NAV_LINK_RE=re.compile(r'<a\b([^>]*)>(.*?)</a>',re.I|re.S)
+NAV_ATTR_RE=re.compile(r'\bdata-nav=["\']([^"\']+)["\']',re.I)
+HREF_RE=re.compile(r'\bhref=["\']([^"\']+)["\']',re.I)
 EXPECTED_NAV=[('home','index.html','Home'),('repository','repository.html','Repository'),('timeline','timeline.html','Timeline'),('world','nations.html','World'),('people','people.html','People'),('ideas','belief.html','Ideas'),('culture','culture.html','Culture'),('books','books.html','Books'),('potatoism','potatoism.html','Potatoism'),('movements','extremism.html','Movements'),('hawkins','hawkins.html','Hawkins')]
 errors=[]
 def normalize(text):return re.sub(r'\s+',' ',text).strip()
 def check_nav(page,header):
-    links=NAV_LINK_RE.findall(header);actual=[(key,normalize(attrs),normalize(label)) for attrs,key,label in links];keys=[key for key,_,_ in actual];expected_keys=[key for key,_,_ in EXPECTED_NAV]
+    actual=[]
+    for attrs,label in NAV_LINK_RE.findall(header):
+        key_match=NAV_ATTR_RE.search(attrs)
+        if not key_match: continue
+        actual.append((key_match.group(1),normalize(attrs),normalize(re.sub(r'<[^>]+>','',label))))
+    keys=[key for key,_,_ in actual];expected_keys=[key for key,_,_ in EXPECTED_NAV]
     if keys!=expected_keys:errors.append(f'{page.relative_to(SITE)}: navigation keys differ from canonical order: {keys}')
+    expected_map={k:(href,lab) for k,href,lab in EXPECTED_NAV}
     for key,attrs,label in actual:
-        expected=dict((k,(href,lab)) for k,href,lab in EXPECTED_NAV).get(key)
+        expected=expected_map.get(key)
         if not expected:continue
         expected_href,expected_label=expected
         if label!=expected_label:errors.append(f'{page.relative_to(SITE)}: {key} label is {label!r}, expected {expected_label!r}')
-        match=re.search(r'href=["\']([^"\']+)["\']',attrs,re.I)
+        match=HREF_RE.search(attrs)
         if not match:errors.append(f'{page.relative_to(SITE)}: {key} has no href')
         elif not match.group(1).endswith(expected_href):errors.append(f'{page.relative_to(SITE)}: {key} href is {match.group(1)!r}, expected suffix {expected_href!r}')
 def main():
