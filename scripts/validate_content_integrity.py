@@ -12,8 +12,12 @@ def load(rel):
     try:return json.loads(p.read_text(encoding="utf-8"))
     except Exception as e:ERRORS.append(f"Invalid JSON: {rel}: {e}");return {}
 def main():
-    nations=load("data/nations.json").get("nations",[])
-    if len(nations)!=195:ERRORS.append(f"nations.json has {len(nations)} records; expected 195")
+    countries=load("data/countries/index.json").get("countries",[])
+    if len(countries)!=195:ERRORS.append(f"countries/index.json has {len(countries)} records; expected 195")
+    ids=[x.get("id") for x in countries]
+    iso3=[x.get("iso3") for x in countries]
+    if len(ids)!=len(set(ids)):ERRORS.append("countries/index.json contains duplicate country IDs")
+    if len(iso3)!=len(set(iso3)):ERRORS.append("countries/index.json contains duplicate ISO3 codes")
     levels=load("data/33-level-framework.json").get("levels",[])
     if len(levels)!=33:ERRORS.append(f"33-level-framework.json has {len(levels)} levels; expected 33")
     if [x.get("number") for x in levels]!=list(range(1,34)):ERRORS.append("33-level-framework.json levels must be numbered 1 through 33 without gaps")
