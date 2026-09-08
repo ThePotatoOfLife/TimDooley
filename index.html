@@ -1,101 +1,23 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Potato of Life — World and Axis reader.">
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>The Potato of Life</title>
 <style>
-:root{--rail:220px;--gap:22px;--line:#ddd;--ink:#111;--muted:#777;--paper:#fff;--wash:#f7f7f7}
-*{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
-body{overflow:hidden}
-button,summary{font:inherit}
-#app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);width:100%;height:100vh;overflow:hidden}
-#rail{position:relative;height:100%;border-right:1px solid var(--line);background:#fff;z-index:10}
-.root-branch{position:absolute;left:0;width:100%;margin:0;padding:0}
-.root-branch.axis{top:0;height:50%}
-.root-branch.world{top:50%;height:50%}
-.root-branch>summary{position:absolute;left:0;width:100%;padding:13px 16px;cursor:pointer;list-style:none;font-weight:700;letter-spacing:.11em;font-size:17px;background:#fff;z-index:2}
-.root-branch>summary::-webkit-details-marker{display:none}
-.axis>summary{bottom:0}.world>summary{top:0}
-.root-branch>summary:hover{background:var(--wash)}
-.root-branch>summary::before{display:inline-block;width:20px;color:var(--muted)}
-.axis>summary::before{content:"↑"}.world>summary::before{content:"↓"}
-.branch-panel{position:absolute;left:0;width:100%;background:#fff;border:1px solid var(--line);box-shadow:4px 0 18px rgba(0,0,0,.05);overflow:auto;z-index:20;padding:6px 0}
-.axis>.branch-panel{bottom:48px;max-height:calc(50vh - 55px)}
-.world>.branch-panel{top:48px;max-height:calc(50vh - 55px)}
-.tree-dir{margin:0}.tree-dir>summary{padding:7px 12px;cursor:pointer;list-style:none;font-size:13px;font-weight:600}.tree-dir>summary::-webkit-details-marker{display:none}.tree-dir>summary:hover{background:var(--wash)}
-.tree-children{padding-left:12px}.tree-entry{padding:3px 8px;font-size:12px;line-height:1.3}.tree-button{border:0;background:transparent;padding:0;cursor:pointer;text-align:left;color:inherit}.tree-button:hover{text-decoration:underline}.tree-subdir>summary{padding:5px 8px;font-size:12px;cursor:pointer;list-style:none}.tree-subdir>summary::-webkit-details-marker{display:none}.tree-empty{padding:12px;font-size:12px;color:var(--muted)}
-#reader{min-width:0;min-height:0;height:100%;padding:var(--gap);overflow:hidden;position:relative}
-#page{height:100%;width:100%;border:1px solid var(--line);overflow:auto;background:#fff;position:relative}
-#content{width:min(900px,calc(100% - 56px));margin:0 auto;padding:58px 0 90px;font-size:16px;line-height:1.72}
-#content h1{margin:0 0 28px;font-size:clamp(25px,3vw,42px);line-height:1.08;letter-spacing:.08em}#content h2{margin:2em 0 .6em;font-size:24px;line-height:1.2}#content h3{margin:1.7em 0 .5em;font-size:18px}#content p{max-width:78ch;margin:0 0 1em}#content img,#content video{max-width:100%;height:auto}#content pre{overflow:auto;padding:15px;background:var(--wash);border:1px solid var(--line)}#content table{max-width:100%;border-collapse:collapse}#content th,#content td{padding:6px 9px;border:1px solid var(--line);text-align:left}
-#label{position:absolute;top:12px;left:16px;font-size:10px;letter-spacing:.18em;color:var(--muted);z-index:2;pointer-events:none}
-#hide{position:absolute;right:var(--gap);top:var(--gap);z-index:30;border:1px solid var(--line);background:#fff;padding:7px 10px;font-size:12px;cursor:pointer}
-#hide:hover{border-color:#aaa}
-#page.hidden{visibility:hidden;opacity:0}
-@media(max-width:700px){:root{--rail:165px;--gap:14px}#content{width:calc(100% - 28px);font-size:15px;padding-top:48px}.root-branch>summary{font-size:15px;padding-left:10px}}
-@media(max-width:430px){:root{--rail:135px}.root-branch>summary{font-size:13px;letter-spacing:.05em}}
-</style>
-</head>
-<body>
-<div id="app">
-  <aside id="rail" aria-label="World and Axis navigation">
-    <details class="root-branch axis" id="axis-branch">
-      <summary>AXIS</summary>
-      <div class="branch-panel" id="axis-panel"><div class="tree-empty">loading…</div></div>
-    </details>
-    <details class="root-branch world" id="world-branch">
-      <summary>WORLD</summary>
-      <div class="branch-panel" id="world-panel"><div class="tree-empty">loading…</div></div>
-    </details>
-  </aside>
-  <main id="reader">
-    <button id="hide" type="button">hide</button>
-    <section id="page">
-      <div id="label">FRAME</div>
-      <article id="content">
-        <h1>THE POTATO OF LIFE</h1>
-        <p>The reader is ready.</p>
-        <p>Choose <strong>AXIS</strong> or <strong>WORLD</strong> on the left.</p>
-        <p>This version deliberately has no iframe, no external stylesheet, and no external JavaScript dependency. The shell is contained in this one HTML document.</p>
-      </article>
-    </section>
-  </main>
-</div>
+:root{--rail:220px;--gap:20px;--line:#ddd;--ink:#111;--muted:#777;--wash:#f6f6f6}*{box-sizing:border-box}html,body{margin:0;width:100%;height:100%;font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;color:var(--ink);background:#fff}body{overflow:hidden}button,summary{font:inherit}#app{display:grid;grid-template-columns:var(--rail) 1fr;width:100%;height:100vh;overflow:hidden}#rail{position:relative;min-width:0;height:100%;border-right:1px solid var(--line);background:#fff;z-index:10}.branch{position:absolute;left:0;width:100%;margin:0}.axis{top:0;height:50%}.world{top:50%;height:50%}.branch>summary{position:absolute;left:0;width:100%;padding:14px;background:#fff;cursor:pointer;list-style:none;font-weight:700;letter-spacing:.12em;font-size:16px;z-index:2}.branch>summary::-webkit-details-marker{display:none}.axis>summary{bottom:0}.world>summary{top:0}.branch>summary:hover{background:var(--wash)}.panel{position:absolute;left:0;width:100%;background:#fff;border:1px solid var(--line);box-shadow:4px 0 18px rgba(0,0,0,.06);overflow:auto;padding:6px 0;z-index:20}.axis>.panel{bottom:49px;max-height:calc(50vh - 58px)}.world>.panel{top:49px;max-height:calc(50vh - 58px)}.dir>summary{padding:7px 12px;cursor:pointer;list-style:none;font-size:13px;font-weight:650}.dir>summary::-webkit-details-marker{display:none}.dir>summary:hover,.entry button:hover{background:var(--wash)}.children{padding-left:10px}.entry{padding:1px 5px}.entry button{width:100%;border:0;background:#fff;text-align:left;padding:4px 7px;cursor:pointer;font-size:12px;line-height:1.3}.empty{padding:12px;color:var(--muted);font-size:12px}#reader{min-width:0;min-height:0;height:100%;padding:var(--gap);overflow:hidden}.page{width:100%;height:100%;border:1px solid var(--line);overflow:auto;background:#fff}.content{width:min(900px,calc(100% - 56px));margin:0 auto;padding:58px 0 90px;font-size:16px;line-height:1.72}.content h1{font-size:clamp(25px,3vw,42px);line-height:1.08;letter-spacing:.07em;margin:0 0 28px}.content h2{font-size:24px;margin:2em 0 .6em}.content h3{font-size:18px;margin:1.7em 0 .5em}.content p{max-width:78ch;margin:0 0 1em}.content img,.content video{max-width:100%;height:auto}.content pre{overflow:auto;padding:15px;background:var(--wash);border:1px solid var(--line)}.content table{max-width:100%;border-collapse:collapse}.content th,.content td{padding:6px 9px;border:1px solid var(--line);text-align:left}#hide{position:absolute;right:var(--gap);top:var(--gap);z-index:30;border:1px solid var(--line);background:#fff;padding:7px 10px;cursor:pointer;font-size:12px}.hidden{visibility:hidden!important}@media(max-width:700px){:root{--rail:165px;--gap:14px}.content{width:calc(100% - 28px);font-size:15px;padding-top:48px}}@media(max-width:430px){:root{--rail:135px}.branch>summary{font-size:12px}}
+</style></head><body>
+<div id="app"><aside id="rail"><details class="branch axis"><summary>↑ AXIS</summary><div class="panel" id="axis-panel"><div class="empty">loading…</div></div></details><details class="branch world"><summary>↓ WORLD</summary><div class="panel" id="world-panel"><div class="empty">loading…</div></div></details></aside><main id="reader"><button id="hide" type="button">hide</button><section class="page"><article id="content" class="content"><h1>THE POTATO OF LIFE</h1><p>Reader loading.</p></article></section></main></div>
+<!-- BUILD DATA: scripts/build_site.py embeds data/root-navigation.json and data/root-record-index.json here. -->
+<script id="potato-data" type="application/json">null</script>
 <script>
-(()=>{
-'use strict';
-const DATA='./data/root-record-index.json',MANIFEST='./data/root-navigation.json',STORE='potato-reader-v8';
-const $=s=>document.querySelector(s);
+(()=>{const C=document.getElementById('content'),A=document.getElementById('axis-panel'),W=document.getElementById('world-panel'),H=document.getElementById('hide');
 const esc=v=>String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
-const S={manifest:null,records:[],expanded:new Set(),selected:null};
-function save(){try{localStorage.setItem(STORE,JSON.stringify({expanded:[...S.expanded],selected:S.selected}))}catch(e){}}
-function restore(){try{const x=JSON.parse(localStorage.getItem(STORE)||'{}');(x.expanded||[]).forEach(v=>S.expanded.add(v));S.selected=x.selected||null}catch(e){}}
-function wanted(){return new URLSearchParams(location.hash.slice(1)).get('node')}
-function setHash(id){history.replaceState(null,'',id?location.pathname+'#node='+encodeURIComponent(id):location.pathname)}
-function unique(rows){const seen=new Set();return rows.filter(r=>{const k=r.canonical_id||r.id||JSON.stringify(r);if(seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>String(a.name||a.id).localeCompare(String(b.name||b.id)))}
-function matches(r,c){
- if(c.all)return true;
- if(c.paths?.length)return c.paths.some(p=>(r.navigation_path||[]).join('/').toLowerCase()===String(p).toLowerCase());
- if(c.root&&String(r.repository_root).toLowerCase()!==String(c.root).toLowerCase())return false;
- if(c.types?.length&&!c.types.includes(String(r.type||'').toLowerCase()))return false;
- if(c.families?.length&&!c.families.includes(String(r.owner_family||'').toLowerCase()))return false;
- if(c.scales?.length&&!c.scales.includes(String(r.repository_scale||'').toLowerCase()))return false;
- if(c.role&&String(r.record_role||'').toLowerCase()!==String(c.role).toLowerCase())return false;
- if(c.terms?.length){const h=[r.id,r.name,r.description,r.source,r.owner_family,r.repository_layer,(r.navigation_path||[]).join(' ')].join(' ').toLowerCase();if(!c.terms.some(t=>h.includes(String(t).toLowerCase())))return false}
- return !!(c.types||c.families||c.scales||c.role||c.terms)
-}
-function render(html){const t=$('#content');t.innerHTML='';if(!html)return false;try{const d=new DOMParser().parseFromString(String(html),'text/html');const src=d.body&&d.body.children.length?d.body:d.documentElement;[...src.childNodes].forEach(n=>t.appendChild(document.importNode(n,true)));return true}catch(e){t.textContent=String(html);return true}}
-function select(r){S.selected=r.canonical_id||r.id;setHash(S.selected);const html=r.html||r.content_html||r.document_html;if(html&&render(html)){}else{$('#content').innerHTML='<h1>'+esc(r.name||r.id||'Record')+'</h1><p>'+esc(r.description||'No description is currently registered for this record.')+'</p>'+(r.url||r.href?'<p><a href="'+esc(r.url||r.href)+'" target="_blank" rel="noopener">Open source</a></p>':'')}save()}
-function row(r){const d=document.createElement('div');d.className='tree-entry';const b=document.createElement('button');b.className='tree-button';b.type='button';b.textContent=r.name||r.id;b.onclick=()=>select(r);d.appendChild(b);return d}
-function collection(c,branch){const d=document.createElement('details');d.className='tree-dir';d.innerHTML='<summary>'+esc(c.label)+'</summary><div class="tree-children"></div>';const box=d.querySelector('.tree-children');const key='c:'+branch+':'+c.id;d.addEventListener('toggle',()=>{if(d.open){S.expanded.add(key);fill(c,box,branch)}else S.expanded.delete(key);save()});if(S.expanded.has(key)){d.open=true;fill(c,box,branch)}return d}
-function fill(c,box,branch){box.innerHTML='';const rows=unique(S.records.filter(r=>matches(r,c)));if(!rows.length){box.innerHTML='<div class="tree-empty">empty</div>';return}if(rows.length>120){const groups=new Map();rows.forEach(r=>{const g=(r.navigation_path||[branch,c.id,'RECORDS']).slice(-1)[0]||'RECORDS';if(!groups.has(g))groups.set(g,[]);groups.get(g).push(r)});for(const [g,rs] of [...groups].sort()){const d=document.createElement('details');d.className='tree-subdir';d.innerHTML='<summary>'+esc(g)+'/</summary><div class="tree-children"></div>';const box2=d.querySelector('.tree-children');rs.forEach(r=>box2.appendChild(row(r)));box.appendChild(d)}}else rows.forEach(r=>box.appendChild(row(r)))}
-function build(){const axis=S.manifest.branches.find(b=>b.id==='axis'),world=S.manifest.branches.find(b=>b.id==='world');const ap=$('#axis-panel'),wp=$('#world-panel');ap.innerHTML='';wp.innerHTML='';(axis?S.manifest.axis.collections:[]).forEach(c=>ap.appendChild(collection(c,'axis')));(world?S.manifest.world.collections:[]).forEach(c=>wp.appendChild(collection(c,'world')));if(!ap.children.length)ap.innerHTML='<div class="tree-empty">empty</div>';if(!wp.children.length)wp.innerHTML='<div class="tree-empty">empty</div>'}
-async function init(){restore();$('#hide').onclick=()=>{$('#page').classList.toggle('hidden');$('#hide').textContent=$('#page').classList.contains('hidden')?'show':'hide'};try{const [m,i]=await Promise.all([fetch(MANIFEST,{cache:'no-store'}),fetch(DATA,{cache:'no-store'})]);if(!m.ok)throw Error('navigation HTTP '+m.status);S.manifest=await m.json();if(i.ok){const j=await i.json();S.records=Array.isArray(j.records)?j.records:[]}build();const id=wanted()||S.selected;if(id){const r=S.records.find(x=>(x.canonical_id||x.id)===id||x.id===id);if(r)select(r)}}catch(e){$('#axis-panel').innerHTML='<div class="tree-empty">navigation unavailable</div>';$('#world-panel').innerHTML='<div class="tree-empty">navigation unavailable</div>';$('#content').innerHTML='<h1>THE POTATO OF LIFE</h1><p>The reader shell is working, but the navigation data could not be loaded.</p><p><strong>'+esc(e.message||e)+'</strong></p>'}}
-addEventListener('hashchange',()=>{const id=wanted();if(!id)return;const r=S.records.find(x=>(x.canonical_id||x.id)===id||x.id===id);if(r)select(r)});init();
-})();
-</script>
-</body>
-</html>
+const data=(()=>{try{return JSON.parse(document.getElementById('potato-data').textContent||'null')}catch(e){return null}})();
+const records=Array.isArray(data?.records)?data.records:Array.isArray(data?.items)?data.items:[];const map=new Map(records.filter(r=>r?.id).map(r=>[r.id,r]));
+function show(r){if(!r)return;let body=r.html||r.content_html||r.document_html||r.body_html||r.content;let h='<h1>'+esc(r.title||r.name||r.id||'Untitled')+'</h1>';if(typeof body==='string'&&body.trim())h+=body;else{if(r.description)h+='<p>'+esc(r.description)+'</p>';if(r.summary)h+='<p>'+esc(r.summary)+'</p>'}C.innerHTML=h;document.querySelector('.page').scrollTop=0}
+function entry(r){let d=document.createElement('div'),b=document.createElement('button');d.className='entry';b.type='button';b.textContent=r.title||r.name||r.id;b.onclick=()=>{location.hash='node='+encodeURIComponent(r.id);show(r)};d.append(b);return d}
+function branch(panel,name){panel.innerHTML='';let m=data?.manifest,c=Array.isArray(m?.[name])?m[name]:Array.isArray(m?.collections)?m.collections.filter(x=>x.branch===name):[];let n=0;for(let x of c){let ids=Array.isArray(x.ids)?x.ids:Array.isArray(x.records)?x.records.map(y=>typeof y==='string'?y:y?.id):[];let rs=ids.map(id=>map.get(id)).filter(Boolean);if(!rs.length&&x.filter&&typeof x.filter==='object')rs=[...map.values()].filter(r=>Object.entries(x.filter).every(([k,v])=>r[k]===v));if(!rs.length)continue;let d=document.createElement('details'),s=document.createElement('summary'),ch=document.createElement('div');d.className='dir';s.textContent=x.title||x.name||x.id||'collection';ch.className='children';rs.forEach(r=>ch.append(entry(r)));d.append(s,ch);panel.append(d);n+=rs.length}if(!n)panel.innerHTML='<div class="empty">No records in this branch.</div>'}
+if(!data){C.innerHTML='<h1>THE POTATO OF LIFE</h1><p><strong>Build data missing.</strong></p><p>The published page did not receive the build-time data.</p>';A.innerHTML=W.innerHTML='<div class="empty">No embedded data.</div>'}else{branch(A,'axis');branch(W,'world');let id=decodeURIComponent(location.hash.replace(/^#node=/,''));show(map.get(id)||map.get('tim-dooley')||map.get('potatoism'))}
+H.onclick=()=>{let p=document.querySelector('.page');p.classList.toggle('hidden');H.textContent=p.classList.contains('hidden')?'show':'hide'};
+window.onhashchange=()=>{let id=decodeURIComponent(location.hash.replace(/^#node=/,''));show(map.get(id))};})();
+</script></body></html>
