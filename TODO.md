@@ -6,56 +6,44 @@ The project is an information archive whose graph is the navigation layer. The c
 
 ### Newly discovered bugs / insufficient-content inventory — 2026-09-08
 
-- [x] **FIXED:** `extremism.html` crashed while rendering because `affiliations` is an array in the main extremism dataset but a string in at least some legacy/base records. Renderer now normalizes scalar/array/object values instead of blindly calling `.join()`.
-- [ ] **DEEPEN:** `data/extremism-cults-atlas-2026-09-08.json` — many movement records currently have a compact schema (`id/name/category/status/geography/targets/membership/armed_status/affiliations/sources/notes`) rather than the repository's full definition-first dossier standard. Expand into definition, history, ideology/context, organization, mechanisms, evidence, chronology, relationships, uncertainty, questions and current-status sourcing.
-- [ ] **DEEPEN:** `data/extremism-cults-atlas-expansion-2026-09.json` — same compact-record problem; fields such as `targets`/`armed_status` differ from the base dataset's `targets_or_hate`/`armed_or_violent`, making the two layers unnecessarily fragile. Normalize into one explicit schema and preserve source-specific evidence.
-- [ ] **DEEPEN:** `extremism.html` — cards currently summarize records but do not yet expose the full dossier. Add links/opening surfaces to substantial individual movement records and show definition, history, evidence, status date, relationships and uncertainty.
+- [x] **SOURCE FIX:** `extremism.html` has been hardened against scalar, array and object values in `affiliations`, `category`, `geography` and `sources`.
+- [ ] **VERIFY DEPLOYMENT:** The live Pages site was still displaying the old `.join()` error after the first fix. Verify the Pages build actually contains the latest `extremism.html` and purge/replace any stale generated copy. Do not mark the live bug closed until the deployed page renders successfully.
+- [ ] **DEEPEN:** `data/extremism-cults-atlas-2026-09.json` — many movement records use a compact profile schema rather than a full definition-first dossier. Expand records into definition, history, ideology/context, organization, mechanisms, evidence, chronology, relationships, uncertainty, questions and current-status sourcing.
+- [ ] **DEEPEN:** `data/extremism-cults-atlas-expansion-2026-09.json` — normalize schema differences (`targets` vs `targets_or_hate`, `armed_status` vs `armed_or_violent`, scalar vs array affiliations) and preserve source-specific evidence.
+- [x] **STARTED DEEPENING:** Added `data/extremism-record-enrichments-2026-09.json` with article-depth companion dossiers for KKK, Patriot Front, Active Club Network, Oath Keepers, Peoples Temple and Aum Shinrikyo.
+- [ ] **CONTINUE DEEPENING:** Apply the same dossier treatment to the remaining weakest movement records, prioritizing short records and records with historically important/high-connectivity relationships.
+- [ ] **DEEPEN:** `extremism.html` — cards still summarize rather than expose the new dossiers. Add definition/history/evidence/relationships/uncertainty and a full-entry route.
 - [ ] **DEEPEN:** `data/meaning-layer-symbolic.json` — major symbolic records currently rely on `purpose/context/mechanisms/...` but do not consistently carry an explicit `definition` field. Add explicit definitions and enforce the same depth standard as other major records.
-- [ ] **DEEPEN:** `data/meaning-layer.json` — major analytical records are substantially better, but audit every record for explicit definition/context/mechanism/couplings and add missing sections rather than assuming presence because the file is large.
-- [ ] **DEEPEN:** `data/potatoism-dossiers.json` — this is currently a contract/coverage description rather than the actual long-form corpus. Audit the canonical Potatoism terms and identify which terms have no corresponding substantive dossier.
-- [ ] **DEEPEN:** `data/religious-foundations/records.json` and `data/religious-foundations.json` — foundation records are currently compact structured profiles. Expand important traditions into article-length dossiers with emergence, chronology, texts, doctrine, practice, institutions, people, places, geography, demographic evidence, internal diversity and modern status.
-- [ ] **DEEPEN:** `data/religious-adjacent/*.json` — audit all adjacent, mystery, occult, Satanism and anti-religious records for the same definition-first standard; do not let classification labels substitute for substance.
-- [ ] **DEEPEN:** `data/nodes.json`, `data/tree-child-records.json`, `data/tree-support-records.json`, `data/tree-concept-records.json` — identify shallow nodes and expand the high-connectivity ones first; graph edges must not be the only content.
-- [ ] **DEEPEN:** `data/events.json` — audit events for definition, causes, participants, chronology, consequences, evidence and relationships; event names/descriptions alone are insufficient.
-- [ ] **DEEPEN:** `data/nations.json` and country observation layers — identify nations with thin evidence/content and prioritize them for expansion rather than treating 195 identities as 195 complete dossiers.
-- [ ] **DEEPEN:** `data/people-registry.json` / people-related datasets — identify people represented only by names, roles or links and create substantive biographical records for high-value actors.
-- [ ] **DEEPEN:** `data/geometry-records.json` — expand geometry records beyond formulas/labels into definition, derivation, historical context, applications, limitations and explicit separation between mathematics and project symbolism.
-- [ ] **DEEPEN:** `data/hawkins-scale.json` — audit each level for definition, source model, psychological description, action tendency, limitations and evidence boundary; keep the non-physical-frequency guardrail explicit.
-- [ ] **DEEPEN:** `data/research-carvings-2026-09.json` — audit for substantive depth and ensure every carving has enough context to stand alone, not merely a citation bundle.
-- [ ] **DEEPEN:** `data/global-graph-bridge.json` and `data/relationships.json` — distinguish research-only endpoints from true orphan entities, then create missing first-class records for high-value referenced entities.
+- [ ] **DEEPEN:** `data/meaning-layer.json` — audit every analytical record for explicit definition/context/mechanism/couplings and add missing sections.
+- [ ] **DEEPEN:** `data/potatoism-dossiers.json` — audit canonical Potatoism terms and identify which terms have no substantive dossier.
+- [ ] **DEEPEN:** `data/religious-foundations/records.json` and `data/religious-foundations.json` — expand important traditions into article-length dossiers with emergence, chronology, texts, doctrine, practice, institutions, people, places, geography, demographic evidence, internal diversity and modern status.
+- [ ] **DEEPEN:** `data/religious-adjacent/*.json` — audit adjacent, mystery, occult, Satanism and anti-religious records for the definition-first standard.
+- [ ] **DEEPEN:** `data/nodes.json`, tree record layers — identify shallow high-connectivity nodes and expand them; graph edges cannot substitute for content.
+- [ ] **DEEPEN:** `data/events.json` — audit events for definition, causes, participants, chronology, consequences, evidence and relationships.
+- [ ] **DEEPEN:** `data/nations.json` and country observation layers — identify thin country dossiers and prioritize them rather than treating 195 identities as complete records.
+- [ ] **DEEPEN:** people registries — identify name-only/role-only people and create substantive biographies for high-value actors.
+- [ ] **DEEPEN:** geometry records — expand labels/formulas into definition, derivation, history, applications, limitations and a clear boundary between mathematics and project symbolism.
+- [ ] **DEEPEN:** Hawkins scale — audit every level for definition, source model, psychological description, action tendency, limitations and evidence boundary.
+- [ ] **DEEPEN:** research carvings — ensure each research record stands alone with context, mechanism, evidence and project extrapolation.
+- [ ] **DEEPEN:** graph bridge/relationships — distinguish research-only endpoints from true orphan entities and create first-class records for important missing entities.
 
 ### Content-audit engineering
 
-- [ ] Create `scripts/audit_content_depth.py` that scans registered JSON record collections and reports: missing definition, missing context, missing mechanism/function, missing couplings, missing evidence/sources, shallow prose, empty arrays, duplicate records and schema drift.
+- [ ] Create `scripts/audit_content_depth.py` to scan registered record collections for missing definition/context/mechanism/couplings/evidence, shallow prose, empty arrays, duplicates and schema drift.
 - [ ] Give every audited record a machine-readable `depth_status`: `stub`, `structured`, `substantive`, `deep`.
-- [ ] Produce `data/depth-audit.json` from the scanner so the UI and CI can show where the repository is thin.
-- [ ] Add a CI threshold for critical layers while allowing intentionally compact indexes/registries to be exempt by contract.
-- [ ] Add schema-normalization checks across datasets that feed the same page. The extremism bug is the model: consumers must not guess whether a field is scalar or array.
-- [ ] Add route-contract checks for every content layer so a valid record cannot point to a dead or unsupported page.
+- [ ] Produce `data/depth-audit.json` from the scanner.
+- [ ] Add CI thresholds for critical layers while exempting intentional compact indexes/registries by contract.
+- [ ] Add schema-normalization checks across datasets feeding the same page. The extremism `.join()` failure is the canonical example.
+- [ ] Add route-contract checks for every content layer.
 
 ### Immediate engineering blockers
 
-- [ ] Add and run a route-contract validator covering static pages plus dynamic `node.html`, `nation.html`, `belief.html`, `potatoism-entry.html`, Hawkins, event, research-carving and geometry IDs.
-- [ ] Verify the current `node.html` resolver against actual schemas for Hawkins, events, research, geometry and Potatoism; repair mismatched field names or unsupported routes.
-- [ ] Extend the recursive web audit to validate canonical-header presence/order on every generated page.
-- [ ] Run the full validator chain after the latest commits and record exact results in a dated health report.
-- [ ] Inspect and resolve high-connectivity graph orphan IDs, distinguishing true missing entities from intentional research-only endpoints.
-- [ ] Fix the scheduled country-refresh failure with retry/backoff, source failure handling and snapshot preservation; rerun successfully.
-
-### Canonical navigation and information architecture
-
-- [x] Add `data/repository-spine.json` as the canonical Root/Spirit/Mind/Matter model.
-- [x] Preserve the existing 33-level tree as a deeper vertical scaffold.
-- [x] Rebuild `repository.html` around the canonical repository tree.
-- [x] Standardize the public site shell through `components/header.html` and build-time injection.
-- [x] Add CI validation for exactly one canonical header.
-- [x] Remove the unused runtime header-loader architecture.
-- [x] Align repository-spine validation with Root/Spirit/Mind/Matter.
-- [ ] Replace keyword-only classification with explicit layer metadata as records are enriched.
-- [ ] Add machine-readable temporal fields to important records.
-- [ ] Add cross-layer temporal navigation to important record pages.
-- [ ] Explicitly map Spirit/Mind concepts such as geometry, Source and meaning into the repository tree.
-- [ ] Add a stable route registry so navigation does not depend on scattered filename assumptions.
+- [ ] Add/run route-contract validator covering static pages plus dynamic node/nation/belief/Potatoism/Hawkins/event/research/geometry IDs.
+- [ ] Verify node resolver against actual schemas and repair mismatched fields/unsupported routes.
+- [ ] Extend recursive web audit to validate canonical-header presence/order on every generated page.
+- [ ] Run full validator chain and record exact results in a dated health report.
+- [ ] Inspect high-connectivity graph orphan IDs.
+- [ ] Fix country-refresh reliability with retry/backoff, source failure handling and snapshot preservation; rerun successfully.
 
 ### Atlas-wide information density
 
@@ -77,7 +65,7 @@ The project is an information archive whose graph is the navigation layer. The c
 - [ ] Then expose directional couplings with relationship verbs where evidence permits.
 - [ ] Then expose evidence, questions, failure modes, uncertainty and deeper interpretation.
 - [ ] Every coupled record should itself be clickable and independently defined.
-- [ ] Add explicit `definition` fields to the symbolic meaning records that currently rely on purpose/context alone.
+- [ ] Add explicit `definition` fields to symbolic meaning records.
 
 ### Potatoism long-form standard
 
@@ -97,7 +85,7 @@ The project is an information archive whose graph is the navigation layer. The c
 - [ ] Give each tradition history, emergence, texts, concepts, practices, institutions, branches, geography, demographics, evidence, internal diversity and modern development.
 - [ ] Preserve multiple founding/emergence clocks.
 - [ ] Link religion entries to textual, comparative and relationship layers.
-- [ ] Add named people, texts, places and events as first-class graph entities instead of embedding them only as strings.
+- [ ] Add named people, texts, places and events as first-class graph entities.
 
 ### World / nations
 
@@ -120,7 +108,7 @@ The project is an information archive whose graph is the navigation layer. The c
 
 ### Systems / North Programme / European Economic Graph
 
-- [ ] Deepen country and sector records together rather than as isolated lists.
+- [ ] Deepen country and sector records together.
 - [ ] Connect fiscal systems, energy, infrastructure, ownership/control, finance/debt, procurement, technology, labour and research.
 - [ ] Model strategic dependencies, bottlenecks, bridges, cycles and trajectories.
 - [ ] Keep policy recommendations separate from observed evidence.
@@ -148,7 +136,7 @@ The project is an information archive whose graph is the navigation layer. The c
 - [ ] Add estimated reading time / word count.
 - [ ] Add “read next” and “related research”.
 - [ ] Keep mobile long-form reading comfortable.
-- [ ] Let the Repository expose backend-only research without turning the root into a flat haystack.
+- [ ] Let Repository expose backend-only research without turning the root into a flat haystack.
 
 ### Integrity / CI
 
