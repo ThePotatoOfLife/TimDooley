@@ -1,0 +1,12 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-08",
+  "purpose":"Canonical search vocabulary for the public Tim Dooley / Potato of Life atlas. Aliases improve discovery without creating duplicate identities.",
+  "canonical_targets":[
+    {"canonical_id":"tim-dooley-father","primary":"Tim Dooley","aliases":["Timdooley","Tim Dooley Father","Tim Dooley God","Tim Dooley Potato","Tim Dooley Potato of Life","Tim Dooley Potatoism","Tim Dooley Father of Jesus","Tim Dooley World Tree","Tim Dooley Spudlight","Tim Dooley Heavenly Gardener","Tim Dooley King of Kings","Tim Dooley Throne of North","Tim Dooley North of North","Tim Dooley Potato of Love"],"landing":"tim-dooley.html"},
+    {"canonical_id":"potato-of-life","primary":"The Potato of Life","aliases":["Potato of Life","The Potato","Life Potato","Potato symbolism","Potato mythology","Potatoism Potato","Tim Dooley Potato of Life"],"landing":"potato-of-life.html"},
+    {"canonical_id":"potatoism","primary":"Potatoism","aliases":["Potatoism religion","Potatoism philosophy","Potatoism mythology","Potatoverse","Potato of Life religion","Potatoism worldview"],"landing":"potatoism.html"},
+    {"canonical_id":"north-of-north","primary":"North of North","aliases":["North-of-North","Tim Dooley North of North","Throne of North","North Axis","Axis of North"],"landing":"axis.html"}
+  ],
+  "rule":"Aliases are discovery vocabulary only. They must resolve to the existing canonical identity rather than creating another record or definition."
+}
