@@ -24,6 +24,10 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
       - name: Validate atlas structure
         run: python scripts/validate_atlas.py
       - name: Validate repository spine
@@ -44,3 +48,7 @@ jobs:
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
         run: python scripts/audit_web.py
+      - name: Build static site
+        run: python scripts/build_site.py
+      - name: Validate built site shell
+        run: python scripts/validate_site_shell.py
