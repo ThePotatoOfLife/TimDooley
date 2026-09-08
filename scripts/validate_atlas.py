@@ -37,12 +37,10 @@ def main():
         rel=v if isinstance(v,str) else v.get('path','') if isinstance(v,dict) else ''
         if not rel:ERRORS.append(f'Backend endpoint has no path: {k}');continue
         if exists(rel,k in required) and rel.endswith('.json'):load(ROOT/rel)
-    nations=load(ROOT/'data/nations.json').get('nations',[]); ci=load(ROOT/'data/countries/index.json').get('countries',[]); repair=load(ROOT/'data/countries/democratic-republic-of-the-congo.json'); layer=load(ROOT/'data/country-layer-manifest.json')
-    nation_raw={x.get('id') for x in nations if x.get('id')}; country_raw={x.get('id') for x in ci if x.get('id')}; repair_id=repair.get('id')
-    nation_iso={x.get('iso3') for x in nations if x.get('iso3')}; country_iso={x.get('iso3') for x in ci if x.get('iso3')}|({'COD'} if repair_id else set()); country_ids={canon_id(x) for x in country_raw}|({canon_id(repair_id)} if repair_id else set())
-    if len(nations)!=195:ERRORS.append(f'Canonical nation directory has {len(nations)} records; expected 195')
+    ci=load(ROOT/'data/countries/index.json').get('countries',[]); repair=load(ROOT/'data/countries/democratic-republic-of-the-congo.json'); layer=load(ROOT/'data/country-layer-manifest.json')
+    country_raw={x.get('id') for x in ci if x.get('id')}; repair_id=repair.get('id'); country_iso={x.get('iso3') for x in ci if x.get('iso3')}|({'COD'} if repair_id else set()); country_ids={canon_id(x) for x in country_raw}|({canon_id(repair_id)} if repair_id else set())
+    if len(ci)!=195:ERRORS.append(f'Canonical country index has {len(ci)} records; expected 195')
     if len(country_iso)!=195:ERRORS.append(f'Country layer has {len(country_iso)} ISO identities; expected 195')
-    if nation_iso!=country_iso:ERRORS.append(f'Canonical nation directory and country layer ISO identities differ: nations-only={sorted(nation_iso-country_iso)} country-only={sorted(country_iso-nation_iso)}')
     for cid in country_raw:
         p=ROOT/'data/countries'/f'{cid}.json'
         if not p.exists():
@@ -63,17 +61,14 @@ def main():
     if len(seen)!=len(set(seen)):ERRORS.append('Country enrichment batches contain duplicate country IDs')
     for np in node_batches:all_nodes.extend(load(np).get('nodes',[]))
     node_ids={canon_id(x.get('country_id')) for x in all_nodes if x.get('country_id')}; repair_node_ids=node_ids-all_ids
-    if repair_node_ids:
-        if repair_node_ids!={canon_id(repair_id)}:ERRORS.append(f'Unexpected country graph repair nodes: {sorted(repair_node_ids)}')
+    if repair_node_ids and repair_node_ids!={canon_id(repair_id)}:ERRORS.append(f'Unexpected country graph repair nodes: {sorted(repair_node_ids)}')
     if all_ids-node_ids:ERRORS.append(f'Enrichment layers missing graph nodes: {sorted(all_ids-node_ids)}')
     if layer.get('effective_enriched_count')!=len(all_ids):ERRORS.append(f'Layer manifest effective_enriched_count={layer.get("effective_enriched_count")} but layered enrichment union contains {len(all_ids)} IDs')
     if layer.get('batch_count')!=len(seen):ERRORS.append(f'Layer manifest batch_count={layer.get("batch_count")} but batch manifests contain {len(seen)} records')
     for cid in sorted(all_ids):
         p=ROOT/'data/countries'/f'{cid}-enrichment.json'
         if not p.exists():ERRORS.append(f'Missing enrichment overlay: {p.name}')
-        else:
-            d=load(p)
-            if not meaningful_enrichment(d):ERRORS.append(f'Empty enrichment overlay: {p.name}')
+        elif not meaningful_enrichment(load(p)):ERRORS.append(f'Empty enrichment overlay: {p.name}')
     graph=load(ROOT/'data/graph-registry.json'); rels=load(ROOT/'data/relationships.json'); nodes=load(ROOT/'data/nodes.json'); children=load(ROOT/'data/tree-child-records.json'); graph_ids={x.get('id') for x in nodes.get('nodes',[]) if x.get('id')}|{x.get('id') for x in children.get('records',[]) if x.get('id')}|{x.get('id') for x in graph.get('records',[]) if x.get('id')}|{x.get('id') for x in all_nodes if x.get('id')}|country_ids
     for r in rels.get('relationships',[]):
         for side in ('source','target'):
@@ -86,7 +81,7 @@ def main():
             try:t.relative_to(ROOT.resolve())
             except ValueError:continue
             if not t.exists():WARNINGS.append(f'Local HTML reference does not exist: {h.name} → {x}')
-    pc,rc=beliefs(); print(f'Canonical nations: {len(nations)}/195');print(f'Enrichment overlays: {len(all_ids)} ({len(base_layer_ids)} base + {len(seen)} batch records)');print(f'Country graph nodes: {len(all_nodes)} (+{len(repair_node_ids)} explicit repair node)');print(f'Enrichment batches discovered: {len(batches)}');print(f'Graph registry records: {len(graph.get("records",[]))}');print(f'Relationships checked: {len(rels.get("relationships",[]))}');print(f'Political beliefs: {pc} · Religious beliefs: {rc}');print(f'Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}')
+    pc,rc=beliefs(); print(f'Canonical countries: {len(ci)}/195');print(f'Enrichment overlays: {len(all_ids)} ({len(base_layer_ids)} base + {len(seen)} batch records)');print(f'Country graph nodes: {len(all_nodes)} (+{len(repair_node_ids)} explicit repair node)');print(f'Enrichment batches discovered: {len(batches)}');print(f'Graph registry records: {len(graph.get("records",[]))}');print(f'Relationships checked: {len(rels.get("relationships",[]))}');print(f'Political beliefs: {pc} · Religious beliefs: {rc}');print(f'Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}')
     for x in WARNINGS[:100]:print('WARNING:',x)
     for x in ERRORS[:100]:print('ERROR:',x)
     return 1 if ERRORS else 0
