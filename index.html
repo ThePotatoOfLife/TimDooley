@@ -3,27 +3,27 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Potato of Life — a reader standing at the North Pole between World and Axis.">
-<title>The Potato of Life — North Pole</title>
-<link rel="stylesheet" href="minimal.css?v=20260908-1">
+<meta name="description" content="The Potato of Life — World and Axis surrounding a central reading frame.">
+<title>The Potato of Life</title>
+<link rel="stylesheet" href="minimal.css?v=20260908-2">
 </head>
 <body>
 <div class="root">
 <main class="root-main">
-  <section class="center" id="root-center" aria-label="North Pole introduction">
-    <div class="center-overlay">
-      <div class="north-introduction">
-        <h1>THE POTATO OF LIFE</h1>
-        <p>You are standing at the North Pole.</p>
-        <p>Above you is the Axis. Below you is the World.</p>
-        <p>This is an introduction to Tim Dooley, the Potato of Life, the North, the grave, and the possible end of the world.</p>
-      </div>
+  <aside class="navigation" id="root-navigation" aria-label="World and Axis navigation">
+    <div class="navigation-axis" id="navigation-axis"></div>
+    <div class="navigation-world" id="navigation-world"></div>
+  </aside>
+  <section class="center" id="root-center" aria-label="Central reading frame">
+    <div class="center-frame">
+      <iframe id="center-frame" title="Potato of Life central frame" src="center.html" loading="eager"></iframe>
     </div>
+    <button class="frame-toggle" id="frame-toggle" type="button" aria-controls="center-frame" aria-expanded="true">hide</button>
   </section>
-  <section class="tree" id="root-tree" aria-label="World and Axis directory tree"><div class="tree-empty">loading WORLD/ and AXIS/…</div></section>
+  <section class="tree" id="root-tree" aria-label="World and Axis directory tree"></section>
   <section class="dossier" id="root-dossier" hidden aria-live="polite"></section>
 </main>
 </div>
-<script src="root.js?v=20260908-5" defer></script>
+<script src="root.js?v=20260908-6" defer></script>
 </body>
 </html>
