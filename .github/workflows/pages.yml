@@ -45,12 +45,16 @@ jobs:
       - name: Verify Pages artifact
         run: |
           test -f _site/index.html
+          test -f _site/root.js
+          test -f _site/data/root-navigation.json
+          test -f _site/data/root-record-index.json
+          test -f _site/data/backend.json
+          test -f _site/data/frontend-atlas-bridge.json
           test "$(find _site -type f -name '*.html' | wc -l)" -eq 1
-          grep -q 'id="app"' _site/index.html
-          grep -q 'id="potato-data"' _site/index.html
+          grep -q 'id="root-tree"' _site/index.html
+          grep -q 'id="frame-content"' _site/index.html
+          grep -q 'root.js?v=' _site/index.html
           ! grep -q '<iframe' _site/index.html
-          ! grep -q '<script src=' _site/index.html
-          ! grep -q '<link rel="stylesheet"' _site/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
