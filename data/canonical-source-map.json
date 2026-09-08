@@ -1,0 +1,88 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-08",
+  "purpose":"Canonical ownership map for overlapping repository datasets. One family may have multiple technical layers, but only one layer owns each kind of fact; indexes, enrichments, observations, graph projections and research waves must reference rather than duplicate the owner.",
+  "rule":"Canonical ownership is about authority for a record type, not about which file happens to be largest. A source, observation or derived view can remain separate without becoming a competing canonical record.",
+  "families":{
+    "countries":{
+      "canonical_owner":"data/country-static.json",
+      "identity_owner":"data/countries/index.json",
+      "schema_owner":"data/countries-blueprint.json",
+      "join_manifest":"data/country-layer-manifest.json",
+      "sources":"data/country-source-registry.json",
+      "derived_views":["data/country-nodes.json","data/country-nodes-batch-*.json","data/country-atlas.json"],
+      "enrichment_layers":["data/countries/*.json","data/countries/*-enrichment.json","data/country-enrichment-batch-*.json","data/country-enrichment-index.json"],
+      "legacy_or_fallback":["data/country-fallback.json"],
+      "policy":"country-static owns normalized country observations/snapshots; countries/index owns identity; enrichment files add sourced fields and must never become alternate country biographies. Generated country nodes are graph projections."
+    },
+    "potatoism":{
+      "canonical_owner":"data/potatoism-dossiers.json",
+      "identity_and_alias_owner":"data/potatoism-dossiers.json",
+      "project_canon_source":"data/potatoism-canonical-corpus.json",
+      "deep_research_layer":"data/potatoism-deep-layers.json",
+      "derived_views":["data/potatoism-lexicon.json","data/potatoism-lexicon-expanded.json","data/potatoism-glossary.json","data/potatoism-cosmology.json","data/potatoism-concept-map.json","data/potatoism-relationships.json"],
+      "observations":"data/potatoism-public-observations.json",
+      "research_or_extrapolation":["data/potatoism-research-expansion.json","data/potatoism-deep-extrapolation-atlas.json"],
+      "integration_contract":"data/potatoism-integration.json",
+      "known_stale_references":["data/potatoism-integration.json currently references data/potatoism-master-corpus.json and data/potatoism-entities.json, which are not present on main; replace those references with canonical dossiers/corpus or create the missing files deliberately."],
+      "policy":"Dossiers own the readable canonical term record. Canonical corpus preserves project-canon source material. Lexicons are indexes/aliases, not competing definitions. Deep layers and research remain subordinate evidence/interpretation layers."
+    },
+    "religion":{
+      "canonical_owner":"data/religious-foundations/records.json",
+      "foundation_context":"data/religious-foundations.json",
+      "identity_index":"data/religious-foundations/index.json",
+      "adjacent_owner":"data/religious-adjacent/records.json",
+      "adjacent_enrichment":["data/religious-adjacent/deep-expansions.json","data/religious-adjacent/deep-expansions-2.json","data/religious-adjacent/deep-expansions-3.json"],
+      "derived_views":["data/religious-comparative-library.json","data/religious-lexicon.json","data/religious-relationships.json"],
+      "source_layers":["data/religious-sources.json","data/religious-text-library.json"],
+      "policy":"records.json owns tradition/formation identity and core descriptive records. religious-foundations.json owns the foundation model and project foundation layer. Comparative, relationship and source files reference records. Adjacent records are a distinct classification family and must not be merged into main religion records."
+    },
+    "extremism_movements":{
+      "canonical_owner":"data/extremism-cults-atlas-2026-09.json",
+      "enrichment":"data/extremism-record-enrichments-2026-09.json",
+      "expansion":"data/extremism-cults-atlas-expansion-2026-09.json",
+      "legacy_or_classification_view":"data/extremist-hate-groups.json",
+      "additional_research":["data/extremism-terrorism-nrm-expansion.json","data/digital-underground-networks.json","data/internet-extremism-information-ecology-wave-017.json"],
+      "policy":"The main atlas owns movement identity. Enrichment owns long-form dossiers. Classification datasets retain source-specific labels and must not overwrite canonical identity/status. Online ecology and research waves are evidence/analysis layers."
+    },
+    "swamp":{
+      "canonical_owner":"data/swamp-ecology.json",
+      "research_seed_owner":"data/swamp-research-seeds.json",
+      "documentation_layers":["docs/FARM-SEKTUR-SWAMP-THEORY.md","docs/SWAMP-ATLAS.md","docs/SWAMP-DATA-INGESTION.md","docs/SWAMP-RESEARCH-2026-09.md"],
+      "empirical_rule":"No single Swamp file should own every entity found in the overlap. Swamp is an analytical/relational layer over canonical people, organizations, money, media, security and cultural records.",
+      "policy":"swamp-ecology owns ontology, entity types, relationship semantics, evidence levels and safety rules. swamp-research-seeds owns research reservoirs and acquisition queues. Documentation explains methodology. Actual entities remain owned by their domain families."
+    },
+    "research":{
+      "canonical_owner":"data/research.json",
+      "research_question_owner":"data/research-frontier.json",
+      "source_registry_layers":["data/research-source-expansion-2026.json"],
+      "expansion_layers":["data/research-expansion-2026.json","data/research-frontier.json"],
+      "deep_research":"data/research-carvings-2026-09.json",
+      "subdirectories":["data/research/","data/expansions/"],
+      "policy":"research.json owns durable research claims/facts and source-linked evidence. Source-expansion files add sources. Expansion/frontier files define research queues or candidate records. Research carvings are deep evidence-aware studies. None should silently duplicate a canonical node."
+    },
+    "relationships":{
+      "canonical_owner":"data/relationships.json",
+      "graph_schema_owner":"data/graph-registry.json",
+      "bridge_owner":"data/global-graph-bridge.json",
+      "derived_or_scoped_layers":["data/evidence/relationships.json","data/religious-adjacent/relationships.json","data/religious-relationships.json","data/potatoism-relationships.json","data/domain-coupling.json","data/cross-domain-couplings.json"],
+      "policy":"relationships.json owns canonical cross-domain graph edges. Scoped relationship files may own domain-local research edges only until promoted. graph-registry defines edge/node types; global-graph-bridge resolves backend IDs. Never maintain two authoritative copies of the same edge."
+    },
+    "intelligence_security":{
+      "canonical_owner":"data/security-intelligence-organizations.json",
+      "country_view":"data/security-intelligence-country-layer.json",
+      "graph_view":"data/intelligence-security-graph.json",
+      "research_wave":"data/intelligence-information-ecosystem-atlas-wave-016.json",
+      "policy":"Organization file owns institutional identity and public facts. Country layer couples agencies to jurisdictions. Graph is derived/public relationship mapping. Wave file is research expansion and historical case analysis."
+    }
+  },
+  "consolidation_actions":[
+    "Create canonical-record-registry.json from this map and actual IDs.",
+    "Replace duplicated prose with canonical IDs and references.",
+    "Resolve missing Potatoism integration files before the integration contract is treated as valid.",
+    "Audit every family for duplicate IDs and aliases.",
+    "Mark deprecated/derived files explicitly before deleting anything.",
+    "Do not delete historical research waves until their unique information has been compared and migrated.",
+    "Add CI checks preventing a derived layer from silently becoming a second canonical owner."
+  ]
+}
