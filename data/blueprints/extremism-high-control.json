@@ -1,0 +1,18 @@
+{
+  "version":"1.0.0",
+  "status":"active-blueprint",
+  "purpose":"Evidence-aware blueprint for extremist, violent, hateful and high-control movements without collapsing distinct categories into one label.",
+  "entity":"movement_or_network",
+  "record_schema":{
+    "identity":["movement_id","name","aliases","category","status","jurisdiction","active_from","active_to"],
+    "classification":["ideology","political_position","religious_or_secular_basis","extremism_basis","violence_status","hate_status","high_control_indicators","official_designations"],
+    "organization":["founders","leaders","successors","chapters","front_groups","splinters","allied_groups","opposed_groups"],
+    "population":["membership_estimate","support_base","demographics","geography","diaspora","recruitment_channels","audience"],
+    "operations":["propaganda","fundraising","recruitment","communications","training","logistics","political_activity","violence_incidents"],
+    "relationships":["founded","splintered_from","allied_with","funded_by","operated_by","influences","recruits_from","targets","opposes","participates_in"],
+    "evidence":["government_source","court_record","academic_source","investigative_source","primary_material","date","retrieved_at","confidence","contestation"]
+  },
+  "derived_measures":["documented_member_range","geographic_footprint","network_centrality","designation_count","incident_frequency"],
+  "relationship_templates":["movement-splintered-from-movement","movement-allied-with-movement","organization-operates-network","network-recruits-population","movement-produces-propaganda"],
+  "integrity_rules":["Extremism, terrorism, hate and high-control are separate analytical labels.","A designation must identify its authority and date.","Allegations are not treated as established facts without supporting evidence.","Membership estimates retain their source and uncertainty range.","Ideological description must not be inferred solely from an affiliation."]
+}
