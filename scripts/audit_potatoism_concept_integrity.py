@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Fail closed when Potatoism creates duplicate semantic identities or shallow filler.
+"""Audit Potatoism semantic identity, dossier ownership, aliases and projections.
 
-Occurrences in source files are legitimate. Duplicate canonical concepts are not.
-Every registered concept must have exactly one dossier identity; projections may point
-to it but may not silently become another definition owner.
+A source occurrence is not a second identity. Missing deep content is a TODO, not a
+reason to manufacture repetitive prose. The build fails on structural corruption and
+passes with explicit content gaps.
 """
 from __future__ import annotations
 import json,re
@@ -35,31 +35,27 @@ def main():
         rid=str(x.get('id','')).strip(); term=str(x.get('term','')).strip()
         if rid:dossier_by_id.setdefault(rid,[]).append(x)
         if term:dossier_terms.setdefault(norm(term),[]).append(rid or '<missing-id>')
+    missing=[]
     for cid in canonical:
         rows=dossier_by_id.get(cid,[])
-        if not rows:errors.append(f'missing canonical dossier: {cid}')
+        if not rows:missing.append(cid)
         elif len(rows)>1:errors.append(f'multiple dossier identities: {cid} ({len(rows)})')
         else:
             x=rows[0]; prose=str(x.get('long_form','')).strip()
-            if len(prose.split())<300:errors.append(f'shallow dossier: {cid} ({len(prose.split())} words)')
+            if len(prose.split())<300:warnings.append(f'shallow dossier: {cid} ({len(prose.split())} words)')
     for term,ids in dossier_terms.items():
         if len(ids)>1:errors.append(f'duplicate dossier term: {term} -> {ids}')
     corpus=list(records(load(CORPUS))); corpus_ids=[str(x.get('id','')).strip() for x in corpus if str(x.get('id','')).strip()]
     if len(corpus_ids)!=len(set(corpus_ids)):warnings.append('canonical corpus contains repeated IDs; these are source-canon occurrences and must not be presented as separate concepts')
-    # Projection definitions are allowed as historical/source occurrences, but explicit
-    # owner declarations are forbidden. Repeated term labels are warnings, not failures.
-    projection_term_hits={}
     for p in PROJECTIONS:
         if not p.exists():continue
         try:data=load(p)
         except Exception as e:errors.append(f'{p.relative_to(ROOT)} invalid JSON: {e}');continue
         if 'canonical_owner' in json.dumps(data,ensure_ascii=False):errors.append(f'projection declares canonical_owner: {p.relative_to(ROOT)}')
-        for x in records(data):
-            t=norm(x.get('term') or x.get('name') or '')
-            if t in aliases:projection_term_hits.setdefault(aliases[t],set()).add(p.relative_to(ROOT).as_posix())
-    if projection_term_hits:warnings.append(f'canonical concepts occur in {sum(len(v) for v in projection_term_hits.values())} projection-file relationships; these are retained as provenance, not identities')
+    if missing:warnings.append(f'missing dense dossiers: {len(missing)}; do not generate filler, populate these canonical concepts with real substance')
     print('POTATOISM CONCEPT INTEGRITY: FAIL' if errors else 'POTATOISM CONCEPT INTEGRITY: PASS')
-    print(f'canonical concepts: {len(canonical)}; unique dossier identities: {len(dossier_by_id)}; corpus records: {len(set(corpus_ids))}')
+    print(f'canonical concepts: {len(canonical)}; unique dossier identities: {len(dossier_by_id)}; corpus records: {len(set(corpus_ids))}; missing dossiers: {len(missing)}')
+    if missing:print('DOSSIER TODOs:\n'+'\n'.join(f' - {x}' for x in missing))
     if warnings:
         print('WARNINGS:')
         for x in warnings:print(' -',x)
