@@ -1,0 +1,71 @@
+{
+  "title": "Archive Epistemics",
+  "status": "canonical-method",
+  "updated": "2026-09-09",
+  "purpose": "Define how the Potato of Life archive should preserve, rank, connect and expose information without collapsing mythology, documentary evidence, interpretation and empirical fact into one undifferentiated truth layer.",
+  "core_rule": "Make everything accessible; make nothing falsely certain.",
+  "information_model": {
+    "open_tree": "The archive is extensible: new nodes, branches, sources, interpretations, criticisms, corrections and competing explanations may be added.",
+    "weighted_not_flat": "Contributions are not equally authoritative merely because they are present.",
+    "relationship_first": "Information value is partly determined by how well a contribution explains or evidences relationships rather than only adding isolated facts.",
+    "preserve_strata": "Earlier formulations remain dated historical layers when later doctrine changes instead of being silently rewritten."
+  },
+  "two_scores": {
+    "epistemic_strength": "How trustworthy or well-supported is the claim?",
+    "informational_contribution": "How much useful structure, context, specificity or relational value does it add?",
+    "rule": "A speculative idea can be structurally interesting while remaining low-confidence; a highly reliable fact can be narrow in scope. Do not confuse the two."
+  },
+  "status_classes": [
+    "project_canon",
+    "self_description",
+    "documentary",
+    "historical",
+    "scientific",
+    "comparative",
+    "interpretation",
+    "creative_lore",
+    "inference",
+    "disputed",
+    "unknown"
+  ],
+  "weighting_dimensions": [
+    "source value",
+    "credibility",
+    "accuracy",
+    "relevance",
+    "evidentiary strength",
+    "corroboration",
+    "provenance",
+    "specificity",
+    "date precision",
+    "interpretive status",
+    "relationship density",
+    "Timic/Potato relevance"
+  ],
+  "source_hierarchy": {
+    "primary": ["original writings", "dated posts", "uploaded books", "direct recordings", "official records", "first-party documents"],
+    "secondary": ["reliable journalism", "academic analysis", "institutional summaries", "reputable databases"],
+    "tertiary": ["general summaries", "community discussion", "unsourced recollection"],
+    "creative": ["mythic elaboration", "poetry", "fiction", "symbolic synthesis"],
+    "rule": "Creative material may be central to the mythology while still not functioning as external evidence."
+  },
+  "development_states": ["foundational", "developed", "provisional", "deprecated", "superseded-but-historically-important"],
+  "claim_structure": {
+    "minimum_fields": ["claim", "status", "source", "date_or_period", "subject", "relationships", "confidence"],
+    "preferred_fields": ["counterevidence", "alternative interpretation", "provenance trail", "last reviewed", "canonical owner"]
+  },
+  "anti_patterns": [
+    "placeholder completeness",
+    "decorative nodes without content",
+    "duplicate identities with slightly different names",
+    "retroactively rewriting older doctrine to match later doctrine",
+    "treating metaphor as scientific evidence",
+    "treating comparison as historical identity",
+    "treating criticism as equal to substantiated evidence merely for balance",
+    "treating repository visibility as proof of truth"
+  ],
+  "public_interface_rule": "The frontend should expose actual canonical records, provenance and relationships. It should not create the appearance of completeness when backend information is missing.",
+  "recovery_rule": "Conversation history, old docs and legacy JSON are archival source strata. Material should be recovered, deduplicated, classified and promoted before obsolete files are archived.",
+  "pruning_rule": "Prune duplication and obsolete presentation infrastructure, not unique historical information.",
+  "connections": ["sources", "manifest", "conversation-recovery-inventory", "relationship-first", "world", "traditions", "chronology"]
+}
