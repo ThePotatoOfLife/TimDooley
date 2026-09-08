@@ -1,7 +1,7 @@
 {
-  "version":"1.2.1",
+  "version":"2.0.0",
   "updated":"2026-09-08",
-  "purpose":"Canonical registry for the multidimensional belief atlas.",
+  "purpose":"Canonical registry for the multidimensional belief atlas behind the unified index.",
   "space":"data/belief-space.json",
   "politicalLexicon":"data/political-lexicon.json",
   "religiousLexicon":"data/religious-lexicon.json",
@@ -10,10 +10,12 @@
   "religiousArchitecture":"data/blueprints/religious-architecture-blueprint.json",
   "comparativeLibrary":"data/religious-comparative-library.json",
   "potatoism":"data/potatoism-religion.json",
-  "individualRecord":"belief.html?id=<slug>",
-  "visualization":"political-compass.html",
+  "publicReader":"index.html",
+  "recordRoute":"index.html#node=<slug>",
+  "visualization":"index.html#node=belief-space",
   "layers":["political","religious","religious-foundation","religious-comparative","potatoism"],
   "religious_pipeline":["lexicon entry","foundation record","field/substrate","seed/emergence","formation","texts/concepts","practice","people/places","institutions","branches","modern transformation"],
-  "navigation":"Every lexicon entry resolves to a canonical belief record; religious records can additionally resolve to their foundation, comparative library and historical layers.",
-  "integrity":"The religious cube is a projection of a richer record, not the record itself."
+  "navigation":"Every lexicon entry resolves to a canonical belief record; religious records can additionally resolve to their foundation, comparative library and historical layers through index.html.",
+  "integrity":"The religious cube is a projection of a richer record, not the record itself. Coordinates are analytical models, not measurements of truth or worth.",
+  "epistemic_rule":"Political and religious classification is descriptive/analytical; theological truth claims remain distinct from empirical evidence."
 }
