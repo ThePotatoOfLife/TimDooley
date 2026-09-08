@@ -1,0 +1,20 @@
+{
+  "version":"1.0.0",
+  "status":"active-blueprint",
+  "purpose":"Blueprint for cultures, subcultures, scenes and identity communities, emphasizing people, practices, institutions, media and geographic diffusion.",
+  "entity":"culture_or_subculture",
+  "record_schema":{
+    "identity":["culture_id","name","aliases","category","period","status"],
+    "population":["participants","audience","demographics","languages","geography","diaspora"],
+    "practice":["beliefs","rituals","customs","aesthetics","dress","food","music","language","symbols","norms"],
+    "institutions":["families","associations","religious_institutions","schools","businesses","venues","online_communities"],
+    "media":["publications","music","film","games","platforms","influencers","archives"],
+    "economy":["employment","consumer_markets","creative_industries","merchandise","events"],
+    "change":["origins","turning_points","migration","hybridization","commercialization","fragmentation","revival","decline"],
+    "relationships":["influences","borrows_from","splits_from","overlaps_with","opposes","diffuses_through","institutionalized_by"],
+    "evidence":["ethnography","census","survey","historical_source","media_archive","academic_source","date","confidence"]
+  },
+  "derived_measures":["population_range","geographic_spread","institutional_density","media_reach","historical_duration"],
+  "relationship_templates":["culture-influences-culture","subculture-diffuses-through-platform","community-uses-institution","scene-centers-on-place"],
+  "integrity_rules":["Culture is not synonymous with ethnicity, nationality or ideology.","Self-identification and external classification should be distinguished.","Online visibility is not automatically population size.","Historical continuity claims require period-specific evidence."]
+}
