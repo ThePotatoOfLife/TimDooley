@@ -1,21 +1,40 @@
-/* Minimal vertical plane: WORLD ↓ | invisible FRAME | ↑ AXIS. */
-:root{--plane-height:min(88vh,900px)}
-html,body{margin:0;min-height:100%;overflow-x:hidden}
-.root{width:100%;max-width:none;margin:0;padding:0}
-.root-main{position:relative;width:100%;height:var(--plane-height);min-height:560px;padding:0}
+/* Minimal two-pane root: WORLD + AXIS on the left, reading frame on the right. */
+:root{--menu-width:200px}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;overflow:hidden;background:var(--bg,#fff);color:var(--fg,#111)}
+.root{width:100%;height:100vh;margin:0;padding:0}
+.root-main{position:relative;width:100%;height:100vh;min-height:0;padding:0}
 .root-head,.prompt,header,footer,.controls,.status,.dossier,.center-label,.center-map,.center-identity,.center-description,.center-records,.center-record,.north-introduction{display:none!important}
-.center{position:absolute;inset:0;width:100%;height:100%;min-height:0;border:0;background:transparent;overflow:hidden;pointer-events:none}
-.center-overlay{position:absolute;inset:0;background:transparent;pointer-events:none}
-/* Invisible frame/container at the exact midpoint. */
-.center-overlay::after{content:'';position:absolute;left:50%;top:50%;width:min(70vw,520px);height:min(34vh,340px);transform:translate(-50%,-50%);background:transparent;border:0;pointer-events:auto}
-.tree{position:absolute;inset:0;width:100%;height:100%;display:block;border:0;pointer-events:none}
-.branch-axis,.branch-world{position:absolute;left:50%;width:min(92vw,720px);transform:translateX(-50%);display:block!important;pointer-events:auto}
-.branch-axis{top:calc(50% - 155px)}
-.branch-world{top:calc(50% + 125px)}
-.branch-axis>summary,.branch-world>summary{display:flex;align-items:center;justify-content:center;gap:12px;padding:8px 16px;border:0;background:transparent;font-size:clamp(20px,4vw,34px);line-height:1.2;letter-spacing:.16em;text-align:center;cursor:pointer}
-.branch-axis>summary .tree-mark,.branch-world>summary .tree-mark,.branch-axis>summary .tree-note,.branch-world>summary .tree-note,.branch-axis>summary .tree-count,.branch-world>summary .tree-count{display:none}
-.branch-axis>summary .tree-name,.branch-world>summary .tree-name{font-weight:700}
-.branch-axis>summary::before{content:'↑';font-size:1.1em;line-height:1}
-.branch-world>summary::after{content:'↓';font-size:1.1em;line-height:1}
-.branch-axis[open]>.branch-children,.branch-world[open]>.branch-children{position:absolute;top:100%;left:50%;transform:translateX(-50%);width:min(92vw,720px);max-height:45vh;overflow:auto;background:var(--bg);z-index:3;pointer-events:auto}
-@media(max-width:600px){:root{--plane-height:90vh}.root-main{min-height:520px}.branch-axis{top:calc(50% - 125px)}.branch-world{top:calc(50% + 95px)}.branch-axis>summary,.branch-world>summary{font-size:20px;letter-spacing:.1em}}
+/* The navigation is a narrow vertical spine on the left. */
+#root-tree{position:absolute;left:0;top:0;width:var(--menu-width);height:100vh;z-index:20;display:block;border:0;pointer-events:none}
+.tree-branch{position:absolute!important;left:0;width:100%;display:block!important;pointer-events:auto}
+.branch-axis{top:0;height:50%;padding-bottom:16px;display:flex!important;flex-direction:column;justify-content:flex-end}
+.branch-world{top:50%;height:50%;padding-top:16px}
+.tree-branch>summary{display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;padding:10px 12px;border:0;background:transparent;font-size:18px;line-height:1.2;letter-spacing:.08em;cursor:pointer;list-style:none}
+.tree-branch>summary::-webkit-details-marker{display:none}
+.tree-branch>summary .tree-mark,.tree-branch>summary .tree-note,.tree-branch>summary .tree-count{display:none}
+.tree-branch>summary .tree-name{font-weight:700}
+.branch-axis>summary::before{content:'↑';order:-1;font-size:1.05em}
+.branch-world>summary::before{content:'↓';order:-1;font-size:1.05em}
+/* Axis opens upward; World opens downward. Both remain inside the 200px spine. */
+.branch-axis[open]>.branch-children{position:absolute;left:0;bottom:46px;top:auto;width:100%;max-height:calc(50vh - 60px);overflow:auto;background:var(--bg,#fff);z-index:30;pointer-events:auto}
+.branch-world[open]>.branch-children{position:absolute;left:0;top:46px;width:100%;max-height:calc(50vh - 60px);overflow:auto;background:var(--bg,#fff);z-index:30;pointer-events:auto}
+.tree-collection>summary{display:flex;align-items:center;gap:6px;width:100%;padding:6px 10px;font-size:13px;line-height:1.25;cursor:pointer}
+.tree-collection>summary .tree-mark,.tree-collection>summary .tree-note,.tree-collection>summary .tree-count{display:none}
+.tree-collection>summary .tree-name{font-weight:600}
+.tree-collection .tree-children{padding-left:10px}
+.tree-subdir>summary{display:block;padding:5px 8px;font-size:12px;cursor:pointer}
+.tree-subdir .tree-note{display:none}
+.tree-entry{display:flex;align-items:flex-start;gap:4px;padding:4px 8px;font-size:12px;line-height:1.25}
+.tree-entry .tree-mark{display:none}
+.tree-button{padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
+.tree-button:hover,.tree-collection>summary:hover,.tree-subdir>summary:hover{ text-decoration:underline }
+.tree-empty{padding:10px;font-size:12px;opacity:.6}
+/* The actual central iframe fills everything to the right of the menu. */
+.center{position:absolute;left:var(--menu-width);top:0;width:calc(100% - var(--menu-width));height:100vh;min-height:0;border:0;background:transparent;overflow:hidden;z-index:1;pointer-events:auto}
+.center-frame{position:absolute;inset:0;width:100%;height:100%;background:transparent;overflow:hidden;transition:opacity .18s ease,visibility .18s ease}
+.center-frame iframe{display:block;width:100%;height:100%;border:0;background:transparent}
+.center-frame.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+.frame-toggle{position:absolute;right:10px;top:10px;z-index:5;padding:5px 8px;border:0;background:transparent;color:inherit;font:12px system-ui,sans-serif;opacity:.55;cursor:pointer}
+.frame-toggle:hover{opacity:1;text-decoration:underline}
+@media(max-width:700px){:root{--menu-width:160px}.tree-branch>summary{font-size:16px;padding-left:9px}.center{left:var(--menu-width);width:calc(100% - var(--menu-width))}}
