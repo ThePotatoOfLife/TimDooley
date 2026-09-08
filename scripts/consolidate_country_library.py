@@ -4,7 +4,7 @@ from __future__ import annotations
 import json
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
-COUNTRIES=ROOT/'data/countries'; LAYER=ROOT/'data/country-layer-manifest.json'; INDEX=ROOT/'data/country-enrichment-index.json'
+COUNTRIES=ROOT/'data/countries'; LAYER=ROOT/'data/country-layer-manifest.json'
 def load(path): return json.loads(path.read_text(encoding='utf-8'))
 def merge(a,b):
     if isinstance(a,dict) and isinstance(b,dict):
@@ -41,7 +41,6 @@ def main():
             path.unlink(); removed.append(str(path.relative_to(ROOT)))
     for path in (COUNTRIES/'deepening-state.json',COUNTRIES/'instantiation-state.json'):
         if path.exists():path.unlink();removed.append(str(path.relative_to(ROOT)))
-    layer=load(LAYER); layer.update({'version':'2.0.0','purpose':'Canonical country library manifest. Each country owns one substantive record; reusable schema lives in the blueprints.','batch_count':0,'batch_manifests':[],'node_manifests':['data/country-nodes.json'],'record_pattern':'data/countries/<country-id>.json','enrichment_pattern':None,'page_pattern':None}); layer.pop('enriched_ids',None); LAYER.write_text(json.dumps(layer,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
-    idx=load(INDEX); idx.update({'version':'3.1.0','purpose':'Compact compatibility index. Identity and substantive data live in the canonical country records; this file stores only layer metadata.','canonical_count':195,'enriched_count':195,'remaining_count':0,'record_pattern':'data/countries/<country-id>.json','enrichment_pattern':None,'page_pattern':None,'layer_manifest':'data/country-layer-manifest.json','batch_manifests':[],'node_manifests':['data/country-nodes.json']}); idx.pop('enriched_ids',None); idx.pop('enrichment_overlay_count',None); idx.pop('legacy_nodes',None); INDEX.write_text(json.dumps(idx,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    layer=load(LAYER); layer.update({'version':'2.1.0','purpose':'Canonical country library manifest. Each country owns one substantive record; reusable schema lives in the blueprints.','batch_count':0,'batch_manifests':[],'node_manifests':['data/country-nodes.json'],'record_pattern':'data/countries/<country-id>.json','enrichment_pattern':None,'page_pattern':None}); layer.pop('enriched_ids',None); LAYER.write_text(json.dumps(layer,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     print(json.dumps({'countries_merged':merged,'countries_normalized':normalized,'artifacts_removed':removed},ensure_ascii=False,indent=2))
 if __name__=='__main__':main()
