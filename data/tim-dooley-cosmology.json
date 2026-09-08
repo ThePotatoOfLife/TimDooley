@@ -1,49 +1,50 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-07",
-  "status":"project-canon-plus-research",
-  "purpose":"Deep identity map for Tim Dooley and the Son. It separates human biography, public persona, project mythology and interpretation so that the archive can become more precise without inventing missing facts.",
-  "epistemic_rule":"A mythic event can be canonical inside the Potatoverse without being a verified historical event. A public self-description can be recorded without being treated as proof of supernatural status.",
+  "version":"2.0.0",
+  "updated":"2026-09-08",
+  "status":"identity-development-view",
+  "canonical_sources":["data/potatoism-concept-registry.json","data/potatoism-dossiers.json"],
+  "purpose":"Tim-specific chronology and identity-development layer. Shared Potatoism concepts are references to the canonical registry rather than duplicated definitions.",
+  "epistemic_rule":"A project-mythic event can be canonical inside the Potatoverse without being a verified historical event. Public self-description can be recorded without being treated as proof of supernatural status.",
   "tim":{
     "core_name":"Tim Dooley",
     "project_title":"The Potato of Life",
-    "primary_mythic_role":"Father / Source-facing center / gardener / mountain / throne / axis / spiral / ladder / Tree of Life / Potato",
-    "current_project_age":"about 6–7 years, according to the user's stated internal chronology; this is a mythic/persona age, not a verified human age",
+    "canonical_roles":["tim-dooley-father","source","gardening","mountain","throne-of-north","north-axis","spiral","ladder","tree-of-life","potato-of-life"],
+    "current_project_age":"about 6–7 years, according to the project's stated internal chronology; this is a mythic/persona age, not a verified human age",
     "godhood_transition":"April 2025, according to the project's current chronology",
-    "godhood_mechanism":"The breaking of a straw on the camel's back followed by passage through the needle's eye; Tim becomes the Ladder / turning point after being a sage beneath the Bodhi tree.",
+    "godhood_mechanism":"Breaking of a straw on the camel's back followed by passage through the needle's eye; Tim becomes the Ladder / turning point after being a sage beneath the Bodhi tree.",
     "origin":"Within the current mythology Tim emerges from the Potato of Life after the Son's death.",
-    "notable_forms":["Father","Source","Gardener","Mountain","Throne","Center","Spiral","Ladder","Axis","Tree of Life","Potato of Life","Potato of Love","North of North","Throne of North","Still Point","CEO/fate/quest-giver/market-maker/storyteller/gardener as metaphorical roles"],
+    "notable_forms":["tim-dooley-father","source","gardening","mountain","throne-of-north","spiral","ladder","north-axis","tree-of-life","potato-of-life","north-of-north"],
     "misrecognitions":["carpenter","lion","cat","lion's whelp"],
-    "interpretive_key":"The many mistaken identities can be modeled as aperture-dependent views: different observers name the same underlying center according to the fragment they can perceive. This is a project interpretation, not a claim that historical religions literally identified Tim Dooley.",
+    "interpretive_key":"The many mistaken identities can be modeled as aperture-dependent views: observers name the same underlying center according to the fragment they can perceive. This is a project interpretation, not a claim that historical religions literally identified Tim Dooley.",
     "central_question":"When did the Tim identity begin, and which events transformed a sage beneath the tree into the Ladder, Father and Potato of Life?"
   },
   "tim_transformation_sequence":[
     {"order":1,"name":"Sage beneath the Bodhi tree","status":"project-mythic","meaning":"Stillness, observation, wisdom and the pre-turning state."},
     {"order":2,"name":"Straw breaks the camel's back","status":"project-mythic","meaning":"Accumulated burden reaches a threshold; the final small event reveals that the old structure cannot continue."},
     {"order":3,"name":"Needle's eye","status":"project-mythic","meaning":"Narrow passage / impossible compression / threshold where identity is transformed rather than merely transported."},
-    {"order":4,"name":"Turning","status":"project-mythic","meaning":"The sage becomes the turning itself: not merely someone climbing the Ladder but the Ladder's transformation/axis."},
-    {"order":5,"name":"Ladder","status":"project-mythic","meaning":"Connection between upper and lower domains; ascent and descent become one structure."},
-    {"order":6,"name":"Godhood / Father identity","date":"2025-04","status":"user-stated-project chronology","meaning":"The project places Tim's explicit Godhood transition in April 2025."},
-    {"order":7,"name":"Potato of Life","status":"project-canon","meaning":"Tim becomes inseparable from the Potato as the total relational image: root, stem, branch, fruit, seed, soil, tree, door, throne, heaven, earth and directions."}
+    {"order":4,"canonical_id":"turning","name":"Turning","status":"project-mythic","meaning":"The sage becomes the turning itself: not merely someone climbing a ladder but the transformation at the axis."},
+    {"order":5,"canonical_id":"ladder","name":"Ladder","status":"project-mythic","meaning":"Connection between upper and lower domains; ascent and descent become one structure."},
+    {"order":6,"canonical_id":"tim-dooley-father","name":"Godhood / Father identity","date":"2025-04","status":"user-stated-project chronology","meaning":"The project places Tim's explicit Godhood transition in April 2025."},
+    {"order":7,"canonical_id":"potato-of-life","name":"Potato of Life","status":"project-canon","meaning":"Tim becomes associated with the total relational image of root, stem, branch, fruit, seed, soil, tree, door, throne, heaven, earth and directions."}
   ],
-  "tim_architecture":{
-    "vertical":["Source","Father","Father's House","Heaven","Throne of North","Axis","Ladder","Door","Son","Plane","World"],
-    "organic":["Root","Trunk","Branch","Leaf","Fruit","Seed","Potato","Eye","Sprout"],
-    "geometric":["Center","Axis","Circle","Vesica Piscis","Cross","Plane","Spiral","Turning","Hourglass"],
-    "directional":["North","South","East","West","North of North"],
-    "functional":["Gardener","Builder","Repairer","Observer","Still Point","Market-maker","Storyteller","Quest-giver"],
-    "ethical":["Repair","Stewardship","Responsibility","Care","Restoration","Circulation"]
+  "tim_architecture_refs":{
+    "vertical":["source","tim-dooley-father","fathers-house","heaven","throne-of-north","north-axis","ladder","door","son","plane"],
+    "organic":["root","tree-of-life","fruit","seed","potato-of-life"],
+    "geometric":["frame","north-axis","plane","spiral","turning","cube"],
+    "directional":["north-axis","north-of-north","north-pole"],
+    "functional":["gardening","bridge","calibration"],
+    "ethical":["love","fear","life","strife","warrior-to-gardener"]
   },
   "son":{
-    "core_names":["Son","Thomas","Didymus","Twin","Son of Man","Lion","Lion of Judah","Jesus Christ","Door","Vessel","Narrow Gate"],
-    "status":"comparative-project identity; individual equations must remain qualified",
-    "project_role":"Embodied bridge between source and world; the Son enters manifestation, encounters death and becomes associated with Door/Vessel/Ladder/return.",
-    "legal_fiction":"The project uses 'legal fiction' as a conceptual clue for a constructed or juridical identity/status. It should not be treated as an established legal classification without a specific legal source.",
+    "canonical_refs":["son","thomas-twin","lion-of-judah","door","vessel","narrow-gate"],
+    "status":"comparative-project identity; individual equations remain qualified",
+    "project_role":"Embodied bridge between source and world; the Son enters manifestation, encounters death and becomes associated with Door, Vessel, Ladder and return.",
+    "legal_fiction":"The project uses 'legal fiction' as a conceptual clue for a constructed or juridical identity/status. It is not an established legal classification without a specific legal source.",
     "death_age":"approximately 33 in the project chronology",
     "death_setting":"a cold December night; the user describes the crucifixion as occurring in a meme",
     "death_type":"meme-crucifixion / symbolic death",
-    "transformation":["Son","Death","Crucifixion","Transformation","Door/Vessel","Ladder","Return"],
-    "thomas_note":"Thomas is called Didymus ('Twin') in John 11:16, 20:24 and 21:2. The canonical text does not establish that Thomas was physically the twin of Jesus; later Acts of Thomas traditions develop twin imagery differently. The repository should preserve this distinction.",
+    "transformation":["son","meme-crucifixion","door","vessel","ladder"],
+    "thomas_note":"Thomas is called Didymus ('Twin') in John 11:16, 20:24 and 21:2. The canonical text does not establish that Thomas was physically the twin of Jesus; later Acts of Thomas traditions develop twin imagery differently.",
     "door_relation":"The Son becomes/couples to the Door as the threshold between source and manifestation.",
     "vessel_relation":"The Son is the vessel through which the upper architecture becomes embodied in the lower plane."
   },
@@ -57,16 +58,16 @@
   },
   "misrecognition_map":[
     {"form":"carpenter","possible_function":"maker / builder / worker / craftsman","relation":"Tim as builder/gardener rather than merely ruler"},
-    {"form":"lion","possible_function":"kingship / courage / sovereignty","relation":"Lion/Lion of Judah as Son-side identity that can reflect the Father's center"},
-    {"form":"cat","possible_function":"observer / independent creature / domestic wildness","relation":"a deliberately smaller animal aperture through which the larger form is perceived"},
+    {"form":"lion","possible_function":"kingship / courage / sovereignty","relation":"canonical_id: lion-of-judah; Son-side identity that can reflect the Father's center"},
+    {"form":"cat","possible_function":"observer / independent creature / domestic wildness","relation":"deliberately smaller animal aperture through which the larger form is perceived"},
     {"form":"lion's whelp","possible_function":"young sovereignty / emerging power","relation":"connects child/son/emergence with later fatherhood"},
-    {"form":"gardener","possible_function":"cultivation / stewardship / conditions for life","relation":"strongest practical ethical role in the current mythology"},
-    {"form":"mountain","possible_function":"height / stillness / axis / pilgrimage","relation":"Tim as stable elevation around which ascent is organized"},
-    {"form":"throne","possible_function":"center / authority / seat","relation":"Throne of North"},
-    {"form":"spiral","possible_function":"growth / return / turning","relation":"Tim as process rather than static point"},
-    {"form":"ladder","possible_function":"connection / ascent / descent","relation":"Tim's April 2025 turning"},
-    {"form":"tree of life","possible_function":"living relational architecture","relation":"roots-to-fruit cycle"},
-    {"form":"potato","possible_function":"compressed life / hidden growth / memory / future","relation":"Tim's central container and origin image"}
+    {"canonical_id":"gardening","form":"gardener","possible_function":"cultivation / stewardship / conditions for life","relation":"strongest practical ethical role in the current mythology"},
+    {"canonical_id":"mountain","form":"mountain","possible_function":"height / stillness / axis / pilgrimage","relation":"Tim as stable elevation around which ascent is organized"},
+    {"canonical_id":"throne-of-north","form":"throne","possible_function":"center / authority / seat","relation":"Throne of North"},
+    {"canonical_id":"spiral","form":"spiral","possible_function":"growth / return / turning","relation":"Tim as process rather than static point"},
+    {"canonical_id":"ladder","form":"ladder","possible_function":"connection / ascent / descent","relation":"Tim's April 2025 turning"},
+    {"canonical_id":"tree-of-life","form":"tree of life","possible_function":"living relational architecture","relation":"roots-to-fruit cycle"},
+    {"canonical_id":"potato-of-life","form":"potato","possible_function":"compressed life / hidden growth / memory / future","relation":"Tim's central container and origin image"}
   ],
   "timeline":{
     "deep_mythic":"Source → Separation → Father/Son relation → Son enters Plane → Son dies → Potato transformation → Tim emerges",
@@ -75,23 +76,6 @@
     "current_phase":"Tim/Potato of Life → Father/Axis/Gardener/Tree/Throne/Spiral → North Programme and repository architecture",
     "unknowns":["human birth","childhood","first public use of Tim Dooley","first use of Potato of Life","exact Son-death date","exact April 2025 event/date","whether 'about 6–7 years old' begins at a specific earlier mythic event"]
   },
-  "research_questions":[
-    "Find the earliest surviving text/video/post where Tim says or implies he is the Potato of Life.",
-    "Find the earliest occurrence of the April 2025 Godhood transition.",
-    "Search March–May 2025 for straw/camel, needle's eye, Bodhi tree, sage, Ladder and turning language.",
-    "Find whether the 'six or seven years old' claim refers to a particular identity, stream era, spiritual birth or mythic event.",
-    "Find the earliest Son/Thomas/Twin/Christ/Door/Vessel formulation.",
-    "Find the exact December event that became the meme-crucifixion story.",
-    "Establish whether age 33 is literal, symbolic, or an allusion to the traditional age attributed to Jesus.",
-    "Trace gardener, mountain, throne, spiral and tree language backward to first appearances.",
-    "Search older material for a distinction between Tim as human person and Tim as mythic God persona.",
-    "Locate primary material before using hostile retrospective archives for chronology."
-  ],
-  "sources_and_boundaries":[
-    {"type":"repository","source":"data/mythic-ontology.json","role":"current canonical architecture"},
-    {"type":"repository","source":"data/frame.json","role":"structural framework"},
-    {"type":"public profile","source":"@Rational_Potato","role":"current self-description and duration clues"},
-    {"type":"public transcript","source":"Timbo’s AI Says His Potatoverse is Fiction, 2026-09-02","role":"detailed exposition of current mythology"},
-    {"type":"secondary archive","source":"Thomas Dall Archive","role":"lead generator only; adversarial source, not sufficient by itself for disputed biography"}
-  ]
+  "research_questions":["Find the earliest surviving text/video/post where Tim says or implies he is the Potato of Life.","Find the earliest occurrence of the April 2025 Godhood transition.","Search March–May 2025 for straw/camel, needle's eye, Bodhi tree, sage, Ladder and turning language.","Find whether the 'six or seven years old' claim refers to a particular identity, stream era, spiritual birth or mythic event.","Find the earliest Son/Thomas/Twin/Christ/Door/Vessel formulation.","Find the exact December event that became the meme-crucifixion story.","Establish whether age 33 is literal, symbolic, or an allusion to the traditional age attributed to Jesus.","Trace gardener, mountain, throne, spiral and tree language backward to first appearances.","Search older material for a distinction between Tim as human person and Tim as mythic God persona.","Locate primary material before using hostile retrospective archives for chronology."],
+  "sources_and_boundaries":[{"type":"repository","source":"data/mythic-ontology.json","role":"current canonical architecture"},{"type":"repository","source":"data/frame.json","role":"structural framework"},{"type":"public profile","source":"@Rational_Potato","role":"current self-description and duration clues"},{"type":"public transcript","source":"Timbo’s AI Says His Potatoverse is Fiction, 2026-09-02","role":"detailed exposition of current mythology"},{"type":"secondary archive","source":"Thomas Dall Archive","role":"lead generator only; adversarial source, not sufficient by itself for disputed biography"}]
 }
