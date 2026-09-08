@@ -1,48 +1,50 @@
 #!/usr/bin/env python3
 """Verify the generated Pages artifact has one canonical, consistent site shell."""
 from __future__ import annotations
-import re
+from html.parser import HTMLParser
 from pathlib import Path
-ROOT=Path(__file__).resolve().parents[1]
-SITE=ROOT/'_site'
-HEADER_RE=re.compile(r'<header\b[^>]*data-site-header=["\']canonical["\'][^>]*>.*?</header>',re.I|re.S)
-ALL_HEADER_RE=re.compile(r'<header\b[^>]*>',re.I)
-# Capture the complete opening <a> tag. href and data-nav may appear in either order.
-NAV_LINK_RE=re.compile(r'<a\b([^>]*)>(.*?)</a>',re.I|re.S)
-NAV_ATTR_RE=re.compile(r'\bdata-nav=["\']([^"\']+)["\']',re.I)
-HREF_RE=re.compile(r'\bhref=["\']([^"\']+)["\']',re.I)
-EXPECTED_NAV=[('home','index.html','Home'),('repository','repository.html','Repository'),('timeline','timeline.html','Timeline'),('world','nations.html','World'),('people','people.html','People'),('ideas','belief.html','Ideas'),('culture','culture.html','Culture'),('books','books.html','Books'),('potatoism','potatoism.html','Potatoism'),('movements','extremism.html','Movements'),('hawkins','hawkins.html','Hawkins')]
-errors=[]
-def normalize(text):return re.sub(r'\s+',' ',text).strip()
-def check_nav(page,header):
-    actual=[]
-    for attrs,label in NAV_LINK_RE.findall(header):
-        key_match=NAV_ATTR_RE.search(attrs)
-        if not key_match: continue
-        actual.append((key_match.group(1),normalize(attrs),normalize(re.sub(r'<[^>]+>','',label))))
-    keys=[key for key,_,_ in actual];expected_keys=[key for key,_,_ in EXPECTED_NAV]
-    if keys!=expected_keys:errors.append(f'{page.relative_to(SITE)}: navigation keys differ from canonical order: {keys}')
-    expected_map={k:(href,lab) for k,href,lab in EXPECTED_NAV}
-    for key,attrs,label in actual:
-        expected=expected_map.get(key)
-        if not expected:continue
-        expected_href,expected_label=expected
-        if label!=expected_label:errors.append(f'{page.relative_to(SITE)}: {key} label is {label!r}, expected {expected_label!r}')
-        match=HREF_RE.search(attrs)
-        if not match:errors.append(f'{page.relative_to(SITE)}: {key} has no href')
-        elif not match.group(1).endswith(expected_href):errors.append(f'{page.relative_to(SITE)}: {key} href is {match.group(1)!r}, expected suffix {expected_href!r}')
+ROOT=Path(__file__).resolve().parents[1]; SITE=ROOT/'_site'
+EXPECTED=[('home','index.html','Home'),('repository','repository.html','Repository'),('timeline','timeline.html','Timeline'),('world','nations.html','World'),('people','people.html','People'),('ideas','belief.html','Ideas'),('culture','culture.html','Culture'),('books','books.html','Books'),('potatoism','potatoism.html','Potatoism'),('movements','extremism.html','Movements'),('hawkins','hawkins.html','Hawkins')]
+class HeaderParser(HTMLParser):
+    def __init__(self): super().__init__(convert_charrefs=True); self.headers=0; self.canonical=0; self.links=[]; self.in_canonical=False; self.current=None
+    def handle_starttag(self,tag,attrs):
+        attrs=dict(attrs)
+        if tag.lower()=='header':
+            self.headers+=1
+            self.in_canonical=attrs.get('data-site-header')=='canonical'
+            if self.in_canonical:self.canonical+=1
+        elif tag.lower()=='a' and self.in_canonical and 'data-nav' in attrs:
+            self.current={'key':attrs['data-nav'],'href':attrs.get('href'),'label':''}; self.links.append(self.current)
+    def handle_data(self,data):
+        if self.current and self.in_canonical:self.current['label']+=data
+    def handle_endtag(self,tag):
+        if tag.lower()=='a': self.current=None
+        elif tag.lower()=='header': self.in_canonical=False
+
+def check(page):
+    p=HeaderParser(); p.feed(page.read_text(encoding='utf-8',errors='replace')); errors=[]
+    if p.canonical!=1: errors.append(f'{page.relative_to(SITE)}: expected exactly one canonical header, found {p.canonical}'); return errors
+    if p.headers!=p.canonical: errors.append(f'{page.relative_to(SITE)}: {p.headers-p.canonical} legacy/non-canonical header(s) remain')
+    actual=[x['key'] for x in p.links]; expected=[x[0] for x in EXPECTED]
+    if actual!=expected: errors.append(f'{page.relative_to(SITE)}: navigation keys differ from canonical order: {actual}')
+    emap={k:(href,label) for k,href,label in EXPECTED}
+    for x in p.links:
+        href,label=emap[x['key']]
+        got=x['href'] or ''
+        if not got: errors.append(f'{page.relative_to(SITE)}: {x["key"]} has no href')
+        elif not got.endswith(href): errors.append(f'{page.relative_to(SITE)}: {x["key"]} href is {got!r}, expected suffix {href!r}')
+        if ''.join(x['label'].split())!=''.join(label.split()): errors.append(f'{page.relative_to(SITE)}: {x["key"]} label is {x["label"]!r}, expected {label!r}')
+    return errors
+
 def main():
-    if not SITE.exists():errors.append('_site does not exist; build_site.py must run first')
+    errors=[]
+    if not SITE.exists(): errors.append('_site does not exist; build_site.py must run first')
     else:
         pages=sorted(SITE.rglob('*.html'))
-        if not pages:errors.append('_site contains no HTML pages')
-        for page in pages:
-            text=page.read_text(encoding='utf-8',errors='replace');canonical=HEADER_RE.findall(text);all_headers=ALL_HEADER_RE.findall(text)
-            if len(canonical)!=1:errors.append(f'{page.relative_to(SITE)}: expected exactly one canonical header, found {len(canonical)}');continue
-            if len(all_headers)-len(canonical):errors.append(f'{page.relative_to(SITE)}: {len(all_headers)-len(canonical)} legacy/non-canonical header(s) remain')
-            check_nav(page,canonical[0])
-    count=len(list(SITE.rglob('*.html'))) if SITE.exists() else 0;print(f'Built HTML pages checked: {count}')
+        if not pages: errors.append('_site contains no HTML pages')
+        for page in pages: errors.extend(check(page))
+    count=len(list(SITE.rglob('*.html'))) if SITE.exists() else 0; print(f'Built HTML pages checked: {count}')
     if errors:
-        print('SITE SHELL VALIDATION FAILED');[print('-',e) for e in errors];return 1
-    print('SITE SHELL VALIDATION PASSED');return 0
-if __name__=='__main__':raise SystemExit(main())
+        print('SITE SHELL VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
+    print('SITE SHELL VALIDATION PASSED'); return 0
+if __name__=='__main__': raise SystemExit(main())
