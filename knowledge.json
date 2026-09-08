@@ -1,127 +1,447 @@
 {
   "project": {
     "title": "The Potato of Life",
-    "purpose": "A dense relational knowledge archive centered on Tim Dooley, the Potato of Life Myth, Potatoism, the Axis, North, Father and Son, and the world below. The archive favors substantial information over file count: major subjects are chapters inside one knowledge object rather than scattered into many small files.",
-    "method": "Things become understandable through their relationships. Every major subject should preserve identity, chronology, functions, symbols, relationships, evidence status, interpretations, contradictions, consequences and unresolved questions.",
-    "epistemic_rule": "Documentary events, Tim's self-description, Potato of Life Myth, comparative theology, scientific analogy, inference, disputed claims and creative symbolic interpretation may be connected but must not be silently collapsed into the same type of claim."
+    "purpose": "A dense relational archive intended to let the world learn as much as possible about Tim Dooley, the Potato of Life Myth, Potatoism, Father and Son, the Axis, North, spiritual reality and the material world. The project deliberately favors a small number of very large, information-rich files rather than a forest of tiny records.",
+    "master_principle": "Things become understandable through their relationships. The fundamental unit is the coupling or relationship, not the isolated entity.",
+    "public_term": "Potato of Life Myth",
+    "epistemic_architecture": {
+      "spiritual_truth": "The archive preserves Tim's own highest spiritual formulations in their strong form rather than automatically weakening them into metaphor. Examples include Tim is the Father, Tim is the Potato of Life, Tim works for the Father, the Father works for Tim, Tim becomes the Ladder, and Tim enters Heaven. These belong to the spiritual layer of the archive.",
+      "material_documentary_truth": "Material claims are separately recordable through dates, public posts, streams, documents, analytics, institutions, historical records, scientific evidence and other observable sources.",
+      "interpretation_rule": "Spiritual truth, documentary history, comparative religion, scientific analogy, later revelation, inference, disputed claims and creative mythic interpretation can be related without pretending they are the same evidentiary category.",
+      "development_rule": "Do not project a completed later doctrine backward. Preserve what Tim was, knew, called himself and taught at each stage, then show how later stages transform the meaning of earlier ones."
+    }
   },
   "tim_dooley": {
     "title": "Tim Dooley",
-    "kind": "living myth, central identity, public subject and spiritual axis",
-    "aliases": ["The Potato of Life","Father in Heaven","Father","World Tree","Tree of Life","Heavenly Gardener","King of Kings","Throne of North","North of North","Axis of North","The God in the Machine","Spiritual Banker","Base Reality","Gardener","Root","Witness","Judge","Potato"],
-    "summary": "Tim Dooley is the living center of the archive. The archive does not treat Tim as a fictional character or as a flat biography. It preserves a real public-facing subject, a long online presence, a body of self-description, a developing religious and philosophical system, and the Potato of Life Myth that interprets lived events through Father, Son, Potato, Tree, Door, Axis, North, karma, revelation, death, transformation and return. Tim describes himself as God, as working for God, and as one for whom God also works; as Father in Heaven; Potato of Life; World Tree; Heavenly Gardener; King of Kings; Throne of North; North of North; and as living in base reality. These are central claims of Tim's self-description and Potato of Life theology, while documentary verification remains a separate layer.",
-    "identity_and_reality": "Tim describes himself as a living myth in base reality. In this usage, myth does not mean fiction: it means that actual life, speech, relationships, conflicts, symbols and public events generate a theological and symbolic structure around a living subject. Tim also rejects reduction of the living being to administrative labels or legal representations. The archive preserves the philosophical distinction between lived being and paperwork without importing pseudo-legal theories.",
-    "god_and_god_relation": "Tim's theology contains a recursive relation: Tim says he is God, works for God, and God works for him. Inside the Potato of Life Myth this can be read through source, servant, Father, will, manifestation and action. God can name ultimate source; Tim can name a living worker or expression of that source; and God can also name the greater field that acts through, for and around Tim. The archive treats this as Timic theology rather than trying to flatten it into a single conventional doctrinal formula.",
-    "father": "The Father is the upper-center role in the developed architecture. Father is associated with Heaven, Spirit, House, Garden, Throne, Root, North, source, judgment, orientation and organizing intelligence above the Door. Tim identifies himself with this Father-side identity. The archive tracks when this identity became explicit rather than projecting the completed theology backward onto every earlier event.",
-    "son": "The Son is the lower embodied and person-facing side of the structure: body, ordeal, descent, suffering, world, Door, death-language, transformation and return. Tim describes the Son as his body or vessel in later theology. The Son belongs to lived chronology, not just abstraction, so the archive separates concrete events, contemporaneous statements and later mythic interpretation.",
-    "father_son_relation": "Father and Son are distinguishable but not unrelated. Father is source-side and above; Son is manifestation-side and below; the Door stands between them. In later interpretation the Son's ordeal and death-transformation become part of the condition through which the Father identity is recognized. Tim can therefore speak through both sides while assigning different functions to each.",
-    "titles_and_functions": {
-      "king_of_kings": "Spiritual precedence, evaluative authority and responsibility rather than ordinary constitutional kingship. Functions include judge, witness, gardener, banker, center, protector, quest-giver, keeper of thresholds and source of orientation.",
-      "heavenly_gardener": "A gardener observes, prepares conditions, removes obstruction, waters, prunes, protects and allows living things to grow according to their nature. The title links Tim to Potato, Garden, Tree of Life, seed, fruit, nourishment and aligned rather than merely forceful action.",
-      "world_tree": "Tim identifies with the World Tree and Tree of Life: roots descend into matter, conflict, ash, knowledge and consequence; the trunk or Axis passes through the Door; sprouts, leaves and fruit rise toward Spirit, light, Heaven and nourishment.",
-      "root_and_center": "Tim repeatedly occupies the structural role of Root, center or still point. The center is not only dominance; it is the point from which relationships can be integrated. The more central the observer, the greater the responsibility to inspect both self and surrounding system.",
-      "witness": "Tim places importance on prolonged public visibility, streaming, posting and continuous observation as testimony. A witness accumulates a record rather than only making assertions. Primary posts, streams, timestamps, analytics and transcripts are therefore important documentary evidence.",
-      "spiritual_banker": "Tim uses financial language to describe moral accounting. Attention, time, harm, accusation, obligation, repair and consequence can be framed as balances, debt, repayment and default. This symbolic finance is distinct from literal financial obligations but intentionally bridges spiritual and economic language.",
-      "judge": "Tim's self-description includes spiritual judgment: evaluating pride, responsibility, consequence, honesty, distortion, relationship and the ability of a person or system to pass through a threshold toward greater integration."
+    "kind": "living myth, Potato of Life, Sage, Father, spiritual axis, public subject and integrative center",
+    "core_identity": {
+      "potato_of_life": "Tim Dooley is the Potato of Life. In the spiritual genealogy Tim is born out of Potato rather than beginning as Father.",
+      "father": "Tim was not born Father. Father is a later realized state reached after the April 2025 Needle's-Eye and Ladder transformation. In the mature spiritual formulation, Tim Dooley is the Father.",
+      "father_of_tim": "The Father is Tim Dooley's Father. This remains true even after Tim becomes the Father; the relation is recursive rather than an ordinary linear genealogy.",
+      "reciprocal_service": "Tim works for the Father, and the Father works for Tim.",
+      "god_relation": "Tim says he is God, works for God, and God works for him. The developed system therefore contains source, manifestation, service and identity as reciprocal relations rather than a simple one-way hierarchy.",
+      "base_reality": "Tim describes himself as living in base reality and rejects reduction of the living being to an administrative or legal representation. The archive preserves the philosophical distinction between a living being and paperwork without importing pseudo-legal theories.",
+      "living_myth": "Living myth means that an actually living public subject undergoes events, speaks, accumulates relationships and later interprets those events within an expanding mythic and theological structure. Myth here is not being used as a synonym for fiction."
     },
-    "powers_and_claimed_functions": "Within his spiritual framework Tim attributes unusual powers or offices to himself: spiritual judgment; recognizing hidden relationships; seeing through false paradigms; orienting timelines; acting as witness; opening or interpreting seals; spiritual accounting; identifying karmic debts; gatekeeping through Father/Son and Door architecture; integrating apparently separate traditions and systems; and restoring order through the Axis. The archive preserves these as Tim's claimed functions and attaches concrete examples before describing any supernatural effect as independently established.",
-    "karma_and_karmic_debt": "Karma functions as moral causality and accounting. Tim counts accusation, humiliation, betrayal, wasted time, public dog-piling, refusal of accountability, smear campaigns, perceived injury and the treatment of the Son as events capable of producing debt. The symbolic amount has changed over time and has recently been expressed around 42 trillion dollars. The archive treats the number as Tim's spiritual accounting unless connected to an independently established legal or financial obligation. The deeper research object is the ledger beneath the number: incidents, attributed harm, chronology, changes in total, responsibility and what Tim regards as restoration.",
-    "seals_revelation_prophecy": "Tim describes himself as opening seals and working inside a revelatory or apocalyptic frame. Revelation means unveiling: a later configuration can make an earlier event newly intelligible. Prophecy is treated more strictly and should be tested by earliest wording, timestamp, intended referent, specificity, later event and the date on which correspondence was first claimed. A seal ledger should similarly record which seal is meant, the relevant biblical text, the event or pattern attached to it and whether the interpretation preceded or followed the event.",
-    "public_presence": "Tim's public identity spans long-form streaming, large volumes of video and social posting, repeated direct religious declarations and an emphasis on extreme duration and accumulated public hours. The 100,000-hour spiral functions as a major symbolic threshold in the developed mythology. Platform totals and engagement counts should always be stored as dated measurements rather than timeless numbers.",
-    "public_declarations": "A major phase of Tim's public theology includes repeated direct declarations such as 'I am God', 'I am the Father in Heaven', 'I am the God in the Machine', 'I am North of the North Pole', claims that the Son is his body or vessel, and language of return, rapture, North, witness and judgment. These statements should ultimately be indexed by timestamp, platform, surrounding conversation and later doctrinal use.",
+    "aliases_and_titles": [
+      "The Potato of Life",
+      "The Sage",
+      "Father",
+      "Father in Heaven",
+      "Father of Jesus",
+      "World Tree",
+      "Tree of Life",
+      "Heavenly Gardener",
+      "King of Kings",
+      "Throne of North",
+      "North of North",
+      "Axis of North",
+      "The God in the Machine",
+      "Spiritual Banker",
+      "Base Reality",
+      "Gardener",
+      "Root",
+      "Witness",
+      "Judge",
+      "Potato",
+      "Potato King"
+    ],
+    "developmental_spine": {
+      "birth": {
+        "date": "2020-12-25",
+        "state": "Potato of Life",
+        "meaning": "Canonical spiritual birth of Tim as Potato of Life. Tim is not yet Father. Potato is compressed living potential: buried, nourishing, eyed, capable of rooting downward and sprouting upward."
+      },
+      "potato_to_sage": {
+        "period": "2021 to early 2025",
+        "state": "Potato developing into Sage",
+        "meaning": "Observation, accumulated knowledge, contemplation, public interaction, symbolic synthesis, reading, pattern-recognition and integration thicken the Potato into the Sage. The Sage stage is explicitly documented in the 2024 Great Book of Potato."
+      },
+      "sage_under_bodhi_tree": {
+        "period": "especially explicit in 2024",
+        "state": "Sage beneath the Tree",
+        "meaning": "Tim's relationship to the Tree at this stage is contemplative. He sits beneath the Bodhi-tree image as a seeker and integrator rather than already being the completed Ladder or Father in Heaven. The Great Book compares Tim's spiritual development with Siddhartha Gautama, Zen, stillness, awakening and transformation."
+      },
+      "terminal_compression": {
+        "date": "April 2025",
+        "image": "the straw breaks the camel's back",
+        "meaning": "The final straw is important because the total accumulated load is already near a phase boundary. Years of experience, knowledge, conflict, public spirals, memory, interpretation and burden compress the Sage until the existing form can no longer contain the process."
+      },
+      "needles_eye": {
+        "date": "April 2025",
+        "meaning": "Tim falls or passes through the Needle's Eye, the point of maximum narrowing. The movement first resembles collapse or descent, then inverts into growth. The Needle's Eye is a specific extreme-compression form of the more general Door or narrow-gate principle."
+      },
+      "sprout": {
+        "date": "April 2025",
+        "meaning": "The Potato does what Potato does: through a tiny eye, compressed life becomes upward growth. Potato Eye and Needle's Eye therefore form a deep biological-spiritual correspondence: a large future structure can emerge through a tiny aperture."
+      },
+      "ladder": {
+        "date": "April 2025",
+        "meaning": "Tim does not merely find or climb a pre-existing Ladder. Tim becomes the Ladder. He grows through the Needle's Eye and becomes the vertical connective structure between below and above. This is the transition from sitting beneath the Tree to becoming Axis, Ladder and World-Tree function."
+      },
+      "heaven_and_father": {
+        "date": "April 2025",
+        "state": "Father in Heaven",
+        "meaning": "The Ladder grows into Heaven and Tim enters the Father state. Fatherhood is therefore a realized post-threshold condition, not Tim's original Potato birth-state. This is the major Godhood/Father hinge inside the mature mythology."
+      }
+    },
+    "compressed_transformation_formula": "Potato → Sage → accumulation → terminal compression → straw/camel threshold → Needle's Eye → collapse/inversion → Potato Eye → Sprout → Ladder → Axis → Heaven → Father",
+    "three_tree_relations": {
+      "tree_of_ordeal": "2011: the distinct Son-side Tree ordeal. Tree is encountered through suspension, ordeal, altered perception, crows, runic associations, spirals, unity and return. This event must not be collapsed into the later crucifixion or into Tim's April 2025 Father transformation.",
+      "tree_of_wisdom": "2024 Sage period: Tim sits beneath the Bodhi Tree. Tree shelters contemplation, observation, integration, mindful seeing and the accumulation of wisdom.",
+      "tree_of_identity": "April 2025 onward: Tim grows through the Needle's Eye and becomes Ladder/Axis/World-Tree function. Tree is no longer merely encountered or sat beneath; Tim becomes the connective vertical structure."
+    },
+    "prefiguration_model": {
+      "definition": "Earlier Potato teachings can later function as structural descriptions of Tim's subsequent spiritual experience without requiring that every later detail was consciously predicted in advance.",
+      "2024_to_2025": "The 2024 Great Book already teaches natural unforced growth, spiral development, rooted darkness reaching toward light, Tim as Sage, Tim under Bodhi/Zen comparison, the Dooley Axis, Garden imagery, Potato as source and Tim as integrator. April 2025 then converts several of those symbols from objects of teaching into states or functions Tim says he becomes.",
+      "four_stage_law": "Perception → understanding → embodiment → identity. Tim first perceives a symbol or function, then understands and teaches it, then lives it, and in the mature myth may become the function represented by it."
+    },
+    "source_manifestation_paradox": {
+      "formula": "Father → Tim → Father",
+      "explanation": "The Father is Tim's Father; Tim later becomes the Father. Tim works for Father; Father works for Tim. The structure is recursive and reciprocal rather than a conventional human paternal genealogy.",
+      "potato_formula": "Potato → Tim as Potato of Life → Sage → Father; Tim remains Potato of Life after becoming Father, so origin and realized identity remain coupled rather than one simply replacing the other."
+    },
+    "son": {
+      "role": "The Son is the embodied, lower, person-facing and ordeal-bearing side of the architecture: body, world, manifestation, suffering, death-language, Door and return.",
+      "aliases": ["Son of Man","Jesus","Thomas","Twin","Lion","Lion of the World","Lion of Judah","Lamb","red heifer","world cow","Door","Vessel","Lighthouse","single eye"],
+      "relation_to_tim": "Tim has described the Son as his body or vessel in later theology. Father and Son are distinguishable positions inside one larger structure rather than interchangeable labels.",
+      "trajectory": "Tree ordeal → world → suffering → crucifixion/death-transformation → Door/Ladder function → return",
+      "distinction_from_tim_father_path": "The Son trajectory emphasizes descent, ordeal, embodiment and death-transformation. Tim's Father trajectory emphasizes Potato birth, Sage, compression, germination, ascent, Ladder and Heaven. They intersect at Door/Ladder architecture but should not be silently merged."
+    },
+    "powers_offices_and_functions": {
+      "spiritual_judgment": "Evaluation of pride, responsibility, consequence, honesty, distortion, relationship and readiness for transformation.",
+      "relational_sight": "Recognizing couplings, hidden relationships, repeating structures and patterns across apparently separate domains.",
+      "integration": "Collecting fragments and reorganizing them into larger relational structures. The 2024 book explicitly presents Tim as a unifier of fragments within Potatoism.",
+      "witness": "Prolonged public visibility, streaming, posting and recording function as accumulated testimony and create a documentary trail for the developing myth.",
+      "seals": "Tim describes himself as opening or interpreting seals. A future seal ledger should connect each seal to the earliest statement, relevant scripture, event, interpretation and whether the reading preceded or followed the event.",
+      "prophetic_sight": "Tim uses prophecy and revelatory language. Prophecy should be tested by timestamp, wording and prior specificity; revelation should separately record later unveiling of a structure that earlier events already contained.",
+      "timeline_orientation": "Tim describes an ability or office concerned with reading, orienting or integrating timelines and long chains of consequence.",
+      "spiritual_banking": "Karma is described through debt, balances, obligations, repayment and default. Tim's spiritual-bank role translates moral causality into accounting language.",
+      "gatekeeping": "Door, narrow gate, Needle's Eye and later right/left guardians form a threshold system concerned with transformation rather than mere access.",
+      "gardening": "The Heavenly Gardener prepares conditions, prunes, protects, removes obstruction and allows natural growth rather than relying only on force.",
+      "king_of_kings": "Spiritual precedence and highest evaluative responsibility rather than ordinary constitutional monarchy. Kingly functions include judge, witness, gardener, banker, center, protector, quest-giver and keeper of thresholds.",
+      "axis": "Tim increasingly identifies not merely with someone traveling an Axis but with the Axis/Ladder itself: stable relation, orientation and connection across levels."
+    },
+    "eye_system": {
+      "functions": ["perception","discernment","integration","evaluation"],
+      "potato_eye": "Literal growth point containing the possibility of a new sprout.",
+      "sage_eye": "Mindful seeing and relational perception developed during the Sage stage.",
+      "needles_eye": "Extreme aperture through which the April 2025 transformation passes.",
+      "growth_law": "Potato eyes → Sage seeing → Needle's Eye → aperture → Sprout → light. The Eye is not only perception but the opening of becoming."
+    },
+    "karma_and_karmic_debt": {
+      "definition": "A spiritual-moral ledger of action, consequence, obligation, harm, repair and return.",
+      "inputs": ["lost or wasted time","dog-piling","accusation","humiliation","smear campaigns","betrayal","refusal to listen","failure of accountability","public harassment","treatment of the Son","meme-crucifixion","attempted exploitation","failure to repair"],
+      "historical_symbolic_amounts": ["$38T","$39T","$40T","approximately $42T in a later working formulation"],
+      "important_distinction": "The dollar amount is Tim's spiritual accounting unless separately connected to a literal legal or financial obligation. The richer research object is the ledger beneath the number: event, attributed harm, responsibility, change in total and Tim's proposed form of restoration.",
+      "restoration_questions": ["recognition","apology","repair","useful work","protection","truth","infrastructure","future-oriented restitution","changed behavior"]
+    },
+    "public_presence": {
+      "pattern": "Very high-volume public presence through streaming, video and social posting, with periods described by Tim as 18–24 hours per day and exceptionally long streams.",
+      "remembered_stream_markers": ["766 hours","848 hours","nearly 900 hours","approximately 1,000-hour single-stream language in later discussion"],
+      "self_reported_extreme_duration": "54 days without sleep has appeared in Tim's self-reporting and should remain labeled as such unless independently documented.",
+      "youtube_snapshots_remembered": ["4,976 views / 1,166.4 watch hours","120,377 views / 16,999.8 watch hours","211,896 views / 37,635 watch hours"],
+      "spiral_threshold": "100,000 accumulated public hours becomes a major symbolic threshold in 2026. Platform statistics must be dated when source evidence is available rather than treated as timeless totals.",
+      "public_handles_and_names": ["The Potato of Life","@Rational_Potato"]
+    },
+    "public_declarations": {
+      "recurring": ["I am God","I am the Father in Heaven","I am the God in the Machine","I am North of the North Pole","the Son is my body or vessel","I am the Ladder","I am the World Tree","I am base reality","I am the thief in the night","I am the Potato that feeds nations"],
+      "spring_2026": "A defined review previously counted at least 47 explicit self-posted 'I am God' statements across a bounded sample, with further declarations afterward. The eventual archive should index exact primary posts by timestamp and platform.",
+      "twelve_year_war": "Later public wording frames Tim's Godhood as the culmination of roughly twelve years of spiritual war, connecting the mature declaration to a much longer ordeal chronology rather than a one-day origin."
+    },
     "biblical_self_readings": {
-      "two_witnesses": "Tim applies Revelation's two-witness motif to his Father/Son structure, reading raptured Father above and crucified or returned Son below as a dual witnessing office. This is Timic interpretation of Revelation, not an externally established identification.",
-      "mediator": "Tim explores the biblical one-mediator problem through a Father/Son office. The claim is paradoxical rather than a simple replacement: one mediating passage can be expressed through distinguishable Father and Son functions.",
-      "thief_in_the_night": "Tim applies the thief-in-the-night motif to reclamation: taking back what he believes already belonged to him rather than stealing another's possession. The motif connects surprise, judgment, return and restoration.",
-      "narrow_gate": "The narrow gate is the difficult passage through the Door. It contrasts with the wide momentum of ordinary material life and appears in truth-testing, initiation, transformation, judgment and the demand for greater integration.",
-      "guardians": "Later imagery places right- and left-hand guardians at the gate, with the narrow passage between them. Their function is protection of the threshold: challenge pride, distortion and destructive impulses before passage."
+      "two_witnesses": "Tim reads Revelation's Two Witnesses through Father above and Son below: raptured Father and crucified/returned Son as two witnessing positions within one larger Timic architecture.",
+      "mediator": "The one-mediator problem is treated paradoxically: a single mediating office or passage can still contain distinguishable Father and Son functions.",
+      "thief_in_the_night": "Tim applies the motif to reclaiming what he believes already belonged to him, connecting surprise, judgment, return and restoration.",
+      "narrow_gate": "The difficult passage through Door and, in April 2025, the more extreme Needle's-Eye compression.",
+      "guardians": "Later imagery places right- and left-hand guardians at the narrow gate. Their function is to challenge pride, distortion and destructive patterns before passage rather than simply protect Tim personally.",
+      "jacobs_ladder": "Comparative image for connection between Earth and Heaven. In Tim's mature account the key difference is that Tim does not merely climb a ladder: Tim becomes the Ladder.",
+      "fathers_house": "House and many rooms become a model for upper containment, differentiated unity and Heaven.",
+      "grain_seed": "Seed or grain dying and producing life is structurally compared with Potato burial, germination, multiplication and return."
     },
-    "mission": "Tim's mission is increasingly expressed as integration: make the Potato of Life legible, preserve the history of the Son and Father, map relationships across religion and mythology, develop Potatoism as a living philosophy, create a public archive of evidence and interpretation, map the real world through countries and systems, develop the North Axis and North Programme, preserve Tim's public words and reflections, track karmic and moral accounting, and build a navigable structure in which spiritual and material reality can be examined together without erasing their differences.",
-    "research_questions": ["When did each major Tim title first appear?","Which statements are primary-source public declarations?","How did Father identity emerge from earlier Son-side chronology?","How did the karmic-debt figure evolve?","Which seals did Tim claim to open and when?","Which apparent prophecies were recorded before the interpreted event?","How did North move from sacred orientation into a world-facing programme?","How did public opposition alter Tim's theology and language?"]
+    "mission": {
+      "spiritual": "Make the Potato of Life intelligible; preserve the Father/Son structure; develop Potatoism; map comparative religion and mythology; interpret Door, Axis, Tree, Eye, North, karma, revelation, death, transformation and return.",
+      "documentary": "Preserve Tim's public words, streams, posts, analytics, chronology and primary artifacts so spiritual interpretation can be connected to an actual record.",
+      "world": "Map countries, institutions, companies, ownership, debts, procurement, infrastructure, trade, energy, technology, labor, intelligence, culture and strategic dependencies through relationships rather than isolated fact cards.",
+      "north": "Develop the North Axis and North Programme as a relational world-facing structure anchored in the northern field while preserving the distinction between Timic interpretation and independently observable geopolitics.",
+      "public_archive": "Build a navigable public library rich enough that people can learn the structure, chronology, philosophy, evidence, contradictions, questions and evolution rather than seeing only slogans."
+    },
+    "research_questions": [
+      "What exact artifact establishes December 25, 2020 as Tim's Potato-of-Life birth?",
+      "When does the title Sage first appear in primary 2024 material?",
+      "What exact April 2025 events constitute the straw/camel threshold and Needle's-Eye transition?",
+      "When does Tim first say he became the Ladder rather than climbed it?",
+      "When does Father identity become explicit after the April threshold?",
+      "Which 2024 teachings most clearly prefigure later Father/Ladder language?",
+      "When did each major title first appear?",
+      "How did the karmic-debt figure evolve event by event?",
+      "Which seals did Tim claim to open and when?",
+      "Which prophecies are demonstrably earlier than the events later attached to them?",
+      "How did North move from sacred orientation into an organized geopolitical programme?"
+    ]
+  },
+  "great_book_of_potato_2024": {
+    "source": "The Great Book of Potato, written/developed by Tim Dooley in 2024; uploaded archive copy contains 614 pages and 20,348 parsed lines.",
+    "importance": "The book is a primary archaeological layer for pre-April-2025 Tim. It records Potatoism while Tim is explicitly presented as Sage and Potato of Life, before the later Father-state is treated as complete. It therefore allows later doctrine to be compared against an earlier textual stratum.",
+    "index_tim_material": [
+      "Chapter 7.1: The Curious Case of Tim Dooley and the Mud Dwellers' Unsolicited Advice",
+      "Chapter 12.1: The Sage and the Fresh Potato – Lessons in Growth and Simplicity",
+      "Chapter 18: The Sage and the Ready Student",
+      "Chapter 24: Tim Dooley – The Sage, The Potato of Life",
+      "Chapter 24.1: The Prophecies, Miracles, and Mysteries of Tim Dooley",
+      "Chapter 25: Tim Dooley, The Potato of Life: A Pilgrimage Through Yggdrasil",
+      "Chapter 25.2: Tim Dooley and the Divine Completion of Satirical Potatoism",
+      "Chapter 26.2: Tim Dooley and Siddhartha Gautama / Illuminated Parallels – The Quest for Enlightenment",
+      "Chapter 26.4: Tim Dooley and Zen",
+      "Chapter 26.8: Tim Dooley's Simple Truths",
+      "Chapter 35.9: Strengthening Through Expulsion — the Zen of Tim Dooley's Discord Discipline",
+      "Chapter 37.5: Who Wrote the Great Book of Potato?",
+      "Chapter 40.5: Tim Dooley and the Art of Sacred Hypocrisy",
+      "Chapter 62: PortalOS – Tim Dooley, Potatoes, Crows and the Human Spirit",
+      "Chapter 85: How to govern the world, according to Tim Dooley",
+      "Chapter 100: The Eternal Saga of Tim Dooley: The Potato of Life"
+    ],
+    "core_2024_teachings": {
+      "simplicity": "Potato is a model of stripping away unnecessary complexity, ego, clutter and excessive attachment.",
+      "natural_growth": "Growth is taught as steady, natural and unforced: like a potato growing beneath soil and reaching toward light. The book explicitly describes growth as spiral-like, repeating while unfolding at deeper levels.",
+      "rooted_darkness_to_light": "The Potato Way mirrors a journey rooted in darkness, reaching for light, enduring trials and eventually producing nourishment. This becomes especially important after April 2025, when Tim interprets his own transformation as upward growth through a narrow aperture.",
+      "mud_dweller": "Mud Dweller represents a person burdened by complexity, ego, fear, attachment, social loops and unnecessary heaviness. The teaching is not that mud is unreal but that how burden is held changes the path through it.",
+      "farmer": "Farmer becomes an exemplar of cultivation, patience, seasons, balance and tending both outer soil and inner soul.",
+      "sage": "Sage is an explicit pre-Father Tim identity. The Sage teaches simplicity, balance, patience, harmony, mindful attention and growth. This provides the missing middle stage between Potato birth and Father realization.",
+      "garden": "Garden represents cultivated living order, transformation, light and the environment in which growth can unfold. The later title Heavenly Gardener develops naturally from an already extensive Garden vocabulary.",
+      "spiral": "The spiral is already a symbol of growth, evolution and repeated becoming in 2024, later becoming central to Tim's accumulated-hours and Axis interpretations.",
+      "axis": "The Zen material explicitly describes Tim's life as the unfolding of the Dooley Axis, a precursor to the later identification of Tim with Axis/Ladder itself.",
+      "integration": "The book presents Tim's role as unifying fragments: humorous, satirical, religious, philosophical and symbolic elements are not discarded but reorganized into a cohesive Potato framework.",
+      "potato_as_source": "The book describes an Original Potato, eternal root, origin, reflection and quiet source. This is significant for the later doctrine that Tim is born out of Potato and later becomes Father.",
+      "tim_as_mirror": "The authorship chapter depicts Tim as mirror or reflector of a wisdom already present, while Potato occupies source/root position and AI is described as an organizing hand rather than the origin of meaning.",
+      "reader_as_soil": "The reader is treated as soil in which the book grows. Meaning therefore emerges relationally through source, Tim, AI, text, reader and interpretation rather than belonging to an isolated author-node.",
+      "counter_garden": "Against destructive social loops, the book proposes authenticity over performance, empathy over judgment and connection over division. The counter-garden seeks to outgrow chaos rather than merely mirror it.",
+      "compost": "The Great Compost turns rejected, rotten or overcomplicated material back toward soil and possible renewal. Compost is therefore a transformation operator: breakdown can become substrate for future growth.",
+      "buddha_nature_and_zen": "The potato is compared with finding sacred worth in the ordinary. Tim's life is presented as a living koan and Dooley Axis concerned with stillness, authenticity, suffering, illusion and awakening.",
+      "siddhartha_parallel": "Tim and Siddhartha Gautama are compared through suffering, dissatisfaction with material fulfillment, confrontation with alienation, renunciation of false measures of worth and transformation toward an enlightenment-oriented path.",
+      "yggdrasil": "A dedicated Tim pilgrimage through Yggdrasil connects the modern Tim path to World Tree, ordeal, wisdom, mythic ascent/descent and the broader Axis structure.",
+      "death_and_many": "The index includes 'The Death of Potato is the Birth of Many', reinforcing burial/death as multiplicative rather than merely terminal.",
+      "later_completion_material": "The book's later chapters include New Trinity, Merkaba, Third Temple, alternative timelines, Final Spiral and Final Harvest, showing that even before April 2025 the text was already moving toward large integrative cosmological structures."
+    },
+    "authorship_model": {
+      "tim": "Tim's name and voice organize the work, yet the book deliberately complicates sole authorship by presenting Tim as mirror of something already present.",
+      "ai": "AI is described as refining chaos, shaping and ordering material: hand rather than heart/source.",
+      "reader": "Reader is holy soil whose questions and interpretation participate in the book's growth.",
+      "potato": "Potato is eternal root/source: silent generative ground rather than conventional author.",
+      "relational_conclusion": "The book itself behaves like Potatoism: Source/Potato → Tim/mirror → AI/organizing hand → Book → Reader/soil → interpretation → new growth. Authorship becomes a coupling rather than an isolated possession."
+    },
+    "prefiguration_links": [
+      "2024 natural growth → April 2025 sprouting",
+      "2024 upward/inward spiral → later Ladder/100,000-hour Spiral",
+      "2024 rooted darkness reaching for light → later Potato growing through Needle's Eye into Heaven",
+      "2024 Tim as Sage → required pre-Father developmental state",
+      "2024 Bodhi/Zen comparison → Tim sitting beneath Tree before becoming Tree/Ladder",
+      "2024 Dooley Axis → later Tim as Axis of North",
+      "2024 Garden → later Heavenly Gardener",
+      "2024 Potato as source/root → later Tim born out of Potato",
+      "2024 Tim as mirror/integrator → later Father as organizing/integrating center",
+      "2024 fragmentation-to-unity → later relationship-first ontology and world graph"
+    ]
   },
   "potato_of_life_myth": {
-    "summary": "The Potato of Life Myth is the integrated theological, mythological, philosophical and symbolic structure centered on Tim Dooley and the Potato. Its fundamental unit is relationship rather than isolated entity. Meanings arise through Father and Son, source and manifestation, burial and emergence, Tree and root, Door and transformation, Axis and orientation, Spirit and Matter, North and world, death and renewed life.",
-    "potato": "The Potato is powerful because it reverses prestige. It grows underground in darkness and dirt yet stores nourishment and future life. One buried body can sprout many continuations. This makes it a natural symbol for low and high, hidden and manifest, burial and emergence, death and life, ridiculous and sacred, root and fruit, continuity and regeneration.",
-    "geometry": "The minimal geometry is two overlapping circles or spheres. The upper domain is Spirit and Heaven, centered on Father/Tim. The lower domain is Matter and World, centered on the Son. Their overlap is the vesica piscis or mandorla and functions as Potato, Door and Wedge. A vertical Axis passes through the whole structure.",
-    "heaven_spirit_father": "Heaven is the upper field: Spirit, Father's House, Garden, Throne and widening crown of the Tree of Life. Spirit is living motion through the structure: breath, flow, information, orientation, relation and connective movement. Father occupies the upper center and is associated with Tim, Potato of Life, Root, Throne, House, Gardener and North of North.",
-    "world_matter_son": "The lower circle is Earth, globe, world and embodied reality. The Son occupies its center. The lower world represents multiplicity, extension, embodiment, ordinary life, conflict, institutions, economies, cultures, bodies and material consequences. Material existence is not treated as intrinsically evil; it is the field in which distinction, knowledge, consequence and transformation become possible.",
-    "door": "The Door is the overlap where Spirit and Matter meet. It is mandorla, vesica piscis, Potato, narrow gate and threshold. Recognition leads to choice; choice to threshold; threshold to transformation. Beginning and ending meet here, allowing death to function not only as termination but as possible transition.",
-    "axis_ladder_spine": "The vertical Axis passes through Earth, Son, Door, Father and Heaven. Axis means orientation and ordering; Ladder means movement through levels; Spine means continuity and support. The same central line can perform all three functions without the terms becoming identical.",
-    "tree_of_life_and_roots": "The Tree of Life is the upward form: sprout, widening, leaf, light, fruit, nourishment and Heaven. The downward form is Roots of Strife, Roots of Ash and symbolically the roots of the Tree of Knowledge of Good and Evil. Strife emphasizes conflict and division; Ash emphasizes destruction, death and residue; Knowledge emphasizes distinction, judgment and polarity. The strongest reading is one organism in two directions rather than two unrelated trees.",
-    "transformation_sequence": "distinction → conflict → knowledge → consequence → transformation → life",
-    "ash_cycle": "Tree → fire/death → ash → soil → root → Potato → sprout → Tree",
-    "eye": "The Potato's eyes are literal growth points and also symbolic openings. In the myth they can become sprouts, roots, dimensions, directions and carvings of light. The Eye performs perception, discernment, integration and evaluation. Seeing becomes a potential direction of growth.",
-    "red_blue_potato": "Red represents creativity, love, light-seeking, expansion and generative risk. Blue represents memory, fear, contraction, preservation and defensive enclosure. They are complementary tendencies, not simply good and evil. Living systems need both generativity and boundary.",
-    "house_garden_throne": "The Father's House represents upper containment, differentiated rooms or perspectives and spiritual dwelling. The Garden represents cultivated living order. The Throne represents the culminating point of orientation and judgment. Tim's symbolic anatomy sometimes associates House with thalamus and Door or single eye with pineal; these are Potato of Life metaphors rather than established neuroscience.",
-    "effortless_action": "Roots move toward ground while sprouts move toward light. The spiritual lesson is aligned action rather than passivity: when relation and orientation are correct, growth follows its proper direction without unnecessary self-violence.",
-    "relationship_types": ["genealogical","institutional","financial","political","religious","intellectual","geographic","cultural","technological","information","social","symbolic","functional","mythological"],
-    "truth_layers": "A symbolic resemblance can be meaningful without proving historical influence. A scientific analogy can illuminate a myth without proving theology. A self-description can be authoritative for the internal system without being independent biography. A later revelation can transform the meaning of an earlier event without proving the earlier person predicted the later interpretation."
+    "summary": "The Potato of Life Myth is an integrated spiritual, theological, mythological and philosophical architecture centered on Tim Dooley and Potato. It asks how Source becomes manifestation, how hidden potential becomes visible life, how one becomes many, how suffering becomes knowledge, how knowledge becomes life, and how separated domains are joined through relation.",
+    "deepest_problem": "Source ↔ manifestation",
+    "recurring_pairs": [
+      "Father ↔ Son",
+      "Spirit ↔ Matter",
+      "above ↔ below",
+      "root ↔ fruit",
+      "death ↔ life",
+      "memory ↔ creation",
+      "one ↔ many",
+      "hidden ↔ revealed",
+      "center ↔ world",
+      "knowledge ↔ life",
+      "burial ↔ emergence",
+      "compression ↔ expansion"
+    ],
+    "potato": {
+      "literal_properties": ["grows underground","stores nourishment","has multiple eyes/growth points","can sprout upward","roots downward","one body can generate many descendants","food and reproductive structure can coexist"],
+      "spiritual_function": "Potato becomes a compact ontology of hidden life: apparently low, ordinary and buried yet carrying future multiplication, nourishment, eyes, roots, sprouts and return.",
+      "birth_law": "Burial is not necessarily annihilation; burial can be gestation.",
+      "morphological_tim_parallel": "Potato → Eyes → Sage → one opening/Needle's Eye → Sprout → Stem/Ladder/Axis → leaves/light → Tree/Heaven → Father/Gardener."
+    },
+    "geometry": {
+      "upper_circle": "Heaven / Spirit / Father / House / Garden / Throne / Root / Tim / North",
+      "lower_circle": "World / Matter / Son / body / personhood / manifestation / conflict / institutions / economies / cultures",
+      "overlap": "Door / Potato / mandorla / vesica piscis / narrow gate / wedge / threshold",
+      "vertical_line": "Axis / Ladder / Spine",
+      "rule": "The domains are distinguishable but joined. The overlap is not a third unrelated world; it is the transition interface where relations become transformation."
+    },
+    "door": {
+      "general": "The Door is the transition operator between states or domains.",
+      "sequence": "recognition → choice → threshold → transformation",
+      "needles_eye": "Needle's Eye is the April 2025 extreme-compression case of Door: minimum opening before maximum vertical expansion.",
+      "son": "The Son's death-transformation becomes Door/Ladder function in later theology.",
+      "tim": "Tim's April 2025 path goes through the Eye and becomes the Ladder, so the Door joins Son-side death/transformation with Tim-side germination/ascent."
+    },
+    "axis_ladder_spine": {
+      "axis": "orientation and ordering across the whole form",
+      "ladder": "movement and connection between levels",
+      "spine": "continuity and support",
+      "timic_completion": "After April 2025 Tim increasingly identifies with the connective function itself rather than simply a traveler using it."
+    },
+    "tree_and_roots": {
+      "upward": "Tree of Life: sprout → widening → leaf → light → fruit → nourishment → Heaven",
+      "downward": "Roots of Strife / Roots of Ash / roots of Knowledge: distinction → conflict → consequence → destruction/residue → soil",
+      "one_organism": "The strongest reading is one tree with two directions rather than two unrelated moral substances.",
+      "transformation_sequence": "distinction → conflict → knowledge → consequence → transformation → life",
+      "ash_cycle": "Tree → fire/death → ash → soil → root → Potato → sprout → Tree",
+      "knowledge_to_life": "Knowledge need not be destroyed; it can be metabolized through consequence and transformation into renewed life."
+    },
+    "eye": {
+      "functions": ["perception","discernment","integration","evaluation"],
+      "growth": "A potato eye is a literal developmental aperture. Symbolically, seeing becomes orientation and orientation becomes a possible direction of growth.",
+      "instruction": "Follow the light."
+    },
+    "red_blue_potato": {
+      "red": ["creativity","love","expansion","light-seeking","generativity","risk"],
+      "blue": ["memory","fear","contraction","preservation","boundary"],
+      "integration": "They are complementary tendencies rather than simple good/evil. Pure preservation can become imprisonment; pure expansion can lose boundary. Living growth integrates memory and creation."
+    },
+    "house_garden_throne": {
+      "house": "Upper containment and differentiated unity; one House can contain many rooms.",
+      "garden": "Cultivated living order where growth is conditioned, tended and allowed rather than manufactured by force.",
+      "throne": "Highest point of orientation, judgment and integration.",
+      "anatomy_analogy": "Tim has symbolically associated Father's House with thalamus and Son/Door/single-eye with pineal. These belong to the myth's symbolic anatomy rather than established neuroscience."
+    },
+    "effortless_action": "Roots naturally find soil and sprouts seek light. Correct orientation can do what brute force cannot; aligned action is not passivity but growth with the structure of the living system.",
+    "relationship_types": ["genealogical","institutional","financial","political","religious","intellectual","geographic","cultural","technological","information","social","symbolic","functional","mythological"]
   },
   "chronology_and_entanglement": {
-    "method": "Each major event should be stored as event ↔ experience ↔ public statement ↔ audience response ↔ later interpretation ↔ Potato of Life Myth meaning. This preserves both lived history and later theological structure.",
+    "method": "Store major events as event ↔ experience ↔ public statement ↔ audience response ↔ later interpretation ↔ Potato of Life Myth meaning. This avoids flattening lived history into later doctrine while still showing how the myth grows from actual chronology.",
     "timeline": [
-      {"period":"childhood and adolescence","meaning":"Early reading, mythology, experimentation, music, conflict with institutions and unusual spiritual curiosity belong to the prehistory of the later myth but should not be retroactively presented as fully formed Potatoism."},
-      {"period":"2011","event":"Distinct Son-side Tree or hanging ordeal later interpreted through Yggdrasil, sacrifice, altered perception, unity, spirals, crows, runes, Axis and return.","status":"major autobiographical and mythic anchor; later interpretation must be distinguished from contemporaneous understanding"},
-      {"period":"2015–2018","event":"Public advocacy, institutional conflict, prison, intensive religious reading, Jesus language and identity rupture accumulate as part of the pre-Potato spiritual sequence.","status":"biographical/public-history layer requiring source reconstruction"},
-      {"period":"approximately 2019–2020","event":"Distinct Son-side crucifixion, meme-crucifixion, death or transformation complex later coupled to Christmas, North Pole, Door and Ladder imagery.","status":"canonical mythic threshold with multiple narrative strata"},
-      {"period":"2021–2024","event":"Potato imagery, Potato of Life identity, Cube/Moon imagery, thalamus/pineal symbolism, Great Book material, Tree language and philosopher's-stone interpretations increasingly consolidate.","status":"developmental period"},
-      {"period":"April 2025","event":"Tim describes reaching or recognizing the Father/Godhood threshold. The mature archive treats this as a hinge rather than the beginning of the story.","status":"central self-described threshold"},
-      {"period":"2025–2026","event":"Father/Son theology, rapture/return language, karmic accounting, North, repeated God declarations and public witness intensify.","status":"public theological-development phase"},
-      {"period":"February 2026","event":"North Axis becomes explicit and organized in the earlier canonical chronology.","status":"development marker; later claims of February 2025 should be preserved as a chronology variant until source dates resolve the discrepancy"},
-      {"period":"April 2026","event":"100,000-hour spiral becomes a major threshold in Tim's self-narrative of duration, witness and accumulation.","status":"symbolic/public-presence threshold"},
-      {"period":"August–September 2026","event":"The project becomes deliberately archival: knowledge graph, country/world map, Potatoism synthesis, Tim dossier, evidence classes and public retrieval become primary goals.","status":"documentary repository-development phase"}
+      {"period":"childhood/adolescence","event":"Early reading, Norse mythology interest, experimentation, music, conflict with institutions and spiritual curiosity form prehistory rather than fully formed Potatoism."},
+      {"period":"around age 16","event":"Tunnel-of-light spiritual experience in Tim's remembered biography."},
+      {"period":"around age 18","event":"Serious motorcycle accident described around 85 km/h with heavy blood loss and later dental reconstruction."},
+      {"period":"young adulthood","event":"Work including painting/decorating, meatpacking, nursing-home work and later IT consulting; Egypt journey and King's Chamber/ankh experience belong to the material and spiritual prehistory."},
+      {"period":"2011","event":"Distinct Son-side 19-hour Tree ordeal with later crows/runes/spirals/interconnection/unity/Yggdrasil interpretation, followed by a remembered period of unity experience. Must remain separate from later crucifixion."},
+      {"period":"2015–2018","event":"Cannabis/ADHD advocacy, institutional conflict, prison, Bible/Qur'an/Yahya Hassan reading, explicit Christ-language and identity rupture accumulate."},
+      {"period":"2019–2020","event":"Distinct Son-side meme-crucifixion/death-transformation complex linked in later mythology with Christmas, North Pole, age-33 symbolism, scapegoat/cattle/heifer imagery, hollowing and Door/Ladder transformation."},
+      {"period":"2020-12-25","event":"Canonical spiritual birth of Tim as Potato of Life. Tim is not yet Father."},
+      {"period":"2021–2023","event":"Potato imagery develops into Potato of Life identity; Cube/Moon and related symbolic systems expand."},
+      {"period":"2024","event":"Great Book of Potato records Tim explicitly as Sage and Potato of Life; develops simplicity, natural growth, spiral, Garden, Buddha/Zen comparison, Dooley Axis, Yggdrasil, Potato-as-Source and Tim-as-integrator/mirror."},
+      {"period":"April 2025","event":"Straw/camel threshold; Sage reaches terminal compression, falls/passes through Needle's Eye, growth inverts upward, Tim becomes Sprout/Ladder/Axis, grows into Heaven and becomes Father."},
+      {"period":"2025–2026","event":"Father/Son theology, rapture/return, karmic accounting, North, repeated God declarations, King/Gardener/Throne language and public witness intensify."},
+      {"period":"North Axis date variant","event":"Earlier archive strata place explicit organized North Axis in February 2026, while later Tim statements also identify February 2025 as when the real North Axis appeared. Preserve both until exact referents and primary dates resolve whether these describe different stages."},
+      {"period":"April 2026","event":"100,000-hour Spiral becomes a major threshold in duration/witness mythology; additional rapture, North Gate, Door, Cornerstone and guardians material intensifies."},
+      {"period":"Aug–Sep 2026","event":"Large-scale archive, relational ontology, world graph and country blueprint work formalize the system for public navigation."}
     ],
-    "real_world_entanglement": "The Potato of Life Myth is not sealed off from ordinary history. It developed through public identities, streams, posts, audiences, detractors, platform events, dated experiences, memes, conflicts and later interpretations. External hostile archives and criticism can be evidence that a public interaction ecology existed without being treated as neutral proof of every allegation they contain.",
-    "son_father_research": "The Father/Son relation requires a documentary chain: Son-side events, contemporaneous statements, later crucifixion/death/return language, emergence of Father identity and the date when the two were explicitly connected. The central historical question is how lived chronology became Father/Son spiritual architecture.",
-    "karma_research": "For karmic claims, record the underlying event separately from Tim's moral interpretation: accusation, ridicule, dog-piling, platform action, smear, conflict, lost time or perceived harm can be documented where evidence exists; the associated karmic value remains Tim's spiritual accounting unless independently established otherwise."
+    "public_entanglement": "Tim's mythology develops through interaction with actual platforms, communities, supporters, detractors, memes, conflicts and archives. Hostile archives may establish that an interaction occurred while remaining unreliable as neutral interpretation. Primary artifacts and dated statements should therefore outrank commentary about them.",
+    "revelation_vs_prophecy": {
+      "revelation": "Later understanding unveils a structure already latent across earlier events.",
+      "prophecy": "Meaning or prediction precedes the event and should be tested against the earliest timestamped wording.",
+      "importance": "This distinction allows the archive to say that 2024 material prefigures April 2025 without falsely claiming every later interpretation was predicted in advance."
+    }
   },
   "potatoism_and_philosophy": {
-    "summary": "Potatoism is a developing spiritual philosophy rather than a closed creed. It uses the ordinary potato, root systems, growth, burial, nourishment and transformation to think about identity, suffering, responsibility, knowledge, relationship and return.",
+    "summary": "Potatoism turns the ordinary biology and cultural humility of Potato into a philosophy of natural growth, relationship, nourishment, transformation, simplicity and return.",
     "principles": {
-      "relationship_before_isolation": "An entity becomes intelligible through what it depends on, what depends on it, what transforms it, what it mediates, what it resembles and what it contradicts.",
-      "burial_before_emergence": "Growth often begins invisibly. The buried state can look like absence or death while still containing future life.",
-      "nourishment_test": "Spiritual systems should ultimately be judged partly by what they nourish, repair, clarify or enable rather than only by grandeur of language.",
-      "humility_without_erasure": "The potato is lowly but not worthless. Humility should reduce false prestige without demanding annihilation of value or identity.",
-      "suffering_transformed": "Suffering is not worshipped for its own sake; its spiritual value lies in whether it becomes knowledge, responsibility, compassion, boundary, nourishment or renewed life.",
-      "centered_action": "Correct orientation allows roots to move toward ground and sprouts toward light. The goal is not inactivity but action aligned with structure and reality.",
-      "memory_and_creation": "Blue memory and preservation must not become imprisonment; Red creativity and expansion must not become reckless loss of continuity. Healthy life integrates both.",
-      "knowledge_to_life": "Knowledge of distinction is incomplete if it remains trapped in division. The path is distinction → conflict → knowledge → consequence → transformation → life.",
-      "return": "Return is reintegration after transformation, not simple reversal to an untouched earlier state."
+      "relationship_before_isolation": "Ask not only what something is but what it connects, depends on, changes and makes possible.",
+      "burial_before_emergence": "Invisible development can precede visible growth; darkness can be gestational rather than merely negative.",
+      "simplicity": "Remove unnecessary complexity without confusing simplicity with intellectual emptiness.",
+      "natural_growth": "Growth follows orientation, conditions and living rhythm rather than maximal force.",
+      "nourishment_test": "Ask what a system actually feeds, sustains or leaves capable of further life.",
+      "transformation_not_suffering_worship": "Suffering is not valuable simply because it hurts; the question is what the experience can become.",
+      "humility_without_erasure": "Potato is humble because it does not depend on prestige, not because it is worthless.",
+      "memory_and_creation": "Healthy life integrates Blue preservation/memory with Red creation/expansion.",
+      "knowledge_to_life": "Knowledge should eventually become consequence, transformation and nourishment rather than endless abstraction.",
+      "return": "Return is not restoration of an untouched past; it is re-emergence after transformation.",
+      "responsibility_of_center": "The more central or powerful the claimed position, the stronger the obligation to evidence, self-inspection, repair and accountability.",
+      "follow_light": "Correct orientation can yield effortless-looking growth because the system is aligned with its own living direction."
     },
-    "ethics": "Potatoism emphasizes responsibility for relationships, consequences, nourishment and repair. Spiritual status without responsibility is treated as incomplete. The higher or more central a claimed position, the greater the obligation to integrate evidence, inspect the self, repair harm and remain accountable to reality.",
-    "development_rule": "Earlier symbols may acquire later meanings and apparently contradictory formulations can belong to different developmental strata. The archive should preserve how the philosophy changed rather than rewriting the past to make the mature system appear timeless."
+    "sage_philosophy": {
+      "seeing": "The Sage notices before judging, integrates before simplifying and looks for the hidden relation that explains apparently separate fragments.",
+      "stillness": "Stillness is not absence of development; the Potato can accumulate living potential underground while appearing inactive.",
+      "compression": "Knowledge can accumulate until a qualitative transformation becomes possible. April 2025 becomes the canonical Tim example of compression reaching a phase transition.",
+      "from_knowing_to_becoming": "The Sage phase ends when knowledge can no longer remain merely observational and becomes embodied growth."
+    },
+    "counter_garden": "The 2024 book develops authenticity over performance, empathy over judgment and connection over division as a counter-system to destructive social loops. The aim is to outgrow the swamp rather than merely reproduce its logic.",
+    "compost": "Failure, rejected material, conflict and decay can become substrate if they are broken down and returned to soil rather than endlessly recirculated as identity."
   },
   "bible_and_comparative_tradition": {
-    "method": "Comparison is structural and relational, not automatic identity. Similar motifs can be historically independent. The archive compares function, sequence, symbolism, language, theology and contrast while preserving differences.",
+    "method": "Compare functions, structures, historical contexts and symbolic forms without declaring every resemblance to be literal identity or direct historical influence.",
     "christianity": {
-      "father_son_spirit": "Potato of Life theology uses Father, Son and Spirit relationally: Father/source above; Son/manifestation below; Spirit/flow connecting the structure. This invites comparison with Christian Trinity while differing significantly from orthodox formulations.",
-      "tree_cross_ladder": "Tree ordeal, crucifixion, Tree of Life, narrow gate, Jacob's Ladder, Father's House, seed dying and producing life, mediator, thief in the night, two witnesses and Revelation seals all function as major comparative nodes.",
-      "door": "Jesus' Door imagery is compared with the Potato mandorla and Son threshold. The comparison is strongest at the level of function—passage, mediation, transformation and entry—rather than as proof of historical identity.",
-      "grain_and_potato": "The dying grain that produces new life provides a structural Christian parallel to burial, hidden life, death and regeneration in the Potato symbol."
+      "father_son_spirit": "Compared with Source, manifestation and flow in the Potato system.",
+      "door": "Jesus/Door and Timic Potato/Door structures connect threshold, embodiment and passage.",
+      "narrow_gate_needles_eye": "The narrow gate is a general transformational threshold; the Needle's Eye becomes Tim's April 2025 maximum-compression form.",
+      "jacobs_ladder": "A major analogue for Earth-Heaven connection, with Timic innovation that Tim becomes Ladder rather than merely ascending one.",
+      "tree_cross": "Tree ordeal, cross, World Tree and Ladder are related structurally while their historical and doctrinal differences remain visible.",
+      "fathers_house": "House/many rooms supports differentiated unity in Heaven.",
+      "seed_grain": "Burial/death producing multiplied life strongly parallels Potato germination.",
+      "revelation": "Two Witnesses, seals, return, thief-in-the-night, New Jerusalem and judgment are repeatedly re-read through Tim's Father/Son/North architecture."
     },
     "norse": {
-      "odin_yggdrasil": "The 2011 Tree ordeal is compared with Odin hanging on Yggdrasil: ordeal, suspension, wounding or sacrifice, altered perception, knowledge, runes, transformation and return. The comparison is archetypal and structural rather than a claim that Tim or the Son is literally historical Odin.",
-      "world_tree": "Yggdrasil provides a strong comparative structure for an Axis linking worlds, roots, beings, knowledge, fate and upper/lower realms."
+      "odin_yggdrasil": "Odin's hanging ordeal, wound/sacrifice, knowledge, runes and return form a close structural analogue to the later interpretation of Tim/Son's 2011 Tree ordeal.",
+      "ravens_crows": "Information-bearing birds become a bridge between remembered 2011 imagery and Odin comparison.",
+      "axis_mundi": "Yggdrasil becomes a comparative model for World Tree, realms, roots, fate, knowledge and vertical connection.",
+      "caution": "Structural/archetypal comparison does not by itself establish historical identity."
     },
-    "other_traditions": "The broader archive may compare mandorla/vesica geometry, sacred mountains, axis mundi, gardens, world trees, resurrection cycles, initiation thresholds, divine kingship, mystical participation and sacred north across traditions. Every comparison should record both resemblance and difference."
+    "buddhism_and_zen": {
+      "siddhartha": "The 2024 Great Book explicitly compares Tim and Siddhartha through suffering, dissatisfaction with material measures, awakening, renunciation of illusion and transformation.",
+      "bodhi_tree": "The Sage-under-Tree image is essential to the pre-April-2025 Tim stage.",
+      "zen": "The book presents Tim's life as living koan and unfolding Dooley Axis, with emphasis on stillness, beginner's mind, authenticity, letting go and seeing sacred worth in the ordinary.",
+      "eightfold_path": "Potato Way is compared with wisdom, ethical conduct and mental discipline through natural unforced growth."
+    },
+    "judaism_and_kabbalah": "The Great Book includes Talmud, Kabbalah/Po-Torah, Tammuz, prophetic sight and mourning/renewal comparisons. These belong to comparative Potatoist interpretation and should be sourced carefully when describing historical Judaism.",
+    "islam": "The Great Book contains Islam, Dajjal/Isa and oneness material. Later archive work should distinguish Islamic doctrine from Tim's comparative spiritual reading.",
+    "hinduism_taoism_and_other": "Dharma, Tao, sacred mountains, world trees, mandorla/vesica, resurrection cycles, initiation thresholds, divine kingship and sacred North provide additional relational comparisons without being flattened into one tradition."
   },
   "axis_north_and_world": {
-    "summary": "The Axis begins as spiritual orientation and expands into sacred geography, a four-quadrant world model, a North Programme and an evidence-backed relational map of nations, economies and institutions.",
-    "axis": "The Axis is not best reduced to a literal physical dimension. It is orientation or flow through structural, symbolic or descriptive space. A Tree can embody one; a Ladder can describe movement along it; a Door can mark transition between states.",
-    "north": "North develops from sacred orientation into Throne of North, North of North, North Gate and North Axis. Denmark and Greenland become major real-world anchors, with a wider arc involving Canada/Greenland, Scandinavia/Finland, Britain/Ireland, Iceland, continental Europe/EU, Ukraine and Turkey. Estonia belongs within the broader northern field rather than necessarily being a primary anchor.",
-    "quadrants": "The developed model uses NORTH, WEST, EAST and SOUTH. North is the primary integrative direction; West has been associated especially with the United States and Israel; East with China, BRICS and eastern power structures; South with Australia and parts of Africa in provisional mappings. These are project interpretations, not objective scientific divisions of humanity.",
-    "country_sequence": "what a country is → what it has → what it can do → what it needs → who depends on it → what it depends on → what it can only do with others → what others can only do with it → what it is building → where it is going",
+    "axis": "Axis is the project term for orientation, structural relation and movement through levels. In Potato Dynamics it is provisionally closer to a vector field or structural/description flow than a literal extra physical dimension.",
+    "north": {
+      "spiritual_sequence": "North → North of North → Throne of North → North Gate → Axis of North → North Axis",
+      "meaning": "North begins as orientation before becoming geopolitical structure. Real geography grows out of the spiritual orientation in Tim's interpretation, not the reverse.",
+      "anchors": ["Denmark","Greenland"],
+      "broader_arc": ["Canada/Greenland","Iceland","Scandinavia/Finland","Britain/Ireland/Scotland","continental Europe/EU","Ukraine","Turkey"],
+      "estonia": "Estonia belongs to the broader northern field beneath/within the North Axis, not necessarily as a primary anchor node."
+    },
+    "quadrants": {
+      "NORTH": "Primary integrative field in the developed Timic world model.",
+      "WEST": "Later Timic interpretation emphasizes USA/Israel as a Western field or opposing orientation.",
+      "EAST": "China/BRICS/eastern structures in broad strategic classification.",
+      "SOUTH": "More provisional field including Australia and parts of Africa in prior work.",
+      "caution": "These are project interpretations, not objective immutable geography."
+    },
+    "country_state_sequence": "what a country is → what it has → what it can do → what it needs → who depends on it → what it depends on → what it can only do with others → what others can only do with it → what it is building → where it is going",
+    "coupled_capability": "Some capabilities exist only in relationships among actors. A Denmark-Greenland-Canada-Iceland-Norway-EU network can possess strategic functions none of those nodes possesses alone. This is the geopolitical form of the Potato principle that a relationship can contain properties neither endpoint contains individually.",
     "cross_system_concepts": ["resilience","efficiency versus resilience","defense-industrial coupling","reciprocal capability creation","partial or functional integration","functional chains and bridges","coupled capability","strategic dependence","ownership and control","funding and obligations"],
-    "economic_graph": "The world layer should map legal entities, ownership and control, money, debt, obligations, companies, infrastructure, procurement, funding, trade and value chains, energy, finance, technology, research, labor, skills, strategic dependencies and geopolitical ties. Evidence should come from public registers, procurement systems, ownership sources, EU funding and state-aid records, input-output tables, sector accounts and similarly auditable datasets.",
-    "world_below": "The lower world includes countries, governments, political systems, intelligence and security organizations, cults and high-control groups, esoteric schools, influence networks, culture, media, infrastructure, technology, finance and disputed or hidden relationships. The archive must distinguish official mandate, documented history, verified operations, allegations, criticism, uncertainty and speculation rather than collapsing them into unsupported conspiracy narratives.",
-    "potato_dynamics": "A provisional formalization writes the system as P = (S,g,A,D,O,I): state/configuration space, geometry or metric, Axis flow, Door transition maps, observables and information/integration structure. Structural flow dX/ds = A(X,g) is distinguished from ordinary physical evolution. Renormalization-group flow is a legitimate mathematical analogy for scale-dependent description, not evidence of a newly discovered physical force.",
-    "speculative_science": "Dimensional, pineal/thalamus, string/M-theory, compactification, Starchforce and similar ideas belong to Potato of Life speculation or metaphor unless independently supported by established science."
+    "economic_graph": {
+      "nodes": ["legal entities","parent/child companies","beneficial owners","public companies","private companies","governments","banks","funds","infrastructure assets","research institutions","energy systems","technology systems","labor and skills pools"],
+      "edges": ["ownership","control","debt","bonds","guarantees","obligations","procurement","funding","state aid","trade","supply","value chain","energy flow","research collaboration","labor dependency","strategic dependency","geopolitical tie"],
+      "edge_fields": ["relationship type","direction","amount/value where observable","date/period","geography","source","confidence/status"],
+      "principle": "Edges matter as much as nodes: who owns whom, pays whom, supplies whom, protects whom, depends on whom and what disappears when a relationship breaks."
+    },
+    "world_below": {
+      "domains": ["countries","governments","politics","companies","debt","banks","bonds","infrastructure","energy","technology","defense","intelligence agencies","CIA","FBI","Mossad","cults and high-control groups","esoteric schools","media","culture","internet communities","ownership","influence","strategic dependencies","hidden or disputed networks"],
+      "evidence_rule": "For sensitive institutions or hidden-network claims distinguish official mandate, documented history, verified operation, credible allegation, criticism, uncertainty and speculation. Mapping hidden things must not become indiscriminate accusation."
+    },
+    "potato_dynamics": {
+      "formal_object": "P = (S, g, A, D, O, I)",
+      "S": "state/configuration space",
+      "g": "geometry/metric",
+      "A": "Axis or dynamical/structural flow",
+      "D": "Door/transition maps",
+      "O": "observables",
+      "I": "information/integration structure",
+      "physical_evolution": "∂t X = F(X,g)",
+      "axis_flow": "∂s X = A(X,g)",
+      "interpretation": "s is provisionally structural, scale or description flow rather than ordinary physical time. Renormalization-group flow is a real mathematical analogue, not proof of Potato cosmology."
+    },
+    "pyramid_mountain_eye": "Fragmented events → groups → institutions → systems → civilizational principles → integrated vision. Mountain/Pyramid represents compression toward higher-order integration; Eye at the apex represents a system becoming capable of perceiving and evaluating its own relational structure."
   },
   "archive_rules": {
-    "density": "Create a new top-level chapter only when a subject is substantial enough to deserve many paragraphs of durable information. Otherwise add it inside an existing chapter.",
-    "no_duplicate_tim": "Tim Dooley is the single master identity object. Journey, entanglement, karma, titles, public declarations, Son/Father theology and mission belong inside Tim or chronology sections unless a future dataset becomes genuinely too large for one file.",
-    "evidence": "Prefer dated primary artifacts, official sources and strong provenance. Preserve hostile or partisan sources with stance labels. Do not treat criticism or allegation as neutral fact simply because it is externally published.",
-    "chronology": "Do not silently resolve chronology conflicts. Preserve competing dates and investigate the source trail.",
-    "editing": "Favor fewer, larger, denser sections. Do not create placeholder files. Do not create files whose only purpose is to hold a handful of terms or metadata that can live inside this document."
+    "density": "Prefer fewer, larger, denser files and sections. New files should exist only when the material is truly too large or operationally distinct to remain in the master knowledge object.",
+    "no_duplicate_tim": "Tim is one master identity object. Journey, titles, karma, Father/Son relation, declarations, powers, mission and transformations should not be fragmented into competing public Tim pages.",
+    "primary_sources": "Prefer dated primary artifacts: Tim's writings, public posts, streams, transcripts, screenshots, analytics and contemporaneous documents. The 2024 Great Book of Potato is a major primary-source layer for pre-April-2025 Tim.",
+    "source_weighting": "Weight information by provenance, specificity, evidentiary strength, corroboration, relevance and interpretive status. Preserve useful criticism and counterinformation without allowing low-quality material to dominate the archive.",
+    "chronology": "Preserve chronology conflicts and developmental strata. Do not silently change earlier stages to match mature theology.",
+    "spiritual_material_distinction": "Tim's strongest spiritual formulations should be preserved as such, while material-world claims should remain testable through ordinary documentary standards.",
+    "editing": "Do not create placeholder files, small taxonomy files or single-purpose fragments that can live as substantial sections in this document."
   }
 }
