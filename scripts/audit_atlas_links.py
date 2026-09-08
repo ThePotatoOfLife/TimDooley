@@ -31,8 +31,7 @@ def lexicon_ids(path):
             if x.get('term'):
                 s=re.sub(r'[^a-z0-9]+','-',str(x['term']).lower()).strip('-')
                 out.add(s)
-        elif isinstance(x,list) and x:
-            out.add(str(x[0]))
+        elif isinstance(x,list) and x:out.add(str(x[0]))
     return out
 
 all_records=set()
@@ -53,14 +52,14 @@ all_records |= hawkins
 rels=load('data/relationships.json').get('relationships',[])
 endpoints={r.get(side) for r in rels for side in ('source','target') if r.get(side)}
 phantom=sorted(endpoints-all_records)
-# Runtime repository routes: nation IDs are intentionally handled by nation.html; everything else in the
-# repository leaf resolver goes through node.html, with geometry having its dedicated route.
+# Only literal route IDs are static references. Runtime template expressions such as
+# node.html?id=${encodeURIComponent(id)} cannot be validated as concrete IDs here.
 htmls=list(ROOT.glob('*.html'))
 route_refs=set()
+route_pattern=re.compile(r'(?:node|nation|geometry)\.html\?id=([A-Za-z0-9._~-]+)(?=["`&\s<>])')
 for p in htmls:
     text=p.read_text(encoding='utf-8',errors='replace')
-    for m in re.finditer(r'(?:node|nation|geometry)\.html\?id=([^"`&\s<>]+)',text):
-        route_refs.add(m.group(1))
+    for m in route_pattern.finditer(text):route_refs.add(m.group(1))
 # Tree references must resolve to a real record, not merely to an endpoint mentioned in relationships.
 tree=load('data/tree.json');tree_refs=set()
 for level in tree.get('levels',[]):
@@ -72,10 +71,8 @@ if len(load('data/nations.json').get('nations',[]))!=195:errors.append('expected
 if phantom:errors.append('phantom relationship endpoints: '+', '.join(phantom))
 if tree_missing:errors.append('unresolved tree references: '+', '.join(tree_missing))
 for ref in sorted(route_refs):
-    # Strip common URL encoding only for diagnostics; static literal refs are checked against IDs.
-    raw=ref
-    if raw not in all_records and raw not in {str(x).lower() for x in all_records}:
-        errors.append('static route references unknown ID: '+raw)
+    if ref not in all_records and ref.lower() not in {str(x).lower() for x in all_records}:
+        errors.append('static route references unknown ID: '+ref)
 print(f'Canonical record IDs: {len(all_records)}')
 print(f'Relationship endpoints: {len(endpoints)}')
 print(f'Phantom relationship endpoints: {len(phantom)}')
