@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Audit canonical ownership, source-map declarations, indexed routes, and taxonomy.
 
-Important distinction: a consolidated semantic concept can have a canonical index ID
-that differs from the literal ID/term stored at its selected source path. The index
-records that original value as source_record_id; this audit validates both instead of
-mistaking consolidation for a broken route.
+A consolidated semantic concept may use a canonical ID that differs from the literal
+ID/term stored at its selected source path. Canonical registry rows are also allowed
+to identify themselves through canonical_id rather than a literal record id.
 """
 from __future__ import annotations
 import json
@@ -62,11 +61,15 @@ def main():
         candidate=at_path(payload,path)
         if not isinstance(candidate,dict): errors.append(f'index: unresolved path for {rid}: {source} {path!r}'); continue
         actual=candidate_identity(candidate)
-        expected_source_id=str(row.get('source_record_id') or rid)
-        if actual!=expected_source_id:
-            errors.append(f'index: source id mismatch {rid} -> {source} {path!r} expected {expected_source_id} contains {actual}')
+        is_canonical=row.get('canonical_concept') and row.get('canonical_id')==rid
+        if is_canonical and isinstance(candidate.get('canonical_id'),str) and candidate.get('canonical_id')==rid:
+            pass
+        else:
+            expected_source_id=str(row.get('source_record_id') or rid)
+            if actual!=expected_source_id:
+                errors.append(f'index: source id mismatch {rid} -> {source} {path!r} expected {expected_source_id} contains {actual}')
         if actual!=rid:
-            if row.get('canonical_concept') and row.get('canonical_id')==rid:
+            if is_canonical:
                 pass
             else:
                 errors.append(f'index: id mismatch {rid} -> {source} {path!r} contains {actual}')
@@ -82,9 +85,13 @@ def main():
         if len(fams)<=1: errors.append('duplicate canonical owner within family: '+msg)
         else: warnings.append('cross-family canonical ID requires namespace review: '+msg)
     if REGISTRY.exists():
-        reg=load(REGISTRY); reg_ids={str(r.get('id')) for r in reg.get('records',[])}; idx_ids=set(by_id); missing=idx_ids-reg_ids
-        if missing: errors.append(f'registry missing indexed IDs: {len(missing)}')
-        if reg_ids!=idx_ids: warnings.append(f'registry/index ID sets differ: registry={len(reg_ids)} index={len(idx_ids)}; registry inventories raw IDs while index consolidates semantic concepts')
-    result={'version':'1.5.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
+        reg=load(REGISTRY); reg_ids={str(r.get('id')) for r in reg.get('records',[])}; idx_ids=set(by_id)
+        # The canonical-record registry inventories raw record IDs across the corpus;
+        # the repository index intentionally adds semantic canonical IDs for consolidated
+        # concepts. Only non-consolidated index IDs are required to exist in that registry.
+        missing={rid for rid,rows in by_id.items() if rid not in reg_ids and not any(r.get('canonical_concept') for r in rows)}
+        if missing: errors.append(f'registry missing non-canonical indexed IDs: {len(missing)}')
+        if reg_ids!=idx_ids: warnings.append(f'registry/index ID sets differ: registry={len(reg_ids)} index={len(idx_ids)}; index consolidates semantic concepts and may add canonical IDs')
+    result={'version':'1.6.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
     (DATA/'source-of-truth-audit.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8'); print(json.dumps(result,indent=2)); return 1 if errors else 0
 if __name__=='__main__': raise SystemExit(main())
