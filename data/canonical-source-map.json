@@ -1,5 +1,5 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-08",
   "purpose":"Canonical ownership map for overlapping repository datasets. One family may have multiple technical layers, but only one layer owns each kind of fact; indexes, enrichments, observations, graph projections and research waves must reference rather than duplicate the owner.",
   "rule":"Canonical ownership is about authority for a record type, not about which file happens to be largest. A source, observation or derived view can remain separate without becoming a competing canonical record.",
@@ -14,6 +14,12 @@
       "enrichment_layers":["data/countries/*.json","data/countries/*-enrichment.json","data/country-enrichment-batch-*.json","data/country-enrichment-index.json"],
       "legacy_or_fallback":["data/country-fallback.json"],
       "policy":"country-static owns normalized country observations/snapshots; countries/index owns identity; enrichment files add sourced fields and must never become alternate country biographies. Generated country nodes are graph projections."
+    },
+    "north_europe_economic":{
+      "canonical_owner":"data/north-europe-economic-network.json",
+      "system_view":"data/north-europe-system-atlas.json",
+      "related_views":["data/european-sector-atlas.json","data/european-system-observations-2026-09.json","data/nations-economies-coupled.json"],
+      "policy":"north-europe-economic-network owns the domain records it declares for the North European economic network, including companies, infrastructure and system entities such as Maersk. System/sector/observation datasets are scoped views or evidence layers and must reference these records rather than create competing identities. Country files remain authoritative for country identity and country-level observations."
     },
     "potatoism":{
       "canonical_owner":"data/potatoism-dossiers.json",
@@ -83,6 +89,7 @@
     "Audit every family for duplicate IDs and aliases.",
     "Mark deprecated/derived files explicitly before deleting anything.",
     "Do not delete historical research waves until their unique information has been compared and migrated.",
-    "Add CI checks preventing a derived layer from silently becoming a second canonical owner."
+    "Add CI checks preventing a derived layer from silently becoming a second canonical owner.",
+    "Resolve navigation by source file and exact JSON path; do not require every domain record to be copied into data/nodes.json."
   ]
 }
