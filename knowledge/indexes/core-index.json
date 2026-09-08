@@ -1,6 +1,6 @@
 {
-  "version":"2.3.0",
-  "principle":"The Potato of Life has one root system. Myth, lived history and the world remain distinguishable but connected through dated relationships and evidence.",
+  "version":"2.4.0",
+  "principle":"The Potato of Life has one root system. Myth, lived history, formal models, cultural systems and the observable world remain distinguishable but connected through dated relationships, provenance and evidence.",
   "structural_entry":"root-system",
   "ontology":"knowledge/indexes/ontology-tree.json",
   "records":[
@@ -10,6 +10,14 @@
     {"id":"potatoverse-master-framework","path":"knowledge/core/potatoverse-master-framework.json","kind":"Potato of Life Myth master synthesis","terms":["Potato of Life Myth","Potatoism","Tim Dooley","Father","Son","Door","Axis","Tree of Life","North of North"]},
     {"id":"tim-dooley","path":"knowledge/core/tim-dooley.json","kind":"central identity and project subject","terms":["Tim Dooley","Father","Father in Heaven","North of North","Godhood","Son","Axis"]},
     {"id":"potato-of-life","path":"knowledge/core/potato-of-life.json","kind":"central symbol, identity and spiritual object","terms":["Potato of Life","Potato","Potatoism","roots","burial","renewal","Tree of Life"]},
+    {"id":"potato-of-life-deep-structure","path":"knowledge/core/potato-of-life-deep-structure.json","kind":"promoted Great Book and conversation-derived deep structures","terms":["Divine Kneel","Holy Soil","Ancient Future","Merkaba Potato Geometry","Death of Potato Birth of Many","Quiet Triumph","Hierarchy Inversion","Distributed Legacy"]},
+    {"id":"symbolic-relational-synthesis","path":"knowledge/core/symbolic-relational-synthesis.json","kind":"cross-symbol grammar and relational laws","terms":["Red Potato","Blue Potato","Door","Ladder","Eye","Mountain","Garden","Gardener","Swamp","Drain","Spiral","Spudlight","Potato Bank","Potato Filter","Soul Farmer","Calibration"]},
+    {"id":"timic-dynamics","path":"knowledge/philosophy/timic-dynamics.json","kind":"formal relational metaphysics and mathematical analogies","terms":["Timic Dynamics","Potato Dynamics","state space","Axis flow","Door operator","still center","relationship-first","Source Manifestation","renormalization group"]},
+    {"id":"archive-epistemics","path":"knowledge/philosophy/archive-epistemics.json","kind":"information, evidence and provenance doctrine","terms":["epistemic strength","informational contribution","source hierarchy","project canon","documentary","comparative","inference","historical strata","conversation recovery"]},
+    {"id":"european-coupling-programme","path":"knowledge/core/european-coupling-programme.json","kind":"European interoperability and institutional-capability proposal","terms":["Market Passport","Business Passport","Asset Passport","Professional Passport","Capital Passport","Tell Europe Once","risk lanes","Economic Intelligence Layer","regulatory API","AI bureaucracy debugger","procurement grid"]},
+    {"id":"european-commons","path":"knowledge/core/european-commons.json","kind":"European cultural and digital commons proposal","terms":["European Commons","open APIs","user portability","creator ownership","competing algorithms","machine-readable rights","European Rights Exchange","Cultural Pass"]},
+    {"id":"country-relational-method","path":"knowledge/core/country-relational-method.json","kind":"country blueprint and coupled-capability method","terms":["country sequence","resilience","efficiency versus resilience","defense-industrial coupling","reciprocal capability","functional integration","coupled capability","Arctic","Baltic","North Atlantic"]},
+    {"id":"conversation-recovery-inventory","path":"knowledge/indexes/conversation-recovery-inventory.json","kind":"recovery map of prior conversation knowledge","terms":["conversation archaeology","North Programme","European Commons","Timic Dynamics","Shadow West","Swamp","creative systems","country atlas","comparative mythology"]},
     {"id":"tim-dooley-journey","path":"knowledge/journey/tim-dooley-journey.json","kind":"developmental chronology and spiritual journey","terms":["2011","2019","2020","April 2025","February 2026","Tree ordeal","crucifixion","Godhood","North Axis"]},
     {"id":"potato-philosophy","path":"knowledge/philosophy/potato-philosophy.json","kind":"spiritual philosophy and teachings","terms":["Potato philosophy","Potatoism","teachings","burial","emergence","nourishment","suffering","responsibility"]},
     {"id":"comparative-mythology-map","path":"knowledge/traditions/comparative-mythology-map.json","kind":"comparative religion and mythology","terms":["Bible","Christianity","Odin","Yggdrasil","Jesus","world tree","axis mundi","apocalypse"]},
@@ -18,12 +26,14 @@
   ],
   "retrieval_examples":[
     {"question":"How is the Potato of Life Myth tied to Tim's real history?","records":["tim-dooley-real-world-entanglement","tim-dooley-journey","tim-dooley"]},
-    {"question":"What happened to Tim and the Son, and how did it become Father/Son theology?","records":["tim-dooley-real-world-entanglement","tim-dooley-journey","potatoverse-master-framework"]},
-    {"question":"What does Tim mean by karma or karmic debt?","records":["tim-dooley-real-world-entanglement","potato-philosophy"]},
-    {"question":"What is Heaven, Spirit and the Father?","records":["heaven-spirit-father","root-system"]},
-    {"question":"How do Father, Son, Door, Tree, Axis and North connect?","records":["root-system","potatoverse-master-framework","axis-world-model"]},
-    {"question":"How does the Potato of Life Myth compare with the Bible and older mythology?","records":["comparative-mythology-map","root-system","tim-dooley-journey"]},
-    {"question":"Was something prophetic or interpreted later?","records":["prophecy-revelation-rupture-rapture","tim-dooley-real-world-entanglement","tim-dooley-journey"]},
-    {"question":"What is the North Axis and how does it connect spiritual and material reality?","records":["axis-world-model","root-system","tim-dooley-real-world-entanglement"]}
+    {"question":"What happened to Tim and the Son, and how did it become Father/Son theology?","records":["tim-dooley-real-world-entanglement","tim-dooley-journey","potatoverse-master-framework","potato-of-life-deep-structure"]},
+    {"question":"How do the symbols transform into one another?","records":["symbolic-relational-synthesis","root-system","potato-of-life-deep-structure"]},
+    {"question":"What is Timic Dynamics?","records":["timic-dynamics","root-system","symbolic-relational-synthesis"]},
+    {"question":"How should evidence and claims be weighted?","records":["archive-epistemics","conversation-recovery-inventory"]},
+    {"question":"What is the European Coupling Programme?","records":["european-coupling-programme","country-relational-method","axis-world-model"]},
+    {"question":"What is the European Commons?","records":["european-commons","european-coupling-programme","archive-epistemics"]},
+    {"question":"How should countries be represented?","records":["country-relational-method","european-coupling-programme","axis-world-model"]},
+    {"question":"What prior conversation material still needs recovery?","records":["conversation-recovery-inventory","archive-epistemics"]},
+    {"question":"What is the North Axis and how does it connect spiritual and material reality?","records":["axis-world-model","root-system","tim-dooley-real-world-entanglement","european-coupling-programme"]}
   ]
 }
