@@ -3,10 +3,12 @@
   "tradition":"Taoism / Daoism",
   "texts":["dao-de-jing","zhuangzi"],
   "primary_reader":"taoism.html",
+  "local_primary_text":"taoism.html",
   "relationships":[
     {"type":"has-scripture","from":"taoism","to":"dao-de-jing"},
     {"type":"has-philosophical-text","from":"taoism","to":"zhuangzi"}
   ],
   "distinction":"Daoism includes religious, philosophical, ritual, textual and institutional traditions. The Dao De Jing is central but does not by itself exhaust Taoism.",
-  "source":"https://en.wikisource.org/wiki/Translation:Tao_Te_Ching"
+  "dao_de_jing":{"status":"complete-local-text","chapters":81,"language":"Classical Chinese","edition":"Project Gutenberg eBook #7337","source":"https://www.gutenberg.org/ebooks/7337","source_text":"https://www.gutenberg.org/cache/epub/7337/pg7337.txt","rights_note":"The ancient work is public domain by age; this local page uses the public-domain Chinese electronic text edition."},
+  "external_reference":"https://en.wikisource.org/wiki/Translation:Tao_Te_Ching"
 }
