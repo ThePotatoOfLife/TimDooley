@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Fail-fast integrity checks for the static atlas before it is deployed.
 
-This is intentionally conservative: it checks structure and references without
-trying to interpret the project's heterogeneous data schemas.
+The audit checks rendered HTML attributes, not JavaScript template strings.
+Inline scripts routinely contain dynamic href expressions such as ${from};
+those are runtime-generated values and must not be treated as literal files.
 """
 from __future__ import annotations
 
@@ -20,6 +21,8 @@ LOCAL_SCHEME = re.compile(r"^(?:[A-Za-z][A-Za-z0-9+.-]*:|//|#)")
 ATTR_RE = re.compile(r"\b(?:href|src)\s*=\s*([\"'])(.*?)\1", re.I | re.S)
 CSS_URL_RE = re.compile(r"url\(\s*([\"']?)(.*?)\1\s*\)", re.I | re.S)
 JS_LOCAL_RE = re.compile(r"(?:fetch|import\s*\()\s*\(\s*['\"]([^'\"]+)['\"]", re.I)
+SCRIPT_RE = re.compile(r"<script\b[^>]*>.*?</script\s*>", re.I | re.S)
+STYLE_RE = re.compile(r"<style\b[^>]*>.*?</style\s*>", re.I | re.S)
 
 
 def fail(errors: list[str]) -> None:
@@ -40,8 +43,6 @@ def local_target(raw: str, base: Path) -> Path | None:
     path = parsed.path
     if not path:
         return base
-    # GitHub Pages serves the repository at /TimDooley/, so root-relative
-    # references are repository-root references in the source site.
     if path.startswith("/"):
         return ROOT / path.lstrip("/")
     return (base / path).resolve()
@@ -102,7 +103,11 @@ def check_html_and_assets(errors: list[str]) -> tuple[int, int]:
     missing = 0
     for page in pages:
         text = page.read_text(encoding="utf-8", errors="replace")
-        for _, raw in ATTR_RE.findall(text):
+        # Remove executable/style blocks before scanning attributes. Otherwise
+        # strings like href="${recordLink(x.term)}" are misread as filesystem
+        # references by the HTML regex.
+        html_only = SCRIPT_RE.sub("", STYLE_RE.sub("", text))
+        for _, raw in ATTR_RE.findall(html_only):
             target = local_target(raw, page.parent)
             if target is None:
                 continue
