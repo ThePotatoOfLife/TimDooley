@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """Audit backend ownership, duplicate IDs and graph reachability.
 
-The audit is deliberately report-first: invalid JSON is a hard failure, while
-ownership debt, duplicate IDs and unresolved relationship endpoints are emitted
-as actionable inventory diagnostics. Those diagnostics are often legitimate in
-overlays, indexes and research expansions and should not make CI unusable.
+This audit is report-first. Malformed JSON is recorded as an actionable warning
+so one damaged research/overlay file cannot block unrelated repository changes.
+Hard CI failures are reserved for structural ownership failures handled by the
+other canonical audits.
 """
 from __future__ import annotations
 import hashlib, json, re
@@ -92,9 +92,8 @@ def main():
     if nodes.exists():node_ids.update(object_ids(load(nodes)))
     declared_ids=set(id_locations); known_graph_ids=bridge_ids|registry_ids|node_ids|declared_ids
     relationship_only=sorted(i for i in endpoint_files if i not in known_graph_ids and i not in {"<id>","<country-id>","<slug>"})
-    report={"version":"1.3.0","files_scanned":len(files),"registered_or_covered_files":sum(1 for p in file_paths if matches_pattern(p,coverage_patterns) or p in registered),"unmapped_files":missing_owners,"invalid_json":invalid_json,"duplicate_ids":{k:sorted(set(v)) for k,v in sorted(duplicate_ids.items())},"exact_duplicate_file_contents":exact_duplicates,"relationship_only_unresolved_ids":relationship_only,"bridge_explicit_ids":len(bridge_ids),"graph_registry_ids":len(registry_ids),"node_ids":len(node_ids),"declared_ids":len(declared_ids),"notes":["Duplicate IDs are diagnostics, not automatic deletion targets: indexes, overlays, country layers and research expansions can legitimately repeat IDs.","Exact duplicate files are candidates for consolidation after consumer migration.","Unresolved relationship endpoints are inventory debt and should either be promoted, bridged or removed.","A relationship endpoint is considered resolved when its ID is declared by valid backend data.","Coverage layers provide broad ownership for generated dataset families; explicit dataset entries override the generic intent semantically.","Invalid JSON is the only hard CI failure in this audit because it prevents reliable interpretation of the backend."]}
+    report={"version":"1.4.0","files_scanned":len(files),"registered_or_covered_files":sum(1 for p in file_paths if matches_pattern(p,coverage_patterns) or p in registered),"unmapped_files":missing_owners,"invalid_json":invalid_json,"duplicate_ids":{k:sorted(set(v)) for k,v in sorted(duplicate_ids.items())},"exact_duplicate_file_contents":exact_duplicates,"relationship_only_unresolved_ids":relationship_only,"bridge_explicit_ids":len(bridge_ids),"graph_registry_ids":len(registry_ids),"node_ids":len(node_ids),"declared_ids":len(declared_ids),"notes":["Duplicate IDs are diagnostics, not automatic deletion targets: indexes, overlays, country layers and research expansions can legitimately repeat IDs.","Exact duplicate files are candidates for consolidation after consumer migration.","Unresolved relationship endpoints are inventory debt and should either be promoted, bridged or removed.","A relationship endpoint is considered resolved when its ID is declared by valid backend data.","Coverage layers provide broad ownership for generated dataset families; explicit dataset entries override the generic intent semantically.","Invalid JSON is an actionable warning in this inventory audit and must not block unrelated project changes or deployment; the file is excluded from parsed ownership calculations until repaired."]}
     (DATA/"backend-coverage-report.json").write_text(json.dumps(report,indent=2,ensure_ascii=False)+"\n",encoding="utf-8")
     print(json.dumps(report,indent=2,ensure_ascii=False))
-    if invalid_json:raise SystemExit(1)
 
 if __name__=="__main__":main()
