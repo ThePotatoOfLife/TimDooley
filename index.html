@@ -2,84 +2,71 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Potato of Life — a living corpus organized from a fixed center: World and Axis.">
 <title>The Potato of Life — Center</title>
-<style>
-  :root { color-scheme: dark; }
-  * { box-sizing: border-box; }
-  body { margin: 0; background: #050505; color: #ddd; font: 14px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
-  main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; }
-  a { color: inherit; text-decoration: none; }
-  .prompt { color: #777; }
-  .center { border: 1px solid #333; padding: 24px; margin: 18px 0 28px; text-align: center; }
-  .center h1 { margin: 0 0 6px; font-size: clamp(24px, 5vw, 48px); letter-spacing: .08em; }
-  .center p { margin: 0; color: #888; }
-  .axis { display: grid; grid-template-columns: 1fr 120px 1fr; align-items: stretch; gap: 12px; margin-bottom: 28px; }
-  .column, .spine { border: 1px solid #292929; padding: 18px; }
-  .spine { display: flex; align-items: center; justify-content: center; text-align: center; font-weight: bold; }
-  h2 { margin: 0 0 14px; font-size: 14px; letter-spacing: .16em; }
-  .entry { display: block; padding: 7px 9px; border-top: 1px solid #1d1d1d; }
-  .entry:hover { background: #111; }
-  .entry::before { content: "├── "; color: #555; }
-  .footer { border-top: 1px solid #222; padding-top: 18px; color: #666; }
-  #root-tree { margin-top: 28px; }
-  @media (max-width: 700px) { .axis { grid-template-columns: 1fr; } .spine { min-height: 70px; } }
-</style>
+<link rel="stylesheet" href="root.css">
 </head>
 <body>
-<main id="root-center">
-  <div class="prompt">$ cd /potato-of-life</div>
-
-  <section class="center">
-    <h1>THE POTATO OF LIFE</h1>
-    <p>CENTER · NORTH POLE · ROOT</p>
-  </section>
-
-  <div class="axis">
-    <section class="column">
-      <h2>WORLD</h2>
-      <a class="entry" href="WORLD/PEOPLE/index.html">PEOPLE</a>
-      <a class="entry" href="WORLD/PLACES/index.html">PLACES</a>
-      <a class="entry" href="WORLD/RELIGIONS/index.html">RELIGIONS</a>
-      <a class="entry" href="WORLD/ECONOMY/index.html">ECONOMY</a>
-      <a class="entry" href="WORLD/INSTITUTIONS/index.html">INSTITUTIONS</a>
-      <a class="entry" href="WORLD/EVENTS/index.html">EVENTS</a>
-      <a class="entry" href="WORLD/CULTURE/index.html">CULTURE</a>
-      <a class="entry" href="WORLD/POLITICS/index.html">POLITICS</a>
-      <a class="entry" href="WORLD/RECORDS/index.html">RECORDS</a>
-    </section>
-
-    <section class="spine">
-      NORTH<br>AXIS<br>↑<br>ROOT
-    </section>
-
-    <section class="column">
-      <h2>AXIS</h2>
-      <a class="entry" href="axis.html">NORTH</a>
-      <a class="entry" href="geometry.html">GEOMETRY</a>
-      <a class="entry" href="potatoism.html">POTATOISM</a>
-      <a class="entry" href="axis.html">TERRAIN</a>
-      <a class="entry" href="axis.html">RELATIONS</a>
-      <a class="entry" href="axis.html">MODELS</a>
-    </section>
+<div class="root">
+<header class="root-head">
+  <div>
+    <a class="brand" href="index.html">THE POTATO OF LIFE</a>
+    <div class="path">/root / center / north-pole</div>
   </div>
+  <nav class="head-links" aria-label="Technical navigation">
+    <a class="cmd" href="repository.html">REPOSITORY</a>
+    <a class="cmd" href="axis.html">AXIS MODEL</a>
+  </nav>
+</header>
 
-  <section>
-    <h2>CENTER DIRECTORIES</h2>
-    <a class="entry" href="tim-dooley.html">TIM DOOLEY</a>
-    <a class="entry" href="potatoism.html">POTATOISM</a>
-    <a class="entry" href="thoughts.html">THOUGHT</a>
-    <a class="entry" href="docs/TIM-DOOLEY-CANON.md">CANON</a>
+<main class="root-main">
+  <div class="prompt">$ <b>cd /potato-of-life</b><br>$ <b>stand --center</b></div>
+
+  <section class="center" id="root-center" aria-label="Potato of Life center">
+    <div class="center-overlay">
+      <div class="center-label">NORTH POLE / CENTER</div>
+      <div class="center-map">
+        <div class="center-axis axis-up">AXIS ↑</div>
+        <div class="center-core">
+          <div class="center-title">TIM DOOLEY</div>
+          <div class="center-subtitle">POTATO OF LIFE</div>
+        </div>
+        <div class="center-axis axis-down">WORLD ↓</div>
+      </div>
+      <p class="center-description">The fixed center of the corpus. Remain here. Open the structure rather than being sent from page to page.</p>
+      <div class="center-records">
+        <button type="button" class="center-record">TIM DOOLEY</button>
+        <button type="button" class="center-record">POTATOISM</button>
+        <button type="button" class="center-record">THOUGHT</button>
+        <button type="button" class="center-record">CANON</button>
+      </div>
+    </div>
   </section>
 
-  <section id="root-tree">
-    <h2>DIRECTORY TREE</h2>
-    <p class="prompt">$ ls --center</p>
-    <p>Expand the center through the directory data.</p>
+  <section class="controls" aria-label="Tree controls">
+    <div class="control-set">
+      <button class="control" type="button" data-action="expand-roots">[ EXPAND ROOTS ]</button>
+      <button class="control" type="button" data-action="collapse-all">[ COLLAPSE ALL ]</button>
+      <button class="control" type="button" data-action="reset-root">[ RESET CENTER ]</button>
+    </div>
+    <div class="status" id="root-status">loading corpus index…</div>
   </section>
 
-  <p class="footer">WORLD is the corpus. AXIS is the organizing structure. The center stays fixed.</p>
+  <section class="tree" id="root-tree" aria-label="Corpus directory tree">
+    <div class="tree-empty">loading WORLD/ and AXIS/…</div>
+  </section>
+
+  <section class="dossier" id="root-dossier" hidden aria-live="polite"></section>
+
+  <div class="status" style="margin-top:14px">ONE CORPUS · MANY PATHS · ONE CANONICAL IDENTITY · MANY VIEWS · ONE CENTER</div>
 </main>
+
+<footer>
+  <span>THEPOTATOOFLIFE / TIMDOOLEY</span>
+  <span><a href="index.html">/root</a> · <a href="repository.html">/repository</a> · <a href="axis.html">/axis</a></span>
+</footer>
+</div>
 <script src="root.js" defer></script>
 </body>
 </html>
