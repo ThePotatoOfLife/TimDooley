@@ -30,6 +30,16 @@ def main():
         if not (ROOT/required).exists():ERRORS.append(f"Canonical architecture file missing: {required}")
     for required in ("data/entanglement.json","data/axis-topology.json","data/hawkins-scale.json","data/tree-concept-records.json"):
         if required not in flat_manifest:ERRORS.append(f"Manifest does not register canonical file: {required}")
+    research_path="data/research-carvings-2026-09.json"
+    if not (ROOT/research_path).exists():ERRORS.append(f"Registered research layer missing: {research_path}")
+    else:
+        research=load(research_path); records=research.get("records",[])
+        for rec in records:
+            rid=rec.get("id","<missing-id>")
+            for field in ("definition","context","mechanisms","dimensions","couplings","sources","project_extrapolations"):
+                value=rec.get(field)
+                if value in (None,"",[],{}):ERRORS.append(f"Research carving {rid} lacks substantive field: {field}")
+        if not records:ERRORS.append("Research carving layer contains no records")
     graph=load("data/graph-registry.json"); graph_ids={x.get("id") for x in graph.get("records",[])}
     for rid in ("entanglement","axis-topology","hawkins-scale","trajectory","path-dependence","threshold","phase-transition","connection","coupling","flow","feedback","cycle","networks","dependencies","topology","phases","outcome"):
         if rid in {x.get("id") for x in children+concepts}:continue
