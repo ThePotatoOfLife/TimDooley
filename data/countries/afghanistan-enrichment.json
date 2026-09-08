@@ -1,1 +1,101 @@
-{"version":"1.0.0","country_id":"afghanistan","official_name":"Islamic Emirate of Afghanistan","capital":"Kabul","region":"Asia","subregion":"Southern Asia","currency":"AFN","government":"de facto Islamic emirate","national_day":"August 19","constitutional_basis":"De facto governing framework since 2021; 2004 constitution not currently operative","strategic_assets":["mineral resources","agricultural land","Central and South Asian transit geography","hydropower potential","large young population"],"relationships":[["afghanistan","pakistan","border-and-trade"],["afghanistan","central-asia","regional-interface"],["afghanistan","china","neighbor-and-investment-interest"]],"research_queue":["humanitarian economy","mineral governance","regional transit","agriculture","water security","financial isolation"]}
+{
+  "version":"2.0.0",
+  "country_id":"afghanistan",
+  "record_role":"country-enrichment-child",
+  "official_name":"Islamic Emirate of Afghanistan",
+  "common_name":"Afghanistan",
+  "capital":"Kabul",
+  "region":"Asia",
+  "subregion":"Southern Asia",
+  "currency":{"code":"AFN","name":"Afghani"},
+  "constitutional_and_political_status":{
+    "current_system":"de facto Taliban/Islamic Emirate rule since August 2021",
+    "previous_constitution":"2004 Constitution of the Islamic Republic of Afghanistan; no longer the operative constitutional framework under the current de facto authorities",
+    "political_transition":"The Islamic Republic collapsed in August 2021 as Taliban forces entered Kabul. The Taliban subsequently re-established the Islamic Emirate and have exercised effective control over the national government apparatus.",
+    "recognition_note":"De facto control, diplomatic recognition and formal state recognition are distinct variables and should not be collapsed into a single field.",
+    "parliament":"The elected National Assembly of the former Islamic Republic is no longer the operative national legislature.",
+    "sources":["https://afghanistan.un.org/","https://www.un.org/afghanistan/"]
+  },
+  "historical_genealogy":[
+    {"period":"Ancient to medieval","summary":"The territory of present-day Afghanistan has been a crossroads among Iranian, Central Asian, South Asian and Hellenistic worlds. Major historical formations include the Achaemenid sphere, Hellenistic kingdoms following Alexander, Kushan rule, Islamic dynasties, and later Turco-Mongol and Persianate states."},
+    {"period":"1747–19th century","summary":"Ahmad Shah Durrani established the Durrani Empire in 1747, a major political predecessor to the modern Afghan state. Kabul and Kandahar became important centers in a polity connecting parts of present-day Afghanistan, Pakistan, Iran and Central Asia."},
+    {"period":"19th century","summary":"Afghanistan became a strategic buffer in the rivalry between the British Empire in India and the Russian Empire. The Anglo-Afghan wars shaped the state's external relations and the eventual demarcation of the Durand Line in 1893."},
+    {"period":"1919–1973","summary":"Afghanistan secured control over its foreign affairs after the Third Anglo-Afghan War and developed a modernizing monarchy. Amanullah Khan pursued reforms; later rulers consolidated a more gradual state-building model. The monarchy ended in 1973."},
+    {"period":"1973–1992","summary":"The monarchy was overthrown in 1973. A communist-led coup followed in 1978, and Soviet military intervention began in 1979. The Soviet withdrawal in 1989 was followed by continued civil war and state fragmentation."},
+    {"period":"1992–2001","summary":"Competing mujahideen factions fought for control after the fall of the communist government. The Taliban captured Kabul in 1996 and controlled most of the country until the 2001 U.S.-led intervention."},
+    {"period":"2001–2021","summary":"A new Islamic Republic was established with international military, development and financial support. The period included elections, constitutional institutions, rapid expansion of education and telecommunications, but also insurgency, corruption, dependence on external aid and unresolved political conflict."},
+    {"period":"2021–present","summary":"The Taliban returned to national power in August 2021. International assistance and economic relationships were substantially disrupted, while humanitarian, banking, education, rights and sanctions questions became central to Afghanistan's external and domestic position."}
+  ],
+  "society_and_population":{
+    "population_measurement":"Afghanistan lacks a recent universally accepted full national census comparable to many other states; population estimates therefore carry significant uncertainty.",
+    "social_structure":"The country contains multiple major ethnolinguistic communities, including Pashtun, Tajik, Hazara, Uzbek, Turkmen, Baloch, Nuristani and others. These categories overlap with regional, tribal, linguistic, sectarian and political identities.",
+    "languages":["Dari/Persian","Pashto","Uzbek","Turkmen","Balochi","Nuristani languages","other regional languages"],
+    "religion":"The population is overwhelmingly Muslim, predominantly Sunni, with a substantial Shia minority and other smaller communities. Exact shares are difficult to establish because reliable contemporary national religious surveys are limited.",
+    "urban_centres":["Kabul","Kandahar","Herat","Mazar-i-Sharif","Jalalabad","Kunduz"],
+    "migration":"Afghanistan has a very large refugee and migrant population. Cross-border movement is especially connected to Pakistan and Iran, while later displacement has also involved Central Asia, the Gulf, Europe and North America.",
+    "education":"Education expanded dramatically after 2001, but access and institutional conditions changed sharply after 2021. UN reporting for 2025 records more than 4.6 million children enrolled in public education with UN assistance; gender access remains a major constraint under current policy.",
+    "health":"The health system remains heavily dependent on external financing and humanitarian support. UN reporting for 2025 states that UN-supported programmes reached more than 34 million people with essential services, including healthcare, illustrating the scale of the service-delivery system relative to domestic fiscal capacity."
+  },
+  "economy_and_finance":{
+    "structure":"Agriculture, trade, construction, services, informal activity and remittance-linked household income are important components of the economy. The post-2021 economy is unusually dependent on humanitarian and development financing while operating under severe financial and external constraints.",
+    "currency_and_banking":"The afghani remains the domestic currency. International banking access and correspondent relationships have been constrained since 2021, increasing the importance of cash, informal finance, humanitarian payment mechanisms and limited formal banking channels.",
+    "public_finance":"Domestic fiscal capacity is constrained by a narrow tax base, limited formal economic activity and the political/institutional consequences of the 2021 transition. The current authorities collect customs and domestic revenues, but international development grants that previously financed a large share of public expenditure have fallen substantially.",
+    "aid":"The UN Afghanistan 2025 annual results report states that basic-human-needs programming under the UN Strategic Framework reached USD 1.7 billion in 2025, underscoring the continuing importance of external humanitarian financing.",
+    "trade":"Afghanistan is landlocked and depends heavily on overland trade routes through Pakistan, Iran and Central Asian states. Pakistan has historically been a major trade corridor; Iran provides access toward the Persian Gulf and Central Asia provides northern routes. China is geographically adjacent through the narrow Wakhan Corridor and has economic and strategic interest in mineral and regional connectivity questions.",
+    "key_exports":["coal","minerals and stones","fruits and agricultural products","textiles and carpets","other agricultural commodities"],
+    "key_imports":["fuel","food","machinery","vehicles","consumer goods","electricity and energy-related inputs"],
+    "economic_constraint":"The most important analytical distinction is between underlying productive capacity and the country's ability to convert that capacity into formal domestic revenue, investment and internationally transferable value under current political and financial restrictions."
+  },
+  "resources_and_energy":{
+    "mineral_potential":["copper","iron ore","lithium and other battery-related minerals reported in geological assessments","rare and critical minerals","coal","marble and construction stone"],
+    "resource_governance":"Mineral potential does not equal commercially proven reserves or economically recoverable production. Security, infrastructure, financing, geological uncertainty, environmental constraints and governance capacity are decisive variables.",
+    "energy":"Hydropower is important in the country's electricity system, while imported electricity and fossil fuels remain significant. The geography provides additional renewable potential, but grid fragmentation, investment constraints and security conditions limit conversion of potential into reliable supply.",
+    "water":"Water security is a major structural issue because agriculture depends on irrigation and Afghanistan's river systems cross international boundaries. Drought and changing precipitation patterns increase pressure on food production and rural livelihoods."
+  },
+  "strategic_geography":{
+    "landlocked":true,
+    "major_corridors":["Kabul–Peshawar corridor","Kabul–Kandahar–Spin Boldak corridor","Herat–Islam Qala corridor","Hairatan–Mazar corridor","Wakhan Corridor"],
+    "neighbors":["Pakistan","Iran","Turkmenistan","Uzbekistan","Tajikistan","China"],
+    "strategic_position":"Afghanistan sits between Central Asia, South Asia and the Iranian plateau. Its geography makes it a potential transit bridge but also creates dependence on neighboring states for ports, energy, finance and trade access.",
+    "chokepoints":"Border crossings with Pakistan and Iran are particularly important for commercial flows. The country's mountain geography creates additional internal transport constraints and raises the cost of connecting dispersed production to markets."
+  },
+  "international_relationships":[
+    {"target":"Pakistan","type":"border-trade-security","detail":"The two countries share a long border and dense social and commercial connections. Pakistan has historically been a principal route for Afghan imports and exports, while the relationship is also shaped by security disputes and the Durand Line."},
+    {"target":"Iran","type":"trade-energy-migration","detail":"Iran is a major western gateway, energy supplier and host to a large Afghan migrant/refugee population. The Islam Qala–Herat corridor links Afghanistan to Iranian trade routes."},
+    {"target":"Central Asia","type":"electricity-trade-connectivity","detail":"Afghanistan imports electricity from several Central Asian states and is connected to regional trade and transit initiatives."},
+    {"target":"China","type":"neighbor-investment-strategic-interest","detail":"China shares a short border through the Wakhan Corridor and has strategic interest in regional stability, mineral resources and connectivity, while practical commercial engagement remains constrained by infrastructure, security and financing conditions."},
+    {"target":"United Nations","type":"humanitarian-and-diplomatic","detail":"The UN remains a central actor in humanitarian assistance, development coordination, monitoring and diplomacy concerning Afghanistan."}
+  ],
+  "current_structural_pressures":[
+    "humanitarian financing dependence",
+    "restricted international banking access",
+    "female education and employment restrictions",
+    "large refugee and returnee population",
+    "drought and water stress",
+    "landlocked trade dependence",
+    "weak statistical and administrative capacity",
+    "limited domestic investment finance",
+    "mineral governance and infrastructure constraints",
+    "political recognition and diplomatic normalization questions"
+  ],
+  "research_ready_next_steps":[
+    "Build a dated population series with explicit uncertainty and source methodology.",
+    "Map border crossings, customs revenue and major trade corridors.",
+    "Map electricity imports and domestic generation assets.",
+    "Build an agricultural production/water dependency layer.",
+    "Map major mineral deposits separately from proven commercial projects.",
+    "Map humanitarian funding by donor, programme and implementing organization.",
+    "Map the post-2021 banking and payment architecture.",
+    "Add education access by sex, province and year where defensible.",
+    "Map refugee flows and return movements by host country and period.",
+    "Trace major infrastructure and mining proposals through financing, ownership, operator and corridor relationships."
+  ],
+  "sources":[
+    {"publisher":"United Nations in Afghanistan","title":"2025 UN Afghanistan Annual Results Report","url":"https://afghanistan.un.org/en/313178-2025-un-afghanistan-annual-results-report","accessed":"2026-09-08","use":"humanitarian programming, service delivery and 2025 results"},
+    {"publisher":"United Nations Assistance Mission in Afghanistan","title":"UNAMA / Afghanistan country information","url":"https://unama.unmissions.org/","accessed":"2026-09-08","use":"political, humanitarian and human-rights context"},
+    {"publisher":"World Bank","title":"Afghanistan country data and economic work","url":"https://www.worldbank.org/en/country/afghanistan","accessed":"2026-09-08","use":"macroeconomic and development indicators; country data require careful treatment because of major post-2021 statistical breaks"},
+    {"publisher":"Asian Development Bank","title":"Afghanistan country information","url":"https://www.adb.org/where-we-work/afghanistan","accessed":"2026-09-08","use":"development and infrastructure context"}
+  ],
+  "evidence_policy":"This enrichment distinguishes observed contemporary conditions, historical interpretation and forward-looking research questions. Population and economic figures should be stored as dated observations in the canonical country record rather than treated as timeless attributes.",
+  "completion_note":"This file is now a substantive Afghanistan research child rather than a short metadata stub. Remaining nulls in the canonical country/deepening record should be filled through dated source-specific observations, not copied wholesale into this enrichment layer."
+}
