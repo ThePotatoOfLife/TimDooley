@@ -30,6 +30,8 @@ jobs:
           python-version: '3.x'
       - name: Build repository index
         run: python scripts/build_repository_index.py
+      - name: Validate blueprint contract
+        run: python scripts/validate_blueprints.py
       - name: Run whole-project stability audit
         run: python scripts/stability_audit.py
       - name: Validate atlas structure
