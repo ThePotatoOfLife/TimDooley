@@ -50,6 +50,32 @@ The project is not only a graph. The graph is the navigation layer. The actual p
 - [ ] Ensure every event has chronology, participants, causes, consequences, evidence and links.
 - [ ] Ensure political/philosophical/religious ideas have definitions plus history, variants, arguments, criticism and relationships.
 
+## Extremism / hate groups / high-control movements — new research layer
+
+- [x] Add `data/extremism-cults-atlas-2026-09.json` with structured records for hate groups, extremist networks and high-control movements.
+- [x] Add `data/extremism-cults-atlas-expansion-2026-09.json` with additional current, historical, successor and contested movements.
+- [x] Add `data/extremism-cults-sources.json` with source classes and provenance requirements.
+- [x] Add `extremism.html` with search, category and status filters.
+- [x] Add `extremism.css` for the new research interface.
+- [x] Add the Movement Atlas to the main home navigation.
+- [ ] Integrate movement records into the canonical `data/nodes.json` / graph registry without creating duplicate IDs.
+- [ ] Add explicit predecessor/successor/affiliate/overlap edges for groups that split, rename or re-form.
+- [ ] Add timestamped source provenance to every current-status claim.
+- [ ] Separate formal members, active participants, affiliates, supporters, followers and online audiences.
+- [ ] Separate hate-group classification, extremist classification, terrorist designation, high-control allegations and criminal convictions.
+- [ ] Add country/region presence only at the level necessary for research; do not add private residences or member addresses.
+- [ ] Track armed status as `none_known`, `militant`, `armed_history`, `armed_network` or `case_specific`, rather than using a binary label.
+- [ ] Add a legal-status field for official designations and court findings, with jurisdiction and date.
+- [ ] Add a confidence field to every membership and activity estimate.
+- [ ] Add an alias-collision validator because names such as “Aryan Brotherhood” refer to multiple distinct organizations.
+- [ ] Add a successor-chain validator so dissolved groups are not incorrectly displayed as active.
+- [ ] Add a source-age validator for “active” records.
+- [ ] Keep “cult” as a contested/descriptive research term and prefer measurable high-control indicators where possible.
+- [ ] Never infer guilt, violence or ideology from membership alone.
+- [ ] Never infer current weapons possession from historical armed activity.
+- [ ] Never infer that every affiliate shares every leader statement.
+- [ ] Do not publish private member identity lists, private addresses, weapons inventories or tactical instructions.
+
 ## Farm / Swamp / Sektur research — new deep layer
 
 - [x] Add `data/swamp/farmer-dog-psychology.json` with Farmer/Dog masks, psychological mechanisms, inversions, DARVO handling and biblical Dog crosswalk.
@@ -80,7 +106,7 @@ The project is not only a graph. The graph is the navigation layer. The actual p
 - [ ] Add “read next” and “related research” sections.
 - [ ] Ensure mobile reading remains comfortable for very long records.
 - [ ] Keep typography optimized for long-form reading rather than dense dashboard presentation.
-- [ ] Surface Farm psychology, theological interpretation and evidence boundaries as separate sections rather than flattening them into one label.
+- [ ] Surface Farm psychology, theological interpretation, extremism research and evidence boundaries as separate sections rather than flattening them into one label.
 
 ## Integrity / CI
 
@@ -89,6 +115,9 @@ The project is not only a graph. The graph is the navigation layer. The actual p
 - [ ] Add a validator that distinguishes missing content from intentionally uncertain content.
 - [ ] Add a validator that checks every research claim has a source or explicit project-theology status.
 - [ ] Add a validator that prevents speculative psychological labels from being rendered as diagnoses.
+- [ ] Add a validator for duplicate movement IDs and alias collisions.
+- [ ] Add a validator for predecessor/successor edges that point to nonexistent records.
+- [ ] Add a validator that flags active movement records whose sources are too old.
 - [ ] Keep backend coverage failures separate from artifact-upload failures in CI reporting.
 - [ ] Re-run the atlas and backend coverage workflows after the next data expansion.
 
