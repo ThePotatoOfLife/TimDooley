@@ -20,7 +20,7 @@ concurrency:
 jobs:
   validate:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 20
     steps:
       - name: Checkout
         uses: actions/checkout@v5
@@ -28,6 +28,10 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+      - name: Build repository index
+        run: python scripts/build_repository_index.py
+      - name: Run whole-project stability audit
+        run: python scripts/stability_audit.py
       - name: Validate atlas structure
         run: python scripts/validate_atlas.py
       - name: Validate repository spine
