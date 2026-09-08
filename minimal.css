@@ -1,40 +1,55 @@
-/* Minimal two-pane root: WORLD + AXIS on the left, real reading frame on the right. */
-:root{--menu-width:200px;--frame-gap:28px;--line:rgba(0,0,0,.22)}
+/* Stable two-pane root: WORLD + AXIS on the left, reading surface on the right. */
+:root{--menu-width:200px;--frame-gap:28px;--line:#d7d7d7;--soft:#f7f7f7;--ink:#111}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111}
-.root{width:100%;height:100vh;margin:0;padding:0}
-.root-main{position:relative;width:100%;height:100vh;min-height:0;padding:0}
+html,body{margin:0;width:100%;height:100%;background:#fff;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{overflow:hidden}
+.root,.root-main{width:100%;height:100vh;margin:0;padding:0}
+.root-main{position:relative;isolation:isolate}
 .root-head,.prompt,header,footer,.controls,.status,.dossier,.center-label,.center-map,.center-identity,.center-description,.center-records,.center-record,.north-introduction{display:none!important}
-/* LEFT SPINE */
-#root-tree{position:absolute;left:0;top:0;width:var(--menu-width);height:100vh;z-index:20;display:block;border-right:1px solid var(--line);pointer-events:none;background:#fff}
+/* LEFT NAVIGATION SPINE */
+#root-tree{position:absolute;inset:0 auto 0 0;width:var(--menu-width);height:100vh;z-index:10;border-right:1px solid var(--line);background:#fff;pointer-events:none;overflow:visible}
 .tree-branch{position:absolute!important;left:0;width:100%;display:block!important;pointer-events:auto}
-.branch-axis{top:0;height:50%;padding-bottom:16px;display:flex!important;flex-direction:column;justify-content:flex-end}
-.branch-world{top:50%;height:50%;padding-top:16px}
-.tree-branch>summary{display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;padding:10px 12px;border:0;background:#fff;font-size:18px;line-height:1.2;letter-spacing:.08em;cursor:pointer;list-style:none}
+.branch-axis{top:0;height:50%;padding-bottom:18px;display:flex!important;flex-direction:column;justify-content:flex-end}
+.branch-world{top:50%;height:50%;padding-top:18px}
+.tree-branch>summary{display:flex;align-items:center;gap:9px;width:100%;padding:12px 14px;border:0;background:#fff;color:var(--ink);font-size:18px;line-height:1.2;letter-spacing:.08em;cursor:pointer;list-style:none;user-select:none}
 .tree-branch>summary::-webkit-details-marker{display:none}
 .tree-branch>summary .tree-mark,.tree-branch>summary .tree-note,.tree-branch>summary .tree-count{display:none}
 .tree-branch>summary .tree-name{font-weight:700}
-.branch-axis>summary::before{content:'↑';order:-1;font-size:1.05em}
-.branch-world>summary::before{content:'↓';order:-1;font-size:1.05em}
-.branch-axis[open]>.branch-children{position:absolute;left:0;bottom:46px;top:auto;width:100%;max-height:calc(50vh - 60px);overflow:auto;background:#fff;border-top:1px solid var(--line);z-index:30;pointer-events:auto}
-.branch-world[open]>.branch-children{position:absolute;left:0;top:46px;width:100%;max-height:calc(50vh - 60px);overflow:auto;background:#fff;border-bottom:1px solid var(--line);z-index:30;pointer-events:auto}
-.tree-collection>summary{display:flex;align-items:center;gap:6px;width:100%;padding:6px 10px;font-size:13px;line-height:1.25;cursor:pointer}
+.branch-axis>summary::before{content:"↑";font-size:1.05em}
+.branch-world>summary::before{content:"↓";font-size:1.05em}
+.tree-branch>summary:hover{background:var(--soft)}
+/* Expanding menus are overlays, so opening them never moves the right-hand surface. */
+.branch-axis[open]>.branch-children{position:absolute;left:0;bottom:50px;top:auto;width:100%;max-height:calc(50vh - 70px);overflow-y:auto;overflow-x:hidden;background:#fff;border:1px solid var(--line);z-index:50;box-shadow:4px 0 18px rgba(0,0,0,.06);pointer-events:auto}
+.branch-world[open]>.branch-children{position:absolute;left:0;top:50px;width:100%;max-height:calc(50vh - 70px);overflow-y:auto;overflow-x:hidden;background:#fff;border:1px solid var(--line);z-index:50;box-shadow:4px 0 18px rgba(0,0,0,.06);pointer-events:auto}
+.tree-collection>summary{display:flex;align-items:center;gap:6px;width:100%;padding:7px 10px;font-size:13px;line-height:1.25;cursor:pointer;list-style:none}
+.tree-collection>summary::-webkit-details-marker{display:none}
 .tree-collection>summary .tree-mark,.tree-collection>summary .tree-note,.tree-collection>summary .tree-count{display:none}
 .tree-collection>summary .tree-name{font-weight:600}
-.tree-collection .tree-children{padding-left:10px}
+.tree-collection .tree-children{padding-left:8px}
 .tree-subdir>summary{display:block;padding:5px 8px;font-size:12px;cursor:pointer}
-.tree-subdir .tree-note{display:none}
-.tree-entry{display:flex;align-items:flex-start;gap:4px;padding:4px 8px;font-size:12px;line-height:1.25}
+.tree-subdir>summary .tree-mark,.tree-subdir>summary .tree-note{display:none}
+.tree-entry{display:flex;align-items:flex-start;padding:4px 8px;font-size:12px;line-height:1.25}
 .tree-entry .tree-mark{display:none}
 .tree-button{padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
 .tree-button:hover,.tree-collection>summary:hover,.tree-subdir>summary:hover{text-decoration:underline}
 .tree-empty{padding:10px;font-size:12px;opacity:.6}
-/* RIGHT READING PANE — deliberately visible so the frame cannot disappear through transparent CSS. */
-.center{position:absolute;left:var(--menu-width);top:0;width:calc(100% - var(--menu-width));height:100vh;min-height:0;background:#fff;overflow:hidden;z-index:1;padding:var(--frame-gap)}
-.center-frame{position:absolute;inset:var(--frame-gap);background:#fff;border:1px solid var(--line);overflow:hidden;transition:opacity .18s ease,visibility .18s ease}
-.center-frame::before{content:'FRAME';position:absolute;left:14px;top:10px;z-index:2;font:10px/1 system-ui,sans-serif;letter-spacing:.16em;opacity:.45;pointer-events:none}
-.center-frame iframe{display:block;width:100%;height:100%;border:0;background:#fff}
+/* RIGHT READING SURFACE */
+.center{position:absolute;inset:0 0 0 var(--menu-width);width:calc(100% - var(--menu-width));height:100vh;padding:var(--frame-gap);background:#fff;z-index:1;overflow:hidden}
+.center-frame{position:relative;width:100%;height:100%;border:1px solid var(--line);background:#fff;overflow:auto;box-shadow:0 1px 3px rgba(0,0,0,.035);transition:opacity .18s ease,visibility .18s ease}
 .center-frame.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-.frame-toggle{position:absolute;right:var(--frame-gap);top:var(--frame-gap);z-index:5;padding:5px 8px;border:0;background:#fff;color:#111;font:12px system-ui,sans-serif;opacity:.55;cursor:pointer}
-.frame-toggle:hover{opacity:1;text-decoration:underline}
-@media(max-width:700px){:root{--menu-width:160px;--frame-gap:16px}.tree-branch>summary{font-size:16px;padding-left:9px}.center{left:var(--menu-width);width:calc(100% - var(--menu-width))}.center-frame{inset:var(--frame-gap)}}
+.frame-label{position:absolute;top:12px;left:16px;z-index:2;font-size:10px;line-height:1;letter-spacing:.18em;color:#777;pointer-events:none}
+.frame-content{width:min(900px,calc(100% - 56px));margin:0 auto;padding:58px 0 80px;font-size:16px;line-height:1.7}
+.frame-content h1{margin:0 0 28px;font-size:clamp(24px,3vw,40px);line-height:1.1;letter-spacing:.08em;font-weight:700}
+.frame-content h2{margin:2.2em 0 .6em;font-size:24px;line-height:1.2}
+.frame-content h3{margin:1.8em 0 .5em;font-size:18px}
+.frame-content p{margin:0 0 1em;max-width:78ch}
+.frame-content a{color:inherit}
+.frame-content img,.frame-content video{max-width:100%;height:auto}
+.frame-content pre{max-width:100%;overflow:auto;padding:16px;background:var(--soft);border:1px solid var(--line)}
+.frame-content table{max-width:100%;border-collapse:collapse}
+.frame-content th,.frame-content td{padding:6px 9px;border:1px solid var(--line);text-align:left}
+.frame-content blockquote{margin:1.5em 0;padding-left:16px;border-left:2px solid var(--line);color:#444}
+.frame-toggle{position:absolute;right:var(--frame-gap);top:var(--frame-gap);z-index:20;padding:7px 10px;border:1px solid var(--line);border-radius:3px;background:#fff;color:#555;font:12px system-ui,sans-serif;cursor:pointer}
+.frame-toggle:hover{color:#111;border-color:#aaa}
+@media(max-width:700px){:root{--menu-width:160px;--frame-gap:14px}.tree-branch>summary{font-size:16px;padding-left:10px}.center{left:var(--menu-width);width:calc(100% - var(--menu-width))}.frame-content{width:calc(100% - 28px);padding-top:48px}}
+@media(max-width:430px){:root{--menu-width:132px}.tree-branch>summary{font-size:14px;letter-spacing:.04em}.frame-content{font-size:15px}}
