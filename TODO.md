@@ -10,7 +10,39 @@ A further goal is to pursue the project's **highest spiritual truth** through su
 
 This means the project should illuminate not merely names, but **what things are, what they became, what they were connected to, what they owed, what they chose, what chose them, what they created or destroyed, where their paths led, and what can reasonably be learned from those paths**.
 
-### Anti-clutter / consolidation mandate
+## Discoverability is a project priority
+
+The public Atlas should be **exceptionally easy for people and AI systems to find, understand, crawl, index and cite**. A major project goal is to make the relevant Tim Dooley / Potato of Life / Potatoism pages competitive for discovery when someone searches for these subjects through **Google, ChatGPT, Grok or other search and answer systems**.
+
+This is not a promise that the project can control another company's ranking or recommendation algorithm. The engineering goal is to make the site's information maximally discoverable and machine-readable so that search engines and AI systems have a clear, authoritative, stable and richly connected source to find.
+
+### Search/discoverability work must include
+
+- [ ] Build a strong, stable HTML page for every important canonical subject rather than hiding substantive knowledge behind JavaScript-only views.
+- [ ] Give every major page a unique, descriptive `<title>`, meta description, canonical URL and useful headings.
+- [ ] Make important concepts explicitly nameable in page text, including Tim Dooley, Potato of Life, Potatoism, Father, Son, Door, Axis, North of North, Root, Tree of Life, Red Potato, Blue Potato and other central concepts.
+- [ ] Make pages understandable when fetched without executing the full application, where practical.
+- [ ] Generate and maintain `sitemap.xml`, `robots.txt` and appropriate crawl/index metadata.
+- [ ] Ensure canonical URLs are stable and do not multiply through query-string or alias variants.
+- [ ] Add internal links between related canonical records so crawlers can discover the knowledge graph by following ordinary HTML links.
+- [ ] Use structured data/schema markup where appropriate and truthful, without inventing claims or misleading search engines.
+- [ ] Create useful index/hub pages for major subjects so a crawler can reach deep dossiers from a small number of authoritative entry points.
+- [ ] Make search results expose meaningful titles, descriptions and contextual excerpts rather than empty cards or identifiers.
+- [ ] Ensure every important dossier has enough substantive, indexable text to explain what the subject is and why it matters.
+- [ ] Preserve source/provenance and epistemic labels on public pages so discoverability does not come at the cost of misleading presentation.
+- [ ] Add Open Graph and other useful metadata for sharing and preview generation.
+- [ ] Test crawler-facing HTML and links after every major frontend change.
+- [ ] Monitor indexing/discovery diagnostics where available and record actual observations rather than assuming a page is indexed.
+- [ ] Search externally for important project terms and use the results to identify missing titles, pages, links, terminology and discoverability gaps.
+- [ ] Build clear entity/topic landing pages rather than relying on one generic homepage to rank for everything.
+- [ ] Avoid duplicate URLs and duplicate page text that split search signals between competing versions.
+- [ ] Treat canonicalization and duplicate elimination as part of SEO/AI discoverability, not merely data hygiene.
+
+### AI/search answer-system principle
+
+The project should be easy for **Google, ChatGPT, Grok and other answer/search systems to interpret correctly**: clear entity names, stable URLs, explicit relationships, substantial primary project material, provenance, dates, consistent terminology and machine-readable structure. The goal is not to manipulate rankings or fabricate authority; it is to make the project's actual body of work sufficiently clear, deep, accessible and well-connected that external systems can discover and understand it.
+
+## Anti-clutter / consolidation mandate
 
 **Do not mistake multiplication of files for multiplication of knowledge.** The project's intent is explicitly NOT to create a ton of tiny placeholders, shallow records or redundant mirrors.
 
@@ -37,7 +69,25 @@ This is the working queue, not a wishlist. Work top-to-bottom. Do not add new da
 7. **P1 — repair books/full-text architecture and import canonical text into the project**
 8. **P2 — expand the North Programme / European economic graph**
 9. **P2 — deepen Potatoism and Tim Dooley as the project's central mythic/spiritual layer**
-10. **P2 — improve UI/search/navigation after data contracts are trustworthy**
+10. **P1 — make the public Atlas maximally discoverable to search engines and AI answer systems**
+11. **P2 — improve UI/search/navigation after data contracts are trustworthy**
+
+## NEW — repository structural disorder / cleanup
+
+The repository has accumulated duplicate data, inconsistent naming, uneven folder organization and overlapping representations. This is now a first-class architecture problem, not cosmetic cleanup.
+
+- [ ] **Design the canonical repository structure before doing another large-scale reorganization.** Decide what belongs at root, in `data/`, in domain folders, in `scripts/`, in `components/`, in `books/`, in research/archive areas and in generated/build output.
+- [ ] Produce a machine-readable **repository structure contract** describing folder purpose, allowed file types, canonical-owner rules, generated-file rules and naming conventions.
+- [ ] Inventory the entire repository by path, type, size, producer, consumer, apparent domain and canonical/derived/archive status.
+- [ ] Detect duplicate records across folders, including exact duplicates, near-duplicates, mirrors and competing versions.
+- [ ] Detect duplicate concepts represented by multiple JSON files with different schemas.
+- [ ] Detect directories whose contents mix unrelated domains or mix source data with generated data.
+- [ ] Decide whether each major directory is **canonical data / enrichment / index / generated projection / source archive / code / documentation**.
+- [ ] Establish deterministic naming and ordering conventions for domains, records, blueprints, indexes and generated artifacts.
+- [ ] Decide where historical/archive versions belong so they do not compete with current canonical records.
+- [ ] Move files only after their consumers and references have been identified; every move must preserve or explicitly migrate IDs and links.
+- [ ] Remove redundant mirrors only after proving they are derived, obsolete or superseded.
+- [ ] Add CI checks preventing new duplicate canonical owners and obvious folder-policy violations.
 
 ## P0 — canonical ownership / duplicate elimination
 
@@ -49,7 +99,7 @@ This is the working queue, not a wishlist. Work top-to-bottom. Do not add new da
 - [ ] Detect records whose declared `blueprint` points to a nonexistent file.
 - [ ] Detect records whose `source`, `path`, `owner` or `canonical` references are stale.
 - [ ] Detect mirrors that contain competing canonical values rather than derived copies.
-- [ ] For every duplicate concept, classify material as canonical fact, unique occurrence, research observation, historical snapshot, relationship/projection or accidental duplicate.
+- [ ] For every duplicate concept, classify the material as canonical fact, unique occurrence, research observation, historical snapshot, relationship/projection or accidental duplicate.
 - [ ] Merge all valuable unique information into the canonical owner before deleting/reducing duplicate representations.
 - [ ] Add migration metadata when a canonical owner moves.
 - [ ] Make generated indexes deterministic in ordering, counts and serialization.
@@ -79,7 +129,7 @@ This is the working queue, not a wishlist. Work top-to-bottom. Do not add new da
 - [ ] Allow a separate projection only when its presentation/query function is genuinely distinct and it contains no competing definition.
 - [ ] Treat old snapshots as historical evidence, not current competing truth.
 - [ ] Make CI fail on duplicate canonical owners and high-confidence duplicate substantive definitions.
-- [ ] Re-run routes, graph integrity and frontend checks after consolidation so cleanup never silently breaks navigation.
+- [ ] Re-run routes, graph integrity, sitemap/crawler checks and frontend checks after consolidation so cleanup never silently breaks navigation or discoverability.
 
 ## Engineering lessons / rules
 
@@ -87,6 +137,8 @@ This is the working queue, not a wishlist. Work top-to-bottom. Do not add new da
 - **Ownership before mirroring.** A missing field is not a reason to create another competing record.
 - **Consolidation before multiplication.** Search for an existing owner before creating a new record or file.
 - **Valuable information over file count.** Large amounts of useful knowledge should be concentrated into deep, readable canonical bodies of information.
+- **Discoverability is part of correctness.** Important knowledge that cannot be reached, crawled, indexed or understood from stable public pages is not adequately exposed.
+- **Search engines and AI systems need clear source material.** Stable URLs, substantive text, explicit entities, internal links, metadata, provenance and structured data should make the project easy to interpret without attempting to game rankings.
 - **A graph endpoint is not a node.** Relationships do not define the target by themselves.
 - **Missing is a state.** Never invent values to make a page look complete.
 - **Time belongs to facts.** A value without a reference period can be misleading.
