@@ -1,4 +1,4 @@
-name: Refresh country atlas
+name: Maintain country library
 
 on:
   schedule:
@@ -9,50 +9,49 @@ on:
       - '.github/workflows/country-refresh.yml'
       - 'scripts/refresh_country_atlas.py'
       - 'scripts/instantiate_country_nodes.py'
-      - 'scripts/merge_country_deepening.py'
-      - 'data/atlas-manifest.json'
+      - 'scripts/consolidate_country_library.py'
+      - 'data/countries/index.json'
+      - 'data/countries-blueprint.json'
 
 permissions:
   contents: write
 
 concurrency:
-  group: country-atlas-refresh
+  group: country-library
   cancel-in-progress: true
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  refresh-country-atlas:
+  maintain:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v5
         with:
           fetch-depth: 0
-      - name: Instantiate any missing country nodes
+      - name: Instantiate missing country nodes
         run: python scripts/instantiate_country_nodes.py
-      - name: Apply universal country deepening overlay
-        run: python scripts/merge_country_deepening.py
-      - name: Refresh normalized country observations and static snapshot
+      - name: Refresh sourced country observations
         run: python scripts/refresh_country_atlas.py
-      - name: Commit refreshed country data
+      - name: Consolidate country records and remove generated clutter
+        run: python scripts/consolidate_country_library.py
+      - name: Commit canonical country library
         run: |
           set -e
           git config user.name 'country-atlas-bot'
           git config user.email 'country-atlas-bot@users.noreply.github.com'
-          git add data/countries data/country-refresh-state.json data/country-static.json
+          git add data/countries data/country-layer-manifest.json data/country-enrichment-index.json
           if git diff --cached --quiet; then
-            echo 'No country data changes to commit.'
+            echo 'No country library changes.'
             exit 0
           fi
-          git commit -m 'Refresh static country atlas data'
+          git commit -m 'Maintain canonical country library'
           for attempt in 1 2 3; do
-            if git push origin HEAD:main; then
-              exit 0
-            fi
+            if git push origin HEAD:main; then exit 0; fi
             echo "Push attempt ${attempt} lost a race; rebasing onto origin/main."
             git fetch origin main
             git rebase origin/main
           done
-          echo 'Unable to push country refresh after 3 attempts.'
+          echo 'Unable to push country library after 3 attempts.'
           exit 1
