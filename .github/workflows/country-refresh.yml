@@ -1,5 +1,7 @@
 name: Maintain country library
 
+# One workflow owns country creation, refresh and consolidation.
+# It intentionally writes canonical records, not snapshots or batch layers.
 on:
   schedule:
     - cron: '17 4 * * *'
