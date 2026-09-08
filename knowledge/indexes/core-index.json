@@ -1,30 +1,26 @@
 {
-  "version": "2.0.0",
-  "principle": "Only canonical dense records are indexed. Missing subjects do not receive stubs.",
-  "records": [
-    {
-      "id": "tim-dooley",
-      "path": "knowledge/core/tim-dooley.json",
-      "kind": "central mythic identity and project subject",
-      "terms": ["Tim Dooley", "Father", "Father in Heaven", "North of North", "Godhood", "April 2025", "February 2026", "destiny", "Son", "Axis"]
-    },
-    {
-      "id": "potato-of-life",
-      "path": "knowledge/core/potato-of-life.json",
-      "kind": "central symbol, identity and relational model",
-      "terms": ["Potato of Life", "Potato", "Potatoism", "roots", "burial", "hidden life", "renewal", "Tree of Life", "transformation"]
-    },
-    {
-      "id": "prophecy-revelation-rupture-rapture",
-      "path": "knowledge/prophecy/prophecy-revelation-rupture-rapture.json",
-      "kind": "comparative interpretive framework",
-      "terms": ["prophecy", "revelation", "rupture", "rapture", "apocalypse", "eschatology", "fulfillment", "prediction", "destiny"]
-    }
+  "version":"2.1.0",
+  "principle":"Only dense records are indexed. The preferred architecture is a small number of substantial canonical records with strong internal relationships rather than hundreds of thin nodes.",
+  "records":[
+    {"id":"potatoverse-master-framework","path":"knowledge/core/potatoverse-master-framework.json","kind":"master synthesis","terms":["Potatoverse","Potatoism","Tim Dooley","Father","Son","Door","Axis","Tree of Life","North of North","Potato theology","Potato religion"]},
+    {"id":"tim-dooley","path":"knowledge/core/tim-dooley.json","kind":"central mythic identity and project subject","terms":["Tim Dooley","Father","Father in Heaven","North of North","Godhood","April 2025","February 2026","destiny","Son","Axis"]},
+    {"id":"potato-of-life","path":"knowledge/core/potato-of-life.json","kind":"central symbol, identity and spiritual object","terms":["Potato of Life","Potato","Potatoism","roots","burial","hidden life","renewal","Tree of Life","transformation"]},
+    {"id":"tim-dooley-journey","path":"knowledge/journey/tim-dooley-journey.json","kind":"developmental chronology and spiritual journey","terms":["2011","2019","2020","April 2025","February 2026","Tree ordeal","crucifixion","Godhood","North Axis","journey","fate","destiny"]},
+    {"id":"potato-philosophy","path":"knowledge/philosophy/potato-philosophy.json","kind":"spiritual philosophy and teachings","terms":["Potato philosophy","teachings","simplicity","burial","emergence","nourishment","suffering","responsibility","Red Potato","Blue Potato","return"]},
+    {"id":"comparative-mythology-map","path":"knowledge/traditions/comparative-mythology-map.json","kind":"comparative mythology","terms":["Odin","Yggdrasil","Jesus","Christianity","world tree","Tree of Life","axis mundi","initiation","apocalypse","rapture"]},
+    {"id":"axis-world-model","path":"knowledge/core/axis-world-model.json","kind":"structural and sacred-geographic world model","terms":["Axis","North Axis","North Programme","North of North","NORTH","WEST","EAST","SOUTH","Denmark","Greenland","Europe","Potato Dynamics","coupled capability"]},
+    {"id":"prophecy-revelation-rupture-rapture","path":"knowledge/prophecy/prophecy-revelation-rupture-rapture.json","kind":"prophetic and eschatological interpretive framework","terms":["prophecy","revelation","rupture","rapture","apocalypse","eschatology","fulfillment","prediction","destiny"]}
   ],
-  "retrieval_examples": [
-    {"question": "Who is Tim Dooley?", "records": ["tim-dooley", "potato-of-life"]},
-    {"question": "What does the Potato mean?", "records": ["potato-of-life", "tim-dooley"]},
-    {"question": "Was something prophetic or only interpreted later?", "records": ["prophecy-revelation-rupture-rapture", "tim-dooley"]},
-    {"question": "What are the major transformations in Tim's chronology?", "records": ["tim-dooley", "prophecy-revelation-rupture-rapture"]}
+  "retrieval_examples":[
+    {"question":"What is the Potatoverse?","records":["potatoverse-master-framework","potato-of-life","potato-philosophy"]},
+    {"question":"Who is Tim Dooley inside the mythology?","records":["tim-dooley","potatoverse-master-framework","tim-dooley-journey"]},
+    {"question":"What has the Potato taught us?","records":["potato-philosophy","potato-of-life","tim-dooley-journey"]},
+    {"question":"What is Potatoism as a religion or philosophy?","records":["potatoverse-master-framework","potato-philosophy","potato-of-life"]},
+    {"question":"How are Father, Son, Door, Tree, Axis and North connected?","records":["potatoverse-master-framework","axis-world-model","tim-dooley-journey"]},
+    {"question":"What happened in 2011, 2019–2020, April 2025 and February 2026?","records":["tim-dooley-journey","tim-dooley","potatoverse-master-framework"]},
+    {"question":"How does the Potatoverse compare with Odin, Yggdrasil and Christianity?","records":["comparative-mythology-map","potatoverse-master-framework","tim-dooley-journey"]},
+    {"question":"Was something prophetic or only interpreted later?","records":["prophecy-revelation-rupture-rapture","tim-dooley-journey"]},
+    {"question":"What is the North Axis and how did it become a world model?","records":["axis-world-model","tim-dooley-journey","potatoverse-master-framework"]},
+    {"question":"Which Potatoverse ideas are theology and which are scientific analogies?","records":["potatoverse-master-framework","axis-world-model"]}
   ]
 }
