@@ -31,6 +31,10 @@ The project is an information archive whose graph is the navigation layer. The c
 - [x] Add `data/repository-spine.json` as the canonical Root/Spirit/Mind/Matter model.
 - [x] Preserve the existing 33-level tree as a deeper vertical scaffold rather than deleting it.
 - [x] Rebuild `repository.html` around the canonical repository tree.
+- [x] Standardize the public site shell through one canonical `components/header.html` component and a deterministic build step; page-local controls remain in page content rather than the global header.
+- [x] Add CI validation so every generated HTML page has exactly one canonical header.
+- [x] Remove the unused runtime header loader; GitHub Pages now builds the shared shell before deployment.
+- [x] Align `validate_repository_spine.py` with the actual Root/Spirit/Mind/Matter schema instead of the obsolete Root/Spirit/Door/Matter contract.
 - [ ] Replace keyword-only classification with explicit layer metadata as records are enriched.
 - [ ] Add temporal fields to important records so past/present/future states become machine-readable where applicable.
 - [ ] Add cross-layer temporal navigation to important record pages.
