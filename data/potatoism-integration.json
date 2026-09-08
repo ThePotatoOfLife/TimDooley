@@ -1,14 +1,14 @@
 {
   "id":"potatoism-integration",
-  "version":"1.1.0",
+  "version":"2.0.0",
   "title":"Potatoism Integration Contract",
-  "purpose":"Canonical routing contract for making the deep Potatoism corpus searchable, navigable and graph-visible.",
+  "purpose":"Routing contract for the dense Potatoism corpus. The index is the public reader; canonical dossiers own definitions while canon, deep layers, glossary, observations and graph edges add distinct context.",
   "sources":["data/potatoism-dossiers.json","data/potatoism-canonical-corpus.json","data/potatoism-deep-layers.json","data/potatoism-glossary.json","data/potatoism-public-observations.json"],
   "graph_targets":["data/nodes.json","data/relationships.json","data/graph-registry.json","data/global-graph-bridge.json"],
-  "ui_targets":["node.html","repository.html","potatoism.html","potatoism.js","potatoism.css"],
+  "ui_targets":["index.html","root.js"],
   "search_fields":["id","name","term","title","aliases","definition","description","meaning","category","related","relations"],
   "provenance_classes":["user_defined_canon","project_memory","interpretation","public_source","empirical","disputed_external_claim"],
-  "navigation":{"root":"potatoism","canonical_entities":"data/potatoism-dossiers.json","project_canon":"data/potatoism-canonical-corpus.json","deep_corpus":"data/potatoism-deep-layers.json","glossary":"data/potatoism-glossary.json","public_observations":"data/potatoism-public-observations.json"},
-  "required_invariants":["Every Potatoism entity must have a stable id.","Every relationship endpoint must resolve to a node or declared external reference.","Every public observation must preserve source, URL, type and confidence.","Mythological, interpretive, empirical and disputed claims must remain distinguishable.","Search must include aliases and definitions, not only titles.","Node pages must expose inbound and outbound relations.","The repository index must expose the Potatoism corpus and its sublayers.","The validation workflow must fail on malformed JSON, duplicate IDs and unresolved canonical endpoints."],
-  "implementation_note":"The integration contract consumes the canonical-source-map. Dossiers own canonical readable entities; the corpus preserves project canon; deep layers, glossary and observations are subordinate layers. Removed master/entity files are no longer referenced."
+  "navigation":{"root":"AXIS/POTATOISM","canonical_entities":"data/potatoism-dossiers.json","project_canon":"data/potatoism-canonical-corpus.json","deep_corpus":"data/potatoism-deep-layers.json","glossary":"data/potatoism-glossary.json","public_observations":"data/potatoism-public-observations.json","reader":"index.html"},
+  "required_invariants":["Every Potatoism entity has a stable id.","Every relationship endpoint resolves to a node or declared external reference.","Every public observation preserves source, URL, type and confidence.","Mythological, interpretive, empirical and disputed claims remain distinguishable.","Search includes aliases and definitions, not only titles.","The public index exposes the corpus without creating duplicate canonical records.","Validation fails on malformed JSON, duplicate IDs and unresolved canonical endpoints."],
+  "implementation_note":"Dossiers own canonical readable entities; the corpus preserves project canon; deep layers, glossary and observations remain subordinate only when they contain information not already owned by the dossier. Historical standalone Potatoism pages are not part of the public contract."
 }
