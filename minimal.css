@@ -1,24 +1,23 @@
-/* Minimal two-pane root: WORLD + AXIS on the left, reading frame on the right. */
-:root{--menu-width:200px}
+/* Minimal two-pane root: WORLD + AXIS on the left, real reading frame on the right. */
+:root{--menu-width:200px;--frame-gap:28px;--line:rgba(0,0,0,.22)}
 *{box-sizing:border-box}
-html,body{margin:0;min-height:100%;overflow:hidden;background:var(--bg,#fff);color:var(--fg,#111)}
+html,body{margin:0;width:100%;height:100%;overflow:hidden;background:#fff;color:#111}
 .root{width:100%;height:100vh;margin:0;padding:0}
 .root-main{position:relative;width:100%;height:100vh;min-height:0;padding:0}
 .root-head,.prompt,header,footer,.controls,.status,.dossier,.center-label,.center-map,.center-identity,.center-description,.center-records,.center-record,.north-introduction{display:none!important}
-/* The navigation is a narrow vertical spine on the left. */
-#root-tree{position:absolute;left:0;top:0;width:var(--menu-width);height:100vh;z-index:20;display:block;border:0;pointer-events:none}
+/* LEFT SPINE */
+#root-tree{position:absolute;left:0;top:0;width:var(--menu-width);height:100vh;z-index:20;display:block;border-right:1px solid var(--line);pointer-events:none;background:#fff}
 .tree-branch{position:absolute!important;left:0;width:100%;display:block!important;pointer-events:auto}
 .branch-axis{top:0;height:50%;padding-bottom:16px;display:flex!important;flex-direction:column;justify-content:flex-end}
 .branch-world{top:50%;height:50%;padding-top:16px}
-.tree-branch>summary{display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;padding:10px 12px;border:0;background:transparent;font-size:18px;line-height:1.2;letter-spacing:.08em;cursor:pointer;list-style:none}
+.tree-branch>summary{display:flex;align-items:center;justify-content:flex-start;gap:8px;width:100%;padding:10px 12px;border:0;background:#fff;font-size:18px;line-height:1.2;letter-spacing:.08em;cursor:pointer;list-style:none}
 .tree-branch>summary::-webkit-details-marker{display:none}
 .tree-branch>summary .tree-mark,.tree-branch>summary .tree-note,.tree-branch>summary .tree-count{display:none}
 .tree-branch>summary .tree-name{font-weight:700}
 .branch-axis>summary::before{content:'↑';order:-1;font-size:1.05em}
 .branch-world>summary::before{content:'↓';order:-1;font-size:1.05em}
-/* Axis opens upward; World opens downward. Both remain inside the 200px spine. */
-.branch-axis[open]>.branch-children{position:absolute;left:0;bottom:46px;top:auto;width:100%;max-height:calc(50vh - 60px);overflow:auto;background:var(--bg,#fff);z-index:30;pointer-events:auto}
-.branch-world[open]>.branch-children{position:absolute;left:0;top:46px;width:100%;max-height:calc(50vh - 60px);overflow:auto;background:var(--bg,#fff);z-index:30;pointer-events:auto}
+.branch-axis[open]>.branch-children{position:absolute;left:0;bottom:46px;top:auto;width:100%;max-height:calc(50vh - 60px);overflow:auto;background:#fff;border-top:1px solid var(--line);z-index:30;pointer-events:auto}
+.branch-world[open]>.branch-children{position:absolute;left:0;top:46px;width:100%;max-height:calc(50vh - 60px);overflow:auto;background:#fff;border-bottom:1px solid var(--line);z-index:30;pointer-events:auto}
 .tree-collection>summary{display:flex;align-items:center;gap:6px;width:100%;padding:6px 10px;font-size:13px;line-height:1.25;cursor:pointer}
 .tree-collection>summary .tree-mark,.tree-collection>summary .tree-note,.tree-collection>summary .tree-count{display:none}
 .tree-collection>summary .tree-name{font-weight:600}
@@ -28,13 +27,14 @@ html,body{margin:0;min-height:100%;overflow:hidden;background:var(--bg,#fff);col
 .tree-entry{display:flex;align-items:flex-start;gap:4px;padding:4px 8px;font-size:12px;line-height:1.25}
 .tree-entry .tree-mark{display:none}
 .tree-button{padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
-.tree-button:hover,.tree-collection>summary:hover,.tree-subdir>summary:hover{ text-decoration:underline }
+.tree-button:hover,.tree-collection>summary:hover,.tree-subdir>summary:hover{text-decoration:underline}
 .tree-empty{padding:10px;font-size:12px;opacity:.6}
-/* The actual central iframe fills everything to the right of the menu. */
-.center{position:absolute;left:var(--menu-width);top:0;width:calc(100% - var(--menu-width));height:100vh;min-height:0;border:0;background:transparent;overflow:hidden;z-index:1;pointer-events:auto}
-.center-frame{position:absolute;inset:0;width:100%;height:100%;background:transparent;overflow:hidden;transition:opacity .18s ease,visibility .18s ease}
-.center-frame iframe{display:block;width:100%;height:100%;border:0;background:transparent}
+/* RIGHT READING PANE — deliberately visible so the frame cannot disappear through transparent CSS. */
+.center{position:absolute;left:var(--menu-width);top:0;width:calc(100% - var(--menu-width));height:100vh;min-height:0;background:#fff;overflow:hidden;z-index:1;padding:var(--frame-gap)}
+.center-frame{position:absolute;inset:var(--frame-gap);background:#fff;border:1px solid var(--line);overflow:hidden;transition:opacity .18s ease,visibility .18s ease}
+.center-frame::before{content:'FRAME';position:absolute;left:14px;top:10px;z-index:2;font:10px/1 system-ui,sans-serif;letter-spacing:.16em;opacity:.45;pointer-events:none}
+.center-frame iframe{display:block;width:100%;height:100%;border:0;background:#fff}
 .center-frame.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-.frame-toggle{position:absolute;right:10px;top:10px;z-index:5;padding:5px 8px;border:0;background:transparent;color:inherit;font:12px system-ui,sans-serif;opacity:.55;cursor:pointer}
+.frame-toggle{position:absolute;right:var(--frame-gap);top:var(--frame-gap);z-index:5;padding:5px 8px;border:0;background:#fff;color:#111;font:12px system-ui,sans-serif;opacity:.55;cursor:pointer}
 .frame-toggle:hover{opacity:1;text-decoration:underline}
-@media(max-width:700px){:root{--menu-width:160px}.tree-branch>summary{font-size:16px;padding-left:9px}.center{left:var(--menu-width);width:calc(100% - var(--menu-width))}}
+@media(max-width:700px){:root{--menu-width:160px;--frame-gap:16px}.tree-branch>summary{font-size:16px;padding-left:9px}.center{left:var(--menu-width);width:calc(100% - var(--menu-width))}.center-frame{inset:var(--frame-gap)}}
