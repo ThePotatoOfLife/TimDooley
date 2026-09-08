@@ -3,39 +3,82 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Potato of Life</title>
+<title>The Potato of Life — Center</title>
+<style>
+  :root { color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: #050505; color: #ddd; font: 14px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; }
+  main { max-width: 1100px; margin: 0 auto; padding: 28px 20px 80px; }
+  a { color: inherit; text-decoration: none; }
+  .prompt { color: #777; }
+  .center { border: 1px solid #333; padding: 24px; margin: 18px 0 28px; text-align: center; }
+  .center h1 { margin: 0 0 6px; font-size: clamp(24px, 5vw, 48px); letter-spacing: .08em; }
+  .center p { margin: 0; color: #888; }
+  .axis { display: grid; grid-template-columns: 1fr 120px 1fr; align-items: stretch; gap: 12px; margin-bottom: 28px; }
+  .column, .spine { border: 1px solid #292929; padding: 18px; }
+  .spine { display: flex; align-items: center; justify-content: center; text-align: center; font-weight: bold; }
+  h2 { margin: 0 0 14px; font-size: 14px; letter-spacing: .16em; }
+  .entry { display: block; padding: 7px 9px; border-top: 1px solid #1d1d1d; }
+  .entry:hover { background: #111; }
+  .entry::before { content: "├── "; color: #555; }
+  .footer { border-top: 1px solid #222; padding-top: 18px; color: #666; }
+  #root-tree { margin-top: 28px; }
+  @media (max-width: 700px) { .axis { grid-template-columns: 1fr; } .spine { min-height: 70px; } }
+</style>
 </head>
 <body>
 <main id="root-center">
-  <h1>THE POTATO OF LIFE</h1>
-  <p>This is the center.</p>
+  <div class="prompt">$ cd /potato-of-life</div>
 
-  <h2>WORLD</h2>
-  <ul>
-    <li>PEOPLE</li>
-    <li>PLACES</li>
-    <li>RELIGIONS</li>
-    <li>ECONOMY</li>
-    <li>INSTITUTIONS</li>
-    <li>EVENTS</li>
-    <li>CULTURE</li>
-    <li>POLITICS</li>
-    <li>RECORDS</li>
-  </ul>
+  <section class="center">
+    <h1>THE POTATO OF LIFE</h1>
+    <p>CENTER · NORTH POLE · ROOT</p>
+  </section>
 
-  <h2>AXIS</h2>
-  <ul>
-    <li>NORTH</li>
-    <li>GEOMETRY</li>
-    <li>POTATOISM</li>
-    <li>TERRAIN</li>
-    <li>RELATIONS</li>
-    <li>MODELS</li>
-  </ul>
+  <div class="axis">
+    <section class="column">
+      <h2>WORLD</h2>
+      <a class="entry" href="WORLD/PEOPLE/index.html">PEOPLE</a>
+      <a class="entry" href="WORLD/PLACES/index.html">PLACES</a>
+      <a class="entry" href="WORLD/RELIGIONS/index.html">RELIGIONS</a>
+      <a class="entry" href="WORLD/ECONOMY/index.html">ECONOMY</a>
+      <a class="entry" href="WORLD/INSTITUTIONS/index.html">INSTITUTIONS</a>
+      <a class="entry" href="WORLD/EVENTS/index.html">EVENTS</a>
+      <a class="entry" href="WORLD/CULTURE/index.html">CULTURE</a>
+      <a class="entry" href="WORLD/POLITICS/index.html">POLITICS</a>
+      <a class="entry" href="WORLD/RECORDS/index.html">RECORDS</a>
+    </section>
+
+    <section class="spine">
+      NORTH<br>AXIS<br>↑<br>ROOT
+    </section>
+
+    <section class="column">
+      <h2>AXIS</h2>
+      <a class="entry" href="axis.html">NORTH</a>
+      <a class="entry" href="geometry.html">GEOMETRY</a>
+      <a class="entry" href="potatoism.html">POTATOISM</a>
+      <a class="entry" href="axis.html">TERRAIN</a>
+      <a class="entry" href="axis.html">RELATIONS</a>
+      <a class="entry" href="axis.html">MODELS</a>
+    </section>
+  </div>
+
+  <section>
+    <h2>CENTER DIRECTORIES</h2>
+    <a class="entry" href="tim-dooley.html">TIM DOOLEY</a>
+    <a class="entry" href="potatoism.html">POTATOISM</a>
+    <a class="entry" href="thoughts.html">THOUGHT</a>
+    <a class="entry" href="docs/TIM-DOOLEY-CANON.md">CANON</a>
+  </section>
 
   <section id="root-tree">
-    <p>Directory tree loads here.</p>
+    <h2>DIRECTORY TREE</h2>
+    <p class="prompt">$ ls --center</p>
+    <p>Expand the center through the directory data.</p>
   </section>
+
+  <p class="footer">WORLD is the corpus. AXIS is the organizing structure. The center stays fixed.</p>
 </main>
 <script src="root.js" defer></script>
 </body>
