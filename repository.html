@@ -1,1 +1,130 @@
-<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="The Potato of Life — unfolding relationship-first root directory."><title>The Potato of Life — Atlas Root</title><link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="consistency.css"><link rel="stylesheet" href="atlas-tree.css"></head><body><main class="tree-shell"><header class="tree-head"><div><div class="eyebrow">ATLAS · ROOT DIRECTORY</div><h1>Unfold the archive.</h1><p class="tree-sub">Start at the roots. Open a branch. Follow a record into its relationships. The alphabet is no longer the architecture; the tree is.</p></div><div class="view-switch"><a class="active" href="repository.html">2D ROOT</a><a href="axis.html">3D AXIS</a></div></header><div class="tree-tools"><input id="q" type="search" placeholder="Search the root directory…"><button id="open">Open all</button><button id="close">Close all</button></div><section id="tree" class="root" aria-label="Atlas root directory"></section></main><script>const $=id=>document.getElementById(id),esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));async function j(p){const r=await fetch(p,{cache:'no-store'});if(!r.ok)throw Error(p+' '+r.status);return r.json()}async function main(){const [n,c,s,r,e,sectors,countries,people,rel,found,adj,ext]=await Promise.all([j('data/nodes.json'),j('data/tree-child-records.json'),j('data/tree-support-records.json'),j('data/research.json'),j('data/events.json'),j('data/european-sector-atlas.json'),j('data/nations.json'),j('data/people-registry.json'),j('data/religious-lexicon.json'),j('data/religious-foundations.json'),j('data/religious-adjacent/records.json'),j('data/extremism-cults-atlas-2026-09.json')]);const roots=[['core','Core Atlas','records · concepts · structures',[...(n.nodes||[]),...(c.records||[]),...(s.records||[])]],['world','World','195 nations',countries.nations||[]],['people','People','people registry',people.people||people.records||[]],['history','History & Events','events',e.events||[]],['systems','Systems & Economy','sectors and infrastructure',sectors.sector_families||[]],['research','Evidence & Research','research records',r.facts||[]],['belief','Ideas & Religion','religions and foundations',[...(rel.entries||[]),...(found.records||[])]],['movements','Extremism / High-Control','movement research',ext.records||[]]];const norm=x=>({id:x.id||x.slug||x[0],name:x.name||x.tradition_name||x[0]||x.id,description:x.description||x.definition||x.historical_emergence||x.field||x.worldview||x.targets_or_hate||x[1]||''});const data=roots.map(x=>({id:x[0],name:x[1],meta:x[2],items:x[3].map(norm).filter(x=>x.id)}));function render(){const term=$('q').value.trim().toLowerCase();document.getElementById('tree').innerHTML=data.map(b=>{const items=b.items.filter(i=>!term||[i.id,i.name,i.description].join(' ').toLowerCase().includes(term));if(term&&!items.length)return '';return '<details class="branch"><summary><span class="branch-name">'+esc(b.name)+'</span><span class="branch-meta">'+(term?items.length+' matches':b.items.length+' records')+'</span></summary><div class="children">'+items.slice(0,500).map(i=>'<a class="leaf" href="node.html?id='+encodeURIComponent(i.id)+'"><strong>'+esc(i.name)+'</strong><small>'+esc(i.description).slice(0,180)+'</small></a>').join('')+'</div></details>'}).join('')||'<div class="empty">No branch matches.</div>'}$('q').oninput=render;$('open').onclick=()=>document.querySelectorAll('details').forEach(x=>x.open=true);$('close').onclick=()=>document.querySelectorAll('details').forEach(x=>x.open=false);render()}main().catch(e=>document.getElementById('tree').innerHTML='<div class="empty">Atlas load error: '+esc(e.message)+'</div>');</script></body></html>
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="The Potato of Life — the canonical Atlas root directory.">
+<title>The Potato of Life — The Atlas</title>
+<link rel="stylesheet" href="portal.css">
+<link rel="stylesheet" href="consistency.css">
+<link rel="stylesheet" href="atlas-tree.css">
+</head>
+<body>
+<main class="tree-shell atlas-page">
+  <header class="tree-head">
+    <div>
+      <div class="eyebrow">THE POTATO OF LIFE · THE ATLAS</div>
+      <h1>The Atlas</h1>
+      <p class="tree-sub">A root directory for the entire archive. Nothing is dumped onto the page: branches open into sub-branches, then records. Every leaf leads into the same record system.</p>
+    </div>
+    <nav class="view-switch" aria-label="Atlas views">
+      <a class="active" href="repository.html" aria-current="page">2D ROOT</a>
+      <a href="axis.html">3D AXIS</a>
+    </nav>
+  </header>
+
+  <section class="atlas-status" aria-label="Atlas controls">
+    <div><strong id="status">Loading the root…</strong><span id="count"></span></div>
+    <div class="tree-tools">
+      <input id="q" type="search" placeholder="Search the entire Atlas…" autocomplete="off">
+      <button id="open">Open all</button>
+      <button id="close">Close all</button>
+    </div>
+  </section>
+
+  <div id="crumbs" class="atlas-crumbs" aria-live="polite">ROOT</div>
+  <section id="tree" class="root" aria-label="The Atlas root directory"></section>
+</main>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const clean=v=>String(v??'').replace(/\s+/g,' ').trim();
+const arr=v=>Array.isArray(v)?v:[];
+async function json(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error(path+' · '+r.status);return r.json()}
+function normalize(x,kind='record'){
+  if(!x||typeof x!=='object')return null;
+  const id=x.id||x.slug||x.iso3||x.key;
+  if(!id)return null;
+  const name=x.name||x.title||x.tradition_name||x.display_name||x.label||id;
+  const description=clean(x.description||x.definition||x.summary||x.historical_emergence||x.worldview||x.purpose||x.field||x.targets_or_hate||x.notes||'');
+  return {id:String(id),name:String(name),description,kind,raw:x};
+}
+function unique(items){const m=new Map();items.forEach(x=>{if(x&&!m.has(x.id))m.set(x.id,x)});return [...m.values()]}
+function group(items,fields){
+  if(!fields.length)return {type:'leaves',items};
+  const [field,...rest]=fields;
+  const buckets=new Map();
+  items.forEach(item=>{
+    const value=clean(item.raw?.[field])||'Unclassified';
+    if(!buckets.has(value))buckets.set(value,[]);
+    buckets.get(value).push(item);
+  });
+  return {type:'groups',field,children:[...buckets.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([name,vals])=>({name,tree:group(vals,rest)}))};
+}
+function leafHTML(i){
+  const d=i.description?'<small>'+esc(i.description.slice(0,240))+'</small>':'';
+  return '<a class="leaf" data-leaf="'+esc(i.id)+'" href="node.html?id='+encodeURIComponent(i.id)+'"><span class="leaf-icon">↳</span><span><strong>'+esc(i.name)+'</strong>'+d+'</span></a>';
+}
+function treeHTML(t,path=[]){
+  if(t.type==='leaves')return t.items.slice(0,1000).map(leafHTML).join('')||'<div class="empty">Empty branch.</div>';
+  return t.children.map((c,idx)=>{
+    const id='branch-'+path.concat(idx).join('-');
+    const count=countTree(c.tree);
+    return '<details class="branch" data-branch="'+esc(c.name)+'" id="'+id+'"><summary><span class="branch-name">'+esc(c.name)+'</span><span class="branch-meta">'+count+' '+(count===1?'record':'records')+'</span></summary><div class="children">'+treeHTML(c.tree,path.concat(idx))+'</div></details>';
+  }).join('')||'<div class="empty">Empty branch.</div>';
+}
+function countTree(t){return t.type==='leaves'?t.items.length:t.children.reduce((n,c)=>n+countTree(c.tree),0)}
+function branch(title,meta,tree,cls=''){
+  return '<details class="branch atlas-root-branch '+cls+'"><summary><span class="branch-name">'+esc(title)+'</span><span class="branch-meta">'+esc(meta)+'</span></summary><div class="children">'+treeHTML(tree,[title])+'</div></details>';
+}
+let roots=[],allItems=[];
+function searchable(i){return [i.id,i.name,i.description,JSON.stringify(i.raw)].join(' ').toLowerCase()}
+function matches(items,term){if(!term)return items;return items.filter(i=>searchable(i).includes(term))}
+function render(){
+  const term=clean($('q').value).toLowerCase();
+  let html='';let visible=0;
+  roots.forEach(r=>{
+    const items=matches(r.items,term);visible+=items.length;
+    if(term&&!items.length)return;
+    let t=group(items,r.fields);
+    html+=branch(r.title,term?(items.length+' matches'):(items.length+' records'),t,r.className||'');
+  });
+  $('tree').innerHTML=html||'<div class="empty">No records match your search.</div>';
+  $('count').textContent=' · '+visible+' visible records';
+  $('status').textContent=term?'Search results':'Root directory';
+  if(term){document.querySelectorAll('.branch').forEach(d=>d.open=true);$('crumbs').textContent='ROOT / SEARCH / '+term}
+  else $('crumbs').textContent='ROOT';
+}
+$('q').oninput=render;
+$('open').onclick=()=>document.querySelectorAll('details').forEach(d=>d.open=true);
+$('close').onclick=()=>document.querySelectorAll('details').forEach(d=>d.open=false);
+$('tree').addEventListener('toggle',e=>{if(e.target.matches('details')&&e.target.open)$('crumbs').textContent='ROOT / '+[...document.querySelectorAll('details[open]')].map(x=>x.dataset.branch||x.querySelector('.branch-name')?.textContent).filter(Boolean).join(' / ')} ,true);
+async function main(){
+  const [nodes,children,support,research,events,sectors,nations,people,religious,foundations,adjacent,movements]=await Promise.all([
+    json('data/nodes.json'),json('data/tree-child-records.json'),json('data/tree-support-records.json'),json('data/research.json'),json('data/events.json'),json('data/european-sector-atlas.json'),json('data/nations.json'),json('data/people-registry.json'),json('data/religious-lexicon.json'),json('data/religious-foundations.json'),json('data/religious-adjacent/records.json'),json('data/extremism-cults-atlas-2026-09.json')
+  ]);
+  const core=unique([...arr(nodes.nodes),...arr(children.records),...arr(support.records)].map(x=>normalize(x,'core')).filter(Boolean));
+  const world=arr(nations.nations).map(x=>normalize(x,'nation')).filter(Boolean);
+  const persons=arr(people.people||people.records).map(x=>normalize(x,'person')).filter(Boolean);
+  const history=arr(events.events).map(x=>normalize(x,'event')).filter(Boolean);
+  const systems=arr(sectors.sector_families).map(x=>normalize(x,'sector')).filter(Boolean);
+  const evidence=arr(research.facts||research.records||research.entries).map(x=>normalize(x,'research')).filter(Boolean);
+  const belief=unique([...arr(religious.entries),...arr(foundations.records),...arr(adjacent.records)].map(x=>normalize(x,'belief')).filter(Boolean));
+  const movement=arr(movements.records).map(x=>normalize(x,'movement')).filter(Boolean);
+  roots=[
+    {title:'ROOT / CORE',fields:['type'],items:core},
+    {title:'WORLD',fields:['region','subregion'],items:world},
+    {title:'PEOPLE',fields:['role'],items:persons},
+    {title:'HISTORY',fields:['type'],items:history},
+    {title:'SYSTEMS / ECONOMY',fields:['category','region'],items:systems},
+    {title:'IDEAS / RELIGION',fields:['category','family'],items:belief},
+    {title:'MOVEMENTS',fields:['category','status'],items:movement},
+    {title:'EVIDENCE / RESEARCH',fields:['category','source_type'],items:evidence}
+  ];
+  allItems=roots.flatMap(r=>r.items);$('count').textContent=' · '+allItems.length+' records indexed';$('status').textContent='Root directory';render();
+}
+main().catch(e=>{$('status').textContent='Atlas error';$('tree').innerHTML='<div class="empty">Could not load the Atlas: '+esc(e.message)+'</div>'});
+</script>
+</body>
+</html>
