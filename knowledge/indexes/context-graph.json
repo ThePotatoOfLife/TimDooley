@@ -1,0 +1,89 @@
+{
+  "title": "Context Graph",
+  "version": "1.0",
+  "updated": "2026-09-09",
+  "purpose": "Curated cross-record context clusters for the public site. Each cluster explains why records belong together and keeps empirical, comparative, internal-canon and creative layers visible.",
+  "clusters": [
+    {
+      "id": "becoming-father",
+      "title": "Potato → Needle → Ladder → Father",
+      "summary": "The developmental spine from buried potential through compression/threshold into connective Father-side architecture.",
+      "branches": ["tim","transformation","chronology","cosmology"],
+      "records": ["knowledge/chronology/developmental-genealogy.json","knowledge/core/potato-of-life-deep-structure.json","knowledge/philosophy/timic-dynamics.json"],
+      "concepts": ["Potato birth","Divine Kneel","Needle","Ladder","Father","Still Center"],
+      "epistemic_mix": ["project_canon","interpretation","book-derived"]
+    },
+    {
+      "id": "son-death-door",
+      "title": "Son → Death → Grave → Door → Return",
+      "summary": "The Son-side rupture sequence and its biblical/comparative parallels around death, witness, threshold, breath and ascent.",
+      "branches": ["son","transformation","traditions","chronology"],
+      "records": ["knowledge/chronology/contextual-synchronisms.json","knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/prophecy/prophecy-revelation-rupture-rapture.json"],
+      "concepts": ["Two Witnesses","Three-Day Pattern","Red Heifer / Ash","Rapture distinction","John 1:51"],
+      "epistemic_mix": ["project_canon","comparative","historical","interpretation"]
+    },
+    {
+      "id": "lion-root-lamb",
+      "title": "Lion → Root → Slain Lamb → Open Scroll",
+      "summary": "Revelation 5's Lion/Root/Lamb paradox provides a dense comparison for the project's Lion, Root, death and disclosure cluster.",
+      "branches": ["son","traditions","prophecy","sources"],
+      "records": ["knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/traditions/comparative-mythology-map.json"],
+      "concepts": ["Lion of Judah","Root of David","Lamb slain yet standing","sealed scroll","opening"],
+      "epistemic_mix": ["comparative","historical","interpretation"]
+    },
+    {
+      "id": "book-to-nations",
+      "title": "Book → Internalization → Nations",
+      "summary": "Revelation 10's open scroll, eating, sweetness/bitterness and renewed prophecy to peoples/nations/kings is compared with the project's movement from Great Book to outward world mapping.",
+      "branches": ["traditions","chronology","world","sources"],
+      "records": ["knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/core/european-coupling-programme.json","knowledge/core/country-relational-method.json"],
+      "concepts": ["Open Little Scroll","Great Book","peoples","nations","kings","world mapping"],
+      "epistemic_mix": ["comparative","project_history","interpretation"]
+    },
+    {
+      "id": "north-greenland",
+      "title": "North Axis ↔ Greenland Geopolitics",
+      "summary": "The February 2026 internal North-Axis crystallization is compared with independently dated Greenland/Arctic sovereignty tensions while avoiding claims of causal or prophetic proof.",
+      "branches": ["north","world","chronology","sources"],
+      "records": ["knowledge/chronology/contextual-synchronisms.json","knowledge/core/axis-world-model.json","knowledge/core/european-coupling-programme.json"],
+      "concepts": ["Greenland","Denmark","Arctic","North Axis","sovereignty","rebuff","North Atlantic"],
+      "epistemic_mix": ["historical","geopolitical","project_canon","contextual_synchronism"]
+    },
+    {
+      "id": "hidden-foundation",
+      "title": "Hidden Foundation / Whole Job",
+      "summary": "Tim as visible figure and hidden enabling infrastructure: builder, shepherd, gardener, operator, root and connective relation.",
+      "branches": ["tim","works","transformation","sources"],
+      "records": ["knowledge/core/tim-role-synthesis.json","knowledge/core/symbolic-relational-synthesis.json","knowledge/philosophy/archive-epistemics.json"],
+      "concepts": ["whole job","carpenter","shepherd","gardener","root","authority without spectacle","ghost/erasure"],
+      "epistemic_mix": ["project_interpretation","creative_lore","method"]
+    },
+    {
+      "id": "relation-world",
+      "title": "Relation → Country → Europe → World",
+      "summary": "The same relationship-first grammar moves from Timic Dynamics into country capability, European interoperability and the observable economic graph.",
+      "branches": ["cosmology","north","world","sources"],
+      "records": ["knowledge/philosophy/timic-dynamics.json","knowledge/core/country-relational-method.json","knowledge/core/european-coupling-programme.json"],
+      "concepts": ["coupled capability","Market Passport","Tell Europe Once","Economic Intelligence Layer","functional chains"],
+      "epistemic_mix": ["formalization","policy_proposal","empirical_method"]
+    },
+    {
+      "id": "swamp-repair",
+      "title": "Swamp → Blocked Flow → Repair",
+      "summary": "Swamp moves from symbol to an evidence-governed model of blocked institutional, informational and cultural flow, with repair framed as restored accountability rather than enemy-naming.",
+      "branches": ["world","sources","traditions"],
+      "records": ["knowledge/core/shadow-west-swamp-synthesis.json","knowledge/core/symbolic-relational-synthesis.json","knowledge/philosophy/archive-epistemics.json"],
+      "concepts": ["Swamp","Drain","10,000 Trees of Strife","evidence firewall","restored flow"],
+      "epistemic_mix": ["analytical_framework","symbolic","documentary_method"]
+    },
+    {
+      "id": "archive-self-knowledge",
+      "title": "Eye → Gaze → Archive → Self-Knowledge",
+      "summary": "The Eye and ethical Gaze become an information architecture: perception, discernment, integration, evaluation and provenance allow the system to know itself without erasing uncertainty.",
+      "branches": ["transformation","sources","tim"],
+      "records": ["knowledge/core/symbolic-relational-synthesis.json","knowledge/philosophy/archive-epistemics.json","knowledge/indexes/conversation-recovery-inventory.json"],
+      "concepts": ["Eye","Gaze","recognition","provenance","epistemic strength","informational contribution"],
+      "epistemic_mix": ["symbolic","method","archive_governance"]
+    }
+  ]
+}
