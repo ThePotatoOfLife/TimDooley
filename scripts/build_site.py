@@ -10,7 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 HEADER = ROOT / "components" / "header.html"
 EXCLUDE = {".git", ".github", "_site", "node_modules", "vendor", "__pycache__", "components", "scripts"}
-CENTER_PAGES = {"index.html", "root.html"}
+CENTER_PAGES = {"index.html"}
 HEADER_RE = re.compile(r"<header\b[^>]*>.*?</header>", re.I | re.S)
 MARKER_RE = re.compile(r'<div\s+data-site-header(?:="[^"]*")?\s*></div>', re.I)
 BODY_RE = re.compile(r"<body\b[^>]*>", re.I)
@@ -26,8 +26,8 @@ def canonical_header(page: Path) -> str:
 
 
 def transform_html(page: Path, text: str) -> str:
-    # The center homepage is its own deliberate shell. Injecting the generic
-    # site header here would destroy the fixed-center navigation model.
+    # There is one public HTML document: the fixed center index. All corpus
+    # navigation and reading surfaces are rendered inside it.
     if page.name in CENTER_PAGES and page.parent == ROOT:
         return text
 
@@ -70,13 +70,11 @@ def build() -> None:
     if not HEADER.exists():
         raise SystemExit("Missing canonical header: components/header.html")
     copy_tree()
-    count = 0
-    for page in sorted(OUT.rglob("*.html")):
-        source_page = ROOT / page.relative_to(OUT)
-        text = page.read_text(encoding="utf-8")
-        page.write_text(transform_html(source_page, text), encoding="utf-8")
-        count += 1
-    print(f"Built {OUT.name} with {count} standardized HTML headers.")
+    pages = sorted(OUT.rglob("*.html"))
+    if pages != [OUT / "index.html"]:
+        found = [str(p.relative_to(OUT)) for p in pages]
+        raise SystemExit(f"Public site must contain exactly one HTML document: {found}")
+    print(f"Built {OUT.name} with 1 public HTML document: index.html")
 
 
 if __name__ == "__main__":
