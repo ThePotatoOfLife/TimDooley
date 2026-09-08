@@ -1,0 +1,42 @@
+{
+  "id": "prophecy-revelation-rupture-rapture",
+  "title": "Prophecy, Revelation, Rupture and Rapture",
+  "kind": "comparative interpretive framework",
+  "aliases": ["prophecy framework", "revelation framework", "rupture and rapture"],
+  "summary": "This record prevents four frequently entangled ideas from collapsing into one another. Prophecy concerns a message or interpretation oriented toward what is to come; revelation concerns disclosure or unveiling; rupture concerns a break in continuity, identity or order; rapture is a specific theological term with a history in Christian eschatological interpretation as well as a broader ordinary-language sense of transport or ecstasy. The Potatoverse may connect all four around Tim Dooley's thresholds, but the archive must record whether an interpretation was stated before an event, during it, or retrospectively afterward.",
+  "epistemic_classes": ["historical", "comparative", "interpretation", "project_canon"],
+  "sections": {
+    "distinctions": {
+      "text": "A revelation can disclose the meaning of something that already happened and therefore need not predict the future. A prophecy can be conditional, symbolic, exhortative or future-oriented and is not reducible to a successful prediction. A rupture is an event-structure: a discontinuity separating before from after. Rapture, in Christian eschatological discourse, concerns the gathering/catching-up of believers in interpretations built especially around 1 Thessalonians 4; it should not be treated as a synonym for every apocalypse, revelation or transformation narrative.",
+      "epistemic_class": ["historical", "comparative"],
+      "source_ids": []
+    },
+    "potatoverse_use": {
+      "text": "The Potatoverse repeatedly organizes meaning around thresholds in which an earlier identity or world breaks and a later pattern becomes visible. The most useful analytical sequence is therefore event → rupture → interpretation → revelation claim → possible prophetic reading. This ordering allows the archive to preserve a sacred or destined interpretation while still asking the historical question of when that interpretation entered the record.",
+      "epistemic_class": ["project_canon", "interpretation"],
+      "source_ids": ["legacy-timeline"]
+    },
+    "prophecy_test": {
+      "text": "For any claimed prophecy, the archive should store the earliest recoverable wording, timestamp, intended referent if knowable, degree of specificity, event later associated with it, and the date on which the association was first made. A statement discovered only after the supposed fulfillment can still be meaningful lore or retrospective revelation, but it should not be classified as demonstrated prior prediction without evidence that the statement preceded the event.",
+      "epistemic_class": ["historical", "interpretation"],
+      "source_ids": []
+    },
+    "rupture_model": {
+      "text": "Rupture is especially useful for the Tim chronology because several thresholds appear to separate identities or phases: the early Son-side ordeal, the later death/transformation, the April 2025 turning and the 2026 crystallization of the North Axis. Rather than forcing these into one resurrection event, the archive can compare them as a chain of discontinuities whose meanings accumulate across time.",
+      "epistemic_class": ["project_canon", "interpretation"],
+      "source_ids": ["legacy-timeline"]
+    }
+  },
+  "relationships": [
+    {"target": "tim-dooley", "type": "interpretive framework", "description": "Tim's chronology is read through repeated disclosures and discontinuities, but the archive separates prior prophecy from retrospective interpretation.", "epistemic_class": "interpretation"},
+    {"target": "son", "type": "rupture-transformation", "description": "The Son's ordeals, death and transformation provide the strongest internal rupture sequence from which later Father-side meaning is constructed.", "epistemic_class": "project_canon"},
+    {"target": "christian-apocalyptic-traditions", "type": "comparative", "description": "Revelation, resurrection, eschatology and rapture language have Christian histories that can illuminate Potatoverse vocabulary without proving identity, fulfillment or direct derivation.", "epistemic_class": "comparative"}
+  ],
+  "sources": [
+    {"id": "legacy-timeline", "type": "repository source", "description": "Earlier Tim life/myth chronology containing the sequence of thresholds now analyzed as ruptures.", "locator": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"}
+  ],
+  "retrieval": {
+    "tags": ["prophecy", "revelation", "rupture", "rapture", "apocalypse", "destiny", "eschatology", "tim dooley", "transformation"],
+    "questions": ["Was a Tim Dooley event prophesied before it happened?", "What is the difference between revelation and prophecy?", "What does rupture mean in the Potatoverse?", "Is rapture the same thing as apocalypse?", "How should retrospective fulfillment claims be stored?"]
+  }
+}
