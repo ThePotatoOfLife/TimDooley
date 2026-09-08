@@ -1,6 +1,6 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-07",
+  "version":"1.0.1",
+  "updated":"2026-09-08",
   "events":[
     {
       "id":"greenland-arctic-crisis-2026",
@@ -9,6 +9,9 @@
       "name":"2026 Greenland / Arctic political crisis",
       "type":"geopolitical-timeline",
       "layer":"empirical",
+      "repository_root":"matter",
+      "repository_layer":"event",
+      "repository_scale":"event",
       "description":"A 2026 sequence of U.S. pressure over Greenland, European and Danish responses, NATO Arctic-security discussion and heightened strategic attention to Greenland.",
       "relations":["greenland","kingdom-of-denmark","north-axis","arctic","north-atlantic","alliances","war","strategic-dependencies"],
       "sources":[
@@ -26,6 +29,9 @@
       "name":"Greenland climate and minerals turning point",
       "type":"economic-environmental-event",
       "layer":"empirical",
+      "repository_root":"matter",
+      "repository_layer":"event",
+      "repository_scale":"event",
       "description":"Greenland's unusually warm January 2026 and its strategic mineral potential intensified the connection between climate, fisheries, transport, resources and geopolitical interest.",
       "relations":["greenland","arctic","energy-system","strategic-dependencies","north-axis"],
       "sources":[
