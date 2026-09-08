@@ -1,0 +1,13 @@
+{
+  "version":"1.0.0",
+  "status":"active-blueprint",
+  "purpose":"Model legal cases as time-aware institutional events linking courts, parties, law, evidence, judgments, remedies and precedent.",
+  "entity":{"type":"legal_case","canonical_identity":["case_id","court","jurisdiction","docket_number"],"scope":"publicly documented judicial proceedings"},
+  "record_schema":{"identity":["case_id","title","docket_number","court","jurisdiction","case_type"],"procedure":["filed_at","procedural_stages","hearings","appeals","status"],"parties":["claimants","respondents","interveners","counsel"],"issues":["claims","questions_presented","legal_bases","statutes"],"evidence":["evidence_types","key_documents","expert_evidence","evidentiary_disputes"],"decision":["judgment_date","holding","reasoning_summary","orders","remedy","costs"],"precedent":["cites_cases","followed_by","distinguished_by","overruled_by"],"sources":["official_docket","judgment","legislation","secondary_sources"]},
+  "relationship_templates":["case->court","case->person","case->organization","case->law","case->historical-event","case->precedent","case->document","case->jurisdiction"],
+  "derived_measures":["case_duration","appeal_depth","precedent_centrality","remedy_value_when_documented"],
+  "evidence_model":{"preferred":["official_court_record","judgment","legislation","official_docket"],"secondary":["academic","journalistic","professional_commentary"],"rule":"Separate allegations, findings, holdings and commentary."},
+  "validation_rules":["docket identifiers must not be treated as globally unique without court/jurisdiction","judgment date cannot precede filing date","appeal relationships must preserve chronology","allegation is not finding","precedent influence must be sourced"],
+  "acquisition_plan":["discover official court record","capture docket and jurisdiction","collect judgments and procedural documents","normalize parties and legal authorities","link cited precedent","record later appeals or enforcement","refresh status when proceedings change"],
+  "implementation_notes":{"canonical_owner":"A case record owns procedural facts; law, person, organization and document records remain separate canonical nodes.","frontend":"Use a dedicated legal-case renderer when available; otherwise route through node.html with type-aware sections.","known_traps":["same case has multiple names","parallel proceedings may share parties","case citations vary by jurisdiction","settlement is not a judicial holding"],"research_task":"For each important case, build a dated procedural timeline before summarizing significance."}
+}
