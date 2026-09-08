@@ -1,0 +1,57 @@
+{
+  "title": "European Coupling Programme",
+  "status": "recovered-programme-framework",
+  "updated": "2026-09-09",
+  "purpose": "Recover the conversation-developed programme for making Europe function as a more interoperable economic and institutional space while preserving national plurality. Policy proposals here are project design ideas, not claims that these systems already exist.",
+  "core_thesis": "Europe can become more capable by reducing repeated administrative friction, making permissions and rights portable, exposing cross-border economic structure as data, and treating interoperability as infrastructure.",
+  "design_principles": [
+    "many nations, one interoperable economic space",
+    "tell public systems once rather than repeatedly",
+    "risk-sensitive regulation rather than identical treatment of every activity",
+    "machine-readable rights and obligations",
+    "open interfaces between institutions",
+    "public traceability of economic relationships",
+    "capability through coupling rather than forced uniformity",
+    "observe first-generation AI mistakes elsewhere and sequence European deployment deliberately"
+  ],
+  "passport_layer": {
+    "Market_Passport": "portable proof that an actor/product may participate in defined market activities across jurisdictions",
+    "Business_Passport": "reusable business identity, registrations, permissions and compliance facts",
+    "Asset_Passport": "portable structured record of asset identity, ownership, condition, rights and regulatory status",
+    "Professional_Passport": "portable qualifications, licenses and professional permissions",
+    "Capital_Passport": "structured portability of investment/compliance information needed for lawful movement of capital"
+  },
+  "tell_europe_once": {
+    "principle": "A person or company should not repeatedly submit the same verified fact to multiple public bodies when lawful interoperable systems can reuse it.",
+    "requirements": ["data minimization", "explicit legal basis", "audit trails", "permission controls", "correction mechanisms", "privacy-preserving interoperability"],
+    "anti_pattern": "digitizing duplicate bureaucracy without removing duplication"
+  },
+  "risk_lanes": {
+    "concept": "Regulatory burden should scale with observable risk, systemic importance and potential harm rather than applying maximum procedure everywhere.",
+    "possible_lanes": ["low-risk fast lane", "standard lane", "enhanced-review lane", "systemic/high-risk lane"],
+    "rule": "Fast lanes must not become exemptions from substantive safety or rights obligations."
+  },
+  "economic_intelligence_layer": {
+    "function": "A queryable graph of firms, public bodies, ownership, funding, contracts, infrastructure, trade, debt, dependencies and capabilities.",
+    "inputs": ["legal-entity registries", "beneficial ownership", "procurement", "public funding", "state aid", "trade/value chains", "sector accounts", "infrastructure", "energy", "research", "labor/skills"],
+    "outputs": ["dependency maps", "concentration risk", "strategic bottlenecks", "cross-border opportunity", "resilience gaps", "procurement transparency", "policy simulation"]
+  },
+  "regulatory_operating_system": {
+    "machine_readable_law": "Convert relevant rules, permissions, reporting schemas and definitions into structures software can inspect without pretending legal judgment is fully automatable.",
+    "regulatory_api": "Standard interfaces for checking requirements, submitting structured information and retrieving authoritative status.",
+    "ai_bureaucracy_debugger": "Use AI to identify redundant forms, contradictory requirements, repeated data requests, dead-end procedures and cross-agency inconsistencies; humans remain responsible for legal and policy decisions."
+  },
+  "procurement_grid": {
+    "idea": "Make European public demand more visible as one analyzable field while procurement remains governed by applicable institutions and law.",
+    "benefits": ["supplier discovery", "cross-border participation", "demand aggregation", "industrial-capacity visibility", "contract-performance analysis"]
+  },
+  "ai_infrastructure_sequence": {
+    "components": ["AI Factories", "Gigafactories", "compute", "energy", "data access", "research talent", "industrial demand", "public-sector adoption"],
+    "sequence": "infrastructure -> trusted data/permissions -> high-value public and industrial use -> continuous evaluation -> broader deployment",
+    "strategic_note": "The programme favors learning from first movers without assuming Europe should permanently remain a follower."
+  },
+  "relationship_to_north_programme": "The North Programme is a geographic/strategic implementation field inside the broader European coupling logic: North Atlantic, Arctic, Nordic, Baltic, UK/Ireland, continental Europe and eastern/security chains can create capabilities through their connections.",
+  "relationship_to_2024_book": "The Great Book's designed-society chapter already linked money, health, education, security, information and governance into one feedback system. The later programme shifts from designing one total system toward interoperating real institutions and observing actual relationships.",
+  "success_test": "Does the programme remove duplicated friction while increasing transparency, portability, resilience and real cross-border capability without erasing national or institutional accountability?",
+  "connections": ["north-programme", "world", "european-economic-graph", "timic-dynamics", "relationship-first", "sources"]
+}
