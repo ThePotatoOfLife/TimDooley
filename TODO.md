@@ -1,36 +1,51 @@
-# TODO — The Potato of Life / TimDooley
+# TODO / BUGLIST — The Potato of Life / TimDooley
 
 ## Operating order
 
 This is the working queue, not a wishlist. Work top-to-bottom. Do not add new data at scale while a higher-level contract is broken.
 
-1. **P0 — establish one trustworthy source of truth for the repository**
+1. **P0 — establish one trustworthy repository structure and source of truth**
 2. **P0 — make every route resolve and fail visibly**
 3. **P0 — make CI/build/deploy enforce the same contracts**
-4. **P1 — finish the blueprint system and migrate every consumer**
+4. **P0 — complete the coordinated blueprint migration and make the blueprint contract green**
 5. **P1 — repair cross-domain joins and graph integrity**
-6. **P1 — deepen the highest-value entity families**
-7. **P1 — make books/full text and research archives robust**
+6. **P1 — deepen the most insufficient entity families with real source-backed content**
+7. **P1 — repair books/full-text architecture and import canonical text into the project**
 8. **P2 — expand the North Programme / European economic graph**
 9. **P2 — deepen Potatoism as a separate, explicitly project-defined layer**
 10. **P2 — improve UI/search/navigation after data contracts are trustworthy**
 
-## Current sprint — do these first
+## NEW — repository structural disorder / cleanup
 
-- [ ] Run the full CI suite after the latest blueprint and Pages changes; record the first failing job, not just the final red status.
-- [ ] Inventory every file in `data/blueprints/` and reconcile the real filenames against `data/blueprint-registry.json`.
-- [ ] Remove every stale reference to old blueprint filenames (`*-master.json`, bare blueprint `.json`, old system names) from scripts, data, docs and manifests.
-- [ ] Fix the blueprint registry's declared count so it equals the actual contractually registered standalone blueprints; do not count structural sections as files.
-- [ ] Audit every blueprint against the meta-blueprint and classify missing fields as required, recommended, optional, derived, unavailable or disputed.
-- [ ] Inspect `build_canonical_record_registry.py`; make its output a real ownership/deduplication contract rather than an informational report.
-- [ ] Generate a machine-readable canonical-record registry and make CI report duplicate IDs, aliases, slugs and conflicting owners.
-- [ ] Audit all `data/religious-foundations*` ownership paths and migrate consumers to the chosen canonical owner.
-- [ ] Audit `node.html` against every record family in `repository-index.json`; add explicit route families instead of silently falling through.
-- [ ] Add route diagnostics for unknown IDs, malformed IDs, missing data and unsupported record types.
-- [ ] Make the Pages deployment run the same essential data/build/stability gates as Atlas CI.
-- [ ] Run the deployed site smoke test against the actual GitHub Pages URL after the next successful deployment.
+The repository has accumulated duplicate data, inconsistent naming, uneven folder organization and overlapping representations. This is now a first-class architecture problem, not cosmetic cleanup.
 
-## P0 — repository source-of-truth architecture
+- [ ] **Design the canonical repository structure before doing another large-scale reorganization.** Decide what belongs at root, in `data/`, in domain folders, in `scripts/`, in `components/`, in `books/`, in research/archive areas and in generated/build output.
+- [ ] Produce a machine-readable **repository structure contract** describing folder purpose, allowed file types, canonical-owner rules, generated-file rules and naming conventions.
+- [ ] Inventory the entire repository by path, type, size, producer, consumer, apparent domain and canonical/derived/archive status.
+- [ ] Detect duplicate records across folders, including exact duplicates, near-duplicates, mirrors and competing versions.
+- [ ] Detect duplicate concepts represented by multiple JSON files with different schemas.
+- [ ] Detect directories whose contents mix unrelated domains or mix source data with generated data.
+- [ ] Decide whether each major directory is **canonical data / enrichment / index / generated projection / source archive / code / documentation**.
+- [ ] Establish deterministic naming and ordering conventions for domains, records, blueprints, indexes and generated artifacts.
+- [ ] Decide where historical/archive versions belong so they do not compete with current canonical records.
+- [ ] Move files only after their consumers and references have been identified; every move must preserve or explicitly migrate IDs and links.
+- [ ] Remove redundant mirrors only after proving they are derived, obsolete or superseded.
+- [ ] Add CI checks preventing new duplicate canonical owners and obvious folder-policy violations.
+
+## NEW — blueprint migration / workflow audit
+
+- [ ] **Run the coordinated blueprint migration end-to-end.** Rename every standalone blueprint to `<subject>-blueprint.json`, update registry entries, scripts, workflows, docs and data references, then verify no stale names remain.
+- [ ] **Audit the blueprint workflow end-to-end:** discovery → blueprint registry → validator → acquisition/research → data generation → repository index → frontend resolver → build → stability audit → deployment.
+- [ ] Run the full blueprint contract audit and record every failure/warning by file.
+- [ ] Make the contract validator distinguish genuine blockers from legacy migration warnings.
+- [ ] Bring all mature blueprints up to the meta-blueprint quality bar rather than merely renaming them.
+- [ ] Require implementation notes, known bugs/traps, canonical owner, consumers, acquisition plan, validation rules and next-research task in mature blueprints.
+- [ ] Verify registry count against actual standalone blueprint files.
+- [ ] Verify structural-pattern sections are not falsely counted as standalone blueprint files.
+- [ ] Verify every blueprint is actually consumed by, or clearly intended for, a data-generation/research workflow.
+- [ ] Add blueprint-to-data coverage reporting: which blueprint has records, how many, and which fields remain systematically absent.
+
+## Current P0 — source of truth / duplicates
 
 - [ ] Define canonical owner / index / enrichment / projection / research / archive roles as a machine-readable contract.
 - [ ] Ensure every important ID has one canonical owner or an explicitly documented shared-ID rule.
@@ -52,7 +67,7 @@ This is the working queue, not a wishlist. Work top-to-bottom. Do not add new da
 - [ ] Test literal links and dynamic `?id=` links separately.
 - [ ] Test URL encoding for spaces, punctuation, Unicode and long IDs.
 - [ ] Ensure empty arrays, missing optional fields and missing files render an explanatory state instead of a blank screen.
-- [ ] Add a browser/runtime smoke test for the highest-value routes when a headless browser is available.
+- [ ] Add browser/runtime smoke tests for the highest-value routes when a headless browser is available.
 - [ ] Verify GitHub Pages base-path behavior for every root-relative asset and fetch URL.
 - [ ] Add a small frontend data-loader contract so cache busting, error handling and JSON parsing are consistent.
 
@@ -69,36 +84,58 @@ This is the working queue, not a wishlist. Work top-to-bottom. Do not add new da
 - [ ] Verify Node 24 compatibility across all JavaScript actions and local JS tooling.
 - [ ] Record successful deployment SHA/run IDs in the project log.
 
-## P0 — blueprint contract
-
-- [ ] Enforce the `<subject>-blueprint.json` filename rule for all standalone blueprints.
-- [ ] Treat `blueprint-blueprint.json` as the meta-contract, not an ordinary domain blueprint.
-- [ ] Reconcile the registry count with the actual files and registry entries.
-- [ ] Require purpose, entity, record schema, relationships, evidence, validation and implementation notes unless an explicit exception is recorded.
-- [ ] Add inheritance metadata so specialized blueprints can extend shared structures without copying them.
-- [ ] Add canonical-owner and frontend-routing metadata to every blueprint.
-- [ ] Add acquisition workflow: discovery → source selection → extraction → normalization → validation → provenance → refresh.
-- [ ] Add explicit failure modes and known traps to every mature blueprint.
-- [ ] Add temporal rules to blueprints where facts change over time.
-- [ ] Add uncertainty rules where population, membership, valuation, ownership or attribution cannot be exact.
-- [ ] Make each blueprint produce an actionable next-research task, not merely a list of fields.
-
 ## P1 — next dedicated blueprints, only where they earn their own contract
 
 Create these in this order, and stop if a structural pattern is sufficient:
 
-1. [ ] `legal-case-jurisprudence-blueprint.json` — cases, courts, parties, issues, judgments, precedent and procedural history.
-2. [ ] `transport-logistics-blueprint.json` — corridors, operators, capacity, throughput, chokepoints and dependencies.
-3. [ ] `port-terminal-blueprint.json` — terminals, owners/operators, cargo, capacity, concessions and connections.
-4. [ ] `telecom-cable-blueprint.json` — cables, landing stations, owners, operators, capacity, route and redundancy.
-5. [ ] `science-funding-blueprint.json` — funders, programmes, grants, recipients, amounts, topics, outputs and co-funding.
-6. [ ] `digital-platform-ecosystem-blueprint.json` — platforms, owners, users, business models, APIs, data flows, governance and dependencies.
-7. [ ] `urban-system-blueprint.json` — metropolitan systems, housing, transport, utilities, fiscal base, jobs and governance.
-8. [ ] `heritage-archaeology-blueprint.json` — sites, artifacts, dating, custody, provenance, designation and preservation.
-9. [ ] `geopolitical-dependency-blueprint.json` — dependency direction, magnitude, concentration, substitutability and strategic exposure.
-10. [ ] `dataset-statistical-series-blueprint.json` — statistical series, methodology, revisions, units, frequency, coverage and breaks.
+1. [ ] `legal-case-jurisprudence-blueprint.json`
+2. [ ] `transport-logistics-blueprint.json`
+3. [ ] `port-terminal-blueprint.json`
+4. [ ] `telecom-cable-blueprint.json`
+5. [ ] `science-funding-blueprint.json`
+6. [ ] `digital-platform-ecosystem-blueprint.json`
+7. [ ] `urban-system-blueprint.json`
+8. [ ] `heritage-archaeology-blueprint.json`
+9. [ ] `geopolitical-dependency-blueprint.json`
+10. [ ] `dataset-statistical-series-blueprint.json`
 
 Do not create separate blueprints for concepts already adequately governed by `structural-patterns-blueprint.json`.
+
+## P1 — data population campaign: attack insufficiency first
+
+After the contracts are green, stop adding arbitrary records. Use blueprint coverage to find the weakest important families and **stack those records with real, dense, source-backed information**.
+
+For every population campaign:
+- [ ] Identify the weakest canonical files/records by field coverage, evidence coverage, relationship coverage and substantive text.
+- [ ] Select records that matter to multiple layers, not just obscure low-connectivity records.
+- [ ] Populate identity, historical development, geography, institutions, people, population/users, economics, relationships, timeline and evidence where the blueprint calls for them.
+- [ ] Use actual source-derived facts; never use placeholder prose to satisfy a field.
+- [ ] Record unavailable/disputed information explicitly rather than inventing it.
+- [ ] Add provenance at the fact/section level where practical.
+- [ ] Prefer deepening an existing canonical record over creating a duplicate enrichment file.
+- [ ] Re-run graph and route audits after each population batch.
+
+## P1 — books / full-text architecture — IMPORTANT BUG
+
+**Dao De Jing is currently broken:** the chapters are present, but the book page does not actually load/display the chapter text. The project has the chapter structure but not a functioning text-loading path.
+
+Likely architectural problem to investigate: the project can source metadata/chapters from outside sources, but the **raw text itself is not reliably imported into the repository chapter-by-chapter**. A book being represented by links, metadata or chapter manifests is not equivalent to having its text available to the frontend.
+
+- [ ] Diagnose the Dao De Jing loader from manifest → chapter identifier → text source → fetch → parser → renderer.
+- [ ] Determine exactly why chapters exist but text does not render.
+- [ ] Determine whether external-source dependency, missing local text, incorrect paths, CORS/base-path behavior, schema mismatch or loader logic is responsible.
+- [ ] **Design a canonical local full-text representation:** book → edition → chapter/section → raw text, imported INTO the project.
+- [ ] Determine copyright/public-domain/licensing status before importing any text.
+- [ ] Make text imports idempotent and provenance-preserving.
+- [ ] Add a validator that detects a chapter manifest pointing to a missing/empty text payload.
+- [ ] Add UTF-8, chapter-order, duplicate-edition and partial-import checks.
+- [ ] Build a reusable importer/normalizer so the same architecture works across all eligible books.
+- [ ] **Apply this architecture to all books where legally and technically appropriate**, rather than building one-off loaders.
+- [ ] Prioritize the **Quran and Torah** after the import architecture is proven, with edition/translation/source distinctions preserved.
+- [ ] Keep canonical raw text separate from derived search indexes, excerpts and display projections.
+- [ ] Make long texts readable chapter-by-chapter and searchable without silently truncating substantive content.
+
+**Do not work on the Quran/Torah imports until the general full-text architecture and Dao De Jing diagnosis are complete. This is a queued architecture task, not permission to start importing them immediately.**
 
 ## P1 — canonical joins and graph integrity
 
@@ -138,17 +175,7 @@ Do not create separate blueprints for concepts already adequately governed by `s
 - [ ] Improve extremist/high-control records with authority/date, membership uncertainty, ideology evidence, organizational history and provenance.
 - [ ] Keep designation, allegation, conviction, academic classification and project interpretation distinct.
 
-## P1 — books / full text / archives
-
-- [ ] Validate every book manifest against actual text files.
-- [ ] Validate UTF-8, file size, chapter/section offsets and search indexes.
-- [ ] Ensure long texts remain readable without artificial truncation.
-- [ ] Add edition, translator, publication and source metadata.
-- [ ] Make full-text imports idempotent.
-- [ ] Detect partial imports and duplicate editions.
-- [ ] Keep canonical text separate from derived search/index files.
-
-## P1 — North Programme / European economic graph
+## P2 — North Programme / European economic graph
 
 - [ ] Complete country-level joins for fiscal, population, trade, energy, infrastructure, ownership, procurement and research.
 - [ ] Add reference-year and source metadata to every comparison.
@@ -187,6 +214,7 @@ Do not create separate blueprints for concepts already adequately governed by `s
 
 ## Engineering lessons / rules
 
+- **Structure before scale.** Do not populate thousands of records into an architecture whose ownership and folder rules are unclear.
 - **Ownership before mirroring.** A missing field is not a reason to create another competing record.
 - **A graph endpoint is not a node.** Relationships do not define the target by themselves.
 - **Missing is a state.** Never invent values to make a page look complete.
@@ -194,6 +222,7 @@ Do not create separate blueprints for concepts already adequately governed by `s
 - **Evidence has type.** Official data, academic interpretation, journalism, insider claims and project symbolism are not interchangeable.
 - **Depth is independent of connectivity.** A node can have many edges and still need a real dossier.
 - **Blueprints are executable research plans.** If a blueprint does not tell us what to collect, validate and connect next, it is unfinished.
+- **Raw text is data.** A chapter manifest or external URL is not a substitute for an imported canonical text where licensing permits it.
 - **Silent failure is worse than visible incompleteness.** Errors should become diagnostics.
 - **Generated artifacts need contracts.** Every generated file needs an owner, producer, deterministic format and validation path.
 - **Stability before scale.** Fix the architecture that will be exercised by the next thousand records before adding those records.
