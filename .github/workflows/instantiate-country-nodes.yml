@@ -1,4 +1,4 @@
-name: Instantiate country nodes
+name: Maintain canonical country library
 
 on:
   workflow_dispatch:
@@ -6,9 +6,11 @@ on:
     paths:
       - 'data/countries/index.json'
       - 'data/countries-blueprint.json'
-      - 'data/blueprints/country-deepening.json'
+      - 'data/countries/**'
+      - 'data/country-*-index.json'
+      - 'data/country-layer-manifest.json'
       - 'scripts/instantiate_country_nodes.py'
-      - 'scripts/merge_country_deepening.py'
+      - 'scripts/consolidate_country_library.py'
       - '.github/workflows/instantiate-country-nodes.yml'
 
 permissions:
@@ -18,26 +20,26 @@ env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
 
 jobs:
-  instantiate:
+  maintain:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v5
 
-      - name: Instantiate all country nodes
+      - name: Instantiate missing country nodes
         run: python scripts/instantiate_country_nodes.py
 
-      - name: Apply universal country deepening overlay
-        run: python scripts/merge_country_deepening.py
+      - name: Consolidate sourced country records and remove generated clutter
+        run: python scripts/consolidate_country_library.py
 
-      - name: Commit generated nodes
+      - name: Commit canonical country library
         run: |
           git config user.name 'github-actions[bot]'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data/countries
+          git add data/countries data/country-layer-manifest.json data/country-enrichment-index.json
           if git diff --cached --quiet; then
-            echo 'No country-node changes.'
+            echo 'Country library already canonical.'
           else
-            git commit -m 'Deepen canonical country nodes'
+            git commit -m 'Consolidate canonical country library'
             git push
           fi
