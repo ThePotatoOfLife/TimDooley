@@ -1,0 +1,13 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-08",
+  "title":"Extremism / Hate Group / High-Control Source Registry",
+  "source_classes":[
+    {"class":"government","examples":["U.S. Department of Justice","FBI","government designations and court records"],"use":"legal status, prosecutions, organizational history and court-established facts"},
+    {"class":"monitoring","examples":["ADL","Southern Poverty Law Center"],"use":"group histories, ideology, public activity and monitoring classifications; designation must be attributed rather than treated as universal law"},
+    {"class":"academic","examples":["peer-reviewed scholarship","university research"],"use":"definitions, movement history, high-control dynamics, radicalization and comparative analysis"},
+    {"class":"primary","examples":["organizational websites","court filings","archived statements"],"use":"self-description, doctrine, organizational claims and direct statements; claims require independent contextualization"}
+  ],
+  "required_provenance":["source_url","source_type","publication_or_update_date_when_available","claim_supported","retrieval_date","confidence"],
+  "safety_boundary":"Do not store private addresses, private contact information, member identity lists, weapons inventories, tactical instructions or instructions that would facilitate violence. Public geographic information should normally stop at country/state/region or a well-known public headquarters when relevant to historical identification."
+}
