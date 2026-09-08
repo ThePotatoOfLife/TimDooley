@@ -12,57 +12,145 @@ The repository is now large enough that **duplication, orphaned layers, shallow 
 6. **P2 — expand long-form research and project canon**
 7. **P2 — cosmetic/UI refinement after the data contracts are stable**
 
-The graph is the navigation layer, not a substitute for substance. Every important record must first answer **what is this?**, then origin/context, structure/mechanism, evidence, uncertainty, questions, and directional couplings. No length-padding: missing knowledge remains explicitly missing.
+## 0. Canonical ownership audit — completed first pass
 
-## 0. Repository-wide duplication / overlap audit — NEW PRIORITY
+A first ownership audit has been performed across the requested overlapping families. The detailed machine-readable consolidation map is now `data/canonical-source-map.json`.
 
-The repository contains many files that appear to represent adjacent or potentially overlapping versions of the same subject. Before adding another dataset, determine whether the existing files should be **merged, layered, indexed, or explicitly separated**.
+### Country
 
-### High-priority overlap families to investigate
+- **Canonical normalized observations:** `data/country-static.json`
+- **Identity:** `data/countries/index.json`
+- **Schema:** `data/countries-blueprint.json`
+- **Join/overlay manifest:** `data/country-layer-manifest.json`
+- **Sources:** `data/country-source-registry.json`
+- **Enrichment:** `data/countries/*.json`, `data/countries/*-enrichment.json`, `data/country-enrichment-batch-*.json`
+- **Derived graph/page views:** `data/country-nodes.json`, batch node files, `data/country-atlas.json`
+- **Fallback only:** `data/country-fallback.json`
 
-- [ ] **Country stack:** `data/nations.json`, `data/country-atlas.json`, `data/country-nodes.json`, `data/country-static.json`, `data/countries-blueprint.json`, `data/countries/*.json`, `data/countries/*-enrichment.json`, `data/country-enrichment-batch-*.json`, `data/country-nodes-batch-*.json`, `data/country-fallback.json`, `data/country-layer-manifest.json`, `data/country-source-registry.json`, `data/country-enrichment-index.json`.
-  - Determine canonical identity versus observations versus enrichment versus snapshots versus generated nodes.
-  - Do not duplicate the same country prose across layers.
-  - Make one country identity resolve to many evidence/observation layers.
+The manifest says 195 effective enriched countries while `country-static.json` currently reports 194 canonical records. **Resolve this discrepancy before declaring the country family consolidated.** The country architecture itself already says identity → blueprint → sources → normalized record → relationships. fileciteturn789file0 fileciteturn780file0
 
-- [ ] **Potatoism stack:** `data/potatoism-lexicon.json`, `data/potatoism-lexicon-expanded.json`, `data/potatoism-glossary.json`, `data/potatoism-dossiers.json`, `data/potatoism-deep-layers.json`, `data/potatoism-cosmology.json`, `data/potatoism-concept-map.json`, `data/potatoism-relationships.json`, `data/potatoism-canonical-corpus.json`, `data/potatoism-public-observations.json`, `data/potatoism-research-expansion.json`, `data/potatoism-deep-extrapolation-atlas.json`.
-  - Establish canonical term identity.
-  - Make glossary/lexicon aliases point to dossiers instead of repeating definitions.
-  - Separate canon, observations, research and extrapolation.
+- [ ] Resolve 194/195 mismatch.
+- [ ] Make `nations.json` an identity/compatibility view, not a second country biography store.
+- [ ] Build country ID → observation → enrichment → graph/page join table.
+- [ ] Migrate unique batch information before retiring batch files.
 
-- [ ] **Religion stack:** `data/religious-foundations.json`, `data/religious-foundations/records.json`, `data/religious-foundations/index.json`, `data/religious-comparative-library.json`, `data/religious-lexicon.json`, `data/religious-relationships.json`, `data/religious-sources.json`, `data/religious-text-library.json`, `data/religious-adjacent/records.json`, `data/religious-adjacent/deep-expansions*.json`.
-  - One identity record per tradition/formation.
-  - Comparison and sources should reference records, not copy them.
-  - Preserve internal diversity.
+### Potatoism
 
-- [ ] **Extremism / movements stack:** `data/extremism-cults-atlas-2026-09.json`, `data/extremism-cults-atlas-expansion-2026-09.json`, `data/extremism-record-enrichments-2026-09.json`, `data/extremist-hate-groups.json`, `data/extremism-terrorism-nrm-expansion.json`, `data/digital-underground-networks.json`, `data/internet-extremism-information-ecology-wave-017.json`.
-  - Separate canonical movement identity, enrichment, classifications, online ecology and research waves.
-  - Prevent duplicate IDs and contradictory statuses.
+- **Canonical long-form records:** `data/potatoism-dossiers.json`
+- **Project-canon corpus:** `data/potatoism-canonical-corpus.json`
+- **Deep interpretive layer:** `data/potatoism-deep-layers.json`
+- **Indexes/derived views:** lexicons, glossary, cosmology, concept map, relationships
+- **Observations:** `data/potatoism-public-observations.json`
+- **Research/extrapolation:** research expansion and deep extrapolation atlas
 
-- [ ] **Intelligence/security stack:** `data/security-intelligence-organizations.json`, `data/security-intelligence-country-layer.json`, `data/intelligence-security-graph.json`, `data/intelligence-information-ecosystem-atlas-wave-016.json`.
-  - Identity → institutional facts → country coupling → graph → research wave.
+The dossiers explicitly define the long-form entry contract, while the canonical corpus explicitly identifies itself as project canon. fileciteturn759file0 fileciteturn770file0
 
-- [ ] **Swamp stack:** `data/swamp-ecology.json`, `data/swamp-research-seeds.json`, `data/swamp/*`, `docs/FARM-SEKTUR-SWAMP-THEORY.md`, `docs/SWAMP-ATLAS.md`, `docs/SWAMP-DATA-INGESTION.md`, `docs/SWAMP-RESEARCH-2026-09.md`.
-  - Define which files are ontology, methodology, research seeds, empirical records and project-symbolic material.
-  - Do not turn Swamp into a generic conspiracy bucket.
+**Bug found:** `data/potatoism-integration.json` references `data/potatoism-master-corpus.json` and `data/potatoism-entities.json`, but those files are not present on main. fileciteturn777file0
 
-- [ ] **Research stack:** `data/research.json`, `data/research-expansion-2026.json`, `data/research-frontier.json`, `data/research-source-expansion-2026.json`, `data/research-carvings-2026-09.json`, `data/research/*`, `data/expansions/*`.
-  - Establish source/citation registry versus research claims versus expansion waves.
-  - Stop repeating the same research summary in multiple wave files.
+- [ ] Fix those stale integration references.
+- [ ] Make aliases resolve to canonical dossier IDs.
+- [ ] Remove repeated definitions from lookup layers where they duplicate dossiers.
+- [ ] Preserve canon, observation, research and extrapolation as distinct epistemic layers.
 
-- [ ] **Graph stack:** `data/relationships.json`, `data/evidence/relationships.json`, `data/religious-adjacent/relationships.json`, `data/religious-relationships.json`, `data/potatoism-relationships.json`, `data/domain-coupling.json`, `data/cross-domain-couplings.json`, `data/global-graph-bridge.json`, `data/graph-registry.json`.
-  - Define canonical edge ownership and derived relationship views.
-  - Avoid multiple authoritative copies of the same edge.
+### Religion
 
-- [ ] **Architecture/documentation stack:** `README.md`, `PROJECT-README.md`, `docs/MASTER-ARCHITECTURE.md`, `docs/MASTER-FRAME.md`, `docs/UNFOLDING-ARCHITECTURE.md`, `docs/REPOSITORY-COVERAGE-AND-CARVING-MAP-018.md`, `data/project-workflow.json`.
-  - Mark one document as canonical architecture and make the others scoped explainers.
+- **Canonical tradition/formation records:** `data/religious-foundations/records.json`
+- **Foundation model:** `data/religious-foundations.json`
+- **Foundation index:** `data/religious-foundations/index.json`
+- **Canonical adjacent records:** `data/religious-adjacent/records.json`
+- **Adjacent enrichment:** three deep-expansion files
+- **Derived:** comparative library, lexicon and relationship files
+- **Sources/corpus:** religious sources and text library
 
-### Duplication rule
+The religious index already explicitly removed the phantom `enriched-records.json` and defines canonical foundation ownership. fileciteturn763file0
 
-- [ ] Every overlap family must declare `canonical_owner`, `derived_from`, `role`, `update_policy` and `do_not_duplicate`.
-- [ ] Add an automated duplicate/overlap audit to CI.
-- [ ] Prefer references and joins over copying long descriptions between files.
-- [ ] If two files genuinely contain different epistemic layers, keep both and make the distinction explicit.
+**Known relationship issue:** `data/religious-relationships.json` has five unresolved targets. They are deliberately research candidates, not resolved nodes. fileciteturn786file0
+
+- [ ] Promote unresolved targets only after stable records exist.
+- [ ] Compare foundation container vs foundation records field-by-field.
+- [ ] Keep main religion, adjacent religion, occult, cult/high-control and comparative categories distinct.
+
+### Extremism / movements
+
+- **Canonical movement identity:** `data/extremism-cults-atlas-2026-09.json`
+- **Long-form enrichment:** `data/extremism-record-enrichments-2026-09.json`
+- **Expansion:** `data/extremism-cults-atlas-expansion-2026-09.json`
+- **Source-specific classification index:** `data/extremist-hate-groups.json`
+- **Other research layers:** `data/extremism-terrorism-nrm-expansion.json`, `data/digital-underground-networks.json`, `data/internet-extremism-information-ecology-wave-017.json`
+
+The main atlas already distinguishes hate-group, extremist, terrorist and high-control categories. The older hate-group file contains overlapping IDs and should therefore become a classification/evidence view, not another master list. fileciteturn762file0 fileciteturn781file0
+
+- [ ] Build canonical-ID joins.
+- [ ] Detect duplicate IDs/status conflicts.
+- [ ] Move unique classification evidence into canonical evidence fields.
+- [ ] Keep online ecology as context/network research, not a second registry.
+
+### Swamp
+
+- **Canonical ontology/methodology:** `data/swamp-ecology.json`
+- **Research reservoirs:** `data/swamp-research-seeds.json`
+- **Documentation:** `docs/FARM-SEKTUR-SWAMP-THEORY.md`, `docs/SWAMP-ATLAS.md`, `docs/SWAMP-DATA-INGESTION.md`, `docs/SWAMP-RESEARCH-2026-09.md`
+
+Swamp should **not own the people, organizations, companies, media or security actors inside it**. It is an analytical overlap layer. The existing ontology already separates evidence levels and warns against inferring secret control from proximity. fileciteturn769file0
+
+- [ ] Audit `data/swamp/*` against the ontology.
+- [ ] Move actual entity ownership back to domain families.
+- [ ] Keep Swamp relationships derived unless independently promoted.
+- [ ] Define Sektur/Subculture as overlapping cultural formations, not automatic Swamp membership.
+
+### Research
+
+- **Durable research claims/facts:** `data/research.json`
+- **Research questions/frontier:** `data/research-frontier.json`
+- **Source registry:** `data/research-source-expansion-2026.json`
+- **Candidate cross-domain expansion:** `data/research-expansion-2026.json`
+- **Deep research studies:** `data/research-carvings-2026-09.json`
+- **Research/archive directories:** `data/research/`, `data/expansions/`
+
+`research.json` already separates observed evidence from interpretation; research carvings add definition/context/mechanism/dimensions/couplings/sources/extrapolations; the frontier is explicitly a queue rather than a fact store. fileciteturn760file0 fileciteturn778file0 fileciteturn787file0
+
+- [ ] Stop repeating the same research summary across waves.
+- [ ] Give claims stable source IDs and canonical target IDs.
+- [ ] Promote mature expansion records into canonical nodes only after independent dossiers.
+- [ ] Keep frontier questions out of factual counts.
+
+### Relationships
+
+- **Canonical cross-domain edges:** `data/relationships.json`
+- **Node/edge schema:** `data/graph-registry.json`
+- **Backend-ID bridge:** `data/global-graph-bridge.json`
+- **Scoped/derived relationships:** evidence, religious-adjacent, religious, Potatoism, domain-coupling and cross-domain-coupling files
+
+The main relationship registry already holds the broad graph; scoped files should feed or project from it, not compete with it. fileciteturn772file0
+
+- [ ] Add canonical edge IDs and duplicate triple detection.
+- [ ] Promote verified/scoped edges into the main registry.
+- [ ] Add time/evidence/source fields where appropriate.
+- [ ] Generate ranked orphan queues by connectivity.
+
+### Intelligence/security
+
+- **Institutional identity:** `data/security-intelligence-organizations.json`
+- **Country coupling:** `data/security-intelligence-country-layer.json`
+- **Graph projection:** `data/intelligence-security-graph.json`
+- **Research/history:** `data/intelligence-information-ecosystem-atlas-wave-016.json`
+
+The wave is richer in historical cases and public information systems than the compact graph, so it remains a research layer rather than the institutional master. fileciteturn785file0
+
+- [ ] Compare IDs across the four layers.
+- [ ] Promote missing agency identities into the canonical organization registry.
+- [ ] Keep agency identity, historical cases and allegations separate.
+
+## Consolidation implementation
+
+- [x] Create `data/canonical-source-map.json` with canonical owner, identity, schema, enrichment, derived-view and update-policy assignments.
+- [ ] Create `data/canonical-record-registry.json` from actual IDs.
+- [ ] Add `record_role` to manifests/datasets: `canonical`, `identity`, `schema`, `observation`, `enrichment`, `derived`, `index`, `source`, `research`, `symbolic`, `extrapolation`, `archive`, `fallback`.
+- [ ] Add `derived_from` and `canonical_owner` to layer manifests.
+- [ ] Add duplicate-ID, alias-collision and same-claim/same-edge detection.
+- [ ] Fix stale paths, starting with Potatoism integration.
+- [ ] Migrate unique information before retiring any duplicate-looking layer.
+- [ ] Mark retired files rather than silently deleting research history.
 
 ## 1. P0 — immediate engineering blockers
 
@@ -105,171 +193,38 @@ The repository contains many files that appear to represent adjacent or potentia
 - [ ] Verify live `repository.html`, `extremism.html`, `culture.html`, `node.html` and `nation.html` after deployment.
 - [ ] Record the verified deployment commit in the repository audit.
 
-## 4. P1 — content duplication / canonicalization work
+## 4. P1 — canonicalization and duplication
 
-- [ ] Finish the overlap families above before multiplying more wave files.
-- [ ] Build `data/canonical-record-registry.json` mapping every important ID to one canonical record and any derived views.
-- [ ] Build `data/canonical-source-map.json` mapping dataset → owner → consumers → update policy.
-- [ ] Give every major record an explicit `record_role`: canonical, enrichment, observation, derived, index, source, research, symbolic, extrapolation or archive.
+- [x] Complete first ownership assignment for the seven requested families; see `data/canonical-source-map.json`.
+- [ ] Build `data/canonical-record-registry.json` mapping every important ID to one canonical record and derived views.
+- [ ] Give every major record an explicit `record_role`.
 - [ ] Make generated/derived records visibly distinct from authored/canonical records.
+- [ ] Complete migration only after unique information has been compared and preserved.
 
-## 5. P1 — 40-file deepening programme
+## 5. P1 — deepening
 
-The original 40-file programme remains active, but **do not deepen duplicate copies independently**. First establish canonical ownership, then deepen the owner and enrich through references.
+- [ ] Continue the 40-file programme, but **never deepen duplicate copies independently**.
+- [ ] Deepen the canonical owner first, then enrich through references.
+- [ ] Prioritize high-connectivity, shallow records over multiplying labels.
+- [ ] Use the content-depth audit to rank actual work.
 
-Priority order inside the existing programme:
+## 6. Culture / Subculture / Sektur / Swamp analytical layer
 
-### P1-A — highest-value structural files
-1. `repository.html`
-2. `data/repository-spine.json`
-3. `data/atlas-manifest.json`
-4. `data/backend.json`
-5. `data/backend-coverage-map.json`
-6. `data/global-graph-bridge.json`
-7. `data/graph-registry.json`
-8. `data/relationships.json`
-9. `data/meaning-layer.json`
-10. `data/deep-entry-schema.json`
+- [ ] Continue the Culture layer as an analytical system: creation, encoding, transmission, attention, participation, production, consumption, mutation, selection, institutionalization and memory.
+- [ ] Add population concepts: exposure, audience, participant, member, producer and core participant.
+- [ ] Add geography, organizations, cultural objects, media channels and economic links.
+- [ ] Treat Subculture and Sektur as cultural formations that can overlap strongly with Swamp without becoming synonymous with it.
+- [ ] Build population, geographic, network, propagation, fragmentation and institutionalization outputs.
 
-### P1-B — high-connectivity content
-11. `data/nodes.json`
-12. `data/events.json`
-13. `data/people-registry.json`
-14. `data/nations.json`
-15. `data/country-static.json`
-16. `data/country-nodes.json`
-17. `data/extremism-cults-atlas-2026-09.json`
-18. `data/extremism-record-enrichments-2026-09.json`
-19. `data/religious-foundations/records.json`
-20. `data/religious-adjacent/records.json`
+## 7. General integrity rules
 
-### P1-C — culture / subculture / Swamp analytical layer
-21. `data/culture-ontology.json`
-22. `data/cultures-2026-09.json`
-23. `data/subculture-research-map.json`
-24. `data/swamp-ecology.json`
-25. `data/swamp-research-seeds.json`
-26. `data/influence-organizations-2026-09.json`
-27. `data/security-intelligence-organizations.json`
-28. `data/security-intelligence-country-layer.json`
-29. `data/population-pass-2026-09.json`
-30. `data/cross-domain-couplings.json`
-
-### P1-D — symbolic/research depth
-31. `data/meaning-layer-symbolic.json`
-32. `data/potatoism-dossiers.json`
-33. `data/potatoism-cosmology.json`
-34. `data/potatoism-relationships.json`
-35. `data/hawkins-scale.json`
-36. `data/geometry-records.json`
-37. `data/research-carvings-2026-09.json`
-38. `data/research.json`
-39. `data/religious-comparative-library.json`
-40. `data/potatoism-deep-extrapolation-atlas.json`
-
-## 6. Culture — make it analytical, not decorative
-
-- [ ] Define Culture as creation → encoding → transmission → attention → reception → participation → reproduction → mutation → selection → institutionalization → memory → new creation.
-- [ ] Add cultural objects: music, film, television, books, journalism, games, art, fashion, food, architecture, rituals, memes, symbols, websites and software.
-- [ ] Add participant roles: creator, performer, producer, publisher, distributor, platform, curator, critic, archivist, educator, audience, fan, remixer, sponsor and regulator.
-- [ ] Add population concepts: exposure, audience, participant, self-identified member, organizational member, producer and core participant.
-- [ ] Add geography: country, region, city, venue/institution where appropriate, diaspora and online space.
-- [ ] Add propagation edges: migration, technology, commerce, education, media, social network, imitation, conflict, institution and platform.
-- [ ] Model Subculture, Sektur and Swamp as strongly overlapping but non-identical concepts.
-- [ ] Add measurable outputs: population, geography, network centrality, clusters, bridges, propagation, fragmentation, emergence, institutionalization and persistence.
-- [ ] Add Culture coupling panels to people, nations, religions, movements, organizations, technologies, wars and places.
-- [ ] Build a Culture research interface that answers **what is it, who makes it, who consumes it, how does it spread, where is it, who connects it, and what changes because of it?**
-- [ ] Expand the current seven/eight culture records before adding a large taxonomy.
-- [ ] Add explicit `population_observations`, `geography`, `objects`, `organizations`, `media_channels`, `economic_links`, `historical_phases`, `evidence` and `uncertainties` fields where evidence exists.
-
-## 7. General depth rule
-
-- [ ] Important entries should provide at least one page of substantive reading; major subjects should exceed that where evidence permits.
-- [ ] Definition first. Context second. Mechanism third. Couplings fourth. Evidence/uncertainty/questions after that.
-- [ ] Graph edges never substitute for the dossier itself.
-- [ ] Never invent population numbers, secret relationships, diagnoses or causal claims to fill empty fields.
+- [ ] Definition first; context second; mechanism third; couplings fourth; evidence/uncertainty/questions after that.
+- [ ] Graph edges never substitute for dossiers.
+- [ ] Never invent population numbers, secret relationships, diagnoses or causal claims.
 - [ ] Distinguish documented, observed, self-described, estimated, scholarly, legal finding, government designation, reported, disputed, alleged, symbolic and unknown.
 - [ ] Every important coupled entity must resolve to its own record.
-- [ ] Do not create a second “deep” copy of a record just to increase word count.
-
-## 8. Analytical outputs to build from the data
-
-- [ ] Population/group-size estimates with explicit evidence classes.
-- [ ] Geographic concentration maps.
-- [ ] Cultural/subcultural cluster analysis.
-- [ ] Graph centrality and bridge analysis.
-- [ ] Propagation/diffusion timelines.
-- [ ] Mainstream ↔ subculture transitions.
-- [ ] Organizational overlap and predecessor/successor analysis.
-- [ ] Cultural/economic relationships.
-- [ ] Political/media/institutional coupling analysis.
-- [ ] Historical emergence and fragmentation analysis.
-- [ ] Research queues ranked by connectivity × importance × missing depth.
-- [ ] Generate derived statistics from canonical records rather than hand-entering totals in multiple files.
-
-## 9. UI / reading experience
-
-- [ ] Repository must load even when optional datasets fail.
-- [ ] Every major page needs readable long-form dossiers, not only cards/tooltips.
-- [ ] Add table of contents, reading time, word count, related research and read-next where useful.
-- [ ] Keep index pages fast; put dense reading in expandable/full-entry views.
-- [ ] Standardize the canonical header through the build-time site shell.
-- [ ] Keep page-local 2D/3D controls out of the global header.
-- [ ] Remove inline styles from new pages and move them to shared/page CSS.
-
-## 10. CI / integrity
-
-- [x] Node 24-compatible GitHub Actions.
-- [x] Nested web asset audit.
-- [x] Research-carving backend registration.
-- [x] Initial content-depth auditor added.
-- [ ] Run content-depth auditor and commit current ranked output.
-- [ ] Route-contract validator.
-- [ ] Duplicate-ID and alias-collision validator.
-- [ ] Missing-vs-uncertain data validator.
-- [ ] Provenance/project-theology status validator.
-- [ ] Stale-current-status validator.
-- [ ] Country-refresh smoke test with snapshot preservation.
-- [ ] Full validation + build + Pages deployment verification before declaring the repository healthy.
-
-## 11. Bugs/errors discovered or likely — keep adding here
-
-- [ ] Repository tree has a large dynamic classifier; verify every branch is reachable and no valid records silently fall into the generic Worlds bucket.
-- [ ] Repository currently loads many optional datasets in parallel; confirm a failed optional fetch cannot erase otherwise valid records.
-- [ ] Repository's `arr()` helper currently returns `[]` for object-shaped collections; audit all datasets where `records`/`entries` may be objects or keyed maps.
-- [ ] Culture page currently uses extensive inline styling; move to CSS and add robust schema normalization.
-- [ ] Extremism has both root `extremism-renderer.js` and `scripts/extremism-renderer.js`; establish one canonical renderer and one build path.
-- [ ] Build script excludes `scripts`; any runtime asset stored there will not be deployed unless explicitly copied.
-- [ ] Multiple deployment/workflow files exist; verify there is no stale Jekyll output path.
-- [ ] Large numbers of country files share nearly identical base sizes; run a content-depth and duplicate-content audit to distinguish useful templates from repeated filler.
-- [ ] Many wave/expansion files likely contain repeated descriptions; identify duplicated IDs and copied prose before further enrichment.
-- [ ] `data/depth-audit.json` is an audit contract, not a live scan; generate the live audit and compare it to the contract.
-- [ ] Verify `node.html` supports every record family that repository/culture/movement pages can link to.
-- [ ] Verify geometry routes, nation routes and Hawkins routes against their actual page contracts.
-- [ ] Verify all HTML fetch paths under GitHub Pages deployment/base-path conditions.
-- [ ] Search for orphaned files that are never registered by any manifest/backend/page.
-- [ ] Search for registered files that no longer exist.
-- [ ] Search for IDs differing only by aliases, spelling, punctuation or country naming conventions.
-- [ ] Search for contradictory current-status fields across datasets.
-- [ ] Search for relationship endpoints that exist only in research-wave files but are treated as canonical graph nodes.
-
-## 12. Research / information rule
-
-Before adding information to a file, ask:
-
-1. **What does this let us determine?**
-2. **What population can it locate or estimate?**
-3. **What geography can it map?**
-4. **What relationship can it establish?**
-5. **What chronology can it reconstruct?**
-6. **What propagation mechanism can it expose?**
-7. **What statistic can be derived?**
-8. **What uncertainty does it reduce or make explicit?**
-
-If the answer is “nothing beyond making the paragraph longer,” do not add it.
+- [ ] Do not create second “deep” copies merely to increase word count.
 
 ## Research principle
 
-**See the connections. Read the substance.**
-
-The repository should not become a giant pile of facts. Every file must have a purpose, every important record must stand independently, and every relationship must make it possible to answer a question, trace a mechanism, compare systems, locate a population, follow propagation, or understand how one part of the world changes another.
+**See the connections. Read the substance.** Every file must have a purpose, every important record must stand independently, and every relationship must make it possible to answer a question, trace a mechanism, compare systems, locate a population, follow propagation, or understand how one part of the world changes another.
