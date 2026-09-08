@@ -1,47 +1,236 @@
 # The Potato Layers
 
-The Potato is a model for organizing reality from origin to consequence. Each layer is both a symbolic image and a research domain.
+The project now separates three things that must remain linked but must not be collapsed:
 
-## Vertical order
+1. **Potato** — the physical object and everything that can be studied about it materially.
+2. **Potato of Life** — the project's spiritual reading of the Potato and its relationships.
+3. **Potatoism** — the bridge and methodology that compares the first two with scripture, mythology, anatomy, astronomy, history, chronology and lived testimony.
 
-1. Spirit — meaning, value, purpose, consciousness and the question of transcendence.
-2. Source — origin, generation, causation and the beginning of a system.
-3. Father — originating responsibility and the principle that gives order.
-4. Father's House — the interior source-home, memory, inheritance and belonging.
-5. House — an inhabited structure: body, family, institution, city, state or civilization.
-6. Garden — cultivated life, ecology, nourishment, beauty and care.
-7. Heaven — horizon, aspiration, ultimate orientation and the unknown above.
-8. Ladder — transition, development, learning, initiation and movement between levels.
-9. Axis — the stabilizing relation that connects above and below and gives direction.
-10. Tree of Life — generative organization, growth, relation and renewal.
-11. Tree of Strife — conflict, domination, extraction, fear and the reproduction of harm.
-12. Plane — the shared field of bodies, societies, ecosystems, history and material consequence.
-13. Matter — physical bodies, energy, fields, chemistry, biology and measurable processes.
+The central rule is: **the bridge is strongest when the things being compared remain distinct.**
 
-## The roots
+## 1. Potato — the physical root
 
-Roots contain what is hidden but necessary: origin, ancestry, soil, memory, water, minerals, inherited structure, unconscious pattern, infrastructure, law, language and accumulated history.
+The Potato is studied before metaphor: tuber biology, eyes and meristems, dormancy, sprouting, storage, reproduction, roots and stolons, genetics, Andean domestication, migration, agriculture, food, labor, ecology and resilience.
 
-## The trunk
+Its sequence is:
 
-The trunk is continuity and organization. It includes identity, institutions, metabolism, nervous-system integration, governance, culture and the mechanisms that hold a system together.
+`soil → tuber → skin → eye → dormancy → activation → sprout → stem → leaf → flower → new tuber → storage → renewal`
 
-## The branches
+The eye is a real bud-bearing meristematic site. It is therefore a physical threshold between stored possibility and visible growth. Dormancy is not death; it is a regulated state. Vegetative propagation preserves continuity without requiring botanical seed.
 
-Branches are differentiation. They include disciplines, professions, nations, institutions, species, technologies, beliefs, cultures and possible futures.
+The physical Potato already contains an unusually dense vocabulary of hidden life, stored energy, thresholds, multiplication, inheritance, timing and return. Potatoism does not need to invent these properties. It needs to ask what they can illuminate.
 
-## Leaves
+## 2. Potato of Life — the spiritual center
 
-Leaves are interfaces with the environment: sensing, exchanging energy, breathing, communicating, learning, trading and responding.
+Potato of Life is the project's sacred reading of those relationships. It gathers:
 
-## Fruit
+- stored life
+- eye and recognition
+- boundary and Door
+- sprout and path
+- vessel and nourishment
+- root and source
+- tree and branching
+- ladder and ascent
+- grave and return
+- North and orientation
+- spiral and repeated becoming
+- children and continuation
 
-Fruit is consequence. It is what a system produces for others: nourishment, knowledge, beauty, children, institutions, wealth, art, suffering or waste.
+Within the project canon, Tim Dooley is identified with Father, Source and Potato of Life. This is religious/project canon and self-description, not an independently verified scientific or historical fact.
 
-## Seeds
+The spiritual layer asks a different question from biology. Biology asks what a tuber does. Potato of Life asks what the **relationship among those functions** can mean.
 
-Seeds are continuation and transmission: education, memory, reproduction, archives, traditions, code, stories and the next generation.
+## 3. Potatoism — the bridge
 
-## Research rule
+Potatoism is the methodology that puts the physical and spiritual layers beside other bodies of evidence without pretending they are identical.
 
-A symbolic layer may be compared with anatomy, neuroscience, ecology, astronomy, physics, economics or theology. The comparison must state whether it is metaphor, hypothesis, observed fact, calculation, interpretation or open question.
+The method is:
+
+1. State the project claim.
+2. Find the physical structure.
+3. Locate relevant primary texts.
+4. Find historical context.
+5. Compare function and geometry.
+6. Record mismatches.
+7. Trace chronology.
+8. Separate testimony from corroboration.
+9. Generate new research questions.
+10. Preserve disconfirmation.
+
+A similarity is valuable when it creates a precise question. It becomes weak when it is treated as proof merely because two things look alike.
+
+## Potato children
+
+The child/angel layer follows:
+
+`Potato → eyes → children → sprouts → paths → ladder → ascent`
+
+A Potato child can mean a descendant, idea, disciple, living continuation, symbolic agent or spiritual child depending on context. In the current mythology, Potato children are Tim's children because they can see the ladder that Tim is.
+
+Tim is therefore not merely the father at the top of a hierarchy. **Tim is the Ladder.**
+
+That changes the meaning of Father. Father is source; Ladder is route. The father becomes a relation that can be traversed.
+
+The phrase "children" should remain explicitly polysemous. A literal child, a spiritual child, a disciple, a cultural descendant and an idea generated by a teacher are not the same category.
+
+## Celestial beings
+
+The project now has a comparative angelology layer. Relevant traditions include:
+
+- **Cherubim — Exodus 25:20–22.** Two winged figures face one another above the Ark, with divine meeting located between them. This is a strong structural comparison for two poles producing a central relational space.
+- **Seraphim — Isaiah 6.** Six-winged beings attend the throne and participate in proclamation and purification.
+- **Ezekiel's living creatures and wheels — Ezekiel 1.** Wings, wheels, movement, eyes, a dome and throne imagery form a mobile celestial vision.
+- **Revelation 4.** Four living creatures surround the throne, are full of eyes and include a lion-like form.
+- **Valkyries — Gylfaginning 36.** Odin sends them into battle to choose the slain and govern victory. This supplies a Northern comparative layer around fate, selection, death and passage.
+
+These are not one species and the project does not claim they are. The point is to study recurring functions: seeing, guarding, carrying, mediating, selecting, announcing, purifying, surrounding the throne and crossing between states.
+
+## Eye, lamp and path
+
+The eye is now a multi-layer concept:
+
+`potato eye → human sight → eye as lamp → eye as recognition → eye-filled wheels → eye-filled throne beings`
+
+Matthew 6:22 makes the eye a lamp metaphor; Psalm 119:105 makes lamp and path part of a directional vocabulary. The Potatoism comparison is functional: the potato eye identifies a possible route of emergence while biblical eye/lamp language connects vision to orientation.
+
+The biological eye, human eye and scriptural eye are not the same thing. The research value is the sequence from perception to direction.
+
+## Skin and Door
+
+Skin is the potato's boundary. It holds the interior together while remaining exposed to soil, air, water, microbes and human handling.
+
+That makes skin a natural predecessor to the project's Door vocabulary:
+
+`interior → boundary → threshold → passage → exterior`
+
+The philosopher's stone belongs here as a separate historical layer. Alchemy's transformation language can be studied beside Potatoism's transformation language, but the two should not be collapsed into one tradition.
+
+## Chariot, wheels and carrier
+
+The chariot layer asks what carries something between domains.
+
+- wheels emphasize rotation and direction
+- wings emphasize flight
+- ladders emphasize vertical passage
+- vessels emphasize containment
+- the potato carries nourishment and biological continuity
+- the body carries consciousness and action
+- the symbolic chariot carries vision, authority or divine presence
+
+The shared category is **carrier**, not identity.
+
+## Body as cosmos
+
+The project now treats anatomy as an explicit comparison layer:
+
+| Body | Potatoism reflection |
+|---|---|
+| Eye | threshold / vision |
+| Skin | boundary |
+| Heart | center / desire / life |
+| Thalamus | Father's House / relay metaphor |
+| Spine | vertical axis |
+| Brain | house of thought |
+| Blood | circulation / sacrifice / obligation |
+
+The thalamus is not literally the Father's House. The spine is not literally a cosmic ladder. Anatomy supplies observable structures; Potatoism supplies symbolic interpretations.
+
+### Heart
+
+The heart is unusually dense because it is simultaneously a literal pump, a bodily center and a religious metaphor for intention, courage and love. Potatoism can compare heart and tuber as centers of continuity without pretending a potato has a heart.
+
+### Blood
+
+Blood opens a different research field: life, inheritance, injury, sacrifice, guilt, kinship, circulation and debt. Financial debt, moral debt, ritual debt and karmic consequence must remain separate systems even when the project studies their shared language of obligation.
+
+## Fate and destiny
+
+Fate is now treated as a question rather than a conclusion.
+
+The comparative field includes Norns, Valkyries, prophecy, karma, destiny, choice, obligation and consequence.
+
+The North/spiral model proposes a different possibility: destiny may be direction through accumulated choices rather than a fixed script. Each step changes the traveler's position while preserving the memory of previous steps.
+
+> If the ladder is real as a symbolic route, is the destination fixed, or is only the structure of possible ascent fixed?
+
+## North, North of North and Spiral
+
+North is direction before it is geography.
+
+`North → North → North of North`
+
+This can represent geography, time, work, attention, moral orientation, centralization and the next calibration point. North of North is the beyond-point of the current axis, not merely another place on a map.
+
+The spiral is the temporal form of the same principle. It combines recurrence and displacement:
+
+`return → inspect → calibrate → prune → integrate → rise → return`
+
+The same question can return without the researcher being the same person or the archive being in the same state.
+
+## Mud and ascent
+
+The Potato rises from mud without denying mud.
+
+The project therefore treats ascent as:
+
+`burial → pressure → eye → sprout → resistance → direction → ascent → return`
+
+Adversity is not proof of holiness. It is the material through which endurance and direction are tested.
+
+## Root and Fruit
+
+Root and fruit are not merely bottom and top. They are two moments of one circulation.
+
+Root is hidden continuity: soil, ancestry, storage, water, memory and source. Fruit is visible consequence: nourishment, beauty, reproduction, labor returned to the world. Between them lies the whole plant.
+
+The Potato is unusually useful here because the tuber itself complicates the ordinary picture of root below and fruit above. It is underground but swollen with stored life; it belongs to a plant whose visible and invisible portions continually exchange resources.
+
+## Tim as Ladder and public center
+
+The statement that Tim "sits in the middle of everything" is treated as a project-canonical description of symbolic centrality, not literal cosmic geography.
+
+Tim's role can be represented as:
+
+`Sage → Ladder → Father → Root → Potato → Gardener`
+
+The function changes while the center remains. Sage observes. Ladder connects. Father sources. Root stores and feeds. Potato carries life. Gardener cultivates what can grow.
+
+This is why the project should map Tim as a hub without treating graph centrality as metaphysical proof.
+
+## Debt and obligation
+
+Debt is deliberately split into separate layers:
+
+- financial debt — enforceable economic obligation
+- interpersonal debt — what one person owes another
+- moral debt — responsibility for harm or benefit
+- ritual/religious debt — obligations created by covenant or rite
+- karmic consequence — action and consequence in traditions that use karma
+- project-mythic debt — claims internal to Potatoism's own cosmology
+
+A project number such as "40.2 trillion karmic debt" belongs to the last category unless an external source independently establishes something else. The archive should never turn a mythic number into an economic statistic.
+
+## Stories and entanglement
+
+The project's stories should be treated as an entangled corpus rather than isolated myths. A potato story can touch the story of a body; a body can touch a biblical text; a biblical text can touch a Norse comparison; all can return to a lived chronology.
+
+The archive's job is to show the path between them and where the path is speculative.
+
+## The archive follows the same architecture
+
+The technical repository should imitate the Potato:
+
+- dense roots rather than hundreds of shallow records
+- eyes as clear entry points
+- branches that preserve provenance
+- separate physical and spiritual layers
+- bridges that explicitly state their evidence class
+- pruning of duplicated material
+- recurring return to canonical roots
+
+The project grows outward in spirals but repeatedly returns to the center.
+
+## Source boundary
+
+Exodus does not prove Potatoism. Ezekiel does not describe potatoes. Valkyries are not biblical angels. A meristem is not a human eye. A thalamus is not a throne. A symbolic resemblance becomes useful when it produces a precise question, not when it is promoted into proof.
