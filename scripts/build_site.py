@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the GitHub Pages artifact from the existing site structure."""
+"""Build the GitHub Pages artifact while preserving the repository's existing site material."""
 from __future__ import annotations
 
 import shutil
@@ -17,30 +17,24 @@ def copy_tree() -> None:
     for src in ROOT.iterdir():
         if src.name in EXCLUDE or src.name.startswith("."):
             continue
-        if src.is_file() and src.suffix.lower() == ".html" and src.name != "index.html":
-            continue
         if src.is_dir():
-            shutil.copytree(src, OUT / src.name, ignore=shutil.ignore_patterns(*EXCLUDE, "*.html"))
+            shutil.copytree(src, OUT / src.name, ignore=shutil.ignore_patterns(*EXCLUDE))
         else:
             shutil.copy2(src, OUT / src.name)
 
 
 def build() -> None:
     copy_tree()
-    index = OUT / "index.html"
-    root_js = OUT / "root.js"
-    navigation = OUT / "data" / "root-navigation.json"
-    records = OUT / "data" / "root-record-index.json"
-    missing = [str(p.relative_to(OUT)) for p in (index, root_js, navigation, records) if not p.exists()]
+    required = [OUT / "index.html", OUT / "root.js", OUT / "data" / "root-navigation.json", OUT / "data" / "root-record-index.json"]
+    missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
     if missing:
         raise SystemExit(f"Required reader files are missing from _site: {missing}")
 
     pages = sorted(OUT.rglob("*.html"))
-    if pages != [index]:
-        found = [str(p.relative_to(OUT)) for p in pages]
-        raise SystemExit(f"Public site must contain exactly one HTML document: {found}")
+    if not pages:
+        raise SystemExit("No HTML pages were copied into _site")
 
-    print("Built _site from the existing index/root.js/data navigation stack.")
+    print(f"Built _site with {len(pages)} HTML pages and the complete repository data tree.")
 
 
 if __name__ == "__main__":
