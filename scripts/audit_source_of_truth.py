@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
-"""Audit canonical ownership, source-map declarations, and indexed routes."""
+"""Audit canonical ownership, source-map declarations, indexed routes, and repository taxonomy."""
 from __future__ import annotations
-import fnmatch, json
+import json
 from pathlib import Path
-ROOT = Path(__file__).resolve().parents[1]
-DATA = ROOT / 'data'; MAP = DATA / 'canonical-source-map.json'; INDEX = DATA / 'repository-index.json'; REGISTRY = DATA / 'canonical-record-registry.json'
+ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; MAP=DATA/'canonical-source-map.json'; INDEX=DATA/'repository-index.json'; REGISTRY=DATA/'canonical-record-registry.json'
 ROLE_KEYS={'canonical_owner':'canonical','identity_owner':'identity','schema_owner':'schema','graph_schema_owner':'schema','bridge_owner':'projection','system_view':'projection','country_view':'projection','graph_view':'projection','research_question_owner':'research','research_seed_owner':'research','foundation_context':'projection'}
-LIST_ROLE_KEYS={'derived_views':'projection','related_views':'projection','enrichment_layers':'enrichment','adjacent_enrichment':'enrichment','additional_research':'research','expansion_layers':'research','source_layers':'source','source_registry_layers':'source','research_or_extrapolation':'research','documentation_layers':'documentation','legacy_or_fallback':'projection','legacy_or_classification_view':'projection','derived_or_scoped_layers':'relationship'}
 NON_SOURCE_KEYS={'policy','rule','purpose','empirical_rule','consolidation_actions','known_stale_references'}
+ROOT_LAYERS={'spirit':{'source','meaning','belief','myths'},'mind':{'psychology','hawkinscale','neurobiology'},'matter':{'world','region','institution','network','person','object','event','record','ground'}}
+
 def load(p): return json.loads(p.read_text(encoding='utf-8'))
 def declared_paths(v):
     if isinstance(v,str) and v.startswith(('data/','docs/')): return [v]
@@ -21,6 +21,7 @@ def at_path(root,path):
         elif isinstance(cur,dict) and part in cur: cur=cur[part]
         else: return None
     return cur
+
 def main():
     errors=[]; warnings=[]
     if not MAP.exists(): errors.append('missing data/canonical-source-map.json')
@@ -37,10 +38,15 @@ def main():
                 elif '*' in raw or '?' in raw:
                     if not list(ROOT.glob(raw)): errors.append(f'{family}: declared pattern has no matches: {raw}')
                 elif not p.is_file(): errors.append(f'{family}: declared source does not exist: {raw}')
-    by_id={}; checked=0
+    by_id={}; checked=0; taxonomy_counts={'spirit':0,'mind':0,'matter':0}
     for row in idx.get('records',[]):
         source=row.get('source'); path=row.get('path'); rid=str(row.get('id',''))
         if not source or not isinstance(path,list): errors.append(f'index: malformed route for {rid or "<unknown>"}'); continue
+        root=str(row.get('repository_root','')).lower(); layer=str(row.get('repository_layer','')).lower()
+        if root not in ROOT_LAYERS: errors.append(f'index: invalid repository_root for {rid}: {root!r}')
+        elif layer not in ROOT_LAYERS[root]: errors.append(f'index: invalid repository_layer for {rid}: {root}/{layer}')
+        else: taxonomy_counts[root]+=1
+        if not isinstance(row.get('repository_scale'),str) or not row.get('repository_scale'): errors.append(f'index: missing repository_scale for {rid}')
         fp=ROOT/source
         if not fp.is_file(): errors.append(f'index: missing source for {rid}: {source}'); continue
         try: payload=load(fp)
@@ -57,15 +63,13 @@ def main():
     for rid,rows in by_id.items():
         sources={r.get('source') for r in rows if r.get('source') in owners}
         if len(sources)<=1: continue
-        fams=set().union(*(owners[s] for s in sources))
-        msg=f'canonical ID {rid} has owners {sorted(sources)} across families {sorted(fams)}'
+        fams=set().union(*(owners[s] for s in sources)); msg=f'canonical ID {rid} has owners {sorted(sources)} across families {sorted(fams)}'
         if len(fams)<=1: errors.append('duplicate canonical owner within family: '+msg)
         else: warnings.append('cross-family canonical ID requires namespace review: '+msg)
     if REGISTRY.exists():
-        reg=load(REGISTRY); reg_ids={str(r.get('id')) for r in reg.get('records',[])}; idx_ids=set(by_id)
-        missing=idx_ids-reg_ids
+        reg=load(REGISTRY); reg_ids={str(r.get('id')) for r in reg.get('records',[])}; idx_ids=set(by_id); missing=idx_ids-reg_ids
         if missing: errors.append(f'registry missing indexed IDs: {len(missing)}')
         if reg_ids!=idx_ids: warnings.append(f'registry/index ID sets differ: registry={len(reg_ids)} index={len(idx_ids)}; registry is expected to inventory at least the index')
-    result={'version':'1.3.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
+    result={'version':'1.4.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
     (DATA/'source-of-truth-audit.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8'); print(json.dumps(result,indent=2)); return 1 if errors else 0
 if __name__=='__main__': raise SystemExit(main())
