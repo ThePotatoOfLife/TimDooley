@@ -31,6 +31,8 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+      - name: Validate root navigation contract
+        run: python scripts/validate_root_navigation.py
       - name: Build canonical record registry
         run: python scripts/build_canonical_record_registry.py
       - name: Build repository index
