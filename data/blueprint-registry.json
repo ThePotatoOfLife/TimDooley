@@ -1,5 +1,10 @@
 {
-  "version":"1.9.0","updated":"2026-09-08","purpose":"Canonical registry of reusable blueprints and major data-layer entry points.","blueprint_filename_contract":"Every standalone blueprint file uses <subject>-blueprint.json. The descriptive subject comes first. Legacy suffixes such as -master, -system and bare .json are not used for new standalone blueprints.","meta_blueprint":"data/blueprints/blueprint-blueprint.json","blueprint_count":42,
+  "version":"1.9.1",
+  "updated":"2026-09-08",
+  "purpose":"Canonical registry of reusable blueprints and major data-layer entry points.",
+  "blueprint_filename_contract":"Every standalone blueprint file uses <subject>-blueprint.json. The descriptive subject comes first. Legacy suffixes such as -master, -system and bare .json are not used for new standalone blueprints.",
+  "meta_blueprint":"data/blueprints/blueprint-blueprint.json",
+  "blueprint_count":29,
   "blueprints":[
     {"id":"country","file":"data/countries-blueprint.json","applies_to":"canonical country acquisition and normalization","status":"active","migration_note":"Root-level filename is retained temporarily because country generation scripts still consume it; rename only with producer migration in the same change."},
     {"id":"country-deepening","file":"data/blueprints/country-deepening-blueprint.json","applies_to":"deep national system overlays","status":"active"},
@@ -33,7 +38,8 @@
     {"id":"agriculture-food-water","file":"data/blueprints/agriculture-food-water-blueprint.json","applies_to":"agriculture, food and water","status":"active"}
   ],
   "structural_sections":["denomination-school","institution","political-organization","company","infrastructure-asset","historical-event","place","person-public-role","movement","source-document","economic-sector","treaty-alliance","resource-system","ecological-system"],
-  "expansion_candidates":["legal-case-jurisprudence","intelligence-network","transport-logistics","port-terminal","telecom-cable","science-funding","heritage-archaeology","urban-system","digital-platform-ecosystem","water-system","housing-real-estate","tax-expenditure","public-budget-program","geopolitical-dependency","standard-protocol","dataset-statistical-series"],
+  "expansion_candidates":["legal-case-jurisprudence","transport-logistics","port-terminal","telecom-cable","science-funding","digital-platform-ecosystem","urban-system","heritage-archaeology","geopolitical-dependency","dataset-statistical-series"],
+  "deferred_candidates":["intelligence-network","water-system","housing-real-estate","tax-expenditure","public-budget-program","standard-protocol"],
   "quality_rule":"Prefer a small number of distinct, deep blueprints. Create a new blueprint only when the entity family has its own identity boundaries, sources, temporal logic, relationships, validation or acquisition workflow.",
   "implementation_rule":"Every blueprint carries implementation notes explaining canonical ownership, expected record shape, data acquisition, known traps and how it connects to indexes and frontend routing."
 }
