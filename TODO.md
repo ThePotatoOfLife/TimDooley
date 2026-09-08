@@ -58,6 +58,18 @@ The repository has accumulated duplicate data, inconsistent naming, uneven folde
 - [ ] Make generated indexes deterministic in ordering, counts and serialization.
 - [ ] Decide which generated files are committed and which are build artifacts; document the rule.
 
+## CURRENT P0 — country atlas acquisition failure
+
+- [ ] **Re-run the repaired country acquisition workflow and verify a non-empty snapshot before trusting nation pages.**
+- [x] Diagnose why `country-static.json` showed 194 countries with empty observations while the canonical scope was 195.
+- [x] Identify that the refresh script treated malformed/unsupported World Bank API responses as empty data because it only inspected `payload[1]` and did not reject API error payloads.
+- [x] Identify a second failure-mode bug: the old refresh wrote canonical country records and `country-static.json` even after the canonical-count validation had already failed.
+- [x] Repair `scripts/refresh_country_atlas.py`: validate canonical scope before mutation, paginate World Bank requests explicitly, reject malformed/error responses, require minimum acquisition coverage, and fail closed before overwriting records/projections.
+- [x] Record the solution in `README.md` under Wise notes so future repository scans retain the acquisition lesson.
+- [ ] After the next successful run, verify Afghanistan, Albania, Andorra and several randomly selected countries have populated observations and that `country-static.json` has 195 entries.
+- [ ] Add a dedicated regression test for the API-error-as-empty-data failure and snapshot-preservation behavior.
+- [ ] Make `nation.html` distinguish source-acquisition failure/stale snapshot from a legitimately unavailable country indicator instead of showing every failure as “Not yet sourced”.
+
 ## P0 — routing / frontend contract
 
 - [ ] Build a route matrix: page → input → data source → ID field → resolver → detail renderer → fallback.
@@ -226,6 +238,8 @@ Likely architectural problem to investigate: the project can source metadata/cha
 - **Silent failure is worse than visible incompleteness.** Errors should become diagnostics.
 - **Generated artifacts need contracts.** Every generated file needs an owner, producer, deterministic format and validation path.
 - **Stability before scale.** Fix the architecture that will be exercised by the next thousand records before adding those records.
+- **Acquisition must fail closed.** Never interpret an API error or malformed payload as an empty dataset.
+- **A failed refresh must not destroy the last usable projection.** Diagnostics belong in refresh state; bad acquisition must stop before canonical mutation.
 
 ## Definition of done
 
