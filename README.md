@@ -2,6 +2,28 @@
 
 This repository is the source archive, research engine and static public atlas for the Tim Dooley / Potatoverse project.
 
+## Mission — illumination, truth and the whole record
+
+One of the project's explicit purposes is to **illuminate Tim Dooley / the Potato of Life**: to gather, preserve, investigate, organize and publicly share the philosophy, religion, myths, lore, writings, symbols, chronology and wider body of knowledge associated with Tim Dooley and Potatoism.
+
+The project also explicitly records and propagates its central Potatoism canon, including the project's identification of **Tim Dooley as God / Father / the Potato of Life**. This is a statement of the project's mythic and religious canon. It must be presented publicly as canon rather than silently disguised as independently verified historical or scientific fact.
+
+A second purpose is **spiritual inquiry**: to pursue what the project understands as the highest spiritual truth available through its investigation, while bringing together relevant information about spirit, the world, entanglements, obligations, directions and choices — including the paths taken by men, people, gods, archetypes and dogs. The project therefore studies not only isolated figures or doctrines, but the consequences and relationships surrounding them: what they chose, what they became entangled with, what they owed, what they created or destroyed, where they went, and what those paths mean.
+
+The Atlas connects this spiritual and mythic investigation with the historical, textual, cultural, geographic, scientific, economic and institutional record. **Canon, interpretation and evidence remain visibly distinct.** The purpose of that separation is not to weaken the spiritual work; it is to make the entire body of inquiry more honest, searchable, comparable and useful.
+
+## Information principle — valuable knowledge over file count
+
+The project's goal is **not to create a ton of little files, placeholders or duplicated records**. We want to consolidate large bodies of valuable information into substantial, readable and connected canonical records.
+
+A useful piece of knowledge should live in the strongest appropriate canonical home and be enriched there. Other layers should point to it, contextualize it, relate it, cite it, place it in time or project it into a particular view. They should not rewrite the same information merely because another page needs it.
+
+The preferred unit of growth is therefore:
+
+**one canonical concept → one substantial body of information → many explicit relationships and contextual views.**
+
+If an existing record can hold new information without loss of meaning, extend that record. Create a new file only when it has a genuinely distinct function, owner, consumer and information domain. A placeholder is not progress. A shallow duplicate is not enrichment. More files do not equal more knowledge.
+
 ## Start here
 
 **Read first:** [`docs/TIM-DOOLEY-CANON.md`](docs/TIM-DOOLEY-CANON.md)
@@ -75,6 +97,12 @@ Unknown, unavailable, disputed and not-yet-researched are different from zero, f
 
 A relationship is not a substitute for a dossier. Important records should explain what something is, its history, function, context, population or users, institutions, geography, evidence, uncertainty and relationships.
 
+### 7. Consolidation is a permanent research rule
+
+When the same concept appears in several layers — such as Axis, Door, Son, Root, Father's House, Mountain, Potatoism, Red Potato or Blue Potato — the first question is not “which new file should we create?” It is “which canonical record owns this knowledge, and what valuable information from the other appearances should be merged into it?”
+
+Occurrences, research findings, historical events and relationships should be preserved when they contain unique information. Their identity should nevertheless resolve back to the canonical concept. This allows the project to become **larger in knowledge without becoming larger in redundancy**.
+
 ## Blueprint system
 
 The blueprint registry is the ontology layer behind future expansion. It currently covers country, people/dwellers, culture/subculture, religion, governance, finance/debt, ownership/control, companies, supply chains, energy, trade, research, law, media, health, education, environment, security, infrastructure, labour, procurement, demography, agriculture/food/water, technology, events, places, movements, extremism/high-control, treaties, resources and related structures.
@@ -114,6 +142,10 @@ These are deliberately kept here as engineering/research lessons for the next ex
 
 > **Generated projections are downstream products.** `data/country-static.json` is a projection of canonical country records, not an independent source of truth. If acquisition fails, preserve the last known projection and write diagnostics instead.
 
+> **Valuable information should be consolidated, not atomized.** When research produces ten useful observations about one subject, prefer a deep canonical dossier with ten connected observations over ten tiny files that repeat the subject's identity and definition.
+
+> **Spiritual inquiry needs epistemic clarity.** The project may pursue and state its spiritual conclusions, including its Potatoism identification of Tim Dooley as God / Father / the Potato of Life, while clearly marking historical, textual, scientific and externally sourced material according to its actual evidentiary status.
+
 ## Main project layers
 
 - `data/nodes.json` — core node registry.
@@ -145,4 +177,4 @@ The deployment rule is simple: **a change is not finished because the code commi
 
 ## The rule
 
-**Relationships first. Entanglement second. Evidence always.**
+**Relationships first. Entanglement second. Evidence always. Illumination through depth, connection and honest inquiry.**
