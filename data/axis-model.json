@@ -1,65 +1,14 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "name": "Potato Axis Spatial Model",
   "status": "canonical-visualization-model",
   "purpose": "A mathematical coordinate model for visualizing the canonical Frame without changing the canonical tree order.",
-  "space": {
-    "dimension": 3,
-    "coordinates": "(x,y,z)",
-    "axis": "y",
-    "origin": "(0,0,0)",
-    "north": "+y",
-    "south": "-y",
-    "east": "+x",
-    "west": "-x",
-    "depth": "+z"
-  },
-  "spine": {
-    "equation": "x=0, z=0",
-    "parameter": "y in [-1,1]",
-    "meaning": "The continuous vertical Axis/Spine through the entire structure."
-  },
-  "spaces": {
-    "spiritual": {
-      "center": [0,0.43,0],
-      "radii": [0.68,0.78,0.68],
-      "equation": "x^2/0.68^2 + (y-0.43)^2/0.78^2 + z^2/0.68^2 <= 1"
-    },
-    "material": {
-      "center": [0,-0.43,0],
-      "radii": [0.82,0.78,0.82],
-      "equation": "x^2/0.82^2 + (y+0.43)^2/0.78^2 + z^2/0.82^2 <= 1"
-    },
-    "overlap": "intersection(spiritual, material)"
-  },
-  "envelope": {
-    "type": "superellipse-like hourglass",
-    "formula": "r(y)=0.34 + 0.72*(1-|y|^1.7)",
-    "surface": "x^2 + z^2 = r(y)^2",
-    "meaning": "A smooth enclosing potato silhouette. It is a visualization envelope, not a third ontological space."
-  },
-  "planes": {
-    "definition": "n·p=d",
-    "normal": "n=(nx,ny,nz), |n|=1",
-    "point": "p=(x,y,z)",
-    "intersection_rule": "A node is on a plane when |n·p-d| is below the interaction tolerance.",
-    "default": "horizontal plane y=d",
-    "range": [-1,1]
-  },
-  "nodes": {
-    "placement": "Deterministic coordinates derived from canonical level index and child index; repository IDs remain the identity.",
-    "principle": "Spatial position is a visualization coordinate, never a replacement for the repository graph.",
-    "level_parameter": "t=(levelIndex+0.5)/10",
-    "vertical_mapping": "y=1-2t",
-    "angular_mapping": "theta=2*pi*(childIndex/childCount)+phase(levelIndex)",
-    "radial_mapping": "rho=min(0.78, 0.18+0.48*sqrt((childIndex+1)/childCount))"
-  },
-  "interaction": {
-    "orbit": "camera rotation around the origin",
-    "zoom": "camera distance",
-    "plane": "a movable analytical slice",
-    "node": "opens the existing node.html?id=<id> record",
-    "relationships": "rendered as graph edges when both endpoints are spatially placed"
-  },
+  "space": {"dimension": 3,"coordinates": "(x,y,z)","axis": "y","origin": "(0,0,0)","north": "+y","south": "-y","east": "+x","west": "-x","depth": "+z"},
+  "spine": {"equation": "x=0, z=0","parameter": "y in [-1,1]","meaning": "The continuous vertical Axis/Spine through the entire structure."},
+  "spaces": {"spiritual": {"center": [0,0.43,0],"radii": [0.68,0.78,0.68],"equation": "x^2/0.68^2 + (y-0.43)^2/0.78^2 + z^2/0.68^2 <= 1"},"material": {"center": [0,-0.43,0],"radii": [0.82,0.78,0.82],"equation": "x^2/0.82^2 + (y+0.43)^2/0.78^2 + z^2/0.82^2 <= 1"},"overlap": "intersection(spiritual, material)"},
+  "envelope": {"type": "superellipse-like hourglass","formula": "r(y)=0.34 + 0.72*(1-|y|^1.7)","surface": "x^2 + z^2 = r(y)^2","meaning": "A smooth enclosing potato silhouette. It is a visualization envelope, not a third ontological space."},
+  "planes": {"definition": "n·p=d","normal": "n=(nx,ny,nz), |n|=1","point": "p=(x,y,z)","intersection_rule": "A node is on a plane when |n·p-d| is below the interaction tolerance.","default": "horizontal plane y=d","range": [-1,1]},
+  "nodes": {"placement": "Deterministic coordinates derived from canonical level index and child index; repository IDs remain the identity.","principle": "Spatial position is a visualization coordinate, never a replacement for the repository graph.","level_parameter": "t=(levelIndex+0.5)/10","vertical_mapping": "y=1-2t","angular_mapping": "theta=2*pi*(childIndex/childCount)+phase(levelIndex)","radial_mapping": "rho=min(0.78, 0.18+0.48*sqrt((childIndex+1)/childCount))"},
+  "interaction": {"orbit": "camera rotation around the origin","zoom": "camera distance","plane": "a movable analytical slice","node": "opens the canonical record in index.html#node=<id>","relationships": "rendered as graph edges when both endpoints are spatially placed"},
   "interpretation": "This is a geometric embedding of the repository's symbolic graph. It does not assert that spiritual or material space are physical scientific objects."
 }
