@@ -4,23 +4,40 @@
 
 The project is an information archive whose graph is the navigation layer. The canonical filing spine is **ROOT → SPIRIT / MIND / MATTER**; Door/Axis remain transformation and relational coordinates rather than filing branches. Every substantial object is definition-first: define the thing itself, establish context and mechanism, then expose its directional couplings.
 
-### Completed in the latest 2026-09-08 pass
+### Newly discovered bugs / insufficient-content inventory — 2026-09-08
 
-- [x] Standardize the public shell through one build-time canonical header.
-- [x] Keep page-local controls out of the global header.
-- [x] Make the build deterministic and prevent `components/` and `scripts/` source tooling from being copied into the public Pages artifact.
-- [x] Make the web audit recursive across nested HTML/CSS/JS assets.
-- [x] Make the religious foundation ownership explicit: `data/religious-foundations.json` is the canonical foundation layer and `data/religious-foundations/records.json` is the foundation research layer.
-- [x] Remove the phantom `enriched-records.json` dependency from the canonical foundation index and religious layer manifest rather than fabricating a missing dataset.
-- [x] Preserve the distinction between canonical foundation records, research records, adjacent religion research and the global relationship graph.
-- [x] Register and validate the 2026-09 research-carving layer.
-- [x] Keep Node 24-compatible GitHub Actions versions in the active workflows.
+- [x] **FIXED:** `extremism.html` crashed while rendering because `affiliations` is an array in the main extremism dataset but a string in at least some legacy/base records. Renderer now normalizes scalar/array/object values instead of blindly calling `.join()`.
+- [ ] **DEEPEN:** `data/extremism-cults-atlas-2026-09-08.json` — many movement records currently have a compact schema (`id/name/category/status/geography/targets/membership/armed_status/affiliations/sources/notes`) rather than the repository's full definition-first dossier standard. Expand into definition, history, ideology/context, organization, mechanisms, evidence, chronology, relationships, uncertainty, questions and current-status sourcing.
+- [ ] **DEEPEN:** `data/extremism-cults-atlas-expansion-2026-09.json` — same compact-record problem; fields such as `targets`/`armed_status` differ from the base dataset's `targets_or_hate`/`armed_or_violent`, making the two layers unnecessarily fragile. Normalize into one explicit schema and preserve source-specific evidence.
+- [ ] **DEEPEN:** `extremism.html` — cards currently summarize records but do not yet expose the full dossier. Add links/opening surfaces to substantial individual movement records and show definition, history, evidence, status date, relationships and uncertainty.
+- [ ] **DEEPEN:** `data/meaning-layer-symbolic.json` — major symbolic records currently rely on `purpose/context/mechanisms/...` but do not consistently carry an explicit `definition` field. Add explicit definitions and enforce the same depth standard as other major records.
+- [ ] **DEEPEN:** `data/meaning-layer.json` — major analytical records are substantially better, but audit every record for explicit definition/context/mechanism/couplings and add missing sections rather than assuming presence because the file is large.
+- [ ] **DEEPEN:** `data/potatoism-dossiers.json` — this is currently a contract/coverage description rather than the actual long-form corpus. Audit the canonical Potatoism terms and identify which terms have no corresponding substantive dossier.
+- [ ] **DEEPEN:** `data/religious-foundations/records.json` and `data/religious-foundations.json` — foundation records are currently compact structured profiles. Expand important traditions into article-length dossiers with emergence, chronology, texts, doctrine, practice, institutions, people, places, geography, demographic evidence, internal diversity and modern status.
+- [ ] **DEEPEN:** `data/religious-adjacent/*.json` — audit all adjacent, mystery, occult, Satanism and anti-religious records for the same definition-first standard; do not let classification labels substitute for substance.
+- [ ] **DEEPEN:** `data/nodes.json`, `data/tree-child-records.json`, `data/tree-support-records.json`, `data/tree-concept-records.json` — identify shallow nodes and expand the high-connectivity ones first; graph edges must not be the only content.
+- [ ] **DEEPEN:** `data/events.json` — audit events for definition, causes, participants, chronology, consequences, evidence and relationships; event names/descriptions alone are insufficient.
+- [ ] **DEEPEN:** `data/nations.json` and country observation layers — identify nations with thin evidence/content and prioritize them for expansion rather than treating 195 identities as 195 complete dossiers.
+- [ ] **DEEPEN:** `data/people-registry.json` / people-related datasets — identify people represented only by names, roles or links and create substantive biographical records for high-value actors.
+- [ ] **DEEPEN:** `data/geometry-records.json` — expand geometry records beyond formulas/labels into definition, derivation, historical context, applications, limitations and explicit separation between mathematics and project symbolism.
+- [ ] **DEEPEN:** `data/hawkins-scale.json` — audit each level for definition, source model, psychological description, action tendency, limitations and evidence boundary; keep the non-physical-frequency guardrail explicit.
+- [ ] **DEEPEN:** `data/research-carvings-2026-09.json` — audit for substantive depth and ensure every carving has enough context to stand alone, not merely a citation bundle.
+- [ ] **DEEPEN:** `data/global-graph-bridge.json` and `data/relationships.json` — distinguish research-only endpoints from true orphan entities, then create missing first-class records for high-value referenced entities.
 
-### Immediate next engineering blockers
+### Content-audit engineering
+
+- [ ] Create `scripts/audit_content_depth.py` that scans registered JSON record collections and reports: missing definition, missing context, missing mechanism/function, missing couplings, missing evidence/sources, shallow prose, empty arrays, duplicate records and schema drift.
+- [ ] Give every audited record a machine-readable `depth_status`: `stub`, `structured`, `substantive`, `deep`.
+- [ ] Produce `data/depth-audit.json` from the scanner so the UI and CI can show where the repository is thin.
+- [ ] Add a CI threshold for critical layers while allowing intentionally compact indexes/registries to be exempt by contract.
+- [ ] Add schema-normalization checks across datasets that feed the same page. The extremism bug is the model: consumers must not guess whether a field is scalar or array.
+- [ ] Add route-contract checks for every content layer so a valid record cannot point to a dead or unsupported page.
+
+### Immediate engineering blockers
 
 - [ ] Add and run a route-contract validator covering static pages plus dynamic `node.html`, `nation.html`, `belief.html`, `potatoism-entry.html`, Hawkins, event, research-carving and geometry IDs.
-- [ ] Verify the current `node.html` resolver against the actual schemas for Hawkins, events, research, geometry and Potatoism; repair any mismatched field names or unsupported routes.
-- [ ] Extend the recursive web audit to validate canonical-header presence/order on every generated page, not only the seven root canonical pages.
+- [ ] Verify the current `node.html` resolver against actual schemas for Hawkins, events, research, geometry and Potatoism; repair mismatched field names or unsupported routes.
+- [ ] Extend the recursive web audit to validate canonical-header presence/order on every generated page.
 - [ ] Run the full validator chain after the latest commits and record exact results in a dated health report.
 - [ ] Inspect and resolve high-connectivity graph orphan IDs, distinguishing true missing entities from intentional research-only endpoints.
 - [ ] Fix the scheduled country-refresh failure with retry/backoff, source failure handling and snapshot preservation; rerun successfully.
