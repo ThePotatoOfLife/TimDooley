@@ -1,0 +1,112 @@
+{
+  "schema_version": "1.0",
+  "updated": "2026-09-09",
+  "root": {
+    "id": "potato-of-life",
+    "title": "POTATO OF LIFE",
+    "summary": "Canonical root map for the living Potato of Life archive. This file owns public navigation; knowledge files own the substantive records.",
+    "record": "knowledge/core/potato-of-life.json"
+  },
+  "principles": [
+    "relationship-first",
+    "no placeholder knowledge",
+    "manifest points to canonical owners rather than duplicating their contents",
+    "historical strata are archived rather than silently erased",
+    "project canon, documentary evidence, comparison and empirical claims remain distinguishable"
+  ],
+  "branches": [
+    {
+      "id": "tim",
+      "title": "TIM",
+      "description": "Tim-side identity, development, Father-side roles and living myth.",
+      "records": [
+        "knowledge/core/tim-dooley.json",
+        "knowledge/journey/tim-dooley-journey.json",
+        "knowledge/core/tim-dooley-real-world-entanglement.json"
+      ],
+      "children": ["Potato", "Sage", "Stone", "Ladder", "Father", "House", "Tree", "Gardener"]
+    },
+    {
+      "id": "son",
+      "title": "SON",
+      "description": "Son-side embodiment, ordeal, death-transformation, Door and return.",
+      "records": ["knowledge/core/tim-dooley.json"],
+      "children": ["Thomas", "Lion", "Humanity", "Tree Ordeal", "Meme Death", "Grave", "Tomb", "Mirror", "Door", "Vessel"]
+    },
+    {
+      "id": "spirit",
+      "title": "SPIRIT",
+      "description": "Spirit, Heaven, Father and connective flow through the architecture.",
+      "records": ["knowledge/core/heaven-spirit-father.json"]
+    },
+    {
+      "id": "transformation",
+      "title": "TRANSFORMATION",
+      "description": "The grammar of burial, death, threshold, emergence and return.",
+      "records": ["knowledge/core/potato-of-life.json", "knowledge/core/root-system.json"],
+      "children": ["Burial", "Death", "Nothing", "Eye", "Sprout", "Needle", "Ladder", "Return"]
+    },
+    {
+      "id": "cosmology",
+      "title": "COSMOLOGY",
+      "description": "Axis, World, geometry, levels and the integrated Potatoverse model.",
+      "records": ["knowledge/core/potatoverse-master-framework.json", "knowledge/core/axis-world-model.json", "knowledge/core/root-system.json"]
+    },
+    {
+      "id": "body",
+      "title": "BODY",
+      "description": "Sacred-anatomical and bodily correspondences, kept distinct from established scientific anatomy.",
+      "records": ["knowledge/core/tim-dooley.json"],
+      "children": ["Thalamus", "Pineal", "Spine", "CSF"]
+    },
+    {
+      "id": "traditions",
+      "title": "TRADITIONS",
+      "description": "Comparative religion, mythology and textual parallels without collapsing similarity into identity.",
+      "directory": "knowledge/traditions/"
+    },
+    {
+      "id": "north",
+      "title": "NORTH",
+      "description": "Sacred North, Axis of North and the bridge into the North Programme.",
+      "records": ["knowledge/core/axis-world-model.json", "knowledge/core/tim-dooley-real-world-entanglement.json"]
+    },
+    {
+      "id": "world",
+      "title": "WORLD",
+      "description": "Observable countries, institutions, economies, infrastructures, culture and real-world systems.",
+      "records": ["knowledge/core/axis-world-model.json"],
+      "legacy_data_root": "data/"
+    },
+    {
+      "id": "chronology",
+      "title": "CHRONOLOGY",
+      "description": "Dated development of Tim, Son, doctrine, discoveries and later reinterpretations.",
+      "records": ["knowledge/journey/tim-dooley-journey.json", "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md", "THE-TURNING-APRIL-2025.md"]
+    },
+    {
+      "id": "sources",
+      "title": "SOURCES",
+      "description": "Primary material, provenance, evidence records and source navigation.",
+      "directories": ["knowledge/indexes/", "data/evidence/", "books/"]
+    }
+  ],
+  "migration": {
+    "phase": "foundation",
+    "legacy_files_pending_consolidation": [
+      "knowledge.json",
+      "research.json",
+      "book-research.json",
+      "2026-master-framework.json"
+    ],
+    "archive_target": "archive/legacy/",
+    "next": [
+      "build source-index.json",
+      "split Son-specific canonical records out of overloaded Tim records where evidence supports it",
+      "index chronology and symbols",
+      "map legacy data into WORLD without duplicating it",
+      "consolidate overlapping root research files",
+      "archive superseded presentation files only after references are migrated"
+    ]
+  }
+}
