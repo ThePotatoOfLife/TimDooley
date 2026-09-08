@@ -30,6 +30,8 @@ jobs:
         uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+      - name: Build repository index
+        run: python scripts/build_repository_index.py
       - name: Build static site
         run: python scripts/build_site.py
       - name: Validate built site shell
