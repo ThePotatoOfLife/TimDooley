@@ -3,37 +3,35 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Potato of Life — the canonical Atlas root directory.">
-<title>The Potato of Life — The Atlas</title>
-<link rel="stylesheet" href="portal.css">
-<link rel="stylesheet" href="consistency.css">
-<link rel="stylesheet" href="atlas-tree.css">
+<meta name="description" content="The Potato of Life — the canonical repository root directory.">
+<title>The Potato of Life — Repository</title>
+<link rel="stylesheet" href="atlas-tree.css?v=20260908-2">
 </head>
 <body>
-<main class="tree-shell atlas-page">
-  <header class="tree-head">
+<main class="repository-shell">
+  <header class="repository-head">
     <div>
-      <div class="eyebrow">THE POTATO OF LIFE · THE ATLAS</div>
-      <h1>The Atlas</h1>
-      <p class="tree-sub">A root directory for the entire archive. Nothing is dumped onto the page: branches open into sub-branches, then records. Every leaf leads into the same record system.</p>
+      <div class="eyebrow">THE POTATO OF LIFE · REPOSITORY</div>
+      <h1>Repository</h1>
+      <p class="lead">The whole project, arranged as a directory rather than a list. Start at the root. Open a branch. Open its folders. Then open the record you actually want.</p>
     </div>
-    <nav class="view-switch" aria-label="Atlas views">
+    <nav class="view-switch" aria-label="Repository views">
       <a class="active" href="repository.html" aria-current="page">2D ROOT</a>
       <a href="axis.html">3D AXIS</a>
     </nav>
   </header>
 
-  <section class="atlas-status" aria-label="Atlas controls">
-    <div><strong id="status">Loading the root…</strong><span id="count"></span></div>
-    <div class="tree-tools">
-      <input id="q" type="search" placeholder="Search the entire Atlas…" autocomplete="off">
-      <button id="open">Open all</button>
-      <button id="close">Close all</button>
+  <section class="repository-toolbar" aria-label="Repository controls">
+    <div class="repository-state"><strong id="status">Building repository…</strong><span id="count"></span></div>
+    <div class="tools">
+      <label class="search"><span>⌕</span><input id="q" type="search" placeholder="Search records, descriptions, places, people…" autocomplete="off"></label>
+      <button id="open" type="button">Open all</button>
+      <button id="close" type="button">Close all</button>
     </div>
   </section>
 
-  <div id="crumbs" class="atlas-crumbs" aria-live="polite">ROOT</div>
-  <section id="tree" class="root" aria-label="The Atlas root directory"></section>
+  <div id="crumbs" class="crumbs">ROOT</div>
+  <section id="tree" class="repository-tree" aria-label="Repository root directory"></section>
 </main>
 
 <script>
@@ -41,90 +39,78 @@ const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const clean=v=>String(v??'').replace(/\s+/g,' ').trim();
 const arr=v=>Array.isArray(v)?v:[];
-async function json(path){const r=await fetch(path,{cache:'no-store'});if(!r.ok)throw Error(path+' · '+r.status);return r.json()}
-function normalize(x,kind='record'){
+async function load(path){const r=await fetch(path+'?v=20260908',{cache:'no-store'});if(!r.ok)throw Error(path+' · '+r.status);return r.json()}
+function normalize(x,kind){
   if(!x||typeof x!=='object')return null;
-  const id=x.id||x.slug||x.iso3||x.key;
-  if(!id)return null;
+  const id=x.id||x.slug||x.iso3||x.key;if(!id)return null;
   const name=x.name||x.title||x.tradition_name||x.display_name||x.label||id;
   const description=clean(x.description||x.definition||x.summary||x.historical_emergence||x.worldview||x.purpose||x.field||x.targets_or_hate||x.notes||'');
-  return {id:String(id),name:String(name),description,kind,raw:x};
+  const href=x.profile_url||x.url||('node.html?id='+encodeURIComponent(id));
+  return {id:String(id),name:String(name),description,kind,raw:x,href};
 }
-function unique(items){const m=new Map();items.forEach(x=>{if(x&&!m.has(x.id))m.set(x.id,x)});return [...m.values()]}
-function group(items,fields){
-  if(!fields.length)return {type:'leaves',items};
-  const [field,...rest]=fields;
+function unique(items){const m=new Map();for(const x of items)if(x&&!m.has(x.id))m.set(x.id,x);return [...m.values()]}
+function value(item,fields){for(const f of fields){const v=clean(item.raw?.[f]);if(v)return v}return 'Unclassified'}
+function tree(items,fields,depth=0){
+  if(!fields.length)return {leaf:true,items:[...items].sort((a,b)=>a.name.localeCompare(b.name))};
   const buckets=new Map();
-  items.forEach(item=>{
-    const value=clean(item.raw?.[field])||'Unclassified';
-    if(!buckets.has(value))buckets.set(value,[]);
-    buckets.get(value).push(item);
-  });
-  return {type:'groups',field,children:[...buckets.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([name,vals])=>({name,tree:group(vals,rest)}))};
+  for(const item of items){const key=value(item,[fields[0]]);if(!buckets.has(key))buckets.set(key,[]);buckets.get(key).push(item)}
+  return {leaf:false,children:[...buckets.entries()].sort((a,b)=>a[0].localeCompare(b[0])).map(([name,vals])=>({name,tree:tree(vals,fields.slice(1),depth+1)}))};
 }
-function leafHTML(i){
-  const d=i.description?'<small>'+esc(i.description.slice(0,240))+'</small>':'';
-  return '<a class="leaf" data-leaf="'+esc(i.id)+'" href="node.html?id='+encodeURIComponent(i.id)+'"><span class="leaf-icon">↳</span><span><strong>'+esc(i.name)+'</strong>'+d+'</span></a>';
+function count(t){return t.leaf?t.items.length:t.children.reduce((n,c)=>n+count(c.tree),0)}
+function leaf(i){return '<a class="leaf" href="'+esc(i.href)+'"><span class="leaf-mark">↳</span><span class="leaf-body"><strong>'+esc(i.name)+'</strong>'+(i.description?'<small>'+esc(i.description.slice(0,220))+'</small>':'')+'</span><span class="leaf-type">'+esc(i.kind)+'</span></a>'}
+function renderTree(t,path=[]){
+  if(t.leaf)return t.items.slice(0,2000).map(leaf).join('')||'<div class="empty">No records in this folder.</div>';
+  return t.children.map((c,i)=>{
+    const id='r-'+path.concat(i).join('-');
+    const n=count(c.tree);
+    return '<details class="folder" id="'+id+'" data-name="'+esc(c.name)+'"><summary><span class="twisty">+</span><span class="folder-icon">□</span><span class="folder-name">'+esc(c.name)+'</span><span class="folder-count">'+n+'</span></summary><div class="folder-children">'+renderTree(c.tree,path.concat(i))+'</div></details>';
+  }).join('')||'<div class="empty">No folders here.</div>';
 }
-function treeHTML(t,path=[]){
-  if(t.type==='leaves')return t.items.slice(0,1000).map(leafHTML).join('')||'<div class="empty">Empty branch.</div>';
-  return t.children.map((c,idx)=>{
-    const id='branch-'+path.concat(idx).join('-');
-    const count=countTree(c.tree);
-    return '<details class="branch" data-branch="'+esc(c.name)+'" id="'+id+'"><summary><span class="branch-name">'+esc(c.name)+'</span><span class="branch-meta">'+count+' '+(count===1?'record':'records')+'</span></summary><div class="children">'+treeHTML(c.tree,path.concat(idx))+'</div></details>';
-  }).join('')||'<div class="empty">Empty branch.</div>';
+function rootBranch(r,index,term){
+  const items=term?r.items.filter(i=>[i.id,i.name,i.description,JSON.stringify(i.raw)].join(' ').toLowerCase().includes(term)):r.items;
+  if(term&&!items.length)return '';
+  const t=tree(items,r.fields);
+  return '<details class="root-branch" data-root="'+esc(r.title)+'"><summary><span class="twisty">+</span><span class="root-glyph">'+esc(r.glyph)+'</span><span class="root-name">'+esc(r.title)+'</span><span class="root-description">'+esc(r.description)+'</span><span class="root-count">'+items.length+'</span></summary><div class="root-children">'+renderTree(t,[index])+'</div></details>';
 }
-function countTree(t){return t.type==='leaves'?t.items.length:t.children.reduce((n,c)=>n+countTree(c.tree),0)}
-function branch(title,meta,tree,cls=''){
-  return '<details class="branch atlas-root-branch '+cls+'"><summary><span class="branch-name">'+esc(title)+'</span><span class="branch-meta">'+esc(meta)+'</span></summary><div class="children">'+treeHTML(tree,[title])+'</div></details>';
-}
-let roots=[],allItems=[];
-function searchable(i){return [i.id,i.name,i.description,JSON.stringify(i.raw)].join(' ').toLowerCase()}
-function matches(items,term){if(!term)return items;return items.filter(i=>searchable(i).includes(term))}
+let roots=[];
 function render(){
   const term=clean($('q').value).toLowerCase();
-  let html='';let visible=0;
-  roots.forEach(r=>{
-    const items=matches(r.items,term);visible+=items.length;
-    if(term&&!items.length)return;
-    let t=group(items,r.fields);
-    html+=branch(r.title,term?(items.length+' matches'):(items.length+' records'),t,r.className||'');
-  });
-  $('tree').innerHTML=html||'<div class="empty">No records match your search.</div>';
-  $('count').textContent=' · '+visible+' visible records';
-  $('status').textContent=term?'Search results':'Root directory';
-  if(term){document.querySelectorAll('.branch').forEach(d=>d.open=true);$('crumbs').textContent='ROOT / SEARCH / '+term}
-  else $('crumbs').textContent='ROOT';
+  $('tree').innerHTML=roots.map((r,i)=>rootBranch(r,i,term)).join('')||'<div class="empty">Nothing matched that search.</div>';
+  const total=roots.reduce((n,r)=>n+(term?r.items.filter(i=>[i.id,i.name,i.description,JSON.stringify(i.raw)].join(' ').toLowerCase().includes(term)).length:r.items.length),0);
+  $('count').textContent=' · '+total+' records'+(term?' matched':' indexed');
+  $('status').textContent=term?'Search':'Repository root';
+  $('crumbs').textContent=term?'ROOT / SEARCH / '+term.toUpperCase():'ROOT';
+  if(term)document.querySelectorAll('details').forEach(d=>d.open=true);
 }
-$('q').oninput=render;
+$('q').addEventListener('input',render);
 $('open').onclick=()=>document.querySelectorAll('details').forEach(d=>d.open=true);
 $('close').onclick=()=>document.querySelectorAll('details').forEach(d=>d.open=false);
-$('tree').addEventListener('toggle',e=>{if(e.target.matches('details')&&e.target.open)$('crumbs').textContent='ROOT / '+[...document.querySelectorAll('details[open]')].map(x=>x.dataset.branch||x.querySelector('.branch-name')?.textContent).filter(Boolean).join(' / ')} ,true);
+$('tree').addEventListener('click',e=>{const s=e.target.closest('summary');if(!s)return;setTimeout(()=>{const open=[...document.querySelectorAll('details[open]')].map(d=>d.dataset.name||d.dataset.root).filter(Boolean);$('crumbs').textContent='ROOT'+(open.length?' / '+open.slice(-4).join(' / '):'')},0)});
 async function main(){
   const [nodes,children,support,research,events,sectors,nations,people,religious,foundations,adjacent,movements]=await Promise.all([
-    json('data/nodes.json'),json('data/tree-child-records.json'),json('data/tree-support-records.json'),json('data/research.json'),json('data/events.json'),json('data/european-sector-atlas.json'),json('data/nations.json'),json('data/people-registry.json'),json('data/religious-lexicon.json'),json('data/religious-foundations.json'),json('data/religious-adjacent/records.json'),json('data/extremism-cults-atlas-2026-09.json')
+    load('data/nodes.json'),load('data/tree-child-records.json'),load('data/tree-support-records.json'),load('data/research.json'),load('data/events.json'),load('data/european-sector-atlas.json'),load('data/nations.json'),load('data/people-registry.json'),load('data/religious-lexicon.json'),load('data/religious-foundations.json'),load('data/religious-adjacent/records.json'),load('data/extremism-cults-atlas-2026-09.json')
   ]);
   const core=unique([...arr(nodes.nodes),...arr(children.records),...arr(support.records)].map(x=>normalize(x,'core')).filter(Boolean));
   const world=arr(nations.nations).map(x=>normalize(x,'nation')).filter(Boolean);
   const persons=arr(people.people||people.records).map(x=>normalize(x,'person')).filter(Boolean);
   const history=arr(events.events).map(x=>normalize(x,'event')).filter(Boolean);
   const systems=arr(sectors.sector_families).map(x=>normalize(x,'sector')).filter(Boolean);
-  const evidence=arr(research.facts||research.records||research.entries).map(x=>normalize(x,'research')).filter(Boolean);
-  const belief=unique([...arr(religious.entries),...arr(foundations.records),...arr(adjacent.records)].map(x=>normalize(x,'belief')).filter(Boolean));
+  const ideas=unique([...arr(religious.entries),...arr(foundations.records),...arr(adjacent.records)].map(x=>normalize(x,'idea')).filter(Boolean));
   const movement=arr(movements.records).map(x=>normalize(x,'movement')).filter(Boolean);
+  const evidence=arr(research.facts||research.records||research.entries).map(x=>normalize(x,'research')).filter(Boolean);
   roots=[
-    {title:'ROOT / CORE',fields:['type'],items:core},
-    {title:'WORLD',fields:['region','subregion'],items:world},
-    {title:'PEOPLE',fields:['role'],items:persons},
-    {title:'HISTORY',fields:['type'],items:history},
-    {title:'SYSTEMS / ECONOMY',fields:['category','region'],items:systems},
-    {title:'IDEAS / RELIGION',fields:['category','family'],items:belief},
-    {title:'MOVEMENTS',fields:['category','status'],items:movement},
-    {title:'EVIDENCE / RESEARCH',fields:['category','source_type'],items:evidence}
+    {glyph:'◉',title:'FOUNDATION',description:'Potatoism, cosmology, canonical nodes and core structures.',fields:['type'],items:core},
+    {glyph:'◎',title:'WORLD',description:'The geographic layer: regions, subregions and nations.',fields:['region','subregion'],items:world},
+    {glyph:'○',title:'PEOPLE',description:'People and roles recorded across the project.',fields:['role','category'],items:persons},
+    {glyph:'◇',title:'HISTORY',description:'Events, periods and historical records.',fields:['type','category'],items:history},
+    {glyph:'▣',title:'SYSTEMS',description:'Economy, sectors, infrastructure and institutional systems.',fields:['category','region'],items:systems},
+    {glyph:'✦',title:'IDEAS & RELIGION',description:'Traditions, foundations, adjacent traditions and concepts.',fields:['category','family'],items:ideas},
+    {glyph:'△',title:'MOVEMENTS',description:'Extremist, high-control and other documented movements.',fields:['category','status'],items:movement},
+    {glyph:'⌁',title:'RESEARCH',description:'Evidence, sources, findings and research records.',fields:['category','source_type'],items:evidence}
   ];
-  allItems=roots.flatMap(r=>r.items);$('count').textContent=' · '+allItems.length+' records indexed';$('status').textContent='Root directory';render();
+  render();
 }
-main().catch(e=>{$('status').textContent='Atlas error';$('tree').innerHTML='<div class="empty">Could not load the Atlas: '+esc(e.message)+'</div>'});
+main().catch(e=>{$('status').textContent='Repository error';$('tree').innerHTML='<div class="error">Could not build the repository: '+esc(e.message)+'</div>'});
 </script>
 </body>
 </html>
