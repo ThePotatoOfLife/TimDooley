@@ -1,22 +1,20 @@
 {
-  "version":"2.0.0",
+  "version":"2.1.0",
   "updated":"2026-09-08",
   "status":"canonical-navigation-architecture",
-  "purpose":"Defines the Repository's primary vertical navigation from Source toward Ground while preserving the graph, the 33-level framework and the Potatoism interpretive coordinates as independent systems.",
-  "primary_axis":"data/repository-scale.json",
-  "principle":"The Repository tree answers where a record is best encountered at a useful scale. It does not rank truth, importance, value or power. Domain, time, epistemic status and graph relationships remain independent dimensions.",
-  "secondary_coordinates":{
-    "spirit_door_matter":"Interpretive temporal/relational coordinate: Spirit = future/possibility, Door = present/transition, Matter = manifestation/trace. It is not the primary filing system.",
-    "33_level_axis":"Project-defined vertical framework retained as a deeper navigational and interpretive coordinate.",
-    "domain":"Religion, mythology, geography, politics, economy, science, technology, culture, security and other domains can occur at every scale.",
-    "time":"Past, present and future can occur at every scale.",
-    "epistemic_status":"Observable world, historical/textual record, project theory/research model and Potatoism/mythic canon remain explicitly separated.",
-    "graph":"Relationships may connect any records across any scale. The graph is not subordinate to the tree."
-  },
-  "scale_layers":[
-    {"id":"source","label":"SOURCE","meaning":"Origin, premise, source or highest-order orientation."},
-    {"id":"principle","label":"PRINCIPLES","meaning":"Rules, values, laws, worldviews and organizing principles."},
-    {"id":"concept","label":"CONCEPTS & PATTERNS","meaning":"Concepts, symbols, theories, models and recurring patterns."},
+  "purpose":"Defines the Repository root as two simple filing branches, Spirit and Matter, while preserving scale, domain, time, epistemic status and graph relationships as independent coordinates.",
+  "root_order":[
+    {"id":"spirit","label":"SPIRIT","meaning":"Non-material repository content: Source, Meaning, Belief / Faith and Myths."},
+    {"id":"matter","label":"MATTER","meaning":"Concrete repository content organized by the canonical scale from Worlds & Domains toward Ground / Grain / Dust."}
+  ],
+  "spirit_layers":[
+    {"id":"source","label":"SOURCE","meaning":"Origin, Father, creation and spiritual source."},
+    {"id":"meaning","label":"MEANING","meaning":"Ideas, visions, dreams, concepts, symbols, principles and interpretations."},
+    {"id":"belief","label":"BELIEF / FAITH","meaning":"Religions, theology, doctrines, traditions and spiritual convictions."},
+    {"id":"myths","label":"MYTHS","meaning":"Myths, sacred stories, mythological figures, narratives and cosmologies."}
+  ],
+  "matter_scale":"data/repository-scale.json",
+  "matter_layers":[
     {"id":"world","label":"WORLDS & DOMAINS","meaning":"Broad environments, fields, civilizations and domains of activity."},
     {"id":"region","label":"REGIONS & TERRITORIES","meaning":"Geographic, ecological and jurisdictional fields."},
     {"id":"institution","label":"INSTITUTIONS & STRUCTURES","meaning":"Durable organizations, authorities, infrastructures and coordinating structures."},
@@ -27,8 +25,19 @@
     {"id":"record","label":"RECORDS & SIGNALS","meaning":"Texts, measurements, documents, datasets and other observable traces."},
     {"id":"ground","label":"GROUND / GRAIN / DUST","meaning":"Smallest concrete trace or material unit relevant to the investigation."}
   ],
-  "placement_rule":"Give each record one primary scale home where it is most useful to read it. Use cross-links and graph edges rather than duplicating the record at every scale it touches.",
-  "canonical_overrides":"Use data/repository-scale.json for explicit record-level placements; do not let broad keyword classification override a canonical placement.",
-  "non_goals":["Do not delete or flatten the existing 33-level framework.","Do not treat scale as a hierarchy of value or reality.","Do not erase Spirit/Door/Matter; retain them as a secondary Potatoism coordinate.","Do not flatten the graph into a tree.","Do not create duplicate records solely to satisfy navigation."],
+  "principle":"The visible repository is simple: Root → Spirit / Matter. Spirit has four natural content categories. Matter uses the existing scale because scale is the strongest concrete organizing coordinate. Domain, time, epistemic status and graph relationships remain independent.",
+  "door_rule":"Door is not a repository filing branch. It describes transformation, passage or an interface between things. The Repository stores and exposes records; it does not need a Door category. Door remains available as a concept and graph relationship where the corpus uses it.",
+  "other_concept_rule":"Axis, Ladder, Tree of Life, Tree of Strife, transformation, return and similar interpretive structures remain concepts, relationships or framework elements rather than forced top-level filing categories.",
+  "placement_rule":"Give each record one primary repository home. Use cross-links and graph edges rather than duplicate records solely for navigation. A record's domain, time and epistemic status may cross the root branches.",
+  "canonical_overrides":"Use data/repository-scale.json for explicit scale placements where a Matter record needs a precise canonical home. Spirit placement is resolved by explicit project ontology or repository classification before broad keyword fallback.",
+  "independent_coordinates":{
+    "scale":"Canonical Matter granularity from Worlds & Domains through Ground / Grain / Dust.",
+    "domain":"Religion, mythology, geography, politics, economy, science, technology, culture, security and other domains can occur at every scale.",
+    "time":"Past, present and future can occur at every scale.",
+    "epistemic_status":"Observable world, historical/textual record, project theory/research model and Potatoism/mythic canon remain explicitly separated.",
+    "graph":"Relationships may connect any records across Spirit and Matter and across any scale. The graph is not subordinate to the tree.",
+    "33_level_axis":"Project-defined vertical framework retained as a deeper navigational and interpretive coordinate."
+  },
+  "non_goals":["Do not rename Repository to Atlas.","Do not delete or flatten the existing 33-level framework.","Do not treat Spirit or Matter as a hierarchy of truth, value or power.","Do not use Door as a filing category.","Do not flatten the graph into the tree.","Do not create duplicate records solely to satisfy navigation."],
   "consumer":"repository.html"
 }
