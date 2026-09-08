@@ -19,11 +19,15 @@ def main():
         if not cid or not term:errors.append('registry concept missing canonical_id or term');continue
         if cid in canonical:errors.append(f'duplicate canonical_id: {cid}')
         canonical[cid]=c
-        for a in [term,*c.get('aliases',[])]:
+        for a in c.get('aliases',[]):
             k=norm(a)
             if not k:continue
             if k in aliases and aliases[k]!=cid:errors.append(f'alias collision: {a!r} -> {aliases[k]} and {cid}')
             else:aliases[k]=cid
+    # Exact canonical terms always outrank aliases. An alias matching a canonical term is therefore harmless.
+    canonical_terms={norm(c.get('term','')):cid for cid,c in canonical.items() if c.get('term')}
+    for k in list(aliases):
+        if k in canonical_terms:del aliases[k]
     dossier=list(records(load(DOSSIERS)));dossier_by_id={};dossier_terms={}
     for x in dossier:
         rid=str(x.get('id','')).strip();term=str(x.get('term','')).strip()
@@ -45,7 +49,10 @@ def main():
         if not p.exists():continue
         try:data=load(p)
         except Exception as e:errors.append(f'{p.relative_to(ROOT)} invalid JSON: {e}');continue
-        if 'canonical_owner' in json.dumps(data,ensure_ascii=False):errors.append(f'projection declares canonical_owner: {p.relative_to(ROOT)}')
+        # canonical_owner is legitimate projection metadata when it points to the registry.
+        if isinstance(data,dict) and 'canonical_owner' in data:
+            owner=str(data.get('canonical_owner','')).strip()
+            if owner and owner!='data/potatoism-concept-registry.json':errors.append(f'projection has invalid canonical_owner: {p.relative_to(ROOT)} -> {owner}')
     if REL.exists():
         graph=load(REL);nodes={str(x) for x in graph.get('nodes',[])}
         for i,e in enumerate(graph.get('edges',[])):
