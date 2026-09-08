@@ -1,27 +1,15 @@
-name: Deploy Repository
+name: Root Navigation CI
 
 on:
   push:
-    branches: [main]
+    branches: [root-navigation]
   workflow_dispatch:
 
 permissions:
   contents: read
-  pages: write
-  id-token: write
-
-env:
-  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
-
-concurrency:
-  group: pages
-  cancel-in-progress: true
 
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  verify:
     runs-on: ubuntu-latest
     timeout-minutes: 25
     steps:
@@ -53,12 +41,3 @@ jobs:
         run: python scripts/stability_audit.py
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
-      - name: Configure Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v5
-        with:
-          path: _site
-      - name: Deploy
-        id: deployment
-        uses: actions/deploy-pages@v5

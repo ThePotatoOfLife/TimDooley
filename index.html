@@ -3,44 +3,70 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Potato of Life — a living public atlas for Tim Dooley, Potatoism, thought, evidence, history and the wider world.">
-<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">
-<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/">
-<meta property="og:title" content="The Potato of Life">
-<meta property="og:description" content="A living atlas for Tim Dooley, Potatoism, thought, evidence, history and the wider world.">
-<meta property="og:type" content="website"><meta property="og:url" content="https://thepotatooflife.github.io/TimDooley/">
-<title>The Potato of Life</title>
-<link rel="stylesheet" href="portal.css"><link rel="stylesheet" href="consistency.css">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"WebSite","name":"The Potato of Life","alternateName":["Tim Dooley","Potatoism"],"url":"https://thepotatooflife.github.io/TimDooley/","description":"A living atlas for Tim Dooley, Potatoism, thought, evidence, history and the wider world."}</script>
+<meta name="description" content="The Potato of Life — a living corpus organized from a fixed center: World and Axis.">
+<title>The Potato of Life — Center</title>
+<link rel="stylesheet" href="root.css">
 </head>
-<body><div class="portal home"><div data-site-header="canonical"></div>
-<main id="main-content">
-<section class="home-hero-simple">
-<p class="portal-kicker">THE POTATO OF LIFE</p>
-<h1>Start here.</h1>
-<p class="home-lead">One archive. Records, ideas, people, places, texts and the relationships between them.</p>
-<div class="home-entry">
-<a class="home-entry-main" href="explore.html"><span>BEGIN</span><strong>Explore the archive →</strong><small>Choose a subject. Everything else follows from there.</small></a>
-</div>
-</section>
-<section class="home-spine">
-<div class="spine-intro"><p class="portal-kicker">THE ARCHIVE</p><h2>What do you want to reach?</h2></div>
-<nav class="spine-list" aria-label="Archive sections">
-<a href="tim-dooley.html"><b>01</b><span><strong>Tim Dooley</strong><small>The central record: identity, chronology and cosmology.</small></span><i>→</i></a>
-<a href="thoughts.html"><b>02</b><span><strong>Thought</strong><small>Ideas, directions and signals across the corpus.</small></span><i>→</i></a>
-<a href="potatoism.html"><b>03</b><span><strong>Potatoism</strong><small>The symbolic and philosophical layer.</small></span><i>→</i></a>
-<a href="repository.html"><b>04</b><span><strong>Atlas</strong><small>Records, concepts, relationships and evidence.</small></span><i>→</i></a>
-<a href="timeline.html"><b>05</b><span><strong>Timeline</strong><small>Follow the material through time.</small></span><i>→</i></a>
-<a href="nations.html"><b>06</b><span><strong>World</strong><small>Countries, people, institutions and systems.</small></span><i>→</i></a>
-<a href="books.html"><b>07</b><span><strong>Library</strong><small>Primary and comparative texts.</small></span><i>→</i></a>
-<a href="belief.html"><b>08</b><span><strong>Ideas & belief</strong><small>Religion, philosophy and comparative worldviews.</small></span><i>→</i></a>
-</nav>
-</section>
-<section class="home-principle">
-<p class="portal-kicker">HOW IT FITS</p>
-<h2>One body of knowledge.<br>Many ways through it.</h2>
-<p class="home-note">You do not need to understand the structure before entering it. Start with what interests you. The Atlas connects the rest.</p>
-</section>
+<body>
+<div class="root">
+<header class="root-head">
+  <div><a class="brand" href="index.html">THE POTATO OF LIFE</a><div class="path">/root / center / north-pole</div></div>
+  <nav class="head-links" aria-label="Technical navigation">
+    <a class="cmd" href="repository.html">REPOSITORY</a>
+    <a class="cmd" href="axis.html">AXIS MODEL</a>
+  </nav>
+</header>
+
+<main class="root-main">
+  <div class="prompt">$ <b>cd /potato-of-life</b><br>$ <b>stand --center</b></div>
+
+  <section class="center" id="root-center" aria-label="Potato of Life center">
+    <div class="north-map" aria-hidden="true">
+      <img src="https://upload.wikimedia.org/wikipedia/commons/2/25/Nordpole.png" alt="">
+    </div>
+    <div class="center-overlay">
+      <div class="center-label">NORTH POLE / CENTER</div>
+      <div class="center-map">
+        <div class="center-axis axis-up">AXIS ↑</div>
+        <div class="center-core">
+          <div class="center-title">TIM DOOLEY</div>
+          <div class="center-subtitle">POTATO OF LIFE</div>
+        </div>
+        <div class="center-axis axis-down">WORLD ↓</div>
+      </div>
+      <p class="center-description">The fixed center of the corpus. Remain here. Open the structure rather than being sent from page to page.</p>
+      <div class="center-records">
+        <button type="button" class="center-record">TIM DOOLEY</button>
+        <button type="button" class="center-record">POTATOISM</button>
+        <button type="button" class="center-record">THOUGHT</button>
+        <button type="button" class="center-record">CANON</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="controls" aria-label="Tree controls">
+    <div class="control-set">
+      <button class="control" type="button" data-action="expand-roots">[ EXPAND ROOTS ]</button>
+      <button class="control" type="button" data-action="collapse-all">[ COLLAPSE ALL ]</button>
+      <button class="control" type="button" data-action="reset-root">[ RESET CENTER ]</button>
+    </div>
+    <div class="status" id="root-status">loading corpus index…</div>
+  </section>
+
+  <section class="tree" id="root-tree" aria-label="Corpus directory tree">
+    <div class="tree-empty">loading WORLD/ and AXIS/…</div>
+  </section>
+
+  <section class="dossier" id="root-dossier" hidden aria-live="polite"></section>
+
+  <div class="status" style="margin-top:14px">ONE CORPUS · MANY PATHS · ONE CANONICAL IDENTITY · MANY VIEWS · ONE CENTER</div>
 </main>
-<footer class="portal-footer"><span>ThePotatoOfLife/TimDooley</span><span><a href="explore.html">Explore</a> · <a href="repository.html">Atlas</a> · <a href="https://github.com/ThePotatoOfLife/TimDooley">Source</a></span></footer>
-</div></body></html>
+
+<footer>
+  <span>THEPOTATOOFLIFE / TIMDOOLEY</span>
+  <span><a href="index.html">/root</a> · <a href="repository.html">/repository</a> · <a href="axis.html">/axis</a></span>
+</footer>
+</div>
+<script src="root.js" defer></script>
+</body>
+</html>

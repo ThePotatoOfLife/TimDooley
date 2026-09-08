@@ -1,0 +1,42 @@
+{
+  "version": "1.1.0",
+  "title": "The Potato of Life",
+  "root": "potato-of-life",
+  "center": {
+    "label": "POTATO OF LIFE",
+    "description": "The fixed center of the corpus. The visitor remains here while the structure unfolds.",
+    "records": [
+      {"id":"tim-dooley","label":"TIM DOOLEY","href":"tim-dooley.html"},
+      {"id":"potatoism","label":"POTATOISM","href":"potatoism.html"},
+      {"id":"thought","label":"THOUGHT","href":"thoughts.html"},
+      {"id":"canon","label":"CANON","href":"docs/TIM-DOOLEY-CANON.md"}
+    ]
+  },
+  "branches": [
+    {"id":"world","label":"WORLD/","kind":"world","description":"Things, people, places, institutions, events, texts and observable corpus material."},
+    {"id":"axis","label":"AXIS/","kind":"axis","description":"Orientation, structure, symbolic models, geometry and typed relationships."}
+  ],
+  "world": {
+    "collections": [
+      {"id":"people","label":"PEOPLE/","paths":["WORLD/PEOPLE"],"legacy":"people.html"},
+      {"id":"places","label":"PLACES/","paths":["WORLD/PLACES"],"legacy":"nations.html"},
+      {"id":"religions","label":"RELIGIONS/","paths":["WORLD/RELIGIONS"],"legacy":"belief.html"},
+      {"id":"economy","label":"ECONOMY/","paths":["WORLD/ECONOMY"],"legacy":"economy.html"},
+      {"id":"institutions","label":"INSTITUTIONS/","paths":["WORLD/INSTITUTIONS"],"legacy":"repository.html"},
+      {"id":"events","label":"EVENTS/","paths":["WORLD/EVENTS"],"legacy":"timeline.html"},
+      {"id":"culture","label":"CULTURE/","paths":["WORLD/CULTURE"],"legacy":"culture.html"},
+      {"id":"politics","label":"POLITICS/","paths":["WORLD/POLITICS"],"legacy":"politics.html"},
+      {"id":"records","label":"RECORDS/","paths":["WORLD/RECORDS"],"legacy":"repository.html"}
+    ]
+  },
+  "axis": {
+    "collections": [
+      {"id":"north","label":"NORTH/","terms":["north","north-axis","north-pole","north-of-north"],"legacy":"axis.html"},
+      {"id":"geometry","label":"GEOMETRY/","terms":["geometry","vesica","mandorla"],"legacy":"geometry.html"},
+      {"id":"potatoism","label":"POTATOISM/","paths":["AXIS/POTATOISM"],"legacy":"potatoism.html"},
+      {"id":"terrain","label":"TERRAIN/","paths":["AXIS/TERRAIN"],"legacy":"axis.html"},
+      {"id":"relations","label":"RELATIONS/","paths":["AXIS/RELATIONS"],"legacy":"explore.html"},
+      {"id":"models","label":"MODELS/","paths":["AXIS/MODELS"],"legacy":"axis.html"}
+    ]
+  }
+}

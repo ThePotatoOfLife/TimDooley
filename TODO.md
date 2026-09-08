@@ -446,3 +446,32 @@ The TODO is alive only if the repository is alive.
 The next step is not supposed to be known forever.
 
 **It is supposed to be discovered by taking the right step now.**
+
+---
+
+# 17. Center navigation redesign — active work
+
+The navigation architecture is now a first-class project component rather than ad-hoc HTML.
+
+### Hard invariants
+
+- [x] One root.
+- [x] One center.
+- [x] Two fundamental branches: World and Axis.
+- [x] Core is represented at the center, not as another directory.
+- [x] Texts are World material, not a third root.
+- [x] One canonical node may have many paths.
+- [x] Directories are views, not duplicate databases.
+- [x] Front-page exploration does not require leaving the center.
+- [x] A selected record can open in an in-place dossier.
+- [x] The tree is generated from repository data rather than thousands of hard-coded links.
+- [x] Deployment validates the root navigation contract.
+- [ ] Fully classify all existing records for World/Axis presentation.
+- [ ] Add robust in-place rendering for long records.
+- [ ] Add complete URL state restoration.
+- [ ] Add complete keyboard tree navigation.
+- [ ] Measure and optimize large-tree performance.
+- [ ] Audit every legacy destination and remove dead routes.
+- [ ] Merge only after the complete build/audit chain passes.
+
+See `docs/ROOT-NAVIGATION-ARCHITECTURE.md` and `docs/ROOT-NAVIGATION-ROADMAP.md` for the complete implementation contract.
