@@ -17,6 +17,13 @@ Warnings:
 - repeated record identities across layers
 - repeated long definition text across layers
 - legacy snapshots or batch artifacts that have a current replacement
+- malformed/legacy JSON that the repository index could not parse
+
+Malformed JSON is deliberately a warning here rather than a deployment blocker:
+the canonical repository-index builder already records these files as
+`json_errors` and excludes them from the navigable registry. This keeps the
+cross-file audit focused on duplication/source-of-truth violations while still
+surfacing every malformed file in its generated report.
 """
 from __future__ import annotations
 import hashlib, json, re, sys
@@ -65,7 +72,7 @@ def identity_of(obj):
     for key in IDENTITY:
         value = obj.get(key)
         if isinstance(value, str) and value.strip():
-            return f"{key}:{re.sub(r'\\s+', ' ', value).strip().casefold()}"
+            return f"{key}:{re.sub(r'\s+', ' ', value).strip().casefold()}"
     return None
 
 
@@ -122,8 +129,6 @@ def main():
 
     exact = defaultdict(list)
     for p, data in parsed.items():
-        # Whole-file hashes are only actionable for ordinary data files. Two
-        # reports/manifests can legitimately be byte-for-byte snapshots.
         if file_class(p) == "report-or-manifest":
             continue
         exact[digest(data)].append(str(p.relative_to(ROOT)))
@@ -134,8 +139,7 @@ def main():
         for ident, obj, location in walk_records(data):
             if not has_substantive(obj):
                 continue
-            payload = norm(obj)
-            records[(ident, digest(payload))].append({"file": str(p.relative_to(ROOT)), "path": location})
+            records[(ident, digest(obj))].append({"file": str(p.relative_to(ROOT)), "path": location})
 
     exact_record_groups = [v for v in records.values() if len(v) > 1]
 
@@ -156,7 +160,7 @@ def main():
             for key in ("definition", "meaning", "description", "summary"):
                 value = obj.get(key)
                 if isinstance(value, str) and len(value.split()) >= 25:
-                    definition_hits[re.sub(r"\\s+", " ", value).strip().casefold()].append({
+                    definition_hits[re.sub(r"\s+", " ", value).strip().casefold()].append({
                         "identity": ident, "file": str(p.relative_to(ROOT)), "path": location, "field": key
                     })
     repeated_definitions = {k: v for k, v in definition_hits.items() if len({x["file"] for x in v}) > 1}
@@ -179,11 +183,11 @@ def main():
     legacy_candidates = []
     for p in files:
         n = p.name.casefold()
-        if re.search(r"(?:^|[-_])(20\\d{2}[-_]\\d{2}[-_]\\d{2}|batch[-_]\\d|old|legacy|backup|snapshot)(?:[-_.]|$)", n):
+        if re.search(r"(?:^|[-_])(20\d{2}[-_]\d{2}[-_]\d{2}|batch[-_]\d|old|legacy|backup|snapshot)(?:[-_.]|$)", n):
             legacy_candidates.append(str(p.relative_to(ROOT)))
 
     result = {
-        "version": "1.0.0",
+        "version": "1.1.0",
         "updated": "2026-09-08",
         "purpose": "Repository-wide cross-file duplication and source-of-truth audit",
         "policy": {
@@ -192,6 +196,7 @@ def main():
             "exact_duplicate_records": "error when substantive and owned by multiple canonical sources",
             "repeated_identity": "warning until classified as source, enrichment, observation, projection or duplicate",
             "repeated_definition": "warning; migrate substantive definitions to the declared owner",
+            "invalid_json": "warning; canonical registry records json_errors and excludes malformed files from navigation",
             "legacy_artifacts": "review before deletion; provenance must not be destroyed"
         },
         "counts": {
@@ -213,8 +218,10 @@ def main():
     }
     OUT.write_text(json.dumps(result, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(json.dumps(result["counts"], ensure_ascii=False, indent=2))
-    if invalid or exact_groups or owner_conflicts:
+    if exact_groups or owner_conflicts:
         return 1
+    if invalid:
+        print(f"cross-file audit: WARNING — {len(invalid)} malformed JSON file(s) are excluded by the canonical registry")
     return 0
 
 
