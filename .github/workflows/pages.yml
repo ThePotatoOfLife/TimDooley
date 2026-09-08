@@ -33,27 +33,23 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Build generated data
-        run: |
-          python scripts/build_canonical_record_registry.py
-          python scripts/build_repository_index.py
-          python scripts/build_root_navigation_index.py
-
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
-      - name: Verify Pages artifact
+      - name: Verify manifest-driven archive
         run: |
           test -f _site/index.html
-          test -f _site/root.js
-          test -f _site/data/root-navigation.json
-          test -f _site/data/root-record-index.json
-          test -f _site/data/backend.json
-          test -f _site/data/frontend-atlas-bridge.json
-          test "$(find _site -type f -name '*.html' | wc -l)" -eq 1
-          grep -q 'id="root-tree"' _site/index.html
-          grep -q 'id="frame-content"' _site/index.html
-          grep -q 'root.js?v=' _site/index.html
+          test -f _site/manifest.json
+          test -f _site/app/app.js
+          test -f _site/app/style.css
+          test -f _site/knowledge/core/potato-of-life.json
+          test -f _site/knowledge/core/tim-dooley.json
+          grep -q 'id="branches"' _site/index.html
+          grep -q 'id="reader"' _site/index.html
+          grep -q 'app/app.js' _site/index.html
+          grep -q 'manifest.json' _site/app/app.js
+          ! grep -q 'root.js' _site/index.html
+          ! grep -q 'id="root-tree"' _site/index.html
           ! grep -q '<iframe' _site/index.html
 
       - name: Configure Pages
