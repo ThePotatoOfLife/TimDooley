@@ -6,7 +6,8 @@ Date: 2026-09-08
 ## Phase 0 — Preserve the old state
 
 - [x] Preserve the current `main` state in `archive/pre-center-navigation-2026-09-08`.
-- [x] Keep the current `root-navigation` work isolated while the redesign is rebuilt.
+- [x] Preserve the previous root-navigation state in `archive/pre-center-tree-2026-09-08`.
+- [x] Keep the redesign isolated on `root-navigation` while it is being rebuilt.
 
 ## Phase 1 — Establish the contract
 
@@ -20,64 +21,70 @@ Date: 2026-09-08
 
 ## Phase 2 — Build the center interface
 
-- [ ] Replace the current homepage with the North Pole / center composition.
-- [ ] Keep Tim Dooley, Potato of Life, Thought and Canon directly visible at the center.
-- [ ] Expose only `WORLD/` and `AXIS/` as the fundamental branches.
-- [ ] Add expandable directory rows without full-page navigation.
-- [ ] Add a persistent center/path indicator.
-- [ ] Add expand-all / collapse-all / reset behavior.
-- [ ] Add keyboard-accessible tree behavior.
+- [x] Replace the homepage with the North Pole / center composition.
+- [x] Keep Tim Dooley, Potato of Life, Thought and Canon directly visible at the center.
+- [x] Expose only `WORLD/` and `AXIS/` as the fundamental branches.
+- [x] Add expandable directory rows without full-page navigation.
+- [x] Add a persistent center/path indicator.
+- [x] Add expand-roots / collapse-all / reset behavior.
+- [x] Add an in-place dossier surface.
+- [ ] Finish keyboard tree semantics and full accessibility audit.
 
 ## Phase 3 — Make the tree data-driven
 
-- [ ] Consume the generated `data/repository-index.json`.
-- [ ] Create a small semantic navigation manifest for the stable root vocabulary.
-- [ ] Map existing repository records into World and Axis views without duplicating records.
-- [ ] Expose legacy/deep material through generated record collections rather than fake hard-coded links.
-- [ ] Validate that every intended collection resolves to a real page or canonical record.
-- [ ] Prevent empty/fake directories.
+- [x] Consume the generated repository index indirectly through a dedicated presentation projection.
+- [x] Create a semantic navigation manifest for the stable root vocabulary.
+- [x] Build `data/root-record-index.json` from `data/repository-index.json`.
+- [x] Map records into World/Axis presentation paths without creating new identities.
+- [x] Keep the old Spirit/Mind/Matter filing taxonomy in the backend while the frontend uses World/Axis.
+- [x] Expose legacy/deep material as secondary reading surfaces rather than primary navigation.
+- [ ] Validate every generated path against actual populated records in CI.
+- [ ] Add explicit exceptions for records whose presentation classification cannot be safely inferred.
 
 ## Phase 4 — In-place record reading
 
-- [ ] Add a dossier panel to the homepage.
-- [ ] Render a selected record's description, type, source, chronology and relationship summary in place.
-- [ ] Preserve the expanded tree while the dossier changes.
-- [ ] Link from the dossier to the canonical deep page only when a full reading view is genuinely useful.
-- [ ] Make `node.html` the universal deep-record fallback where appropriate.
+- [x] Add a dossier panel to the homepage.
+- [x] Render selected record identity, description, type, role, family and backend class in place.
+- [x] Preserve the expanded tree while the dossier changes.
+- [x] Provide a canonical deep-node fallback.
+- [ ] Add chronology, relationship summary and source excerpts to the dossier.
+- [ ] Add expandable long-form dossier sections without leaving the center.
 
 ## Phase 5 — State and addressability
 
-- [ ] Encode selected path/node in the URL without replacing the center interface.
-- [ ] Restore selected state from the URL on reload.
-- [ ] Persist expansion state locally.
-- [ ] Support browser back/forward for selection changes.
+- [x] Encode selected node in the URL without replacing the center interface.
+- [x] Restore selected state from the URL on reload.
+- [x] Persist expansion state locally.
+- [x] Support hash-driven browser navigation.
+- [ ] Add explicit browser back/forward history entries for selection changes.
 - [ ] Preserve useful scroll state.
 
 ## Phase 6 — Corpus classification
 
-- [ ] Audit the existing repository index against the World/Axis distinction.
-- [ ] Identify records that currently sit in old `spirit/mind/matter` classifications but need a World or Axis presentation.
-- [ ] Define explicit classification metadata where inference is unsafe.
-- [ ] Keep the old backend classification available during migration so existing audits do not break prematurely.
-- [ ] Add typed directory membership / view metadata rather than duplicating records.
+- [x] Preserve the existing Spirit/Mind/Matter backend classification.
+- [x] Add a separate presentation classification rather than mutating canonical taxonomy prematurely.
+- [ ] Audit World/Axis assignment coverage from the generated index.
+- [ ] Identify records that need explicit presentation overrides.
+- [ ] Add typed multi-membership where a record legitimately belongs to multiple views.
+- [ ] Ensure ambiguous classification never creates duplicate canonical records.
 
 ## Phase 7 — Remove obsolete frontend structure
 
-- [ ] Remove duplicate top-level navigation concepts from the homepage.
-- [ ] Retire the old root menu once the new center tree covers its destinations.
-- [ ] Consolidate competing navigation CSS where safe.
+- [x] Remove duplicate top-level concepts from the homepage.
+- [x] Make the root page a compatibility alias rather than a second navigation system.
+- [ ] Retire obsolete root navigation CSS after confirming no other page depends on it.
 - [ ] Remove dead links discovered during the migration.
 - [ ] Keep deep pages alive even when they stop being primary navigation destinations.
 
 ## Phase 8 — Verification
 
-- [ ] Run JSON/data integrity checks.
+- [ ] Run JSON/data integrity checks against the actual generated index.
 - [ ] Run source-of-truth and duplication audits.
 - [ ] Run route validation.
-- [ ] Run site build.
+- [ ] Run the complete site build.
 - [ ] Run stability audit.
-- [ ] Run site-shell validation.
-- [ ] Test the homepage with an empty generated index and with a populated index.
+- [x] Update site-shell validation to understand the special center page.
+- [ ] Test the homepage with an empty generated index and a populated index.
 - [ ] Test mobile behavior.
 - [ ] Test keyboard navigation and screen-reader semantics.
 - [ ] Test large record counts for performance.
@@ -85,10 +92,10 @@ Date: 2026-09-08
 
 ## Phase 9 — Migration cleanup
 
-- [ ] Compare the old and new navigation trees.
+- [ ] Compare old and new navigation trees.
 - [ ] Confirm that no meaningful backend collection became inaccessible.
 - [ ] Confirm that no record was duplicated merely to make navigation convenient.
-- [ ] Update project structure documentation.
+- [ ] Update project structure documentation to make World/Axis presentation explicit.
 - [ ] Update TODO with the new live frontier.
 - [ ] Only then consider merging the redesigned branch.
 
@@ -104,3 +111,5 @@ Date: 2026-09-08
 8. No gamified travel/progression metaphor.
 9. The center remains available at all times.
 10. The front page is a view of the corpus, not a separate corpus.
+11. Backend taxonomy and presentation taxonomy remain separable.
+12. A presentation path can never become a second canonical identity.
