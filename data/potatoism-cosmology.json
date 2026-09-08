@@ -1,98 +1,18 @@
 {
-  "version":"1.0.0",
-  "status":"active-project-mythology",
-  "epistemic_status":"creative mythic/spiritual framework; not verified external fact",
-  "purpose":"Excavate and normalize the Tim Dooley / Potato of Life symbolic system so its concepts can be studied, connected and expanded without confusing project mythology with empirical claims.",
-  "core_question":"How does something buried in darkness become life-giving, and how does a being or community move from mud, fear and disorientation toward rooted life, relationship, orientation and light?",
-  "central_image":"The Potato of Life is a seed-like ordinary object buried in mud that develops roots, rises, becomes a plant/tree and ultimately participates in a garden of life. Descent is not merely failure: the buried state can become the beginning of transformation.",
+  "version":"2.0.0",
+  "status":"derived-architecture-view",
+  "canonical_source":"data/potatoism-concept-registry.json",
+  "content_owner":"data/potatoism-dossiers.json",
+  "purpose":"Structural projection of the Potatoism canon. Concept identities and definitions are owned by the canonical registry; long-form interpretation is owned by dossiers.",
+  "rule":"This file contains relationships, ordering and architectural context only. It must not create parallel concept definitions.",
   "mythic_spine":[
-    {"id":"source","name":"Source","definition":"The originating principle or depth from which the rest of the symbolic architecture proceeds."},
-    {"id":"father","name":"Father","definition":"The project archetype of originating authority, source and generative relation; not a claim about an empirically verified supernatural person."},
-    {"id":"fathers-house","name":"Father's House","definition":"The symbolic house or chamber associated with the Father; in the project's anatomical metaphor it has been related to the thalamus."},
-    {"id":"heaven","name":"Heaven","definition":"The upper or transcendent orientation of the architecture: sourceward, lightward and beyond the ordinary plane."},
-    {"id":"axis","name":"Axis","definition":"The central orientation line joining levels of the architecture and providing a reference for movement, position and alignment."},
-    {"id":"north-of-north","name":"North of North","definition":"The extreme symbolic orientation beyond ordinary cardinal North; an image of ultimate direction, summit and orientation."},
-    {"id":"throne-of-north","name":"Throne of North","definition":"Symbolic seat of northern/axial authority within the project's mythic geography."},
-    {"id":"ladder","name":"Ladder","definition":"A vertical structure of levels through which ascent, descent, learning, transformation and orientation can be represented."},
-    {"id":"tree-of-life","name":"Tree of Life","definition":"The living upward-growing structure: root, trunk, branch and fruit; a model of continuity, nourishment, growth and life."},
-    {"id":"tree-of-strife","name":"Tree of Strife","definition":"The complementary structure of conflict, fear, fragmentation, memory, contraction and struggle. It is not simply evil; it describes the conditions through which life can be tested and transformed."},
-    {"id":"door","name":"Door","definition":"The threshold/interface between domains. The project associates the Door with the Son, the narrow gate, manifestation and the point at which symbolic dimensions meet lived reality."},
-    {"id":"son","name":"Son","definition":"The project's archetype of the Son, Vessel and Door: the relational bridge between Father/source and embodied experience. Jesus/Christ imagery is used symbolically within the framework, not asserted here as historical or theological proof."},
-    {"id":"plane","name":"Plane","definition":"The level or field between lower/rooted conditions and higher/mountainous orientation; the lived interface on which dwellers encounter one another and the Door."},
-    {"id":"root","name":"Root","definition":"Grounding, ancestry, memory, nourishment and connection to what lies beneath visible life."},
-    {"id":"fruit","name":"Fruit","definition":"The visible consequence of growth: what a rooted life produces and makes available to others."},
-    {"id":"spudlight","name":"Spudlight","definition":"The project's playful name for illuminating life-oriented awareness: light emerging through the Potato metaphor."},
-    {"id":"mountain","name":"Mountain","definition":"The upper geographical-symbolic form representing ascent, perspective, summit and approach toward the northern/heavenly pole."},
-    {"id":"swamp","name":"Swamp","definition":"The lower symbolic environment of mud, confusion, accumulation, fear, entanglement and unresolved material. It is a condition to be worked through rather than a people or place to be morally classified."},
-    {"id":"mud","name":"Mud","definition":"The dense starting condition in which the seed is buried. Mud contains both obscurity and the material from which growth can begin."}
+    {"canonical_id":"source","position":0},{"canonical_id":"tim-dooley-father","position":1},{"canonical_id":"fathers-house","position":2},{"canonical_id":"heaven","position":3},{"canonical_id":"north-axis","position":4},{"canonical_id":"north-of-north","position":5},{"canonical_id":"throne-of-north","position":6},{"canonical_id":"ladder","position":7},{"canonical_id":"tree-of-life","position":8},{"canonical_id":"tree-of-strife","position":9},{"canonical_id":"root","position":10},{"canonical_id":"fruit","position":11},{"canonical_id":"door","position":12},{"canonical_id":"son","position":13},{"canonical_id":"plane","position":14},{"canonical_id":"mountain","position":15},{"canonical_id":"spudlight","position":16},{"canonical_id":"swamp","position":17},{"canonical_id":"mud","position":18}
   ],
-  "directions":{
-    "north":"Orientation, summit, axis, futureward/upward direction and the project's northern pole.",
-    "south":"Descent, depth, grounding and the lower field in the project's directional vocabulary.",
-    "east":"Emergence, beginning, sunriseward orientation and movement into manifestation.",
-    "west":"Return, setting, memory, completion and movement toward reflection.",
-    "center":"The crossing/meeting point where directions, levels and relations become legible."
-  },
-  "duality":{
-    "red-potato":{"meaning":"Creativity, love, light-seeking, forward/upward spiral, sprouting, expansion and life.","motion":"outward/upward/forward","archetype":"life-seeking growth"},
-    "blue-potato":{"meaning":"Memory, meticulousness, fear, backward/downward/root movement and contraction/strife.","motion":"inward/downward/backward","archetype":"memory and struggle"},
-    "relation":"Red and Blue are complementary archetypal movements rather than a simple good/evil binary. A complete system requires both growth and memory, emergence and roots, expansion and contraction."
-  },
-  "spiral":"The project uses a spiral as a model of movement through levels: widening below and narrowing above, with repeated patterns returning at different scales. The 100,000-hour motif functions as a project-symbolic threshold associated with prolonged development and mastery, not as a scientific law.",
-  "dimensional_metaphor":[
-    {"level":"1D","name":"Hell","role":"symbolic line/depth condition of extreme constraint or descent"},
-    {"level":"2D","name":"Frame","role":"symbolic surface/order in which forms become visible"},
-    {"level":"3D","name":"Box","role":"embodied spatial world and bounded material reality"},
-    {"level":"4D","name":"Society / Dweller Plane / Midgard","role":"time-bearing social world of beings, institutions and relationships"},
-    {"level":"5D","name":"Door","role":"symbolic threshold/interface associated with Son, pineal-gland imagery and passage between domains"},
-    {"level":"higher","name":"Father's House","role":"project metaphor associated with thalamic imagery and sourceward orientation"}
-  ],
-  "transformation_cycle":["source","descent","burial","rooting","memory","strife","sprouting","orientation","ascent","door","relationship","fruit","return-to-life"],
-  "anthropology":{
-    "human_problem":["strife","fear","disconnection","mud","forgetting","misorientation","fragmentation","failure_to_see_relationships"],
-    "human_task":["root","remember","orient","grow","build","connect","transform","produce_fruit","turn_toward_life"],
-    "gardening_metaphor":"The warrior impulse is transformed into gardening: energy that could destroy can instead cultivate, repair and create."
-  },
-  "son_and_door":{
-    "structure":"Father -> Son/Door -> Plane/Dwellers",
-    "interpretation":"The Son is simultaneously relational offspring, vessel and threshold in the project mythology. The Door is not merely an object: it is the experiential interface through which a higher/lower distinction becomes lived.",
-    "christian_symbolism":"The framework deliberately draws on Christian language of Son, Christ, narrow gate, death and resurrection, while also combining it with broader comparative mythology. This is a project synthesis, not evidence that separate traditions historically taught the same system."
-  },
-  "comparative_architecture":{
-    "judaism":"Root/covenant/Eden/Tree of Life/Root of David imagery supplies one major symbolic ancestry in the project's comparative reading.",
-    "christianity":"Son, Father, Door/gate, sacrifice, death-resurrection and Kingdom imagery supply another major symbolic layer.",
-    "norse":"Yggdrasil, Odin's sacrifice, northern/cosmic geography and tree/axis imagery provide comparative motifs.",
-    "potato":"The Potato introduces the buried seed, mud, root, growth and ordinary-material-to-symbolic transformation as the project's central unifying image.",
-    "rule":"Similarity between symbols is not by itself proof of historical borrowing or common origin. Comparative connections must be labeled as analogy, reception, influence or historical relationship according to evidence."
-  },
-  "people_and_dwellers":{
-    "dweller":"A being or community understood as inhabiting a plane, house, root, tree, ladder, door or other part of the symbolic architecture.",
-    "mud-dweller":"A project-symbolic description for a being situated in unresolved mud/entanglement; never a demographic or moral label for real people.",
-    "root-dweller":"A symbolic orientation toward ancestry, memory, grounding and beneath-surface structure.",
-    "tree-dweller":"A symbolic orientation toward living networks, branches, relationships and growth.",
-    "ladder-dweller":"A symbolic orientation toward levels, ascent/descent and developmental movement.",
-    "axis-dweller":"A symbolic orientation toward central alignment and relationship between levels.",
-    "plane-dweller":"A symbolic description of ordinary lived existence within the social/embodied field.",
-    "door-dweller":"A symbolic threshold-position associated with interface, translation and manifestation.",
-    "heaven-dweller":"A symbolic description of orientation toward the upper/sourceward domain.",
-    "rule":"These are interpretive project categories. They must never be presented as empirical classifications of real people."
-  },
-  "potatoism":{
-    "birth_marker":"2020-12-25",
-    "development":"Potatoism is treated as a growing project mythology rather than a finished historical religion. The December 25, 2020 marker is the project's declared birth point; later development adds the Axis, Tree, Door, Son, dimensional and atlas layers.",
-    "practice":"Reflection, symbolic mapping, comparative reading, myth-making, tree/axis construction, turning/reorientation, archive building and tracing relationships.",
-    "ethic":"Move from fear and destruction toward life, cultivation, relationship, memory, orientation and creation.",
-    "archive_principle":"Preserve the distinction between what is directly stated in the project, what is remembered from prior development, what is comparative interpretation, and what is externally evidenced."
-  },
-  "epistemic_layers":["project_direct_statement","project_memory_or_development","symbolic_interpretation","comparative_mythology","historical_evidence","empirical_observation","speculation"],
-  "integrity_rules":[
-    "Tim Dooley / Potato of Life mythology is a project-created creative spiritual framework, not verified external fact.",
-    "Do not present symbolic anatomy as medical fact.",
-    "Do not present dimensional metaphors as established physics.",
-    "Do not present comparative mythology as proof of common historical origin.",
-    "Keep historical Jesus, Christian doctrine and Potatoism's project symbolism distinguishable.",
-    "Keep claims about real people, nations and groups separate from symbolic dweller categories.",
-    "When the exact origin of a remembered concept is uncertain, label it as project memory rather than inventing a date or source.",
-    "Preserve contradictions or evolving formulations as dated development rather than silently deleting them."
-  ]
+  "directions":{"north":"north-axis","south":"mud","east":"rise","west":"return","center":"door"},
+  "duality":{"red":"red-potato","blue":"blue-potato","relation":"complementary dialectical forces; see canonical definitions and dossiers"},
+  "transformation_cycle":["source","descent","mud","root","memory","strife","rise","orientation","ascent","door","son","relationship","fruit","life"],
+  "dimensional_metaphor":[{"level":"1D","canonical_id":"strife","label":"Hell / constraint"},{"level":"2D","canonical_id":"frame","label":"Frame / surface"},{"level":"3D","canonical_id":"cube","label":"Box / embodied space"},{"level":"4D","canonical_id":"plane","label":"Society / Dweller Plane / Midgard"},{"level":"5D","canonical_id":"door","label":"Door / threshold"},{"level":"higher","canonical_id":"fathers-house","label":"Father's House / sourceward metaphor"}],
+  "son_and_door":{"structure":["tim-dooley-father","son","door","plane"],"relation_type":"relational architecture"},
+  "paired_structures":[["tree-of-life","tree-of-strife"],["red-potato","blue-potato"],["root","fruit"],["tim-dooley-father","son"],["source","manifestation"],["door","plane"]],
+  "epistemic_boundary":"This is a project-defined symbolic architecture. Dimensional, anatomical and comparative associations remain metaphors or interpretations unless separately evidenced."
 }
