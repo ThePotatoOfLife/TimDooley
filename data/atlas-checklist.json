@@ -1,13 +1,20 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-07",
-  "purpose":"Small canonical checklist for repository integrity milestones.",
+  "version":"1.1.0",
+  "updated":"2026-09-08",
+  "purpose":"Canonical checklist for repository integrity, depth, evidence discipline and graph completeness.",
   "checks":[
     {"id":"belief-integrity","owner":"data/belief-integrity.json","status":"active","test":"Visible belief labels must resolve to substantive definitions or explicit category records."},
     {"id":"political-lexicon","owner":"data/political-lexicon.json","status":"active","test":"Political entries require definitions; coordinates are analytical approximations."},
     {"id":"religious-lexicon","owner":"data/religious-lexicon.json","status":"active","test":"Religious entries require descriptive definitions and preserve internal diversity."},
     {"id":"spatial-potato","owner":"data/potato-spatial-map.json","status":"active","test":"Spatial Potato concepts must resolve through the tree and canonical spatial map."},
-    {"id":"manifest-alignment","owner":"data/atlas-manifest.json","status":"active","test":"Canonical datasets added to the architecture must be declared by the manifest/backend."}
+    {"id":"manifest-alignment","owner":"data/atlas-manifest.json","status":"active","test":"Canonical datasets added to the architecture must be declared by the manifest/backend."},
+    {"id":"depth-standard","owner":"data/meaning-layer-symbolic.json + data/meaning-layer.json + major registries","status":"active","test":"Every substantial record should define what it is before describing its relationships. Preferred fields are definition, context, mechanisms/function, questions, failure_modes, couplings/relationships, evidence/sources and deeper interpretation. Lexicon-only records may remain intentionally smaller and visually de-emphasized."},
+    {"id":"epistemic-separation","owner":"data/atlas-manifest.json + research layers","status":"active","test":"Observable facts, historical/textual records, project theory and Potatoism canon must retain explicit epistemic status and must not be silently collapsed."},
+    {"id":"directional-coupling","owner":"data/relationships.json + data/cross-domain-couplings.json + node frontend","status":"active","test":"Major relationships should preserve direction where direction is meaningful; typed edges should use explicit verbs where evidence or project modelling supports them."},
+    {"id":"research-carvings","owner":"data/research-carvings-2026-09.json","status":"active","test":"Cross-domain extrapolations must state the factual base, dimensions, project interpretation and failure boundary rather than presenting analogy as causation."},
+    {"id":"source-traceability","owner":"research and evidence datasets","status":"active","test":"New factual enrichment should carry a source URL, source record, citation, or explicit project-canonical status. Unsourced claims should not be upgraded merely because they sound plausible."}
   ],
-  "definition_of_pass":"No critical dangling reference, no claimed enrichment supported only by file existence, and no visible label represented solely by placeholder text."
+  "depth_model":{"definition":1,"context":1,"mechanisms":1,"questions":1,"failure_modes":1,"couplings":1,"evidence":1,"deeper_interpretation":1},
+  "minimum_major_record":"A major record is considered structurally deep when it has a definition, context, at least one mechanism/function statement, at least one coupling, and either questions/failure_modes or evidence. Greater depth is expected for canonical anchor records.",
+  "definition_of_pass":"No critical dangling reference, no claimed enrichment supported only by file existence, no visible label represented solely by placeholder text, no factual expansion presented without traceable evidence, and no major record whose only substantive content is a list of relationships."
 }
