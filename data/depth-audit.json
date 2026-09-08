@@ -1,28 +1,13 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-07",
+  "version":"1.1.0",
+  "updated":"2026-09-08",
   "purpose":"Machine-readable audit contract for identifying shallow Atlas records and preventing snippet inflation.",
-  "interpretation":"The counts in this file are audit targets/categories, not claims that every existing record has already been manually reviewed.",
-  "categories":{
-    "stub":"identifier or nearly empty record",
-    "label":"name and short description only",
-    "metadata":"structured fields without enough explanatory substance",
-    "substantive":"coherent explanation with meaningful structure and evidence",
-    "deep":"substantive plus dense relationships and source architecture",
-    "corpus":"deep source record backed by actual reusable primary text and stable passage structure"
-  },
-  "automatic_checks":[
-    "all IDs unique",
-    "all relationship endpoints resolve",
-    "all registered local book paths exist",
-    "all registered reader paths exist",
-    "all corpus records have provenance",
-    "no imported-and-verified text points only to an external URL",
-    "all major entry pages expose relationships and source trails",
-    "placeholder language is flagged rather than treated as substance"
-  ],
+  "interpretation":"Counts in this file are audit targets/categories, not claims that every existing record has already been manually reviewed.",
+  "categories":{"stub":"identifier or nearly empty record","label":"name and short description only","metadata":"structured fields without enough explanatory substance","substantive":"coherent explanation with meaningful structure and evidence","deep":"substantive plus dense relationships and source architecture","corpus":"deep source record backed by actual reusable primary text and stable passage structure"},
+  "automatic_checks":["all IDs unique","all relationship endpoints resolve or are explicitly unresolved research endpoints","all registered local source paths exist","all corpus records have provenance","no imported-and-verified text points only to an external URL","all major index entries expose useful local content and source trails","placeholder language is flagged rather than treated as substance","the unified index is the only required public reader"],
   "shallow_language_flags":["coming soon","placeholder","to be added","planned","brief overview","more research needed","this entry is registered","can be expanded"],
   "priority_order":["core concepts","religions and belief traditions","primary texts","people","nations","institutions","historical events","economic and infrastructure systems","comparative concepts","project-canon material"],
   "upgrade_rule":"Upgrade the highest-connectivity shallow records first. Do not create hundreds of additional shallow records while high-value existing records remain thin.",
-  "deep_entry_contract":"data/deep-entry-schema.json"
+  "deep_entry_contract":"data/deep-entry-schema.json",
+  "routing_rule":"A deep record is useful only when the reader can reach it from index.html and then follow its source, relationship and research trails without entering a parallel application."
 }
