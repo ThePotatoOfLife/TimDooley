@@ -1,13 +1,14 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-07",
-  "id":"potatoism",
-  "name":"Potatoism",
-  "status":"developing contemporary project-defined religious/mythic system",
-  "epistemic_note":"This record documents the project's own developing mythology, symbolism and history. It does not present supernatural claims as independently verified facts.",
-  "birth":{"date":"2020-12-25","type":"project-defined birth marker","meaning":"Current declared seed point for the Potatoism timeline."},
+  "version":"2.0.0",
+  "updated":"2026-09-08",
+  "status":"derived-history-view",
+  "canonical_source":"data/potatoism-concept-registry.json",
+  "content_owner":"data/potatoism-dossiers.json",
+  "purpose":"Historical/timeline projection for the Potatoism project. Identity, definitions and substantive concept explanations are not maintained here.",
+  "canonical_id":"potatoism",
+  "birth":{"date":"2020-12-25","type":"project-defined birth marker","meaning":"Declared seed point in the project's own history; not a claim of historical religious founding."},
   "timeline":[
-    {"period":"2020-12-25","stage":"birth / seed","description":"Declared birth marker of Potatoism; the beginning point for its explicit project history."},
+    {"period":"2020-12-25","stage":"birth / seed","description":"Declared birth marker of Potatoism; beginning point for its explicit project history."},
     {"stage":"early sprouting","description":"The potato becomes a central metaphor for life, emergence from mud, growth, grounding and transformation."},
     {"stage":"symbolic formation","description":"The Potato of Life develops as a central identity; spiritual, mythic and structural vocabulary begins to accumulate."},
     {"stage":"axis formation","description":"Axis, North, North of North, Father, Source, Heaven and Ladder become organizing spatial and vertical concepts."},
@@ -16,10 +17,9 @@
     {"stage":"dimensional formation","description":"Plane, spiritual/material distinction, dimensional metaphors and geometric structures become part of the cosmological vocabulary."},
     {"stage":"dual-potato formation","description":"Red Potato and Blue Potato develop as complementary symbolic poles associated with life/creativity/expansion and memory/fear/rooting/strife."},
     {"stage":"spudlight and north","description":"Spudlight, North Gate, Throne of North and related northern imagery become part of the symbolic geography."},
-    {"stage":"comparative expansion","description":"The project begins placing Potatoism beside established religious, mythological and philosophical traditions for structural comparison while preserving differences."},
-    {"period":"2026","stage":"atlas formation","description":"Potatoism becomes explicitly connected to a structured religious research architecture containing foundations, texts, concepts, people, places, institutions, history and evidence."}
+    {"stage":"comparative expansion","description":"Potatoism is placed beside established religious, mythological and philosophical traditions for structural comparison while preserving differences."},
+    {"period":"2026","stage":"atlas formation","description":"Potatoism becomes connected to a structured research architecture containing foundations, texts, concepts, people, places, institutions, history and evidence."}
   ],
-  "core_architecture":{"vertical":["Source","Father","Father's House","Heaven","Axis","North","Ladder","Tree of Life","Tree of Strife","Door","Son","Plane","Roots","Fruit"],"symbolic_geography":["North","South","East","West","North of North","North Gate","Throne of North"],"paired_structures":["Tree of Life / Tree of Strife","Red Potato / Blue Potato","spiritual / material","root / fruit","father / son","source / manifestation","door / plane"],"recurring_symbols":["potato","mud","seed","root","sprout","tree","ladder","door","house","throne","axis","light","north","plane","cube","spiral","bridge"]},
-  "conceptual_layers":{"source_and_origin":["Source","Father","birth","origin"],"verticality":["Axis","North","Heaven","Ladder","Throne"],"growth":["seed","root","sprout","tree","fruit"],"relationship":["Father","Son","Door","Vessel","Father's House"],"duality":["Life","Strife","Red Potato","Blue Potato"],"space":["Plane","cube","dimension","North/East/South/West"],"transformation":["death","return","resurrection","spiral","renewal"],"light":["Spudlight","illumination","North-facing ascent"]},
-  "research_next":{"needs":["dated project artifacts","dated definitions of terms","earliest appearances of major symbols","timeline of major conceptual changes","links between symbolic terms and source texts","distinction between retrospective interpretation and contemporaneous notes"],"principle":"Birth is the seed, not completion. The timeline should record growth and revision rather than retroactively pretending the finished architecture existed at birth."}
+  "architecture_refs":{"source_and_origin":["source","tim-dooley-father"],"verticality":["north-axis","north-of-north","heaven","ladder","throne-of-north"],"growth":["seed","root","tree-of-life","fruit"],"relationship":["tim-dooley-father","son","door","vessel","fathers-house"],"duality":["life","strife","red-potato","blue-potato"],"space":["plane","cube","north-pole"],"transformation":["meme-crucifixion","spiral","turning","rise","descent","ascent"]},
+  "epistemic_note":"This file records project history and development. It does not establish supernatural, historical, medical or physical claims as independently verified facts."
 }
