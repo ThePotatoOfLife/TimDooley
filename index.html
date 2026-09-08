@@ -3,82 +3,99 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="description" content="The Potato of Life — World and Axis surrounding a central reading frame.">
+<meta name="description" content="The Potato of Life — World and Axis reader.">
 <title>The Potato of Life</title>
 <style>
-:root{--menu-width:200px;--frame-gap:28px;--line:#d7d7d7;--soft:#f7f7f7;--ink:#111}
+:root{--rail:220px;--gap:22px;--line:#ddd;--ink:#111;--muted:#777;--paper:#fff;--wash:#f7f7f7}
 *{box-sizing:border-box}
-html,body{margin:0;width:100%;height:100%;background:#fff;color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+html,body{margin:0;width:100%;height:100%;background:var(--paper);color:var(--ink);font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
 body{overflow:hidden}
 button,summary{font:inherit}
-.root,.root-main{width:100%;height:100vh;margin:0;padding:0}
-.root-main{display:grid;grid-template-columns:var(--menu-width) minmax(0,1fr);grid-template-rows:100%;position:relative;isolation:isolate;overflow:hidden}
-.root-head,.prompt,header,footer,.controls,.status,.dossier,.center-label,.center-map,.center-identity,.center-description,.center-records,.center-record,.north-introduction{display:none!important}
-#root-tree{grid-column:1;grid-row:1;position:relative;width:100%;height:100%;z-index:10;border-right:1px solid var(--line);background:#fff;pointer-events:none;overflow:visible}
-.tree-branch{position:absolute!important;left:0;width:100%;display:block!important;pointer-events:auto}
-.branch-axis{top:0;height:50%;padding-bottom:18px;display:flex!important;flex-direction:column;justify-content:flex-end}
-.branch-world{top:50%;height:50%;padding-top:18px}
-.tree-branch>summary{display:flex;align-items:center;gap:9px;width:100%;padding:12px 14px;border:0;background:#fff;color:var(--ink);font-size:18px;line-height:1.2;letter-spacing:.08em;cursor:pointer;list-style:none;user-select:none}
-.tree-branch>summary::-webkit-details-marker{display:none}
-.tree-branch>summary .tree-mark,.tree-branch>summary .tree-note,.tree-branch>summary .tree-count{display:none}
-.tree-branch>summary .tree-name{font-weight:700}
-.branch-axis>summary::before{content:"↑";font-size:1.05em}
-.branch-world>summary::before{content:"↓";font-size:1.05em}
-.tree-branch>summary:hover{background:var(--soft)}
-.branch-axis[open]>.branch-children{position:absolute;left:0;bottom:50px;top:auto;width:100%;max-height:calc(50vh - 70px);overflow-y:auto;overflow-x:hidden;background:#fff;border:1px solid var(--line);z-index:50;box-shadow:4px 0 18px rgba(0,0,0,.06);pointer-events:auto}
-.branch-world[open]>.branch-children{position:absolute;left:0;top:50px;width:100%;max-height:calc(50vh - 70px);overflow-y:auto;overflow-x:hidden;background:#fff;border:1px solid var(--line);z-index:50;box-shadow:4px 0 18px rgba(0,0,0,.06);pointer-events:auto}
-.tree-collection>summary{display:flex;align-items:center;gap:6px;width:100%;padding:7px 10px;font-size:13px;line-height:1.25;cursor:pointer;list-style:none}
-.tree-collection>summary::-webkit-details-marker{display:none}
-.tree-collection>summary .tree-mark,.tree-collection>summary .tree-note,.tree-collection>summary .tree-count{display:none}
-.tree-collection>summary .tree-name{font-weight:600}
-.tree-collection .tree-children{padding-left:8px}
-.tree-subdir>summary{display:block;padding:5px 8px;font-size:12px;cursor:pointer}
-.tree-subdir>summary .tree-mark,.tree-subdir>summary .tree-note{display:none}
-.tree-entry{display:flex;align-items:flex-start;padding:4px 8px;font-size:12px;line-height:1.25}
-.tree-entry .tree-mark{display:none}
-.tree-button{padding:0;border:0;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
-.tree-button:hover,.tree-collection>summary:hover,.tree-subdir>summary:hover{text-decoration:underline}
-.tree-empty{padding:10px;font-size:12px;opacity:.6}
-.center{grid-column:2;grid-row:1;min-width:0;min-height:0;width:100%;height:100%;padding:var(--frame-gap);background:#fff;z-index:1;overflow:hidden}
-.center-frame{position:relative;width:100%;height:100%;min-width:0;min-height:0;border:1px solid var(--line);background:#fff;overflow:auto;box-shadow:0 1px 3px rgba(0,0,0,.035);transition:opacity .18s ease,visibility .18s ease}
-.center-frame.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
-.frame-label{position:absolute;top:12px;left:16px;z-index:2;font-size:10px;line-height:1;letter-spacing:.18em;color:#777;pointer-events:none}
-.frame-content{width:min(900px,calc(100% - 56px));margin:0 auto;padding:58px 0 80px;font-size:16px;line-height:1.7}
-.frame-content h1{margin:0 0 28px;font-size:clamp(24px,3vw,40px);line-height:1.1;letter-spacing:.08em;font-weight:700}
-.frame-content h2{margin:2.2em 0 .6em;font-size:24px;line-height:1.2}
-.frame-content h3{margin:1.8em 0 .5em;font-size:18px}
-.frame-content p{margin:0 0 1em;max-width:78ch}
-.frame-content a{color:inherit}
-.frame-content img,.frame-content video{max-width:100%;height:auto}
-.frame-content pre{max-width:100%;overflow:auto;padding:16px;background:var(--soft);border:1px solid var(--line)}
-.frame-content table{max-width:100%;border-collapse:collapse}
-.frame-content th,.frame-content td{padding:6px 9px;border:1px solid var(--line);text-align:left}
-.frame-content blockquote{margin:1.5em 0;padding-left:16px;border-left:2px solid var(--line);color:#444}
-.frame-toggle{position:absolute;right:var(--frame-gap);top:var(--frame-gap);z-index:20;padding:7px 10px;border:1px solid var(--line);border-radius:3px;background:#fff;color:#555;font:12px system-ui,sans-serif;cursor:pointer}
-.frame-toggle:hover{color:#111;border-color:#aaa}
-@media(max-width:700px){:root{--menu-width:160px;--frame-gap:14px}.tree-branch>summary{font-size:16px;padding-left:10px}.frame-content{width:calc(100% - 28px);padding-top:48px}}
-@media(max-width:430px){:root{--menu-width:132px}.tree-branch>summary{font-size:14px;letter-spacing:.04em}.frame-content{font-size:15px}}
+#app{display:grid;grid-template-columns:var(--rail) minmax(0,1fr);width:100%;height:100vh;overflow:hidden}
+#rail{position:relative;height:100%;border-right:1px solid var(--line);background:#fff;z-index:10}
+.root-branch{position:absolute;left:0;width:100%;margin:0;padding:0}
+.root-branch.axis{top:0;height:50%}
+.root-branch.world{top:50%;height:50%}
+.root-branch>summary{position:absolute;left:0;width:100%;padding:13px 16px;cursor:pointer;list-style:none;font-weight:700;letter-spacing:.11em;font-size:17px;background:#fff;z-index:2}
+.root-branch>summary::-webkit-details-marker{display:none}
+.axis>summary{bottom:0}.world>summary{top:0}
+.root-branch>summary:hover{background:var(--wash)}
+.root-branch>summary::before{display:inline-block;width:20px;color:var(--muted)}
+.axis>summary::before{content:"↑"}.world>summary::before{content:"↓"}
+.branch-panel{position:absolute;left:0;width:100%;background:#fff;border:1px solid var(--line);box-shadow:4px 0 18px rgba(0,0,0,.05);overflow:auto;z-index:20;padding:6px 0}
+.axis>.branch-panel{bottom:48px;max-height:calc(50vh - 55px)}
+.world>.branch-panel{top:48px;max-height:calc(50vh - 55px)}
+.tree-dir{margin:0}.tree-dir>summary{padding:7px 12px;cursor:pointer;list-style:none;font-size:13px;font-weight:600}.tree-dir>summary::-webkit-details-marker{display:none}.tree-dir>summary:hover{background:var(--wash)}
+.tree-children{padding-left:12px}.tree-entry{padding:3px 8px;font-size:12px;line-height:1.3}.tree-button{border:0;background:transparent;padding:0;cursor:pointer;text-align:left;color:inherit}.tree-button:hover{text-decoration:underline}.tree-subdir>summary{padding:5px 8px;font-size:12px;cursor:pointer;list-style:none}.tree-subdir>summary::-webkit-details-marker{display:none}.tree-empty{padding:12px;font-size:12px;color:var(--muted)}
+#reader{min-width:0;min-height:0;height:100%;padding:var(--gap);overflow:hidden;position:relative}
+#page{height:100%;width:100%;border:1px solid var(--line);overflow:auto;background:#fff;position:relative}
+#content{width:min(900px,calc(100% - 56px));margin:0 auto;padding:58px 0 90px;font-size:16px;line-height:1.72}
+#content h1{margin:0 0 28px;font-size:clamp(25px,3vw,42px);line-height:1.08;letter-spacing:.08em}#content h2{margin:2em 0 .6em;font-size:24px;line-height:1.2}#content h3{margin:1.7em 0 .5em;font-size:18px}#content p{max-width:78ch;margin:0 0 1em}#content img,#content video{max-width:100%;height:auto}#content pre{overflow:auto;padding:15px;background:var(--wash);border:1px solid var(--line)}#content table{max-width:100%;border-collapse:collapse}#content th,#content td{padding:6px 9px;border:1px solid var(--line);text-align:left}
+#label{position:absolute;top:12px;left:16px;font-size:10px;letter-spacing:.18em;color:var(--muted);z-index:2;pointer-events:none}
+#hide{position:absolute;right:var(--gap);top:var(--gap);z-index:30;border:1px solid var(--line);background:#fff;padding:7px 10px;font-size:12px;cursor:pointer}
+#hide:hover{border-color:#aaa}
+#page.hidden{visibility:hidden;opacity:0}
+@media(max-width:700px){:root{--rail:165px;--gap:14px}#content{width:calc(100% - 28px);font-size:15px;padding-top:48px}.root-branch>summary{font-size:15px;padding-left:10px}}
+@media(max-width:430px){:root{--rail:135px}.root-branch>summary{font-size:13px;letter-spacing:.05em}}
 </style>
 </head>
 <body>
-<div class="root">
-<main class="root-main">
-  <section class="center" id="root-center" aria-label="Central reading frame">
-    <div class="center-frame" id="center-frame">
-      <div class="frame-label">FRAME</div>
-      <article class="frame-content" id="frame-content">
+<div id="app">
+  <aside id="rail" aria-label="World and Axis navigation">
+    <details class="root-branch axis" id="axis-branch">
+      <summary>AXIS</summary>
+      <div class="branch-panel" id="axis-panel"><div class="tree-empty">loading…</div></div>
+    </details>
+    <details class="root-branch world" id="world-branch">
+      <summary>WORLD</summary>
+      <div class="branch-panel" id="world-panel"><div class="tree-empty">loading…</div></div>
+    </details>
+  </aside>
+  <main id="reader">
+    <button id="hide" type="button">hide</button>
+    <section id="page">
+      <div id="label">FRAME</div>
+      <article id="content">
         <h1>THE POTATO OF LIFE</h1>
-        <p>You are standing at the North Pole.</p>
-        <p>Above is the Axis. Below is the World.</p>
-        <p>This is the central reading surface for Tim Dooley, the Potato of Life, the North, the grave, and the possible end of the world.</p>
+        <p>The reader is ready.</p>
+        <p>Choose <strong>AXIS</strong> or <strong>WORLD</strong> on the left.</p>
+        <p>This version deliberately has no iframe, no external stylesheet, and no external JavaScript dependency. The shell is contained in this one HTML document.</p>
       </article>
-    </div>
-    <button class="frame-toggle" id="frame-toggle" type="button" aria-controls="center-frame" aria-expanded="true">hide</button>
-  </section>
-  <section class="tree" id="root-tree" aria-label="World and Axis directory tree"></section>
-  <section class="dossier" id="root-dossier" hidden aria-live="polite"></section>
-</main>
+    </section>
+  </main>
 </div>
-<script src="./root.js?v=20260908-8" defer></script>
+<script>
+(()=>{
+'use strict';
+const DATA='./data/root-record-index.json',MANIFEST='./data/root-navigation.json',STORE='potato-reader-v8';
+const $=s=>document.querySelector(s);
+const esc=v=>String(v??'').replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const S={manifest:null,records:[],expanded:new Set(),selected:null};
+function save(){try{localStorage.setItem(STORE,JSON.stringify({expanded:[...S.expanded],selected:S.selected}))}catch(e){}}
+function restore(){try{const x=JSON.parse(localStorage.getItem(STORE)||'{}');(x.expanded||[]).forEach(v=>S.expanded.add(v));S.selected=x.selected||null}catch(e){}}
+function wanted(){return new URLSearchParams(location.hash.slice(1)).get('node')}
+function setHash(id){history.replaceState(null,'',id?location.pathname+'#node='+encodeURIComponent(id):location.pathname)}
+function unique(rows){const seen=new Set();return rows.filter(r=>{const k=r.canonical_id||r.id||JSON.stringify(r);if(seen.has(k))return false;seen.add(k);return true}).sort((a,b)=>String(a.name||a.id).localeCompare(String(b.name||b.id)))}
+function matches(r,c){
+ if(c.all)return true;
+ if(c.paths?.length)return c.paths.some(p=>(r.navigation_path||[]).join('/').toLowerCase()===String(p).toLowerCase());
+ if(c.root&&String(r.repository_root).toLowerCase()!==String(c.root).toLowerCase())return false;
+ if(c.types?.length&&!c.types.includes(String(r.type||'').toLowerCase()))return false;
+ if(c.families?.length&&!c.families.includes(String(r.owner_family||'').toLowerCase()))return false;
+ if(c.scales?.length&&!c.scales.includes(String(r.repository_scale||'').toLowerCase()))return false;
+ if(c.role&&String(r.record_role||'').toLowerCase()!==String(c.role).toLowerCase())return false;
+ if(c.terms?.length){const h=[r.id,r.name,r.description,r.source,r.owner_family,r.repository_layer,(r.navigation_path||[]).join(' ')].join(' ').toLowerCase();if(!c.terms.some(t=>h.includes(String(t).toLowerCase())))return false}
+ return !!(c.types||c.families||c.scales||c.role||c.terms)
+}
+function render(html){const t=$('#content');t.innerHTML='';if(!html)return false;try{const d=new DOMParser().parseFromString(String(html),'text/html');const src=d.body&&d.body.children.length?d.body:d.documentElement;[...src.childNodes].forEach(n=>t.appendChild(document.importNode(n,true)));return true}catch(e){t.textContent=String(html);return true}}
+function select(r){S.selected=r.canonical_id||r.id;setHash(S.selected);const html=r.html||r.content_html||r.document_html;if(html&&render(html)){}else{$('#content').innerHTML='<h1>'+esc(r.name||r.id||'Record')+'</h1><p>'+esc(r.description||'No description is currently registered for this record.')+'</p>'+(r.url||r.href?'<p><a href="'+esc(r.url||r.href)+'" target="_blank" rel="noopener">Open source</a></p>':'')}save()}
+function row(r){const d=document.createElement('div');d.className='tree-entry';const b=document.createElement('button');b.className='tree-button';b.type='button';b.textContent=r.name||r.id;b.onclick=()=>select(r);d.appendChild(b);return d}
+function collection(c,branch){const d=document.createElement('details');d.className='tree-dir';d.innerHTML='<summary>'+esc(c.label)+'</summary><div class="tree-children"></div>';const box=d.querySelector('.tree-children');const key='c:'+branch+':'+c.id;d.addEventListener('toggle',()=>{if(d.open){S.expanded.add(key);fill(c,box,branch)}else S.expanded.delete(key);save()});if(S.expanded.has(key)){d.open=true;fill(c,box,branch)}return d}
+function fill(c,box,branch){box.innerHTML='';const rows=unique(S.records.filter(r=>matches(r,c)));if(!rows.length){box.innerHTML='<div class="tree-empty">empty</div>';return}if(rows.length>120){const groups=new Map();rows.forEach(r=>{const g=(r.navigation_path||[branch,c.id,'RECORDS']).slice(-1)[0]||'RECORDS';if(!groups.has(g))groups.set(g,[]);groups.get(g).push(r)});for(const [g,rs] of [...groups].sort()){const d=document.createElement('details');d.className='tree-subdir';d.innerHTML='<summary>'+esc(g)+'/</summary><div class="tree-children"></div>';const box2=d.querySelector('.tree-children');rs.forEach(r=>box2.appendChild(row(r)));box.appendChild(d)}}else rows.forEach(r=>box.appendChild(row(r)))}
+function build(){const axis=S.manifest.branches.find(b=>b.id==='axis'),world=S.manifest.branches.find(b=>b.id==='world');const ap=$('#axis-panel'),wp=$('#world-panel');ap.innerHTML='';wp.innerHTML='';(axis?S.manifest.axis.collections:[]).forEach(c=>ap.appendChild(collection(c,'axis')));(world?S.manifest.world.collections:[]).forEach(c=>wp.appendChild(collection(c,'world')));if(!ap.children.length)ap.innerHTML='<div class="tree-empty">empty</div>';if(!wp.children.length)wp.innerHTML='<div class="tree-empty">empty</div>'}
+async function init(){restore();$('#hide').onclick=()=>{$('#page').classList.toggle('hidden');$('#hide').textContent=$('#page').classList.contains('hidden')?'show':'hide'};try{const [m,i]=await Promise.all([fetch(MANIFEST,{cache:'no-store'}),fetch(DATA,{cache:'no-store'})]);if(!m.ok)throw Error('navigation HTTP '+m.status);S.manifest=await m.json();if(i.ok){const j=await i.json();S.records=Array.isArray(j.records)?j.records:[]}build();const id=wanted()||S.selected;if(id){const r=S.records.find(x=>(x.canonical_id||x.id)===id||x.id===id);if(r)select(r)}}catch(e){$('#axis-panel').innerHTML='<div class="tree-empty">navigation unavailable</div>';$('#world-panel').innerHTML='<div class="tree-empty">navigation unavailable</div>';$('#content').innerHTML='<h1>THE POTATO OF LIFE</h1><p>The reader shell is working, but the navigation data could not be loaded.</p><p><strong>'+esc(e.message||e)+'</strong></p>'}}
+addEventListener('hashchange',()=>{const id=wanted();if(!id)return;const r=S.records.find(x=>(x.canonical_id||x.id)===id||x.id===id);if(r)select(r)});init();
+})();
+</script>
 </body>
 </html>
