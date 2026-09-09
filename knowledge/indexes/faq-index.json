@@ -1,0 +1,47 @@
+{
+  "id":"faq-index",
+  "title":"Potato of Life FAQ Index",
+  "updated":"2026-09-09",
+  "status":"canonical FAQ aggregation map",
+  "purpose":"Aggregate the growing answered FAQ corpus, exhaustive question bank and future answer waves without turning any one giant file into a maintenance bottleneck.",
+  "answered_sources":[
+    "knowledge/indexes/faq-answer-atlas.json",
+    "knowledge/indexes/faq-answer-expansion-001.json",
+    "knowledge/indexes/faq-answer-expansion-002.json",
+    "knowledge/indexes/faq-answer-expansion-003.json"
+  ],
+  "question_sources":[
+    "knowledge/indexes/faq-question-bank.json"
+  ],
+  "growth_rule":"Every answered question may generate more questions. New questions are deduplicated by normalized intent and entity relation, then answered in later numbered expansion files. Answers route back to canonical owners and never become independent factual authorities.",
+  "recursive_dimensions":[
+    "identity",
+    "definition",
+    "chronology",
+    "first attestation",
+    "location in model",
+    "function",
+    "purpose",
+    "relationship",
+    "difference from neighbors",
+    "healthy form",
+    "shadow form",
+    "corruption mode",
+    "repair mode",
+    "transition into",
+    "transition out of",
+    "historical comparator",
+    "where comparison fails",
+    "direct versus comparative mapping",
+    "evidence class",
+    "source",
+    "contradiction",
+    "false-premise correction",
+    "creative usage",
+    "public reception",
+    "SEO aliases and spelling variants"
+  ],
+  "coverage_goal":"There is no fixed terminal FAQ size. Coverage approaches completeness by repeatedly applying the recursive dimensions to every canonical entity, relation, event, symbol, title, source class and creative work, while merging semantically duplicate questions.",
+  "site_behavior":"A visitor should be able to enter through a natural-language question, receive a short direct answer, expand into a deeper answer, inspect related questions, traverse entities and chronology, and reach the underlying source/evidence owner.",
+  "connections":["manifest","source-index","faq-answer-atlas","faq-question-bank","conversation-recovery-inventory","archive-epistemics"]
+}
