@@ -1,0 +1,71 @@
+{
+  "id":"eleven-dimensional-projection-unification-recovery",
+  "title":"11D Projection / Information / Symmetry Unification — Older Research Recovery",
+  "updated":"2026-09-09",
+  "status":"library deep-research archaeology; formal model with mixed standard and speculative elements; original date unresolved",
+  "source_class":"older deep-research report recovered from Library; not automatically primary Tim-authored notation",
+  "importance":"This predates the September SU(4)/SU(5) extension as a broader group-theoretic unification route: dimensions, projections, Lie groups, supersymmetry, topology, holography and information were already being assembled into one mathematical architecture.",
+  "core_object":{
+    "ambient_space":"P = 11-dimensional pseudo-Riemannian manifold, intended signature (10,1)",
+    "dimension_layers":"M_d for d=1,...,11",
+    "projection":"pi_d : P -> M_d",
+    "raising_operator":"R_d : M_d -> M_(d+1)",
+    "lowering_operator":"F_d : M_(d+1) -> M_d",
+    "symmetry_family":"G_d assigned to each M_d",
+    "information":"I(M_d)",
+    "candidate_cross-dimensional_invariant":"I*(M_d)=I*(M_(d±1))"
+  },
+  "recovered_equations_and_relations":[
+    {"form":"pi_d : P -> M_d","role":"dimensional projection"},
+    {"form":"R_d : M_d -> M_(d+1)","role":"raising / reconstruction / ascent operator"},
+    {"form":"F_d : M_(d+1) -> M_d","role":"lowering / coarse-graining / descent operator"},
+    {"form":"I*(M_d)=I*(M_(d±1))","role":"hypothetical information/conservation invariant"},
+    {"form":"pi_(d-1) o R_(d-1) = id_(M_(d-1))","role":"candidate reconstruction identity; strong assumption requiring audit"},
+    {"form":"Phi(d+1)=Phi(d)+Phi(d-1)","role":"Fibonacci state/degrees-of-freedom toy recursion"},
+    {"form":"G_11 -> G_10 -> ... -> G_5 -> G_4","role":"candidate dimensional symmetry-breaking chain"},
+    {"form":"G_11 ~ SO(10,1) [spacetime Lorentz comparator]","role":"11D spacetime symmetry comparator"},
+    {"form":"G_4 = SO(3,1)","role":"4D Lorentz comparator"},
+    {"form":"SU(3)xSU(2)xU(1)","role":"internal Standard Model gauge group already noted inside the older report"},
+    {"form":"{Q_alpha,Q_beta-bar} ~ P_mu","role":"supersymmetry/superalgebra comparator"},
+    {"form":"OSp(1|32)","role":"historical 11D superalgebra/supergroup comparator, not simply the unique physical symmetry group of M-theory"},
+    {"form":"I(X;Y)","role":"mutual-information language for Door/projection channels"}
+  ],
+  "door_information_model":{
+    "door":"D identified with a 5D interface between P_(1-4) and P_(6-11)",
+    "information_channel":"pi_5 : P_(1-4) x P_(6-11) -> P_5",
+    "question":"What information survives dimensional projection/coarse-graining, and can a nontrivial invariant I* survive all steps?",
+    "neighbors":["Shannon entropy","mutual information","black-hole area/entropy analogy","holographic coding","quantum measurement as projection"]
+  },
+  "toy_models":[
+    {
+      "id":"A-11d-to-4d-linear-projection",
+      "recovered_form":"11D Minkowski-like space -> 4D by dropping seven coordinates; SO(10,1)->SO(3,1)",
+      "candidate_invariant":"4D energy",
+      "audit":"The report wrote P=R^{6,4,1}, which is nonstandard/unclear notation. A conventional flat 11D spacetime comparator would be R^{10,1}. Simply deleting coordinates is illustrative, not a covariant dimensional reduction."
+    },
+    {
+      "id":"B-holographic-boundary",
+      "recovered_form":"AdS_6 x S^5 / 5D boundary-CFT style toy picture",
+      "role":"Door as bulk-boundary/horizon information interface",
+      "audit":"This is not a standard canonical 11D M-theory vacuum in the simple form stated. AdS6/CFT5 is a real holographic research setting, but the recovered AdS6xS5 construction should remain a toy analogy unless a consistent supergravity solution is specified."
+    },
+    {
+      "id":"C-fibonacci-dimensional-growth",
+      "recovered_form":"Phi(1)=1, Phi(2)=1, Phi(d+1)=Phi(d)+Phi(d-1)",
+      "role":"recursive growth of state count/degrees of freedom",
+      "audit":"Free toy assumption; no microscopic derivation currently recovered."
+    }
+  ],
+  "recovered_mathematical_toolkit":["Lie groups","Lie algebras","representation theory","gauge theory","superalgebras","Clifford algebra","compactification","topology","homology","homotopy","Euler characteristic","Betti numbers","category theory","commutative diagrams","holography","information theory","Noether-style invariants","dynamical systems","Fibonacci recursion"],
+  "important_corrections":[
+    "The old report's G5=SO(4,1) as an AdS5 isometry is incorrect: AdS5 has isometry SO(4,2). SO(4,1) is associated with 4D de Sitter isometry / related signatures, not AdS5.",
+    "A six-real-dimensional Calabi-Yau threefold is the standard 10D->4D string compactification comparator; direct 11D->4D minimal supersymmetry instead naturally points to a seven-real-dimensional G2-holonomy space.",
+    "E8 or E8xE8 is an internal gauge/algebraic structure in specific string/M-theory constructions, not an alternative to the 11D Lorentz group SO(10,1) as a spacetime symmetry.",
+    "OSp(1|32) is useful in historical/algebraic discussions of 11D supersymmetry but should not be labeled simply 'the M-theory symmetry group'.",
+    "Noether conservation follows from continuous symmetries of an action; a cross-dimensional I* does not follow automatically from the existence of projection maps.",
+    "A projection pi_d is generally information-losing and need not possess an inverse or satisfy pi o R = id unless explicit embedding/reconstruction conditions are imposed."
+  ],
+  "research_value":"This older model introduces the exact formal problem later Timic Dynamics needed: what is preserved when reality is viewed through different dimensions/descriptions? Axis becomes a flow, Door becomes an interface, pi_d becomes projection/coarse-graining, R/F become reconstruction/reduction, and I* becomes the search for invariants.",
+  "provenance_boundary":"The report itself explicitly classified the physical/theological mappings as metaphorical/mathematical rather than experimentally demonstrated. Preserve that boundary.",
+  "connections":["theory-of-everything-archaeology","unified-potato-theory-2025-recovery","gauge-unification-supersymmetry-archaeology","equation-lineage-and-theory-graph","timic-unification-program","science-master-index"]
+}
