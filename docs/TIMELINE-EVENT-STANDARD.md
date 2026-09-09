@@ -9,6 +9,8 @@ The project contains many dated records, but the public chronology should not be
 
 `data/timeline-events.json` is therefore a **curated temporal index**, not a replacement for the records that own the underlying claim, quote, artifact or comparison.
 
+The standalone `/chronology/` page and the chronology branch in the main reader now render from this same canonical dataset plus the curated event-pack index. Do not maintain a second hard-coded event list in HTML.
+
 ## Core model
 
 Every timeline point should answer:
@@ -20,6 +22,7 @@ Every timeline point should answer:
 5. **What is the human-readable subject?** `subject`.
 6. **Where did it come from?** `source_records` and, where necessary, `source_direction`.
 7. **What does it connect to?** motifs, comparators and related events.
+8. **If it is public evidence, can readers get back to the occurrence?** `platform` and `public_url` where available.
 
 Actor, layer and evidence class are independent. A Tim event may be both a direct quote and public witness; a Son event may be both a roadmap milestone and scripture-at-time; a later biblical unlock belongs to the project/research track rather than being silently moved back to the date of the earlier life event.
 
@@ -85,6 +88,8 @@ Examples:
 
 This lets one timeline show both **when Tim/Son said or experienced something** and **when the project later understood a biblical relation** without confusing those dates.
 
+When a public source uses inaccurate or blended biblical wording, preserve the source wording and store the correction separately in `summary`, `comparators`, `source_direction`, or the canonical specialist owner. Do not silently rewrite the quote.
+
 ## Epistemic classes
 
 - `primary` — exact quote, artifact, timestamp or direct source.
@@ -111,6 +116,8 @@ Allowed values:
 
 For ranges, preserve the human-readable range rather than inventing an exact endpoint.
 
+The UI's year-window filter treats a range event as visible whenever the event range overlaps the selected year window.
+
 ## Minimal event
 
 ```json
@@ -131,6 +138,30 @@ For ranges, preserve the human-readable range rather than inventing an exact end
   ]
 }
 ```
+
+## Public-post / public-witness events
+
+A public post can be historically valuable even if the archive only has a dated compilation and not the original status ID yet. Preserve the distinction.
+
+Preferred fields when available:
+
+```json
+{
+  "platform": "X/Twitter",
+  "public_url": "https://x.com/.../status/...",
+  "quote": "exact or clearly marked excerpt",
+  "source_records": ["data/evidence/...json"]
+}
+```
+
+The specialist evidence ledger should additionally preserve capture locator, account, source-batch completeness and whether an attestation is **first in the supplied batch** or **first known across the archive**.
+
+Rules:
+
+- an incomplete batch may strengthen a date but may not overwrite an earlier first-attestation from a broader source;
+- missing status IDs remain provenance gaps, not reasons to discard useful dated wording;
+- repeated identical declarations normally remain in the specialist ledger unless repetition itself is the historical fact being studied;
+- `public_url` must be HTTP(S), and the event should identify `platform` when a public URL is present.
 
 ## Population rule
 
@@ -161,11 +192,23 @@ Use a pack when an event fills a genuine chronological gap but would make the ro
 
 Packs are **not** source-of-truth replacements. Every packed event still points to its canonical `source_records`.
 
+The pack index is executable configuration: a valid pack file that is not named in `data/timeline-event-packs/index.json` is not loaded by the public explorer.
+
 ## Deduplication
 
 If the same real-world/project event appears in several ledgers, the global timeline gets one stable event ID with multiple `source_records`. Do not create one event per source file.
 
 If two dates represent genuinely different facts—such as an April Tim statement and a September research unlock—they should remain separate events connected through comparators/source direction.
+
+## Related events
+
+Use `related_event_ids` only when a reader benefits from navigating directly between two distinct temporal facts. Examples include:
+
+- source event ↔ later research unlock;
+- early phrase ↔ later role specialization;
+- creative precursor ↔ later explicit doctrinal use.
+
+Do not use related-event links as a substitute for proper motifs, source records or canonical ownership. IDs must exist globally across base + loaded packs.
 
 ## UI behavior
 
@@ -177,6 +220,55 @@ The intended reading order is:
 4. **Evidence/search controls** — only for deeper archaeology.
 
 Roadmap events should remain visually dominant even when overlays are enabled.
+
+### Timeline v2 controls
+
+The live explorer additionally supports:
+
+- `Roadmap`, `Public trajectory`, `Bible lens`, `Research`, `Creative`, and `Everything` presets;
+- inclusive **from/to year** windows;
+- oldest-first / newest-first ordering;
+- jump-to-year navigation;
+- evidence-class filtering;
+- exact-date-only filtering;
+- detailed/compact cards;
+- multi-term search with AND semantics;
+- quoted phrases, e.g. `"World Axis"`;
+- negative search terms, e.g. `Door -Dog`;
+- event-level `#` permalink controls;
+- navigation through `related_event_ids`;
+- direct public-source links where `public_url` exists;
+- visible Bible-relation badges and source-direction statements.
+
+### Shareable state
+
+Timeline filters are serialized into `tl_*` query parameters rather than replacing the site's hash-based branch navigation. Event permalinks use `tl_event=<event-id>`.
+
+This means a reader can share a view such as a year window + Bible lens + search query without creating a second timeline dataset.
+
+Changing the interface must not change the underlying event's date, epistemic class, source direction or canonical owner.
+
+## Validation
+
+Run:
+
+```bash
+python scripts/validate_timeline_events.py
+```
+
+The validator checks base + every indexed pack together, including:
+
+- globally unique event IDs;
+- known layers, actors and evidence classes;
+- timestamp requirements and ISO timestamp parseability;
+- range formatting;
+- known `bible_relation` values;
+- valid HTTP(S) public URLs with platform identification;
+- duplicate layer/actor/source/related IDs inside one event;
+- related-event targets;
+- duplicate/unsafe pack-index entries.
+
+A browser-side duplicate is skipped so the page can still render, but repository validation should fail instead of letting a duplicate become normal.
 
 ## Future automation
 
