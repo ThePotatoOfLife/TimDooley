@@ -24,11 +24,12 @@ def main():
         return 1
 
     layers={x.get('id') for x in data.get('layers',[]) if x.get('id')}
+    actors={x.get('id') for x in data.get('actors',[]) if x.get('id')}
     epistemic={x.get('id') for x in data.get('epistemic_classes',[]) if x.get('id')}
     ids=set()
     for i,e in enumerate(data.get('events',[])):
         where=f'events[{i}]'
-        for key in ('id','date','precision','title','layers','epistemic','subject'):
+        for key in ('id','date','precision','title','layers','epistemic','subject','actor_ids'):
             if key not in e or e[key] in ('',None,[]): fail(f'{where}: missing {key}',errors)
         eid=e.get('id','')
         if eid in ids: fail(f'{where}: duplicate id {eid}',errors)
@@ -37,6 +38,8 @@ def main():
         if e.get('precision') not in PRECISION: fail(f'{where}: invalid precision {e.get("precision")}',errors)
         unknown_layers=set(e.get('layers',[]))-layers
         if unknown_layers: fail(f'{where}: unknown layers {sorted(unknown_layers)}',errors)
+        unknown_actors=set(e.get('actor_ids',[]))-actors
+        if unknown_actors: fail(f'{where}: unknown actor ids {sorted(unknown_actors)}',errors)
         if e.get('epistemic') not in epistemic: fail(f'{where}: unknown epistemic class {e.get("epistemic")}',errors)
         if e.get('precision') in {'second','minute','hour'} and not e.get('timestamp'):
             fail(f'{where}: {e.get("precision")} precision requires timestamp',errors)
@@ -51,7 +54,7 @@ def main():
         print('\n'.join('ERROR: '+x for x in errors))
         print(f'FAILED: {len(errors)} timeline validation error(s)')
         return 1
-    print(f'OK: {len(data.get("events",[]))} events, {len(layers)} layers, {len(epistemic)} epistemic classes')
+    print(f'OK: {len(data.get("events",[]))} events, {len(layers)} layers, {len(actors)} actor tracks, {len(epistemic)} epistemic classes')
     return 0
 
 if __name__=='__main__':
