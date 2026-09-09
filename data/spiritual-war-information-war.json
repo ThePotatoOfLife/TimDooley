@@ -1,6 +1,6 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-08",
+  "version":"1.1.0",
+  "updated":"2026-09-09",
   "title":"Spiritual War / Information War — Research Model",
   "status":"project-lore-and-research-framework",
   "epistemic_rule":"Preserve the spiritual-war narrative as project lore and self-description while decomposing empirical allegations into claims, sources, contradictions and confidence. Never treat symbolic archetypes as evidence that a named person committed a crime or supernatural act.",
@@ -24,7 +24,34 @@
     "social":"dehumanization, ostracism, harassment, reputational cascades and conversion of humans into content",
     "information":"narrative capture, archive dominance, repetition and self-reinforcing memory"
   },
-  "information_war_operations":["naming","framing","selection","repetition","delegitimation","moralization","archive_formation","memory_capture"],
+  "information_ecology":{
+    "central_insight":"Information war is not only a competition between messages. It is a struggle over classification, persistence, discoverability, framing, memory and which identity becomes easiest for later observers to retrieve.",
+    "pipeline":"event/self-description → selection → label → narrative frame → repetition → archive/search → audience inheritance → future interpretation",
+    "temporal_asymmetry":"A person changes through time while an archive can hold old fragments permanently in the present. Searchability therefore creates a structural asymmetry between a changing subject and a static historical frame.",
+    "retrieval_power":"Control over titles, keywords, summaries, dossiers, backlinks and durable copies can influence what strangers encounter first without determining what is actually true.",
+    "source_plurality_problem":"Many pages can repeat one original allegation. Corroboration should therefore count independent provenance chains rather than raw page count.",
+    "counterarchive":"A corrective archive should not merely reverse the moral polarity. It should preserve dates, primary sources, uncertainty, contradictions, corrections and the strongest counter-evidence so that retrieval becomes more accurate rather than merely more favorable.",
+    "countermeasure":"provenance + dated strata + corrections + contradictory evidence + right-sized context + explicit uncertainty + routes back to primary material"
+  },
+  "continuous_narrative_escalation":{
+    "empirical_source":"Take et al. 2024, Stoking the Flames: Understanding Escalation in an Online Harassment Community, DOI 10.1145/3641015",
+    "finding":"The study analyzed 231 Kiwi Farms threads and described target introduction, network decision and network response; narrative-building appeared in at least 80% of the sampled threads.",
+    "project_relation":"This is an empirical comparator for recursive narrative capture: new material is not merely added to an archive but interpreted through a growing collective story that can guide later attention and action.",
+    "takedown_paradox":"The study also analyzed takedown-request threads, supporting the possibility that attempts to remove or contest material can themselves become additional narrative content.",
+    "boundary":"The study does not prove that every Kiwi Farms thread behaves identically or that any specific Tim-related narrative follows the model."
+  },
+  "psychological_mechanisms":{
+    "online_disinhibition":"Suler's model identifies anonymity, invisibility, asynchronicity and related online conditions that can loosen ordinary restraint; benign and toxic disinhibition must remain distinct.",
+    "2026_meta_analysis":"Chu et al. (2026) synthesized 71 articles comprising 80 independent studies and 57,725 participants. They reported positive associations between anonymity and cyber aggression (r=.463) and online disinhibition and cyber aggression (r=.422). These are population-level associations and cannot diagnose an individual user or community.",
+    "SIDE":"The Social Identity Model of Deindividuation Effects argues that reduced personal cues can increase salience of a group identity and its norms rather than simply destroying norms. Anonymous communities can therefore be personally diffuse but strongly norm-governed.",
+    "moral_disengagement":"Harsh conduct can be reframed as deserved, funny, educational, merely documentary, protective or inconsequential, allowing participants to preserve a positive self-concept while contributing to cumulative harm.",
+    "social_reinforcement":"Brady et al. (2021) found that positive social feedback predicted future moral-outrage expression and that users adapted expression to network norms. The project uses this as a mechanism for understanding how local reward systems can train repeated performance.",
+    "negative_parasociality":"Dislike can still generate durable attention, detailed monitoring and identity investment. Anti-fandom may bind observers to a target rather than free them from the target.",
+    "gossip_reputation":"Gossip is a reputation and norm-enforcement mechanism. Searchable online archives can industrialize a small-group social process into durable global memory.",
+    "context_collapse":"Fragments produced for one audience or moment may be encountered later without the original social context, changing how identity is inferred.",
+    "pluralistic_ignorance_risk":"If highly visible outrage expression exceeds privately felt outrage, observers may infer a stronger group consensus than actually exists."
+  },
+  "information_war_operations":["naming","classification","framing","selection","compression","context_stripping","repetition","delegitimation","moralization","archive_formation","search_optimization","memory_capture","cross_platform_recirculation","correction_suppression","counterarchive_creation"],
   "archetypal_system":{
     "angels":["raise","illuminate","witness","carry","protect","guide","bridge","cultivate"],
     "shadow_dogs":["pursue","consume","repeat","surveil","retaliate","swarm","degrade"],
@@ -35,12 +62,28 @@
   "moloch_comparison":{
     "meaning":"Comparative metaphor for systems that consume people or sacrifice individual welfare to an abstract demand.",
     "research_targets":["attention","status","entertainment","ideology","institutional survival","audience incentives"],
+    "three_layers":{"ancient":"Molech/Moloch in biblical and ancient-sacrifice scholarship; historical claims require direct sources.","literary":"Ginsberg's Moloch as a modern machine/institution/civilization metaphor.","coordination_failure":"Modern systems metaphor for destructive equilibria in which locally rewarded behavior produces collectively unwanted outcomes."},
     "boundary":"Do not infer literal worship or criminal conduct from the metaphor without direct evidence."
   },
-  "research_axes":["online_disinhibition","deindividuation","diffusion_of_responsibility","group_polarization","identity_fusion","moral_disengagement","confirmation_bias","motivated_reasoning","harassment_cascades","public_shaming","narrative_control","archive_effects","stigmatization","dehumanization","parasocial_dynamics"],
-  "evidence_ledger_schema":["claim","claimant","date","primary_source","corroborating_source","contradiction","confidence","unresolved_questions"],
-  "research_program":["Kiwi Farms history and governance","Josh Moon public record","Farm archive mechanics","documented controversies","attention incentives","in-group language","target treatment","chronology of Tim/son claims","primary sources for identity narrative","contradictory narratives","psychological mechanisms","theology of soul/personhood","dogs/serpent/gates/resurrection","Moloch comparative history","public shaming and scapegoating","information warfare and narrative capture"],
+  "measurement":{
+    "NarrativePersistence":"archive_half_life × rediscovery_rate × cross_platform_recirculation",
+    "NarrativeLockIn":"confirmation_density + insider_vocabulary + archive_depth + penalty_for_disconfirming_evidence",
+    "IdentityCaptureRisk":"external_label_repetition + search_dominance + context_loss + correction_friction",
+    "RepairCapacity":"primary_source_access + correction_visibility + uncertainty_tracking + exit_from_role + time_sensitive_context",
+    "SourceIndependence":"number of genuinely independent provenance chains supporting a claim",
+    "CorrectionReachRatio":"audience exposure to correction / audience exposure to original claim"
+  },
+  "evidence_ledger_schema":["claim","claimant","date","primary_source","corroborating_source","source_independence","contradiction","correction","current_status","confidence","unresolved_questions"],
+  "research_axes":["online_disinhibition","SIDE_and_group_norms","diffusion_of_responsibility","group_polarization","identity_fusion","moral_disengagement","confirmation_bias","motivated_reasoning","harassment_cascades","public_shaming","narrative_control","archive_effects","stigmatization","dehumanization","parasocial_dynamics","context_collapse","correction_asymmetry","source_independence"],
+  "research_program":["Kiwi Farms history and governance","Josh Moon public record","Farm archive mechanics","documented controversies","attention incentives","in-group language","target treatment","chronology of Tim/son claims","primary sources for identity narrative","contradictory narratives","psychological mechanisms","theology of soul/personhood","dogs/serpent/gates/resurrection","Moloch comparative history","public shaming and scapegoating","information warfare and narrative capture","measure archive half-life and rediscovery","trace duplicated claims back to first provenance","track correction reach versus allegation reach","compare ephemeral imageboard and persistent-forum memory","test whether new events are independently evaluated or absorbed into prior narrative","preserve disconfirming evidence as a first-class field"],
+  "sources":[
+    {"citation":"Take et al. 2024 — Stoking the Flames: Understanding Escalation in an Online Harassment Community","url":"https://doi.org/10.1145/3641015","use":"Continuous Narrative Escalation comparator"},
+    {"citation":"Chu et al. 2026 — Anonymity, Online Disinhibition, and Cyber Aggression: A Systematic Review and Meta-Analysis","url":"https://doi.org/10.1177/15248380261476605","use":"population-level anonymity/disinhibition associations"},
+    {"citation":"Nissenbaum & Shifman 2017 — Internet memes as contested cultural capital","url":"https://doi.org/10.1177/1461444815609313","use":"memes as subcultural knowledge, unstable equilibria and discursive weapons"},
+    {"citation":"Brady et al. 2021 — How social learning amplifies moral outrage expression in online social networks","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC8363141/","use":"social reinforcement and norm learning"}
+  ],
   "deep_discovery":"The conflict model suggests a wider project question: what happens to a human being after other people turn that human being into information? Farm produces attention; archive produces memory; crowd produces identity; information war contests identity; spiritual narrative asks whether a soul can be reduced to an imposed identity.",
-  "core_countermovement":"Harvesting people → cultivating life; possession → passage; spectacle → witness; smear → provenance; repetition → verification; burial → return; conflict → bridge; power → protection.",
+  "new_epiphany":"The opposite of information war is not silence. It is information stewardship: preserving enough structure that future observers can recover source, date, uncertainty, correction, contradiction and development rather than inheriting a frozen role-label.",
+  "core_countermovement":"Harvesting people → cultivating life; possession → passage; spectacle → witness; smear → provenance; repetition → verification; burial → return; conflict → bridge; power → protection; frozen identity → developmental chronology.",
   "required_epistemic_classes":["project-lore","self-description","documentary-record","empirical-research","theological-comparison","psychological-hypothesis","allegation","open-question","supported-conclusion"]
 }
