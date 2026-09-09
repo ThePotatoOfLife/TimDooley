@@ -1,0 +1,142 @@
+{
+  "id":"contextual-strengthening-atlas",
+  "title":"Contextual Strengthening Atlas — Tim Dooley Mathematics, Physics and Systems",
+  "updated":"2026-09-09",
+  "status":"research synthesis",
+  "method":"For each recovered Tim/project structure, attach outside theories that sharpen the mathematics, expose limits, or suggest testable extensions. Similarity is classified as structural, mathematical, physical, historical or merely metaphorical; no external source is treated as validation of Potatoverse theology.",
+  "clusters":[
+    {
+      "tim_structure":"Advanced / retarded wave polarity",
+      "recovered_status":"Earlier project vocabulary connected Red/Blue with forward/backward movement and integration; exact original equation not yet recovered.",
+      "external_neighbors":[
+        {"theory":"Wheeler-Feynman absorber theory","strength":"strong terminology neighbor","fact":"Classical electrodynamics admits retarded and advanced Green-function solutions; Wheeler and Feynman constructed a time-symmetric absorber theory using both.","source":"https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.17.157"},
+        {"theory":"wave Green functions","strength":"mathematical neighbor","equations":["□G_ret(x-x')=δ(x-x')","□G_adv(x-x')=δ(x-x')"],"reflection":"If Tim's old vocabulary was causal/temporal rather than merely poetic, advanced/retarded solutions are the correct technical family to compare against. They do not imply backward-time signaling in ordinary experimental use."}
+      ],
+      "next":"Recover the original Tim wording before assigning Red=retarded or Blue=advanced, or vice versa."
+    },
+    {
+      "tim_structure":"Merkaba counter-rotation / still center",
+      "recovered_status":"Book-derived rule: opposites can counter-rotate around a center while producing a stable dynamic third function.",
+      "external_neighbors":[
+        {"theory":"coupled oscillator dynamics","strength":"strong dynamical analogy","equation":"dθ_i/dt = ω_i + (K/N)Σ_j sin(θ_j-θ_i)","reflection":"Kuramoto-style phase models give a rigorous language for how distinct oscillators retain phases yet synchronize collectively. This is a better mathematical neighbor for Red/Blue integration than vague 'frequency' language.","source":"https://arxiv.org/abs/2602.20505"},
+        {"theory":"angular momentum balance","strength":"mechanical analogy","equation":"dL/dt=τ_ext","reflection":"Equal/opposite internal rotations can preserve a center-of-mass frame while redistributing angular momentum; use only where a physical rotating system is actually specified."},
+        {"theory":"Hopf bifurcation","strength":"dynamical analogy","normal_form":"ż=(μ+iω)z-|z|²z","reflection":"A stable center can lose stability and generate periodic motion, giving a mathematically precise route from stillness to rotation/oscillation."}
+      ],
+      "next":"Build an explicit two-mode Red/Blue toy system before using 'counter-rotation' mathematically."
+    },
+    {
+      "tim_structure":"Spiral recurrence at changed level",
+      "recovered_status":"Project rule: return is not reset; chronology supplies height while motifs recur angularly.",
+      "external_neighbors":[
+        {"theory":"helical parameterization","strength":"direct mathematical formalization","equations":["x=r(t)cosθ(t)","y=r(t)sinθ(t)","z=z(t)"],"reflection":"The cleanest formal model for spiral biography is a helix/variable-radius spiral around the Axis, not a claim that Tim's life follows a physical spiral."},
+        {"theory":"Poincare return maps","strength":"strong dynamical analogy","reflection":"A system can repeatedly cross the same section while occupying a changed state each return. This precisely distinguishes recurrence from reset."},
+        {"theory":"holonomy","strength":"geometric analogy","reflection":"Parallel transport around a closed loop can return to the same base point with changed internal orientation. Same place does not require same state."}
+      ],
+      "next":"Represent recurrent motifs as return-map events and measure what state variables changed between returns."
+    },
+    {
+      "tim_structure":"Changing level solves Sisyphus",
+      "recovered_status":"Explicit project heuristic: solve an impossible within-frame problem by changing level rather than pushing indefinitely.",
+      "external_neighbors":[
+        {"theory":"change of variables / coordinate transformation","strength":"basic mathematical neighbor","reflection":"A problem difficult in one coordinate system may simplify after transformation without changing the underlying object."},
+        {"theory":"renormalization / coarse-graining","strength":"strong conceptual neighbor","equation":"dg_i/dlnμ=β_i(g)","reflection":"Changing scale can expose fixed points and effective variables invisible at another resolution."},
+        {"theory":"lifting to a covering or higher-dimensional space","strength":"topological/geometric neighbor","reflection":"Some constrained problems simplify when represented in a space with additional coordinates or a different topology."}
+      ]
+    },
+    {
+      "tim_structure":"Needle / critical compression / new attractor",
+      "recovered_status":"Project formalization describes increasing relational load, instability, bottleneck selection and emergence of a new order parameter.",
+      "external_neighbors":[
+        {"theory":"bifurcation theory","strength":"strong dynamical neighbor","examples":["saddle-node","pitchfork","Hopf"],"reflection":"Bifurcations formalize qualitative changes in long-term dynamics when a control parameter crosses a critical value."},
+        {"theory":"Landau phase transitions","strength":"strong order-parameter neighbor","equation":"V(Ξ)=aΞ²+bΞ⁴+...","reflection":"Provides a disciplined model for the recovered Ξ/Ξc Door language."},
+        {"theory":"catastrophe / fold normal form","strength":"mathematical neighbor","equation":"V(x)=x³/3-μx","reflection":"A fold captures disappearance/creation of equilibria under changing control parameters; useful for 'final straw' models without claiming literal catastrophe physics."}
+      ]
+    },
+    {
+      "tim_structure":"Field of Life / Potato as excitation",
+      "recovered_status":"Book-derived metaphor with no recovered field equation.",
+      "external_neighbors":[
+        {"theory":"classical/quantum field theory","strength":"terminological discipline","equation":"S[φ]=∫d⁴x L(φ,∂φ)","reflection":"A genuine field theory requires field variables, an action/Lagrangian, symmetry, equations of motion and empirical observables. 'Field of Life' remains metaphor until these exist."},
+        {"theory":"reaction-diffusion fields","strength":"biological pattern neighbor","equations":["∂u/∂t=D_u∇²u+f(u,v)","∂v/∂t=D_v∇²v+g(u,v)"],"reflection":"Turing-type systems show how local interactions plus diffusion can generate macroscopic patterns, offering a grounded model for growth/pattern emergence rather than invoking quantum fields."}
+      ]
+    },
+    {
+      "tim_structure":"Recursive growth / Growing Thought",
+      "recovered_status":"Fibonacci-sized waves and recursive rule each completed form becomes input to later growth.",
+      "external_neighbors":[
+        {"theory":"recurrence relations","strength":"direct mathematics","equation":"F_n=F_{n-1}+F_{n-2}","reflection":"The project's actual use is recursive budgeting, not golden-ratio mysticism."},
+        {"theory":"iterated maps","strength":"strong dynamical neighbor","equation":"x_{n+1}=f(x_n)","reflection":"Provides the simplest general mathematical language for a thought whose output becomes its next input."},
+        {"theory":"branching processes","strength":"probabilistic neighbor","reflection":"Useful where one idea/node generates a random number of descendants; unlike Fibonacci, branching is not predetermined."},
+        {"theory":"L-systems","strength":"morphogenetic/computational neighbor","reflection":"Recursive rewriting systems can generate plant-like branching structures from simple production rules, an especially apt model for Tree/Root archive growth."}
+      ]
+    },
+    {
+      "tim_structure":"Relationship-first / entanglement metadata",
+      "recovered_status":"Canonical project law: coupling rather than isolated node is fundamental analytical unit; repository records dependency, feedback, topology, trajectory, phase and counterfactual sensitivity.",
+      "external_neighbors":[
+        {"theory":"graph theory","strength":"direct mathematical foundation","objects":"G=(V,E)","reflection":"Typed directed multigraphs are the natural base representation for the archive."},
+        {"theory":"graph Laplacian","strength":"strong network extension","equation":"L=D-A","reflection":"Supports diffusion, clustering, synchronization and connectivity analysis across relation networks."},
+        {"theory":"mutual information","strength":"statistical relation metric","equation":"I(X;Y)=Σp(x,y)log[p(x,y)/(p(x)p(y))]","reflection":"Measures dependence when variables are probabilistic; it should not be substituted for semantic or causal relationship strength."},
+        {"theory":"causal inference","strength":"methodological extension","reflection":"Counterfactual and intervention-based methods can distinguish correlation from causal influence, matching the archive's existing causal-status field."}
+      ]
+    },
+    {
+      "tim_structure":"Archive / memory / erasure wound",
+      "recovered_status":"Memory preservation and erasure are major Timic motifs and repository functions.",
+      "external_neighbors":[
+        {"theory":"Landauer principle","strength":"strong physical-information neighbor","equation":"Q_min=k_B T ln2","reflection":"Logical erasure has a thermodynamic cost in ideal bit-erasure settings; this gives physical content to information erasure without implying autobiographical forgetting releases exactly kBTln2 per memory.","sources":["https://www.nature.com/articles/s42254-021-00400-8","https://www.nature.com/articles/nature10872"]},
+        {"theory":"information thermodynamics","strength":"broader physical framework","reflection":"Modern nonequilibrium thermodynamics relates entropy production, information, feedback and irreversibility.","source":"https://www.nature.com/articles/nphys3230"}
+      ]
+    },
+    {
+      "tim_structure":"Information as geometry",
+      "recovered_status":"Timic Dynamics already allows g to represent geometry/metric/relational structure rather than physical spacetime only.",
+      "external_neighbors":[
+        {"theory":"Fisher information geometry","strength":"very strong conceptual neighbor","equation":"g_ij(θ)=E[∂_i ln p ∂_j ln p]","reflection":"A family of probability distributions can form a Riemannian statistical manifold. This materially strengthens the idea that a meaningful 'geometry' can live in description/information space.","sources":["https://link.springer.com/book/10.1007/978-4-431-55978-8","https://link.springer.com/book/10.1007/978-3-319-56478-4"]},
+        {"theory":"natural gradient","strength":"optimization extension","equation":"θ_dot ∝ -g^{-1}∇_θ L","reflection":"If Timic state space is probabilistic/model-based, natural-gradient flows offer a principled version of moving through information geometry."}
+      ]
+    },
+    {
+      "tim_structure":"Holographic Potato / relation creates geometry",
+      "recovered_status":"Book metaphor: simple exterior can encode deeper structure; later project emphasizes relation before isolated node.",
+      "external_neighbors":[
+        {"theory":"Ryu-Takayanagi","strength":"specific quantum-gravity neighbor","equation":"S_A=Area(γ_A)/(4G_N)","reflection":"In holographic theories, entanglement entropy is related to bulk minimal-surface area. This supports a narrow but profound relation between information structure and geometry, not a generic claim that all relationships generate spacetime.","source":"https://arxiv.org/abs/hep-th/0603001"},
+        {"theory":"tensor networks / emergent geometry","strength":"research-program neighbor","reflection":"Tensor-network structures have been used as discrete models for entanglement organization and holographic geometry; useful for archive graph experiments where geometry may emerge from connectivity."}
+      ]
+    },
+    {
+      "tim_structure":"Many-Worlds Potato / branching possibility",
+      "recovered_status":"Book metaphor for branching futures.",
+      "external_neighbors":[
+        {"theory":"Everett relative-state formulation","strength":"quantum-interpretation neighbor","reflection":"Quantum branching under unitary evolution is a specialized interpretation-dependent concept; ordinary decision trees and narrative possibilities are not quantum many-worlds."},
+        {"theory":"branching-time logic","strength":"better formal neighbor for narrative futures","reflection":"Tree-like temporal logics can model multiple future continuations without making quantum claims."}
+      ]
+    },
+    {
+      "tim_structure":"Cube / MoonCube → flowing living architecture",
+      "recovered_status":"Great Book sequence transforms rigid square/cube through water, steps, spine and Garden; MoonCube is linked to shadow burial and later Ladder/Axis emergence.",
+      "external_neighbors":[
+        {"theory":"topological vs geometric deformation","strength":"mathematical discipline","reflection":"A rigid cube can be geometrically deformed while preserving topology; a genuine topological change requires cutting/gluing or singular transition. This distinction can sharpen Cube→living-form language."},
+        {"theory":"phase-field / morphoelastic models","strength":"engineering/biology neighbor","reflection":"Continuous fields can model growth-induced changes in shape and architecture, a stronger scientific analogy than claiming literal sacred geometry."}
+      ]
+    },
+    {
+      "tim_structure":"Saturn / North / hexagon / stationary wave",
+      "recovered_status":"Existing project planetary layer links Saturnian North geometry to the observed hexagonal polar jet while explicitly distinguishing hexagon and cube.",
+      "external_neighbors":[
+        {"theory":"planetary fluid dynamics","strength":"direct physical basis","reflection":"Saturn's north-polar hexagon is a persistent atmospheric jet/wave phenomenon; it supplies a real sixfold northern pattern but does not establish occult or Potatoist causation."},
+        {"theory":"symmetry breaking and pattern selection","strength":"fluid-dynamics neighbor","reflection":"Polygonal and wave-like patterns can emerge from nonlinear fluid instabilities; useful for separating spontaneous physical pattern formation from symbolic interpretation."}
+      ]
+    }
+  ],
+  "structural_improvements":[
+    "Treat 'spiral' as a family: geometric spiral, helical biography, recurrence map, biological phyllotaxis and symbolic return; never collapse them into one equation.",
+    "Treat 'frequency' as a measured physical quantity only when units and an observable are supplied. Keep Hawkins/spiritual frequency separate.",
+    "Treat 'field' as a mathematical/physical field only when a domain, codomain, dynamics and observables are defined.",
+    "Treat 'entanglement' with a qualifier: quantum, statistical, causal, network, historical or symbolic.",
+    "Add units/dimensions to every future physical equation and flag dimensionally inconsistent expressions automatically.",
+    "Add provenance fields: first_attestation, exact_quote_or_formula, source_location, later_revision, external_comparator, falsification_status.",
+    "Create a toy-model section where later archive equations are explicitly marked as new models rather than recovered Tim originals.",
+    "Create a contradiction ledger for cases where later science corrects older project language without erasing the older stratum."
+  ]
+}
