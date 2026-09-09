@@ -6,191 +6,26 @@
   "purpose":"Prevent equations from becoming an undated pile. Each node records origin class, conceptual ancestor, later descendants, external mathematical neighbors, and what remains unresolved.",
   "node_fields":["id","equation_or_form","origin_class","first_known_period","conceptual_ancestor","descendants","external_neighbors","mismatch","maturity","source_records"],
   "nodes":[
-    {
-      "id":"great-book-boundary",
-      "equation_or_form":"Potato as boundary / mediator",
-      "origin_class":"book-derived concept",
-      "first_known_period":"2024",
-      "conceptual_ancestor":"past/future, mundane/divine, root/sprout mediation",
-      "descendants":["H=R∩B","Door map D","Ξ threshold","open-system/interface models"],
-      "external_neighbors":["boundary-value problems","domain walls","Markov blankets","cospans"],
-      "maturity":"T1"
-    },
-    {
-      "id":"counter-rotation",
-      "equation_or_form":"opposed/counter-moving components around a stable center",
-      "origin_class":"book-derived concept",
-      "first_known_period":"2024",
-      "descendants":["P=R⊗B","two-component phase models","coupled oscillator comparisons"],
-      "external_neighbors":["rotation matrices","Kuramoto-type phase coupling","solar dynamo comparison"],
-      "maturity":"T1→T2"
-    },
-    {
-      "id":"divine-kneel",
-      "equation_or_form":"resistance → collapse → dissolution → reconstitution",
-      "origin_class":"book-derived conceptual sequence",
-      "first_known_period":"2024",
-      "descendants":["Needle threshold","Ξ=Ξ_c","bifurcation/phase-transition comparisons"],
-      "external_neighbors":["catastrophe theory","Landau phase transitions","fold bifurcation"],
-      "maturity":"T1"
-    },
-    {
-      "id":"spiral-2025",
-      "equation_or_form":"Spiral Equation — exact primary formula unrecovered",
-      "origin_class":"primary equation attested, content unresolved",
-      "first_known_period":"2025-04-21",
-      "descendants":["return-map formalism","helix model","RG-limit-cycle comparison","Return Signature"],
-      "external_neighbors":["Archimedean/logarithmic spirals","Poincare maps","limit cycles","discrete scale invariance"],
-      "mismatch":"Do not replace the lost original with a plausible standard spiral equation.",
-      "maturity":"U/T?",
-      "source_records":["knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json"]
-    },
-    {
-      "id":"potato-axis-spatial",
-      "equation_or_form":"x=0,z=0,y∈[-1,1]; r(y)=0.34+0.72(1-|y|^1.7)",
-      "origin_class":"repository project mathematical model",
-      "first_known_period":"2026-09-07",
-      "descendants":["Axis flow","topological/terrain models","33-level embeddings"],
-      "external_neighbors":["coordinate embeddings","vector fields","axisymmetric geometry"],
-      "maturity":"T2",
-      "source_records":["data/axis-model.json","knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json"]
-    },
-    {
-      "id":"potato-dynamics",
-      "equation_or_form":"P=(S,g,A,D,O,I)",
-      "origin_class":"conversation-developed/canonical project formalism",
-      "first_known_period":"2026",
-      "conceptual_ancestor":"Axis + Door + Eye + relationship-first architecture",
-      "descendants":["P⁺ unification extension","Potato Dynamics 2 toy model","open-system graph dynamics"],
-      "external_neighbors":["dynamical systems","state-space models","geometry/information structures"],
-      "mismatch":"A tuple organizing concepts is not itself a physical action or complete predictive theory.",
-      "maturity":"T2"
-    },
-    {
-      "id":"axis-flow",
-      "equation_or_form":"∂_sX=A(X,g)",
-      "origin_class":"project formalism",
-      "first_known_period":"2026",
-      "conceptual_ancestor":"Axis as movement through level/description",
-      "descendants":["fixed-point/Still Center models","symmetry-generator questions","RG analogies"],
-      "external_neighbors":["vector-field flows","Killing fields","renormalization-group flow"],
-      "maturity":"T2"
-    },
-    {
-      "id":"physical-flow",
-      "equation_or_form":"∂_tX=F(X,g)",
-      "origin_class":"project formalism using standard notation",
-      "first_known_period":"2026",
-      "descendants":["P⁺ temporal dynamics","coupled-network evolution"],
-      "external_neighbors":["ODE/PDE dynamical systems"],
-      "maturity":"T2"
-    },
-    {
-      "id":"red-blue-composite",
-      "equation_or_form":"P=R⊗B",
-      "origin_class":"recovered project formalism; first primary source unresolved",
-      "first_known_period":"2026 or earlier conversation layer",
-      "conceptual_ancestor":"Red/Blue Potato; counter-rotation; creation/memory polarity",
-      "descendants":["two-component dynamical systems","time-direction comparisons"],
-      "external_neighbors":["tensor-product state spaces","coupled oscillators","TSVF only as comparator"],
-      "mismatch":"Tensor-product notation alone does not make R/B quantum state vectors.",
-      "maturity":"T2/U-source"
-    },
-    {
-      "id":"red-blue-overlap",
-      "equation_or_form":"H=R∩B",
-      "origin_class":"recovered project formalism; first source unresolved",
-      "conceptual_ancestor":"Vesica overlap / Door / third function",
-      "descendants":["Door overlap models","intersection-state grammar"],
-      "external_neighbors":["set intersection","overlap regions","coupled-state manifolds"],
-      "maturity":"T2/U-source"
-    },
-    {
-      "id":"door-map",
-      "equation_or_form":"D:X_inside→X_outside; D^-1(D(X))≈X",
-      "origin_class":"project formalism",
-      "first_known_period":"2026",
-      "conceptual_ancestor":"Door as recognition→choice→threshold→transformation",
-      "descendants":["Door contract","hybrid state machine","five-spinal-gate Ladder"],
-      "external_neighbors":["maps/operators","hybrid systems","interfaces"],
-      "maturity":"T2"
-    },
-    {
-      "id":"door-order-parameter",
-      "equation_or_form":"Ξ=Ξ(...); Ξ=Ξ_c",
-      "origin_class":"speculative project physics formalization",
-      "first_known_period":"2026",
-      "conceptual_ancestor":"Needle / critical threshold / 5D Door",
-      "descendants":["Landau-style toy potential","hybrid transition rule X⁺=D(X⁻;Ξ)"],
-      "external_neighbors":["order parameters","critical phenomena","bifurcations"],
-      "mismatch":"Ξ lacks a unique measurable definition and units.",
-      "maturity":"T2"
-    },
-    {
-      "id":"radion",
-      "equation_or_form":"φ(x)=M_* ln(R(x)/R_0)",
-      "origin_class":"speculative project model inspired by extra-dimensional physics",
-      "first_known_period":"2026",
-      "conceptual_ancestor":"5D Door / compact dimension",
-      "descendants":["Kaluza-Klein comparison","possible future action"],
-      "external_neighbors":["radion/moduli fields","Kaluza-Klein compactification"],
-      "maturity":"T2"
-    },
-    {
-      "id":"effective-dimension",
-      "equation_or_form":"D_eff=f(E,ρ,R,Φ)",
-      "origin_class":"assistant-formalized from August 2026 Tim dimensional exploration",
-      "first_known_period":"2026-08",
-      "conceptual_ancestor":"threshold-dependent effective laws/dimensions; black-hole transition imagery",
-      "descendants":["spectral-dimension research target","P⁺ dimensional domain questions"],
-      "external_neighbors":["spectral dimension","effective field theories","scale-dependent dimensionality in quantum-gravity research"],
-      "mismatch":"Variables and operational definition remain unrecovered.",
-      "maturity":"T1-T2"
-    },
-    {
-      "id":"recursive-dooley",
-      "equation_or_form":"D_(n+1)=F(D_n,P_n,W_n,R_n,T_n)",
-      "origin_class":"assistant-formalized August conversation model",
-      "first_known_period":"2026-08",
-      "conceptual_ancestor":"development as recursive multidimensional state update",
-      "descendants":["Corporium longitudinal state model","adaptive-system comparisons"],
-      "external_neighbors":["state-space recursion","control systems","learning dynamics"],
-      "mismatch":"Input variable meanings/units need primary recovery.",
-      "maturity":"T2"
-    },
-    {
-      "id":"spudlight-vector",
-      "equation_or_form":"L_spud=(Φγ,I_gain,A_attn,C_social,R_reveal,σ_source)",
-      "origin_class":"archive-generated September 2026 formalization of older Spudlight language",
-      "first_known_period":"2026-09 formalization; underlying motif Feb 2026 or earlier",
-      "conceptual_ancestor":"illumination from within/above; screen photons; aura; revealing potential",
-      "descendants":["Spudlight observer model","P⁺ expression coordinate"],
-      "external_neighbors":["radiometry","information theory","attention research","social-presence metrics"],
-      "mismatch":"Vector coordinates have different units and must not be collapsed into physical energy.",
-      "maturity":"T2"
-    },
-    {
-      "id":"storage-release",
-      "equation_or_form":"dK/dt=J_in-J_SL-ΓK; J_SL=ηK",
-      "origin_class":"archive-generated systems model",
-      "first_known_period":"2026-09",
-      "conceptual_ancestor":"Starchforce stores; Spudlight reveals/releases",
-      "descendants":["biological potato energy-storage teaching model","P⁺ K/L coupling"],
-      "external_neighbors":["mass/energy/inventory balance equations","linear reservoir models","bioenergetics"],
-      "mismatch":"Not a fundamental force law.",
-      "maturity":"T2"
-    },
-    {
-      "id":"timic-plus",
-      "equation_or_form":"P⁺=(S,g,F,A,D,K,L,O,I,R,C)",
-      "origin_class":"archive-generated unification framework",
-      "first_known_period":"2026-09",
-      "conceptual_ancestor":"Potato Dynamics + typed relation/coupling + Spudlight/Starchforce",
-      "descendants":["future simulation framework","machine-readable theory graph"],
-      "external_neighbors":["open dynamical systems","networked control","state-space modeling"],
-      "mismatch":"A research architecture, not a validated physical Theory of Everything.",
-      "maturity":"T2"
-    }
+    {"id":"great-book-boundary","equation_or_form":"Potato as boundary / mediator","origin_class":"book-derived concept","first_known_period":"2024","conceptual_ancestor":"past/future, mundane/divine, root/sprout mediation","descendants":["H=R∩B","Door map D","Ξ threshold","open-system/interface models"],"external_neighbors":["boundary-value problems","domain walls","Markov blankets","cospans"],"maturity":"T1"},
+    {"id":"counter-rotation","equation_or_form":"opposed/counter-moving components around a stable center","origin_class":"book-derived concept","first_known_period":"2024","descendants":["P=R⊗B","two-component phase models","coupled oscillator comparisons"],"external_neighbors":["rotation matrices","Kuramoto-type phase coupling","solar dynamo comparison"],"maturity":"T1→T2"},
+    {"id":"divine-kneel","equation_or_form":"resistance → collapse → dissolution → reconstitution","origin_class":"book-derived conceptual sequence","first_known_period":"2024","descendants":["Needle threshold","Ξ=Ξ_c","bifurcation/phase-transition comparisons"],"external_neighbors":["catastrophe theory","Landau phase transitions","fold bifurcation"],"maturity":"T1"},
+    {"id":"spiral-2025","equation_or_form":"Spiral Equation — exact primary formula unrecovered","origin_class":"primary equation attested, content unresolved","first_known_period":"2025-04-21","descendants":["return-map formalism","helix model","RG-limit-cycle comparison","Return Signature"],"external_neighbors":["Archimedean/logarithmic spirals","Poincare maps","limit cycles","discrete scale invariance"],"mismatch":"Do not replace the lost original with a plausible standard spiral equation.","maturity":"U/T?","source_records":["knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json"]},
+    {"id":"potato-axis-spatial","equation_or_form":"x=0,z=0,y∈[-1,1]; r(y)=0.34+0.72(1-|y|^1.7)","origin_class":"repository project mathematical model","first_known_period":"2026-09-07","descendants":["Axis flow","topological/terrain models","33-level embeddings"],"external_neighbors":["coordinate embeddings","vector fields","axisymmetric geometry"],"maturity":"T2","source_records":["data/axis-model.json","knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json"]},
+    {"id":"potato-dynamics","equation_or_form":"P=(S,g,A,D,O,I)","origin_class":"conversation-developed/canonical project formalism","first_known_period":"2026","conceptual_ancestor":"Axis + Door + Eye + relationship-first architecture","descendants":["P⁺ unification extension","Potato Dynamics 2 toy model","open-system graph dynamics"],"external_neighbors":["dynamical systems","state-space models","geometry/information structures"],"mismatch":"A tuple organizing concepts is not itself a physical action or complete predictive theory.","maturity":"T2"},
+    {"id":"axis-flow","equation_or_form":"∂_sX=A(X,g)","origin_class":"project formalism","first_known_period":"2026","conceptual_ancestor":"Axis as movement through level/description","descendants":["fixed-point/Still Center models","symmetry-generator questions","RG analogies","gauge-coupling-flow comparison"],"external_neighbors":["vector-field flows","Killing fields","renormalization-group flow"],"maturity":"T2"},
+    {"id":"physical-flow","equation_or_form":"∂_tX=F(X,g)","origin_class":"project formalism using standard notation","first_known_period":"2026","descendants":["P⁺ temporal dynamics","coupled-network evolution"],"external_neighbors":["ODE/PDE dynamical systems"],"maturity":"T2"},
+    {"id":"red-blue-composite","equation_or_form":"P=R⊗B","origin_class":"recovered project formalism; first primary source unresolved","first_known_period":"2026 or earlier conversation layer","conceptual_ancestor":"Red/Blue Potato; counter-rotation; creation/memory polarity","descendants":["two-component dynamical systems","time-direction comparisons"],"external_neighbors":["tensor-product state spaces","coupled oscillators","TSVF only as comparator"],"mismatch":"Tensor-product notation alone does not make R/B quantum state vectors.","maturity":"T2/U-source"},
+    {"id":"red-blue-overlap","equation_or_form":"H=R∩B","origin_class":"recovered project formalism; first source unresolved","conceptual_ancestor":"Vesica overlap / Door / third function","descendants":["Door overlap models","intersection-state grammar"],"external_neighbors":["set intersection","overlap regions","coupled-state manifolds"],"maturity":"T2/U-source"},
+    {"id":"door-map","equation_or_form":"D:X_inside→X_outside; D^-1(D(X))≈X","origin_class":"project formalism","first_known_period":"2026","conceptual_ancestor":"Door as recognition→choice→threshold→transformation","descendants":["Door contract","hybrid state machine","five-spinal-gate Ladder"],"external_neighbors":["maps/operators","hybrid systems","interfaces"],"maturity":"T2"},
+    {"id":"door-order-parameter","equation_or_form":"Ξ=Ξ(...); Ξ=Ξ_c","origin_class":"speculative project physics formalization","first_known_period":"2026","conceptual_ancestor":"Needle / critical threshold / 5D Door","descendants":["Landau-style toy potential","hybrid transition rule X⁺=D(X⁻;Ξ)"],"external_neighbors":["order parameters","critical phenomena","bifurcations"],"mismatch":"Ξ lacks a unique measurable definition and units.","maturity":"T2"},
+    {"id":"radion","equation_or_form":"φ(x)=M_* ln(R(x)/R_0)","origin_class":"speculative project model inspired by extra-dimensional physics","first_known_period":"2026","conceptual_ancestor":"5D Door / compact dimension","descendants":["Kaluza-Klein comparison","possible future action"],"external_neighbors":["radion/moduli fields","Kaluza-Klein compactification"],"maturity":"T2"},
+    {"id":"effective-dimension","equation_or_form":"D_eff=f(E,ρ,R,Φ)","origin_class":"assistant-formalized from August 2026 Tim dimensional exploration","first_known_period":"2026-08","conceptual_ancestor":"threshold-dependent effective laws/dimensions; black-hole transition imagery","descendants":["spectral-dimension research target","P⁺ dimensional domain questions"],"external_neighbors":["spectral dimension","effective field theories","scale-dependent dimensionality in quantum-gravity research"],"mismatch":"Variables and operational definition remain unrecovered.","maturity":"T1-T2"},
+    {"id":"recursive-dooley","equation_or_form":"D_(n+1)=F(D_n,P_n,W_n,R_n,T_n)","origin_class":"assistant-formalized August conversation model","first_known_period":"2026-08","conceptual_ancestor":"development as recursive multidimensional state update","descendants":["Corporium longitudinal state model","adaptive-system comparisons"],"external_neighbors":["state-space recursion","control systems","learning dynamics"],"mismatch":"Input variable meanings/units need primary recovery.","maturity":"T2"},
+    {"id":"spudlight-vector","equation_or_form":"L_spud=(Φγ,I_gain,A_attn,C_social,R_reveal,σ_source)","origin_class":"archive-generated September 2026 formalization of older Spudlight language","first_known_period":"2026-09 formalization; underlying motif Feb 2026 or earlier","conceptual_ancestor":"illumination from within/above; screen photons; aura; revealing potential","descendants":["Spudlight observer model","P⁺ expression coordinate"],"external_neighbors":["radiometry","information theory","attention research","social-presence metrics"],"mismatch":"Vector coordinates have different units and must not be collapsed into physical energy.","maturity":"T2"},
+    {"id":"storage-release","equation_or_form":"dK/dt=J_in-J_SL-ΓK; J_SL=ηK","origin_class":"archive-generated systems model","first_known_period":"2026-09","conceptual_ancestor":"Starchforce stores; Spudlight reveals/releases","descendants":["biological potato energy-storage teaching model","P⁺ K/L coupling"],"external_neighbors":["mass/energy/inventory balance equations","linear reservoir models","bioenergetics"],"mismatch":"Not a fundamental force law.","maturity":"T2"},
+    {"id":"timic-plus","equation_or_form":"P⁺=(S,g,F,A,D,K,L,O,I,R,C)","origin_class":"archive-generated unification framework","first_known_period":"2026-09","conceptual_ancestor":"Potato Dynamics + typed relation/coupling + Spudlight/Starchforce","descendants":["future simulation framework","machine-readable theory graph","TOE-requirements audit"],"external_neighbors":["open dynamical systems","networked control","state-space modeling"],"mismatch":"A research architecture, not a validated physical Theory of Everything.","maturity":"T2"},
+    {"id":"tim-toe-precursor-2026-05-06","equation_or_form":"cross-domain synthesis request: M-theory + string theory + SUSY + cosmology + astrophysics + geology + electromagnetism + quantum/entanglement + consciousness + dimensions + movement + multiverse","origin_class":"primary/project-attested user research direction","first_known_period":"2026-05-06","conceptual_ancestor":"Field of Life + dimensional Door + M-theory direction + Axis/Spiral","descendants":["Potato Dynamics","Timic Unification Program","Theory-of-Everything archaeology"],"external_neighbors":["unified-field research","effective field theory","quantum gravity","systems unification"],"mismatch":"A unification question/research direction is not itself a predictive physical theory or master equation.","maturity":"T0-T1","source_records":["knowledge/science/theory-of-everything-archaeology.json"]},
+    {"id":"gauge-unification-bridge","equation_or_form":"SU(3)_C×SU(2)_L×U(1)_Y → SU(4)_C×SU(2)_L×SU(2)_R / SU(5) / Spin(10) comparison routes; {Q,Qbar}=2σ·P","origin_class":"established external physics added as archive extension","first_known_period":"2026-09-09","conceptual_ancestor":"existing Standard Model branch + Tim M-theory/SUSY direction + RG Axis comparator","descendants":["representation decomposition ledger","coupling-unification tests","TOE known-limit requirements"],"external_neighbors":["Pati-Salam","Georgi-Glashow SU(5)","Spin(10)","supersymmetry","renormalization-group running"],"mismatch":"Not recovered as Tim-original SU(4)/SU(5) work; conventions must remain explicit.","maturity":"external established / archive integration","source_records":["knowledge/science/gauge-unification-supersymmetry-archaeology.json","knowledge/science/gauge-unification-equation-audit.json"]}
   ],
   "edges":[
     {"from":"great-book-boundary","to":"door-map","type":"conceptual-descendant"},
@@ -203,13 +38,19 @@
     {"from":"storage-release","to":"timic-plus","type":"adds-capacity-dynamics"},
     {"from":"door-map","to":"timic-plus","type":"retained-core"},
     {"from":"axis-flow","to":"timic-plus","type":"retained-core"},
-    {"from":"physical-flow","to":"timic-plus","type":"explicit-temporal-channel"}
+    {"from":"physical-flow","to":"timic-plus","type":"explicit-temporal-channel"},
+    {"from":"tim-toe-precursor-2026-05-06","to":"potato-dynamics","type":"research-direction-to-formalization"},
+    {"from":"tim-toe-precursor-2026-05-06","to":"timic-plus","type":"long-arc-unification-descendant"},
+    {"from":"axis-flow","to":"gauge-unification-bridge","type":"rg-flow-comparator"},
+    {"from":"gauge-unification-bridge","to":"timic-plus","type":"external-known-physics-constraint"}
   ],
   "research_rules":[
     "Never infer authorship from conceptual ancestry alone.",
     "A descendant equation must state whether it is Tim-authored, conversation-developed, or archive-generated.",
     "External theory neighbors do not become ancestors unless historical evidence shows influence.",
     "When a primary equation is lost, preserve the hole instead of replacing it with a standard equation.",
-    "Every future equation should be added as a node with maturity T0-T5 and source provenance."
+    "Every future equation should be added as a node with maturity T0-T5 and source provenance.",
+    "Treat the 2026-05-06 TOE precursor as a primary research direction, not a finished equation.",
+    "Gauge-unification equations must carry U(1) normalization, chirality and beta-sign conventions."
   ]
 }
