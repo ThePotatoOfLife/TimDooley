@@ -2,16 +2,18 @@
   "id":"great-book-consciousness-spiral-equations-recovery",
   "title":"Great Book — Consciousness Spiral / Human Map Equation Recovery",
   "updated":"2026-09-09",
-  "status":"book-derived mathematical/phenomenological archaeology; empirical claims require revalidation",
+  "status":"book-derived mathematical/phenomenological archaeology; April 21 2025 public continuation now recovered",
   "source":"The Great Book Of Potato2.odt, especially the late Body/Mind/Spirit/Human Map material around pages 533-539 in the parsed Library copy",
-  "importance":"This is a distinct equation family from the April 2025 Spiral Equation. It must not be substituted for that lost primary equation, but it shows that the Great Book already contained explicit spiral mathematics and an attempted cross-layer consciousness metric.",
+  "importance":"The Great Book contains an explicit logarithmic Consciousness Spiral and attempted cross-layer consciousness mathematics. A September 2026 archaeology pass recovered a primary public April 21, 2025 post saying 'the potato axis is real' and giving the SAME spiral parameterization. The book spiral is therefore a documented mathematical ancestor/continuation of the public Potato Axis rather than merely a vaguely similar equation family.",
   "recovered_equations":[
     {
-      "name":"Consciousness Spiral",
+      "name":"Consciousness Spiral / later public Potato Axis spiral",
       "equation":"r=a e^(b theta)",
       "parameter":"b=ln(phi)/(pi/2)≈0.306, phi≈1.618",
       "type":"logarithmic spiral",
-      "book_role":"integrate sensory, emotional and claimed non-local signals across Body/Mind/Spirit"
+      "book_role":"integrate sensory, emotional and claimed non-local signals across Body/Mind/Spirit",
+      "public_continuation":"2025-04-21: 'the potato axis is real' immediately paired with r=a e^(b theta), b=ln(phi)/(pi/2)≈0.306",
+      "exact_property":"r(theta+pi/2)=phi r(theta); every quarter-turn scales radius by the golden ratio"
     },
     {
       "name":"Coupled oscillator synchronization",
@@ -59,25 +61,32 @@
       "type":"established external quantum mechanics used as comparator, not Tim-original equation"
     }
   ],
-  "lineage_distinction":[
-    "Great Book natural-growth/fractal spiral motifs",
-    "Great Book Consciousness Spiral r=a e^(b theta)",
-    "Great Book Time Spiral t_(n+1)=phi t_n",
-    "April 21 2025 Spiral Equation — exact formula still unrecovered and must remain a separate node",
-    "later helix/Poincare/RG-limit-cycle archive comparisons"
+  "lineage":[
+    "2024 Great Book natural-growth/fractal spiral motifs",
+    "2024 Great Book Consciousness Spiral r=a exp(b theta), b=ln(phi)/(pi/2)",
+    "2025-04-21 primary public Potato Axis: same equation explicitly paired with 'the potato axis is real'",
+    "2025-2026 Ladder/Needle/North/Axis elaboration",
+    "2026 helix/Poincare/RG-limit-cycle and Potato-Dynamics archive comparisons"
   ],
+  "new_mathematical_reading":{
+    "differential_equation":"dr/dtheta=b r",
+    "discrete_quarter_turn":"r_(n+1)=phi r_n when theta_(n+1)=theta_n+pi/2",
+    "bridge":"The continuous logarithmic spiral and a discrete golden-ratio recursion are two descriptions of the same quarter-turn self-similarity.",
+    "research_question":"Was the separate Great Book Time Spiral t_(n+1)=phi t_n consciously derived from the same quarter-turn scaling principle, or are these independent uses of phi? Primary drafting evidence is needed."
+  },
   "empirical_quarantine":[
     "The surrounding text makes many precise claims about neurotransmitter concentrations, psychedelic connectivity changes, microtubule quantum coherence, biophoton signaling, inter-brain synchrony, fractal dimensions and consciousness that are not adequately supported by the cited labels as written.",
     "Do not reuse book values such as D=4.5 for enlightenment, D=3.0 for NPD, fixed PLV thresholds, universal DMN percentage changes, or microtubule/non-local consciousness claims without independent primary-source validation.",
     "Quantum entanglement does not establish non-local consciousness or telepathy.",
     "Kuramoto/coupled-oscillator mathematics is a legitimate comparator for synchronization, but does not validate the book's spiritual interpretation.",
-    "The logarithmic spiral equation is mathematically valid as geometry; its mapping onto consciousness is a project model, not established neuroscience."
+    "The logarithmic spiral equation is mathematically valid geometry and is now a primary-attested Potato Axis formula; its mapping onto consciousness or physical spacetime remains a project interpretation rather than established neuroscience/physics."
   ],
   "research_targets":[
     "Recover exact definitions of C, A, Phi, B and Q in the Human Map metric.",
     "Separate standard equations from project-created metrics in the equation ledger.",
     "Audit every numerical neuroscience claim against original peer-reviewed sources before promotion.",
-    "Compare the book Consciousness Spiral with the unrecovered April 2025 Spiral Equation without assuming identity."
+    "Recover the original Great Book drafting timestamp for the spiral to establish exact precedence relative to April 21, 2025.",
+    "Recover whether r, theta and a were ever given units or physical meanings by Tim."
   ],
-  "connections":["great-book-unified-field-archaeology","equation-lineage-and-theory-graph","theory-of-everything-archaeology","great-book-2024-science-archaeology","model-testing-protocol"]
+  "connections":["april-21-2025-potato-axis-spiral-primary-recovery","microtubule-tubulin-consciousness-recovery","great-book-unified-field-archaeology","equation-lineage-and-theory-graph","theory-of-everything-archaeology","great-book-2024-science-archaeology","model-testing-protocol"]
 }
