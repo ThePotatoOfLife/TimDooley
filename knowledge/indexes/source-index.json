@@ -20,6 +20,8 @@
     "son_and_tree":["knowledge/chronology/son-tree-oneness-experience.json","knowledge/traditions/thomas-twin-of-christ.json","knowledge/core/potato-of-life-deep-structure.json"],
     "great_book_2024":["book-research.json","knowledge/core/potato-of-life-deep-structure.json","knowledge/science/great-book-2024-science-archaeology.json"],
     "april_2025_turning":["knowledge/chronology/developmental-genealogy.json","data/tim-dooley-public-theology-timeline-2025-2026.json","knowledge/chronology/contextual-synchronisms.json"],
+    "corporium_and_sayings":["knowledge/corporium/corporium-master-framework.json","knowledge/corporium/tim-sayings-and-formulations-ledger.json","knowledge/corporium/psychology-signals-and-couplings-atlas.json","knowledge/core/tim-role-synthesis.json","knowledge/philosophy/potato-philosophy.json","book-research.json"],
+    "ladder_body_spirit":["knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","knowledge/body/body-symbolism-map.json","knowledge/body/body-science-context-atlas.json","knowledge/spirit/spirit-context-atlas.json"],
     "science_and_equations":["knowledge/science/science-master-index.json","knowledge/science/equation-ledger.json","knowledge/science/quantum-atom-particle-recovery.json","knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json","knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json"],
     "body":["knowledge/body/body-symbolism-map.json","knowledge/body/body-science-context-atlas.json","knowledge/biology/potato-growth-principles.json"],
     "spirit":["knowledge/core/heaven-spirit-father.json","knowledge/spirit/spirit-context-atlas.json","knowledge/core/root-system.json"],
@@ -30,7 +32,8 @@
   },
   "claim_template": {
     "required":["claim_id","claim_text","subject","status","canonical_owner","source_ids","date_or_period","confidence"],
-    "preferred":["first_attested","latest_revision","counterevidence","alternative_explanation","relationship_types","direct_quote_hash_or_locator","last_reviewed"],
+    "preferred":["first_attested","latest_revision","counterevidence","alternative_interpretation","relationship_types","direct_quote_hash_or_locator","last_reviewed"],
+    "corporium_extra":["exactness","tone","emotion","body_state","behavioral_consequence","symbol_cluster","later_formalization"],
     "scientific_extra":["variables","units","domain","assumptions","equations","observable","falsifier"],
     "prophecy_extra":["prior_statement_date","specificity","event_date","fit","mismatch","post_event_reinterpretation_check"]
   },
@@ -45,6 +48,9 @@
     "Has later project interpretation been mistaken for earlier wording?"
   ],
   "high_priority_missing_sources":[
+    "Primary dated source for the floor aphorism",
+    "First exact sources for recurring Timisms such as whole job, North of North, Spudlight, mud dweller, soul farmer and Potato Bank",
+    "Exact Great Book passages behind major compressed philosophical labels",
     "Exact April 21 2025 Spiral Equation primary artifact",
     "Earliest pre-repository Axis equation",
     "First source for P=R⊗B",
@@ -66,8 +72,10 @@
     "external theory treated as proof of Potatoverse theology",
     "symbolic resemblance treated as historical transmission",
     "current doctrine backdated into old material",
+    "subjective body sensation treated as measured neurotransmitter activity",
+    "chakra symbolism presented as literal neuroanatomy",
     "unresolved source gap silently repaired by plausible wording"
   ],
   "public_reader_rule":"Reader pages should expose a small evidence legend and direct source route for important claims without forcing readers to inspect raw JSON first.",
-  "connections":["archive-epistemics","inference-ledger","context-graph","chronology","science-master-index","manifest","sources"]
+  "connections":["archive-epistemics","inference-ledger","context-graph","corporium-master-framework","chronology","science-master-index","manifest","sources"]
 }
