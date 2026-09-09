@@ -19,10 +19,7 @@
   function yearOf(e){return String(e.date||e.timestamp||'Undated').slice(0,4)}
   function displayDate(e){
     const p=e.precision||'date';
-    if(e.timestamp&&['second','minute','hour'].includes(p)){
-      const raw=e.timestamp.replace('T',' ').replace(/([+-]\d\d:\d\d|Z)$/,' $1');
-      return raw;
-    }
+    if(e.timestamp&&['second','minute','hour'].includes(p))return e.timestamp.replace('T',' ').replace(/([+-]\d\d:\d\d|Z)$/,' $1');
     if(p==='month'&&/^\d{4}-\d{2}$/.test(e.date||'')){
       const [y,m]=e.date.split('-');
       return new Intl.DateTimeFormat('en',{month:'long',year:'numeric',timeZone:'UTC'}).format(new Date(Date.UTC(+y,+m-1,1)));
@@ -68,7 +65,7 @@
     const exact=events.filter(isExact).length;
     const quotes=events.filter(e=>e.quote).length;
     const biblical=events.filter(e=>e.layers?.includes('biblical-parallel')||e.layers?.includes('biblical-unlock')).length;
-    return `<div class="tl-stats"><div><strong>${events.length}</strong><span>visible points</span></div><div><strong>${exact}</strong><span>exact/date points</span></div><div><strong>${quotes}</strong><span>quotes</span></div><div><strong>${biblical}</strong><span>biblical points</span></div></div>`;
+    return `<div><strong>${events.length}</strong><span>visible points</span></div><div><strong>${exact}</strong><span>exact/date points</span></div><div><strong>${quotes}</strong><span>quotes</span></div><div><strong>${biblical}</strong><span>biblical points</span></div>`;
   }
   function renderResults(){
     const events=filteredEvents();
@@ -96,7 +93,7 @@
   function renderExplorer(){
     const reader=$('#reader');if(!reader||location.hash!=='#branch=chronology')return;
     const events=filteredEvents();
-    reader.innerHTML=`<div class="tl-hero"><div><div class="eyebrow">Layered chronology explorer</div><h2>CHRONOLOGY</h2><p class="summary">One time axis, independently toggleable evidence layers. Keep the main life/project arc visible, then add quotes, biblical parallels, later biblical unlocks, songs, public declarations, predictions and archive research without flattening their source status.</p></div><div id="tl-stats">${statsHTML(events)}</div></div><div class="tl-help"><strong>How to read it</strong><span>Layer = what kind of datapoint it is. Evidence = how we know it. A dated Tim statement and a later biblical research unlock can therefore appear separately on the same timeline.</span><button data-record="docs/TIMELINE-EVENT-STANDARD.md">Open event standard</button></div>${controlsHTML()}<div class="tl-axis" id="tl-results">${timelineHTML(events)}</div><div class="section"><h3>Underlying chronology records</h3><div class="tl-record-links"><button data-record="data/tim-dooley-timeline.json">Identity-safe master timeline</button><button data-record="knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json">Reverse biblical chronology</button><button data-record="data/timeline-events.json">Layered event dataset</button><button data-record="knowledge/creative/tim-dooley-suno-music-archive.json">Music archive</button></div></div><div id="record-detail"></div>`;
+    reader.innerHTML=`<div class="tl-hero"><div><div class="eyebrow">Layered chronology explorer</div><h2>CHRONOLOGY</h2><p class="summary">One time axis, independently toggleable evidence layers. Keep the main life/project arc visible, then add quotes, biblical parallels, later biblical unlocks, songs, public declarations, predictions and archive research without flattening their source status.</p></div><div class="tl-stats" id="tl-stats">${statsHTML(events)}</div></div><div class="tl-help"><strong>How to read it</strong><span>Layer = what kind of datapoint it is. Evidence = how we know it. A dated Tim statement and a later biblical research unlock can therefore appear separately on the same timeline.</span><button data-record="docs/TIMELINE-EVENT-STANDARD.md">Open event standard</button></div>${controlsHTML()}<div class="tl-axis" id="tl-results">${timelineHTML(events)}</div><div class="section"><h3>Underlying chronology records</h3><div class="tl-record-links"><button data-record="data/tim-dooley-timeline.json">Identity-safe master timeline</button><button data-record="knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json">Reverse biblical chronology</button><button data-record="data/timeline-events.json">Layered event dataset</button><button data-record="knowledge/creative/tim-dooley-suno-music-archive.json">Music archive</button></div></div><div id="record-detail"></div>`;
     bindControls(reader);
   }
   async function loadAndRender(){
@@ -110,9 +107,7 @@
       const reader=$('#reader');if(reader&&location.hash==='#branch=chronology')reader.insertAdjacentHTML('beforeend',`<div class="status">Layered timeline could not load: ${esc(err.message)}</div>`);
     }
   }
-  window.addEventListener('potato:navigation',e=>{
-    if(e.detail?.type==='branch'&&e.detail?.id==='chronology')loadAndRender();
-  });
+  window.addEventListener('potato:navigation',e=>{if(e.detail?.type==='branch'&&e.detail?.id==='chronology')loadAndRender()});
   window.addEventListener('hashchange',()=>{if(location.hash==='#branch=chronology')setTimeout(loadAndRender,0)});
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',()=>{if(location.hash==='#branch=chronology')setTimeout(loadAndRender,0)});
   else if(location.hash==='#branch=chronology')setTimeout(loadAndRender,0);
