@@ -8,6 +8,8 @@
   "properties":{
     "id":{"type":"string","pattern":"^evt-[a-zA-Z0-9][a-zA-Z0-9._-]*$"},
     "date":{"type":"string","minLength":4},
+    "date_start":{"type":"string"},
+    "date_end":{"type":"string"},
     "timestamp":{"type":"string"},
     "precision":{"type":"string","enum":["second","minute","hour","date","month","year","range"]},
     "title":{"type":"string","minLength":1},
@@ -20,6 +22,8 @@
     "motifs":{"type":"array","items":{"type":"string"}},
     "comparators":{"type":"array","items":{"type":"string"}},
     "source_records":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "occurrence_ids":{"type":"array","uniqueItems":true,"items":{"type":"string","minLength":1}},
+    "capture_source":{"type":"string"},
     "source_direction":{"type":"string"},
     "bible_relation":{"type":"string","enum":["explicit-at-time","explicit-context-at-time","explicit-symbolic-at-time","explicit-Christian-vocabulary-at-time","later-parallel","mixed-explicit-and-later","mixed-explicit-scriptural-vocabulary"]},
     "status":{"type":"string"},
