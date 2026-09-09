@@ -155,7 +155,8 @@ def render_catalog_page(records: list[dict]) -> str:
         '<title>Complete Science Catalog — Tim Dooley / Potato of Life</title>'
         '<meta name="description" content="Generated catalog of all canonical Tim Dooley / Potato of Life science records, with abstracts, equations, provenance and findings.">'
         '<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/catalog/">'
-        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910b"></head>'
+        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910b">'
+        '<link rel="stylesheet" href="../science-hub.css?v=20260910b"></head>'
         '<body><main class="science-page"><nav class="topnav"><a href="../">← Science Atlas</a><a href="../../">Home</a></nav>'
         '<header class="section-block"><p class="section-kicker">Generated from knowledge/science</p><h1>COMPLETE SCIENCE CATALOG</h1>'
         f'<p class="hero-lede">{len(records)} canonical science records. The JSON records remain the source of truth; this page is a generated reading view.</p></header>'
@@ -171,7 +172,35 @@ def patch_science_page(cards: str, count: int) -> None:
         raise SystemExit(f"{MARKER} missing from science/index.html")
     text = text.replace(MARKER, cards, 1)
     text = text.replace('data-science-record-count="0"', f'data-science-record-count="{count}"')
+    if "science-hub.css" not in text:
+        text = text.replace("</head>", '  <link rel="stylesheet" href="./science-hub.css?v=20260910b">\n</head>', 1)
     SCIENCE_PAGE.write_text(text, encoding="utf-8")
+
+
+def patch_legacy_readers() -> None:
+    replacements = {
+        OUT / "research-map" / "index.html": [
+            (
+                'the exact Spiral formula remains unrecovered.',
+                'the exact Spiral formula is now recovered: r=a exp(bθ), with b=ln(φ)/(π/2)≈0.30635; a quarter-turn scales radius by φ.'
+            ),
+            ('<li>Exact April 21, 2025 Spiral Equation.</li>', '<li>Earliest primary variable meanings for a, r and θ in the recovered April 21, 2025 Spiral Equation.</li>'),
+        ],
+        OUT / "axis-11d-sun-spiral" / "index.html": [
+            (
+                'This is a genuine Sun + rotation + outward-flow + Spiral system. It is an external physics neighbor, not the missing April 2025 Spiral Equation.',
+                'This is a genuine Sun + rotation + outward-flow + Spiral system. It is an external physics neighbor to the now-recovered April 2025 Potato Axis logarithmic spiral, not the same physical model.'
+            ),
+            ('<li>Exact April 21, 2025 Spiral Equation.</li>', '<li>Earliest primary variable meanings for a, r and θ in the recovered April 21, 2025 Spiral Equation.</li>'),
+        ],
+    }
+    for path, pairs in replacements.items():
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8")
+        for old, new in pairs:
+            text = text.replace(old, new)
+        path.write_text(text, encoding="utf-8")
 
 
 def main() -> None:
@@ -187,6 +216,7 @@ def main() -> None:
     CATALOG_PAGE.parent.mkdir(parents=True, exist_ok=True)
     CATALOG_PAGE.write_text(render_catalog_page(records), encoding="utf-8")
     patch_science_page(render_cards(records, "../knowledge/science/"), len(records))
+    patch_legacy_readers()
     print(f"Built science catalog: {len(records)} records")
 
 
