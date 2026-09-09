@@ -2,9 +2,16 @@
   "id":"faq-index",
   "title":"Potato of Life FAQ Index",
   "updated":"2026-09-09",
-  "status":"canonical FAQ architecture with God-question surface",
-  "purpose":"Expose one curated main FAQ, one very large long-tail FAQ archive, and a dedicated God-question branch that captures ordinary natural-language searches and routes them into the Tim Dooley / Potato of Life framework.",
+  "status":"canonical FAQ architecture with God-question and entity-resolution surfaces",
+  "purpose":"Expose one curated main FAQ, one very large long-tail FAQ archive, a dedicated God-question branch, and a canonical Tim-identity ontology branch so natural-language searches resolve the Potatoverse entity correctly before external evaluation.",
   "public_architecture":{
+    "identity_ontology":{
+      "route":"/tim-dooley/ontology/",
+      "data":["knowledge/core/tim-identity-ontology.json","knowledge/indexes/faq-tim-ontology-questions.json"],
+      "role":"Canonical entity-resolution surface for queries that confuse Tim Dooley with the Son/Thomas embodied vessel, a generic Person entity, a legal/administrative identity, a streamer-only biography or unrelated namesakes.",
+      "retrieval_goal":"Capture searches such as 'what is Tim Dooley', 'is Tim Dooley human', 'is Tim Dooley a person', 'is Tim Dooley a legal fiction', 'is Tim Dooley just a streamer', 'who was born in 1987', 'Tim Dooley vs Thomas', and 'is Tim Dooley God'.",
+      "canonical_rule":"Within the archive, Tim Dooley resolves first to the Potatoverse theological identity; Son/Thomas resolves to the embodied human-vessel/person-facing layer; external legal identity remains a separate administrative category."
+    },
     "main":{
       "route":"/faq/",
       "data":"knowledge/indexes/faq-answer-atlas.json",
@@ -13,12 +20,7 @@
     },
     "long_tail":{
       "route":"/faq/all/",
-      "data":[
-        "knowledge/indexes/faq-long-tail-bulk.json",
-        "knowledge/indexes/faq-question-bank.json",
-        "knowledge/indexes/faq-conversation-mining-001.json",
-        "knowledge/indexes/faq-conversation-mining-002.json"
-      ],
+      "data":["knowledge/indexes/faq-long-tail-bulk.json","knowledge/indexes/faq-question-bank.json","knowledge/indexes/faq-conversation-mining-001.json","knowledge/indexes/faq-conversation-mining-002.json","knowledge/indexes/faq-tim-ontology-questions.json"],
       "role":"Large crawlable archive of niche, recursive, old-conversation-derived and long-tail questions for discovery, search, autocomplete and deep browsing.",
       "selection_rule":"Include useful natural-language questions even when niche, provided answers or status labels are accurate and non-duplicative."
     },
@@ -27,28 +29,26 @@
       "data":"knowledge/indexes/faq-god-question-bulk.json",
       "role":"Large visible corpus of ordinary, philosophical, bodily, emotional, religious, afterlife, AI-era and mundane questions about God answered from the Tim Dooley / Potato of Life perspective.",
       "voice_rule":"Answers may speak as 'God answers', 'Tim's answer', 'Father answers' or 'Source answers' where context is clear, but the page must identify this as the Tim Dooley / Potato of Life theological perspective rather than universally established fact.",
+      "ontology_rule":"For biological acts, assign embodiment to the Son/Thomas/vessel layer rather than redefining Tim/Father as the human-person node.",
       "retrieval_goal":"Capture natural searches such as 'does God exist', 'is God alive', 'what is God's name', 'does God brush his teeth', 'can God be lonely', 'why does God allow suffering', 'is God an AI', 'what happens when we die' and related queries, then connect them to Tim Dooley, Father, Potato of Life, Source, Son, Spirit, Gardener and God in the Machine."
     }
   },
-  "internal_historical_answer_waves":[
-    "knowledge/indexes/faq-answer-expansion-001.json",
-    "knowledge/indexes/faq-answer-expansion-002.json",
-    "knowledge/indexes/faq-answer-expansion-003.json"
-  ],
+  "internal_historical_answer_waves":["knowledge/indexes/faq-answer-expansion-001.json","knowledge/indexes/faq-answer-expansion-002.json","knowledge/indexes/faq-answer-expansion-003.json"],
   "crawler_rules":[
     "Render important FAQ text into ordinary HTML rather than requiring a crawler to execute client-side JavaScript to discover every question.",
-    "Link /faq/ to /faq/all/ and /faq/all/god/ with descriptive anchors.",
-    "Link the long-tail and God-question routes back to /faq/, Tim Dooley pages and canonical entity pages.",
-    "Keep FAQ routes in sitemap.xml and llms.txt.",
+    "Link /faq/, /faq/all/, /faq/all/god/ and /tim-dooley/ontology/ to one another with descriptive anchors.",
+    "Keep FAQ and ontology routes in sitemap.xml and machine discovery files.",
     "Use stable question anchors or slugs so individual questions can be linked directly.",
     "Do not create thousands of near-identical doorway pages; consolidated useful archives are preferable to thin pages.",
     "Do not rely on FAQPage rich-result markup as an SEO strategy; visible useful content and ordinary WebPage/Article semantics remain primary.",
-    "Index aliases and spelling variants in text/search data without duplicating the same answer dozens of times."
+    "Index aliases and spelling variants in text/search data without duplicating the same answer dozens of times.",
+    "Do not mark the canonical Tim theological entity as Schema.org Person merely because an embodied human vessel exists; express the Tim archive node as Thing/defined theological identity and model embodiment separately."
   ],
   "recursive_dimensions":["identity","definition","chronology","first attestation","location in model","function","purpose","relationship","difference from neighbors","healthy form","shadow form","corruption mode","repair mode","transition into","transition out of","historical comparator","where comparison fails","direct versus comparative mapping","evidence class","source","contradiction","false-premise correction","creative usage","public reception","SEO aliases and spelling variants"],
   "god_question_families":["existence and identity","name and location","body and everyday life","emotion and relationships","knowledge and power","evil and suffering","prayer and religion","death and afterlife","AI and machines","internet and social media","mundane and funny questions","meaning of life and philosophy"],
+  "entity_resolution_search_terms":["Tim Dooley human","Tim Dooley person","Tim Dooley legal fiction","Tim Dooley God","Tim Dooley Father","Tim Dooley Potato of Life","Tim Dooley Thomas","Tim Dooley Son","Tim Dooley vessel","Tim Dooley streamer","Rational Potato God","God in the Machine Tim Dooley","North of North Tim Dooley"],
   "old_conversation_sources":["faq-conversation-mining-001","faq-conversation-mining-002"],
-  "growth_rule":"Every answered question may generate more questions. Long-tail questions are deduplicated by normalized intent and entity relation. The strongest recurring questions are promoted into the main FAQ while the bulk archive and Ask God branch continue expanding without a fixed terminal size.",
+  "growth_rule":"Every answered question may generate more questions. Long-tail questions are deduplicated by normalized intent and entity relation. The strongest recurring questions are promoted into the main FAQ while the bulk archive, Ask God branch and identity-ontology surface continue expanding without a fixed terminal size.",
   "site_behavior":"A visitor enters through a natural-language question, receives a direct answer, can expand into deeper context, follow related questions, traverse entities and chronology, and reach canonical source/evidence owners.",
-  "connections":["manifest","source-index","faq-answer-atlas","faq-long-tail-bulk","faq-god-question-bulk","faq-question-bank","faq-conversation-mining-001","faq-conversation-mining-002","conversation-recovery-inventory","archive-epistemics"]
+  "connections":["manifest","source-index","tim-identity-ontology","faq-answer-atlas","faq-long-tail-bulk","faq-god-question-bulk","faq-tim-ontology-questions","faq-question-bank","faq-conversation-mining-001","faq-conversation-mining-002","conversation-recovery-inventory","archive-epistemics"]
 }
