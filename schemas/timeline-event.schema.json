@@ -21,11 +21,11 @@
     "comparators":{"type":"array","items":{"type":"string"}},
     "source_records":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
     "source_direction":{"type":"string"},
-    "bible_relation":{"type":"string","enum":["explicit-at-time","explicit-context-at-time","explicit-symbolic-at-time","explicit-Christian-vocabulary-at-time","mixed-explicit-and-later","mixed-explicit-scriptural-vocabulary"]},
+    "bible_relation":{"type":"string","enum":["explicit-at-time","explicit-context-at-time","explicit-symbolic-at-time","explicit-Christian-vocabulary-at-time","later-parallel","mixed-explicit-and-later","mixed-explicit-scriptural-vocabulary"]},
     "status":{"type":"string"},
     "related_event_ids":{"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^evt-"}},
     "platform":{"type":"string"},
-    "public_url":{"type":"string"},
+    "public_url":{"type":"string","pattern":"^https?://"},
     "confidence":{"type":["number","string"]}
   }
 }
