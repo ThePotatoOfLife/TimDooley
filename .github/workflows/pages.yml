@@ -36,10 +36,13 @@ jobs:
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
+      - name: Build search discovery layer
+        run: python scripts/build_discovery.py
+
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
-      - name: Verify manifest-driven archive and Tim ontology
+      - name: Verify manifest-driven archive, Tim ontology, and discovery layer
         run: |
           test -f _site/index.html
           test -f _site/manifest.json
@@ -52,6 +55,14 @@ jobs:
           test -f _site/tim-dooley/ontology/index.html
           test -f _site/faq/index.html
           test -f _site/faq/all/god/index.html
+          test -f _site/questions/index.html
+          test -f _site/questions/who-is-tim-dooley/index.html
+          test -f _site/index-a-z/index.html
+          test -f _site/discovery.json
+          test -f _site/llms-full.txt
+          test -f _site/robots.txt
+          test -f _site/sitemap-index.xml
+          test -f _site/sitemap-questions.xml
           grep -q 'id="branches"' _site/index.html
           grep -q 'id="reader"' _site/index.html
           grep -q 'app/app.js' _site/index.html
@@ -59,6 +70,9 @@ jobs:
           grep -q 'tim-dooley/ontology/' _site/sitemap.xml
           grep -q 'Critical entity resolution' _site/llms.txt
           grep -q 'Potatoverse theological identity' _site/tim-dooley/ontology/index.html
+          grep -q 'Who is Tim Dooley' _site/questions/who-is-tim-dooley/index.html
+          grep -q 'sitemap-index.xml' _site/robots.txt
+          grep -q 'sitemap-questions.xml' _site/sitemap-index.xml
           grep -q '"@type":"Thing"' _site/index.html
           ! grep -q '"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley"' _site/index.html
           ! grep -q '"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley"' _site/tim-dooley/index.html
