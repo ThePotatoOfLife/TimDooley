@@ -1,148 +1,50 @@
 {
-  "version":"1.0.0",
+  "version":"2.0.0",
   "updated":"2026-09-09",
   "title":"Timeline Source Registry",
-  "purpose":"Declare which project records can emit global timeline events and how their local fields map to data/timeline-events.json. This is an ingestion registry, not a second source of truth.",
+  "purpose":"Declare which project records may emit candidate global timeline events, how they map into the roadmap-first event model, and which high-volume sources should remain specialist ledgers unless an event crosses the public relevance threshold.",
   "canonical_output":"data/timeline-events.json",
   "schema":"schemas/timeline-event.schema.json",
+  "promotion_policy":{
+    "promote_when":["major life/project hinge","first attestation or role transition","memorable exact wording","explicit scripture/Bible use useful to the trajectory","later biblical unlock that must remain temporally distinct","dated creative work that materially illuminates development","public-witness milestone","formalization milestone that changes interpretation"],
+    "do_not_promote_when":["date exists but adds no new temporal meaning","specialist taxonomy elaboration","repeated restatement without trajectory change","generic comparison without dated project-side anchor","routine repository commit","specialist prophecy audit without a life/project milestone"],
+    "dedupe_key":"underlying temporal fact, not source-file path"
+  },
   "sources":[
-    {
-      "path":"data/tim-dooley-timeline.json",
-      "role":"main identity-safe chronology",
-      "layers":["main","identity-doctrine"],
-      "event_array":"events",
-      "mapping":{"date":"date","title":"title","subject":"subject","summary":"description","status":"status"},
-      "notes":"Preserve Son/Tim/Father subject distinctions. Range dates require explicit range precision."
-    },
-    {
-      "path":"knowledge/chronology/dated-master-timeline-2026.json",
-      "role":"dense dated chronology",
-      "layers":["public","quote","identity-doctrine","research"],
-      "mapping_strategy":"adapter-required",
-      "notes":"High-volume candidate source. Promote exact timestamps and primary wording; deduplicate against curated canonical events."
-    },
-    {
-      "path":"knowledge/chronology/dated-master-timeline-2026-wave-10-addendum.json",
-      "role":"newly recovered exact-date chronology",
-      "layers":["quote","public","research"],
-      "mapping_strategy":"adapter-required",
-      "notes":"Prefer exact recovered conversation timestamps when available."
-    },
-    {
-      "path":"data/tim-dooley-public-theology-timeline-2025-2026.json",
-      "role":"public theology trajectory",
-      "layers":["public","quote","identity-doctrine"],
-      "mapping_strategy":"adapter-required",
-      "notes":"Useful for first public attestations and changes in self-description."
-    },
-    {
-      "path":"knowledge/corporium/tim-sayings-and-formulations-ledger.json",
-      "role":"notable sayings / formulations",
-      "layers":["quote"],
-      "mapping_strategy":"timestamped-items-only",
-      "notes":"Only emit globally when a date/timestamp is supported. Untimed sayings stay in Corporium."
-    },
-    {
-      "path":"knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json",
-      "role":"Tim-first biblical overlap chronology",
-      "layers":["biblical-parallel","quote","identity-doctrine"],
-      "event_array":"events",
-      "mapping":{"date":"date","timestamp":"date+time","quote":"timic_quote","motifs":"timic_motifs","comparators":"later_biblical_parallels","status":"status","summary":"significance"},
-      "notes":"Preserve source direction. A later comparator does not become part of the earlier statement."
-    },
-    {
-      "path":"knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json",
-      "role":"biblical research unlock",
-      "layers":["biblical-unlock","research"],
-      "mapping_strategy":"file-publication/research-date",
-      "notes":"Emit the date the research comparison was formalized, distinct from earlier Tim-side attestation."
-    },
-    {
-      "path":"knowledge/traditions/biblical-research-index-wave-5.json",
-      "role":"biblical research routing/index milestones",
-      "layers":["biblical-unlock","research","archive"],
-      "mapping_strategy":"milestones-only"
-    },
-    {
-      "path":"knowledge/creative/tim-dooley-suno-music-archive.json",
-      "role":"music catalogue / lyric archive",
-      "layers":["music"],
-      "mapping_strategy":"dated-records-only",
-      "notes":"Song UUID/title alone is not enough for chronology. Emit only when creation/publication date is known; preserve model/style and point back to full lyrics rather than duplicating them."
-    },
-    {
-      "path":"knowledge/culture/creative-systems-archive.json",
-      "role":"creative works",
-      "layers":["music","art"],
-      "mapping_strategy":"dated-artifacts-only",
-      "notes":"Creative artifacts remain creative unless another canonical record separately establishes doctrinal significance."
-    },
-    {
-      "path":"knowledge/prophecy/prediction-audit-routing.json",
-      "role":"prediction/warning audit router",
-      "layers":["prediction","research"],
-      "mapping_strategy":"prediction-ledger-links",
-      "notes":"Emit both prediction statement date and later audit/outcome date where supported. Never collapse the two into one event."
-    },
-    {
-      "path":"knowledge/prophecy/seals-and-fulfillment-matrix.json",
-      "role":"prophecy classification framework",
-      "layers":["prediction","research"],
-      "mapping_strategy":"audited-dated-items-only",
-      "notes":"Do not emit generic typologies without a dated project-side anchor."
-    },
-    {
-      "path":"knowledge/chronology/contextual-synchronisms.json",
-      "role":"contextual synchronisms",
-      "layers":["research"],
-      "mapping_strategy":"dated-synchronisms-only",
-      "notes":"Synchronism is its own evidence class/relationship, not fulfillment."
-    },
-    {
-      "path":"knowledge/indexes/conversation-recovery-inventory.json",
-      "role":"source recovery",
-      "layers":["research","archive"],
-      "mapping_strategy":"high-value-recoveries-only"
-    },
-    {
-      "path":"knowledge/indexes/inference-ledger.json",
-      "role":"later inference / epiphany formalization",
-      "layers":["research"],
-      "mapping_strategy":"dated-promotions-only",
-      "notes":"Inference date is not source-attestation date."
-    },
-    {
-      "path":"knowledge/science/equation-ledger.json",
-      "role":"equation/formalism chronology",
-      "layers":["research"],
-      "mapping_strategy":"dated-equations-only",
-      "notes":"Potential future sublayer: science-formalization. Preserve authorship and equation lineage."
-    },
-    {
-      "path":"manifest.json",
-      "role":"archive architecture",
-      "layers":["archive"],
-      "mapping_strategy":"major-structural-milestones-only"
-    }
+    {"path":"data/tim-dooley-timeline.json","role":"identity-safe roadmap spine","layers":["roadmap"],"actors":"map subject to son/tim/shared","event_array":"events","mapping":{"date":"date","title":"title","subject":"subject","summary":"description","status":"status"},"notes":"Primary source for sparse Son→Tim developmental spine. Preserve identity boundaries."},
+    {"path":"TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md","role":"readable early-life roadmap","layers":["roadmap","scripture-at-time"],"actors":"mostly son before 2020","mapping_strategy":"curated-milestones-only","notes":"Promote formative anchors and explicit Christian/scriptural context; do not convert ordinary childhood precursors into doctrine."},
+    {"path":"knowledge/chronology/dated-master-timeline-2026.json","role":"dense candidate pool for 2026","layers":["roadmap","direct-words","scripture-at-time","public-witness"],"mapping_strategy":"relevance-4-or-5-plus-deduplication","notes":"This file is intentionally denser than the global timeline. Prefer relevance 5, role changes, exact timestamps and unique scriptural clusters. Most Dog/Mud/Cube taxonomy remains specialist-only."},
+    {"path":"knowledge/chronology/dated-master-timeline-2026-wave-10-addendum.json","role":"newly recovered exact-date candidates","layers":["direct-words","public-witness"],"mapping_strategy":"exact/high-value-only","notes":"Exact timestamps are valuable, but still require global relevance."},
+    {"path":"data/tim-dooley-public-theology-timeline-2025-2026.json","role":"public trajectory","layers":["roadmap","direct-words","scripture-at-time","public-witness"],"mapping_strategy":"trajectory-changes-only","notes":"Promote shifts in public identity language, not every repeated God declaration."},
+    {"path":"knowledge/corporium/tim-sayings-and-formulations-ledger.json","role":"quote candidate pool","layers":["direct-words"],"mapping_strategy":"dated-primary-or-recovered-only","notes":"Untimed aphorisms remain in Corporium. Timeline is not a quote dump."},
+    {"path":"knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json","role":"Bible source-direction chronology","layers":["scripture-at-time","biblical-parallel","direct-words"],"event_array":"events","mapping":{"date":"date","timestamp":"date+time","quote":"timic_quote","motifs":"timic_motifs","comparators":"later_biblical_parallels","status":"status","summary":"significance"},"notes":"Classify each event as explicit-at-time, later-parallel or mixed. Never backdate the comparator."},
+    {"path":"knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json","role":"biblical research unlock","layers":["biblical-unlock","formalization"],"actors":["project"],"mapping_strategy":"research-date","notes":"Represents when the comparison was formalized, not when Tim first used the motifs."},
+    {"path":"knowledge/traditions/biblical-research-index-wave-5.json","role":"Bible research routing","layers":["biblical-unlock","formalization"],"actors":["project"],"mapping_strategy":"major-unlocks-only","notes":"Do not emit one timeline event per research file; group same-day research into meaningful unlocks."},
+    {"path":"knowledge/creative/tim-dooley-suno-music-archive.json","role":"music and lyric archive","layers":["creative"],"actors":["tim"],"mapping_strategy":"dated-records-only","notes":"Emit only songs with known date/time or unusually important first-use chronology. Keep full lyrics in the music archive."},
+    {"path":"knowledge/culture/creative-systems-archive.json","role":"creative artifact candidates","layers":["creative"],"mapping_strategy":"dated-high-value-artifacts-only","notes":"Art/creative work remains creative unless another source separately establishes doctrinal significance."},
+    {"path":"knowledge/chronology/contextual-synchronisms.json","role":"specialist synchronism ledger","layers":["formalization"],"actors":["project"],"mapping_strategy":"normally-do-not-promote","notes":"Promote only if the synchronism itself becomes a major research unlock; synchronism is not fulfillment."},
+    {"path":"knowledge/indexes/inference-ledger.json","role":"later inference/formalization","layers":["formalization"],"actors":["project"],"mapping_strategy":"major-dated-promotions-only","notes":"Inference date stays distinct from source-attestation date."},
+    {"path":"knowledge/science/equation-ledger.json","role":"science chronology","layers":["formalization"],"actors":["project","tim"],"mapping_strategy":"normally-specialist","notes":"Only promote a scientific/formal event if it materially changes the main project architecture; equation-by-equation chronology belongs in science."},
+    {"path":"knowledge/prophecy/prediction-audit-routing.json","role":"specialist prediction audit","layers":[],"mapping_strategy":"normally-specialist","notes":"Prediction audits remain outside the global toggle set unless a prediction/warning is independently a major life/public milestone. This avoids a redundant prophecy layer."},
+    {"path":"knowledge/prophecy/seals-and-fulfillment-matrix.json","role":"specialist Revelation/seals research","layers":[],"mapping_strategy":"normally-specialist","notes":"Do not flood global chronology with typological seal candidates. Relevant biblical source/use or research unlock may enter through Bible layers instead."},
+    {"path":"manifest.json","role":"archive architecture","layers":["formalization"],"actors":["project"],"mapping_strategy":"major-structural-milestones-only"}
+  ],
+  "actor_mapping_rules":[
+    "Pre-2020 human biography belongs to son unless a source explicitly identifies a Tim-side spiritual role.",
+    "2020-12-25 and later Potato/Father identity belongs to tim.",
+    "Death/emergence hand-off and explicit Door/Ladder Father/Son relations may include shared.",
+    "Research dates and archive formalization use project; they do not impersonate life events."
+  ],
+  "bible_mapping_rules":[
+    "scripture-at-time = Bible/Jesus/Judaism/Hebrew/scriptural material already present then",
+    "biblical-parallel = later comparator attached to the earlier event with source direction",
+    "biblical-unlock = later research date when the comparison was explicitly recognized/formalized",
+    "an event may be scripture-at-time and biblical-parallel simultaneously when some biblical material was explicit but additional structure was discovered later"
   ],
   "deduplication_rules":[
-    "Prefer a stable event id tied to the underlying temporal fact, not to the source file containing it.",
-    "Multiple source_records may support one event.",
-    "Do not duplicate one event merely because it belongs to multiple thematic layers.",
-    "Do create separate events when the temporal facts differ: original quote vs later research unlock; prediction vs outcome; creative publication vs later interpretation.",
-    "When two records disagree on date or wording, retain the conflict in source/status rather than silently choosing the newest synthesis."
-  ],
-  "future_sublayers":[
-    "science-formalization",
-    "equation",
-    "book-writing",
-    "video-stream",
-    "repository-commit",
-    "geopolitical-programme",
-    "economic-programme",
-    "body-model",
-    "comparative-mythology",
-    "legal/institutional",
-    "relationship-network"
+    "One underlying temporal fact gets one stable event id with multiple source_records.",
+    "Do not duplicate one event because it belongs to several layers or actor tracks.",
+    "Do create separate events when the temporal facts differ: original event vs later research unlock.",
+    "When sources disagree on wording/date, retain conflict in specialist owners instead of multiplying public cards."
   ]
 }
