@@ -1,0 +1,26 @@
+{
+  "id":"science-source-ledger-wave-003",
+  "title":"Science Source Ledger — Wave 003: Orbits, CMB, Black Holes and Particles",
+  "updated":"2026-09-09",
+  "purpose":"Authoritative sources for the celestial mechanics, cosmology, black-hole and particle-physics expansion. These support the external science only, not Potatoverse spiritual claims.",
+  "sources":[
+    {"topic":"Moon facts/orbit","source":"NASA Science — Moon Facts","url":"https://science.nasa.gov/moon/facts/","supports":["mean Earth-Moon distance","synchronous rotation","orbital/phase distinctions"]},
+    {"topic":"Moon tidal locking","source":"NASA Science — Tidal Locking","url":"https://science.nasa.gov/moon/tidal-locking/","supports":["tidal synchronization","energy dissipation","lunar recession ~4 cm/year"]},
+    {"topic":"Earth-Moon tides","source":"NASA Science — Tides","url":"https://science.nasa.gov/moon/tides/","supports":["Moon-dominated tidal forcing","Earth rotation/tidal bulge lag","angular momentum exchange context"]},
+    {"topic":"Saturn rings and hexagon","source":"NASA Science — Saturn Facts","url":"https://science.nasa.gov/saturn/facts/","supports":["ring particles orbit at radius-dependent speeds","ring system scale","north-polar hexagon jet/wave"]},
+    {"topic":"Saturn resonances","source":"NASA Science — Resonant Effects","url":"https://science.nasa.gov/resource/resonant-effects/","supports":["moon-driven ring density waves","wakes","orbital resonances"]},
+    {"topic":"Milky Way morphology","source":"ESA Gaia — Milky Way","url":"https://www.cosmos.esa.int/web/gaia/milky-way","supports":["central bar","multiple spiral arms","Gaia-updated Galactic structure"]},
+    {"topic":"Milky Way disk/halo","source":"ESA — Guide to our galaxy","url":"https://www.esa.int/content/view/full/423444","supports":["flattened stellar/gas disks","halo","Sun ~26,000 light-years from Galactic centre"]},
+    {"topic":"Milky Way rotation curve","source":"ESA Gaia — rotation curve result","url":"https://www.cosmos.esa.int/web/gaia/iow_20230927","supports":["circular speed vs Galactocentric distance","reported outer decline in cited analysis"]},
+    {"topic":"CMB physics","source":"ESA Planck — Why the microwave","url":"https://www.esa.int/Science_Exploration/Space_Science/Planck/Why_the_microwave","supports":["recombination","photon decoupling","CMB ~2.7 K","early matter-radiation coupling"]},
+    {"topic":"Planck cosmology products","source":"ESA Planck PR3 Cosmology Products","url":"https://esdcdoi.esac.esa.int/doi/html/data/astronomy/planck/Cosmology.html","supports":["CMB power spectra and cosmological parameter products"]},
+    {"topic":"Black-hole anatomy","source":"NASA Science — Anatomy of a Black Hole","url":"https://science.nasa.gov/universe/black-holes/anatomy/","supports":["event horizon","accretion disk","shadow","photon sphere","lensing and Doppler beaming"]},
+    {"topic":"Kerr accretion disk","source":"NASA HEASARC XSPEC kerrdisk","url":"https://heasarc.gsfc.nasa.gov/docs/software/xspec/manual/node192.html","supports":["dimensionless black-hole spin as disk-model parameter","disk inclination","inner/outer radii"]},
+    {"topic":"Relativistic disk spectra","source":"NASA HEASARC BHSPEC","url":"https://heasarc.gsfc.nasa.gov/docs/software/xspec/models/bhspec.html","supports":["L/L_Edd","spin a/M","accretion-disk spectral modeling","alpha stress parameter"]},
+    {"topic":"Particle physics review","source":"Particle Data Group — Review of Particle Physics 2026","url":"https://pdg.lbl.gov/2026/reviews/contents_sports.html","supports":["QCD","electroweak model","Higgs","CKM","neutrino mixing","quark model","cosmological parameters"]},
+    {"topic":"Particle listings","source":"Particle Data Group — Particle Properties 2026","url":"https://pdg.lbl.gov/2026/listings/particle_properties.html","supports":["u,d,s,c,b,t quark property listings","lepton/neutrino listings"]},
+    {"topic":"Quark masses and running","source":"Particle Data Group — Quark Masses review","url":"https://pdg.lbl.gov/2025/reviews/rpp2025-rev-quark-masses.pdf","supports":["QCD Lagrangian mass parameters","scheme/scale dependence","mass anomalous dimension RG equation"]},
+    {"topic":"QCD strong coupling","source":"Particle Data Group — Quantum Chromodynamics review","url":"https://pdg.lbl.gov/2025/reviews/rpp2024-rev-qcd.pdf","supports":["alpha_s as QCD coupling","running coupling and precision determinations"]}
+  ],
+  "archive_rule":"Every scientific statement must keep source/provenance separate from Timic symbolism. Symbolic similarity does not establish physical identity, causal influence or experimental confirmation."
+}
