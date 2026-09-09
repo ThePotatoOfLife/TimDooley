@@ -1,0 +1,88 @@
+{
+  "id":"alpha-beta-gamma-archetype-status-atlas",
+  "title":"Alpha / Beta / Gamma Archetype, Status & Vibration Atlas",
+  "updated":"2026-09-09",
+  "status":"comparative archetypal-psychological layer with scientific corrections",
+  "purpose":"Give the project a disciplined vocabulary for Timic alpha/beta/gamma language across archetype, personality, status, dominance, prestige, social role, vibe and oscillation while preventing pop-animal myths from becoming pseudo-biology.",
+  "core_boundary":"Alpha/beta/gamma labels are not a validated universal human personality taxonomy and are not biological frequencies. They may be used as project archetypes, internet-status slang or temporary relational roles. Human hierarchy research is better grounded in constructs such as dominance, prestige, power, status and influence.",
+  "wolf_correction":{
+    "finding":"The popular 'alpha wolf' dictator model derives largely from observations of captive, unrelated wolves. Wild packs are typically family groups organized around breeding parents, so wildlife researchers have largely abandoned alpha/beta terminology for normal wild packs.",
+    "sources":["https://www.scientificamerican.com/article/is-the-alpha-wolf-idea-a-myth/","https://wolf.org/wolf-info/basic-wolf-info/in-depth-resources/glossary/"]
+  },
+  "human_status_science":{
+    "dominance":"status obtained or maintained through coercion, intimidation, threat, control of costs/benefits or resource power",
+    "prestige":"status voluntarily granted because of valued competence, knowledge, skill, generosity or benefit creation",
+    "power":"capacity to control outcomes/resources; distinct from status and from prestige",
+    "status":"socially conferred rank/respect; may arise from dominance, prestige, institutional position or combinations",
+    "sources":["https://www.psychologicalscience.org/journals/current-directions/0963721417714323/","https://pmc.ncbi.nlm.nih.gov/articles/PMC8743883/","https://pubmed.ncbi.nlm.nih.gov/40167550/"]
+  },
+  "potatoverse_archetypes":[
+    {
+      "label":"Alpha",
+      "project_meaning":"originating/orienting/initiating pole; self-authoring reference point; the node that sets direction rather than merely reacting to local rank",
+      "timic_application":"When the project says Tim is Alpha, the strongest interpretation is Source/Axis/orientation plus prestige-generating authorship and capacity, not 'wolf who bullies the pack'.",
+      "healthy_expression":["orientation","responsibility","competence","initiative","protection","generativity","prestige","calm authority"],
+      "shadow_expression":["coercive dominance","status fixation","grandiosity","control","threat dependence"],
+      "science_neighbors":["prestige","power","leadership","agency","status"],
+      "vibe_coordinates":"high agency; valence/arousal vary; stable Alpha does not require high aggression"
+    },
+    {
+      "label":"Beta",
+      "project_meaning":"relational/supportive/implementing pole; receives an orientation and stabilizes, translates, carries or enacts it",
+      "dog_application":"A Dog can be modeled as beta-like when it is loyal to, amplifies, patrols or enforces another node's orientation rather than creating the system's highest-order direction itself.",
+      "healthy_expression":["cooperation","loyalty","implementation","translation","coordination","care","specialization"],
+      "shadow_expression":["submission without discernment","enforcement for status","pack conformity","outsourced judgment"],
+      "science_neighbors":["followership","coordination","role specialization","social learning"],
+      "boundary":"Beta does not mean biologically inferior."
+    },
+    {
+      "label":"Gamma",
+      "project_meaning":"distributed/edge/observer/analytic or fringe-transformative role, depending context; neither central orienter nor simple lieutenant",
+      "possible_functions":["observer","commentator","specialist","outsider","bridge node","critic","mutation source","subculture edge"],
+      "healthy_expression":["independent analysis","novelty","bridge-building","specialized competence"],
+      "shadow_expression":["resentful spectator","status gaming","ironic detachment","fragmentation"],
+      "boundary":"Gamma is a project archetype, not an established personality type."
+    },
+    {
+      "label":"Omega",
+      "project_meaning":"boundary/excluded/scapegoated or terminal node in a hierarchy; may also become escape-point from the hierarchy",
+      "healthy_expression":["refusal of corrupt status game","outside perspective","boundary witness"],
+      "shadow_expression":["scapegoating","humiliation","social dumping ground"],
+      "farm_relation":"Lolcow systems often attempt to manufacture omega-like targets around whom a group can organize mockery and cohesion."
+    }
+  ],
+  "alpha_dog_farmer_crosswalk":[
+    {"role":"Tim / Alpha","best_model":"orientation + authorship + prestige-generativity inside Potatoverse; theological sovereignty remains canon, not social-science measurement"},
+    {"role":"Dog / Beta-like","best_model":"amplifier/enforcer/loyal carrier; can be prosocial guardian or shadow pack-agent depending what it serves"},
+    {"role":"Farmer","best_model":"infrastructure/operator role, often higher in local system power than Dogs because Farmer defines enclosure, incentives and extraction; not necessarily Alpha in whole-world orientation"},
+    {"role":"Cow/Lolcow","best_model":"attention-producing target position, often assigned low local status but high extraction value"},
+    {"role":"Gamma/observer","best_model":"commentator, archivist, lurker, critic or bridge who may amplify without directly farming"}
+  ],
+  "vibration_layer":{
+    "rule":"Alpha, beta and gamma are also names used in actual oscillatory science, but those meanings must stay separate from social archetypes.",
+    "examples":[
+      {"term":"alpha EEG","frequency":"~8-12 Hz","meaning":"neural oscillation band; not dominance"},
+      {"term":"beta EEG","frequency":"~12-30 Hz","meaning":"neural oscillation band; not subordinate personality"},
+      {"term":"gamma EEG","frequency":"~30-100 Hz","meaning":"high-frequency neural activity; not outsider archetype"},
+      {"term":"alpha/beta/gamma radiation","meaning":"historical nuclear-radiation categories with entirely different physics"}
+    ],
+    "anti_pattern":"Do not infer personality rank from EEG band power or vice versa."
+  },
+  "archetype_state_vector":{
+    "equation":"A_i=(Ag,Pr,Do,Co,Au,Cr,Re)",
+    "variables":{"Ag":"agency","Pr":"prestige/earned regard","Do":"coercive dominance","Co":"coordination/followership capacity","Au":"autonomy","Cr":"creative/orienting capacity","Re":"relational responsibility"},
+    "interpretation":"Project labels Alpha/Beta/Gamma can be derived from temporary configurations of these dimensions rather than treated as fixed essences.",
+    "example":"A high-prestige, high-agency, low-coercion node can be Alpha-like without aggression; a high-coordination node can be Beta-like without inferiority."
+  },
+  "dynamic_role_model":{
+    "equation":"Role_i(t)=argmax_r Score_r(A_i(t),context)",
+    "meaning":"Archetypal role is context-dependent and can change across settings. Someone can orient one domain, support another and observe a third.",
+    "research_value":"Prevents the archive from reducing people to one permanent dominance label."
+  },
+  "potatoverse_status_ethic":{
+    "principle":"The archive should distinguish prestige from domination. A Timic 'highest' role is strongest when defined as maximum orientation/responsibility/generative capacity rather than maximum coercion.",
+    "formula":"TimicAuthority ≈ f(orientation, responsibility, competence, nourishment, integration, witness) - coercion_cost",
+    "status":"archive-generated ethical model"
+  },
+  "connections":["chakra-hawkins-frequency-crosswalk","psychology-signals-and-couplings-atlas","farm-swamp-tree-of-strife-atlas","tim-role-synthesis","dogs","farmers","corporium-master-framework"]
+}
