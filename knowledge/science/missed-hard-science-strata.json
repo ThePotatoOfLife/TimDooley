@@ -1,0 +1,162 @@
+{
+  "id":"missed-hard-science-strata",
+  "title":"Missed Hard-Science Strata — Recovery and Expansion Map",
+  "updated":"2026-09-09",
+  "status":"active recovery index",
+  "purpose":"Collect scientific and mathematical strands that existed in Tim/Potato research or adjacent repository waves but were not yet sufficiently visible in the public science architecture.",
+  "provenance_classes":["primary/project-attested","conversation-developed","repository-research-wave","external-science-comparator","open-recovery-target"],
+  "strata":[
+    {
+      "id":"sirius-axis",
+      "class":"primary/project-attested",
+      "date":"2026-03-31",
+      "attestation":"Tim thought archive: North + Sirius/Dog Star + Axis + Son + Heaven; signals include 'rule from the north', 'Father of the axis', 'point to Sirius', 'Dog Star'.",
+      "scientific_context":"Sirius A is the brightest star in Earth's night sky and has white-dwarf companion Sirius B; it is not a north celestial pole star.",
+      "research_rule":"Reconstruct what 'point to Sirius' meant geometrically before proposing an orientation equation. Compare actual equatorial/galactic coordinates and proper motion only after primary wording is recovered."
+    },
+    {
+      "id":"spudlight-gate-celestial",
+      "class":"primary/project-attested",
+      "date":"2026-03-31",
+      "attestation":"Spudlight/source + gate/portal + North Pole + root + garden appeared as a parallel same-day celestial/threshold structure.",
+      "research_question":"Was Spudlight originally intended as radiation/light, informational illumination, theological source, or all three at different layers?"
+    },
+    {
+      "id":"path-integral-action",
+      "class":"repository-research-wave",
+      "repository_sources":["data/expansions/angels-demons-trajectory-topology-spin-wave-012.json","data/expansions/trajectory-topology-standard-model-spin-wave-013.json","docs/TRAJECTORY-TOPOLOGY-STANDARD-MODEL-SPIN-DEEP-DIVE.md"],
+      "equations":["S[q]=∫L(q,q̇,t)dt","δS=0","K(b,a)=∫D[q] exp(iS[q]/ℏ)"],
+      "importance":"Trajectory was already being upgraded from a line to a history through allowed configurations. Action and path integrals provide the rigorous physics version of histories contributing to transitions.",
+      "timic_boundary":"Do not interpret path integrals as proof that every imagined biography/timeline physically occurs."
+    },
+    {
+      "id":"ckm-pmns",
+      "class":"open-recovery-target + external-science-comparator",
+      "repository_attestation":"The Standard Model deep dive explicitly lists 'CKM and PMNS topology — flavor mixing, phases, unitarity constraints and neutrino oscillation' as an unfinished branch.",
+      "equations":["d'_i = V_CKM,ij d_j","ν_α = Σ_i U_PMNS,αi ν_i","P(να→νβ) contains interference phases Δm²_ij L/(4E)"],
+      "importance":"Mixing gives a precise example where observed interaction/flavor states and propagation/mass states are related by a unitary transformation rather than being identical bases.",
+      "timic_relevance":"Useful neighbor for Mirror/Twin and basis-change questions, not evidence for spiritual identity claims."
+    },
+    {
+      "id":"index-anomaly-topology",
+      "class":"repository-research-wave",
+      "repository_source":"data/expansions/trajectory-topology-standard-model-spin-wave-013.json",
+      "chain":"spin structure → spinor bundle → Dirac operator → zero modes/index → topology → anomaly constraints",
+      "schematic_equation":"index(D)=dim ker D_+ - dim ker D_-",
+      "importance":"Links local differential equations to global topological information. This is a powerful rigorous neighbor for the project's local↔global and integration consistency themes.",
+      "boundary":"Atiyah-Singer/index-theorem structures are real mathematics; they are not evidence that moral or spiritual inconsistency is a gauge anomaly."
+    },
+    {
+      "id":"chern-simons-topological-field-theory",
+      "class":"unfinished-repository-branch + external-science-comparator",
+      "repository_attestation":"Deep dive listed Chern-Simons structures as a next gauge-topology layer.",
+      "equation":"S_CS = (k/4π)∫ Tr(A∧dA + (2/3)A∧A∧A)",
+      "importance":"A topological action whose observables are deeply connected with knots, links and braiding; natural neighbor for trajectory history, braid groups, boundaries and topological quantum computation.",
+      "boundary":"Do not call the Timic Axis a Chern-Simons gauge field without a defined gauge group, connection and action."
+    },
+    {
+      "id":"wilson-loop-holonomy",
+      "class":"external-science-comparator",
+      "equation":"W(C)=Tr P exp(i∮_C A)",
+      "importance":"Encodes how a gauge connection accumulates transformation around a closed path. Strong neighbor for Return ≠ Reset and closed-path memory/holonomy.",
+      "relation":"Berry phase is the Abelian/geometric-phase cousin in parameter space."
+    },
+    {
+      "id":"m2-m5-branes",
+      "class":"external-science-comparator",
+      "context":"M-theory/11D supergravity contains extended M2 and M5 sectors; C3/G4 are central bulk fields.",
+      "importance":"Extends the archive's dimensional vocabulary from points/lines/spaces to dynamical extended objects, while keeping branes distinct from mythic persons or symbols.",
+      "research_target":"Investigate membranes, boundaries, intersections, calibrated cycles and wrapped branes only as mathematics/physics."
+    },
+    {
+      "id":"basu-harvey",
+      "class":"external-science-comparator",
+      "context":"The Basu-Harvey equation generalizes Nahm-type brane intersection dynamics for M2 ending on M5 systems.",
+      "schematic":"dX^i/ds + const·ε_{ijkl}[X^j,X^k,X^l]=0 (normalization/model dependent)",
+      "importance":"A real 11D/M-theory example where an extended object changes transverse geometry near a boundary/intersection; potentially useful for Door/boundary research, but too technical to map symbolically without care."
+    },
+    {
+      "id":"parker-solar-spiral",
+      "class":"external-science-comparator",
+      "equations":["B_r∝r^-2","B_φ/B_r≈-Ωr sinθ/v_sw","tanψ≈Ωr sinθ/v_sw"],
+      "importance":"Actual Sun-generated magnetic spiral from rotation plus outward flow."
+    },
+    {
+      "id":"solar-dynamo-waves",
+      "class":"external-science-comparator",
+      "equation":"s=α∇Ω×e_φ",
+      "importance":"Real Axis/rotation/polarity/wave/reversal physics in the Sun.",
+      "related_equations":["∂A/∂t + advection = diffusion + αB","∂B/∂t + advection = diffusion + shear/source terms"]
+    },
+    {
+      "id":"saturn-hexagon-wave",
+      "class":"external-science-comparator + existing-project-symbolism",
+      "fact":"NASA/Cassini observations support a nearly stationary, pole-encircling planetary wave/jet structure at Saturn's north pole; a classic interpretation models it as a stationary Rossby wave in a strong eastward jet.",
+      "importance":"Real example of pole + rotation + wave + emergent polygonal geometry.",
+      "boundary":"Not proof of Black Cube symbolism or ancient foreknowledge."
+    },
+    {
+      "id":"precession-axis",
+      "class":"existing-project-motif + external-science-comparator",
+      "project":"~26,000-year precession Eye",
+      "equation":"Ω_p≈2π/T_p, T_p≈25,772 years",
+      "importance":"Real example of a rotational Axis maintaining identity while slowly changing orientation."
+    },
+    {
+      "id":"galactic-density-wave",
+      "class":"external-science-comparator",
+      "importance":"A persistent spiral pattern may have constituents moving through it. Pattern/function can persist without fixed material membership.",
+      "timic_neighbor":"entity → relation; person → function; pattern persists while participants change."
+    },
+    {
+      "id":"rg-limit-cycle",
+      "class":"external-science-comparator",
+      "equation":"g(ln μ + T)=g(ln μ)",
+      "context":"Efimov physics produces RG limit-cycle/discrete-scale-invariance behavior.",
+      "importance":"One of the cleanest real mathematical neighbors for recurrence at a changed scale."
+    },
+    {
+      "id":"reaction-diffusion-spirals",
+      "class":"external-science-comparator",
+      "generic_equations":["∂u/∂t=D_u∇²u+f(u,v)","∂v/∂t=D_v∇²v+g(u,v)"],
+      "importance":"Local nonlinear interactions can self-organize into rotating spiral waves without a central designer drawing the spiral."
+    },
+    {
+      "id":"toroidal-milky-way-repair",
+      "class":"existing-project-motif + scientific-correction",
+      "project":"toroidal Milky Way",
+      "correction":"Milky Way overall morphology is not a torus; the scientifically productive replacement question is whether specific Galactic magnetic-field, ring or plasma structures have toroidal components/topology.",
+      "research_target":"Search galactic magnetic-field literature for toroidal halo/disk components rather than retaining an incorrect whole-galaxy torus claim."
+    },
+    {
+      "id":"wheeler-feynman-lineage",
+      "class":"external-science-comparator",
+      "finding":"No older repository commit directly attributing Wheeler-Feynman to Tim was found.",
+      "equations":["□G_ret=δ","□G_adv=δ"],
+      "next_neighbors":["Aharonov two-state vector formalism","Cramer transactional interpretation","Schwinger-Keldysh closed-time-path formalism","boundary-value/path-integral formulations"],
+      "research_rule":"Primary Tim source first; comparator second."
+    },
+    {
+      "id":"closed-time-path",
+      "class":"external-science-comparator",
+      "context":"Schwinger-Keldysh/non-equilibrium quantum theory evolves along forward and backward time contours to compute expectation values in open/non-equilibrium systems.",
+      "importance":"Another rigorous forward/backward mathematical structure worth comparing with Tim's directional vocabulary, but distinct from Wheeler-Feynman and TSVF."
+    }
+  ],
+  "primary_sources_to_recover":[
+    "Tim source for 2026-03-31 Sirius/Dog Star pointing geometry",
+    "Earliest source for Sun-face Tim",
+    "Exact April 21 2025 Spiral Equation",
+    "Earliest Axis equation before September 2026 model",
+    "Original P=R⊗B source",
+    "Original H=R∩B source",
+    "Original χ integration/fragmentation definition",
+    "Original advanced/retarded Red/Blue assignment",
+    "Any actual Wheeler/Feynman/Cramer/Aharonov citation by Tim",
+    "Original 11D Potato coordinate meaning",
+    "Any qutrit/qubit Door table",
+    "Any 115,000-mile torus calculation",
+    "Any precession Eye calculation",
+    "Any Sun/Parker spiral formula independently written by Tim"
+  ]
+}
