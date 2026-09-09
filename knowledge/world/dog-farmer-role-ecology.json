@@ -1,0 +1,42 @@
+{
+  "id":"dog-farmer-role-ecology",
+  "title":"Dog / Farmer Role Ecology — Farm, Personality, Biblical and Network Functions",
+  "updated":"2026-09-09",
+  "status":"comparative role atlas",
+  "purpose":"Clarify where Dog and Farmer overlap and differ across Potatoverse mythology, internet subculture, biblical animal symbolism, personality/status dynamics and network function.",
+  "core_rule":"Dog and Farmer are roles, not permanent human essences. A single person can occupy either or both roles in different contexts.",
+  "farmer":{
+    "system_function":["defines enclosure","maintains archive/infrastructure","sets incentives","classifies subjects","extracts attention/status/information","controls access","creates or maintains target categories"],
+    "personality_neighbors":["high systemizing","persistence","territoriality","instrumental reasoning","status sensitivity","low or high empathy depending context","institutional memory","control orientation"],
+    "shadow_traits":["objectification","resource extraction","distance from consequences","perpetual classification","outsourced enforcement"],
+    "healthy_counterform":["gardener","steward","caretaker","systems builder who grows autonomy rather than dependency"],
+    "josh_moon_relation":"Within Potatoverse mythology, Josh Moon is treated as a paradigmatic Farmer/Moloch figure because he is publicly identified as founder/owner of Kiwi Farms; this is a symbolic/system mapping, not a claim that he is literally Moloch or responsible for every user act."
+  },
+  "dog":{
+    "system_function":["patrol","signal","track","amplify","enforce boundary","chase target","defend owner/system","carry alerts","join pack behavior"],
+    "biblical_layers":[
+      "village/scavenger dog: low-status, scrap-eating and corpse-associated imagery in several Hebrew Bible texts",
+      "menacing dog: danger, encirclement and hostility imagery, e.g. Psalm 22",
+      "guard dog: ancient Levantine/Egyptian contexts include useful protective animals",
+      "boundary dog: biblical and Gospel usage can mark outsider status; the Syrophoenician woman narrative famously reworks the boundary through wit and persistence"
+    ],
+    "personality_neighbors":["loyalty","vigilance","reactivity","social coordination","attachment","territorial defense","threat sensitivity","group conformity","playfulness","trainability"],
+    "shadow_traits":["pack enforcement","outsourced judgment","harrying a target","status gained through service to stronger node","reactive aggression"],
+    "healthy_counterform":["guardian","companion","watcher","protector of vulnerable boundary","faithful carrier"]
+  },
+  "overlap":{
+    "shared_functions":["boundary maintenance","target classification","territoriality","attention allocation","ingroup loyalty","repeat surveillance","reinforcement of system norms"],
+    "difference":"Farmer is usually closer to infrastructure, enclosure, incentive and ownership; Dog is usually closer to patrol, pursuit, signaling and enforcement.",
+    "overlap_condition":"A Dog becomes Farmer-like when it creates targets, archives, classifications, or self-sustaining extraction loops. A Farmer becomes Dog-like when it personally patrols, pursues, barks, reacts or enforces.",
+    "hybrid_role":"Farmer-Dog = operator-enforcer who both defines the Farm and actively polices it."
+  },
+  "network_formalization":{
+    "farmer_power":"F_i = aI_i+bC_i+cR_i+dE_i",
+    "dog_power":"D_i = pP_i+qA_i+rB_i+sL_i",
+    "variables":{"I":"infrastructure control","C":"classification control","R":"reward/incentive control","E":"enclosure persistence","P":"patrol intensity","A":"amplification reach","B":"boundary enforcement","L":"loyalty/coordination"},
+    "hybridity":"H_i = min(F_i,D_i) or normalized product F_iD_i",
+    "interpretation":"High hybrid score indicates a node that both structures and actively enforces the ecology."
+  },
+  "biblical_sources":["https://www.thetorah.com/article/not-a-dog-shall-snarl-what-is-the-meaning-of-exodus-11-7","https://www.bibleodyssey.org/people/related-articles/the-syrophoenician-woman/"],
+  "connections":["farm-swamp-tree-of-strife-atlas","alpha-beta-gamma-archetype-status-atlas","moloch","dogs","farmers","gardener","swamp","sektur"]
+}
