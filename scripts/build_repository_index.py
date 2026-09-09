@@ -108,15 +108,18 @@ def main():
         merged.update({'id':cid,'name':c.get('term') or best['name'],'description':c.get('definition') or best.get('description',''),'canonical_id':cid,'canonical_concept':True,'source_record_id':best['id'],'occurrence_count':len(occurrences),'occurrences':[{'source':r['source'],'path':r['path'],'id':r['id'],'name':r['name'],'type':r['type']} for r in sorted(occurrences,key=lambda r:(r['source'],json.dumps(r['path'],separators=(',',':'))))]})
         consolidated.append(merged)
     present={r['canonical_id'] for r in consolidated}; registry_by_id={v['canonical_id']:v for v in concepts.values()}
+    registry_values=list(registry_by_id.values())
     for cid,c in registry_by_id.items():
         if cid in present:continue
-        consolidated.append({'id':cid,'name':c.get('term',cid),'description':c.get('definition',''),'type':c.get('canonical_role','concept'),'layer':'','record_role':'identity-index','owner_family':'potatoism','repository_root':'spirit','repository_layer':'meaning','repository_scale':'concept','classification_basis':'canonical-concept-registry','source':'data/potatoism-concept-registry.json','path':['concepts',next(i for i,x in enumerate(registry_by_id.values()) if x['canonical_id']==cid)],'canonical_id':cid,'canonical_concept':True,'source_record_id':cid,'occurrence_count':0,'occurrences':[]})
+        consolidated.append({'id':cid,'name':c.get('term',cid),'description':c.get('definition',''),'type':c.get('canonical_role','concept'),'layer':'','record_role':'identity-index','owner_family':'potatoism','repository_root':'spirit','repository_layer':'meaning','repository_scale':'concept','classification_basis':'canonical-concept-registry','source':'data/potatoism-concept-registry.json','path':['concepts',next(i for i,x in enumerate(registry_values) if x['canonical_id']==cid)],'canonical_id':cid,'canonical_concept':True,'source_record_id':cid,'occurrence_count':0,'occurrences':[]})
     unique=[];seen=set()
     for r in ordinary+consolidated:
         key=(r['source'],r['id'],json.dumps(r['path'],separators=(',',':')))
         if key not in seen:seen.add(key);unique.append(r)
     unique.sort(key=lambda r:(r['repository_root'],r['repository_layer'],r['name'].casefold(),r['source'],r['id']))
-    OUT.write_text(json.dumps({'version':'4.1.0','taxonomy_version':'repository-spine-2.3.0','concept_registry_version':'2.0.0','record_count':len(unique),'raw_record_count':len(records),'consolidated_concept_count':len(consolidated),'file_count':len(files),'json_errors':errors,'files':files,'records':unique},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    OUT.write_text(json.dumps({'version':'4.1.1','taxonomy_version':'repository-spine-2.3.0','concept_registry_version':'2.0.0','record_count':len(unique),'raw_record_count':len(records),'consolidated_concept_count':len(consolidated),'file_count':len(files),'json_errors':errors,'files':files,'records':unique},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     counts={r:sum(1 for x in unique if x['repository_root']==r) for r in ('spirit','mind','matter')}
     print(f'repository-index: {len(unique)} visible records from {len(records)} raw occurrences, {len(consolidated)} canonical concepts, {len(files)} JSON files, {len(errors)} JSON errors; roots={counts}')
+    for err in errors:
+        print(f"JSON ERROR: {err['source']}: {err['error']}")
 if __name__=='__main__':main()
