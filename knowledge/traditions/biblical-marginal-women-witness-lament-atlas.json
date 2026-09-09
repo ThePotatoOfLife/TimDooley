@@ -1,0 +1,69 @@
+{
+  "id":"biblical-marginal-women-witness-lament-atlas",
+  "updated":"2026-09-09",
+  "status":"biblical social-role comparator",
+  "purpose":"Investigate the user's description of Sammy as a woman/'lady of the night' alongside biblical women whose social marginality, sexual stigma, widowhood, lament, tears or boundary position become narratively important. This is a role atlas, not a one-to-one identity map.",
+  "source_boundary":"Sammy's social description is user-provided and is not independently verified here.",
+  "comparators":[
+    {
+      "figure":"Rahab",
+      "texts":["Joshua 2","Matthew 1:5"],
+      "facts":"Joshua explicitly calls Rahab a prostitute. She shelters the spies at Jericho, negotiates survival for her household, survives the city's fall, and Matthew later includes Rahab in the genealogy leading to David and Jesus.",
+      "motifs":["sex-work status","woman at city boundary","house","night","witness/knowledge","protective action","judgment","survival","genealogy"],
+      "project_relation":"Strongest explicit biblical sex-worker comparator to the user's 'lady of the night' description, but unrelated to Tammuz mourning unless chained through the wider women/witness atlas.",
+      "sources":["https://www.biblegateway.com/verse/en/Joshua%202%3A1","https://www.biblegateway.com/passage/?search=Matt.1&version=NKJV"]
+    },
+    {
+      "figure":"Tamar",
+      "texts":["Genesis 38","Matthew 1:3"],
+      "facts":"Tamar is a widow who disguises herself; Judah interprets her as a prostitute. The scene occurs beside a road/entrance and involves a pledge/seal. Matthew later names Tamar in Jesus' genealogy.",
+      "motifs":["widow","sexual disguise","misrecognition","road/entrance","pledge","Judah","genealogy"],
+      "project_relation":"Useful for social stigma + boundary/entrance + hidden identity, not as proof of a sex-worker identity.",
+      "sources":["https://www.biblegateway.com/passage/?search=Genesis+38&version=NIV%3BKJV%3BNLT%3BESV","https://www.biblegateway.com/passage/?search=Matthew+1&version=NIV%3BWEB"]
+    },
+    {
+      "figure":"Unnamed woman of Luke 7",
+      "text":"Luke 7:36-50",
+      "facts":"The text calls her a woman of the city/a sinner, not explicitly a prostitute. She stands behind Jesus weeping, wets his feet with tears, wipes them with her hair, kisses and anoints them, while the respectable host judges 'what kind of woman' she is.",
+      "motifs":["social stigma","woman","Jesus","weeping","tears","anointing","public judgment","forgiveness","debt parable"],
+      "project_relation":"Very strong social-stigma + woman-weeping-for/around-Jesus comparator. Especially relevant because tears and outsider status coexist in one scene.",
+      "boundary":"Do not call her a prostitute unless clearly marked as later tradition; Luke itself says sinner.",
+      "source":"https://www.biblegateway.com/passage/?search=Luke+7%3A36-50&version=NIV%3BNET"
+    },
+    {
+      "figure":"Gomer",
+      "text":"Hosea 1",
+      "facts":"Hosea's wife is described in sexual-unfaithfulness/promiscuity language and becomes part of a prophetic symbolic drama about covenant rupture.",
+      "motifs":["sexual marginality","woman","prophetic sign","covenant","children","judgment/restoration context"],
+      "project_relation":"Broad cultural/theological comparator for a sexually stigmatized woman becoming symbolically significant.",
+      "strength":"low-to-moderate for Sammy specifically because no mourning/Tammuz link occurs here.",
+      "source":"https://www.biblegateway.com/passage/?search=Hosea+1&version=NIV%3BNKJV"
+    },
+    {
+      "figure":"Mary Magdalene",
+      "text":"John 20",
+      "facts":"Mary is a mourning tomb witness: darkness, removed stone, missing body, tears, search, gardener misrecognition and recognition of the returned Jesus. The New Testament does not identify her as a prostitute.",
+      "motifs":["woman","darkness","tomb","weeping","absence","stone","gardener","recognition","return"],
+      "project_relation":"Strongest functional mourning-witness comparator to Sammy, independent of sexual status.",
+      "source":"https://www.biblegateway.com/passage/?search=john20.1-18&version=NIV%3BNKJV"
+    },
+    {
+      "figure":"Shulamite / female speaker",
+      "text":"Song of Songs 3:1-4",
+      "facts":"At night a woman searches the city for her absent beloved, cannot find him, encounters watchmen, asks after him and later finds him.",
+      "motifs":["woman","night","absence","search","city","watchmen","finding"],
+      "project_relation":"Poetic 'lady of the night' / absent-beloved comparator only; not a mourning or sex-work text.",
+      "strength":"low-to-moderate",
+      "source":"https://www.biblegateway.com/passage/?search=Song+of+Songs+3%3A1-4%2CSong+of+Solomon+3%3A1-4&version=NIV%3BKJV%3BNKJV"
+    }
+  ],
+  "synthesis":[
+    "The Bible repeatedly assigns decisive witness, boundary or lineage roles to women who are socially marginal, sexually stigmatized, widowed, misrecognized or judged by respectable observers.",
+    "For Sammy, the strongest evidence-backed comparison remains woman + mourning + slain/disappeared male figure, especially Ezekiel 8, Luke 23 and John 20. Her user-described sexual/social role adds a secondary Rahab/Tamar/Luke-7 comparison rather than replacing the mourning comparison.",
+    "Mary Magdalene should not be used as the sex-worker comparator; Rahab is explicit, Tamar is situational disguise, Luke 7 is social/sin stigma, and Gomer is covenant-symbolic sexual marginality."
+  ],
+  "related_records":[
+    "knowledge/traditions/women-weeping-gate-tomb-gardener-atlas.json",
+    "knowledge/chronology/sammy-kiwifarms-weeping-tammuz-ledger.json"
+  ]
+}
