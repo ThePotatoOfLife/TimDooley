@@ -1,0 +1,78 @@
+{
+  "id":"gauge-unification-supersymmetry-archaeology",
+  "title":"Gauge Unification & Supersymmetry Archaeology",
+  "updated":"2026-09-09",
+  "status":"canonical science archaeology + external extension",
+  "provenance_classes":["primary/project-attested","conversation-developed Timic formalism","repository formalization","established external physics","unrecovered primary target"],
+  "recovered_tim_material":{
+    "period":"May 2026",
+    "items":[
+      "Tim explicitly suggested that M-theory could give a lot of direction to the Potatoverse dimensional model.",
+      "Tim described the Son as a Door in the fifth dimension.",
+      "Tim described Father/root structure through higher compactified/fractal-like dimensional language."
+    ],
+    "status":"primary/project-attested through recovered conversation context"
+  },
+  "conversation_developed_formalism":[
+    "M_11 -> M_4 x X_7",
+    "G_4=dC_3",
+    "ds^2=e^(2A(y)) g_mn(x) dx^m dx^n + g_ab(y) dy^a dy^b",
+    "11D supergravity field content: metric g_MN, three-form C3, gravitino psi_M",
+    "11D supergravity has 32 real supercharges",
+    "11D -> 4D minimal supersymmetry naturally points to seven-dimensional G2-holonomy internal geometry"
+  ],
+  "not_recovered_as_tim_originals":["SU(4)","SU4","SU(5)","SU5","Pati-Salam","Georgi-Glashow","SO(10)","Spin(10)","E6","grand unified theory","GUT","supercharge algebra as Tim-authored notation"],
+  "existing_repository_base":{
+    "standard_model_gauge_group":"SU(3)_C x SU(2)_L x U(1)_Y",
+    "charge_relation":"Q=T3+Y",
+    "already_present":["one-generation chiral representations","covariant derivative","anomaly cancellation","Higgs/Yukawa structure","CKM","PMNS","RG flow","11D supergravity","G2 holonomy"]
+  },
+  "external_extension":{
+    "pati_salam":{
+      "group":"SU(4)_C x SU(2)_L x SU(2)_R",
+      "embedding":"SU(4)_C contains SU(3)_C x U(1)_(B-L)",
+      "generation_schematic":"(4,2,1) + (bar4,1,2)",
+      "hypercharge":"Y=T3R+(B-L)/2"
+    },
+    "su5":{
+      "group":"SU(5)",
+      "dimension":"24",
+      "dimension_rule":"dim SU(N)=N^2-1",
+      "sm_embedding":"SU(5) -> [SU(3)_C x SU(2)_L x U(1)_Y]/Z6",
+      "hypercharge_generator":"diag(-1/3,-1/3,-1/3,1/2,1/2)",
+      "generation":"bar5 + 10; optional singlet 1 for right-handed neutrino",
+      "adjoint_decomposition":"24 -> (8,1)_0 + (1,3)_0 + (1,1)_0 + (3,2)_(-5/6) + (bar3,2)_(5/6)"
+    },
+    "spin10":{
+      "group":"Spin(10)",
+      "contains_routes":["SU(5) x U(1)","SU(4)_C x SU(2)_L x SU(2)_R"],
+      "generation_representation":"16 including a right-handed neutrino"
+    },
+    "supersymmetry":{
+      "super_poincare":"{Q_alpha,Qbar_dotbeta}=2 sigma^mu_(alpha dotbeta) P_mu",
+      "commutator":"[P_mu,Q_alpha]=0",
+      "interpretation":"graded spacetime symmetry relating bosonic and fermionic states; distinct from ordinary internal/gauge symmetry"
+    },
+    "symmetry_breaking":"G --<Phi>--> H",
+    "rg_couplings":["mu dg_i/dmu = b_i g_i^3/(16 pi^2)","d alpha_i^(-1)/d ln(mu) = -b_i/(2 pi)"]
+  },
+  "timic_crosswalk":[
+    {"timic":"Axis / scale flow","external":"renormalization-group flow","status":"strong mathematical neighbor"},
+    {"timic":"higher-dimensional / M-theory direction","external":"11D supergravity / M-theory","status":"direct conversation-developed comparison"},
+    {"timic":"Door / threshold","external":"symmetry-breaking transition","status":"structural comparator only"},
+    {"timic":"integration without flattening","external":"larger representation/group containing differentiated subgroups","status":"structural comparator only"}
+  ],
+  "forbidden_backfills":[
+    "Do not identify Father/Son with boson/fermion or superpartners without a primary Tim source.",
+    "Do not identify Red/Blue with supersymmetry sectors without a primary source.",
+    "Do not present Pati-Salam, SU(5), Spin(10) or E6 as historical Tim inventions unless recovered evidence appears.",
+    "Do not use GUT or supersymmetry as empirical proof of Potatoverse theology."
+  ],
+  "research_targets":[
+    "Search archived exports for SU(4), SU4, SU(5), SU5, SO(10), Spin(10), Pati, Salam, Georgi, Glashow, GUT, supercharge, superpartner, Lie group.",
+    "Recover the exact May 2026 M-theory transcript and date anchors.",
+    "Build a Lie-group representation ledger and symmetry-breaking ledger.",
+    "Connect the existing Standard Model representation matrix to SU(5) and Spin(10) decompositions."
+  ],
+  "human_readable":"docs/SUPERSYMMETRY-SU4-SU5-GUT-ARCHAEOLOGY.md"
+}
