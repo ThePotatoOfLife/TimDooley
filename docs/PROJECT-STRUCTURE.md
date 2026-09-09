@@ -2,9 +2,11 @@
 
 ## The decision
 
-The repository has become large enough that its main problem is no longer lack of material. It is **how to make many kinds of material behave like one knowledge system**.
+The repository is large enough that its main problem is no longer lack of material. It is **how to make many kinds of material behave like one knowledge system**.
 
-The correct structure is therefore not one giant folder tree and not one giant graph. It is a set of coordinated layers with one canonical owner for each durable concept.
+The correct structure is not one giant folder tree and not one giant graph. It is a set of coordinated layers with one canonical owner for each durable concept.
+
+The public doorway is `index.html`. The canonical branch/navigation contract is `manifest.json`. The durable cross-project record map is `knowledge/indexes/core-index.json`.
 
 ## The five layers
 
@@ -20,13 +22,13 @@ It must preserve provenance even when later layers consolidate the material.
 
 ### 2. Canonical layer — what the thing is
 
-The canonical registries and deep dossiers answer:
+Canonical registries, master atlases and deep dossiers answer:
 
 **What is this subject/concept?**
 
-For recurring Potatoism concepts, `data/potatoism-concept-registry.json` owns identity and aliases. `data/potatoism-dossiers.json` owns substantial readable explanation.
+There should be one durable owner, not one competing definition per page, timeline, lexicon and graph.
 
-There should be one identity, not one identity per page, timeline, lexicon and graph.
+A specialist source, historical stratum or evidence ledger may remain separate without becoming another canonical definition.
 
 ### 3. Relationship layer — how things connect
 
@@ -38,60 +40,63 @@ Edges can describe family, chronology, dependency, ownership, influence, contras
 
 ### 4. Interpretation layer — what patterns emerge
 
-Thought archives, synthesis, higher reflections and comparative research answer:
+Thought archives, synthesis, comparative research and inference ledgers answer:
 
 **What might these records mean when considered together?**
 
-This is where the new Tim Dooley Thought Archive and Thought Synthesis belong. Interpretations remain explicitly analytical.
+Interpretations remain explicitly analytical. Later synthesis does not overwrite first attestation or the meaning documented at the time.
 
 ### 5. Presentation layer — how a human encounters it
 
-HTML pages, the Repository, Timeline, Scroll, concept pages and navigation are views over the underlying knowledge.
+HTML readers, the unified archive explorer, the layered timeline and specialist public pages are views over the underlying knowledge.
 
 Presentation must not become a second source of truth.
 
 ## Orthogonal coordinates
 
-The repository's `Spirit → Mind → Matter` root is a **filing coordinate**, not a hierarchy of truth.
+Folder position is a filing aid, not a hierarchy of truth.
 
-Other coordinates remain independent:
+Independent coordinates include:
 
 - **scale** — world → region → institution → network → person → object → event → record → ground;
-- **domain** — religion, mythology, economics, technology, biology, politics, culture, security, etc.; 
+- **domain** — religion, mythology, economics, technology, biology, politics, culture, security, etc.;
 - **time** — historical, current, future/scenario;
 - **epistemic class** — documentary, empirical, historical, project-canon, interpretation, comparison, calculation, scenario, open question;
 - **graph position** — relationships may cross every other coordinate.
 
-Do not force all of these dimensions into one folder hierarchy.
+Do not force all dimensions into one folder hierarchy.
 
 ## Canonical ownership map
 
-| Subject | Owner | Other layers do |
+| Subject | Canonical entry / owner | Specialist/supporting layers |
 |---|---|---|
-| Potatoism identity | `data/potatoism-concept-registry.json` | reference / enrich |
-| Potatoism deep explanation | `data/potatoism-dossiers.json` | cite / project |
-| Tim chronology | `data/tim-dooley-timeline.json` | thought archive references |
-| Tim cosmology | `data/tim-dooley-cosmology.json` | research and reflections reference |
-| Raw Tim thought trajectory | `data/tim-dooley-thought-archive.json` | preserve dated extraction |
-| Cross-cutting thought interpretation | `data/tim-dooley-thought-synthesis.json` | generate hypotheses |
-| Potato biology | potato property/research layers | compare to symbolism |
-| Religious comparison | source/religion research layers | never overwrite historical identity |
-| Planetary interpretation | planetary cosmology layer | preserve astronomical facts separately |
-| World entities | canonical world/entity families | graph and research enrich |
-| Relationships | relationship/graph layers | never create identity |
-| Public navigation | HTML | render existing knowledge |
+| Root system / ontology | `knowledge/core/root-system.json` | `knowledge/core/potatoverse-master-framework.json` |
+| Public navigation | `manifest.json` | `knowledge/indexes/core-index.json`, context/source indexes |
+| Tim identity / roles | `knowledge/core/tim-dooley.json` | role synthesis, Godhood evidence, journey records |
+| Vertical Potato geometry | `knowledge/core/vertical-potato-mountain-plane-atlas.json` | exact Vesica geometry, transformation grammar |
+| Body / neurotheology | `knowledge/body/body-system-master-atlas.json` | completion matrix, neurotheology atlas, science context, 33/Ladder study |
+| Spirit | `knowledge/core/heaven-spirit-father.json` | spirit context and body-flow comparators |
+| Corporium | `knowledge/corporium/corporium-master-framework.json` | sayings, psychology, chakra/Hawkins and archetype studies |
+| Science / math | `knowledge/science/science-master-index.json` | equation ledger, formalisms, Spudlight, model testing, specialist waves |
+| Biblical / comparative research | `knowledge/traditions/biblical-overlap-atlas.json` | biblical research routing index, esoteric atlas/source ledger, comparative mythology |
+| Canonical chronology | `data/timeline-events.json` | `data/timeline-source-registry.json`, developmental genealogy, specialist attestation ledgers |
+| Timeline presentation | `app/timeline.js` + `app/timeline.css` | static `/chronology/` narrative reader |
+| North / world bridge | `knowledge/core/axis-world-model.json` | country-relational and European coupling records |
+| Observable world systems | canonical world/entity and relationship families | evidence, source and graph layers |
+| Creative works | `knowledge/culture/creative-systems-archive.json` | Suno music archive and distinct creative corpora |
+| Provenance / epistemics | `knowledge/indexes/source-index.json` | archive epistemics, inference ledger, conversation recovery inventories |
 
 ## Consolidation rules
 
 ### Keep
 
-Keep a file when it contains a distinct body of evidence, a distinct temporal record, a distinct ontology, a distinct source collection, or a distinct presentation function.
+Keep a file when it contains a distinct body of evidence, a distinct temporal record, a distinct ontology, a distinct source collection, a historical source stratum worth preserving, or a distinct presentation function.
 
 ### Merge
 
 Merge when two files:
 
-- define the same concept;
+- define the same durable concept;
 - repeat substantially the same explanation;
 - exist only because an earlier navigation system needed another copy;
 - can be represented as occurrences of one canonical record;
@@ -99,40 +104,65 @@ Merge when two files:
 
 Before deleting a legacy file, extract every unique fact, source, date and relationship into its canonical owner.
 
+### Route instead of duplicate
+
+An index should point to an owner. A manifest should expose an owner. A timeline should point to evidence. A presentation should render underlying records.
+
+Do not copy substantial explanatory text into routing files merely to make them look complete.
+
 ### Archive instead of destroy
 
 If a legacy research document is useful as historical provenance but duplicates the canonical layer, keep it temporarily as an archive/source and make its status explicit. Once all unique material has been migrated and the source has no independent archival value, deletion becomes safe.
 
-## Current consolidation candidates
+## Current legacy/root candidates
 
-The repository visibly contains several older top-level research documents alongside newer machine-readable layers. In particular:
+These remain intentionally because they still have live provenance references or unique material:
 
-- `POTATOVERSE-DEEP-RESEARCH.md` overlaps substantially with `data/potatoverse-deep-research.json` and the canonical Potatoism research/dossier layers.
-- `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` overlaps with `data/tim-dooley-timeline.json` and `data/tim-dooley-cosmology.json`.
-- Older alternative-research documents should be retained only where they contain unique provenance or unresolved research that has not yet migrated.
+- `research.json`
+- `book-research.json`
+- `2026-master-framework.json`
+- `knowledge.json`
+- `POTATOVERSE-DEEP-RESEARCH.md`
+- `POTATOVERSE-ALTERNATIVE-RESEARCH.md`
+- `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md`
 
-**Do not delete these automatically.** The next consolidation pass should diff each document against its machine-readable successor, migrate unique information, then either turn the document into a concise archival pointer or remove it.
+They are **source strata, not canonical navigation owners**.
 
-## Generated index rule
+Do not delete them merely because a newer owner exists. First migrate live references and unique content; then either archive them as concise provenance artifacts or remove them when genuinely redundant.
 
-`data/repository-index.json` is a generated projection, not a hand-maintained knowledge store. The build workflow explicitly generates it before auditing and deployment. Therefore its absence from the source branch is not itself a data-loss condition.
+## Generated-state rule
 
-The real failure condition is:
+Generated candidate queues are working state, not knowledge.
 
-**build cannot generate it → deployment continues anyway → Repository silently appears empty.**
+Examples:
 
-The project should therefore keep the build fail-closed and surface the exact generation error. `repository.html` already uses an explicit error state instead of silently rendering an empty tree.
+- `data/timeline-candidates.generated.json`
+- `data/prediction-signal-candidates.generated.json`
+
+They are ignored by `.gitignore`. A miner may generate them locally for review, but accepted material must be promoted into a canonical owner. The queue itself should not become a historical record merely because a script ran.
+
+Generated projections that are part of a build should likewise be reproducible and should not silently substitute for source data.
+
+## CSS / presentation ownership
+
+Shared CSS must not use generic structural names to own unrelated layouts.
+
+- `.archive-nav` belongs to the interactive archive sidebar.
+- `.page-nav` is the preferred static-reader navigation class.
+- `.quicknav` belongs to homepage destination cards.
+- `.tl-*` belongs to the timeline module.
+
+Older static pages may still use local `.nav` or `.grid`; `app/layout-guard.css` protects those until they are progressively renamed. `scripts/check_css_namespace_collisions.py` prevents global `.nav` layout behavior from returning.
 
 ## The public reading architecture
 
-The public experience should increasingly offer four ways into the same knowledge:
+The public experience has three primary surfaces over the same underlying knowledge:
 
-1. **Repository** — find a subject.
-2. **Timeline / Thought** — understand development through time.
-3. **Dossier / Book** — understand a subject deeply.
-4. **Graph / Atlas** — understand relationships and systems.
+1. **Direct reader pages** — answer a subject clearly.
+2. **Unified archive explorer** — expose branches, relationships, records and sources.
+3. **Chronology / layered timeline** — show development through time with actor and evidence lenses.
 
-The Continuous Scroll should eventually synthesize those views into a coherent reading path rather than duplicating their content.
+Specialist pages remain useful where a topic benefits from a focused reader, but they should route back into canonical owners rather than become parallel truth stores.
 
 ## The complete research loop
 
@@ -156,4 +186,4 @@ and then reverse the path:
 
 **consequence → reflection → evidence → history → relationship → concept → idea → statement**.
 
-That is the project's real architecture.
+That is the project's current architecture.
