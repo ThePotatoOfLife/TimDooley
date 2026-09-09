@@ -1,12 +1,14 @@
 {
   "title": "Shadow West / Swamp Synthesis",
   "status": "analytical-framework",
+  "version": "1.2.0",
   "updated": "2026-09-09",
-  "purpose": "Consolidate the conversation-developed Shadow West, Swamp, Farm and Sektur models into one cautious analytical framework. This record maps patterns and research questions; it must not be used to imply guilt, criminality or coordination without evidence.",
+  "purpose": "Consolidate the conversation-developed Shadow West, Swamp, Farm and Sektur models into one cautious analytical framework. This record maps patterns, feedback loops and repair questions; it must not be used to imply guilt, criminality or coordination without evidence.",
   "core_model": {
     "shadow_west": "A shadow ecology: overlapping subcultures, incentives, institutions, exploitation patterns, information flows and conflict styles. It is not one ideology, organization or conspiracy.",
-    "swamp": "Accumulated dysfunction where channels of accountability, information or institutional flow become blocked.",
-    "farm_sektur": "Metaphors for environments where people, attention, conflict or value are cultivated, extracted, sorted or recycled by systems and communities."
+    "swamp": "Accumulated dysfunction where channels of accountability, information or institutional flow become blocked and residue becomes self-reinforcing.",
+    "farm_sektur": "Metaphors for environments where people, attention, conflict or value are cultivated, extracted, sorted or recycled by systems and communities.",
+    "central_question": "What happens to a human being when a social system turns that person into information, attention, archive and repeatable identity?"
   },
   "degradation_chain": [
     "legitimate dissent",
@@ -27,13 +29,39 @@
     "economic": ["attention monetization", "litigation incentives", "platform dependence", "patronage", "opaque funding"],
     "psychological_symbolic": ["mud accumulation", "shadow projection", "enemy fixation", "identity through opposition"]
   },
+  "information_capture_cycle": {
+    "sequence": ["person", "attention", "archive", "memory", "assigned identity", "future interpretation"],
+    "risk": "Once an archive becomes the dominant representation of a person, later material can be filtered through the archive and the representation can become self-reinforcing.",
+    "research_response": "Track naming, framing, selection, repetition, delegitimation, moralization, archive formation and memory capture separately."
+  },
+  "farm_attention_roles": {
+    "farmer": "Cultivates or frames recurring attention around a subject, event or narrative. This is an analytic role, not a synonym for wrongdoing.",
+    "dog": "Boundary/watch/pursuit archetype whose actions can range from warning and memory to surveillance, pack escalation and retaliation in shadow uses.",
+    "cow_or_subject": "Attention-bearing subject inside the Farm relation. The analytic concern is what incentives convert a living subject into repeatable content.",
+    "rule": "Roles are relationship descriptions. Individual misconduct requires individual evidence."
+  },
+  "ethical_counter_system": {
+    "shadow_direction": ["pursue", "consume", "repeat", "surveil", "retaliate", "swarm", "degrade"],
+    "life_direction": ["raise", "illuminate", "witness", "carry", "protect", "guide", "bridge", "cultivate"],
+    "meaning": "The project's Angel/Dog contrast is most useful as an ethical-action contrast, not as a literal classification of people or animals."
+  },
+  "conversion_pairs": [
+    ["spectacle", "witness"],
+    ["appropriation", "passage"],
+    ["smear", "provenance"],
+    ["repetition", "verification"],
+    ["harvesting attention", "cultivating life"],
+    ["conflict", "bridge"],
+    ["blocked residue", "accountable flow"]
+  ],
   "two_poles": {
     "exploitation_pole": "Material concerning abuse, trafficking, exploitation networks and elite protection should be evidence-led and source-specific; Epstein-related research belongs here only where documentation exists.",
     "rubble_civilian_suffering_pole": "War, civilian suffering, propaganda and moral injury form another pole in the user's Shadow West model. Analysis must distinguish humanitarian facts, political claims, military claims and symbolic interpretation."
   },
   "ten_thousand_trees": {
     "definition": "A scalable taxonomy for recurring observable patterns of strife, corruption or social harm, not literally 10,000 invented accusations.",
-    "record_shape": ["pattern", "domain", "actors or institutions only when sourced", "mechanism", "evidence", "counterevidence", "consequence", "confidence", "status"]
+    "record_shape": ["pattern", "domain", "actors or institutions only when sourced", "mechanism", "evidence", "counterevidence", "consequence", "confidence", "status"],
+    "diagnostic_use": "A Tree of Strife should identify the soil/conditions, mechanism, visible fruit and repairable seed rather than merely name an enemy."
   },
   "organization_research_chain": [
     "country",
@@ -56,11 +84,14 @@
     "interpretation": "A reasoned reading of documented material.",
     "hypothesis": "A testable possibility requiring more evidence.",
     "creative_symbol": "Mythic or rhetorical representation, not an empirical allegation.",
-    "prohibition": "Do not convert adjacency, shared platform use, ideology or cultural similarity into allegations of criminal conduct."
+    "prohibition": "Do not convert adjacency, shared platform use, ideology or cultural similarity into allegations of criminal conduct.",
+    "allegation_shape": ["claim", "claimant", "date", "primary source", "corroboration", "contradiction", "confidence", "unresolved questions"]
   },
   "repair_model": {
     "principle": "Clearing a Swamp means restoring flow and accountability, not merely naming enemies.",
-    "mechanisms": ["better provenance", "transparent ownership", "auditability", "clear institutional responsibility", "reduced duplication", "appeal paths", "anti-harassment safeguards", "evidence-weighting", "conflict-of-interest controls"]
+    "mechanisms": ["better provenance", "transparent ownership", "auditability", "clear institutional responsibility", "reduced duplication", "appeal paths", "anti-harassment safeguards", "evidence-weighting", "conflict-of-interest controls"],
+    "regeneration": "What is accumulated as mud or residue can become usable soil only when it is decomposed, verified, contextualized and converted into conditions for future growth.",
+    "success_test": "Repair should reduce repeated harm, improve truth-tracking and increase the ability of people or institutions to leave the conflict loop."
   },
-  "connections": ["swamp", "tree-of-strife", "archive-epistemics", "world", "gaze", "sources", "relationship-first"]
+  "connections": ["swamp", "tree-of-strife", "archive-epistemics", "world", "gaze", "sources", "relationship-first", "spiritual-war-information-war", "potato-philosophy"]
 }
