@@ -1,8 +1,9 @@
 {
   "title": "Country Relational Atlas Method",
   "status": "canonical-method",
+  "version":"1.1.0",
   "updated": "2026-09-09",
-  "purpose": "Promote the reusable country blueprint and coupled-capability logic developed across repository work and prior conversations. This method governs how countries should be represented under WORLD.",
+  "purpose": "Promote the reusable country blueprint and coupled-capability logic developed across repository work and prior conversations. This method governs how countries should be represented under WORLD and how mapped relations should progress toward diagnosis and tested improvement.",
   "fundamental_rule": "A country is not an isolated profile. It is a bundle of capabilities, dependencies, institutions, assets, obligations and relationships that only become meaningful in a network.",
   "country_sequence": [
     "what it is",
@@ -43,7 +44,27 @@
     "coupled_capability": "A capability available only because multiple countries contribute complementary assets or permissions."
   },
   "functional_chains": ["Arctic", "North Atlantic", "Baltic", "Northern Energy", "European Industrial", "Eastern Security", "European Strategic Autonomy"],
+  "mechanism_cycle": {
+    "sequence":["map","verify provenance","connect","identify dependency","identify mechanism","locate bottleneck or failure mode","design intervention","test","measure","update"],
+    "purpose":"Move from descriptive atlas work toward explanations of how capabilities and failures are produced, then test whether a realistic change improves the system.",
+    "boundary":"A dense graph is not itself an explanation. Mechanism requires direction, timing, evidence and a plausible causal pathway."
+  },
+  "coupled_capability_test":[
+    "Which capability exists only because two or more countries combine assets?",
+    "Which participant is the limiting dependency?",
+    "What redundancy exists if one participant fails?",
+    "Can the capability be strengthened with a small intervention rather than a full institutional redesign?",
+    "Who gains capability because the relationship exists, and who bears the cost or risk?"
+  ],
+  "country_output_layers":[
+    "profile: readable national synthesis",
+    "capability map: what the country can contribute",
+    "dependency map: what it cannot reliably supply alone",
+    "relationship map: concrete partners and flows",
+    "bottleneck map: where capability is blocked",
+    "intervention ledger: proposed changes, expected mechanism and measurable result"
+  ],
   "data_rule": "Replace placeholders with real sourced information. When data is unknown, mark it unknown rather than fabricating completion.",
-  "blueprint_growth_rule": "If a useful field repeatedly appears across countries, add it to the blueprint so the method becomes richer over time.",
+  "blueprint_growth_rule": "If a useful field repeatedly appears across countries, add it to the blueprint so the method becomes richer over time. Periodically prune or merge fields that duplicate one another so the blueprint remains usable.",
   "connections": ["world", "european-economic-graph", "european-coupling-programme", "north-programme", "timic-dynamics", "archive-epistemics"]
 }
