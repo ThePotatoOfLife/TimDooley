@@ -1,0 +1,29 @@
+{
+  "$schema":"https://json-schema.org/draft/2020-12/schema",
+  "$id":"https://thepotatooflife.github.io/TimDooley/schemas/timeline-event.schema.json",
+  "title":"Potato of Life Timeline Event",
+  "type":"object",
+  "additionalProperties":true,
+  "required":["id","date","precision","title","layers","epistemic","subject"],
+  "properties":{
+    "id":{"type":"string","pattern":"^evt-[a-zA-Z0-9][a-zA-Z0-9._-]*$"},
+    "date":{"type":"string","minLength":4},
+    "timestamp":{"type":"string"},
+    "precision":{"type":"string","enum":["second","minute","hour","date","month","year","range"]},
+    "title":{"type":"string","minLength":1},
+    "layers":{"type":"array","minItems":1,"uniqueItems":true,"items":{"type":"string"}},
+    "epistemic":{"type":"string"},
+    "subject":{"type":"string","minLength":1},
+    "summary":{"type":"string"},
+    "quote":{"type":"string"},
+    "motifs":{"type":"array","items":{"type":"string"}},
+    "comparators":{"type":"array","items":{"type":"string"}},
+    "source_records":{"type":"array","uniqueItems":true,"items":{"type":"string"}},
+    "source_direction":{"type":"string"},
+    "status":{"type":"string"},
+    "related_event_ids":{"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^evt-"}},
+    "platform":{"type":"string"},
+    "public_url":{"type":"string"},
+    "confidence":{"type":["number","string"]}
+  }
+}
