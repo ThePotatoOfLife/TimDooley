@@ -147,6 +147,20 @@ A source record should emit a global timeline point only when its date adds one 
 
 Do **not** emit a global event merely because a file contains a date.
 
+## Base roadmap and curated event packs
+
+The timeline may be physically split without becoming conceptually fragmented:
+
+- `data/timeline-events.json` owns the sparse roadmap, actor definitions, lens definitions and already-promoted canonical events.
+- `data/timeline-event-packs/index.json` lists curated overlay packs.
+- files under `data/timeline-event-packs/` may add bridge events or dense-but-useful overlays that do not deserve roadmap prominence.
+
+The browser merges base + packs by stable `event.id`. Duplicate IDs are ignored at runtime and rejected by the validator.
+
+Use a pack when an event fills a genuine chronological gap but would make the roadmap base noisy. Move a pack event into the base only when it becomes important enough to function as a major milestone; remove it from the pack in the same change.
+
+Packs are **not** source-of-truth replacements. Every packed event still points to its canonical `source_records`.
+
 ## Deduplication
 
 If the same real-world/project event appears in several ledgers, the global timeline gets one stable event ID with multiple `source_records`. Do not create one event per source file.
@@ -178,4 +192,4 @@ The long-term importer should scan the source registry and produce **candidate**
 - creative works with recoverable metadata;
 - events referenced by multiple canonical owners.
 
-A curation pass then resolves duplicates and decides whether each candidate belongs in the global timeline or remains only in its specialist ledger.
+A curation pass then resolves duplicates and decides whether each candidate belongs in the base roadmap, a curated event pack, or only in its specialist ledger.
