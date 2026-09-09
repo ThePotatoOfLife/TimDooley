@@ -1,67 +1,84 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-08",
+  "version":"2.0.0",
+  "updated":"2026-09-09",
   "status":"canonical-geometry-study",
-  "name":"Vesica Piscis & Mandorla",
-  "purpose":"A substantial geometry record for two closely related figures used throughout mathematics, geometry, art, architecture, symbolism and the project's interpretive vocabulary. Mathematical facts are separated from historical and symbolic interpretation.",
-  "epistemic_rule":"The geometric definitions and calculations are mathematical. Historical and symbolic sections describe documented uses or project interpretation and must not be confused with scientific evidence for metaphysical claims.",
+  "name":"Vesica Piscis & Mandorla — Geometry, Centers, Axis and Door",
+  "purpose":"Provide the canonical mathematical geometry for Vesica Piscis/Mandorla and explicitly distinguish circle centers, relational/lens center, symmetry axes and Potatoverse mappings. Mathematical facts are separated from historical symbolism and project interpretation.",
+  "epistemic_rule":"Geometry is mathematical. Art-history claims require historical sources. Potatoverse mappings—Father/Sun circle, Earth/humanity circle, Son/Door overlap, Tim as source-center or Axis reference—are project interpretations and do not follow from the geometry itself.",
   "vesica_piscis":{
-    "definition":"The Vesica Piscis is the lens-shaped intersection of two congruent circles, each passing through the other's centre, so the distance between the circle centres equals the common radius.",
-    "construction":"Draw two circles of radius r with centres separated by r. Their two intersection points and the two circle arcs between them define the lens.",
+    "definition":"The Vesica Piscis is the lens-shaped intersection of two congruent circles whose center separation equals their common radius r.",
+    "canonical_coordinates":{
+      "left_center":"C1=(-r/2,0)",
+      "right_center":"C2=(r/2,0)",
+      "relational_midpoint":"CR=(0,0)",
+      "intersection_points":"P±=(0,±sqrt(3)r/2)"
+    },
     "key_geometry":{
       "circle_radius":"r",
-      "centre_distance":"r",
+      "center_distance":"r",
       "lens_width":"r",
-      "lens_height":"sqrt(3) r",
-      "area":"r^2 (pi/3 - sqrt(3)/2)",
-      "area_decimal":"approximately 0.6141848493 r^2",
-      "intersection_points":"If centres are (-r/2,0) and (r/2,0), the intersections are (0, ±sqrt(3)r/2)."
+      "lens_height":"sqrt(3)r",
+      "full_lens_area":"A=(1/6)(4π-3√3)r²",
+      "area_decimal":"approximately 1.2283697 r²",
+      "correction":"The archive's previous value approximately 0.6141848493 r² was half of the full lens area and has been corrected."
     },
-    "construction_angles":"The two radii from either circle centre to the intersection points form a 60 degree central angle. The complete lens therefore comes from two 60 degree circular sectors with two equilateral-triangle portions removed.",
-    "triangle_relation":"The three points consisting of one circle centre and the two intersection points form an equilateral triangle. The same is true for the other centre.",
-    "symmetry":"The figure has a vertical axis of reflection, a horizontal axis of reflection through the circle centres, and rotational symmetry of order two.",
-    "not_a_unit":"Vesica Piscis is a shape/construction, not a physical unit, frequency, dimension or universal metaphysical constant."
+    "derivation":"The full lens consists of two congruent circular segments. Equivalently A=2[(πr²/3)-(√3 r²/4)]=(2π/3-√3/2)r²=(1/6)(4π-3√3)r².",
+    "angles":"The radii from either circle center to the two intersection points subtend 120 degrees for the intersecting segment geometry; the center-to-center/intersection triangles are equilateral with 60 degree angles. Care is needed not to confuse the equilateral-triangle 60-degree angles with the full sector used in the lens-area calculation.",
+    "symmetry":"The line joining C1 and C2 is the horizontal symmetry axis. The perpendicular bisector x=0 through P± is the vertical symmetry axis. Their intersection CR is the geometric center of the lens relation.",
+    "source":"https://mathworld.wolfram.com/VesicaPiscis.html"
+  },
+  "center_taxonomy":{
+    "C1_C2":"centers intrinsic to each complete parent circle; each can represent its own domain/source/reference",
+    "CR":"midpoint created by relation between the two parent centers and center of the overlap lens; belongs naturally to the relationship rather than exclusively to either circle",
+    "intersection_points":"threshold points where both circle boundaries simultaneously meet",
+    "axis_crossing":"CR is also where horizontal and vertical symmetry axes cross",
+    "project_warning":"Calling Tim 'the center' is incomplete unless the archive states whether Tim means source-circle center, relational lens center, Axis/reference center or another center type."
   },
   "mandorla":{
-    "definition":"Mandorla means almond and is a lens- or almond-shaped enclosure produced by overlapping circles or by a related geometric outline. In art history it is especially associated with figures depicted within an almond-shaped aureole.",
-    "geometry_relation":"A mandorla can be constructed from the same overlapping-circle geometry as a Vesica Piscis, but the artistic term has a wider historical use and does not require one single mathematical construction in every artwork.",
-    "visual_character":"The pointed ends and curved sides create a strong vertical enclosure. Depending on scale and construction, the outline can resemble a leaf, almond, lens, doorway or elongated oval intersection.",
-    "art_historical_use":"Mandorla forms appear in Christian art as a surrounding aureole for Christ, the Virgin and other sacred figures, especially in medieval and Byzantine traditions. Similar enclosing or almond-like forms also occur in other artistic traditions, but each use should be researched in its own historical context.",
-    "symbolic_reading":"Common interpretations include glory, transcendence, sacred presence, transformation and the meeting of distinct realms. These are symbolic readings rather than measurements established by geometry itself."
+    "definition":"Mandorla ('almond') is the art-historical term for an almond/lens-shaped sacred enclosure or aureole. Some mandorlae use Vesica-like geometry, but not every mandorla is mathematically a standard Vesica Piscis.",
+    "historical_use":"Especially prominent in Byzantine and medieval Christian art around Christ, the Virgin and other sacred figures, often marking divine glory, manifestation or a threshold between ordinary and transcendent space.",
+    "potatoverse_value":"The mandorla supplies an especially good visual Door/Vessel because it is not either parent circle but the shared region in which two complete domains are simultaneously present."
   },
-  "relationship":{
-    "vesica_to_mandorla":"The Vesica Piscis is the precise geometric lens produced by two equal intersecting circles. Mandorla is the broader art-historical and visual term for an almond-shaped enclosure or aureole. In some contexts the terms overlap; they should not be treated as exact synonyms in every source.",
-    "two_circles":"The two-circle construction makes the boundary between overlap and separation visible. Each circle is independently complete while their intersection creates a third shared region.",
-    "boundary":"The curved boundary is generated by arcs rather than straight edges. This makes the figure useful for studying inside/outside, intersection, shared space, symmetry and transition.",
-    "axis":"The line joining the circle centres is a natural horizontal axis. The perpendicular bisector through the two intersection points is a natural vertical symmetry axis. Their crossing gives the geometric centre of the lens.",
-    "dimension":"The shape is fundamentally two-dimensional, but it can be used as a section, projection or visual motif within three-dimensional structures. A 3D interpretation is an added construction, not part of the base definition."
+  "potatoverse_mapping":{
+    "recommended_default":{
+      "source_circle":"Father/Tim/Sun/Heaven field",
+      "embodied_circle":"Earth/humanity/manifested world",
+      "overlap":"Son/Christ/Thomas/Vessel/Door interface",
+      "source_center":"Tim/Father as source-center of upper/source domain",
+      "relational_center":"center of Door/overlap; not automatically identical with Father/source-center",
+      "vertical_axis":"Ladder/Axis connecting upper and lower readings through the overlap"
+    },
+    "why_this_mapping_is_stronger":"It preserves the mature identity-to-infrastructure law: Father is source/orientation/House; Son is interface/Door; their relation creates a shared region without erasing either domain. It also allows Tim to be 'center' in a source/orientational sense without forcing Tim to occupy the Son's Door-center geometrically.",
+    "stereo_theoism":"The two complete circles can still support the project's Stereo Theoism/non-dual-dualism: two differentiated lenses/domains create a third shared region. The overlap is relation, not annihilation of difference.",
+    "eye_relation":"The pointed lens resembles an Eye/almond/doorway in project symbolism; mathematically this resemblance has no theological content until mapped.",
+    "birth_canal_relation":"The lens can function as project birth-canal/threshold imagery because it is a bounded passage between differentiated fields; this remains interpretive symbolism."
+  },
+  "sun_moon_earth_extension":{
+    "principle":"Do not force Sun, Moon and Earth into a literal two-circle astronomy diagram. Instead use Vesica as relational topology: Source/illumination field and embodied/observer field overlap through Door, while Moon can occupy a reflector/mediator role inside or adjacent to the embodied side depending the diagram.",
+    "sun":"source/illumination comparator",
+    "moon":"reflected/phase-dependent mediator rather than independent source",
+    "earth":"observer/embodiment/metabolizing field",
+    "door":"shared relation in which source becomes perceivable/actionable to embodied observer"
+  },
+  "mesopotamian_geometry_neighbor":{
+    "finding":"MathWorld's reconstruction of the Old Babylonian 'ox-eye' or Babylonian bull's-eye identifies a figure geometrically equivalent to a Vesica Piscis.",
+    "importance":"This creates a historically interesting Mesopotamia↔Eye↔Vesica mathematical neighbor for the archive.",
+    "boundary":"It does not demonstrate an ancient Babylonian doctrine of Christ, Door, Tim, Potato of Life or the project's metaphysics.",
+    "source":"https://mathworld.wolfram.com/OxEye.html"
   },
   "mathematical_notes":[
-    "For radius r, the lens height is sqrt(3)r and its width is r under the standard Vesica Piscis construction.",
-    "The two lens arcs each subtend 60 degrees at their respective circle centres.",
-    "The two equilateral triangles inside the construction have side length r.",
-    "The lens area can be derived as twice the area of a 60 degree sector minus twice the area of an equilateral triangle of side r.",
-    "Scaling the entire construction by factor k multiplies every length by k and the area by k^2; the shape is scale-invariant in form."
+    "Scaling by k multiplies all lengths by k and area by k² while preserving shape.",
+    "The figure has two reflection axes and 180-degree rotational symmetry.",
+    "Each parent circle remains complete; overlap does not subtract the identity of either parent domain.",
+    "CR is midpoint/balance of the two circle centers, not the center of either parent circle.",
+    "The two intersection points are equal-distance from C1 and C2, making them natural mathematical boundary-agreement points."
   ],
-  "historical_and_cultural_notes":[
-    "The geometry belongs to elementary Euclidean circle geometry and is not exclusive to any one religion.",
-    "The Vesica Piscis became an important geometric motif in medieval European art and architecture and is discussed in relation to proportional systems, diagramming and sacred art.",
-    "The mandorla is especially prominent in Christian iconography as a field surrounding a sacred figure, often marking a scene of divine glory or otherworldly manifestation.",
-    "Historical claims about exact origins, hidden numerical meanings or universal sacred codes require source-specific evidence. The existence of a geometric proportion does not by itself prove a theological interpretation."
-  ],
-  "potatoism_reading":{
-    "status":"project-interpretation",
-    "text":"Within the Potatoism architecture, the Vesica Piscis and Mandorla are useful as diagrams of overlap, threshold and shared space. Two complete circles can represent distinct fields; their intersection can represent the Door or a common interface; the almond-shaped interior can represent a vessel, passage or region where two domains become simultaneously present. This is a symbolic reading of geometry, not a claim that the geometry scientifically proves the project's metaphysics.",
-    "axis_relation":"The perpendicular symmetry axis provides a natural visual Axis. The central lens can be treated as a Door-shaped overlap between two fields, while the outer circles remain distinct sources or domains. The same diagram can therefore connect Spirit, Mind and Matter without requiring those domains to become identical.",
-    "tree_relation":"The upper/lower reading can be placed over the vertical symmetry axis, allowing the figure to sit beside Tree of Life, Door and Son records as a comparative diagram. The geometry itself remains unchanged by that interpretation.",
-    "red_blue_reading":"The two circles can be used as a Red/Blue Potato diagram when explicitly marked as project symbolism: distinct modes or movements meet in an overlap without either circle disappearing. The overlap is a relation, not a new permanent category."
-  },
   "research_questions":[
-    "How was the Vesica Piscis used in specific medieval architectural proportional systems, and which claims are supported by primary sources?",
-    "How did mandorla imagery vary between Byzantine, Romanesque, Gothic and later artistic traditions?",
-    "Which mathematical constructions in historical architecture actually use the Vesica Piscis, and which modern writers merely assert such use?",
-    "How should the geometry be represented in the 3D Axis without confusing a 2D construction with a physical object?",
-    "Which relationships between Vesica Piscis, Door, Axis, Tree of Life and Son are project interpretations rather than historical claims?"
+    "Recover the exact Potatoverse diagram that assigned Tim, Son, Jesus, Earth and Heaven to upper/lower circles and lens.",
+    "Audit every repository use of 'center' and tag it as source-center, lens-center, symmetry-center, dynamical/barycentric center, orientational center or attention-center.",
+    "Study historically sourced mandorla examples before making stronger Christian iconographic claims.",
+    "Compare the Babylonian ox-eye construction with actual tablet scholarship rather than using MathWorld alone for historical interpretation.",
+    "Keep any 3D extension explicitly separate from the canonical 2D geometry."
   ],
-  "related_records":["axis","door","son","tree-of-life","spirit-matter","interface","perception","passage","potato-boundary","potato-threshold","potato-axis","potato-spatial"]
+  "related_records":["potatoism-planetary-cosmology","spudlight-theory-and-equations","axis","door","son","father","tree-of-life","eye","interface","potato-boundary","potato-axis","potato-spatial"]
 }
