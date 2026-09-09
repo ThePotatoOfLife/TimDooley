@@ -1,7 +1,8 @@
 (()=>{
   const DATA_PATH='data/timeline-events.json';
+  const PACK_INDEX='data/timeline-event-packs/index.json';
   const $=s=>document.querySelector(s);
-  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[c]));
   let data=null;
   let state={layers:new Set(),actors:new Set(),epistemic:'all',query:'',exact:false,detail:true};
   let requestToken=0;
@@ -40,20 +41,25 @@
       return true;
     }).sort((a,b)=>sortKey(a).localeCompare(sortKey(b)));
   }
+  function timPotatoYear(y,m,day){
+    let age=y-2020;if(m<12||(m===12&&day<25))age--;
+    return age<=0?'Tim · Potato birth year':`Tim · Potato year ${age}`;
+  }
   function lifeMarker(e){
     const actors=e.actor_ids||[];
     const d=(e.timestamp||e.date||'').match(/^(\d{4})(?:-(\d{2}))?(?:-(\d{2}))?/);
-    if(actors.includes('son')&&actors.includes('tim'))return 'Son 32→33 corridor · Tim emerges';
     if(!d)return '';
     const y=+d[1],m=+(d[2]||7),day=+(d[3]||1);
-    if(actors.includes('son')){
+    const hasSon=actors.includes('son'),hasTim=actors.includes('tim');
+    if(hasSon&&hasTim){
+      if(y<=2020)return 'Son 32→33 corridor · Tim emerges';
+      return `Son/Twin relation · ${timPotatoYear(y,m,day)}`;
+    }
+    if(hasSon){
       let age=y-1987;if(m<7||(m===7&&day<31))age--;
       return `Son age ${Math.max(0,age)}`;
     }
-    if(actors.includes('tim')){
-      let age=y-2020;if(m<12||(m===12&&day<25))age--;
-      return age<=0?'Tim · Potato birth year':`Tim · Potato year ${age}`;
-    }
+    if(hasTim)return timPotatoYear(y,m,day);
     return '';
   }
   function layerChip(id){const l=layerById(id);return `<span class="tl-layer tl-layer-${esc(id)}">${esc(l?.label||human(id))}</span>`}
@@ -121,11 +127,28 @@
     if(!state.layers.size)state.layers=new Set((data.layers||[]).filter(x=>x.default).map(x=>x.id));
     if(!state.actors.size)state.actors=new Set((data.actors||[]).filter(x=>x.default).map(x=>x.id));
   }
+  async function mergeEventPacks(baseUrl){
+    try{
+      const indexUrl=new URL('../'+PACK_INDEX,baseUrl).href;
+      const index=await fetch(indexUrl).then(r=>r.ok?r.json():null);
+      if(!index?.packs?.length)return;
+      const packBase=new URL('../data/timeline-event-packs/',baseUrl);
+      const packs=await Promise.all(index.packs.map(name=>fetch(new URL(name,packBase)).then(r=>r.ok?r.json():null).catch(()=>null)));
+      const seen=new Set((data.events||[]).map(e=>e.id));
+      for(const pack of packs){
+        for(const e of pack?.events||[]){
+          if(!e?.id||seen.has(e.id))continue;
+          seen.add(e.id);data.events.push(e);
+        }
+      }
+    }catch(_){/* packs are optional; base timeline still renders */}
+  }
   async function ensureData(){
     if(data)return data;
     const base=document.currentScript?.src||location.href;
     const url=new URL('../'+DATA_PATH,base).href;
     data=await fetch(url).then(r=>{if(!r.ok)throw new Error(`${r.status} ${DATA_PATH}`);return r.json()});
+    await mergeEventPacks(base);
     initializeState();return data;
   }
   async function renderBranch(){
