@@ -1,16 +1,55 @@
 {
   "id":"potato-path",
   "title":"Potatoism Practice Path",
+  "version":"1.1.0",
   "updated":"2026-09-09",
-  "principles":["Be simple","Grow toward light"],
-  "sequence":["Mud","Burial","Eye","Root","Sprout","Ladder","Tree","Fruit","Seed","Return"],
-  "derived":[
-    {"name":"Efficiency","meaning":"Use less unnecessary effort while preserving useful growth."},
-    {"name":"Iteration","meaning":"Repeat the cycle with more information and less needless complexity."},
-    {"name":"Nourishment","meaning":"Growth matures when it becomes useful beyond the self."},
-    {"name":"Cultivation","meaning":"Improve conditions so good growth becomes easier."},
-    {"name":"Seed of light","meaning":"Protect one small viable source of clarity, care, truth, beauty or understanding and help it grow."}
+  "purpose":"Translate Potatoism's natural-growth philosophy into a practical participant path without turning the philosophy into a rigid initiation system.",
+  "root_principles":[
+    {"name":"Be simple","meaning":"Begin with the smallest observation or action that can remain true while the system becomes more complex."},
+    {"name":"Grow toward light","meaning":"Move toward usable understanding, greater life, clearer relationship and increased capacity for care."}
   ],
-  "cycle":"observe -> simplify -> orient -> act -> notice results -> integrate -> simplify again",
-  "daily":["Simplify one thing","Choose one direction toward greater clarity or life","Take one small useful step","Remove one unnecessary friction","Help one thing grow","Keep the lesson and repeat"]
+  "natural_growth_rule":"Begin with what is already alive. Life grows when conditions allow life to grow; the first task is therefore to notice conditions rather than force a complete theory onto the seed.",
+  "root_shoot_polarity":{
+    "root":"memory, stability, nourishment, hidden support and movement into darkness where support can be found",
+    "shoot":"possibility, exposure, exploration and movement toward light",
+    "rule":"Neither direction is the whole organism. Healthy growth requires differentiation without forgetting the larger life that joins the two."
+  },
+  "sequence":["Mud","Burial","Eye","Root","Sprout","Ladder","Tree","Fruit","Seed","Return"],
+  "sequence_meaning":{
+    "Mud":"Start from the actual condition rather than an idealized self-image.",
+    "Burial":"Allow hidden development, incubation and protection when growth is not yet visible.",
+    "Eye":"Notice a viable possibility, relationship or opening.",
+    "Root":"Build support and understand what the possibility depends on.",
+    "Sprout":"Choose a direction and begin visible movement toward usable understanding.",
+    "Ladder":"Turn repeated successful transitions into a path that can connect levels or states.",
+    "Tree":"Allow the path to branch while retaining continuity with root and trunk.",
+    "Fruit":"Ask what the growth gives back and whether it nourishes anything beyond itself.",
+    "Seed":"Preserve the transferable lesson or pattern that can begin another cycle.",
+    "Return":"Begin again with memory; growth is repetition with changed position rather than reset."
+  },
+  "recursive_growth":"simple -> related -> structured -> living -> illuminating -> simple again",
+  "spiral_rule":"Return and advance belong together. Revisit old questions from a different position, carrying what was learned rather than merely repeating the same loop.",
+  "threshold_rule":"One condition becoming another creates a Door. Learning, commitment, insight, loss, recovery and changes of identity can all be treated as thresholds when they genuinely change the state of the system.",
+  "derived":[
+    {"name":"Efficiency","meaning":"Remove unnecessary effort and abstraction while preserving useful growth."},
+    {"name":"Iteration","meaning":"Repeat the cycle with more information, clearer relationships and less needless complexity."},
+    {"name":"Nourishment","meaning":"Growth matures when stored capacity becomes useful to something beyond the self."},
+    {"name":"Cultivation","meaning":"Improve the conditions from which good growth can emerge rather than relying only on force or command."},
+    {"name":"Seed of light","meaning":"Protect a small viable source of clarity, care, truth, beauty or understanding and help it become capable of further growth."},
+    {"name":"Fruit test","meaning":"Judge a mature branch partly by what it produces: does it increase understanding, nourishment, repair, continuity or care?"}
+  ],
+  "anti_bloat_rule":"Complexity must be able to return to the potato. If an expansion cannot explain what is alive, what it needs, which relationship enables growth, what the relationship produces and where it leads, the system should be simplified or re-rooted.",
+  "practice_questions":[
+    "What is already alive here?",
+    "What does it need?",
+    "Which relationship makes its growth possible?",
+    "What does that relationship produce?",
+    "Where is the next threshold?",
+    "What has become visible?",
+    "What can grow from this?",
+    "What should be remembered before the next iteration?"
+  ],
+  "daily":["Simplify one thing","Observe one living condition carefully","Choose one direction toward greater clarity or life","Take one small useful step","Remove one unnecessary friction","Help one thing grow","Notice the fruit","Keep the lesson and repeat"],
+  "source_records":["docs/POTATOISM-SIMPLICITY-AND-NATURAL-GROWTH.md","knowledge/philosophy/potato-philosophy.json","knowledge/core/root-system.json"],
+  "epistemic_note":"This is a project practice/philosophy layer. Biological and historical claims remain separate from symbolic interpretation and should be sourced in their own records."
 }
