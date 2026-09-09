@@ -1,5 +1,5 @@
 {
-  "version":"2.0.0",
+  "version":"2.1.0",
   "updated":"2026-09-10",
   "purpose":"Machine-readable audit contract for finding genuinely weak content owners, distinguishing them from intentionally concise schemas/registries, and prioritizing consolidation before file multiplication.",
   "interpretation":"Depth is a function of role, explanatory substance, relationships, evidence routing and reader value—not byte size alone. A 1 KB registry can be healthy; a 3 KB first-class concept owner can be underdeveloped.",
@@ -17,7 +17,12 @@
       {"cluster":"knowledge/practice","action":"Merged unique material from potato-practice-revelations and potato-advanced-growth-symbols into potato-path; moved biological practice facts into potato-growth-principles; retired three mini-files and migrated active references.","canonical_owners":["knowledge/practice/potato-path.json","knowledge/biology/potato-growth-principles.json"]},
       {"cluster":"knowledge/journey","action":"Deepened tim-dooley-journey from a thin phase sketch into the reader-oriented identity-safe journey owner with phase changes, role matrix, source ownership and research frontier.","canonical_owner":"knowledge/journey/tim-dooley-journey.json"},
       {"cluster":"knowledge/core + spirit","action":"Kept canon-side Heaven/Spirit/Father distinct from comparative spirit-context; deepened the canon owner with functional distinctions, genealogy, routes and boundaries.","canonical_owners":["knowledge/core/heaven-spirit-father.json","knowledge/spirit/spirit-context-atlas.json"]},
-      {"cluster":"docs chronology","action":"Replaced stale hand-maintained duplicate chronology with a guide to the canonical live event graph and its clocks/source-direction rules.","canonical_owners":["data/timeline-events.json","knowledge/chronology/developmental-genealogy.json"]}
+      {"cluster":"docs chronology","action":"Replaced stale hand-maintained duplicate chronology with a guide to the canonical live event graph and its clocks/source-direction rules.","canonical_owners":["data/timeline-events.json","knowledge/chronology/developmental-genealogy.json"]},
+      {"cluster":"knowledge/world Farm/shadow sources","action":"Merged the numbered reputation/memory/high-control source expansion into farm-shadow-source-ledger; deduplicated the already-present deplatforming study; migrated the world ownership index and reputation FAQ; retired farm-shadow-source-expansion-2.json.","canonical_owner":"knowledge/world/farm-shadow-source-ledger.json"},
+      {"cluster":"knowledge/core smaller focused owners","action":"Reviewed european-commons.json and potato-of-life.json. Both are compact but already substantive/focused and have distinct ownership; no padding or merge performed.","canonical_owners":["knowledge/core/european-commons.json","knowledge/core/potato-of-life.json"]}
+    ],
+    "preserve_for_now":[
+      {"files":["knowledge/chronology/dated-master-timeline-2026-wave-10-addendum.json","knowledge/chronology/forty-rising-lion-timeline-addendum.json","knowledge/chronology/moses-mountain-debt-timeline-addendum.json"],"reason":"These remain developmental/exact-date strata with relationships and timestamps not yet fully absorbed by dated-master-timeline-2026.json. Retire only after a master rebuild carries the unique information and specialist-owner routes."}
     ],
     "do_not_merge_without_stronger_reason":[
       {"files":["data/axis-model.json","data/axis-topology.json"],"reason":"Different ownership: numerical/visualization embedding versus symbolic terrain semantics."},
@@ -25,12 +30,11 @@
       {"files":["data/belief-backend.json","data/belief-integrity.json","data/belief-records.json"],"reason":"Distinct registry, integrity-contract and normalized-navigation roles; short by design."}
     ],
     "next_review_clusters":[
-      {"cluster":"knowledge/chronology addenda/waves","examples":["dated-master-timeline-2026-wave-10-addendum.json","forty-rising-lion-timeline-addendum.json","moses-mountain-debt-timeline-addendum.json"],"question":"Has each unique event/interpretation been promoted into developmental-genealogy, timeline packs or a specialist canonical ledger? If yes, convert to provenance-only historical strata or retire."},
+      {"cluster":"knowledge/chronology addenda/waves beyond the three preserved addenda","question":"For each small chronology wave, identify whether unique dates/quotes remain absent from the durable timeline and specialist ledgers. Retire only after promotion."},
       {"cluster":"knowledge/traditions wave files","question":"Many wave records are substantial archaeology, but routing indexes should point to durable topic owners. Identify completed waves whose unique conclusions are already in biblical-overlap-atlas or later specialist atlases."},
       {"cluster":"knowledge/science recovery/wave files","question":"Preserve genuine equation/source archaeology, but distinguish durable model owners from temporary recovery waves now fully represented by science-master-index/equation lineage."},
-      {"cluster":"knowledge/core smaller owners","examples":["european-commons.json","potato-of-life.json"],"question":"Are these intentionally focused summaries or underfilled first-class concepts? Deepen before creating addenda."},
-      {"cluster":"knowledge/world expansion-number files","examples":["farm-shadow-source-expansion-2.json"],"question":"If numbered expansion material has been absorbed by the atlas/source ledger, retire the expansion file; otherwise promote its unique mechanisms first."},
-      {"cluster":"root-level legacy JSON/Markdown","question":"Identify old research/master copies still reachable from search but superseded by canonical knowledge owners; convert necessary ones to redirects/routing notes or archive/retire after reference migration."}
+      {"cluster":"root-level legacy JSON/Markdown","question":"Identify old research/master copies still reachable from search but superseded by canonical knowledge owners; convert necessary ones to routing notes or archive/retire after reference migration."},
+      {"cluster":"reader/index discovery expansions","question":"FAQ/index expansion files can stay as discovery surfaces, but their canonical_owners must never point to retired wave/expansion files. Periodically reroute them after consolidation."}
     ],
     "limitation":"The manual repository map was performed through the connected GitHub repository because the execution sandbox could not clone github.com. The upgraded audit script should be run in CI or a repository checkout to produce exact project-wide depth counts."
   },
