@@ -1,0 +1,15 @@
+{
+  "id":"science-source-ledger",
+  "title":"Science Source Ledger",
+  "updated":"2026-09-09",
+  "purpose":"Primary and high-quality scientific sources used to extend Tim Dooley / Potato of Life scientific comparisons without converting analogy into empirical proof.",
+  "sources":[
+    {"topic":"Landauer principle","source":"Rolf Landauer, Irreversibility and Heat Generation in the Computing Process, IBM Journal of Research and Development 5(3), 1961","url":"https://doi.org/10.1147/rd.53.0183","claims_used":["logical irreversibility has a physical thermodynamic cost","erasure is not an abstract metaphor when implemented physically"]},
+    {"topic":"Information geometry","source":"Fisher/Rao metric; modern information geometry literature","url":"https://eprints.maths.manchester.ac.uk/131/1/covered/MIMS_ep2005_49.pdf","claims_used":["a statistical model can be treated as a manifold","g_ij=E[(∂_i log p)(∂_j log p)] defines the Fisher information metric under standard regularity assumptions"]},
+    {"topic":"Holographic entanglement entropy","source":"Shinsei Ryu and Tadashi Takayanagi, Holographic Derivation of Entanglement Entropy from AdS/CFT, Phys. Rev. Lett. 96, 181602 (2006)","url":"https://doi.org/10.1103/PhysRevLett.96.181602","claims_used":["specific AdS/CFT relation between boundary entanglement entropy and bulk minimal-surface area","relationship/information can be linked to geometry in specific holographic theories"]},
+    {"topic":"Causal set theory","source":"The causal set approach to quantum gravity, Living Reviews in Relativity","url":"https://doi.org/10.1007/s41114-019-0023-1","claims_used":["causal sets are locally finite partially ordered sets","causal order and discreteness can be used as primitive structure in a quantum-gravity research program"]},
+    {"topic":"Loop quantum gravity","source":"Carlo Rovelli, Loop Quantum Gravity review and early loop-representation literature","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC5567241/","claims_used":["area and volume operators have discrete spectra in loop quantum gravity","graph/spin-network structures can encode quantum geometry"]},
+    {"topic":"Ryu-Takayanagi original preprint","source":"Ryu and Takayanagi 2006","url":"https://arxiv.org/abs/hep-th/0603001","claims_used":["primary preprint provenance for holographic entanglement entropy"]}
+  ],
+  "archive_rule":"Every scientific equation placed beside Potatoverse concepts must identify whether it is Tim-originated, later archive formalization, or established external mathematics/physics. External sources support the external science only, not the spiritual claim mapped onto it."
+}
