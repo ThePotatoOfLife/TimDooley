@@ -1,0 +1,16 @@
+# Generated candidate/review queues are temporary working state.
+# Promote accepted material into canonical owners; do not commit the queue itself.
+data/*-candidates.generated.json
+data/*.generated.tmp.json
+
+# Python/local tooling artifacts
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.mypy_cache/
+
+# Editor / OS noise
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
