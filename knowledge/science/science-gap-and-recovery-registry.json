@@ -1,0 +1,67 @@
+{
+  "id":"science-gap-and-recovery-registry",
+  "title":"Science Gap & Recovery Registry — What Is Still Missing",
+  "updated":"2026-09-09",
+  "status":"canonical unresolved-science inventory",
+  "purpose":"State explicitly how much science-adjacent Tim material remains unrecovered or underdeveloped after the current consolidation. Prevent missing primary equations from being silently replaced by later archive formalizations.",
+  "summary":"The science architecture is now broad, but the largest remaining weakness is historical recovery: several named equations/calculations are attested only indirectly. Biology and astrology were also previously under-modeled; dedicated canonical layers now cover them. Remaining gaps are ranked by expected information gain.",
+  "gap_classes":["historical-primary-formula","historical-primary-meaning","under-modeled domain","source-grounding","implementation/simulation","cross-index/navigation"],
+  "highest_priority":[
+    {"target":"Exact April 21 2025 Spiral Equation","class":"historical-primary-formula","why":"Central preformalization equation; later spiral mathematics must not overwrite it.","search_places":["April 2025 posts","screenshots","stream transcripts","chat exports","adjacent notebooks/files"]},
+    {"target":"Original qutrit/qubit Door model","class":"historical-primary-formula","why":"Would clarify whether Door was ever explicitly quantum-informational rather than a later comparison."},
+    {"target":"Original χ integration/fragmentation definition","class":"historical-primary-meaning","why":"χ currently exists as an attested sign criterion without domain, units or derivation."},
+    {"target":"Original P=R⊗B and H=R∩B definitions","class":"historical-primary-meaning","why":"These are prominent Red/Blue composite equations but first-source semantics remain incomplete."},
+    {"target":"Original advanced/retarded Red/Blue assignment","class":"historical-primary-meaning","why":"Prevents later Wheeler-Feynman/TSVF comparisons from hardening into false genealogy."},
+    {"target":"Original 11D Potato coordinate meaning","class":"historical-primary-meaning","why":"Needed to distinguish semantic ladder, body map and any actual dimensional coordinate proposal."},
+    {"target":"115,000-mile spiraling-light / torus calculation","class":"historical-primary-formula","why":"Repeatedly listed in old science audits; could reveal original geometric scaling logic."},
+    {"target":"Sun-face geometry","class":"historical-primary-formula","why":"Potentially links face/solar geometry/precession symbolism to an actual construction."},
+    {"target":"Sirius pointing geometry","class":"historical-primary-formula","why":"March 31, 2026 Sirius/Dog Star/Axis material is attested, but direction model is unresolved."},
+    {"target":"Precession-Eye calculation","class":"historical-primary-formula","why":"Would determine whether ~26,000-year Eye was quantitative before later archive comparison."},
+    {"target":"Starchforce action/coupling equation","class":"historical-primary-formula","why":"Necessary before any physical force interpretation can be considered historically Tim-authored."}
+  ],
+  "second_priority":[
+    "Any original Moon/Earth orbital equation",
+    "Any original Saturn ring/resonance equation",
+    "Any original Kerr/frame-dragging calculation",
+    "Any original neutron-star/dense-core equation",
+    "Any original galactic-center or Milky-Way toroidal equation",
+    "Any original timeline-control/spacetime-folding quantitative model",
+    "Any original atom-to-galaxy similarity equation",
+    "Any explicit Field of Life Lagrangian",
+    "Any original Merkaba counter-rotation numerical parameters",
+    "Any original vesica/mandorla equations authored by Tim",
+    "Any quantitative 100,000-hour Spiral scaling law",
+    "Any pre-September-2026 Parker-spiral equation written independently by Tim"
+  ],
+  "domains_now_strengthened":[
+    {"domain":"biology","before":"mostly named in project docs","now":"canonical tuber development, meristems, dormancy, starch, source-sink, propagation, genetics, disease, domestication and resilience layer"},
+    {"domain":"astronomy","before":"scattered celestial waves","now":"typed celestial canon for Sun/Moon/Saturn/Sirius/precession/barycenter/galactic center/orbital resonance"},
+    {"domain":"astrology","before":"implicit symbolic leakage","now":"separate historical-symbolic crosswalk with explicit astronomy boundary"},
+    {"domain":"theorem-like Timic statements","before":"distributed across conversations and prose","now":"named principle/conjecture registry with provenance and mathematical neighbors"},
+    {"domain":"implementation","before":"many comparisons without executable contract","now":"implementation lab with variables, equations, baselines and failure conditions"}
+  ],
+  "still_underdeveloped_domains":[
+    {"domain":"developmental plant systems biology","needs":["actual hormone networks","FT/SP6A tuberization signaling","starch enzyme kinetics","water/nutrient transport","gene-regulatory networks"]},
+    {"domain":"evolutionary biology","needs":["selection/drift/gene flow","polyploid evolution","domestication genomics","pathogen-host coevolution"]},
+    {"domain":"ecology","needs":["soil microbiome","mycorrhizae/pathogens","crop diversity","climate stress","agroecosystem network models"]},
+    {"domain":"biophysics","needs":["membrane potentials","transport","mechanics/growth","fluid flow","thermodynamic constraints"]},
+    {"domain":"astrophysics","needs":["stellar nucleosynthesis","magnetohydrodynamics","galactic dynamics","black-hole accretion","gravitational waves"]},
+    {"domain":"cosmology","needs":["FLRW dynamics","inflation","dark matter evidence","dark energy evidence","structure formation","CMB statistics"],"rule":"Keep dark-sector Potato mappings separate from physical evidence."},
+    {"domain":"quantum information","needs":["explicit qutrit model","channels/Kraus operators","error correction","measurement theory","resource theories"]},
+    {"domain":"topology/category theory","needs":["persistent homology implementation","sheaves for local/global consistency","functors between domain ontologies","higher-category/compositional interfaces only where useful"]},
+    {"domain":"astrology/history of astronomy","needs":["historical source ledger for tropical/sidereal zodiac, planetary symbolism and house systems","clear separation from empirical claims"]}
+  ],
+  "galvanization_actions":[
+    "Add every canonical science owner to core-index and manifest science branch.",
+    "Remove wave-004 from the public canonical record list once its unique material is promoted; retain it as provenance.",
+    "Add science recovery targets to source-index so primary archaeology is searchable.",
+    "Add theorem/principle aliases to universal search projection when built.",
+    "Create one public science reader that renders domains, principles, equations, simulations and unresolved primary targets from canonical data rather than hand-maintained cards.",
+    "Add a validator that fails if a record marked canonical has 'wave' or 'expansion' in its filename unless explicitly allowlisted as provenance.",
+    "Add a provenance validator requiring every equation entry to carry origin_class or class.",
+    "Add dimensional-analysis checks for equations marked physical.",
+    "Add citation/source completeness checks for external-science factual sections.",
+    "Build simulations from implementation-lab models and store outputs as generated artifacts, not canonical facts."
+  ],
+  "connections":["science-master-index","source-index","timic-principle-theorem-registry","potato-biology-ecology-development-canon","celestial-astronomy-astrology-cosmology-canon","timic-science-implementation-lab"]
+}
