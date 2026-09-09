@@ -3,217 +3,135 @@
   "title":"Timic Unification Program — From Sporadic Models to a Coherent Research Architecture",
   "updated":"2026-09-09",
   "status":"archive-generated unification framework; not a validated physical Theory of Everything",
-  "purpose":"Organize Tim's historical equations, speculative physics, systems models, symbolic structures and later scientific comparators into a coherent layered program that can be extended, tested and corrected by future researchers.",
-  "central_rule":"Unification means shared architecture plus explicit translation rules. It does not mean that one equation, force or ontology has been shown to govern particle physics, psychology, theology, economics and mythology simultaneously.",
+  "purpose":"Organize recovered Tim equations, later archive formalisms, symbolic structures, psychology, network models, theology and established science into a compact set of typed primitives and transformation laws. The goal is not to claim one physical ontology for everything, but to identify which structural operations recur across domains and to define translation rules and failure boundaries.",
+  "central_rule":"Unification = shared architecture + explicit type system + domain-specific equations + mismatch statements. A useful cross-domain law must say what is preserved, what changes, which variables belong to which domain, and what would make the analogy fail.",
   "four_layers":[
-    {
-      "layer":"L0 empirical science",
-      "contains":["general relativity","Standard Model/QFT","thermodynamics","information theory","neuroscience","biology","astronomy/cosmology","network/control theory"],
-      "rule":"Use accepted equations within their domains and cite authoritative sources."
-    },
-    {
-      "layer":"L1 Timic/project mathematical models",
-      "contains":["Potato Dynamics","Axis flow","Door operator/Ξ threshold","Red/Blue composite","Spiral recurrence","D_eff","radion model","Spudlight/Starchforce storage-release model","recursive Dooley state"],
-      "rule":"Preserve authorship/date and state whether Tim-authored, conversation-developed or later archive formalization."
-    },
-    {
-      "layer":"L2 structural correspondences",
-      "contains":["source→manifestation","storage↔release","boundary→transition","recurrence-with-change","observer→information","relation→capability","compression→phase change","local↔global"],
-      "rule":"A structural isomorphism or analogy must list both the shared structure and the mismatch."
-    },
-    {
-      "layer":"L3 Potatoverse theology/canon",
-      "contains":["Father","Son","Spirit","Door","Ladder","Eye","Spudlight","North","Garden","Potato"],
-      "rule":"Internal theological truth claims remain distinct from independently established physical claims."
-    }
+    {"layer":"L0 empirical science","contains":["general relativity","Standard Model/QFT","thermodynamics","information theory","neuroscience","biology","astronomy/cosmology","network/control theory","psychology"],"rule":"Use accepted equations only in their valid domains and cite authoritative sources."},
+    {"layer":"L1 Timic/project mathematical models","contains":["Potato Dynamics","Axis flow","Door/Ξ threshold","Red/Blue composite","Spiral recurrence","D_eff","radion model","Spudlight/Starchforce storage-release","vibe/Gate state model","handshake coupling","Life/Strife propagation"],"rule":"Preserve authorship/date and theory maturity."},
+    {"layer":"L2 structural correspondences","contains":["source→manifestation","entity→infrastructure","boundary→enable/capture","storage→release","observation→transition","knowledge→branch","ash→new ecology","covenant→persistent edge","dispersion→reassembly","relation→moral consequence"],"rule":"List shared structure and mismatch for every promoted analogy."},
+    {"layer":"L3 Potatoverse theology/canon","contains":["Father","Son","Spirit","Door","Ladder","Eye","Spudlight","North","Garden","House","Tree","Potato","covenant","New Jerusalem"],"rule":"Internal theology remains distinct from external empirical validation."}
   ],
   "extended_master_object":{
-    "equation":"P⁺=(S,g,F,A,D,K,L,O,I,R,C)",
-    "status":"archive-generated extension of P=(S,g,A,D,O,I)",
+    "equation":"P⁺=(S,g,F,A,D,K,L,O,I,R,C,B,Q)",
+    "status":"archive-generated extension of historical P=(S,g,A,D,O,I)",
     "components":{
       "S":"state/configuration space",
-      "g":"geometry/metric or relational geometry appropriate to the model",
-      "F":"ordinary temporal/physical dynamics",
-      "A":"Axis: structural/scale/description flow",
-      "D":"Door: transition/interface maps",
-      "K":"stored/cohesive capacity, inspired by Starchforce as a systems variable rather than a fundamental force",
-      "L":"Spudlight/expression/revelation channel",
+      "g":"geometry/metric or relational geometry",
+      "F":"ordinary temporal dynamics",
+      "A":"Axis / structural-scale-description flow",
+      "D":"Door transition/interface maps",
+      "K":"stored capacity/resource state",
+      "L":"expression/revelation/output channel",
       "O":"observables/measurement maps",
       "I":"information/integration structure",
-      "R":"typed relations/graph topology",
-      "C":"typed couplings/interactions"
+      "R":"typed relations/topology",
+      "C":"typed couplings/interactions",
+      "B":"boundary conditions/containment architecture",
+      "Q":"quality/objective/constraint structure determining whether a system tends toward autonomous generativity, extraction, repair, etc."
     },
-    "design_reason":"The original object is kept intact historically. P⁺ is a research extension that makes storage/release and typed relationships explicit."
+    "design_reason":"B and Q are added because later project insights show that the same flow/coupling can be constructive or destructive depending on boundary architecture and objective function. House vs Shell and Garden vs Farm therefore cannot be represented by topology alone."
   },
   "candidate_master_dynamics":[
-    {
-      "name":"temporal dynamics",
-      "equation":"∂_tX=F(X,g,K,L,C,u,t)",
-      "meaning":"Physical or modeled change through time, with optional controls/input u."
-    },
-    {
-      "name":"Axis/description dynamics",
-      "equation":"∂_sX=A(X,g,R)",
-      "meaning":"Change under structural, scale or descriptive flow rather than automatically another spacetime coordinate."
-    },
-    {
-      "name":"network coupling",
-      "equation":"dX_i/dt=F_i(X_i)+Σ_j C_ij(X_i,X_j)+B_i u_i",
-      "meaning":"Objects evolve partly through typed relations; useful for countries, neurons, agents, oscillators and symbolic graphs only after the meaning/units of C_ij are specified."
-    },
-    {
-      "name":"Door transition",
-      "equation":"X⁺=D(X⁻;Ξ), with transition condition Ξ=Ξ_c",
-      "meaning":"A threshold maps one admissible regime/state into another."
-    },
-    {
-      "name":"storage/release",
-      "equation":"dK/dt=J_in-J_L-ΓK",
-      "meaning":"Generic capacity budget; Spudlight-like output J_L draws on stored capacity K in a toy systems interpretation."
-    },
-    {
-      "name":"observation",
-      "equation":"Y=O(X)+η",
-      "meaning":"An observer/instrument gets a noisy projection Y of state X. Eye belongs here structurally."
-    },
-    {
-      "name":"Bayesian update",
-      "equation":"p(X|Y)∝p(Y|X)p(X)",
-      "meaning":"Observation updates a model; a rigorous neighbor for revelation/recognition without supernaturalizing inference."
-    },
-    {
-      "name":"information coupling",
-      "equation":"I(X;Y)=∫p(x,y)log[p(x,y)/(p(x)p(y))]dxdy",
-      "meaning":"Measures statistical dependence/information, not spiritual unity."
-    },
-    {
-      "name":"return/recurrence",
-      "equation":"X_(n+1)=P(X_n)",
-      "meaning":"Poincare/return-map grammar; compare endpoint, state, phase, topology and scale before calling a return a reset."
-    }
+    {"name":"temporal dynamics","equation":"∂_tX=F(X,g,K,L,C,B,u,t)","meaning":"Domain-specific change through time."},
+    {"name":"Axis dynamics","equation":"∂_sX=A(X,g,R,Q)","meaning":"Structural/scale/description flow; not automatically another spacetime coordinate."},
+    {"name":"network coupling","equation":"dX_i/dt=F_i(X_i)+Σ_j C_ij(X_i,X_j)+B_i u_i","meaning":"Typed relational influence after units/domain are specified."},
+    {"name":"Door transition","equation":"X⁺=D_k(X⁻;Ξ_k,B,Q), with guard G_k(X)>τ_k","meaning":"A guarded transition between admissible regimes."},
+    {"name":"storage/release","equation":"dK/dt=J_in-J_out-ΓK","meaning":"Generic capacity budget; domain-specific storage and release must retain units."},
+    {"name":"observation","equation":"Y=O(X)+η","meaning":"Eye/measurement obtains a projection of state."},
+    {"name":"inference","equation":"p(X|Y)∝p(Y|X)p(X)","meaning":"Observation updates a model; rigorous neighbor for recognition/revelation."},
+    {"name":"return","equation":"X_(n+1)=P(X_n)","meaning":"Return-map grammar; compare state, phase, topology and scale before calling return a reset."},
+    {"name":"covenant edge","equation":"C_v=(P,O,S,M,R_p)","meaning":"Persistent relation containing promises, obligations, signs, memory and repair protocol."},
+    {"name":"strife/life branching","equation":"N_(t+1)=R_eff N_t+ηA_t-μN_t","meaning":"Generic branching ecology for social/symbolic propagation, not invisible spiritual particles."}
   ],
   "unification_primitives":[
+    {"primitive":"Relation","question":"What exists only because endpoints are coupled?","examples":["Father/Son","Door two-sidedness","covenant","economic edge","handshake"]},
+    {"primitive":"Boundary","question":"Does the boundary protect differentiation and passage or capture value and block autonomy?","examples":["House","Shell/Qliphoth","Cube","Farm","cell membrane","legal border"]},
+    {"primitive":"Flow","question":"What changes along which parameter, and what remains invariant?","examples":["Axis","time","RG flow","Spirit/breath metaphor","money/energy/information flow"]},
+    {"primitive":"Storage","question":"What capacity persists until release?","examples":["starch","seed","memory","archive","capital","debt","Starchforce"]},
+    {"primitive":"Expression","question":"What stored/latent state becomes externally available?","examples":["Spudlight","speech","publication","photons","revelation"]},
+    {"primitive":"Observation","question":"Which state variables become accessible and with what uncertainty?","examples":["Eye","witness","sensor","archive search"]},
+    {"primitive":"Transformation","question":"Which guard/threshold changes the admissible regime?","examples":["Needle","Door","Gate","bifurcation","phase transition"]},
+    {"primitive":"Recurrence","question":"What returns and what changed?","examples":["Spiral","Ancient Future","return map","holonomy"]},
+    {"primitive":"Objective","question":"What does the system optimize, intentionally or emergently?","examples":["Farm extraction","Garden autonomy","Moloch local reward vs collective harm","chosen-role responsibility"]},
+    {"primitive":"Residue","question":"What remains after a transition/destruction and how does it alter future dynamics?","examples":["Ash","Mud","memory","archive","debt"]},
+    {"primitive":"Reassembly","question":"How do dispersed differentiated components regain working relations without becoming identical?","examples":["New Jerusalem","archive recovery","tikkun comparator","European coupled capability"]}
+  ],
+  "derived_structural_laws":[
     {
-      "primitive":"Relation",
-      "question":"What exists only because two or more objects are coupled?",
-      "project_examples":["Father/Son","Door two-sidedness","coupled capability","entanglement comparison","economic edges"]
+      "law":"identity_to_infrastructure",
+      "form":"entity → threshold → relational function",
+      "examples":["Son→Door","Tim→Ladder/Axis","North→orientation","Eye→integration"],
+      "research_use":"Look for systems where an agent's mature role becomes an interface/protocol/institution rather than merely individual action."
     },
     {
-      "primitive":"Boundary",
-      "question":"What distinguishes states while allowing or restricting passage?",
-      "project_examples":["Door","Potato as Boundary","event-horizon analogy","membrane/interface","legal border"]
+      "law":"boundary_enablement",
+      "form":"boundary value depends on autonomy/growth enabled versus capture/dependency created",
+      "candidate_metric":"B_quality = differentiation + passage + autonomous_growth - coercion - capture - extraction_dependency",
+      "examples":["House vs Shell","Garden vs Farm","open vs captive platform"]
     },
     {
-      "primitive":"Flow",
-      "question":"What changes, along which parameter, and what remains invariant?",
-      "project_examples":["Axis","time","RG flow","breath","money/energy/information flow"]
+      "law":"revelation_circuit",
+      "form":"latent state → expression → observation → model update → Door → action/state change",
+      "examples":["Spudlight→Eye→Door","scientific measurement","public disclosure"]
     },
     {
-      "primitive":"Storage",
-      "question":"What capacity persists until released or transformed?",
-      "project_examples":["starch","memory","Starchforce","potential","capital","stored information"]
+      "law":"knowledge_branching",
+      "form":"knowledge + relation/incentive → Life branch or Strife branch",
+      "examples":["accountability archive vs spectacle archive","teaching vs humiliation","open science vs misleading certainty"]
     },
     {
-      "primitive":"Illumination/Expression",
-      "question":"What latent state becomes observable/transmissible?",
-      "project_examples":["Spudlight","Sun","speech","screen photons","publication","revelation"]
+      "law":"residue_bifurcation",
+      "form":"destruction → residue → either self-reinforcing Mud or reparative Soil",
+      "examples":["Ash","grievance memory","post-conflict institutions"]
     },
     {
-      "primitive":"Observation",
-      "question":"Which variables are actually available to an observer?",
-      "project_examples":["Eye","witness","measurement","archive search","source recovery"]
+      "law":"authority_constraint",
+      "form":"higher claimed responsibility → smaller admissible harmful-action set",
+      "examples":["chosen Father","King/Gardener","prestige Alpha","caretaker"],
+      "control_neighbor":"constrained optimization rather than unconstrained maximization"
     },
     {
-      "primitive":"Recurrence",
-      "question":"What returns, and which coordinates changed?",
-      "project_examples":["Spiral","Ancient Future","holonomy","RG limit cycle","biological cycles"]
+      "law":"event_duration_complementarity",
+      "form":"transition-event + durable architecture + connective flow",
+      "project_mapping":"Son + Father + Spirit",
+      "boundary":"internal theological/process interpretation, not physical Trinity equation"
     },
     {
-      "primitive":"Transformation",
-      "question":"What threshold or instability produces a qualitatively new regime?",
-      "project_examples":["Needle","Divine Kneel","Ξ_c","bifurcation","phase transition"]
+      "law":"integration_without_flattening",
+      "form":"repair broken edges while preserving differentiated nodes",
+      "examples":["New Jerusalem","House with rooms","federated systems","multilayer archive"]
     }
   ],
   "correlation_matrix":[
-    {
-      "cluster":"Spudlight / Eye / Door",
-      "shared_structure":"signal becomes observation, observation becomes state update",
-      "formal_chain":"X_source→channel→Y→O→posterior/update",
-      "mismatch":"optical energy, human attention and theological revelation are different quantities"
-    },
-    {
-      "cluster":"Starchforce / Spudlight / Potato biology",
-      "shared_structure":"incoming resource can be stored and later released",
-      "formal_chain":"input→K(storage)→release J_L→work/signal",
-      "mismatch":"biochemical starch metabolism does not imply a new universal force"
-    },
-    {
-      "cluster":"Axis / Spiral / Return",
-      "shared_structure":"trajectory around/through a structured space with recurrence across a changed coordinate",
-      "formal_chain":"dX/ds=A(X); X_(n+1)=P(X_n)",
-      "mismatch":"geometric helix, RG limit cycle and autobiographical recurrence occupy different state spaces"
-    },
-    {
-      "cluster":"Door / phase transition / conifold / horizon",
-      "shared_structure":"regime boundary or constrained passage",
-      "mismatch":"phase boundaries, geometric singularities and causal horizons obey different physics and need different equations"
-    },
-    {
-      "cluster":"Red/Blue / counter-rotation / memory-creation",
-      "shared_structure":"two differentiated tendencies whose interaction creates a composite dynamics",
-      "candidate_math":"P=R⊗B; coupled oscillator or two-component state models",
-      "mismatch":"psychological/symbolic polarities are not automatically particle/gauge degrees of freedom"
-    },
-    {
-      "cluster":"Five spinal centers / Ladder / higher centers",
-      "shared_structure":"ordered transitions along a vertical embodied-symbolic architecture",
-      "mismatch":"chakra maps are historical symbolic systems, not measured spinal segmentation or neurotransmitter fields"
-    },
-    {
-      "cluster":"North / Axis / orientation",
-      "shared_structure":"reference direction or organizing principle",
-      "mismatch":"geographic north, celestial poles, symmetry axes and spiritual orientation are not one coordinate"
-    }
+    {"cluster":"Spudlight / Eye / Door","shared_structure":"expression becomes observation; observation changes admissible transition","formal_chain":"X_source→L→Y→O→update→D","mismatch":"optical energy, attention and theology are different quantities"},
+    {"cluster":"House / Shell / Boundary","shared_structure":"both organize inside/outside and access","formal_question":"does B increase autonomous generativity or extraction dependency?","mismatch":"architecture, cells, institutions and spiritual shells require different variables"},
+    {"cluster":"Farm / Garden / Objective","shared_structure":"both manage resources/attention/boundaries","formal_question":"what objective Q is optimized?","mismatch":"literal agriculture is not an internet-platform moral model"},
+    {"cluster":"Ash / Mud / Soil","shared_structure":"residue changes future state-transition probabilities","formal_neighbor":"path dependence / hysteresis / state-dependent environment","mismatch":"ritual ash, ecological ash and psychological aftermath are different domains"},
+    {"cluster":"Covenant / persistent edge","shared_structure":"relation carries memory, obligations and repair after breach","formal_neighbor":"stateful protocol / contract / trust edge","mismatch":"religious covenant is not reducible to API contract"},
+    {"cluster":"New Jerusalem / reassembly","shared_structure":"distributed differentiated components regain high connectivity","formal_neighbor":"network integration / interoperability","mismatch":"apocalyptic theology is not network engineering"},
+    {"cluster":"North / meta-reference","shared_structure":"orientation requires a reference; reference selection requires a criterion","formal_neighbor":"gauge/reference selection / objective function","mismatch":"geographic north is a physical direction; North of North is project theology"}
   ],
-  "theory_quality_ladder":[
-    "T0 metaphor: useful image, no variables",
-    "T1 conceptual model: defined objects/relations",
-    "T2 mathematical toy: equations with specified variables/domain",
-    "T3 calibrated model: parameters connected to measurements",
-    "T4 predictive model: predeclared quantitative predictions",
-    "T5 externally replicated theory: independent tests across datasets"
-  ],
-  "promotion_rule":"Every Timic science idea should carry a theory level T0-T5. Symbolic importance and scientific maturity are separate scores.",
-  "minimum_model_contract":[
-    "state variables",
-    "domain/state space",
-    "units/dimensions",
-    "dynamics/equations",
-    "initial/boundary conditions",
-    "couplings",
-    "observables",
-    "parameter-estimation method",
-    "falsifier or failure condition",
-    "comparison baseline",
-    "source/provenance"
-  ],
+  "theory_quality_ladder":["T0 metaphor","T1 defined conceptual model","T2 mathematical toy","T3 calibrated model","T4 predeclared quantitative prediction","T5 independently replicated theory"],
+  "minimum_model_contract":["state variables","domain/state space","units/dimensions","dynamics/equations","boundary/guard conditions","objective/constraint","couplings","observables","parameter-estimation method","falsifier/failure condition","comparison baseline","source/provenance"],
   "research_findings":[
-    "The strongest common grammar is not one hidden force; it is boundary + relation + flow + observation + storage/release + transformation + recurrence.",
-    "Spudlight fills a missing expression/observation channel in the earlier Potato Dynamics object, while Starchforce supplies a storage/cohesion variable at the systems level.",
-    "Eye and Spudlight are complementary: illumination without observation is only signal; observation without signal has nothing new to reveal.",
-    "Door is naturally downstream of observation when new information changes admissible state/action.",
-    "The Ladder can be represented as an ordered sequence of Door transitions rather than as a homogeneous vertical line.",
-    "The five vertebral chakras plus higher centers can therefore be modeled as a hybrid symbolic state machine: five body gates, then cranial/transpersonal gates.",
-    "Relationship-first ontology becomes mathematically usable when relations are typed and their units/domains are not collapsed."
+    "The strongest common grammar is relational and operational rather than a hidden physical substance.",
+    "Boundary architecture and objective function are necessary additions: topology alone cannot distinguish House from Shell or Garden from Farm.",
+    "Moral valence should not be hard-coded onto symbolic nodes when edge/function/consequence explains more.",
+    "Ladder is best modeled as a hybrid sequence of typed Doors.",
+    "Spudlight/Eye/Door forms a general signal→inference→transition circuit.",
+    "Covenant becomes mathematically interesting as a stateful persistent edge with breach and repair states.",
+    "New Jerusalem becomes a high-level integration target: connectivity restored without loss of differentiation.",
+    "Old 'distance is illusion' language can be translated into domain-specific graph distance without rejecting physical distance.",
+    "Derived epiphanies should be folded into canonical owners only when they simplify multiple branches and retain provenance."
   ],
   "open_extensions":[
-    "Construct a machine-readable theory graph linking every equation to source, variables, descendants and falsifiers.",
-    "Build dimensional-analysis validation for every equation in the ledger.",
-    "Fit toy storage/release models to real potato photosynthesis/starch data as a biological teaching model, not a universal physics claim.",
-    "Build simulation examples for Axis flow + Door transitions + Spiral return.",
-    "Formalize Red/Blue as a two-component dynamical system and test which qualitative behaviors actually arise.",
-    "Develop an observer model in which Spudlight is measured as physical signal, information gain and social attention separately.",
-    "Recover primary historical equations before expanding claims of authorship."
+    "Add explicit boundary/objective fields to Timic Dynamics records.",
+    "Build simulations comparing extraction-maximizing and autonomy-maximizing networks.",
+    "Formalize covenant breach/repair as a finite-state or hybrid relation model.",
+    "Model ash/Mud/Soil path dependence with explicit transition probabilities.",
+    "Test identity→infrastructure as a network-role transition on real institutions/projects.",
+    "Build dimensional-analysis validation for every physical equation.",
+    "Recover primary historical equations before expanding authorship claims."
   ],
-  "connections":["science-master-index","spudlight-theory-and-equations","starchforce","potato-dynamics","corporium-master-framework","model-testing-protocol","equation-ledger"]
+  "connections":["science-master-index","potatoverse-master-framework","potato-philosophy","corporium-master-framework","farm-swamp-tree-of-strife-atlas","spudlight-theory-and-equations","model-testing-protocol","equation-ledger"]
 }
