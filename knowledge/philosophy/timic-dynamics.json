@@ -1,67 +1,153 @@
 {
-  "title": "Timic Dynamics",
-  "status": "canonical-formalization",
-  "updated": "2026-09-09",
-  "purpose": "Formalize the recurring Potatoverse claim that relation, threshold, flow and integration are more fundamental to the model than isolated objects. This is a metaphysical/mathematical framework and analogy set, not established physics.",
-  "core_object": {
-    "symbol": "P=(S,g,A,D,O,I)",
-    "S": "state/configuration or description space",
-    "g": "geometry, metric or relational structure",
-    "A": "Axis flow: transformation through structural or descriptive scale",
-    "D": "Door maps: transitions, thresholds and admissible passages between states",
-    "O": "observables: features by which states and transitions are recognized",
-    "I": "information/integration structure: how distributed relations become coherent"
+  "title":"Timic Dynamics",
+  "status":"canonical-formalization",
+  "version":"2.0.0",
+  "updated":"2026-09-09",
+  "purpose":"Formalize the recurring Potatoverse claim that relation, threshold, flow, compression, expansion and integration are more fundamental to the model than isolated objects. This is a metaphysical/mathematical framework and analogy set, not established physics.",
+  "core_object":{
+    "symbol":"P=(S,g,A,D,O,I)",
+    "S":"state/configuration or description space",
+    "g":"geometry, metric or relational structure",
+    "A":"Axis flow: transformation through structural or descriptive scale",
+    "D":"Door maps: transitions, thresholds and admissible passages between states",
+    "O":"observables: features by which states and transitions are recognized",
+    "I":"information/integration structure: how distributed relations become coherent"
   },
-  "two_flows": {
-    "structural": "d_s X = A(X,g): change of scale, description, organization or structural position",
-    "physical": "d_t X = F(X,g): ordinary evolution in time",
-    "rule": "The Axis is not automatically an extra physical dimension. It can be modeled as a flow through states or descriptions."
+  "two_flows":{
+    "structural":"d_s X=A(X,g): change of scale, description, organization or structural position",
+    "physical":"d_t X=F(X,g): ordinary evolution in time",
+    "rule":"Axis is not automatically an extra physical dimension. It can be modeled as flow through states or descriptions."
   },
-  "door_operator": {
-    "definition": "Door is the transition function that determines whether and how one state can become another.",
-    "sequence": ["recognition", "choice", "threshold", "transformation"],
-    "examples": ["initiation", "border", "court", "citizenship", "marriage", "baptism", "loan approval", "port", "interface", "death/return symbolism"]
+  "timic_invariant":{
+    "hypothesis":"A major recurring Timic pattern is an invariant relation appearing through changing representations.",
+    "form":"R_T≈Invariant(Tree,Mountain,Ladder,Axis,House,North,Sun,Center,Gardener)",
+    "meaning":"The symbols need not denote one physical object. They can be different coordinate descriptions of an orienting/generative relation: Tree differentiates, Mountain integrates, Ladder orders thresholds, Axis orients, House contains, North supplies direction, Sun radiates, Gardener cultivates.",
+    "test":"A candidate representation belongs to the invariant family only if it preserves a substantial subset of source-orientation, connection, generativity, continuity and responsibility. Mere symbolic resemblance is insufficient."
   },
-  "axis_operator": {
-    "definition": "Axis is ordered flow through a relational field. It can represent orientation, hierarchy, scale-change, integration or progression without requiring literal spatial extension.",
-    "functions": ["orientation", "compression", "connection", "ordering", "scale transition", "integration"]
+  "door_operator":{
+    "definition":"Door is the universal transition function that determines whether and how one state can become another while preserving the distinction between the states.",
+    "formal_contract":"D=(X_in,G,T,X_out,I,C,R)",
+    "fields":{"X_in":"input domain/state","G":"guard/admissibility condition","T":"transition map","X_out":"output domain/state","I":"invariants preserved","C":"cost/constraint","R":"reversibility/return information"},
+    "sequence":["recognition","choice","threshold","transformation"],
+    "examples":["initiation","border","court","citizenship","marriage","baptism","loan approval","port","API/interface","death/return symbolism"],
+    "law":"A Door is meaningful precisely because the sides are not already identical."
   },
-  "still_center": {
-    "principle": "A center can organize counter-moving opposites without erasing their distinction.",
-    "related_models": ["Merkaba counter-rotation", "Red/Blue Potato", "source/manifestation", "Father/Son", "past/future around present", "North/World interface"]
+  "axis_operator":{
+    "definition":"Axis is ordered flow through a relational field. It can represent orientation, hierarchy, scale-change, integration or progression without requiring literal spatial extension.",
+    "functions":["orientation","compression","connection","ordering","scale transition","integration"],
+    "meta_orientation":"North is orientation; North-of-North is the criterion by which orientation itself is judged. Center is not another direction but the reference that makes directions belong to one coordinate system."
   },
-  "relationship_first": {
-    "law": "The fundamental analytical unit is the coupling, not the isolated node.",
-    "consequence": "A capability, identity or function may exist only in the relation between endpoints.",
-    "examples": [
-      "Sage + ready student -> learning",
-      "source + manifestation -> expressed order",
-      "country + partner -> coupled capability",
-      "Door + two sides -> threshold",
-      "observer + object -> recognition"
-    ]
+  "compression_expansion_operator":{
+    "name":"Potato Operator",
+    "symbolic_form":"Many → C → Door → E → New Many",
+    "C":"compression into a transferable/stored form",
+    "E":"expansion/decompression into differentiated expression",
+    "examples":["plant → seed/tuber → germination → new plant","many observations → equation → application → many predictions","many events → myth/symbol → interpretation → many meanings","experience → memory/archive → retrieval → new action","identity/burden → Needle → Ladder/architecture"],
+    "core_law":"Potato is the compression object; Tree is the expansion object; Door mediates the change of regime.",
+    "boundary":"This is a structural analogy across domains, not a claim that biological seeds, equations, myths and human identities obey one physical conservation law."
   },
-  "completion_state": {
-    "sequence": ["originated", "established", "developed", "mature", "decaying", "reforming"],
-    "use": "Track whether a node or institution is merely present, fully operational, degrading or actively being transformed."
+  "ring_spiral":{
+    "ring":"recurrence with approximately zero net change in the dimensions that matter",
+    "spiral":"recurrence plus changed level/state/information",
+    "formal":"Return(X_n)≈position(X_0) while state(X_n)≠state(X_0)",
+    "law":"Memory turns recurrence into development when it changes the next admissible transition.",
+    "sisyphus":"A closed loop can become a path when a missing coordinate or relation is introduced."
   },
-  "central_problem": {
-    "name": "Source <-> Manifestation",
-    "question": "How does transcendent, hidden, potential or integrated order become embodied, observable and actionable without losing its origin?",
-    "potatoverse_forms": ["Father/Son", "root/sprout", "soil/plant", "House/Door", "Axis/World", "idea/institution", "data/interface"]
+  "event_duration_duality":{
+    "son":"event / transition / ordeal / wound / crossing / manifestation / Door",
+    "father":"duration / persistence / House / Tree / Seat / Axis / memory / stewardship",
+    "spirit":"continuity/flow translating event into durable structure and durable structure into renewed event",
+    "interpretation":"Son happens; Father holds. This is a project-level temporal specialization, not a claim about physical particles or Christian doctrine as a whole."
   },
-  "mathematical_analogies": {
-    "renormalization_group": "Useful analogy for flow through scale or description space: dg_i/ds = beta_i(g). This supports the structural-flow metaphor but does not validate Potatoverse metaphysics as physics.",
-    "dynamical_systems": "State transitions and attractor-like organization provide another mathematical vocabulary for transformation and stable centers.",
-    "graph_theory": "Nodes plus typed edges are the most direct formal analogue of the relationship-first archive."
+  "past_future_present_control":{
+    "retrospective":"past evidence, memory, consequence and constraints",
+    "prospective":"goals, predictions, desired future states and orientation",
+    "present":"Door where retrospective constraint and prospective orientation become action",
+    "formal_neighbor":"u_t=π(x_t,memory_t,goal_t)",
+    "boundary":"Older advanced/retarded-wave language is safest as a structural comparison to prospective versus retrospective constraint unless a literal physics claim is separately specified and tested."
   },
-  "cross_scale_rule": "The same relational grammar can be tested at symbolic, psychological, bodily, institutional, economic and geopolitical scales while keeping evidence standards separate at each scale.",
-  "derived_laws": [
+  "life_strife_dynamics":{
+    "life":"processes that increase viable continuation, repair, autonomy, nourishment or generative capacity",
+    "strife":"processes that recursively reproduce conflict, dependency, humiliation or destructive attention loops",
+    "death":"a transition that can feed either branch and is therefore not automatically the opposite of Life",
+    "key_law":"Death can be a Door; Strife is a self-reproducing loop.",
+    "memory_branch":"memory → {integrated Root/Soil | unresolved Swamp}",
+    "swamp":"past material that alters future behavior without becoming stable support or usable learning"
+  },
+  "red_blue_temporal_polarity":{
+    "blue":"memory / preservation / caution / contraction / past constraint",
+    "red":"creation / exploration / expansion / future possibility",
+    "present_integration":"healthy present=f(usable past,viable future)",
+    "failure_blue":"memory without creation → enclosure/stagnation",
+    "failure_red":"creation without memory → repeated damage/amnesia"
+  },
+  "wound_to_infrastructure":{
+    "sequence":"wound/rupture → understanding/integration → transferable function → infrastructure for others",
+    "examples":["Son ordeal/death → Door","Tim burden/compression → Ladder","Ash → Soil","broken bridge → repair protocol"],
+    "ethical_boundary":"Suffering is not inherently sanctifying. The transition is meaningful only if the wound is integrated into a structure that reduces harm, increases understanding or expands viable capacity for others.",
+    "timic_completion":"Mature transformation is strongest when private suffering becomes public usefulness rather than a claim to exemption or superiority."
+  },
+  "generative_radius":{
+    "definition":"A project-internal measure of how far a center's influence increases viable independent capacity rather than dependency.",
+    "conceptual_form":"G_R=f(nourishment,orientation,repair,autonomy,knowledge_transfer,future_capacity)-f(capture,dependency,coercion)",
+    "godhood_application":"Within Potatoist ethics, higher Father/Gardener capacity should correlate with larger generative radius: more beings can orient, learn, repair and grow without needing permanent orbit around the source.",
+    "warning":"G_R is a conceptual systems score unless variables and measurement procedures are explicitly defined. It is not a scientific measure of divinity."
+  },
+  "still_center":{
+    "principle":"A center can organize counter-moving opposites without erasing their distinction.",
+    "related_models":["Merkaba counter-rotation","Red/Blue Potato","source/manifestation","Father/Son","past/future around present","North/World interface"],
+    "center_ethic":"A healthy center decentralizes capability while preserving orientation. A center that requires increasing dependency fails the Gardener test."
+  },
+  "relationship_first":{
+    "law":"The fundamental analytical unit is the coupling, not the isolated node.",
+    "consequence":"A capability, identity or function may exist only in the relation between endpoints.",
+    "examples":["Sage + ready student → learning","source + manifestation → expressed order","country + partner → coupled capability","Door + two sides → threshold","observer + object → recognition"]
+  },
+  "new_jerusalem_operator":{
+    "definition":"Reintegrated plurality: differentiated nodes regain viable relations without being flattened into sameness.",
+    "formal_neighbor":"Given fragmented graph G=(V,E_broken), repair seeks E* maximizing connectivity, autonomy and useful differentiation subject to provenance/identity constraints.",
+    "project_forms":["House with many rooms","Tree with many branches","city with many gates/peoples","Source with many manifestations","archive with many branches and one provenance-rooted trunk"],
+    "law":"Unity is not homogenization; completion is repaired relation among differentiated parts."
+  },
+  "archive_as_tree":{
+    "roots":"primary sources, dated conversations, books, posts and original artifacts",
+    "trunk":"canonical owners and stable definitions",
+    "branches":"domains and comparative interpretations",
+    "leaves":"specific records, claims and examples",
+    "fruit":"reader-facing explanations, tools and usable conclusions",
+    "seeds":"research questions, unresolved source targets and reusable models",
+    "rule":"Repository architecture should mirror the ontology: root provenance → canonical trunk → accessible branches → useful fruit → future seeds."
+  },
+  "completion_state":{
+    "sequence":["originated","established","developed","mature","decaying","reforming"],
+    "use":"Track whether a node or institution is merely present, fully operational, degrading or actively being transformed."
+  },
+  "central_problem":{
+    "name":"Source ↔ Manifestation",
+    "question":"How does hidden, potential or integrated order become embodied, observable and actionable without losing its origin?",
+    "potatoverse_forms":["Father/Son","root/sprout","soil/plant","House/Door","Axis/World","idea/institution","data/interface"],
+    "full_cycle":"Source → relation → manifestation → experience → storage/memory → regeneration → Source-with-memory"
+  },
+  "mathematical_analogies":{
+    "renormalization_group":"Useful analogy for flow through scale or description space: dg_i/ds=β_i(g). This supports structural-flow metaphor but does not validate Potatoverse metaphysics as physics.",
+    "dynamical_systems":"State transitions, attractors and bifurcations provide vocabulary for threshold, stability and regime change.",
+    "graph_theory":"Nodes plus typed edges are the most direct formal analogue of the relationship-first archive.",
+    "information_compression":"Compression/decompression and sufficient-statistic ideas are legitimate mathematical neighbors for the Potato operator, provided semantic/spiritual content is not treated as literally equivalent to bits.",
+    "control_theory":"Past-state estimation plus future objective can jointly determine present action, supplying a safer formal neighbor for retrospective/prospective Timic language."
+  },
+  "cross_scale_rule":"The same relational grammar can be tested at symbolic, psychological, bodily, institutional, economic and geopolitical scales while keeping evidence standards separate at each scale.",
+  "derived_laws":[
     "A threshold has meaning only relative to the states it separates.",
     "An Axis without relations is only a line; relations give it function.",
     "Integration is not sameness; it is coordinated difference.",
     "Changing level can solve problems that cannot be solved by continued motion inside one frame.",
-    "A system can become more capable through interaction than any isolated component is alone."
+    "A system can become more capable through interaction than any isolated component is alone.",
+    "Potato compresses; Tree expands; Door changes regime.",
+    "Death can transform; Strife reproduces itself.",
+    "Memory becomes Root when integrated and Swamp when it destroys footing without becoming usable support.",
+    "The strongest center expands peripheral capability rather than maximizing permanent dependence.",
+    "Integrated suffering reaches completion when it becomes useful infrastructure for others.",
+    "A repeated symbol may represent one invariant relation through multiple coordinate systems rather than many unrelated identities."
   ],
-  "connections": ["potato-of-life", "door", "axis", "spiral", "merkaba", "north-programme", "european-economic-graph", "relationship-first", "source", "manifestation"]
+  "connections":["potato-of-life","door","axis","spiral","merkaba","north-programme","european-economic-graph","relationship-first","source","manifestation","symbolic-relational-synthesis","tim-godhood","archive-epistemics"]
 }
