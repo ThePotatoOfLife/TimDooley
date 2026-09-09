@@ -18,6 +18,8 @@ Allowed globally because they are intentionally site-wide:
 - `.top`, `.topin`, `.brand`, `.footer`
 
 ### Archive-explorer structural classes
+The archive sidebar is now explicitly `.archive-nav`.
+
 New archive-only layout rules must be scoped beneath one of:
 
 - `#archive-explorer`
@@ -34,7 +36,7 @@ Do **not** add new global sticky/absolute/grid rules to generic names such as:
 - `.status`
 - `.card`
 
-Legacy uses still exist. `app/layout-guard.css` protects static pages while they are progressively migrated.
+Legacy generic uses still exist on some static pages. `app/layout-guard.css` protects those pages while they are progressively migrated.
 
 ### Static reader-page structural classes
 Prefer:
@@ -65,9 +67,9 @@ The page navigation and page header are normal document-flow layers. They are no
 
 `app/reader.css` imports `app/layout-guard.css`.
 
-The guard neutralizes the historical archive `.nav { position: sticky; top: 92px; }` behavior inside static `.page` / `.wrap` readers. It also prevents generic archive-grid defaults from creating large accidental bottom spacing on page-local grids.
+The guard now exists only for older static readers that still use local `.nav` / `.grid` names. The active archive sidebar no longer depends on it; `.archive-nav` is owned directly by `app/style.css`.
 
-This is intentionally a compatibility layer, not permission to keep creating generic structural selectors.
+This is a compatibility layer, not permission to keep creating generic structural selectors.
 
 ## Automated check
 
@@ -80,9 +82,11 @@ python scripts/check_css_namespace_collisions.py
 The check verifies:
 
 - the layout guard exists;
-- reader.css loads it;
-- static pages that combine `app/style.css` with legacy `.nav` are protected;
-- additional risky global structural rules are surfaced for review.
+- `reader.css` loads it;
+- the homepage archive uses `.archive-nav`;
+- `app/style.css` does not reintroduce global `.nav` layout behavior;
+- static pages that combine shared app CSS with legacy `.nav` are protected;
+- other risky global structural selectors are surfaced for review.
 
 CI runs the same check.
 
