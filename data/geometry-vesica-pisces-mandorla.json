@@ -1,84 +1,99 @@
 {
-  "version":"2.0.0",
+  "version":"3.0.0",
   "updated":"2026-09-09",
   "status":"canonical-geometry-study",
-  "name":"Vesica Piscis & Mandorla — Geometry, Centers, Axis and Door",
-  "purpose":"Provide the canonical mathematical geometry for Vesica Piscis/Mandorla and explicitly distinguish circle centers, relational/lens center, symmetry axes and Potatoverse mappings. Mathematical facts are separated from historical symbolism and project interpretation.",
-  "epistemic_rule":"Geometry is mathematical. Art-history claims require historical sources. Potatoverse mappings—Father/Sun circle, Earth/humanity circle, Son/Door overlap, Tim as source-center or Axis reference—are project interpretations and do not follow from the geometry itself.",
-  "vesica_piscis":{
-    "definition":"The Vesica Piscis is the lens-shaped intersection of two congruent circles whose center separation equals their common radius r.",
-    "canonical_coordinates":{
-      "left_center":"C1=(-r/2,0)",
-      "right_center":"C2=(r/2,0)",
-      "relational_midpoint":"CR=(0,0)",
-      "intersection_points":"P±=(0,±sqrt(3)r/2)"
-    },
-    "key_geometry":{
-      "circle_radius":"r",
-      "center_distance":"r",
-      "lens_width":"r",
-      "lens_height":"sqrt(3)r",
-      "full_lens_area":"A=(1/6)(4π-3√3)r²",
-      "area_decimal":"approximately 1.2283697 r²",
-      "correction":"The archive's previous value approximately 0.6141848493 r² was half of the full lens area and has been corrected."
-    },
-    "derivation":"The full lens consists of two congruent circular segments. Equivalently A=2[(πr²/3)-(√3 r²/4)]=(2π/3-√3/2)r²=(1/6)(4π-3√3)r².",
-    "angles":"The radii from either circle center to the two intersection points subtend 120 degrees for the intersecting segment geometry; the center-to-center/intersection triangles are equilateral with 60 degree angles. Care is needed not to confuse the equilateral-triangle 60-degree angles with the full sector used in the lens-area calculation.",
-    "symmetry":"The line joining C1 and C2 is the horizontal symmetry axis. The perpendicular bisector x=0 through P± is the vertical symmetry axis. Their intersection CR is the geometric center of the lens relation.",
+  "name":"Vesica Piscis & Mandorla — Vertical Father/Son Geometry, Centers, Plane, Axis and Door",
+  "purpose":"Provide the canonical mathematical geometry for the Potato of Life / Vesica Piscis and Mandorla / Door of Christ, now oriented vertically to match recovered Potatoverse canon: Father is center of the upper circle and top of the Door; Son is center of the lower circle and bottom of the Door; Plane crosses the widest part of the overlap; Tree/Ladder/Axis runs vertically through all centers.",
+  "epistemic_rule":"Geometry is mathematical. Father/Son/Christ/Plane/Tree mappings are Potatoverse interpretation. Biblical and art-historical comparisons retain their own source meanings.",
+  "vertical_vesica":{
+    "radius":"r",
+    "upper_circle":"x²+(y-r/2)²=r²",
+    "lower_circle":"x²+(y+r/2)²=r²",
+    "father_center":"C_F=(0,+r/2)",
+    "son_center":"C_S=(0,-r/2)",
+    "center_distance":"r",
+    "lateral_intersections":"P_L=(-sqrt(3)r/2,0), P_R=(+sqrt(3)r/2,0)",
+    "relational_midpoint":"O=(0,0)",
+    "plane":"y=0",
+    "axis":"x=0",
+    "upper_outer_pole":"H_top=(0,+3r/2)",
+    "lower_outer_pole":"E_bottom=(0,-3r/2)",
+    "full_lens_area":"A=(1/6)(4π-3√3)r² ≈ 1.2283697r²",
     "source":"https://mathworld.wolfram.com/VesicaPiscis.html"
   },
+  "critical_exact_relations":[
+    "C_F is the center of the upper circle AND exactly the top endpoint of the shared lens.",
+    "C_S is the center of the lower circle AND exactly the bottom endpoint of the shared lens.",
+    "C_F lies on the circumference of the lower/Son circle.",
+    "C_S lies on the circumference of the upper/Father circle.",
+    "O is the midpoint between Father and Son centers and center of the lens relation, but it is neither Father-center nor Son-center.",
+    "P_L and P_R lie on both circle boundaries and define the widest cross-section of the lens.",
+    "The Plane y=0 passes through O, P_L and P_R and bisects the Door into equal upper and lower halves.",
+    "The Axis x=0 passes through E_bottom → C_S → O → C_F → H_top."
+  ],
+  "potatoverse_default_mapping":{
+    "upper_circle":"Heaven / Father / Tim / Sun / Spudlight / House / upper Garden field",
+    "father_center":"Tim/Father/source-center; top of Door; Seat/Throne candidate",
+    "lower_circle":"Earth / Son / embodiment / body / soil / material world",
+    "son_center":"Son/Thomas/embodied-center; bottom of Door; grain/death/seed compression point",
+    "mandorla":"Door of Christ / Vessel / shared passage between Heaven and Earth",
+    "plane":"Grass / Earth-world interface / first separation / maximum overlap / lateral world contact",
+    "relational_midpoint":"crossing/balance point on Plane; candidate Jesus-at-center developmental placement where sources use that language",
+    "axis":"Tree / Root / Trunk / Ladder / Spiral centerline",
+    "upper_outer_pole":"Heaven-crown / Mountain-summit / North-of-North-facing direction candidate",
+    "lower_outer_pole":"deep Earth / grave / drain / rootward direction candidate"
+  },
+  "door_zones":{
+    "lower_tip":"C_S — Son center and zero-width lower Gate point",
+    "lower_half":"C_S→O — seed/death/root/ascent-to-world zone",
+    "plane_band":"O with P_L/P_R — widest opening, world-interface and lateral relation zone",
+    "upper_half":"O→C_F — trunk/mountain/house/ascent-to-source zone",
+    "upper_tip":"C_F — Father center and zero-width upper Gate point",
+    "insight":"The narrowest points are Father and Son centers, not the Plane. The Plane is where the Door is widest."
+  },
   "center_taxonomy":{
-    "C1_C2":"centers intrinsic to each complete parent circle; each can represent its own domain/source/reference",
-    "CR":"midpoint created by relation between the two parent centers and center of the overlap lens; belongs naturally to the relationship rather than exclusively to either circle",
-    "intersection_points":"threshold points where both circle boundaries simultaneously meet",
-    "axis_crossing":"CR is also where horizontal and vertical symmetry axes cross",
-    "project_warning":"Calling Tim 'the center' is incomplete unless the archive states whether Tim means source-circle center, relational lens center, Axis/reference center or another center type."
+    "father_source_center":"C_F",
+    "son_embodied_center":"C_S",
+    "door_relational_center":"O",
+    "circle_outer_poles":"H_top and E_bottom",
+    "boundary_agreement_points":"P_L and P_R",
+    "rule":"Do not collapse all of these into one generic 'center'. Their distinction is now canonical."
   },
-  "mandorla":{
-    "definition":"Mandorla ('almond') is the art-historical term for an almond/lens-shaped sacred enclosure or aureole. Some mandorlae use Vesica-like geometry, but not every mandorla is mathematically a standard Vesica Piscis.",
-    "historical_use":"Especially prominent in Byzantine and medieval Christian art around Christ, the Virgin and other sacred figures, often marking divine glory, manifestation or a threshold between ordinary and transcendent space.",
-    "potatoverse_value":"The mandorla supplies an especially good visual Door/Vessel because it is not either parent circle but the shared region in which two complete domains are simultaneously present."
+  "tree_ladder_mountain_swamp_overlay":{
+    "tree":"roots extend below Plane; trunk follows Axis upward; branches/crown expand in upper sphere",
+    "ladder":"ordered Doors/rungs along Axis",
+    "spiral":"trajectory that rotates while changing vertical level around Axis",
+    "mountain":"upper positive-gradient/convergent field rising from Plane toward Father/upper pole",
+    "swamp":"lower entangling field around/below Plane and lower sphere, with Drain toward deeper rootward pole",
+    "root_paradox":"Father can be origin/source of Root while Son governs/contains roots below; causal origin and spatial deployment are different relations."
   },
-  "potatoverse_mapping":{
-    "recommended_default":{
-      "source_circle":"Father/Tim/Sun/Heaven field",
-      "embodied_circle":"Earth/humanity/manifested world",
-      "overlap":"Son/Christ/Thomas/Vessel/Door interface",
-      "source_center":"Tim/Father as source-center of upper/source domain",
-      "relational_center":"center of Door/overlap; not automatically identical with Father/source-center",
-      "vertical_axis":"Ladder/Axis connecting upper and lower readings through the overlap"
-    },
-    "why_this_mapping_is_stronger":"It preserves the mature identity-to-infrastructure law: Father is source/orientation/House; Son is interface/Door; their relation creates a shared region without erasing either domain. It also allows Tim to be 'center' in a source/orientational sense without forcing Tim to occupy the Son's Door-center geometrically.",
-    "stereo_theoism":"The two complete circles can still support the project's Stereo Theoism/non-dual-dualism: two differentiated lenses/domains create a third shared region. The overlap is relation, not annihilation of difference.",
-    "eye_relation":"The pointed lens resembles an Eye/almond/doorway in project symbolism; mathematically this resemblance has no theological content until mapped.",
-    "birth_canal_relation":"The lens can function as project birth-canal/threshold imagery because it is a bounded passage between differentiated fields; this remains interpretive symbolism."
+  "mountain_relation":{
+    "mount_zion":"Best treated as upper integration/elevation field associated with Great King, House, Zion, New Jerusalem, teaching/judgment and North-related imagery in project comparison.",
+    "mountain_vs_ladder":"Mountain is continuous gradient ascent; Ladder is discrete threshold ascent.",
+    "mountain_vs_tree":"Mountain converges many paths toward summit; Tree differentiates one root/trunk into many branches.",
+    "mountain_vs_swamp":"Mountain increases orientation/integration with height; Swamp increases entanglement/unresolved recurrence with depth.",
+    "companion_record":"knowledge/core/vertical-potato-mountain-plane-atlas.json"
   },
-  "sun_moon_earth_extension":{
-    "principle":"Do not force Sun, Moon and Earth into a literal two-circle astronomy diagram. Instead use Vesica as relational topology: Source/illumination field and embodied/observer field overlap through Door, while Moon can occupy a reflector/mediator role inside or adjacent to the embodied side depending the diagram.",
-    "sun":"source/illumination comparator",
-    "moon":"reflected/phase-dependent mediator rather than independent source",
-    "earth":"observer/embodiment/metabolizing field",
-    "door":"shared relation in which source becomes perceivable/actionable to embodied observer"
+  "sun_moon_relation":{
+    "sun":"upper/source-light comparator tied to Father/Tim/Spudlight",
+    "moon":"lower/near-Earth reflected/cyclical mediator tied to secondary light, phase and Dog/Farmer follower symbolism",
+    "earth":"lower circle as embodied/metabolizing world",
+    "rule":"Do not place physical astronomy literally inside the 2D compass figure; use these as typed symbolic overlays."
   },
+  "ruler_compass_construction":[
+    "Draw vertical segment C_SC_F of length r.",
+    "Set compass to r and draw a circle centered at C_F.",
+    "Without changing compass, draw a circle centered at C_S.",
+    "Mark P_L and P_R where circles intersect.",
+    "Draw Plane P_LP_R and Axis through C_S,O,C_F.",
+    "Trace overlap as Mandorla/Door.",
+    "Mark Father at C_F and Son at C_S; these are simultaneously parent-circle centers and Door endpoints.",
+    "Add Tree/Ladder on Axis, Mountain above Plane, Swamp/Drain below, Sun upper and Moon lower as symbolic overlays."
+  ],
   "mesopotamian_geometry_neighbor":{
-    "finding":"MathWorld's reconstruction of the Old Babylonian 'ox-eye' or Babylonian bull's-eye identifies a figure geometrically equivalent to a Vesica Piscis.",
-    "importance":"This creates a historically interesting Mesopotamia↔Eye↔Vesica mathematical neighbor for the archive.",
-    "boundary":"It does not demonstrate an ancient Babylonian doctrine of Christ, Door, Tim, Potato of Life or the project's metaphysics.",
+    "finding":"The Old Babylonian ox-eye / Babylonian bull's-eye is reconstructed as geometrically equivalent to the Vesica Piscis.",
+    "boundary":"This is a mathematical/historical neighbor, not proof of Potatoverse doctrine in Babylonia.",
     "source":"https://mathworld.wolfram.com/OxEye.html"
   },
-  "mathematical_notes":[
-    "Scaling by k multiplies all lengths by k and area by k² while preserving shape.",
-    "The figure has two reflection axes and 180-degree rotational symmetry.",
-    "Each parent circle remains complete; overlap does not subtract the identity of either parent domain.",
-    "CR is midpoint/balance of the two circle centers, not the center of either parent circle.",
-    "The two intersection points are equal-distance from C1 and C2, making them natural mathematical boundary-agreement points."
-  ],
-  "research_questions":[
-    "Recover the exact Potatoverse diagram that assigned Tim, Son, Jesus, Earth and Heaven to upper/lower circles and lens.",
-    "Audit every repository use of 'center' and tag it as source-center, lens-center, symmetry-center, dynamical/barycentric center, orientational center or attention-center.",
-    "Study historically sourced mandorla examples before making stronger Christian iconographic claims.",
-    "Compare the Babylonian ox-eye construction with actual tablet scholarship rather than using MathWorld alone for historical interpretation.",
-    "Keep any 3D extension explicitly separate from the canonical 2D geometry."
-  ],
-  "related_records":["potatoism-planetary-cosmology","spudlight-theory-and-equations","axis","door","son","father","tree-of-life","eye","interface","potato-boundary","potato-axis","potato-spatial"]
+  "connections":["vertical-potato-mountain-plane-atlas","potatoism-planetary-cosmology","spudlight-theory-and-equations","potatoverse-master-framework","qliphoth-angels-ladder-north-cosmology","farm-swamp-tree-of-strife-atlas","axis","door","son","father","tree-of-life","Mount Zion","New Jerusalem","Sun","Moon"]
 }
