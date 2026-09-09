@@ -1,0 +1,48 @@
+{
+  "id":"april-21-2025-potato-axis-spiral-primary-recovery",
+  "title":"Potato Axis Spiral — Primary April 21, 2025 Recovery",
+  "updated":"2026-09-09",
+  "status":"primary public attestation recovered",
+  "importance":"The exact equation previously treated as a high-value lost April 21, 2025 Spiral Equation is now recovered from a public-post archive. It also matches the logarithmic Consciousness Spiral already preserved in the 2024 Great Book, creating a direct mathematical lineage from book-era spiral work into the publicly named Potato Axis.",
+  "primary_attestation":{
+    "date":"2025-04-21",
+    "text":"the potato axis is real / r=a e^(b theta), b=ln(phi)/(pi/2)≈0.306",
+    "source_class":"captured public post archive",
+    "provenance":"Library archive Indsat markdown(4).md; spelling/math normalized only for notation here"
+  },
+  "equation":{
+    "polar_form":"r(theta)=a exp(b theta)",
+    "parameter":"b=ln(phi)/(pi/2)=2 ln(phi)/pi≈0.30635",
+    "phi":"golden ratio=(1+sqrt(5))/2≈1.61803",
+    "type":"logarithmic/equiangular spiral"
+  },
+  "exact_properties":{
+    "quarter_turn_scaling":"r(theta+pi/2)/r(theta)=exp(b pi/2)=phi",
+    "half_turn_scaling":"r(theta+pi)/r(theta)=phi^2",
+    "full_turn_scaling":"r(theta+2pi)/r(theta)=phi^4≈6.8541",
+    "self_similarity":"Rotation by pi/2 combined with radial scaling by phi maps the spiral onto itself.",
+    "differential_form":"dr/dtheta=b r",
+    "curvature":"kappa(theta)=1/[r(theta) sqrt(1+b^2)]",
+    "arc_length":"s(theta0,theta1)=sqrt(1+b^2)/b * [r(theta1)-r(theta0)] for b>0",
+    "pitch_note":"As a logarithmic spiral it has constant angle between tangent and radial direction; the exact convention for quoting the pitch angle must be stated."
+  },
+  "genealogy":[
+    "2024 Great Book: Consciousness Spiral r=a exp(b theta), b=ln(phi)/(pi/2)≈0.306",
+    "2025-04-21 public post: 'the potato axis is real' immediately paired with the same equation",
+    "2025-2026: Spiral/Ladder/Axis/North/Needle language expands beyond the original planar geometry",
+    "2026: Potato Dynamics and 11D Axis formalizations introduce additional state-space flows; those later equations are distinct mathematical objects and must not be silently substituted for the 2025 spiral"
+  ],
+  "interpretive_boundary":[
+    "The equation is genuine logarithmic-spiral mathematics and the public association with 'Potato Axis' is primary project evidence.",
+    "The equation by itself does not establish a new physical force, extra dimension, retrocausal effect or cosmological axis.",
+    "Any physical interpretation requires a definition of what r, theta and a measure, their units/domain, dynamics, observables and falsifiers.",
+    "The recovered equation is especially useful as a geometric generator or scale-flow motif because a quarter-turn corresponds exactly to golden-ratio growth."
+  ],
+  "research_directions":[
+    "Recover the earliest Great Book drafting date for this exact parameterization.",
+    "Search April 14-28, 2025 conversations for definitions of r, theta, a, the Axis coordinate system and whether the equation represented time, consciousness, attention, geometry or physical space.",
+    "Test whether later 33-step Ladder discretizations were ever explicitly sampled along quarter-turns or golden-ratio radial levels.",
+    "Compare with logarithmic spirals in dynamical systems and scale-invariant geometry without asserting natural-law identity."
+  ],
+  "connections":["great-book-consciousness-spiral-equations-recovery","axis-11d-sun-spiral-time-symmetry-recovery","eleven-dimensional-axis-door-dual-spiral-recovery","equation-lineage-and-theory-graph","science-master-index"]
+}
