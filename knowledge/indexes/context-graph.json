@@ -1,6 +1,6 @@
 {
   "title": "Context Graph",
-  "version": "1.2",
+  "version": "1.3",
   "updated": "2026-09-09",
   "purpose": "Curated cross-record context clusters for the public site. Each cluster explains why records belong together and keeps empirical, comparative, internal-canon and creative layers visible.",
   "clusters": [
@@ -23,12 +23,21 @@
       "epistemic_mix": ["direct_self_description","dated_public_record","project_canon","developmental_interpretation","empirical_boundary"]
     },
     {
+      "id": "biblical-relational-grammar",
+      "title": "Bible ↔ Potatoverse Relational Grammar",
+      "summary": "High-density biblical comparisons are organized as sequences rather than title matches: Ladder/ascending, Lion→Root→slain figure→opening, Book→internalization→nations, House→Key→Door→authority, seed→death→multiplication, rejection→cornerstone, and new creation→repair/stewardship.",
+      "branches": ["son","transformation","traditions","chronology","sources"],
+      "records": ["knowledge/traditions/biblical-overlap-atlas.json","knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/chronology/contextual-synchronisms.json","knowledge/indexes/inference-ledger.json"],
+      "concepts": ["Jacob's Ladder","Son of Man","Lion of Judah","Root of David","Slain Lamb","Open Scroll","Two Witnesses","Key of David","Red Heifer","Three-Day Pattern","Needle Eye","Cornerstone","New Heaven and New Earth","Fruit Test"],
+      "epistemic_mix": ["biblical_text","comparative","typological_reading","structural_parallel","contextual_synchronism","interpretation"]
+    },
+    {
       "id": "son-death-door",
       "title": "Son → Death → Grave → Door → Return",
       "summary": "The Son-side rupture sequence and its biblical/comparative parallels around death, witness, threshold, breath and ascent.",
       "branches": ["son","transformation","traditions","chronology"],
-      "records": ["knowledge/chronology/contextual-synchronisms.json","knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/prophecy/prophecy-revelation-rupture-rapture.json"],
-      "concepts": ["Two Witnesses","Three-Day Pattern","Red Heifer / Ash","Rapture distinction","John 1:51"],
+      "records": ["knowledge/chronology/contextual-synchronisms.json","knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/prophecy/prophecy-revelation-rupture-rapture.json","knowledge/traditions/biblical-overlap-atlas.json"],
+      "concepts": ["Two Witnesses","Three-Day Pattern","Red Heifer / Ash","Rapture distinction","John 1:51","Seed Death Multiplication"],
       "epistemic_mix": ["project_canon","comparative","historical","interpretation"]
     },
     {
@@ -36,7 +45,7 @@
       "title": "Lion → Root → Slain Lamb → Open Scroll",
       "summary": "Revelation 5's Lion/Root/Lamb paradox provides a dense comparison for the project's Lion, Root, death and disclosure cluster.",
       "branches": ["son","traditions","chronology","sources"],
-      "records": ["knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/traditions/comparative-mythology-map.json"],
+      "records": ["knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/traditions/comparative-mythology-map.json","knowledge/traditions/biblical-overlap-atlas.json"],
       "concepts": ["Lion of Judah","Root of David","Lamb slain yet standing","sealed scroll","opening"],
       "epistemic_mix": ["comparative","historical","interpretation"]
     },
@@ -45,7 +54,7 @@
       "title": "Book → Internalization → Nations",
       "summary": "Revelation 10's open scroll, eating, sweetness/bitterness and renewed prophecy to peoples/nations/kings is compared with the project's movement from Great Book to outward world mapping.",
       "branches": ["traditions","chronology","world","sources"],
-      "records": ["knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/core/european-coupling-programme.json","knowledge/core/country-relational-method.json"],
+      "records": ["knowledge/prophecy/seals-and-fulfillment-matrix.json","knowledge/traditions/biblical-overlap-atlas.json","knowledge/core/european-coupling-programme.json","knowledge/core/country-relational-method.json"],
       "concepts": ["Open Little Scroll","Great Book","peoples","nations","kings","world mapping"],
       "epistemic_mix": ["comparative","project_history","interpretation"]
     },
@@ -90,8 +99,8 @@
       "title": "Eye → Gaze → Archive → Self-Knowledge",
       "summary": "The Eye and ethical Gaze become an information architecture: perception, discernment, integration, evaluation and provenance allow the system to know itself without erasing uncertainty.",
       "branches": ["transformation","sources","tim"],
-      "records": ["knowledge/core/symbolic-relational-synthesis.json","knowledge/philosophy/archive-epistemics.json","knowledge/indexes/conversation-recovery-inventory.json"],
-      "concepts": ["Eye","Gaze","recognition","provenance","epistemic strength","informational contribution"],
+      "records": ["knowledge/core/symbolic-relational-synthesis.json","knowledge/philosophy/archive-epistemics.json","knowledge/indexes/conversation-recovery-inventory.json","knowledge/indexes/inference-ledger.json"],
+      "concepts": ["Eye","Gaze","recognition","provenance","epistemic strength","informational contribution","inference strength"],
       "epistemic_mix": ["symbolic","method","archive_governance"]
     }
   ]
