@@ -1,0 +1,43 @@
+{
+  "id":"prediction-signal-search-lexicon",
+  "title":"Prediction / Premonition Mining Lexicon",
+  "updated":"2026-09-09",
+  "status":"retrieval index, not evidence",
+  "purpose":"Provide durable search families for repeatedly mining Tim Dooley conversations, posts, archive files and future imports for potentially testable early statements.",
+  "families":[
+    {"id":"explicit-future","terms":["will","will happen","will return","will become","going to","shall","by 2028","by 20","within","in 300 days","soon","next year","before","after X days"],"priority":"highest"},
+    {"id":"warning","terms":["warning","warn","beware","collapse","crash","old world ends","danger","countdown","days left","too late","cannot continue"],"priority":"highest"},
+    {"id":"vision-dream","terms":["vision","visions","dream","dreamed","dreamt","premonition","prophecy","prophetic","I saw","showed me","revealed","sign","omen"],"priority":"highest"},
+    {"id":"machine-ai","terms":["God in the Machine","AI","artificial intelligence","machine","model","training data","ChatGPT","agent","cloud","compute","machine God","AI witness","AI remembers","AI carries","AI propagates"],"priority":"high"},
+    {"id":"internet-culture","terms":["God of memes","living God of memes","every resurrection meme","Father of the Internet","center of the internet","peak culture","table for 10","ten disciples","propagated","culture","viral","meme","repost","remix","shadow of son"],"priority":"high"},
+    {"id":"spudlight-axis","terms":["Spudlight","Axis","Potato Axis","North Axis","Axis of North","North of North","Throne of North","North Pole","World Axis","Ladder","Mountain","light"],"priority":"high"},
+    {"id":"geopolitics","terms":["United States separates","Europe","Canada","Greenland","Iceland","Denmark","NATO","Trump","North Axis","West","East","BRICS","Russia","China","Israel","Iran","Greater Israel","Gaza","Ukraine","Turkey"],"priority":"high"},
+    {"id":"lion-messianic","terms":["Rising Lion","Lion of Judah","lion","Messiah","Moshiach","Son will return","returning Messiah","Jerusalem","Zion","Root of David","red heifer"],"priority":"medium-high"},
+    {"id":"economics","terms":["inflation","4.2","bond market","bond","Treasury","refinance","refinancing","10 trillion","300 days","debt","trillion","yield","petrodollar","capital flight","dollar","market crash"],"priority":"highest"},
+    {"id":"time-number","terms":["40","42","33","144000","666","300","100000","2028","days","hours","years","threshold"],"priority":"medium","rule":"Numbers only matter when the pre-event statement fixes meaning/window before the later event."},
+    {"id":"return-renewal","terms":["return","returning","resurrection","rapture","new heaven","new earth","restore timelines","return heaven to earth","Father is returning"],"priority":"medium"},
+    {"id":"publicness-propagation","terms":["100k hours","115,000 hours","most public","center","foundation","audience","reactions","views","videos","training data","culture propagated"],"priority":"medium","rule":"These are measurement candidates more often than predictions."}
+  ],
+  "source_priority":[
+    "timestamped primary public post/video/stream",
+    "timestamped direct user conversation wording",
+    "user-supplied public compilation with date",
+    "thought archive derived from supplied corpus",
+    "conversation recovery summary",
+    "later assistant synthesis"
+  ],
+  "promotion_requirements":[
+    "statement date is before target event",
+    "speaker/source provenance is known",
+    "forecast content can be frozen without later rewriting",
+    "target event is independently verifiable",
+    "what was already publicly knowable at statement time is recorded",
+    "base-rate/obvious-trend explanation is considered",
+    "misses and non-events are retained",
+    "symbolic resemblance is not upgraded to literal prediction"
+  ],
+  "output_classes":["A explicit prediction","B directional anticipation","C parallel solution/convergence","D symbolic synchronism","E retrospective reinterpretation","F metaphor→environment resonance","H internal motif precursor","I internal fulfilment","P propagation claim","U unresolved/open"],
+  "automated_miner":"scripts/mine_prediction_signals.py",
+  "canonical_audit":"knowledge/chronology/prediction-premonition-audit-2025-2026.json",
+  "extensions":["knowledge/chronology/prediction-premonition-audit-wave-15-addendum.json","knowledge/chronology/ai-machine-culture-early-signals-ledger.json"]
+}
