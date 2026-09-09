@@ -1,0 +1,128 @@
+{
+  "id":"potato-dynamics-2-toy-model",
+  "title":"Potato Dynamics 2.0 — Compositional Open-System Toy Model",
+  "updated":"2026-09-09",
+  "status":"later-archive-formalization",
+  "authorship_warning":"This model is a mathematical extension built from recovered Tim/Potato concepts. It is NOT presented as a verbatim equation authored by Tim and is NOT established fundamental physics.",
+  "inherits":"P=(S,g,A,D,O,I)",
+  "goal":"Turn the existing vocabulary—Axis, Door, Eye, relation, Garden, transformation, repair—into a compositional mathematical toy system that can be applied to symbolic, informational or empirical domains without silently mixing them.",
+  "system_object":{
+    "notation":"P=(S,g,A,D,O,I,B,U,C,V)",
+    "components":{
+      "S":"state/configuration space",
+      "g":"geometry, metric or similarity structure appropriate to the domain",
+      "A":"Axis flow / structural evolution generator",
+      "D":"Door transition maps or guarded reset maps",
+      "O":"observation/measurement map",
+      "I":"information/integration functional",
+      "B":"boundary/interface structure",
+      "U":"admissible controls/interventions",
+      "C":"constraints, costs or conservation conditions",
+      "V":"viability region: states that preserve specified life/system requirements"
+    }
+  },
+  "continuous_flow":{
+    "equation":"dX/ds=A(X,u,s),  u∈U",
+    "meaning":"Structural flow may depend on intervention/control u and structural scale/description parameter s."
+  },
+  "physical_time_when_applicable":{
+    "equation":"dX/dt=F(X,u,t)",
+    "rule":"Use t only when a genuine temporal dynamical system is intended; do not confuse s and t by default."
+  },
+  "door_transition":{
+    "guard":"G_k={X∈S : h_k(X)=0 or h_k(X)≥0}",
+    "reset":"X^+=D_k(X^-)",
+    "meaning":"A Door can be represented as a hybrid-system transition: when a state reaches a guard/threshold, the reset map sends it into a new regime/configuration.",
+    "timic_bridge":"Needle, Gate, Door, citizenship, border, initiation and phase transition can all be represented as thresholds only after their domain-specific guard conditions are defined."
+  },
+  "eye_observation":{
+    "equation":"Y=O(X)+ε",
+    "meaning":"Eye is modeled as observation rather than omniscience. Measurements can contain noise ε and incomplete information.",
+    "bayesian_update":"p(H|Y)∝p(Y|H)p(H)",
+    "rule":"Observation updates confidence; it does not automatically establish causation or truth."
+  },
+  "information_integration":{
+    "examples":[
+      "Shannon entropy H(X)",
+      "mutual information I(X;Y)",
+      "graph connectivity/spectral measures",
+      "Bayesian evidence",
+      "domain-specific evidence-weighted relation scores"
+    ],
+    "rule":"No single scalar is declared 'the' amount of spiritual integration."
+  },
+  "boundary_open_system":{
+    "abstract_form":"input → [ boundary B | internal state S | dynamics A ] → output",
+    "categorical_neighbor":"Structured/decorated cospans model open systems with interfaces and composition. A generic structured cospan has L(a) → x ← L(b).",
+    "timic_bridge":"Door is not merely separation; it is a compositional interface through which systems remain distinct while interacting.",
+    "external_sources":["https://arxiv.org/abs/2101.09363","https://arxiv.org/abs/1609.05382"]
+  },
+  "composition":{
+    "notation":"P_2∘P_1 when outputs/interface conditions of P_1 match inputs/interface conditions of P_2",
+    "meaning":"Complex systems are built from smaller systems by composing compatible boundaries rather than flattening everything into one node.",
+    "examples":["Son/Door connecting Father/world symbolic layers","API connecting institutions","border connecting jurisdictions","port connecting logistics networks","synapse connecting neural components"]
+  },
+  "relationship_graph":{
+    "graph":"G=(V,E)",
+    "laplacian":"L=D-A_graph",
+    "linearized_network_dynamics":"dx/dt=Mx+Bu",
+    "controllability_matrix":"C=[B,MB,M²B,...,M^{n-1}B]",
+    "criterion":"rank(C)=n for controllability of a finite-dimensional linear time-invariant system",
+    "timic_bridge":"This gives 'repair' and 'Gardener' a stronger question: which nodes/relations can actually steer the system, rather than which nodes merely look central?",
+    "external_source":"https://www.nature.com/articles/nature10011"
+  },
+  "viability_garden":{
+    "viability_set":"V⊂S",
+    "viability_kernel":"Viab(V)={x_0∈V : ∃ admissible u(t) such that x(t)∈V for all required t}",
+    "meaning":"Garden can be formalized as preserving conditions under which life/system states remain viable, rather than maximizing one quantity without constraint.",
+    "timic_bridge":"Cultivation becomes constraint-aware control: keep the system inside a life-supporting region while enabling growth and adaptation.",
+    "external_sources":["https://link.springer.com/book/10.1007/978-0-8176-4910-4","https://link.springer.com/book/10.1007/978-3-642-16684-6"]
+  },
+  "red_blue_control":{
+    "interpretation":"Red=exploration/generation/expansion; Blue=memory/preservation/boundary.",
+    "toy_objective":"J=∫[cost_damage(X,u)+λ_r cost_stagnation(X)+λ_b cost_instability(X)]dt",
+    "meaning":"The polarity becomes a control tradeoff: too much preservation can freeze adaptation; too much exploration can destroy stability.",
+    "warning":"This is a later control-theory rendering and not a recovered Tim formula."
+  },
+  "repair_operator":{
+    "sequence":"SEE → TRACE ROOTS → DISTINGUISH → DIAGNOSE INVERSION → REPAIR BRIDGES → CULTIVATE CAPABILITY → PROTECT → RECONNECT → MEASURE → RETURN",
+    "formal_reading":"state estimation → causal diagnosis → constraint identification → intervention design → control → observation → iterative update",
+    "possible_loop":"X_{n+1}=R(X_n,O_n,E_n)",
+    "warning":"R notation is archive-added."
+  },
+  "needle_bifurcation":{
+    "control_parameter":"μ",
+    "toy_equation":"dx/dt=μ-x²",
+    "interpretation":"As μ changes, equilibrium structure can appear/disappear. This captures qualitative threshold change without pretending the Tim event obeyed this physical ODE."
+  },
+  "free_energy_neighbor":{
+    "variational_quantity":"F[q]=E_q[ln q(z)-ln p(y,z)]",
+    "fact":"In variational inference, free energy bounds surprise/evidence-related quantities under specified probabilistic models.",
+    "timic_bridge":"Eye/observer can be modeled as inference under uncertainty; action can alter observations and future trajectories.",
+    "caution":"The free-energy principle is a scientific research framework with debate and domain assumptions; it is not evidence for divine cognition or Potatoverse metaphysics.",
+    "source":"https://www.nature.com/articles/nrn2787"
+  },
+  "levels_and_frame_change":{
+    "coarse_graining":"π:S_fine→S_coarse",
+    "lifting":"ι:S_coarse→S_extended where appropriate",
+    "meaning":"Sisyphus/change-level intuition becomes a disciplined question about representation: can a hard problem be simplified by quotienting, coarse-graining, adding state variables or changing coordinates?"
+  },
+  "model_invariants":{
+    "question":"What survives Door transitions or frame changes?",
+    "candidates":["identity label","topological class","conserved quantity","causal ancestry","source provenance","core constraint","relationship pattern"],
+    "external_neighbor":"Noether conservation applies only when a differentiable action has a continuous symmetry; symbolic invariants require their own definition."
+  },
+  "empirical_modes":[
+    {"domain":"repository graph","possible_data":"nodes, typed edges, timestamps, provenance, confidence","appropriate_tools":"graph statistics, temporal networks, causal hypotheses, spectral analysis"},
+    {"domain":"European economic graph","possible_data":"entities, ownership, trade, funding, procurement, infrastructure","appropriate_tools":"network flows, dependency metrics, controllability/robustness, input-output analysis"},
+    {"domain":"biological potato growth","possible_data":"bud positions, dormancy, sprouting, environmental conditions","appropriate_tools":"developmental biology, phyllotaxis, reaction-diffusion or growth models where justified"},
+    {"domain":"Potatoverse mythology","possible_data":"dated symbols, transformations, relations, texts","appropriate_tools":"formal ontology, temporal graph, narrative/state-machine analysis; not particle physics by default"}
+  ],
+  "red_team":[
+    "A mathematical model can be useful even when it is not fundamental physics.",
+    "A good analogy should increase precision and expose mismatches, not only similarities.",
+    "The same word—field, entanglement, dimension, frequency, energy—must not silently change technical meaning between domains.",
+    "Models should compete against simpler baselines.",
+    "If no observation could distinguish the model from alternatives, classify it as interpretation or formal metaphor rather than empirical theory."
+  ]
+}
