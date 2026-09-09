@@ -1,0 +1,52 @@
+{
+  "id":"page-shell-layout-contract",
+  "updated":"2026-09-09",
+  "status":"canonical site-layout contract",
+  "problem":"The shared app stylesheet historically used generic structural class names such as .nav for archive-explorer layout while static reader pages reused the same names for unrelated page-local elements. In particular, .nav meant both sticky archive sidebar and horizontal page links, producing overlapping header/title layers.",
+  "decision":"Structural layout ownership is now explicit and namespaced. Semantic HTML elements such as nav may be reused, but a generic CSS class may not own unrelated layouts across presentation systems.",
+  "layers":[
+    {
+      "order":1,
+      "name":"site shell",
+      "owners":[".top",".topin",".brand",".footer"],
+      "rule":"Global site identity/navigation shell only. Sticky behavior is allowed only on explicitly named shell components."
+    },
+    {
+      "order":2,
+      "name":"page navigation",
+      "owners":[".page-nav"],
+      "legacy":[".page > nav.nav",".wrap > nav.nav"],
+      "rule":"Normal document flow. Never inherits archive-sidebar sticky positioning."
+    },
+    {
+      "order":3,
+      "name":"page intro",
+      "owners":[".page-header",".eyebrow","page h1",".summary/.lead"],
+      "rule":"Normal document flow beneath page navigation. No negative overlap with site shell or navigation."
+    },
+    {
+      "order":4,
+      "name":"page content",
+      "owners":[".page-grid",".page-section",".page-card","page-specific named components"],
+      "rule":"A static page owns its own content layout; shared archive grid/sidebar rules cannot leak into it."
+    },
+    {
+      "order":5,
+      "name":"archive explorer",
+      "owners":["#archive-explorer",".archive-nav","#reader",".archive-*"],
+      "legacy":["#archive-explorer > aside.nav"],
+      "rule":"Interactive archive-only structure. Sticky sidebar and archive grid behavior must be scoped here."
+    },
+    {
+      "order":6,
+      "name":"specialized modules",
+      "owners":[".tl-*","other module-specific prefixes"],
+      "rule":"Timeline and future modules use unique prefixes; they do not claim generic site classes."
+    }
+  ],
+  "forbidden_new_global_structural_selectors":[".nav",".grid",".section",".record",".status",".card"],
+  "migration_rule":"Existing reader pages are protected by app/layout-guard.css. When an old page is next edited, migrate its structural class to page-* naming instead of adding z-index or spacing hacks.",
+  "runtime_rule":"app/reader.css imports app/layout-guard.css so shared-style static pages remain safe before individual markup migration.",
+  "test_rule":"scripts/check_css_namespace_collisions.py is the automated regression check and is run by .github/workflows/css-namespace-check.yml.",
+  "definition_of_fixed":"A page header bug is fixed only when ownership/scope prevents collision at all viewport sizes and content lengths. Increasing margins, adding arbitrary z-index, or moving one heading is not considered a permanent fix."
+}
