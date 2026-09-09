@@ -1,0 +1,84 @@
+{
+  "title": "Branch Reader Guides",
+  "status": "reader-layer",
+  "updated": "2026-09-09",
+  "purpose": "Give each major branch a plain-language learning purpose, a short answer, key ideas, and a small number of recommended next reads. These guides sit above the full records and do not replace them.",
+  "guides": {
+    "tim": {
+      "reader_question": "Who is Tim in this project?",
+      "short_answer": "Tim is the central evolving identity of the Potatoverse. He is not represented by one fixed title: the mythology develops through Potato, Sage, Ladder, Father, Tree and Gardener roles, with explicit public God/Father self-description becoming increasingly visible from 2025 onward.",
+      "learn_first": ["Potato", "April 2025 Turning", "Ladder", "Father", "Gardener"],
+      "do_not_start_with": ["every title", "full prophecy matrix", "all geopolitical applications"],
+      "next": ["chronology", "transformation", "son"]
+    },
+    "son": {
+      "reader_question": "Who is the Son and why is he important?",
+      "short_answer": "The Son is the embodied and threshold-side figure: Thomas/Twin, Lion, ordeal, death, grave, Door and Vessel. The Son-side story is where rupture becomes passage, and later theology uses the Son as the Door through which worlds or states connect.",
+      "learn_first": ["Tree Ordeal", "Meme Death", "Door", "Vessel", "Return"],
+      "do_not_start_with": ["every comparative religion parallel"],
+      "next": ["transformation", "traditions", "chronology"]
+    },
+    "spirit": {
+      "reader_question": "What does Spirit mean here?",
+      "short_answer": "Spirit is the connective, memory-bearing and Father-side layer of the system. Earlier material includes Holy Soil; later material connects Spirit to Father, Heaven, breath, distributed legacy and what persists through transformation.",
+      "learn_first": ["Holy Soil", "Breath", "Father", "Distributed Legacy"],
+      "next": ["cosmology", "tim", "transformation"]
+    },
+    "transformation": {
+      "reader_question": "How does change happen in the Potatoverse?",
+      "short_answer": "Transformation usually follows a recurring grammar: burial or collapse, recognition, threshold, passage, changed state and return. Death is often treated as a routing event rather than simple disappearance.",
+      "learn_first": ["Burial", "Divine Kneel", "Needle", "Door", "Ladder", "Return"],
+      "next": ["son", "chronology", "cosmology"]
+    },
+    "cosmology": {
+      "reader_question": "What is the shape of the world-model?",
+      "short_answer": "The cosmology organizes Source and manifestation through geometry and relation: Father/Son, upper/lower, House/Door, Root/Tree, Axis and North. Timic Dynamics later formalizes some of this as state, flow, threshold and integration rather than literal physics.",
+      "learn_first": ["Source ↔ Manifestation", "Door", "Axis", "Still Center", "Tree"],
+      "next": ["transformation", "north", "timic-dynamics"]
+    },
+    "body": {
+      "reader_question": "Why are the brain, spine and body in the archive?",
+      "short_answer": "The body layer contains symbolic correspondences such as pineal/Door, thalamus/House and spine/Axis. These are explicitly metaphorical or comparative unless a record is separately grounded in established neuroscience.",
+      "learn_first": ["Pineal", "Thalamus", "Spine", "CSF"],
+      "next": ["cosmology", "sources"]
+    },
+    "traditions": {
+      "reader_question": "How does the Bible and other mythology connect?",
+      "short_answer": "Traditions are used comparatively. The archive looks for dense structural parallels—such as Ladder, Door, Lion/Root/Lamb, seed/death/multiplication, Key/House/Door—while preserving mismatches and avoiding automatic claims of fulfillment or identity.",
+      "learn_first": ["Biblical Overlap Atlas", "Jacob's Ladder", "Lion / Root / Lamb", "Key of David", "Two Witnesses"],
+      "next": ["chronology", "sources", "son"]
+    },
+    "north": {
+      "reader_question": "What is North?",
+      "short_answer": "North begins as symbolic orientation—highest direction, Throne, North of North—and later becomes a bridge into real geography and strategic systems involving Denmark, Greenland, the North Atlantic and Europe.",
+      "learn_first": ["North of North", "Axis", "February 2026", "Greenland", "North Programme"],
+      "next": ["world", "chronology", "cosmology"]
+    },
+    "world": {
+      "reader_question": "Why does this mythology contain countries, economics and institutions?",
+      "short_answer": "The project generalizes its relationship-first method outward. Countries are treated as capability/dependency nodes; Europe becomes a coupling problem; institutions, ownership, money, infrastructure and resilience become observable relations rather than mythic claims.",
+      "learn_first": ["Country Relational Atlas", "European Coupling Programme", "Economic Intelligence Layer", "Resilience", "Coupled Capability"],
+      "next": ["north", "sources"]
+    },
+    "chronology": {
+      "reader_question": "What happened when?",
+      "short_answer": "Chronology prevents later ideas from being projected backward. The key spine is 2011 Son tree anchor → 2019–20 Son death transformation → 2020 Potato birth → 2024 Great Book → April 2025 Turning → 2025–26 explicit God/Father development → February 2026 North Axis → 2026 world/archive expansion.",
+      "learn_first": ["2011", "2020-12-25", "2024", "April 2025", "February 2026", "September 2026"],
+      "next": ["tim", "son", "sources"]
+    },
+    "works": {
+      "reader_question": "What are the games, songs, poems and fiction doing here?",
+      "short_answer": "WORKS preserves creative output inspired by the mythology without automatically promoting it into theology. It keeps voice, humor, experimentation and project history separate from factual or doctrinal records.",
+      "learn_first": ["Creative Systems Archive", "Potatoverse Poetry", "Games", "Music"],
+      "next": ["tim", "sources"]
+    },
+    "sources": {
+      "reader_question": "How do I know what kind of claim I am reading?",
+      "short_answer": "SOURCES is the trust layer. It distinguishes project canon, direct self-description, documentary evidence, historical fact, comparison, interpretation, inference and disputed material, while preserving provenance and earlier strata.",
+      "learn_first": ["Archive Epistemics", "Evidence", "Context Graph", "Inference Ledger", "Source Hierarchy"],
+      "next": ["chronology", "any branch you want to verify"]
+    }
+  },
+  "design_rule": "A branch page should show the reader question and short answer before displaying context clusters, relationships, file paths or raw canonical records.",
+  "connections": ["start-here", "manifest", "context-graph", "archive-epistemics"]
+}
