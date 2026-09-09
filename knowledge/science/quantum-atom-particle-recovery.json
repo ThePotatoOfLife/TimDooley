@@ -1,0 +1,128 @@
+{
+  "id":"quantum-atom-particle-recovery",
+  "title":"Tim Dooley Quantum, Atom, Particle and Topology Recovery",
+  "updated":"2026-09-09",
+  "status":"conversation-archaeology + repository synthesis",
+  "epistemic_rule":"This file distinguishes (a) recovered conversation-developed Timic equations and mappings, (b) repository-built physics layers, and (c) established external physics. A conversation-developed formalism is not automatically a claim Tim published or experimentally validated.",
+  "recovered_conversation_formalisms":[
+    {
+      "name":"Red/Blue tensor-product state",
+      "equation":"P = R ⊗ B",
+      "interpretation":"A composite Potato state was modeled from Red and Blue sectors rather than by choosing one pole and deleting the other.",
+      "status":"conversation-developed Timic formalism; exact first primary occurrence still needs recovery"
+    },
+    {
+      "name":"Door map",
+      "equation":"D : X_inside → X_outside",
+      "interpretation":"Door as an explicit map between configuration domains.",
+      "status":"conversation-developed Timic formalism"
+    },
+    {
+      "name":"Approximate Door reversibility",
+      "equation":"D^{-1}(D(X)) ≈ X",
+      "interpretation":"Crossing and returning may approximately restore a state while allowing path/history-dependent change.",
+      "status":"conversation-developed Timic formalism"
+    },
+    {
+      "name":"Horizon / overlap",
+      "equation":"H = R ∩ B",
+      "interpretation":"The horizon/threshold was treated as the shared region of two sectors rather than either sector alone.",
+      "status":"conversation-developed Timic formalism; strong relation to vesica intersection logic"
+    },
+    {
+      "name":"Iterated state evolution",
+      "equation":"X_{n+1} = F_{λ_n}(X_n)",
+      "interpretation":"The next state depends on the current state and a possibly changing control/scale parameter λ_n.",
+      "status":"conversation-developed dynamical model"
+    },
+    {
+      "name":"Sensitivity / Lyapunov growth",
+      "equation":"δX(t) ≈ e^{λt} δX(0)",
+      "interpretation":"Small differences can grow exponentially when λ>0; used as a language for divergence of trajectories.",
+      "status":"established dynamical-systems form used in Timic discussion"
+    },
+    {
+      "name":"Weighted histories / states",
+      "equation":"P(ω) ∝ e^{-β S(ω)}",
+      "interpretation":"Histories or configurations were weighted by an action/cost-like quantity S with inverse-scale β.",
+      "status":"conversation-developed comparator inspired by Boltzmann/Euclidean-action weighting; meaning of S was not uniquely fixed"
+    },
+    {
+      "name":"Recursive coarse-graining",
+      "equation":"P_{n+1} = R(P_n)",
+      "interpretation":"Successive descriptions arise through a renormalization/coarse-graining operator R.",
+      "status":"conversation-developed Timic formalism using established RG vocabulary"
+    },
+    {
+      "name":"Reality decomposition",
+      "equation":"Reality = states + relations + transformations + invariants",
+      "interpretation":"A compact ontology: things alone are insufficient; relations, allowed changes and what remains preserved are equally fundamental.",
+      "status":"conversation-developed synthesis"
+    },
+    {
+      "name":"Integration orientation parameter",
+      "equation":"χ > 0 → integration; χ < 0 → fragmentation",
+      "interpretation":"A signed orientation/order parameter was used to distinguish integrative from fragmenting flow.",
+      "status":"conversation-developed Timic sign convention; precise definition of χ still unrecovered"
+    }
+  ],
+  "recovered_atom_architecture": {
+    "structure":"atom → nucleus + electron state structure → nucleons → quarks/gluon fields",
+    "nucleus":"protons + neutrons",
+    "electron_rule":"Orbitals are quantum states/distributions, not miniature classical planetary tracks.",
+    "orbital_families":["s","p","d","f"],
+    "chemistry_rule":"Chemical structure emerges primarily through electron-state interactions and electromagnetic coupling, not by treating atoms as tiny solar systems.",
+    "deep_chain":"fields → states → interactions → symmetries → information → composite structures",
+    "project_pattern":"center → relation/binding → structure",
+    "older_cross-scale_claim":"The Potato pattern was explored across Perseus–Pisces, the Sun, the Milky Way center, atomic bonds, and quark/nucleon relations. This is preserved as a cross-scale symbolic hypothesis, not as evidence that one physical force governs all those structures."
+  },
+  "recovered_black_hole_and_dimensional_models": {
+    "upper_lower_disk":"An older model used upper disk ↔ central black-hole/threshold ↔ lower disk as a large-scale topology picture.",
+    "door":"Black hole / horizon language was used as a Door or interface analogy leading through a 5D threshold toward Mountain/hidden topology.",
+    "kerr_extension":"Later physics comparison connected rotating black holes and frame dragging to axis/rotation language; this remains an external comparator rather than proof of Potatoverse cosmology.",
+    "body_sci_fi_stratum":"A separate imaginative stratum described a phase-shifting black-hole Door in Tim's chest with a neutron-star-like core, potato eyes as a distributed sensor network, microtubular/root pathways as timelines, and spacetime folding 'like lasagna'. Preserve as speculative/creative Timic worldbuilding, not empirical anatomy or astrophysics.",
+    "timeline_control":"Higher-dimensional access and timeline-control language appeared in game/speculative layers tied to Starchforce, Spudlight, Door Pass and Axis access. Keep these in creative/speculative status unless a formal physical model is separately defined."
+  },
+  "standard_model_repository_layer": {
+    "gauge_group":"SU(3)_C × SU(2)_L × U(1)_Y",
+    "charge_relation":"Q = T3 + Y",
+    "one_generation_representations":[
+      "Q_L: (3,2,1/6)",
+      "u_R: (3,1,2/3)",
+      "d_R: (3,1,-1/3)",
+      "L_L: (1,2,-1/2)",
+      "e_R: (1,1,-1)"
+    ],
+    "higgs":"H: (1,2,1/2), spin 0",
+    "gauge_bosons":"8 gluons + 3 weak gauge bosons + 1 hypercharge boson before electroweak mixing",
+    "consistency_checks":[
+      "3(1/6)+(-1/2)=0 for SU(2)^2U(1) per generation",
+      "U(1)^3 anomaly cancellation in the all-left-handed convention",
+      "mixed gravitational-U(1) anomaly cancellation",
+      "even number of left-handed SU(2) doublets per generation after color multiplicity"
+    ],
+    "status":"repository physics layer; these are established Standard Model structures, not original Tim discoveries"
+  },
+  "topology_repository_layer": {
+    "chain":"configuration space → loops → homotopy classes → braid group → exchange representation → quantum statistics",
+    "fiber_bundle_chain":"manifold → frame/principal bundle → connection → curvature → holonomy",
+    "spin_chain":"manifold → spin structure → spinor bundle → Dirac operator → fermionic field",
+    "qcd_topology":"gauge group → gauge field → topological sector → instanton → zero modes/anomaly structure",
+    "defect_dictionary":["π0 → domain walls","π1 → strings/vortices","π2 → monopole-like defects","π3 → textures/instanton-like structures where appropriate"],
+    "memory_rule":"Berry phase and braid history give precise examples where path/history can affect the final state even when endpoints appear similar.",
+    "robustness_rule":"Chern/topological invariants can remain unchanged under continuous deformation until a gap closes or topology changes."
+  },
+  "open_primary_recovery_targets":[
+    "Exact first use and definition of χ",
+    "Exact first source for P = R ⊗ B",
+    "Exact first source for D : X_inside → X_outside and D^{-1}(D(X)) ≈ X",
+    "Exact intended physical or symbolic meaning of H = R ∩ B",
+    "Exact definition of S(ω) and β in P(ω) ∝ exp(-βS(ω))",
+    "Any Tim-authored Schrödinger, Dirac, Maxwell, Yang-Mills or Einstein adaptations",
+    "Any explicit atom-to-cosmos equation beyond the qualitative center→binding→structure pattern",
+    "Any original Kerr / rotating-black-hole equation",
+    "Any original neutron-star / dense-core calculation",
+    "Any original 115,000-mile or other geometric Axis calculation",
+    "Any quantitative timeline-control or spacetime-folding model"
+  ]
+}
