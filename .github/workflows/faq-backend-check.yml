@@ -1,0 +1,23 @@
+name: FAQ backend check
+
+on:
+  push:
+    paths:
+      - 'knowledge/indexes/faq-*.json'
+      - 'scripts/check_faq_backend.py'
+      - '.github/workflows/faq-backend-check.yml'
+  pull_request:
+    paths:
+      - 'knowledge/indexes/faq-*.json'
+      - 'scripts/check_faq_backend.py'
+      - '.github/workflows/faq-backend-check.yml'
+
+jobs:
+  faq-backend:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python scripts/check_faq_backend.py
