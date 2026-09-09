@@ -1,0 +1,211 @@
+{
+  "title": "Biblical Overlap Atlas",
+  "version": "1.0",
+  "updated": "2026-09-09",
+  "status": "comparative-scriptural-research",
+  "purpose": "Map dense structural overlaps between biblical texts and the Potato of Life corpus while distinguishing quotation, historical text, project canon, typology, synchronism and speculative fulfillment.",
+  "method": {
+    "fields": ["biblical_text", "potatoverse_motif", "overlap", "difference", "possible_meaning", "classification", "strength"],
+    "rule": "A strong structural overlap can be contextually valuable without proving supernatural identity, prophecy fulfillment or historical equivalence.",
+    "fulfillment_test": "Reserve fulfillment language for prior, specific, falsifiable statements that later map unusually well to independently established events. Otherwise prefer typology, structural parallel, retrospective revelation or contextual synchronism."
+  },
+  "overlaps": [
+    {
+      "id": "jacobs-ladder-son-of-man",
+      "biblical_text": ["Genesis 28:12", "John 1:51"],
+      "short_text_fragments": ["a stairway resting on the earth", "angels ascending and descending", "on the Son of Man"],
+      "potatoverse_motif": "Ladder / Axis / Son as passage between Heaven and Earth",
+      "overlap": "Genesis presents a vertical heaven-earth connection; John relocates the ascending/descending relation onto the Son of Man. The Potatoverse later differentiates Tim/Father as Ladder/Axis and Son as Door/Vessel.",
+      "difference": "John's text centers the Son of Man as the locus of ascent/descent, whereas mature Potatoverse records can divide the connective architecture across Father/Ladder and Son/Door roles.",
+      "possible_meaning": [
+        "The Ladder may be understood less as an object and more as a personified relation between levels.",
+        "The mature Tim/Son differentiation can be read as a decomposition of one biblical heaven-earth passage motif into vertical structure plus threshold interface."
+      ],
+      "classification": "typological-reading",
+      "strength": 5
+    },
+    {
+      "id": "lion-root-lamb-scroll",
+      "biblical_text": ["Revelation 5:1-6"],
+      "short_text_fragments": ["Lion of the tribe of Judah", "Root of David", "a Lamb... slain"],
+      "potatoverse_motif": "Lion / Root / Son / death / opening hidden meaning",
+      "overlap": "The figure announced as Lion and Root appears as a slain-yet-standing Lamb who can open the sealed scroll. Potatoverse material repeatedly links Lion, Root, Son, death, return and revelation/disclosure.",
+      "difference": "Revelation identifies these titles within its own Christological vision; Potatoverse usage is later comparative and should not be treated as historical proof of identity.",
+      "possible_meaning": [
+        "Victory-through-wounding rather than victory-through-dominance fits the project's death-to-door and breaking-reveals-wholeness motifs.",
+        "Root and slain figure being one textual complex strengthens the project's hidden-foundation / death / revelation coupling."
+      ],
+      "classification": "structural-parallel",
+      "strength": 5
+    },
+    {
+      "id": "open-scroll-to-nations",
+      "biblical_text": ["Revelation 10:1-11"],
+      "short_text_fragments": ["little scroll open", "sweet as honey", "bitter", "peoples, nations... kings"],
+      "potatoverse_motif": "Great Book -> internalization -> burden -> outward mapping of nations and kings",
+      "overlap": "Revelation moves from open book to eating/internalizing it, sweetness and bitterness, then renewed speech concerning peoples, nations, languages and kings. The project moves from Great Book theology into outward country, institution and world-system mapping.",
+      "difference": "The biblical text is an apocalyptic prophetic vision; the repository's later world mapping is a historical project development and not evidence that the Great Book is literally Revelation's scroll.",
+      "possible_meaning": [
+        "Knowledge becomes obligation after internalization: receiving a book is followed by outward responsibility.",
+        "The transition from private symbolic system to nations/world may be read as a recurring literary pattern: revelation -> burden -> public/world address."
+      ],
+      "classification": "typological-reading",
+      "strength": 4
+    },
+    {
+      "id": "two-witnesses-death-return",
+      "biblical_text": ["Revelation 11:3-12"],
+      "short_text_fragments": ["two witnesses", "three and a half days", "breath of life", "Come up here"],
+      "potatoverse_motif": "witness / Son death / exposed or buried body / waiting interval / breath / return / ascent",
+      "overlap": "The witnesses testify, are killed, remain in a death interval, receive breath/life, stand and ascend. This aligns structurally with the corpus's witness, death, grave, three-day/waiting, Spirit/breath and ascent families.",
+      "difference": "The biblical interval is three and a half days, not three days, and Revelation's witnesses are two prophetic figures. Do not collapse every three-day motif into this passage.",
+      "possible_meaning": [
+        "Witness can be understood as something that survives suppression because testimony returns after apparent defeat.",
+        "Breath functions as the reversal operator between death-state and standing/return."
+      ],
+      "classification": "structural-parallel",
+      "strength": 4
+    },
+    {
+      "id": "key-of-david-door-authority",
+      "biblical_text": ["Isaiah 22:22", "Revelation 3:7-8"],
+      "short_text_fragments": ["key of the house of David", "what he opens no one can shut"],
+      "potatoverse_motif": "Door / House / Root of David / access / authority / threshold",
+      "overlap": "Biblical Door language is not only about passage; it is also about authority to open and shut access to a House. Potatoverse Door theology already connects House, Son, threshold and transformation.",
+      "difference": "Isaiah's immediate context concerns delegated royal authority; Revelation reuses the image Christologically. Potatoverse application is comparative symbolism.",
+      "possible_meaning": [
+        "Door should be modeled as access-governance as well as transition.",
+        "House + Key + Door creates a richer authority structure than Door alone: belonging, admission, exclusion, permission and responsibility."
+      ],
+      "classification": "semantic-expansion",
+      "strength": 5
+    },
+    {
+      "id": "red-heifer-ash-death-purification",
+      "biblical_text": ["Numbers 19", "Hebrews 9:13-14"],
+      "short_text_fragments": ["ashes of a heifer", "purification", "dead works"],
+      "potatoverse_motif": "cow -> ash -> death/grave -> purification/transformation",
+      "overlap": "Numbers 19 ties red-heifer ashes to purification after contact with death; Hebrews explicitly uses heifer-ash purification as a comparison for deeper cleansing. Potatoverse material independently uses cow/ash/grave/door transformation imagery.",
+      "difference": "The documented 2025 red-heifer event discussed elsewhere in the archive was a later practice involving a disqualified animal, not a valid perfect-heifer ritual and not an April 2025 fulfillment.",
+      "possible_meaning": [
+        "Ash is not merely destruction; biblically it can mediate transition from death-contamination toward restored participation.",
+        "This deepens the project's ash/grave imagery as transformation rather than simple ending."
+      ],
+      "classification": "structural-parallel-plus-contextual-synchronism",
+      "strength": 4
+    },
+    {
+      "id": "three-day-grammar",
+      "biblical_text": ["Hosea 6:2", "Matthew 12:40", "John 2:19"],
+      "short_text_fragments": ["on the third day", "three days and three nights", "raise it again in three days"],
+      "potatoverse_motif": "three-day darkness / waiting / dogness / death-return interval",
+      "overlap": "Multiple biblical traditions use a bounded three-day interval for descent, death, absence, rebuilding or revival followed by return.",
+      "difference": "The passages have different original contexts and should not be flattened into one code. Revelation 11 uses three and a half days, not three.",
+      "possible_meaning": [
+        "Three days can function as a narrative threshold: enough time for absence/death to become real before reversal.",
+        "The project's repeated three-day motifs may be contextually compared to this biblical grammar without claiming one-to-one fulfillment."
+      ],
+      "classification": "cross-text-typology",
+      "strength": 4
+    },
+    {
+      "id": "needle-eye-threshold",
+      "biblical_text": ["Matthew 7:13-14", "Matthew 19:24"],
+      "short_text_fragments": ["narrow gate", "eye of a needle"],
+      "potatoverse_motif": "Needle / narrow Door / compression before Ladder transformation",
+      "overlap": "Biblical narrowness and needle-eye imagery both associate passage with severe constraint. The April 2025 mythology describes Tim moving through a needle-eye compression into a changed state/Ladder.",
+      "difference": "Matthew 19 concerns wealth and entry into the kingdom; Matthew 7 concerns the narrow way. The Potatoverse combines these distinct biblical motifs into one transformation grammar.",
+      "possible_meaning": [
+        "Compression can be modeled as loss of excess before passage.",
+        "The Needle is a threshold where ordinary scale, possessions or identity cannot pass unchanged."
+      ],
+      "classification": "structural-parallel",
+      "strength": 4
+    },
+    {
+      "id": "seed-death-multiplication",
+      "biblical_text": ["John 12:24", "1 Corinthians 15:36-38"],
+      "short_text_fragments": ["a kernel of wheat falls", "dies", "many seeds", "what you sow"],
+      "potatoverse_motif": "Death of Potato -> birth of many / burial -> multiplication / seed persistence",
+      "overlap": "The New Testament repeatedly uses buried seed death as the grammar of multiplication and transformed life. The Great Book independently develops a potato splitting/dissolving into soil while new potatoes emerge.",
+      "difference": "Wheat/seed biology and potato vegetative propagation are biologically different mechanisms; the comparison is theological-symbolic rather than botanical identity.",
+      "possible_meaning": [
+        "Unity can survive through multiplication rather than by preserving the original form unchanged.",
+        "Burial becomes generative when the pattern or life continues in differentiated descendants."
+      ],
+      "classification": "typological-reading",
+      "strength": 5
+    },
+    {
+      "id": "cornerstone-rejected-foundation",
+      "biblical_text": ["Psalm 118:22", "Matthew 21:42", "1 Peter 2:4-7"],
+      "short_text_fragments": ["stone the builders rejected", "cornerstone"],
+      "potatoverse_motif": "Stone / forgotten or rejected Tim / hidden foundation / world already finished",
+      "overlap": "Biblical cornerstone imagery reverses social rejection into foundational importance. Tim's public theology repeatedly combines forgotten/rejected identity with Cornerstone, Root and Foundation language.",
+      "difference": "Christian texts apply the cornerstone motif to Christ; Potatoverse application is a later self-comparison and cannot establish identity by itself.",
+      "possible_meaning": [
+        "Rejection and foundation are intentionally inverted: what builders dismiss becomes the organizing reference point.",
+        "This strongly fits the repository's hierarchy-inversion and hidden-foundation concepts."
+      ],
+      "classification": "structural-parallel",
+      "strength": 5
+    },
+    {
+      "id": "new-heaven-new-earth-restoration",
+      "biblical_text": ["Isaiah 65:17", "Revelation 21:1-5"],
+      "short_text_fragments": ["new heavens and a new earth", "making everything new"],
+      "potatoverse_motif": "new Heaven/new Earth / restore broken timelines / repair the world / Garden",
+      "overlap": "Late public Timic language shifts from apocalyptic ending toward restoration, repair and a renewed world. Biblical new-creation texts similarly frame eschatology as transformed creation rather than only destruction.",
+      "difference": "The biblical visions have their own theological contexts; modern project language should be treated as comparative appropriation unless a prior specific prophecy can be documented.",
+      "possible_meaning": [
+        "The mature project may be moving from judgment language toward restorative eschatology.",
+        "Garden/repair/stewardship can be interpreted as the practical ethical side of new-creation imagery."
+      ],
+      "classification": "semantic-expansion",
+      "strength": 4
+    },
+    {
+      "id": "alpha-omega-center",
+      "biblical_text": ["Revelation 1:8", "Revelation 21:6", "Revelation 22:13"],
+      "short_text_fragments": ["Alpha and Omega", "beginning and end"],
+      "potatoverse_motif": "Alpha/Omega / center / beginning-ending / Potato as regenerative center",
+      "overlap": "The 16 Aug 2026 public declaration explicitly uses Alpha and Omega alongside Most High, center of existence and manifest God language. Potatoverse cosmology already treats beginning/ending as coupled through burial, return and regeneration.",
+      "difference": "The biblical title belongs to Revelation's divine/Christological discourse. Tim's use is a direct self-appropriation and should be stored as self-description, not external validation.",
+      "possible_meaning": [
+        "Godhood is being framed as temporal totality as well as vertical supremacy.",
+        "Beginning/end language integrates naturally with the project's cycles of death, return and renewed beginning."
+      ],
+      "classification": "direct-comparative-self-identification",
+      "strength": 5
+    },
+    {
+      "id": "fruit-test",
+      "biblical_text": ["Matthew 7:16-20", "John 15:1-8"],
+      "short_text_fragments": ["by their fruit", "bear much fruit"],
+      "potatoverse_motif": "fruit / Gardener / 'ye shall know me by my fruit' / ethical test of Godhood",
+      "overlap": "The public corpus directly uses fruit-test language while the wider Potatoverse connects Gardener, Tree, Fruit, nourishment and authority-through-service.",
+      "difference": "The biblical texts primarily concern discerning teachers/disciples and abiding in Christ; the project's self-application is interpretive.",
+      "possible_meaning": [
+        "Claims of spiritual authority can be evaluated internally by outputs: protection, nourishment, repair, truthfulness and what kind of life the system produces.",
+        "This gives Godhood an ethical falsifiability test inside the project's own symbolic language."
+      ],
+      "classification": "ethical-typology",
+      "strength": 5
+    }
+  ],
+  "higher_order_reflections": [
+    "The strongest overlaps are not usually isolated nouns; they are sequences: death -> waiting -> breath -> standing, book -> internalization -> burden -> nations, rejection -> cornerstone, root -> slain figure -> opening, key -> house -> door -> authority.",
+    "The Potatoverse becomes richer when biblical comparison is modeled as relational grammar rather than title-matching.",
+    "Repeated biblical overlap clusters around five meta-functions: passage, death/return, hidden foundation, authority/access, and stewardship/new creation.",
+    "These five functions closely match the project's major mature roles: Door/Ladder, Son, Root/Stone, Father/Throne, Gardener.",
+    "A useful future metric is overlap density: how many independent motifs from one biblical passage map to already-attested Potatoverse relations without retrofitting new concepts after the comparison is noticed."
+  ],
+  "research_next": [
+    "Build occurrence-level biblical-reference index from Tim's own public posts.",
+    "Compare first attestation dates against when each biblical parallel was first discussed in the project to reduce hindsight bias.",
+    "Add Hebrew Bible, New Testament and later Christian-tradition layers separately.",
+    "Add counter-parallels where biblical texts conflict with or complicate Potatoverse readings.",
+    "Create site pages for each high-density overlap cluster with primary text references, project chronology and epistemic labels."
+  ],
+  "connections": ["contextual-synchronisms", "seals-and-fulfillment-matrix", "comparative-mythology-map", "inference-ledger", "tim-god-question", "developmental-genealogy"]
+}
