@@ -1,14 +1,16 @@
 {
   "title": "Archive Epistemics",
   "status": "canonical-method",
+  "version": "1.2.0",
   "updated": "2026-09-09",
-  "purpose": "Define how the Potato of Life archive should preserve, rank, connect and expose information without collapsing mythology, documentary evidence, interpretation and empirical fact into one undifferentiated truth layer.",
+  "purpose": "Define how the Potato of Life archive should preserve, rank, connect, explain and expose information without collapsing mythology, documentary evidence, interpretation and empirical fact into one undifferentiated truth layer.",
   "core_rule": "Make everything accessible; make nothing falsely certain.",
   "information_model": {
     "open_tree": "The archive is extensible: new nodes, branches, sources, interpretations, criticisms, corrections and competing explanations may be added.",
     "weighted_not_flat": "Contributions are not equally authoritative merely because they are present.",
     "relationship_first": "Information value is partly determined by how well a contribution explains or evidences relationships rather than only adding isolated facts.",
-    "preserve_strata": "Earlier formulations remain dated historical layers when later doctrine changes instead of being silently rewritten."
+    "preserve_strata": "Earlier formulations remain dated historical layers when later doctrine changes instead of being silently rewritten.",
+    "reader_first_output": "The graph and file structure are infrastructure. Reader-facing output should answer concrete questions in coherent prose before exposing IDs, schemas and raw records."
   },
   "two_scores": {
     "epistemic_strength": "How trustworthy or well-supported is the claim?",
@@ -54,6 +56,44 @@
     "minimum_fields": ["claim", "status", "source", "date_or_period", "subject", "relationships", "confidence"],
     "preferred_fields": ["counterevidence", "alternative interpretation", "provenance trail", "last reviewed", "canonical owner"]
   },
+  "record_to_repair_pipeline": {
+    "sequence": ["record", "extraction", "concepts and relationships", "trajectory", "reflection", "research question", "evidence test", "consequence", "repair or application"],
+    "rule": "The archive is not finished when information is stored. Important records should become understandable trajectories and testable questions while retaining a path back to the source.",
+    "repair_boundary": "Not every record needs an intervention. Repair or application belongs only where a mechanism, consequence and realistic leverage point are actually identifiable."
+  },
+  "mechanism_repair_cycle": {
+    "sequence": ["map", "provenance", "connect", "dependency", "mechanism", "harm or bottleneck", "intervention", "test", "measure", "update"],
+    "use": "For world-system, institutional and information-ecology work, mapping should lead toward mechanism testing rather than remaining a decorative graph.",
+    "safeguard": "Dense connectivity is not evidence of conspiracy. The archive must demonstrate mechanism, direction, timing and evidence before making causal claims."
+  },
+  "source_road_test": {
+    "questions": [
+      "Who produced the information?",
+      "For what purpose?",
+      "Through which transmission chain did it reach the archive?",
+      "What was selected, omitted, renamed or repeated?",
+      "Who benefits from the framing?",
+      "What happened to the information on the way?",
+      "What happens to the living subject when the record becomes a dossier?"
+    ],
+    "principle": "Do not confuse the record with the person, the map with the territory, or a repeated description with the living source it describes."
+  },
+  "contradiction_and_negative_space": {
+    "contradictions": "Contradictory sources are data. Preserve the conflict, date the competing formulations and test whether the contradiction reflects error, development, context or genuinely unresolved disagreement.",
+    "negative_space": "Absence, silence and omission can be informative but are not automatically evidence. Track what a source could reasonably have mentioned, what it consistently excludes and whether the absence survives broader source acquisition.",
+    "anti_flattening": "Never manufacture a clean doctrine by deleting inconvenient earlier stages."
+  },
+  "revelation_and_prediction": {
+    "revelation": "A later configuration can make an earlier event newly intelligible. That is a valid historical fact about interpretation when the later reading is documented.",
+    "prediction": "A later interpretation does not prove that the earlier event was predicted, consciously encoded or caused by the later framework.",
+    "required_fields_for_strong_claims": ["prior dated statement", "specific prediction", "event date", "fit and mismatch", "alternative explanation", "post-event reinterpretation check"]
+  },
+  "public_reader_model": {
+    "goal": "A reader should be able to extract an answer before learning the archive's internal architecture.",
+    "order": ["direct answer", "readable explanation", "chronology", "evidence classes", "relations and comparisons", "raw sources and machine records"],
+    "progressive_disclosure": "IDs, paths, schemas and research machinery should remain available but visually secondary until the reader asks to inspect them.",
+    "canonical_question_surfaces": "Substantial canonical dossiers should answer natural-language questions instead of spawning large numbers of thin keyword pages."
+  },
   "anti_patterns": [
     "placeholder completeness",
     "decorative nodes without content",
@@ -62,10 +102,14 @@
     "treating metaphor as scientific evidence",
     "treating comparison as historical identity",
     "treating criticism as equal to substantiated evidence merely for balance",
-    "treating repository visibility as proof of truth"
+    "treating repository visibility as proof of truth",
+    "confusing repetition with corroboration",
+    "turning a living person into only a dossier representation",
+    "adding connections faster than readers can extract their meaning"
   ],
-  "public_interface_rule": "The frontend should expose actual canonical records, provenance and relationships. It should not create the appearance of completeness when backend information is missing.",
-  "recovery_rule": "Conversation history, old docs and legacy JSON are archival source strata. Material should be recovered, deduplicated, classified and promoted before obsolete files are archived.",
+  "public_interface_rule": "The frontend should expose actual canonical records, provenance and relationships. It should not create the appearance of completeness when backend information is missing, and it should not require graph literacy before ordinary reading.",
+  "recovery_rule": "Conversation history, old docs and legacy JSON are archival source strata. Material should be recovered, deduplicated, classified and promoted before obsolete files are archived. Recovered conversation context is a discovery aid, not automatically a public primary source.",
   "pruning_rule": "Prune duplication and obsolete presentation infrastructure, not unique historical information.",
-  "connections": ["sources", "manifest", "conversation-recovery-inventory", "relationship-first", "world", "traditions", "chronology"]
+  "recursive_growth_rule": "Repository growth should alternate expansion with calibration: add information, revisit accumulated structure, merge redundancy, prune obsolete presentation, re-root canonical ownership and then expand again.",
+  "connections": ["sources", "manifest", "conversation-recovery-inventory", "relationship-first", "world", "traditions", "chronology", "inference-ledger", "context-graph", "tim-dooley-dossier"]
 }
