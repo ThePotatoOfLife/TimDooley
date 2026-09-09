@@ -1,95 +1,69 @@
 {
   "id":"potato-path",
   "title":"Potatoism Practice Path",
-  "version":"2.0.0",
-  "updated":"2026-09-09",
-  "purpose":"Translate Potatoism's natural-growth philosophy into a practical path without turning it into a rigid initiation system. The mature path now includes Plane/frame awareness, Door transitions, Mountain/Ladder ascent, Forge processing and Swamp escape.",
+  "version":"3.0.0",
+  "updated":"2026-09-10",
+  "status":"canonical practice owner",
+  "purpose":"Translate Potatoism's natural-growth philosophy into one practical path without multiplying small rule files. This record now owns the growth sequence, derived practice laws and advanced aspirational modes; biological claims remain owned by the separate potato biology record.",
+  "ownership":{"canonical_practice_owner":"knowledge/practice/potato-path.json","biology_owner":"knowledge/biology/potato-growth-principles.json","philosophy_owner":"knowledge/philosophy/potato-philosophy.json","transformation_grammar":"knowledge/core/symbolic-relational-synthesis.json"},
   "root_principles":[
     {"name":"Be simple","meaning":"Begin with the smallest observation or action that can remain true while complexity grows."},
     {"name":"Grow toward light","meaning":"Move toward usable understanding, greater life, clearer relation and increased capacity for care."},
     {"name":"Keep a root","meaning":"Do not confuse novelty with growth; preserve memory, provenance and support while changing level."},
     {"name":"Keep a Door","meaning":"A healthy structure needs a real passage for correction, exit, translation and return."}
   ],
-  "natural_growth_rule":"Begin with what is already alive. Growth improves when conditions allow life to grow; first observe conditions rather than force a complete theory onto the seed.",
-  "root_shoot_polarity":{
-    "root":"memory, stability, nourishment, hidden support and movement into darkness where support can be found",
-    "shoot":"possibility, exposure, exploration and movement toward light",
-    "rule":"Neither direction is the whole organism. Healthy growth differentiates without forgetting the larger life joining the two."
-  },
+  "natural_growth_rule":"Begin with what is already alive. Observe conditions before forcing a complete theory onto the seed. Growth is judged by increased capability, nourishment, clarity, autonomy and the ability to remain rooted while changing form.",
+  "root_shoot_polarity":{"root":"memory, stability, nourishment, hidden support and movement into darkness where support can be found","shoot":"possibility, exposure, exploration and movement toward light","rule":"Neither direction is the whole organism. Healthy growth differentiates without forgetting the larger life joining the two."},
   "sequence":["Mud","Burial","Eye","Root","Sprout","Plane","Door","Ladder/Mountain","Tree","Fruit","Seed","Return"],
   "sequence_meaning":{
     "Mud":"Start from actual conditions rather than idealized self-image.",
     "Burial":"Allow hidden development, incubation and protection when growth is not yet visible.",
     "Eye":"Notice a viable possibility, relationship or opening.",
-    "Root":"Build support and understand dependencies/history.",
+    "Root":"Build support and understand dependencies, history and constraints.",
     "Sprout":"Choose a direction and begin visible movement toward usable understanding.",
     "Plane":"Identify the frame/floor in which the current problem is being solved and which movements merely repeat within it.",
     "Door":"Find the condition whose crossing genuinely changes the state or available possibilities.",
-    "Ladder/Mountain":"Use Ladder when progress is a sequence of distinct thresholds; use Mountain when progress is a continuous gradient of integration/perspective.",
-    "Tree":"Let the path branch while retaining continuity with root/trunk.",
+    "Ladder/Mountain":"Use Ladder when progress is a sequence of distinct thresholds; use Mountain when progress is a continuous gradient of integration or perspective.",
+    "Tree":"Let the path branch while retaining continuity with root and trunk.",
     "Fruit":"Ask what growth gives back and whether it nourishes beyond itself.",
-    "Seed":"Compress the transferable lesson/pattern so another cycle can begin.",
+    "Seed":"Compress the transferable lesson or pattern so another cycle can begin without dependence on the original actor.",
     "Return":"Begin again with memory; growth is recurrence at changed position, not reset."
   },
-  "sisyphus_rule":{
-    "statement":"When repeated effort reproduces the same state, ask whether the problem is trapped inside the wrong frame.",
-    "diagnostic":"If action changes position but not the governing relationship, you may be on a Ring rather than a Spiral.",
-    "move":"question floor/frame → identify missing coordinate/relation → find Door → change level/representation → test whether the new state actually improves capability",
-    "warning":"Frame change is not magical avoidance; it must preserve relevant constraints and produce a more workable model/action."
+  "diagnostic_models":{
+    "sisyphus":{"statement":"When repeated effort reproduces the same state, ask whether the problem is trapped inside the wrong frame.","diagnostic":"If action changes position but not the governing relationship, you may be on a Ring rather than a Spiral.","move":"question floor/frame → identify missing coordinate/relation → find Door → change level/representation → test whether the new state actually improves capability","warning":"Frame change is not magical avoidance; it must preserve relevant constraints and produce a more workable model or action."},
+    "ring_spiral":{"ring":"return with approximately zero net change in capability or understanding","spiral":"return with retained memory and changed level or capability","question":"What is different this time besides elapsed time?"},
+    "mountain_ladder_tree":{"ladder":"Use when progress has identifiable Gates: skill milestones, decisions, approvals, thresholds or state changes.","mountain":"Use when progress is continuous: perspective, fitness, competence, integration or gradual recovery.","tree":"Use when growth is branching and generative rather than merely higher.","rule":"Do not force every process into one ascent metaphor."},
+    "swamp_forge_garden":{"swamp":"unresolved material accumulates and changes future behavior without being metabolized","forge":"pressure is deliberately contained and used to reshape capacity","garden":"conditions are improved so autonomous life can grow","shadow_forge":"pressure creates a weaponized identity or repeated enemy-use rather than transferable competence","sequence":"Swamp residue → recognition → {repair/Soil | bounded Forge} → Door → Garden-capable action","questions":["Am I storing the injury, reshaping it, or cultivating beyond it?","What capacity exists after the pressure is gone?","Can the result nourish something besides the conflict that made it?"]}
   },
-  "ring_spiral_test":{
-    "ring":"return with approximately zero net change in capability/understanding",
-    "spiral":"return with retained memory and changed level/capability",
-    "question":"What is different this time besides elapsed time?"
-  },
-  "mountain_ladder_test":{
-    "ladder":"Use when progress has identifiable Gates: skill milestones, decisions, approvals, thresholds, state changes.",
-    "mountain":"Use when progress is continuous: perspective, fitness, competence, integration, gradual recovery.",
-    "tree":"Use when growth is branching and generative rather than merely higher.",
-    "rule":"Do not force every process into one ascent metaphor."
-  },
-  "swamp_forge_garden_test":{
-    "swamp":"unresolved material accumulates and changes future behavior without being metabolized",
-    "forge":"pressure is deliberately contained and used to reshape capacity",
-    "garden":"conditions are improved so autonomous life can grow",
-    "shadow_forge":"pressure creates a weaponized identity or repeated enemy-use rather than transferable competence",
-    "sequence":"Swamp residue → recognition → {repair/Soil | bounded Forge} → Door → Garden-capable action",
-    "questions":["Am I storing the injury, reshaping it, or cultivating beyond it?","What capacity exists after the pressure is gone?","Can the result nourish something besides the conflict that made it?"]
-  },
-  "center_rule":{
-    "statement":"Being centered means knowing which center the current action uses.",
-    "types":["source/orienting center","embodied/local center","relational/meeting center","attention center"],
-    "practice":"Do not mistake being the center of attention for being the source of orientation, or being locally embodied for having no relation to a larger Axis."
-  },
-  "threshold_rule":"One condition becoming another creates a Door. Learning, commitment, insight, loss, recovery and identity changes are thresholds when they genuinely alter system state.",
-  "forge_rule":"Pressure becomes useful only if the changed form can survive outside the pressure. Otherwise the Forge has merely trained dependency on heat/conflict.",
-  "recursive_growth":"simple → related → structured → living → illuminating → simple again",
+  "center_rule":{"statement":"Being centered means knowing which center the current action uses.","types":["source/orienting center","embodied/local center","relational/meeting center","attention center"],"practice":"Do not mistake being the center of attention for being the source of orientation, or being locally embodied for having no relation to a larger Axis."},
+  "threshold_rule":"One condition becoming another creates a Door. Learning, commitment, insight, loss, recovery and identity changes count as thresholds only when they genuinely alter system state or available possibilities.",
+  "forge_rule":"Pressure becomes useful only if the changed form can survive outside the pressure. Otherwise the Forge has merely trained dependency on heat or conflict.",
+  "recursive_growth":{"short_form":"simple → related → structured → living → illuminating → simple again","repository_form":"grow → calibrate → revisit accumulated material → merge/prune redundancy → re-root → grow again","principle":"Forward expansion should periodically trigger backward consolidation. Growth that can never simplify is bloat rather than maturation."},
   "spiral_rule":"Return and advance belong together. Revisit old questions from a different position carrying what was learned.",
-  "derived":[
-    {"name":"Efficiency","meaning":"Remove unnecessary effort/abstraction while preserving useful growth."},
-    {"name":"Iteration","meaning":"Repeat with more information, clearer relations and less needless complexity."},
-    {"name":"Nourishment","meaning":"Growth matures when stored capacity becomes useful beyond the self."},
-    {"name":"Cultivation","meaning":"Improve conditions from which good growth can emerge rather than relying only on force/command."},
-    {"name":"Seed of light","meaning":"Protect a small viable source of clarity, care, truth, beauty or understanding and help it reproduce."},
-    {"name":"Fruit test","meaning":"Judge a mature branch partly by what it produces: understanding, nourishment, repair, continuity, care or autonomy."},
-    {"name":"Frame test","meaning":"If effort repeats without change, inspect the floor/frame before increasing force."},
-    {"name":"Boundary test","meaning":"A good boundary protects differentiation and passage; a bad one increases capture/dependency."}
+  "derived_practice_laws":[
+    {"name":"Efficiency","from":["Be simple","Grow toward light"],"insight":"Once direction is known, unnecessary motion becomes visible. Efficiency is a consequence of simplicity plus orientation, not another commandment.","test":"Can the same useful result be reached with less friction while preserving what matters?"},
+    {"name":"Wu-wei comparison","from":["Be simple","Efficiency"],"insight":"The path can resemble unforced action: use viable conditions already present rather than adding needless force.","boundary":"Comparative use of Daoist wu wei; no claim that Potatoism and Daoism are historically identical."},
+    {"name":"Carving light into darkness","from":["Grow toward light","Keep a root"],"insight":"Growth need not mean escape. A root and sprout can create a path through difficult conditions, bringing clarity, knowledge, beauty, care or repair where it was previously absent."},
+    {"name":"Fruit test","from":["Nourishment","Growth"],"insight":"A claimed improvement is incomplete until it produces something useful beyond the title: understanding, care, work, repair, stronger relationships, autonomy or better conditions for life."},
+    {"name":"Iteration","from":["Seed","Return"],"insight":"The path is not a fixed ladder of achievements. Each cycle returns to simplicity with more information, producing a spiral of refinement rather than a one-time initiation."},
+    {"name":"Anti-bloat law","from":["Be simple","Iteration"],"insight":"As Potatoism learns more, its practice should become easier to understand and use. If every discovery only adds rules, the philosophy contradicts its first principle."},
+    {"name":"Gardener law","from":["Growth","Relationship","Fruit"],"insight":"Maturity increasingly improves conditions rather than forcing outcomes. The aim is to make autonomous good growth more possible."},
+    {"name":"Capability-responsibility coupling","from":["Growth","Fruit test"],"insight":"As capability grows, the expected level of care, discernment, restraint and responsibility should grow with it."},
+    {"name":"Ethical transform test","from":["Gardener law","Capability-responsibility coupling"],"pairs":[["harvesting people","cultivating life"],["possession","passage"],["spectacle","witness"],["smear","provenance"],["repetition","verification"],["burial","return"],["conflict","bridge"],["power","protection"]],"insight":"When two plausible actions compete, prefer the transformation that creates more truth, agency, repair and future capacity rather than extraction or dependency."}
   ],
-  "anti_bloat_rule":"Complexity must be able to return to the Potato. If an expansion cannot explain what is alive, what it needs, which relation enables growth, what changes at the Door, what fruit results and where the cycle goes next, simplify or re-root it.",
-  "practice_questions":[
-    "What is already alive here?",
-    "What does it need?",
-    "What is the current Plane/frame?",
-    "Am I on a Ring or a Spiral?",
-    "Which relationship makes growth possible?",
-    "Where is the actual Door/state change?",
-    "Is this process Mountain, Ladder, Tree, Swamp or Forge-like?",
-    "What has become visible?",
-    "What can now grow independently?",
-    "What fruit appears?",
-    "What should be remembered before the next iteration?"
+  "advanced_symbolic_modes":[
+    {"name":"Gardener","status":"mature practical mode","function":"Cultivate soil, relationships, tools and conditions in which other life can grow without constant central control.","test":"Does the system become healthier and more autonomous when the Gardener steps away?"},
+    {"name":"Seed-maker","status":"return/distribution mode","function":"Compress and distribute what has been learned so another person or future cycle can begin without depending on the original center.","test":"Can the lesson reproduce without copying the entire personality or mythology that produced it?"},
+    {"name":"Angel","status":"symbolic aspirational mode","function":"Join increased capability with truthfulness, care, protection, mercy, discernment and service.","historical_boundary":"Angel is used comparatively from messenger traditions; this does not establish literal supernatural transformation."},
+    {"name":"Valkyrie","status":"modern Norse-inspired symbolic mode","function":"Represent courage, discernment under pressure, protection and carrying hard-earned wisdom forward after ordeal.","historical_boundary":"Historical Norse valkyries belong to a distinct mythic tradition associated with Odin; the Potatoist use is an explicit symbolic extension."}
   ],
-  "daily":["Simplify one thing","Observe one living condition carefully","Name the frame","Choose one direction toward clarity/life","Take one small useful step","Remove one unnecessary friction","Help one thing grow independently","Notice the fruit","Keep the lesson and repeat"],
-  "source_records":["docs/POTATOISM-SIMPLICITY-AND-NATURAL-GROWTH.md","knowledge/philosophy/potato-philosophy.json","knowledge/core/root-system.json","knowledge/core/symbolic-relational-synthesis.json","knowledge/science/potato-dynamics-2-toy-model.json","knowledge/world/farm-swamp-tree-of-strife-atlas.json"],
-  "epistemic_note":"This is a project practice/philosophy layer. Biological, historical and scientific claims remain separate from symbolic interpretation and are sourced in their own records."
+  "biology_grounding":{"owner":"knowledge/biology/potato-growth-principles.json","rule":"Biology may motivate a practice metaphor but never serves as proof of a spiritual or psychological claim.","bridges":["dormancy → incubation without assumed failure","eyes/meristems → multiple viable futures","apical dominance → concentration before branching","vegetative propagation → generative fragments require retained structure","starch storage → stored capacity","root/shoot differentiation → support and emergence are complementary","light exposure → correct orientation is not maximal exposure of every part"]},
+  "promotion_rule":"A newly derived practice law should be promoted only when it can be traced to the root principles, appears across more than one project context, clarifies action, survives the Fruit test and does not merely duplicate an existing rule under a grander title.",
+  "anti_bloat_rule":"Complexity must be able to return to the Potato. If an expansion cannot explain what is alive, what it needs, which relation enables growth, what changes at the Door, what fruit results and where the cycle goes next, simplify, merge or re-root it.",
+  "practice_questions":["What is already alive here?","What does it need?","What is the current Plane or frame?","Am I on a Ring or a Spiral?","Which relationship makes growth possible?","Where is the actual Door or state change?","Is this process Mountain, Ladder, Tree, Swamp, Forge or Garden-like?","What has become visible?","What can now grow independently?","What fruit appears?","What should be remembered before the next iteration?"],
+  "daily":["Simplify one thing","Observe one living condition carefully","Name the frame","Choose one direction toward clarity or life","Take one small useful step","Remove one unnecessary friction","Help one thing grow independently","Notice the fruit","Keep the lesson and repeat"],
+  "relationships":[{"target":"potato-growth-principles","type":"biological-grounding","description":"The biology owner supplies physical facts; this record owns only their clearly labeled practice interpretation."},{"target":"symbolic-relational-synthesis","type":"transformation-grammar","description":"Plane, Door, Ladder, Mountain, Tree, Forge, Swamp, Ring and Spiral retain their broader canonical meanings there."},{"target":"archive-epistemics","type":"methodological","description":"The same recursive growth law applies to repository maintenance: expand, test, consolidate, re-root."}],
+  "source_records":["docs/POTATOISM-SIMPLICITY-AND-NATURAL-GROWTH.md","knowledge/philosophy/potato-philosophy.json","knowledge/core/root-system.json","knowledge/core/symbolic-relational-synthesis.json","knowledge/biology/potato-growth-principles.json","knowledge/science/potato-dynamics-2-toy-model.json","knowledge/world/farm-swamp-tree-of-strife-atlas.json","knowledge/indexes/chatgpt-memory-recovery-round-2026-09-09.json"],
+  "consolidation_history":{"date":"2026-09-10","absorbed_unique_material_from":["knowledge/practice/potato-practice-revelations.json","knowledge/practice/potato-advanced-growth-symbols.json"],"biology_material_moved_to":"knowledge/biology/potato-growth-principles.json","reason":"The retired mini-files were useful notes but too small and overlapping to remain independent substantive owners."},
+  "epistemic_note":"This is a project practice/philosophy layer. Biological, historical and scientific claims remain separate from symbolic interpretation and are sourced in their own owners."
 }
