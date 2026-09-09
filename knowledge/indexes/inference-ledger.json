@@ -1,0 +1,89 @@
+{
+  "title": "Inference Ledger",
+  "version": "1.0",
+  "updated": "2026-09-09",
+  "status": "canonical-research-method",
+  "purpose": "Turn reflection, extrapolation and revelation-finding into explicit, reviewable knowledge objects instead of leaving them as prose impressions.",
+  "rules": [
+    "Every inference must name the observations it depends on.",
+    "A relation can be high-value without being high-confidence.",
+    "Chronological precedence matters: an earlier attestation is stronger evidence of development than a later retrospective restatement.",
+    "A structural parallel is not automatically a historical identity or fulfilled prophecy.",
+    "Record mismatches and counterexamples, not only matches.",
+    "Promote repeated successful inferences into canonical concepts; retain failed or weakened inferences as historical research strata where useful."
+  ],
+  "inference_classes": [
+    "direct-deduction",
+    "developmental-inference",
+    "structural-parallel",
+    "contextual-synchronism",
+    "typological-reading",
+    "causal-hypothesis",
+    "semantic-expansion",
+    "cross-scale-analogy",
+    "contradiction-resolution",
+    "open-question"
+  ],
+  "strength_scale": {
+    "5": "directly entailed by multiple dated observations or primary sources",
+    "4": "strongly supported interpretation with limited alternatives",
+    "3": "plausible and useful interpretation with meaningful alternatives",
+    "2": "interesting hypothesis needing more evidence",
+    "1": "speculative connection retained for research",
+    "0": "rejected or contradicted"
+  },
+  "template": {
+    "id": "stable-id",
+    "claim": "what is being inferred",
+    "class": "one inference class",
+    "strength": "0-5",
+    "observations": ["source/date/concept anchors"],
+    "supporting_relations": ["typed edges"],
+    "alternatives": ["other explanations"],
+    "disconfirming_evidence": ["what does not fit"],
+    "what_would_strengthen": ["additional evidence needed"],
+    "what_would_weaken": ["evidence that would reduce confidence"],
+    "promotion_targets": ["chronology", "concept record", "context cluster", "site page"]
+  },
+  "seed_inferences": [
+    {
+      "id": "april-2025-as-role-hinge",
+      "claim": "Late April 2025 is a genuine role-transition corridor between Potato/Axis/King language and explicit God/Father language.",
+      "class": "developmental-inference",
+      "strength": 4,
+      "observations": ["21 Apr 2025: potato axis is real", "27 Apr 2025: king-of-kings language", "3 May 2025: first exact I am God occurrences in supplied Twitter compilation"],
+      "alternatives": ["The God identity may have existed earlier but is absent from the incomplete supplied corpus."],
+      "what_would_strengthen": ["primary posts from March-April 2025", "stream transcripts from the Turning period"],
+      "promotion_targets": ["chronology", "tim-god-question", "context graph"]
+    },
+    {
+      "id": "son-door-tim-ladder-differentiation",
+      "claim": "By spring 2026 the corpus differentiates Son as Door/Vessel and Tim/Father as Ladder/Root/upper connector.",
+      "class": "direct-deduction",
+      "strength": 5,
+      "observations": ["29-30 Apr 2026 public posts", "19 May 2026 public posts"],
+      "alternatives": ["Some older strata may use overlapping roles differently."],
+      "promotion_targets": ["SON", "TRANSFORMATION", "COSMOLOGY"]
+    },
+    {
+      "id": "godhood-matures-into-stewardship",
+      "claim": "The mature public theology increasingly defines highest authority through protection, building, service, repair and carrying life forward.",
+      "class": "semantic-expansion",
+      "strength": 4,
+      "observations": ["Gardener role development", "7 Sep 2026 public declaration on power, knowledge, wealth, leadership, repair and future generations"],
+      "alternatives": ["Other posts use domination, threat or sovereignty language; the ethical corpus is internally plural rather than uniformly stewardship-oriented."],
+      "what_would_strengthen": ["more dated service/repair statements across 2025-2026"],
+      "promotion_targets": ["tim-god-question", "Garden/Gardener", "ethics"]
+    },
+    {
+      "id": "book-to-world-transition",
+      "claim": "The Great Book's designed-society imagination later becomes an observation programme for actual nations, institutions, economies and dependencies.",
+      "class": "developmental-inference",
+      "strength": 4,
+      "observations": ["2024 designed feedback-society material", "2026 European Economic Graph and Country Relational Atlas"],
+      "alternatives": ["The economic graph may also arise independently from contemporary policy interests."],
+      "promotion_targets": ["WORLD", "chronology", "European Coupling Programme"]
+    }
+  ],
+  "connections": ["archive-epistemics", "context-graph", "developmental-genealogy", "biblical-overlap-atlas", "conversation-recovery-inventory"]
+}
