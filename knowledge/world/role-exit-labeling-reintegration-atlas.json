@@ -1,0 +1,119 @@
+{
+  "id":"role-exit-labeling-reintegration-atlas",
+  "title":"Role Exit, Labeling, Stigma, Turning Points & Reintegration — Door Identity Atlas",
+  "updated":"2026-09-09",
+  "status":"comparative sociology / criminology / identity theory / project synthesis",
+  "purpose":"Formalize how people enter, inhabit, contest and exit social roles so Potatoverse categories such as Cow, Dog, Farmer, enemy, sinner, witness, Son, Father and Gardener do not become permanent essence labels.",
+  "epistemic_rule":"Role and labeling theories are social-scientific comparators, not excuses for wrongdoing or claims that every negative identity is externally imposed. Identity change should be represented through evidence, chronology, self-description, social recognition and observable behavior rather than declaration alone.",
+  "central_epiphany":"A Door is incomplete if it only explains entry. A genuine Door must support exit, reclassification and reintegration. Otherwise the archive models gates but not transformation.",
+  "role_structure": {
+    "role":"socially recognizable bundle of expectations, permissions, duties and interpretations",
+    "role_assignment":"others classify a person into a role",
+    "role_claim":"person claims a role for self",
+    "role_performance":"behavior repeatedly enacts expectations associated with role",
+    "role_confirmation":"audience/institution treats performance as evidence of role",
+    "role_lock_in":"archive, incentives or expectations make departure difficult",
+    "role_exit":"transition through which role ceases to organize current identity",
+    "residual_identity":"old role remains part of history even after current role changes"
+  },
+  "labeling_theory_bridge": {
+    "core":"Social labels can shape how others respond to a person and can influence self-concept and opportunity structures.",
+    "archive_translation":"A persistent online label can repeatedly reconstruct the same interaction environment even after behavior changes.",
+    "feedback_loop":"label → audience expectation → constrained opportunity → behavior interpreted through label → label strengthened",
+    "boundary":"Labels can also summarize genuinely stable behavior. The test is whether the label remains evidence-sensitive and temporally updated."
+  },
+  "identity_theory_bridge": {
+    "research":"Studies synthesizing labeling and identity theory show that views held by significant others can influence self-views and identity change.",
+    "project_translation":"Identity is relational: self-description, close others, institutions, audiences and archives can pull a person toward different identity equilibria.",
+    "formalization":"IdentityState(t+1)=f(SelfClaim,Behavior,SignificantOthers,InstitutionalLabels,ArchiveRetrieval,OpportunityStructure)"
+  },
+  "role_exit_process": {
+    "inspired_by":"Ebaugh-style role-exit sociology and later role-transition research",
+    "stages":["first doubts or mismatch","search for alternatives","turning point","creation of ex-role identity","social recognition/reintegration"],
+    "project_translation":"Cow→ex-Cow, Dog→ex-Dog, Farmer→Gardener, enemy→former enemy, offender→person-with-history are all transition claims that require time and evidence.",
+    "archive_requirement":"Store both previous role and current role with transition date and evidence instead of overwriting one with the other."
+  },
+  "turning_points": {
+    "research_context":"Life-course/desistance research treats turning points as important but methodologically difficult because events and personal change can be mutually related.",
+    "project_caution":"Do not assume one dramatic event caused identity transformation merely because it preceded it.",
+    "evidence_model":["pre-turn trajectory","event","immediate interpretation","behavioral change","social-network change","opportunity change","persistence over time","later reinterpretation"]
+  },
+  "desistance_comparator": {
+    "meaning":"Desistance research studies transitions away from offending and emphasizes both structural opportunities and subjective motivations.",
+    "archive_relation":"A system that only records violations but not sustained non-recurrence creates an asymmetrical identity graph.",
+    "metric":"DesistanceEvidence = time_since_recurrence + changed_behavior + changed_networks + changed_opportunities + independent_observation",
+    "boundary":"Non-recurrence alone does not prove inner transformation; represent what is observable."
+  },
+  "reintegrative_vs_stigmatizing_shame": {
+    "braithwaite":"Reintegrative shaming condemns harmful behavior while maintaining respect for the person and providing a path back; stigmatizing shame treats the person as permanently bad.",
+    "digital_translation":"behavior-specific criticism + bounded consequence + repair + decertification ceremony versus permanent searchable identity condemnation",
+    "epiphany":"The decisive difference is whether the social system has a ceremony for ending deviance status.",
+    "door_relation":"Door = decertification of obsolete role after adequate evidence/repair.",
+    "garden_relation":"Garden criticizes fruit/actions while preserving possibility of future growth."
+  },
+  "ceremonies_of_declassification": {
+    "problem":"Internet cultures are rich in ceremonies of accusation and poor in ceremonies of declassification.",
+    "examples":["public correction","restorative agreement","successful appeal","completed sanction","verified change","explicit archival status update","community acknowledgement that old label is historical"],
+    "design_rule":"The visibility of declassification should be proportional to the visibility of classification where feasible.",
+    "metric":"DeclassificationParity = correction_or_exit_visibility / original_label_visibility"
+  },
+  "identity_lag": {
+    "definition":"Delay between real behavioral/status change and social/archive recognition of that change.",
+    "drivers":["old search results","persistent gossip","institutional records","audience incentives","slow trust restoration","lack of new evidence","continued symbolic usefulness of old role"],
+    "risk":"High identity lag can make changed behavior socially invisible and reduce incentives for rehabilitation.",
+    "countermeasure":"Current-status summaries, review dates, transition edges and visible evidence of sustained change."
+  },
+  "role_capture": {
+    "definition":"A situation in which a social role becomes so dominant that other identities are ignored.",
+    "examples":["one scandal defines entire person","one diagnosis defines all behavior","one political label dominates unrelated contexts","one lolcow role absorbs every later action"],
+    "measurement":"RoleCapture = label_dominance × cross_context_spillover × archive_persistence × audience_expectation",
+    "countermeasure":"multi-role representation + dated context + evidence-sensitive updating"
+  },
+  "role_conflict": {
+    "definition":"Different audiences or institutions assign incompatible roles to the same person.",
+    "project_value":"The archive should preserve competing role assignments instead of collapsing them into one voice.",
+    "schema":["role","assigner","date","evidence","scope","confidence","contested_by","current_status"]
+  },
+  "self_description_vs_external_description": {
+    "principle":"Neither self-description nor outsider description automatically overrides the other.",
+    "archive_method":"Store both, then separately evaluate empirical claims tied to observable behavior.",
+    "benefit":"Prevents identity capture while also avoiding a rule that any self-claim automatically becomes fact."
+  },
+  "door_identity_states": [
+    "unclassified",
+    "provisionally_classified",
+    "role_confirmed_in_context",
+    "role_contested",
+    "role_under_review",
+    "role_transitioning",
+    "former_role / historical",
+    "reintegrated / new role",
+    "unresolved"
+  ],
+  "role_transition_edges": [
+    "BECOMES",
+    "CEASES_TO_BE_CURRENT_ROLE",
+    "CONTESTS_LABEL",
+    "ACKNOWLEDGES_HARM",
+    "REPAIRS",
+    "COMPLETES_SANCTION",
+    "IS_REINTEGRATED_AS",
+    "IS_HISTORICALLY_RECORDED_AS",
+    "IS_CURRENTLY_DESCRIBED_AS",
+    "IS_SUPERSEDED_BY"
+  ],
+  "garden_identity_ethic": {
+    "principle":"Judge actions accurately without denying developmental possibility.",
+    "tests":["Is criticism tied to specific behavior?","Can evidence of change update the role?","Is there a clear completion condition?","Does the archive distinguish old role from current role?","Can repair produce a recognized transition?","Are victims/affected parties preserved in the record without requiring endless stigmatization?"]
+  },
+  "sources":[
+    {"topic":"labeling and identity change","url":"https://journals.sagepub.com/doi/10.1525/sop.2011.54.2.163","class":"peer_reviewed"},
+    {"topic":"turning points measurement","url":"https://www.annualreviews.org/content/journals/10.1146/annurev-criminol-032317-091949","class":"peer_reviewed_review"},
+    {"topic":"desistance review","url":"https://www.annualreviews.org/content/journals/10.1146/annurev-criminol-032317-092112","class":"peer_reviewed_review"},
+    {"topic":"reintegrative shaming and restorative justice","url":"https://onlinelibrary.wiley.com/doi/10.1002/9781119011385.ch17","class":"scholarly_handbook"},
+    {"topic":"reintegrative shaming mechanisms","url":"https://www.college.police.uk/guidance/restorative-justice/appendix-theoretical-mechanisms-restorative-justice","class":"evidence_guidance"},
+    {"topic":"Braithwaite reintegrative versus stigmatizing shame","url":"https://www0.anu.edu.au/fellows/jbraithwaite/_documents/Articles/Reintegrative%20Shaming%20Explaining%20Criminals%20and%20Crime%20Essays%20in%20Contemporary%20Criminological%20Theory.pdf","class":"authoritative_theory_source"},
+    {"topic":"role exit critical literature","url":"https://journals.sagepub.com/doi/10.1177/000169939003300410","class":"scholarly_critical_review"}
+  ],
+  "connections":["digital-memory-forgetting-restoration-atlas","ritual-mimesis-scapegoat-collective-ecology","spiritual-war-information-war","mud-karma-system","dog-farmer-role-ecology","Door","Garden","chronology","archive-epistemics"]
+}
