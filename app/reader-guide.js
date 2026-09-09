@@ -3,12 +3,32 @@
   let guidesReady=false;
 
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+  const scriptBase=document.currentScript?.src||location.href;
 
   function currentBranch(){
     const hero=document.querySelector('#reader .branchhero[data-branch-view]');
     if(hero?.dataset.branchView)return hero.dataset.branchView;
     const m=location.hash.match(/^#branch=(.+)$/);
     return m?decodeURIComponent(m[1]):null;
+  }
+
+  function ensureStyle(name,key){
+    if(document.querySelector(`link[data-potato-${key}]`))return;
+    const css=document.createElement('link');
+    css.rel='stylesheet';
+    css.href=new URL(name,scriptBase).href;
+    css.dataset[`potato${key.replace(/-([a-z])/g,(_,c)=>c.toUpperCase())}`]='1';
+    document.head.appendChild(css);
+  }
+
+  function ensureTimeline(){
+    ensureStyle('timeline.css','timeline');
+    ensureStyle('timeline-enhancements.css','timeline-v2');
+    if(document.querySelector('script[data-potato-timeline]'))return;
+    const timeline=document.createElement('script');
+    timeline.src=new URL('timeline.js',scriptBase).href;
+    timeline.dataset.potatoTimeline='1';
+    document.head.appendChild(timeline);
   }
 
   function render(branchId=currentBranch()){
@@ -19,10 +39,7 @@
     const existing=reader.querySelector('.reader-guide-panel');
     const g=branchId?guides[branchId]:null;
 
-    if(!hero||!g){
-      existing?.remove();
-      return;
-    }
+    if(!hero||!g){existing?.remove();return}
     if(existing?.dataset.guideBranch===branchId)return;
 
     const box=document.createElement('section');
@@ -41,27 +58,13 @@
 
   window.addEventListener('potato:navigation',event=>{
     const {type,id}=event.detail||{};
-    if(type==='branch')render(id);
+    if(type==='branch'){
+      if(id==='chronology')ensureTimeline();
+      render(id);
+    }
   });
 
-  const scriptBase=document.currentScript?.src||location.href;
-
-  // Timeline explorer is a presentation module layered on top of the canonical archive.
-  // Loading it here avoids coupling timeline-specific rendering to app.js.
-  if(!document.querySelector('link[data-potato-timeline]')){
-    const css=document.createElement('link');
-    css.rel='stylesheet';
-    css.href=new URL('timeline.css',scriptBase).href;
-    css.dataset.potatoTimeline='1';
-    document.head.appendChild(css);
-  }
-  if(!document.querySelector('script[data-potato-timeline]')){
-    const timeline=document.createElement('script');
-    timeline.src=new URL('timeline.js',scriptBase).href;
-    timeline.defer=true;
-    timeline.dataset.potatoTimeline='1';
-    document.head.appendChild(timeline);
-  }
+  if(currentBranch()==='chronology')ensureTimeline();
 
   const guideUrl=new URL('../knowledge/guides/branch-reader-guides.json',scriptBase).href;
   fetch(guideUrl)
