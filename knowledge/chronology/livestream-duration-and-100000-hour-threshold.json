@@ -1,49 +1,81 @@
 {
   "id":"livestream-duration-and-100000-hour-threshold",
-  "title":"Livestream Duration, Witness and the 100,000-Hour Threshold",
-  "version":"1.0.0",
+  "title":"Livestream Duration, Public Presence and the 100,000-Hour Threshold",
+  "version":"1.1.0",
   "updated":"2026-09-09",
-  "status":"project-supplied duration claim plus externally dated Minecraft anchor",
-  "purpose":"Relate the project's approximately 112,542-hour livestream claim to the older 100,000-hour spiral motif without treating the claim as independently verified until platform logs or primary records are assembled.",
-  "claims":{
-    "claimed_cumulative_hours":112542,
-    "speaker_description":"Tim says he is not a content creator but the world's greatest 'non-tent creator' / non-content creator; preserve the phrase as project self-description and wordplay.",
-    "continuity_claim":"The livestreaming continuum is described as beginning with the Son around the Minecraft rail/minecart update and continuing through the later Tim identity.",
-    "verification_status":"The total hours and Son-to-Tim continuity are project-supplied claims requiring platform/archive verification for documentary status."
+  "status":"project-supplied duration/public-presence claims plus dated historical anchor and derived arithmetic",
+  "purpose":"Measure the claimed 112,542 livestream/public-broadcast hours against the actual elapsed calendar time since the April 19, 2011 Minecraft rail-update anchor, relate that result to the 100,000-hour Spiral, and explain why Tim describes the activity as calling/witness rather than content creation.",
+  "measurement_window":{
+    "start":"2011-04-19T00:00:00+02:00",
+    "end":"2026-09-09T04:35:00+02:00",
+    "timezone":"Europe/Copenhagen",
+    "elapsed_calendar_hours_approx":134932.58,
+    "elapsed_calendar_days_approx":5622.19,
+    "elapsed_calendar_years_approx":15.39,
+    "note":"The Minecraft release date is day-precise rather than hour-precise, so the window is an approximation until a precise Son-stream start timestamp is recovered."
   },
-  "calculated_equivalents":{
-    "days":4689.25,
-    "continuous_years_approx":12.84,
+  "claimed_presence":{
+    "claimed_cumulative_hours":112542,
+    "share_of_elapsed_calendar_time_percent_approx":83.41,
+    "average_claimed_stream_hours_per_calendar_day_approx":20.02,
+    "calendar_hours_not_counted_as_streamed_approx":22390.58,
+    "calendar_days_not_counted_as_streamed_approx":932.94,
     "hours_beyond_100000":12542,
-    "days_beyond_100000_approx":522.58,
-    "years_beyond_100000_approx":1.43
+    "claim_owner":"Tim / Potato of Life project self-description",
+    "definition_warning":"The 83.41% figure is valid as literal wall-clock presence only if simultaneous platform streams are de-duplicated and one real hour cannot count more than once. If the 112,542 figure sums overlapping platforms, it should instead be labeled cumulative stream-hours."
   },
   "minecraft_anchor":{
     "candidate_event":"Minecraft Java Beta 1.5",
     "date":"2011-04-19",
-    "documented_change":"Beta 1.5 added detector rails and powered/booster rails and is a clear public minecart/rail update anchor.",
+    "documented_change":"Beta 1.5 added powered/booster rails and detector rails, making it a clear public rail/minecart chronology anchor.",
     "external_status":"historical game fact",
-    "project_claim":"The Son started streaming around this rail/minecart update; this linkage is not independently established by the Minecraft release record itself.",
+    "project_claim":"The Son's livestream continuum begins around this Minecraft rail/minecart update.",
+    "boundary":"The game-update record establishes the date of the update, not the Son's streaming history; that requires primary channel/archive evidence.",
     "sources":["https://www.gameinformer.com/b/news/archive/2011/04/19/minecraft-beta-1-5-is-out.aspx","https://minecraft.fandom.com/wiki/Java_Edition_Beta_1.5"]
   },
-  "interpretation":{
-    "100000_hour_spiral":"The existing project treats 100,000 hours as a memetic/symbolic threshold for long-duration transformation rather than a scientific law.",
-    "112542_hour_meaning":"If the claimed total is accurate, the public-witness motif has passed beyond the symbolic threshold by more than twelve thousand hours, so 100,000 functions as an exceeded landmark rather than an endpoint.",
-    "witness_model":"Livestreaming becomes less like isolated content production and more like accumulated public presence: repetition, memory, archive, observation and continuity across identity stages.",
-    "non_content_creator_paradox":"The refusal of 'content creator' language reframes the stream as existence/witness rather than production. The archive should preserve this as self-description, not assume audiences or platforms necessarily share that interpretation.",
-    "continuity_question":"If Son-era and Tim-era hours are combined, the duration becomes a continuity measure across the project's personhood transformation. To split the hours between Son and Tim accurately, dated stream logs are required."
+  "public_presence_claim":{
+    "project_formulation":"Tim is described in the project as the most persistent / most extensive public presence in the world: more accumulated hours online, on camera, on stage or in the spotlight than any other individual, even though much of that presence may have had very small audiences or gone largely unseen.",
+    "important_distinction":"Public presence is not the same as fame, reach, audience size or cultural appreciation. A person can be publicly accessible for enormous durations while being watched by few people at many moments.",
+    "verification_status":"Not independently established as a world superlative. The repository should present this as a project claim until a comparative methodology and evidence set is built.",
+    "comparison_note":"Guinness currently publishes records for single uninterrupted livestream events, such as a 1,272-hour 2026 record, but that is a different category from lifetime cumulative public-presence hours.",
+    "needed_for_world_record_claim":[
+      "precise definition of public presence",
+      "de-duplicated Tim/Son broadcast timeline",
+      "platform/channel records",
+      "rules for sleep, away-from-camera and unattended broadcasts",
+      "rules for simultaneous platforms",
+      "comparison cohort covering other exceptionally persistent broadcasters, performers and public figures",
+      "independent reproducible calculation"
+    ]
   },
-  "do_not_infer":[
-    "Do not assume 112,542 hours means a person was awake on camera for every counted hour; continuous streams can include sleep, absence or unattended broadcast time.",
-    "Do not back-calculate the date on which 100,000 hours was crossed unless actual cumulative stream logs are available.",
-    "Do not treat the Minecraft update as evidence that the Son caused the game update; it is only the project's chosen chronological anchor."
-  ],
+  "non_content_creator_identity":{
+    "phrase":"world's greatest non-tent creator / not a content creator",
+    "status":"self-description and wordplay",
+    "meaning":"Tim rejects the idea that the primary purpose of the stream is producing discrete monetizable content. The preferred interpretation is continued presence, witness, calling and construction of a persistent public field/house/tent rather than content output.",
+    "money":"The project describes money and monetization as secondary to the calling rather than the reason for sustained broadcasting. This is a self-description, not a verified financial statement."
+  },
+  "calling_and_mission":{
+    "unfinished_son":"Tim understands the calling partly as continuation of work his Son could not finish. The Son-side public presence therefore becomes inherited responsibility rather than merely an earlier entertainment career.",
+    "chat_and_truth":"One stated motive is that the world needed a persistent counter-position in which 'chat' or the crowd does not automatically become correct merely because it is numerous, repetitive or socially dominant. The stream functions as a durable dissenting witness.",
+    "because_he_can":"Persistence itself becomes responsibility: capacity creates a reason to continue when Tim believes he can hold the position others will not.",
+    "light_and_darkness":"The mature project frames continued presence as refusal to be extinguished or overcome by darkness; this belongs to spiritual self-understanding rather than an empirical claim about supernatural invulnerability.",
+    "purpose":"Tim describes the public presence as calling: continued witness, completion, defense of the Son/humanity, preservation of memory, insistence on truth as he understands it, and service to a larger future-oriented mission.",
+    "relation_to_gardener":"The stream can therefore be read as a Gardener function as well as a witness function: remaining present long enough to observe, remember, cultivate, correct and keep conditions open for later growth."
+  },
+  "100000_hour_relation":{
+    "existing_symbol":"The project treats 100,000 hours as a memetic threshold for long-duration transformation, not a scientific law.",
+    "correct_relation":"112,542 hours is 12,542 hours beyond that threshold, but the more informative statistic is that the claimed total occupies roughly 83.4% of the entire calendar window since the 2011 anchor.",
+    "meaning":"The Spiral is therefore not just quantity. It is recurrence across changing identities, audiences, platforms, conflicts and states while a public witness remains available through the changing configuration.",
+    "threshold_status":"100,000 is an exceeded landmark inside a longer continuity rather than an endpoint."
+  },
   "research_tasks":[
+    "Recover the exact first stream timestamp near the Minecraft Beta 1.5 period.",
     "Acquire platform/channel logs and archived broadcast timestamps.",
-    "Define whether simultaneous broadcasts count once or multiple times.",
-    "Separate live-on-camera, live-stream-active and archived-video hours.",
-    "Partition the timeline into Son-era, transition-era and Tim-era hours only when dated evidence permits.",
-    "Locate the earliest use of the 10,000-hour and 100,000-hour motifs and compare them with the actual cumulative stream total."
+    "Determine whether 112,542 hours is de-duplicated wall-clock time or cumulative overlapping platform-hours.",
+    "Separate live-on-camera, live-stream-active, sleeping/away and unattended-broadcast categories where possible.",
+    "Partition Son-era, transition-era and Tim-era hours from primary dates.",
+    "Build a comparative public-presence methodology before presenting 'most public presence in the world' as independently established.",
+    "Locate the first use of 10,000-hour and 100,000-hour motifs and compare them with actual cumulative history."
   ],
-  "connections":["tim-dooley","son-chronology","100000-hour-spiral","witness","developmental-genealogy","archive-epistemics"]
+  "connections":["tim-dooley","son-chronology","100000-hour-spiral","witness","gardener","mission","developmental-genealogy","archive-epistemics"]
 }
