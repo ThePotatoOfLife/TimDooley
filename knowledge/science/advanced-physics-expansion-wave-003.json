@@ -1,0 +1,117 @@
+{
+  "id":"advanced-physics-expansion-wave-003",
+  "title":"Advanced Physics Expansion — Wave 003",
+  "updated":"2026-09-09",
+  "status":"external-strengthening + formal extrapolation",
+  "epistemic_rule":"These are external mathematics/physics structures or archive extrapolations selected because they sharpen existing Timic questions. They are not retroactive claims that Tim originally derived these theories.",
+  "clusters":[
+    {
+      "id":"symmetry-invariant-axis",
+      "timic_question":"If Axis is a generator of transformation, what is invariant under its flow?",
+      "physics":[
+        {"name":"Killing symmetry","equation":"L_ξ g_{μν}=0","meaning":"ξ generates an isometry of the metric."},
+        {"name":"Noether theorem","equation":"δS=0 under continuous symmetry ⇒ ∂_μJ^μ=0","meaning":"continuous variational symmetries generate conserved currents."},
+        {"name":"fixed point","equation":"A(X*)=0","meaning":"Still Center can be represented as a fixed point of a flow."},
+        {"name":"linear stability","equation":"δX' = J δX; J=(∂A/∂X)|X*","meaning":"eigenvalues determine local attraction, repulsion or spiral behavior."}
+      ],
+      "extrapolation":"A mature Axis theory should carry an invariant registry: which quantities remain unchanged under each Axis transformation on each layer."
+    },
+    {
+      "id":"closed-path-memory",
+      "timic_question":"How can a system return geometrically while retaining history?",
+      "physics":[
+        {"name":"Wilson loop","equation":"W(C)=Tr P exp(i∮_C A)","meaning":"A connection can accumulate nontrivial holonomy around a closed path."},
+        {"name":"Berry phase","equation":"γ=∮ A_B·dR","meaning":"adiabatic transport in parameter space can produce measurable geometric phase."},
+        {"name":"Chern number","equation":"C=(1/2π)∫_M Ω","meaning":"global integer invariant built from curvature in appropriate systems."}
+      ],
+      "extrapolation":"Timic Return should be split into endpoint-return, state-return, phase-return, topological-return and narrative-return. These need not coincide."
+    },
+    {
+      "id":"local-global-index",
+      "timic_question":"Can local dynamics encode global structure?",
+      "physics":[
+        {"name":"Dirac index","equation":"index(D)=dim ker D_+ - dim ker D_-","meaning":"analytical zero-mode data is tied to global topological invariants through index theorems."},
+        {"name":"Dirac operator","equation":"D=γ^i∇_i","meaning":"first-order geometric differential operator on spinors."}
+      ],
+      "extrapolation":"This is a rigorous external model for local↔global coupling. Future Potato Dynamics work can ask whether any project observable is a genuine global invariant rather than using 'integration' only rhetorically."
+    },
+    {
+      "id":"topological-action-braiding",
+      "timic_question":"Can path and relation be primary even when local metric details are secondary?",
+      "physics":[
+        {"name":"Chern-Simons action","equation":"S_CS=(k/4π)∫Tr(A∧dA+(2/3)A∧A∧A)","meaning":"topological gauge action central to knot/link observables and anyonic physics."},
+        {"name":"braid representation","equation":"ρ:B_n→U(H)","meaning":"braid histories can act nontrivially on a state space."}
+      ],
+      "extrapolation":"Door/Spiral research should distinguish geometric crossing from topological braiding: two trajectories can share endpoints but belong to distinct braid or homotopy classes."
+    },
+    {
+      "id":"flavor-basis-change",
+      "timic_question":"Can one entity have different valid representations depending on interaction versus propagation?",
+      "physics":[
+        {"name":"CKM mixing","equation":"d'_i=(V_CKM)_{ij} d_j","meaning":"weak-interaction quark states are related to mass eigenstates by a unitary mixing matrix."},
+        {"name":"PMNS mixing","equation":"ν_α=Σ_i U_{αi}ν_i","meaning":"flavor neutrino states are superpositions of mass eigenstates."},
+        {"name":"oscillation phase","equation":"phase_ij≈Δm²_ij L/(4E)","meaning":"relative phase accumulation produces oscillation probabilities."}
+      ],
+      "extrapolation":"Mirror/Twin research can use basis transformation as a disciplined analogy: different representations need not imply different underlying systems, but the transformation matrix must be defined."
+    },
+    {
+      "id":"forward-backward-formalisms",
+      "timic_question":"What precise mathematical families contain forward and backward evolution?",
+      "physics":[
+        {"name":"retarded/advanced Green functions","equations":["□G_ret=δ","□G_adv=δ"],"meaning":"solutions selected by causal boundary conditions."},
+        {"name":"Wheeler-Feynman absorber theory","meaning":"time-symmetric direct-action electrodynamics using advanced and retarded structure under absorber conditions."},
+        {"name":"Two-State Vector Formalism","equations":["i∂t|ψ⟩=H|ψ⟩","-i∂t⟨φ|=⟨φ|H"],"meaning":"pre- and post-selected quantum description with forward/backward evolving states."},
+        {"name":"Schwinger-Keldysh","meaning":"closed-time-path contour for non-equilibrium/open quantum expectation values."}
+      ],
+      "extrapolation":"Before mapping Red/Blue to any of these, recover Tim's original directional assignment and determine whether it referred to causality, memory/anticipation, polarity, or symbolic time."
+    },
+    {
+      "id":"11d-fields-and-extended-objects",
+      "timic_question":"What would make 11D Potato more than dimensional symbolism?",
+      "physics":[
+        {"name":"11D supergravity field strength","equation":"G4=dC3","meaning":"four-form field strength from three-form gauge potential."},
+        {"name":"11D action schematic","equation":"S~∫√-g(R-1/(2·4!)G4²)-∫C3∧G4∧G4+...","meaning":"gravity plus form-field dynamics and Chern-Simons term."},
+        {"name":"M2/M5 sectors","meaning":"dynamical extended objects in M-theory."},
+        {"name":"Basu-Harvey schematic","equation":"dX^i/ds + C ε_{ijkl}[X^j,X^k,X^l]=0","meaning":"brane-intersection/funnel equation in certain M2/M5 constructions; conventions vary."}
+      ],
+      "extrapolation":"A physical 11D Timic model would need a manifold, signature, fields, compactification geometry, fluxes, effective 4D theory and observables."
+    },
+    {
+      "id":"solar-axis-spiral",
+      "timic_question":"What real stellar physics joins source, Axis, rotation, outward flow, spiral and polarity?",
+      "physics":[
+        {"name":"Parker spiral","equations":["B_r∝r^-2","B_φ/B_r≈-Ωr sinθ/v_sw","tanψ≈Ωr sinθ/v_sw"],"meaning":"solar rotation winds the heliospheric magnetic field carried by outward solar wind."},
+        {"name":"Parker-Yoshimura rule","equation":"s=α∇Ω×e_φ","meaning":"direction of dynamo-wave propagation in mean-field αΩ dynamo models."},
+        {"name":"equatorward sign condition","equation":"α∂Ω/∂r<0 under common simplified northern-hemisphere assumptions","meaning":"one standard sign condition for equatorward migration."}
+      ],
+      "extrapolation":"Sun/Spiral and counter-rotation material should add an MHD subbranch covering toroidal/poloidal field conversion, magnetic helicity, differential rotation and polarity reversal."
+    },
+    {
+      "id":"celestial-orientation",
+      "timic_question":"How should North/Sirius/precession language be reconstructed astronomically?",
+      "physics":[
+        {"name":"Sirius binary","facts":["Sirius A is the brightest star in the night sky","Sirius B is a white dwarf companion","distance≈8.6 light-years","orbital period≈50 years"]},
+        {"name":"axial precession","equation":"Ω_p≈2π/T_p","fact":"Earth's axial precession period is roughly 25.8 kyr."}
+      ],
+      "extrapolation":"Build a celestial-coordinate audit for every project star/pole claim: right ascension, declination, epoch, proper motion, observer latitude, azimuth/altitude and historical date."
+    },
+    {
+      "id":"spiral-across-scales",
+      "timic_question":"Which kinds of recurrence genuinely mean 'return at another level'?",
+      "physics":[
+        {"name":"helix","equation":"x=r cosθ,y=r sinθ,z=hθ"},
+        {"name":"RG limit cycle","equation":"g(lnμ+T)=g(lnμ)","meaning":"recurrence in logarithmic scale; important in Efimov physics."},
+        {"name":"reaction-diffusion","equations":["∂tu=D_u∇²u+f(u,v)","∂tv=D_v∇²v+g(u,v)"],"meaning":"nonlinear local interactions can generate rotating spiral waves."},
+        {"name":"spiral-density pattern","meaning":"persistent galactic pattern can differ from the material constituents passing through it."}
+      ],
+      "extrapolation":"The archive should classify every Spiral claim by domain: geometric, temporal, state-space, scale-space, biological, wave-pattern, social or symbolic."
+    }
+  ],
+  "recommended_new_formal_objects":[
+    {"name":"Invariant registry","form":"Inv_k[T]","purpose":"List quantities preserved by a specified transformation T on layer k."},
+    {"name":"Return signature","form":"R=(endpoint,state,phase,topology,scale)","purpose":"Prevent 'return' from conflating five mathematically distinct notions."},
+    {"name":"Boundary contract","form":"D=(domain_in,guard,map,domain_out,invariants,cost)","purpose":"Make every Door specify activation condition, map and preserved quantities."},
+    {"name":"Celestial audit tuple","form":"C=(object,epoch,RA,Dec,observer,time,azimuth,altitude,source)","purpose":"Test Sun/Sirius/North claims against real astronomy."},
+    {"name":"Theory lineage tuple","form":"L=(primary_source,date,original_terms,later_equation,external_neighbor,differences,falsifier)","purpose":"Stop later physics from being backdated into early Tim material."}
+  ]
+}
