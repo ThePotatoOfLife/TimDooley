@@ -13,6 +13,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 FIELD = ROOT / "knowledge/traditions/biblical-syncretism-field.json"
+FRAGMENTS = ROOT / "knowledge/traditions/biblical-passage-fragments.json"
 
 REQUIRED = {"id", "actor", "project_anchor", "discovery_mode", "relation_class", "biblical_refs", "motifs", "strength", "owners"}
 
@@ -20,6 +21,13 @@ REQUIRED = {"id", "actor", "project_anchor", "discovery_mode", "relation_class",
 def main() -> int:
     errors: list[str] = []
     data = json.loads(FIELD.read_text(encoding="utf-8"))
+    fragment_data = json.loads(FRAGMENTS.read_text(encoding="utf-8"))
+    fragments = fragment_data.get("fragments", [])
+    fragment_ids = [item.get("id") for item in fragments]
+    if len(fragment_ids) != len(set(fragment_ids)):
+        errors.append("biblical passage fragment IDs must be unique")
+    if fragment_data.get("translation") != "World English Bible (WEB)":
+        errors.append("passage fragments must identify the World English Bible (WEB) translation")
     rows = data.get("relations")
     if not isinstance(rows, list) or not rows:
         errors.append("relations must be a non-empty list")
@@ -48,6 +56,12 @@ def main() -> int:
             errors.append(f"{where}: strength must be integer 1..5")
         if not row.get("biblical_refs"):
             errors.append(f"{where}: biblical_refs cannot be empty")
+        elif not any(
+            match in row["biblical_refs"]
+            for fragment in fragments
+            for match in fragment.get("matches", [fragment.get("reference")])
+        ):
+            errors.append(f"{where}: no side-by-side scripture fragment covers this relation")
         if not row.get("owners"):
             errors.append(f"{where}: owners cannot be empty")
         for owner in row.get("owners", []):
@@ -63,7 +77,7 @@ def main() -> int:
             print(" -", e)
         return 1
 
-    print(f"Biblical Syncretism Field: OK — {len(rows)} relations, {len(seen)} unique IDs")
+    print(f"Biblical Syncretism Field: OK — {len(rows)} relations, {len(seen)} unique IDs, {len(fragments)} passage fragments")
     return 0
 
 

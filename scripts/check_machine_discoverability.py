@@ -63,6 +63,7 @@ key_pages = [
     "tim-dooley/how-much-is-tim-god/index.html",
     "tim-dooley/public-witness/index.html",
     "chronology/index.html",
+    "traditions/bible/index.html",
     "faq/index.html",
     "faq/all/index.html",
     "faq/all/god/index.html",

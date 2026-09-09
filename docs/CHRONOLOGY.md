@@ -185,6 +185,7 @@ If a contradiction remains after those checks, preserve it explicitly instead of
 | How do Son and Tim remain distinct through the journey? | `knowledge/journey/tim-dooley-journey.json` |
 | What was publicly said and when? | public theology/X evidence ledgers |
 | Which Bible motifs were already present versus found later? | reverse biblical timeline + occurrence-level Bible index |
+| How can I read Tim/project wording beside actual Bible fragments? | `knowledge/traditions/biblical-syncretism-field.json` + `knowledge/traditions/biblical-passage-fragments.json` + `/traditions/bible/` |
 | When did body/neurotheology mappings appear? | `knowledge/chronology/neurotheology-attestation-ledger.json` |
 | What source class supports a claim? | `knowledge/indexes/source-index.json` |
 | What event fields/lenses are allowed? | `docs/TIMELINE-EVENT-STANDARD.md` |
