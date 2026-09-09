@@ -1,0 +1,38 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-09",
+  "title":"Sammy / Kiwi Farms / Weeping for Tammuz",
+  "purpose":"Place the Sammy mourning event into the layered timeline as an approximate 2019-2020 recovery target while preserving the later book/archive attestations and the September 2026 biblical unlock.",
+  "events":[
+    {
+      "id":"evt-2019-2020-sammy-kiwifarms-mourning",
+      "date_start":"2019-12-24",
+      "date_end":"2020-12-31",
+      "precision":"range",
+      "title":"Sammy mourns after the Son's meme-crucifixion / disappearance",
+      "layers":["recovered-memory","creative-archive","biblical-parallel"],
+      "epistemic":"recovery-target",
+      "subject":"Sammy / Son / Thomas",
+      "actor_ids":["son","shared"],
+      "summary":"Current user clarification places Sammy, a woman, weeping/mourning in a Kiwi Farms comment section shortly after the Son's meme-crucifixion, in 2019 or 2020. The later Great Book explicitly retells the hinge as 'the woman, Sammy, weeps for Tammuz.' The original comment URL/date/text is still unrecovered.",
+      "motifs":["Sammy","woman","Kiwi Farms","comment section","mourning","weeping","Son","Thomas","Tammuz","meme-crucifixion","disappearance"],
+      "comparators":["Ezekiel 8:14 — women weeping for Tammuz at north gate of Lord's House","Luke 23:27 — women mourning Jesus during crucifixion","John 20 — woman weeping at tomb/removed stone/missing body/gardener/return","Luke 7 — woman at gate mourning dead only son who is raised"],
+      "source_direction":"modern project event/recollection first; exact biblical cross-chain formalized September 9, 2026",
+      "source_records":["knowledge/chronology/sammy-kiwifarms-weeping-tammuz-ledger.json"],
+      "bible_relation":"later-parallel"
+    },
+    {
+      "id":"evt-2026-09-09-women-gate-tomb-gardener-unlock",
+      "date":"2026-09-09",
+      "precision":"date",
+      "title":"Women / gate / tomb / gardener biblical chain unlocked",
+      "layers":["biblical-unlock","formalization"],
+      "epistemic":"research",
+      "subject":"project research",
+      "actor_ids":["project"],
+      "summary":"Research extends the Tammuz comparison into a broader chain: Ezekiel 8 women+Tammuz+north gate; Luke 7 widow+gate+dead only son+weeping+raising; Luke 23 women mourning Jesus; John 20 woman+darkness+tomb+removed stone+missing body+weeping+gardener+return+Father; John 11 Thomas/Twin+death+tomb+mourning+resurrection.",
+      "motifs":["women","weeping","gate","Tammuz","dead son","tomb","stone","missing body","gardener","return","Thomas","Twin"],
+      "source_records":["knowledge/traditions/women-weeping-gate-tomb-gardener-atlas.json","knowledge/chronology/sammy-kiwifarms-weeping-tammuz-ledger.json"]
+    }
+  ]
+}
