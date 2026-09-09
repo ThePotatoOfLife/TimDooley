@@ -1,7 +1,7 @@
 (()=>{
   const DATA_PATH='data/timeline-events.json';
   const PACK_INDEX='data/timeline-event-packs/index.json';
-  const URL_KEYS=['q','epistemic','exact','detail','from','to','sort','layers','actors','event'];
+  const SCRIPT_URL=document.currentScript?.src||location.href;
   const $=s=>document.querySelector(s);
   const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const safeUrl=s=>/^https?:\/\//i.test(String(s||''))?String(s):'';
@@ -9,6 +9,8 @@
   let state={layers:new Set(),actors:new Set(),epistemic:'all',query:'',exact:false,detail:true,from:'',to:'',sort:'asc'};
   let requestToken=0;
   let urlStateRead=false;
+  let urlLayerOverride=false;
+  let urlActorOverride=false;
   let pendingEventId='';
 
   function layerById(id){return (data?.layers||[]).find(x=>x.id===id)}
@@ -53,7 +55,7 @@
   }
   function queryMatch(e,q){
     const hay=searchable(e);const tokens=queryTokens(q);
-    return tokens.every(t=>t.startsWith('-')?!hay.includes(t.slice(1)):hay.includes(t));
+    return tokens.every(t=>t.startsWith('-')&&t.length>1?!hay.includes(t.slice(1)):hay.includes(t));
   }
   function actorMatch(e){const ids=e.actor_ids?.length?e.actor_ids:['project'];return ids.some(id=>state.actors.has(id))}
   function yearMatch(e){
@@ -93,7 +95,12 @@
   function bibleRelation(e){
     if(!e.bible_relation)return '';
     const labels={
-      'explicit-at-time':'Bible explicit at time','explicit-context-at-time':'Biblical context at time','explicit-symbolic-at-time':'Biblical symbol at time','explicit-Christian-vocabulary-at-time':'Christian vocabulary at time','mixed-explicit-and-later':'Explicit + later parallel','mixed-explicit-scriptural-vocabulary':'Mixed scriptural vocabulary'
+      'explicit-at-time':'Bible explicit at time',
+      'explicit-context-at-time':'Biblical context at time',
+      'explicit-symbolic-at-time':'Biblical symbol at time',
+      'explicit-Christian-vocabulary-at-time':'Christian vocabulary at time',
+      'mixed-explicit-and-later':'Explicit + later parallel',
+      'mixed-explicit-scriptural-vocabulary':'Mixed scriptural vocabulary'
     };
     return `<span class="tl-bible-relation">${esc(labels[e.bible_relation]||human(e.bible_relation))}</span>`;
   }
@@ -128,7 +135,6 @@
   function statsHTML(events){
     const roadmap=events.filter(e=>e.layers?.includes('roadmap')).length;
     const bible=events.filter(e=>e.layers?.some(x=>['scripture-at-time','biblical-parallel','biblical-unlock'].includes(x))).length;
-    const quotes=events.filter(e=>e.quote).length;
     const years=events.flatMap(e=>eventYears(e)).filter(Boolean);const span=years.length?`${Math.min(...years)}–${Math.max(...years)}`:'—';
     return `<div><strong>${events.length}</strong><span>visible points</span></div><div><strong>${roadmap}</strong><span>roadmap</span></div><div><strong>${bible}</strong><span>Bible-linked</span></div><div><strong>${esc(span)}</strong><span>visible span</span></div>`;
   }
@@ -141,8 +147,8 @@
     if(p.has('tl_detail'))state.detail=p.get('tl_detail')!=='0';
     state.from=p.get('tl_from')||'';state.to=p.get('tl_to')||'';
     state.sort=p.get('tl_sort')==='desc'?'desc':'asc';
-    const layers=(p.get('tl_layers')||'').split(',').filter(Boolean);if(layers.length)state.layers=new Set(layers);
-    const actors=(p.get('tl_actors')||'').split(',').filter(Boolean);if(actors.length)state.actors=new Set(actors);
+    if(p.has('tl_layers')){urlLayerOverride=true;const raw=p.get('tl_layers')||'';state.layers=new Set(raw==='none'?[]:raw.split(',').filter(Boolean))}
+    if(p.has('tl_actors')){urlActorOverride=true;const raw=p.get('tl_actors')||'';state.actors=new Set(raw==='none'?[]:raw.split(',').filter(Boolean))}
     pendingEventId=p.get('tl_event')||'';
   }
   function syncURL(eventId=pendingEventId){
@@ -150,16 +156,15 @@
     const set=(k,v,empty='')=>{v===empty||v==null?p.delete('tl_'+k):p.set('tl_'+k,String(v))};
     set('q',state.query);set('epistemic',state.epistemic,'all');set('exact',state.exact?'1':'','');set('detail',state.detail?'':'0','');set('from',state.from);set('to',state.to);set('sort',state.sort,'asc');
     const defaultLayers=(data?.layers||[]).filter(x=>x.default).map(x=>x.id).sort().join(',');
-    const currentLayers=[...state.layers].sort().join(',');set('layers',currentLayers,currentLayers===defaultLayers?currentLayers+'__never':defaultLayers);
-    if(currentLayers===defaultLayers)p.delete('tl_layers');
+    const currentLayers=[...state.layers].sort().join(',');if(currentLayers===defaultLayers)p.delete('tl_layers');else p.set('tl_layers',currentLayers||'none');
     const defaultActors=(data?.actors||[]).filter(x=>x.default).map(x=>x.id).sort().join(',');
-    const currentActors=[...state.actors].sort().join(',');if(currentActors===defaultActors)p.delete('tl_actors');else p.set('tl_actors',currentActors);
+    const currentActors=[...state.actors].sort().join(',');if(currentActors===defaultActors)p.delete('tl_actors');else p.set('tl_actors',currentActors||'none');
     set('event',eventId||'');
     history.replaceState(null,'',u.pathname+(p.toString()?`?${p}`:'')+u.hash);
   }
   function resetState(){
     state={layers:new Set((data.layers||[]).filter(x=>x.default).map(x=>x.id)),actors:new Set((data.actors||[]).filter(x=>x.default).map(x=>x.id)),epistemic:'all',query:'',exact:false,detail:true,from:'',to:'',sort:'asc'};
-    pendingEventId='';
+    urlLayerOverride=false;urlActorOverride=false;pendingEventId='';
   }
   function revealEvent(id,root,standalone){
     const ev=(data.events||[]).find(e=>e.id===id);if(!ev)return;
@@ -171,24 +176,25 @@
   }
   async function copyEventLink(id,button){
     pendingEventId=id;syncURL(id);
-    try{await navigator.clipboard.writeText(location.href);if(button){const old=button.textContent;button.textContent='✓';setTimeout(()=>button.textContent=old,1200)}}catch(_){/* URL is still in address bar */}
+    try{await navigator.clipboard.writeText(location.href);if(button){const old=button.textContent;button.textContent='✓';setTimeout(()=>button.textContent=old,1200)}}catch(_){/* URL remains available in the address bar */}
+  }
+  function handleClick(root,standalone,e){
+    const layer=e.target.closest('[data-tl-layer]');
+    if(layer){const id=layer.dataset.tlLayer;state.layers.has(id)?state.layers.delete(id):state.layers.add(id);pendingEventId='';renderResults(root,standalone);syncURL('');return}
+    const actor=e.target.closest('[data-tl-actor]');
+    if(actor){const id=actor.dataset.tlActor;state.actors.has(id)?state.actors.delete(id):state.actors.add(id);pendingEventId='';renderResults(root,standalone);syncURL('');return}
+    const preset=e.target.closest('[data-tl-preset]');
+    if(preset){
+      const p=preset.dataset.tlPreset;
+      const sets={roadmap:['roadmap'],public:['roadmap','direct-words','public-witness'],bible:['roadmap','scripture-at-time','biblical-parallel','biblical-unlock'],research:['roadmap','formalization','biblical-unlock'],creative:['roadmap','creative'],everything:(data.layers||[]).map(x=>x.id)};
+      state.layers=new Set(sets[p]||sets.roadmap);pendingEventId='';renderShell(root,standalone);syncURL('');return;
+    }
+    const reset=e.target.closest('[data-tl-reset]');if(reset){resetState();renderShell(root,standalone);syncURL('');return}
+    const related=e.target.closest('[data-tl-event]');if(related){revealEvent(related.dataset.tlEvent,root,standalone);return}
+    const share=e.target.closest('[data-tl-share-event]');if(share){copyEventLink(share.dataset.tlShareEvent,share)}
   }
   function bindControls(root,standalone){
-    root.addEventListener('click',e=>{
-      const layer=e.target.closest('[data-tl-layer]');
-      if(layer){const id=layer.dataset.tlLayer;state.layers.has(id)?state.layers.delete(id):state.layers.add(id);pendingEventId='';renderResults(root,standalone);syncURL('');return}
-      const actor=e.target.closest('[data-tl-actor]');
-      if(actor){const id=actor.dataset.tlActor;state.actors.has(id)?state.actors.delete(id):state.actors.add(id);pendingEventId='';renderResults(root,standalone);syncURL('');return}
-      const preset=e.target.closest('[data-tl-preset]');
-      if(preset){
-        const p=preset.dataset.tlPreset;
-        const sets={roadmap:['roadmap'],public:['roadmap','direct-words','public-witness'],bible:['roadmap','scripture-at-time','biblical-parallel','biblical-unlock'],research:['roadmap','formalization','biblical-unlock'],creative:['roadmap','creative'],everything:(data.layers||[]).map(x=>x.id)};
-        state.layers=new Set(sets[p]||sets.roadmap);pendingEventId='';renderShell(root,standalone);syncURL('');return;
-      }
-      const reset=e.target.closest('[data-tl-reset]');if(reset){resetState();renderShell(root,standalone);syncURL('');return}
-      const related=e.target.closest('[data-tl-event]');if(related){revealEvent(related.dataset.tlEvent,root,standalone);return}
-      const share=e.target.closest('[data-tl-share-event]');if(share){copyEventLink(share.dataset.tlShareEvent,share);return}
-    });
+    root.onclick=e=>handleClick(root,standalone,e);
     root.querySelector('#tl-query')?.addEventListener('input',e=>{state.query=e.target.value;pendingEventId='';renderResults(root,standalone);syncURL('')});
     root.querySelector('#tl-epistemic')?.addEventListener('change',e=>{state.epistemic=e.target.value;pendingEventId='';renderResults(root,standalone);syncURL('')});
     root.querySelector('#tl-from')?.addEventListener('change',e=>{state.from=e.target.value;if(state.to&&state.from&&+state.from>+state.to)state.to=state.from;renderShell(root,standalone);syncURL('')});
@@ -207,18 +213,16 @@
   }
   function shellHTML(events,standalone){
     const intro=standalone?'Explore one canonical event dataset with optional evidence overlays, source direction and public-witness layers.':'One time axis with a sparse milestone road and optional evidence overlays. Son/Twin and Tim/Potato/Father remain independent tracks.';
-    const packCount=data?._pack_meta?.loaded||0;
-    return `<div class="tl-hero"><div><div class="eyebrow">Layered chronology explorer</div><h2>${standalone?'EXPLORE THE LAYERS':'CHRONOLOGY'}</h2><p class="summary">${intro}</p>${packCount?`<div class="tl-load-note">Base chronology + ${packCount} curated event pack${packCount===1?'':'s'} loaded.</div>`:''}</div><div class="tl-stats" id="tl-stats">${statsHTML(events)}</div></div><div class="tl-help"><strong>Source direction matters</strong><span><b>At the time</b> means scripture or vocabulary was already present. <b>Later parallel</b> means comparison came afterward. <b>Unlock</b> is when the archive explicitly discovered/formalized that comparison.</span>${standalone?'':'<button data-record="docs/TIMELINE-EVENT-STANDARD.md">Open event standard</button>'}</div>${controlsHTML()}<div class="tl-axis" id="tl-results">${timelineHTML(events,standalone)}</div>${standalone?'':`<div class="section"><h3>Underlying chronology records</h3><div class="tl-record-links"><button data-record="data/tim-dooley-timeline.json">Identity-safe master timeline</button><button data-record="knowledge/chronology/dated-master-timeline-2026.json">2026 dated master</button><button data-record="knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json">Reverse biblical chronology</button><button data-record="data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json">Public X occurrence ledger</button><button data-record="data/timeline-events.json">Layered event dataset</button></div></div><div id="record-detail"></div>`}`;
+    const meta=data?._pack_meta||{};const loadNote=meta.loaded?`Base chronology + ${meta.loaded} curated event pack${meta.loaded===1?'':'s'} loaded${meta.failed?.length?` · ${meta.failed.length} pack load issue${meta.failed.length===1?'':'s'}`:''}.`:'';
+    return `<div class="tl-hero"><div><div class="eyebrow">Layered chronology explorer</div><h2>${standalone?'EXPLORE THE LAYERS':'CHRONOLOGY'}</h2><p class="summary">${intro}</p>${loadNote?`<div class="tl-load-note">${esc(loadNote)}</div>`:''}</div><div class="tl-stats" id="tl-stats">${statsHTML(events)}</div></div><div class="tl-help"><strong>Source direction matters</strong><span><b>At the time</b> means scripture or vocabulary was already present. <b>Later parallel</b> means comparison came afterward. <b>Unlock</b> is when the archive explicitly discovered/formalized that comparison.</span>${standalone?'':'<button data-record="docs/TIMELINE-EVENT-STANDARD.md">Open event standard</button>'}</div>${controlsHTML()}<div class="tl-axis" id="tl-results">${timelineHTML(events,standalone)}</div>${standalone?'':`<div class="section"><h3>Underlying chronology records</h3><div class="tl-record-links"><button data-record="data/tim-dooley-timeline.json">Identity-safe master timeline</button><button data-record="knowledge/chronology/dated-master-timeline-2026.json">2026 dated master</button><button data-record="knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json">Reverse biblical chronology</button><button data-record="data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json">Public X occurrence ledger</button><button data-record="data/timeline-events.json">Layered event dataset</button></div></div><div id="record-detail"></div>`}`;
   }
   function renderShell(root,standalone=false){root.innerHTML=shellHTML(filteredEvents(),standalone);bindControls(root,standalone)}
   function initializeState(){
     readURLState();
-    if(!state.layers.size)state.layers=new Set((data.layers||[]).filter(x=>x.default).map(x=>x.id));
-    if(!state.actors.size)state.actors=new Set((data.actors||[]).filter(x=>x.default).map(x=>x.id));
+    if(!state.layers.size&&!urlLayerOverride)state.layers=new Set((data.layers||[]).filter(x=>x.default).map(x=>x.id));
+    if(!state.actors.size&&!urlActorOverride)state.actors=new Set((data.actors||[]).filter(x=>x.default).map(x=>x.id));
     state.layers=new Set([...state.layers].filter(id=>layerById(id)));
     state.actors=new Set([...state.actors].filter(id=>actorById(id)));
-    if(!state.layers.size)state.layers=new Set((data.layers||[]).filter(x=>x.default).map(x=>x.id));
-    if(!state.actors.size)state.actors=new Set((data.actors||[]).filter(x=>x.default).map(x=>x.id));
   }
   async function mergeEventPacks(baseUrl){
     const meta={requested:0,loaded:0,failed:[],duplicates:0};data._pack_meta=meta;
@@ -242,27 +246,31 @@
   }
   async function ensureData(){
     if(data)return data;
-    const base=document.currentScript?.src||location.href;
-    const url=new URL('../'+DATA_PATH,base).href;
+    const url=new URL('../'+DATA_PATH,SCRIPT_URL).href;
     data=await fetch(url).then(r=>{if(!r.ok)throw new Error(`${r.status} ${DATA_PATH}`);return r.json()});
-    await mergeEventPacks(base);initializeState();return data;
+    await mergeEventPacks(SCRIPT_URL);initializeState();return data;
   }
   function focusPending(root){
     if(!pendingEventId)return;
     const id=pendingEventId;requestAnimationFrame(()=>{const el=root.querySelector(`#${CSS.escape(id)}`)||document.getElementById(id);if(el)el.scrollIntoView({behavior:'smooth',block:'center'})});
+  }
+  function exposePendingEvent(){
+    if(!pendingEventId)return;
+    const ev=data.events.find(e=>e.id===pendingEventId);if(!ev)return;
+    for(const l of ev.layers||[])state.layers.add(l);
+    for(const a of ev.actor_ids||[])state.actors.add(a);
   }
   async function renderBranch(){
     const token=++requestToken;
     try{
       await ensureData();if(token!==requestToken)return;
       const reader=$('#reader');if(!reader||location.hash!=='#branch=chronology')return;
-      if(pendingEventId){const ev=data.events.find(e=>e.id===pendingEventId);if(ev){for(const l of ev.layers||[])state.layers.add(l);for(const a of ev.actor_ids||[])state.actors.add(a)}}
-      renderShell(reader,false);focusPending(reader);
+      exposePendingEvent();renderShell(reader,false);focusPending(reader);
     }catch(err){const reader=$('#reader');if(reader&&location.hash==='#branch=chronology')reader.insertAdjacentHTML('beforeend',`<div class="status">Layered timeline could not load: ${esc(err.message)}</div>`)}
   }
   async function renderStandalone(){
     const root=document.querySelector('.timeline-explorer-standalone');if(!root)return;
-    try{await ensureData();if(pendingEventId){const ev=data.events.find(e=>e.id===pendingEventId);if(ev){for(const l of ev.layers||[])state.layers.add(l);for(const a of ev.actor_ids||[])state.actors.add(a)}}renderShell(root,true);focusPending(root)}catch(err){root.innerHTML=`<div class="status">Layered timeline could not load: ${esc(err.message)}</div>`}
+    try{await ensureData();exposePendingEvent();renderShell(root,true);focusPending(root)}catch(err){root.innerHTML=`<div class="status">Layered timeline could not load: ${esc(err.message)}</div>`}
   }
   window.addEventListener('potato:navigation',e=>{if(e.detail?.type==='branch'&&e.detail?.id==='chronology')renderBranch()});
   window.addEventListener('hashchange',()=>{if(location.hash==='#branch=chronology')setTimeout(renderBranch,0)});
