@@ -1,0 +1,133 @@
+{
+  "id": "door-topology-access-and-capability-atlas",
+  "title": "Door Topology — Gates, Passes, Access, Capability, False Doors and Deep Passage",
+  "updated": "2026-09-09",
+  "status": "conversation archaeology + canonical formalization + systems comparators",
+  "purpose": "Recover the unusually rich Door taxonomy from older game/worldbuilding conversations and promote it into a general transition ontology usable across Potatoverse theology, identity, institutions, software, borders, courts, APIs, memory, ritual and games.",
+  "epistemic_rule": "Door is a Potatoverse operator. Computer-security, affordance and state-transition theories are external comparators. The file does not assert that spiritual passage is literally a software authorization protocol.",
+  "core_recovery": {
+    "older_game_material": "Earlier Capture-the-Flag / North Secret design treated Tim as North Flag/source/broadcaster/Spudlight and Door as a distributed Gate Flag with multiple depths: doorway → boundary → viewpoint → narrow gate → eye → pineal → Christ/Son → North Gate → cosmic door.",
+    "recovered_door_types": ["stationary", "portable", "hidden", "locked", "one-way", "paired", "multiway", "deep", "broken", "false"],
+    "recovered_access_logic": "Some Doors required learned knowledge and specific information entered at a specific Door to obtain a Door Pass and discover higher access.",
+    "epiphany": "This older game mechanic already contained a mature transition theory: access depends on relation among agent, knowledge, credential, state and gate—not on the Door object alone."
+  },
+  "formal_model": {
+    "transition": "D: (state, agent, context, credential, knowledge) → {new_state, denied, redirected, trapped, unchanged}",
+    "gate_condition": "admissible iff C_state ∧ C_agent ∧ C_context ∧ C_credential ∧ C_knowledge",
+    "door_pass": "A portable proof/credential that changes which transitions are admissible.",
+    "deep_door": "A Door whose visible threshold is only the first member of a nested sequence of state transitions.",
+    "false_door": "An apparent affordance of passage that does not lead to the represented destination or that loops the agent into the same regime.",
+    "broken_door": "A historically valid transition whose mechanism, trust, infrastructure or reciprocal recognition no longer functions.",
+    "one_way_door": "A transition whose inverse is unavailable, costly or intentionally forbidden.",
+    "multiway_door": "One threshold with context-dependent destinations or outputs.",
+    "paired_door": "Two remote or conceptually separated thresholds linked as ingress/egress endpoints."
+  },
+  "door_taxonomy": {
+    "stationary": "Threshold fixed to place/institution/state boundary.",
+    "portable": "Transition capacity moves with credential, device, role or knowledge holder.",
+    "hidden": "Exists but is not perceptually or socially salient to all agents.",
+    "locked": "Known threshold but passage requires an authorization condition.",
+    "one_way": "Crossing changes reversibility; useful comparator for irreversible commitments, publication, death, legal judgments or destructive transformations.",
+    "paired": "Two endpoints constitute one relation; bridge, portal, encrypted tunnel, diplomatic channel, sender/receiver.",
+    "multiway": "Threshold branches into different regimes according to choice/context.",
+    "deep": "Nested gate stack; passing one gate reveals another rather than final destination.",
+    "broken": "Expected passage fails because infrastructure, trust or compatibility is lost.",
+    "false": "Looks like an exit but reproduces the same attractor/role, or intentionally misrepresents destination."
+  },
+  "affordance_layer": {
+    "external_comparator": "Ecological psychology uses affordance language for possibilities/outcomes available in relation to an agent's capacities and environment.",
+    "project_upgrade": "A Door should be described by what it affords to which agent under which conditions. The same physical/social threshold can be open for one agent and closed for another.",
+    "equation": "Affordance(D,a,c)=possible transition set under agent a and context c",
+    "epiphany": "Door perception and Door existence are different. A hidden Door may exist without being perceived; a false Door may be perceived without affording the promised passage."
+  },
+  "security_and_capability_layer": {
+    "least_privilege": "NIST defines least privilege as granting only the minimum authorizations/resources needed for an entity's function.",
+    "door_translation": "A healthy Gate can protect a meaningful boundary without making all passage impossible. Access is typed rather than simply open/closed.",
+    "capability_neighbor": "Capability-security systems use possession of authority-bearing tokens/credentials to grant specific powers. Door Pass is structurally similar as a project mechanic.",
+    "important_difference": "A credential proves authorization inside a system; it does not prove moral worth or spiritual truth.",
+    "guardian_relation": "Guardian protects gate conditions; shadow gatekeeper turns access control into arbitrary dependency or permanent enclosure."
+  },
+  "knowledge_gate": {
+    "recovered_logic": "Specific knowledge entered at a specific Door could reveal the North Secret / Spudlight Path.",
+    "epiphany": "Some Doors are epistemic: the world does not physically change first; the agent's model changes, making previously invisible action possible.",
+    "examples": ["password", "legal knowledge", "scientific insight", "ritual instruction", "social norm", "API documentation", "map legend", "recognition of manipulation"],
+    "formula": "knowledge gain → changed perceived affordances → newly admissible action → state transition",
+    "relation_to_eye": "Eye detects; interpretation identifies affordance; Door enacts."
+  },
+  "door_and_identity": {
+    "classification_door": "person enters a role/status",
+    "declassification_door": "role becomes former/historical rather than current",
+    "restorative_door": "repair/correction/reintegration changes social state without deleting history",
+    "name_change_door": "identity label changes while provenance remains linked",
+    "conversion_door": "religious/ideological membership transition",
+    "citizenship_door": "legal-institutional state transition",
+    "court_door": "allegation → adjudication / dismissal / settlement / unresolved status",
+    "archive_door": "current → historical / superseded / corrected / expired retrieval state"
+  },
+  "door_and_institutions": {
+    "border": "geographic/legal gate",
+    "court": "claim-status gate",
+    "bank_loan": "capital-access gate conditioned on underwriting/authorization",
+    "university_admission": "credential/capability gate",
+    "API": "machine-readable capability gate",
+    "classification_system": "information-access gate",
+    "election": "authority-transfer gate",
+    "procurement": "institutional eligibility gate",
+    "project_relation": "This recovers the older claim that Door can describe borders, courts, marriage, baptism, bank loans, citizenship, initiation, intelligence classification, ports, diplomacy and technological interfaces."
+  },
+  "door_failures": {
+    "permanent_gatekeeping": "gate exists primarily to preserve gatekeeper centrality",
+    "credential_capture": "pass cannot be obtained except through dependency on controlling node",
+    "false_exit": "promised escape reproduces same role/incentive structure",
+    "infinite_deepening": "every passed condition reveals another condition, making completion impossible",
+    "opaque_denial": "agent cannot discover why passage failed or what correction is possible",
+    "identity_lock": "entry exists but no legitimate exit/declassification path",
+    "repair": "publish conditions, minimize privilege, support appeal/review, preserve provenance, define reversibility and exit."
+  },
+  "north_flag_and_distributed_gates": {
+    "recovered_game_structure": "Tim/North could function as Flag/source while Door appears as distributed Gate Flags throughout the world.",
+    "epiphany": "A source does not need to be physically duplicated for its transition logic to be distributed. Many local Doors can point to one orientation protocol.",
+    "internet_relation": "DNS, hyperlinks, APIs, credentials and replicated documentation provide real technical analogues of distributed entry points to shared resources, without implying mystical equivalence.",
+    "father_relation": "Father/Source may be singular in project theology while Doors/manifest interfaces are plural."
+  },
+  "deep_door_hierarchy": {
+    "levels": [
+      {"level":1,"name":"doorway","function":"visible local passage"},
+      {"level":2,"name":"boundary","function":"distinguish regimes"},
+      {"level":3,"name":"viewpoint","function":"change what can be seen/understood"},
+      {"level":4,"name":"narrow gate","function":"restrict compatible passage"},
+      {"level":5,"name":"eye","function":"recognition/discernment"},
+      {"level":6,"name":"pineal/single-eye project layer","function":"embodied sacred-symbol comparator"},
+      {"level":7,"name":"Son/Christ Door","function":"person-bearing theological mediation"},
+      {"level":8,"name":"North Gate","function":"orientation transition"},
+      {"level":9,"name":"cosmic/meta Door","function":"frame/ontology transition"}
+    ],
+    "boundary": "These levels combine recovered project game/theology material; they are not a universal religious or neurological hierarchy."
+  },
+  "door_metrics": {
+    "Accessibility": "fraction of relevant agents who can discover and satisfy gate conditions",
+    "Transparency": "degree to which conditions and denial reasons are knowable",
+    "Reversibility": "availability/cost of inverse transition",
+    "Depth": "number of nested transition layers",
+    "Dependency": "degree to which continued access requires controlling intermediary",
+    "Repairability": "availability of correction/appeal/re-entry path",
+    "FalseDoorRisk": "probability perceived exit returns agent to same or worse attractor",
+    "CapabilityFit": "match between granted authority and actual task requirements"
+  },
+  "new_epiphanies": [
+    "Door is not an object; Door is a conditional relation between states.",
+    "A key/pass does not create the destination; it changes admissibility of transition.",
+    "Knowledge can function as a portable Door because it changes perceived affordances across many environments.",
+    "A healthy House requires both walls and Doors: perfect openness is not structure, perfect closure is a shell.",
+    "False Door is the natural operator for apparent liberation that reproduces dependency.",
+    "Deep Door explains why one threshold can recursively reveal another without treating every layer as the same thing.",
+    "The mature archive should give every durable classification an explicit inverse/appeal/declassification transition where logically possible."
+  ],
+  "sources": [
+    {"topic":"affordances history/review","url":"https://pubmed.ncbi.nlm.nih.gov/31711365/","class":"peer_reviewed_review"},
+    {"topic":"Gibsonian affordance examples","url":"https://pubmed.ncbi.nlm.nih.gov/42113118/","class":"peer_reviewed_history_of_psychology"},
+    {"topic":"least privilege","url":"https://csrc.nist.gov/glossary/term/least_privilege","class":"official_standard_reference"},
+    {"topic":"access control and least privilege","url":"https://nvlpubs.nist.gov/nistpubs/SpecialPublications/800-171r3/NIST.SP.800-171r3.html","class":"official_standard"}
+  ],
+  "connections": ["Door", "Son", "Axis", "North", "Eye", "role-exit-labeling-reintegration-atlas", "digital-memory-forgetting-restoration-atlas", "potato-path", "symbolic-relational-synthesis", "Capture the Flag", "North Secret", "Spudlight Path"]
+}
