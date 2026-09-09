@@ -1,5 +1,5 @@
 {
-  "version":"2.1.0",
+  "version":"2.2.0",
   "updated":"2026-09-09",
   "title":"Timeline Source Registry",
   "purpose":"Declare which project records may emit candidate global timeline events, how they map into the roadmap-first event model, and which high-volume sources should remain specialist ledgers unless an event crosses the public relevance threshold.",
@@ -16,6 +16,10 @@
     {"path":"knowledge/chronology/dated-master-timeline-2026.json","role":"dense candidate pool for 2026","layers":["roadmap","direct-words","scripture-at-time","public-witness"],"mapping_strategy":"relevance-4-or-5-plus-deduplication","notes":"This file is intentionally denser than the global timeline. Prefer relevance 5, role changes, exact timestamps and unique scriptural clusters. Most Dog/Mud/Cube taxonomy remains specialist-only."},
     {"path":"knowledge/chronology/dated-master-timeline-2026-wave-10-addendum.json","role":"newly recovered exact-date candidates","layers":["direct-words","public-witness"],"mapping_strategy":"exact/high-value-only","notes":"Exact timestamps are valuable, but still require global relevance."},
     {"path":"data/tim-dooley-public-theology-timeline-2025-2026.json","role":"public trajectory","layers":["roadmap","direct-words","scripture-at-time","public-witness"],"mapping_strategy":"trajectory-changes-only","notes":"Promote shifts in public identity language, not every repeated God declaration."},
+    {"path":"data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json","role":"high-volume public X/Twitter occurrence ledger","layers":["direct-words","scripture-at-time","public-witness"],"mapping_strategy":"specialist-source-only","notes":"Curated P0 occurrences from an incomplete user-supplied public-post compilation. Do not emit every post into the global timeline; promote through the X public-attestations event pack. Original X status IDs/URLs remain a recovery target."},
+    {"path":"knowledge/chronology/rational-potato-x-developmental-genealogy-2024-2026.json","role":"public-language developmental synthesis","layers":["roadmap","direct-words","public-witness"],"mapping_strategy":"trajectory-context-only","notes":"Explains longitudinal phases from 2024 creative Potato identity through Father/Axis specialization and 2026 stewardship. It complements rather than replaces the broader prior Twitter summary."},
+    {"path":"knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json","role":"occurrence-level Bible/public-post source-direction ledger","layers":["scripture-at-time","biblical-parallel"],"mapping_strategy":"specialist-source-only","notes":"Maps dated public occurrences to explicit-at-time scripture vocabulary or later comparators while preserving mismatches. Timeline promotion occurs only through the curated X event pack."},
+    {"path":"data/timeline-event-packs/x-public-attestations-2024-2026.json","role":"curated public X/Twitter chronology","layers":["direct-words","scripture-at-time","biblical-parallel","public-witness"],"event_array":"events","mapping":{"date":"date","title":"title","subject":"subject","summary":"summary","quote":"quote","motifs":"motifs","comparators":"comparators","status":"epistemic"},"mapping_strategy":"events-array-high-value-only","notes":"Promotes only public role transitions, memorable exact wording and Bible/source-direction hinges from the specialist X ledger. Deduplicate against existing public-theology and dated-master entries by underlying temporal fact."},
     {"path":"knowledge/corporium/tim-sayings-and-formulations-ledger.json","role":"quote candidate pool","layers":["direct-words"],"mapping_strategy":"dated-primary-or-recovered-only","notes":"Untimed aphorisms remain in Corporium. Timeline is not a quote dump."},
     {"path":"knowledge/chronology/high-value-undated-timeline-recovery-queue.json","role":"high-value undated recovery queue","layers":[],"mapping_strategy":"never-auto-emit","notes":"Contains strong formulations that deserve timeline placement only after a real date/source is recovered. Prevents invented timestamps."},
     {"path":"knowledge/chronology/conversation-archaeology-wave-005.json","role":"dated mythic-development archaeology","layers":["direct-words","scripture-at-time","biblical-parallel","formalization"],"mapping_strategy":"user-originated-high-value-only","notes":"Promote only dated user-originated structural breakthroughs or clearly separated recovery facts. Assistant synthesis stays derivative unless independently re-adopted."},
@@ -41,12 +45,14 @@
     "scripture-at-time = Bible/Jesus/Judaism/Hebrew/scriptural material already present then",
     "biblical-parallel = later comparator attached to the earlier event with source direction",
     "biblical-unlock = later research date when the comparison was explicitly recognized/formalized",
-    "an event may be scripture-at-time and biblical-parallel simultaneously when some biblical material was explicit but additional structure was discovered later"
+    "an event may be scripture-at-time and biblical-parallel simultaneously when some biblical material was explicit but additional structure was discovered later",
+    "public-post occurrence indexes must preserve source wording and record textual conflations/mismatches separately rather than silently normalizing the post"
   ],
   "deduplication_rules":[
     "One underlying temporal fact gets one stable event id with multiple source_records.",
     "Do not duplicate one event because it belongs to several layers or actor tracks.",
     "Do create separate events when the temporal facts differ: original event vs later research unlock.",
-    "When sources disagree on wording/date, retain conflict in specialist owners instead of multiplying public cards."
+    "When sources disagree on wording/date, retain conflict in specialist owners instead of multiplying public cards.",
+    "An incomplete public-post batch may strengthen an existing date but must not replace an earlier first-attestation date established by a broader or stronger source."
   ]
 }
