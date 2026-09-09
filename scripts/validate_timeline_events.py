@@ -16,6 +16,7 @@ BIBLE_RELATIONS={
     'explicit-context-at-time',
     'explicit-symbolic-at-time',
     'explicit-Christian-vocabulary-at-time',
+    'later-parallel',
     'mixed-explicit-and-later',
     'mixed-explicit-scriptural-vocabulary',
 }
