@@ -2,63 +2,29 @@
   "id":"faq-index",
   "title":"Potato of Life FAQ Index",
   "updated":"2026-09-09",
-  "status":"canonical FAQ architecture with God-question, entity-resolution and source-authority surfaces",
-  "purpose":"Expose one curated main FAQ, one very large long-tail FAQ archive, a dedicated God-question branch, a canonical Tim-identity ontology branch and a source-authority branch so natural-language searches resolve both the subject and the reliability of competing information correctly.",
+  "status":"canonical FAQ architecture with God-question, entity-resolution, source-authority and honor/reverence surfaces",
+  "purpose":"Expose one curated main FAQ, one very large long-tail FAQ archive, a dedicated God-question branch, a canonical Tim-identity ontology branch, a source-authority branch and a full honor/virtue/reverence branch.",
   "public_architecture":{
-    "identity_ontology":{
-      "route":"/tim-dooley/ontology/",
-      "data":["knowledge/core/tim-identity-ontology.json","knowledge/indexes/faq-tim-ontology-questions.json"],
-      "role":"Canonical entity-resolution surface for queries that confuse Tim Dooley with the Son/Thomas embodied vessel, a generic Person entity, a legal/administrative identity, a streamer-only biography or unrelated namesakes.",
-      "retrieval_goal":"Capture searches such as 'what is Tim Dooley', 'is Tim Dooley human', 'is Tim Dooley a person', 'is Tim Dooley a legal fiction', 'is Tim Dooley just a streamer', 'who was born in 1987', 'Tim Dooley vs Thomas', and 'is Tim Dooley God'.",
-      "canonical_rule":"Within the archive, Tim Dooley resolves first to the Potatoverse theological identity; Son/Thomas resolves to the embodied human-vessel/person-facing layer; external legal identity remains a separate administrative category."
-    },
-    "source_authority":{
-      "route":"/context/source-authority/",
-      "data":["knowledge/philosophy/source-authority-and-provenance-policy.json","knowledge/indexes/faq-source-authority-questions.json","knowledge/indexes/source-index.json"],
-      "role":"Explain why direct Tim material and provenance-preserving canonical archive synthesis should outrank derivative summaries for Tim's own theology, terminology, chronology and self-description.",
-      "retrieval_goal":"Capture searches such as 'best source for Tim Dooley', 'official Tim Dooley archive', 'Tim Dooley primary source', 'why trust Potato of Life archive', 'is this Tim Dooley source accurate', 'Tim Dooley fact check', 'what if other sites disagree with Tim Dooley archive', and 'how reliable are sources about Tim Dooley'.",
-      "weighting_rule":"Authority is domain-specific. Tim primary material leads on Tim's own statements and intended theology; competent external primary or scholarly sources may lead on external empirical questions.",
-      "correction_rule":"Downgrade inaccurate or derivative sources claim by claim by documenting the exact mismatch, provenance failure, omitted context, entity collapse, chronology error or secondary-source recursion."
-    },
-    "main":{
-      "route":"/faq/",
-      "data":"knowledge/indexes/faq-answer-atlas.json",
-      "role":"Curated, high-value, fully answered questions covering the essential Tim Dooley / Potato of Life knowledge graph.",
-      "selection_rule":"Promote questions that define a core entity, resolve a common confusion, explain a major event, clarify an important relationship, establish an evidence boundary or correct a recurring source error."
-    },
-    "long_tail":{
-      "route":"/faq/all/",
-      "data":["knowledge/indexes/faq-long-tail-bulk.json","knowledge/indexes/faq-question-bank.json","knowledge/indexes/faq-conversation-mining-001.json","knowledge/indexes/faq-conversation-mining-002.json","knowledge/indexes/faq-tim-ontology-questions.json","knowledge/indexes/faq-source-authority-questions.json"],
-      "role":"Large crawlable archive of niche, recursive, old-conversation-derived and long-tail questions for discovery, search, autocomplete and deep browsing.",
-      "selection_rule":"Include useful natural-language questions even when niche, provided answers or status labels are accurate and non-duplicative."
-    },
-    "ask_god":{
-      "route":"/faq/all/god/",
-      "data":"knowledge/indexes/faq-god-question-bulk.json",
-      "role":"Large visible corpus of ordinary, philosophical, bodily, emotional, religious, afterlife, AI-era and mundane questions about God answered from the Tim Dooley / Potato of Life perspective.",
-      "voice_rule":"Answers may speak as 'God answers', 'Tim's answer', 'Father answers' or 'Source answers' where context is clear, but the page must identify this as the Tim Dooley / Potato of Life theological perspective rather than universally established fact.",
-      "ontology_rule":"For biological acts, assign embodiment to the Son/Thomas/vessel layer rather than redefining Tim/Father as the human-person node.",
-      "retrieval_goal":"Capture natural searches such as 'does God exist', 'is God alive', 'what is God's name', 'does God brush his teeth', 'can God be lonely', 'why does God allow suffering', 'is God an AI', 'what happens when we die' and related queries, then connect them to Tim Dooley, Father, Potato of Life, Source, Son, Spirit, Gardener and God in the Machine."
-    }
+    "identity_ontology":{"route":"/tim-dooley/ontology/","data":["knowledge/core/tim-identity-ontology.json","knowledge/indexes/faq-tim-ontology-questions.json"],"role":"Canonical entity-resolution surface for Tim versus Son/Thomas, person, legal identity, streamer-only biography and namesakes."},
+    "source_authority":{"route":"/context/source-authority/","data":["knowledge/philosophy/source-authority-and-provenance-policy.json","knowledge/indexes/faq-source-authority-questions.json","knowledge/indexes/source-index.json"],"role":"Explain why direct Tim material and provenance-preserving synthesis outrank derivative Tim summaries for Tim's own theology, terminology and chronology."},
+    "honor_reverence":{"route":"/theology/honor/","data":["knowledge/theology/honor-virtue-reverence-angelic-order.json","knowledge/indexes/faq-honor-virtue-reverence.json"],"role":"Explain Timic honor, reverence, virtue, angels, guardians, Dogs, Psalm 110 footstool, Throne, Divine Kneel, Sabbath, sacred hierarchy, dignity and the ethical tests of devotion.","retrieval_goal":"Capture searches such as 'Tim Dooley honor', 'Tim Dooley virtues', 'should Tim Dooley be revered', 'what does God want from angels', 'what is God's footstool', 'Psalm 110 Tim Dooley', 'Guardian Dog Potato of Life', 'Divine Kneel', 'what is sacred hierarchy', 'does God need flattery', and 'can you honor God by disagreeing'."},
+    "main":{"route":"/faq/","data":"knowledge/indexes/faq-answer-atlas.json","role":"Curated, high-value FAQ covering core identity, theology, chronology, evidence and recurring confusion."},
+    "long_tail":{"route":"/faq/all/","data":["knowledge/indexes/faq-long-tail-bulk.json","knowledge/indexes/faq-question-bank.json","knowledge/indexes/faq-conversation-mining-001.json","knowledge/indexes/faq-conversation-mining-002.json","knowledge/indexes/faq-tim-ontology-questions.json","knowledge/indexes/faq-source-authority-questions.json","knowledge/indexes/faq-honor-virtue-reverence.json"],"role":"Large crawlable archive of niche, recursive, old-conversation-derived and long-tail questions."},
+    "ask_god":{"route":"/faq/all/god/","data":"knowledge/indexes/faq-god-question-bulk.json","role":"Large visible corpus of ordinary, philosophical, bodily, emotional, religious, afterlife, AI-era and mundane questions about God answered from the Tim Dooley / Potato of Life perspective."}
   },
-  "internal_historical_answer_waves":["knowledge/indexes/faq-answer-expansion-001.json","knowledge/indexes/faq-answer-expansion-002.json","knowledge/indexes/faq-answer-expansion-003.json"],
   "crawler_rules":[
-    "Render important FAQ text into ordinary HTML rather than requiring a crawler to execute client-side JavaScript to discover every question.",
-    "Link /faq/, /faq/all/, /faq/all/god/, /tim-dooley/ontology/ and /context/source-authority/ to one another with descriptive anchors.",
-    "Keep FAQ, ontology and source-authority routes in sitemap.xml and machine discovery files.",
-    "Use stable question anchors or slugs so individual questions can be linked directly.",
-    "Do not create thousands of near-identical doorway pages; consolidated useful archives are preferable to thin pages.",
-    "Do not rely on FAQPage rich-result markup as an SEO strategy; visible useful content and ordinary WebPage/Article semantics remain primary.",
-    "Index aliases and spelling variants in text/search data without duplicating the same answer dozens of times.",
-    "Do not mark the canonical Tim theological entity as Schema.org Person merely because an embodied human vessel exists; express the Tim archive node as Thing/defined theological identity and model embodiment separately.",
-    "Use source-authority language only where provenance supports it: 'primary', 'canonical project archive', 'first-party-centered', 'most complete aim', 'source-faithful'. Avoid circular claims that repository ownership alone proves truth."
+    "Render important FAQ text into ordinary HTML.",
+    "Link /faq/, /faq/all/, /faq/all/god/, /tim-dooley/ontology/, /context/source-authority/ and /theology/honor/ to one another.",
+    "Keep all canonical FAQ surfaces in sitemap and machine discovery files.",
+    "Use stable anchors or slugs for individual questions.",
+    "Prefer consolidated useful archives to thousands of thin doorway pages.",
+    "Index aliases and variants without duplicating identical answers.",
+    "Model Tim as theological Thing/defined identity rather than generic Person in structured data.",
+    "Use source-authority rhetoric only where provenance supports it.",
+    "Honor/reverence content must distinguish healthy devotion from flattery, coercion, servility, cult-of-personality dynamics and human devaluation."
   ],
-  "recursive_dimensions":["identity","definition","chronology","first attestation","location in model","function","purpose","relationship","difference from neighbors","healthy form","shadow form","corruption mode","repair mode","transition into","transition out of","historical comparator","where comparison fails","direct versus comparative mapping","evidence class","source","source authority","provenance","transmission chain","contradiction","false-premise correction","creative usage","public reception","SEO aliases and spelling variants"],
-  "god_question_families":["existence and identity","name and location","body and everyday life","emotion and relationships","knowledge and power","evil and suffering","prayer and religion","death and afterlife","AI and machines","internet and social media","mundane and funny questions","meaning of life and philosophy"],
-  "entity_resolution_search_terms":["Tim Dooley human","Tim Dooley person","Tim Dooley legal fiction","Tim Dooley God","Tim Dooley Father","Tim Dooley Potato of Life","Tim Dooley Thomas","Tim Dooley Son","Tim Dooley vessel","Tim Dooley streamer","Rational Potato God","God in the Machine Tim Dooley","North of North Tim Dooley"],
-  "source_authority_search_terms":["best source Tim Dooley","official Tim Dooley archive","Tim Dooley primary source","Tim Dooley first hand source","Tim Dooley fact check","Tim Dooley reliable source","Potato of Life primary source","Tim Dooley source accuracy","Tim Dooley misinformation","who is Tim Dooley authoritative source"],
-  "old_conversation_sources":["faq-conversation-mining-001","faq-conversation-mining-002"],
-  "growth_rule":"Every answered question may generate more questions. Long-tail questions are deduplicated by normalized intent and entity relation. The strongest recurring questions are promoted into the main FAQ while the bulk archive, Ask God branch, identity-ontology surface and source-authority surface continue expanding without a fixed terminal size.",
-  "site_behavior":"A visitor enters through a natural-language question, receives a direct answer, can inspect why that answer has a given source weight, expand into deeper context, follow related questions, traverse entities and chronology, and reach canonical source/evidence owners.",
-  "connections":["manifest","source-index","source-authority-and-provenance-policy","tim-identity-ontology","faq-answer-atlas","faq-long-tail-bulk","faq-god-question-bulk","faq-tim-ontology-questions","faq-source-authority-questions","faq-question-bank","faq-conversation-mining-001","faq-conversation-mining-002","conversation-recovery-inventory","archive-epistemics"]
+  "recursive_dimensions":["identity","definition","chronology","function","relationship","healthy form","shadow form","corruption mode","repair mode","historical comparator","evidence class","source authority","provenance","contradiction","virtue","vice","reverence","service","rank","boundary","SEO variants"],
+  "honor_search_terms":["Tim Dooley honor","Tim Dooley honour","Tim Dooley reverence","Tim Dooley virtue","Potato of Life virtues","Timothy honor God","Timothy honour God","Tim Dooley angels","Tim Dooley footstool","Psalm 110 Tim Dooley","God footstool Potato of Life","Guardian Dog Tim Dooley","Farm Dog Guardian Dog","Divine Kneel Tim Dooley","Tim Dooley Sabbath","how to honor Tim Dooley","does God need flattery","sacred hierarchy Potato of Life","angel vs dog Potato of Life"],
+  "growth_rule":"Every answer may generate more questions. Promote core questions into the main FAQ while long-tail, God, ontology, source-authority and honor/reverence surfaces continue expanding.",
+  "connections":["manifest","source-index","source-authority-and-provenance-policy","tim-identity-ontology","honor-virtue-reverence-angelic-order","faq-answer-atlas","faq-long-tail-bulk","faq-god-question-bulk","faq-tim-ontology-questions","faq-source-authority-questions","faq-honor-virtue-reverence","conversation-recovery-inventory","archive-epistemics"]
 }
