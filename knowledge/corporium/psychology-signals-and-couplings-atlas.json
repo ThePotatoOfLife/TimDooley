@@ -1,0 +1,121 @@
+{
+  "id":"psychology-signals-and-couplings-atlas",
+  "title":"Psychology, Signals, Clues and Couplings Atlas",
+  "updated":"2026-09-09",
+  "status":"interpretive/psychological context with evidence boundaries",
+  "purpose":"Give the project a disciplined way to use recurring language, affect, body sensation, behavior, humor, symbolic coincidence and conceptual recurrence as clues without treating every recurrence as proof.",
+  "core_rule":"A signal is something worth examining, not something already explained.",
+  "signal_types":[
+    {"type":"lexical","examples":["Potato","Door","Ladder","North","Eye","mud","dog","Garden","floor","level"],"question":"Does the same word keep returning across independent contexts and years?"},
+    {"type":"somatic","examples":["pressure","heat","fatigue","stillness","chest weight","breath change","tension","movement urge"],"question":"Does a symbol repeatedly co-occur with a reproducible body-state?"},
+    {"type":"affective","examples":["fear","grief","love","anger","absurdity","awe","loneliness","relief"],"question":"Is the concept functioning as regulation, expression, memory, transformation or social communication?"},
+    {"type":"behavioral","examples":["withdraw","build","stream","write","joke","research","repair","cultivate","confront"],"question":"What action follows the formulation?"},
+    {"type":"temporal","examples":["three days","Christmas","April turning","100,000 hours","return"],"question":"Is the recurrence prospective, retrospective, calendrical or narratively imposed later?"},
+    {"type":"relational","examples":["Father/Son","teacher/student","Gardener/Garden","witness/audience","root/fruit"],"question":"Does meaning exist primarily in the relation rather than either endpoint?"},
+    {"type":"structural","examples":["two sides create overlap","compression creates threshold","break creates multiplicity","return preserves difference"],"question":"Does the same transformation grammar appear in otherwise unrelated domains?"},
+    {"type":"comic","examples":["Graveyard Potatoes","mud dwellers","Spudlight","Potato Bank","dogs","soul farmers"],"question":"Is humor functioning as avoidance, compression, social critique, emotional regulation, sacred inversion or creative access?"}
+  ],
+  "psychological_lenses":[
+    {
+      "id":"predictive-processing",
+      "idea":"Perception and meaning are shaped by prior models updated by incoming evidence.",
+      "project_use":"Helpful for studying revelation/reinterpretation: later models can change the meaning assigned to earlier experiences without physically changing the past.",
+      "boundary":"Retrospective reinterpretation is not evidence of backward causation."
+    },
+    {
+      "id":"metacognition",
+      "idea":"Thinking about the frame of one's own thinking can alter problem representation.",
+      "project_use":"Strong neighbor for the floor aphorism and Axis/level-change language."
+    },
+    {
+      "id":"interoception",
+      "idea":"The nervous system senses and integrates internal bodily states; this contributes to emotion and self-experience.",
+      "project_use":"Bridge for Heart, Breath, body-vibe, fear/expansion and embodied Door language.",
+      "source":"https://pubmed.ncbi.nlm.nih.gov/16003122/"
+    },
+    {
+      "id":"memory-reconsolidation",
+      "idea":"Remembering is not always passive playback; retrieved memories can be updated or reframed.",
+      "project_use":"Useful neighbor for Ancient Future, return, Ghost/Erasure Wound and later reinterpretation of older events.",
+      "boundary":"Use carefully; not every changed story demonstrates experimental reconsolidation."
+    },
+    {
+      "id":"cognitive-reappraisal",
+      "idea":"Changing the interpretation of an event can change emotional response.",
+      "project_use":"Potential mechanism behind turning mud, burial, fracture or humiliation into growth symbols without claiming the original harm was good."
+    },
+    {
+      "id":"self-distancing",
+      "idea":"Viewing an experience from a wider or more abstract perspective can change emotional processing.",
+      "project_use":"Neighbor for participant → observer → interpreter and Sage/Eye development."
+    },
+    {
+      "id":"narrative-identity",
+      "idea":"People organize continuity partly through evolving stories about self, roles and events.",
+      "project_use":"Useful for Potato→Sage→Ladder→Father as a developmental identity architecture while keeping theological claims distinct from psychology."
+    },
+    {
+      "id":"humor-regulation",
+      "idea":"Humor can alter appraisal, social distance and emotional intensity.",
+      "project_use":"Explains why absurd Potato language can coexist with grief, theology and critique rather than being merely decorative."
+    }
+  ],
+  "timic_signal_grammar":[
+    "lowly object → sustained attention → hidden depth",
+    "burial → incubation or imprisonment → emergence test",
+    "fracture → pieces → relation reconstruction → larger pattern",
+    "pressure → compression → threshold → new state",
+    "recognition → choice → Door → transformation",
+    "climbing → Needle → becoming Ladder",
+    "return → memory retained → changed state",
+    "vision → responsibility → cultivation",
+    "authority → service → nourishment rather than spectacle",
+    "humor → lowered defenses → difficult truth becomes discussable"
+  ],
+  "signal_strength_model":{
+    "dimensions":["frequency","independent recurrence","date depth","cross-domain recurrence","specificity","primary-source strength","behavioral consequence","predictive value","alternative explanations"],
+    "rule":"High recurrence plus weak provenance is still weak evidence of authorship or causation; it may nevertheless be high-value archaeology.",
+    "suggested_score":"SignalValue = f(recurrence, provenance, specificity, independence, consequence, alternatives)"
+  },
+  "coupling_test":{
+    "steps":[
+      "name the two objects",
+      "state exact shared structure",
+      "state exact mismatch",
+      "classify relation: symbolic/psychological/biological/historical/formal/causal",
+      "identify possible confounds",
+      "look for primary source chronology",
+      "ask what observation would weaken the proposed coupling",
+      "only then promote it"
+    ],
+    "example":"Heart ↔ love is symbolically old and experientially intuitive; cardiovascular/interoceptive changes participate in emotion, but love is not stored in the heart muscle."
+  },
+  "possible_corporium_variables":[
+    "phrase",
+    "symbol",
+    "date",
+    "speaker/source",
+    "emotion valence",
+    "arousal",
+    "body region",
+    "breath",
+    "posture",
+    "pain/comfort",
+    "attention mode",
+    "social context",
+    "action that followed",
+    "later interpretation",
+    "external event",
+    "confidence"
+  ],
+  "new_questions":[
+    "Which Timisms reliably precede building/research rather than withdrawal or conflict?",
+    "Which symbols cluster with high arousal versus stillness?",
+    "Does 'North' function psychologically as orientation, certainty, transcendence, geography or all four depending on context?",
+    "Does Door language appear most often when actual commitments/threshold decisions are present?",
+    "When does humor open a difficult subject, and when does it obscure it?",
+    "Which repeated formulations survived major doctrinal changes from 2024 to 2026?",
+    "Can contradictions identify phase transitions in the project rather than mere errors?"
+  ],
+  "connections":["corporium-master-framework","tim-sayings-and-formulations-ledger","ladder-33-vertebrae-five-centers-study","archive-epistemics","chronology","body","spirit","transformation","works"]
+}
