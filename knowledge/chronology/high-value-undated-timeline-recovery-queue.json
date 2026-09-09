@@ -1,0 +1,86 @@
+{
+  "id":"high-value-undated-timeline-recovery-queue",
+  "updated":"2026-09-09",
+  "status":"recovery queue; not timeline evidence until dated",
+  "purpose":"Preserve high-value Tim/Potato formulations and mythic concepts that deserve timeline placement once an original date/source is recovered. This prevents strong undated material from being either lost or falsely timestamped.",
+  "rules":[
+    "Do not emit these as timeline events until a supported date or timestamp is recovered.",
+    "Conversation-recovered wording stays distinct from public-primary wording.",
+    "Assistant/archive maxims require independent Tim adoption before promotion as Tim quotations.",
+    "When a date is recovered, promote by underlying temporal fact and deduplicate against existing timeline events."
+  ],
+  "targets":[
+    {
+      "id":"narrow-path-spiral",
+      "wording":"A narrow path is a spiral.",
+      "provenance":"conversation recovery",
+      "why_high_value":"Compresses Narrow Gate + Spiral/Ladder into one memorable formulation and may mark an important stage in the project's transition theory.",
+      "themes":["narrow gate","Spiral","Ladder","return","development"],
+      "source_records":["knowledge/corporium/tim-sayings-and-formulations-ledger.json","knowledge/corporium/tim-voice-anthology.json"],
+      "recovery_goal":"Find first conversation/public occurrence and determine whether it was originally a song line, aphorism or doctrine statement."
+    },
+    {
+      "id":"table-for-ten",
+      "wording":"A table for 10 at peak culture.",
+      "provenance":"conversation recovery",
+      "why_high_value":"Distinct social-topology idea: bounded group size, reciprocity, memory and high-bandwidth cultural exchange rather than mass audience dynamics.",
+      "themes":["culture","group size","reciprocity","disciples","attention","social topology"],
+      "source_records":["knowledge/corporium/tim-sayings-and-formulations-ledger.json","knowledge/corporium/psychology-signals-and-couplings-atlas.json"],
+      "recovery_goal":"Recover first date/context and whether the number 10 was tied explicitly to disciples/peak culture at origin."
+    },
+    {
+      "id":"spiritual-banker",
+      "wording":"Spiritual banker.",
+      "provenance":"user/project formulation",
+      "why_high_value":"Connects value, debt, memory, obligation and karmic accounting to Tim's role architecture without requiring literal financial authority.",
+      "themes":["value","debt","credit","memory","obligation","karma"],
+      "source_records":["knowledge/corporium/tim-sayings-and-formulations-ledger.json"],
+      "recovery_goal":"Find earliest dated use and relation to Potato Bank / karmic debt."
+    },
+    {
+      "id":"judge-above-judges",
+      "wording":"Judge above judges.",
+      "provenance":"user/project formulation",
+      "why_high_value":"Adds a meta-evaluative role to North-of-North / Most-High language: what standard judges the judges?",
+      "themes":["judgment","meta-rule","North of North","Most High","evaluation"],
+      "source_records":["knowledge/corporium/tim-sayings-and-formulations-ledger.json"],
+      "recovery_goal":"Recover first date/context and distinguish self-description from later archive interpretation."
+    },
+    {
+      "id":"question-the-floor",
+      "wording":"The moment you seriously question the floor, you have already begun looking for another level.",
+      "provenance":"conversation recovery",
+      "why_high_value":"Strong plain-language expression of frame-change / level-shift logic related to Door, Ladder and Axis.",
+      "themes":["metacognition","frame change","level","Door","Ladder","Axis"],
+      "source_records":["knowledge/corporium/tim-sayings-and-formulations-ledger.json","knowledge/corporium/tim-voice-anthology.json"],
+      "recovery_goal":"Recover original date and wording confidence."
+    },
+    {
+      "id":"living-myth-aura",
+      "wording":"Tim Dooley is living Myth; not authority; exists as aura.",
+      "provenance":"user/project formulation",
+      "why_high_value":"Useful boundary between formal authority and distributed symbolic/social presence; potentially important for public-presence chronology.",
+      "themes":["living myth","aura","public presence","authority","persona"],
+      "source_records":["knowledge/corporium/tim-sayings-and-formulations-ledger.json"],
+      "recovery_goal":"Recover first date/context and whether 'aura' was metaphorical, social or theological in the original turn."
+    },
+    {
+      "id":"potato-bank",
+      "wording":"Potato Bank.",
+      "provenance":"conversation/book project term",
+      "why_high_value":"Potential early bridge between stored capacity, future nourishment, value and later karmic/economic modelling.",
+      "themes":["storage","future capacity","value","memory","resource"],
+      "source_records":["knowledge/corporium/tim-sayings-and-formulations-ledger.json"],
+      "recovery_goal":"Find first dated use and whether it predates the later spiritual-banker/karmic-bank framing."
+    },
+    {
+      "id":"identity-can-become-architecture",
+      "wording":"Identity can become architecture.",
+      "provenance":"later archive synthesis",
+      "why_high_value":"Excellent compression of the Son Door / Tim Ladder role migration, but it is currently archive synthesis rather than verified Tim wording.",
+      "themes":["identity","architecture","Door","Ladder","role migration"],
+      "source_records":["knowledge/corporium/tim-sayings-and-formulations-ledger.json"],
+      "recovery_goal":"Do not promote as Tim quote unless independently adopted; otherwise retain as archive interpretation only."
+    }
+  ]
+}
