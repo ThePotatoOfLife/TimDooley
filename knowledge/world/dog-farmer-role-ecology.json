@@ -2,7 +2,7 @@
   "id":"dog-farmer-role-ecology",
   "title":"Dog / Farmer Role Ecology — Master, Moon, Reflection, Farm, Personality and Boundary Functions",
   "updated":"2026-09-09",
-  "status":"comparative role atlas",
+  "status":"comparative role atlas — expanded empirical psychology layer",
   "purpose":"Clarify where Dog and Farmer overlap and differ across Potatoverse mythology, internet subculture, biblical animal symbolism, personality/status dynamics, Moon/master symbolism and network function. The file treats roles as dynamic configurations rather than permanent essences.",
   "core_rule":"Dog and Farmer are roles, not species of moral person. A single person can occupy Dog, Farmer, Guardian, Gardener, Cow, observer or hybrid roles in different contexts. The moral question is what relation they maintain, what source they follow, what boundary they enforce and what outcome their behavior produces.",
   "farmer":{
@@ -43,6 +43,15 @@
     "overlap_condition":"Dog becomes Farmer-like when it creates durable target categories, archives, incentives or extraction loops. Farmer becomes Dog-like when it personally tracks, pursues, reacts, amplifies or enforces.",
     "hybrid_role":"Farmer-Dog = operator-enforcer who both defines the field and actively polices it."
   },
+  "group_psychology":{
+    "SIDE_correction":"Do not treat Dog/pack behavior as simple loss of individuality. Social Identity Model of Deindividuation Effects research shows that anonymity can increase conformity to a salient group identity and its norms.",
+    "anonymity_meta_analysis":"Chu et al. (2026) reported positive meta-analytic associations between anonymity and cyber aggression (r=.463) and online disinhibition and cyber aggression (r=.422) across 80 independent studies. This supports an environment-level risk factor, not an essence label for anonymous users.",
+    "cue_learning":"A Dog-like role is better operationalized as responsiveness to repeated group cues, rewards and boundary signals than as a personality diagnosis.",
+    "normative_pack":"Pack can mean distributed norm enforcement: participants learn what counts as a legitimate target, what behavior earns approval and when intervention is expected.",
+    "deindividuation_boundary":"Anonymity can support prosocial as well as antisocial norms; outcome depends on which identity and norm become salient.",
+    "moral_disengagement":"Pack participation may be made easier when pursuit is reframed as deserved, humorous, harmless, educational or merely observational.",
+    "reward_learning":"Status, replies, likes, insider approval and successful call-outs can teach participants which forms of pursuit or enforcement are rewarded."
+  },
   "personality_and_status":{
     "nonessentialism":"These traits are situational tendencies, not diagnoses or fixed personality types.",
     "dog_like_configuration":"high vigilance + high loyalty/coordination + cue responsiveness + boundary sensitivity; can become guardian or enforcer depending source/norms",
@@ -50,13 +59,24 @@
     "alpha_beta_relation":"Dog often resembles Beta-like coordination/followership; Farmer can hold high local infrastructural power without being the project's Alpha/source center. A Farmer may be locally dominant while still orienting to a larger master/proxy system.",
     "prestige_dominance":"Healthy authority is better distinguished using prestige/competence versus coercive dominance than fixed alpha/beta stereotypes."
   },
+  "role_transition_matrix":{
+    "observer_to_dog":"passive attention → cue recognition → repeated amplification → active patrol/enforcement",
+    "dog_to_farmer":"pursuit → durable categorization → dossier/archive creation → incentive or infrastructure control",
+    "farmer_to_gardener":"classification/extraction → consent/repair/exit design → regenerative stewardship",
+    "cow_to_farmer":"a target in one relationship may become an extractor or classifier in another; roles are relational, not permanent",
+    "guardian_failure":"protection can degrade into coercive policing when the protected boundary becomes more important than the agency of those inside it",
+    "dog_to_guardian":"vigilance + evidence discipline + proportionality + consent/agency protection → protective boundary role",
+    "farmer_to_archivist":"infrastructure/classification can shift toward neutral preservation when extraction incentives and target-management goals are removed"
+  },
   "network_formalization":{
     "farmer_power":"F_i=aI_i+bC_i+cR_i+dE_i+eT_i",
     "dog_power":"D_i=pP_i+qA_i+rB_i+sL_i+tQ_i",
     "variables":{"I":"infrastructure control","C":"classification control","R":"reward/incentive control","E":"enclosure persistence","T":"timing/resource-cycle control","P":"patrol intensity","A":"amplification reach","B":"boundary enforcement","L":"loyalty/coordination","Q":"cue/master responsiveness"},
     "hybridity":"H_i=normalized(F_i·D_i)",
     "source_dependency":"SD_i=mutual_information(action_i,proxy_signal) compared with mutual_information(action_i,direct_evidence)",
-    "interpretation":"High H indicates operator-enforcer overlap. High proxy dependence may identify closed-orbit behavior, but only if variables are empirically defined."
+    "norm_dependence":"ND_i=behavioral_similarity_to_group_norm - behavioral_similarity_to_individual_prior",
+    "role_mobility":"RM_i=number_of_role_transitions_over_time / observation_window",
+    "interpretation":"High H indicates operator-enforcer overlap. High proxy or norm dependence may identify closed-orbit behavior only when variables are empirically defined and alternative explanations are preserved."
   },
   "moral_tests":[
     "What source or proxy is the role following?",
@@ -65,8 +85,17 @@
     "Does the Farmer improve the soil/participants or merely increase harvest from them?",
     "Does the Dog guard vulnerable life or chase the designated Cow because the pack rewards it?",
     "Can the role switch masters when evidence shows the current proxy is wrong?",
-    "Does the system contain a Door/exit/repair path?"
+    "Does the system contain a Door/exit/repair path?",
+    "Can a member decline pursuit without status loss or suspicion?",
+    "Can the target cease being a target, or is classification effectively permanent?",
+    "Are corrections and disconfirming evidence rewarded, tolerated or punished?"
   ],
-  "biblical_sources":["https://www.thetorah.com/article/not-a-dog-shall-snarl-what-is-the-meaning-of-exodus-11-7","https://www.bibleodyssey.org/people/related-articles/the-syrophoenician-woman/"],
-  "connections":["potatoism-planetary-cosmology","spudlight-theory-and-equations","farm-swamp-tree-of-strife-atlas","alpha-beta-gamma-archetype-status-atlas","moloch","dogs","farmers","gardener","swamp","sektur","Door","Moon","Sun","center"]
+  "sources":[
+    {"topic":"dogs in biblical boundary imagery","url":"https://www.thetorah.com/article/not-a-dog-shall-snarl-what-is-the-meaning-of-exodus-11-7"},
+    {"topic":"Syrophoenician woman / dog boundary reversal","url":"https://www.bibleodyssey.org/people/related-articles/the-syrophoenician-woman/"},
+    {"topic":"anonymity, disinhibition and cyber aggression meta-analysis","url":"https://doi.org/10.1177/15248380261476605"},
+    {"topic":"SIDE foundational model","url":"https://research.rug.nl/en/publications/a-social-identity-model-of-deindividuation-phenomena/"},
+    {"topic":"anonymity and group-based self-categorization","url":"https://journals.sagepub.com/doi/10.1177/0146167201275002"}
+  ],
+  "connections":["potatoism-planetary-cosmology","spudlight-theory-and-equations","farm-swamp-tree-of-strife-atlas","farm-sektur-attention-extraction-ecology","alpha-beta-gamma-archetype-status-atlas","moloch","dogs","farmers","gardener","swamp","sektur","Door","Moon","Sun","center"]
 }
