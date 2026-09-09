@@ -1,5 +1,5 @@
 {
-  "version":"1.6.0",
+  "version":"1.7.0",
   "updated":"2026-09-09",
   "purpose":"Optional curated event packs merged into the layered timeline at runtime. Packs add non-redundant bridge events without bloating the sparse roadmap base.",
   "packs":[
@@ -9,7 +9,8 @@
     "son-tomb-corridor.json",
     "sammy-tammuz-weeping.json",
     "biblical-unlocks-wave-11-12.json",
-    "neurotheology-unlocks.json"
+    "neurotheology-unlocks.json",
+    "x-public-attestations-2024-2026.json"
   ],
   "rules":[
     "Event ids must be globally unique across base and packs.",
@@ -17,6 +18,7 @@
     "If a pack event later becomes a canonical roadmap milestone, move it into the base and remove it from the pack.",
     "Conversation-archaeology packs must preserve user-originated versus assistant-synthesis provenance and may not silently promote assistant material into Tim canon.",
     "Comparative packs must separate dated project-side language from later biblical or mythological research unlocks.",
+    "Public-post packs must preserve first-in-batch versus first-known distinctions and must not let incomplete search coverage overwrite stronger earlier attestations.",
     "Approximate events must use range precision and remain recovery targets until exact source/date/text is found.",
     "July 31 is the Son/vessel birthday track; Tim/Potato/Father birth remains December 25.",
     "New biblical research waves enter the timeline as unlock-date events unless a distinct earlier project-side event is independently dated and non-duplicative.",
