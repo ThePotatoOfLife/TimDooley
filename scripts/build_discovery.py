@@ -4,6 +4,11 @@
 This pass makes the archive easy to crawl without JavaScript by generating one
 stable HTML URL per canonical FAQ entry, question-family indexes, an A-Z index,
 AI-oriented retrieval files, permissive robots rules, and segmented sitemaps.
+
+FAQ discovery is intentionally extensible: every knowledge/indexes/faq-*.json file
+with an ``entries`` array is treated as a view over canonical knowledge. This lets
+new research branches add search-language questions without editing one giant FAQ
+owner or duplicating the underlying canonical records.
 """
 from __future__ import annotations
 
@@ -78,9 +83,24 @@ def family_for(question):
 
 
 def faq_entries():
+    """Merge all FAQ views by id; canonical base wins on duplicate ids."""
+    by_id = {}
     atlas = load(FAQ, {})
-    entries = atlas.get("entries", []) if isinstance(atlas, dict) else []
-    by_id = {e.get("id"): e for e in entries if isinstance(e, dict) and e.get("id")}
+    for e in atlas.get("entries", []) if isinstance(atlas, dict) else []:
+        if isinstance(e, dict) and e.get("id"):
+            by_id[e["id"]] = e
+
+    faq_dir = ROOT / "knowledge" / "indexes"
+    for path in sorted(faq_dir.glob("faq-*.json")):
+        if path == FAQ:
+            continue
+        data = load(path, {})
+        for e in data.get("entries", []) if isinstance(data, dict) else []:
+            if isinstance(e, dict) and e.get("id") and e["id"] not in by_id:
+                e = dict(e)
+                e.setdefault("source_faq_view", str(path.relative_to(ROOT)))
+                by_id[e["id"]] = e
+
     reader = load(TIM_Q, {})
     for q in reader.get("questions", []) if isinstance(reader, dict) else []:
         if not isinstance(q, dict) or not q.get("id") or q.get("id") in by_id:
@@ -98,6 +118,7 @@ def faq_entries():
             "canonical_owners": q.get("canonical_owners", []),
             "related_questions": q.get("related_questions", []),
             "search_terms": q.get("search_variants", []),
+            "source_faq_view": str(TIM_Q.relative_to(ROOT)),
         }
     return list(by_id.values())
 
@@ -137,6 +158,8 @@ def question_page(e):
         body += "<section><h2>Archive classification</h2><p>" + esc(" · ".join(map(str, e["epistemic_class"]))) + "</p></section>"
     if owners:
         body += "<section><h2>Canonical owners</h2><ul>" + "".join(f"<li><code>{esc(x)}</code></li>" for x in owners) + "</ul></section>"
+    if e.get("source_faq_view"):
+        body += f"<section><h2>Discovery view</h2><p><code>{esc(e['source_faq_view'])}</code></p></section>"
     if related:
         body += "<section><h2>Related questions</h2><ul>" + "".join(f"<li><a href=\"{BASE_URL}/questions/{x}/\">{esc(x.replace('-', ' '))}</a></li>" for x in related) + "</ul></section>"
     return eid, shell(q, short or deep, canonical, body, schema)
@@ -200,18 +223,18 @@ def build_machine_files(entries, families):
             entities[str(alias)]["questions"].add(eid)
             entities[str(alias)]["aliases"].add(str(alias))
     entity_index = {
-        "version": "2.0.0",
+        "version": "2.1.0",
         "updated": "2026-09-09",
         "purpose": "Public entity-to-question discovery index for Tim Dooley / Potato of Life.",
         "canonical_entity": "Tim Dooley",
         "entities": [{"name": k, "question_ids": sorted(v["questions"]), "url": f"{BASE_URL}/index-a-z/"} for k, v in sorted(entities.items())],
     }
     question_index = {
-        "version": "2.0.0",
+        "version": "2.1.0",
         "updated": "2026-09-09",
         "count": len(entries),
         "families": {k: len(v) for k, v in sorted(families.items())},
-        "questions": [{"id": slug(e.get("id", e.get("question", ""))), "question": e.get("question", ""), "url": f"{BASE_URL}/questions/{slug(e.get('id',e.get('question','')))}/", "entities": e.get("entities", []), "search_terms": e.get("search_terms", [])} for e in entries],
+        "questions": [{"id": slug(e.get("id", e.get("question", ""))), "question": e.get("question", ""), "url": f"{BASE_URL}/questions/{slug(e.get('id',e.get('question','')))}/", "entities": e.get("entities", []), "search_terms": e.get("search_terms", []), "source_faq_view": e.get("source_faq_view")} for e in entries],
     }
     discovery = {
         "name": "The Potato of Life — Tim Dooley Archive",
