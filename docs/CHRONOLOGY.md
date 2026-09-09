@@ -1,99 +1,203 @@
-# Tim Dooley / Potatoverse Chronology
+# Chronology — How the Tim Dooley / Potato of Life Archive Handles Time
 
-The project keeps three clocks separate: **mythic chronology**, **historical chronology**, and **project chronology**. They can be related, but one must never be silently substituted for another.
+This document is a **reading and ownership guide**, not a second hand-maintained timeline.
 
-## I. Mythic chronology
+The canonical public chronology is generated from:
 
-### Christmas / North Pole origin
+- `data/timeline-events.json` — sparse canonical event layer, actors, lenses and evidence classes;
+- `data/timeline-event-packs/index.json` — curated overlay packs actually loaded by the timeline;
+- `data/timeline-source-registry.json` — source ownership and promotion policy;
+- `knowledge/chronology/developmental-genealogy.json` — deep explanation of how later structures reorganize earlier material;
+- specialist chronology/evidence ledgers for dense public posts, body/neurotheology, biblical source direction and unresolved recovery targets.
 
-Within the Potatoverse canon, Tim Dooley's mythic birth is placed on December 25 at the same symbolic moment as the Son's death/crucifixion at the North Pole.
+The public reader is `/chronology/`, and the same structured timeline is exposed in the main archive chronology branch. **Do not recreate the event list in this Markdown file.**
 
-### The Son
+## Why chronology is difficult in this project
 
-The Son is associated with Thomas, Twin, Lion, Jesus Christ, Son of Man and Lion of Judah within the mythology. The crucifixion motif becomes a transformation: the Son becomes the Ladder to Heaven and the Door/Vessel.
+The archive contains several kinds of time at once. A later theological interpretation can refer to an earlier life event; a public phrase can become explicit months after its internal precursor; a research comparison can be discovered long after the project-side event; and a creative artifact can preserve an idea before it becomes doctrine.
 
-### Tim Dooley as mythic/memetic figure
+Chronology therefore needs more than a date. Every useful temporal claim should answer:
 
-The Tim Dooley identity emerges within the framework as a living mythic/memetic figure rather than simply a conventional biography. This is a statement about the project's mythology, not an empirical claim about supernatural identity.
+1. What happened or was said?
+2. Which subject/actor does it belong to?
+3. How exact is the date?
+4. What evidence class supports it?
+5. Was this meaning present **at the time**, or added later?
+6. Where is the canonical source/owner?
+7. Does another event represent a later reinterpretation, formalization or research unlock?
 
-### North Axis
+## The clocks
 
-North becomes the organizing direction: North Pole, North Gate, North of North, throne, mountain, ladder and Tree of Life form a recurring vertical architecture.
+### 1. Lived / project-event chronology
 
-### Potatoism
+This is the chronology of reported life events, public statements, creative works and project developments.
 
-The potato becomes the central life metaphor: buried in mud, rooting below, sprouting upward and ultimately bearing fruit. The metaphor is deliberately ordinary: transformation begins in matter that looks unremarkable.
+Examples of event types include:
 
-### Red / Blue Potato
+- Son-side biography and the 2011 Tree ordeal;
+- the 2019–2020 death/threshold corridor;
+- Tim's project-canonical Potato birth on December 25, 2020;
+- the 2024 Great Book/Sage phase;
+- April 2025 Axis/Spiral/Needle/Ladder/Father development;
+- later Father, North, Door, public-witness and stewardship language;
+- repository formalizations in 2026.
 
-The polarity develops as a way to describe creative expansion and careful memory, upward movement and rootward movement, without reducing either side to pure good or evil.
+The correct owner for the full developmental explanation is `knowledge/chronology/developmental-genealogy.json`, not this document.
 
-### 100,000-hour spiral
+### 2. Public-attestation chronology
 
-A recurring numerical/memetic symbol for long-duration transformation and persistence.
+This clock asks a narrower question: **when can the archive show that a phrase or relation was publicly present?**
 
-## II. Historical chronology
+Important distinctions:
 
-This is not a complete European history. It is the beginning of the empirical backbone the project will eventually connect to the graph.
+- first in one supplied batch is not automatically first known across the archive;
+- a dated compilation can establish wording/date within its scope even when the original status URL remains unrecovered;
+- repeated declarations usually remain in specialist occurrence ledgers unless repetition itself is historically significant;
+- a primary post establishes what was said, not the external truth of the claim.
 
-### 1950 — Schuman Declaration
+The main public-post owners include:
 
-The declaration proposed pooling French and German coal and steel production under a common authority, establishing an important conceptual predecessor to European integration.
+- `data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json`;
+- `data/tim-dooley-public-theology-timeline-2025-2026.json`;
+- curated events in `data/timeline-event-packs/x-public-attestations-2024-2026.json`.
 
-### 1951 — European Coal and Steel Community
+### 3. Mythic / theological chronology
 
-France, West Germany, Italy, Belgium, the Netherlands and Luxembourg created the ECSC, placing coal and steel production under common institutions.
+The project can assign mythic meaning to dates and transformations: Son, Potato, Door, Tree, North, Father, Heaven, death, birth, return, Ladder and related structures.
 
-### 1957 — Treaties of Rome
+Those meanings are preserved as project canon or later interpretation depending on their source. A mythic chronology may be central to the Potatoverse without becoming an empirical chronology of supernatural events.
 
-The European Economic Community and Euratom were established, widening integration beyond coal and steel.
+### 4. Interpretive chronology
 
-### 1973 — First enlargement
+This clock records **when a later meaning was attached to an earlier event**.
 
-Denmark, Ireland and the United Kingdom joined the European Communities.
+For example, an event can occur in 2011 while an Odin/Yggdrasil or biblical comparison is made much later. The archive should retain both dates rather than silently moving the later comparison backward.
 
-### 1993 — Single market
+The developmental genealogy and inference/source ledgers are the main owners of this distinction.
 
-The EU single market entered into force, organizing a large internal economic area around the four freedoms: goods, services, people and capital.
+### 5. Research-unlock chronology
 
-### 1999 — Euro launched as a currency
+A research unlock is the date the archive explicitly discovered, tested or formalized a comparison.
 
-The euro was introduced for accounting/financial purposes in 1999; euro banknotes and coins entered circulation in 2002.
+This is especially important for biblical research. The timeline distinguishes:
 
-### 2004 — Major enlargement
+- `scripture-at-time` — biblical/Jewish/Christian language was already present in the source event;
+- `biblical-parallel` — a later comparison is attached to an earlier event;
+- `biblical-unlock` — the later date when that comparison was explicitly researched/formalized.
 
-Ten countries joined the EU, transforming the geographic and economic scale of the union.
+An unlock belongs to the project/research track. It must not be mistaken for evidence that the earlier person already intended the later interpretation.
 
-### 2020 — UK leaves the EU
+### 6. Formalization chronology
 
-The United Kingdom left the EU on 31 January 2020. The relationship subsequently became governed by the Withdrawal Agreement and the Trade and Cooperation Agreement.
+Some ideas exist first as prose, image, metaphor or repeated relation and only later become equations, schemas, graphs or named theories.
 
-### 2022 onward — European energy shock
+The formalization date belongs to the formal model. It should not be backdated to the first symbolic ancestor unless the earlier source actually contains the equation or formal definition.
 
-Russia's full-scale invasion of Ukraine fundamentally altered Europe's energy-security environment, accelerating diversification, infrastructure investment and energy-policy coordination.
+Science uses its own equation-lineage and recovery records for this reason.
 
-## III. Project chronology
+### 7. External historical chronology
 
-### Phase 1 — Potatoverse
+European integration, wars, institutions, economic events, religious history and other world chronology belong to their empirical domain owners. They may be related to project events, but they should not be maintained as a miniature second history inside the Tim chronology.
 
-The project develops the Potato of Life, Father/Son/Door/Ladder architecture, North Axis, Red/Blue Potato polarity and related symbols.
+For North/Europe/world work, follow the relevant country, economic, geopolitical, historical and source records instead.
 
-### Phase 2 — Kingdom Atlas
+## Actor tracks
 
-The fundamental unit becomes the relationship rather than the isolated entity. Fourteen relationship families are formalized.
+The layered timeline currently separates four actor tracks:
 
-### Phase 3 — North Programme
+- **Son** — human/vessel chronology, embodiment, ordeal, death/threshold and return material;
+- **Tim** — Potato, Sage, Ladder/Axis, Father, North and later Tim-side development;
+- **Shared / transition** — explicit Son↔Tim relational events and hand-off points;
+- **Project / research** — later archive formalization, research unlocks and source work.
 
-The symbolic geography is connected to a serious European research programme focused on fiscal sustainability, industrial capacity, infrastructure, energy, technology and strategic dependencies.
+This prevents the archive from solving apparent contradictions by forcing every event onto one undifferentiated subject.
 
-### Phase 4 — Economic Graph
+## The identity-safe developmental rule
 
-The project moves from prose toward structured nodes, relationships and provenance.
+The mature archive currently uses the following important distinction:
 
-### Phase 5 — Living website
+`Son embodied chronology → death/personhood-collapse corridor → Door/Vessel relation → Tim/Potato birth → Sage → Needle/Ladder/Axis → Father → North/source-center`
 
-The GitHub repository gains an HTML/CSS/JavaScript public interface so the archive can be navigated as an atlas rather than read only as Markdown.
+This is a **project developmental model**, not a claim that every intermediate label was contemporaneously used on the date to which the mature model relates it.
 
-## Chronology rule
+For the reader-oriented version, use `knowledge/journey/tim-dooley-journey.json`. For the detailed source-aware version, use `knowledge/chronology/developmental-genealogy.json`.
 
-When a new event is added, specify which clock it belongs to. A mythic event can have symbolic relationships to historical events, but those relationships must be labelled as interpretation rather than chronology.
+## Source direction
+
+Every comparison should state its direction whenever confusion is possible.
+
+Good examples:
+
+- `event first; biblical comparison later`;
+- `phrase explicit in public post; architecture formalized afterward`;
+- `book metaphor first; mathematical operator added in 2026`;
+- `research discovery in September 2026; older event remains dated to its original occurrence`.
+
+Bad practice is to write the final interpretation directly into the old date without preserving when that interpretation appeared.
+
+## Precision
+
+Use only the precision actually supported:
+
+- second;
+- minute;
+- hour;
+- date;
+- month;
+- year;
+- range.
+
+Do not create midnight timestamps to make an uncertain date look exact. Range events should remain ranges. If a source only establishes a year, keep year precision.
+
+## First-attestation rule
+
+“First” always needs scope.
+
+Prefer formulations such as:
+
+- first exact instance in the supplied compilation;
+- earliest recovered public attestation so far;
+- earliest known repository source;
+- earliest primary source located in this research pass.
+
+Do not turn absence from one search index into proof that no earlier occurrence exists.
+
+## Contradictions
+
+When two chronology statements disagree, test these before declaring an error:
+
+1. **subject** — Son, Tim, shared relation or project research;
+2. **date** — was the role still developing?;
+3. **scale** — personal, symbolic, theological, public or institutional;
+4. **source direction** — event first or comparison first?;
+5. **epistemic layer** — canon, testimony, primary post, later interpretation or archive formalization;
+6. **precision** — exact date versus recovered range;
+7. **meaning change** — did the same word acquire a different function later?
+
+If a contradiction remains after those checks, preserve it explicitly instead of harmonizing it away.
+
+## Canonical routes
+
+| Question | Owner |
+|---|---|
+| What is the live chronological sequence? | `data/timeline-events.json` + indexed event packs |
+| How did the whole framework develop? | `knowledge/chronology/developmental-genealogy.json` |
+| How do Son and Tim remain distinct through the journey? | `knowledge/journey/tim-dooley-journey.json` |
+| What was publicly said and when? | public theology/X evidence ledgers |
+| Which Bible motifs were already present versus found later? | reverse biblical timeline + occurrence-level Bible index |
+| When did body/neurotheology mappings appear? | `knowledge/chronology/neurotheology-attestation-ledger.json` |
+| What source class supports a claim? | `knowledge/indexes/source-index.json` |
+| What event fields/lenses are allowed? | `docs/TIMELINE-EVENT-STANDARD.md` |
+
+## Maintenance rule
+
+When new dated material is recovered:
+
+1. put the primary evidence in its proper source/evidence owner;
+2. add or correct the specialist chronology if needed;
+3. promote only trajectory-changing events to the global timeline;
+4. connect later interpretation through source direction or related-event IDs;
+5. update the canonical owner rather than creating another hand-maintained chronology page;
+6. validate the base timeline and all indexed event packs.
+
+The chronology is one temporal graph with multiple evidence-aware views—not a collection of competing timelines.
