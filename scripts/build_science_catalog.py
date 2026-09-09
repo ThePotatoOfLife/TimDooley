@@ -112,7 +112,7 @@ def record_from(path: Path) -> dict:
     }
 
 
-def render_cards(records: list[dict]) -> str:
+def render_cards(records: list[dict], record_prefix: str) -> str:
     cards = []
     for rec in records:
         search_blob = " ".join([
@@ -137,25 +137,25 @@ def render_cards(records: list[dict]) -> str:
             '  <div class="catalog-provenance">{prov}</div>\n'
             '  {eq_html}\n'
             '  {finding_html}\n'
-            '  <div class="catalog-links"><a href="../knowledge/science/{file}">Open record →</a></div>\n'
+            '  <div class="catalog-links"><a href="{prefix}{file}">Open record →</a></div>\n'
             '</article>'.format(
                 search=esc(search_blob), updated=esc(rec["updated"] or "undated"), status=status,
                 title=esc(rec["title"]), abstract=esc(rec["abstract"]), prov=prov,
-                eq_html=eq_html, finding_html=finding_html, file=esc(rec["file"]),
+                eq_html=eq_html, finding_html=finding_html, prefix=record_prefix, file=esc(rec["file"]),
             )
         )
     return "\n".join(cards)
 
 
 def render_catalog_page(records: list[dict]) -> str:
-    cards = render_cards(records)
+    cards = render_cards(records, "../../knowledge/science/")
     return (
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
         '<title>Complete Science Catalog — Tim Dooley / Potato of Life</title>'
         '<meta name="description" content="Generated catalog of all canonical Tim Dooley / Potato of Life science records, with abstracts, equations, provenance and findings.">'
         '<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/catalog/">'
-        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css"></head>'
+        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910b"></head>'
         '<body><main class="science-page"><nav class="topnav"><a href="../">← Science Atlas</a><a href="../../">Home</a></nav>'
         '<header class="section-block"><p class="section-kicker">Generated from knowledge/science</p><h1>COMPLETE SCIENCE CATALOG</h1>'
         f'<p class="hero-lede">{len(records)} canonical science records. The JSON records remain the source of truth; this page is a generated reading view.</p></header>'
@@ -186,7 +186,7 @@ def main() -> None:
     CATALOG_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     CATALOG_PAGE.parent.mkdir(parents=True, exist_ok=True)
     CATALOG_PAGE.write_text(render_catalog_page(records), encoding="utf-8")
-    patch_science_page(render_cards(records), len(records))
+    patch_science_page(render_cards(records, "../knowledge/science/"), len(records))
     print(f"Built science catalog: {len(records)} records")
 
 
