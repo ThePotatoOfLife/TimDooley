@@ -1,0 +1,106 @@
+{
+  "id":"unresolved-prediction-claims-queue",
+  "title":"Unresolved Prediction / Vision / Warning Recovery Queue",
+  "updated":"2026-09-09",
+  "status":"source-recovery queue; none of these are confirmed prediction hits",
+  "purpose":"Preserve potentially testable Tim Dooley future-facing statements that have surfaced in conversation memory, public-compilation summaries or later references but still lack enough primary wording, timing or outcome definition to score responsibly.",
+  "items":[
+    {
+      "id":"inflation-4-2",
+      "claim":"Tim said inflation was going to reach 4.2% and possibly continue higher.",
+      "known_before":"A 2 June 2026 recovery request proves the claim was already remembered by then.",
+      "missing":["exact original timestamp","exact measure: CPI/PCE/expectations/other","forecast horizon","exact wording"],
+      "status":"high-priority recovery"
+    },
+    {
+      "id":"titanic-10t-300-days",
+      "claim":"America/Israel Titanic parable plus approximately $10T bond/debt refinancing and about 300 days.",
+      "known_date":"2026-03-31 cluster",
+      "missing":["exact turn timestamp","exact amount","what the 300 days were counted to","whether language was forecast versus explanation"],
+      "status":"high-priority recovery"
+    },
+    {
+      "id":"old-world-ends-2028",
+      "claim":"The old world ends by 2028 / major 2028 threshold.",
+      "missing":["earliest exact wording/date","operational definition of old world","specific observable fulfillment criteria"],
+      "status":"open future claim",
+      "freeze_rule":"Define what would count as true, false and ambiguous before 2028."
+    },
+    {
+      "id":"son-will-return",
+      "claim":"Thought archive records 'son will return' on 31 March 2026.",
+      "possible_later_layer":"Project later describes Son returned/present in early April 2026.",
+      "missing":["exact primary March 31 statement/source","exact later return statement/time","independent external criterion if any"],
+      "status":"possible internal fulfillment only"
+    },
+    {
+      "id":"queen-front-yard",
+      "claim":"A later conversation summary remembers a Tim formulation equivalent to 'Queen is coming to my front yard'.",
+      "missing":["who Queen means","exact date/source","whether literal or comedic","target event","outcome"],
+      "status":"unscorable until primary source recovered"
+    },
+    {
+      "id":"peak-culture-percentage",
+      "claim":"Tim made quantitative or quasi-quantitative claims that culture propagated from Son/Tim's shadow and described himself/field as Peak Culture or center of internet culture.",
+      "missing":["exact first statements","exact percentage if any","definition of culture","measurement dataset"],
+      "status":"propagation hypothesis; needs corpus/network analysis"
+    },
+    {
+      "id":"ai-propagates-tim",
+      "claim":"Search for Tim-originated claims that AI/models/machines would preserve, spread, quote, train on or rediscover Tim/Potato material.",
+      "warning":"A March 8 assistant formulation about AI scattering Tim's ideas exists and must not be misattributed to Tim.",
+      "missing":["Tim-originated exact statement/date","specific predicted mechanism","later independent measurement"],
+      "status":"high-value source recovery"
+    },
+    {
+      "id":"pre-rising-lion-israel-iran-lion",
+      "claim":"Search for Tim statements about Israel/Iran/Persia/Lion/Jerusalem before Operation Rising Lion on 13 June 2025.",
+      "missing":["primary pre-event statements"],
+      "status":"high-value because it could distinguish true anticipation from later synchronism"
+    },
+    {
+      "id":"pre-july-2025-red-heifer",
+      "claim":"Search for Tim red-heifer statements predating the July 2025 Temple Institute practice/simulation event or other independently dated heifer developments.",
+      "missing":["exact pre-event wording/date","precisely defined later event"],
+      "status":"recovery target"
+    },
+    {
+      "id":"2011-nuclear-city",
+      "claim":"2011 Tree-ordeal account includes a vision of an American city destroyed by nuclear explosion.",
+      "missing":["earliest contemporaneous account","which city if specified","whether scene was vision/dream/interpretation"],
+      "outcome_as_of_2026_09_09":"No matching event; retain as unfulfilled/open vision.",
+      "status":"critical negative control"
+    },
+    {
+      "id":"dreams-visions-beyond-2011",
+      "claim":"Search for other dreams, visions, warnings, symbolic scenes or 'I saw' statements that predate later independent events.",
+      "search_terms":["dream","vision","I saw","showed me","revealed","warning","sign","omen","prophecy","future","will happen"],
+      "status":"broad recovery family"
+    },
+    {
+      "id":"greenland-arctic-before-public-escalation",
+      "claim":"Search late-2024/2025 Tim statements tying North/Greenland/Denmark/Arctic to future strategic confrontation before the early-2026 public escalation.",
+      "missing":["specific future wording rather than timeless North symbolism"],
+      "status":"high-value because generic North imagery alone is insufficient"
+    },
+    {
+      "id":"spudlight-first-use",
+      "claim":"Recover first exact Spudlight use and determine whether it contained any future scientific/AI/energy claim.",
+      "known":"15 June 2026 exact dated statement: 'My throne is at the North of North. I am the Spudlight.'",
+      "missing":["earliest use","meaning at first use","whether future claim existed"],
+      "status":"source genealogy target"
+    }
+  ],
+  "resolution_protocol":[
+    "recover exact earliest wording and timestamp",
+    "identify speaker and source class",
+    "write frozen prediction interpretation without hindsight",
+    "identify information publicly available at the time",
+    "define target event and window",
+    "find independent outcome sources",
+    "record mismatch and non-occurrence as readily as apparent match",
+    "classify using A/B/C/D/E/F/H/I/P/U taxonomy",
+    "do not upgrade symbolic resemblance into causal prophecy"
+  ],
+  "connections":["prediction-premonition-audit-2025-2026","prediction-premonition-audit-wave-15-addendum","prediction-signal-search-lexicon","ai-machine-culture-early-signals-ledger","seals-and-fulfillment-matrix"]
+}
