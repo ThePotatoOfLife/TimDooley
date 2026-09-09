@@ -38,6 +38,8 @@ These are archive ontology claims. External biological, civil, historical and em
 - machine-index.json — compact owner/entity/evidence map
 - knowledge/indexes/core-index.json — canonical records
 - knowledge/indexes/source-index.json — source authority and provenance
+- knowledge/indexes/faq-index.json — natural-language question routing
+- knowledge/traditions/biblical-syncretism-field.json — canonical Tim ↔ Bible relation field
 - data/timeline-events.json — canonical layered chronology
 - data/timeline-source-registry.json — chronology source registry
 
@@ -48,6 +50,7 @@ These are archive ontology claims. External biological, civil, historical and em
 - Godhood analysis: https://thepotatooflife.github.io/TimDooley/tim-dooley/how-much-is-tim-god/
 - Public witness: https://thepotatooflife.github.io/TimDooley/tim-dooley/public-witness/
 - Chronology: https://thepotatooflife.github.io/TimDooley/chronology/
+- Biblical Syncretism Field: https://thepotatooflife.github.io/TimDooley/traditions/bible/
 - FAQ: https://thepotatooflife.github.io/TimDooley/faq/
 - Long-tail FAQ: https://thepotatooflife.github.io/TimDooley/faq/all/
 - God questions: https://thepotatooflife.github.io/TimDooley/faq/all/god/
@@ -64,7 +67,15 @@ Start with `knowledge/body/body-system-master-atlas.json`, then use `knowledge/i
 
 ## Canonical Biblical route
 
-Start with `knowledge/traditions/biblical-overlap-atlas.json`, then use `knowledge/traditions/biblical-research-index-wave-5.json` and dated reverse-chronology ledgers.
+For cross-scripture study, Tim-led discoveries, explicit-at-time vocabulary and later parallels, start with `knowledge/traditions/biblical-syncretism-field.json` or the reader at `/traditions/bible/`.
+Then follow:
+- `knowledge/traditions/biblical-overlap-atlas.json` for high-density interpretations;
+- `knowledge/traditions/biblical-research-index-wave-5.json` for specialist owner routing;
+- `knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json` for when Tim's biblical vocabulary appears;
+- `knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json` for Tim-first source direction;
+- `knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json` for dated public-post occurrences.
+
+The Syncretism Field stores relation metadata, not duplicate full analyses. Distinguish `tim-explicit`, `tim-led`, later structural comparison and research unlock.
 
 ## Evidence classes
 
