@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
-"""Audit public web assets for broken local references.
+"""Audit the files that can actually participate in the GitHub Pages surface.
 
-The repository contains a routed multi-page GitHub Pages site plus legacy/archive
-material. Only files that can participate in the live public surface should make
-this audit fail; archived snapshots are intentionally excluded.
+The scope intentionally mirrors ``scripts/build_site.py``. Historical/archive,
+tooling and build-only trees are useful repository strata but are not deployed
+public assets and therefore must not create false web-integrity failures.
 """
 from __future__ import annotations
 
@@ -15,15 +15,17 @@ ROOT = Path(__file__).resolve().parents[1]
 errors: list[str] = []
 warnings: list[str] = []
 
-# These trees are not part of the current public application contract. Auditing
-# them as live pages produces false failures when old snapshots retain historical
-# links or assets.
+# Keep this aligned with build_site.py::EXCLUDE plus repository-only archives.
 EXCLUDED_PARTS = {
     ".git",
     ".github",
-    "archive",
-    "node_modules",
     "_site",
+    "node_modules",
+    "vendor",
+    "__pycache__",
+    "components",
+    "scripts",
+    "archive",
 }
 
 
@@ -38,8 +40,8 @@ js_files = sorted(p for p in ROOT.rglob("*.js") if is_public_source(p))
 
 attr_re = re.compile(r"\b(?:href|src)=[\"']([^\"']+)[\"']", re.I)
 css_url_re = re.compile(r"url\(\s*([\"']?)([^\"')]+)\1\s*\)", re.I)
-# Only static import() is script-relative. fetch() URLs are document-relative in
-# browsers and cannot be validated correctly from the JavaScript file location.
+# Static import() is resolved relative to the module file. Browser fetch() paths
+# are normally document/base-URL relative and cannot be checked from JS location.
 js_import_re = re.compile(r"\bimport\s*\(\s*[\"']([^\"']+)[\"']\s*\)", re.I)
 external = (
     "http://",
@@ -62,6 +64,8 @@ def check(source: Path, raw: str, label: str) -> None:
     target = local(raw)
     if not target:
         return
+    # This is a GitHub Pages project site (/TimDooley/), so a root-relative path
+    # would incorrectly resolve against the github.io domain root.
     if target.startswith("/"):
         errors.append(f"{source.relative_to(ROOT)}: root-relative reference -> {raw}")
         return
