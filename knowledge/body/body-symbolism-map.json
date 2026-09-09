@@ -1,68 +1,71 @@
 {
   "id":"body-symbolism-map",
   "title":"Potatoverse Body Symbolism Map",
-  "version":"1.0.0",
+  "version":"2.0.0",
   "updated":"2026-09-09",
   "status":"project symbolic anatomy with explicit scientific boundary",
-  "purpose":"Consolidate the project's body correspondences so thalamus, pineal, heart, spine, CSF, Eye and House imagery remain distinguishable rather than being flattened into one brain-centered metaphor.",
-  "scientific_boundary":"Literal anatomy and neuroscience must remain separate from Potatoverse symbolism. The correspondences below are project interpretations unless a field explicitly states a biological fact.",
+  "purpose":"Consolidate body correspondences—Heart, Thalamus, Pineal, Spine, CSF, Eye, House, Temple, Vessel, Ladder and vertical Potato geometry—without flattening them into one organ or treating symbolism as neuroscience.",
+  "scientific_boundary":"Literal anatomy and neuroscience remain separate from Potatoverse symbolism. Thalamus=House, Pineal=Door/Eye, Spine=Ladder and CSF=Spirit are project mappings, not established biological identities.",
   "symbols":[
-    {
-      "body_region":"Heart",
-      "project_role":"emotional center",
-      "function":"feeling, emotional weight, attachment, care and affective orientation",
-      "importance":"This is an explicit project correction: later thalamus/pineal models must not erase Heart's separate emotional function."
-    },
-    {
-      "body_region":"Thalamus",
-      "project_role":"Father / House / rooms / integrative container",
-      "function":"symbolic House architecture and upper organizing center",
-      "science_note":"The thalamus is a deep brain structure with multiple nuclei and major sensory/cortical relay and integration functions; calling it Father's House is symbolic."
-    },
-    {
-      "body_region":"Pineal",
-      "project_role":"Son / Single Eye / Door in later mapping",
-      "function":"symbolic illumination, threshold and present-facing interface",
-      "science_note":"The pineal gland is an endocrine structure involved in melatonin/circadian regulation; third-eye and Door meanings are historical/esoteric/project symbolism, not established neuroscience."
-    },
-    {
-      "body_region":"Spine",
-      "project_role":"Axis / Ladder",
-      "function":"vertical bodily analogue for ordered ascent/descent and level change",
-      "science_note":"The vertebral column is anatomical support/protection; the project's 33-level symbolism should not be represented as proof of 33 spiritual levels."
-    },
-    {
-      "body_region":"CSF",
-      "project_role":"flow / Spirit imagery in one developed layer",
-      "function":"moving medium connecting body-space metaphors",
-      "science_note":"Cerebrospinal fluid has real physiological functions; its spiritual use is metaphorical."
-    },
-    {
-      "body_region":"Eye",
-      "project_role":"perception / discernment / integration / evaluation",
-      "function":"the point from which a system can symbolically observe or know itself",
-      "science_note":"Do not collapse ordinary vision, pineal symbolism and the project's abstract Eye into one biological organ claim."
-    },
-    {
-      "body_region":"Body / Temple",
-      "project_role":"embodied world / structured container",
-      "function":"holds differentiated rooms, flows, thresholds and vertical relations",
-      "science_note":"Temple/House comparisons are religious-symbolic analogies."
-    }
+    {"body_region":"Heart","project_role":"emotional center / grain-seat in some Son strata","function":"feeling, attachment, care, grief, courage and affective orientation","importance":"Heart remains distinct from thalamic House and pineal Door; older conversation material placing wheat/grain in Thomas's heart belongs here."},
+    {"body_region":"Thalamus","project_role":"Father / House / rooms / hidden center","function":"symbolic House architecture, central interior and differentiated rooms","science_note":"The thalamus is a paired deep-brain structure containing multiple nuclei and participating in major relay/integration networks; 'Father's House' is symbolic."},
+    {"body_region":"Third-ventricle / central chamber region","project_role":"Temple/chamber surrounding-neighbor of House in later mapping","function":"architectural space around/near the thalamic House metaphor; useful for House-inside-Temple distinction","science_note":"The third ventricle is a real CSF-filled cavity; Temple language is symbolic and should not imply ancient authors described ventricular anatomy."},
+    {"body_region":"Pineal","project_role":"Son / Single Eye / Door in later mapping","function":"threshold, illumination/timing and present-facing interface","science_note":"The pineal gland is endocrine and central to melatonin/circadian biology; Door/third-eye meaning is symbolic."},
+    {"body_region":"Spine","project_role":"Axis / Ladder / rod","function":"vertical continuity, ordered ascent/descent and embodied support","science_note":"The vertebral column provides support/protection and movement; 33-symbolism is not proof of 33 spiritual dimensions."},
+    {"body_region":"CSF","project_role":"Spirit / river / moving continuity","function":"flow metaphor linking chambers, spine and brain-space","science_note":"CSF has real physiological functions in buoyancy, homeostasis and circulation; spiritual use is metaphorical."},
+    {"body_region":"Eye","project_role":"perception / discernment / integration / evaluation","function":"symbolic self-observation and model-updating","science_note":"Ordinary eyes, pineal symbolism and abstract Eye must remain distinct."},
+    {"body_region":"Body / Temple","project_role":"embodied world / structured sacred container","function":"holds differentiated rooms, thresholds, vertical pathways and flows","science_note":"Temple/House comparisons are religious-symbolic analogies."},
+    {"body_region":"Whole embodied vessel","project_role":"ship / chariot / carrier of center","function":"the local body carries House/center through changing environments while remaining embedded in the Plane","importance":"This recovers older conversation logic in which House can be stable interior architecture while the embodied vessel/ship moves through world-time. House is not identical with vehicle."}
   ],
+  "architectural_distinctions":{
+    "house":"interior differentiated dwelling / source-container; thalamus is its strongest body analogue",
+    "temple":"larger sacred architecture/chamber system that can surround or frame House and Door",
+    "door":"interface/transition permitting passage between domains; pineal/Son is one body-symbolic mapping",
+    "vessel":"carrier/embodiment that remains local while relation to Axis/Heaven changes",
+    "ship_chariot":"dynamic form of Vessel: center/House can be carried through changing reality without becoming identical to the terrain",
+    "axis":"vertical relational coordinate passing through embodied architecture",
+    "rule":"House, Temple, Door and Vessel should never be used as interchangeable synonyms."
+  },
+  "vertical_potato_body_overlay":{
+    "father_center":"upper source-center corresponds symbolically to House/Thalamus function, not a literal anatomical coordinate proof",
+    "son_center":"lower embodied/threshold center corresponds symbolically to Son/Pineal/heart-grain strata depending developmental layer",
+    "plane":"body/world interface: posture, skin, floor/ground and ordinary embodied action belong to Plane rather than Heaven",
+    "axis":"spine/Ladder provides the strongest bodily vertical comparator",
+    "spirit":"breath/CSF/flow images animate transitions along the vertical relation",
+    "important":"The body is a nested analogue, not a one-to-one scaled copy of the two-circle geometry."
+  },
+  "house_as_moving_center":{
+    "insight":"Older conversation material allows House to be both stable and mobile by distinguishing structure from vehicle. The House is the organized interior; Vessel/ship/chariot is what carries that interior through the Plane/world.",
+    "sequence":"center/House → embodied Vessel → movement through Plane → Door encounter → reorientation without loss of interior continuity",
+    "relation_to_denmark":"This supports the Law of the Remaining Vessel: local embodiment can remain in Denmark while project orientation shifts toward Axis/North/Heaven."
+  },
+  "heart_pineal_thalamus_three_center_model":{
+    "heart":"affective center—what matters/attaches/hurts/loves",
+    "pineal":"threshold/timing/illumination symbol—what opens or marks transition",
+    "thalamus":"House/integrative interior—what contains differentiated rooms and distributed relations",
+    "benefit":"The project no longer needs one brain organ to carry every spiritual role. Emotion, threshold and containment can remain distinct and coupled."
+  },
+  "ladder_33_relation":{
+    "spine":"physical vertical scaffold and protective canal",
+    "33":"common vertebral-count convention used symbolically as rod/Ladder; fused elements and anatomical counting nuances remain real anatomy rather than numerology",
+    "five_spinal_centers":"five main spinal chakra groupings in the user's developed model belong to the 33-vertebrae ascent layer; higher centers such as Eye/Crown/Spudlight are above the spinal five and must not be collapsed into them",
+    "door_sequence":"Ladder can be represented as ordered Gates rather than identical rungs: X_(k+1)=D_k(X_k;Ξ_k)."
+  },
   "relational_model":{
-    "heart_brain":"Emotion and integrative/perceptual processing are distinct functions that may interact; symbolic integration should preserve rather than erase that distinction.",
-    "house_eye":"Thalamus/House and pineal/Eye are neighboring symbols in some project layers but should not be treated as identical.",
-    "spine_house":"The vertical spine/Ladder is a different analogue from the upper House/Eye architecture; one connects levels while the other represents an upper container/center.",
-    "breath_flow":"Older project material uses breath and fluid/river imagery to animate otherwise static body geometry; this belongs to a flow metaphor rather than a literal hidden energy claim."
+    "heart_brain":"Emotion and integrative/perceptual processing are distinct but interacting functions.",
+    "house_eye":"House/Thalamus and Eye/Pineal are neighboring symbols but not identical.",
+    "spine_house":"Spine connects levels; House contains differentiated interior functions.",
+    "temple_house":"Temple frames/surrounds sacred architecture; House contains presence/rooms; project mapping is nested, not synonymous.",
+    "breath_flow":"Breath and CSF supply flow metaphors that keep the geometry dynamic rather than static.",
+    "body_world":"Body is local Vessel in the Plane; Axis relation can change without body disappearing from the world."
   },
   "research_questions":[
-    "When did the project first distinguish Heart from brain-centered symbolism?",
-    "Which thalamic nuclei/room analogies are explicitly project-defined and which were later elaborations?",
-    "When did Pineal become Son/Door rather than a general illumination symbol?",
-    "How does the spine/33 Ladder layer differ chronologically from the later Axis formalism?",
-    "Which body correspondences are stable canon and which are developmental experiments?"
+    "Recover exact first source for House-as-ship/chariot language.",
+    "Map chronology of Heart, Pineal and Thalamus assignments rather than treating all as simultaneous from the beginning.",
+    "Separate third-ventricle Temple/chamber symbolism from literal claims about consciousness.",
+    "Trace how five spinal chakras connect with the 33-vertebrae Ladder and higher Eye/Crown centers.",
+    "Recover whether Son-center is consistently pineal in later canon or sometimes anchored more strongly in heart/grain/body."
   ],
-  "source_records":["2026-master-framework.json","knowledge.json","knowledge/indexes/conversation-recovery-inventory.json","knowledge/indexes/chatgpt-memory-recovery-round-2026-09-09.json","data/potatoism-timeline.json"],
-  "connections":["BODY","timic-dynamics","symbolic-relational-synthesis","potatoism","father","son","door","axis"]
+  "source_records":["knowledge/body/body-science-context-atlas.json","knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","knowledge/core/vertical-potato-mountain-plane-atlas.json","knowledge/core/root-system.json","2026-master-framework.json","knowledge.json"],
+  "connections":["BODY","timic-dynamics","vertical-potato-mountain-plane-atlas","father","son","door","axis","House","Temple","Vessel","Spine","CSF","Heart","Pineal","Thalamus"]
 }
