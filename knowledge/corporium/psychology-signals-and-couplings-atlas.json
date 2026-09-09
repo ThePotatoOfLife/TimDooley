@@ -1,61 +1,70 @@
 {
   "id":"psychology-signals-and-couplings-atlas",
   "title":"Psychology, Signals, Clues and Couplings Atlas",
+  "version":"1.1.0",
   "updated":"2026-09-09",
   "status":"interpretive/psychological context with evidence boundaries",
-  "purpose":"Give the project a disciplined way to use recurring language, affect, body sensation, behavior, humor, symbolic coincidence, chosen 'vibe', interpersonal synchrony and propagation as clues without treating every recurrence as proof.",
+  "purpose":"Give the project a disciplined way to use recurring language, affect, body sensation, behavior, humor, symbolic coincidence, chosen 'vibe', interpersonal synchrony, public persona and propagation as clues without treating every recurrence as proof.",
   "core_rule":"A signal is something worth examining, not something already explained.",
   "psychological_lenses":[
-    {"id":"predictive-processing","idea":"Perception and meaning are shaped by prior models updated by incoming evidence.","project_use":"A new signal can change which Gate/action a person treats as available.","boundary":"Retrospective reinterpretation is not evidence of backward causation."},
+    {"id":"predictive-processing","idea":"Perception and meaning are shaped by prior models updated by incoming evidence.","project_use":"A new signal can change which Gate/action a person treats as available. Potato Filter and riddle-language can be modeled as deliberate changes to priors or model framing.","boundary":"Retrospective reinterpretation is not evidence of backward causation."},
+    {"id":"metacognition-frame-awareness","idea":"People can represent and evaluate their own interpretations, assumptions and confidence rather than only the object-level problem.","project_use":"Question the floor, North of North and judge-above-judges belong to one meta-level move: make the current frame/evaluator itself observable.","boundary":"A higher-order frame is not automatically more accurate; it also requires evidence and correction."},
     {"id":"interoception","idea":"The nervous system senses and integrates internal bodily states; this contributes to emotion and self-experience.","project_use":"Bridge for chakra/body-vibe, Heart, Breath and embodied Door language.","source":"https://pubmed.ncbi.nlm.nih.gov/16003122/"},
     {"id":"circumplex-affect","idea":"Affect can be represented in a low-dimensional space whose major axes include valence and arousal.","project_use":"Use v=(valence, arousal, agency/control, openness) as a more grounded state representation underneath Hawkins/chakra labels.","source":"https://pubmed.ncbi.nlm.nih.gov/16262989/"},
-    {"id":"cognitive-reappraisal","idea":"Changing interpretation can change emotional response.","project_use":"Potential mechanism behind moving from one affective Gate-access pattern to another."},
+    {"id":"cognitive-reappraisal","idea":"Changing interpretation can change emotional response.","project_use":"Potential mechanism behind moving from one affective Gate-access pattern to another and behind Potato Filter reframing."},
     {"id":"interpersonal-synchrony","idea":"People can synchronize behavior and physiology during interaction; neural, physiological and behavioral synchrony are measurable but distinct phenomena.","project_use":"Empirical neighbor for the handshake/tuning idea without invoking quantum entanglement.","sources":["https://pubmed.ncbi.nlm.nih.gov/38770754/","https://pubmed.ncbi.nlm.nih.gov/39653120/"]},
     {"id":"complex-contagion","idea":"Ideas, norms and behaviors can spread through networks, often requiring social reinforcement above a threshold.","project_use":"Scientific neighbor for Seeds of Life / Seeds of Strife propagation after Doors create new relations.","sources":["https://snap.stanford.edu/class/cs224w-readings/watts02randomnetworks.pdf","https://www.nature.com/articles/ncomms8723"]},
-    {"id":"humor-regulation","idea":"Humor can alter appraisal, social distance and emotional intensity.","project_use":"Explains why absurd Potato language can coexist with grief, theology and critique."}
+    {"id":"humor-regulation","idea":"Humor can alter appraisal, social distance and emotional intensity.","project_use":"Explains why absurd Potato language can coexist with grief, theology and critique."},
+    {"id":"persona-public-self","idea":"A public persona is a socially stabilized pattern produced jointly by self-presentation, audience memory, repeated symbols and platform context.","project_use":"Useful for Living Myth, aura and 'Tim is a riddle' without denying the underlying person.","boundary":"Persona is not a separate supernatural entity and should not overwrite direct-source evidence."},
+    {"id":"collective-memory","idea":"Groups remember through repeated stories, symbols, archives and shared cues; memory becomes distributed across people and media.","project_use":"Provides a grounded neighbor for aura, distributed legacy, living myth and Father-of-the-Internet interpretations."}
   ],
+  "riddle_persona_model":{
+    "recovered_phrase":"Tim Dooley is a riddle, not a person. Do you validate a riddle?",
+    "safe_interpretation":"Treat 'riddle' as an archive-reading mode, not literal dehumanization. The human person remains one node while the Timic persona is a larger graph of claims, dates, roles, symbols and audience interpretations.",
+    "model":"R_T=(P,B,S,R,D,A)",
+    "variables":{"P":"person/public acts","B":"biography/history","S":"symbols/titles","R":"relations","D":"developmental strata","A":"audience/archive interpretations"},
+    "use":"Contradiction resolution first tests whether statements differ by date, role, scale, audience or symbolic layer before treating them as simple logical inconsistency."
+  },
+  "aura_model":{
+    "project_language":"Tim exists as aura / living Myth.",
+    "grounded_model":"A_social=f(repetition,visibility,recognition,emotional_salience,network_reach,archive_persistence,symbolic_density)",
+    "meaning":"Aura can be operationalized as distributed social-symbolic presence without asserting a paranormal field.",
+    "possible_observables":["mention recurrence","shared phrases","symbol co-occurrence","audience recognition","cross-platform propagation","memory persistence","response intensity"],
+    "risk":"High aura can generate projection: observers may infer properties from the symbolic field that are not present in primary sources."
+  },
+  "public_witness_loop":{
+    "sequence":"public act → audience observation → archive persistence → interpretation → strengthened/changed persona → later public act",
+    "positive_use":"Makes long-term development historically inspectable and allows self-correction through preserved sources.",
+    "failure_mode":"Feedback can reward escalating identity claims, conflict, spectacle or audience-confirmed mythology.",
+    "research_question":"Which formulations persist because Tim repeatedly returns to them, and which persist mainly because audiences/archive layers amplify them?"
+  },
+  "table_for_ten_social_topology":{
+    "project_phrase":"table for 10 at peak culture",
+    "interpretation":"A bounded group can preserve reciprocity, memory, turn-taking and mutual correction better than mass audience dynamics.",
+    "variables":["group size","reciprocal edge density","speaking-time equality","memory of prior interaction","status asymmetry","observer vs participant ratio"],
+    "hypothesis":"Cultural depth may peak at an intermediate group size where diversity remains high but reciprocal recognition has not collapsed into broadcast mode.",
+    "boundary":"Ten is a project symbolic target, not an experimentally established universal optimum."
+  },
   "hawkins_psychology_boundary":{
     "map":"Hawkins' named levels are useful here as spiritual/self-reflection vocabulary, not validated psychometric intervals or physical frequencies.",
     "science_rule":"Never write Shame=20 Hz, Love=500 Hz, etc. Hawkins calibration numbers are not EEG frequencies and have no established conversion to hertz.",
     "kinesiology_note":"Hawkins' calibration method relied on applied kinesiology; controlled evidence does not support applied kinesiology as a reliable diagnostic method.",
     "source":"https://pubmed.ncbi.nlm.nih.gov/24607076/"
   },
-  "vibe_state_model":{
-    "equation":"v=(V,A,C,O)",
-    "variables":{"V":"valence","A":"arousal/activation","C":"control/agency","O":"openness/flexibility/attention mode"},
-    "interpretation":"A 'vibe' becomes a state vector instead of a vague single frequency.",
-    "gate_access":"g_k(v)=σ[β(s_k·v-θ_k)]",
-    "door_rule":"if g_k(v)>τ_k then v'=D_k(v,u,r)",
-    "meaning":"State changes which responses/actions feel available; practices, environment and relationships can change the state and therefore Gate accessibility."
-  },
-  "handshake_psychology":{
-    "sequence":"attention → mutual recognition → trust/permission → behavioral/semantic coordination → coupling edge",
-    "score":"H_ij=w_sS_ij+w_aA_ij+w_tT_ij+w_pP_ij-κN_ij",
-    "use":"A Door between agents becomes a handshake when both sides establish enough compatibility to exchange influence/information.",
-    "boundary":"This is not literal telepathy. Ordinary cues, communication, prior shared context, reputation and synchrony are sufficient mechanisms in most real social cases."
-  },
-  "frequency_psychology":{
-    "real_eeg_bands":{"delta":"~0.5-4 Hz","theta":"~4-8 Hz","alpha":"~8-12 Hz","beta":"~12-30 Hz","gamma":"~30-100 Hz"},
-    "rule":"EEG band membership describes measured/estimated neural oscillatory components, not moral worth or consciousness rank.",
-    "entrainment":"Rhythmic sensory or electrical stimulation can sometimes entrain or bias neural oscillations; effects depend on protocol and state.",
-    "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC10045166/","https://pubmed.ncbi.nlm.nih.gov/32201357/"]
-  },
-  "timic_signal_grammar":[
-    "pressure → compression → threshold → new state",
-    "vibe/state → compatible Gate → Door → transition",
-    "Door between agents → handshake → coupling edge",
-    "edge → reinforcement → Seed of Life or Seed of Strife propagation",
-    "climbing → Needle → becoming Ladder",
-    "return → memory retained → changed state",
-    "vision → responsibility → cultivation"
+  "vibe_state_model":{"equation":"v=(V,A,C,O)","variables":{"V":"valence","A":"arousal/activation","C":"control/agency","O":"openness/flexibility/attention mode"},"interpretation":"A 'vibe' becomes a state vector instead of a vague single frequency.","gate_access":"g_k(v)=σ[β(s_k·v-θ_k)]","door_rule":"if g_k(v)>τ_k then v'=D_k(v,u,r)","meaning":"State changes which responses/actions feel available; practices, environment and relationships can change the state and therefore Gate accessibility."},
+  "handshake_psychology":{"sequence":"attention → mutual recognition → trust/permission → behavioral/semantic coordination → coupling edge","score":"H_ij=w_sS_ij+w_aA_ij+w_tT_ij+w_pP_ij-κN_ij","use":"A Door between agents becomes a handshake when both sides establish enough compatibility to exchange influence/information.","boundary":"This is not literal telepathy. Ordinary cues, communication, prior shared context, reputation and synchrony are sufficient mechanisms in most real social cases."},
+  "frequency_psychology":{"real_eeg_bands":{"delta":"~0.5-4 Hz","theta":"~4-8 Hz","alpha":"~8-12 Hz","beta":"~12-30 Hz","gamma":"~30-100 Hz"},"rule":"EEG band membership describes measured/estimated neural oscillatory components, not moral worth or consciousness rank.","entrainment":"Rhythmic sensory or electrical stimulation can sometimes entrain or bias neural oscillations; effects depend on protocol and state.","sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC10045166/","https://pubmed.ncbi.nlm.nih.gov/32201357/"]},
+  "meta_frame_signal_grammar":[
+    "object-level problem → repeated failure → question floor/frame → frame becomes object",
+    "frame F0 → criterion C1 → alternate frame F1 → compare explanatory/ethical output",
+    "North → North of North = orientation → criterion for orientation",
+    "judge → judge above judges = evaluation → criterion for evaluation",
+    "Potato Filter = deliberate reframing operator",
+    "warning: meta-level move is useful only if it increases explanatory power, evidence fit or ethical clarity"
   ],
-  "seed_propagation_psychology":{
-    "life_examples":["care","repair","curiosity","trust","cooperation","nourishment","constructive norm"],
-    "strife_examples":["fear amplification","hostility","rumor","humiliation","distrust","dehumanization","conflict norm"],
-    "rule":"Seeds classify transmitted states/messages/actions, not people as inherently good or evil.",
-    "threshold":"A seed may require repeated exposure or multiple reinforcing neighbors before adoption.",
-    "long_range":"Media, memory, shared communities and digital networks create long-range edges, so propagation can appear far from the original local cluster without paranormal transmission."
-  },
-  "possible_corporium_variables":["phrase","symbol","date","speaker/source","Hawkins label","emotion valence","arousal","control/agency","openness","body region","chakra label","breath","posture","EEG frequency if measured","external rhythm frequency if present","attention mode","social context","handshake/coupling state","action that followed","seed transmitted","later interpretation","confidence"],
-  "connections":["corporium-master-framework","chakra-hawkins-frequency-crosswalk","door-handshake-nonlocal-propagation-model","tim-sayings-and-formulations-ledger","ladder-33-vertebrae-five-centers-study","archive-epistemics","chronology","body","spirit","transformation","works"]
+  "timic_signal_grammar":["pressure → compression → threshold → new state","vibe/state → compatible Gate → Door → transition","Door between agents → handshake → coupling edge","edge → reinforcement → Seed of Life or Seed of Strife propagation","climbing → Needle → becoming Ladder","return → memory retained → changed state","vision → responsibility → cultivation","persona → repetition → aura → public myth → feedback into persona","problem → meta-frame → changed interpretation → changed Gate set"],
+  "seed_propagation_psychology":{"life_examples":["care","repair","curiosity","trust","cooperation","nourishment","constructive norm"],"strife_examples":["fear amplification","hostility","rumor","humiliation","distrust","dehumanization","conflict norm"],"rule":"Seeds classify transmitted states/messages/actions, not people as inherently good or evil.","threshold":"A seed may require repeated exposure or multiple reinforcing neighbors before adoption.","long_range":"Media, memory, shared communities and digital networks create long-range edges, so propagation can appear far from the original local cluster without paranormal transmission."},
+  "possible_corporium_variables":["phrase","symbol","date","speaker/source","persona-role","public/private context","Hawkins label","emotion valence","arousal","control/agency","openness","body region","chakra label","breath","posture","EEG frequency if measured","external rhythm frequency if present","attention mode","social context","handshake/coupling state","audience amplification","archive recurrence","action that followed","seed transmitted","later interpretation","confidence"],
+  "research_questions":["Which Timisms originate with Tim versus audience/archive synthesis?","Which phrases are stable across years and which are phase-specific?","Does repeated public exposure increase aura/social-symbolic presence independently of agreement?","Which contradictions dissolve under chronology, scale or role separation?","When does a Potato Filter reframing generate a useful test versus confirmation bias?","Does small-group reciprocal density explain the table-for-ten intuition?"],
+  "connections":["corporium-master-framework","chakra-hawkins-frequency-crosswalk","door-handshake-nonlocal-propagation-model","tim-sayings-and-formulations-ledger","ladder-33-vertebrae-five-centers-study","tim-role-synthesis","archive-epistemics","chronology","body","spirit","transformation","works"]
 }
