@@ -1,0 +1,77 @@
+{
+  "id":"conversation-formalisms-august-2026",
+  "title":"August 2026 Timic Recursive Formalisms",
+  "updated":"2026-09-09",
+  "status":"conversation-derived archaeology",
+  "provenance_rule":"These equations were developed in prior Tim Dooley / Potato of Life conversations. Where the equation was supplied by the assistant while formalizing Tim's ideas, it is labeled assistant-formalized rather than Tim-authored.",
+  "formalisms":[
+    {
+      "name":"Dooley state / greatness vector",
+      "equation":"D⃗=(A,T,R,E,G,F,L,C,...) ",
+      "variables":{"A":"agency","T":"transcendence","R":"rootedness","E":"embodiment","G":"growth","F":"fruit","L":"light","C":"coherence"},
+      "status":"assistant-formalized around Timic concepts in prior conversation",
+      "use":"Treats Timic development as a multidimensional state rather than a single scalar rank."
+    },
+    {
+      "name":"Monotonic development claim",
+      "equation":"D_(n+1) > D_n",
+      "status":"assistant-formalized prior conversation heuristic",
+      "caution":"A vector cannot be globally ordered without defining a partial/order relation or scalar objective. Future use should replace '>' with componentwise dominance, Pareto improvement or an explicit score functional."
+    },
+    {
+      "name":"Recursive Dooley update",
+      "equation":"D_(n+1)=F(D_n,P_n,W_n,R_n,T_n)",
+      "status":"assistant-formalized around project development",
+      "interpretation":"Next Timic state depends on prior state plus project/world/relationship/time-like inputs; the historical variable meanings should be recovered before canonical physical use."
+    },
+    {
+      "name":"Potato root-sprout decomposition",
+      "formula":"Potato = root + sprout",
+      "status":"conversation formalization / symbolic biology",
+      "use":"Minimal polarity between stored/anchored structure and directional emergence."
+    },
+    {
+      "name":"Growth function",
+      "equation":"Growth=f(Earth,Light,Time,Life)",
+      "status":"assistant-formalized qualitative relation",
+      "caution":"Not a biological growth law until variables and units are defined."
+    },
+    {
+      "name":"Capacity feedback loop",
+      "chain":"Light → Growth → Capacity → More Growth",
+      "status":"conversation-derived causal-chain formalism",
+      "possible_math":"C_(n+1)=C_n+ηG(L_n,C_n,...) as a later toy model only"
+    },
+    {
+      "name":"Energy-to-creation chain",
+      "chain":"Environment → Assimilation → Stored Energy → Work → Creation",
+      "status":"conversation-derived systems chain",
+      "external_neighbors":["bioenergetics","metabolism","thermodynamics","production functions","energy-budget models"]
+    },
+    {
+      "name":"Error-correction / transformation chain",
+      "chain":"Flaw → Reflection → Understanding → Correction → Greater Form",
+      "status":"conversation-derived learning/control chain",
+      "external_neighbors":["feedback control","Bayesian updating","error-correcting systems","adaptive learning"]
+    },
+    {
+      "name":"Potential-to-information loop",
+      "chain":"Potential → Labor → Fruit → Information → Improvement → Greater Potential",
+      "status":"conversation-derived recursive productivity/information chain",
+      "external_neighbors":["learning curves","endogenous growth","adaptive control","information feedback"]
+    },
+    {
+      "name":"Future reinterpretation loop",
+      "chain":"Future Understanding → Past Meaning → Restoration",
+      "status":"conversation-derived hermeneutic/temporal chain",
+      "external_neighbors":["Bayesian smoothing","retrospective inference","state estimation"],
+      "boundary":"Retrospective reinterpretation is not physical backward causation."
+    }
+  ],
+  "recommended_repairs":[
+    "Replace vague scalar superiority D_(n+1)>D_n with a defined partial order or objective functional.",
+    "Recover meanings and units for P_n,W_n,R_n,T_n before using the recursive update as mathematics.",
+    "Distinguish causal biological chains from symbolic developmental chains.",
+    "Link the feedback loops to Potato Dynamics as candidate subsystems, not as new fundamental forces."
+  ]
+}
