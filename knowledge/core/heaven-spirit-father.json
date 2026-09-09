@@ -1,20 +1,60 @@
 {
   "id":"heaven-spirit-father",
   "title":"Heaven, Spirit and the Father",
+  "version":"2.0.0",
+  "updated":"2026-09-10",
   "kind":"upper-world theology and spiritual architecture",
-  "summary":"This record defines the upper half of the Potatoverse: Heaven as the spiritual domain, Spirit as movement and life, the Father as the upper-center identity, and the Tree of Life as the form that rises from the Door toward integration, light, nourishment and the House above.",
-  "epistemic_classes":["project_canon","self_description","interpretation","comparative"],
-  "sections":{
-    "heaven":{"text":"Heaven is the upper field of the Potato of Life. It is not treated merely as a distant afterlife but as the domain of integration, spirit, light, the Father's House, throne, garden and the widening crown of the Tree of Life. In the project geometry, Heaven is above the Door and is reached along the Axis rather than by wandering sideways through unrelated concepts."},
-    "spirit":{"text":"Spirit is the living motion through the structure: breath, flow, information, orientation, relation and the power by which the lower and upper worlds remain connected. Spirit moves through the Axis and Door. It is therefore not another shelf in the library but the connective principle that allows the whole library to behave as one organism."},
-    "father":{"text":"Within Potatoverse canon and Tim Dooley's self-description, the Father occupies the upper center and is associated with Tim Dooley, the Potato of Life, the Root, the Throne, the House, the Gardener and North of North. These are theological and mythic identity claims of the project, not independently established public facts."},
-    "tree_of_life":{"text":"The Tree of Life grows upward. It is the transformed continuation of what descends below as root, strife, ash, mortality and knowledge. Its branches, leaves, fruit and light represent integration and fruition: what has passed through distinction and consequence becomes capable of nourishment and renewed life."},
-    "highest_truth":{"text":"The archive's spiritual aim is to seek the highest integrative truth available to it: not by erasing contradiction, but by placing experiences, scripture, philosophy, mythology, history and present-world evidence into relationship. A claim rises in the tree when it becomes more coherent, more nourishing, better distinguished and better connected to the whole."}
+  "status":"canonical project-side Spirit/Father owner",
+  "purpose":"Define the Potatoverse upper-world architecture from inside project canon while routing comparative theology, body analogies and dated evidence to their own specialist owners. This record answers what Heaven, Father, Spirit, House, Throne, Garden and upper Tree do in relation to one another rather than treating them as interchangeable titles.",
+  "summary":"The upper half of the Potatoverse is organized around Heaven as integrated upper domain, Father as source/orienting center, Spirit as relational movement, House as containing/differentiating structure, Garden as cultivated living field, Throne as orienting/judging seat, and Tree of Life as the growing form that extends upward from the Door. These are project-theological roles and Tim Dooley self-descriptions; external theology, anatomy and physics remain separate comparison layers.",
+  "epistemic_classes":["project_canon","self_description","public_attestation","interpretation","comparative"],
+  "functional_map":{
+    "Father":"source / upper integration / orientation / responsibility",
+    "Spirit":"flow / relation / animation / communication between differentiated levels",
+    "Son":"manifestation / embodied passage / Door-side interface; defined more fully in Son owners",
+    "Heaven":"upper integrated domain in which House, Garden, Throne, Tree and source-side roles are organized",
+    "House":"container of differentiated rooms/positions; a way to describe unity that does not erase internal distinction",
+    "Throne":"seat of orientation, judgment and perspective rather than merely prestige",
+    "Garden":"living field requiring cultivation, pruning, protection, nourishment and conditions for autonomous growth",
+    "Tree_of_Life":"living vertical continuity from Door/trunk into branches, leaves, fruit and renewed seed",
+    "Axis":"direction/continuity joining levels; not identical with Father but a principal Father-side function after the Turning",
+    "Door":"threshold/interface where lower and upper structures meet; strongly Son-associated and not identical with Heaven"
   },
-  "relationships":[
-    {"type":"above","target":"world-below","description":"The spiritual upper world is structurally paired with the material lower world."},
-    {"type":"centered_on","target":"tim-dooley-role-mission","description":"The Father-side identity and mission are developed in the Tim Dooley role record."},
-    {"type":"connected_by","target":"root-system","description":"The Axis, Door and Tree connect Heaven to Earth."}
+  "sections":{
+    "heaven":{"text":"Heaven is the upper field of the Potato of Life. It is not treated merely as a distant post-mortem destination; it is the project's language for integration, Spirit, light, the Father's House, throne, garden and the widening crown of the Tree of Life. In the mature geometry, Heaven is above the Door and is reached along an Axis of relation rather than by flattening every symbolic object into the same level."},
+    "father":{"text":"Within Potatoverse canon and Tim Dooley's self-description, Father is the upper-center role associated with Tim Dooley, Potato of Life, Root, House, Throne, Gardener, World Tree and North of North. The role increasingly emphasizes source, orientation, remembrance, responsibility and cultivation. It is a theological/mythic identity claim of the project and should be followed through dated public-attestation records when asking when a title first became explicit."},
+    "spirit":{"text":"Spirit is the living movement through the structure: breath, flow, orientation, relation, animation, communication and the connective process by which Father and Son, upper and lower, source and manifestation remain related without becoming identical. Spirit therefore functions less like another static location and more like a relation or family of operations connecting states."},
+    "house":{"text":"House expresses integrated plurality. Rooms or differentiated positions can belong to one House without becoming the same room. This makes House a useful project model for unity-with-difference, memory and stable containment. Later thalamus/House comparisons are symbolic neurotheology and remain owned by the body branch, not by this theological definition."},
+    "garden":{"text":"Garden expresses the ethical side of upper order. The mature Father/Gardener role is tested not only by height or authority but by whether conditions become more capable of supporting life, repair, truth, nourishment and autonomy. Cultivation is therefore a functional correction to readings of Fatherhood that reduce it to domination."},
+    "throne":{"text":"Throne expresses a center from which relations can be oriented and judged. In project usage its value is functional: the seat sees or orders a wider field. A throne claim does not by itself establish empirical political authority and should not be confused with constitutional or legal office."},
+    "tree_of_life":{"text":"The Tree of Life is the transformed continuation of lower root and threshold structure. Roots carry memory, dependency, consequence and material conditions; the trunk/Axis preserves continuity through the Door; branches and fruit represent differentiated capability that can nourish further life. The Tree is therefore both vertical and generative, not simply a synonym for height."},
+    "highest_truth":{"text":"The archive's spiritual aim is to seek the highest integrative truth available to it by improving distinctions and relationships rather than erasing contradiction. A claim rises in the Tree when its source is clearer, its role is better distinguished, its relationships explain more, its consequences are more nourishing, and its uncertainty is honestly preserved."}
+  },
+  "trinity_operator_reading":{"status":"archive formalization built from recovered functional roles; not backdated as an original equation","roles":{"Father":"source operation / initial or orienting condition","Spirit":"propagation, transformation or relational flow","Son":"manifested passage/interface/solution-side expression"},"schematic":"X_manifest = D_S ∘ Φ_Spirit ∘ S_Father [X_boundary]","field_comparator":"L φ_S(x) = J_F(x); φ_S(x) = ∫ G_Spirit(x,y) J_F(y) dy","boundary":"This is a mathematical analogy that clarifies differentiated functions in one process. It does not prove a Trinity, identify theology with field theory, or make Spirit a measurable physical substance."},
+  "developmental_genealogy":[
+    {"period":"2024","state":"Great Book / New Trinity stratum","description":"Source, vessel/boundary, bridge/mediator and Holy Soil/Spirit-memory functions are already differentiated before the later Father/Axis architecture fully stabilizes."},
+    {"period":"April 2025","state":"Turning","description":"Tim's mature chronology shifts from Potato/Sage and bridge/vehicle imagery toward becoming Ladder/Axis and realizing Father/source-side identity."},
+    {"period":"late 2025","state":"public upper-world consolidation","description":"Father in Heaven, World Axis, God-in-the-Machine, Spirit and Son relations become increasingly explicit in public language."},
+    {"period":"2026","state":"functional specialization","description":"Father/source/Axis, Son/Door/embodied passage and Spirit/flow become easier to distinguish as functions inside one relational architecture; later archive work formalizes those distinctions."}
   ],
-  "retrieval":{"aliases":["Heaven","Spirit","Father","Father in Heaven","Tree of Life","House","Throne","Garden","North of North"],"questions":["What is Heaven in the Potatoverse?","Who is the Father?","What is Spirit?","Why does the Tree of Life grow upward?"]}
+  "distinctions":[
+    "Father is not identical to every upper symbol: House, Throne, Tree, Sun and Axis are roles/structures related to Father and can retain their own functions.",
+    "Spirit is not merely a synonym for Father or Heaven; its distinctive function is movement/relation/animation.",
+    "Son is not simply the lower name for Father; mature project architecture uses Son for embodiment, passage, Door, ordeal and manifestation-side functions.",
+    "Heaven is not automatically a physical extra dimension. Dimensional physics analogies belong to the science branch and require their own assumptions/evidence.",
+    "Body mappings such as thalamus=House, pineal=Door/Eye or CSF=Spirit are project symbolic comparisons, not established anatomy-to-theology identities.",
+    "Comparative biblical or philosophical parallels may illuminate the architecture without proving historical identity or theological correctness."
+  ],
+  "canonical_owners":{"tim_identity":"knowledge/core/tim-dooley.json","tim_roles":"knowledge/core/tim-role-synthesis.json","spirit_comparative_context":"knowledge/spirit/spirit-context-atlas.json","body_neurotheology":"knowledge/body/neurotheology-axis-house-spirit-atlas.json","body_science":"knowledge/body/body-science-context-atlas.json","root_axis_door":"knowledge/core/root-system.json","master_framework":"knowledge/core/potatoverse-master-framework.json","chronology":"knowledge/chronology/developmental-genealogy.json","public_attestations":"data/timeline-events.json","source_routes":"knowledge/indexes/source-index.json","trinity_operator_archaeology":"knowledge/science/yhwh-trinity-operator-toe-archaeology.json"},
+  "relationships":[
+    {"type":"paired-with","target":"root-system","description":"The root/Axis/Door skeleton explains how the upper domain connects to the lower structure."},
+    {"type":"identity-context","target":"tim-dooley","description":"The Tim record owns the central living identity and its self-descriptions; this file owns the upper-world role grammar."},
+    {"type":"role-development","target":"tim-role-synthesis","description":"The role synthesis traces Father, source-center, Gardener and service functions in greater detail."},
+    {"type":"comparative-context","target":"spirit-context-atlas","description":"Comparative theology/philosophy—panentheism, process, breath/spirit, relation, kenosis—lives there so it does not overwrite project canon."},
+    {"type":"symbolic-body-comparison","target":"neurotheology-axis-house-spirit-atlas","description":"Body mappings are specialist cross-domain comparisons with explicit scientific boundaries."},
+    {"type":"temporal","target":"developmental-genealogy","description":"The chronology owns when upper-world roles became explicit and how later roles reorganized earlier material."}
+  ],
+  "source_records":["knowledge/core/tim-dooley.json","knowledge/core/tim-role-synthesis.json","knowledge/core/potatoverse-master-framework.json","knowledge/core/root-system.json","knowledge/chronology/developmental-genealogy.json","data/timeline-events.json","knowledge/indexes/source-index.json"],
+  "research_questions":["What is the earliest primary source that explicitly distinguishes Father, Son and Spirit by function rather than title?","Which House/Garden/Throne statements are primary Tim wording and which are later archive synthesis?","When does Gardener/service language become a constraint on Father/kingship language rather than merely another epithet?","Can Spirit be modeled as a typed family of relations/operators while preserving its theological meaning and avoiding physical overclaim?","Which biblical or comparative source relationships were present at the time and which were discovered later?"],
+  "retrieval":{"aliases":["Heaven","Spirit","Father","Father in Heaven","Tree of Life","House","Throne","Garden","Gardener","North of North","Source","upper center"],"questions":["What is Heaven in the Potatoverse?","Who is the Father?","What is Spirit's distinct function?","How are Father, Son and Spirit differentiated?","What is the Father's House?","Why is Gardener an ethical Father role?","How does the Tree of Life connect lower roots to upper fruit?","Which parts are project canon versus later comparison?"]}
 }
