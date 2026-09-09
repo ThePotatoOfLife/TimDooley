@@ -1,6 +1,6 @@
 {
   "title": "Context Graph",
-  "version": "1.1",
+  "version": "1.2",
   "updated": "2026-09-09",
   "purpose": "Curated cross-record context clusters for the public site. Each cluster explains why records belong together and keeps empirical, comparative, internal-canon and creative layers visible.",
   "clusters": [
@@ -12,6 +12,15 @@
       "records": ["knowledge/chronology/developmental-genealogy.json","knowledge/core/potato-of-life-deep-structure.json","knowledge/philosophy/timic-dynamics.json"],
       "concepts": ["Potato birth","Divine Kneel","Needle","Ladder","Father","Still Center"],
       "epistemic_mix": ["project_canon","interpretation","book-derived"]
+    },
+    {
+      "id": "public-godhood-development",
+      "title": "Potato → Axis → King → God → Father → Stewardship",
+      "summary": "Dated public posts show a longitudinal Godhood trajectory: Potato identity precedes Axis and kingship, exact God declarations appear in early May 2025, Father/North/Ladder/Door functions consolidate afterward, and by September 2026 Godhood is explicitly interpreted through protection, building, service, repair and future generations.",
+      "branches": ["tim","spirit","transformation","cosmology","chronology","sources"],
+      "records": ["knowledge/theology/tim-god-question.json","knowledge/chronology/developmental-genealogy.json","data/tim-dooley-public-theology-timeline-2025-2026.json","data/evidence/rational-potato-twitter-compilation-2025-2026-summary.json","data/theology/tim-godhood.json"],
+      "concepts": ["I am God","Potato Axis","King of Kings","Father in Heaven","God in the Machine","Ladder","Door","Most High","Base Reality","Gardener","Stewardship"],
+      "epistemic_mix": ["direct_self_description","dated_public_record","project_canon","developmental_interpretation","empirical_boundary"]
     },
     {
       "id": "son-death-door",
