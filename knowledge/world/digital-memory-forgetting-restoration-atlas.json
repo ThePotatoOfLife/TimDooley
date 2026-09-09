@@ -1,0 +1,125 @@
+{
+  "id":"digital-memory-forgetting-restoration-atlas",
+  "title":"Digital Memory, Forgetting, Stigma & Restorative Passage — Archive Ethics Atlas",
+  "updated":"2026-09-09",
+  "status":"comparative digital-memory / legal / ethical / project synthesis",
+  "purpose":"Give the archive a serious theory of persistence, forgetting, expiration, rehabilitation, correction reach, collective memory and restorative passage so 'archive everything' does not silently become 'freeze every person forever'.",
+  "epistemic_rule":"Legal rights, platform practices, psychological effects and Potatoverse symbolism remain distinct. The right to be forgotten is jurisdiction-specific and not a universal command to erase public history. Archive ethics must balance accuracy, public interest, accountability, privacy, rehabilitation and temporal relevance.",
+  "central_epiphany":"Digital archives reverse the old scarcity of memory. The problem is no longer only how to preserve the past, but how to stop preserved information from impersonating the present.",
+  "memory_layers": {
+    "event_memory":"what happened at a particular time",
+    "interpretive_memory":"what contemporaries believed it meant",
+    "institutional_memory":"records maintained by organizations, courts, archives or platforms",
+    "search_memory":"what retrieval systems surface first when a name/topic is queried",
+    "algorithmic_memory":"what ranking/recommendation systems repeatedly reactivate",
+    "collective_memory":"shared representations of the past maintained across a community",
+    "self_memory":"the subject's own account of continuity/change",
+    "project_rule":"Never let one layer stand in for all the others."
+  },
+  "digital_collective_memory": {
+    "research_context":"Recent digital-memory scholarship distinguishes digitized collective memory from collective memory transformed by digital platforms, trace data and algorithmic curation.",
+    "archive_effect":"The digital archive is dynamic: old material is continuously reordered through search, links, sharing and platform design rather than simply sitting inert in storage.",
+    "project_translation":"Archive is not passive memory. Retrieval architecture is part of meaning production."
+  },
+  "memory_forgetting_dialectic": {
+    "problem":"Human social life historically depended on both remembering and forgetting. Digital systems lower the cost of remembering and raise the cost of social expiration.",
+    "stainforth_relation":"European digital-memory debates show tension between preservation/indexing and rights to delisting/forgetting.",
+    "project_question":"What should remain historically preserved while becoming less dominant in present identity retrieval?"
+  },
+  "right_to_be_forgotten": {
+    "legal_context":"European law and policy developed mechanisms for delisting certain name-linked search results under defined conditions; this does not necessarily delete the underlying publication.",
+    "important_distinction":"Delisting ≠ deletion ≠ falsification ≠ historical erasure.",
+    "archive_translation":"A record can remain preserved while its current discoverability, prominence or identity-binding force changes.",
+    "public_interest_test":"Consider role of subject, accuracy, age of information, seriousness, ongoing relevance, public interest and legal obligations."
+  },
+  "temporal_truth": {
+    "epiphany":"A statement may be historically true and presently misleading at the same time.",
+    "example_structure":"In year t0, person occupied role/state X. At t1, circumstances changed. A search result that presents X without date/context converts historical truth into current misrepresentation.",
+    "required_fields":["event_date","publication_date","last_verified","current_status","superseded_by","review_date","historical_context","present_relevance"]
+  },
+  "archive_half_life": {
+    "definition":"How long an item continues to materially shape present attention/reputation after publication.",
+    "drivers":["search ranking","link density","platform recommendation","newsworthiness","memetic portability","copying/mirroring","target reactivity","institutional citation"],
+    "formalization":"Influence(t)=InitialReach × Persistence × Rediscovery(t) × RankingWeight × ContextLoss",
+    "insight":"Two equally old records can have radically different social half-lives."
+  },
+  "stigma_packet": {
+    "definition":"A compact label, screenshot, accusation, meme or summary that travels more easily than the full historical context.",
+    "chain":"complex person → compressed label → portable artifact → repeated retrieval → expectation → selective interpretation",
+    "risk":"Compression creates asymmetric mobility: stigma moves faster than correction because correction often requires more context.",
+    "countermeasure":"Attach date, evidence status, correction state, source independence and current relevance to portable summaries."
+  },
+  "correction_asymmetry": {
+    "problem":"Original accusations, memes or headlines can be more emotionally salient and widely distributed than later corrections.",
+    "measurement":"CorrectionReachRatio = audience_reached_by_correction / audience_reached_by_original",
+    "archive_rule":"A correction should be linked bidirectionally from the original record and surfaced in current-status views.",
+    "ritual_relation":"Correction needs its own social ceremony/status signal or it may remain informationally weaker than accusation."
+  },
+  "historical_preservation_vs_current_identity": {
+    "principle":"The archive should preserve history without forcing historical roles to remain current identity labels.",
+    "implementation":["dated role assertions","status transitions","supersession links","prominent corrections","separate historical and current summaries","review dates for sensitive labels","avoid SEO titles that freeze obsolete states"],
+    "potatoverse_relation":"Door is the transition operator that lets historical state remain remembered while current identity changes."
+  },
+  "restorative_justice_online": {
+    "research_context":"Restorative approaches to online harm emphasize victim needs, offender accountability, understanding harm, repair and—where appropriate—reintegration rather than content removal alone.",
+    "garden_translation":"Garden asks what conditions allow damaged relations or participants to regain future capacity.",
+    "steps":["identify harm","hear affected parties","establish accountable facts","define repair obligations","complete repair where possible","record correction/restitution","permit role transition","monitor recurrence"],
+    "boundary":"Restorative processes are not always appropriate, safe or desired; serious abuse may require separation, legal process or protective measures."
+  },
+  "restorative_door": {
+    "definition":"A socially legible passage from condemned/current role to historical/changed status when evidence supports change.",
+    "requirements":["acknowledgment where appropriate","specific repair","observable change","time","independent verification when possible","clear archive update"],
+    "anti_pattern":"Forgiveness without factual clarity can erase victims; permanent condemnation without transition can erase change.",
+    "equilibrium":"remember accurately + update honestly + preserve agency"
+  },
+  "public_shaming": {
+    "research_context":"Recent philosophy/technology work distinguishes legitimate public accountability from wrongful or disproportionate online shaming and asks what duties platforms have in reducing the latter.",
+    "archive_tests":["Is the information accurate?","Is public exposure proportionate?","Is the subject a public figure or private individual?","Is the conduct current?","Does circulation serve accountability or spectacle?","Can corrections propagate?","Is punishment temporally bounded?"],
+    "farm_relation":"Public shaming becomes Farm-like when the punishment itself becomes renewable content."
+  },
+  "collective_memory_governance": {
+    "epiphany":"Memory governance is power: deciding what is preserved, searchable, ranked, summarized, corrected and expired shapes collective identity.",
+    "archive_eye":"The Eye should therefore inspect not only truth/falsity but retrieval dominance, recency, context and correction state.",
+    "ethical_target":"High historical fidelity with low unnecessary identity capture."
+  },
+  "forgetting_types": {
+    "natural_forgetting":"decline in social salience over time",
+    "technical_expiry":"automatic deletion or reduced prominence after a period",
+    "legal_delisting":"removal from certain name-based search results under law/policy",
+    "contextual_forgetting":"old material remains but is demoted behind current context",
+    "forgiveness":"moral/social transformation of relation without factual erasure",
+    "suppression":"concealment of relevant information; may be improper",
+    "erasure":"destruction/removal of historical record",
+    "rule":"Do not conflate these."
+  },
+  "archive_design_principles": [
+    "Preserve provenance and chronology.",
+    "Separate historical truth from current-status claims.",
+    "Make corrections as machine-readable as accusations.",
+    "Track source independence.",
+    "Attach review/expiry metadata to sensitive identity labels.",
+    "Distinguish delisting from deletion.",
+    "Keep public-interest rationale explicit.",
+    "Represent restitution and repair events as first-class graph edges.",
+    "Allow role/status transitions.",
+    "Never use archival persistence itself as proof of present relevance."
+  ],
+  "metrics": {
+    "ArchiveHalfLife":"duration of material reputational influence",
+    "CorrectionReachRatio":"correction audience / original audience",
+    "CurrentnessScore":"recency + latest verification + unresolved status",
+    "ContextLoss":"degree to which retrieved artifact lacks original setting",
+    "IdentityCaptureRisk":"label dominance × archive persistence × correction asymmetry × context loss",
+    "RestorationScore":"repair completion + verified change + correction visibility + role transition"
+  },
+  "sources": [
+    {"topic":"collective memory in the digital age","url":"https://pubmed.ncbi.nlm.nih.gov/36167450/","class":"scholarly_review"},
+    {"topic":"digital memory ontology","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC10509603/","class":"peer_reviewed"},
+    {"topic":"collective memory and social media","url":"https://pubmed.ncbi.nlm.nih.gov/40582034/","class":"peer_reviewed_review"},
+    {"topic":"EU memory and right to be forgotten","url":"https://journals.sagepub.com/doi/10.1177/17506980211044707","class":"peer_reviewed"},
+    {"topic":"right to be forgotten measurement","url":"https://research.google/pubs/five-years-of-the-right-to-be-forgotten/","class":"conference_empirical"},
+    {"topic":"restorative justice and online harm","url":"https://www.brookings.edu/articles/the-promise-of-restorative-justice-in-addressing-online-harm/","class":"policy_research"},
+    {"topic":"online public shaming","url":"https://link.springer.com/article/10.1007/s13347-025-01031-y","class":"peer_reviewed_philosophy_technology"}
+  ],
+  "connections":["spiritual-war-information-war","mud-karma-system","farm-sektur-attention-extraction-ecology","ritual-mimesis-scapegoat-collective-ecology","archive-epistemics","source-index","Door","Garden","chronology"]
+}

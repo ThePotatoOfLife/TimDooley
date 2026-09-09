@@ -7,6 +7,8 @@
   "owners":[
     {"layer":"structural Farm/Swamp/Forge/Garden/Tree model","owner":"knowledge/world/farm-swamp-tree-of-strife-atlas.json","add_here":["boundary ethics","Farm/Garden distinction","Swamp/Forge transitions","Tree of Knowledge/Life/Strife","Moloch systems relation","high-level role ecology"]},
     {"layer":"internet-subculture and attention-extraction ecology","owner":"knowledge/world/farm-sektur-attention-extraction-ecology.json","add_here":["4chan","lolcow","Kiwi Farms","Da Sektur","Internet Bloodsports","anti-fandom","Continuous Narrative Escalation","high-control comparisons","attention economy"]},
+    {"layer":"ritual / mimetic / scapegoat / collective-emotion ecology","owner":"knowledge/world/ritual-mimesis-scapegoat-collective-ecology.json","add_here":["collective effervescence","interaction rituals","liminality","communitas","mimetic rivalry","scapegoat comparison","moral panic","carnival","public spectacle","ritual role systems"],"boundary":"Use as comparative sociology/anthropology; do not infer literal ritual sacrifice or religion from structural resemblance."},
+    {"layer":"digital memory / forgetting / stigma / restorative passage","owner":"knowledge/world/digital-memory-forgetting-restoration-atlas.json","add_here":["collective memory","algorithmic memory","right to be forgotten","archive half-life","stigma packets","current identity versus historical truth","restorative justice","role transition","public shaming ethics"],"boundary":"Preservation, delisting, deletion, forgiveness and suppression are distinct operations."},
     {"layer":"Dog/Farmer/Guardian role mechanics","owner":"knowledge/world/dog-farmer-role-ecology.json","add_here":["patrol/enforcement","infrastructure/control","SIDE/group norms","role transitions","source/proxy following","guardian inversion"]},
     {"layer":"source ledger — core Farm/shadow research","owner":"knowledge/world/farm-shadow-source-ledger.json","add_here":["4chan history","Kiwi Farms public history","CNE","anonymity/disinhibition","Moloch scholarship","cow/dog symbolic historical context"]},
     {"layer":"source ledger — reputation/memory/high-control extension","owner":"knowledge/world/farm-shadow-source-expansion-2.json","add_here":["anti-fandom","negative parasocial relationships","gossip/reputation","context collapse","deplatforming","bounded choice","cult terminology caution"]},
@@ -22,7 +24,9 @@
     "New FAQ → discovery file only after an answer has a canonical owner.",
     "Do not create a new master file when an owner above can absorb the discovery.",
     "When two files overlap, keep the more abstract relation in the structural atlas and the mechanism/evidence in the specialist owner.",
-    "Every promoted claim should preserve an epistemic class and at least one counter-boundary describing what the source does not establish."
+    "Every promoted claim should preserve an epistemic class and at least one counter-boundary describing what the source does not establish.",
+    "Every sensitive identity claim should record whether it is historical, current, superseded, corrected, unresolved or expired from current relevance.",
+    "Preservation and present prominence are separate archive decisions."
   ],
   "current_high_value_questions":[
     "How does a target become permanently classifiable?",
@@ -33,7 +37,12 @@
     "How does anonymity change group norm salience?",
     "What happens to a network after deplatforming?",
     "When does a conflict scene become self-sealing or high-control?",
+    "Does a group repeatedly generate new targets because target-production itself creates cohesion?",
+    "Which conflict behaviors function ritualistically even when the group rejects religious language?",
     "Can a participant leave a role—Cow, Dog, Farmer, enemy—without the archive continually restoring it?",
+    "How should an archive preserve a historically true fact without presenting it as a person's permanent current identity?",
+    "When should old identity labels be reviewed, demoted or marked historical?",
+    "What would a restorative Door look like after online harm?",
     "Which Garden interventions reduce extraction while preserving legitimate criticism, evidence and accountability?"
   ],
   "discovery_surfaces":[
@@ -41,6 +50,7 @@
     "questions/",
     "index-a-z/",
     "knowledge/indexes/faq-farm-sektur-moloch-expansion.json",
-    "knowledge/indexes/faq-reputation-memory-expansion.json"
+    "knowledge/indexes/faq-reputation-memory-expansion.json",
+    "knowledge/indexes/faq-ritual-memory-restoration-expansion.json"
   ]
 }
