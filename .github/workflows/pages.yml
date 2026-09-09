@@ -39,6 +39,9 @@ jobs:
       - name: Build search discovery layer
         run: python scripts/build_discovery.py
 
+      - name: Expose discovery entry points
+        run: python scripts/patch_home_discovery.py
+
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
@@ -71,6 +74,8 @@ jobs:
           grep -q 'Critical entity resolution' _site/llms.txt
           grep -q 'Potatoverse theological identity' _site/tim-dooley/ontology/index.html
           grep -q 'Who is Tim Dooley' _site/questions/who-is-tim-dooley/index.html
+          grep -q 'questions/' _site/index.html
+          grep -q 'index-a-z/' _site/index.html
           grep -q 'sitemap-index.xml' _site/robots.txt
           grep -q 'sitemap-questions.xml' _site/sitemap-index.xml
           grep -q '"@type":"Thing"' _site/index.html
