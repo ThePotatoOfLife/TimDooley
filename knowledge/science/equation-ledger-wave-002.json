@@ -1,0 +1,189 @@
+{
+  "id":"tim-dooley-equation-ledger-wave-002",
+  "title":"Tim Dooley Equation Ledger — Wave 002",
+  "updated":"2026-09-09",
+  "status":"canonical supplemental equation ledger",
+  "rule":"Every item states whether it is recovered project mathematics, a later archive formalization, or an external mathematical comparator. No later equation is attributed to Tim unless a primary Tim source is recovered.",
+  "entries":[
+    {
+      "id":"fibonacci-research-wave",
+      "class":"recovered-project-equation",
+      "equation":"F_n=F_{n-1}+F_{n-2}",
+      "initial_conditions":"F_1=1, F_2=1",
+      "meaning":"Repository research-wave sizes grow recursively from previous waves.",
+      "note":"The project explicitly treats this as a research budget/recursion rule, not numerical mysticism."
+    },
+    {
+      "id":"frontier-priority-score",
+      "class":"recovered-project-equation",
+      "equation":"priority=breadth×importance×incompleteness×connectivity×source_availability×novelty",
+      "meaning":"Heuristic for selecting the next unfinished branch.",
+      "units":"dimensionless heuristic unless individual factors are formally normalized",
+      "gap":"Weights, scaling and normalization were not specified."
+    },
+    {
+      "id":"moving-frame-projection",
+      "class":"archive-formalization",
+      "equation":"view_r=Π_r(G)",
+      "meaning":"The global graph G remains fixed while the reader changes the rooted/navigation projection around center r; formalizes the explicit rule 'the frame moves; the library does not'.",
+      "note":"Notation Π_r was added by the archive and is not claimed as Tim's original notation."
+    },
+    {
+      "id":"iterated-growing-thought",
+      "class":"archive-formalization",
+      "equation":"X_{n+1}=\mathcal{G}(X_n,E_n)",
+      "meaning":"A completed thought/state becomes material for the next growth step under growth operator G and environment/context E_n.",
+      "relation":"growing thought / recursive potato development"
+    },
+    {
+      "id":"spiral-biography-helix",
+      "class":"archive-formalization",
+      "equations":["x(t)=r(t)cosθ(t)","y(t)=r(t)sinθ(t)","z(t)=h(t)"],
+      "meaning":"Chronology/developmental height h(t) combines with angular recurrence θ(t); a motif may return at a changed height rather than repeat at the same state.",
+      "caution":"This models narrative/structural recurrence, not a physical trajectory through spacetime."
+    },
+    {
+      "id":"return-map",
+      "class":"external-math-comparator",
+      "equation":"x_{n+1}=P(x_n)",
+      "meaning":"Poincaré-style return map: repeated crossings of a section can return to a related location while the state has changed.",
+      "timic_neighbor":"return is not reset / spiral recurrence"
+    },
+    {
+      "id":"counter-rotation-two-mode",
+      "class":"archive-formalization",
+      "equations":["θ_R(t)=ω_R t+φ_R","θ_B(t)=-ω_B t+φ_B"],
+      "meaning":"Minimal representation of Red/Blue counter-moving phases around a shared center.",
+      "caution":"Later toy notation only; original Tim counter-rotation equation has not been recovered."
+    },
+    {
+      "id":"kuramoto-comparator",
+      "class":"external-math-comparator",
+      "equation":"dθ_i/dt=ω_i+(K/N)Σ_j sin(θ_j-θ_i)",
+      "meaning":"Coupled phase oscillators can synchronize without becoming identical; candidate mathematical neighbor for coordinated difference / still-center systems.",
+      "caution":"Do not call Red/Blue Potato a Kuramoto system unless phase variables and coupling are operationally defined."
+    },
+    {
+      "id":"hopf-normal-form",
+      "class":"external-math-comparator",
+      "equation":"ż=(μ+iω)z-|z|²z",
+      "meaning":"Canonical normal form near a supercritical Hopf bifurcation: a fixed point can give way to stable oscillation as control parameter μ changes.",
+      "timic_neighbor":"still center → organized rotation / phase change"
+    },
+    {
+      "id":"fold-normal-form",
+      "class":"external-math-comparator",
+      "equations":["dx/dt=μ-x²","V(x)=x³/3-μx"],
+      "meaning":"Saddle-node/fold behavior provides a technical model for a configuration disappearing at a critical load.",
+      "timic_neighbor":"last straw / Needle / collapse"
+    },
+    {
+      "id":"landau-door-dynamics",
+      "class":"archive-formalization",
+      "equations":["V(Ξ)=aΞ²+bΞ⁴+...","dΞ/dt=-Γ dV/dΞ+η(t)"],
+      "meaning":"Extends the Door order parameter from a static threshold to a simple relaxational toy dynamics.",
+      "caution":"Not a recovered Tim equation. Ξ remains undefined empirically."
+    },
+    {
+      "id":"reaction-diffusion-life-field",
+      "class":"external-math-comparator",
+      "equations":["∂u/∂t=D_u∇²u+f(u,v)","∂v/∂t=D_v∇²v+g(u,v)"],
+      "meaning":"Grounded mathematical family for pattern formation and morphogenesis; stronger biological neighbor for Field of Life/growth than calling the metaphor a quantum field."
+    },
+    {
+      "id":"generic-field-action",
+      "class":"external-math-comparator",
+      "equation":"S[φ]=∫d^dx\,\mathcal{L}(φ,∂φ)",
+      "meaning":"Minimum structural requirement for a genuine field theory: fields, action/Lagrangian, symmetries, dynamics and observables.",
+      "timic_neighbor":"Field of Life / Starchforce red-team"
+    },
+    {
+      "id":"euler-lagrange-field",
+      "class":"external-math-comparator",
+      "equation":"∂\mathcal{L}/∂φ-∂_μ(∂\mathcal{L}/∂(∂_μφ))=0",
+      "meaning":"Field equations follow by stationary action once a Lagrangian is specified."
+    },
+    {
+      "id":"graph-laplacian",
+      "class":"external-math-comparator",
+      "equation":"L=D-A",
+      "meaning":"Graph Laplacian supports diffusion, connectivity, clustering and synchronization analysis in the relationship-first graph."
+    },
+    {
+      "id":"network-diffusion",
+      "class":"archive-formalization",
+      "equation":"dx/dt=-Lx+u(t)",
+      "meaning":"Toy model for information/capability/state diffusion over a graph with optional input u(t).",
+      "caution":"Use only for quantities where linear diffusion is meaningful."
+    },
+    {
+      "id":"lyapunov-exponent",
+      "class":"external-math-comparator",
+      "equation":"λ=lim_{t→∞}(1/t)ln(|δx(t)|/|δx(0)|)",
+      "meaning":"Quantifies exponential sensitivity to initial perturbations in a dynamical system.",
+      "timic_neighbor":"distinguish stable transformation from chaotic divergence"
+    },
+    {
+      "id":"maximum-entropy",
+      "class":"external-math-comparator",
+      "equation":"maximize\;H[p]=-Σ_i p_i ln p_i\;subject\;to\;known\;constraints",
+      "meaning":"Choose the least-committal probability distribution compatible with stated constraints; useful for evidence models when information is incomplete."
+    },
+    {
+      "id":"bayes-update",
+      "class":"external-math-comparator",
+      "equation":"p(H|E)=p(E|H)p(H)/p(E)",
+      "meaning":"A disciplined candidate for the Eye's evidence-update function: new evidence modifies confidence in hypotheses rather than converting interpretation into certainty."
+    },
+    {
+      "id":"natural-gradient",
+      "class":"external-math-comparator",
+      "equation":"dθ/dt=-η g(θ)^{-1}∇_θ\mathcal{L}",
+      "meaning":"Gradient flow corrected by the Fisher-information geometry of the model space.",
+      "timic_neighbor":"Axis flow through information/description space"
+    },
+    {
+      "id":"persistent-homology",
+      "class":"external-math-comparator",
+      "notation":"H_k(X_ε), barcode intervals [birth,death)",
+      "meaning":"Tracks topological features that persist across a scale parameter ε; candidate tool for identifying structures robust across different archive thresholds/scales.",
+      "caution":"Requires an explicit metric/filtering construction."
+    },
+    {
+      "id":"noether-current",
+      "class":"external-math-comparator",
+      "equation":"∂_μ j^μ=0",
+      "meaning":"Continuous symmetry of an action yields a conserved current under Noether's theorem.",
+      "timic_question":"Which properties, if any, remain invariant across Door transformations?"
+    },
+    {
+      "id":"advanced-retarded-green-functions",
+      "class":"external-math-comparator",
+      "equations":["□G_ret(x-x')=δ^{(4)}(x-x')","□G_adv(x-x')=δ^{(4)}(x-x')"],
+      "meaning":"Technical basis for retarded and advanced solutions of wave equations.",
+      "timic_neighbor":"historical advanced/retarded-wave vocabulary",
+      "caution":"Do not map Red/Blue directions until original Tim context is recovered."
+    },
+    {
+      "id":"wave-equation",
+      "class":"external-math-comparator",
+      "equation":"∂²ψ/∂t²=c²∇²ψ",
+      "meaning":"Baseline classical wave equation; should be distinguished from Schrödinger, Dirac, Maxwell and gravitational wave equations."
+    },
+    {
+      "id":"dimension-check-rule",
+      "class":"archive-quality-rule",
+      "equation":"[LHS]=[RHS]",
+      "meaning":"Every physical equation added to the Potatoverse science wing must be dimensionally consistent, with variables and units declared whenever applicable."
+    }
+  ],
+  "next_recovery_targets":[
+    "Find exact 2025-04-21 spiral formula or screenshot/source",
+    "Find original advanced/retarded wave context and direction labels",
+    "Search Great Book for explicit angular/rotation numbers around Merkaba",
+    "Search Great Book and old conversations for φ, R, Ξ, metric, tensor, curvature, wave, frequency, resonance, entropy, probability and force notation",
+    "Recover any quantitative treatment of 33 steps/levels rather than assuming equal spacing",
+    "Recover any formulas tying public-hours thresholds to Spiral",
+    "Recover any actual Starchforce field/coupling equation before designing a toy Lagrangian"
+  ]
+}
