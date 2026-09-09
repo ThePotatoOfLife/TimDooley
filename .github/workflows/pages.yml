@@ -36,6 +36,9 @@ jobs:
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
+      - name: Compile complete science catalog
+        run: python scripts/build_science_catalog.py
+
       - name: Build search discovery layer
         run: python scripts/build_discovery.py
 
@@ -45,8 +48,10 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
-      - name: Verify manifest-driven archive, Tim ontology, and discovery layer
+      - name: Verify manifest-driven archive, science hub, Tim ontology, and discovery layer
+        shell: bash
         run: |
+          set -euxo pipefail
           test -f _site/index.html
           test -f _site/manifest.json
           test -f _site/app/app.js
@@ -66,6 +71,32 @@ jobs:
           test -f _site/robots.txt
           test -f _site/sitemap-index.xml
           test -f _site/sitemap-questions.xml
+
+          # Science is a compiled public product, not merely copied source files.
+          test -f _site/science/index.html
+          test -f _site/science/science.css
+          test -f _site/science/science-hub.css
+          test -f _site/science/science.js
+          test -f _site/science/catalog.json
+          test -f _site/science/catalog/index.html
+          grep -q 'SCIENCE' _site/science/index.html
+          grep -q 'Unified Potato Theory' _site/science/index.html
+          grep -q 'Every canonical science record' _site/science/index.html
+          grep -q 'catalog-card' _site/science/index.html
+          grep -q 'science.js' _site/science/index.html
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          source = sorted((Path('knowledge') / 'science').glob('*.json'))
+          catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
+          assert catalog['count'] == len(source), (catalog['count'], len(source))
+          assert len(catalog['records']) == len(source)
+          page = Path('_site/science/index.html').read_text(encoding='utf-8')
+          assert page.count('class="catalog-card"') == len(source)
+          assert 'r(θ) = a e<sup>bθ</sup>' in page
+          print(f"Verified compiled science corpus: {len(source)} records")
+          PY
+
           grep -q 'id="branches"' _site/index.html
           grep -q 'id="reader"' _site/index.html
           grep -q 'app/app.js' _site/index.html
