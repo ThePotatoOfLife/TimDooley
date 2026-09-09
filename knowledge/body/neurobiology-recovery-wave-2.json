@@ -1,0 +1,140 @@
+{
+  "id":"neurobiology-recovery-wave-2",
+  "updated":"2026-09-09",
+  "status":"archive recovery + science cleanup + theology comparison",
+  "purpose":"Recover neurobiology, whole-body biology and chakra-adjacent material from earlier conversations and the Great Book, promote useful concepts into the project, and quarantine legacy overclaims instead of silently repeating them.",
+  "source_strata":[
+    {"source":"The Great Book Of Potato2.odt","period":"2024-era writing with later expanded chapters","value":"Contains a much broader Nexus-of-Being biology layer than the current public body map: thalamus, hypothalamus, pineal, third ventricle, CSF, claustrum, insula, hippocampus, amygdala, brainstem/arousal systems, endocrine axes, microbiome, BBB, glia, neurotransmitters, sleep, psychedelic-state discussion and more."},
+    {"source":"Indsatte text(2).txt","period":"later conversation/archive recovery","value":"Contains explicit user-side and assistant-side body-theology synthesis around 33 vertebrae, Axis/Atlas, five chakras, thalamus/Father, pineal/Son, optic chiasm/cross, ventricle/tomb and breath/nostrils; provenance must be separated line by line in future forensic recovery."}
+  ],
+  "promoted_clusters":[
+    {
+      "id":"trn-attention-wall",
+      "biology":"The thalamic reticular nucleus is a thin GABAergic sheet surrounding much of the thalamus. It receives thalamocortical/corticothalamic collaterals and sends inhibitory projections to thalamic nuclei, participating in attention, sensory selection and sleep-related thalamic rhythms.",
+      "project_use":"TRN = wall/gatekeeper/sieve around the Father's House. This is a strong architectural metaphor because the biology genuinely involves inhibitory modulation of thalamic traffic.",
+      "theology":"House walls / guarded threshold / discernment are better comparators than claims about spiritual frequencies.",
+      "legacy_claims_to_quarantine":["TRN literally filters low spiritual frequencies","people cannot perceive Tim because their TRN blocks divine code"],
+      "sources":["https://pubmed.ncbi.nlm.nih.gov/12194498/","https://pubmed.ncbi.nlm.nih.gov/12836172/"]
+    },
+    {
+      "id":"insula-interoception-inner-witness",
+      "biology":"The insula participates in interoception, salience, somatosensation, emotion, autonomic integration and aspects of self-related processing. Interoception is the nervous system's sensing and modelling of internal bodily states such as heartbeat, respiration, visceral state, temperature, tension and chemical milieu.",
+      "project_use":"Insula/interoception fills a major missing bridge between Heart, Gut, Breath, emotion and the observing House. It can represent the body's inward report stream rather than a new mystical organ.",
+      "theology":["heart language as inner orientation","body as Temple","discernment of inward state"],
+      "chakra_relation":"Useful empirical neighbor for subjective reports assigned to heart/navel/throat centers, without treating chakras as anatomical insula projections.",
+      "sources":["https://pubmed.ncbi.nlm.nih.gov/38395706/","https://pubmed.ncbi.nlm.nih.gov/39531201/","https://pubmed.ncbi.nlm.nih.gov/38531518/"]
+    },
+    {
+      "id":"autonomic-vagus-breath-body-loop",
+      "biology":"The autonomic nervous system coordinates cardiovascular, respiratory, digestive and other visceral functions through sympathetic and parasympathetic pathways. The vagus is a major bidirectional visceral nerve linking brainstem with heart, lungs and gut; much vagal traffic is afferent toward the brain.",
+      "project_use":"Breath/Heart/Gut/Spirit-flow should gain an autonomic layer: the body is continuously reporting upward and being regulated downward. This is a more rigorous biological analogue for ascent/descent than an imagined single energy tube.",
+      "chakra_relation":"Root/pelvic/navel/heart/throat subjective zones can be compared with real autonomic/interoceptive territories, but not identified with specific vagal branches or ganglia without evidence.",
+      "theology":"Breath as animation and inward/outward relation remains strongest in Genesis 2:7; autonomic physiology supplies bodily feedback rather than textual proof."
+    },
+    {
+      "id":"hypothalamus-pituitary-stewardship",
+      "biology":"The hypothalamus integrates homeostatic, autonomic, endocrine, circadian and motivational signals. It regulates pituitary output and interfaces with temperature, hunger, thirst, reproduction, stress and sleep-wake systems.",
+      "project_use":"Hypothalamus should be a Steward/Household-regulation node adjacent to but distinct from Thalamus/House. The older Great Book sometimes called the hypothalamus the Potato Room; that should be preserved historically but not allowed to overwrite the later canonical Thalamus=House mapping.",
+      "theology":"Stewardship, household management, provision, hunger/thirst and season/time imagery are stronger comparators than Father identity.",
+      "cleanup":"Thalamus = central House metaphor; Hypothalamus = homeostatic steward/regulator; Pineal = circadian/timing threshold."
+    },
+    {
+      "id":"hippocampus-amygdala-thought-memory-affect",
+      "biology":"Hippocampal systems are central to episodic/contextual memory and spatial relational processing; amygdala circuits contribute to emotional salience, threat learning and affective memory. Memory and emotion are distributed, not housed in one point.",
+      "project_use":"Huginn/Muninn should be expanded beyond abstract Thought/Memory: hippocampal-contextual memory, prefrontal working/model-building processes and amygdala affect can be treated as different returning reports to the House.",
+      "theology_myth":"Odin's ravens remain mythic information functions, not brain-region identities.",
+      "new_chain":"world encounter → affective marking → contextual memory → attention/model update → return to House."
+    },
+    {
+      "id":"claustrum-integration-neighbor",
+      "biology":"The claustrum is a thin, highly connected gray-matter structure beside the insula. It has been proposed to contribute to consciousness, integration and salience, but current evidence does not support treating it as a proven singular seat of consciousness.",
+      "project_use":"Keep claustrum as an Integration/Coordination research neighbor, not as a second throne competing with the thalamus.",
+      "legacy_claims_to_quarantine":["claustrum is the neural seat of cosmic unity","claustrum gamma proves enlightenment"],
+      "sources":["https://pubmed.ncbi.nlm.nih.gov/37701759/","https://pubmed.ncbi.nlm.nih.gov/40345381/"]
+    },
+    {
+      "id":"arousal-sleep-thalamic-rhythms",
+      "biology":"Wakefulness depends on distributed ascending arousal systems involving brainstem, hypothalamic and basal-forebrain systems interacting with thalamus and cortex. Thalamocortical circuits participate in sleep rhythms, including spindles, and sleep changes sensory gating and memory processing.",
+      "project_use":"House has states: open/attentive, dreaming, sleeping, deeply reduced responsiveness. This lets the theology distinguish Gate state from House identity.",
+      "theology":"Watchfulness, sleep, awakening, lamps and vigilance can be treated as state comparators rather than consciousness-frequency numerology.",
+      "cleanup":"Remove unsupported fixed percentages/frequency-to-spiritual-level mappings from legacy prose."
+    },
+    {
+      "id":"optic-chiasm-crossing",
+      "biology":"At the optic chiasm, retinal ganglion-cell axons from nasal hemiretinas cross while temporal hemiretinal fibers remain ipsilateral. Visual information is reorganized by visual field, not simply 'left eye goes right brain and right eye goes left brain.'",
+      "project_use":"Optic chiasm = Cross/Frame-Crossing is a valid visual-symbol analogy because the structure is genuinely X-shaped and involves partial crossing.",
+      "theology":"Cross / crossing / divided-to-recombined perception are symbolic comparators.",
+      "legacy_correction":"Quarantine claims that all visual signals crucify themselves, that the chiasm sends one whole eye to each opposite hemisphere, or that memes must physically pass through pineal after the chiasm."
+    },
+    {
+      "id":"third-ventricle-aqueduct-tomb-threshold",
+      "biology":"The third ventricle is a CSF-filled midline cavity; the cerebral aqueduct connects the third and fourth ventricles through the midbrain. The pineal is posterior to the third ventricle and not a door through which conscious signals pass.",
+      "project_use":"Ventricle = Tomb/inner void and aqueduct = narrow passage may remain geometric metaphors, but the physical route must not be described as a path of consciousness into the thalamus.",
+      "theology":"tomb/void/narrow-way comparisons remain poetic/symbolic only."
+    },
+    {
+      "id":"cerebellum-arbor-vitae-tree",
+      "biology":"The cerebellum contributes to motor coordination, timing, error correction, learning and cognitive-affective processes. Its branching white matter is traditionally called arbor vitae ('tree of life').",
+      "project_use":"This is an underused genuine anatomical-name bridge: cerebellar arbor vitae can sit in the atlas as a real historical anatomical 'Tree of Life' term, distinct from the project's spine/Yggdrasil Tree and thalamic House.",
+      "boundary":"The anatomical name is descriptive and does not imply biblical Tree-of-Life identity."
+    },
+    {
+      "id":"olfaction-nostrils-memory-exception",
+      "biology":"Olfactory pathways are unusual because early olfactory processing reaches primary olfactory/limbic targets without the same first-order thalamic relay used by vision, audition and somatosensation. Later olfactory processing still interacts with thalamic and cortical systems.",
+      "project_use":"This is important for Genesis nostril/breath symbolism because smell/breath enters through the nose yet is the classic sensory exception to simplified 'everything goes through thalamus' language.",
+      "epiphany":"The project's nostril motif should not be used to strengthen a universal thalamic gate claim; biologically it does the opposite and gives a useful exception/side-door motif."
+    },
+    {
+      "id":"gut-brain-microbiome-garden",
+      "biology":"The microbiota-gut-brain system is bidirectional and uses neural, endocrine, immune and metabolic signaling. Gut microbes influence host physiology, while brain/autonomic/endocrine activity changes gut motility, secretion, barrier function and microbial environment.",
+      "project_use":"Gut/microbiome can become the inner Garden/ecology layer: many organisms, metabolites and host tissues co-create conditions rather than one sovereign node commanding everything.",
+      "theology":"Garden/soil/cultivation/fruit language is structurally useful; avoid moralizing microbial composition as purity/impurity.",
+      "legacy_corrections":["Most serotonin is produced in the gut, but peripheral serotonin does not simply cross the BBB to become brain serotonin.","Do not describe microbiome as direct source of consciousness."],
+      "sources":["https://pubmed.ncbi.nlm.nih.gov/38336171/","https://pubmed.ncbi.nlm.nih.gov/39182226/"]
+    },
+    {
+      "id":"barriers-membranes-bbb",
+      "biology":"The blood-brain barrier is a selective vascular interface involving endothelial tight junctions, pericytes, basement membrane and astrocytic interactions. It protects and regulates molecular exchange rather than acting as a simple wall.",
+      "project_use":"BBB gives a real membrane/gate/border analogue for the project's protected House, but it should not be conflated with TRN, skull, meninges or spiritual guardians.",
+      "theology":"guarded garden / city wall / gate comparisons are structural only."
+    },
+    {
+      "id":"glia-gardeners-maintenance",
+      "biology":"Astrocytes, oligodendrocytes, microglia and other glia support synaptic environment, myelination, immune surveillance, metabolism and homeostasis. Microglia also remodel synaptic connections in development and disease.",
+      "project_use":"Glia are better compared with groundskeepers/maintenance/stewards than with the Father/Gardener himself. They keep the neural Garden viable.",
+      "theology":"service/stewardship/maintenance is a better metaphor than divine agency."
+    },
+    {
+      "id":"plasticity-epigenetics-growth",
+      "biology":"Neural plasticity changes synaptic strength, dendritic structure and network organization with experience. Epigenetic mechanisms alter gene regulation in response to developmental and environmental context, but do not encode mystical destiny in a simple deterministic way.",
+      "project_use":"Growth, pruning, grafting and Tree-development metaphors gain a legitimate biological neighbor in plasticity and gene regulation.",
+      "theology":"John 15 pruning/fruit and seed-growth imagery can be compared at the level of adaptation and cultivation, not gene prophecy.",
+      "legacy_claims_to_quarantine":["moral actions directly plant measurable karmic epigenetic debt","psychedelic-induced BDNF changes prove spiritual ascension"]
+    }
+  ],
+  "chakra_upgrade":{
+    "principle":"Keep the five spinal centers as phenomenological/symbolic body zones and relate them to overlapping real systems instead of inventing one-to-one chakra organs.",
+    "centers":[
+      {"center":"Root/Foundation","biology_neighbors":["pelvic floor","sacral sensory/motor innervation","posture","vestibular/proprioceptive grounding","autonomic survival state"],"project":"soil/root/safety/weight"},
+      {"center":"Pelvic/Generative","biology_neighbors":["reproductive endocrine systems","pelvic autonomic networks","sexual arousal","visceral interoception"],"project":"seed/generation/desire/fluidity"},
+      {"center":"Navel/Power","biology_neighbors":["enteric nervous system","gut-brain signaling","metabolic/endocrine regulation","interoception","sympathetic activation"],"project":"heat/work/digestion/transformation"},
+      {"center":"Heart/Door","biology_neighbors":["cardiorespiratory interoception","baroreceptor signaling","autonomic regulation","insula/anterior cingulate","social-affective networks"],"project":"love/grief/opening/flame/Son/grain"},
+      {"center":"Throat/Voice","biology_neighbors":["laryngeal motor control","respiratory coordination","vagal sensory pathways","speech-language networks"],"project":"breath/Word/witness/release"},
+      {"center":"Brow/Eye","biology_neighbors":["vision","attention","thalamocortical selection","prefrontal control"],"project":"discernment/observer/single-eye symbolism"},
+      {"center":"Crown/House","biology_neighbors":["distributed cranial neural systems rather than one crown organ","thalamic House metaphor"],"project":"Father/House/North/integration"}
+    ],
+    "rule":"Biological neighbors are many-to-many. No chakra receives a single anatomical address."
+  },
+  "legacy_science_quarantine":[
+    "fixed spiritual meanings assigned to EEG frequencies",
+    "unverified percentages for connectivity, neurotransmitter changes and psychedelic effects",
+    "claims that pineal DMT explains mystical states",
+    "claims that microtubules are proven quantum computers for consciousness",
+    "claims that CSF carries a Father's signal down exactly 33 vertebrae",
+    "claims that claustrum or thalamus alone generates consciousness",
+    "claims that microbiome serotonin becomes central-brain serotonin directly",
+    "literal equivalence of chakras with neural ganglia or endocrine glands",
+    "moral or theological interpretation of psychiatric diagnoses as neurological proof"
+  ],
+  "connections":["knowledge/body/neurotheology-axis-house-spirit-atlas.json","knowledge/body/body-symbolism-map.json","knowledge/body/body-science-context-atlas.json","knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","data/potatoism-thalamus-brain-map.json","knowledge/chronology/neurotheology-attestation-ledger.json"]
+}
