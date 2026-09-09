@@ -1,283 +1,64 @@
 {
-  "title": "Potato of Life — Deep Structure Additions",
-  "status": "canonical-enrichment",
-  "updated": "2026-09-09",
-  "purpose": "Promote high-value structures that were still trapped in book-research or prior project context into the canonical knowledge tree. This record preserves developmental strata and distinguishes project canon, book-derived doctrine, later interpretation and open inference.",
-  "provenance": {
-    "primary_book_layer": "The Great Book of Potato (2024), especially material already extracted into book-research.json",
-    "project_context_layer": "Prior Potato of Life / Tim Dooley project development preserved in conversation-derived working context",
-    "rule": "Do not treat later interpretations as if they were already fully formed in 2024. Preserve dated doctrinal development."
-  },
-  "new_or_underpromoted_concepts": [
-    {
-      "id": "chosen-vegetable",
-      "name": "Chosen Vegetable",
-      "status": "book-derived-2024",
-      "definition": "The deliberate choice of the potato as a humble, ordinary and buried carrier of maximum existential and spiritual meaning.",
-      "relations": ["hierarchy-inversion", "potato-of-life", "silent-authority"]
-    },
-    {
-      "id": "hierarchy-inversion",
-      "name": "Hierarchy Inversion",
-      "status": "book-derived-plus-project-interpretation",
-      "definition": "The lowly, buried, overlooked or ridiculous thing becomes structurally foundational rather than marginal. Value is inverted: what appears least exalted can become the root beneath the system.",
-      "relations": ["chosen-vegetable", "root", "father", "gardener"]
-    },
-    {
-      "id": "seed-simplicity-efficiency",
-      "name": "Seed Simplicity / Efficiency",
-      "status": "book-derived-2024",
-      "definition": "Growth succeeds by using available conditions with minimal unnecessary complexity. Simplicity is treated as a law of effective becoming rather than merely an aesthetic preference.",
-      "relations": ["seed", "potato", "growth", "transformation"]
-    },
-    {
-      "id": "quiet-triumph",
-      "name": "Quiet Triumph",
-      "status": "book-derived-2024",
-      "definition": "Growth, endurance and victory do not require spectacle. The buried or silent process can be decisive before the world notices it.",
-      "relations": ["resilience", "silent-authority", "burial", "sprout"]
-    },
-    {
-      "id": "silent-authority",
-      "name": "Authority Without Spectacle",
-      "status": "book-derived-2024",
-      "definition": "Authority is grounded in nourishment, persistence, service and presence rather than attention-seeking domination.",
-      "formula": "quiet presence + nourishment + persistence + service -> authority without spectacle",
-      "relations": ["potato", "father", "gardener", "service"]
-    },
-    {
-      "id": "sage-ready-student",
-      "name": "Sage / Ready Student Relation",
-      "status": "book-derived-2024",
-      "definition": "Wisdom is relational: a Sage alone does not produce learning; receptivity and encounter are part of the capability.",
-      "relations": ["sage", "relationship-first", "recognition", "teaching"]
-    },
-    {
-      "id": "soul-duality",
-      "name": "Soul Duality",
-      "status": "book-derived-2024",
-      "definition": "The soul journey moves through light and darkness. Darkness is not simply erased; the danger is becoming trapped there. Potato begins buried and still grows toward light.",
-      "relations": ["red-potato", "blue-potato", "burial", "spudlight"]
-    },
-    {
-      "id": "death-birth-multiplication",
-      "name": "Death of Potato / Birth of Many",
-      "status": "book-derived-2024-ch69",
-      "definition": "The mature Potato breaks, fragments, roots emerge from the fractures, descendants enter soil, and the original continues through differentiated offspring and a more fertile Garden.",
-      "law": "multiplication is not the opposite of unity; multiplication can be the mode by which unity survives transformation",
-      "relations": ["death", "many", "one", "garden", "son", "resurrection"]
-    },
-    {
-      "id": "distributed-legacy",
-      "name": "Distributed Legacy",
-      "status": "book-derived-plus-project-interpretation",
-      "definition": "After one form disappears, its pattern can persist through descendants, memory, relations, soil, story and transformed structures rather than through one unchanged object.",
-      "relations": ["death-birth-multiplication", "spirit", "memory", "many"]
-    },
-    {
-      "id": "breaking-reveals-wholeness",
-      "name": "Breaking Reveals Wholeness",
-      "status": "book-derived-2024",
-      "definition": "Fracture is not always pure destruction; under the Potato model breaking can expose hidden multiplicity, regenerative capacity and a larger unity.",
-      "relations": ["stone", "death-birth-multiplication", "door", "transformation"]
-    },
-    {
-      "id": "domestic-potato-ritual",
-      "name": "Domestic Potato Ritual",
-      "status": "book-derived-2024-practice",
-      "definition": "Potatoism includes embodied domestic practice, not only abstract doctrine: washing, intention, piercing, oil/salt, heat, sharing, gratitude and nourishment form a ritual sequence.",
-      "stages": ["washing/releasing burden", "intention", "piercing/naming", "heat/transformation", "sharing/community", "nourishment/gratitude"],
-      "relations": ["ritual", "body", "transformation", "community"]
-    },
-    {
-      "id": "graveyard-potatoes",
-      "name": "Graveyard Potatoes",
-      "status": "book-derived-2024-satirical-ritual",
-      "definition": "A comedic ritual recipe staging burial, mud, tears, roasting, opening and resurrection garnish. It is satire and practice at once, structurally repeating the death-to-renewal grammar.",
-      "relations": ["burial", "mud", "death", "resurrection", "humor"]
-    },
-    {
-      "id": "divine-kneel",
-      "name": "Divine Kneel",
-      "status": "book-derived-2024-ch86",
-      "definition": "An internal collapse or surrender in which resistance, ego and karmic inertia compress toward dissolution before reconstitution as Potato freedom.",
-      "formula": "resistance / karmic inertia -> surrender / collapse -> ego dissolution -> reconstitution -> Potato freedom",
-      "caution": "Quantum and singularity language in the source is metaphorical/theorycrafting, not established physics.",
-      "relations": ["collapse", "nothing", "potato", "april-2025", "merkaba"]
-    },
-    {
-      "id": "post-kneel-potato",
-      "name": "Post-Kneel Potato",
-      "status": "book-derived-2024",
-      "definition": "Potato represents the condition after the Kneel: simplicity, freedom and existence beyond endlessly repeating submission.",
-      "relations": ["divine-kneel", "freedom", "potato", "return"]
-    },
-    {
-      "id": "new-trinity-2024",
-      "name": "New Trinity — 2024 Developmental Stratum",
-      "status": "book-derived-2024-ch110",
-      "definition": "A pre-April-2025 theological arrangement that must remain historically distinct from the later Father/Tim/Son architecture.",
-      "members": {
-        "God": "Source / animating origin and purpose",
-        "Potato": "Boundary, sustainer and vessel",
-        "Son_Tim": "At this stage Tim is explicitly placed as Son/guide/embodiment",
-        "Holy_Soil": "Spirit, memory and ground of being"
-      },
-      "relations": ["holy-soil", "potato-boundary", "developmental-theology", "father"]
-    },
-    {
-      "id": "holy-soil",
-      "name": "Holy Soil",
-      "status": "book-derived-2024",
-      "definition": "Spirit, memory and sustaining ground that carries echoes of generations, joins matter with spirit and makes later growth possible.",
-      "relations": ["soil", "spirit", "memory", "garden", "new-trinity-2024"]
-    },
-    {
-      "id": "ancient-future",
-      "name": "Ancient Future",
-      "status": "book-derived-2024",
-      "definition": "Return is not restoration of an unchanged past. The old can reappear transformed so that return is simultaneously forward movement.",
-      "relations": ["spiral", "return", "memory", "future"]
-    },
-    {
-      "id": "cultivation-not-conquest",
-      "name": "Cultivation, Not Conquest",
-      "status": "book-derived-2024",
-      "definition": "The highest path is framed as cultivation rather than conquest, prefiguring the later Heavenly Gardener role and service-centered authority.",
-      "relations": ["gardener", "garden", "silent-authority", "father"]
-    },
-    {
-      "id": "potato-as-boundary",
-      "name": "Potato as Boundary",
-      "status": "book-derived-2024",
-      "definition": "Potato is not only an object inside the world; it functions as an interface mediating past/future, mundane/divine, root/sprout and inside/outside.",
-      "relations": ["door", "boundary", "root", "sprout", "new-trinity-2024"]
-    },
-    {
-      "id": "merkaba-potato-geometry",
-      "name": "Merkaba Potato Geometry",
-      "status": "book-derived-2024-ch111",
-      "definition": "A rotating bridge/chariot model aligns opposed forces rather than erasing them. Counter-moving triangles generate a stable center.",
-      "geometry": {
-        "upward": "Jesus / Bread / spirit / future / aspiration / light",
-        "downward": "Tim / Potato / matter / past / grounding / transformed darkness",
-        "center": "present / Holy Soil / meeting point; the chapter is internally layered and developmental",
-        "forces": ["light", "dark", "spirit", "matter", "expansion", "contraction"]
-      },
-      "relations": ["axis", "ladder", "holy-soil", "time", "breath"]
-    },
-    {
-      "id": "counter-rotation",
-      "name": "Counter-Rotation",
-      "status": "book-derived-2024",
-      "definition": "Opposites can remain distinct and move in contrary directions while producing a stable dynamic third function at their center.",
-      "relations": ["merkaba-potato-geometry", "red-potato", "blue-potato", "axis"]
-    },
-    {
-      "id": "time-triad-2024",
-      "name": "Past / Present / Future Triad — 2024",
-      "status": "book-derived-2024",
-      "definition": "The book maps Potato/roots to past, Bread/upward aspiration to future, and Holy Soil/center to present. Later anatomy differs and should not overwrite this earlier stratum.",
-      "relations": ["potato", "bread", "holy-soil", "spiral", "chronology"]
-    },
-    {
-      "id": "breath-activates-vehicle",
-      "name": "Breath Activates the Vehicle",
-      "status": "book-derived-2024",
-      "definition": "Breath joins upper and lower, light and earth, turning static geometry into lived flow. This is an early bridge toward later Spirit-as-flow language.",
-      "relations": ["spirit", "merkaba-potato-geometry", "flow", "body"]
-    },
-    {
-      "id": "designed-society-graph",
-      "name": "Designed Society Graph",
-      "status": "book-derived-2024-ch85",
-      "definition": "The 2024 governance chapter already treats money, healthcare, education, security, incentives, information and oversight as one coupled system rather than isolated silos.",
-      "relations": ["world", "systems-thinking", "north-programme", "economic-graph"]
-    },
-    {
-      "id": "design-to-observation-graph",
-      "name": "Design Graph -> Observation Graph",
-      "status": "project-interpretation",
-      "definition": "The 2024 question is how a unified feedback society might be designed; by 2026 the project increasingly asks how the real world already connects through ownership, money, infrastructure, obligations and dependencies.",
-      "relations": ["designed-society-graph", "world", "north-programme", "relationship-first"]
-    },
-    {
-      "id": "field-of-life-metaphor",
-      "name": "Field of Life Metaphor",
-      "status": "book-derived-speculative",
-      "definition": "Potato is compared metaphorically to an excitation within a field of life. This is symbolic comparison and must remain distinct from actual quantum field theory.",
-      "relations": ["cosmology", "potato", "starchforce", "science-metaphor-boundary"]
-    },
-    {
-      "id": "many-worlds-potato",
-      "name": "Many-Worlds Potato",
-      "status": "book-derived-speculative",
-      "definition": "Potato propagation becomes a metaphor for branching possibilities: one simple form can contain many futures.",
-      "relations": ["death-birth-multiplication", "future", "branching", "cosmology"]
-    },
-    {
-      "id": "holographic-potato",
-      "name": "Holographic Potato",
-      "status": "book-derived-speculative",
-      "definition": "A simple exterior may conceal or encode deeper structure; the potato becomes a metaphor for visible simplicity containing hidden relational depth.",
-      "relations": ["hidden-center", "potato", "information", "cosmology"]
-    },
-    {
-      "id": "platonic-potato",
-      "name": "Platonic Potato",
-      "status": "book-derived-comparative",
-      "definition": "The ordinary material potato is used as a reflection of ideal sustenance or an abstract perfect form.",
-      "relations": ["potato", "ideal-form", "nourishment", "traditions"]
-    },
-    {
-      "id": "ghost-erasure-wound",
-      "name": "Ghost / Erasure Wound",
-      "status": "project-context-personal-symbolic",
-      "definition": "A recurring existential wound in the corpus: being alive yet treated as a ghost while work, philosophy, data or story survives without full recognition of the living author and source.",
-      "core_tension": "I am alive <-> fear of being erased before fully having a name",
-      "relations": ["name", "memory", "authorship", "distributed-legacy", "recognition"]
-    },
-    {
-      "id": "root-beneath-world",
-      "name": "Root Beneath the World",
-      "status": "project-context-symbolic",
-      "definition": "Potato is not merely beneath the soil; it functions as hidden substrate, root-network, underground center and support beneath visible structures.",
-      "relations": ["hierarchy-inversion", "root", "hidden-center", "world"]
-    },
-    {
-      "id": "fragmentation-becomes-understanding",
-      "name": "Fragmentation Becomes Understanding",
-      "status": "project-context-symbolic",
-      "definition": "Fragmentation is repeatedly re-read as a route to relation: pieces become intelligible when their links, origins and transformations are reconstructed.",
-      "relations": ["death-birth-multiplication", "relationship-first", "atlas", "memory"]
-    },
-    {
-      "id": "make-accessible-not-falsely-certain",
-      "name": "Accessibility / Uncertainty Rule",
-      "status": "project-methodological-canon",
-      "definition": "Make everything accessible; make nothing falsely certain. Preserve weirdness and maximum connective richness while clearly marking mythology, personal interpretation, documentary evidence, comparison and independently verifiable fact.",
-      "relations": ["sources", "epistemic-status", "manifest", "relationship-first"]
-    }
+  "title":"Potato of Life — Deep Structure",
+  "status":"canonical-enrichment",
+  "version":"2.0.0",
+  "updated":"2026-09-09",
+  "purpose":"Preserve the densest Great Book 2024 structures and connect them forward into the mature Potatoverse without retroactively rewriting the book. This owner now explicitly carries the development from buried Potato, hidden center, Divine Kneel and Merkaba vehicle into the later Ladder/Axis, source-center, Sun/Spudlight, Mountain and Garden architecture.",
+  "provenance":{"primary_book_layer":"The Great Book of Potato (2024), especially material extracted into book-research.json","project_context_layer":"Prior Potato of Life / Tim Dooley project development and later conversation archaeology","rule":"Later interpretations are labeled as later. 2024 Tim-as-Son/guide, Holy Soil and Merkaba strata must remain visible even when later Father/Ladder canon supersedes or reorganizes them."},
+  "concepts":[
+    {"id":"chosen-vegetable","name":"Chosen Vegetable","status":"book-derived-2024","definition":"The potato is deliberately chosen as a humble, ordinary, buried carrier of maximal spiritual/existential meaning.","relations":["hierarchy-inversion","potato-of-life","silent-authority"]},
+    {"id":"hierarchy-inversion","name":"Hierarchy Inversion","status":"book-derived-plus-project-interpretation","definition":"The lowly, buried, overlooked or ridiculous thing can be structurally foundational rather than marginal. What appears lowest may support what appears highest.","relations":["chosen-vegetable","root","father","gardener","mountain"]},
+    {"id":"seed-simplicity-efficiency","name":"Seed Simplicity / Efficiency","status":"book-derived-2024","definition":"Growth succeeds by using available conditions with minimal unnecessary complexity. Simplicity is a law of effective becoming rather than mere aesthetics.","relations":["seed","potato","growth","transformation"]},
+    {"id":"quiet-triumph","name":"Quiet Triumph","status":"book-derived-2024","definition":"Hidden growth, endurance and victory can be decisive before they become visible or socially recognized.","relations":["resilience","silent-authority","burial","sprout","100000-hours"]},
+    {"id":"silent-authority","name":"Authority Without Spectacle","status":"book-derived-2024","definition":"Authority is grounded in nourishment, persistence, service and presence rather than attention-seeking domination.","formula":"quiet presence + nourishment + persistence + service → authority without spectacle","relations":["father","gardener","center-periphery","service"]},
+    {"id":"sage-ready-student","name":"Sage / Ready Student Relation","status":"book-derived-2024","definition":"Wisdom is relational: a Sage alone does not produce learning; receptivity and encounter are part of the capability.","relations":["sage","relationship-first","recognition","teaching","mountain"]},
+    {"id":"soul-duality","name":"Soul Duality","status":"book-derived-2024","definition":"The soul journey moves through light and darkness. Darkness is not erased; the danger is remaining trapped there. Potato begins buried and still grows toward light.","relations":["red-potato","blue-potato","burial","spudlight"]},
+    {"id":"death-birth-multiplication","name":"Death of Potato / Birth of Many","status":"book-derived-2024-ch69","definition":"The mature Potato breaks, roots emerge through fractures, descendants enter soil and the original pattern continues through differentiated offspring and a more fertile Garden.","law":"multiplication is not the opposite of unity; multiplication can be the mode by which unity survives transformation","relations":["death","many","one","garden","son","resurrection","tree"]},
+    {"id":"distributed-legacy","name":"Distributed Legacy","status":"book-derived-plus-project-interpretation","definition":"After one form disappears, its pattern can persist through descendants, memory, relations, soil, story, archive and transformed structures rather than one unchanged object.","relations":["death-birth-multiplication","spirit","memory","many","archive"]},
+    {"id":"breaking-reveals-wholeness","name":"Breaking Reveals Wholeness","status":"book-derived-2024","definition":"Fracture can expose hidden multiplicity, regenerative capacity and larger relation; it is not always pure destruction.","boundary":"Breakage does not guarantee growth; viable re-rooting is required.","relations":["stone","death-birth-multiplication","door","transformation"]},
+    {"id":"domestic-potato-ritual","name":"Domestic Potato Ritual","status":"book-derived-2024-practice","definition":"Embodied practice stages washing, intention, piercing, heat, sharing and nourishment as a transformation sequence.","stages":["washing/releasing burden","intention","piercing/naming","heat/transformation","sharing/community","nourishment/gratitude"],"relations":["ritual","body","forge","community"]},
+    {"id":"graveyard-potatoes","name":"Graveyard Potatoes","status":"book-derived-2024-satirical-ritual","definition":"Satirical burial/mud/tears/roasting/opening/resurrection recipe structurally repeating death→renewal grammar.","relations":["burial","mud","death","resurrection","humor"]},
+    {"id":"divine-kneel","name":"Divine Kneel","status":"book-derived-2024-ch86","definition":"Internal surrender/collapse in which resistance, ego and karmic inertia compress toward dissolution before reconstitution as simpler Potato freedom.","formula":"resistance/karmic inertia → surrender/collapse → ego dissolution → reconstitution → Potato freedom","caution":"Quantum/singularity language is metaphorical theorycrafting, not established physics.","later_relation":"This becomes a conceptual precursor to the April 2025 Needle: pressure/compression does not merely crush; under certain conditions it changes the available form.","relations":["collapse","nothing","potato","april-2025","merkaba","forge"]},
+    {"id":"post-kneel-potato","name":"Post-Kneel Potato","status":"book-derived-2024","definition":"Potato represents a condition after Kneel: simplicity, freedom and existence beyond endlessly repeated submission.","relations":["divine-kneel","freedom","potato","return"]},
+    {"id":"new-trinity-2024","name":"New Trinity — 2024 Developmental Stratum","status":"book-derived-2024-ch110","definition":"A pre-April-2025 arrangement historically distinct from later Father/Tim/Son architecture.","members":{"God":"Source / animating origin and purpose","Potato":"Boundary, sustainer and vessel","Son_Tim":"Tim explicitly as Son/guide/embodiment at this stage","Holy_Soil":"Spirit, memory and ground of being"},"relations":["holy-soil","potato-boundary","developmental-theology","father"]},
+    {"id":"holy-soil","name":"Holy Soil","status":"book-derived-2024","definition":"Spirit, memory and sustaining ground carrying echoes of generations, joining matter with spirit and making later growth possible.","relations":["soil","spirit","memory","garden","new-trinity-2024"]},
+    {"id":"ancient-future","name":"Ancient Future","status":"book-derived-2024","definition":"Return is not restoration of unchanged past; the old can reappear transformed so return is simultaneously forward movement.","relations":["spiral","return","memory","future"]},
+    {"id":"cultivation-not-conquest","name":"Cultivation, Not Conquest","status":"book-derived-2024","definition":"The highest path is cultivation rather than conquest, prefiguring later Gardener/service-centered authority.","relations":["gardener","garden","silent-authority","father"]},
+    {"id":"potato-as-boundary","name":"Potato as Boundary","status":"book-derived-2024","definition":"Potato functions as interface mediating past/future, mundane/divine, root/sprout and inside/outside rather than only being an object inside the world.","relations":["door","boundary","root","sprout","new-trinity-2024"]},
+    {"id":"merkaba-potato-geometry","name":"Merkaba Potato Geometry","status":"book-derived-2024-ch111","definition":"A rotating bridge/chariot model aligns opposed forces rather than erasing them; counter-moving triangles generate a stable dynamic center.","geometry":{"upward":"Jesus / Bread / spirit / future / aspiration / light","downward":"Tim / Potato / matter / past / grounding / transformed darkness","center":"present / Holy Soil / meeting point","forces":["light","dark","spirit","matter","expansion","contraction"]},"relations":["axis","ladder","holy-soil","time","breath","vehicle"]},
+    {"id":"counter-rotation","name":"Counter-Rotation","status":"book-derived-2024","definition":"Opposites can remain distinct and move in contrary directions while jointly producing a stable third function at their center.","later_relation":"This supplies a precursor for bidirectional Axis/Spiral flows: ascent and descent can coexist around one centerline.","relations":["merkaba-potato-geometry","red-potato","blue-potato","axis","spiral"]},
+    {"id":"time-triad-2024","name":"Past / Present / Future Triad — 2024","status":"book-derived-2024","definition":"Potato/roots map to past, Bread/upward aspiration to future, and Holy Soil/center to present. Later body/time mappings differ and must not overwrite this stratum.","relations":["root=past","center=present","future=upward","spiral","chronology"]},
+    {"id":"breath-activates-vehicle","name":"Breath Activates the Vehicle","status":"book-derived-2024","definition":"Breath joins upper/lower and light/earth, turning static geometry into lived flow; an early bridge toward Spirit-as-continuity.","relations":["spirit","merkaba-potato-geometry","flow","body","ship-chariot"]},
+    {"id":"vehicle-becomes-infrastructure","name":"Vehicle Becomes Infrastructure","status":"later-developmental-synthesis","definition":"The 2024 system still imagines a bridge/chariot/vehicle carrying or aligning the subject. By April 2025 the mythology simplifies: Tim no longer merely rides/operates the connector but becomes Ladder/Axis itself.","sequence":"Merkaba/chariot → accumulated pressure → Divine Kneel/Needle → Ladder/Axis","law":"identity using infrastructure → threshold → identity becomes infrastructure","relations":["merkaba-potato-geometry","april-2025","ladder","axis","identity-to-infrastructure"]},
+    {"id":"hidden-center","name":"Hidden Center","status":"book-derived-plus-project-context","definition":"A simple or peripheral-looking exterior can conceal a structurally dense organizing center. Potato, root, House and later Tim/source-center all reuse this inversion.","ethical_rule":"A center is justified by exchange with the periphery; centrality without nourishment becomes extraction rather than Father/Gardener function.","relations":["holographic-potato","root-beneath-world","father","center-periphery","quiet-triumph"]},
+    {"id":"center-periphery-loop","name":"Center ↔ Periphery Loop","status":"later-systems-synthesis from earlier atlas","definition":"Healthy systems exchange information/resources between center and edge. Excess centralization starves the periphery; excess fragmentation starves the center.","potatoverse":"Father/House/source-center is meaningful because it remains coupled to Plane/world/children rather than floating outside relation.","relations":["center","plane","house","chosen-role-ethic","garden"]},
+    {"id":"sunlight-hidden-in-matter","name":"Sunlight Hidden in Matter","status":"conversation-derived + biological comparator","definition":"A later conversation formulation treats Potato as sunlight hidden/stored in matter. The scientifically grounded neighbor is that plants capture solar energy through photosynthesis and store chemical energy in carbohydrates, while potato tubers store starch. The project extends this symbolically into memory/karma/value, which are not the same physical quantity.","formula":"Sun/light → plant metabolism → carbohydrate/starch storage → tuber → future sprout","potatoverse":"Spudlight/source becomes embodied storage/Starchforce and can later re-emerge as growth.","relations":["Sun","Spudlight","Starchforce","Earth","storage-release"]},
+    {"id":"designed-society-graph","name":"Designed Society Graph","status":"book-derived-2024-ch85","definition":"The governance chapter treats money, healthcare, education, security, incentives, information and oversight as one coupled system rather than silos.","relations":["world","systems-thinking","north-programme","economic-graph"]},
+    {"id":"design-to-observation-graph","name":"Design Graph → Observation Graph","status":"project-interpretation","definition":"2024 asks how a unified feedback society might be designed; 2026 increasingly asks how the real world already connects through ownership, money, infrastructure, obligations and dependencies.","relations":["designed-society-graph","world","north-programme","relationship-first"]},
+    {"id":"field-of-life-metaphor","name":"Field of Life Metaphor","status":"book-derived-speculative","definition":"Potato is compared metaphorically to an excitation within a field of life; keep distinct from quantum field theory.","relations":["cosmology","potato","starchforce","science-metaphor-boundary"]},
+    {"id":"many-worlds-potato","name":"Many-Worlds Potato","status":"book-derived-speculative","definition":"Potato propagation becomes metaphor for branching possibility: one form can contain many futures.","relations":["death-birth-multiplication","future","branching","cosmology"]},
+    {"id":"holographic-potato","name":"Holographic Potato","status":"book-derived-speculative","definition":"A simple exterior may conceal or encode deeper relational structure; not a claim that potatoes instantiate the physical holographic principle.","relations":["hidden-center","potato","information","cosmology"]},
+    {"id":"platonic-potato","name":"Platonic Potato","status":"book-derived-comparative","definition":"The material potato is used as reflection of ideal sustenance or abstract perfect form.","relations":["potato","ideal-form","nourishment","traditions"]},
+    {"id":"root-beneath-world","name":"Root Beneath the World","status":"project-context-symbolic","definition":"Potato functions as hidden substrate/root-network/support beneath visible structures. Later vertical geometry distinguishes this origin/substrate motif from present Father-in-Heaven placement so Tim is not flattened back underground.","relations":["hierarchy-inversion","root","hidden-center","world","father"]},
+    {"id":"ghost-erasure-wound","name":"Ghost / Erasure Wound","status":"project-context-personal-symbolic","definition":"Recurring wound: a living source can be socially erased while work, data, story or philosophy survives without recognition of authorship/provenance.","core_tension":"living source ↔ distributed legacy without attribution","archive_law":"Preservation should retain provenance, not only content.","relations":["name","memory","authorship","distributed-legacy","recognition","archive"]},
+    {"id":"fragmentation-becomes-understanding","name":"Fragmentation Becomes Understanding","status":"project-context-symbolic","definition":"Fragments become intelligible when links, origins and transformations are reconstructed. This is now enacted by conversation archaeology and graph reassembly.","relations":["death-birth-multiplication","relationship-first","atlas","memory","New Jerusalem"]},
+    {"id":"make-accessible-not-falsely-certain","name":"Accessibility / Uncertainty Rule","status":"project-methodological-canon","definition":"Make everything accessible; make nothing falsely certain. Preserve connective richness while marking mythology, personal interpretation, documentary evidence, comparison and independently verifiable fact.","relations":["sources","epistemic-status","manifest","relationship-first"]}
   ],
-  "derived_relational_laws": [
+  "derived_relational_laws":[
     "The One can persist through differentiated Many without requiring sameness.",
     "Breaking can expose regenerative structure rather than only destroy it.",
     "A capability may belong to a relation rather than either endpoint alone.",
     "Return can be forward movement when recurrence happens at a changed level.",
     "Authority can emerge from service, nourishment and persistence rather than spectacle.",
     "The hidden or lowly can be structurally prior to the visible or exalted.",
-    "Collapse can function as threshold grammar when followed by reconstitution.",
+    "Collapse can function as threshold grammar when followed by viable reconstitution.",
     "Opposites can remain distinct while jointly producing a stable third function.",
-    "A designed system and an observed system can share the same relational grammar.",
-    "Preservation of source strata is part of the meaning, not merely archival housekeeping."
+    "A vehicle can become infrastructure when repeated use/internalization converts a tool into a stable relational function.",
+    "A center is healthy when it sustains circulation with the periphery rather than consuming it.",
+    "Light can become stored biological capacity without meaning that spiritual meaning, karma or memory are literal physical energy.",
+    "A designed system and an observed system can share relational grammar.",
+    "Preservation of source strata is part of meaning, not merely archival housekeeping."
   ],
-  "promotion_targets": [
-    "Split Divine Kneel into its own transformation record.",
-    "Create Holy Soil as a Spirit/Soil node.",
-    "Create 2024 New Trinity as an explicitly dated theological stratum.",
-    "Create Merkaba geometry as a cosmology node and connect it forward to Ladder/Axis.",
-    "Create ritual-practice records so Potatoism is not represented as theory only.",
-    "Add Ghost/Erasure Wound to Tim-side identity/recognition history without conflating it with empirical biography claims.",
-    "Promote Accessibility / Uncertainty Rule into repository-wide epistemic policy."
-  ]
+  "developmental_bridge":"2024 gives the project rotating vehicle, Holy Soil center, boundary Potato, Divine Kneel and hidden root. April 2025 converts the bridge into a vertical relation: Plane remains, Needle compresses, Tim becomes Ladder/Axis/Father. 2026 then spatializes the result as House, Mountain, Tree, Sun/Spudlight, Moon reflection, Plane, Swamp and exact vertical Vesica centers.",
+  "canonical_neighbors":["knowledge/core/root-system.json","knowledge/core/vertical-potato-mountain-plane-atlas.json","data/geometry-vesica-pisces-mandorla.json","knowledge/core/potatoverse-master-framework.json","knowledge/body/body-symbolism-map.json","knowledge/science/spudlight-theory-and-equations.json","THE-TURNING-APRIL-2025.md"]
 }
