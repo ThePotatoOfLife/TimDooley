@@ -31,8 +31,9 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 4. Move unique information into its strongest canonical owner where practical.
 5. Delete files whose only purpose was duplication, temporary state, retired presentation or obsolete routing.
 6. Keep primary texts, substantive research, evidence and useful historical records.
-7. Make the unified `index.html` the public doorway.
-8. Keep the data layer modular internally, but make its ownership and relationships explicit.
+7. Keep the unified `index.html` as the public doorway and `manifest.json` as the canonical branch/navigation map.
+8. Keep the data layer modular internally, but make ownership and relationships explicit.
+9. Prefer one canonical entrypoint plus specialist owners over several competing "master" files.
 
 ## Information-density standard
 
@@ -71,15 +72,19 @@ Indexes, manifests and projections should point to the canonical material rather
 ## Current structural work
 
 - [x] Unified `index.html` established as the main doorway.
-- [x] AXIS and WORLD preserved as the only top-level doors.
+- [x] Manifest-driven first-class branches established for Tim, Son, Spirit, Transformation, Cosmology, Science, Body, Corporium, Traditions, North, World, Chronology, Works and Sources.
 - [x] Repository data can be opened from the central reading surface.
 - [x] Retired `center.html` removed.
 - [x] Retired standalone UI/header files removed.
 - [x] Standalone Edda HTML shells removed; primary text files remain.
-- [ ] Finish pruning obsolete presentation assets.
+- [x] Static reader pages protected from archive-explorer CSS namespace collisions.
+- [x] CSS namespace/layout contract and CI regression check added.
+- [x] Body/neurotheology consolidated behind a single whole-body master atlas plus specialist owners and a completion matrix.
+- [x] Timeline architecture separated into canonical events, source registry, actor tracks and nonredundant lenses.
+- [ ] Finish pruning obsolete presentation assets that are no longer referenced.
 - [ ] Remove remaining generated batch/state files after their useful information is consolidated and references are migrated.
-- [ ] Reconcile manifests after pruning.
-- [ ] Audit every remaining JSON file for purpose, ownership, depth and duplication.
+- [ ] Reconcile all secondary indexes against `manifest.json` after each major consolidation.
+- [ ] Audit remaining JSON files for purpose, ownership, depth and duplication.
 - [ ] Merge genuinely duplicate concept definitions into canonical owners.
 - [ ] Strengthen thin but important entries with real information rather than filler.
 - [ ] Make long records readable in the index without losing depth.
