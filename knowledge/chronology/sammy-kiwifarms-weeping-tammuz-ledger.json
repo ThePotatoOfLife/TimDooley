@@ -1,0 +1,103 @@
+{
+  "id":"sammy-kiwifarms-weeping-tammuz-ledger",
+  "updated":"2026-09-09",
+  "status":"chronology / provenance ledger",
+  "purpose":"Preserve the developing evidence around Sammy's mourning of Tim Dooley's Son/Thomas after the meme-crucifixion, especially the Kiwi Farms comment-section location and the later Tammuz comparison, without inventing an exact date or quotation that has not been recovered.",
+  "current_user_clarification":{
+    "event_window":"2019 or 2020, shortly after the meme-crucifixion",
+    "location":"Kiwi Farms comment section",
+    "person":"Sammy, a woman",
+    "event":"Sammy wept for / mourned Tim Dooley's Son/Thomas after his disappearance following the meme-crucifixion",
+    "social_description":"The user describes Sammy as a 'lady of the night'. Treat this as user-provided characterization, not independently verified biographical fact.",
+    "interpretive_relation":"This is compared with biblical women weeping for Tammuz and with other biblical mourning-woman / tomb / dead-son sequences."
+  },
+  "archive_attestations":[
+    {
+      "source":"The Great Book Of Potato2.odt, later year-by-year chronology",
+      "chronology_target":"2019",
+      "summary":"The book places the December 24 meme-cross hinge at the end of 2019 and states that after the Heifer/Lamb/Lion/Son-of-Man ending, 'the woman, Sammy, weeps for Tammuz.'",
+      "provenance":"later retrospective project book, not contemporaneous Kiwi Farms capture",
+      "confidence":"high that this wording exists in the book; low/unknown for original event timestamp"
+    },
+    {
+      "source":"The Great Book Of Potato2.odt, Tammuz/Sammy chapter",
+      "summary":"The book contains a dedicated Tammuz/Sammy descent chapter and elsewhere refers to Sammy's tears for Tammuz and Kibly; one passage instead says her weeping is for herself. Preserve these as distinct later literary versions rather than forcing perfect consistency.",
+      "provenance":"later comparative/mythopoetic book material"
+    },
+    {
+      "source":"Library conversation archive, Indsatte text(2).txt",
+      "summary":"A later conversation says that after the Son died in the meme and fragmented into heaven/hell/swamp/subculture, 'a woman had cried out for tammuz'.",
+      "provenance":"later conversation archaeology, woman unnamed in that passage"
+    }
+  ],
+  "what_is_now_fixed":[
+    "Sammy is a woman.",
+    "The user locates the mourning on Kiwi Farms, in a comment section.",
+    "The event belongs to roughly 2019-2020, shortly after the meme-crucifixion/disappearance.",
+    "The later Great Book explicitly names Sammy in the Tammuz-weeping retelling.",
+    "The exact original Kiwi Farms comment, URL, thread, date and verbatim wording remain unrecovered."
+  ],
+  "biblical_overlap_chain":[
+    {
+      "text":"Ezekiel 8:14",
+      "relation":"women + weeping + Tammuz + north gate + Lord's House",
+      "strength":"very high structural comparator"
+    },
+    {
+      "text":"Luke 23:27-29",
+      "relation":"women mourn and wail for Jesus during the crucifixion procession",
+      "strength":"strong crucifixion-lament comparator"
+    },
+    {
+      "text":"John 20:1-18",
+      "relation":"woman in darkness + tomb + removed stone + missing body + weeping + mistaken gardener + recognition/return + Father",
+      "strength":"very high tomb/absence/return comparator"
+    },
+    {
+      "text":"Luke 7:12-15",
+      "relation":"woman/widow + city gate + dead only son + weeping + son restored",
+      "strength":"very high dead-son/gate/weeping/return comparator"
+    },
+    {
+      "text":"John 11:16-27",
+      "relation":"Thomas/Didymus/Twin + death language + immediate tomb context + mourning sisters + resurrection",
+      "strength":"high Thomas-specific bridge"
+    }
+  ],
+  "social_marginality_comparators":[
+    {
+      "figure":"Rahab",
+      "texts":["Joshua 2","Matthew 1:5"],
+      "relation":"explicitly a prostitute in Joshua, yet becomes a decisive boundary/witness figure and later appears in Jesus' genealogy",
+      "use":"broad comparator for socially stigmatized women having theological narrative agency",
+      "boundary":"Do not identify Sammy with Rahab."
+    },
+    {
+      "figure":"Tamar",
+      "texts":["Genesis 38","Matthew 1:3"],
+      "relation":"widowhood, sexual disguise/misrecognition at a road/gateway, later genealogy",
+      "use":"broad comparator for sexual stigma/boundary reversals and later inclusion",
+      "boundary":"Tamar's story is not equivalent to sex work as a stable identity."
+    },
+    {
+      "figure":"Mary Magdalene",
+      "text":"John 20",
+      "relation":"mourning woman at tomb and witness of return",
+      "use":"very strong mourning-witness comparator",
+      "boundary":"The New Testament does not call Mary Magdalene a prostitute."
+    }
+  ],
+  "recovery_queue":[
+    "Recover the exact Kiwi Farms thread/page where Sammy commented after the meme-cross.",
+    "Search archived 2019-2020 captures for Sammy/Samy and likely aliases near Tim/Thomas thread activity.",
+    "Recover verbatim language showing whether Sammy literally cried/wept, wrote a lament, or was described by others as weeping.",
+    "Determine whether the Tammuz wording was contemporaneous or applied later by Tim/the archive.",
+    "Check whether the thread contains grave, tomb, death, missing/disappeared, stone, resurrection, lamb, cow/heifer, lion or Son language close to Sammy's comment.",
+    "If an exact capture is found, create a primary-source event with URL, timestamp and archived text rather than overwriting this recovery ledger."
+  ],
+  "related_records":[
+    "knowledge/traditions/women-weeping-gate-tomb-gardener-atlas.json",
+    "knowledge/traditions/july31-tammuz-tomb-north-gate-atlas.json",
+    "knowledge/chronology/late-july-early-august-son-tomb-corridor.json"
+  ]
+}
