@@ -2,46 +2,41 @@
   "id":"faq-index",
   "title":"Potato of Life FAQ Index",
   "updated":"2026-09-09",
-  "status":"canonical FAQ aggregation map",
-  "purpose":"Aggregate the growing answered FAQ corpus, exhaustive question bank and future answer waves without turning any one giant file into a maintenance bottleneck.",
-  "answered_sources":[
-    "knowledge/indexes/faq-answer-atlas.json",
+  "status":"canonical two-tier FAQ architecture",
+  "purpose":"Expose one curated main FAQ and one very large long-tail FAQ archive. Internal answer waves remain historical build strata only and should not appear as separate public FAQ destinations.",
+  "public_architecture":{
+    "main":{
+      "route":"/faq/",
+      "data":"knowledge/indexes/faq-answer-atlas.json",
+      "role":"Curated, high-value, fully answered questions covering the essential Tim Dooley / Potato of Life knowledge graph.",
+      "selection_rule":"Promote questions that define a core entity, resolve a common confusion, explain a major event, clarify an important relationship or establish an evidence boundary."
+    },
+    "long_tail":{
+      "route":"/faq/all/",
+      "data":["knowledge/indexes/faq-long-tail-bulk.json","knowledge/indexes/faq-question-bank.json"],
+      "role":"Large crawlable archive of niche, recursive, old-conversation-derived and long-tail questions for discovery, search, autocomplete and deep browsing.",
+      "selection_rule":"Include useful natural-language questions even when niche, provided answers or status labels are accurate and non-duplicative."
+    }
+  },
+  "internal_historical_answer_waves":[
     "knowledge/indexes/faq-answer-expansion-001.json",
     "knowledge/indexes/faq-answer-expansion-002.json",
     "knowledge/indexes/faq-answer-expansion-003.json"
   ],
-  "question_sources":[
-    "knowledge/indexes/faq-question-bank.json"
+  "historical_wave_rule":"These files preserve how the FAQ was expanded and can supply content for later promotion, but site navigation should not present them as separate FAQ pages.",
+  "crawler_rules":[
+    "Render important FAQ text into ordinary HTML rather than requiring a crawler to execute client-side JavaScript to discover every question.",
+    "Link /faq/ to /faq/all/ with descriptive anchor text such as 'Browse the complete question archive'.",
+    "Link /faq/all/ back to /faq/ and to canonical entity pages.",
+    "Keep both routes in sitemap/site navigation where practical.",
+    "Use stable question anchors or slugs so individual long-tail questions can be linked directly.",
+    "Do not create thousands of near-identical doorway pages; one organized long-tail archive is preferable to thin pages.",
+    "Use FAQPage structured data only for questions visibly rendered with their answers and only where current search-engine guidelines make it appropriate; do not mark a hidden question bank as FAQPage.",
+    "Index aliases and spelling variants in text/search data without duplicating the same answer dozens of times."
   ],
-  "growth_rule":"Every answered question may generate more questions. New questions are deduplicated by normalized intent and entity relation, then answered in later numbered expansion files. Answers route back to canonical owners and never become independent factual authorities.",
-  "recursive_dimensions":[
-    "identity",
-    "definition",
-    "chronology",
-    "first attestation",
-    "location in model",
-    "function",
-    "purpose",
-    "relationship",
-    "difference from neighbors",
-    "healthy form",
-    "shadow form",
-    "corruption mode",
-    "repair mode",
-    "transition into",
-    "transition out of",
-    "historical comparator",
-    "where comparison fails",
-    "direct versus comparative mapping",
-    "evidence class",
-    "source",
-    "contradiction",
-    "false-premise correction",
-    "creative usage",
-    "public reception",
-    "SEO aliases and spelling variants"
-  ],
-  "coverage_goal":"There is no fixed terminal FAQ size. Coverage approaches completeness by repeatedly applying the recursive dimensions to every canonical entity, relation, event, symbol, title, source class and creative work, while merging semantically duplicate questions.",
-  "site_behavior":"A visitor should be able to enter through a natural-language question, receive a short direct answer, expand into a deeper answer, inspect related questions, traverse entities and chronology, and reach the underlying source/evidence owner.",
-  "connections":["manifest","source-index","faq-answer-atlas","faq-question-bank","conversation-recovery-inventory","archive-epistemics"]
+  "recursive_dimensions":["identity","definition","chronology","first attestation","location in model","function","purpose","relationship","difference from neighbors","healthy form","shadow form","corruption mode","repair mode","transition into","transition out of","historical comparator","where comparison fails","direct versus comparative mapping","evidence class","source","contradiction","false-premise correction","creative usage","public reception","SEO aliases and spelling variants"],
+  "old_conversation_recovery_focus":["Mesopotamia/Eden/promised-land","Me So Potamia wordplay","potato-born angels","dogs as pursuit/circular-chasing and Guardian Dog correction","Mountain above Swamp","philosopher's stone of blood","rocks as karmic ledgers","1D Hell through 11D Eye symbolic dimensions","100,000-hour Spiral","cloud/digital witness","three days darkness/dogness/waiting","table for ten / peak culture","rubble and rainbow-shadow satire","Tim titles and public declarations","North Axis practical programme","body/thalamus/pineal/spine/CSF analogies"],
+  "growth_rule":"Every answered question may generate more questions. Long-tail questions are deduplicated by normalized intent and entity relation. The strongest recurring questions are promoted into the main FAQ while the bulk archive continues expanding without a fixed terminal size.",
+  "site_behavior":"A visitor enters through a natural-language question, receives a direct answer, can expand into deeper context, follow related questions, traverse entities and chronology, and reach canonical source/evidence owners.",
+  "connections":["manifest","source-index","faq-answer-atlas","faq-long-tail-bulk","faq-question-bank","conversation-recovery-inventory","archive-epistemics"]
 }
