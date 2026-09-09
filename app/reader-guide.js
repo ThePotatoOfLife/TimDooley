@@ -24,7 +24,9 @@
       <div class="reader-guide-actions"><a href="learn/">Back to Start Here</a><span>Then scroll down only when you want the graph, contexts and records.</span></div>`;
     hero.insertAdjacentElement('afterend',box);
   }
-  fetch('knowledge/guides/branch-reader-guides.json')
+  const scriptBase=document.currentScript?.src||location.href;
+  const guideUrl=new URL('../knowledge/guides/branch-reader-guides.json',scriptBase).href;
+  fetch(guideUrl)
     .then(r=>r.ok?r.json():Promise.reject(new Error('guide load failed')))
     .then(data=>{guides=data.guides||{};render();const reader=document.querySelector('#reader');if(reader)new MutationObserver(()=>render()).observe(reader,{childList:true,subtree:false});window.addEventListener('hashchange',render)})
     .catch(()=>{});
