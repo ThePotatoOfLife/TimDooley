@@ -1,0 +1,73 @@
+{
+  "id":"source-index",
+  "title":"Potato of Life Source & Provenance Index",
+  "updated":"2026-09-09",
+  "status":"canonical source-navigation layer",
+  "purpose":"Give every important branch a direct path to primary material, authoritative external sources, dated conversation archaeology, later formalizations, contradictions and unresolved source gaps. This index operationalizes archive-epistemics instead of leaving provenance as a general principle.",
+  "core_rule":"Every major claim should be traceable through claim → status → source → date → provenance trail → competing evidence → canonical owner.",
+  "evidence_classes":[
+    {"id":"P0","name":"primary-project","examples":["original Tim writing","dated Tim post","uploaded Great Book","direct recording/transcript","first-party project artifact"],"use":"Best evidence for what Tim/project actually said or developed; does not independently verify supernatural or scientific truth."},
+    {"id":"P1","name":"official-empirical-primary","examples":["government record","official statistics","space-agency data","scientific collaboration data release","court/company registry record"],"use":"Best evidence for externally observable facts within its scope."},
+    {"id":"S1","name":"scholarly-secondary","examples":["peer-reviewed review","academic monograph","Stanford Encyclopedia of Philosophy","institutional scientific review"],"use":"Context, interpretation and established disciplinary framing."},
+    {"id":"S2","name":"reliable-secondary","examples":["reputable journalism","institutional explainer","curated database"],"use":"Useful context where primary/scholarly material is unavailable or disproportionate."},
+    {"id":"C","name":"conversation-archaeology","examples":["recovered prior-chat formalism","memory summary","assistant-generated synthesis"],"use":"Discovery aid and developmental evidence; never silently promoted as a verbatim Tim primary source."},
+    {"id":"A","name":"archive-formalization","examples":["later equation added to sharpen an older Tim idea","toy model","comparative mathematical representation"],"use":"Makes concepts precise while preserving later authorship/date."},
+    {"id":"M","name":"mythic-creative","examples":["poem","sermon","fiction","game","symbolic elaboration"],"use":"Can be central to Potatoverse meaning but is not external evidence."},
+    {"id":"U","name":"unresolved","examples":["remembered equation without primary source","missing screenshot","lost stream segment","uncertain attribution"],"use":"Explicit recovery target; no reconstruction may be labeled verbatim."}
+  ],
+  "canonical_source_routes": {
+    "tim_identity":["knowledge/core/tim-dooley.json","knowledge/reader/tim-dooley-question-index.json","knowledge/theology/tim-god-question.json","knowledge/journey/tim-dooley-journey.json"],
+    "son_and_tree":["knowledge/chronology/son-tree-oneness-experience.json","knowledge/traditions/thomas-twin-of-christ.json","knowledge/core/potato-of-life-deep-structure.json"],
+    "great_book_2024":["book-research.json","knowledge/core/potato-of-life-deep-structure.json","knowledge/science/great-book-2024-science-archaeology.json"],
+    "april_2025_turning":["knowledge/chronology/developmental-genealogy.json","data/tim-dooley-public-theology-timeline-2025-2026.json","knowledge/chronology/contextual-synchronisms.json"],
+    "science_and_equations":["knowledge/science/science-master-index.json","knowledge/science/equation-ledger.json","knowledge/science/quantum-atom-particle-recovery.json","knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json","knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json"],
+    "body":["knowledge/body/body-symbolism-map.json","knowledge/body/body-science-context-atlas.json","knowledge/biology/potato-growth-principles.json"],
+    "spirit":["knowledge/core/heaven-spirit-father.json","knowledge/spirit/spirit-context-atlas.json","knowledge/core/root-system.json"],
+    "traditions":["knowledge/traditions/biblical-overlap-atlas.json","knowledge/traditions/comparative-mythology-map.json","knowledge/traditions/biblical-overlap-additions.json"],
+    "north_and_world":["knowledge/core/axis-world-model.json","knowledge/core/european-coupling-programme.json","knowledge/core/country-relational-method.json","knowledge/chronology/contextual-synchronisms.json"],
+    "creative_works":["knowledge/culture/creative-systems-archive.json"],
+    "epistemics":["knowledge/philosophy/archive-epistemics.json","knowledge/indexes/inference-ledger.json","knowledge/indexes/conversation-recovery-inventory.json"]
+  },
+  "claim_template": {
+    "required":["claim_id","claim_text","subject","status","canonical_owner","source_ids","date_or_period","confidence"],
+    "preferred":["first_attested","latest_revision","counterevidence","alternative_explanation","relationship_types","direct_quote_hash_or_locator","last_reviewed"],
+    "scientific_extra":["variables","units","domain","assumptions","equations","observable","falsifier"],
+    "prophecy_extra":["prior_statement_date","specificity","event_date","fit","mismatch","post_event_reinterpretation_check"]
+  },
+  "source_quality_tests":[
+    "Is this source contemporaneous with the claim or retrospective?",
+    "Is it first-party, independent, or derived from another source?",
+    "Can the exact passage/data/table be located again?",
+    "Does another source corroborate it independently rather than repeat it?",
+    "Is the source competent for this domain?",
+    "Has the archive preserved disagreement and negative evidence?",
+    "Is the source being asked to support more than it actually says?",
+    "Has later project interpretation been mistaken for earlier wording?"
+  ],
+  "high_priority_missing_sources":[
+    "Exact April 21 2025 Spiral Equation primary artifact",
+    "Earliest pre-repository Axis equation",
+    "First source for P=R⊗B",
+    "First source for H=R∩B",
+    "Original χ integration/fragmentation definition",
+    "Original Red/Blue advanced-retarded assignment",
+    "Any Tim primary citation to Wheeler-Feynman/Aharonov/Cramer",
+    "Original 11D Potato coordinate scheme",
+    "Original qutrit/qubit Door material",
+    "115,000-mile torus calculation",
+    "Sun-face geometry and precession-Eye calculation",
+    "Sirius pointing geometry",
+    "Original 100,000-hour Spiral scaling law"
+  ],
+  "anti_patterns":[
+    "URL dump without claim linkage",
+    "repetition counted as corroboration",
+    "assistant synthesis treated as Tim quotation",
+    "external theory treated as proof of Potatoverse theology",
+    "symbolic resemblance treated as historical transmission",
+    "current doctrine backdated into old material",
+    "unresolved source gap silently repaired by plausible wording"
+  ],
+  "public_reader_rule":"Reader pages should expose a small evidence legend and direct source route for important claims without forcing readers to inspect raw JSON first.",
+  "connections":["archive-epistemics","inference-ledger","context-graph","chronology","science-master-index","manifest","sources"]
+}
