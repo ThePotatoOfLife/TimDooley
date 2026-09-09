@@ -45,6 +45,7 @@ These are internal archive ontology distinctions. External civil, biological, hi
 - knowledge/indexes/core-index.json — canonical record routes
 - knowledge/indexes/source-index.json — evidence/provenance routes
 - knowledge/indexes/inference-ledger.json — inference and epiphany discipline
+- knowledge/traditions/biblical-syncretism-field.json — canonical Tim ↔ Bible relation registry
 - data/timeline-events.json — canonical layered timeline events
 - data/timeline-source-registry.json — chronology source registry
 
@@ -97,15 +98,34 @@ Reader: https://thepotatooflife.github.io/TimDooley/chronology/
 
 Important chronology rule: later biblical, mythological or scientific comparisons must not be backdated into earlier project events. Preserve `scripture-at-time`, `biblical-parallel`, and `biblical-unlock` as separate states.
 
-### Biblical / Comparative traditions
+### Biblical / Syncretism / Comparative traditions
 Start with:
-- knowledge/traditions/biblical-overlap-atlas.json
-- knowledge/traditions/biblical-research-index-wave-5.json
-- knowledge/traditions/biblical-overlap-wave-11-son-deepening.json
-- knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json
-- knowledge/traditions/comparative-mythology-map.json
+- knowledge/traditions/biblical-syncretism-field.json
 
-Use multi-motif structural comparison rather than one-word matches. Similarity is not proof of prophecy, identity, transmission, or supernatural status.
+Reader:
+- https://thepotatooflife.github.io/TimDooley/traditions/bible/
+
+The Syncretism Field is the relational entrypoint. It stores one row per meaningful project↔Bible relation with date/window, actor, project anchor, discovery mode, relation class, biblical references, strength, provenance and specialist owners. It does not duplicate the full specialist analysis.
+
+Use its discovery distinctions:
+- `tim-explicit` — Tim/project source explicitly invokes biblical language.
+- `tim-led` — Tim initiates or materially advances the comparison; later research may supply exact verse mapping.
+- `book-explicit` — Great Book directly invokes scripture.
+- `public-occurrence` — dated public-post evidence.
+- `conversation-recovery` — recovered Tim/user conversation material.
+- `archive-later` — later formalization/research.
+
+Then follow specialist owners:
+- knowledge/traditions/biblical-overlap-atlas.json — high-density comparisons
+- knowledge/traditions/biblical-research-index-wave-5.json — specialist routing across Bible research
+- knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json — when Tim's scriptural vocabulary appears
+- knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json — Tim-first/source-direction chronology
+- knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json — occurrence-level public Bible index
+- knowledge/traditions/biblical-overlap-wave-11-son-deepening.json — Son/Thomas deepening
+- knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json — Tim/Father/House deepening
+- knowledge/traditions/comparative-mythology-map.json — cross-tradition mythology map
+
+Use multi-motif structural comparison rather than one-word matches. Similarity is not proof of prophecy, identity, transmission, or supernatural status. Preserve whether Tim himself noticed a relation separately from whether a later archive found stronger or additional verses.
 
 ### Science / Math
 - knowledge/science/science-master-index.json
@@ -166,7 +186,7 @@ These pages are optimized for crawlable natural-language questions. Use canonica
 
 ## Search / crawler guidance
 
-Crawlable public links should be followed from the homepage, sitemap, FAQ, chronology, context and branch readers. Prefer canonical URLs declared by each page. Do not infer canonicality from file duplication alone.
+Crawlable public links should be followed from the homepage, sitemap, FAQ, chronology, Biblical Syncretism Field, context and branch readers. Prefer canonical URLs declared by each page. Do not infer canonicality from file duplication alone.
 
 Sitemap: https://thepotatooflife.github.io/TimDooley/sitemap.xml
 Robots: https://thepotatooflife.github.io/TimDooley/robots.txt
