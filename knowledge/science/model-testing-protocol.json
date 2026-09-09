@@ -1,0 +1,76 @@
+{
+  "id":"potatoverse-science-model-testing-protocol",
+  "title":"Potatoverse Science Model Testing Protocol",
+  "updated":"2026-09-09",
+  "status":"canonical science-quality protocol",
+  "purpose":"Make the science wing richer without allowing analogies, decorative equations or later formalizations to drift into unsupported physical claims.",
+  "required_fields_for_any_model":[
+    "model_id","name","origin_class","first_attestation","source_location","variables","domain","codomain","parameters","units","equations","initial_or_boundary_conditions","assumptions","known_physics_neighbor","what_is_new","observables","prediction","falsifier","existing_explanations","dimensional_consistency","numerical_or_analytic_method","confidence","revision_history"
+  ],
+  "origin_classes":[
+    "verbatim-Tim-equation",
+    "recovered-project-formalism",
+    "Great-Book-derived-formalism",
+    "later-archive-toy-model",
+    "established-external-equation",
+    "symbolic-metaphor-only"
+  ],
+  "tests":[
+    {"name":"provenance","question":"Can the exact equation or statement be tied to a dated source?","fail_action":"mark unrecovered or later-formalized; never attribute as verbatim Tim."},
+    {"name":"variable-definition","question":"Does every symbol have a defined meaning and mathematical type?","fail_action":"keep schematic."},
+    {"name":"units","question":"Are physical dimensions/units stated and consistent?","rule":"[LHS]=[RHS]","fail_action":"not eligible as a physical equation."},
+    {"name":"domain","question":"What space does the model act on: physical spacetime, graph, probability manifold, state space, chronology, symbolic ontology?","fail_action":"do not compare results across domains as if identical."},
+    {"name":"dynamics","question":"What determines evolution or transition?","fail_action":"classify as static taxonomy/geometry rather than dynamics."},
+    {"name":"observability","question":"What quantity could actually be measured or computed?","fail_action":"remain interpretive/toy model."},
+    {"name":"novelty","question":"What does this model explain or predict beyond existing theories?","fail_action":"retain as analogy, educational model or reframing."},
+    {"name":"falsifiability","question":"What outcome would count against the model?","fail_action":"do not describe as empirical scientific theory."},
+    {"name":"baseline","question":"What established theory already explains the phenomenon?","fail_action":"compare against baseline before invoking new force/dimension."},
+    {"name":"overfitting","question":"Were parameters chosen after seeing the target pattern?","fail_action":"label exploratory and require out-of-sample test."},
+    {"name":"category-boundary","question":"Is a mathematical analogy being mistaken for physical identity?","fail_action":"split the records and add an explicit boundary note."}
+  ],
+  "priority_models":{
+    "door_xi":{
+      "current":"Ξ/Ξ_c is a schematic critical-threshold model.",
+      "missing":["operational definition of Ξ","units or proof it is dimensionless","dynamics","data source","prediction"],
+      "next":"Choose one domain first—e.g. abstract state transition, not physical fifth dimension—and fully specify there before considering physical interpretation."
+    },
+    "radion_door":{
+      "current":"φ(x)=M_*ln(R/R_0) is a radion-inspired speculative model.",
+      "missing":["5D action","radion kinetic normalization","potential V(φ)","matter couplings","compactification geometry","experimental constraints"],
+      "next":"Build a conventional KK toy model first and show exactly where the Timic interpretation enters."
+    },
+    "starchforce":{
+      "current":"Invented project fifth-force concept with a biological starch/storage metaphor.",
+      "missing":["field","mediator","coupling constant","symmetry","action","range","source charge","force law","experimental anomaly"],
+      "next":"Do not write a physical Lagrangian until a novel measurable effect is stated. A semantic or organizational field may be modeled mathematically without calling it a fundamental force."
+    },
+    "field_of_life":{
+      "current":"Book-derived metaphor comparing Potato to an excitation in a field of life.",
+      "missing":["field variable","domain","equation of motion","energy functional","observable"],
+      "next":"Prefer reaction-diffusion, ecological, developmental or network fields for life-pattern modeling before quantum-field terminology."
+    },
+    "red_blue":{
+      "current":"Expansion/generation versus memory/contraction/preservation polarity.",
+      "missing":["measurable state variables","coupling","stability condition","empirical domain"],
+      "next":"Test as a two-variable dynamical system or control tradeoff, e.g. exploration versus exploitation, rather than a physical color/frequency claim."
+    },
+    "spiral":{
+      "current":"Multiple distinct uses: public 2025 spiral equation attestation, symbolic return, helical biography, biological eye arrangement.",
+      "missing":["exact primary formula","clear separation of spiral types"],
+      "next":"Maintain separate IDs for geometric spiral, helical chronology, phyllotaxis, return map and symbolic recurrence."
+    },
+    "merkaba_counter_rotation":{
+      "current":"Dynamic counter-rotation/alignment of opposites around a still center.",
+      "missing":["geometry","axes","phase variables","angular velocities","coupling rule"],
+      "next":"Start with a two-oscillator or rigid-body toy model and state which project property it represents."
+    }
+  },
+  "evidence_labels":{
+    "A":"primary equation/source directly recovered",
+    "B":"project formalism clearly documented but later than originating intuition",
+    "C":"strong external mathematical/physical comparator",
+    "D":"useful structural analogy",
+    "E":"speculative extension awaiting model/data"
+  },
+  "publication_rule":"Every public science page should make clear whether displayed mathematics is Tim-authored/recovered, archive-generated, or external established mathematics."
+}
