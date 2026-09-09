@@ -1,16 +1,20 @@
 #!/usr/bin/env python3
 """Audit canonical ownership, source-map declarations, indexed routes, and taxonomy.
 
-A consolidated semantic concept may use a canonical ID that differs from the literal
-ID/term stored at its selected source path. Canonical registry rows are also allowed
-to identify themselves through canonical_id rather than a literal record id.
+The source map may contain literal files, glob patterns, template paths such as
+``data/countries/<country-id>.json``, and intentionally retired layers. Templates
+must resolve to at least one concrete file. Retired layers are expected to be absent;
+if they still exist, that is a warning rather than a requirement to preserve them.
 """
 from __future__ import annotations
 import json
+import re
 from pathlib import Path
+
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'data'; MAP=DATA/'canonical-source-map.json'; INDEX=DATA/'repository-index.json'; REGISTRY=DATA/'canonical-record-registry.json'
 NON_SOURCE_KEYS={'policy','rule','purpose','empirical_rule','consolidation_actions','known_stale_references','semantic_identity_registry'}
+RETIRED_KEYS={'retired_layers'}
 ROOT_LAYERS={'spirit':{'source','meaning','belief','myths'},'mind':{'psychology','hawkinscale','neurobiology'},'matter':{'world','region','institution','network','person','object','event','record','ground'}}
 
 def load(p): return json.loads(p.read_text(encoding='utf-8'))
@@ -19,6 +23,14 @@ def declared_paths(v):
     if isinstance(v,list): return sum((declared_paths(x) for x in v),[])
     if isinstance(v,dict): return sum((declared_paths(x) for x in v.values()),[])
     return []
+def template_pattern(raw):
+    return re.sub(r'<[^>]+>', '*', raw)
+def matches_for(raw):
+    pattern=template_pattern(raw)
+    if '*' in pattern or '?' in pattern:
+        return [p for p in ROOT.glob(pattern) if p.is_file()]
+    p=ROOT/pattern
+    return [p] if p.is_file() else []
 def at_path(root,path):
     cur=root
     for part in path:
@@ -35,16 +47,34 @@ def main():
     if not INDEX.exists(): errors.append('missing data/repository-index.json')
     if errors: print('\n'.join(errors)); return 1
     sm=load(MAP); idx=load(INDEX); families=sm.get('families',{})
+
     for family,spec in families.items():
         for key,value in spec.items():
             if key in NON_SOURCE_KEYS: continue
-            for raw in declared_paths(value):
+            paths=declared_paths(value)
+            if key in RETIRED_KEYS:
+                for raw in paths:
+                    matches=matches_for(raw)
+                    if matches:
+                        sample=', '.join(p.relative_to(ROOT).as_posix() for p in matches[:4])
+                        extra=f' (+{len(matches)-4} more)' if len(matches)>4 else ''
+                        warnings.append(f'{family}: retired layer still present for {raw}: {sample}{extra}')
+                continue
+            for raw in paths:
                 p=ROOT/raw
                 if raw.endswith('/'):
                     if not p.is_dir(): warnings.append(f'{family}: declared directory is absent: {raw}')
+                elif '<' in raw and '>' in raw:
+                    matches=matches_for(raw)
+                    # Template collections commonly contain an index alongside real records;
+                    # require at least one non-index record when possible.
+                    concrete=[m for m in matches if m.name!='index.json']
+                    if not concrete:
+                        errors.append(f'{family}: declared template has no concrete matches: {raw} -> {template_pattern(raw)}')
                 elif '*' in raw or '?' in raw:
-                    if not list(ROOT.glob(raw)): errors.append(f'{family}: declared pattern has no matches: {raw}')
+                    if not matches_for(raw): errors.append(f'{family}: declared pattern has no matches: {raw}')
                 elif not p.is_file(): errors.append(f'{family}: declared source does not exist: {raw}')
+
     by_id={}; checked=0; taxonomy_counts={'spirit':0,'mind':0,'matter':0}
     for row in idx.get('records',[]):
         source=row.get('source'); path=row.get('path'); rid=str(row.get('id',''))
@@ -68,12 +98,10 @@ def main():
             expected_source_id=str(row.get('source_record_id') or rid)
             if actual!=expected_source_id:
                 errors.append(f'index: source id mismatch {rid} -> {source} {path!r} expected {expected_source_id} contains {actual}')
-        if actual!=rid:
-            if is_canonical:
-                pass
-            else:
-                errors.append(f'index: id mismatch {rid} -> {source} {path!r} contains {actual}')
+        if actual!=rid and not is_canonical:
+            errors.append(f'index: id mismatch {rid} -> {source} {path!r} contains {actual}')
         checked+=1; by_id.setdefault(rid,[]).append(row)
+
     owners={}
     for family,spec in families.items():
         for key in ('canonical_owner','adjacent_owner'):
@@ -84,14 +112,15 @@ def main():
         fams=set().union(*(owners[s] for s in sources)); msg=f'canonical ID {rid} has owners {sorted(sources)} across families {sorted(fams)}'
         if len(fams)<=1: errors.append('duplicate canonical owner within family: '+msg)
         else: warnings.append('cross-family canonical ID requires namespace review: '+msg)
+
     if REGISTRY.exists():
         reg=load(REGISTRY); reg_ids={str(r.get('id')) for r in reg.get('records',[])}; idx_ids=set(by_id)
-        # The canonical-record registry inventories raw record IDs across the corpus;
-        # the repository index intentionally adds semantic canonical IDs for consolidated
-        # concepts. Only non-consolidated index IDs are required to exist in that registry.
         missing={rid for rid,rows in by_id.items() if rid not in reg_ids and not any(r.get('canonical_concept') for r in rows)}
         if missing: errors.append(f'registry missing non-canonical indexed IDs: {len(missing)}')
         if reg_ids!=idx_ids: warnings.append(f'registry/index ID sets differ: registry={len(reg_ids)} index={len(idx_ids)}; index consolidates semantic concepts and may add canonical IDs')
-    result={'version':'1.6.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
-    (DATA/'source-of-truth-audit.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8'); print(json.dumps(result,indent=2)); return 1 if errors else 0
+
+    result={'version':'1.7.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
+    (DATA/'source-of-truth-audit.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
+    print(json.dumps(result,indent=2))
+    return 1 if errors else 0
 if __name__=='__main__': raise SystemExit(main())
