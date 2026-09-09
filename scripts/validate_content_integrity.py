@@ -14,8 +14,7 @@ def load(rel):
 def main():
     countries=load("data/countries/index.json").get("countries",[])
     if len(countries)!=195:ERRORS.append(f"countries/index.json has {len(countries)} records; expected 195")
-    ids=[x.get("id") for x in countries]
-    iso3=[x.get("iso3") for x in countries]
+    ids=[x.get("id") for x in countries]; iso3=[x.get("iso3") for x in countries]
     if len(ids)!=len(set(ids)):ERRORS.append("countries/index.json contains duplicate country IDs")
     if len(iso3)!=len(set(iso3)):ERRORS.append("countries/index.json contains duplicate ISO3 codes")
     levels=load("data/33-level-framework.json").get("levels",[])
@@ -57,8 +56,9 @@ def main():
     if haw.get("physical_frequency_status")!="not_established":ERRORS.append("Hawkins physical-frequency guardrail must remain not_established")
     if "no validated one-to-one mapping" not in str(haw.get("em_spectrum_status","")).lower():ERRORS.append("Hawkins electromagnetic mapping must remain explicitly non-physical")
     workflow=load("data/project-workflow.json")
-    if not any(x.get("id")=="emotion-state" for x in workflow.get("phases",[])):ERRORS.append("Workflow missing emotion-state phase")
-    if not any(x.get("id")=="release-audit" for x in workflow.get("phases",[])):ERRORS.append("Workflow missing release-audit phase")
+    phase_ids={x.get("id") for x in workflow.get("phases",[]) if isinstance(x,dict)}
+    for phase in ("audit","canonicalize","deepen","potatoism-canon","spiritual-inquiry","evidence","website","release-audit"):
+        if phase not in phase_ids:ERRORS.append(f"Workflow missing current phase: {phase}")
     extensions={".html",".js",".css",".json",".py",".yml",".yaml"}; ignored={".git","node_modules","vendor"}
     for p in ROOT.rglob("*"):
         if not p.is_file() or p.suffix.lower() not in extensions or any(part in ignored for part in p.parts):continue
