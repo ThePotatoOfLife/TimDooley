@@ -1,5 +1,5 @@
 {
-  "version":"5.0.0",
+  "version":"5.0.1",
   "updated":"2026-09-09",
   "name":"Tim Dooley / Potato of Life Atlas — Internal Data Manifest",
   "purpose":"Machine-readable map of substantive backend layers. Public navigation is owned by manifest.json and the unified Potato of Life site; this file registers internal data contracts without creating a competing public reader.",
@@ -22,7 +22,7 @@
   "anti_clutter_rule":"A file earns existence only when it owns distinct valuable information, primary-source material, a reusable schema, a necessary index, a contextual synthesis or a real executable function. Placeholder scaffolds, generated snapshots, stale route maps and duplicate wrappers are removed or archived after consolidation.",
   "layers":{
     "graph":{"status":"active","files":["data/nodes.json","data/relationships.json","data/graph-registry.json","data/global-graph-bridge.json","data/entanglement.json"]},
-    "terrain_and_formalism":{"status":"active-internal","files":["data/tree.json","data/axis-topology.json","data/hawkins-scale.json"],"public_note":"These are data/framework layers surfaced through current records and context, not standalone public root pages."},
+    "terrain_and_formalism":{"status":"active-internal","files":["data/tree.json","data/tree-concept-records.json","data/axis-topology.json","data/hawkins-scale.json"],"public_note":"These are data/framework layers surfaced through current records and context, not standalone public root pages."},
     "countries":{"status":"active","files":["data/countries/index.json","data/countries-blueprint.json","data/country-layer-manifest.json","data/country-source-registry.json"]},
     "religion_and_texts":{"status":"active","files":["data/religious-layer-manifest.json","data/religious-layer-map.json","data/religious-text-library.json","data/canonical-texts.json"]},
     "potatoism":{"status":"active","files":["data/potatoism-concept-registry.json","data/potatoism-dossiers.json","data/potatoism-cosmology.json","data/potatoism-relationships.json"]},
