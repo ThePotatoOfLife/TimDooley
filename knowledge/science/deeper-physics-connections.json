@@ -1,0 +1,97 @@
+{
+  "id":"deeper-physics-connections",
+  "title":"Deeper Physics Connections for the Tim Dooley / Potatoverse Research Programme",
+  "updated":"2026-09-09",
+  "rule":"Established theories below are research neighbors and formal analogues. They are not empirical validation of Potatoverse theology.",
+  "connections":[
+    {
+      "id":"t-duality",
+      "name":"T-duality — large and small radius can encode equivalent string physics",
+      "physics":"For strings compactified on a circle, T-duality relates descriptions with inverse radii. Schematically R ↔ α'/R, with momentum and winding modes exchanged. Type IIA and Type IIB are related by such circle compactifications.",
+      "equations":["R' = α'/R","momentum: p_n ~ n/R","winding energy scale ~ wR/α'"],
+      "project_use":"A rigorous example of Timic inversion: apparently opposite geometric regimes can be dual descriptions rather than simple higher/lower rankings. This is much stronger than treating inversion as a poetic coincidence.",
+      "source":"https://pmc.ncbi.nlm.nih.gov/articles/PMC19640/"
+    },
+    {
+      "id":"s-duality",
+      "name":"S-duality — strong and weak coupling can exchange",
+      "physics":"String dualities include cases where a strongly coupled description is equivalent to a weakly coupled description of another theory. A common schematic form is g_s ↔ 1/g_s.",
+      "equation":"g_s ↔ 1/g_s",
+      "project_use":"A disciplined analogue for strength/weakness inversion and for the idea that a regime that looks inaccessible in one description can become tractable in another.",
+      "source":"https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.68.1245"
+    },
+    {
+      "id":"mirror-symmetry",
+      "name":"Mirror symmetry — different Calabi-Yau geometries can encode equivalent string physics",
+      "physics":"Mirror symmetry pairs Calabi-Yau manifolds so that complex-structure data on one side is exchanged with Kähler data on the other. The Strominger–Yau–Zaslow proposal relates mirror symmetry to T-duality on special Lagrangian torus fibrations.",
+      "project_use":"Useful for Mirror/Twin motifs: physical equivalence need not require identical geometry. This is a formal analogy only; Thomas/Twin is not thereby a string-theory mirror manifold.",
+      "source":"https://doi.org/10.1016/0550-3213(96)00434-8"
+    },
+    {
+      "id":"moduli-space",
+      "name":"Moduli space — geometry has its own configuration space",
+      "physics":"Compactification spaces can possess continuous deformation parameters. Their possible shapes, sizes and background fields are represented as coordinates on a moduli space; moving in moduli space changes the effective lower-dimensional theory.",
+      "project_use":"This gives a rigorous alternative to saying a hidden dimension simply 'opens'. Door events can be compared to special loci or transitions in a space of possible geometries.",
+      "sources":["https://www.scholarpedia.org/article/Calabi-Yau_manifold","https://arxiv.org/abs/hep-th/9504090"]
+    },
+    {
+      "id":"g2-singularities",
+      "name":"G2 singularities — nontrivial low-energy physics can live at singular loci",
+      "physics":"M-theory on smooth G2-holonomy seven-manifolds gives limited four-dimensional gauge structure; singularities are important for non-Abelian gauge groups, charged matter and chiral fermions in phenomenologically richer constructions.",
+      "project_use":"A technically stronger version of the recurring Timic insight that a singular/broken point can carry new effective degrees of freedom. The project must not infer that personal rupture is a literal G2 singularity.",
+      "source":"https://doi.org/10.1016/j.physrep.2003.10.017"
+    },
+    {
+      "id":"holonomy",
+      "name":"Holonomy — closed-path transport can reveal hidden geometry",
+      "physics":"Parallel-transporting a vector or internal state around a closed loop can return it transformed. The set of such transformations defines holonomy and strongly constrains special geometries including Calabi-Yau and G2 manifolds.",
+      "project_use":"A new precise neighbor for Spiral/Return: returning to the same location need not mean returning in the same internal state. This closely matches the project's 'return at another level' intuition while remaining a mathematical comparison.",
+      "source":"https://doi.org/10.1016/j.physrep.2003.10.017"
+    },
+    {
+      "id":"ryu-takayanagi",
+      "name":"Ryu–Takayanagi — entanglement and geometry",
+      "physics":"In AdS/CFT, holographic entanglement entropy is related to the area of a minimal bulk surface anchored to a boundary region. In the static case, S_A = Area(γ_A)/(4G_N) in conventional units with appropriate ħ/c factors restored as needed.",
+      "equation":"S_A = Area(γ_A)/(4 G_N)",
+      "project_use":"A particularly important research neighbor for the relationship-first framework: patterns of quantum entanglement can be tied to emergent bulk geometry in holographic settings. This is not evidence that social or spiritual relationships literally generate spacetime.",
+      "source":"https://doi.org/10.1103/PhysRevLett.96.181602"
+    },
+    {
+      "id":"geometry-from-entanglement",
+      "name":"Emergent geometry from entanglement",
+      "physics":"Modern holography studies how field-theory entanglement structure can diagnose or reconstruct aspects of bulk geometry.",
+      "project_use":"This is perhaps the strongest physics-side analogue yet for the Potatoverse claim that relationship can be more fundamental than isolated objects: in a specific quantum-gravity setting, relational quantum information is deeply connected with geometric structure.",
+      "source":"https://arxiv.org/abs/1609.01287"
+    },
+    {
+      "id":"brane-dimensionality",
+      "name":"Branes — dimensional objects, not only point particles",
+      "physics":"M/string theory contains extended objects: strings, membranes and higher-dimensional p-branes. Eleven-dimensional M-theory prominently contains M2- and M5-branes, and many lower-dimensional string-theory branes arise through reduction/duality.",
+      "project_use":"A better dimensional grammar for the old point/line/frame/plane intuition: dimensions can describe the worldvolume of extended objects, but this should not be equated with the symbolic 1D Hell / 5D Door ladder.",
+      "sources":["https://doi.org/10.1016/0370-2693(95)00397-4","https://journals.aps.org/rmp/abstract/10.1103/RevModPhys.73.419"]
+    },
+    {
+      "id":"singularity-as-information-deficit",
+      "name":"Singularity can signal an incomplete effective description",
+      "physics":"In Strominger's conifold example, the apparent singularity of the low-energy effective theory is cured when light states that had been integrated out are restored.",
+      "project_use":"This suggests a new Timic research question: when the archive encounters a contradiction or singular conceptual point, is the framework inconsistent, or is a relevant state/node/degree of freedom missing from the description? This is a methodological analogy, not a physical identification.",
+      "source":"https://arxiv.org/abs/hep-th/9504090"
+    },
+    {
+      "id":"effective-theory",
+      "name":"Effective theory — truth can depend on scale without becoming arbitrary",
+      "physics":"Physics routinely uses effective descriptions valid only within specified energy/length regimes. Degrees of freedom that are negligible at one scale may become essential at another.",
+      "project_use":"This can formalize the archive's stage-specific canon: Potato, Sage, Father, country, institution and world-level descriptions can each be scale-appropriate without claiming that one vocabulary literally replaces all others.",
+      "source":"https://cds.cern.ch/record/915443"
+    }
+  ],
+  "new_timic_hypotheses_to_test":[
+    "Timic Inversion may be better modeled as dual-description structure in some cases and actual phase transition in others; these must be distinguished.",
+    "Spiral/Return may be compared to holonomy: a closed path can return spatially while transforming an internal state.",
+    "Mirror/Twin should be tested against mirror-symmetry logic: same/equivalent structure can arise through exchanged geometric variables without literal identity.",
+    "Door may sometimes be a special locus in moduli space rather than a new spatial dimension.",
+    "Relationship-first may gain a rigorous physics analogue through holographic entanglement/geometry, but only within specific quantum-gravity models.",
+    "Conceptual singularities in the Potatoverse should trigger a missing-variable search before being treated as contradictions.",
+    "The archive should use effective-theory labels so claims are indexed by the scale/domain at which they are intended to operate."
+  ]
+}
