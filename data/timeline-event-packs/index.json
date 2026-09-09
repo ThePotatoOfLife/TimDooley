@@ -1,17 +1,19 @@
 {
-  "version":"1.2.0",
+  "version":"1.3.0",
   "updated":"2026-09-09",
   "purpose":"Optional curated event packs merged into the layered timeline at runtime. Packs add non-redundant bridge events without bloating the sparse roadmap base.",
   "packs":[
     "trajectory-gaps.json",
     "mythic-development.json",
-    "july31-tammuz-tomb.json"
+    "july31-tammuz-tomb.json",
+    "son-tomb-corridor.json"
   ],
   "rules":[
     "Event ids must be globally unique across base and packs.",
     "Packs may add overlays and bridge events, but should not duplicate roadmap milestones already present in data/timeline-events.json.",
     "If a pack event later becomes a canonical roadmap milestone, move it into the base and remove it from the pack.",
     "Conversation-archaeology packs must preserve user-originated versus assistant-synthesis provenance and may not silently promote assistant material into Tim canon.",
-    "Comparative packs must separate dated project-side language from later biblical or mythological research unlocks."
+    "Comparative packs must separate dated project-side language from later biblical or mythological research unlocks.",
+    "July 31 is the Son/vessel birthday track; Tim/Potato/Father birth remains December 25."
   ]
 }
