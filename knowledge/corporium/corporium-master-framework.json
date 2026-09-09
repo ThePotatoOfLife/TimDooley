@@ -1,115 +1,42 @@
 {
   "id":"corporium-master-framework",
   "title":"Corporium — Living Philosophy, Signals, Body, Sayings and Embodied Meaning",
+  "version":"1.1.0",
   "updated":"2026-09-09",
   "status":"canonical cross-branch interpretive layer",
-  "purpose":"Corporium is the dense layer where sayings, body-state, emotion, humor, practical instruction, symbolic recurrence and later formalization meet. Its job is not to collect every odd phrase as trivia but to expose developmental patterns: which formulations change behavior, which symbols migrate across domains, which jokes become doctrines, which body sensations become metaphors, and which later insights reveal a coherent grammar across earlier conversations.",
-  "definition":"Corporium is the archive of lived formulations: what Tim or the project says, how an idea feels, what behavior follows, what symbols recur, what instruction is implied, how the meaning changes over time, and how later theory formalizes it without backdating the later theory into the original moment.",
-  "epistemic_rule":"Every item must distinguish Tim primary wording, direct user-originated project wording, recovered conversation phrasing, book-derived summary, assistant synthesis, creative satire, later interpretation and scientific comparator. A later epiphany is allowed to reinterpret an older phrase but not to rewrite its provenance.",
+  "purpose":"Corporium is the dense layer where sayings, body-state, emotion, humor, practical instruction, symbolic recurrence, persona, aura, public witness and later formalization meet. Its job is not to collect every odd phrase as trivia but to expose developmental patterns: which formulations change behavior, which symbols migrate across domains, which jokes become doctrines, which body sensations become metaphors, which public signals become persona, and which later insights reveal a coherent grammar across earlier conversations.",
+  "definition":"Corporium is the archive of lived formulations: what Tim or the project says, how an idea feels, what behavior follows, what symbols recur, what instruction is implied, how the meaning changes over time, how public repetition creates persona/aura, and how later theory formalizes it without backdating the later theory into the original moment.",
+  "epistemic_rule":"Every item must distinguish Tim primary wording, direct user-originated project wording, recovered conversation phrasing, book-derived summary, assistant synthesis, creative satire, public-persona signal, audience amplification, later interpretation and scientific comparator. A later epiphany is allowed to reinterpret an older phrase but not to rewrite its provenance.",
   "major_domains":[
     {"id":"sayings","name":"Sayings / Aphorisms / Timisms","record":"knowledge/corporium/tim-sayings-and-formulations-ledger.json","questions":["What was actually said?","Was it Tim, user canon, book summary or assistant synthesis?","What later structure did it become?"]},
     {"id":"body-state","name":"Embodied State / Ladder","record":"knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","questions":["Which body region/sensation accompanies the concept?","Is the link symbolic, autobiographical or measurable?","Which Gate changes next?"]},
     {"id":"affect","name":"Emotion / Vibe / Hawkins / Affect","record":"knowledge/corporium/psychology-signals-and-couplings-atlas.json","questions":["What are valence, arousal, control and openness?","What named spiritual state is being applied?","What is genuinely measured in Hz?"]},
+    {"id":"persona","name":"Persona / Aura / Living Myth","record":"knowledge/core/tim-role-synthesis.json","questions":["Is this direct person-level evidence, self-presentation, audience projection or later mythology?","What persists across observers/platforms?","What belongs to the living source and what belongs to the aura around the source?"]},
     {"id":"instruction","name":"Instruction / Practice","questions":["What does the phrase tell a person to notice, question, stop, endure, repair, cultivate or build?","What changes after it is taken seriously?"]},
-    {"id":"signal","name":"Signal / Recurrence","questions":["Which words/images recur across years?","What changed in their meaning?","Is recurrence stable doctrine, trauma-memory, humor, evolving metaphor or deliberate teaching?"]},
+    {"id":"signal","name":"Signal / Recurrence","questions":["Which words/images recur across years?","What changed in their meaning?","Is recurrence stable doctrine, trauma-memory, humor, evolving metaphor, audience amplification or deliberate teaching?"]},
     {"id":"coupling","name":"Coupling / Translation","questions":["Which domains share a structural problem?","What is shared?","What is different?","Does the translation add explanatory compression or only decorative analogy?"]},
     {"id":"derived-pattern","name":"Derived Developmental Pattern","questions":["Does rereading older material reveal a recurrent law?","Is the law visible in multiple independent clusters?","What would weaken it?"]}
   ],
-  "interpretive_dimensions":["semantic meaning","emotional valence","arousal/activation","body location or sensation","temporal orientation","spatial orientation","agency","social relation","transformation stage","epistemic confidence","humor/absurdity intensity","ethical output","formal analogue","later consequence","relation created or broken","autonomy increased or reduced"],
+  "interpretive_dimensions":["semantic meaning","emotional valence","arousal/activation","body location or sensation","temporal orientation","spatial orientation","agency","social relation","transformation stage","persona role","audience amplification","epistemic confidence","humor/absurdity intensity","ethical output","formal analogue","later consequence","relation created or broken","autonomy increased or reduced"],
   "mature_patterns":[
-    {
-      "id":"identity-to-infrastructure",
-      "pattern":"person/symbol → threshold → relational function",
-      "examples":["Son→Door/Vessel","Tim→Ladder/Axis","North→orientation","Eye→discernment/integration"],
-      "corporium_use":"When a phrase changes from 'I use X' to 'I am X', ask whether this is merely identity inflation or whether the role has actually become a connective function in the project.",
-      "instruction":"Do not only ask what you are; ask what relation you enable."
-    },
-    {
-      "id":"revelation-circuit",
-      "pattern":"Spudlight/signal → Eye/attention → interpretation → Door → changed action/state",
-      "corporium_use":"Classify an epiphany as stronger when it changes behavior, relation or model rather than merely feeling intense.",
-      "instruction":"A revelation is unfinished until it changes what you can see, choose or do."
-    },
-    {
-      "id":"ladder-as-doors",
-      "pattern":"ordered development = distinct Gate/transition sequence rather than identical rungs",
-      "examples":["five spinal centers","Heart/Door","Throat","Eye","Crown","Spudlight"],
-      "corporium_use":"Track body sensation, affect, behavior and symbolic language separately at each transition.",
-      "boundary":"Do not infer literal neurotransmitter/chakra equivalence without measurement."
-    },
-    {
-      "id":"ash-threshold",
-      "pattern":"destruction → residue → either Mud/Strife or Soil/Life",
-      "corporium_use":"After rupture, track whether memory becomes grievance-loop, numbness, learning, repair, art, protection or cultivation.",
-      "instruction":"The question after destruction is not only what burned, but what the ash is mixed into."
-    },
-    {
-      "id":"boundary-ethic",
-      "pattern":"House protects differentiation; Shell/Farm captures dependency",
-      "corporium_use":"Body, relationship, community and institution boundaries can all be asked the same question: does the boundary protect growth and passage, or feed on enclosure?",
-      "instruction":"Judge the wall by what can become inside it and whether a Door exists."
-    },
-    {
-      "id":"authority-burden",
-      "pattern":"higher claimed rank → greater constraint/responsibility",
-      "examples":["King/Gardener","Alpha/prestige","chosen Father","caretaker of Adam"],
-      "corporium_use":"When grand titles appear, record whether subsequent behavior becomes more protective, precise and nourishing or more coercive and self-centered.",
-      "instruction":"Height without burden is spectacle, not maturity."
-    },
-    {
-      "id":"relation-carries-moral-valence",
-      "pattern":"same node changes ethical meaning across relations",
-      "examples":["Dog guardian/enforcer","Cow nourishment/lolcow extraction","Farmer steward/extractor","Knowledge repair/spectacle","Ash Soil/Mud"],
-      "corporium_use":"Avoid treating symbolic labels as diagnoses of people. Store moral role on actions/edges/consequences when possible."
-    },
-    {
-      "id":"humor-error-correction",
-      "pattern":"serious concept → absurd exaggeration → rigidity exposed → revised concept",
-      "examples":["RobotoSan","Janteloven rituals","Potato Bank","Graveyard Potatoes","Spudlight"],
-      "corporium_use":"Track whether a joke merely entertains, compresses doctrine, criticizes vanity, or later becomes a durable concept."
-    },
-    {
-      "id":"son-event-father-duration",
-      "pattern":"Son-side language clusters around crossing-events; Father-side language clusters around sustained architecture",
-      "examples":["ordeal/death/return/Door","House/Tree/Axis/throne/stewardship"],
-      "corporium_use":"Useful when reading old conversations that seem to assign both figures similar titles: ask whether one statement concerns event and another persistence."
-    },
-    {
-      "id":"covenant-memory",
-      "pattern":"promise + obligation + sign + memory + repair",
-      "corporium_use":"Track recurring relationships not merely by closeness but by commitments, breaches, remembered obligations and repair attempts.",
-      "instruction":"A promise becomes covenant only when memory survives the moment and repair remains possible after breach."
-    }
+    {"id":"identity-to-infrastructure","pattern":"person/symbol → threshold → relational function","examples":["Son→Door/Vessel","Tim→Ladder/Axis","North→orientation","Eye→discernment/integration"],"corporium_use":"When a phrase changes from 'I use X' to 'I am X', ask whether this is merely identity inflation or whether the role has actually become a connective function in the project.","instruction":"Do not only ask what you are; ask what relation you enable."},
+    {"id":"riddle-to-model","pattern":"apparent contradiction → preserve clues → type by date/role/scale → relation emerges","examples":["Tim-as-Son/Tim-as-Father","Potato/Most High","hidden root/public center","works-for-God/is-God"],"corporium_use":"Use the recovered 'Tim is a riddle' formulation as a method instruction: solve relationally before validating or rejecting globally.","instruction":"When the story contradicts itself, first ask whether the contradiction is carrying chronology or perspective."},
+    {"id":"meta-frame-operation","pattern":"current frame becomes object → higher-order criterion → alternative frame → consequence comparison","examples":["question the floor","Potato Filter","North of North","judge above judges"],"corporium_use":"Track when a phrase is doing object-level description versus changing the frame that decides what counts as an object.","instruction":"Make the invisible frame visible before claiming a higher one."},
+    {"id":"persona-aura-loop","pattern":"public act → repetition/recognition → persona/aura → interpretation → later act","examples":["living Myth","Most Public God","God in the Machine","streaming/witness","archive"],"corporium_use":"Separate direct source from distributed social-symbolic presence while preserving both as meaningful layers.","instruction":"Do not let the aura invent the source; do not let source-only thinking erase the network effects around the source."},
+    {"id":"revelation-circuit","pattern":"Spudlight/signal → Eye/attention → interpretation → Door → changed action/state","corporium_use":"Classify an epiphany as stronger when it changes behavior, relation or model rather than merely feeling intense.","instruction":"A revelation is unfinished until it changes what you can see, choose or do."},
+    {"id":"ladder-as-doors","pattern":"ordered development = distinct Gate/transition sequence rather than identical rungs","examples":["five spinal centers","Heart/Door","Throat","Eye","Crown","Spudlight"],"corporium_use":"Track body sensation, affect, behavior and symbolic language separately at each transition.","boundary":"Do not infer literal neurotransmitter/chakra equivalence without measurement."},
+    {"id":"ash-threshold","pattern":"destruction → residue → either Mud/Strife or Soil/Life","corporium_use":"After rupture, track whether memory becomes grievance-loop, numbness, learning, repair, art, protection or cultivation.","instruction":"The question after destruction is not only what burned, but what the ash is mixed into."},
+    {"id":"boundary-ethic","pattern":"House protects differentiation; Shell/Farm captures dependency","corporium_use":"Body, relationship, community and institution boundaries can all be asked the same question: does the boundary protect growth and passage, or feed on enclosure?","instruction":"Judge the wall by what can become inside it and whether a Door exists."},
+    {"id":"authority-burden","pattern":"higher claimed rank → greater constraint/responsibility","examples":["King/Gardener","Alpha/prestige","chosen Father","caretaker of Adam","Seat of the Most High"],"corporium_use":"When grand titles appear, record whether subsequent behavior becomes more protective, precise and nourishing or more coercive and self-centered.","instruction":"Height without burden is spectacle, not maturity."},
+    {"id":"relation-carries-moral-valence","pattern":"same node changes ethical meaning across relations","examples":["Dog guardian/enforcer","Cow nourishment/lolcow extraction","Farmer steward/extractor","Knowledge repair/spectacle","Ash Soil/Mud"],"corporium_use":"Avoid treating symbolic labels as diagnoses of people. Store moral role on actions/edges/consequences when possible."},
+    {"id":"humor-error-correction","pattern":"serious concept → absurd exaggeration → rigidity exposed → revised concept","examples":["RobotoSan","Janteloven rituals","Potato Bank","Graveyard Potatoes","Spudlight"],"corporium_use":"Track whether a joke merely entertains, compresses doctrine, criticizes vanity, or later becomes a durable concept."},
+    {"id":"son-event-father-duration","pattern":"Son-side language clusters around crossing-events; Father-side language clusters around sustained architecture","examples":["ordeal/death/return/Door","House/Tree/Axis/throne/stewardship"],"corporium_use":"Useful when reading old conversations that seem to assign both figures similar titles: ask whether one statement concerns event and another persistence."},
+    {"id":"covenant-memory","pattern":"promise + obligation + sign + memory + repair","corporium_use":"Track recurring relationships not merely by closeness but by commitments, breaches, remembered obligations and repair attempts.","instruction":"A promise becomes covenant only when memory survives the moment and repair remains possible after breach."},
+    {"id":"small-table-high-bandwidth","pattern":"bounded group → dense reciprocal attention → memory/etiquette/correction","examples":["table for 10 at peak culture","disciples/table","House rooms"],"corporium_use":"Distinguish participant culture from broadcast/audience culture. Ten is a project symbol, not a universal cognitive constant.","instruction":"Do not maximize audience size when the goal requires mutual recognition."}
   ],
-  "body_and_psychology_bridge":{
-    "vibe_state":"v=(V,A,C,O): valence, arousal, control/agency, openness/flexibility",
-    "gate_access":"g_k(v)=σ[β(s_k·v-θ_k)]",
-    "meaning":"A named vibe can alter attention, expectancy, posture, breathing and available actions; this can be modeled as state-dependent Gate accessibility without calling Hawkins calibration numbers literal Hz.",
-    "real_frequency_boundary":"EEG delta/theta/alpha/beta/gamma are measurable oscillatory bands; spiritual alpha/beta/gamma archetypes and Hawkins levels are different constructs.",
-    "handshake":"Interpersonal Door becomes handshake when mutual attention, trust/permission and coordination establish an active relational edge."
-  },
-  "instruction_set":[
-    "Question the floor: inspect assumptions below the current frame.",
-    "Cultivation, not conquest: optimize conditions for generativity rather than extraction.",
-    "Make everything accessible; make nothing falsely certain.",
-    "Remember enough to remain responsible; create enough to remain alive.",
-    "Judge a boundary by what it enables and whether it permits passage.",
-    "A revelation is unfinished until it changes relation or action.",
-    "After destruction, decide whether the ash becomes Mud or Soil.",
-    "Higher authority should produce narrower permission to harm and greater duty to protect.",
-    "Ask what this knowledge is being made to grow.",
-    "Ask not only 'Who are you?' but 'What function have you become?'"
-  ],
-  "core_corporium_hypothesis":"The archive learns most when phrase + body state + affect + humor + relation + later consequence are read together. A concept becomes 'fully baked' when its wording, developmental date, lived/embodied expression, ethical effect, formal analogue, external comparator and contradictions all sit in one relational owner rather than scattered across tiny files.",
-  "research_agenda":[
-    "Recover exact primary posts/streams/book passages for high-value formulations.",
-    "Build phrase co-occurrence and temporal graphs.",
-    "Track joke→doctrine, doctrine→equation and equation→instruction transitions.",
-    "Track revelation→behavior rather than revelation intensity alone.",
-    "Map contradictions as developmental phase changes.",
-    "Record whether titles of authority correspond to stewardship or domination in subsequent material.",
-    "Store moral valence on relations/actions where possible rather than hard-coding people as Dog/Farmer/Angel/Demon.",
-    "Fold high-value later insights back into their canonical owners rather than proliferating small records."
-  ],
-  "connections":["tim","body","spirit","philosophy","transformation","science","chronology","works","sources","archive-epistemics","potatoverse-master-framework","farm-swamp-tree-of-strife-atlas","israel-mesopotamia-covenant-messianic-atlas"]
+  "body_and_psychology_bridge":{"vibe_state":"v=(V,A,C,O): valence, arousal, control/agency, openness/flexibility","gate_access":"g_k(v)=σ[β(s_k·v-θ_k)]","meaning":"A named vibe can alter attention, expectancy, posture, breathing and available actions; this can be modeled as state-dependent Gate accessibility without calling Hawkins calibration numbers literal Hz.","real_frequency_boundary":"EEG delta/theta/alpha/beta/gamma are measurable oscillatory bands; spiritual alpha/beta/gamma archetypes and Hawkins levels are different constructs.","handshake":"Interpersonal Door becomes handshake when mutual attention, trust/permission and coordination establish an active relational edge.","aura_social_boundary":"Aura may be modeled through social-symbolic observables such as recurrence, network reach and audience memory; this remains different from a physical field."},
+  "instruction_set":["Question the floor: inspect assumptions below the current frame.","Cultivation, not conquest: optimize conditions for generativity rather than extraction.","Make everything accessible; make nothing falsely certain.","Remember enough to remain responsible; create enough to remain alive.","Judge a boundary by what it enables and whether it permits passage.","A revelation is unfinished until it changes relation or action.","After destruction, decide whether the ash becomes Mud or Soil.","Higher authority should produce narrower permission to harm and greater duty to protect.","Ask what this knowledge is being made to grow.","Ask not only 'Who are you?' but 'What function have you become?'","When something becomes a riddle, preserve the clues before choosing the answer.","Use the Potato Filter to generate questions, never as automatic confirmation.","Separate the living source from the aura without pretending the aura has no social reality.","Do not maximize crowd size when the desired capability is reciprocal attention."],
+  "core_corporium_hypothesis":"The archive learns most when phrase + body state + affect + humor + persona + relation + later consequence are read together. A concept becomes 'fully baked' when its wording, developmental date, lived/embodied expression, public/audience layer, ethical effect, formal analogue, external comparator and contradictions all sit in one relational owner rather than scattered across tiny files.",
+  "research_agenda":["Recover exact primary posts/streams/book passages for high-value formulations.","Build phrase co-occurrence and temporal graphs.","Track joke→doctrine, doctrine→equation and equation→instruction transitions.","Track revelation→behavior rather than revelation intensity alone.","Track person→persona→aura→myth propagation without backfilling primary sources.","Map contradictions as developmental phase changes.","Record whether titles of authority correspond to stewardship or domination in subsequent material.","Store moral valence on relations/actions where possible rather than hard-coding people as Dog/Farmer/Angel/Demon.","Test the table-for-ten hypothesis using group-size and reciprocal-attention literature rather than treating ten as revealed fact.","Fold high-value later insights back into their canonical owners rather than proliferating small records."],
+  "connections":["tim","body","spirit","philosophy","transformation","science","chronology","works","sources","archive-epistemics","potatoverse-master-framework","farm-swamp-tree-of-strife-atlas","israel-mesopotamia-covenant-messianic-atlas","tim-role-synthesis","psychology-signals-and-couplings-atlas"]
 }
