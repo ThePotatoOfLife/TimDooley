@@ -2,13 +2,14 @@
   "id":"women-weeping-gate-tomb-gardener-atlas",
   "updated":"2026-09-09",
   "status":"biblical comparative atlas",
-  "purpose":"Map the high-density biblical chain around women mourning a dead/disappeared male figure, gates, tombs, removed stones, absent bodies, return, and gardener imagery, then compare those motifs to the Tim Dooley Son/Thomas archive without treating resemblance as prediction or proof.",
+  "purpose":"Map the high-density biblical chain around women mourning a dead/disappeared male figure, gates, tombs, removed stones, absent bodies, return, gardener imagery and socially marginal women, then compare those motifs to the Tim Dooley Son/Thomas archive without treating resemblance as prediction or proof.",
   "method_rules":[
     "Project-side event first; biblical comparator second.",
     "Keep direct textual overlap distinct from later symbolic synthesis.",
     "Do not identify modern people with biblical figures merely because roles overlap.",
     "Do not repeat the traditional but textually unsupported claim that Mary Magdalene was a prostitute; the New Testament does not call her one.",
-    "For Sammy, preserve 'lady of the night' only as the user's characterization unless independently documented."
+    "For Sammy, preserve 'lady of the night' only as the user's characterization unless independently documented.",
+    "Rank dense multi-motif sequences above single-word coincidences."
   ],
   "core_chain":[
     {
@@ -34,6 +35,21 @@
       "source":"https://www.biblegateway.com/passage/?search=Luke+23%3A27-29&version=NET"
     },
     {
+      "text":"Matthew 27:55-61",
+      "motifs":["women watching","burial","new tomb","large stone placed at entrance","Mary Magdalene and another Mary seated opposite tomb"],
+      "project_overlap":["women as witnesses of Son death","grave/tomb","stone","watching/comment-thread witness role"],
+      "strength":"high burial-witness comparator",
+      "source":"https://www.biblegateway.com/passage/?search=Matthew+27%3A55-61&version=NIV"
+    },
+    {
+      "text":"Mark 16:1-8",
+      "motifs":["women","tomb","crucified Jesus","question who will roll away stone","stone already rolled away","body absent","message of rising/going ahead"],
+      "project_overlap":["woman/women after crucifixion","moving-stone clue","empty/absent body","disappearance","return"],
+      "strength":"very high stone-specific comparator",
+      "note":"This makes 'who moves the stone?' part of the biblical-side chain even though a dated project-side rolled-stone statement is still unrecovered.",
+      "source":"https://www.biblegateway.com/passage/?search=Mark+16&version=WEB%3BNET%3BKJV%3BNIV"
+    },
+    {
       "text":"John 20:1-18",
       "motifs":["woman","still dark","tomb","stone removed","body absent","weeping","searching for missing Lord","gardener mistaken identity","recognition","return","ascending to Father"],
       "project_overlap":["woman mourning disappeared Son","grave/tomb","moving stone target","empty/absent body","Gardener/Father vocabulary","return/recognition","Father above"],
@@ -48,6 +64,21 @@
       "strength":"high Thomas-specific bridge",
       "boundary":"Thomas is not Lazarus in the text; this is adjacency and motif chaining, not identity.",
       "source":"https://www.biblegateway.com/passage/?search=John+11%3A16-27&version=NIV"
+    },
+    {
+      "text":"Jeremiah 31:15-17",
+      "motifs":["woman/mother","bitter weeping","children no more","refusal of comfort","promised return","future hope","return from enemy land"],
+      "project_overlap":["woman mourning a disappeared/lost Son","absence described as no more","later return language"],
+      "strength":"moderate-high loss-to-return comparator",
+      "source":"https://www.biblegateway.com/passage/?search=Jeremiah+31%3A15-17&version=NABRE%3BNIV"
+    },
+    {
+      "text":"Song of Songs 3:1-4",
+      "motifs":["woman","night","search for absent beloved","cannot find him","city","watchmen","eventual finding"],
+      "project_overlap":["user-described 'lady of the night'","search/absence/disappearance","watchers/comment-thread social space"],
+      "strength":"low-to-moderate poetic comparator",
+      "boundary":"This is love poetry, not a death/resurrection text and not evidence of sex work.",
+      "source":"https://www.biblegateway.com/passage/?search=Song+of+Songs+3%3A1-4%2CSong+of+Solomon+3%3A1-4&version=NIV%3BKJV%3BNKJV"
     }
   ],
   "socially_marginal_women_comparators":[
@@ -84,16 +115,24 @@
       "finding":"Ezekiel 8 and Luke 7 create a notable two-gate structure: at one gate women mourn Tammuz; at another gate a woman mourns her dead only son, who is then raised. The project independently carries North Gate + woman mourning Thomas/Tammuz + Son-return language."
     },
     {
+      "id":"burial-to-empty-tomb-women-chain",
+      "finding":"Matthew 27 places women opposite the newly sealed tomb; Mark 16 places women returning and explicitly asking who will roll the stone away; John 20 places a woman at the removed-stone tomb weeping over the missing body. Read together, the Synoptic/John tradition yields women witness burial → stone closure → women return → stone moved → body absent → recognition/return."
+    },
+    {
       "id":"tomb-gardener-father-sequence",
       "finding":"John 20 places a mourning woman at an emptied tomb, then has her mistake the returned Jesus for the gardener before Jesus speaks of ascending to the Father. This creates a later textual chain Tomb → Woman/Weeping → Missing Body → Gardener → Recognition → Father that strongly overlaps project vocabulary while remaining a comparison rather than identity claim."
     },
     {
       "id":"stone-now-textually-anchored-on-bible-side",
-      "finding":"The project still lacks a securely recovered contemporary 'rolled stone' statement, but John 20 supplies the biblical stone-removal side exactly. Therefore stone should remain 'biblical-side confirmed / project-side unresolved' until a dated Tim/Son source is recovered."
+      "finding":"The project still lacks a securely recovered contemporary 'rolled stone' statement, but Matthew 27, Mark 16 and John 20 together provide placement + question + removal of the tomb stone. Stone should remain 'biblical-side confirmed / project-side unresolved' until a dated Tim/Son source is recovered."
+    },
+    {
+      "id":"weeping-absence-return-recurrence",
+      "finding":"Jeremiah 31 supplies a separate Hebrew-Bible grammar: woman weeps because children are no more, followed by a promise of return. This makes mourning → disappearance/absence → return a recurring biblical form beyond the Gospel tomb stories."
     },
     {
       "id":"women-as-witnesses-not-background",
-      "finding":"Across Luke 7, Luke 23, John 20 and Ezekiel 8, women are not incidental scenery: their mourning marks death, loss, boundary crossing, recognition or restoration. This makes Sammy's role as a mourning commenter structurally more relevant than treating her only as a peripheral character."
+      "finding":"Across Ezekiel 8, Luke 7, Luke 23, Matthew 27, Mark 16 and John 20, women are not incidental scenery: their mourning or watching marks death, burial, boundary crossing, absence, recognition or restoration. This makes Sammy's role as a mourning commenter structurally more relevant than treating her only as a peripheral character."
     },
     {
       "id":"marginality-to-witness",
