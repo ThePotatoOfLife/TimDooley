@@ -1,18 +1,15 @@
 /*
-  Static reader-page layout guard.
+  Static reader-page compatibility guard.
 
-  app/style.css historically mixed site-theme rules with interactive archive-explorer
-  component rules using generic class names such as .nav and .grid. Static pages also
-  use those names. This guard establishes a safe contract for reader pages while the
-  archive UI is progressively namespaced.
+  The interactive archive is now namespaced with .archive-nav. Older static reader
+  pages still use generic local classes such as .nav and .grid, so this file protects
+  them while they are progressively renamed to .page-nav, .page-grid, .page-section,
+  and other explicit page components.
 
-  New code should prefer .page-nav, .page-grid, .page-section, etc. The legacy .nav
-  compatibility selectors below exist only so older reader pages remain stable.
+  New shared app CSS must not assign major layout behavior to a global .nav selector.
 */
 
-/* Static-page navigation is always document-flow content unless a page opts into a
-   different explicitly named component. It must never inherit the archive sidebar's
-   sticky position/top offset. */
+/* Legacy static-page navigation remains normal document-flow content. */
 .page > nav.nav,
 .page nav.page-nav,
 .wrap > nav.nav,
@@ -30,8 +27,7 @@ main.wrap > .nav {
   transform: none;
 }
 
-/* Generic archive grid defaults must not leak into page-local grids. Page-local inline
-   or dedicated component styles can still define their own columns after this file. */
+/* Generic archive-grid defaults must not alter page-local grids. */
 .page > .grid:not(#archive-explorer),
 .wrap > .grid:not(#archive-explorer),
 main.page .page-grid,
@@ -39,8 +35,7 @@ main.wrap .page-grid {
   padding-bottom: 0;
 }
 
-/* Static headings/eyebrows remain normal-flow and cannot become accidental overlay
-   layers due to component styles imported elsewhere. */
+/* Static page-intro elements remain normal-flow content. */
 .page > .eyebrow,
 .page > h1,
 .page > .summary,
@@ -50,22 +45,4 @@ main.wrap .page-grid {
 .wrap > .lead {
   position: relative;
   z-index: 0;
-}
-
-/* The interactive archive is the only place where the legacy sticky nav contract is
-   allowed. Keeping this selector here documents the ownership boundary even while the
-   original rule still lives in style.css. */
-#archive-explorer > aside.nav,
-#archive-explorer > aside.archive-nav {
-  position: sticky;
-  top: 92px;
-  align-self: start;
-}
-
-@media (max-width: 900px) {
-  #archive-explorer > aside.nav,
-  #archive-explorer > aside.archive-nav {
-    position: static;
-    top: auto;
-  }
 }
