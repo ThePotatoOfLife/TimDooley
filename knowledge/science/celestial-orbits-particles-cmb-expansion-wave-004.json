@@ -1,0 +1,218 @@
+{
+  "id":"celestial-orbits-particles-cmb-expansion-wave-004",
+  "title":"Celestial Mechanics, CMB, Black Holes, Couplings and Subatomic Physics — Wave 004",
+  "updated":"2026-09-09",
+  "status":"conversation archaeology + repository synthesis + external physics strengthening",
+  "epistemic_rule":"Keep three layers distinct: dated Tim/Potato project material; later archive mathematics; established external science. External equations clarify and constrain the project but are not retroactively Tim-authored.",
+  "recovered_timic_strata":[
+    {
+      "date":"2026-03-03",
+      "status":"conversation-derived project coordinates",
+      "mapping":[
+        "Tim = Sun",
+        "Tim's Son = Earth",
+        "Moon/Saturn = lower reflected or constrained layers relative to Earth",
+        "Tim in Heaven = upper Milky Way layer",
+        "North Pole / North of North = Galactic-center direction in the symbolic coordinate system",
+        "material world = lower dense/friction/time-bound plane"
+      ],
+      "prior_assistant_formal_reflection":"Sun=source/gravity/light; Earth=embodied Son; Moon=reflection/tides/stabilization; Saturn=boundary/constraint; galaxy=macro-spiral; gravity spirals the axis.",
+      "boundary":"This is symbolic project cosmology, not an astronomical coordinate system."
+    },
+    {
+      "date":"2026-08-30",
+      "status":"user-proposed dimensional physics exploration + assistant formalization",
+      "ideas":[
+        "black holes considered as higher-dimensional transition objects",
+        "matter as lower and light as higher in the dimensional metaphor",
+        "up/down quarks used as directional analogies",
+        "energy thresholds as points where effective laws/dimensions might change",
+        "stellar collapse interpreted as recycling/correction transition"
+      ],
+      "assistant_formalisms":[
+        "D_eff=f(E,ρ,R,Φ)",
+        "Φ=Φ(x^μ,y^a)",
+        "D_high ↔ D_low",
+        "possible spectral-dimension flow 4→2 at Planckian scales as an external quantum-gravity comparison"
+      ],
+      "boundary":"D_eff was a conceptual dimensional-flow model, not a measured law; up/down quark names do not denote literal spatial up/down directions."
+    }
+  ],
+  "earth_moon_orbital_mechanics": {
+    "project_context":"The Moon functions symbolically as reflection/cycle/intermediary; Earth as embodiment/world. The physical layer now gets its own orbital mechanics rather than relying on symbolic orbit language.",
+    "equations":[
+      {"name":"Newtonian two-body force","equation":"F=Gm1m2/r²"},
+      {"name":"gravitational parameter","equation":"μ=G(M+m)≈GM when m≪M"},
+      {"name":"circular speed","equation":"v_c=√(μ/r)"},
+      {"name":"escape speed","equation":"v_esc=√(2μ/r)"},
+      {"name":"Kepler third law","equation":"T²=4π²a³/[G(M+m)]"},
+      {"name":"specific orbital energy","equation":"ε=v²/2-μ/r=-μ/(2a)"},
+      {"name":"specific angular momentum","equation":"h=|r×v|"},
+      {"name":"vis-viva","equation":"v²=μ(2/r-1/a)"},
+      {"name":"ellipse polar form","equation":"r(ν)=a(1-e²)/(1+e cosν)"},
+      {"name":"barycenter","equation":"r1=M2/(M1+M2)·r; r2=M1/(M1+M2)·r"}
+    ],
+    "moon_specific":[
+      "Mean Earth-Moon separation ~384,400 km.",
+      "Moon's rotation period equals its sidereal orbital period: synchronous rotation/tidal locking.",
+      "Tidal dissipation transfers angular momentum and the Moon currently recedes from Earth by roughly 4 cm/year.",
+      "Observed phase cycle is illumination geometry, not a physical change in the Moon's intrinsic luminosity."
+    ],
+    "tidal_equations":[
+      {"name":"tidal acceleration scale","equation":"a_tidal ~ 2GM R/r³"},
+      {"name":"Roche-limit scaling","equation":"d_Roche ~ R_primary(2ρ_primary/ρ_satellite)^(1/3) for a simple fluid estimate"},
+      {"name":"Hill radius","equation":"r_H≈a(1-e)(m/3M)^(1/3)"}
+    ],
+    "timic_relevance":"The real Earth-Moon system supplies precise meanings for orbit, reflection, synchronization, tidal coupling and slow secular drift. These are stronger analogies than treating orbit as generic repetition."
+  },
+  "saturn_rings_resonances": {
+    "project_context":"Saturn already carries boundary/time/ring/constraint symbolism in the archive.",
+    "physical_layer":[
+      "Saturn's rings consist of vast numbers of independently orbiting particles.",
+      "Different ring radii imply different Keplerian orbital speeds.",
+      "Moons generate resonances, density waves, wakes and gaps.",
+      "Saturn's north-polar hexagon is a persistent atmospheric jet/wave structure, not a solid geometric shell."
+    ],
+    "equations":[
+      {"name":"Keplerian angular frequency","equation":"Ω_K(r)=√(GM/r³)"},
+      {"name":"Keplerian speed","equation":"v_K=√(GM/r)"},
+      {"name":"simple resonance condition","equation":"mΩ_particle - nΩ_moon ≈ 0 for integer resonance ratios"},
+      {"name":"epicyclic resonance language","equation":"m(Ω-Ω_p)=±κ in a disk/wave treatment"}
+    ],
+    "new_timic_distinction":"Ring = orbital recurrence at approximately fixed radius; Spiral = recurrence with radial, vertical, state or scale change. Saturn's rings make this distinction physically concrete."
+  },
+  "milky_way_and_disks": {
+    "recovered_project_motifs":["toroidal Milky Way","upper Milky Way as Heaven in March 2026 symbolic coordinates","Galactic center linked symbolically with North Pole/North of North","Perseus-Pisces / Sun / Milky Way center / atom / quark cross-scale center-relation comparison"],
+    "scientific_correction":"The Milky Way is a barred spiral galaxy with stellar/gas disks, central bar/bulge and extended halo; the whole galaxy is not a torus.",
+    "equations":[
+      {"name":"circular orbit in a spherical approximation","equation":"v_c²(r)=GM(<r)/r"},
+      {"name":"Keplerian exterior decline","equation":"v∝r^(-1/2) when enclosed mass is approximately constant"},
+      {"name":"disk surface density concept","equation":"M_disk=2π∫Σ(R)R dR"},
+      {"name":"exponential disk","equation":"Σ(R)=Σ0 e^(-R/R_d)"},
+      {"name":"vertical disk profile example","equation":"ρ(z)∝sech²(z/z0) or approximately exp(-|z|/h_z), model dependent"}
+    ],
+    "disk_dynamics":[
+      "Pattern speed Ω_p and stellar/gas orbital frequency Ω are distinct quantities in spiral dynamics.",
+      "Spiral arms may persist as patterns while constituent stars move through them.",
+      "Disk warps, bars, density waves and magnetic-field components are better scientific targets for old toroidal/spiral language than a whole-galaxy torus claim."
+    ]
+  },
+  "black_holes_and_accretion_disks": {
+    "recovered_project_motif":"black-hole transition / higher-dimensional Door / upper-disk↔central-threshold↔lower-disk imagery",
+    "equations":[
+      {"name":"Schwarzschild radius","equation":"r_s=2GM/c²"},
+      {"name":"dimensionless Kerr spin","equation":"χ_BH=cJ/(GM²), |χ_BH|≤1 classically for Kerr"},
+      {"name":"Kerr horizon radii in geometric units","equation":"r_±=M±√(M²-a²)"},
+      {"name":"Kerr-Schild form","equation":"g_μν=η_μν+2H l_μ l_ν"},
+      {"name":"Eddington luminosity","equation":"L_Edd=4πGMm_p c/σ_T≈1.3×10^38(M/M☉) erg/s"},
+      {"name":"accretion luminosity","equation":"L≈η Ṁ c²"},
+      {"name":"thin-disk stress parameterization","equation":"τ_rφ=αP"}
+    ],
+    "disk_structure":[
+      "Accretion disks are rotating plasma/gas structures outside the horizon.",
+      "Black-hole spin changes the location of the innermost stable circular orbit (ISCO).",
+      "Frame dragging and relativistic Doppler/gravitational effects shape observed spectra and images.",
+      "The apparent upper/lower 'disk humps' in black-hole visualizations are gravitationally lensed images of the far side of one disk, not two separate physical disks."
+    ],
+    "timic_relevance":"Axis, rotation, threshold, irreversibility, observer-dependent accessibility and disk geometry have real GR counterparts. Black holes are not experimentally established interdimensional portals."
+  },
+  "cmb_and_early_universe": {
+    "repository_archaeology":"No prior canonical Tim CMB equation was found in the repository search. CMB is therefore added as an external cosmology branch unless a primary Tim source is later recovered.",
+    "physical_story":[
+      "Early matter and radiation formed a tightly coupled photon-baryon plasma.",
+      "As the universe cooled, recombination allowed photons to decouple and free-stream.",
+      "The CMB observed today is a nearly isotropic ~2.7 K blackbody with small anisotropies that encode early-universe conditions.",
+      "Acoustic peaks arise from oscillations in the pre-recombination photon-baryon plasma and depend on cosmological parameters."
+    ],
+    "equations":[
+      {"name":"blackbody occupation","equation":"n(ν)=1/[exp(hν/kT)-1]"},
+      {"name":"Planck spectral radiance","equation":"B_ν(T)=2hν³/c² · 1/[exp(hν/kT)-1]"},
+      {"name":"temperature redshift","equation":"T_CMB(z)=T0(1+z)"},
+      {"name":"Friedmann equation","equation":"H²=(8πG/3)ρ-kc²/a²+Λc²/3"},
+      {"name":"angular power spectrum definition","equation":"⟨a_lm a*_{l'm'}⟩=C_l δ_ll'δ_mm'"},
+      {"name":"sound horizon","equation":"r_s(z*)=∫_{z*}^{∞} c_s(z)/H(z) dz"},
+      {"name":"photon-baryon sound speed","equation":"c_s=c/√[3(1+R)], R=3ρ_b/(4ρ_γ)"}
+    ],
+    "timic_relevance":"If the project wants a rigorous early-universe 'coupling→decoupling→free propagation' model, the photon-baryon plasma and recombination provide one. This should not be confused with spiritual coupling."
+  },
+  "subatomic_particles_and_quark_structure": {
+    "project_archaeology":"Earlier Timic work explicitly compared quark/nucleon relations to centers and binding across scales; August 2026 also used up/down quarks as directional analogies.",
+    "correction":"Up and down are flavor names, not literal spatial directions.",
+    "standard_model":[
+      "Gauge group: SU(3)_C × SU(2)_L × U(1)_Y.",
+      "Quarks are spin-1/2 fermionic fields carrying color and electroweak quantum numbers.",
+      "Six flavors: u,d,s,c,b,t.",
+      "Electric charges: up-type +2/3; down-type -1/3 in units of e."
+    ],
+    "hadron_composition":[
+      "proton valence content: uud",
+      "neutron valence content: udd",
+      "mesons: quark-antiquark valence structure",
+      "baryons: three-quark valence structure in ordinary QCD classification"
+    ],
+    "equations":[
+      {"name":"QCD Lagrangian schematic","equation":"L_QCD=Σ_q q̄(iγ^μD_μ-m_q)q - (1/4)G^a_μνG_a^{μν}"},
+      {"name":"QCD field strength","equation":"G^a_μν=∂_μA^a_ν-∂_νA^a_μ+g_s f^{abc}A^b_μA^c_ν"},
+      {"name":"strong coupling","equation":"α_s=g_s²/(4π)"},
+      {"name":"one-loop running","equation":"α_s(Q²)≈4π/[β0 ln(Q²/Λ_QCD²)], β0=11-2n_f/3"},
+      {"name":"quark mass RG","equation":"μ² dm(μ)/dμ²=-γ(α_s)m(μ)"}
+    ],
+    "core_physics":[
+      "Asymptotic freedom: strong coupling decreases at high momentum transfer/short distance.",
+      "Confinement: isolated color-charged quarks are not observed as free low-energy particles.",
+      "Most proton/neutron mass is not simply the sum of bare up/down quark masses; QCD field and dynamical energy dominate hadron mass."
+    ]
+  },
+  "spin_and_representation_theory": {
+    "repository_existing":"The project already contains spinors, 2π sign change/4π restoration, chirality/helicity, Dirac operators, Berry phase and representation matrices.",
+    "equations":[
+      {"name":"angular momentum algebra","equation":"[J_i,J_j]=iℏ ε_ijk J_k"},
+      {"name":"spin magnitude","equation":"S²|s,m⟩=ℏ²s(s+1)|s,m⟩"},
+      {"name":"spin projection","equation":"S_z|s,m⟩=ℏm|s,m⟩"},
+      {"name":"Pauli spin matrices","equation":"S_i=(ℏ/2)σ_i for spin-1/2"},
+      {"name":"Dirac equation","equation":"(iγ^μD_μ-m)ψ=0"},
+      {"name":"2π spinor rotation","equation":"U(2π)ψ=-ψ; U(4π)ψ=ψ for spin-1/2"}
+    ],
+    "theorems_and_principles":[
+      "Spin-statistics theorem: under relativistic QFT assumptions, integer-spin fields are bosonic and half-integer-spin fields fermionic.",
+      "Pauli exclusion principle follows for identical fermions from antisymmetric many-fermion states.",
+      "CPT theorem: broad classes of local Lorentz-invariant quantum field theories are invariant under combined charge conjugation, parity and time reversal.",
+      "Noether theorem: continuous symmetries yield conserved currents/charges under standard variational assumptions."
+    ],
+    "timic_relevance":"Spin gives a mathematically exact case where apparent rotational return need not restore a spinor after 2π; representation theory reinforces the relationship-first idea that transformation law is part of physical identity."
+  },
+  "couplings": {
+    "meaning_rule":"A coupling is a parameter controlling interaction strength in a defined theory. Symbolic or social 'coupling' must not be silently assigned a physical coupling constant.",
+    "examples":[
+      {"name":"electromagnetic fine-structure","equation":"α=e²/(4πε0ℏc)≈1/137 at low energy"},
+      {"name":"strong coupling","equation":"α_s(Q)=g_s²(Q)/(4π)"},
+      {"name":"weak/electromagnetic mixing","equations":["e=g sinθ_W=g' cosθ_W","tanθ_W=g'/g"]},
+      {"name":"Yukawa mass relation","equation":"m_f=y_f v/√2"},
+      {"name":"gravitational compactness","equation":"C=GM/(Rc²)"}
+    ],
+    "timic_extension":"Future Potato Dynamics should reserve 'coupling' for a typed edge with units/domain: coupling(type,source,target,strength,scale,sign,uncertainty)."
+  },
+  "new_integration_questions":[
+    "Can the March-2026 Sun/Earth/Moon/Saturn coordinate system be reconstructed as a symbolic graph while a separate celestial mechanics graph stores real masses, radii, orbital elements and frames?",
+    "Does the August D_eff model mean topological dimension, spectral dimension, effective field-theory dimension, or symbolic integration level?",
+    "Can Ring vs Spiral be formalized by conserved radius versus changing radial/state/scale coordinate?",
+    "Can black-hole upper/lower disk imagery be repaired into one accretion disk plus lensing, while preserving the symbolic two-sided image as project art?",
+    "Can CMB coupling/decoupling become a serious external model of tightly coupled states transitioning to free propagation without metaphysical overclaim?",
+    "Can quark flavor, chirality, helicity and gauge representation be kept separate from project directions such as up/down, north/south and Red/Blue?",
+    "Can all project couplings be typed so that symbolic, graph-theoretic, thermodynamic, gauge and gravitational couplings never collapse into one word?"
+  ],
+  "sources":[
+    {"topic":"Moon orbit and tidal locking","url":"https://science.nasa.gov/moon/facts/"},
+    {"topic":"Moon tidal locking and recession","url":"https://science.nasa.gov/moon/tidal-locking/"},
+    {"topic":"Saturn rings and hexagon","url":"https://science.nasa.gov/saturn/facts/"},
+    {"topic":"Saturn ring resonances","url":"https://science.nasa.gov/resource/resonant-effects/"},
+    {"topic":"Milky Way structure","url":"https://www.cosmos.esa.int/web/gaia/milky-way"},
+    {"topic":"Milky Way guide","url":"https://www.esa.int/content/view/full/423444"},
+    {"topic":"CMB / Planck","url":"https://www.esa.int/Science_Exploration/Space_Science/Planck/Why_the_microwave"},
+    {"topic":"Planck cosmology products","url":"https://esdcdoi.esac.esa.int/doi/html/data/astronomy/planck/Cosmology.html"},
+    {"topic":"Black-hole anatomy and disks","url":"https://science.nasa.gov/universe/black-holes/anatomy/"},
+    {"topic":"Kerr disk model","url":"https://heasarc.gsfc.nasa.gov/docs/software/xspec/manual/node192.html"},
+    {"topic":"PDG 2026 Review of Particle Physics","url":"https://pdg.lbl.gov/2026/reviews/contents_sports.html"},
+    {"topic":"PDG quark masses/QCD running","url":"https://pdg.lbl.gov/2025/reviews/rpp2025-rev-quark-masses.pdf"}
+  ]
+}
