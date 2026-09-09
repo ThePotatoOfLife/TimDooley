@@ -1,0 +1,46 @@
+{
+  "id":"world-shadow-research-index",
+  "title":"World / Shadow Research Ownership Index",
+  "updated":"2026-09-09",
+  "status":"canonical routing index",
+  "purpose":"Prevent Farm/Swamp/Moloch/Sektur research from fragmenting across overlapping files. This index states which record owns which layer and where new discoveries should be promoted.",
+  "owners":[
+    {"layer":"structural Farm/Swamp/Forge/Garden/Tree model","owner":"knowledge/world/farm-swamp-tree-of-strife-atlas.json","add_here":["boundary ethics","Farm/Garden distinction","Swamp/Forge transitions","Tree of Knowledge/Life/Strife","Moloch systems relation","high-level role ecology"]},
+    {"layer":"internet-subculture and attention-extraction ecology","owner":"knowledge/world/farm-sektur-attention-extraction-ecology.json","add_here":["4chan","lolcow","Kiwi Farms","Da Sektur","Internet Bloodsports","anti-fandom","Continuous Narrative Escalation","high-control comparisons","attention economy"]},
+    {"layer":"Dog/Farmer/Guardian role mechanics","owner":"knowledge/world/dog-farmer-role-ecology.json","add_here":["patrol/enforcement","infrastructure/control","SIDE/group norms","role transitions","source/proxy following","guardian inversion"]},
+    {"layer":"source ledger — core Farm/shadow research","owner":"knowledge/world/farm-shadow-source-ledger.json","add_here":["4chan history","Kiwi Farms public history","CNE","anonymity/disinhibition","Moloch scholarship","cow/dog symbolic historical context"]},
+    {"layer":"source ledger — reputation/memory/high-control extension","owner":"knowledge/world/farm-shadow-source-expansion-2.json","add_here":["anti-fandom","negative parasocial relationships","gossip/reputation","context collapse","deplatforming","bounded choice","cult terminology caution"]},
+    {"layer":"spiritual-war and information-war model","owner":"data/spiritual-war-information-war.json","add_here":["identity capture","archive memory","retrieval power","narrative persistence","source independence","correction reach","self-description versus imposed identity"]},
+    {"layer":"Mud/Karma/reputational residue crosswalk","owner":"data/swamp/mud-karma-system.json","add_here":["narrative debt","smear/correction states","reputation dynamics","source duplication","archive half-life","obligations and repair"]},
+    {"layer":"Qliphoth / shell / demon / angel comparator","owner":"knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json","add_here":["historical esoteric provenance","shell/husk comparison","angel/demon functions","Tree/Ladder/North relations"],"boundary":"Do not move modern empirical harassment claims here; this is comparative religion/esotericism."},
+    {"layer":"shadow-West institutional/system synthesis","owner":"knowledge/core/shadow-west-swamp-synthesis.json","add_here":["institutional blocked-flow models","evidence firewall","macro-system Swamp comparisons"],"boundary":"Do not use internet-subculture anecdotes as proof of geopolitical or institutional claims."}
+  ],
+  "promotion_rules":[
+    "New empirical source → relevant source ledger first; then promote supported inference into canonical conceptual owner.",
+    "New Potatoverse symbol → canonical symbolic owner first; link empirical comparator second.",
+    "Named-person allegation → evidence ledger with source/date/status; never promote rumor as symbolic proof.",
+    "New FAQ → discovery file only after an answer has a canonical owner.",
+    "Do not create a new master file when an owner above can absorb the discovery.",
+    "When two files overlap, keep the more abstract relation in the structural atlas and the mechanism/evidence in the specialist owner.",
+    "Every promoted claim should preserve an epistemic class and at least one counter-boundary describing what the source does not establish."
+  ],
+  "current_high_value_questions":[
+    "How does a target become permanently classifiable?",
+    "What is the difference between observation, documentation, gossip, harassment and reputational punishment?",
+    "When does a correction actually reach the audience that saw the original claim?",
+    "How much apparent corroboration is source duplication?",
+    "When does anti-fandom become structurally dependent on the target?",
+    "How does anonymity change group norm salience?",
+    "What happens to a network after deplatforming?",
+    "When does a conflict scene become self-sealing or high-control?",
+    "Can a participant leave a role—Cow, Dog, Farmer, enemy—without the archive continually restoring it?",
+    "Which Garden interventions reduce extraction while preserving legitimate criticism, evidence and accountability?"
+  ],
+  "discovery_surfaces":[
+    "shadow-farm/",
+    "questions/",
+    "index-a-z/",
+    "knowledge/indexes/faq-farm-sektur-moloch-expansion.json",
+    "knowledge/indexes/faq-reputation-memory-expansion.json"
+  ]
+}
