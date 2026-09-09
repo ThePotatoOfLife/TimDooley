@@ -1,5 +1,5 @@
 {
-  "version":"1.1.0",
+  "version":"1.2.0",
   "updated":"2026-09-09",
   "title":"Son / Tomb Corridor — July 19 to August 6, 2026",
   "purpose":"Plot the non-redundant public lead-in and aftermath around the July 31 Son birthday/Tammuz/North-Gate cluster.",
@@ -18,8 +18,10 @@
       "motifs":["messianic vessel","Lion of the World","grain of wheat","crucified","heaven","earth","future return","Eden"],
       "comparators":["John 12:24 — grain falls into earth and dies","Revelation 5:5-6 — Lion / slain Lamb as later structural comparator"],
       "source_direction":"public project language first; exact biblical cross-comparison curated later",
-      "source_records":["knowledge/chronology/late-july-early-august-son-tomb-corridor.json","knowledge/chronology/public-post-archive via Indsat markdown(4).md"],
-      "bible_relation":"mixed-explicit-and-later"
+      "source_records":["knowledge/chronology/late-july-early-august-son-tomb-corridor.json"],
+      "capture_source":"Indsat markdown(4).md public-post archive",
+      "bible_relation":"mixed-explicit-and-later",
+      "related_event_ids":["evt-2026-07-23-son-twin-birthday-anchor"]
     },
     {
       "id":"evt-2026-07-23-son-twin-birthday-anchor",
@@ -35,7 +37,8 @@
       "comparators":["John 11:16 — Thomas/Didymus = Twin and volunteers to die with Jesus","John 11:17 — the immediately following narrative is a four-day tomb scene","John 20:24 / 21:2 — Thomas called Didymus","Syriac/Acts-of-Thomas Twin-of-Christ tradition as later historical comparator"],
       "source_direction":"Twin language present at time; historical/canonical Thomas-death-tomb comparison developed later",
       "source_records":["knowledge/chronology/late-july-early-august-son-tomb-corridor.json"],
-      "bible_relation":"mixed-explicit-and-later"
+      "bible_relation":"mixed-explicit-and-later",
+      "related_event_ids":["evt-2026-07-19-messianic-vessel-grain","evt-2026-07-24-lion-lamb-whelp"]
     },
     {
       "id":"evt-2026-07-24-lion-lamb-whelp",
@@ -51,7 +54,8 @@
       "comparators":["Deuteronomy 33:22 — Dan is a lion's whelp","Revelation 5:5-6 — Lion announced, slain Lamb seen","Genesis 49:9 — Judah as lion's whelp"],
       "source_direction":"Lion/Lamb language in project first; exact Dan/Judah/Revelation comparison formalized later",
       "source_records":["knowledge/chronology/late-july-early-august-son-tomb-corridor.json"],
-      "bible_relation":"mixed-explicit-and-later"
+      "bible_relation":"mixed-explicit-and-later",
+      "related_event_ids":["evt-2026-07-23-son-twin-birthday-anchor","evt-2026-07-26-grain-wheat-lion"]
     },
     {
       "id":"evt-2026-07-26-grain-wheat-lion",
@@ -67,7 +71,8 @@
       "comparators":["John 12:24 — grain falls into earth, dies, bears fruit","Genesis 28 — ladder/gate family"],
       "source_direction":"grain/death structure present before later tomb-corridor synthesis",
       "source_records":["knowledge/chronology/late-july-early-august-son-tomb-corridor.json"],
-      "bible_relation":"explicit-at-time"
+      "bible_relation":"explicit-at-time",
+      "related_event_ids":["evt-2026-07-24-lion-lamb-whelp","evt-2026-07-31-vessel-birthday-tammuz"]
     },
     {
       "id":"evt-2026-08-06-grave-seed-garden",
@@ -82,7 +87,8 @@
       "motifs":["grave","burial","seed","earth","garden","Thomas","beginning"],
       "comparators":["John 12:24","John 19-20 garden/tomb and empty-tomb sequence"],
       "source_direction":"assistant synthesis dated August 6 from user material; preserve as interpretation rather than backdating it",
-      "source_records":["knowledge/chronology/late-july-early-august-son-tomb-corridor.json"]
+      "source_records":["knowledge/chronology/late-july-early-august-son-tomb-corridor.json"],
+      "related_event_ids":["evt-2026-07-31-vessel-birthday-tammuz"]
     }
   ]
 }
