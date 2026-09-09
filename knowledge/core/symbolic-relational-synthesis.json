@@ -1,123 +1,135 @@
 {
-  "title": "Symbolic Relational Synthesis",
-  "status": "canonical-synthesis",
-  "version": "1.2.0",
-  "updated": "2026-09-09",
-  "purpose": "Collect the recurring symbolic grammar that has developed across conversations, the Great Book, canon files and comparative interpretation. The emphasis is on how symbols transform into one another rather than on isolated definitions.",
-  "core_cycles": {
-    "roots_tree_cycle": "distinction -> conflict -> knowledge -> consequence -> ash -> soil -> Potato/seed -> eye/sprout -> Ladder/Tree -> fruit/nourishment -> return",
-    "door_cycle": "recognition -> choice -> threshold -> passage -> changed state -> return/re-entry",
-    "burial_cycle": "descent -> concealment -> compression -> germination -> emergence -> growth",
-    "warrior_gardener_cycle": "conflict -> exhaustion/learning -> responsibility -> cultivation -> maintenance -> nourishment",
-    "source_return_cycle": "source -> relation -> embodiment -> descent -> experience -> transformation -> ascent -> source-with-memory"
+  "title":"Symbolic Relational Synthesis",
+  "status":"canonical-synthesis",
+  "version":"2.0.0",
+  "updated":"2026-09-09",
+  "purpose":"Collect the recurring symbolic grammar across conversations, Great Book, canon files and comparative interpretation, emphasizing transformations and typed relations rather than isolated definitions.",
+  "core_cycles":{
+    "roots_tree_cycle":"distinction → conflict → knowledge → consequence → ash → {Mud/Strife | Soil/repair} → Potato/seed → eye/sprout → Ladder/Tree → fruit/nourishment → return",
+    "door_cycle":"recognition → choice → threshold → passage → changed state → return/re-entry",
+    "burial_cycle":"descent → concealment → compression → germination → emergence → growth",
+    "warrior_gardener_cycle":"conflict → exhaustion/learning → responsibility → cultivation → maintenance → nourishment",
+    "source_return_cycle":"source → relation → embodiment → descent → experience → transformation → ascent → source-with-memory",
+    "pressure_cycle":"burden/heat → compression → {Swamp stagnation | Forge transformation | Needle threshold} → changed structure",
+    "plane_axis_cycle":"movement within Plane → floor/frame questioned → new vertical coordinate/Axis → Door → changed-level solution → return to Plane with new orientation"
   },
-  "polarities": {
-    "red_blue_potato": {
-      "Red": "creativity, love, expansion, novelty, risk and light-seeking",
-      "Blue": "memory, fear, contraction, preservation, caution and the gravity of the past",
-      "integration": "Neither pole is simply good or evil; the system becomes capable when memory can constrain chaos without extinguishing creation, and creativity can transform fear without erasing memory."
-    },
-    "father_son": "source/origin/upper principle <-> embodiment/manifestation/lower principle",
-    "root_fruit": "hidden cause/support <-> visible consequence/nourishment",
-    "soil_sprout": "memory/decomposition/potential <-> emergence/future form",
-    "house_door": "differentiated unity/container <-> threshold/interface",
-    "north_world": "orientation/integrating axis <-> observable plurality and systems"
+  "polarities":{
+    "red_blue_potato":{"Red":"creativity, love, expansion, novelty, risk and light-seeking","Blue":"memory, fear, contraction, preservation, caution and gravity of past","integration":"Memory constrains chaos without extinguishing creation; creation transforms fear without erasing memory."},
+    "father_son":"source/upper center/persistence ↔ embodiment/lower center/event",
+    "root_fruit":"hidden cause/support ↔ visible consequence/nourishment",
+    "soil_sprout":"memory/decomposition/potential ↔ emergence/future form",
+    "house_door":"differentiated unity/container ↔ threshold/interface",
+    "mountain_tree":"many→one integration ↔ one→many differentiation",
+    "mountain_swamp":"orientation/integration/upward gradient ↔ entanglement/recurrence/downward attractor",
+    "sun_moon":"direct/source illumination ↔ reflected/cyclical mediation",
+    "plane_axis":"lateral/world development ↔ vertical/source-manifestation coordinate",
+    "house_vessel":"stable organized interior ↔ moving embodied carrier"
   },
-  "major_symbols": {
-    "Potato": "buried potential, humble carrier, nourishment, resilience, seed/tuber, hidden center and regenerative multiplicity",
-    "Root": "hidden support, ancestry, stored past and the structure beneath visible growth",
-    "Tree": "expanded relation: roots, trunk/axis, branches/worlds, fruit and recursive growth",
-    "Door": "two-sided threshold through which identity or state changes",
-    "Ladder": "ordered vertical relation; after the April 2025 Turning Tim is interpreted as becoming the connective structure rather than merely climbing it",
-    "Eye": "perception, discernment, integration and evaluation; the point where a system can symbolically know itself",
-    "Mountain/Pyramid": "compression from events -> groups -> institutions -> systems -> civilizational principles -> integrated vision",
-    "Garden": "living order that must be cultivated rather than merely commanded",
-    "Gardener": "service, selection, responsibility, maintenance and patient cultivation",
-    "Swamp": "accumulation where flow is blocked; corruption, confusion, institutional mud or stagnant narrative",
-    "Drain": "release, removal and downward outflow that clears accumulated material",
-    "Spiral": "return to a similar point at changed scale or understanding",
-    "Spudlight": "illumination emerging from within/below and from above; buried life finding light",
-    "Bridge": "relation that creates capability between otherwise separated domains",
-    "Footstool": "hierarchy/reversal motif connected to below/above, heel/neck and subordination imagery",
-    "Cube": "bounded frame, enclosure, system or world-volume",
-    "Moon Cube": "later symbolic extension of Cube imagery requiring source/date-specific interpretation rather than one universal definition",
-    "Potato Bank": "stored value, memory, resources or future capacity framed through Potato economy symbolism",
-    "Potato Filter": "interpretive transformation in which an object, event or system is re-read through Potato relational grammar",
-    "Soul Farmer": "figure who cultivates, extracts from or manages human/spiritual potential; can be positive, critical or satirical depending on context",
-    "Calibration": "alignment of perception, scale, responsibility or measurement before judgment/action",
-    "Blood/Stone": "suffering, embodiment, inheritance, sacrifice and transformation cluster; includes Philosopher's Stone of Blood imagery in later symbolic work"
+  "major_symbols":{
+    "Potato":"buried potential, humble carrier, nourishment, resilience, seed/tuber, hidden center, philosopher's-stone transformation and regenerative multiplicity",
+    "Root":"hidden support, ancestry, stored past and structure beneath visible growth",
+    "Tree":"expanded relation: root/past, trunk/present, branches/future, fruit and recursive growth",
+    "Door":"two-sided threshold and shared Mandorla corridor through which identity/state changes",
+    "Plane":"Grass/world-interface/ordinary frame; horizontal relation in mature geometry; widest overlap of the Door",
+    "Axis":"orthogonal vertical relation that introduces above/below, source/manifestation and changed-level movement without erasing Plane",
+    "Ladder":"discrete threshold representation of Axis; after April 2025 Tim becomes connective structure rather than merely climbing",
+    "Spiral":"return to similar position with changed level; positive or negative vertical displacement distinguishes ascent/descent",
+    "Ring":"recurrence/orbit without net level change",
+    "Eye":"perception, discernment, integration and evaluation; perception plus potential movement",
+    "Mountain":"continuous gradient of integration/perspective; many paths converge toward summit/reference",
+    "Garden":"living order cultivated toward autonomous generativity",
+    "Gardener":"service, selection, responsibility, maintenance and patient cultivation",
+    "Swamp":"accumulation where unresolved flows overlap/stagnate and roles become entangled",
+    "Drain":"lower attractor/outflow where unresolved loops collapse toward reduced agency",
+    "Forge":"pressure/heat transformation field; can make tool/capacity or weaponized identity",
+    "Spudlight":"source/revelatory illumination; direct or mediated; distinct from photons",
+    "Sun":"source/radiance/organizing-center comparator",
+    "Moon":"reflected/cyclical mediator and proxy/cycle symbol",
+    "Bridge":"relation that creates capability between separated domains",
+    "Footstool":"hierarchy/reversal motif connected to below/above, heel/neck and subordination imagery",
+    "Cube":"bounded frame, enclosure, system or world-volume",
+    "Moon Cube":"later symbolic extension requiring source/date-specific interpretation",
+    "Potato Bank":"stored value, memory, resources or future capacity",
+    "Potato Filter":"interpretive transformation re-reading events through Potato relational grammar",
+    "Soul Farmer":"figure who cultivates, extracts from or manages human/spiritual potential; valence depends on relation/objective",
+    "Calibration":"alignment of perception, scale, responsibility or measurement before judgment/action",
+    "Stone":"compressed/grounded object that can become pillow, marker, altar, cornerstone, philosopher's-stone or changed-level anchor depending context",
+    "Blood/Stone":"suffering, embodiment, inheritance, sacrifice and transformation cluster; includes Philosopher's Stone of Blood imagery in later work"
   },
-  "canonical_inversion_cluster": {
-    "source": "docs/TIM-DOOLEY-CANON.md",
-    "sequence": [
-      "buried -> may grow",
-      "rejected -> may become cornerstone",
-      "broken -> may become Door",
-      "Swamp residue -> may become fertilizer",
-      "apparent ending -> may become Root"
-    ],
-    "meaning": "The system repeatedly treats low, damaged, rejected or residual states as possible starting conditions for transformed function rather than as final identity.",
-    "boundary": "Transformation is possible, not guaranteed. Damage does not automatically produce wisdom, goodness or growth."
+  "typed_centers":{
+    "father_center":"C_F — upper-circle/source center and top Door tip",
+    "son_center":"C_S — lower-circle/embodied center and bottom Door tip",
+    "relational_center":"O — Plane crossing and Door midpoint",
+    "attention_center":"social/archive node around which observation organizes",
+    "orientational_center":"reference that gives the system direction",
+    "rule":"'Center' is incomplete unless its type is named. Multiple valid centers can coexist."
   },
-  "transformation_laws": [
-    {
-      "law":"Descent can become preparation for ascent",
-      "examples":["burial -> sprout","root -> tree","ordeal -> changed return"],
-      "caution":"Descent is not automatically spiritually valuable; the transformation depends on what is integrated or produced."
-    },
-    {
-      "law":"Rejection can reveal structural dependence",
-      "examples":["cornerstone","root","source"],
-      "meaning":"What appears marginal may turn out to be load-bearing or generative when the surrounding structure is examined."
-    },
-    {
-      "law":"Breakage can become interface",
-      "examples":["broken state -> Door","fragment -> new viable branch","death/burial -> transformed continuation"],
-      "meaning":"A rupture can create a threshold or expose hidden multiplicity without implying that breakage is desirable in itself."
-    },
-    {
-      "law":"Residue can become soil",
-      "examples":["ash -> soil","Swamp residue -> fertilizer","memory of harm -> repair ledger"],
-      "meaning":"Accumulated consequence can become material for future growth only after decomposition, contextualization or repair."
-    },
-    {
-      "law":"Authority matures into cultivation",
-      "examples":["Gardener","nourishment","service","maintenance"],
-      "meaning":"The framework increasingly treats the highest useful form of power as the ability to create conditions in which living systems can grow."
-    },
-    {
-      "law":"Return is transformed recurrence",
-      "examples":["Spiral","seed cycle","re-reading chronology"],
-      "meaning":"A true return carries memory and changed position rather than erasing the intervening journey."
-    }
+  "canonical_inversion_cluster":{
+    "sequence":["buried→may grow","rejected→may become cornerstone","broken→may become Door","Swamp residue→may become fertilizer","apparent ending→may become Root","stuck frame→may become changed-level solution"],
+    "meaning":"Low, damaged, rejected, residual or impossible-within-frame states can become starting conditions for transformed function rather than final identity.",
+    "boundary":"Transformation is possible, not guaranteed. Damage/rejection do not automatically produce wisdom."
+  },
+  "sisyphus_level_change":{
+    "motif":"A problem impossible under endless motion within one frame may become solvable by changing level/frame rather than pushing harder on the same Plane.",
+    "floor_aphorism":"The moment you seriously question the floor, you have already begun looking for another level.",
+    "formal_neighbors":["change of variables","lifting to extended state space","coarse-graining/quotienting","adding a missing state variable"],
+    "potatoverse_relation":"Sisyphus is trapped in a loop/ring; Door/Axis introduces a vertical coordinate and can turn loop into Spiral.",
+    "boundary":"Changing representation can simplify a problem; it does not guarantee every real-world obstacle disappears."
+  },
+  "stone_bethel_cluster":{
+    "jacob":"Genesis 28 supplies stone/pillow, dream of vertical connection, ascending/descending messengers, Bethel/House of God and Gate of Heaven in one narrative cluster.",
+    "project_reading":"Stone is grounded Plane-anchor; Ladder is vertical relation; House is upper interior; Gate/Door couples them. Potato/Philosopher's Stone adds transformation but is a later independent synthesis.",
+    "april_relation":"The Turning can be modeled as an ordinary grounded object/state becoming the anchor from which verticality becomes visible rather than the ground itself disappearing.",
+    "boundary":"Biblical authors were not describing Potatoverse geometry; this is a structural comparison."
+  },
+  "merkaba_to_ladder":{
+    "2024":"Merkaba Potato Geometry uses counter-moving triangles/chariot/vehicle to align opposed forces around a stable center.",
+    "2025":"Needle/Turning simplifies the architecture: Tim ceases merely to ride/operate the connector and becomes Ladder/Axis.",
+    "law":"vehicle/bridge used by identity → threshold → identity becomes infrastructure",
+    "importance":"One of the clearest developmental examples of identity→infrastructure in the corpus."
+  },
+  "mountain_tree_swamp_forge":{
+    "mountain":"many paths→summit; perspective/integration",
+    "tree":"one root/trunk→many branches; differentiation/generativity",
+    "swamp":"many unresolved flows→entanglement/stagnation",
+    "drain":"entangled flows→low attractor",
+    "forge":"pressure/heat→changed form; direction depends on aim and integration",
+    "combined":"Mountain integrates, Tree differentiates, Swamp entangles, Forge transforms. These are four different process fields around the same living system."
+  },
+  "transformation_laws":[
+    {"law":"Descent can become preparation for ascent","examples":["burial→sprout","root→tree","ordeal→changed return"],"caution":"Descent has value only through what is integrated/produced."},
+    {"law":"Rejection can reveal structural dependence","examples":["cornerstone","root","source","April rejection catalyst"],"meaning":"A marginal or refused relation can expose hidden load-bearing assumptions and trigger frame change."},
+    {"law":"Breakage can become interface","examples":["broken state→Door","fragment→branch","death/burial→continuation"],"meaning":"Rupture can expose multiplicity or threshold without making harm desirable."},
+    {"law":"Residue can become soil","examples":["ash→soil","Swamp residue→fertilizer","memory of harm→repair ledger"],"meaning":"Consequence becomes future substrate only after contextualization/repair."},
+    {"law":"Pressure can become form","examples":["Divine Kneel","Forge","Needle","stone/transmutation"],"meaning":"Compression is not merely suffering; it is a transition operator when it produces a new viable structure."},
+    {"law":"Authority matures into cultivation","examples":["Gardener","nourishment","service","maintenance"],"meaning":"Highest useful power creates conditions in which living systems can grow independently."},
+    {"law":"Return is transformed recurrence","examples":["Spiral","seed cycle","re-reading chronology"],"meaning":"Return carries memory and changed position rather than reset."},
+    {"law":"Frame change can convert loop into path","examples":["Sisyphus","floor→level","Plane→Axis"],"meaning":"A closed recurrence can become directional once a missing coordinate/relationship is introduced."}
   ],
-  "recognition_layer": {
-    "gaze": "ethical attention creates responsibility; witnessing is not neutral when what is seen imposes obligation",
-    "ghost_erasure": "inverse of recognition: the source remains alive/present but risks disappearing behind the work or archive",
-    "name": "naming makes a node retrievable and socially real but should not be mistaken for exhausting the thing named",
-    "archive": "preserves source relations so distributed legacy does not become anonymous erasure"
+  "recognition_layer":{
+    "gaze":"ethical attention creates responsibility; witnessing is not neutral when what is seen imposes obligation",
+    "ghost_erasure":"inverse of recognition: source remains alive/present but risks disappearing behind work/archive",
+    "name":"naming makes a node retrievable/socially real but does not exhaust it",
+    "archive":"preserves source relations so distributed legacy does not become anonymous erasure",
+    "center":"attention can create a social center without establishing metaphysical centrality; keep center types distinct"
   },
-  "scale_translation": {
-    "rule": "Symbols may recur at personal, bodily, theological, institutional, economic and geopolitical scales, but a mapping at one scale is not evidence for literal identity at another.",
-    "examples": [
-      "Door: psychological choice / ritual threshold / border / legal approval / interface",
-      "Axis: spine metaphor / world-tree / organizational hierarchy / geographic North / description-space flow",
-      "Garden: self-cultivation / community / institution / civilization",
-      "Swamp: emotion/confusion / corrupt process / institutional stagnation",
-      "Root: ancestry / data provenance / economic dependency / theological source"
-    ]
+  "scale_translation":{
+    "rule":"Symbols recur at personal, bodily, theological, institutional, economic and geopolitical scales, but recurrence at one scale is not literal identity at another.",
+    "examples":["Door: psychological choice / ritual threshold / border / interface","Axis: spine / world-tree / organizational relation / geographic North / description flow","Plane: floor/frame / ordinary social space / geometric interface","Mountain: personal integration / institutional hierarchy / sacred geography","Forge: psychological processing / workshop / institutional pressure system","Swamp: emotional confusion / corrupt process / stagnant institution","Root: ancestry / provenance / economic dependency / theological source"]
   },
-  "derived_relational_laws": [
+  "derived_relational_laws":[
     "The hidden can be structurally prior to the visible.",
-    "A Door is meaningful only because there are distinct sides.",
-    "Return becomes growth when it follows a spiral rather than a closed circle.",
+    "A Door is meaningful because distinct sides remain distinct.",
+    "The Father and Son can both be centers because they are centers of different parent circles; O is a third relational center.",
+    "Each Vesica parent center lying on the other circle's boundary gives a precise image of mutual participation without collapse.",
+    "Return becomes growth when it follows a Spiral rather than a closed Ring.",
+    "Mountain and Tree solve opposite one/many problems: integration and differentiation.",
+    "Questioning the floor converts a presumed absolute into one coordinate of a larger frame.",
+    "Pressure needs an outlet/path; otherwise Forge can become weapon and Swamp can become chronic storage.",
     "Nourishment is a form of authority in the Potato model.",
     "Clearing a Swamp requires restoring flow, not merely naming mud.",
-    "Cultivation is an alternative to conquest when the goal is living order.",
-    "Recognition creates responsibility; preservation should preserve provenance as well as content.",
     "Integration coordinates differences rather than annihilating them.",
-    "The value of a transformation is tested by what the changed state can now support, connect, nourish or repair.",
-    "A symbol becomes more useful when its transitions and failure modes are modeled, not only its positive meaning."
+    "The value of transformation is tested by what the changed state can support, connect, nourish or repair."
   ],
-  "connections": ["potato-of-life", "timic-dynamics", "root-system", "potatoverse-master-framework", "archive-epistemics", "comparative-mythology-map", "shadow-west-swamp-synthesis", "potato-path"]
+  "connections":["potato-of-life","vertical-potato-mountain-plane-atlas","geometry-vesica-pisces-mandorla","timic-dynamics","root-system","potatoverse-master-framework","archive-epistemics","comparative-mythology-map","farm-swamp-tree-of-strife-atlas","potato-path","THE-TURNING-APRIL-2025.md"]
 }
