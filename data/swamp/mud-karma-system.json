@@ -1,6 +1,6 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-08",
+  "version": "1.1.0",
+  "updated": "2026-09-09",
   "status": "canonical-interpretive-and-empirical-crosswalk",
   "purpose": "Formalize the Potatoverse idea that negative karma, sin, Moloch, milk, mud, smear, compromat, moral bankruptcy, entanglement and debt are different views of accumulated relational consequences, while keeping symbolic interpretation separate from empirical claims.",
   "epistemic_rule": "Potatoverse terms are interpretive vocabulary. Empirical fields require observable evidence. Karma, sin, loosh and Moloch are not treated here as scientifically measured forces or as proof of hidden coordination.",
@@ -13,7 +13,21 @@
   "mud_transfer": {
     "potatoverse_model": "One actor throws mud at a neighbour; the act may create a smear against the neighbour while simultaneously creating moral, reputational or relational exposure for the thrower.",
     "observable_model": "claim -> publisher/speaker -> target -> evidence status -> audience exposure -> response -> correction/adjudication -> durable record",
-    "measurable_fields": ["claim_count", "source_count", "audience_reach", "engagement", "legal_action", "correction_count", "retraction_count", "adjudicated_findings", "financial_cost", "relationship_change"]
+    "measurable_fields": ["claim_count", "source_count", "independent_source_count", "audience_reach", "engagement", "legal_action", "correction_count", "retraction_count", "adjudicated_findings", "financial_cost", "relationship_change"]
+  },
+  "narrative_debt": {
+    "potatoverse_meaning": "A durable narrative creates obligations for future interpreters: to distinguish what was alleged, observed, corrected, denied, adjudicated or later superseded.",
+    "empirical_translation": ["outdated search result", "unamended article", "cached allegation", "correction visibility", "context collapse", "persistent screenshot", "search-engine rediscovery"],
+    "core_insight": "Information can continue imposing consequences after the event that produced it has changed or ended. This is temporal/reputational debt rather than supernatural karma.",
+    "repair_fields": ["correction_url", "correction_date", "superseded_by", "current_status", "context_note", "appeal_or_response", "expiry_or_review_date"]
+  },
+  "reputation_dynamics": {
+    "gossip": "Low-cost reputation transmission can enforce norms, protect groups, bond members, compete for status or damage targets depending accuracy, motive and downstream use.",
+    "archive_amplification": "Persistence turns gossip into durable infrastructure; repeated copies can make claim frequency look like source plurality when all copies trace to one origin.",
+    "source_independence_rule": "Count independent provenance chains, not raw page count, when estimating corroboration.",
+    "correction_asymmetry": "Corrections often travel less widely than vivid allegations. The graph should track exposure of both original claim and correction rather than assuming a correction erases impact.",
+    "context_collapse": "A statement can be repeatedly encountered outside the audience, time, relationship or event that originally gave it meaning.",
+    "narrative_lock_in": "As a dossier becomes denser, ambiguous new material may be interpreted through the existing frame rather than evaluated from zero."
   },
   "compromat": {
     "definition": "Documented compromising information used, threatened or circulated for reputational, political, legal or bargaining effect.",
@@ -57,7 +71,7 @@
   "ten_thousand_neighbours": {
     "symbolic_definition": "The 10,000 neighbours are the scalable population of targets, counterparties, communities, institutions, rivals, litigants and subjects whose relationships can become part of the Farm/Swamp system.",
     "implementation": "10,000 is a corpus-design target and symbolic capacity, not a claim that exactly 10,000 real people have been harmed or sold.",
-    "required_record_fields": ["neighbour_id", "entity_type", "jurisdiction", "relationship_to_farm", "event", "date", "source", "evidence_status", "consequence", "counterparty", "confidence"]
+    "required_record_fields": ["neighbour_id", "entity_type", "jurisdiction", "relationship_to_farm", "event", "date", "source", "source_independence", "evidence_status", "consequence", "counterparty", "confidence"]
   },
   "farm_cycle": [
     {"stage": 1, "name": "cultivation", "description": "An actor, platform or institution selects a subject, narrative, dispute or identity as an object of sustained attention."},
@@ -65,6 +79,7 @@
     {"stage": 3, "name": "reaction", "description": "Targets, supporters, opponents and audiences respond, producing more information and emotional intensity."},
     {"stage": 4, "name": "harvest", "description": "Attention becomes measurable output such as engagement, revenue, donations, status or political mobilization."},
     {"stage": 5, "name": "accumulation", "description": "Archives, screenshots, filings, clips, debts, allegations and relationships accumulate as system memory."},
+    {"stage": 5.5, "name": "narrative_lock_in", "description": "Accumulated material begins to define what later observers expect to find; ambiguous new events are increasingly interpreted through the established frame."},
     {"stage": 6, "name": "entanglement", "description": "New links form among people, organizations, platforms, lawyers, advertisers, donors, journalists and audiences."},
     {"stage": 7, "name": "reproduction", "description": "The accumulated material becomes fuel for new stories, disputes, fundraising, litigation, commentary or counterattack."},
     {"stage": 8, "name": "repair_or_escalation", "description": "The system either produces correction, restitution, reconciliation and disengagement, or further conflict and accumulation."}
@@ -77,6 +92,13 @@
     "fruit": "money, reputation, status, punishment, restitution, polarization, audience growth or institutional change",
     "seeds": "archives, algorithms, social norms, organizational memory and incentives that reproduce the pattern"
   },
+  "measurement_extensions": {
+    "ArchiveHalfLife": "estimated time for attention to a stored conflict to decay by half without new stimulus",
+    "RediscoveryRate": "frequency with which old material is newly surfaced or linked after quiet periods",
+    "CorrectionReachRatio": "exposure_to_correction / exposure_to_original_claim",
+    "IndependentCorroboration": "count of source chains that do not derive from the same origin",
+    "NarrativeLockIn": "confirmation_density + archive_depth + insider_vocabulary + disconfirming_evidence_penalty"
+  },
   "research_program": [
     "Build evidence records before interpreting them.",
     "Attach every empirical relationship to a source and date.",
@@ -86,6 +108,10 @@
     "Use network structure to identify entanglement without assuming conspiracy.",
     "Track unresolved obligations separately from completed consequences.",
     "Allow repair events to reduce or transform an accumulated relationship rather than making every tree permanently negative.",
-    "Populate the repository with long-form dossiers and machine-readable records so every conceptual claim can be traced to observable evidence or clearly marked interpretation."
+    "Populate the repository with long-form dossiers and machine-readable records so every conceptual claim can be traced to observable evidence or clearly marked interpretation.",
+    "Track source independence so duplicated allegations are not mistaken for multiple corroborating sources.",
+    "Measure correction visibility separately from correction existence.",
+    "Add superseded/current-status fields to durable reputational records.",
+    "Estimate archive half-life and rediscovery rates for conflicts that recur after quiet periods."
   ]
 }
