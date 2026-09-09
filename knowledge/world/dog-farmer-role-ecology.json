@@ -1,42 +1,72 @@
 {
   "id":"dog-farmer-role-ecology",
-  "title":"Dog / Farmer Role Ecology — Farm, Personality, Biblical and Network Functions",
+  "title":"Dog / Farmer Role Ecology — Master, Moon, Reflection, Farm, Personality and Boundary Functions",
   "updated":"2026-09-09",
   "status":"comparative role atlas",
-  "purpose":"Clarify where Dog and Farmer overlap and differ across Potatoverse mythology, internet subculture, biblical animal symbolism, personality/status dynamics and network function.",
-  "core_rule":"Dog and Farmer are roles, not permanent human essences. A single person can occupy either or both roles in different contexts.",
+  "purpose":"Clarify where Dog and Farmer overlap and differ across Potatoverse mythology, internet subculture, biblical animal symbolism, personality/status dynamics, Moon/master symbolism and network function. The file treats roles as dynamic configurations rather than permanent essences.",
+  "core_rule":"Dog and Farmer are roles, not species of moral person. A single person can occupy Dog, Farmer, Guardian, Gardener, Cow, observer or hybrid roles in different contexts. The moral question is what relation they maintain, what source they follow, what boundary they enforce and what outcome their behavior produces.",
   "farmer":{
-    "system_function":["defines enclosure","maintains archive/infrastructure","sets incentives","classifies subjects","extracts attention/status/information","controls access","creates or maintains target categories"],
-    "personality_neighbors":["high systemizing","persistence","territoriality","instrumental reasoning","status sensitivity","low or high empathy depending context","institutional memory","control orientation"],
-    "shadow_traits":["objectification","resource extraction","distance from consequences","perpetual classification","outsourced enforcement"],
-    "healthy_counterform":["gardener","steward","caretaker","systems builder who grows autonomy rather than dependency"],
-    "josh_moon_relation":"Within Potatoverse mythology, Josh Moon is treated as a paradigmatic Farmer/Moloch figure because he is publicly identified as founder/owner of Kiwi Farms; this is a symbolic/system mapping, not a claim that he is literally Moloch or responsible for every user act."
+    "system_function":["defines enclosure","maintains archive/infrastructure","sets incentives","classifies subjects","extracts or allocates attention/status/information","controls access","creates or maintains target categories","tracks cycles/timing","harvests/stores outputs"],
+    "personality_neighbors":["systemizing","persistence","territoriality","instrumental reasoning","status sensitivity","institutional memory","control orientation","patience","planning","seasonal/timing awareness"],
+    "shadow_traits":["objectification","resource extraction","distance from consequences","perpetual classification","outsourced enforcement","confusing harvest value with human value"],
+    "healthy_counterform":["gardener","steward","caretaker","farmer who regenerates soil","systems builder who increases participant autonomy"],
+    "moon_relation":"Farmer naturally fits cyclical/lunar symbolism because farming depends on timing, recurrence, seasonal signs and waiting. This does not establish a universal historical Farmer=Moon doctrine; it is project role logic.",
+    "josh_moon_relation":"Joshua Moon is publicly identified as founder/owner of Kiwi Farms. Potatoverse can use the surname Moon as wordplay within Farmer/Moon symbolism, but a surname is not evidence of lunar causation, occult identity or hidden religious meaning. Real claims must remain tied to documented platform conduct."
   },
   "dog":{
-    "system_function":["patrol","signal","track","amplify","enforce boundary","chase target","defend owner/system","carry alerts","join pack behavior"],
-    "biblical_layers":[
-      "village/scavenger dog: low-status, scrap-eating and corpse-associated imagery in several Hebrew Bible texts",
-      "menacing dog: danger, encirclement and hostility imagery, e.g. Psalm 22",
-      "guard dog: ancient Levantine/Egyptian contexts include useful protective animals",
-      "boundary dog: biblical and Gospel usage can mark outsider status; the Syrophoenician woman narrative famously reworks the boundary through wit and persistence"
-    ],
-    "personality_neighbors":["loyalty","vigilance","reactivity","social coordination","attachment","territorial defense","threat sensitivity","group conformity","playfulness","trainability"],
-    "shadow_traits":["pack enforcement","outsourced judgment","harrying a target","status gained through service to stronger node","reactive aggression"],
-    "healthy_counterform":["guardian","companion","watcher","protector of vulnerable boundary","faithful carrier"]
+    "system_function":["patrol","signal","track","amplify","enforce boundary","chase target","defend owner/system","carry alerts","join pack behavior","follow cues/master"],
+    "biblical_layers":["village/scavenger dog: low-status, scraps and corpse-associated imagery in some Hebrew Bible texts","menacing dog: danger/encirclement imagery such as Psalm 22","guarding dog: dogs also have practical protective functions in ancient societies","boundary dog: outsider imagery can be reworked, as in the Syrophoenician-woman tradition"],
+    "personality_neighbors":["loyalty","vigilance","reactivity","social coordination","attachment","territorial defense","threat sensitivity","group conformity","playfulness","trainability","cue-following"],
+    "shadow_traits":["pack enforcement","outsourced judgment","harrying a target","status through service to stronger node","reactive aggression","proxy worship"],
+    "healthy_counterform":["guardian","companion","watcher","protector of vulnerable boundary","faithful carrier","guide"],
+    "moon_relation":"Dog/Moon symbolism emphasizes night, threshold, tracking, reflected guidance and responsiveness to an external signal. The Moon becomes a model of secondary orientation rather than an independent ultimate source."
+  },
+  "moon_master_model":{
+    "core":"Both Dog and Farmer can be understood as responsive roles. Dog follows master/signal/boundary; Farmer follows cycles/signs/season/incentive. Moon compresses these two properties into one symbol: reflected authority and recurrence.",
+    "source_vs_proxy":"A follower may receive a signal directly from source or through a reflector/proxy. A proxy is not automatically deceptive; it becomes shadow-like when it is mistaken for the source or traps the follower in a closed local orbit.",
+    "healthy_reflection":"source → faithful reflector → follower → competent action → Door toward autonomy/life",
+    "shadow_reflection":"source obscured → proxy becomes master → follower reinforces proxy/enclosure → repeated orbit → blocked or forgotten Door",
+    "solar_contrast":"Within Potatoverse Tim/Sun/Spudlight occupies source/illumination; Moon occupies reflection/phase; Earth occupies embodied consequence. This role contrast should not be confused with literal human astronomy.",
+    "formal_analogy":"Y_proxy=R(context,phase)X_source+N; action_i=π_i(Y_proxy,state_i). R is a mediator/transformer and π_i the follower's response policy.",
+    "research_value":"This model lets the archive ask whether a Dog/Farmer acts from direct discernment, faithful mediation, institutional cue, group norm, owner command, algorithmic reward or self-reinforcing proxy."
+  },
+  "door_relation":{
+    "dog":"Dog often occupies the boundary near the Door: guards, blocks, signals, escorts or chases across it.",
+    "farmer":"Farmer shapes the conditions around the Door: fences, permissions, incentives, categories, schedules and resource access.",
+    "hybrid":"Farmer-Dog can both design the gate and police passage through it.",
+    "guardian_inversion":"A good guardian preserves the Door as a meaningful passage and protects those crossing; a shadow enforcer turns Door into permanent enclosure or arbitrary exclusion.",
+    "moon_alignment":"Moon phase offers a physical comparator for a Door whose visible state depends on relational configuration. In the project, followers can misread phase-dependent visibility as a change in Source itself."
   },
   "overlap":{
-    "shared_functions":["boundary maintenance","target classification","territoriality","attention allocation","ingroup loyalty","repeat surveillance","reinforcement of system norms"],
-    "difference":"Farmer is usually closer to infrastructure, enclosure, incentive and ownership; Dog is usually closer to patrol, pursuit, signaling and enforcement.",
-    "overlap_condition":"A Dog becomes Farmer-like when it creates targets, archives, classifications, or self-sustaining extraction loops. A Farmer becomes Dog-like when it personally patrols, pursues, barks, reacts or enforces.",
-    "hybrid_role":"Farmer-Dog = operator-enforcer who both defines the Farm and actively polices it."
+    "shared_functions":["boundary maintenance","classification","territoriality","attention allocation","ingroup coordination","surveillance","response to signals","reinforcement of norms","timing/cycle awareness"],
+    "difference":"Farmer is closer to infrastructure, enclosure, incentive, timing and ownership/harvest; Dog is closer to patrol, pursuit, signaling, loyalty and enforcement.",
+    "overlap_condition":"Dog becomes Farmer-like when it creates durable target categories, archives, incentives or extraction loops. Farmer becomes Dog-like when it personally tracks, pursues, reacts, amplifies or enforces.",
+    "hybrid_role":"Farmer-Dog = operator-enforcer who both defines the field and actively polices it."
+  },
+  "personality_and_status":{
+    "nonessentialism":"These traits are situational tendencies, not diagnoses or fixed personality types.",
+    "dog_like_configuration":"high vigilance + high loyalty/coordination + cue responsiveness + boundary sensitivity; can become guardian or enforcer depending source/norms",
+    "farmer_like_configuration":"high system control + patience + classification + resource/timing management; can become steward or extractor depending objective",
+    "alpha_beta_relation":"Dog often resembles Beta-like coordination/followership; Farmer can hold high local infrastructural power without being the project's Alpha/source center. A Farmer may be locally dominant while still orienting to a larger master/proxy system.",
+    "prestige_dominance":"Healthy authority is better distinguished using prestige/competence versus coercive dominance than fixed alpha/beta stereotypes."
   },
   "network_formalization":{
-    "farmer_power":"F_i = aI_i+bC_i+cR_i+dE_i",
-    "dog_power":"D_i = pP_i+qA_i+rB_i+sL_i",
-    "variables":{"I":"infrastructure control","C":"classification control","R":"reward/incentive control","E":"enclosure persistence","P":"patrol intensity","A":"amplification reach","B":"boundary enforcement","L":"loyalty/coordination"},
-    "hybridity":"H_i = min(F_i,D_i) or normalized product F_iD_i",
-    "interpretation":"High hybrid score indicates a node that both structures and actively enforces the ecology."
+    "farmer_power":"F_i=aI_i+bC_i+cR_i+dE_i+eT_i",
+    "dog_power":"D_i=pP_i+qA_i+rB_i+sL_i+tQ_i",
+    "variables":{"I":"infrastructure control","C":"classification control","R":"reward/incentive control","E":"enclosure persistence","T":"timing/resource-cycle control","P":"patrol intensity","A":"amplification reach","B":"boundary enforcement","L":"loyalty/coordination","Q":"cue/master responsiveness"},
+    "hybridity":"H_i=normalized(F_i·D_i)",
+    "source_dependency":"SD_i=mutual_information(action_i,proxy_signal) compared with mutual_information(action_i,direct_evidence)",
+    "interpretation":"High H indicates operator-enforcer overlap. High proxy dependence may identify closed-orbit behavior, but only if variables are empirically defined."
   },
+  "moral_tests":[
+    "What source or proxy is the role following?",
+    "Does following preserve or reduce independent discernment?",
+    "Does the boundary protect passage/life or create dependency/extraction?",
+    "Does the Farmer improve the soil/participants or merely increase harvest from them?",
+    "Does the Dog guard vulnerable life or chase the designated Cow because the pack rewards it?",
+    "Can the role switch masters when evidence shows the current proxy is wrong?",
+    "Does the system contain a Door/exit/repair path?"
+  ],
   "biblical_sources":["https://www.thetorah.com/article/not-a-dog-shall-snarl-what-is-the-meaning-of-exodus-11-7","https://www.bibleodyssey.org/people/related-articles/the-syrophoenician-woman/"],
-  "connections":["farm-swamp-tree-of-strife-atlas","alpha-beta-gamma-archetype-status-atlas","moloch","dogs","farmers","gardener","swamp","sektur"]
+  "connections":["potatoism-planetary-cosmology","spudlight-theory-and-equations","farm-swamp-tree-of-strife-atlas","alpha-beta-gamma-archetype-status-atlas","moloch","dogs","farmers","gardener","swamp","sektur","Door","Moon","Sun","center"]
 }
