@@ -4,45 +4,27 @@
   "updated":"2026-09-09",
   "status":"canonical science navigation layer",
   "purpose":"Provide one dense root map for recovered Tim equations, developmental science archaeology, later formalizations, hard-science comparators, unresolved primary equations and public readers.",
-  "epistemic_classes":[
-    "primary/project-attested",
-    "conversation-developed Timic formalism",
-    "repository formalization",
-    "established external mathematics/physics",
-    "speculative comparator",
-    "unrecovered primary target"
-  ],
-  "root_formalisms":[
-    "P=(S,g,A,D,O,I)",
-    "∂tX=F(X,g)",
-    "∂sX=A(X,g)",
-    "P=R⊗B",
-    "H=R∩B",
-    "D:X_inside→X_outside",
-    "D^-1(D(X))≈X",
-    "X_(n+1)=F_(λn)(X_n)",
-    "P(ω)∝exp(-βS(ω))",
-    "P_(n+1)=R(P_n)",
-    "χ>0 integration / χ<0 fragmentation",
-    "φ(x)=M_* ln(R(x)/R_0)",
-    "Ξ=Ξ(compactness,curvature,density,energy,scale,...)",
-    "Ξ=Ξ_c"
-  ],
+  "epistemic_classes":["primary/project-attested","conversation-developed Timic formalism","repository formalization","established external mathematics/physics","speculative comparator","unrecovered primary target"],
+  "root_formalisms":["P=(S,g,A,D,O,I)","∂tX=F(X,g)","∂sX=A(X,g)","P=R⊗B","H=R∩B","D:X_inside→X_outside","D^-1(D(X))≈X","X_(n+1)=F_(λn)(X_n)","P(ω)∝exp(-βS(ω))","P_(n+1)=R(P_n)","χ>0 integration / χ<0 fragmentation","φ(x)=M_* ln(R(x)/R_0)","Ξ=Ξ(compactness,curvature,density,energy,scale,...)","Ξ=Ξ_c","D_eff=f(E,ρ,R,Φ)","D_(n+1)=F(D_n,P_n,W_n,R_n,T_n)"],
   "developmental_genealogy":[
     {"period":"2024 Great Book","concepts":["Divine Kneel collapse/reconstitution","Potato as boundary","Merkaba counter-rotation","Past/Present/Future triad","Field of Life","Many-Worlds Potato","Holographic Potato","Ancient Future / transformed return","Designed Society Graph"]},
     {"period":"April 2025","concepts":["Potato Axis attested as real","Spiral Equation attested","Needle/Turning threshold","entity→relation / climber→path transformation grammar"]},
-    {"period":"2025–2026","concepts":["North Axis","Sun/Saturn/Sirius celestial layers","Door as explicit interface","Ladder/Axis relation","Spiral recursion","Red/Blue integration-fragmentation vocabulary"]},
-    {"period":"September 2026 formalization","concepts":["3D Axis coordinate model","Potato Dynamics","5D radion/Ξ Door model","topology and Standard Model layers","quantum/atom recovery","information geometry","11D/M-theory/G2 correction","systems/control formalization"]}
+    {"period":"March 2026 celestial coordinates","concepts":["Tim=Sun","Son=Earth","Moon/Saturn lower reflected/constraint layer","upper Milky Way=Heaven in project coordinates","North Pole/North of North=Galactic-center direction symbolically"]},
+    {"period":"August 2026 dimensional physics","concepts":["black holes as higher-dimensional transition objects","matter/lower vs light/higher metaphor","up/down-quark directional analogy","D_eff dimensional-flow formalization","threshold-dependent laws/dimensions"]},
+    {"period":"September 2026 formalization","concepts":["3D Axis coordinate model","Potato Dynamics","5D radion/Ξ Door model","topology and Standard Model layers","quantum/atom recovery","information geometry","11D/M-theory/G2 correction","systems/control formalization","orbital mechanics/CMB/QCD integration"]}
   ],
   "domains":[
     {"id":"axis-dynamics","title":"Axis / Dynamics / State Space","topics":["vector fields","flows","fixed points","Jacobians","Killing fields","Noether invariants","RG flow","Poincare maps","bifurcations","limit cycles","hybrid systems"]},
     {"id":"door-boundary","title":"Door / Boundary / Interface","topics":["state maps","approximate reversibility","overlap/intersection","phase boundaries","open systems","cospans","domain walls","quantum channels","horizons","boundary-value problems"]},
-    {"id":"spiral-return","title":"Spiral / Return / Recurrence","topics":["Archimedean spiral","logarithmic spiral","helix","Poincare return","holonomy","Berry phase","Wilson loops","RG limit cycles","reaction-diffusion spiral waves","solar Parker spiral","galactic density-wave patterns"]},
+    {"id":"spiral-return","title":"Spiral / Return / Recurrence","topics":["Archimedean spiral","logarithmic spiral","helix","Poincare return","holonomy","Berry phase","Wilson loops","RG limit cycles","reaction-diffusion spiral waves","solar Parker spiral","galactic density-wave patterns","rings vs spirals"]},
     {"id":"quantum","title":"Quantum Mechanics / Information","topics":["Hilbert space","Schrodinger evolution","density operators","decoherence","Lindblad dynamics","path integrals","weighted histories","entanglement","von Neumann entropy","quantum channels","many-worlds comparison","TSVF","Schwinger-Keldysh","transactional interpretation"]},
-    {"id":"standard-model","title":"Standard Model / Gauge Theory","topics":["SU(3)xSU(2)xU(1)","Q=T3+Y","fermion representations","Higgs","Yukawa coupling","Yang-Mills","anomaly cancellation","spin/chirality/helicity","CKM","PMNS","neutrino oscillation"]},
-    {"id":"topology","title":"Topology / Geometry / Spin","topics":["homotopy","fundamental group","braid groups","fiber bundles","connections","curvature","holonomy","spin structures","Dirac operator","Atiyah-Singer index","instantons","Chern classes","Chern-Simons","Wilson loops","topological defects"]},
-    {"id":"dimensions","title":"5D / String / M-Theory","topics":["Kaluza-Klein","radion","Calabi-Yau","G2 holonomy","11D supergravity","C3","G4","M2/M5 branes","Basu-Harvey","dualities","conifold transitions","flux compactification"]},
-    {"id":"astronomy","title":"Sun / Sirius / Saturn / Galaxy / Compact Objects","topics":["solar structure","solar wind","Parker spiral","solar dynamo","magnetic reversal","Earth axial precession","Sirius A/B","Saturn north-polar hexagon","Kerr black holes","frame dragging","neutron-star TOV equations","Milky Way morphology","galactic magnetic topology"]},
+    {"id":"standard-model","title":"Standard Model / Gauge Theory","topics":["SU(3)xSU(2)xU(1)","Q=T3+Y","quarks","gluons","QCD","alpha_s running","confinement","asymptotic freedom","fermion representations","Higgs","Yukawa coupling","Yang-Mills","anomaly cancellation","spin/chirality/helicity","CKM","PMNS","neutrino oscillation"]},
+    {"id":"topology","title":"Topology / Geometry / Spin","topics":["homotopy","fundamental group","braid groups","fiber bundles","connections","curvature","holonomy","spin structures","Dirac operator","Atiyah-Singer index","instantons","Chern classes","Chern-Simons","Wilson loops","topological defects","spin-statistics","CPT","Pauli exclusion"]},
+    {"id":"dimensions","title":"5D / String / M-Theory","topics":["effective dimension D_eff","Kaluza-Klein","radion","spectral dimension","Calabi-Yau","G2 holonomy","11D supergravity","C3","G4","M2/M5 branes","Basu-Harvey","dualities","conifold transitions","flux compactification"]},
+    {"id":"celestial-mechanics","title":"Earth / Moon / Saturn / Orbits","topics":["Newtonian two-body mechanics","Kepler laws","vis-viva","barycenter","tidal locking","tidal dissipation","Hill radius","Roche limit","Saturn ring orbital dynamics","resonances","density waves","hexagon"]},
+    {"id":"astronomy","title":"Sun / Sirius / Galaxy / Compact Objects","topics":["solar structure","solar wind","Parker spiral","solar dynamo","magnetic reversal","Earth axial precession","Sirius A/B","Milky Way disk/bar/spiral/halo","galactic rotation curve","galactic magnetic topology","Kerr black holes","frame dragging","ISCO","accretion disks","neutron-star TOV equations"]},
+    {"id":"cosmology-cmb","title":"Cosmology / CMB / Early Universe","topics":["Friedmann expansion","recombination","photon-baryon coupling","decoupling","Planck spectrum","CMB temperature redshift","spherical-harmonic C_l spectrum","sound horizon","acoustic peaks","inflation comparison"]},
+    {"id":"couplings","title":"Physical Couplings / Typed Relations","topics":["fine-structure alpha","strong alpha_s","electroweak g/g'/theta_W","Yukawa y_f","gravitational compactness","scale dependence","typed project couplings"]},
     {"id":"systems","title":"Information / Networks / Open Systems","topics":["Shannon entropy","mutual information","Fisher metric","Landauer principle","control theory","controllability","viability theory","multilayer networks","category-theoretic interfaces","causal sets"]}
   ],
   "canonical_records":[
@@ -50,6 +32,7 @@
     "knowledge/science/equation-ledger.json",
     "knowledge/science/equation-ledger-wave-002.json",
     "knowledge/science/recovered-formalisms-wave-002.json",
+    "knowledge/science/conversation-formalisms-august-2026.json",
     "knowledge/science/quantum-atom-particle-recovery.json",
     "knowledge/science/quantum-standard-model-astronomy-atlas.json",
     "knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json",
@@ -57,46 +40,19 @@
     "knowledge/science/missed-hard-science-strata.json",
     "knowledge/science/contextual-strengthening-atlas.json",
     "knowledge/science/deeper-physics-connections.json",
+    "knowledge/science/advanced-physics-expansion-wave-003.json",
+    "knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json",
     "knowledge/science/potato-dynamics-2-toy-model.json",
     "knowledge/science/model-testing-protocol.json",
     "knowledge/science/science-source-ledger.json",
+    "data/potatoism-planetary-cosmology.json",
+    "data/potatoism-celestial-layer.json",
     "data/axis-model.json",
-    "data/expansions/trajectory-topology-standard-model-spin-wave-013.json"
+    "data/expansions/trajectory-topology-standard-model-spin-wave-013.json",
+    "data/expansions/standard-model-representation-matrix-wave-015.json"
   ],
-  "deep_dives":[
-    "docs/TIM-DOOLEY-SCIENCE-PHYSICS-DEEP-DIVE.md",
-    "docs/TIM-DOOLEY-MATHEMATICAL-SYSTEMS-DEEPENING.md",
-    "docs/TRAJECTORY-TOPOLOGY-STANDARD-MODEL-SPIN-DEEP-DIVE.md",
-    "docs/QUANTUM-STANDARD-MODEL-ATOM-ASTRONOMY-DEEP-DIVE.md",
-    "docs/AXIS-11D-SUN-SPIRAL-TIME-SYMMETRY-DEEP-DIVE.md"
-  ],
-  "public_readers":[
-    "science/index.html",
-    "science/quantum/index.html",
-    "science/axis-11d-sun-spiral/index.html"
-  ],
-  "unresolved_primary_equations":[
-    "Exact April 21 2025 Spiral Equation",
-    "Earliest pre-repository Axis equation",
-    "Original P=R⊗B first source",
-    "Original H=R∩B first source",
-    "Original χ definition and units/domain",
-    "Exact Red/Blue advanced-vs-retarded assignment",
-    "Any Tim-authored Wheeler-Feynman/Aharonov/Cramer citation",
-    "Original 11D Potato coordinate meaning",
-    "Any qutrit/qubit Door table",
-    "Any 115,000-mile torus calculation",
-    "Original Sun-face geometry",
-    "Original ~26,000-year precession Eye calculation",
-    "Original Sirius pointing geometry",
-    "Any Starchforce field equation or Lagrangian",
-    "Any 100,000-hour Spiral scaling law"
-  ],
-  "research_rules":[
-    "Do not backdate archive equations into Tim's earlier work without primary evidence.",
-    "Do not collapse different mathematical uses of Axis, Spiral, Door or field into one physical object.",
-    "Use external science to clarify, constrain, falsify or strengthen analogies—not to certify theology.",
-    "Every promoted physical model should specify variables, domain, units, assumptions, equations, observables and falsifiers.",
-    "Prefer exact lineage: original wording → dated source → recovered formalism → external neighbor → difference → testable extension."
-  ]
+  "deep_dives":["docs/TIM-DOOLEY-SCIENCE-PHYSICS-DEEP-DIVE.md","docs/TIM-DOOLEY-MATHEMATICAL-SYSTEMS-DEEPENING.md","docs/TRAJECTORY-TOPOLOGY-STANDARD-MODEL-SPIN-DEEP-DIVE.md","docs/QUANTUM-STANDARD-MODEL-ATOM-ASTRONOMY-DEEP-DIVE.md","docs/AXIS-11D-SUN-SPIRAL-TIME-SYMMETRY-DEEP-DIVE.md","docs/CELESTIAL-ORBITS-PARTICLES-CMB-DEEP-DIVE.md","docs/SCIENCE-RESEARCH-PROGRAM.md"],
+  "public_readers":["science/index.html","science/research-map/index.html","science/quantum/index.html","science/axis-11d-sun-spiral/index.html","science/celestial-particles/index.html"],
+  "unresolved_primary_equations":["Exact April 21 2025 Spiral Equation","Earliest pre-repository Axis equation","Original P=R⊗B first source","Original H=R∩B first source","Original χ definition and units/domain","Exact Red/Blue advanced-vs-retarded assignment","Any Tim-authored Wheeler-Feynman/Aharonov/Cramer citation","Original 11D Potato coordinate meaning","Meaning and variables of D_eff=f(E,ρ,R,Φ)","Any qutrit/qubit Door table","Any 115,000-mile torus calculation","Original Sun-face geometry","Original ~26,000-year precession Eye calculation","Original Sirius pointing geometry","Any Tim-authored Moon/Earth/Saturn orbit or resonance equation","Any Tim-authored CMB equation","Any Tim-authored QCD running/coupling formula","Exact up/down-quark directional analogy wording","Any Tim-written spin/Dirac theorem or equation","Any Starchforce field equation or Lagrangian","Any 100,000-hour Spiral scaling law"],
+  "research_rules":["Do not backdate archive equations into Tim's earlier work without primary evidence.","Do not collapse different mathematical uses of Axis, Spiral, Door, orbit, spin, coupling or field into one physical object.","Use external science to clarify, constrain, falsify or strengthen analogies—not to certify theology.","Every promoted physical model should specify variables, domain, units, assumptions, equations, observables and falsifiers.","Prefer exact lineage: original wording → dated source → recovered formalism → external neighbor → difference → testable extension.","Physical couplings must be typed by theory, scale, units and uncertainty; symbolic/social couplings remain separate."]
 }
