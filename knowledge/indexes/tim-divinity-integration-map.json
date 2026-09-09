@@ -1,0 +1,33 @@
+{
+  "id":"tim-divinity-integration-map",
+  "title":"Tim Divinity Integration Map",
+  "updated":"2026-09-09",
+  "purpose":"Prevent God/Father/Son/Lion/Door/Ladder/Gardener material from being duplicated or flattened across the repository by assigning each question and concept a canonical owner and clear cross-links.",
+  "canonical_owners":[
+    {"question":"What does Tim mean by being God?","owner":"knowledge/theology/tim-godhood-modalities.json","role":"modalities, identity, function, manifestation, service, Father/Son relation"},
+    {"question":"How did the God identity develop and how often is it declared?","owner":"knowledge/theology/tim-god-question.json","role":"chronology, evidence, declaration counting, developmental strata"},
+    {"question":"Which historical deity models are structurally closest?","owner":"knowledge/traditions/comparative-divinity-profile.json","role":"comparative religion and greater/lesser classification"},
+    {"question":"What does a reader need to know quickly?","owner":"knowledge/reader/tim-dooley-dossier.json","role":"narrative reader synthesis"},
+    {"question":"How much is Tim God?","owner":"knowledge/reader/how-much-is-tim-god.json","role":"reader-facing synthesis of modalities"},
+    {"question":"What biblical structures overlap?","owner":"knowledge/traditions/biblical-overlap-atlas.json","role":"textual and structural comparison"},
+    {"question":"What happened when?","owner":"knowledge/chronology/developmental-genealogy.json","role":"longitudinal role development"},
+    {"question":"What did Tim publicly say and when?","owner":"data/tim-dooley-public-theology-timeline-2025-2026.json","role":"dated public-language trajectory"}
+  ],
+  "concept_ownership":[
+    {"concept":"God / Most High","primary":"tim-godhood-modalities","secondary":["tim-god-question","comparative-divinity-profile"]},
+    {"concept":"Father / Source","primary":"tim-godhood-modalities","secondary":["heaven-spirit-father","developmental-genealogy"]},
+    {"concept":"Thomas / Son","primary":"tim-dooley core + Son branch","secondary":["tim-godhood-modalities","biblical-overlap-atlas"],"public_naming_rule":"Use Thomas without surname in reader-facing material."},
+    {"concept":"Door","primary":"Thomas/Son and Transformation","secondary":["timic-dynamics","biblical-overlap-atlas"],"mature_rule":"Door is primarily Thomas/Son/Vessel in the differentiated 2026 model."},
+    {"concept":"Ladder / Axis","primary":"Tim/Father and Transformation","secondary":["timic-dynamics","biblical-overlap-atlas"],"mature_rule":"Ladder/Axis is primarily Tim/Father connective function in the differentiated 2026 model."},
+    {"concept":"Lion","primary":"occurrence-scoped","secondary":["biblical-overlap-atlas","public-theology-timeline"],"rule":"Do not assign Lion globally. Revelation's Lion of Judah is Son/Christic comparison; dated Tim self-applications remain direct-Tim occurrences."},
+    {"concept":"Gardener","primary":"Tim/Father ethical function","secondary":["tim-role-synthesis","potato-of-life-deep-structure"],"rule":"Treat Gardener as ethical/function culmination, not a decorative alias."},
+    {"concept":"Potato of Life","primary":"potato-of-life and deep-structure","secondary":["tim-godhood-modalities"],"rule":"Potato remains the explanatory grammar of mature Godhood rather than an obsolete pre-God stage."}
+  ],
+  "vertical_model":{
+    "sequence":["God","Most High","Tim","Father / Source","Throne","North of North","Axis","Ladder","Door","Thomas / Son","World"],
+    "interpretation":"Treat this primarily as a sequence of roles, levels and relations, not as a list of independent deities.",
+    "important_tension":"God/Most High can remain the ultimate horizon while Tim occupies the manifest Father/source-facing role. This allows Tim to work for God, work as God and identify as God without requiring every distinction in the model to disappear."
+  },
+  "reader_surface_rule":"Reader pages should answer the human question in prose first. IDs, owners, edge types and source machinery stay secondary or collapsed.",
+  "deduplication_rule":"When a new insight appears, update the canonical owner and add cross-links rather than creating another near-duplicate theology file unless the new object has a genuinely distinct purpose."
+}
