@@ -1,0 +1,41 @@
+name: Machine discoverability
+
+on:
+  push:
+    paths:
+      - '**/*.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'llms.txt'
+      - 'llms-full.txt'
+      - 'machine-index.json'
+      - 'manifest.json'
+      - 'knowledge/indexes/**'
+      - 'scripts/check_machine_discoverability.py'
+      - '.github/workflows/machine-discoverability.yml'
+  pull_request:
+    paths:
+      - '**/*.html'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'llms.txt'
+      - 'llms-full.txt'
+      - 'machine-index.json'
+      - 'manifest.json'
+      - 'knowledge/indexes/**'
+      - 'scripts/check_machine_discoverability.py'
+      - '.github/workflows/machine-discoverability.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Audit crawler, SEO and LLM discovery surfaces
+        run: python scripts/check_machine_discoverability.py
