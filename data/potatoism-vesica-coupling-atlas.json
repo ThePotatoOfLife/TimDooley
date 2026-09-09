@@ -1,118 +1,124 @@
 {
-  "version":"1.0.0",
-  "updated":"2026-09-07",
-  "title":"Potatoism Correspondence Atlas — The Vesica, Coupling, Father, Son, House, Tree and North",
-  "status":"project-canon symbolic architecture with comparative research; not a claim that symbolic correspondences are empirical identities",
-  "epistemic_rule":"The atlas deliberately keeps corresponding layers coupled. A biological, biblical, geometric or historical parallel may be described as the same pattern in Potatoism without claiming that the underlying objects are physically identical or that one tradition historically caused another.",
-  "central_thesis":"The Potato of Life is represented in Potatoism as a vertical vesica piscis/mandorla: the overlap of two distinct poles. The overlap is the coupling itself. It therefore contains opposition rather than choosing one side—light and dark, life and death, knowledge and ignorance, expansion and contraction, Red and Blue, Life and Strife. The upper portion opens toward Father, Tree of Life, light and North of North; the lower portion descends toward material, root, death, ash, memory and the Tree/roots of Strife; the center is the coupled threshold where Son, Door, wedge and narrow way operate.",
-  "vesica_model": {
-    "two_circles":"Two distinct circles remain distinguishable while overlapping.",
-    "overlap":"The shared field is the mandorla/vesica: neither circle alone and yet dependent upon both.",
-    "wedge":"When the mandorla is read as a narrowing vertical field, it becomes a wedge/threshold form: wide domains converge toward a passage and then open again.",
-    "potato":"Potatoism identifies this coupled form with the Potato of Life. The potato is therefore not merely an object shaped like an oval; it is a symbol of relation, overlap, containment and emergence.",
-    "paradox":"The Potato contains opposites without requiring them to cancel. Unity can contain differentiation; differentiation can return to unity."
+  "version":"2.0.0",
+  "updated":"2026-09-09",
+  "title":"Potatoism Correspondence Atlas — Vertical Vesica, Father, Son, Plane, Door, Mountain, Tree and North",
+  "status":"project-canon symbolic architecture with mathematical and comparative research",
+  "epistemic_rule":"The atlas couples patterns without claiming physical identity. Exact circle geometry is mathematical; biblical, biological, astronomical and mythological parallels retain their own domains; Potatoverse placements are project interpretation.",
+  "central_thesis":"The Potato of Life is best represented as a vertical standard Vesica Piscis. Upper-circle center C_F is Father/Tim and simultaneously the top tip of the Mandorla/Door. Lower-circle center C_S is Son/Thomas and simultaneously the bottom tip. The Plane crosses the widest central band of the overlap. Axis/Tree/Ladder/Spiral runs vertically; Mountain is upper integrative gradient; Swamp/Drain is lower entangling gradient. The system therefore contains several real centers and several distinct directions rather than one vague 'middle'.",
+  "exact_vertical_geometry":{
+    "father_center":"C_F=(0,+r/2)",
+    "son_center":"C_S=(0,-r/2)",
+    "relational_center":"O=(0,0)",
+    "plane":"y=0",
+    "axis":"x=0",
+    "lateral_intersections":"P_L/P_R=(±sqrt(3)r/2,0)",
+    "upper_outer_pole":"(0,+3r/2)",
+    "lower_outer_pole":"(0,-3r/2)",
+    "critical_relation":"Each parent-circle center lies on the circumference of the other circle.",
+    "door_extent":"C_S→C_F",
+    "full_lens_area":"(1/6)(4π-3√3)r²"
   },
-  "vertical_axis": {
-    "top":"Beyond-material orientation: light, Father, Heaven, Tree of Life, fruit, North, North of North and what lies beyond ordinary material orientation.",
-    "center":"Coupling/threshold: vesica, mandorla, Door, Son, Vessel, wedge, narrow gate, passage and transformation.",
-    "bottom":"Material/rootward orientation: earth, mud, root, memory, death, ash, Tree of Strife, knowledge of good and evil, consequence and decomposition.",
-    "rule":"Top and bottom are not independent universes. They are two directions through one coupled structure."
+  "center_map":{
+    "father_source_center":"C_F — source, House, Throne, Sun/Spudlight, upper Door pole",
+    "son_embodied_center":"C_S — manifestation, Son/Thomas, grain/seed/death threshold, lower Door pole",
+    "relational_center":"O — Plane crossing, balance/intersection, maximum-width Door section",
+    "lateral_thresholds":"P_L/P_R — equal-distance boundary agreement points; candidate left/right guardians/hands/witnesses only as project interpretation",
+    "rule":"Do not flatten C_F, C_S and O into one center."
   },
-  "oppositions": [
-    {"a":"light","b":"dark","shared":"coupling","meaning":"The Potato contains the polarity rather than reducing it to good-versus-bad."},
-    {"a":"life","b":"death","shared":"cycle","meaning":"Growth emerges from matter; matter returns to decomposition; the seed carries continuation."},
-    {"a":"Red Potato","b":"Blue Potato","shared":"dynamic polarity","meaning":"Red expresses outward generative movement; Blue expresses inward memory/rootward movement. Both belong to the Potato."},
-    {"a":"Tree of Life","b":"Tree of Strife / Knowledge","shared":"differentiation","meaning":"The project reads life and knowledge/consequence as coupled dimensions rather than unrelated trees."},
-    {"a":"Father","b":"Son","shared":"relation","meaning":"Father is source/House; Son is Door/Vessel and the relational passage into manifestation."},
-    {"a":"heaven","b":"earth","shared":"axis","meaning":"The Ladder/Tree/Axis connects domains that remain distinguishable."},
-    {"a":"inside","b":"outside","shared":"threshold","meaning":"Door, eye and sprout are boundary-crossing images."}
+  "vertical_axis":{
+    "top":"Heaven crown, Mountain summit, North/North-of-North-facing region",
+    "father":"C_F: source-center and upper Gate point",
+    "upper_door":"O→C_F: trunk/Mountain/House ascent region",
+    "plane":"O with P_L/P_R: world, grass, first separation, widest relation",
+    "lower_door":"C_S→O: root/seed/death/ascent region",
+    "son":"C_S: embodied-center and lower Gate point",
+    "bottom":"grave/deep Earth/root/Swamp/Drain direction",
+    "rule":"Top/bottom are directions through one coupled structure, not moral absolutes."
+  },
+  "plane_and_orthogonality":{
+    "plane":"Recovered conversation rule: Plane=Grass/ordinary world/first separation; April Turning preserves Plane but adds a vertical coordinate.",
+    "axis":"The Father Tree/Ladder/Axis is orthogonal to Plane in the symbolic geometry.",
+    "human_spiral":"Older synthesis described ordinary humanity/sheepfold movement as primarily within the Plane while Father/Ladder introduces transcendence/vertical relation. This remains an interpretive coordinate distinction, not a claim of literal extra spatial dimension.",
+    "door":"Door couples horizontal world-relation and vertical source/manifestation relation."
+  },
+  "door_sheepfold":{
+    "john_10":"John 10 Door/sheepfold imagery is a useful textual resonance: Door mediates enclosure and pasture/life.",
+    "project_upgrade":"The sheepfold is better mapped to bounded Plane/world/community than to the entire lower circle. Door determines passage between enclosure and a wider living field.",
+    "boundary_ethic":"A healthy fold protects without becoming shell; Door remains meaningful. A shadow enclosure removes real exit and becomes Farm/qliphothic capture."
+  },
+  "father_son_relation":{
+    "father":"source / House / persistence / upper center / Sun / root-origin / Mountain summit orientation",
+    "son":"manifestation / Door / Vessel / event / lower center / grain / wound / death-return",
+    "mutual_boundary":"Father-center lies on Son-circle boundary and Son-center lies on Father-circle boundary: exact geometric image of differentiated mutual participation.",
+    "spirit":"flow/relay/continuity moving through relation rather than fixed at a single center"
+  },
+  "house_room_road_world":{
+    "chain":["Father","House","Room","Road/axon/path","Door","Plane/world"],
+    "reading":"Source becomes differentiated interior and then outward relation.",
+    "body_bridge":"Thalamus=House/rooms is symbolic; Temple/chamber, Door/Pineal and body/Vessel remain separate nested functions."
+  },
+  "mountain_tree_duality":{
+    "mountain":"many lower paths converge toward one summit; integration/compression/perspective",
+    "tree":"one rooted source differentiates into many branches; generativity/expansion",
+    "joint_law":"Mountain solves many→one; Tree solves one→many. Together they express integration and differentiation around one Axis.",
+    "mount_zion":"Project comparison adds King, House, high perspective, New Jerusalem and North-related motifs without declaring biblical prophecy fulfillment."
+  },
+  "root_tree_time":{
+    "roots":"past/memory/history/substrate",
+    "trunk":"present continuity",
+    "branches":"future possibilities",
+    "seed":"compressed generativity capable of re-entering cycle",
+    "cycle":"root → trunk → branch → fruit/seed → burial → root/sprout",
+    "father_root_paradox":"Father can be origin of Root while roots spatially deploy below through Son/Earth."
+  },
+  "swamp_mountain_inverse":{
+    "mountain":"upper gradient toward coherence/orientation",
+    "swamp":"lower field of unresolved recurrence, entanglement and lateral capture",
+    "drain":"lower attractor/funnel",
+    "spiral":"rotation plus vertical displacement; sign of displacement distinguishes ascent from descent",
+    "ring":"rotation with approximately zero net level change"
+  },
+  "seed_death_life":{
+    "lower_gate":"C_S is strongest seed-compression point because it is Son-center and bottom of Door.",
+    "death_seed":"burial/compression/end of current form",
+    "life_seed":"same generative potential after successful rooting/sprouting",
+    "john_12_24":"grain-of-wheat death→fruit is a strong Christian textual neighbor",
+    "mustard":"tiny seed→large Kingdom/growth is another textual neighbor",
+    "boundary":"biology, theology and Potatoverse synthesis remain separate evidence classes."
+  },
+  "sun_moon_earth":{
+    "sun":"Father/source-light/Spudlight comparator in upper field",
+    "earth":"embodied lower circle / metabolizing Plane-world",
+    "moon":"reflected/cyclical mediator closer to Earth; not independent visible-light source",
+    "dog_farmer":"responsive roles that can follow master/proxy/cycle; moral valence depends on what source and objective they serve"
+  },
+  "oppositions":[
+    {"a":"Father/source","b":"Son/manifestation","shared":"Door relation"},
+    {"a":"Mountain/integration","b":"Tree/differentiation","shared":"Axis"},
+    {"a":"Sun/direct light","b":"Moon/reflected light","shared":"illumination relation"},
+    {"a":"House/enabling container","b":"Shell/capturing container","shared":"boundary"},
+    {"a":"Life","b":"Strife","shared":"knowledge/choice downstream use"},
+    {"a":"ascent","b":"descent","shared":"Spiral/Axis"},
+    {"a":"past/root","b":"future/branch","shared":"present trunk"}
   ],
-  "correspondence_chains": [
-    {"id":"potato-eye-sprout-tree","chain":["potato","eye","sprout","stem","branch","tree"],"reading":"Contained potential becomes outward life."},
-    {"id":"house-room-road-world","chain":["Father","House","room","path","Door","world"],"reading":"Source becomes an organized interior and then a connected exterior."},
-    {"id":"thalamus-nucleus-axon-cortex","chain":["thalamus","nucleus","axon","cortex","network"],"reading":"A central biological structure contains differentiated functional territories whose connections extend into distributed networks."},
-    {"id":"son-door-narrow-way-life","chain":["Son","Door","narrow gate","way","Life"],"reading":"The Son functions as the threshold through which passage toward life is symbolically described."},
-    {"id":"vesica-wedge-passage","chain":["two poles","overlap","mandorla","wedge","narrowing","passage","expansion"],"reading":"Coupling creates a boundary-crossing geometry."},
-    {"id":"root-fruit-seed-potato","chain":["root","trunk","fruit","seed","potato"],"reading":"The tree returns its realized life to a compact future-bearing form."},
-    {"id":"stone-ladder-house","chain":["stone","Jacob","ladder","heaven","Bethel","House of God"],"reading":"Genesis 28 supplies a particularly strong textual constellation of stone, vertical connection and divine house; Potatoism adds the Potato as its own modern synthesis."}
+  "bible_resonances":[
+    {"reference":"Genesis 28:10-22","motifs":["stone","ladder/stairway","heaven","ascending/descending","Bethel","House/Gate"],"potatoism_connection":"Grounded center + vertical connector + House/Gate architecture."},
+    {"reference":"John 10:7-9","motifs":["Door","sheepfold","entry","pasture/life"],"potatoism_connection":"Door mediates bounded Plane and wider life."},
+    {"reference":"Matthew 7:13-14","motifs":["narrow gate","way","life"],"potatoism_connection":"Door tips are literal zero-width endpoints in the standard Vesica geometry; this is a modern project comparison, not intended biblical geometry."},
+    {"reference":"John 14:2","motifs":["Father's House","many rooms"],"potatoism_connection":"House→rooms architecture."},
+    {"reference":"John 12:24","motifs":["grain","death","fruit"],"potatoism_connection":"Son/seed lower-gate death→generativity structure."},
+    {"reference":"John 1:51","motifs":["Son of Man","angels ascending/descending"],"potatoism_connection":"bidirectional vertical interface."},
+    {"reference":"Isaiah 2 / Micah 4","motifs":["mountain of the Lord's House","nations streaming upward","teaching","judgment","peace"],"potatoism_connection":"Mountain as upper integration/House field."},
+    {"reference":"Revelation 21","motifs":["great high mountain","New Jerusalem descending"],"potatoism_connection":"observer↑ meets city/order↓; two-way Axis rather than escape-only ascent."}
   ],
-  "bible_resonances": [
-    {"reference":"Genesis 28:10-22","motifs":["stone","ladder/stairway","heaven","ascending/descending","Bethel","House of God"],"potatoism_connection":"The passage provides a textual precedent for coupling a grounded stone/center with a vertical connector and a House of God. Potatoism reworks this architecture through Potato, Ladder, Father and North.","status":"textual resonance; not proof of Potatoism"},
-    {"reference":"John 10:7-9","motifs":["door/gate","sheepfold","entry","salvation"],"potatoism_connection":"The Son/Door becomes the threshold between enclosure and pasture/life.","status":"textual resonance"},
-    {"reference":"Matthew 7:13-14","motifs":["narrow gate","narrow way","life"],"potatoism_connection":"The narrowing/wedge geometry becomes a symbolic image of difficult passage toward life.","status":"textual resonance"},
-    {"reference":"John 14:2","motifs":["Father's house","many dwelling places"],"potatoism_connection":"This is the principal textual bridge for House → Rooms in the project's Father's House architecture.","status":"textual resonance"},
-    {"reference":"Genesis 2-3","motifs":["Tree of Life","Tree of Knowledge","garden","death","knowledge","expulsion"],"potatoism_connection":"The paired trees provide a textual basis for treating life, knowledge, mortality and access as coupled themes inside one garden architecture.","status":"textual resonance"},
-    {"reference":"John 12:24","motifs":["grain","death","fruit","multiplication"],"potatoism_connection":"The grain/seed image strongly parallels Potatoism's buried potential → death → emergence → fruit cycle.","status":"textual resonance"},
-    {"reference":"John 1:51","motifs":["Son of Man","angels ascending and descending"],"potatoism_connection":"The Son becomes a relational vertical interface in the project's Son/Door/Ladder grammar.","status":"textual resonance"},
-    {"reference":"John 15:1-5","motifs":["vine","branches","fruit","abiding","life connection"],"potatoism_connection":"This supplies a textual model for life as a connected branching system rather than an isolated object.","status":"textual resonance"}
+  "new_extrapolations":[
+    {"id":"each-center-on-other-boundary","claim":"Father and Son are distinct centers whose exact Vesica geometry makes each a boundary point of the other's circle.","status":"mathematical fact + Potatoverse interpretation"},
+    {"id":"plane-maximum-overlap","claim":"The world Plane crosses the maximum-width part of the Door, so ordinary world-relation can be broad even while existential/source transitions pinch at Father/Son poles.","status":"mathematical interpretation"},
+    {"id":"mountain-tree-complement","claim":"Mountain integrates many paths toward one; Tree differentiates one source toward many. Their coexistence may be a master one↔many operator pair.","status":"Potatoverse interpretation"},
+    {"id":"house-vessel-distinction","claim":"House is organized interior; Vessel/ship/chariot carries that interior through the Plane. Stable center and moving embodiment need not conflict.","status":"conversation-derived interpretation"},
+    {"id":"axis-orthogonal-plane","claim":"April 2025 introduces a vertical coordinate without abolishing the horizontal Plane; transcendence is reorientation of the world rather than escape from it.","status":"project-canon interpretation"}
   ],
-  "father_house": {
-    "father":"Tim Dooley is the Father archetype in the project's mythology, not an empirical claim about a supernatural person.",
-    "house":"The Father's House is the central interior architecture: contained source, rooms, memory, routes, gates and outward connection.",
-    "thalamus":"The thalamus is used as a biological parallel because it is central and contains differentiated nuclei with broad connections.",
-    "nuclei":"Nuclei become symbolic rooms.",
-    "axons":"Axons become symbolic roads/paths.",
-    "potato":"The Potato supplies the larger coupled-body image: a compact life-bearing center with eyes and future growth.",
-    "biblical_bridge":"John 14's Father's-house/dwelling-place imagery supplies the textual architectural vocabulary; it does not demonstrate that biblical authors were describing neuroanatomy."
-  },
-  "son_door_wedge": {
-    "son":"The Son is the relational manifestation of the Father in the project's mythology.",
-    "door":"The Son becomes Door/Vessel: the point through which inside and outside communicate.",
-    "wedge":"The wedge represents narrowing, concentration and passage between wider domains.",
-    "narrow_gate":"Matthew 7 supplies the narrow-gate/narrow-way vocabulary; John 10 supplies Door/gate language.",
-    "transformation":"The Son does not merely stand beside the threshold. In the project narrative, Son, Door and Vessel become transformations of one another.",
-    "lion":"The Lion aspect adds courage, kingship and protective force to the threshold archetype; these are project-symbolic meanings, not claims about a historical person."
-  },
-  "tree_and_root": {
-    "life_tree":"The Tree of Life represents realized, branching, fruitful existence and upward expansion.",
-    "strife_roots":"Roots represent buried history, memory, materiality, decomposition, consequence and the difficult knowledge associated with good and evil. 'Strife' is a Potatoism project term, not a synonym for the biblical Tree of Knowledge.",
-    "ash":"Ash represents what remains after burning/decomposition: residue, memory, death and material return. It can be coupled to the rootward pole without being equated with evil.",
-    "cycle":"Root → trunk → branch → fruit → seed → buried matter → new growth.",
-    "paradox":"The Tree of Life and the roots of death can therefore occupy one Potato because life depends upon cycles that include decay, memory and return."
-  },
-  "above_material": {
-    "north":"North is the real directional reference; North of North is a project-defined symbolic extension beyond ordinary geographic orientation.",
-    "upper_vesica":"The upper portion of the Potato represents the direction beyond the material Plane: Father, Heaven, light, Tree, ascent and North of North.",
-    "axis":"The vertical axis does not abandon the material. It passes through it. The Door is therefore a threshold between material embodiment and higher symbolic orientation.",
-    "rule":"The project may describe this as spiritually true within its mythology while clearly marking it as mythic/metaphysical interpretation rather than established physics."
-  },
-  "atomic_coupling_metaphor": {
-    "idea":"Atomic bonding is used as a metaphor for coupled distinction: components can remain distinguishable while forming a larger relational system.",
-    "potatoism":"The Potato is analogous to the bonded system: opposites are not erased but held in relation.",
-    "scientific_boundary":"The vesica is geometry and the atomic-bond analogy is metaphor. Potatoism does not claim that spiritual polarity is literally an atomic bond."
-  },
-  "thalamus_bridge": {
-    "potato_shape":"Potatoism explicitly describes the thalamus as potato-shaped; conventional anatomy often uses ovoid for each thalamic half.",
-    "rooms":"Thalamic nuclei are coupled to the biblical architectural metaphor of rooms.",
-    "axons":"Neuronal axons are coupled to roads/paths leaving rooms.",
-    "eyes":"Potato eyes are coupled to emergence points; they are not anatomically identical to axons.",
-    "house":"The entire thalamic architecture becomes one biological analogue of the Father's House in the symbolic system."
-  },
-  "eye_of_horus_bridge": {
-    "historical":"The Eye of Horus is an ancient Egyptian symbol of protection, healing and wholeness.",
-    "modern_hypothesis":"Some modern authors have proposed neuroanatomical overlays involving the Eye of Horus and brain structures, including thalamic regions, but intentional ancient anatomical encoding is not established.",
-    "potatoism":"The Eye of Horus can therefore join the Eye/Potato/House/seeing family as comparative symbolism without being presented as proof of ancient neuroscience."
-  },
-  "new_extrapolations": [
-    {"id":"house-as-seed","claim":"The Father's House and the seed can be read as two scales of the same containment principle: many differentiated possibilities held within a bounded center before emergence.","status":"Potatoism interpretation"},
-    {"id":"door-as-interface","claim":"The Door is not merely an entrance; it is an interface where two domains exchange information, matter, attention or meaning.","status":"Potatoism interpretation"},
-    {"id":"eye-as-interface","claim":"The potato eye, biological eye and symbolic eye can all be grouped as interface metaphors: a boundary location through which the interior encounters or generates an exterior.","status":"comparative symbolic model"},
-    {"id":"rooms-as-functions","claim":"A room is defined less by its walls than by what happens there. This lets the thalamic nucleus become a room without pretending neural tissue is architecture.","status":"architectural interpretation"},
-    {"id":"axis-as-relation","claim":"The Axis is not merely a vertical object. It is the relation that makes 'above' and 'below' mutually meaningful.","status":"Potatoism interpretation"},
-    {"id":"north-as-orientation","claim":"North becomes the project's master metaphor for orientation: not merely a place, but the direction by which a system determines where it is going.","status":"Potatoism interpretation"},
-    {"id":"potato-as-paradox","claim":"The Potato is both container and connector, unity and polarity, buried matter and upward life, center and field. Its paradox is structural rather than accidental.","status":"project-canon synthesis"},
-    {"id":"tree-as-unfolding","claim":"The Tree is what happens when the Potato's hidden relationships become visible, differentiated and extended through time.","status":"project-canon synthesis"},
-    {"id":"return-to-potato","claim":"Fruit/seed returns complexity to a compact generative form, closing the cycle from Potato to Tree and Tree back toward Potato.","status":"project-canon synthesis"}
-  ],
-  "interpretive_method": [
-    "First record the actual object or text.",
-    "Second record the structural pattern it exhibits.",
-    "Third identify corresponding patterns elsewhere.",
-    "Fourth distinguish historical influence from independent parallel and from Potatoism synthesis.",
-    "Fifth preserve the correspondence even when the underlying domains are not literally identical.",
-    "Sixth let the reader inspect the evidence and make their own judgement about the spiritual meaning."
-  ],
-  "core_formula":"Source → House → Rooms → Roads → Door → Passage → Plane → Tree → Fruit → Seed → Potato → Eye → Sprout → Tree",
-  "central_paradox":"The beginning and ending are the same kind of object at different stages: the Potato contains the Tree, and the Tree returns a future Potato. The center contains opposites, while the vertical axis gives those opposites direction.",
-  "integrity":"All supernatural, theological and spiritual statements in this file are project mythology or interpretation unless explicitly labelled textual, historical, biological, mathematical or scientific. The purpose is to investigate correspondences without erasing the distinctions between evidence and meaning."
+  "core_formula":"Heaven crown → Father/source-center/top Door → upper Mandorla/Tree/Mountain → Plane/O → lower Mandorla/root → Son/seed/bottom Door → deep Earth/Swamp/Drain; Spirit moves bidirectionally along Axis while Tree branches and Mountain converges.",
+  "canonical_owners":["data/geometry-vesica-pisces-mandorla.json","knowledge/core/vertical-potato-mountain-plane-atlas.json","knowledge/core/root-system.json","knowledge/core/potatoverse-master-framework.json"],
+  "integrity":"All spiritual identity mappings are project mythology/interpretation. Mathematical facts do not prove theology; biblical resonance does not prove intentional encoding; body and astronomy comparisons remain typed analogies."
 }
