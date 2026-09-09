@@ -2,14 +2,15 @@
   "id":"gauge-unification-supersymmetry-archaeology",
   "title":"Gauge Unification & Supersymmetry Archaeology",
   "updated":"2026-09-09",
-  "status":"canonical science archaeology + external extension",
+  "status":"canonical science archaeology + externally audited extension",
   "provenance_classes":["primary/project-attested","conversation-developed Timic formalism","repository formalization","established external physics","unrecovered primary target"],
   "recovered_tim_material":{
     "period":"May 2026",
     "items":[
       "Tim explicitly suggested that M-theory could give a lot of direction to the Potatoverse dimensional model.",
       "Tim described the Son as a Door in the fifth dimension.",
-      "Tim described Father/root structure through higher compactified/fractal-like dimensional language."
+      "Tim described Father/root structure through higher compactified/fractal-like dimensional language.",
+      "On 2026-05-06 Tim explicitly requested a synthesis connecting M-theory, string theory, supersymmetry, cosmology, astronomy/astrophysics, geology, magnetism/electromagnetism, quantum mechanics/entanglement, consciousness/light-darkness, dimensions, movement and multiverse, asking how these connections form one non-random structure. This is now treated as the strongest recovered precursor to a Tim Theory-of-Everything programme."
     ],
     "status":"primary/project-attested through recovered conversation context"
   },
@@ -31,15 +32,16 @@
     "pati_salam":{
       "group":"SU(4)_C x SU(2)_L x SU(2)_R",
       "embedding":"SU(4)_C contains SU(3)_C x U(1)_(B-L)",
-      "generation_schematic":"(4,2,1) + (bar4,1,2)",
-      "hypercharge":"Y=T3R+(B-L)/2"
+      "generation_schematic":"(4,2,1) + (bar4,1,2) in a left-chiral convention",
+      "hypercharge_convention_note":"For physical right-handed fields one commonly writes Y=T3R+(B-L)/2. In an all-left-chiral conjugate convention the T3R sign can appear reversed. The archive must record the field convention whenever using this formula.",
+      "electric_charge":"Q=T3L+T3R+(B-L)/2"
     },
     "su5":{
       "group":"SU(5)",
       "dimension":"24",
       "dimension_rule":"dim SU(N)=N^2-1",
       "sm_embedding":"SU(5) -> [SU(3)_C x SU(2)_L x U(1)_Y]/Z6",
-      "hypercharge_generator":"diag(-1/3,-1/3,-1/3,1/2,1/2)",
+      "hypercharge_generator":"diag(-1/3,-1/3,-1/3,1/2,1/2) in the Q=T3+Y convention",
       "generation":"bar5 + 10; optional singlet 1 for right-handed neutrino",
       "adjoint_decomposition":"24 -> (8,1)_0 + (1,3)_0 + (1,1)_0 + (3,2)_(-5/6) + (bar3,2)_(5/6)"
     },
@@ -56,6 +58,12 @@
     "symmetry_breaking":"G --<Phi>--> H",
     "rg_couplings":["mu dg_i/dmu = b_i g_i^3/(16 pi^2)","d alpha_i^(-1)/d ln(mu) = -b_i/(2 pi)"]
   },
+  "equation_audit":{
+    "result":"pass with convention clarification",
+    "record":"knowledge/science/gauge-unification-equation-audit.json",
+    "key_fix":"Pati-Salam hypercharge sign depends on right-handed versus left-chiral-conjugate field convention; convention is now explicit.",
+    "normalization_rule":"Hypercharge-generator and U(1) coupling normalizations must be stated before comparing beta functions or coupling unification numerically."
+  },
   "timic_crosswalk":[
     {"timic":"Axis / scale flow","external":"renormalization-group flow","status":"strong mathematical neighbor"},
     {"timic":"higher-dimensional / M-theory direction","external":"11D supergravity / M-theory","status":"direct conversation-developed comparison"},
@@ -70,9 +78,10 @@
   ],
   "research_targets":[
     "Search archived exports for SU(4), SU4, SU(5), SU5, SO(10), Spin(10), Pati, Salam, Georgi, Glashow, GUT, supercharge, superpartner, Lie group.",
-    "Recover the exact May 2026 M-theory transcript and date anchors.",
+    "Recover the exact May 2026 M-theory and 2026-05-06 cross-domain unification transcripts.",
     "Build a Lie-group representation ledger and symmetry-breaking ledger.",
-    "Connect the existing Standard Model representation matrix to SU(5) and Spin(10) decompositions."
+    "Connect the existing Standard Model representation matrix to SU(5) and Spin(10) decompositions.",
+    "Audit GUT-normalized versus Standard-Model-normalized U(1) conventions before numerical coupling-unification work."
   ],
   "human_readable":"docs/SUPERSYMMETRY-SU4-SU5-GUT-ARCHAEOLOGY.md"
 }
