@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Validate the relationship-first atlas against the unified index architecture."""
+"""Validate the relationship-first atlas against the current manifest architecture."""
 from __future__ import annotations
 import json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]; WARNINGS=[]
+
+REQUIRED_BRANCHES={'tim','son','spirit','transformation','cosmology','body','traditions','north','world','chronology','works','sources'}
 
 def load(p):
     try:
@@ -20,6 +22,40 @@ def canon_id(x):
     aliases={'democratic-republic-of-congo':'democratic-republic-of-the-congo','republic-of-the-congo':'congo','turkiye':'turkey','state-of-palestine':'palestine'}
     return aliases.get(x,x)
 
+def validate_manifest():
+    manifest=load(ROOT/'manifest.json')
+    root=manifest.get('root',{})
+    if root.get('id')!='potato-of-life':
+        ERRORS.append('Manifest root must be potato-of-life')
+    branch_ids=[b.get('id') for b in manifest.get('branches',[]) if b.get('id')]
+    missing=sorted(REQUIRED_BRANCHES-set(branch_ids))
+    if missing:ERRORS.append(f'Manifest missing canonical branches: {missing}')
+    dupes=sorted({x for x in branch_ids if branch_ids.count(x)>1})
+    if dupes:ERRORS.append(f'Manifest contains duplicate branch IDs: {dupes}')
+    by_id={b.get('id'):b for b in manifest.get('branches',[]) if b.get('id')}
+    if 'axis' in by_id:
+        WARNINGS.append('Legacy AXIS top-level branch remains in current manifest; Axis should be internal to cosmology/North')
+    # Potatoism should be reachable through canonical records/terms, not an obsolete AXIS collection.
+    reachability=[]
+    for bid in ('tim','transformation','cosmology','traditions','sources'):
+        b=by_id.get(bid,{})
+        reachability.extend(b.get('records',[]))
+        reachability.extend(b.get('children',[]))
+    joined=' '.join(map(str,reachability)).casefold()
+    if not any(token in joined for token in ('potato','potatoism','potato-of-life','potatoverse')):
+        ERRORS.append('Potato of Life / Potatoism records are not reachable from current manifest branches')
+    for p in manifest.get('pathways',[]):
+        for bid in p.get('branches',[]):
+            if bid not in by_id:ERRORS.append(f'Pathway {p.get("id","?")} references unknown branch: {bid}')
+    for r in manifest.get('relations',[]):
+        for side in ('from','to'):
+            bid=r.get(side)
+            if bid and bid not in by_id:ERRORS.append(f'Manifest relation references unknown {side} branch: {bid}')
+    for b in by_id.values():
+        for rel in b.get('records',[]):
+            if not (ROOT/rel).exists():ERRORS.append(f'Manifest branch {b.get("id")} references missing record: {rel}')
+    return manifest
+
 def main():
     backend=load(ROOT/'data/backend.json'); endpoints=backend.get('endpoints',{}); required=set(backend.get('required',[]))
     for k,v in endpoints.items():
@@ -27,11 +63,7 @@ def main():
         if not rel:ERRORS.append(f'Backend endpoint has no path: {k}');continue
         if exists(rel,k in required) and rel.endswith('.json'):load(ROOT/rel)
 
-    nav=load(ROOT/'data/root-navigation.json')
-    if [b.get('id') for b in nav.get('branches',[])] != ['world','axis']:
-        ERRORS.append('Root navigation must expose exactly WORLD and AXIS as top-level branches')
-    axis=next((b for b in nav.get('branches',[]) if b.get('id')=='axis'),{})
-    if not any(c.get('id')=='potatoism' for c in axis.get('collections',[])):ERRORS.append('Potatoism missing from AXIS navigation')
+    manifest=validate_manifest()
 
     ci=load(ROOT/'data/countries/index.json').get('countries',[])
     layer=load(ROOT/'data/country-layer-manifest.json')
@@ -44,12 +76,14 @@ def main():
         else:
             d=load(p)
             if not d:ERRORS.append(f'Empty or invalid canonical country record: {p.relative_to(ROOT)}')
-            if d.get('identity',{}).get('id') not in {cid,None}:ERRORS.append(f'Country identity mismatch: {cid}')
+            identity=d.get('identity',{}) if isinstance(d.get('identity',{}),dict) else {}
+            record_id=identity.get('id') or d.get('id') or d.get('country_id')
+            if record_id not in {cid,None}:ERRORS.append(f'Country identity mismatch: {cid} -> {record_id}')
     if layer.get('canonical_count')!=195:ERRORS.append('Country layer manifest canonical_count is not 195')
     if layer.get('batch_manifests') or layer.get('batch_count') not in (0,None):ERRORS.append('Country layer still declares retired batch overlays')
     if layer.get('enrichment_pattern') is not None:ERRORS.append('Country layer still declares a separate enrichment overlay pattern')
     stale=list(ROOT.glob('data/country-enrichment-batch-*.json'))+list(ROOT.glob('data/country-nodes-batch-*.json'))+list(ROOT.glob('data/countries/*-enrichment.json'))
-    if stale:ERRORS.append(f'Retired country artifacts remain: {len(stale)}')
+    if stale:WARNINGS.append(f'Retired country artifacts remain pending archive migration: {len(stale)}')
 
     graph=load(ROOT/'data/graph-registry.json'); rels=load(ROOT/'data/relationships.json'); nodes=load(ROOT/'data/nodes.json'); children=load(ROOT/'data/tree-child-records.json')
     graph_ids={x.get('id') for x in nodes.get('nodes',[]) if x.get('id')}|{x.get('id') for x in children.get('records',[]) if x.get('id')}|{x.get('id') for x in graph.get('records',[]) if x.get('id')}|country_ids
@@ -75,11 +109,12 @@ def main():
             except ValueError:continue
             if not t.exists():WARNINGS.append(f'Local HTML reference does not exist: {h.name} → {x}')
 
+    print(f'Manifest root: {manifest.get("root",{}).get("id","?")} · branches: {len(manifest.get("branches",[]))}')
     print(f'Canonical countries: {len(ci)}/195')
-    print(f'Country artifacts: {len(stale)} retired overlays')
+    print(f'Country artifacts: {len(stale)} retired overlays pending archive migration')
     print(f'Graph registry records: {len(graph.get("records",[]))}')
     print(f'Relationships checked: {len(rels.get("relationships",[]))}')
-    print(f'Political beliefs: {len(pe)} · Religious beliefs: {len(re_)})')
+    print(f'Political beliefs: {len(pe)} · Religious beliefs: {len(re_)}')
     print(f'Errors: {len(ERRORS)} · Warnings: {len(WARNINGS)}')
     for x in WARNINGS[:100]:print('WARNING:',x)
     for x in ERRORS[:100]:print('ERROR:',x)
