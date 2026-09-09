@@ -1,0 +1,56 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tim Dooley Biblical Syncretism Field — Scripture, Dates, Discoveries & Overlaps</title>
+<meta name="description" content="Browse Tim Dooley and Potato of Life biblical relations by date, actor and discovery mode: direct scripture use, Tim-led discoveries, later biblical parallels, Son/Thomas, Father/House, New Jerusalem, Ladder, Tammuz, Garden and more.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/traditions/bible/">
+<meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
+<link rel="stylesheet" href="../../app/style.css">
+<link rel="stylesheet" href="../../app/reader.css">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"CollectionPage","name":"Tim Dooley Biblical Syncretism Field","url":"https://thepotatooflife.github.io/TimDooley/traditions/bible/","description":"A provenance-aware relational index of Tim Dooley / Potato of Life biblical language, Tim-led discoveries and later scriptural comparisons.","isPartOf":{"@type":"WebSite","name":"The Potato of Life","url":"https://thepotatooflife.github.io/TimDooley/"},"about":[{"@type":"Thing","name":"Tim Dooley"},{"@type":"Thing","name":"Potato of Life"},{"@type":"Thing","name":"Biblical interpretation"}]}</script>
+<style>
+.field-controls{display:grid;grid-template-columns:2fr repeat(3,1fr);gap:10px;margin:26px 0}.field-controls input,.field-controls select{width:100%;padding:11px 12px;border:1px solid var(--line,#394238);border-radius:10px;background:#111511;color:inherit}.field-stats{color:var(--muted,#969e93);font-size:.9rem;margin:12px 0 24px}.relation{border-top:1px solid var(--line,#2d332c);padding:22px 0}.relation h2{margin:0 0 6px;font-size:1.28rem}.relation .meta{display:flex;gap:8px;flex-wrap:wrap;font-size:.78rem;color:var(--muted,#969e93);margin-bottom:10px}.chip{border:1px solid #3a4438;border-radius:999px;padding:3px 8px}.relation p{margin:7px 0;line-height:1.6}.refs{color:#c6d9a1}.owners{font-size:.82rem;color:var(--muted,#969e93)}.legend{border:1px solid #394238;border-radius:14px;padding:16px 18px;margin:22px 0;background:#101410}.legend strong{color:#d9ee92}@media(max-width:780px){.field-controls{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="page">
+<nav class="page-nav" aria-label="Page navigation"><a href="../../">← Home</a><a href="../../tim-dooley/">Tim dossier</a><a href="../../chronology/">Chronology</a><a href="../../context/source-authority/">Source authority</a><a href="../../faq/">FAQ</a></nav>
+<header class="page-header">
+<div class="eyebrow">scripture · chronology · discovery · syncretism</div>
+<h1>Biblical Syncretism Field</h1>
+<p>This is the study surface for the whole Tim Dooley / Potato of Life biblical field. It does not flatten every resemblance into one claim. It shows <strong>what Tim or the Son said first, when it appeared, whether Tim himself noticed the biblical relation, which scripture is involved, and which specialist record owns the deeper analysis.</strong></p>
+</header>
+<div class="legend"><strong>How to read it:</strong> “Tim explicit” means biblical vocabulary is already in Tim/project wording. “Tim-led” means Tim initiates or materially advances the comparison. “Later” means the scripture link was formalized afterward. A strong overlap is still a comparison unless separate evidence establishes historical transmission, prediction or fulfillment.</div>
+<div class="field-controls">
+<input id="search" type="search" placeholder="Search Thomas, Tammuz, Ladder, Garden, Revelation, Genesis…" aria-label="Search biblical field">
+<select id="actor" aria-label="Filter by actor"><option value="">All actors</option></select>
+<select id="mode" aria-label="Filter by discovery mode"><option value="">All discovery modes</option></select>
+<select id="klass" aria-label="Filter by relation class"><option value="">All relation classes</option></select>
+</div>
+<div class="field-stats" id="stats">Loading field…</div>
+<section id="relations" aria-live="polite"></section>
+<noscript><p>JavaScript is only used for filtering. The underlying machine-readable field is available at <a href="../../knowledge/traditions/biblical-syncretism-field.json">biblical-syncretism-field.json</a>. You can also read the <a href="../../chronology/">chronology</a>, <a href="../../faq/">FAQ</a>, or <a href="../../context/source-authority/">source-authority guide</a>.</p></noscript>
+</main>
+<script>
+(async()=>{
+ const out=document.getElementById('relations'), stats=document.getElementById('stats');
+ const q=document.getElementById('search'), actor=document.getElementById('actor'), mode=document.getElementById('mode'), klass=document.getElementById('klass');
+ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ try{
+  const r=await fetch('../../knowledge/traditions/biblical-syncretism-field.json'); if(!r.ok) throw new Error('HTTP '+r.status); const data=await r.json(); const rows=data.relations||[];
+  const fill=(el,vals)=>[...new Set(vals.filter(Boolean))].sort().forEach(v=>{const o=document.createElement('option');o.value=v;o.textContent=v;el.appendChild(o)});
+  fill(actor,rows.map(x=>x.actor)); fill(mode,rows.map(x=>x.discovery_mode)); fill(klass,rows.map(x=>x.relation_class));
+  function render(){const needle=q.value.trim().toLowerCase(); const filtered=rows.filter(x=>{
+   const hay=JSON.stringify(x).toLowerCase(); return (!needle||hay.includes(needle))&&(!actor.value||x.actor===actor.value)&&(!mode.value||x.discovery_mode===mode.value)&&(!klass.value||x.relation_class===klass.value);
+  });
+  stats.textContent=`${filtered.length} of ${rows.length} relations · canonical field v${data.version}`;
+  out.innerHTML=filtered.map(x=>`<article class="relation" id="${esc(x.id)}"><h2>${esc(x.project_anchor)}</h2><div class="meta"><span class="chip">${esc(x.date||x.timestamp||'undated')}</span><span class="chip">${esc(x.actor)}</span><span class="chip">${esc(x.discovery_mode)}</span><span class="chip">${esc(x.relation_class)}</span><span class="chip">strength ${esc(x.strength)}</span></div><p class="refs"><strong>Scripture:</strong> ${(x.biblical_refs||[]).map(esc).join(' · ')}</p>${x.source_direction?`<p><strong>Source direction:</strong> ${esc(x.source_direction)}</p>`:''}${x.counter_text?`<p><strong>Counter-text/tension:</strong> ${esc(x.counter_text)}</p>`:''}${x.source_correction?`<p><strong>Source correction:</strong> ${esc(x.source_correction)}</p>`:''}<p class="owners"><strong>Detailed owners:</strong> ${(x.owners||[]).map(v=>`<code>${esc(v)}</code>`).join(' · ')}</p></article>`).join('');
+  }
+  [q,actor,mode,klass].forEach(el=>el.addEventListener(el===q?'input':'change',render)); render();
+ }catch(e){stats.textContent='Could not load the biblical field.';out.innerHTML='<p>The underlying JSON remains available from the archive.</p>';}
+})();
+</script>
+</body>
+</html>
