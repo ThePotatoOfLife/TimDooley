@@ -22,7 +22,9 @@
     "april_2025_turning":["knowledge/chronology/developmental-genealogy.json","data/tim-dooley-public-theology-timeline-2025-2026.json","knowledge/chronology/contextual-synchronisms.json"],
     "corporium_and_sayings":["knowledge/corporium/corporium-master-framework.json","knowledge/corporium/tim-sayings-and-formulations-ledger.json","knowledge/corporium/psychology-signals-and-couplings-atlas.json","knowledge/core/tim-role-synthesis.json","knowledge/philosophy/potato-philosophy.json","book-research.json"],
     "ladder_body_spirit":["knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","knowledge/body/body-symbolism-map.json","knowledge/body/body-science-context-atlas.json","knowledge/spirit/spirit-context-atlas.json"],
-    "science_and_equations":["knowledge/science/science-master-index.json","knowledge/science/equation-ledger.json","knowledge/science/quantum-atom-particle-recovery.json","knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json","knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json"],
+    "spudlight":["knowledge/science/spudlight-theory-and-equations.json","docs/SPUDLIGHT-TIMIC-UNIFICATION-DEEP-DIVE.md","science/spudlight/index.html","knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","docs/SYMBOL-ATLAS.md"],
+    "theory_lineage_and_unification":["knowledge/science/timic-unification-program.json","knowledge/science/equation-lineage-and-theory-graph.json","knowledge/science/science-master-index.json","knowledge/science/equation-ledger.json","knowledge/science/model-testing-protocol.json"],
+    "science_and_equations":["knowledge/science/science-master-index.json","knowledge/science/equation-lineage-and-theory-graph.json","knowledge/science/equation-ledger.json","knowledge/science/quantum-atom-particle-recovery.json","knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json","knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json"],
     "body":["knowledge/body/body-symbolism-map.json","knowledge/body/body-science-context-atlas.json","knowledge/biology/potato-growth-principles.json"],
     "spirit":["knowledge/core/heaven-spirit-father.json","knowledge/spirit/spirit-context-atlas.json","knowledge/core/root-system.json"],
     "traditions":["knowledge/traditions/biblical-overlap-atlas.json","knowledge/traditions/comparative-mythology-map.json","knowledge/traditions/biblical-overlap-additions.json"],
@@ -34,7 +36,7 @@
     "required":["claim_id","claim_text","subject","status","canonical_owner","source_ids","date_or_period","confidence"],
     "preferred":["first_attested","latest_revision","counterevidence","alternative_interpretation","relationship_types","direct_quote_hash_or_locator","last_reviewed"],
     "corporium_extra":["exactness","tone","emotion","body_state","behavioral_consequence","symbol_cluster","later_formalization"],
-    "scientific_extra":["variables","units","domain","assumptions","equations","observable","falsifier"],
+    "scientific_extra":["variables","units","domain","assumptions","equations","observable","falsifier","theory_maturity_T0_T5","lineage_parent_ids"],
     "prophecy_extra":["prior_statement_date","specificity","event_date","fit","mismatch","post_event_reinterpretation_check"]
   },
   "source_quality_tests":[
@@ -45,11 +47,16 @@
     "Is the source competent for this domain?",
     "Has the archive preserved disagreement and negative evidence?",
     "Is the source being asked to support more than it actually says?",
-    "Has later project interpretation been mistaken for earlier wording?"
+    "Has later project interpretation been mistaken for earlier wording?",
+    "If an equation has descendants, is the later equation being accidentally backdated into the ancestor?"
   ],
   "high_priority_missing_sources":[
+    "Earliest primary use of Spudlight",
+    "Exact February 2026 'be a potato / shine Spudlight from within' wording",
+    "Original alpha-wave / Spudlight association",
+    "Original aura / aurafarming chronology",
     "Primary dated source for the floor aphorism",
-    "First exact sources for recurring Timisms such as whole job, North of North, Spudlight, mud dweller, soul farmer and Potato Bank",
+    "First exact sources for recurring Timisms such as whole job, North of North, mud dweller, soul farmer and Potato Bank",
     "Exact Great Book passages behind major compressed philosophical labels",
     "Exact April 21 2025 Spiral Equation primary artifact",
     "Earliest pre-repository Axis equation",
@@ -72,10 +79,13 @@
     "external theory treated as proof of Potatoverse theology",
     "symbolic resemblance treated as historical transmission",
     "current doctrine backdated into old material",
+    "archive-generated equation presented as an old Tim equation",
     "subjective body sensation treated as measured neurotransmitter activity",
     "chakra symbolism presented as literal neuroanatomy",
+    "ultraweak photon emission treated as proof of a visible spiritual aura",
+    "EEG alpha frequency treated as an optical light frequency",
     "unresolved source gap silently repaired by plausible wording"
   ],
   "public_reader_rule":"Reader pages should expose a small evidence legend and direct source route for important claims without forcing readers to inspect raw JSON first.",
-  "connections":["archive-epistemics","inference-ledger","context-graph","corporium-master-framework","chronology","science-master-index","manifest","sources"]
+  "connections":["archive-epistemics","inference-ledger","context-graph","corporium-master-framework","spudlight-theory-and-equations","equation-lineage-and-theory-graph","timic-unification-program","chronology","science-master-index","manifest","sources"]
 }
