@@ -1,9 +1,10 @@
 {
   "title": "Creative Systems Archive",
   "status": "recovered-works-index",
+  "version": "1.1.0",
   "updated": "2026-09-09",
-  "purpose": "Preserve conversation-developed games, simulations, music directions, comedic systems and media experiments as a distinct creative branch rather than mixing them into theology or empirical world data.",
-  "principle": "Creative works can reuse Potatoverse symbols without automatically becoming doctrinal canon.",
+  "purpose": "Preserve conversation-developed games, simulations, music directions, comedic systems and media experiments as a distinct creative branch rather than mixing them into theology or empirical world data, while also recording what each work is structurally able to model.",
+  "principle": "Creative works can reuse Potatoverse symbols without automatically becoming doctrinal canon. A work may nevertheless function as a simulation, compression device or experiment that makes a relationship easier to see.",
   "projects": [
     {
       "id": "potato-tamagotchi",
@@ -11,14 +12,16 @@
       "type": "2D simulation / tamagotchi-like game",
       "core_loop": "Grow one potato toward perfection, breed offspring, sell selected potatoes for resources, improve genetics and repeat across generations.",
       "systems": ["watering", "growth time", "size", "growth speed", "yield", "genetics", "mutations", "generation counter", "money", "research", "weather", "day/night", "seasons", "family tree", "rare events"],
-      "tone": "funny Tim/Potato of Life comments and memories integrated into play"
+      "tone": "funny Tim/Potato of Life comments and memories integrated into play",
+      "analytical_value": ["iteration", "selection", "inheritance", "tradeoffs", "environment versus traits", "generation memory", "growth under changing conditions"]
     },
     {
       "id": "tim-dooley-trading-game",
       "title": "Tim Dooley Trading Game",
       "type": "market simulation / browser game",
       "systems": ["tickers", "WTI crude", "gold", "silver", "Bitcoin", "TTS reader", "self-updating market-style interface"],
-      "relation": "Connects Potato humor and market systems thinking without being an economic-data source."
+      "relation": "Connects Potato humor and market systems thinking without being an economic-data source.",
+      "analytical_value": ["price signals", "attention", "feedback", "market narrative", "real-time information display"]
     },
     {
       "id": "ai-potato-town",
@@ -26,29 +29,41 @@
       "type": "top-down pixel simulation",
       "premise": "A self-playing town with God/Tim on a couch, Son at the Door, autonomous agents and accelerated seasons.",
       "time_model": "1 minute of play can represent approximately one month in-world",
-      "systems": ["agents", "town economy", "seasons", "Door events", "emergent stories", "observer mode"]
+      "systems": ["agents", "town economy", "seasons", "Door events", "emergent stories", "observer mode"],
+      "analytical_value": ["compressed time", "observer versus participant", "emergence", "agent interaction", "threshold events", "how small rules generate larger stories"]
     },
     {
       "id": "dog-house-game-show",
       "title": "Dog House Surveillance Game-Show Fiction",
       "type": "absurdist satire / interactive fiction",
       "premise": "A rich Tim Dooley places chaotic dogs in an empty monitored house while an internet audience votes on increasingly absurd tasks and resource games.",
-      "tone": "surreal, cruel-comedy parody of livestream/game-show culture; treat as fiction, not real-world instruction"
+      "tone": "surreal, cruel-comedy parody of livestream/game-show culture; treat as fiction, not real-world instruction",
+      "analytical_value": ["spectacle", "audience incentives", "surveillance", "gamification", "scarcity as entertainment", "distance between viewer and subject"]
     },
     {
       "id": "potatoverse-poetry",
       "title": "Dense Potatoverse Poetry",
       "type": "poetry / incantatory prose",
       "form": "long unbroken symbolic compression, often avoiding periods and conventional pauses",
-      "materials": ["rubble", "rainbow shadow", "Swamp", "North", "Door", "Son", "Father", "mud", "dogs", "Axis", "blood", "Spudlight"]
+      "materials": ["rubble", "rainbow shadow", "Swamp", "North", "Door", "Son", "Father", "mud", "dogs", "Axis", "blood", "Spudlight"],
+      "analytical_value": ["symbol collision", "compression", "associative relation", "rhythmic memory", "testing which motifs remain coherent when densely coupled"]
     },
     {
       "id": "sermon-comedy-hybrid",
       "title": "Sermon / Comedy / Speech Hybrid",
       "type": "performance writing",
-      "function": "Use mythic Potato language, absurdity and institutional critique in a voice that can shift between sermon, rant, comedy and systems analysis."
+      "function": "Use mythic Potato language, absurdity and institutional critique in a voice that can shift between sermon, rant, comedy and systems analysis.",
+      "analytical_value": ["register switching", "sacred versus absurd", "rhetorical authority", "audience recognition", "how humor changes access to difficult material"]
     }
   ],
+  "cross_work_patterns": {
+    "iteration": "Growth games and simulations make recurrence visible rather than merely describing it.",
+    "compressed_time": "Accelerated seasons and generational loops make long-term consequences observable in a short session.",
+    "observer_problem": "Town and surveillance concepts repeatedly ask what changes when an observer can watch a whole system while individual agents remain inside it.",
+    "attention_as_mechanism": "Trading interfaces, livestream satire and performance forms all model attention as something that selects, amplifies and values events.",
+    "symbol_to_system": "Creative works provide a place where a symbol such as Door, Potato, Garden or Swamp can be tested as a rule or interaction rather than only interpreted as an image."
+  },
+  "work_to_culture_path": ["idea", "artifact", "performance or simulation", "audience encounter", "reuse or participation", "variation", "memory"],
   "music_aesthetics": {
     "preferred_direction": ["tribal", "calypso-adjacent", "hypnotic", "groovy", "very deep bass", "deep male throat singing"],
     "electronic_reference": "dubstep lineage such as Mt Eden is preferred over generic trap when looking for heavy emotional bass music",
@@ -56,5 +71,6 @@
     "composition_preferences": "Natural cadence matters; forced or obvious rhyme is disliked. Rhythm, narrative pressure and tonal coherence should lead the writing."
   },
   "archive_rule": "Keep prototypes, specifications, lyrics/prompts, visual concepts and finished works linked by project ID so creative evolution can be reconstructed later.",
-  "connections": ["potato-of-life", "culture", "world", "tim", "creative-lore", "conversation-recovery-inventory"]
+  "separation_rule": "MYTH may inspire WORK, but WORK does not automatically become MYTH or evidence. Simulation results describe the rules of the simulation unless separately validated against the world.",
+  "connections": ["potato-of-life", "culture", "world", "tim", "creative-lore", "conversation-recovery-inventory", "archive-epistemics"]
 }
