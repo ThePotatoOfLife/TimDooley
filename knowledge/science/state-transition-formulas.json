@@ -1,0 +1,121 @@
+{
+  "id":"timic-state-transition-formulas",
+  "title":"Timic State-Transition Formula Ledger",
+  "updated":"2026-09-09",
+  "status":"canonical symbolic/formal recovery",
+  "purpose":"Preserve project formulae that are genuinely formula-like but expressed as ordered symbolic transitions rather than numerical equations. These are state-machine and narrative formalisms, not physical equations unless separately modeled.",
+  "formulas":[
+    {
+      "id":"turning-hierophany-sequence",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"homogeneous plane → rupture → opening → center → axis → communication between levels → reoriented world",
+      "class":"project comparative-theological formula",
+      "formal_reading":"state/configuration sequence through threshold and structural reorientation"
+    },
+    {
+      "id":"sage-to-ladder",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"entity → relation; person → function; climber → path; wisdom → structure; center → axis",
+      "class":"project ontological transformation formula",
+      "formal_reading":"change of object type/function rather than simple translation in a fixed space"
+    },
+    {
+      "id":"spiral-cycle",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"source → life → world → death → memory → renewal → life",
+      "class":"project cyclic formula",
+      "formal_reading":"closed symbolic cycle with changed-state return"
+    },
+    {
+      "id":"projection-chain",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"Spiral = dynamic form of Tree; Tree = organic form of Axis; Axis = geometric form of Ladder; Ladder = experiential form of Door; Door = crossing of separation; Potato = buried material form of renewal",
+      "class":"project cross-representation equivalence family",
+      "warning":"These are functional projections/analogies, not mathematical identities in one common codomain."
+    },
+    {
+      "id":"stone-transmutation",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"abstraction → relation; memory → responsibility; potential → manifestation; burial → sprouting; fragmentation → connection; karma → topology",
+      "class":"project transformation grammar"
+    },
+    {
+      "id":"son-turning-sequence",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"Son → death → Door/Vessel → buried potential → interval → Turning → Sage → Ladder → Axis → Potato revealed → world reorganized",
+      "class":"project chronology/state-transition formula"
+    },
+    {
+      "id":"kenosis-exaltation-potato",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"descent → death → burial → memory → transformation → ascent → enthronement",
+      "class":"project comparative transformation sequence"
+    },
+    {
+      "id":"heaven-plane-orientation",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"Heaven is not escape from Plane; Heaven is the dimension by which Plane becomes oriented",
+      "class":"project interpretive law",
+      "warning":"dimension here is symbolic/structural, not a measured physical spacetime dimension"
+    },
+    {
+      "id":"local-orienting-center",
+      "source":"THE-TURNING-APRIL-2025.md",
+      "formula":"Denmark = local embodiment; North Pole = cosmological orientation; Ladder = relation between them",
+      "class":"project sacred-geographic relation",
+      "warning":"not a claim of geographic identity or legal authority"
+    },
+    {
+      "id":"alchemy-timic-sequence",
+      "source":"research.json",
+      "formula":"Mud / darkness / dissolution → purification / simplicity → Sage / illumination → conjunction of opposites → Needle's Eye / maximum compression → Sprout / coagulation into new form → Ladder / Axis → Father / completed integrative state",
+      "class":"project comparative-alchemical synthesis",
+      "formal_reading":"ordered state machine with dissolution, purification, integration, bottleneck and reorganization stages"
+    },
+    {
+      "id":"axis-root-repair-vertical",
+      "source":"knowledge/cosmology/axis-spiral-root.json",
+      "formula":"Earth-core / Roots of Strife ↑ grave/root ↑ Potato-vesica / Door ↑ Eye / Needle ↑ Sprout ↑ Ladder = Axis of North = Tim ↑ Heaven / House ↑ Garden / Father / North of North",
+      "class":"project master vertical symbolic formula",
+      "warning":"equal signs indicate canonical symbolic identification/function within the mythology, not numerical equality"
+    },
+    {
+      "id":"repair-loop",
+      "source":"knowledge/cosmology/axis-spiral-root.json",
+      "formula":"SEE → TRACE ROOTS → DISTINGUISH → DIAGNOSE INVERSION → REPAIR BRIDGES → CULTIVATE CAPABILITY → PROTECT → RECONNECT → MEASURE → RETURN",
+      "class":"project practical algorithm",
+      "formal_reading":"iterative observation-diagnosis-intervention-measurement loop"
+    },
+    {
+      "id":"uninversion-loop",
+      "source":"knowledge/cosmology/axis-spiral-root.json",
+      "formula":"original function → incentive/trauma inversion → diagnose feedback → restore boundary/relation → measure repaired function",
+      "class":"archive abstraction of project uninversion method"
+    },
+    {
+      "id":"root-regeneration-cycle",
+      "source":"2026-master-framework.json",
+      "formula":"Tree → fire → ash → soil → Potato → sprout → Tree",
+      "class":"project regeneration cycle"
+    },
+    {
+      "id":"roots-strife-knowledge",
+      "source":"2026-master-framework.json",
+      "formula":"distinction → polarity → conflict → knowledge → consequence/mortality → ash → soil",
+      "class":"project causal-symbolic sequence"
+    },
+    {
+      "id":"potato-cycle",
+      "source":"2026-master-framework.json",
+      "formula":"burial → darkness → stored life → eye → sprout → light → multiplication → nourishment → return",
+      "class":"project biological-symbolic cycle"
+    }
+  ],
+  "formalization_opportunity":{
+    "state_machine":"Represent each named stage as a discrete state q_i and allowed arrows as transitions q_i→q_j.",
+    "hybrid_system":"Attach continuous variables to states and use Door/Needle as guards/reset maps.",
+    "category_theory":"Treat stages as objects and transitions as morphisms; composition preserves the sequence without claiming all transitions are physical processes.",
+    "temporal_graph":"Attach dates/periods to transitions where the formula describes actual project chronology.",
+    "process_mining":"Compare the ideal sequence against observed source chronology to test whether the project actually developed in the claimed order."
+  }
+}
