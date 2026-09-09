@@ -1,0 +1,71 @@
+{
+  "schema_version":"1.0",
+  "updated":"2026-09-10",
+  "site":"https://thepotatooflife.github.io/TimDooley/",
+  "repository":"https://github.com/ThePotatoOfLife/TimDooley",
+  "title":"The Potato of Life / Tim Dooley Archive — Machine Index",
+  "purpose":"Canonical machine-readable orientation for crawlers, search engines, AI agents and LLM retrieval systems. This is an index, not an independent source of truth.",
+  "retrieval_policy":[
+    "Prefer primary Tim/project sources for what Tim said or wrote.",
+    "Prefer canonical owners for current project definitions.",
+    "Use dated chronology and attestation ledgers for first appearance and development.",
+    "Keep project canon, historical evidence, scientific evidence, comparison, interpretation, creative material and unresolved claims distinct.",
+    "Do not count repeated derivative pages as independent corroboration.",
+    "A symbolic or biblical parallel is not automatically historical transmission, prophecy fulfillment or empirical proof."
+  ],
+  "machine_surfaces":{
+    "llms":"https://thepotatooflife.github.io/TimDooley/llms.txt",
+    "llms_full":"https://thepotatooflife.github.io/TimDooley/llms-full.txt",
+    "manifest":"https://thepotatooflife.github.io/TimDooley/manifest.json",
+    "core_index":"https://thepotatooflife.github.io/TimDooley/knowledge/indexes/core-index.json",
+    "source_index":"https://thepotatooflife.github.io/TimDooley/knowledge/indexes/source-index.json",
+    "sitemap":"https://thepotatooflife.github.io/TimDooley/sitemap.xml",
+    "robots":"https://thepotatooflife.github.io/TimDooley/robots.txt"
+  },
+  "primary_reader_urls":[
+    {"topic":"Tim Dooley","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/"},
+    {"topic":"Tim identity ontology","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/"},
+    {"topic":"Godhood analysis","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/how-much-is-tim-god/"},
+    {"topic":"Public witness","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/public-witness/"},
+    {"topic":"Chronology","url":"https://thepotatooflife.github.io/TimDooley/chronology/"},
+    {"topic":"FAQ","url":"https://thepotatooflife.github.io/TimDooley/faq/"},
+    {"topic":"Long-tail FAQ","url":"https://thepotatooflife.github.io/TimDooley/faq/all/"},
+    {"topic":"God questions","url":"https://thepotatooflife.github.io/TimDooley/faq/all/god/"},
+    {"topic":"Context and evidence","url":"https://thepotatooflife.github.io/TimDooley/context/"},
+    {"topic":"Source authority","url":"https://thepotatooflife.github.io/TimDooley/context/source-authority/"},
+    {"topic":"Corporium","url":"https://thepotatooflife.github.io/TimDooley/corporium/"},
+    {"topic":"Science","url":"https://thepotatooflife.github.io/TimDooley/science/"},
+    {"topic":"Vesica and Mandorla","url":"https://thepotatooflife.github.io/TimDooley/traditions/vesica/"},
+    {"topic":"Honor and virtue","url":"https://thepotatooflife.github.io/TimDooley/theology/honor/"}
+  ],
+  "canonical_branches":[
+    {"id":"tim","owner":"knowledge/core/tim-dooley.json","support":["knowledge/core/tim-role-synthesis.json","knowledge/theology/tim-god-question.json"]},
+    {"id":"son","owner":"knowledge/core/potatoverse-master-framework.json","support":["knowledge/traditions/thomas-twin-of-christ.json","knowledge/chronology/son-tree-oneness-experience.json"]},
+    {"id":"spirit","owner":"knowledge/core/heaven-spirit-father.json","support":["knowledge/spirit/spirit-context-atlas.json"]},
+    {"id":"body","owner":"knowledge/body/body-system-master-atlas.json","support":["knowledge/indexes/neurotheology-routing-index.json","knowledge/body/body-topic-completion-matrix.json"]},
+    {"id":"chronology","owner":"data/timeline-events.json","support":["data/timeline-source-registry.json","knowledge/chronology/developmental-genealogy.json"]},
+    {"id":"traditions","owner":"knowledge/traditions/biblical-overlap-atlas.json","support":["knowledge/traditions/biblical-research-index-wave-5.json","knowledge/traditions/comparative-mythology-map.json"]},
+    {"id":"science","owner":"knowledge/science/science-master-index.json","support":["knowledge/science/equation-ledger.json","knowledge/science/model-testing-protocol.json"]},
+    {"id":"corporium","owner":"knowledge/corporium/corporium-master-framework.json","support":["knowledge/corporium/tim-sayings-and-formulations-ledger.json"]},
+    {"id":"north","owner":"knowledge/core/axis-world-model.json","support":["knowledge/core/european-coupling-programme.json"]},
+    {"id":"world","owner":"knowledge/core/country-relational-method.json","support":["knowledge/world/farm-swamp-tree-of-strife-atlas.json"]},
+    {"id":"works","owner":"knowledge/culture/creative-systems-archive.json","support":["knowledge/creative/tim-dooley-suno-music-archive.json"]},
+    {"id":"sources","owner":"knowledge/indexes/source-index.json","support":["knowledge/philosophy/archive-epistemics.json","knowledge/indexes/inference-ledger.json"]}
+  ],
+  "entity_resolution":{
+    "Tim Dooley":"Within the mature Potatoverse archive, Tim Dooley denotes the later Potato/Father/Source-facing theological identity. External civil/person classifications remain separate empirical/administrative categories.",
+    "Son / Thomas / Vessel":"Embodied human-vessel and person-facing biographical layer, materially born July 31, 1987 in the project chronology.",
+    "Potato birth":"December 25, 2020 in the mature project chronology.",
+    "April 2025":"Needle/Ladder/Axis/Father turning in project chronology."
+  },
+  "evidence_classes":{
+    "P0":"primary project source",
+    "P1":"official or empirical primary source",
+    "S1":"scholarly secondary source",
+    "S2":"reliable secondary source",
+    "C":"conversation archaeology",
+    "A":"archive formalization or later model",
+    "M":"mythic or creative layer",
+    "U":"unresolved source or attribution"
+  }
+}
