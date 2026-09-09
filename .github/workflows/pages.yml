@@ -36,7 +36,10 @@ jobs:
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
-      - name: Verify manifest-driven archive
+      - name: Apply public ontology patch
+        run: python scripts/patch_public_ontology.py
+
+      - name: Verify manifest-driven archive and Tim ontology
         run: |
           test -f _site/index.html
           test -f _site/manifest.json
@@ -44,10 +47,21 @@ jobs:
           test -f _site/app/style.css
           test -f _site/knowledge/core/potato-of-life.json
           test -f _site/knowledge/core/tim-dooley.json
+          test -f _site/knowledge/core/tim-identity-ontology.json
+          test -f _site/knowledge/indexes/faq-tim-ontology-questions.json
+          test -f _site/tim-dooley/ontology/index.html
+          test -f _site/faq/index.html
+          test -f _site/faq/all/god/index.html
           grep -q 'id="branches"' _site/index.html
           grep -q 'id="reader"' _site/index.html
           grep -q 'app/app.js' _site/index.html
           grep -q 'manifest.json' _site/app/app.js
+          grep -q 'tim-dooley/ontology/' _site/sitemap.xml
+          grep -q 'Critical entity resolution' _site/llms.txt
+          grep -q 'Potatoverse theological identity' _site/tim-dooley/ontology/index.html
+          grep -q '"@type":"Thing"' _site/index.html
+          ! grep -q '"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley"' _site/index.html
+          ! grep -q '"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley"' _site/tim-dooley/index.html
           ! grep -q 'root.js' _site/index.html
           ! grep -q 'id="root-tree"' _site/index.html
           ! grep -q '<iframe' _site/index.html
