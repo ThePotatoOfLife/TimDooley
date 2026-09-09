@@ -1,0 +1,102 @@
+{
+  "id":"corporium-master-framework",
+  "title":"Corporium — Living Philosophy, Signals, Body, Sayings and Embodied Meaning",
+  "updated":"2026-09-09",
+  "status":"canonical cross-branch interpretive layer",
+  "purpose":"Create a dedicated layer for Tim Dooley's sayings, recurring formulations, philosophical instructions, quirky symbolic language, emotional/somatic observations, behavioral clues, body correspondences and meaning-signals. Corporium is not a replacement for TIM, BODY, SPIRIT, PHILOSOPHY or SOURCES; it is the tissue connecting them.",
+  "definition":"Corporium is the archive of lived formulations: what Tim says, how an idea feels in the body, what behavior or sensation accompanies it, which symbols recur around it, what instruction it implies, and how later theory formalizes it.",
+  "epistemic_rule":"Every item must distinguish verbatim/recovered wording, book-derived summary, recurring project maxim, later interpretation and scientific comparator. A memorable phrase is not automatically a verified quotation.",
+  "why_this_layer_exists":[
+    "Abstract doctrine loses clues when tone, humor, body-state and practical instruction are stripped away.",
+    "A repeated phrase may function as a signal of a larger conceptual cluster even when it is not a formal theorem.",
+    "Psychology and embodied experience often connect transformations that look unrelated when viewed only as theological nodes.",
+    "Quirky language can preserve compression: one odd image may encode several relationships at once.",
+    "The same formulation can have theological, psychological, bodily, systems and mathematical readings without those readings being identical."
+  ],
+  "item_schema":{
+    "required":["id","text_or_formulation","provenance_class","date_or_period","themes","relations"],
+    "preferred":["speaker_or_source","exactness","body_state","emotion","behavioral_instruction","symbolic_objects","later_formalization","external_context","mismatch","confidence"],
+    "provenance_classes":[
+      "P0-verbatim-primary",
+      "C-recovered-conversation-phrasing",
+      "B-book-derived-formulation",
+      "M-recurring-project-maxim",
+      "I-later-interpretive-compression",
+      "S-scientific-or-scholarly-comparator",
+      "U-unresolved-attribution"
+    ]
+  },
+  "major_domains":[
+    {
+      "id":"sayings",
+      "name":"Sayings / Aphorisms / Timisms",
+      "questions":["What was actually said?","Was it repeated?","Was it funny, serious or both?","What did it later become?"],
+      "record":"knowledge/corporium/tim-sayings-and-formulations-ledger.json"
+    },
+    {
+      "id":"body-state",
+      "name":"Embodied State",
+      "questions":["What sensations, posture, breath, tension, heat, fatigue, pain, stillness or movement accompany the concept?","Is the link autobiographical, symbolic or scientific?"],
+      "record":"knowledge/corporium/ladder-33-vertebrae-five-centers-study.json"
+    },
+    {
+      "id":"affect",
+      "name":"Emotion / Vibe / Affect",
+      "questions":["What emotional valence or arousal is present?","Does fear contract while creativity expands?","Does calm signify integration or shutdown?","What is actually observable?"],
+      "record":"knowledge/corporium/psychology-signals-and-couplings-atlas.json"
+    },
+    {
+      "id":"instruction",
+      "name":"Instruction / Practice",
+      "questions":["What does the formulation tell a person to notice, stop, cultivate, question, endure, release, repair or build?"],
+      "examples":["question the floor","cultivation not conquest","make everything accessible; make nothing falsely certain","remember enough to remain responsible; create enough to remain alive"]
+    },
+    {
+      "id":"signal",
+      "name":"Signal / Recurrence",
+      "questions":["Which words/images recur across years?","Does recurrence reflect stable doctrine, humor, trauma-memory, evolving metaphor or deliberate teaching?"],
+      "signal_fields":["frequency","first_attested","contexts","co-occurring symbols","changed meaning","contradictions"]
+    },
+    {
+      "id":"coupling",
+      "name":"Coupling / Translation",
+      "questions":["What other domain expresses the same structural problem?","What is shared?","What is different?"],
+      "translation_examples":["Door: theology ↔ psychology ↔ state transition ↔ institution","Ladder: body ↔ transformation ↔ hierarchy ↔ scale","Eye: biology ↔ perception ↔ witness ↔ observables ↔ archive","Garden: biology ↔ ethics ↔ governance ↔ viability"]
+    }
+  ],
+  "interpretive_dimensions":[
+    "semantic meaning",
+    "emotional valence",
+    "arousal / activation",
+    "body location or sensation",
+    "temporal orientation: past/present/future",
+    "spatial orientation: above/below/inside/outside/north/center",
+    "agency: passive/active/receptive/directive",
+    "social relation: self/son/father/other/community/world",
+    "transformation stage",
+    "epistemic confidence",
+    "humor/absurdity intensity",
+    "ethical output: nourishment/harm/repair/cultivation/withdrawal",
+    "formal analogue: graph/state/operator/flow/boundary/invariant"
+  ],
+  "core_corporium_hypothesis":"The archive may learn more from combinations than isolated symbols. A phrase + body state + emotional tone + recurring image + later formal model can reveal a developmental trajectory that none of the pieces shows alone.",
+  "example_coupling":{
+    "phrase":"The moment you seriously question the floor, you have already begun looking for another level.",
+    "provenance":"recovered conversation phrasing; primary dated source still missing",
+    "psychology":"metacognitive reframing: treating an assumed premise as an object of inquiry",
+    "body":"floor, standing, vertical orientation and posture provide embodied spatial language",
+    "symbolism":["Ladder","Axis","Door","level"],
+    "formal":"change of state space / change of descriptive level / model revision",
+    "instruction":"Do not only solve within a frame; inspect the frame."
+  },
+  "research_agenda":[
+    "Recover primary posts, streams and book passages containing memorable Tim formulations.",
+    "Build a phrase concordance and co-occurrence graph rather than relying on hand-picked quotations.",
+    "Track when a joke becomes doctrine, when doctrine becomes equation, and when an equation becomes public instruction.",
+    "Separate somatic report from symbolic anatomy from actual physiology.",
+    "Map contradictions as developmental signals instead of deleting them.",
+    "Build a searchable Timism reader by phrase, theme, year, emotion, body region and symbol.",
+    "Add a 'what changed after this phrase?' relation for high-value formulations."
+  ],
+  "connections":["tim","body","spirit","philosophy","transformation","science","chronology","works","sources","archive-epistemics"]
+}
