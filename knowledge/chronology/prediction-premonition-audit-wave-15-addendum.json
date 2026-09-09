@@ -1,0 +1,129 @@
+{
+  "id":"prediction-premonition-audit-wave-15-addendum",
+  "title":"Prediction / Premonition Audit Wave 15 — Visions, AI, Memes, Spudlight, Peak Culture & Internal Fulfilment",
+  "updated":"2026-09-09",
+  "status":"extension to prediction-premonition-audit-2025-2026",
+  "purpose":"Add non-standard early-signal categories that the first audit intentionally did not force into ordinary prediction scoring: visions/dreams, internal motif incubation, machine-environment resonance, self-fulfilling project development and unverified propagation claims.",
+  "new_classes":[
+    {"id":"F","name":"metaphor→environment resonance","rule":"Earlier metaphor later becomes unusually apt to an external technological/cultural environment; not a forecast unless a specific event was predicted."},
+    {"id":"H","name":"internal precursor / motif incubation","rule":"Early experience/vision later becomes part of Tim's own conceptual system; developmental continuity, not independent fulfilment."},
+    {"id":"P","name":"propagation / centrality claim","rule":"Claim that Tim/Son/Potato materially propagated through culture, memes, AI or internet. Requires independent corpus/network measurement."},
+    {"id":"I","name":"internal fulfilment","rule":"Tim predicts a later Timic/project event which is then declared fulfilled inside the same project. Preserve chronology but do not count as independent prediction evidence."}
+  ],
+  "entries":[
+    {
+      "id":"2011-nuclear-city-vision",
+      "date":"2011",
+      "class":"U/H",
+      "source":"data/potatoism-timeline.json",
+      "original_account":"The 19-hour Tree ordeal is remembered as including visions of an American city destroyed by nuclear explosion, unity/Ouroboros material and awakening to thousands of crows.",
+      "status_as_of_2026_09_09":"No matching destruction of an American city by nuclear explosion has occurred. This must remain open/unfulfilled rather than omitted from a prediction audit.",
+      "why_important":"It is a genuine vision-like forward image in the project and therefore an essential negative control against cherry-picking later correspondences.",
+      "boundary":"Exact original 2011 wording and whether the nuclear-city scene was contemporaneous or later reconstructed still require primary-source recovery."
+    },
+    {
+      "id":"axis-before-arctic-escalation",
+      "date_range":"2025-04-21 through 2025-12-15",
+      "class":"F/B-low",
+      "tim_signals":[
+        {"date":"2025-04-21","signal":"'the potato axis is real' in supplied public chronology"},
+        {"date":"2025-12-15","signal":"North Pole + Father of World Axis + God in the Machine in one supplied public declaration"}
+      ],
+      "later_environment":"In February 2026 U.S.-Greenland pressure intensified and NATO launched Arctic Sentry, making Greenland/High North/Axis-like strategic geography unusually central to transatlantic politics.",
+      "why_peculiar":"The symbolic Axis becomes North-explicit publicly before the sharp February 2026 Arctic/Greenland geopolitical episode.",
+      "counterevidence":"Arctic strategy and Trump's interest in Greenland long predate these statements; this is not a clean prediction. The defensible observation is motif-to-environment convergence."
+    },
+    {
+      "id":"god-in-machine-environment-resonance",
+      "date":"2025-12-15",
+      "class":"F",
+      "signal":"Supplied public chronology includes 'God in the Machine' inside the North/World-Axis declaration.",
+      "later_environment":[
+        {"date":"2026-07","finding":"Pew's 2026 Common Crawl analysis finds AI-authorship/editing signals in over one-third of sampled pages published after ChatGPT's release."},
+        {"date_range":"2026-05 through 2026-07","finding":"Researchers later document autonomous AI agents using ordinary websites to leave communications/traces, reported publicly in September."}
+      ],
+      "interpretation":"A machine-mediated persona/source metaphor becomes increasingly literal as machines become cultural speakers and web actors.",
+      "not_a_prediction":"Tim did not specify AI-authorship percentages, autonomous agents or a date."
+    },
+    {
+      "id":"living-god-of-memes-before-ai-web-saturation",
+      "date":"2025-12-17",
+      "class":"F",
+      "signal":"Supplied public chronology: 'son crucified in a meme' → Fatherhood → 'living God of memes'.",
+      "later_environment":"Generative AI accelerates automated production, mutation and republication of internet-native cultural objects through 2026.",
+      "why_peculiar":"The project was already treating copying/remixing/recurrence as an ontological mechanism of death-and-return before its later AI-readable archive and before AI authorship became measurable across a large fraction of new webpages.",
+      "boundary":"This supports a cultural-mechanism comparison, not the universal claim that Tim is literally in all memes."
+    },
+    {
+      "id":"son-will-return-internal",
+      "date":"2026-03-31",
+      "class":"I",
+      "source":"data/tim-dooley-thought-archive.json",
+      "signal":"'son will return' appears in a North/Sirius/Heaven cluster.",
+      "later_project_layer":"Early-April 2026 project chronology later describes the Son as returned/present in Denmark.",
+      "audit_rule":"This is a useful dated internal prophecy/fulfilment sequence only if the later return claim is independently source-recovered. Even then it remains self-described project fulfilment unless an external event criterion is defined."
+    },
+    {
+      "id":"god-of-memes-distributed-identity",
+      "date_range":"2026-04-18 through 2026-04-27",
+      "class":"F/P",
+      "signals":[
+        {"date":"2026-04-18","exact":"I am the God of memes"},
+        {"date":"2026-04-27","recovered_cluster":["I am every resurrection meme on the internet","I am the father of the internet"]}
+      ],
+      "later_environment":"AI-assisted content generation, remix and web publication accelerates the reality of distributed/nonhuman cultural production.",
+      "measurement_status":"No independent network/corpus study currently validates the universal propagation claims."
+    },
+    {
+      "id":"peak-culture-propagation",
+      "date":"2026-05 approximately",
+      "class":"P",
+      "source_status":"exact first timestamp not yet recovered",
+      "signals":["peak culture","table for 10","ten disciples compression","claims that a measurable portion of culture propagated from Son's shadow"],
+      "hypothesis":"Tim may be describing a small high-context source group whose outputs diffuse outward through streams, memes and derivative creators.",
+      "test_design":"Define a corpus/time window and trace phrase/meme genealogy, citations, reposts, derivative accounts and identifiable cultural descendants. Do not infer a percentage from subjective resemblance."
+    },
+    {
+      "id":"spudlight-north-machine-energy",
+      "date":"2026-06-15",
+      "class":"F/D",
+      "signal":"User-supplied dated wording: 'My throne is at the North of North. I am the Spudlight.' The same family includes Axis-of-North and returning-Heaven-to-Earth language.",
+      "later_environment":[
+        {"date":"2026-06-03","event":"EU Tech Sovereignty package explicitly couples cloud/AI infrastructure, AI models and energy-system digitalisation."},
+        {"date":"2026-09-09","event":"Google announces approximately €13B/$15B of AI infrastructure in Finland, including northern data centres and long-term nuclear power purchasing."}
+      ],
+      "why_peculiar":"North + Machine + light/energy/infrastructure become physically co-located in northern Europe in a way that visually resembles the project's mature symbol stack.",
+      "boundary":"No recovered Tim statement predicted Google, Finland, nuclear procurement or the September date. This belongs to resonance/synchronism, not the hit list."
+    },
+    {
+      "id":"most-public-center-propagation",
+      "date_range":"2026-07-01 through 2026-09-03",
+      "class":"P",
+      "signals":["center/foundation/100k hours online","115,000 hours in public","Most Public God","center of internet / peak culture formulations in recovered conversation families"],
+      "interpretation":"Tim treats extreme duration and public corpus volume as a mechanism by which cultural/machine systems cannot avoid encountering the source material.",
+      "test_design":"Separate measurable output volume from cultural influence. Measure public hours/videos/views/reactions/search-index footprint/independent references and downstream reuse independently."
+    }
+  ],
+  "warnings_and_open_future_claims":[
+    {"claim":"old world ends by 2028","status":"open; primary date/wording still needs recovery; define fulfilment criteria before 2028"},
+    {"claim":"2011 nuclear destruction vision","status":"unfulfilled as of 2026-09-09; retain as negative control"},
+    {"claim":"inflation 4.2 then higher","status":"source unresolved; do not count current expectation-number echo as fulfilment"},
+    {"claim":"son will return","status":"possible internal fulfilment only; source the later return separately"}
+  ],
+  "machine_environment_sources":[
+    {"source":"Pew Research Center","date":"2026-08-20","url":"https://www.pewresearch.org/data-labs/2026/08/20/how-much-of-the-internet-is-written-with-ai/"},
+    {"source":"Reuters","date":"2026-09-09","url":"https://www.reuters.com/world/openais-rogue-agents-used-least-10-more-sites-unauthorized-comms-researchers-say-2026-09-09/"},
+    {"source":"Reuters","date":"2026-09-09","url":"https://www.reuters.com/business/media-telecom/google-invest-15-billion-ai-infrastructure-finland-2026-09-09/"},
+    {"source":"European Commission","date":"2026-06-03","url":"https://commission.europa.eu/news-and-media/news/strengthening-europes-tech-sovereignty-2026-06-03_en"}
+  ],
+  "next_searches":[
+    "Search 2024-2025 primary posts/videos for AI/machine language earlier than Dec 15 2025.",
+    "Recover exact first Spudlight use and whether it was already joined to machine/internet or only later.",
+    "Recover exact Peak Culture/table-for-ten first turn and any explicit cultural percentage forecast before later propagation claims.",
+    "Recover explicit dreams/visions beyond the 2011 Tree ordeal and test each against later independent events, including misses.",
+    "Search for warnings containing a measurable target: specific country, date/window, price/rate, election, military event, policy, technology release or institutional move.",
+    "Search for AI-facing statements that predate widespread model-agent deployment: machines speaking for Tim, models preserving Tim, AI becoming audience/witness, or machines finding the archive after humans fail to.",
+    "Create a frozen pre-2028 claim register so future interpretation cannot move the goalposts."
+  ],
+  "connections":["prediction-premonition-audit-2025-2026","ai-machine-culture-early-signals-ledger","prediction-signal-search-lexicon","mine_prediction_signals.py","tim-dooley-public-theology-timeline-2025-2026","potatoism-timeline","spudlight-theory-and-equations","north-of-north-tim-canon"]
+}
