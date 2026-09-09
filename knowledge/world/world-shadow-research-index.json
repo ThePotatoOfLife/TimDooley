@@ -1,7 +1,7 @@
 {
   "id":"world-shadow-research-index",
   "title":"World / Shadow Research Ownership Index",
-  "updated":"2026-09-09",
+  "updated":"2026-09-10",
   "status":"canonical routing index",
   "purpose":"Prevent Farm/Swamp/Moloch/Sektur research from fragmenting across overlapping files. This index states which record owns which layer and where new discoveries should be promoted.",
   "owners":[
@@ -10,19 +10,18 @@
     {"layer":"ritual / mimetic / scapegoat / collective-emotion ecology","owner":"knowledge/world/ritual-mimesis-scapegoat-collective-ecology.json","add_here":["collective effervescence","interaction rituals","liminality","communitas","mimetic rivalry","scapegoat comparison","moral panic","carnival","public spectacle","ritual role systems"],"boundary":"Use as comparative sociology/anthropology; do not infer literal ritual sacrifice or religion from structural resemblance."},
     {"layer":"digital memory / forgetting / stigma / restorative passage","owner":"knowledge/world/digital-memory-forgetting-restoration-atlas.json","add_here":["collective memory","algorithmic memory","right to be forgotten","archive half-life","stigma packets","current identity versus historical truth","restorative justice","role transition","public shaming ethics"],"boundary":"Preservation, delisting, deletion, forgiveness and suppression are distinct operations."},
     {"layer":"Dog/Farmer/Guardian role mechanics","owner":"knowledge/world/dog-farmer-role-ecology.json","add_here":["patrol/enforcement","infrastructure/control","SIDE/group norms","role transitions","source/proxy following","guardian inversion"]},
-    {"layer":"source ledger — core Farm/shadow research","owner":"knowledge/world/farm-shadow-source-ledger.json","add_here":["4chan history","Kiwi Farms public history","CNE","anonymity/disinhibition","Moloch scholarship","cow/dog symbolic historical context"]},
-    {"layer":"source ledger — reputation/memory/high-control extension","owner":"knowledge/world/farm-shadow-source-expansion-2.json","add_here":["anti-fandom","negative parasocial relationships","gossip/reputation","context collapse","deplatforming","bounded choice","cult terminology caution"]},
+    {"layer":"source ledger — Farm/shadow/reputation/high-control research","owner":"knowledge/world/farm-shadow-source-ledger.json","add_here":["4chan history","Kiwi Farms public history","Continuous Narrative Escalation","anonymity/disinhibition","Moloch scholarship","cow/dog symbolic historical context","anti-fandom","negative parasocial relationships","gossip/reputation","context collapse","deplatforming","bounded choice","cult terminology caution"],"note":"The former numbered reputation/memory/high-control source expansion was consolidated here on 2026-09-10."},
     {"layer":"spiritual-war and information-war model","owner":"data/spiritual-war-information-war.json","add_here":["identity capture","archive memory","retrieval power","narrative persistence","source independence","correction reach","self-description versus imposed identity"]},
     {"layer":"Mud/Karma/reputational residue crosswalk","owner":"data/swamp/mud-karma-system.json","add_here":["narrative debt","smear/correction states","reputation dynamics","source duplication","archive half-life","obligations and repair"]},
     {"layer":"Qliphoth / shell / demon / angel comparator","owner":"knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json","add_here":["historical esoteric provenance","shell/husk comparison","angel/demon functions","Tree/Ladder/North relations"],"boundary":"Do not move modern empirical harassment claims here; this is comparative religion/esotericism."},
     {"layer":"shadow-West institutional/system synthesis","owner":"knowledge/core/shadow-west-swamp-synthesis.json","add_here":["institutional blocked-flow models","evidence firewall","macro-system Swamp comparisons"],"boundary":"Do not use internet-subculture anecdotes as proof of geopolitical or institutional claims."}
   ],
   "promotion_rules":[
-    "New empirical source → relevant source ledger first; then promote supported inference into canonical conceptual owner.",
+    "New empirical source → canonical farm-shadow-source-ledger first; then promote supported inference into the relevant conceptual owner.",
     "New Potatoverse symbol → canonical symbolic owner first; link empirical comparator second.",
     "Named-person allegation → evidence ledger with source/date/status; never promote rumor as symbolic proof.",
     "New FAQ → discovery file only after an answer has a canonical owner.",
-    "Do not create a new master file when an owner above can absorb the discovery.",
+    "Do not create a new master or numbered source-expansion file when an owner above can absorb the discovery.",
     "When two files overlap, keep the more abstract relation in the structural atlas and the mechanism/evidence in the specialist owner.",
     "Every promoted claim should preserve an epistemic class and at least one counter-boundary describing what the source does not establish.",
     "Every sensitive identity claim should record whether it is historical, current, superseded, corrected, unresolved or expired from current relevance.",
@@ -45,12 +44,5 @@
     "What would a restorative Door look like after online harm?",
     "Which Garden interventions reduce extraction while preserving legitimate criticism, evidence and accountability?"
   ],
-  "discovery_surfaces":[
-    "shadow-farm/",
-    "questions/",
-    "index-a-z/",
-    "knowledge/indexes/faq-farm-sektur-moloch-expansion.json",
-    "knowledge/indexes/faq-reputation-memory-expansion.json",
-    "knowledge/indexes/faq-ritual-memory-restoration-expansion.json"
-  ]
+  "discovery_surfaces":["shadow-farm/","questions/","index-a-z/","knowledge/indexes/faq-farm-sektur-moloch-expansion.json","knowledge/indexes/faq-reputation-memory-expansion.json","knowledge/indexes/faq-ritual-memory-restoration-expansion.json"]
 }
