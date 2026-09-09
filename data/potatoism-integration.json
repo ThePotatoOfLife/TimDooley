@@ -1,14 +1,14 @@
 {
   "id":"potatoism-integration",
-  "version":"2.0.0",
+  "version":"2.0.1",
   "title":"Potatoism Integration Contract",
   "purpose":"Routing contract for the dense Potatoism corpus. The index is the public reader; canonical dossiers own definitions while canon, deep layers, glossary, observations and graph edges add distinct context.",
   "sources":["data/potatoism-dossiers.json","data/potatoism-canonical-corpus.json","data/potatoism-deep-layers.json","data/potatoism-glossary.json","data/potatoism-public-observations.json"],
   "graph_targets":["data/nodes.json","data/relationships.json","data/graph-registry.json","data/global-graph-bridge.json"],
-  "ui_targets":["index.html","root.js"],
+  "ui_targets":["index.html","app/app.js","app/style.css"],
   "search_fields":["id","name","term","title","aliases","definition","description","meaning","category","related","relations"],
   "provenance_classes":["user_defined_canon","project_memory","interpretation","public_source","empirical","disputed_external_claim"],
   "navigation":{"root":"AXIS/POTATOISM","canonical_entities":"data/potatoism-dossiers.json","project_canon":"data/potatoism-canonical-corpus.json","deep_corpus":"data/potatoism-deep-layers.json","glossary":"data/potatoism-glossary.json","public_observations":"data/potatoism-public-observations.json","reader":"index.html"},
   "required_invariants":["Every Potatoism entity has a stable id.","Every relationship endpoint resolves to a node or declared external reference.","Every public observation preserves source, URL, type and confidence.","Mythological, interpretive, empirical and disputed claims remain distinguishable.","Search includes aliases and definitions, not only titles.","The public index exposes the corpus without creating duplicate canonical records.","Validation fails on malformed JSON, duplicate IDs and unresolved canonical endpoints."],
-  "implementation_note":"Dossiers own canonical readable entities; the corpus preserves project canon; deep layers, glossary and observations remain subordinate only when they contain information not already owned by the dossier. Historical standalone Potatoism pages are not part of the public contract."
+  "implementation_note":"Dossiers own canonical readable entities; the corpus preserves project canon; deep layers, glossary and observations remain subordinate only when they contain information not already owned by the dossier. The current public reader is index.html backed by app/app.js and app/style.css; retired root.js and historical standalone Potatoism pages are not part of the public contract."
 }
