@@ -1,33 +1,84 @@
 #!/usr/bin/env python3
-"""Verify that the Pages artifact exposes the unified root and the existing site material."""
+"""Verify the built Pages artifact for the current manifest-driven archive."""
 from __future__ import annotations
+import json,re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_site'
 
+
+def load_json(path,errors):
+    try:return json.loads(path.read_text(encoding='utf-8'))
+    except Exception as exc:
+        errors.append(f'invalid JSON: {path.relative_to(SITE)} — {exc}');return {}
+
+
 def main():
-    errors=[]
+    errors=[];warnings=[]
     if not SITE.exists():
         errors.append('_site does not exist; build_site.py must run first')
+        pages=[]
     else:
         pages=sorted(SITE.rglob('*.html'))
-        required_files=('index.html','root.js','data/root-navigation.json','data/root-record-index.json')
+        required_files=(
+            'index.html','manifest.json','app/app.js','app/style.css',
+            'knowledge/indexes/context-graph.json','knowledge/indexes/core-index.json',
+            'sitemap.xml','llms.txt'
+        )
         for rel in required_files:
-            if not (SITE/rel).exists(): errors.append(f'missing required reader file: {rel}')
-        if not (SITE/'index.html').exists():
-            errors.append('index.html is missing')
-        else:
-            text=(SITE/'index.html').read_text(encoding='utf-8',errors='replace')
-            for required in ('id="root-tree"','id="center-frame"','id="frame-content"','WORLD','AXIS','./root.js'):
-                if required not in text: errors.append(f'index.html missing root reader feature: {required}')
-            if '<iframe' in text: errors.append('index.html contains retired iframe dependency')
-        js=(SITE/'root.js').read_text(encoding='utf-8',errors='replace') if (SITE/'root.js').exists() else ''
-        for required in ('root-record-index.json','root-navigation.json','navigation_path','function collection','function row'):
-            if required not in js: errors.append(f'root.js missing navigation feature: {required}')
-        if SITE.exists() and not pages: errors.append('Pages artifact contains no HTML documents')
-    count=len(list(SITE.rglob('*.html'))) if SITE.exists() else 0
-    print(f'Built HTML pages checked: {count}')
+            if not (SITE/rel).exists():errors.append(f'missing required site file: {rel}')
+
+        manifest=load_json(SITE/'manifest.json',errors) if (SITE/'manifest.json').exists() else {}
+        branches={b.get('id') for b in manifest.get('branches',[]) if b.get('id')}
+        expected={'tim','son','spirit','transformation','cosmology','body','traditions','north','world','chronology','works','sources'}
+        missing=sorted(expected-branches)
+        if missing:errors.append(f'built manifest missing branches: {missing}')
+
+        index=SITE/'index.html'
+        if index.exists():
+            text=index.read_text(encoding='utf-8',errors='replace')
+            for required in ('id="reader"','id="branches"','app/app.js','app/style.css','application/ld+json','llms.txt','sitemap.xml','POTATO'):
+                if required not in text:errors.append(f'index.html missing current archive feature: {required}')
+            for retired in ('id="root-tree"','id="center-frame"','id="frame-content"','./root.js'):
+                if retired in text:warnings.append(f'index.html still contains retired reader marker: {retired}')
+            if '<iframe' in text:errors.append('index.html contains retired iframe dependency')
+
+        app=(SITE/'app/app.js').read_text(encoding='utf-8',errors='replace') if (SITE/'app/app.js').exists() else ''
+        for required in ('manifest.json','context-graph.json','showContext','showRecord','renderMarkdown'):
+            if required not in app:errors.append(f'app/app.js missing current navigation feature: {required}')
+
+        # Generated SEO surfaces must actually exist and contain real pages.
+        topic_pages=list((SITE/'topics').glob('*/index.html')) if (SITE/'topics').exists() else []
+        context_pages=list((SITE/'context').glob('*/index.html')) if (SITE/'context').exists() else []
+        record_pages=list((SITE/'records').glob('*/index.html')) if (SITE/'records').exists() else []
+        if len(topic_pages)<len(expected):errors.append(f'expected at least {len(expected)} topic pages; found {len(topic_pages)}')
+        if not context_pages:errors.append('no generated context pages found')
+        if not record_pages:errors.append('no generated record pages found')
+
+        sitemap=(SITE/'sitemap.xml').read_text(encoding='utf-8',errors='replace') if (SITE/'sitemap.xml').exists() else ''
+        for fragment in ('/topics/tim/','/topics/son/','/records/tim-dooley/','/context/'):
+            if fragment not in sitemap:errors.append(f'sitemap.xml missing expected route fragment: {fragment}')
+        llms=(SITE/'llms.txt').read_text(encoding='utf-8',errors='replace') if (SITE/'llms.txt').exists() else ''
+        for term in ('Tim Dooley','Potato of Life','Canonical topics','Contextual constellations'):
+            if term not in llms:errors.append(f'llms.txt missing discovery term/section: {term}')
+
+        # Validate local references inside generated HTML, resolving relative to each page.
+        ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I)
+        bad=[]
+        for h in pages:
+            for raw in ref.findall(h.read_text(encoding='utf-8',errors='replace')):
+                if raw.startswith(('http:','https:','mailto:','javascript:','data:')):continue
+                target=(h.parent/raw).resolve()
+                try:target.relative_to(SITE.resolve())
+                except ValueError:continue
+                if not target.exists():bad.append(f'{h.relative_to(SITE)} -> {raw}')
+        if bad:errors.append(f'broken local references in built site: {len(bad)}; examples: {bad[:8]}')
+        if not pages:errors.append('Pages artifact contains no HTML documents')
+
+    print(f'Built HTML pages checked: {len(pages)}')
+    print(f'Errors: {len(errors)} · Warnings: {len(warnings)}')
+    for w in warnings[:50]:print('WARNING:',w)
     if errors:
         print('SITE SHELL VALIDATION FAILED');[print('-',e) for e in errors];return 1
     print('SITE SHELL VALIDATION PASSED');return 0
