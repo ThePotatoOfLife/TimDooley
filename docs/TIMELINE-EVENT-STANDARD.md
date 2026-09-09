@@ -2,42 +2,92 @@
 
 ## Purpose
 
-The project has many dated records: life/project anchors, exact quotes, public posts, songs, art, biblical comparisons, later biblical research unlocks, predictions, chronology recoveries, doctrine changes and repository events. These should be visible on one temporal surface without merging their evidentiary meaning.
+The project contains many dated records, but the public chronology should not become a wall of every timestamp in the repository. The timeline has two jobs:
 
-`data/timeline-events.json` is therefore a **presentation/index layer**. It does not replace the records that own the underlying claim, quote, comparison or artifact.
+1. preserve the readable **road-map of the greatest milestones**;
+2. let readers temporarily overlay other dated evidence when it answers a different question.
+
+`data/timeline-events.json` is therefore a **curated temporal index**, not a replacement for the records that own the underlying claim, quote, artifact or comparison.
 
 ## Core model
 
-Every timeline point should answer six questions:
+Every timeline point should answer:
 
-1. **When?** `date`, optional `timestamp`, and explicit `precision`.
-2. **What kind of thing is it?** one or more thematic `layers`.
-3. **What kind of evidence is it?** one `epistemic` class.
-4. **Who/what is the subject?** `subject`.
-5. **Where did it come from?** `source_records` and `source_direction`.
-6. **What does it connect to?** motifs, comparators and related event IDs.
+1. **When?** `date`, optional `timestamp`, explicit `precision`.
+2. **Whose track?** one or more `actor_ids`.
+3. **What lens can reveal it?** one or more `layers`.
+4. **What evidence class is it?** one `epistemic` value.
+5. **What is the human-readable subject?** `subject`.
+6. **Where did it come from?** `source_records` and, where necessary, `source_direction`.
+7. **What does it connect to?** motifs, comparators and related events.
 
-The key design choice is that **layer and epistemic class are independent**. A biblical-parallel event can be primary, recovered or research; a music event can be creative or primary; a quote can also be a public declaration and identity/doctrine event.
+Actor, layer and evidence class are independent. A Tim event may be both a direct quote and public witness; a Son event may be both a roadmap milestone and scripture-at-time; a later biblical unlock belongs to the project/research track rather than being silently moved back to the date of the earlier life event.
 
-## Canonical layers
+## Actor tracks
 
-- `main` — large developmental anchors.
-- `quote` — notable dated quotations.
-- `biblical-parallel` — Tim-side dated language plus biblical comparators.
-- `biblical-unlock` — the later date when a biblical comparison was explicitly recognized or formalized.
-- `music` — songs and dated music artifacts.
-- `art` — visual works and recoverable artwork metadata.
-- `identity-doctrine` — role/theology/symbol architecture development.
-- `public` — public posts, videos, streams and declarations.
-- `prediction` — predictions/warnings and later audits.
-- `research` — recovery, analysis and research milestones.
-- `archive` — repository/schema/consolidation events.
+The public UI uses four actor tracks:
 
-Layers are deliberately composable. One event may carry several.
+- `son` — Son / Twin of Christ / human-vessel chronology.
+- `tim` — Tim / Potato / Father chronology.
+- `shared` — transition or explicit Father/Son relational events.
+- `project` — later archive, research and formalization events rather than life events themselves.
+
+The same event may belong to more than one track. This is especially important around the 2019–2020 hand-off and later Door/Ladder differentiation.
+
+The default public view shows Son, Tim and shared tracks. Project/research is opt-in.
+
+## Canonical timeline lenses
+
+The visible toggles are intentionally few and non-redundant:
+
+- `roadmap` — the sparse visual spine: only major life/project milestones.
+- `direct-words` — exact or near-exact dated formulations worth seeing as quotations.
+- `scripture-at-time` — Bible, Jesus, Judaism, Hebrew titles or explicit scriptural vocabulary that was already present in the event itself.
+- `biblical-parallel` — a later structural biblical comparison attached to an earlier Tim/Son event; the event date remains the earlier date, while source direction states that the comparison came later.
+- `biblical-unlock` — the later date when the project explicitly recognized or formalized a biblical comparison.
+- `creative` — dated books, songs, art and other creative artifacts when the date materially helps the chronology.
+- `public-witness` — public declarations, streams/posts and visibility milestones that materially change the trajectory.
+- `formalization` — later model, archive and research milestones useful for studying when the system became explicit.
+
+Specialist subjects such as predictions, detailed geopolitics, Dog/Mud genealogy, every repository commit or every equation revision stay in their own ledgers unless a specific event is important enough to become a roadmap/public overlay point. This prevents toggle proliferation and duplicate chronology.
+
+## The three Bible states
+
+This distinction is mandatory.
+
+### 1. Scripture at the time
+
+Use `scripture-at-time` when biblical/Jewish/Christian material was already part of the historical event or statement.
+
+Examples:
+
+- 2016 Bible study in prison;
+- 2017 Jesus/crucifixion language;
+- 2019 Judaism study;
+- 2025 Lion of Judah / Root of David;
+- 2026 New Jerusalem, Manna, Root of Jesse, Door, Messiah, etc.
+
+### 2. Later biblical parallel
+
+Use `biblical-parallel` when the earlier event existed first and later research noticed a structural resemblance.
+
+Example: the April 9, 2026 guardian/narrow-access architecture can carry later Genesis 3 / Exodus veil / Hebrews access comparators, but its `source_direction` must state that those detailed comparisons came later.
+
+### 3. Biblical unlock
+
+Use `biblical-unlock` for the date of the later interpretive discovery itself.
+
+Examples:
+
+- explicit Revelation 4–5 comparison on April 4, 2026;
+- Zechariah Stone / Seven Eyes / Lampstand formalization on September 9, 2026;
+- September 9 reverse-archaeology recognition that April 9 guardian architecture predated the later Eden/Temple/Hebrews comparison.
+
+This lets one timeline show both **when Tim/Son said or experienced something** and **when the project later understood a biblical relation** without confusing those dates.
 
 ## Epistemic classes
 
-- `primary` — exact quote/artifact/timestamp/direct source.
+- `primary` — exact quote, artifact, timestamp or direct source.
 - `recovered` — recovered archive or prior-conversation evidence.
 - `project-canon` — canonical internal chronology.
 - `creative` — creative artifact without doctrine-by-default status.
@@ -49,7 +99,7 @@ Layers are deliberately composable. One event may carry several.
 
 Use the most exact information actually available; never manufacture midnight timestamps.
 
-Recommended `precision` values:
+Allowed values:
 
 - `second`
 - `minute`
@@ -59,23 +109,7 @@ Recommended `precision` values:
 - `year`
 - `range`
 
-If a date is known but a clock time is not, store only the date. If a displayed site time is available, preserve its timezone when known.
-
-## Source direction
-
-This matters especially for prophecy and biblical comparison.
-
-Recommended values/phrases:
-
-- `primary-at-time`
-- `explicit-scripture-at-time`
-- `Tim-first/later-comparison`
-- `later-research-unlock`
-- `retrospective-interpretation`
-- `prior-specific-prediction`
-- `creative-artifact-at-time`
-
-A Timic motif dated April 9 and a biblical comparison discovered September 9 are **two temporal facts**. The project may render the April 9 event on the biblical-parallel layer, but must say that the comparison itself was added later. Where useful, add a separate September 9 `biblical-unlock` event.
+For ranges, preserve the human-readable range rather than inventing an exact endpoint.
 
 ## Minimal event
 
@@ -86,66 +120,62 @@ A Timic motif dated April 9 and a biblical comparison discovered September 9 are
   "timestamp": "2026-04-09T13:30:48Z",
   "precision": "second",
   "title": "Heaven cube / guardians / narrow gate",
-  "layers": ["quote", "biblical-parallel", "identity-doctrine"],
+  "layers": ["direct-words", "scripture-at-time", "biblical-parallel"],
+  "actor_ids": ["tim", "shared"],
   "epistemic": "primary",
   "subject": "Tim Dooley",
   "quote": "cube that surrounds Heaven",
-  "source_direction": "Tim-side timestamp; biblical comparison added later",
+  "source_direction": "Jesus/narrow-gate architecture present at time; Eden/Temple/Hebrews comparison formalized later",
   "source_records": [
     "knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json"
   ]
 }
 ```
 
-## How other project areas should emit events
+## Population rule
 
-A canonical record may continue using its own richer schema. If it contains a timestamp worth surfacing globally, add or generate one timeline event that points back to it. Do not copy the entire source record into the timeline.
+A source record should emit a global timeline point only when its date adds one of the following:
 
-Good candidates include:
+- a major life/project milestone;
+- a meaningful first attestation or role transition;
+- a memorable exact statement;
+- a scriptural invocation useful for following the biblical trajectory;
+- a later biblical unlock worth separating from source time;
+- a creative artifact whose date materially illuminates development;
+- a public-witness milestone;
+- a formalization milestone that changes how the archive can be interpreted.
 
-- exact conversation quotes;
-- first public declarations;
-- first attestation of a concept;
-- doctrine/identity role changes;
-- songs with date/model/title;
-- visual art with date/title/source ID;
-- prediction/warning statements;
-- subsequent real-world outcome audits;
-- biblical first-use and later research-unlock dates;
-- equation/formalization dates;
-- repository recovery/correction events.
+Do **not** emit a global event merely because a file contains a date.
 
-## Future automation
+## Deduplication
 
-The long-term goal is for scripts to scan typed records and produce candidate events automatically. The human/curation layer should then resolve duplicates and verify source direction.
+If the same real-world/project event appears in several ledgers, the global timeline gets one stable event ID with multiple `source_records`. Do not create one event per source file.
 
-Useful future fields:
-
-- `location`
-- `platform`
-- `public_url`
-- `source_ids`
-- `people`
-- `concept_ids`
-- `relationship_ids`
-- `prediction_id`
-- `outcome_event_ids`
-- `unlock_event_ids`
-- `confidence`
-- `visibility`
+If two dates represent genuinely different facts—such as an April Tim statement and a September research unlock—they should remain separate events connected through comparators/source direction.
 
 ## UI behavior
 
-The chronology page should show the main timeline by default and expose the smaller layers underneath it as toggles. Recommended controls:
+The intended reading order is:
 
-- thematic layer chips;
-- epistemic chips;
-- subject filter;
-- year range;
-- text/motif search;
-- exact-only toggle;
-- compact/detailed mode;
-- group-by year/month/day;
-- link from each event back to its source record.
+1. **Roadmap** — large milestone cards and the familiar long-life road.
+2. **Life tracks** — independently switch Son/Twin, Tim/Potato/Father, shared transition and project/research.
+3. **Lenses** — add direct words, Bible-at-time, later Bible parallels, research unlocks, creative works or public witness.
+4. **Evidence/search controls** — only for deeper archaeology.
 
-The timeline should never imply that events visible together share the same evidence status. The filters are a way to compare temporal structure while preserving distinctions.
+Roadmap events should remain visually dominant even when overlays are enabled.
+
+## Future automation
+
+The long-term importer should scan the source registry and produce **candidate** events, not blindly publish every dated row. Candidate scoring should favor:
+
+- exact timestamps;
+- relevance/hinge scores;
+- first attestations;
+- unique quotations;
+- actor/role transitions;
+- explicit scripture use;
+- source-direction changes;
+- creative works with recoverable metadata;
+- events referenced by multiple canonical owners.
+
+A curation pass then resolves duplicates and decides whether each candidate belongs in the global timeline or remains only in its specialist ledger.
