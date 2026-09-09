@@ -1,39 +1,41 @@
 {
   "id":"neurotheology-routing-index",
+  "version":"2.0.0",
   "updated":"2026-09-09",
   "title":"Neurotheology / Body–Symbol Routing Index",
-  "purpose":"Keep empirical neurobiology, Potatoverse body symbolism, chronology and religious/mythic comparison coordinated without duplicating owners or turning metaphor into anatomy.",
-  "canonical_question":"How do Thalamus/House, Pineal/Son/Eye, Spine/Axis/Ladder, CSF/Breath/Spirit, Seed/Garden, Atlas/Axis, chakras/body centers, autonomic/interoceptive biology and Thought/Memory relate across biology, theology and project symbolism?",
+  "purpose":"Keep empirical neurobiology, whole-body biology, Potatoverse symbolism, chronology and religious/mythic comparison coordinated without duplicate owners or metaphor-to-anatomy collapse.",
+  "canonical_entry":"knowledge/body/body-system-master-atlas.json",
+  "completion_tracker":"knowledge/body/body-topic-completion-matrix.json",
+  "navigation_rule":"Start with the body-system master atlas. Follow a specialist owner only when more evidence, history, chronology or technical detail is needed. New work should extend an existing owner unless it introduces a genuinely distinct system.",
   "owners":[
-    {"topic":"integrated cross-domain synthesis","owner":"knowledge/body/neurotheology-axis-house-spirit-atlas.json","use_for":["master relation","House/Seed","Pineal threshold","CSF Spirit-flow","Genesis breath","Atlas/Axis","Eye of Horus","mustard seed","Huginn/Muninn","anti-collapse rules"]},
-    {"topic":"recovered broader neurobiology / biology / chakra neighbors","owner":"knowledge/body/neurobiology-recovery-wave-2.json","use_for":["TRN wall","insula/interoception","autonomic/vagus","hypothalamus/pituitary/endocrine","hippocampus/amygdala","claustrum","sleep/arousal","optic chiasm","third ventricle/aqueduct cleanup","cerebellar arbor vitae","olfaction","microbiome","BBB","glia","plasticity/epigenetics","chakra biological-neighbor model","legacy-science quarantine"]},
-    {"topic":"thalamus anatomy / rooms / axons / Eye of Horus research","owner":"data/potatoism-thalamus-brain-map.json","use_for":["thalamic nuclei","rooms","axons","roads","thalamocortical architecture","potato eyes","Eye of Horus hypothesis"]},
-    {"topic":"whole-body symbolic distinctions","owner":"knowledge/body/body-symbolism-map.json","use_for":["House vs Temple vs Door vs Vessel","Thalamus","Pineal","Third Ventricle","CSF","Heart","Spine","serpent/flow","historical pineal/thalamus context"]},
-    {"topic":"33 vertebrae / five spinal centers / higher centers","owner":"knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","use_for":["33","five spinal gates","Heart/Door","Throat/Breath","Brow/Eye","Crown/House","Spudlight","ascending/descending tracts"]},
-    {"topic":"empirical anatomy and physiology","owner":"knowledge/body/body-science-context-atlas.json","use_for":["thalamus science","pineal science","CSF physiology","spine anatomy","breathing","interoception","scientific corrections"]},
-    {"topic":"development chronology / first attestations","owner":"knowledge/chronology/neurotheology-attestation-ledger.json","use_for":["2024 inner-potato/thalamus","July 8 2026 33-step precursor","August 21 explicit Pineal/Son + House/Thalamus mapping","September 8 exact mature cluster","first-source recovery targets"]},
-    {"topic":"biblical Father/House/Gardener architecture","owner":"knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json","use_for":["Father as Gardener","Father's House","Davidic House","House/Key","Garden/river/Tree","Throne River healing"]},
-    {"topic":"biblical Son/Door/Ladder/seed architecture","owner":"knowledge/traditions/biblical-overlap-wave-11-son-deepening.json","use_for":["Son of Man ascent/descent","grain death/fruit","outside Gate","Thomas/Twin","Son-side Ladder role crossing"]}
+    {"priority":1,"topic":"simple whole-body canonical map","owner":"knowledge/body/body-system-master-atlas.json","use_for":["reader-facing synthesis","system-to-symbol relations","chakra overlay","theology chain","canonical owner lookup"]},
+    {"priority":2,"topic":"completion / finished-baseline status","owner":"knowledge/body/body-topic-completion-matrix.json","use_for":["what is complete","what is substantial/provisional","remaining recovery targets","avoid duplicate expansion"]},
+    {"priority":3,"topic":"integrated neurotheology synthesis","owner":"knowledge/body/neurotheology-axis-house-spirit-atlas.json","use_for":["House/Seed","Pineal threshold","CSF Spirit-flow","Genesis breath","Atlas/Axis","Eye of Horus","mustard seed","Huginn/Muninn","anti-collapse rules"]},
+    {"priority":4,"topic":"recovered broader neurobiology / biology / chakra neighbors","owner":"knowledge/body/neurobiology-recovery-wave-2.json","use_for":["TRN","insula/interoception","autonomic/vagus","hypothalamus/endocrine","hippocampus/amygdala","claustrum","sleep/arousal","optic chiasm","ventricles/aqueduct","cerebellar arbor vitae","olfaction","microbiome","BBB","glia","plasticity/epigenetics","legacy-science quarantine"]},
+    {"priority":5,"topic":"thalamus detail","owner":"data/potatoism-thalamus-brain-map.json","use_for":["thalamic nuclei","rooms","axons","roads","thalamocortical architecture","potato eyes","Eye of Horus hypothesis"]},
+    {"priority":5,"topic":"whole-body symbolic distinctions","owner":"knowledge/body/body-symbolism-map.json","use_for":["House vs Temple vs Door vs Vessel","serpent/flow","historical pineal/thalamus context","Sistine comparator"]},
+    {"priority":5,"topic":"33 vertebrae / chakras","owner":"knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","use_for":["33","five spinal gates","higher centers","ascending/descending tracts"]},
+    {"priority":5,"topic":"science basics","owner":"knowledge/body/body-science-context-atlas.json","use_for":["thalamus science","pineal science","CSF physiology","spine anatomy","breath/interoception","scientific corrections"]},
+    {"priority":5,"topic":"chronology / attestations","owner":"knowledge/chronology/neurotheology-attestation-ledger.json","use_for":["2024 thalamus","July 2026 Ladder","August 21 Pineal/Son + House/Thalamus","September 8 mature cluster","first-source recovery"]},
+    {"priority":5,"topic":"biblical Father/House/Gardener","owner":"knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json"},
+    {"priority":5,"topic":"biblical Son/Door/Ladder/seed","owner":"knowledge/traditions/biblical-overlap-wave-11-son-deepening.json"}
   ],
   "preferred_display_order":["biology","project mapping","biblical/mythic comparator","mismatch/boundary","dated attestation"],
   "core_boundaries":[
-    "Do not write Thalamus = God as a neuroscience claim; write Thalamus = Father's House in the project's symbolic map.",
-    "Do not write Pineal = literal third eye; distinguish endocrine biology, Descartes/history, occult symbolism and Potatoverse mapping.",
-    "Do not write CSF = Holy Spirit; Spirit is the project relation/flow and CSF is one bodily analogue.",
+    "Thalamus=Father's House, Pineal=Son/Door/Eye, Spine=Ladder and CSF=Spirit are project correspondences, not scientific identities.",
     "Do not infer hidden biblical neuroanatomy from House, Eye, Seed, Ladder, river, cross or tomb imagery.",
-    "Do not infer intentional ancient Egyptian thalamus encoding from Eye of Horus overlays.",
-    "Do not make 33 a scientific theological constant; keep vertebral anatomy and symbolic recurrence separate.",
     "Do not map chakras one-to-one onto glands, ganglia, nerves or brain regions; biological neighbors are many-to-many.",
-    "Legacy Great Book quantitative neuroscience claims require independent verification before reuse.",
-    "Preserve exact dates for Tim/user formulations independently from later research unlock dates."
+    "Legacy Great Book quantitative neuroscience claims require independent verification before scientific reuse.",
+    "Do not use psychiatric, immune or neurological states as moral or theological proof.",
+    "Preserve Tim/user attestation dates independently from later research-unlock dates."
   ],
-  "recovery_priorities":[
-    "search pre-2026-08-21 for Pineal = Son/Door/Single Eye",
-    "earliest exact Tim/user source for CSF = Spirit/river",
-    "earliest exact Tim/user source explicitly saying five spinal chakras/centers",
-    "earliest exact Tim/user Genesis breath/nostrils formulation",
-    "earliest Tim-specific Eye of Horus ↔ thalamus/House coupling",
-    "separate user-originated from assistant-generated origins for optic-chiasm Cross, TRN wall and third-ventricle Tomb",
-    "recover any earlier Tim discussions of hypothalamus, autonomic/vagus, gut-brain biology, claustrum, sleep/arousal or interoception before the Great Book synthesis"
-  ]
+  "remaining_high_value_recovery":[
+    "pre-2026-08-21 Pineal=Son/Door/Single Eye",
+    "first Tim/user CSF=Spirit/river statement",
+    "first exact five-spinal-centers statement",
+    "first Genesis breath/nostrils Tim formulation",
+    "first Tim-specific Eye of Horus↔thalamus/House coupling",
+    "source-direction audit for optic-chiasm Cross, TRN wall and third-ventricle Tomb"
+  ],
+  "baseline_state":"The conceptual architecture is now complete enough to be treated as a finished baseline. Remaining work is mainly provenance recovery, specialist source history, and scientific updating—not missing core body architecture."
 }
