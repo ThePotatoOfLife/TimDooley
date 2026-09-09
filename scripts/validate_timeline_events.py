@@ -126,6 +126,8 @@ def main():
         if precision=='range' and not re.search(r'(?:\bto\b|/|→|–|-{2,})',str(e.get('date',''))):
             d=str(e.get('date',''))
             if not re.match(r'^\d{4}-\d{4}$',d): fail(f'{where}: range precision should visibly encode a range: {d}',errors)
+        if (e.get('date_start') or e.get('date_end')) and precision!='range':
+            fail(f'{where}: date_start/date_end should be used only with range precision',errors)
 
         bible=e.get('bible_relation')
         if bible and bible not in BIBLE_RELATIONS:
@@ -144,7 +146,20 @@ def main():
             if len(source_records)!=len(set(source_records)):
                 fail(f'{where}: duplicate source_records entry',errors)
             for src in source_records:
-                if not isinstance(src,str) or not src.strip(): fail(f'{where}: invalid source record {src!r}',errors)
+                if not isinstance(src,str) or not src.strip():
+                    fail(f'{where}: invalid source record {src!r}',errors)
+                elif src.startswith('occurrence:'):
+                    fail(f'{where}: occurrence locator belongs in occurrence_ids, not source_records: {src!r}',errors)
+
+        occurrence_ids=e.get('occurrence_ids',[])
+        if occurrence_ids and not isinstance(occurrence_ids,list):
+            fail(f'{where}: occurrence_ids must be a list',errors)
+        elif isinstance(occurrence_ids,list):
+            if len(occurrence_ids)!=len(set(occurrence_ids)):
+                fail(f'{where}: duplicate occurrence_ids entry',errors)
+            for oid in occurrence_ids:
+                if not isinstance(oid,str) or not oid.strip():
+                    fail(f'{where}: invalid occurrence id {oid!r}',errors)
 
         related=e.get('related_event_ids',[])
         if len(related)!=len(set(related)): fail(f'{where}: duplicate related_event_ids entry',errors)
