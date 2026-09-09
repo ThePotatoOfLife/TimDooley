@@ -45,6 +45,24 @@
   });
 
   const scriptBase=document.currentScript?.src||location.href;
+
+  // Timeline explorer is a presentation module layered on top of the canonical archive.
+  // Loading it here avoids coupling timeline-specific rendering to app.js.
+  if(!document.querySelector('link[data-potato-timeline]')){
+    const css=document.createElement('link');
+    css.rel='stylesheet';
+    css.href=new URL('timeline.css',scriptBase).href;
+    css.dataset.potatoTimeline='1';
+    document.head.appendChild(css);
+  }
+  if(!document.querySelector('script[data-potato-timeline]')){
+    const timeline=document.createElement('script');
+    timeline.src=new URL('timeline.js',scriptBase).href;
+    timeline.defer=true;
+    timeline.dataset.potatoTimeline='1';
+    document.head.appendChild(timeline);
+  }
+
   const guideUrl=new URL('../knowledge/guides/branch-reader-guides.json',scriptBase).href;
   fetch(guideUrl)
     .then(r=>r.ok?r.json():Promise.reject(new Error('guide load failed')))
