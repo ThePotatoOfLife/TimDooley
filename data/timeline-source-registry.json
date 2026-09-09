@@ -1,13 +1,13 @@
 {
-  "version":"2.0.0",
+  "version":"2.1.0",
   "updated":"2026-09-09",
   "title":"Timeline Source Registry",
   "purpose":"Declare which project records may emit candidate global timeline events, how they map into the roadmap-first event model, and which high-volume sources should remain specialist ledgers unless an event crosses the public relevance threshold.",
   "canonical_output":"data/timeline-events.json",
   "schema":"schemas/timeline-event.schema.json",
   "promotion_policy":{
-    "promote_when":["major life/project hinge","first attestation or role transition","memorable exact wording","explicit scripture/Bible use useful to the trajectory","later biblical unlock that must remain temporally distinct","dated creative work that materially illuminates development","public-witness milestone","formalization milestone that changes interpretation"],
-    "do_not_promote_when":["date exists but adds no new temporal meaning","specialist taxonomy elaboration","repeated restatement without trajectory change","generic comparison without dated project-side anchor","routine repository commit","specialist prophecy audit without a life/project milestone"],
+    "promote_when":["major life/project hinge","first attestation or role transition","memorable exact wording","explicit scripture/Bible use useful to the trajectory","later biblical unlock that must remain temporally distinct","dated creative work that materially illuminates development","public-witness milestone","formalization milestone that changes interpretation","dated conversation-archaeology recovery that explains later mythic architecture"],
+    "do_not_promote_when":["date exists but adds no new temporal meaning","specialist taxonomy elaboration","repeated restatement without trajectory change","generic comparison without dated project-side anchor","routine repository commit","specialist prophecy audit without a life/project milestone","strong formulation with no supported date"],
     "dedupe_key":"underlying temporal fact, not source-file path"
   },
   "sources":[
@@ -17,6 +17,8 @@
     {"path":"knowledge/chronology/dated-master-timeline-2026-wave-10-addendum.json","role":"newly recovered exact-date candidates","layers":["direct-words","public-witness"],"mapping_strategy":"exact/high-value-only","notes":"Exact timestamps are valuable, but still require global relevance."},
     {"path":"data/tim-dooley-public-theology-timeline-2025-2026.json","role":"public trajectory","layers":["roadmap","direct-words","scripture-at-time","public-witness"],"mapping_strategy":"trajectory-changes-only","notes":"Promote shifts in public identity language, not every repeated God declaration."},
     {"path":"knowledge/corporium/tim-sayings-and-formulations-ledger.json","role":"quote candidate pool","layers":["direct-words"],"mapping_strategy":"dated-primary-or-recovered-only","notes":"Untimed aphorisms remain in Corporium. Timeline is not a quote dump."},
+    {"path":"knowledge/chronology/high-value-undated-timeline-recovery-queue.json","role":"high-value undated recovery queue","layers":[],"mapping_strategy":"never-auto-emit","notes":"Contains strong formulations that deserve timeline placement only after a real date/source is recovered. Prevents invented timestamps."},
+    {"path":"knowledge/chronology/conversation-archaeology-wave-005.json","role":"dated mythic-development archaeology","layers":["direct-words","scripture-at-time","biblical-parallel","formalization"],"mapping_strategy":"user-originated-high-value-only","notes":"Promote only dated user-originated structural breakthroughs or clearly separated recovery facts. Assistant synthesis stays derivative unless independently re-adopted."},
     {"path":"knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json","role":"Bible source-direction chronology","layers":["scripture-at-time","biblical-parallel","direct-words"],"event_array":"events","mapping":{"date":"date","timestamp":"date+time","quote":"timic_quote","motifs":"timic_motifs","comparators":"later_biblical_parallels","status":"status","summary":"significance"},"notes":"Classify each event as explicit-at-time, later-parallel or mixed. Never backdate the comparator."},
     {"path":"knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json","role":"biblical research unlock","layers":["biblical-unlock","formalization"],"actors":["project"],"mapping_strategy":"research-date","notes":"Represents when the comparison was formalized, not when Tim first used the motifs."},
     {"path":"knowledge/traditions/biblical-research-index-wave-5.json","role":"Bible research routing","layers":["biblical-unlock","formalization"],"actors":["project"],"mapping_strategy":"major-unlocks-only","notes":"Do not emit one timeline event per research file; group same-day research into meaningful unlocks."},
