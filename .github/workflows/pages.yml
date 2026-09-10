@@ -47,20 +47,40 @@ jobs:
         run: |
           set -euo pipefail
           mkdir -p _site/data
-          # Geometry is required in the deployed artifact so ordinary atlas loading
-          # never depends on a third-party CDN at browser runtime.
           curl -fsSL --retry 3 --retry-delay 1 \
             https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json \
             -o _site/data/world-countries.geo.json
           test -s _site/data/world-countries.geo.json
-          # Country facts are a best-effort snapshot. If this provider is unavailable
-          # during a build, the browser still has an external retry and local synthesis.
+
           if ! curl -fsSL --retry 3 --retry-delay 1 \
             'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders' \
             -o _site/data/rest-countries-runtime.json; then
             rm -f _site/data/rest-countries-runtime.json
             echo 'REST Countries snapshot unavailable; runtime fallback remains enabled.'
           fi
+
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          geo_path = Path('_site/data/world-countries.geo.json')
+          geo = json.loads(geo_path.read_text(encoding='utf-8'))
+          assert geo.get('type') == 'FeatureCollection', geo.get('type')
+          assert isinstance(geo.get('features'), list) and len(geo['features']) >= 150, len(geo.get('features', []))
+          assert all(f.get('geometry') for f in geo['features'][:20])
+          print(f"Validated local atlas geometry snapshot: {len(geo['features'])} polygons")
+
+          rest_path = Path('_site/data/rest-countries-runtime.json')
+          if rest_path.exists():
+              try:
+                  rows = json.loads(rest_path.read_text(encoding='utf-8'))
+                  assert isinstance(rows, list) and len(rows) >= 190
+                  assert sum(1 for row in rows if row.get('cca3')) >= 190
+                  print(f"Validated local country runtime snapshot: {len(rows)} rows")
+              except Exception as exc:
+                  print(f"Discarding invalid REST Countries snapshot: {exc}")
+                  rest_path.unlink(missing_ok=True)
+          PY
 
       - name: Compile complete science catalog
         run: python scripts/build_science_catalog.py
