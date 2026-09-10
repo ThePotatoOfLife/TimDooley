@@ -128,13 +128,41 @@ function pointFromWkt(wkt) {
   return match ? [Number(match[1]), Number(match[2])] : null;
 }
 
+function populationObservation(row) {
+  const population = row.population?.value != null ? Number(row.population.value) : null;
+  const rawDate = row.populationDate?.value || null;
+  const timestamp = rawDate ? Date.parse(rawDate) : Number.NaN;
+  return {
+    population: Number.isFinite(population) ? population : null,
+    populationDate: rawDate,
+    populationTimestamp: Number.isFinite(timestamp) ? timestamp : null,
+  };
+}
+
+function preferPopulationObservation(candidate, previous) {
+  if (!previous) return true;
+  const candidateDated = candidate.populationTimestamp != null;
+  const previousDated = previous.populationTimestamp != null;
+  if (candidateDated !== previousDated) return candidateDated;
+  if (candidateDated && candidate.populationTimestamp !== previous.populationTimestamp) {
+    return candidate.populationTimestamp > previous.populationTimestamp;
+  }
+  if (candidate.population != null && previous.population == null) return true;
+  if (candidate.population == null) return false;
+  return candidate.population > previous.population;
+}
+
 async function loadCapitals() {
   const query = `
-SELECT ?iso3 ?capital ?capitalLabel ?coord ?population WHERE {
+SELECT ?iso3 ?capital ?capitalLabel ?coord ?population ?populationDate WHERE {
   ?country wdt:P298 ?iso3 ;
            wdt:P36 ?capital .
   ?capital wdt:P625 ?coord .
-  OPTIONAL { ?capital wdt:P1082 ?population . }
+  OPTIONAL {
+    ?capital p:P1082 ?populationStatement .
+    ?populationStatement ps:P1082 ?population .
+    OPTIONAL { ?populationStatement pq:P585 ?populationDate . }
+  }
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }`;
   const url = 'https://query.wikidata.org/sparql?format=json&query=' + encodeURIComponent(query);
@@ -148,19 +176,23 @@ SELECT ?iso3 ?capital ?capitalLabel ?coord ?population WHERE {
     const name = row.capitalLabel?.value;
     const coordinates = pointFromWkt(row.coord?.value);
     if (!iso3 || !name || !coordinates) continue;
-    const population = row.population?.value != null ? Number(row.population.value) : null;
+    const observation = populationObservation(row);
     const key = `${iso3}|${row.capital?.value || name}`;
     const previous = byKey.get(key);
-    if (!previous || (population != null && (previous.population == null || population > previous.population))) {
-      byKey.set(key, { iso3, name, population, coordinates });
-    }
+    const candidate = { iso3, name, coordinates, ...observation };
+    if (preferPopulationObservation(candidate, previous)) byKey.set(key, candidate);
   }
 
   return {
     type: 'FeatureCollection',
     features: [...byKey.values()].map(city => ({
       type: 'Feature',
-      properties: { iso3: city.iso3, name: city.name, population: city.population },
+      properties: {
+        iso3: city.iso3,
+        name: city.name,
+        population: city.population,
+        populationDate: city.populationDate,
+      },
       geometry: { type: 'Point', coordinates: city.coordinates }
     }))
   };
@@ -183,7 +215,9 @@ function countryHtml(properties) {
 }
 
 function capitalHtml(properties) {
-  return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div>Population: ${number(properties.population)}</div></div>`;
+  const year = properties.populationDate ? String(properties.populationDate).slice(0, 4) : '';
+  const dateText = year ? ` <span class="muted">(${escapeHtml(year)})</span>` : '';
+  return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div>Population: ${number(properties.population)}${dateText}</div></div>`;
 }
 
 function showPopup(event, html) {
