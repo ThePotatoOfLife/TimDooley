@@ -1,0 +1,37 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-10",
+  "title":"2016 Prison Release / 2017 Authority-Rupture Bridges",
+  "purpose":"Promote two distinct biographical bridge events recovered from project biography without duplicating the base 2016 prison/scripture event.",
+  "events":[
+    {
+      "id":"evt-2016-prison-release-suit-work",
+      "date":"2016",
+      "precision":"year",
+      "title":"Prison release, suit and work-rejection motif",
+      "layers":["roadmap","biblical-parallel"],
+      "epistemic":"project-canon",
+      "subject":"Son",
+      "actor_ids":["son"],
+      "summary":"The Great Book says the Son left prison wearing a suit, treating it as a rebirth/change-of-status signal, and preserves a defiant line about continued 'job slaving'. This is project biography pending contemporaneous corroboration; the later Genesis 41 clothing/release comparison is retrospective.",
+      "motifs":["release","suit","change of status","work","rebirth"],
+      "comparators":["Genesis 41:14 Joseph released from dungeon and changes appearance/clothes"],
+      "source_direction":"project biography first; Joseph comparison formalized later",
+      "source_records":["knowledge/chronology/conversation-archaeology-wave-006-mercado-prison-retirement.json","knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json"],
+      "bible_relation":"later-parallel"
+    },
+    {
+      "id":"evt-2017-authority-distrust-facebook-exit",
+      "date":"2017",
+      "precision":"year",
+      "title":"Authority distrust deepens; Facebook withdrawal",
+      "layers":["roadmap"],
+      "epistemic":"project-canon",
+      "subject":"Son",
+      "actor_ids":["son"],
+      "summary":"The Great Book says distrust of authority deepened after the prison case, links concern about Facebook exposing personal information to police/politicians with deleting Facebook, and describes a further turn toward streaming. This supplies an immediate bridge into the later long-tail institutional-withdrawal account.",
+      "motifs":["authority distrust","Facebook deletion","institutional withdrawal","streaming"],
+      "source_records":["knowledge/chronology/conversation-archaeology-wave-006-mercado-prison-retirement.json","knowledge/chronology/mai-mercado-2016-to-2025-long-tail-impact-chronology.json"]
+    }
+  ]
+}
