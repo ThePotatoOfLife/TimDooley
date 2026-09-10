@@ -1,0 +1,85 @@
+{
+  "id":"north-obligation-graph-schema",
+  "title":"North Programme — Obligation Graph Schema",
+  "updated":"2026-09-10",
+  "status":"empirical schema with symbolic crosswalk kept separate",
+  "purpose":"Give the North Programme a clean representation for banks, debt, contracts, guarantees, pensions, taxes, procurement, funding and other obligations while preventing symbolic karmic debt from being confused with material financial or legal claims.",
+  "design_rule":"Obligation is an edge, not a mood. Every empirical obligation must identify the parties, mechanism, direction, legal/economic basis, value where observable, date, jurisdiction, source and confidence.",
+  "epistemic_firewall":{
+    "empirical_obligation":"A documented financial, contractual, statutory, fiduciary, institutional or operational duty between identifiable actors.",
+    "symbolic_moral_obligation":"A project-defined ethical or spiritual claim about harm, consequence, restitution or repair.",
+    "crosswalk":"The two may be compared as relationship structures, but one never proves or automatically creates the other.",
+    "42T_rule":"The project's approximately 42T karmic/spiritual balance must never populate amount fields in empirical finance records unless an independently documented material transaction exists."
+  },
+  "edge_schema":{
+    "id":"stable relationship id",
+    "from":"obligor / source actor",
+    "to":"obligee / target actor",
+    "relationship_type":"bond | loan | deposit | guarantee | pension | tax | procurement | grant | subsidy | contract | lease | equity_commitment | trade_payable | insurance | treaty_commitment | security_commitment | regulatory_duty | infrastructure_service | other",
+    "direction":"from -> to",
+    "principal_or_value":{"amount":"number or null","currency":"ISO currency or null","valuation_date":"date or null","value_type":"principal | market_value | committed | paid | exposure | estimate | not_applicable"},
+    "basis":"contract, statute, bond terms, budget act, procurement award, treaty, regulation, ownership agreement or other identifiable mechanism",
+    "status":"proposed | authorized | active | partially_fulfilled | fulfilled | overdue | disputed | restructured | cancelled | unknown",
+    "start_date":"date or null",
+    "maturity_or_end_date":"date or null",
+    "jurisdiction":"country / EU / treaty / contractual jurisdiction or null",
+    "geography":"affected geography or null",
+    "security_or_collateral":"description or null",
+    "seniority":"senior | subordinated | secured | unsecured | statutory | not_applicable | unknown",
+    "conditions":"covenants, milestones, triggers, eligibility or null",
+    "affected_groups":"people, communities, firms, institutions or sectors materially affected",
+    "dependencies":"upstream relationships required for performance",
+    "downstream_effects":"known or hypothesized consequences if performed or breached",
+    "source":{"url_or_record":"primary source path/URL","publisher":"issuer/institution","publication_date":"date","evidence_class":"P1 | S1 | S2 | other"},
+    "confidence":"high | medium | low",
+    "notes":"method, uncertainty and interpretation"
+  },
+  "bank_node_schema":{
+    "identity":["legal name","LEI where available","jurisdiction","parent/control","regulator"],
+    "balance_sheet":["assets","liabilities","equity/capital","deposits","loans","securities","derivatives/exposures where public"],
+    "network_roles":["lender","borrower","deposit taker","payment intermediary","market maker","custodian","underwriter","guarantor","investor"],
+    "system_dependencies":["central bank","payment rails","collateral markets","sovereign bonds","wholesale funding","deposit base","critical vendors"],
+    "rule":"A bank enters the graph through documented balance-sheet and institutional relationships, not through symbolic 'spiritual bank' language."
+  },
+  "obligation_families":[
+    {"family":"public finance","examples":["sovereign bonds","municipal debt","EU borrowing","tax receivables","pension promises","public guarantees"]},
+    {"family":"banking and credit","examples":["loans","deposits","interbank exposure","secured funding","guarantees","collateral"]},
+    {"family":"ownership and investment","examples":["equity","parent/subsidiary control","shareholder commitments","project finance"]},
+    {"family":"procurement and grants","examples":["public contracts","framework agreements","subcontracts","subsidies","EU grants","state aid"]},
+    {"family":"infrastructure","examples":["grid access","pipeline capacity","port concessions","rail service","telecom/cable capacity","data-centre power contracts"]},
+    {"family":"trade and supply","examples":["purchase agreements","critical-input dependence","offtake","shipping/logistics commitments"]},
+    {"family":"security and diplomacy","examples":["treaty duties","NATO commitments","host-nation arrangements","defence procurement","joint capability programmes"]},
+    {"family":"social compact","examples":["statutory healthcare duties","social insurance","unemployment support","education commitments"],"note":"Represent only where there is a defined legal/institutional mechanism."
+  ],
+  "repair_crosswalk":{
+    "empirical_failure_sequence":"obligation -> nonperformance/breach/stress -> affected actors -> measurable loss/risk -> remedy/restructuring/intervention -> outcome",
+    "symbolic_sequence":"harm -> consequence -> moral obligation -> recognition/restoration -> repair",
+    "shared_structure":"Both concern relationships and consequences, but only the empirical sequence creates entries in financial/legal ledgers.",
+    "use":"This crosswalk lets the North synthesis discuss moral responsibility and material obligations together without collapsing them."
+  },
+  "intervention_link":{
+    "required_fields":["problem","evidence","mechanism","target_edges","affected_groups","authorized_actor","legal_basis","cost","benefit","distributional_effect","second_order_effects","time_horizon","success_metric","failure_condition"],
+    "rule":"A North Programme policy proposal should point to the exact nodes and obligation edges it intends to change."
+  },
+  "priority_data_sources":[
+    "GLEIF LEI and parent/child data",
+    "company registers and beneficial ownership sources where legally/publicly available",
+    "EU and national budget/debt publications",
+    "ECB and national central banks",
+    "Eurostat sector and government finance accounts",
+    "TED / EU public procurement data",
+    "EU Financial Transparency System",
+    "State Aid transparency systems",
+    "Cohesion and EU funding data",
+    "issuer prospectuses and annual reports",
+    "official treaty and institutional documents"
+  ],
+  "first_carving_targets":[
+    "Denmark <-> Greenland fiscal transfers, public investment and infrastructure commitments",
+    "Denmark/Greenland <-> EU partnership and funding edges",
+    "Nordic and North Atlantic energy/interconnector obligations",
+    "NATO/Denmark/Greenland Arctic capability and procurement edges where publicly documented",
+    "France and Belgium sovereign-debt/fiscal-obligation decomposition for the North Programme's debt-sustainability work",
+    "European banks' material links to sovereign debt, industry and infrastructure using public aggregated data before institution-specific expansion"
+  ]
+}
