@@ -3,7 +3,9 @@
 
 Canonical data/countries records remain first priority. Missing display facts are
 filled from GeoNames countryInfo at build time so browser hover stays same-origin,
-fast, and resilient. The runtime snapshot records field provenance explicitly.
+fast, and resilient. The runtime snapshot records field provenance explicitly and
+preserves the definition of the winning area field instead of flattening land area
+and generic area into an unlabeled number.
 """
 from __future__ import annotations
 
@@ -19,7 +21,7 @@ COUNTRIES_DIR = ROOT / "data" / "countries"
 OUT = Path(os.environ.get("ATLAS_COUNTRY_FACTS_OUT", ROOT / "data" / "world-country-facts.json"))
 EXPECTED = 195
 GEONAMES_URL = "https://download.geonames.org/export/dump/countryInfo.txt"
-USER_AGENT = "ThePotatoOfLife-world-atlas-country-facts/1.2"
+USER_AGENT = "ThePotatoOfLife-world-atlas-country-facts/1.3"
 CONTINENTS = {
     "AF": "Africa", "AS": "Asia", "EU": "Europe", "NA": "North America",
     "OC": "Oceania", "SA": "South America", "AN": "Antarctica",
@@ -35,15 +37,35 @@ def clean(value):
     return value
 
 
+def number(value):
+    if value is None or value == "":
+        return None
+    try:
+        return float(value)
+    except (TypeError, ValueError):
+        return None
+
+
 def first_number(*values):
     for value in values:
-        if value is None or value == "":
-            continue
-        try:
-            return float(value)
-        except (TypeError, ValueError):
-            pass
+        parsed = number(value)
+        if parsed is not None:
+            return parsed
     return None
+
+
+def canonical_area_value(geography: dict, record: dict) -> tuple[float | None, str | None, str | None]:
+    """Return the first canonical area value together with its exact field semantics."""
+    candidates = (
+        (geography.get("land_area_km2"), "geography.land_area_km2", "land area"),
+        (geography.get("area_km2"), "geography.area_km2", "area"),
+        (record.get("area_km2"), "area_km2", "area"),
+    )
+    for raw, field, definition in candidates:
+        parsed = number(raw)
+        if parsed is not None:
+            return parsed, field, definition
+    return None, None, None
 
 
 def fetch_geonames() -> dict[str, dict]:
@@ -95,11 +117,7 @@ def country_facts(index_row: dict, fallback: dict) -> dict:
 
     canonical_name = clean(identity.get("name")) or clean(index_row.get("name"))
     canonical_official_name = clean(identity.get("official_name"))
-    canonical_area = first_number(
-        geography.get("land_area_km2"),
-        geography.get("area_km2"),
-        record.get("area_km2"),
-    )
+    canonical_area, canonical_area_field, canonical_area_definition = canonical_area_value(geography, record)
     canonical_capital = clean(identity.get("capital"))
     canonical_continent = clean(identity.get("continent"))
     canonical_region = clean(identity.get("region"))
@@ -112,6 +130,8 @@ def country_facts(index_row: dict, fallback: dict) -> dict:
     area = canonical_area if canonical_area is not None else external.get("area_km2")
     continent = canonical_continent or external.get("continent")
     currency = canonical_currency or external.get("currency")
+    area_field = canonical_area_field if canonical_area is not None else ("GeoNames countryInfo.Area(in sq km)" if area is not None else None)
+    area_definition = canonical_area_definition if canonical_area is not None else ("GeoNames Area(in sq km)" if area is not None else None)
 
     field_sources = {
         "name": owner if canonical_name else ("GeoNames countryInfo" if name else None),
@@ -137,11 +157,8 @@ def country_facts(index_row: dict, fallback: dict) -> dict:
         "currency": currency,
         "national_day": canonical_national_day,
         "area_km2": int(round(area)) if area is not None else None,
-        "area_definition": (
-            "canonical country-record area; may be land area when the owner field is land_area_km2"
-            if canonical_area is not None
-            else ("GeoNames Area(in sq km)" if area is not None else None)
-        ),
+        "area_field": area_field,
+        "area_definition": area_definition,
         "languages": external.get("languages") or None,
         "neighbors": external.get("neighbors") or None,
         "source_owner": owner,
@@ -169,6 +186,7 @@ def main() -> int:
     area_coverage = sum(1 for row in rows.values() if row.get("area_km2") is not None)
     region_coverage = sum(1 for row in rows.values() if row.get("region") or row.get("continent"))
     currency_coverage = sum(1 for row in rows.values() if row.get("currency"))
+    area_definition_coverage = sum(1 for row in rows.values() if row.get("area_definition"))
 
     if geonames:
         if capital_coverage < 190:
@@ -177,15 +195,18 @@ def main() -> int:
             raise RuntimeError(f"Area coverage unexpectedly low after GeoNames fallback: {area_coverage}")
         if region_coverage < 190:
             raise RuntimeError(f"Region/continent coverage unexpectedly low after GeoNames fallback: {region_coverage}")
+        if area_definition_coverage != area_coverage:
+            raise RuntimeError(f"Area semantics incomplete: {area_definition_coverage}/{area_coverage} area values have definitions")
 
     payload = {
-        "version": "1.2.0",
+        "version": "1.3.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-facts-runtime",
-        "scope": "Presentation/runtime snapshot over canonical country records; missing display facts may be filled from GeoNames countryInfo with per-field provenance.",
+        "scope": "Presentation/runtime snapshot over canonical country records; missing display facts may be filled from GeoNames countryInfo with per-field provenance and explicit area-field semantics.",
         "country_count": len(rows),
         "capital_coverage": capital_coverage,
         "area_coverage": area_coverage,
+        "area_definition_coverage": area_definition_coverage,
         "region_coverage": region_coverage,
         "currency_coverage": currency_coverage,
         "fallback_source": {"name": "GeoNames countryInfo", "url": GEONAMES_URL},
@@ -198,6 +219,7 @@ def main() -> int:
         "countries": len(rows),
         "capital_coverage": capital_coverage,
         "area_coverage": area_coverage,
+        "area_definition_coverage": area_definition_coverage,
         "region_coverage": region_coverage,
         "currency_coverage": currency_coverage,
     }, indent=2))
