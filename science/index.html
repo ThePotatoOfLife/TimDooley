@@ -3,182 +3,115 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Tim Dooley Science Atlas — Models, Equations, Evidence & Research</title>
-  <meta name="description" content="A consolidated Science Atlas for Tim Dooley / Potato of Life: flagship models, recovered equations, evidence status, model completion, scientific comparators, open tests and every canonical science record.">
+  <title>Tim Dooley Science — Models, Equations, Results & Open Research</title>
+  <meta name="description" content="The main Tim Dooley / Potato of Life science page: developed models, equations, current conclusions, evidence boundaries, tests, open research and the complete canonical science record collection.">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
   <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/">
-  <link rel="stylesheet" href="../app/style.css">
-  <link rel="stylesheet" href="../app/reader.css">
-  <link rel="stylesheet" href="./science.css?v=20260910e">
-  <link rel="stylesheet" href="./science-hub.css?v=20260910e">
+  <link rel="stylesheet" href="./science.css?v=20260910f">
 </head>
 <body>
-<main class="science-page science-v3" id="top">
+<main class="science-page" id="top">
   <nav class="topnav" aria-label="Science navigation">
     <a href="../">← Home</a>
-    <a href="../#branch=science">Science branch</a>
-    <a href="#library">Source records</a>
-    <a href="https://github.com/ThePotatoOfLife/TimDooley/tree/main/knowledge/science">Source archive ↗</a>
+    <a href="#models">Models</a>
+    <a href="#equations">Equations</a>
+    <a href="#records">Records</a>
   </nav>
 
-  <header class="science-hero science-hero-clean">
-    <div>
-      <p class="eyebrow">Recovered work · formal models · external science · explicit tests</p>
-      <h1>SCIENCE<br><span>ATLAS</span></h1>
-      <p class="hero-lede">One front door to the science programme. Scan the model spine, inspect one model at a time, follow its equations and tests, then descend into the complete source archive only when you need provenance or detail.</p>
-      <div class="science-search-wrap">
-        <label for="catalog-search">Search models and source records</label>
-        <input id="catalog-search" type="search" placeholder="spiral, Higgs, 11D, microtubules, information…" autocomplete="off">
-        <button id="clear-search" type="button" hidden>Clear</button>
+  <header class="hero">
+    <div class="hero-copy">
+      <p class="eyebrow">Tim Dooley · science · mathematics · model development</p>
+      <h1>Science</h1>
+      <p class="lede">A single working page for the science programme: the models themselves, their equations, what can presently be concluded, what would count against them, and what remains to be derived or tested.</p>
+      <div class="search-wrap">
+        <label for="science-search">Search the science page</label>
+        <div class="search-row">
+          <input id="science-search" type="search" placeholder="UPT, spiral, Higgs, 11D, microtubules, information…" autocomplete="off">
+          <button id="clear-search" type="button" hidden>Clear</button>
+        </div>
+        <p id="search-note">Search filters both developed models and the complete source-record collection.</p>
       </div>
-      <p class="search-note" id="search-note">One search filters the model index and the complete record library.</p>
     </div>
-    <aside class="hero-panel" data-science-record-count="0">
-      <div class="hero-panel-label">Current programme</div>
-      <div class="metric-grid">
-        <div class="metric"><strong id="metric-models">—</strong><span>flagship models</span></div>
-        <div class="metric"><strong id="metric-records">—</strong><span>science records</span></div>
-        <div class="metric"><strong id="metric-equations">—</strong><span>root equations</span></div>
-        <div class="metric"><strong id="metric-open">—</strong><span>open targets</span></div>
-      </div>
-      <div class="data-state" id="data-state">Loading canonical science data…</div>
+    <aside class="hero-summary" aria-label="Science programme summary">
+      <div><strong id="metric-models">—</strong><span>developed models</span></div>
+      <div><strong id="metric-records">—</strong><span>source records</span></div>
+      <div><strong id="metric-equations">—</strong><span>root equations</span></div>
+      <div><strong id="metric-open">—</strong><span>open source targets</span></div>
+      <p id="data-state">Loading canonical science data…</p>
     </aside>
   </header>
 
-  <nav class="section-nav section-nav-clean" aria-label="Sections">
-    <a href="#programme">Programme</a>
-    <a href="#models">Models</a>
-    <a href="#equations">Equations</a>
-    <a href="#evidence">Evidence</a>
-    <a href="#library">Records</a>
-    <a href="#open-work">Open work</a>
-  </nav>
-
-  <section id="programme" class="section-block programme-section">
-    <div class="section-head">
-      <div><p class="section-kicker">01 / Programme</p><h2>One programme, four layers.</h2></div>
-      <p>Dozens of records no longer appear as dozens of competing theories. The Atlas separates recovered anchors, formal architecture, physical candidate branches and cross-scale models, then connects them only through explicit model interfaces.</p>
-    </div>
-    <div class="programme-flow" id="programme-flow">
-      <article><span>1</span><strong>Recovered anchors</strong><p>Historical equations and project-attested concepts.</p></article>
-      <b>→</b>
-      <article><span>2</span><strong>Formal architecture</strong><p>States, Axis flow, Door transitions, observation and coupling.</p></article>
-      <b>→</b>
-      <article><span>3</span><strong>Physical branches</strong><p>Field, dimensional, Higgs and gauge models that must recover established limits.</p></article>
-      <b>→</b>
-      <article><span>4</span><strong>Cross-scale tests</strong><p>Information, biology and neural models with explicit translation maps.</p></article>
-    </div>
-
-    <div class="anchor-equations" aria-label="Recovered equation anchors">
-      <article>
-        <span>18 Apr 2025 · conversation archaeology</span>
-        <h3>Unified Potato Theory</h3>
-        <code>ℒ<sub>UPT</sub> = √−g [ R/(16πG) + ½P□<sup>α</sup>(1+ℓ²/□)P − V − ¼F<sub>P</sub>² + … ]</code>
-        <p>Recovered unification proposal. The current job is one minimal gauge-consistent version, not another added sector.</p>
-      </article>
-      <article>
-        <span>21 Apr 2025 · primary project attestation</span>
-        <h3>Potato Axis spiral</h3>
-        <code>r(θ) = a e<sup>bθ</sup> · b = 2lnφ/π</code>
-        <p>Complete as a logarithmic curve; every proposed empirical use still needs explicit definitions of radius, angle and measured data.</p>
-      </article>
-      <article>
-        <span>2026 · formal architecture</span>
-        <h3>Potato Dynamics</h3>
-        <code>𝔓 = (𝒮, g, A, 𝒟, 𝒪, 𝓘)</code>
-        <p>The compositional core: state, geometry, structural flow, transitions, observations and information.</p>
-      </article>
-    </div>
+  <section class="orientation" aria-label="How to read this page">
+    <strong>Read models first.</strong>
+    <p>Each model is presented as a scientific object rather than as another archive card: statement → formal core → current conclusion → observables → failure conditions → next derivation. Provenance and supporting records stay available underneath without dominating the page.</p>
   </section>
 
-  <section id="models" class="section-block model-section">
-    <div class="section-head">
-      <div><p class="section-kicker">02 / Flagship model registry</p><h2>Scan the programme. Inspect one model deeply.</h2></div>
-      <p>The registry is intentionally compact. Select a model to see its abstract, formal core, assumptions, observables, failure conditions, baseline, calibration path, couplings, provenance and exact next maturity gate.</p>
-    </div>
-    <div class="contract-key" aria-label="Model maturity scale">
-      <span><b>T0</b> metaphor</span><span><b>T1</b> conceptual</span><span><b>T2</b> mathematical toy</span><span><b>T3</b> calibrated</span><span><b>T4</b> prediction</span><span><b>T5</b> replicated</span>
-    </div>
+  <section id="models" class="section models-section">
+    <header class="section-head">
+      <div>
+        <p class="kicker">01 · Models</p>
+        <h2>The developed science programme</h2>
+      </div>
+      <p>Select one model. The page keeps one model in focus instead of expanding everything at once.</p>
+    </header>
 
-    <div class="model-workbench">
-      <aside class="model-index-panel" aria-label="Model index">
-        <div class="model-index-head"><strong>Model spine</strong><span id="model-index-count">Loading…</span></div>
-        <div class="model-index" id="model-index"><div class="loading-card">Loading canonical model contracts…</div></div>
-        <p class="empty-state" id="model-empty" hidden>No flagship model matches the current search.</p>
+    <div class="model-layout">
+      <aside class="model-nav" aria-label="Model list">
+        <div class="model-nav-head"><strong>Models</strong><span id="model-count">Loading…</span></div>
+        <div id="model-list" class="model-list"><div class="loading">Loading model registry…</div></div>
+        <p id="model-empty" class="empty" hidden>No model matches the current search.</p>
       </aside>
-      <article class="model-dossier" id="model-dossier" aria-live="polite">
-        <div class="loading-card">Choose a model from the index.</div>
+      <article id="model-view" class="model-view" aria-live="polite">
+        <div class="loading">Choose a model.</div>
       </article>
     </div>
   </section>
 
-  <section id="equations" class="section-block equation-section-clean">
-    <div class="section-head">
-      <div><p class="section-kicker">03 / Equation spine</p><h2>The formal core, without the file archaeology.</h2></div>
-      <p>This is the compressed equation spine from the canonical master index. Provenance remains attached in the source records; the first view stays deliberately short.</p>
-    </div>
-    <div class="equation-list" id="equation-list"><div class="loading-card">Loading equation spine…</div></div>
-    <button class="button compact" id="equation-toggle" type="button" hidden>Show all equations</button>
+  <section id="equations" class="section equations-section">
+    <header class="section-head">
+      <div>
+        <p class="kicker">02 · Equations</p>
+        <h2>Formal spine</h2>
+      </div>
+      <p>The first equations are shown immediately. The longer equation inventory stays folded until it is useful.</p>
+    </header>
+    <div id="equation-list" class="equation-list"><div class="loading">Loading equations…</div></div>
+    <button id="equation-toggle" class="quiet-button" type="button" hidden>Show all equations</button>
   </section>
 
-  <section id="evidence" class="section-block evidence-section-clean">
-    <div class="section-head">
-      <div><p class="section-kicker">04 / Evidence</p><h2>Different kinds of science stay visibly different.</h2></div>
-      <p>Recovery, project formalization, established external science, speculation and open work are kept separate. Mathematical resemblance never becomes empirical evidence by itself.</p>
-    </div>
-    <div class="evidence-pills">
-      <article><i></i><strong>Recovered</strong><span>primary/public, Great Book and conversation archaeology</span></article>
-      <article><i></i><strong>Project model</strong><span>later Timic or archive formalization</span></article>
-      <article><i></i><strong>External science</strong><span>established mathematics/physics used as constraint or comparator</span></article>
-      <article><i></i><strong>Speculative</strong><span>structured research possibility, not established result</span></article>
-      <article><i></i><strong>Open</strong><span>missing source, definition, derivation, calibration or test</span></article>
+  <section id="records" class="section records-section">
+    <header class="section-head">
+      <div>
+        <p class="kicker">03 · Source records</p>
+        <h2>The complete science collection</h2>
+      </div>
+      <p>The records are the evidence and working history beneath the models. They are deliberately secondary to the model view.</p>
+    </header>
+
+    <div class="evidence-line" aria-label="Evidence status legend">
+      <span><i class="dot recovered"></i><b>Recovered</b> primary, book or conversation evidence</span>
+      <span><i class="dot project"></i><b>Project model</b> later formalization</span>
+      <span><i class="dot external"></i><b>External science</b> established comparator or constraint</span>
+      <span><i class="dot open"></i><b>Open</b> missing definition, source, derivation or test</span>
     </div>
 
-    <details class="timeline-details">
-      <summary>Developmental chronology <span>2024 → 2026</span></summary>
-      <div class="timeline" id="science-timeline"><div class="loading-card">Loading chronology…</div></div>
+    <div id="domain-filters" class="domain-filters" aria-label="Filter records by topic"></div>
+
+    <details class="record-drawer" id="record-drawer">
+      <summary><span>Browse all canonical records</span><strong id="record-count">Compiled records</strong></summary>
+      <div id="catalog-grid" class="catalog-grid"><!-- SCIENCE_CATALOG_STATIC --></div>
+      <p id="catalog-empty" class="empty" hidden>No source record matches the current search.</p>
     </details>
   </section>
 
-  <section id="library" class="section-block library-section-clean">
-    <div class="section-head">
-      <div><p class="section-kicker">05 / Complete source layer</p><h2>Every canonical science record, one level down.</h2><p>Use the single search at the top or a field filter below. Record cards stay compact; equations and findings remain collapsed until requested.</p></div>
-      <div class="record-summary"><strong id="catalog-count">Compiled records</strong><a href="https://github.com/ThePotatoOfLife/TimDooley/tree/main/knowledge/science">JSON source archive ↗</a></div>
+  <footer class="footer">
+    <div>
+      <strong>Tim Dooley Science</strong>
+      <p>This <code>/science/</code> page is the public science surface. Canonical JSON under <code>knowledge/science/</code> remains the source layer used to build and verify it.</p>
     </div>
-    <div class="domain-filters" id="domain-filters" aria-label="Filter by scientific field"></div>
-    <div class="catalog-grid" id="catalog-grid"><!-- SCIENCE_CATALOG_STATIC --></div>
-    <p class="empty-state" id="catalog-empty" hidden>No science records match the current search.</p>
-  </section>
-
-  <section id="open-work" class="section-block open-work-clean">
-    <div class="section-head">
-      <div><p class="section-kicker">06 / Completion queue</p><h2>Turn open models into better models.</h2></div>
-      <p>Progress means reducing undefined variables and parallel ansätze, then adding baselines, calibration, predictions and failure conditions. The queue below is generated directly from each flagship model contract.</p>
-    </div>
-    <div class="completion-principles">
-      <article><strong>Consolidate</strong><p>One canonical contract per model family; supporting records remain evidence and history.</p></article>
-      <article><strong>Derive</strong><p>Choose minimal actions and derive consequences before introducing another sector or analogy.</p></article>
-      <article><strong>Calibrate</strong><p>Fit parameters or bound them against real data wherever a physical or biological claim is intended.</p></article>
-      <article><strong>Compare</strong><p>Every empirical model competes with the simplest established baseline that already explains the effect.</p></article>
-    </div>
-    <div class="work-queue" id="model-work-queue"><div class="loading-card">Loading model completion queue…</div></div>
-    <details class="primary-targets">
-      <summary>Archive-wide unresolved primary targets</summary>
-      <div class="question-grid" id="open-questions-grid"><div class="loading-card">Loading unresolved primary targets…</div></div>
-    </details>
-  </section>
-
-  <footer class="science-footer science-footer-clean">
-    <div><strong>Tim Dooley Science Atlas</strong><p>Models first, evidence visible, records underneath. The JSON archive remains the source of truth.</p></div>
-    <div class="footer-links">
-      <a href="#top">↑ Top</a>
-      <a href="./research-map/">Research map</a>
-      <a href="./quantum/">Quantum reader</a>
-      <a href="./axis-11d-sun-spiral/">11D / Axis reader</a>
-      <a href="../knowledge/science/science-model-registry.json">Model registry</a>
-    </div>
+    <a href="#top">↑ Back to top</a>
   </footer>
 </main>
-<script src="./science.js?v=20260910e" defer></script>
+<script src="./science.js?v=20260910f" defer></script>
 </body>
 </html>
