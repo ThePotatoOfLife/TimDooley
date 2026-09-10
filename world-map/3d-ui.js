@@ -54,6 +54,43 @@ const observer = panel && new MutationObserver(() => {
 });
 observer?.observe(panel, {childList:true, subtree:true, characterData:true});
 
+function summaryText(id,text,active=false){
+  const summary=document.querySelector(`#${id}>summary`);if(!summary)return;
+  summary.textContent=text;summary.classList.toggle('active-state',active);
+}
+function updateLayerSummary(){
+  const relation=document.getElementById('relationType')?.value||'all';
+  const field=document.getElementById('axisFieldView')?.value;
+  const network=document.getElementById('empiricalNetworkView')?.value;
+  const active=[];
+  if(field&&field!=='all'&&field!=='off')active.push(field==='brics'?'BRICS':field[0].toUpperCase()+field.slice(1));
+  if(network&&network!=='off')active.push(network.replaceAll('_',' '));
+  if(relation!=='all')active.push('filtered');
+  summaryText('layersMenu',active.length?`Layers · ${active.slice(0,2).join(' + ')}${active.length>2?'…':''}`:'Layers',active.length>0);
+}
+function updateTraceSummary(){
+  const depth=Number(document.getElementById('traceDepth')?.value||1);
+  summaryText('traceMenu',depth>1?`Trace · ${depth} hops`:'Trace',depth>1);
+}
+function updateTimeSummary(state=window.__potatoAtlasTime?.getState?.()){
+  if(!state||state.mode==='current'){summaryText('timeMenu','Time',false);return;}
+  if(state.mode==='as_of')summaryText('timeMenu',`Time · ${state.time||'As of…'}`,true);
+  else summaryText('timeMenu',`Time · compare`,true);
+}
+function updateViewSummary(){
+  const height=document.getElementById('height')?.value||'flat';
+  const parts=[];
+  if(height!=='flat')parts.push(height);
+  if(app?.classList.contains('ui-focus'))parts.push('focus');
+  summaryText('viewMenu',parts.length?`View · ${parts.join(' + ')}`:'View',parts.length>0);
+}
+function updateMenuSummaries(){updateLayerSummary();updateTraceSummary();updateTimeSummary();updateViewSummary();}
+
+document.addEventListener('change',event=>{
+  if(['relationType','axisFieldView','empiricalNetworkView','traceDepth','height','timeMode','timeDate','timeDate2'].includes(event.target?.id))queueMicrotask(updateMenuSummaries);
+});
+window.addEventListener('atlas-time-change',event=>updateTimeSummary(event.detail));
+
 // Feature modules insert controls relative to relationType. Since relationType now
 // lives in Layers, their injected selectors inherit progressive disclosure automatically.
 const layersPop = document.querySelector('#layersMenu .menu-pop');
@@ -62,6 +99,7 @@ const relocateInjectedLayerControls = () => {
     const node = document.getElementById(id);
     if (node && layersPop && node.parentElement !== layersPop) layersPop.appendChild(node);
   }
+  updateLayerSummary();
 };
 new MutationObserver(relocateInjectedLayerControls).observe(document.body, {childList:true, subtree:true});
 relocateInjectedLayerControls();
@@ -89,4 +127,8 @@ function installAxisToggle() {
 new MutationObserver(installAxisToggle).observe(document.body, {childList:true,subtree:true});
 installAxisToggle();
 
-window.__potatoAtlasUI = {setPanel,setFocus};
+// View summary also needs to follow Focus mode, whose state is changed by a button.
+focusMode?.addEventListener('click',()=>queueMicrotask(updateViewSummary));
+updateMenuSummaries();
+
+window.__potatoAtlasUI = {setPanel,setFocus,updateMenuSummaries};
