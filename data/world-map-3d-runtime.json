@@ -1,6 +1,6 @@
 {
   "id": "world-map-3d-runtime",
-  "version": "1.4.0",
+  "version": "1.4.1",
   "updated": "2026-09-11",
   "status": "active renderer contract",
   "purpose": "Define the active 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme, chronology and provenance model used by the rest of the repository.",
@@ -22,6 +22,7 @@
     "hover_and_resilience": "world-map/3d-hover.js owns resilient data boot, country hover and capital-city overlays",
     "pathfinder": "world-map/3d-pathfinder.js owns shortest-known-path navigation without creating a second map renderer",
     "demography": "world-map/3d-demography.js owns sourced population/religion presentation",
+    "evidence": "world-map/3d-evidence.js owns the Eye inspector for source provenance, observation dates, represented relation evidence and project-vs-empirical boundaries",
     "axis": "world-map/3d-axis.js plus operator modules expose project-symbolic vertical navigation without turning it into physical geography",
     "reason_for_split": "Feature modules extend one renderer and shared public APIs rather than duplicating MapLibre state."
   },
@@ -83,6 +84,12 @@
     "religion": "Pew 2020 broad-category composition where available, kept separate from geopolitical interpretation",
     "boundary": "Religious composition does not imply political loyalty or behavior."
   },
+  "evidence_mode": {
+    "status": "implemented-inspector",
+    "behavior": "Eye exposes country fact provenance, population/religion observation dates and sources, represented relation layers/types and project-axis classifications for the selected country.",
+    "boundary": "Missing coverage is not falsehood; repetition is not corroboration; project interpretation is not empirical evidence.",
+    "next": "Add explicit filtering for epistemic class, confidence, source class, contradictions and freshness without collapsing unlike evidence into one truth score."
+  },
   "capital_and_country_facts": {
     "status": "implemented",
     "hover": ["population + year", "capital", "area km²", "region/subregion", "currency"],
@@ -119,6 +126,7 @@
     "sourced population and religion presentation",
     "same-origin country-facts hover with capital, area, region and currency",
     "capital city nodes with name/population hover",
+    "Eye evidence inspector for provenance, observation dates and epistemic boundaries",
     "resilient local-first geometry/country-data boot",
     "North Axis D1-D11 symbolic navigator and executable symbolic operators",
     "URL country, compare, relation, depth and path state",
@@ -140,15 +148,15 @@
     "required_display": ["metric name", "unit", "observation year/date", "source", "normalization/scaling method"]
   },
   "data_growth_strategy": {
-    "current": "Use country polygons, sourced facts/demography, semantic modules, a curated relationship graph, Path/Trace/Compare and a project-symbolic Axis view.",
-    "next_foundation": "Implement Time and Evidence/Eye controls before adding large new visual layers.",
+    "current": "Use country polygons, sourced facts/demography, semantic modules, a curated relationship graph, Path/Trace/Compare, an Eye evidence inspector and a project-symbolic Axis view.",
+    "next_foundation": "Implement conservative Time controls from the canonical time contract, then make Time and Eye shared filters for graph traversal and dated evidence.",
     "next_graph": "Generalize country-only graph traversal into normalized country/institution/company/infrastructure/funding/ownership/programme relations.",
     "next_physical": "Add high-value real spatial nodes: government institutions, ports, grids, cables, power plants, companies and research institutions.",
     "scale_rule": "As the graph grows, lazy-load by view/zoom/country and move high-volume geometry to vector tiles/prebuilt packages rather than shipping the whole graph to every client."
   },
   "next_priority": [
     "Implement conservative Current / As-of / Compare-dates filtering from data/atlas-time-contract.json.",
-    "Add Evidence/Eye filtering for epistemic class, confidence, source class, contradictions and freshness.",
+    "Extend Eye from inspection into filtering for epistemic class, confidence, source class, contradictions and freshness.",
     "Expand recursive Trace into entity-aware traversal through data/global-graph-bridge.json and data/relationships.json.",
     "Generalize D3 Roots to relationships, institutions, claims and events.",
     "Make Spiral compare dated states and deltas; Tree expand real descendants/dependencies; Mountain declare aggregation and information loss.",
@@ -173,6 +181,7 @@
     "data/world-entanglement-registry.json",
     "knowledge/core/world-atlas-integrated-layer-stack.json",
     "world-map/3d.html",
-    "world-map/3d-app.js"
+    "world-map/3d-app.js",
+    "world-map/3d-evidence.js"
   ]
 }
