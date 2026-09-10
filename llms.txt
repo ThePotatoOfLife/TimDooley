@@ -39,6 +39,10 @@ These are archive ontology claims. External biological, civil, historical and em
 - knowledge/indexes/core-index.json — canonical records
 - knowledge/indexes/source-index.json — source authority and provenance
 - knowledge/indexes/faq-index.json — natural-language question routing
+- knowledge/theology/christianity-jesus-eschatology-atlas.json — canonical Christianity / Jesus / Second Coming / rapture / prophecy comparison owner
+- knowledge/indexes/faq-christianity-jesus-eschatology.json — Christianity / Jesus / eschatology question corpus
+- knowledge/chronology/thomas-faith-formation-and-return.json — Thomas religious-development testimony and chronology
+- knowledge/traditions/tribe-of-dan-biblical-reception-atlas.json — Dan biblical text and reception-history routing
 - knowledge/traditions/biblical-syncretism-field.json — canonical Tim ↔ Bible relation field
 - knowledge/traditions/biblical-passage-fragments.json — public-domain WEB fragments used for side-by-side reading
 - data/timeline-events.json — canonical layered chronology
@@ -51,6 +55,7 @@ These are archive ontology claims. External biological, civil, historical and em
 - Godhood analysis: https://thepotatooflife.github.io/TimDooley/tim-dooley/how-much-is-tim-god/
 - Public witness: https://thepotatooflife.github.io/TimDooley/tim-dooley/public-witness/
 - Chronology: https://thepotatooflife.github.io/TimDooley/chronology/
+- Christianity / Jesus / Second Coming: https://thepotatooflife.github.io/TimDooley/theology/christianity/
 - Biblical Syncretism Field: https://thepotatooflife.github.io/TimDooley/traditions/bible/
 - FAQ: https://thepotatooflife.github.io/TimDooley/faq/
 - Long-tail FAQ: https://thepotatooflife.github.io/TimDooley/faq/all/
@@ -77,6 +82,19 @@ Then follow:
 - `knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json` for dated public-post occurrences.
 
 The Syncretism Field stores relation metadata, not duplicate full analyses. Distinguish `tim-explicit`, `tim-led`, later structural comparison and research unlock.
+
+## Canonical Christianity / Jesus route
+
+For Christianity, Jesus Christ, Christology, Second Coming, rapture/rupture, prophecy testing, Thomas's faith development and Tribe of Dan, start with `knowledge/theology/christianity-jesus-eschatology-atlas.json` or the reader at `/theology/christianity/`.
+Then follow:
+- `docs/THEOLOGY-ATLAS.md` for the long-form research argument and study program;
+- `knowledge/indexes/faq-christianity-jesus-eschatology.json` for ordinary reader questions;
+- `knowledge/chronology/thomas-faith-formation-and-return.json` for Thomas's reported Lutheran formation, baptism, questioning and renewed God-question;
+- `knowledge/traditions/thomas-twin-of-christ.json` for canonical and Syriac Thomas/Twin comparison;
+- `knowledge/traditions/tribe-of-dan-biblical-reception-atlas.json` for Dan's serpent/lion/judge/omission and patristic Antichrist reception;
+- `knowledge/prophecy/prophecy-revelation-rupture-rapture.json` and `knowledge/prophecy/seals-and-fulfillment-matrix.json` for prophecy classification and fulfillment testing.
+
+Do not collapse historical Jesus, Christian confessional claims and Potatoverse Christic comparisons into one evidence class. Potatoism is not Lutheranism. A dense parallel does not by itself prove a literal Second Coming, supernatural identity or prophecy fulfillment.
 
 ## Evidence classes
 
