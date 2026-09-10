@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Audit the files that can actually participate in the GitHub Pages surface.
+"""Audit source references that participate in the GitHub Pages surface.
 
-The scope intentionally mirrors ``scripts/build_site.py``. Historical/archive,
-tooling and build-only trees are useful repository strata but are not deployed
-public assets and therefore must not create false web-integrity failures.
+The source tree and deployed Pages tree are intentionally not identical. Most
+public files are copied by ``scripts/build_site.py``, while discovery routes such
+as ``questions/`` and ``index-a-z/`` are generated later by
+``scripts/build_discovery.py``. This audit validates source-backed references
+strictly without misclassifying those build-generated public routes as missing.
 """
 from __future__ import annotations
 
@@ -26,6 +28,24 @@ EXCLUDED_PARTS = {
     "components",
     "scripts",
     "archive",
+}
+
+# These routes are intentionally absent from the source tree. They are emitted
+# by scripts/build_discovery.py during the Pages build and verified separately
+# by .github/workflows/pages.yml.
+GENERATED_ROUTE_PREFIXES = (
+    "faq/",
+    "questions/",
+    "index-a-z/",
+)
+GENERATED_ROUTE_FILES = {
+    "discovery.json",
+    "llms.txt",
+    "llms-full.txt",
+    "robots.txt",
+    "sitemap.xml",
+    "sitemap-index.xml",
+    "sitemap-questions.xml",
 }
 
 
@@ -68,6 +88,17 @@ def resolve_target(source: Path, target: str) -> Path | None:
     return (source.parent / target).resolve()
 
 
+def is_generated_public_target(path: Path) -> bool:
+    try:
+        rel = path.relative_to(ROOT.resolve()).as_posix().rstrip("/")
+    except ValueError:
+        return False
+    if rel in GENERATED_ROUTE_FILES:
+        return True
+    rel_with_slash = f"{rel}/" if rel else ""
+    return any(rel_with_slash.startswith(prefix) for prefix in GENERATED_ROUTE_PREFIXES)
+
+
 def check(source: Path, raw: str, label: str) -> None:
     target = local(raw)
     if not target:
@@ -86,7 +117,7 @@ def check(source: Path, raw: str, label: str) -> None:
         warnings.append(f"{source.relative_to(ROOT)}: reference escapes repository -> {raw}")
         return
 
-    if not p.exists():
+    if not p.exists() and not is_generated_public_target(p):
         errors.append(f"{source.relative_to(ROOT)}: broken {label} -> {target}")
 
 
