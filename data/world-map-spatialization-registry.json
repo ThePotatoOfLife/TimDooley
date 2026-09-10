@@ -1,0 +1,153 @@
+{
+  "id": "world-map-spatialization-registry",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "active adapter and feasibility contract",
+  "purpose": "Translate the existing Tim Dooley / Potato of Life repository into honest spatial primitives for the World Relational Atlas without duplicating canonical records or inventing coordinates for non-spatial ideas.",
+  "core_rule": "The map is a view over the repository graph. Canonical files own meaning and evidence; this registry only decides how a record may be rendered spatially.",
+  "primitives": {
+    "polygon": "country, territory, region or sourced area geometry",
+    "semantic_hub": "navigation-only point generated around a selected country hub to expose a non-geographic data module such as religion, debt or history",
+    "real_point": "sourced coordinate for a real place, institution, facility, port, airport, sacred site, company site or event",
+    "line": "physical route or typed relationship between honest spatial anchors",
+    "area": "sourced subnational, demographic, ecological, conflict or infrastructure area",
+    "event_marker": "dated event with a defensible location",
+    "nonspatial_card": "concept, treaty, text, statistic, legal entity or project-symbolic object without one honest coordinate",
+    "scenario_object": "hypothetical or proposed programme state, always visibly distinct from observation"
+  },
+  "semantic_hub_rule": "Semantic hubs deliberately do not claim geographic precision. They are temporary visual handles arranged around the selected country's representative hub and labelled 'navigation-only'. A later sourced real node may replace or coexist with them.",
+  "source_adapters": [
+    {
+      "source": "data/countries/index.json + data/countries/{id}.json",
+      "feasibility": "NOW",
+      "render": ["country polygon", "country hub", "semantic interior hubs", "country dossier", "derived choropleths after numeric normalization"],
+      "modules": ["population", "religion", "government", "economy", "public finance/debt", "trade", "energy", "infrastructure", "ownership", "security", "science/technology", "migration", "history", "relationships", "sources/research queue"],
+      "notes": "Country records already inherit a common blueprint and are the primary source for comparable country data."
+    },
+    {
+      "source": "data/world-relational-map.json",
+      "feasibility": "NOW",
+      "render": ["Axis choropleths", "NATO/BRICS overlays", "selected-country relationship lines", "country interpretation cards", "Tikkun/ledger context"],
+      "notes": "Curated edges are immediately drawable between country hubs; their type and epistemic plane must remain visible."
+    },
+    {
+      "source": "data/nodes.json + data/relationships.json + data/global-graph-bridge.json",
+      "feasibility": "NOW_TO_PARTIAL",
+      "render": ["graph cards", "country-linked semantic hubs", "spatial edges when both endpoints have honest anchors", "nonspatial nodes in trace panel"],
+      "notes": "The graph already contains empirical and project-symbolic endpoints. Spatialization must preserve each endpoint's epistemic class rather than treating every node as a place."
+    },
+    {
+      "source": "data/religious-layer-map.json + data/world-religion-layer.json + country religion fields",
+      "feasibility": "NOW_FOR_STRUCTURE / DATA_INGESTION_FOR_GLOBAL_VALUES",
+      "render": ["religion semantic hub", "country religion dossier", "affiliation/unaffiliated/diversity choropleths after dated values are ingested", "real sacred-site/institution points when sourced", "text/tradition links as nonspatial graph nodes"],
+      "notes": "Religious traditions, texts, institutions, demographics and project comparisons are separate node classes."
+    },
+    {
+      "source": "data/swamp-research-seeds.json",
+      "feasibility": "PARTIAL",
+      "render": ["organization/company semantic references now", "real headquarters/facility nodes after coordinate sourcing", "political-finance/defense edges after endpoint normalization"],
+      "notes": "Do not place a company or PAC at a country's centroid and present it as its real location."
+    },
+    {
+      "source": "country infrastructure / trade / energy / ownership fields",
+      "feasibility": "NOW_AS_SEMANTIC / PARTIAL_AS_REAL_GEOMETRY",
+      "render": ["semantic module hub immediately", "real ports, airports, power plants, cables, pipelines and corridors after geocoding/geometry ingestion", "country-to-country dependency edges"],
+      "notes": "Prefer operator/owner/capacity/date/source metadata for real assets."
+    },
+    {
+      "source": "country history + chronology records",
+      "feasibility": "PARTIAL",
+      "render": ["timeline cards now", "event markers where date/place are known", "time-bounded historical polygons/edges later"],
+      "notes": "Historical slavery, colonial rule, war and abolished institutions must be time-scoped rather than permanently staining present polygons."
+    },
+    {
+      "source": "data/north-programme-atlas.json + North programme records",
+      "feasibility": "NOW_AS_PROGRAMME_GRAPH / LATER_AS_SIMULATION",
+      "render": ["proposal/intervention nodes", "programme edges", "scenario layer", "before/after metrics where evidence/model exists"],
+      "notes": "Programme proposals are not observed outcomes."
+    },
+    {
+      "source": "Potatoverse / theology / Tim statement corpus",
+      "feasibility": "NOW_AS_CONTEXT_GRAPH",
+      "render": ["Tim/project semantic hub", "dated statement cards", "country/institution-linked project edges", "nonspatial theological graph"],
+      "notes": "Never invent map coordinates for Father, Son, Door, Godhood, karma or scripture merely to make them visible. Use explicit links to real places/events only when sourced or explicitly project-symbolic."
+    }
+  ],
+  "feasibility_tiers": {
+    "NOW": [
+      "draggable/zoomable/rotatable polygon world",
+      "country selection and canonical lazy-loading",
+      "semantic interior module hubs",
+      "country-to-country curated relation lines",
+      "NATO/BRICS/North interpretive overlays",
+      "population/area extrusion",
+      "country data cards and source/research coverage",
+      "URL-deep-link selection"
+    ],
+    "NEXT": [
+      "religion/irreligion numeric ingestion and choropleths",
+      "public-debt/GDP/debt-to-GDP normalized metric adapters",
+      "multi-select compare mode",
+      "typed relation filter and recursive Trace mode",
+      "territory registry and local polygon geometry",
+      "first real point datasets for ports, capitals, institutions and sacred sites",
+      "time slider over versioned memberships/events"
+    ],
+    "HEAVY_BUT_FEASIBLE": [
+      "global ownership/control graph with company/legal-entity resolution",
+      "trade and supply-chain flows at product/sector level",
+      "large-scale infrastructure network with cables/pipelines/grids",
+      "historical map states with changing borders",
+      "scenario simulation with explicit model assumptions",
+      "100k+ point/edge rendering using vector tiles/deck.gl/backend preprocessing"
+    ],
+    "NOT_SENSIBLE": [
+      "turning every repository concept into a map pin",
+      "inventing coordinates for texts, theology, legal abstractions or symbolic claims",
+      "using one national guilt/corruption/karma height as if it were objective truth",
+      "converting Tim's karmic ledger into ordinary debt without a real instrument",
+      "showing present populations as responsible for historical harms by default",
+      "copying canonical records into a second map-only database"
+    ]
+  },
+  "country_semantic_hubs": [
+    {"id":"religion","label":"Religion / Irreligion","owners":["religion","society_and_culture"],"plane":"observable + historical"},
+    {"id":"government","label":"Government / Law","owners":["political_system","government","law_and_rights","public_administration"],"plane":"observable"},
+    {"id":"economy","label":"Economy / Money","owners":["economy","money_and_finance"],"plane":"observable"},
+    {"id":"debt","label":"Physical Debt / Finance","owners":["public_finance"],"plane":"observable"},
+    {"id":"trade","label":"Trade / Supply Chains","owners":["trade_and_value_chains","international_position"],"plane":"observable"},
+    {"id":"energy","label":"Energy / Resources","owners":["energy","natural_resources_and_ecology"],"plane":"observable"},
+    {"id":"infrastructure","label":"Infrastructure / Mobility","owners":["infrastructure","transport_and_mobility"],"plane":"observable"},
+    {"id":"ownership","label":"Companies / Ownership","owners":["ownership_and_control"],"plane":"observable"},
+    {"id":"security","label":"Security / Alliances","owners":["military_and_security","security","alliances_and_external_relations","intelligence_and_security_relationships"],"plane":"observable"},
+    {"id":"science","label":"Science / Technology","owners":["science_technology_and_innovation","education"],"plane":"observable"},
+    {"id":"migration","label":"Migration / Diaspora","owners":["migration_and_diaspora","population"],"plane":"observable"},
+    {"id":"history","label":"History / Time","owners":["history"],"plane":"historical"},
+    {"id":"relations","label":"Relationships","owners":["relationships"],"plane":"mixed with field-level provenance"},
+    {"id":"issues","label":"Entanglements / Issues","owners":["issues","entanglements"],"plane":"mixed with field-level provenance"},
+    {"id":"north","label":"North / Programme","owners":["world-relational-map","north-programme"],"plane":"interpretive + policy"},
+    {"id":"tim","label":"Tim / Project Canon","owners":["Tim statement corpus","Potatoverse"],"plane":"project-canon"}
+  ],
+  "performance_strategy": {
+    "0_to_5000_features": "GeoJSON in browser is acceptable for prototype/static GitHub Pages.",
+    "5000_to_100000_features": "Filter by zoom/country and load datasets on demand; consider binary/worker preprocessing.",
+    "100000_plus": "Move large layers to vector tiles or server/prebuilt tile archives; use deck.gl or optimized WebGL layers for high-volume flows.",
+    "rule": "Do not load the entire future world graph into the browser just because it exists in the repository."
+  },
+  "simulation_boundary": "Observed state, interpretation, project canon and hypothetical scenario are separate modes. Scenario changes may never overwrite observation records.",
+  "debt_boundary": "Ordinary physical debt is mapped from documented liabilities. Tim-claimed/karmic amounts remain a separate claim/project overlay unless independently established by a recognized instrument.",
+  "connections": [
+    "data/countries-blueprint.json",
+    "data/atlas-manifest.json",
+    "data/nodes.json",
+    "data/relationships.json",
+    "data/global-graph-bridge.json",
+    "data/religious-layer-map.json",
+    "data/world-relational-map.json",
+    "data/world-map-runtime.json",
+    "data/world-map-polygon-runtime.json",
+    "data/world-map-3d-runtime.json",
+    "world-map/index.html",
+    "world-map/3d.html"
+  ]
+}
