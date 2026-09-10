@@ -58,7 +58,30 @@ jobs:
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
         run: python scripts/audit_web.py
+      - name: Validate science source syntax
+        run: |
+          python -m json.tool knowledge/science/science-model-registry.json >/dev/null
+          node --check science/science.js
       - name: Build static site
         run: python scripts/build_site.py
+      - name: Compile Science Atlas
+        run: python scripts/build_science_catalog.py
+      - name: Verify Science Atlas model and record layers
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          registry = json.loads(Path('knowledge/science/science-model-registry.json').read_text(encoding='utf-8'))
+          source = sorted((Path('knowledge') / 'science').glob('*.json'))
+          catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
+          page = Path('_site/science/index.html').read_text(encoding='utf-8')
+          assert len(registry.get('models', [])) >= 10
+          assert catalog['count'] == len(source)
+          assert page.count('class="catalog-card"') == len(source)
+          assert 'id="model-grid"' in page
+          assert 'science-model-registry.json' in page
+          assert 'r(θ) = a e<sup>bθ</sup>' in page
+          print(f"Science Atlas: {len(registry['models'])} flagship models, {len(source)} source records")
+          PY
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
