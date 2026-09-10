@@ -1,9 +1,11 @@
 {
   "id":"galactic-toroidal-axis-recovery",
   "title":"Galactic / Toroidal / North-Axis Model — Conversation Recovery and Astronomy Boundary",
-  "updated":"2026-09-09",
-  "status":"primary celestial-symbolic motifs + conversation-developed macro/micro synthesis; physical claims audited",
-  "purpose":"Recover the celestial branch in which North, Sirius, Regulus, the Milky Way, Sagittarius A*, toroidal language, Sun/Earth/Moon/Saturn roles and macro/micro body analogies were coupled to the Axis without presenting symbolic mappings as observational astrophysics.",
+  "version":"2.0.0",
+  "updated":"2026-09-11",
+  "status":"primary celestial-symbolic motifs + conversation-developed macro/micro synthesis + quantitative astronomy audit",
+  "purpose":"Recover the celestial branch in which North, Sirius, Regulus, the Milky Way, Sagittarius A*, toroidal language, Sun/Earth/Moon/Saturn roles and macro/micro body analogies were coupled to the Axis while providing a reproducible coordinate framework that prevents symbolic mappings from being mistaken for observational astrophysics.",
+  "measurement_companion":"knowledge/science/celestial-axis-coordinate-measurement-model.json",
   "primary_project_attestations":[
     "By 31 March 2026, public project language explicitly says: rule from the north, Father of the axis, point to Sirius/the Dog Star; the Son is associated with Regulus/Lion imagery.",
     "Public 2026 language repeatedly couples North/North-of-North, Axis, Ladder and Door before the later technical 11D synthesis.",
@@ -23,26 +25,61 @@
     "Large-scale cosmic-web filaments and the thalamus can be compared visually or graph-theoretically, but no evidence shows they are exact scaled copies or physically coupled.",
     "Planets do not occupy different spacetime dimensions. Sun/Earth/Moon/Saturn dimensional assignments are project symbolism."
   ],
+  "coordinate_discipline":{
+    "types":["geographic","geomagnetic","equatorial/ICRS","ecliptic","galactic","local horizon","project-symbolic North"],
+    "rule":"Never call two directions aligned until both are transformed into a common coordinate frame and epoch and their angular separation is computed.",
+    "celestial_vector":"n(alpha,delta)=(cos delta cos alpha, cos delta sin alpha, sin delta)",
+    "separation":"cos psi=sin delta_1 sin delta_2+cos delta_1 cos delta_2 cos(alpha_1-alpha_2)",
+    "axis_case":"For an undirected physical axis use psi_axis=acos(|a dot n|).",
+    "local_pointing":"Local azimuth/altitude additionally requires observer position and time; do not infer them from account metadata or present location when reconstructing historical claims."
+  },
   "sirius_regulus_branch":{
-    "status":"primary project celestial orientation motif, quantitative geometry unrecovered",
+    "status":"primary project celestial orientation motif; quantitative geometry now has a measurement framework but the historical intended Axis definition remains unrecovered",
     "recovered":"Sirius is explicitly named as the Dog Star and a direction the Axis 'points to'; Regulus is explicitly associated with the Son/Lion in public project wording.",
-    "needed_for_geometry":["observer location and epoch","coordinate system: equatorial/ecliptic/galactic/local horizon","right ascension/declination or galactic longitude/latitude","definition of the Axis vector","angular separation calculation"],
-    "rule":"Until an original calculation is found, do not infer that the terrestrial rotation axis, galactic axis, Sirius or Regulus are collinear."
+    "needed_for_historical_geometry":["observer location and epoch if local pointing was intended","coordinate system: equatorial/ecliptic/galactic/local horizon","definition of the Axis vector","historical tolerance or what 'points to' was intended to mean"],
+    "j2000_sanity_check":{"sirius":"SIMBAD ICRS J2000 RA 06 45 08.91728, Dec -16 42 58.0171","regulus":"SIMBAD ICRS J2000 RA 10 08 22.31099, Dec +11 58 01.9516","derived":"Great-circle separation Sirius↔Regulus is approximately 57.83 degrees using these catalog coordinates. Distances from the north celestial pole are approximately 106.72 degrees and 78.03 degrees respectively.","meaning":"Neither is collinear with the north celestial pole in this specific physical-coordinate sense. This says nothing against symbolic Dog/Lion/North correspondences; it simply separates them from astronomical alignment."},
+    "rule":"Until the original Axis definition is recovered, do not infer that the terrestrial rotation axis, galactic axis, Sirius or Regulus are collinear."
+  },
+  "best_fit_axis_method":{
+    "problem":"If a predeclared set of celestial targets is claimed to share an undirected axis, estimate the axis rather than drawing one by eye.",
+    "matrix":"M=sum_i w_i n_i n_i^T",
+    "solution":"The unit eigenvector associated with the largest eigenvalue of M maximizes sum_i w_i(a dot n_i)^2.",
+    "residuals":"psi_i=acos(|a dot n_i|)",
+    "null_rule":"For isotropically random directions, proximity within psi_0<=90 degrees of either pole of a pre-specified undirected axis has probability 1-cos(psi_0); correct for search multiplicity if many targets/axes/tolerances were tried.",
+    "project_value":"This turns Axis alignment into residual geometry and an explicit null model rather than retrospective line drawing."
   },
   "torus_recovery_target":{
     "historical_hint":"The repository's older recovery list explicitly remembers an unresolved '115,000-mile torus calculation'.",
     "current_result":"Exact 115,000-mile formula/input geometry was not recovered from the searched Library transcript/export in this pass.",
-    "do_not_reconstruct_silently":"Many circles/tori could yield a 115,000-mile length. Preserve the number as an unresolved historical target until radius/diameter/circumference and physical object are recovered.",
+    "torus_parameters":"A ring torus requires major radius R and minor radius r. Surface area A=4 pi^2 R r and volume V=2 pi^2 R r^2.",
+    "underdetermination":"One remembered length cannot reconstruct a torus. Even if 115,000 miles were the major circumference C_major=2 pi R, it would determine R but leave r, aspect ratio R/r, area and volume unknown.",
+    "do_not_reconstruct_silently":"Preserve the number as an unresolved historical target until radius/diameter/circumference and physical object are recovered.",
     "future_search_terms":["115000","115,000","115k","miles","torus","toroid","donut","circumference","major radius","minor radius","Milky Way geometry"]
   },
   "precession_eye_target":{
-    "status":"unrecovered exact calculation",
-    "physical_neighbor":"Earth's axial precession has a period of about 25,700-26,000 years, but numerical resemblance to the project's Eye/Axis imagery does not establish a causal or prophetic relation.",
-    "archive_rule":"Keep 26,000 light-years to Galactic Center and ~26,000-year axial precession as different quantities with different dimensions; do not merge them because the numbers are similar."
+    "status":"unrecovered exact project calculation",
+    "physical_neighbor":"Earth's axial precession has a timescale of roughly 25.8 kyr; precision historical reconstruction requires epoch-dependent precession/nutation standards rather than using one fixed pole.",
+    "dimension_rule":"A period [time] and distance [length] cannot be equated because their bare numerical values resemble one another in chosen units.",
+    "archive_rule":"Keep roughly 26,000 light-years to the Galactic Center and roughly 26,000-year axial precession as different quantities with different dimensions; do not merge them because the numbers are similar.",
+    "measurement_rule":"If the Eye/Axis idea predicts a historical sky relation, compute target-pole separation at the actual epoch using standard astrometry."
   },
   "sun_face_target":{
     "status":"repository remembers a Sun-face geometry calculation, exact primary equation not recovered",
-    "rule":"Do not invent facial geometry, solar orientation, heliographic coordinates or a ratio without the original source."
+    "rule":"Do not invent facial geometry, solar orientation, heliographic coordinates or a ratio without the original source.",
+    "future_measurement":"If recovered, convert every claimed landmark/direction into a declared angular coordinate and compare against an explicit null geometry."
   },
-  "connections":["axis-11d-sun-spiral-time-symmetry-recovery","mirror-vector-dimensional-collapse-recovery","eleven-dimensional-axis-door-dual-spiral-recovery","celestial-orbits-particles-cmb-expansion-wave-004","funnel-gradient-attractor-regeneration-atlas","science-master-index"]
+  "scientific_conclusions":[
+    "Physical North is not one universal vector: geographic, magnetic, celestial, ecliptic and galactic coordinate systems answer different questions.",
+    "The phrase 'points to Sirius' is scientifically incomplete until an Axis vector, frame, epoch and tolerance are defined.",
+    "The J2000 sanity check shows why symbolic correspondence and physical collinearity must remain separate: Sirius and Regulus are not near the north celestial pole in equatorial coordinates.",
+    "Torus reconstruction illustrates parameter identifiability: one remembered measurement cannot determine a two-radius geometry.",
+    "The celestial branch gains credibility by making negative results and non-alignments first-class outcomes rather than forcing every motif into physical correspondence."
+  ],
+  "sources":[
+    {"topic":"Sirius coordinates","url":"https://simbad.cds.unistra.fr/simbad/sim-id?Ident=Sirius"},
+    {"topic":"Regulus coordinates","url":"https://simbad.cds.unistra.fr/simbad/sim-basic?Ident=Regulus"},
+    {"topic":"great-circle coordinate separation","url":"https://docs.astropy.org/en/stable/coordinates/matchsep.html"},
+    {"topic":"IAU precession/nutation standards implementation","url":"https://www.iausofa.org/current-software"}
+  ],
+  "connections":["axis-11d-sun-spiral-time-symmetry-recovery","mirror-vector-dimensional-collapse-recovery","eleven-dimensional-axis-door-dual-spiral-recovery","celestial-orbits-particles-cmb-expansion-wave-004","funnel-gradient-attractor-regeneration-atlas","science-master-index","celestial-axis-coordinate-measurement-model","integrated-scientific-architecture","model-testing-protocol"]
 }
