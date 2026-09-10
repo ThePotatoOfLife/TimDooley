@@ -12,18 +12,7 @@
     return m?decodeURIComponent(m[1]):null;
   }
 
-  function ensureStyle(name,key){
-    if(document.querySelector(`link[data-potato-${key}]`))return;
-    const css=document.createElement('link');
-    css.rel='stylesheet';
-    css.href=new URL(name,scriptBase).href;
-    css.dataset[`potato${key.replace(/-([a-z])/g,(_,c)=>c.toUpperCase())}`]='1';
-    document.head.appendChild(css);
-  }
-
   function ensureTimeline(){
-    ensureStyle('timeline.css','timeline');
-    ensureStyle('timeline-enhancements.css','timeline-v2');
     if(document.querySelector('script[data-potato-timeline]'))return;
     const timeline=document.createElement('script');
     timeline.src=new URL('timeline.js',scriptBase).href;
