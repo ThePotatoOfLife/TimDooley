@@ -7,21 +7,28 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 CAL = ROOT / "data" / "atlas-mathematical-calibration.json"
+RUNTIME = ROOT / "data" / "world-map-3d-runtime.json"
 APP = ROOT / "world-map" / "3d-app.js"
+
+
+def load(path: Path, errors: list[str]) -> dict:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception as exc:
+        errors.append(f"invalid JSON {path.relative_to(ROOT)}: {exc}")
+        return {}
 
 
 def main() -> int:
     errors: list[str] = []
-    try:
-        data = json.loads(CAL.read_text(encoding="utf-8"))
-    except Exception as exc:
-        print(f"ATLAS MATH CALIBRATION FAILED\n- invalid calibration JSON: {exc}")
-        return 1
-
-    app = APP.read_text(encoding="utf-8", errors="replace")
+    data = load(CAL, errors)
+    runtime = load(RUNTIME, errors)
+    app = APP.read_text(encoding="utf-8", errors="replace") if APP.exists() else ""
 
     if data.get("status") != "active design/calibration contract":
         errors.append("calibration contract must be active")
+    if runtime.get("mathematical_calibration_contract") != "data/atlas-mathematical-calibration.json":
+        errors.append("renderer runtime must point to the canonical mathematical calibration contract")
 
     adopted = data.get("adopted_now", {})
     for key in ("trace_levels", "semantic_hub_phyllotaxis", "axis_structural_flow", "project_logarithmic_spiral"):
@@ -33,12 +40,10 @@ def main() -> int:
         if key not in future:
             errors.append(f"missing future calibration lens: {key}")
 
-    # Golden-angle layout is an implementation decision, not merely prose.
     for token in ("const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5))", "const a=i*GOLDEN_ANGLE", "Math.sqrt(i+1)"):
         if token not in app:
             errors.append(f"semantic-hub phyllotaxis implementation missing: {token}")
 
-    # Compare lifecycle cleanup should leave no hidden comparison state after Done.
     leave_start = app.find("window.leaveCompare=")
     if leave_start < 0:
         errors.append("leaveCompare handler missing")
@@ -52,7 +57,6 @@ def main() -> int:
         if token not in app:
             errors.append(f"compare lifecycle hardening missing: {token}")
 
-    # Structural invariants are machine-readable so validation does not depend on prose wording.
     invariants = data.get("invariants", {})
     expected_invariants = {
         "north_gate_arc_degrees": 42,
@@ -68,6 +72,13 @@ def main() -> int:
     for key, expected in expected_invariants.items():
         if invariants.get(key) != expected:
             errors.append(f"calibration invariant {key} must be {expected!r}")
+
+    planes = runtime.get("mathematical_planes", {})
+    for plane in ("geography", "topology", "hierarchy", "time", "flow"):
+        if not planes.get(plane):
+            errors.append(f"renderer runtime does not document mathematical plane: {plane}")
+    if runtime.get("axis_mode", {}).get("north_gate_arc_degrees") != 42:
+        errors.append("renderer runtime and mathematical contract disagree on North-gate angle")
 
     hodge = future.get("hodge_edge_flow", {})
     gate = set(hodge.get("promotion_gate", []))
@@ -88,7 +99,7 @@ def main() -> int:
     print("- Trace levels: graph geodesic / BFS")
     print("- Semantic hubs: golden-angle phyllotaxis")
     print("- North gate: 42° visual geometry only")
-    print("- Axis: structural flow; Time remains orthogonal")
+    print("- Renderer planes: geography / topology / hierarchy / time / gated flow")
     print("- Future dense graph: spectral/hyperbolic candidates")
     print("- Future quantitative circulation: Hodge decomposition only after directed-flow gates")
     print(f"Errors: {len(errors)}")
