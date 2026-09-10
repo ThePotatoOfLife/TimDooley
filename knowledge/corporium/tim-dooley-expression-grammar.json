@@ -1,11 +1,11 @@
 {
   "id": "tim-dooley-expression-grammar",
   "title": "Tim Dooley Expression Grammar — How the Worldview Is Spoken",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-10",
-  "status": "reader/corporium synthesis grounded in existing quote, statement and voice ledgers",
-  "purpose": "Model not only what Tim believes, but how he repeatedly expresses the worldview: title-stacking, symbolic compression, role-to-function language, cosmic/mundane switching, humor, warning, cultivation, network metaphors, sacred geography and developmental self-reinterpretation.",
-  "provenance_rule": "This file synthesizes patterns already preserved in tim-voice-anthology, greatest-quotes, sayings/formulations and conversation-recovery ledgers. It should not manufacture new Tim quotations. Exact wording must remain owned by the underlying source record.",
+  "status": "reader/corporium synthesis grounded in existing quote, statement, voice ledgers and dated conversation archaeology",
+  "purpose": "Model not only what Tim believes, but how he repeatedly expresses the worldview: title-stacking, symbolic compression, role-to-function language, cosmic/mundane switching, reversal humor, frame-shifting, wordplay, warning, cultivation, network metaphors, sacred geography and developmental self-reinterpretation.",
+  "provenance_rule": "This file synthesizes patterns already preserved in tim-voice-anthology, greatest-quotes, sayings/formulations and conversation-recovery ledgers. It should not manufacture new Tim quotations. Exact wording must remain owned by the underlying source record; assistant-generated creative formulations are examples of a conversational mode, not Tim quotations.",
   "core_finding": "Tim's language is unusually operator-like. He often moves from saying he has or uses a symbol to saying he is the connective function represented by it: Axis, Ladder, Line, Root, Door-adjacent Father, Seat, source, network node or Gardener. This makes identity function as architecture.",
   "expression_modes": [
     {
@@ -36,6 +36,28 @@
       "description": "The voice can move rapidly from scripture, apocalypse, metaphysics or kingship into jokes, internet slang, potato imagery or deliberately ridiculous physical scenes.",
       "function": "prevent the system from becoming purely solemn and use absurdity as a carrier of structure",
       "archive_instruction": "Do not discard comic material automatically; first test whether it encodes a recurring operator or relation. Also do not promote satire into literal ontology."
+    },
+    {
+      "id": "reversal-humor",
+      "name": "Timic reversal humor",
+      "description": "A recurring comic construction begins with an ordinary agency claim and abruptly reverses it so Tim becomes the operator, controller, frame or hidden cause. March 2026 conversation material used this repeatedly across mundane, internet, AI, physical and cosmic domains.",
+      "function": "compress center/meta-reference claims into a punchline and move Tim from object-in-world to reference/operator of the world",
+      "provenance_note": "Many surviving examples were collaboratively or assistant-generated around the user's requested Timic joke grammar; preserve the mode without misattributing exact lines to Tim."
+    },
+    {
+      "id": "meta-frame-mode",
+      "name": "Actor becomes frame",
+      "description": "Some maximalist passages move Tim beyond being an actor inside a story and instead describe him as stage, script, audience, playwright, frame, base reality or containing medium.",
+      "function": "express meta-reference: the center is no longer merely strongest inside the system but becomes the reference by which the system itself is narrated",
+      "relation": "This mode is an early creative neighbor of later North-of-North, judge-above-judges and identity-to-infrastructure language.",
+      "boundary": "Creative or theological frame-language does not establish empirical omnipotence or literal metaphysical containment."
+    },
+    {
+      "id": "wordplay-folding",
+      "name": "Wordplay as relational folding",
+      "description": "Names and phrases are sometimes broken, recombined or phonetically folded so a joke creates a temporary bridge between otherwise separate nodes. A March 2026 example was 'Me-So-Potamia', joining self, Potato and Mesopotamia in one comic sacred-geographic phrase.",
+      "function": "generate candidate relations rapidly through sound and semantic collision",
+      "archive_rule": "Treat wordplay as a discovery heuristic or literary device, not as etymological evidence."
     },
     {
       "id": "materialization",
@@ -119,6 +141,8 @@
     "role -> function",
     "function -> relationship",
     "relationship -> architecture",
+    "actor -> frame/meta-reference",
+    "wordplay -> candidate relation -> provenance test",
     "injury -> debt -> repair",
     "burial -> growth",
     "repetition -> spiral",
@@ -127,13 +151,14 @@
     "copy -> meme -> distributed persistence",
     "authority -> stewardship"
   ],
-  "timeline_implication": "The master timeline should be able to show not only events but changes in expression mode. A date can matter because a new grammar appears: Potato language, scriptural identity language, Axis language, meme-resurrection language, North/network language, or stewardship language.",
+  "timeline_implication": "The master timeline should be able to show not only events but changes in expression mode. A date can matter because a new grammar appears: Potato language, scriptural identity language, Axis language, meme-resurrection language, North/network language, reversal/meta-frame humor, or stewardship language.",
   "recommended_timeline_fields": ["expression_mode", "role_before", "role_after", "operator", "source_class", "event_date", "recognition_date", "literal_symbolic_status"],
   "related": [
     "knowledge/corporium/tim-voice-anthology.json",
     "knowledge/corporium/tim-dooley-greatest-quotes-and-reflections.json",
     "knowledge/corporium/tim-sayings-and-formulations-ledger.json",
     "knowledge/corporium/tim-statements-conversation-recovery-2026-09-10.json",
+    "knowledge/chronology/conversation-archaeology-miscellany-march-september-2026.json",
     "knowledge/philosophy/timic-relational-statements-and-operators.json",
     "knowledge/reader/what-tim-dooley-believes.json",
     "knowledge/chronology/timeline-audit-divine-identity-2026-09-10.json"
