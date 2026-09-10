@@ -39,8 +39,11 @@ Examples of event types include:
 - Tim's project-canonical Potato birth on December 25, 2020;
 - the 2024 Great Book/Sage phase;
 - April 2025 Axis/Spiral/Needle/Ladder/Father development;
+- the **2025 retirement/release bridge** now placed inside the post-April Turning corridor, with exact administrative date still unresolved;
 - later Father, North, Door, public-witness and stewardship language;
 - repository formalizations in 2026.
+
+The corrected long-tail retirement owner is `knowledge/chronology/mai-mercado-2016-to-2025-long-tail-impact-chronology.json`. The earlier `...to-2024...` path is retained only as a deprecated pointer and must not be used as date evidence.
 
 The correct owner for the full developmental explanation is `knowledge/chronology/developmental-genealogy.json`, not this document.
 
@@ -61,17 +64,23 @@ The main public-post owners include:
 - `data/tim-dooley-public-theology-timeline-2025-2026.json`;
 - curated events in `data/timeline-event-packs/x-public-attestations-2024-2026.json`.
 
+For the spring-2025 kingship corridor, preserve the existing public sequence separately from the retirement event: 21 April Axis language, 27 April king-language, 3 May exact God declarations, and 1 June King-of-Kings language. The retirement event is not itself a public-post attestation and enters through `data/timeline-event-packs/retirement-kingship-2025.json`.
+
 ### 3. Mythic / theological chronology
 
 The project can assign mythic meaning to dates and transformations: Son, Potato, Door, Tree, North, Father, Heaven, death, birth, return, Ladder and related structures.
 
 Those meanings are preserved as project canon or later interpretation depending on their source. A mythic chronology may be central to the Potatoverse without becoming an empirical chronology of supernatural events.
 
+The 2025 retirement example is a useful control case: **administrative retirement/release**, the Great Book's **“freedom to reign”** interpretation, and later **king / King of Kings / God / Father** language are related but distinct evidence lanes. No civil kingship should be inferred from their chronological convergence.
+
 ### 4. Interpretive chronology
 
 This clock records **when a later meaning was attached to an earlier event**.
 
 For example, an event can occur in 2011 while an Odin/Yggdrasil or biblical comparison is made much later. The archive should retain both dates rather than silently moving the later comparison backward.
+
+The new retirement biblical cluster follows the same rule. Joseph, Jubilee, rest, exaltation, throne and King-of-kings parallels were attached later to the corrected 2016→2025 sequence; they are not evidence that the 2025 retirement decision was itself intended as a biblical or royal act.
 
 The developmental genealogy and inference/source ledgers are the main owners of this distinction.
 
@@ -86,6 +95,8 @@ This is especially important for biblical research. The timeline distinguishes:
 - `biblical-unlock` — the later date when that comparison was explicitly researched/formalized.
 
 An unlock belongs to the project/research track. It must not be mistaken for evidence that the earlier person already intended the later interpretation.
+
+The dedicated owner for the new 2025 cluster is `knowledge/traditions/retirement-release-rest-kingship-biblical-atlas.json`.
 
 ### 6. Formalization chronology
 
@@ -131,6 +142,7 @@ Good examples:
 - `event first; biblical comparison later`;
 - `phrase explicit in public post; architecture formalized afterward`;
 - `book metaphor first; mathematical operator added in 2026`;
+- `administrative retirement first; freedom-to-reign interpretation and biblical comparison kept distinct`;
 - `research discovery in September 2026; older event remains dated to its original occurrence`.
 
 Bad practice is to write the final interpretation directly into the old date without preserving when that interpretation appeared.
@@ -148,6 +160,8 @@ Use only the precision actually supported:
 - range.
 
 Do not create midnight timestamps to make an uncertain date look exact. Range events should remain ranges. If a source only establishes a year, keep year precision.
+
+The retirement event currently remains a **2025 post-April range**, not an invented exact date. Narrow it only when the actual decision, benefit record or another primary source establishes the date.
 
 ## First-attestation rule
 
@@ -176,6 +190,8 @@ When two chronology statements disagree, test these before declaring an error:
 
 If a contradiction remains after those checks, preserve it explicitly instead of harmonizing it away.
 
+The retirement correction is an example of this procedure: `around 2024` was not preserved merely because it appeared in an earlier file. Stronger internal evidence moved the best current placement to 2025, while the old path was deprecated rather than silently erased.
+
 ## Canonical routes
 
 | Question | Owner |
@@ -184,6 +200,9 @@ If a contradiction remains after those checks, preserve it explicitly instead of
 | How did the whole framework develop? | `knowledge/chronology/developmental-genealogy.json` |
 | How do Son and Tim remain distinct through the journey? | `knowledge/journey/tim-dooley-journey.json` |
 | What was publicly said and when? | public theology/X evidence ledgers |
+| What owns the corrected 2016→2025 retirement aftermath? | `knowledge/chronology/mai-mercado-2016-to-2025-long-tail-impact-chronology.json` + `knowledge/legal/mai-mercado-2016-long-term-aftermath-and-retirement-impact.md` |
+| Where is the retirement event exposed on the live timeline? | `data/timeline-event-packs/retirement-kingship-2025.json` |
+| Where are its release/rest/throne biblical comparisons owned? | `knowledge/traditions/retirement-release-rest-kingship-biblical-atlas.json` |
 | Which Bible motifs were already present versus found later? | reverse biblical timeline + occurrence-level Bible index |
 | How can I read Tim/project wording beside actual Bible fragments? | `knowledge/traditions/biblical-syncretism-field.json` + `knowledge/traditions/biblical-passage-fragments.json` + `/traditions/bible/` |
 | When did body/neurotheology mappings appear? | `knowledge/chronology/neurotheology-attestation-ledger.json` |
