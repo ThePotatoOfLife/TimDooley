@@ -1,0 +1,80 @@
+{
+  "id": "axis-depths",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "purpose": "Project-symbolic vertical navigation model anchored at the North / Axis Gate. Depth is conceptual, not geographic elevation.",
+  "boundary": "Only level 0 is ordinary geographic Earth. Positive and negative levels are project-symbolic interpretive planes. They do not describe physical altitude, underground geography, territorial sovereignty, or empirical cosmology.",
+  "anchor": {
+    "id": "north-axis-gate",
+    "label": "North / Axis Gate",
+    "geographic_reference": "High Arctic / North Pole visual threshold north of Greenland",
+    "relation": "Earth-side anchor for movement between project-symbolic planes"
+  },
+  "levels": [
+    {
+      "level": -3,
+      "id": "subterrain",
+      "label": "Subterrain",
+      "direction": "down",
+      "symbol": "depth / hidden substrate",
+      "description": "Lowest current project-symbolic depth: hidden systems, buried context and underground structure. Not literal subterranean geography.",
+      "tone": "charcoal"
+    },
+    {
+      "level": -2,
+      "id": "swamp",
+      "label": "Swamp / Subculture",
+      "direction": "down",
+      "symbol": "entanglement / opacity / degraded relations",
+      "description": "Project diagnostic layer for subculture, harassment, opacity, extraction and broken relational systems. It is a metaphorical mechanism layer, not a label for peoples or nations.",
+      "tone": "mud"
+    },
+    {
+      "level": -1,
+      "id": "roots-of-ash",
+      "label": "Roots of Ash",
+      "direction": "down",
+      "symbol": "roots / memory / buried causes",
+      "description": "The downward root system of the Axis Tree: chronology, causes, ancestry, memory, buried records and unresolved origins.",
+      "tone": "root"
+    },
+    {
+      "level": 0,
+      "id": "earth-north-gate",
+      "label": "Earth / North Gate",
+      "direction": "center",
+      "symbol": "threshold",
+      "description": "Ordinary geographic Earth remains visible here. The North bubble is the threshold object linking geography to the project-symbolic vertical axis.",
+      "tone": "earth"
+    },
+    {
+      "level": 1,
+      "id": "spiral-ladder",
+      "label": "Spiral Ladder",
+      "direction": "up",
+      "symbol": "ladder / winding staircase / ascent",
+      "description": "The first upward project-symbolic transition: Jacob's-ladder / spiral-stair / Axis movement connecting Earth to higher relational integration.",
+      "tone": "ice"
+    },
+    {
+      "level": 2,
+      "id": "garden",
+      "label": "Garden / Tree of Worlds",
+      "direction": "up",
+      "symbol": "garden / Yggdrasil / world tree",
+      "description": "A higher project-symbolic plane where the Axis appears as Tree of Worlds: roots below, trunk through the threshold, branches and rooms above.",
+      "tone": "garden"
+    },
+    {
+      "level": 3,
+      "id": "north-of-north",
+      "label": "North of North / Heaven",
+      "direction": "up",
+      "symbol": "summit / heaven / source",
+      "description": "Highest current navigation plane: North of North, Heaven and source-facing project canon. It is intentionally non-geographic and receives no invented Earth coordinate.",
+      "tone": "heaven"
+    }
+  ],
+  "navigation_rule": "Use the North Gate as the transition anchor. Upward travel follows spiral/ladder/tree imagery; downward travel follows roots/ash/swamp/subterrain imagery. Additional levels may be added only when a durable project concept warrants them.",
+  "design_rule": "Do not create filler levels to satisfy numerology. The current seven-state ladder is a usability scaffold, not a sacred number claim."
+}
