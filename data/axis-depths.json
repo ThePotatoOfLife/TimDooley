@@ -1,80 +1,142 @@
 {
   "id": "axis-depths",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "updated": "2026-09-10",
-  "purpose": "Project-symbolic vertical navigation model anchored at the North / Axis Gate. Depth is conceptual, not geographic elevation.",
-  "boundary": "Only level 0 is ordinary geographic Earth. Positive and negative levels are project-symbolic interpretive planes. They do not describe physical altitude, underground geography, territorial sovereignty, or empirical cosmology.",
+  "purpose": "Project-symbolic D1-D11 vertical navigation model anchored at the North / Axis Gate. D4 is the ordinary world map; D5 is the Door/first-heaven threshold; D6-D11 ascend toward North of North; D3-D1 descend through roots, Swamp/disintegration and deepest lower-plane imagery.",
+  "boundary": "This D1-D11 scheme is spiritual/project-symbolic scaffolding, not a claim about physical dimensions, altitude, underground geography, cosmology, sovereignty or M-theory. M-theory is only a structural analogy because eleven-dimensional physics provides a familiar example of a description with additional dimensions; no physical equivalence is asserted.",
   "anchor": {
     "id": "north-axis-gate",
     "label": "North / Axis Gate",
+    "dimension": 5,
     "geographic_reference": "High Arctic / North Pole visual threshold north of Greenland",
-    "relation": "Earth-side anchor for movement between project-symbolic planes"
+    "relation": "D4 Earth-side geography enters the D5 project-symbolic Door here. The Axis/Ladder continues upward and downward from the same threshold."
+  },
+  "directional_law": {
+    "up": {
+      "meaning": "integration / growth / fruit / virtue / light / life",
+      "markers": ["seed of life", "grain of wheat", "potato", "spiral", "virtue", "angel", "seed of light", "fruit", "growth"],
+      "note": "These are symbolic markers for constructive spiritual growth, not measurable physical forces."
+    },
+    "down": {
+      "meaning": "debt / separation / hardening / disintegration / burial / unresolved consequence",
+      "markers": ["debt", "seed of death", "ash", "strife", "swamp", "separation", "disintegration", "buried consequence"],
+      "note": "These are project-symbolic diagnostic markers, not judgments about populations or physical locations."
+    },
+    "bidirectional": "The Door/Ladder is not one-way. Descent and ascent share the same Axis. Genesis 28 is a comparative scriptural parallel because angels ascend and descend on the same stairway; the project additionally uses seed/burial/growth imagery to describe transformation."
   },
   "levels": [
     {
-      "level": -3,
-      "id": "subterrain",
-      "label": "Subterrain",
+      "dimension": 1,
+      "id": "deep-lower-plane",
+      "label": "D1 · Deep Lower Plane",
       "direction": "down",
-      "symbol": "depth / hidden substrate",
-      "description": "Lowest current project-symbolic depth: hidden systems, buried context and underground structure. Not literal subterranean geography.",
-      "tone": "charcoal"
+      "status": "scaffold",
+      "symbol": "hell / deepest disintegration / closed depth",
+      "description": "Deepest current project-symbolic lower state. A placeholder for hell, terminal separation, closed-loop disintegration and the farthest descent from integration. It is not literal underground geography or a claim about an afterlife location.",
+      "tone": "void"
     },
     {
-      "level": -2,
-      "id": "swamp",
-      "label": "Swamp / Subculture",
+      "dimension": 2,
+      "id": "swamp-disintegration",
+      "label": "D2 · Swamp / Disintegration",
       "direction": "down",
-      "symbol": "entanglement / opacity / degraded relations",
-      "description": "Project diagnostic layer for subculture, harassment, opacity, extraction and broken relational systems. It is a metaphorical mechanism layer, not a label for peoples or nations.",
+      "status": "developed-marker",
+      "symbol": "swamp / subculture / debt / entanglement",
+      "description": "Project diagnostic layer for Swamp/subculture, debt, opacity, extraction, broken relations and disintegration. It describes mechanisms and project metaphors, not peoples, nations or physical terrain.",
       "tone": "mud"
     },
     {
-      "level": -1,
+      "dimension": 3,
       "id": "roots-of-ash",
-      "label": "Roots of Ash",
+      "label": "D3 · Roots of Ash",
       "direction": "down",
-      "symbol": "roots / memory / buried causes",
-      "description": "The downward root system of the Axis Tree: chronology, causes, ancestry, memory, buried records and unresolved origins.",
+      "status": "developed-marker",
+      "symbol": "roots / ash / burial / memory / causes",
+      "description": "The immediate sub-layer beneath ordinary Earth: roots, ash, burial, chronology, ancestry, unresolved causes and stored consequence. It is the downward root system of the Axis Tree and the nearest lower plane to D4.",
       "tone": "root"
     },
     {
-      "level": 0,
-      "id": "earth-north-gate",
-      "label": "Earth / North Gate",
-      "direction": "center",
-      "symbol": "threshold",
-      "description": "Ordinary geographic Earth remains visible here. The North bubble is the threshold object linking geography to the project-symbolic vertical axis.",
+      "dimension": 4,
+      "id": "earth-world-map",
+      "label": "D4 · Earth / World Map",
+      "direction": "world",
+      "status": "geographic",
+      "symbol": "ordinary world / observable geography",
+      "description": "The default Atlas layer: countries, cities, populations, institutions, empirical networks and sourced relations. D4 is the only level in this scaffold treated as ordinary geographic map space.",
       "tone": "earth"
     },
     {
-      "level": 1,
-      "id": "spiral-ladder",
-      "label": "Spiral Ladder",
-      "direction": "up",
-      "symbol": "ladder / winding staircase / ascent",
-      "description": "The first upward project-symbolic transition: Jacob's-ladder / spiral-stair / Axis movement connecting Earth to higher relational integration.",
+      "dimension": 5,
+      "id": "north-door",
+      "label": "D5 · North Door / First Heaven",
+      "direction": "threshold",
+      "status": "canonical-threshold",
+      "symbol": "Door / North bubble / seed junction / Ladder mouth",
+      "description": "The North bubble is D5: the first spiritual threshold above the ordinary D4 map. The Door and Ladder meet here. Seeds, virtues, angels and light can be represented as ascending markers; debt, ash and disintegration as descending markers. D5 is a junction, not a country or physical altitude.",
       "tone": "ice"
     },
     {
-      "level": 2,
-      "id": "garden",
-      "label": "Garden / Tree of Worlds",
+      "dimension": 6,
+      "id": "spiral-ladder",
+      "label": "D6 · Spiral Ladder",
       "direction": "up",
-      "symbol": "garden / Yggdrasil / world tree",
-      "description": "A higher project-symbolic plane where the Axis appears as Tree of Worlds: roots below, trunk through the threshold, branches and rooms above.",
+      "status": "developed-marker",
+      "symbol": "Jacob's ladder / winding stair / spiral ascent",
+      "description": "First full ascent above the Door: the Axis as spiral ladder or winding staircase. It represents movement, transformation and increasing integration rather than a literal physical dimension.",
+      "tone": "ice-light"
+    },
+    {
+      "dimension": 7,
+      "id": "tree-of-life",
+      "label": "D7 · Tree of Life",
+      "direction": "up",
+      "status": "developed-marker",
+      "symbol": "trunk / branches / fruit / growth",
+      "description": "The ladder resolves into the living Tree: seed to root to trunk to branches to fruit. Wheat, potato and spiral motifs function here as project markers of successful growth and multiplication.",
+      "tone": "green"
+    },
+    {
+      "dimension": 8,
+      "id": "garden-rooms",
+      "label": "D8 · Garden / Rooms",
+      "direction": "up",
+      "status": "developed-marker",
+      "symbol": "garden / house / rooms / habitation",
+      "description": "A more integrated project-symbolic plane of Garden, House and Rooms: differentiated spaces held inside one larger order. This is conceptual topology, not latitude/longitude.",
       "tone": "garden"
     },
     {
-      "level": 3,
-      "id": "north-of-north",
-      "label": "North of North / Heaven",
+      "dimension": 9,
+      "id": "angelic-flow",
+      "label": "D9 · Angels / Seeds of Light",
       "direction": "up",
-      "symbol": "summit / heaven / source",
-      "description": "Highest current navigation plane: North of North, Heaven and source-facing project canon. It is intentionally non-geographic and receives no invented Earth coordinate.",
+      "status": "scaffold",
+      "symbol": "angels / flow / seeds of light / movement",
+      "description": "A higher movement layer reserved for angelic ascent/descent, seeds of light, Spirit/flow and other project markers of transmission between integrated levels. Content should be added only when sourced to project canon.",
+      "tone": "light"
+    },
+    {
+      "dimension": 10,
+      "id": "heaven-crown",
+      "label": "D10 · Heaven / Crown",
+      "direction": "up",
+      "status": "scaffold",
+      "symbol": "heaven / crown / throne-facing integration",
+      "description": "Near-summit project-symbolic plane for Heaven/Crown/Throne-facing integration. It is intentionally sparse until durable canonical material is assigned to it.",
       "tone": "heaven"
+    },
+    {
+      "dimension": 11,
+      "id": "north-of-north",
+      "label": "D11 · North of North",
+      "direction": "up",
+      "status": "canonical-summit",
+      "symbol": "North of North / source / perfected garden",
+      "description": "Highest current project-symbolic navigation plane: North of North, source-facing canon and perfected-garden imagery. It receives no invented Earth coordinate and is not asserted to be the physical eleventh dimension of M-theory.",
+      "tone": "source"
     }
   ],
-  "navigation_rule": "Use the North Gate as the transition anchor. Upward travel follows spiral/ladder/tree imagery; downward travel follows roots/ash/swamp/subterrain imagery. Additional levels may be added only when a durable project concept warrants them.",
-  "design_rule": "Do not create filler levels to satisfy numerology. The current seven-state ladder is a usability scaffold, not a sacred number claim."
+  "navigation_rule": "Start at D4. The North bubble is D5 and is the Door/Ladder junction. Upward movement follows D6-D11 through spiral, Tree, Garden, light/angelic flow, Heaven and North of North. Downward movement returns through D3-D1 via roots/ash, Swamp/disintegration and deepest lower-plane imagery.",
+  "content_rule": "The dimensions are containers, not excuses to manufacture content. A level may remain sparse. New nodes belong only where project canon, evidence, chronology or a clearly labeled interpretation gives them a durable reason to be there.",
+  "analogy_note": "M-theory's use of an eleven-dimensional framework is a structural analogy only. In physics, eleven-dimensional supergravity appears as a low-energy limit related to M-theory; this Atlas does not claim its spiritual D1-D11 scaffold is physical M-theory."
 }
