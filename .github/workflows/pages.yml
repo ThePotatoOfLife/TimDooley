@@ -33,6 +33,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Validate 3D world atlas source contract
+        run: python scripts/validate_world_map_3d.py
+
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
@@ -48,7 +51,7 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
-      - name: Verify manifest-driven archive, science hub, Tim ontology, and discovery layer
+      - name: Verify manifest-driven archive, science hub, world atlas, Tim ontology, and discovery layer
         shell: bash
         run: |
           set -euxo pipefail
@@ -71,6 +74,18 @@ jobs:
           test -f _site/robots.txt
           test -f _site/sitemap-index.xml
           test -f _site/sitemap-questions.xml
+
+          # The World Relational Atlas is a first-class deployed application surface.
+          test -f _site/world-map/index.html
+          test -f _site/world-map/3d.html
+          test -f _site/data/world-map-3d-runtime.json
+          test -f _site/data/world-relational-map.json
+          grep -q 'World Relational Atlas' _site/world-map/3d.html
+          grep -q 'id="compare"' _site/world-map/3d.html
+          grep -q 'id="relationType"' _site/world-map/3d.html
+          grep -q 'window.traceTo' _site/world-map/3d.html
+          grep -q 'compare-hubs' _site/world-map/3d.html
+          grep -q 'fitBounds' _site/world-map/3d.html
 
           # Science is a compiled public product, not merely copied source files.
           test -f _site/science/index.html
@@ -115,6 +130,9 @@ jobs:
           ! grep -q 'root.js' _site/index.html
           ! grep -q 'id="root-tree"' _site/index.html
           ! grep -q '<iframe' _site/index.html
+
+      - name: Validate built site shell
+        run: python scripts/validate_site_shell.py
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
