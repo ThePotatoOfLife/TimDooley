@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>World Relational Atlas — 3D country graph</title>
-<meta name="description" content="Draggable 3D relational world atlas with North, West, East, South, Center, empirical network views and a vertical North Axis staircase between Earth, roots, Swamp, Garden and North of North.">
+<meta name="description" content="Draggable 3D relational world atlas with North, West, East, South, Center, empirical network views and a D1–D11 project-symbolic North Axis scaffold: D4 Earth, D5 Door, ascent toward North of North and descent toward roots and Swamp.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/3d.html">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.css">
 <style>
@@ -16,7 +16,7 @@
 </head>
 <body><div class="app">
 <header class="top">
-  <div class="brand"><b>World Relational Atlas · 3D</b><small>country → project fields → empirical networks → North Axis depth → population → religion → capital → compare → trace → path</small></div>
+  <div class="brand"><b>World Relational Atlas · 3D</b><small>D4 world → fields &amp; networks → D5 North Door → D6–D11 ascent / D3–D1 descent → population → religion → capital → trace → path</small></div>
   <select id="height" title="Polygon extrusion"><option value="flat">Flat countries</option><option value="population">Height · population</option><option value="area">Height · area</option></select>
   <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
   <button id="fit" title="Fit selected country, comparison, or active trace">Fit</button>
@@ -33,15 +33,15 @@
     <div id="map" class="map"></div>
     <div id="status" class="status" hidden></div>
     <div id="camera" class="camera">drag · zoom · rotate · pitch</div>
-    <div id="hud" class="hud"><b>World mode</b><div class="muted">Use Fields for North / West / East / South / Center project interpretation, independently compare observable Networks, and use the winding Axis stair at the North Gate to move through project-symbolic depth: downward through Roots of Ash toward Swamp/Subterrain, or upward through the Spiral Ladder and Garden toward North of North.</div></div>
+    <div id="hud" class="hud"><b>D4 · World mode</b><div class="muted">The ordinary Atlas starts at D4. Use Fields and observable Networks horizontally. At the North bubble, enter D5 — the project-symbolic Door and Ladder junction. The winding Axis then ascends through D6–D11 toward North of North or descends through D3–D1 toward roots, Swamp/disintegration and lower planes.</div></div>
   </div>
   <aside id="panel" class="panel">
-    <div class="eyebrow">Spatial operating surface</div><h1>Explore the world</h1>
-    <p class="muted">Project fields, empirical networks and Axis depth are different dimensions of the same relational atlas. Fields classify project relationships; Networks expose observable institutions; Axis depth changes the symbolic plane without inventing geographic coordinates for theology or mythology.</p>
-    <div class="boundary">North, West, East and South are project interpretive relationship fields, not borders, sovereignty, citizenship or legal alignment. Center is a convergence arena rather than a fifth territorial bloc. Only Axis level 0 is ordinary geographic Earth; upward and downward Axis levels are project-symbolic. Semantic interior hubs remain navigation handles rather than fake geographic locations.</div>
-    <div class="card"><b>Vertical Axis</b><div class="row">↑ North of North / Heaven</div><div class="row">↑ Garden / Tree of Worlds</div><div class="row">↑ Spiral Ladder</div><div class="row">● Earth / North Gate</div><div class="row">↓ Roots of Ash</div><div class="row">↓ Swamp / Subculture</div><div class="row">↓ Subterrain</div></div>
+    <div class="eyebrow">Spatial operating surface · D4</div><h1>Explore the world</h1>
+    <p class="muted">D4 is the ordinary geographic and empirical Atlas: countries, populations, cities, institutions, networks and sourced relations. Project Fields and empirical Networks remain horizontal overlays. The North bubble is D5, where the separate spiritual Axis begins.</p>
+    <div class="boundary">D1–D11 is project-symbolic scaffolding, not physical cosmology. D4 alone is ordinary geographic map space. D5 is the North Door/first-heaven threshold; D6–D11 ascend symbolically and D3–D1 descend symbolically. The resemblance to eleven-dimensional physics is analogy only, not an assertion that the Atlas depicts M-theory. Semantic interior hubs remain navigation handles rather than fake geographic locations.</div>
+    <div class="card"><b>Vertical Axis</b><div class="row">D11 · North of North</div><div class="row">D10 · Heaven / Crown</div><div class="row">D9 · Angels / Seeds of Light</div><div class="row">D8 · Garden / Rooms</div><div class="row">D7 · Tree of Life</div><div class="row">D6 · Spiral Ladder</div><div class="row">D5 · North Door / first heaven</div><div class="row">D4 · Earth / ordinary world map</div><div class="row">D3 · Roots of Ash</div><div class="row">D2 · Swamp / Disintegration</div><div class="row">D1 · Deep Lower Plane</div></div>
+    <div class="card"><b>Directional traffic</b><div class="row">↑ seed of life · wheat · potato · spiral · virtue · angels · seeds of light · fruit</div><div class="row">↓ debt · seed of death · ash · strife · separation · Swamp · disintegration</div><p class="muted">These are symbolic markers for direction and transformation, not physical forces or judgments about populations.</p></div>
     <div class="card"><b>Network comparison</b><p class="muted">Try North + Arctic Council/Nordic/NATO/EU; East + SCO/BRICS; South + SADC/Pacific/APEC; Center + GCC. The mismatch between layers is information, not an error.</p></div>
-    <div class="card"><b>Trace &amp; Path</b><p class="muted">Trace explores the curated relationship neighborhood around one country. Path finds a shortest represented route. Neither hop count nor path length is a causal, moral or geopolitical-distance claim.</p></div>
   </aside>
 </div></div>
 <script type="module" src="./3d-hover.js"></script>
