@@ -1,0 +1,126 @@
+{
+  "id": "project-consolidation-map",
+  "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "project-wide consolidation guide",
+  "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, chronology/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
+  "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
+  "top_level_owners": {
+    "root_system": "knowledge/core/root-system.json",
+    "master_theology_and_system": "knowledge/core/potatoverse-master-framework.json",
+    "tim_identity": "knowledge/core/tim-dooley.json",
+    "cross_symbol_grammar": "knowledge/core/symbolic-relational-synthesis.json",
+    "vertical_geometry": "knowledge/core/vertical-potato-mountain-plane-atlas.json",
+    "reader_belief_synthesis": "knowledge/reader/what-tim-dooley-believes.json",
+    "canonical_timeline": "data/timeline-events.json",
+    "timeline_source_registry": "data/timeline-source-registry.json",
+    "epistemics": "knowledge/philosophy/archive-epistemics.json",
+    "source_routing": "knowledge/indexes/source-index.json",
+    "public_navigation": "manifest.json"
+  },
+  "major_domain_owners": {
+    "body": "knowledge/body/body-system-master-atlas.json",
+    "science": "knowledge/science/science-master-index.json",
+    "corporium": "knowledge/corporium/corporium-master-framework.json",
+    "north_world_bridge": "knowledge/core/axis-world-model.json",
+    "european_programme": "knowledge/core/european-coupling-programme.json",
+    "swamp_ecology": "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+    "mud_karma_mechanics": "data/swamp/mud-karma-system.json",
+    "karma_shadow_routing": "knowledge/indexes/karma-shadow-integration-index.json",
+    "country_method": "knowledge/core/country-relational-method.json",
+    "biblical_routing": "knowledge/traditions/biblical-research-index-wave-5.json"
+  },
+  "file_role_classes": {
+    "canonical_owner": "Owns the general definition, structure and current best synthesis for a domain or concept.",
+    "specialist_atlas": "Deepens one relation or subproblem without replacing the canonical owner.",
+    "chronology_owner": "Owns dated development, exact wording, event sequence or source promotion.",
+    "evidence_owner": "Owns source-level material, provenance, contradictions or verification.",
+    "recovery_stratum": "Preserves mined conversation material or historical development; should be promoted upward but not silently deleted when provenance matters.",
+    "reader_projection": "Explains canonical material for humans; should link to owners instead of becoming a second canon.",
+    "temporary_wave": "Research staging file that should eventually be promoted, summarized and retired once no unique provenance is lost."
+  },
+  "recent_shadow_karma_classification": {
+    "canonical_or_primary": [
+      "data/swamp/mud-karma-system.json",
+      "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+      "knowledge/chronology/karmic-debt-ledger-2026.json",
+      "knowledge/core/garden-mud-orientation.json"
+    ],
+    "specialist_keep": [
+      "data/swamp/swamp-mud-debt-state-machine.json",
+      "knowledge/core/mountain-debt-integration-and-release.json",
+      "knowledge/core/karma-closure-reduction-and-settlement-model.json",
+      "knowledge/core/karma-double-entry-transformation-system.json",
+      "knowledge/core/shadow-ledger-entanglement-axis.json",
+      "knowledge/core/debt-depth-ascent-rubble-synthesis.json"
+    ],
+    "chronology_or_event": [
+      "knowledge/chronology/karma-causing-events-and-inputs-ledger.json",
+      "knowledge/chronology/karmic-debt-ledger-2026.json"
+    ],
+    "routing": "knowledge/indexes/karma-shadow-integration-index.json",
+    "rule": "These specialist files should remain because they add distinct process, chronology or application layers, but none should be treated as a replacement for root-system, symbolic-relational-synthesis or the primary Mud/Swamp owners."
+  },
+  "merge_rules": [
+    "Promote general laws upward; keep source-specific details downward.",
+    "Do not duplicate exact Tim quotations into multiple synthesis files. Link to the quote or chronology owner instead.",
+    "Do not duplicate numeric timelines outside the canonical chronology owner except as short summaries with explicit pointers.",
+    "When two files define the same concept, designate one primary owner and convert the other into a specialist view or historical stratum.",
+    "Do not delete a recovery file until unique quotations, dates, contradictions and provenance have been promoted or explicitly preserved elsewhere.",
+    "Reader pages explain; they do not silently redefine canon.",
+    "Comparative-religion files compare; they do not become evidence that traditions historically encoded Potatoverse claims.",
+    "Empirical world files require observable edges and sources; symbolic North/Swamp/Karma language remains a separate layer.",
+    "Prefer strengthening an existing owner to creating another file unless the new object has a genuinely distinct schema, chronology or research function."
+  ],
+  "duplicate_pressure_zones": [
+    {
+      "zone": "master/synthesis proliferation",
+      "risk": "Several files can sound authoritative because they contain 'master', 'framework', 'synthesis' or 'atlas' in the title.",
+      "cleanup": "Use root-system + potatoverse-master-framework + core-index/manifest as the authoritative entry chain; classify others by specialist role."
+    },
+    {
+      "zone": "conversation recovery waves",
+      "risk": "Useful discoveries can remain trapped in dated wave files after they have been promoted elsewhere.",
+      "cleanup": "Track promotion completeness and eventually mark fully absorbed waves as provenance-only or move them to archive rather than deleting blindly."
+    },
+    {
+      "zone": "biblical overlap waves",
+      "risk": "Multiple wave indexes can compete with the main biblical routing layer.",
+      "cleanup": "Keep wave indexes as research history; route reader/canonical access through one biblical research router and one high-density overlap atlas."
+    },
+    {
+      "zone": "shadow/karma files",
+      "risk": "Rapid recent research created multiple overlapping syntheses.",
+      "cleanup": "Use karma-shadow-integration-index to assign narrow ownership and prevent future duplication; promote only general laws into symbolic-relational-synthesis."
+    },
+    {
+      "zone": "root-level legacy files",
+      "risk": "Older master documents at repository root may look more canonical than the newer knowledge/ architecture.",
+      "cleanup": "Treat root-level legacy research as historical/source material unless manifest or canonical index explicitly promotes it. Do not delete substantive material until its unique content is audited."
+    }
+  ],
+  "safe_cleanup_targets": [
+    "Unreferenced generated presentation assets after confirming no page or manifest dependency.",
+    "Temporary state/batch files whose unique information has been fully promoted.",
+    "Duplicate routing files that contain no unique mappings after reconciliation.",
+    "Empty shells, abandoned UI fragments and generated snapshots with no documentary value."
+  ],
+  "unsafe_cleanup_targets": [
+    "Primary texts",
+    "Dated conversation recovery with unique wording",
+    "Legal/evidentiary reconstruction",
+    "Contradiction ledgers",
+    "Historical versions that show doctrine development",
+    "Specialist atlases with genuinely distinct mechanisms or schemas"
+  ],
+  "next_merge_sequence": [
+    "1. Reconcile core-index and manifest so every current canonical owner is reachable.",
+    "2. Build a machine-readable promotion-status field for conversation/biblical/research wave files.",
+    "3. Audit root-level legacy master files against knowledge/ owners and mark legacy/canonical status explicitly.",
+    "4. Audit generated assets and obsolete UI references before deletion.",
+    "5. Run integrity/build checks after structural changes.",
+    "6. Only then begin deleting fully absorbed temporary files."
+  ],
+  "success_test": "A newcomer should be able to start at manifest/index, reach one canonical owner for a concept, descend to specialist and source layers, and return without encountering contradictory competing masters whose roles are unexplained."
+}
