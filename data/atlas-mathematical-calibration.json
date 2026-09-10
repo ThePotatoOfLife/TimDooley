@@ -1,0 +1,152 @@
+{
+  "id": "atlas-mathematical-calibration",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "active design/calibration contract",
+  "purpose": "Use mathematics, geometry, graph theory and carefully bounded physics analogies to improve the World Relational Atlas without turning resemblance into physical proof or decorative numerology.",
+  "master_rule": "Adopt a formalism only when it solves a renderer, navigation, hierarchy, flow, uncertainty or comparison problem. A mathematical analogy does not establish a theological or physical identity.",
+  "epistemic_boundary": [
+    "Earth geography remains geographic data in geographic coordinates.",
+    "Graph distance is relationship distance in the represented graph, not moral, causal or geopolitical distance.",
+    "Semantic hub geometry is navigation-only and never claims a real location.",
+    "Project spiral geometry is project geometry unless independently connected to a physical model with variables, units and observations.",
+    "42 degrees is an explicit North-gate visual parameter. It is not derived from Fibonacci, the golden ratio, a level count or a physical law.",
+    "Vortex/circulation language is promoted from metaphor only when the underlying edges are directed, weighted and have a defined quantity/period/unit."
+  ],
+  "adopted_now": {
+    "trace_levels": {
+      "formalism": "unweighted graph geodesic / breadth-first search",
+      "equation": "d_G(u,v)=min number of represented edges on a path from u to v",
+      "renderer_use": "Trace hop 1, 2 and 3 are exact shortest represented hop distances under the active relation-type filter.",
+      "warning": "Hop count measures only the current represented graph."
+    },
+    "semantic_hub_phyllotaxis": {
+      "formalism": "Vogel-style phyllotactic placement",
+      "equations": [
+        "alpha_g = pi(3-sqrt(5)) = 2.399963... rad = 137.507... degrees",
+        "theta_i = i alpha_g",
+        "rho_i proportional to sqrt(i+1)"
+      ],
+      "renderer_use": "Place navigation-only semantic modules around a selected country with a stable golden-angle progression rather than equal angular sectors. Adding a later module does not rotate every existing module and spoke alignments are reduced.",
+      "implementation": "world-map/3d-app.js GOLDEN_ANGLE and hubData()",
+      "warning": "This is a packing/layout choice, not a claim that the country or project is physically Fibonacci-structured."
+    },
+    "axis_structural_flow": {
+      "formalism": "project state/description flow",
+      "equations": ["partial_s X = A(X,g)", "dX/ds = A(X)", "A(X*)=0 for a candidate fixed point"],
+      "renderer_use": "Treat Axis movement primarily as changes of representation/depth/scale rather than pretending it is another longitude/latitude coordinate.",
+      "owner": "data/axis-formal-lenses.json"
+    },
+    "project_logarithmic_spiral": {
+      "formalism": "logarithmic/equiangular spiral",
+      "equations": ["r(theta)=a exp(b theta)", "b=ln(phi)/(pi/2) for the recovered project quarter-turn scaling convention"],
+      "renderer_use": "Suitable for explicitly project-symbolic recurrence-with-change scenes or transition paths; not a default Earth-map relation curve.",
+      "warning": "Do not force the golden spiral onto unrelated data."
+    }
+  },
+  "next_formalisms": {
+    "spectral_graph_layout": {
+      "status": "recommended for future non-geographic graph plane",
+      "equations": ["L=D-A", "L v_k = lambda_k v_k"],
+      "use": "Use Laplacian eigenvectors to create deterministic layouts for dense nonspatial relationship views and reveal broad connectivity structure without inventing coordinates.",
+      "not_for": "Do not replace geographic coordinates of real places with a spectral embedding."
+    },
+    "hyperbolic_hierarchy": {
+      "status": "recommended experiment for Tree / rooms / deep hierarchy plane",
+      "model": "Poincare disk",
+      "equation": "d(u,v)=arcosh(1+2||u-v||^2/((1-||u||^2)(1-||v||^2)))",
+      "use": "Hyperbolic space naturally allocates rapidly increasing room with depth and is therefore a strong candidate for large tree-like nonspatial hierarchies. Root/overview can sit near the center while deeper branches expand toward the boundary.",
+      "not_for": "This is a separate non-geographic view, not a distortion to apply to Earth."
+    },
+    "hodge_edge_flow": {
+      "status": "recommended after directed quantitative flows exist",
+      "equation": "X = X_gradient + X_curl + X_harmonic",
+      "use": "Decompose a directed edge-flow field into source-to-sink tendency, local cyclic feedback and global cyclic structure. This is the mathematically disciplined future home for 'vortex' questions in trade, finance, energy, information or other measured flows.",
+      "promotion_gate": ["directed edges", "common quantity", "compatible unit", "reference period", "source coverage", "orientation convention"],
+      "not_for": "Do not apply to undirected symbolic relations or interpret curl as literal fluid vorticity."
+    },
+    "physical_vortex": {
+      "status": "physics comparator only until a physical field is modeled",
+      "equations": ["Gamma = integral_closed v · dl", "v_theta = Gamma/(2 pi r) for an ideal point/free vortex"],
+      "use": "Provides intuition about circulation versus radial distance, but only for a physical velocity field or an explicitly dimensioned analogue.",
+      "not_for": "Do not assign physical circulation, velocity or vorticity to social/theological graph edges without units and a model."
+    },
+    "force_directed_layout": {
+      "status": "candidate for exploratory dense graph views",
+      "use": "Spring/repulsion layouts can expose clusters interactively, but they should be secondary to deterministic spectral/hierarchical views because initialization can change appearance.",
+      "not_for": "Visual closeness must not be described as evidence strength unless the objective function explicitly encodes it."
+    }
+  },
+  "level_calibration": {
+    "geographic_zoom": "world -> regional -> country -> subnational is camera scale, not ontology.",
+    "trace_depth": "BFS hop depth is graph-geodesic distance in the selected represented relation graph.",
+    "axis_depth": "Axis/D1-D11 remains a typed project/formal analysis ladder owned by axis-formal-lenses; it must not be inferred from zoom or trace hops.",
+    "hierarchy_depth": "Future Tree/Rooms depth may use a hyperbolic radial coordinate, but only in a separately labeled non-geographic plane.",
+    "time": "Time/as-of is an orthogonal coordinate/filter and must not be folded into vertical height or graph distance."
+  },
+  "spiral_calibration": {
+    "fermat_vogel": "rho proportional to sqrt(theta) / sqrt(n): best for distributing discrete sibling navigation nodes with near-even areal density.",
+    "logarithmic": "r=a exp(b theta): best for self-similar recurrence/growth where multiplicative radial scaling is part of the intended project geometry.",
+    "archimedean": "r=a+b theta: best when radius increases by a fixed amount per turn; relevant as a geometry class and as an approximate form in some rotating-outflow systems, but not automatically a Potatoverse law.",
+    "selection_rule": "Choose the spiral family from the rendering/data problem; never choose one because the word spiral already appears in project canon."
+  },
+  "sources": [
+    {
+      "topic": "golden-angle phyllotaxis",
+      "source": "Prusinkiewicz & Lindenmayer, The Algorithmic Beauty of Plants, Chapter 4 / Vogel formula",
+      "url": "https://algorithmicbotany.org/papers/abop/abop.pdf"
+    },
+    {
+      "topic": "golden angle optimization context",
+      "source": "Beck et al., On the mystery of the golden angle in phyllotaxis",
+      "url": "https://doi.org/10.1111/j.1365-3040.2004.01185.x"
+    },
+    {
+      "topic": "logarithmic spiral",
+      "source": "Wolfram MathWorld — Logarithmic Spiral",
+      "url": "https://mathworld.wolfram.com/LogarithmicSpiral.html"
+    },
+    {
+      "topic": "spectral graph drawing",
+      "source": "Koren, Drawing graphs by eigenvectors: theory and practice",
+      "url": "https://doi.org/10.1016/j.camwa.2004.08.015"
+    },
+    {
+      "topic": "hyperbolic hierarchy",
+      "source": "Klimovskaia et al., Poincare maps for analyzing complex hierarchies",
+      "url": "https://www.nature.com/articles/s41467-020-16822-4"
+    },
+    {
+      "topic": "graph Hodge decomposition",
+      "source": "Jiang, Lim, Yao & Ye, Statistical ranking and combinatorial Hodge theory",
+      "url": "https://doi.org/10.1007/s10107-010-0419-x"
+    },
+    {
+      "topic": "ideal vortex circulation",
+      "source": "Oregon State Intermediate Fluid Mechanics — Potential Flows",
+      "url": "https://open.oregonstate.education/intermediate-fluid-mechanics/chapter/potential-flows/"
+    },
+    {
+      "topic": "force-directed graph drawing",
+      "source": "Fruchterman & Reingold, Graph drawing by force-directed placement",
+      "url": "https://doi.org/10.1002/spe.4380211102"
+    }
+  ],
+  "rejected_shortcuts": [
+    "Do not create 42 levels from the 42-degree North arc.",
+    "Do not make every spiral a Fibonacci/golden spiral.",
+    "Do not use golden-ratio proximity as evidence of meaning or truth.",
+    "Do not label undirected relationship cycles as vortices.",
+    "Do not give abstract theology fake latitude/longitude or fake physical altitude.",
+    "Do not make map height encode holiness, guilt, truth, karma or authority.",
+    "Do not let one geometric coordinate simultaneously mean zoom, hierarchy, chronology, evidence strength and spiritual level."
+  ],
+  "connections": [
+    "data/axis-formal-lenses.json",
+    "data/world-map-spatialization-registry.json",
+    "data/world-map-3d-runtime.json",
+    "data/atlas-projection-contract.json",
+    "data/atlas-time-contract.json",
+    "world-map/3d-app.js"
+  ]
+}
