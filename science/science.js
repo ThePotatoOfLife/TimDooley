@@ -1,288 +1,238 @@
 (()=>{
   'use strict';
 
-  const B='../knowledge/science/';
+  const SOURCE='../knowledge/science/';
   const $=id=>document.getElementById(id);
   const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-  const get=async url=>{const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error(`${url}: ${r.status}`);return r.json();};
-  const tokens=q=>String(q||'').toLowerCase().trim().split(/\s+/).filter(Boolean);
-  const matches=(text,q)=>{const t=String(text||'').toLowerCase();return tokens(q).every(token=>t.includes(token));};
+  const get=async url=>{const response=await fetch(url,{cache:'no-cache'});if(!response.ok)throw new Error(`${url}: ${response.status}`);return response.json();};
+  const words=query=>String(query||'').toLowerCase().trim().split(/\s+/).filter(Boolean);
+  const matches=(text,query)=>words(query).every(word=>String(text||'').toLowerCase().includes(word));
 
-  const domainPresets=[
-    ['All',''],['Dynamics','dynamics'],['Quantum','quantum'],['Fields & Higgs','higgs field'],['Dimensions','dimension'],
-    ['Unification','unification'],['Information','information'],['Biology & brain','microtubule'],['Astronomy','astronomy'],
-    ['Time & waves','advanced retarded'],['Testing','testing']
-  ];
+  const presets=[['All',''],['Dynamics','dynamics'],['Quantum','quantum'],['Fields','field higgs'],['Dimensions','dimension'],['Unification','unification'],['Information','information'],['Biology','microtubule'],['Astronomy','astronomy'],['Testing','testing']];
 
-  const maturityGates={
-    T0:['T1','Define the state space, variables, scope and explicit rules.'],
-    T1:['T2','Write the minimal equations, dimensions, boundaries and translation maps.'],
-    T2:['T3','Choose a parameter set and calibrate or constrain it against real data.'],
-    T3:['T4','Predeclare a quantitative prediction that differs from the baseline.'],
-    T4:['T5','Obtain independent replication across data, implementation or experiment.'],
-    T5:['T5','Map limits, replications and failure domains; do not inflate the claim.']
+  const maturityGate={
+    T0:'Define variables, state space and scope.',
+    T1:'Write a minimal mathematical model with dimensions and boundaries.',
+    T2:'Calibrate or constrain parameters against real data.',
+    T3:'Predeclare a quantitative prediction that differs from the baseline.',
+    T4:'Seek independent replication or an independent implementation.',
+    T5:'Map limits and failure domains rather than broadening the claim.'
   };
 
-  let registryModels=[];
-  let programmeStageByModel=new Map();
+  const conclusions={
+    'unified-potato-theory':'UPT is presently best treated as a recoverable effective-field-theory programme, not as a finished unification. Its useful scientific core is the proposed extra sector and its interactions; the decisive move is to choose one gauge-consistent field representation and derive its low-energy consequences.',
+    'potato-axis-spiral':'The spiral result itself is mathematically finished: it is a logarithmic spiral with exact golden-ratio scaling every quarter turn. What is not finished is any physical or biological interpretation; each application must define what r and θ measure and then survive comparison with alternative curve families.',
+    'potato-dynamics':'Potato Dynamics is currently the most coherent general mathematical framework in the programme. It works best as a typed hybrid/compositional systems language. Its scientific value now depends on benchmark instantiations that outperform or clarify simpler state-space models.',
+    'door-handshake':'The Door formulation is scientifically strongest as a two-boundary inference or control model. A literal advanced-wave interpretation is not required by the mathematics and should remain separate unless a physical field model produces a distinct observable.',
+    'dimensional-phase-transition':'The dimensional-transition branch has enough structure to become a real toy theory, but it must stop branching into multiple ansätze. One stable action, one transition law and one derived strong-gravity observable would make it substantially more scientific.',
+    'eleven-dimensional-projection':'The 11D work is strongest as a projection/coarse-graining grammar. A literal M-theory claim requires a concrete compactification and a recovered four-dimensional spectrum; without that, the formal projection interpretation should remain the default.',
+    'spudlight-signal-information':'Spudlight becomes technically useful when photon flux, information gain, attention and social coherence remain separate measured channels. Its strongest result is therefore architectural: it prevents unlike quantities from being collapsed into one number while still allowing explicit causal links between channels.',
+    'microtubule-cross-scale':'The defensible route is classical first: fit microtubule dynamics, define a micro-to-neural coarse-graining map, then ask whether an open-quantum extension adds predictive power. Consciousness-level claims cannot substitute for that missing bridge.',
+    'higgs-potato-sector':'The Higgs/Potato branch can be made concrete with a minimal scalar portal or a clearly specified gauged U(1) sector. The next scientific result should be a mass/mixing spectrum plus existing experimental bounds, not another symbolic interaction term.',
+    'gauge-unification-susy':'SU(4), SU(5), Spin(10) and SUSY are useful constraints and comparison frameworks, not evidence of a Tim-original grand-unified theory. The productive next step is one explicit embedding with representation content, symmetry breaking and numerical coupling running.',
+    'timic-unification-program':'The Timic Unification Program is most defensible as a meta-model for composing typed models across domains. Its success criterion is not “everything is one physics”; it is whether explicit interfaces improve reuse, error detection and prediction while preserving domain differences.'
+  };
+
+  let models=[];
+  let stages=new Map();
   let modelButtons=[];
   let recordCards=[];
-  let activeModelId='';
+  let activeId='';
 
-  function list(items,limit=8){
-    if(!Array.isArray(items)||!items.length)return '<span class="none-note">Not yet specified</span>';
+  function list(items,limit=7){
+    if(!Array.isArray(items)||!items.length)return '<p class="empty">Not yet specified.</p>';
     const shown=items.slice(0,limit);
-    return `<ul>${shown.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${items.length>limit?`<small class="list-more">+${items.length-limit} more in the canonical record</small>`:''}`;
+    return `<ul>${shown.map(item=>`<li>${esc(item)}</li>`).join('')}</ul>${items.length>limit?`<p class="empty">+${items.length-limit} more in the source contract.</p>`:''}`;
   }
 
-  function evidenceFamily(classification){
-    const x=String(classification||'').toLowerCase();
-    if(x.includes('external')||x.includes('established'))return 'external science';
-    if(x.includes('primary')||x.includes('recovered')||x.includes('book-derived')||x.includes('archaeology'))return 'recovered / provenance-led';
-    if(x.includes('speculative'))return 'speculative programme';
+  function evidenceLabel(classification){
+    const text=String(classification||'').toLowerCase();
+    if(text.includes('external')||text.includes('established'))return 'external science / comparator';
+    if(text.includes('primary')||text.includes('recovered')||text.includes('book-derived')||text.includes('archaeology'))return 'recovered / provenance-led';
+    if(text.includes('speculative'))return 'speculative model';
     return 'project model';
   }
 
-  function completionInfo(model){
-    const c=model.completion||{};
-    const filled=Number(c.filled_contract_fields||0);
-    const total=Math.max(Number(c.total_contract_fields||12),1);
-    const pct=Math.max(0,Math.min(100,Math.round((filled/total)*100)));
-    return {filled,total,pct,next:c.next_action||'Complete the missing model contract fields.'};
+  function completion(model){
+    const item=model.completion||{};
+    const filled=Number(item.filled_contract_fields||0);
+    const total=Math.max(Number(item.total_contract_fields||12),1);
+    return {filled,total,next:item.next_action||'Complete the missing scientific contract fields.'};
   }
 
-  function searchText(model){
-    return [
-      model.title,model.short_title,model.classification,model.abstract,model.maturity,
-      ...(model.formal_core||[]),...(model.state_variables||[]),...(model.assumptions||[]),
-      ...(model.observables||[]),...(model.falsifiers||[]),...(model.baseline||[]),
-      model.calibration_path,...(model.couples_to||[]),...(model.unresolved||[]),...(model.source_records||[])
-    ].join(' ').toLowerCase();
+  function searchBlob(model){
+    return [model.title,model.short_title,model.classification,model.abstract,conclusions[model.id],...(model.formal_core||[]),...(model.state_variables||[]),...(model.assumptions||[]),...(model.observables||[]),...(model.falsifiers||[]),...(model.baseline||[]),model.calibration_path,...(model.couples_to||[]),...(model.unresolved||[])].join(' ').toLowerCase();
   }
 
-  function renderDossier(model){
-    const dossier=$('model-dossier');
-    if(!model){
-      dossier.innerHTML='<div class="dossier-empty"><strong>No matching flagship model.</strong><p>Try a broader search, or inspect the source records below.</p></div>';
-      return;
-    }
+  function renderModel(model){
+    const view=$('model-view');
+    if(!model){view.innerHTML='<div class="loading">No developed model matches this search.</div>';return;}
+    const done=completion(model);
+    const stage=stages.get(model.id)||'Science programme';
+    const equations=(model.formal_core||[]).map(item=>`<code>${esc(item)}</code>`).join('')||'<p class="empty">No formal core specified yet.</p>';
+    const couplingButtons=(model.couples_to||[]).map(id=>{
+      const target=models.find(item=>item.id===id);
+      return `<button type="button" data-open-model="${esc(id)}">${esc(target?.short_title||target?.title||id)}</button>`;
+    }).join('');
+    const sourceNames=(model.source_records||[]).join(' · ');
 
-    const c=completionInfo(model);
-    const stage=programmeStageByModel.get(model.id)||'Unassigned programme layer';
-    const [nextMaturity,gate]=maturityGates[model.maturity]||['Next','Define the next measurable theory-quality requirement.'];
-    const equations=(model.formal_core||[]).map(eq=>`<code>${esc(eq)}</code>`).join('')||'<span class="none-note">Formal core not yet specified.</span>';
-    const couplings=(model.couples_to||[]).map(id=>{
-      const target=registryModels.find(item=>item.id===id);
-      return `<button type="button" data-open-model="${esc(id)}">${esc(target?.short_title||target?.title||id.replaceAll('-',' '))}</button>`;
-    }).join('')||'<span class="none-note">No explicit model coupling declared.</span>';
-    const sources=(model.source_records||[]).map(file=>`<a href="${B}${encodeURIComponent(file)}">${esc(file.replace('.json',''))}</a>`).join('')||'<span class="none-note">No source record declared.</span>';
-
-    dossier.innerHTML=`
-      <header class="dossier-head">
-        <div class="dossier-meta"><span>${esc(stage)}</span><span>${esc(evidenceFamily(model.classification))}</span></div>
+    view.innerHTML=`
+      <header class="model-header">
+        <div class="model-meta"><span>${esc(stage)}</span><span>${esc(evidenceLabel(model.classification))}</span></div>
         <h3>${esc(model.title)}</h3>
-        <p>${esc(model.abstract||'No abstract yet.')}</p>
-        <div class="dossier-stats">
-          <span><b>${esc(model.maturity||'T1')}</b><small>maturity</small></span>
-          <span><b>${c.filled}/${c.total}</b><small>contract fields</small></span>
-          <span><b>${c.pct}%</b><small>contract coverage</small></span>
-          <span><b>${(model.couples_to||[]).length}</b><small>declared couplings</small></span>
+        <p class="model-abstract">${esc(model.abstract||'No abstract specified.')}</p>
+        <div class="model-status">
+          <div><span>Maturity</span><strong>${esc(model.maturity||'T1')}</strong></div>
+          <div><span>Contract</span><strong>${done.filled}/${done.total} fields</strong></div>
+          <div><span>Couplings</span><strong>${(model.couples_to||[]).length} explicit</strong></div>
         </div>
       </header>
-
-      <section class="maturity-gate">
-        <div><span>Current completion target</span><strong>${esc(c.next)}</strong></div>
-        <div><span>${esc(model.maturity||'T1')} → ${esc(nextMaturity)} gate</span><p>${esc(gate)}</p></div>
-      </section>
-
-      <section class="dossier-core">
-        <div class="formal-core"><h4>Formal core</h4>${equations}</div>
-        <div class="test-core">
-          <div><h4>Observable handles</h4>${list(model.observables,4)}</div>
-          <div><h4>Failure conditions</h4>${list(model.falsifiers,4)}</div>
-        </div>
-      </section>
-
-      <div class="dossier-links">
-        <div><strong>Declared couplings</strong><div class="chip-row">${couplings}</div></div>
-        <div><strong>Source lineage</strong><div class="chip-row">${sources}</div></div>
+      <div class="conclusion"><span>Current conclusion</span><p>${esc(conclusions[model.id]||model.abstract||'No current conclusion written yet.')}</p></div>
+      <div class="model-core">
+        <section class="formal-core"><span class="block-title">Formal core</span>${equations}</section>
+        <aside class="next-step"><span class="block-title">Next derivation</span><strong>${esc(done.next)}</strong><p><b>${esc(model.maturity||'T1')} maturity gate:</b> ${esc(maturityGate[model.maturity]||'Define the next measurable requirement.')}</p></aside>
       </div>
-
-      <details class="full-contract">
-        <summary>Full scientific contract</summary>
-        <div class="contract-grid">
-          <section><h4>State variables</h4>${list(model.state_variables)}</section>
-          <section><h4>Assumptions</h4>${list(model.assumptions)}</section>
-          <section><h4>Observables</h4>${list(model.observables)}</section>
-          <section><h4>Failure conditions</h4>${list(model.falsifiers)}</section>
-          <section><h4>Comparison baseline</h4>${list(model.baseline)}</section>
-          <section><h4>Unresolved work</h4>${list(model.unresolved)}</section>
+      <div class="model-tests">
+        <section><span class="block-title">Observable handles</span>${list(model.observables,5)}</section>
+        <section><span class="block-title">What would count against it</span>${list(model.falsifiers,5)}</section>
+      </div>
+      <details class="model-details">
+        <summary>Assumptions, variables, baselines and unresolved work</summary>
+        <div class="details-grid">
+          <section><span class="block-title">State variables</span>${list(model.state_variables)}</section>
+          <section><span class="block-title">Assumptions</span>${list(model.assumptions)}</section>
+          <section><span class="block-title">Comparison baseline</span>${list(model.baseline)}</section>
+          <section><span class="block-title">Unresolved work</span>${list(model.unresolved)}</section>
+          <section class="calibration"><span class="block-title">Calibration path</span><p>${esc(model.calibration_path||'Not yet specified.')}</p></section>
         </div>
-        <div class="calibration"><strong>Calibration path</strong><p>${esc(model.calibration_path||'Not yet specified.')}</p></div>
-        <p class="classification-line"><strong>Registry classification:</strong> ${esc(model.classification||'project model')}</p>
+        ${couplingButtons?`<div class="couplings"><span class="block-title">Open connected model</span>${couplingButtons}</div>`:''}
+        ${sourceNames?`<p class="model-source"><b>Source lineage:</b> ${esc(sourceNames)}</p>`:''}
       </details>`;
 
-    dossier.querySelectorAll('[data-open-model]').forEach(button=>button.addEventListener('click',()=>activateModel(button.dataset.openModel,true)));
+    view.querySelectorAll('[data-open-model]').forEach(button=>button.addEventListener('click',()=>activateModel(button.dataset.openModel,true)));
   }
 
   function activateModel(id,scroll=false){
-    const model=registryModels.find(item=>item.id===id);
+    const model=models.find(item=>item.id===id);
     if(!model)return;
-    activeModelId=id;
+    activeId=id;
     modelButtons.forEach(button=>{
       const active=button.dataset.modelId===id;
       button.classList.toggle('active',active);
       button.setAttribute('aria-pressed',active?'true':'false');
     });
-    renderDossier(model);
+    renderModel(model);
     if(scroll)$('models')?.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
-  function renderWorkQueue(models){
-    const queue=$('model-work-queue');
-    if(!queue)return;
-    queue.innerHTML=models.map((model,index)=>{
-      const c=completionInfo(model);
-      const stage=programmeStageByModel.get(model.id)||'Programme';
-      const [,gate]=maturityGates[model.maturity]||['','Define the next measurable requirement.'];
-      return `<button class="work-item" type="button" data-work-model="${esc(model.id)}">
-        <span class="work-no">${String(index+1).padStart(2,'0')}</span>
-        <span class="work-copy"><b>${esc(model.short_title||model.title)}</b><small>${esc(stage)} · ${esc(model.maturity||'T1')} · contract ${c.filled}/${c.total}</small><em>${esc(c.next)}</em></span>
-        <span class="work-gate">${esc(gate)}</span>
-      </button>`;
-    }).join('');
-    queue.querySelectorAll('[data-work-model]').forEach(button=>button.addEventListener('click',()=>activateModel(button.dataset.workModel,true)));
-  }
-
   function renderModels(registry){
-    registryModels=registry.models||[];
-    programmeStageByModel=new Map();
-    (registry.programme_spine||[]).forEach(stage=>(stage.models||[]).forEach(id=>programmeStageByModel.set(id,stage.stage)));
-    $('metric-models').textContent=registryModels.length;
-
-    const index=$('model-index');
-    index.innerHTML=registryModels.map(model=>{
-      const c=completionInfo(model);
-      const stage=programmeStageByModel.get(model.id)||'Programme';
-      return `<button class="model-index-item" type="button" data-model-id="${esc(model.id)}" data-search="${esc(searchText(model))}" aria-pressed="false">
-        <span class="model-index-top"><b>${esc(model.short_title||model.title)}</b><em>${esc(model.maturity||'T1')}</em></span>
-        <span class="model-index-title">${esc(model.title)}</span>
-        <small>${esc(stage)} · ${c.filled}/${c.total} contract</small>
+    models=registry.models||[];
+    stages=new Map();
+    (registry.programme_spine||[]).forEach(stage=>(stage.models||[]).forEach(id=>stages.set(id,stage.stage)));
+    $('metric-models').textContent=models.length;
+    const listEl=$('model-list');
+    listEl.innerHTML=models.map(model=>{
+      const done=completion(model);
+      return `<button class="model-button" type="button" data-model-id="${esc(model.id)}" data-search="${esc(searchBlob(model))}" aria-pressed="false">
+        <span class="model-button-top"><b>${esc(model.short_title||model.title)}</b><em>${esc(model.maturity||'T1')}</em></span>
+        <small>${esc(stages.get(model.id)||'programme')} · ${done.filled}/${done.total} contract</small>
       </button>`;
     }).join('');
-    modelButtons=[...index.querySelectorAll('.model-index-item')];
+    modelButtons=[...listEl.querySelectorAll('.model-button')];
     modelButtons.forEach(button=>button.addEventListener('click',()=>activateModel(button.dataset.modelId)));
-    renderWorkQueue(registryModels);
-    if(registryModels.length)activateModel(registryModels[0].id);
-  }
-
-  function renderProgramme(registry){
-    const flow=$('programme-flow');
-    const spine=registry.programme_spine||[];
-    if(!flow||!spine.length)return;
-    flow.innerHTML=spine.map((stage,i)=>`${i?'<b>→</b>':''}<article><span>${i+1}</span><strong>${esc(stage.stage)}</strong><p>${esc(stage.role)}</p><small>${(stage.models||[]).length} model${(stage.models||[]).length===1?'':'s'}</small></article>`).join('');
+    if(models.length)activateModel(models[0].id);
   }
 
   function renderMaster(master){
     const equations=master.root_formalisms||[];
     $('metric-equations').textContent=equations.length;
     $('metric-open').textContent=(master.unresolved_primary_targets||[]).length;
-    const listEl=$('equation-list'),initial=10;
-    listEl.innerHTML=equations.map((eq,i)=>`<div class="equation-row ${i>=initial?'extra':''}"><span class="eq-no">${String(i+1).padStart(2,'0')}</span><code>${esc(eq)}</code></div>`).join('');
+    const listEl=$('equation-list');
+    const initial=8;
+    listEl.innerHTML=equations.map((equation,index)=>`<div class="equation-row ${index>=initial?'extra':''}"><span>${String(index+1).padStart(2,'0')}</span><code>${esc(equation)}</code></div>`).join('');
     const toggle=$('equation-toggle');
     if(equations.length>initial){
       toggle.hidden=false;
       toggle.textContent=`Show all ${equations.length} equations`;
-      toggle.onclick=()=>{const open=listEl.classList.toggle('expanded');toggle.textContent=open?'Show fewer equations':`Show all ${equations.length} equations`;};
+      toggle.addEventListener('click',()=>{
+        const expanded=listEl.classList.toggle('expanded');
+        toggle.textContent=expanded?'Show fewer equations':`Show all ${equations.length} equations`;
+      });
     }
-    const timeline=master.developmental_genealogy||[];
-    $('science-timeline').innerHTML=timeline.map((entry,i)=>{
-      const concepts=entry.concepts||[];
-      return `<article class="timeline-item"><div class="period">${esc(entry.period||`Stage ${i+1}`)}</div><h3>${esc(concepts.slice(0,3).join(' · ')||'Science stratum')}</h3><p>${esc(concepts.slice(3,8).join(' · '))}</p>${entry.status?`<small>${esc(entry.status)}</small>`:''}</article>`;
-    }).join('');
-    $('open-questions-grid').innerHTML=(master.unresolved_primary_targets||[]).map((item,i)=>`<article class="question-card"><span>${String(i+1).padStart(2,'0')}</span><p>${esc(item)}</p></article>`).join('');
   }
 
-  function renderDomainFilters(){
+  function renderFilters(){
     const wrap=$('domain-filters');
-    wrap.innerHTML=domainPresets.map(([label,q],i)=>`<button type="button" data-domain-query="${esc(q)}" class="${i===0?'active':''}">${esc(label)}</button>`).join('');
+    wrap.innerHTML=presets.map(([label,value],index)=>`<button type="button" data-query="${esc(value)}" class="${index===0?'active':''}">${esc(label)}</button>`).join('');
     wrap.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
-      wrap.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+      wrap.querySelectorAll('button').forEach(item=>item.classList.remove('active'));
       button.classList.add('active');
-      setSearch(button.dataset.domainQuery||'');
+      setSearch(button.dataset.query||'');
+      if(button.dataset.query)$('record-drawer').open=true;
     }));
   }
 
   function applySearch(){
-    const input=$('catalog-search');
-    const q=input?.value||'';
-    let modelsShown=0,recordsShown=0;
-    let firstVisibleModel='';
+    const query=$('science-search').value||'';
+    let visibleModels=0;
+    let visibleRecords=0;
+    let firstModel='';
 
     modelButtons.forEach(button=>{
-      const show=matches(button.dataset.search||button.textContent,q);
+      const show=matches(button.dataset.search||button.textContent,query);
       button.hidden=!show;
-      if(show){modelsShown++;if(!firstVisibleModel)firstVisibleModel=button.dataset.modelId||'';}
+      if(show){visibleModels++;if(!firstModel)firstModel=button.dataset.modelId;}
     });
     recordCards.forEach(card=>{
-      const show=matches(card.dataset.search||card.textContent,q);
+      const show=matches(card.dataset.search||card.textContent,query);
       card.hidden=!show;
-      if(show)recordsShown++;
+      if(show)visibleRecords++;
     });
 
-    const activeVisible=modelButtons.some(button=>button.dataset.modelId===activeModelId&&!button.hidden);
-    if(!activeVisible){
-      if(firstVisibleModel)activateModel(firstVisibleModel);
-      else renderDossier(null);
-    }
+    const currentVisible=modelButtons.some(button=>button.dataset.modelId===activeId&&!button.hidden);
+    if(!currentVisible){if(firstModel)activateModel(firstModel);else renderModel(null);}
 
-    $('model-empty').hidden=modelsShown!==0;
-    $('catalog-empty').hidden=recordsShown!==0;
-    $('model-index-count').textContent=q?`${modelsShown} of ${modelButtons.length}`:`${modelButtons.length} models`;
-    $('catalog-count').textContent=q?`${recordsShown} of ${recordCards.length} records`:`${recordCards.length} records`;
-    $('search-note').textContent=q?`${modelsShown} flagship model${modelsShown===1?'':'s'} · ${recordsShown} source record${recordsShown===1?'':'s'} match “${q}”.`:'One search filters the model index and the complete record library.';
-    $('clear-search').hidden=!q;
+    $('model-count').textContent=query?`${visibleModels} of ${modelButtons.length}`:`${modelButtons.length} models`;
+    $('model-empty').hidden=visibleModels!==0;
+    $('record-count').textContent=query?`${visibleRecords} of ${recordCards.length} records`:`${recordCards.length} records`;
+    $('catalog-empty').hidden=visibleRecords!==0;
+    $('clear-search').hidden=!query;
+    $('search-note').textContent=query?`${visibleModels} model${visibleModels===1?'':'s'} and ${visibleRecords} record${visibleRecords===1?'':'s'} match “${query}”.`:'Search filters both developed models and the complete source-record collection.';
   }
 
   function setSearch(value){
-    const input=$('catalog-search');
-    input.value=value||'';
-    document.querySelectorAll('#domain-filters button').forEach(button=>button.classList.toggle('active',(button.dataset.domainQuery||'')===(value||'')));
+    $('science-search').value=value||'';
     applySearch();
-    if(value)$('models')?.scrollIntoView({behavior:'smooth',block:'start'});
   }
 
   function wireSearch(){
     recordCards=[...document.querySelectorAll('.catalog-card')];
-    const input=$('catalog-search');
-    input.addEventListener('input',()=>{document.querySelectorAll('#domain-filters button').forEach(x=>x.classList.remove('active'));applySearch();});
-    $('clear-search').addEventListener('click',()=>setSearch(''));
+    $('science-search').addEventListener('input',()=>{
+      document.querySelectorAll('#domain-filters button').forEach(button=>button.classList.remove('active'));
+      applySearch();
+    });
+    $('clear-search').addEventListener('click',()=>{
+      document.querySelectorAll('#domain-filters button').forEach((button,index)=>button.classList.toggle('active',index===0));
+      setSearch('');
+    });
     applySearch();
   }
 
   async function init(){
-    renderDomainFilters();
-    const jobs=[get(B+'science-master-index.json'),get(B+'science-model-registry.json'),get('./catalog.json')];
-    const [masterResult,registryResult,catalogResult]=await Promise.allSettled(jobs);
+    renderFilters();
+    const results=await Promise.allSettled([
+      get(SOURCE+'science-master-index.json'),
+      get(SOURCE+'science-model-registry.json'),
+      get('./catalog.json')
+    ]);
     let failures=0;
-
-    if(masterResult.status==='fulfilled')renderMaster(masterResult.value);else failures++;
-    if(registryResult.status==='fulfilled'){
-      renderProgramme(registryResult.value);
-      renderModels(registryResult.value);
-    }else{
-      failures++;
-      $('model-index').innerHTML='<div class="loading-card">Model registry unavailable; source records remain usable.</div>';
-      $('model-dossier').innerHTML='<div class="dossier-empty"><strong>Model registry unavailable.</strong><p>The canonical source records remain below.</p></div>';
-      $('model-work-queue').innerHTML='<div class="loading-card">Model completion queue unavailable.</div>';
-    }
-    if(catalogResult.status==='fulfilled')$('metric-records').textContent=catalogResult.value.count??document.querySelectorAll('.catalog-card').length;
-    else{failures++;$('metric-records').textContent=document.querySelectorAll('.catalog-card').length||'—';}
-
+    if(results[0].status==='fulfilled')renderMaster(results[0].value);else failures++;
+    if(results[1].status==='fulfilled')renderModels(results[1].value);else{failures++;$('model-list').innerHTML='<div class="loading">Model registry unavailable.</div>';$('model-view').innerHTML='<div class="loading">Model registry unavailable; source records remain below.</div>';}
+    if(results[2].status==='fulfilled')$('metric-records').textContent=results[2].value.count??document.querySelectorAll('.catalog-card').length;else{failures++;$('metric-records').textContent=document.querySelectorAll('.catalog-card').length||'—';}
     wireSearch();
     const state=$('data-state');
-    state.textContent=failures?`Atlas loaded with ${failures} auxiliary source${failures===1?'':'s'} unavailable.`:'Model registry, equation index and compiled record catalog loaded.';
-    state.className='data-state '+(failures?'error':'ok');
+    state.textContent=failures?`Loaded with ${failures} data source${failures===1?'':'s'} unavailable.`:'Models, equations and compiled source records loaded.';
+    state.className=failures?'error':'ok';
   }
 
   document.addEventListener('DOMContentLoaded',init);
