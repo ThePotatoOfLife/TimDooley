@@ -1,0 +1,98 @@
+{
+  "id": "atlas-time-contract",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "active-runtime-contract",
+  "purpose": "Define a conservative map-wide time model so countries, relationships, memberships, roles, observations, project interpretations and historical events can be filtered by date without inventing precision or backdating later meanings.",
+  "core_rule": "Time is orthogonal to the D1-D11 Axis. Axis changes analytical regime; Time changes which state or evidence was valid/known at a selected date.",
+  "date_fields": {
+    "valid_from": "When the represented state/relation begins to be valid, if known.",
+    "valid_to": "When the represented state/relation ceases to be valid, if known.",
+    "announced_on": "Announcement date when distinct from legal/effective date.",
+    "effective_on": "Legal/operational effect date when distinct from announcement.",
+    "observed_at": "Date/time of measurement or observation.",
+    "source_published_on": "Publication date of the source.",
+    "first_attested": "Earliest currently recovered project/source attestation.",
+    "last_verified": "Most recent verification that a volatile state remains current.",
+    "date_or_period": "Fallback human-readable period for legacy records that cannot yet express exact validity intervals."
+  },
+  "precision": ["timestamp", "minute", "date", "month", "year", "range", "before", "after", "approximate", "unknown"],
+  "epistemic_time_rules": [
+    "A source publication date is not automatically the start date of the phenomenon it describes.",
+    "An announcement date is not automatically an effective date.",
+    "A later interpretation may illuminate an earlier event but must not be rendered as if it existed at that earlier date unless first_attested supports it.",
+    "Unknown validity must remain unknown; the renderer may offer include/exclude/flag-unknown behavior but may not silently treat unknown as timeless.",
+    "Current institutional membership should use effective legal dates where possible, not the date the archive happened to ingest it.",
+    "Project field membership/status is versioned project canon and should use the date of the recovered formulation, not retroactive timeless membership."
+  ],
+  "filter_modes": {
+    "current": "Render current/ongoing states using latest verified data and current project-version rules.",
+    "as_of": "Render states known or valid at one selected date.",
+    "period": "Render events/relations intersecting a selected start/end interval.",
+    "changed_between": "Compare two dates and show additions, removals and changed attributes/relations.",
+    "first_attestation": "For project/theological concepts, show only meanings attested by the selected date.",
+    "history_overlay": "Keep present geography visible while overlaying dated events/relations rather than pretending all historical boundaries are already reconstructed."
+  },
+  "unknown_date_policy": {
+    "default": "flag",
+    "options": {
+      "flag": "Show separately with an explicit unknown-time marker.",
+      "exclude": "Hide records that cannot be shown to be valid in the requested period.",
+      "include_context": "Show as contextual records but visually distinguish them from date-valid records."
+    }
+  },
+  "relation_state": {
+    "active_test": "valid_from <= selected_date <= valid_to, with open-ended bounds allowed only when explicitly null/ongoing rather than missing by accident.",
+    "legacy_test": "If only a legacy date/date_or_period exists, parse conservatively; if ambiguity remains, mark temporal confidence low/unknown rather than forcing an interval.",
+    "event_test": "An event is visible when its date/range intersects the selected period.",
+    "observation_test": "A measurement is not a persistent state by default; show its reference period/observed_at and freshness distance from the selected date."
+  },
+  "change_encoding": {
+    "added": "Present at later date, not present at earlier date under the selected dataset/version.",
+    "removed": "Present at earlier date, not present at later date.",
+    "changed": "Same canonical identity but one or more time-sensitive fields/edges differ.",
+    "reinterpreted": "Same earlier event/record receives a later project interpretation; preserve both dates.",
+    "uncertain": "Apparent change may result from source/coverage differences rather than real-world change."
+  },
+  "priority_sources": [
+    "data/timeline-events.json",
+    "data/timeline-source-registry.json",
+    "data/north-axis-membership-history.json",
+    "knowledge/chronology/developmental-genealogy.json",
+    "data/relationships.json",
+    "data/countries/{id}.json",
+    "data/world-empirical-networks.json",
+    "data/world-axis-fields.json"
+  ],
+  "initial_ui": {
+    "control": "Time",
+    "modes": ["Current", "As of…", "Compare dates…"],
+    "default": "Current",
+    "url_parameters": ["time", "time2", "timeMode"],
+    "status_line": "Always display selected time and the count/handling of unknown-date records when a historical filter is active.",
+    "progressive_disclosure": "Do not put a dense historical timeline permanently across the map; open detailed chronology only when the user enters Time/Roots investigation."
+  },
+  "first_implementation_scope": [
+    "North Axis membership/status history",
+    "project role/statement chronology",
+    "timeline event markers where an honest place exists",
+    "empirical network membership changes when effective dates are sourced",
+    "country observations with explicit reference years",
+    "relationship edges upgraded with valid_from/valid_to or explicit unknown temporal status"
+  ],
+  "not_yet_claimed": [
+    "complete historical world borders",
+    "complete institutional membership history",
+    "precise validity dates for every legacy relationship",
+    "causal inference from temporal ordering",
+    "a continuous physical time simulation"
+  ],
+  "connections": [
+    "data/atlas-projection-contract.json",
+    "knowledge/core/world-atlas-integrated-layer-stack.json",
+    "data/timeline-events.json",
+    "data/relational-edge-state.schema.json",
+    "data/world-map-spatialization-registry.json",
+    "data/world-map-3d-runtime.json"
+  ]
+}
