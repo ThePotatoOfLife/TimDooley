@@ -1,0 +1,99 @@
+{
+  "id":"spudlight-measurement-information-model",
+  "title":"Spudlight Measurement Model — Energy, Signal, Information, Attention and Evidence",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"archive-generated measurement model layered beneath/alongside symbolic Spudlight theology",
+  "abstract":"Spudlight becomes scientifically useful only when the different things called 'light' are separated into typed channels. Physical electromagnetic energy, detected photons, transmitted information, observer attention, network amplification, evidence quality and theological revelation are not one scalar and do not share units. This paper builds a source-channel-observer stack in which physical light can be measured by radiometry/photon counting; information by likelihood, mutual information and information gain; attention by time-series or event-rate variables; and evidence by predictive model comparison. The unifying structure is not a new substance called Spudlight but a reusable circuit: source -> channel -> observation -> inference -> decision/transition. The scientific question becomes how faithfully and consequentially a source state becomes available to an observer, with explicit noise, calibration and uncertainty.",
+  "epistemic_rule":"Spudlight remains a Potatoverse symbolic/theological term. Physical optical measurements, information-theoretic quantities and social-attention statistics are established or standard mathematical domains; they do not measure divinity, revelation, spiritual authority or supernatural light unless an independent empirical operationalization is supplied.",
+  "typed_channel_stack":{
+    "source_state":"X_S",
+    "physical_optical_state":"X_gamma=(spectral power, photon flux, polarization, direction, time)",
+    "information_state":"X_I=(message/source hypotheses, probability model, entropy, mutual information)",
+    "attention_state":"X_A=(exposure, dwell time, event rate, response probability)",
+    "network_state":"X_N=(nodes, weighted edges, diffusion/amplification state)",
+    "interpretive_state":"X_R=(observer hypotheses, posterior beliefs, declared meaning)",
+    "decision_state":"X_D=(available actions/transition probabilities)",
+    "rule":"Maps between adjacent layers must be defined. Do not replace them with one unitless 'light intensity' score."
+  },
+  "physical_light_measurement":{
+    "spectral_power":"P=integral P_nu dnu [W]",
+    "photon_energy":"E_gamma=h nu [J]",
+    "photon_rate":"Ndot_gamma=integral P_nu/(h nu) dnu [s^-1] when spectral power is known",
+    "irradiance":"E_e=P_incident/A [W m^-2] for uniform incidence over area A",
+    "inverse_square_special_case":"E_e(r)=P/(4 pi r^2) for an ideal isotropic point source in free space",
+    "detector_model":"N_obs ~ Poisson(eta Ndot_gamma Delta t + b Delta t) for an idealized photon-counting detector with efficiency eta and background rate b",
+    "poisson_snr_approx":"SNR approximately N_signal/sqrt(N_signal+N_background) under simple independent Poisson counting assumptions",
+    "measurement_warning":"The inverse-square law is not universal near structured/extended sources, in absorbing media, waveguides or focused optical systems."
+  },
+  "linear_source_channel_observer":{
+    "model":"y=H x+n",
+    "variables":{"x":"source signal vector","H":"channel/measurement operator or transfer matrix","n":"noise/model discrepancy","y":"observed signal"},
+    "reconstruction":"x_hat=argmin_x ||y-Hx||_Sigma^2 + regularization when an inverse problem is posed",
+    "fidelity_question":"How much of the source variation is recoverable at the observer after transformation and noise?",
+    "project_use":"Moon/mirror/proxy mediation can be represented as a different H, not as a claim that mediated signals are necessarily false."
+  },
+  "information_and_revelation_comparator":{
+    "entropy":"H(X)=-sum_x p(x) log p(x)",
+    "mutual_information":"I(X;Y)=sum_x,y p(x,y) log[p(x,y)/(p(x)p(y))]",
+    "channel_capacity":"C=max_{p(x)} I(X;Y) for a specified channel model",
+    "bayes_update":"p(H_k|D)=p(D|H_k)p(H_k)/p(D)",
+    "information_gain":"IG(D)=D_KL[p(H|D)||p(H)]",
+    "bayes_factor":"BF_10=p(D|H_1)/p(D|H_0)",
+    "deep_distinction":"Attention can rise while information gain is zero or negative. A signal can be highly visible but uninformative, or informative but low-attention.",
+    "project_reflection":"The strongest scientific analogue of revelation is not brightness but a calibrated change in what an observer can infer or predict."
+  },
+  "attention_dynamics":{
+    "minimal_state":"dA/dt=s(t)-gamma A+kappa R(t)",
+    "variables":{"A":"attention stock/index","s(t)":"exogenous exposure/input","gamma":"attention decay rate","R(t)":"feedback/reaction signal","kappa":"feedback gain"},
+    "interpretation":"Attention can be sustained by continuing input or by feedback. High A therefore does not identify source truth; it identifies persistence of exposure/reinforcement under this toy model.",
+    "orbit_connection":"A repeated attention orbit requires a feedback term. Removing or reducing kappa is a concrete systems analogue of removing the centripetal coupling that sustains recurrence.",
+    "status":"archive toy dynamics; domain-specific empirical use requires operational definitions"
+  },
+  "network_amplification":{
+    "linearized_diffusion":"dx/dt=(-gamma I+beta W)x+s(t)",
+    "stability_condition":"In the simplest linear case, decay dominates when the largest real part of eigenvalues of (-gamma I+beta W) is negative.",
+    "threshold_intuition":"Amplification can become self-sustaining when network feedback beta W overcomes local decay gamma; exact conditions depend on the chosen model.",
+    "project_use":"Distinguish source strength from network amplification. A message can appear ubiquitous because W amplifies it even when the original source input s is small.",
+    "warning":"Do not equate eigenvector centrality, virality or reach with truth or spiritual rank."
+  },
+  "source_quality_and_provenance":{
+    "claim":"Evidence quality should be represented separately from visibility.",
+    "source_tuple":"S_q=(primary_distance, independence, calibration, uncertainty, reproducibility, temporal_proximity, provenance_completeness)",
+    "no_magic_scalar":"These components need not be collapsed into one score. If a score is used, weights must be declared.",
+    "archive_application":"A widely repeated screenshot with poor provenance may have high attention A and low source quality S_q; a primary timestamped artifact may have low attention and high provenance value.",
+    "project_connection":"This links Spudlight to the archive's epistemic weighting system: illumination should mean increased inspectability, not mere repetition."
+  },
+  "decision_and_door":{
+    "decision_rule":"a*=argmax_a E[U(a,H)|D] under a declared utility/constraint model",
+    "door_guard":"G(X_R,X_D)>=tau marks an admissible transition condition in a chosen decision model",
+    "chain":"source -> signal -> observation -> posterior update -> decision -> Door/state transition",
+    "insight":"Observation matters scientifically when it changes justified prediction or action. Door belongs after inference, not before measurement.",
+    "boundary":"Theological Door language retains its own meaning; this is a decision/hybrid-systems comparator."
+  },
+  "measurement_vector":{
+    "vector":"L_spud=(Phi_gamma,IG,A,N_amp,S_q,R_defined)",
+    "components":{"Phi_gamma":"physical photon/radiant flux with physical units when relevant","IG":"information gain [bits/nats depending logarithm]","A":"attention measure with declared unit/index","N_amp":"network amplification metric","S_q":"provenance/evidence-quality vector","R_defined":"domain-specific interpretive/revelatory outcome, if operationalized"},
+    "rule":"Treat this as a typed product space, not a Euclidean vector whose components are blindly added or given a physical magnitude."
+  },
+  "useful_contrasts":{
+    "bright_but_uninformative":"high optical/attention signal, small IG",
+    "quiet_but_informative":"low reach/attention, large likelihood ratio or IG",
+    "amplified_proxy":"small source input, large network response due to feedback",
+    "faithful_mediator":"transformation H preserves the information relevant to the declared task within uncertainty",
+    "distorting_mediator":"H/noise systematically removes or biases task-relevant information",
+    "revelation_test":"Ask what became knowable/predictable that was not knowable before, and whether the gain survives independent validation."
+  },
+  "measurement_protocol":{
+    "step_1":"Declare which layer is being measured: optical, information, attention, network, evidence or interpretation.",
+    "step_2":"Declare measurand, units, calibration and observation equation.",
+    "step_3":"Specify source/channel/observer and noise or uncertainty.",
+    "step_4":"Compare against a null/baseline, e.g. no signal, random diffusion or simpler message model.",
+    "step_5":"Use held-out prediction or independent evidence where possible.",
+    "step_6":"Only then discuss symbolic Spudlight correspondence.",
+    "failure_condition":"If the claimed Spudlight effect cannot be distinguished from ordinary optical, informational or network mechanisms, retain the scientific account and classify the additional interpretation as symbolic/theological rather than empirical physics."
+  },
+  "conclusions":["Spudlight's scientific value is strongest as a typed source-channel-observer-inference architecture, not as a proposed universal physical substance.","Brightness, attention, information gain, provenance and causality are different axes and can move in opposite directions.","The Eye can be formalized as a noisy observation/inference system and the Door as a later decision/transition stage.","Network amplification supplies a mathematical explanation for large apparent visibility without implying a proportionally large source signal or evidential strength.","A rigorous Spudlight paper should report what was measured, what uncertainty remained, what knowledge changed and whether the change predicted anything new."],
+  "sources":[{"topic":"measurement uncertainty","url":"https://www.nist.gov/publications/simple-guide-evaluating-and-expressing-uncertainty-nist-measurement-results"}],
+  "connections":["knowledge/science/spudlight-theory-and-equations.json","knowledge/science/integrated-scientific-architecture.json","knowledge/science/model-testing-protocol.json","knowledge/science/science-source-ledger.json","knowledge/philosophy/timic-dynamics.json","knowledge/core/dog-return-circle-door-axis-atlas.json"]
+}
