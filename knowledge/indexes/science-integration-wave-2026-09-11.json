@@ -1,0 +1,122 @@
+{
+  "id":"science-integration-wave-2026-09-11",
+  "title":"Science Integration Wave — Measurement, Derivation, Prediction and Cross-Scale Architecture",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical routing/index layer for the September 11 science integration pass",
+  "purpose":"Route readers from equations to their scientific roles, assumptions, measurements, conclusions and canonical owner papers. This index prevents the integration work from becoming another isolated file and records which papers were substantively upgraded.",
+  "central_question":"What scientific job does each equation perform, what model does it belong to, how is it measured, and what observation could make the model lose?",
+  "integration_spine":[
+    "historical/recovered source",
+    "equation-role classification",
+    "state variables + units",
+    "dimensionless controls where physical",
+    "governing equations / derivation / ansatz",
+    "boundary or guard conditions",
+    "measurement map + uncertainty",
+    "parameter identifiability",
+    "baseline / known limit",
+    "prediction + falsifier",
+    "cross-scale/domain translation if required",
+    "conclusion + project reflection"
+  ],
+  "canonical_owners":{
+    "architecture":"knowledge/science/integrated-scientific-architecture.json",
+    "long_form_methods_paper":"docs/SCIENTIFIC-INTEGRATION-MEASUREMENT-AND-PREDICTION.md",
+    "quality_protocol":"knowledge/science/model-testing-protocol.json",
+    "equation_registry":"knowledge/science/equation-ledger.json",
+    "unification":"knowledge/science/timic-unification-program.json",
+    "upt":"knowledge/science/unified-potato-theory-2025-recovery.json",
+    "dimensional_door":"knowledge/science/dimensional-phase-transition-full-recovery.json",
+    "spiral_dynamics":"knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json",
+    "microtubules":"knowledge/science/microtubule-tubulin-consciousness-recovery.json",
+    "higgs_potato_sector":"knowledge/science/higgs-quantum-tuber-potato-boson-recovery.json",
+    "spudlight":"knowledge/science/spudlight-theory-and-equations.json",
+    "open_systems":"knowledge/science/potato-dynamics-2-toy-model.json",
+    "sources":"knowledge/science/science-source-ledger.json",
+    "root_navigation":"knowledge/science/science-master-index.json"
+  },
+  "upgraded_papers":[
+    {
+      "paper":"integrated-scientific-architecture",
+      "role":"science-wide composition layer",
+      "new_substance":["measurement envelope E(P+)","equation semantics","measurement/uncertainty grammar","Buckingham-Pi dimensional analysis","cross-scale consistency error","cross-domain translation mismatch","hybrid Door","3D spiral-Ladder dynamics","UPT dimensional audit","identifiability","paper quality template"],
+      "maturity":"T2 architecture; individual empirical instantiations vary"
+    },
+    {
+      "paper":"model-testing-protocol",
+      "role":"quality gate",
+      "new_substance":["equation-role tests","dimensionless threshold requirement","observation maps","uncertainty","identifiability","known-limit recovery","cross-scale contract","out-of-sample prediction","T0-T5 gates"],
+      "maturity":"methodology"
+    },
+    {
+      "paper":"equation-ledger",
+      "role":"typed equation registry",
+      "new_substance":["corrected recovered spiral status","variables/units","historical-vs-repair lineage","Door critical model","UPT repair branches","return signature","cross-scale maps","measurement equations"],
+      "maturity":"canonical index/registry"
+    },
+    {
+      "paper":"unified-potato-theory-2025-recovery",
+      "role":"field-theory genealogy root",
+      "new_substance":["scientific abstract","fractional kinetic dimensional normalization","dimensionless kernel diagnosis","propagator template","neutral-scalar branch","complex U(1)_P branch","fractional/nonlocal branch","cross-scale systems branch","parameter contract","observables/falsifiers","conclusions"],
+      "maturity":"historical T1-T2 root; descendants T2 until calibrated"
+    },
+    {
+      "paper":"dimensional-phase-transition-full-recovery",
+      "role":"critical phenomena / gravity Door model",
+      "new_substance":["dimensionless control vector","calibratable Xi","Landau critical potential","mean-field scaling","bounded D_eff","Schwarzschild C_h vs K_h derivation","fractional GR deviations","identifiability","known limit","falsification conditions","conclusions"],
+      "maturity":"T2 speculative physical toy"
+    },
+    {
+      "paper":"recurrence-orbit-spiral-dynamics-atlas",
+      "role":"geometry and dynamical recurrence",
+      "new_substance":["scientific abstract","alpha-omega-u master flow","one-turn return map","return signature","exact golden scaling","curvature/pitch angles","linearized fit","circle/Archimedean/free-log/fixed-golden model comparison","held-out testing","conclusions"],
+      "maturity":"exact project geometry T2; empirical applications uncalibrated"
+    },
+    {
+      "paper":"timic-unification-program",
+      "role":"cross-domain composition",
+      "new_substance":["measurement envelope","model-interface contract","cross-scale consistency","cross-domain mismatch","scientific forms of project primitives","integrated high-value model registry","research sequence"],
+      "maturity":"T2 architecture"
+    },
+    {
+      "paper":"microtubule-tubulin-consciousness-recovery",
+      "role":"biology/quantum/neural cross-scale case study",
+      "new_substance":["multiscale state spaces","C_micro_to_neural","epsilon_C consistency error","quantum branch contract","causal-model ladder","measurement programme","stronger conclusions"],
+      "maturity":"established biology L0; quantum-consciousness project branch remains speculative"
+    },
+    {
+      "paper":"science-source-ledger",
+      "role":"evidence provenance",
+      "new_substance":["NIST dimensional analysis","NIST calibration/uncertainty","hybrid systems","limit cycles/separatrices","fractional-QFT sources","Standard Model baseline"],
+      "maturity":"source/evidence layer"
+    }
+  ],
+  "cross_paper_shared_objects":[
+    {"object":"E(P+)","meaning":"scientific measurement envelope","owners":["integrated-scientific-architecture","timic-unification-program"]},
+    {"object":"Xi","meaning":"dimensionless latent Door/critical coordinate after physical controls are nondimensionalized","owners":["dimensional-phase-transition-full-recovery","model-testing-protocol","equation-ledger"]},
+    {"object":"Return Signature R","meaning":"which coordinates return and which change","owners":["recurrence-orbit-spiral-dynamics-atlas","equation-ledger"]},
+    {"object":"C_(ell->L)","meaning":"cross-scale coarse-graining/channel map","owners":["integrated-scientific-architecture","timic-unification-program","microtubule-tubulin-consciousness-recovery"]},
+    {"object":"epsilon_C","meaning":"cross-scale evolution mismatch","owners":["integrated-scientific-architecture","microtubule-tubulin-consciousness-recovery"]},
+    {"object":"T_AB","meaning":"cross-domain translation map","owners":["integrated-scientific-architecture","timic-unification-program","equation-ledger"]},
+    {"object":"M0","meaning":"baseline/null explanation","owners":["integrated-scientific-architecture","model-testing-protocol"]}
+  ],
+  "substantive_conclusions":[
+    "The project's strongest scientific integration is compositional: models connect through typed interfaces, not by putting every scientific noun in one Lagrangian.",
+    "The Potato Axis is presently the cleanest exact project-specific mathematical object; its empirical status depends entirely on predeclared coordinate mappings and predictive comparison with simpler curves.",
+    "Door is best treated as a family of threshold operators whose physical instances require dimensionless control variables and observation maps.",
+    "UPT becomes more scientifically meaningful when decomposed into coherent descendants rather than defended as one already-finished equation.",
+    "Cross-scale mechanism is now a first-class project requirement. Micro-level physics must earn macro-level explanatory relevance through an explicit channel/coarse-graining map.",
+    "Measurement, uncertainty and null models are part of the mathematics of the project, not afterthoughts.",
+    "A scientific conclusion should state not only what the model illuminates but what result would weaken or eliminate the empirical interpretation."
+  ],
+  "next_science_passes":[
+    "Instantiate the full paper template for Spudlight with separate photon/information/attention measurement tables.",
+    "Build a dedicated network-science paper for Garden/Farm/House/Shell with Laplacian, flow, viability and objective-function experiments.",
+    "Formalize Merkaba/counter-rotation as coupled oscillators and rigid-body rotations, keeping historical/project symbolism separate.",
+    "Create a celestial measurement paper with epoch, RA/Dec, observer frame, azimuth/altitude and uncertainty for every star/pole claim.",
+    "Choose one UPT descendant and derive its Euler-Lagrange equations and simplest phenomenology.",
+    "Choose one empirical dataset for a predeclared Potato Axis curve-comparison test."
+  ],
+  "project_integration_rule":"Any future science paper should route its primary equations to the equation ledger, sources to the science source ledger, methodological assumptions to the model-testing protocol, and cross-domain/cross-scale interfaces to the integrated scientific architecture."
+}
