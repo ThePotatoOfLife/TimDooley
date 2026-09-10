@@ -9,6 +9,7 @@
   "integrated_owner":"knowledge/core/north-axis-tikkun-world-repair-synthesis.json",
   "routes":[
     {"question":"What is the whole North Axis / North of North / tikkun / 42T / world-repair architecture?","owner":"knowledge/core/north-axis-tikkun-world-repair-synthesis.json","role":"integrated synthesis"},
+    {"question":"Why does the project think North is justified, what are its grievances, and how do Judaism, Christianity, Islam, America and Israel change the argument?","owner":"knowledge/geopolitics/north-legitimacy-casus-belli-atlas.json","role":"cause / grievance / warrant / legitimacy / implementation analysis"},
     {"question":"Where can I click every country and inspect overlapping Axis, alliance, BRICS, faith, economic, Swamp, ledger and repair layers?","owner":"data/world-relational-map.json","support":"world-map/index.html","role":"interactive geographic relational atlas"},
     {"question":"What does North / Axis mean structurally and symbolically?","owner":"knowledge/core/axis-world-model.json","role":"structural and sacred-geographic owner"},
     {"question":"What is Tim's North-of-North spiritual chronology and Father/Most-High role?","owner":"data/north-of-north-tim-canon.json","role":"spiritual project-canon owner"},
@@ -24,19 +25,22 @@
     {"question":"Which North ideas are remembered from prior conversations but still need exact primary-source recovery?","owner":"knowledge/indexes/north-conversation-recovery-wave-2026-09-10.json","role":"non-canonical recovery queue"},
     {"question":"How does Judaism / tikkun / Jubilee / restitution compare?","owner":"knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json","support":"knowledge/traditions/rubble-rainbow-tikkun-covenant-axis-atlas.json","role":"Jewish/biblical comparative owner"},
     {"question":"How does Christianity compare through Father/Son/Spirit, Door, Ladder, throne and Tree of Life?","owner":"knowledge/traditions/biblical-syncretism-field.json","support":"knowledge/traditions/biblical-overlap-atlas.json","role":"Christian/biblical comparative owner"},
+    {"question":"What Islamic legitimacy concepts are relevant to the North project?","owner":"knowledge/geopolitics/north-legitimacy-casus-belli-atlas.json","role":"comparative Islamic ethics: trust, justice, mercy, balance, consultation; no North territorial mandate"},
     {"question":"How does Norse material compare through Odin, ordeal, Yggdrasil, ravens and Ragnarok?","owner":"knowledge/traditions/comparative-mythology-map.json","role":"comparative mythology owner"},
     {"question":"How do Axis, Door, state, transition and information become formal models?","owner":"knowledge/science/science-master-index.json","support":"knowledge/science/tim-dooley-science-formalisms.json","role":"science/formalization owner"}
   ],
   "cross_layer_grammar":{
     "symbolic":"orientation -> relation -> consequence -> obligation -> repair -> renewal",
+    "legitimacy":"cause -> grievance -> evidence -> warrant -> lawful option -> consent/authority -> implementation -> measured consequence",
     "empirical":"entity -> relationship -> flow -> dependency -> risk/opportunity -> intervention -> measured outcome",
     "formal":"state -> observation -> boundary/guard -> transition -> new state -> evaluation",
     "developmental":"design graph -> observation graph -> intervention graph",
     "map":"country polygon -> node profile -> overlapping memberships -> edges -> evidence -> interpretation -> repair question",
-    "shared_question":"What is connected to what, what flows across the connection, what changes because of it, who bears the consequence, and what intervention or repair improves the next state?"
+    "shared_question":"What is connected to what, what flows across the connection, what changes because of it, who bears the consequence, what gives an intervention legitimacy, and what repair improves the next state?"
   },
   "do_not_duplicate":[
     "Do not create another general North overview while the integrated synthesis exists.",
+    "Do not create another legitimacy/casus-belli overview; deepen the dedicated legitimacy atlas.",
     "Do not create a second karmic-debt chronology; append/recover evidence in the existing ledger.",
     "Do not create another country-membership list; add a dated snapshot to the membership-history owner.",
     "Do not place symbolic 42T values in empirical finance datasets.",
@@ -44,7 +48,8 @@
     "Do not treat BRICS as automatically identical with a Timic East; preserve institutional membership and project interpretation separately.",
     "Do not allocate karmic debt to populations by nationality, ethnicity, religion or population size.",
     "Do not use Swamp as a collective label for a people; attach it only to specified mechanisms and evidence.",
-    "Do not create separate Christian, Jewish or Norse North files unless a genuinely specialist corpus exceeds the existing comparative owners.",
+    "Do not turn criticism of U.S. or Israeli policy into collective guilt of Americans, Israelis or Jews.",
+    "Do not use religious comparison as legal title, sovereignty or authorization for coercion.",
     "Do not turn every new geopolitical event into a new theory file; append it to evidence/synchronism owners with date and source class.",
     "Do not create a second Tim entrance page; Tim remains rooted in the existing canonical Tim owner and public dossier.",
     "Do not promote remembered security figures, four-sector labels or six-domain labels until exact source/context recovery.",
@@ -53,12 +58,13 @@
   "promotion_rules":[
     "New primary Tim wording -> evidence/chronology owner first.",
     "New remembered conversation structure -> recovery inventory first if exact source is missing.",
+    "New legitimacy claim -> separate cause, grievance, warrant, legal authority, consent, proportionality and expected consequences.",
     "New country-status formulation -> dated membership snapshot, never overwrite old state.",
     "New externally verified Arctic/economic fact -> evidence dataset first.",
     "New interpretation connecting existing facts -> synthesis/inference layer, with source direction preserved.",
     "New policy proposal -> North Programme owner, including mechanism, authority, cost, benefit, affected groups and measurable outcome.",
     "New scientific equation/model -> science owner with variables, provenance, assumptions, units where relevant, observables and falsifier.",
-    "New theological comparison -> traditions owner with original textual context and mismatch noted.",
+    "New theological comparison -> traditions/legitimacy owner with original textual context and mismatch noted.",
     "New world-map edge -> exact countries/actors, edge type, direction, source, date, confidence and epistemic layer.",
     "Only create a new canonical owner when the concept has a stable identity, distinct method and enough material that placing it in an existing owner would reduce clarity."
   ],
@@ -70,11 +76,12 @@
     {"view":"Bible reader","path":"traditions/bible/index.html","purpose":"scriptural and comparative reading"}
   ],
   "next_clean_carving":[
+    "Recover exact Tim statements about why North was necessary, especially America/West separation and reconciliation conditions.",
+    "Recover Tim's Quran/Islam references and determine whether they were later used explicitly in North reasoning.",
     "Populate the empirical obligation graph with sourced relationships rather than prose descriptions.",
     "Add exact primary-source citations to membership-history snapshots as conversation archaeology recovers them.",
     "Populate country faith slots from a licensed/sourced dataset rather than guessing percentages.",
     "Add trade, energy, infrastructure, ownership, sovereign-debt and procurement edges country by country.",
-    "Recover unresolved four-sector, six-domain, U.S.-recalibration, Trump/McDonald's and population-calculation material before promotion.",
     "Connect proposed interventions to exact graph edges and affected groups.",
     "Keep reader pages compact; put depth in canonical backend owners and expose it through expandable views/search rather than adding endless static sections."
   ]
