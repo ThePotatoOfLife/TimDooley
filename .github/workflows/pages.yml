@@ -50,6 +50,9 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
+      - name: Enrich weak page descriptions
+        run: python scripts/enrich_weak_descriptions.py
+
       - name: Optimize crawl, sharing and sitemap SEO
         run: python scripts/optimize_seo.py
 
