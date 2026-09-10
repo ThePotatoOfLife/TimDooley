@@ -29,8 +29,8 @@ def main():
         required_files=(
             'index.html','manifest.json','app/app.js','app/style.css',
             'knowledge/indexes/context-graph.json','knowledge/indexes/core-index.json',
-            'world-map/index.html','world-map/3d.html','world-map/3d-app.js','data/world-map-3d-runtime.json','data/world-relational-map.json',
-            'sitemap.xml','llms.txt'
+            'world-map/index.html','world-map/3d.html','world-map/3d-app.js','world-map/3d-hover.js','world-map/3d-pathfinder.js',
+            'data/world-map-3d-runtime.json','data/world-relational-map.json','sitemap.xml','llms.txt'
         )
         for rel in required_files:
             if not (SITE/rel).exists():errors.append(f'missing required site file: {rel}')
@@ -57,14 +57,21 @@ def main():
         # The map is a first-class public surface and must survive every build.
         map3d=(SITE/'world-map/3d.html').read_text(encoding='utf-8',errors='replace') if (SITE/'world-map/3d.html').exists() else ''
         mapapp=(SITE/'world-map/3d-app.js').read_text(encoding='utf-8',errors='replace') if (SITE/'world-map/3d-app.js').exists() else ''
-        for required in ('World Relational Atlas','id="map"','id="compare"','id="relationType"','id="traceDepth"','src="./3d-app.js"','Trace · 3 hops'):
+        hover=(SITE/'world-map/3d-hover.js').read_text(encoding='utf-8',errors='replace') if (SITE/'world-map/3d-hover.js').exists() else ''
+        for required in ('World Relational Atlas','id="map"','id="compare"','id="relationType"','id="traceDepth"','src="./3d-hover.js"','Trace · 3 hops'):
             if required not in map3d:errors.append(f'world-map/3d.html missing current atlas shell feature: {required}')
         for required in ('semantic-hubs','trace-hubs','compare-hubs','window.goCountry','window.fitTrace','function fitCodes','function traceGraph','Trace outward','fitBounds',"searchParams.set('depth'"):
             if required not in mapapp:errors.append(f'world-map/3d-app.js missing current atlas application feature: {required}')
-        if map3d and 'navigation handles, not fake geographic locations' not in map3d:
+        for required in ('GEO_LOCAL','REST_LOCAL','fallbackRestCountries','capital-cities','capital-city-labels','countryHtml','capitalHtml',"await import('./3d-app.js')"):
+            if required not in hover:errors.append(f'world-map/3d-hover.js missing resilient/hover feature: {required}')
+        if map3d and 'navigation handles rather than fake geographic locations' not in map3d:
             errors.append('world-map/3d.html missing semantic-coordinate boundary')
         if mapapp and 'visited.has(other)' not in mapapp:
             errors.append('world-map/3d-app.js missing recursive Trace cycle guard')
+        if hover and 'return bestGeometryResponse()' not in hover:
+            errors.append('world-map/3d-hover.js missing local-first geometry fallback')
+        if hover and 'fetchJsonResponse(REST_LOCAL' not in hover:
+            errors.append('world-map/3d-hover.js missing local-first country runtime fallback')
         runtime=load_json(SITE/'data/world-map-3d-runtime.json',errors) if (SITE/'data/world-map-3d-runtime.json').exists() else {}
         if runtime and runtime.get('status')!='active experimental renderer contract':
             errors.append('built world-map-3d-runtime has unexpected status')
