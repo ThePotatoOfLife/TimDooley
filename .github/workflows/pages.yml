@@ -33,6 +33,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      # Source contracts own behavior-level Atlas validation. Keep these checks
+      # out of the Pages shell so wording/layout changes cannot silently become
+      # duplicate architectural contracts.
       - name: Validate Atlas projection and time contracts
         run: python scripts/validate_atlas_view_contracts.py
 
@@ -102,7 +105,10 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
-      - name: Verify manifest-driven archive, science hub, world atlas, Tim ontology, and discovery layer
+      # This step only verifies generated products that are not already owned by
+      # the dedicated Atlas validators. Full post-build link/module/data checks
+      # are centralized in validate_site_shell.py below.
+      - name: Verify compiled public artifact surfaces
         shell: bash
         run: |
           set -euxo pipefail
@@ -125,64 +131,7 @@ jobs:
           test -f _site/robots.txt
           test -f _site/sitemap-index.xml
           test -f _site/sitemap-questions.xml
-
-          # The World Relational Atlas is a first-class deployed application surface.
-          test -f _site/world-map/index.html
-          test -f _site/world-map/3d.html
-          test -f _site/world-map/3d-app.js
-          test -f _site/world-map/3d-hover.js
-          test -f _site/world-map/3d-pathfinder.js
-          test -f _site/world-map/3d-demography.js
           test -s _site/data/world-countries.geo.json
-          test -s _site/data/world-country-demography.json
-          test -s _site/data/world-country-facts.json
-          test -f _site/data/world-map-3d-runtime.json
-          test -f _site/data/world-relational-map.json
-          test -f _site/data/atlas-projection-contract.json
-          test -f _site/data/atlas-time-contract.json
-          grep -q 'World Relational Atlas' _site/world-map/3d.html
-          grep -q 'id="compare"' _site/world-map/3d.html
-          grep -q 'id="relationType"' _site/world-map/3d.html
-          grep -q 'id="traceDepth"' _site/world-map/3d.html
-          grep -q 'src="./3d-hover.js"' _site/world-map/3d.html
-          grep -q 'src="./3d-pathfinder.js"' _site/world-map/3d.html
-          grep -q 'src="./3d-demography.js"' _site/world-map/3d.html
-          grep -q 'Trace · 3 hops' _site/world-map/3d.html
-          grep -q 'function traceGraph' _site/world-map/3d-app.js
-          grep -q 'visited.has(other)' _site/world-map/3d-app.js
-          grep -q 'window.goCountry' _site/world-map/3d-app.js
-          grep -q 'window.fitTrace' _site/world-map/3d-app.js
-          grep -q 'Trace outward' _site/world-map/3d-app.js
-          grep -q 'trace-hubs' _site/world-map/3d-app.js
-          grep -q 'compare-hubs' _site/world-map/3d-app.js
-          grep -q 'function fitCodes' _site/world-map/3d-app.js
-          grep -q 'fitBounds' _site/world-map/3d-app.js
-          grep -q "searchParams.set('depth'" _site/world-map/3d-app.js
-          grep -q 'GEO_LOCAL' _site/world-map/3d-hover.js
-          grep -q 'REST_LOCAL' _site/world-map/3d-hover.js
-          grep -q 'fallbackRestCountries' _site/world-map/3d-hover.js
-          grep -q 'capital-cities' _site/world-map/3d-hover.js
-          grep -q 'function shortestPath' _site/world-map/3d-pathfinder.js
-          grep -q 'world-country-facts.json' _site/world-map/3d-pathfinder.js
-          grep -q "searchParams.set('path'" _site/world-map/3d-pathfinder.js
-          grep -q 'not necessarily the shortest or strongest relationship in the real world' _site/world-map/3d-pathfinder.js
-          grep -q 'Religious composition' _site/world-map/3d-demography.js
-          grep -q 'country-population-labels' _site/world-map/3d-demography.js
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          d=json.loads(Path('_site/data/world-country-demography.json').read_text(encoding='utf-8'))
-          assert d['population_coverage'] >= 150, d['population_coverage']
-          assert d['religion_coverage'] >= 150, d['religion_coverage']
-          assert d['religion_reference_year'] == 2020
-          assert len(d['countries']) == 195
-          f=json.loads(Path('_site/data/world-country-facts.json').read_text(encoding='utf-8'))
-          assert len(f['countries']) == 195
-          assert f['capital_coverage'] >= 190, f['capital_coverage']
-          assert f['area_coverage'] >= 190, f['area_coverage']
-          print(f"Verified atlas demography: population={d['population_coverage']} religion={d['religion_coverage']}")
-          print(f"Verified atlas country facts: capitals={f['capital_coverage']} area={f['area_coverage']}")
-          PY
 
           # Science is a compiled public product, not merely copied source files.
           test -f _site/science/index.html
