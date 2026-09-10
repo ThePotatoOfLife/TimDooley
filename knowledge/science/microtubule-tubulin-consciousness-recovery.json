@@ -1,13 +1,15 @@
 {
   "id":"microtubule-tubulin-consciousness-recovery",
-  "title":"Microtubules / Tubulin / Body-Mind-Spirit — Recovery and Physics Audit",
-  "updated":"2026-09-09",
-  "status":"primary project prompt + Great Book neuroscience/quantum-consciousness archaeology + external scientific audit",
+  "title":"Microtubules / Tubulin / Body-Mind-Spirit — Recovery, Physics Audit and Cross-Scale Research Contract",
+  "version":"2.0.0",
+  "updated":"2026-09-11",
+  "status":"primary project prompt + Great Book neuroscience/quantum-consciousness archaeology + external scientific audit + archive-generated multiscale formalization",
+  "scientific_abstract":"Microtubules provide one of the archive's clearest examples of why cross-scale integration requires more than placing equations from different disciplines beside each other. Their established biological roles include cytoskeletal structure, neuronal polarity, intracellular transport and regulated lattice dynamics. The Great Book and later project prompts additionally explore quantum, synchronization and Spirit/Axis interpretations. The scientifically substantive bridge is therefore not the word 'quantum' but a multiscale map: microscopic tubulin/microtubule states must be transformed into mesoscopic neuronal variables and then into network observables through an explicit channel C_micro->neural. This paper introduces a cross-scale consistency error epsilon_C(t)=||C(Phi_micro^t(X))-Phi_neural^t(C(X))||. A proposed microtubule mechanism becomes explanatory only if it predicts neural evolution within a quantified error regime and outperforms a simpler classical/neural baseline. Quantum variants additionally require a Hamiltonian, environmental/decoherence model, operational coherence or entanglement witness and timescale. This framework preserves the project's microtubule research interest while separating established cell biology, classical collective modes, speculative quantum models and theological interpretation.",
   "importance":"The user's remembered 'tubals/microtubals' strand is real and substantial. Microtubules appear both in the 2024 Great Book's Body-Mind-Spirit/Human Map model and later explicit user prompts tying tubulars/microtubules to Spiral, Tree of Strife, advanced/retarded waves and the Axis. The later 11D transcript then over-literalized some of those links into unsupported claims of social-action-induced quantum entanglement.",
   "primary_project_recovery":[
     "A later user prompt explicitly says to consider 'tubulars even, and microtubules' alongside spooky action at a distance/quantum entanglement, Tree of Strife, upward/downward spiral, advanced/retarded waves, solar-system effects and Axis Mundi.",
     "The Great Book independently contains a detailed microtubule/tubulin section inside the Spirit/non-local layer of a Body-Mind-Spirit Human Map.",
-    "The Great Book also contains explicit consciousness mathematics: logarithmic spiral, Kuramoto-like synchronization, Schrödinger equation, Bell-state notation, Maxwell equation, CSF oscillation toy model, connectivity statistics and fractal measures."
+    "The Great Book also contains explicit consciousness mathematics: logarithmic spiral, Kuramoto-like synchronization, Schrodinger equation, Bell-state notation, Maxwell equation, CSF oscillation toy model, connectivity statistics and fractal measures."
   ],
   "great_book_model":{
     "layers":[
@@ -17,63 +19,97 @@
     ],
     "microtubules":"Tubulin-based cylindrical cytoskeletal structures are proposed in the book as one candidate interface between ordinary neural physiology and the speculative Spirit layer, with Orch-OR and decoherence debates cited.",
     "consciousness_spiral":"r=a exp(b theta), b=ln(phi)/(pi/2)≈0.306",
-    "synchronization":"d theta_i/dt = omega_i + sum_j k_ij sin(theta_j-theta_i)",
+    "synchronization":"d theta_i/dt=omega_i+sum_j k_ij sin(theta_j-theta_i)",
     "project_metric":"C=Phi_spiral(FC,DMN,A,Phi,B,Q)",
-    "quantum_comparator":"H psi = i hbar partial_t psi",
-    "electromagnetic_comparator":"curl B = mu0 J + mu0 epsilon0 partial_t E",
+    "quantum_comparator":"H psi=i hbar partial_t psi",
+    "electromagnetic_comparator":"curl B=mu0 J+mu0 epsilon0 partial_t E",
     "note":"Many numerical biological claims in the book are unverified or too strong and should not be treated as established measurements without primary-source audit."
   },
   "established_microtubule_biology":{
     "facts":[
       "Microtubules are polymers built from alpha/beta-tubulin heterodimers and are major components of the eukaryotic cytoskeleton.",
       "In neurons they help establish polarity, provide tracks for intracellular transport, participate in axon/dendrite development and remodeling, and interact with many microtubule-associated proteins.",
-      "Tubulin post-translational modifications and lattice properties form a biologically meaningful 'tubulin code' affecting stability, trafficking and cellular function."
+      "Tubulin post-translational modifications and lattice properties form a biologically meaningful tubulin code affecting stability, trafficking and cellular function."
     ],
-    "sources":[
-      "https://www.nature.com/articles/nrn2631",
-      "https://www.nature.com/articles/s41580-026-01011-w",
-      "https://www.nature.com/articles/s41467-025-60855-6"
-    ]
+    "sources":["https://www.nature.com/articles/nrn2631","https://www.nature.com/articles/s41580-026-01011-w","https://www.nature.com/articles/s41467-025-60855-6"]
   },
   "quantum_consciousness_status":{
     "orch_or":"Penrose-Hameroff Orch OR proposes cognitively relevant quantum processing in neuronal microtubules; it remains controversial rather than established neuroscience.",
-    "decoherence_debate":"Tegmark-style estimates argued extremely rapid decoherence; Hagan/Hameroff/Tuszynski challenged the modeled assumptions and obtained much longer estimates. The disagreement does not itself establish Orch OR.",
-    "2026_status":"Recent papers continue to propose microtubule quantum-consciousness mechanisms, while 2026 critical reviews emphasize that operational demonstrations of neural entanglement, long-lived coherence and uniquely quantum explanatory necessity remain insufficient/contested.",
-    "sources":[
-      "https://pubmed.ncbi.nlm.nih.gov/12188753/",
-      "https://pubmed.ncbi.nlm.nih.gov/42137085/",
-      "https://pubmed.ncbi.nlm.nih.gov/42041796/",
-      "https://pubmed.ncbi.nlm.nih.gov/42450355/"
-    ]
+    "decoherence_debate":"Tegmark-style estimates argued extremely rapid decoherence; Hagan/Hameroff/Tuszynski challenged the modeled assumptions and obtained longer estimates. The disagreement does not itself establish Orch OR.",
+    "2026_status":"Recent papers continue to propose microtubule quantum-consciousness mechanisms, while critical reviews emphasize that operational demonstrations of neural entanglement, long-lived coherence and uniquely quantum explanatory necessity remain insufficient/contested.",
+    "sources":["https://pubmed.ncbi.nlm.nih.gov/12188753/","https://pubmed.ncbi.nlm.nih.gov/42137085/","https://pubmed.ncbi.nlm.nih.gov/42041796/","https://pubmed.ncbi.nlm.nih.gov/42450355/"]
+  },
+  "multiscale_state_architecture":{
+    "micro_state":"X_micro may include lattice configuration, mechanical/electrical normal-mode amplitudes, tubulin conformational states, molecular transport variables or a density operator rho only when a quantum model is explicitly chosen.",
+    "cell_neuron_state":"X_neuron may include membrane voltage, ion-channel state, transport/resource variables, synaptic variables, firing/spike statistics and morphology/plasticity observables.",
+    "network_state":"X_network may include firing-rate vectors, oscillatory phases, connectivity matrices, graph/spectral statistics and behaviorally linked observables.",
+    "rule":"Each level has its own state space and units; symbols cannot be moved across levels without a map."
   },
   "safe_multiscale_math":{
-    "classical_mode_model":"M q_ddot + Gamma q_dot + K q = xi(t)",
+    "classical_mode_model":"M q_ddot+Gamma q_dot+K q=xi(t)",
     "meaning":"Treat collective tubulin/microtubule mechanical/electrical modes as a driven dissipative system before invoking macroscopic quantum coherence.",
-    "normal_modes":"K u_n = omega_n^2 M u_n",
-    "quantized_mode_comparator":"H_MT = sum_n hbar omega_n (a_n^dagger a_n + 1/2) + H_int",
-    "open_quantum_system":"dot rho = -(i/hbar)[H_MT,rho] + L_decoh[rho]",
-    "neural_scale":"dot theta_i = omega_i + sum_j K_ij sin(theta_j-theta_i) can model synchronization at a coarse neural/network level.",
-    "cross_scale_requirement":"Any proposed microtubule-to-neural-consciousness model must specify how microscopic variables coarse-grain into neuronal firing/network observables rather than simply naming both levels."
+    "normal_modes":"K u_n=omega_n^2 M u_n",
+    "quantized_mode_comparator":"H_MT=sum_n hbar omega_n(a_n^dagger a_n+1/2)+H_int",
+    "open_quantum_system":"dot rho=-(i/hbar)[H_MT,rho]+L_decoh[rho]",
+    "neural_scale":"dot theta_i=omega_i+sum_j K_ij sin(theta_j-theta_i) can model synchronization at a coarse neural/network level.",
+    "rule":"These equations live at different scales. Their coexistence in one file is not a derivation linking them."
+  },
+  "cross_scale_contract":{
+    "map":"C_micro_to_neural:S_micro->S_neural",
+    "network_map":"C_neural_to_network:S_neural^N->S_network",
+    "composition":"C_micro_to_network=C_neural_to_network o C_micro_to_neural when interfaces/types are compatible",
+    "consistency_error":"epsilon_C(t)=||C_micro_to_neural(Phi_micro^t(X))-Phi_neural^t(C_micro_to_neural(X))||",
+    "meaning":"If microscopic dynamics really underwrite a neural effective model, evolve-then-coarse-grain and coarse-grain-then-evolve should agree within a stated approximation regime.",
+    "measurement":"Define the norm/metric, temporal window and acceptable epsilon_C before interpreting agreement.",
+    "failure":"Large or undefined epsilon_C means the micro mechanism has not yet been shown to explain the neural model, even if both descriptions are individually meaningful."
+  },
+  "quantum_branch_contract":{
+    "minimum_fields":["Hamiltonian H_MT","environment/bath model","L_decoh or equivalent open-system dynamics","initial state/preparation","coherence or entanglement observable","measurement protocol","timescale","temperature/biological conditions","cross-scale channel"],
+    "coherence_example":"For selected basis states i,j, monitor |rho_ij(t)| with a declared basis and operational preparation/readout; coherence in one basis is not automatically computation or cognition.",
+    "entanglement_requirement":"If entanglement is claimed, specify subsystems and an operational entanglement witness/measure appropriate to the state class; generic molecular quantum behavior is insufficient.",
+    "decoherence_timescale":"A claimed functional effect requires relevant quantum information to persist and couple onward on timescales compatible with the proposed biological operation.",
+    "baseline":"Classical stochastic/mechanical/electrophysiological microtubule and neuronal models must be compared before asserting uniquely quantum explanatory necessity."
+  },
+  "causal_model_ladder":{
+    "level_0":"correlation: microtubule variable and neural/behavioral variable covary",
+    "level_1":"intervention: perturbing the microtubule variable changes a neural variable under controlled conditions",
+    "level_2":"mechanism: a quantitative C_micro_to_neural predicts the direction/magnitude/timescale of the effect",
+    "level_3":"quantum necessity: a quantum model predicts data that suitable classical models cannot explain comparably",
+    "rule":"Do not jump from molecular importance to quantum necessity or from quantum effect to consciousness without passing intermediate causal levels."
   },
   "timic_operator_translation":{
     "microtubule":"possible substrate/channel candidate, not the Spirit itself",
     "tubulin_state":"local state variable or lattice degree of freedom",
     "Spirit":"project relation/flow layer can be compared with transport/coupling, but cannot be inferred from quantum terminology",
-    "Door":"candidate cross-scale interface where a microstate contributes to a mesoscopic/neural state; mathematically this is better represented by a coarse-graining or channel map C:rho_micro->X_neural",
-    "Axis":"network-level integration/orientation variable, not a literal single microtubule."
+    "Door":"candidate cross-scale interface where a microstate contributes to a mesoscopic/neural state; mathematically represented by a channel/coarse-graining map rather than an unexplained leap",
+    "Axis":"network-level integration/orientation variable, not a literal single microtubule"
+  },
+  "measurement_program":{
+    "micro_observables":["mode frequencies/damping","transport rates","polymerization/depolymerization statistics","mechanical response","electrical/dielectric response where measured","coherence observable if quantum branch"],
+    "neural_observables":["membrane potential/firing","synaptic transmission","transport-dependent function","network oscillation/synchronization","behavioral endpoint if justified"],
+    "model_equation":"y=O(X_micro,X_neural,Theta)+epsilon",
+    "uncertainty":"Separate biological variability, instrument error, state-preparation uncertainty and model discrepancy.",
+    "strong_prediction":"Specify how changing one micro parameter changes a later neural/network observable, including sign, scale and timing, before evaluating the target data."
   },
   "hard_boundaries":[
     "Logging onto a website, eating from a symbolic Tree of Strife, moral choices or social fixation are not known to induce quantum entanglement of neural microtubules.",
     "Quantum entanglement does not permit ordinary controllable faster-than-light communication or prove telepathy.",
     "Room-temperature molecular quantum effects can exist without implying a quantum computer or a quantum theory of consciousness.",
-    "Microtubules are biologically important even if quantum-consciousness hypotheses fail; the classical cytoskeletal/transport/plasticity branch should be kept independent."
+    "Microtubules are biologically important even if quantum-consciousness hypotheses fail; the classical cytoskeletal/transport/plasticity branch remains independent."
+  ],
+  "conclusions":[
+    "Microtubules are a scientifically substantive project node because their biological importance is real; their relevance does not depend on a quantum-consciousness claim succeeding.",
+    "The largest conceptual gap is the cross-scale map from microtubule state to neuronal/network state. The new epsilon_C consistency condition makes that gap explicit and measurable in principle.",
+    "Quantum models should be evaluated as competing mechanistic branches, not as prestige upgrades to classical biology.",
+    "A demonstrated molecular quantum effect would still be several inferential steps away from a theory of consciousness: persistence, controllability, neural coupling, behavioral relevance and quantum necessity each require evidence.",
+    "Within the Potatoverse, Door/Axis language can continue to organize the symbolic interpretation, but the scientific paper should make its strongest claims at the level of biological mechanism and measurable cross-scale prediction."
   ],
   "new_research_program":[
-    "Separate tubulin lattice dynamics, electromagnetic response, transport biology, neural synchronization and consciousness into distinct model levels.",
-    "Replace vague 'quantum computer' wording with explicit Hamiltonian, bath/decoherence model, coherence observable and timescale when discussing quantum variants.",
-    "Define a coarse-graining map from microtubule variables to neuronal/network observables.",
-    "Audit every Great Book frequency, piezoelectric coefficient, neurotransmitter concentration and decoherence value against original peer-reviewed sources before reusing it.",
-    "Test whether the April 21 golden spiral was intended to parametrize neural integration, time, geometry, or all three at different descriptive levels."
+    "Build one explicit C_micro_to_neural map for a well-characterized microtubule-dependent neuronal process.",
+    "Estimate epsilon_C(t) for a classical baseline before adding quantum state variables.",
+    "Replace vague quantum-computer wording with explicit Hamiltonian, bath/decoherence model, coherence observable and timescale when discussing quantum variants.",
+    "Audit every Great Book frequency, coefficient, concentration and decoherence value against original peer-reviewed sources before reuse.",
+    "Test whether the April 21 golden spiral was intended to parametrize neural integration, time, geometry, or several descriptive levels kept distinct."
   ],
-  "connections":["great-book-consciousness-spiral-equations-recovery","april-21-2025-potato-axis-spiral-primary-recovery","yhwh-trinity-operator-toe-archaeology","spirit-context-atlas","body-ladder","quantum-atom-particle-recovery","science-master-index"]
+  "connections":["integrated-scientific-architecture","model-testing-protocol","great-book-consciousness-spiral-equations-recovery","april-21-2025-potato-axis-spiral-primary-recovery","yhwh-trinity-operator-toe-archaeology","spirit-context-atlas","body-ladder","quantum-atom-particle-recovery","science-master-index"]
 }
