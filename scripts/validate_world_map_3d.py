@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 HTML = ROOT / "world-map" / "3d.html"
 APP = ROOT / "world-map" / "3d-app.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
+EVIDENCE = ROOT / "world-map" / "3d-evidence.js"
 RUNTIME = ROOT / "data" / "world-map-3d-runtime.json"
 WORLD = ROOT / "data" / "world-relational-map.json"
 COUNTRIES = ROOT / "data" / "countries" / "index.json"
@@ -52,7 +53,7 @@ def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
 
-    for path in (HTML, APP, HOVER, RUNTIME, WORLD, COUNTRIES):
+    for path in (HTML, APP, HOVER, EVIDENCE, RUNTIME, WORLD, COUNTRIES):
         if not path.exists():
             errors.append(f"missing required atlas file: {path.relative_to(ROOT)}")
     if errors:
@@ -63,6 +64,7 @@ def main() -> int:
     html = HTML.read_text(encoding="utf-8", errors="replace")
     app = APP.read_text(encoding="utf-8", errors="replace")
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
+    evidence = EVIDENCE.read_text(encoding="utf-8", errors="replace")
     runtime = load_json(RUNTIME, errors)
     world = load_json(WORLD, errors)
     countries = load_json(COUNTRIES, errors)
@@ -73,7 +75,7 @@ def main() -> int:
             'id="map"', 'id="panel"', 'id="status"', 'id="search"', 'id="country-list"',
             'id="height"', 'id="compare"', 'id="interior"', 'id="relations"',
             'id="relationType"', 'id="traceDepth"', 'id="fit"', 'id="tilt"', 'id="globe"', 'id="world"',
-            'src="./3d-hover.js"', 'src="./3d-pathfinder.js"',
+            'src="./3d-hover.js"', 'src="./3d-pathfinder.js"', 'src="./3d-evidence.js"',
             "Trace · 1 hop", "Trace · 2 hops", "Trace · 3 hops",
             "navigation handles rather than fake geographic locations",
         ),
@@ -108,8 +110,20 @@ def main() -> int:
         "world-map/3d-hover.js",
         errors,
     )
+    fail_if_missing(
+        evidence,
+        (
+            "id = 'evidenceEye'", "id = 'evidencePanel'", "world-country-facts.json",
+            "world-country-demography.json", "world-relational-map.json", "function projectStatuses",
+            "function relationsFor", "Source provenance and epistemic context",
+            "Project interpretation", "Repetition is not corroboration", "window.refreshAtlasEvidence",
+        ),
+        "world-map/3d-evidence.js",
+        errors,
+    )
     check_js_syntax(app, "3d-app.js", warnings, errors)
     check_js_syntax(hover, "3d-hover.js", warnings, errors)
+    check_js_syntax(evidence, "3d-evidence.js", warnings, errors)
 
     if runtime.get("status") != "active renderer contract":
         errors.append("world-map-3d-runtime must be marked as the active renderer contract")
@@ -194,6 +208,7 @@ def main() -> int:
     print("Trace contract: breadth-first · 1–3 hops · cycle guarded · capped")
     print("Boot contract: local snapshot · provider retry · emergency synthesis")
     print("Runtime contract: active renderer · projection/time contracts · Path/Trace/Compare/Axis documented")
+    print("Eye contract: country fact provenance · demography source/time · relation layers · project/empirical boundary")
     print("Hover contract: country facts · capital city node/name/population")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings:
