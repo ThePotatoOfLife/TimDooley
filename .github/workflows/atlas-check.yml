@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
       - name: Set up Python
         uses: actions/setup-python@v6
         with:
@@ -60,5 +62,26 @@ jobs:
         run: python scripts/audit_web.py
       - name: Build static site
         run: python scripts/build_site.py
+      - name: Compile complete science catalog
+        run: python scripts/build_science_catalog.py
+      - name: Build search discovery layer
+        run: python scripts/build_discovery.py
+      - name: Expose discovery entry points
+        run: python scripts/patch_home_discovery.py
+      - name: Apply public ontology patch
+        run: python scripts/patch_public_ontology.py
+      - name: Optimize and audit SEO
+        run: python scripts/optimize_seo.py
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
+      - name: Verify SEO report
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          report = json.loads(Path('_site/seo-report.json').read_text(encoding='utf-8'))
+          assert report['errors'] == 0, report
+          assert report['pages_with_open_graph'] == report['pages'], report
+          assert report['pages_with_structured_data'] == report['pages'], report
+          print(json.dumps(report, indent=2))
+          PY
