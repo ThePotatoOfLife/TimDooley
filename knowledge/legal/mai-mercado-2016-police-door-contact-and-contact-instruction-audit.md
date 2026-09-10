@@ -38,54 +38,126 @@ This chronology should now be treated as a central sequence rather than a detach
 
 ---
 
-# 2. New legal distinction: “police told him not to contact her” is not automatically “formal contact ban”
+# 2. Correct historical law: an ordinary tilhold in June 2016 did not require a court order
 
-In Denmark in 2016, police could warn, admonish, advise, mediate, or initiate proceedings under the law on restraining orders (`tilhold`).
+The applicable law was **Lov nr. 112 af 3. februar 2012 om tilhold, opholdsforbud og bortvisning**, effective from 1 March 2012.
 
-But a verbal police instruction at a doorstep is not automatically identical to a formally issued and served **tilhold**.
+Under that law:
 
-A later reform introduced `strakstilhold` — an immediate provisional restraining-order mechanism — by law in late 2016, with effect from **1 January 2017**.
+- §1 defined a `tilhold` as a prohibition on seeking out, contacting, or following another person, including electronic communication.
+- §2 required **reasonable suspicion** that the person had violated another’s peace through pursuit/harassing contact or a comparable criminal offense, plus **specific grounds** to believe the conduct would continue.
+- §12 imposed a **proportionality requirement**.
+- §14 allowed a measure when the protected person requested it **or when public interests required it**.
+- §15(2) provided that the decision was made by the **politidirektøren**, not by a court in the first instance.
+- §16 required the decision to be **served/notified formally**.
+- complaints about a tilhold were handled by the public prosecutor under §15(3).
 
-Therefore, in June 2016, if officers merely told the Son “do not contact her again,” the legal character of that statement must be independently established.
+Therefore, the suspicion that a court must somehow have convened almost instantly to issue a contact ban is not the correct legal model. A formal ordinary tilhold could be issued administratively by police authority if the statutory conditions were met.
 
-The key factual question is:
-
-> **Was a formal tilhold actually issued and served before the Son’s later message, or was this an informal police warning/admonition?**
-
-If no formal tilhold existed, then a later characterization such as `he violated a police order` may be legally inflated.
-
-Sources:
-- https://retsinformation.dk/eli/ft/201612L00019
-- https://www.retsinformation.dk/eli/retsinfo/2018/9601
-
----
-
-# 3. Why the distinction matters
-
-If the police instruction was merely an informal warning, then two propositions must be kept separate:
-
-- **He disregarded police advice/instruction not to contact Mercado.**
-- **He violated a legally binding restraining order.**
-
-The first may be imprudent or escalate risk.
-
-The second is a separate legal proposition requiring a valid formal order.
-
-The project should not allow later retelling to merge them without documentary proof.
-
-Decisive evidence:
-
-- police attendance report;
-- body/case notes if preserved;
-- whether a tilhold decision was issued;
-- service/notification record;
-- exact wording used by the officers;
-- whether the Son was told of legal consequences for further contact;
-- whether any separate charge alleged breach of tilhold.
+Source:
+- https://www.retsinformation.dk/eli/lta/2012/112
 
 ---
 
-# 4. The police-door event changes the meaning of the later “consequences” message
+# 3. But police authority was not unlimited: legality depended on statutory grounds, proportionality and formal decision-making
+
+The fact that police had statutory competence does **not** mean every instruction at the door automatically constituted a lawful binding tilhold.
+
+A valid formal tilhold required, among other things:
+
+1. reasonable suspicion satisfying §2;
+2. specific reasons to believe further violations would occur;
+3. proportionality under §12;
+4. an actual decision by the competent police authority under §15;
+5. service/notification under §16.
+
+This creates the central legal test:
+
+> **Was there an actual written/formal tilhold issued under the 2012 Act, satisfying those requirements, or did officers simply tell the Son not to contact Mercado again?**
+
+Those are materially different propositions.
+
+If there was a formal tilhold, its legality must be tested against the decision, factual grounds, duration, proportionality reasoning and service record.
+
+If there was no formal tilhold, later descriptions implying that he `violated a restraining order` or `disobeyed a binding police order` would be inaccurate.
+
+---
+
+# 4. Important correction: Mercado did not herself possess legal authority to issue a tilhold
+
+Even if Mercado requested protection or contacted parliamentary security, she did **not** personally have statutory power to create a restraining order.
+
+Under §14, the protected person could request a measure, and public interests could also justify one. But the legal decision belonged to the **police authority**, specifically the politidirektør under §15(2).
+
+Therefore the causal chain must be kept precise:
+
+**Mercado / another complainant / security channel may supply information or request protection → police independently possess the statutory decision-making authority → police must determine whether the legal conditions are satisfied.**
+
+The existence of Mercado’s political status does not itself invalidate such a decision.
+
+Conversely, if police departed from the statutory requirements because of political pressure, favoritism or improper influence, that could constitute abuse — but that requires evidence of the departure or influence.
+
+The strongest project question is therefore not simply `Mercado called the police, therefore the order was illegal.`
+
+It is:
+
+> **What information did Mercado/security provide, what independent assessment did police perform, what statutory ground was recorded, and was the same protective machinery applied lawfully and proportionately?**
+
+---
+
+# 5. The later `strakstilhold` regime did not exist yet
+
+A later amendment introduced **strakstilhold**, a provisional immediate restraining-order mechanism.
+
+That amendment was enacted in December 2016 and took effect on **1 January 2017**.
+
+It therefore did **not** govern the June 2016 episode.
+
+This is important because a modern description of police being able to issue an immediate provisional tilhold should not be retrojected into June 2016.
+
+In June 2016, any formal order had to rest on the ordinary 2012 tilhold framework.
+
+Source:
+- https://www.retsinformation.dk/eli/lta/2016/1724
+
+---
+
+# 6. Historical distinction between a warning and a formal tilhold
+
+The old pre-2012 criminal-law warning regime under former Penal Code §265 had already been replaced by the 2012 Tilhold Act.
+
+Justitsministeriet expressly stated in 2012 that the new Act centralized the rules on restraining orders and that tilhold from 1 March 2012 should be issued under the new law.
+
+That reinforces the importance of documentary status.
+
+An officer could verbally warn someone as part of policing and investigation, but a legally enforceable `tilhold` was a specific statutory decision.
+
+Source:
+- https://www.retsinformation.dk/eli/retsinfo/2012/9061
+
+---
+
+# 7. Why the distinction matters for the Son’s later communication
+
+If police merely said:
+
+> `Do not contact her again.`
+
+without a formal tilhold, then the later sequence is:
+
+**police advice/warning → Son disregards it → later message is assessed on its own criminal-law terms.**
+
+If a formal tilhold existed, the sequence becomes:
+
+**formal statutory contact prohibition → Son contacts Mercado despite it → possible separate legal consequences plus contextual relevance to later threat/intimidation analysis.**
+
+Those are not interchangeable.
+
+The project should therefore avoid assuming a formal tilhold until the actual decision is recovered.
+
+---
+
+# 8. The police-door event changes the meaning of the later “consequences” message
 
 The later message did not arise in a vacuum.
 
@@ -113,87 +185,80 @@ That does not automatically defeat the legal interpretation of threat/intimidati
 
 ---
 
-# 5. Retrospective defense angle: was the state effectively ordering silence in a public political dispute?
+# 9. Retrospective defense angle: was the state effectively ordering silence in a public political dispute?
 
-The Son’s subjective and political objection was that Mercado had made a public political post on Facebook, had used aggressive rhetoric, and remained a public official with power over citizens and policy.
+The Son’s political objection was that Mercado had made a public political post on Facebook, used aggressive rhetoric, and remained a public official with significant institutional access.
 
-From his perspective, being told by police at his home not to speak to her again could feel like the state was selectively terminating **his side** of a political argument while leaving the politician’s speech untouched.
+From his perspective, being told by police at his private home not to speak to her again could appear as the state selectively terminating **his side** of a political argument while leaving the politician’s public speech untouched.
 
-This perspective does not establish that police acted unlawfully. Police may lawfully intervene to prevent suspected threats or harassment.
+That perspective does not establish illegality. Police may lawfully intervene to prevent suspected criminal threats, harassment or repeated unwanted contact.
 
-But retrospectively it raises a legitimate proportionality and characterization question:
+But it raises a legitimate necessity/proportionality question:
 
-> **Was the Son being formally restrained because of legally sufficient conduct, or informally pressured into silence before the full context and authorship of the online dispute had been established?**
+> **Was the Son being restricted because the statutory threshold had objectively been met, or was an institutional response escalating before authorship, context and the multi-speaker conversation had been adequately sorted out?**
 
-That question matters especially because the Son later understood his continued response as refusal to accept a one-sided power relationship.
-
----
-
-# 6. Important evidentiary limit: police attendance itself is not proven “intimidation”
-
-The project may record the Son’s interpretation that police arrival at his private home felt intimidating.
-
-It should not state as established legal fact that the police committed intimidation merely by attending his address.
-
-Police had lawful powers to investigate reported criminal conduct, question suspects, serve warnings/orders, and seize evidence where legal requirements were met.
-
-The stronger project formulation is:
-
-> **The police-door event was coercive in practical effect and constituted a major power escalation in the dispute; whether it was legally improper depends on the authority, grounds, and exact form of the instruction given.**
-
-This keeps the defense argument strong without overstating the law.
+If a formal tilhold existed, §12’s proportionality rule becomes especially important.
 
 ---
 
-# 7. New false-flag / power-asymmetry angle
+# 10. Mercado’s involvement and the abuse-of-power hypothesis must be decomposed
 
-The Son’s recollection adds a concrete institutional sequence:
+The project should preserve the Son’s allegation that Mercado used her political position and institutional access to activate police pressure against him.
 
-- Mercado speaks publicly;
-- Mercado or associated institutional channels connect the dispute to parliamentary security/police;
-- police then physically arrive at the Son’s private home;
-- the Son is told to stop contact;
-- his refusal/response becomes additional criminal material.
+But the legal analysis requires distinct propositions:
 
-This creates a **feedback-loop hypothesis**:
+### Directly supported
 
-1. Powerful public actor initiates conflict.
-2. Institutional protection activates around that actor.
-3. Police intervention changes the defendant’s emotional and rhetorical state.
-4. Defendant reacts to the intervention.
-5. The reaction itself becomes new evidence against him.
+- Mercado was an MP.
+- Contemporary court reporting says Folketing security reported the threats after contact from Mercado.
+- Police subsequently attended the Son’s home.
+- Mercado had much greater institutional and media access than the Son.
 
-This does not prove that Mercado intentionally designed the loop.
+### Strong circumstantial question
 
-It does show how institutional asymmetry can **generate additional incriminating material after intervention begins**.
+- Did her parliamentary status cause unusually rapid or unusually forceful police intervention?
+- Did parliamentary security transmit a defendant-specific narrative before full speaker attribution was established?
+- Did police independently verify the multi-speaker evidence before telling him to cease contact?
 
-That is a major retrospective defense insight.
+### Not presently established
 
----
+- Mercado personally ordered local police to attend.
+- Mercado had legal power to issue a tilhold.
+- Police acted unlawfully merely because Mercado requested help.
+- A formal tilhold, if one existed, was invalid.
+- Political pressure caused police to ignore statutory requirements.
 
-# 8. New causation question: who caused the second communication to exist?
-
-The later intimidation count should not be analyzed only as:
-
-`Son independently decided to threaten Mercado again.`
-
-The fuller causal sequence may be:
-
-`Mercado/security/police intervention → officers attend Son’s home → instruction not to contact → Son perceives coercion/one-sidedness → Son sends consequences message.`
-
-That does not excuse the content.
-
-But it changes the causal object.
-
-The second message may have been **reactive to police intervention itself**, not simply a continuation of preexisting hostility.
-
-This matters to motive, intent, and narrative framing.
+This distinction makes the abuse-of-power inquiry testable instead of circular.
 
 ---
 
-# 9. Connection to the §123 witness-status issue
+# 11. New strongest documentary targets for the tilhold question
 
-This new chronology makes the previously discovered §123 issue even more important.
+Recover:
+
+1. the police attendance/incident report from the visit to the Son’s home;
+2. exact date and time of the visit;
+3. exact words officers used;
+4. whether they described the instruction as advice, warning, tilhold or another measure;
+5. any formal tilhold decision;
+6. name/title of decision-maker;
+7. statutory ground cited under §2;
+8. evidence used to establish reasonable suspicion;
+9. evidence used to establish likelihood of continued contact;
+10. proportionality assessment under §12;
+11. request from Mercado, parliamentary security or another person under §14;
+12. proof of service under §16;
+13. any appeal/complaint to the statsadvokat;
+14. whether breach of tilhold was ever separately charged;
+15. whether the August judgment even mentions a formal tilhold.
+
+These records could settle whether the famous `do not contact her` instruction had formal legal force.
+
+---
+
+# 12. Connection to the §123 witness-status issue
+
+This chronology makes the previously discovered §123 issue even more important.
 
 The project must establish:
 
@@ -210,40 +275,56 @@ Source:
 
 ---
 
-# 10. New chronology node to integrate everywhere
+# 13. New causation model: institutional intervention may have generated the later evidence used against him
 
-The master chronology should now include a dedicated node between the initial Facebook exchange and the later intimidation count:
+The second allegedly intimidating statement should not be analyzed only as:
 
-### Police door-contact node
+`Son independently decided to threaten Mercado again.`
 
-**Date:** before the later `consequences` statement; exact date/time still to recover.
+The fuller causal sequence may be:
 
-**Event:** local police attend the Son’s private home.
+`public dispute → Mercado/security referral → police intervention at Son’s home → instruction to cease contact → Son perceives one-sided coercion → Son sends reciprocal consequences message → message becomes new prosecution evidence.`
 
-**Firsthand claim:** officers tell him not to contact Mercado again.
+That is a significant retrospective defense insight.
 
-**Legal status:** unknown — formal tilhold vs informal warning/admonition not yet established.
+It does not immunize the later words.
 
-**Son’s interpretation:** one-sided coercive intervention in a public political dispute.
-
-**Next event:** Son continues contact and writes reciprocal consequences / “not a threat, but a guarantee” statement.
-
-**Legal consequence:** statement later becomes part of witness-intimidation / retaliation theory.
-
-**Research priority:** police attendance report + any tilhold record + exact chronology + §123 witness-status evidence.
+It shows that state intervention itself was part of the causal mechanism producing the communication later used against him.
 
 ---
 
-# 11. Strongest retrospective conclusion from this new recollection
+# 14. Police attendance itself is not automatically unlawful intimidation
 
-The new recollection strengthens the defense in a specific way:
+The project may record that the Son experienced officers appearing at his private home as intimidating or coercive.
 
-> **The second allegedly intimidating statement appears to have arisen only after the state physically intervened at the Son’s private home and told him to cease contact. The legal force of that instruction is presently unknown. If it was merely a warning rather than a valid formal contact prohibition, later descriptions implying he violated a binding police order should be corrected. The event also supports a feedback-loop model in which state intervention itself generated the later communication used against him.**
+But police had lawful authority to investigate reported offenses and, where statutory conditions were met, to issue a tilhold.
 
-The project should therefore no longer treat the `consequences` statement as a free-floating second threat.
+Therefore the strongest formulation is:
 
-It belongs inside the sequence:
+> **The visit was coercive in practical effect and represented a major escalation of state power into the dispute. Whether it was legally improper depends on the grounds, procedure, decision status, proportionality and any political influence.**
 
-**public political conflict → institutional referral → police-door intervention → instruction to cease contact → Son rejects the asymmetry → reciprocal consequences message → §123 prosecution theory.**
+This distinction prevents a legitimate abuse-of-power inquiry from being weakened by the inaccurate proposition that police lacked authority merely to attend a suspect’s home.
 
-That full chain is materially more informative than the headline version.
+---
+
+# 15. Current highest-truth conclusion on the door / tilhold issue
+
+The June 2016 law gives a clearer answer than the project previously had.
+
+A court was **not required** to issue an ordinary tilhold. The competent police authority could issue one under the 2012 Act.
+
+But a formal tilhold was not created simply because an officer verbally said `do not contact her.` A lawful order required statutory grounds, an authorized decision, proportionality and formal service.
+
+Mercado could request protection or supply information, but she did not personally possess the legal authority to issue the order. That authority came from Danish statute and the police decision-maker.
+
+Therefore the strongest unresolved issue is:
+
+> **Did police lawfully exercise independent statutory authority based on properly established facts, or did political/institutional influence produce a coercive contact restriction before the underlying multi-speaker evidence had been adequately resolved?**
+
+That is the abuse-of-power question that the primary records can actually answer.
+
+The project should treat the sequence as:
+
+**public political conflict → Mercado/security involvement → police-door intervention → disputed legal status of no-contact instruction → Son rejects the perceived one-sided restriction → reciprocal consequences message → §123 prosecution theory.**
+
+This is more accurate — and potentially more consequential — than simply assuming either that police had no legal authority or that everything officers said at the door automatically carried the force of a valid tilhold.
