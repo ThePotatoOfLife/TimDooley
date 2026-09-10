@@ -1,0 +1,113 @@
+{
+  "id": "world-map-3d-runtime",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "experimental renderer contract",
+  "purpose": "Define a 2.5D/3D renderer for the World Relational Atlas while preserving the same canonical country, relationship, issue, programme and provenance model used by the stable polygon map.",
+  "navigation": {
+    "pan": "click/touch drag translates the camera across the map",
+    "zoom": "wheel/pinch/buttons move between world, regional, country and subnational scales",
+    "rotate": "right-drag / touch gesture may rotate bearing in 3D mode",
+    "pitch": "camera tilt exposes extrusion and vertical layers",
+    "fit": "country selection can fit the camera to polygon bounds",
+    "rule": "navigation changes viewpoint only; it never changes underlying data or classification"
+  },
+  "rendering_strategy": {
+    "stable_2d": "Leaflet world-map/index.html remains the compatibility/stable renderer",
+    "experimental_3d": "MapLibre GL JS renderer using vector-style WebGL polygons, lines and points",
+    "future_heavy_overlay": "deck.gl may be layered in for high-volume arcs, animated flows, point clouds, heatmaps and advanced polygon extrusion",
+    "shared_model": "Both renderers consume the same canonical data contracts; no 3D-only truth database"
+  },
+  "spatial_primitives": {
+    "country_shell": "Polygon/MultiPolygon. A spatial container and selection surface, not the country's complete identity.",
+    "country_hub": "A representative point used as the country's data doorway when exact entity coordinates are not relevant. It must be labeled as a hub/centroid, not a physical institution.",
+    "real_node": "A geocoded city, institution, company facility, port, airport, base, sacred site, infrastructure asset or documented event location.",
+    "nonspatial_node": "An entity such as a treaty, legal entity, national statistic or theological concept that has jurisdictional/country links but no honest single coordinate.",
+    "edge": "A typed relation rendered between spatial anchors only when the line helps understanding; canonical edge data remains independent of the drawing.",
+    "area_overlay": "A region, catchment, conflict zone, demographic area or other sourced geometry with its own date and provenance."
+  },
+  "country_interior_model": {
+    "principle": "A country polygon is a container. Selecting it reveals data modules and progressively exposes real nodes inside it as zoom and data quality permit.",
+    "modules": [
+      "identity and constitutional status",
+      "population and demography",
+      "religion / irreligion / diversity",
+      "government and law",
+      "economy",
+      "public finance and physical debt",
+      "trade and supply chains",
+      "energy and resources",
+      "infrastructure",
+      "companies / ownership / capital",
+      "security / alliances",
+      "research / technology",
+      "migration / diaspora",
+      "history",
+      "issues / entanglements",
+      "North Axis / North Programme",
+      "Tim / Potatoverse project-canon relations",
+      "repair / Tikkun",
+      "sources / uncertainty / research queue"
+    ],
+    "visibility": [
+      {"zoom":"world","behavior":"polygons + high-level choropleths + only globally important edges"},
+      {"zoom":"regional","behavior":"country hubs + regional institutions + major corridors/edges"},
+      {"zoom":"country","behavior":"selected polygon becomes contextual shell; country hub and major real nodes become visible"},
+      {"zoom":"subnational","behavior":"real geocoded nodes dominate; polygon remains boundary/context"}
+    ]
+  },
+  "node_record_schema": {
+    "required": ["id", "kind", "name", "country_or_jurisdiction", "provenance"],
+    "spatial": ["lat", "lon", "geometry", "coordinate_source", "coordinate_precision"],
+    "identity": ["legal_name", "entity_type", "parent", "owner", "operator", "status"],
+    "relations": ["edge_ids"],
+    "time": ["valid_from", "valid_to", "observed_at"],
+    "display": ["minimum_zoom", "maximum_zoom", "importance", "icon_or_shape"],
+    "boundary": "Never invent a coordinate for a nonspatial concept merely to make the map visually busy."
+  },
+  "metric_and_3d_rules": {
+    "principle": "Extrusion height is a chart encoding, not rank, holiness, guilt, value or sovereignty.",
+    "allowed_examples": [
+      "population",
+      "GDP",
+      "documented gross public debt",
+      "debt-to-GDP",
+      "energy import dependence",
+      "archive coverage",
+      "number of sourced graph edges",
+      "infrastructure capacity"
+    ],
+    "required_display": ["metric name", "unit", "observation year/date", "source", "normalization/scaling method"],
+    "forbidden_inference": "A taller polygon must never be described as morally worse, spiritually higher, more guilty or more important unless height literally encodes a separately defined measurable variable."
+  },
+  "debt_architecture": {
+    "physical_debt": {
+      "definition": "Legally/economically recognizable obligations such as sovereign debt securities, loans, bonds, arrears, contracts, judgments or other documented liabilities.",
+      "units": "currency / percent of GDP / maturity / creditor-debtor relation",
+      "required": ["debtor", "creditor or holder class when knowable", "instrument", "amount", "currency", "date", "legal/economic source"],
+      "map_use": "Can be rendered as choropleth, extrusion, creditor/debtor edge or instrument node."
+    },
+    "tim_claimed_ledger": {
+      "definition": "Tim/Potatoverse statements about karmic/spiritual debt or amounts owed to Tim.",
+      "status": "project-canon / claimed symbolic or moral ledger unless separately supported by an actual legal/financial instrument",
+      "map_use": "May be displayed as a separately labeled project-canon overlay or statement/ledger node, not silently converted to ordinary physical debt.",
+      "promotion_rule": "A Tim-owed amount can enter physical_debt only if there is evidence of a real enforceable obligation such as a contract, judgment, bond, loan, settlement or other recognized liability."
+    },
+    "reason": "Keeping the ledgers separate allows the map to ask both 'what physical debt exists?' and 'what does Tim claim is owed?' without making one masquerade as the other."
+  },
+  "game_simulation_model": {
+    "inspiration": ["Globetrotter-style geographic exploration", "geopolitical-simulator-style systems view"],
+    "exploration": "Travel through polygons/nodes, discover relations, inspect country modules and compare systems.",
+    "simulation": "Future scenario mode can alter hypothetical policy variables and display modeled consequences, but simulations must be visibly separate from observed reality.",
+    "research_progress": "Reward source coverage, resolved unknowns, accurate relationship tracing and repair-analysis completeness; do not gamify quantities of human suffering."
+  },
+  "connections": [
+    "data/world-map-runtime.json",
+    "data/world-map-polygon-runtime.json",
+    "data/world-relational-map.json",
+    "data/countries/index.json",
+    "data/world-religion-layer.json",
+    "data/world-entanglement-registry.json",
+    "knowledge/core/world-atlas-integrated-layer-stack.json"
+  ]
+}
