@@ -42,6 +42,26 @@ jobs:
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
+      - name: Snapshot atlas runtime data
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/data
+          # Geometry is required in the deployed artifact so ordinary atlas loading
+          # never depends on a third-party CDN at browser runtime.
+          curl -fsSL --retry 3 --retry-delay 1 \
+            https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json \
+            -o _site/data/world-countries.geo.json
+          test -s _site/data/world-countries.geo.json
+          # Country facts are a best-effort snapshot. If this provider is unavailable
+          # during a build, the browser still has an external retry and local synthesis.
+          if ! curl -fsSL --retry 3 --retry-delay 1 \
+            'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders' \
+            -o _site/data/rest-countries-runtime.json; then
+            rm -f _site/data/rest-countries-runtime.json
+            echo 'REST Countries snapshot unavailable; runtime fallback remains enabled.'
+          fi
+
       - name: Compile complete science catalog
         run: python scripts/build_science_catalog.py
 
@@ -82,14 +102,16 @@ jobs:
           test -f _site/world-map/index.html
           test -f _site/world-map/3d.html
           test -f _site/world-map/3d-app.js
+          test -f _site/world-map/3d-hover.js
           test -f _site/world-map/3d-pathfinder.js
+          test -s _site/data/world-countries.geo.json
           test -f _site/data/world-map-3d-runtime.json
           test -f _site/data/world-relational-map.json
           grep -q 'World Relational Atlas' _site/world-map/3d.html
           grep -q 'id="compare"' _site/world-map/3d.html
           grep -q 'id="relationType"' _site/world-map/3d.html
           grep -q 'id="traceDepth"' _site/world-map/3d.html
-          grep -q 'src="./3d-app.js"' _site/world-map/3d.html
+          grep -q 'src="./3d-hover.js"' _site/world-map/3d.html
           grep -q 'src="./3d-pathfinder.js"' _site/world-map/3d.html
           grep -q 'Trace · 3 hops' _site/world-map/3d.html
           grep -q 'function traceGraph' _site/world-map/3d-app.js
@@ -102,6 +124,10 @@ jobs:
           grep -q 'function fitCodes' _site/world-map/3d-app.js
           grep -q 'fitBounds' _site/world-map/3d-app.js
           grep -q "searchParams.set('depth'" _site/world-map/3d-app.js
+          grep -q 'GEO_LOCAL' _site/world-map/3d-hover.js
+          grep -q 'REST_LOCAL' _site/world-map/3d-hover.js
+          grep -q 'fallbackRestCountries' _site/world-map/3d-hover.js
+          grep -q 'capital-cities' _site/world-map/3d-hover.js
           grep -q 'function shortestPath' _site/world-map/3d-pathfinder.js
           grep -q "searchParams.set('path'" _site/world-map/3d-pathfinder.js
           grep -q 'not necessarily the shortest or strongest relationship in the real world' _site/world-map/3d-pathfinder.js
