@@ -1,0 +1,292 @@
+{
+  "title": "Mai Mercado / Christiania 2016 — Article Contradiction and Framing Ledger",
+  "version": "1.0.0",
+  "status": "forensic-media-audit",
+  "updated": "2026-09-10",
+  "purpose": "Audit contemporaneous and retrospective articles about the 2016 Mercado/Christiania case for source dependence, attribution drift, factual inconsistency, framing changes, omitted context, and unresolved conflicts with the Son's firsthand account.",
+  "core_rule": "Do not treat repeated publication as independent confirmation. Track the first identifiable source for each proposition and distinguish direct quotation, reporter paraphrase, prosecution framing, court finding, Mercado statement, other-defendant testimony, and later retrospective shorthand.",
+  "firsthand_claims_to_test": [
+    "Mercado deleted comments and later the whole thread after police/media involvement.",
+    "Some statements later attributed to the Son were written by other Facebook users.",
+    "Mercado's later recollection of the thread was inaccurate or conflated speakers/comments.",
+    "The central 'vil du gerne dø?' remark functioned as 'do you have a death wish / are you crazy?' in reply to another user's extreme comment.",
+    "The public/media story progressively lost the reply tree and speaker topology."
+  ],
+  "articles": [
+    {
+      "date": "2016-06-18",
+      "outlet": "Avisen.dk",
+      "title": "Politiker får dødstrussel efter kontroversielt Facebook-opslag",
+      "url": "https://www.avisen.dk/politiker-faar-doedstrussel-efter-kontroversielt-fac_392680.aspx",
+      "source_type": "early contemporary report",
+      "key_points": [
+        "Preserves Mercado's original 'gennemsmadrer hashboder' wording.",
+        "Describes broad backlash involving many users.",
+        "Frames at least one life-threat as reported to police.",
+        "Shows the controversy already contained multiple insults and speakers before the Son's remand hearing."
+      ],
+      "audit_notes": [
+        "Important baseline because it predates the June 21 hearing coverage.",
+        "Use to reconstruct what was publicly known before courtroom paraphrases appeared."
+      ]
+    },
+    {
+      "date": "2016-06-21 12:03",
+      "outlet": "Ritzau republished by Avisen.dk / Local Eyes / Dagens",
+      "title": "Sønderjyde kræves fængslet for at true folketingsmedlem",
+      "url": "https://www.avisen.dk/soenderjyde-kraeves-faengslet-for-at-true-folketings_393079.aspx",
+      "source_type": "wire report citing TV2 and police",
+      "key_points": [
+        "Mercado confirms to TV2 that she is the politician.",
+        "Police decline to identify the politician or specify conduct before the hearing.",
+        "Mercado says to TV2 that she did not make the police report.",
+        "Her follow-up describes police as having 'fjernede 37 hashboder' after the original post celebrated that police 'gennemsmadrer' the stalls.",
+        "She says she had not intended to provoke."
+      ],
+      "audit_notes": [
+        "Framing shift: original forceful verb 'gennemsmadrer' becomes neutralized in her own follow-up as 'fjernede'.",
+        "Her statement that she did not intend to provoke sits alongside an original post that many contemporaries experienced as deliberately provocative; intention remains her self-report, not an objective fact.",
+        "The identity of the 'other' reporter is not supplied."
+      ]
+    },
+    {
+      "date": "2016-06-21 13:31",
+      "outlet": "SønderborgNYT",
+      "title": "29-årig mand varetægtsfængslet i fire uger for trusler mod folketingsmedlem Mai Mercado",
+      "url": "https://www.sonderborgnyt.dk/29-aarig-mand-varetaegtsfaengslet-i-fire-uger-for-trusler-mod-folketingsmedlem-mai-mercado/",
+      "source_type": "local courtroom report",
+      "key_points": [
+        "Reports that the defendant denied guilt and appealed remand.",
+        "Reports he acknowledged around fifteen Facebook posts/contributions.",
+        "Says individual posts were read aloud in court.",
+        "Publishes a compressed sequence of fragments joined by ellipses, including 'vil du gerne dø?' and knife/child/Jo Cox fragments."
+      ],
+      "audit_notes": [
+        "This is one of the closest surviving sources to the hearing but is not a transcript.",
+        "Ellipses remove parent comments, addressees, intervening text, reply hierarchy and potentially speaker distinctions.",
+        "The fragmentary grammar ('jeg stikke...') indicates the printed text should not automatically be treated as verbatim Facebook transcription.",
+        "This article is a critical point where thread topology can be lost."
+      ]
+    },
+    {
+      "date": "2016-06-21 14:35",
+      "outlet": "Ritzau republished by Avisen.dk",
+      "title": "Hashryger fængslet for dødstrusler mod K-politiker",
+      "url": "https://www.avisen.dk/hashryger-faengslet-for-doedstrusler-mod-k-politiker_393112.aspx",
+      "source_type": "wire report explicitly citing JydskeVestkysten",
+      "key_points": [
+        "Reports defendant's explanation that Mercado mocked cannabis users.",
+        "Prints three polished alleged statements and attributes them via JydskeVestkysten.",
+        "Says another Facebook user reported the case to police.",
+        "Prints the post-police 'consequences' statement.",
+        "Reports denial of guilt."
+      ],
+      "audit_notes": [
+        "Attribution dependence is explicit: the incriminating quotations are not independently sourced by Ritzau but attributed to JydskeVestkysten.",
+        "The report says age 28, while same-day and later reports say 29: concrete factual inconsistency demonstrating metadata errors in the press chain.",
+        "The polished quotations are more syntactically complete than the local courtroom fragments, raising a provenance question about reconstruction versus verbatim text.",
+        "The phrase 'another Facebook user' remains unidentified and does not specify whether the report concerned the Son, another commenter, one particular Jo Cox remark, or the broader thread."
+      ]
+    },
+    {
+      "date": "2016-06-2016 week",
+      "outlet": "DenOffentlige",
+      "title": "Efter uge med drab, overfald og spytklat: Politikere efterlyser god tone – hos alle andre",
+      "url": "https://www.denoffentlige.dk/politik/efter-uge-med-drab-overfald-og-spytklat-politikere-efterlyser-god-tone-hos-alle-andre",
+      "source_type": "contemporary commentary quoting Mercado follow-up",
+      "key_points": [
+        "Records the original forceful Christiania wording.",
+        "Notes that many people regarded it as glorification of brutal police conduct.",
+        "Records Mercado defending the word choice while simultaneously calling for civil tone.",
+        "Lists several extreme comments, including acid-bath, visit-at-night, sawn-apart and AIDS language, without establishing that all were written by one person."
+      ],
+      "audit_notes": [
+        "Crucial evidence that the wider thread contained many extreme statements and multiple speakers.",
+        "Creates a concrete speaker-contamination risk when later articles discuss 'the threats' without preserving authorship per sentence.",
+        "The acid-bath statement is therefore part of the broader thread record, not presently primary-authenticated to the Son."
+      ]
+    },
+    {
+      "date": "2016-08-12",
+      "outlet": "Ritzau republished by Avisen.dk",
+      "title": "29-årig mand skal i fængsel for trusler mod Mai Mercado",
+      "url": "https://www.avisen.dk/29-aarig-mand-skal-i-faengsel-for-trusler-mod-mai-me_400732.aspx",
+      "source_type": "post-judgment wire report",
+      "key_points": [
+        "Records five-month unconditional sentence and conviction on three of four counts.",
+        "Records prosecutor had requested six months.",
+        "Repeats the same three alleged statements again via JydskeVestkysten.",
+        "States flatly that after police visit the defendant 'threatened the politician again'."
+      ],
+      "audit_notes": [
+        "Important semantic hardening: the earlier report gives the actual 'consequences' wording and notes the defendant's denial; the later article converts that disputed speech act into the declarative summary 'threatened again'.",
+        "This is an example of interpretation becoming narrative fact in later retelling.",
+        "The quotations remain source-dependent on the earlier JydskeVestkysten chain rather than newly authenticated by the judgment text in the article."
+      ]
+    },
+    {
+      "date": "2016-08-12",
+      "outlet": "Ritzau citing DR Fyn",
+      "title": "Politiker glad for at Facebook-trusler fører til fængsel",
+      "url": "https://www.avisen.dk/politiker-glad-for-at-facebook-trusler-foerer-til-fa_400761.aspx",
+      "source_type": "victim-reaction report",
+      "key_points": [
+        "Mercado says the case can now be put behind them.",
+        "She emphasizes the emotional effect of threats involving her child.",
+        "Article states that her whole family was threatened."
+      ],
+      "audit_notes": [
+        "This article is valuable for separating Mercado's subjective fear/victim account from the attribution evidence itself.",
+        "It does not establish which defendant authored every family-related statement printed in the broader media environment."
+      ]
+    },
+    {
+      "date": "2016-09-08",
+      "outlet": "Ritzau / Copenhagen Police",
+      "title": "18-årig dømt for Facebook-trusler mod folketingspolitiker",
+      "url": "https://www.avisen.dk/18-aarig-doemt-for-facebook-trusler-mod-folketingspo_405169.aspx",
+      "source_type": "separate defendant / police press-release chain",
+      "key_points": [
+        "A separate 18-year-old woman is convicted over messages from the same broader controversy.",
+        "Her wording uses a third-party-danger structure: Mercado made people angry and should not feel safe with her child.",
+        "She acknowledges authorship and that the messages appeared threatening.",
+        "She receives 60 days suspended imprisonment."
+      ],
+      "audit_notes": [
+        "Demonstrates conclusively that the wider event produced multiple defendants and multiple authors.",
+        "Useful comparison for speech-act structure, but her words are not textually identical to the Son's reported words.",
+        "Supports the need to attribute every quotation individually."
+      ]
+    },
+    {
+      "date": "2016-09-09",
+      "outlet": "Ritzau / DR survey",
+      "title": "Politikere får dødstrusler: Du skal ikke føle dig tryg",
+      "url": "https://www.avisen.dk/politikere-faar-doedstrusler-du-skal-ikke-foele-dig_405317.aspx",
+      "source_type": "broader politician-threats feature",
+      "key_points": [
+        "Mercado says people write asking whether she wants to die and that she should not feel safe in the street."
+      ],
+      "audit_notes": [
+        "The plural 'de skriver' / people write is significant: by September Mercado is discussing repeated threats from multiple people, not necessarily one defendant.",
+        "Later readers can incorrectly back-project this generalized victim account onto the Son's individual authorship unless speaker boundaries are retained."
+      ]
+    },
+    {
+      "date": "2017",
+      "outlet": "Ritzau republished by Avisen.dk",
+      "title": "17-årig dømt for at true minister på livet",
+      "url": "https://www.avisen.dk/17-aarig-doemt-for-truende-spoergsmaal-til-toppoliti_456346.aspx",
+      "source_type": "separate defendant testimony",
+      "key_points": [
+        "A different young defendant says in court that Mercado blocked him and reported him.",
+        "The case also arose from her June 17 Christiania post."
+      ],
+      "audit_notes": [
+        "This does not contradict Mercado's claim that she did not report the Son unless the two reports are shown to be the same event.",
+        "It does establish that Mercado may have directly reported at least one other participant arising from the same original post.",
+        "Therefore blanket formulations such as 'Mercado never reported anyone' or 'Mercado reported the Son' are both too broad without report-level provenance."
+      ]
+    },
+    {
+      "date": "later retrospective",
+      "outlet": "Socialhub",
+      "title": "Husker du? 2016’s største shitstorms",
+      "url": "https://socialhub.dk/husker-du-2016s-stoerste-shitstorms/",
+      "source_type": "retrospective summary",
+      "key_points": [
+        "Repeats the three alleged statements and explicitly cites JydskeVestkysten."
+      ],
+      "audit_notes": [
+        "Demonstrates source multiplication rather than independent verification: later retrospectives reproduce the same attribution chain.",
+        "Should not be counted as new evidence for authorship."
+      ]
+    },
+    {
+      "date": "later minister profile",
+      "outlet": "DenOffentlige",
+      "title": "Mercado indtager børne- og socialministeriet",
+      "url": "https://www.denoffentlige.dk/politik/mercado-indtager-boerne-og-socialministeriet-borgerlig-vagthund-gaar-fra-barsel-til-ministerkontor",
+      "source_type": "political profile / retrospective framing",
+      "key_points": [
+        "Retells the Christiania post and resulting convictions as part of Mercado's political biography when she becomes minister.",
+        "Places the threat story alongside her ideological/public profile."
+      ],
+      "audit_notes": [
+        "Shows that the controversy became politically salient biographical material.",
+        "Does not establish that the controversy caused her ministerial appointment."
+      ]
+    }
+  ],
+  "cross_article_anomalies": [
+    {
+      "issue": "Age inconsistency",
+      "evidence": "Same-day wire coverage alternates between 28 and 29.",
+      "significance": "Concrete proof that even simple biographical metadata was not consistently transmitted; supports caution with more complex quotation provenance."
+    },
+    {
+      "issue": "Fragment-to-polished-quote drift",
+      "evidence": "SønderborgNYT prints ellipsis-linked fragments; later Ritzau/JydskeVestkysten-based reports present polished complete sentences.",
+      "significance": "Requires recovery of primary posts or judgment exhibits before treating later wording as exact Facebook text."
+    },
+    {
+      "issue": "Speech-act hardening",
+      "evidence": "Earlier articles give disputed wording; later judgment coverage summarizes that wording as 'threatened again'.",
+      "significance": "Legal/journalistic interpretation becomes embedded as event description."
+    },
+    {
+      "issue": "Reporter identity ambiguity",
+      "evidence": "Reports repeatedly say another Facebook user reported the matter but do not identify the person or exact reported comment.",
+      "significance": "The initial referral chain remains unresolved and should be reconstructed from police records if possible."
+    },
+    {
+      "issue": "Multiple-report problem",
+      "evidence": "A later separate 17-year-old says Mercado herself blocked and reported him, while Mercado had earlier said she did not make the report in the Son's case.",
+      "significance": "Different defendants may have entered police systems through different reports. All articles must be tied to exact defendant/report, not generalized into one story."
+    },
+    {
+      "issue": "Actor-number collapse",
+      "evidence": "Contemporary sources document many hostile commenters and at least multiple prosecutions; later summaries often discuss 'the threats' as one undifferentiated set.",
+      "significance": "Creates a plausible mechanism for reader-level or journalistic speaker conflation even without proving intentional fabrication."
+    },
+    {
+      "issue": "Mercado wording softening",
+      "evidence": "Original 'gennemsmadrer hashboder' becomes 'fjernede 37 hashboder' in the defensive follow-up while she says she did not intend to provoke.",
+      "significance": "A documented shift in self-framing around the precipitating political act."
+    },
+    {
+      "issue": "Generalized later recollection",
+      "evidence": "By September Mercado speaks broadly of people asking whether she wants to die and telling her not to feel safe, using plural/generalized language.",
+      "significance": "Later recollections may aggregate multiple incidents. They should not be used to establish the Son's exact words without source-level linkage."
+    }
+  ],
+  "unverified_but_material_firsthand_allegations": [
+    {
+      "claim": "Mercado deleted individual comments and later the whole Facebook thread after police/media involvement.",
+      "status": "FIRSTHAND_CLAIM_REQUIRES_PRIMARY_CORROBORATION",
+      "needed_evidence": ["Facebook archive/export", "screenshots with timestamps", "web archive captures", "police evidence logs", "journalist screenshots", "Mercado account export"]
+    },
+    {
+      "claim": "Mercado's recollection later assigned statements to the wrong speaker or otherwise became false.",
+      "status": "FIRSTHAND_CLAIM_PARTLY_PLAUSIBLE_FROM_MULTI-SPEAKER_RECORD_BUT_NOT_PROVEN",
+      "needed_evidence": ["exact Mercado testimony/interview", "original comment tree", "court transcript", "comparison against authenticated account IDs"]
+    },
+    {
+      "claim": "Some published quotations flatly misattribute other users' comments to the Son.",
+      "status": "AUTHORSHIP_DISPUTED",
+      "needed_evidence": ["original Facebook comments", "screenshots", "court exhibits identifying account/speaker per count"]
+    }
+  ],
+  "research_conclusions": [
+    "There are demonstrable inconsistencies and framing transformations in the article ecosystem; this justifies a forensic audit.",
+    "Current public evidence is not sufficient to conclude intentional fabrication by Mercado or journalists.",
+    "The strongest present finding is provenance weakness: multi-speaker content becomes compressed, repeated through one source chain, and later presented with greater certainty than the earliest surviving reports warrant.",
+    "Claims about deletion and false recollection remain important because, if corroborated, they could explain why the surviving public record cannot reconstruct reply hierarchy or speaker attribution."
+  ],
+  "connections": [
+    "knowledge/chronology/mai-mercado-2016-attribution-ledger.json",
+    "knowledge/chronology/mai-mercado-2016-case-master-synthesis.json",
+    "knowledge/chronology/mai-mercado-2016-forensic-source-matrix.json",
+    "knowledge/theology/son-jesus-prison-recognition-2016.json"
+  ]
+}
