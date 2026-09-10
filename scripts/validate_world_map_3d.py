@@ -70,6 +70,8 @@ def main() -> int:
     world = load_json(WORLD, errors)
     countries = load_json(COUNTRIES, errors)
 
+    # These markers intentionally describe behavior already present in the renderer rather
+    # than imposing arbitrary internal function names on otherwise equivalent code.
     fail_if_missing(
         text,
         (
@@ -77,9 +79,10 @@ def main() -> int:
             'id="height"', 'id="compare"', 'id="interior"', 'id="relations"',
             'id="relationType"', 'id="fit"', 'id="tilt"', 'id="globe"', 'id="world"',
             "function relationEdgesFor", "function relationData", "function compareData",
-            "function updateSpatial", "function fitFeatureSet", "function setCompareMode",
-            "function selectFeature", "window.openModule", "window.traceTo",
-            "searchParams.set('country'", "searchParams.set('compare'", "searchParams.set('relation'",
+            "function updateSpatial", "function geometryBounds", "function fitCodes",
+            "function toggleCompareCountry", "function selectFeature", "function renderCompare",
+            "window.openModule", "window.goCountry", "window.fitCompare", "window.leaveCompare",
+            "searchParams.set('country'", "searchParams.set('compare'", "searchParams.set('rel'",
             "semantic-hubs", "semantic-links", "compare-hubs", "relations",
             "maplibre-gl@6.9.0", "OpenStreetMap contributors",
         ),
@@ -116,6 +119,7 @@ def main() -> int:
 
     permitted_noncanonical = {"GRL", "FRO"}
     referenced: set[str] = set()
+    edge_keys: set[tuple[str, str, tuple[str, ...], str]] = set()
     for edge in world.get("curated_edges", []):
         a, b = edge.get("a"), edge.get("b")
         if not a or not b:
@@ -124,10 +128,17 @@ def main() -> int:
         if a == b:
             errors.append(f"curated edge self-loop is probably accidental: {a}")
         referenced.update((a, b))
-        if not edge.get("types"):
+        types = edge.get("types") or []
+        layer = edge.get("layer") or ""
+        if not types:
             errors.append(f"curated edge {a}-{b} has no relationship types")
-        if not edge.get("layer"):
+        if not layer:
             errors.append(f"curated edge {a}-{b} has no layer/epistemic classification")
+        # Flag exact duplicate drawings while allowing multiple differently typed relations.
+        key = tuple(sorted((a, b))) + (tuple(sorted(types)), layer)
+        if key in edge_keys:
+            errors.append(f"duplicate curated relation detected: {a}-{b} {types} {layer}")
+        edge_keys.add(key)
 
     for section in ("north", "west", "east"):
         for value in world.get("project_axis", {}).get(section, {}).values():
@@ -147,8 +158,15 @@ def main() -> int:
     if "fitBounds" not in text or "geometryBounds" not in text:
         errors.append("3d map no longer appears to fit actual polygon geometry")
 
-    if "slice(-4)" not in text and "length>=4" not in text and "length >= 4" not in text:
-        warnings.append("could not confirm a four-country Compare cap from static inspection")
+    # Compare state is capped both during interaction and URL restoration.
+    if "compareCodes.length>=4" not in text and "compareCodes.length >= 4" not in text:
+        errors.append("could not confirm four-country Compare cap during interaction")
+    if ".slice(0,4)" not in text:
+        errors.append("could not confirm four-country Compare cap for restored URL state")
+
+    # Trace must be navigable, not merely decorative text.
+    if "Trace outward" not in text or "onclick=\"goCountry(" not in text:
+        errors.append("one-hop Trace surface is not wired to country navigation")
 
     print(f"Canonical countries: {len(canonical_codes)}")
     print(f"Curated relation types: {len(relation_types)}")
