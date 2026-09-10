@@ -44,19 +44,6 @@ if builder.exists():
         builder.write_text(new, encoding="utf-8")
         changed.append(str(builder.relative_to(ROOT)))
 
-# Pages artifact verification must enforce the single stylesheet instead of deleted Science CSS.
-pages = ROOT / ".github" / "workflows" / "pages.yml"
-if pages.exists():
-    text = pages.read_text(encoding="utf-8")
-    new = text.replace("          test -f _site/science/science.css\n", "")
-    new = new.replace("          test -f _site/science/science-hub.css\n", "")
-    needle = "          test -f _site/science/index.html\n"
-    if needle in new and "test -f _site/app/style.css" not in new:
-        new = new.replace(needle, needle + "          test -f _site/app/style.css\n")
-    if new != text:
-        pages.write_text(new, encoding="utf-8")
-        changed.append(str(pages.relative_to(ROOT)))
-
 # Remove every CSS source except the canonical stylesheet.
 removed = []
 for path in sorted(ROOT.rglob("*.css")):
