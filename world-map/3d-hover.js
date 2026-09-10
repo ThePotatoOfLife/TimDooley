@@ -69,9 +69,7 @@ async function fallbackRestCountries() {
 
 window.fetch = async function atlasResilientFetch(input, options) {
   const url = typeof input === 'string' ? input : input?.url || String(input);
-  if (url === GEO_PRIMARY) {
-    return bestGeometryResponse();
-  }
+  if (url === GEO_PRIMARY) return bestGeometryResponse();
   if (url.startsWith(REST_PREFIX)) {
     try { return await fetchJsonResponse(REST_LOCAL, options); }
     catch (localError) { console.warn('Local country runtime snapshot unavailable.', localError); }
@@ -91,7 +89,6 @@ window.fetch = async function atlasResilientFetch(input, options) {
   return nativeFetch(input, options);
 };
 
-// Capture the atlas Map instance without coupling the core renderer to this enhancement layer.
 const originalAddControl = maplibregl.Map.prototype.addControl;
 maplibregl.Map.prototype.addControl = function (...args) {
   window.__potatoAtlasMap = this;
@@ -115,12 +112,7 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[char]));
 
-const popup = new maplibregl.Popup({
-  closeButton: false,
-  closeOnClick: false,
-  offset: 12,
-  maxWidth: '280px'
-});
+const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: '280px' });
 
 function pointFromWkt(wkt) {
   const match = String(wkt || '').match(/Point\(([-\d.]+)\s+([-\d.]+)\)/i);
@@ -166,10 +158,15 @@ SELECT ?iso3 ?capital ?capitalLabel ?coord ?population WHERE {
 }
 
 function countryHtml(properties) {
-  const name = properties.name || properties.NAME || properties.ADMIN || properties.iso3 || 'Country';
+  const code = String(properties.iso3 || properties.cca3 || properties.ISO_A3 || properties.id || '').toUpperCase();
+  const demography = code ? window.__potatoAtlasDemography?.countries?.[code] : null;
+  const population = demography?.population?.value ?? properties.population;
+  const populationYear = demography?.population?.year;
+  const name = demography?.name || properties.name || properties.NAME || properties.ADMIN || code || 'Country';
   const capital = properties.capital || '—';
   const region = [properties.region, properties.subregion].filter(Boolean).join(' · ') || '—';
-  return `<div class="atlas-hover"><b>${escapeHtml(name)}</b><div>Population: ${number(properties.population)}</div><div>Capital: ${escapeHtml(capital)}</div><div>Area: ${number(properties.area)} km²</div><div>${escapeHtml(region)}</div></div>`;
+  const yearText = populationYear ? ` <span class="muted">(${escapeHtml(populationYear)})</span>` : '';
+  return `<div class="atlas-hover"><b>${escapeHtml(name)}</b><div>Population: ${number(population)}${yearText}</div><div>Capital: ${escapeHtml(capital)}</div><div>Area: ${number(properties.area)} km²</div><div>${escapeHtml(region)}</div></div>`;
 }
 
 function capitalHtml(properties) {
@@ -201,35 +198,20 @@ async function install() {
     const capitals = await loadCapitals();
     map.addSource('capital-cities', { type: 'geojson', data: capitals });
     map.addLayer({
-      id: 'capital-cities',
-      type: 'circle',
-      source: 'capital-cities',
-      minzoom: 1.2,
+      id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 1.2,
       paint: {
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 1.2, 3.4, 4, 5.2, 7, 7],
-        'circle-color': '#f3d36f',
-        'circle-stroke-color': '#171a18',
-        'circle-stroke-width': 1.5,
-        'circle-opacity': 0.95
+        'circle-color': '#f3d36f', 'circle-stroke-color': '#171a18',
+        'circle-stroke-width': 1.5, 'circle-opacity': 0.95
       }
     });
     map.addLayer({
-      id: 'capital-city-labels',
-      type: 'symbol',
-      source: 'capital-cities',
-      minzoom: 4.8,
+      id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 4.8,
       layout: {
-        'text-field': ['get', 'name'],
-        'text-size': 10,
-        'text-offset': [0, 1.25],
-        'text-anchor': 'top',
-        'text-allow-overlap': false
+        'text-field': ['get', 'name'], 'text-size': 10, 'text-offset': [0, 1.25],
+        'text-anchor': 'top', 'text-allow-overlap': false
       },
-      paint: {
-        'text-color': '#f7e8a4',
-        'text-halo-color': '#080b0b',
-        'text-halo-width': 1.2
-      }
+      paint: { 'text-color': '#f7e8a4', 'text-halo-color': '#080b0b', 'text-halo-width': 1.2 }
     });
 
     map.on('mousemove', 'capital-cities', event => {
@@ -243,7 +225,6 @@ async function install() {
       popup.remove();
     });
   } catch (error) {
-    // Capitals are optional; the country atlas remains usable if Wikidata is down.
     console.warn('Capital city layer unavailable:', error);
   }
 }
