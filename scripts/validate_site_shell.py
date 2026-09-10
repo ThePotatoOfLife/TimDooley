@@ -94,8 +94,9 @@ def main():
         for fragment in ('/topics/tim/','/topics/son/','/records/tim-dooley/','/context/'):
             if fragment not in sitemap:errors.append(f'sitemap.xml missing expected route fragment: {fragment}')
         llms=(SITE/'llms.txt').read_text(encoding='utf-8',errors='replace') if (SITE/'llms.txt').exists() else ''
-        for term in ('Tim Dooley','Potato of Life','Canonical topics','Contextual constellations'):
-            if term not in llms:errors.append(f'llms.txt missing discovery term/section: {term}')
+        llms_lower=llms.lower()
+        for term in ('tim dooley','potato of life','generated canonical topics','generated contextual constellations'):
+            if term not in llms_lower:errors.append(f'llms.txt missing discovery term/section: {term}')
 
         # Validate local references inside generated HTML, resolving relative to each page.
         ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I)
