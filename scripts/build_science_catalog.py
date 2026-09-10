@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compile knowledge/science into the deployed public science catalog."""
+"""Compile knowledge/science into the deployed public science record layer."""
 from __future__ import annotations
 
 import html
@@ -20,8 +20,8 @@ TEXT_KEYS = ("abstract", "summary", "purpose", "importance", "core_thesis", "des
 PROVENANCE_KEYS = ("provenance_classes", "epistemic_classes", "source_class", "origin_class", "provenance")
 EQUATION_KEYS = (
     "equation", "formula", "lagrangian", "differential", "curvature", "action",
-    "operator", "formalism", "metric", "mapping", "coupling", "symmetry_breaking",
-    "rg_", "field_equation", "dynamics",
+    "operator", "formalism", "formal_core", "metric", "mapping", "coupling",
+    "symmetry_breaking", "rg_", "field_equation", "dynamics",
 )
 FINDING_KEYS = ("conclusion", "finding", "result", "implication", "interpretation", "lesson", "takeaway")
 MATH_HINT = re.compile(r"(=|→|↔|∂|∇|Σ|∫|√|ℒ|□|μ|ν|θ|φ|ψ|alpha|beta|gamma|SU\(|SO\(|Spin\(|U\(1\)|d[A-Za-z_].*/d)")
@@ -119,15 +119,17 @@ def render_cards(records: list[dict], record_prefix: str) -> str:
             rec["title"], rec["file"], rec["status"], rec["abstract"],
             *rec["provenance"], *rec["equations"], *rec["findings"],
         ]).lower()
-        prov = "".join(f'<span>{esc(x)}</span>' for x in rec["provenance"][:4])
-        eq_html = ""
+        prov = "".join(f'<span>{esc(x)}</span>' for x in rec["provenance"][:3])
+        details = []
         if rec["equations"]:
             eqs = "".join(f"<code>{esc(eq)}</code>" for eq in rec["equations"][:3])
-            eq_html = f'<div class="catalog-equations"><b>Equation sample</b>{eqs}</div>'
-        finding_html = ""
+            details.append(f'<div class="catalog-equations"><b>Equation sample</b>{eqs}</div>')
         if rec["findings"]:
             items = "".join(f"<li>{esc(x)}</li>" for x in rec["findings"][:2])
-            finding_html = f'<div class="catalog-findings"><b>Findings / conclusions</b><ul>{items}</ul></div>'
+            details.append(f'<div class="catalog-findings"><b>Findings / conclusions</b><ul>{items}</ul></div>')
+        detail_html = ""
+        if details:
+            detail_html = '<details class="catalog-details"><summary>Technical detail</summary>' + "".join(details) + '</details>'
         status = f'<span class="catalog-status">{esc(rec["status"])}</span>' if rec["status"] else ""
         cards.append(
             '<article class="catalog-card" data-search="{search}">\n'
@@ -135,13 +137,12 @@ def render_cards(records: list[dict], record_prefix: str) -> str:
             '  <h3>{title}</h3>\n'
             '  <p>{abstract}</p>\n'
             '  <div class="catalog-provenance">{prov}</div>\n'
-            '  {eq_html}\n'
-            '  {finding_html}\n'
-            '  <div class="catalog-links"><a href="{prefix}{file}">Open record →</a></div>\n'
+            '  {detail_html}\n'
+            '  <div class="catalog-links"><a href="{prefix}{file}">Open source record →</a></div>\n'
             '</article>'.format(
                 search=esc(search_blob), updated=esc(rec["updated"] or "undated"), status=status,
                 title=esc(rec["title"]), abstract=esc(rec["abstract"]), prov=prov,
-                eq_html=eq_html, finding_html=finding_html, prefix=record_prefix, file=esc(rec["file"]),
+                detail_html=detail_html, prefix=record_prefix, file=esc(rec["file"]),
             )
         )
     return "\n".join(cards)
@@ -152,14 +153,13 @@ def render_catalog_page(records: list[dict]) -> str:
     return (
         '<!doctype html><html lang="en"><head><meta charset="utf-8">'
         '<meta name="viewport" content="width=device-width,initial-scale=1">'
-        '<title>Complete Science Catalog — Tim Dooley / Potato of Life</title>'
-        '<meta name="description" content="Generated catalog of all canonical Tim Dooley / Potato of Life science records, with abstracts, equations, provenance and findings.">'
+        '<title>Science Source Records — Tim Dooley</title>'
+        '<meta name="description" content="Generated source-record view for the canonical Tim Dooley / Potato of Life science data.">'
         '<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/catalog/">'
-        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910b">'
-        '<link rel="stylesheet" href="../science-hub.css?v=20260910b"></head>'
-        '<body><main class="science-page"><nav class="topnav"><a href="../">← Science Atlas</a><a href="../../">Home</a></nav>'
-        '<header class="section-block"><p class="section-kicker">Generated from knowledge/science</p><h1>COMPLETE SCIENCE CATALOG</h1>'
-        f'<p class="hero-lede">{len(records)} canonical science records. The JSON records remain the source of truth; this page is a generated reading view.</p></header>'
+        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910d">'
+        '</head><body><main class="science-page"><nav class="topnav"><a href="../">← Science</a><a href="../../">Home</a></nav>'
+        '<header class="section-block"><p class="section-kicker">Generated source layer</p><h1>SCIENCE RECORDS</h1>'
+        f'<p class="hero-lede">{len(records)} canonical science records. The JSON records remain the source of truth.</p></header>'
         f'<section class="section-block"><div class="catalog-grid">{cards}</div></section></main></body></html>'
     )
 
@@ -172,25 +172,18 @@ def patch_science_page(cards: str, count: int) -> None:
         raise SystemExit(f"{MARKER} missing from science/index.html")
     text = text.replace(MARKER, cards, 1)
     text = text.replace('data-science-record-count="0"', f'data-science-record-count="{count}"')
-    if "science-hub.css" not in text:
-        text = text.replace("</head>", '  <link rel="stylesheet" href="./science-hub.css?v=20260910b">\n</head>', 1)
+    text = re.sub(r'(<strong id="metric-records">)\d+(</strong>)', rf'\g<1>{count}\g<2>', text, count=1)
     SCIENCE_PAGE.write_text(text, encoding="utf-8")
 
 
 def patch_legacy_readers() -> None:
     replacements = {
         OUT / "research-map" / "index.html": [
-            (
-                'the exact Spiral formula remains unrecovered.',
-                'the exact Spiral formula is now recovered: r=a exp(bθ), with b=ln(φ)/(π/2)≈0.30635; a quarter-turn scales radius by φ.'
-            ),
+            ('the exact Spiral formula remains unrecovered.', 'the exact Spiral formula is now recovered: r=a exp(bθ), with b=ln(φ)/(π/2)≈0.30635; a quarter-turn scales radius by φ.'),
             ('<li>Exact April 21, 2025 Spiral Equation.</li>', '<li>Earliest primary variable meanings for a, r and θ in the recovered April 21, 2025 Spiral Equation.</li>'),
         ],
         OUT / "axis-11d-sun-spiral" / "index.html": [
-            (
-                'This is a genuine Sun + rotation + outward-flow + Spiral system. It is an external physics neighbor, not the missing April 2025 Spiral Equation.',
-                'This is a genuine Sun + rotation + outward-flow + Spiral system. It is an external physics neighbor to the now-recovered April 2025 Potato Axis logarithmic spiral, not the same physical model.'
-            ),
+            ('This is a genuine Sun + rotation + outward-flow + Spiral system. It is an external physics neighbor, not the missing April 2025 Spiral Equation.', 'This is a genuine Sun + rotation + outward-flow + Spiral system. It is an external physics neighbor to the recovered April 2025 Potato Axis logarithmic spiral, not the same physical model.'),
             ('<li>Exact April 21, 2025 Spiral Equation.</li>', '<li>Earliest primary variable meanings for a, r and θ in the recovered April 21, 2025 Spiral Equation.</li>'),
         ],
     }
@@ -217,7 +210,7 @@ def main() -> None:
     CATALOG_PAGE.write_text(render_catalog_page(records), encoding="utf-8")
     patch_science_page(render_cards(records, "../knowledge/science/"), len(records))
     patch_legacy_readers()
-    print(f"Built science catalog: {len(records)} records")
+    print(f"Built science source layer: {len(records)} records")
 
 
 if __name__ == "__main__":
