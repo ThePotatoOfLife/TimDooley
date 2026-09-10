@@ -1,5 +1,6 @@
 (()=>{
   'use strict';
+
   const B='../knowledge/science/';
   const $=id=>document.getElementById(id);
   const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
@@ -13,60 +14,166 @@
     ['Time & waves','advanced retarded'],['Testing','testing']
   ];
 
-  let modelCards=[];
-  let recordCards=[];
+  const maturityGates={
+    T0:['T1','Define the state space, variables, scope and explicit rules.'],
+    T1:['T2','Write the minimal equations, dimensions, boundaries and translation maps.'],
+    T2:['T3','Choose a parameter set and calibrate or constrain it against real data.'],
+    T3:['T4','Predeclare a quantitative prediction that differs from the baseline.'],
+    T4:['T5','Obtain independent replication across data, implementation or experiment.'],
+    T5:['T5','Map limits, replications and failure domains; do not inflate the claim.']
+  };
 
-  function list(items,limit=6){
+  let registryModels=[];
+  let programmeStageByModel=new Map();
+  let modelButtons=[];
+  let recordCards=[];
+  let activeModelId='';
+
+  function list(items,limit=8){
     if(!Array.isArray(items)||!items.length)return '<span class="none-note">Not yet specified</span>';
-    return `<ul>${items.slice(0,limit).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
+    const shown=items.slice(0,limit);
+    return `<ul>${shown.map(x=>`<li>${esc(x)}</li>`).join('')}</ul>${items.length>limit?`<small class="list-more">+${items.length-limit} more in the canonical record</small>`:''}`;
   }
 
   function evidenceFamily(classification){
     const x=String(classification||'').toLowerCase();
-    if(x.includes('external')||x.includes('established'))return 'external';
-    if(x.includes('primary')||x.includes('recovered')||x.includes('book-derived')||x.includes('archaeology'))return 'recovered';
-    if(x.includes('speculative'))return 'speculative';
-    return 'project';
+    if(x.includes('external')||x.includes('established'))return 'external science';
+    if(x.includes('primary')||x.includes('recovered')||x.includes('book-derived')||x.includes('archaeology'))return 'recovered / provenance-led';
+    if(x.includes('speculative'))return 'speculative programme';
+    return 'project model';
+  }
+
+  function completionInfo(model){
+    const c=model.completion||{};
+    const filled=Number(c.filled_contract_fields||0);
+    const total=Math.max(Number(c.total_contract_fields||12),1);
+    const pct=Math.max(0,Math.min(100,Math.round((filled/total)*100)));
+    return {filled,total,pct,next:c.next_action||'Complete the missing model contract fields.'};
+  }
+
+  function searchText(model){
+    return [
+      model.title,model.short_title,model.classification,model.abstract,model.maturity,
+      ...(model.formal_core||[]),...(model.state_variables||[]),...(model.assumptions||[]),
+      ...(model.observables||[]),...(model.falsifiers||[]),...(model.baseline||[]),
+      model.calibration_path,...(model.couples_to||[]),...(model.unresolved||[]),...(model.source_records||[])
+    ].join(' ').toLowerCase();
+  }
+
+  function renderDossier(model){
+    const dossier=$('model-dossier');
+    if(!model){
+      dossier.innerHTML='<div class="dossier-empty"><strong>No matching flagship model.</strong><p>Try a broader search, or inspect the source records below.</p></div>';
+      return;
+    }
+
+    const c=completionInfo(model);
+    const stage=programmeStageByModel.get(model.id)||'Unassigned programme layer';
+    const [nextMaturity,gate]=maturityGates[model.maturity]||['Next','Define the next measurable theory-quality requirement.'];
+    const equations=(model.formal_core||[]).map(eq=>`<code>${esc(eq)}</code>`).join('')||'<span class="none-note">Formal core not yet specified.</span>';
+    const couplings=(model.couples_to||[]).map(id=>{
+      const target=registryModels.find(item=>item.id===id);
+      return `<button type="button" data-open-model="${esc(id)}">${esc(target?.short_title||target?.title||id.replaceAll('-',' '))}</button>`;
+    }).join('')||'<span class="none-note">No explicit model coupling declared.</span>';
+    const sources=(model.source_records||[]).map(file=>`<a href="${B}${encodeURIComponent(file)}">${esc(file.replace('.json',''))}</a>`).join('')||'<span class="none-note">No source record declared.</span>';
+
+    dossier.innerHTML=`
+      <header class="dossier-head">
+        <div class="dossier-meta"><span>${esc(stage)}</span><span>${esc(evidenceFamily(model.classification))}</span></div>
+        <h3>${esc(model.title)}</h3>
+        <p>${esc(model.abstract||'No abstract yet.')}</p>
+        <div class="dossier-stats">
+          <span><b>${esc(model.maturity||'T1')}</b><small>maturity</small></span>
+          <span><b>${c.filled}/${c.total}</b><small>contract fields</small></span>
+          <span><b>${c.pct}%</b><small>contract coverage</small></span>
+          <span><b>${(model.couples_to||[]).length}</b><small>declared couplings</small></span>
+        </div>
+      </header>
+
+      <section class="maturity-gate">
+        <div><span>Current completion target</span><strong>${esc(c.next)}</strong></div>
+        <div><span>${esc(model.maturity||'T1')} → ${esc(nextMaturity)} gate</span><p>${esc(gate)}</p></div>
+      </section>
+
+      <section class="dossier-core">
+        <div class="formal-core"><h4>Formal core</h4>${equations}</div>
+        <div class="test-core">
+          <div><h4>Observable handles</h4>${list(model.observables,4)}</div>
+          <div><h4>Failure conditions</h4>${list(model.falsifiers,4)}</div>
+        </div>
+      </section>
+
+      <div class="dossier-links">
+        <div><strong>Declared couplings</strong><div class="chip-row">${couplings}</div></div>
+        <div><strong>Source lineage</strong><div class="chip-row">${sources}</div></div>
+      </div>
+
+      <details class="full-contract">
+        <summary>Full scientific contract</summary>
+        <div class="contract-grid">
+          <section><h4>State variables</h4>${list(model.state_variables)}</section>
+          <section><h4>Assumptions</h4>${list(model.assumptions)}</section>
+          <section><h4>Observables</h4>${list(model.observables)}</section>
+          <section><h4>Failure conditions</h4>${list(model.falsifiers)}</section>
+          <section><h4>Comparison baseline</h4>${list(model.baseline)}</section>
+          <section><h4>Unresolved work</h4>${list(model.unresolved)}</section>
+        </div>
+        <div class="calibration"><strong>Calibration path</strong><p>${esc(model.calibration_path||'Not yet specified.')}</p></div>
+        <p class="classification-line"><strong>Registry classification:</strong> ${esc(model.classification||'project model')}</p>
+      </details>`;
+
+    dossier.querySelectorAll('[data-open-model]').forEach(button=>button.addEventListener('click',()=>activateModel(button.dataset.openModel,true)));
+  }
+
+  function activateModel(id,scroll=false){
+    const model=registryModels.find(item=>item.id===id);
+    if(!model)return;
+    activeModelId=id;
+    modelButtons.forEach(button=>{
+      const active=button.dataset.modelId===id;
+      button.classList.toggle('active',active);
+      button.setAttribute('aria-pressed',active?'true':'false');
+    });
+    renderDossier(model);
+    if(scroll)$('models')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function renderWorkQueue(models){
+    const queue=$('model-work-queue');
+    if(!queue)return;
+    queue.innerHTML=models.map((model,index)=>{
+      const c=completionInfo(model);
+      const stage=programmeStageByModel.get(model.id)||'Programme';
+      const [,gate]=maturityGates[model.maturity]||['','Define the next measurable requirement.'];
+      return `<button class="work-item" type="button" data-work-model="${esc(model.id)}">
+        <span class="work-no">${String(index+1).padStart(2,'0')}</span>
+        <span class="work-copy"><b>${esc(model.short_title||model.title)}</b><small>${esc(stage)} · ${esc(model.maturity||'T1')} · contract ${c.filled}/${c.total}</small><em>${esc(c.next)}</em></span>
+        <span class="work-gate">${esc(gate)}</span>
+      </button>`;
+    }).join('');
+    queue.querySelectorAll('[data-work-model]').forEach(button=>button.addEventListener('click',()=>activateModel(button.dataset.workModel,true)));
   }
 
   function renderModels(registry){
-    const grid=$('model-grid');
-    const models=registry.models||[];
-    $('metric-models').textContent=models.length;
-    grid.innerHTML=models.map(model=>{
-      const c=model.completion||{};
-      const filled=Number(c.filled_contract_fields||0),total=Number(c.total_contract_fields||12);
-      const pct=Math.max(0,Math.min(100,Math.round((filled/Math.max(total,1))*100)));
-      const eqs=(model.formal_core||[]).slice(0,3).map(eq=>`<code>${esc(eq)}</code>`).join('');
-      const search=[model.title,model.short_title,model.classification,model.abstract,model.maturity,(model.formal_core||[]).join(' '),(model.state_variables||[]).join(' '),(model.couples_to||[]).join(' '),(model.unresolved||[]).join(' ')].join(' ').toLowerCase();
-      return `<article class="model-card" data-model-id="${esc(model.id)}" data-search="${esc(search)}" data-evidence="${evidenceFamily(model.classification)}">
-        <div class="model-meta"><span>${esc(model.maturity||'T1')}</span><span>${esc(model.classification||'project model')}</span></div>
-        <h3>${esc(model.title)}</h3>
-        <p class="model-abstract">${esc(model.abstract||'')}</p>
-        <div class="completion-row"><span>Contract ${filled}/${total}</span><div class="completion-track"><i style="width:${pct}%"></i></div><b>${pct}%</b></div>
-        <p class="next-action"><strong>Next:</strong> ${esc(c.next_action||'Complete the missing model contract fields.')}</p>
-        <div class="model-equations">${eqs}</div>
-        <details class="model-details"><summary>Open model contract</summary>
-          <div class="contract-grid">
-            <section><h4>State variables</h4>${list(model.state_variables)}</section>
-            <section><h4>Assumptions</h4>${list(model.assumptions)}</section>
-            <section><h4>Observables</h4>${list(model.observables)}</section>
-            <section><h4>Failure conditions</h4>${list(model.falsifiers)}</section>
-            <section><h4>Baseline</h4>${list(model.baseline)}</section>
-            <section><h4>Unresolved</h4>${list(model.unresolved)}</section>
-          </div>
-          <div class="calibration"><strong>Calibration path</strong><p>${esc(model.calibration_path||'Not yet specified.')}</p></div>
-          <div class="coupling-row"><strong>Couples to</strong>${(model.couples_to||[]).map(id=>`<button type="button" data-model-filter="${esc(id)}">${esc(id.replaceAll('-',' '))}</button>`).join('')}</div>
-          <div class="source-row"><strong>Source records</strong>${(model.source_records||[]).map(file=>`<a href="${B}${encodeURIComponent(file)}">${esc(file.replace('.json',''))}</a>`).join('')}</div>
-        </details>
-      </article>`;
+    registryModels=registry.models||[];
+    programmeStageByModel=new Map();
+    (registry.programme_spine||[]).forEach(stage=>(stage.models||[]).forEach(id=>programmeStageByModel.set(id,stage.stage)));
+    $('metric-models').textContent=registryModels.length;
+
+    const index=$('model-index');
+    index.innerHTML=registryModels.map(model=>{
+      const c=completionInfo(model);
+      const stage=programmeStageByModel.get(model.id)||'Programme';
+      return `<button class="model-index-item" type="button" data-model-id="${esc(model.id)}" data-search="${esc(searchText(model))}" aria-pressed="false">
+        <span class="model-index-top"><b>${esc(model.short_title||model.title)}</b><em>${esc(model.maturity||'T1')}</em></span>
+        <span class="model-index-title">${esc(model.title)}</span>
+        <small>${esc(stage)} · ${c.filled}/${c.total} contract</small>
+      </button>`;
     }).join('');
-    modelCards=[...grid.querySelectorAll('.model-card')];
-    grid.querySelectorAll('[data-model-filter]').forEach(button=>button.addEventListener('click',()=>{
-      const id=button.dataset.modelFilter||'';
-      const target=models.find(m=>m.id===id);
-      setSearch(target?.short_title||target?.title||id.replaceAll('-',' '));
-    }));
+    modelButtons=[...index.querySelectorAll('.model-index-item')];
+    modelButtons.forEach(button=>button.addEventListener('click',()=>activateModel(button.dataset.modelId)));
+    renderWorkQueue(registryModels);
+    if(registryModels.length)activateModel(registryModels[0].id);
   }
 
   function renderProgramme(registry){
@@ -110,12 +217,30 @@
     const input=$('catalog-search');
     const q=input?.value||'';
     let modelsShown=0,recordsShown=0;
-    modelCards.forEach(card=>{const show=matches(card.dataset.search||card.textContent,q);card.hidden=!show;if(show)modelsShown++;});
-    recordCards.forEach(card=>{const show=matches(card.dataset.search||card.textContent,q);card.hidden=!show;if(show)recordsShown++;});
+    let firstVisibleModel='';
+
+    modelButtons.forEach(button=>{
+      const show=matches(button.dataset.search||button.textContent,q);
+      button.hidden=!show;
+      if(show){modelsShown++;if(!firstVisibleModel)firstVisibleModel=button.dataset.modelId||'';}
+    });
+    recordCards.forEach(card=>{
+      const show=matches(card.dataset.search||card.textContent,q);
+      card.hidden=!show;
+      if(show)recordsShown++;
+    });
+
+    const activeVisible=modelButtons.some(button=>button.dataset.modelId===activeModelId&&!button.hidden);
+    if(!activeVisible){
+      if(firstVisibleModel)activateModel(firstVisibleModel);
+      else renderDossier(null);
+    }
+
     $('model-empty').hidden=modelsShown!==0;
     $('catalog-empty').hidden=recordsShown!==0;
+    $('model-index-count').textContent=q?`${modelsShown} of ${modelButtons.length}`:`${modelButtons.length} models`;
     $('catalog-count').textContent=q?`${recordsShown} of ${recordCards.length} records`:`${recordCards.length} records`;
-    $('search-note').textContent=q?`${modelsShown} flagship model${modelsShown===1?'':'s'} · ${recordsShown} source record${recordsShown===1?'':'s'} match “${q}”.`:'One search filters both flagship models and the complete record library.';
+    $('search-note').textContent=q?`${modelsShown} flagship model${modelsShown===1?'':'s'} · ${recordsShown} source record${recordsShown===1?'':'s'} match “${q}”.`:'One search filters the model index and the complete record library.';
     $('clear-search').hidden=!q;
   }
 
@@ -140,9 +265,20 @@
     const jobs=[get(B+'science-master-index.json'),get(B+'science-model-registry.json'),get('./catalog.json')];
     const [masterResult,registryResult,catalogResult]=await Promise.allSettled(jobs);
     let failures=0;
+
     if(masterResult.status==='fulfilled')renderMaster(masterResult.value);else failures++;
-    if(registryResult.status==='fulfilled'){renderModels(registryResult.value);renderProgramme(registryResult.value);}else{failures++;$('model-grid').innerHTML='<div class="loading-card">Model registry unavailable; source catalog remains usable.</div>';}
-    if(catalogResult.status==='fulfilled')$('metric-records').textContent=catalogResult.value.count??document.querySelectorAll('.catalog-card').length;else{failures++;$('metric-records').textContent=document.querySelectorAll('.catalog-card').length||'—';}
+    if(registryResult.status==='fulfilled'){
+      renderProgramme(registryResult.value);
+      renderModels(registryResult.value);
+    }else{
+      failures++;
+      $('model-index').innerHTML='<div class="loading-card">Model registry unavailable; source records remain usable.</div>';
+      $('model-dossier').innerHTML='<div class="dossier-empty"><strong>Model registry unavailable.</strong><p>The canonical source records remain below.</p></div>';
+      $('model-work-queue').innerHTML='<div class="loading-card">Model completion queue unavailable.</div>';
+    }
+    if(catalogResult.status==='fulfilled')$('metric-records').textContent=catalogResult.value.count??document.querySelectorAll('.catalog-card').length;
+    else{failures++;$('metric-records').textContent=document.querySelectorAll('.catalog-card').length||'—';}
+
     wireSearch();
     const state=$('data-state');
     state.textContent=failures?`Atlas loaded with ${failures} auxiliary source${failures===1?'':'s'} unavailable.`:'Model registry, equation index and compiled record catalog loaded.';
