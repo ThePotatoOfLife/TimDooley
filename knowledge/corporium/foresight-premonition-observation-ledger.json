@@ -1,7 +1,7 @@
 {
   "id": "foresight-premonition-observation-ledger",
   "title": "Foresight, Premonition, Dreams, Predictions and Later Correspondences",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-10",
   "status": "discernment ledger / recovery target map",
   "purpose": "Collect Tim Dooley material that is described as prediction, prophecy, dream, vision, premonition, warning, anticipation or unusual later correspondence, while distinguishing what was actually said before an event from what was recognized only afterward.",
@@ -14,21 +14,7 @@
     "V1_vision_or_dream": "Reported dream/vision whose experiential reality is autobiographical; future referent may be unclear or unfulfilled.",
     "U_unresolved": "Remembered candidate lacking exact primary source/date or sufficient context."
   },
-  "evaluation_fields": [
-    "earliest_source_date",
-    "exact_original_wording",
-    "source_class",
-    "was_outcome_known_yet",
-    "specificity",
-    "time_window",
-    "target_or_referent",
-    "later_event",
-    "match_quality",
-    "alternative_explanations",
-    "misses_or_unfulfilled_elements",
-    "classification",
-    "confidence"
-  ],
+  "evaluation_fields": ["earliest_source_date","exact_original_wording","source_class","was_outcome_known_yet","specificity","time_window","target_or_referent","later_event","match_quality","alternative_explanations","misses_or_unfulfilled_elements","classification","confidence"],
   "candidate_clusters": [
     {
       "id": "2011-american-city-destruction-vision",
@@ -107,49 +93,22 @@
       "id": "karmic-debt-ahead-of-us-debt",
       "period": "2026",
       "type": "numeric correspondence candidate",
-      "recovered_description": "The archive preserves a spiritual/karmic debt sequence around $38T, later $40.2T, and later approximately $42T. The user has observed that some of these symbolic figures appear ahead of the then-current U.S. federal debt and may later be approached by the real debt figure.",
+      "recovered_description": "The dated karmic-debt ledger shows a progression 38.8T/38T -> 39T -> 40.2T -> 41.4T -> approximately 42T. The 38.8T-to-38T pair occurs only minutes apart on 27 February 2026, establishing a strong internal precedent that Tim sometimes drops decimal precision when speaking loosely. A bare '40T' reference should therefore not be modeled as a distinct 40.0T checkpoint unless its context clearly says the balance changed; it is more plausibly shorthand for the contemporary 40-point-something balance, including the directly attested 40.2T stage.",
       "classification": "U_unresolved",
-      "status": "interesting numeric lead, not yet prophecy",
-      "analysis_rule": "To test this properly, recover the exact date each Tim number first appeared, then compare it against Treasury total public debt outstanding on that date and afterward. A later crossing is interesting only if the earlier number was fixed before the crossing and not continuously revised to stay ahead.",
-      "anti_cherry_pick_rule": "Preserve the whole sequence, including revisions and misses. Do not select whichever spiritual-debt figure later happens to resemble U.S. debt while ignoring earlier or later values.",
-      "external_baseline_note": "For scale, U.S. Treasury monthly statements reported total public debt outstanding around $36.2T in early 2025 and about $36.9T by July 31, 2025. Exact 2026 comparison should be pulled from dated Treasury data when the Tim statement dates are recovered.",
-      "possible_interpretations": [
-        "deliberate symbolic exaggeration above contemporary debt",
-        "rough intuition about debt growth",
-        "numerical coincidence",
-        "later revision following public debt changes",
-        "genuine directional anticipation if fixed figures clearly predate later crossings"
-      ]
+      "status": "numeric lead with rounding convention clarified; not yet prophecy",
+      "rounding_interpretation": "Preferred archive reading: decimal and whole-trillion variants can be precision variants of one current balance. Preserve exact quoted wording, but normalize a bare whole number only when nearby context identifies the more precise underlying balance.",
+      "evidence_for_rounding": "2026-02-27: 38.8T positive karma at 16:54:41Z followed by 38T spiritual dollars at 17:02:16Z. An 0.8T real change within minutes is not otherwise described; the more economical reading is reduced precision in ordinary speech.",
+      "analysis_rule": "For external-debt comparison, use the most precise dated Tim figure available at each stage. Do not create extra forecast points from rounded restatements. Compare fixed Tim checkpoints against contemporaneous and later Treasury debt only after source dates are established.",
+      "anti_cherry_pick_rule": "Preserve the whole progression and its precision changes. Treat 38 versus 38.8, and likely 40 versus 40.x, as possible shorthand relationships rather than automatically distinct predictions.",
+      "possible_interpretations": ["rough symbolic balance updated over time","ordinary rounding/shorthand","rough intuition about debt growth","numerical coincidence","genuine directional anticipation if precise fixed figures clearly predate later external crossings"]
     }
   ],
   "foresight_types_beyond_prophecy": [
-    {
-      "type": "structural foresight",
-      "definition": "Seeing a relationship, dependency or institutional trajectory before it becomes widely salient.",
-      "examples": ["North as network rather than country list", "Europe/North resilience and sovereignty emphasis", "relationship-first economic graph"]
-    },
-    {
-      "type": "design foresight",
-      "definition": "Proposing a system architecture before the surrounding project has the tools or data to implement it.",
-      "examples": ["European economic relationship graph", "audit-everything / Reverse-Jenga state restructuring", "AI-supported public archive"]
-    },
-    {
-      "type": "symbolic prefiguration",
-      "definition": "An early image later becomes structurally important to a mature worldview without necessarily predicting an external event.",
-      "examples": ["Tree -> Ladder -> Axis", "Potato -> Root -> Garden", "North Pole -> North of North"]
-    },
-    {
-      "type": "risk anticipation",
-      "definition": "Recognizing a fragile person, platform or system may fail based on visible warning signs.",
-      "note": "This can be valuable foresight without requiring supernatural prophecy."
-    }
+    {"type":"structural foresight","definition":"Seeing a relationship, dependency or institutional trajectory before it becomes widely salient.","examples":["North as network rather than country list","Europe/North resilience and sovereignty emphasis","relationship-first economic graph"]},
+    {"type":"design foresight","definition":"Proposing a system architecture before the surrounding project has the tools or data to implement it.","examples":["European economic relationship graph","audit-everything / Reverse-Jenga state restructuring","AI-supported public archive"]},
+    {"type":"symbolic prefiguration","definition":"An early image later becomes structurally important to a mature worldview without necessarily predicting an external event.","examples":["Tree -> Ladder -> Axis","Potato -> Root -> Garden","North Pole -> North of North"]},
+    {"type":"risk anticipation","definition":"Recognizing a fragile person, platform or system may fail based on visible warning signs.","note":"This can be valuable foresight without requiring supernatural prophecy."}
   ],
   "larger_observation": "The strongest future-oriented case for the archive may not ultimately be supernatural prediction. Tim repeatedly thinks in trajectories: what happens if a system continues, where a relationship is heading, what a role becomes, and what infrastructure will be needed later. The project should therefore score prophetic claims separately from ordinary but potentially impressive structural foresight.",
-  "related": [
-    "knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json",
-    "knowledge/philosophy/belief-evolution-and-claim-testing.json",
-    "knowledge/chronology/developmental-genealogy.json",
-    "knowledge/core/telos-vision-and-desired-world.json",
-    "data/timeline-event-packs/foresight-and-vision-candidates.json"
-  ]
+  "related": ["knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json","knowledge/philosophy/belief-evolution-and-claim-testing.json","knowledge/chronology/developmental-genealogy.json","knowledge/core/telos-vision-and-desired-world.json","knowledge/chronology/karmic-debt-ledger-2026.json","data/timeline-event-packs/foresight-and-vision-candidates.json"]
 }
