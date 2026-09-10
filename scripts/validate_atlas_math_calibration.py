@@ -52,9 +52,22 @@ def main() -> int:
         if token not in app:
             errors.append(f"compare lifecycle hardening missing: {token}")
 
-    boundary = " ".join(data.get("epistemic_boundary", []))
-    if "42 degrees" not in boundary or "not derived from Fibonacci" not in boundary:
-        errors.append("42-degree North arc must remain independent of Fibonacci/level claims")
+    # Structural invariants are machine-readable so validation does not depend on prose wording.
+    invariants = data.get("invariants", {})
+    expected_invariants = {
+        "north_gate_arc_degrees": 42,
+        "north_gate_arc_is_level_count": False,
+        "north_gate_arc_is_fibonacci_derived": False,
+        "north_gate_arc_is_golden_ratio_derived": False,
+        "north_gate_arc_is_physical_law": False,
+        "geography_uses_real_coordinates": True,
+        "abstract_nodes_may_receive_fake_geographic_coordinates": False,
+        "time_is_orthogonal_to_spatial_and_graph_depth": True,
+        "map_height_may_encode_spiritual_rank_or_truth": False,
+    }
+    for key, expected in expected_invariants.items():
+        if invariants.get(key) != expected:
+            errors.append(f"calibration invariant {key} must be {expected!r}")
 
     hodge = future.get("hodge_edge_flow", {})
     gate = set(hodge.get("promotion_gate", []))
@@ -74,6 +87,7 @@ def main() -> int:
     print("Atlas math calibration:")
     print("- Trace levels: graph geodesic / BFS")
     print("- Semantic hubs: golden-angle phyllotaxis")
+    print("- North gate: 42° visual geometry only")
     print("- Axis: structural flow; Time remains orthogonal")
     print("- Future dense graph: spectral/hyperbolic candidates")
     print("- Future quantitative circulation: Hodge decomposition only after directed-flow gates")
