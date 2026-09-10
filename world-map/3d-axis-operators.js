@@ -1,0 +1,57 @@
+const DATA_URL = '../data/axis-operators.json';
+const HUD_ID = 'axisOperatorHud';
+const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+
+function dimensionFromUrl() {
+  const url = new URL(location.href);
+  return Number(url.searchParams.get('axisD') || 4);
+}
+
+function ensureHud() {
+  let hud = document.getElementById(HUD_ID);
+  if (hud) return hud;
+  const wrap = document.querySelector('.mapwrap');
+  if (!wrap) return null;
+  hud = document.createElement('div');
+  hud.id = HUD_ID;
+  hud.style.cssText = 'position:absolute;left:12px;top:78px;z-index:3;width:min(390px,calc(100% - 190px));background:#080b0be6;border:1px solid #304040;border-radius:10px;padding:9px 11px;backdrop-filter:blur(7px);box-shadow:0 6px 24px rgba(0,0,0,.22);font-size:11px;line-height:1.35;pointer-events:none';
+  wrap.appendChild(hud);
+  return hud;
+}
+
+function render(data, dimension) {
+  const hud = ensureHud();
+  if (!hud) return;
+  const d = data.dimensions?.[String(dimension)] || data.dimensions?.['4'];
+  if (!d) return;
+  const inputs = (d.inputs || []).slice(0,4).join(' · ');
+  const outputs = (d.outputs || []).slice(0,4).join(' · ');
+  const content = (d.content_types || []).slice(0,4).join(' · ');
+  hud.innerHTML = `
+    <div style="display:flex;justify-content:space-between;gap:10px;align-items:baseline"><b style="color:#dff8ff">${esc(d.label)}</b><span style="color:#9fe8ff;text-transform:uppercase;letter-spacing:.1em;font-size:9px">${esc(d.operator)}</span></div>
+    <div style="color:#aab4aa;margin-top:4px"><b style="color:#d6dfdf">Input:</b> ${esc(inputs)}</div>
+    <div style="color:#aab4aa"><b style="color:#d6dfdf">→ Output:</b> ${esc(outputs)}</div>
+    <div style="color:#aab4aa"><b style="color:#d6dfdf">Belongs here:</b> ${esc(content)}</div>
+    <div style="margin-top:5px;border-top:1px solid #263232;padding-top:5px;color:#c8d0d0"><b>Test:</b> ${esc(d.diagnostic_test)}</div>`;
+
+  if (dimension === 4) {
+    hud.style.borderColor = '#3b4a44';
+  } else if (dimension >= 5) {
+    hud.style.borderColor = '#477987';
+  } else {
+    hud.style.borderColor = '#5b4d3e';
+  }
+}
+
+async function boot() {
+  const response = await fetch(DATA_URL);
+  if (!response.ok) throw new Error('Axis operator model unavailable');
+  const data = await response.json();
+  render(data, dimensionFromUrl());
+  window.addEventListener('atlas-axis-dimension-change', event => {
+    render(data, Number(event.detail?.dimension || 4));
+  });
+  window.__potatoAxisOperators = {data, render};
+}
+
+boot().catch(error => console.warn('Axis operator HUD unavailable:', error));
