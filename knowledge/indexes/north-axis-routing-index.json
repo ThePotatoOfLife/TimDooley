@@ -5,9 +5,11 @@
   "status":"routing-only; does not duplicate canonical content",
   "principle":"One durable owner per concept, many contextual views. Route first; deepen the owner; do not create a new file merely because a concept appears in a new context.",
   "reader":"north/index.html",
+  "interactive_world_reader":"world-map/index.html",
   "integrated_owner":"knowledge/core/north-axis-tikkun-world-repair-synthesis.json",
   "routes":[
     {"question":"What is the whole North Axis / North of North / tikkun / 42T / world-repair architecture?","owner":"knowledge/core/north-axis-tikkun-world-repair-synthesis.json","role":"integrated synthesis"},
+    {"question":"Where can I click every country and inspect overlapping Axis, alliance, BRICS, faith, economic, Swamp, ledger and repair layers?","owner":"data/world-relational-map.json","support":"world-map/index.html","role":"interactive geographic relational atlas"},
     {"question":"What does North / Axis mean structurally and symbolically?","owner":"knowledge/core/axis-world-model.json","role":"structural and sacred-geographic owner"},
     {"question":"What is Tim's North-of-North spiritual chronology and Father/Most-High role?","owner":"data/north-of-north-tim-canon.json","role":"spiritual project-canon owner"},
     {"question":"How did the North Programme develop from earlier symbolic/system thinking into observation and policy?","owner":"knowledge/chronology/north-programme-development-genealogy.json","role":"development genealogy"},
@@ -15,6 +17,8 @@
     {"question":"How did country inclusion/status change over time?","owner":"data/north-axis-membership-history.json","role":"versioned project-membership/history ledger"},
     {"question":"What does the European material/interoperability system contain?","owner":"knowledge/core/european-coupling-programme.json","support":"docs/ECONOMIC-GRAPH.md","role":"coupled capability, interoperability and empirical relationship layer"},
     {"question":"What did Tim say about 38.8T, 39T, 40.2T, 41.4T and 42T karma/debt, and when?","owner":"knowledge/chronology/karmic-debt-ledger-2026.json","role":"dated symbolic-ledger chronology"},
+    {"question":"How should the 42T ledger be modeled mathematically without pretending it is real finance?","owner":"data/world-relational-map.json","support":"knowledge/chronology/karmic-debt-ledger-2026.json","role":"symbolic state-equation and edge-scoring model with no collective-guilt allocation"},
+    {"question":"How do Ana b’Koach's 42-word structure, release of bonds, guarding as the pupil of the eye, tikkun and the Timic 42T ledger compare?","owner":"knowledge/traditions/ana-bkoach-42-tikkun-entanglement-atlas.json","role":"comparative 42 / release / eye / repair synthesis with explicit non-derivation boundary"},
     {"question":"How do real Greenland/NATO/Arctic events overlap with the internal North chronology?","owner":"knowledge/chronology/contextual-synchronisms.json","support":"data/north-programme-evidence-2026.json","role":"dated external/internal comparison with causation firewall"},
     {"question":"How should material debts, contracts, guarantees, banks and legal duties be represented?","owner":"knowledge/economics/north-obligation-graph-schema.json","role":"typed empirical obligation schema"},
     {"question":"Which North ideas are remembered from prior conversations but still need exact primary-source recovery?","owner":"knowledge/indexes/north-conversation-recovery-wave-2026-09-10.json","role":"non-canonical recovery queue"},
@@ -28,6 +32,7 @@
     "empirical":"entity -> relationship -> flow -> dependency -> risk/opportunity -> intervention -> measured outcome",
     "formal":"state -> observation -> boundary/guard -> transition -> new state -> evaluation",
     "developmental":"design graph -> observation graph -> intervention graph",
+    "map":"country polygon -> node profile -> overlapping memberships -> edges -> evidence -> interpretation -> repair question",
     "shared_question":"What is connected to what, what flows across the connection, what changes because of it, who bears the consequence, and what intervention or repair improves the next state?"
   },
   "do_not_duplicate":[
@@ -35,6 +40,10 @@
     "Do not create a second karmic-debt chronology; append/recover evidence in the existing ledger.",
     "Do not create another country-membership list; add a dated snapshot to the membership-history owner.",
     "Do not place symbolic 42T values in empirical finance datasets.",
+    "Do not treat Islam or another religion as a geopolitical bloc; faith composition is its own sourced demographic layer.",
+    "Do not treat BRICS as automatically identical with a Timic East; preserve institutional membership and project interpretation separately.",
+    "Do not allocate karmic debt to populations by nationality, ethnicity, religion or population size.",
+    "Do not use Swamp as a collective label for a people; attach it only to specified mechanisms and evidence.",
     "Do not create separate Christian, Jewish or Norse North files unless a genuinely specialist corpus exceeds the existing comparative owners.",
     "Do not turn every new geopolitical event into a new theory file; append it to evidence/synchronism owners with date and source class.",
     "Do not create a second Tim entrance page; Tim remains rooted in the existing canonical Tim owner and public dossier.",
@@ -50,10 +59,12 @@
     "New policy proposal -> North Programme owner, including mechanism, authority, cost, benefit, affected groups and measurable outcome.",
     "New scientific equation/model -> science owner with variables, provenance, assumptions, units where relevant, observables and falsifier.",
     "New theological comparison -> traditions owner with original textual context and mismatch noted.",
+    "New world-map edge -> exact countries/actors, edge type, direction, source, date, confidence and epistemic layer.",
     "Only create a new canonical owner when the concept has a stable identity, distinct method and enough material that placing it in an existing owner would reduce clarity."
   ],
   "public_views":[
     {"view":"North reader","path":"north/index.html","purpose":"human-readable integrated orientation"},
+    {"view":"World relational map","path":"world-map/index.html","purpose":"zoomable/clickable geography with overlapping empirical, project and repair layers"},
     {"view":"Archive explorer","path":"index.html#branch=north","purpose":"relationship-first navigation into canonical records"},
     {"view":"Science reader","path":"science/index.html","purpose":"formal models and scientific boundaries"},
     {"view":"Bible reader","path":"traditions/bible/index.html","purpose":"scriptural and comparative reading"}
@@ -61,8 +72,10 @@
   "next_clean_carving":[
     "Populate the empirical obligation graph with sourced relationships rather than prose descriptions.",
     "Add exact primary-source citations to membership-history snapshots as conversation archaeology recovers them.",
+    "Populate country faith slots from a licensed/sourced dataset rather than guessing percentages.",
+    "Add trade, energy, infrastructure, ownership, sovereign-debt and procurement edges country by country.",
     "Recover unresolved four-sector, six-domain, U.S.-recalibration, Trump/McDonald's and population-calculation material before promotion.",
     "Connect proposed interventions to exact graph edges and affected groups.",
-    "Keep the reader page compact; put depth in canonical backend owners and expose it through expandable views/search rather than adding endless static sections."
+    "Keep reader pages compact; put depth in canonical backend owners and expose it through expandable views/search rather than adding endless static sections."
   ]
 }
