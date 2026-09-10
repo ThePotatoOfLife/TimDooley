@@ -156,7 +156,7 @@ def render_catalog_page(records: list[dict]) -> str:
         '<title>Science Source Records — Tim Dooley</title>'
         '<meta name="description" content="Generated source-record view for the canonical Tim Dooley / Potato of Life science data.">'
         '<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/catalog/">'
-        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910d">'
+        '<link rel="stylesheet" href="../../app/style.css">'
         '</head><body><main class="science-page"><nav class="topnav"><a href="../">← Science</a><a href="../../">Home</a></nav>'
         '<header class="section-block"><p class="section-kicker">Generated source layer</p><h1>SCIENCE RECORDS</h1>'
         f'<p class="hero-lede">{len(records)} canonical science records. The JSON records remain the source of truth.</p></header>'
