@@ -58,15 +58,18 @@ jobs:
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
         run: python scripts/audit_web.py
-      - name: Validate science source syntax
+      - name: Validate science source syntax and contrast rules
         run: |
           python -m json.tool knowledge/science/science-model-registry.json >/dev/null
           node --check science/science.js
+          ! grep -Eq 'Canvas(Text)?' science/science.css
+          ! grep -q 'science-hub.css' science/index.html
+          ! grep -Eq 'href="\./(catalog|research-map|quantum|axis-11d-sun-spiral|celestial-particles|spudlight|vibe-gates)/' science/index.html
       - name: Build static site
         run: python scripts/build_site.py
-      - name: Compile Science Atlas
+      - name: Compile /science/ page
         run: python scripts/build_science_catalog.py
-      - name: Verify Science Atlas model and record layers
+      - name: Verify science model and record layers
         run: |
           python - <<'PY'
           import json
@@ -78,10 +81,12 @@ jobs:
           assert len(registry.get('models', [])) >= 10
           assert catalog['count'] == len(source)
           assert page.count('class="catalog-card"') == len(source)
-          assert 'id="model-grid"' in page
-          assert 'science-model-registry.json' in page
-          assert 'r(θ) = a e<sup>bθ</sup>' in page
-          print(f"Science Atlas: {len(registry['models'])} flagship models, {len(source)} source records")
+          assert 'id="model-list"' in page
+          assert 'id="model-view"' in page
+          assert '<h1>Science</h1>' in page
+          assert 'SCIENCE ATLAS' not in page.upper()
+          assert not (Path('_site') / 'science' / 'catalog' / 'index.html').exists()
+          print(f"/science/: {len(registry['models'])} developed models, {len(source)} source records")
           PY
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
