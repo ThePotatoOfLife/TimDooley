@@ -72,6 +72,14 @@ jobs:
         run: python scripts/patch_public_ontology.py
       - name: Optimize and audit SEO
         run: python scripts/optimize_seo.py
+      - name: Upload SEO audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: seo-report
+          path: _site/seo-report.json
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
       - name: Verify SEO report
