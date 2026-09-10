@@ -1,11 +1,12 @@
 {
   "id": "world-map-3d-runtime",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "updated": "2026-09-11",
   "status": "active renderer contract",
   "purpose": "Define the active 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme, chronology and provenance model used by the rest of the repository.",
   "projection_contract": "data/atlas-projection-contract.json",
   "time_contract": "data/atlas-time-contract.json",
+  "mathematical_calibration_contract": "data/atlas-mathematical-calibration.json",
   "navigation": {
     "pan": "click/touch drag translates the camera across the map",
     "zoom": "wheel/pinch/buttons move between world, regional, country and subnational scales",
@@ -18,7 +19,7 @@
   },
   "renderer_architecture": {
     "shell": "world-map/3d.html contains the public interface, controls and map layout",
-    "application": "world-map/3d-app.js owns MapLibre initialization, canonical country loading, Compare, recursive Trace, semantic modules and URL state",
+    "application": "world-map/3d-app.js owns MapLibre initialization, canonical country loading, Compare, recursive Trace, semantic modules, golden-angle navigation layout and URL state",
     "hover_and_resilience": "world-map/3d-hover.js owns resilient data boot, country hover and capital-city overlays",
     "pathfinder": "world-map/3d-pathfinder.js owns shortest-known-path navigation without creating a second map renderer",
     "demography": "world-map/3d-demography.js owns sourced population/religion presentation",
@@ -31,14 +32,15 @@
     "active_3d": "MapLibre GL JS world-map/3d.html and its modules provide the primary camera-based Atlas experience.",
     "future_heavy_overlay": "deck.gl or vector-tile layers may be added for high-volume arcs, point clouds, heatmaps and flows when scale requires it.",
     "shared_model": "Both renderers consume canonical repository contracts; there is no 3D-only truth database.",
-    "spatialization_registry": "data/world-map-spatialization-registry.json"
+    "spatialization_registry": "data/world-map-spatialization-registry.json",
+    "mathematical_calibration": "data/atlas-mathematical-calibration.json"
   },
   "spatial_primitives": {
     "country_shell": "Polygon/MultiPolygon selection surface and spatial context, not the country's complete identity.",
     "country_hub": "Representative navigation point when an exact entity coordinate is not relevant.",
-    "semantic_hub": "Navigation-only handle for a country data module; its screen/map position is not a claim about physical location.",
+    "semantic_hub": "Navigation-only handle for a country data module. Sibling hubs use stable golden-angle/phyllotactic placement; their screen/map positions are not claims about physical location or Fibonacci structure in the country.",
     "trace_hub": "Temporary representative marker for countries reached by recursive Trace; hop depth is graph distance only.",
-    "compare_hub": "Temporary marker communicating Compare selection state.",
+    "compare_hub": "Temporary marker communicating active Compare selection state; leaving Compare clears these temporary states and URL membership.",
     "real_node": "Geocoded city, institution, facility, port, airport, base, sacred site, infrastructure asset or documented event with coordinate provenance.",
     "nonspatial_node": "Treaty, statistic, scripture, theology or other concept without one honest coordinate; expose through cards/trace/Axis scenes instead of fake pins.",
     "edge": "Typed relationship rendered between honest anchors when drawing it improves understanding.",
@@ -46,6 +48,7 @@
   },
   "country_interior_model": {
     "principle": "A country polygon is a container. Selection unfolds canonical data into semantic modules and progressively exposes real spatial nodes as data quality and zoom permit.",
+    "layout": "Available semantic modules are placed by a Vogel-style golden-angle sequence to reduce spoke alignment and preserve relative placement as new modules are added. This is navigation geometry only.",
     "implemented_semantic_modules": [
       "religion / irreligion", "government / law", "economy / money", "physical debt / public finance",
       "trade / supply chains", "energy / resources", "infrastructure / mobility", "companies / ownership",
@@ -57,8 +60,8 @@
   "compare_mode": {
     "status": "implemented-basic",
     "capacity": 4,
-    "behavior": "Keeps up to four country polygons selected, presents compatible descriptive comparisons and can fit all compared polygon bounds.",
-    "url_state": "compare=ISO3,ISO3... persists the comparison.",
+    "behavior": "Keeps up to four country polygons selected while active, presents compatible descriptive comparisons, separates Inspect from Remove actions, and clears temporary compare state/hubs/URL membership on Done.",
+    "url_state": "compare=ISO3,ISO3... persists the active comparison; exiting Compare removes it.",
     "next": "Add user-selected sourced metrics and relation-overlap/intersection views."
   },
   "trace_mode": {
@@ -69,7 +72,7 @@
     "cycle_handling": "visited-country tracking prevents repeated cycles; each country is presented at its shortest discovered hop",
     "browser_safety": {"maximum_nodes": 60, "maximum_edges": 120},
     "filters": "Relation type applies before traversal and persists in URL state.",
-    "epistemic_boundary": "Hop count is graph distance in the represented dataset, not causal, political, moral or evidentiary distance.",
+    "epistemic_boundary": "Hop count is graph-geodesic distance in the represented dataset, not causal, political, moral or evidentiary distance.",
     "next": "Generalize into entity-aware traversal using data/relationships.json and data/global-graph-bridge.json with time and epistemic filters."
   },
   "path_mode": {
@@ -93,8 +96,8 @@
   "capital_and_country_facts": {
     "status": "implemented",
     "hover": ["population + year", "capital", "area km²", "region/subregion", "currency"],
-    "capital_nodes": "Wikidata-backed capital city nodes with coordinates/name/population where returned.",
-    "facts_snapshot": "world-country-facts.json is built same-origin from canonical country records with GeoNames fallback and per-field provenance."
+    "capital_nodes": "Wikidata-backed capital city nodes with coordinates/name and population where returned; dated population statements are preferred by latest observation date and the date is exposed in hover.",
+    "facts_snapshot": "world-country-facts.json is built same-origin from canonical country records with GeoNames fallback, exact area semantics and per-field provenance."
   },
   "axis_mode": {
     "status": "implemented-symbolic-navigation",
@@ -102,7 +105,15 @@
     "door": "D5 North Gate/polar threshold",
     "upper": "D6-D11 project-symbolic analytical/spiritual scaffold",
     "lower": "D3-D1 provenance/feedback/disintegration analytical scaffold",
-    "boundary": "D-levels are project-symbolic/analytical navigation, not physical extra dimensions."
+    "north_gate_arc_degrees": 42,
+    "boundary": "D-levels are project-symbolic/analytical navigation, not physical extra dimensions. The 42-degree North arc is a visual geometry parameter, not a level count, Fibonacci derivation or physical law."
+  },
+  "mathematical_planes": {
+    "geography": "Real Earth coordinates and map projection.",
+    "topology": "Represented graph connectivity; BFS/geodesic distance currently powers Trace and Path. Spectral layouts are reserved for a future explicitly non-geographic graph plane.",
+    "hierarchy": "Axis D-levels are typed analytical/project navigation. A future Tree/Rooms view may experiment with hyperbolic hierarchy without distorting Earth geography.",
+    "time": "As-of/reference time is orthogonal to geography, graph distance and hierarchy depth.",
+    "flow": "Vortex/curl language remains analogy until directed quantitative edges share a quantity, unit and reference period; graph Hodge decomposition is the preferred future formalism once those gates are met."
   },
   "resilience": {
     "geometry": "same-origin deployed geometry snapshot is preferred, with provider fallbacks available through the resilient boot layer",
@@ -117,20 +128,21 @@
     "flat, population-height and area-height modes",
     "country-name and ISO3 search",
     "canonical country-index resolution and lazy-loaded country records",
-    "country representative hubs and semantic interior module constellation",
+    "country representative hubs and golden-angle semantic interior module constellation",
     "selected-country typed relation lines",
     "recursive breadth-first country Trace for one to three hops with cycle and browser caps",
     "typed relation filtering and URL persistence",
-    "multi-country Compare mode for up to four countries",
+    "multi-country Compare mode for up to four countries with deterministic exit cleanup",
     "shortest-known typed relationship Path with explicit evidence boundary",
     "sourced population and religion presentation",
     "same-origin country-facts hover with capital, area, region and currency",
-    "capital city nodes with name/population hover",
+    "capital city nodes with latest-dated available population hover",
     "Eye evidence inspector for provenance, observation dates and epistemic boundaries",
     "resilient local-first geometry/country-data boot",
     "North Axis D1-D11 symbolic navigator and executable symbolic operators",
     "URL country, compare, relation, depth and path state",
-    "explicit provenance boundary between navigation-only semantic points and real coordinates"
+    "explicit provenance boundary between navigation-only semantic points and real coordinates",
+    "machine-readable mathematical calibration contract separating geography, topology, hierarchy, time and future quantified flow"
   ],
   "node_record_schema": {
     "required": ["id", "kind", "name", "country_or_jurisdiction", "provenance"],
@@ -148,7 +160,7 @@
     "required_display": ["metric name", "unit", "observation year/date", "source", "normalization/scaling method"]
   },
   "data_growth_strategy": {
-    "current": "Use country polygons, sourced facts/demography, semantic modules, a curated relationship graph, Path/Trace/Compare, an Eye evidence inspector and a project-symbolic Axis view.",
+    "current": "Use country polygons, sourced facts/demography, stable semantic modules, a curated relationship graph, Path/Trace/Compare, an Eye evidence inspector and a project-symbolic Axis view.",
     "next_foundation": "Implement conservative Time controls from the canonical time contract, then make Time and Eye shared filters for graph traversal and dated evidence.",
     "next_graph": "Generalize country-only graph traversal into normalized country/institution/company/infrastructure/funding/ownership/programme relations.",
     "next_physical": "Add high-value real spatial nodes: government institutions, ports, grids, cables, power plants, companies and research institutions.",
@@ -157,9 +169,10 @@
   "next_priority": [
     "Implement conservative Current / As-of / Compare-dates filtering from data/atlas-time-contract.json.",
     "Extend Eye from inspection into filtering for epistemic class, confidence, source class, contradictions and freshness.",
+    "Prototype a separate deterministic spectral graph view before using graph-derived coordinates anywhere public.",
+    "Prototype a separate hyperbolic Tree/Rooms hierarchy without changing geographic coordinates.",
     "Expand recursive Trace into entity-aware traversal through data/global-graph-bridge.json and data/relationships.json.",
-    "Generalize D3 Roots to relationships, institutions, claims and events.",
-    "Make Spiral compare dated states and deltas; Tree expand real descendants/dependencies; Mountain declare aggregation and information loss.",
+    "Only after directed compatible quantitative flows are populated, evaluate graph Hodge decomposition for source/sink/cyclic structure.",
     "Add real ports, grids, cables, power plants, institutions and company/funding/ownership chains for the North/European capability graph.",
     "Normalize compatible GDP/debt/energy metrics with date/unit/source before new choropleths/extrusions.",
     "Vendor or otherwise harden the remaining MapLibre CDN dependency.",
@@ -168,6 +181,7 @@
   "connections": [
     "data/atlas-projection-contract.json",
     "data/atlas-time-contract.json",
+    "data/atlas-mathematical-calibration.json",
     "data/world-map-spatialization-registry.json",
     "data/world-map-runtime.json",
     "data/world-map-polygon-runtime.json",
