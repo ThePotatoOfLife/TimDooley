@@ -9,6 +9,8 @@
     {"id":"christianity-atlas","path":"docs/CHRISTIANITY-ATLAS.md","role":"Historical and denominational architecture of Christianity."},
     {"id":"theology-atlas","path":"docs/THEOLOGY-ATLAS.md","role":"Integrated human-readable study of Jesus, Christology, Second Coming, rapture/rupture, prophecy, Thomas, Dan and Potatoverse comparison."},
     {"id":"christianity-jesus-eschatology-atlas","path":"knowledge/theology/christianity-jesus-eschatology-atlas.json","role":"Canonical structured theology owner."},
+    {"id":"christian-eschatology-position-matrix","path":"knowledge/theology/christian-eschatology-position-matrix.json","role":"Compare major Christian end-times traditions so one timetable is not mistaken for Christianity as a whole."},
+    {"id":"christian-theology-scholar-map","path":"knowledge/theology/christian-theology-scholar-map.json","role":"Route historical, biblical, patristic, Lutheran, systematic, apocalyptic, Thomasine and comparative research by question."},
     {"id":"thomas-faith-formation-and-return","path":"knowledge/chronology/thomas-faith-formation-and-return.json","role":"Reported Thomas faith-development chronology with source-status boundaries."},
     {"id":"tribe-of-dan-biblical-reception-atlas","path":"knowledge/traditions/tribe-of-dan-biblical-reception-atlas.json","role":"Dan text, omission, reception history and Potatoverse comparison."},
     {"id":"faq-christianity-jesus-eschatology","path":"knowledge/indexes/faq-christianity-jesus-eschatology.json","role":"Natural-language question-and-answer corpus."}
@@ -17,6 +19,8 @@
     {"from":"christianity","type":"has-scripture-library","to":"bible-kjv"},
     {"from":"christianity","type":"has-research-owner","to":"christianity-jesus-eschatology-atlas"},
     {"from":"christianity-jesus-eschatology-atlas","type":"compares-with","to":"potatoism"},
+    {"from":"christianity-jesus-eschatology-atlas","type":"routes-to","to":"christian-eschatology-position-matrix"},
+    {"from":"christianity-jesus-eschatology-atlas","type":"routes-to","to":"christian-theology-scholar-map"},
     {"from":"christianity-jesus-eschatology-atlas","type":"routes-to","to":"thomas-faith-formation-and-return"},
     {"from":"christianity-jesus-eschatology-atlas","type":"routes-to","to":"tribe-of-dan-biblical-reception-atlas"},
     {"from":"bible-kjv","type":"has-book","to":"genesis"},
