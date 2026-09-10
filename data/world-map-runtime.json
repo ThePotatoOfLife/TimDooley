@@ -1,18 +1,23 @@
 {
   "id": "world-map-runtime",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-10",
   "status": "active runtime architecture",
-  "purpose": "Make the World Relational Atlas the spatial interface over the repository's existing country, institution, economic, geopolitical, theological, historical and project-canon records without duplicating their canonical data.",
-  "core_rule": "The map is a router and renderer over canonical records. Geometry tells us where something is; canonical owners tell us what it is; typed edges tell us how it is connected; issue records tell us what is broken or contested; tikkun records describe possible repair questions and measurable interventions.",
+  "purpose": "Make the World Relational Atlas the spatial interface over the repository's country, institution, economic, geopolitical, religious, theological, historical and project-canon records without duplicating their canonical data.",
+  "core_rule": "The map is a router and renderer over canonical records. Geometry tells us where something is; canonical owners tell us what it is; typed edges tell us how it is connected; time tells us when a relation is valid; issue records tell us what is broken or contested; programmes propose interventions; tikkun records describe repair and closure.",
   "canonical_inputs": {
     "countries": "data/countries/index.json",
     "country_records": "data/countries/{country_id}.json",
     "country_blueprint": "data/countries-blueprint.json",
+    "country_parent": "data/country-atlas.json",
     "project_axis": "data/world-relational-map.json",
+    "world_religion": "data/world-religion-layer.json",
+    "world_entanglements": "data/world-entanglement-registry.json",
+    "integrated_layer_stack": "knowledge/core/world-atlas-integrated-layer-stack.json",
     "north_membership_history": "data/north-axis-membership-history.json",
     "north_programme": "data/north-programme-atlas.json",
     "country_method": "knowledge/core/country-relational-method.json",
+    "religion_society_method": "docs/RELIGION-TO-SOCIETY-GRAPH.md",
     "swamp_research": "data/swamp-research-seeds.json",
     "karmic_ledger": "knowledge/chronology/karmic-debt-ledger-2026.json",
     "biblical_debt_repair": "knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json",
@@ -23,104 +28,99 @@
     "country": "polygon or multipolygon identified by ISO3 and linked to a canonical country record",
     "territory_or_region": "polygon/multipolygon with constitutional-status metadata and canonical parent relations",
     "organization_or_institution": "point when a meaningful public headquarters/location exists; otherwise non-spatial node attached to country/jurisdiction",
+    "religious_institution_or_sacred_site": "point/area node with tradition, institution type, legal status, historical period and source",
     "company_or_facility": "point for public facility/site; company legal entity may be non-spatial or have several locations",
     "port_airport_base_infrastructure": "point or line with operator, owner, jurisdiction, capacity and source",
     "corridor_pipeline_cable_route": "line/polyline/multiline",
     "trade_finance_security_research_migration_relation": "edge between nodes; rendered as a line or arc when spatial display helps",
     "issue_or_event": "point/polygon/edge attachment depending on actual geography; never assign a whole country as the geometry of a localized event unless the issue genuinely operates nationally",
-    "religion_or_theology": "normally a demographic, institutional, historical or comparative layer rather than a territorial bloc"
+    "religion_or_theology": "demographic, institutional, historical, legal or comparative layer rather than a territorial bloc"
   },
   "zoom_semantics": [
-    {"zoom":"2-3","mode":"world systems","show":["country polygons","North/West/East/South interpretive fields","NATO/BRICS/EU and other institutional overlays","global flows and high-value cross-border edges"]},
-    {"zoom":"4-5","mode":"regional systems","show":["functional chains","regional institutions","major trade/energy/security corridors","country-to-country dependencies","conflicts and repair programmes"]},
-    {"zoom":"5-7","mode":"country","show":["canonical country dossier","national institutions","major organizations and firms","major issue records","faith composition","history","Tim/Potatoverse relation where sourced"]},
-    {"zoom":"7+","mode":"subnational / infrastructure","show":["cities","ports","bases","plants","cables","projects","public institutions","documented event locations"],"status":"future expansion; requires higher-resolution geometry"}
+    {"zoom":"2-3","mode":"world systems","show":["country polygons","North/West/East/South interpretive fields","NATO/BRICS/EU and other institutional overlays","religious affiliation/unaffiliated/diversity overlays","global flows and high-value cross-border edges"]},
+    {"zoom":"4-5","mode":"regional systems","show":["functional chains","regional institutions","major trade/energy/security corridors","migration/diaspora relations","country-to-country dependencies","conflicts and repair programmes"]},
+    {"zoom":"5-7","mode":"country","show":["canonical country dossier","government/law","major organizations and firms","religious composition and nonreligion","religious law/freedom","major institutions","issue records","history","Tim/Potatoverse relation where sourced"]},
+    {"zoom":"7+","mode":"subnational / infrastructure","show":["cities","ports","bases","plants","cables","projects","religious institutions","sacred sites","pilgrimage routes","public institutions","documented event locations"],"status":"future expansion; requires higher-resolution geometry and curated coordinates"}
   ],
-  "node_types": [
-    "country","territory","region","city","government","ministry","legislature","court","central-bank","bank","company","fund","ngo","pac","political-organization","religious-body","university","media-outlet","infrastructure","port","airport","military-base","alliance","treaty","armed-group","community","person-public-role","project-canon-node"
-  ],
-  "edge_types": [
-    "border","member-of","alliance","treaty","trade","supply-chain","energy","infrastructure","ownership","control","funding","donation","lobbying","procurement","contract","loan","bond","deposit","equity","guarantee","aid","grant","sanction","security-assistance","intelligence-cooperation","research","technology","migration","diaspora","religious-history","cultural","media","information","legal-duty","historical-causation","project-symbolic-comparison","Tim-project-relation"
-  ],
-  "entanglement_schema": {
-    "required": ["id","title","kind","status","geography","actors","mechanism","evidence","date_or_period","affected_parties","repair_questions"],
-    "kind_examples": ["conflict","civilian-harm","human-trafficking","forced-labor","historical-slavery","corruption-risk","regulatory-capture","political-finance","lobbying","sanctions","debt-dependency","supply-chain-concentration","energy-dependency","ownership-opacity","disinformation","harassment-network","institutional-abuse","human-rights","ecological-damage","infrastructure-bottleneck","covenant-or-theological-comparison","project-karmic-obligation"],
-    "status_values": ["observed","alleged","contested","historical","ongoing","resolved","partly-repaired","research-lead","project-symbolic"],
-    "evidence_classes": ["primary-official","court-record","treaty-or-law","audited-financial","academic","reputable-reporting","ngo-dataset","primary-public-statement","conversation-archaeology","project-synthesis","unresolved"],
-    "mechanism_rule": "An issue must say how the effect occurs. Do not attach a vague moral label such as 'swamp' to a country without identifying actors, institutions, incentives, transactions, laws, violence, ownership, information flows or another concrete mechanism.",
-    "collective_blame_rule": "Do not infer guilt, debt, loyalty, danger or conduct from nationality, ethnicity or religion. Country and faith nodes provide context; responsibility belongs to evidenced actors, institutions, policies, events and relationships.",
-    "serious_harm_rule": "Trafficking, slavery, civilian casualties, abuse and similar harms are never scores, collectibles or entertainment mechanics. The game-like layer can reward source coverage, resolved unknowns, traced relationships and completed repair analysis only."
+  "node_types": ["country","territory","region","city","government","ministry","legislature","court","central-bank","bank","company","fund","ngo","pac","political-organization","religious-tradition","religious-body","congregation","church","mosque","synagogue","temple","monastery","seminary","religious-school","charity","sacred-site","pilgrimage-route","university","media-outlet","infrastructure","port","airport","military-base","alliance","treaty","armed-group","community","person-public-role","project-canon-node"],
+  "edge_types": ["border","member-of","alliance","treaty","trade","supply-chain","energy","infrastructure","ownership","control","funding","donation","lobbying","procurement","contract","loan","bond","deposit","equity","guarantee","aid","grant","sanction","security-assistance","intelligence-cooperation","research","technology","migration","diaspora","religious-affiliation","religious-history","religious-law","religious-education","pilgrimage","charity","cultural","media","information","legal-duty","historical-causation","project-symbolic-comparison","Tim-project-relation"],
+  "religion_runtime": {
+    "owner": "data/world-religion-layer.json",
+    "views": ["affiliation","irreligion","diversity","freedom-law","institutions","sacred-geography","religion-society","comparative-theology"],
+    "global_baseline": "Pew 2020 composition; published 2025; diversity rankings added 2026",
+    "display_rule": "Always show observation year. Historical religious identity, current affiliation, irreligion, diversity, state law and project theology are different fields.",
+    "country_click": ["composition","unaffiliated/nonreligion","diversity","law/freedom","institutions","history","migration/diaspora","sacred geography","project/scriptural comparisons","sources"]
+  },
+  "entanglement_runtime": {
+    "owner": "data/world-entanglement-registry.json",
+    "required": ["actors","mechanism","geography","period","evidence","affected parties","relations","repair questions"],
+    "rule": "An entanglement is a sourced relationship problem, not a moral property of a country or faith.",
+    "serious_harm_rule": "Trafficking, slavery, civilian casualties, abuse and similar harms are never scores or collectibles. Exploration progress may reward evidence, mechanism clarity and repair analysis only."
   },
   "three_epistemic_planes": {
     "observable": "institutions, laws, memberships, transactions, budgets, trade, ownership, demographics, events and other externally sourceable facts",
-    "interpretive": "North/West/East/South, Swamp, covenant, tikkun and other analytical or comparative readings",
+    "interpretive": "North/West/East/South, Swamp, covenant, tikkun and analytical/comparative readings",
     "project_canon": "Tim Dooley, Potatoverse, spiritual-bank/karmic-ledger, Son/Door, North-of-North and related internal mythology",
-    "display_rule": "Every map card and edge should visibly identify which plane it belongs to; mixed cards must preserve field-level provenance."
+    "display_rule": "Every map card and edge identifies its plane; mixed cards preserve field-level provenance."
   },
   "interaction_model": {
-    "click_country": ["load canonical country record","show coverage and provenance","show institutional memberships","show project-axis tags","show related edges","show issue/entanglement records","show relevant theology/history","show tikkun/repair questions","show unresolved research missions"],
+    "click_country": ["load canonical country record","show source freshness/coverage","show religious/irreligious profile","show institutional memberships","show project-axis tags","show related edges","show issue/entanglement records","show theology/history","show tikkun questions","show unresolved research missions"],
     "click_edge": ["show endpoints","relationship type","direction","value if observable","date","source","confidence","dependencies","affected parties","related issue records","repair/intervention records"],
-    "click_issue": ["show exact geography","actors","mechanism","evidence","what is known","what is alleged/contested","affected people","law/institution context","repair status","canonical source owners"],
-    "compare_countries": ["capability","dependency","institutional membership","trade/energy/security links","faith/culture context","issue patterns","repair capacity"],
-    "trace_mode": "Start at any node and recursively follow typed edges to answer who funds, owns, depends on, supplies, protects, regulates, influences or is affected by whom."
+    "click_issue": ["show exact geography","actors","mechanism","evidence","known vs alleged/contested","affected people","law/institution context","repair status","canonical source owners"],
+    "compare_countries": ["capability","dependency","institutions","trade/energy/security","religious composition","unaffiliated","religious diversity","religion-law model","migration/diaspora","issue patterns","repair capacity"],
+    "trace_mode": "Start at any node and recursively follow typed edges to answer who funds, owns, depends on, supplies, protects, regulates, influences, teaches, migrates, worships, restricts, supports or is affected by whom.",
+    "time_mode": "Render only observations and relationships valid for the selected date/period; historical harms and memberships must not permanently stain current identity."
   },
   "game_like_research_model": {
     "name": "Atlas Exploration / Tikkun Mode",
     "principle": "Progress measures knowledge quality and repair clarity, not domination, ideological conformity or quantities of human suffering.",
-    "progress_units": [
-      "country dossier coverage",
-      "sourced relationship edges",
-      "resolved entity identity",
-      "current-source freshness",
-      "mechanism explained",
-      "counter-evidence attached",
-      "affected parties represented",
-      "repair option specified",
-      "measurable outcome defined",
-      "historical/project/empirical layers successfully separated"
-    ],
-    "missions": [
-      "Map a country's top dependencies",
-      "Trace one supply chain end to end",
-      "Trace a political-finance relationship to primary records",
-      "Separate organization, PAC, donor, candidate and policy nodes",
-      "Map one historical slavery relation and its modern institutional afterlife without collapsing descendants into inherited guilt",
-      "Map one contemporary trafficking mechanism using reputable datasets and actor-specific evidence",
-      "Trace one North Programme capability chain",
-      "Find an unverified Tim/project claim and either source, downgrade or reject it",
-      "Take one Swamp-tagged mechanism and identify a concrete tikkun/repair route"
-    ]
+    "progress_units": ["country dossier coverage","sourced relationship edges","resolved entity identity","current-source freshness","religion-profile completeness","mechanism explained","counter-evidence attached","affected parties represented","repair option specified","measurable outcome defined","historical/project/empirical layers successfully separated"],
+    "missions": ["Complete a country's religion/irreligion profile from dated sources","Map a country's top dependencies","Trace one supply chain end to end","Trace a political-finance relationship to primary records","Map one historical slavery relation and its modern institutional afterlife without inherited-guilt logic","Map one contemporary trafficking mechanism using reputable actor-specific evidence","Trace one religion-to-society chain through institution/migration/property/education/charity/media","Trace one North Programme capability chain","Find an unverified Tim/project claim and source, downgrade or reject it","Take one Swamp-tagged mechanism from diagnosis to a concrete tikkun route"]
   },
-  "country_screen_modules": [
-    "identity","current snapshot","government and law","economy and public finance","trade and value chains","energy/resources","infrastructure","companies and ownership","security/alliances","research/technology","labor/migration","culture/religion","history","relationships","issues/entanglements","North/Axis/project relation","Tim/Potatoverse provenance","ledger links","tikkun/repair","sources","research queue"
-  ],
+  "country_screen_modules": ["identity","current snapshot","government and law","economy and public finance","trade and value chains","energy/resources","infrastructure","companies and ownership","security/alliances","research/technology","labor/migration","religious composition","irreligion/disaffiliation","religious diversity","religion law/freedom","religious institutions/sacred geography","culture","history","relationships","issues/entanglements","North/Axis/project relation","Tim/Potatoverse provenance","ledger links","tikkun/repair","sources","research queue"],
   "overlay_registry": [
     {"id":"north-axis","plane":"interpretive + project-canon","owner":"data/north-axis-membership-history.json"},
     {"id":"north-programme","plane":"policy/research","owner":"data/north-programme-atlas.json"},
     {"id":"nato","plane":"observable","owner":"data/world-relational-map.json"},
     {"id":"brics","plane":"observable","owner":"data/world-relational-map.json"},
-    {"id":"faith","plane":"observable demographic","owner":"data/world-relational-map.json","status":"source slots pending fuller country ingestion"},
+    {"id":"religious-affiliation","plane":"observable demographic","owner":"data/world-religion-layer.json"},
+    {"id":"irreligion","plane":"observable demographic","owner":"data/world-religion-layer.json"},
+    {"id":"religious-diversity","plane":"observable derived-demographic","owner":"data/world-religion-layer.json"},
+    {"id":"religion-law-freedom","plane":"observable legal/institutional","owner":"data/world-religion-layer.json"},
+    {"id":"religious-institutions","plane":"observable institution/geography","owner":"data/world-religion-layer.json"},
+    {"id":"sacred-geography","plane":"observable/history","owner":"data/world-religion-layer.json"},
     {"id":"political-finance","plane":"observable","owner":"data/swamp-research-seeds.json"},
     {"id":"defense-industry","plane":"observable","owner":"data/swamp-research-seeds.json"},
     {"id":"intelligence-information","plane":"observable/history","owner":"data/intelligence-information-ecosystem-atlas-wave-016.json"},
+    {"id":"entanglements","plane":"mixed with field-level provenance","owner":"data/world-entanglement-registry.json"},
     {"id":"swamp","plane":"interpretive over observable mechanisms","owner":"knowledge/core/shadow-west-swamp-synthesis.json"},
     {"id":"karmic-ledger","plane":"project-canon","owner":"knowledge/chronology/karmic-debt-ledger-2026.json"},
     {"id":"tikkun","plane":"comparative ethics / intervention","owner":"knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"}
   ],
   "routing_examples": [
-    {"query":"AIPAC","route":"United States country -> political-finance layer -> distinct organization/PAC entities -> FEC/source records -> policy/candidate edges; do not encode 'AIPAC' as a property of Jews, Israel or Americans as populations."},
-    {"query":"human trafficking","route":"country/region -> documented trafficking pattern or case -> victims/affected populations -> recruiters/exploiters/transit/financial/law-enforcement/institution nodes -> source and legal status -> prevention/protection/prosecution/repair links."},
-    {"query":"slavery","route":"historical period -> legal/economic system -> ports/plantations/trade routes/state/company/person/institution nodes -> abolition/change -> documented institutional/economic afterlives; descendants do not inherit personal guilt by ancestry."},
-    {"query":"Tim Dooley entanglement","route":"country or institution -> exact Tim statement/project record -> date/source/exactness -> symbolic interpretation -> any separately evidenced real-world relation; never infer that a government is knowingly responding to Tim without evidence."}
+    {"query":"religion in a country","route":"country -> dated composition/unaffiliated/diversity -> national legal/institutional context -> history/migration -> sources; project theology remains separate"},
+    {"query":"AIPAC","route":"United States -> political-finance -> distinct organization/PAC entities -> FEC/source records -> policy/candidate edges; do not encode AIPAC as a property of Jews, Israel or Americans"},
+    {"query":"human trafficking","route":"country/region -> documented pattern or case -> affected populations -> recruiters/exploiters/transit/financial/law-enforcement/institution nodes -> source/legal status -> prevention/protection/prosecution/repair"},
+    {"query":"slavery","route":"historical period -> legal/economic system -> routes/ports/state/company/person/institution nodes -> abolition/change -> documented afterlives; descendants do not inherit personal guilt"},
+    {"query":"Tim Dooley entanglement","route":"country/institution -> exact Tim statement/project record -> date/source/exactness -> symbolic interpretation -> separately evidenced real-world relation if one exists"}
+  ],
+  "implemented_now": [
+    "Canonical country lazy-loading on map click",
+    "URL country/layer state",
+    "Archive coverage/research missions",
+    "World religion/irreligion layer schema",
+    "Typed world entanglement registry",
+    "Integrated layer-stack architecture",
+    "Runtime routing for religion, entanglements, time, compare and trace modes"
   ],
   "next_runtime_steps": [
-    "Make the map load data/countries/index.json and then lazy-load the canonical country JSON on click.",
-    "Add a generic renderer for country-record sections instead of hard-coding every country field in the map page.",
-    "Create an issue/entanglement registry with country/actor/source routing rather than embedding issue prose directly in polygons.",
-    "Create entity and edge registries for organizations, companies, institutions and infrastructure.",
-    "Add map URL state: country, layer, zoom, tab and trace path so every view is linkable.",
-    "Add compare mode and trace mode.",
-    "Add research-coverage progress and mission cards using missing-source fields from canonical records.",
-    "Later add higher-resolution subnational geometry and infrastructure coordinates."
+    "Wire the new religion views into world-map/index.html controls and country tabs.",
+    "Ingest licensed/published Pew 2020 composition and RDI values with explicit observation-year labels.",
+    "Implement compare mode and trace mode before adding more decorative overlays.",
+    "Normalize existing political-finance and defense seeds into reusable entity/edge records.",
+    "Add a time-slider contract and versioned historical edges.",
+    "Add religious institution and sacred-site point registries for deeply researched countries.",
+    "Add North Programme interventions as typed programme edges with authority, cost, mechanism and expected outcome.",
+    "Add repair-state transitions: diagnosed -> designed -> authorized -> implementing -> measured -> repaired/closed."
   ]
 }
