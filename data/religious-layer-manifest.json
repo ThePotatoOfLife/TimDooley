@@ -1,5 +1,5 @@
 {
-  "version":"1.6.0",
+  "version":"1.6.1",
   "updated":"2026-09-10",
   "name":"Religious Layer Manifest",
   "purpose":"Single navigation manifest for the expanded religious knowledge graph, including main traditions, foundation histories, adjacent cultic/esoteric traditions, project-defined Potatoism, primary-text libraries and evidence-aware Christianity/Jesus/eschatology research.",
@@ -32,7 +32,9 @@
     "canonical_owner":"knowledge/theology/christianity-jesus-eschatology-atlas.json",
     "public_route":"theology/christianity/",
     "faq":"knowledge/indexes/faq-christianity-jesus-eschatology.json",
-    "specialists":["knowledge/chronology/thomas-faith-formation-and-return.json","knowledge/traditions/thomas-twin-of-christ.json","knowledge/traditions/tribe-of-dan-biblical-reception-atlas.json","knowledge/traditions/biblical-overlap-atlas.json","knowledge/prophecy/prophecy-revelation-rupture-rapture.json","knowledge/prophecy/seals-and-fulfillment-matrix.json"],
+    "comparative_eschatology":"knowledge/theology/christian-eschatology-position-matrix.json",
+    "scholar_map":"knowledge/theology/christian-theology-scholar-map.json",
+    "specialists":["knowledge/theology/christian-eschatology-position-matrix.json","knowledge/theology/christian-theology-scholar-map.json","knowledge/chronology/thomas-faith-formation-and-return.json","knowledge/traditions/thomas-twin-of-christ.json","knowledge/traditions/tribe-of-dan-biblical-reception-atlas.json","knowledge/traditions/biblical-overlap-atlas.json","knowledge/prophecy/prophecy-revelation-rupture-rapture.json","knowledge/prophecy/seals-and-fulfillment-matrix.json"],
     "integrity":"Historical Jesus, Christian confession, denominational doctrine, academic interpretation, project testimony, Potatoverse canon and comparative claims remain separately typed."
   },
   "potatoism":"data/potatoism-religion.json",
