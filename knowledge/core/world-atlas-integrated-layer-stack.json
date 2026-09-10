@@ -1,0 +1,142 @@
+{
+  "id": "world-atlas-integrated-layer-stack",
+  "title": "World Relational Atlas — Integrated Layer Stack and Growth Logic",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "canonical integration architecture",
+  "purpose": "Explain how the World Map, Country Atlas, North Axis, North Programme, Economic Graph, Religion-to-Society Graph, Swamp/entanglement research, Tim/Potatoverse canon, karmic ledger and tikkun/repair system become one coherent explorable world model without collapsing their epistemic differences.",
+  "core_thesis": "The World Atlas is the spatial operating surface. Countries and territories are containers, not conclusions. Canonical records describe entities; typed edges describe relationships; time describes change; issue records describe failures/contested mechanisms; interpretive layers describe North/Axis/Swamp/scriptural comparisons; the North Programme and other programmes propose interventions; Tikkun evaluates repair and closure.",
+  "four_questions": [
+    "ATLAS — What exists, where is it, and what is connected to what?",
+    "AXIS — What structures, flows, dependencies and orientations organize those relations?",
+    "LEDGER — What consequences, liabilities, obligations, unresolved harms or dependencies remain open?",
+    "TIKKUN — What truthful, lawful, measurable intervention could improve or close the relation?"
+  ],
+  "completion_state": "GARDEN is the project's name for a successful relational state: not ideological uniformity, but greater safety, agency, capability, truthfulness, resilience, coexistence and future capacity.",
+  "layer_stack": [
+    {"level":1,"name":"Geometry","contains":["country borders","territories","subnational regions","cities","sites","routes","infrastructure"],"question":"Where?"},
+    {"level":2,"name":"Identity","contains":["countries","governments","companies","banks","PACs","religious bodies","universities","NGOs","alliances","communities","public-role people"],"question":"What is it?"},
+    {"level":3,"name":"Observation","contains":["population","economy","debt","trade","energy","religious composition","unaffiliated share","diversity","law","institutions","military/security","migration","technology","history"],"question":"What do sourced observations say?"},
+    {"level":4,"name":"Relationships","contains":["ownership","funding","trade","debt","alliances","lobbying","migration","diaspora","religious-history","research","energy","infrastructure","media","law","security","culture"],"question":"How are nodes coupled?"},
+    {"level":5,"name":"Time","contains":["effective dates","historical periods","membership changes","policy changes","demographic change","wars","abolition","reform","repair progress"],"question":"When was this relation true?"},
+    {"level":6,"name":"Entanglements","contains":["conflict","exploitation","trafficking","historical slavery","political finance","corruption","dependency","civilian harm","religious restrictions","regulatory capture","ecological damage","institutional abuse"],"question":"What mechanism is producing a problem, contested dependency or unresolved consequence?"},
+    {"level":7,"name":"Interpretation","contains":["North/West/East/South","Swamp","covenant","scriptural parallels","comparative mythology","Tim/Potatoverse relations"],"question":"How does the project interpret the observed graph?"},
+    {"level":8,"name":"Ledger","contains":["material obligations","legal duties","financial liabilities","project-symbolic karmic obligations","repair state"],"question":"What remains open, to whom, and under which evidence class?"},
+    {"level":9,"name":"Programme","contains":["North Programme","economic reforms","infrastructure projects","capacity chains","policy options","research programmes"],"question":"What intervention is proposed, by whom, under what authority, and through what mechanism?"},
+    {"level":10,"name":"Tikkun / evaluation","contains":["truth","protection","restitution","release","rights","institutional reform","rebuilding","capacity creation","measurement","revision","closure"],"question":"Did the intervention actually improve the relation?"}
+  ],
+  "map_modes": [
+    {"id":"explore","purpose":"click geography and discover canonical records"},
+    {"id":"layers","purpose":"switch among demographic, institutional, economic, religious, security, historical and project views"},
+    {"id":"trace","purpose":"follow one relationship chain across nodes and countries"},
+    {"id":"compare","purpose":"compare two or more countries/entities on the same typed dimensions"},
+    {"id":"time","purpose":"scrub a date/period and render only relations valid at that time"},
+    {"id":"entanglement","purpose":"show documented issues by mechanism/evidence/status without painting populations as guilty"},
+    {"id":"programme","purpose":"show interventions, North Programme chains and responsible authorities"},
+    {"id":"tikkun","purpose":"show diagnosed -> intervention-designed -> implementing -> measured -> substantially-repaired -> released/closed states"},
+    {"id":"research","purpose":"show source gaps, stale observations, unresolved identities and missions"}
+  ],
+  "country_click_contract": {
+    "header": ["identity", "constitutional/territorial status", "current timestamp", "source freshness", "archive coverage"],
+    "overview": ["population", "economy", "government", "public finance", "energy", "trade", "security", "infrastructure", "research/technology", "migration/labour"],
+    "religion": ["2020/source-dated affiliation", "unaffiliated/nonreligion", "diversity", "constitutional/legal model", "religious institutions", "sacred geography", "historical change", "religious-freedom issues"],
+    "relations": ["top dependencies", "top capabilities", "major cross-border edges", "memberships", "ownership/funding", "diaspora/cultural links"],
+    "history": ["turning points", "past borders/status", "slavery/abolition where relevant", "religious/state changes", "wars/reforms", "membership changes"],
+    "entanglements": ["open issues", "status", "mechanism", "actors", "affected parties", "evidence", "counter-evidence"],
+    "axis": ["North/West/East/South project statuses by date", "functional chains", "Tim/Potatoverse relation if sourced"],
+    "ledger": ["empirical obligations", "separate project-symbolic obligations", "closure/release status"],
+    "tikkun": ["repair questions", "authorized actors", "candidate interventions", "measurable outcomes"],
+    "sources": ["primary sources", "international comparison sources", "academic sources", "project provenance"],
+    "missions": ["missing fields", "stale fields", "unresolved edges", "claims needing source recovery"]
+  },
+  "religion_integration": {
+    "owner": "data/world-religion-layer.json",
+    "principle": "Religion is not one map color. The atlas separates affiliation, nonreligion, diversity, freedom/law, institutions, sacred geography, historical change and comparative theology.",
+    "bridge_to_world": "text/belief -> interpretation -> institution -> community/property/education/charity/media -> law/economy/migration -> observable country relations",
+    "bridge_to_north": "religious institutions and histories matter where they affect constitutional order, education, migration, social trust, heritage, charity, property, holidays, diplomacy, minority protection and coexistence. North is not itself a religion.",
+    "bridge_to_tim": "Timic/Biblical/Jewish/Norse/other comparisons remain a separate interpretive card linked to exact source records; demographic similarity never proves prophecy or divine identity."
+  },
+  "north_integration": {
+    "axis": "A versioned relational orientation through the world graph.",
+    "programme": "A concrete intervention/research programme focused on a northern-European/Arctic/North-Atlantic network and connected European capabilities.",
+    "world_relation": "North is one high-value subsystem inside the World Atlas, not the whole world model.",
+    "feedback": "World Atlas observations -> North diagnosis -> programme intervention -> measured outcome -> updated World Atlas."
+  },
+  "scripture_and_books": {
+    "rule": "Scripture is mapped as text -> historical context -> interpretation -> institution/practice -> later reception -> project comparison. Do not jump directly from verse to modern country or Tim identity.",
+    "useful_functions": [
+      "ethical vocabulary: justice, covenant, stewardship, debt, release, repair",
+      "state-transition vocabulary: exile/return, death/resurrection, bondage/release, Door, Ladder",
+      "political warning vocabulary: kingship, corruption, empire/Babylon, prophetic criticism",
+      "social/institutional history: law, charity, education, calendar, family, sacred geography",
+      "comparative project interpretation: North, Father/Son, Tree, Mountain, Garden, tikkun"
+    ],
+    "display": "A map card can say 'scriptural/historical relationship' or 'project comparison' but never silently present a sacred text as geopolitical evidence."
+  },
+  "game_logic": {
+    "loop": "explore -> discover -> source -> trace -> compare -> explain mechanism -> design repair -> measure -> update",
+    "progress": "Reward archive completeness, provenance quality, traced relationships, resolved unknowns, identified counter-evidence, intervention clarity and measured repair.",
+    "not_progress": ["territory conquered", "people converted", "amount of suffering", "number of enemies", "karmic guilt assigned to populations"],
+    "quests": [
+      "Complete a country's religion profile from dated sources.",
+      "Trace one religious institution from belief/community to property/finance/education/charity relationships.",
+      "Trace one North capability chain across countries.",
+      "Resolve one political-finance relation to primary filings.",
+      "Map one historical slavery route and its dated institutional/economic afterlife.",
+      "Map one trafficking mechanism from reputable evidence to prevention/protection/prosecution nodes.",
+      "Find one project claim that is currently unsourced and upgrade, downgrade or reject it.",
+      "Take one entanglement from diagnosis to a measurable repair proposal."
+    ]
+  },
+  "important_new_metrics": [
+    "coverage_score: how much of the expected country/entity schema is sourced",
+    "freshness_score: how current volatile observations are",
+    "relationship_density: number of useful sourced typed edges, not raw edge spam",
+    "dependency_concentration: how dependent a node is on few external links",
+    "capability_redundancy: whether substitute partners/routes exist",
+    "religious_diversity: sourced demographic diversity, not freedom",
+    "pluralism/legal-status: sourced institutional/legal observations, not demographic diversity",
+    "repair_maturity: diagnosed -> proposal -> authorized -> implementing -> measured -> repaired/closed",
+    "epistemic_integrity: proportion of claims with explicit plane/source/status"
+  ],
+  "loose_ends_now_routed": [
+    {"loose_end":"religious/irreligious composition", "route":"data/world-religion-layer.json -> country religion module"},
+    {"loose_end":"religious freedom vs diversity", "route":"separate legal/institutional and demographic layers"},
+    {"loose_end":"AIPAC/deals/lobbying", "route":"world-entanglement-registry -> political-finance -> distinct legal entities -> primary filings"},
+    {"loose_end":"slavery", "route":"historical time layer -> specific legal/economic actors/routes -> abolition/change -> documented afterlives"},
+    {"loose_end":"human trafficking", "route":"entanglement mechanism graph; never a national guilt score"},
+    {"loose_end":"scripture/religious books", "route":"text/context/interpretation graph -> society -> comparative project layer"},
+    {"loose_end":"Tim entanglement with countries", "route":"exact dated statements/project records -> country/institution edge -> separate real-world evidence if any"},
+    {"loose_end":"42T ledger", "route":"project-symbolic ledger linked to specific claimed obligations; separate from material finance"},
+    {"loose_end":"North vs World", "route":"World Atlas is parent field; North Axis is relational interpretation; North Programme is intervention programme"},
+    {"loose_end":"game feel", "route":"research/exploration/repair progression rather than domination or suffering scores"}
+  ],
+  "canonical_owners": [
+    "data/country-atlas.json",
+    "data/world-map-runtime.json",
+    "data/world-relational-map.json",
+    "data/world-religion-layer.json",
+    "data/world-entanglement-registry.json",
+    "docs/RELIGION-TO-SOCIETY-GRAPH.md",
+    "knowledge/core/country-relational-method.json",
+    "data/north-programme-atlas.json",
+    "data/north-axis-membership-history.json",
+    "knowledge/core/european-coupling-programme.json",
+    "data/swamp-research-seeds.json",
+    "knowledge/core/shadow-west-swamp-synthesis.json",
+    "knowledge/chronology/karmic-debt-ledger-2026.json",
+    "knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"
+  ],
+  "next_implementation_order": [
+    "1. Wire data/world-religion-layer.json into the map runtime and country Religion tab.",
+    "2. Ingest the Pew 2020 broad-category composition and 2020 RDI data with explicit observation dates.",
+    "3. Add compare mode and trace mode before adding many more decorative overlays.",
+    "4. Normalize existing political-finance/defense seeds into reusable entity/edge records.",
+    "5. Add a dated time-slider contract so history and changing North statuses are renderable.",
+    "6. Add religious institution/sacred-site point registries for deeply researched countries.",
+    "7. Add entanglement records gradually from high-quality evidence; never keyword-dump serious allegations.",
+    "8. Add North Programme interventions as explicit programme edges with authority, cost, mechanism and expected outcome.",
+    "9. Add tikkun repair-state transitions and evidence of actual outcomes.",
+    "10. Only after the graph is deep, add advanced visual/game polish such as discovery trails, saved investigations and map narratives."
+  ]
+}
