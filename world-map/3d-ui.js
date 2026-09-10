@@ -37,12 +37,9 @@ panelToggle?.addEventListener('click', () => setPanel(app?.classList.contains('p
 mapInspectorToggle?.addEventListener('click', () => setPanel(app?.classList.contains('panel-collapsed')));
 focusMode?.addEventListener('click', () => setFocus(!app?.classList.contains('ui-focus')));
 
-// Restore explicit user preference. First visit remains map-first / inspector closed.
 setPanel(localStorage.getItem('atlas:panel-open') === '1', {persist:false});
 setFocus(localStorage.getItem('atlas:focus-mode') === '1', {persist:false});
 
-// Contextual disclosure: opening a country, relation, evidence card or Axis level
-// should reveal the inspector once, unless the user has deliberately enabled focus mode.
 let lastSignature = panel?.textContent || '';
 const observer = panel && new MutationObserver(() => {
   const signature = panel.textContent || '';
@@ -70,7 +67,9 @@ function updateLayerSummary(){
 }
 function updateTraceSummary(){
   const depth=Number(document.getElementById('traceDepth')?.value||1);
-  summaryText('traceMenu',depth>1?`Trace · ${depth} hops`:'Trace',depth>1);
+  const entity=document.getElementById('entityTraceToggle')?.classList.contains('active');
+  const parts=[];if(depth>1)parts.push(`${depth} hops`);if(entity)parts.push('entities');
+  summaryText('traceMenu',parts.length?`Trace · ${parts.join(' + ')}`:'Trace',parts.length>0);
 }
 function updateTimeSummary(state=window.__potatoAtlasTime?.getState?.()){
   if(!state||state.mode==='current'){summaryText('timeMenu','Time',false);return;}
@@ -89,10 +88,9 @@ function updateMenuSummaries(){updateLayerSummary();updateTraceSummary();updateT
 document.addEventListener('change',event=>{
   if(['relationType','axisFieldView','empiricalNetworkView','traceDepth','height','timeMode','timeDate','timeDate2'].includes(event.target?.id))queueMicrotask(updateMenuSummaries);
 });
+document.addEventListener('click',event=>{if(event.target?.id==='entityTraceToggle')queueMicrotask(updateTraceSummary);});
 window.addEventListener('atlas-time-change',event=>updateTimeSummary(event.detail));
 
-// Feature modules insert controls relative to relationType. Since relationType now
-// lives in Layers, their injected selectors inherit progressive disclosure automatically.
 const layersPop = document.querySelector('#layersMenu .menu-pop');
 const relocateInjectedLayerControls = () => {
   for (const id of ['axisFieldView','empiricalNetworkView']) {
@@ -104,8 +102,6 @@ const relocateInjectedLayerControls = () => {
 new MutationObserver(relocateInjectedLayerControls).observe(document.body, {childList:true, subtree:true});
 relocateInjectedLayerControls();
 
-// Keep the persistent surface sparse. Axis remains fully available, but its large
-// navigator is opt-in through the compact Axis handle added here.
 function installAxisToggle() {
   const nav = document.getElementById('axisDepthNavigator');
   if (!nav || document.getElementById('axisCompactToggle')) return;
@@ -127,8 +123,11 @@ function installAxisToggle() {
 new MutationObserver(installAxisToggle).observe(document.body, {childList:true,subtree:true});
 installAxisToggle();
 
-// View summary also needs to follow Focus mode, whose state is changed by a button.
 focusMode?.addEventListener('click',()=>queueMicrotask(updateViewSummary));
 updateMenuSummaries();
+
+// Entity-aware Trace is an opt-in investigation loaded through the progressive UI,
+// not another permanent map overlay.
+import('./3d-entity-trace.js').then(()=>updateTraceSummary()).catch(error=>console.warn('Entity Trace enhancement unavailable:',error));
 
 window.__potatoAtlasUI = {setPanel,setFocus,updateMenuSummaries};
