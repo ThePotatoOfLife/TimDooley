@@ -1,5 +1,93 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 
+// The 3D atlas used to fail hard when either jsDelivr or REST Countries had a
+// transient/CORS/network problem. Keep external services as enrichments, not
+// single points of failure. The wrapper below retries geometry from raw GitHub
+// and can synthesize a minimal REST-Countries-compatible runtime from the
+// repository's own country index + world polygons.
+const nativeFetch = window.fetch.bind(window);
+const GEO_PRIMARY = 'https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json';
+const GEO_FALLBACK = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json';
+const REST_PREFIX = 'https://restcountries.com/v3.1/all';
+
+async function fetchJsonResponse(url, options) {
+  const response = await nativeFetch(url, options);
+  if (!response.ok) throw new Error(`${response.status} ${url}`);
+  return response;
+}
+
+function representativePoint(feature) {
+  let minX = 180, minY = 90, maxX = -180, maxY = -90, seen = false;
+  const walk = value => {
+    if (!Array.isArray(value)) return;
+    if (typeof value[0] === 'number' && typeof value[1] === 'number') {
+      seen = true;
+      minX = Math.min(minX, value[0]); maxX = Math.max(maxX, value[0]);
+      minY = Math.min(minY, value[1]); maxY = Math.max(maxY, value[1]);
+      return;
+    }
+    value.forEach(walk);
+  };
+  walk(feature?.geometry?.coordinates);
+  return seen ? [(minY + maxY) / 2, (minX + maxX) / 2] : null;
+}
+
+async function fallbackRestCountries() {
+  const [indexResponse, geoResponse] = await Promise.all([
+    fetchJsonResponse('../data/countries/index.json'),
+    (async () => {
+      try { return await fetchJsonResponse(GEO_PRIMARY); }
+      catch { return fetchJsonResponse(GEO_FALLBACK); }
+    })()
+  ]);
+  const [indexPayload, geo] = await Promise.all([indexResponse.json(), geoResponse.json()]);
+  const rows = Array.isArray(indexPayload) ? indexPayload : (indexPayload.countries || indexPayload.items || []);
+  const names = new Map((geo.features || []).map(feature => [feature.id, feature]));
+  return rows.map(row => {
+    const code = row.iso3 || row.cca3 || row.code;
+    const feature = names.get(code);
+    const name = row.name || feature?.properties?.name || code;
+    return {
+      name: { common: name, official: name },
+      cca3: code,
+      population: null,
+      area: null,
+      latlng: representativePoint(feature) || [],
+      capital: [],
+      region: '',
+      subregion: '',
+      borders: [],
+      atlas_fallback: true
+    };
+  }).filter(row => row.cca3);
+}
+
+window.fetch = async function atlasResilientFetch(input, options) {
+  const url = typeof input === 'string' ? input : input?.url || String(input);
+  if (url === GEO_PRIMARY) {
+    try { return await nativeFetch(input, options); }
+    catch (primaryError) {
+      console.warn('Primary world geometry failed; retrying raw GitHub.', primaryError);
+      return nativeFetch(GEO_FALLBACK, options);
+    }
+  }
+  if (url.startsWith(REST_PREFIX)) {
+    try {
+      const response = await nativeFetch(input, options);
+      if (response.ok) return response;
+      throw new Error(`REST Countries returned ${response.status}`);
+    } catch (primaryError) {
+      console.warn('REST Countries unavailable; using local minimal country runtime.', primaryError);
+      const data = await fallbackRestCountries();
+      return new Response(JSON.stringify(data), {
+        status: 200,
+        headers: { 'Content-Type': 'application/json', 'X-Atlas-Fallback': 'local-country-runtime' }
+      });
+    }
+  }
+  return nativeFetch(input, options);
+};
+
 // Capture the atlas Map instance without coupling the core renderer to this optional layer.
 const originalAddControl = maplibregl.Map.prototype.addControl;
 maplibregl.Map.prototype.addControl = function (...args) {
@@ -7,8 +95,11 @@ maplibregl.Map.prototype.addControl = function (...args) {
   return originalAddControl.apply(this, args);
 };
 
-await import('./3d-app.js');
-maplibregl.Map.prototype.addControl = originalAddControl;
+try {
+  await import('./3d-app.js');
+} finally {
+  maplibregl.Map.prototype.addControl = originalAddControl;
+}
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('World atlas map instance was not captured.');
@@ -43,12 +134,10 @@ SELECT ?iso3 ?capital ?capitalLabel ?coord ?population WHERE {
   SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
 }`;
   const url = 'https://query.wikidata.org/sparql?format=json&query=' + encodeURIComponent(query);
-  const response = await fetch(url, { headers: { Accept: 'application/sparql-results+json' } });
+  const response = await nativeFetch(url, { headers: { Accept: 'application/sparql-results+json' } });
   if (!response.ok) throw new Error(`Wikidata capitals: ${response.status}`);
   const data = await response.json();
 
-  // Some entities can appear more than once because of multiple ranked population statements.
-  // Keep one node per country/capital, preferring the largest available numeric population.
   const byKey = new Map();
   for (const row of data.results?.bindings || []) {
     const iso3 = row.iso3?.value;
@@ -151,8 +240,6 @@ async function install() {
       popup.remove();
     });
   } catch (error) {
-    // Capitals are an enhancement layer. Failure of the external observable-data feed
-    // must never break the canonical atlas itself.
     console.warn('Capital city layer unavailable:', error);
   }
 }
