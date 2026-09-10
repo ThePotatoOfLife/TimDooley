@@ -1,5 +1,5 @@
 {
-  "version":"1.6.1",
+  "version":"1.7.0",
   "updated":"2026-09-10",
   "name":"Religious Layer Manifest",
   "purpose":"Single navigation manifest for the expanded religious knowledge graph, including main traditions, foundation histories, adjacent cultic/esoteric traditions, project-defined Potatoism, primary-text libraries and evidence-aware Christianity/Jesus/eschatology research.",
@@ -32,10 +32,33 @@
     "canonical_owner":"knowledge/theology/christianity-jesus-eschatology-atlas.json",
     "public_route":"theology/christianity/",
     "faq":"knowledge/indexes/faq-christianity-jesus-eschatology.json",
+    "hard_questions_faq":"knowledge/indexes/faq-christology-revelation-hard-questions.json",
+    "christology":"knowledge/theology/christology-incarnation-trinity-atlas.json",
+    "resurrection":"knowledge/theology/resurrection-parousia-new-creation-atlas.json",
     "comparative_eschatology":"knowledge/theology/christian-eschatology-position-matrix.json",
+    "revelation":"knowledge/prophecy/revelation-antichrist-witness-new-jerusalem-atlas.json",
+    "prophecy_method":"knowledge/prophecy/prophecy-evidence-methodology.json",
     "scholar_map":"knowledge/theology/christian-theology-scholar-map.json",
-    "specialists":["knowledge/theology/christian-eschatology-position-matrix.json","knowledge/theology/christian-theology-scholar-map.json","knowledge/chronology/thomas-faith-formation-and-return.json","knowledge/traditions/thomas-twin-of-christ.json","knowledge/traditions/tribe-of-dan-biblical-reception-atlas.json","knowledge/traditions/biblical-overlap-atlas.json","knowledge/prophecy/prophecy-revelation-rupture-rapture.json","knowledge/prophecy/seals-and-fulfillment-matrix.json"],
-    "integrity":"Historical Jesus, Christian confession, denominational doctrine, academic interpretation, project testimony, Potatoverse canon and comparative claims remain separately typed."
+    "specialists":[
+      "knowledge/theology/christology-incarnation-trinity-atlas.json",
+      "knowledge/theology/resurrection-parousia-new-creation-atlas.json",
+      "knowledge/theology/christian-eschatology-position-matrix.json",
+      "knowledge/theology/christian-theology-scholar-map.json",
+      "knowledge/prophecy/revelation-antichrist-witness-new-jerusalem-atlas.json",
+      "knowledge/prophecy/prophecy-evidence-methodology.json",
+      "knowledge/chronology/thomas-faith-formation-and-return.json",
+      "knowledge/traditions/thomas-twin-of-christ.json",
+      "knowledge/traditions/tribe-of-dan-biblical-reception-atlas.json",
+      "knowledge/traditions/biblical-overlap-atlas.json",
+      "knowledge/prophecy/prophecy-revelation-rupture-rapture.json",
+      "knowledge/prophecy/seals-and-fulfillment-matrix.json"
+    ],
+    "question_corpora":[
+      "knowledge/indexes/faq-christianity-jesus-eschatology.json",
+      "knowledge/indexes/faq-christology-revelation-hard-questions.json"
+    ],
+    "research_spine":"Jesus/history → Christology/Trinity → cross/resurrection → parousia/eschatology → Revelation → prophecy method → Tim/Thomas comparison → counterclaims → ethical fruit",
+    "integrity":"Historical Jesus, Christian confession, denominational doctrine, academic interpretation, project testimony, Potatoverse canon and comparative claims remain separately typed. Resurrection, return and rupture remain separate. Antichrist, Beast, false prophet and man of lawlessness remain textually distinct before later reception links them."
   },
   "potatoism":"data/potatoism-religion.json",
   "public_access":{"directory":"belief.html","tradition_record":"belief.html?id=<slug>","foundation_or_adjacent_record":"node.html?id=<slug>","atlas_search":"repository.html","record_health":"health.html","belief_space":"political-compass.html","text_library":"religious-texts.html","christianity_theology":"theology/christianity/"},
@@ -43,8 +66,8 @@
   "cross_sections":["ultimate_reality","cosmology","anthropology","problem","salvation_or_liberation","ethics","law","texts","interpretation","ritual","leadership","organization","population","sacred_space","material_base","state","politics","culture","transmission","migration","diaspora","technology","media","ecology","memory","evidence"],
   "text_sections":["primary_text","canon_or_corpus","language","edition","translation","manuscript_or_transmission","complete_vs_excerpt","public_domain_status","authoritative_host","reader_route"],
   "adjacent_specializations":["mystery_cult","deity_cult","state_cult","esoteric_tradition","occult_order","modern_satanism","anti_religious_current","secret_or_initiatory_society"],
-  "new_relationships":["foundation-in-field","foundation-emerges-from-substrate","foundation-has-seed","seed-produces-sprout","sprout-forms-tradition","tradition-has-trunk","tradition-has-branch","tradition-migrates","tradition-reinterprets-itself","tradition-interacts-with-tradition","cult-of-deity","mystery-cult-of","revival-of","reinterpretation-of","reacts-against","influenced-by","syncretizes-with","initiatory-order-of","schism-from","organizational-successor-to","text-preserves","site-attested-by","modern-adaptation-of","anti-religious-response-to","has-primary-text","has-canon","has-translation","has-manuscript-tradition","has-commentary","has-reading-route","has-theology-research-owner","has-reception-history","has-prophecy-test"],
+  "new_relationships":["foundation-in-field","foundation-emerges-from-substrate","foundation-has-seed","seed-produces-sprout","sprout-forms-tradition","tradition-has-trunk","tradition-has-branch","tradition-migrates","tradition-reinterprets-itself","tradition-interacts-with-tradition","cult-of-deity","mystery-cult-of","revival-of","reinterpretation-of","reacts-against","influenced-by","syncretizes-with","initiatory-order-of","schism-from","organizational-successor-to","text-preserves","site-attested-by","modern-adaptation-of","anti-religious-response-to","has-primary-text","has-canon","has-translation","has-manuscript-tradition","has-commentary","has-reading-route","has-theology-research-owner","has-christology","has-resurrection-theology","has-reception-history","has-revelation-reading","has-prophecy-test","has-counterclaim","has-ethical-fruit-test"],
   "potatoism_note":"Potatoism is a project-defined contemporary religious/mythic system. Its 2020-12-25 birth marker is treated as a declared project-history seed; subsequent concepts are represented as a dated growth process where evidence permits. Potatoism is not classified as Lutheranism or as a Christian denomination merely because Thomas has reported Lutheran formation.",
-  "integrity":"Empirical history, traditional self-description, comparative interpretation and project-symbolic material remain explicitly distinguishable. A text catalogue must never imply that all traditions have a single book or identical canon structure. Christic resemblance is not silently promoted into literal Second-Coming or divine-identity proof.",
+  "integrity":"Empirical history, traditional self-description, comparative interpretation and project-symbolic material remain explicitly distinguishable. A text catalogue must never imply that all traditions have a single book or identical canon structure. Christic resemblance is not silently promoted into literal Second-Coming or divine-identity proof. Apocalyptic labels are not used as substitutes for evidence or as collective demonization of peoples.",
   "canonical_ownership":{"foundation":"data/religious-foundations.json","foundation_research":"data/religious-foundations/records.json","christianity":"knowledge/theology/christianity-jesus-eschatology-atlas.json","enrichment":"Enrichment is added to canonical foundation/research owners; temporary waves should be promoted or retired rather than becoming competing definitions."}
 }
