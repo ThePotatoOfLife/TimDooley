@@ -112,7 +112,6 @@ def main() -> int:
         app = (SITE / "app/app.js").read_text(encoding="utf-8", errors="replace") if (SITE / "app/app.js").exists() else ""
         require_text(app, ("manifest.json", "context-graph.json", "showContext", "showRecord", "renderMarkdown"), "app/app.js", errors)
 
-        # The shell owns module wiring. Dedicated source validators own behavior.
         atlas_shell_path = SITE / "world-map/3d.html"
         atlas_shell = atlas_shell_path.read_text(encoding="utf-8", errors="replace") if atlas_shell_path.exists() else ""
         require_text(
@@ -126,8 +125,6 @@ def main() -> int:
             errors,
         )
 
-        # build_site.py copies these files verbatim. Parity proves that the code
-        # validated before the build is exactly the code shipped in the artifact.
         copied_runtime_files = (
             "world-map/3d.html",
             "world-map/3d-app.js",
@@ -167,12 +164,19 @@ def main() -> int:
         facts_path = SITE / "data/world-country-facts.json"
         if facts_path.exists():
             facts = load_json(facts_path, errors)
-            if len(facts.get("countries", {})) != 195:
+            countries = facts.get("countries", {})
+            area_coverage = facts.get("area_coverage", 0)
+            if len(countries) != 195:
                 errors.append("built country-facts snapshot must contain 195 canonical countries")
             if facts.get("capital_coverage", 0) < 190:
                 errors.append("built country-facts capital coverage fell below 190")
-            if facts.get("area_coverage", 0) < 190:
+            if area_coverage < 190:
                 errors.append("built country-facts area coverage fell below 190")
+            if facts.get("area_definition_coverage") != area_coverage:
+                errors.append("built country-facts snapshot has area values without explicit area semantics")
+            ambiguous_area = [code for code, row in countries.items() if row.get("area_km2") is not None and not row.get("area_field")]
+            if ambiguous_area:
+                errors.append(f"built country-facts area provenance lacks exact source field for: {ambiguous_area[:8]}")
 
         demography_path = SITE / "data/world-country-demography.json"
         if demography_path.exists():
