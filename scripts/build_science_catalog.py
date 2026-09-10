@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Compile knowledge/science into the deployed public science catalog."""
+"""Compile knowledge/science into the single deployed /science/ page."""
 from __future__ import annotations
 
 import html
@@ -12,7 +12,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SRC = ROOT / "knowledge" / "science"
 OUT = ROOT / "_site" / "science"
 CATALOG_JSON = OUT / "catalog.json"
-CATALOG_PAGE = OUT / "catalog" / "index.html"
 SCIENCE_PAGE = OUT / "index.html"
 MARKER = "<!-- SCIENCE_CATALOG_STATIC -->"
 
@@ -94,7 +93,7 @@ def record_from(path: Path) -> dict:
             "file": path.name, "id": path.stem,
             "title": path.stem.replace("-", " ").title(), "status": "parse error",
             "abstract": f"Could not parse record: {exc}", "provenance": [],
-            "equations": [], "findings": [], "updated": "", "human_readable": "",
+            "equations": [], "findings": [], "updated": "",
         }
     equations, findings = walk_candidates(data)
     title = data.get("title") or data.get("name") or data.get("id") or path.stem
@@ -108,7 +107,6 @@ def record_from(path: Path) -> dict:
         "provenance": get_provenance(data),
         "equations": equations,
         "findings": findings,
-        "human_readable": data.get("human_readable") or "",
     }
 
 
@@ -138,7 +136,7 @@ def render_cards(records: list[dict], record_prefix: str) -> str:
             '  <p>{abstract}</p>\n'
             '  <div class="catalog-provenance">{prov}</div>\n'
             '  {details_html}\n'
-            '  <div class="catalog-links"><a href="{prefix}{file}">Open source record →</a></div>\n'
+            '  <div class="catalog-links"><a href="{prefix}{file}">Open source JSON →</a></div>\n'
             '</article>'.format(
                 search=esc(search_blob), updated=esc(rec["updated"] or "undated"), status=status,
                 title=esc(rec["title"]), abstract=esc(rec["abstract"]), prov=prov,
@@ -148,23 +146,6 @@ def render_cards(records: list[dict], record_prefix: str) -> str:
     return "\n".join(cards)
 
 
-def render_catalog_page(records: list[dict]) -> str:
-    cards = render_cards(records, "../../knowledge/science/")
-    return (
-        '<!doctype html><html lang="en"><head><meta charset="utf-8">'
-        '<meta name="viewport" content="width=device-width,initial-scale=1">'
-        '<title>Complete Science Catalog — Tim Dooley / Potato of Life</title>'
-        '<meta name="description" content="Generated catalog of all canonical Tim Dooley / Potato of Life science records, with abstracts, equations, provenance and findings.">'
-        '<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/catalog/">'
-        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910d">'
-        '<link rel="stylesheet" href="../science-hub.css?v=20260910d"></head>'
-        '<body><main class="science-page science-v3"><nav class="topnav"><a href="../">← Science Atlas</a><a href="../../">Home</a></nav>'
-        '<header class="section-block"><p class="section-kicker">Generated from knowledge/science</p><h1>COMPLETE SCIENCE CATALOG</h1>'
-        f'<p class="hero-lede">{len(records)} canonical science records. Cards stay compact by default; open equations and findings only when needed.</p></header>'
-        f'<section class="section-block"><div class="catalog-grid">{cards}</div></section></main></body></html>'
-    )
-
-
 def patch_science_page(cards: str, count: int) -> None:
     if not SCIENCE_PAGE.exists():
         raise SystemExit("_site/science/index.html missing")
@@ -172,34 +153,7 @@ def patch_science_page(cards: str, count: int) -> None:
     if MARKER not in text:
         raise SystemExit(f"{MARKER} missing from science/index.html")
     text = text.replace(MARKER, cards, 1)
-    text = text.replace('data-science-record-count="0"', f'data-science-record-count="{count}"')
     SCIENCE_PAGE.write_text(text, encoding="utf-8")
-
-
-def patch_legacy_readers() -> None:
-    replacements = {
-        OUT / "research-map" / "index.html": [
-            (
-                'the exact Spiral formula remains unrecovered.',
-                'the exact Spiral formula is now recovered: r=a exp(bθ), with b=ln(φ)/(π/2)≈0.30635; a quarter-turn scales radius by φ.'
-            ),
-            ('<li>Exact April 21, 2025 Spiral Equation.</li>', '<li>Earliest primary variable meanings for a, r and θ in the recovered April 21, 2025 Spiral Equation.</li>'),
-        ],
-        OUT / "axis-11d-sun-spiral" / "index.html": [
-            (
-                'This is a genuine Sun + rotation + outward-flow + Spiral system. It is an external physics neighbor, not the missing April 2025 Spiral Equation.',
-                'This is a genuine Sun + rotation + outward-flow + Spiral system. It is an external physics neighbor to the now-recovered April 2025 Potato Axis logarithmic spiral, not the same physical model.'
-            ),
-            ('<li>Exact April 21, 2025 Spiral Equation.</li>', '<li>Earliest primary variable meanings for a, r and θ in the recovered April 21, 2025 Spiral Equation.</li>'),
-        ],
-    }
-    for path, pairs in replacements.items():
-        if not path.exists():
-            continue
-        text = path.read_text(encoding="utf-8")
-        for old, new in pairs:
-            text = text.replace(old, new)
-        path.write_text(text, encoding="utf-8")
 
 
 def main() -> None:
@@ -212,11 +166,8 @@ def main() -> None:
         "records": records,
     }
     CATALOG_JSON.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    CATALOG_PAGE.parent.mkdir(parents=True, exist_ok=True)
-    CATALOG_PAGE.write_text(render_catalog_page(records), encoding="utf-8")
     patch_science_page(render_cards(records, "../knowledge/science/"), len(records))
-    patch_legacy_readers()
-    print(f"Built science catalog: {len(records)} records")
+    print(f"Built /science/ index: {len(records)} records")
 
 
 if __name__ == "__main__":
