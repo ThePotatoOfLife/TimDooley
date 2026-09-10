@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import re
 import shutil
 import subprocess
 import tempfile
@@ -11,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 HTML = ROOT / "world-map" / "3d.html"
+APP = ROOT / "world-map" / "3d-app.js"
 RUNTIME = ROOT / "data" / "world-map-3d-runtime.json"
 WORLD = ROOT / "data" / "world-relational-map.json"
 COUNTRIES = ROOT / "data" / "countries" / "index.json"
@@ -30,25 +30,19 @@ def fail_if_missing(text: str, tokens: tuple[str, ...], label: str, errors: list
             errors.append(f"{label} missing required feature marker: {token}")
 
 
-def check_inline_module_syntax(text: str, warnings: list[str], errors: list[str]) -> None:
-    """Use Node when available to syntax-check the inline module after removing remote imports."""
+def check_js_syntax(text: str, warnings: list[str], errors: list[str]) -> None:
     node = shutil.which("node")
     if not node:
         warnings.append("node not available; skipped JavaScript syntax check")
         return
-    scripts = re.findall(r'<script\s+type=["\']module["\'][^>]*>(.*?)</script>', text, flags=re.S | re.I)
-    if not scripts:
-        errors.append("3d.html contains no inline module script")
-        return
-    js = "\n".join(scripts)
-    js = re.sub(r"^import\s+\*\s+as\s+maplibregl\s+from\s+['\"][^'\"]+['\"];?", "const maplibregl = {};", js, flags=re.M)
+    js = text.replace("import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';", "const maplibregl = {};")
     with tempfile.NamedTemporaryFile("w", suffix=".mjs", encoding="utf-8", delete=False) as handle:
         handle.write(js)
         temp = Path(handle.name)
     try:
         result = subprocess.run([node, "--check", str(temp)], capture_output=True, text=True)
         if result.returncode:
-            errors.append("3d.html JavaScript syntax check failed: " + (result.stderr.strip() or result.stdout.strip()))
+            errors.append("3d-app.js JavaScript syntax check failed: " + (result.stderr.strip() or result.stdout.strip()))
     finally:
         temp.unlink(missing_ok=True)
 
@@ -57,7 +51,7 @@ def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
 
-    for path in (HTML, RUNTIME, WORLD, COUNTRIES):
+    for path in (HTML, APP, RUNTIME, WORLD, COUNTRIES):
         if not path.exists():
             errors.append(f"missing required atlas file: {path.relative_to(ROOT)}")
     if errors:
@@ -65,52 +59,56 @@ def main() -> int:
             print("ERROR:", error)
         return 1
 
-    text = HTML.read_text(encoding="utf-8", errors="replace")
+    html = HTML.read_text(encoding="utf-8", errors="replace")
+    app = APP.read_text(encoding="utf-8", errors="replace")
+    combined = html + "\n" + app
     runtime = load_json(RUNTIME, errors)
     world = load_json(WORLD, errors)
     countries = load_json(COUNTRIES, errors)
 
-    # These markers intentionally describe behavior already present in the renderer rather
-    # than imposing arbitrary internal function names on otherwise equivalent code.
     fail_if_missing(
-        text,
+        html,
         (
-            'id="map"', 'id="panel"', 'id="search"', 'id="country-list"',
+            'id="map"', 'id="panel"', 'id="status"', 'id="search"', 'id="country-list"',
             'id="height"', 'id="compare"', 'id="interior"', 'id="relations"',
-            'id="relationType"', 'id="fit"', 'id="tilt"', 'id="globe"', 'id="world"',
-            "function relationEdgesFor", "function relationData", "function compareData",
-            "function updateSpatial", "function geometryBounds", "function fitCodes",
-            "function toggleCompareCountry", "function selectFeature", "function renderCompare",
-            "window.openModule", "window.goCountry", "window.fitCompare", "window.leaveCompare",
-            "searchParams.set('country'", "searchParams.set('compare'", "searchParams.set('rel'",
-            "semantic-hubs", "semantic-links", "compare-hubs", "relations",
-            "maplibre-gl@6.9.0", "OpenStreetMap contributors",
+            'id="relationType"', 'id="traceDepth"', 'id="fit"', 'id="tilt"', 'id="globe"', 'id="world"',
+            'src="./3d-app.js"', "Trace · 1 hop", "Trace · 2 hops", "Trace · 3 hops",
+            "navigation handles, not fake geographic locations",
         ),
         "world-map/3d.html",
         errors,
     )
-
-    for required in (
-        "navigation handles, not fake geographic locations",
-        "Project-canon material is separate from empirical country data",
-        "documented physical/public finance",
-        "A relation line describes a typed connection",
-    ):
-        if required not in text:
-            errors.append(f"3d.html missing epistemic/spatial boundary: {required}")
-
-    check_inline_module_syntax(text, warnings, errors)
+    fail_if_missing(
+        app,
+        (
+            "function relationEdgesFor", "function edgeKey", "function traceGraph", "function traceRelationData",
+            "function traceHubData", "function updateSpatial", "function geometryBounds", "function fitCodes",
+            "function toggleCompareCountry", "function selectFeature", "function renderCompare", "function traceRows",
+            "window.openModule", "window.goCountry", "window.fitTrace", "window.fitCompare", "window.leaveCompare",
+            "TRACE_MAX_DEPTH = 3", "TRACE_MAX_NODES", "TRACE_MAX_EDGES", "new Map([[root, 0]])",
+            "queue.shift()", "visited.has(other)", "searchParams.set('country'", "searchParams.set('compare'",
+            "searchParams.set('rel'", "searchParams.set('depth'", "trace-hubs", "semantic-hubs", "semantic-links",
+            "compare-hubs", "relations", "maplibre-gl@6.9.0", "OpenStreetMap contributors",
+            "Atlas data failed to load", "Breadth-first traversal", "A relation line describes a typed connection",
+            "Project-canon material is separate from empirical country data", "documented physical/public finance",
+        ),
+        "world-map/3d-app.js",
+        errors,
+    )
+    check_js_syntax(app, warnings, errors)
 
     if runtime.get("status") != "active experimental renderer contract":
         errors.append("world-map-3d-runtime status changed or missing")
     implemented = set(runtime.get("implemented_2026_09_10", []))
-    for fragment in ("Compare", "relation", "polygon", "URL"):
+    for fragment in ("Compare", "relation", "polygon", "URL", "recursive", "trace"):
         if not any(fragment.lower() in str(item).lower() for item in implemented):
             errors.append(f"runtime implemented list does not document {fragment} functionality")
     if runtime.get("compare_mode", {}).get("status") not in {"implemented", "implemented-basic"}:
         errors.append("runtime compare_mode is not marked implemented")
-    if runtime.get("trace_mode", {}).get("status") not in {"implemented", "implemented-one-hop", "implemented-basic"}:
-        errors.append("runtime trace_mode status does not match an implemented state")
+    if runtime.get("trace_mode", {}).get("status") not in {"implemented", "implemented-recursive-country", "implemented-basic"}:
+        errors.append("runtime trace_mode status does not match recursive implementation")
+    if runtime.get("trace_mode", {}).get("maximum_depth") != 3:
+        errors.append("runtime trace_mode must document maximum depth 3")
 
     country_rows = countries.get("countries", [])
     canonical_codes = {row.get("iso3") for row in country_rows if row.get("iso3")}
@@ -134,7 +132,6 @@ def main() -> int:
             errors.append(f"curated edge {a}-{b} has no relationship types")
         if not layer:
             errors.append(f"curated edge {a}-{b} has no layer/epistemic classification")
-        # Flag exact duplicate drawings while allowing multiple differently typed relations.
         key = tuple(sorted((a, b))) + (tuple(sorted(types)), layer)
         if key in edge_keys:
             errors.append(f"duplicate curated relation detected: {a}-{b} {types} {layer}")
@@ -152,25 +149,25 @@ def main() -> int:
     relation_types = sorted({t for edge in world.get("curated_edges", []) for t in edge.get("types", [])})
     if not relation_types:
         errors.append("world relational map exposes no typed curated relationships")
-    if "All relation types" not in text:
+    if "All relation types" not in html:
         errors.append("3d map does not expose the all-types relation filter option")
-
-    if "fitBounds" not in text or "geometryBounds" not in text:
+    if "fitBounds" not in app or "geometryBounds" not in app:
         errors.append("3d map no longer appears to fit actual polygon geometry")
-
-    # Compare state is capped both during interaction and URL restoration.
-    if "compareCodes.length>=4" not in text and "compareCodes.length >= 4" not in text:
+    if "compareCodes.length>=4" not in app and "compareCodes.length >= 4" not in app:
         errors.append("could not confirm four-country Compare cap during interaction")
-    if ".slice(0,4)" not in text:
+    if ".slice(0,4)" not in app:
         errors.append("could not confirm four-country Compare cap for restored URL state")
-
-    # Trace must be navigable, not merely decorative text.
-    if "Trace outward" not in text or "onclick=\"goCountry(" not in text:
-        errors.append("one-hop Trace surface is not wired to country navigation")
+    if "Math.min(TRACE_MAX_DEPTH" not in app:
+        errors.append("recursive Trace depth is not clamped to its browser-safe maximum")
+    if "visited.has(other)" not in app:
+        errors.append("recursive Trace does not visibly prevent country cycles")
+    if "Trace outward" not in app or "onclick=\"goCountry(" not in app:
+        errors.append("recursive Trace surface is not wired to country navigation")
 
     print(f"Canonical countries: {len(canonical_codes)}")
     print(f"Curated relation types: {len(relation_types)}")
     print(f"Referenced country/territory codes: {len(referenced)}")
+    print("Trace contract: breadth-first · 1–3 hops · cycle guarded · capped")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings:
         print("WARNING:", warning)
