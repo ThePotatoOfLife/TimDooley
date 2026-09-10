@@ -57,9 +57,10 @@ async function boot() {
     render(data, formal, Number(event.detail?.dimension || 4));
   });
   window.__potatoAxisOperators = {data, formal, render};
-  // D3 is the provenance/root plane. Keep this enhancement non-fatal and
-  // separate so factual country navigation remains usable if it ever fails.
+  // Optional enhancements remain isolated so the geographic Atlas survives
+  // if a symbolic/provenance module ever fails independently.
   import('./3d-provenance.js').catch(error => console.warn('D3 provenance enhancement unavailable:', error));
+  import('./3d-symbolic-operators.js').catch(error => console.warn('Executable symbolic operators unavailable:', error));
 }
 
 boot().catch(error => console.warn('Axis operator HUD unavailable:', error));
