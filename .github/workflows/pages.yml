@@ -82,6 +82,11 @@ jobs:
                   rest_path.unlink(missing_ok=True)
           PY
 
+      - name: Build population and religion snapshot
+        env:
+          ATLAS_DEMOGRAPHY_OUT: _site/data/world-country-demography.json
+        run: python scripts/build_world_demography.py
+
       - name: Compile complete science catalog
         run: python scripts/build_science_catalog.py
 
@@ -124,7 +129,9 @@ jobs:
           test -f _site/world-map/3d-app.js
           test -f _site/world-map/3d-hover.js
           test -f _site/world-map/3d-pathfinder.js
+          test -f _site/world-map/3d-demography.js
           test -s _site/data/world-countries.geo.json
+          test -s _site/data/world-country-demography.json
           test -f _site/data/world-map-3d-runtime.json
           test -f _site/data/world-relational-map.json
           grep -q 'World Relational Atlas' _site/world-map/3d.html
@@ -133,6 +140,7 @@ jobs:
           grep -q 'id="traceDepth"' _site/world-map/3d.html
           grep -q 'src="./3d-hover.js"' _site/world-map/3d.html
           grep -q 'src="./3d-pathfinder.js"' _site/world-map/3d.html
+          grep -q 'src="./3d-demography.js"' _site/world-map/3d.html
           grep -q 'Trace · 3 hops' _site/world-map/3d.html
           grep -q 'function traceGraph' _site/world-map/3d-app.js
           grep -q 'visited.has(other)' _site/world-map/3d-app.js
@@ -151,6 +159,18 @@ jobs:
           grep -q 'function shortestPath' _site/world-map/3d-pathfinder.js
           grep -q "searchParams.set('path'" _site/world-map/3d-pathfinder.js
           grep -q 'not necessarily the shortest or strongest relationship in the real world' _site/world-map/3d-pathfinder.js
+          grep -q 'Religious composition' _site/world-map/3d-demography.js
+          grep -q 'country-population-labels' _site/world-map/3d-demography.js
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          d=json.loads(Path('_site/data/world-country-demography.json').read_text(encoding='utf-8'))
+          assert d['population_coverage'] >= 150, d['population_coverage']
+          assert d['religion_coverage'] >= 150, d['religion_coverage']
+          assert d['religion_reference_year'] == 2020
+          assert len(d['countries']) == 195
+          print(f"Verified atlas demography: population={d['population_coverage']} religion={d['religion_coverage']}")
+          PY
 
           # Science is a compiled public product, not merely copied source files.
           test -f _site/science/index.html
