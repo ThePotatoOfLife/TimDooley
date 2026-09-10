@@ -1,0 +1,102 @@
+{
+  "id":"north-axis-membership-history",
+  "title":"North Axis — Versioned Membership / Relationship History",
+  "updated":"2026-09-10",
+  "status":"mixed conversation-recovered project history; primary-source recovery pending for some states",
+  "purpose":"Preserve how the user's North geography changed over time instead of flattening changing formulations into one timeless membership list.",
+  "rule":"This is not a legal alliance membership registry. It records project formulations and relationship status. Real EU, NATO, EEA and treaty memberships must be sourced separately.",
+  "status_vocabulary":{
+    "anchor":"primary organizing node",
+    "core":"explicitly central participant in the project formulation",
+    "inner_network":"strongly connected but not necessarily anchor/core",
+    "under_axis":"within the broader North field without being a primary anchor",
+    "strategic_extension":"important terminal/gate/extension of the working arc",
+    "candidate":"possible future inclusion/alignment",
+    "pending":"status explicitly unresolved or changing",
+    "external":"important relationship but outside the working North membership",
+    "excluded":"explicitly outside a given version",
+    "future_reconnection":"outside now but contemplated for later relational reconnection",
+    "shared_or_cross_axis":"not exclusively assigned to North; linked across fields",
+    "unknown":"insufficient evidence to classify"
+  },
+  "snapshots":[
+    {
+      "period":"2026-02 to early 2026",
+      "provenance":"conversation-recovered broad formulation; exact source dates still to recover",
+      "anchor":["Denmark","Greenland"],
+      "core_or_inner":["Norway","Sweden","Finland","Iceland","Canada","Germany"],
+      "wider_european_field":["Netherlands","Belgium","France","United Kingdom","Ireland","Baltic states","Poland","Czechia","Austria","Slovakia","Hungary"],
+      "frontier_or_extension":["Ukraine","Moldova","Türkiye"],
+      "external_or_future":["Russia"],
+      "note":"This reconstructed version treats the North as a relational civilizational/economic network, not empire or annexation."
+    },
+    {
+      "period":"mid-2026",
+      "provenance":"conversation-recovered user formulation",
+      "anchor":["Denmark","Greenland","Faroe Islands"],
+      "north_atlantic_nordic":["Canada","Iceland","Norway","Sweden","Finland"],
+      "european_field":["Germany","Netherlands","Belgium","France","Spain","Portugal","Italy","Greece","Ireland","Scotland","Ukraine"],
+      "strategic_extension":["Türkiye"],
+      "pending_or_variable":["England / United Kingdom"],
+      "excluded":["Russia"],
+      "under_axis":["Estonia"],
+      "future_reconnection":["Mesopotamia / Iraq-Syria relation"],
+      "shared_or_cross_axis":["Australia"],
+      "external":["United States","Israel"],
+      "note":"Country naming varied between sovereign states and constituent nations; preserve exact historical language while also maintaining canonical sovereign-state nodes."
+    },
+    {
+      "period":"2026-07-19 formulation",
+      "provenance":"user-stated formulation recovered from conversation memory",
+      "headline":"Canada -> Turkey minus England",
+      "explicit_named_arc":["Canada","Greenland","Iceland","Denmark","Norway","Sweden","Finland","Germany","Netherlands","Belgium","France","Spain","Portugal","Italy","Greece","Scotland","Ireland","Ukraine","Türkiye"],
+      "pending":["England"],
+      "excluded":["Russia"],
+      "possible_later":["Mesopotamia / Iraq-Syria relation"],
+      "shared_or_cross_axis":["Australia"],
+      "reported_scale":"approximately 900 million in project language",
+      "scale_note":"Population-scale headline requires a dated membership definition and recalculation before use as empirical demographic fact."
+    }
+  ],
+  "canonical_current_model":{
+    "anchor":["Denmark","Greenland","Faroe Islands"],
+    "core_northern_system":["Norway","Sweden","Finland","Iceland","Canada"],
+    "european_field":"European states and institutions are represented by relationship strength and function rather than forced binary membership.",
+    "strategic_extension":["Ukraine","Türkiye"],
+    "variable_nodes":["United Kingdom / England / Scotland status must remain versioned"],
+    "future_or_reconnection":["Russia","Mesopotamian links"],
+    "external_relations":["United States","Israel","BRICS"],
+    "shared_or_cross_axis":["Australia"]
+  },
+  "normalization_rules":[
+    "Store sovereign-state identity separately from the user's exact constituent-nation wording.",
+    "Never silently convert Scotland or England into independent-state membership claims; record the user's formulation and the real constitutional identity side by side.",
+    "Do not infer membership from geographic proximity.",
+    "Do not infer political consent from project inclusion.",
+    "Every later membership change adds a new snapshot rather than rewriting an older one.",
+    "Where a number such as approximately 900M is used, preserve the exact snapshot from which it was derived and recompute from authoritative population data before empirical presentation."
+  ],
+  "functional_status_dimensions":[
+    "geographic proximity",
+    "energy coupling",
+    "trade/value-chain coupling",
+    "infrastructure coupling",
+    "security coupling",
+    "institutional/legal coupling",
+    "research/technology coupling",
+    "cultural/historical coupling",
+    "project-symbolic North relevance"
+  ],
+  "research_targets":[
+    "Recover exact first use of 'North Axis' as organized geopolitical programme in February 2026.",
+    "Recover each explicit country-list statement with exact date and wording.",
+    "Recover when England changed from included to pending/excluded and whether UK and England were distinguished.",
+    "Recover Russia status changes: included, excluded, external, future reconnection.",
+    "Recover the first explicit 'Canada -> Turkey' formulation.",
+    "Recover the source and calculation behind approximately 850M then approximately 900M population headlines.",
+    "Recover Estonia's 'under the North Axis' wording and determine whether other Baltic states received the same classification.",
+    "Recover the exact meaning of Australia being 'shared'.",
+    "Recover the Mesopotamia/Iraq/Syria future-link formulation and distinguish cultural-civilizational linkage from programme membership."
+  ],
+  "owners":["data/north-programme-atlas.json","knowledge/core/country-relational-method.json","knowledge/core/european-coupling-programme.json","knowledge/indexes/north-axis-routing-index.json"]
+}
