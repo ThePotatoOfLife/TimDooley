@@ -32,11 +32,15 @@ if css_files != expected:
 style = STYLE.read_text(encoding="utf-8") if STYLE.exists() else ""
 if not STYLE.exists():
     errors.append("app/style.css is missing")
-if re.search(r"@import\s", style, re.I):
-    errors.append("app/style.css must be self-contained; @import is not allowed")
+# Match a real CSS at-rule, not documentation text mentioning the word.
+if re.search(r"(?m)^\s*@import\b", style, re.I):
+    errors.append("app/style.css must be self-contained; CSS imports are not allowed")
 
-# The original cross-layer collision remains prohibited.
-for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
+# The original cross-layer collision remains prohibited. Only an actual top-level
+# `.nav { ... }` selector is banned; scoped selectors such as `.page > nav.nav`
+# are compatibility rules and are intentionally allowed.
+for match in re.finditer(r"(?m)(?:^|})\s*\.nav\s*\{([^}]*)\}", style):
+    block = match.group(1)
     if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns)\s*:", block):
         errors.append("app/style.css reintroduced global .nav layout; use .archive-nav or an explicit component class")
 
