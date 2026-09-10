@@ -1,11 +1,16 @@
 #!/usr/bin/env python3
-"""Verify the built Pages artifact for the current manifest-driven archive."""
+"""Verify the built Pages artifact for the current manifest-driven archive.
+
+The validator writes ``site-shell-report.txt`` as a CI diagnostic artifact so a
+failed deployment can be inspected without weakening the deployment gate.
+"""
 from __future__ import annotations
 import json,re
 from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_site'
+REPORT=ROOT/'site-shell-report.txt'
 
 
 def load_json(path,errors):
@@ -91,11 +96,19 @@ def main():
         if bad:errors.append(f'broken local references in built site: {len(bad)}; examples: {bad[:8]}')
         if not pages:errors.append('Pages artifact contains no HTML documents')
 
-    print(f'Built HTML pages checked: {len(pages)}')
-    print(f'Errors: {len(errors)} · Warnings: {len(warnings)}')
-    for w in warnings[:50]:print('WARNING:',w)
+    lines=[
+        f'Built HTML pages checked: {len(pages)}',
+        f'Errors: {len(errors)} · Warnings: {len(warnings)}',
+    ]
+    lines.extend(f'WARNING: {w}' for w in warnings[:50])
     if errors:
-        print('SITE SHELL VALIDATION FAILED');[print('-',e) for e in errors];return 1
-    print('SITE SHELL VALIDATION PASSED');return 0
+        lines.append('SITE SHELL VALIDATION FAILED')
+        lines.extend(f'- {e}' for e in errors)
+    else:
+        lines.append('SITE SHELL VALIDATION PASSED')
+    report='\n'.join(lines)+'\n'
+    REPORT.write_text(report,encoding='utf-8')
+    print(report,end='')
+    return 1 if errors else 0
 
 if __name__=='__main__':raise SystemExit(main())
