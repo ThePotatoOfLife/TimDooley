@@ -17,9 +17,26 @@ def main():
     ids=[x.get("id") for x in countries]; iso3=[x.get("iso3") for x in countries]
     if len(ids)!=len(set(ids)):ERRORS.append("countries/index.json contains duplicate country IDs")
     if len(iso3)!=len(set(iso3)):ERRORS.append("countries/index.json contains duplicate ISO3 codes")
-    levels=load("data/33-level-framework.json").get("levels",[])
-    if len(levels)!=33:ERRORS.append(f"33-level-framework.json has {len(levels)} levels; expected 33")
-    if [x.get("number") for x in levels]!=list(range(1,34)):ERRORS.append("33-level-framework.json levels must be numbered 1 through 33 without gaps")
+
+    # The former 33-level information architecture was intentionally superseded in 2026-09
+    # by D1-D11 as the active vertical Axis. Its useful topical breadth survives as 33
+    # numbered facets. Preserve complete numbering without resurrecting them as spiritual floors.
+    legacy33=load("data/33-level-framework.json")
+    facets=legacy33.get("facets",[])
+    if legacy33.get("status")!="legacy-information-architecture-retained-as-facets":
+        ERRORS.append("33-level-framework.json must remain explicitly superseded as a facet vocabulary")
+    if len(facets)!=33:ERRORS.append(f"33-level-framework.json has {len(facets)} facets; expected 33")
+    if [x.get("legacy_number") for x in facets]!=list(range(1,34)):
+        ERRORS.append("33-level-framework.json facets must preserve legacy numbers 1 through 33 without gaps")
+    supersession=legacy33.get("supersession",{})
+    if supersession.get("vertical_axis")!="data/axis-depths.json":
+        ERRORS.append("33-level-framework.json must point vertical navigation to data/axis-depths.json")
+    if "not metaphysical" not in supersession.get("warning","").lower() and "not metaphysical" not in legacy33.get("purpose","").lower():
+        # Wording may evolve; enforce the semantic boundary with the current explicit phrase too.
+        warning=(supersession.get("warning","")+" "+legacy33.get("purpose","")).lower()
+        if "not metaphysical" not in warning and "not metaphysical or navigational dimensions" not in warning:
+            ERRORS.append("33-level-framework.json must state that legacy facets are not competing metaphysical dimensions")
+
     tree=load("data/tree.json"); nodes=load("data/nodes.json").get("nodes",[]); children=load("data/tree-child-records.json").get("records",[]); support=load("data/tree-support-records.json").get("records",[]); concepts=load("data/tree-concept-records.json").get("records",[])
     known={x.get("id") for x in nodes+children+support+concepts if x.get("id")}|{"33-levels"}
     for level in tree.get("levels",[]):
