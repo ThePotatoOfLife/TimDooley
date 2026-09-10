@@ -29,7 +29,7 @@ def main():
         required_files=(
             'index.html','manifest.json','app/app.js','app/style.css',
             'knowledge/indexes/context-graph.json','knowledge/indexes/core-index.json',
-            'world-map/index.html','world-map/3d.html','data/world-map-3d-runtime.json','data/world-relational-map.json',
+            'world-map/index.html','world-map/3d.html','world-map/3d-app.js','data/world-map-3d-runtime.json','data/world-relational-map.json',
             'sitemap.xml','llms.txt'
         )
         for rel in required_files:
@@ -56,17 +56,24 @@ def main():
 
         # The map is a first-class public surface and must survive every build.
         map3d=(SITE/'world-map/3d.html').read_text(encoding='utf-8',errors='replace') if (SITE/'world-map/3d.html').exists() else ''
-        for required in ('World Relational Atlas','id="map"','id="compare"','id="relationType"','semantic-hubs','compare-hubs','window.goCountry','function fitCodes','Trace outward','fitBounds'):
-            if required not in map3d:errors.append(f'world-map/3d.html missing current atlas feature: {required}')
+        mapapp=(SITE/'world-map/3d-app.js').read_text(encoding='utf-8',errors='replace') if (SITE/'world-map/3d-app.js').exists() else ''
+        for required in ('World Relational Atlas','id="map"','id="compare"','id="relationType"','id="traceDepth"','src="./3d-app.js"','Trace · 3 hops'):
+            if required not in map3d:errors.append(f'world-map/3d.html missing current atlas shell feature: {required}')
+        for required in ('semantic-hubs','trace-hubs','compare-hubs','window.goCountry','window.fitTrace','function fitCodes','function traceGraph','Trace outward','fitBounds',"searchParams.set('depth'"):
+            if required not in mapapp:errors.append(f'world-map/3d-app.js missing current atlas application feature: {required}')
         if map3d and 'navigation handles, not fake geographic locations' not in map3d:
             errors.append('world-map/3d.html missing semantic-coordinate boundary')
+        if mapapp and 'visited.has(other)' not in mapapp:
+            errors.append('world-map/3d-app.js missing recursive Trace cycle guard')
         runtime=load_json(SITE/'data/world-map-3d-runtime.json',errors) if (SITE/'data/world-map-3d-runtime.json').exists() else {}
         if runtime and runtime.get('status')!='active experimental renderer contract':
             errors.append('built world-map-3d-runtime has unexpected status')
         if runtime and runtime.get('compare_mode',{}).get('status') not in {'implemented','implemented-basic'}:
             errors.append('built world-map runtime does not preserve implemented Compare status')
-        if runtime and runtime.get('trace_mode',{}).get('status') not in {'implemented','implemented-one-hop','implemented-basic'}:
-            errors.append('built world-map runtime does not preserve implemented Trace status')
+        if runtime and runtime.get('trace_mode',{}).get('status') not in {'implemented','implemented-recursive-country','implemented-basic'}:
+            errors.append('built world-map runtime does not preserve recursive Trace status')
+        if runtime and runtime.get('trace_mode',{}).get('maximum_depth')!=3:
+            errors.append('built world-map runtime does not preserve Trace depth contract')
 
         # Generated SEO surfaces must actually exist and contain real pages.
         topic_pages=list((SITE/'topics').glob('*/index.html')) if (SITE/'topics').exists() else []
@@ -97,19 +104,12 @@ def main():
         if bad:errors.append(f'broken local references in built site: {len(bad)}; examples: {bad[:8]}')
         if not pages:errors.append('Pages artifact contains no HTML documents')
 
-    lines=[
-        f'Built HTML pages checked: {len(pages)}',
-        f'Errors: {len(errors)} · Warnings: {len(warnings)}',
-    ]
+    lines=[f'Built HTML pages checked: {len(pages)}',f'Errors: {len(errors)} · Warnings: {len(warnings)}']
     lines.extend(f'WARNING: {w}' for w in warnings[:50])
     if errors:
-        lines.append('SITE SHELL VALIDATION FAILED')
-        lines.extend(f'- {e}' for e in errors)
-    else:
-        lines.append('SITE SHELL VALIDATION PASSED')
-    report='\n'.join(lines)+'\n'
-    REPORT.write_text(report,encoding='utf-8')
-    print(report,end='')
+        lines.append('SITE SHELL VALIDATION FAILED');lines.extend(f'- {e}' for e in errors)
+    else:lines.append('SITE SHELL VALIDATION PASSED')
+    report='\n'.join(lines)+'\n';REPORT.write_text(report,encoding='utf-8');print(report,end='')
     return 1 if errors else 0
 
 if __name__=='__main__':raise SystemExit(main())
