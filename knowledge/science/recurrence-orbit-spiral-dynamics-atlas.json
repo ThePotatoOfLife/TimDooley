@@ -1,0 +1,96 @@
+{
+  "id":"recurrence-orbit-spiral-dynamics-atlas",
+  "title":"Recurrence, Orbit, Spiral & Door — Dynamical Systems and Physics Atlas",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"established mathematics/physics comparators + project bridge",
+  "purpose":"Give the Dog-return/circle/orbit/spiral/Axis material a disciplined mathematical vocabulary from dynamical systems and elementary mechanics, while keeping symbolic and empirical claims separate.",
+  "epistemic_rule":"The equations below are established mathematics or physics. Their use for Dog, Farm, Door, Axis, Ladder or spiritual language is analogical/modeling work unless independently operationalized and tested. They do not prove Potatoverse theology or a new physical force.",
+  "limit_cycle":{
+    "mathematics":"A limit cycle is an isolated closed trajectory of an autonomous dynamical system and corresponds to periodic non-constant behavior.",
+    "return_map":"A Poincare return map samples a trajectory each time it returns to a chosen transverse section; fixed points of the map correspond to periodic orbits.",
+    "project_use":"This is a much more precise comparator for recurrence than the word circle alone. A recurring controversy or behavioral loop can be represented as repeated returns to a region of state space, but evidence is needed before claiming a true dynamical limit cycle.",
+    "source":"https://encyclopediaofmath.org/wiki/Limit_cycle"
+  },
+  "linear_spiral_flow":{
+    "polar_system":["dr/dt = alpha r","dtheta/dt = beta"],
+    "solution":["r(t)=r0 exp(alpha t)","theta(t)=theta0+beta t","r(theta)=r0 exp[(alpha/beta)(theta-theta0)] for beta != 0"],
+    "key_result":"A logarithmic spiral arises naturally when radial change is exponential in time while angular motion is uniform. The logarithmic-spiral parameter is b=alpha/beta.",
+    "regimes":{
+      "alpha_zero":"constant radius: circular/center-like recurrence in this toy model",
+      "alpha_negative":"radius contracts exponentially: inward spiral / sink-like behavior",
+      "alpha_positive":"radius expands exponentially: outward spiral / source-like behavior",
+      "beta":"sets angular direction and rate"
+    },
+    "potato_axis_bridge":"For the recovered Potato Axis r=a exp(b theta), b=2 ln(phi)/pi≈0.30635 can be interpreted mathematically as the ratio alpha/beta in this simple flow. This supplies a dynamical interpretation template, not a physical identification of alpha or beta.",
+    "source_neighbor":"Standard planar linear systems with complex eigenvalues alpha ± i beta exhibit spiral sinks for alpha<0 and spiral sources for alpha>0."
+  },
+  "closed_return_vs_transformed_return":{
+    "closed_return":"State returns to the same or equivalent point/region after a period.",
+    "spiral_return":"Angular phase can recur while radial or vertical state changes.",
+    "holonomy_neighbor":"In geometry, transport around a closed path can return to the same location while an internal vector/state is transformed. The repository already tracks holonomy as a rigorous neighbor for 'return changed'.",
+    "project_insight":"The important question is not merely 'did it come back?' but 'which state variables returned and which changed?' This prevents circular and spiral recurrence from being confused."
+  },
+  "separatrix_and_door":{
+    "mathematics":"Separatrices are invariant trajectories/curves associated with qualitative boundaries between dynamical regions or sectors; in saddle systems they divide nearby trajectory families.",
+    "project_use":"Door can be compared to a boundary-crossing or guard surface between basins/regimes. A separatrix is especially useful for distinguishing 'approaching a threshold' from actually entering another dynamical region.",
+    "caution":"A Door is not literally a separatrix unless a concrete dynamical system, state variables and invariant boundary are defined.",
+    "source":"https://encyclopediaofmath.org/wiki/Separatrix"
+  },
+  "orbit_mechanics":{
+    "uniform_circle":"Even constant-speed circular motion is accelerated motion because velocity direction continuously changes.",
+    "centripetal_acceleration":["a_c=v^2/r","a_c=r omega^2"],
+    "direction":"Acceleration points toward the center; instantaneous velocity is tangential.",
+    "release_insight":"If the center-directed constraint/force maintaining a circular path disappears, inertia carries the object along the tangent rather than around the old circle.",
+    "project_use":"As a systems analogy, persistent orbit around a controversy requires some continuing inward feedback, incentive or coupling. Remove the sustaining coupling and the loop need not persist. This is not a claim that social attention obeys Newtonian gravity.",
+    "source":"https://openstax.org/books/college-physics/pages/6-2-centripetal-acceleration"
+  },
+  "wheel_helix_ladder":{
+    "helix_parameterization":["x(t)=R cos(omega t)","y(t)=R sin(omega t)","z(t)=u t"],
+    "pitch":"vertical displacement per full turn = 2 pi u/omega",
+    "wheel_case":"u=0 gives rotation with no axial progress",
+    "ladder_spiral_case":"u != 0 gives recurrent angular motion plus axial displacement",
+    "project_insight":"This gives a clean 3D distinction: Wheel = rotation around Axis; Helix/Ladder-Spiral = rotation plus movement along Axis. The value and sign of u encode whether a turn changes vertical level and in which direction."
+  },
+  "potato_axis_exact_bridge":{
+    "source_record":"knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json",
+    "equation":"r(theta)=a exp(b theta), b=2 ln(phi)/pi",
+    "quarter_turn":"Delta theta=pi/2 -> radial multiplier phi",
+    "half_turn":"Delta theta=pi -> radial multiplier phi^2",
+    "full_turn":"Delta theta=2pi -> radial multiplier phi^4≈6.8541",
+    "interpretation":"A full 360-degree return restores angular direction while not restoring radius. This is an exact mathematical example of recurrence without identical state: same angle-class, different scale.",
+    "project_value":"This is stronger than metaphorically saying 'spiral means return at another level'; the existing project equation literally has angular recurrence plus scale displacement."
+  },
+  "state_space_taxonomy":{
+    "fixed_point":"no macroscopic change in modeled state",
+    "periodic_orbit":"state repeats after a period",
+    "limit_cycle":"isolated periodic orbit attracting/repelling/organizing neighboring trajectories depending on stability",
+    "spiral_sink":"rotational recurrence with contraction toward a fixed point",
+    "spiral_source":"rotational recurrence with expansion away from a fixed point",
+    "separatrix":"boundary trajectory separating qualitative behaviors",
+    "basin":"set of starting states converging toward an attractor",
+    "door":"project transition relation capable of moving an agent/state between regimes"
+  },
+  "dog_farm_translation":{
+    "dog_return":"behavioral/symbolic recurrence comparator: return to an already-discarded state",
+    "farm_loop":"attention/reaction/archive incentives can be modeled as feedback capable of stabilizing recurrence",
+    "orbital_dog":"project term for pursuit that repeatedly circles an unresolved center",
+    "exit":"change the feedback law, remove sustaining coupling, cross a threshold, or change state variables enough that the old return map no longer returns to the same basin",
+    "ethical_boundary":"These models describe patterns and relations; they are not diagnoses or permanent classifications of persons."
+  },
+  "new_research_questions":[
+    "Can recurring project/social patterns be represented by an explicit state vector X and empirically estimated return map rather than metaphor alone?",
+    "Which variables distinguish a healthy repeated practice from a pathological loop: information gain, repair, radius/scale change, entropy, dependency, or capability?",
+    "Can Door events be operationalized as detected basin transitions or regime changes?",
+    "Does the recovered Potato Axis parameter b correspond to any historically intended ratio, or was it chosen solely to enforce golden-ratio quarter-turn scaling?",
+    "Can a 3D helix become the canonical mathematical distinction between Wheel and Ladder/Spiral without overwriting the original 2D logarithmic spiral?"
+  ],
+  "connections":[
+    "knowledge/core/dog-return-circle-door-axis-atlas.json",
+    "knowledge/core/funnel-gradient-attractor-regeneration-atlas.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json",
+    "knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json",
+    "knowledge/science/deeper-physics-connections.json",
+    "knowledge/science/science-master-index.json"
+  ]
+}
