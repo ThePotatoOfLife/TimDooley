@@ -1,11 +1,11 @@
 {
   "id": "garden-mud-orientation",
   "title": "Garden and Mud — Two Orientations",
-  "version": "1.2.0",
-  "updated": "2026-09-10",
-  "kind": "ethical-symbolic orientation model",
-  "purpose": "Formalize a recurring Tim Dooley / Potato of Life contrast that cuts across theology, ethics, psychology, politics and storytelling: Garden versus Mud as orientations rather than fixed classes of people, while routing the newer Mud/Swamp/Debt/Mountain state model into the broader transformation architecture.",
-  "epistemic_rule": "Garden and Mud are symbolic and ethical orientations in the Potatoverse. They should not be used to dehumanize people or to convert disagreement into proof that someone belongs to an inferior category.",
+  "version": "1.3.0",
+  "updated": "2026-09-11",
+  "kind": "ethical-symbolic orientation model with quantitative systems bridge",
+  "purpose": "Formalize a recurring Tim Dooley / Potato of Life contrast that cuts across theology, ethics, psychology, politics and storytelling: Garden versus Mud as orientations rather than fixed classes of people, while routing the newer Mud/Swamp/Debt/Mountain state model and the quantitative Garden/Farm control model into the broader transformation architecture.",
+  "epistemic_rule": "Garden and Mud are symbolic and ethical orientations in the Potatoverse. They should not be used to dehumanize people or to convert disagreement into proof that someone belongs to an inferior category. Quantitative Garden/Farm metrics apply to declared systems and outcomes, not human worth or spiritual rank.",
   "garden": {
     "orientation": "toward cultivation, connection and living order",
     "traits": ["responsibility", "humility", "care", "relationship", "truth-seeking", "repair", "nourishment", "growth", "stewardship", "future-orientation", "capacity to self-correct", "autonomous generativity"],
@@ -49,6 +49,19 @@
     "mountain_function": "Mountain integrates many differentiated traces toward perspective; it should not be confused with the Swamp that mixes them without stable footing.",
     "descent_after_summit": "Perspective is incomplete until it returns to the Plane/Garden as service, repair, protection or cultivation."
   },
+  "scientific_control_bridge": {
+    "companion": "knowledge/science/garden-farm-control-network-model.json",
+    "central_result": "Garden and Farm can share the same network topology while differing in objective function, reinvestment, exit freedom, knowledge transfer and dependence. The distinction is therefore not reducible to who is central or how many edges exist.",
+    "state_template": "x_i=(capability,resources,autonomy,harm,memory,...)",
+    "capability_dynamics": "dk_i/dt=f_i(k_i,r_i)+sum_j W_ij h_ij(x_j,x_i)+B_i u_i-delta_i k_i-e_i",
+    "autonomy_test": "A_i(c,tau)=performance after center c is removed for horizon tau / performance with ordinary support",
+    "generative_radius": "G_R(R)=sum_{i:d_G(c,i)<=R} w_i max(0,DeltaK_i) A_i(c,tau)",
+    "viability": "A Garden policy should keep states inside a declared viability region while increasing future capability and option value; maximizing short-term yield alone is insufficient.",
+    "multiobjective_rule": "Track capability growth, autonomy retention, resilience, useful connectivity, repair, extraction burden and harm as a vector/Pareto problem before choosing any weighted scalar.",
+    "strongest_empirical_question": "After support, leadership or a central node is reduced, what durable capability remains in the periphery?",
+    "archive_application": "A Garden-like archive lets readers trace primary sources, reproduce derivations and disagree without dependence on Tim or assistant authority; usefulness should survive removal of the narrator.",
+    "boundary": "These measurements compare system design and outcomes. They are not measures of divinity or personal moral worth."
+  },
   "applications": [
     "Personal conflict: ask whether an interaction produces learning, repair and boundaries or only repeated humiliation and retaliation.",
     "Institutions: evaluate whether rules cultivate capability and protection or preserve dysfunctional repetition.",
@@ -56,10 +69,12 @@
     "Archive design: preserve criticism and contradiction in forms that can improve the model rather than burying them; contextualized residue can become Soil instead of Swamp.",
     "Theology: judgment should ideally orient toward transformation, not make condemnation the final state.",
     "Karmic ledger: track specific unresolved edges and their repair state rather than converting all conflict into one irreversible global accusation.",
-    "Leadership: test whether a center produces stronger independent participants; if dependence itself is the product, the relation has drifted toward Farm/Shell rather than Garden/House."
+    "Leadership: test whether a center produces stronger independent participants; if dependence itself is the product, the relation has drifted toward Farm/Shell rather than Garden/House.",
+    "Systems science: perturb or remove central support and measure capability retention, recovery time, viability and network function instead of inferring health from centrality alone."
   ],
   "ownership": {
     "this_file": "ethical orientation and transformation direction",
+    "quantitative_garden_farm": "knowledge/science/garden-farm-control-network-model.json",
     "mud_mechanics": "data/swamp/mud-karma-system.json",
     "swamp_state_machine": "data/swamp/swamp-mud-debt-state-machine.json",
     "debt_chronology": "knowledge/chronology/karmic-debt-ledger-2026.json",
@@ -72,6 +87,8 @@
     "knowledge/philosophy/belief-evolution-and-claim-testing.json",
     "knowledge/core/tim-dooley.json",
     "knowledge/core/potato-of-life.json",
+    "knowledge/science/garden-farm-control-network-model.json",
+    "knowledge/science/integrated-scientific-architecture.json",
     "data/swamp/mud-karma-system.json",
     "data/swamp/swamp-mud-debt-state-machine.json",
     "knowledge/core/mountain-debt-integration-and-release.json",
