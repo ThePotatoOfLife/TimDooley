@@ -1,13 +1,19 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "name":"Global Country Atlas",
-  "purpose":"Parent container for the country layer. The blueprint defines what every country should contain; the source registry defines where values come from; country records contain only normalized observations and provenance.",
+  "purpose":"Parent container for the country layer. The blueprint defines what every country should contain; the source registry defines where values come from; country records contain only normalized observations and provenance; the World Relational Atlas renders and routes those records spatially.",
   "backend_only_blueprint":"data/countries-blueprint.json",
   "source_registry":"data/country-source-registry.json",
   "country_index":"data/countries/index.json",
-  "inheritance":"country -> countries-blueprint -> field definitions -> source registry -> automated refresh -> normalized country record",
-  "frontend_rule":"Do not expose blueprint instructions as country content. Frontend shows the resulting data, freshness, provenance and meaningful comparisons.",
-  "global_views":["world map","population","GDP","GDP per capita","debt/GDP","public debt","religion","denominations","political systems","leaders","parliaments","elections","monarchies","military capability","alliances","trade","energy","infrastructure","health","education","labour","migration","science","technology","climate","resources","ownership","law","rights","media","digital systems","historical timelines","North/East/South/West/Center configurations","network relationships"],
+  "interactive_runtime":"data/world-map-runtime.json",
+  "interactive_view":"world-map/index.html",
+  "project_overlay":"data/world-relational-map.json",
+  "inheritance":"country -> countries-blueprint -> field definitions -> source registry -> automated refresh -> normalized country record -> world-map runtime -> spatial/relational view",
+  "frontend_rule":"Do not expose blueprint instructions as country content. Frontend shows resulting data, freshness, provenance, meaningful comparisons, relationships, issues and research gaps. The frontend is never a second canonical database.",
+  "spatial_rule":"Sovereign/observer countries use the canonical 195-state index. Territories and subnational regions use distinct typed nodes and must not be silently promoted to sovereign-state records merely because they have map polygons.",
+  "global_views":["world map","population","GDP","GDP per capita","debt/GDP","public debt","religion","denominations","political systems","leaders","parliaments","elections","monarchies","military capability","alliances","trade","energy","infrastructure","health","education","labour","migration","science","technology","climate","resources","ownership","law","rights","media","digital systems","historical timelines","North/East/South/West/Center configurations","network relationships","issue/entanglement overlays","tikkun/repair views","archive coverage/research missions"],
   "country_record_generation":{"input":"country index + blueprint + source registry","output":"normalized country records","preserve_history":true,"preserve_source_values":true,"calculate_derived_metrics":true,"generate_relationships":true,"flag_missing_or_stale_data":true},
-  "epistemic_boundary":"Empirical country statistics remain empirical. Political classifications are sourced or explicitly analytical. Symbolic Tree/Axis/angel/demon material remains project interpretation and is never presented as measured population data."
+  "map_interaction":"click polygon -> resolve ISO3 -> country index -> lazy-load canonical record -> overlay empirical relationships + project interpretation + issue routes + repair questions -> trace outward through typed edges",
+  "game_like_boundary":"Exploration progress may measure source coverage, resolved relationships, freshness, mechanism quality and repair analysis. Human suffering, trafficking, slavery, civilian harm or other abuse is never converted into game points or collectibles.",
+  "epistemic_boundary":"Empirical country statistics remain empirical. Political classifications are sourced or explicitly analytical. Symbolic Tree/Axis/angel/demon/karmic material remains project interpretation or project canon and is never presented as measured population data or legal authority."
 }
