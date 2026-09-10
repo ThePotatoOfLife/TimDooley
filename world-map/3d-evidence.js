@@ -20,6 +20,7 @@ box.hidden = true;
 document.querySelector('.mapwrap').appendChild(box);
 
 let cache = null;
+let renderedCode = null;
 
 async function fetchJson(url) {
   const response = await fetch(url);
@@ -76,6 +77,7 @@ window.closeAtlasEvidence = closeEvidence;
 
 async function renderEvidence() {
   const code = selectedCode();
+  renderedCode = code;
   if (!code) {
     box.hidden = false;
     button.classList.add('active');
@@ -88,6 +90,8 @@ async function renderEvidence() {
 
   try {
     const {facts, demography, world} = await loadEvidenceData();
+    // Ignore an async response if navigation changed while the evidence data was loading.
+    if (selectedCode() !== code) return renderEvidence();
     const fact = facts?.countries?.[code] || {};
     const demo = demography?.countries?.[code] || {};
     const population = demo.population || {};
@@ -140,7 +144,15 @@ async function renderEvidence() {
   }
 }
 
+function refreshIfSelectionChanged() {
+  if (!box.hidden && selectedCode() !== renderedCode) renderEvidence();
+}
+
 button.addEventListener('click', () => box.hidden ? renderEvidence() : closeEvidence());
 window.refreshAtlasEvidence = () => { if (!box.hidden) renderEvidence(); };
 window.addEventListener('popstate', window.refreshAtlasEvidence);
-document.querySelector('#map')?.addEventListener('click', () => setTimeout(window.refreshAtlasEvidence, 160));
+
+// Country navigation rewrites the URL and then renders the main panel. Observe that
+// completed state transition instead of guessing with a click-dependent timeout.
+const atlasPanel = $('#panel');
+if (atlasPanel) new MutationObserver(refreshIfSelectionChanged).observe(atlasPanel, {childList:true, subtree:true});
