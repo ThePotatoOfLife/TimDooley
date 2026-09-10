@@ -16,12 +16,13 @@ const AXIS_GLOW = 'north-axis-threshold-glow';
 const AXIS_LINE = 'north-axis-threshold-line';
 const AXIS_GATE = 'north-axis-gate';
 const AXIS_LABEL = 'north-axis-label';
+const NORTH_ICE = '#9fe8ff';
+const NORTH_ICE_BRIGHT = '#dff8ff';
+const NORTH_ICE_DEEP = '#67bfdc';
 
 function lowerArcCoordinates() {
   const points = [];
   const steps = 84;
-  // Negative / upside-down-rainbow lip. The middle dips toward northern Greenland.
-  // 42° is a visual design parameter, not a geographic or theological fact.
   for (let i = 0; i <= steps; i += 1) {
     const t = i / steps;
     const lon = ARC_CENTER_LON - HALF_ARC + AXIS_ARC_DEGREES * t;
@@ -34,7 +35,6 @@ function lowerArcCoordinates() {
 function upperArcCoordinates() {
   const points = [];
   const steps = 84;
-  // Rounded upper shell of the bubble, kept below Web Mercator's ~85.0511° limit.
   for (let i = 0; i <= steps; i += 1) {
     const t = i / steps;
     const lon = ARC_CENTER_LON + HALF_ARC - AXIS_ARC_DEGREES * t;
@@ -55,117 +55,21 @@ function axisGeoJSON() {
   return {
     type: 'FeatureCollection',
     features: [
-      {
-        type: 'Feature',
-        properties: {
-          kind: 'threshold_bubble',
-          name: 'North / Axis threshold',
-          subtitle: `${AXIS_ARC_DEGREES}° polar bubble`,
-          plane: 'project-symbolic',
-        },
-        geometry: { type: 'Polygon', coordinates: [bubblePolygon()] },
-      },
-      {
-        type: 'Feature',
-        properties: {
-          kind: 'threshold_arc',
-          name: 'North / Axis threshold',
-          subtitle: `${AXIS_ARC_DEGREES}° negative arc over northern Greenland`,
-          plane: 'project-symbolic',
-        },
-        geometry: { type: 'LineString', coordinates: lowerArc },
-      },
-      {
-        type: 'Feature',
-        properties: {
-          kind: 'axis_gate',
-          name: 'North / Axis Gate',
-          subtitle: 'Threshold toward North of North · project-symbolic overlay',
-          plane: 'project-symbolic',
-        },
-        // A renderable polar anchor. Mercator cannot display 90°N directly.
-        geometry: { type: 'Point', coordinates: [ARC_CENTER_LON, 84.45] },
-      },
-    ],
+      {type:'Feature',properties:{kind:'threshold_bubble',name:'North / Axis threshold',subtitle:`${AXIS_ARC_DEGREES}° polar bubble`,plane:'project-symbolic'},geometry:{type:'Polygon',coordinates:[bubblePolygon()]}},
+      {type:'Feature',properties:{kind:'threshold_arc',name:'North / Axis threshold',subtitle:`${AXIS_ARC_DEGREES}° negative arc over northern Greenland`,plane:'project-symbolic'},geometry:{type:'LineString',coordinates:lowerArc}},
+      {type:'Feature',properties:{kind:'axis_gate',name:'North / Axis Gate',subtitle:'Threshold toward North of North · project-symbolic overlay',plane:'project-symbolic'},geometry:{type:'Point',coordinates:[ARC_CENTER_LON,84.45]}}
+    ]
   };
 }
 
 function addAxisLayers(map) {
   if (map.getSource(AXIS_SOURCE)) return;
   map.addSource(AXIS_SOURCE, { type: 'geojson', data: axisGeoJSON() });
-
-  map.addLayer({
-    id: AXIS_FILL,
-    type: 'fill',
-    source: AXIS_SOURCE,
-    filter: ['==', ['get', 'kind'], 'threshold_bubble'],
-    paint: {
-      'fill-color': '#cbb8ef',
-      'fill-opacity': ['interpolate', ['linear'], ['zoom'], 0, 0.12, 3, 0.18, 6, 0.22],
-      'fill-outline-color': '#d7c7f4',
-    },
-  });
-
-  map.addLayer({
-    id: AXIS_GLOW,
-    type: 'line',
-    source: AXIS_SOURCE,
-    filter: ['==', ['get', 'kind'], 'threshold_arc'],
-    paint: {
-      'line-color': '#efe6ff',
-      'line-width': 11,
-      'line-opacity': 0.14,
-      'line-blur': 6,
-    },
-  });
-
-  map.addLayer({
-    id: AXIS_LINE,
-    type: 'line',
-    source: AXIS_SOURCE,
-    filter: ['==', ['get', 'kind'], 'threshold_arc'],
-    paint: {
-      'line-color': '#dfc8ff',
-      'line-width': 2.7,
-      'line-opacity': 0.92,
-      'line-dasharray': [2, 1.2],
-    },
-  });
-
-  map.addLayer({
-    id: AXIS_GATE,
-    type: 'circle',
-    source: AXIS_SOURCE,
-    filter: ['==', ['get', 'kind'], 'axis_gate'],
-    paint: {
-      'circle-radius': ['interpolate', ['linear'], ['zoom'], 0, 5, 3, 7.5, 6, 10],
-      'circle-color': '#f2ebff',
-      'circle-stroke-color': '#b98be8',
-      'circle-stroke-width': 2,
-      'circle-opacity': 0.97,
-    },
-  });
-
-  map.addLayer({
-    id: AXIS_LABEL,
-    type: 'symbol',
-    source: AXIS_SOURCE,
-    filter: ['==', ['get', 'kind'], 'axis_gate'],
-    minzoom: 1.0,
-    layout: {
-      'text-field': 'NORTH · AXIS',
-      'text-size': 11,
-      'text-offset': [0, 1.7],
-      'text-anchor': 'top',
-      'text-letter-spacing': 0.12,
-      'text-allow-overlap': true,
-    },
-    paint: {
-      'text-color': '#f1eaff',
-      'text-halo-color': '#080b0b',
-      'text-halo-width': 1.5,
-    },
-  });
+  map.addLayer({id:AXIS_FILL,type:'fill',source:AXIS_SOURCE,filter:['==',['get','kind'],'threshold_bubble'],paint:{'fill-color':NORTH_ICE,'fill-opacity':['interpolate',['linear'],['zoom'],0,0.12,3,0.18,6,0.22],'fill-outline-color':NORTH_ICE_BRIGHT}});
+  map.addLayer({id:AXIS_GLOW,type:'line',source:AXIS_SOURCE,filter:['==',['get','kind'],'threshold_arc'],paint:{'line-color':NORTH_ICE_BRIGHT,'line-width':11,'line-opacity':0.16,'line-blur':6}});
+  map.addLayer({id:AXIS_LINE,type:'line',source:AXIS_SOURCE,filter:['==',['get','kind'],'threshold_arc'],paint:{'line-color':NORTH_ICE,'line-width':2.7,'line-opacity':0.94,'line-dasharray':[2,1.2]}});
+  map.addLayer({id:AXIS_GATE,type:'circle',source:AXIS_SOURCE,filter:['==',['get','kind'],'axis_gate'],paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,5,3,7.5,6,10],'circle-color':NORTH_ICE_BRIGHT,'circle-stroke-color':NORTH_ICE_DEEP,'circle-stroke-width':2,'circle-opacity':0.97}});
+  map.addLayer({id:AXIS_LABEL,type:'symbol',source:AXIS_SOURCE,filter:['==',['get','kind'],'axis_gate'],minzoom:1,layout:{'text-field':'NORTH · AXIS','text-size':11,'text-offset':[0,1.7],'text-anchor':'top','text-letter-spacing':0.12,'text-allow-overlap':true},paint:{'text-color':NORTH_ICE_BRIGHT,'text-halo-color':'#080b0b','text-halo-width':1.5}});
 }
 
 function setAxisVisible(map, visible) {
@@ -183,74 +87,46 @@ function installAxisToggle(map) {
   button.textContent = 'Axis';
   button.title = `Toggle ${AXIS_ARC_DEGREES}° North / Axis polar bubble`;
   worldButton?.insertAdjacentElement('beforebegin', button);
-
   let visible = true;
   const params = new URL(location.href).searchParams;
   if (params.get('axis') === '0') visible = false;
   button.classList.toggle('active', visible);
-
   button.addEventListener('click', () => {
     visible = !visible;
     setAxisVisible(map, visible);
     button.classList.toggle('active', visible);
     const url = new URL(location.href);
-    if (visible) url.searchParams.delete('axis');
-    else url.searchParams.set('axis', '0');
-    history.replaceState(null, '', url);
+    if (visible) url.searchParams.delete('axis'); else url.searchParams.set('axis','0');
+    history.replaceState(null,'',url);
   });
-
   setAxisVisible(map, visible);
 }
 
 function installAxisInteractions(map) {
-  const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 10 });
-
+  const popup = new maplibregl.Popup({ closeButton:false, closeOnClick:false, offset:10 });
   const enter = event => {
     map.getCanvas().style.cursor = 'pointer';
     const feature = event.features?.[0];
     if (!feature) return;
     const p = feature.properties || {};
-    popup
-      .setLngLat(event.lngLat)
-      .setHTML(`<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · not a nation, border, territory, or physical feature</small></div>`)
-      .addTo(map);
+    popup.setLngLat(event.lngLat).setHTML(`<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · not a nation, border, territory, or physical feature</small></div>`).addTo(map);
   };
-  const leave = () => {
-    map.getCanvas().style.cursor = '';
-    popup.remove();
-  };
-
-  [AXIS_FILL, AXIS_LINE, AXIS_GATE].forEach(layer => {
-    map.on('mouseenter', layer, enter);
-    map.on('mouseleave', layer, leave);
-  });
-
+  const leave = () => { map.getCanvas().style.cursor=''; popup.remove(); };
+  [AXIS_FILL,AXIS_LINE,AXIS_GATE].forEach(layer => { map.on('mouseenter',layer,enter); map.on('mouseleave',layer,leave); });
   const openGate = () => {
-    map.easeTo({ center: [ARC_CENTER_LON, 79.7], zoom: Math.max(map.getZoom(), 2.55), pitch: 48, bearing: 0, duration: 1300 });
+    map.easeTo({center:[ARC_CENTER_LON,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:1300});
     const panel = document.getElementById('panel');
-    if (panel) {
-      panel.innerHTML = `
-        <div class="eyebrow">Project-symbolic threshold</div>
-        <h1>North / Axis Gate</h1>
-        <p class="muted">A translucent polar bubble shaped around a ${AXIS_ARC_DEGREES}° negative arc sits north of Greenland and slightly overlaps its northern edge as a visual threshold into the project's “North of North” plane.</p>
-        <div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary geography. This bubble, Axis Gate, Tree, Ladder, and “North of North” are project-symbolic structures and do not define sovereignty, borders, territory, or physical geography.</div>
-        <div class="card"><b>Axis logic</b><div class="row">Earth / Greenland / Arctic</div><div class="row">North bubble → threshold</div><div class="row">Threshold → Axis / Tree / Ladder</div><div class="row">Axis → North-of-North scene</div></div>
-        <div class="card"><b>42° geometry</b><p class="muted">42° controls the horizontal sweep of the negative arc. It is a visual parameter and can be tuned independently of the layer's meaning.</p></div>
-        <div class="actions"><button onclick="location.reload()">Return to atlas panel</button></div>`;
-    }
+    if (panel) panel.innerHTML = `<div class="eyebrow">Project-symbolic threshold</div><h1>North / Axis Gate</h1><p class="muted">An icy-blue translucent polar bubble shaped around a ${AXIS_ARC_DEGREES}° negative arc sits north of Greenland and slightly overlaps its northern edge as a visual threshold into the project's “North of North” plane.</p><div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary geography. This bubble, Axis Gate, Tree, Ladder, and “North of North” are project-symbolic structures and do not define sovereignty, borders, territory, or physical geography.</div><div class="card"><b>Axis logic</b><div class="row">Earth / Greenland / Arctic</div><div class="row">North bubble → threshold</div><div class="row">Threshold → Axis / Tree / Ladder</div><div class="row">Axis → North-of-North scene</div></div><div class="card"><b>42° geometry</b><p class="muted">42° controls the horizontal sweep of the negative arc. It is a visual parameter and can be tuned independently of the layer's meaning.</p></div><div class="actions"><button onclick="location.reload()">Return to atlas panel</button></div>`;
   };
-
-  map.on('click', AXIS_GATE, openGate);
-  map.on('click', AXIS_FILL, openGate);
+  map.on('click',AXIS_GATE,openGate);
+  map.on('click',AXIS_FILL,openGate);
 }
 
 async function bootAxis() {
-  for (let i = 0; i < 120 && !window.__potatoAtlasMap; i += 1) {
-    await new Promise(resolve => setTimeout(resolve, 50));
-  }
+  for (let i=0;i<120&&!window.__potatoAtlasMap;i+=1) await new Promise(resolve=>setTimeout(resolve,50));
   const map = window.__potatoAtlasMap;
   if (!map) return;
-  if (!map.loaded()) await new Promise(resolve => map.once('load', resolve));
+  if (!map.loaded()) await new Promise(resolve=>map.once('load',resolve));
   addAxisLayers(map);
   installAxisToggle(map);
   installAxisInteractions(map);
