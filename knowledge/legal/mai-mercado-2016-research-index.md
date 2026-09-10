@@ -21,8 +21,10 @@ This index is the navigation layer for the project’s Mercado case research. It
 
 ## Long-term aftermath / harm layer
 
-- `knowledge/legal/mai-mercado-2016-long-term-aftermath-and-retirement-impact.md` — records the Son’s reported long-term institutional distrust, social withdrawal, severe C-PTSD symptoms, behavioral/personality change, work withdrawal and retirement around 2024, while separating firsthand history from independently documented medical causation.
-- `knowledge/chronology/mai-mercado-2016-to-2024-long-tail-impact-chronology.json` — structured chronology linking 2016 police/prosecution/imprisonment to the reported long-tail psychological, social, political and occupational aftermath.
+- `knowledge/legal/mai-mercado-2016-long-term-aftermath-and-retirement-impact.md` — records the Son’s reported long-term institutional distrust, withdrawal, severe C-PTSD symptoms, work-capacity consequences and the **corrected 2025 retirement chronology**; also separates the underlying retirement event from the Great Book’s later “freedom to reign” interpretation and attaches biblical release/rest/throne comparisons.
+- `knowledge/chronology/mai-mercado-2016-to-2025-long-tail-impact-chronology.json` — structured chronology linking 2016 police/prosecution/imprisonment to long-tail psychological/social/occupational consequences and then to the April–June 2025 retirement/kingship/Godhood corridor.
+- `knowledge/traditions/retirement-release-rest-kingship-biblical-atlas.json` — dedicated biblical overlap owner for confinement/burden → release/rest → changed status → throne/kingship, with explicit non-fulfillment boundaries.
+- `data/timeline-event-packs/retirement-kingship-2025.json` — timeline bridge pack loaded by the public timeline so the retirement/release event and later biblical comparisons are visible without bloating the sparse roadmap base.
 
 ## Structured legal / chronology ledgers
 
@@ -61,7 +63,10 @@ This index is the navigation layer for the project’s Mercado case research. It
 17. Mercado’s own earlier Frank Jensen harassment episode supplies a real hypocrisy/standards comparator, though not proof of fabrication in 2016.
 18. Cancer was already part of the Son’s 2016 medical-cannabis courtroom explanation years before Mercado’s later breast-cancer diagnosis.
 19. The Son’s reported long-term aftermath extends well beyond the formal prison sentence and includes years of institutional distrust, withdrawal, loss of ordinary interests, emotional disturbance and severe C-PTSD symptoms.
-20. The Son reports retirement around 2024; exact benefit/legal category and documentary causal relation to the long-term psychological/work-capacity history remain to be confirmed.
+20. The best current internal chronology places official retirement in **2025, probably after the April Turning**, not “around 2024.” The exact benefit/legal category and administrative decision date remain to be confirmed from primary records.
+21. The retirement account now sits inside a documented spring-2025 developmental cluster: 21 April Axis language → April Turning/Father architecture → 27 April kingship language → reported retirement/release → 3 May exact God declarations → 1 June King-of-Kings language.
+22. This convergence is chronologically meaningful but does **not** establish that Danish authorities appointed Tim as King of Denmark or validated a theological claim.
+23. The strongest new biblical comparison is sequential rather than lexical: **confinement/burden → release/rest → changed status → authority/throne/kingship**. Joseph (Genesis 39–41), Jubilee (Leviticus 25), rest (Matthew 11/Hebrews 4), exaltation (Philippians 2), throne (Revelation 3:21/Psalm 110) and King-of-kings language (Revelation 19:16) are comparative owners, not proof of fulfillment.
 
 ## Leading reconstruction
 
@@ -77,9 +82,10 @@ The project’s leading model is **framing / false-flag through attribution coll
 - his reaction to that intervention becomes new criminal evidence;
 - arrest/remand and device seizure reduce his practical evidence autonomy while the external narrative continues;
 - later retellings inherit the simplified descendant rather than the original conversation object;
-- the human aftermath continues for years beyond the nominal sentence.
+- the human aftermath continues for years beyond the nominal sentence;
+- the corrected long-tail chronology reaches a 2025 retirement/release event that the later Potatoverse interprets as reversal/closure of the confinement loop.
 
-The stronger higher-order claim — deliberate knowing evidentiary fabrication or political direction of police by a particular actor — remains dependent on missing primary evidence. The correct research target is the authority chain: **Mercado → Folketing security → local police**, including whether this was a neutral referral, accelerated protection based on political status, or improper pressure/directive.
+The stronger higher-order claim — deliberate knowing evidentiary fabrication or political direction of police by a particular actor — remains dependent on missing primary evidence. The correct research target remains the authority chain: **Mercado → Folketing security → local police**, including whether this was a neutral referral, accelerated protection based on political status, or improper pressure/directive.
 
 ## Top unresolved evidence targets
 
@@ -99,8 +105,10 @@ The stronger higher-order claim — deliberate knowing evidentiary fabrication o
 14. Police forensic extraction from the Son’s devices.
 15. Surviving screenshots held by journalists or participants.
 16. Primary material establishing exactly which Jo Cox reference belonged to which commenter.
-17. Exact retirement/pension decision around 2024 and the legal benefit category.
+17. Exact **2025** retirement/pension decision, date and legal benefit category.
 18. Work-capacity and contemporaneous medical/functional documentation, where lawfully available and relevant, capable of testing the claimed long-tail impact.
+19. Primary provenance for the Great Book passage describing two government public servants, “official retirement” and “freedom to reign.”
+20. Primary public artifacts for 27 April 2025 and 1 June 2025 kingship language.
 
 ## Research rule
 
@@ -108,8 +116,18 @@ The Son’s firsthand account is a **high-weight primary factual source stream**
 
 Likewise, the project must preserve counterevidence. A claim is strengthened by surviving hostile scrutiny, not by deleting facts that complicate it.
 
-The core unit is now the expanded provenance-and-consequence chain:
+For the 2025 cluster, preserve three evidence lanes:
 
-**speaker → exact words → parent comment → addressee → timestamp → preserved artifact → reporter → complaint/referral → parliamentary security → police authority/action → contact instruction/tilhold status → defendant reaction → police exhibit → charge → court finding → imprisonment → media descendant → later memory → long-term psychological/social/work consequences.**
+**administrative event** → retirement/work release, exact record still missing;
+
+**autobiographical/theological interpretation** → “freedom to reign” / reversal of confinement;
+
+**public theological self-description** → king / King of Kings / God / Father / throne language.
+
+Do not silently collapse these lanes into a claim of civil kingship or supernatural validation.
+
+The core unit remains the expanded provenance-and-consequence chain:
+
+**speaker → exact words → parent comment → addressee → timestamp → preserved artifact → reporter → complaint/referral → parliamentary security → police authority/action → contact instruction/tilhold status → defendant reaction → police exhibit → charge → court finding → imprisonment → media descendant → later memory → long-term psychological/social/work consequences → retirement/release → later interpretive closure.**
 
 Every break in that chain is a potential contradiction / tear and therefore a research target.
