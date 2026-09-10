@@ -36,13 +36,13 @@ def require_text(text: str, required: tuple[str, ...], owner: str, errors: list[
 
 
 def require_build_parity(rel: str, errors: list[str]) -> None:
-    """Ensure a copied runtime file is byte-for-byte the source CI validated."""
+    """Ensure a copied runtime/contract file is byte-for-byte the source CI validated."""
     source = ROOT / rel
     built = SITE / rel
     if not source.exists() or not built.exists():
         return
     if source.read_bytes() != built.read_bytes():
-        errors.append(f"built runtime drifted from validated source: {rel}")
+        errors.append(f"built runtime/contract drifted from validated source: {rel}")
 
 
 def main() -> int:
@@ -75,6 +75,7 @@ def main() -> int:
             "data/world-relational-map.json",
             "data/atlas-projection-contract.json",
             "data/atlas-time-contract.json",
+            "data/atlas-mathematical-calibration.json",
             "data/world-country-demography.json",
             "data/world-country-facts.json",
             "sitemap.xml",
@@ -139,6 +140,7 @@ def main() -> int:
             "data/world-relational-map.json",
             "data/atlas-projection-contract.json",
             "data/atlas-time-contract.json",
+            "data/atlas-mathematical-calibration.json",
         )
         for rel in copied_runtime_files:
             require_build_parity(rel, errors)
@@ -160,6 +162,19 @@ def main() -> int:
                 errors.append("built world-map runtime does not point to the canonical time contract")
             if "experimental" in str(runtime.get("status", "")).lower():
                 errors.append("built world-map runtime reintroduced retired experimental status wording")
+
+        calibration_path = SITE / "data/atlas-mathematical-calibration.json"
+        if calibration_path.exists():
+            calibration = load_json(calibration_path, errors)
+            invariants = calibration.get("invariants", {})
+            if calibration.get("status") != "active design/calibration contract":
+                errors.append("built mathematical calibration contract is not active")
+            if invariants.get("north_gate_arc_degrees") != 42:
+                errors.append("built mathematical calibration lost the 42-degree North-gate geometry invariant")
+            if invariants.get("north_gate_arc_is_level_count") is not False:
+                errors.append("built mathematical calibration reinterpreted 42 degrees as a level count")
+            if invariants.get("north_gate_arc_is_fibonacci_derived") is not False:
+                errors.append("built mathematical calibration reinterpreted the North gate as Fibonacci-derived")
 
         facts_path = SITE / "data/world-country-facts.json"
         if facts_path.exists():
