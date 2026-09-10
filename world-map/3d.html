@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>World Relational Atlas — 3D country graph</title>
-<meta name="description" content="Draggable 3D relational world atlas with population labels, religious composition, capital-city nodes, multi-hop typed relationship tracing, shortest-path navigation, country comparison, semantic modules and canonical data navigation.">
+<meta name="description" content="Draggable 3D relational world atlas with North, West, East, South and BRICS field views, population labels, religious composition, capital-city nodes, multi-hop typed relationship tracing, shortest-path navigation, country comparison, semantic modules and canonical data navigation.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/3d.html">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.css">
 <style>
@@ -16,7 +16,7 @@
 </head>
 <body><div class="app">
 <header class="top">
-  <div class="brand"><b>World Relational Atlas · 3D</b><small>country → population → religion → capital → compare → recursive trace → shortest path → typed relations</small></div>
+  <div class="brand"><b>World Relational Atlas · 3D</b><small>country → fields → population → religion → capital → compare → recursive trace → shortest path → typed relations</small></div>
   <select id="height" title="Polygon extrusion"><option value="flat">Flat countries</option><option value="population">Height · population</option><option value="area">Height · area</option></select>
   <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
   <button id="fit" title="Fit selected country, comparison, or active trace">Fit</button>
@@ -33,12 +33,13 @@
     <div id="map" class="map"></div>
     <div id="status" class="status" hidden></div>
     <div id="camera" class="camera">drag · zoom · rotate · pitch</div>
-    <div id="hud" class="hud"><b>World mode</b><div class="muted">Hover countries for quick facts. Zoom in for sourced population labels. Select a country for its population and 2020 religious composition; capital cities remain geographic nodes. Trace follows typed curated relations for up to three hops; Path finds the shortest represented route between countries.</div></div>
+    <div id="hud" class="hud"><b>World mode</b><div class="muted">Hover countries for quick facts. Use Fields to compare North, West, East, South and empirical BRICS overlays. Zoom in for sourced population labels. Select a country for its population and 2020 religious composition; capital cities remain geographic nodes. Trace follows typed curated relations for up to three hops; Path finds the shortest represented route between countries.</div></div>
   </div>
   <aside id="panel" class="panel">
     <div class="eyebrow">Spatial operating surface</div><h1>Explore the world</h1>
-    <p class="muted">Hover a country for compact factual information, or hover a capital-city node for the city name and population. Search or click a country to inspect sourced population, religious composition, canonical modules, relationship filters, Trace, or Path.</p>
-    <div class="boundary">Population observations retain their source and reference period. Religious composition uses Pew Research Center's 2020 seven-category identity estimates as surfaced by Our World in Data. “Unaffiliated” includes people identifying with no religion, including atheists and agnostics; the global dataset does not split those into separate worldwide categories. Capital nodes use geographic coordinates and population claims from Wikidata. Semantic interior hubs remain navigation handles rather than fake geographic locations.</div>
+    <p class="muted">Hover a country for compact factual information, or hover a capital-city node for the city name and population. Use the field selector to view Tim/Potatoverse North, West, East and South assignments or the separate empirical BRICS layer. Search or click a country to inspect sourced population, religious composition, canonical modules, relationship filters, Trace, or Path.</p>
+    <div class="boundary">North, West, East and South are project interpretive fields, not borders, sovereignty, citizenship or legal alignment. Countries may overlap fields. BRICS membership and partner status are empirical institutional facts and are shown separately even when visually associated with East. Population observations retain source and reference period. Religious composition uses Pew Research Center's 2020 seven-category identity estimates as surfaced by Our World in Data. Capital nodes use geographic coordinates and population claims from Wikidata.</div>
+    <div class="card"><b>Field colors</b><div class="row">North · icy blue</div><div class="row">West · marine blue</div><div class="row">East · red</div><div class="row">South · warm gold</div><div class="row">BRICS · red empirical backbone</div></div>
     <div class="card"><b>Trace &amp; Path</b><p class="muted">Trace explores the neighborhood around one country. Path finds a shortest route between two countries through the same curated typed graph. Neither hop count nor path length is a causal, moral or geopolitical-distance claim.</p></div>
     <div class="card"><b>Keyboard</b><div class="row"><span class="pill">/</span> focus search</div><div class="row"><span class="pill">Esc</span> leave compare / return world</div><div class="row"><span class="pill">C</span> toggle compare</div></div>
   </aside>
@@ -47,5 +48,6 @@
 <script type="module" src="./3d-hover.js"></script>
 <script type="module" src="./3d-pathfinder.js"></script>
 <script type="module" src="./3d-demography.js"></script>
+<script type="module" src="./3d-fields.js"></script>
 <script type="module" src="./3d-axis.js"></script>
 </body></html>
