@@ -4,6 +4,9 @@
 The scope intentionally mirrors ``scripts/build_site.py``. Historical/archive,
 tooling and build-only trees are useful repository strata but are not deployed
 public assets and therefore must not create false web-integrity failures.
+
+The audit also writes ``audit-web-report.txt`` so CI failures remain inspectable
+without weakening the gate.
 """
 from __future__ import annotations
 
@@ -12,6 +15,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+REPORT = ROOT / "audit-web-report.txt"
 errors: list[str] = []
 warnings: list[str] = []
 
@@ -98,15 +102,18 @@ if not (ROOT / "app" / "app.js").exists():
 if not (ROOT / "app" / "style.css").exists():
     errors.append("Missing app/style.css primary site stylesheet")
 
-print("Public application root: /TimDooley/")
-print(f"HTML pages audited: {len(html_files)}")
-print(f"CSS files audited: {len(css_files)}")
-print(f"JS files audited: {len(js_files)}")
-print(f"Errors: {len(errors)}")
-print(f"Warnings: {len(warnings)}")
-for item in errors:
-    print("ERROR:", item)
-for item in warnings:
-    print("WARNING:", item)
+lines = [
+    "Public application root: /TimDooley/",
+    f"HTML pages audited: {len(html_files)}",
+    f"CSS files audited: {len(css_files)}",
+    f"JS files audited: {len(js_files)}",
+    f"Errors: {len(errors)}",
+    f"Warnings: {len(warnings)}",
+]
+lines.extend(f"ERROR: {item}" for item in errors)
+lines.extend(f"WARNING: {item}" for item in warnings)
+report = "\n".join(lines) + "\n"
+REPORT.write_text(report, encoding="utf-8")
+print(report, end="")
 
 sys.exit(1 if errors else 0)
