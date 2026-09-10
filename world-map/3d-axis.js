@@ -1,3 +1,5 @@
+import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
+
 // Experimental North / Axis threshold overlay for the 3D World Relational Atlas.
 // This is a project-symbolic rendering attached to the real northern geography;
 // it is not a country boundary, territorial claim, or physical feature.
