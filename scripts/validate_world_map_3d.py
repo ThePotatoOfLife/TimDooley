@@ -41,8 +41,6 @@ def check_inline_module_syntax(text: str, warnings: list[str], errors: list[str]
         errors.append("3d.html contains no inline module script")
         return
     js = "\n".join(scripts)
-    # Node --check does not need the imported library to exist, but remote URL imports are
-    # not valid in all Node parsing modes. Replace import statements with inert declarations.
     js = re.sub(r"^import\s+\*\s+as\s+maplibregl\s+from\s+['\"][^'\"]+['\"];?", "const maplibregl = {};", js, flags=re.M)
     with tempfile.NamedTemporaryFile("w", suffix=".mjs", encoding="utf-8", delete=False) as handle:
         handle.write(js)
@@ -83,13 +81,12 @@ def main() -> int:
             "function selectFeature", "window.openModule", "window.traceTo",
             "searchParams.set('country'", "searchParams.set('compare'", "searchParams.set('relation'",
             "semantic-hubs", "semantic-links", "compare-hubs", "relations",
-            "MapLibre", "OpenStreetMap contributors",
+            "maplibre-gl@6.9.0", "OpenStreetMap contributors",
         ),
         "world-map/3d.html",
         errors,
     )
 
-    # Ethical/spatialization boundaries are functional requirements, not optional prose.
     for required in (
         "navigation handles, not fake geographic locations",
         "Project-canon material is separate from empirical country data",
@@ -117,7 +114,6 @@ def main() -> int:
     if len(canonical_codes) != 195:
         errors.append(f"expected 195 canonical country ISO3 codes; found {len(canonical_codes)}")
 
-    # Territory/non-state codes are permitted in the world layer, but must be explicit rather than typos.
     permitted_noncanonical = {"GRL", "FRO"}
     referenced: set[str] = set()
     for edge in world.get("curated_edges", []):
@@ -148,11 +144,9 @@ def main() -> int:
     if "All relation types" not in text:
         errors.append("3d map does not expose the all-types relation filter option")
 
-    # Prevent accidental silent regression back to centroid-only focus.
     if "fitBounds" not in text or "geometryBounds" not in text:
         errors.append("3d map no longer appears to fit actual polygon geometry")
 
-    # Compare must be bounded so selecting the world cannot create an unmanageable client state.
     if "slice(-4)" not in text and "length>=4" not in text and "length >= 4" not in text:
         warnings.append("could not confirm a four-country Compare cap from static inspection")
 
