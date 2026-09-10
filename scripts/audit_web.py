@@ -12,6 +12,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+SITE_BASE = "/TimDooley"
 errors: list[str] = []
 warnings: list[str] = []
 
@@ -57,15 +58,28 @@ def local(raw: str) -> str | None:
     return None if not raw or raw.startswith(external) or raw.startswith(("${", "<", "`")) else raw
 
 
+def resolve_target(source: Path, target: str) -> Path | None:
+    if target == SITE_BASE or target == f"{SITE_BASE}/":
+        return ROOT
+    if target.startswith(f"{SITE_BASE}/"):
+        return (ROOT / target[len(SITE_BASE) + 1 :]).resolve()
+    if target.startswith("/"):
+        return None
+    return (source.parent / target).resolve()
+
+
 def check(source: Path, raw: str, label: str) -> None:
     target = local(raw)
     if not target:
         return
-    if target.startswith("/"):
-        errors.append(f"{source.relative_to(ROOT)}: root-relative reference -> {raw}")
+
+    p = resolve_target(source, target)
+    if p is None:
+        errors.append(
+            f"{source.relative_to(ROOT)}: unsupported root-relative reference -> {raw}"
+        )
         return
 
-    p = (source.parent / target).resolve()
     try:
         p.relative_to(ROOT.resolve())
     except ValueError:
@@ -98,7 +112,7 @@ if not (ROOT / "app" / "app.js").exists():
 if not (ROOT / "app" / "style.css").exists():
     errors.append("Missing app/style.css primary site stylesheet")
 
-print("Public application root: /TimDooley/")
+print(f"Public application root: {SITE_BASE}/")
 print(f"HTML pages audited: {len(html_files)}")
 print(f"CSS files audited: {len(css_files)}")
 print(f"JS files audited: {len(js_files)}")
