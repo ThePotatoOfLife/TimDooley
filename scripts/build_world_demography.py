@@ -83,28 +83,38 @@ def local_population(country: dict):
 
 
 def world_bank_population() -> dict[str, dict]:
-    query = urllib.parse.urlencode({"format": "json", "per_page": 1000, "mrv": 5})
-    url = f"https://api.worldbank.org/v2/country/all/indicator/{WORLD_BANK_POP}?{query}"
-    payload = fetch_json(url)
-    if not isinstance(payload, list) or len(payload) < 2 or not isinstance(payload[1], list):
-        raise RuntimeError("World Bank population payload malformed")
-    out = {}
-    for row in payload[1]:
-        code = str(row.get("countryiso3code") or "").upper()
-        value = number(row.get("value"))
-        year = str(row.get("date") or "")
-        if len(code) != 3 or value is None:
-            continue
-        old = out.get(code)
-        if old is None or year > str(old.get("year") or ""):
-            out[code] = {
-                "value": int(round(value)),
-                "year": int(year) if year.isdigit() else year,
-                "source": "World Bank",
-                "source_url": f"https://data.worldbank.org/indicator/{WORLD_BANK_POP}?locations={code}",
-                "indicator": WORLD_BANK_POP,
-                "confidence": "international-official",
-            }
+    """Return the newest population observation per ISO3 across all API pages."""
+    out: dict[str, dict] = {}
+    page = 1
+    while True:
+        query = urllib.parse.urlencode({"format": "json", "per_page": 1000, "mrv": 5, "page": page})
+        url = f"https://api.worldbank.org/v2/country/all/indicator/{WORLD_BANK_POP}?{query}"
+        payload = fetch_json(url)
+        if not isinstance(payload, list) or len(payload) < 2 or not isinstance(payload[1], list):
+            raise RuntimeError(f"World Bank population payload malformed on page {page}")
+        meta = payload[0] if isinstance(payload[0], dict) else {}
+        if meta.get("message"):
+            raise RuntimeError(f"World Bank rejected population request: {meta['message']}")
+        for row in payload[1]:
+            code = str(row.get("countryiso3code") or "").upper()
+            value = number(row.get("value"))
+            year = str(row.get("date") or "")
+            if len(code) != 3 or value is None:
+                continue
+            old = out.get(code)
+            if old is None or year > str(old.get("year") or ""):
+                out[code] = {
+                    "value": int(round(value)),
+                    "year": int(year) if year.isdigit() else year,
+                    "source": "World Bank",
+                    "source_url": f"https://data.worldbank.org/indicator/{WORLD_BANK_POP}?locations={code}",
+                    "indicator": WORLD_BANK_POP,
+                    "confidence": "international-official",
+                }
+        pages = int(meta.get("pages") or 1)
+        if page >= pages:
+            break
+        page += 1
     return out
 
 
@@ -192,7 +202,7 @@ def main() -> int:
         raise RuntimeError(f"Religion coverage too low: {religion_coverage}; errors={religion_errors}")
 
     payload = {
-        "version": "1.0.0",
+        "version": "1.0.1",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-demography-runtime",
         "scope": "Presentation/runtime snapshot; canonical country records remain the source owners for their own sourced observations.",
