@@ -113,10 +113,16 @@ function installAxisInteractions(map) {
   };
   const leave = () => { map.getCanvas().style.cursor=''; popup.remove(); };
   [AXIS_FILL,AXIS_LINE,AXIS_GATE].forEach(layer => { map.on('mouseenter',layer,enter); map.on('mouseleave',layer,leave); });
+
   const openGate = () => {
-    map.easeTo({center:[ARC_CENTER_LON,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:1300});
+    map.easeTo({center:[ARC_CENTER_LON,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:1100});
+    window.dispatchEvent(new CustomEvent('atlas-axis-open',{detail:{anchor:'north-axis-gate'}}));
+    if (window.__potatoAxisDepth?.setLevel) {
+      window.__potatoAxisDepth.setLevel(0,{silentCamera:true});
+      return;
+    }
     const panel = document.getElementById('panel');
-    if (panel) panel.innerHTML = `<div class="eyebrow">Project-symbolic threshold</div><h1>North / Axis Gate</h1><p class="muted">An icy-blue translucent polar bubble shaped around a ${AXIS_ARC_DEGREES}° negative arc sits north of Greenland and slightly overlaps its northern edge as a visual threshold into the project's “North of North” plane.</p><div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary geography. This bubble, Axis Gate, Tree, Ladder, and “North of North” are project-symbolic structures and do not define sovereignty, borders, territory, or physical geography.</div><div class="card"><b>Axis logic</b><div class="row">Earth / Greenland / Arctic</div><div class="row">North bubble → threshold</div><div class="row">Threshold → Axis / Tree / Ladder</div><div class="row">Axis → North-of-North scene</div></div><div class="card"><b>42° geometry</b><p class="muted">42° controls the horizontal sweep of the negative arc. It is a visual parameter and can be tuned independently of the layer's meaning.</p></div><div class="actions"><button onclick="location.reload()">Return to atlas panel</button></div>`;
+    if (panel) panel.innerHTML = `<div class="eyebrow">Project-symbolic threshold</div><h1>North / Axis Gate</h1><p class="muted">An icy-blue translucent polar bubble shaped around a ${AXIS_ARC_DEGREES}° negative arc sits north of Greenland. This is the Earth-side threshold for the vertical Axis: spiral upward toward Garden / North of North, or downward through Roots of Ash toward Swamp / Subterrain.</p><div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary geography. The Axis depth system is project-symbolic and does not define physical altitude, underground geography, sovereignty, borders, territory, or empirical cosmology.</div>`;
   };
   map.on('click',AXIS_GATE,openGate);
   map.on('click',AXIS_FILL,openGate);
