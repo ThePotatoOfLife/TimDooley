@@ -16,7 +16,7 @@
 </head>
 <body><div class="app">
 <header class="top">
-  <div class="brand"><b>World Relational Atlas · 3D</b><small>D4 world → fields &amp; networks → D5 North Door → D6–D11 ascent / D3–D1 descent → population → religion → capital → trace → path</small></div>
+  <div class="brand"><b>World Relational Atlas · 3D</b><small>D4 world → fields &amp; networks → Eye/evidence → D5 North Door → D6–D11 ascent / D3–D1 descent → population → religion → capital → trace → path</small></div>
   <select id="height" title="Polygon extrusion"><option value="flat">Flat countries</option><option value="population">Height · population</option><option value="area">Height · area</option></select>
   <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
   <button id="fit" title="Fit selected country, comparison, or active trace">Fit</button>
@@ -33,11 +33,11 @@
     <div id="map" class="map"></div>
     <div id="status" class="status" hidden></div>
     <div id="camera" class="camera">drag · zoom · rotate · pitch</div>
-    <div id="hud" class="hud"><b>D4 · World mode</b><div class="muted">The ordinary Atlas starts at D4. Use Fields and observable Networks horizontally. At the North bubble, enter D5 — the project-symbolic Door and Ladder junction. The winding Axis then ascends through D6–D11 toward North of North or descends through D3–D1 toward roots, Swamp/disintegration and lower planes. Each Axis level now also exposes its dominant relational operator and placement test.</div></div>
+    <div id="hud" class="hud"><b>D4 · World mode</b><div class="muted">The ordinary Atlas starts at D4. Use Fields and observable Networks horizontally. Eye inspects how the Atlas knows what it is showing. At the North bubble, enter D5 — the project-symbolic Door and Ladder junction. The winding Axis then ascends through D6–D11 toward North of North or descends through D3–D1 toward roots, Swamp/disintegration and lower planes. Each Axis level exposes its dominant relational operator and placement test.</div></div>
   </div>
   <aside id="panel" class="panel">
     <div class="eyebrow">Spatial operating surface · D4</div><h1>Explore the world</h1>
-    <p class="muted">D4 is the ordinary geographic and empirical Atlas: countries, populations, cities, institutions, networks and sourced relations. Project Fields and empirical Networks remain horizontal overlays. The North bubble is D5, where the separate spiritual Axis begins.</p>
+    <p class="muted">D4 is the ordinary geographic and empirical Atlas: countries, populations, cities, institutions, networks and sourced relations. Project Fields and empirical Networks remain horizontal overlays. Eye exposes provenance and evidence context. The North bubble is D5, where the separate spiritual Axis begins.</p>
     <div class="boundary">D1–D11 is project-symbolic scaffolding, not physical cosmology. D4 alone is ordinary geographic map space. D5 is the North Door/first-heaven threshold; D6–D11 ascend symbolically and D3–D1 descend symbolically. The resemblance to eleven-dimensional physics is analogy only, not an assertion that the Atlas depicts M-theory. Semantic interior hubs remain navigation handles rather than fake geographic locations.</div>
     <div class="card"><b>Vertical Axis</b><div class="row">D11 · North of North</div><div class="row">D10 · Heaven / Crown</div><div class="row">D9 · Angels / Seeds of Light</div><div class="row">D8 · Garden / Rooms</div><div class="row">D7 · Tree of Life</div><div class="row">D6 · Spiral Ladder</div><div class="row">D5 · North Door / first heaven</div><div class="row">D4 · Earth / ordinary world map</div><div class="row">D3 · Roots of Ash</div><div class="row">D2 · Swamp / Disintegration</div><div class="row">D1 · Deep Lower Plane</div></div>
     <div class="card"><b>Directional traffic</b><div class="row">↑ seed of life · wheat · potato · spiral · virtue · angels · seeds of light · fruit</div><div class="row">↓ debt · seed of death · ash · strife · separation · Swamp · disintegration</div><p class="muted">These are symbolic markers for direction and transformation, not physical forces or judgments about populations.</p></div>
@@ -47,6 +47,7 @@
 <script type="module" src="./3d-hover.js"></script>
 <script type="module" src="./3d-pathfinder.js"></script>
 <script type="module" src="./3d-demography.js"></script>
+<script type="module" src="./3d-evidence.js"></script>
 <script type="module" src="./3d-fields.js"></script>
 <script type="module" src="./3d-networks.js"></script>
 <script type="module" src="./3d-axis-depth.js"></script>
