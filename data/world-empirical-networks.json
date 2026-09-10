@@ -1,0 +1,112 @@
+{
+  "id": "world-empirical-networks",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "purpose": "Observable institutional and geographic networks used to compare against project North/West/East/South/Center fields without conflating the two.",
+  "boundary": "Membership in an empirical network is not evidence of ideological unity and does not automatically assign a project field. These overlays are corroborating relationship structures only.",
+  "networks": {
+    "BRICS": {
+      "label": "BRICS",
+      "kind": "political_diplomatic_coordination",
+      "color": "#e54848",
+      "members": ["BRA","RUS","IND","CHN","ZAF","SAU","EGY","ARE","ETH","IDN","IRN"],
+      "partners": ["BLR","BOL","CUB","KAZ","MYS","NGA","THA","UGA","UZB","VNM"],
+      "source": "https://brics.br/en/about-the-brics",
+      "note": "Official BRICS describes itself as a Global South political and diplomatic coordination forum; it is not synonymous with project East."
+    },
+    "NATO": {
+      "label": "NATO",
+      "kind": "collective_defence",
+      "color": "#4f82c9",
+      "members": ["ALB","BEL","BGR","CAN","HRV","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","ISL","ITA","LVA","LTU","LUX","MNE","NLD","MKD","NOR","POL","PRT","ROU","SVK","SVN","ESP","SWE","TUR","GBR","USA"],
+      "source": "https://www.nato.int/en/what-is-nato",
+      "note": "32-member collective-defence alliance. Strongly overlaps project North and West but defines neither."
+    },
+    "EU": {
+      "label": "European Union",
+      "kind": "supranational_union",
+      "color": "#5f7fd7",
+      "members": ["AUT","BEL","BGR","HRV","CYP","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","IRL","ITA","LVA","LTU","LUX","MLT","NLD","POL","PRT","ROU","SVK","SVN","ESP","SWE"],
+      "candidates_relevant_to_project": ["UKR","TUR"],
+      "source": "https://european-union.europa.eu/principles-countries-history/eu-countries_en",
+      "note": "27-member union. Ukraine and Türkiye are candidates, not members."
+    },
+    "ARCTIC_COUNCIL": {
+      "label": "Arctic Council",
+      "kind": "arctic_intergovernmental_forum",
+      "color": "#a9ecff",
+      "members": ["CAN","DNK","FIN","ISL","NOR","RUS","SWE","USA"],
+      "source": "https://arctic-council.org/about/states/",
+      "note": "Eight Arctic states. Provides a real circumpolar layer that cuts across project North, West and East."
+    },
+    "NORDIC": {
+      "label": "Nordic cooperation",
+      "kind": "regional_cooperation",
+      "color": "#c2f3ff",
+      "members": ["DNK","FIN","ISL","NOR","SWE"],
+      "areas": ["GRL","FRO"],
+      "source": "https://www.norden.org/en/information/about-nordic-council-ministers",
+      "note": "Denmark, Finland, Iceland, Norway and Sweden are members; Greenland and Faroe Islands enjoy practically the same representation in Nordic Council of Ministers cooperation."
+    },
+    "SCO": {
+      "label": "Shanghai Cooperation Organisation",
+      "kind": "eurasian_intergovernmental_organisation",
+      "color": "#c84f56",
+      "members": ["BLR","IND","IRN","KAZ","CHN","KGZ","PAK","RUS","TJK","UZB"],
+      "source": "https://eng.sectsco.org/20170109/192193.html",
+      "note": "Ten-member Eurasian organisation. A stronger empirical comparator for project East than BRICS alone."
+    },
+    "ASEAN": {
+      "label": "ASEAN",
+      "kind": "regional_organisation",
+      "color": "#c77b5f",
+      "members": ["BRN","KHM","IDN","LAO","MYS","MMR","PHL","SGP","THA","TLS","VNM"],
+      "source": "https://agreement.asean.org/",
+      "note": "Eleven-member Southeast Asian organisation after Timor-Leste accession. It crosses the project East/South bridge zone."
+    },
+    "APEC": {
+      "label": "APEC",
+      "kind": "economic_forum",
+      "color": "#b98960",
+      "members_mapped_to_canonical_states": ["AUS","BRN","CAN","CHL","CHN","IDN","JPN","KOR","MYS","MEX","NZL","PNG","PER","PHL","RUS","SGP","THA","USA","VNM"],
+      "noncanonical_or_special_economies": ["Hong Kong, China","Chinese Taipei"],
+      "source": "https://www.apec.org/who-we-are/our-members",
+      "note": "APEC has 21 member economies; this country-polygon view maps the 19 members represented by canonical sovereign-state polygons and records the two special economies separately."
+    },
+    "PACIFIC_ISLANDS_FORUM": {
+      "label": "Pacific Islands Forum",
+      "kind": "regional_intergovernmental_forum",
+      "color": "#d0b267",
+      "members_mapped_to_canonical_states": ["AUS","FSM","FJI","KIR","NRU","NZL","PLW","PNG","MHL","WSM","SLB","TON","TUV","VUT"],
+      "noncanonical_or_territorial_members": ["Cook Islands","French Polynesia","New Caledonia","Niue"],
+      "source": "https://forumsec.org/pacific-islands-forum",
+      "note": "18 members in the official Forum; the Atlas sovereign-country layer maps 14 directly and records four noncanonical/territorial members separately."
+    },
+    "SADC": {
+      "label": "SADC",
+      "kind": "regional_economic_community",
+      "color": "#d6aa58",
+      "members": ["AGO","BWA","COM","COD","SWZ","LSO","MDG","MWI","MUS","MOZ","NAM","SYC","ZAF","TZA","ZMB","ZWE"],
+      "source": "https://www.sadc.int/member-states",
+      "note": "Sixteen-member Southern African Development Community. Strong empirical southern-African comparator without implying that all Africa is project South."
+    },
+    "GCC": {
+      "label": "Gulf Cooperation Council",
+      "kind": "gulf_regional_cooperation",
+      "color": "#c9a36f",
+      "members": ["ARE","BHR","SAU","OMN","QAT","KWT"],
+      "source": "https://www.gcc-sg.org/en/AboutUs/Pages/default.aspx",
+      "note": "Six Gulf states coordinating across political, economic and social fields. Useful empirical layer inside the project Center/convergence arena."
+    },
+    "MERCOSUR": {
+      "label": "MERCOSUR",
+      "kind": "regional_integration",
+      "color": "#5279a8",
+      "states_parties_active": ["ARG","BOL","BRA","PRY","URY"],
+      "suspended_state_party": ["VEN"],
+      "associated_states": ["CHL","COL","ECU","GUY","PAN","PER","SUR"],
+      "source": "https://www.mercosur.int/en/about-mercosur/countries",
+      "note": "Shows a real South American integration layer cutting across the project West/East hinge; Venezuela is currently suspended from its State Party rights and obligations."
+    }
+  }
+}
