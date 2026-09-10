@@ -1,0 +1,195 @@
+{
+  "id": "atlas-projection-contract",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "active-view-contract",
+  "purpose": "Define how one canonical repository object may be projected into geography, network, time, evidence, Axis, facet and interpretive views without creating parallel truth sources or inventing information during representation changes.",
+  "core_rule": "Canonical owners retain identity, meaning, evidence and chronology. Views may select, aggregate, spatialize, summarize, compare or transform representation, but must not silently rewrite the underlying record.",
+  "state_vector": {
+    "notation": "X_view = (G,T,R,E,A,F,C)",
+    "coordinates": {
+      "G": "geography / spatial anchor / geometry",
+      "T": "time / historical validity / sequence",
+      "R": "relationship topology / network context",
+      "E": "epistemic state / source / confidence / contradiction",
+      "A": "Axis transformation or analytical depth, D1-D11 where useful",
+      "F": "facet/category filter such as infrastructure, law, history, language or institutions",
+      "C": "context or interpretation set: empirical, project-canon, biblical, comparative mythology, scientific analogy, scenario, creative"
+    },
+    "identity_invariant": "Changing view should preserve the canonical object ID and a path back to its owner unless the operation explicitly creates a derived aggregate.",
+    "time_invariant": "A view must not make a historical state appear current merely because it is spatially convenient.",
+    "epistemic_invariant": "A project-symbolic or comparative interpretation must not become empirical merely because it is rendered beside empirical data."
+  },
+  "view_families": {
+    "world": {
+      "default_axis": 4,
+      "primary_question": "Where is it and what observable systems surround it?",
+      "preferred_representation": ["polygons", "real points", "routes", "areas", "flows", "country dossiers"],
+      "canonical_inputs": ["country records", "institution/entity records", "infrastructure records", "official networks", "dated observations"],
+      "forbidden": ["invented coordinates for abstract concepts", "moral/spiritual polygon rank"]
+    },
+    "network": {
+      "primary_question": "What is connected to what, by which typed relation, direction, value, date and source?",
+      "preferred_representation": ["typed graph", "arcs", "flow lines", "adjacency", "dependency trace", "multiplex layer"],
+      "projection_loss_to_report": ["hidden edge types", "aggregated counterparties", "omitted dates", "omitted uncertainty"]
+    },
+    "time": {
+      "primary_question": "When was this true and how did it change?",
+      "preferred_representation": ["time slider", "event sequence", "valid_from/valid_to filtering", "role transition", "historical map state"],
+      "projection_loss_to_report": ["undated records", "date precision", "later reinterpretation versus first attestation"]
+    },
+    "roots": {
+      "default_axis": 3,
+      "primary_question": "What sources, history, residue and dependencies underlie the present representation?",
+      "preferred_representation": ["provenance tree", "source chain", "version history", "turning points", "contradiction surface", "causal hypotheses with confidence"],
+      "forbidden": ["causation inferred only from adjacency", "ancestral guilt", "retroactive prophecy"]
+    },
+    "feedback": {
+      "default_axis": 2,
+      "primary_question": "Which loops, incentives and persistent ties make a relation self-reproducing or hard to exit?",
+      "preferred_representation": ["temporal network", "recurrence view", "archive persistence", "third-party spread", "exit friction", "adaptive rewiring"],
+      "forbidden": ["painting populations as Swamp", "treating subculture membership as guilt", "calling social ties quantum entanglement"]
+    },
+    "threshold": {
+      "default_axis": 5,
+      "primary_question": "What condition, choice, boundary or authorization changes the system into a different regime?",
+      "preferred_representation": ["Door", "guard condition", "before/after state", "access rule", "repair milestone", "legal or institutional transition"],
+      "forbidden": ["physical-portal claims from interface symbolism", "automatic moral sorting"]
+    },
+    "return": {
+      "default_axis": 6,
+      "primary_question": "What returns, and what changed between recurrences?",
+      "preferred_representation": ["spiral history", "return map", "version delta", "recurring motif sequence", "policy/conflict cycle with changed state"],
+      "projection_loss_to_report": ["differences hidden by analogy", "scale changes", "phase/context changes"]
+    },
+    "branch": {
+      "default_axis": 7,
+      "primary_question": "What downstream branches, capabilities, descendants, consequences or fruit were generated?",
+      "preferred_representation": ["Tree", "lineage graph", "dependency descendants", "propagation", "generativity metrics"],
+      "forbidden": ["assuming all growth is beneficial", "using symbolic fruit as empirical outcome without a metric"]
+    },
+    "rooms": {
+      "default_axis": 8,
+      "primary_question": "How can differentiated subsystems compose without losing identity, agency or viable boundaries?",
+      "preferred_representation": ["federated topology", "House/Rooms", "modular systems", "shared infrastructure", "interoperability graph", "Garden viability view"]
+    },
+    "relay": {
+      "default_axis": 9,
+      "primary_question": "What is transmitted, through whom or what, with what fidelity, delay, verification and distortion?",
+      "preferred_representation": ["source-mediator-recipient graph", "information route", "translation chain", "diplomatic relay", "API/data flow", "knowledge transfer"]
+    },
+    "integrate": {
+      "default_axis": 10,
+      "primary_question": "What larger system emerges, what can actually be observed or steered, and where are the leverage points?",
+      "preferred_representation": ["Mountain compression", "system dashboard", "controllability/observability analysis where modeled", "multi-objective tradeoff view", "capability chains"],
+      "projection_loss_to_report": ["detail hidden by aggregation", "minority/edge cases", "model assumptions", "uncertain controllability"]
+    },
+    "meta": {
+      "default_axis": 11,
+      "primary_question": "What survives changes of representation, and which criteria should judge competing orientations?",
+      "preferred_representation": ["North of North", "invariant comparison", "objective/constraint panel", "cross-view consistency test", "return-to-D4 consequences"],
+      "forbidden": ["claiming a desired invariant exists", "treating D11 as physical M-theory", "using meta-view as escape from empirical consequences"]
+    },
+    "symbolic_context": {
+      "primary_question": "Which project, biblical, mythological, artistic or scientific-comparator relations illuminate the selected object without becoming its empirical evidence?",
+      "preferred_representation": ["context graph", "comparison sequence", "mismatch panel", "dated project statement", "nonspatial scene"],
+      "forbidden": ["comparison=identity", "analogy=proof", "verse=geopolitical evidence", "invented sacred geography"]
+    }
+  },
+  "operators": {
+    "Eye": "observe/inspect/compare/source-check; changes E and visible observables without claiming omniscience",
+    "Door": "guarded transition between states/views; must show the condition and preserve provenance",
+    "Axis": "changes analytical depth or description coordinate A; distinct from ordinary chronological time T",
+    "Spiral": "compares recurrence with changed state; requires a delta",
+    "Tree": "expands one node/event/source into branches, descendants or downstream consequences",
+    "Mountain": "compresses many details into a higher-order system view and must report information loss",
+    "Garden": "tests viability, autonomous capacity, coexistence and generativity under constraints",
+    "Swamp": "tests feedback, capture, recurrence, opacity and blocked exit on relations rather than territories",
+    "Forge": "shows transformation under pressure with explicit inputs, transition and outputs",
+    "HouseRooms": "shows modular composition and boundaries among differentiated subsystems",
+    "NorthOfNorth": "compares orientation criteria and invariants; must descend back to D4 consequences"
+  },
+  "projection_contract": {
+    "before": ["canonical_owner", "record_id", "epistemic_class", "valid_time_or_unknown", "selected_relations", "current_view"],
+    "after": ["same_owner_or_declared_derived_aggregate", "same_record_id_when_identity_is_preserved", "new_view", "filters", "aggregation_method_if_any", "information_loss", "source_path_back"],
+    "rule": "Every nontrivial projection should be reversible at the navigation level even when mathematically information-losing: the user must be able to return to the source record and see what was omitted."
+  },
+  "derived_aggregate_rule": {
+    "examples": ["regional capability score", "network community", "system-level dependency", "Mountain summary", "Garden viability assessment"],
+    "required": ["derivation_method", "input_ids", "time_scope", "epistemic_status", "uncertainty", "source_links"],
+    "boundary": "Derived aggregates are views/analysis products, not canonical facts unless separately promoted under the archive's claim lifecycle."
+  },
+  "cross_domain_examples": [
+    {
+      "object": "Denmark energy relation",
+      "D4": "physical infrastructure, generation, interconnectors and official energy observations",
+      "D3": "source history, ownership changes, policy chronology and prior dependencies",
+      "D2": "dependency concentration or lock-in only if measured/documented",
+      "D5": "a policy, interconnector, market-rule or investment threshold",
+      "D7": "downstream capability and resilience created",
+      "D8": "shared Nordic/European system with retained national autonomy",
+      "D10": "system-level leverage/tradeoff analysis",
+      "D11": "criteria such as resilience, cost, autonomy, sustainability and peace"
+    },
+    {
+      "object": "Tim/Potatoverse role statement",
+      "D4": "only real-world date/platform/location if documented",
+      "D3": "first attestation, source, prior/later role formulations and contradictions",
+      "D5": "threshold where role language changes",
+      "D6": "recurrent motif with changed meaning",
+      "D7": "later concepts/works generated from it",
+      "symbolic": "project theology/comparative context; not empirical proof of supernatural identity"
+    },
+    {
+      "object": "Biblical passage",
+      "D4": "real historical/sacred geography only where the research question warrants it",
+      "D3": "textual provenance/historical context",
+      "D5_D9": "functional comparison such as Door/Ladder/message only as comparative context",
+      "rule": "Do not spatialize a verse merely because it has symbolic importance"
+    },
+    {
+      "object": "online subculture",
+      "D4": "platform/company jurisdiction or real events when relevant",
+      "network": "people/groups/platforms/archives/audiences and cross-platform movement",
+      "D2": "feedback/capture indicators only where evidence supports them",
+      "D3": "chronology and source provenance",
+      "rule": "network topology usually matters more than world-map geography"
+    },
+    {
+      "object": "debt",
+      "D4": "documented financial/legal instrument, debtor/creditor, amount, currency, maturity and jurisdiction",
+      "D3": "origin and payment/history",
+      "D5": "settlement/restructuring/release threshold",
+      "D2": "capture only if exit/dependency dynamics are evidenced",
+      "symbolic": "project karmic/moral ledger remains separately typed and never added arithmetically to financial debt"
+    }
+  ],
+  "implementation_sequence": [
+    "1. Add a global Time control using valid_from/valid_to/as_of rather than embedding chronology inside Axis dimensions.",
+    "2. Generalize Trace from country-only edges into normalized entity-aware traversal with epistemic and time filters.",
+    "3. Add a visible Evidence/Eye control for source class, confidence, contradiction and first-attestation inspection.",
+    "4. Make D3 roots work for relationships and entities, not only countries.",
+    "5. Make D6 Spiral compare two dated states and show a delta instead of only rotating the camera.",
+    "6. Make D7 Tree expand real downstream dependencies/descendants/capability outputs.",
+    "7. Make D8 Rooms compose selected systems through typed interfaces and shared capabilities.",
+    "8. Make D9 Relay visualize real source-mediator-recipient or infrastructure/data/message chains.",
+    "9. Make D10 Mountain produce declared aggregates with information-loss and assumption panels.",
+    "10. Make D11 compare criteria/invariants across projections and require links back to D4 evidence/outcomes.",
+    "11. Keep symbolic comparative scenes lazy-loaded and nonspatial unless real geography adds explanatory value.",
+    "12. Add scenario/programme mode only after time/evidence/entity traversal are stable enough to distinguish observed state from modeled intervention."
+  ],
+  "connections": [
+    "manifest.json",
+    "knowledge/philosophy/archive-epistemics.json",
+    "knowledge/guides/project-growth-compass.json",
+    "knowledge/core/world-atlas-integrated-layer-stack.json",
+    "data/world-map-spatialization-registry.json",
+    "data/world-map-3d-runtime.json",
+    "data/relational-edge-state.schema.json",
+    "data/axis-depths.json",
+    "data/axis-operators.json",
+    "data/axis-formal-lenses.json",
+    "data/map-layer-placement-matrix.json",
+    "data/33-level-framework.json"
+  ]
+}
