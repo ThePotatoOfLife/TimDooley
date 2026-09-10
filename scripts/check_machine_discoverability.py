@@ -73,6 +73,7 @@ key_pages = [
     "science/index.html",
     "traditions/vesica/index.html",
     "theology/honor/index.html",
+    "theology/christian-eschatology/index.html",
 ]
 
 for rel in key_pages:
