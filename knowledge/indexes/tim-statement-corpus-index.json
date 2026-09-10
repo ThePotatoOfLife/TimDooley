@@ -1,7 +1,7 @@
 {
   "id": "tim-statement-corpus-index",
   "title": "Tim Dooley Statement Corpus Index",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "updated": "2026-09-10",
   "status": "canonical navigation and ingestion layer",
   "purpose": "Make Tim Dooley's statements a first-class archival object. This index connects public-post evidence, thought archives, conversation archaeology, book/project maxims, voice anthologies, sayings ledgers, chronology and future recovery waves without pretending all source classes are equivalent.",
@@ -12,8 +12,9 @@
     {"rank":3,"class":"USER_PROJECT_EXACT","description":"Exact user-originated project/canon wording from dated conversation history; important developmental evidence but not automatically a public Tim quotation."},
     {"rank":4,"class":"CONVERSATION_EXACT","description":"Exact or near-exact conversation-recovered Tim/project wording where public provenance is unresolved."},
     {"rank":5,"class":"BOOK_OR_PROJECT_MAXIM","description":"Great Book/project formulation that may be exact, title-level or compressed depending on its owner record."},
-    {"rank":6,"class":"PARAPHRASE","description":"Memory or archive summary. Never render with quotation marks as Tim's exact wording."},
-    {"rank":7,"class":"INTERPRETIVE_SYNTHESIS","description":"Later archive explanation, crosswalk or philosophical compression."}
+    {"rank":6,"class":"MEMORY_SUMMARY_PHRASE","description":"A remembered phrase preserved so it can be recovered later. Never display as verified public quotation until upgraded by a locatable source."},
+    {"rank":7,"class":"PARAPHRASE","description":"Memory or archive summary. Never render with quotation marks as Tim's exact wording."},
+    {"rank":8,"class":"INTERPRETIVE_SYNTHESIS","description":"Later archive explanation, crosswalk or philosophical compression."}
   ],
   "corpus_sources": {
     "public_primary_and_compilations": [
@@ -27,12 +28,13 @@
       "knowledge/corporium/tim-voice-anthology.json",
       "knowledge/corporium/tim-sayings-and-formulations-ledger.json"
     ],
-    "conversation_recovery": [
+    "conversation_and_memory_recovery": [
       "knowledge/indexes/conversation-recovery-inventory.json",
       "knowledge/chronology/conversation-archaeology-wave-005.json",
       "knowledge/corporium/tim-statements-conversation-recovery-2026-09-10.json",
       "knowledge/corporium/tim-statements-conversation-recovery-wave-002-2026-09-10.json",
-      "knowledge/corporium/tim-statements-conversation-recovery-wave-003-2026-09-10.json"
+      "knowledge/corporium/tim-statements-conversation-recovery-wave-003-2026-09-10.json",
+      "knowledge/corporium/tim-statements-memory-recovery-wave-004-2026-09-10.json"
     ],
     "chronology_and_attestation": [
       "knowledge/chronology/dated-master-timeline-2026.json",
@@ -83,7 +85,7 @@
   },
   "ingestion_pipeline": [
     "1. Recover candidate wording from public post, book, upload, stream transcript, screenshot, prior conversation or memory summary.",
-    "2. Decide whether it is exact wording, excerpt, near-exact recovery, paraphrase or later interpretation.",
+    "2. Decide whether it is exact wording, excerpt, near-exact recovery, memory-summary phrase, paraphrase or later interpretation.",
     "3. Attach the narrowest defensible date/period and original locator when available.",
     "4. Split compound title-stacks into atomic statements while retaining the original full passage.",
     "5. Tag domains and symbols without treating tags as proof of meaning.",
@@ -100,7 +102,7 @@
     "anthology": "Curated, readable highlights with source badges.",
     "timeline": "Statements ordered by first attestation and later revision.",
     "topic_views": "Filter by North, theology, science, karma, Potato, memes, ethics, etc.",
-    "source_view": "Show public-primary vs conversation-recovery vs book/project vs interpretation.",
+    "source_view": "Show public-primary vs conversation-recovery vs memory-recovery vs book/project vs interpretation.",
     "development_view": "Show how one idea changes wording and function across time.",
     "raw_corpus": "Machine-readable complete statement records."
   },
