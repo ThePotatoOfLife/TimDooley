@@ -19,7 +19,7 @@ COUNTRIES_DIR = ROOT / "data" / "countries"
 OUT = Path(os.environ.get("ATLAS_COUNTRY_FACTS_OUT", ROOT / "data" / "world-country-facts.json"))
 EXPECTED = 195
 GEONAMES_URL = "https://download.geonames.org/export/dump/countryInfo.txt"
-USER_AGENT = "ThePotatoOfLife-world-atlas-country-facts/1.1"
+USER_AGENT = "ThePotatoOfLife-world-atlas-country-facts/1.2"
 CONTINENTS = {
     "AF": "Africa", "AS": "Asia", "EU": "Europe", "NA": "North America",
     "OC": "Oceania", "SA": "South America", "AN": "Antarctica",
@@ -91,7 +91,10 @@ def country_facts(index_row: dict, fallback: dict) -> dict:
     geography = record.get("geography") if isinstance(record.get("geography"), dict) else {}
     code = index_row["iso3"]
     external = fallback.get(code, {})
+    owner = f"data/countries/{index_row['id']}.json"
 
+    canonical_name = clean(identity.get("name")) or clean(index_row.get("name"))
+    canonical_official_name = clean(identity.get("official_name"))
     canonical_area = first_number(
         geography.get("land_area_km2"),
         geography.get("area_km2"),
@@ -100,33 +103,48 @@ def country_facts(index_row: dict, fallback: dict) -> dict:
     canonical_capital = clean(identity.get("capital"))
     canonical_continent = clean(identity.get("continent"))
     canonical_region = clean(identity.get("region"))
+    canonical_subregion = clean(identity.get("subregion"))
     canonical_currency = clean(identity.get("currency"))
+    canonical_national_day = clean(identity.get("national_day"))
 
+    name = canonical_name or external.get("name")
     capital = canonical_capital or external.get("capital")
     area = canonical_area if canonical_area is not None else external.get("area_km2")
     continent = canonical_continent or external.get("continent")
     currency = canonical_currency or external.get("currency")
 
     field_sources = {
-        "capital": f"data/countries/{index_row['id']}.json" if canonical_capital else ("GeoNames countryInfo" if capital else None),
-        "area_km2": f"data/countries/{index_row['id']}.json" if canonical_area is not None else ("GeoNames countryInfo" if area is not None else None),
-        "continent": f"data/countries/{index_row['id']}.json" if canonical_continent else ("GeoNames countryInfo" if continent else None),
-        "currency": f"data/countries/{index_row['id']}.json" if canonical_currency else ("GeoNames countryInfo" if currency else None),
+        "name": owner if canonical_name else ("GeoNames countryInfo" if name else None),
+        "official_name": owner if canonical_official_name else None,
+        "capital": owner if canonical_capital else ("GeoNames countryInfo" if capital else None),
+        "area_km2": owner if canonical_area is not None else ("GeoNames countryInfo" if area is not None else None),
+        "continent": owner if canonical_continent else ("GeoNames countryInfo" if continent else None),
+        "region": owner if canonical_region else None,
+        "subregion": owner if canonical_subregion else None,
+        "currency": owner if canonical_currency else ("GeoNames countryInfo" if currency else None),
+        "national_day": owner if canonical_national_day else None,
+        "languages": "GeoNames countryInfo" if external.get("languages") else None,
+        "neighbors": "GeoNames countryInfo" if external.get("neighbors") else None,
     }
 
     facts = {
-        "name": clean(identity.get("name")) or clean(index_row.get("name")) or external.get("name"),
-        "official_name": clean(identity.get("official_name")),
+        "name": name,
+        "official_name": canonical_official_name,
         "capital": capital,
         "continent": continent,
         "region": canonical_region,
-        "subregion": clean(identity.get("subregion")),
+        "subregion": canonical_subregion,
         "currency": currency,
-        "national_day": clean(identity.get("national_day")),
+        "national_day": canonical_national_day,
         "area_km2": int(round(area)) if area is not None else None,
+        "area_definition": (
+            "canonical country-record area; may be land area when the owner field is land_area_km2"
+            if canonical_area is not None
+            else ("GeoNames Area(in sq km)" if area is not None else None)
+        ),
         "languages": external.get("languages") or None,
         "neighbors": external.get("neighbors") or None,
-        "source_owner": f"data/countries/{index_row['id']}.json",
+        "source_owner": owner,
         "fallback_source": "GeoNames countryInfo",
         "fallback_source_url": GEONAMES_URL,
         "field_sources": {key: value for key, value in field_sources.items() if value},
@@ -161,7 +179,7 @@ def main() -> int:
             raise RuntimeError(f"Region/continent coverage unexpectedly low after GeoNames fallback: {region_coverage}")
 
     payload = {
-        "version": "1.1.0",
+        "version": "1.2.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-facts-runtime",
         "scope": "Presentation/runtime snapshot over canonical country records; missing display facts may be filled from GeoNames countryInfo with per-field provenance.",
