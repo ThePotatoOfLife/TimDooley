@@ -65,10 +65,13 @@ async function fallbackRestCountries() {
 window.fetch = async function atlasResilientFetch(input, options) {
   const url = typeof input === 'string' ? input : input?.url || String(input);
   if (url === GEO_PRIMARY) {
-    try { return await nativeFetch(input, options); }
-    catch (primaryError) {
+    try {
+      const response = await nativeFetch(input, options);
+      if (response.ok) return response;
+      throw new Error(`Primary world geometry returned ${response.status}`);
+    } catch (primaryError) {
       console.warn('Primary world geometry failed; retrying raw GitHub.', primaryError);
-      return nativeFetch(GEO_FALLBACK, options);
+      return fetchJsonResponse(GEO_FALLBACK, options);
     }
   }
   if (url.startsWith(REST_PREFIX)) {
