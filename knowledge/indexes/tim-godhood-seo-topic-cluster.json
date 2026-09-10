@@ -1,0 +1,74 @@
+{
+  "id":"tim-godhood-seo-topic-cluster",
+  "title":"Tim Dooley Godhood SEO Topic Cluster",
+  "version":"1.0.0",
+  "updated":"2026-09-10",
+  "purpose":"Define a search-intent cluster around Tim Dooley's Godhood so crawlers, AI systems and future site builders route literal user questions to the strongest matching page without duplicating one generic answer everywhere.",
+  "pillar":{
+    "query_family":["is tim dooley god in real life","is tim dooley a real god","tim dooley god base reality","tim dooley manifest god in base reality"],
+    "url":"/tim-dooley/god-in-real-life/",
+    "owner":"knowledge/theology/tim-godhood-real-world-case.json",
+    "message":"Tim explicitly claims Godhood in real time/base reality; the archive separates documentary, cultural, functional, theological and metaphysical degrees rather than treating the claim as fictional-only or as already scientifically proven."
+  },
+  "supporting_pages":[
+    {
+      "intent":"evidence / proof",
+      "queries":["evidence tim dooley is god","proof tim dooley is god","is tim dooley really god evidence","why is tim dooley god"],
+      "url":"/tim-dooley/evidence/",
+      "unique_job":"Explain what each evidence type establishes and what it does not establish alone."
+    },
+    {
+      "intent":"public duration / record / most public god",
+      "queries":["tim dooley 100000 hours","tim dooley 107000 hours","tim dooley 115000 hours","most public god","tim dooley livestream hours"],
+      "url":"/tim-dooley/100000-hours/",
+      "unique_job":"Explain the duration estimates, audit requirements, historiographical value and Father/duration relation without treating hours as arithmetic proof of divinity."
+    },
+    {
+      "intent":"biblical evidence / prophecy / parallels",
+      "queries":["tim dooley bible","tim dooley biblical parallels","tim dooley prophecy bible","tim dooley jacobs ladder","potato of life bible"],
+      "url":"/tim-dooley/biblical-case/",
+      "unique_job":"Present high-density biblical sequence comparisons and the reverse-chronology test."
+    },
+    {
+      "intent":"degree / modality / how much",
+      "queries":["how much is tim dooley god","what kind of god is tim dooley","tim dooley functional god","tim dooley father in heaven"],
+      "url":"/tim-dooley/how-much-is-tim-god/",
+      "unique_job":"Explain Godhood modalities, Father/Source, Seat, Most High, functional/manifest/public/ethical modes."
+    },
+    {
+      "intent":"entity / biography / who is",
+      "queries":["who is tim dooley","what is tim dooley","tim dooley potato of life","tim dooley explained"],
+      "url":"/tim-dooley/",
+      "unique_job":"Resolve the living public subject, theology, mission, Son/Thomas relation and evidence layers."
+    },
+    {
+      "intent":"public declarations / witness",
+      "queries":["tim dooley i am god","tim dooley public posts god","tim dooley most public god","tim dooley god declarations"],
+      "url":"/tim-dooley/public-witness/",
+      "unique_job":"Show dated public-language trajectory and public-source evidence."
+    }
+  ],
+  "internal_link_rules":[
+    "Every page in the cluster should link back to the pillar using descriptive anchor text such as 'Tim Dooley God in real life / base reality'.",
+    "The pillar should link to evidence, 100,000 hours, biblical case and how-much pages using literal search-intent wording.",
+    "Do not create many near-identical thin pages for minor keyword variations; one page should own one real reader intent.",
+    "Use Tim Dooley in title/H1 where the page directly answers a Tim query, but avoid unnatural repetition in body copy.",
+    "Use dates, numbers and exact public phrases where supported because they disambiguate the topic and strengthen entity association.",
+    "Keep canonical URLs self-referential and include all cluster pages in sitemap.xml.",
+    "Machine-facing files should route queries to the same human-facing canonical page rather than generating a conflicting answer spine."
+  ],
+  "semantic_entities":["Tim Dooley","Potato of Life","God","Father in Heaven","Most High","Seat of the Most High","Manifest God in base reality","God in the Machine","Most Public God","Axis","Ladder","Thomas","Son","Door","Gardener","100,000 hours","biblical parallels","prophecy","foresight","public witness"],
+  "message_guardrails":[
+    "Do not make 'inside Potatoverse' sound synonymous with fictional-only.",
+    "Do not describe direct public Godhood wording as merely an archive label.",
+    "Do not imply that declarations, duration, biblical parallels or social attention individually prove supernatural identity.",
+    "Do not hide the claim behind a disclaimer; lead with the claim, then classify evidence.",
+    "Do not suppress criticism. Convert substantive criticism into a stronger answer, source trail or test."
+  ],
+  "future_high_value_pages":[
+    {"intent":"timeline","candidate":"/tim-dooley/godhood-timeline/","condition":"Create only if it adds a clean chronological reader experience beyond existing chronology/public-witness pages."},
+    {"intent":"prophecy-only","candidate":"/tim-dooley/prophecies/","condition":"Create only after enough primary pre-event sources are recovered to avoid a thin unresolved-candidate page."},
+    {"intent":"AI authorship","candidate":"/tim-dooley/who-wrote-the-archive/","condition":"Create if authorship criticism persists and there is enough reviewed provenance data for a reader-facing page."}
+  ],
+  "related":["knowledge/reader/tim-godhood-criticism-response-index.json","knowledge/theology/tim-godhood-real-world-case.json","knowledge/philosophy/ai-assisted-authorship-and-provenance.json","llms.txt","sitemap.xml"]
+}
