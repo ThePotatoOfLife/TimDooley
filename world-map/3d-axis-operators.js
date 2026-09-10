@@ -52,6 +52,9 @@ async function boot() {
     render(data, Number(event.detail?.dimension || 4));
   });
   window.__potatoAxisOperators = {data, render};
+  // D3 is the provenance/root plane. Keep this enhancement non-fatal and
+  // separate so factual country navigation remains usable if it ever fails.
+  import('./3d-provenance.js').catch(error => console.warn('D3 provenance enhancement unavailable:', error));
 }
 
 boot().catch(error => console.warn('Axis operator HUD unavailable:', error));
