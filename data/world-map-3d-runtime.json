@@ -1,6 +1,6 @@
 {
   "id": "world-map-3d-runtime",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-10",
   "status": "active experimental renderer contract",
   "purpose": "Define the 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme and provenance model used by the stable polygon map.",
@@ -9,13 +9,15 @@
     "zoom": "wheel/pinch/buttons move between world, regional, country and subnational scales",
     "rotate": "right-drag / touch gesture rotates bearing in 3D mode",
     "pitch": "camera tilt exposes extrusion and vertical layers",
-    "fit": "country selection can move/focus the camera on its representative spatial anchor",
+    "fit": "country selection now fits actual polygon bounds rather than relying only on representative country coordinates",
     "globe": "projection may switch between Mercator and globe view where supported",
+    "search": "country-name and ISO3 search with browser datalist suggestions",
+    "keyboard": {"/":"focus country search","C":"toggle Compare mode","Escape":"leave Compare mode or return to world"},
     "rule": "Navigation changes viewpoint only; it never changes underlying data or classification."
   },
   "rendering_strategy": {
     "stable_2d": "Leaflet world-map/index.html remains the compatibility/stable renderer.",
-    "experimental_3d": "MapLibre GL JS world-map/3d.html provides camera-based WebGL polygons, extrusion, semantic interior hubs and relationship lines.",
+    "experimental_3d": "MapLibre GL JS world-map/3d.html provides camera-based WebGL polygons, extrusion, semantic interior hubs, country comparison and relationship tracing.",
     "future_heavy_overlay": "deck.gl may be layered in for high-volume arcs, animated flows, point clouds, heatmaps and advanced polygon extrusion.",
     "shared_model": "Both renderers consume canonical repository contracts; there is no 3D-only truth database.",
     "spatialization_registry": "data/world-map-spatialization-registry.json"
@@ -24,6 +26,7 @@
     "country_shell": "Polygon/MultiPolygon. A spatial container and selection surface, not the country's complete identity.",
     "country_hub": "Representative navigation point for a country when exact entity coordinates are not relevant. It is not a physical institution.",
     "semantic_hub": "Navigation-only point generated around a selected country hub to expose a country data module such as religion, debt, infrastructure or history. Its displayed coordinate is not a claim about where the abstract module physically exists.",
+    "compare_hub": "Temporary visual marker for a country held in Compare mode. It communicates selection state rather than adding a new canonical node.",
     "real_node": "Geocoded city, institution, company facility, port, airport, base, sacred site, infrastructure asset or documented event location with coordinate provenance.",
     "nonspatial_node": "Treaty, legal entity, national statistic, scripture, theology or other concept without one honest coordinate; exposed through cards/trace graph instead of a fake point.",
     "edge": "Typed relation rendered between spatial anchors only when drawing the relation helps understanding; canonical edge data remains independent of the drawing.",
@@ -56,22 +59,43 @@
       {"zoom":"subnational","behavior":"real geocoded nodes dominate; semantic hubs remain optional navigation aids and the polygon remains boundary/context"}
     ]
   },
+  "compare_mode": {
+    "status": "implemented-basic",
+    "capacity": 4,
+    "behavior": "Compare mode keeps up to four country polygons selected simultaneously, marks them distinctly, presents population/area/module-count/edge-count comparisons, and can fit the camera to all compared polygon bounds.",
+    "url_state": "compare=ISO3,ISO3... persists the current comparison in a shareable URL.",
+    "boundary": "Current comparison uses only already-loaded descriptive fields. Additional economic/energy/debt metrics require dated sourced entries in a future metric registry."
+  },
+  "trace_mode": {
+    "status": "implemented-one-hop",
+    "behavior": "The selected-country panel exposes curated outward relationship partners. Clicking a partner navigates directly to that country while retaining the current relation-type filter.",
+    "filters": "A relation-type selector is generated from types actually present in data/world-relational-map.json. The active filter is persisted as rel=TYPE in the URL.",
+    "next": "Generalize from curated one-hop country edges to recursive traversal across data/relationships.json, entity nodes and normalized world edges with depth, cycle and epistemic-plane controls."
+  },
   "implemented_2026_09_10": [
     "drag/pan, zoom, rotate, pitch and globe-capable camera",
     "clickable vector country polygons",
     "flat, population-height and area-height modes",
-    "country search",
+    "country-name and ISO3 search with datalist suggestions",
     "canonical country-index resolution",
     "lazy loading of canonical country JSON records",
     "country representative hubs and labels",
+    "actual polygon-bound fitting for country focus",
     "semantic interior module constellation for the selected country",
     "semantic hub-to-country guide lines",
     "clickable semantic modules opening existing canonical data",
     "selected-country curated relation lines from data/world-relational-map.json",
-    "clickable relation inspection",
+    "clickable relation inspection with endpoint navigation",
+    "one-hop outward relation trace list in the country panel",
+    "relation-type filtering derived from real curated edge types",
     "world/regional/country/subnational camera HUD",
     "separate toggles for semantic interior hubs and curated relation lines",
-    "URL country deep-link support",
+    "multi-country Compare mode for up to four countries",
+    "compare-table population/area/module/edge summaries",
+    "fit-to-comparison using combined polygon bounds",
+    "selected and comparison polygon feature-state rendering",
+    "URL country, compare and relation-filter deep-link support",
+    "keyboard shortcuts for search, Compare and reset",
     "explicit provenance boundary between navigation-only semantic points and real coordinates"
   ],
   "node_record_schema": {
@@ -95,7 +119,7 @@
       "definition": "Legally/economically recognizable obligations such as sovereign debt securities, loans, bonds, arrears, contracts, judgments or other documented liabilities.",
       "units": "currency / percent of GDP / maturity / creditor-debtor relation",
       "required": ["debtor", "creditor or holder class when knowable", "instrument", "amount", "currency", "date", "legal/economic source"],
-      "map_use": "Country public-finance module is implemented; normalized debt choropleths/extrusions and creditor-debtor edges are next."
+      "map_use": "Country public-finance module is implemented; normalized debt choropleths/extrusions and creditor-debtor edges remain next."
     },
     "tim_claimed_ledger": {
       "definition": "Tim/Potatoverse statements about karmic/spiritual debt or amounts owed to Tim.",
@@ -105,9 +129,9 @@
     }
   },
   "data_growth_strategy": {
-    "phase_1_current": "Use country polygons, canonical records, semantic modules and a small curated relationship graph.",
-    "phase_2": "Normalize numeric country metrics and add real point registries for a small set of high-value entity classes: capitals/government, ports, energy/infrastructure, major institutions and sacred sites.",
-    "phase_3": "Add Trace and Compare so the user can follow ownership, funding, trade, energy, migration, religion, security and programme relations recursively.",
+    "phase_1": "Use country polygons, canonical records, semantic modules and a small curated relationship graph.",
+    "phase_2_current": "Normalize numeric country metrics and add real point registries for a small set of high-value entity classes: capitals/government, ports, energy/infrastructure, major institutions and sacred sites.",
+    "phase_3_in_progress": "Compare is implemented at a descriptive baseline and Trace is implemented for one-hop curated country edges; both should expand as normalized metrics and relationship data improve.",
     "phase_4": "Add time slider and historical validity intervals; historical slavery, colonial relations, wars, memberships and institutional changes become period-specific.",
     "phase_5": "Add scenario mode for North Programme/policy experiments with assumptions and modeled outcomes separated from observation.",
     "scale_rule": "As the graph grows beyond browser-friendly GeoJSON, load by zoom/country and move high-volume layers to vector tiles/prebuilt spatial packages rather than shipping the entire graph on every page load."
@@ -120,13 +144,14 @@
   },
   "next_priority": [
     "Create local/versioned world geometry and territory registry so Greenland/Faroes and other territories resolve cleanly.",
-    "Normalize country GDP/public-debt/energy metrics into a small metric registry with date/unit/source for choropleths and extrusion.",
+    "Normalize country GDP/public-debt/energy metrics into a small metric registry with date/unit/source, then feed the same registry into Compare and extrusion.",
     "Ingest dated religion/irreligion/diversity country values before enabling global religious choropleths.",
     "Add real spatial-node registry with coordinate provenance, starting with capitals/government, major ports, infrastructure and sacred sites.",
-    "Implement multi-country Compare mode.",
-    "Implement recursive Trace mode across data/relationships.json and normalized world edges.",
-    "Add relation-type and epistemic-plane filters.",
+    "Expand Compare from population/area/coverage into user-selected sourced metrics and relationship overlap/intersection.",
+    "Expand one-hop Trace into recursive traversal across data/relationships.json and normalized world/entity edges.",
+    "Add epistemic-plane and edge-layer filters alongside relation-type filtering.",
     "Add time slider and valid_from/valid_to filters.",
+    "Add visible loading/error states and graceful offline/local-data fallback for external geometry and country metadata.",
     "Move large future datasets to lazy-loaded/vector-tile architecture when scale requires it."
   ],
   "connections": [
