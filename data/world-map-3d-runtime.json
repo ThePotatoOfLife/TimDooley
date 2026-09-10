@@ -1,6 +1,6 @@
 {
   "id": "world-map-3d-runtime",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-11",
   "status": "active renderer contract",
   "purpose": "Define the active 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme, chronology and provenance model used by the rest of the repository.",
@@ -17,23 +17,26 @@
     "search": "country-name and ISO3 search with suggestions",
     "rule": "Navigation changes viewpoint only; it never changes underlying data, chronology or epistemic classification."
   },
+  "interface": {
+    "status": "implemented-progressive-disclosure",
+    "principle": "Map first; persistent controls stay sparse while Layers, Trace, Time, View, inspector and Axis detail open only when useful.",
+    "persistent": ["country search", "Compare", "Inspector"],
+    "grouped": ["Layers", "Trace", "Time", "View", "More"],
+    "contextual": ["country inspector", "Eye/evidence", "Axis navigator", "operator HUD", "Time status"],
+    "focus_mode": "Temporarily hides informational overlays/HUDs without changing underlying map/data state.",
+    "preference_memory": ["inspector open/closed", "focus mode", "Axis open/closed"]
+  },
   "renderer_architecture": {
-    "shell": "world-map/3d.html contains the public interface, controls and map layout",
+    "shell": "world-map/3d.html contains the public interface, progressive controls and map layout",
     "application": "world-map/3d-app.js owns MapLibre initialization, canonical country loading, Compare, recursive Trace, semantic modules, golden-angle navigation layout and URL state",
     "hover_and_resilience": "world-map/3d-hover.js owns resilient data boot, country hover and capital-city overlays",
     "pathfinder": "world-map/3d-pathfinder.js owns shortest-known-path navigation without creating a second map renderer",
     "demography": "world-map/3d-demography.js owns sourced population/religion presentation",
     "evidence": "world-map/3d-evidence.js owns the Eye inspector for source provenance, observation dates, represented relation evidence and project-vs-empirical boundaries",
+    "time": "world-map/3d-time.js owns Current / As-of / Compare-dates view state, URL persistence, conservative unknown-date handling and atlas-time-change events",
+    "interface_controller": "world-map/3d-ui.js owns progressive disclosure, inspector/focus preferences, menu exclusivity, dynamic control relocation and compact Axis visibility",
     "axis": "world-map/3d-axis.js plus operator modules expose project-symbolic vertical navigation without turning it into physical geography",
     "reason_for_split": "Feature modules extend one renderer and shared public APIs rather than duplicating MapLibre state."
-  },
-  "rendering_strategy": {
-    "stable_2d": "Leaflet world-map/index.html remains the compatibility renderer.",
-    "active_3d": "MapLibre GL JS world-map/3d.html and its modules provide the primary camera-based Atlas experience.",
-    "future_heavy_overlay": "deck.gl or vector-tile layers may be added for high-volume arcs, point clouds, heatmaps and flows when scale requires it.",
-    "shared_model": "Both renderers consume canonical repository contracts; there is no 3D-only truth database.",
-    "spatialization_registry": "data/world-map-spatialization-registry.json",
-    "mathematical_calibration": "data/atlas-mathematical-calibration.json"
   },
   "spatial_primitives": {
     "country_shell": "Polygon/MultiPolygon selection surface and spatial context, not the country's complete identity.",
@@ -81,6 +84,15 @@
     "data_resilience": "Uses same-origin world-country-facts.json for country names first, with REST Countries as fallback.",
     "boundary": "No path means not represented in the current dataset/filter, not no real-world relationship."
   },
+  "time_mode": {
+    "status": "implemented-conservative-foundation",
+    "modes": ["Current", "As of", "Compare dates"],
+    "url_state": ["timeMode", "time", "time2"],
+    "unknown_date_policy": "flag",
+    "current_overlay_guard": "When historical mode is active, current-only project Fields and empirical Network overlays are suppressed and their selectors disabled unless a dated layer implementation can honestly replace them.",
+    "north_history": "An exact recovered project snapshot may be shown as context when the selected date exactly matches one; approximate/nearest snapshots are context only and are not projected forward as membership truth.",
+    "boundary": "Historical mode does not reconstruct old borders or silently treat present observations, memberships or project classifications as historically valid."
+  },
   "demography": {
     "status": "implemented",
     "population": "195-country sourced population snapshot with observation/reference years",
@@ -123,6 +135,7 @@
     "failure_state": "Required-data failure must produce a visible unavailable/error state rather than a silent empty map."
   },
   "implemented_2026_09_10": [
+    "map-first progressive-disclosure shell with grouped Layers / Trace / Time / View controls",
     "drag/pan, zoom, rotate, pitch and globe-capable camera",
     "clickable vector country polygons and polygon-bound fitting",
     "flat, population-height and area-height modes",
@@ -134,13 +147,14 @@
     "typed relation filtering and URL persistence",
     "multi-country Compare mode for up to four countries with deterministic exit cleanup",
     "shortest-known typed relationship Path with explicit evidence boundary",
+    "conservative Current / As-of / Compare-dates Time state with present-overlay suppression in historical mode",
     "sourced population and religion presentation",
     "same-origin country-facts hover with capital, area, region and currency",
     "capital city nodes with latest-dated available population hover",
     "Eye evidence inspector for provenance, observation dates and epistemic boundaries",
     "resilient local-first geometry/country-data boot",
     "North Axis D1-D11 symbolic navigator and executable symbolic operators",
-    "URL country, compare, relation, depth and path state",
+    "URL country, compare, relation, depth, path and time state",
     "explicit provenance boundary between navigation-only semantic points and real coordinates",
     "machine-readable mathematical calibration contract separating geography, topology, hierarchy, time and future quantified flow"
   ],
@@ -160,18 +174,18 @@
     "required_display": ["metric name", "unit", "observation year/date", "source", "normalization/scaling method"]
   },
   "data_growth_strategy": {
-    "current": "Use country polygons, sourced facts/demography, stable semantic modules, a curated relationship graph, Path/Trace/Compare, an Eye evidence inspector and a project-symbolic Axis view.",
-    "next_foundation": "Implement conservative Time controls from the canonical time contract, then make Time and Eye shared filters for graph traversal and dated evidence.",
+    "current": "Use country polygons, sourced facts/demography, stable semantic modules, a curated relationship graph, Path/Trace/Compare, conservative Time, an Eye evidence inspector and a project-symbolic Axis view.",
+    "next_foundation": "Make Time and Eye shared filters for normalized graph traversal and dated evidence, then expand Time only where source intervals are trustworthy.",
     "next_graph": "Generalize country-only graph traversal into normalized country/institution/company/infrastructure/funding/ownership/programme relations.",
     "next_physical": "Add high-value real spatial nodes: government institutions, ports, grids, cables, power plants, companies and research institutions.",
     "scale_rule": "As the graph grows, lazy-load by view/zoom/country and move high-volume geometry to vector tiles/prebuilt packages rather than shipping the whole graph to every client."
   },
   "next_priority": [
-    "Implement conservative Current / As-of / Compare-dates filtering from data/atlas-time-contract.json.",
     "Extend Eye from inspection into filtering for epistemic class, confidence, source class, contradictions and freshness.",
+    "Expand recursive Trace into entity-aware traversal through data/global-graph-bridge.json and data/relationships.json, honoring Time/Evidence filters.",
+    "Upgrade selected empirical/project layers with valid_from/valid_to so historical Time mode can safely render them rather than suppressing current-only snapshots.",
     "Prototype a separate deterministic spectral graph view before using graph-derived coordinates anywhere public.",
     "Prototype a separate hyperbolic Tree/Rooms hierarchy without changing geographic coordinates.",
-    "Expand recursive Trace into entity-aware traversal through data/global-graph-bridge.json and data/relationships.json.",
     "Only after directed compatible quantitative flows are populated, evaluate graph Hodge decomposition for source/sink/cyclic structure.",
     "Add real ports, grids, cables, power plants, institutions and company/funding/ownership chains for the North/European capability graph.",
     "Normalize compatible GDP/debt/energy metrics with date/unit/source before new choropleths/extrusions.",
@@ -196,6 +210,8 @@
     "knowledge/core/world-atlas-integrated-layer-stack.json",
     "world-map/3d.html",
     "world-map/3d-app.js",
-    "world-map/3d-evidence.js"
+    "world-map/3d-evidence.js",
+    "world-map/3d-time.js",
+    "world-map/3d-ui.js"
   ]
 }
