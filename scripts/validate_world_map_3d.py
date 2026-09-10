@@ -117,10 +117,14 @@ def main() -> int:
             "world-country-demography.json", "world-relational-map.json", "function projectStatuses",
             "function relationsFor", "Source provenance and epistemic context",
             "Project interpretation", "Repetition is not corroboration", "window.refreshAtlasEvidence",
+            "function refreshIfSelectionChanged", "new MutationObserver", "selectedCode() !== renderedCode",
         ),
         "world-map/3d-evidence.js",
         errors,
     )
+    if "setTimeout(window.refreshAtlasEvidence" in evidence:
+        errors.append("Eye refresh regressed to click-dependent timeout synchronization")
+
     check_js_syntax(app, "3d-app.js", warnings, errors)
     check_js_syntax(hover, "3d-hover.js", warnings, errors)
     check_js_syntax(evidence, "3d-evidence.js", warnings, errors)
@@ -132,7 +136,7 @@ def main() -> int:
     if runtime.get("time_contract") != "data/atlas-time-contract.json":
         errors.append("3D runtime must point to the Atlas time contract")
     implemented = set(runtime.get("implemented_2026_09_10", []))
-    for fragment in ("Compare", "relation", "polygon", "URL", "recursive", "trace", "Path", "population", "Axis"):
+    for fragment in ("Compare", "relation", "polygon", "URL", "recursive", "trace", "Path", "population", "Eye", "Axis"):
         if not any(fragment.lower() in str(item).lower() for item in implemented):
             errors.append(f"runtime implemented list does not document {fragment} functionality")
     if runtime.get("compare_mode", {}).get("status") not in {"implemented", "implemented-basic"}:
@@ -143,6 +147,11 @@ def main() -> int:
         errors.append("runtime trace_mode must document maximum depth 3")
     if runtime.get("path_mode", {}).get("status") != "implemented":
         errors.append("runtime path_mode is not marked implemented")
+    if runtime.get("evidence_mode", {}).get("status") != "implemented-inspector":
+        errors.append("runtime evidence_mode does not document the implemented Eye inspector")
+    architecture = runtime.get("renderer_architecture", {})
+    if "3d-evidence.js" not in str(architecture.get("evidence", "")):
+        errors.append("runtime renderer architecture does not assign ownership to the Eye module")
 
     country_rows = countries.get("countries", [])
     canonical_codes = {row.get("iso3") for row in country_rows if row.get("iso3")}
@@ -207,8 +216,8 @@ def main() -> int:
     print(f"Referenced country/territory codes: {len(referenced)}")
     print("Trace contract: breadth-first · 1–3 hops · cycle guarded · capped")
     print("Boot contract: local snapshot · provider retry · emergency synthesis")
-    print("Runtime contract: active renderer · projection/time contracts · Path/Trace/Compare/Axis documented")
-    print("Eye contract: country fact provenance · demography source/time · relation layers · project/empirical boundary")
+    print("Runtime contract: active renderer · projection/time contracts · Path/Trace/Compare/Eye/Axis documented")
+    print("Eye contract: country fact provenance · demography source/time · relation layers · project/empirical boundary · deterministic selection refresh")
     print("Hover contract: country facts · capital city node/name/population")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings:
