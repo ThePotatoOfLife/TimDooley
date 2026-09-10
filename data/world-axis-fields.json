@@ -1,0 +1,47 @@
+{
+  "id": "world-axis-fields",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "purpose": "Versioned country-to-field registry for the World Relational Atlas. It separates Tim/Potatoverse axis assignments from empirical institutions such as BRICS.",
+  "boundary": "North, West, East and South are project interpretive fields, not borders, sovereignty, citizenship, ethnicity, consent or legal alignment. Countries may overlap fields. BRICS membership is empirical and is rendered separately from project East.",
+  "palette": {
+    "north": {"label": "North", "color": "#9fe8ff", "meaning": "icy / polar blue"},
+    "west": {"label": "West", "color": "#2f67b2", "meaning": "marine / Atlantic blue"},
+    "east": {"label": "East", "color": "#d95c5c", "meaning": "red"},
+    "south": {"label": "South", "color": "#d2a85a", "meaning": "warm southern gold"},
+    "brics": {"label": "BRICS", "color": "#e54848", "meaning": "empirical BRICS backbone; visually coupled to East but not identical to it"}
+  },
+  "project_fields": {
+    "north": {
+      "recovered_primary": ["DNK","GRL","FRO","CAN","ISL","NOR","SWE","FIN","DEU","NLD","BEL","FRA","ESP","PRT","ITA","GRC","IRL","EST","UKR","TUR"],
+      "variable_or_overlap": ["GBR","AUS"],
+      "provisional_or_future": ["IRQ","SYR","MAR","RUS"],
+      "notes": "Recovered core runs Canada/Greenland through the North Atlantic, Scandinavia and continental Europe toward Ukraine and Turkey. England/UK has been variable. Russia is outside the current North version but retained as a future-reconnection node. Iraq/Mesopotamia, Syria and Morocco occur in later or more symbolic extensions and remain provisional."
+    },
+    "west": {
+      "recovered_primary": ["USA","ISR","ARG","CHL","COL","ECU","GUY","PRY","PER","SUR","URY","VEN"],
+      "strong_overlap": ["GBR","CAN","AUS","NZL","JPN","KOR","SAU"],
+      "hinge": ["BOL","BRA"],
+      "notes": "Recovered West is U.S.-centered and Atlantic/American. South America was described as West-primary unless explicitly pulled toward BRICS/East. Brazil therefore remains a hinge with East; Bolivia is retained as a hinge rather than forced into one field. Saudi Arabia was explicitly treated as West plus Islamic/oil/Center layers."
+    },
+    "east": {
+      "recovered_primary": ["CHN","RUS","IND","PAK","VNM","LAO","KHM","MMR","IRN","EGY","ETH","ZAF","BRA"],
+      "east_ties": ["IDN","THA","MYS","BOL","KAZ","BLR","CUB","NGA","UGA","UZB"],
+      "notes": "Project East is broader than BRICS and includes recovered Asian/Eurasian assignments. BRICS membership or partnership is never by itself treated as proof of ideological East alignment; the separate empirical BRICS layer supplies that institutional fact."
+    },
+    "south": {
+      "recovered_primary": ["AUS","NZL","IDN","MYS","SGP","BRN","PHL","TLS","TZA","ZMB","MOZ","MDG","MWI","ZWE","NAM","BWA"],
+      "overlap": ["ZAF","THA"],
+      "provisional": ["PNG"],
+      "notes": "South remains the least settled field. Recovered material points toward an Australia/New Zealand/Pacific and Indian-Ocean/southern-African maritime field. Papua New Guinea is a current provisional candidate. South Africa is intentionally dual: South by southern-field logic and East through recovered BRICS/East treatment."
+    }
+  },
+  "empirical_brics": {
+    "members": ["BRA","RUS","IND","CHN","ZAF","SAU","EGY","ARE","ETH","IDN","IRN"],
+    "partners": ["BLR","BOL","CUB","KAZ","MYS","NGA","THA","UGA","UZB","VNM"],
+    "source": "https://brics.br/en/about-the-brics",
+    "note": "Official BRICS member/partner status is empirical. The red BRICS rendering may visually sit inside the East view, but it does not erase a country's North, West or South overlaps."
+  },
+  "display_priority": ["selected","compare","brics","north","west","east","south","unclassified"],
+  "classification_rule": "Prefer recovered explicit Tim assignments; preserve overlaps; mark inferred or developing assignments as provisional; use real-world institutions only as corroborating relationship layers, not as automatic project-field assignments."
+}
