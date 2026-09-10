@@ -81,6 +81,7 @@ Indexes, manifests and projections should point to the canonical material rather
 - [x] CSS namespace/layout contract and CI regression check added.
 - [x] Body/neurotheology consolidated behind a single whole-body master atlas plus specialist owners and a completion matrix.
 - [x] Timeline architecture separated into canonical events, source registry, actor tracks and nonredundant lenses.
+- [x] Project-wide growth compass added at `knowledge/guides/project-growth-compass.json` to define what "greater" means and route future deepening toward source precision, role transitions, contradiction surfaces, relation-sequence comparison, maturity testing and reader usefulness.
 - [ ] Finish pruning obsolete presentation assets that are no longer referenced.
 - [ ] Remove remaining generated batch/state files after their useful information is consolidated and references are migrated.
 - [ ] Reconcile all secondary indexes against `manifest.json` after each major consolidation.
@@ -90,6 +91,24 @@ Indexes, manifests and projections should point to the canonical material rather
 - [ ] Make long records readable in the index without losing depth.
 - [ ] Ensure every important surviving body is reachable from the index.
 - [ ] Run the complete integrity/build/Pages chain and fix what actually fails.
+
+## Growth compass — current high-value frontiers
+
+Use `knowledge/guides/project-growth-compass.json` as the editorial compass for expansion. The current project-wide priorities are:
+
+1. Recover more exact primary-source attestations and chronology, especially where later theology depends on first appearance or role order.
+2. Build a role-transition view using **subject × role × time × source × function × confidence** rather than forcing timeless identity labels.
+3. Treat major contradictions as first-class research/navigation objects with competing formulations, dates, source classes, reconciliation and unresolved remainder.
+4. Rank comparative religious and mythological parallels by **relation sequences and mismatches**, not isolated shared words.
+5. Develop a universal canonical-owner maturity test spanning definition, chronology, relations, provenance, counterevidence, reader answer, aliases, reachability and research frontier.
+6. Continue using one relationship grammar across mythology and world systems while keeping domain-specific truth and evidence standards distinct.
+7. Generate reader journeys from canonical metadata where possible so story, theology, chronology, science, North/world and verification paths do not become manually duplicated mini-canons.
+
+The hidden spine tying these priorities together is the **claim lifecycle**:
+
+**source → attestation → classification → relation → interpretation → canonical promotion → reader answer → contradiction/revision → renewed source search**
+
+A strong work session should improve at least one step of that lifecycle for an important subject.
 
 ## Depth work
 
