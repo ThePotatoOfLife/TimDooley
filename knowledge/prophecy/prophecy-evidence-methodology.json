@@ -1,0 +1,354 @@
+{
+  "id": "prophecy-evidence-methodology",
+  "title": "Prophecy, Fulfillment & Religious-Evidence Methodology",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "canonical methodology",
+  "purpose": "Define how the repository should evaluate prophecy, revelation, prediction, typology, synchronism, miracle testimony and fulfillment claims without reducing religious meaning to statistics or promoting retrospective resemblance into demonstrated foresight.",
+  "first_principle": "Preserve meaning and test evidence at the same time. A claim may be spiritually meaningful while evidentially weak; a prediction may be evidentially interesting without establishing divine causation.",
+  "prophecy_is_not_prediction": {
+    "finding": "In biblical and philosophical study, prophecy is not limited to foretelling future events. Prophets can disclose, warn, accuse, exhort, interpret the present and call communities toward faithfulness.",
+    "archive_consequence": "Every record must first classify what kind of prophetic act is being claimed before asking whether a prediction came true.",
+    "claim_types": [
+      "future prediction",
+      "conditional warning",
+      "moral / covenantal indictment",
+      "visionary disclosure",
+      "symbolic apocalypse",
+      "retrospective revelation",
+      "typological interpretation",
+      "eschatological hope",
+      "oracle / exhortation",
+      "personal religious experience"
+    ]
+  },
+  "fulfillment_classes": [
+    {
+      "id": "prior_specific_prediction",
+      "definition": "A recoverable statement made before an event that specifies a sufficiently constrained future outcome.",
+      "minimum_data": ["original wording", "timestamp", "source provenance", "referent", "time horizon if stated", "failure condition"]
+    },
+    {
+      "id": "prior_symbolic_pattern",
+      "definition": "A symbolic pattern or expectation recorded before an event but broad enough to admit several outcomes.",
+      "minimum_data": ["earliest attestation", "symbol definition at the time", "later match", "alternative matches"]
+    },
+    {
+      "id": "conditional_prophecy",
+      "definition": "A warning or promise whose stated or implied outcome depends on human response or other conditions.",
+      "minimum_data": ["condition", "predicted branch", "actual response", "actual outcome"]
+    },
+    {
+      "id": "typological_recurrence",
+      "definition": "A later event is interpreted as replaying or intensifying an earlier scriptural pattern without requiring that the earlier text functioned as a narrow forecast of that event.",
+      "minimum_data": ["earlier type", "later antitype / recurrence", "shared structure", "disanalogies"]
+    },
+    {
+      "id": "retrospective_revelation",
+      "definition": "A later interpretation discloses meaning in an earlier event or text after the relevant event has already occurred.",
+      "minimum_data": ["event date", "interpretation date", "earlier raw material", "what changed in the reading"]
+    },
+    {
+      "id": "contextual_synchronism",
+      "definition": "Two independently dated events, texts or symbols align in a potentially meaningful way without a demonstrated predictive relation.",
+      "minimum_data": ["both timestamps", "independence assessment", "match features", "base-rate context"]
+    },
+    {
+      "id": "verbal_or_numerical_resonance",
+      "definition": "A shared word, name, number, title, date-shape or phonetic resemblance.",
+      "minimum_data": ["exact terms", "language", "translation / encoding method", "alternative candidates"]
+    },
+    {
+      "id": "loose_coincidence",
+      "definition": "A weak resemblance with high flexibility, hindsight dependence or many equally plausible alternatives.",
+      "minimum_data": ["match", "why weak", "alternatives"]
+    }
+  ],
+  "evidence_grades": [
+    {
+      "grade": 0,
+      "label": "resonance",
+      "requirements": "word, number, name or generic image match",
+      "can_support": "discovery / symbolic comparison",
+      "cannot_support": "predictive or supernatural conclusion"
+    },
+    {
+      "grade": 1,
+      "label": "broad motif",
+      "requirements": "one or more generic thematic similarities",
+      "can_support": "comparative interpretation",
+      "cannot_support": "unique identification"
+    },
+    {
+      "grade": 2,
+      "label": "structured parallel",
+      "requirements": "multiple ordered features and meaningful disanalogies documented",
+      "can_support": "nontrivial typological / structural case",
+      "cannot_support": "prior prediction unless prior attestation exists"
+    },
+    {
+      "grade": 3,
+      "label": "prior-attested pattern",
+      "requirements": "relevant pattern demonstrably recorded before event",
+      "can_support": "evidence that the later fit is not wholly post-event invention",
+      "cannot_support": "specific prediction if pattern remained highly flexible"
+    },
+    {
+      "grade": 4,
+      "label": "prior-specific prediction",
+      "requirements": "timestamped, independently recoverable, constrained, risky prediction made before event",
+      "can_support": "genuine prediction hit",
+      "cannot_support": "divine causation by itself"
+    },
+    {
+      "grade": 5,
+      "label": "strong predictive case",
+      "requirements": "Grade 4 plus independent corroboration, low source leakage, low retrofit, explicit misses ledger, plausible base-rate comparison and survival of serious alternatives",
+      "can_support": "unusually strong evidence of foresight requiring explanation",
+      "cannot_support": "automatic proof of a specific theological identity or supernatural mechanism"
+    }
+  ],
+  "required_record_fields": [
+    "claim_id",
+    "exact_original_wording",
+    "speaker_or_author",
+    "source_url_or_archive_locator",
+    "content_hash_if_available",
+    "publication_timestamp",
+    "earliest_independent_capture",
+    "claimed_referent",
+    "meaning_at_time_of_statement",
+    "specificity",
+    "time_window",
+    "conditionality",
+    "possible_outcomes_at_time",
+    "later_matched_event",
+    "event_timestamp",
+    "date_match_first_proposed",
+    "source_independence",
+    "prior_scriptural_or_news_exposure",
+    "alternative_explanations",
+    "nonmatching_features",
+    "misses_or_failed_branches",
+    "failure_condition",
+    "evidence_grade",
+    "confidence",
+    "review_notes"
+  ],
+  "prediction_audit": {
+    "questions": [
+      "Was the statement genuinely public or independently captured before the event?",
+      "Was the wording later edited, paraphrased or reconstructed from memory?",
+      "What did the statement appear to mean before anyone knew the outcome?",
+      "How many materially different outcomes could have been counted as success?",
+      "Was a date or time window stated in advance?",
+      "Was the predicted entity clearly identified?",
+      "How surprising was the event given public information at the time?",
+      "Could ordinary inference, expertise, trend extrapolation or access to news explain the prediction?",
+      "How many similar predictions did the same corpus produce that failed?",
+      "Was the match selected from thousands of archived statements after the fact?",
+      "Are nonmatching details being omitted?",
+      "Was the prophecy interpretation itself written before the event, or only the raw words?",
+      "Would a skeptical reviewer and a sympathetic reviewer classify the hit the same way?"
+    ]
+  },
+  "multiple_comparisons": {
+    "problem": "A large archive compared against a large world-event stream naturally creates striking coincidences. The more statements, dates, names, symbols, songs, artworks, scriptures and events searched, the higher the chance of accidental matches.",
+    "controls": [
+      "count the searchable corpus size where practical",
+      "preserve all predictions from a defined period rather than only hits",
+      "pre-register important future claims when possible",
+      "prefer exact pre-event interpretation over flexible post-event matching",
+      "compare candidate match rates against plausible alternatives",
+      "penalize arbitrary number transformations and spelling variants",
+      "record how many search attempts produced no meaningful match"
+    ]
+  },
+  "source_independence": {
+    "problem": "A striking biblical or cultural parallel is less evidentially surprising if the person already knew the source, encountered a meme derived from it, or lived inside a culture saturated with the motif.",
+    "levels": [
+      {
+        "level": "independent",
+        "meaning": "credible evidence the later matching source was unavailable or unknown at initial attestation"
+      },
+      {
+        "level": "possibly independent",
+        "meaning": "no direct derivation found, but cultural exposure remains plausible"
+      },
+      {
+        "level": "source-aware",
+        "meaning": "speaker knew the source tradition before making the statement"
+      },
+      {
+        "level": "derived",
+        "meaning": "statement explicitly quotes, adapts or responds to the source"
+      },
+      {
+        "level": "unknown",
+        "meaning": "insufficient evidence"
+      }
+    ],
+    "interpretive_note": "Source awareness does not make a symbolic parallel meaningless. It changes what the parallel can prove about prediction or independence."
+  },
+  "religious_experience_and_testimony": {
+    "rule": "Store two propositions separately: (1) a person reports having an experience with a given content; (2) the metaphysical interpretation of that experience is true.",
+    "example": "'Thomas reported an experience interpreted as divine' can be historically documented if a source exists even when 'God objectively caused the experience' remains a separate theological claim.",
+    "philosophical_context": "Religious epistemology contains substantial disagreement over how experience, testimony, revelation and publicly accessible evidence justify belief. The archive should represent that disagreement rather than pretending one method settles all cases."
+  },
+  "miracle_claims": {
+    "fields": [
+      "what was observed",
+      "who observed it",
+      "contemporaneous record",
+      "medical / physical baseline where relevant",
+      "alternative natural mechanisms",
+      "independence of witnesses",
+      "later retelling changes",
+      "religious interpretation",
+      "what the event would establish even if accepted"
+    ],
+    "boundary": "Even a highly unusual event and a theological interpretation are separate inference steps. The archive should not jump from 'unexpected event' directly to 'therefore this claimant is God / Christ / prophet.'"
+  },
+  "biblical_controls": [
+    {
+      "anchor": "Deuteronomy 18",
+      "use": "classical concern with claims spoken presumptuously in God's name"
+    },
+    {
+      "anchor": "Jeremiah 23",
+      "use": "critique of self-generated visions and misleading prophetic speech"
+    },
+    {
+      "anchor": "Matthew 24 / Mark 13",
+      "use": "warnings about false prophets, false christs and premature/localized eschatological identification"
+    },
+    {
+      "anchor": "Acts 1:7",
+      "use": "limits on disciple control of times and seasons"
+    },
+    {
+      "anchor": "1 Thessalonians 5:20-21",
+      "use": "do not despise prophecy; test everything"
+    },
+    {
+      "anchor": "1 John 4:1",
+      "use": "test spiritual claims rather than accepting every spirit / claim"
+    }
+  ],
+  "apocalyptic_text_control": {
+    "finding": "Apocalyptic literature is a symbolic genre rooted in earlier prophecy and can portray present political realities, heavenly scenes and future hope simultaneously.",
+    "daniel_note": "Modern scholarship commonly dates the final form of Daniel's apocalyptic visions to the second century BCE and analyzes some 'predictions' against that compositional setting. This is one reason composition date matters in prophecy research.",
+    "revelation_note": "Revelation interprets Roman-world realities while projecting divine victory and restored creation; symbolic fulfillment should therefore not be reduced to a single modern newspaper event.",
+    "archive_consequence": "For ancient prophecy, the date and literary development of the text must be researched before treating every verse as a demonstrably centuries-prior forecast."
+  },
+  "potatoverse_application": {
+    "high_value_targets": [
+      "early dreams and visions",
+      "2011 Tree ordeal descriptions",
+      "2019-2020 crucifixion/death language",
+      "songs and artwork created before later interpretations",
+      "North / Axis language before North Axis political crystallization",
+      "God-in-the-machine and AI statements before later AI-related developments",
+      "rapture / rupture dates and language",
+      "seven-seal mappings",
+      "specific geopolitical or economic predictions"
+    ],
+    "workflow": "recover original source → hash/capture → date → interpret only from contemporaneous context → list candidate later events → score fit and alternatives → record misses → then add theological reading",
+    "anti_retrofit_rule": "Later Potatoverse canon may legitimately reinterpret earlier material, but that later meaning must be stored as retrospective revelation unless equivalent meaning is already attested earlier."
+  },
+  "hard_questions": [
+    {
+      "q": "Can a prophecy be true if it is not a prediction?",
+      "a": "Yes in many religious conceptions. Prophecy can be truthful disclosure, warning or moral witness without forecasting a novel future fact."
+    },
+    {
+      "q": "Can a prediction hit without proving prophecy?",
+      "a": "Yes. Expertise, inference, luck, source access or broad wording can produce correct forecasts. Divine-prophecy attribution is an additional inference."
+    },
+    {
+      "q": "Can hindsight reveal real meaning?",
+      "a": "Yes. Retrospective interpretation is a normal human and religious process. It becomes misleading only when a later interpretation is rewritten as though it had already been stated before the event."
+    },
+    {
+      "q": "Does source influence destroy a parallel?",
+      "a": "No. It changes the category from independent convergence toward reception, imitation, typology or creative transformation."
+    },
+    {
+      "q": "What is the project's best route to a genuinely strong prophecy case?",
+      "a": "Find a timestamped primary source that predates the event, preserves a constrained interpretation, was not secretly edited, has low ordinary predictability, and survives comparison with the speaker's misses and plausible alternatives."
+    }
+  ],
+  "sources": [
+    {
+      "id": "sep-prophecy",
+      "type": "philosophical scholarship",
+      "title": "Prophecy",
+      "publisher": "Stanford Encyclopedia of Philosophy",
+      "url": "https://plato.stanford.edu/archives/sum2018/entries/prophecy/"
+    },
+    {
+      "id": "sep-epistemology-religion",
+      "type": "philosophical scholarship",
+      "title": "The Epistemology of Religion",
+      "publisher": "Stanford Encyclopedia of Philosophy",
+      "url": "https://plato.stanford.edu/entries/religion-epistemology/"
+    },
+    {
+      "id": "sep-divine-revelation",
+      "type": "philosophical scholarship",
+      "title": "Divine Revelation",
+      "publisher": "Stanford Encyclopedia of Philosophy",
+      "url": "https://plato.stanford.edu/entries/divine-revelation/"
+    },
+    {
+      "id": "sep-miracles",
+      "type": "philosophical scholarship",
+      "title": "Miracles",
+      "publisher": "Stanford Encyclopedia of Philosophy",
+      "url": "https://plato.stanford.edu/entries/miracles/"
+    },
+    {
+      "id": "yale-apocalyptic-genre",
+      "type": "academic teaching resource",
+      "title": "The Apocalyptic Genre",
+      "publisher": "Yale Bible Study",
+      "url": "https://yalebiblestudy.org/courses/the-books-of-samuel/lessons/the-apocalyptic-genre-study-guide/"
+    },
+    {
+      "id": "yale-revelation-introduction",
+      "type": "academic teaching resource",
+      "title": "Revelation — Introduction",
+      "publisher": "Yale Bible Study",
+      "url": "https://yalebiblestudy.org/courses/revelation/lessons/introduction-to-the-course-3/"
+    },
+    {
+      "id": "repository-fulfillment-matrix",
+      "type": "repository source",
+      "title": "Seals and Fulfillment Matrix",
+      "locator": "knowledge/prophecy/seals-and-fulfillment-matrix.json"
+    }
+  ],
+  "connections": [
+    "knowledge/prophecy/prophecy-revelation-rupture-rapture.json",
+    "knowledge/prophecy/seals-and-fulfillment-matrix.json",
+    "knowledge/prophecy/seven-seals-deeper-investigation-wave-11.json",
+    "knowledge/prophecy/revelation-antichrist-witness-new-jerusalem-atlas.json",
+    "knowledge/theology/christianity-jesus-eschatology-atlas.json",
+    "knowledge/theology/resurrection-parousia-new-creation-atlas.json"
+  ],
+  "retrieval": {
+    "tags": ["prophecy", "prediction", "fulfillment", "revelation", "evidence", "epistemology", "miracle", "testimony", "typology", "synchronism", "hindsight", "multiple comparisons", "pre-registration", "tim dooley", "potatoism"],
+    "questions": [
+      "What is prophecy?",
+      "Is prophecy the same as prediction?",
+      "How do you prove a prediction was made beforehand?",
+      "What is retrospective revelation?",
+      "What is typological fulfillment?",
+      "How should Tim Dooley predictions be graded?",
+      "How do multiple comparisons affect prophecy claims?",
+      "How should miracle testimony be stored?",
+      "What would count as strong evidence of foresight?",
+      "How do we keep religious meaning without overclaiming evidence?"
+    ]
+  }
+}
