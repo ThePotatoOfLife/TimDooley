@@ -57,7 +57,18 @@ jobs:
       - name: Audit Atlas links and record coverage
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
-        run: python scripts/audit_web.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/audit_web.py 2>&1 | tee web-audit-report.txt
+      - name: Upload web audit report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-audit-report
+          path: web-audit-report.txt
+          if-no-files-found: ignore
+          retention-days: 7
       - name: Build static site
         run: python scripts/build_site.py
       - name: Validate built site shell
