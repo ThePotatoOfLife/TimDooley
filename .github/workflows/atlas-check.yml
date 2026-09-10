@@ -70,6 +70,8 @@ jobs:
         run: python scripts/patch_home_discovery.py
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
+      - name: Enrich weak page descriptions
+        run: python scripts/enrich_weak_descriptions.py
       - name: Optimize and audit SEO
         id: seo
         continue-on-error: true
