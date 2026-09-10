@@ -4,7 +4,7 @@
   "title":"Christianity — Scripture, Theology & Eschatology Library",
   "updated":"2026-09-10",
   "purpose":"Connect Christian scripture editions and structured Bible metadata to the wider religious graph, while routing Jesus, Christology, Second Coming, rapture, prophecy, Thomas and Potatoverse comparison into evidence-aware theology owners.",
-  "canonical_texts":[{"id":"bible-kjv","title":"King James Version","edition":"1611 tradition","language":"English","status":"public-domain reading edition","reader":"bible.html","catalog":"data/christianity/bible-kjv.json","source":"Project Gutenberg eBook 30","source_url":"https://www.gutenberg.org/ebooks/30"}],
+  "canonical_texts":[{"id":"bible-kjv","title":"King James Version","edition":"1611 tradition","language":"English","status":"public-domain reading edition","reader":"traditions/bible/","catalog":"data/christianity/bible-kjv.json","source":"Project Gutenberg eBook 30","source_url":"https://www.gutenberg.org/ebooks/30"}],
   "research_owners":[
     {"id":"christianity-atlas","path":"docs/CHRISTIANITY-ATLAS.md","role":"Historical and denominational architecture of Christianity."},
     {"id":"theology-atlas","path":"docs/THEOLOGY-ATLAS.md","role":"Integrated human-readable study of Jesus, Christology, Second Coming, rapture/rupture, prophecy, Thomas, Dan and Potatoverse comparison."},
@@ -28,7 +28,7 @@
     {"from":"bible-kjv","type":"has-book","to":"john"},
     {"from":"bible-kjv","type":"has-book","to":"revelation"}
   ],
-  "reading_routes":["bible.html","bible.html?book=genesis","bible.html?book=john","theology/christianity/"],
+  "reading_routes":["traditions/bible/","traditions/bible/?book=genesis","traditions/bible/?book=john","theology/christianity/"],
   "canon_note":"The KJV catalogue distinguishes the 66-book Protestant arrangement from the 80-book edition including the Apocrypha; canon differences are part of Christianity's historical record and should remain explicit.",
   "integrity_rule":"Biblical text, historical reconstruction, denominational doctrine, scholarly interpretation, Tim/Thomas testimony and Potatoverse comparison must remain separately typed."
 }
