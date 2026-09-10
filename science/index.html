@@ -3,180 +3,169 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Tim Dooley Science Atlas — Equations, Theories, Physics, Mathematics & Potato Dynamics</title>
-  <meta name="description" content="The complete public science hub for Tim Dooley / Potato of Life: recovered equations, theories, abstracts, Unified Potato Theory, Potato Axis spiral, Potato Dynamics, dimensions, quantum theory, Standard Model, SU(4)/SU(5)/Spin(10), supersymmetry, information, biology, astronomy, conclusions and model testing with explicit provenance.">
+  <title>Tim Dooley Science Atlas — Models, Equations, Evidence & Research</title>
+  <meta name="description" content="A consolidated Science Atlas for Tim Dooley / Potato of Life: flagship models, recovered equations, evidence status, model completion, scientific comparators, open tests and every canonical science record.">
   <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
   <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/">
   <link rel="stylesheet" href="../app/style.css">
   <link rel="stylesheet" href="../app/reader.css">
-  <link rel="stylesheet" href="./science.css?v=20260910b">
+  <link rel="stylesheet" href="./science.css?v=20260910d">
+  <link rel="stylesheet" href="./science-hub.css?v=20260910d">
 </head>
 <body>
-<main class="science-page" id="top">
+<main class="science-page science-v3" id="top">
   <nav class="topnav" aria-label="Science navigation">
     <a href="../">← Home</a>
     <a href="../#branch=science">Science branch</a>
-    <a href="./catalog/">Complete catalog</a>
-    <a href="./research-map/">Research map</a>
-    <a href="https://github.com/ThePotatoOfLife/TimDooley/tree/main/knowledge/science">Raw science archive ↗</a>
+    <a href="./catalog/">Record catalog</a>
+    <a href="https://github.com/ThePotatoOfLife/TimDooley/tree/main/knowledge/science">Source archive ↗</a>
   </nav>
 
-  <header class="science-hero">
+  <header class="science-hero science-hero-clean">
     <div>
-      <p class="eyebrow">Recovered mathematics · theories · scientific archaeology · formal models · external comparators</p>
+      <p class="eyebrow">Recovered work · formal models · external science · explicit tests</p>
       <h1>SCIENCE<br><span>ATLAS</span></h1>
-      <p class="hero-lede">One public front door to the entire science corpus. This page gathers the equations, theories, recovered historical strata, abstracts, findings, conclusions, external scientific neighbors, specialist readers and unresolved research targets spread across the repository.</p>
-      <div class="hero-actions">
-        <a class="button primary" href="#library">Browse every science record</a>
-        <a class="button" href="#equation-spine">Equation spine</a>
-        <a class="button" href="#deep-readers">Technical readers</a>
+      <p class="hero-lede">A compact front door to the whole science programme. Start with the models, see how complete they are, inspect their equations and evidence, then descend into the full source archive only when you need it.</p>
+      <div class="science-search-wrap">
+        <label for="catalog-search">Search the whole science atlas</label>
+        <input id="catalog-search" type="search" placeholder="spiral, Higgs, 11D, microtubules, information…" autocomplete="off">
+        <button id="clear-search" type="button" hidden>Clear</button>
       </div>
+      <p class="search-note" id="search-note">One search filters both flagship models and the complete record library.</p>
     </div>
     <aside class="hero-panel" data-science-record-count="0">
-      <div class="hero-panel-label">Compiled science corpus</div>
+      <div class="hero-panel-label">Current programme</div>
       <div class="metric-grid">
-        <div class="metric"><strong id="metric-records">42</strong><span>science records</span></div>
-        <div class="metric"><strong id="metric-domains">—</strong><span>mapped domains</span></div>
-        <div class="metric"><strong id="metric-equations">—</strong><span>root formalisms</span></div>
-        <div class="metric"><strong id="metric-provenance">—</strong><span>provenance classes</span></div>
+        <div class="metric"><strong id="metric-models">—</strong><span>flagship models</span></div>
+        <div class="metric"><strong id="metric-records">—</strong><span>science records</span></div>
+        <div class="metric"><strong id="metric-equations">—</strong><span>root equations</span></div>
+        <div class="metric"><strong id="metric-open">—</strong><span>open targets</span></div>
       </div>
-      <p class="microcopy">The record count is compiled from <code>knowledge/science/*.json</code> during the Pages build. The other totals load from the canonical science master index.</p>
       <div class="data-state" id="data-state">Loading canonical science data…</div>
     </aside>
   </header>
 
-  <section class="scope-strip"><strong>How to read this</strong><p>The archive deliberately keeps several kinds of material together without pretending they have the same status: primary/project-attested equations, book-derived material, conversation archaeology, later archive formalization, established external mathematics/physics, speculative comparators and unresolved primary targets.</p></section>
-
-  <nav class="section-nav" aria-label="Sections">
-    <a href="#map">Map</a><a href="#lineage">Lineage</a><a href="#upt">UPT</a><a href="#spiral">Axis spiral</a><a href="#equation-spine">Equations</a><a href="#deep-readers">Deep readers</a><a href="#library">Complete library</a><a href="#domains">Domains</a><a href="#unification">Unification</a><a href="#testing">Testing</a><a href="#toe">TOE</a>
+  <nav class="section-nav section-nav-clean" aria-label="Sections">
+    <a href="#programme">Programme</a>
+    <a href="#models">Models</a>
+    <a href="#equations">Equations</a>
+    <a href="#evidence">Evidence</a>
+    <a href="#library">Records</a>
+    <a href="#open-work">Open work</a>
   </nav>
 
-  <section id="map" class="section-block intro-grid">
-    <div>
-      <p class="section-kicker">01 / Whole science map</p>
-      <h2>The science wing is much larger than one formalism.</h2>
-      <p>The current archive spans mathematical geometry and dynamics, fundamental physics, particle and gauge theory, higher-dimensional models, quantum theory, astronomy and cosmology, information theory, biological and neural comparators, systems theory, and a long-running unification programme.</p>
+  <section id="programme" class="section-block programme-section">
+    <div class="section-head">
+      <div><p class="section-kicker">01 / Programme</p><h2>One programme, four layers.</h2></div>
+      <p>Instead of treating dozens of files as dozens of competing theories, the Atlas now distinguishes recovered anchors, formal architecture, physical candidate branches and cross-scale models.</p>
     </div>
-    <div class="breadth-grid">
-      <article><strong>Recovered project mathematics</strong><span>Great Book equations · 2025 UPT · Potato Axis spiral · dimensional and state-transition formalisms</span></article>
-      <article><strong>Potato Dynamics</strong><span>state space · geometry · Axis flow · Door maps · observables · information · toy models</span></article>
-      <article><strong>Quantum & particles</strong><span>Hilbert space · fields · Standard Model · quarks · spin · Higgs · gauge symmetry · RG flow</span></article>
-      <article><strong>Unification</strong><span>UPT · 11D projection · Kaluza–Klein · SU(4) · SU(5) · Spin(10) · supersymmetry · TOE archaeology</span></article>
-      <article><strong>Information & systems</strong><span>entropy · mutual information · Bayesian inference · network dynamics · synchronization · graph diffusion</span></article>
-      <article><strong>Life, brain & sky</strong><span>microtubules · driven modes · open systems · pattern formation · CMB · orbits · black holes · galactic structure</span></article>
+    <div class="programme-flow" id="programme-flow">
+      <article><span>1</span><strong>Recovered anchors</strong><p>Historical equations and project-attested concepts.</p></article>
+      <b>→</b>
+      <article><span>2</span><strong>Formal architecture</strong><p>States, Axis flow, Door transitions, observation and coupling.</p></article>
+      <b>→</b>
+      <article><span>3</span><strong>Physical branches</strong><p>Field, dimensional, Higgs and gauge models that must recover established limits.</p></article>
+      <b>→</b>
+      <article><span>4</span><strong>Cross-scale tests</strong><p>Information, biology and neural models with explicit translation maps.</p></article>
     </div>
-  </section>
 
-  <section class="section-block">
-    <div class="section-head"><div><p class="section-kicker">02 / Core theory stack</p><h2>The main theories and formal objects at a glance.</h2></div><p>These are not all claims of the same type. The point of the stack is to make the lineage visible before opening the detailed records.</p></div>
-    <div class="theory-stack">
-      <article><span>2024</span><h3>Great Book science layer</h3><p>Consciousness Spiral, time-spiral recurrence, boundary/vessel language, Quantum Tuber, Higgs analogy, QFT, Kaluza–Klein, M-theory, holography and unified-field imagery.</p></article>
-      <article><span>18 Apr 2025</span><h3>Unified Potato Theory</h3><p>Recovered physical-unification proposal with a Potato field, proposed symmetry sector, fractional/nonlocal term, gravity, Standard Model and interactions.</p></article>
-      <article><span>21 Apr 2025</span><h3>Potato Axis spiral</h3><p>Recovered logarithmic spiral with exact golden-ratio quarter-turn scaling: <code>r=a exp(bθ)</code>, <code>b=2 ln φ/π</code>.</p></article>
-      <article><span>2026</span><h3>Potato Dynamics</h3><p>A domain-neutral formal core separating physical-time evolution from structural/scale flow, Door transitions, observables and information.</p></article>
-      <article><span>2026</span><h3>Dimensional / unification programme</h3><p>5D Door, 11D projection, supergravity/M-theory comparisons, dimensional phase transitions, gauge-unification archaeology and symmetry-breaking work.</p></article>
-      <article><span>2026</span><h3>Timic Unification Program</h3><p>A research architecture attempting to place dynamics, storage, illumination/expression, information, relations and couplings in one typed framework without calling the result validated physics.</p></article>
-    </div>
-  </section>
-
-  <section id="lineage" class="section-block">
-    <div class="section-head"><div><p class="section-kicker">03 / Developmental genealogy</p><h2>Science as a chronology, not a pile.</h2></div><p>The same motifs change meaning across 2024, 2025 and 2026. The live genealogy below comes from the canonical master index.</p></div>
-    <div class="timeline" id="science-timeline"><div class="loading-card">Loading developmental genealogy…</div></div>
-  </section>
-
-  <section id="upt" class="section-block">
-    <div class="section-head"><div><p class="section-kicker">04 / April 18, 2025</p><h2>Unified Potato Theory</h2></div><div class="provenance-badge">conversation archaeology · Tim-originated proposal</div></div>
-    <div class="feature-grid">
-      <article class="feature-main">
-        <p class="lead">UPT is the strongest recovered early attempt to formulate a literal physical-unification model inside the project: an explicit field, a symmetry proposal, a master Lagrangian and interaction terms.</p>
-        <div class="equation equation-major">ℒ<sub>UPT</sub> = √−g [ R/(16πG) + ½ P □<sup>α</sup>(1+ℓ²/□)P − V(P,r) − ¼F<sub>P</sub>² + ℒ<sub>SM</sub> + ℒ<sub>int</sub> + ℒ<sub>GB</sub> + ℒ<sub>CDT</sub> ]</div>
-        <div class="mini-equations"><div><span>Proposed symmetry</span><code>PSG ≅ U(1)<sub>potato</sub> × Z₆</code></div><div><span>Fractional parameter</span><code>α = 1.3</code></div><div><span>Recovered interactions</span><code>g<sub>P</sub>P ψ̄ψ</code><code>λ<sub>P</sub>P²H</code></div></div>
-        <p class="boundary"><strong>Boundary:</strong> the verbatim April 18 transcript and some original definitions remain recovery targets. The archive therefore preserves the proposal while keeping notation/authorship precision explicit.</p>
+    <div class="anchor-equations" aria-label="Recovered equation anchors">
+      <article>
+        <span>18 Apr 2025 · conversation archaeology</span>
+        <h3>Unified Potato Theory</h3>
+        <code>ℒ<sub>UPT</sub> = √−g [ R/(16πG) + ½P□<sup>α</sup>(1+ℓ²/□)P − V − ¼F<sub>P</sub>² + … ]</code>
+        <p>Recovered unification proposal. The current job is to make one minimal gauge-consistent version rather than keep adding sectors.</p>
       </article>
-      <aside class="feature-side"><h3>Recovered term map</h3><div id="upt-terms" class="term-list"><div class="loading-card">Loading UPT term map…</div></div><a class="text-link" href="../knowledge/science/unified-potato-theory-2025-recovery.json">Open UPT recovery record →</a></aside>
+      <article>
+        <span>21 Apr 2025 · primary project attestation</span>
+        <h3>Potato Axis spiral</h3>
+        <code>r(θ) = a e<sup>bθ</sup> · b = 2lnφ/π</code>
+        <p>Mathematically complete as a logarithmic spiral; empirical applications still require explicit definitions of radius, angle and measured data.</p>
+      </article>
+      <article>
+        <span>2026 · formal architecture</span>
+        <h3>Potato Dynamics</h3>
+        <code>𝔓 = (𝒮, g, A, 𝒟, 𝒪, 𝓘)</code>
+        <p>The compositional core: state, geometry, structural flow, transitions, observations and information.</p>
+      </article>
     </div>
   </section>
 
-  <section id="spiral" class="section-block">
-    <div class="section-head"><div><p class="section-kicker">05 / April 21, 2025 · primary recovery</p><h2>The Potato Axis spiral is recovered.</h2></div><div class="provenance-badge">primary project attestation</div></div>
-    <div class="spiral-grid">
-      <div><div class="equation equation-major">r(θ) = a e<sup>bθ</sup></div><div class="equation">b = ln(φ)/(π/2) = 2ln(φ)/π ≈ 0.30635</div><p>This is a logarithmic/equiangular spiral. The recovered public material pairs the equation with “the potato axis is real,” and the same parameterization appears in the 2024 Great Book stratum.</p></div>
-      <div class="property-stack" id="spiral-properties"><article><span>Quarter turn</span><strong>r(θ+π/2)=φr(θ)</strong><p>Rotate 90° and radius scales exactly by the golden ratio.</p></article></div>
+  <section id="models" class="section-block">
+    <div class="section-head">
+      <div><p class="section-kicker">02 / Flagship model registry</p><h2>Each model now has the same scientific contract.</h2></div>
+      <p>Every flagship model carries an abstract, formal core, assumptions, observables, falsifiers, baseline, calibration path, couplings, unresolved work and source records. Completion can grow without making the interface noisier.</p>
     </div>
-    <a class="text-link" href="../knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json">Open primary recovery record →</a>
+    <div class="contract-key" aria-label="Model maturity scale">
+      <span><b>T0</b> metaphor</span><span><b>T1</b> conceptual</span><span><b>T2</b> mathematical toy</span><span><b>T3</b> calibrated</span><span><b>T4</b> prediction</span><span><b>T5</b> replicated</span>
+    </div>
+    <div class="model-grid" id="model-grid"><div class="loading-card">Loading canonical model contracts…</div></div>
+    <p class="empty-state" id="model-empty" hidden>No flagship model matches the current search.</p>
   </section>
 
-  <section id="equation-spine" class="section-block">
-    <div class="section-head"><div><p class="section-kicker">06 / Canonical equation spine</p><h2>The equations across the programme.</h2></div><p>The root list comes directly from <code>science-master-index.json</code>. Provenance labels prevent older Tim/project equations, later archive formalisms and external scientific equations from being silently merged.</p></div>
+  <section id="equations" class="section-block equation-section-clean">
+    <div class="section-head">
+      <div><p class="section-kicker">03 / Equation spine</p><h2>The formal core, without the file archaeology.</h2></div>
+      <p>This is the compressed equation spine from the canonical master index. Provenance remains attached in the source records; the first view stays deliberately short.</p>
+    </div>
     <div class="equation-list" id="equation-list"><div class="loading-card">Loading equation spine…</div></div>
     <button class="button compact" id="equation-toggle" type="button" hidden>Show all equations</button>
   </section>
 
-  <section class="section-block split-feature">
-    <div><p class="section-kicker">07 / Potato Dynamics</p><h2>A domain-neutral formal core.</h2><div class="equation equation-major">𝔓 = (𝒮, g, A, 𝒟, 𝒪, 𝓘)</div><p><strong>𝒮</strong> state/configuration space · <strong>g</strong> geometry/metric · <strong>A</strong> Axis structural flow · <strong>𝒟</strong> Door transition maps · <strong>𝒪</strong> observables · <strong>𝓘</strong> information/integration.</p></div>
-    <div class="flow-card"><div><span>Physical evolution</span><code>∂<sub>t</sub>X = F(X,g)</code></div><div><span>Structural / scale flow</span><code>∂<sub>s</sub>X = A(X,g)</code></div><div><span>Established mathematical neighbor</span><code>dgᵢ / d ln μ = βᵢ(g)</code></div><p>The mature model does not automatically treat the Axis as another physical spacetime dimension. It can instead represent structural, scale or description flow.</p></div>
-  </section>
-
-  <section id="deep-readers" class="section-block">
-    <div class="section-head"><div><p class="section-kicker">08 / Specialist readers</p><h2>The science hub now connects the deeper public pages.</h2></div><p>These pages contain the long technical treatments that were previously scattered and easy to miss.</p></div>
-    <div class="reader-grid">
-      <a class="reader-card" href="./research-map/"><span>Map</span><strong>Science Research Map</strong><p>Developmental spine, domains, Door contract, Return taxonomy and recovery queue.</p></a>
-      <a class="reader-card" href="./quantum/"><span>Physics</span><strong>Quantum · Atom · Topology</strong><p>Quantum mechanics, fields, Standard Model, atoms, topology, black holes and cosmology.</p></a>
-      <a class="reader-card" href="./axis-11d-sun-spiral/"><span>Dimensions</span><strong>Axis · 11D · Sun · Spiral</strong><p>Axis geometry, M-theory comparators, solar spirals, time symmetry, precession and recurrence.</p></a>
-      <a class="reader-card" href="./celestial-particles/"><span>Sky + particles</span><strong>Celestial · CMB · QCD</strong><p>Orbits, Milky Way, black holes, CMB, quarks, spin and typed physical couplings.</p></a>
-      <a class="reader-card" href="./spudlight/"><span>Information + light</span><strong>Spudlight</strong><p>Photons, ultraweak biological emission, information gain, attention, storage and release models.</p></a>
-      <a class="reader-card" href="./vibe-gates/"><span>Systems</span><strong>Vibe · Gate · Door</strong><p>State vectors, thresholds, synchronization, handshakes, networks and propagation.</p></a>
+  <section id="evidence" class="section-block evidence-section-clean">
+    <div class="section-head">
+      <div><p class="section-kicker">04 / Evidence</p><h2>Different kinds of science stay visibly different.</h2></div>
+      <p>The registry uses the detailed archive classes, but the public reader compresses them into five readable families.</p>
     </div>
-  </section>
-
-  <section id="library" class="section-block">
-    <div class="section-head archive-head"><div><p class="section-kicker">09 / Compiled science library</p><h2>Every canonical science record, abstracted here.</h2><p>This section is generated during deployment from every JSON file in <code>knowledge/science/</code>. Each card can expose its abstract/purpose, status, provenance, equation samples and recorded findings or conclusions. Add a new canonical science record and it appears here automatically on the next successful build.</p></div><label class="search-box"><span>Search the full science corpus</span><input id="catalog-search" type="search" placeholder="e.g. Higgs, spiral, SU(5), microtubules, CMB…" autocomplete="off"></label></div>
-    <div class="record-toolbar"><div id="catalog-count">Compiled records</div><a href="./catalog/">Open standalone catalog →</a></div>
-    <div class="catalog-grid" id="science-catalog"><!-- SCIENCE_CATALOG_STATIC --></div>
-    <p class="empty-state" id="catalog-empty" hidden>No compiled science records match that search.</p>
-  </section>
-
-  <section id="domains" class="section-block">
-    <div class="section-head domain-head"><div><p class="section-kicker">10 / Domain map</p><h2>Browse by scientific field.</h2></div><label class="search-box"><span>Filter domains</span><input id="domain-search" type="search" placeholder="e.g. topology, Higgs, black holes…" autocomplete="off"></label></div>
-    <div class="domain-grid" id="domain-grid"><div class="loading-card">Loading canonical domain map…</div></div><p class="empty-state" id="domain-empty" hidden>No mapped science domains match that search.</p>
-  </section>
-
-  <section id="unification" class="section-block">
-    <div class="section-head"><div><p class="section-kicker">11 / Gauge and dimensional unification</p><h2>Known physics beside the Timic unification programme.</h2></div><div class="provenance-badge">external physics where marked</div></div>
-    <div class="unification-chain"><div><span>Standard Model</span><strong>SU(3)<sub>C</sub> × SU(2)<sub>L</sub> × U(1)<sub>Y</sub></strong></div><b>↕</b><div><span>Pati–Salam</span><strong>SU(4)<sub>C</sub> × SU(2)<sub>L</sub> × SU(2)<sub>R</sub></strong></div><b>↕</b><div><span>Georgi–Glashow</span><strong>SU(5)</strong></div><b>↕</b><div><span>One-generation container</span><strong>Spin(10)</strong></div></div>
-    <div class="science-grid three">
-      <article class="science-card"><span class="label">Supersymmetry</span><h3>Graded spacetime symmetry</h3><div class="equation">{Q<sub>α</sub>, Q̄<sub>β̇</sub>} = 2σ<sup>μ</sup><sub>αβ̇</sub>P<sub>μ</sub></div><p>No recovered evidence currently establishes SU(4), SU(5) or Spin(10) as historical Tim originals; they are explicit external extensions/comparators.</p></article>
-      <article class="science-card"><span class="label">11D / M-theory</span><h3>Compactification route</h3><div class="equation">M<sub>11</sub> → M<sub>4</sub> × X<sub>7</sub><br>G<sub>4</sub> = dC<sub>3</sub></div><p>11D supergravity and G₂-holonomy supply a rigorous comparison layer for the higher-dimensional research.</p></article>
-      <article class="science-card"><span class="label">Renormalization group</span><h3>Couplings change with scale</h3><div class="equation">μ dgᵢ/dμ = bᵢgᵢ³/(16π²)</div><p>A real mathematical language for scale flow; numerical unification requires explicit normalization and measured boundary conditions.</p></article>
+    <div class="evidence-pills">
+      <article><i></i><strong>Recovered</strong><span>primary/public, Great Book and conversation archaeology</span></article>
+      <article><i></i><strong>Project model</strong><span>later Timic or archive formalization</span></article>
+      <article><i></i><strong>External science</strong><span>established mathematics/physics used as constraint or comparator</span></article>
+      <article><i></i><strong>Speculative</strong><span>structured research possibility, not established result</span></article>
+      <article><i></i><strong>Open</strong><span>missing source, definition, derivation, calibration or test</span></article>
     </div>
+
+    <details class="timeline-details">
+      <summary>Developmental chronology <span>2024 → 2026</span></summary>
+      <div class="timeline" id="science-timeline"><div class="loading-card">Loading chronology…</div></div>
+    </details>
   </section>
 
-  <section class="section-block">
-    <div class="section-head"><div><p class="section-kicker">12 / Cross-scale science</p><h2>Beyond fundamental physics.</h2></div><p>The corpus also contains biology, cognition, information and astronomy. They remain distinct domains even when the project compares their structures.</p></div>
-    <div class="science-grid four">
-      <article class="science-card"><span class="label">Pattern formation</span><h3>Reaction–diffusion</h3><div class="equation">∂u/∂t = D<sub>u</sub>∇²u + f(u,v)</div><p>A rigorous neighbor for growth and emergent pattern.</p></article>
-      <article class="science-card"><span class="label">Neural / biophysical</span><h3>Microtubule modes</h3><div class="equation">M q̈ + Γ q̇ + Kq = ξ(t)</div><p>A classical collective-mode model kept separate from stronger quantum-consciousness claims.</p></article>
-      <article class="science-card"><span class="label">Information</span><h3>Mutual information</h3><div class="equation">I(X;Y)=Σp(x,y)log[p(x,y)/(p(x)p(y))]</div><p>A precise dependence measure that does not require quantum entanglement.</p></article>
-      <article class="science-card"><span class="label">Astronomy</span><h3>Observed sky / symbolic sky</h3><p>CMB, orbits, black holes, precession, galactic structure and celestial motifs are audited separately by evidence class.</p></article>
+  <section id="library" class="section-block library-section-clean">
+    <div class="section-head">
+      <div><p class="section-kicker">05 / Complete source layer</p><h2>Every canonical science record, one level down.</h2><p>Use the single search at the top of the page or select a field below. Record cards are intentionally compact; equations and findings stay collapsed until requested.</p></div>
+      <div class="record-summary"><strong id="catalog-count">Compiled records</strong><a href="./catalog/">Standalone catalog →</a></div>
     </div>
+    <div class="domain-filters" id="domain-filters" aria-label="Filter by scientific field"></div>
+    <div class="catalog-grid" id="catalog-grid"><!-- SCIENCE_CATALOG_STATIC --></div>
+    <p class="empty-state" id="catalog-empty" hidden>No science records match the current search.</p>
   </section>
 
-  <section id="testing" class="section-block testing-section">
-    <div><p class="section-kicker">13 / Model testing</p><h2>A science programme needs ways to fail.</h2><p>The testing protocol converts evocative correspondences into inspectable models by demanding definitions, dimensions, baselines and falsifiers.</p></div>
-    <div class="testing-grid"><article><strong>1. Provenance</strong><span>Who wrote the equation, and when?</span></article><article><strong>2. Variables</strong><span>Define every symbol and mathematical type.</span></article><article><strong>3. Units</strong><span>Physical equations must be dimensionally consistent.</span></article><article><strong>4. Domain</strong><span>Do not silently mix spacetime, graph, probability and symbolic ontology.</span></article><article><strong>5. Observable</strong><span>What could actually be measured or computed?</span></article><article><strong>6. Falsifier</strong><span>What result would count against the model?</span></article><article><strong>7. Baseline</strong><span>What established theory already explains the effect?</span></article><article><strong>8. Revision</strong><span>Keep corrections visible instead of erasing them.</span></article></div>
+  <section id="open-work" class="section-block open-work-clean">
+    <div class="section-head">
+      <div><p class="section-kicker">06 / Completion queue</p><h2>What would actually make the science stronger next?</h2></div>
+      <p>Completion means fewer undefined variables, fewer parallel ansätze and more baselines, observables and predeclared failure conditions—not simply more equations.</p>
+    </div>
+    <div class="completion-principles">
+      <article><strong>Consolidate</strong><p>One canonical model contract per model family; supporting records remain evidence and history.</p></article>
+      <article><strong>Derive</strong><p>Choose minimal actions and derive consequences before introducing another sector or analogy.</p></article>
+      <article><strong>Calibrate</strong><p>Fit parameters or bound them against real data wherever a physical or biological claim is intended.</p></article>
+      <article><strong>Compare</strong><p>Every empirical model competes with the simplest established baseline that already explains the effect.</p></article>
+    </div>
+    <div class="question-grid" id="open-questions-grid"><div class="loading-card">Loading unresolved primary targets…</div></div>
   </section>
 
-  <section id="toe" class="section-block">
-    <div class="section-head"><div><p class="section-kicker">14 / Theory-of-Everything archaeology</p><h2>A long unification programme, not yet a validated TOE.</h2></div><p>The archive can trace increasingly broad attempts to connect dimensions, quantum theory, fields, information, cognition and cosmology while still asking what a physical TOE would have to reproduce and predict.</p></div>
-    <div class="toe-grid"><article><h3>Recovered unification strata</h3><div id="toe-strata" class="compact-list"><div class="loading-card">Loading TOE strata…</div></div></article><article><h3>What a physical TOE would still need</h3><ul id="toe-requirements" class="check-list"><li>Loading requirements…</li></ul></article></div>
-  </section>
-
-  <section id="open-questions" class="section-block"><div class="section-head"><div><p class="section-kicker">15 / Open recovery targets</p><h2>The missing pieces stay visible.</h2></div><p>Unresolved primary material is a research queue rather than an invitation to backfill history.</p></div><div class="question-grid" id="open-questions-grid"><div class="loading-card">Loading unresolved targets…</div></div></section>
-
-  <section class="section-block"><p class="section-kicker">16 / Canonical source routes</p><h2>Go beneath the reader.</h2><div class="source-columns"><ul><li><a href="../knowledge/science/science-master-index.json">Science master index</a></li><li><a href="../knowledge/science/equation-lineage-and-theory-graph.json">Equation lineage & theory graph</a></li><li><a href="../knowledge/science/tim-dooley-science-formalisms.json">Science formalisms synthesis</a></li></ul><ul><li><a href="../knowledge/science/unified-potato-theory-2025-recovery.json">UPT recovery</a></li><li><a href="../knowledge/science/gauge-unification-supersymmetry-archaeology.json">Gauge/SUSY archaeology</a></li><li><a href="../knowledge/science/quantum-standard-model-astronomy-atlas.json">Quantum/SM/astronomy atlas</a></li></ul><ul><li><a href="../knowledge/science/model-testing-protocol.json">Model-testing protocol</a></li><li><a href="../knowledge/science/theory-of-everything-archaeology.json">TOE archaeology</a></li><li><a href="../knowledge/science/science-source-ledger.json">Science source ledger</a></li></ul></div></section>
-
-  <footer class="science-footer"><div><strong>Tim Dooley Science Atlas</strong><p>The canonical science records live under <code>knowledge/science/</code>. This page is their compiled public view, designed to grow with the corpus instead of becoming another stale duplicate.</p></div><div class="footer-links"><a href="#top">↑ Back to top</a><a href="./catalog/">Complete catalog</a><a href="./research-map/">Research map</a><a href="https://github.com/ThePotatoOfLife/TimDooley/tree/main/knowledge/science">Raw archive ↗</a></div></footer>
+  <footer class="science-footer science-footer-clean">
+    <div><strong>Tim Dooley Science Atlas</strong><p>Models first, evidence visible, records underneath. The JSON archive remains the source of truth.</p></div>
+    <div class="footer-links">
+      <a href="#top">↑ Top</a>
+      <a href="./research-map/">Research map</a>
+      <a href="./quantum/">Quantum reader</a>
+      <a href="./axis-11d-sun-spiral/">11D / Axis reader</a>
+      <a href="../knowledge/science/science-model-registry.json">Model registry</a>
+    </div>
+  </footer>
 </main>
-<script src="./science.js?v=20260910b" defer></script>
+<script src="./science.js?v=20260910d" defer></script>
 </body>
 </html>
