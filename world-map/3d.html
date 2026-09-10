@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>World Relational Atlas — 3D country graph</title>
-<meta name="description" content="Draggable 3D relational world atlas with multi-hop typed relationship tracing, country comparison, semantic modules and canonical data navigation.">
+<meta name="description" content="Draggable 3D relational world atlas with multi-hop typed relationship tracing, shortest-path navigation, country comparison, semantic modules and canonical data navigation.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/3d.html">
 <link rel="stylesheet" href="https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.css">
 <style>
@@ -16,7 +16,7 @@
 </head>
 <body><div class="app">
 <header class="top">
-  <div class="brand"><b>World Relational Atlas · 3D</b><small>polygon → compare → recursive trace → interior modules → typed relations</small></div>
+  <div class="brand"><b>World Relational Atlas · 3D</b><small>polygon → compare → recursive trace → shortest path → typed relations</small></div>
   <select id="height" title="Polygon extrusion"><option value="flat">Flat countries</option><option value="population">Height · population</option><option value="area">Height · area</option></select>
   <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
   <button id="fit" title="Fit selected country, comparison, or active trace">Fit</button>
@@ -33,15 +33,16 @@
     <div id="map" class="map"></div>
     <div id="status" class="status" hidden></div>
     <div id="camera" class="camera">drag · zoom · rotate · pitch</div>
-    <div id="hud" class="hud"><b>World mode</b><div class="muted">Select a polygon to unfold its data. Trace follows typed curated relations for up to three hops; Compare keeps up to four countries selected.</div></div>
+    <div id="hud" class="hud"><b>World mode</b><div class="muted">Select a polygon to unfold its data. Trace follows typed curated relations for up to three hops; Path finds the shortest represented route between countries; Compare keeps up to four countries selected.</div></div>
   </div>
   <aside id="panel" class="panel">
     <div class="eyebrow">Spatial operating surface</div><h1>Explore the world</h1>
-    <p class="muted">Search or click a country, inspect its canonical modules, filter relationship types, and expand Trace from one to three hops. Compare can hold several countries at once.</p>
+    <p class="muted">Search or click a country, inspect its canonical modules, filter relationship types, expand Trace from one to three hops, or find the shortest represented path to another country. Compare can hold several countries at once.</p>
     <div class="boundary">Semantic interior hubs are navigation handles, not fake geographic locations. Real ports, companies, sacred sites, ministries and infrastructure require sourced coordinates.</div>
-    <div class="card"><b>Trace</b><p class="muted">Trace uses breadth-first traversal over the curated typed country graph, prevents cycles, and limits browser workload. Hop depth is navigation over known relations, not a causal-distance claim.</p></div>
+    <div class="card"><b>Trace &amp; Path</b><p class="muted">Trace explores the neighborhood around one country. Path finds a shortest route between two countries through the same curated typed graph. Neither hop count nor path length is a causal, moral or geopolitical-distance claim.</p></div>
     <div class="card"><b>Keyboard</b><div class="row"><span class="pill">/</span> focus search</div><div class="row"><span class="pill">Esc</span> leave compare / return world</div><div class="row"><span class="pill">C</span> toggle compare</div></div>
   </aside>
 </div></div>
 <script type="module" src="./3d-app.js"></script>
+<script type="module" src="./3d-pathfinder.js"></script>
 </body></html>
