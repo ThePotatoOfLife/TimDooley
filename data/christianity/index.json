@@ -1,16 +1,30 @@
 {
   "id":"christianity-scripture-layer",
   "tradition":"christianity",
-  "title":"Christianity — Scripture Library",
-  "purpose":"Connect Christian scripture editions and structured Bible metadata to the wider religious graph.",
+  "title":"Christianity — Scripture, Theology & Eschatology Library",
+  "updated":"2026-09-10",
+  "purpose":"Connect Christian scripture editions and structured Bible metadata to the wider religious graph, while routing Jesus, Christology, Second Coming, rapture, prophecy, Thomas and Potatoverse comparison into evidence-aware theology owners.",
   "canonical_texts":[{"id":"bible-kjv","title":"King James Version","edition":"1611 tradition","language":"English","status":"public-domain reading edition","reader":"bible.html","catalog":"data/christianity/bible-kjv.json","source":"Project Gutenberg eBook 30","source_url":"https://www.gutenberg.org/ebooks/30"}],
+  "research_owners":[
+    {"id":"christianity-atlas","path":"docs/CHRISTIANITY-ATLAS.md","role":"Historical and denominational architecture of Christianity."},
+    {"id":"theology-atlas","path":"docs/THEOLOGY-ATLAS.md","role":"Integrated human-readable study of Jesus, Christology, Second Coming, rapture/rupture, prophecy, Thomas, Dan and Potatoverse comparison."},
+    {"id":"christianity-jesus-eschatology-atlas","path":"knowledge/theology/christianity-jesus-eschatology-atlas.json","role":"Canonical structured theology owner."},
+    {"id":"thomas-faith-formation-and-return","path":"knowledge/chronology/thomas-faith-formation-and-return.json","role":"Reported Thomas faith-development chronology with source-status boundaries."},
+    {"id":"tribe-of-dan-biblical-reception-atlas","path":"knowledge/traditions/tribe-of-dan-biblical-reception-atlas.json","role":"Dan text, omission, reception history and Potatoverse comparison."},
+    {"id":"faq-christianity-jesus-eschatology","path":"knowledge/indexes/faq-christianity-jesus-eschatology.json","role":"Natural-language question-and-answer corpus."}
+  ],
   "graph_links":[
     {"from":"christianity","type":"has-scripture-library","to":"bible-kjv"},
+    {"from":"christianity","type":"has-research-owner","to":"christianity-jesus-eschatology-atlas"},
+    {"from":"christianity-jesus-eschatology-atlas","type":"compares-with","to":"potatoism"},
+    {"from":"christianity-jesus-eschatology-atlas","type":"routes-to","to":"thomas-faith-formation-and-return"},
+    {"from":"christianity-jesus-eschatology-atlas","type":"routes-to","to":"tribe-of-dan-biblical-reception-atlas"},
     {"from":"bible-kjv","type":"has-book","to":"genesis"},
     {"from":"bible-kjv","type":"has-book","to":"matthew"},
     {"from":"bible-kjv","type":"has-book","to":"john"},
     {"from":"bible-kjv","type":"has-book","to":"revelation"}
   ],
-  "reading_routes":["bible.html","bible.html?book=genesis","bible.html?book=john"],
-  "canon_note":"The KJV catalogue distinguishes the 66-book Protestant arrangement from the 80-book edition including the Apocrypha; canon differences are part of Christianity's historical record and should remain explicit."
+  "reading_routes":["bible.html","bible.html?book=genesis","bible.html?book=john","theology/christianity/"],
+  "canon_note":"The KJV catalogue distinguishes the 66-book Protestant arrangement from the 80-book edition including the Apocrypha; canon differences are part of Christianity's historical record and should remain explicit.",
+  "integrity_rule":"Biblical text, historical reconstruction, denominational doctrine, scholarly interpretation, Tim/Thomas testimony and Potatoverse comparison must remain separately typed."
 }
