@@ -2,9 +2,10 @@
 """Build a compact, sourced population + religion snapshot for the 3D atlas.
 
 Population prefers each canonical country's existing sourced observation and falls
-back to the World Bank population indicator only when the local record has no
-usable value. Religious composition uses the public Our World in Data Grapher API,
-which adapts Pew Research Center's 2025 Global Religious Composition Estimates.
+back to UN World Population Prospects 2024 as surfaced by Our World in Data when
+the local record has no usable value. Religious composition uses the public Our
+World in Data Grapher API, adapting Pew Research Center's 2025 Global Religious
+Composition Estimates.
 
 The output is a presentation/runtime artifact. It does not overwrite canonical
 country records and it keeps observation year/source metadata explicit.
@@ -26,7 +27,8 @@ COUNTRIES_DIR = ROOT / "data" / "countries"
 OUT = Path(os.environ.get("ATLAS_DEMOGRAPHY_OUT", ROOT / "data" / "world-country-demography.json"))
 EXPECTED = 195
 
-OWID_BASE = "https://ourworldindata.org/grapher/religious-composition.csv"
+OWID_RELIGION = "https://ourworldindata.org/grapher/religious-composition.csv"
+OWID_POPULATION = "https://ourworldindata.org/grapher/population-unwpp.csv?v=1&csvType=full&useColumnShortNames=false"
 RELIGIONS = {
     "christian": "christians",
     "muslim": "muslims",
@@ -36,18 +38,13 @@ RELIGIONS = {
     "other_religions": "other_religions",
     "unaffiliated": "unaffiliated",
 }
-WORLD_BANK_POP = "SP.POP.TOTL"
-USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.0"
+USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.1"
 
 
 def fetch_text(url: str, timeout: int = 180) -> str:
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(req, timeout=timeout) as response:
         return response.read().decode("utf-8-sig")
-
-
-def fetch_json(url: str, timeout: int = 180):
-    return json.loads(fetch_text(url, timeout))
 
 
 def number(value):
@@ -82,39 +79,32 @@ def local_population(country: dict):
     }
 
 
-def world_bank_population() -> dict[str, dict]:
-    """Return the newest population observation per ISO3 across all API pages."""
-    out: dict[str, dict] = {}
-    page = 1
-    while True:
-        query = urllib.parse.urlencode({"format": "json", "per_page": 1000, "mrv": 5, "page": page})
-        url = f"https://api.worldbank.org/v2/country/all/indicator/{WORLD_BANK_POP}?{query}"
-        payload = fetch_json(url)
-        if not isinstance(payload, list) or len(payload) < 2 or not isinstance(payload[1], list):
-            raise RuntimeError(f"World Bank population payload malformed on page {page}")
-        meta = payload[0] if isinstance(payload[0], dict) else {}
-        if meta.get("message"):
-            raise RuntimeError(f"World Bank rejected population request: {meta['message']}")
-        for row in payload[1]:
-            code = str(row.get("countryiso3code") or "").upper()
-            value = number(row.get("value"))
-            year = str(row.get("date") or "")
-            if len(code) != 3 or value is None:
-                continue
-            old = out.get(code)
-            if old is None or year > str(old.get("year") or ""):
-                out[code] = {
-                    "value": int(round(value)),
-                    "year": int(year) if year.isdigit() else year,
-                    "source": "World Bank",
-                    "source_url": f"https://data.worldbank.org/indicator/{WORLD_BANK_POP}?locations={code}",
-                    "indicator": WORLD_BANK_POP,
-                    "confidence": "international-official",
-                }
-        pages = int(meta.get("pages") or 1)
-        if page >= pages:
-            break
-        page += 1
+def owid_population() -> dict[str, dict]:
+    """Return 2023 UN WPP population estimates indexed by ISO3."""
+    text = fetch_text(OWID_POPULATION)
+    reader = csv.DictReader(io.StringIO(text))
+    fields = reader.fieldnames or []
+    value_fields = [f for f in fields if f not in {"Entity", "Code", "Year"}]
+    if not value_fields:
+        raise RuntimeError(f"UN WPP population CSV has no value field: {fields}")
+    value_field = value_fields[0]
+    out = {}
+    for row in reader:
+        if str(row.get("Year")) != "2023":
+            continue
+        code = str(row.get("Code") or "").upper()
+        value = number(row.get(value_field))
+        if len(code) != 3 or value is None:
+            continue
+        out[code] = {
+            "value": int(round(value)),
+            "year": 2023,
+            "source": "UN World Population Prospects 2024, processed by Our World in Data",
+            "source_url": "https://ourworldindata.org/grapher/population-unwpp",
+            "confidence": "international-official-estimate",
+        }
+    if len(out) < 190:
+        raise RuntimeError(f"UN WPP population coverage unexpectedly low: {len(out)}")
     return out
 
 
@@ -126,7 +116,7 @@ def owid_religion(slug: str) -> dict[str, float]:
         "indicator": "share",
         "religion": slug,
     })
-    text = fetch_text(f"{OWID_BASE}?{query}")
+    text = fetch_text(f"{OWID_RELIGION}?{query}")
     reader = csv.DictReader(io.StringIO(text))
     fields = reader.fieldnames or []
     value_fields = [f for f in fields if f not in {"Entity", "Code", "Year"}]
@@ -152,14 +142,13 @@ def main() -> int:
     if len(countries) != EXPECTED:
         raise RuntimeError(f"Expected {EXPECTED} canonical countries; found {len(countries)}")
 
-    wb = {}
     local = {c["iso3"]: local_population(c) for c in countries}
-    missing = [code for code, value in local.items() if not value]
-    if missing:
+    fallback = {}
+    if any(not value for value in local.values()):
         try:
-            wb = world_bank_population()
+            fallback = owid_population()
         except Exception as exc:
-            print(f"World Bank fallback unavailable: {exc}")
+            print(f"UN WPP population fallback unavailable: {exc}", flush=True)
 
     religion_by_group = {}
     religion_errors = []
@@ -173,7 +162,7 @@ def main() -> int:
     rows = {}
     for country in countries:
         code = country["iso3"]
-        pop = local.get(code) or wb.get(code)
+        pop = local.get(code) or fallback.get(code)
         composition = {
             key: religion_by_group.get(key, {}).get(code)
             for key in RELIGIONS
@@ -202,7 +191,7 @@ def main() -> int:
         raise RuntimeError(f"Religion coverage too low: {religion_coverage}; errors={religion_errors}")
 
     payload = {
-        "version": "1.0.1",
+        "version": "1.1.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-demography-runtime",
         "scope": "Presentation/runtime snapshot; canonical country records remain the source owners for their own sourced observations.",
@@ -211,6 +200,7 @@ def main() -> int:
         "religion_categories": list(RELIGIONS.keys()),
         "religion_reference_year": 2020,
         "religion_method": "Seven mutually exclusive identity categories from Pew Research Center's Global Religious Composition Estimates, surfaced through Our World in Data.",
+        "population_fallback": "UN World Population Prospects 2024 (2023 estimates), processed by Our World in Data",
         "religion_errors": religion_errors,
         "countries": rows,
     }
@@ -221,7 +211,7 @@ def main() -> int:
         "population_coverage": pop_coverage,
         "religion_coverage": religion_coverage,
         "religion_errors": religion_errors,
-    }, indent=2))
+    }, indent=2), flush=True)
     return 0
 
 
