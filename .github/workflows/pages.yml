@@ -78,16 +78,25 @@ jobs:
           # The World Relational Atlas is a first-class deployed application surface.
           test -f _site/world-map/index.html
           test -f _site/world-map/3d.html
+          test -f _site/world-map/3d-app.js
           test -f _site/data/world-map-3d-runtime.json
           test -f _site/data/world-relational-map.json
           grep -q 'World Relational Atlas' _site/world-map/3d.html
           grep -q 'id="compare"' _site/world-map/3d.html
           grep -q 'id="relationType"' _site/world-map/3d.html
-          grep -q 'window.goCountry' _site/world-map/3d.html
-          grep -q 'Trace outward' _site/world-map/3d.html
-          grep -q 'compare-hubs' _site/world-map/3d.html
-          grep -q 'function fitCodes' _site/world-map/3d.html
-          grep -q 'fitBounds' _site/world-map/3d.html
+          grep -q 'id="traceDepth"' _site/world-map/3d.html
+          grep -q 'src="./3d-app.js"' _site/world-map/3d.html
+          grep -q 'Trace · 3 hops' _site/world-map/3d.html
+          grep -q 'function traceGraph' _site/world-map/3d-app.js
+          grep -q 'visited.has(other)' _site/world-map/3d-app.js
+          grep -q 'window.goCountry' _site/world-map/3d-app.js
+          grep -q 'window.fitTrace' _site/world-map/3d-app.js
+          grep -q 'Trace outward' _site/world-map/3d-app.js
+          grep -q 'trace-hubs' _site/world-map/3d-app.js
+          grep -q 'compare-hubs' _site/world-map/3d-app.js
+          grep -q 'function fitCodes' _site/world-map/3d-app.js
+          grep -q 'fitBounds' _site/world-map/3d-app.js
+          grep -q "searchParams.set('depth'" _site/world-map/3d-app.js
 
           # Science is a compiled public product, not merely copied source files.
           test -f _site/science/index.html
