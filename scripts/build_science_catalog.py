@@ -20,7 +20,7 @@ TEXT_KEYS = ("abstract", "summary", "purpose", "importance", "core_thesis", "des
 PROVENANCE_KEYS = ("provenance_classes", "epistemic_classes", "source_class", "origin_class", "provenance")
 EQUATION_KEYS = (
     "equation", "formula", "lagrangian", "differential", "curvature", "action",
-    "operator", "formalism", "metric", "mapping", "coupling", "symmetry_breaking",
+    "operator", "formalism", "formal_core", "metric", "mapping", "coupling", "symmetry_breaking",
     "rg_", "field_equation", "dynamics",
 )
 FINDING_KEYS = ("conclusion", "finding", "result", "implication", "interpretation", "lesson", "takeaway")
@@ -119,15 +119,17 @@ def render_cards(records: list[dict], record_prefix: str) -> str:
             rec["title"], rec["file"], rec["status"], rec["abstract"],
             *rec["provenance"], *rec["equations"], *rec["findings"],
         ]).lower()
-        prov = "".join(f'<span>{esc(x)}</span>' for x in rec["provenance"][:4])
-        eq_html = ""
+        prov = "".join(f'<span>{esc(x)}</span>' for x in rec["provenance"][:3])
+        details_parts = []
         if rec["equations"]:
-            eqs = "".join(f"<code>{esc(eq)}</code>" for eq in rec["equations"][:3])
-            eq_html = f'<div class="catalog-equations"><b>Equation sample</b>{eqs}</div>'
-        finding_html = ""
+            eqs = "".join(f"<code>{esc(eq)}</code>" for eq in rec["equations"][:4])
+            details_parts.append(f'<div class="catalog-equations"><b>Equation sample</b>{eqs}</div>')
         if rec["findings"]:
-            items = "".join(f"<li>{esc(x)}</li>" for x in rec["findings"][:2])
-            finding_html = f'<div class="catalog-findings"><b>Findings / conclusions</b><ul>{items}</ul></div>'
+            items = "".join(f"<li>{esc(x)}</li>" for x in rec["findings"][:3])
+            details_parts.append(f'<div class="catalog-findings"><b>Findings / conclusions</b><ul>{items}</ul></div>')
+        details_html = ""
+        if details_parts:
+            details_html = '<details class="catalog-details"><summary>Equations & findings</summary>' + "".join(details_parts) + '</details>'
         status = f'<span class="catalog-status">{esc(rec["status"])}</span>' if rec["status"] else ""
         cards.append(
             '<article class="catalog-card" data-search="{search}">\n'
@@ -135,13 +137,12 @@ def render_cards(records: list[dict], record_prefix: str) -> str:
             '  <h3>{title}</h3>\n'
             '  <p>{abstract}</p>\n'
             '  <div class="catalog-provenance">{prov}</div>\n'
-            '  {eq_html}\n'
-            '  {finding_html}\n'
-            '  <div class="catalog-links"><a href="{prefix}{file}">Open record →</a></div>\n'
+            '  {details_html}\n'
+            '  <div class="catalog-links"><a href="{prefix}{file}">Open source record →</a></div>\n'
             '</article>'.format(
                 search=esc(search_blob), updated=esc(rec["updated"] or "undated"), status=status,
                 title=esc(rec["title"]), abstract=esc(rec["abstract"]), prov=prov,
-                eq_html=eq_html, finding_html=finding_html, prefix=record_prefix, file=esc(rec["file"]),
+                details_html=details_html, prefix=record_prefix, file=esc(rec["file"]),
             )
         )
     return "\n".join(cards)
@@ -155,11 +156,11 @@ def render_catalog_page(records: list[dict]) -> str:
         '<title>Complete Science Catalog — Tim Dooley / Potato of Life</title>'
         '<meta name="description" content="Generated catalog of all canonical Tim Dooley / Potato of Life science records, with abstracts, equations, provenance and findings.">'
         '<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/catalog/">'
-        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910b">'
-        '<link rel="stylesheet" href="../science-hub.css?v=20260910b"></head>'
-        '<body><main class="science-page"><nav class="topnav"><a href="../">← Science Atlas</a><a href="../../">Home</a></nav>'
+        '<link rel="stylesheet" href="../../app/style.css"><link rel="stylesheet" href="../science.css?v=20260910d">'
+        '<link rel="stylesheet" href="../science-hub.css?v=20260910d"></head>'
+        '<body><main class="science-page science-v3"><nav class="topnav"><a href="../">← Science Atlas</a><a href="../../">Home</a></nav>'
         '<header class="section-block"><p class="section-kicker">Generated from knowledge/science</p><h1>COMPLETE SCIENCE CATALOG</h1>'
-        f'<p class="hero-lede">{len(records)} canonical science records. The JSON records remain the source of truth; this page is a generated reading view.</p></header>'
+        f'<p class="hero-lede">{len(records)} canonical science records. Cards stay compact by default; open equations and findings only when needed.</p></header>'
         f'<section class="section-block"><div class="catalog-grid">{cards}</div></section></main></body></html>'
     )
 
@@ -172,8 +173,6 @@ def patch_science_page(cards: str, count: int) -> None:
         raise SystemExit(f"{MARKER} missing from science/index.html")
     text = text.replace(MARKER, cards, 1)
     text = text.replace('data-science-record-count="0"', f'data-science-record-count="{count}"')
-    if "science-hub.css" not in text:
-        text = text.replace("</head>", '  <link rel="stylesheet" href="./science-hub.css?v=20260910b">\n</head>', 1)
     SCIENCE_PAGE.write_text(text, encoding="utf-8")
 
 
