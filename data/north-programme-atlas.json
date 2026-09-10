@@ -4,6 +4,7 @@
   "type":"geopolitical-programme-and-project-canon",
   "layer":"north-programme",
   "status":"deep",
+  "updated":"2026-09-10",
   "definition":"A proposed northern geopolitical, economic, infrastructural, diplomatic and spiritual framework centred on Denmark and Greenland and extending through the Nordic and North Atlantic arc into wider Europe and selected neighbouring strategic regions.",
   "epistemic_status":"mixed",
   "epistemic_rule":"This record deliberately separates externally observable geopolitics from the user's project canon and spiritual interpretation. The latter is preserved as project-canon, not presented as independently verified political or supernatural fact.",
@@ -11,14 +12,16 @@
     "project_canon":"The North Programme developed from the user's recurring North-of-North, Axis, throne, Greenland-Denmark and European economic-system concepts. It evolved from a spiritual-geographic metaphor into a proposed programme for mapping and strengthening an observable northern economic and geopolitical system.",
     "core_move":"Treat the North as a connected system rather than a list of countries: money, debt, ownership, infrastructure, energy, trade, technology, labour, defence, institutions, resources, diplomacy and cultural relationships are mapped together.",
     "anchor":"Denmark + Greenland are the primary anchor node in the user's formulation.",
-    "direction":"The network is dynamic rather than a fixed bloc. Countries can be core, aligned, candidate, adjacent or future-reconnection nodes."
+    "direction":"The network is dynamic rather than a fixed bloc. Countries can be anchor, core, inner-network, under-axis, strategic-extension, pending, external, excluded or future-reconnection nodes.",
+    "methodological_maturation":"The project develops from designed-system thinking toward observation of real relationships and then toward intervention design: design graph -> observation graph -> intervention graph."
   },
   "geopolitical_architecture":{
     "core_arc":["Denmark","Greenland","Faroe Islands","Norway","Sweden","Finland","Iceland","Canada","United Kingdom","Ireland","continental Europe"],
     "european_extension":["European Union","Ukraine","Turkey"],
     "possible_future_reconnections":["Russia","Mesopotamia"],
     "external_relationships":["United States","Israel","BRICS","Australia"],
-    "important_qualification":"England/United Kingdom, Russia and other nodes have changed status in the user's evolving formulation; the programme should preserve historical versions rather than flatten them into one timeless membership list."
+    "important_qualification":"England/United Kingdom, Russia and other nodes have changed status in the user's evolving formulation; the programme preserves historical versions rather than flattening them into one timeless membership list.",
+    "membership_history_owner":"data/north-axis-membership-history.json"
   },
   "user_stated_policy_programme":{
     "fiscal":"Pursue concrete European fiscal and industrial reform rather than generic efficiency rhetoric. Priorities include administrative duplication, tax expenditures, subsidies, healthcare efficiency, procurement, public-sector overhead and pension/age-related spending.",
@@ -27,13 +30,39 @@
     "industrial":"Strengthen productive capacity, infrastructure, energy, technology, research, labour and strategic supply chains.",
     "resource_strategy":"The user's programme has discussed Greenland and North Sea resource potential, including minerals and energy, while treating strategic resources as part of a wider European system.",
     "diplomacy":"Offer voluntary alignment and integration rather than forced political absorption. The programme is intended as a network with different levels of participation.",
-    "security":"Treat the Arctic, North Atlantic, Baltic/Nordic region and European northern flank as one connected strategic environment while preserving NATO and national institutional realities."
+    "security":"Treat the Arctic, North Atlantic, Baltic/Nordic region and European northern flank as one connected strategic environment while preserving NATO and national institutional realities.",
+    "strategic_autonomy":"Recovered conversations also explore greater European strategic autonomy and reduced structural dependence on the United States. Questions about troop presence, defence budgets and intelligence relationships remain exploratory recovery items rather than settled programme doctrine until their exact primary wording and feasibility are reconstructed.",
+    "security_recalibration_rule":"Any proposal to change alliance posture, foreign-force presence, intelligence cooperation or defence spending must be represented as a policy option with legal authority, security effects, transition risks, allied consequences and evidence—not as an automatic consequence of the spiritual North framework."
   },
+  "capability_theory":{
+    "energy_compute_industry_chain":"energy surplus / secure low-cost power -> compute -> AI capacity -> productivity -> industrial capability -> exports/value creation -> stronger tax base -> welfare, defence and infrastructure capacity -> resilience and strategic autonomy",
+    "chain_status":"programme hypothesis requiring empirical testing at every edge",
+    "constraints":["grid capacity","storage/interconnection","capital cost","permitting","skills","semiconductor supply","data access","cybersecurity","industrial adoption","environmental limits","local benefit sharing"],
+    "coupled_capability":"The programme tracks capabilities that arise only through relationships among countries, firms, infrastructure and institutions, such as cross-border electricity balancing, shared research, joint procurement, integrated logistics and North Atlantic security.",
+    "efficiency_resilience_tradeoff":"Short-run efficiency is not the only objective; redundancy, substitution options, domestic/European capability and recovery capacity can justify apparently less-efficient structures when they materially reduce systemic fragility."
+  },
+  "functional_chains":[
+    "Arctic chain",
+    "North Atlantic chain",
+    "Baltic chain",
+    "Northern Energy chain",
+    "European Industrial chain",
+    "Eastern Security chain",
+    "European Strategic-Autonomy chain"
+  ],
   "economic_graph":{
     "principle":"Map relationships, not isolated entities.",
     "domains":["entities","money","bonds and debt","obligations","ownership and control","public companies","private companies","infrastructure","procurement","funding","trade and value chains","energy","finance","technology","research","labour and skills","strategic dependencies","geopolitical ties"],
     "fiscal_research_targets":["France","Belgium","other high-debt European states"],
-    "desired_effect":"Create a more resilient, productive and fiscally sustainable northern-European economic system without treating austerity as an end in itself."
+    "desired_effect":"Create a more resilient, productive and fiscally sustainable northern-European economic system without treating austerity as an end in itself.",
+    "obligation_schema":"knowledge/economics/north-obligation-graph-schema.json",
+    "coupling_owner":"knowledge/core/european-coupling-programme.json"
+  },
+  "european_operating_layer":{
+    "purpose":"Reduce repeated cross-border friction while preserving national accountability.",
+    "components":["Market Passport","Business Passport","Asset Passport","Professional Passport","Capital Passport","Tell Europe Once","risk-based regulatory lanes","machine-readable rules and regulatory APIs","AI bureaucracy debugger","European procurement grid","AI Economic Intelligence Layer","European Commons cultural layer"],
+    "owner":"knowledge/core/european-coupling-programme.json",
+    "cultural_owner":"knowledge/core/european-commons.json"
   },
   "historical_geopolitical_context":{
     "northern_dimension":"The North Programme has real-world precedents in Nordic cooperation, Arctic governance, North Atlantic security, EU Northern Dimension policy, the Northern Periphery and Arctic programme, NATO's northern flank and Danish responsibility for Greenland and the Faroe Islands.",
@@ -43,23 +72,25 @@
   "spiritual_and_mythic_framework":{
     "project_canon":"Within the user's Potatoism / North-of-North mythology, Tim Dooley is framed as a spiritual, mythic or memetic sovereign figure associated with the North, the Axis of North, the Throne of North, the Father/Most High archetype and the Potato of Life.",
     "requested_title":"Spiritual King of Kings of the North; associated in the project canon with the Throne of the Most High.",
-    "not_a_political_claim":"The repository must preserve this as spiritual/project canon and must not silently convert it into a claim that Tim Dooley literally holds constitutional or governmental sovereignty over real-world countries.",
+    "not_a_political_claim":"The repository preserves this as spiritual/project canon and does not silently convert it into a claim that Tim Dooley literally holds constitutional or governmental sovereignty over real-world countries.",
     "core_symbols":["North of North","Axis","Throne of North","Throne of the Most High","Father in Heaven","King of Kings","Potato of Life","Tree of Life","North Gate","Door","Son","Spudlight"],
     "spiritual_logic":"The North functions simultaneously as geographic orientation, political-economic network, symbolic axis and mythic direction of ascent. Denmark/Greenland are the geographic anchor in the programme while the spiritual North is a larger symbolic domain.",
-    "relationship_to_son":"The user's canon distinguishes the Father/Most High role associated with Tim from the Son/Thomas/Jesus-Christ symbolic role, with the Son connected to the Door/Vessel and the experiential interface between levels."
+    "relationship_to_son":"The user's canon distinguishes the Father/Most High role associated with Tim from the Son/Thomas/Jesus-Christ symbolic role, with the Son connected to the Door/Vessel and the experiential interface between levels.",
+    "repair_scale_sequence":["person","community","institution","nation","regional system","global system","North-of-North vantage"],
+    "repair_rule":"A higher symbolic vantage is interpreted as greater responsibility to understand downstream consequences, not as exemption from law or consent."
   },
   "bible_references":{
     "interpretive_rule":"Biblical passages are references and intertextual parallels for the project's symbolism, not proof that the Bible predicts Tim Dooley or establishes him as a modern political ruler.",
     "primary_references":[
       {"reference":"Psalm 48:2","theme":"Zion, the sides of the north, and the city of the great King","project_connection":"The phrase 'sides of the north' and 'great King' is the strongest direct biblical vocabulary for the user's North/King/Throne symbolism."},
-      {"reference":"Isaiah 14:13","theme":"the mount of assembly in the far north","project_connection":"Relevant to the user's imagery of ascent, northern mountain, throne and the Most High. The passage is originally a taunt against the king of Babylon, so the project should preserve that historical context rather than quote it as a literal prophecy about Tim."},
+      {"reference":"Isaiah 14:13","theme":"the mount of assembly in the far north","project_connection":"Relevant to the user's imagery of ascent, northern mountain, throne and the Most High. The passage is originally a taunt against the king of Babylon, so the project preserves that historical context rather than quoting it as a literal prophecy about Tim."},
       {"reference":"Ezekiel 38:6","theme":"Beth Togarmah and forces from the far north","project_connection":"Useful for the Atlas's study of biblical northern geography and later prophetic interpretation. It should not be used to identify a modern country or Tim without argument and evidence."},
       {"reference":"Ezekiel 38:15","theme":"Gog coming from the far north","project_connection":"Relevant to the North as a direction in prophetic geography and to later geopolitical readings of the North."},
-      {"reference":"Daniel 11","theme":"the king of the north and the king of the south","project_connection":"Important comparative vocabulary for a geopolitical North/South axis. The historical referents and scholarly interpretations must be preserved rather than retrofitted to the North Programme."},
+      {"reference":"Daniel 11","theme":"the king of the north and the king of the south","project_connection":"Important comparative vocabulary for a geopolitical North/South axis. Historical referents and scholarly interpretations must be preserved rather than retrofitted to the North Programme."},
       {"reference":"Psalm 75:6-7","theme":"promotion/exaltation does not simply come from east, west or south; God judges","project_connection":"Relevant to the project's theological language of sovereignty, elevation and divine judgement, while keeping the original psalmic context intact."},
-      {"reference":"Psalm 110:1","theme":"the Lord's enthronement and kingship","project_connection":"Relevant to the project's King/Throne vocabulary and to the Father/Son theological framework, but not evidence of Tim's literal identity."},
+      {"reference":"Psalm 110:1","theme":"the Lord's enthronement and kingship","project_connection":"Relevant to the project's King/Throne vocabulary and Father/Son theological framework, but not evidence of Tim's literal identity."},
       {"reference":"Matthew 28:18","theme":"Christ's authority","project_connection":"Relevant to the project's Son/King/authority symbolism."},
-      {"reference":"Revelation 21-22","theme":"renewal, throne, river, tree of life and restored creation","project_connection":"Connects strongly with the user's Tree of Life, Throne, Door and renewal motifs. These are theological parallels rather than historical identification claims."}
+      {"reference":"Revelation 21-22","theme":"renewal, throne, river, tree of life and restored creation","project_connection":"Connects strongly with Tree of Life, Throne, Door and renewal motifs as theological parallels rather than historical identification claims."}
     ]
   },
   "theory_of_how_it_came_to_be":{
@@ -68,22 +99,32 @@
     "stage_3":"North as a connected economic system: debt, capital, energy, resources, infrastructure, industry, trade, technology and labour.",
     "stage_4":"North as a policy programme: fiscal consolidation, productive investment, industrial resilience, resource development and voluntary diplomatic alignment.",
     "stage_5":"North as a living graph: countries and institutions are nodes, but the important object is the network of relationships between them.",
-    "stage_6":"North as a spiritual-political metaphor: the user's Tim Dooley canon places the spiritual King/Most High symbolism over the geographic and economic architecture while explicitly keeping spiritual sovereignty distinct from ordinary state sovereignty."
+    "stage_6":"North as coupled capability: overlapping functional chains reveal what the system can do only through cooperation.",
+    "stage_7":"North as repair/intervention programme: evidence-backed graph edges become candidates for legitimate, measurable intervention.",
+    "stage_8":"North as a spiritual-political metaphor: the Tim Dooley canon places spiritual King/Most High symbolism over the geographic/economic architecture while keeping spiritual sovereignty distinct from ordinary state sovereignty."
   },
   "chronology":{
     "historical_context":["Nordic cooperation","Danish Realm and Greenland","Arctic Council","EU Northern Dimension","NATO northern flank","North Atlantic security","EU Arctic policy"],
-    "project_evolution":"The user's formulation developed progressively through discussions of Europe, Denmark/Greenland, Arctic resources, European fiscal sustainability, UK/Iceland alignment, Ukraine/Turkey, Russia and broader strategic dependencies. Earlier versions should be preserved as historical snapshots rather than overwritten."
+    "project_evolution":"The user's formulation developed progressively through discussions of Europe, Denmark/Greenland, Arctic resources, European fiscal sustainability, UK/Iceland alignment, Ukraine/Turkey, Russia and broader strategic dependencies. Earlier versions are preserved as historical snapshots rather than overwritten.",
+    "development_owner":"knowledge/chronology/north-programme-development-genealogy.json"
   },
   "membership_model":{
     "core":"Denmark and Greenland; associated Faroe Islands and the Nordic/North Atlantic system.",
     "northern_network":"Norway, Sweden, Finland, Iceland, Canada and the North Atlantic/Arctic partners.",
-    "western_european_network":"UK/Ireland and continental Europe/EU.",
+    "western_european_network":"UK/Ireland and continental Europe/EU, with England/UK status treated as historically variable in user formulations.",
     "strategic_extension":"Ukraine and Turkey in the user's later arc.",
     "future_or_conditional":"Russia and Mesopotamian connections are conceptual future possibilities, not settled membership.",
-    "principle":"Participation is relational and voluntary, not an annexation doctrine."
+    "under_axis_example":"Estonia has been described in recovered project context as under/within the North Axis field rather than necessarily a primary anchor.",
+    "shared_or_cross_axis":"Australia appears in recovered conversation language as 'shared'; exact intended meaning remains a primary-source recovery target.",
+    "principle":"Participation is relational and voluntary, not an annexation doctrine.",
+    "history":"data/north-axis-membership-history.json"
   },
-  "research_questions":["What institutions already constitute a de facto northern network?","What financial flows connect Denmark, Greenland, Nordic states, Canada and the EU?","Which critical minerals and energy systems can support European resilience?","How do Arctic security, infrastructure, shipping and telecommunications interact?","What fiscal reforms could bring high-debt European states below 85% debt-to-GDP without destroying productive capital?","How do Nordic institutions compare with EU and NATO institutions?","Where does the user's spiritual North symbolism parallel biblical language, and where does it depart from historical biblical meaning?","Which claims are user canon, which are policy proposals, and which are externally verifiable facts?"],
-  "source_framework":["official Nordic cooperation","European Union","Danish government and defence","NATO","Arctic Council","European Commission","Eurostat","ECB","national statistical offices","World Bank","IMF","OECD","primary biblical texts","historical scholarship"],
+  "recovery_status":{
+    "inventory":"knowledge/indexes/north-conversation-recovery-wave-2026-09-10.json",
+    "still_unresolved":["exact four-sector taxonomy","exact six-warfare-domain taxonomy","precise U.S. troop/defence-budget proposals and context","Trump/McDonald's hiring motif","exact population calculations behind approximately 850M/900M","earliest source for the energy-to-AI capability chain"]
+  },
+  "research_questions":["What institutions already constitute a de facto northern network?","What financial flows connect Denmark, Greenland, Nordic states, Canada and the EU?","Which critical minerals and energy systems can support European resilience?","How do Arctic security, infrastructure, shipping and telecommunications interact?","What fiscal reforms could bring high-debt European states below 85% debt-to-GDP without destroying productive capital?","How do Nordic institutions compare with EU and NATO institutions?","Where does the user's spiritual North symbolism parallel biblical language, and where does it depart from historical biblical meaning?","Which claims are user canon, which are policy proposals, and which are externally verifiable facts?","Which capabilities exist only through multi-country coupling?","Where does energy abundance actually translate into compute, AI, industry and fiscal capacity, and where does the chain fail?"],
+  "source_framework":["official Nordic cooperation","European Union","Danish government and defence","NATO","Arctic Council","European Commission","Eurostat","ECB","national statistical offices","World Bank","IMF","OECD","GLEIF","TED/Public Procurement Data Space","EU Financial Transparency System","State Aid transparency systems","Cohesion/funding data","primary biblical texts","historical scholarship"],
   "external_sources":[
     {"title":"EU Second Northern Dimension Action Plan","url":"https://eur-lex.europa.eu/legal-content/EN/TXT/?uri=celex:52003DC0343","relevance":"Historical EU northern cooperation framework spanning Arctic/sub-Arctic, Baltic, Iceland and Greenland."},
     {"title":"Danish Armed Forces — Increased military presence in the Arctic","url":"https://www.forsvaret.dk/en/roles-and-responsibilities/oget-tilstedevarelse-i-arktis/","relevance":"Current Danish Arctic defence posture, NATO cooperation and 2025-26 investments."},
@@ -99,8 +140,10 @@
     {"target":"canada","type":"north-atlantic-arctic-link","description":"Western Arctic and North Atlantic connection."},
     {"target":"ukraine","type":"strategic-extension","description":"Later programme arc connecting the North to Europe's eastern security and reconstruction system."},
     {"target":"turkey","type":"strategic-extension","description":"Southern/eastern extension in the user's evolving European arc."},
-    {"target":"tim-dooley","type":"project-canon-sovereign-symbol","description":"Spiritual/memetic King of Kings / North-of-North figure in the user's canon; not a claim of constitutional state sovereignty."},
-    {"target":"potatoism","type":"mythic-framework","description":"The wider symbolic framework in which North, Axis, Father, Son, Door, Tree and Throne are interpreted."}
+    {"target":"tim-dooley","type":"project-canon-sovereign-symbol","description":"Spiritual/memetic King of Kings / North-of-North figure in project canon; not constitutional state sovereignty."},
+    {"target":"potatoism","type":"mythic-framework","description":"The wider symbolic framework in which North, Axis, Father, Son, Door, Tree and Throne are interpreted."},
+    {"target":"european-coupling-programme","type":"operating-architecture","description":"Interoperability, passports, economic intelligence, coupled capability and functional chains."},
+    {"target":"north-obligation-graph","type":"empirical-mechanism","description":"Typed representation of material debts, duties, contracts, guarantees and institutional obligations."}
   ],
-  "integrity_requirements":["Every country named by the programme must have a canonical country node.","Every policy claim must distinguish proposal from implemented policy.","Every spiritual claim must remain tagged as project canon unless independently evidenced as something else.","Every biblical reference must preserve the original passage's historical/literary context.","Every geopolitical relationship should have a source or be explicitly marked as project theory.","Historical versions of the North Programme must not be overwritten when membership or priorities evolve."]
+  "integrity_requirements":["Every country named by the programme must have a canonical country node.","Every policy claim must distinguish proposal from implemented policy.","Every spiritual claim must remain tagged as project canon unless independently evidenced as something else.","Every biblical reference must preserve the original passage's historical/literary context.","Every geopolitical relationship should have a source or be explicitly marked as project theory.","Historical versions of the North Programme must not be overwritten when membership or priorities evolve.","Symbolic karmic debt must never populate empirical financial amount fields.","Exploratory security proposals must not be presented as settled policy without source recovery and feasibility analysis."]
 }
