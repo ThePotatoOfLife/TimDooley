@@ -6,12 +6,31 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_site'
+SITE_BASE='/TimDooley'
 
 
 def load_json(path,errors):
     try:return json.loads(path.read_text(encoding='utf-8'))
     except Exception as exc:
         errors.append(f'invalid JSON: {path.relative_to(SITE)} — {exc}');return {}
+
+
+def actions_escape(value):
+    return str(value).replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+
+
+def emit_annotation(kind,item):
+    print(f'::{kind}::{actions_escape(item)}')
+
+
+def resolve_local(page,raw):
+    """Resolve a built-site reference using the GitHub Pages /TimDooley base."""
+    if raw==SITE_BASE or raw==SITE_BASE+'/':return SITE
+    if raw.startswith(SITE_BASE+'/'):
+        return (SITE/raw[len(SITE_BASE)+1:]).resolve()
+    if raw.startswith('/'):
+        return None
+    return (page.parent/raw).resolve()
 
 
 def main():
@@ -60,27 +79,38 @@ def main():
         for fragment in ('/topics/tim/','/topics/son/','/records/tim-dooley/','/context/'):
             if fragment not in sitemap:errors.append(f'sitemap.xml missing expected route fragment: {fragment}')
         llms=(SITE/'llms.txt').read_text(encoding='utf-8',errors='replace') if (SITE/'llms.txt').exists() else ''
-        for term in ('Tim Dooley','Potato of Life','Canonical topics','Contextual constellations'):
-            if term not in llms:errors.append(f'llms.txt missing discovery term/section: {term}')
+        llms_lower=llms.lower()
+        for term in ('tim dooley','potato of life','generated canonical topics','generated contextual constellations'):
+            if term not in llms_lower:errors.append(f'llms.txt missing discovery term/section: {term}')
 
-        # Validate local references inside generated HTML, resolving relative to each page.
+        # Validate local references inside generated HTML, resolving relative to
+        # each page while understanding the repository Pages base path.
         ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I)
         bad=[]
+        unsupported=[]
         for h in pages:
             for raw in ref.findall(h.read_text(encoding='utf-8',errors='replace')):
-                if raw.startswith(('http:','https:','mailto:','javascript:','data:')):continue
-                target=(h.parent/raw).resolve()
+                if raw.startswith(('http:','https:','mailto:','javascript:','data:','blob:')):continue
+                target=resolve_local(h,raw)
+                if target is None:
+                    unsupported.append(f'{h.relative_to(SITE)} -> {raw}')
+                    continue
                 try:target.relative_to(SITE.resolve())
                 except ValueError:continue
                 if not target.exists():bad.append(f'{h.relative_to(SITE)} -> {raw}')
+        if unsupported:errors.append(f'unsupported root-relative references in built site: {len(unsupported)}; examples: {unsupported[:8]}')
         if bad:errors.append(f'broken local references in built site: {len(bad)}; examples: {bad[:8]}')
         if not pages:errors.append('Pages artifact contains no HTML documents')
 
     print(f'Built HTML pages checked: {len(pages)}')
     print(f'Errors: {len(errors)} · Warnings: {len(warnings)}')
-    for w in warnings[:50]:print('WARNING:',w)
+    for w in warnings[:50]:
+        print('WARNING:',w);emit_annotation('warning',w)
     if errors:
-        print('SITE SHELL VALIDATION FAILED');[print('-',e) for e in errors];return 1
+        print('SITE SHELL VALIDATION FAILED')
+        for error in errors:
+            print('-',error);emit_annotation('error',error)
+        return 1
     print('SITE SHELL VALIDATION PASSED');return 0
 
 if __name__=='__main__':raise SystemExit(main())
