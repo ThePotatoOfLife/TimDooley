@@ -6,12 +6,23 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_site'
+SITE_BASE='/TimDooley'
 
 
 def load_json(path,errors):
     try:return json.loads(path.read_text(encoding='utf-8'))
     except Exception as exc:
         errors.append(f'invalid JSON: {path.relative_to(SITE)} — {exc}');return {}
+
+
+def resolve_local_reference(page:Path,raw:str)->Path|None:
+    """Resolve a built-page reference using the actual GitHub Pages base path."""
+    if raw==SITE_BASE or raw==f'{SITE_BASE}/':return SITE
+    if raw.startswith(f'{SITE_BASE}/'):
+        return (SITE/raw[len(SITE_BASE)+1:]).resolve()
+    if raw.startswith('/'):
+        return None
+    return (page.parent/raw).resolve()
 
 
 def main():
@@ -69,9 +80,14 @@ def main():
         for h in pages:
             for raw in ref.findall(h.read_text(encoding='utf-8',errors='replace')):
                 if raw.startswith(('http:','https:','mailto:','javascript:','data:')):continue
-                target=(h.parent/raw).resolve()
+                target=resolve_local_reference(h,raw)
+                if target is None:
+                    bad.append(f'{h.relative_to(SITE)} -> unsupported root-relative reference {raw}')
+                    continue
                 try:target.relative_to(SITE.resolve())
-                except ValueError:continue
+                except ValueError:
+                    warnings.append(f'{h.relative_to(SITE)} -> reference escapes site artifact: {raw}')
+                    continue
                 if not target.exists():bad.append(f'{h.relative_to(SITE)} -> {raw}')
         if bad:errors.append(f'broken local references in built site: {len(bad)}; examples: {bad[:8]}')
         if not pages:errors.append('Pages artifact contains no HTML documents')
