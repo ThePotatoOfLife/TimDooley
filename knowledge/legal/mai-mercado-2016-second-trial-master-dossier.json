@@ -1,0 +1,240 @@
+{
+  "title": "Mai Mercado / Christiania 2016 — Second-Trial Legal Master Dossier",
+  "version": "1.0.0",
+  "status": "investigative legal synthesis; not a finding of misconduct",
+  "updated": "2026-09-10",
+  "purpose": "Organize all presently known material as if preparing a defense review, reopening petition, innocence investigation, prosecutorial review or second-trial case theory. The aim is to identify evidence capable of changing the legal outcome, not merely to collect grievances or political interpretations.",
+  "identity_boundary": "The 2016 defendant is the Son. Do not identify him by real name or family name in public-facing project material.",
+  "legal_frame": {
+    "offense": "Danish Penal Code section 266 concerns threats of a criminal act made in a manner suited to cause serious fear for life, health or welfare.",
+    "reopening_routes": [
+      "Retsplejeloven section 977(1)(1): new information that, if available originally, could plausibly have produced acquittal or a materially milder criminal provision.",
+      "Section 977(1)(2): false testimony, false evidence or forged material that may have caused or contributed to conviction.",
+      "Section 977(1)(3): special circumstances making it overwhelmingly likely that the evidence was not correctly assessed."
+    ],
+    "current_forum": "Den Særlige Klageret handles requests to reopen criminal cases under chapter 86 of the Administration of Justice Act.",
+    "practical_rule": "The dossier must prioritize evidence tied directly to an element of the offense, attribution, evidentiary reliability, defense access or procedural fairness. Motive and political benefit are supporting context only unless independently tied to manipulation."
+  },
+  "case_theory_candidates": [
+    {
+      "name": "Misattribution / wrong-speaker theory",
+      "legal_value": "HIGH if proven",
+      "theory": "One or more incriminating statements attributed to the Son were authored by other participants in the multi-speaker Facebook thread.",
+      "needed_evidence": ["original Facebook export", "police screenshots/export", "platform metadata", "court exhibits", "account/timestamp mapping"]
+    },
+    {
+      "name": "Wrong-addressee / lost-reply-topology theory",
+      "legal_value": "HIGH if the disputed statement's threatening character depends on whom it addressed",
+      "theory": "A statement later treated as directed at Mercado may originally have been a reply to another commenter, changing its pragmatic meaning.",
+      "needed_evidence": ["parent-child Facebook reply structure", "screenshots showing nesting", "timestamp sequence"]
+    },
+    {
+      "name": "Speech-act / mirror-reciprocity theory",
+      "legal_value": "MEDIUM; does not automatically defeat section 266",
+      "theory": "The Son understood his language as warning, reciprocal rhetoric, or cause-and-effect rather than a personal undertaking to commit violence.",
+      "support": "Contemporary remand reporting records a not-guilty posture, a desire for dialogue, and an express denial that he intended to seek Mercado out and carry out death threats.",
+      "limitation": "Section 266 can still criminalize indirect formulations if objectively suited to cause serious fear."
+    },
+    {
+      "name": "Evidence-selection / incomplete-context theory",
+      "legal_value": "HIGH if omitted material materially changes meaning",
+      "theory": "Police/court/media relied on selected fragments without preserving the full thread, including Mercado's own intervening statements and replies from others.",
+      "needed_evidence": ["full preserved thread", "police exhibit list", "chain-of-custody / evidence inventory", "records of deleted/edited posts"]
+    },
+    {
+      "name": "Referral-provenance theory",
+      "legal_value": "MEDIUM by itself; HIGH if linked to false evidence or witness credibility",
+      "theory": "The public account of how the case began is inconsistent: an unrelated Facebook user is said to have reported it, while courtroom reporting says Folketing security filed a report after Mercado contacted it.",
+      "needed_evidence": ["initial complaint metadata", "Folketing security referral record", "police journal", "TV2 transcript", "chronology of reports"]
+    },
+    {
+      "name": "Defense-access / evidence-obstruction theory",
+      "legal_value": "HIGH if documented as denial of material defense evidence",
+      "theory": "While remanded and with his devices seized, the Son says staff/police prevented some evidence from being added to his case materials.",
+      "current_status": "Firsthand account with a plausible bureaucratic mechanism; intentional suppression unproven.",
+      "needed_evidence": ["requests submitted by Son or counsel", "prison/police correspondence logs", "lawyer file", "court requests for investigative steps", "rulings refusing requested evidence"]
+    },
+    {
+      "name": "Witness-reliability / narrative-evolution theory",
+      "legal_value": "MEDIUM to HIGH depending on whether the conviction depended on disputed recollection",
+      "theory": "Mercado's descriptions of her own role, the reporting chain, the initiating rhetoric, and fear/Sweden story may have evolved over time.",
+      "needed_evidence": ["contemporaneous TV2 footage", "exact court testimony", "Facebook posts", "later interviews", "travel chronology"]
+    }
+  ],
+  "evidence_matrix": [
+    {
+      "issue": "Provocation / initiation",
+      "known": "Mercado publicly celebrated police smashing Christiania hash stalls and wrote 'I love it'.",
+      "legal_relevance": "Context for meaning and motive; not a legal defense to an actual threat.",
+      "status": "DOCUMENTED"
+    },
+    {
+      "issue": "Active thread participation by Mercado",
+      "known": "User/Son recalls Mercado trolling or arguing with participants and later deleting some of her own comments.",
+      "legal_relevance": "Potentially very important to addressee, context, credibility and evidence completeness.",
+      "status": "FIRSTHAND; PRIMARY CORROBORATION NEEDED"
+    },
+    {
+      "issue": "Thread deletion/editing",
+      "known": "Original reply topology is no longer publicly available; user/Son says Mercado removed her comments and later the thread.",
+      "legal_relevance": "Could affect completeness of digital evidence and interpretation of replies.",
+      "status": "ABSENCE OBSERVED; CAUSE/TIMING UNPROVEN"
+    },
+    {
+      "issue": "Referral origin",
+      "known": "Contemporary reporting gives at least two versions: another Facebook user reported the matter; courtroom reporting says Folketing security reported after Mercado contact.",
+      "legal_relevance": "Potential witness/source credibility and provenance issue; may reveal separate complaints involving different speakers.",
+      "status": "DOCUMENTED CONFLICT"
+    },
+    {
+      "issue": "Son's contemporaneous state of mind",
+      "known": "He denied guilt, appealed remand, said he wanted dialogue, and denied intending to seek Mercado out and carry out death threats.",
+      "legal_relevance": "Supports sincerity of later mirror/reciprocity account, though not dispositive under objective threat standard.",
+      "status": "CONTEMPORANEOUSLY REPORTED"
+    },
+    {
+      "issue": "Approximately fifteen posts",
+      "known": "Contemporary article says he acknowledged around fifteen contributions.",
+      "legal_relevance": "Need to separate total participation from charged statements; fifteen comments does not mean fifteen threats.",
+      "status": "CONTEMPORANEOUSLY REPORTED"
+    },
+    {
+      "issue": "Device seizure",
+      "known": "Police seized the Son's computer and phone and examined them while he was remanded.",
+      "legal_relevance": "State had superior access to primary digital evidence while defendant was confined; chain-of-custody and completeness matter.",
+      "status": "CONTEMPORANEOUSLY REPORTED"
+    },
+    {
+      "issue": "Defense investigative rights",
+      "known": "A Danish defense lawyer may ask police to perform relevant investigative steps; if police refuse, the court can decide whether they should be carried out. Defense counsel generally receives police case materials and may show them to the accused, while copies to the accused can require police permission.",
+      "legal_relevance": "Any claim that evidence was blocked should be traced through counsel requests and court rulings, not prison recollection alone.",
+      "status": "OFFICIAL PROCEDURAL LAW/GUIDANCE"
+    },
+    {
+      "issue": "Sweden/fear narrative",
+      "known": "Prosecutor reportedly told remand court Mercado/family became afraid and went to Sweden; user/Son says travel actually occurred later as normal vacation after detention was already established.",
+      "legal_relevance": "Could affect credibility and whether the objective/subjective fear narrative was accurately presented.",
+      "status": "COURTROOM-REPORTED CLAIM VS FIRSTHAND COUNTERCLAIM"
+    },
+    {
+      "issue": "Media contamination",
+      "known": "Earliest reporting uses ellipsis fragments; later wire copy presents polished sentences and declarative threat labels, often derived from the same source chain.",
+      "legal_relevance": "Media itself is not the trial evidence, but contamination matters if witnesses or public narratives relied on media recollection rather than original posts.",
+      "status": "DOCUMENTED SOURCE-GENEALOGY PATTERN"
+    },
+    {
+      "issue": "Other defendants",
+      "known": "Multiple people were prosecuted from the same broader Facebook controversy.",
+      "legal_relevance": "Raises speaker-contamination risk and requires defendant-specific attribution for every quotation.",
+      "status": "DOCUMENTED"
+    },
+    {
+      "issue": "Political/media benefit",
+      "known": "Mercado's victim experience became part of her public political biography; she later became minister.",
+      "legal_relevance": "Possible motive context only; cannot substitute for proof of knowing manipulation.",
+      "status": "BENEFIT/SALIENCE DOCUMENTED; MOTIVE UNPROVEN"
+    }
+  ],
+  "police_style_investigative_questions": [
+    "What is the first timestamped record of any complaint about the Facebook thread?",
+    "Who made that complaint, through which channel, and what exact Facebook content was attached?",
+    "Did Mercado contact Folketing security before or after the unrelated Facebook user contacted local police?",
+    "Were the two complaints about the same account/comment or different people/comments?",
+    "What caused police to identify and attend the Son's address specifically?",
+    "What exact time was he arrested relative to his last Facebook contribution?",
+    "What was seized from his devices, and was a complete Facebook thread/export preserved?",
+    "Did the preserved evidence include Mercado's own replies and deleted/edited comments?",
+    "For every count, what exact account, timestamp, parent comment and addressee corresponded to the charged wording?",
+    "Who first transcribed each disputed sentence: police, prosecutor, court clerk, journalist or another witness?",
+    "Did the court see screenshots/full thread or only police transcriptions/extracts?",
+    "Which approximately fifteen comments did the Son admit writing, and which specific ones did he deny?",
+    "What did the Son tell police during the first interview about meaning, addressee and intent?",
+    "Did his explanation materially change between police interview, remand hearing and trial?",
+    "What investigative steps did defense counsel request?",
+    "Were any defense requests rejected by police and referred to the court for decision?",
+    "What evidence did the Son personally try to submit from remand, and can the rejection be documented?",
+    "What exact statements did Mercado make to TV2 before or during the first hearing?",
+    "Did Mercado describe herself as having no role in reporting while also having contacted parliamentary security?",
+    "What were the actual Sweden departure/return dates, and what was the trip described as before the criminal case became public?",
+    "Were any Mercado Facebook posts/comments edited or deleted after the thread became evidence?",
+    "Did police obtain Facebook preservation data before deletion?",
+    "Were journalists shown police/court exhibits, screenshots supplied by Mercado, or only oral summaries?",
+    "Did any later account merge statements from the 18-year-old woman, 17-year-old defendant or other commenters into the Son's narrative?",
+    "Was the Jo Cox reference itself authored by the Son, or did its presence elsewhere in the thread drive heightened security attention?"
+  ],
+  "reopening_priority": {
+    "tier_1_potentially_case-changing": [
+      "Original Facebook thread/export proving wrong speaker or wrong addressee.",
+      "Police evidence inventory showing incomplete or selective capture of the thread.",
+      "Court exhibits showing charged text differs materially from original post.",
+      "Primary evidence that a statement used against the Son was authored by another account.",
+      "Documented defense request for exculpatory evidence that was improperly refused or never presented.",
+      "Primary witness/referral records proving a material factual representation to court was false."
+    ],
+    "tier_2_important_corrobation": [
+      "TV2 footage contradicting later report/referral or fear narrative.",
+      "Sweden travel timeline inconsistent with emergency-flight account.",
+      "Deleted Mercado replies showing the Son was responding to another person or to active reciprocal trolling.",
+      "Lawyer notes documenting consistent not-guilty/mirror defense and attempted evidentiary submissions."
+    ],
+    "tier_3_context_not_enough_alone": [
+      "Political benefit or later ministerial appointment.",
+      "Salary/pension value.",
+      "Mercado's combative political style.",
+      "Later illness or Potatoverse karma interpretation.",
+      "General criticism of Christiania policy or media bias."
+    ]
+  },
+  "source_control": {
+    "rule": "Never count wire-service republications as independent corroboration.",
+    "hierarchy": [
+      "original digital evidence / metadata",
+      "court judgment / court exhibits / police journal",
+      "contemporaneous audio/video/interview",
+      "contemporaneous first-hand reporter present in court",
+      "wire-service report citing another outlet",
+      "later retrospective profile",
+      "project recollection",
+      "interpretation/speculation"
+    ]
+  },
+  "current_legal_assessment": "The presently assembled public record is sufficient to justify a serious evidentiary review, but not sufficient on its own to establish that Mercado committed an offense, knowingly framed the Son, or that the conviction was wrongful. The potentially strongest reopening path would be new primary digital or procedural evidence under section 977(1)(1), or evidence of false testimony/evidence under section 977(1)(2). General concerns about source compression or motive are unlikely to be enough unless tied to concrete case-changing evidence.",
+  "next_documents_to_obtain": [
+    "complete 2016 judgment(s), including any appellate disposition",
+    "indictment and count-by-count charge wording",
+    "police case journal and initial complaint/referral entries",
+    "Folketing security referral/incident records if obtainable",
+    "police screenshots or Facebook preservation/export",
+    "device forensic extraction inventory",
+    "defense counsel case file and correspondence",
+    "requests for investigative steps and any court rulings on refusals",
+    "remand/prison correspondence or property/evidence submission logs",
+    "TV2/DR archive footage and transcripts",
+    "dated Sweden travel evidence",
+    "contemporaneous screenshots of Mercado's deleted/edited comments"
+  ],
+  "guardrails": [
+    "Do not label Mercado criminal, pathological liar, conspirator or evidence-fabricator absent proof.",
+    "Do not call parliamentary security 'political police'; identify the actual institution and function.",
+    "Do not confuse a morally provocative post with a legal defense to threats.",
+    "Do not allow conviction to substitute for proof that every reported quotation was correctly attributed.",
+    "Do not allow later Potatoverse prophecy/karma interpretation to enter the evidentiary case for reopening."
+  ],
+  "official_sources": [
+    "https://www.retsinformation.dk/eli/lta/2025/1294",
+    "https://www.retsinformation.dk/eli/lta/2024/1160",
+    "https://anklagemyndigheden.dk/da/forsvarerens-opgaver",
+    "https://anklagemyndigheden.dk/da/sigtelse",
+    "https://www.domstol.dk/media/tfhm0hgw/genoptagelse-af-straffesager-efter-retsplejelovens-kapitel-86.pdf",
+    "https://www.domstol.dk/media/2881/generel-vejledning.pdf"
+  ],
+  "connections": [
+    "knowledge/chronology/mai-mercado-2016-heads-and-tails-reconstruction.json",
+    "knowledge/chronology/mai-mercado-2016-second-order-connections-atlas.json",
+    "knowledge/chronology/mai-mercado-2016-remand-defense-access-audit.json",
+    "knowledge/chronology/mai-mercado-2016-referral-chain-audit.json",
+    "knowledge/chronology/mai-mercado-2016-forensic-source-matrix.json",
+    "knowledge/chronology/mai-mercado-2016-article-contradiction-ledger.json",
+    "knowledge/chronology/mai-mercado-2016-toxic-source-and-claim-audit.json"
+  ]
+}
