@@ -73,6 +73,7 @@ let traceDepth = 1;
 const TRACE_MAX_DEPTH = 3;
 const TRACE_MAX_NODES = 60;
 const TRACE_MAX_EDGES = 120;
+const GOLDEN_ANGLE = Math.PI * (3 - Math.sqrt(5));
 
 const HUBS = [
   {id:'religion',label:'Religion / Irreligion',keys:['religion','society_and_culture'],plane:'observable'},
@@ -184,17 +185,24 @@ function getModule(h, record, code) {
 function hubData(code, record) {
   const r = by3[code];
   if (!r?.latlng) return {points:emptyFC(),lines:emptyFC()};
-  const lat=r.latlng[0], lon=r.latlng[1], radius=Math.max(.7,Math.min(4.5,Math.sqrt(Math.max(r.area||1,1))/430));
+  const lat=r.latlng[0], lon=r.latlng[1], baseRadius=Math.max(.7,Math.min(4.5,Math.sqrt(Math.max(r.area||1,1))/430));
   const available=HUBS.map(h=>({...h,data:getModule(h,record,code)})).filter(h=>h.data);
   const pts=[],lines=[];
   available.forEach((h,i)=>{
-    const a=(i/Math.max(available.length,1))*Math.PI*2, dx=Math.cos(a)*radius, dy=Math.sin(a)*radius*.65, coord=[lon+dx,Math.max(-82,Math.min(82,lat+dy))];
+    // Vogel/phyllotaxis placement: stable under incremental module growth and less prone
+    // to spoke alignment than equal angular sectors. This is navigation geometry only.
+    const a=i*GOLDEN_ANGLE;
+    const radialScale=.62+.17*Math.sqrt(i+1);
+    const radius=baseRadius*radialScale;
+    const dx=Math.cos(a)*radius, dy=Math.sin(a)*radius*.65;
+    const coord=[lon+dx,Math.max(-82,Math.min(82,lat+dy))];
     pts.push({type:'Feature',properties:{id:h.id,label:h.label,plane:h.plane,code,idx:i},geometry:{type:'Point',coordinates:coord}});
     lines.push({type:'Feature',properties:{id:h.id,code},geometry:{type:'LineString',coordinates:[[lon,lat],coord]}});
   });
   return {points:{type:'FeatureCollection',features:pts},lines:{type:'FeatureCollection',features:lines}};
 }
 function compareData() {
+  if (!compareMode) return emptyFC();
   const features=[];
   for (const code of compareCodes) {
     const r=by3[code];
@@ -251,6 +259,17 @@ async function toggleCompareCountry(code){
   else{if(compareCodes.length>=4){const removed=compareCodes.shift();setState(removed,'compare',false)}compareCodes.push(code);setState(code,'compare',true)}
   selected=code;selectedFeature=featureByCode(code);currentCanonical=await loadCanonical(code);updateSpatial();renderCompare();updateUrl();
 }
+async function removeComparedCountry(code){
+  if(!compareCodes.includes(code))return;
+  compareCodes=compareCodes.filter(x=>x!==code);setState(code,'compare',false);
+  if(compareCodes.length){selected=compareCodes.at(-1);selectedFeature=featureByCode(selected);currentCanonical=await loadCanonical(selected)}
+  updateSpatial();renderCompare();updateUrl();
+}
+async function inspectComparedCountry(code){
+  const f=featureByCode(code);if(!f)return;
+  clearCompareStates();compareCodes=[];compareMode=false;$('#compare').classList.remove('active');
+  await selectFeature(f,true);
+}
 async function selectFeature(f,fly=false){
   const code=f.properties.iso3;if(!code)return;
   if(compareMode)return toggleCompareCountry(code);
@@ -274,7 +293,7 @@ function renderCountry(){
 }
 async function renderCompare(){
   const rows=await Promise.all(compareCodes.map(async code=>{const r=by3[code]||{},rec=await loadCanonical(code),modules=HUBS.filter(h=>getModule(h,rec,code)).length,rels=(worldCfg.curated_edges||[]).filter(e=>e.a===code||e.b===code).length;return{code,name:r.name?.common||code,pop:r.population,area:r.area,modules,rels,badges:axisBadges(code)}}));
-  $('#panel').innerHTML=`<div class="eyebrow">Compare mode · ${rows.length}/4</div><h1>Country comparison</h1><p class="muted">Click countries to add or remove them. Comparison is descriptive: height, graph degree and project-axis labels encode different things.</p><div class="actions"><button onclick="fitCompare()">Fit comparison</button><button onclick="clearCompare()">Clear</button><button onclick="leaveCompare()">Done</button></div>${rows.length?`<div class="card"><table class="compare-table"><thead><tr><th>Country</th><th>Population</th><th>Area km²</th><th>Modules</th><th>Edges</th></tr></thead><tbody>${rows.map(x=>`<tr><td><button onclick="goCountry('${x.code}')">${esc(x.name)}</button><div>${x.badges.slice(0,2).map(b=>`<span class="pill">${esc(b)}</span>`).join('')}</div></td><td>${fmt(x.pop)}</td><td>${fmt(x.area)}</td><td>${x.modules}</td><td>${x.rels}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card muted">No countries held yet. Click up to four polygons.</div>'}<div class="boundary">Compare currently uses fields already loaded by the atlas. GDP, debt, energy dependence and other dated sourced metrics should be added through the metric registry rather than guessed here.</div>`;
+  $('#panel').innerHTML=`<div class="eyebrow">Compare mode · ${rows.length}/4</div><h1>Country comparison</h1><p class="muted">Click map countries to add or remove them. Table actions deliberately separate inspection from membership.</p><div class="actions"><button onclick="fitCompare()">Fit comparison</button><button onclick="clearCompare()">Clear</button><button onclick="leaveCompare()">Done</button></div>${rows.length?`<div class="card"><table class="compare-table"><thead><tr><th>Country</th><th>Population</th><th>Area km²</th><th>Modules</th><th>Edges</th></tr></thead><tbody>${rows.map(x=>`<tr><td><b>${esc(x.name)}</b><div><button onclick="inspectComparedCountry('${x.code}')">Inspect</button> <button onclick="removeComparedCountry('${x.code}')">Remove</button></div><div>${x.badges.slice(0,2).map(b=>`<span class="pill">${esc(b)}</span>`).join('')}</div></td><td>${fmt(x.pop)}</td><td>${fmt(x.area)}</td><td>${x.modules}</td><td>${x.rels}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card muted">No countries held yet. Click up to four polygons.</div>'}<div class="boundary">Comparison is descriptive. Population, area, graph degree and project-axis labels encode different quantities; future GDP, debt and energy metrics require harmonized dated sources.</div>`;
 }
 window.openModule=id=>{const h=HUBS.find(x=>x.id===id);if(!h||!selected)return;const data=getModule(h,currentCanonical,selected);$('#panel').innerHTML=`<div class="eyebrow">${esc(h.plane)} · ${esc(selected)}</div><h1>${esc(h.label)}</h1><div class="actions"><button onclick="showOverview()">Back to country</button></div><div class="boundary">${h.id==='tim'?'Project-canon material is separate from empirical country data.':h.id==='debt'?'This module is for documented physical/public finance. Tim-claimed karmic amounts remain a separate project ledger.':'This is a semantic data module, not a geographic point.'}</div><div class="card">${readable(data)}</div>`};
 window.showOverview=()=>renderCountry();
@@ -282,8 +301,10 @@ window.fitCountry=()=>selected&&fitCodes([selected]);
 window.fitTrace=()=>{if(!selected)return;const codes=traceGraph(selected).nodes.map(n=>n.code);fitCodes(codes,65)};
 window.fitCompare=()=>compareCodes.length&&fitCodes(compareCodes,70);
 window.clearCompare=()=>{clearCompareStates();compareCodes=[];updateSpatial();renderCompare();updateUrl()};
-window.leaveCompare=()=>{compareMode=false;$('#compare').classList.remove('active');if(selected){setState(selected,'selected',true);renderCountry()}else resetWorld(false);updateSpatial();updateUrl()};
+window.leaveCompare=()=>{clearCompareStates();compareCodes=[];compareMode=false;$('#compare').classList.remove('active');if(selected){setState(selected,'selected',true);renderCountry()}else resetWorld(false);updateSpatial();updateUrl()};
 window.addCurrentToCompare=async()=>{if(!selected)return;compareMode=true;$('#compare').classList.add('active');if(!compareCodes.includes(selected)){compareCodes.push(selected);setState(selected,'compare',true)}setState(selected,'selected',false);updateSpatial();renderCompare();updateUrl()};
+window.removeComparedCountry=removeComparedCountry;
+window.inspectComparedCountry=inspectComparedCountry;
 window.goCountry=async code=>{const f=featureByCode(code);if(!f)return;if(compareMode){await toggleCompareCountry(code);fitCodes(compareCodes.length?compareCodes:[code]);return}await selectFeature(f,true)};
 
 function addLayers(){
@@ -338,7 +359,7 @@ $('#relations').onclick=()=>{showRelations=!showRelations;$('#relations').classL
 $('#relationType').onchange=e=>{relationType=e.target.value;updateSpatial();if(compareMode)renderCompare();else if(selected)renderCountry();updateUrl()};
 $('#traceDepth').onchange=e=>{traceDepth=Math.max(1,Math.min(TRACE_MAX_DEPTH,Number(e.target.value)||1));updateSpatial();if(selected&&!compareMode)renderCountry();updateUrl()};
 $('#fit').onclick=()=>compareMode?window.fitCompare():selected&&traceDepth>1?window.fitTrace():window.fitCountry();
-$('#compare').onclick=()=>{compareMode=!compareMode;$('#compare').classList.toggle('active',compareMode);if(compareMode){if(selected&&!compareCodes.includes(selected)){compareCodes.push(selected);setState(selected,'compare',true);setState(selected,'selected',false)}updateSpatial();renderCompare()}else window.leaveCompare();updateUrl()};
+$('#compare').onclick=()=>{if(compareMode){window.leaveCompare();return}compareMode=true;$('#compare').classList.add('active');if(selected&&!compareCodes.includes(selected)){compareCodes.push(selected);setState(selected,'compare',true);setState(selected,'selected',false)}updateSpatial();renderCompare();updateUrl()};
 $('#tilt').onclick=()=>map.easeTo({pitch:map.getPitch()>20?0:55,duration:500});
 $('#globe').onclick=()=>{globe=!globe;try{map.setProjection({type:globe?'globe':'mercator'});$('#globe').classList.toggle('active',globe)}catch(e){console.warn(e)}};
 $('#world').onclick=()=>resetWorld(true);
