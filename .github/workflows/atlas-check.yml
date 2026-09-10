@@ -59,7 +59,20 @@ jobs:
       - name: Audit Atlas links and record coverage
         run: python scripts/audit_atlas_links.py
       - name: Audit web layer
+        id: audit_web
+        continue-on-error: true
         run: python scripts/audit_web.py
+      - name: Upload web audit diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: web-audit-report
+          path: audit-web-report.txt
+          if-no-files-found: error
+          retention-days: 7
+      - name: Enforce web audit gate
+        if: steps.audit_web.outcome == 'failure'
+        run: exit 1
       - name: Build static site
         run: python scripts/build_site.py
       - name: Validate built site shell
