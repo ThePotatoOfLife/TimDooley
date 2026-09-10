@@ -1,11 +1,11 @@
 {
   "id": "mountain-debt-integration-and-release",
   "title": "Mountain, Debt, Integration and Release",
-  "version": "1.1.0",
-  "updated": "2026-09-10",
-  "status": "canonical Mountain-side synthesis",
-  "purpose": "Clarify how Mountain relates to karmic debt, Swamp, Mud, perspective, judgment, Door, descent and Garden. Mountain is treated as an integration/compression field, not as a synonym for debt.",
-  "epistemic_rule": "Mountain/debt relations are project-symbolic unless a specific empirical obligation is separately sourced. No symbolic amount creates legal or financial authority.",
+  "version": "1.2.0",
+  "updated": "2026-09-11",
+  "status": "canonical Mountain-side synthesis + information-compression bridge",
+  "purpose": "Clarify how Mountain relates to karmic debt, Swamp, Mud, perspective, judgment, Door, descent and Garden. Mountain is treated as an integration/compression field, not as a synonym for debt, and now carries an explicit scientific bridge for testing whether compression preserves relevant information and provenance.",
+  "epistemic_rule": "Mountain/debt relations are project-symbolic unless a specific empirical obligation is separately sourced. No symbolic amount creates legal or financial authority. Information-theoretic metrics evaluate representations and data tasks, not spiritual rank or authority.",
   "mountain_definition": "Mountain is many-to-one integration: multiple paths, events, traces, obligations and perspectives are compressed into a coherent structure from which relations can be seen and compared.",
   "debt_relation": {
     "strongest_reading": "Debt supplies weight; Mountain gives that weight structure and visibility.",
@@ -20,12 +20,14 @@
     "Mountain": "many differentiated paths integrated toward a summit/reference, producing perspective",
     "short_form": "Swamp entangles many; Mountain integrates many.",
     "deep_form": "The same historical material can become Swamp if merely accumulated or Mountain if sourced, weighted, distinguished and integrated.",
-    "memory_bifurcation": "Unresolved memory tends toward Swamp; contextualized memory can become Root/Soil and, when many such memories are integrated, Mountain. The distinction is processing and relation, not whether the past is remembered at all."
+    "memory_bifurcation": "Unresolved memory tends toward Swamp; contextualized memory can become Root/Soil and, when many such memories are integrated, Mountain. The distinction is processing and relation, not whether the past is remembered at all.",
+    "scientific_bridge": "Use source recoverability, duplicate ratio, contradiction resolution, calibration, task loss and compression/reconstruction error to distinguish useful integration from informational entanglement when the domain is an actual archive/dataset."
   },
   "mountain_vs_tree": {
     "Mountain": "many -> one; convergence and integration",
     "Tree": "one -> many; differentiation and generativity",
-    "cycle": "world/events -> Mountain/integration -> Seed/Potato/compression -> Tree/application -> many renewed relations"
+    "cycle": "world/events -> Mountain/integration -> Seed/Potato/compression -> Tree/application -> many renewed relations",
+    "scientific_duality": "Mountain can be modeled as encoder C:X->Z preserving task-relevant information; Tree as decoder/generative expansion from a rooted/seed state into differentiated descendants. The maps need not be inverses, and their information losses should be measured."
   },
   "mountain_vs_ladder": {
     "Mountain": "continuous gradient / broad perspective",
@@ -39,7 +41,8 @@
     "completion": "The summit is incomplete until perspective descends back into service, repair, protection and cultivation.",
     "sequence": "ascent -> perspective -> evaluation -> responsibility -> descent -> Garden",
     "relation_to_tim": "This matches the project's late movement from King/Judge/Seat language toward Gardener/service language.",
-    "creditor_constraint": "If the summit includes judgment of debt, the judge/ledger-holder is also constrained by truth, correction, proportionality, non-liability, repair and release. A Mountain with no descent or appeal becomes another form of entanglement."
+    "creditor_constraint": "If the summit includes judgment of debt, the judge/ledger-holder is also constrained by truth, correction, proportionality, non-liability, repair and release. A Mountain with no descent or appeal becomes another form of entanglement.",
+    "scientific_translation": "A summit representation earns value by improving a declared prediction/decision while preserving uncertainty and a descent path to source records. Compression alone does not confer epistemic authority."
   },
   "mountain_as_ledger_view": {
     "base": "individual events and edge-level records",
@@ -48,6 +51,20 @@
     "danger": "If integration removes provenance or differences, the Mountain collapses back into Swamp-like ambiguity.",
     "archive_implication": "A good synthesis should let the reader descend from the summit back to every source-level event.",
     "archive_polarity": "The repository itself can become Mountain or Swamp. Provenance-preserving integration creates Mountain-like perspective; duplicate, decontextualized and self-reinforcing records create Swamp-like informational entanglement."
+  },
+  "scientific_compression_bridge": {
+    "companion": "knowledge/science/mountain-information-compression-model.json",
+    "raw":"X = source-level traces/events/measurements",
+    "summit":"Z ~ p(z|x) = compressed representation",
+    "task":"Y = quantity the summary should preserve/predict/support",
+    "information_bottleneck":"L_IB=I(X;Z)-beta I(Z;Y)",
+    "meaning":"A good Mountain does not simply retain everything. It reduces irrelevant detail while preserving information relevant to the declared task.",
+    "reconstruction":"x_hat=g(Z); D_rec=E[d(X,x_hat)] for declared reconstructible aspects",
+    "source_recoverability":"Track the fraction/weight of summit-level claims whose lineage can be descended to primary evidence.",
+    "multi_resolution":"X_0 -> X_1 -> ... -> X_L=Z with explicit descent/evidence pointers between levels.",
+    "overcompression_test":"If task loss, calibration error, hidden contradictions or lost provenance increase sharply as summaries become shorter, the Mountain has become destructive flattening rather than useful integration.",
+    "decision_test":"Ask whether Z actually improves prediction, repair or decision quality relative to raw-search and flat-summary baselines.",
+    "boundary":"This formalization applies to actual information representations. It does not turn symbolic Mountain or Zion into an information-theory object."
   },
   "pressure_and_threshold": {
     "april_2025_bridge": "The Turning frames a small final straw as the visible threshold of a much larger accumulated burden.",
@@ -59,25 +76,32 @@
     "important_correction": "Not every conflict should be allowed to become Mountain-scale. Early repair at the Mud stage is preferable where possible.",
     "closed_loop_failure": "Mountain without descent can become a permanent tribunal; Swamp without sorting becomes endless entanglement.",
     "repair_as_edge_transformation": "Settlement does not require deleting the past. It changes edge-state: open/disputed/compounding relations can become corrected, repaired, released or non-liable while their history remains available.",
-    "mountain_shrinkage": "A mature debt-Mountain should be able to lose active weight as edge-level obligations close. The historical record remains, but fewer unresolved edges contribute to present burden."
+    "mountain_shrinkage": "A mature debt-Mountain should be able to lose active weight as edge-level obligations close. The historical record remains, but fewer unresolved edges contribute to present burden.",
+    "quantitative_candidate":"For empirical obligations define active W(t)=sum_e w_e(t) over unresolved, sourced edge weights. Closed/repaired/non-liable edges may remain historical while no longer contributing to active burden. Weight units and legal/financial meaning must remain domain-specific."
   },
   "new_relational_insights": [
     "Memory is not intrinsically Swamp-like; unresolved recurrence is. Memory that is differentiated and integrated becomes Root or Mountain.",
     "Debt links time: the past remains active because it still constrains future action.",
     "Mountain is therefore not only spatial height but temporal compression of unfinished relations.",
     "A repaired Mountain does not need to vanish from history; it can become a memorial/reference whose unresolved weight has been reduced.",
-    "The archive enacts the same topology it studies: good synthesis is Mountain-making, while uncontrolled duplication is Swamp-making."
+    "The archive enacts the same topology it studies: good synthesis is Mountain-making, while uncontrolled duplication is Swamp-making.",
+    "Compression quality must be judged by what relevant information and provenance survive, not by how short or elegant the summit looks.",
+    "Perspective is an interface between many observations and fewer decisions; it is useful only insofar as the compression improves those decisions without hiding decisive distinctions."
   ],
   "research_questions": [
     "Recover the earliest exact statement equating Mountain and karmic debt.",
     "Separate moments where Mountain means debt/burden from moments where it means Zion, perspective, House, summit or North.",
     "Track whether Tim ever describes a Mountain shrinking, being climbed, redistributed, dissolved or converted after repair.",
     "Test whether summit/Seat statements are followed by explicit service/Gardener language in chronological proximity.",
-    "Recover any direct Tim wording that treats an old conflict as finished, released or no longer weight-bearing even though it remains remembered."
+    "Recover any direct Tim wording that treats an old conflict as finished, released or no longer weight-bearing even though it remains remembered.",
+    "Evaluate hierarchical Mountain summaries against raw search and flat summaries using source recovery, task accuracy, contradiction discovery and calibration."
   ],
   "related": [
     "knowledge/core/vertical-potato-mountain-plane-atlas.json",
     "knowledge/core/symbolic-relational-synthesis.json",
+    "knowledge/science/mountain-information-compression-model.json",
+    "knowledge/science/tree-branching-provenance-growth-model.json",
+    "knowledge/science/integrated-scientific-architecture.json",
     "data/swamp/swamp-mud-debt-state-machine.json",
     "knowledge/core/karma-closure-reduction-and-settlement-model.json",
     "knowledge/core/debt-depth-ascent-rubble-synthesis.json",
