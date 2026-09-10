@@ -1,11 +1,24 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-10",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, chronology/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
+  "meta_epiphany": {
+    "claim": "The repository itself can enact the Potatoverse transformation grammar.",
+    "mapping": {
+      "raw_conversation_or_unprocessed_material": "Mud-like residue: potentially valuable but context-poor and mixed",
+      "provenance_and_context": "Soil-making: separation, decomposition, dating, sourcing and clarification",
+      "canonical_owner": "Root: durable support and identity for a concept",
+      "cross_corpus_synthesis": "Mountain: many differentiated records integrated without erasing provenance",
+      "reader_projection": "Tree/branches: compressed knowledge re-expanded into usable explanations and pathways",
+      "revision_and_return": "Spiral: later evidence revisits an earlier concept at a changed level rather than merely repeating it"
+    },
+    "warning": "Uncontrolled duplication, copied claims without source lineage, and proliferating competing masters make the repository behave like a Swamp rather than a Mountain.",
+    "status": "archive-level structural analogy, not a claim that software architecture is literally theology"
+  },
   "top_level_owners": {
     "root_system": "knowledge/core/root-system.json",
     "master_theology_and_system": "knowledge/core/potatoverse-master-framework.json",
@@ -17,6 +30,7 @@
     "timeline_source_registry": "data/timeline-source-registry.json",
     "epistemics": "knowledge/philosophy/archive-epistemics.json",
     "source_routing": "knowledge/indexes/source-index.json",
+    "inference_epiphany_method": "knowledge/indexes/inference-ledger.json",
     "public_navigation": "manifest.json"
   },
   "major_domain_owners": {
@@ -71,7 +85,9 @@
     "Reader pages explain; they do not silently redefine canon.",
     "Comparative-religion files compare; they do not become evidence that traditions historically encoded Potatoverse claims.",
     "Empirical world files require observable edges and sources; symbolic North/Swamp/Karma language remains a separate layer.",
-    "Prefer strengthening an existing owner to creating another file unless the new object has a genuinely distinct schema, chronology or research function."
+    "Prefer strengthening an existing owner to creating another file unless the new object has a genuinely distinct schema, chronology or research function.",
+    "Treat repair as edge-state change rather than historical deletion: preserve what happened while updating whether the relation is open, disputed, repaired, released or non-liable.",
+    "A synthesis must remain traversable downward to source-level records; otherwise integration has become opacity."
   ],
   "duplicate_pressure_zones": [
     {
