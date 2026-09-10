@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/data/relational-edge-state.schema.json",
+  "title": "World Relational Atlas — Relational Edge State",
+  "description": "A typed relationship record that can be inspected horizontally on D4 and vertically through provenance, capture, transition, generativity and closure. Symbolic fields must not overwrite empirical evidence fields.",
+  "type": "object",
+  "required": ["id", "endpoints", "relationship_type", "epistemic_layer", "evidence", "state"],
+  "properties": {
+    "id": {"type":"string","minLength":1},
+    "endpoints": {
+      "type":"object",
+      "required":["a","b"],
+      "properties": {
+        "a":{"type":"string","minLength":1},
+        "b":{"type":"string","minLength":1},
+        "direction":{"enum":["a_to_b","b_to_a","bidirectional","undirected","mixed","unknown"]}
+      },
+      "additionalProperties": false
+    },
+    "relationship_type": {"type":"string","minLength":1},
+    "epistemic_layer": {"enum":["observed","disclosed","estimated","inferred","interpretive","project-canon","allegation","scenario","unknown"]},
+    "time": {
+      "type":"object",
+      "properties": {
+        "start":{"type":["string","null"]},
+        "end":{"type":["string","null"]},
+        "as_of":{"type":["string","null"]},
+        "status":{"enum":["current","historical","future","ongoing","disputed","unknown"]}
+      },
+      "additionalProperties": true
+    },
+    "evidence": {
+      "type":"object",
+      "required":["confidence"],
+      "properties": {
+        "confidence":{"enum":["high","medium","low","unknown"]},
+        "sources":{"type":"array","items":{"type":"string"}},
+        "source_class":{"type":"array","items":{"enum":["official","primary","academic","journalistic","archive","conversation","project","other"]}},
+        "corroboration_count":{"type":"integer","minimum":0},
+        "contradictions":{"type":"array","items":{"type":"string"}},
+        "notes":{"type":"string"}
+      },
+      "additionalProperties": true
+    },
+    "state": {
+      "type":"object",
+      "properties": {
+        "boundary": {
+          "type":"object",
+          "properties": {
+            "kind":{"type":"string"},
+            "strength":{"type":["number","null"],"minimum":0,"maximum":1},
+            "description":{"type":"string"}
+          },
+          "additionalProperties": true
+        },
+        "passage": {
+          "type":"object",
+          "properties": {
+            "available":{"type":["boolean","null"]},
+            "mechanisms":{"type":"array","items":{"type":"string"}},
+            "friction":{"type":["number","null"],"minimum":0,"maximum":1},
+            "blocked_by":{"type":"array","items":{"type":"string"}}
+          },
+          "additionalProperties": true
+        },
+        "memory": {
+          "type":"object",
+          "properties": {
+            "persistence":{"type":["number","null"],"minimum":0,"maximum":1},
+            "artifacts":{"type":"array","items":{"type":"string"}},
+            "reactivation":{"type":["number","null"],"minimum":0,"maximum":1}
+          },
+          "additionalProperties": true
+        },
+        "obligation": {
+          "type":"object",
+          "properties": {
+            "kind":{"enum":["none","financial","legal","contractual","social","care","covenantal","moral-project","mixed","unknown"]},
+            "amount":{"type":["number","null"]},
+            "unit":{"type":["string","null"]},
+            "description":{"type":"string"},
+            "disputed":{"type":["boolean","null"]}
+          },
+          "additionalProperties": true
+        },
+        "agency": {
+          "type":"object",
+          "properties": {
+            "exit_available":{"type":["boolean","null"]},
+            "exit_cost":{"type":["number","null"],"minimum":0,"maximum":1},
+            "revision_available":{"type":["boolean","null"]},
+            "refusal_available":{"type":["boolean","null"]},
+            "asymmetry":{"type":["number","null"],"minimum":0,"maximum":1}
+          },
+          "additionalProperties": true
+        },
+        "recurrence": {
+          "type":"object",
+          "properties": {
+            "frequency":{"type":["number","null"]},
+            "unit":{"type":["string","null"]},
+            "self_reinforcing":{"type":["boolean","null"]},
+            "adaptive_rewiring":{"type":["boolean","null"]}
+          },
+          "additionalProperties": true
+        },
+        "transformation": {
+          "type":"object",
+          "properties": {
+            "axis_dimension":{"type":["integer","null"],"minimum":1,"maximum":11},
+            "operator":{"type":["string","null"]},
+            "trend":{"enum":["integrating","disintegrating","repairing","stable","oscillating","unknown"]},
+            "reason":{"type":"string"}
+          },
+          "additionalProperties": true
+        },
+        "fruit": {
+          "type":"object",
+          "properties": {
+            "autonomous_capacity":{"type":["number","null"],"minimum":0,"maximum":1},
+            "reciprocal_capacity":{"type":["number","null"],"minimum":0,"maximum":1},
+            "nourishment":{"type":["number","null"],"minimum":0,"maximum":1},
+            "harm":{"type":["number","null"],"minimum":0,"maximum":1},
+            "downstream_outputs":{"type":"array","items":{"type":"string"}}
+          },
+          "additionalProperties": true
+        },
+        "closure": {
+          "type":"object",
+          "properties": {
+            "status":{"enum":["open","disputed","repairing","substantially_repaired","released","closed","unknown"]},
+            "conditions":{"type":"array","items":{"type":"string"}},
+            "actions_completed":{"type":"array","items":{"type":"string"}},
+            "review_date":{"type":["string","null"]}
+          },
+          "additionalProperties": true
+        }
+      },
+      "additionalProperties": false
+    },
+    "project_interpretation": {
+      "type":"object",
+      "description":"Optional Potatoverse interpretation. It may point to D1-D11 operators but may not alter the empirical evidence fields.",
+      "properties": {
+        "axis_dimension":{"type":["integer","null"],"minimum":1,"maximum":11},
+        "symbols":{"type":"array","items":{"type":"string"}},
+        "reading":{"type":"string"},
+        "confidence":{"enum":["canonical","developed","provisional","speculative","unknown"]}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}
