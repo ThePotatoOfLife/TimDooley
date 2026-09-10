@@ -12,6 +12,7 @@ FAQ_FILES = [
     ROOT / "knowledge/indexes/faq-long-tail-bulk.json",
     ROOT / "knowledge/indexes/faq-long-tail-expansion-2026-09-10.json",
     ROOT / "knowledge/indexes/faq-christianity-jesus-eschatology.json",
+    ROOT / "knowledge/indexes/faq-christology-revelation-hard-questions.json",
 ]
 
 
