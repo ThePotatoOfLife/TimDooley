@@ -1,0 +1,69 @@
+{
+  "id": "world-entanglement-registry",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "active schema and routing registry",
+  "purpose": "Provide one typed registry for problems, dependencies, conflicts, political-finance relations, exploitation systems, historical harms, project-symbolic obligations and repair questions that the World Relational Atlas can attach to countries, territories, organizations, events and edges without turning whole populations into issue labels.",
+  "core_rule": "An entanglement is a sourced relationship problem, not a moral color painted across a nation. It must identify actors, mechanism, geography, period, evidence, affected parties, uncertainty and possible repair.",
+  "required_fields": ["id", "title", "kind", "plane", "status", "geography", "actors", "mechanism", "date_or_period", "evidence", "affected_parties", "relations", "repair_questions", "canonical_owners"],
+  "planes": {
+    "observable": "Externally sourceable institutions, transactions, law, events, demographics and material relationships.",
+    "interpretive": "Analytical language such as Swamp, covenant rupture, tikkun or North/West/East relation.",
+    "project_canon": "Tim/Potatoverse statements, karmic/spiritual ledger, Son/Door, North-of-North and related internal symbolic material."
+  },
+  "kinds": [
+    "trade-dependency", "energy-dependency", "supply-chain-concentration", "debt-dependency", "financial-exposure", "ownership-control", "political-finance", "lobbying", "regulatory-capture", "sanctions", "security-dependency", "alliance-obligation", "intelligence-cooperation", "migration-diaspora", "religious-freedom", "religion-state", "intercommunal-conflict", "human-trafficking", "forced-labor", "historical-slavery", "civilian-harm", "human-rights", "corruption-risk", "organized-exploitation", "information-manipulation", "harassment-network", "institutional-abuse", "ecological-damage", "infrastructure-bottleneck", "historical-injustice", "covenant-comparison", "project-karmic-obligation", "repair-programme"
+  ],
+  "statuses": ["observed", "alleged", "contested", "historical", "ongoing", "resolved", "partly-repaired", "research-lead", "project-symbolic"],
+  "evidence_classes": ["primary-official", "court-record", "law-or-treaty", "audited-financial", "regulatory-filing", "academic", "international-organization", "reputable-reporting", "ngo-dataset", "primary-public-statement", "conversation-archaeology", "project-synthesis", "unresolved"],
+  "responsibility_rule": "Responsibility attaches to evidenced people, organizations, policies, institutions, transactions, commands and events. Nationality, ethnicity, religion, ancestry or residence alone never establishes responsibility.",
+  "serious_harm_rule": "Slavery, trafficking, abuse, war and civilian harm are represented for documentation, causal understanding, prevention and repair. They are not scores, collectibles or entertainment mechanics.",
+  "swamp_rule": "Swamp can be used only as an interpretive tag over one or more documented mechanisms such as opacity, corruption, extraction, coercion, violence, regulatory capture, disinformation incentives or blocked accountability. A country or religion cannot be Swamp merely by identity.",
+  "edge_binding": {
+    "rule": "Every entanglement should point to the exact graph edges through which it operates.",
+    "examples": [
+      "political-finance -> donor -> PAC -> expenditure -> candidate/election -> policy context",
+      "human-trafficking -> recruiter -> transit -> coercion -> exploiter -> payment/asset -> law-enforcement/court -> victim-support",
+      "historical-slavery -> legal regime -> trader/company/state/person -> route/port -> forced labor site -> commodity -> abolition/change -> documented afterlife",
+      "energy-dependency -> producer -> infrastructure -> importer -> industry/household -> price/security exposure",
+      "religion-state -> constitution/law -> institution/community -> right/restriction/subsidy/recognition -> documented social effect"
+    ]
+  },
+  "repair_template": [
+    "What specific mechanism is producing the harm, fragility or dependency?",
+    "Who has legal or practical authority to change it?",
+    "Who is affected and how are they represented in the evidence?",
+    "What truth/accounting is still missing?",
+    "What protection or immediate harm reduction is possible?",
+    "What restitution, release, institutional redesign or capacity-building could address the mechanism?",
+    "What measurable outcome would indicate improvement?",
+    "What counter-evidence or unintended consequences must be checked?",
+    "What condition closes or de-escalates the entanglement rather than making it permanent?"
+  ],
+  "map_behavior": {
+    "country_view": "Show issue counts by kind and evidence status, but require click-through to actor/mechanism records before drawing conclusions.",
+    "edge_view": "Show entanglements attached to the selected relationship, including status, evidence and repair stage.",
+    "trace_view": "Follow causal/financial/institutional edges from issue to actors and affected parties.",
+    "time_view": "Allow historical entanglements to appear/disappear according to date rather than permanently staining current country identity.",
+    "repair_view": "Display open, repairing, substantially repaired and released/closed relationships separately."
+  },
+  "canonical_routes": [
+    {"topic":"AIPAC / US political finance", "owner":"data/swamp-research-seeds.json", "support":"docs/SWAMP-RESEARCH-2026-09.md", "rule":"Represent legally distinct organizations/PACs separately and route financial claims to FEC or other primary records."},
+    {"topic":"Shadow West / Swamp", "owner":"knowledge/core/shadow-west-swamp-synthesis.json", "rule":"Interpretive overlay only after documented mechanism."},
+    {"topic":"human trafficking / intelligence-information ecosystem", "owner":"data/intelligence-information-ecosystem-atlas-wave-016.json", "rule":"Separate documented investigations/programs from project allegations or analogy."},
+    {"topic":"historical slavery", "owner":"data/countries/{country_id}.json + specialist historical records", "rule":"Use dated legal/economic networks and preserve abolition/change chronology; descendants do not inherit personal guilt."},
+    {"topic":"religion to society", "owner":"data/world-religion-layer.json", "support":"docs/RELIGION-TO-SOCIETY-GRAPH.md", "rule":"Distinguish demography, institution, law, history and interpretation."},
+    {"topic":"42T karmic ledger", "owner":"knowledge/chronology/karmic-debt-ledger-2026.json", "rule":"Project-symbolic accounting only; never distribute over national or religious populations."},
+    {"topic":"tikkun / covenant / repair", "owner":"knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json", "support":"knowledge/traditions/rubble-rainbow-tikkun-covenant-axis-atlas.json", "rule":"Repair layer, not proof of prophecy or collective guilt."}
+  ],
+  "initial_registry": [],
+  "ingestion_rule": "Do not bulk-create issue records from keywords. Promote an entanglement only when the actor/mechanism/source boundary is sufficiently clear. Unresolved items stay research leads.",
+  "next_jobs": [
+    "Normalize existing AIPAC/FEC records into political-finance entanglements and explicit entity edges.",
+    "Normalize existing defense-industry seeds into company-country and procurement/security edges.",
+    "Create a reputable-source trafficking/forced-labor ingestion plan before adding country-level issue records.",
+    "Build historical-slavery edge packs country by country rather than a single inherited-guilt map.",
+    "Attach religious-freedom and religion-state issues through the world religion layer.",
+    "Create repair-state metadata so tikkun mode can show whether an issue is only diagnosed or has a concrete intervention path."
+  ]
+}
