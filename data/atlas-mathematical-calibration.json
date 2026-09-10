@@ -1,10 +1,21 @@
 {
   "id": "atlas-mathematical-calibration",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-11",
   "status": "active design/calibration contract",
   "purpose": "Use mathematics, geometry, graph theory and carefully bounded physics analogies to improve the World Relational Atlas without turning resemblance into physical proof or decorative numerology.",
   "master_rule": "Adopt a formalism only when it solves a renderer, navigation, hierarchy, flow, uncertainty or comparison problem. A mathematical analogy does not establish a theological or physical identity.",
+  "invariants": {
+    "north_gate_arc_degrees": 42,
+    "north_gate_arc_is_level_count": false,
+    "north_gate_arc_is_fibonacci_derived": false,
+    "north_gate_arc_is_golden_ratio_derived": false,
+    "north_gate_arc_is_physical_law": false,
+    "geography_uses_real_coordinates": true,
+    "abstract_nodes_may_receive_fake_geographic_coordinates": false,
+    "time_is_orthogonal_to_spatial_and_graph_depth": true,
+    "map_height_may_encode_spiritual_rank_or_truth": false
+  },
   "epistemic_boundary": [
     "Earth geography remains geographic data in geographic coordinates.",
     "Graph distance is relationship distance in the represented graph, not moral, causal or geopolitical distance.",
@@ -91,46 +102,14 @@
     "selection_rule": "Choose the spiral family from the rendering/data problem; never choose one because the word spiral already appears in project canon."
   },
   "sources": [
-    {
-      "topic": "golden-angle phyllotaxis",
-      "source": "Prusinkiewicz & Lindenmayer, The Algorithmic Beauty of Plants, Chapter 4 / Vogel formula",
-      "url": "https://algorithmicbotany.org/papers/abop/abop.pdf"
-    },
-    {
-      "topic": "golden angle optimization context",
-      "source": "Beck et al., On the mystery of the golden angle in phyllotaxis",
-      "url": "https://doi.org/10.1111/j.1365-3040.2004.01185.x"
-    },
-    {
-      "topic": "logarithmic spiral",
-      "source": "Wolfram MathWorld — Logarithmic Spiral",
-      "url": "https://mathworld.wolfram.com/LogarithmicSpiral.html"
-    },
-    {
-      "topic": "spectral graph drawing",
-      "source": "Koren, Drawing graphs by eigenvectors: theory and practice",
-      "url": "https://doi.org/10.1016/j.camwa.2004.08.015"
-    },
-    {
-      "topic": "hyperbolic hierarchy",
-      "source": "Klimovskaia et al., Poincare maps for analyzing complex hierarchies",
-      "url": "https://www.nature.com/articles/s41467-020-16822-4"
-    },
-    {
-      "topic": "graph Hodge decomposition",
-      "source": "Jiang, Lim, Yao & Ye, Statistical ranking and combinatorial Hodge theory",
-      "url": "https://doi.org/10.1007/s10107-010-0419-x"
-    },
-    {
-      "topic": "ideal vortex circulation",
-      "source": "Oregon State Intermediate Fluid Mechanics — Potential Flows",
-      "url": "https://open.oregonstate.education/intermediate-fluid-mechanics/chapter/potential-flows/"
-    },
-    {
-      "topic": "force-directed graph drawing",
-      "source": "Fruchterman & Reingold, Graph drawing by force-directed placement",
-      "url": "https://doi.org/10.1002/spe.4380211102"
-    }
+    {"topic":"golden-angle phyllotaxis","source":"Prusinkiewicz & Lindenmayer, The Algorithmic Beauty of Plants, Chapter 4 / Vogel formula","url":"https://algorithmicbotany.org/papers/abop/abop.pdf"},
+    {"topic":"golden angle optimization context","source":"Beck et al., On the mystery of the golden angle in phyllotaxis","url":"https://doi.org/10.1111/j.1365-3040.2004.01185.x"},
+    {"topic":"logarithmic spiral","source":"Wolfram MathWorld — Logarithmic Spiral","url":"https://mathworld.wolfram.com/LogarithmicSpiral.html"},
+    {"topic":"spectral graph drawing","source":"Koren, Drawing graphs by eigenvectors: theory and practice","url":"https://doi.org/10.1016/j.camwa.2004.08.015"},
+    {"topic":"hyperbolic hierarchy","source":"Klimovskaia et al., Poincare maps for analyzing complex hierarchies","url":"https://www.nature.com/articles/s41467-020-16822-4"},
+    {"topic":"graph Hodge decomposition","source":"Jiang, Lim, Yao & Ye, Statistical ranking and combinatorial Hodge theory","url":"https://doi.org/10.1007/s10107-010-0419-x"},
+    {"topic":"ideal vortex circulation","source":"Oregon State Intermediate Fluid Mechanics — Potential Flows","url":"https://open.oregonstate.education/intermediate-fluid-mechanics/chapter/potential-flows/"},
+    {"topic":"force-directed graph drawing","source":"Fruchterman & Reingold, Graph drawing by force-directed placement","url":"https://doi.org/10.1002/spe.4380211102"}
   ],
   "rejected_shortcuts": [
     "Do not create 42 levels from the 42-degree North arc.",
