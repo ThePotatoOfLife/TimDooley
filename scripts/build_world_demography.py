@@ -38,7 +38,7 @@ RELIGIONS = {
     "other_religions": "other_religions",
     "unaffiliated": "unaffiliated",
 }
-USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.2"
+USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.3"
 
 
 def fetch_text(url: str, timeout: int = 180) -> str:
@@ -142,6 +142,14 @@ def derive_unaffiliated_from_any_religion() -> dict[str, float]:
     return {code: round(max(0.0, min(100.0, 100.0 - share)), 2) for code, share in affiliated.items()}
 
 
+def build_country_facts_snapshot() -> None:
+    # Keep the facts file beside the demography file so Pages gets a same-origin
+    # identity/geography snapshot without another workflow stage.
+    os.environ["ATLAS_COUNTRY_FACTS_OUT"] = str(OUT.with_name("world-country-facts.json"))
+    from build_world_country_facts import main as build_country_facts
+    build_country_facts()
+
+
 def main() -> int:
     index = json.loads(INDEX.read_text(encoding="utf-8"))
     countries = index.get("countries", [])
@@ -213,7 +221,7 @@ def main() -> int:
         )
 
     payload = {
-        "version": "1.2.0",
+        "version": "1.3.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-demography-runtime",
         "scope": "Presentation/runtime snapshot; canonical country records remain the source owners for their own sourced observations.",
@@ -230,12 +238,14 @@ def main() -> int:
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    build_country_facts_snapshot()
     print(json.dumps({
         "output": str(OUT),
         "population_coverage": pop_coverage,
         "religion_coverage": religion_coverage,
         "religion_errors": religion_errors,
         "religion_fallbacks": religion_fallbacks,
+        "country_facts_output": str(OUT.with_name("world-country-facts.json")),
     }, indent=2), flush=True)
     return 0
 
