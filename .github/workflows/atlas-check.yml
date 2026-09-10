@@ -40,6 +40,8 @@ jobs:
         run: python scripts/stability_audit.py
       - name: Validate atlas structure
         run: python scripts/validate_atlas.py
+      - name: Validate 3D world atlas runtime
+        run: python scripts/validate_world_map_3d.py
       - name: Validate repository spine
         run: python scripts/validate_repository_spine.py
       - name: Validate architecture layers
