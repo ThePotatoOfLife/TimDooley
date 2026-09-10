@@ -81,3 +81,11 @@ jobs:
         run: python scripts/patch_public_ontology.py
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
+      - name: Upload built-site validation report
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-shell-report
+          path: site-shell-report.txt
+          if-no-files-found: ignore
+          retention-days: 7
