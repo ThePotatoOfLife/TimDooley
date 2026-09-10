@@ -134,7 +134,22 @@ jobs:
           ! grep -q '<iframe' _site/index.html
 
       - name: Validate built site shell
+        id: site_shell
+        continue-on-error: true
         run: python scripts/validate_site_shell.py
+
+      - name: Upload site-shell diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: site-shell-report
+          path: site-shell-report.txt
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Enforce built-site shell gate
+        if: steps.site_shell.outcome == 'failure'
+        run: exit 1
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
