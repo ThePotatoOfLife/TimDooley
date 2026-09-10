@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Audit the files that can actually participate in the GitHub Pages surface.
+"""Audit source references that participate in the GitHub Pages surface.
 
-The scope intentionally mirrors ``scripts/build_site.py``. Historical/archive,
-tooling and build-only trees are useful repository strata but are not deployed
-public assets and therefore must not create false web-integrity failures.
+The source tree and deployed Pages tree are intentionally not identical. Most
+public files are copied by ``scripts/build_site.py``, while discovery routes such
+as ``questions/`` and ``index-a-z/`` are generated later by
+``scripts/build_discovery.py``. This audit validates source-backed references
+strictly without misclassifying those build-generated public routes as missing.
 """
 from __future__ import annotations
 
@@ -12,6 +14,7 @@ import re
 import sys
 
 ROOT = Path(__file__).resolve().parents[1]
+SITE_BASE = "/TimDooley"
 errors: list[str] = []
 warnings: list[str] = []
 
@@ -25,6 +28,24 @@ EXCLUDED_PARTS = {
     "components",
     "scripts",
     "archive",
+}
+
+# These routes are intentionally absent from the source tree. They are emitted
+# by scripts/build_discovery.py during the Pages build and verified separately
+# by .github/workflows/pages.yml.
+GENERATED_ROUTE_PREFIXES = (
+    "faq/",
+    "questions/",
+    "index-a-z/",
+)
+GENERATED_ROUTE_FILES = {
+    "discovery.json",
+    "llms.txt",
+    "llms-full.txt",
+    "robots.txt",
+    "sitemap.xml",
+    "sitemap-index.xml",
+    "sitemap-questions.xml",
 }
 
 
@@ -57,23 +78,60 @@ def local(raw: str) -> str | None:
     return None if not raw or raw.startswith(external) or raw.startswith(("${", "<", "`")) else raw
 
 
+def resolve_target(source: Path, target: str) -> Path | None:
+    if target == SITE_BASE or target == f"{SITE_BASE}/":
+        return ROOT
+    if target.startswith(f"{SITE_BASE}/"):
+        return (ROOT / target[len(SITE_BASE) + 1 :]).resolve()
+    if target.startswith("/"):
+        return None
+    return (source.parent / target).resolve()
+
+
+def is_generated_public_target(path: Path) -> bool:
+    try:
+        rel = path.relative_to(ROOT.resolve()).as_posix().rstrip("/")
+    except ValueError:
+        return False
+    if rel in GENERATED_ROUTE_FILES:
+        return True
+    rel_with_slash = f"{rel}/" if rel else ""
+    return any(rel_with_slash.startswith(prefix) for prefix in GENERATED_ROUTE_PREFIXES)
+
+
 def check(source: Path, raw: str, label: str) -> None:
     target = local(raw)
     if not target:
         return
-    if target.startswith("/"):
-        errors.append(f"{source.relative_to(ROOT)}: root-relative reference -> {raw}")
+
+    p = resolve_target(source, target)
+    if p is None:
+        errors.append(
+            f"{source.relative_to(ROOT)}: unsupported root-relative reference -> {raw}"
+        )
         return
 
-    p = (source.parent / target).resolve()
     try:
         p.relative_to(ROOT.resolve())
     except ValueError:
         warnings.append(f"{source.relative_to(ROOT)}: reference escapes repository -> {raw}")
         return
 
-    if not p.exists():
+    if not p.exists() and not is_generated_public_target(p):
         errors.append(f"{source.relative_to(ROOT)}: broken {label} -> {target}")
+
+
+def actions_escape(value: str) -> str:
+    """Escape values used in GitHub Actions workflow command annotations."""
+    return value.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+
+
+def emit_annotation(kind: str, item: str) -> None:
+    source, separator, message = item.partition(": ")
+    if separator and source and message:
+        print(f"::{kind} file={actions_escape(source)}::{actions_escape(message)}")
+    else:
+        print(f"::{kind}::{actions_escape(item)}")
 
 
 for page in html_files:
@@ -98,7 +156,7 @@ if not (ROOT / "app" / "app.js").exists():
 if not (ROOT / "app" / "style.css").exists():
     errors.append("Missing app/style.css primary site stylesheet")
 
-print("Public application root: /TimDooley/")
+print(f"Public application root: {SITE_BASE}/")
 print(f"HTML pages audited: {len(html_files)}")
 print(f"CSS files audited: {len(css_files)}")
 print(f"JS files audited: {len(js_files)}")
@@ -106,7 +164,9 @@ print(f"Errors: {len(errors)}")
 print(f"Warnings: {len(warnings)}")
 for item in errors:
     print("ERROR:", item)
+    emit_annotation("error", item)
 for item in warnings:
     print("WARNING:", item)
+    emit_annotation("warning", item)
 
 sys.exit(1 if errors else 0)
