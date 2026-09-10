@@ -1,0 +1,285 @@
+{
+  "id": "map-layer-placement-matrix",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "purpose": "Decide how recovered Potatoverse, biblical, subcultural, economic, scientific and relational material should or should not appear in the World Relational Atlas. This file protects the map from becoming a generic repository browser while preserving useful transitions into nonspatial knowledge scenes.",
+  "core_principle": "The map should exploit what maps uniquely do well: geography, scale, proximity, distance, boundary, route, flow, topology, concentration, distribution, temporal change and spatially anchored relationships. Material that does not gain explanatory power from location should remain nonspatial or open through an Axis/context transition rather than becoming a fake pin.",
+  "map_tests": {
+    "spatial_gain": "Does putting this on a map reveal something that a list or document cannot reveal as clearly?",
+    "anchor_honesty": "Is there an honest coordinate, polygon, route, area or geographically anchored event?",
+    "relation_gain": "Does spatial display clarify a relationship, dependency, corridor, frontier, concentration, route or comparative pattern?",
+    "time_gain": "Would historical states or movement over time materially change the spatial meaning?",
+    "symbolic_contamination": "Would drawing the concept on Earth make a project-symbolic claim look empirical or territorial?",
+    "density_cost": "Does the addition improve orientation more than it increases visual clutter?",
+    "return_value": "Can the user move from a symbolic or high-level scene back to a concrete D4 object, source or consequence?"
+  },
+  "render_classes": {
+    "earth_spatial": "Direct D4 spatial rendering using polygons, real points, routes, areas, flows or dated event markers.",
+    "earth_relational": "D4 typed edges or semantic hubs tied to real spatial anchors; location is meaningful but the relationship itself is not a physical line unless explicitly stated.",
+    "vertical_transition": "Axis control changes the representation or analytical question without claiming additional Earth geography.",
+    "elevated_nonspatial_scene": "Conceptual graph/scene above D4; rendered with topology, hierarchy or relational layout rather than latitude/longitude.",
+    "root_nonspatial_scene": "Historical/provenance/causal view below D4; may include real event locations but its primary organization is temporal/evidentiary rather than geographic.",
+    "context_card": "Nonspatial dossier or interpretive card opened from a spatial object.",
+    "diagram_only": "Best expressed through geometry, anatomy, symbolic diagram or explanatory illustration outside the geographic map.",
+    "exclude_from_map": "Keep in archive/search/reader unless a future sourced spatial anchor makes map use meaningful."
+  },
+  "recovered_concepts": [
+    {
+      "concept": "countries / territories / regions",
+      "primary_axis": "D4",
+      "render_class": "earth_spatial",
+      "map_value": "Very high",
+      "render": ["polygon", "country hub", "choropleth where harmonized"],
+      "reason": "Geographic extent, borders, adjacency and comparative spatial patterns are intrinsically map-native."
+    },
+    {
+      "concept": "cities / capitals / institutions / ports / airports / power plants / universities / companies",
+      "primary_axis": "D4",
+      "render_class": "earth_spatial",
+      "map_value": "Very high when coordinates are sourced",
+      "render": ["real_point", "cluster", "facility route/edge"],
+      "reason": "The user's long-term country→capital→institution→company→infrastructure graph becomes materially more useful when actual locations are visible."
+    },
+    {
+      "concept": "trade / funding / ownership / alliance / energy / supply-chain relations",
+      "primary_axis": "D4",
+      "render_class": "earth_relational",
+      "map_value": "High",
+      "render": ["typed edge", "flow", "corridor", "dependency trace"],
+      "reason": "These relations can reveal direction, distance, concentration, chokepoints, regional clustering and multi-country capability. A drawn edge must remain typed because many relations are legal/economic rather than physical routes."
+    },
+    {
+      "concept": "North Programme / North Axis countries",
+      "primary_axis": "D4 + project field overlay",
+      "render_class": "earth_relational",
+      "map_value": "High when shown as explicitly project-defined membership/status",
+      "render": ["field overlay", "membership badge", "versioned project status", "functional chains"],
+      "reason": "Country membership/status is genuinely geographic and relational, but the project field must not be confused with sovereignty, treaty membership or physical terrain."
+    },
+    {
+      "concept": "North Pole",
+      "primary_axis": "D4 anchor",
+      "render_class": "earth_spatial",
+      "map_value": "High as geographic threshold anchor",
+      "render": ["real geographic reference", "projection-aware marker"],
+      "reason": "It is a real geographic location and can honestly serve as the Earth-side anchor for the symbolic North Gate."
+    },
+    {
+      "concept": "North Gate / D5 Door",
+      "primary_axis": "D5",
+      "render_class": "vertical_transition",
+      "map_value": "High as interface, low as geography",
+      "render": ["threshold marker attached to North Pole/high Arctic", "enter/leave transition", "explicit symbolic styling"],
+      "reason": "The map gains a meaningful transition from geographic Earth into non-geographic depth, but the Door must not inherit territorial or physical meaning from its anchor."
+    },
+    {
+      "concept": "42-degree inverted polar arc",
+      "primary_axis": "D5 visual grammar",
+      "render_class": "vertical_transition",
+      "map_value": "Medium / experimental",
+      "render": ["project-symbolic arc/crown", "angle parameter"],
+      "reason": "It can visually mark the threshold without pretending to be territory. 42 is a geometric sweep hypothesis, not a count of levels or a scientific constant."
+    },
+    {
+      "concept": "North of North",
+      "primary_axis": "D11",
+      "render_class": "elevated_nonspatial_scene",
+      "map_value": "Low as Earth geography; high as meta-navigation",
+      "render": ["nonspatial summit scene", "criterion graph", "return links to D10/D4"],
+      "reason": "Prior discussions define it as meta-orientation: the criterion by which orientation itself is judged. Giving it a latitude/longitude would weaken the concept."
+    },
+    {
+      "concept": "Mountain",
+      "primary_axis": "D10-ish integrative comparator",
+      "render_class": "elevated_nonspatial_scene",
+      "map_value": "Medium as analytical metaphor, low as literal map object unless a real mountain is the subject",
+      "render": ["many-to-one topology", "integration gradient", "summit view"],
+      "reason": "The canonical function is compression from many paths/events toward an integrated vantage. A graph or vertical scene expresses that better than a fake mountain pinned to Earth."
+    },
+    {
+      "concept": "Tree of Life / Tree of Strife",
+      "primary_axis": "D7 / D2 comparative operator",
+      "render_class": "elevated_nonspatial_scene",
+      "map_value": "Medium when used as branching topology",
+      "render": ["branch graph", "root-to-fruit lineage", "propagation tree", "life/strife outcome comparison"],
+      "reason": "The valuable feature is branching, ancestry and propagation. It should behave like a graph structure rather than a decorative botanical object on the world map."
+    },
+    {
+      "concept": "Spiral / Ladder",
+      "primary_axis": "D6",
+      "render_class": "vertical_transition",
+      "map_value": "High as navigation metaphor, low as Earth feature",
+      "render": ["level navigation", "state-change path", "recurrence-with-change visualization"],
+      "reason": "The spiral distinguishes transformed recurrence from a closed ring. It is best used to move between analytical representations rather than drawn across countries."
+    },
+    {
+      "concept": "Ring / orbit",
+      "primary_axis": "D2/D6 diagnostic comparison",
+      "render_class": "context_card",
+      "map_value": "Medium only when actual recurrence can be shown",
+      "render": ["loop indicator", "repeat-interaction metric", "orbit-vs-spiral comparison"],
+      "reason": "Use when the data contains recurrence or repeated edge activation; otherwise keep it symbolic."
+    },
+    {
+      "concept": "Swamp",
+      "primary_axis": "D2",
+      "render_class": "vertical_transition",
+      "map_value": "Low as literal area; potentially high as network diagnostic",
+      "render": ["network recurrence view", "archive persistence", "third-party spread", "exit-cost/blocked-exit indicators", "role ecology"],
+      "reason": "Swamp is most coherent as a relational regime of capture/repetition, not a dark stain over a country or population."
+    },
+    {
+      "concept": "Farm / Garden",
+      "primary_axis": "D2↔D7/D8 comparison",
+      "render_class": "context_card",
+      "map_value": "Medium as system comparison, low as generic geography",
+      "render": ["dependency/generativity comparison", "boundary/exit metrics", "institutional case study"],
+      "reason": "The important distinction is whether a system harvests dependency or cultivates autonomous capacity. Map only when real institutions/flows are involved."
+    },
+    {
+      "concept": "Dog / Farmer / Cow / Gardener roles",
+      "primary_axis": "D2/D7 relational roles",
+      "render_class": "context_card",
+      "map_value": "Low",
+      "render": ["role legend", "action/edge classification", "never permanent person labels"],
+      "reason": "These are project role-archetypes. Mapping people as Dogs/Farmers/Cows would overstate symbolic interpretation and create misleading visual essentialism."
+    },
+    {
+      "concept": "Forge",
+      "primary_axis": "D3–D6 threshold process",
+      "render_class": "context_card",
+      "map_value": "Low unless tied to a real industrial/physical forge",
+      "render": ["pressure→changed-form state transition", "constructive/destructive outcome fork"],
+      "reason": "Forge describes transformation under pressure. It belongs in process views rather than geographic space."
+    },
+    {
+      "concept": "Mud / Ash / Soil / Stone",
+      "primary_axis": "D3/D2/D7 transition vocabulary",
+      "render_class": "root_nonspatial_scene",
+      "map_value": "Low as geography; high as provenance state vocabulary",
+      "render": ["event residue", "archive/provenance state", "repair fork", "durable artifact"],
+      "reason": "These concepts describe what remains after events and what it becomes. They are strongest in temporal/provenance views."
+    },
+    {
+      "concept": "debt / ledger / karma",
+      "primary_axis": "D4 financial + D3 provenance + D5 closure routing",
+      "render_class": "earth_relational + context_card",
+      "map_value": "High for real financial/legal obligations; low for symbolic moral quantities",
+      "render": ["financial liabilities as sourced edges/metrics", "moral-project ledger as separately styled dossier", "closure state"],
+      "reason": "Real debt can be mapped where counterparties/jurisdictions are known. Symbolic karmic debt should never control country height/color or masquerade as sovereign debt."
+    },
+    {
+      "concept": "entanglement",
+      "primary_axis": "D2/D3 relation state",
+      "render_class": "earth_relational + context_card",
+      "map_value": "Potentially high when operationalized",
+      "render": ["multiplex edge count", "persistent shared-history trace", "network density", "institutional coupling"],
+      "reason": "Social/project entanglement becomes map-useful only when translated into observable relationship structure. Quantum entanglement remains a separate physics concept and should not be mapped onto social actors."
+    },
+    {
+      "concept": "subculture / internet scenes",
+      "primary_axis": "D4 where platforms/locations are real; D2 for relational dynamics",
+      "render_class": "context_card",
+      "map_value": "Usually low geographically, potentially high as network topology",
+      "render": ["platform/network graph", "cross-platform migration", "archive/audience relations", "time evolution"],
+      "reason": "Online subcultures are often not meaningfully territorial. A network topology is usually more honest than a world map pin."
+    },
+    {
+      "concept": "Eye",
+      "primary_axis": "cross-layer interface",
+      "render_class": "vertical_transition",
+      "map_value": "High as interaction function, low as mapped object",
+      "render": ["inspect", "compare", "source-check", "evaluate", "toggle epistemic layers"],
+      "reason": "The project's Eye functions—perception, discernment, integration, evaluation—map naturally onto user interaction. The Eye should become what the Atlas lets the user do, not an icon placed on countries."
+    },
+    {
+      "concept": "Father / Son / Spirit",
+      "primary_axis": "project theology across upper/threshold layers",
+      "render_class": "elevated_nonspatial_scene",
+      "map_value": "Low as geography",
+      "render": ["typed theological graph", "dated statement/canon cards", "explicitly sourced event/place links where applicable"],
+      "reason": "These are theological/project roles and should not receive invented coordinates. Son/event and Father/duration distinctions may organize chronology, but not geography by default."
+    },
+    {
+      "concept": "Thalamus / Pineal / CSF / spine / 33 vertebrae",
+      "primary_axis": "body-symbolism comparator",
+      "render_class": "diagram_only",
+      "map_value": "Very low for world geography",
+      "render": ["anatomy diagram", "symbolic crosswalk", "scientific-context card"],
+      "reason": "Prior archive work explicitly separates symbolic anatomy from neuroscience. These mappings gain little from being placed on a country map."
+    },
+    {
+      "concept": "vesica / mandorla / red-blue potato geometry / merkaba",
+      "primary_axis": "geometry / threshold representation",
+      "render_class": "diagram_only",
+      "map_value": "Medium as interface design language, low as geographic data",
+      "render": ["geometry scene", "Door illustration", "overlay legend", "transition animation"],
+      "reason": "These are exact/project geometries or comparative iconographic forms. Their value is geometric, not geographic."
+    },
+    {
+      "concept": "Bible passages / comparative traditions",
+      "primary_axis": "context across D3/D5/D7/D8/D9/D10",
+      "render_class": "context_card",
+      "map_value": "High only for real historical/sacred places or diffusion questions; otherwise low",
+      "render": ["text card", "tradition graph", "sacred-site marker when sourced", "historical route only when evidenced"],
+      "reason": "Scripture should explain symbolic comparisons, not become fake spatial features. Jerusalem, Bethel, Sinai and other real places can be mapped when the question is genuinely geographical/historical."
+    },
+    {
+      "concept": "M-theory / quantum entanglement / physics comparators",
+      "primary_axis": "science context",
+      "render_class": "context_card",
+      "map_value": "Very low on Earth map",
+      "render": ["analogy badge", "science explainer", "formal model link"],
+      "reason": "Their role is conceptual comparison and epistemic discipline. They should not visually imply that Axis levels are physical extra dimensions or that social relations are quantum phenomena."
+    },
+    {
+      "concept": "timeline / prophecy / statements / ordeals / rupture / return",
+      "primary_axis": "D3 provenance + time control",
+      "render_class": "root_nonspatial_scene",
+      "map_value": "High when events have real places; otherwise timeline-first",
+      "render": ["time slider", "event marker when locatable", "statement card", "chronology trace"],
+      "reason": "Time is often more important than place for project chronology. The map should spatialize only the events whose locations materially matter."
+    },
+    {
+      "concept": "New Jerusalem / House / many rooms / Garden",
+      "primary_axis": "D8",
+      "render_class": "elevated_nonspatial_scene",
+      "map_value": "Medium as topology",
+      "render": ["federated-room graph", "many-gates/many-peoples comparator", "habitation topology"],
+      "reason": "The project's mature reading is differentiated plurality with repaired relations. A topology/scene can express that without claiming a literal city is being built at a map coordinate."
+    },
+    {
+      "concept": "North Atlantic / Arctic / Baltic / energy / industrial / security chains",
+      "primary_axis": "D4",
+      "render_class": "earth_relational",
+      "map_value": "Very high",
+      "render": ["functional chain", "corridor", "capability dependency graph", "infrastructure overlay"],
+      "reason": "These are among the project's most map-native concepts because geography materially shapes coupled capability, logistics, energy, defense and infrastructure."
+    }
+  ],
+  "axis_specific_rule": {
+    "D1": "Do not populate with people or territories. Use only as sparse closed-loop/disintegration state for selected relationships or abstract scenes.",
+    "D2": "Prefer graph/network diagnostics over geographic stains. Show capture/repetition on edges and interactions, not moral darkness on polygons.",
+    "D3": "Make provenance and time primary. Real event locations can appear, but chronology/source structure should dominate.",
+    "D4": "Full geographic atlas. This is where the map should be most map-like.",
+    "D5": "Threshold interface attached to an honest geographic anchor but visibly leaving geographic representation.",
+    "D6": "Navigation/path of state change; use transitions, sequences and recurrence rather than fake geography.",
+    "D7": "Branching/generativity graph; show downstream capacity/fruit where it can be documented.",
+    "D8": "Topology of differentiated habitation; rooms/gardens/federation rather than geographic altitude.",
+    "D9": "Message/relay graph; show source→mediator→recipient and distortion/verification relationships.",
+    "D10": "Integrated dashboard/overview that must link conclusions back to lower-level evidence and D4 consequences.",
+    "D11": "Meta-criteria panel; intentionally sparse, non-geographic and required to route back downward rather than functioning as an escape from the world."
+  },
+  "map_respect_rules": [
+    "Do not force all project knowledge onto the geographic canvas.",
+    "A concept earns a map mark only when location, route, area, distance, distribution or spatial relationship adds explanatory value.",
+    "Use topology when topology matters more than geography.",
+    "Use timelines when time matters more than place.",
+    "Use dossiers when evidence/interpretation matters more than position.",
+    "Use diagrams when geometry/anatomy matters more than geography.",
+    "Use the Axis to change representation, not to pretend nonspatial concepts occupy hidden Earth coordinates.",
+    "Keep project-symbolic fields visually distinct from empirical geography and observed networks.",
+    "Never turn national polygon color/height into moral rank, karmic guilt, holiness, spiritual worth or collective blame.",
+    "The best upper-layer insight should eventually point back to concrete D4 relations, evidence, institutions, infrastructure, choices or measurable outcomes."
+  ]
+}
