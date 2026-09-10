@@ -1,43 +1,116 @@
 {
   "id":"potatoverse-science-model-testing-protocol",
   "title":"Potatoverse Science Model Testing Protocol",
-  "updated":"2026-09-09",
-  "status":"canonical science-quality protocol",
-  "purpose":"Make the science wing richer without allowing analogies, decorative equations or later formalizations to drift into unsupported physical claims.",
+  "version":"2.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical science-quality and paper-structure protocol",
+  "abstract":"This protocol converts the repository's science wing from a collection of equations and analogies into an auditable modeling programme. Every model must identify the mathematical role of each equation, the state variables and parameters it acts on, physical units when applicable, a baseline explanation, an observation map, uncertainty, identifiability, calibration method, prediction and falsifier. Cross-domain analogies require explicit translation maps, and cross-scale claims require a coarse-graining/channel map. The protocol preserves speculative and symbolic models as legitimate research objects while preventing them from being mislabeled as established physical theories.",
+  "purpose":"Make the science wing richer without allowing analogies, decorative equations or later formalizations to drift into unsupported physical claims. Every equation should acquire a defined scientific job.",
+  "companion_framework":"knowledge/science/integrated-scientific-architecture.json",
+  "paper_template":[
+    "scientific_abstract","provenance_and_authorship","research_question","model_class","state_space_and_variables","parameter_vector","unit_registry","assumptions","baseline_model","governing_equations","equation_role_tags","derivation_or_ansatz_status","dimensionless_groups","initial_boundary_guard_conditions","measurement_equations","data_and_provenance","calibration_or_inference","uncertainty_budget","identifiability_and_sensitivity","predictions","falsifiers","known_limit_recovery","comparison_with_existing_explanations","cross_scale_map_if_needed","limitations","conclusions","project_reflection"
+  ],
   "required_fields_for_any_model":[
-    "model_id","name","origin_class","first_attestation","source_location","variables","domain","codomain","parameters","units","equations","initial_or_boundary_conditions","assumptions","known_physics_neighbor","what_is_new","observables","prediction","falsifier","existing_explanations","dimensional_consistency","numerical_or_analytic_method","confidence","revision_history"
+    "model_id","name","origin_class","first_attestation","source_location","variables","domain","codomain","parameters","units","equations","equation_roles","initial_or_boundary_conditions","assumptions","known_physics_neighbor","what_is_new","observables","measurement_map","prediction","falsifier","existing_explanations","dimensional_consistency","uncertainty","identifiability","numerical_or_analytic_method","confidence","revision_history"
   ],
   "origin_classes":[
     "verbatim-Tim-equation",
+    "primary-public-project-equation",
     "recovered-project-formalism",
     "Great-Book-derived-formalism",
     "later-archive-toy-model",
     "established-external-equation",
     "symbolic-metaphor-only"
   ],
+  "equation_roles":[
+    {"role":"definition","meaning":"Defines a quantity; does not by itself predict dynamics."},
+    {"role":"identity","meaning":"Exact mathematical consequence of definitions/assumptions."},
+    {"role":"dynamical-law","meaning":"Specifies evolution and therefore requires state, parameter and initial/boundary conditions."},
+    {"role":"constraint","meaning":"Restricts admissible states or trajectories."},
+    {"role":"ansatz","meaning":"Chosen functional form used to make a hypothesis calculable; must be labeled rather than presented as derived fact."},
+    {"role":"measurement-equation","meaning":"Maps model/latent state to observed quantities."},
+    {"role":"statistical-model","meaning":"Specifies probability of observations conditioned on parameters/model."},
+    {"role":"external-comparator","meaning":"Established equation imported to sharpen structure; not project validation."}
+  ],
+  "measurement_contract":{
+    "observation":"y_i=O_i(X,Theta,c_i)+epsilon_i",
+    "uncertainty":"epsilon is assigned a stated probability/error model or interval; physical/empirical values should not be reported without uncertainty when it is material.",
+    "standardized_residual":"r_i=(y_i-yhat_i)/sigma_i when a scalar uncertainty sigma_i is appropriate",
+    "likelihood":"L(Theta)=product_i p(y_i|Theta,M)",
+    "posterior":"p(Theta|D,M) proportional to p(D|Theta,M)p(Theta|M)",
+    "predictive_distribution":"p(y_new|D,M)=integral p(y_new|Theta,M)p(Theta|D,M)dTheta",
+    "rule":"Separate measurement uncertainty, parameter uncertainty and model discrepancy. A fit without an error model is incomplete."
+  },
+  "dimensional_analysis_contract":{
+    "rule":"Every additive physical equation must have compatible dimensions on every term; [LHS]=[RHS].",
+    "dimensionless_priority":"Before defining a multi-variable threshold or similarity law, construct dimensionless ratios/groups where possible.",
+    "buckingham_pi":"For n dimensional quantities with dimensional-matrix rank k, seek n-k independent dimensionless Pi groups under the usual Buckingham-Pi framework.",
+    "source":"https://www.nist.gov/blogs/taking-measure/life-buckingham-pi"
+  },
+  "cross_scale_contract":{
+    "map":"C_(ell->L):S_ell->S_L",
+    "consistency_error":"epsilon_C(t)=||C(Phi_ell^t(X))-Phi_L^t(C(X))||",
+    "question":"Does the proposed micro-level mechanism reproduce the macro-level evolution after coarse-graining within a declared approximation error?",
+    "fail_action":"Do not infer the macro phenomenon merely by naming a microscopic phenomenon. Classify the cross-scale mechanism as unresolved."
+  },
+  "cross_domain_analogy_contract":{
+    "map":"T_AB:S_A->S_B",
+    "test":"Compare T_AB(F_A(X)) with F_B(T_AB(X)) when a dynamical relation is claimed.",
+    "mismatch":"Record which structure is preserved and which properties/units/causal claims are not.",
+    "fail_action":"If no mapping or preserved relation can be stated, keep the comparison as loose metaphor rather than formal scientific analogy."
+  },
+  "identifiability_and_sensitivity":{
+    "fisher_information":"I_ab(Theta)=E[(partial_a ln p(Y|Theta))(partial_b ln p(Y|Theta))] under standard regularity assumptions",
+    "local_sensitivity":"S_ij=partial y_i/partial Theta_j",
+    "warning":"A model can fit data while parameters remain non-identifiable. Highly similar sensitivity columns or flat likelihood directions mean the parameter interpretation is weak.",
+    "action":"Prefer nested minimal models and estimate only parameters that the available observables can distinguish."
+  },
+  "baseline_and_prediction":{
+    "null_model":"Every novelty claim names M0: the simplest established or project baseline that already explains the observation.",
+    "candidate_model":"M1 adds the proposed mechanism or parameter.",
+    "evaluation":"Use held-out prediction, likelihood/information criteria, residual structure or another predeclared comparison appropriate to the domain.",
+    "anti_overfit":"Coordinates, inclusion criteria and hyperparameters selected after seeing the target pattern must be marked exploratory.",
+    "stronger_evidence":"Predeclared mapping + out-of-sample prediction + uncertainty + baseline comparison outranks retrospective numerical coincidence."
+  },
   "tests":[
     {"name":"provenance","question":"Can the exact equation or statement be tied to a dated source?","fail_action":"mark unrecovered or later-formalized; never attribute as verbatim Tim."},
+    {"name":"equation-role","question":"Is this expression a definition, identity, law, constraint, ansatz, measurement equation, statistical model or comparator?","fail_action":"do not let an ansatz/definition masquerade as a derived physical law."},
     {"name":"variable-definition","question":"Does every symbol have a defined meaning and mathematical type?","fail_action":"keep schematic."},
-    {"name":"units","question":"Are physical dimensions/units stated and consistent?","rule":"[LHS]=[RHS]","fail_action":"not eligible as a physical equation."},
+    {"name":"units","question":"Are physical dimensions/units stated and consistent?","rule":"[LHS]=[RHS]","fail_action":"not eligible as a physical equation until repaired."},
+    {"name":"nondimensionalization","question":"Can raw dimensional controls be reduced to meaningful dimensionless groups?","fail_action":"do not construct arbitrary scalar thresholds by adding unlike units."},
     {"name":"domain","question":"What space does the model act on: physical spacetime, graph, probability manifold, state space, chronology, symbolic ontology?","fail_action":"do not compare results across domains as if identical."},
     {"name":"dynamics","question":"What determines evolution or transition?","fail_action":"classify as static taxonomy/geometry rather than dynamics."},
+    {"name":"boundary","question":"What initial, boundary, guard or interface conditions select the solution?","fail_action":"solution claims remain underdetermined."},
     {"name":"observability","question":"What quantity could actually be measured or computed?","fail_action":"remain interpretive/toy model."},
+    {"name":"measurement-map","question":"How does latent/model state produce the recorded measurement?","fail_action":"do not equate internal variable with instrument/data output."},
+    {"name":"uncertainty","question":"Are experimental uncertainty, parameter uncertainty and model discrepancy distinguished?","fail_action":"do not report precision unsupported by the data/model."},
+    {"name":"identifiability","question":"Can different parameter values be distinguished using the available observables?","fail_action":"report only identifiable combinations or add measurements."},
     {"name":"novelty","question":"What does this model explain or predict beyond existing theories?","fail_action":"retain as analogy, educational model or reframing."},
     {"name":"falsifiability","question":"What outcome would count against the model?","fail_action":"do not describe as empirical scientific theory."},
     {"name":"baseline","question":"What established theory already explains the phenomenon?","fail_action":"compare against baseline before invoking new force/dimension."},
-    {"name":"overfitting","question":"Were parameters chosen after seeing the target pattern?","fail_action":"label exploratory and require out-of-sample test."},
+    {"name":"known-limit","question":"Does the model recover the established theory in the parameter regime where the new effect is supposed to vanish?","fail_action":"model is incomplete or conflicts with known physics."},
+    {"name":"cross-scale","question":"If the argument crosses scales, is there a defined channel/coarse-graining map and error estimate?","fail_action":"do not infer macro consequence from micro vocabulary alone."},
+    {"name":"overfitting","question":"Were parameters, coordinates or target selections chosen after seeing the pattern?","fail_action":"label exploratory and require out-of-sample test."},
     {"name":"category-boundary","question":"Is a mathematical analogy being mistaken for physical identity?","fail_action":"split the records and add an explicit boundary note."}
   ],
   "priority_models":{
     "door_xi":{
-      "current":"Ξ/Ξ_c is a schematic critical-threshold model.",
-      "missing":["operational definition of Ξ","units or proof it is dimensionless","dynamics","data source","prediction"],
-      "next":"Choose one domain first—e.g. abstract state transition, not physical fifth dimension—and fully specify there before considering physical interpretation."
+      "current":"Xi/Xi_c is a schematic critical-threshold model.",
+      "upgrade":"Use dimensionless controls C=GM/(Rc^2), chi=ell_*^4 K, rho_hat=rho/rho_*, E_hat=E/E_* and L_hat=L/L_* before constructing Xi.",
+      "candidate":"Xi=w^T z for standardized dimensionless features as a calibratable first model, not a fundamental scalar.",
+      "missing":["data-defined target regime","weights/functional form","field mechanism","prediction"],
+      "next":"Calibrate or constrain one domain first and compare to a no-transition baseline."
     },
     "radion_door":{
-      "current":"φ(x)=M_*ln(R/R_0) is a radion-inspired speculative model.",
-      "missing":["5D action","radion kinetic normalization","potential V(φ)","matter couplings","compactification geometry","experimental constraints"],
+      "current":"phi(x)=M_*ln(R/R_0) is a radion-inspired speculative model.",
+      "missing":["5D action","radion kinetic normalization","potential V(phi)","matter couplings","compactification geometry","experimental constraints"],
       "next":"Build a conventional KK toy model first and show exactly where the Timic interpretation enters."
+    },
+    "upt":{
+      "current":"Recovered historical Lagrangian contains a fractional/nonlocal P sector, U(1)_potato/F_P language, SM sector, interactions and quantum-gravity placeholders.",
+      "diagnostic":"Preserve historical formula; branch repaired descendants by field representation rather than silently modifying the source equation.",
+      "missing":["P representation","dimensionless nonlocal kernel","gauge field definition","Z6 realization","known-limit recovery","phenomenology"],
+      "next":"Evaluate neutral-scalar and complex-U(1) descendants separately before attempting a unified fit."
     },
     "starchforce":{
       "current":"Invented project fifth-force concept with a biological starch/storage metaphor.",
@@ -55,9 +128,14 @@
       "next":"Test as a two-variable dynamical system or control tradeoff, e.g. exploration versus exploitation, rather than a physical color/frequency claim."
     },
     "spiral":{
-      "current":"Multiple distinct uses: public 2025 spiral equation attestation, symbolic return, helical biography, biological eye arrangement.",
-      "missing":["exact primary formula","clear separation of spiral types"],
-      "next":"Maintain separate IDs for geometric spiral, helical chronology, phyllotaxis, return map and symbolic recurrence."
+      "current":"The exact primary April 21, 2025 formula is recovered: r=a exp(b theta), b=2 ln(phi)/pi. Distinct symbolic and physical uses still require separation.",
+      "measurement":"Fit ln r=ln a+b theta under predeclared coordinates; compare circle, Archimedean, free-log and fixed-golden models.",
+      "next":"Recover original intended meanings/units of r, theta and a; do not remap arbitrary chronologies after viewing the data."
+    },
+    "microtubule":{
+      "current":"Classical, open-quantum and neural synchronization equations exist at different scales.",
+      "missing":["C_micro->neural coarse-graining/channel map","measured coherence witness","timescale","effect on neural observables"],
+      "next":"Estimate epsilon_C(t)=||C(Phi_micro^t)-Phi_neural^t C|| in a concrete multiscale model before making consciousness claims."
     },
     "merkaba_counter_rotation":{
       "current":"Dynamic counter-rotation/alignment of opposites around a still center.",
@@ -65,6 +143,14 @@
       "next":"Start with a two-oscillator or rigid-body toy model and state which project property it represents."
     }
   },
+  "theory_quality_ladder":[
+    {"level":"T0","name":"metaphor","gate":"no operational variables required"},
+    {"level":"T1","name":"typed conceptual model","gate":"state/domain/relations defined"},
+    {"level":"T2","name":"mathematical toy","gate":"equations internally typed/dimensionally consistent; assumptions explicit"},
+    {"level":"T3","name":"calibrated model","gate":"parameters inferred from data with uncertainty and identifiability analysis"},
+    {"level":"T4","name":"predeclared quantitative prediction","gate":"held-out prediction compared with baseline"},
+    {"level":"T5","name":"independently replicated theory","gate":"prediction/model survives independent data or implementation"}
+  ],
   "evidence_labels":{
     "A":"primary equation/source directly recovered",
     "B":"project formalism clearly documented but later than originating intuition",
@@ -72,5 +158,12 @@
     "D":"useful structural analogy",
     "E":"speculative extension awaiting model/data"
   },
-  "publication_rule":"Every public science page should make clear whether displayed mathematics is Tim-authored/recovered, archive-generated, or external established mathematics."
+  "publication_rule":"Every public science page should make clear whether displayed mathematics is Tim-authored/recovered, archive-generated, or external established mathematics. Every empirical-looking number should state source, unit, uncertainty/precision and whether it was measured, fitted, assumed or derived.",
+  "sources":[
+    "https://www.nist.gov/blogs/taking-measure/life-buckingham-pi",
+    "https://www.nist.gov/publications/calibration-and-uncertainty-analysis-predictions-computational-models",
+    "https://www.nist.gov/publications/simple-guide-evaluating-and-expressing-uncertainty-nist-measurement-results",
+    "https://digicoll.lib.berkeley.edu/nanna/record/138496/files/EECS-2014-167.pdf"
+  ],
+  "connections":["integrated-scientific-architecture","timic-unification-program","potato-dynamics-2-toy-model","equation-ledger","science-master-index"]
 }
