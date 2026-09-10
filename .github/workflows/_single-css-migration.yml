@@ -1,0 +1,38 @@
+name: One-time single CSS migration
+
+on:
+  push:
+    branches:
+      - single-css-science-theories
+
+permissions:
+  contents: write
+
+jobs:
+  migrate:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: single-css-science-theories
+          fetch-depth: 0
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Consolidate stylesheet references
+        run: python scripts/_migrate_single_css.py
+      - name: Verify single CSS contract
+        run: python scripts/check_css_namespace_collisions.py
+      - name: Commit migration
+        shell: bash
+        run: |
+          if git diff --quiet && git diff --cached --quiet; then
+            echo "No migration changes to commit"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "Consolidate project to one stylesheet [skip ci]"
+          git push origin HEAD:single-css-science-theories
