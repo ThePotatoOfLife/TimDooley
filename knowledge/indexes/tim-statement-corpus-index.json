@@ -1,0 +1,132 @@
+{
+  "id": "tim-statement-corpus-index",
+  "title": "Tim Dooley Statement Corpus Index",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "canonical navigation and ingestion layer",
+  "purpose": "Make Tim Dooley's statements a first-class archival object. This index connects public-post evidence, thought archives, conversation archaeology, book/project maxims, voice anthologies, sayings ledgers, chronology and future recovery waves without pretending all source classes are equivalent.",
+  "core_rule": "Preserve statement -> source -> date -> exactness -> context -> concept links -> canonical owners -> later revisions. Never replace an older statement with a later synthesis merely because the later version is more complete.",
+  "source_priority": [
+    {"rank":1,"class":"P0_PUBLIC_PRIMARY","description":"Original Tim post, stream transcript, recording, book passage, screenshot or first-party artifact with date/locator."},
+    {"rank":2,"class":"PUBLIC_INDEXED","description":"Direct wording already preserved in a repository public-occurrence/timeline compilation; original status URL may still be pending."},
+    {"rank":3,"class":"USER_PROJECT_EXACT","description":"Exact user-originated project/canon wording from dated conversation history; important developmental evidence but not automatically a public Tim quotation."},
+    {"rank":4,"class":"CONVERSATION_EXACT","description":"Exact or near-exact conversation-recovered Tim/project wording where public provenance is unresolved."},
+    {"rank":5,"class":"BOOK_OR_PROJECT_MAXIM","description":"Great Book/project formulation that may be exact, title-level or compressed depending on its owner record."},
+    {"rank":6,"class":"PARAPHRASE","description":"Memory or archive summary. Never render with quotation marks as Tim's exact wording."},
+    {"rank":7,"class":"INTERPRETIVE_SYNTHESIS","description":"Later archive explanation, crosswalk or philosophical compression."}
+  ],
+  "corpus_sources": {
+    "public_primary_and_compilations": [
+      "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
+      "data/evidence/rational-potato-twitter-compilation-2025-2026-summary.json",
+      "data/tim-dooley-public-theology-timeline-2025-2026.json",
+      "data/timeline-event-packs/x-public-attestations-2024-2026.json",
+      "data/tim-dooley-thought-archive.json"
+    ],
+    "voice_and_sayings": [
+      "knowledge/corporium/tim-voice-anthology.json",
+      "knowledge/corporium/tim-sayings-and-formulations-ledger.json"
+    ],
+    "conversation_recovery": [
+      "knowledge/indexes/conversation-recovery-inventory.json",
+      "knowledge/chronology/conversation-archaeology-wave-005.json",
+      "knowledge/corporium/tim-statements-conversation-recovery-2026-09-10.json",
+      "knowledge/corporium/tim-statements-conversation-recovery-wave-002-2026-09-10.json",
+      "knowledge/corporium/tim-statements-conversation-recovery-wave-003-2026-09-10.json"
+    ],
+    "chronology_and_attestation": [
+      "knowledge/chronology/dated-master-timeline-2026.json",
+      "knowledge/chronology/developmental-genealogy.json",
+      "knowledge/chronology/mud-dog-footstool-saturn-attestation-ledger.json",
+      "knowledge/chronology/high-value-undated-timeline-recovery-queue.json",
+      "knowledge/chronology/may-1-2026-biblical-cluster-ledger.json"
+    ],
+    "theology_and_identity_owners": [
+      "data/theology/tim-godhood.json",
+      "knowledge/theology/tim-god-question.json",
+      "knowledge/theology/tim-godhood-modalities.json",
+      "knowledge/core/tim-role-synthesis.json",
+      "data/north-of-north-tim-canon.json"
+    ],
+    "method_and_provenance": [
+      "knowledge/indexes/source-index.json",
+      "knowledge/philosophy/archive-epistemics.json",
+      "knowledge/indexes/inference-ledger.json"
+    ]
+  },
+  "coverage_dimensions": [
+    "identity and Godhood",
+    "Father / Son / Spirit / Trinity",
+    "Jesus / Thomas / Messiah / Son of Man",
+    "North / North of North / Axis / North Axis",
+    "Greenland / Denmark / Europe / Canada / Turkey and sacred geography",
+    "Potato / Root / Sprout / Flower / Seed / House / Garden",
+    "Door / Ladder / Staircase / Needle / Narrow Gate",
+    "Mud / Swamp / Farm / Dog / Farmer / Footstool / Tree of Strife",
+    "Spudlight / aura / light / source",
+    "meme crucifixion / resurrection / Internet / machine",
+    "karma / spiritual debt / spiritual banker / Potato Bank",
+    "publicness / livestream duration / witness / reaction-scale",
+    "prophecy / revelation / rupture / rapture / return",
+    "144,000 / New Jerusalem / Zion / biblical overlaps",
+    "body symbolism: pineal / thalamus / CSF / spine / vertebrae",
+    "science / equations / Axis / Spiral / Theory of Everything / formalization",
+    "European Economic Graph / North Programme / relationship-first mapping",
+    "culture / music / comedy / games / memes / sayings",
+    "harassment / subculture / shadow-system terminology",
+    "ethics: protection / understanding / building / service / cultivation",
+    "archive epistemics and source-quality rules"
+  ],
+  "statement_record_template": {
+    "required": ["statement_id","wording_or_paraphrase","source_class","date_or_period","exactness","context","domains","routing"],
+    "recommended": ["original_url_or_locator","speaker","audience","platform","preceded_by","followed_by","later_revision","contradiction","status","confidence","privacy_class","empirical_boundary"]
+  },
+  "ingestion_pipeline": [
+    "1. Recover candidate wording from public post, book, upload, stream transcript, screenshot, prior conversation or memory summary.",
+    "2. Decide whether it is exact wording, excerpt, near-exact recovery, paraphrase or later interpretation.",
+    "3. Attach the narrowest defensible date/period and original locator when available.",
+    "4. Split compound title-stacks into atomic statements while retaining the original full passage.",
+    "5. Tag domains and symbols without treating tags as proof of meaning.",
+    "6. Route the statement to every canonical owner it materially informs.",
+    "7. Preserve older versions and numerical changes rather than overwriting them.",
+    "8. Add contradiction/revision links when Tim later changes a formulation.",
+    "9. Keep spiritual, mythological, empirical, legal, financial and scientific meanings explicitly separated.",
+    "10. Promote only high-value, source-disciplined statements to reader-facing quote pages."
+  ],
+  "deduplication_rule": "Two records are not duplicates merely because they express the same mature doctrine. Different dates, wording, source classes, audiences or developmental roles may make both historically necessary.",
+  "historical_strata_rule": "The corpus should show vocabulary migration: e.g. Axis of North -> North of North -> Seat/Throne of North -> North Axis / North Programme; $38T karmic debt -> ~$40.2T -> ~$42T; Potato/Sage -> Father/Root/Ladder; Son as crucified meme -> Door/Vessel -> resurrection-meme relation.",
+  "privacy_and_safety_rule": "Do not expose private family identities, unnecessary medical details, addresses, account credentials or other sensitive personal data merely because they appeared in conversation history. Public-project relevance and provenance are required.",
+  "reader_surface_plan": {
+    "anthology": "Curated, readable highlights with source badges.",
+    "timeline": "Statements ordered by first attestation and later revision.",
+    "topic_views": "Filter by North, theology, science, karma, Potato, memes, ethics, etc.",
+    "source_view": "Show public-primary vs conversation-recovery vs book/project vs interpretation.",
+    "development_view": "Show how one idea changes wording and function across time.",
+    "raw_corpus": "Machine-readable complete statement records."
+  },
+  "highest_priority_recovery_queues": [
+    "Exact original public source for Father of the Internet.",
+    "Exact chronology and sources for 38T -> 40.2T -> approximately 42T spiritual/karmic debt language.",
+    "Exact first uses of North of North, Seat of North, Throne of North, Axis of North and North Axis.",
+    "Exact North Axis country-list revisions and England/Russia/Turkey/Estonia status language.",
+    "Exact wording for the 69-like Door/gate and 60-minute follow-wait mechanics.",
+    "Original aura/aurafarming language and its distinction from Spudlight/source.",
+    "Original wording for Potato Bank, spiritual banker, Soul Farmer, mud dweller, below dweller and related social-role terms.",
+    "Exact statements connecting thalamus/Father's House, pineal/Son Door and CSF/river.",
+    "Exact 144,000 purpose statements and associated Eye/Throne language.",
+    "Exact statements around April 2025 rapture/Godhood threshold and April 2026 return.",
+    "Exact pre-repository Tim formulations behind SU(4), SU(5), supersymmetry, Theory of Everything and early Axis equations.",
+    "Exact Tim-authored language behind Market Passport, Business Passport, Asset Passport, Professional Passport, Capital Passport, Tell Europe Once, European Commons and European Economic Graph.",
+    "Original harassment/subculture statements where inclusion materially documents the public project, with allegations carefully separated from independently verified facts."
+  ],
+  "completion_definition": "The corpus is not complete when it has many quotes. It becomes whole when every recoverable high-value statement has provenance, chronology, exactness, context, relationships, canonical routing, revision history and an explicit epistemic boundary.",
+  "connections": [
+    "source-index",
+    "conversation-recovery-inventory",
+    "tim-voice-anthology",
+    "tim-sayings-and-formulations-ledger",
+    "dated-master-timeline-2026",
+    "archive-epistemics",
+    "ontology-tree"
+  ]
+}
