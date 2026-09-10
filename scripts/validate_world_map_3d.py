@@ -11,6 +11,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 HTML = ROOT / "world-map" / "3d.html"
 APP = ROOT / "world-map" / "3d-app.js"
+HOVER = ROOT / "world-map" / "3d-hover.js"
 RUNTIME = ROOT / "data" / "world-map-3d-runtime.json"
 WORLD = ROOT / "data" / "world-relational-map.json"
 COUNTRIES = ROOT / "data" / "countries" / "index.json"
@@ -30,10 +31,10 @@ def fail_if_missing(text: str, tokens: tuple[str, ...], label: str, errors: list
             errors.append(f"{label} missing required feature marker: {token}")
 
 
-def check_js_syntax(text: str, warnings: list[str], errors: list[str]) -> None:
+def check_js_syntax(text: str, label: str, warnings: list[str], errors: list[str]) -> None:
     node = shutil.which("node")
     if not node:
-        warnings.append("node not available; skipped JavaScript syntax check")
+        warnings.append(f"node not available; skipped JavaScript syntax check for {label}")
         return
     js = text.replace("import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';", "const maplibregl = {};")
     with tempfile.NamedTemporaryFile("w", suffix=".mjs", encoding="utf-8", delete=False) as handle:
@@ -42,7 +43,7 @@ def check_js_syntax(text: str, warnings: list[str], errors: list[str]) -> None:
     try:
         result = subprocess.run([node, "--check", str(temp)], capture_output=True, text=True)
         if result.returncode:
-            errors.append("3d-app.js JavaScript syntax check failed: " + (result.stderr.strip() or result.stdout.strip()))
+            errors.append(f"{label} JavaScript syntax check failed: " + (result.stderr.strip() or result.stdout.strip()))
     finally:
         temp.unlink(missing_ok=True)
 
@@ -51,7 +52,7 @@ def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
 
-    for path in (HTML, APP, RUNTIME, WORLD, COUNTRIES):
+    for path in (HTML, APP, HOVER, RUNTIME, WORLD, COUNTRIES):
         if not path.exists():
             errors.append(f"missing required atlas file: {path.relative_to(ROOT)}")
     if errors:
@@ -61,7 +62,7 @@ def main() -> int:
 
     html = HTML.read_text(encoding="utf-8", errors="replace")
     app = APP.read_text(encoding="utf-8", errors="replace")
-    combined = html + "\n" + app
+    hover = HOVER.read_text(encoding="utf-8", errors="replace")
     runtime = load_json(RUNTIME, errors)
     world = load_json(WORLD, errors)
     countries = load_json(COUNTRIES, errors)
@@ -72,8 +73,9 @@ def main() -> int:
             'id="map"', 'id="panel"', 'id="status"', 'id="search"', 'id="country-list"',
             'id="height"', 'id="compare"', 'id="interior"', 'id="relations"',
             'id="relationType"', 'id="traceDepth"', 'id="fit"', 'id="tilt"', 'id="globe"', 'id="world"',
-            'src="./3d-app.js"', "Trace · 1 hop", "Trace · 2 hops", "Trace · 3 hops",
-            "navigation handles, not fake geographic locations",
+            'src="./3d-hover.js"', 'src="./3d-pathfinder.js"',
+            "Trace · 1 hop", "Trace · 2 hops", "Trace · 3 hops",
+            "navigation handles rather than fake geographic locations",
         ),
         "world-map/3d.html",
         errors,
@@ -95,7 +97,19 @@ def main() -> int:
         "world-map/3d-app.js",
         errors,
     )
-    check_js_syntax(app, warnings, errors)
+    fail_if_missing(
+        hover,
+        (
+            "await import('./3d-app.js')", "GEO_LOCAL", "GEO_PRIMARY", "GEO_FALLBACK", "REST_LOCAL",
+            "function bestGeometryResponse", "function fallbackRestCountries", "atlasResilientFetch",
+            "local minimal country runtime", "capital-cities", "capital-city-labels", "function countryHtml",
+            "function capitalHtml", "Wikidata", "mousemove", "mouseleave",
+        ),
+        "world-map/3d-hover.js",
+        errors,
+    )
+    check_js_syntax(app, "3d-app.js", warnings, errors)
+    check_js_syntax(hover, "3d-hover.js", warnings, errors)
 
     if runtime.get("status") != "active experimental renderer contract":
         errors.append("world-map-3d-runtime status changed or missing")
@@ -163,11 +177,17 @@ def main() -> int:
         errors.append("recursive Trace does not visibly prevent country cycles")
     if "Trace outward" not in app or "onclick=\"goCountry(" not in app:
         errors.append("recursive Trace surface is not wired to country navigation")
+    if "return bestGeometryResponse()" not in hover:
+        errors.append("external geometry request is not routed through resilient local-first loading")
+    if "fetchJsonResponse(REST_LOCAL" not in hover:
+        errors.append("REST Countries enrichment does not prefer same-origin deployed snapshot")
 
     print(f"Canonical countries: {len(canonical_codes)}")
     print(f"Curated relation types: {len(relation_types)}")
     print(f"Referenced country/territory codes: {len(referenced)}")
     print("Trace contract: breadth-first · 1–3 hops · cycle guarded · capped")
+    print("Boot contract: local snapshot · provider retry · emergency synthesis")
+    print("Hover contract: country facts · capital city node/name/population")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings:
         print("WARNING:", warning)
