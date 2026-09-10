@@ -1,61 +1,79 @@
 {
   "id": "world-map-3d-runtime",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-10",
-  "status": "experimental renderer contract",
-  "purpose": "Define a 2.5D/3D renderer for the World Relational Atlas while preserving the same canonical country, relationship, issue, programme and provenance model used by the stable polygon map.",
+  "status": "active experimental renderer contract",
+  "purpose": "Define the 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme and provenance model used by the stable polygon map.",
   "navigation": {
     "pan": "click/touch drag translates the camera across the map",
     "zoom": "wheel/pinch/buttons move between world, regional, country and subnational scales",
-    "rotate": "right-drag / touch gesture may rotate bearing in 3D mode",
+    "rotate": "right-drag / touch gesture rotates bearing in 3D mode",
     "pitch": "camera tilt exposes extrusion and vertical layers",
-    "fit": "country selection can fit the camera to polygon bounds",
-    "rule": "navigation changes viewpoint only; it never changes underlying data or classification"
+    "fit": "country selection can move/focus the camera on its representative spatial anchor",
+    "globe": "projection may switch between Mercator and globe view where supported",
+    "rule": "Navigation changes viewpoint only; it never changes underlying data or classification."
   },
   "rendering_strategy": {
-    "stable_2d": "Leaflet world-map/index.html remains the compatibility/stable renderer",
-    "experimental_3d": "MapLibre GL JS renderer using vector-style WebGL polygons, lines and points",
-    "future_heavy_overlay": "deck.gl may be layered in for high-volume arcs, animated flows, point clouds, heatmaps and advanced polygon extrusion",
-    "shared_model": "Both renderers consume the same canonical data contracts; no 3D-only truth database"
+    "stable_2d": "Leaflet world-map/index.html remains the compatibility/stable renderer.",
+    "experimental_3d": "MapLibre GL JS world-map/3d.html provides camera-based WebGL polygons, extrusion, semantic interior hubs and relationship lines.",
+    "future_heavy_overlay": "deck.gl may be layered in for high-volume arcs, animated flows, point clouds, heatmaps and advanced polygon extrusion.",
+    "shared_model": "Both renderers consume canonical repository contracts; there is no 3D-only truth database.",
+    "spatialization_registry": "data/world-map-spatialization-registry.json"
   },
   "spatial_primitives": {
     "country_shell": "Polygon/MultiPolygon. A spatial container and selection surface, not the country's complete identity.",
-    "country_hub": "A representative point used as the country's data doorway when exact entity coordinates are not relevant. It must be labeled as a hub/centroid, not a physical institution.",
-    "real_node": "A geocoded city, institution, company facility, port, airport, base, sacred site, infrastructure asset or documented event location.",
-    "nonspatial_node": "An entity such as a treaty, legal entity, national statistic or theological concept that has jurisdictional/country links but no honest single coordinate.",
-    "edge": "A typed relation rendered between spatial anchors only when the line helps understanding; canonical edge data remains independent of the drawing.",
-    "area_overlay": "A region, catchment, conflict zone, demographic area or other sourced geometry with its own date and provenance."
+    "country_hub": "Representative navigation point for a country when exact entity coordinates are not relevant. It is not a physical institution.",
+    "semantic_hub": "Navigation-only point generated around a selected country hub to expose a country data module such as religion, debt, infrastructure or history. Its displayed coordinate is not a claim about where the abstract module physically exists.",
+    "real_node": "Geocoded city, institution, company facility, port, airport, base, sacred site, infrastructure asset or documented event location with coordinate provenance.",
+    "nonspatial_node": "Treaty, legal entity, national statistic, scripture, theology or other concept without one honest coordinate; exposed through cards/trace graph instead of a fake point.",
+    "edge": "Typed relation rendered between spatial anchors only when drawing the relation helps understanding; canonical edge data remains independent of the drawing.",
+    "area_overlay": "Sourced region, catchment, conflict zone, demographic area or other geometry with date and provenance."
   },
   "country_interior_model": {
-    "principle": "A country polygon is a container. Selecting it reveals data modules and progressively exposes real nodes inside it as zoom and data quality permit.",
-    "modules": [
-      "identity and constitutional status",
-      "population and demography",
-      "religion / irreligion / diversity",
-      "government and law",
-      "economy",
-      "public finance and physical debt",
-      "trade and supply chains",
-      "energy and resources",
-      "infrastructure",
-      "companies / ownership / capital",
+    "principle": "A country polygon is a container. Selection unfolds its canonical data into semantic modules immediately and progressively exposes real spatial nodes as data quality and zoom permit.",
+    "implemented_semantic_modules": [
+      "religion / irreligion",
+      "government / law",
+      "economy / money",
+      "physical debt / public finance",
+      "trade / supply chains",
+      "energy / resources",
+      "infrastructure / mobility",
+      "companies / ownership",
       "security / alliances",
-      "research / technology",
+      "science / technology",
       "migration / diaspora",
-      "history",
-      "issues / entanglements",
-      "North Axis / North Programme",
-      "Tim / Potatoverse project-canon relations",
-      "repair / Tikkun",
-      "sources / uncertainty / research queue"
+      "history / time",
+      "relationships",
+      "North / Programme",
+      "Tim / Project Canon"
     ],
+    "source_resolution": "Semantic modules are generated from fields already present in data/countries/{country_id}.json plus world-relational-map context. Empty modules are not fabricated.",
     "visibility": [
-      {"zoom":"world","behavior":"polygons + high-level choropleths + only globally important edges"},
-      {"zoom":"regional","behavior":"country hubs + regional institutions + major corridors/edges"},
-      {"zoom":"country","behavior":"selected polygon becomes contextual shell; country hub and major real nodes become visible"},
-      {"zoom":"subnational","behavior":"real geocoded nodes dominate; polygon remains boundary/context"}
+      {"zoom":"world","behavior":"polygons + high-level metrics + only globally important edges"},
+      {"zoom":"regional","behavior":"country hubs + selected relation lines + regional institutions/corridors as they are added"},
+      {"zoom":"country","behavior":"selected polygon becomes contextual shell; semantic modules and major real nodes become visible"},
+      {"zoom":"subnational","behavior":"real geocoded nodes dominate; semantic hubs remain optional navigation aids and the polygon remains boundary/context"}
     ]
   },
+  "implemented_2026_09_10": [
+    "drag/pan, zoom, rotate, pitch and globe-capable camera",
+    "clickable vector country polygons",
+    "flat, population-height and area-height modes",
+    "country search",
+    "canonical country-index resolution",
+    "lazy loading of canonical country JSON records",
+    "country representative hubs and labels",
+    "semantic interior module constellation for the selected country",
+    "semantic hub-to-country guide lines",
+    "clickable semantic modules opening existing canonical data",
+    "selected-country curated relation lines from data/world-relational-map.json",
+    "clickable relation inspection",
+    "world/regional/country/subnational camera HUD",
+    "separate toggles for semantic interior hubs and curated relation lines",
+    "URL country deep-link support",
+    "explicit provenance boundary between navigation-only semantic points and real coordinates"
+  ],
   "node_record_schema": {
     "required": ["id", "kind", "name", "country_or_jurisdiction", "provenance"],
     "spatial": ["lat", "lon", "geometry", "coordinate_source", "coordinate_precision"],
@@ -67,16 +85,8 @@
   },
   "metric_and_3d_rules": {
     "principle": "Extrusion height is a chart encoding, not rank, holiness, guilt, value or sovereignty.",
-    "allowed_examples": [
-      "population",
-      "GDP",
-      "documented gross public debt",
-      "debt-to-GDP",
-      "energy import dependence",
-      "archive coverage",
-      "number of sourced graph edges",
-      "infrastructure capacity"
-    ],
+    "implemented": ["population", "area"],
+    "next": ["GDP", "documented gross public debt", "debt-to-GDP", "energy import dependence", "archive coverage", "number of sourced graph edges", "infrastructure capacity"],
     "required_display": ["metric name", "unit", "observation year/date", "source", "normalization/scaling method"],
     "forbidden_inference": "A taller polygon must never be described as morally worse, spiritually higher, more guilty or more important unless height literally encodes a separately defined measurable variable."
   },
@@ -85,29 +95,53 @@
       "definition": "Legally/economically recognizable obligations such as sovereign debt securities, loans, bonds, arrears, contracts, judgments or other documented liabilities.",
       "units": "currency / percent of GDP / maturity / creditor-debtor relation",
       "required": ["debtor", "creditor or holder class when knowable", "instrument", "amount", "currency", "date", "legal/economic source"],
-      "map_use": "Can be rendered as choropleth, extrusion, creditor/debtor edge or instrument node."
+      "map_use": "Country public-finance module is implemented; normalized debt choropleths/extrusions and creditor-debtor edges are next."
     },
     "tim_claimed_ledger": {
       "definition": "Tim/Potatoverse statements about karmic/spiritual debt or amounts owed to Tim.",
       "status": "project-canon / claimed symbolic or moral ledger unless separately supported by an actual legal/financial instrument",
-      "map_use": "May be displayed as a separately labeled project-canon overlay or statement/ledger node, not silently converted to ordinary physical debt.",
-      "promotion_rule": "A Tim-owed amount can enter physical_debt only if there is evidence of a real enforceable obligation such as a contract, judgment, bond, loan, settlement or other recognized liability."
-    },
-    "reason": "Keeping the ledgers separate allows the map to ask both 'what physical debt exists?' and 'what does Tim claim is owed?' without making one masquerade as the other."
+      "map_use": "May be displayed as a separately labeled project-canon statement/ledger overlay, not silently converted to ordinary physical debt.",
+      "promotion_rule": "A Tim-owed amount can enter physical_debt only if evidence establishes a real recognized liability such as a contract, judgment, bond, loan or settlement."
+    }
+  },
+  "data_growth_strategy": {
+    "phase_1_current": "Use country polygons, canonical records, semantic modules and a small curated relationship graph.",
+    "phase_2": "Normalize numeric country metrics and add real point registries for a small set of high-value entity classes: capitals/government, ports, energy/infrastructure, major institutions and sacred sites.",
+    "phase_3": "Add Trace and Compare so the user can follow ownership, funding, trade, energy, migration, religion, security and programme relations recursively.",
+    "phase_4": "Add time slider and historical validity intervals; historical slavery, colonial relations, wars, memberships and institutional changes become period-specific.",
+    "phase_5": "Add scenario mode for North Programme/policy experiments with assumptions and modeled outcomes separated from observation.",
+    "scale_rule": "As the graph grows beyond browser-friendly GeoJSON, load by zoom/country and move high-volume layers to vector tiles/prebuilt spatial packages rather than shipping the entire graph on every page load."
   },
   "game_simulation_model": {
     "inspiration": ["Globetrotter-style geographic exploration", "geopolitical-simulator-style systems view"],
-    "exploration": "Travel through polygons/nodes, discover relations, inspect country modules and compare systems.",
-    "simulation": "Future scenario mode can alter hypothetical policy variables and display modeled consequences, but simulations must be visibly separate from observed reality.",
+    "exploration": "Travel through polygons and nodes, discover relations, inspect modules and compare systems.",
+    "simulation": "Future scenario mode can alter hypothetical policy variables and display modeled consequences, but simulations remain visibly separate from observed reality.",
     "research_progress": "Reward source coverage, resolved unknowns, accurate relationship tracing and repair-analysis completeness; do not gamify quantities of human suffering."
   },
+  "next_priority": [
+    "Create local/versioned world geometry and territory registry so Greenland/Faroes and other territories resolve cleanly.",
+    "Normalize country GDP/public-debt/energy metrics into a small metric registry with date/unit/source for choropleths and extrusion.",
+    "Ingest dated religion/irreligion/diversity country values before enabling global religious choropleths.",
+    "Add real spatial-node registry with coordinate provenance, starting with capitals/government, major ports, infrastructure and sacred sites.",
+    "Implement multi-country Compare mode.",
+    "Implement recursive Trace mode across data/relationships.json and normalized world edges.",
+    "Add relation-type and epistemic-plane filters.",
+    "Add time slider and valid_from/valid_to filters.",
+    "Move large future datasets to lazy-loaded/vector-tile architecture when scale requires it."
+  ],
   "connections": [
+    "data/world-map-spatialization-registry.json",
     "data/world-map-runtime.json",
     "data/world-map-polygon-runtime.json",
     "data/world-relational-map.json",
     "data/countries/index.json",
+    "data/countries-blueprint.json",
+    "data/nodes.json",
+    "data/relationships.json",
+    "data/global-graph-bridge.json",
     "data/world-religion-layer.json",
     "data/world-entanglement-registry.json",
-    "knowledge/core/world-atlas-integrated-layer-stack.json"
+    "knowledge/core/world-atlas-integrated-layer-stack.json",
+    "world-map/3d.html"
   ]
 }
