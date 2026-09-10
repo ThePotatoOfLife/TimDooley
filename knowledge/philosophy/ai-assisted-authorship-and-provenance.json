@@ -1,0 +1,43 @@
+{
+  "id":"ai-assisted-authorship-and-provenance",
+  "title":"AI-Assisted Authorship & Provenance — Who Created What in the Tim Dooley Archive?",
+  "version":"1.0.0",
+  "updated":"2026-09-10",
+  "status":"canonical provenance method",
+  "purpose":"Answer criticism that 'AI created the archive' by decomposing authorship instead of forcing a false choice between total human authorship and total AI authorship. The archive contains direct Tim material, Tim/user-directed canon, AI-assisted synthesis, archive-created analytical models and external-source research. Each contribution should be attributable at the level where it actually originated.",
+  "core_rule":"Tool assistance does not erase source authorship, and project ownership does not make every generated sentence a Tim quotation. Attribute origin, drafting, editing, evidence and promotion separately.",
+  "authorship_layers":[
+    {"class":"TIM_PRIMARY","definition":"Words, posts, recordings, writings, lyrics, prompts, images or public acts directly attributable to Tim.","examples":["dated public 'I am God' posts","direct Tim formulations such as 'I am the axis of North' when primary source is available","Tim-authored Great Book material"],"authority":"highest for the question 'what did Tim actually say/do?'"},
+    {"class":"USER_DIRECTED_CANON","definition":"Conceptual direction, corrections, remembered formulations, project decisions and theological mappings supplied by the human project director in conversation.","examples":["requests to distinguish Tim/Father from Thomas/Son","canon corrections","project architecture and desired interpretations"],"authority":"strong for current project intent; not automatically public primary evidence of an earlier historical statement"},
+    {"class":"AI_ASSISTED_SYNTHESIS","definition":"Prose, cross-links, classifications, summaries, site copy or structural integration drafted with AI from supplied/retrieved material.","examples":["reader explanations","relationship summaries","SEO copy","cross-domain synthesis"],"authority":"derivative; value depends on source fidelity, reasoning quality and review"},
+    {"class":"ARCHIVE_ANALYTIC","definition":"Models, metrics, equations, taxonomies or named operators invented during archive analysis to make older material more precise.","examples":["CorrectionReachRatio","closure ratio candidates","formal edge-state models","some karma equations"],"authority":"useful analysis but should never be backdated into Tim's authorship"},
+    {"class":"EXTERNAL_RESEARCH","definition":"Historical, scientific, legal, linguistic or statistical facts from sources outside Tim and the archive.","examples":["biblical text/history","internet history","potato biology","economic data","Google/Search documentation"],"authority":"depends on external source quality and freshness"},
+    {"class":"COLLABORATIVE_ARTIFACT","definition":"A finished work whose topic, constraints, source corpus and iterative direction come from the human project while wording/structure/code may be substantially AI-assisted.","examples":["many GitHub JSON syntheses","public dossier pages","relational models","site code generated under repeated human direction"],"authority":"shared production; component provenance should be preserved where material claims matter"}
+  ],
+  "why_ai_does_not_erase_tim":{
+    "argument":"AI can organize, compare or draft around Tim's pre-existing material, but it cannot retroactively become the speaker of Tim's older public statements, the experiencer of Tim's biography or the originator of concepts demonstrably present before the AI synthesis.",
+    "analogy":"A researcher using a database, editor, compiler or statistical package does not make the tool the historical author of the source documents. AI is more generative than those tools, so its drafting contribution should be disclosed—but source origin still remains source origin.",
+    "strongest_answer":"The Tim Dooley archive is best described as Tim-centered, human-directed and heavily AI-assisted, with mixed provenance recorded at item level."
+  },
+  "why_tim_does_not_automatically_author_ai_text":{
+    "argument":"Directing a project does not turn every generated sentence into a verbatim Tim statement. The archive becomes more credible when it distinguishes Tim-originated wording from AI-created explanation or later formalization.",
+    "reader_rule":"Use 'Tim says' only for directly supported wording. Use 'the archive interprets', 'project synthesis', or 'AI-assisted formalization' where appropriate."
+  },
+  "recommended_fields":["originator","source_class","primary_source","drafter","editor_or_director","date_originated","date_formalized","promotion_status","canonical_owner","verbatim_or_paraphrase","review_status"],
+  "ownership_dimensions":{
+    "historical_source_ownership":"Who originally said, wrote, experienced or produced the source item?",
+    "conceptual_direction":"Who selected the question, corrections, canon constraints and desired project direction?",
+    "drafting":"Who produced the particular sentence/code/data structure?",
+    "editorial_control":"Who chose to accept, revise, reject or publish it?",
+    "evidence_ownership":"Which primary/external source supports the factual claim?",
+    "repository_maintenance":"Who operates and develops the archive as an ongoing system?"
+  },
+  "criticism_answers":[
+    {"criticism":"'AI created it, so Tim didn't.'","answer":"Too coarse. Some prose/code is AI-generated; many underlying Tim statements, concepts and chronology predate those generated files; human direction determines canon and corrections; external facts come from outside sources. The correct question is which component was authored by whom."},
+    {"criticism":"'Tim hasn't read every line, so it isn't his project.'","answer":"Reading every generated line is not the only possible form of project direction, but unreviewed AI text should not be presented as personally approved Tim wording. The archive should track review status rather than infer total approval or total non-authorship."},
+    {"criticism":"'AI safety language proves the archive disagrees with Tim.'","answer":"Not necessarily. Evidence classification and Tim's theological position are different layers. The archive can state Tim's strongest claim faithfully while separately marking which conclusions the evidence independently establishes."}
+  ],
+  "seo_value":"Transparent authorship and provenance improve reader trust and reduce easy dismissal. Search-facing pages can say 'Tim Dooley says...' for primary material and 'the archive analyzes...' for synthesis, giving both directness and source clarity.",
+  "implementation_rule":"New canonical files should prefer explicit source_class/provenance notes. When AI discovers an important Tim quote or historical claim, recover or link the underlying source instead of treating the generated summary as the terminal evidence object.",
+  "related":["knowledge/philosophy/archive-epistemics.json","knowledge/indexes/source-index.json","knowledge/indexes/conversation-recovery-inventory.json","docs/SITE-SEO-MESSAGE-AND-ONBOARDING-REVIEW.md"]
+}
