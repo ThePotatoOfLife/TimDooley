@@ -27,17 +27,50 @@ box.hidden = true;
 document.querySelector('.mapwrap').appendChild(box);
 
 let worldCfg = null;
-let rest = [];
+let countries = [];
 let by3 = {};
+
+async function fetchJson(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`${url} returned HTTP ${response.status}`);
+  return response.json();
+}
+
+function normalizeFacts(payload) {
+  const rows = payload?.countries || {};
+  return Object.entries(rows).map(([cca3, row]) => ({
+    cca3,
+    name: {
+      common: row?.name || cca3,
+      official: row?.official_name || row?.name || cca3,
+    },
+  }));
+}
+
+async function loadCountryNames() {
+  try {
+    const facts = await fetchJson('../data/world-country-facts.json');
+    const normalized = normalizeFacts(facts);
+    if (normalized.length >= 190) return normalized;
+    throw new Error(`local facts coverage too low: ${normalized.length}`);
+  } catch (localError) {
+    console.warn('Local country facts unavailable for Path; trying REST Countries', localError);
+    const live = await fetchJson('https://restcountries.com/v3.1/all?fields=name,cca3');
+    if (!Array.isArray(live) || live.filter(x => x?.cca3).length < 190) {
+      throw new Error('REST Countries pathfinder coverage unexpectedly low');
+    }
+    return live;
+  }
+}
+
 try {
-  const [worldResponse, restResponse] = await Promise.all([
-    fetch('../data/world-relational-map.json'),
-    fetch('https://restcountries.com/v3.1/all?fields=name,cca3')
+  const [world, countryRows] = await Promise.all([
+    fetchJson('../data/world-relational-map.json'),
+    loadCountryNames(),
   ]);
-  if (!worldResponse.ok || !restResponse.ok) throw new Error('pathfinder dependency failed');
-  worldCfg = await worldResponse.json();
-  rest = await restResponse.json();
-  by3 = Object.fromEntries(rest.filter(x => x.cca3).map(x => [x.cca3, x]));
+  worldCfg = world;
+  countries = countryRows;
+  by3 = Object.fromEntries(countries.filter(x => x.cca3).map(x => [x.cca3, x]));
 } catch (error) {
   console.warn('Path finder unavailable', error);
   button.disabled = true;
@@ -57,9 +90,9 @@ function resolveCountry(query) {
   const bracket = q.match(/\(([a-z]{3})\)$/i)?.[1];
   const code = (bracket || q).toUpperCase();
   if (by3[code]) return code;
-  const exact = rest.find(x => x.name?.common?.toLowerCase() === q || x.name?.official?.toLowerCase() === q);
+  const exact = countries.find(x => x.name?.common?.toLowerCase() === q || x.name?.official?.toLowerCase() === q);
   if (exact) return exact.cca3;
-  return rest.find(x => x.name?.common?.toLowerCase().includes(q) || x.name?.official?.toLowerCase().includes(q))?.cca3 || null;
+  return countries.find(x => x.name?.common?.toLowerCase().includes(q) || x.name?.official?.toLowerCase().includes(q))?.cca3 || null;
 }
 function shortestPath(start, target) {
   if (!start || !target) return null;
