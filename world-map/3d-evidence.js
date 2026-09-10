@@ -103,6 +103,8 @@ async function renderEvidence() {
     const statuses = projectStatuses(world, code);
     const factsSources = fact.field_sources || {};
     const fullReligion = Object.keys(religion.composition || {}).length;
+    const geographicLabel = fact.region || fact.subregion || fact.continent;
+    const geographicSource = fact.region ? factsSources.region : fact.subregion ? factsSources.subregion : factsSources.continent;
 
     const layerTags = Object.entries(layerCounts).sort((a,b)=>b[1]-a[1]).map(([name,count]) => `<span class="evidence-tag evidence-observed">${esc(name)} · ${count}</span>`).join('') || '<span class="muted">No curated country edges yet.</span>';
     const projectTags = statuses.map(value => `<span class="evidence-tag evidence-project">${esc(value)}</span>`).join('') || '<span class="muted">No current project-axis status in this registry.</span>';
@@ -111,9 +113,10 @@ async function renderEvidence() {
     box.innerHTML = `
       <div class="evidence-head"><div><div class="eyebrow">Eye · Evidence</div><b>${esc(fact.name || demo.name || code)} · ${esc(code)}</b><div class="muted">Source provenance and epistemic context</div></div><button onclick="closeAtlasEvidence()">×</button></div>
       <div class="evidence-section"><b>Observed country facts</b>
+        ${sourceRow('Identity owner', fact.source_owner)}
         ${metricRow('Capital', fact.capital)}${sourceRow('Capital source', factsSources.capital)}
-        ${metricRow('Area', fact.area_km2 != null ? `${Number(fact.area_km2).toLocaleString()} km²` : '')}${sourceRow('Area source', factsSources.area_km2)}
-        ${metricRow('Region', fact.region || fact.continent)}${sourceRow('Region source', factsSources.continent)}
+        ${metricRow('Area', fact.area_km2 != null ? `${Number(fact.area_km2).toLocaleString()} km²` : '')}${sourceRow('Area source', factsSources.area_km2)}${metricRow('Area definition', fact.area_definition)}
+        ${metricRow('Region', geographicLabel)}${sourceRow('Region source', geographicSource)}
         ${metricRow('Currency', fact.currency)}${sourceRow('Currency source', factsSources.currency)}
       </div>
       <div class="evidence-section"><b>Population observation</b>
@@ -139,3 +142,5 @@ async function renderEvidence() {
 
 button.addEventListener('click', () => box.hidden ? renderEvidence() : closeEvidence());
 window.refreshAtlasEvidence = () => { if (!box.hidden) renderEvidence(); };
+window.addEventListener('popstate', window.refreshAtlasEvidence);
+document.querySelector('#map')?.addEventListener('click', () => setTimeout(window.refreshAtlasEvidence, 160));
