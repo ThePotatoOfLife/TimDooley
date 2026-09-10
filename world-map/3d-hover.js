@@ -1,13 +1,13 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 
-// The 3D atlas used to fail hard when either jsDelivr or REST Countries had a
-// transient/CORS/network problem. Keep external services as enrichments, not
-// single points of failure. The wrapper below retries geometry from raw GitHub
-// and can synthesize a minimal REST-Countries-compatible runtime from the
-// repository's own country index + world polygons.
+// Resilient atlas boot order:
+//   same-origin Pages snapshot -> primary provider -> alternate provider -> local synthesis.
+// Third-party data enriches the atlas; it must not be a single point of failure.
 const nativeFetch = window.fetch.bind(window);
+const GEO_LOCAL = '../data/world-countries.geo.json';
 const GEO_PRIMARY = 'https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json';
 const GEO_FALLBACK = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json';
+const REST_LOCAL = '../data/rest-countries-runtime.json';
 const REST_PREFIX = 'https://restcountries.com/v3.1/all';
 
 async function fetchJsonResponse(url, options) {
@@ -32,13 +32,18 @@ function representativePoint(feature) {
   return seen ? [(minY + maxY) / 2, (minX + maxX) / 2] : null;
 }
 
+async function bestGeometryResponse() {
+  try { return await fetchJsonResponse(GEO_LOCAL); }
+  catch (localError) { console.warn('Local world geometry snapshot unavailable.', localError); }
+  try { return await fetchJsonResponse(GEO_PRIMARY); }
+  catch (primaryError) { console.warn('Primary world geometry unavailable.', primaryError); }
+  return fetchJsonResponse(GEO_FALLBACK);
+}
+
 async function fallbackRestCountries() {
   const [indexResponse, geoResponse] = await Promise.all([
     fetchJsonResponse('../data/countries/index.json'),
-    (async () => {
-      try { return await fetchJsonResponse(GEO_PRIMARY); }
-      catch { return fetchJsonResponse(GEO_FALLBACK); }
-    })()
+    bestGeometryResponse()
   ]);
   const [indexPayload, geo] = await Promise.all([indexResponse.json(), geoResponse.json()]);
   const rows = Array.isArray(indexPayload) ? indexPayload : (indexPayload.countries || indexPayload.items || []);
@@ -65,16 +70,11 @@ async function fallbackRestCountries() {
 window.fetch = async function atlasResilientFetch(input, options) {
   const url = typeof input === 'string' ? input : input?.url || String(input);
   if (url === GEO_PRIMARY) {
-    try {
-      const response = await nativeFetch(input, options);
-      if (response.ok) return response;
-      throw new Error(`Primary world geometry returned ${response.status}`);
-    } catch (primaryError) {
-      console.warn('Primary world geometry failed; retrying raw GitHub.', primaryError);
-      return fetchJsonResponse(GEO_FALLBACK, options);
-    }
+    return bestGeometryResponse();
   }
   if (url.startsWith(REST_PREFIX)) {
+    try { return await fetchJsonResponse(REST_LOCAL, options); }
+    catch (localError) { console.warn('Local country runtime snapshot unavailable.', localError); }
     try {
       const response = await nativeFetch(input, options);
       if (response.ok) return response;
@@ -91,7 +91,7 @@ window.fetch = async function atlasResilientFetch(input, options) {
   return nativeFetch(input, options);
 };
 
-// Capture the atlas Map instance without coupling the core renderer to this optional layer.
+// Capture the atlas Map instance without coupling the core renderer to this enhancement layer.
 const originalAddControl = maplibregl.Map.prototype.addControl;
 maplibregl.Map.prototype.addControl = function (...args) {
   window.__potatoAtlasMap = this;
@@ -243,6 +243,7 @@ async function install() {
       popup.remove();
     });
   } catch (error) {
+    // Capitals are optional; the country atlas remains usable if Wikidata is down.
     console.warn('Capital city layer unavailable:', error);
   }
 }
