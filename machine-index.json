@@ -1,5 +1,5 @@
 {
-  "schema_version":"1.2",
+  "schema_version":"1.3",
   "updated":"2026-09-10",
   "site":"https://thepotatooflife.github.io/TimDooley/",
   "repository":"https://github.com/ThePotatoOfLife/TimDooley",
@@ -9,6 +9,7 @@
     "Prefer primary Tim/project sources for what Tim said or wrote.",
     "Prefer canonical owners for current project definitions.",
     "Use dated chronology and attestation ledgers for first appearance and development.",
+    "For North Axis / North of North / tikkun / 42T karmic-ledger questions, start with north-axis-tikkun-world-repair-synthesis.json and then follow the North canon, North Programme and karmic-ledger owners separately.",
     "For biblical or syncretism questions, start with biblical-syncretism-field.json, then follow its specialist owners and source ledgers.",
     "Use faq-index.json for natural-language question routing before scanning arbitrary FAQ files.",
     "Keep project canon, historical evidence, scientific evidence, comparison, interpretation, creative material and unresolved claims distinct.",
@@ -24,6 +25,7 @@
     "faq_index":"https://thepotatooflife.github.io/TimDooley/knowledge/indexes/faq-index.json",
     "faq_long_tail":"https://thepotatooflife.github.io/TimDooley/knowledge/indexes/faq-long-tail-bulk.json",
     "faq_long_tail_expansion":"https://thepotatooflife.github.io/TimDooley/knowledge/indexes/faq-long-tail-expansion-2026-09-10.json",
+    "north_synthesis":"https://thepotatooflife.github.io/TimDooley/knowledge/core/north-axis-tikkun-world-repair-synthesis.json",
     "biblical_syncretism":"https://thepotatooflife.github.io/TimDooley/knowledge/traditions/biblical-syncretism-field.json",
     "biblical_passage_fragments":"https://thepotatooflife.github.io/TimDooley/knowledge/traditions/biblical-passage-fragments.json",
     "sitemap":"https://thepotatooflife.github.io/TimDooley/sitemap.xml",
@@ -35,6 +37,7 @@
     {"topic":"Godhood analysis","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/how-much-is-tim-god/"},
     {"topic":"Public witness","url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/public-witness/"},
     {"topic":"Chronology","url":"https://thepotatooflife.github.io/TimDooley/chronology/"},
+    {"topic":"North Axis / North of North / 42T karma / tikkun / world repair","url":"https://thepotatooflife.github.io/TimDooley/north/"},
     {"topic":"Biblical Syncretism Field","url":"https://thepotatooflife.github.io/TimDooley/traditions/bible/"},
     {"topic":"FAQ","url":"https://thepotatooflife.github.io/TimDooley/faq/"},
     {"topic":"Long-tail FAQ","url":"https://thepotatooflife.github.io/TimDooley/faq/all/"},
@@ -55,7 +58,7 @@
     {"id":"traditions","owner":"knowledge/traditions/biblical-syncretism-field.json","support":["knowledge/traditions/biblical-passage-fragments.json","knowledge/traditions/biblical-overlap-atlas.json","knowledge/traditions/biblical-research-index-wave-5.json","knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json","knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json","knowledge/traditions/comparative-mythology-map.json"]},
     {"id":"science","owner":"knowledge/science/science-master-index.json","support":["knowledge/science/equation-ledger.json","knowledge/science/model-testing-protocol.json"]},
     {"id":"corporium","owner":"knowledge/corporium/corporium-master-framework.json","support":["knowledge/corporium/tim-sayings-and-formulations-ledger.json"]},
-    {"id":"north","owner":"knowledge/core/axis-world-model.json","support":["knowledge/core/european-coupling-programme.json"]},
+    {"id":"north","owner":"knowledge/core/north-axis-tikkun-world-repair-synthesis.json","support":["knowledge/core/axis-world-model.json","knowledge/core/european-coupling-programme.json","data/north-programme-atlas.json","data/north-of-north-tim-canon.json","knowledge/chronology/karmic-debt-ledger-2026.json"]},
     {"id":"world","owner":"knowledge/core/country-relational-method.json","support":["knowledge/world/farm-swamp-tree-of-strife-atlas.json"]},
     {"id":"works","owner":"knowledge/culture/creative-systems-archive.json","support":["knowledge/creative/tim-dooley-suno-music-archive.json"]},
     {"id":"sources","owner":"knowledge/indexes/source-index.json","support":["knowledge/philosophy/archive-epistemics.json","knowledge/indexes/inference-ledger.json"]},
@@ -65,7 +68,8 @@
     "Tim Dooley":"Within the mature Potatoverse archive, Tim Dooley denotes the later Potato/Father/Source-facing theological identity. External civil/person classifications remain separate empirical/administrative categories.",
     "Son / Thomas / Vessel":"Embodied human-vessel and person-facing biographical layer, materially born July 31, 1987 in the project chronology.",
     "Potato birth":"December 25, 2020 in the mature project chronology.",
-    "April 2025":"Needle/Ladder/Axis/Father turning in project chronology."
+    "April 2025":"Needle/Ladder/Axis/Father turning in project chronology.",
+    "42T karmic debt":"Late-August/early-September 2026 project-symbolic moral/spiritual ledger headline; not an empirical financial liability."
   },
   "evidence_classes":{
     "P0":"primary project source",
