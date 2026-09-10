@@ -10,7 +10,7 @@ button.title = 'Inspect source provenance, observation dates and epistemic layer
 toolbar.insertBefore(button, anchor);
 
 const style = document.createElement('style');
-style.textContent = `.evidence-eye{position:absolute;left:12px;top:12px;z-index:5;width:min(470px,calc(100% - 24px));max-height:72%;overflow:auto;background:#080b0bf2;border:1px solid var(--line);border-radius:10px;padding:11px}.evidence-eye[hidden]{display:none}.evidence-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.evidence-section{margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}.evidence-kv{display:grid;grid-template-columns:115px minmax(0,1fr);gap:4px 8px;padding:3px 0;font-size:11px}.evidence-kv span:first-child{color:var(--muted)}.evidence-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 6px;margin:2px 2px 2px 0;font-size:10px}.evidence-observed{border-color:#4f8064}.evidence-project{border-color:#8c7350}.evidence-source{font:10px/1.35 ui-monospace,monospace;overflow-wrap:anywhere}@media(max-width:900px){.evidence-eye{position:fixed;left:10px;right:10px;top:76px;width:auto;max-height:54vh}}`;
+style.textContent = `.evidence-eye{position:absolute;left:12px;top:12px;z-index:5;width:min(470px,calc(100% - 24px));max-height:72%;overflow:auto;background:#080b0bf2;border:1px solid var(--line);border-radius:10px;padding:11px}.evidence-eye[hidden]{display:none}.evidence-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.evidence-section{margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}.evidence-kv{display:grid;grid-template-columns:115px minmax(0,1fr);gap:4px 8px;padding:3px 0;font-size:11px}.evidence-kv span:first-child{color:var(--muted)}.evidence-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 6px;margin:2px 2px 2px 0;font-size:10px}.evidence-observed{border-color:#4f8064}.evidence-project{border-color:#8c7350}.evidence-source{font:10px/1.35 ui-monospace,monospace;overflow-wrap:anywhere}.evidence-time-warning{border-left:3px solid #8c7350;background:#171410;padding:6px 8px;margin:5px 0;font-size:10px;color:#d9cfbd}@media(max-width:900px){.evidence-eye{position:fixed;left:10px;right:10px;top:76px;width:auto;max-height:54vh}}`;
 document.head.appendChild(style);
 
 const box = document.createElement('section');
@@ -41,6 +41,20 @@ async function loadEvidenceData() {
 
 function selectedCode() {
   return new URL(location.href).searchParams.get('country')?.toUpperCase() || null;
+}
+function selectedTime() {
+  return window.__potatoAtlasTime?.getState?.() || {mode:'current',time:'',time2:''};
+}
+function timeCompatibility(label, year, state) {
+  const y=Number(year);if(!Number.isFinite(y)||state.mode==='current')return'';
+  const y1=Number(String(state.time||'').slice(0,4));
+  const y2=Number(String(state.time2||'').slice(0,4));
+  if(state.mode==='as_of'&&Number.isFinite(y1)&&y>y1)return `<div class="evidence-time-warning">${esc(label)} observation (${y}) post-dates the selected historical view (${y1}); it is shown as source context, not as evidence for that date.</div>`;
+  if(state.mode==='changed_between'&&Number.isFinite(y1)&&Number.isFinite(y2)){
+    const lo=Math.min(y1,y2),hi=Math.max(y1,y2);
+    if(y<lo||y>hi)return `<div class="evidence-time-warning">${esc(label)} observation (${y}) falls outside the compared period (${lo}–${hi}); it is contextual rather than a direct period observation.</div>`;
+  }
+  return'';
 }
 
 function projectStatuses(world, code) {
@@ -90,7 +104,6 @@ async function renderEvidence() {
 
   try {
     const {facts, demography, world} = await loadEvidenceData();
-    // Ignore an async response if navigation changed while the evidence data was loading.
     if (selectedCode() !== code) return renderEvidence();
     const fact = facts?.countries?.[code] || {};
     const demo = demography?.countries?.[code] || {};
@@ -109,13 +122,16 @@ async function renderEvidence() {
     const fullReligion = Object.keys(religion.composition || {}).length;
     const geographicLabel = fact.region || fact.subregion || fact.continent;
     const geographicSource = fact.region ? factsSources.region : fact.subregion ? factsSources.subregion : factsSources.continent;
+    const time=selectedTime();
+    const populationTimeWarning=timeCompatibility('Population',population.year,time);
+    const religionTimeWarning=timeCompatibility('Religion',religion.year,time);
 
     const layerTags = Object.entries(layerCounts).sort((a,b)=>b[1]-a[1]).map(([name,count]) => `<span class="evidence-tag evidence-observed">${esc(name)} · ${count}</span>`).join('') || '<span class="muted">No curated country edges yet.</span>';
     const projectTags = statuses.map(value => `<span class="evidence-tag evidence-project">${esc(value)}</span>`).join('') || '<span class="muted">No current project-axis status in this registry.</span>';
     const typeTags = Object.entries(typeCounts).sort((a,b)=>b[1]-a[1]).slice(0,10).map(([name,count]) => `<span class="evidence-tag">${esc(name)} · ${count}</span>`).join('');
 
     box.innerHTML = `
-      <div class="evidence-head"><div><div class="eyebrow">Eye · Evidence</div><b>${esc(fact.name || demo.name || code)} · ${esc(code)}</b><div class="muted">Source provenance and epistemic context</div></div><button onclick="closeAtlasEvidence()">×</button></div>
+      <div class="evidence-head"><div><div class="eyebrow">Eye · Evidence</div><b>${esc(fact.name || demo.name || code)} · ${esc(code)}</b><div class="muted">Source provenance and epistemic context${time.mode!=='current'?` · Time: ${esc(time.mode==='as_of'?time.time:`${time.time} → ${time.time2}`)}`:''}</div></div><button onclick="closeAtlasEvidence()">×</button></div>
       <div class="evidence-section"><b>Observed country facts</b>
         ${sourceRow('Identity owner', fact.source_owner)}
         ${metricRow('Capital', fact.capital)}${sourceRow('Capital source', factsSources.capital)}
@@ -126,18 +142,20 @@ async function renderEvidence() {
       <div class="evidence-section"><b>Population observation</b>
         ${metricRow('Value', population.value != null ? Number(population.value).toLocaleString() : '')}
         ${metricRow('Reference year', population.year)}
+        ${populationTimeWarning}
         ${sourceRow('Source', population.source)}
         ${sourceRow('Source URL', population.source_url)}
         ${metricRow('Confidence', population.confidence)}
       </div>
       <div class="evidence-section"><b>Religion observation</b>
         ${metricRow('Reference year', religion.year)}
+        ${religionTimeWarning}
         ${metricRow('Coverage', fullReligion ? `${fullReligion}/7 broad categories` : '')}
         ${sourceRow('Source', religion.source)}
         ${sourceRow('Original source', religion.original_source_url)}
       </div>
       <div class="evidence-section"><b>Curated relationship evidence</b><div>${layerTags}</div>${typeTags ? `<div style="margin-top:5px">${typeTags}</div>` : ''}<div class="muted" style="margin-top:5px">${edges.length} represented edge${edges.length === 1 ? '' : 's'} touch this country in the current curated world graph.</div></div>
-      <div class="evidence-section"><b>Project interpretation</b><div>${projectTags}</div><div class="muted" style="margin-top:5px">These badges are project-axis classifications. They are not treaty memberships, borders or empirical alignment scores.</div></div>
+      <div class="evidence-section"><b>Project interpretation</b><div>${projectTags}</div><div class="muted" style="margin-top:5px">These badges are current project-axis classifications. In historical Time mode they remain source context unless a dated project snapshot explicitly supports the selected date.</div></div>
       <div class="boundary">Eye reports what sources and classifications the Atlas currently uses. Missing coverage means “not represented here yet,” not “false.” Repetition is not corroboration, project interpretation is not empirical evidence, and a source date is not automatically the start date of the phenomenon.</div>`;
   } catch (error) {
     box.innerHTML = `<div class="evidence-head"><div><div class="eyebrow">Eye · Evidence</div><b>Evidence data unavailable</b></div><button onclick="closeAtlasEvidence()">×</button></div><p class="muted">${esc(error.message || error)}</p>`;
@@ -151,6 +169,7 @@ function refreshIfSelectionChanged() {
 button.addEventListener('click', () => box.hidden ? renderEvidence() : closeEvidence());
 window.refreshAtlasEvidence = () => { if (!box.hidden) renderEvidence(); };
 window.addEventListener('popstate', window.refreshAtlasEvidence);
+window.addEventListener('atlas-time-change', window.refreshAtlasEvidence);
 
 // Country navigation rewrites the URL and then renders the main panel. Observe that
 // completed state transition instead of guessing with a click-dependent timeout.
