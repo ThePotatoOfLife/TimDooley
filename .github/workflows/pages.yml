@@ -234,12 +234,12 @@ jobs:
         run: python scripts/validate_site_shell.py
 
       - name: Upload site-shell diagnostics
-        if: always()
+        if: ${{ always() && hashFiles('site-shell-report.txt') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: site-shell-report
           path: site-shell-report.txt
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 7
 
       - name: Enforce built-site shell gate
