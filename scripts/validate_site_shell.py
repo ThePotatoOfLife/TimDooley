@@ -7,6 +7,7 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 SITE=ROOT/'_site'
 SITE_BASE='/TimDooley'
+REPORT=ROOT/'site-shell-report.txt'
 
 
 def load_json(path,errors):
@@ -23,6 +24,28 @@ def resolve_local_reference(page:Path,raw:str)->Path|None:
     if raw.startswith('/'):
         return None
     return (page.parent/raw).resolve()
+
+
+def annotation(kind:str,message:str)->str:
+    clean=message.replace('%','%25').replace('\r','%0D').replace('\n','%0A')
+    return f'::{kind} title=Built site shell::{clean}'
+
+
+def write_report(pages,errors,warnings):
+    lines=[
+        f'Built HTML pages checked: {len(pages)}',
+        f'Errors: {len(errors)} · Warnings: {len(warnings)}',
+        '',
+    ]
+    if warnings:
+        lines.append('WARNINGS')
+        lines.extend(f'- {w}' for w in warnings)
+        lines.append('')
+    if errors:
+        lines.append('ERRORS')
+        lines.extend(f'- {e}' for e in errors)
+        lines.append('')
+    REPORT.write_text('\n'.join(lines),encoding='utf-8')
 
 
 def main():
@@ -77,6 +100,7 @@ def main():
         # Validate local references inside generated HTML, resolving relative to each page.
         ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I)
         bad=[]
+        site_root=SITE.resolve()
         for h in pages:
             for raw in ref.findall(h.read_text(encoding='utf-8',errors='replace')):
                 if raw.startswith(('http:','https:','mailto:','javascript:','data:')):continue
@@ -84,19 +108,29 @@ def main():
                 if target is None:
                     bad.append(f'{h.relative_to(SITE)} -> unsupported root-relative reference {raw}')
                     continue
-                try:target.relative_to(SITE.resolve())
+                try:target.relative_to(site_root)
                 except ValueError:
                     warnings.append(f'{h.relative_to(SITE)} -> reference escapes site artifact: {raw}')
                     continue
                 if not target.exists():bad.append(f'{h.relative_to(SITE)} -> {raw}')
-        if bad:errors.append(f'broken local references in built site: {len(bad)}; examples: {bad[:8]}')
+        if bad:
+            errors.append(f'broken local references in built site: {len(bad)}')
+            errors.extend(f'broken reference: {item}' for item in bad[:100])
+            if len(bad)>100:errors.append(f'{len(bad)-100} additional broken references omitted from annotations')
         if not pages:errors.append('Pages artifact contains no HTML documents')
 
+    write_report(pages,errors,warnings)
     print(f'Built HTML pages checked: {len(pages)}')
     print(f'Errors: {len(errors)} · Warnings: {len(warnings)}')
-    for w in warnings[:50]:print('WARNING:',w)
+    for w in warnings[:50]:
+        print('WARNING:',w)
+        print(annotation('warning',w))
     if errors:
-        print('SITE SHELL VALIDATION FAILED');[print('-',e) for e in errors];return 1
+        print('SITE SHELL VALIDATION FAILED')
+        for e in errors:
+            print('-',e)
+            print(annotation('error',e))
+        return 1
     print('SITE SHELL VALIDATION PASSED');return 0
 
 if __name__=='__main__':raise SystemExit(main())
