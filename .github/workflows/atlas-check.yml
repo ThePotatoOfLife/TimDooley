@@ -71,15 +71,61 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
       - name: Optimize and audit SEO
+        id: seo
+        continue-on-error: true
         run: python scripts/optimize_seo.py
+      - name: Capture exact SEO failures
+        if: steps.seo.outcome == 'failure'
+        run: |
+          python - <<'PY'
+          import html
+          import re
+          from pathlib import Path
+          BASE='https://thepotatooflife.github.io/TimDooley/'
+          attr=re.compile(r'([:\w-]+)\s*=\s*(["\'])(.*?)\2',re.I|re.S)
+          meta=re.compile(r'<meta\b[^>]*>',re.I)
+          link=re.compile(r'<link\b[^>]*>',re.I)
+          title_re=re.compile(r'<title\b[^>]*>(.*?)</title>',re.I|re.S)
+          tag=re.compile(r'<[^>]+>')
+          def attrs(s): return {m.group(1).lower():html.unescape(m.group(3)).strip() for m in attr.finditer(s)}
+          def get_meta(text,name):
+              for m in meta.findall(text):
+                  a=attrs(m)
+                  if a.get('name','').lower()==name: return a.get('content','')
+              return ''
+          def canonical(text):
+              for m in link.findall(text):
+                  a=attrs(m)
+                  if 'canonical' in a.get('rel','').lower().split(): return a.get('href','')
+              return ''
+          problems=[]
+          for page in sorted(Path('_site').rglob('index.html')):
+              text=page.read_text(encoding='utf-8',errors='replace')
+              tm=title_re.search(text)
+              title=' '.join(html.unescape(tag.sub(' ',tm.group(1))).split()) if tm else ''
+              desc=get_meta(text,'description')
+              canon=canonical(text)
+              rel=page.relative_to('_site').as_posix()
+              if len(title)<8: problems.append(f'{rel}: weak title ({title!r})')
+              if len(desc)<40: problems.append(f'{rel}: weak description ({desc!r})')
+              if not canon: problems.append(f'{rel}: missing canonical')
+              elif not canon.startswith(BASE): problems.append(f'{rel}: canonical outside site ({canon})')
+          Path('_site/seo-diagnostics.txt').write_text('\n'.join(problems)+'\n',encoding='utf-8')
+          for p in problems: print('SEO DIAGNOSTIC:',p)
+          PY
       - name: Upload SEO audit report
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: seo-report
-          path: _site/seo-report.json
+          path: |
+            _site/seo-report.json
+            _site/seo-diagnostics.txt
           if-no-files-found: ignore
           retention-days: 7
+      - name: Fail on SEO audit errors
+        if: steps.seo.outcome == 'failure'
+        run: exit 1
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
       - name: Verify SEO report
