@@ -1,3 +1,5 @@
+import './3d-axis.js';
+
 // Sourced demography enhancement for the 3D World Relational Atlas.
 // This module is intentionally non-fatal: if the runtime snapshot is unavailable,
 // the core atlas keeps working exactly as before.
