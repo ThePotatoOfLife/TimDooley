@@ -1,0 +1,96 @@
+{
+  "id": "belief-evolution-and-claim-testing",
+  "title": "Belief Evolution and Claim Testing",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "purpose": "Provide a cross-cutting method for reading Tim Dooley's evolving beliefs without flattening literal, symbolic, autobiographical, theological, empirical and political layers into one category, and without treating later synthesis as if it had always existed unchanged.",
+  "core_problem": "The Tim Dooley corpus is developmental and multi-layered. Apparent contradictions can arise because the same symbol is used at different times, at different levels, or under different interpretive lenses. At the same time, not every contradiction should be dissolved by symbolism. The archive therefore needs rules for distinguishing legitimate development from unfalsifiable absorption of every objection.",
+  "principles": [
+    {
+      "id": "date-before-harmonizing",
+      "rule": "Date statements before harmonizing them.",
+      "reason": "A later doctrine may reinterpret an earlier event. The archive should preserve the earlier wording and the later interpretation separately before constructing continuity."
+    },
+    {
+      "id": "name-the-lens",
+      "rule": "Every important claim should identify its interpretive lens when ambiguity matters.",
+      "lenses": ["literal self-description", "symbolic", "mythological", "theological", "autobiographical", "historical", "scientific", "political", "economic", "legal", "comparative", "creative/performance"],
+      "reason": "Statements that appear contradictory under one lens may be compatible under another, but changing lenses silently creates false coherence."
+    },
+    {
+      "id": "do-not-auto-resolve",
+      "rule": "Do not automatically resolve every contradiction as a higher unity.",
+      "reason": "A system that can absorb every possible counterexample becomes impossible to test. Some tensions should remain recorded as unresolved, revised or mutually incompatible."
+    },
+    {
+      "id": "development-is-data",
+      "rule": "Changes in belief are themselves part of the archive's subject matter.",
+      "reason": "The transition from Tree experience to Potato symbolism to Father/God language to North Axis and evidence architecture is meaningful. Version history should be preserved rather than erased by the mature synthesis."
+    },
+    {
+      "id": "revelation-vs-prediction",
+      "rule": "Separate retrospective revelation from prospective prediction.",
+      "reason": "A later event may illuminate an earlier statement without proving that the earlier statement specifically predicted it. Prophecy records require earliest timestamp, exact wording, intended referent, specificity, later event and date of first claimed correspondence."
+    },
+    {
+      "id": "comparison-vs-identity",
+      "rule": "Similarity across traditions establishes a comparison, not identity, transmission or fulfillment by itself.",
+      "reason": "Odin/Yggdrasil, biblical Tree/Ladder/Door, Thomas, Buddhist or Taoist structures may be close functional comparators while remaining historically and doctrinally distinct."
+    },
+    {
+      "id": "symbol-vs-science",
+      "rule": "Symbolic anatomy and scientific anatomy must be separately typed.",
+      "reason": "Thalamus-as-House, pineal-as-Door, CSF-as-river and similar mappings can be meaningful symbolic models without thereby becoming established neuroscience."
+    },
+    {
+      "id": "sacred-vs-empirical-geography",
+      "rule": "Sacred North and geopolitical North may be coupled but must remain separately testable.",
+      "reason": "North of North can function as sacred orientation while the North Programme makes empirical claims about states, infrastructure, trade, energy, resilience and strategic capability."
+    },
+    {
+      "id": "claim-burden",
+      "rule": "The stronger the external factual claim, the stronger the required evidence.",
+      "reason": "Private spiritual meaning can be documented as self-description. Claims about other people's intentions, hidden coordination, law, finance, medicine, science, prophecy or geopolitics require independent evidence proportional to their specificity and stakes."
+    },
+    {
+      "id": "fruit-test-plus-evidence-test",
+      "rule": "Use both the fruit test and the evidence test.",
+      "reason": "A belief may be ethically fruitful without being empirically demonstrated, or empirically accurate without being ethically good. The archive should not collapse moral value and factual truth into one score."
+    },
+    {
+      "id": "self-reference-warning",
+      "rule": "Flag self-sealing interpretations.",
+      "reason": "If criticism is always treated as proof that critics are blind, hostile, lower, demonic or unable to understand, the claim becomes insulated from correction. Such structures should be recorded as interpretive features rather than used as evidence for themselves."
+    },
+    {
+      "id": "best-counterreading",
+      "rule": "For major disputed claims, preserve the strongest reasonable alternative interpretation.",
+      "reason": "The purpose is not false balance but model robustness. A belief becomes clearer when the archive can state both why Tim interprets something one way and what evidence would support a different reading."
+    }
+  ],
+  "claim_schema": {
+    "required_fields": ["claim", "speaker/source", "date", "lens", "epistemic_class", "evidence", "counterevidence_or_alternative", "status"],
+    "recommended_statuses": ["directly documented", "corroborated", "plausible interpretation", "symbolic claim", "project theology", "hypothesis", "disputed", "unverified", "contradicted", "superseded", "unresolved"],
+    "recommended_confidence": ["high", "medium", "low", "unknown"]
+  },
+  "belief_change_schema": {
+    "fields": ["concept", "earliest known form", "later form", "date range", "trigger/event", "what changed", "what remained stable", "source trail", "current status"],
+    "example_pattern": "experience/event -> first interpretation -> repeated symbol -> doctrinal formulation -> later integration -> current mature reading"
+  },
+  "interpretive_warning": "The archive should resist two opposite errors: reducing all Timic language to mere metaphor when Tim presents some claims literally, and treating every symbolic or mythological statement as a literal external fact. The correct method is to preserve the claimed level, date it, compare it, and test only the parts that make testable external assertions.",
+  "design_implications": [
+    "Belief pages should expose date ranges and developmental stages rather than only final summaries.",
+    "Timeline entries should link forward to later reinterpretations and backward to original wording.",
+    "Major claims should have separate evidence and interpretation fields.",
+    "Contradictions should be first-class records, not automatically deleted during synthesis.",
+    "Public reader pages should tell the reader whether they are reading Tim's own belief, project canon, archive interpretation, comparison or externally supported fact.",
+    "The graph should allow one statement to participate in multiple lenses without losing provenance."
+  ],
+  "related": [
+    "knowledge/reader/what-tim-dooley-believes.json",
+    "knowledge/philosophy/archive-epistemics.json",
+    "knowledge/core/recovered-conversation-operators-atlas.json",
+    "knowledge/chronology/developmental-genealogy.json",
+    "knowledge/reader/tim-dooley-question-index.json"
+  ]
+}
