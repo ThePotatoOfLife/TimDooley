@@ -7,6 +7,10 @@ const FILL_ID = 'empirical-network-fill';
 const LINE_ID = 'empirical-network-line';
 const DEFAULT_VIEW = 'off';
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+let activeNetwork=DEFAULT_VIEW;
+let historicalSuppressed=false;
+let installedMap=null;
+let installedRegistry=null;
 
 function memberLists(network = {}) {
   return {
@@ -73,6 +77,20 @@ function addLayers(map, geo, registry) {
   map.addLayer({id:LINE_ID,type:'line',source:SOURCE_ID,filter:filterFor(DEFAULT_VIEW),paint:{'line-color':'#d9e1e1','line-width':['interpolate',['linear'],['zoom'],0,.7,4,1.3,7,2.1],'line-opacity':.86}},before);
 }
 
+function applyNetwork(map,registry,id,{writeUrl=true}={}) {
+  activeNetwork=id;
+  const visible = id !== 'off' && registry.networks?.[id] && !historicalSuppressed;
+  [FILL_ID,LINE_ID].forEach(layer => map.setLayoutProperty(layer,'visibility',visible?'visible':'none'));
+  if (id !== 'off' && registry.networks?.[id]) {
+    map.setFilter(FILL_ID,filterFor(id));
+    map.setFilter(LINE_ID,filterFor(id));
+    map.setPaintProperty(FILL_ID,'fill-color',colorFor(id,registry));
+    map.setPaintProperty(LINE_ID,'line-color',colorFor(id,registry));
+    map.setPaintProperty(FILL_ID,'fill-opacity',opacityFor(id));
+  }
+  if(writeUrl){const next = new URL(location.href);if (id==='off') next.searchParams.delete('network'); else next.searchParams.set('network',id);history.replaceState(null,'',next);}
+}
+
 function installControl(map, registry) {
   if (document.getElementById('empiricalNetworkView')) return;
   const field = document.getElementById('axisFieldView');
@@ -88,33 +106,22 @@ function installControl(map, registry) {
   const url = new URL(location.href);
   const requested = url.searchParams.get('network');
   select.value = labels[requested] ? requested : DEFAULT_VIEW;
-
-  function apply(id) {
-    const visible = id !== 'off' && labels[id];
-    [FILL_ID,LINE_ID].forEach(layer => map.setLayoutProperty(layer,'visibility',visible?'visible':'none'));
-    if (visible) {
-      map.setFilter(FILL_ID,filterFor(id));
-      map.setFilter(LINE_ID,filterFor(id));
-      map.setPaintProperty(FILL_ID,'fill-color',colorFor(id,registry));
-      map.setPaintProperty(LINE_ID,'line-color',colorFor(id,registry));
-      map.setPaintProperty(FILL_ID,'fill-opacity',opacityFor(id));
-    }
-    const next = new URL(location.href);
-    if (!visible) next.searchParams.delete('network'); else next.searchParams.set('network',id);
-    history.replaceState(null,'',next);
-  }
-
-  select.addEventListener('change',()=>apply(select.value));
-  apply(select.value);
+  activeNetwork=select.value;
+  select.addEventListener('change',()=>applyNetwork(map,registry,select.value));
+  applyNetwork(map,registry,select.value);
 }
 
-function roleText(value) {
-  return value === 2 ? 'member / primary' : value === 1 ? 'partner / associated / candidate' : value === -1 ? 'suspended' : '';
+function setHistoricalSuppressed(on){
+  historicalSuppressed=Boolean(on);
+  const select=document.getElementById('empiricalNetworkView');
+  if(select){select.disabled=historicalSuppressed;select.title=historicalSuppressed?'Current network snapshot hidden in historical mode until dated membership intervals are available':'Observable institutions and regional networks';}
+  if(installedMap&&installedRegistry)applyNetwork(installedMap,installedRegistry,activeNetwork,{writeUrl:false});
 }
 
 function installInteractions(map, registry) {
   const popup = new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:8});
   map.on('mouseenter',FILL_ID,event=>{
+    if(historicalSuppressed)return;
     map.getCanvas().style.cursor='pointer';
     const p = event.features?.[0]?.properties || {};
     const memberships = String(p.empirical_memberships || '').split('|').filter(Boolean).map(item=>{
@@ -135,9 +142,11 @@ async function boot() {
   const map = window.__potatoAtlasMap;
   if (!map) return;
   if (!map.loaded()) await new Promise(resolve=>map.once('load',resolve));
+  installedMap=map;installedRegistry=registry;
   addLayers(map,geo,registry);
   installControl(map,registry);
   installInteractions(map,registry);
+  const state=window.__potatoAtlasTime?.getState?.();setHistoricalSuppressed(state&&state.mode!=='current');
 }
-
+window.addEventListener('atlas-time-change',event=>setHistoricalSuppressed(event.detail?.mode!=='current'));
 boot().catch(error=>console.warn('Empirical network enhancement unavailable:',error));
