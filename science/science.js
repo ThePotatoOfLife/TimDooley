@@ -1,101 +1,153 @@
 (()=>{
   'use strict';
-  const hubStyle=document.createElement('link');hubStyle.rel='stylesheet';hubStyle.href='./science-hub.css?v=20260910c';document.head.appendChild(hubStyle);
   const B='../knowledge/science/';
   const $=id=>document.getElementById(id);
-  const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
-  const get=async url=>{const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error(`${url}: ${r.status}`);return r.json()};
+  const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const get=async url=>{const r=await fetch(url,{cache:'no-cache'});if(!r.ok)throw Error(`${url}: ${r.status}`);return r.json();};
+  const tokens=q=>String(q||'').toLowerCase().trim().split(/\s+/).filter(Boolean);
+  const matches=(text,q)=>{const t=String(text||'').toLowerCase();return tokens(q).every(token=>t.includes(token));};
 
-  function provenanceClass(value){
-    const x=String(value).toLowerCase();
-    if(x.includes('established')||x.includes('external')) return 'external / comparator';
-    if(x.includes('primary')||x.includes('recovered')||x.includes('great book')||x.includes('upt')) return 'recovered / project';
-    if(x.includes('archive')||x.includes('formalization')) return 'archive formalization';
-    return 'project formalism';
+  const domainPresets=[
+    ['All',''],['Dynamics','dynamics'],['Quantum','quantum'],['Fields & Higgs','higgs field'],['Dimensions','dimension'],
+    ['Unification','unification'],['Information','information'],['Biology & brain','microtubule'],['Astronomy','astronomy'],
+    ['Time & waves','advanced retarded'],['Testing','testing']
+  ];
+
+  let modelCards=[];
+  let recordCards=[];
+
+  function list(items,limit=6){
+    if(!Array.isArray(items)||!items.length)return '<span class="none-note">Not yet specified</span>';
+    return `<ul>${items.slice(0,limit).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
   }
 
-  function injectEvidenceAndMap(){
-    const scope=document.querySelector('.scope-strip');
-    const nav=document.querySelector('.section-nav');
-    if(!scope||!nav||$('evidence-map')) return;
-    const section=document.createElement('section');
-    section.id='evidence-map';
-    section.className='section-block evidence-map-section';
-    section.innerHTML=`
-      <div class="section-head"><div><p class="section-kicker">Evidence + relationship map</p><h2>See what each scientific layer is — and how the layers connect.</h2></div><p>The map shows research lineage and comparison, not proof of equivalence. The evidence legend separates recovered project material, later formalization, established external science, speculative comparison and unresolved targets.</p></div>
-      <div class="evidence-legend" aria-label="Science evidence status legend">
-        <article data-evidence="primary"><span class="evidence-dot"></span><strong>Primary / project-attested</strong><p>Direct project/public evidence or a strongly recovered first-party equation.</p></article>
-        <article data-evidence="book"><span class="evidence-dot"></span><strong>Book-derived</strong><p>Material preserved in the 2024 Great Book science stratum.</p></article>
-        <article data-evidence="recovered"><span class="evidence-dot"></span><strong>Conversation archaeology</strong><p>Recovered from dated conversation history; exact original notation may remain incomplete.</p></article>
-        <article data-evidence="formalism"><span class="evidence-dot"></span><strong>Project formalism</strong><p>Later mathematical language developed to make recurring structures explicit.</p></article>
-        <article data-evidence="archive"><span class="evidence-dot"></span><strong>Archive formalization</strong><p>Repository synthesis or reconstruction; not retroactively treated as original notation.</p></article>
-        <article data-evidence="external"><span class="evidence-dot"></span><strong>Established external science</strong><p>Standard mathematics or physics used as constraint, comparator or repair option.</p></article>
-        <article data-evidence="speculative"><span class="evidence-dot"></span><strong>Speculative comparator</strong><p>A structured analogy or research possibility, not an established physical result.</p></article>
-        <article data-evidence="open"><span class="evidence-dot"></span><strong>Open / unrecovered</strong><p>A transcript, derivation, variable definition, prediction or test the archive does not yet have.</p></article>
-      </div>
-      <div class="science-connection-shell">
-        <svg class="science-connection-map" viewBox="0 0 1180 650" role="img" aria-labelledby="science-map-title science-map-desc">
-          <title id="science-map-title">Science Atlas relationship map</title><desc id="science-map-desc">A network connecting Great Book science, Unified Potato Theory, the Potato Axis spiral, Potato Dynamics, dimensions, quantum physics, Standard Model and gauge unification, information, biology, astronomy and theory testing.</desc>
-          <defs><marker id="science-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 L10 5 L0 10z"></path></marker></defs>
-          <g class="connection-edges" marker-end="url(#science-arrow)"><path d="M175 80 C300 80 315 170 430 170"/><path d="M175 80 C305 80 320 280 430 280"/><path d="M175 80 C305 80 320 395 430 395"/><path d="M545 170 C650 170 665 280 755 280"/><path d="M545 280 C650 280 665 280 755 280"/><path d="M545 395 C650 395 665 280 755 280"/><path d="M870 280 C945 280 955 160 1050 160"/><path d="M870 280 C945 280 955 280 1050 280"/><path d="M870 280 C945 280 955 400 1050 400"/><path d="M545 395 C680 395 760 535 890 535"/><path d="M1050 160 C1010 470 990 535 890 535"/><path d="M1050 280 C1010 490 990 535 890 535"/><path d="M1050 400 C1005 485 980 535 890 535"/></g>
-          <g class="connection-node" data-science-filter="great book" transform="translate(45 40)"><rect width="260" height="80" rx="16"/><text x="18" y="31">2024 Great Book science</text><text class="connection-sub" x="18" y="55">spiral · fields · quantum · geometry</text></g>
-          <g class="connection-node primary" data-science-filter="unified potato theory" transform="translate(365 130)"><rect width="250" height="80" rx="16"/><text x="18" y="31">Unified Potato Theory</text><text class="connection-sub" x="18" y="55">field · symmetry · Lagrangian</text></g>
-          <g class="connection-node primary" data-science-filter="spiral axis" transform="translate(365 240)"><rect width="250" height="80" rx="16"/><text x="18" y="31">Potato Axis spiral</text><text class="connection-sub" x="18" y="55">log spiral · φ quarter-turn</text></g>
-          <g class="connection-node" data-science-filter="potato dynamics" transform="translate(365 355)"><rect width="250" height="80" rx="16"/><text x="18" y="31">Potato Dynamics</text><text class="connection-sub" x="18" y="55">state · Axis flow · Door maps</text></g>
-          <g class="connection-node hub" data-science-filter="dimension 11d" transform="translate(700 240)"><rect width="225" height="80" rx="16"/><text x="18" y="31">Dimensional physics</text><text class="connection-sub" x="18" y="55">5D Door · 11D · black holes</text></g>
-          <g class="connection-node" data-science-filter="quantum standard model" transform="translate(960 120)"><rect width="195" height="80" rx="16"/><text x="18" y="31">Quantum + SM</text><text class="connection-sub" x="18" y="55">QFT · Higgs · quarks</text></g>
-          <g class="connection-node" data-science-filter="gauge unification supersymmetry" transform="translate(960 240)"><rect width="195" height="80" rx="16"/><text x="18" y="31">Gauge unification</text><text class="connection-sub" x="18" y="55">SU(4) · SU(5) · Spin(10)</text></g>
-          <g class="connection-node" data-science-filter="information" transform="translate(960 360)"><rect width="195" height="80" rx="16"/><text x="18" y="31">Information</text><text class="connection-sub" x="18" y="55">entropy · graphs · holography</text></g>
-          <g class="connection-node testing" data-science-filter="testing theory everything" transform="translate(765 495)"><rect width="250" height="80" rx="16"/><text x="18" y="31">Testing + TOE audit</text><text class="connection-sub" x="18" y="55">limits · observables · falsifiers</text></g>
-        </svg>
-        <div class="connection-branches"><strong>Cross-scale branches</strong><button type="button" data-science-filter="microtubule biology consciousness">Life & cognition</button><button type="button" data-science-filter="astronomy galactic cmb celestial">Astronomy & cosmology</button><button type="button" data-science-filter="advanced retarded time">Time symmetry</button><button type="button" data-science-filter="higgs quantum tuber boson">Higgs / Potato sector</button><button type="button" data-science-filter="black hole phase transition">Black-hole transitions</button><button type="button" data-science-filter="">Show the full library</button><p>Clicking a node jumps to the compiled library and filters the canonical records.</p></div>
-      </div>`;
-    scope.insertAdjacentElement('afterend',section);
-    const link=document.createElement('a');link.href='#evidence-map';link.textContent='Evidence + graph';nav.prepend(link);
+  function evidenceFamily(classification){
+    const x=String(classification||'').toLowerCase();
+    if(x.includes('external')||x.includes('established'))return 'external';
+    if(x.includes('primary')||x.includes('recovered')||x.includes('book-derived')||x.includes('archaeology'))return 'recovered';
+    if(x.includes('speculative'))return 'speculative';
+    return 'project';
   }
 
-  function wireMapToCatalog(){
-    const input=$('catalog-search');
-    if(!input)return;
-    document.querySelectorAll('[data-science-filter]').forEach(node=>{
-      node.setAttribute('tabindex','0');node.setAttribute('role','button');
-      const activate=()=>{input.value=node.dataset.scienceFilter||'';input.dispatchEvent(new Event('input',{bubbles:true}));$('library')?.scrollIntoView({behavior:'smooth'});};
-      node.addEventListener('click',activate);node.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();activate();}});
-    });
-  }
-
-  function renderMaster(m){
-    $('metric-domains').textContent=m.domains?.length??'—';
-    $('metric-equations').textContent=m.root_formalisms?.length??'—';
-    $('metric-provenance').textContent=m.epistemic_classes?.length??'—';
-    const timeline=m.developmental_genealogy||[];
-    $('science-timeline').innerHTML=timeline.map((x,i)=>{
-      const concepts=Array.isArray(x.concepts)?x.concepts:[];
-      return `<article class="timeline-item"><div class="period">${esc(x.period||x.date||`Stage ${i+1}`)}</div><h3>${esc(concepts.slice(0,3).join(' · ')||'Recovered science stratum')}</h3><div class="topic-pills">${concepts.slice(3,11).map(y=>`<span>${esc(y)}</span>`).join('')}</div>${x.status?`<p class="microcopy">${esc(x.status)}</p>`:''}</article>`;
+  function renderModels(registry){
+    const grid=$('model-grid');
+    const models=registry.models||[];
+    $('metric-models').textContent=models.length;
+    grid.innerHTML=models.map(model=>{
+      const c=model.completion||{};
+      const filled=Number(c.filled_contract_fields||0),total=Number(c.total_contract_fields||12);
+      const pct=Math.max(0,Math.min(100,Math.round((filled/Math.max(total,1))*100)));
+      const eqs=(model.formal_core||[]).slice(0,3).map(eq=>`<code>${esc(eq)}</code>`).join('');
+      const search=[model.title,model.short_title,model.classification,model.abstract,model.maturity,(model.formal_core||[]).join(' '),(model.state_variables||[]).join(' '),(model.couples_to||[]).join(' '),(model.unresolved||[]).join(' ')].join(' ').toLowerCase();
+      return `<article class="model-card" data-model-id="${esc(model.id)}" data-search="${esc(search)}" data-evidence="${evidenceFamily(model.classification)}">
+        <div class="model-meta"><span>${esc(model.maturity||'T1')}</span><span>${esc(model.classification||'project model')}</span></div>
+        <h3>${esc(model.title)}</h3>
+        <p class="model-abstract">${esc(model.abstract||'')}</p>
+        <div class="completion-row"><span>Contract ${filled}/${total}</span><div class="completion-track"><i style="width:${pct}%"></i></div><b>${pct}%</b></div>
+        <p class="next-action"><strong>Next:</strong> ${esc(c.next_action||'Complete the missing model contract fields.')}</p>
+        <div class="model-equations">${eqs}</div>
+        <details class="model-details"><summary>Open model contract</summary>
+          <div class="contract-grid">
+            <section><h4>State variables</h4>${list(model.state_variables)}</section>
+            <section><h4>Assumptions</h4>${list(model.assumptions)}</section>
+            <section><h4>Observables</h4>${list(model.observables)}</section>
+            <section><h4>Failure conditions</h4>${list(model.falsifiers)}</section>
+            <section><h4>Baseline</h4>${list(model.baseline)}</section>
+            <section><h4>Unresolved</h4>${list(model.unresolved)}</section>
+          </div>
+          <div class="calibration"><strong>Calibration path</strong><p>${esc(model.calibration_path||'Not yet specified.')}</p></div>
+          <div class="coupling-row"><strong>Couples to</strong>${(model.couples_to||[]).map(id=>`<button type="button" data-model-filter="${esc(id)}">${esc(id.replaceAll('-',' '))}</button>`).join('')}</div>
+          <div class="source-row"><strong>Source records</strong>${(model.source_records||[]).map(file=>`<a href="${B}${encodeURIComponent(file)}">${esc(file.replace('.json',''))}</a>`).join('')}</div>
+        </details>
+      </article>`;
     }).join('');
-    const equations=m.root_formalisms||[], list=$('equation-list'), initial=18;
-    list.innerHTML=equations.map((x,i)=>`<div class="equation-row ${i>=initial?'extra':''}"><span class="eq-no">${String(i+1).padStart(2,'0')}</span><code>${esc(x)}</code><span class="eq-class">${esc(provenanceClass(x))}</span></div>`).join('');
-    const toggle=$('equation-toggle');
-    if(equations.length>initial){toggle.hidden=false;toggle.textContent=`Show all ${equations.length} equations`;toggle.onclick=()=>{const expanded=list.classList.toggle('expanded');toggle.textContent=expanded?'Show fewer equations':`Show all ${equations.length} equations`;};}
-    const domains=m.domains||[], input=$('domain-search'), grid=$('domain-grid'), empty=$('domain-empty');
-    const draw=()=>{const q=input.value.trim().toLowerCase();const matched=domains.filter(x=>`${x.id||''} ${x.title||''} ${(x.topics||[]).join(' ')}`.toLowerCase().includes(q));grid.innerHTML=matched.map(x=>`<article class="domain-card"><span class="domain-id">${esc(x.id||'domain')}</span><h3>${esc(x.title||x.id)}</h3><div class="topics">${(x.topics||[]).slice(0,16).map(y=>`<span>${esc(y)}</span>`).join('')}</div></article>`).join('');empty.hidden=!!matched.length;};
-    input.addEventListener('input',draw);draw();
-    $('open-questions-grid').innerHTML=(m.unresolved_primary_targets||[]).map((x,i)=>`<article class="question-card"><span class="q-no">Target ${String(i+1).padStart(2,'0')}</span>${esc(x)}</article>`).join('');
+    modelCards=[...grid.querySelectorAll('.model-card')];
+    grid.querySelectorAll('[data-model-filter]').forEach(button=>button.addEventListener('click',()=>{
+      const id=button.dataset.modelFilter||'';
+      const target=models.find(m=>m.id===id);
+      setSearch(target?.short_title||target?.title||id.replaceAll('-',' '));
+    }));
   }
 
-  function renderUpt(u){const target=$('upt-terms'),terms=u.term_map||[];target.innerHTML=terms.length?terms.map(x=>`<div class="term-item"><code>${esc(x.term)}</code><span>${esc(x.intended_role)}</span></div>`).join(''):'<p class="microcopy">Term map is in the recovery record.</p>';}
-  function renderSpiral(s){const p=s.exact_properties||{},properties=[['Quarter turn',p.quarter_turn_scaling,'Golden-ratio radial scaling after 90°.'],['Half turn',p.half_turn_scaling,'Two quarter-turn scalings combine to φ².'],['Full turn',p.full_turn_scaling,'One full revolution gives φ⁴ radial scaling.'],['Differential form',p.differential_form,'Local radial growth law.'],['Curvature',p.curvature,'Curvature falls inversely with radius.'],['Self-similarity',p.self_similarity,'Rotation plus scaling reproduces the same curve.']].filter(x=>x[1]);if(properties.length)$('spiral-properties').innerHTML=properties.map(([label,value,note])=>`<article><span>${esc(label)}</span><strong>${esc(value)}</strong><p>${esc(note)}</p></article>`).join('');}
-  function renderToe(t){const strata=t.unification_strata||t.developmental_strata||[];$('toe-strata').innerHTML=strata.length?strata.map(x=>`<div class="compact-item"><strong>${esc(x.name||x.title||x.period||x.date||'Unification stratum')}</strong><span>${esc(x.date||x.period||x.classification||x.status||'')}</span></div>`).join(''):'<p class="microcopy">See the TOE archaeology record for the full long-arc programme.</p>';const req=t.physical_toe_requirements||t.requirements||[];$('toe-requirements').innerHTML=req.length?req.map(x=>`<li>${esc(typeof x==='string'?x:(x.requirement||x.name||JSON.stringify(x)))}</li>`).join(''):'<li>Recover known physical limits, define observables, and produce testable predictions.</li>';}
+  function renderProgramme(registry){
+    const flow=$('programme-flow');
+    const spine=registry.programme_spine||[];
+    if(!flow||!spine.length)return;
+    flow.innerHTML=spine.map((stage,i)=>`${i?'<b>→</b>':''}<article><span>${i+1}</span><strong>${esc(stage.stage)}</strong><p>${esc(stage.role)}</p><small>${(stage.models||[]).length} model${(stage.models||[]).length===1?'':'s'}</small></article>`).join('');
+  }
 
-  function wireCatalog(){const input=$('catalog-search'),cards=[...document.querySelectorAll('.catalog-card')],count=$('catalog-count'),empty=$('catalog-empty');if(!input||!cards.length)return;const draw=()=>{const q=input.value.trim().toLowerCase();let shown=0;cards.forEach(card=>{const match=!q||(card.dataset.search||card.textContent.toLowerCase()).includes(q);card.hidden=!match;if(match)shown++;});count.textContent=q?`${shown} of ${cards.length} records`:`${cards.length} records`;empty.hidden=shown!==0;};input.addEventListener('input',draw);draw();wireMapToCatalog();}
+  function renderMaster(master){
+    const equations=master.root_formalisms||[];
+    $('metric-equations').textContent=equations.length;
+    $('metric-open').textContent=(master.unresolved_primary_targets||[]).length;
+    const listEl=$('equation-list'),initial=10;
+    listEl.innerHTML=equations.map((eq,i)=>`<div class="equation-row ${i>=initial?'extra':''}"><span class="eq-no">${String(i+1).padStart(2,'0')}</span><code>${esc(eq)}</code></div>`).join('');
+    const toggle=$('equation-toggle');
+    if(equations.length>initial){
+      toggle.hidden=false;
+      toggle.textContent=`Show all ${equations.length} equations`;
+      toggle.onclick=()=>{const open=listEl.classList.toggle('expanded');toggle.textContent=open?'Show fewer equations':`Show all ${equations.length} equations`;};
+    }
+    const timeline=master.developmental_genealogy||[];
+    $('science-timeline').innerHTML=timeline.map((entry,i)=>{
+      const concepts=entry.concepts||[];
+      return `<article class="timeline-item"><div class="period">${esc(entry.period||`Stage ${i+1}`)}</div><h3>${esc(concepts.slice(0,3).join(' · ')||'Science stratum')}</h3><p>${esc(concepts.slice(3,8).join(' · '))}</p>${entry.status?`<small>${esc(entry.status)}</small>`:''}</article>`;
+    }).join('');
+    $('open-questions-grid').innerHTML=(master.unresolved_primary_targets||[]).map((item,i)=>`<article class="question-card"><span>${String(i+1).padStart(2,'0')}</span><p>${esc(item)}</p></article>`).join('');
+  }
+
+  function renderDomainFilters(){
+    const wrap=$('domain-filters');
+    wrap.innerHTML=domainPresets.map(([label,q],i)=>`<button type="button" data-domain-query="${esc(q)}" class="${i===0?'active':''}">${esc(label)}</button>`).join('');
+    wrap.querySelectorAll('button').forEach(button=>button.addEventListener('click',()=>{
+      wrap.querySelectorAll('button').forEach(x=>x.classList.remove('active'));
+      button.classList.add('active');
+      setSearch(button.dataset.domainQuery||'');
+    }));
+  }
+
+  function applySearch(){
+    const input=$('catalog-search');
+    const q=input?.value||'';
+    let modelsShown=0,recordsShown=0;
+    modelCards.forEach(card=>{const show=matches(card.dataset.search||card.textContent,q);card.hidden=!show;if(show)modelsShown++;});
+    recordCards.forEach(card=>{const show=matches(card.dataset.search||card.textContent,q);card.hidden=!show;if(show)recordsShown++;});
+    $('model-empty').hidden=modelsShown!==0;
+    $('catalog-empty').hidden=recordsShown!==0;
+    $('catalog-count').textContent=q?`${recordsShown} of ${recordCards.length} records`:`${recordCards.length} records`;
+    $('search-note').textContent=q?`${modelsShown} flagship model${modelsShown===1?'':'s'} · ${recordsShown} source record${recordsShown===1?'':'s'} match “${q}”.`:'One search filters both flagship models and the complete record library.';
+    $('clear-search').hidden=!q;
+  }
+
+  function setSearch(value){
+    const input=$('catalog-search');
+    input.value=value||'';
+    document.querySelectorAll('#domain-filters button').forEach(button=>button.classList.toggle('active',(button.dataset.domainQuery||'')===(value||'')));
+    applySearch();
+    if(value)$('models')?.scrollIntoView({behavior:'smooth',block:'start'});
+  }
+
+  function wireSearch(){
+    recordCards=[...document.querySelectorAll('.catalog-card')];
+    const input=$('catalog-search');
+    input.addEventListener('input',()=>{document.querySelectorAll('#domain-filters button').forEach(x=>x.classList.remove('active'));applySearch();});
+    $('clear-search').addEventListener('click',()=>setSearch(''));
+    applySearch();
+  }
 
   async function init(){
-    injectEvidenceAndMap();
-    const jobs={master:get(B+'science-master-index.json'),upt:get(B+'unified-potato-theory-2025-recovery.json'),spiral:get(B+'april-21-2025-potato-axis-spiral-primary-recovery.json'),toe:get(B+'theory-of-everything-archaeology.json'),catalog:get('./catalog.json')};
-    const entries=Object.entries(jobs),results=await Promise.allSettled(entries.map(([,p])=>p)),data={};let failed=0;
-    results.forEach((result,i)=>{if(result.status==='fulfilled')data[entries[i][0]]=result.value;else failed++;});
-    if(data.master)renderMaster(data.master);if(data.upt)renderUpt(data.upt);if(data.spiral)renderSpiral(data.spiral);if(data.toe)renderToe(data.toe);if(data.catalog?.count!=null)$('metric-records').textContent=data.catalog.count;wireCatalog();
-    const state=$('data-state');state.textContent=failed?`Atlas loaded; ${failed} auxiliary data source${failed===1?' is':'s are'} unavailable.`:`Canonical science data loaded · ${data.catalog?.count??'all'} compiled records · master index ${data.master?.updated||'current'}`;state.className='data-state '+(failed?'error':'ok');
+    renderDomainFilters();
+    const jobs=[get(B+'science-master-index.json'),get(B+'science-model-registry.json'),get('./catalog.json')];
+    const [masterResult,registryResult,catalogResult]=await Promise.allSettled(jobs);
+    let failures=0;
+    if(masterResult.status==='fulfilled')renderMaster(masterResult.value);else failures++;
+    if(registryResult.status==='fulfilled'){renderModels(registryResult.value);renderProgramme(registryResult.value);}else{failures++;$('model-grid').innerHTML='<div class="loading-card">Model registry unavailable; source catalog remains usable.</div>';}
+    if(catalogResult.status==='fulfilled')$('metric-records').textContent=catalogResult.value.count??document.querySelectorAll('.catalog-card').length;else{failures++;$('metric-records').textContent=document.querySelectorAll('.catalog-card').length||'—';}
+    wireSearch();
+    const state=$('data-state');
+    state.textContent=failures?`Atlas loaded with ${failures} auxiliary source${failures===1?'':'s'} unavailable.`:'Model registry, equation index and compiled record catalog loaded.';
+    state.className='data-state '+(failures?'error':'ok');
   }
+
   document.addEventListener('DOMContentLoaded',init);
 })();
