@@ -90,6 +90,19 @@ def check(source: Path, raw: str, label: str) -> None:
         errors.append(f"{source.relative_to(ROOT)}: broken {label} -> {target}")
 
 
+def actions_escape(value: str) -> str:
+    """Escape values used in GitHub Actions workflow command annotations."""
+    return value.replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+
+
+def emit_annotation(kind: str, item: str) -> None:
+    source, separator, message = item.partition(": ")
+    if separator and source and message:
+        print(f"::{kind} file={actions_escape(source)}::{actions_escape(message)}")
+    else:
+        print(f"::{kind}::{actions_escape(item)}")
+
+
 for page in html_files:
     text = page.read_text(encoding="utf-8", errors="replace")
     for raw in attr_re.findall(text):
@@ -120,7 +133,9 @@ print(f"Errors: {len(errors)}")
 print(f"Warnings: {len(warnings)}")
 for item in errors:
     print("ERROR:", item)
+    emit_annotation("error", item)
 for item in warnings:
     print("WARNING:", item)
+    emit_annotation("warning", item)
 
 sys.exit(1 if errors else 0)
