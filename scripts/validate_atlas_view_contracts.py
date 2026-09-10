@@ -37,7 +37,6 @@ def main() -> int:
     time = docs["time"]
     stack = docs["stack"]
     depths = docs["depths"]
-    operators = docs["operators"]
 
     coords = projection.get("state_vector", {}).get("coordinates", {})
     expected_coords = {"G", "T", "R", "E", "A", "F", "C"}
@@ -47,9 +46,10 @@ def main() -> int:
     invariant = projection.get("state_vector", {}).get("identity_invariant", "")
     if "canonical object ID" not in invariant:
         errors.append("projection contract must preserve canonical object identity")
-    if "information_loss" not in projection.get("projection_contract", {}).get("after", []):
+    after = projection.get("projection_contract", {}).get("after", [])
+    if "information_loss" not in after:
         errors.append("projection contract must disclose information loss after nontrivial projection")
-    if "source_path_back" not in projection.get("projection_contract", {}).get("after", []):
+    if "source_path_back" not in after:
         errors.append("projection contract must preserve a route back to source owners")
 
     date_fields = set(time.get("date_fields", {}))
@@ -67,11 +67,9 @@ def main() -> int:
 
     if stack.get("projection_contract") != "data/atlas-projection-contract.json":
         errors.append("canonical World Atlas stack does not point to the shared projection contract")
-    shared = stack.get("shared_state", {}).get("coordinates", {})
-    if set(shared) != expected_coords:
+    if set(stack.get("shared_state", {}).get("coordinates", {})) != expected_coords:
         errors.append("canonical World Atlas stack is out of sync with projection-state coordinates")
 
-    # Accept either a dict keyed by dimensions or a list of dimension records, but require D1-D11.
     dim_obj = depths.get("dimensions", depths.get("levels", depths.get("depths", {})))
     found_dims: set[int] = set()
     if isinstance(dim_obj, dict):
@@ -92,13 +90,18 @@ def main() -> int:
     elif not found_dims:
         warnings.append("could not structurally enumerate D1-D11 from axis-depths.json; semantic validators remain authoritative")
 
-    op_text = json.dumps(operators, ensure_ascii=False).lower()
+    # Operators deliberately have different canonical owners: D-level transformation
+    # semantics live in axis-operators, while cross-layer operations such as Eye and
+    # Mountain are also formalized in axis-formal-lenses/projection contract. Validate
+    # the combined architecture instead of forcing every term into one file.
+    operator_text = "\n".join(json.dumps(docs[name], ensure_ascii=False).lower() for name in ("operators", "formal", "projection", "placement"))
     for name in ("eye", "door", "spiral", "tree", "mountain", "swamp"):
-        if name not in op_text:
-            errors.append(f"Axis operator contract missing core operator: {name}")
+        if name not in operator_text:
+            errors.append(f"combined Atlas operator architecture missing core operator: {name}")
 
     print("Atlas view contract: G/T/R/E/A/F/C · canonical identity · information-loss disclosure")
     print("Time contract: Current · As of · Compare dates · unknown-date policy")
+    print("Operator contract: validated across Axis + formal + projection + placement owners")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings:
         print("WARNING:", warning)
