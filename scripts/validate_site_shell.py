@@ -24,6 +24,7 @@ def main():
         required_files=(
             'index.html','manifest.json','app/app.js','app/style.css',
             'knowledge/indexes/context-graph.json','knowledge/indexes/core-index.json',
+            'world-map/index.html','world-map/3d.html','data/world-map-3d-runtime.json','data/world-relational-map.json',
             'sitemap.xml','llms.txt'
         )
         for rel in required_files:
@@ -47,6 +48,18 @@ def main():
         app=(SITE/'app/app.js').read_text(encoding='utf-8',errors='replace') if (SITE/'app/app.js').exists() else ''
         for required in ('manifest.json','context-graph.json','showContext','showRecord','renderMarkdown'):
             if required not in app:errors.append(f'app/app.js missing current navigation feature: {required}')
+
+        # The map is a first-class public surface and must survive every build.
+        map3d=(SITE/'world-map/3d.html').read_text(encoding='utf-8',errors='replace') if (SITE/'world-map/3d.html').exists() else ''
+        for required in ('World Relational Atlas','id="map"','id="compare"','id="relationType"','semantic-hubs','compare-hubs','window.traceTo','fitBounds'):
+            if required not in map3d:errors.append(f'world-map/3d.html missing current atlas feature: {required}')
+        if map3d and 'navigation handles, not fake geographic locations' not in map3d:
+            errors.append('world-map/3d.html missing semantic-coordinate boundary')
+        runtime=load_json(SITE/'data/world-map-3d-runtime.json',errors) if (SITE/'data/world-map-3d-runtime.json').exists() else {}
+        if runtime and runtime.get('status')!='active experimental renderer contract':
+            errors.append('built world-map-3d-runtime has unexpected status')
+        if runtime and runtime.get('compare_mode',{}).get('status') not in {'implemented','implemented-basic'}:
+            errors.append('built world-map runtime does not preserve implemented Compare status')
 
         # Generated SEO surfaces must actually exist and contain real pages.
         topic_pages=list((SITE/'topics').glob('*/index.html')) if (SITE/'topics').exists() else []
