@@ -75,7 +75,19 @@ jobs:
       - name: Enforce web audit gate
         if: steps.audit_web.outcome == 'failure'
         run: exit 1
+
+      # Mirror the public Pages build sequence before validating the built shell.
+      # This prevents generated discovery/science/ontology routes from being
+      # incorrectly reported missing by the Atlas integrity workflow.
       - name: Build static site
         run: python scripts/build_site.py
+      - name: Compile complete science catalog
+        run: python scripts/build_science_catalog.py
+      - name: Build search discovery layer
+        run: python scripts/build_discovery.py
+      - name: Expose discovery entry points
+        run: python scripts/patch_home_discovery.py
+      - name: Apply public ontology patch
+        run: python scripts/patch_public_ontology.py
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
