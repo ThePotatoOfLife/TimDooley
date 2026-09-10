@@ -11,6 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 FAQ_FILES = [
     ROOT / "knowledge/indexes/faq-long-tail-bulk.json",
     ROOT / "knowledge/indexes/faq-long-tail-expansion-2026-09-10.json",
+    ROOT / "knowledge/indexes/faq-christianity-jesus-eschatology.json",
 ]
 
 
