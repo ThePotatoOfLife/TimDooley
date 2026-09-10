@@ -83,8 +83,10 @@ jobs:
           grep -q 'World Relational Atlas' _site/world-map/3d.html
           grep -q 'id="compare"' _site/world-map/3d.html
           grep -q 'id="relationType"' _site/world-map/3d.html
-          grep -q 'window.traceTo' _site/world-map/3d.html
+          grep -q 'window.goCountry' _site/world-map/3d.html
+          grep -q 'Trace outward' _site/world-map/3d.html
           grep -q 'compare-hubs' _site/world-map/3d.html
+          grep -q 'function fitCodes' _site/world-map/3d.html
           grep -q 'fitBounds' _site/world-map/3d.html
 
           # Science is a compiled public product, not merely copied source files.
