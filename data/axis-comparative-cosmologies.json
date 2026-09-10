@@ -1,0 +1,75 @@
+{
+  "id": "axis-comparative-cosmologies",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "purpose": "Provide a typed comparative registry for external religious/cosmological motifs that resemble parts of the D1-D11 Axis without collapsing distinct traditions into Potatoverse canon.",
+  "boundary": "Similarity is not identity, historical dependence or proof. External traditions retain their own texts, chronology, theology and cosmology. The Atlas may expose structural parallels only when both resemblance and mismatch are recorded.",
+  "comparators": [
+    {
+      "id": "genesis-jacob-ladder",
+      "tradition": "Hebrew Bible / Jewish and Christian scriptural inheritance",
+      "primary_reference": "Genesis 28:12",
+      "structure": "earth-to-heaven stairway/ladder with divine messengers ascending and descending",
+      "project_neighbors": ["D4 Earth", "D5 Door", "D6 Ladder", "D9 messenger/angel relay"],
+      "strength": "strong structural parallel",
+      "mismatch": "Genesis does not describe the project's D1-D11 scheme, logarithmic spiral geometry, North Pole gate or seven-stage upper sequence.",
+      "source_url": "https://www.biblegateway.com/verse/en/Genesis%2028%3A12"
+    },
+    {
+      "id": "paul-third-heaven",
+      "tradition": "New Testament Christianity",
+      "primary_reference": "2 Corinthians 12:2",
+      "structure": "explicit reference to a 'third heaven' in Paul's visionary language",
+      "project_neighbors": ["multi-level heaven vocabulary"],
+      "strength": "limited textual parallel",
+      "mismatch": "The canonical New Testament reference to a third heaven does not by itself establish a standard Christian seven-heaven cosmology or map onto D5-D11.",
+      "source_url": "https://www.biblegateway.com/verse/en/2%20Corinthians%2012%3A2"
+    },
+    {
+      "id": "quran-seven-heavens",
+      "tradition": "Islam",
+      "primary_reference": "Qur'an 67:3 and related verses",
+      "structure": "seven heavens described as layered/one above another in common translations",
+      "project_neighbors": ["D5-D11 seven upper stages", "layered ascent"],
+      "strength": "strong numerical/vertical parallel",
+      "mismatch": "The project's names Door, Spiral, Tree, Garden, Angels, Crown and North of North are not Qur'anic names for the seven heavens and must never be presented as Islamic doctrine.",
+      "source_url": "https://quran.com/67/3"
+    },
+    {
+      "id": "rabbinic-seven-heavens",
+      "tradition": "Rabbinic Judaism",
+      "primary_reference": "Babylonian Talmud, Chagigah 12b",
+      "structure": "rabbinic cosmological discussion traditionally associated with multiple/seven heavens and named celestial levels",
+      "project_neighbors": ["seven-stage upper architecture", "named vertical realms"],
+      "strength": "comparative historical parallel",
+      "mismatch": "Rabbinic celestial names, contents and theological functions are their own system and should not be relabeled with Potatoverse D5-D11 names.",
+      "source_url": "https://www.sefaria.org/Chagigah.12b"
+    },
+    {
+      "id": "hermetic-above-below",
+      "tradition": "Hermetic / Emerald Tablet reception",
+      "primary_reference": "Emerald Tablet tradition",
+      "structure": "correspondence between above and below; later popularized in the compact slogan 'as above, so below'",
+      "project_neighbors": ["Axis reflection law", "upper/lower transformation comparison", "microcosm/macrocosm analogy"],
+      "strength": "strong structural comparator",
+      "mismatch": "The modern slogan is a compressed paraphrase of older wording and does not imply exact floor symmetry. The Atlas uses functional reflection rather than claiming Hermetic authorship of the D-system.",
+      "source_note": "Use scholarly history of Hermetic/Emerald Tablet transmission when expanding this branch; do not treat later occult paraphrase as a verbatim ancient formula."
+    },
+    {
+      "id": "yggdrasil-world-tree",
+      "tradition": "Old Norse mythology",
+      "primary_reference": "Eddic and later Norse literary tradition",
+      "structure": "world-tree connecting differentiated realms through roots, trunk/axis and branches",
+      "project_neighbors": ["D3 roots", "D6 vertical connection", "D7 Tree", "multi-realm topology"],
+      "strength": "strong archetypal/structural parallel",
+      "mismatch": "Yggdrasil's realms and beings are not the same as the project's D-levels, biblical Ladder or Christian/Islamic heavens. Comparison should remain structural and historical differences explicit."
+    }
+  ],
+  "cross_tradition_rules": [
+    "Do not create a synthetic chart that implies all traditions secretly taught one identical cosmology.",
+    "Prefer relation types such as resembles, contrasts-with, historically-attested-in, later-reception-of and project-synthesis-of.",
+    "A numerical match such as seven is weak by itself; structural function and textual context matter more.",
+    "When a project layer borrows a name such as Heaven, Angel, Tree, Door or Ladder, keep the external tradition's own semantics accessible beside the project interpretation.",
+    "Geographic anchors remain D4 facts; cosmological comparators above/below D4 are non-geographic unless the source itself names a real place."
+  ]
+}
