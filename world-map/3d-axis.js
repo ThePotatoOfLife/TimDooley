@@ -1,6 +1,6 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 
-// Experimental North / Axis threshold overlay for the 3D World Relational Atlas.
+// North / Axis threshold overlay for the 3D World Relational Atlas.
 // This is a project-symbolic rendering attached to real northern geography;
 // it is not a country boundary, territorial claim, or physical feature.
 
@@ -21,7 +21,7 @@ function lowerArcCoordinates() {
   const points = [];
   const steps = 84;
   // Negative / upside-down-rainbow lip. The middle dips toward northern Greenland.
-  // 42° is intentionally a visual design parameter, not a geographic or theological fact.
+  // 42° is a visual design parameter, not a geographic or theological fact.
   for (let i = 0; i <= steps; i += 1) {
     const t = i / steps;
     const lon = ARC_CENTER_LON - HALF_ARC + AXIS_ARC_DEGREES * t;
@@ -60,7 +60,7 @@ function axisGeoJSON() {
         properties: {
           kind: 'threshold_bubble',
           name: 'North / Axis threshold',
-          subtitle: `${AXIS_ARC_DEGREES}° experimental polar bubble`,
+          subtitle: `${AXIS_ARC_DEGREES}° polar bubble`,
           plane: 'project-symbolic',
         },
         geometry: { type: 'Polygon', coordinates: [bubblePolygon()] },
@@ -181,7 +181,7 @@ function installAxisToggle(map) {
   button.id = 'axisLayer';
   button.className = 'active';
   button.textContent = 'Axis';
-  button.title = `Toggle experimental ${AXIS_ARC_DEGREES}° North / Axis polar bubble`;
+  button.title = `Toggle ${AXIS_ARC_DEGREES}° North / Axis polar bubble`;
   worldButton?.insertAdjacentElement('beforebegin', button);
 
   let visible = true;
@@ -232,10 +232,10 @@ function installAxisInteractions(map) {
       panel.innerHTML = `
         <div class="eyebrow">Project-symbolic threshold</div>
         <h1>North / Axis Gate</h1>
-        <p class="muted">A translucent polar bubble, shaped around an experimental ${AXIS_ARC_DEGREES}° negative arc, sits north of Greenland and slightly overlaps its northern edge as a visual threshold into the project's “North of North” plane.</p>
+        <p class="muted">A translucent polar bubble shaped around a ${AXIS_ARC_DEGREES}° negative arc sits north of Greenland and slightly overlaps its northern edge as a visual threshold into the project's “North of North” plane.</p>
         <div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary geography. This bubble, Axis Gate, Tree, Ladder, and “North of North” are project-symbolic structures and do not define sovereignty, borders, territory, or physical geography.</div>
-        <div class="card"><b>Prototype logic</b><div class="row">Earth / Greenland / Arctic</div><div class="row">North bubble → threshold</div><div class="row">Threshold → Axis / Tree / Ladder</div><div class="row">Axis → future North-of-North scene</div></div>
-        <div class="card"><b>42° geometry</b><p class="muted">42° currently controls the horizontal sweep of the negative arc. It remains a visual hypothesis and can be changed independently of the layer's meaning.</p></div>
+        <div class="card"><b>Axis logic</b><div class="row">Earth / Greenland / Arctic</div><div class="row">North bubble → threshold</div><div class="row">Threshold → Axis / Tree / Ladder</div><div class="row">Axis → North-of-North scene</div></div>
+        <div class="card"><b>42° geometry</b><p class="muted">42° controls the horizontal sweep of the negative arc. It is a visual parameter and can be tuned independently of the layer's meaning.</p></div>
         <div class="actions"><button onclick="location.reload()">Return to atlas panel</button></div>`;
     }
   };
