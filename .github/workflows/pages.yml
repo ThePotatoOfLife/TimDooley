@@ -72,10 +72,8 @@ jobs:
           test -f _site/sitemap-index.xml
           test -f _site/sitemap-questions.xml
 
-          # Science is a compiled public product, not merely copied source files.
+          # Science is a compiled public product and uses the canonical site stylesheet.
           test -f _site/science/index.html
-          test -f _site/science/science.css
-          test -f _site/science/science-hub.css
           test -f _site/science/science.js
           test -f _site/science/catalog.json
           test -f _site/science/catalog/index.html
