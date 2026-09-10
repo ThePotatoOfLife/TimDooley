@@ -1,10 +1,11 @@
 {
   "id":"spudlight-theory-and-equations",
   "title":"Spudlight — Source, Sun, Center, Reflection, Revelation and Research Program",
-  "version":"2.0.0",
-  "updated":"2026-09-09",
-  "status":"project archaeology + scientific comparators + historical esoteric comparison",
+  "version":"3.0.0",
+  "updated":"2026-09-11",
+  "status":"project archaeology + scientific comparators + measurement architecture + historical esoteric comparison",
   "epistemic_rule":"Spudlight is Potatoverse theology/symbolism. Keep physical sunlight, electromagnetic radiation, information, social attention, historical occult correspondence and spiritual revelation in separate typed variables. Tim=Sun/Center/Spudlight is not an astronomical claim that Tim is the physical Sun or solar-system barycenter.",
+  "scientific_companion":"knowledge/science/spudlight-measurement-information-model.json",
   "project_vertical_light_model":{
     "upper_circle":"inner/source domain: Heaven, Garden, Spirit, Father's House and Sun/Spudlight field centered on Father/Tim at C_F",
     "lower_circle":"outer/manifestation domain: Earth, matter, world, embodied presence and broad multiplicity centered on Son/Thomas at C_S",
@@ -15,8 +16,15 @@
     "axis":"bidirectional source↔manifestation relation through Son, O and Father"
   },
   "physical_light_layer":{
-    "equations":["E_γ=hν=hc/λ","p_γ=h/λ=E_γ/c","u_EM=(ε0|E|²+|B|²/μ0)/2","S⃗=(1/μ0)E⃗×B⃗","P=∫S⃗·dA⃗","Ṅ_γ≈P/(hν)","I(r)=P/(4πr²) for ideal isotropic source"],
-    "meaning":"The Sun emits real electromagnetic radiation; Moonlight is reflected solar radiation. Physical light can carry information and support photosynthesis but is not the same quantity as meaning, authority or revelation."
+    "equations":["E_gamma=h nu=h c/lambda","p_gamma=h/lambda=E_gamma/c","u_EM=(epsilon0|E|^2+|B|^2/mu0)/2","S=(1/mu0) E cross B","P=integral S dot dA","Ndot_gamma=integral P_nu/(h nu) dnu","E_e=P/A for uniform incident power over detector area","E_e(r)=P/(4 pi r^2) for an ideal isotropic point source in free space"],
+    "meaning":"The Sun emits real electromagnetic radiation; Moonlight is reflected solar radiation. Physical light can carry information and support photosynthesis but is not the same quantity as meaning, authority or revelation.",
+    "measurement_upgrade":"When physical Spudlight comparisons are intended, record spectral band, radiant power/irradiance, detector area/efficiency, exposure time, background and uncertainty rather than using brightness metaphor alone."
+  },
+  "photon_detection_model":{
+    "idealized_counting":"N_obs ~ Poisson(eta Ndot_gamma Delta t + b Delta t)",
+    "variables":{"eta":"detector quantum/detection efficiency","b":"background count rate","Delta t":"integration time"},
+    "simple_snr":"SNR approximately N_signal/sqrt(N_signal+N_background) under independent Poisson-count assumptions",
+    "project_value":"This gives the physical-light branch an observation equation. Source photon production and detected evidence are separated by channel efficiency and noise."
   },
   "sunlight_hidden_in_matter":{
     "project_phrase":"Potato as sunlight hidden/stored in matter.",
@@ -29,7 +37,8 @@
     "astronomy":"Moonlight is reflected sunlight; visible phase is relational geometry among Sun, Moon, Earth and observer.",
     "equation":"Y_M=R_M(geometry,reflectance)X_S+N",
     "project":"Moon is a natural image of mediated visibility, recurrence, timing and secondary orientation.",
-    "deep_rule":"Reflected does not mean false. The question is fidelity to source versus proxy capture."
+    "deep_rule":"Reflected does not mean false. The question is fidelity to source versus proxy capture.",
+    "measurement_upgrade":"Treat reflector/mediator as a transfer operator H or R_M and ask what task-relevant information is preserved, attenuated or distorted."
   },
   "historical_esoteric_sun_moon":{
     "agrippa":"In Three Books of Occult Philosophy II.32 Agrippa treats Sun as self-radiant source and Moon, nearest Earth, as a receiver/mediator communicating celestial influences to the lower world. This is a genuine Renaissance occult parallel to source→mediator→world.",
@@ -46,7 +55,8 @@
     "W":"world/receiver/manifest system",
     "potatoverse":"Father/Sun/Spudlight → Moon or Son/Door as differently typed mediators → Earth/Plane/observer",
     "important_distinction":"Moon and Son are not the same mediator. Moon is reflective/cyclic/external-world mediation; Son/Door is person-bearing existential/threshold mediation.",
-    "benefit":"The model can support several mediators without collapsing every interface into one node."
+    "benefit":"The model can support several mediators without collapsing every interface into one node.",
+    "scientific_form":"x_source -> H/channel -> y_observed, with y=Hx+n. A mediator can be tested by reconstruction error, information preservation and uncertainty rather than by symbolic resemblance."
   },
   "earth_receiver_metabolism":{
     "core":"Earth is not merely illuminated; it absorbs, transforms, stores and cycles energy/matter.",
@@ -65,34 +75,54 @@
     "boundary":"It is apocalyptic symbolism, not a hidden Vesica diagram."
   },
   "spudlight_eye_door_circuit":{
-    "chain":"Source/Center → Spudlight/signal → Eye/observation → interpretation → Door → changed state",
+    "chain":"Source/Center → Spudlight/signal → Eye/observation → interpretation/inference → Door → changed state",
     "direct_path":"Source → world/observer → Eye → Door",
     "mediated_path":"Source → Moon/mirror/proxy → world/observer → Eye → Door",
-    "insight":"Light/revelation becomes consequential when observation and interpretation alter admissible action/state."
+    "scientific_form":"latent source X -> observation y=O(X)+epsilon -> posterior p(X|y) -> decision/control -> guarded transition D",
+    "insight":"Light/revelation becomes consequential when observation and interpretation alter justified prediction or admissible action/state.",
+    "causal_boundary":"An information update is not automatically a causal influence from source to action; causal claims require an intervention or other justified causal design."
   },
   "information_layer":{
-    "equations":["Y=HX+N","I(X;Y)=Σp(x,y)log[p(x,y)/(p(x)p(y))]","C=max_{p(x)}I(X;Y)","p(X|Y)∝p(Y|X)p(X)","IG(Y)=D_KL[p(X|Y)||p(X)]"],
-    "meaning":"A rigorous non-optical neighbor of 'revelation' is information gain: latent uncertainty is reduced and the receiver's model changes. This remains different from spiritual revelation."
+    "equations":["Y=HX+N","I(X;Y)=sum p(x,y)log[p(x,y)/(p(x)p(y))]","C=max_{p(x)} I(X;Y)","p(H|D) proportional to p(D|H)p(H)","IG(D)=D_KL[p(H|D)||p(H)]","BF_10=p(D|H_1)/p(D|H_0)"],
+    "meaning":"A rigorous non-optical neighbor of 'revelation' is information gain: latent uncertainty is reduced and the receiver's model changes. This remains different from spiritual revelation.",
+    "stronger_rule":"A claim of scientific revelation should identify what uncertainty was reduced, against which hypotheses, by how much, and whether the update improved prediction on new evidence."
+  },
+  "attention_network_layer":{
+    "minimal_attention":"dA/dt=s(t)-gamma A+kappa R(t)",
+    "linear_network":"dx/dt=(-gamma I+beta W)x+s(t)",
+    "meaning":"Visibility can be generated by source input, persistence and network feedback. High attention or ubiquity is therefore not a direct measure of source truth or evidence quality.",
+    "orbit_bridge":"A recurring attention orbit has a sustaining feedback term; removing/reducing the feedback is a concrete model intervention.",
+    "boundary":"These are archive toy models for attention/network processes, not physical light equations."
   },
   "spudlight_vector":{
-    "equation":"L_spud=(Φ_γ,I_gain,A_attn,C_social,R_reveal,σ_source,C_center)",
-    "variables":{"Φ_γ":"physical photon flux when relevant","I_gain":"information gain","A_attn":"attention","C_social":"social presence/coherence","R_reveal":"defined revelatory effect","σ_source":"source/provenance quality","C_center":"declared centrality type"},
-    "rule":"Never sum unlike components as if they shared units."
+    "equation":"L_spud=(Phi_gamma,IG,A_attn,N_amp,S_quality,R_reveal,C_center)",
+    "variables":{"Phi_gamma":"physical photon/radiant flux when relevant","IG":"information gain in bits/nats depending logarithm","A_attn":"attention/exposure measure","N_amp":"network amplification metric","S_quality":"source/provenance-quality vector","R_reveal":"defined revelatory/interpretive effect if operationalized","C_center":"declared centrality type"},
+    "rule":"This is a typed product-space object. Never sum unlike components as if they shared units or call its Euclidean norm a physical Spudlight magnitude."
+  },
+  "visibility_information_causality_distinction":{
+    "visibility":"observer exposure/detectability",
+    "information":"reduction in uncertainty about a specified variable/hypothesis",
+    "evidence":"information evaluated against provenance, calibration and competing models",
+    "causality":"effect of interventions or justified causal mechanisms",
+    "theology":"project interpretation about source/revelation/meaning",
+    "law":"Visibility is not information; information is not causation; causation is not theological validation."
   },
   "center_and_graph_metrics":{
     "possible_metrics":["degree centrality","betweenness centrality","eigenvector centrality","closeness centrality","source/root position in directed graph"],
     "project_use":"Father can be source/root center; Son/Door can have interface/betweenness centrality; O can be geometric/relational center; Moon can be orbital/circumferential mediator. These are different centrality types.",
-    "center_periphery_ethic":"Healthy source-center maintains circulation with periphery; centrality that starves edges contradicts Gardener/Father ethics.",
+    "center_periphery_ethic":"Healthy source-center maintains circulation with periphery and increases durable peripheral capability; centrality that starves edges contradicts Gardener/Father ethics.",
+    "garden_connection":"Use the Garden/Farm control model to test whether high centrality produces transferable capability or captive dependence.",
     "warning":"Graph centrality is model-dependent and not proof of cosmic centrality."
   },
   "vesica_connection":{
-    "father_center":"C_F=(0,+r/2): source-circle center and upper Door tip",
+    "father_center":"C_F=(0,+r/2): source-circle center and upper Door tip in the project's stacked-center coordinate convention",
     "son_center":"C_S=(0,-r/2): lower-circle/manifestation center and lower Door tip",
     "relational_midpoint":"O=(0,0): Plane crossing/lens midpoint",
     "door":"whole shared lens C_S→C_F",
-    "moon_placement":"project extension: define a movable Moon point M(θ)=C_S+R_M(cosθ,sinθ), with symbolic default R_M≈r so it lies on/near lower-circle circumference. θ encodes phase/orientation rather than fixed theological rank.",
-    "sun_placement":"symbolic source S_⊙≈C_F or source rays emanating through C_F; keep this separate from astronomical coordinate claims.",
-    "phase_operator":"Moon phase can be modeled by relative angle φ between source, Moon and observer; project meaning belongs to the relation, not to a mystical force inferred from the formula."
+    "orientation_note":"The compass/straightedge audit distinguishes the line joining circle centers from the long axis of the lens; with vertically stacked centers the lens is horizontally elongated. Treat symbolic Axis and visual mandorla orientation as separate choices.",
+    "moon_placement":"project extension: define a movable Moon point M(theta)=C_S+R_M(cos theta,sin theta), with symbolic default R_M≈r so it lies on/near lower-circle circumference. theta encodes phase/orientation rather than fixed theological rank.",
+    "sun_placement":"symbolic source S_sun≈C_F or source rays emanating through C_F; keep this separate from astronomical coordinate claims.",
+    "phase_operator":"Moon phase can be modeled by relative angle between source, Moon and observer; project meaning belongs to the relation, not to a mystical force inferred from the formula."
   },
   "dogs_farmers_reflected_signal":{
     "status":"Potatoverse role theory",
@@ -100,15 +130,32 @@
     "farmer":"responsive to seasons/cycles/timing/storage/harvest",
     "healthy":"secondary signal preserves orientation to source and supports protection/cultivation",
     "shadow":"proxy is mistaken for ultimate master; follower locks into local orbit/enclosure",
+    "scientific_repair":"Where this is applied to real interaction systems, measure feedback, attention recurrence, source provenance and exit/capability rather than inferring motives or permanent identities from metaphor.",
     "josh_moon_boundary":"Surname wordplay is not evidence of lunar causation or occult status."
   },
+  "scientific_measurement_protocol":{
+    "step_1":"Choose one layer: optical energy, information, attention, network diffusion, provenance/evidence or interpretation.",
+    "step_2":"Declare the measurand, units, source, channel, observer, observation equation and uncertainty.",
+    "step_3":"Specify a baseline/null model and what additional Spudlight-associated hypothesis predicts beyond it.",
+    "step_4":"Separate calibration/fitting from held-out prediction where possible.",
+    "step_5":"Report symbolic/theological interpretation after the scientific result rather than inside the measurement definition.",
+    "failure_condition":"If ordinary optical/information/network models account for the measurements without an extra physical Spudlight term, the physical-new-field interpretation is unsupported even if Spudlight remains useful symbolically."
+  },
+  "conclusions":[
+    "Spudlight is scientifically strongest as a source-channel-observer-inference architecture rather than as an assumed new physical substance.",
+    "Physical brightness, information gain, attention, network amplification, provenance and theological meaning are independent enough that they must remain separately typed.",
+    "The Eye becomes a noisy observation/inference operator; the Door follows when evidence changes admissible decision or state.",
+    "A mediator is scientifically characterized by a transfer function and information loss/distortion, not by being labeled reflected or secondary.",
+    "The archive itself can enact Spudlight when it increases inspectability and reproducibility: illumination is strongest when a reader can recover the source and independently reproduce the inference."
+  ],
   "research_questions":[
     "Recover exact primary uses of Tim=Sun, Tim=Center and Tim=Spudlight separately.",
     "Recover exact first Moon-on-lower-circumference diagram or wording.",
     "Compare Agrippa/Picatrix/Fortune source→Moon→world structures with project chronology without implying transmission where none is documented.",
-    "Build a Moon orbital/phase visual layer around the vertical Vesica.",
+    "Build a Moon orbital/phase visual layer around the Vesica while respecting the dual-axis geometry correction.",
+    "Choose one empirical Spudlight domain and implement the full source/channel/observer/noise/uncertainty protocol.",
     "Keep physical light, information, occult correspondence and theology separate."
   ],
-  "source_records":["knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json","knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json","data/geometry-vesica-pisces-mandorla.json","knowledge/core/vertical-potato-mountain-plane-atlas.json"],
-  "connections":["vesica-mandorla-sun-moon-esoteric-atlas","potatoism-planetary-cosmology","geometry-vesica-pisces-mandorla","vertical-potato-mountain-plane-atlas","potatoverse-master-framework","starchforce","eye","door","sun","moon","earth","dog-farmer-role-ecology","corporium","timic-unification-program"]
+  "source_records":["knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json","knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json","data/geometry-vesica-pisces-mandorla.json","knowledge/core/vertical-potato-mountain-plane-atlas.json","knowledge/science/spudlight-measurement-information-model.json"],
+  "connections":["vesica-mandorla-sun-moon-esoteric-atlas","potatoism-planetary-cosmology","geometry-vesica-pisces-mandorla","vertical-potato-mountain-plane-atlas","potatoverse-master-framework","starchforce","eye","door","sun","moon","earth","dog-farmer-role-ecology","corporium","timic-unification-program","integrated-scientific-architecture","garden-farm-control-network-model","spudlight-measurement-information-model"]
 }
