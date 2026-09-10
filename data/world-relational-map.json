@@ -1,0 +1,173 @@
+{
+  "id":"world-relational-map",
+  "title":"World Relational Map — North / West / East / South / Faith / Tikkun / Ledger",
+  "version":"1.0.0",
+  "updated":"2026-09-10",
+  "status":"working atlas schema with empirical and project-symbolic layers",
+  "purpose":"Power a clickable world map where every country can be inspected as a node in overlapping geopolitical, economic, religious, institutional and Potatoverse relationships. The map deliberately supports overlaps rather than forcing each country into one bloc.",
+  "epistemic_firewall":[
+    "Observed memberships such as NATO or BRICS are empirical institutional facts and remain separate from Tim's project quadrants.",
+    "Islam, Christianity, Hinduism, Buddhism, Judaism and unaffiliated populations are faith/demography dimensions, not geopolitical blocs.",
+    "North, West, East and South are project interpretive lenses unless an individual relation is explicitly tied to an observable institution or geography.",
+    "Swamp is a project diagnostic metaphor. It must not be used as a collective moral label for a nation, ethnicity or religion.",
+    "The approximately 42T karmic ledger is project-symbolic moral accounting, not sovereign debt, a lien, a bank asset or an enforceable claim.",
+    "Tim's spiritual King-of-Kings / ledger-keeper role belongs to project canon and does not establish governmental or financial authority."
+  ],
+  "layers":[
+    {"id":"project_axis","label":"Tim Axis","kind":"project_interpretation","description":"Versioned North/West/East/South relational reading. Countries may belong to multiple fields or remain unclassified."},
+    {"id":"alliances","label":"Alliances & institutions","kind":"empirical","description":"NATO, EU and other externally verifiable institutional relationships."},
+    {"id":"brics","label":"BRICS","kind":"empirical","description":"Current BRICS membership is displayed independently from the symbolic East field."},
+    {"id":"faith","label":"Faith & religious diversity","kind":"empirical_demography","description":"Religious composition should use sourced demographic estimates; latest atlas baseline is Pew's 2020 composition dataset released 2025 and expanded with diversity measures in 2026."},
+    {"id":"economic","label":"Economy & obligations","kind":"empirical","description":"GDP, population, debt, trade, ownership, funding, infrastructure and other measurable relations."},
+    {"id":"swamp","label":"Swamp / system-risk lens","kind":"mixed","description":"Evidence-backed risks such as corruption, conflict, opacity, extraction or institutional failure may be compared with the project's Swamp metaphor without branding populations as Swamp."},
+    {"id":"ledger","label":"Karmic / spiritual ledger","kind":"project_symbolic","description":"Tracks remembered harms, obligations, repair and release as project moral-accounting grammar."},
+    {"id":"tikkun","label":"Tikkun / repair","kind":"comparative_ethics","description":"Maps repair tasks: truth, protection, restitution, release from permanent dependency, rebuilding, institutional improvement and future capacity."}
+  ],
+  "project_axis":{
+    "updated":"2026-09-10",
+    "rule":"These are relational fields, not annexation, citizenship, legal sovereignty or claims of consent.",
+    "north":{
+      "anchor":["DNK","GRL","FRO"],
+      "core":["CAN","ISL","NOR","SWE","FIN"],
+      "european_field":["DEU","NLD","BEL","FRA","ESP","PRT","ITA","GRC","IRL"],
+      "under_axis":["EST"],
+      "strategic_extension":["UKR","TUR"],
+      "variable":["GBR"],
+      "shared":["AUS"],
+      "external":["USA","ISR"],
+      "excluded_current_version":["RUS"],
+      "future_reconnection":["RUS","IRQ","SYR"],
+      "history_owner":"data/north-axis-membership-history.json"
+    },
+    "west":{
+      "project_poles":["USA","ISR"],
+      "strongly_western_connected":["GBR","AUS","NZL","JPN","KOR","CAN"],
+      "note":"This is Tim/Potatoverse interpretive vocabulary. Use NATO, AUKUS, Five Eyes, treaties, trade and other empirical edges when making factual claims about alignment."
+    },
+    "east":{
+      "project_reading":"Often associated in project conversation with BRICS and non-Western power centers, but BRICS membership must remain an independent observable flag.",
+      "strong_reference_nodes":["CHN","RUS","IND"],
+      "note":"Do not infer ideological unity from BRICS membership."
+    },
+    "south":{
+      "status":"loose / exploratory",
+      "description":"No settled Timic South bloc has been recovered. Use Global South, geography, development relations and Daniel's King-of-the-South comparison only as separate lenses until Tim's own South taxonomy is sourced.",
+      "candidate_regions":["Africa","Latin America and Caribbean","parts of South and Southeast Asia","Pacific"],
+      "note":"Australia is explicitly treated as shared/cross-axis in recovered project language, not simply South."
+    }
+  },
+  "empirical_memberships":{
+    "NATO":{
+      "updated":"2026-09-10","members":["ALB","BEL","BGR","CAN","HRV","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","ISL","ITA","LVA","LTU","LUX","MNE","NLD","MKD","NOR","POL","PRT","ROU","SVK","SVN","ESP","SWE","TUR","GBR","USA"],
+      "source":"https://www.nato.int/en/about-us/organization/nato-member-countries"
+    },
+    "BRICS":{
+      "updated":"2026-09-10","members":["BRA","RUS","IND","CHN","ZAF","SAU","EGY","ARE","ETH","IDN","IRN"],
+      "partners":["BLR","BOL","CUB","KAZ","MYS","NGA","THA","UGA","UZB","VNM"],
+      "source":"https://brics.br/en/about-the-brics"
+    },
+    "AUKUS":{"members":["AUS","GBR","USA"],"description":"Security partnership; included as a relationship flag rather than a world-axis category."},
+    "Five_Eyes":{"members":["AUS","CAN","NZL","GBR","USA"],"description":"Intelligence-sharing relationship flag."}
+  },
+  "faith_model":{
+    "rule":"Never infer conduct, loyalty or geopolitical alignment from religion. Faith composition is descriptive demographic context only.",
+    "categories":["Christian","Muslim","Hindu","Buddhist","Jewish","Other religions","Religiously unaffiliated"],
+    "baseline":"Pew Research Center religious-composition estimates for 2010 and 2020; released 2025, diversity measures added 2026.",
+    "coverage":"201 countries and territories, 99.98% of world population in the source dataset.",
+    "source":"https://www.pewresearch.org/religion/feature/religious-composition-by-country-2010-2020/",
+    "implementation":"The map exposes the source and a data slot per country. Percentages should only be filled from a licensed/downloaded or directly transcribed source, never guessed."
+  },
+  "ledger_model":{
+    "headline":"42T",
+    "unit":"symbolic USD-equivalent in project language",
+    "owner":"knowledge/chronology/karmic-debt-ledger-2026.json",
+    "chronology":"38.8T positive stored karma -> 38T spiritual value/debt -> 39T -> 40.2T -> 41.4T -> approximately 42T",
+    "ontology":{
+      "debtor":"A relationship, actor or system that created an unresolved harm/obligation in the project's moral-accounting language; never an entire people by default.",
+      "holder":"Tim is described in project canon as ledger-keeper/spiritual bank or holder of corresponding positive karmic value. This is symbolic, not financial title.",
+      "interest":"Compounding unresolved consequence: additional harm, denial, delay, repetition or downstream cost. No validated monetary interest rate currently exists.",
+      "collection":"Repair rather than personal cash transfer: truth, acknowledgment, restitution where applicable, changed conduct, release, rebuilding and protection of future capacity.",
+      "release":"A debt can close when the relevant repair condition is met; endless permanent debt is treated as a failure mode rather than the goal."
+    },
+    "toy_math":{
+      "status":"formal project model, not empirical valuation",
+      "state_equation":"K(t+1) = max(0, K(t) + H(t) + D(t) - R(t) - F(t))",
+      "terms":{"K":"unresolved symbolic obligation","H":"new harm/extraction","D":"delay/denial/downstream compounding","R":"restitution/repair","F":"forgiveness/release after truth and repair conditions"},
+      "allocation":"For an atlas edge e, score only documented relationship-specific factors. Never distribute 42T across nations by population, ethnicity, religion or collective guilt.",
+      "edge_score":"k_e = w_h H_e + w_o O_e + w_x X_e + w_d D_e - w_r R_e",
+      "variables":{"H_e":"documented harm severity","O_e":"unresolved obligation","X_e":"extraction/externalized cost","D_e":"duration/downstream persistence","R_e":"documented repair/restoration"},
+      "normalization":"Weights are analytical choices and must be visible. A score is a comparison tool, not a moral fact or legal damages calculation."
+    }
+  },
+  "tikkun_model":{
+    "definition":"World repair as a comparative project ethic: identify broken relations, free what is trapped in permanent dependency, protect vulnerable life, restore capacity and improve institutions.",
+    "operator":"observe -> source -> connect -> identify affected parties -> explain mechanism -> acknowledge obligation -> protect -> restitute/release -> rebuild -> measure -> revise",
+    "repair_dimensions":["truth/provenance","physical safety","civilian protection","rights and lawful process","economic capacity","institutional accountability","debt/dependency exit","infrastructure","ecological repair","religious/cultural coexistence","future-generation capacity"],
+    "scriptural_neighbors":[
+      {"tradition":"Jewish / rabbinic and later Jewish usage","concept":"tikkun olam","relation":"repair/public-order/social-responsibility vocabulary; historically plural meanings"},
+      {"tradition":"Lurianic Kabbalah","concept":"shattered vessels / trapped sparks / tikkun","relation":"powerful comparison for broken systems and recoverable capacity, not a label for human groups"},
+      {"tradition":"Hebrew Bible","concept":"debt release / Jubilee / restitution","relation":"release from permanent debt-dependency plus restoration of viable participation"},
+      {"tradition":"Christian scripture","concept":"Door / release / forgiveness / rebuilding / New Jerusalem","relation":"threshold and transformed relation; forgiveness does not require falsifying history"},
+      {"tradition":"Ana b'Koach","concept":"42-word structure / release bonds / guard as pupil of eye","relation":"comparative 42/release/protection structure; no historical derivation from Tim's 42T figure is asserted"}
+    ]
+  },
+  "swamp_model":{
+    "rule":"Swamp is a diagnosis of mechanisms, not a nationality or faith label.",
+    "observable_neighbors":["institutional opacity","corruption risk","violent conflict","civilian harm","organized exploitation","regulatory capture","disinformation incentives","harassment networks","blocked accountability","extractive dependency","infrastructure neglect"],
+    "display":"The map should show evidence-backed issue tags and sources. A country may contain both strong institutions and serious failures; no single swamp score should erase internal plurality.",
+    "repair_pair":"Every displayed failure should link to a possible repair/tikkun dimension."
+  },
+  "curated_country_notes":{
+    "DNK":{"project_axis":["north:anchor"],"role":"North anchor with Greenland/Faroes; Nordic/EU/NATO node; gateway between Arctic, North Atlantic and continental Europe.","repair_questions":["How can Realm relations preserve Greenlandic self-determination while strengthening shared resilience?","Which North capabilities are genuinely reciprocal rather than center-periphery dependencies?"]},
+    "GRL":{"project_axis":["north:anchor"],"role":"Geographic and strategic North anchor in project canon; self-governing territory within the Kingdom of Denmark, not an independent sovereign-state node.","repair_questions":["How are local consent, benefit sharing, minerals, infrastructure and security balanced?","How can external strategic interest avoid reproducing extractive dependency?"]},
+    "USA":{"project_axis":["west:pole","north:external"],"role":"Major Western power and NATO member; in Tim's project often the principal West/Swamp counter-pole and a major source of karmic-debt rhetoric.","boundary":"Project criticism must be attached to specific institutions, policies, actors or relationships; Americans are not a collective debtor class.","repair_questions":["Which specific externalized costs or broken relationships are being claimed?","What evidence would establish or close each obligation?"]},
+    "ISR":{"project_axis":["west:pole","north:external"],"role":"Project West/covenant/rubble node; also a real state with highly contested security, territorial and humanitarian relations.","boundary":"Jewish identity, Judaism, the Israeli state, governments, military actors and individual citizens must remain distinct nodes.","repair_questions":["How should covenant/security claims be tested against civilian protection, law, restitution and coexistence?","Which claims concern state policy versus religion or people?"]},
+    "PSE":{"project_axis":[],"role":"Palestinian people/territories are essential to the empirical and moral relation graph around Israel/Palestine; not reducible to a symbolic prop.","repair_questions":["Civilian protection, freedom, lawful status, reconstruction, security and viable future capacity."]},
+    "RUS":{"project_axis":["east:reference","north:excluded-current","north:future-reconnection"],"role":"BRICS member and major Eurasian/Arctic power; deliberately outside the current North membership version while remaining structurally important to Arctic and European security.","repair_questions":["What conditions would make future relational reconnection possible without erasing aggression, security risks or sovereignty questions?"]},
+    "CHN":{"project_axis":["east:reference"],"role":"BRICS member and global industrial/financial/technology power; important external node for Europe, Arctic interests and supply-chain dependencies.","repair_questions":["Where can reciprocal capability replace one-sided strategic dependency?"]},
+    "IND":{"project_axis":["east:reference"],"role":"BRICS member with substantial independent strategic agency; demonstrates why BRICS cannot be treated as one ideological East bloc.","repair_questions":["Map issue-by-issue alignment rather than assuming bloc loyalty."]},
+    "AUS":{"project_axis":["north:shared","west:strong"],"role":"Explicitly 'shared' in recovered Tim language while empirically connected to Western security through AUKUS/Five Eyes; a useful case for overlapping fields.","repair_questions":["How do Asia-Pacific geography, Western alliances and possible North linkages coexist?"]},
+    "TUR":{"project_axis":["north:strategic-extension"],"role":"NATO member and late endpoint/gate in the recovered Canada-to-Turkey North arc; also deeply connected to Europe, Middle East, Black Sea and Islamic history.","repair_questions":["Treat Turkey as a bridge node with multiple simultaneous systems rather than a single civilizational label."]},
+    "UKR":{"project_axis":["north:strategic-extension"],"role":"Strategic extension in Tim's North model and central node in current European security relations.","repair_questions":["Sovereignty, reconstruction, security guarantees, infrastructure and long-term European capability."]},
+    "EST":{"project_axis":["north:under-axis"],"role":"Recovered as 'under the North Axis'; empirically EU/NATO/Baltic/Nordic-connected.","repair_questions":["Clarify whether under-axis is symbolic topology, functional chain membership or later political status."]},
+    "GBR":{"project_axis":["north:variable","west:strong"],"role":"Historically variable in Tim's North formulations; strong empirical NATO/Five-Eyes/AUKUS Western relations. Constituent-nation wording such as England/Scotland must not be confused with sovereign-state status.","repair_questions":["Version England/Scotland/UK statements instead of flattening them."]}
+  },
+  "curated_edges":[
+    {"a":"DNK","b":"GRL","types":["constitutional","fiscal","security","infrastructure","culture"],"layer":"empirical","note":"Kingdom relation with Greenlandic self-government; exact competences should be sourced per topic."},
+    {"a":"DNK","b":"NOR","types":["Nordic","energy","security","trade"],"layer":"empirical/project-north"},
+    {"a":"DNK","b":"SWE","types":["Nordic","infrastructure","energy","trade","security"],"layer":"empirical/project-north"},
+    {"a":"DNK","b":"DEU","types":["EU","trade","energy","infrastructure","security"],"layer":"empirical/project-north"},
+    {"a":"GRL","b":"USA","types":["security","Arctic","strategic-interest"],"layer":"empirical/project-interpretive","note":"Show concrete treaties, bases, diplomacy and investments separately from Timic synchronism."},
+    {"a":"CAN","b":"GRL","types":["Arctic","Indigenous/transnational","security","maritime"],"layer":"empirical/project-north"},
+    {"a":"USA","b":"CAN","types":["NATO","trade","security","energy","Five-Eyes"],"layer":"empirical"},
+    {"a":"USA","b":"GBR","types":["NATO","AUKUS","Five-Eyes","trade","security"],"layer":"empirical"},
+    {"a":"USA","b":"AUS","types":["AUKUS","Five-Eyes","security","trade"],"layer":"empirical"},
+    {"a":"USA","b":"ISR","types":["security","diplomatic","economic"],"layer":"empirical/project-west"},
+    {"a":"ISR","b":"PSE","types":["territorial","security","humanitarian","economic","legal","civilian-impact"],"layer":"empirical","note":"Must be decomposed into actors, policies, territories and time periods; never a simple national guilt edge."},
+    {"a":"RUS","b":"CHN","types":["BRICS","trade","energy","diplomatic","security-coordination"],"layer":"empirical/project-east"},
+    {"a":"IND","b":"RUS","types":["BRICS","energy","defense","trade"],"layer":"empirical/project-east"},
+    {"a":"IND","b":"USA","types":["trade","technology","security-cooperation"],"layer":"empirical","note":"Demonstrates cross-axis relations and Indian strategic autonomy."},
+    {"a":"TUR","b":"DEU","types":["NATO","trade","migration","diaspora","industry"],"layer":"empirical/project-north"},
+    {"a":"TUR","b":"UKR","types":["Black-Sea","trade","security","diplomacy"],"layer":"empirical/project-north"},
+    {"a":"UKR","b":"POL","types":["security","logistics","trade","migration","EU-integration"],"layer":"empirical/project-north"}
+  ],
+  "live_data_sources":{
+    "country_basics":"https://restcountries.com/",
+    "world_bank":"https://api.worldbank.org/",
+    "geometry":"https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json",
+    "religion":"https://www.pewresearch.org/religion/feature/religious-composition-by-country-2010-2020/"
+  },
+  "sources":[
+    {"id":"north-synthesis","path":"knowledge/core/north-axis-tikkun-world-repair-synthesis.json"},
+    {"id":"north-history","path":"data/north-axis-membership-history.json"},
+    {"id":"country-method","path":"knowledge/core/country-relational-method.json"},
+    {"id":"karma-ledger","path":"knowledge/chronology/karmic-debt-ledger-2026.json"},
+    {"id":"debt-scripture","path":"knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json"},
+    {"id":"covenant-tikkun","path":"knowledge/traditions/rubble-rainbow-tikkun-covenant-axis-atlas.json"},
+    {"id":"NATO","url":"https://www.nato.int/en/about-us/organization/nato-member-countries"},
+    {"id":"BRICS","url":"https://brics.br/en/about-the-brics"},
+    {"id":"Pew-faith","url":"https://www.pewresearch.org/religion/feature/religious-composition-by-country-2010-2020/"},
+    {"id":"Ana-bKoach-context","url":"https://www.myjewishlearning.com/article/ana-bkoach-a-portal-to-creation/"},
+    {"id":"tikkun-context","url":"https://www.myjewishlearning.com/article/tikkun-olam-repairing-the-world/"}
+  ]
+}
