@@ -55,9 +55,9 @@ function axisGeoJSON() {
   return {
     type: 'FeatureCollection',
     features: [
-      {type:'Feature',properties:{kind:'threshold_bubble',name:'North / Axis threshold',subtitle:`${AXIS_ARC_DEGREES}° polar bubble`,plane:'project-symbolic'},geometry:{type:'Polygon',coordinates:[bubblePolygon()]}},
+      {type:'Feature',properties:{kind:'threshold_bubble',name:'North / Axis threshold',subtitle:`${AXIS_ARC_DEGREES}° polar bubble · D5 Door`,plane:'project-symbolic'},geometry:{type:'Polygon',coordinates:[bubblePolygon()]}},
       {type:'Feature',properties:{kind:'threshold_arc',name:'North / Axis threshold',subtitle:`${AXIS_ARC_DEGREES}° negative arc over northern Greenland`,plane:'project-symbolic'},geometry:{type:'LineString',coordinates:lowerArc}},
-      {type:'Feature',properties:{kind:'axis_gate',name:'North / Axis Gate',subtitle:'Threshold toward North of North · project-symbolic overlay',plane:'project-symbolic'},geometry:{type:'Point',coordinates:[ARC_CENTER_LON,84.45]}}
+      {type:'Feature',properties:{kind:'axis_gate',name:'North / Axis Gate',subtitle:'D5 Door · threshold toward North of North and lower Axis planes',plane:'project-symbolic'},geometry:{type:'Point',coordinates:[ARC_CENTER_LON,84.45]}}
     ]
   };
 }
@@ -69,7 +69,7 @@ function addAxisLayers(map) {
   map.addLayer({id:AXIS_GLOW,type:'line',source:AXIS_SOURCE,filter:['==',['get','kind'],'threshold_arc'],paint:{'line-color':NORTH_ICE_BRIGHT,'line-width':11,'line-opacity':0.16,'line-blur':6}});
   map.addLayer({id:AXIS_LINE,type:'line',source:AXIS_SOURCE,filter:['==',['get','kind'],'threshold_arc'],paint:{'line-color':NORTH_ICE,'line-width':2.7,'line-opacity':0.94,'line-dasharray':[2,1.2]}});
   map.addLayer({id:AXIS_GATE,type:'circle',source:AXIS_SOURCE,filter:['==',['get','kind'],'axis_gate'],paint:{'circle-radius':['interpolate',['linear'],['zoom'],0,5,3,7.5,6,10],'circle-color':NORTH_ICE_BRIGHT,'circle-stroke-color':NORTH_ICE_DEEP,'circle-stroke-width':2,'circle-opacity':0.97}});
-  map.addLayer({id:AXIS_LABEL,type:'symbol',source:AXIS_SOURCE,filter:['==',['get','kind'],'axis_gate'],minzoom:1,layout:{'text-field':'NORTH · AXIS','text-size':11,'text-offset':[0,1.7],'text-anchor':'top','text-letter-spacing':0.12,'text-allow-overlap':true},paint:{'text-color':NORTH_ICE_BRIGHT,'text-halo-color':'#080b0b','text-halo-width':1.5}});
+  map.addLayer({id:AXIS_LABEL,type:'symbol',source:AXIS_SOURCE,filter:['==',['get','kind'],'axis_gate'],minzoom:1,layout:{'text-field':'NORTH · AXIS · D5','text-size':11,'text-offset':[0,1.7],'text-anchor':'top','text-letter-spacing':0.12,'text-allow-overlap':true},paint:{'text-color':NORTH_ICE_BRIGHT,'text-halo-color':'#080b0b','text-halo-width':1.5}});
 }
 
 function setAxisVisible(map, visible) {
@@ -85,7 +85,7 @@ function installAxisToggle(map) {
   button.id = 'axisLayer';
   button.className = 'active';
   button.textContent = 'Axis';
-  button.title = `Toggle ${AXIS_ARC_DEGREES}° North / Axis polar bubble`;
+  button.title = `Toggle ${AXIS_ARC_DEGREES}° North / Axis D5 polar bubble`;
   worldButton?.insertAdjacentElement('beforebegin', button);
   let visible = true;
   const params = new URL(location.href).searchParams;
@@ -109,20 +109,20 @@ function installAxisInteractions(map) {
     const feature = event.features?.[0];
     if (!feature) return;
     const p = feature.properties || {};
-    popup.setLngLat(event.lngLat).setHTML(`<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · not a nation, border, territory, or physical feature</small></div>`).addTo(map);
+    popup.setLngLat(event.lngLat).setHTML(`<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`).addTo(map);
   };
   const leave = () => { map.getCanvas().style.cursor=''; popup.remove(); };
   [AXIS_FILL,AXIS_LINE,AXIS_GATE].forEach(layer => { map.on('mouseenter',layer,enter); map.on('mouseleave',layer,leave); });
 
   const openGate = () => {
     map.easeTo({center:[ARC_CENTER_LON,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:1100});
-    window.dispatchEvent(new CustomEvent('atlas-axis-open',{detail:{anchor:'north-axis-gate'}}));
-    if (window.__potatoAxisDepth?.setLevel) {
-      window.__potatoAxisDepth.setLevel(0,{silentCamera:true});
+    window.dispatchEvent(new CustomEvent('atlas-axis-open',{detail:{anchor:'north-axis-gate',dimension:5}}));
+    if (window.__potatoAxisDepth?.setDimension) {
+      window.__potatoAxisDepth.setDimension(5,{silentCamera:true});
       return;
     }
     const panel = document.getElementById('panel');
-    if (panel) panel.innerHTML = `<div class="eyebrow">Project-symbolic threshold</div><h1>North / Axis Gate</h1><p class="muted">An icy-blue translucent polar bubble shaped around a ${AXIS_ARC_DEGREES}° negative arc sits north of Greenland. This is the Earth-side threshold for the vertical Axis: spiral upward toward Garden / North of North, or downward through Roots of Ash toward Swamp / Subterrain.</p><div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary geography. The Axis depth system is project-symbolic and does not define physical altitude, underground geography, sovereignty, borders, territory, or empirical cosmology.</div>`;
+    if (panel) panel.innerHTML = `<div class="eyebrow">D5 · project-symbolic threshold</div><h1>North / Axis Gate</h1><p class="muted">The icy-blue polar bubble is D5: the first spiritual threshold above the ordinary D4 world map. The Door and Ladder meet here. The spiral continues upward toward North of North and downward through roots, Swamp and lower disintegration planes.</p><div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary D4 geography. D5–D11 and D1–D3 are project-symbolic navigation states, not physical dimensions, altitude, sovereignty, borders, territory, or empirical cosmology.</div>`;
   };
   map.on('click',AXIS_GATE,openGate);
   map.on('click',AXIS_FILL,openGate);
