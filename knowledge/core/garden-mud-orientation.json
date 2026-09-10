@@ -1,15 +1,16 @@
 {
   "id": "garden-mud-orientation",
   "title": "Garden and Mud — Two Orientations",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-10",
   "kind": "ethical-symbolic orientation model",
   "purpose": "Formalize a recurring Tim Dooley / Potato of Life contrast that cuts across theology, ethics, psychology, politics and storytelling: Garden versus Mud as orientations rather than fixed classes of people, while routing the newer Mud/Swamp/Debt/Mountain state model into the broader transformation architecture.",
   "epistemic_rule": "Garden and Mud are symbolic and ethical orientations in the Potatoverse. They should not be used to dehumanize people or to convert disagreement into proof that someone belongs to an inferior category.",
   "garden": {
     "orientation": "toward cultivation, connection and living order",
-    "traits": ["responsibility", "humility", "care", "relationship", "truth-seeking", "repair", "nourishment", "growth", "stewardship", "future-orientation", "capacity to self-correct"],
-    "question": "What conditions allow life, truth and relationship to grow here?"
+    "traits": ["responsibility", "humility", "care", "relationship", "truth-seeking", "repair", "nourishment", "growth", "stewardship", "future-orientation", "capacity to self-correct", "autonomous generativity"],
+    "question": "What conditions allow life, truth and relationship to grow here?",
+    "dependency_test": "A mature Garden increases the independent capability of what grows within it. If a center must keep everyone permanently dependent, orbiting, reactive or harvestable in order to remain important, the structure is becoming Farm-like rather than Garden-like."
   },
   "mud": {
     "orientation": "toward stuckness, fragmentation and repeated conflict when residue remains unprocessed",
@@ -21,19 +22,29 @@
   "state_relations": {
     "Mud": "residue or trace",
     "Swamp": "an environment formed when unresolved residue accumulates, overlaps and begins shaping later behavior",
-    "Debt": "a relationship-specific unresolved obligation attributed to past action or failed duty",
+    "Debt": "a relationship-specific unresolved obligation attributed to past action or failed duty; temporally, it is a past relation that still constrains future action",
     "Mountain": "many weighted memories, obligations and paths compressed into a more integrated structure from which perspective and judgment become possible",
-    "Door": "the transition at which a repeating relation can change regime",
+    "Door": "the transition at which a repeating relation can change regime through truth, choice, repair, release or demonstrated non-liability",
     "Garden": "the post-repair condition in which restored relations support autonomous future growth"
+  },
+  "memory_bifurcation": {
+    "unresolved": "past material that keeps returning without contextualization tends toward Swamp/recurrence",
+    "integrated": "past material that is sourced, distinguished and metabolized can become Soil/Root and support Mountain-level perspective",
+    "principle": "The goal is not forgetting. The goal is changing what memory does."
   },
   "two_repair_routes": {
     "early": "Mud -> provenance/context -> correction/repair -> Soil -> Root -> growth",
     "late": "Mud accumulation -> Swamp + unresolved obligation -> Debt -> integration/Mountain -> perspective -> Door -> repair/release -> Garden",
     "principle": "Resolve residue before it becomes structure. The project should not glorify maximal accumulation when earlier repair is possible."
   },
+  "repair_model": {
+    "definition": "Repair changes the state, weight or direction of a relationship rather than erasing the historical event.",
+    "strong_repair": "truth preserved + harmful mechanism stopped + relevant correction/restitution/change + restored agency + ability to leave the conflict",
+    "why_this_matters": "A system that can remember but cannot release becomes another archive of permanent debt. A system that releases by deleting truth becomes amnesia rather than repair."
+  },
   "movement": {
     "from_mud_to_garden": ["recognition", "responsibility", "choice", "provenance/context", "Door", "repair", "cultivation", "growth"],
-    "door_function": "The Door marks the point where repetition can become transformation.",
+    "door_function": "The Door marks the point where repetition can become transformation and where an open entanglement can change state.",
     "spiral_function": "The spiral represents revisiting the same problem at a different level of understanding rather than merely repeating the same circle.",
     "mountain_function": "Mountain integrates many differentiated traces toward perspective; it should not be confused with the Swamp that mixes them without stable footing.",
     "descent_after_summit": "Perspective is incomplete until it returns to the Plane/Garden as service, repair, protection or cultivation."
@@ -44,7 +55,8 @@
     "Politics: distinguish building resilient systems from maintaining identity through permanent enemies.",
     "Archive design: preserve criticism and contradiction in forms that can improve the model rather than burying them; contextualized residue can become Soil instead of Swamp.",
     "Theology: judgment should ideally orient toward transformation, not make condemnation the final state.",
-    "Karmic ledger: track specific unresolved edges and their repair state rather than converting all conflict into one irreversible global accusation."
+    "Karmic ledger: track specific unresolved edges and their repair state rather than converting all conflict into one irreversible global accusation.",
+    "Leadership: test whether a center produces stronger independent participants; if dependence itself is the product, the relation has drifted toward Farm/Shell rather than Garden/House."
   ],
   "ownership": {
     "this_file": "ethical orientation and transformation direction",
@@ -64,6 +76,7 @@
     "data/swamp/swamp-mud-debt-state-machine.json",
     "knowledge/core/mountain-debt-integration-and-release.json",
     "knowledge/core/karma-closure-reduction-and-settlement-model.json",
-    "knowledge/indexes/karma-shadow-integration-index.json"
+    "knowledge/indexes/karma-shadow-integration-index.json",
+    "knowledge/indexes/inference-ledger.json"
   ]
 }
