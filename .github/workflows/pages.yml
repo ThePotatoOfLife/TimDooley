@@ -36,6 +36,9 @@ jobs:
       - name: Validate 3D world atlas source contract
         run: python scripts/validate_world_map_3d.py
 
+      - name: Validate 3D relationship path finder
+        run: python scripts/validate_world_map_pathfinder.py
+
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
@@ -79,6 +82,7 @@ jobs:
           test -f _site/world-map/index.html
           test -f _site/world-map/3d.html
           test -f _site/world-map/3d-app.js
+          test -f _site/world-map/3d-pathfinder.js
           test -f _site/data/world-map-3d-runtime.json
           test -f _site/data/world-relational-map.json
           grep -q 'World Relational Atlas' _site/world-map/3d.html
@@ -86,6 +90,7 @@ jobs:
           grep -q 'id="relationType"' _site/world-map/3d.html
           grep -q 'id="traceDepth"' _site/world-map/3d.html
           grep -q 'src="./3d-app.js"' _site/world-map/3d.html
+          grep -q 'src="./3d-pathfinder.js"' _site/world-map/3d.html
           grep -q 'Trace · 3 hops' _site/world-map/3d.html
           grep -q 'function traceGraph' _site/world-map/3d-app.js
           grep -q 'visited.has(other)' _site/world-map/3d-app.js
@@ -97,6 +102,9 @@ jobs:
           grep -q 'function fitCodes' _site/world-map/3d-app.js
           grep -q 'fitBounds' _site/world-map/3d-app.js
           grep -q "searchParams.set('depth'" _site/world-map/3d-app.js
+          grep -q 'function shortestPath' _site/world-map/3d-pathfinder.js
+          grep -q "searchParams.set('path'" _site/world-map/3d-pathfinder.js
+          grep -q 'not necessarily the shortest or strongest relationship in the real world' _site/world-map/3d-pathfinder.js
 
           # Science is a compiled public product, not merely copied source files.
           test -f _site/science/index.html
