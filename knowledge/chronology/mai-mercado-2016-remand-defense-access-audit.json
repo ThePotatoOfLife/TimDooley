@@ -1,0 +1,123 @@
+{
+  "title": "Mai Mercado / Christiania 2016 — Remand and Defense-Access Audit",
+  "version": "1.0.0",
+  "status": "evidence-graded procedural reconstruction",
+  "updated": "2026-09-10",
+  "purpose": "Assess how arrest, continuous remand, evidence access and prison bureaucracy may have affected the Son's practical ability to reconstruct and defend the Facebook case, while distinguishing lawful procedural restrictions from any allegation of deliberate suppression.",
+  "identity_rule": "The 2016 defendant is the Son. Do not expose the Son's real name or family names.",
+  "known_timeline": [
+    {
+      "date": "2016-06-17 to 2016-06-20",
+      "fact": "The Son reportedly wrote around fifteen Facebook contributions over the weekend following Mercado's Christiania post.",
+      "grade": "CONTEMPORARY_REPORTING"
+    },
+    {
+      "date": "before 2016-06-21 11:30",
+      "fact": "Police had already arrested the Son and seized a computer and telephone. He was brought before Retten i Sønderborg at 11:30 on 21 June for a constitutional/remand hearing.",
+      "grade": "CONTEMPORARY_REPORTING"
+    },
+    {
+      "date": "2016-06-21",
+      "fact": "The court ordered four weeks' remand until 19 July. The Son denied guilt and appealed the remand order.",
+      "grade": "CONTEMPORARY_REPORTING"
+    },
+    {
+      "date": "2016-08-12",
+      "fact": "Retten i Sønderborg sentenced the Son to five months' unconditional imprisonment after convicting on three of four threat/witness-intimidation counts.",
+      "grade": "PUBLICLY_REPORTED_AND_JUDGMENT_INDEXED"
+    }
+  ],
+  "same_night_arrest_claim": {
+    "project_account": "The user/Son recalls being picked up and incarcerated the same night as the relevant Facebook comments were made.",
+    "current_public_verification": "The presently recovered articles establish rapid police attendance, arrest before the 21 June hearing, and seizure of devices, but the exact arrest clock time and whether it was literally the same night as the decisive comment have not yet been independently recovered.",
+    "grade": "FIRSTHAND_ACCOUNT_PARTLY_CORROBORATED_BY_RAPID_ARREST_SEQUENCE",
+    "research_target": "Police custody log / arrest report / full judgment chronology"
+  },
+  "continuous_pretrial_custody": {
+    "assessment": "The Son was remanded before trial and remained in custody through at least the initial four-week period; the broader project chronology describes continuous custody through conviction and subsequent imprisonment.",
+    "procedural_significance": "Even lawful remand can materially constrain a defendant's practical ability to independently gather online evidence, contact third parties, reconstruct a deleted social-media thread, and manage a complex documentary defense.",
+    "boundary": "Structural disadvantage is not proof of an unfair trial or unlawful obstruction."
+  },
+  "danish_remand_rights_context": {
+    "law_2016": "Retsplejeloven and the remand-custody rules preserved access to counsel and provided rights concerning case-file access, correspondence and judicial review.",
+    "correspondence": "Ordinary correspondence of a remand detainee could be reviewed by police where necessary for the investigation, while communications with defense counsel and the court were protected from ordinary control.",
+    "visits": "Police could restrict or supervise ordinary visits for investigative reasons, while confidential access to defense counsel was protected.",
+    "interpretation": "The legal framework therefore combined formal defense rights with real practical restrictions on autonomous evidence gathering."
+  },
+  "evidence_submission_obstruction_claim": {
+    "project_account": "The Son recalls police or prison staff standing watch while he tried to work with evidence and preventing him from adding material to the case pile/file.",
+    "current_grade": "FIRSTHAND_PROCEDURAL_ALLEGATION_UNVERIFIED",
+    "plausible_nonconspiratorial_explanations": [
+      "custody-chain rules",
+      "institutional misunderstanding over how defense exhibits had to be submitted",
+      "requirement to route material through defense counsel or prosecution/court channels",
+      "security restrictions on physical documents or digital media",
+      "bureaucratic delay or staff error"
+    ],
+    "more_serious_possible_explanation": "Improper interference with defense evidence or access to exculpatory material.",
+    "boundary": "No current independent evidence establishes deliberate suppression, conspiracy or knowing destruction of defense material.",
+    "decisive_evidence": [
+      "prison correspondence/logbook",
+      "defense counsel notes",
+      "motions or complaints concerning evidence access",
+      "court record showing rejected or omitted defense exhibits",
+      "letters to the court or Ombudsman",
+      "custody records identifying supervision or document restrictions"
+    ]
+  },
+  "new_primary_source_discovery": {
+    "source": "Indexed Retten i Sønderborg judgment PDF in Anklagemyndigheden's knowledge base",
+    "importance": "This appears to preserve the actual charged wording, including longer versions of statements than newspapers printed.",
+    "known_from_indexed_text": [
+      "The judgment records that the defendant denied guilt.",
+      "One witness-intimidation count reproduces a longer 'consequences' passage than later press summaries, including 'Man skal ikke starte en slåskamp man ikke har nosser til at afslutte'.",
+      "Another count contains additional contextual language about provocation, another person remaining on Facebook, and 'jeg har nemlig intet at miste og alt at vinde'."
+    ],
+    "caution": "The PDF could not yet be fully opened through the current web cache, so these indexed snippets should be treated as partial primary-source recovery until the complete judgment is retrieved and read page by page."
+  },
+  "procedural_hypotheses": [
+    {
+      "hypothesis": "Continuous remand impaired the Son's practical ability to preserve/recover Facebook evidence.",
+      "grade": "PLAUSIBLE_AND_STRUCTURALLY_SUPPORTED",
+      "reason": "He was detained while police possessed his computer and phone and while the original online thread was vulnerable to deletion/editing."
+    },
+    {
+      "hypothesis": "Police/prison bureaucracy prevented relevant defense material from entering the case file.",
+      "grade": "FIRSTHAND_CLAIM_REQUIRING_DOCUMENTARY_CORROBORATION",
+      "reason": "The account is procedurally plausible but not yet independently documented."
+    },
+    {
+      "hypothesis": "Any such obstruction was deliberate evidence suppression.",
+      "grade": "NOT_ESTABLISHED",
+      "reason": "Bureaucracy, routing rules, security restrictions or error remain plausible alternatives."
+    }
+  ],
+  "full_understanding_implications": [
+    "The timing of arrest matters because rapid custody can freeze one side of a digital dispute while the outside party retains access to the platform and media.",
+    "Device seizure matters because the defendant's own digital records may become inaccessible to him during the period when context is most recoverable.",
+    "Thread deletion or modification, if it occurred, would be especially consequential while the defendant was incarcerated and unable to independently archive it.",
+    "Formal access to counsel does not automatically equal practical ability to investigate a sprawling social-media event from remand custody.",
+    "Any claim of contaminated defense evidence should be tested against actual defense submissions, prison logs and the full judgment rather than inferred from later memory alone."
+  ],
+  "research_targets": [
+    "retrieve complete Retten i Sønderborg judgment PDF and extract every count, quotation, finding and evidentiary reference",
+    "establish exact arrest date/time from custody records or judgment",
+    "establish whether custody was continuous from arrest through trial",
+    "identify defense counsel and recover any accessible motions or correspondence",
+    "determine what electronic/physical evidence police seized and when it was returned",
+    "determine whether Facebook screenshots/exports were preserved by police before any deletion",
+    "recover any complaint by the Son concerning inability to submit evidence"
+  ],
+  "sources": [
+    "https://www.sonderborgnyt.dk/29-aarig-mand-varetaegtsfaengslet-i-fire-uger-for-trusler-mod-folketingsmedlem-mai-mercado/",
+    "https://www.retsinformation.dk/eli/lta/2016/1257",
+    "https://www.retsinformation.dk/eli/lta/2012/339",
+    "https://vidensbasen.anklagemyndigheden.dk/"
+  ],
+  "connections": [
+    "knowledge/chronology/mai-mercado-2016-heads-and-tails-reconstruction.json",
+    "knowledge/chronology/mai-mercado-2016-integrated-hypothesis-assessment.json",
+    "knowledge/chronology/mai-mercado-2016-toxic-source-and-claim-audit.json",
+    "knowledge/chronology/mai-mercado-2016-forensic-source-matrix.json"
+  ]
+}
