@@ -67,12 +67,12 @@ jobs:
         continue-on-error: true
         run: python scripts/audit_web.py
       - name: Upload web audit diagnostics
-        if: always()
+        if: ${{ always() && hashFiles('audit-web-report.txt') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: web-audit-report
           path: audit-web-report.txt
-          if-no-files-found: error
+          if-no-files-found: warn
           retention-days: 7
       - name: Enforce web audit gate
         if: steps.audit_web.outcome == 'failure'
