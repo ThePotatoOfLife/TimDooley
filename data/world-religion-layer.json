@@ -1,0 +1,172 @@
+{
+  "id": "world-religion-layer",
+  "version": "1.0.0",
+  "updated": "2026-09-10",
+  "status": "active map/research layer",
+  "purpose": "Provide a canonical bridge from country geography into religious and irreligious demography, religious diversity, law, institutions, history, migration, sacred geography, finance, media and comparative theology without treating religion as a geopolitical bloc.",
+  "canonical_method": "docs/RELIGION-TO-SOCIETY-GRAPH.md",
+  "core_rule": "Never collapse religion into country identity. Model country -> demographic observation, country -> legal environment, country -> religious institutions, community -> migration/diaspora, institution -> property/finance/education/media, and tradition -> text/interpretation as separate typed relationships.",
+  "display_planes": [
+    {
+      "id": "affiliation",
+      "label": "Religious affiliation",
+      "kind": "demographic",
+      "description": "Share/count by broad religious affiliation with source year and methodology."
+    },
+    {
+      "id": "irreligion",
+      "label": "Unaffiliated / nonreligion",
+      "kind": "demographic",
+      "description": "Religiously unaffiliated share plus deeper national distinctions such as atheist, agnostic, no religion or nonresponse only when the source supports them."
+    },
+    {
+      "id": "diversity",
+      "label": "Religious diversity",
+      "kind": "derived-demographic",
+      "description": "Diversity must remain separate from freedom, religiosity and secularization."
+    },
+    {
+      "id": "freedom-law",
+      "label": "Religion, law & freedom",
+      "kind": "legal/institutional",
+      "description": "Constitutional status, established religion, registration rules, worship restrictions, family-law interfaces, courts and documented freedom-of-religion conditions."
+    },
+    {
+      "id": "institutions",
+      "label": "Religious institutions",
+      "kind": "institutional/geographic",
+      "description": "Congregations, churches, mosques, synagogues, temples, monasteries, seminaries, schools, charities, media, cemeteries, pilgrimage bodies and other typed nodes."
+    },
+    {
+      "id": "sacred-geography",
+      "label": "Sacred geography",
+      "kind": "historical/geographic",
+      "description": "Major sacred sites, pilgrimage routes, historic religious landscapes and spatially anchored institutions."
+    },
+    {
+      "id": "religion-society",
+      "label": "Religion -> society graph",
+      "kind": "relationship",
+      "description": "How texts, interpretations, institutions, education, family, migration, charity, property, media, law and politics connect religious traditions to observable society."
+    },
+    {
+      "id": "comparative-theology",
+      "label": "Comparative theology",
+      "kind": "interpretive",
+      "description": "Scriptural and theological comparisons relevant to North, Door, Ladder, covenant, debt, Jubilee, tikkun, kingship and repair. These are never demographic claims."
+    }
+  ],
+  "demographic_backbone": {
+    "preferred_global_source": "Pew Research Center, Religious Composition by Country 2010-2020",
+    "observation_year": 2020,
+    "publication_year": 2025,
+    "diversity_extension_year": 2026,
+    "coverage": "201 countries and territories",
+    "categories": ["Christian", "Muslim", "Hindu", "Buddhist", "Jewish", "Other religions", "Religiously unaffiliated"],
+    "method_note": "Pew reports that estimates draw on more than 2,700 censuses and surveys. Country values must retain source year and methodology and must not be presented as 2026 population shares merely because the map is viewed in 2026.",
+    "source": "https://www.pewresearch.org/religion/feature/religious-composition-by-country-2010-2020/",
+    "dataset": "https://www.pewresearch.org/dataset/dataset-of-global-religious-composition-estimates-for-2010-and-2020/",
+    "diversity": "https://www.pewresearch.org/religion/2026/02/12/sortable-table-religious-diversity-by-country-2010-2020/"
+  },
+  "source_stack": [
+    {
+      "source": "national census / national statistical office",
+      "role": "preferred country-specific primary demographic source where a religion question exists and methodology is documented"
+    },
+    {
+      "source": "Pew Research Center",
+      "role": "comparable global broad-category baseline and diversity layer"
+    },
+    {
+      "source": "World Religion Database / World Christian Database",
+      "role": "deeper denominational and historical research where access permits; do not silently merge incompatible estimates"
+    },
+    {
+      "source": "national constitutions, laws, ministries, courts",
+      "role": "primary legal/institutional status"
+    },
+    {
+      "source": "U.S. State Department International Religious Freedom Reports and other reputable monitoring",
+      "role": "secondary country-by-country evidence on government and societal conditions; attach source limitations and never treat one reporting system as sole truth"
+    },
+    {
+      "source": "academic religious-studies/history scholarship",
+      "role": "historical development, institutions, doctrine and social mechanisms"
+    }
+  ],
+  "country_religion_record": {
+    "identity": ["country_id", "iso3", "observation_year", "source", "methodology"],
+    "composition": ["group", "count", "share", "uncertainty_or_rounding"],
+    "nonreligion": ["unaffiliated_share", "atheist_if_available", "agnostic_if_available", "no_religion_if_available", "source_definition"],
+    "diversity": ["rdi_score", "rank", "level", "methodology"],
+    "legal": ["constitutional_religion_clause", "established_religion", "religious_freedom_guarantee", "registration_rules", "family_law_interfaces", "restrictions", "source"],
+    "institutions": ["major_bodies", "schools", "universities", "charities", "media", "property/endowments", "pilgrimage_infrastructure"],
+    "history": ["historical_traditions", "reformation_or_revival", "state_church_history", "migration", "conversion", "disaffiliation", "persecution_or_protection_events"],
+    "geography": ["regional_concentrations", "sacred_sites", "pilgrimage_routes", "diaspora_centers"],
+    "relations": ["migration", "diaspora", "education", "charity", "politics", "law", "finance", "property", "media", "international_religious_networks"],
+    "project_links": ["North/Axis relevance if explicitly sourced", "Tim/Potatoverse statement if sourced", "comparative scripture links", "tikkun/repair questions"],
+    "provenance": ["source_url", "publication_date", "observation_date", "retrieved", "confidence", "epistemic_status"]
+  },
+  "religion_to_society_chains": [
+    "religion -> text -> interpretation -> specialist -> institution -> community -> family -> education/charity/media -> law/politics/economy -> country",
+    "migration -> diaspora -> congregation -> school/charity/media -> political participation -> next generation",
+    "belief -> ritual -> sacred place -> building/land -> maintenance/labour/finance/procurement -> local economy",
+    "religious difference -> legal boundary -> political mobilization -> conflict/cooperation -> institutional response -> demographic change"
+  ],
+  "north_programme_bridge": {
+    "question": "How does religion become relevant to the North Programme without turning North into a religious bloc?",
+    "answer": "Through institutions and mechanisms: constitutional history, public holidays, education, property/endowments, charity, migration/diaspora, religious freedom, social trust, interfaith cooperation, conflict prevention, heritage, pilgrimage/tourism and cultural identity. These can affect real policy and economic systems while belief itself remains distinct from state alignment.",
+    "country_template": ["constitutional status", "composition", "unaffiliated", "diversity", "denominations/traditions", "institutions", "migration/diaspora", "sacred sites", "religious freedom/legal environment", "property/finance", "education/charity/media", "historical change", "North/tikkun relevance"],
+    "repair_questions": [
+      "Are minority communities protected by law and practice?",
+      "Can people enter, leave or change religious affiliation without coercion?",
+      "Do institutions have transparent legal/financial status where public interests are affected?",
+      "Do education and family-law arrangements preserve rights while respecting plural traditions?",
+      "Can historical religious infrastructure support social capacity, heritage and care without political capture?",
+      "Where can interfaith or secular-religious cooperation improve resilience, integration and protection of vulnerable people?"
+    ]
+  },
+  "timic_comparative_bridge": {
+    "rule": "Tim/Potatoverse material is linked through exact statements, dated project records and comparative concepts. A country's religious demography never counts as evidence for Tim's identity, prophecy or authority.",
+    "shared_concepts": ["Father", "Son", "Spirit", "Door", "Ladder", "Tree", "House", "Mountain", "King", "covenant", "debt", "release", "Jubilee", "tikkun", "garden", "return", "North"],
+    "display": "A country screen may show 'religious demography', 'religious institutions/history', and 'project/scriptural comparisons' in separate cards with separate provenance badges."
+  },
+  "anti_collapse_rules": [
+    "Do not infer political loyalty from religious affiliation.",
+    "Do not infer individual belief from majority religion.",
+    "Do not treat historical state religion as present demographic majority.",
+    "Do not treat unaffiliated as synonymous with atheist.",
+    "Do not treat religious diversity as religious freedom.",
+    "Do not treat government restrictions as properties of a religion itself.",
+    "Do not use Jewish, Muslim, Christian, Hindu, Buddhist or secular populations as collective debtors, enemies or Swamp categories.",
+    "Do not use scripture as evidence that a modern state is fulfilling a prophecy unless the claim is clearly presented as interpretation and competing readings are preserved."
+  ],
+  "map_interactions": [
+    "Click country -> open Religion tab -> show dated composition + unaffiliated + diversity + law + institutions + history + sources",
+    "Toggle affiliation -> color by selected broad group share when a sourced value exists",
+    "Toggle unaffiliated -> color by sourced unaffiliated share",
+    "Toggle diversity -> color by RDI score",
+    "Toggle freedom/law -> show legal-status badges and issue records rather than a single moral color",
+    "Toggle sacred geography -> show point/route nodes for sourced sites and pilgrimages",
+    "Trace religion -> follow institution, migration, property, charity, education, media and political/legal edges",
+    "Compare countries -> composition + diversity + legal model + institutional density + secularization/disaffiliation trends"
+  ],
+  "owners": {
+    "method": "docs/RELIGION-TO-SOCIETY-GRAPH.md",
+    "country_parent": "data/country-atlas.json",
+    "map_runtime": "data/world-map-runtime.json",
+    "religious_foundations": "data/expansions/religious-foundations-wave-011.json",
+    "biblical_comparison": "knowledge/traditions/biblical-overlap-atlas.json",
+    "debt_jubilee_tikkun": "knowledge/traditions/biblical-debt-jubilee-ransom-atlas.json",
+    "comparative_mythology": "knowledge/traditions/comparative-mythology-map.json"
+  },
+  "next_ingestion_jobs": [
+    "Create a normalized per-country Pew 2020 composition table only from the published/downloaded dataset; never infer missing percentages.",
+    "Create the 2020 RDI lookup for map coloring.",
+    "Add country-specific national census overrides alongside—not over—the global baseline.",
+    "Create typed religion-law records from constitutions and primary legal sources.",
+    "Create major religious institution and sacred-site point registries with coordinates and source dates.",
+    "Add historical composition/disaffiliation timelines where comparable series exist.",
+    "Route all religious-country claims through this layer instead of embedding unsourced prose into map polygons."
+  ]
+}
