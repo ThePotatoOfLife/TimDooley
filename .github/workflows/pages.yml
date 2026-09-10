@@ -36,7 +36,7 @@ jobs:
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
-      - name: Compile complete science catalog
+      - name: Compile complete science page
         run: python scripts/build_science_catalog.py
 
       - name: Build search discovery layer
@@ -48,7 +48,7 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
-      - name: Verify manifest-driven archive, science hub, Tim ontology, and discovery layer
+      - name: Verify manifest-driven archive, science page, Tim ontology, and discovery layer
         shell: bash
         run: |
           set -euxo pipefail
@@ -72,29 +72,33 @@ jobs:
           test -f _site/sitemap-index.xml
           test -f _site/sitemap-questions.xml
 
-          # Science is a compiled public product, not merely copied source files.
+          # /science/ is the single compiled public science product.
           test -f _site/science/index.html
           test -f _site/science/science.css
-          test -f _site/science/science-hub.css
           test -f _site/science/science.js
           test -f _site/science/catalog.json
-          test -f _site/science/catalog/index.html
-          grep -q 'SCIENCE' _site/science/index.html
-          grep -q 'Unified Potato Theory' _site/science/index.html
-          grep -q 'Every canonical science record' _site/science/index.html
+          test ! -f _site/science/catalog/index.html
+          test ! -f _site/science/science-hub.css
+          grep -q '<h1>Science</h1>' _site/science/index.html
+          grep -q 'The developed science programme' _site/science/index.html
+          grep -q 'The complete science collection' _site/science/index.html
           grep -q 'catalog-card' _site/science/index.html
           grep -q 'science.js' _site/science/index.html
+          ! grep -Eq 'Canvas(Text)?' _site/science/science.css
           python - <<'PY'
           import json
           from pathlib import Path
           source = sorted((Path('knowledge') / 'science').glob('*.json'))
+          registry = json.loads(Path('knowledge/science/science-model-registry.json').read_text(encoding='utf-8'))
           catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
+          page = Path('_site/science/index.html').read_text(encoding='utf-8')
           assert catalog['count'] == len(source), (catalog['count'], len(source))
           assert len(catalog['records']) == len(source)
-          page = Path('_site/science/index.html').read_text(encoding='utf-8')
           assert page.count('class="catalog-card"') == len(source)
-          assert 'r(θ) = a e<sup>bθ</sup>' in page
-          print(f"Verified compiled science corpus: {len(source)} records")
+          assert len(registry.get('models', [])) >= 10
+          assert 'id="model-list"' in page and 'id="model-view"' in page
+          assert 'SCIENCE ATLAS' not in page.upper()
+          print(f"Verified /science/: {len(registry['models'])} models, {len(source)} records")
           PY
 
           grep -q 'id="branches"' _site/index.html
