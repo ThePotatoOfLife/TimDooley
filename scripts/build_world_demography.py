@@ -38,7 +38,7 @@ RELIGIONS = {
     "other_religions": "other_religions",
     "unaffiliated": "unaffiliated",
 }
-USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.1"
+USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.2"
 
 
 def fetch_text(url: str, timeout: int = 180) -> str:
@@ -136,6 +136,12 @@ def owid_religion(slug: str) -> dict[str, float]:
     return out
 
 
+def derive_unaffiliated_from_any_religion() -> dict[str, float]:
+    """Pew's seven categories are exhaustive, so unaffiliated = 100 - any religion."""
+    affiliated = owid_religion("any_religion")
+    return {code: round(max(0.0, min(100.0, 100.0 - share)), 2) for code, share in affiliated.items()}
+
+
 def main() -> int:
     index = json.loads(INDEX.read_text(encoding="utf-8"))
     countries = index.get("countries", [])
@@ -152,12 +158,22 @@ def main() -> int:
 
     religion_by_group = {}
     religion_errors = []
+    religion_fallbacks = []
     for key, slug in RELIGIONS.items():
         try:
             religion_by_group[key] = owid_religion(slug)
         except Exception as exc:
             religion_errors.append(f"{key}: {exc}")
             religion_by_group[key] = {}
+
+    if len(religion_by_group.get("unaffiliated", {})) < 150:
+        try:
+            religion_by_group["unaffiliated"] = derive_unaffiliated_from_any_religion()
+            religion_fallbacks.append(
+                "unaffiliated derived as 100 minus Pew/OWID share affiliated with any religion after direct unaffiliated endpoint failure"
+            )
+        except Exception as exc:
+            religion_errors.append(f"unaffiliated complement fallback: {exc}")
 
     rows = {}
     for country in countries:
@@ -180,28 +196,36 @@ def main() -> int:
                 "source_url": "https://ourworldindata.org/grapher/religious-composition",
                 "original_source_url": "https://www.pewresearch.org/dataset/dataset-of-global-religious-composition-estimates-for-2010-and-2020/",
                 "classification_note": "Unaffiliated includes people who identify with no religion, including atheists and agnostics; this global dataset does not split those categories separately.",
+                "derivation_note": (
+                    "Unaffiliated was derived as 100 minus the share affiliated with any religion when the direct unaffiliated endpoint was unavailable."
+                    if religion_fallbacks else None
+                ),
             }
         rows[code] = row
 
     pop_coverage = sum(1 for row in rows.values() if row.get("population", {}).get("value") is not None)
-    religion_coverage = sum(1 for row in rows.values() if len(row.get("religion", {}).get("composition", {})) >= 6)
+    religion_coverage = sum(1 for row in rows.values() if len(row.get("religion", {}).get("composition", {})) == 7)
     if pop_coverage < 150:
         raise RuntimeError(f"Population coverage too low: {pop_coverage}")
     if religion_coverage < 150:
-        raise RuntimeError(f"Religion coverage too low: {religion_coverage}; errors={religion_errors}")
+        raise RuntimeError(
+            f"Complete seven-category religion coverage too low: {religion_coverage}; errors={religion_errors}"
+        )
 
     payload = {
-        "version": "1.1.0",
+        "version": "1.2.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-demography-runtime",
         "scope": "Presentation/runtime snapshot; canonical country records remain the source owners for their own sourced observations.",
         "population_coverage": pop_coverage,
         "religion_coverage": religion_coverage,
+        "religion_coverage_definition": "countries with all seven mutually exclusive Pew religious-identity categories",
         "religion_categories": list(RELIGIONS.keys()),
         "religion_reference_year": 2020,
         "religion_method": "Seven mutually exclusive identity categories from Pew Research Center's Global Religious Composition Estimates, surfaced through Our World in Data.",
         "population_fallback": "UN World Population Prospects 2024 (2023 estimates), processed by Our World in Data",
         "religion_errors": religion_errors,
+        "religion_fallbacks": religion_fallbacks,
         "countries": rows,
     }
     OUT.parent.mkdir(parents=True, exist_ok=True)
@@ -211,6 +235,7 @@ def main() -> int:
         "population_coverage": pop_coverage,
         "religion_coverage": religion_coverage,
         "religion_errors": religion_errors,
+        "religion_fallbacks": religion_fallbacks,
     }, indent=2), flush=True)
     return 0
 
