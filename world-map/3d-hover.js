@@ -9,6 +9,7 @@ const GEO_PRIMARY = 'https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/cou
 const GEO_FALLBACK = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json';
 const REST_LOCAL = '../data/rest-countries-runtime.json';
 const REST_PREFIX = 'https://restcountries.com/v3.1/all';
+const COUNTRY_FACTS_URL = '../data/world-country-facts.json';
 
 async function fetchJsonResponse(url, options) {
   const response = await nativeFetch(url, options);
@@ -104,6 +105,14 @@ try {
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('World atlas map instance was not captured.');
 
+try {
+  const response = await fetchJsonResponse(COUNTRY_FACTS_URL);
+  window.__potatoAtlasCountryFacts = await response.json();
+} catch (error) {
+  window.__potatoAtlasCountryFacts = { countries: {} };
+  console.warn('Local country facts snapshot unavailable; hover will use renderer fallbacks.', error);
+}
+
 const number = value => value == null || Number.isNaN(Number(value))
   ? '—'
   : new Intl.NumberFormat('en', { maximumFractionDigits: 0 }).format(Number(value));
@@ -112,7 +121,7 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
 }[char]));
 
-const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: '280px' });
+const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: '300px' });
 
 function pointFromWkt(wkt) {
   const match = String(wkt || '').match(/Point\(([-\d.]+)\s+([-\d.]+)\)/i);
@@ -160,13 +169,17 @@ SELECT ?iso3 ?capital ?capitalLabel ?coord ?population WHERE {
 function countryHtml(properties) {
   const code = String(properties.iso3 || properties.cca3 || properties.ISO_A3 || properties.id || '').toUpperCase();
   const demography = code ? window.__potatoAtlasDemography?.countries?.[code] : null;
+  const facts = code ? window.__potatoAtlasCountryFacts?.countries?.[code] : null;
   const population = demography?.population?.value ?? properties.population;
   const populationYear = demography?.population?.year;
-  const name = demography?.name || properties.name || properties.NAME || properties.ADMIN || code || 'Country';
-  const capital = properties.capital || '—';
-  const region = [properties.region, properties.subregion].filter(Boolean).join(' · ') || '—';
+  const name = facts?.name || demography?.name || properties.name || properties.NAME || properties.ADMIN || code || 'Country';
+  const capital = facts?.capital || properties.capital || '—';
+  const area = facts?.area_km2 ?? properties.area;
+  const region = [facts?.region || facts?.continent || properties.region, facts?.subregion || properties.subregion].filter(Boolean).join(' · ') || '—';
+  const currency = facts?.currency;
   const yearText = populationYear ? ` <span class="muted">(${escapeHtml(populationYear)})</span>` : '';
-  return `<div class="atlas-hover"><b>${escapeHtml(name)}</b><div>Population: ${number(population)}${yearText}</div><div>Capital: ${escapeHtml(capital)}</div><div>Area: ${number(properties.area)} km²</div><div>${escapeHtml(region)}</div></div>`;
+  const currencyText = currency ? `<div>Currency: ${escapeHtml(currency)}</div>` : '';
+  return `<div class="atlas-hover"><b>${escapeHtml(name)}</b><div>Population: ${number(population)}${yearText}</div><div>Capital: ${escapeHtml(capital)}</div><div>Area: ${number(area)} km²</div><div>${escapeHtml(region)}</div>${currencyText}</div>`;
 }
 
 function capitalHtml(properties) {
