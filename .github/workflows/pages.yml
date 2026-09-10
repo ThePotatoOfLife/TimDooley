@@ -39,6 +39,9 @@ jobs:
       - name: Validate Atlas projection and time contracts
         run: python scripts/validate_atlas_view_contracts.py
 
+      - name: Validate Atlas mathematical calibration
+        run: python scripts/validate_atlas_math_calibration.py
+
       - name: Validate 3D world atlas source contract
         run: python scripts/validate_world_map_3d.py
 
