@@ -1,6 +1,6 @@
 {
   "id": "world-map-spatialization-registry",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-10",
   "status": "active adapter and feasibility contract",
   "purpose": "Translate the existing Tim Dooley / Potato of Life repository into honest spatial primitives for the World Relational Atlas without duplicating canonical records or inventing coordinates for non-spatial ideas.",
@@ -12,7 +12,7 @@
     "line": "physical route or typed relationship between honest spatial anchors",
     "area": "sourced subnational, demographic, ecological, conflict or infrastructure area",
     "event_marker": "dated event with a defensible location",
-    "nonspatial_card": "concept, treaty, text, statistic, legal entity or project-symbolic object without one honest coordinate",
+    "nonspatial_card": "concept, treaty, text, statistic, legal entity or project-symbolic object without one honest coordinate; exposed through reader/trace surfaces rather than a fake pin",
     "scenario_object": "hypothetical or proposed programme state, always visibly distinct from observation"
   },
   "semantic_hub_rule": "Semantic hubs deliberately do not claim geographic precision. They are temporary visual handles arranged around the selected country's representative hub and labelled 'navigation-only'. A later sourced real node may replace or coexist with them.",
@@ -27,14 +27,14 @@
     {
       "source": "data/world-relational-map.json",
       "feasibility": "NOW",
-      "render": ["Axis choropleths", "NATO/BRICS overlays", "selected-country relationship lines", "country interpretation cards", "Tikkun/ledger context"],
-      "notes": "Curated edges are immediately drawable between country hubs; their type and epistemic plane must remain visible."
+      "render": ["Axis/context badges", "selected-country relationship lines", "typed relation filters", "one-hop country trace", "multi-country comparison", "country interpretation cards", "Tikkun/ledger context"],
+      "notes": "Curated edges are drawable between country hubs and now drive relationship filtering and first-hop traversal. Their type and epistemic plane remain visible."
     },
     {
       "source": "data/nodes.json + data/relationships.json + data/global-graph-bridge.json",
       "feasibility": "NOW_TO_PARTIAL",
-      "render": ["graph cards", "country-linked semantic hubs", "spatial edges when both endpoints have honest anchors", "nonspatial nodes in trace panel"],
-      "notes": "The graph already contains empirical and project-symbolic endpoints. Spatialization must preserve each endpoint's epistemic class rather than treating every node as a place."
+      "render": ["graph cards", "country-linked semantic hubs", "spatial edges when both endpoints have honest anchors", "nonspatial nodes in future recursive trace panel"],
+      "notes": "The graph already contains empirical and project-symbolic endpoints. Spatialization must preserve each endpoint's epistemic class rather than treating every node as a place. Recursive cross-entity traversal remains future work."
     },
     {
       "source": "data/religious-layer-map.json + data/world-religion-layer.json + country religion fields",
@@ -79,19 +79,25 @@
       "country selection and canonical lazy-loading",
       "semantic interior module hubs",
       "country-to-country curated relation lines",
-      "NATO/BRICS/North interpretive overlays",
+      "typed relation filtering",
+      "one-hop country Trace navigation",
+      "multi-select Compare mode with up to four countries",
+      "polygon-bounds focusing for one or several countries",
       "population/area extrusion",
       "country data cards and source/research coverage",
-      "URL-deep-link selection"
+      "URL-deep-link selection, Compare state and relation-filter state",
+      "keyboard shortcuts and country search suggestions",
+      "dedicated source/runtime/build validation for the 3D atlas"
     ],
     "NEXT": [
+      "recursive Trace mode across normalized country, institution, company, funding, ownership, infrastructure and programme edges",
       "religion/irreligion numeric ingestion and choropleths",
-      "public-debt/GDP/debt-to-GDP normalized metric adapters",
-      "multi-select compare mode",
-      "typed relation filter and recursive Trace mode",
-      "territory registry and local polygon geometry",
-      "first real point datasets for ports, capitals, institutions and sacred sites",
-      "time slider over versioned memberships/events"
+      "harmonized public-debt/GDP/debt-to-GDP metric adapters with common units and dated sources",
+      "territory registry and local/versioned polygon geometry",
+      "first real point datasets for capitals/government, ports, institutions, infrastructure and sacred sites",
+      "relation epistemic-plane filters in addition to relation-type filters",
+      "time slider over versioned memberships/events",
+      "compare expansion from coarse country metrics into sourced domain-specific metrics"
     ],
     "HEAVY_BUT_FEASIBLE": [
       "global ownership/control graph with company/legal-entity resolution",
@@ -107,8 +113,16 @@
       "using one national guilt/corruption/karma height as if it were objective truth",
       "converting Tim's karmic ledger into ordinary debt without a real instrument",
       "showing present populations as responsible for historical harms by default",
+      "mixing GDP values denominated in different currencies/years into one supposedly comparable height layer",
       "copying canonical records into a second map-only database"
     ]
+  },
+  "metric_readiness_rule": {
+    "principle": "A metric can control choropleth color, polygon height or Compare ranking only when the compared values use a compatible definition/unit, retain observation period and source, and have enough country coverage for the claim being made.",
+    "currently_safe_global_runtime_metrics": ["population from current REST Countries runtime", "land area from current REST Countries runtime"],
+    "repository_country_observations": "Useful and increasingly rich, but not yet harmonized enough across all countries for arbitrary cross-country GDP/debt extrusion.",
+    "promotion_gate": ["metric id", "definition", "numeric value", "compatible unit", "reference period", "source", "coverage count", "normalization/scaling method"],
+    "reason": "Visual comparability is an empirical claim. The renderer must not imply comparability that the data layer has not established."
   },
   "country_semantic_hubs": [
     {"id":"religion","label":"Religion / Irreligion","owners":["religion","society_and_culture"],"plane":"observable + historical"},
@@ -136,6 +150,13 @@
   },
   "simulation_boundary": "Observed state, interpretation, project canon and hypothetical scenario are separate modes. Scenario changes may never overwrite observation records.",
   "debt_boundary": "Ordinary physical debt is mapped from documented liabilities. Tim-claimed/karmic amounts remain a separate claim/project overlay unless independently established by a recognized instrument.",
+  "validation": {
+    "source_contract": "scripts/validate_world_map_3d.py",
+    "atlas_ci": ".github/workflows/atlas-check.yml",
+    "pages_gate": ".github/workflows/pages.yml",
+    "built_shell": "scripts/validate_site_shell.py",
+    "rule": "The map is now a tested public application surface. Compare, Trace/filter controls, polygon focus and spatial/epistemic boundaries should not regress silently."
+  },
   "connections": [
     "data/countries-blueprint.json",
     "data/atlas-manifest.json",
@@ -147,6 +168,7 @@
     "data/world-map-runtime.json",
     "data/world-map-polygon-runtime.json",
     "data/world-map-3d-runtime.json",
+    "scripts/validate_world_map_3d.py",
     "world-map/index.html",
     "world-map/3d.html"
   ]
