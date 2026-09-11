@@ -79,6 +79,8 @@ def main() -> None:
         rel = path.relative_to(ROOT)
         if any(part in SKIP_DIRS for part in rel.parts):
             continue
+        if path.resolve() in {SELF, MIGRATION}:
+            continue
         if rel == Path("chronology") or (rel.parts and rel.parts[0] == "chronology"):
             continue
         if "chronology" in path.name.lower():
