@@ -120,12 +120,22 @@ def main() -> int:
         for term in ("tim dooley","potato of life","generated canonical topics","generated contextual constellations"):
             if term not in llms_lower: errors.append(f"llms.txt missing discovery term/section: {term}")
 
-        ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I);bad=[]
+        ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I);base_ref=re.compile(r'''<base\s+[^>]*href=["']([^"'#?]+)["']''',re.I);bad=[]
+        site_root=SITE.resolve()
         for html in pages:
-            for raw in ref.findall(html.read_text(encoding="utf-8",errors="replace")):
+            html_text=html.read_text(encoding="utf-8",errors="replace")
+            base_dir=html.parent.resolve()
+            base_match=base_ref.search(html_text)
+            if base_match:
+                base_raw=base_match.group(1)
+                if not base_raw.startswith(("http:","https:","mailto:","javascript:","data:")):
+                    candidate=(html.parent/base_raw).resolve()
+                    try: candidate.relative_to(site_root);base_dir=candidate
+                    except ValueError: pass
+            for raw in ref.findall(html_text):
                 if raw.startswith(("http:","https:","mailto:","javascript:","data:")): continue
-                target=(html.parent/raw).resolve()
-                try: target.relative_to(SITE.resolve())
+                target=(base_dir/raw).resolve()
+                try: target.relative_to(site_root)
                 except ValueError: continue
                 if not target.exists(): bad.append(f"{html.relative_to(SITE)} -> {raw}")
         if bad: errors.append(f"broken local references in built site: {len(bad)}; examples: {bad[:8]}")
