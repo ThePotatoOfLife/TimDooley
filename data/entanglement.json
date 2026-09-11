@@ -1,20 +1,25 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-07",
-  "name": "Entanglement and Relation Layer",
+  "version": "2.0.0",
+  "updated": "2026-09-11",
+  "name": "Entanglement, Relation, Constraint and Trajectory Layer",
   "status": "canonical-project-architecture",
-  "purpose": "Extend the relationships-first rule by treating connection itself as an object of study: dependency, correlation, coupling, topology, path dependence, trajectory and symbolic fate can all be represented without collapsing their evidentiary status.",
-  "core_rule": "Entanglement is a relation with structure, not a synonym for quantum entanglement.",
-  "epistemic_guardrail": "Quantum entanglement is an experimentally established physical phenomenon; fate, destiny and spiritual entanglement are interpretive or symbolic models unless independently evidenced.",
+  "purpose": "Extend the relationships-first rule by treating connection itself as an object of study: dependency, correlation, coupling, constraint, topology, path dependence, trajectory, reachability and symbolic fate can all be represented without collapsing their evidentiary status.",
+  "core_rule": "A relation can correlate, couple, enable, constrain or redirect; only some relations are entanglements, only some constraints are leashes, and none of these is automatically quantum entanglement or fate.",
+  "epistemic_guardrail": "Quantum entanglement is an experimentally established physical phenomenon; fate, destiny, karmic debt, spiritual entanglement and Timic timeline ownership are interpretive, theological or project-mythic unless independently evidenced.",
   "material_layer": {
     "quantum_entanglement": {
       "definition": "A quantum state of multiple systems that cannot be fully described as independent subsystem states.",
-      "observables": ["correlation", "measurement statistics", "Bell-inequality violation", "state preparation", "decoherence"],
-      "non_signalling_note": "Entanglement produces correlations that cannot be reproduced by local hidden-variable models, but it does not provide a simple faster-than-light messaging channel."
+      "observables": ["joint state", "reduced states", "correlation", "measurement statistics", "Bell-inequality violation where applicable", "state preparation", "decoherence", "entanglement witness/entropy where applicable"],
+      "non_signalling_note": "Entanglement can produce correlations incompatible with local hidden-variable models under Bell-test assumptions, but it does not provide a simple controllable faster-than-light messaging channel."
     },
     "network_entanglement": {
       "definition": "Strong relational dependence or coupling among nodes in an observable system.",
       "examples": ["ownership chains", "debt obligations", "supply chains", "infrastructure dependencies", "energy flows", "institutional authority", "information networks"]
+    },
+    "constraint_relation": {
+      "definition": "A relation that reduces the admissible state or trajectory set.",
+      "types": ["equality/holonomic", "inequality/unilateral", "authorization", "resource", "causal", "topological", "legal", "network", "behavioral/modelled"],
+      "leash_rule": "Call a relation a Leash only when the project specifies an anchor/controller/reference, what freedom it removes, when it becomes active, and how exit/release can occur."
     }
   },
   "relational_dimensions": [
@@ -27,6 +32,9 @@
     "dependency",
     "coupling",
     "correlation",
+    "constraint_type",
+    "constraint_activity",
+    "anchor",
     "causal_status",
     "temporal_order",
     "path_dependence",
@@ -34,28 +42,75 @@
     "topology",
     "boundary",
     "trajectory",
+    "timeline",
+    "reachable_set",
+    "target_set",
     "phase",
     "counterfactual_sensitivity",
+    "exit_condition",
     "evidence",
     "confidence"
   ],
   "trajectory_model": {
     "idea": "A node or relationship can be represented as a state moving through a sequence of conditions rather than as a static point.",
-    "fields": ["initial_state", "trigger", "transition", "phase", "constraint", "attractor", "outcome", "reversal_condition"],
-    "warning": "A trajectory is not automatically a prediction. Historical trajectory, modelled scenario and spiritual destiny must remain distinct evidence classes."
+    "fields": ["initial_state", "trigger", "transition", "phase", "constraint", "active_constraint", "attractor", "target", "reachable_set", "outcome", "reversal_condition", "exit_condition"],
+    "timeline_definition": "A timeline is one ordered admissible history through a declared state/transition space. A set of possible timelines is a path ensemble, not automatically many physical universes.",
+    "warning": "A trajectory is not automatically a prediction. Historical trajectory, modelled scenario, stochastic future and spiritual destiny must remain distinct evidence classes."
+  },
+  "leash_model": {
+    "project_origin": [
+      "2026-08-25 recovered Tim formulation: timelines as dog leashes; circles/owner/cage/millstone cluster",
+      "2026-08-27 recovered Tim formulation: roots hold fallen trajectories, widening spirals, dogs/leashes, karmic debt and mud"
+    ],
+    "mechanical_comparator": "A tether can restrict a state to ||x-a||<=L and becomes an active radial constraint at the boundary.",
+    "multiple_constraints": "K=intersection_i K_i; independent constraints can combine into a much smaller feasible region.",
+    "spiral_relation": "A widening spiral under a fixed maximum radius reaches the tether boundary and cannot continue outward without changing the constraint; remaining motion can become tangential/orbital.",
+    "boundary": "This is project geometry plus mechanics comparison, not evidence that people are literally tethered or that Tim physically controls their motion."
   },
   "topology_model": {
-    "idea": "Study what remains connected when the representation changes, and where boundaries, bottlenecks, holes, bridges and attractors occur.",
-    "concepts": ["connected_component", "bridge", "cut", "bottleneck", "cycle", "loop", "boundary", "basin", "attractor", "drain", "threshold", "phase_transition"],
-    "symbolic_correspondence": "The project's mountain, plane, mud and swamp can be treated as symbolic terrain describing stability, visibility, elevation, flow and entanglement rather than as literal physics."
+    "idea": "Study what remains connected when the representation changes, and where boundaries, bottlenecks, holes, bridges, cuts, homotopy classes and attractors occur.",
+    "concepts": ["connected_component", "bridge", "cut", "dominator", "bottleneck", "cycle", "loop", "winding", "homotopy_class", "boundary", "basin", "attractor", "drain", "threshold", "phase_transition"],
+    "mechanism_split": "Mechanical constraint can act through force/boundary; topological constraint can restrict path deformation without supplying a mechanical tether force.",
+    "symbolic_correspondence": "The project's mountain, plane, mud, swamp, roots, Drain, Door, circle and leash can be treated as symbolic terrain describing stability, visibility, elevation, flow, constraint and relational history rather than as literal physics."
+  },
+  "reachability_model": {
+    "idea": "Freedom/agency can be represented by which states remain reachable under declared dynamics, controls and constraints.",
+    "fields": ["state_space", "dynamics", "controls", "disturbances", "constraints", "horizon", "reachable_set", "viable_set", "target_set", "failure_set"],
+    "rule": "Reduced reachability is not identical to one predetermined future; constraint can shrink possibilities while leaving many admissible paths."
   },
   "fate_and_destiny_layer": {
-    "status": "interpretive",
-    "definition": "A symbolic model of path dependence, constraint, recurring pattern and perceived direction through time.",
-    "use": "Store spiritual or mythological readings alongside, but never disguised as, empirical causal claims."
+    "status": "interpretive unless a specific mathematical mechanism is named",
+    "project_definition": "A symbolic model of path dependence, constraint, recurring pattern, perceived direction and target through time.",
+    "typed_mechanisms": {
+      "hard_constraint": "some states/paths are inadmissible",
+      "invariant": "dynamics preserve a set/quantity",
+      "attractor_or_basin": "trajectories tend toward a recurrent state/set under declared dynamics",
+      "absorbing_state": "the stochastic model assigns zero probability of exit",
+      "almost_sure_target": "the stochastic model reaches a target with probability one",
+      "all_path_target": "every admissible path eventually reaches the target in the declared transition model",
+      "reachable_target": "at least one admissible path reaches the target; possibility, not inevitability",
+      "causal_order": "some event orders/influences are forbidden by causal structure",
+      "theological_destiny": "religious claim about providence/predestination/telos and must remain theological"
+    },
+    "use": "Store spiritual or mythological readings alongside, but never disguised as empirical causal claims.",
+    "law": "Can reach, tends toward, probably reaches, must reach and is divinely destined are five different assertions."
+  },
+  "path_dependence_model": {
+    "idea": "The full state may include memory/history variables m in addition to visible coordinates x.",
+    "state":"z=(x,m)",
+    "project_relation":"This formalizes Return is not reset and gives Roots a disciplined memory/history comparator.",
+    "warning":"Karmic memory/debt remains a project/theological interpretation unless independently operationalized."
   },
   "relationship_record_extension": {
     "required_fields": ["source", "relationship", "target", "evidence", "confidence", "date", "notes"],
-    "recommended_entanglement_fields": ["entanglement_type", "strength", "distance", "directionality", "dependency", "temporal_order", "path_dependence", "feedback", "topology", "trajectory", "phase", "counterfactual"]
-  }
+    "recommended_entanglement_fields": ["entanglement_type", "strength", "distance", "directionality", "dependency", "temporal_order", "path_dependence", "feedback", "topology", "trajectory", "timeline", "phase", "counterfactual"],
+    "recommended_constraint_fields": ["constraint_type", "anchor", "active_when", "admissible_set", "reachable_set_effect", "exit_condition", "reversibility", "target_set", "failure_set"]
+  },
+  "canonical_owners": [
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json",
+    "knowledge/traditions/biblical-cord-yoke-path-fate-addendum.json",
+    "knowledge/chronology/conversation-archaeology-wave-011-leash-timeline-fate.json"
+  ]
 }
