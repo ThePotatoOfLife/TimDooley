@@ -1,0 +1,112 @@
+{
+  "id": "calabi-yau-compactification-mirror-duality-atlas",
+  "title": "Calabi–Yau, Compactification, Mirror Symmetry and G2 — Tim Recovery and Geometry Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "canonical compactification/mirror-geometry owner: recovered Tim terminology + established mathematics/string theory + archive comparison",
+  "purpose": "Recover Tim's Calabi-Yau and hidden-dimension statements, correct the 10D/11D bookkeeping, and turn compactification/mirror symmetry into a mathematically explicit comparison layer for Door, House, Mirror/Twin, hidden structure and topology change without representing project dimensions as experimentally established spacetime.",
+  "epistemic_rule": "Calabi-Yau geometry is real mathematics and central to major string-compactification constructions. Tim's '11d Calabi-Yau' and project D1-D11 hierarchy are project formulations, not a standard statement that an eleven-dimensional Calabi-Yau manifold is the observed universe. Archive corrections must preserve Tim's historical wording while adding the correct dimensional cases alongside it.",
+  "recovered_tim_layer": {
+    "2026_07_13": [
+      "Tim explicitly used the phrase '11d calabi yao manifolds' while asking how to transfer his Standard-Model/11D skeleton.",
+      "Tim described dimensions 1-4 as matter, 5 as Door/narrowing/present, and 6-11 as hidden or compactified space dimensions within the House.",
+      "In the same conversation stratum Tim called the Door a 'particle smasher', linked forbidden-fruit imagery to 'a quantum entanglement', said 'tim is lik a higgs boson', and explored Tim-as-Higgs / Son-as-field mappings."
+    ],
+    "2026_09_09": "Tim explicitly asked the archive to recover M-theory, Calabi-Yau manifolds, compactified/hidden dimensions, equations, physics and science while distinguishing his own earlier formulations from later research additions.",
+    "older_project_lineage": "The 2024 Great Book already discusses Kaluza-Klein, string theory, M-theory 10-11D, QFT and higher-dimensional unification as different routes toward hidden underlying structure.",
+    "provenance_rule": "No mirror-symmetry, Hodge-number, SYZ, conifold or G2 equation below should be attributed to Tim unless a primary Tim source is separately recovered."
+  },
+  "mathematical_definition": {
+    "working_definition": "A Calabi-Yau n-fold is, under a common mathematical convention, a compact complex Kähler manifold with trivial canonical bundle / vanishing first Chern class, with additional assumptions varying by convention. Yau's theorem supplies a Ricci-flat Kähler metric in each Kähler class when c1=0.",
+    "core_conditions": [
+      "c1(X)=0",
+      "Ric(g)=0 for the Calabi-Yau metric",
+      "d omega=0 for Kähler form omega",
+      "there exists a nowhere-vanishing holomorphic top form Omega on a Calabi-Yau with trivial canonical bundle"
+    ],
+    "cy3": {
+      "complex_dimension": 3,
+      "real_dimension": 6,
+      "generic_holonomy": "SU(3) for an irreducible simply connected Calabi-Yau threefold under the usual assumptions",
+      "forms": ["Kähler form omega", "holomorphic (3,0)-form Omega"],
+      "importance": "Six real compact dimensions are exactly what a 10D superstring compactification needs to reach four large spacetime dimensions."
+    },
+    "source": "https://www.scholarpedia.org/article/Calabi-Yau_manifold"
+  },
+  "dimensional_bookkeeping": {
+    "ten_to_four": "10D superstring spacetime -> M^(3,1) x X_6. Taking X_6 to be a Calabi-Yau threefold is a canonical route to a four-dimensional effective theory. Details of supersymmetry and particle content depend on string theory, bundles/branes/fluxes and other choices.",
+    "eleven_to_four": "11D M-theory -> 4D requires seven compact internal real dimensions. For minimal 4D supersymmetry a standard geometric route uses a seven-manifold with G2 holonomy, not an ordinary Calabi-Yau threefold by itself.",
+    "eleven_to_five": "11D M-theory compactified on a Calabi-Yau threefold (six real dimensions) naturally yields a five-dimensional effective theory before any further reduction.",
+    "project_repair": "Tim's phrase '11d Calabi-Yau' should therefore be preserved historically but split scientifically into several possibilities: 10D string on CY3 -> 4D; 11D M-theory on CY3 -> 5D; 11D M-theory on G2 seven-manifold -> 4D; or more elaborate staged compactifications.",
+    "door_insight": "Dimension 5 can remain a project Door coordinate without claiming that CY3 itself supplies the project's exact 5D threshold."
+  },
+  "hodge_moduli_structure": {
+    "hodge_numbers": ["h^(1,1)(X): counts Kähler-type deformation directions in the simplest CY3 discussion", "h^(2,1)(X): counts complex-structure deformation directions in the simplest CY3 discussion"],
+    "euler_characteristic": "chi(X)=2[h^(1,1)(X)-h^(2,1)(X)] for a Calabi-Yau threefold",
+    "moduli_message": "Hidden geometry is not one number. A compactification typically has continuous deformation parameters/moduli describing size/shape/complex structure before stabilization effects are included.",
+    "project_use": "This is a rigorous correction to vague 'hidden dimensions': hidden dimensions can have many internally distinguishable geometric degrees of freedom even when the large-dimensional observer sees only an effective low-energy theory."
+  },
+  "mirror_symmetry": {
+    "core": "Calabi-Yau threefolds can occur in mirror pairs X,Y whose associated string/sigma-model physics is equivalent in an appropriate sense while geometrical data are exchanged.",
+    "hodge_exchange": ["h^(1,1)(X)=h^(2,1)(Y)", "h^(2,1)(X)=h^(1,1)(Y)", "chi(Y)=-chi(X) for mirror CY3 pairs under the standard exchange"],
+    "structural_insight": "Two geometrically/topologically distinct presentations can encode equivalent physical content. This is a much stronger and more exact Mirror/Twin comparator than visual bilateral symmetry.",
+    "project_boundary": "Mirror symmetry does not imply that any two spiritually 'mirrored' people, symbols or histories are physically dual Calabi-Yau compactifications."
+  },
+  "syz_duality": {
+    "proposal": "Near suitable large-complex-structure/large-volume limits, mirror CY3s are expected to admit dual special-Lagrangian T^3 fibrations; mirror symmetry is related to fiberwise duality/Fourier-Mukai/T-duality ideas.",
+    "special_lagrangian_conditions": ["omega|_L=0", "Im Omega|_L=0 (after the appropriate phase convention)"],
+    "project_connection": "This supplies a rigorous mathematical neighbor for 'same underlying relation, different projection': the transformation acts along hidden torus fibers rather than simply reflecting a picture.",
+    "deep_mirror_law": "A useful Timic Mirror should specify what structure is exchanged, what invariant physical content survives, and what transformation maps one description to the other."
+  },
+  "compactification_as_projection": {
+    "schematic": "Pi_low: (M_large x X_internal, fields) -> effective low-dimensional fields/couplings",
+    "mode_expansion": "Phi(x,y)=sum_n phi_n(x) Y_n(y)",
+    "kk_mass_template": "m_n^2=m_0^2+lambda_n/R^2 in natural-unit schematic form, where lambda_n arises from an internal-space eigenvalue problem; exact spectra depend on geometry.",
+    "meaning": "Low-dimensional observers can see towers of effective modes whose masses/couplings encode the hidden internal geometry.",
+    "project_use": "This is a precise way to talk about hidden House structure influencing visible manifestation without saying the compact dimensions are directly visible rooms."
+  },
+  "cycles_branes_and_intersections": {
+    "cycles": "Nontrivial homology cycles are important because strings/branes and fluxes can wrap or thread them, producing effective particles, fields, potentials or charges in lower dimensions depending on the construction.",
+    "project_connection": "Door and House become richer when 'hidden room' means a cycle/fiber/modulus with a defined topological role rather than an unnamed extra direction.",
+    "boundary": "A theological room is not a brane cycle; the preserved structure is hidden internal organization with observable lower-dimensional consequences."
+  },
+  "topology_change_and_conifold": {
+    "concept": "Calabi-Yau families can develop singular limits; conifold transitions and related string-theoretic resolutions provide real examples where topology can change through a singular/critical geometry in an enlarged physical framework.",
+    "door_connection": "This is a sophisticated external neighbor for Door-as-topology-change: approach singular configuration -> new light degrees of freedom/description -> resolution/deformation -> different topology.",
+    "warning": "Do not import 'death/rebirth' or biography into conifold physics. The value is the existence of mathematically controlled topology-changing transitions in string theory."
+  },
+  "g2_bridge": {
+    "definition": "A seven-dimensional Riemannian manifold with holonomy contained in G2 is Ricci-flat and carries a covariantly constant spinor under appropriate conditions; G2 compactifications are central in 11D M-theory routes to 4D N=1 theories.",
+    "timic_relevance": "G2 is the correct high-value correction to the project's tendency to call all hidden 6-11 dimensional geometry 'Calabi-Yau'.",
+    "singularities": "Gauge sectors/chiral matter in realistic G2 compactifications generally require suitable singular structures rather than a completely smooth generic compact G2 manifold.",
+    "project_rule": "Use CY3 for six-real-dimensional string compactification structure and G2 for direct seven-real-dimensional M-theory-to-4D comparison unless a different compactification is explicitly defined."
+  },
+  "mirror_door_house_crosswalk": [
+    {"project":"House","geometry":"compact internal manifold/fibration","preserved":"rich hidden structure can shape visible effective behavior","mismatch":"House theology is not a measured compact manifold"},
+    {"project":"Door","geometry":"singular transition / projection/interface / dimensional reduction","preserved":"change of effective description/regime","mismatch":"not every threshold changes topology or dimension"},
+    {"project":"Mirror/Twin","geometry":"mirror symmetry","preserved":"distinct descriptions can preserve/equate physical content while exchanging structures","mismatch":"mirror symmetry is an exact mathematical/physical duality, not generic resemblance"},
+    {"project":"Seed/Potato","geometry":"compact geometry encoding low-energy data","preserved":"small/hidden structure can control many visible effective parameters","mismatch":"compactification is not biological generation"},
+    {"project":"Axis/projection","geometry":"fiber/base and dimensional reduction maps","preserved":"relations between levels/descriptions","mismatch":"no unique Timic Axis follows from CY geometry"}
+  ],
+  "research_questions": [
+    "Recover every primary Tim use of Calabi-Yau/compactification and label whether he meant a manifold dimension, hidden-space sector, visual geometry or generic string-theory shorthand.",
+    "Determine whether Tim ever specified a particular Calabi-Yau topology, Hodge numbers, metric, quintic, torus fibration, cycles, flux or compactification chain; none was recovered in this pass.",
+    "Test the project's Mirror/Twin concepts against the stronger rule: identify an explicit transformation and an invariant rather than resemblance alone.",
+    "Build a dimension ledger distinguishing large spacetime dimension, compact internal real dimension, complex dimension, project D-level and state-space dimension.",
+    "Connect G2 singularity/gauge-sector research to UPT only after field content and compactification route are explicitly fixed."
+  ],
+  "sources": [
+    {"topic":"Calabi-Yau definition, string compactification, mirror symmetry, SYZ","url":"https://www.scholarpedia.org/article/Calabi-Yau_manifold"},
+    {"topic":"project string/M-theory archaeology","path":"knowledge/science/eleven-dimensional-projection-unification-recovery.json"},
+    {"topic":"project 11D/G2 correction","path":"knowledge/science/gauge-unification-supersymmetry-archaeology.json"}
+  ],
+  "connections": [
+    "knowledge/science/eleven-dimensional-projection-unification-recovery.json",
+    "knowledge/science/eleven-dimensional-axis-door-dual-spiral-recovery.json",
+    "knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json",
+    "knowledge/science/gauge-unification-supersymmetry-archaeology.json",
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/theory-of-everything-archaeology.json",
+    "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json"
+  ]
+}
