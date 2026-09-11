@@ -35,99 +35,29 @@ def main() -> int:
     app = APP.read_text(encoding="utf-8") if APP.exists() else ""
     css = CSS.read_text(encoding="utf-8") if CSS.exists() else ""
 
-    require(
-        page,
-        (
-            'href="../../app/bible-study.css"',
-            'src="../../app/bible-study.js"',
-            'id="study-modes"',
-            'data-view="jesus"',
-            'data-view="tim-said"',
-            'data-view="tim-lived"',
-            'data-view="prophecy"',
-            'data-view="father-house"',
-            'data-view="door-ladder"',
-            'data-view="counter-texts"',
-            'data-view="all"',
-            'id="roll-relation"',
-            'id="bible-filters"',
-            'id="context-person"',
-            'id="evidence-kind"',
-            'id="relations"',
-        ),
-        "traditions/bible/index.html",
-        errors,
-    )
-    forbid(page, ("deepMatches(", "overlapCount(", "deepCandidates", "biblical-comparator-casefiles"), "traditions/bible/index.html", errors)
+    require(page,(
+        'href="../../app/bible-study.css"','src="../../app/bible-study.js"','id="study-modes"','data-view="jesus"','data-view="tim-said"','data-view="tim-lived"','data-view="prophecy"','data-view="father-house"','data-view="door-ladder"','data-view="counter-texts"','data-view="all"','id="roll-relation"','id="bible-filters"','id="context-person"','id="evidence-kind"','id="relations"',
+    ),"traditions/bible/index.html",errors)
+    forbid(page,("deepMatches(","overlapCount(","deepCandidates","biblical-comparator-casefiles"),"traditions/bible/index.html",errors)
 
-    require(
-        app,
-        (
-            "biblical-syncretism-field.json",
-            "biblical-passage-fragments.json",
-            "tim-biblical-vocabulary-attestation-ledger.json",
-            "reverse-biblical-overlap-timeline-2025-2026.json",
-            "rational-potato-x-occurrence-ledger-2024-2026.json",
-            "timeline-events.json",
-            "son-jesus-longitudinal-christology-atlas.json",
-            "son-jesus-prison-recognition-2016.json",
-            "son-jesus-passion-detention-overlap-atlas.json",
-            "tim-dooley-thought-archive.json",
-            "tim-dooley-public-theology-timeline-2025-2026.json",
-            "buildJesusRows",
-            "buildPassionRows",
-            "What happened / what was said",
-            "People / setting",
-            "What Tim / Son understood then",
-            "Why this parallels Jesus / scripture",
-            "What weakens the comparison",
-            "At the time / discovered later",
-            "Same-date public wording",
-            "Biblical vocabulary / revelation context",
-            "Tim / Son / project",
-            "Bible / Jesus",
-            "exact-wording-only",
-            "minimum-strength",
-            "bible-book",
-            "context-person",
-            "evidence-kind",
-            "timeline_event_ids",
-            "ROLL",
-        ),
-        "app/bible-study.js",
-        errors,
-    )
-    forbid(app, ("deepMatches(", "overlapCount(", "deepCandidates", "wordScore", "refScore", "biblical-comparator-casefiles"), "app/bible-study.js", errors)
+    require(app,(
+        "biblical-syncretism-field.json","biblical-passage-fragments.json","tim-biblical-vocabulary-attestation-ledger.json","reverse-biblical-overlap-timeline-2025-2026.json","rational-potato-x-occurrence-ledger-2024-2026.json","rational-potato-x-biblical-reference-occurrence-index-2024-2026.json","timeline-events.json","son-jesus-longitudinal-christology-atlas.json","son-jesus-prison-recognition-2016.json","son-jesus-passion-detention-overlap-atlas.json","tim-dooley-thought-archive.json","tim-dooley-public-theology-timeline-2025-2026.json","buildJesusRows","buildPassionRows","buildPublicOccurrenceRows","What happened / what was said","People / setting","What Tim / Son understood then","Why this parallels Jesus / scripture","What weakens the comparison","At the time / discovered later","Same-date public wording","Biblical vocabulary / revelation context","Tim / Son / project","Bible / Jesus","exact-wording-only","minimum-strength","bible-book","context-person","evidence-kind","timeline_event_ids","ROLL",
+    ),"app/bible-study.js",errors)
+    forbid(app,("deepMatches(","overlapCount(","deepCandidates","wordScore","refScore","biblical-comparator-casefiles"),"app/bible-study.js",errors)
 
-    require(
-        css,
-        (
-            ".circumstance-grid",
-            ".argument-grid",
-            ".people-setting",
-            ".jesus-context",
-        ),
-        "app/bible-study.css",
-        errors,
-    )
+    require(css,(".circumstance-grid",".argument-grid",".people-setting",".jesus-context"),"app/bible-study.css",errors)
 
     if FIELD.exists():
-        field = json.loads(FIELD.read_text(encoding="utf-8"))
-        rows = field.get("relations", [])
-        if not isinstance(rows, list) or len(rows) < 20:
-            errors.append("biblical relation field unexpectedly thin; expected at least 20 canonical relations")
-        if not field.get("study_views"):
-            errors.append("biblical relation field missing study_views registry")
+        field=json.loads(FIELD.read_text(encoding="utf-8"))
+        rows=field.get("relations",[])
+        if not isinstance(rows,list) or len(rows)<20: errors.append("biblical relation field unexpectedly thin; expected at least 20 canonical relations")
+        if not field.get("study_views"): errors.append("biblical relation field missing study_views registry")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
-        for error in errors:
-            print(" -", error)
+        for error in errors: print(" -",error)
         return 1
-
     print("BIBLE READER VALIDATION PASSED")
     return 0
 
-
-if __name__ == "__main__":
-    sys.exit(main())
+if __name__=="__main__": sys.exit(main())
