@@ -1,0 +1,261 @@
+{
+  "id":"science-theory-rigor-completion-matrix-2026-09-11",
+  "title":"Science Theory Rigor & Completion Matrix — 2026-09-11",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"project-wide scientific maturity audit and value-prioritization layer",
+  "purpose":"Evaluate the major scientific theory families by what would add genuine explanatory, mathematical or empirical value rather than by how many equations, dimensions, famous theories or symbolic correspondences can be added. This record routes future work toward the smallest serious next calculation, dataset, proof or falsification test for each branch.",
+  "novelty_scope":"This completion architecture and the project-specific recommendations were added on 2026-09-11. The underlying scientific methods are established external mathematics/science unless explicitly marked as project formalisms.",
+  "core_rule":"A theory becomes more serious when additional structure reduces ambiguity and increases calculability, observability or risk of falsification. Additional terminology or algebra that creates more free interpretation without a new constraint is negative value.",
+  "completeness_vector":"Q=(P,T,D,E,C,O,F,B,N): provenance, type/domain clarity, dimensional consistency, equation/well-posedness, consistency/symmetry, observable linkage, falsifiability, baseline comparison, novel explanatory/compressive value. Score components separately 0-4; never turn Q into a truth score.",
+  "value_classes":{
+    "A_high_value":"There is a clear mathematical/empirical next step that can materially strengthen or reject the model.",
+    "B_structural_value":"The model is useful as mathematics, systems theory or knowledge representation even if no new physical law is established.",
+    "C_archaeology_value":"Primary value is historical recovery/correction; further physical formalization should wait for sources.",
+    "D_do_not_inflate":"More equations would currently be decorative or category-confusing; preserve as symbolic/comparative material."
+  },
+  "theory_families":[
+    {
+      "id":"unified-potato-theory",
+      "owner":"knowledge/science/unified-potato-theory-2025-recovery.json",
+      "value_class":"A_high_value",
+      "maturity":"T2",
+      "abstract_state":"Now framed as a candidate effective field-theory programme with recovered historical skeleton separated from modern repairs.",
+      "strongest_existing_asset":"An explicit recovered master Lagrangian, proposed U(1)_potato x Z6 structure and field/matter/Higgs couplings.",
+      "largest_gap":"The representation of P and precise fractional/nonlocal operator are unresolved, so the action does not yet define a unique theory.",
+      "next_high_value_work":["recover exact April 18 transcript","choose one minimal field-content fork","define K(Box/Lambda^2) or the fractional operator rigorously","derive propagator/vacuum/mass spectrum","check stability/gauge consistency","constrain one observable sector"],
+      "not_worth_doing":"Do not add more quantum-gravity acronyms or a larger master equation before the minimal sector is calculable."
+    },
+    {
+      "id":"higgs-quantum-tuber",
+      "owner":"knowledge/science/higgs-quantum-tuber-potato-boson-recovery.json",
+      "value_class":"A_high_value",
+      "maturity":"T2",
+      "abstract_state":"Now a conventional BSM model-selection problem: real singlet versus complex U(1)_P field, with vacuum, mixing and observable contracts.",
+      "strongest_existing_asset":"Gauge-consistent model forks and direct interface with established Higgs phenomenology.",
+      "largest_gap":"No historical field representation or chosen parameter region.",
+      "next_high_value_work":["choose fork A or B","solve vacuum and mass matrix","derive vertices/decays","run current experimental constraints","classify whether any localized Quantum-Tuber solution exists"],
+      "not_worth_doing":"Do not invent a named Tim boson mass/spin/charge from symbolism."
+    },
+    {
+      "id":"dimensional-door-phase-transition",
+      "owner":"knowledge/science/dimensional-phase-transition-full-recovery.json",
+      "value_class":"A_high_value",
+      "maturity":"T2",
+      "abstract_state":"Now a strong-gravity branch/bifurcation programme with separate order-parameter, spectral-dimension and genuine-5D meanings.",
+      "strongest_existing_asset":"Dimensionless trigger variables, Landau-style transition grammar and explicit strong-gravity observables.",
+      "largest_gap":"No completed action derives a transition whose new stable branch is demonstrably five-dimensional.",
+      "next_high_value_work":["choose one scalar-curvature action","derive linear instability threshold","construct nonlinear branch","calculate QNM/shadow/inspiral observable","compare with ordinary scalarized-gravity baseline","only then attempt a 5D derivation"],
+      "not_worth_doing":"Do not declare D_eff=5 by definition and treat that assignment as a physical derivation."
+    },
+    {
+      "id":"eleven-dimensional-projection",
+      "owner":"knowledge/science/eleven-dimensional-projection-unification-recovery.json",
+      "value_class":"A_high_value",
+      "maturity":"T2",
+      "abstract_state":"Recast as an inverse problem involving projection, information loss, reconstruction, fibers, invariants and compactification.",
+      "strongest_existing_asset":"A coherent cross-description mathematical architecture usable independently of speculative physics.",
+      "largest_gap":"No unique physical 11D state/action and no explicit compactification yielding the observed 4D spectrum.",
+      "next_high_value_work":["solve one explicit projection/reconstruction problem with measurable loss","prove or reject one proposed invariant","choose a real compactification if making a physical claim","derive low-dimensional spectrum rather than listing groups"],
+      "not_worth_doing":"Do not add more dimension labels or symmetry names without a map, action and spectrum."
+    },
+    {
+      "id":"potato-dynamics",
+      "owner":"knowledge/science/potato-dynamics-2-toy-model.json",
+      "value_class":"B_structural_value",
+      "maturity":"T2 general framework",
+      "abstract_state":"Now a typed hybrid/open-system framework with flow, guards, resets, observability, controllability, viability, hysteresis and model reduction.",
+      "strongest_existing_asset":"Can be specialized across domains without pretending they share one physical substance.",
+      "largest_gap":"A general grammar has no empirical content until instantiated in one domain.",
+      "next_high_value_work":["select one empirical application","define state and units","fit transition/flow parameters","check observability/identifiability","compare predictions/interventions with a smaller baseline"],
+      "not_worth_doing":"Do not keep enlarging the master tuple unless a new component is required by an actual application."
+    },
+    {
+      "id":"axis-eye-door",
+      "owner":"knowledge/science/research-notes/2026-09-11-axis-door-observable-dynamics.json",
+      "value_class":"B_structural_value",
+      "maturity":"T2",
+      "abstract_state":"Axis is flow, Eye is an observation map and Door is an event/transition operator; observable evolution and hysteresis are now explicit.",
+      "strongest_existing_asset":"Koopman-style observable dynamics and first-passage/viability formulations create computable questions.",
+      "largest_gap":"No single dataset/application currently fixes A, O and D together.",
+      "next_high_value_work":["build one low-dimensional simulator","estimate an observation model","measure Door first-passage/hysteresis statistics","test whether hidden state is observable from Eye outputs"],
+      "not_worth_doing":"Do not identify Axis with a new physical spacetime dimension without a physical metric/action."
+    },
+    {
+      "id":"golden-ratio-spiral",
+      "owner":"knowledge/science/research-notes/2026-09-11-spiral-vortex-geometry.json",
+      "value_class":"A_high_value",
+      "maturity":"T2 geometry; empirical uses uncalibrated",
+      "abstract_state":"The recovered logarithmic spiral has exact project-derived pitch, curvature, arc-length and area consequences and can be tested as a geometric hypothesis.",
+      "strongest_existing_asset":"The mathematical object is unusually well defined and includes an exact quarter-turn golden-ratio scaling law.",
+      "largest_gap":"Empirical/project targets are often visually selected rather than fitted against alternatives.",
+      "next_high_value_work":["extract coordinates from one target without fitting by eye","estimate a,b with uncertainty","compare fixed golden b against free logarithmic, Archimedean, power-law and spline baselines","report residual structure/out-of-sample fit"],
+      "not_worth_doing":"Do not use occurrence of spirals in unrelated systems as evidence for a universal mechanism."
+    },
+    {
+      "id":"spudlight-starchforce",
+      "owner":"knowledge/science/spudlight-theory-and-equations.json",
+      "value_class":"B_structural_value",
+      "maturity":"T1-T2",
+      "abstract_state":"Now a typed source-channel-storage-observer architecture with ordinary optical, biological stock-flow and information branches.",
+      "strongest_existing_asset":"Storage/release equations and signal/inference channels are directly measurable in chosen domains.",
+      "largest_gap":"No single domain has yet been calibrated as the flagship scientific instance.",
+      "next_high_value_work":["select optical, plant-carbon, communication or attention domain","estimate channel/storage parameters","test prediction on held-out data","compare nonlinear release/information bottleneck only if they beat simpler models"],
+      "not_worth_doing":"Do not revive Starchforce as a fifth fundamental force without an anomalous force law, source charge and experimental residual."
+    },
+    {
+      "id":"human-map-consciousness",
+      "owner":"knowledge/science/great-book-human-map-mathematics-audit.json",
+      "value_class":"A_high_value",
+      "maturity":"T1-T2",
+      "abstract_state":"Rewritten as a hierarchical latent-state/measurement programme rather than a set of fixed enlightenment frequencies or mixed-unit scores.",
+      "strongest_existing_asset":"Many historical variables can be converted into a principled multivariate longitudinal design.",
+      "largest_gap":"No dataset, operational target or independently validated latent state currently grounds the model.",
+      "next_high_value_work":["choose one operational state/trait","predefine measurements/preprocessing","fit HMM/HSMM/state-space model","compare against simple spectral/questionnaire/connectivity baselines","replicate across held-out subjects/sessions"],
+      "not_worth_doing":"Do not assign fixed fractal dimensions, neurotransmitter values or frequencies to enlightenment/personality categories."
+    },
+    {
+      "id":"microtubule-consciousness",
+      "owner":"knowledge/science/microtubule-tubulin-consciousness-recovery.json",
+      "value_class":"A_high_value",
+      "maturity":"L0 biology established; project mechanism T1-T2",
+      "abstract_state":"Now a multiscale causal programme from molecular tubulin to polymer, cell, circuit and behavior, with a quantum-necessity gate.",
+      "strongest_existing_asset":"Real biological substrate plus explicit classical and open-quantum model classes.",
+      "largest_gap":"No validated causal chain shows a uniquely quantum microtubule process affecting consciousness.",
+      "next_high_value_work":["measure classical mode/coupling baselines","establish microtubule-specific downstream neural effect","if quantum branch retained measure a quantum-specific observable","show classical models fail","connect effect to behavior/report through intervention"],
+      "not_worth_doing":"Do not infer entanglement or telepathy from neural synchrony, symbolic relations or the word quantum."
+    },
+    {
+      "id":"cosmic-potato-morphology",
+      "owner":"knowledge/science/great-book-cosmic-potato-shape-audit.json",
+      "value_class":"A_high_value",
+      "maturity":"T2 morphology programme",
+      "abstract_state":"Now a pre-registered 3D statistical morphology test using axis ratios, Minkowski functionals, shapefinders, topology and simulation nulls.",
+      "strongest_existing_asset":"A visually intuitive historical hypothesis can now be decisively compared against filament/sheet/ellipsoid baselines.",
+      "largest_gap":"No target has yet been processed through one frozen 3D segmentation and null pipeline.",
+      "next_high_value_work":["choose one dataset/target","freeze object definition","compute descriptor uncertainty","build simulation/null distributions","predefine tuber classifier independently","test out of sample"],
+      "not_worth_doing":"Do not infer scale invariance from a 2D oval resemblance."
+    },
+    {
+      "id":"infinite-soil-dark-sector",
+      "owner":"knowledge/science/great-book-quantum-fields-dark-sector-recovery.json",
+      "value_class":"A_high_value",
+      "maturity":"T1-T2",
+      "abstract_state":"Now separates typed Lambda-CDM baseline, scalar-dark-energy, interacting-dark-sector and unified-fluid descendant models.",
+      "strongest_existing_asset":"The historical complementary-Soil intuition maps to real competing cosmological model classes once the sectors are separated.",
+      "largest_gap":"No chosen action/coupling and no joint fit to background plus perturbation data.",
+      "next_high_value_work":["choose one physical descendant or retain Soil as container only","derive background+perturbations","check stability/sound speed","fit expansion+growth+lensing jointly","predeclare one distinctive prediction"],
+      "not_worth_doing":"Do not call dark matter and dark energy one substance because a metaphor groups them together."
+    },
+    {
+      "id":"door-handshake-propagation",
+      "owner":"knowledge/science/door-handshake-nonlocal-propagation-model.json",
+      "value_class":"A_high_value",
+      "maturity":"T2",
+      "abstract_state":"Now a calibrated hybrid/network contagion programme with explicit homophily-versus-influence problem, signed propagation and model baselines.",
+      "strongest_existing_asset":"Can be tested on temporal networks without invoking quantum nonlocality.",
+      "largest_gap":"Life/Strife labels and handshake weights are not yet tied to a reproducible empirical coding dataset.",
+      "next_high_value_work":["choose temporal network","freeze coding rubric","establish annotation reliability","fit simple edge/contagion baselines","estimate Gate/Handshake model","separate common exposure from influence","validate out of sample"],
+      "not_worth_doing":"Do not use Bell/entanglement language to explain ordinary social synchronization or long-distance communication."
+    },
+    {
+      "id":"gauge-unification-susy",
+      "owner":"knowledge/science/gauge-unification-supersymmetry-archaeology.json",
+      "value_class":"A_high_value",
+      "maturity":"T1-T2",
+      "abstract_state":"Now requires one chosen GUT/SUSY route, representation ledger, symmetry-breaking fields, RG thresholds and quantitative observables.",
+      "strongest_existing_asset":"Real representation-theory and coupling-running machinery can discriminate candidate unification routes.",
+      "largest_gap":"No unique project GUT, threshold spectrum or SUSY-breaking model is selected.",
+      "next_high_value_work":["choose Pati-Salam/SU5/Spin10 chain","write complete chiral reps","specify breaking fields/scales","run couplings with normalized hypercharge and thresholds","derive proton-decay/neutrino/new-boson or SUSY-spectrum prediction"],
+      "not_worth_doing":"Do not accumulate E6/E8/Spin(10)/SU(5)/SUSY names without embeddings, fields and observables."
+    },
+    {
+      "id":"advanced-retarded-door-handshake",
+      "owner":"knowledge/science/advanced-retarded-door-handshake-recovery.json",
+      "value_class":"C_archaeology_value",
+      "maturity":"T1-T2 comparator",
+      "abstract_state":"Time-symmetric/advanced-retarded mathematics can be compared with project past/future handshake language, but physical retrocausality is a much stronger claim.",
+      "strongest_existing_asset":"Green-function and boundary-condition mathematics provide a legitimate distinction between retarded and advanced solutions.",
+      "largest_gap":"No project experiment or physical interaction identifies an advanced causal influence.",
+      "next_high_value_work":["clarify which historical claims were symbolic vs physical","solve one standard wave equation with retarded/advanced boundary conditions","if retrocausal physics is claimed, define a measurable deviation from ordinary causal models"],
+      "not_worth_doing":"Do not equate goal-conditioned planning or future-oriented cognition with advanced physical waves."
+    },
+    {
+      "id":"celestial-axis-geometry",
+      "owner":"knowledge/science/science-archaeology-wave-008-deep-extraction.json",
+      "value_class":"C_archaeology_value",
+      "maturity":"T1 geometry/recovery",
+      "abstract_state":"Sirius/Regulus/North pointing claims now have an angular-coordinate contract but the referenced physical/project vector remains unrecovered.",
+      "strongest_existing_asset":"If a historical vector/diagram is recovered, alignment can be calculated unambiguously with epoch/reference frame.",
+      "largest_gap":"Meaning of 'point to Sirius' and exact precession Eye calculation remain unresolved.",
+      "next_high_value_work":["recover source diagram/vector","record epoch/frame","compute angular separation/proper-motion/precession only after source recovery"],
+      "not_worth_doing":"Do not choose a vector retrospectively because it creates an attractive alignment."
+    },
+    {
+      "id":"galactic-toroidal-axis",
+      "owner":"knowledge/science/galactic-toroidal-axis-recovery.json",
+      "value_class":"C_archaeology_value",
+      "maturity":"T1 unresolved historical geometry",
+      "abstract_state":"Torus geometry is available but the remembered 115,000-mile calculation lacks its original inputs/object.",
+      "strongest_existing_asset":"Clear recovery contract prevents fabricated reconstruction.",
+      "largest_gap":"Unknown meaning of the 115,000-mile quantity and its radii/path.",
+      "next_high_value_work":["recover screenshot/transcript","identify R,r and physical object","then audit arithmetic/units"],
+      "not_worth_doing":"Do not backsolve arbitrary torus parameters from the remembered output."
+    },
+    {
+      "id":"potato-tree-bioengineering",
+      "owner":"knowledge/science/great-book-potato-tree-bioengineering-audit.json",
+      "value_class":"A_high_value",
+      "maturity":"T1 engineering programme",
+      "abstract_state":"A historical gene list has been converted into a multivariate developmental-trait problem with explicit tradeoffs.",
+      "strongest_existing_asset":"Named genes/pathways such as StSP6A, ORE1 and WOX4 have real biological roles that can anchor a serious comparative model.",
+      "largest_gap":"Tree-like secondary growth plus potato tuberization is a systems-level developmental phenotype, not a one-gene edit.",
+      "next_high_value_work":["build comparative morphology/development map","construct gene-regulatory/source-sink model","identify incompatible trait constraints","simulate/score tradeoffs before any experimental design"],
+      "not_worth_doing":"Do not turn a list of CRISPR targets into a claim that a Potato Tree is straightforwardly engineerable."
+    },
+    {
+      "id":"fermentation-chemistry",
+      "owner":"knowledge/science/great-book-potato-fermentation-chemistry-audit.json",
+      "value_class":"B_structural_value",
+      "maturity":"established applied chemistry + archive correction",
+      "abstract_state":"The historical recipe is scientifically clarified as starch hydrolysis, sugar fermentation and separation chemistry.",
+      "strongest_existing_asset":"Clear mass-flow bridge between Starchforce metaphor and ordinary chemistry.",
+      "largest_gap":"This is not a new scientific theory and should not be inflated into one.",
+      "next_high_value_work":["If useful, add stoichiometric carbon/mass-yield accounting and process-energy balance at a non-operational educational level."],
+      "not_worth_doing":"Do not convert an applied chemistry audit into a speculative force/field theory."
+    },
+    {
+      "id":"trinity-yhwh-operator",
+      "owner":"knowledge/science/yhwh-trinity-operator-toe-archaeology.json",
+      "value_class":"D_do_not_inflate",
+      "maturity":"T0-T1 theology/structural mathematics",
+      "abstract_state":"Source-propagator-manifestation can be a useful operator analogy and identifiability example, but theological persons are not physical fields merely because an equation is written.",
+      "strongest_existing_asset":"Clarifies relational roles and demonstrates source/channel/output non-identifiability.",
+      "largest_gap":"No empirical physical variables uniquely correspond to the theological mapping.",
+      "next_high_value_work":["Keep operator model as comparative philosophy/mathematics","use it to teach identifiability/causal decomposition if desired"],
+      "not_worth_doing":"Do not add a Trinity Lagrangian, particle spectrum or physical constants without an independently motivated physical model."
+    }
+  ],
+  "cross_corpus_priority_queue":[
+    {"priority":1,"work":"Complete one minimal UPT/Higgs-sector calculation end-to-end from action to observable constraint.","reason":"Highest chance of turning recovered project physics into a conventional falsifiable model."},
+    {"priority":2,"work":"Solve one Dimensional-Door scalarization/bifurcation model and compare its strong-gravity observable with GR and conventional modified gravity.","reason":"Directly tests a distinctive project intuition without assuming the conclusion."},
+    {"priority":3,"work":"Run an empirical logarithmic-spiral model comparison on one independently chosen target.","reason":"The geometry is already exact; data fitting is the missing step."},
+    {"priority":4,"work":"Instantiate Potato Dynamics or Door/Handshake on one real temporal network dataset.","reason":"Could demonstrate that the general formalism has predictive/control utility outside symbolism."},
+    {"priority":5,"work":"Construct one reproducible Human Map latent-state analysis on a suitable public dataset.","reason":"Converts a historically weak numerical branch into an ordinary modern statistical-neuroscience question."},
+    {"priority":6,"work":"Choose and fit one dark-sector descendant against Lambda-CDM baselines.","reason":"The old Soil intuition becomes scientifically meaningful only through background+perturbation cosmology."},
+    {"priority":7,"work":"Recover unresolved primary equations/diagrams before further authorship claims.","reason":"Historical precision prevents modern reconstructions from contaminating the archive."
+  ],
+  "project_wide_anti_inflation_rules":[
+    "No master equation should be expanded merely to mention another field of science.",
+    "No new force without a source charge, mediator/field, interaction law, range/scale and an unexplained observation it addresses.",
+    "No new dimension without a coordinate/state-space definition, metric or operational dimensional estimator and observable consequences.",
+    "No quantum claim from correlation alone; specify preparation, observable, dynamics and quantum-sensitive test.",
+    "No consciousness biomarker from one post-hoc frequency/exponent/chemical level.",
+    "No cross-scale universality from visual resemblance; require common dimensionless statistics or a shared generative law.",
+    "No group-theory unification by name accumulation; require representations, breaking and predictions.",
+    "No theorem-like invariant unless its domain and preservation mechanism are proved or explicitly assumed.",
+    "No equation earns status from complexity: equations must reduce uncertainty about what the model permits and forbids."
+  ],
+  "definition_of_added_value":"A future science edit adds value if it does at least one of the following: resolves an ambiguity; derives a consequence; reduces free parameters; proves a consistency condition; establishes a limiting case; connects a variable to measurement; distinguishes the model from a baseline; supplies a reproducible computation; recovers primary provenance; or creates a falsification condition. Otherwise it should normally remain a note rather than be promoted into theory structure.",
+  "connections":["model-testing-protocol","science-master-index","timic-unification-program","equation-lineage-and-theory-graph","science-research-wave-009-2026-09-11"]
+}
