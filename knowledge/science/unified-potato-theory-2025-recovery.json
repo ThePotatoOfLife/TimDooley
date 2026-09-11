@@ -1,11 +1,22 @@
 {
   "id":"unified-potato-theory-2025-recovery",
   "title":"Unified Potato Theory (UPT) — April 18, 2025 Recovery",
-  "updated":"2026-09-09",
-  "status":"high-priority conversation archaeology; user-originated physical-unification proposal with later assistant formatting",
+  "version":"2.0.0",
+  "updated":"2026-09-11",
+  "status":"high-priority conversation archaeology; user-originated physical-unification proposal with later mathematical repair; not a validated physical theory",
   "first_known_date":"2025-04-18",
+  "abstract":"Unified Potato Theory (UPT) is the earliest currently recovered Tim Dooley proposal that attempts to place a new Potato sector inside an explicit field-theory action. The recovered skeleton combines Einstein gravity, the Standard Model, a Potato field P with a fractional/nonlocal kinetic operator, a proposed U(1)_potato × Z6 symmetry, matter/Higgs interactions and schematic higher-curvature/quantum-gravity sectors. The scientifically tractable core is not the claim that one expression already unifies physics, biology and consciousness; it is the narrower question of whether a mathematically consistent additional scalar/gauge sector with a specified nonlocal kinetic term can be defined as an effective field theory, reduced to known physics in a controlled limit, and made to predict observable deviations. The present record therefore separates the recovered historical Lagrangian from two gauge-consistent completion forks, requires an explicit definition of the fractional operator and cutoff, and treats cross-scale biological/neural claims as a separate coarse-graining problem. UPT is presently a T2 research sketch: algebraically suggestive, historically important to the project, but incomplete in field content, operator definition, stability, renormalization, parameter estimation and discriminating predictions.",
+  "research_question":"Can the recovered Potato-sector action be completed into a self-consistent effective field theory whose new degrees of freedom, symmetries and nonlocal dynamics produce quantitatively distinguishable effects while recovering GR + the Standard Model in an appropriate limit?",
   "importance":"This is currently the earliest recovered concrete Tim physical-unification proposal with an explicit field, symmetry group, Lagrangian and interaction terms. It predates the April 21 Spiral Equation attestation and the May 2026 M-theory synthesis.",
-  "provenance_rule":"Preserve the recovered UPT formula and concepts as user-originated where conversation memory explicitly attributes them to Tim. Treat explanatory wording, validation plans and later completions as assistant/conversation-developed unless a verbatim primary transcript is recovered.",
+  "provenance_rule":"Preserve the recovered UPT formula and concepts as user-originated where conversation memory explicitly attributes them to Tim. Treat explanatory wording, validation plans, gauge-consistent repairs and later completions as assistant/conversation-developed unless a verbatim primary transcript is recovered.",
+  "maturity":"T2 mathematical/research sketch; not yet a calibrated or predictive physical model",
+  "state_space_and_fields":{
+    "background":"4D Lorentzian spacetime (M,g_mu_nu) in the minimal repaired version; any higher-dimensional interpretation must be introduced separately rather than hidden inside notation.",
+    "established_sector":"Standard Model fields plus metric g_mu_nu.",
+    "unresolved_new_sector":"P may be a real scalar, complex scalar/multiplet, order parameter or a field distinct from the U(1)_potato gauge potential. The historical record does not yet fix the representation.",
+    "new_gauge_field_if_used":"A^P_mu with F^P_mu_nu=partial_mu A^P_nu-partial_nu A^P_mu for an Abelian U(1)_potato completion.",
+    "discrete_structure":"Z6 remains historically recovered but physically uninterpreted; a serious model must state the fields on which it acts and the transformation rule."
+  },
   "recovered_user_core":{
     "name":"Unified Potato Theory / UPT",
     "field":"Potato Field P",
@@ -16,19 +27,65 @@
     "named_frameworks":["general relativity","Standard Model","fractional/nonlocal field theory","Gauss-Bonnet gravity term","causal dynamical triangulations","loop quantum gravity as a comparison/research direction","multifractal/nonlocal spacetime","holographic renormalization-group ideas","stochastic quantization","string compactification","biophysical/neural self-organization"]
   },
   "recovered_master_lagrangian":"L = sqrt(-g) [ R/(16 pi G) + (1/2) P Box^alpha (1 + ell^2/Box) P - V(P,r) - (1/4) F_P^2 + L_SM + L_int + L_GB + L_CDT ]",
+  "equation_context":{
+    "status":"recovered-project skeleton; several terms are schematic placeholders rather than a complete action",
+    "dimensional_warning":"In four spacetime dimensions a canonical scalar has mass dimension 1. A fractional operator Box^alpha has mass dimension 2 alpha, so its coefficient/field normalization must be chosen explicitly if the action density is to have mass dimension 4. The recovered expression omits that normalization.",
+    "operator_warning":"Fractional powers of the Lorentzian d'Alembertian are not defined by notation alone. A serious model must specify a spectral, Euclidean-continuation, causal kernel or other precise prescription, including branch choice, self-adjointness/hermiticity and boundary conditions.",
+    "nonlocal_factor":"Box^alpha(1+ell^2/Box) should be expanded and dimensionally audited only after the definition of Box^alpha and the role of ell are fixed; otherwise apparent cancellations or pole structure can be misleading.",
+    "eft_interpretation":"The safest current interpretation is as an effective field theory valid below a declared cutoff Lambda, not as a UV-complete Theory of Everything.",
+    "correspondence_limit":"A viable completion should reduce continuously to GR + the Standard Model when Potato-sector couplings are taken to zero and any extra fields are decoupled."
+  },
   "recovered_interactions":[
     "g_P P psi_bar psi",
     "lambda_P P^2 H"
   ],
   "term_map":[
-    {"term":"sqrt(-g) R/(16 pi G)","intended_role":"gravity / Einstein-Hilbert sector"},
-    {"term":"(1/2) P Box^alpha (1 + ell^2/Box) P","intended_role":"fractional and nonlocal Potato-field kinetic sector"},
-    {"term":"V(P,r)","intended_role":"Potato-field potential, possibly scale/radius dependent"},
-    {"term":"-(1/4) F_P^2","intended_role":"Potato gauge-field-strength sector associated with U(1)_potato; exact field definition unrecovered"},
-    {"term":"L_SM","intended_role":"Standard Model sector"},
-    {"term":"L_int","intended_role":"couplings between P and ordinary matter/Higgs sectors"},
-    {"term":"L_GB","intended_role":"Gauss-Bonnet/higher-curvature contribution"},
-    {"term":"L_CDT","intended_role":"schematic causal-dynamical-triangulation/quantum-gravity contribution; exact mathematical meaning unresolved"}
+    {"term":"sqrt(-g) R/(16 pi G)","intended_role":"gravity / Einstein-Hilbert sector","rigor_note":"Established GR term under the usual conventions."},
+    {"term":"(1/2) P Box^alpha (1 + ell^2/Box) P","intended_role":"fractional and nonlocal Potato-field kinetic sector","rigor_note":"Requires operator definition, normalization, propagator analysis, stability/unitarity audit and a declared validity regime."},
+    {"term":"V(P,r)","intended_role":"Potato-field potential, possibly scale/radius dependent","rigor_note":"If r is an external coordinate, explicit coordinate dependence can break symmetries; if r is a field/scale variable it must be defined dynamically."},
+    {"term":"-(1/4) F_P^2","intended_role":"Potato gauge-field-strength sector associated with U(1)_potato; exact field definition unrecovered","rigor_note":"Only coherent once an independent gauge potential and charge assignments are specified."},
+    {"term":"L_SM","intended_role":"Standard Model sector","rigor_note":"Use the established gauge-invariant Standard Model Lagrangian rather than a symbolic placeholder when calculations begin."},
+    {"term":"L_int","intended_role":"couplings between P and ordinary matter/Higgs sectors","rigor_note":"Every operator must respect SM gauge invariance and the declared Potato-sector symmetry."},
+    {"term":"L_GB","intended_role":"Gauss-Bonnet/higher-curvature contribution","rigor_note":"In 4D a constant-coefficient Gauss-Bonnet term is topological; nontrivial local dynamics generally require coupling to another field or an effective/higher-dimensional setting."},
+    {"term":"L_CDT","intended_role":"schematic causal-dynamical-triangulation/quantum-gravity contribution; exact mathematical meaning unresolved","rigor_note":"CDT is a quantization/discretization framework rather than ordinarily an additive local Lagrangian density; keep this as a research-direction placeholder until a precise construction exists."}
+  ],
+  "minimal_consistent_submodels":[
+    {
+      "id":"UPT-A-neutral-scalar-EFT",
+      "purpose":"Smallest repair that can be calculated without committing to a new U(1) gauge charge for P.",
+      "field_content":"GR + SM + real singlet scalar P",
+      "action_core":"S=integral d^4x sqrt(-g)[R/(16 pi G)+1/2 P K(Box/Lambda^2) P - V(P) - (lambda_HP/2)P^2 H^dagger H + L_SM]",
+      "requirements":["define K(z) and its analytic/causal prescription","choose a stable potential bounded from below","state whether P has a Z2 symmetry","derive the propagator and pole content","identify the cutoff Lambda and allowed parameter domain"],
+      "possible_observables":["Higgs invisible or exotic decays if kinematically open","Higgs-scalar mixing when the scalar acquires a vev","modified cosmological evolution if P is populated","fifth-force effects only if matter couplings are added","nonlocal dispersion only if the kinetic prescription produces it"]
+    },
+    {
+      "id":"UPT-B-complex-U1-potato-EFT",
+      "purpose":"Repair the historical U(1)_potato + F_P structure explicitly.",
+      "field_content":"GR + SM + complex scalar Phi_P + Abelian gauge field A^P_mu",
+      "core_terms":"|D_mu Phi_P|^2 - V(Phi_P) - 1/4 F_P^2 - lambda_HP |Phi_P|^2 H^dagger H",
+      "requirements":["declare U(1)_P charges","specify whether SM fields are neutral or charged","audit anomaly cancellation if chiral fermions carry the new charge","derive symmetry breaking and mass spectrum","include kinetic mixing with hypercharge if allowed by symmetries","confront collider, precision, astrophysical and cosmological constraints"]
+    }
+  ],
+  "field_theory_consistency_questions":[
+    "Does the quadratic kinetic operator produce only acceptable poles/residues in the regime where the EFT is claimed to apply?",
+    "Is the Hamiltonian bounded or otherwise stable in the chosen prescription?",
+    "Is the vacuum of V(P) or V(Phi_P,H) stable or metastable on the required timescale?",
+    "Are all interaction operators invariant under SU(3)xSU(2)xU(1)_Y and the chosen Potato symmetry?",
+    "What is the renormalization/matching prescription and which coefficients run with scale?",
+    "Which parameters are actually identifiable from proposed measurements?"
+  ],
+  "observable_program":{
+    "principle":"Do not test 'UPT as everything' in one step. Test one completed sector against the corresponding established baseline.",
+    "particle_branch":{"baseline":"Standard Model or SM + ordinary singlet/gauge extension","observables":["Higgs signal strengths","new scalar/gauge resonances","invisible/exotic widths","precision electroweak observables","missing-energy channels"]},
+    "gravity_branch":{"baseline":"GR or a named scalar-tensor/Einstein-scalar-Gauss-Bonnet model","observables":["post-Newtonian deviations","binary dynamics","ringdown/quasinormal modes","black-hole shadows where model-specific","cosmological expansion/growth"]},
+    "nonlocal_branch":{"baseline":"local scalar EFT with the same field content","observables":["propagator/dispersion differences","spectral density","causal response kernel","correlation functions"]},
+    "cross_scale_branch":{"baseline":"ordinary multiscale/statistical models","rule":"Biological or neural data require an explicit coarse-graining map from microscopic Potato-sector variables to measured biological variables; shared vocabulary is not a coupling mechanism."}
+  },
+  "falsification_and_failure_conditions":[
+    "A chosen completion is rejected if it is mathematically inconsistent in its claimed regime, for example unavoidable negative-norm/unstable modes or an unbounded potential without a stated EFT resolution.",
+    "A parameter region is rejected when it conflicts with relevant experimental/observational constraints after the same observables are computed consistently.",
+    "A proposed UPT effect loses empirical motivation if it is statistically indistinguishable from a simpler baseline after complexity is penalized.",
+    "The broad cross-scale unification claim remains unsubstantiated until explicit inter-scale maps generate successful predictions in more than one domain."
   ],
   "recovered_programmatic_ideas":[
     "Use a fractional d'Alembertian Box^alpha to create scale-nonlocal dynamics.",
@@ -53,13 +110,29 @@
     "Exact fermion species psi and gauge quantum numbers.",
     "Whether the Higgs coupling was intended as P^2 H or the gauge-invariant portal P^2 H†H / P†P H†H."
   ],
+  "completion_path":[
+    "1. Recover primary transcript and freeze the historical skeleton separately from modern repairs.",
+    "2. Choose exactly one minimal field-content fork.",
+    "3. Define the fractional/nonlocal operator and action with consistent dimensions.",
+    "4. Derive vacuum, propagators, masses, interactions and correspondence limits.",
+    "5. Check stability, unitarity/causal prescription, gauge consistency and EFT cutoff.",
+    "6. Select one observable sector and fit/limit parameters against existing data.",
+    "7. Predeclare at least one discriminating prediction before adding further sectors.",
+    "8. Only then investigate whether a controlled coarse-graining relation to biological/neural organization exists."
+  ],
+  "external_references":[
+    {"topic":"2026 particle-physics baseline","url":"https://pdgweb.lbl.gov/","note":"Particle Data Group Review of Particle Physics 2026."},
+    {"topic":"scalar Higgs portal review","url":"https://doi.org/10.1016/j.physrep.2019.11.003","note":"Established reference class for gauge-singlet scalar portal phenomenology."},
+    {"topic":"fractional field-theory consistency","url":"https://arxiv.org/abs/2603.25709","note":"Recent work illustrating that fractional kinetic operators require an explicit self-adjoint prescription and perturbative-spectrum analysis; included as a comparator, not validation of UPT."}
+  ],
   "lineage":[
     "2024 Great Book unified-field / QFT / holographic / higher-dimensional themes",
     "2025-04-18 UPT explicit Lagrangian and Potato symmetry group",
     "2025-04-21 Potato Axis + Spiral Equation attestation",
     "2026-05 explicit M-theory / dimensions / SUSY synthesis",
     "2026 dimensional Door / black-hole phase-transition formalization",
-    "2026-09 Potato Dynamics / Timic Unification / gauge-unification archaeology"
+    "2026-09 Potato Dynamics / Timic Unification / gauge-unification archaeology",
+    "2026-09-11 effective-field-theory rigor upgrade and minimal-completion forks"
   ],
-  "connections":["theory-of-everything-archaeology","equation-lineage-and-theory-graph","science-master-index","great-book-unified-field-archaeology","eleven-dimensional-projection-unification-recovery","gauge-unification-supersymmetry-archaeology"]
+  "connections":["theory-of-everything-archaeology","equation-lineage-and-theory-graph","science-master-index","great-book-unified-field-archaeology","eleven-dimensional-projection-unification-recovery","gauge-unification-supersymmetry-archaeology","higgs-quantum-tuber-potato-boson-recovery","model-testing-protocol"]
 }
