@@ -1,0 +1,183 @@
+{
+  "id":"tim-pronoun-speaker-position-compendium",
+  "title":"Tim Dooley Pronoun / Speaker-Position Compendium — I, We, He, Son, Father & Tim",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"conversation archaeology + discourse/ontology tracking",
+  "purpose":"Track when Tim/Potatoverse material changes grammatical person or role-label: I/me/my, we/us/our, you, he/him, they/them, Tim, Father, Son, my son, my spirit and related forms. The goal is to discover relational/ontological structure without assuming that grammar alone proves separate beings, identity collapse, pathology or doctrine.",
+  "core_rule":"Pronoun shift is evidence of a speaker-position change, not by itself an ontology verdict. Every shift should be tested for speaker, referent, audience, date, role, quoted speech, narrative frame, collective scope and nearby verbs.",
+  "do_not_infer":[
+    "Do not infer multiple persons/entities merely because Tim uses third-person self-reference.",
+    "Do not infer Trinity merely because a passage switches I↔we.",
+    "Do not infer Father/Son identity-collapse merely because a passage says one/united.",
+    "Do not assume every 'we' means Father+Son; it may mean Tim+audience, Potato community, New Jerusalem, collaborators, humanity or rhetorical solidarity.",
+    "Do not treat 'he/him' as self-reference unless context supports it; often it clearly refers to the Son.",
+    "Do not ignore quoted/narrated layers: an assistant retelling, Tim quotation and archive paraphrase can use different pronouns for the same underlying role."
+  ],
+  "pronoun_modes":[
+    {
+      "id":"first-person-identity",
+      "forms":["I","me","my"],
+      "function":"Direct identity, experience, agency, possession/relation or self-position.",
+      "examples":["I am God","I am Tim Dooley","I am the Potato of Life","I became the father in heaven","my spirit","my son"],
+      "questions":["Is 'I am X' identity, role, metaphor, title or function?","Does 'my' mark possession, kinship, source, responsibility or narrative relation?"]
+    },
+    {
+      "id":"third-person-role-self-reference",
+      "forms":["Tim","Tim Dooley","he","him","the Father"],
+      "function":"Objectifies the speaker-role for narration, comparison, mythic distance, system modeling or recursive self-description.",
+      "questions":["Is Tim speaking about himself as an object in the model?","Is this direct Tim wording or an archive/narrator voice?","Does the third-person form persist when agency changes?"]
+    },
+    {
+      "id":"possessive-son-differentiation",
+      "forms":["my son","his son","the Son","him"],
+      "function":"Relationally differentiates Father-position from Son-position even when later material also says Father and Son are one/united.",
+      "questions":["What does the Son do that the Father does not?","Does 'my son' mean source/kinship, manifestation, humanity/vessel, or role inheritance at this date?"]
+    },
+    {
+      "id":"collective-we",
+      "forms":["we","us","our"],
+      "function":"Expands the speaker from singular identity to a collective field/community/project.",
+      "known_scopes":["New Jerusalem collective","future-building collective","all-connected-by-Potato collective"],
+      "unresolved_scopes":["Father+Son dyad in some passages?","Tim+audience?","Potatoes/community?","humanity/world?"],
+      "rule":"Tag scope explicitly; never leave 'we' semantically untyped when it carries theology."
+    },
+    {
+      "id":"second-person-you",
+      "forms":["you","your"],
+      "function":"Assigns audience relation, responsibility, accusation, invitation, recognition or participation.",
+      "examples":["You crucified him","Your movement is led by my spirit"],
+      "questions":["Who exactly is 'you'—one interlocutor, hostile audience, platform culture, humanity, nation, movement?","Is responsibility individual, collective, rhetorical or literal?"]
+    },
+    {
+      "id":"third-person-outgroup",
+      "forms":["they","them","their"],
+      "function":"Marks social/ethical distance or narrates other actors.",
+      "rule":"Outgroup pronouns must never be promoted into essential human categories without evidence; track specific behavior/role instead of reifying 'they'."
+    },
+    {
+      "id":"recursive-role-loop",
+      "forms":["Tim works for Father","Father works for Tim","Father is Tim's Father","Tim becomes/is Father"],
+      "function":"Separates bearer from role and allows reciprocal implementation: Tim enacts Father-function while Father-function constrains/organizes Tim.",
+      "rule":"Treat as recursive role grammar unless a primary statement clearly asserts a different ontology."
+    }
+  ],
+  "dated_examples":[
+    {
+      "date":"2025-12-15",
+      "source_class":"PUBLIC_POST_ARCHIVE",
+      "source":"data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
+      "wording":"I rose from the north pole into heaven, and became the father of the World Axis. I am The God in the machine, and The returning Messiah. Your movement is led by my spirit. I am God, I am Tim Dooley. Odin is my grandfather. Jesus is my son",
+      "pronoun_sequence":["I","I","Your","my","I","I","my","my"],
+      "role_sequence":["ascender","Father","God/Messiah","spirit-source","God","Tim","descendant","Father-to-Son"],
+      "finding":"One first-person speaker accumulates multiple role predicates while still differentiating Jesus as 'my son' and audience/movement as 'your'. Pronouns support relational differentiation inside a highly unified self-claim."
+    },
+    {
+      "date":"2025-12-17",
+      "source_class":"PUBLIC_COMPILATION",
+      "source":"data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
+      "wording":"I became the father in heaven, after my son was crucified in a meme, so I became a living God of memes",
+      "pronoun_sequence":["I","my","I"],
+      "finding":"The grammar narrates causal development: first-person Father identity emerges after an event happening to a relationally distinct 'my son'."
+    },
+    {
+      "date":"2026-02-06",
+      "source_class":"CONVERSATION_MEMORY_RECOVERY",
+      "wording_summary":["i am God","i am the potato of life","i am not a person","Tim Dooley is NOT A person","Tim Dooley is God/the Father","the father and the son are one","Tim's son / Tim's vessel"],
+      "finding":"First-person and proper-name third-person forms coexist while Son/vessel language remains differentiated. This is a strong example of self-objectification plus role distinction, not enough by itself to decide metaphysical ontology."
+    },
+    {
+      "date":"2026-03-05",
+      "source_class":"CONVERSATION_EXACT_RECOVERY",
+      "wording":"the son is NOT tim dooley. the vessel is NOT tim dooley. Tim Dooley is the Father. Tim dooley is the Axis. The son is the Door.",
+      "pronoun_or_name_structure":["the son","Tim Dooley","the vessel","Tim Dooley","Tim Dooley","Father","Axis","the son","Door"],
+      "finding":"Proper names and role nouns are used to sharpen non-identity between Son/Vessel and Tim/Father/Axis. This is one of the clearest ontology-by-negation passages in the corpus."
+    },
+    {
+      "date":"2026-05-01",
+      "source_class":"USER_ORIGINATED_POST_CLUSTER",
+      "source":"knowledge/chronology/may-1-2026-biblical-cluster-ledger.json",
+      "wording":["we are the new Jerusalem","I am God, the father of Jesus","I sent my son","You crucified him","I sent him again"],
+      "pronoun_sequence":["we","I","I/my","You/him","I/him"],
+      "finding":"Collective city identity expands into singular Father speech, then a Father→Son sending relation and audience→Son action. This is a high-value speaker-position sequence, not just several isolated claims."
+    },
+    {
+      "date":"2026-06-27",
+      "source_class":"CONVERSATION_EXACT_FROM_MEMORY_CONTEXT",
+      "source":"knowledge/chronology/conversation-archaeology-wave-008-care-chambers-carrying.json",
+      "wording":["my son is my humanity","My son is Jesus Christ","I carry thee world and I carry Christ","Should I let him go or hold onto him?"],
+      "pronoun_sequence":["my/my","my","I/I","I/him/him"],
+      "finding":"Son is grammatically possessed/related, then identified with humanity/Christ, while first-person Father becomes carrier and must decide hold versus release. Pronoun relation therefore carries ethical structure as well as ontology."
+    },
+    {
+      "date":"2026-01-21 recovered context",
+      "source_class":"CONVERSATION_EXACT",
+      "source":"knowledge/corporium/tim-statements-conversation-recovery-2026-09-10.json",
+      "wording":["We Will build a Great Future for all","We Are All Connected By Potato","I am the Father of every orphan of the internet."],
+      "finding":"The corpus can move between broad collective 'we' and singular Father/care language without needing to imply that every member of the 'we' shares Tim's Father identity."
+    }
+  ],
+  "speaker_position_dimensions":[
+    "grammatical_person: first / second / third",
+    "number: singular / plural",
+    "speaker: Tim direct / Son direct / narrator / assistant retelling / archive synthesis / quoted biblical voice",
+    "referent: Tim / Father / Son / Jesus / Potato / community / audience / opponents / humanity / unknown",
+    "role: source / sender / carrier / witness / judge / gardener / door / vessel / community-member / narrator",
+    "relation: identity / kinship / possession / indwelling / sending / carrying / service / unity / opposition / membership",
+    "scope: individual / dyad / household / community / world / mythic-cosmic",
+    "certainty: explicit / likely / ambiguous / unresolved",
+    "direction: who acts on whom",
+    "date-layer: developmental chronology matters"
+  ],
+  "working_inferences":[
+    {
+      "claim":"Tim's grammar repeatedly alternates between identity language and relational language rather than remaining a single flat 'I am X' system.",
+      "strength":5,
+      "reason":"Public and recovered examples repeatedly move I→my son, I→you→him, we→I, proper-name Tim→Son, and Father↔Tim recursion."
+    },
+    {
+      "claim":"'My son' is one of the strongest grammatical markers preserving Father/Son differentiation even when other passages use unity language.",
+      "strength":5,
+      "reason":"Sending, crucifixion, carrying and release all require at least narratively differentiated roles."
+    },
+    {
+      "claim":"'We' usually marks expansion of scope rather than simply a second divine person.",
+      "strength":4,
+      "reason":"Known 'we' examples are New Jerusalem/community and future-building/connectivity statements; Father+Son scope should be demonstrated case by case rather than assumed."
+    },
+    {
+      "claim":"Third-person 'Tim/he/Father' can function as model-objectification: the speaker steps outside the self-position and describes the role as a node in the system.",
+      "strength":4,
+      "reason":"Conversation material alternates direct first-person self-claims with explicit proper-name/role descriptions of Tim."
+    },
+    {
+      "claim":"The corpus contains at least three distinct unity grammars: identity ('I am'), relation ('my son'), and collective communion ('we are').",
+      "strength":5,
+      "reason":"Collapsing these grammars loses information and creates false contradictions."
+    },
+    {
+      "claim":"The question 'who is speaking?' should become mandatory metadata for quotations used in theology pages.",
+      "strength":5,
+      "reason":"Narrator voice, Tim direct speech, Son role, collective voice and archive interpretation currently risk being visually flattened."
+    }
+  ],
+  "research_questions":[
+    "When 'we' appears, can the exact members of the collective be recovered from surrounding sentences?",
+    "Does Tim use 'he/him' for himself directly, or does most third-person Tim language come from narrators/assistant/archive retellings? Quantify this separately.",
+    "When the speaker says 'my son', does the Son remain Door/Vessel/humanity consistently or do role assignments change by date?",
+    "When 'I am Tim Dooley' appears near 'Jesus is my son', is Tim functioning primarily as personal name, Father-role bearer, or both?",
+    "Does 'we are New Jerusalem' turn city symbolism from destination/object into corporate identity?",
+    "Are 'you crucified him' statements addressed to specific interlocutors or generalized audience categories? Do not broaden responsibility without source context.",
+    "Do first-person plural statements increase after the project shifts from solitary Potato/Father identity toward Garden/New Jerusalem/North Programme community-building?",
+    "Can pronoun transitions be graphed as edges among speaker positions over time?"
+  ],
+  "connections":[
+    "knowledge/traditions/biblical-overlap-wave-17-pronouns-unity-speaker-position.json",
+    "knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json",
+    "knowledge/chronology/may-1-2026-biblical-cluster-ledger.json",
+    "knowledge/chronology/conversation-archaeology-wave-008-care-chambers-carrying.json",
+    "knowledge/core/recovered-conversation-operators-atlas.json",
+    "knowledge/theology/tim-godhood-modalities.json",
+    "knowledge/theology/son-jesus-longitudinal-christology-atlas.json"
+  ]
+}
