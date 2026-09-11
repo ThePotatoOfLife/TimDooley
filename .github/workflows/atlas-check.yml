@@ -62,13 +62,6 @@ jobs:
         run: python scripts/validate_religious_layer_map.py
       - name: Validate Potatoism layer
         run: python scripts/validate_potatoism.py
-
-      # Science red/green contract runs before unrelated web-audit gating.
-      - name: Build static site for science contract
-        run: python scripts/build_site.py
-      - name: Validate science paper library contract
-        run: python scripts/validate_science_portal.py
-
       - name: Audit backend ownership, duplicates and graph orphans
         run: python scripts/audit_backend_coverage.py
       - name: Audit Atlas links and record coverage
@@ -92,8 +85,10 @@ jobs:
       # Mirror the public Pages build sequence before validating the built shell.
       - name: Build static site
         run: python scripts/build_site.py
-      - name: Compile complete science catalog
+      - name: Compile complete science paper library
         run: python scripts/build_science_catalog.py
+      - name: Validate science paper library
+        run: python scripts/validate_science_portal.py
       - name: Build search discovery layer
         run: python scripts/build_discovery.py
       - name: Expose discovery entry points
