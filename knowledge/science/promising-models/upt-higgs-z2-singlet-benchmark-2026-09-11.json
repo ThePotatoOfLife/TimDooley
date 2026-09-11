@@ -12,7 +12,7 @@
     "vacuum_assumption":"<P>=0 so Z2 remains unbroken; electroweak symmetry breaks normally with H=(0,(v+h)/sqrt(2))^T",
     "lagrangian_new_sector":"L_P = (1/2)(partial P)^2 - (m0^2/2)P^2 - (lambda_P/4)P^4 - (lambda_HP/2)P^2 H^dagger H",
     "parameters":["m0^2","lambda_P","lambda_HP"],
-    "standard_inputs":["v approximately 246 GeV","m_h approximately 125 GeV"]
+    "standard_inputs":["v approximately 246.22 GeV","m_h approximately 125.25 GeV"]
   },
   "after_electroweak_symmetry_breaking":{
     "physical_singlet_mass":"m_P^2 = m0^2 + (lambda_HP/2) v^2",
@@ -24,7 +24,17 @@
     "condition":"m_P < m_h/2",
     "partial_width":"Gamma(h->PP)=lambda_HP^2 v^2/(32 pi m_h) sqrt(1-4 m_P^2/m_h^2)",
     "branching_fraction":"BR_inv = Gamma(h->PP)/(Gamma_SM + Gamma(h->PP)) if P is detector-invisible/stable on detector scales",
-    "illustrative_constraint_translation":"Using the published ATLAS full Run-1+Run-2 benchmark BR_inv<0.11 at 95% CL and Gamma_SM about 4.07 MeV gives lambda_HP roughly below 0.010 in the light-P limit m_P << m_h/2. This is an illustrative conversion, not claimed as the latest global 2026 combination.",
+    "illustrative_constraint_translation":"Using the published ATLAS full Run-1+Run-2 benchmark BR_inv<0.11 at 95% CL and Gamma_SM about 4.07 MeV gives lambda_HP roughly below 0.010 in the light-P limit. This is an illustrative conversion, not claimed as the latest global 2026 combination.",
+    "derived_limit_formula":"For a chosen BR limit B and SM width Gamma_SM, Gamma_PP,max=[B/(1-B)] Gamma_SM and lambda_HP,max(m_P)=sqrt[32 pi m_h Gamma_PP,max/(v^2 sqrt(1-4m_P^2/m_h^2))].",
+    "illustrative_lambda_HP_max_for_BRinv_0_11":[
+      {"m_P_GeV":0,"lambda_HP_max":0.0102},
+      {"m_P_GeV":10,"lambda_HP_max":0.0103},
+      {"m_P_GeV":30,"lambda_HP_max":0.0109},
+      {"m_P_GeV":50,"lambda_HP_max":0.0132},
+      {"m_P_GeV":60,"lambda_HP_max":0.0191},
+      {"m_P_GeV":62,"lambda_HP_max":0.0272}
+    ],
+    "interpretation":"The rapid weakening close to m_h/2 is a phase-space effect, not evidence that the portal becomes intrinsically less coupled. Above threshold the invisible decay closes and other observables must carry the constraint.",
     "scientific_value":"This immediately removes large parts of parameter space if P is light and stable, making the model genuinely constrainable rather than infinitely adjustable."
   },
   "nested_model_strategy":{
@@ -48,7 +58,7 @@
   ],
   "next_calculations":[
     "Map (m_P,lambda_HP,lambda_P) tree-level viability including boundedness and perturbativity.",
-    "For m_P<m_h/2 convert Higgs invisible-width bounds to lambda_HP(m_P).",
+    "Replace the illustrative BR_inv benchmark with the strongest appropriate current combined experimental likelihood when doing a real fit.",
     "For m_P>m_h/2 use Higgs precision, off-shell/exotic-scalar and cosmological/direct-detection constraints only under the assumptions relevant to those analyses.",
     "If P is a dark-matter candidate, compute thermal or nonthermal abundance rather than assuming the observed relic density.",
     "Only after the local model is controlled, replace the canonical kinetic operator with a rigorously specified UPT kernel and quantify the observable difference."
