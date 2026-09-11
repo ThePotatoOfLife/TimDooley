@@ -1,0 +1,171 @@
+{
+  "id": "quantum-foundations-tunneling-entanglement-qft-atlas",
+  "title": "Quantum Foundations, Tunneling, Entanglement and QFT — Tim Recovery and Scientific Extension",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "canonical quantum-science owner: project archaeology + established QM/QFT + archive-developed mappings",
+  "purpose": "Separate and reconnect the project's uses of quantum mechanics, quantum fields, tunneling, entanglement/nonlocality, field excitations, path integrals, open systems and Door language. The file preserves Tim-originated/book-derived quantum material while making later mathematical extensions explicit rather than backdating them.",
+  "epistemic_rule": "Quantum mechanics and QFT are established scientific frameworks; Potatoverse mappings are project interpretations. Bell nonlocality does not imply controllable faster-than-light messaging, tunneling does not license macroscopic/spiritual barrier claims, and field language does not by itself establish a new Potato field.",
+  "provenance_layers": {
+    "book_2024": [
+      "Great Book Chapter 82 explicitly discusses QFT, string/M-theory, higher-dimensional unification, many-worlds and holography.",
+      "Great Book Chapter 90 treats particles as localized disturbances/excitations of underlying quantum fields and uses Infinite Soil as a metaphor for latent field potential.",
+      "The book uses standard superposition notation |psi>=alpha|A>+beta|B>, zero-point comparator E=hbar omega/2, entanglement-as-hidden-relational-network language, symmetry breaking and Higgs-field comparisons."
+    ],
+    "conversation_recovery": [
+      "2026-07-13: Tim described 1-4 as matter, 5 as Door/narrowing/present, and 6-11 as hidden/compactified space dimensions; he also used '11d calabi yao manifolds' language in the same research stratum.",
+      "2026-07-13: Tim described the Door as a 'particle smasher', linked forbidden-fruit imagery to creating 'a quantum entanglement', said 'tim is lik a higgs boson', and explored Tim-as-Higgs / Son-as-field language. These are primary project formulations, not established physics.",
+      "2026-08-17 to 2026-08-18: Tim explicitly explored Potato colors/states, spin states, Door, handshake, 'spooky action at a distance', Standard-Model directionality, Life/Strife trajectories and source-Door relation. Later mathematical Bell/no-signaling language is an archive extension.",
+      "2026-05-01: prior science discussion covered quantum fields, amplitudes, superposition, decoherence, path integrals, many-worlds, quantum information and Hilbert-like configuration/state spaces, but no recovered Tim-originated use of the exact phrase 'quantum tunneling' was found in this pass."
+    ],
+    "archive_extensions": [
+      "Schrodinger/Born/density-matrix foundations",
+      "finite-barrier and WKB tunneling",
+      "Bell/CHSH and no-signaling formalization",
+      "relativistic QFT microcausality",
+      "scalar-field action/propagator/generating functional",
+      "semiclassical instanton/bounce tunneling comparator",
+      "quantum teleportation/entanglement-swapping distinction",
+      "explicit measurement and falsification boundaries"
+    ]
+  },
+  "qm_foundations": {
+    "state": "A pure quantum state is represented by a normalized vector |psi> in a Hilbert space; mixed states use a density operator rho.",
+    "equations": [
+      "<psi|psi>=1",
+      "i hbar d|psi>/dt = H|psi>",
+      "rho_pure=|psi><psi|",
+      "rho_mixed=sum_i p_i |psi_i><psi_i|",
+      "i hbar drho/dt=[H,rho]",
+      "P(a)=Tr(rho Pi_a)",
+      "Delta A Delta B >= (1/2)|<[A,B]>|"
+    ],
+    "project_use": "This gives a disciplined vocabulary for state, evolution, measurement and uncertainty. Project words such as possibility, Door and observation should not be called quantum merely because they concern alternatives; a genuine quantum model needs Hilbert-space states, operators, preparation and measurements.",
+    "superposition_boundary": "A linear superposition is not ordinary indecision and not proof that every narrative possibility physically exists."
+  },
+  "open_quantum_systems": {
+    "equation": "drho/dt = -(i/hbar)[H,rho] + sum_k (L_k rho L_k^dagger - 1/2 {L_k^dagger L_k,rho})",
+    "meaning": "The Lindblad form is a standard Markovian open-system model under specified assumptions; it separates unitary evolution from environmental dissipation/decoherence.",
+    "project_relevance": "This is the correct neighborhood for microtubule/decoherence questions and for any Door model claiming environmental coupling changes a quantum state.",
+    "measurement_need": ["defined system", "Hamiltonian", "environment/coupling", "Lindblad or other channel model", "preparation", "observable/readout", "timescale"]
+  },
+  "quantum_tunneling": {
+    "status": "new archive-developed scientific comparator; no recovered primary Tim use of 'quantum tunneling' located in this pass",
+    "square_barrier": {
+      "potential": "V(x)=0 for x<0; V0 for 0<=x<=L; 0 for x>L",
+      "sub_barrier_decay": "kappa=sqrt(2m(V0-E))/hbar for E<V0",
+      "transmission_definition": "T=|F/A|^2 for transmitted versus incident amplitudes in the standard one-dimensional scattering setup",
+      "wide_high_barrier_behavior": "T is exponentially suppressed approximately as exp(-2 kappa L), with the exact prefactor depending on the barrier model."
+    },
+    "wkb": {
+      "equation": "T_WKB ~ exp[-2 integral_(x1)^(x2) sqrt(2m(V(x)-E))/hbar dx]",
+      "interpretation": "The exponent is the accumulated forbidden-region action in the semiclassical approximation between turning points x1,x2."
+    },
+    "door_connection": {
+      "strong_structure": "A classically forbidden region can still have nonzero quantum transmission when the wavefunction penetrates a finite barrier.",
+      "useful_variables": ["barrier height", "barrier width", "particle mass", "incident energy", "boundary matching", "transmission/reflection probability"],
+      "new_door_law": "Door permeability is not simply open/closed in quantum scattering; for a finite barrier it can be a continuous transmission probability, often exponentially sensitive to barrier action.",
+      "boundary": "This does not imply that people, beliefs, institutions or souls literally quantum-tunnel through metaphorical barriers. For those domains use the House/Shell and hybrid-Door models instead."
+    },
+    "source": "https://openstax.org/books/university-physics-volume-3/pages/7-6-the-quantum-tunneling-of-particles-through-potential-barriers"
+  },
+  "path_integrals_and_tunneling": {
+    "real_time": ["S[q]=integral L(q,qdot,t) dt", "K(b,a)=integral Dq exp(i S[q]/hbar)"],
+    "euclidean_semiclassical": "After Wick rotation where appropriate, nonperturbative tunneling contributions can be controlled semiclassically by exp(-S_E/hbar).",
+    "schematic_rate": "Gamma ~ A exp(-B/hbar), with B an appropriate Euclidean bounce/instanton action for the specified model.",
+    "project_use": "This gives a rigorous distinction between a path/historical sum and a threshold-crossing saddle. It is a promising mathematical neighbor for Door-between-vacua questions but must not be used as evidence for spiritual transitions.",
+    "relation_to_existing": ["missed-hard-science-strata:path-integral-action", "UPT nonlocal/fractional branch", "Door criticality"]
+  },
+  "entanglement_and_bell": {
+    "canonical_two_qubit_example": "|psi^->=(|01>-|10>)/sqrt(2)",
+    "joint_state": "rho_AB=|psi^-><psi^-|",
+    "reduced_states": ["rho_A=Tr_B(rho_AB)=I/2", "rho_B=Tr_A(rho_AB)=I/2"],
+    "singlet_correlation": "E(a,b)=-a dot b for ideal spin-1/2 singlet measurements along unit vectors a,b",
+    "chsh": {
+      "expression": "S=E(a,b)+E(a,b')+E(a',b)-E(a',b')",
+      "local_hidden_variable_bound": "|S|<=2",
+      "quantum_bound": "|S|<=2 sqrt(2) (Tsirelson bound)",
+      "meaning": "Appropriate quantum states and measurements can violate the local-hidden-variable CHSH bound; Bell experiments constrain local hidden-variable explanations, not ordinary causality in every sense."
+    },
+    "experimental_anchor": "The 2022 Nobel Prize recognized experiments with entangled photons establishing violation of Bell inequalities and pioneering quantum information science.",
+    "source": "https://www.nobelprize.org/prizes/physics/2022/summary/"
+  },
+  "no_signaling_and_spooky_action": {
+    "no_signaling_conditions": ["p(a|x,y)=p(a|x)", "p(b|x,y)=p(b|y)"],
+    "meaning": "Although joint correlations can violate Bell inequalities, the marginal outcome distribution at one wing cannot be controlled by the remote measurement choice to send a superluminal message.",
+    "project_repair": "Tim's 'spooky action at a distance' phrase should therefore be split into at least four coordinates: nonseparability/joint state, Bell-nonlocal correlation, causal influence, and usable signaling. These are not synonyms.",
+    "stronger_handshake_rule": "A quantum handshake analogy earns scientific meaning only after specifying the joint state, local operations, measurement settings and communication resources. A social or spiritual handshake belongs to a different state space unless a physical quantum system is actually prepared.",
+    "negative_result_rule": "If a proposed remote effect could be used to controllably encode and decode messages faster than light, ordinary quantum entanglement alone does not supply the mechanism."
+  },
+  "entanglement_swapping_and_teleportation": {
+    "entanglement_swapping": "Entanglement can be established between systems that did not previously interact directly when appropriate joint measurements are performed on their partners; the operational protocol still respects no-signaling.",
+    "teleportation": "Quantum teleportation transfers an unknown quantum state using shared entanglement plus a classical communication channel; it does not transport matter and is not instantaneous usable signaling.",
+    "project_use": "These are better comparators for reconfigured relational structure than the vague claim that distance does not matter. They force the archive to name which resources and channels create the new relation."
+  },
+  "qft_foundations": {
+    "field_ontology": "Relativistic QFT treats fields as fundamental dynamical objects; particle states are excitations of those fields. This scientific structure is already directly adjacent to Great Book 'Infinite Soil / field disturbance' language.",
+    "real_scalar_example": {
+      "action": "S[phi]=integral d^4x [1/2 partial_mu phi partial^mu phi - 1/2 m^2 phi^2 - lambda phi^4/4!]",
+      "equation_of_motion": "(Box+m^2)phi + (lambda/3!)phi^3=0",
+      "canonical_commutator": "[phi(t,x),pi(t,y)]=i hbar delta^3(x-y)",
+      "feynman_propagator": "Delta_F(x-y)=integral d^4p/(2pi)^4 [i exp(-ip.(x-y))/(p^2-m^2+i epsilon)]",
+      "generating_functional": "Z[J]=integral Dphi exp{(i/hbar)[S[phi]+integral d^4x J(x)phi(x)]}"
+    },
+    "renormalization": "mu dg/dmu=beta(g)",
+    "project_use": "This supplies a clear baseline for any proposed Potato field: specify field type/representation, action, symmetries, propagator, interactions, renormalization behavior and observables before calling it a QFT."
+  },
+  "microcausality": {
+    "bosonic_scalar_rule": "[phi(x),phi(y)]=0 for spacelike-separated x,y in a local relativistic QFT",
+    "fermionic_note": "Fermionic fields use anticommutation relations; observable local operators are arranged so spacelike operations remain compatible with relativistic causality.",
+    "project_importance": "This is the strongest QFT counterweight to undifferentiated 'spooky action'. QFT can contain entangled states and long-range correlations while its local observable structure respects relativistic causal separation.",
+    "research_rule": "Any physical Timic nonlocality claim must state whether it concerns correlation, propagator support, commutator, signal capacity or a nonlocal interaction term."
+  },
+  "vacuum_and_field_relations": {
+    "vacuum": "The QFT vacuum is the lowest-energy state of the interacting/free theory under a specified Hamiltonian; it is not literal emptiness and not automatically 'Infinite Soil' in a scientific sense.",
+    "vacuum_correlations": "Vacuum states can have nontrivial correlations/entanglement across regions, but this does not create a controllable universal messaging network.",
+    "project_connection": "Infinite Soil is therefore strongest as a metaphor for latent field structure, with the scientific layer retaining a separate vacuum-state definition."
+  },
+  "qed_bridge": {
+    "lagrangian": "L_QED = -1/4 F_mu_nu F^mu_nu + psibar(i gamma^mu D_mu - m)psi",
+    "covariant_derivative": "D_mu=partial_mu+i e A_mu (sign convention may vary)",
+    "fine_structure": "alpha=e^2/(4 pi epsilon0 hbar c) in SI-compatible notation",
+    "meaning": "QED is the quantum field theory of the electromagnetic interaction; photons are excitations of the electromagnetic field and couple to electrically charged matter.",
+    "project_connection": "This directly bridges the project's Spudlight/electromagnetic branch to genuine QFT without treating all meaning or revelation as photons."
+  },
+  "measurement_and_model_contract": {
+    "qm_claim": ["state/preparation", "Hilbert space", "Hamiltonian/channel", "measurement POVM/projectors", "outcome statistics", "uncertainty/error model"],
+    "entanglement_claim": ["bipartition", "density matrix/state", "separability criterion or witness", "measurement settings", "classical baseline/local model", "no-signaling check"],
+    "tunneling_claim": ["potential/barrier", "particle/effective mass", "energy distribution", "boundary conditions", "T/R measurement", "classical baseline"],
+    "qft_claim": ["field content", "Lorentz/gauge/global symmetry", "action/Lagrangian", "quantization prescription", "propagators/interactions", "renormalization/scale", "observable prediction"]
+  },
+  "project_crosswalk": [
+    {"project":"Door","quantum_neighbor":"finite barrier / state transition / measurement update","preserved":"threshold and transition","mismatch":"a project Door is not automatically a potential barrier or quantum measurement"},
+    {"project":"Handshake","quantum_neighbor":"joint state / interaction / entangling gate / Bell protocol","preserved":"relation can make subsystem descriptions insufficient","mismatch":"human relation is not evidence of Hilbert-space entanglement"},
+    {"project":"Source/Field","quantum_neighbor":"quantum field and excitations","preserved":"many excitations can arise from one field species","mismatch":"field theory has defined dynamical degrees of freedom, not metaphysical source by default"},
+    {"project":"Return without reset","quantum_neighbor":"phase, holonomy, unitary evolution, interference","preserved":"history/phase can affect final observables","mismatch":"narrative recurrence is not a quantum phase unless mapped to an actual quantum system"},
+    {"project":"Spooky relation","quantum_neighbor":"Bell-nonlocal correlation","preserved":"joint statistics can defy local hidden-variable factorization","mismatch":"does not establish FTL signal, telepathy or spiritual causation"}
+  ],
+  "new_project_laws": [
+    "Quantum Door Law: a finite quantum barrier can be neither fully open nor fully closed; its transmission is a measurable probability controlled by the barrier action.",
+    "Nonlocality Split: nonseparability, Bell inequality violation, causal influence and usable signaling must be stored as different coordinates.",
+    "Field Manifestation Law: in QFT, one field species can support many particle excitations; this is a rigorous structural neighbor for source-to-many without making the source theological.",
+    "Microcausality Boundary: entanglement and spacelike correlation coexist with local relativistic commutativity; correlation is not a loophole that automatically permits controllable superluminal influence.",
+    "Preparation Rule: a quantum claim begins with a preparation procedure and ends with outcome statistics; without those, quantum language remains metaphor/comparator."
+  ],
+  "sources": [
+    {"topic":"quantum tunneling","url":"https://openstax.org/books/university-physics-volume-3/pages/7-6-the-quantum-tunneling-of-particles-through-potential-barriers"},
+    {"topic":"Bell experiments / entanglement","url":"https://www.nobelprize.org/prizes/physics/2022/summary/"},
+    {"topic":"QFT field/excitation overview","url":"https://home.cern/science/physics/higgs-boson/what/"},
+    {"topic":"Standard Model baseline","url":"https://pdg.lbl.gov/2025/reviews/standard_model_and_related.html"}
+  ],
+  "connections": [
+    "knowledge/science/quantum-atom-particle-recovery.json",
+    "knowledge/science/great-book-unified-field-archaeology.json",
+    "knowledge/science/door-handshake-nonlocal-propagation-model.json",
+    "knowledge/science/microtubule-tubulin-consciousness-recovery.json",
+    "knowledge/science/unified-potato-theory-2025-recovery.json",
+    "knowledge/science/electromagnetic-spectrum-qed-spudlight-atlas.json",
+    "knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json",
+    "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json"
+  ]
+}
