@@ -9,6 +9,14 @@ const statusNode = () => document.querySelector('#status');
 const guard = () => window.__potatoAtlasBootGuard;
 const OPTIONAL_TIMEOUT_MS = 12000;
 const modulePromises = new Map();
+const ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v') || '';
+
+function versionedModule(path) {
+  if (!ATLAS_VERSION) return path;
+  const url = new URL(path, import.meta.url);
+  url.searchParams.set('v', ATLAS_VERSION);
+  return url.href;
+}
 
 function now() { return performance.now(); }
 
@@ -70,15 +78,17 @@ function loadOptional(label, path) {
 
   const promise = (async () => {
     const startedAt = now();
+    const resolvedPath = versionedModule(path);
     diagnostic(label, {
       path,
+      resolvedPath,
       status: 'loading',
       startedAtMs: Math.round(startedAt - window.__potatoAtlasDiagnostics.startedAt),
     });
     let timer;
     try {
       await Promise.race([
-        import(path),
+        import(resolvedPath),
         new Promise((_, reject) => {
           timer = setTimeout(() => reject(new Error(`${label} exceeded the optional-module deadline.`)), OPTIONAL_TIMEOUT_MS);
         }),
@@ -115,13 +125,14 @@ window.__potatoAtlasEnhancements = { loaded: [], failed: [] };
 window.__potatoAtlasDiagnostics = {
   startedAt: now(),
   startedAtIso: new Date().toISOString(),
+  deploymentVersion: ATLAS_VERSION || 'unversioned-source',
   coreReadyMs: null,
   interactiveMs: null,
   modules: {},
 };
 window.__potatoAtlasReady = false;
-// One shared loader keeps diagnostics/deduplication intact even when the UI or
-// another optional module promotes a dormant feature on demand.
+// One shared loader keeps diagnostics/deduplication/cache versioning intact even
+// when the UI or another optional module promotes a dormant feature on demand.
 window.__potatoAtlasLoadModule = loadAfterPaint;
 
 try {
@@ -129,7 +140,7 @@ try {
 
   // 3d-hover owns resilient local-first data routing and imports 3d-app, which
   // constructs the MapLibre renderer and geographic country layers.
-  await import('./3d-hover.js');
+  await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
 
