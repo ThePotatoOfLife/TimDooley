@@ -4,6 +4,8 @@
   const nativeFetch = window.fetch.bind(window);
   const DEFAULT_TIMEOUT_MS = 10000;
   const BOOT_WATCHDOG_MS = 18000;
+  const REST_COUNTRIES_PREFIX = 'https://restcountries.com/v3.1/all';
+  const LOCAL_COUNTRY_RUNTIME = '../data/world-country-runtime.json';
 
   const status = () => document.querySelector('#status');
   const showFailure = message => {
@@ -23,12 +25,18 @@
   };
 
   window.fetch = function atlasBoundedFetch(input, init = {}) {
+    const url = typeof input === 'string' ? input : input?.url || String(input);
+    // REST Countries is useful at build/research time but should not be part of
+    // interactive camera performance. Route runtime calls to the compact,
+    // checked-in same-origin snapshot before any later resilience wrappers run.
+    const target = url.startsWith(REST_COUNTRIES_PREFIX) ? LOCAL_COUNTRY_RUNTIME : input;
+
     // Respect an explicit caller-owned AbortSignal; otherwise add a finite deadline.
-    if (init?.signal) return nativeFetch(input, init);
+    if (init?.signal) return nativeFetch(target, init);
 
     const controller = new AbortController();
     const timer = window.setTimeout(() => controller.abort(), DEFAULT_TIMEOUT_MS);
-    return nativeFetch(input, { ...init, signal: controller.signal })
+    return nativeFetch(target, { ...init, signal: controller.signal })
       .finally(() => window.clearTimeout(timer));
   };
 
