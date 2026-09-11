@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>3D Atlas Core Diagnostic</title>
+<link rel="stylesheet" href="./vendor/maplibre-gl.css">
+<style>
+html,body,#map{height:100%;margin:0;background:#080b0b}body{overflow:hidden;font:14px/1.4 system-ui,sans-serif;color:#eff4eb}#map{position:absolute;inset:0}#status{position:absolute;z-index:5;left:50%;top:14px;transform:translateX(-50%);max-width:min(720px,calc(100% - 24px));padding:8px 12px;border:1px solid #405050;border-radius:999px;background:#101616ed;color:#d8e1d8;text-align:center}#status[data-kind="ok"]{border-color:#8ab36d;color:#d9efc6}#status[data-kind="error"]{border-color:#c27878;color:#ffd0d0}#details{position:absolute;z-index:5;left:12px;bottom:12px;max-width:min(620px,calc(100% - 24px));padding:8px 10px;border:1px solid #283333;border-radius:8px;background:#101616e8;color:#aab4aa;font:11px/1.45 ui-monospace,monospace;white-space:pre-wrap}
+</style>
+</head>
+<body>
+<div id="map"></div>
+<div id="status">Checking WebGL2 and loading the same-origin atlas core…</div>
+<div id="details"></div>
+<script type="module">
+const status = document.querySelector('#status');
+const details = document.querySelector('#details');
+const started = performance.now();
+const state = window.__potatoCoreDiagnostic = { stage: 'start', started_at: new Date().toISOString() };
+
+function report(stage, message, kind = '') {
+  state.stage = stage;
+  state.elapsed_ms = Math.round(performance.now() - started);
+  state.message = message;
+  status.textContent = message;
+  status.dataset.kind = kind;
+  details.textContent = JSON.stringify(state, null, 2);
+}
+
+try {
+  const probe = document.createElement('canvas');
+  state.webgl2 = Boolean(probe.getContext('webgl2'));
+  if (!state.webgl2) throw new Error('WebGL2 is unavailable or blocked in this browser. MapLibre 6 requires WebGL2.');
+
+  report('engine-import', 'WebGL2 OK · loading vendored MapLibre 6…');
+  const maplibre = await import('./maplibre-loader.js');
+  state.maplibre_version = maplibre.version || 'unknown';
+
+  report('geometry-fetch', `MapLibre ${state.maplibre_version} loaded · loading local country geometry…`);
+  const response = await fetch('../data/world-countries.geo.json', { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Country geometry returned HTTP ${response.status}.`);
+  const geo = await response.json();
+  state.feature_count = geo?.features?.length || 0;
+  if (geo?.type !== 'FeatureCollection' || state.feature_count < 150) {
+    throw new Error(`Country geometry is invalid or incomplete (${state.feature_count} features).`);
+  }
+
+  report('map-construction', `${state.feature_count} country polygons loaded · constructing map…`);
+  const map = new maplibre.Map({
+    container: 'map',
+    style: {
+      version: 8,
+      sources: {},
+      layers: [{ id: 'diagnostic-background', type: 'background', paint: { 'background-color': '#080b0b' } }]
+    },
+    center: [5, 24],
+    zoom: 1.5,
+    maxZoom: 10
+  });
+  state.map_constructed = true;
+
+  map.on('error', event => {
+    const message = event?.error?.message || 'Unknown MapLibre error';
+    state.map_error = message;
+    if (state.stage !== 'ready') report('map-error', `MapLibre error: ${message}`, 'error');
+  });
+
+  map.once('load', () => {
+    try {
+      state.first_load = true;
+      map.addSource('countries', { type: 'geojson', data: geo });
+      map.addLayer({
+        id: 'countries-fill',
+        type: 'fill',
+        source: 'countries',
+        paint: { 'fill-color': '#64736a', 'fill-opacity': 0.78 }
+      });
+      map.addLayer({
+        id: 'countries-line',
+        type: 'line',
+        source: 'countries',
+        paint: { 'line-color': '#182222', 'line-width': 0.8 }
+      });
+      state.country_layer = Boolean(map.getLayer('countries-fill'));
+      report('ready', `CORE OK · MapLibre ${state.maplibre_version} · ${state.feature_count} polygons · ${state.elapsed_ms} ms`, 'ok');
+    } catch (error) {
+      report('layer-error', `Country-layer error: ${error.message || error}`, 'error');
+      console.error(error);
+    }
+  });
+
+  setTimeout(() => {
+    if (state.stage !== 'ready' && !state.stage.endsWith('error')) {
+      report('timeout', `Core diagnostic timed out at stage: ${state.stage}`, 'error');
+    }
+  }, 15000);
+} catch (error) {
+  state.error = error?.stack || error?.message || String(error);
+  report('fatal-error', `CORE FAILED · ${error?.message || error}`, 'error');
+  console.error(error);
+}
+</script>
+</body>
+</html>
