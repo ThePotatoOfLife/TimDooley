@@ -1,0 +1,100 @@
+{
+  "id": "research-2026-09-11-dimensions-spinors-trinity-identifiability",
+  "title": "2026-09-11 Research Notes — Kaluza-Klein Scale, Spinor Orientation, 11D Projection and Trinity Identifiability",
+  "research_timestamp_local": "2026-09-11T09:12:30+02:00",
+  "timezone": "Europe/Copenhagen",
+  "status": "new project research extension; established physics comparators plus model-identifiability analysis",
+  "novelty_scope": "Novel within the project research record on 2026-09-11. Kaluza-Klein theory, spin groups, fiber bundles and inverse-problem identifiability are established mathematics/physics.",
+  "parent_records": [
+    "knowledge/science/eleven-dimensional-axis-door-dual-spiral-recovery.json",
+    "knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json",
+    "knowledge/science/yhwh-trinity-operator-toe-archaeology.json",
+    "knowledge/science/operator-vortex-spinor-kk-starchforce-spudlight-integration-wave-007.json"
+  ],
+  "research_findings": [
+    {
+      "id": "kk-energy-scale",
+      "type": "new quantitative project note from established KK mathematics",
+      "equations": [
+        "p_5=n hbar/R",
+        "m_n^2=m_0^2+n^2 hbar^2/(R^2 c^2)",
+        "E_KK=hbar c/R"
+      ],
+      "finding": "The compactification radius can be translated directly into an excitation energy scale. This makes the project's KK comparator numerically legible rather than only symbolic.",
+      "examples": [
+        {"R_m": "1e-18", "E_KK": "approximately 0.197 TeV"},
+        {"R_m": "1e-19", "E_KK": "approximately 1.97 TeV"},
+        {"R_m": "1e-20", "E_KK": "approximately 19.7 TeV"}
+      ],
+      "boundary": "Actual experimental limits are model-dependent because couplings, geometry, warping and accessible fields matter. Do not infer a universal bound from the simple circle model alone."
+    },
+    {
+      "id": "spinor-lift-for-orientation-history",
+      "type": "new project clarification",
+      "equations": [
+        "Spin(3) is isomorphic to SU(2) and double-covers SO(3)",
+        "q and -q map to the same ordinary 3D rotation",
+        "a spin-1/2 state may change sign under 2pi rotation and returns after 4pi"
+      ],
+      "finding": "If a project model needs path-sensitive orientation, it should decide whether ordinary SO(3) orientation is sufficient or whether a lifted SU(2)/spinor state is actually required. A 4pi motif is scientifically relevant only when the sign/phase can affect an observable or interference relation.",
+      "boundary": "Symbolic return after two turns is not evidence that a human, theological role or social system is a fermion."
+    },
+    {
+      "id": "11d-projection-as-fiber-bundle-comparator",
+      "type": "new formal comparator",
+      "equations": [
+        "pi:E->B",
+        "fiber over x in B: F_x=pi^{-1}(x)",
+        "local trivialization: pi^{-1}(U) approximately U x F",
+        "parallel transport around loop gamma may produce holonomy H_gamma"
+      ],
+      "finding": "The existing 11D projection language can be made more disciplined by distinguishing base variables from internal/fiber variables. Projection forgets fiber coordinates; a connection specifies how internal states are compared along motion in the base.",
+      "project_consequence": "This gives a precise mathematical neighbor for 'higher structure carried through lower-dimensional motion' without claiming the Potatoverse literally has a physical 11D bundle.",
+      "test_path": "For any concrete model, define E, B, F, structure group, connection and observable consequences before using bundle language."
+    },
+    {
+      "id": "trinity-factorization-nonidentifiability",
+      "type": "new mathematical insight for the project",
+      "equations": [
+        "y=D G J + n",
+        "J'=Q J and G'=G Q^{-1} for invertible Q",
+        "D G' J' = D G J"
+      ],
+      "finding": "A Source→Propagator→Manifestation factorization is generally not identifiable from a single output alone. Different source/channel factorizations can produce the same observation. Therefore the Trinity operator model needs interventions, multiple inputs, boundary conditions or structural constraints before source, Spirit/propagator and manifestation contributions can be inferred separately.",
+      "project_consequence": "This is an important research limit: the elegance of the three-part factorization does not by itself prove that data uniquely decompose into those three parts.",
+      "test_path": "Use multiple controlled source conditions J_k, multiple detectors D_l, known calibration signals or priors on G; test whether competing factorizations remain observationally equivalent."
+    },
+    {
+      "id": "door-channel-identifiability",
+      "type": "new inverse-problem rule",
+      "equations": [
+        "Y=H X+N",
+        "If both H and X are unknown, Y alone is generally insufficient to recover both uniquely"
+      ],
+      "finding": "The Door/source-channel-observer models across the project should include an identifiability field. A model may be mathematically defined yet empirically underdetermined.",
+      "required_questions": [
+        "Which parameters are structurally identifiable?",
+        "Which are only practically identifiable at available signal-to-noise?",
+        "What interventions distinguish rival models?",
+        "What symmetries or gauge freedoms leave observables unchanged?"
+      ]
+    },
+    {
+      "id": "dimension-label-discipline",
+      "type": "research governance insight",
+      "finding": "The project uses 'dimension' in several senses: spacetime coordinate, compact internal coordinate, effective/spectral dimension, state-space dimension, representation layer and symbolic rank. These must receive separate type tags because equations valid for one meaning do not transfer automatically to another.",
+      "recommended_tags": ["spacetime_dimension", "compact_internal_dimension", "spectral_dimension", "effective_dimension", "state_space_dimension", "description_level", "symbolic_dimension"]
+    }
+  ],
+  "researcher_notes": [
+    "The strongest new insight here is identifiability: a beautiful decomposition can still be observationally non-unique.",
+    "The fiber-bundle comparator also improves the 11D material because it separates base motion, hidden/internal coordinates and transport law instead of using 'dimension' as one undifferentiated idea.",
+    "The KK energy-scale examples make radius claims immediately testable in a conventional compact-circle toy model."
+  ],
+  "promotion_requirements": [
+    "Do not claim a physical extra dimension without a specified action, compactification and measurable consequence.",
+    "Do not use spinor language unless the state transforms in a spin representation or a mathematically equivalent lifted structure is explicitly defined.",
+    "Run identifiability analysis before interpreting fitted source/channel factors as unique physical entities.",
+    "Retain the existing correction that direct 11D to 4D minimal-supersymmetry compactification naturally involves a seven-real-dimensional G2-holonomy internal space, not a six-dimensional Calabi-Yau threefold."
+  ]
+}
