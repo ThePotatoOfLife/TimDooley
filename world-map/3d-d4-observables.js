@@ -16,16 +16,21 @@ const METRICS = {
   gdp_per_capita: {label:'GDP / person', indicator:'NY.GDP.PCAP.CD', unit:'current USD/person', format:'usd'},
   real_growth: {label:'Real GDP growth', indicator:'NY.GDP.MKTP.KD.ZG', unit:'percent/year', format:'percent'},
   unemployment: {label:'Unemployment', indicator:'SL.UEM.TOTL.ZS', unit:'percent of labour force', format:'percent'},
+  labor_force_participation: {label:'Labour-force participation', indicator:'SL.TLF.CACT.ZS', unit:'percent of population ages 15+', format:'percent'},
   life_expectancy: {label:'Life expectancy', indicator:'SP.DYN.LE00.IN', unit:'years', format:'years'},
+  fertility_rate: {label:'Fertility rate', indicator:'SP.DYN.TFRT.IN', unit:'births per woman', format:'number'},
   urbanization: {label:'Urban population', indicator:'SP.URB.TOTL.IN.ZS', unit:'percent of population', format:'percent'},
   internet_penetration: {label:'Internet use', indicator:'IT.NET.USER.ZS', unit:'percent of population', format:'percent'},
+  electricity_access: {label:'Electricity access', indicator:'EG.ELC.ACCS.ZS', unit:'percent of population', format:'percent'},
   trade_openness: {label:'Trade / GDP', indicator:'NE.TRD.GNFS.ZS', unit:'percent of GDP', format:'percent'},
   net_migration: {label:'Net migration', indicator:'SM.POP.NETM', unit:'persons over reference period', format:'signed-compact'},
   energy_dependence: {label:'Net energy imports', indicator:'EG.IMP.CONS.ZS', unit:'percent of energy use', format:'percent'},
   fdi_inflow: {label:'FDI net inflow', indicator:'BX.KLT.DINV.WD.GD.ZS', unit:'percent of GDP', format:'percent'},
+  co2_per_capita: {label:'CO2 / person', indicator:'EN.ATM.CO2E.PC', unit:'metric tons CO2/person', format:'number'},
 };
+const COMPARE_METRICS = ['gdp_per_capita','real_growth','life_expectancy','trade_openness','electricity_access','internet_penetration'];
 const INDICATOR_TO_METRIC = Object.fromEntries(Object.entries(METRICS).map(([metricId,spec]) => [spec.indicator,metricId]));
-const PERCENT_POINT_METRICS = new Set(['real_growth','unemployment','urbanization','internet_penetration','trade_openness','energy_dependence','fdi_inflow']);
+const PERCENT_POINT_METRICS = new Set(['real_growth','unemployment','labor_force_participation','urbanization','internet_penetration','electricity_access','trade_openness','energy_dependence','fdi_inflow']);
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
@@ -39,6 +44,16 @@ function currentCode() {
 function isCountryOverview(target = panel) {
   const eyebrow = target?.querySelector('.eyebrow')?.textContent || '';
   return /Canonical country|Territory \/ map polygon/i.test(eyebrow);
+}
+
+function isCompareOverview(target = panel) {
+  const eyebrow = target?.querySelector('.eyebrow')?.textContent || '';
+  return /Compare mode/i.test(eyebrow);
+}
+
+function compareCodesFromUrl() {
+  const value = new URL(location.href).searchParams.get('compare') || '';
+  return [...new Set(value.split(',').map(code => code.trim().toUpperCase()).filter(code => /^[A-Z]{3}$/.test(code)))].slice(0,4);
 }
 
 function number(value) {
@@ -85,7 +100,7 @@ function formatValue(metricId, value) {
   if (spec?.format === 'usd') return `$${new Intl.NumberFormat('en', {maximumFractionDigits:0}).format(n)}`;
   if (spec?.format === 'percent') return `${fixed(n, 1)}%`;
   if (spec?.format === 'years') return `${fixed(n, 1)} y`;
-  return fixed(n, 1);
+  return fixed(n, 2);
 }
 
 async function loadSnapshot() {
@@ -112,7 +127,7 @@ function normalizeSnapshotMetric(metricId, item) {
 
 async function fetchWorldBankCountry(code) {
   const indicatorPath = Object.values(METRICS).map(spec => encodeURIComponent(spec.indicator)).join(';');
-  const query = new URLSearchParams({format:'json', source:'2', per_page:'150', mrnev:'2'});
+  const query = new URLSearchParams({format:'json', source:'2', per_page:'180', mrnev:'2'});
   const url = `https://api.worldbank.org/v2/country/${encodeURIComponent(code)}/indicator/${indicatorPath}?${query}`;
   try {
     const response = await fetch(url);
@@ -158,12 +173,13 @@ async function observablesFor(code) {
         const normalized = normalizeSnapshotMetric(metricId, row.metrics[metricId]);
         if (normalized) metrics[metricId] = normalized;
       }
-      if (Object.keys(metrics).length) return {code, metrics, mode:'snapshot', generated_at:snapshot.generated_at, source:snapshot.source};
+      if (Object.keys(metrics).length) return {code, name:row.name || code, metrics, mode:'snapshot', generated_at:snapshot.generated_at, source:snapshot.source};
     }
 
     const metrics = await fetchWorldBankCountry(code);
     return {
       code,
+      name:code,
       metrics,
       mode:'live-selected-country',
       source:{id:'world-bank-wdi', name:'World Bank World Development Indicators', url:'https://data.worldbank.org/indicator'},
@@ -187,6 +203,8 @@ function changeLabel(metricId, metric) {
   const arrow = delta > 0 ? '↑' : delta < 0 ? '↓' : '→';
   if (PERCENT_POINT_METRICS.has(metricId)) return `${arrow} ${signedFixed(delta, 1)} pp`;
   if (metricId === 'life_expectancy') return `${arrow} ${signedFixed(delta, 1)} y`;
+  if (metricId === 'fertility_rate') return `${arrow} ${signedFixed(delta, 2)} births/woman`;
+  if (metricId === 'co2_per_capita') return `${arrow} ${signedFixed(delta, 2)} t/person`;
   if (metricId === 'net_migration') return `${arrow} ${signedCompact(delta, 2)} persons`;
   if (previous !== 0) return `${arrow} ${signedFixed((delta / Math.abs(previous)) * 100, 1)}%`;
   return `${arrow} ${signedCompact(delta, 2)}`;
@@ -246,8 +264,12 @@ function ensureStyle() {
     .d4-observable-note{font-size:10px;margin-top:8px;line-height:1.35}
     .d4-axis-seeds{margin-top:9px;border-top:1px solid var(--line)}
     .d4-axis-seeds>div{display:grid;grid-template-columns:126px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:10px;line-height:1.35}
-    .d4-axis-seeds b{font-size:10px}
-    .d4-axis-seeds span{color:var(--muted)}
+    .d4-axis-seeds b{font-size:10px}.d4-axis-seeds span{color:var(--muted)}
+    .atlas-d4-compare{border-color:#41544d}.d4-compare-scroll{overflow-x:auto;margin-top:8px}
+    .d4-compare-table{width:100%;border-collapse:collapse;font-size:10px;min-width:720px}
+    .d4-compare-table th,.d4-compare-table td{padding:6px;border-bottom:1px solid var(--line);text-align:right;vertical-align:top}
+    .d4-compare-table th:first-child,.d4-compare-table td:first-child{text-align:left;position:sticky;left:0;background:#0f1716}
+    .d4-compare-table small{display:block;color:var(--muted);font-size:8px;margin-top:2px}
     @media(max-width:900px){.d4-observable-grid{grid-template-columns:1fr}.d4-axis-seeds>div{grid-template-columns:1fr}}
   `;
   document.head.appendChild(style);
@@ -262,10 +284,10 @@ function insertCard(code, data) {
   const card = document.createElement('div');
   card.className = 'card atlas-d4-observables';
   card.dataset.d4Code = code;
-  card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · prosperity · motion · labour · life · settlement · connectivity · trade · migration · energy · capital</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'one selected-country WDI request'}</small></div>
+  card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · labour · life · population · settlement · connectivity · infrastructure · trade · migration · energy · capital · environment</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'one selected-country WDI request'}</small></div>
     <div class="d4-observable-grid">${available.length ? available.map(metricId => metricHtml(metricId, metrics[metricId])).join('') : '<div class="d4-observable-empty">No comparable D4 observations returned for this country.</div>'}</div>
     ${available.length ? seedHtml(availableMetrics) : ''}
-    <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Trade/GDP is intensity, not bilateral dependence. Net migration is a source-period balance. Negative net energy imports can indicate a net exporter. FDI can be negative. Current USD is not PPP. Missing is not zero. Arrows describe numeric direction only—not good/bad, heaven/hell, policy success, or moral rank.</div>`;
+    <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Labour participation is not employment. Fertility is not birth count. Electricity access is not reliability or affordability. CO2/person is territorial, not consumption-based. Trade/GDP is intensity, not bilateral dependence. Net migration is a source-period balance. Negative net energy imports can indicate a net exporter. FDI can be negative. Current USD is not PPP. Missing is not zero. Arrows describe numeric direction only—not good/bad, heaven/hell, policy success, or moral rank.</div>`;
 
   const anchor = panel.querySelector('.atlas-country-profile') || panel.querySelector('.grid');
   if (anchor?.parentNode) anchor.parentNode.insertBefore(card, anchor.nextSibling);
@@ -273,8 +295,35 @@ function insertCard(code, data) {
   window.dispatchEvent(new CustomEvent('potato-atlas-d4-observables-rendered', {detail:{code, metrics, mode:data.mode}}));
 }
 
+function compareCell(metricId, metric) {
+  if (!metric) return '<td>—</td>';
+  return `<td>${esc(formatValue(metricId, metric.value))}<small>${esc(metric.year ?? '—')}</small></td>`;
+}
+
+async function renderCompare() {
+  if (!panel || !isCompareOverview(panel)) return;
+  const codes = compareCodesFromUrl();
+  if (!codes.length) return;
+  const token = ++renderToken;
+  if (panel.querySelector('.atlas-d4-compare')) return;
+  const rows = await Promise.all(codes.map(observablesFor));
+  if (token !== renderToken || !isCompareOverview(panel)) return;
+  const card = document.createElement('div');
+  card.className = 'card atlas-d4-compare';
+  card.innerHTML = `<b>D4 · comparison vector</b><div class="muted" style="font-size:10px">Same sourced measurements; years remain visible per cell. This is descriptive comparison, not ranking.</div>
+    <div class="d4-compare-scroll"><table class="d4-compare-table"><thead><tr><th>Country</th>${COMPARE_METRICS.map(metricId => `<th>${esc(METRICS[metricId].label)}</th>`).join('')}</tr></thead><tbody>${rows.map(row => `<tr><td><b>${esc(row.name || row.code)}</b><small>${esc(row.code)}</small></td>${COMPARE_METRICS.map(metricId => compareCell(metricId, row.metrics?.[metricId])).join('')}</tr>`).join('')}</tbody></table></div>`;
+  const boundary = [...panel.querySelectorAll('.boundary')].at(-1);
+  if (boundary?.parentNode) boundary.parentNode.insertBefore(card, boundary);
+  else panel.appendChild(card);
+}
+
 async function render() {
-  if (!panel || !isCountryOverview(panel)) return;
+  if (!panel) return;
+  if (isCompareOverview(panel)) {
+    await renderCompare();
+    return;
+  }
+  if (!isCountryOverview(panel)) return;
   const code = currentCode();
   if (!code) return;
   const token = ++renderToken;
@@ -313,6 +362,7 @@ if (panel) {
 
 window.__potatoAtlasD4Observables = {
   metrics:METRICS,
+  compareMetrics:COMPARE_METRICS,
   forCountry:observablesFor,
   render,
   clearCache:code => code ? cache.delete(String(code).toUpperCase()) : cache.clear(),
