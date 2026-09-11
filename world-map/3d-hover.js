@@ -200,6 +200,7 @@ async function installCapitalsWhenUseful() {
     if (!map.getSource('capital-cities')) map.addSource('capital-cities', { type: 'geojson', data: capitals });
     if (!map.getLayer('capital-cities')) map.addLayer({
       id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 0,
+      filter: ['==', ['get', 'primary'], true],
       paint: {
         'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.8, 3, 2.9, 7, 5.8],
         'circle-color': '#e7c56f', 'circle-stroke-color': '#171a18',
@@ -208,7 +209,7 @@ async function installCapitalsWhenUseful() {
     });
     if (!map.getLayer('capital-city-major-labels')) map.addLayer({
       id: 'capital-city-major-labels', type: 'symbol', source: 'capital-cities', minzoom: 1.1, maxzoom: 3.4,
-      filter: ['<=', ['get', 'scalerank'], 2],
+      filter: ['all', ['==', ['get', 'primary'], true], ['<=', ['get', 'scalerank'], 3]],
       layout: {
         'text-field': ['get', 'name'], 'text-size': 9, 'text-offset': [0, 1.05],
         'text-anchor': 'top', 'text-allow-overlap': false, 'text-optional': true
@@ -217,6 +218,7 @@ async function installCapitalsWhenUseful() {
     });
     if (!map.getLayer('capital-city-labels')) map.addLayer({
       id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 3.1,
+      filter: ['==', ['get', 'primary'], true],
       layout: {
         'text-field': ['get', 'name'], 'text-size': ['interpolate', ['linear'], ['zoom'], 3.1, 9, 7, 11],
         'text-offset': [0, 1.15], 'text-anchor': 'top', 'text-allow-overlap': false,

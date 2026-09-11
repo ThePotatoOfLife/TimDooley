@@ -16,6 +16,11 @@ style.textContent = `
   #atlasSelectionDock button{padding:5px 8px;border-radius:999px;background:#14201f}
   #atlasSelectionDock button.active{color:#8fc6ef;border-color:#5d8bad}
   #atlasSelectionDock .selection-clear{font-size:16px;line-height:1;padding:4px 7px;color:#aeb9b2}
+  #atlasSelectionDock .selection-more{position:relative}
+  #atlasSelectionDock .selection-more>summary{list-style:none;cursor:pointer;padding:5px 8px;border:1px solid var(--line);border-radius:999px;background:#14201f;color:var(--muted);line-height:1.1}
+  #atlasSelectionDock .selection-more>summary::-webkit-details-marker{display:none}
+  #atlasSelectionDock .selection-more-pop{position:absolute;left:50%;bottom:calc(100% + 7px);transform:translateX(-50%);min-width:120px;padding:5px;border:1px solid var(--line);border-radius:9px;background:#0d1514;box-shadow:0 8px 22px #0008}
+  #atlasSelectionDock .selection-more-pop button{display:block;width:100%;margin:2px 0;text-align:left}
   .atlas-layer-registry{margin-top:7px;border-top:1px solid var(--line);padding-top:6px}
   .atlas-layer-group{margin:4px 0}.atlas-layer-group>summary{cursor:pointer;padding:6px 2px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em;list-style:none}.atlas-layer-group>summary::-webkit-details-marker{display:none}.atlas-layer-group>summary::after{content:' +';opacity:.6}.atlas-layer-group[open]>summary::after{content:' −'}
   .atlas-layer-group-body>*{display:block;width:100%;margin:4px 0}
@@ -30,8 +35,13 @@ dock.innerHTML = `
   <span class="selection-name"></span>
   <button data-action="details" title="Open country details">Details</button>
   <button data-action="connections" title="Show or hide country connections">Connections</button>
-  <button data-action="compare" title="Add this country to comparison">Compare</button>
-  <button data-action="focus" title="Fit the selected country">Focus</button>
+  <details class="selection-more">
+    <summary title="More country actions" aria-label="More country actions">•••</summary>
+    <div class="selection-more-pop">
+      <button data-action="focus" title="Fit the selected country">Focus</button>
+      <button data-action="compare" title="Add this country to comparison">Compare</button>
+    </div>
+  </details>
   <button class="selection-clear" data-action="clear" title="Deselect country" aria-label="Deselect country">×</button>
 `;
 mapwrap.appendChild(dock);
@@ -73,6 +83,8 @@ dock.addEventListener('click', event => {
   } else if (action === 'clear') {
     window.clearCountrySelection?.();
   }
+  const more = button.closest('.selection-more');
+  if (more) more.open = false;
   queueMicrotask(syncDock);
 });
 
@@ -108,7 +120,7 @@ function groupBody(name) {
   return body;
 }
 
-function registerLayer({ id, label, group = 'Overlays', getVisible, setVisible, element }) {
+function registerLayer({ id, label, group = 'Overlays', kind = 'overlay', scope = 'global', minZoom = 0, maxZoom = 24, description = '', getVisible, setVisible, element }) {
   if (!id || registrations.has(id)) return registrations.get(id);
   const body = groupBody(group);
   let control = element || document.createElement('button');
@@ -122,7 +134,7 @@ function registerLayer({ id, label, group = 'Overlays', getVisible, setVisible, 
   }
   if (label && element) control.textContent = label;
   body.appendChild(control);
-  const record = { id, label: label || id, group, getVisible, setVisible, element: control };
+  const record = { id, label: label || id, group, kind, scope, minZoom, maxZoom, description, getVisible, setVisible, element: control };
   registrations.set(id, record);
   refreshLayer(id);
   return record;
