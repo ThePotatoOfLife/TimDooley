@@ -51,6 +51,12 @@ jobs:
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
+      - name: Compile complete science paper library
+        run: python scripts/build_science_catalog.py
+
+      - name: Validate science paper library
+        run: python scripts/validate_science_portal.py
+
       - name: Vendor 3D atlas map engine
         shell: bash
         run: |
@@ -128,6 +134,7 @@ jobs:
           test -f _site/chronology/index.html
           test -f _site/philosophy/index.html
           test -f _site/science/index.html
+          test -f _site/science/catalog.json
           test -f _site/north/index.html
           test -f _site/world-map/3d.html
           test -f _site/sitemap.xml
@@ -164,14 +171,21 @@ jobs:
           ! grep -q 'class="roadmap-note"' _site/chronology/index.html
           ! grep -q 'class="formula"' _site/chronology/index.html
 
+          grep -q 'id="science-search"' _site/science/index.html
+          grep -q 'id="science-field"' _site/science/index.html
+          grep -q 'id="science-type"' _site/science/index.html
+          grep -q 'class="science-record"' _site/science/index.html
+
           grep -q 'class="map-action" href="../world-map/3d.html"' _site/north/index.html
           grep -q '>WORLD MAP<' _site/north/index.html
           ! grep -q 'class="maplink"' _site/north/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/learn/index.html
 
           python - <<'PY'
+          import json
           import re
           from pathlib import Path
+
           page = Path('_site/index.html').read_text(encoding='utf-8')
           nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', page, re.S)
           assert nav, 'canonical sections navigation missing'
@@ -179,6 +193,15 @@ jobs:
           expected = ['tim-dooley/','religion/','philosophy/','science/','world-map/3d.html']
           assert hrefs == expected, (hrefs, expected)
           print('Verified canonical homepage: exactly five reader entrances')
+
+          catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
+          papers = catalog.get('papers', [])
+          assert catalog.get('qualifying_count', 0) >= 10, catalog.get('qualifying_count')
+          assert len(papers) == catalog['qualifying_count']
+          for paper in papers:
+              target = Path('_site/science/papers') / paper['slug'] / 'index.html'
+              assert target.exists(), target
+          print(f"Verified Science library: {len(papers)} full readable documents")
           PY
 
       - name: Validate built site shell

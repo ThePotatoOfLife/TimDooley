@@ -1,0 +1,30 @@
+name: Science portal check
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Build static site
+        run: python scripts/build_site.py
+      - name: Compile complete science paper library
+        run: python scripts/build_science_catalog.py
+      - name: Validate science paper library
+        run: python scripts/validate_science_portal.py

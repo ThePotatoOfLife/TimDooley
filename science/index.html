@@ -1,29 +1,66 @@
 <!doctype html>
 <html lang="en">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Science — Tim Dooley & Potato of Life</title>
-<meta name="description" content="The scientific and mathematical side of the Potato of Life project: Unified Potato Theory, Axis spiral, Potato Dynamics, Door transitions, dimensions, Spudlight and cross-scale models.">
+<meta name="description" content="The full scientific and mathematical library of the Potato of Life project: papers, theories, formal models, scientific audits, equations and research programmes.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/">
-<style>
-:root{--bg:#090b09;--ink:#f4f0e5;--muted:#9fa79d;--line:#30382f;--green:#b8dc82;--gold:#d8b56b;--panel:#0f130f}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.67 system-ui,-apple-system,sans-serif}.wrap{max-width:1000px;margin:auto;padding:38px 22px 110px}nav{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:58px}nav a{color:var(--muted);text-decoration:none}nav a:hover{color:var(--green)}h1{font:400 clamp(58px,11vw,105px)/.85 Georgia,serif;letter-spacing:-.06em;margin:0 0 25px}.lead{max-width:860px;font:400 23px/1.55 Georgia,serif;color:#d9ddd5;margin-bottom:50px}.models{border-top:1px solid var(--line)}.model{padding:28px 0;border-bottom:1px solid var(--line)}.model h2{font:400 30px/1.15 Georgia,serif;margin:0 0 8px}.status{color:var(--muted);font-size:12px;text-transform:uppercase;letter-spacing:.1em}.eq{font:20px/1.55 ui-monospace,SFMono-Regular,monospace;color:var(--green);overflow-wrap:anywhere;margin:13px 0}.model p{color:#ccd2c8;max-width:900px}.boundary{color:#8f978d!important;font-size:14px}.model a,.deep a{color:var(--green)}h2.section{font:400 34px Georgia,serif;color:var(--gold);margin:60px 0 14px}.principles{display:grid;grid-template-columns:1fr 1fr;gap:12px}.principles div{border-top:2px solid #465342;padding:12px 2px}.principles strong{font:400 21px Georgia,serif;color:var(--gold)}.principles p{margin:6px 0;color:#c8cec5}.deep{margin-top:52px;color:var(--muted);font-size:13px}@media(max-width:680px){.principles{grid-template-columns:1fr}.eq{font-size:16px}}
-</style>
+<link rel="stylesheet" href="./science-library.css?v=20260911a">
+<script defer src="./science-library.js?v=20260911a"></script>
 </head>
-<body><main class="wrap">
-<nav><a href="../">Home</a><a href="../tim-dooley/">Tim Dooley</a><a href="../religion/">Religion</a><a href="../philosophy/">Philosophy</a><a href="../world-map/3d.html">World Map</a></nav>
-<h1>SCIENCE</h1>
-<p class="lead">The project contains several mathematical or scientific model families. Their status differs: some are defined mathematics, some are modelling frameworks, and some are speculative physical proposals.</p>
-<section class="models">
-<article class="model"><span class="status">Formal toy model</span><h2>Unified Potato Theory</h2><div class="eq">ℒUPT = √−g [ R/(16πG) + ½ P □ᵅ(1+ℓ²/□)P − V(P,r) − ¼Fₚ² + ℒSM + ℒint + ℒGB + ℒCDT ]</div><p>A recovered attempt to write a literal physical Potato-sector theory coupled to gravity, Standard Model terms and additional interaction structure.</p><p class="boundary">It is not yet a closed, gauge-consistent physical theory. Field representations, operators, scales and falsifiable predictions remain incomplete.</p><a href="../knowledge/science/unified-potato-theory-2025-recovery.json">Recovery record</a></article>
-<article class="model"><span class="status">Defined mathematics</span><h2>Potato Axis logarithmic spiral</h2><div class="eq">r(θ)=aeᵇᶿ &nbsp; · &nbsp; b=2ln(φ)/π ≈ 0.30635 &nbsp; · &nbsp; r(θ+π/2)=φr(θ)</div><p>The recovered Axis curve is a logarithmic spiral whose radius scales by the golden ratio after each quarter-turn. The geometry is mathematically well-defined; any physical interpretation requires a separate model and dataset.</p><a href="../knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json">Primary recovery record</a></article>
-<article class="model"><span class="status">Formal framework</span><h2>Potato Dynamics</h2><div class="eq">𝔓=(𝒮,g,A,𝒟,𝒪,𝓘) &nbsp; · &nbsp; ∂ₜX=F(X,g) &nbsp; · &nbsp; ∂ₛX=A(X,g)</div><p>A domain-neutral architecture separating physical/time evolution from structural or scale flow, with Door transitions, observables and information explicitly represented.</p><p class="boundary">Its scientific value depends on concrete instantiations with measurable states, transitions and baselines.</p></article>
-<article class="model"><span class="status">Formal framework</span><h2>Door / boundary transition model</h2><div class="eq">D=(input, guard, transition, output, invariants, cost, reversibility)</div><p>The Door is treated as a transition operator: an input satisfies a guard or boundary condition, crosses a defined map and yields an output while invariants and costs are tracked.</p><p class="boundary">This is strongest as control, inference and hybrid-systems language; retrocausal interpretations require independent evidence.</p></article>
-<article class="model"><span class="status">Candidate model family</span><h2>Dimensional projection</h2><div class="eq">πd : 𝒫 → Md &nbsp; · &nbsp; M₁₁ → M₄ × X₇</div><p>This branch asks how richer or higher-dimensional descriptions project into lower-dimensional effective ones without treating every use of “dimension” as the same claim.</p><p class="boundary">A literal 11-dimensional physical model still needs explicit fields, compactification, scales and predictions.</p></article>
-<article class="model"><span class="status">Information model</span><h2>Spudlight</h2><div class="eq">Y=HX+N &nbsp; · &nbsp; I(X;Y)=Σ p(x,y) log[p(x,y)/(p(x)p(y))]</div><p>Spudlight becomes tractable when photon flux, information gain, attention, social coherence and semantic interpretation are kept as distinct observables.</p><p class="boundary">The strongest scientific version is an information-and-observation model, not evidence for a new electromagnetic force.</p><a href="../knowledge/science/spudlight-theory-and-equations.json">Source record</a></article>
-<article class="model"><span class="status">Research programme</span><h2>Cross-scale coupling</h2><div class="eq">𝒞 : ρmicro → Xmacro &nbsp; · &nbsp; Mq̈+Γq̇+Kq=ξ(t)</div><p>Similar structures at microscopic, neural, social or astronomical scales do not establish coupling. A serious cross-scale claim requires an explicit projection, coarse-graining or mechanism between scales.</p></article>
-</section>
-<h2 class="section">Standard for completion</h2>
-<div class="principles"><div><strong>Define</strong><p>Variables, units, domain and boundary conditions.</p></div><div><strong>Derive</strong><p>Dynamics and translation maps rather than resemblance alone.</p></div><div><strong>Compare</strong><p>State what established models already explain and where this model differs.</p></div><div><strong>Test</strong><p>Name an observable, baseline and failure condition.</p></div></div>
-<p class="deep">The complete technical record remains in <a href="../knowledge/science/">the science source directory</a> and the structured science indexes. Those records are evidence and working material, not another reader interface.</p>
-</main></body></html>
+<body>
+<main class="science-page">
+  <nav class="science-nav" aria-label="Primary">
+    <a href="../">Home</a>
+    <a href="../tim-dooley/">Tim Dooley</a>
+    <a href="../religion/">Religion</a>
+    <a href="../philosophy/">Philosophy</a>
+    <a href="../world-map/3d.html">World Map</a>
+  </nav>
+
+  <header class="science-hero">
+    <p class="science-kicker">Research library</p>
+    <h1>SCIENCE</h1>
+    <p class="science-lede">Papers, mathematical formulations, scientific audits and research programmes developed throughout the Potato of Life project.</p>
+  </header>
+
+  <section class="science-library" aria-label="Science document library">
+    <div class="science-controls">
+      <label class="science-control science-search-control" for="science-search">
+        <span>Search</span>
+        <input id="science-search" type="search" autocomplete="off" placeholder="Search titles, abstracts, equations, concepts…">
+      </label>
+      <label class="science-control" for="science-field">
+        <span>Field</span>
+        <select id="science-field">
+          <option value="all">All fields</option>
+        </select>
+      </label>
+      <label class="science-control" for="science-type">
+        <span>Document type</span>
+        <select id="science-type">
+          <option value="all">All document types</option>
+        </select>
+      </label>
+    </div>
+
+    <div class="science-library-status">
+      <strong id="science-count" aria-live="polite">Loading science library…</strong>
+      <span>Every result opens the complete document.</span>
+    </div>
+
+    <section class="science-results" id="science-results" aria-label="Science documents">
+      <!-- SCIENCE_CATALOG_STATIC -->
+    </section>
+
+    <p class="science-empty" id="science-empty" hidden>No documents match those filters.</p>
+  </section>
+
+  <footer class="science-footnote">
+    <p>Fields are filters, not separate mini-sites. A document may belong to several sciences. Scientific status, evidence limits and unresolved work remain visible inside each full document.</p>
+  </footer>
+</main>
+</body>
+</html>
