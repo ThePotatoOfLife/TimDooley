@@ -299,4 +299,4 @@ function install() {
 }
 
 if (map.loaded()) install();
-else map.once('load', install());
+else map.once('load', install);
