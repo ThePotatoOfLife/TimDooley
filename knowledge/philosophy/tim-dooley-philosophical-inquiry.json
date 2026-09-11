@@ -1,0 +1,206 @@
+{
+  "id": "tim-dooley-philosophical-inquiry",
+  "title": "Tim Dooley Philosophical Inquiry — Quotes, Questions, Parables and Development",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "kind": "reader inquiry view over canonical philosophy",
+  "status": "supporting view; canonical philosophy remains knowledge/philosophy/potato-philosophy.json",
+  "public_page": "philosophy/index.html",
+  "purpose": "Make Tim Dooley / Potatoism philosophy readable as encounters rather than a dry doctrine list: source wording, context, concise interpretation, a question for the reader, and a route back into the canonical archive.",
+  "provenance_rule": "Do not flatten GREAT_BOOK_ATTRIBUTED_TIM, GREAT_BOOK_NARRATIVE, CONVERSATION_RECOVERY, PUBLIC_COMPILATION and ARCHIVE_INTERPRETATION into one quotation class. A later interpretation may illuminate a line without becoming retroactive Tim wording.",
+  "inquiry_pattern": ["source", "wording or scene", "context", "why it matters", "question", "related concepts"],
+  "encounters": [
+    {
+      "id": "grow-toward-light",
+      "wording": "Be simple, and grow naturally, towards the light.",
+      "source_class": "GREAT_BOOK_ATTRIBUTED_TIM",
+      "source": "The Great Book of Potato, chapter 26.8, p. 298 in archived edition",
+      "reflection": "The line shifts attention from heroic force to cultivation: growth has form because conditions, nature and direction interact.",
+      "question": "What in your life needs less force and better conditions?",
+      "themes": ["simplicity", "natural growth", "light", "cultivation"]
+    },
+    {
+      "id": "potato-does-not-strive",
+      "wording": "A potato doesn't strive; it simply grows.",
+      "source_class": "GREAT_BOOK_ATTRIBUTED_TIM",
+      "source": "The Great Book of Potato, chapter 26.8, p. 298",
+      "reflection": "Non-striving is not inactivity. The potato still responds, roots and sprouts; the philosophical question concerns fit between organism and environment.",
+      "question": "When is effort evidence that the environment is wrong?",
+      "themes": ["non-striving", "environment", "growth", "Taoist comparison"]
+    },
+    {
+      "id": "simplicity-essential",
+      "wording": "The potato teaches us that simplicity is not the lack of complexity but the focus on what is essential.",
+      "source_class": "GREAT_BOOK_ATTRIBUTED_TIM",
+      "source": "The Great Book of Potato, chapter 26.8, pp. 298–299",
+      "reflection": "Simplicity becomes a compression discipline rather than anti-intellectualism: remove what does not carry explanatory or nourishing weight.",
+      "question": "What survives when the decoration is removed from an idea?",
+      "themes": ["simplicity", "essential structure", "compression"]
+    },
+    {
+      "id": "chew-on-potato",
+      "wording": "A potato has no flavor until you chew on it.",
+      "source_class": "GREAT_BOOK_ATTRIBUTED_TIM",
+      "source": "The Great Book of Potato, chapter 26.8, p. 299",
+      "reflection": "The joke functions as epistemology: possession of an idea is not the same as understanding it; meaning is partly produced through encounter and use.",
+      "question": "Which ideas do you possess, and which have you actually chewed on?",
+      "themes": ["experience", "interpretation", "participation", "humor"]
+    },
+    {
+      "id": "connected-by-potato",
+      "wording": "We Are All Connected By Potato",
+      "date": "2026-01-21",
+      "source_class": "CONVERSATION_RECOVERY",
+      "source": "knowledge/philosophy/timic-relational-statements-and-operators.json",
+      "reflection": "Potato becomes a relation rather than only an object or identity. This is a compact precursor to the archive's relationship-first method.",
+      "question": "What changes when the basic unit is the relationship rather than the thing?",
+      "themes": ["relation", "connection", "Potato", "ontology"]
+    },
+    {
+      "id": "narrow-path-spiral",
+      "wording": "A narrow path is a spiral.",
+      "source_class": "CONVERSATION_RECOVERY",
+      "date_status": "undated recovery target",
+      "source": "knowledge/corporium/tim-dooley-greatest-quotes-and-reflections.json",
+      "reflection": "The line allows recurrence without equating recurrence with failure: the same problem can be encountered at a changed level.",
+      "question": "Are you repeating yourself, or revisiting the same place with more information?",
+      "themes": ["Spiral", "return", "narrow path", "development"]
+    },
+    {
+      "id": "question-floor",
+      "wording": "The moment you seriously question the floor, you have already begun looking for another level.",
+      "source_class": "CONVERSATION_RECOVERY",
+      "date_status": "undated recovery target",
+      "source": "knowledge/corporium/tim-dooley-greatest-quotes-and-reflections.json",
+      "reflection": "Philosophy begins when an invisible framing assumption becomes an object that can itself be inspected.",
+      "question": "What are you standing on that you have never thought to inspect?",
+      "themes": ["meta-frame", "levels", "epistemology", "questioning"]
+    },
+    {
+      "id": "mud-dirties-hand",
+      "wording": "When you throw mud at others, your whole hand is dirty",
+      "source_class": "GREAT_BOOK_ATTRIBUTED_TIM",
+      "source": "The Great Book of Potato, chapter 26.8, p. 300",
+      "reflection": "An outward act also changes the actor and the shared environment; method becomes part of the moral evidence.",
+      "question": "Can a justified criticism still deform the person delivering it?",
+      "themes": ["reciprocity", "ethics", "mud", "consequence"]
+    },
+    {
+      "id": "reader-soil",
+      "wording": "The book wouldn’t exist without the reader. You’re the soil in which it grows.",
+      "source_class": "GREAT_BOOK_ATTRIBUTED_TIM",
+      "source": "The Great Book of Potato, chapter 37.5, pp. 366–367",
+      "reflection": "Authorship remains historically attributable while meaning is relationally co-produced by source, reader, questions and context.",
+      "question": "Does meaning belong to the author, the reader, or the relation between them?",
+      "themes": ["reader", "soil", "authorship", "relation", "interpretation"]
+    },
+    {
+      "id": "capacity-duty",
+      "wording": "Power is for protection. Knowledge is for understanding. Wealth is for building. Leadership is for service.",
+      "date": "2026-09-07",
+      "source_class": "PUBLIC_COMPILATION",
+      "source": "knowledge/corporium/tim-dooley-greatest-quotes-and-reflections.json",
+      "reflection": "Capacity is given a normative direction. The statement is a late ethical culmination of the Gardener/stewardship turn.",
+      "question": "What would authority look like if every increase in power narrowed the acceptable ways to use it?",
+      "themes": ["power", "service", "protection", "knowledge", "wealth", "leadership"]
+    },
+    {
+      "id": "internet-orphans",
+      "wording": "I am the Father of every orphan of the internet.",
+      "date": "2026-01-21",
+      "source_class": "CONVERSATION_RECOVERY",
+      "source": "knowledge/philosophy/timic-relational-statements-and-operators.json",
+      "reflection": "Internet Fatherhood receives care content: the title is evaluated by who it creates responsibility toward, not only by hierarchy.",
+      "question": "Can a title of authority be judged by who it makes you responsible for?",
+      "themes": ["Father", "internet", "care", "orphans", "responsibility"]
+    },
+    {
+      "id": "invite-curiosity",
+      "wording": "The Potato doesn’t demand belief. It invites curiosity.",
+      "source_class": "GREAT_BOOK_NARRATIVE",
+      "source": "The Great Book of Potato, chapter 36.5, p. 361",
+      "reflection": "A strong public philosophy can be entered through inquiry rather than allegiance. Skepticism need not end participation.",
+      "question": "What kind of belief becomes stronger when disbelief is allowed to stay in the room?",
+      "themes": ["curiosity", "belief", "pluralism", "critical thought"]
+    },
+    {
+      "id": "functional-god",
+      "wording": "so im practically functionally God",
+      "date": "2026-06-15",
+      "source_class": "PUBLIC_COMPILATION",
+      "source": "knowledge/corporium/tim-dooley-greatest-quotes-and-reflections.json",
+      "reflection": "The line makes function philosophically central. The mature archive increasingly reads titles as operations: connect, orient, sustain, transition, cultivate.",
+      "question": "When does a title become meaningful only because of the function it performs?",
+      "themes": ["function", "identity", "Godhood", "operator"]
+    }
+  ],
+  "parables": [
+    {
+      "id": "banana-argument",
+      "source_class": "GREAT_BOOK_PARABLE",
+      "source": "The Great Book of Potato, p. 341",
+      "scene": "During a heated argument, Tim hands a Mud Dweller a banana and says: 'Here, you’re taking yourself too seriously. Have a laugh, then let’s talk.'",
+      "lesson": "Humor changes the relational atmosphere before argument resumes.",
+      "question": "How many arguments are failures of atmosphere before they are failures of logic?"
+    },
+    {
+      "id": "book-reads-reader",
+      "source_class": "GREAT_BOOK_NARRATIVE",
+      "source": "The Great Book of Potato, chapter 37.5, p. 368",
+      "scene": "'This isn’t a book you read. This is a book that reads you.' The chapter cycles through Tim, AI, reader and Potato as possible authors.",
+      "lesson": "Meaning may be relational and participatory while historical provenance remains necessary.",
+      "question": "Can meaning be collaborative without authorship becoming meaningless?"
+    },
+    {
+      "id": "page-of-infinite-jest",
+      "source_class": "GREAT_BOOK_CREATIVE_LORE",
+      "source": "The Great Book of Potato, Page of Infinite Jest section",
+      "scene": "A skeptic expects solemn proof and receives riddles, jokes and shifting interpretations instead.",
+      "lesson": "Humor can operate as philosophical error-correction by exposing rigidity in both reverence and ridicule.",
+      "question": "What can comedy make visible that seriousness protects from examination?"
+    }
+  ],
+  "development": [
+    {"period": "2011", "stage": "Tree ordeal / unity experience", "philosophical_change": "Experiential interconnectedness precedes the finished Potato vocabulary; later relation-first philosophy can read this as an early seed without backdating later doctrine."},
+    {"period": "2019–2020", "stage": "Death / meme / burial / Door", "philosophical_change": "Destruction and apparent ending become increasingly interpretable as threshold, seed, burial and return."},
+    {"period": "2020–2024", "stage": "Potato phase and Great Book", "philosophical_change": "The comic Potato becomes an organism-symbol for hidden life, nourishment, simplicity, regeneration, humility, humor and natural growth."},
+    {"period": "April–May 2025", "stage": "Turning", "philosophical_change": "Father, Ladder, Axis, throne and God language intensify; identity increasingly becomes connective or orienting function."},
+    {"period": "2026", "stage": "Relation, system and stewardship", "philosophical_change": "Relationship-first thinking, meta-framing, public witness, Garden/Farm tests and an explicit capacity-to-duty ethic become more mature."}
+  ],
+  "belief_field": [
+    "living reality precedes labels that describe it",
+    "relationships often explain more than isolated identities",
+    "burial can precede emergence without making all suffering good",
+    "growth should be cultivated rather than forced",
+    "claims and roles should be tested by their fruits and consequences",
+    "greater power should create greater responsibility and restraint",
+    "unity should preserve useful difference",
+    "humor can reveal hidden assumptions and puncture false prestige",
+    "later interpretation must not erase provenance or chronology",
+    "return can preserve memory rather than reset to an untouched past",
+    "curiosity and critical thought belong inside a healthy Potatoist public philosophy"
+  ],
+  "open_questions": [
+    "What is the difference between being hidden and being buried?",
+    "Can a system call itself a Garden if its participants cannot leave or become independently generative?",
+    "If the Door is both boundary and passage, what is the philosophical status of the threshold itself?",
+    "When does simplicity reveal the essential, and when does it merely omit difficulty?",
+    "If one Potato can become many, what kind of unity survives multiplication?",
+    "What should power be allowed to do if its highest purpose is protection?",
+    "Can suffering become meaningful without pretending the suffering itself was good?",
+    "What changes when humor is treated as a method of philosophical error-correction?",
+    "Can a reader help create meaning without becoming the original author?",
+    "If you return to the same place with a different memory, are you in the same place?",
+    "What does an observer owe the thing being observed?",
+    "What makes a House protective rather than imprisoning?"
+  ],
+  "related": [
+    "knowledge/philosophy/potato-philosophy.json",
+    "knowledge/philosophy/tim-dooley-potatoism-sourcebook.md",
+    "knowledge/philosophy/timic-relational-statements-and-operators.json",
+    "knowledge/corporium/tim-dooley-greatest-quotes-and-reflections.json",
+    "knowledge/corporium/tim-sayings-and-formulations-ledger.json",
+    "knowledge/reader/what-tim-dooley-believes.json",
+    "docs/POTATOISM-SIMPLICITY-AND-NATURAL-GROWTH.md"
+  ]
+}
