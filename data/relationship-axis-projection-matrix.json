@@ -1,0 +1,139 @@
+{
+  "id": "relationship-axis-projection-matrix",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "active relationship-family projection guide",
+  "purpose": "Map the Kingdom Atlas relationship families onto useful D1-D11 analytical roles without assigning any family a permanent spiritual rank.",
+  "source_vocabulary": "docs/KINGDOM-ATLAS.md",
+  "master_rule": "Every empirically grounded relationship begins with its observable/material record at D4 when such a record exists. Other dimensions are projections of history, state, threshold, recurrence, generativity, composition, transmission, integration or project-symbolic interpretation. A family can occupy several dimensions at once.",
+  "dimension_key": {
+    "D1": "near-terminal lock-in/closure",
+    "D2": "capture/recurrence/blocked exit",
+    "D3": "provenance/memory/path dependence",
+    "D4": "observable/material relation",
+    "D5": "threshold/terms/authorization/settlement",
+    "D6": "recurrence with change",
+    "D7": "generativity/fruit/downstream capability",
+    "D8": "composition/alliance/Rooms/culture",
+    "D9": "relay/transmission/mediation",
+    "D10": "system integration/aggregate capability or burden",
+    "D11": "shared criteria/meta-orientation"
+  },
+  "families": {
+    "genealogical": {
+      "primary": [3,4,6,7],
+      "conditional": [8,10],
+      "flow_examples": ["descent", "inheritance", "succession", "kinship obligation"],
+      "reading": "D3 preserves ancestry/provenance; D4 records documented family/succession relations; D6 tracks generational change; D7 represents descendants and generated lineages; D8/D10 apply only where kinship composes durable institutions or ownership/control systems.",
+      "risk": "ancestral guilt or inferring biological relation from symbolic lineage"
+    },
+    "institutional": {
+      "primary": [4,5,8,10],
+      "conditional": [2,6,9,11],
+      "flow_examples": ["authority", "delegation", "oversight", "membership", "regulation"],
+      "reading": "D4 records jurisdiction/membership; D5 records admission, authorization, delegation or exit; D8 models differentiated institutions composing a larger order; D10 shows system governance; D2 only when capture/blocked exit is evidenced; D11 only for explicit constitutional/objective criteria.",
+      "risk": "equating institutional height with moral legitimacy"
+    },
+    "financial": {
+      "primary": [3,4,5,6,10],
+      "conditional": [2,8,9],
+      "flow_examples": ["money", "debt", "loan", "guarantee", "investment", "tax", "capital"],
+      "reading": "D4 holds instruments, balances and transfers; D3 provenance/creditor history; D5 maturity, covenant, default, restructuring or settlement; D6 rollover and changing exposure; D10 aggregate balance-sheet/network burden; D2 only for evidenced capture or exit friction.",
+      "risk": "confusing debt with guilt, power or project-symbolic karmic debt"
+    },
+    "political": {
+      "primary": [4,5,8,9,10],
+      "conditional": [3,6,11],
+      "flow_examples": ["alliance", "treaty", "diplomacy", "representation", "policy influence", "voting"],
+      "reading": "D4 records treaties, votes and diplomacy; D5 accession/activation/withdrawal; D8 durable alliance and institutional composition; D9 diplomatic relay; D10 coalition/alliance system effects; D11 only where shared constitutional or strategic criteria are explicit.",
+      "risk": "treating alliances as automatically virtuous because they are highly integrated"
+    },
+    "religious": {
+      "primary": [3,4,6,8,9],
+      "conditional": [5,7,10,11],
+      "flow_examples": ["institution", "ritual", "teaching", "pilgrimage", "scripture transmission", "charity"],
+      "reading": "D4 records people/institutions/practices where measurable; D3 history/textual provenance; D6 change; D8 communities/institutions; D9 teaching and transmission. D5/D7/D10/D11 may describe thresholds, generativity or project-comparative interpretation but must not turn theology into empirical proof.",
+      "risk": "inferring individual belief, politics or moral rank from affiliation"
+    },
+    "intellectual": {
+      "primary": [3,4,6,7,9],
+      "conditional": [8,10,11],
+      "flow_examples": ["citation", "research", "criticism", "authorship", "conceptual inheritance", "education"],
+      "reading": "D3 source genealogy; D4 documented authorship/citation; D6 evolution of ideas; D7 downstream work/capability; D9 knowledge relay; D10 schools/research systems; D11 explicit evaluation criteria or invariants.",
+      "risk": "treating conceptual similarity as historical influence without evidence"
+    },
+    "geographic": {
+      "primary": [3,4,5,10],
+      "conditional": [6,8],
+      "flow_examples": ["border", "corridor", "maritime route", "proximity", "territorial access"],
+      "reading": "D4 is the principal plane for actual geography; D3 historical boundaries/routes; D5 crossings/access rules; D10 system geography such as corridors and chokepoints; D8 only where geography supports a composed regional system.",
+      "risk": "turning symbolic dimensions into literal underground/upper geography"
+    },
+    "cultural": {
+      "primary": [3,4,6,7,8,9],
+      "conditional": [10,11],
+      "flow_examples": ["language", "art", "custom", "shared memory", "cultural exchange", "diaspora transmission"],
+      "reading": "D4 observable cultural indicators/institutions; D3 inherited memory; D6 cultural change; D7 creative generativity; D8 cultures as differentiated Rooms; D9 transmission/exchange; D10 system-wide cultural integration only with declared methodology.",
+      "risk": "reducing cultures to one rank or treating affinity as proof of political alliance"
+    },
+    "technological": {
+      "primary": [3,4,5,6,8,9,10],
+      "conditional": [2,7,11],
+      "flow_examples": ["standards", "licenses", "infrastructure", "supply-chain dependency", "interoperability", "technology transfer"],
+      "reading": "D4 assets/dependencies; D3 ownership/version provenance; D5 access/licensing thresholds; D6 upgrades/change; D8 interoperable systems; D9 standards/technology transfer; D10 integrated technical capability; D2 lock-in only when evidenced.",
+      "risk": "calling ordinary technical dependency capture without measuring alternatives/exit costs"
+    },
+    "information": {
+      "primary": [3,4,6,9,10],
+      "conditional": [2,5,8],
+      "flow_examples": ["publication", "data", "media", "platform communication", "archives", "intelligence"],
+      "reading": "D4 documented information flow; D3 archive/provenance; D6 changing narratives/versions; D9 source-mediator-recipient transmission; D10 information-system integration; D2 recursion/capture only when persistent loops are evidenced; D5 access/classification gates.",
+      "risk": "treating repetition as corroboration or inferred hidden communication as fact"
+    },
+    "social": {
+      "primary": [3,4,6,7,8],
+      "conditional": [2,5,9,10],
+      "flow_examples": ["friendship", "community", "employment", "migration", "care", "trust", "social obligation"],
+      "reading": "D4 observed social relations; D3 shared history; D6 sustained/changeable reciprocity; D7 generative friendship/care and autonomous capacity; D8 durable community/institutional composition; D2 only for evidenced capture/blocked exit.",
+      "risk": "inferring friendship, hostility or hidden coordination from proximity or co-membership"
+    },
+    "symbolic": {
+      "primary": [3,6,7,8,9,10,11],
+      "conditional": [1,2,5],
+      "flow_examples": ["metaphor", "representation", "archetype", "visual correspondence", "project comparison"],
+      "reading": "Symbolic relations are non-empirical context unless independently evidenced. D3 traces provenance, D6 motif transformation, D7-D11 support project-symbolic generativity/composition/transmission/integration/meta-orientation. D4 is used only for the real artifact/text/event that carries the symbol.",
+      "risk": "analogy becoming proof or symbolic adjacency becoming a hidden empirical relation"
+    },
+    "functional": {
+      "primary": [4,5,6,7,8,9,10],
+      "conditional": [2,3,11],
+      "flow_examples": ["input/output", "service", "infrastructure dependency", "operational role", "system function"],
+      "reading": "D4 records actual inputs/outputs/services; D5 operational thresholds; D6 changing performance; D7 generated capacity; D8 modular system composition; D9 relay; D10 integrated function and bottlenecks; D2 only for measured lock-in/failure loops.",
+      "risk": "using function as a moral ranking rather than a measurable system role"
+    },
+    "mythological": {
+      "primary": [3,5,6,7,8,9,10,11],
+      "conditional": [1,2,4],
+      "flow_examples": ["Potatoverse role", "Door", "Ladder", "Tree", "Garden", "project spiritual relation"],
+      "reading": "This family is internal to Potatoverse/project canon. It can use the full symbolic Axis, but D4 is reserved for real-world attestations, texts, artworks, dates, platforms or places connected to the mythological record—not supernatural proof.",
+      "risk": "project canon overwriting empirical evidence or political/legal authority"
+    }
+  },
+  "cross_family_examples": {
+    "sovereign_debt": ["financial", "institutional", "political", "functional"],
+    "defense_alliance": ["political", "institutional", "information", "technological", "functional"],
+    "friendship_between_people": ["social", "cultural", "information"],
+    "research_alliance": ["intellectual", "institutional", "information", "technological", "financial"],
+    "energy_interconnector": ["geographic", "technological", "financial", "institutional", "functional"],
+    "diaspora_network": ["genealogical", "social", "cultural", "information", "financial"],
+    "religious_institution": ["religious", "institutional", "social", "cultural", "financial", "information"]
+  },
+  "ui_implication": "A future relationship inspector should show family + D4 facts first, then a compact Axis strip highlighting only the dimensions justified for that particular edge. Selecting a dimension changes the question asked of the same edge; it does not create a duplicate relationship.",
+  "connections": [
+    "docs/KINGDOM-ATLAS.md",
+    "data/relationship-verticality-contract.json",
+    "data/relational-edge-state.schema.json",
+    "data/axis-flow-contract.json",
+    "data/atlas-projection-contract.json"
+  ]
+}
