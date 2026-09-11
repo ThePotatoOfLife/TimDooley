@@ -20,7 +20,8 @@ function setFocus(on, {persist = true} = {}) {
   if (!app) return;
   app.classList.toggle('ui-focus', on);
   focusMode?.classList.toggle('active', on);
-  focusMode && (focusMode.textContent = on ? 'Focus mode · on' : 'Focus mode · hide overlays');
+  const label = on ? 'Focus mode · on' : 'Focus mode · hide overlays';
+  if (focusMode && focusMode.textContent !== label) focusMode.textContent = label;
   if (persist) localStorage.setItem('atlas:focus-mode', on ? '1' : '0');
 }
 
@@ -53,7 +54,10 @@ observer?.observe(panel, {childList:true, subtree:true, characterData:true});
 
 function summaryText(id,text,active=false){
   const summary=document.querySelector(`#${id}>summary`);if(!summary)return;
-  summary.textContent=text;summary.classList.toggle('active-state',active);
+  // Idempotence matters here. Rewriting textContent creates a child-list mutation;
+  // older code combined that with a body-wide MutationObserver and could spin.
+  if(summary.textContent!==text) summary.textContent=text;
+  summary.classList.toggle('active-state',active);
 }
 function updateLayerSummary(){
   const relation=document.getElementById('relationType')?.value||'all';
@@ -74,7 +78,7 @@ function updateTraceSummary(){
 function updateTimeSummary(state=window.__potatoAtlasTime?.getState?.()){
   if(!state||state.mode==='current'){summaryText('timeMenu','Time',false);return;}
   if(state.mode==='as_of')summaryText('timeMenu',`Time · ${state.time||'As of…'}`,true);
-  else summaryText('timeMenu',`Time · compare`,true);
+  else summaryText('timeMenu','Time · compare',true);
 }
 function updateViewSummary(){
   const height=document.getElementById('height')?.value||'flat';
@@ -92,42 +96,67 @@ document.addEventListener('click',event=>{if(event.target?.id==='entityTraceTogg
 window.addEventListener('atlas-time-change',event=>updateTimeSummary(event.detail));
 
 const layersPop = document.querySelector('#layersMenu .menu-pop');
-const relocateInjectedLayerControls = () => {
-  for (const id of ['axisFieldView','empiricalNetworkView']) {
-    const node = document.getElementById(id);
-    if (node && layersPop && node.parentElement !== layersPop) layersPop.appendChild(node);
+function relocateInjectedLayerControls(){
+  let moved=false;
+  for(const id of ['axisFieldView','empiricalNetworkView']){
+    const node=document.getElementById(id);
+    if(node&&layersPop&&node.parentElement!==layersPop){layersPop.appendChild(node);moved=true;}
   }
-  updateLayerSummary();
-};
-new MutationObserver(relocateInjectedLayerControls).observe(document.body, {childList:true, subtree:true});
-relocateInjectedLayerControls();
+  if(moved) updateLayerSummary();
+  return Boolean(document.getElementById('axisFieldView'))&&Boolean(document.getElementById('empiricalNetworkView'));
+}
 
-function installAxisToggle() {
-  const nav = document.getElementById('axisDepthNavigator');
-  if (!nav || document.getElementById('axisCompactToggle')) return;
-  nav.hidden = localStorage.getItem('atlas:axis-open') !== '1';
-  const button = document.createElement('button');
-  button.id = 'axisCompactToggle';
-  button.textContent = nav.hidden ? 'Axis' : 'Axis · open';
-  button.title = 'Show or hide the D1–D11 Axis navigator';
-  button.style.cssText = 'position:absolute;right:12px;top:44px;z-index:4;border-radius:999px;background:#0b1010df;backdrop-filter:blur(8px)';
-  button.classList.toggle('active', !nav.hidden);
-  button.addEventListener('click', () => {
-    nav.hidden = !nav.hidden;
-    localStorage.setItem('atlas:axis-open', nav.hidden ? '0' : '1');
-    button.textContent = nav.hidden ? 'Axis' : 'Axis · open';
-    button.classList.toggle('active', !nav.hidden);
+function installAxisToggle(){
+  const nav=document.getElementById('axisDepthNavigator');
+  if(!nav)return false;
+  if(document.getElementById('axisCompactToggle'))return true;
+  nav.hidden=localStorage.getItem('atlas:axis-open')!=='1';
+  const button=document.createElement('button');
+  button.id='axisCompactToggle';
+  button.textContent=nav.hidden?'Axis':'Axis · open';
+  button.title='Show or hide the D1–D11 Axis navigator';
+  button.style.cssText='position:absolute;right:12px;top:44px;z-index:4;border-radius:999px;background:#0b1010df;backdrop-filter:blur(8px)';
+  button.classList.toggle('active',!nav.hidden);
+  button.addEventListener('click',()=>{
+    nav.hidden=!nav.hidden;
+    localStorage.setItem('atlas:axis-open',nav.hidden?'0':'1');
+    button.textContent=nav.hidden?'Axis':'Axis · open';
+    button.classList.toggle('active',!nav.hidden);
   });
   document.querySelector('.mapwrap')?.appendChild(button);
+  return true;
 }
-new MutationObserver(installAxisToggle).observe(document.body, {childList:true,subtree:true});
-installAxisToggle();
+
+// Optional modules finish their own async data fetches after import() resolves.
+// Poll for their injected controls for a finite window instead of observing the
+// entire document forever. The old body observer mutated summary text from its
+// own callback, creating a self-sustaining MutationObserver feedback loop.
+let settleAttempts=0;
+function settleLateControls(){
+  const layersReady=relocateInjectedLayerControls();
+  const axisReady=installAxisToggle();
+  updateMenuSummaries();
+  settleAttempts+=1;
+  if((!layersReady||!axisReady)&&settleAttempts<40) setTimeout(settleLateControls,250);
+}
+settleLateControls();
+window.addEventListener('potato-atlas-bootstrap-complete',()=>setTimeout(settleLateControls,0),{once:true});
 
 focusMode?.addEventListener('click',()=>queueMicrotask(updateViewSummary));
 updateMenuSummaries();
 
-// Entity-aware Trace is an opt-in investigation loaded through the progressive UI,
-// not another permanent map overlay.
-import('./3d-entity-trace.js').then(()=>updateTraceSummary()).catch(error=>console.warn('Entity Trace enhancement unavailable:',error));
+// Entity-aware Trace is genuinely opt-in. It is loaded only when the Trace menu
+// is opened, not during startup, so graph data/observers cannot affect first use.
+let entityTracePromise=null;
+function ensureEntityTrace(){
+  if(!entityTracePromise){
+    entityTracePromise=import('./3d-entity-trace.js')
+      .then(()=>{updateTraceSummary();return true;})
+      .catch(error=>{console.warn('Entity Trace enhancement unavailable:',error);return false;});
+  }
+  return entityTracePromise;
+}
+const traceMenu=document.getElementById('traceMenu');
+traceMenu?.addEventListener('toggle',()=>{if(traceMenu.open)ensureEntityTrace();});
 
-window.__potatoAtlasUI = {setPanel,setFocus,updateMenuSummaries};
+window.__potatoAtlasUI={setPanel,setFocus,updateMenuSummaries,ensureEntityTrace};
