@@ -48,16 +48,6 @@ function observation(record, key) {
   if (value && typeof value === 'object' && 'value' in value) return value;
   return null;
 }
-function observationText(record, key, fallbackKey = '') {
-  const row = observation(record, key);
-  if (row) return {
-    value: `${typeof row.value === 'number' ? formatNumber(row.value, 2) : row.value}${row.unit ? ` ${row.unit}` : ''}`,
-    period: row.reference_period || '',
-    source: row.source || '',
-  };
-  if (fallbackKey && record?.observations?.[fallbackKey] != null) return { value: String(record.observations[fallbackKey]), period: '', source: '' };
-  return { value: '—', period: '', source: '' };
-}
 
 async function countryRecord(code) {
   if (records.has(code)) return records.get(code);
@@ -106,16 +96,12 @@ function membershipLabels(record) {
 async function contextualRows(code, record) {
   const active = layers.active().map(id => layers.get(id)).filter(Boolean);
   const rows = [];
+  const setEntries = active.filter(entry => entry.kind === 'set');
+
   for (const entry of active) {
     if (entry.family === 'religion') {
       const value = await religionShare(code, entry.id);
       rows.push([entry.label, value == null ? '—' : `${formatNumber(value, 1)}%`]);
-    } else if (entry.kind === 'set') {
-      const matches = await window.__potatoAtlasQuery?.matches?.(code);
-      // `matches` is the current whole-query result. Keep exact per-layer status
-      // understandable through the active label list without claiming a role the
-      // current compositor has not yet exposed individually.
-      rows.push([entry.label, matches ? 'in current match' : 'outside current match']);
     } else if (entry.id === 'stat.population') {
       const pop = observation(record, 'population');
       rows.push([entry.label, pop ? formatCompact(pop.value) : '—']);
@@ -123,7 +109,18 @@ async function contextualRows(code, record) {
       rows.push([entry.label, record?.geography?.area_km2 ? `${formatNumber(record.geography.area_km2)} km²` : '—']);
     }
   }
-  return rows.slice(0, 6);
+
+  if (setEntries.length) {
+    const matches = await window.__potatoAtlasQuery?.matches?.(code);
+    const mode = window.__potatoAtlasQuery?.getMode?.() || 'any';
+    rows.unshift([
+      `${mode.toUpperCase()} set query`,
+      matches ? 'matches' : 'outside',
+    ]);
+    rows.splice(1, 0, ['Active sets', setEntries.map(entry => entry.label).join(' · ')]);
+  }
+
+  return rows.slice(0, 7);
 }
 
 function install() {
