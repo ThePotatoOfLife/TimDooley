@@ -7,7 +7,7 @@
 
 const MAPLIBRE_VERSION = '5.24.0';
 const PROVIDER_TIMEOUT_MS = 7000;
-const LOCAL_RUNTIME = new URL(`./vendor/maplibre-gl.js?v=${MAPLIBRE_VERSION}`, import.meta.url).href;
+const LOCAL_RUNTIME = new URL('./vendor/maplibre-gl.js?v=5.24.0', import.meta.url).href;
 const providers = [
   LOCAL_RUNTIME,
   `https://cdn.jsdelivr.net/npm/maplibre-gl@${MAPLIBRE_VERSION}/dist/maplibre-gl.js`,
