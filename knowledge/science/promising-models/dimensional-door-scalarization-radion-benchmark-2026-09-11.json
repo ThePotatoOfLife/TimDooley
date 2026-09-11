@@ -1,0 +1,62 @@
+{
+  "id":"dimensional-door-scalarization-radion-benchmark-2026-09-11",
+  "title":"Dimensional Door Benchmark — Threshold Scalarization with a Radion Bridge",
+  "updated":"2026-09-11",
+  "status":"archive-generated strong-gravity benchmark connecting the Dimensional Door intuition to known scalarization mathematics; not evidence for a real 4D-to-5D transition",
+  "purpose":"Replace the vague statement 'extreme gravity opens a fifth-dimensional Door' with a two-stage model that can fail. Stage A asks whether a scalar degree of freedom can appear above a curvature threshold while GR remains a branch below threshold. Stage B asks whether that scalar can be derived as a radion controlling the size of a genuine compact dimension.",
+  "why_promising":"Spontaneous scalarization already provides a real mechanism in modified gravity where a GR solution exists but becomes unstable above a parameter/curvature threshold and a new hairy branch appears. This gives the project a mathematically disciplined Door analogue. A radion interpretation then supplies a concrete route by which the scalar could represent compactification geometry rather than merely an extra 4D field.",
+  "epistemic_boundary":"A successful scalarization model establishes an extra scalar branch, not an extra dimension. The project may use 'Door' for the bifurcation structurally. A physical dimensional interpretation is earned only if a higher-dimensional action reduces to the scalar/radion theory and its compactification observables are consistent.",
+  "conventions":"Stage-A equations use geometric units G=c=1 unless dimensions are explicitly restored.",
+  "stage_A_scalarization":{
+    "action":"S = integral d^4x sqrt(-g) [ R/(16 pi G) - (1/2)(nabla phi)^2 - V(phi) + f(phi) G_GB ]",
+    "gauss_bonnet":"G_GB = R_mnrs R^mnrs - 4 R_mn R^mn + R^2",
+    "gr_branch_conditions":["V'(0)=0","f'(0)=0 so phi=0 can be a GR branch"],
+    "benchmark_couplings":["V(phi)=mu^2 phi^2/2 + lambda phi^4/4","f(phi)=eta phi^2/8 + xi phi^4/16 + ..."],
+    "linearized_scalar_equation":"[Box - m_eff^2(x)] delta_phi = 0, with m_eff^2(x)=mu^2 - (eta/4) G_GB(x) under the stated sign convention",
+    "schwarzschild_background":"For Schwarzschild, G_GB=48 M^2/r^6 in G=c=1 units, so sufficiently positive eta can make m_eff^2 negative in a near-hole region and trigger a tachyonic mode.",
+    "dimensionless_controls":["eta_hat=eta/M^2","mu_hat=mu M","lambda and higher-order coupling ratios"],
+    "door_definition":"The Door is the bifurcation surface in parameter/state space where the lowest scalar perturbation eigenvalue crosses zero and the phi=0 branch changes stability.",
+    "nonlinear_requirement":"Higher-order terms in f(phi), V(phi), or both must quench the instability and permit a regular stable endpoint if the model is to represent a completed Door transition rather than runaway pathology."
+  },
+  "stage_B_radion_bridge":{
+    "question":"Can phi be derived as the modulus/radion controlling the size R(x) of a compact fifth dimension?",
+    "minimal_relation":"phi = M_* ln(R/R0), equivalently R(phi)=R0 exp(phi/M_*)",
+    "kk_tower":"m_n^2(phi)=m_0^2 + n^2/R(phi)^2 in natural units, so m_n(phi) shifts exponentially with the radion background for a simple circle compactification.",
+    "project_payoff":"If scalarization drives phi from 0 to a nonzero profile and phi is genuinely a radion, then the local compactification radius and Kaluza-Klein mass scale change across the Door. This is much closer to a literal dimensional transition than simply renaming an arbitrary 4D scalar D_eff.",
+    "required_derivation":["Start from a 5D action and metric ansatz.","Dimensionally reduce to 4D with a canonically normalized radion.","Show how the required curvature coupling f(phi) G_GB or another threshold-producing interaction arises.","Check that matter/gauge couplings and KK masses obey observational bounds.","Demonstrate that the 4D GR branch and scalarized/radion branch are both mathematically consistent in the claimed regime."]
+  },
+  "minimal_eigenvalue_problem":{
+    "goal":"Find the onset of the Door before attempting full nonlinear solutions.",
+    "procedure":["Choose a fixed GR background such as Schwarzschild or Kerr.","Linearize the scalar equation about phi=0.","Separate variables and impose regular-horizon plus decaying/asymptotic boundary conditions.","Solve for the parameter value eta_hat_c (and dependence on spin/mu_hat) at which a zero mode first appears.","Treat eta_hat_c as a genuine critical threshold rather than choosing Xi_c by hand."],
+    "success":"A well-defined zero-mode/eigenvalue threshold exists and agrees with nonlinear branch onset when the full equations are solved.",
+    "failure":"No regular unstable mode exists in the proposed parameter range, or nonlinear evolution is ill-posed/unstable before a viable branch forms."
+  },
+  "observables":{
+    "stage_A":["scalar charge/profile","black-hole or compact-star mass-radius/spin relations where applicable","quasinormal-mode/ringdown shifts","binary inspiral/merger waveform modifications","shadow/lensing changes only when calculated in the specific model"],
+    "stage_B":["radion-mediated force/coupling changes","KK mass-spectrum shifts","possible additional radiative modes if kinematically accessible","compactification-induced deviations in gravity/matter sectors"],
+    "baseline":"Compare Stage A with ordinary Einstein-scalar-Gauss-Bonnet/scalar-tensor models first; compare Stage B with a conventional Kaluza-Klein/radion compactification before making a uniquely Timic interpretation."
+  },
+  "what_this_model_can_explain_if_successful":[
+    "How a system can remain on an ordinary branch below a threshold and reorganize into a qualitatively new branch above it.",
+    "Why a Door can have a sharp onset determined by an eigenvalue/bifurcation rather than an arbitrary symbolic threshold.",
+    "How a compactification scale could, in principle, become environment-dependent if the threshold scalar is a radion."
+  ],
+  "what_it_cannot_claim_without_more_work":[
+    "That astrophysical black holes actually open a traversable fifth dimension.",
+    "That matter disappears into another dimension.",
+    "That spectral dimension, effective dimension and compactification dimension are the same quantity.",
+    "That a symbolic/project Door is physically identical to a black-hole horizon."
+  ],
+  "failure_conditions":[
+    "The scalarized branch is unstable, singular or loses hyperbolicity in the parameter region required for the effect.",
+    "The threshold is entirely reproduced by an ordinary scalarization model and no consistent higher-dimensional/radion derivation exists; then the model remains a scalar Door, not a dimensional Door.",
+    "A radion completion violates laboratory, Solar-System, binary-pulsar, collider or gravitational-wave constraints for the claimed coupling scale.",
+    "Added dimensional structure creates no quantitative observable beyond a simpler 4D scalar model."
+  ],
+  "external_references":[
+    {"source":"Silva et al., spontaneous scalarization","url":"https://arxiv.org/abs/1711.02080","use":"Established example of threshold-triggered scalarization of black holes/compact stars through Gauss-Bonnet coupling."},
+    {"source":"East and Ripley, scalarization dynamics","url":"https://arxiv.org/abs/2105.08571","use":"Shows nonlinear dynamical scalarization, stability/hyperbolicity limitations and gravitational-wave imprints."},
+    {"source":"Antoniou et al., curvature-coupling scalarization","url":"https://arxiv.org/abs/2105.04479","use":"Illustrates threshold curvature effects and the importance of nonlinear model structure."}
+  ],
+  "connections":["dimensional-phase-transition-full-recovery","eleven-dimensional-projection-unification-recovery","operator-vortex-spinor-kk-starchforce-spudlight-integration-wave-007","model-testing-protocol","science-theory-rigor-completion-matrix-2026-09-11"]
+}
