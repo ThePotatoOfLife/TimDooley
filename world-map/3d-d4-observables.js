@@ -19,6 +19,10 @@ const METRICS = {
   life_expectancy: {label:'Life expectancy', indicator:'SP.DYN.LE00.IN', unit:'years', format:'years'},
   urbanization: {label:'Urban population', indicator:'SP.URB.TOTL.IN.ZS', unit:'percent of population', format:'percent'},
   internet_penetration: {label:'Internet use', indicator:'IT.NET.USER.ZS', unit:'percent of population', format:'percent'},
+  trade_openness: {label:'Trade / GDP', indicator:'NE.TRD.GNFS.ZS', unit:'percent of GDP', format:'percent'},
+  net_migration: {label:'Net migration', indicator:'SM.POP.NETM', unit:'persons over reference period', format:'signed-compact'},
+  energy_dependence: {label:'Net energy imports', indicator:'EG.IMP.CONS.ZS', unit:'percent of energy use', format:'percent'},
+  fdi_inflow: {label:'FDI net inflow', indicator:'BX.KLT.DINV.WD.GD.ZS', unit:'percent of GDP', format:'percent'},
 };
 const INDICATOR_TO_METRIC = Object.fromEntries(Object.entries(METRICS).map(([metricId,spec]) => [spec.indicator,metricId]));
 
@@ -47,6 +51,12 @@ function compact(value, maximumFractionDigits = 1) {
   return new Intl.NumberFormat('en', {notation:'compact', maximumFractionDigits}).format(n);
 }
 
+function signedCompact(value, maximumFractionDigits = 1) {
+  const n = number(value);
+  if (n == null) return '—';
+  return new Intl.NumberFormat('en', {notation:'compact', maximumFractionDigits, signDisplay:'exceptZero'}).format(n);
+}
+
 function fixed(value, digits = 1) {
   const n = number(value);
   if (n == null) return '—';
@@ -58,6 +68,7 @@ function formatValue(metricId, value) {
   const n = number(value);
   if (n == null) return '—';
   if (spec?.format === 'population') return compact(n, 2);
+  if (spec?.format === 'signed-compact') return signedCompact(n, 2);
   if (spec?.format === 'usd-large') {
     if (Math.abs(n) >= 1e12) return `$${fixed(n / 1e12, 2)}T`;
     if (Math.abs(n) >= 1e9) return `$${fixed(n / 1e9, 1)}B`;
@@ -94,7 +105,7 @@ function normalizeSnapshotMetric(metricId, item) {
 
 async function fetchWorldBankCountry(code) {
   const indicatorPath = Object.values(METRICS).map(spec => encodeURIComponent(spec.indicator)).join(';');
-  const query = new URLSearchParams({format:'json', source:'2', per_page:'100', mrnev:'2'});
+  const query = new URLSearchParams({format:'json', source:'2', per_page:'150', mrnev:'2'});
   const url = `https://api.worldbank.org/v2/country/${encodeURIComponent(code)}/indicator/${indicatorPath}?${query}`;
   try {
     const response = await fetch(url);
@@ -201,9 +212,9 @@ function insertCard(code, data) {
   const card = document.createElement('div');
   card.className = 'card atlas-d4-observables';
   card.dataset.d4Code = code;
-  card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · prosperity · motion · labour · life · settlement · connectivity</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'one selected-country WDI request'}</small></div>
+  card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · prosperity · motion · labour · life · settlement · connectivity · trade · migration · energy · capital</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'one selected-country WDI request'}</small></div>
     <div class="d4-observable-grid">${available.length ? available.map(metricId => metricHtml(metricId, metrics[metricId])).join('') : '<div class="d4-observable-empty">No comparable D4 observations returned for this country.</div>'}</div>
-    <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Prior points are retained only as dated observations to seed later D6 change analysis. Current USD is not PPP. Missing is not zero. None of these values determines Axis height or moral rank.</div>`;
+    <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Trade/GDP is intensity, not bilateral dependence. Net migration is a source-period balance. Negative net energy imports can indicate a net exporter. FDI can be negative. Prior points seed later D6 change analysis. Current USD is not PPP. Missing is not zero. None of these values determines Axis height or moral rank.</div>`;
 
   const anchor = panel.querySelector('.atlas-country-profile') || panel.querySelector('.grid');
   if (anchor?.parentNode) anchor.parentNode.insertBefore(card, anchor.nextSibling);
