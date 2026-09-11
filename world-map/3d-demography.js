@@ -1,8 +1,7 @@
-import './3d-axis.js';
-
 // Sourced demography enhancement for the 3D World Relational Atlas.
 // This module is intentionally non-fatal: if the runtime snapshot is unavailable,
-// the core atlas keeps working exactly as before.
+// the core atlas keeps working exactly as before. Axis is loaded independently by
+// the core-first bootstrap so demography cannot accidentally activate it early.
 
 const DEMOGRAPHY_URL = '../data/world-country-demography.json';
 const REST_URL = 'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders';
@@ -101,7 +100,7 @@ function enhanceCountryPanel(panel, code, row) {
       const label = metric.querySelector('span')?.textContent?.trim().toLowerCase();
       if (label === 'population') {
         const value = metric.querySelector('b');
-        if (value) value.textContent = formatPopulation(population.value);
+        if (value && value.textContent !== formatPopulation(population.value)) value.textContent = formatPopulation(population.value);
         if (!metric.querySelector('.demography-pop-source')) {
           const meta = document.createElement('small');
           meta.className = 'muted demography-pop-source';
