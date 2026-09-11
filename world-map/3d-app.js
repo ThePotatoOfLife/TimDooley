@@ -93,6 +93,32 @@ const HUBS = [
   {id:'tim',label:'Tim / Project Canon',keys:[],plane:'project-canon'}
 ];
 
+// The on-map country orbit is intentionally capped to stable knowledge groups.
+// Individual modules remain available in Details; future modules join a group
+// instead of adding another permanent dot around the selected country.
+const MODULE_GROUPS = [
+  {id:'society',label:'Society',members:['religion','migration']},
+  {id:'state',label:'State',members:['government','security']},
+  {id:'economy',label:'Economy',members:['economy','debt','trade','ownership']},
+  {id:'systems',label:'Systems',members:['energy','infrastructure','science']},
+  {id:'context',label:'Context',members:['history','relations']},
+  {id:'project',label:'Project',members:['north','tim']}
+];
+
+function groupedModules(record,code){
+  const available=HUBS.map(h=>({...h,data:getModule(h,record,code)})).filter(h=>h.data);
+  const byId=new Map(available.map(module=>[module.id,module]));
+  const assigned=new Set();
+  const groups=MODULE_GROUPS.map(group=>{
+    const modules=group.members.map(id=>byId.get(id)).filter(Boolean);
+    modules.forEach(module=>assigned.add(module.id));
+    return {...group,modules};
+  }).filter(group=>group.modules.length);
+  const extras=available.filter(module=>!assigned.has(module.id));
+  if(extras.length)groups.push({id:'more',label:'More',members:extras.map(module=>module.id),modules:extras});
+  return groups;
+}
+
 function mode() {
   const z = map.getZoom();
   return z < 3 ? 'world' : z < 5 ? 'regional' : z < 7 ? 'country' : 'subnational';
@@ -186,18 +212,17 @@ function hubData(code, record) {
   const r = by3[code];
   if (!r?.latlng) return {points:emptyFC(),lines:emptyFC()};
   const lat=r.latlng[0], lon=r.latlng[1], baseRadius=Math.max(.7,Math.min(4.5,Math.sqrt(Math.max(r.area||1,1))/430));
-  const available=HUBS.map(h=>({...h,data:getModule(h,record,code)})).filter(h=>h.data);
+  const groups=groupedModules(record,code);
   const pts=[],lines=[];
-  available.forEach((h,i)=>{
-    // Vogel/phyllotaxis placement: stable under incremental module growth and less prone
-    // to spoke alignment than equal angular sectors. This is navigation geometry only.
+  groups.forEach((group,i)=>{
     const a=i*GOLDEN_ANGLE;
-    const radialScale=.62+.17*Math.sqrt(i+1);
+    const radialScale=.72+.13*Math.sqrt(i+1);
     const radius=baseRadius*radialScale;
     const dx=Math.cos(a)*radius, dy=Math.sin(a)*radius*.65;
     const coord=[lon+dx,Math.max(-82,Math.min(82,lat+dy))];
-    pts.push({type:'Feature',properties:{id:h.id,label:h.label,plane:h.plane,code,idx:i},geometry:{type:'Point',coordinates:coord}});
-    lines.push({type:'Feature',properties:{id:h.id,code},geometry:{type:'LineString',coordinates:[[lon,lat],coord]}});
+    const label=`${group.label} · ${group.modules.length}`;
+    pts.push({type:'Feature',properties:{id:group.id,label,plane:'group',code,count:group.modules.length},geometry:{type:'Point',coordinates:coord}});
+    lines.push({type:'Feature',properties:{id:group.id,code},geometry:{type:'LineString',coordinates:[[lon,lat],coord]}});
   });
   return {points:{type:'FeatureCollection',features:pts},lines:{type:'FeatureCollection',features:lines}};
 }
@@ -319,6 +344,7 @@ async function renderCompare(){
   const rows=await Promise.all(compareCodes.map(async code=>{const r=by3[code]||{},rec=await loadCanonical(code),modules=HUBS.filter(h=>getModule(h,rec,code)).length,rels=(worldCfg.curated_edges||[]).filter(e=>e.a===code||e.b===code).length;return{code,name:r.name?.common||code,pop:r.population,area:r.area,modules,rels,badges:axisBadges(code)}}));
   $('#panel').innerHTML=`<div class="eyebrow">Compare mode · ${rows.length}/4</div><h1>Country comparison</h1><p class="muted">Click map countries to add or remove them. Table actions deliberately separate inspection from membership.</p><div class="actions"><button onclick="fitCompare()">Fit comparison</button><button onclick="clearCompare()">Clear</button><button onclick="leaveCompare()">Done</button></div>${rows.length?`<div class="card"><table class="compare-table"><thead><tr><th>Country</th><th>Population</th><th>Area km²</th><th>Modules</th><th>Edges</th></tr></thead><tbody>${rows.map(x=>`<tr><td><b>${esc(x.name)}</b><div><button onclick="inspectComparedCountry('${x.code}')">Inspect</button> <button onclick="removeComparedCountry('${x.code}')">Remove</button></div><div>${x.badges.slice(0,2).map(b=>`<span class="pill">${esc(b)}</span>`).join('')}</div></td><td>${fmt(x.pop)}</td><td>${fmt(x.area)}</td><td>${x.modules}</td><td>${x.rels}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card muted">No countries held yet. Click up to four polygons.</div>'}<div class="boundary">Comparison is descriptive. Population, area, graph degree and project-axis labels encode different quantities; future GDP, debt and energy metrics require harmonized dated sources.</div>`;
 }
+window.openModuleGroup=id=>{if(!selected)return;const group=groupedModules(currentCanonical,selected).find(item=>item.id===id);if(!group)return;$('#panel').innerHTML=`<div class="eyebrow">Country knowledge · ${esc(selected)}</div><h1>${esc(group.label)}</h1><div class="actions"><button onclick="showOverview()">Back to country</button></div><div class="card">${group.modules.map(module=>`<div class="row"><button onclick="openModule('${module.id}')">${esc(module.label)}</button> <span class="pill">${esc(module.plane)}</span></div>`).join('')}</div><div class="boundary">The on-map orbit is grouped navigation only. Detailed modules remain in the inspector so the map does not grow a new node for every future dataset.</div>`};
 window.openModule=id=>{const h=HUBS.find(x=>x.id===id);if(!h||!selected)return;const data=getModule(h,currentCanonical,selected);$('#panel').innerHTML=`<div class="eyebrow">${esc(h.plane)} · ${esc(selected)}</div><h1>${esc(h.label)}</h1><div class="actions"><button onclick="showOverview()">Back to country</button></div><div class="boundary">${h.id==='tim'?'Project-canon material is separate from empirical country data.':h.id==='debt'?'This module is for documented physical/public finance. Tim-claimed karmic amounts remain a separate project ledger.':'This is a semantic data module, not a geographic point.'}</div><div class="card">${readable(data)}</div>`};
 window.showOverview=()=>renderCountry();
 window.fitCountry=()=>selected&&fitCodes([selected]);
@@ -373,7 +399,7 @@ map.on('load',async()=>{
   map.on('click','countries-fill',handleCountryPolygonClick);
   map.on('click','countries-extrude',handleCountryPolygonClick);
   map.on('click','country-hubs',e=>{claimOverlayClick(e);const code=e.features?.[0]?.properties?.iso3,f=featureByCode(code);if(f)selectFeature(f,false)});
-  map.on('click','semantic-hubs',e=>{claimOverlayClick(e);const f=e.features?.[0];if(f)window.openModule(f.properties.id)});
+  map.on('click','semantic-hubs',e=>{claimOverlayClick(e);const f=e.features?.[0];if(f)window.openModuleGroup(f.properties.id)});
   map.on('click','trace-hubs',e=>{claimOverlayClick(e);const code=e.features?.[0]?.properties?.iso3;if(code)window.goCountry(code)});
   map.on('click','relations',e=>{claimOverlayClick(e);clickRelation(e)});
   ['countries-fill','countries-extrude','country-hubs','semantic-hubs','relations','trace-hubs','compare-hubs'].forEach(id=>{map.on('mouseenter',id,()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave',id,()=>map.getCanvas().style.cursor='')});
