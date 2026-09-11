@@ -157,6 +157,7 @@ try {
   declareDormant('Path finder', './3d-pathfinder.js', 'Trace menu');
   declareDormant('Entity Trace', './3d-entity-trace.js', 'Trace menu');
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
+  declareDormant('Demography facets', './3d-demography-facets.js', 'Layers menu');
   declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
   declareDormant('Fields', './3d-fields.js', 'Layers menu');
   declareDormant('Networks', './3d-networks.js', 'Layers menu');
@@ -167,6 +168,7 @@ try {
   declareDormant('North Axis', './3d-axis.js', 'Layers or View menu');
 
   const promoteLayers = async () => {
+    await loadAfterPaint('Demography facets', './3d-demography-facets.js');
     await loadAfterPaint('Fields', './3d-fields.js');
     await loadAfterPaint('Networks', './3d-networks.js');
     await loadAfterPaint('North Axis', './3d-axis.js');
@@ -207,6 +209,11 @@ try {
   layersMenu?.addEventListener('toggle', onLayersToggle);
   timeMenu?.addEventListener('toggle', onTimeToggle);
   viewMenu?.addEventListener('toggle', onViewToggle);
+
+  // Restore a bookmarked religion facet without forcing all Layers tools to load.
+  if (new URL(location.href).searchParams.get('religion')) {
+    loadAfterPaint('Demography facets', './3d-demography-facets.js');
+  }
 
   // Inspector enrichment is attached to an actual country interaction, not to
   // page load. The core remains idle indefinitely if the user simply explores.
