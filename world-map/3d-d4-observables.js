@@ -301,13 +301,13 @@ function compareCell(metricId, metric) {
 }
 
 async function renderCompare() {
-  if (!panel || !isCompareOverview(panel)) return;
+  if (!panel || !isCompareOverview(panel) || panel.querySelector('.atlas-d4-compare')) return;
   const codes = compareCodesFromUrl();
   if (!codes.length) return;
+  const signature = codes.join(',');
   const token = ++renderToken;
-  if (panel.querySelector('.atlas-d4-compare')) return;
   const rows = await Promise.all(codes.map(observablesFor));
-  if (token !== renderToken || !isCompareOverview(panel)) return;
+  if (token !== renderToken || !isCompareOverview(panel) || compareCodesFromUrl().join(',') !== signature || panel.querySelector('.atlas-d4-compare')) return;
   const card = document.createElement('div');
   card.className = 'card atlas-d4-compare';
   card.innerHTML = `<b>D4 · comparison vector</b><div class="muted" style="font-size:10px">Same sourced measurements; years remain visible per cell. This is descriptive comparison, not ranking.</div>
@@ -326,9 +326,9 @@ async function render() {
   if (!isCountryOverview(panel)) return;
   const code = currentCode();
   if (!code) return;
-  const token = ++renderToken;
   const existing = panel.querySelector(`.atlas-d4-observables[data-d4-code="${CSS.escape(code)}"]`);
   if (existing) return;
+  const token = ++renderToken;
 
   const loading = document.createElement('div');
   loading.className = 'card atlas-d4-observables';
