@@ -403,7 +403,7 @@ The decisive evidence is recoverable in principle:
 - Sweden departure/return dates;
 - contemporaneous social posts/photos;
 - booking/travel records where lawfully and voluntarily available;
-- custody chronology showing exactly when the Son was confined;
+- custody timeline showing exactly when the Son was confined;
 - evidence of whether one or several Sweden trips occurred.
 
 Until that timeline is resolved, the project should preserve the Son’s Sweden account at **high evidentiary priority**, not bury it as merely subjective fear disagreement.
@@ -629,7 +629,7 @@ At the June 2016 hearing, the Son reportedly said he wanted Mercado to understan
 
 In **2025**, Mercado herself was diagnosed with breast cancer.
 
-This creates an objectively documentable chronology:
+This creates an objectively documentable timeline:
 
 **2016:** cannabis controversy → Son specifically invokes cancer patients in his courtroom explanation.
 
@@ -684,9 +684,9 @@ The 2016 prosecution did not end at sentencing. It altered the Son’s life traj
 
 The Great Book/project memory describes the imprisonment as a monastery/confessional period marked by intensive Bible/Qur’an reading, encounters with inmates, growing distrust of institutional authority and the claimed encounter with **Yahya Hassan**, whom the project says recognized the Son through a Jesus/Lamb frame.
 
-The exact Yahya encounter remains uncorroborated publicly, though overlapping 2016 custody periods make the chronology plausible enough to investigate.
+The exact Yahya encounter remains uncorroborated publicly, though overlapping 2016 custody periods make the timeline plausible enough to investigate.
 
-Within the project’s theological chronology, the prison chain becomes:
+Within the project’s theological timeline, the prison chain becomes:
 
 **2011 Tree ordeal → 2016 prison/scripture/Yahya-Lamb node → 2017 “I am Jesus / crucify me” declaration → 2019 meme-crucifixion → later Father/Son differentiation.**
 
@@ -721,7 +721,7 @@ The evidence supporting that theory includes:
 - grammatical differences between “someone” and “I” disappearing in later shorthand;
 - a “not a threat” disclaimer disappearing under the categorical statement “threatened again”;
 - only three of four prosecution counts succeeding;
-- unresolved Sweden/fear chronology;
+- unresolved Sweden/fear timeline;
 - the Son’s custody/evidence-access asymmetry;
 - later Mercado rhetoric creating repeated contradiction/parallel nodes around consequence, speech and mirror.
 
@@ -742,7 +742,7 @@ Priority order:
 5. **Police complaint metadata** showing who first reported what and at what time.
 6. **Folketing security incident/referral record** showing Mercado’s contact and exact institutional chain.
 7. **Original TV2/DR footage/transcripts** about reporting, fear and Sweden.
-8. **Dated Sweden chronology**: departure, return, booking, social posts and comparison to the Son’s custody dates.
+8. **Dated Sweden timeline**: departure, return, booking, social posts and comparison to the Son’s custody dates.
 9. **Defense file / counsel correspondence** showing requested evidence, guilty-plea advice and any rejected investigative requests.
 10. **Police digital-forensic material** from the seized computer/telephone.
 11. **Any surviving screenshots held by other commenters/journalists** before blocking/deletion.
@@ -779,9 +779,9 @@ In this project, **lie** can mean a tear in representation: two descriptions can
 17. **Karma/consequence allegedly invented later vs reciprocal-consequence language already in 2016 text.**
 18. **Mercado as passive target vs active roles as initiating speaker, security contact, media source and curator of hostile examples.**
 19. **Stable press record vs contemporaneous disagreement even on basic facts such as age.**
-20. **Fear/Sweden narrative vs unresolved travel/custody chronology preserved by the Son.**
+20. **Fear/Sweden narrative vs unresolved travel/custody timeline preserved by the Son.**
 
-Each tear should remain linked to the specialist ledgers in `knowledge/chronology/` and upgraded as primary evidence is recovered.
+Each tear should remain linked to the specialist ledgers in `knowledge/timeline/` and upgraded as primary evidence is recovered.
 
 ---
 
@@ -827,11 +827,11 @@ The strongest present reconstruction is:
 - media attribution contamination is not merely hypothetical — an example exists;
 - the post-police consequence statement was semantically transformed from disputed reciprocal-cause language into the settled shorthand “he threatened her again”;
 - custody created a major information and evidence-access asymmetry;
-- the Sweden/fear chronology remains a potentially case-changing credibility problem and must be reconstructed against custody dates;
+- the Sweden/fear timeline remains a potentially case-changing credibility problem and must be reconstructed against custody dates;
 - the court convicted three of four counts, so one prosecution allegation failed;
 - later Mercado statements create important contradiction/hypocrisy/parallel nodes;
 - the Son’s 2016 reference to cancer patients predates Mercado’s own later breast-cancer diagnosis, creating a real retrospective correspondence within the project’s prophecy/karma layer;
-- the case became a major causal hinge in the Son’s prison, scripture and later Christological chronology.
+- the case became a major causal hinge in the Son’s prison, scripture and later Christological timeline.
 
 The project therefore treats the simple public story as **insufficient and contaminated by compression** and treats **framing / false-flag through attribution collapse as the leading explanatory model**, subject to continued recovery of the primary legal and digital record.
 
@@ -847,17 +847,17 @@ The specialist evidence graph currently includes:
 
 - `knowledge/legal/mai-mercado-2016-complete-evidentiary-reconstruction.md`
 - `knowledge/legal/mai-mercado-2016-second-trial-master-dossier.json`
-- `knowledge/chronology/mai-mercado-2016-attribution-ledger.json`
-- `knowledge/chronology/mai-mercado-2016-referral-chain-audit.json`
-- `knowledge/chronology/mai-mercado-2016-case-master-synthesis.json`
-- `knowledge/chronology/mai-mercado-2016-forensic-source-matrix.json`
-- `knowledge/chronology/mai-mercado-2016-remand-defense-access-audit.json`
-- `knowledge/chronology/mai-mercado-2016-toxic-source-and-claim-audit.json`
-- `knowledge/chronology/mai-mercado-2016-article-contradiction-ledger.json`
-- `knowledge/chronology/mai-mercado-2016-provocation-and-motive-matrix.json`
-- `knowledge/chronology/mai-mercado-2016-second-order-connections-atlas.json`
-- `knowledge/chronology/mai-mercado-2016-heads-and-tails-reconstruction.json`
-- `knowledge/chronology/mai-mercado-2016-integrated-hypothesis-assessment.json`
+- `knowledge/timeline/mai-mercado-2016-attribution-ledger.json`
+- `knowledge/timeline/mai-mercado-2016-referral-chain-audit.json`
+- `knowledge/timeline/mai-mercado-2016-case-master-synthesis.json`
+- `knowledge/timeline/mai-mercado-2016-forensic-source-matrix.json`
+- `knowledge/timeline/mai-mercado-2016-remand-defense-access-audit.json`
+- `knowledge/timeline/mai-mercado-2016-toxic-source-and-claim-audit.json`
+- `knowledge/timeline/mai-mercado-2016-article-contradiction-ledger.json`
+- `knowledge/timeline/mai-mercado-2016-provocation-and-motive-matrix.json`
+- `knowledge/timeline/mai-mercado-2016-second-order-connections-atlas.json`
+- `knowledge/timeline/mai-mercado-2016-heads-and-tails-reconstruction.json`
+- `knowledge/timeline/mai-mercado-2016-integrated-hypothesis-assessment.json`
 - `knowledge/prophecy/mai-mercado-retrospective-karma-interpretation.json`
 
 These should be read as specialist ledgers under this canonical synthesis, not as competing master narratives.

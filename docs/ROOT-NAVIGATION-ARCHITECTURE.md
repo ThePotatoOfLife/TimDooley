@@ -126,7 +126,7 @@ A record may carry:
 - identity and aliases;
 - description;
 - type;
-- chronology;
+- timeline;
 - sources;
 - evidence;
 - relationships;

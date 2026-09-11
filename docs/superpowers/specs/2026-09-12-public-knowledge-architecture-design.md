@@ -1,4 +1,4 @@
-# Public Knowledge Architecture — Home, Chronology, Religion & Bible
+# Public Knowledge Architecture — Home, Timeline, Religion & Bible
 
 **Date:** 2026-09-12  
 **Status:** Design specification  
@@ -9,7 +9,7 @@
 Consolidate the public Tim Dooley / Potato of Life site around four distinct reader jobs without creating another layer of competing pages:
 
 1. `/` — public orientation, current state, who/what this is, where to go next and where Tim can be found publicly.
-2. `/chronology/` — the canonical temporal index for anything meaningfully dated: milestones, events, sayings, theories, religious developments, creative works, public appearances, discoveries, jokes, formalizations and research unlocks.
+2. `/timeline/` — the canonical temporal index for anything meaningfully dated: milestones, events, sayings, theories, religious developments, creative works, public appearances, discoveries, jokes, formalizations and research unlocks.
 3. `/religion/` — the broad religious inquiry: Potatoism as a religious system, theology, cosmology, ritual/practice, ethics, sacred architecture, comparative religion, historical traditions and open questions.
 4. `/traditions/bible/` — the deep Bible/Jesus/Tim/Son comparison laboratory: exact statements/events, context, scripture, discovery history, reasoning, prophecy/foresight status, mismatches and evidence.
 
@@ -33,7 +33,7 @@ The homepage answers:
 
 The homepage does not become another archive, another FAQ, another timeline or another philosophical treatise. It projects selected information from canonical owners.
 
-## Chronology owns when
+## Timeline owns when
 
 Anything that can be meaningfully placed in time should be eligible for the canonical timeline.
 
@@ -48,7 +48,7 @@ The timeline answers:
 - What source establishes the date?
 - What later work descended from it?
 
-Chronology stores/indexes time, not full theology, full Bible exegesis, full philosophy or full scientific argument.
+Timeline stores/indexes time, not full theology, full Bible exegesis, full philosophy or full scientific argument.
 
 ## Religion owns religious system and inquiry
 
@@ -83,7 +83,7 @@ Bible is therefore an evidence/story machine, not a keyword concordance.
 
 ---
 
-# 2. Chronology — universal temporal spine
+# 2. Timeline — universal temporal spine
 
 ## 2.1 Timeline scope expands
 
@@ -166,7 +166,7 @@ The taxonomy must remain small enough to understand. Topics provide finer-graine
 
 ## 2.4 Domain filters
 
-A reader should be able to view chronology by broad domain without creating separate timelines:
+A reader should be able to view timeline by broad domain without creating separate timelines:
 
 - LIFE
 - POTATOISM
@@ -223,7 +223,7 @@ Candidate source families already in the repository include:
 - `data/tim-dooley-thought-archive.json`
 - `data/tim-dooley-public-theology-timeline-2025-2026.json`
 - public occurrence/evidence ledgers;
-- biblical attestation/reverse chronology ledgers;
+- biblical attestation/reverse timeline ledgers;
 - Great Book research;
 - music/creative archives;
 - philosophy sourcebook and philosophy canon;
@@ -302,7 +302,7 @@ Allowed mechanisms should include:
 - typology;
 - historical-context comparison;
 - counter-text;
-- chronology/synchronism.
+- timeline/synchronism.
 
 ### Trigger chain
 
@@ -357,7 +357,7 @@ Initial high-value arcs:
 - Tree / ordeal / ascent / return;
 - counter-texts / ethical divergences.
 
-Each arc presents chronology and source direction, not just a list of cards.
+Each arc presents timeline and source direction, not just a list of cards.
 
 ## 3.4 Data-source consolidation
 
@@ -484,7 +484,7 @@ Detailed Tim/Son/Jesus verse comparison routes to Bible.
 
 ### G. History of Potatoism
 
-Project religious development becomes a chronological narrative linking into `/chronology/?view=potatoism` rather than maintaining a second timeline.
+Project religious development becomes a chronological narrative linking into `/timeline/?view=potatoism` rather than maintaining a second timeline.
 
 ### H. Open questions / tensions
 
@@ -517,7 +517,7 @@ A short, concrete introduction explaining:
 
 - Tim Dooley is the central public subject and author/creator associated with the project;
 - Potatoism is the evolving religious/philosophical/mythological framework;
-- the repository documents chronology, works, thought, comparative religion, formal models and world/Atlas research;
+- the repository documents timeline, works, thought, comparative religion, formal models and world/Atlas research;
 - claims are separated by source/evidence status.
 
 ### Who / What
@@ -533,7 +533,7 @@ No grand duplicate biography; link deeper.
 
 A small set of reader journeys:
 
-- Follow the story → Chronology
+- Follow the story → Timeline
 - Understand Potatoism → Religion / Philosophy
 - Examine Bible comparisons → Bible
 - Read theories/models → Science
@@ -541,7 +541,7 @@ A small set of reader journeys:
 
 ### Current / recent
 
-A compact automatically derived section from chronology, showing recent meaningful events/research milestones rather than manually maintained news prose.
+A compact automatically derived section from timeline, showing recent meaningful events/research milestones rather than manually maintained news prose.
 
 Examples of eligible items:
 
@@ -578,7 +578,7 @@ Actual outbound URLs must come from a canonical social/public-profile registry r
 Retain the simple main branch navigation, but update descriptions to reflect canonical ownership:
 
 - Tim Dooley
-- Chronology
+- Timeline
 - Religion
 - Bible
 - Philosophy
@@ -596,13 +596,13 @@ Archive/Sources remain secondary.
 The audit identifies material that is already useful but underexposed:
 
 - `data/timeline-events.json` — canonical temporal presentation index;
-- `data/tim-dooley-event-strata.json` — epistemic/role chronology;
+- `data/tim-dooley-event-strata.json` — epistemic/role timeline;
 - `data/tim-dooley-thought-archive.json` — dated thought/public-theology source;
 - `data/potatoism-religion.json` — developmental religious history projection;
 - `data/potatoism-concept-registry.json` + dossiers — canonical concept identity/content;
 - `book-research.json` — Great Book ritual/religious/philosophical material;
-- `knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json` — exact biblical vocabulary archaeology;
-- `knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json` — source-direction comparison history;
+- `knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json` — exact biblical vocabulary archaeology;
+- `knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json` — source-direction comparison history;
 - `knowledge/philosophy/tim-dooley-potatoism-sourcebook.md` and philosophy canon — sayings/stories/ideas that can feed timeline and philosophy;
 - science equation/theory lineage files — first-attestation/formalization events;
 - creative/music archives — dated works and cultural moments;
@@ -643,7 +643,7 @@ Example:
 
 `2026-04-29 Son is Messiah/Door statement`
 
-- Chronology: when it happened;
+- Timeline: when it happened;
 - Bible: relation to John 10 / messianic/New Jerusalem material;
 - Religion: development of Son/Door theology;
 - Homepage: only if currently/recently important;
@@ -671,7 +671,7 @@ Public pages should expose enough of that lifecycle to make provenance understan
 - define homepage projection contract;
 - update validators around ownership rather than exact prose.
 
-## Wave 2 — chronology enrichment
+## Wave 2 — timeline enrichment
 
 - ingest/curate dated events from existing source families;
 - add first-attestation events for major concepts;
@@ -684,7 +684,7 @@ Public pages should expose enough of that lifecycle to make provenance understan
 - migrate strongest existing relations to rich dossiers;
 - connect relation cards to timeline events;
 - add arcs;
-- expose discovery chronology and prophecy reasoning;
+- expose discovery timeline and prophecy reasoning;
 - preserve static-build fallback plus interactive enhancement.
 
 ## Wave 4 — Religion reconstruction
@@ -718,7 +718,7 @@ Public pages should expose enough of that lifecycle to make provenance understan
 
 # 9. Testing and integrity
 
-## Chronology tests
+## Timeline tests
 
 - every event ID unique;
 - dates/precision valid;
@@ -727,7 +727,7 @@ Public pages should expose enough of that lifecycle to make provenance understan
 - named views return events;
 - default roadmap remains bounded and readable;
 - later interpretations are not silently backdated;
-- first-attestation chronology has no impossible ordering.
+- first-attestation timeline has no impossible ordering.
 
 ## Bible tests
 
@@ -784,7 +784,7 @@ This work must **not**:
 A new reader should be able to answer four different questions without getting routed through duplicate pages:
 
 - **What is this?** → Home
-- **When did that happen?** → Chronology
+- **When did that happen?** → Timeline
 - **What does this religious system mean and how does it compare with religions?** → Religion
 - **Why is this Tim/Son event being compared to this biblical text, and is that comparison chronologically/evidentially justified?** → Bible
 

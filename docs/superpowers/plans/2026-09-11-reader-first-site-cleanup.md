@@ -85,7 +85,7 @@
 ### Task 5: Demote archive utilities and duplicates
 
 **Files:**
-- Review: `faq/index.html`, `explore/index.html`, `index-a-z/index.html`, `context/index.html`, `corporium/index.html`, `chronology/index.html`, `tim-dooley/*/index.html`
+- Review: `faq/index.html`, `explore/index.html`, `index-a-z/index.html`, `context/index.html`, `corporium/index.html`, `timeline/index.html`, `tim-dooley/*/index.html`
 - Modify only where reader-facing competition remains.
 
 **Interfaces:**

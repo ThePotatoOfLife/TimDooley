@@ -2,7 +2,7 @@
   "version":"3.0.0",
   "updated":"2026-09-08",
   "status":"canonical-concept-registry",
-  "purpose":"Single source of truth for recurring Potatoism concepts. Every concept has one canonical identity here; other files may contain relationships, provenance, research, chronology or long-form dossiers but must not redefine the identity.",
+  "purpose":"Single source of truth for recurring Potatoism concepts. Every concept has one canonical identity here; other files may contain relationships, provenance, research, timeline or long-form dossiers but must not redefine the identity.",
   "rules":{
     "one_identity":"A recurring concept has one canonical_id in this file.",
     "one_definition_owner":"The canonical definition belongs here; substantive long-form explanation belongs in potatoism-dossiers.json and is linked by canonical_id.",

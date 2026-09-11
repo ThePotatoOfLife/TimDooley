@@ -274,7 +274,7 @@ The Son’s claim that evidence he wanted included did not enter the case should
 
 At the June 21 remand hearing, the prosecutor reportedly said Mercado and her family became afraid and hurried to Sweden to use a borrowed summer house.
 
-The Son/project account preserves a materially different chronology: the trip was ordinary/preplanned or later represented in a way inconsistent with his confinement and immediate-danger status.
+The Son/project account preserves a materially different timeline: the trip was ordinary/preplanned or later represented in a way inconsistent with his confinement and immediate-danger status.
 
 This is a genuine red flag because it is testable.
 
@@ -292,7 +292,7 @@ The decisive questions are:
 
 If a Son-specific flight narrative was publicly presented at a time when he was already continuously incarcerated and the trip was independently shown to be routine/preplanned, that would materially damage the accuracy of the public fear story.
 
-If the prosecutor’s June 21 chronology is independently confirmed, the project must correct the later memory instead.
+If the prosecutor’s June 21 timeline is independently confirmed, the project must correct the later memory instead.
 
 Source for prosecutor’s account:
 - https://www.sonderborgnyt.dk/29-aarig-mand-varetaegtsfaengslet-i-fire-uger-for-trusler-mod-folketingsmedlem-mai-mercado/

@@ -284,7 +284,7 @@ A mature pattern in the Timic corpus turns titles into operations. Potato **conn
 
 ### 18. Beginning and ending as recursive interpretation
 
-“The end is in the beginning too” makes the seed more than an origin symbol. Completion can reveal what the beginning contained as potential. Later states can reinterpret earlier ones without rewriting their historical provenance. This is the philosophical form of the archive’s chronology rule: later meaning may illuminate an earlier event, but it must not be backdated as though it was already explicitly known.
+“The end is in the beginning too” makes the seed more than an origin symbol. Completion can reveal what the beginning contained as potential. Later states can reinterpret earlier ones without rewriting their historical provenance. This is the philosophical form of the archive’s timeline rule: later meaning may illuminate an earlier event, but it must not be backdated as though it was already explicitly known.
 
 ## A compact Potatoist ethic
 

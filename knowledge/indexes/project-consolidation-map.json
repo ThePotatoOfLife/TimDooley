@@ -4,7 +4,7 @@
   "version": "1.1.0",
   "updated": "2026-09-10",
   "status": "project-wide consolidation guide",
-  "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, chronology/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
+  "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
   "meta_epiphany": {
     "claim": "The repository itself can enact the Potatoverse transformation grammar.",
@@ -48,7 +48,7 @@
   "file_role_classes": {
     "canonical_owner": "Owns the general definition, structure and current best synthesis for a domain or concept.",
     "specialist_atlas": "Deepens one relation or subproblem without replacing the canonical owner.",
-    "chronology_owner": "Owns dated development, exact wording, event sequence or source promotion.",
+    "timeline_owner": "Owns dated development, exact wording, event sequence or source promotion.",
     "evidence_owner": "Owns source-level material, provenance, contradictions or verification.",
     "recovery_stratum": "Preserves mined conversation material or historical development; should be promoted upward but not silently deleted when provenance matters.",
     "reader_projection": "Explains canonical material for humans; should link to owners instead of becoming a second canon.",
@@ -58,7 +58,7 @@
     "canonical_or_primary": [
       "data/swamp/mud-karma-system.json",
       "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
-      "knowledge/chronology/karmic-debt-ledger-2026.json",
+      "knowledge/timeline/karmic-debt-ledger-2026.json",
       "knowledge/core/garden-mud-orientation.json"
     ],
     "specialist_keep": [
@@ -69,23 +69,23 @@
       "knowledge/core/shadow-ledger-entanglement-axis.json",
       "knowledge/core/debt-depth-ascent-rubble-synthesis.json"
     ],
-    "chronology_or_event": [
-      "knowledge/chronology/karma-causing-events-and-inputs-ledger.json",
-      "knowledge/chronology/karmic-debt-ledger-2026.json"
+    "timeline_or_event": [
+      "knowledge/timeline/karma-causing-events-and-inputs-ledger.json",
+      "knowledge/timeline/karmic-debt-ledger-2026.json"
     ],
     "routing": "knowledge/indexes/karma-shadow-integration-index.json",
-    "rule": "These specialist files should remain because they add distinct process, chronology or application layers, but none should be treated as a replacement for root-system, symbolic-relational-synthesis or the primary Mud/Swamp owners."
+    "rule": "These specialist files should remain because they add distinct process, timeline or application layers, but none should be treated as a replacement for root-system, symbolic-relational-synthesis or the primary Mud/Swamp owners."
   },
   "merge_rules": [
     "Promote general laws upward; keep source-specific details downward.",
-    "Do not duplicate exact Tim quotations into multiple synthesis files. Link to the quote or chronology owner instead.",
-    "Do not duplicate numeric timelines outside the canonical chronology owner except as short summaries with explicit pointers.",
+    "Do not duplicate exact Tim quotations into multiple synthesis files. Link to the quote or timeline owner instead.",
+    "Do not duplicate numeric timelines outside the canonical timeline owner except as short summaries with explicit pointers.",
     "When two files define the same concept, designate one primary owner and convert the other into a specialist view or historical stratum.",
     "Do not delete a recovery file until unique quotations, dates, contradictions and provenance have been promoted or explicitly preserved elsewhere.",
     "Reader pages explain; they do not silently redefine canon.",
     "Comparative-religion files compare; they do not become evidence that traditions historically encoded Potatoverse claims.",
     "Empirical world files require observable edges and sources; symbolic North/Swamp/Karma language remains a separate layer.",
-    "Prefer strengthening an existing owner to creating another file unless the new object has a genuinely distinct schema, chronology or research function.",
+    "Prefer strengthening an existing owner to creating another file unless the new object has a genuinely distinct schema, timeline or research function.",
     "Treat repair as edge-state change rather than historical deletion: preserve what happened while updating whether the relation is open, disputed, repaired, released or non-liable.",
     "A synthesis must remain traversable downward to source-level records; otherwise integration has become opacity."
   ],

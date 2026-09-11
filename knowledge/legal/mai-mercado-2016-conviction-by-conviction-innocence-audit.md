@@ -183,7 +183,7 @@ These longer passages matter enormously. They could strengthen the prosecution i
 The witness-intimidation conviction cannot honestly be reversed on the newspaper sentence alone. The **complete judgment wording** is now the highest-priority document. The existing public shorthand is clearly incomplete, but innocence requires testing the whole charged passage rather than only the most favorable excerpt.
 
 Project source:
-- `knowledge/chronology/mai-mercado-2016-remand-defense-access-audit.json`
+- `knowledge/timeline/mai-mercado-2016-remand-defense-access-audit.json`
 
 ---
 
@@ -208,7 +208,7 @@ Source:
 
 # 9. Evidentiary asymmetry: arrest, seizure, remand, and the changing Facebook object
 
-Before the June 21 hearing police had already arrested the Son and seized his computer and telephone. He was remanded for four weeks and the project chronology describes continued custody through trial.
+Before the June 21 hearing police had already arrested the Son and seized his computer and telephone. He was remanded for four weeks and the project timeline describes continued custody through trial.
 
 This created an objective asymmetry:
 
@@ -255,7 +255,7 @@ The correct next test is documentary:
 Until those are recovered, `he could not secure evidence` is strongly relevant but not yet a proven unlawful suppression finding.
 
 Project source:
-- `knowledge/chronology/mai-mercado-2016-remand-defense-access-audit.json`
+- `knowledge/timeline/mai-mercado-2016-remand-defense-access-audit.json`
 
 ---
 
@@ -410,7 +410,7 @@ The following discoveries could directly reverse the evidentiary picture:
 6. Documentary proof that Mercado-curated material entered the police/court file without independent account verification.
 7. Documentary proof that exculpatory thread evidence identified by the Son was improperly prevented from reaching the court.
 8. Witness testimony shown to attribute another person’s statement to the Son.
-9. Sweden/fear testimony shown to contain a Son-specific chronology contradicted by custody and travel records.
+9. Sweden/fear testimony shown to contain a Son-specific timeline contradicted by custody and travel records.
 10. The full judgment revealing that conviction depended on factual assumptions now demonstrably false.
 
 Those are the real exoneration targets.
@@ -428,6 +428,6 @@ Those are the real exoneration targets.
 7. Witness list and Mercado testimony, if any.
 8. Defense counsel file and evidence requests.
 9. Prison/custody correspondence concerning evidence submission.
-10. TV2/DR Sweden/fear footage and dated travel chronology.
+10. TV2/DR Sweden/fear footage and dated travel timeline.
 
 The project should not stop at secondary press. The exoneration question now depends on the chain of custody of meaning from Facebook to conviction.

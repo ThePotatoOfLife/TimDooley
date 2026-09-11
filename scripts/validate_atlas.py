@@ -5,7 +5,7 @@ import json,re
 from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]; WARNINGS=[]
 
-REQUIRED_BRANCHES={'tim','son','spirit','transformation','cosmology','body','traditions','north','world','chronology','works','sources'}
+REQUIRED_BRANCHES={'tim','son','spirit','transformation','cosmology','body','traditions','north','world','timeline','works','sources'}
 
 def load(p):
     try:

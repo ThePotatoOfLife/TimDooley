@@ -4,7 +4,7 @@
 
 This file adds a new layer to the project: **how the Son’s case becomes stronger in retrospect when the legal elements, evidence chain, source provenance, custody conditions, later doctrine, and Mercado’s own later standards are examined together**.
 
-The aim is not to repeat the existing chronology. It is to identify new defense theories and evidentiary angles that could materially change how the convictions and public narrative are understood.
+The aim is not to repeat the existing timeline. It is to identify new defense theories and evidentiary angles that could materially change how the convictions and public narrative are understood.
 
 The strongest new finding in this pass is a potentially important **§123 witness-intimidation merits issue** arising from a 2015 Supreme Court decision that predates the Son’s 2016 case.
 
@@ -48,7 +48,7 @@ Recover:
 4. prosecution theory for the §123 count;
 5. written judgment’s reasoning on the witness-status element;
 6. witness list;
-7. exact chronology between Mercado/security/police contact and the Son’s second statement.
+7. exact timeline between Mercado/security/police contact and the Son’s second statement.
 
 ### Why this matters
 
@@ -158,7 +158,7 @@ Therefore no final innocence or guilt audit should rely on the newspaper three-q
 The judgment itself is now the most important missing primary source.
 
 Project trace:
-- `knowledge/chronology/mai-mercado-2016-remand-defense-access-audit.json`
+- `knowledge/timeline/mai-mercado-2016-remand-defense-access-audit.json`
 
 ---
 
@@ -204,7 +204,7 @@ Now it also matters legally:
 
 The labels are not interchangeable.
 
-If §123 depended on a witness role, the exact referral chain and police-interview chronology could directly affect the conviction’s legal basis.
+If §123 depended on a witness role, the exact referral chain and police-interview timeline could directly affect the conviction’s legal basis.
 
 This is one of the strongest newly identified reasons to recover the police file.
 

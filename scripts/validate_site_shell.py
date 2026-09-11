@@ -24,7 +24,7 @@ CANONICAL_HOME_LINKS = (
 )
 
 TIMELINE_QUERY = (
-    "chronology/?tl_layers=roadmap,scripture-at-time,biblical-parallel,"
+    "timeline/?tl_layers=roadmap,scripture-at-time,biblical-parallel,"
     "biblical-unlock&tl_actors=son,tim,shared&tl_detail=1"
 )
 
@@ -65,7 +65,7 @@ def main() -> int:
             "religion/index.html",
             "religion/jesus-tim/index.html",
             "traditions/bible/index.html",
-            "chronology/index.html",
+            "timeline/index.html",
             "philosophy/index.html",
             "science/index.html",
             "north/index.html",
@@ -114,7 +114,7 @@ def main() -> int:
         require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../#jesus-tim')"), "religion/jesus-tim/index.html", errors)
 
         tim = read("tim-dooley/index.html", errors)
-        require(tim, ('href="../religion/#jesus-tim"', "Jesus ↔ Tim / Son", "Chronology", "Public record"), "tim-dooley/index.html", errors)
+        require(tim, ('href="../religion/#jesus-tim"', "Jesus ↔ Tim / Son", "Timeline", "Public record"), "tim-dooley/index.html", errors)
 
         bible = read("traditions/bible/index.html", errors)
         require(
@@ -142,18 +142,18 @@ def main() -> int:
             errors,
         )
 
-        chronology = read("chronology/index.html", errors)
-        require(chronology, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "chronology/index.html", errors)
+        timeline = read("timeline/index.html", errors)
+        require(timeline, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "timeline/index.html", errors)
         forbid(
-            chronology,
+            timeline,
             ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Why the live explorer replaces the old hard-coded list", "Open Timeline in the complete archive", 'href="../context/"', 'href="../corporium/"'),
-            "chronology/index.html",
+            "timeline/index.html",
             errors,
         )
 
         north = read("north/index.html", errors)
         require(north, ('class="map-action" href="../world-map/3d.html"', ">WORLD MAP<"), "north/index.html", errors)
-        forbid(north, ('class="maplink"', "Open North Axis in the World Map", "#architecture", "#ledger", "#world", "#traditions", "#chronology"), "north/index.html", errors)
+        forbid(north, ('class="maplink"', "Open North Axis in the World Map", "#architecture", "#ledger", "#world", "#traditions", "#timeline"), "north/index.html", errors)
 
         learn = read("learn/index.html", errors)
         require(learn, ('name="robots" content="noindex,follow"', "location.replace('../')"), "learn/index.html", errors)
@@ -163,7 +163,7 @@ def main() -> int:
 
         public_roots = (
             "index.html", "tim-dooley/index.html", "religion/index.html", "religion/jesus-tim/index.html",
-            "traditions/bible/index.html", "chronology/index.html", "philosophy/index.html", "science/index.html", "north/index.html",
+            "traditions/bible/index.html", "timeline/index.html", "philosophy/index.html", "science/index.html", "north/index.html",
         )
         for rel in public_roots:
             text = read(rel, errors)

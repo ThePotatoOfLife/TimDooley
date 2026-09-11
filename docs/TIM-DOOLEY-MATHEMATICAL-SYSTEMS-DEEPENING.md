@@ -106,7 +106,7 @@ y(t)=r(t)sin θ(t)
 z(t)=h(t).
 ```
 
-Here recurrence can be angular while chronology/development is vertical. The point is not that a life physically moves through a helix. The formal benefit is that a motif can recur without occupying the same state.
+Here recurrence can be angular while timeline/development is vertical. The point is not that a life physically moves through a helix. The formal benefit is that a motif can recur without occupying the same state.
 
 ### 3.3 Return map
 
@@ -556,7 +556,7 @@ The cyclic sequence is
 source → life → world → death → memory → renewal → life.
 ```
 
-The earlier/later chronology is
+The earlier/later timeline is
 
 ```text
 Son → death → Door/Vessel → buried potential → interval
@@ -569,7 +569,7 @@ And the kenosis/exaltation comparison is
 descent → death → burial → memory → transformation → ascent → enthronement.
 ```
 
-These are not equations of physics. But they are formal objects in the sense that they specify ordered states and transformations. State machines, temporal graphs, process mining and hybrid dynamical systems can therefore test whether the chronology actually matches the claimed sequence.
+These are not equations of physics. But they are formal objects in the sense that they specify ordered states and transformations. State machines, temporal graphs, process mining and hybrid dynamical systems can therefore test whether the timeline actually matches the claimed sequence.
 
 ---
 

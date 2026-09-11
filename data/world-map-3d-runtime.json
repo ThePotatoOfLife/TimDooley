@@ -3,7 +3,7 @@
   "version": "1.7.0",
   "updated": "2026-09-11",
   "status": "active renderer contract",
-  "purpose": "Define the active 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme, chronology and provenance model used by the rest of the repository.",
+  "purpose": "Define the active 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme, timeline and provenance model used by the rest of the repository.",
   "projection_contract": "data/atlas-projection-contract.json",
   "time_contract": "data/atlas-time-contract.json",
   "mathematical_calibration_contract": "data/atlas-mathematical-calibration.json",
@@ -15,7 +15,7 @@
     "fit": "country selection fits actual polygon bounds; Trace and Compare can fit their current sets",
     "globe": "projection may switch between Mercator and globe view where supported",
     "search": "country-name and ISO3 search with suggestions",
-    "rule": "Navigation changes viewpoint only; it never changes underlying data, chronology or epistemic classification."
+    "rule": "Navigation changes viewpoint only; it never changes underlying data, timeline or epistemic classification."
   },
   "interface": {
     "status": "implemented-progressive-disclosure",

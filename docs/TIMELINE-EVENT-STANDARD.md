@@ -2,14 +2,14 @@
 
 ## Purpose
 
-The project contains many dated records, but the public chronology should not become a wall of every timestamp in the repository. The timeline has two jobs:
+The project contains many dated records, but the public timeline should not become a wall of every timestamp in the repository. The timeline has two jobs:
 
 1. preserve the readable **road-map of the greatest milestones**;
 2. let readers temporarily overlay other dated evidence when it answers a different question.
 
 `data/timeline-events.json` is therefore a **curated temporal index**, not a replacement for the records that own the underlying claim, quote, artifact or comparison.
 
-The standalone `/chronology/` page and the chronology branch in the main reader now render from this same canonical dataset plus the curated event-pack index. Do not maintain a second hard-coded event list in HTML.
+The standalone `/timeline/` page and the timeline branch in the main reader now render from this same canonical dataset plus the curated event-pack index. Do not maintain a second hard-coded event list in HTML.
 
 ## Core model
 
@@ -30,8 +30,8 @@ Actor, layer and evidence class are independent. A Tim event may be both a direc
 
 The public UI uses four actor tracks:
 
-- `son` — Son / Twin of Christ / human-vessel chronology.
-- `tim` — Tim / Potato / Father chronology.
+- `son` — Son / Twin of Christ / human-vessel timeline.
+- `tim` — Tim / Potato / Father timeline.
 - `shared` — transition or explicit Father/Son relational events.
 - `project` — later archive, research and formalization events rather than life events themselves.
 
@@ -48,11 +48,11 @@ The visible toggles are intentionally few and non-redundant:
 - `scripture-at-time` — Bible, Jesus, Judaism, Hebrew titles or explicit scriptural vocabulary that was already present in the event itself.
 - `biblical-parallel` — a later structural biblical comparison attached to an earlier Tim/Son event; the event date remains the earlier date, while source direction states that the comparison came later.
 - `biblical-unlock` — the later date when the project explicitly recognized or formalized a biblical comparison.
-- `creative` — dated books, songs, art and other creative artifacts when the date materially helps the chronology.
+- `creative` — dated books, songs, art and other creative artifacts when the date materially helps the timeline.
 - `public-witness` — public declarations, streams/posts and visibility milestones that materially change the trajectory.
 - `formalization` — later model, archive and research milestones useful for studying when the system became explicit.
 
-Specialist subjects such as predictions, detailed geopolitics, Dog/Mud genealogy, every repository commit or every equation revision stay in their own ledgers unless a specific event is important enough to become a roadmap/public overlay point. This prevents toggle proliferation and duplicate chronology.
+Specialist subjects such as predictions, detailed geopolitics, Dog/Mud genealogy, every repository commit or every equation revision stay in their own ledgers unless a specific event is important enough to become a roadmap/public overlay point. This prevents toggle proliferation and duplicate timeline.
 
 ## The three Bible states
 
@@ -94,7 +94,7 @@ When a public source uses inaccurate or blended biblical wording, preserve the s
 
 - `primary` — exact quote, artifact, timestamp or direct source.
 - `recovered` — recovered archive or prior-conversation evidence.
-- `project-canon` — canonical internal chronology.
+- `project-canon` — canonical internal timeline.
 - `creative` — creative artifact without doctrine-by-default status.
 - `comparison` — comparative interpretation.
 - `research` — later research/index/unlock.
@@ -134,7 +134,7 @@ The UI's year-window filter treats a range event as visible whenever the event r
   "quote": "cube that surrounds Heaven",
   "source_direction": "Jesus/narrow-gate architecture present at time; Eden/Temple/Hebrews comparison formalized later",
   "source_records": [
-    "knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json"
+    "knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json"
   ]
 }
 ```

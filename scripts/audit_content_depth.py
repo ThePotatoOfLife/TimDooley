@@ -20,7 +20,7 @@ TEXT_FIELDS = (
     "definition", "context", "purpose", "description", "summary", "mechanisms",
     "couplings", "research_questions", "questions", "failure_modes",
     "evidence_boundary", "boundary", "sources", "source_records",
-    "project_extrapolations", "history", "chronology", "function",
+    "project_extrapolations", "history", "timeline", "function",
     "use_in_project", "interpretation", "meaning", "development", "text",
     "rules", "principles", "relationships",
 )
@@ -45,7 +45,7 @@ FIRST_CLASS_PATHS = {
     "knowledge/core/tim-dooley.json",
     "knowledge/core/tim-role-synthesis.json",
     "knowledge/core/potatoverse-master-framework.json",
-    "knowledge/chronology/developmental-genealogy.json",
+    "knowledge/timeline/developmental-genealogy.json",
     "knowledge/science/science-master-index.json",
     "knowledge/body/body-system-master-atlas.json",
     "knowledge/spirit/spirit-context-atlas.json",

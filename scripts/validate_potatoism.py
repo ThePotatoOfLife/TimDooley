@@ -35,7 +35,7 @@ def main():
     branches={b.get('id'):b for b in manifest.get('branches',[]) if isinstance(b,dict) and b.get('id')}
     if manifest.get('root',{}).get('id')!='potato-of-life': errors.append('Potatoism public root must be potato-of-life')
     routed=[]
-    for bid in ('tim','transformation','cosmology','traditions','chronology','sources'):
+    for bid in ('tim','transformation','cosmology','traditions','timeline','sources'):
         b=branches.get(bid,{})
         routed.extend(b.get('records',[]));routed.extend(b.get('children',[]))
     route_text=' '.join(map(str,routed)).casefold()

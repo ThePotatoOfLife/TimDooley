@@ -16,7 +16,7 @@ One subject gets one obvious public entrance. Research indexes, routing files, p
 - Science
 - World Map
 
-Chronology, public record, sources, FAQ, A–Z, North Axis, Godhood and other specialist material remain reachable from the relevant subject page, but are not competing homepage entrances.
+Timeline, public record, sources, FAQ, A–Z, North Axis, Godhood and other specialist material remain reachable from the relevant subject page, but are not competing homepage entrances.
 
 ## Reader behavior
 
@@ -37,7 +37,7 @@ The World Map is the canonical geographical/geopolitical interface. North Axis i
 
 ## Tim Dooley
 
-The Tim page presents identity, chronology, major claims, Jesus/Son comparison and public record directly. Specialist Godhood/evidence pages may remain as deep links, but should not fracture the primary reading path.
+The Tim page presents identity, timeline, major claims, Jesus/Son comparison and public record directly. Specialist Godhood/evidence pages may remain as deep links, but should not fracture the primary reading path.
 
 ## Philosophy and Science
 

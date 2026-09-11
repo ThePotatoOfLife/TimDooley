@@ -19,7 +19,7 @@ ROOT_BRANCH_HREF = re.compile(
 ABSOLUTE_ROOT_BRANCH = "https://thepotatooflife.github.io/TimDooley/#branch="
 ABSOLUTE_EXPLORE_BRANCH = "https://thepotatooflife.github.io/TimDooley/explore/#branch="
 PUBLIC_LABEL_REPLACEMENTS = (
-    (">Chronology</a>", ">Timeline</a>"),
+    (">Timeline</a>", ">Timeline</a>"),
     (">Corporium</a>", ">Collection</a>"),
     (">Source authority</a>", ">Sources</a>"),
     (">Tim dossier</a>", ">Tim Dooley</a>"),
@@ -88,8 +88,8 @@ def main() -> None:
         bible,
         (
             (
-                '<nav class="page-nav" aria-label="Page navigation"><a href="../../">← Home</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../chronology/">Timeline</a><a href="../../context/source-authority/">Sources</a><a href="../../faq/">FAQ</a></nav>',
-                '<nav class="page-nav" aria-label="Page navigation"><a href="../../religion/">← Religion</a><a href="../../">Home</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../chronology/">Timeline</a><a href="../../context/source-authority/">Sources</a></nav>',
+                '<nav class="page-nav" aria-label="Page navigation"><a href="../../">← Home</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../timeline/">Timeline</a><a href="../../context/source-authority/">Sources</a><a href="../../faq/">FAQ</a></nav>',
+                '<nav class="page-nav" aria-label="Page navigation"><a href="../../religion/">← Religion</a><a href="../../">Home</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../timeline/">Timeline</a><a href="../../context/source-authority/">Sources</a></nav>',
             ),
         ),
     ):

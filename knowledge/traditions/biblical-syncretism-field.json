@@ -36,14 +36,14 @@
     "passage_fragments":"knowledge/traditions/biblical-passage-fragments.json",
     "high_density_overlap":"knowledge/traditions/biblical-overlap-atlas.json",
     "research_router":"knowledge/traditions/biblical-research-index-wave-5.json",
-    "tim_vocabulary_chronology":"knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json",
-    "tim_first_reverse_chronology":"knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json",
+    "tim_vocabulary_timeline":"knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json",
+    "tim_first_reverse_timeline":"knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json",
     "public_occurrences":"knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json",
     "public_source_text":"data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
     "son_deepening":"knowledge/traditions/biblical-overlap-wave-11-son-deepening.json",
     "father_house_deepening":"knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json",
     "zechariah":"knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json",
-    "sammy_tammuz":"knowledge/chronology/sammy-kiwifarms-weeping-tammuz-ledger.json",
+    "sammy_tammuz":"knowledge/timeline/sammy-kiwifarms-weeping-tammuz-ledger.json",
     "tammuz_north_gate":"knowledge/traditions/july31-tammuz-tomb-north-gate-atlas.json",
     "adam_garden_farm":"knowledge/traditions/biblical-adam-seed-garden-farm-atlas.json",
     "moses_manna_roots":"knowledge/traditions/moses-manna-table-jesse-messiah-atlas.json",
@@ -114,7 +114,7 @@
       "biblical_refs":["Genesis 49:9-10","Isaiah 11:1-10","Revelation 5:5-6"],
       "motifs":["Lion of Judah","Root of David","Father","Son","Potato"],
       "strength":5,
-      "owners":["data/timeline-events.json","knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json"]
+      "owners":["data/timeline-events.json","knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json"]
     },
     {
       "id":"moshiach-return-2025-11-21",
@@ -150,7 +150,7 @@
       "biblical_refs":["Gospel crucifixion tradition","Revelation 5:5-6"],
       "motifs":["crucified Son","Father in Heaven","Lion of Judah","return","meme"],
       "strength":5,
-      "owners":["data/tim-dooley-public-theology-timeline-2025-2026.json","knowledge/chronology/rational-potato-x-developmental-genealogy-2024-2026.json"]
+      "owners":["data/tim-dooley-public-theology-timeline-2025-2026.json","knowledge/timeline/rational-potato-x-developmental-genealogy-2024-2026.json"]
     },
     {
       "id":"gate-root-garden-north-2026-03-31",
@@ -162,7 +162,7 @@
       "biblical_refs":["Genesis 28:17","John 10:7-9","Isaiah 11","Genesis 2"],
       "motifs":["Gate","Root","Garden","Heaven","North"],
       "strength":4,
-      "owners":["data/timeline-events.json","knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json"]
+      "owners":["data/timeline-events.json","knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json"]
     },
     {
       "id":"guardians-narrow-gate-2026-04-09",
@@ -174,7 +174,7 @@
       "biblical_refs":["Matthew 7:13-14","John 10:7-9","Genesis 3:22-24","Exodus 26:31-33","Hebrews 9-10"],
       "motifs":["paired guardians","narrow gate","Jesus","Father above","Heaven","guarded access"],
       "strength":5,
-      "owners":["knowledge/chronology/heaven-cube-primary-recovery-ledger.json","knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json"]
+      "owners":["knowledge/timeline/heaven-cube-primary-recovery-ledger.json","knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json"]
     },
     {
       "id":"bread-door-tomb-resurrection-2026-04-23",
@@ -210,7 +210,7 @@
       "biblical_refs":["Revelation 21-22","John 14:2","Genesis 28","John 12:24","Genesis 11"],
       "motifs":["New Jerusalem","Gate of North","House","mansions","Ladder","Throne","grain","Babel"],
       "strength":5,
-      "owners":["knowledge/chronology/may-1-2026-biblical-cluster-ledger.json","knowledge/traditions/babel-stone-ladder-spiral-two-architectures-atlas.json"]
+      "owners":["knowledge/timeline/may-1-2026-biblical-cluster-ledger.json","knowledge/traditions/babel-stone-ladder-spiral-two-architectures-atlas.json"]
     },
     {
       "id":"ben-yoseph-ben-david-2026-05-03",
@@ -222,7 +222,7 @@
       "biblical_refs":["Joseph cycle Genesis 37-50","Davidic messianic tradition","Genesis 49 / Deuteronomy 33 Dan imagery"],
       "motifs":["Ben Yoseph","Ben David","Thomas","Dan","grain","Father","Son"],
       "strength":5,
-      "owners":["knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json","knowledge/traditions/eden-joseph-david-inheritance-map.json"]
+      "owners":["knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json","knowledge/traditions/eden-joseph-david-inheritance-map.json"]
     },
     {
       "id":"new-jerusalem-north-ladder-2026-05-11",
@@ -234,7 +234,7 @@
       "biblical_refs":["Revelation 21-22","Genesis 28"],
       "motifs":["New Jerusalem","North","Ladder to Heaven","Cube","fall"],
       "strength":5,
-      "owners":["knowledge/chronology/primary-recovery-wave-10-ledger.json","knowledge/chronology/cube-heaven-temple-development-ledger.json"]
+      "owners":["knowledge/timeline/primary-recovery-wave-10-ledger.json","knowledge/timeline/cube-heaven-temple-development-ledger.json"]
     },
     {
       "id":"manna-jesse-eden-ladder-2026-05-13",
@@ -246,7 +246,7 @@
       "biblical_refs":["Exodus 16","Isaiah 11:1-10","Genesis 2-3","Genesis 28","Babylon traditions","Psalm/Isaiah footstool traditions"],
       "motifs":["manna","Root of Jesse","Eden","Ladder","Babylon","footstool"],
       "strength":5,
-      "owners":["knowledge/chronology/moses-manna-jesse-footstool-recovery-ledger.json","knowledge/traditions/moses-manna-table-jesse-messiah-atlas.json"]
+      "owners":["knowledge/timeline/moses-manna-jesse-footstool-recovery-ledger.json","knowledge/traditions/moses-manna-table-jesse-messiah-atlas.json"]
     },
     {
       "id":"ladder-door-specialization-2026-05-19",
@@ -284,7 +284,7 @@
       "biblical_refs":["Joseph cycle","Davidic kingship/messianic tradition","Dan/Judah tribal imagery"],
       "motifs":["Ben David","Ben Joseph","Thomas","Twin","Lion","Dan","Messiah"],
       "strength":5,
-      "owners":["knowledge/chronology/conversation-archaeology-wave-005.json","knowledge/traditions/eden-joseph-david-inheritance-map.json"]
+      "owners":["knowledge/timeline/conversation-archaeology-wave-005.json","knowledge/traditions/eden-joseph-david-inheritance-map.json"]
     },
     {
       "id":"chariot-ezekiel-wheels-2026-07-18",
@@ -296,7 +296,7 @@
       "biblical_refs":["Ezekiel 1","Ezekiel 10"],
       "motifs":["chariot","light","wheels","Ezekiel"],
       "strength":5,
-      "owners":["knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json","knowledge/traditions/wheels-spokes-millstone-babel-ladder-grain-atlas.json"]
+      "owners":["knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json","knowledge/traditions/wheels-spokes-millstone-babel-ladder-grain-atlas.json"]
     },
     {
       "id":"breath-nostrils-2026-07-23",
@@ -321,7 +321,7 @@
       "motifs":["Thomas","Twin","Dan","Lion","Lamb","Heifer","Tammuz","weeping woman","grave","Door","meme"],
       "strength":5,
       "source_direction":"The Tim-led motif investigation comes first; the high-specificity Ezekiel 8:14 Tammuz+north-gate comparison is formally recognized later.",
-      "owners":["knowledge/chronology/late-july-early-august-son-tomb-corridor.json","knowledge/traditions/july31-tammuz-tomb-north-gate-atlas.json","knowledge/chronology/sammy-kiwifarms-weeping-tammuz-ledger.json"]
+      "owners":["knowledge/timeline/late-july-early-august-son-tomb-corridor.json","knowledge/traditions/july31-tammuz-tomb-north-gate-atlas.json","knowledge/timeline/sammy-kiwifarms-weeping-tammuz-ledger.json"]
     },
     {
       "id":"tammuz-north-gate-2026-07-31",
@@ -346,7 +346,7 @@
       "motifs":["Sammy","woman","weeping","Tammuz","Son","disappearance","tomb-witness pattern"],
       "strength":5,
       "provenance":"Exact contemporaneous Kiwi Farms URL/date/text remains unresolved; later book/archive attestation is not a substitute for the original capture.",
-      "owners":["knowledge/chronology/sammy-kiwifarms-weeping-tammuz-ledger.json","knowledge/traditions/women-weeping-gate-tomb-gardener-atlas.json","knowledge/traditions/biblical-marginal-women-witness-lament-atlas.json"]
+      "owners":["knowledge/timeline/sammy-kiwifarms-weeping-tammuz-ledger.json","knowledge/traditions/women-weeping-gate-tomb-gardener-atlas.json","knowledge/traditions/biblical-marginal-women-witness-lament-atlas.json"]
     },
     {
       "id":"hebrew-name-network-2026-08-08",
@@ -358,7 +358,7 @@
       "biblical_refs":["Moses traditions","Davidic traditions","Root/Branch texts","Most High vocabulary"],
       "motifs":["Moshe","Mashiach","Elohim","Adonai","Abraham","David","Root","Most High","North of North"],
       "strength":5,
-      "owners":["knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json","knowledge/traditions/moses-manna-table-jesse-messiah-atlas.json"]
+      "owners":["knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json","knowledge/traditions/moses-manna-table-jesse-messiah-atlas.json"]
     },
     {
       "id":"needle-communion-mountain-2026-08-10",
@@ -419,7 +419,7 @@
       "biblical_refs":["1 Kings 7:21","John 10","John 12:24","Matthew 7:13-14"],
       "motifs":["Jachin","Boaz","House","Door","grain","narrow path","pillars","threshold"],
       "strength":5,
-      "owners":["knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json"]
+      "owners":["knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json"]
     },
     {
       "id":"house-seed-eye-ladder-2026-09-08",
@@ -432,7 +432,7 @@
       "biblical_refs":["Matthew 6:22-23","Matthew 13","John 15","Genesis 28","John 14:2","Genesis 2","Zechariah 3-4"],
       "motifs":["lamp","single eye","House","mustard seed","branches","pineal/Son","Ladder","Axis","Garden"],
       "strength":5,
-      "owners":["knowledge/chronology/neurotheology-attestation-ledger.json","knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json","knowledge/body/neurotheology-axis-house-spirit-atlas.json"]
+      "owners":["knowledge/timeline/neurotheology-attestation-ledger.json","knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json","knowledge/body/neurotheology-axis-house-spirit-atlas.json"]
     },
     {
       "id":"zechariah-research-unlock-2026-09-09",

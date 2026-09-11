@@ -166,11 +166,11 @@ Acquire external evidence only where it can answer a defined question. Historica
 
 ### Pass 8 — Challenge
 
-Look actively for contradictions, chronology problems, alternative explanations, missing evidence and disconfirming material.
+Look actively for contradictions, timeline problems, alternative explanations, missing evidence and disconfirming material.
 
 ### Pass 9 — Integrate
 
-Put durable knowledge into the strongest canonical dossier. Put relationships in graph layers. Put chronology in timeline layers. Put research provenance in source layers. Put interpretations in reflection layers.
+Put durable knowledge into the strongest canonical dossier. Put relationships in graph layers. Put timeline in timeline layers. Put research provenance in source layers. Put interpretations in reflection layers.
 
 ### Pass 10 — Publish
 

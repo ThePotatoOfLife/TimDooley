@@ -15,8 +15,8 @@ const PATHS={
  fragments:'../../knowledge/traditions/biblical-passage-fragments.json',
  angelField:'../../knowledge/traditions/biblical-angel-eye-sprout-atlas.json',
  angelFragments:'../../knowledge/traditions/biblical-angel-eye-sprout-fragments.json',
- attestations:'../../knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json',
- reverse:'../../knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json',
+ attestations:'../../knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json',
+ reverse:'../../knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json',
  occurrences:'../../data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json',
  timeline:'../../data/timeline-events.json',
  packs:'../../data/timeline-event-packs/index.json'
@@ -203,7 +203,7 @@ function renderRelation(row,context){
 
  const sameDateHtml=sameDateContext.length?`<section class="context-card exact-context full"><h4>Same-date public wording</h4><p class="circumstantial">Circumstantial context only: these are exact public occurrences from the same date. They are not silently treated as direct proof of this relation.</p>${sameDateContext.slice(0,8).map(item=>`<blockquote>${esc(item.quote)}<span class="quote-meta">${esc(item.id)} · ${esc((item.tags||[]).join(' · '))}</span></blockquote>`).join('')}</section>`:'';
  const attestationHtml=attestations.length?`<section class="context-card full"><h4>Biblical vocabulary / revelation context</h4>${attestations.slice(0,8).map(item=>{const wording=wordingForAttestation(item);return `${wording.map(text=>`<blockquote>${esc(text)}</blockquote>`).join('')}${item.development?`<p>${esc(item.development)}</p>`:''}${item.source_class?`<p class="circumstantial">Source class: ${esc(item.source_class)}</p>`:''}`}).join('')}</section>`:'';
- const reverseHtml=reversals.length?`<section class="context-card reverse"><h4>Reverse chronology / later recognition</h4>${reversals.slice(0,5).map(item=>`<p><strong>${esc(item.status||'tim-first chronology')}</strong> ${esc(item.significance||item.finding||'')}</p>`).join('')}</section>`:'';
+ const reverseHtml=reversals.length?`<section class="context-card reverse"><h4>Reverse timeline / later recognition</h4>${reversals.slice(0,5).map(item=>`<p><strong>${esc(item.status||'tim-first timeline')}</strong> ${esc(item.significance||item.finding||'')}</p>`).join('')}</section>`:'';
  const boundaryHtml=boundary?`<section class="context-card boundary"><h4>Mismatch / correction</h4><p>${esc(boundary)}</p></section>`:'';
  const sourceDirectionHtml=row.source_direction?`<section class="context-card"><h4>Which came first?</h4><p>${esc(row.source_direction)}</p></section>`:'';
  const prophecyHtml=row.prophecy_status?`<section class="context-card"><h4>Prophecy / foresight status</h4><p>${esc(row.prophecy_status.replaceAll('-',' '))}</p>${row.prediction_date?`<p>Prediction: ${esc(row.prediction_date)}</p>`:''}${row.target_event_date?`<p>Target event: ${esc(row.target_event_date)}</p>`:''}</section>`:'';
@@ -214,7 +214,7 @@ function renderRelation(row,context){
 }
 
 function renderOwners(row){const owners=unique([...asArray(row.analysis_refs),...asArray(row.source_refs),...asArray(row.owners)]);if(!owners.length)return '';return `<section class="context-card sources full"><h4>Deeper records / source owners</h4><div class="owner-links">${owners.map(owner=>`<a href="${esc(ownerHref(owner))}"><code>${esc(owner)}</code></a>`).join('')}</div></section>`}
-function renderTimelineLinks(explicitEvents,sameDateEvents){const all=[...explicitEvents.slice(0,8),...sameDateEvents.slice(0,8)];if(!all.length)return '';return `<section class="context-card full"><h4>Timeline</h4>${explicitEvents.length?'<p class="circumstantial">Explicitly linked timeline event(s) first.</p>':'<p class="circumstantial">Same-date timeline context. This is chronology, not automatic proof of the biblical relation.</p>'}<div class="timeline-links">${all.map(event=>`<a class="event-link" href="../../chronology/?tl_event=${encodeURIComponent(event.id)}">${esc(event.date||'')} · ${esc(event.title||event.id)}</a>`).join('')}</div></section>`}
+function renderTimelineLinks(explicitEvents,sameDateEvents){const all=[...explicitEvents.slice(0,8),...sameDateEvents.slice(0,8)];if(!all.length)return '';return `<section class="context-card full"><h4>Timeline</h4>${explicitEvents.length?'<p class="circumstantial">Explicitly linked timeline event(s) first.</p>':'<p class="circumstantial">Same-date timeline context. This is timeline, not automatic proof of the biblical relation.</p>'}<div class="timeline-links">${all.map(event=>`<a class="event-link" href="../../timeline/?tl_event=${encodeURIComponent(event.id)}">${esc(event.date||'')} · ${esc(event.title||event.id)}</a>`).join('')}</div></section>`}
 function focusRelation(id,scroll){document.querySelectorAll('.relation.is-focus').forEach(el=>el.classList.remove('is-focus'));const el=$('rel-'+id);if(!el)return;el.classList.add('is-focus');if(scroll)el.scrollIntoView({behavior:'smooth',block:'start'})}
 
 document.addEventListener('DOMContentLoaded',init);

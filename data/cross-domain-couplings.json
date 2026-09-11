@@ -16,7 +16,7 @@
     {"id":"couple-belief-country","from":"belief-tradition","to":"country","relation":"has-presence-in","why":"Connect beliefs to geography while avoiding assumptions about individual adherence."},
     {"id":"couple-belief-institution","from":"belief-tradition","to":"institution","relation":"represented-by","why":"Connect traditions to documented institutions and organizations."},
     {"id":"couple-event-institution","from":"event","to":"institution","relation":"involves-or-affects","why":"Connect historical events to institutional change."},
-    {"id":"couple-event-country","from":"event","to":"country","relation":"occurs-in-or-affects","why":"Connect chronology to geography."},
+    {"id":"couple-event-country","from":"event","to":"country","relation":"occurs-in-or-affects","why":"Connect timeline to geography."},
     {"id":"couple-source-record","from":"source","to":"record","relation":"supports","why":"Every empirical claim should be traceable to evidence."},
     {"id":"couple-record-record","from":"record","to":"record","relation":"related-through-explicit-edge","why":"Prevent isolated backend datasets and expose the wider graph."}
   ],

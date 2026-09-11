@@ -54,13 +54,13 @@ Contains the mythic architecture: Father, Son, Door, Ladder, Tree of Life, Root,
 
 Explores questions of life, death, identity, consciousness, responsibility, suffering, love, power, meaning, civilization, God, creation and transformation.
 
-## Layer 5 — Chronology
+## Layer 5 — Timeline
 
 Maintains parallel timelines:
 
-1. mythic chronology
-2. historical chronology
-3. development chronology of the project itself
+1. mythic timeline
+2. historical timeline
+3. development timeline of the project itself
 
 These timelines may interact but should never be silently collapsed.
 

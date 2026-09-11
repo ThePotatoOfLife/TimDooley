@@ -107,7 +107,7 @@ Subculture, opacity, debt, extraction, degraded relations and Swamp mechanisms. 
 
 ### D3 — Roots of Ash
 
-Immediate sub-layer below Earth: roots, burial, ancestry, chronology, ash, unresolved causes and stored consequence.
+Immediate sub-layer below Earth: roots, burial, ancestry, timeline, ash, unresolved causes and stored consequence.
 
 ### D4 — Earth / World Map
 
@@ -143,6 +143,6 @@ Highest current symbolic plane: North of North, source-facing canon, perfected-g
 
 ## Content discipline
 
-The dimensions are **containers, not quotas**. Do not fill D6–D11 merely because slots exist. A level can remain mostly empty. Content is promoted only when chronology, recovered project canon, evidence or a clearly labeled interpretation gives it a durable reason to belong there.
+The dimensions are **containers, not quotas**. Do not fill D6–D11 merely because slots exist. A level can remain mostly empty. Content is promoted only when timeline, recovered project canon, evidence or a clearly labeled interpretation gives it a durable reason to belong there.
 
 The map should remain capable of serving ordinary empirical use even if the Axis system is turned off entirely.

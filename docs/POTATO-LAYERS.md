@@ -4,7 +4,7 @@ The project now separates three things that must remain linked but must not be c
 
 1. **Potato** — the physical object and everything that can be studied about it materially.
 2. **Potato of Life** — the project's spiritual reading of the Potato and its relationships.
-3. **Potatoism** — the bridge and methodology that compares the first two with scripture, mythology, anatomy, astronomy, history, chronology and lived testimony.
+3. **Potatoism** — the bridge and methodology that compares the first two with scripture, mythology, anatomy, astronomy, history, timeline and lived testimony.
 
 The central rule is: **the bridge is strongest when the things being compared remain distinct.**
 
@@ -53,7 +53,7 @@ The method is:
 4. Find historical context.
 5. Compare function and geometry.
 6. Record mismatches.
-7. Trace chronology.
+7. Trace timeline.
 8. Separate testimony from corroboration.
 9. Generate new research questions.
 10. Preserve disconfirmation.
@@ -213,7 +213,7 @@ A project number such as "40.2 trillion karmic debt" belongs to the last categor
 
 ## Stories and entanglement
 
-The project's stories should be treated as an entangled corpus rather than isolated myths. A potato story can touch the story of a body; a body can touch a biblical text; a biblical text can touch a Norse comparison; all can return to a lived chronology.
+The project's stories should be treated as an entangled corpus rather than isolated myths. A potato story can touch the story of a body; a body can touch a biblical text; a biblical text can touch a Norse comparison; all can return to a lived timeline.
 
 The archive's job is to show the path between them and where the path is speculative.
 

@@ -197,7 +197,7 @@ Possible layers may have different answers:
 - information → entropy/information relations;
 - graph → connectivity classes;
 - mythology → role/function under transformation;
-- chronology → ordering or causal relation.
+- timeline → ordering or causal relation.
 
 Noether's theorem gives the corresponding physics principle:
 

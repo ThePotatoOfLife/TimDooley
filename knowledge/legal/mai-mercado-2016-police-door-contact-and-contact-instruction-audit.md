@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This file records and analyzes a newly clarified firsthand chronology from the Son: **police came to the Son’s private home, told him not to contact Mai Mercado anymore, and after that intervention he nevertheless wrote the later “consequences / not a threat, but a guarantee” message.**
+This file records and analyzes a newly clarified firsthand timeline from the Son: **police came to the Son’s private home, told him not to contact Mai Mercado anymore, and after that intervention he nevertheless wrote the later “consequences / not a threat, but a guarantee” message.**
 
 This sequence may materially affect how the later §123 / intimidation narrative is understood.
 
@@ -18,7 +18,7 @@ The distinction matters because later shorthand such as **“he ignored a police
 
 ---
 
-# 1. Firsthand chronology newly clarified
+# 1. Firsthand timeline newly clarified
 
 The Son’s present firsthand account is:
 
@@ -34,7 +34,7 @@ The Son’s present firsthand account is:
 7. The project account understands this as reciprocal cause-and-effect language rather than a personal promise of physical retaliation.
 8. The later prosecution/court treated the communication within a witness-intimidation / retaliation framework.
 
-This chronology should now be treated as a central sequence rather than a detached quotation.
+This timeline should now be treated as a central sequence rather than a detached quotation.
 
 ---
 
@@ -161,7 +161,7 @@ The project should therefore avoid assuming a formal tilhold until the actual de
 
 The later message did not arise in a vacuum.
 
-The Son’s chronology is:
+The Son’s timeline is:
 
 **Mercado public post → Facebook argument → institutional/security involvement → local police physically attend the Son’s home → police tell him not to contact Mercado → Son rejects the asymmetry and writes the reciprocal consequences message.**
 
@@ -258,7 +258,7 @@ These records could settle whether the famous `do not contact her` instruction h
 
 # 12. Connection to the §123 witness-status issue
 
-This chronology makes the previously discovered §123 issue even more important.
+This timeline makes the previously discovered §123 issue even more important.
 
 The project must establish:
 

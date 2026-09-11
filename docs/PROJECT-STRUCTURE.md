@@ -36,7 +36,7 @@ Relationships answer:
 
 **What does this connect to, and how?**
 
-Edges can describe family, chronology, dependency, ownership, influence, contrast, transformation, citation, supply, geography, evidence or symbolic correspondence. An edge is not a second dossier.
+Edges can describe family, timeline, dependency, ownership, influence, contrast, transformation, citation, supply, geography, evidence or symbolic correspondence. An edge is not a second dossier.
 
 ### 4. Interpretation layer — what patterns emerge
 
@@ -79,8 +79,8 @@ Do not force all dimensions into one folder hierarchy.
 | Corporium | `knowledge/corporium/corporium-master-framework.json` | sayings, psychology, chakra/Hawkins and archetype studies |
 | Science / math | `knowledge/science/science-master-index.json` | equation ledger, formalisms, Spudlight, model testing, specialist waves |
 | Biblical / comparative research | `knowledge/traditions/biblical-overlap-atlas.json` | biblical research routing index, esoteric atlas/source ledger, comparative mythology |
-| Canonical chronology | `data/timeline-events.json` | `data/timeline-source-registry.json`, developmental genealogy, specialist attestation ledgers |
-| Timeline presentation | `app/timeline.js` + `app/timeline.css` | static `/chronology/` narrative reader |
+| Canonical timeline | `data/timeline-events.json` | `data/timeline-source-registry.json`, developmental genealogy, specialist attestation ledgers |
+| Timeline presentation | `app/timeline.js` + `app/timeline.css` | static `/timeline/` narrative reader |
 | North / world bridge | `knowledge/core/axis-world-model.json` | country-relational and European coupling records |
 | Observable world systems | canonical world/entity and relationship families | evidence, source and graph layers |
 | Creative works | `knowledge/culture/creative-systems-archive.json` | Suno music archive and distinct creative corpora |
@@ -160,7 +160,7 @@ The public experience has three primary surfaces over the same underlying knowle
 
 1. **Direct reader pages** — answer a subject clearly.
 2. **Unified archive explorer** — expose branches, relationships, records and sources.
-3. **Chronology / layered timeline** — show development through time with actor and evidence lenses.
+3. **Timeline / layered timeline** — show development through time with actor and evidence lenses.
 
 Specialist pages remain useful where a topic benefits from a focused reader, but they should route back into canonical owners rather than become parallel truth stores.
 

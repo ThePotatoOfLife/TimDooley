@@ -23,7 +23,7 @@ The repository therefore separates four strata:
 3. **Lurianic cosmology** — tzimtzum, shevirat ha-kelim, broken vessels, fallen sparks, qelippot and tikkun.
 4. **Later Hermetic / Western occult Qliphoth** — a fully diagrammed tenfold Dark Tree, with named shells and demon correspondences. This later system should **not** be retroactively presented as though it were the original medieval Jewish diagram.
 
-That distinction is essential. The repository is interested in the connections between these systems, but it should never erase their chronology.
+That distinction is essential. The repository is interested in the connections between these systems, but it should never erase their timeline.
 
 ---
 

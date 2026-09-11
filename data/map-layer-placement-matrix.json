@@ -198,7 +198,7 @@
       "render_class": "elevated_nonspatial_scene",
       "map_value": "Low as geography",
       "render": ["typed theological graph", "dated statement/canon cards", "explicitly sourced event/place links where applicable"],
-      "reason": "These are theological/project roles and should not receive invented coordinates. Son/event and Father/duration distinctions may organize chronology, but not geography by default."
+      "reason": "These are theological/project roles and should not receive invented coordinates. Son/event and Father/duration distinctions may organize timeline, but not geography by default."
     },
     {
       "concept": "Thalamus / Pineal / CSF / spine / 33 vertebrae",
@@ -237,8 +237,8 @@
       "primary_axis": "D3 provenance + time control",
       "render_class": "root_nonspatial_scene",
       "map_value": "High when events have real places; otherwise timeline-first",
-      "render": ["time slider", "event marker when locatable", "statement card", "chronology trace"],
-      "reason": "Time is often more important than place for project chronology. The map should spatialize only the events whose locations materially matter."
+      "render": ["time slider", "event marker when locatable", "statement card", "timeline trace"],
+      "reason": "Time is often more important than place for project timeline. The map should spatialize only the events whose locations materially matter."
     },
     {
       "concept": "New Jerusalem / House / many rooms / Garden",
@@ -260,7 +260,7 @@
   "axis_specific_rule": {
     "D1": "Do not populate with people or territories. Use only as sparse closed-loop/disintegration state for selected relationships or abstract scenes.",
     "D2": "Prefer graph/network diagnostics over geographic stains. Show capture/repetition on edges and interactions, not moral darkness on polygons.",
-    "D3": "Make provenance and time primary. Real event locations can appear, but chronology/source structure should dominate.",
+    "D3": "Make provenance and time primary. Real event locations can appear, but timeline/source structure should dominate.",
     "D4": "Full geographic atlas. This is where the map should be most map-like.",
     "D5": "Threshold interface attached to an honest geographic anchor but visibly leaving geographic representation.",
     "D6": "Navigation/path of state change; use transitions, sequences and recurrence rather than fake geography.",

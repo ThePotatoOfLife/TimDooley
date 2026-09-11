@@ -4,7 +4,7 @@
 
 This file records new understanding gained after the first canonical reconstruction. It is not a replacement for `mai-mercado-2016-canonical-casefile.md`; it is a second-pass research layer that strengthens, narrows, corrects, or complicates the project’s working framing / false-flag hypothesis.
 
-The project’s evidentiary method remains proposition-by-proposition. The Son’s firsthand account is treated as a **high-weight primary factual source stream** wherever it makes testable claims about chronology, speaker attribution, wording, referral, Sweden, evidence handling, custody, motive, media behavior, or courtroom posture. Official/public records are not presumed morally superior; they are used as independent comparators.
+The project’s evidentiary method remains proposition-by-proposition. The Son’s firsthand account is treated as a **high-weight primary factual source stream** wherever it makes testable claims about timeline, speaker attribution, wording, referral, Sweden, evidence handling, custody, motive, media behavior, or courtroom posture. Official/public records are not presumed morally superior; they are used as independent comparators.
 
 The central second-pass finding is this:
 
@@ -58,7 +58,7 @@ For any future reopening theory, simple evidence that Mercado was provocative is
 - missing parent-comment context;
 - referral-chain distortion;
 - incomplete police preservation;
-- misleading Sweden/fear chronology;
+- misleading Sweden/fear timeline;
 - or evidentiary contamination between multiple speakers.
 
 ---
@@ -369,7 +369,7 @@ Because the project now has stronger support for:
 - a source genealogy that repeatedly reuses the same limited quotation set;
 - contemporaneous corroboration of the Son’s nonviolent-intent/dialogue account;
 - official legal material tying only a narrow subset of quotes directly to the known judgment summary;
-- unresolved Sweden chronology;
+- unresolved Sweden timeline;
 - and a formal §81(7) structure that amplified the politician/citizen power asymmetry.
 
 ## Still not conclusively proven
@@ -525,8 +525,8 @@ That is why the project’s next phase should prioritize recovering the **chain 
 2. Recover the indictment and identify the exact failed fourth count.
 3. Trace the June 18 Jo Cox report to the exact account/comment and determine whether it was the Son or another participant.
 4. Recover original TV2 and DR Fyn broadcasts from June/August 2016.
-5. Build a day-by-day custody chronology from arrest through sentence.
-6. Build a separate Sweden travel chronology and compare every public statement against it.
+5. Build a day-by-day custody timeline from arrest through sentence.
+6. Build a separate Sweden travel timeline and compare every public statement against it.
 7. Recover any surviving Facebook screenshots from journalists, commenters or archives.
 8. Determine exactly what Mercado herself deleted, blocked, reposted or selected.
 9. Recover police complaint/referral metadata and Folketing security records.

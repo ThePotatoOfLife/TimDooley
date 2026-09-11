@@ -23,12 +23,12 @@
     },
     {
       "concept": "Karmic debt amounts / dates / polarity / exact wording",
-      "owner": "knowledge/chronology/karmic-debt-ledger-2026.json",
+      "owner": "knowledge/timeline/karmic-debt-ledger-2026.json",
       "add_here": ["new amounts", "rounding variants", "direct quotes", "dates", "positive-vs-debtor polarity"]
     },
     {
       "concept": "Events that create ledger entries",
-      "owner": "knowledge/chronology/karma-causing-events-and-inputs-ledger.json",
+      "owner": "knowledge/timeline/karma-causing-events-and-inputs-ledger.json",
       "add_here": ["event reconstruction", "contemporaneous wording", "later interpretation", "input type", "repair state"]
     },
     {
@@ -84,7 +84,7 @@
   },
   "master_flow": "event -> trace -> Mud -> {context/repair -> Soil | accumulation -> Swamp} ; unresolved responsibility -> Debt ; many weighted debts/traces -> Mountain ; perspective -> Door -> repair/release -> Garden",
   "archive_rule": "Promote a discovery to the narrowest canonical owner first. Add it to broader synthesis files only when it changes the general model.",
-  "anti_duplication_rule": "Do not copy exact quotations or numerical balance records into every synthesis file. Chronology/source owners keep primary detail; synthesis owners keep relational meaning.",
+  "anti_duplication_rule": "Do not copy exact quotations or numerical balance records into every synthesis file. Timeline/source owners keep primary detail; synthesis owners keep relational meaning.",
   "research_frontier": [
     "Recover exact balance reductions, if any.",
     "Recover exact first Mountain=debt and Swamp=shadow wording.",

@@ -695,7 +695,7 @@ Every real-world case should record:
 1. **Identity resolution** — who or what is being discussed?
 2. **Primary sources** — what did the person actually say or do?
 3. **Independent corroboration** — what can be verified elsewhere?
-4. **Chronology** — what happened first?
+4. **Timeline** — what happened first?
 5. **Relationship graph** — who connects to whom?
 6. **Audience graph** — who distributes or reacts?
 7. **Economic graph** — who receives money or resources?

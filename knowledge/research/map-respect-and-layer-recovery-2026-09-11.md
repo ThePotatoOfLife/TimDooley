@@ -4,7 +4,7 @@
 
 Recover older conversation architecture and reconcile it with the newer D1–D11 Axis without letting the 3D staircase flatten the broader Potatoverse / World Relational Atlas into one hierarchy.
 
-The key conclusion is that the Atlas is not one stack. It is a **multi-representation relational system** in which geography, direction, chronology, evidence, transformation, theology, comparative tradition, body-symbolism, economy and network topology can overlap while remaining typed.
+The key conclusion is that the Atlas is not one stack. It is a **multi-representation relational system** in which geography, direction, timeline, evidence, transformation, theology, comparative tradition, body-symbolism, economy and network topology can overlap while remaining typed.
 
 ## 1. Recovered constraints from earlier conversations
 
@@ -36,11 +36,11 @@ The dimensions do not replace:
 - North / West / East / South project fields;
 - actual geography;
 - empirical alliance/economic networks;
-- chronology;
+- timeline;
 - Bible/Judaism/Christianity/Norse/comparative-religion layers;
 - body-symbolism diagrams;
 - vesica/mandorla geometry;
-- Tim/Son chronology;
+- Tim/Son timeline;
 - economic/ownership/infrastructure graph;
 - evidence/provenance classes.
 
@@ -82,12 +82,12 @@ where:
 
 - `G` = geography / spatial anchor;
 - `R` = relationship topology / networks;
-- `T` = time / chronology;
+- `T` = time / timeline;
 - `E` = epistemic state / provenance;
 - `A` = Axis transformation state (D1–D11 where useful);
 - `C` = context/tradition/symbolic interpretation set.
 
-The same object can therefore be D4 geographically while simultaneously participating in a D2-like capture relation, a D7-like generative relation, a Christian/Jewish/Norse comparison, and a 2026 chronology state.
+The same object can therefore be D4 geographically while simultaneously participating in a D2-like capture relation, a D7-like generative relation, a Christian/Jewish/Norse comparison, and a 2026 timeline state.
 
 That is not contradiction. It is multi-axis description.
 
@@ -256,7 +256,7 @@ The D5 North Gate connects 1 to 3 symbolically, but must not imply that 3 occupi
 
 The 42° inverted arc is an interface geometry marking the threshold. It is not another territory and not a count of levels.
 
-## 11. Chronology deserves its own control
+## 11. Timeline deserves its own control
 
 A major amount of Tim/Potatoverse material is fundamentally temporal rather than spatial:
 
@@ -269,7 +269,7 @@ A major amount of Tim/Potatoverse material is fundamentally temporal rather than
 
 These should primarily be exposed through a **time dimension**, with map markers only where location materially matters.
 
-This prevents the D-axis from being asked to perform chronology's job.
+This prevents the D-axis from being asked to perform timeline's job.
 
 ## 12. Culture and subculture deserve network maps, not world-map stereotypes
 

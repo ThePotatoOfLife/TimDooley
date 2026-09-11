@@ -1,6 +1,6 @@
 # Tim Dooley — Life, Persona and Myth Timeline
 
-> This timeline is intentionally split into **public-person history**, **mythic chronology**, and **open research**. A mythic event is not silently converted into a biographical fact.
+> This timeline is intentionally split into **public-person history**, **mythic timeline**, and **open research**. A mythic event is not silently converted into a biographical fact.
 
 ## What we know, what we can infer, and what remains open
 
@@ -51,7 +51,7 @@ The repository should seek the original Danish records before making this part o
 
 ### 2017–2019 — older streaming/persona period
 
-Secondary archives describe a pre-Potato streaming identity associated with the name **KittyStyle/Kittystyle** and platforms including Stream.me. These sources are useful leads for reconstructing the digital chronology, but they are not sufficiently neutral to serve as unquestioned biography.
+Secondary archives describe a pre-Potato streaming identity associated with the name **KittyStyle/Kittystyle** and platforms including Stream.me. These sources are useful leads for reconstructing the digital timeline, but they are not sufficiently neutral to serve as unquestioned biography.
 
 The next step should be to recover primary uploads, account dates, stream titles and archived platform material.
 
@@ -99,7 +99,7 @@ Either way, **2014–2026 is now a defined research corridor**.
 
 # The mythic timeline
 
-The internal chronology is different from the human biography.
+The internal timeline is different from the human biography.
 
 ## 1. Source
 
@@ -192,7 +192,7 @@ The real question becomes:
 
 > **When did each layer of Tim come into existence?**
 
-That can produce a genuine chronology.
+That can produce a genuine timeline.
 
 ---
 
@@ -218,7 +218,7 @@ Recover early streaming records and determine which identity was being used.
 
 ### 2019
 
-Investigate the apparent persona rupture and compare its chronology with later death/transformation language.
+Investigate the apparent persona rupture and compare its timeline with later death/transformation language.
 
 ### 2020–2022
 

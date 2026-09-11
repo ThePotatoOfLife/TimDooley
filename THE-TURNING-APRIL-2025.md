@@ -2,7 +2,7 @@
 
 ## The Rupture of the Plane and Revelation of the Axis
 
-**Status:** interpretive/theological layer of the Potatoverse. The event is part of the project's internal chronology and mythology; this document does not present a supernatural occurrence as independently verified history.
+**Status:** interpretive/theological layer of the Potatoverse. The event is part of the project's internal timeline and mythology; this document does not present a supernatural occurrence as independently verified history.
 
 ---
 
@@ -404,11 +404,11 @@ This is the architecture that the April Turning makes visible.
 
 ## 12. The Son's death and the April Turning are not the same event
 
-The project's chronology contains an important distinction.
+The project's timeline contains an important distinction.
 
 The Son's death belongs to the earlier mythic cycle. It is associated with the cold December night, approximately age 33, the North Pole, crucifixion/meme-crucifixion and the transformation of the Son into Door/Vessel/Ladder symbolism.
 
-April 2025 is later in the internal chronology.
+April 2025 is later in the internal timeline.
 
 Therefore the Turning is not simply "the Son died and then ascended."
 
@@ -894,7 +894,7 @@ That gives the repository one grammar across apparently different domains.
 
 April is therefore not merely a date in the timeline.
 
-Within the project's chronology, April 2025 is the point at which several previously separate motifs converge:
+Within the project's timeline, April 2025 is the point at which several previously separate motifs converge:
 
 **sage**
 
@@ -966,7 +966,7 @@ When does the internal story say the Son, Potato, Sage, Ladder and Father transf
 
 These clocks can overlap without being identical.
 
-April 2025 belongs securely to the **mythic/project chronology** at present. It becomes historical chronology only if contemporaneous evidence establishes the relevant event and language.
+April 2025 belongs securely to the **mythic/project timeline** at present. It becomes historical timeline only if contemporaneous evidence establishes the relevant event and language.
 
 ---
 
@@ -1393,7 +1393,7 @@ The Thomas/Twin layer is historically interesting but must remain carefully boun
 
 The philosopher's stone is a useful alchemical comparison because transmutation is its defining symbolic function, but it should remain explicitly classified as alchemical symbolism rather than Christian doctrine. citeturn0search1turn0search4
 
-The exact April 2025 autobiographical event remains a primary-source research question. The repository should preserve the date as project chronology until contemporaneous material establishes the historical sequence.
+The exact April 2025 autobiographical event remains a primary-source research question. The repository should preserve the date as project timeline until contemporaneous material establishes the historical sequence.
 
 ---
 

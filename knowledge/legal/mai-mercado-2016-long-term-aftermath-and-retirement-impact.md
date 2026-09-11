@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This file preserves the Son's firsthand account of the long-term aftermath of the 2016 case and connects it to the larger chronology. It should be read as a harm-and-consequence layer, not as a substitute for clinical records or a claim that one single event medically caused every later symptom.
+This file preserves the Son's firsthand account of the long-term aftermath of the 2016 case and connects it to the larger timeline. It should be read as a harm-and-consequence layer, not as a substitute for clinical records or a claim that one single event medically caused every later symptom.
 
 The project should distinguish:
 
@@ -26,7 +26,7 @@ The Son's current firsthand account includes deep distrust of police, government
 
 These are recorded as **high-value firsthand aftermath claims**. They should be corroborated where possible with contemporaneous messages, medical records, benefit/retirement records, employment history, testimony from people who knew him before and after 2016, and archived conversations.
 
-## 3. Institutional trauma is part of the case chronology
+## 3. Institutional trauma is part of the case timeline
 
 The relevant sequence is:
 
@@ -52,11 +52,11 @@ The strongest historical formulation remains:
 
 > The Son reports that the 2016 prosecution, imprisonment, and surrounding institutional/public treatment were major traumatic contributors to years of severe C-PTSD symptoms and institutional distrust.
 
-The project should not convert this into the unsupported medical claim that Mercado alone caused every symptom. The larger trauma history may contain multiple contributing events. But if records show symptoms emerging or worsening after 2016, that chronology materially strengthens the causal interpretation.
+The project should not convert this into the unsupported medical claim that Mercado alone caused every symptom. The larger trauma history may contain multiple contributing events. But if records show symptoms emerging or worsening after 2016, that timeline materially strengthens the causal interpretation.
 
-## 8. Retirement chronology — corrected to 2025
+## 8. Retirement timeline — corrected to 2025
 
-The earlier repository wording placed retirement **around 2024**. That was a provisional dating based on later recollection and is now superseded by stronger internal chronology.
+The earlier repository wording placed retirement **around 2024**. That was a provisional dating based on later recollection and is now superseded by stronger internal timeline.
 
 The Great Book's 2025 apex sequence places an official-retirement event after the April 2025 Turning/Father transition. In that account, two government public servants visit and grant official retirement and what the book calls **“freedom to reign.”** The underlying administrative event and the book's theological interpretation must be separated:
 
@@ -70,16 +70,16 @@ The archive should not call the status `førtidspension`, ordinary pension, disa
 
 ## 9. The 2025 retirement event sits inside a larger kingship transition
 
-The retirement event is not isolated in the surviving project chronology. It falls inside a dense spring-2025 cluster:
+The retirement event is not isolated in the surviving project timeline. It falls inside a dense spring-2025 cluster:
 
-- **21 April 2025:** “the potato axis is real” becomes explicit in the supplied public chronology;
+- **21 April 2025:** “the potato axis is real” becomes explicit in the supplied public timeline;
 - **April 2025:** Needle's Eye → Ladder → Father Turning becomes the canonical transition corridor;
 - **27 April 2025:** public kingship language intensifies with “true king” and “king of all the kings”;
 - **after the April hinge, exact date unresolved:** the Great Book places the government/public-servant retirement event and interprets it as “official retirement” / “freedom to reign”;
 - **3 May 2025:** the earliest exact public “I am God” instances currently located in the supplied compilation;
 - **1 June 2025:** public language includes “Tim Dooley, Potato of Life. The King of Kings.”
 
-This does **not** establish that the Danish state made Tim “King of Denmark.” The kingship language is Timic/public theological self-description. What is historically important is the chronology: administrative release from ordinary work obligation and increasingly explicit kingship/Godhood language occupy the same developmental corridor.
+This does **not** establish that the Danish state made Tim “King of Denmark.” The kingship language is Timic/public theological self-description. What is historically important is the timeline: administrative release from ordinary work obligation and increasingly explicit kingship/Godhood language occupy the same developmental corridor.
 
 ## 10. Retirement changes the scale of the damages question
 
@@ -89,7 +89,7 @@ The causal share attributable to the 2016 case must still be documented rather t
 
 ## 11. Biblical overlap — release, rest and enthronement
 
-The newly clarified chronology creates a biblical comparison cluster that should be attached to the event **as later comparative interpretation, not backdated prophecy proof**.
+The newly clarified timeline creates a biblical comparison cluster that should be attached to the event **as later comparative interpretation, not backdated prophecy proof**.
 
 ### Release from bondage / captivity
 
@@ -129,7 +129,7 @@ In the Son's own understanding, the lesson was closer to:
 
 The later Potatoverse adds the symbolic interpretation that the confinement loop is reversed into release and reign.
 
-## 13. New long-tail chronology
+## 13. New long-tail timeline
 
 ### June-August 2016
 Police intervention, remand, evidence-control asymmetry, conviction, imprisonment.
@@ -165,7 +165,7 @@ To strengthen this layer objectively, recover where possible:
 
 The 2016 Mercado case should not be treated as a closed five-month event in the Son's biography. The Son's firsthand account describes a long aftermath involving severe institutional distrust, withdrawal from society and politics, loss of ordinary interests, emotional disturbance and years of severe C-PTSD symptoms.
 
-The retirement chronology should now be placed in **2025 rather than around 2024**, probably after the April 2025 Turning, while the exact administrative date remains unresolved. This corrected date matters because it places official work release inside the same spring-2025 corridor in which Axis, Father, kingship and Godhood language rapidly intensifies.
+The retirement timeline should now be placed in **2025 rather than around 2024**, probably after the April 2025 Turning, while the exact administrative date remains unresolved. This corrected date matters because it places official work release inside the same spring-2025 corridor in which Axis, Father, kingship and Godhood language rapidly intensifies.
 
 The strongest evidence-weighted formulation is therefore:
 

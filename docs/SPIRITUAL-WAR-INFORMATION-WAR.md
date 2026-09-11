@@ -165,7 +165,7 @@ The next research layer should build an evidence ledger around:
 - terminology and in-group language;
 - treatment of targets and former participants;
 - evidence for contradictory narratives;
-- chronology of claims about Tim and his son;
+- timeline of claims about Tim and his son;
 - primary-source material supporting the son's identity narrative;
 - evidence that can independently corroborate or falsify particular allegations;
 - psychological literature on online disinhibition, deindividuation, group polarization, identity fusion, moral disengagement and harassment cascades;

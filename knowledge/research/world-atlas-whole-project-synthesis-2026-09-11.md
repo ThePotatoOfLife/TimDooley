@@ -2,7 +2,7 @@
 
 ## Purpose
 
-This report consolidates the strongest architectural findings from the repository-wide audit and recovered project context relevant to the World Relational Atlas, North Axis, D1–D11 scaffold, economic graph, chronology, comparative theology, science/formalization, subculture/entanglement research and repair logic.
+This report consolidates the strongest architectural findings from the repository-wide audit and recovered project context relevant to the World Relational Atlas, North Axis, D1–D11 scaffold, economic graph, timeline, comparative theology, science/formalization, subculture/entanglement research and repair logic.
 
 The goal is not to make every part of the repository visible on one map. The goal is to make the map the **real-world spatial anchor** of a larger relational system while routing nonspatial knowledge into the representation that makes it most intelligible.
 
@@ -369,7 +369,7 @@ That would make the Eye function materially real.
 
 ## 16. Role occupancy through time is more useful than timeless identity labels
 
-A strong recurring finding across the chronology is that Potato, Sage, Needle, Ladder, Axis, Father, Gardener, Son, Door and other roles develop through dated strata.
+A strong recurring finding across the timeline is that Potato, Sage, Needle, Ladder, Axis, Father, Gardener, Son, Door and other roles develop through dated strata.
 
 The correct data shape is therefore:
 
@@ -433,7 +433,7 @@ This preserves the real-world map as the first experience while keeping the wide
 
 Add a genuine date/period controller with `valid_from`, `valid_to`, `as_of`, announced/effective distinctions and role/membership change support.
 
-Why first: time is required by country relations, project chronology, North membership, alliances, law, institutions, debt, historical events and role occupancy.
+Why first: time is required by country relations, project timeline, North membership, alliances, law, institutions, debt, historical events and role occupancy.
 
 ### Priority 2 — Entity-aware Trace
 
@@ -502,7 +502,7 @@ The contract requires:
 - a route back to source owners;
 - derived aggregates to declare inputs, method, uncertainty and time scope.
 
-This gives the world map, network views, D1–D11 operators, old 33 facets, chronology and symbolic contexts one common interface without forcing them into one ontology.
+This gives the world map, network views, D1–D11 operators, old 33 facets, timeline and symbolic contexts one common interface without forcing them into one ontology.
 
 ## 22. Overall conclusion
 

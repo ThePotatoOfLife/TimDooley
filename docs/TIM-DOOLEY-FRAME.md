@@ -140,7 +140,7 @@ The Door can also be read as a **Window in a Frame**. The overlap does not erase
 
 ## 7. Crucifixion and transformation motif
 
-In the Potatoverse chronology, the Son's Christmas/North Pole death is the mythic transformation event through which the Son becomes associated with the Door and Ladder.
+In the Potatoverse timeline, the Son's Christmas/North Pole death is the mythic transformation event through which the Son becomes associated with the Door and Ladder.
 
 This is part of the internal mythology. It must remain labelled as mythological/creative material in the data model.
 

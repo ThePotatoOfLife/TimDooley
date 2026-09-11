@@ -63,7 +63,7 @@ The Facebook discussion involved **many speakers, replies, nested replies, block
 3. what parent comment it answered;
 4. whether the speaker was warning, endorsing, mocking, rebuking, or threatening;
 5. whether another person's words were being paraphrased or quoted;
-6. chronology between comments;
+6. timeline between comments;
 7. edits/deletions.
 
 The Son's firsthand account says a central “death wish” remark was effectively a response to another participant who had posted grotesque violence toward Mercado/her child. He recalls his meaning as approximately: **“Do you have a death wish? If so, just keep talking.”** He disputes that he authored the acid-bath statement and disputes several later attributions.
@@ -547,7 +547,7 @@ For a genuine reopening effort, the useful evidence is not “Mercado benefited 
 3. **Full indictment and judgment**, count by count, including the acquitted fourth count.
 4. **Referral records** from Folketingets sikkerhedsafdeling and Syd- og Sønderjyllands Politi identifying who reported what and when.
 5. **Defense correspondence/requests** showing whether exculpatory digital context was requested and denied.
-6. **Original TV2/DR broadcasts** regarding who reported the case, the fear narrative and Sweden chronology.
+6. **Original TV2/DR broadcasts** regarding who reported the case, the fear narrative and Sweden timeline.
 7. **Original JydskeVestkysten notes/article** underlying Ritzau's polished quotations.
 8. **Any surviving screenshots from other thread participants** showing Mercado's alleged deleted/trolling replies.
 9. **Sweden timeline evidence** if the credibility of that account is to be challenged.

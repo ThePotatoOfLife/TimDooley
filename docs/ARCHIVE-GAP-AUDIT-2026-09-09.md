@@ -107,7 +107,7 @@ That leaves several major archive strengths hidden behind graph navigation.
 
 ### Recommended public front doors
 
-- **Story & Chronology** — 2011 → 2019/20 → 2020 → 2024 → April 2025 → North 2026.
+- **Story & Timeline** — 2011 → 2019/20 → 2020 → 2024 → April 2025 → North 2026.
 - **Symbols & Theology** — Father, Son, Spirit, Door, Ladder, Tree, Eye, Mountain, Potato, Garden.
 - **Body & Experience** — symbolic anatomy beside neuroscience/physiology.
 - **World & North** — North Programme, countries, Europe, capability and real systems.
@@ -118,9 +118,9 @@ A reader should not need to know branch IDs to discover these.
 
 ---
 
-## Priority 5 — Chronology should become a real visual spine
+## Priority 5 — Timeline should become a real visual spine
 
-The chronology branch is content-rich but could become much more useful through a reader-first visual timeline.
+The timeline branch is content-rich but could become much more useful through a reader-first visual timeline.
 
 ### Suggested bands
 
@@ -256,7 +256,7 @@ One excellent bridge dossier can connect five existing branches at once.
 # Recommended order from here
 
 1. Public **Context & Evidence** landing page.
-2. Visual chronology spine.
+2. Visual timeline spine.
 3. Source browser/index surface.
 4. Eye bridge dossier.
 5. Door bridge dossier.

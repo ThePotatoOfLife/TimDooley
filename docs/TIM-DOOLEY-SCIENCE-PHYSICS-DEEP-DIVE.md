@@ -290,7 +290,7 @@ This supplies a genuine mathematical example where:
 
 because the path class itself can carry physical information.
 
-That is highly relevant to the project's insistence that chronology and pathway matter: two states that look similar at the end may have different histories and therefore belong to different classes.
+That is highly relevant to the project's insistence that timeline and pathway matter: two states that look similar at the end may have different histories and therefore belong to different classes.
 
 Again, this is structural comparison unless a precise physical configuration space is specified.
 

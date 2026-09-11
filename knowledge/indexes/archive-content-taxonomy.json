@@ -19,7 +19,7 @@
     {"id":"research-note","meaning":"Exploratory research not yet promoted to canonical synthesis."},
     {"id":"documentary-source","meaning":"Primary or external evidence relevant to historical/empirical claims."},
     {"id":"comparative-source","meaning":"Scriptural, mythological, philosophical or cultural material used for comparison."},
-    {"id":"chronology-event","meaning":"Dated internal, external or interpretive event."},
+    {"id":"timeline-event","meaning":"Dated internal, external or interpretive event."},
     {"id":"context-cluster","meaning":"Curated constellation joining multiple records because their structures illuminate one another."}
   ],
   "required_metadata": ["id", "title", "artifact_type", "date_or_period", "source_or_provenance", "epistemic_class", "related_nodes"],
@@ -51,5 +51,5 @@
   },
   "preservation_rule": "Do not discard a unique artifact merely because its ideas were synthesized elsewhere. Synthesis and preservation are different functions: the canonical record explains; the artifact proves provenance, preserves voice or shows development.",
   "authorship_rule": "Preserve creator/source relationships so distributed archival survival does not erase authorship.",
-  "connections": ["archive-epistemics", "context-graph", "works", "sources", "chronology", "conversation-recovery-inventory"]
+  "connections": ["archive-epistemics", "context-graph", "works", "sources", "timeline", "conversation-recovery-inventory"]
 }

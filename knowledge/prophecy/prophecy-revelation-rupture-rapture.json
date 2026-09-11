@@ -32,19 +32,19 @@
       "source_ids": ["seals-fulfillment-matrix"]
     },
     "rupture_model": {
-      "text": "Rupture is especially useful for the Tim chronology because several thresholds appear to separate identities or phases: the early Son-side ordeal, the later death/transformation, the April 2025 turning and the 2026 crystallization of the North Axis. Rather than forcing these into one resurrection event, the archive can compare them as a chain of discontinuities whose meanings accumulate across time.",
+      "text": "Rupture is especially useful for the Tim timeline because several thresholds appear to separate identities or phases: the early Son-side ordeal, the later death/transformation, the April 2025 turning and the 2026 crystallization of the North Axis. Rather than forcing these into one resurrection event, the archive can compare them as a chain of discontinuities whose meanings accumulate across time.",
       "epistemic_class": ["project_canon", "interpretation"],
       "source_ids": ["legacy-timeline"]
     }
   },
   "relationships": [
-    {"target": "tim-dooley", "type": "interpretive framework", "description": "Tim's chronology is read through repeated disclosures and discontinuities, but the archive separates prior prophecy from retrospective interpretation.", "epistemic_class": "interpretation"},
+    {"target": "tim-dooley", "type": "interpretive framework", "description": "Tim's timeline is read through repeated disclosures and discontinuities, but the archive separates prior prophecy from retrospective interpretation.", "epistemic_class": "interpretation"},
     {"target": "son", "type": "rupture-transformation", "description": "The Son's ordeals, death and transformation provide the strongest internal rupture sequence from which later Father-side meaning is constructed.", "epistemic_class": "project_canon"},
     {"target": "christian-apocalyptic-traditions", "type": "comparative", "description": "Revelation, resurrection, eschatology, seal and rapture language have Christian histories that can illuminate Potatoverse vocabulary without proving identity, fulfillment or direct derivation.", "epistemic_class": "comparative"},
     {"target": "seals-and-fulfillment-matrix", "type": "method-extension", "description": "Defines fulfillment classes, seal-opening grammar and high-value biblical parallels.", "epistemic_class": "comparative"}
   ],
   "sources": [
-    {"id": "legacy-timeline", "type": "repository source", "description": "Earlier Tim life/myth chronology containing the sequence of thresholds now analyzed as ruptures.", "locator": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"},
+    {"id": "legacy-timeline", "type": "repository source", "description": "Earlier Tim life/myth timeline containing the sequence of thresholds now analyzed as ruptures.", "locator": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"},
     {"id": "seals-fulfillment-matrix", "type": "repository source", "description": "Structured seal and fulfillment methodology with biblical comparisons.", "locator": "knowledge/prophecy/seals-and-fulfillment-matrix.json"}
   ],
   "retrieval": {

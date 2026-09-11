@@ -9,7 +9,7 @@ This directory records legacy strata that have been superseded, retired, or are 
 ### `knowledge.json`
 
 - Role: early all-in-one Potato of Life / Tim Dooley master snapshot.
-- Status: retired from the live branch after its durable identity, chronology, theology, symbolic and epistemic content had been promoted into canonical owners.
+- Status: retired from the live branch after its durable identity, timeline, theology, symbolic and epistemic content had been promoted into canonical owners.
 - Last live blob: `e7b838692eb86230c8ca9adba2197bab88f8b9fd`.
 - Canonical successors include:
   - `knowledge/core/potatoverse-master-framework.json`
@@ -28,7 +28,7 @@ These files remain at repository root until their unique content and downstream 
 - `book-research.json` — important 2024 Great Book extraction/source bridge.
 - `2026-master-framework.json` — conversation-developed 2026 synthesis used as historical development evidence.
 - `POTATOVERSE-DEEP-RESEARCH.md` and `POTATOVERSE-ALTERNATIVE-RESEARCH.md` — older readable research strata pending unique-content diff.
-- `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — readable timeline still used by the public chronology layer.
+- `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — readable timeline still used by the public timeline layer.
 - `THE-TURNING-APRIL-2025.md` — dedicated Turning document; remains a distinct historical/interpretive artifact.
 
 ## Migration rule

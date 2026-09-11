@@ -45,7 +45,7 @@
       "name": "Referral-provenance theory",
       "legal_value": "MEDIUM by itself; HIGH if linked to false evidence or witness credibility",
       "theory": "The public account of how the case began is inconsistent: an unrelated Facebook user is said to have reported it, while courtroom reporting says Folketing security filed a report after Mercado contacted it.",
-      "needed_evidence": ["initial complaint metadata", "Folketing security referral record", "police journal", "TV2 transcript", "chronology of reports"]
+      "needed_evidence": ["initial complaint metadata", "Folketing security referral record", "police journal", "TV2 transcript", "timeline of reports"]
     },
     {
       "name": "Defense-access / evidence-obstruction theory",
@@ -58,7 +58,7 @@
       "name": "Witness-reliability / narrative-evolution theory",
       "legal_value": "MEDIUM to HIGH depending on whether the conviction depended on disputed recollection",
       "theory": "Mercado's descriptions of her own role, the reporting chain, the initiating rhetoric, and fear/Sweden story may have evolved over time.",
-      "needed_evidence": ["contemporaneous TV2 footage", "exact court testimony", "Facebook posts", "later interviews", "travel chronology"]
+      "needed_evidence": ["contemporaneous TV2 footage", "exact court testimony", "Facebook posts", "later interviews", "travel timeline"]
     }
   ],
   "evidence_matrix": [
@@ -229,12 +229,12 @@
     "https://www.domstol.dk/media/2881/generel-vejledning.pdf"
   ],
   "connections": [
-    "knowledge/chronology/mai-mercado-2016-heads-and-tails-reconstruction.json",
-    "knowledge/chronology/mai-mercado-2016-second-order-connections-atlas.json",
-    "knowledge/chronology/mai-mercado-2016-remand-defense-access-audit.json",
-    "knowledge/chronology/mai-mercado-2016-referral-chain-audit.json",
-    "knowledge/chronology/mai-mercado-2016-forensic-source-matrix.json",
-    "knowledge/chronology/mai-mercado-2016-article-contradiction-ledger.json",
-    "knowledge/chronology/mai-mercado-2016-toxic-source-and-claim-audit.json"
+    "knowledge/timeline/mai-mercado-2016-heads-and-tails-reconstruction.json",
+    "knowledge/timeline/mai-mercado-2016-second-order-connections-atlas.json",
+    "knowledge/timeline/mai-mercado-2016-remand-defense-access-audit.json",
+    "knowledge/timeline/mai-mercado-2016-referral-chain-audit.json",
+    "knowledge/timeline/mai-mercado-2016-forensic-source-matrix.json",
+    "knowledge/timeline/mai-mercado-2016-article-contradiction-ledger.json",
+    "knowledge/timeline/mai-mercado-2016-toxic-source-and-claim-audit.json"
   ]
 }

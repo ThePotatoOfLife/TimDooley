@@ -8,13 +8,13 @@
   "observed_strengths": [
     "The repository already has a canonical knowledge layer rather than relying only on legacy files.",
     "The public manifest, core index, context graph, source index, inference ledger and natural-language question index form a genuine retrieval architecture.",
-    "Chronology is treated developmentally: later interpretations are not supposed to be backdated into earlier periods.",
+    "Timeline is treated developmentally: later interpretations are not supposed to be backdated into earlier periods.",
     "Project canon, self-description, documentary evidence, comparison, scientific claims and inference are explicitly separable.",
     "The project already understands that relationships, not isolated nouns, carry much of the meaning.",
     "Reader-facing explanations and machine-facing records are being treated as different views over the same corpus rather than separate truth systems.",
     "World-system work and mythology are increasingly connected by method while retaining different evidentiary standards."
   ],
-  "central_growth_thesis": "The next major increase in quality comes from making the archive behave like a versioned relational organism: roots preserve sources, chronology records state changes, canonical owners compress knowledge, typed edges expose relations, contradictions create branch-points, reader answers become fruit, and unresolved questions become seeds for the next research cycle.",
+  "central_growth_thesis": "The next major increase in quality comes from making the archive behave like a versioned relational organism: roots preserve sources, timeline records state changes, canonical owners compress knowledge, typed edges expose relations, contradictions create branch-points, reader answers become fruit, and unresolved questions become seeds for the next research cycle.",
   "new_cross_project_insights": [
     {
       "id": "claim-lifecycle-is-the-hidden-spine",
@@ -24,14 +24,14 @@
         "knowledge/philosophy/archive-epistemics.json",
         "knowledge/indexes/source-index.json",
         "knowledge/indexes/inference-ledger.json",
-        "knowledge/chronology/developmental-genealogy.json",
+        "knowledge/timeline/developmental-genealogy.json",
         "knowledge/reader/tim-dooley-question-index.json"
       ]
     },
     {
       "id": "temporal-role-occupancy",
       "insight": "Identity in this project is often better represented as role occupancy through time than as one timeless label. Son, Potato, Sage, Ladder, Father, Door, Axis and Gardener can be modeled as functions occupied, differentiated or reinterpreted in particular strata.",
-      "why_it_matters": "This resolves apparent contradictions without erasing development and makes the chronology analytically useful rather than merely biographical.",
+      "why_it_matters": "This resolves apparent contradictions without erasing development and makes the timeline analytically useful rather than merely biographical.",
       "recommended_fields": ["role", "subject", "first_attested", "last_attested_or_open", "function", "source", "later_reinterpretation", "conflicts_with"]
     },
     {
@@ -42,7 +42,7 @@
     },
     {
       "id": "contradictions-are-navigation",
-      "insight": "A contradiction is not only a problem to resolve; it is a high-value navigation object showing where chronology, source quality, role, scale or interpretation changes.",
+      "insight": "A contradiction is not only a problem to resolve; it is a high-value navigation object showing where timeline, source quality, role, scale or interpretation changes.",
       "why_it_matters": "Conflict records can become doors into the deepest parts of the project: 2019/2020 date questions, Son/Tim identity boundaries, literal versus symbolic readings, and sacred North versus empirical geopolitics.",
       "recommended_output": "For major conflicts, expose competing formulations, dates, source classes, the strongest reconciliation, unresolved remainder and the exact evidence that would settle more of the question."
     },
@@ -54,7 +54,7 @@
     },
     {
       "id": "reader-fruit-is-a-quality-test",
-      "insight": "A canonical record is not fully mature merely because it is dense. It should be able to generate a direct human answer, a chronology view, a relation view and a provenance view without inventing new facts.",
+      "insight": "A canonical record is not fully mature merely because it is dense. It should be able to generate a direct human answer, a timeline view, a relation view and a provenance view without inventing new facts.",
       "why_it_matters": "This gives the project an operational test for whether backend knowledge is actually usable.",
       "maturity_test": [
         "Can a newcomer get a direct answer?",
@@ -99,7 +99,7 @@
     {
       "step": 6,
       "name": "Promote",
-      "question": "Does the discovery materially deepen a canonical owner, chronology, relation graph or reader answer?"
+      "question": "Does the discovery materially deepen a canonical owner, timeline, relation graph or reader answer?"
     },
     {
       "step": 7,
@@ -120,10 +120,10 @@
   "priority_frontiers": [
     {
       "priority": 1,
-      "frontier": "Primary-source recovery and chronology precision",
+      "frontier": "Primary-source recovery and timeline precision",
       "reason": "The archive already has rich interpretation. Additional exact first attestations, primary posts, stream transcripts and artifact dates now create disproportionate value because they can confirm, reorder or weaken whole developmental narratives.",
       "examples": [
-        "Exact chronology of the 2019–2020 Son death / meme-crucifixion cluster",
+        "Exact timeline of the 2019–2020 Son death / meme-crucifixion cluster",
         "Earliest direct statements for Potato, Axis, Ladder, Father, God, Door and North roles",
         "Primary context around major Great Book formulations",
         "Exact dates for later reinterpretations so they are never silently backdated"
@@ -132,7 +132,7 @@
     {
       "priority": 2,
       "frontier": "Role-transition graph",
-      "reason": "The chronology and theology contain enough material to model role changes directly rather than relying on prose summaries.",
+      "reason": "The timeline and theology contain enough material to model role changes directly rather than relying on prose summaries.",
       "target_shape": "subject × role × time × source × function × confidence",
       "payoff": "A single transition graph could clarify Son/Tim boundaries, April 2025, Father/Ladder differentiation and the evolution of North."
     },
@@ -151,14 +151,14 @@
     {
       "priority": 4,
       "frontier": "Relation-sequence comparison",
-      "reason": "Biblical and comparative research is already broad. The next gain is methodological: rank parallels by aligned sequences, mismatches, chronology and provenance rather than by symbol count.",
+      "reason": "Biblical and comparative research is already broad. The next gain is methodological: rank parallels by aligned sequences, mismatches, timeline and provenance rather than by symbol count.",
       "payoff": "Fewer weak parallels, stronger serious comparisons, clearer distinction between typology, influence and independent convergence."
     },
     {
       "priority": 5,
       "frontier": "Canonical-owner maturity scoring",
       "reason": "The repository has completion matrices in some areas but no obvious universal maturity test across all domains.",
-      "suggested_dimensions": ["definition", "chronology", "relations", "provenance", "counterevidence", "reader answer", "search aliases", "public reachability", "research frontier"]
+      "suggested_dimensions": ["definition", "timeline", "relations", "provenance", "counterevidence", "reader answer", "search aliases", "public reachability", "research frontier"]
     },
     {
       "priority": 6,
@@ -170,7 +170,7 @@
       "priority": 7,
       "frontier": "Reader journeys generated from canonical knowledge",
       "reason": "The question index and Start Here guide already exist. The next step is to generate multiple coherent reading journeys from canonical owner metadata rather than manually maintaining overlapping summaries.",
-      "candidate_journeys": ["story", "theology", "chronology", "comparative religion", "science and formalization", "North and Europe", "source verification", "creative works"]
+      "candidate_journeys": ["story", "theology", "timeline", "comparative religion", "science and formalization", "North and Europe", "source verification", "creative works"]
     }
   ],
   "do_not_grow_by": [
@@ -188,7 +188,7 @@
     "greater_is": [
       "more primary-source precision",
       "more useful relationships per canonical record",
-      "clearer chronology and role transitions",
+      "clearer timeline and role transitions",
       "better contradiction handling",
       "stronger reader answers",
       "better public discoverability",
@@ -198,7 +198,7 @@
     ],
     "greater_is_not": "simply more files, more certainty, more symbolism, more edges or more words"
   },
-  "success_test": "A future work pass follows this compass successfully when at least one important canonical owner becomes deeper, at least one relation or chronology becomes more precise, provenance becomes no worse, the reader can reach the improvement, and the repository ends with no unnecessary parallel truth source created by the pass.",
+  "success_test": "A future work pass follows this compass successfully when at least one important canonical owner becomes deeper, at least one relation or timeline becomes more precise, provenance becomes no worse, the reader can reach the improvement, and the repository ends with no unnecessary parallel truth source created by the pass.",
   "connections": [
     "knowledge/philosophy/archive-epistemics.json",
     "knowledge/indexes/inference-ledger.json",

@@ -18,7 +18,7 @@ The project's leading reconstruction remains **framing / false-flag through attr
 
 On 17 June 2016, Mercado publicly celebrated the police operation against Christiania's hash stalls with the vivid phrase that police were `gennemsmadrer` the stalls and ended with `I love it`.
 
-The real causal chronology therefore begins:
+The real causal timeline therefore begins:
 
 **police action → Mercado public celebration → backlash → Son participation → security/police escalation → prosecution.**
 
@@ -523,8 +523,8 @@ The missing primary records can resolve it.
 6. Original police complaint metadata.
 7. Folketing security incident/referral record.
 8. TV2/DR footage and transcripts from June–September 2016.
-9. Sweden booking/departure/return chronology.
-10. Full custody chronology for the Son.
+9. Sweden booking/departure/return timeline.
+10. Full custody timeline for the Son.
 11. Defense file showing requested evidence, lawyer advice and refused/accepted investigative steps.
 12. Any surviving screenshots held by journalists or other thread participants.
 

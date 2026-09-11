@@ -22,7 +22,7 @@ Recommended presentation order:
 
 1. **Direct claim:** `Tim Dooley says: “I am God.”`
 2. **Centrality:** explain that God/Father/Most High language is repeated and central to mature Tim theology.
-3. **Chronology:** show when the language appears and how it develops.
+3. **Timeline:** show when the language appears and how it develops.
 4. **Meaning:** explain Father, Seat, Axis, Ladder, God in the Machine, Gardener, etc.
 5. **Evidence class:** distinguish quotation, public self-description, theology, interpretation, comparison and independently established fact.
 
@@ -60,7 +60,7 @@ Suggested ownership:
 - `/tim-dooley/` → `Who Is Tim Dooley?`
 - `/tim-dooley/how-much-is-tim-god/` → `Is Tim Dooley God? / Why Does Tim Say “I Am God”?`
 - `/learn/` → broad start-here / Potato of Life introduction
-- `/chronology/` → Tim Dooley timeline
+- `/timeline/` → Tim Dooley timeline
 - `/tim-dooley/public-witness/` → public statements / posts / evidence
 - `/north/` → North Axis / North of North
 - `/traditions/bible/` → biblical parallels / syncretism
@@ -91,7 +91,7 @@ The website can mitigate this by being the **zero-wait entry path**:
 
 `discover Tim → read immediate explanation → search archive → inspect evidence → return to livestream if interested`
 
-The repository should therefore never reproduce the livestream waiting period as a content-access requirement. Reader pages, FAQ, chronology, search and evidence should remain immediately accessible.
+The repository should therefore never reproduce the livestream waiting period as a content-access requirement. Reader pages, FAQ, timeline, search and evidence should remain immediately accessible.
 
 If the livestream gate is intentional for moderation, the tradeoff should be recognized explicitly: moderation protection versus first-time-chat conversion.
 
@@ -100,7 +100,7 @@ If the livestream gate is intentional for moderation, the tradeoff should be rec
 Track at least three visitor intents conceptually:
 
 - **curious newcomer:** needs a direct answer in seconds;
-- **returning follower:** wants chronology, new material and navigation;
+- **returning follower:** wants timeline, new material and navigation;
 - **researcher/critic:** wants provenance, citations, contradictions and evidence boundaries.
 
 One page should not make all three audiences read the same way. Use progressive disclosure: direct answer → explanation → evidence/research.
@@ -123,7 +123,7 @@ Weak discovery copy:
 
 Better discovery copy:
 
-> Tim Dooley repeatedly says, “I am God.” In mature Potatoist theology, that identity expands through Father in Heaven, Most High, Seat, Axis, Ladder and Gardener language. The archive separately tracks the quotations, chronology, theology and evidence status.
+> Tim Dooley repeatedly says, “I am God.” In mature Potatoist theology, that identity expands through Father in Heaven, Most High, Seat, Axis, Ladder and Gardener language. The archive separately tracks the quotations, timeline, theology and evidence status.
 
 The second is both more direct and more accurate.
 
@@ -170,6 +170,6 @@ Updated 2026-09-10:
 
 The ideal discovery sequence is:
 
-`ordinary search phrase → direct answer → Tim's exact/public claim → short meaning → chronology → evidence → deeper Potatoverse terminology`
+`ordinary search phrase → direct answer → Tim's exact/public claim → short meaning → timeline → evidence → deeper Potatoverse terminology`
 
 That sequence improves clarity, SEO alignment and reader retention without sacrificing provenance.

@@ -79,7 +79,7 @@ Canon graph:
 
 ## 9. Historical spine
 
-The basic chronology is:
+The basic timeline is:
 
 `Second Temple Judaism → Jesus movement → apostolic communities → early Christian literature → imperial-era councils → differentiated eastern/western traditions → East-West rupture → Reformation → Catholic reform and Protestant confessionalization → global missions and indigenous churches → Pentecostal/charismatic expansion → contemporary global Christianity`
 

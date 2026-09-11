@@ -59,12 +59,12 @@
   window.addEventListener('potato:navigation',event=>{
     const {type,id}=event.detail||{};
     if(type==='branch'){
-      if(id==='chronology')ensureTimeline();
+      if(id==='timeline')ensureTimeline();
       render(id);
     }
   });
 
-  if(currentBranch()==='chronology')ensureTimeline();
+  if(currentBranch()==='timeline')ensureTimeline();
 
   const guideUrl=new URL('../knowledge/guides/branch-reader-guides.json',scriptBase).href;
   fetch(guideUrl)

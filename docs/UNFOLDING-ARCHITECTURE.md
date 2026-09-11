@@ -160,7 +160,7 @@ The same relational grammar can be applied to different domains while retaining 
 | Economics | supply-chain dependency | observed flow and causal evidence |
 | Biology | ecological coupling | organism/process and evidence |
 | Psychology | state → action → feedback | psychological model and measurement |
-| History | path dependence | chronology, mechanism and counterfactuals |
+| History | path dependence | timeline, mechanism and counterfactuals |
 | Geography | adjacency / distance | explicit spatial representation |
 | Mythology | symbolic connection | project canon / interpretation |
 | Spirituality | fate / destiny | interpretive claim unless independently evidenced |

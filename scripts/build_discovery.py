@@ -179,7 +179,7 @@ def build_questions(entries):
         label = family.replace("-", " / ").title()
         cards.append(f'<div class="card"><h2><a href="{BASE_URL}/questions/{family}/">{esc(label)}</a></h2><p>{len(families[family])} crawlable questions</p></div>')
         items = "".join(f'<li><a href="{BASE_URL}/questions/{slug(e.get("id",e.get("question","")))}/">{esc(e.get("question",""))}</a></li>' for e in families[family])
-        page = shell(f"{label} questions", f"Canonical {label.lower()} questions about Tim Dooley, the Potato of Life, the Son, Father, chronology, symbols and the wider archive.", f"{BASE_URL}/questions/{family}/", f"<section><ul>{items}</ul></section>")
+        page = shell(f"{label} questions", f"Canonical {label.lower()} questions about Tim Dooley, the Potato of Life, the Son, Father, timeline, symbols and the wider archive.", f"{BASE_URL}/questions/{family}/", f"<section><ul>{items}</ul></section>")
         write(f"questions/{family}/index.html", page)
         urls.append(f"{BASE_URL}/questions/{family}/")
     root = shell("Questions about Tim Dooley and the Potato of Life", f"A crawlable question index containing {len(entries)} canonical answers, organized by natural search intent.", f"{BASE_URL}/questions/", '<section class="grid">'+"".join(cards)+'</section>')
@@ -246,7 +246,7 @@ def build_machine_files(entries, families):
             "faq": BASE_URL + "/faq/",
             "questions": BASE_URL + "/questions/",
             "a_z": BASE_URL + "/index-a-z/",
-            "chronology": BASE_URL + "/chronology/",
+            "timeline": BASE_URL + "/timeline/",
             "machine_index": BASE_URL + "/llms.txt",
             "full_machine_index": BASE_URL + "/llms-full.txt",
             "sitemap_index": BASE_URL + "/sitemap-index.xml",
@@ -284,7 +284,7 @@ def sitemap(path, urls):
 
 
 def build_sitemaps(question_urls, az_url):
-    static = [BASE_URL+"/", BASE_URL+"/tim-dooley/", BASE_URL+"/tim-dooley/ontology/", BASE_URL+"/faq/", BASE_URL+"/chronology/", BASE_URL+"/questions/", az_url]
+    static = [BASE_URL+"/", BASE_URL+"/tim-dooley/", BASE_URL+"/tim-dooley/ontology/", BASE_URL+"/faq/", BASE_URL+"/timeline/", BASE_URL+"/questions/", az_url]
     sitemap("sitemap-questions.xml", question_urls)
     sitemap("sitemap-discovery.xml", static)
     index = ['<?xml version="1.0" encoding="UTF-8"?>', '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">', f"  <sitemap><loc>{esc(BASE_URL+'/sitemap.xml')}</loc></sitemap>", f"  <sitemap><loc>{esc(BASE_URL+'/sitemap-questions.xml')}</loc></sitemap>", f"  <sitemap><loc>{esc(BASE_URL+'/sitemap-discovery.xml')}</loc></sitemap>", '</sitemapindex>']

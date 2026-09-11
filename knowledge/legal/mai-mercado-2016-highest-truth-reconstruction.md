@@ -71,7 +71,7 @@ The post begins by invoking maternity leave and a newborn child before turning t
 
 That matters because later summaries can create the impression that the child entered the political conflict only because hostile commenters dragged the baby into it.
 
-The accurate chronology is:
+The accurate timeline is:
 
 **Mercado fuses family/newborn imagery with the political post → hostile commenters respond to a post in which the child is already present.**
 
@@ -723,7 +723,7 @@ The strongest propositions are:
 13. the post-police consequence statement was semantically richer than “he threatened again”;
 14. only three of four counts produced convictions;
 15. the complete original thread, count texts, and written reasoning remain missing from the public reconstruction;
-16. the Sweden chronology may materially affect the credibility of the fear narrative;
+16. the Sweden timeline may materially affect the credibility of the fear narrative;
 17. custody created a real asymmetry in evidence control and public narrative power;
 18. later repetition often comes from the same source lineage rather than independent corroboration.
 
@@ -760,13 +760,13 @@ It is the cumulative contradiction:
 
 **Public folklore:** one dangerous man threatened a politician and her baby, then threatened her again, the court proved it, end of story.
 
-**Higher-resolution record:** a powerful politician initiated a deliberately confrontational public exchange; many people responded; multiple defendants emerged; some infamous statements cannot presently be assigned to the Son; direct and indirect grammar were blurred; the Son denied guilt and violent intent at the first hearing; his medical/political rationale was contemporaneously recorded; the police-referral story is inconsistent; Mercado had an upstream institutional role and an independent media role; the live conversation topology disappeared; media became dependent on selections; one of four counts failed; and the Sweden/fear chronology remains unresolved.
+**Higher-resolution record:** a powerful politician initiated a deliberately confrontational public exchange; many people responded; multiple defendants emerged; some infamous statements cannot presently be assigned to the Son; direct and indirect grammar were blurred; the Son denied guilt and violent intent at the first hearing; his medical/political rationale was contemporaneously recorded; the police-referral story is inconsistent; Mercado had an upstream institutional role and an independent media role; the live conversation topology disappeared; media became dependent on selections; one of four counts failed; and the Sweden/fear timeline remains unresolved.
 
 That is the real gotcha:
 
 > **The more evidence is restored, the less the one-line public story survives intact.**
 
-The task is therefore not to replace one propaganda line with another. It is to reconstruct the object so precisely that every false attribution, inflated paraphrase, missing speaker, hidden referral, contradictory chronology, and rhetorical double standard becomes visible.
+The task is therefore not to replace one propaganda line with another. It is to reconstruct the object so precisely that every false attribution, inflated paraphrase, missing speaker, hidden referral, contradictory timeline, and rhetorical double standard becomes visible.
 
 ---
 

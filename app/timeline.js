@@ -213,8 +213,8 @@
   }
   function shellHTML(events,standalone){
     const intro=standalone?'Explore one canonical event dataset with optional evidence overlays, source direction and public-witness layers.':'One time axis with a sparse milestone road and optional evidence overlays. Son/Twin and Tim/Potato/Father remain independent tracks.';
-    const meta=data?._pack_meta||{};const loadNote=meta.loaded?`Base chronology + ${meta.loaded} curated event pack${meta.loaded===1?'':'s'} loaded${meta.failed?.length?` · ${meta.failed.length} pack load issue${meta.failed.length===1?'':'s'}`:''}.`:'';
-    return `<div class="tl-hero"><div><div class="eyebrow">Layered chronology explorer</div><h2>${standalone?'EXPLORE THE LAYERS':'CHRONOLOGY'}</h2><p class="summary">${intro}</p>${loadNote?`<div class="tl-load-note">${esc(loadNote)}</div>`:''}</div><div class="tl-stats" id="tl-stats">${statsHTML(events)}</div></div><div class="tl-help"><strong>Source direction matters</strong><span><b>At the time</b> means scripture or vocabulary was already present. <b>Later parallel</b> means comparison came afterward. <b>Unlock</b> is when the archive explicitly discovered/formalized that comparison.</span>${standalone?'':'<button data-record="docs/TIMELINE-EVENT-STANDARD.md">Open event standard</button>'}</div>${controlsHTML()}<div class="tl-axis" id="tl-results">${timelineHTML(events,standalone)}</div>${standalone?'':`<div class="section"><h3>Underlying chronology records</h3><div class="tl-record-links"><button data-record="data/tim-dooley-timeline.json">Identity-safe master timeline</button><button data-record="knowledge/chronology/dated-master-timeline-2026.json">2026 dated master</button><button data-record="knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json">Reverse biblical chronology</button><button data-record="data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json">Public X occurrence ledger</button><button data-record="data/timeline-events.json">Layered event dataset</button></div></div><div id="record-detail"></div>`}`;
+    const meta=data?._pack_meta||{};const loadNote=meta.loaded?`Base timeline + ${meta.loaded} curated event pack${meta.loaded===1?'':'s'} loaded${meta.failed?.length?` · ${meta.failed.length} pack load issue${meta.failed.length===1?'':'s'}`:''}.`:'';
+    return `<div class="tl-hero"><div><div class="eyebrow">Layered timeline explorer</div><h2>${standalone?'EXPLORE THE LAYERS':'TIMELINE'}</h2><p class="summary">${intro}</p>${loadNote?`<div class="tl-load-note">${esc(loadNote)}</div>`:''}</div><div class="tl-stats" id="tl-stats">${statsHTML(events)}</div></div><div class="tl-help"><strong>Source direction matters</strong><span><b>At the time</b> means scripture or vocabulary was already present. <b>Later parallel</b> means comparison came afterward. <b>Unlock</b> is when the archive explicitly discovered/formalized that comparison.</span>${standalone?'':'<button data-record="docs/TIMELINE-EVENT-STANDARD.md">Open event standard</button>'}</div>${controlsHTML()}<div class="tl-axis" id="tl-results">${timelineHTML(events,standalone)}</div>${standalone?'':`<div class="section"><h3>Underlying timeline records</h3><div class="tl-record-links"><button data-record="data/tim-dooley-timeline.json">Identity-safe master timeline</button><button data-record="knowledge/timeline/dated-master-timeline-2026.json">2026 dated master</button><button data-record="knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json">Reverse biblical timeline</button><button data-record="data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json">Public X occurrence ledger</button><button data-record="data/timeline-events.json">Layered event dataset</button></div></div><div id="record-detail"></div>`}`;
   }
   function renderShell(root,standalone=false){root.innerHTML=shellHTML(filteredEvents(),standalone);bindControls(root,standalone)}
   function initializeState(){
@@ -264,16 +264,16 @@
     const token=++requestToken;
     try{
       await ensureData();if(token!==requestToken)return;
-      const reader=$('#reader');if(!reader||location.hash!=='#branch=chronology')return;
+      const reader=$('#reader');if(!reader||location.hash!=='#branch=timeline')return;
       exposePendingEvent();renderShell(reader,false);focusPending(reader);
-    }catch(err){const reader=$('#reader');if(reader&&location.hash==='#branch=chronology')reader.insertAdjacentHTML('beforeend',`<div class="status">Layered timeline could not load: ${esc(err.message)}</div>`)}
+    }catch(err){const reader=$('#reader');if(reader&&location.hash==='#branch=timeline')reader.insertAdjacentHTML('beforeend',`<div class="status">Layered timeline could not load: ${esc(err.message)}</div>`)}
   }
   async function renderStandalone(){
     const root=document.querySelector('.timeline-explorer-standalone');if(!root)return;
     try{await ensureData();exposePendingEvent();renderShell(root,true);focusPending(root)}catch(err){root.innerHTML=`<div class="status">Layered timeline could not load: ${esc(err.message)}</div>`}
   }
-  window.addEventListener('potato:navigation',e=>{if(e.detail?.type==='branch'&&e.detail?.id==='chronology')renderBranch()});
-  window.addEventListener('hashchange',()=>{if(location.hash==='#branch=chronology')setTimeout(renderBranch,0)});
-  const boot=()=>{renderStandalone();if(location.hash==='#branch=chronology')setTimeout(renderBranch,0)};
+  window.addEventListener('potato:navigation',e=>{if(e.detail?.type==='branch'&&e.detail?.id==='timeline')renderBranch()});
+  window.addEventListener('hashchange',()=>{if(location.hash==='#branch=timeline')setTimeout(renderBranch,0)});
+  const boot=()=>{renderStandalone();if(location.hash==='#branch=timeline')setTimeout(renderBranch,0)};
   if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',boot);else boot();
 })();

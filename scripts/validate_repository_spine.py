@@ -56,7 +56,7 @@ def main():
     if manifest.get("root", {}).get("id") != "potato-of-life":
         errors.append("Public manifest root is not potato-of-life")
     branch_ids = {b.get("id") for b in manifest.get("branches", []) if isinstance(b, dict)}
-    required_public = {"tim","son","spirit","transformation","cosmology","body","traditions","north","world","chronology","works","sources"}
+    required_public = {"tim","son","spirit","transformation","cosmology","body","traditions","north","world","timeline","works","sources"}
     missing_public = required_public - branch_ids
     if missing_public:
         errors.append(f"Public manifest missing branches: {sorted(missing_public)}")

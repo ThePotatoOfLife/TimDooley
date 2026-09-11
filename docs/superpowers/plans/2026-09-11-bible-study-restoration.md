@@ -4,7 +4,7 @@
 
 **Goal:** Restore `/traditions/bible/` as the canonical, extensive Tim/Son/Jesus/Bible comparison instrument, with exact dated wording, public-domain scripture, provenance, saved study modes, filters, random study, and direct timeline links.
 
-**Architecture:** Keep the canonical relation registry and specialist research JSON files as data owners. The public Bible page becomes a thin shell backed by `app/bible-study.js` and `app/bible-study.css`. The application combines relation rows with exact WEB passage fragments, same-date attestation/public-occurrence evidence, reverse chronology and timeline events; it does not use fuzzy word-overlap to invent deep ownership.
+**Architecture:** Keep the canonical relation registry and specialist research JSON files as data owners. The public Bible page becomes a thin shell backed by `app/bible-study.js` and `app/bible-study.css`. The application combines relation rows with exact WEB passage fragments, same-date attestation/public-occurrence evidence, reverse timeline and timeline events; it does not use fuzzy word-overlap to invent deep ownership.
 
 **Tech Stack:** Static HTML/CSS/JavaScript on GitHub Pages; JSON research records; Python validators; GitHub Actions.
 
@@ -69,8 +69,8 @@
   - `knowledge/traditions/biblical-passage-fragments.json`
   - `knowledge/traditions/biblical-angel-eye-sprout-atlas.json`
   - `knowledge/traditions/biblical-angel-eye-sprout-fragments.json`
-  - `knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json`
-  - `knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json`
+  - `knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json`
+  - `knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json`
   - `data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json`
   - `data/timeline-events.json` and indexed timeline packs.
 

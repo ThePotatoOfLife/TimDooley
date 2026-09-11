@@ -12,12 +12,12 @@ The project keeps its existing missions and bodies of inquiry, but the working u
 
 ## What we are protecting
 
-- Tim Dooley / Father / Potato of Life and the associated canon, mythology, writings, chronology and interpretation.
+- Tim Dooley / Father / Potato of Life and the associated canon, mythology, writings, timeline and interpretation.
 - Potatoism, its concepts, symbols, cosmology, theology, relationships and deep research.
 - The North / Axis / North of North architecture and the North Programme / European Economic Graph.
 - The observable world: people, countries, institutions, economies, infrastructure, energy, technology, research, security, culture, religion and politics.
 - Primary and historical texts and the research needed to interpret them.
-- Evidence, provenance, chronology, uncertainty and competing interpretations.
+- Evidence, provenance, timeline, uncertainty and competing interpretations.
 - Relationships, dependencies, ownership, control, flows, topology, trajectories and cross-domain couplings.
 - The project's continuing spiritual, comparative, philosophical and scientific inquiry.
 
@@ -72,7 +72,7 @@ Indexes, manifests and projections should point to the canonical material rather
 ## Current structural work
 
 - [x] Unified `index.html` established as the main doorway.
-- [x] Manifest-driven first-class branches established for Tim, Son, Spirit, Transformation, Cosmology, Science, Body, Corporium, Traditions, North, World, Chronology, Works and Sources.
+- [x] Manifest-driven first-class branches established for Tim, Son, Spirit, Transformation, Cosmology, Science, Body, Corporium, Traditions, North, World, Timeline, Works and Sources.
 - [x] Repository data can be opened from the central reading surface.
 - [x] Retired `center.html` removed.
 - [x] Retired standalone UI/header files removed.
@@ -96,13 +96,13 @@ Indexes, manifests and projections should point to the canonical material rather
 
 Use `knowledge/guides/project-growth-compass.json` as the editorial compass for expansion. The current project-wide priorities are:
 
-1. Recover more exact primary-source attestations and chronology, especially where later theology depends on first appearance or role order.
+1. Recover more exact primary-source attestations and timeline, especially where later theology depends on first appearance or role order.
 2. Build a role-transition view using **subject × role × time × source × function × confidence** rather than forcing timeless identity labels.
 3. Treat major contradictions as first-class research/navigation objects with competing formulations, dates, source classes, reconciliation and unresolved remainder.
 4. Rank comparative religious and mythological parallels by **relation sequences and mismatches**, not isolated shared words.
-5. Develop a universal canonical-owner maturity test spanning definition, chronology, relations, provenance, counterevidence, reader answer, aliases, reachability and research frontier.
+5. Develop a universal canonical-owner maturity test spanning definition, timeline, relations, provenance, counterevidence, reader answer, aliases, reachability and research frontier.
 6. Continue using one relationship grammar across mythology and world systems while keeping domain-specific truth and evidence standards distinct.
-7. Generate reader journeys from canonical metadata where possible so story, theology, chronology, science, North/world and verification paths do not become manually duplicated mini-canons.
+7. Generate reader journeys from canonical metadata where possible so story, theology, timeline, science, North/world and verification paths do not become manually duplicated mini-canons.
 
 The hidden spine tying these priorities together is the **claim lifecycle**:
 
@@ -115,7 +115,7 @@ A strong work session should improve at least one step of that lifecycle for an 
 Prioritize existing rich layers before inventing new ones:
 
 - Potatoism dossiers, canon, cosmology, lexicon, concept registry, deep layers and research.
-- Tim Dooley chronology, thought archive, synthesis and cosmology.
+- Tim Dooley timeline, thought archive, synthesis and cosmology.
 - North Programme and European economic/system material.
 - Country records and enrichment, consolidating batch history into canonical country knowledge.
 - Religious foundations, comparative religion, belief, dimensions, sources and primary texts.

@@ -49,7 +49,7 @@ Every foundation can carry separate temporal markers:
 - state recognition or adoption
 - modern transformation
 
-This prevents a traditional sacred chronology from being silently converted into a historical fact, while also preventing historical reconstruction from erasing how a community understands its own origins.
+This prevents a traditional sacred timeline from being silently converted into a historical fact, while also preventing historical reconstruction from erasing how a community understands its own origins.
 
 ## Cross-cutting dimensions
 

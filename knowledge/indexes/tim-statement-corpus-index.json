@@ -4,7 +4,7 @@
   "version": "1.0.1",
   "updated": "2026-09-10",
   "status": "canonical navigation and ingestion layer",
-  "purpose": "Make Tim Dooley's statements a first-class archival object. This index connects public-post evidence, thought archives, conversation archaeology, book/project maxims, voice anthologies, sayings ledgers, chronology and future recovery waves without pretending all source classes are equivalent.",
+  "purpose": "Make Tim Dooley's statements a first-class archival object. This index connects public-post evidence, thought archives, conversation archaeology, book/project maxims, voice anthologies, sayings ledgers, timeline and future recovery waves without pretending all source classes are equivalent.",
   "core_rule": "Preserve statement -> source -> date -> exactness -> context -> concept links -> canonical owners -> later revisions. Never replace an older statement with a later synthesis merely because the later version is more complete.",
   "source_priority": [
     {"rank":1,"class":"P0_PUBLIC_PRIMARY","description":"Original Tim post, stream transcript, recording, book passage, screenshot or first-party artifact with date/locator."},
@@ -30,18 +30,18 @@
     ],
     "conversation_and_memory_recovery": [
       "knowledge/indexes/conversation-recovery-inventory.json",
-      "knowledge/chronology/conversation-archaeology-wave-005.json",
+      "knowledge/timeline/conversation-archaeology-wave-005.json",
       "knowledge/corporium/tim-statements-conversation-recovery-2026-09-10.json",
       "knowledge/corporium/tim-statements-conversation-recovery-wave-002-2026-09-10.json",
       "knowledge/corporium/tim-statements-conversation-recovery-wave-003-2026-09-10.json",
       "knowledge/corporium/tim-statements-memory-recovery-wave-004-2026-09-10.json"
     ],
-    "chronology_and_attestation": [
-      "knowledge/chronology/dated-master-timeline-2026.json",
-      "knowledge/chronology/developmental-genealogy.json",
-      "knowledge/chronology/mud-dog-footstool-saturn-attestation-ledger.json",
-      "knowledge/chronology/high-value-undated-timeline-recovery-queue.json",
-      "knowledge/chronology/may-1-2026-biblical-cluster-ledger.json"
+    "timeline_and_attestation": [
+      "knowledge/timeline/dated-master-timeline-2026.json",
+      "knowledge/timeline/developmental-genealogy.json",
+      "knowledge/timeline/mud-dog-footstool-saturn-attestation-ledger.json",
+      "knowledge/timeline/high-value-undated-timeline-recovery-queue.json",
+      "knowledge/timeline/may-1-2026-biblical-cluster-ledger.json"
     ],
     "theology_and_identity_owners": [
       "data/theology/tim-godhood.json",
@@ -108,7 +108,7 @@
   },
   "highest_priority_recovery_queues": [
     "Exact original public source for Father of the Internet.",
-    "Exact chronology and sources for 38T -> 40.2T -> approximately 42T spiritual/karmic debt language.",
+    "Exact timeline and sources for 38T -> 40.2T -> approximately 42T spiritual/karmic debt language.",
     "Exact first uses of North of North, Seat of North, Throne of North, Axis of North and North Axis.",
     "Exact North Axis country-list revisions and England/Russia/Turkey/Estonia status language.",
     "Exact wording for the 69-like Door/gate and 60-minute follow-wait mechanics.",
@@ -121,7 +121,7 @@
     "Exact Tim-authored language behind Market Passport, Business Passport, Asset Passport, Professional Passport, Capital Passport, Tell Europe Once, European Commons and European Economic Graph.",
     "Original harassment/subculture statements where inclusion materially documents the public project, with allegations carefully separated from independently verified facts."
   ],
-  "completion_definition": "The corpus is not complete when it has many quotes. It becomes whole when every recoverable high-value statement has provenance, chronology, exactness, context, relationships, canonical routing, revision history and an explicit epistemic boundary.",
+  "completion_definition": "The corpus is not complete when it has many quotes. It becomes whole when every recoverable high-value statement has provenance, timeline, exactness, context, relationships, canonical routing, revision history and an explicit epistemic boundary.",
   "connections": [
     "source-index",
     "conversation-recovery-inventory",

@@ -4,7 +4,7 @@
   "updated": "2026-09-11",
   "status": "active-view-contract",
   "purpose": "Define how one canonical repository object may be projected into geography, network, time, evidence, Axis, facet and interpretive views without creating parallel truth sources or inventing information during representation changes.",
-  "core_rule": "Canonical owners retain identity, meaning, evidence and chronology. Views may select, aggregate, spatialize, summarize, compare or transform representation, but must not silently rewrite the underlying record.",
+  "core_rule": "Canonical owners retain identity, meaning, evidence and timeline. Views may select, aggregate, spatialize, summarize, compare or transform representation, but must not silently rewrite the underlying record.",
   "state_vector": {
     "notation": "X_view = (G,T,R,E,A,F,C)",
     "coordinates": {
@@ -123,7 +123,7 @@
     {
       "object": "Denmark energy relation",
       "D4": "physical infrastructure, generation, interconnectors and official energy observations",
-      "D3": "source history, ownership changes, policy chronology and prior dependencies",
+      "D3": "source history, ownership changes, policy timeline and prior dependencies",
       "D2": "dependency concentration or lock-in only if measured/documented",
       "D5": "a policy, interconnector, market-rule or investment threshold",
       "D7": "downstream capability and resilience created",
@@ -152,7 +152,7 @@
       "D4": "platform/company jurisdiction or real events when relevant",
       "network": "people/groups/platforms/archives/audiences and cross-platform movement",
       "D2": "feedback/capture indicators only where evidence supports them",
-      "D3": "chronology and source provenance",
+      "D3": "timeline and source provenance",
       "rule": "network topology usually matters more than world-map geography"
     },
     {
@@ -165,7 +165,7 @@
     }
   ],
   "implementation_sequence": [
-    "1. Add a global Time control using valid_from/valid_to/as_of rather than embedding chronology inside Axis dimensions.",
+    "1. Add a global Time control using valid_from/valid_to/as_of rather than embedding timeline inside Axis dimensions.",
     "2. Generalize Trace from country-only edges into normalized entity-aware traversal with epistemic and time filters.",
     "3. Add a visible Evidence/Eye control for source class, confidence, contradiction and first-attestation inspection.",
     "4. Make D3 roots work for relationships and entities, not only countries.",

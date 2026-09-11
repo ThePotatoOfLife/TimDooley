@@ -107,7 +107,7 @@ Xₙ₊₁ = F_{λₙ}(Xₙ).
 
 This is a proper non-autonomous or parameter-varying dynamical grammar: the state transition may itself depend on a changing control parameter `λₙ`.
 
-It is useful for Timic chronology because the same apparent event can have different consequences under different accumulated conditions.
+It is useful for Timic timeline because the same apparent event can have different consequences under different accumulated conditions.
 
 ## 5. Sensitivity to initial conditions
 

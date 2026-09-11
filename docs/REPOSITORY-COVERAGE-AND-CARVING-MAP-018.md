@@ -157,7 +157,7 @@ D and E records can be valuable research leads, but they must not silently becom
 2. Ownership and control are much less developed than entity descriptions.
 3. Infrastructure needs asset-level records rather than sector summaries.
 4. Intelligence databases need individual system histories, legal bases and sharing edges.
-5. The internet branch needs a larger chronology of platform/community migrations.
+5. The internet branch needs a larger timeline of platform/community migrations.
 6. The event ledger needs to connect dates across otherwise separate branches.
 7. The religious branch needs more institutional property, demographic and economic data.
 8. The Standard Model branch can be expanded into experimental evidence and precision tests.

@@ -6,7 +6,7 @@ Stabilize the public Tim Dooley / Potato of Life site around durable subject own
 
 This design defines two interactive public programs and one site-wide ownership rule:
 
-1. `/chronology/` is the one canonical Timeline.
+1. `/timeline/` is the one canonical Timeline.
 2. `/traditions/bible/` is the one canonical Bible / Jesus ↔ Tim / Son study program.
 3. Every public subject has one canonical owner; duplicate treatments become redirects, subordinate links, or archive-only research.
 
@@ -41,7 +41,7 @@ Supporting files can be numerous. Public owners should be few.
 |---|---|---|
 | Tim Dooley | `/tim-dooley/` | Person, biography, public subject, major development |
 | Religion | `/religion/` | Introductory religious inquiry, God/Father/Son/Spirit questions, teasers into deeper tools |
-| Timeline | `/chronology/` | All temporal study and overlays |
+| Timeline | `/timeline/` | All temporal study and overlays |
 | Bible / Jesus comparison | `/traditions/bible/` | Deep interactive scripture, Jesus, Tim, Son, prophecy/foresight, parallel and counter-text study |
 | Philosophy | `/philosophy/` | Philosophy and Potatoist thought |
 | Science | `/science/` | Formal models, equations, status and tests |
@@ -55,7 +55,7 @@ Specialist research pages may remain when they own genuinely distinct material. 
 
 The normal public URL is:
 
-`/chronology/`
+`/timeline/`
 
 Reader navigation must never require a long serialized filter URL.
 
@@ -63,16 +63,16 @@ Reader navigation must never require a long serialized filter URL.
 
 Common views use a short `view` parameter:
 
-- `/chronology/?view=roadmap`
-- `/chronology/?view=bible`
-- `/chronology/?view=godhood`
-- `/chronology/?view=public`
-- `/chronology/?view=son`
-- `/chronology/?view=north`
-- `/chronology/?view=research`
-- `/chronology/?view=creative`
+- `/timeline/?view=roadmap`
+- `/timeline/?view=bible`
+- `/timeline/?view=godhood`
+- `/timeline/?view=public`
+- `/timeline/?view=son`
+- `/timeline/?view=north`
+- `/timeline/?view=research`
+- `/timeline/?view=creative`
 
-The default `/chronology/` behaves as the roadmap and must not add a query parameter.
+The default `/timeline/` behaves as the roadmap and must not add a query parameter.
 
 Named view definitions belong in the timeline data contract, not hardcoded button logic. `data/timeline-events.json` gains a top-level `views` registry. Each view declares its label and initial actor/layer/topic state. `app/timeline.js` renders the visible saved-view buttons from that registry.
 
@@ -332,11 +332,11 @@ Do not expose every filter permanently.
 
 ## Bible ↔ Timeline integration
 
-Every dated relation with a timeline counterpart links to its event in `/chronology/`.
+Every dated relation with a timeline counterpart links to its event in `/timeline/`.
 
-Bible views link to short timeline views, for example `/chronology/?view=bible`, not serialized `tl_*` queries.
+Bible views link to short timeline views, for example `/timeline/?view=bible`, not serialized `tl_*` queries.
 
-A relation with a known timeline event links to `/chronology/?view=bible&event=<id>`.
+A relation with a known timeline event links to `/timeline/?view=bible&event=<id>`.
 
 The Bible program explains **what/why**; Timeline explains **when**.
 
@@ -413,7 +413,7 @@ CI validates that one subject does not accidentally acquire multiple canonical o
 
 Tests verify behavior, not exact prose.
 
-- `/chronology/` loads with no required query string.
+- `/timeline/` loads with no required query string.
 - named views are read from the data registry and resolve to known state.
 - legacy `tl_*` state remains readable.
 - known legacy Bible state normalizes to `view=bible`.
@@ -467,7 +467,7 @@ This work is staged to reduce regression risk.
 
 A reader can:
 
-- open `/chronology/` and immediately recognize a timeline;
+- open `/timeline/` and immediately recognize a timeline;
 - toggle or pin several meaningful subjects without learning internal layer IDs;
 - copy an ordinary Timeline link that is short;
 - open `/traditions/bible/` and immediately study Jesus ↔ Tim / Son parallels;

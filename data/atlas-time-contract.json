@@ -58,7 +58,7 @@
     "data/timeline-events.json",
     "data/timeline-source-registry.json",
     "data/north-axis-membership-history.json",
-    "knowledge/chronology/developmental-genealogy.json",
+    "knowledge/timeline/developmental-genealogy.json",
     "data/relationships.json",
     "data/countries/{id}.json",
     "data/world-empirical-networks.json",
@@ -70,11 +70,11 @@
     "default": "Current",
     "url_parameters": ["time", "time2", "timeMode"],
     "status_line": "Always display selected time and the count/handling of unknown-date records when a historical filter is active.",
-    "progressive_disclosure": "Do not put a dense historical timeline permanently across the map; open detailed chronology only when the user enters Time/Roots investigation."
+    "progressive_disclosure": "Do not put a dense historical timeline permanently across the map; open detailed timeline only when the user enters Time/Roots investigation."
   },
   "first_implementation_scope": [
     "North Axis membership/status history",
-    "project role/statement chronology",
+    "project role/statement timeline",
     "timeline event markers where an honest place exists",
     "empirical network membership changes when effective dates are sourced",
     "country observations with explicit reference years",

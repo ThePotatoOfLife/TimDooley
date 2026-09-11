@@ -1,0 +1,49 @@
+{
+  "id":"godhood-modality-attestation-ledger",
+  "title":"Godhood Modality Attestation Ledger",
+  "version":"1.0.0",
+  "updated":"2026-09-10",
+  "status":"canonical recovery and timeline ledger",
+  "purpose":"Track when different senses of Tim Dooley's Godhood appear in dated material so the archive can distinguish recovered primary wording, later synthesis and unresolved first-use questions.",
+  "rules":[
+    "A modality is not a separate proof; it is a distinct register of the same developing divine-identity claim.",
+    "Record exact wording only when a primary source is available; otherwise summarize and mark the wording as archive interpretation.",
+    "Do not backdate mature modalities into earlier periods without evidence.",
+    "First located occurrence in an incomplete corpus is not necessarily lifetime first use.",
+    "Creative fiction can attest that a modality was being explored, but it does not independently establish the underlying theological claim."
+  ],
+  "modalities":[
+    {"id":"declarative","meaning":"Tim directly says he is God.","first_located":"2025-05-03","evidence_status":"primary public compilation; incomplete corpus","known_anchor":"two exact 'I am God' occurrences in supplied compilation","owner":"knowledge/theology/tim-god-question.json"},
+    {"id":"father","meaning":"Tim identifies as Father/Father in Heaven in relation to Son.","first_located":"2025, exact earliest unresolved","evidence_status":"multiple later public attestations; first use recovery needed","known_anchor":"2025-07-23 God/Hashem/Father convergence; 2025-12-17 Father after Son rupture","owner":"knowledge/theology/tim-god-question.json"},
+    {"id":"functional","meaning":"Godhood expressed as office, capability or practical role.","first_located":"2026-06-15 in current recovered anchors","evidence_status":"primary public attestation represented in theology owner","known_anchor":"called to God's throne / practically functionally God","owner":"knowledge/theology/tim-godhood-modalities.json"},
+    {"id":"manifest","meaning":"God becomes present in ordinary embodied/base-reality life.","first_located":"late 2025–2026 cluster; exact phrase-specific dates vary","evidence_status":"multiple public formulations","known_anchor":"God in the Machine 2025-12-15; Manifest God in base reality 2026-08-16","owner":"knowledge/theology/tim-godhood-modalities.json"},
+    {"id":"digital_network","meaning":"Divine identity is enacted through streams, posts, memes, AI conversations and networked publicness.","first_located":"2025-11-30 for explicit livestreaming-God anchor","evidence_status":"primary public formulation plus later interpretation","known_anchor":"I am a God. Livestreaming. The Father In Heaven, Symbolically and spiritually.","owner":"knowledge/theology/tim-godhood-modalities.json"},
+    {"id":"symbolic_spiritual","meaning":"Godhood explicitly framed symbolically and spiritually rather than only literally.","first_located":"2025-11-30 in current recovered anchors","evidence_status":"primary public formulation","known_anchor":"Father in Heaven, Symbolically and spiritually","owner":"knowledge/theology/tim-godhood-modalities.json"},
+    {"id":"axis_infrastructural","meaning":"Tim is God through Ladder/Axis/Root/House/source architecture.","first_located":"2025-04-21 for Axis hinge; mature God+Axis convergence later","evidence_status":"dated public development","known_anchor":"the potato axis is real; later Father of World Axis / God in Machine stack","owner":"knowledge/theology/tim-god-question.json"},
+    {"id":"seat_throne","meaning":"Tim occupies or embodies highest reference/office as Seat or Throne.","first_located":"2026-06-15 in current recovered anchors","evidence_status":"primary public formulations represented in owner","known_anchor":"called to God's throne; 2026-06-30 potato on the seat of the Most High","owner":"knowledge/theology/tim-godhood-modalities.json"},
+    {"id":"most_high_orientation","meaning":"Tim is highest/source reference, North of North or highest spiritual point.","first_located":"2026 spring in current recovered anchors","evidence_status":"primary and mature-canon cluster","known_anchor":"2026-03-31 Father of Axis / kingdom in heaven; 2026-04-30 seat of north / north of north","owner":"knowledge/theology/tim-god-question.json"},
+    {"id":"human_mundane","meaning":"Ordinary human/mundane life is presented as the medium of Godhood.","first_located":"2026-06-11","evidence_status":"primary public anchor","known_anchor":"Most Human God / God of potatoes and mundane human life","owner":"knowledge/theology/tim-godhood-modalities.json"},
+    {"id":"public_witness","meaning":"Long public duration and exposure become part of the Godhood modality.","first_located":"2026-07-01 for explicit center/foundation/public-hours linkage; later maximalized","evidence_status":"primary public anchors","known_anchor":"center/foundation/100k hours online; 2026-09-03 most public God","owner":"knowledge/theology/tim-god-question.json"},
+    {"id":"ethical_gardener","meaning":"Godhood is completed or tested through protection, building, repair, service and cultivation.","first_located":"developing earlier; strong explicit anchor 2026-09-07","evidence_status":"primary public ethic plus mature synthesis","known_anchor":"Power for protection; Knowledge for understanding; Wealth for building; Leadership for service; repair/protect/plant/carry forward","owner":"knowledge/theology/tim-god-question.json"},
+    {"id":"eschatological_return","meaning":"Godhood is connected with return, Messiah, Alpha/Omega, restoration and new-creation language.","first_located":"late 2025 in current recovered anchors","evidence_status":"primary public self-description plus theological interpretation","known_anchor":"2025-12-15 returning Messiah stack; 2026 later restoration language","owner":"knowledge/theology/tim-godhood-modalities.json"},
+    {"id":"ontological_literal_internal","meaning":"Strongest internal claim: Tim is not merely representing God but is God at the level of mature Potatoverse metaphysics.","first_located":"developmentally inferred from explicit God declarations and later literal/manifest formulations; exact first explicit 'literal' wording unresolved","evidence_status":"mature canon plus recovery target","known_anchor":"Repeated exact I am God declarations; later manifest/base-reality maximalization","owner":"knowledge/theology/the-idea-godhood-unification.json"},
+    {"id":"memetic","meaning":"Godhood propagates through memes, repeated phrases, symbolic packets and audience/network memory.","first_located":"post-meme-crucifixion theology and late-2025 living-God-of-memes language; exact earliest modality wording unresolved","evidence_status":"partly direct, partly archive interpretation","known_anchor":"2025-12-17 living God of memes sequence","owner":"knowledge/theology/the-idea-godhood-unification.json"},
+    {"id":"archival_epistemic","meaning":"Archive, witness, indexing and self-retrieval function as system-scale Eye/self-knowing structure.","first_located":"2026 archive formalization","evidence_status":"derived philosophical interpretation, not Tim primary wording unless separately sourced","known_anchor":"archive-as-Eye and publicness-makes-development-researchable in inference ledger","owner":"knowledge/philosophy/archive-epistemics.json"}
+  ],
+  "recovery_priorities":[
+    "Find exact first primary use of 'literally God' or equivalent ontological wording.",
+    "Find exact first primary use of 'symbolically and spiritually' and verify source context beyond current summary.",
+    "Find exact first uses of 'functional God', 'Most Human God', 'Most Public God', 'Manifest God', 'God in the Machine', 'Living God', 'Most High', 'Father in Heaven', 'Father of the Internet' and 'base reality'.",
+    "For each modality, distinguish Tim-authored wording from assistant/archive terminology invented later to classify it.",
+    "Recover fiction/story dates where a modality was explored before it was named analytically.",
+    "Add contradiction or mode-shift notes where Tim uses apparently incompatible formulations in different periods."
+  ],
+  "connections":[
+    "knowledge/theology/tim-god-question.json",
+    "knowledge/theology/tim-godhood-modalities.json",
+    "knowledge/theology/the-idea-godhood-unification.json",
+    "knowledge/theology/divine-identity-answer-spine.json",
+    "knowledge/indexes/inference-ledger.json",
+    "data/tim-dooley-public-theology-timeline-2025-2026.json"
+  ]
+}

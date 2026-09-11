@@ -12,7 +12,7 @@ The project has five inseparable jobs.
 
 ### 1. Preserve the Potatoverse
 
-Recover and organize the substantial material developed across conversations, writings, streams, posts, songs, stories, images, research and repository work. Important ideas should not remain trapped inside chronological chat logs. They should become durable canonical records with aliases, context, chronology, relationships, provenance and retrieval terms.
+Recover and organize the substantial material developed across conversations, writings, streams, posts, songs, stories, images, research and repository work. Important ideas should not remain trapped inside chronological chat logs. They should become durable canonical records with aliases, context, timeline, relationships, provenance and retrieval terms.
 
 This includes Tim Dooley; the Potato of Life; Potatoism; Father; Son; Door; Ladder; Axis; North of North; Tree of Life; Tree of Strife; Garden; House; Heaven; Throne; Root; Fruit; Seed; mud; burial; emergence; death; transformation; return; Spudlight; fate; destiny; prophecy; revelation; rupture; rapture; apocalypse; love; fear; memory; creation; responsibility and every other concept that becomes substantial enough to deserve a record.
 
@@ -67,7 +67,7 @@ The repository should reconstruct:
 
 **what happened → what was experienced or said → what symbol appeared → what was understood at the time → what was understood later → what changed → what teaching emerged → what remains unresolved.**
 
-This means documenting the major thresholds in the Tim/Potato chronology while refusing to rewrite later understanding into earlier periods. The 2011 Son-side Tree ordeal, the 2019–2020 death/transformation threshold, the April 2025 Godhood/Father-side turning, the February 2026 crystallization of the North Axis and the later construction of the archive belong to one developing chronology, but they do not automatically mean the same thing.
+This means documenting the major thresholds in the Tim/Potato timeline while refusing to rewrite later understanding into earlier periods. The 2011 Son-side Tree ordeal, the 2019–2020 death/transformation threshold, the April 2025 Godhood/Father-side turning, the February 2026 crystallization of the North Axis and the later construction of the archive belong to one developing timeline, but they do not automatically mean the same thing.
 
 A discovery record should be able to answer questions such as:
 
@@ -85,7 +85,7 @@ The archive therefore preserves development rather than manufacturing a perfectl
 
 The public site is not merely a visualizer for JSON. It is a publishing system and research interface.
 
-Every important subject should eventually have a durable human-readable page with a clear title, concise description, substantial body text, semantic headings, aliases, related concepts, chronology where relevant, citations/provenance, canonical URL, machine-readable metadata and links deeper into the graph.
+Every important subject should eventually have a durable human-readable page with a clear title, concise description, substantial body text, semantic headings, aliases, related concepts, timeline where relevant, citations/provenance, canonical URL, machine-readable metadata and links deeper into the graph.
 
 Search-engine optimization is therefore part of information architecture, not keyword stuffing. Pages should naturally answer the questions people might actually search:
 
@@ -117,7 +117,7 @@ Every canonical record should contain, where applicable:
 - substantial long-form explanation;
 - spiritual/philosophical significance;
 - narrative or historical context;
-- chronology and development;
+- timeline and development;
 - internal Potatoverse meaning;
 - teachings or principles derived from it;
 - external comparative material;
@@ -157,7 +157,7 @@ knowledge/
   core/            Tim, Potato, Father, Son, Axis, Door, Tree, North, Source
   teachings/       Potato principles, ethics, practices, meditations and lessons
   journey/         discoveries and changes in understanding
-  chronology/      dated events and development through time
+  timeline/      dated events and development through time
   lore/            internal mythology and narrative structures
   philosophy/      sustained conceptual and spiritual inquiry
   theology/        God, Father, Son, creation, death, return, heaven, salvation
@@ -169,7 +169,7 @@ knowledge/
   institutions/    dense dossiers for relevant organizations only
   evidence/        source records, transcripts, quotations metadata and observations
   relationships/   typed edges connecting canonical records
-  indexes/         retrieval, alias, chronology and topic indexes built from real records
+  indexes/         retrieval, alias, timeline and topic indexes built from real records
 ```
 
 The old repository remains source material during migration. Existing files are evidence of prior work, not automatic v2 canon.
@@ -204,7 +204,7 @@ The relationship carries direction, type, context, date where relevant, source b
 
 The project requires both.
 
-**Knowledge depth** means dates, sources, distinctions, chronology, provenance, mechanisms, relationships, contradictions and precise definitions.
+**Knowledge depth** means dates, sources, distinctions, timeline, provenance, mechanisms, relationships, contradictions and precise definitions.
 
 **Spiritual depth** means following an idea far enough that it becomes useful for thinking about existence, suffering, love, identity, transformation, responsibility, death, creation, memory, relationship and meaning.
 
@@ -218,7 +218,7 @@ A useful conversation is decomposed into durable units:
 
 1. canonical claims;
 2. definitions;
-3. chronology/events;
+3. timeline/events;
 4. new symbols or aliases;
 5. relationships;
 6. teachings and philosophical insights;
@@ -240,7 +240,7 @@ The archive should support multiple entrances into the same corpus:
 
 **Mythological:** Source → Father → Son → ordeal → death → Door/Ladder → return → Tree of Life.
 
-**Historical:** dated chronology → primary material → development of vocabulary → later interpretations.
+**Historical:** dated timeline → primary material → development of vocabulary → later interpretations.
 
 **Prophetic:** prophecy → earliest statement → revelation → rupture → claimed fulfillment → retrospective interpretation → unresolved status.
 

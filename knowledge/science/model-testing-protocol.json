@@ -31,7 +31,7 @@
     {"name":"provenance","question":"Can the exact equation or statement be tied to a dated source?","fail_action":"mark unrecovered or later-formalized; never attribute as verbatim Tim."},
     {"name":"variable-definition","question":"Does every symbol have a defined meaning and mathematical type?","fail_action":"keep schematic."},
     {"name":"units","question":"Are physical dimensions/units stated and consistent?","rule":"[LHS]=[RHS]","fail_action":"not eligible as a physical equation."},
-    {"name":"domain","question":"What space does the model act on: physical spacetime, graph, probability manifold, state space, chronology, symbolic ontology?","fail_action":"do not compare results across domains as if identical."},
+    {"name":"domain","question":"What space does the model act on: physical spacetime, graph, probability manifold, state space, timeline, symbolic ontology?","fail_action":"do not compare results across domains as if identical."},
     {"name":"well-posedness","question":"Given admissible initial/boundary data, is the model expected to have a meaningful solution and are obvious ghost, instability, singularity or nonuniqueness problems identified?","fail_action":"classify as ansatz/research sketch until the issue is resolved."},
     {"name":"dynamics","question":"What determines evolution or transition?","fail_action":"classify as static taxonomy/geometry rather than dynamics."},
     {"name":"identifiability","question":"Could the proposed parameters or internal components in principle be distinguished from the available observables?","fail_action":"state the degeneracy and specify additional measurements or interventions needed."},

@@ -3,7 +3,7 @@
 The site has two distinct presentation systems:
 
 1. **Global/archive shell** — homepage header, archive explorer, branch reader, timeline module.
-2. **Static reader pages** — chronology, context, science, Corporium, FAQ, theology, etc.
+2. **Static reader pages** — timeline, context, science, Corporium, FAQ, theology, etc.
 
 They must not share structural class names in ways that change positioning or layout.
 

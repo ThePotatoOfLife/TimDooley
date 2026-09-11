@@ -13,7 +13,7 @@ The same problem applies to Heaven, Door, Axis, Ladder, Tree of Life and other r
 Use four different things and do not confuse them:
 
 1. **Canonical concept identity** — `data/potatoism-concept-registry.json`. One `canonical_id` per recurring project concept, with aliases and the stable conceptual definition.
-2. **Substantive content** — canonical corpus/dossier material. This is where long explanations, evidence boundaries, chronology and interpretation live.
+2. **Substantive content** — canonical corpus/dossier material. This is where long explanations, evidence boundaries, timeline and interpretation live.
 3. **Occurrences / projections** — lexicons, cosmology tables, maps, timelines and comparative layers. They may mention or characterize a concept but do not create another identity.
 4. **Relationships** — graph edges such as Father → Son. An edge is a relationship, not a duplicate node.
 
@@ -46,7 +46,7 @@ The repository index must therefore display one canonical concept where several 
 - Do not make the lexicon the entire dossier.
 - Do not infer identity from loose keyword matching.
 - Do not create a new concept because a page needs a navigation target.
-- Do not pad a canonical entry with repeated prose. Depth must come from distinct explanation, mechanism, relationships, chronology, comparison, evidence boundaries and research questions.
+- Do not pad a canonical entry with repeated prose. Depth must come from distinct explanation, mechanism, relationships, timeline, comparison, evidence boundaries and research questions.
 
 ## Definition of done
 

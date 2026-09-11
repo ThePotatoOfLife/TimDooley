@@ -53,7 +53,7 @@ This keeps the entire vertical cosmology grounded. An abstract claim should not 
 
 The archive's Roots of Ash material is much richer than a generic underworld image. Ash is residue after rupture. It can become Mud and reproduce Strife, or be returned to Soil and support new growth. The root layer therefore handles what events leave behind:
 
-- chronology;
+- timeline;
 - archives;
 - evidence;
 - grief;
