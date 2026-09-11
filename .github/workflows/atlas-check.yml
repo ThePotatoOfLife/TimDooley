@@ -46,6 +46,8 @@ jobs:
         run: python scripts/validate_atlas_math_calibration.py
       - name: Validate 3D world atlas runtime
         run: python scripts/validate_world_map_3d.py
+      - name: Validate visible Atlas utility
+        run: python scripts/validate_world_map_visible_utility.py
       - name: Validate 3D relationship path finder
         run: python scripts/validate_world_map_pathfinder.py
       - name: Validate entity-aware Trace
