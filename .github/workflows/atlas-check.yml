@@ -85,6 +85,10 @@ jobs:
       # Mirror the public Pages build sequence before validating the built shell.
       - name: Build static site
         run: python scripts/build_site.py
+      - name: Build population and religion snapshot
+        env:
+          ATLAS_DEMOGRAPHY_OUT: _site/data/world-country-demography.json
+        run: python scripts/build_world_demography.py
       - name: Compile complete science catalog
         run: python scripts/build_science_catalog.py
       - name: Build search discovery layer
