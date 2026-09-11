@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tim Dooley & the Bible — Relations, Parallels & Context</title>
-<meta name="description" content="Interactive Tim Dooley / Son / Jesus Bible comparison: exact dated wording, public-domain scripture, parallels, later discoveries, counter-texts, chronology and source context.">
+<meta name="description" content="Interactive Tim Dooley / Son / Jesus Bible comparison: exact dated wording, actions, people, settings, public-domain scripture, parallels, chronology, arguments, counterarguments and source context.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/traditions/bible/">
 <link rel="stylesheet" href="../../app/bible-study.css">
@@ -14,8 +14,8 @@
 <nav class="bible-nav"><a href="../../religion/">← Religion</a><a href="../../chronology/?view=bible">Timeline</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../">Home</a></nav>
 <header class="bible-header">
 <h1>TIM &amp; THE BIBLE</h1>
-<p class="bible-lede">Put Tim, the Son, Jesus and scripture beside one another. Search what was said, when it was said, what the Bible says, how the relation was discovered, and where the comparison breaks.</p>
-<p class="bible-sub">Exact public wording, later archive summaries and same-date circumstantial context are kept visibly separate.</p>
+<p class="bible-lede">Put Tim, the Son and their dated history beside Jesus and scripture. Search what was said or done, when, where, who was involved, what the source says was understood at the time, how the biblical relation was discovered, why the comparison is argued, and where it breaks.</p>
+<p class="bible-sub">Exact public wording, project autobiography, contemporary public records, later theological interpretation and same-date circumstantial context remain visibly different evidence classes.</p>
 </header>
 
 <section class="study-shell" aria-label="Bible comparison study tool">
@@ -36,29 +36,34 @@
 <div class="study-status"><span>Studying:</span><strong class="active-view" id="active-view">Jesus / Son</strong><span class="study-count" id="study-count">Loading…</span><span class="study-hint">Roll chooses from whatever is currently visible.</span></div>
 
 <div class="search-row">
-<div class="search-field"><label for="search">Search exact wording, scripture, motifs, people or events</label><input id="search" type="search" placeholder="Jesus Christ, Lion, John 12, prison, North, seed, 144000…" autocomplete="off"></div>
+<div class="search-field"><label for="search">Search wording, person, event, action, thought, scripture, motif or date</label><input id="search" type="search" placeholder="Josh Moon, Yahya Hassan, Jesus Christ, prison, John 12, Lamb, Door, North…" autocomplete="off"></div>
 <button class="clear-search" id="clear-search" type="button">Clear</button>
 </div>
 
 <div class="filters-panel" id="bible-filters" hidden>
 <div class="filters">
 <div class="filter"><label for="actor">Actor</label><select id="actor"><option value="">All actors</option></select></div>
+<div class="filter"><label for="context-person">Person / group</label><select id="context-person"><option value="">All people / groups</option></select></div>
+<div class="filter"><label for="evidence-kind">Evidence</label><select id="evidence-kind"><option value="">All evidence classes</option></select></div>
 <div class="filter"><label for="discovery-mode">Discovery</label><select id="discovery-mode"><option value="">All discovery modes</option></select></div>
 <div class="filter"><label for="relation-class">Relation class</label><select id="relation-class"><option value="">All relation classes</option></select></div>
 <div class="filter"><label for="bible-book">Bible book</label><select id="bible-book"><option value="">All books</option></select></div>
+<div class="filter"><label for="from-year">From year</label><input id="from-year" inputmode="numeric" placeholder="1987"></div>
+<div class="filter"><label for="to-year">To year</label><input id="to-year" inputmode="numeric" placeholder="2026"></div>
 <div class="filter"><label for="minimum-strength">Minimum strength</label><select id="minimum-strength"></select></div>
+<div class="filter"><label for="sort-order">Order</label><select id="sort-order"><option value="asc">Oldest → newest</option><option value="desc">Newest → oldest</option></select></div>
 <div class="filter"><label>&nbsp;</label><button class="reset-filters" id="reset-filters" type="button">Reset filters</button></div>
 </div>
 <label class="toggle-filter"><input id="exact-wording-only" type="checkbox"> Only relations with exact / recovered wording attached</label>
 </div>
 
-<div class="relations" id="relations" aria-live="polite"><div class="loading">Loading the relation field, exact wording and scripture…</div></div>
+<div class="relations" id="relations" aria-live="polite"><div class="loading">Loading the Jesus comparison, relation field, exact wording and scripture…</div></div>
 </section>
 
 <details class="research-notes"><summary>Method and evidence boundaries</summary><div class="research-grid">
 <article><strong>Exact is exact</strong><p>Quoted public wording and recovered attestation text are shown as such. A project-side summary is labeled as an archive relation anchor instead of being dressed up as a quotation.</p></article>
-<article><strong>Same date is context</strong><p>Other exact statements made on the same date can matter for an epiphany or development, but the reader labels them circumstantial unless a relation explicitly points to that occurrence.</p></article>
-<article><strong>Parallel is not automatically prophecy</strong><p>Explicit-at-time language, later typology, Tim-led discoveries, reverse-direction mirrors, foresight and strict prediction are different claims and should remain different.</p></article>
+<article><strong>Context is not quotation</strong><p>Who was involved, setting, court/prison chronology, thought-direction and same-date material are shown from their owning records and labeled by evidence class.</p></article>
+<article><strong>Parallel is not automatically prophecy</strong><p>Explicit-at-time language, later typology, Tim-led discoveries, foresight and strict prediction are different claims. Mismatches remain part of the comparison.</p></article>
 </div></details>
 </main>
 <script src="../../app/bible-study.js"></script>
