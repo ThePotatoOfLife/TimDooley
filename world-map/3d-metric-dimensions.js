@@ -35,7 +35,7 @@ const ALL_D4_METRICS = {
   net_migration:'SM.POP.NETM',
   energy_dependence:'EG.IMP.CONS.ZS',
   fdi_inflow:'BX.KLT.DINV.WD.GD.ZS',
-  co2_per_capita:'EN.ATM.CO2E.PC',
+  renewable_electricity:'EG.ELC.RNEW.ZS',
 };
 const INDICATOR_TO_METRIC = Object.fromEntries(Object.entries(ALL_D4_METRICS).map(([id,indicator]) => [indicator,id]));
 
@@ -48,6 +48,7 @@ const D4_SURFACES = {
   urbanization: {label:'D4 · Urban population', indicator:ALL_D4_METRICS.urbanization, unit:'percent of population', scale:'linear', domain:[0,100], role:'settlement structure'},
   internet_penetration: {label:'D4 · Internet use', indicator:ALL_D4_METRICS.internet_penetration, unit:'percent of population', scale:'linear', domain:[0,100], role:'digital connectivity'},
   electricity_access: {label:'D4 · Electricity access', indicator:ALL_D4_METRICS.electricity_access, unit:'percent of population', scale:'linear', domain:[0,100], role:'basic energy access'},
+  renewable_electricity: {label:'D4 · Renewable electricity', indicator:ALL_D4_METRICS.renewable_electricity, unit:'percent of total electricity output', scale:'linear', domain:[0,100], role:'renewable generation share'},
 };
 
 let worldGraph = null;
