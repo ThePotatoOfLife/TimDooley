@@ -1,12 +1,14 @@
 {
   "id": "relationship-verticality-contract",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "updated": "2026-09-11",
   "status": "active relational projection contract",
   "purpose": "Define how one canonical relationship can appear across factual D4 reality and multiple D1-D11 analytical/project-symbolic projections without duplicating the relationship or turning uncertainty into fact.",
-  "core_rule": "A relationship does not belong to exactly one dimension. The canonical edge remains one edge; D1-D11 describe different states, functions, histories, thresholds, recurrences, generative effects, transmissions, integrations or project-symbolic readings of that edge.",
+  "core_rule": "A relationship does not belong to exactly one dimension. The canonical relation remains one relation; D1-D11 describe different states, functions, histories, thresholds, recurrences, generative effects, transmissions, integrations or project-symbolic readings of that relation.",
   "epistemic_firewall": "Material facts, legal instruments, financial balances, treaties, observed exchanges and sourced institutional relations remain empirical records. Spiritual height, heaven/hell proximity, karmic polarity, light, attraction and other Potatoverse readings remain optional project interpretation and may not overwrite empirical fields.",
   "visibility_rule": "Visibility is epistemic, not spiritual altitude. A hidden or invisible relation is not automatically deep, corrupt, malicious or D1-D3. Its visibility state records what can be known and how.",
+  "relation_order_rule": "Some relations are genuinely higher-order and involve three or more participants. Do not force alliances, coalitions, consortia, treaty regimes or other group interactions into independent pairwise edges when that would lose the collective rule. Use data/relational-hyperedge-state.schema.json and declare information loss for any pairwise projection.",
+  "observable_rule": "Capacity, realized flow, latency, scale, reversibility, resilience, causal status and other measurable coordinates are orthogonal to D1-D11 and are owned by data/relational-observable-dimensions.json. They may support an Axis interpretation but may not determine spiritual height by themselves.",
   "visibility_states": {
     "public": "The relation is openly documented and inspectable.",
     "partially_public": "The relation is established but important terms, counterparties or quantities are incomplete or redacted.",
@@ -116,16 +118,18 @@
     "firewall": "No US public-debt value may be added to, converted into, or displayed as project-symbolic karmic debt."
   },
   "implementation_guidance": {
-    "edge_storage": "Extend relational-edge-state records with visibility, bond, flow and vertical_projection while keeping empirical evidence and project interpretation separate.",
-    "map_behavior": "Selecting an edge should eventually expose its D4 facts first and then let Axis navigation reveal other projections of the same edge.",
-    "trace_behavior": "Trace should be able to filter by relationship family, visibility/evidence class, flow kind, direction, time and selected D-role.",
-    "visual_behavior": "Use arrows/width/animation only when direction, amount/rate and time semantics are defined. Use dashed/faded styling for inferred/alleged relations rather than pretending precision.",
-    "metric_behavior": "Never collapse reciprocity, institutionalization, asymmetry, recurrence, closure and generativity into one universal relation score."
+    "edge_storage": "Pairwise relations use relational-edge-state; genuine three-or-more-party relations use relational-hyperedge-state. Both keep empirical evidence and project interpretation separate.",
+    "map_behavior": "Selecting a relation should eventually expose its D4 facts and orthogonal observables first, then let Axis navigation reveal other projections of the same relation.",
+    "trace_behavior": "Trace should be able to filter by relationship family, visibility/evidence class, flow kind, direction, time, relation order and selected D-role.",
+    "visual_behavior": "Use arrows/width/animation only when direction, amount/rate and time semantics are defined. Capacity and realized flow may use separate channels. Use dashed/faded styling for inferred/alleged relations rather than pretending precision.",
+    "metric_behavior": "Never collapse reciprocity, institutionalization, asymmetry, recurrence, closure, capacity, resilience and generativity into one universal relation score."
   },
   "connections": [
     "docs/KINGDOM-ATLAS.md",
     "data/relationship-axis-projection-matrix.json",
     "data/relational-edge-state.schema.json",
+    "data/relational-hyperedge-state.schema.json",
+    "data/relational-observable-dimensions.json",
     "data/axis-flow-contract.json",
     "data/axis-operators.json",
     "data/blueprints/finance-debt-blueprint.json",
