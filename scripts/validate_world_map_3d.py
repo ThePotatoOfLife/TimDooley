@@ -83,7 +83,7 @@ def main() -> int:
 
     fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"','src="./3d-ui.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/3d.html",errors)
     fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Progressive UI","declareDormant('Evidence'","declareDormant('Fields'","declareDormant('Networks'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
-    fail_if_missing(selection_ui,("atlasSelectionDock","__potatoAtlasLayerRegistry","potato-atlas-selection-change","Module orbit · advanced","Connections","clearCountrySelection"),"world-map/3d-selection-ui.js",errors)
+    fail_if_missing(selection_ui,("atlasSelectionDock","__potatoAtlasLayerRegistry","potato-atlas-selection-change","Module orbit · advanced","Relations","clearCountrySelection"),"world-map/3d-selection-ui.js",errors)
     fail_if_missing(ui,("function setPanel","function setFocus","panel-collapsed","ui-focus","atlas:panel-open","atlas:focus-mode","axisFieldView","empiricalNetworkView","axisDepthNavigator","axisCompactToggle","MutationObserver","potato-atlas-module-ready","__potatoAtlasAttachBasemap","__potatoAtlasUI"),"world-map/3d-ui.js",errors)
     fail_if_missing(time_js,("atlas-time-contract.json","north-axis-membership-history.json","timeMode","changed_between","searchParams.set('timeMode'","atlas-time-change","unknownDatePolicy","No exact dated project-field snapshot is safe to apply automatically","Current project Fields and empirical Networks are not automatically rewritten as historical layers","__potatoAtlasTime"),"world-map/3d-time.js",errors)
     fail_if_missing(fields,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current project-field snapshot hidden in historical mode"),"world-map/3d-fields.js",errors)
@@ -158,7 +158,7 @@ def main() -> int:
     print(f"Curated relation types: {len(relation_types)}")
     print(f"Referenced country/territory codes: {len(referenced)}")
     print("Trace contract: breadth-first · 1–3 hops · cycle guarded · capped")
-    print("UI contract: map-first · grouped controls · contextual inspector · opt-in Axis · focus mode")
+    print("UI contract: map-first · World/Relations/Time/Axis semantic navigation · contextual inspector")
     print("Time contract: Current / As-of / Compare-dates · URL persisted · current-only overlays suppressed historically")
     print("Eye-Time contract: observation years are checked against requested historical view")
     print("Boot contract: local snapshot · core-first · advanced overlays dormant until requested · deployment-versioned module chain")
