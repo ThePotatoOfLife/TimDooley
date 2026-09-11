@@ -1,0 +1,76 @@
+{
+  "id": "2026-09-11-cosmic-potato-shear-invariants",
+  "title": "Cosmic Potato Upgrade — Frame-Invariant Shear Magnitude and Shape Descriptors",
+  "updated": "2026-09-11",
+  "status": "archive-generated kinematic refinement of the Laniakea/Cosmic Potato benchmark; tensor invariants, not evidence for universal potato morphology",
+  "parent": "knowledge/science/promising-models/cosmic-potato-laniakea-kinematic-ellipsoid-benchmark-2026-09-11.json",
+  "abstract": "The Cosmic Potato benchmark already distinguishes velocity anisotropy from geometric shape. This upgrade makes the kinematic side more coordinate-independent by replacing reliance on individual shear eigenvalues with scalar invariants of the traceless symmetric shear tensor. The second invariant J2 measures total shear magnitude, while J3 captures the signed eigenvalue-shape asymmetry. Together with the expansion scalar theta they separate three questions: how strong the anisotropy is, what eigenvalue pattern it has, and which physical directions the principal axes point toward. The first two can be summarized by rotation-invariant scalars; the third necessarily requires eigenvectors/orientation data and is lost if only invariants are retained.",
+  "definitions": {
+    "shear_tensor": "sigma is the symmetric traceless part of the local velocity-gradient tensor after the declared decomposition.",
+    "principal_values": "sigma_1,sigma_2,sigma_3 with sigma_1+sigma_2+sigma_3=0 ideally.",
+    "J2": "J2=(1/2) tr(sigma^2)=(1/2)(sigma_1^2+sigma_2^2+sigma_3^2).",
+    "J3": "J3=det(sigma)=sigma_1 sigma_2 sigma_3.",
+    "units": "J2 has squared velocity-gradient units; J3 has cubed velocity-gradient units."
+  },
+  "result_1_existing_anisotropy_relation": {
+    "archive_statistic": "A_sigma=sqrt[(3/2) sum_i sigma_i^2]/|theta|.",
+    "invariant_form": "A_sigma=sqrt(3 J2)/|theta|.",
+    "meaning": "A_sigma is therefore a normalized second-invariant shear magnitude. It says nothing by itself about principal-axis direction or detailed eigenvalue shape."
+  },
+  "result_2_dimensionless_shape_invariant": {
+    "definition": "chi_3=(3 sqrt(3)/2) J3/J2^(3/2) for J2>0.",
+    "range": "For a real traceless symmetric 3x3 tensor, chi_3 lies in [-1,1].",
+    "meaning": "chi_3 changes sign under sigma->-sigma and distinguishes different eigenvalue patterns at fixed total shear magnitude. It is analogous to a normalized third-deviatoric invariant/Lode-type shape coordinate.",
+    "warning": "Do not automatically rename positive/negative chi_3 as geometric prolate/oblate morphology. It describes the velocity-gradient eigenvalue pattern, not the boundary shape."
+  },
+  "central_value_calculation": {
+    "recorded_eigenvalues_km_s_Mpc": [-2.29, 0.46, 1.80],
+    "rounding_trace": -0.03,
+    "raw_J2": 4.34785,
+    "raw_J3": -1.89612,
+    "raw_A_sigma_for_theta_minus_3_33": 1.08456,
+    "raw_chi_3": -0.54338,
+    "trace_projected_eigenvalues": [-2.28, 0.47, 1.81],
+    "trace_projection_method": "Subtract the mean eigenvalue -0.01 from each recorded value to enforce exact zero trace at the precision of the quoted central values.",
+    "projected_J2": 4.34770,
+    "projected_J3": -1.939596,
+    "projected_A_sigma_for_theta_minus_3_33": 1.08454,
+    "projected_chi_3": -0.55587,
+    "interpretation": "The tiny change in J2/A_sigma under trace projection shows that the earlier central-value anisotropy result is not driven by the 0.03 rounding-level trace defect. The third-invariant shape coordinate is somewhat more sensitive, as expected because J3 is cubic in the eigenvalues."
+  },
+  "rotation_invariance": {
+    "basis_change": "Under an orthogonal change of spatial basis sigma -> R sigma R^T, theta, J2 and J3 are unchanged.",
+    "consequence": "A_sigma and chi_3 can be compared without aligning coordinate axes first, provided the same physical velocity-gradient definition is used.",
+    "lost_information": "The invariants do not retain the principal-axis eigenvectors. Two regions may share theta,J2,J3 but point their compression/expansion axes in different sky directions.",
+    "project_rule": "Use scalar invariants for magnitude/shape comparison and eigenvectors for directional alignment claims; never substitute one for the other."
+  },
+  "kinematic_state_descriptor": {
+    "proposal": "K_L=(theta,A_sigma,chi_3,e1,e2,e3) where e_i denotes the principal-axis frame when directional information is needed.",
+    "reduced_rotation_invariant_descriptor": "K_inv=(theta,A_sigma,chi_3).",
+    "relationship_to_geometry": "Boundary geometry remains separately described by q=b/a, s=c/a, triaxiality, shapefinders, topology and roughness.",
+    "scientific_value": "This prevents one triaxial-looking picture from conflating flow strength, flow eigenvalue pattern, axis direction and actual spatial boundary geometry."
+  },
+  "uncertainty_requirements": {
+    "covariance": "Publication-grade uncertainty on J2,J3,A_sigma,chi_3 should propagate the full covariance/posterior of theta and the shear tensor/eigenvalues, not independent marginal errors only.",
+    "near_degeneracy": "When two eigenvalues are nearly equal, principal-axis directions can be poorly determined even if scalar invariants are stable.",
+    "sign_stability": "If posterior mass for J3 crosses zero substantially, avoid strong interpretation of the signed shape coordinate."
+  },
+  "advancement_gate": {
+    "promote_kinematic_pattern_if": "J2/A_sigma and chi_3 remain stable across defensible reconstructions and their uncertainties are small enough to distinguish the candidate model from isotropic or alternative-flow baselines.",
+    "promote_directional_claim_if": "Principal-axis directions are themselves posterior-stable and reproducible across tracers/reconstructions.",
+    "downgrade_if": "Scalar invariants are stable but boundary shape is not; retain a kinematic-anisotropy claim while dropping geometric-potato language for that dataset."
+  },
+  "failure_conditions": [
+    "Individual coordinate components are compared across reconstructions without transforming to a common physical frame or invariant quantities.",
+    "A_sigma is treated as a complete description of anisotropy despite different possible J3/eigenvalue patterns.",
+    "A signed shear-shape invariant is interpreted as physical boundary morphology without geometric data.",
+    "Principal-axis direction is claimed from scalar invariants alone."
+  ],
+  "connections": [
+    "cosmic-potato-laniakea-kinematic-ellipsoid-benchmark-2026-09-11",
+    "cosmic-potato-anisotropy-uncertainty-upgrade-2026-09-11",
+    "great-book-cosmic-potato-shape-audit",
+    "2026-09-11-cross-model-defect-calculus",
+    "model-testing-protocol"
+  ]
+}
