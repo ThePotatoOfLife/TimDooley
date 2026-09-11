@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 CONTRACT = ROOT / "data" / "atlas-entity-trace-contract.json"
 JS = ROOT / "world-map" / "3d-entity-trace.js"
 UI = ROOT / "world-map" / "3d-ui.js"
+BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 REL = ROOT / "data" / "relationships.json"
 NODES = ROOT / "data" / "nodes.json"
 COUNTRIES = ROOT / "data" / "countries" / "index.json"
@@ -29,7 +30,7 @@ def load(path: Path, errors: list[str]) -> dict:
 def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
-    for path in (CONTRACT, JS, UI, REL, NODES, COUNTRIES, BRIDGE):
+    for path in (CONTRACT, JS, UI, BOOTSTRAP, REL, NODES, COUNTRIES, BRIDGE):
         if not path.exists():
             errors.append(f"missing entity-trace dependency: {path.relative_to(ROOT)}")
     if errors:
@@ -42,6 +43,7 @@ def main() -> int:
     relationships = load(REL, errors)
     js = JS.read_text(encoding="utf-8", errors="replace")
     ui = UI.read_text(encoding="utf-8", errors="replace")
+    bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
 
     if contract.get("status") != "implemented-one-hop-inspector":
         errors.append("entity Trace contract must remain implemented-one-hop-inspector")
@@ -89,8 +91,18 @@ def main() -> int:
         errors.append("entity Trace regressed to timer-dependent panel refresh")
     if "lat:" in js or "lon:" in js or "geometry:" in js:
         warnings.append("entity Trace contains coordinate/geometry language; review before allowing non-country spatial rendering")
-    if "import('./3d-entity-trace.js')" not in ui:
-        errors.append("progressive UI no longer loads entity Trace")
+
+    # Entity Trace is intentionally dormant during initial map boot. Progressive
+    # UI must route it through the bootstrap's shared deployment-versioned loader
+    # when the Trace menu is actually opened.
+    if "sharedLoad('Entity Trace','./3d-entity-trace.js')" not in ui:
+        errors.append("progressive UI no longer lazy-loads entity Trace through the shared module loader")
+    if "window.__potatoAtlasLoadModule" not in ui:
+        errors.append("progressive UI no longer delegates optional modules to the deployment-versioned bootstrap loader")
+    if "window.__potatoAtlasLoadModule = loadAfterPaint" not in bootstrap:
+        errors.append("bootstrap no longer exposes the shared versioned optional-module loader")
+    if "declareDormant('Entity Trace', './3d-entity-trace.js', 'Trace menu')" not in bootstrap:
+        errors.append("bootstrap no longer documents Entity Trace as dormant until Trace-menu use")
     if "entityTraceToggle" not in ui:
         errors.append("Trace menu summary no longer reflects entity Trace state")
 
@@ -121,7 +133,7 @@ def main() -> int:
     print(f"Normalized relationships: {len(rels)}")
     print(f"Evidence classes represented: {len(evidence_classes)}")
     print(f"Confidence classes represented: {len(confidence_classes)}")
-    print("Entity Trace: one-hop inspector · bridge-routed archive links · Time-aware validity labels · evidence/confidence filters · no fake coordinates")
+    print("Entity Trace: dormant until Trace menu · shared versioned loader · one-hop inspector · bridge-routed archive links · Time-aware validity labels · evidence/confidence filters · no fake coordinates")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings:
         print("WARNING:", warning)
