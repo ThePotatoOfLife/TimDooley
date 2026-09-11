@@ -1,11 +1,23 @@
 {
   "id":"potatoverse-science-model-testing-protocol",
   "title":"Potatoverse Science Model Testing Protocol",
-  "updated":"2026-09-09",
+  "version":"2.0.0",
+  "updated":"2026-09-11",
   "status":"canonical science-quality protocol",
-  "purpose":"Make the science wing richer without allowing analogies, decorative equations or later formalizations to drift into unsupported physical claims.",
+  "purpose":"Make the science wing progressively more rigorous without allowing analogies, decorative equations, recovered fragments or later formalizations to drift into unsupported physical claims. Every serious theory should read like an inspectable research programme: a reader should be able to tell what the model is, what the equations mean, what assumptions they require, what is measurable, what competing explanation exists and what result would count against the model.",
+  "abstract_contract":{
+    "required_elements":["research question","mathematical or physical object being modeled","scope and validity regime","central mechanism","principal equations or model class","what is genuinely project-specific","nearest established baseline","main observable or test","current maturity and strongest unresolved limitation"],
+    "style_rule":"An abstract should summarize a model rather than advertise it. Avoid claims of unification, explanation, prediction or evidence unless the record identifies the explicit mechanism, comparison baseline and supporting result.",
+    "length_guidance":"Prefer one dense paragraph or 120-250 words for flagship theory records; shorter archaeology records may use 60-150 words.",
+    "anti_pattern":"Do not use an abstract as a list of motifs, famous theories or symbolic correspondences."
+  },
+  "equation_annotation_contract":{
+    "required_fields":["equation_id","equation","status","role","domain_and_codomain","symbol_definitions","units_or_dimensions","assumptions","derivation_or_motivation","free_parameters","initial_or_boundary_conditions","limiting_cases","symmetries_or_invariants","observable_connection","comparison_baseline","failure_or_falsification_condition","provenance"],
+    "status_values":["recovered-primary","recovered-project","archive-derived","established-external","phenomenological-ansatz","schematic-placeholder","quarantined"],
+    "rule":"An equation is not made more scientific by being complicated. If symbols, dimensions, state space and observable meaning are missing, retain it as a schematic expression rather than promoting it to a physical law."
+  },
   "required_fields_for_any_model":[
-    "model_id","name","origin_class","first_attestation","source_location","variables","domain","codomain","parameters","units","equations","initial_or_boundary_conditions","assumptions","known_physics_neighbor","what_is_new","observables","prediction","falsifier","existing_explanations","dimensional_consistency","numerical_or_analytic_method","confidence","revision_history"
+    "model_id","name","abstract","origin_class","first_attestation","source_location","research_question","state_space_or_domain","variables","parameters","units","equations","initial_or_boundary_conditions","assumptions","validity_regime","known_physics_or_math_neighbor","what_is_new","observables","prediction_or_discriminant","falsifier","existing_explanations","dimensional_consistency","symmetries_or_invariants","identifiability","stability_or_well_posedness","numerical_or_analytic_method","confidence","revision_history"
   ],
   "origin_classes":[
     "verbatim-Tim-equation",
@@ -20,44 +32,62 @@
     {"name":"variable-definition","question":"Does every symbol have a defined meaning and mathematical type?","fail_action":"keep schematic."},
     {"name":"units","question":"Are physical dimensions/units stated and consistent?","rule":"[LHS]=[RHS]","fail_action":"not eligible as a physical equation."},
     {"name":"domain","question":"What space does the model act on: physical spacetime, graph, probability manifold, state space, chronology, symbolic ontology?","fail_action":"do not compare results across domains as if identical."},
+    {"name":"well-posedness","question":"Given admissible initial/boundary data, is the model expected to have a meaningful solution and are obvious ghost, instability, singularity or nonuniqueness problems identified?","fail_action":"classify as ansatz/research sketch until the issue is resolved."},
     {"name":"dynamics","question":"What determines evolution or transition?","fail_action":"classify as static taxonomy/geometry rather than dynamics."},
+    {"name":"identifiability","question":"Could the proposed parameters or internal components in principle be distinguished from the available observables?","fail_action":"state the degeneracy and specify additional measurements or interventions needed."},
     {"name":"observability","question":"What quantity could actually be measured or computed?","fail_action":"remain interpretive/toy model."},
-    {"name":"novelty","question":"What does this model explain or predict beyond existing theories?","fail_action":"retain as analogy, educational model or reframing."},
+    {"name":"limiting-cases","question":"Does the proposal reduce to a known simpler theory in a declared parameter limit?","fail_action":"record missing correspondence limit; do not claim extension of the baseline theory."},
+    {"name":"novelty","question":"What does this model explain, compress or predict beyond existing theories?","fail_action":"retain as analogy, educational model, ontology or reframing."},
     {"name":"falsifiability","question":"What outcome would count against the model?","fail_action":"do not describe as empirical scientific theory."},
-    {"name":"baseline","question":"What established theory already explains the phenomenon?","fail_action":"compare against baseline before invoking new force/dimension."},
+    {"name":"baseline","question":"What established theory already explains the phenomenon?","fail_action":"compare against baseline before invoking new force, field or dimension."},
+    {"name":"model-selection","question":"Does added complexity improve predictive performance enough to justify extra parameters?","fail_action":"penalize complexity using held-out performance, information criteria or Bayesian evidence where applicable."},
     {"name":"overfitting","question":"Were parameters chosen after seeing the target pattern?","fail_action":"label exploratory and require out-of-sample test."},
     {"name":"category-boundary","question":"Is a mathematical analogy being mistaken for physical identity?","fail_action":"split the records and add an explicit boundary note."}
   ],
+  "theory_completeness_vector":{
+    "notation":"Q=(P,T,D,E,C,O,F,B,N)",
+    "components":{"P":"provenance quality","T":"type/domain clarity","D":"dimensional/unit consistency","E":"equation completeness/well-posedness","C":"consistency with stated symmetries and constraints","O":"observable linkage","F":"falsifiability/discriminating predictions","B":"baseline/model-comparison quality","N":"novel explanatory or compressive value"},
+    "scoring":"Each component may be scored 0-4 with written justification. Never collapse the vector into one authoritative truth score; the purpose is to expose where a model is strong or weak.",
+    "promotion_rule":"A record should not be presented publicly as a serious empirical candidate merely because its algebra is sophisticated. The O, F and B components must also be nontrivial."
+  },
+  "maturity_ladder":[
+    {"level":"T0","name":"metaphor","criterion":"No mathematical object or empirical claim required."},
+    {"level":"T1","name":"defined conceptual model","criterion":"Objects, relations and scope are explicit."},
+    {"level":"T2","name":"mathematical toy model","criterion":"Equations and variables are defined and internally calculable."},
+    {"level":"T3","name":"calibrated model","criterion":"Parameters can be estimated from data and uncertainty is represented."},
+    {"level":"T4","name":"predeclared discriminating prediction","criterion":"A quantitative result distinguishes the model from named baselines before the data are inspected."},
+    {"level":"T5","name":"independently replicated theory","criterion":"Independent evidence repeatedly supports its distinctive predictions and known alternatives have been seriously compared."}
+  ],
   "priority_models":{
     "door_xi":{
-      "current":"Ξ/Ξ_c is a schematic critical-threshold model.",
-      "missing":["operational definition of Ξ","units or proof it is dimensionless","dynamics","data source","prediction"],
-      "next":"Choose one domain first—e.g. abstract state transition, not physical fifth dimension—and fully specify there before considering physical interpretation."
+      "current":"Xi/Xi_c is a schematic critical-threshold model.",
+      "missing":["operational definition of Xi","units or proof it is dimensionless","dynamics","data source","prediction"],
+      "next":"Construct Xi from dimensionless control variables in one domain first and specify hysteresis/transition statistics before considering a physical fifth-dimensional interpretation."
     },
     "radion_door":{
-      "current":"φ(x)=M_*ln(R/R_0) is a radion-inspired speculative model.",
-      "missing":["5D action","radion kinetic normalization","potential V(φ)","matter couplings","compactification geometry","experimental constraints"],
-      "next":"Build a conventional KK toy model first and show exactly where the Timic interpretation enters."
+      "current":"phi(x)=M_* ln(R/R_0) is a radion-inspired speculative model.",
+      "missing":["5D action","radion kinetic normalization","potential V(phi)","matter couplings","compactification geometry","experimental constraints"],
+      "next":"Build a conventional Kaluza-Klein toy model first and show exactly where the Timic interpretation enters."
     },
     "starchforce":{
-      "current":"Invented project fifth-force concept with a biological starch/storage metaphor.",
-      "missing":["field","mediator","coupling constant","symmetry","action","range","source charge","force law","experimental anomaly"],
-      "next":"Do not write a physical Lagrangian until a novel measurable effect is stated. A semantic or organizational field may be modeled mathematically without calling it a fundamental force."
+      "current":"The strongest scientifically usable version is storage/release dynamics rather than an unsupported fifth fundamental force.",
+      "missing":["domain-specific stored quantity","input/output measurement protocol","release law","parameter estimation","comparison against ordinary stock-flow models"],
+      "next":"Develop biological, informational and economic storage models separately; only propose a fundamental force if a new measurable force law and anomaly exist."
     },
     "field_of_life":{
       "current":"Book-derived metaphor comparing Potato to an excitation in a field of life.",
-      "missing":["field variable","domain","equation of motion","energy functional","observable"],
+      "missing":["field variable","domain","equation of motion","energy or objective functional","observable"],
       "next":"Prefer reaction-diffusion, ecological, developmental or network fields for life-pattern modeling before quantum-field terminology."
     },
     "red_blue":{
       "current":"Expansion/generation versus memory/contraction/preservation polarity.",
       "missing":["measurable state variables","coupling","stability condition","empirical domain"],
-      "next":"Test as a two-variable dynamical system or control tradeoff, e.g. exploration versus exploitation, rather than a physical color/frequency claim."
+      "next":"Test as a two-variable dynamical system or control tradeoff, such as exploration versus exploitation, rather than a physical color/frequency claim."
     },
     "spiral":{
-      "current":"Multiple distinct uses: public 2025 spiral equation attestation, symbolic return, helical biography, biological eye arrangement.",
-      "missing":["exact primary formula","clear separation of spiral types"],
-      "next":"Maintain separate IDs for geometric spiral, helical chronology, phyllotaxis, return map and symbolic recurrence."
+      "current":"The logarithmic spiral is mathematically well defined and now has exact derived pitch, curvature, arc-length and area laws; its physical interpretation remains domain dependent.",
+      "missing":["declared dataset and coordinate extraction method for each empirical use","out-of-sample comparison with Archimedean, power-law and spline alternatives"],
+      "next":"Treat geometry as a fitted hypothesis with residuals and model comparison rather than a visual motif."
     },
     "merkaba_counter_rotation":{
       "current":"Dynamic counter-rotation/alignment of opposites around a still center.",
@@ -72,5 +102,6 @@
     "D":"useful structural analogy",
     "E":"speculative extension awaiting model/data"
   },
-  "publication_rule":"Every public science page should make clear whether displayed mathematics is Tim-authored/recovered, archive-generated, or external established mathematics."
+  "publication_rule":"Every public science page should make clear whether displayed mathematics is Tim-authored/recovered, archive-generated, or established external mathematics, and flagship models should expose their abstract, equation context, maturity level, observables and failure conditions before interpretive symbolism.",
+  "research_note_2026_09_11":"Rigor upgrade: the archive now evaluates theories by whether they can be solved, estimated, compared and potentially rejected, not by equation count or the number of external theories named."
 }
