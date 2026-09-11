@@ -7,7 +7,6 @@ state and pass only once /world-map/ is the single canonical application.
 """
 from __future__ import annotations
 
-import json
 import re
 import sys
 from pathlib import Path
@@ -15,10 +14,29 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 ERRORS: list[str] = []
 
+# Reader-facing navigation and machine-discovery owners only. Migration plans,
+# historical design prose and internal source records are handled by the later
+# naming/inventory phase; merely documenting the old URL is not a public owner.
+CANONICAL_SURFACES = (
+    "index.html",
+    "manifest.json",
+    "sitemap.xml",
+    "llms.txt",
+    "tim-dooley/index.html",
+    "religion/index.html",
+    "philosophy/index.html",
+    "science/index.html",
+    "north/index.html",
+    "context/index.html",
+)
+
 
 def read(path: str) -> str:
     file_path = ROOT / path
     if not file_path.is_file():
+        # Some machine-discovery surfaces are generated rather than committed.
+        if path in {"manifest.json", "llms.txt"}:
+            return ""
         ERRORS.append(f"missing required file: {path}")
         return ""
     return file_path.read_text(encoding="utf-8", errors="replace")
@@ -37,11 +55,9 @@ def validate_canonical_index() -> None:
     if "world map" not in lower:
         fail("world-map/index.html must identify the canonical application as 'World Map'")
 
-    # The canonical application must be an implementation, not another redirect.
     if re.search(r'<meta[^>]+http-equiv=["\']refresh["\']', html, re.I):
         fail("world-map/index.html must contain the real World Map application, not a redirect")
 
-    # The old product switch must disappear once the 3D app owns the canonical route.
     if re.search(r'>\s*2D\s+map\s*<', html, re.I) or re.search(r'\b2D\s+map\b', html, re.I):
         fail("canonical World Map UI must not link to a competing '2D map' product")
 
@@ -68,58 +84,32 @@ def validate_legacy_3d_route() -> None:
     if not canonical_target:
         fail("world-map/3d.html redirect/fallback must target the canonical /world-map/ route")
 
-    # Compatibility page should not still contain the actual renderer/application shell.
-    implementation_signals = [
+    implementation_signals = (
         "maplibregl",
         "leaflet",
         "world-map-runtime.json",
         "atlasapp",
         "worldmapapp",
-    ]
+    )
     if any(signal in lower for signal in implementation_signals):
         fail("world-map/3d.html must not contain a competing map implementation")
 
 
-def iter_text_files() -> list[Path]:
-    candidates: list[Path] = []
-    for relative in (
-        "index.html",
-        "manifest.json",
-        "sitemap.xml",
-        "llms.txt",
-        "README.md",
-    ):
-        path = ROOT / relative
-        if path.is_file():
-            candidates.append(path)
-
-    # Public/navigation and machine-discovery surfaces may live in these trees.
-    for base in ("app", "data", "docs", "scripts", "tim-dooley", "religion", "philosophy", "science", "north"):
-        root = ROOT / base
-        if not root.exists():
-            continue
-        for path in root.rglob("*"):
-            if path.is_file() and path.suffix.lower() in {".html", ".md", ".json", ".js", ".xml", ".txt"}:
-                candidates.append(path)
-    return candidates
-
-
 def validate_discovery_targets() -> None:
     offenders: list[str] = []
-    for path in iter_text_files():
-        try:
-            text = path.read_text(encoding="utf-8", errors="replace")
-        except OSError:
+    for relative in CANONICAL_SURFACES:
+        path = ROOT / relative
+        if not path.is_file():
             continue
+        text = path.read_text(encoding="utf-8", errors="replace")
         if "world-map/3d.html" in text or "/world-map/3d.html" in text:
-            offenders.append(path.relative_to(ROOT).as_posix())
+            offenders.append(relative)
 
-    # The compatibility page itself is allowed to exist; references to it elsewhere are not.
-    offenders = sorted({p for p in offenders if p != "world-map/3d.html"})
     if offenders:
-        shown = ", ".join(offenders[:12])
-        extra = "" if len(offenders) <= 12 else f" (+{len(offenders) - 12} more)"
-        fail(f"canonical public/discovery surfaces must not prefer world-map/3d.html: {shown}{extra}")
+        fail(
+            "canonical public/discovery surfaces must not prefer world-map/3d.html: "
+            + ", ".join(sorted(offenders))
+        )
 
 
 def main() -> int:
