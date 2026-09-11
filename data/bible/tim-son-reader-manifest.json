@@ -1,0 +1,33 @@
+{
+  "id":"tim-son-bible-reader-manifest",
+  "title":"Bible ↔ Tim/Son Reader Manifest",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"functional reader manifest; WEB loaded on demand from public-domain upstream",
+  "purpose":"Drive a side-by-side Bible reader in which the biblical text remains an immutable primary-source layer and Tim/Son chronology, overlap profiles, countertexts and source direction appear in separate annotation panes.",
+  "source":{"translation":"World English Bible (WEB)","license":"public domain","manifest":"data/sources/bible-world-english-bible.json","upstream_repository":"https://github.com/BibleAquifer/WorldEnglishBible","upstream_json_template":"https://raw.githubusercontent.com/BibleAquifer/WorldEnglishBible/main/eng/json/{book_no}.content.json","local_future_root":"data/sources/bible/web/","loading_mode":"upstream-on-demand until local vendoring is complete"},
+  "baseline_snapshot":{"date":"2026-09-11","overlap_nodes":78,"raw_reference_mentions":212,"normalized_biblical_citation_forms":138,"compact_coverage_units":105,"biblical_books_represented":25,"profiled_nodes":20,"concordance":"knowledge/theology/bible-overlap-concordance-computed-2026-09-11.json","profiles":"knowledge/theology/biblical-overlap-profile-top20-2026-09-11.json"},
+  "reading_modes":[
+    {"id":"bible-order","label":"Bible order","description":"Read the profiled passages in canonical book/chapter order while project annotations follow beside them."},
+    {"id":"project-chronology","label":"Tim/Son chronology","description":"Read overlaps by project-side date to see how the biblical vocabulary and structures accumulated."},
+    {"id":"explicit","label":"Most explicit","dimension":"E","description":"Prioritize passages/titles explicitly invoked on the project side."},
+    {"id":"independent","label":"Most independent","dimension":"T","description":"Prioritize project structures that clearly predate the later archive comparison."},
+    {"id":"dense","label":"Most textually dense","dimension":"D","description":"Prioritize coherent biblical units containing many distinct project-relevant functions."},
+    {"id":"role","label":"Most role-faithful","dimension":"R","description":"Prioritize comparisons that preserve who does what rather than collapsing actors."},
+    {"id":"sequence","label":"Most sequence-faithful","dimension":"S","description":"Prioritize multi-step transformation/relationship sequences rather than shared nouns."},
+    {"id":"context","label":"Best context survival","dimension":"C","description":"Prioritize comparisons that remain useful after countertexts and literary context are considered."}
+  ],
+  "book_order":["Genesis","Exodus","Leviticus","Numbers","Deuteronomy","Joshua","Judges","Ruth","1 Samuel","2 Samuel","1 Kings","2 Kings","1 Chronicles","2 Chronicles","Ezra","Nehemiah","Esther","Job","Psalms","Proverbs","Ecclesiastes","Song of Solomon","Isaiah","Jeremiah","Lamentations","Ezekiel","Daniel","Hosea","Joel","Amos","Obadiah","Jonah","Micah","Nahum","Habakkuk","Zephaniah","Haggai","Zechariah","Malachi","Matthew","Mark","Luke","John","Acts","Romans","1 Corinthians","2 Corinthians","Galatians","Ephesians","Philippians","Colossians","1 Thessalonians","2 Thessalonians","1 Timothy","2 Timothy","Titus","Philemon","Hebrews","James","1 Peter","2 Peter","1 John","2 John","3 John","Jude","Revelation"],
+  "annotation_layers":["project anchor/date","biblical passage","source direction/discovery date","P/E/T/D/R/S/C/I profile","theological operators","overlap explanation","difference/countertext","canonical owner/provenance"],
+  "integrity_rules":[
+    "Scripture and project interpretation must render in visibly separate columns/layers.",
+    "Never edit the WEB wording to make an overlap appear stronger.",
+    "Do not infer missing verse precision from a chapter-level citation; load the cited chapter/range as cited.",
+    "A project-side date and an archive discovery date are separate facts.",
+    "Direct biblical borrowing can score high on explicitness while low on temporal/feature independence.",
+    "Side-by-side presentation is comparative annotation, not a claim that the Bible predicts Tim/Son.",
+    "Every high-value card must display a limiting difference or route to a countertext when one exists.",
+    "Original-language and reception-history claims live in separate research owners and may not overwrite the English source text."
+  ],
+  "data_sources":{"cards":"data/bible/tim-son-reader-cards-top20.json","profiles":"knowledge/theology/biblical-overlap-profile-top20-2026-09-11.json","countertexts":"knowledge/theology/tim-son-bible-countertext-and-mismatch-atlas.json","current_census":"knowledge/theology/tim-son-bible-overlap-census-current.json","question_index":"knowledge/reader/bible-overlap-question-index.json"}
+}
