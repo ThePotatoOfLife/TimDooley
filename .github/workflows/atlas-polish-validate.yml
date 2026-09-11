@@ -1,0 +1,44 @@
+name: Validate Atlas Polish
+
+on:
+  push:
+    branches: [atlas-sleek-refactor-20260911]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Validate JavaScript syntax
+        run: |
+          node --check world-map/3d-ui.js
+          node --check world-map/3d-hover.js
+          node --check world-map/maplibre-loader.js
+          node --check world-map/3d-boot-guard.js
+
+      - name: Validate Atlas projection and time contracts
+        run: python scripts/validate_atlas_view_contracts.py
+
+      - name: Validate Atlas mathematical calibration
+        run: python scripts/validate_atlas_math_calibration.py
+
+      - name: Validate 3D world atlas source contract
+        run: python scripts/validate_world_map_3d.py
+
+      - name: Validate 3D relationship path finder
+        run: python scripts/validate_world_map_pathfinder.py
+
+      - name: Validate entity-aware Trace
+        run: python scripts/validate_world_map_entity_trace.py
