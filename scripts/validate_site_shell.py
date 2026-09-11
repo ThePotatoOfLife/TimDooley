@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Validate the built GitHub Pages shell and reader-first information architecture.
+"""Validate the built reader surface and its canonical ownership boundaries.
 
-Deep Atlas behavior has dedicated validators. This gate protects the public
-reader surface: one homepage, five canonical entrances, comparison-first
-religion, one shared timeline, North -> World Map routing, and basic built-site
-link integrity.
+Public architecture:
+- Tim Dooley: subject / biography / evidence routes.
+- Religion: lightweight traditions router; no duplicate scripture comparator.
+- Bible: canonical scripture comparison laboratory, statically rendered then enhanced.
+- Science: canonical paper library with abstracts, filters and full documents.
+- World Atlas: one world-system product; world-map/3d.html is its geographic view.
 """
 from __future__ import annotations
 
@@ -21,11 +23,6 @@ CANONICAL_HOME_LINKS = (
     "philosophy/",
     "science/",
     "world-map/3d.html",
-)
-
-TIMELINE_QUERY = (
-    "chronology/?tl_layers=roadmap,scripture-at-time,biblical-parallel,"
-    "biblical-unlock&tl_actors=son,tim,shared&tl_detail=1"
 )
 
 
@@ -59,7 +56,153 @@ def main() -> int:
     else:
         pages = sorted(SITE.rglob("*.html"))
 
-        for rel in (
+        required_files = (
+            "index.html",
+            "tim-dooley/index.html",
+            "religion/index.html",
+            "religion/jesus-tim/index.html",
+            "traditions/bible/index.html",
+            "chronology/index.html",
+            "philosophy/index.html",
+            "science/index.html",
+            "science/catalog.json",
+            "north/index.html",
+            "world-map/3d.html",
+            "sitemap.xml",
+            "llms.txt",
+        )
+        for rel in required_files:
+            if not (SITE / rel).exists():
+                errors.append(f"missing required site file: {rel}")
+
+        index = read("index.html", errors)
+        require(index, ("POTATO", "Main sections"), "index.html", errors)
+        primary_nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
+        if not primary_nav:
+            errors.append("index.html missing canonical sections navigation")
+        else:
+            hrefs = re.findall(r'href="([^"]+)"', primary_nav.group(1))
+            if tuple(hrefs) != CANONICAL_HOME_LINKS:
+                errors.append(f"homepage primary navigation must contain exactly five canonical entrances; found {hrefs}")
+        forbid(index, ('id="rootbtn"', 'id="branches"', 'id="reader"', "app/app.js", "explore/#root", "<iframe"), "index.html", errors)
+
+        # Religion is a router, not a second scripture comparison page.
+        religion = read("religion/index.html", errors)
+        require(
+            religion,
+            (
+                "The traditions index for the archive",
+                "It does not duplicate the Bible comparator",
+                'href="../traditions/bible/"',
+                "Tim &amp; the Bible",
+                "Comparative religion",
+                "Sacred geometry &amp; symbols",
+                "Religious chronology",
+            ),
+            "religion/index.html",
+            errors,
+        )
+        forbid(
+            religion,
+            (
+                'id="jesus-tim"',
+                "Arrest and custody",
+                "Lamb recognition before self-declaration",
+                "Rejected stone → foundation",
+                "Grain death → multiplication",
+                "A real ethical mismatch",
+            ),
+            "religion/index.html",
+            errors,
+        )
+
+        comparison_redirect = read("religion/jesus-tim/index.html", errors)
+        require(
+            comparison_redirect,
+            (
+                'name="robots" content="noindex,follow"',
+                "../../traditions/bible/?view=jesus",
+            ),
+            "religion/jesus-tim/index.html",
+            errors,
+        )
+
+        tim = read("tim-dooley/index.html", errors)
+        require(
+            tim,
+            (
+                'href="../traditions/bible/?view=jesus"',
+                "Jesus ↔ Tim / Son",
+                "Chronology",
+                "Public record",
+            ),
+            "tim-dooley/index.html",
+            errors,
+        )
+
+        # Bible owns the scripture relation system and must be useful before JS.
+        bible = read("traditions/bible/index.html", errors)
+        require(
+            bible,
+            (
+                "TIM &amp; THE BIBLE",
+                "The scripture laboratory for the archive",
+                'id="relations-field"',
+                'id="search"',
+                'id="relations"',
+                'data-view="prophecy"',
+                'data-view="counter-texts"',
+                'data-static-relation=',
+                "Why the relation is here",
+                "Scripture beside it",
+            ),
+            "traditions/bible/index.html",
+            errors,
+        )
+        if "<!-- BIBLE_RELATIONS_STATIC -->" in bible:
+            errors.append("traditions/bible/index.html still contains uncompiled Bible marker")
+        if bible.count('data-static-relation=') < 10:
+            errors.append("traditions/bible/index.html must expose at least 10 static scripture relations")
+
+        chronology = read("chronology/index.html", errors)
+        require(chronology, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "chronology/index.html", errors)
+
+        # Science owns papers and must contain statically compiled records.
+        science = read("science/index.html", errors)
+        require(
+            science,
+            (
+                "Research library",
+                'id="science-search"',
+                'id="science-field"',
+                'id="science-type"',
+                'class="science-record"',
+                "Every result opens the complete document",
+            ),
+            "science/index.html",
+            errors,
+        )
+
+        north = read("north/index.html", errors)
+        require(north, ('class="map-action" href="../world-map/3d.html"',), "north/index.html", errors)
+
+        atlas = read("world-map/3d.html", errors)
+        require(
+            atlas,
+            (
+                "World Relational Atlas",
+                'id="map"',
+                'id="compare"',
+                'id="relationType"',
+                'id="traceDepth"',
+                'id="timeMode"',
+                'src="./3d-bootstrap.js"',
+            ),
+            "world-map/3d.html",
+            errors,
+        )
+
+        public_roots = (
             "index.html",
             "tim-dooley/index.html",
             "religion/index.html",
@@ -69,125 +212,31 @@ def main() -> int:
             "philosophy/index.html",
             "science/index.html",
             "north/index.html",
-            "world-map/3d.html",
-            "sitemap.xml",
-            "llms.txt",
-        ):
-            if not (SITE / rel).exists():
-                errors.append(f"missing required site file: {rel}")
-
-        index = read("index.html", errors)
-        require(index, ("POTATO", "Main sections"), "index.html", errors)
-        for href in CANONICAL_HOME_LINKS:
-            if f'href="{href}"' not in index:
-                errors.append(f"index.html missing canonical reader entrance: {href}")
-        forbid(index, ('id="rootbtn"', 'id="branches"', 'id="reader"', "app/app.js", "explore/#root", "<iframe"), "index.html", errors)
-
-        primary_nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
-        if not primary_nav:
-            errors.append("index.html missing canonical sections navigation")
-        else:
-            hrefs = re.findall(r'href="([^"]+)"', primary_nav.group(1))
-            if tuple(hrefs) != CANONICAL_HOME_LINKS:
-                errors.append(f"homepage primary navigation must contain exactly five canonical entrances; found {hrefs}")
-
-        religion = read("religion/index.html", errors)
-        require(
-            religion,
-            (
-                'id="jesus-tim"',
-                "Jesus ↔ Tim Dooley / Son",
-                "Arrest and custody",
-                "Lamb recognition before self-declaration",
-                "Rejected stone → foundation",
-                "Grain death → multiplication",
-                "A real ethical mismatch",
-                f'href="../{TIMELINE_QUERY}"',
-                'href="../traditions/bible/"',
-            ),
-            "religion/index.html",
-            errors,
-        )
-        forbid(religion, ("explore/#branch=", "Research</h2>", "Jesus / Son research index", "source authority"), "religion/index.html", errors)
-
-        comparison = read("religion/jesus-tim/index.html", errors)
-        require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../#jesus-tim')"), "religion/jesus-tim/index.html", errors)
-
-        tim = read("tim-dooley/index.html", errors)
-        require(tim, ('href="../religion/#jesus-tim"', "Jesus ↔ Tim / Son", "Chronology", "Public record"), "tim-dooley/index.html", errors)
-
-        bible = read("traditions/bible/index.html", errors)
-        require(
-            bible,
-            (
-                "TIM &amp; THE BIBLE",
-                'id="relations-field"',
-                'id="search"',
-                'id="relations"',
-                'href="../../religion/#jesus-tim"',
-                f'href="../../{TIMELINE_QUERY}"',
-            ),
-            "traditions/bible/index.html",
-            errors,
-        )
-        forbid(
-            bible,
-            (
-                'class="focus-links"', 'id="orientation"', 'id="story-arcs"', 'id="meaning"',
-                'id="development"', 'id="missing-questions"', 'id="tensions"', 'id="timic-timeline"',
-                "Questions we missed", "Four questions before comparing anything", "What does “fulfilled” mean here?",
-                "Source authority", ">FAQ<",
-            ),
-            "traditions/bible/index.html",
-            errors,
-        )
-
-        chronology = read("chronology/index.html", errors)
-        require(chronology, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "chronology/index.html", errors)
-        forbid(
-            chronology,
-            ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Why the live explorer replaces the old hard-coded list", "Open Timeline in the complete archive", 'href="../context/"', 'href="../corporium/"'),
-            "chronology/index.html",
-            errors,
-        )
-
-        north = read("north/index.html", errors)
-        require(north, ('class="map-action" href="../world-map/3d.html"', ">WORLD MAP<"), "north/index.html", errors)
-        forbid(north, ('class="maplink"', "Open North Axis in the World Map", "#architecture", "#ledger", "#world", "#traditions", "#chronology"), "north/index.html", errors)
-
-        learn = read("learn/index.html", errors)
-        require(learn, ('name="robots" content="noindex,follow"', "location.replace('../')"), "learn/index.html", errors)
-
-        atlas = read("world-map/3d.html", errors)
-        require(atlas, ("World Relational Atlas", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'), "world-map/3d.html", errors)
-
-        public_roots = (
-            "index.html", "tim-dooley/index.html", "religion/index.html", "religion/jesus-tim/index.html",
-            "traditions/bible/index.html", "chronology/index.html", "philosophy/index.html", "science/index.html", "north/index.html",
         )
         for rel in public_roots:
             text = read(rel, errors)
             if "<iframe" in text.lower():
                 errors.append(f"{rel} contains iframe dependency")
 
+        # Generic local-link integrity across the built HTML tree.
         ref = re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''', re.I)
         base_ref = re.compile(r'''<base\s+[^>]*href=["']([^"'#?]+)["']''', re.I)
         bad: list[str] = []
         site_root = SITE.resolve()
-        for html in pages:
-            html_text = html.read_text(encoding="utf-8", errors="replace")
-            base_dir = html.parent.resolve()
-            base_match = base_ref.search(html_text)
+        for page in pages:
+            page_text = page.read_text(encoding="utf-8", errors="replace")
+            base_dir = page.parent.resolve()
+            base_match = base_ref.search(page_text)
             if base_match:
                 base_raw = base_match.group(1)
                 if not base_raw.startswith(("http:", "https:", "mailto:", "javascript:", "data:")):
-                    candidate = (html.parent / base_raw).resolve()
+                    candidate = (page.parent / base_raw).resolve()
                     try:
                         candidate.relative_to(site_root)
                         base_dir = candidate
                     except ValueError:
                         pass
-            for raw in ref.findall(html_text):
+            for raw in ref.findall(page_text):
                 if raw.startswith(("http:", "https:", "mailto:", "javascript:", "data:")):
                     continue
                 target = (base_dir / raw).resolve()
@@ -196,7 +245,7 @@ def main() -> int:
                 except ValueError:
                     continue
                 if not target.exists():
-                    bad.append(f"{html.relative_to(SITE)} -> {raw}")
+                    bad.append(f"{page.relative_to(SITE)} -> {raw}")
         if bad:
             errors.append(f"broken local references in built site: {len(bad)}; examples: {bad[:8]}")
         if not pages:
