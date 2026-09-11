@@ -1,32 +1,32 @@
 {
   "id":"body-symbolism-map",
   "title":"Potatoverse Body Symbolism Map",
-  "version":"3.0.0",
-  "updated":"2026-09-09",
+  "version":"3.1.0",
+  "updated":"2026-09-11",
   "status":"project symbolic anatomy with explicit scientific and historical boundaries",
   "purpose":"Consolidate Heart, Thalamus, Pineal, Spine, CSF, Eye, House, Temple, Vessel, Ladder and serpent/flow correspondences while distinguishing literal anatomy, history of ideas, comparative religion and Potatoverse symbolism.",
   "scientific_boundary":"Literal anatomy and neuroscience remain separate from Potatoverse symbolism. Thalamus=House, Pineal=Door/Eye, Spine=Ladder and CSF=Spirit are project mappings, not established biological identities.",
-  "historical_upgrade":"The Thalamus=House and Pineal=Door/Eye mappings now have genuine historical neighbors: thalamos literally means inner/bridal chamber and Galen used house/chamber language for the brain region; Descartes historically treated the pineal as a single central seat/interface of soul and 'animal spirits.' These precedents strengthen the comparative architecture without proving the Potatoverse anatomy.",
+  "historical_upgrade":"The Thalamus=House and Pineal=Door/Eye mappings have genuine historical neighbors: thalamos means inner/bridal chamber and histories of neuroanatomy preserve house/chamber language; Descartes treated the pineal as a single central seat/interface of soul and animal spirits. These precedents strengthen comparative architecture without proving Potatoverse anatomy.",
   "symbols":[
     {"body_region":"Heart","project_role":"emotional center / grain-seat in some Son strata","function":"feeling, attachment, care, grief, courage and affective orientation","importance":"Heart remains distinct from thalamic House and pineal Door."},
     {"body_region":"Thalamus","project_role":"Father / House / inner rooms / upper integrative center","function":"symbolic House architecture, central interior and differentiated rooms","historical_note":"Greek thalamos means an inner chamber and commonly bridal chamber. Histories of neuroanatomy note Galen's comparison of the brain to a Greek house, with the thalamic region named as chamber-like interior.","science_note":"The thalamus is paired and heterogeneous, with multiple nuclei and major cortical/subcortical relay and integration roles; the House/Father mapping is symbolic."},
     {"body_region":"Third ventricle / central chamber region","project_role":"inner void / Temple chamber / shared interior space","function":"space between the paired thalami and near the pineal; useful as a symbolic interior corridor rather than a 'God cavity' claim","science_note":"The third ventricle is a real CSF-filled cavity. Sacred-chamber language is project symbolism."},
-    {"body_region":"Pineal gland","project_role":"Son / Single Eye / Door / present-facing threshold","function":"timing, transition, illumination symbolism and midline interface","historical_note":"Descartes treated the pineal as the principal seat of soul/common sense because he believed it was single and centrally placed, with animal spirits flowing around it; later occult traditions connected pineal and third-eye symbolism.","science_note":"The pineal is an endocrine organ regulating melatonin/circadian timing. Descartes's physiology and occult third-eye identifications are historical ideas, not current neuroscience."},
+    {"body_region":"Pineal gland","project_role":"Son / Single Eye / Door / present-facing threshold","function":"timing, transition, illumination symbolism and midline interface","historical_note":"Descartes treated the pineal as the principal seat of soul/common sense because he believed it was single and centrally placed, with animal spirits flowing around it; later occult traditions connected pineal and third-eye symbolism.","science_note":"The pineal is an endocrine organ whose melatonin secretion is organized by circadian/light-dark timing. Descartes's physiology and occult third-eye identifications are historical ideas, not current neuroscience.","wave_009_upgrade":"The strongest scientific neighbor for Pineal-as-Door is temporal/phase gating: a biological system can change responsiveness with circadian phase. This does not make the pineal a literal metaphysical aperture."},
     {"body_region":"Spine","project_role":"Axis / Ladder / rod","function":"vertical continuity, ordered ascent/descent and embodied support","science_note":"The vertebral column provides support/protection and movement; 33-symbolism is not proof of 33 spiritual dimensions."},
     {"body_region":"CSF","project_role":"Spirit / river / moving continuity","function":"flow metaphor linking ventricles, spinal canal and brain-space","science_note":"CSF has real physiological functions in buoyancy, homeostasis and circulation; spiritual use is metaphorical."},
     {"body_region":"Eye","project_role":"perception / discernment / integration / evaluation","function":"symbolic self-observation and model-updating","science_note":"Ordinary vision, pineal symbolism and abstract Eye remain distinct."},
     {"body_region":"Body / Temple","project_role":"embodied world / structured sacred container","function":"holds differentiated rooms, thresholds, vertical pathways and flows","science_note":"Temple/House comparisons are religious-symbolic analogies."},
-    {"body_region":"Whole embodied vessel","project_role":"ship / chariot / carrier of center","function":"local body carries House/center through changing environments while embedded in Plane","importance":"House can be stable architecture while Vessel moves."
-    }
+    {"body_region":"Whole embodied vessel","project_role":"ship / chariot / carrier of center","function":"local body carries House/center through changing environments while embedded in Plane","importance":"House can be stable architecture while Vessel moves."}
   ],
   "architectural_distinctions":{
     "house":"inner differentiated dwelling/source-container; thalamus is its strongest body analogue",
     "temple":"larger sacred architecture framing House, chamber, Door and flows",
     "door":"interface/transition; pineal/Son is one later symbolic mapping",
+    "eye":"observation/discernment; may be adjacent to Door without performing the same function",
     "vessel":"carrier/embodiment remaining local while relation to Axis/Heaven changes",
     "ship_chariot":"dynamic Vessel; center/House can move through Plane without becoming terrain",
     "axis":"vertical relational coordinate through embodied architecture",
-    "rule":"House, Temple, Door, chamber and Vessel are nested but nonidentical."
+    "rule":"House, Temple, Door, Eye, chamber and Vessel are nested or adjacent but nonidentical."
   },
   "vertical_potato_body_overlay":{
     "upper":"Thalamus/House maps most naturally to the upper inner-source side: chamber, containment, distributed rooms and integrative interior.",
@@ -42,6 +42,14 @@
     "spirit":"movement/communication between levels rather than a third static organ",
     "door_view":"The project can say 'Father's House seen through the Door of the Son' as a symbolic relation: House is interior content/structure, Son/Door is the interface through which it becomes accessible/present.",
     "boundary":"This is theological-symbolic architecture, not a literal visual pathway through the pineal to the thalamus."
+  },
+  "pineal_temporal_gate_upgrade":{
+    "motivation":"Wave 009 separates Eye/observation from Door/transition and asks what scientifically real pineal property best resembles a gate.",
+    "simple_phase":"theta(t)=omega_c t+phi_0 mod 2pi",
+    "toy_gate":"G_time(t)=1 when theta(t) lies in allowed phase interval W_theta, otherwise 0; a smooth periodic response can replace the hard gate when appropriate.",
+    "interpretation":"A timed signal can have different effects at different biological phases. This is a temporal-gating comparator, not a claim of 5D access or metaphysical vision.",
+    "relation_to_eye":"Eye = measurement/discernment; Pineal/Door comparator = timing/transition. Their symbolic overlap is preserved while their scientific functions remain separate.",
+    "owner":"knowledge/science/door-window-screen-aperture-transition-model.json"
   },
   "serpent_spirit_axis":{
     "biblical_neighbor":"Numbers 21 + John 3 connect serpent, lifting, gaze, healing and Son-of-Man typology.",
@@ -65,7 +73,7 @@
     "spine":"physical vertical scaffold and protective canal",
     "33":"common vertebral-count convention used symbolically as rod/Ladder; fused elements and counting nuances remain real anatomy rather than numerology",
     "five_spinal_centers":"five main spinal chakra groupings in the user's developed model belong to the 33-vertebrae ascent layer; higher Eye/Crown/Spudlight remain above the spinal five",
-    "door_sequence":"Ladder can be represented as ordered Gates: X_(k+1)=D_k(X_k;Ξ_k)."
+    "door_sequence":"Ladder can be represented as ordered Gates: X_(k+1)=D_k(X_k;Xi_k)."
   },
   "relational_model":{
     "heart_brain":"Emotion and integrative/perceptual processing are distinct but interacting functions.",
@@ -74,16 +82,17 @@
     "temple_house":"Temple frames sacred architecture; House contains rooms/presence.",
     "breath_flow":"Breath and CSF keep geometry dynamic rather than static.",
     "body_world":"Body is local Vessel in Plane; Axis relation can change without body disappearing from world.",
-    "inner_outer":"Thalamus/House is especially useful for inner-domain symbolism; Pineal/Son for the threshold toward outward presence/manifestation."
+    "inner_outer":"Thalamus/House is especially useful for inner-domain symbolism; Pineal/Son for threshold toward outward presence/manifestation."
   },
   "research_questions":[
     "Recover exact first primary Tim source for Thalamus=Father's House.",
     "Recover exact first Pineal=Son/Door statement.",
     "Separate historical pineal-third-eye transmission from modern retrospective claims.",
+    "Test whether temporal-gating language clarifies Pineal symbolism without importing metaphysical claims into physiology.",
     "Map thalamic paired anatomy and third-ventricle topology only where scientifically useful, without turning resemblance into proof.",
     "Trace serpent/central-channel comparisons with mismatch-first methodology.",
     "Keep Sistine neuroanatomy hypotheses in an explicit disputed/interpretive class."
   ],
-  "source_records":["knowledge/body/body-science-context-atlas.json","knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json","knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json","knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","knowledge/core/vertical-potato-mountain-plane-atlas.json","knowledge/core/root-system.json","2026-master-framework.json"],
+  "source_records":["knowledge/body/body-science-context-atlas.json","knowledge/traditions/vesica-mandorla-sun-moon-esoteric-atlas.json","knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json","knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","knowledge/core/vertical-potato-mountain-plane-atlas.json","knowledge/core/root-system.json","knowledge/core/door-embodiments-census-and-operator-atlas.json","knowledge/science/door-window-screen-aperture-transition-model.json","2026-master-framework.json"],
   "connections":["BODY","vesica-mandorla-sun-moon-esoteric-atlas","father","son","door","axis","House","Temple","Vessel","Spine","CSF","Heart","Pineal","Thalamus","serpent","Sistine Chapel"]
 }
