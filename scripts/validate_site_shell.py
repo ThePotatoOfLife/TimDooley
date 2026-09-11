@@ -2,8 +2,9 @@
 """Validate the built GitHub Pages shell and reader-first information architecture.
 
 Deep Atlas behavior has dedicated validators. This gate protects the public
-reader surface: one homepage, five canonical entrances, direct religion access,
-North -> World Map routing, and basic built-site link integrity.
+reader surface: one homepage, five canonical entrances, comparison-first
+religion, one shared timeline, North -> World Map routing, and basic built-site
+link integrity.
 """
 from __future__ import annotations
 
@@ -22,6 +23,11 @@ CANONICAL_HOME_LINKS = (
     "world-map/3d.html",
 )
 
+BIBLE_TIMELINE_LINK = (
+    "../chronology/?tl_layers=roadmap,scripture-at-time,biblical-parallel,"
+    "biblical-unlock&tl_actors=son,tim,shared&tl_detail=1"
+)
+
 
 def read(rel: str, errors: list[str]) -> str:
     path = SITE / rel
@@ -35,6 +41,12 @@ def require(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) 
     for marker in markers:
         if marker not in text:
             errors.append(f"{owner} missing required marker: {marker}")
+
+
+def forbid(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -> None:
+    for marker in markers:
+        if marker in text:
+            errors.append(f"{owner} contains retired/clutter marker: {marker}")
 
 
 def main() -> int:
@@ -52,6 +64,8 @@ def main() -> int:
             "tim-dooley/index.html",
             "religion/index.html",
             "religion/jesus-tim/index.html",
+            "traditions/bible/index.html",
+            "chronology/index.html",
             "philosophy/index.html",
             "science/index.html",
             "north/index.html",
@@ -68,16 +82,12 @@ def main() -> int:
         for href in CANONICAL_HOME_LINKS:
             if f'href="{href}"' not in index:
                 errors.append(f"index.html missing canonical reader entrance: {href}")
-        for retired in (
-            'id="rootbtn"',
-            'id="branches"',
-            'id="reader"',
-            "app/app.js",
-            "explore/#root",
-            "<iframe",
-        ):
-            if retired in index:
-                errors.append(f"index.html reintroduced retired reader/archive shell: {retired}")
+        forbid(
+            index,
+            ('id="rootbtn"', 'id="branches"', 'id="reader"', "app/app.js", "explore/#root", "<iframe"),
+            "index.html",
+            errors,
+        )
 
         primary_nav = re.search(
             r'<nav class="sections"[^>]*>(.*?)</nav>', index, flags=re.I | re.S
@@ -92,52 +102,135 @@ def main() -> int:
                     f"found {hrefs}"
                 )
 
-        # Religion must expose the substantive comparison directly, never via archive branches.
+        # Religion owns the Jesus comparison directly and reaches the shared timeline in one click.
         religion = read("religion/index.html", errors)
         require(
             religion,
-            ('href="jesus-tim/"', "Jesus ↔ Tim Dooley / Son", "Tim & the Bible"),
-            "religion/index.html",
-            errors,
-        )
-        if "explore/#branch=" in religion:
-            errors.append("religion/index.html routes core material through archive branches")
-
-        comparison = read("religion/jesus-tim/index.html", errors)
-        require(
-            comparison,
             (
+                'id="jesus-tim"',
                 "Jesus ↔ Tim Dooley / Son",
                 "Arrest and custody",
                 "Lamb recognition before self-declaration",
                 "Rejected stone → foundation",
                 "Grain death → multiplication",
                 "A real ethical mismatch",
+                f'href="{BIBLE_TIMELINE_LINK}"',
+                'href="../traditions/bible/"',
             ),
+            "religion/index.html",
+            errors,
+        )
+        forbid(
+            religion,
+            ("explore/#branch=", "Research</h2>", "Jesus / Son research index", "source authority"),
+            "religion/index.html",
+            errors,
+        )
+
+        # The old dedicated comparison URL remains only as a compatibility redirect.
+        comparison = read("religion/jesus-tim/index.html", errors)
+        require(
+            comparison,
+            ('name="robots" content="noindex,follow"', "location.replace('../#jesus-tim')"),
             "religion/jesus-tim/index.html",
             errors,
         )
 
-        # Tim must reach the Jesus comparison in one click.
+        # Tim must reach the embedded Jesus comparison in one click.
         tim = read("tim-dooley/index.html", errors)
         require(
             tim,
-            ('href="../religion/jesus-tim/"', "Jesus ↔ Tim / Son", "Chronology", "Public record"),
+            ('href="../religion/#jesus-tim"', "Jesus ↔ Tim / Son", "Chronology", "Public record"),
             "tim-dooley/index.html",
             errors,
         )
 
-        # North is subordinate to the actual World Map, not another mini-site.
+        # Bible is a specialist relation reader, not another tutorial/timeline mini-site.
+        bible = read("traditions/bible/index.html", errors)
+        require(
+            bible,
+            (
+                "TIM &amp; THE BIBLE",
+                'id="relations-field"',
+                'id="search"',
+                'id="relations"',
+                'href="../../religion/#jesus-tim"',
+                f'href="../../{BIBLE_TIMELINE_LINK}"'.replace("../../../", "../"),
+            ),
+            "traditions/bible/index.html",
+            errors,
+        )
+        forbid(
+            bible,
+            (
+                'class="focus-links"',
+                'id="orientation"',
+                'id="story-arcs"',
+                'id="meaning"',
+                'id="development"',
+                'id="missing-questions"',
+                'id="tensions"',
+                'id="timic-timeline"',
+                "Questions we missed",
+                "Four questions before comparing anything",
+                "What does “fulfilled” mean here?",
+                "Source authority",
+                ">FAQ<",
+            ),
+            "traditions/bible/index.html",
+            errors,
+        )
+
+        # Timeline owns chronology. It should open on controls + events, not a tutorial shell.
+        chronology = read("chronology/index.html", errors)
+        require(
+            chronology,
+            (
+                "THE LONG",
+                'class="timeline-explorer-standalone"',
+                'src="../app/timeline.js"',
+                'href="../religion/"',
+            ),
+            "chronology/index.html",
+            errors,
+        )
+        forbid(
+            chronology,
+            (
+                'class="source-note"',
+                'class="roadmap-note"',
+                'class="formula"',
+                "Why the live explorer replaces the old hard-coded list",
+                "Open Timeline in the complete archive",
+                'href="../context/"',
+                'href="../corporium/"',
+            ),
+            "chronology/index.html",
+            errors,
+        )
+
+        # North is subordinate to the actual World Map: one obvious header action, no duplicate giant CTA.
         north = read("north/index.html", errors)
         require(
             north,
-            ('href="../world-map/3d.html"', "Open North Axis in the World Map"),
+            ('class="map-action" href="../world-map/3d.html"', ">WORLD MAP<"),
             "north/index.html",
             errors,
         )
-        for retired in ("#architecture", "#ledger", "#world", "#traditions", "#chronology"):
-            if retired in north:
-                errors.append(f"north/index.html reintroduced mini-site navigation: {retired}")
+        forbid(
+            north,
+            (
+                'class="maplink"',
+                "Open North Axis in the World Map",
+                "#architecture",
+                "#ledger",
+                "#world",
+                "#traditions",
+                "#chronology",
+            ),
+            "north/index.html",
+            errors,
+        )
 
         # The duplicate Start Here page remains a compatibility redirect only.
         learn = read("learn/index.html", errors)
@@ -166,6 +259,8 @@ def main() -> int:
             "tim-dooley/index.html",
             "religion/index.html",
             "religion/jesus-tim/index.html",
+            "traditions/bible/index.html",
+            "chronology/index.html",
             "philosophy/index.html",
             "science/index.html",
             "north/index.html",
