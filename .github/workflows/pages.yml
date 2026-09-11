@@ -54,6 +54,40 @@ jobs:
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
+      - name: Vendor 3D atlas map engine
+        shell: bash
+        run: |
+          set -euo pipefail
+          mkdir -p _site/world-map/vendor
+          curl -fsSL --retry 3 --retry-delay 1 \
+            https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.js \
+            -o _site/world-map/vendor/maplibre-gl.js
+          curl -fsSL --retry 3 --retry-delay 1 \
+            https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css \
+            -o _site/world-map/vendor/maplibre-gl.css
+          test -s _site/world-map/vendor/maplibre-gl.js
+          test -s _site/world-map/vendor/maplibre-gl.css
+
+          python - <<'PY'
+          import os
+          from pathlib import Path
+
+          page_path = Path('_site/world-map/3d.html')
+          page = page_path.read_text(encoding='utf-8')
+          page = page.replace(
+              'https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css',
+              './vendor/maplibre-gl.css?v=5.24.0'
+          )
+          page = page.replace(
+              './maplibre-loader.js?v=6466194',
+              f"./maplibre-loader.js?v={os.environ['GITHUB_SHA'][:12]}"
+          )
+          page_path.write_text(page, encoding='utf-8')
+          assert './vendor/maplibre-gl.css?v=5.24.0' in page
+          assert f"./maplibre-loader.js?v={os.environ['GITHUB_SHA'][:12]}" in page
+          print('Vendored MapLibre and cache-busted atlas loader in built Pages artifact.')
+          PY
+
       - name: Snapshot atlas runtime data
         shell: bash
         run: |
@@ -138,6 +172,9 @@ jobs:
           test -f _site/sitemap-index.xml
           test -f _site/sitemap-questions.xml
           test -s _site/data/world-countries.geo.json
+          test -s _site/world-map/vendor/maplibre-gl.js
+          test -s _site/world-map/vendor/maplibre-gl.css
+          grep -q './vendor/maplibre-gl.css?v=5.24.0' _site/world-map/3d.html
 
           # Science is a compiled public product, not merely copied source files.
           test -f _site/science/index.html
