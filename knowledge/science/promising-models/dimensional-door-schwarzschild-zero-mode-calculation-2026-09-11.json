@@ -1,0 +1,70 @@
+{
+  "id":"dimensional-door-schwarzschild-zero-mode-calculation-2026-09-11",
+  "title":"Dimensional Door Calculation — Schwarzschild Scalarization Zero-Mode Spectrum",
+  "updated":"2026-09-11",
+  "status":"archive-generated numerical calculation inside the Stage-A scalarization benchmark; reproducible shooting problem, not evidence of a fifth dimension",
+  "purpose":"Carry the Dimensional Door benchmark one step beyond a proposed equation by solving the first threshold/eigenvalue problem. The result identifies the couplings at which the ordinary phi=0 Schwarzschild branch first admits static scalar zero modes in the benchmark normalization.",
+  "parent":"knowledge/science/promising-models/dimensional-door-scalarization-radion-benchmark-2026-09-11.json",
+  "model_and_convention":{
+    "action_sector":"S contains integral sqrt(-g)[-(1/2)(nabla phi)^2 + f(phi) G_GB] d^4x with f(phi)=eta phi^2/8",
+    "background":"Schwarzschild with mass M; set G=c=M=1 for the numerical solve",
+    "linear_equation":"Box phi + (eta/4) G_GB phi = 0",
+    "gauss_bonnet_on_schwarzschild":"G_GB=48/r^6 when M=1",
+    "spherical_static_ode":"(1/r^2) d/dr [r^2 (1-2/r) dphi/dr] + 12 eta/r^6 phi = 0",
+    "dimensionless_coupling":"eta_hat=eta/M^2"
+  },
+  "boundary_conditions":{
+    "horizon":"Set phi(2)=1 as arbitrary linear normalization. Regularity gives phi'(2)=-(3 eta/8) phi(2) in this convention.",
+    "infinity":"For a massless static l=0 solution phi=A+B/r+..., asymptotic decay requires the constant mode A=0.",
+    "shooting_residual":"At a large finite r_max, use A_est approximately phi(r_max)+r_max phi'(r_max) and solve A_est(eta)=0."
+  },
+  "numerical_method":{
+    "method":"Integrate outward from r=2+epsilon with the regular horizon expansion and use root bracketing on the asymptotic constant-mode residual.",
+    "settings_used":"epsilon=1e-6, r_max=200M, tight ODE tolerances; root values reported to the precision stable under this setup.",
+    "scope":"These are linear zero-mode thresholds. They mark possible branch onsets but do not establish nonlinear stability or physical viability."
+  },
+  "zero_mode_roots_eta_over_M2":[
+    2.9023586,
+    19.5036251,
+    50.9347939,
+    97.1798064,
+    158.2339167,
+    234.0951995,
+    324.7626978,
+    430.2358705
+  ],
+  "root_interpretation":{
+    "fundamental":"eta_hat_0 approximately 2.90236 is the first threshold at which the benchmark admits a static regular decaying scalar mode.",
+    "higher_modes":"Subsequent roots correspond to radially excited threshold modes with increasing node count; the physically preferred/stable nonlinear branch cannot be inferred from the linear roots alone.",
+    "sqrt_spacing":"sqrt(eta_hat_n+1)-sqrt(eta_hat_n) approaches approximately 2.72 for the higher roots. This independently reproduces the characteristic resonant-spacing behavior discussed in the scalarization literature for this model class.",
+    "door_meaning":"Within Stage A, eta_hat_0 is a concrete Door threshold derived from a boundary-value problem rather than selected symbolically."
+  },
+  "dimensionless_radial_potential":{
+    "field_redefinition":"For delta_phi=(psi(r)/r)Y_lm exp(-i omega t), define tortoise coordinate dr_*/dr=(1-2M/r)^-1.",
+    "equation":"d^2 psi/dr_*^2 + [omega^2 - V_l(r)] psi=0",
+    "potential":"For the massless benchmark, M^2 V_l=(1-2/x)[l(l+1)/x^2 + 2/x^3 - 12 eta_hat/x^6], x=r/M.",
+    "mechanism":"As eta_hat grows, the negative curvature-induced term can make the effective potential sufficiently negative to support a zero/bound mode, signaling tachyonic instability of the phi=0 branch."
+  },
+  "comparison_with_external_work":{
+    "agreement":"Published Einstein-scalar-Gauss-Bonnet studies with quadratic coupling f=eta phi^2/8 find curvature-induced tachyonic scalarization and a discrete resonant spectrum/bands. An analytic study reports asymptotic square-root spacing near 2.72, consistent with the archive calculation.",
+    "important_limit":"Agreement with known scalarization mathematics validates this Stage-A calculation, not the project's Stage-B radion/fifth-dimensional interpretation."
+  },
+  "next_calculations":[
+    "Count radial nodes for each zero mode and connect each root to the corresponding branch label.",
+    "Repeat with nonzero scalar mass mu_hat=mu M and map eta_hat_c(mu_hat).",
+    "Add spin by solving the Kerr perturbation problem or using established scalarization thresholds as a benchmark.",
+    "Solve the nonlinear field equations with a stabilizing quartic potential/coupling and test radial/nonradial stability.",
+    "Only after a viable nonlinear branch exists, derive whether phi can arise as a radion from an explicit 5D compactification and calculate the induced KK-scale shift."
+  ],
+  "failure_conditions":[
+    "The nonlinear branch corresponding to the first zero mode is unstable or pathological in the completion chosen for the project.",
+    "A purported radion completion cannot reproduce the Stage-A effective coupling or violates observational bounds.",
+    "The project treats eta_hat_0 as a universal Door constant outside this precise model; it is model/convention/background dependent."
+  ],
+  "external_references":[
+    {"source":"Silva et al. 2018","url":"https://arxiv.org/abs/1711.02080","use":"Original curvature-induced spontaneous scalarization model class and discrete black-hole scalarization bands."},
+    {"source":"Hod 2019 linearized analytic treatment","url":"https://arxiv.org/abs/1912.07630","use":"Reports the asymptotic resonant square-root spacing Delta approximately 2.72."},
+    {"source":"Macedo et al. 2019 self-interactions","url":"https://arxiv.org/abs/1903.06784","use":"Shows mass/self-interactions alter thresholds and can stabilize scalarized solutions, motivating the nonlinear completion step."}
+  ],
+  "connections":["dimensional-door-scalarization-radion-benchmark-2026-09-11","dimensional-phase-transition-full-recovery","model-testing-protocol","science-promising-models-wave-011-2026-09-11"]
+}
