@@ -114,6 +114,9 @@ jobs:
       - name: Build public site
         run: python scripts/build_site.py
 
+      - name: Remove internal archive from public artifact
+        run: rm -rf _site/archive && test ! -e _site/archive
+
       - name: Compile Bible comparator
         run: python scripts/build_bible_study.py
 
@@ -140,3 +143,6 @@ jobs:
 
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
+
+      - name: Assert internal archive is absent from artifact
+        run: test ! -e _site/archive
