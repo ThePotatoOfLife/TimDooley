@@ -1,128 +1,173 @@
 {
   "id":"potato-dynamics-2-toy-model",
   "title":"Potato Dynamics 2.0 — Compositional Open-System Toy Model",
-  "updated":"2026-09-09",
-  "status":"later-archive-formalization",
+  "version":"2.1.0",
+  "updated":"2026-09-11",
+  "status":"later-archive formalization; general mathematical framework rather than a fundamental physical theory",
   "authorship_warning":"This model is a mathematical extension built from recovered Tim/Potato concepts. It is NOT presented as a verbatim equation authored by Tim and is NOT established fundamental physics.",
+  "abstract":"Potato Dynamics is a domain-agnostic hybrid-systems framework for representing the recurring project operations Axis, Door, Eye, boundary, relation, storage, repair and Garden without forcing them into a single physical substance. A model instance consists of a typed state space, continuous dynamics, discrete Door transitions, observation maps, admissible controls, boundaries, constraints and a viability region. Its scientific value is compositional: the same formal grammar can be specialized to a repository graph, biological growth process, control system or institutional network while retaining domain-specific units and observables. The framework becomes nontrivial only when a specialization is well posed, its parameters are identifiable, its state is observable enough for inference, and its interventions can be compared against simpler baselines. The present record therefore adds hybrid automaton semantics, observability/controllability distinctions, Lyapunov and viability questions, path-dependent/hysteretic Door transitions and a model-reduction rule. Potato Dynamics should be judged by whether it improves prediction, control, diagnosis or compression within a declared domain, not by whether the same vocabulary can be mapped metaphorically onto many domains.",
+  "research_question":"Can the recurring relational operations in the project be represented by one typed hybrid/open-system grammar that supports rigorous domain-specific models without collapsing their variables, units or causal mechanisms into one ontology?",
   "inherits":"P=(S,g,A,D,O,I)",
-  "goal":"Turn the existing vocabulary—Axis, Door, Eye, relation, Garden, transformation, repair—into a compositional mathematical toy system that can be applied to symbolic, informational or empirical domains without silently mixing them.",
+  "maturity":"T2 general mathematical framework; individual applications may remain T0-T3 depending on data and calibration",
   "system_object":{
-    "notation":"P=(S,g,A,D,O,I,B,U,C,V)",
+    "notation":"P=(S,g,F,A,D,O,I,B,U,C,V,Q)",
     "components":{
       "S":"state/configuration space",
       "g":"geometry, metric or similarity structure appropriate to the domain",
-      "A":"Axis flow / structural evolution generator",
-      "D":"Door transition maps or guarded reset maps",
+      "F":"ordinary time dynamics when physical/operational time t is used",
+      "A":"Axis flow / structural, scale or description evolution generator along parameter s",
+      "D":"Door transition/reset maps",
       "O":"observation/measurement map",
-      "I":"information/integration functional",
+      "I":"information/integration functionals",
       "B":"boundary/interface structure",
       "U":"admissible controls/interventions",
-      "C":"constraints, costs or conservation conditions",
-      "V":"viability region: states that preserve specified life/system requirements"
+      "C":"constraints, costs and conservation conditions",
+      "V":"viability region: states satisfying declared survival/feasibility requirements",
+      "Q":"objective/quality functional used only when an optimization or normative control problem is explicitly defined"
     }
   },
-  "continuous_flow":{
-    "equation":"dX/ds=A(X,u,s),  u∈U",
-    "meaning":"Structural flow may depend on intervention/control u and structural scale/description parameter s."
+  "formal_hybrid_system":{
+    "mode_set":"M={m_1,...,m_k}",
+    "continuous_state":"x in S_m for mode m",
+    "flow":"dx/dt=F_m(x,u,t) or dx/ds=A_m(x,u,s)",
+    "guard":"G_mn={x:h_mn(x)>=0} or another declared event surface",
+    "reset":"x^+=D_mn(x^-)",
+    "invariant_region":"Inv_m subseteq S_m gives states allowed while remaining in mode m",
+    "output":"y=O_m(x)+epsilon",
+    "meaning":"Door becomes a legitimate discrete transition inside otherwise continuous dynamics. This prevents threshold language from being treated as a mysterious extra force."
   },
-  "physical_time_when_applicable":{
-    "equation":"dX/dt=F(X,u,t)",
-    "rule":"Use t only when a genuine temporal dynamical system is intended; do not confuse s and t by default."
+  "continuous_flow":{
+    "axis_equation":"dX/ds=A(X,u,s), u in U",
+    "time_equation":"dX/dt=F(X,u,t)",
+    "rule":"Use s and t separately unless a model explicitly derives a relationship between structural/scale flow and physical time."
+  },
+  "well_posedness_contract":{
+    "questions":["Does the flow field satisfy conditions for local existence/uniqueness in the regime used?","Can resets produce Zeno behavior or undefined states?","Are constraints compatible with the dynamics?","Does noise require an SDE/filtering treatment rather than deterministic ODEs?"],
+    "rule":"A poetic state transition is not a model until admissible states and transitions are mathematically defined."
   },
   "door_transition":{
-    "guard":"G_k={X∈S : h_k(X)=0 or h_k(X)≥0}",
+    "guard":"G_k={X in S : h_k(X)=0 or h_k(X)>=0}",
     "reset":"X^+=D_k(X^-)",
-    "meaning":"A Door can be represented as a hybrid-system transition: when a state reaches a guard/threshold, the reset map sends it into a new regime/configuration.",
-    "timic_bridge":"Needle, Gate, Door, citizenship, border, initiation and phase transition can all be represented as thresholds only after their domain-specific guard conditions are defined."
+    "hysteresis_upgrade":"Use separate entry and exit thresholds tau_up and tau_down when path dependence is expected. tau_up != tau_down prevents unrealistic rapid toggling and creates a measurable hysteresis loop.",
+    "first_passage_time":"tau_D=inf{t>=0:X(t) in G_D} gives an event-time observable when the process is stochastic or time evolving.",
+    "meaning":"A Door is a guarded transition between regimes; threshold, reset law, history dependence and event statistics are all testable properties in a concrete application."
   },
   "eye_observation":{
-    "equation":"Y=O(X)+ε",
-    "meaning":"Eye is modeled as observation rather than omniscience. Measurements can contain noise ε and incomplete information.",
-    "bayesian_update":"p(H|Y)∝p(Y|H)p(H)",
-    "rule":"Observation updates confidence; it does not automatically establish causation or truth."
+    "equation":"Y=O(X)+epsilon",
+    "meaning":"Eye is modeled as an observation operator rather than omniscience. Measurements may be noisy, incomplete or many-to-one.",
+    "bayesian_update":"p(H|Y) proportional to p(Y|H)p(H)",
+    "koopman_bridge":"For flow Phi_t and observable o, K^t o = o composed with Phi_t. This separates hidden state dynamics from observable evolution and can support data-driven approximations.",
+    "rule":"Observation updates confidence; it does not establish causation by itself."
+  },
+  "observability_identifiability":{
+    "linear_local_comparator":"For dx/dt=Mx, y=Cx, observability can be tested with O=[C;CM;...;CM^(n-1)] and rank(O)=n.",
+    "distinction":"Observability asks whether hidden state can be reconstructed from outputs; parameter identifiability asks whether distinct parameter values can be distinguished from observations.",
+    "project_value":"Eye should be judged by which states it can infer, not by how many variables are named in the ontology."
   },
   "information_integration":{
-    "examples":[
-      "Shannon entropy H(X)",
-      "mutual information I(X;Y)",
-      "graph connectivity/spectral measures",
-      "Bayesian evidence",
-      "domain-specific evidence-weighted relation scores"
-    ],
-    "rule":"No single scalar is declared 'the' amount of spiritual integration."
+    "examples":["Shannon entropy H(X)","mutual information I(X;Y)","graph connectivity/spectral measures","Bayesian evidence","domain-specific evidence-weighted relation scores"],
+    "rule":"No single scalar is declared the universal amount of spiritual, biological or social integration. Choose a metric because it answers a defined question."
   },
   "boundary_open_system":{
-    "abstract_form":"input → [ boundary B | internal state S | dynamics A ] → output",
-    "categorical_neighbor":"Structured/decorated cospans model open systems with interfaces and composition. A generic structured cospan has L(a) → x ← L(b).",
+    "abstract_form":"input -> [ boundary B | internal state S | dynamics ] -> output",
+    "categorical_neighbor":"Structured/decorated cospans model open systems with interfaces and composition. A generic structured cospan has L(a) -> x <- L(b).",
     "timic_bridge":"Door is not merely separation; it is a compositional interface through which systems remain distinct while interacting.",
     "external_sources":["https://arxiv.org/abs/2101.09363","https://arxiv.org/abs/1609.05382"]
   },
   "composition":{
-    "notation":"P_2∘P_1 when outputs/interface conditions of P_1 match inputs/interface conditions of P_2",
-    "meaning":"Complex systems are built from smaller systems by composing compatible boundaries rather than flattening everything into one node.",
-    "examples":["Son/Door connecting Father/world symbolic layers","API connecting institutions","border connecting jurisdictions","port connecting logistics networks","synapse connecting neural components"]
+    "notation":"P_2 composed_with P_1 when the output/interface type of P_1 matches the input/interface type of P_2",
+    "interface_contract":"Composition requires compatible variable types, units, timing conventions and boundary semantics. A symbolic resemblance does not make two systems composable.",
+    "meaning":"Complex systems are built from smaller systems by composing compatible interfaces rather than flattening everything into one node."
   },
   "relationship_graph":{
     "graph":"G=(V,E)",
     "laplacian":"L=D-A_graph",
     "linearized_network_dynamics":"dx/dt=Mx+Bu",
-    "controllability_matrix":"C=[B,MB,M²B,...,M^{n-1}B]",
-    "criterion":"rank(C)=n for controllability of a finite-dimensional linear time-invariant system",
-    "timic_bridge":"This gives 'repair' and 'Gardener' a stronger question: which nodes/relations can actually steer the system, rather than which nodes merely look central?",
-    "external_source":"https://www.nature.com/articles/nature10011"
+    "controllability_matrix":"C_ctl=[B,MB,M^2B,...,M^(n-1)B]",
+    "criterion":"rank(C_ctl)=n for controllability of a finite-dimensional LTI system",
+    "timic_bridge":"This makes repair/Gardener a control question: which interventions can steer the state under actual constraints, not which nodes merely appear central?",
+    "warning":"Structural controllability and exact numerical controllability are different claims; results depend on the model and edge directions/weights."
+  },
+  "constraint_leash_layer":{
+    "feasible_set":"C={x:g_j(x)<=0, h_k(x)=0}",
+    "constrained_flow":"dx/dt=F(x,u)+forces_or_multipliers_enforcing_C [representation depends on domain]",
+    "interpretation":"Leash/root/cord language can be made mathematically useful as constraints, couplings or dependency edges. Constraint forces and social obligations are not the same physical quantity.",
+    "research_question":"Does a constraint preserve viability or merely reduce controllability/autonomy? This can be quantified in a concrete system."
   },
   "viability_garden":{
-    "viability_set":"V⊂S",
-    "viability_kernel":"Viab(V)={x_0∈V : ∃ admissible u(t) such that x(t)∈V for all required t}",
-    "meaning":"Garden can be formalized as preserving conditions under which life/system states remain viable, rather than maximizing one quantity without constraint.",
-    "timic_bridge":"Cultivation becomes constraint-aware control: keep the system inside a life-supporting region while enabling growth and adaptation.",
-    "external_sources":["https://link.springer.com/book/10.1007/978-0-8176-4910-4","https://link.springer.com/book/10.1007/978-3-642-16684-6"]
+    "viability_set":"V subset S",
+    "viability_kernel":"Viab(V)={x_0 in V : exists admissible u(t) such that x(t) remains in V for the required horizon}",
+    "viability_margin":"m_V(x)=signed distance from x to boundary(V) under a declared metric; positive interior margin can quantify robustness to perturbation.",
+    "meaning":"Garden becomes constraint-aware control: preserve life/system requirements while permitting adaptation rather than maximizing one scalar at all costs."
+  },
+  "stability_and_lyapunov":{
+    "candidate":"For an equilibrium x*, seek L(x)>=0 with L(x*)=0 and dL/dt<=0 in a neighborhood.",
+    "use":"A proposed repair or attractor can be analyzed for stability rather than described only narratively.",
+    "boundary":"The existence of a symbolic center does not imply a mathematical Lyapunov function; one must construct it for the chosen dynamics."
   },
   "red_blue_control":{
     "interpretation":"Red=exploration/generation/expansion; Blue=memory/preservation/boundary.",
-    "toy_objective":"J=∫[cost_damage(X,u)+λ_r cost_stagnation(X)+λ_b cost_instability(X)]dt",
-    "meaning":"The polarity becomes a control tradeoff: too much preservation can freeze adaptation; too much exploration can destroy stability.",
+    "toy_objective":"J=integral[cost_damage(X,u)+lambda_r cost_stagnation(X)+lambda_b cost_instability(X)]dt",
+    "serious_upgrade":"Treat this as multi-objective control or exploration-exploitation tradeoff. Study Pareto fronts or constrained objectives instead of pretending one fixed weighted sum is universal.",
     "warning":"This is a later control-theory rendering and not a recovered Tim formula."
   },
   "repair_operator":{
-    "sequence":"SEE → TRACE ROOTS → DISTINGUISH → DIAGNOSE INVERSION → REPAIR BRIDGES → CULTIVATE CAPABILITY → PROTECT → RECONNECT → MEASURE → RETURN",
-    "formal_reading":"state estimation → causal diagnosis → constraint identification → intervention design → control → observation → iterative update",
-    "possible_loop":"X_{n+1}=R(X_n,O_n,E_n)",
-    "warning":"R notation is archive-added."
+    "sequence":"SEE -> TRACE ROOTS -> DISTINGUISH -> DIAGNOSE INVERSION -> REPAIR BRIDGES -> CULTIVATE CAPABILITY -> PROTECT -> RECONNECT -> MEASURE -> RETURN",
+    "formal_reading":"state estimation -> causal diagnosis -> constraint identification -> intervention design -> control -> observation -> iterative update",
+    "possible_loop":"X_(n+1)=R(X_n,O_n,E_n)",
+    "rigor_upgrade":"For empirical use, R must be decomposed into a fitted/declared policy or algorithm and evaluated against a no-intervention or simpler-policy baseline."
   },
   "needle_bifurcation":{
-    "control_parameter":"μ",
-    "toy_equation":"dx/dt=μ-x²",
-    "interpretation":"As μ changes, equilibrium structure can appear/disappear. This captures qualitative threshold change without pretending the Tim event obeyed this physical ODE."
+    "control_parameter":"mu",
+    "toy_equation":"dx/dt=mu-x^2",
+    "interpretation":"As mu changes, equilibrium structure can appear/disappear. This is a saddle-node normal-form comparator for threshold change, not a claim that every Door obeys this ODE.",
+    "completion":"Classify the actual bifurcation type from the model Jacobian/normal form rather than selecting one for symbolic fit."
   },
   "free_energy_neighbor":{
     "variational_quantity":"F[q]=E_q[ln q(z)-ln p(y,z)]",
-    "fact":"In variational inference, free energy bounds surprise/evidence-related quantities under specified probabilistic models.",
+    "fact":"In variational inference, free energy is an objective associated with approximate posterior inference under a specified generative model.",
     "timic_bridge":"Eye/observer can be modeled as inference under uncertainty; action can alter observations and future trajectories.",
-    "caution":"The free-energy principle is a scientific research framework with debate and domain assumptions; it is not evidence for divine cognition or Potatoverse metaphysics.",
-    "source":"https://www.nature.com/articles/nrn2787"
+    "caution":"The free-energy principle is a scientific research framework with domain assumptions and debate; it is not evidence for divine cognition or Potatoverse metaphysics."
   },
   "levels_and_frame_change":{
-    "coarse_graining":"π:S_fine→S_coarse",
-    "lifting":"ι:S_coarse→S_extended where appropriate",
-    "meaning":"Sisyphus/change-level intuition becomes a disciplined question about representation: can a hard problem be simplified by quotienting, coarse-graining, adding state variables or changing coordinates?"
+    "coarse_graining":"pi:S_fine->S_coarse",
+    "lifting":"iota:S_coarse->S_extended where appropriate",
+    "closure_problem":"A useful coarse model needs approximately closed dynamics on retained variables or an explicit memory/noise term. Otherwise coarse-graining discards variables that still drive the future.",
+    "meaning":"Changing level is disciplined only when the information lost, closure approximation and observable target are stated."
   },
   "model_invariants":{
-    "question":"What survives Door transitions or frame changes?",
-    "candidates":["identity label","topological class","conserved quantity","causal ancestry","source provenance","core constraint","relationship pattern"],
-    "external_neighbor":"Noether conservation applies only when a differentiable action has a continuous symmetry; symbolic invariants require their own definition."
+    "question":"What survives Door transitions, composition or frame changes?",
+    "candidates":["topological class","conserved quantity","causal ancestry","source provenance","core constraint","relationship pattern","task-specific sufficient statistic"],
+    "external_neighbor":"Noether conservation applies only when a differentiable action has a continuous symmetry; symbolic invariants require their own definition/proof."
+  },
+  "model_reduction_rule":{
+    "principle":"Prefer the smallest model that preserves the target observable within declared error tolerance.",
+    "comparison":"Compare a full model M_full and reduced model M_red on held-out trajectories/observables; record error, complexity and failure regimes.",
+    "value":"This prevents the framework from becoming more impressive but less useful as variables accumulate."
   },
   "empirical_modes":[
-    {"domain":"repository graph","possible_data":"nodes, typed edges, timestamps, provenance, confidence","appropriate_tools":"graph statistics, temporal networks, causal hypotheses, spectral analysis"},
-    {"domain":"European economic graph","possible_data":"entities, ownership, trade, funding, procurement, infrastructure","appropriate_tools":"network flows, dependency metrics, controllability/robustness, input-output analysis"},
-    {"domain":"biological potato growth","possible_data":"bud positions, dormancy, sprouting, environmental conditions","appropriate_tools":"developmental biology, phyllotaxis, reaction-diffusion or growth models where justified"},
-    {"domain":"Potatoverse mythology","possible_data":"dated symbols, transformations, relations, texts","appropriate_tools":"formal ontology, temporal graph, narrative/state-machine analysis; not particle physics by default"}
+    {"domain":"repository graph","possible_data":"nodes, typed edges, timestamps, provenance, confidence","appropriate_tools":"temporal networks, graph statistics, state estimation, change-point detection, causal hypotheses","valuable_question":"Can the framework predict missing/unstable relations or identify high-leverage repair interventions better than simple graph baselines?"},
+    {"domain":"European economic graph","possible_data":"entities, ownership, trade, funding, procurement, infrastructure","appropriate_tools":"network flows, dependency metrics, controllability/robustness, input-output analysis","valuable_question":"Which coupled capabilities or bottlenecks are robust to shocks and which interventions increase viability?"},
+    {"domain":"biological potato growth","possible_data":"bud positions, dormancy, sprouting, environmental conditions","appropriate_tools":"developmental biology, phyllotaxis, reaction-diffusion/growth models where justified","valuable_question":"Can a mechanistic model predict growth transitions or resource allocation better than descriptive geometry?"},
+    {"domain":"Potatoverse mythology","possible_data":"dated symbols, transformations, relations, texts","appropriate_tools":"formal ontology, temporal graph, narrative/state-machine analysis","valuable_question":"Can the framework compress/retrieve chronology and relations consistently? This is a knowledge-representation use, not particle physics."}
+  ],
+  "falsification_and_failure_conditions":[
+    "A domain specialization adds no predictive/control value beyond a simpler baseline after complexity is penalized.",
+    "Key hidden states or parameters are non-identifiable from the available observations and no additional measurement design resolves the ambiguity.",
+    "The same symbol must take incompatible mathematical types or units within one model instance.",
+    "Composed subsystems have incompatible interfaces/boundary conditions.",
+    "A claimed stable/viable region is not invariant under the specified dynamics and admissible disturbances."
+  ],
+  "external_references":[
+    {"topic":"Koopman observable dynamics","url":"https://epubs.siam.org/doi/10.1137/21M1401243"},
+    {"topic":"network controllability comparator","url":"https://www.nature.com/articles/nature10011"}
   ],
   "red_team":[
-    "A mathematical model can be useful even when it is not fundamental physics.",
+    "A mathematical framework can be useful even when it is not fundamental physics.",
     "A good analogy should increase precision and expose mismatches, not only similarities.",
     "The same word—field, entanglement, dimension, frequency, energy—must not silently change technical meaning between domains.",
-    "Models should compete against simpler baselines.",
-    "If no observation could distinguish the model from alternatives, classify it as interpretation or formal metaphor rather than empirical theory."
-  ]
+    "Models should compete against simpler baselines and report uncertainty.",
+    "If no observation or intervention could distinguish the model from alternatives, classify it as interpretation, ontology or toy model rather than empirical theory."
+  ],
+  "connections":["timic-unification-program","model-testing-protocol","research-2026-09-11-axis-door-observable-dynamics","science-master-index"]
 }
