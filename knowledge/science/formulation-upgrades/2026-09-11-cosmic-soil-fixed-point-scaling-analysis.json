@@ -1,0 +1,78 @@
+{
+  "id": "2026-09-11-cosmic-soil-fixed-point-scaling-analysis",
+  "title": "Cosmic Soil Upgrade — Density-Ratio Fixed Points, Scaling Solutions and Stability Verdict",
+  "updated": "2026-09-11",
+  "status": "archive-generated analytical continuation of the explicit Cosmic Soil interacting-dark-sector benchmark; phenomenological cosmology, not recovered Great Book mathematics",
+  "parent": "knowledge/science/formulation-upgrades/2026-09-11-cosmic-soil-interacting-dark-sector-benchmark.json",
+  "abstract": "The selected Cosmic Soil benchmark Q=xi H rho_c can be reduced to an exact autonomous equation for the dark-matter to dark-energy density ratio r=rho_c/rho_de. This reveals whether the interaction naturally produces a persistent scaling balance. The analysis gives two fixed points, an exact local-stability criterion and a useful negative result: for a constant negative-pressure dark-energy equation of state w<0 under the benchmark sign convention, every physically positive nonzero scaling fixed point requires xi>0 and is locally unstable. In particular, for w=-1 the model flows toward dark-energy domination for the ordinary small-coupling regime rather than toward a stable O(1) dark-sector ratio. Thus the simplest Q proportional to H rho_c coupling does not automatically solve the coincidence problem even though it admits a formal constant-ratio branch.",
+  "conventions": {
+    "time": "N=ln a; prime denotes d/dN.",
+    "dark_matter": "rho_c' = (-3+xi) rho_c.",
+    "dark_energy": "rho_de' = -3(1+w) rho_de - xi rho_c.",
+    "interaction": "Q=xi H rho_c with xi>0 meaning background energy transfer from dark energy to cold dark matter in this archive convention.",
+    "ratio": "r=rho_c/rho_de, restricted to rho_de>0 when interpreted physically."
+  },
+  "result_1_ratio_equation": {
+    "derivation": "r'/r = rho_c'/rho_c - rho_de'/rho_de = (-3+xi) - [-3(1+w)-xi r].",
+    "autonomous_equation": "r' = r [3w + xi(1+r)].",
+    "value": "The two-component background ratio can therefore be studied without integrating both densities separately."
+  },
+  "result_2_fixed_points": {
+    "dark_energy_dominated": "r0=0.",
+    "nonzero_scaling": "r_star=-1-3w/xi, for xi!=0.",
+    "existence_condition": "The scaling point is physically admissible only when r_star>0 and both component densities remain positive in the epoch being modeled.",
+    "constant_ratio_meaning": "At r_star the two dark densities dilute with the same effective power of a, so their ratio remains constant."
+  },
+  "result_3_local_stability": {
+    "flow": "f(r)=r[3w+xi(1+r)].",
+    "derivative_at_zero": "f'(0)=3w+xi. Thus r=0 is locally stable for 3w+xi<0 and unstable for 3w+xi>0.",
+    "derivative_at_scaling": "Using 3w+xi(1+r_star)=0 gives f'(r_star)=xi r_star.",
+    "stability_condition_scaling": "A positive scaling fixed point is locally stable only if xi<0.",
+    "negative_pressure_consequence": "For w<0, r_star>0 implies xi>0 with xi<-3w. Therefore the physically positive scaling point is necessarily unstable in this simple constant-w benchmark.",
+    "project_result": "The model can possess a formal dark-sector balance without that balance being a late-time attractor."
+  },
+  "result_4_scaling_equation_of_state": {
+    "total_dark_sector": "p_dark=w rho_de and rho_dark=rho_c+rho_de.",
+    "effective_w": "w_eff=p_dark/rho_dark=w/(1+r).",
+    "at_scaling": "Because 1+r_star=-3w/xi, w_eff(r_star)=-xi/3.",
+    "common_dilution": "rho_dark at the scaling point therefore follows a^[-3(1+w_eff)]=a^(-3+xi), matching the dark-matter dilution exponent.",
+    "acceleration_condition": "A scaling branch would require w_eff<-1/3, hence xi>1, for accelerated expansion in this simplified dark-sector-only criterion.",
+    "warning": "Acceleration of the full cosmology depends on all components and the physical viability of the branch, not this algebraic condition alone."
+  },
+  "w_minus_one_case": {
+    "scaling_point": "For w=-1, r_star=3/xi-1.",
+    "positive_range": "r_star>0 for 0<xi<3.",
+    "stability": "f'(r_star)=xi r_star>0 throughout that positive range, so the scaling point is unstable.",
+    "dark_energy_point": "r=0 is stable for xi<3 because f'(0)=-3+xi<0.",
+    "verdict": "For the ordinary positive-coupling range 0<xi<3, the system tends toward dark-energy domination rather than a stable nonzero matter/dark-energy ratio."
+  },
+  "phase_line_interpretation": {
+    "below_unstable_scaling": "When 0<r<r_star in the w=-1, 0<xi<3 case, f(r)<0 and the ratio decreases toward zero.",
+    "above_unstable_scaling": "When r>r_star, f(r)>0 and the ratio grows away from the scaling point within the reduced background model.",
+    "boundary": "Global physical evolution must still respect positivity, early-universe constraints and the validity of the constant-w phenomenological interaction."
+  },
+  "scientific_contribution": {
+    "positive": "The interaction law is now linked to a phase portrait and explicit attractor question rather than only analytic density formulas.",
+    "negative": "The simplest selected coupling does not provide a stable positive scaling solution for the physically relevant constant negative-pressure branch.",
+    "research_direction": "A stable coincidence-motivated attractor, if desired, requires a different interaction structure, dynamical dark-energy field, additional degrees of freedom or a different sign/model—not reinterpretation of this unstable point."
+  },
+  "external_references": [
+    {
+      "topic": "fixed points in interacting dark energy",
+      "url": "https://doi.org/10.1016/j.physletb.2009.03.064",
+      "use": "Established phase-plane/fixed-point methodology and demonstration that scaling attractors depend on the specific interaction model."
+    }
+  ],
+  "failure_conditions": [
+    "The unstable positive scaling point is described as a late-time attractor.",
+    "A fixed-ratio background solution is treated as perturbatively stable without solving perturbations.",
+    "The negative result is hidden by switching interaction sign conventions without explicitly redefining Q.",
+    "A different interaction law is introduced solely to force a desired coincidence result without independent motivation or comparison."
+  ],
+  "connections": [
+    "2026-09-11-cosmic-soil-interacting-dark-sector-benchmark",
+    "great-book-quantum-fields-dark-sector-recovery",
+    "2026-09-11-cross-model-defect-calculus",
+    "model-testing-protocol"
+  ]
+}

@@ -1,0 +1,87 @@
+{
+  "id": "science-formulation-wave-014-2026-09-11",
+  "title": "Science Formulation Wave 014 — Closure, Sufficiency, Stability and Advancement Frontiers",
+  "updated": "2026-09-11",
+  "status": "integration index",
+  "purpose": "Deepen existing Potatoverse science models by adding exact closure conditions, decision sufficiency, conservation ledgers, fixed-point stability, practical identifiability and Pareto advancement rules rather than introducing new named theory layers.",
+  "branch": "science-formulation-wave-014",
+  "records": [
+    {
+      "id": "2026-09-11-11d-blackwell-projection-ordering",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-11d-blackwell-projection-ordering.json",
+      "parent": "eleven-dimensional-projection-unification-recovery",
+      "main_contribution": "Orders projections as statistical experiments using stochastic garbling and decision sufficiency rather than one scalar information score.",
+      "strongest_result": "If a representation is a garbling of another, its optimal Bayes risk cannot be lower for the same decision problem; dimensional reductions may also be genuinely incomparable across tasks."
+    },
+    {
+      "id": "2026-09-11-potato-dynamics-frobenius-door-normal-forms",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-potato-dynamics-frobenius-door-normal-forms.json",
+      "parent": "potato-dynamics-2-toy-model",
+      "main_contribution": "Distinguishes strict Axis/time commutation from Frobenius integrability and from genuine two-flow non-closure; sharpens Door crossing versus grazing versus bifurcation.",
+      "strongest_result": "[F,A] may be nonzero yet remain inside span{F,A}; only its component outside that distribution proves the two-flow description is dynamically incomplete."
+    },
+    {
+      "id": "2026-09-11-spudlight-conservation-passivity-realization",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-spudlight-conservation-passivity-realization.json",
+      "parent": "spudlight-theory-and-equations",
+      "main_contribution": "Adds a finite-horizon stock-flow ledger, exact release/loss fractions, positivity/stability, bandwidth and minimal-realization conditions.",
+      "strongest_result": "For an isolated linear store, the initial stock partitions exactly into useful release eta/(eta+Gamma) and loss Gamma/(eta+Gamma); extra hidden stores must earn themselves through reproducible poles plus controllability/observability."
+    },
+    {
+      "id": "2026-09-11-cosmic-soil-fixed-point-scaling-analysis",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-cosmic-soil-fixed-point-scaling-analysis.json",
+      "parent": "2026-09-11-cosmic-soil-interacting-dark-sector-benchmark",
+      "main_contribution": "Reduces the selected Q=xi H rho_c benchmark to an exact density-ratio phase equation and derives fixed-point stability.",
+      "strongest_result": "For constant w<0 in the chosen sign convention, every physically positive nonzero scaling point is unstable; the simplest interaction therefore does not automatically solve the coincidence problem."
+    },
+    {
+      "id": "2026-09-11-human-map-fisher-practical-identifiability",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-human-map-fisher-practical-identifiability.json",
+      "parent": "great-book-human-map-mathematics-audit",
+      "main_contribution": "Separates structural and practical identifiability, adds Fisher/local-sloppiness diagnostics, profile likelihood and measurement-design logic.",
+      "strongest_result": "A Human Map prediction can be identifiable even when internal parameters are not; predictive usefulness does not license interpretation of unconstrained latent parameters."
+    },
+    {
+      "id": "2026-09-11-cosmic-potato-shear-invariants",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-cosmic-potato-shear-invariants.json",
+      "parent": "cosmic-potato-laniakea-kinematic-ellipsoid-benchmark-2026-09-11",
+      "main_contribution": "Recasts Laniakea shear with frame-invariant J2/J3 descriptors and separates anisotropy magnitude, eigenvalue shape and principal-axis direction.",
+      "strongest_result": "The existing A_sigma statistic is sqrt(3 J2)/|theta|; a normalized third invariant chi_3 adds independent shear-shape information without pretending to measure boundary morphology."
+    },
+    {
+      "id": "2026-09-11-cross-model-pareto-advancement",
+      "path": "knowledge/science/formulation-upgrades/2026-09-11-cross-model-pareto-advancement.json",
+      "parent": "2026-09-11-cross-model-defect-calculus",
+      "main_contribution": "Defines advancement as a Pareto problem across comparable defect, robustness and complexity coordinates rather than a universal weighted score.",
+      "strongest_result": "A richer theory that is observationally equivalent to a simpler one is scientifically redundant for that task unless its additional structure is independently measured or useful for another declared target."
+    }
+  ],
+  "new_negative_results": [
+    "Projection/reconstruction is bounded by fiber ambiguity and decision information cannot improve under pure garbling.",
+    "Axis and time need not commute to form a coherent two-dimensional leaf, but failure of Frobenius closure reveals missing state directions.",
+    "Stock-only Spudlight observations cannot uniquely separate release and loss, and passive storage cannot output more physical stock than initial-plus-input budget.",
+    "The selected constant-w Q=xi H rho_c Cosmic Soil model has no stable positive nonzero scaling point for w<0 under its current sign convention.",
+    "A full-rank/local Fisher approximation is not sufficient evidence of globally or practically identified Human Map parameters.",
+    "Strong Laniakea shear magnitude does not determine shear eigenvalue shape, principal-axis direction or geometric boundary morphology.",
+    "No universal scalar quality score is needed: dominated and observationally redundant models can be stopped using a Pareto/defect framework."
+  ],
+  "shared_formulation_pattern": "state the map or flow -> derive closure/invariant/fixed point -> identify nuisance or hidden degrees -> state a measurable defect -> compare with a simpler model -> promote, retain as approximation, or downgrade",
+  "next_decisive_work": [
+    "Build a synthetic projection ladder and demonstrate a representation with high reconstruction error but zero task-information/decision loss.",
+    "Construct an explicit Potato Dynamics example in which [F,A] is nonzero but involutive, plus one example where the bracket generates a third direction.",
+    "Fit one-store versus two-store Spudlight dynamics to a public stock/flux time series with calibrated input and at least one intermediate measurement.",
+    "If Cosmic Soil remains active, choose one perturbation-complete covariant transfer prescription rather than adding more background Q forms.",
+    "For Human Map, use synthetic recovery to compare Fisher and profile-likelihood diagnostics under nonlinear/latent confounding.",
+    "For Cosmic Potato, propagate the full shear covariance/posterior into J2,J3,A_sigma and chi_3 and compare reconstruction pipelines.",
+    "Apply Pareto stop rules to the full science completion matrix and explicitly mark models as promoted, frontier, approximation-only, underidentified, nonclosed, redundant, dominated or rejected-in-regime."
+  ],
+  "relationship_to_previous_waves": "Wave 013 introduced defect-oriented formulation. Wave 014 deepens that approach by proving stronger ordering/closure results, deriving an exact negative fixed-point result, separating latent prediction from parameter identifiability, and adding non-scalar research advancement governance.",
+  "connections": [
+    "science-formulation-wave-013-2026-09-11",
+    "science-promising-models-wave-011-2026-09-11",
+    "science-theory-rigor-completion-matrix-2026-09-11",
+    "2026-09-11-cross-model-defect-calculus",
+    "model-testing-protocol",
+    "science-master-index"
+  ]
+}
