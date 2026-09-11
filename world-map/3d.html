@@ -4,78 +4,133 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>World Relational Atlas — 3D country graph</title>
-<meta name="description" content="Draggable 3D relational world atlas with progressively disclosed layers, evidence, time, networks and a project-symbolic North Axis scaffold.">
+<meta name="description" content="Draggable 3D relational world atlas organized around World, Relations, Time and Axis navigation.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/3d.html">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css">
 <script type="importmap">
 {"imports":{"https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs":"./maplibre-loader.js?v=6466194"}}
 </script>
 <style>
-:root{--bg:#080b0b;--panel:#101616;--panel2:#151d1d;--ink:#eff4eb;--muted:#aab4aa;--line:#283333;--accent:#bbdc8a;--gold:#e0bd78;--blue:#73a7d8;--red:#c27878;--panel-w:390px}
-*{box-sizing:border-box}html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif}.app{height:100%;display:grid;grid-template-rows:auto 1fr;overflow:hidden}.top{display:flex;gap:7px;align-items:center;padding:7px 10px;background:#0b1010eF;border-bottom:1px solid var(--line);z-index:10;min-height:50px}.brand{margin-right:auto;min-width:0}.brand b{font:400 18px Georgia,serif;white-space:nowrap}.brand small{display:block;color:var(--muted);font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;max-width:430px}button,select,input{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:7px;padding:7px 9px;font:inherit}button{cursor:pointer}button.active{border-color:var(--accent);color:var(--accent)}input{width:190px}.layout{min-height:0;display:grid;grid-template-columns:minmax(0,1fr) var(--panel-w);transition:grid-template-columns .22s ease}.app.panel-collapsed .layout{grid-template-columns:minmax(0,1fr) 0}.mapwrap{position:relative;min-width:0;overflow:hidden}.map{height:100%}.panel{overflow:auto;background:var(--panel);border-left:1px solid var(--line);padding:16px;min-width:0;transition:opacity .15s ease}.app.panel-collapsed .panel{opacity:0;pointer-events:none;padding-left:0;padding-right:0;border-left:0}.panel h1{font:400 30px/1.05 Georgia,serif;margin:5px 0 8px}.panel h2{font:400 20px Georgia,serif;color:var(--gold);margin:18px 0 7px}.muted{color:var(--muted)}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:10px;font-weight:800;color:var(--accent)}.card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 11px;margin:8px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.metric{border:1px solid var(--line);border-radius:8px;padding:8px;min-width:0}.metric span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.metric b{display:block;font-size:15px;overflow-wrap:anywhere}.metric small{display:block;margin-top:3px;font-size:9px;line-height:1.25}.boundary{border-left:3px solid var(--gold);padding:8px 10px;background:#191812;color:#d8d5c9;margin:10px 0;font-size:12px}.hud{position:absolute;left:12px;bottom:12px;z-index:2;background:#080b0bd9;border:1px solid var(--line);border-radius:999px;padding:7px 10px;max-width:360px;font-size:10px;backdrop-filter:blur(7px)}.hud .muted{display:inline}.camera{position:absolute;right:12px;top:12px;z-index:2;background:#080b0bcf;border:1px solid var(--line);border-radius:999px;padding:6px 8px;font-size:10px;color:var(--muted);backdrop-filter:blur(7px)}.status{position:absolute;left:50%;top:12px;transform:translateX(-50%);z-index:4;background:#101616ee;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted)}.status[data-kind="error"]{border-color:var(--red);color:#efc0c0}.time-state{position:absolute;left:12px;top:12px;z-index:4;background:#0b1010df;border:1px solid #55656b;border-radius:999px;padding:6px 9px;font-size:10px;color:#d5e0e0;backdrop-filter:blur(8px)}.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 7px;margin:2px;font-size:11px}.row{padding:7px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}.json{font:11px/1.45 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:340px;overflow:auto}.actions{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.actions button{background:#0c1212}.compare-table{width:100%;border-collapse:collapse;font-size:12px}.compare-table th,.compare-table td{padding:6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.compare-table th{color:var(--muted);font-weight:600}.relation-button{width:100%;display:flex;justify-content:space-between;gap:8px;text-align:left;margin:4px 0}.trace-level{border-top:1px solid var(--line);padding-top:8px;margin-top:8px}.maplibregl-popup-content{background:#101616;color:#eff4eb;border:1px solid #283333;border-radius:8px}.maplibregl-popup-tip{border-top-color:#101616!important}.atlas-hover{font-size:12px;line-height:1.45}.atlas-hover b{font-size:14px}.atlas-hover-capital b{color:#f7e8a4}.demography-heading,.religion-line{display:flex;align-items:center;justify-content:space-between;gap:8px}.religion-row{margin:8px 0}.religion-line{font-size:12px}.religion-line b{font-variant-numeric:tabular-nums}.religion-track{height:7px;border-radius:999px;background:#252f2f;overflow:hidden;margin-top:3px}.religion-fill{display:block;height:100%;border-radius:999px}.religion-christian{background:#d7b66f}.religion-muslim{background:#79aa80}.religion-hindu{background:#d49369}.religion-buddhist{background:#c7a86d}.religion-jewish{background:#75a6d6}.religion-other{background:#a687bd}.religion-unaffiliated{background:#899398}.demography-note{font-size:11px;margin:9px 0 3px}.demography-source{font-size:10px}.demography-compare-country{margin:10px 0 14px}.demography-compare-country>.card{margin-top:5px}.atlas-demography-card{border-color:#344343}a{color:var(--accent)}
-.menu{position:relative}.menu>summary{list-style:none;cursor:pointer;background:var(--panel2);border:1px solid var(--line);border-radius:7px;padding:7px 9px;user-select:none;white-space:nowrap}.menu>summary::-webkit-details-marker{display:none}.menu[open]>summary{border-color:#536969;color:var(--accent)}.menu-pop{position:absolute;right:0;top:calc(100% + 7px);z-index:20;min-width:230px;max-width:320px;background:#0d1313f7;border:1px solid #344343;border-radius:12px;padding:9px;box-shadow:0 12px 34px #0009;backdrop-filter:blur(12px)}.menu-pop>*{display:block;width:100%;margin:4px 0}.menu-pop button{text-align:left}.menu-title{font-size:9px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);padding:3px 2px}.menu-sep{height:1px;background:var(--line);margin:7px 0}.quick-actions{display:flex;gap:7px;align-items:center}.panel-toggle{min-width:34px}.top-link{display:block;padding:6px 4px;text-decoration:none}.map-ui-toggle{position:absolute;right:12px;bottom:12px;z-index:4;border-radius:999px;background:#0b1010df;backdrop-filter:blur(8px)}
-#axisFieldLegend{transition:opacity .18s ease}.app.ui-focus #axisFieldLegend,.app.ui-focus #axisDepthNavigator,.app.ui-focus #axisOperatorHud,.app.ui-focus .camera,.app.ui-focus .hud,.app.ui-focus .time-state{opacity:0!important;pointer-events:none!important}.app.ui-focus .maplibregl-ctrl-top-right{opacity:.25}.app.ui-focus .maplibregl-ctrl-top-right:hover{opacity:1}
-@media(max-width:1150px){:root{--panel-w:350px}.brand small{display:none}.brand b{font-size:16px}input{width:155px}}
-@media(max-width:900px){.top{overflow-x:auto}.brand{display:none}.layout,.app.panel-collapsed .layout{grid-template-columns:1fr;grid-template-rows:minmax(55vh,1fr) auto}.panel{border-left:0;border-top:1px solid var(--line);max-height:42vh}.app.panel-collapsed .panel{display:none}.camera{display:none}.menu-pop{position:fixed;right:10px;top:56px;max-height:70vh;overflow:auto}.top input{min-width:150px}#axisDepthNavigator{transform:scale(.78);transform-origin:top right}#axisOperatorHud{width:calc(100% - 156px)!important;max-width:290px}}
+:root{
+  --bg:#080b0b;--panel:#0f1716;--panel2:#15201f;--ink:#eff4eb;--muted:#aab4aa;--line:#2b3938;
+  --accent:#bbdc8a;--gold:#e0bd78;--blue:#73a7d8;--red:#c27878;
+  --world:#88aa88;--people:#a88bc6;--economy:#ddb86d;--infra:#72b9d4;--energy:#72b6a5;
+  --relations:#73a7d8;--faith:#d1a66e;--time:#9b82c7;--evidence:#c7cdca;--axis:#bceeff;
+}
+*{box-sizing:border-box}html,body{height:100%;margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,sans-serif}
+button,select,input{background:var(--panel2);border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:7px 9px;font:inherit}
+button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.48}button.active{border-color:var(--accent);color:var(--accent)}
+a{color:var(--accent)}
+.app{height:100%;display:grid;grid-template-rows:44px minmax(0,1fr);overflow:hidden}
+.atlas-utility-bar{z-index:20;display:flex;align-items:center;gap:7px;padding:5px 8px;background:#0a1010f5;border-bottom:1px solid var(--line)}
+.brand{margin-right:auto;min-width:0}.brand b{font:400 17px Georgia,serif;white-space:nowrap}.brand small{display:block;color:var(--muted);font-size:9px}
+.atlas-utilities{display:flex;align-items:center;gap:5px}.atlas-utilities input{width:170px;padding:6px 8px}.atlas-utilities button{padding:6px 9px}
+.layout{position:relative;min-height:0;overflow:hidden}.mapwrap{position:absolute;inset:0;overflow:hidden}.map{height:100%}
+.panel{position:absolute;z-index:11;top:10px;right:10px;bottom:10px;width:min(370px,calc(100% - 20px));overflow:auto;background:#101818f7;border:1px solid var(--line);border-radius:12px;padding:14px;box-shadow:0 14px 38px #0009;transition:transform .18s ease,opacity .14s ease}
+.app.panel-collapsed .panel{transform:translateX(calc(100% + 24px));opacity:0;pointer-events:none}
+.panel h1{font:400 28px/1.08 Georgia,serif;margin:5px 0 8px}.panel h2{font:400 20px Georgia,serif;color:var(--gold);margin:18px 0 7px}
+.muted{color:var(--muted)}.eyebrow{text-transform:uppercase;letter-spacing:.14em;font-size:10px;font-weight:800;color:var(--accent)}
+.card{background:var(--panel2);border:1px solid var(--line);border-radius:10px;padding:10px 11px;margin:8px 0}.grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.metric{border:1px solid var(--line);border-radius:8px;padding:8px;min-width:0}.metric span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase}.metric b{display:block;font-size:15px;overflow-wrap:anywhere}.metric small{display:block;margin-top:3px;font-size:9px;line-height:1.25}
+.boundary{border-left:3px solid var(--gold);padding:8px 10px;background:#191812;color:#d8d5c9;margin:10px 0;font-size:12px}
+.status{position:absolute;left:50%;top:52px;transform:translateX(-50%);z-index:15;background:#101616ee;border:1px solid var(--line);border-radius:999px;padding:7px 11px;color:var(--muted)}.status[data-kind="error"]{border-color:var(--red);color:#efc0c0}
+.time-state{position:absolute;left:12px;top:12px;z-index:4;background:#0b1010df;border:1px solid #55656b;border-radius:999px;padding:6px 9px;font-size:10px;color:#d5e0e0}
+.hud{position:absolute;left:12px;bottom:12px;z-index:3;background:#080b0bd9;border:1px solid var(--line);border-radius:999px;padding:6px 9px;max-width:300px;font-size:10px;pointer-events:none}.hud .muted{display:none}.camera{display:none}
+.pill{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 7px;margin:2px;font-size:11px}.row{padding:7px 0;border-bottom:1px solid var(--line)}.row:last-child{border:0}.json{font:11px/1.45 ui-monospace,monospace;white-space:pre-wrap;overflow-wrap:anywhere;max-height:340px;overflow:auto}.actions{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0}.actions button{background:#0c1212}
+.compare-table{width:100%;border-collapse:collapse;font-size:12px}.compare-table th,.compare-table td{padding:6px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}.compare-table th{color:var(--muted);font-weight:600}.relation-button{width:100%;display:flex;justify-content:space-between;gap:8px;text-align:left;margin:4px 0}.trace-level{border-top:1px solid var(--line);padding-top:8px;margin-top:8px}
+.maplibregl-popup-content{background:#101616;color:#eff4eb;border:1px solid #283333;border-radius:8px}.maplibregl-popup-tip{border-top-color:#101616!important}.atlas-hover{font-size:12px;line-height:1.45}.atlas-hover b{font-size:14px}.atlas-hover-capital b{color:#f7e8a4}
+.demography-heading,.religion-line{display:flex;align-items:center;justify-content:space-between;gap:8px}.religion-row{margin:8px 0}.religion-line{font-size:12px}.religion-line b{font-variant-numeric:tabular-nums}.religion-track{height:7px;border-radius:999px;background:#252f2f;overflow:hidden;margin-top:3px}.religion-fill{display:block;height:100%;border-radius:999px}.religion-christian{background:#d7b66f}.religion-muslim{background:#79aa80}.religion-hindu{background:#d49369}.religion-buddhist{background:#c7a86d}.religion-jewish{background:#75a6d6}.religion-other{background:#a687bd}.religion-unaffiliated{background:#899398}.demography-note{font-size:11px;margin:9px 0 3px}.demography-source{font-size:10px}.demography-compare-country{margin:10px 0 14px}.atlas-demography-card{border-color:#344343}
+
+/* Spatial semantic handles */
+.atlas-zone{position:absolute;z-index:8;background:#0b1212f4;box-shadow:0 8px 24px #0008;font-weight:720;letter-spacing:.02em;transition:transform .15s ease,border-color .15s ease,background .15s ease}
+.atlas-zone:hover,.atlas-zone:focus-visible{transform:scale(1.04)}.atlas-zone.active{background:#152321}
+.atlas-zone-world{left:10px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;rotate:180deg;border-color:#526e55;color:#c9e2ca;padding:12px 7px}
+.atlas-zone-world:hover,.atlas-zone-world:focus-visible{transform:translateY(-50%) scale(1.04)}
+.atlas-zone-relations{right:10px;top:50%;transform:translateY(-50%);writing-mode:vertical-rl;border-color:#4e7391;color:#b9d7ef;padding:12px 7px}
+.atlas-zone-relations:hover,.atlas-zone-relations:focus-visible{transform:translateY(-50%) scale(1.04)}
+.atlas-zone-axis{left:50%;top:10px;transform:translateX(-50%);border-color:#608692;color:#d8f7ff;border-radius:999px;padding:7px 15px}
+.atlas-zone-axis:hover,.atlas-zone-axis:focus-visible{transform:translateX(-50%) scale(1.04)}
+.atlas-zone-time{left:50%;bottom:10px;transform:translateX(-50%);border-color:#685a86;color:#d9cdf0;border-radius:999px;padding:7px 15px}
+.atlas-zone-time:hover,.atlas-zone-time:focus-visible{transform:translateX(-50%) scale(1.04)}
+
+.atlas-zone-drawer,.atlas-zone-panel,#atlasSettingsPanel{position:absolute;z-index:10;background:#0d1514f8;border:1px solid var(--line);box-shadow:0 18px 42px #000b;overflow:auto}
+.atlas-zone-drawer[hidden],.atlas-zone-panel[hidden],#atlasSettingsPanel[hidden]{display:none!important}
+#atlasWorldDrawer{left:46px;top:10px;bottom:10px;width:min(330px,calc(100% - 92px));border-radius:12px}
+#atlasRelationsDrawer{right:46px;top:10px;bottom:10px;width:min(330px,calc(100% - 92px));border-radius:12px}
+#atlasAxisZonePanel{left:50%;top:48px;transform:translateX(-50%);width:min(430px,calc(100% - 100px));max-height:calc(100% - 110px);border-radius:12px}
+#atlasTimeZonePanel{left:50%;bottom:48px;transform:translateX(-50%);width:min(560px,calc(100% - 100px));max-height:52%;border-radius:12px}
+#atlasSettingsPanel{right:10px;top:52px;width:min(330px,calc(100% - 20px));max-height:calc(100% - 64px);border-radius:12px}
+.atlas-zone-head{position:sticky;top:0;z-index:2;display:flex;justify-content:space-between;align-items:flex-start;gap:8px;padding:12px;background:#0d1514f5;border-bottom:1px solid var(--line)}.atlas-zone-head span{display:block;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.1em}.atlas-zone-head h2{font:400 24px Georgia,serif;margin:1px 0 0}.atlas-zone-close{font-size:18px;line-height:1;padding:5px 8px}
+.atlas-zone-group{padding:9px 10px;border-bottom:1px solid #22302f}.atlas-zone-group h3{margin:0 0 6px;color:var(--muted);font-size:10px;text-transform:uppercase;letter-spacing:.11em}.atlas-zone-items{display:grid;gap:5px}
+.atlas-capability{display:flex;align-items:center;gap:9px;width:100%;text-align:left;padding:9px;background:#121c1b}.atlas-capability.active{background:#182523}.atlas-capability-dot{width:10px;height:10px;flex:0 0 10px;border:1px solid currentColor;border-radius:999px;background:currentColor}.atlas-capability-copy{min-width:0}.atlas-capability-copy b{display:block;font-size:12px}.atlas-capability-copy small{display:block;color:var(--muted);font-size:9px;line-height:1.3;margin-top:2px}.atlas-capability.family-world{color:var(--world)}.atlas-capability.family-people{color:var(--people)}.atlas-capability.family-economy{color:var(--economy)}.atlas-capability.family-infrastructure{color:var(--infra)}.atlas-capability.family-energy{color:var(--energy)}.atlas-capability.family-relations{color:var(--relations)}.atlas-capability.family-faith{color:var(--faith)}.atlas-capability.family-time{color:var(--time)}.atlas-capability.family-evidence{color:var(--evidence)}.atlas-capability.family-axis{color:var(--axis)}
+.atlas-zone-empty{padding:16px}.atlas-zone-empty b{font:400 19px Georgia,serif}.atlas-zone-empty p{color:var(--muted);font-size:12px}.atlas-zone-empty span{color:#798783;font-size:10px}
+#atlasCompatibilityControls{display:none!important}
+
+/* Existing lazy modules */
+.menu{position:relative}.menu>summary{list-style:none}.menu-pop>*{display:block;width:100%}.menu-title{font-size:9px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted)}.menu-sep{height:1px;background:var(--line)}
+#axisFieldLegend{transition:opacity .18s ease}.app.ui-focus #axisFieldLegend,.app.ui-focus #axisDepthNavigator,.app.ui-focus #axisOperatorHud,.app.ui-focus .camera,.app.ui-focus .hud,.app.ui-focus .time-state{opacity:0!important;pointer-events:none!important}
+#atlasSelectionDock{bottom:52px!important}
+
+@media(max-width:900px){
+  .brand small{display:none}.brand b{font-size:15px}.atlas-utilities input{width:132px}.atlas-utilities #atlasReset{display:none}
+  .panel{top:auto;left:8px;right:8px;bottom:8px;width:auto;max-height:44vh}.app.panel-collapsed .panel{transform:translateY(calc(100% + 24px))}
+  #atlasWorldDrawer,#atlasRelationsDrawer{left:8px;right:8px;top:auto;bottom:48px;width:auto;max-height:70vh;border-radius:14px}
+  #atlasAxisZonePanel{left:8px;right:8px;top:48px;bottom:48px;width:auto;max-height:none;transform:none}
+  #atlasTimeZonePanel{left:8px;right:8px;bottom:48px;width:auto;max-height:55vh;transform:none}
+  .atlas-zone-world{left:6px}.atlas-zone-relations{right:6px}.atlas-zone-axis{top:7px}.atlas-zone-time{bottom:7px}
+  #atlasSettingsPanel{left:8px;right:8px;top:50px;width:auto;max-height:70vh}
+  #atlasSelectionDock{bottom:48px!important;max-width:calc(100% - 16px)!important}
+}
 </style>
 </head>
 <body><div id="atlasApp" class="app panel-collapsed">
-<header class="top">
-  <div class="brand"><b>World Relational Atlas · 3D</b><small>Map first · reveal layers, traces, evidence, time and Axis structure when needed</small></div>
-  <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
-  <div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide inspector" aria-label="Show or hide inspector">Inspect</button></div>
-
-  <details class="menu" id="layersMenu"><summary>Layers</summary><div class="menu-pop">
-    <div class="menu-title">Map content</div>
-    <button id="interior" class="active">Interior modules</button>
-    <button id="relations" class="active">Relationship lines</button>
-    <div class="menu-sep"></div>
-    <div class="menu-title">Relationship filter</div>
-    <select id="relationType" title="Filter relation type"><option value="all">All relation types</option></select>
-  </div></details>
-
-  <details class="menu" id="traceMenu"><summary>Trace</summary><div class="menu-pop">
-    <div class="menu-title">Network traversal</div>
-    <select id="traceDepth" title="Recursive relationship trace depth"><option value="1">1 hop · immediate</option><option value="2">2 hops</option><option value="3">3 hops</option></select>
-    <button id="fit" title="Fit selected country, comparison, or active trace">Fit active set</button>
-  </div></details>
-
-  <details class="menu" id="timeMenu"><summary>Time</summary><div class="menu-pop">
-    <div class="menu-title">Historical state</div>
-    <select id="timeMode" title="Time mode"><option value="current">Current</option><option value="as_of">As of…</option><option value="changed_between">Compare dates…</option></select>
-    <input id="timeDate" type="date" aria-label="Historical date" hidden>
-    <input id="timeDate2" type="date" aria-label="Comparison date" hidden>
-    <button id="timeNow">Return to current</button>
-    <div class="boundary">Historical mode is conservative: undated records remain explicitly unknown, and current overlays are not silently treated as historical truth.</div>
-  </div></details>
-
-  <details class="menu" id="viewMenu"><summary>View</summary><div class="menu-pop">
-    <div class="menu-title">Geometry</div>
-    <select id="height" title="Polygon extrusion"><option value="flat">Flat countries</option><option value="population">Height · population</option><option value="area">Height · area</option></select>
-    <button id="tilt">Toggle tilt</button><button id="globe">Toggle globe</button><button id="world">Reset world</button>
-    <div class="menu-sep"></div><button id="focusMode">Focus mode · hide overlays</button>
-  </div></details>
-
-  <details class="menu" id="moreMenu"><summary>More</summary><div class="menu-pop">
-    <a class="top-link" href="./">2D map</a><a class="top-link" href="../">Archive home</a>
-  </div></details>
+<header class="atlas-utility-bar">
+  <div class="brand"><b>World Relational Atlas · 3D</b><small>World · Relations · Time · Axis</small></div>
+  <div id="atlasUtilities" class="atlas-utilities">
+    <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
+    <button id="atlasReset" title="Clear selection and active Atlas state">Reset</button>
+    <button id="atlasSettingsTrigger" aria-expanded="false" aria-controls="atlasSettingsPanel">Settings</button>
+  </div>
 </header>
 <div class="layout">
   <div class="mapwrap">
     <div id="map" class="map"></div>
+    <button id="atlasAxisZone" class="atlas-zone atlas-zone-axis" aria-label="Open Axis lenses" aria-expanded="false" aria-controls="atlasAxisZonePanel">Axis</button>
+    <button id="atlasWorldZone" class="atlas-zone atlas-zone-world" aria-label="Open World data" aria-expanded="false" aria-controls="atlasWorldDrawer">World</button>
+    <button id="atlasRelationsZone" class="atlas-zone atlas-zone-relations" aria-label="Open Relations" aria-expanded="false" aria-controls="atlasRelationsDrawer">Relations</button>
+    <button id="atlasTimeZone" class="atlas-zone atlas-zone-time" aria-label="Open Time" aria-expanded="false" aria-controls="atlasTimeZonePanel">Time</button>
+
+    <aside id="atlasWorldDrawer" class="atlas-zone-drawer" aria-label="World data drawer" hidden></aside>
+    <aside id="atlasRelationsDrawer" class="atlas-zone-drawer" aria-label="Relations drawer" hidden></aside>
+    <aside id="atlasAxisZonePanel" class="atlas-zone-panel" aria-label="Axis lens panel" hidden></aside>
+    <aside id="atlasTimeZonePanel" class="atlas-zone-panel" aria-label="Time panel" hidden></aside>
+    <aside id="atlasSettingsPanel" aria-label="Atlas settings" hidden></aside>
+
     <div id="status" class="status" hidden></div>
     <div id="atlasTimeState" class="time-state" hidden>Current state</div>
     <div id="camera" class="camera">drag · zoom · rotate · pitch</div>
-    <div id="hud" class="hud"><b>D4 · World</b> <span class="muted">Select a country, or open Layers / Trace / Time / View.</span></div>
-    <button id="mapInspectorToggle" class="map-ui-toggle" title="Toggle inspector">Inspector</button>
+    <div id="hud" class="hud"><b>D4 · World</b> <span class="muted">Select a country or open a semantic zone.</span></div>
   </div>
   <aside id="panel" class="panel">
     <div class="eyebrow">D4 · World</div><h1>Explore the world</h1>
-    <p class="muted">Select a country or relationship to open its inspector. The map stays visually primary; deeper evidence, demographics, project fields, networks, time and Axis material are disclosed only when requested.</p>
+    <p class="muted">Use World for what exists, Relations for what connects it, Time for change, and Axis for analytical or project lenses. Select any country or relationship for contextual actions.</p>
     <div class="boundary">Geography, graph topology, project hierarchy and time are separate coordinates. Semantic interior hubs are navigation handles, not physical locations.</div>
   </aside>
-</div></div>
+</div>
+
+<!-- Temporary compatibility plumbing. Existing renderer/domain modules keep
+     these IDs while capabilities migrate to semantic registration. They are not
+     part of the normal user interface. -->
+<div id="atlasCompatibilityControls" hidden aria-hidden="true">
+  <button id="panelToggle">Inspect</button><button id="mapInspectorToggle">Inspector</button><button id="compare">Compare</button>
+  <details class="menu" id="layersMenu"><summary>Layers</summary><div class="menu-pop"><div class="menu-title">Map content</div><button id="interior" class="active">Interior modules</button><button id="relations" class="active">Relationship lines</button><div class="menu-sep"></div><select id="relationType"><option value="all">All relation types</option></select></div></details>
+  <details class="menu" id="traceMenu"><summary>Trace</summary><div class="menu-pop"><select id="traceDepth"><option value="1">1 hop · immediate</option><option value="2">2 hops</option><option value="3">3 hops</option></select><button id="fit">Fit active set</button></div></details>
+  <details class="menu" id="timeMenu"><summary>Time</summary><div class="menu-pop"><select id="timeMode"><option value="current">Current</option><option value="as_of">As of…</option><option value="changed_between">Compare dates…</option></select><input id="timeDate" type="date" hidden><input id="timeDate2" type="date" hidden><button id="timeNow">Return to current</button></div></details>
+  <details class="menu" id="viewMenu"><summary>View</summary><div class="menu-pop"><select id="height"><option value="flat">Flat countries</option><option value="population">Height · population</option><option value="area">Height · area</option></select><button id="tilt">Toggle tilt</button><button id="globe">Toggle globe</button><button id="world">Reset world</button><button id="focusMode">Focus mode · hide overlays</button></div></details>
+  <details class="menu" id="moreMenu"><summary>More</summary><div class="menu-pop"><a href="./">2D map</a><a href="../">Archive home</a></div></details>
+</div>
+</div>
 <script src="./3d-boot-guard.js?v=6466194"></script>
-<!-- Optional-module source markers retained for the source contract; bootstrap owns execution order. src="./3d-hover.js" src="./3d-pathfinder.js" src="./3d-demography.js" src="./3d-evidence.js" src="./3d-time.js" src="./3d-axis.js" src="./3d-ui.js" -->
+<!-- Optional-module source markers retained for source contracts; bootstrap owns execution order. src="./3d-hover.js" src="./3d-pathfinder.js" src="./3d-demography.js" src="./3d-evidence.js" src="./3d-time.js" src="./3d-ui.js" -->
 <script type="module" src="./3d-bootstrap.js"></script>
 </body></html>
