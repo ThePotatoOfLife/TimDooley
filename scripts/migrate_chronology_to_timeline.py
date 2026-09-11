@@ -2,7 +2,9 @@
 """One-time repository migration from Chronology naming to Timeline naming.
 
 The only intentional legacy path after this migration is /chronology/, which is
-recreated as a noindex compatibility redirect to /timeline/.
+recreated as a noindex compatibility redirect to /timeline/. Workflow files are
+handled separately through the GitHub API because Actions tokens cannot rewrite
+workflow files.
 """
 from __future__ import annotations
 
@@ -14,7 +16,7 @@ TEXT_SUFFIXES = {
     ".html", ".htm", ".md", ".json", ".txt", ".py", ".js", ".mjs", ".css",
     ".yml", ".yaml", ".xml", ".csv", ".ts", ".tsx", ".jsx", ".toml",
 }
-SKIP_DIRS = {".git", "node_modules", "vendor", "_site", "__pycache__"}
+SKIP_DIRS = {".git", ".github", "node_modules", "vendor", "_site", "__pycache__"}
 SELF = Path(__file__).resolve()
 VALIDATOR = (ROOT / "scripts" / "validate_timeline_naming.py").resolve()
 
