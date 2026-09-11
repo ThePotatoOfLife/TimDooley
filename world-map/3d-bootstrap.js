@@ -6,6 +6,7 @@
 
 const statusNode = () => document.querySelector('#status');
 const guard = () => window.__potatoAtlasBootGuard;
+const OPTIONAL_TIMEOUT_MS = 12000;
 
 function setStatus(message, kind = 'info') {
   const node = statusNode();
@@ -25,23 +26,37 @@ async function waitForCore(timeoutMs = 15000) {
   const started = Date.now();
   while (Date.now() - started < timeoutMs) {
     const map = window.__potatoAtlasMap;
-    if (map && window.__potatoAtlasReady && map.getLayer?.('countries-fill')) return map;
+    if (map?.getLayer?.('countries-fill')) {
+      window.__potatoAtlasReady = true;
+      if (guard()) guard().stage = 'core-ready';
+      window.dispatchEvent(new CustomEvent('potato-atlas-core-ready', { detail: { map } }));
+      return map;
+    }
     await sleep(40);
   }
   throw new Error('Core atlas map did not become ready before the bootstrap deadline.');
 }
 
 async function loadOptional(label, path) {
+  let timer;
   try {
-    await import(path);
+    await Promise.race([
+      import(path),
+      new Promise((_, reject) => {
+        timer = setTimeout(() => reject(new Error(`${label} exceeded the optional-module deadline.`)), OPTIONAL_TIMEOUT_MS);
+      }),
+    ]);
     window.__potatoAtlasEnhancements.loaded.push(label);
   } catch (error) {
     window.__potatoAtlasEnhancements.failed.push({ label, message: error?.message || String(error) });
     console.warn(`${label} enhancement unavailable:`, error);
+  } finally {
+    clearTimeout(timer);
   }
 }
 
 window.__potatoAtlasEnhancements = { loaded: [], failed: [] };
+window.__potatoAtlasReady = false;
 
 try {
   setStatus('Loading core atlas…');
@@ -52,10 +67,10 @@ try {
   await import('./3d-hover.js');
   await waitForCore();
 
-  setStatus('Core atlas ready…');
+  // Once this point is reached the geographic map is usable. Everything below
+  // is enrichment and may fail independently without taking the world with it.
+  setStatus('Core atlas ready · loading optional layers…');
 
-  // The first two modules were part of the last-known-working composition.
-  // Everything else is deliberately optional and isolated behind the core map.
   const modules = [
     ['Path finder', './3d-pathfinder.js'],
     ['Demography', './3d-demography.js'],
