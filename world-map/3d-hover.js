@@ -1,5 +1,16 @@
 import * as maplibregl from 'https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs';
 
+// The bootstrap gives every deployment a SHA query parameter. Carry it through
+// the hover -> app dynamic import so a fresh HTML document cannot accidentally
+// reuse an older cached 3d-app.js module from a previous deployment.
+const ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v') || '';
+function versionedModule(path) {
+  if (!ATLAS_VERSION) return path;
+  const url = new URL(path, import.meta.url);
+  url.searchParams.set('v', ATLAS_VERSION);
+  return url.href;
+}
+
 // Resilient atlas boot order:
 //   same-origin Pages snapshot -> primary provider -> alternate provider -> local synthesis.
 // Third-party data enriches the atlas; it must not be a single point of failure.
@@ -98,7 +109,7 @@ maplibregl.Map.prototype.addControl = function (...args) {
 };
 
 try {
-  await import('./3d-app.js');
+  await import(versionedModule('./3d-app.js'));
 } finally {
   maplibregl.Map.prototype.addControl = originalAddControl;
 }
