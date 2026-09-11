@@ -5,29 +5,49 @@ on:
     paths:
       - 'knowledge/traditions/biblical-syncretism-field.json'
       - 'knowledge/traditions/**'
+      - 'knowledge/theology/son-jesus-**'
       - 'knowledge/chronology/**'
       - 'data/evidence/**'
+      - 'data/tim-dooley-thought-archive.json'
+      - 'data/tim-dooley-public-theology-timeline-2025-2026.json'
       - 'data/timeline-events.json'
       - 'data/timeline-event-packs/**'
       - 'traditions/bible/index.html'
+      - 'religion/index.html'
+      - 'religion/jesus-tim/index.html'
+      - 'tim-dooley/index.html'
+      - 'tim-dooley/biblical-case/index.html'
+      - 'sitemap.xml'
+      - 'llms.txt'
       - 'app/bible-study.js'
       - 'app/bible-study.css'
       - 'scripts/check_biblical_syncretism_field.py'
       - 'scripts/validate_bible_reader.py'
+      - 'scripts/validate_bible_route_ownership.py'
       - '.github/workflows/biblical-syncretism-check.yml'
   pull_request:
     paths:
       - 'knowledge/traditions/biblical-syncretism-field.json'
       - 'knowledge/traditions/**'
+      - 'knowledge/theology/son-jesus-**'
       - 'knowledge/chronology/**'
       - 'data/evidence/**'
+      - 'data/tim-dooley-thought-archive.json'
+      - 'data/tim-dooley-public-theology-timeline-2025-2026.json'
       - 'data/timeline-events.json'
       - 'data/timeline-event-packs/**'
       - 'traditions/bible/index.html'
+      - 'religion/index.html'
+      - 'religion/jesus-tim/index.html'
+      - 'tim-dooley/index.html'
+      - 'tim-dooley/biblical-case/index.html'
+      - 'sitemap.xml'
+      - 'llms.txt'
       - 'app/bible-study.js'
       - 'app/bible-study.css'
       - 'scripts/check_biblical_syncretism_field.py'
       - 'scripts/validate_bible_reader.py'
+      - 'scripts/validate_bible_route_ownership.py'
       - '.github/workflows/biblical-syncretism-check.yml'
 
 jobs:
@@ -41,3 +61,4 @@ jobs:
       - run: node --check app/bible-study.js
       - run: python scripts/check_biblical_syncretism_field.py
       - run: python scripts/validate_bible_reader.py
+      - run: python scripts/validate_bible_route_ownership.py
