@@ -3,6 +3,7 @@ const panel = document.getElementById('panel');
 const panelToggle = document.getElementById('panelToggle');
 const mapInspectorToggle = document.getElementById('mapInspectorToggle');
 const focusMode = document.getElementById('focusMode');
+const search = document.getElementById('search');
 const menus = [...document.querySelectorAll('details.menu')];
 
 function setPanel(open, {persist = true} = {}) {
@@ -12,6 +13,7 @@ function setPanel(open, {persist = true} = {}) {
   mapInspectorToggle?.classList.toggle('active', open);
   panelToggle?.setAttribute('aria-pressed', String(open));
   mapInspectorToggle?.setAttribute('aria-pressed', String(open));
+  if (panelToggle) panelToggle.textContent = open ? 'Close' : 'Inspect';
   if (persist) localStorage.setItem('atlas:panel-open', open ? '1' : '0');
 }
 
@@ -53,8 +55,6 @@ observer?.observe(panel, {childList:true, subtree:true, characterData:true});
 
 function summaryText(id,text,active=false){
   const summary=document.querySelector(`#${id}>summary`);if(!summary)return;
-  // Idempotence matters. Rewriting textContent creates child mutations; the old
-  // body-wide observer could feed those mutations back into this function.
   if(summary.textContent!==text) summary.textContent=text;
   summary.classList.toggle('active-state',active);
 }
@@ -68,13 +68,14 @@ function updateLayerSummary(){
   if(field&&field!=='all'&&field!=='off')active.push(field==='brics'?'BRICS':field[0].toUpperCase()+field.slice(1));
   if(network&&network!=='off')active.push(network.replaceAll('_',' '));
   if(relation!=='all')active.push('filtered');
-  summaryText('layersMenu',active.length?`Layers · ${active.slice(0,2).join(' + ')}${active.length>2?'…':''}`:'Layers',active.length>0);
+  summaryText('layersMenu',active.length?`Map · ${active.slice(0,2).join(' + ')}${active.length>2?'…':''}`:'Map',active.length>0);
 }
 function updateTraceSummary(){
   const depth=Number(document.getElementById('traceDepth')?.value||1);
   const entity=document.getElementById('entityTraceToggle')?.classList.contains('active');
-  const parts=[];if(depth>1)parts.push(`${depth} hops`);if(entity)parts.push('entities');
-  summaryText('traceMenu',parts.length?`Trace · ${parts.join(' + ')}`:'Trace',parts.length>0);
+  const compare=document.getElementById('compare')?.classList.contains('active');
+  const parts=[];if(compare)parts.push('compare');if(depth>1)parts.push(`${depth} hops`);if(entity)parts.push('entities');
+  summaryText('traceMenu',parts.length?`Analyze · ${parts.join(' + ')}`:'Analyze',parts.length>0);
 }
 function updateTimeSummary(state=window.__potatoAtlasTime?.getState?.()){
   if(!state||state.mode==='current'){summaryText('timeMenu','Time',false);return;}
@@ -94,9 +95,13 @@ function updateMenuSummaries(){updateLayerSummary();updateTraceSummary();updateT
 document.addEventListener('change',event=>{
   if(['relationType','axisFieldView','empiricalNetworkView','traceDepth','height','timeMode','timeDate','timeDate2'].includes(event.target?.id))queueMicrotask(updateMenuSummaries);
 });
-document.addEventListener('click',event=>{if(event.target?.id==='entityTraceToggle')queueMicrotask(updateTraceSummary);if(event.target?.id==='capitals')queueMicrotask(updateLayerSummary);});
+document.addEventListener('click',event=>{
+  if(['entityTraceToggle','compare'].includes(event.target?.id))queueMicrotask(updateTraceSummary);
+  if(event.target?.id==='capitals')queueMicrotask(updateLayerSummary);
+});
 window.addEventListener('atlas-time-change',event=>updateTimeSummary(event.detail));
 window.addEventListener('potato-atlas-basemap-change',updateViewSummary);
+window.addEventListener('potato-atlas-capitals-change',updateLayerSummary);
 
 const layersPop = document.querySelector('#layersMenu .menu-pop');
 function relocateInjectedLayerControls(){
@@ -116,7 +121,7 @@ function installAxisToggle(){
   button.id='axisCompactToggle';
   button.textContent=nav.hidden?'Axis':'Axis · open';
   button.title='Show or hide the D1–D11 Axis navigator';
-  button.style.cssText='position:absolute;right:12px;top:44px;z-index:4;border-radius:999px;background:#0b1010f2';
+  button.style.cssText='position:absolute;right:12px;top:44px;z-index:4;border-radius:999px;background:#0b1111f2';
   button.classList.toggle('active',!nav.hidden);
   button.addEventListener('click',()=>{
     nav.hidden=!nav.hidden;
@@ -148,93 +153,141 @@ function installBasemapControl(){
   pop.appendChild(button);
 }
 
-const NATURAL_EARTH_CAPITALS = 'https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_110m_populated_places_simple.geojson';
-let capitalsVisible = true;
-
 function installSleekSurface(){
   if(document.getElementById('atlasSleekStyle'))return;
   const style=document.createElement('style');
   style.id='atlasSleekStyle';
   style.textContent=`
-    .top{min-height:44px!important;padding:5px 8px!important;gap:6px!important}
+    :root{--panel:#101919;--panel2:#162120;--line:#2d3b3a;--accent:#c3e58d;--gold:#e7c56f;--blue:#6cafe3;--red:#cc7d7d}
+    .top{min-height:44px!important;padding:5px 8px!important;gap:6px!important;background:#0b1111f4!important}
     .brand b{font-size:16px!important}.brand small{font-size:9px!important;max-width:340px!important}
     .layout{position:relative!important;display:block!important;min-height:0!important;overflow:hidden!important}
     .mapwrap{position:absolute!important;inset:0!important;overflow:hidden!important}
-    .panel{position:absolute!important;z-index:6!important;top:10px!important;right:10px!important;bottom:10px!important;width:min(370px,calc(100% - 20px))!important;min-width:0!important;padding:14px!important;border:1px solid var(--line)!important;border-radius:11px!important;box-shadow:0 10px 32px #000a!important;transform:translateX(0);transition:transform .18s ease,opacity .14s ease!important}
+    .panel{position:absolute!important;z-index:6!important;top:10px!important;right:10px!important;bottom:10px!important;width:min(360px,calc(100% - 20px))!important;min-width:0!important;padding:14px!important;border:1px solid var(--line)!important;border-radius:11px!important;box-shadow:0 10px 30px #0009!important;transform:translateX(0);transition:transform .18s ease,opacity .14s ease!important}
     .app.panel-collapsed .panel{transform:translateX(calc(100% + 20px))!important;opacity:0!important;pointer-events:none!important;padding:14px!important;border:1px solid var(--line)!important}
-    .hud{left:10px!important;bottom:10px!important;padding:5px 8px!important;background:#0b1010f2!important;max-width:260px!important;pointer-events:none!important}
+    .hud{left:10px!important;bottom:10px!important;padding:5px 8px!important;background:#0b1111f2!important;max-width:260px!important;pointer-events:none!important}
     .hud .muted{display:none!important}.camera{display:none!important}.map-ui-toggle{display:none!important}
     .menu-pop,.hud,.time-state,#axisCompactToggle{backdrop-filter:none!important;-webkit-backdrop-filter:none!important}
-    .menu-pop{background:#0d1313!important;border-radius:10px!important;padding:8px!important}
+    .menu-pop{background:#0e1515!important;border-radius:10px!important;padding:8px!important}
     .atlas-hover:not(.atlas-hover-capital)>div{display:none!important}
     .atlas-hover:not(.atlas-hover-capital)>div:nth-of-type(2){display:block!important;color:var(--muted)!important;font-size:10px!important}
     .maplibregl-popup-content{padding:7px 9px!important;box-shadow:0 4px 14px #0007!important}
     .panel .card{padding:9px 10px!important}.panel .boundary{font-size:11px!important;padding:7px 9px!important}
-    @media(max-width:900px){.panel{top:auto!important;left:8px!important;right:8px!important;bottom:8px!important;width:auto!important;max-height:44vh!important}.app.panel-collapsed .panel{transform:translateY(calc(100% + 20px))!important}.brand{display:none!important}}
+    .quick-actions{gap:5px!important}.quick-actions button{padding:6px 9px!important}
+    .atlas-tools-root>summary{font-weight:650}.atlas-tools-root:has(.active-state)>summary{border-color:#6f8f78;color:var(--accent)}
+    .atlas-tools-root>.menu-pop{width:290px;max-width:min(290px,calc(100vw - 20px));max-height:min(72vh,620px);overflow:auto}
+    .atlas-tools-hint{font-size:10px;color:var(--muted);padding:2px 4px 7px;border-bottom:1px solid var(--line);margin-bottom:4px}
+    .atlas-tools-root>.menu-pop>details.menu{width:100%;margin:0;border-bottom:1px solid #243130}
+    .atlas-tools-root>.menu-pop>details.menu:last-child{border-bottom:0}
+    .atlas-tools-root>.menu-pop>details.menu>summary{display:flex;align-items:center;justify-content:space-between;width:100%;border:0;background:transparent;border-radius:5px;padding:9px 5px;color:var(--ink);font-weight:620}
+    .atlas-tools-root>.menu-pop>details.menu>summary::after{content:'+';color:var(--muted);font-weight:400}
+    .atlas-tools-root>.menu-pop>details.menu[open]>summary::after{content:'−'}
+    .atlas-tools-root>.menu-pop>details.menu>summary.active-state{color:var(--accent)}
+    .atlas-tools-root>.menu-pop>details.menu>.menu-pop{position:static!important;display:block!important;min-width:0!important;max-width:none!important;width:100%!important;border:0!important;border-radius:0!important;box-shadow:none!important;background:transparent!important;padding:0 4px 8px!important;margin:0!important}
+    .atlas-tools-root .menu-title{padding-top:6px}.atlas-tools-root .boundary{margin:7px 0}
+    @media(max-width:900px){.panel{top:auto!important;left:8px!important;right:8px!important;bottom:8px!important;width:auto!important;max-height:44vh!important}.app.panel-collapsed .panel{transform:translateY(calc(100% + 20px))!important}.brand{display:none!important}.atlas-tools-root>.menu-pop{position:fixed!important;right:8px!important;top:50px!important;width:min(320px,calc(100vw - 16px))!important;max-width:none!important}}
   `;
   document.head.appendChild(style);
   document.getElementById('mapInspectorToggle')?.remove();
 }
 
-function capitalFeatures(payload){
-  return (payload?.features||[]).filter(feature=>{
-    const p=feature.properties||{};
-    return p.adm0cap===1||p.capalt===1;
-  }).map(feature=>{
-    const p=feature.properties||{};
-    return {type:'Feature',properties:{
-      iso3:String(p.adm0_a3||p.sov_a3||''),name:p.name||p.nameascii||'Capital',country:p.adm0name||p.sov0name||'',scalerank:Number(p.scalerank??9),primary:p.adm0cap===1
-    },geometry:feature.geometry};
-  }).filter(feature=>feature.properties.iso3&&feature.geometry?.type==='Point');
+function installToolbox(){
+  if(document.getElementById('atlasToolsMenu'))return;
+  const top=document.querySelector('.top');
+  const quick=document.querySelector('.quick-actions');
+  if(!top||!quick)return;
+
+  const tools=document.createElement('details');
+  tools.id='atlasToolsMenu';
+  tools.className='menu atlas-tools-root';
+  tools.innerHTML='<summary>Tools</summary><div class="menu-pop"><div class="atlas-tools-hint">Map context, analysis, time and display settings.</div></div>';
+  quick.after(tools);
+  const pop=tools.querySelector('.menu-pop');
+
+  const labels={layersMenu:'Map',traceMenu:'Analyze',timeMenu:'Time',viewMenu:'View',moreMenu:'Links'};
+  for(const id of ['layersMenu','traceMenu','timeMenu','viewMenu','moreMenu']){
+    const menu=document.getElementById(id);if(!menu)continue;
+    const summary=menu.querySelector(':scope>summary');if(summary)summary.textContent=labels[id];
+    pop.appendChild(menu);
+  }
+
+  const compare=document.getElementById('compare');
+  const tracePop=document.querySelector('#traceMenu .menu-pop');
+  if(compare&&tracePop){
+    compare.textContent='Compare countries';
+    const title=tracePop.querySelector('.menu-title');
+    if(title)title.after(compare);else tracePop.prepend(compare);
+  }
+
+  tools.addEventListener('toggle',()=>{
+    if(!tools.open)return;
+    for(const menu of menus)menu.open=false;
+  });
+  document.addEventListener('click',event=>{if(tools.open&&!event.target.closest('#atlasToolsMenu'))tools.open=false;});
 }
 
-function setCapitalVisibility(visible){
-  capitalsVisible=Boolean(visible);
-  const map=window.__potatoAtlasMap;
-  for(const id of ['capital-cities','capital-city-major-labels','capital-city-labels'])if(map?.getLayer(id))map.setLayoutProperty(id,'visibility',capitalsVisible?'visible':'none');
-  const button=document.getElementById('capitals');
-  button?.classList.toggle('active',capitalsVisible);button?.setAttribute('aria-pressed',String(capitalsVisible));
-  window.dispatchEvent(new CustomEvent('potato-atlas-capitals-change',{detail:{visible:capitalsVisible}}));
-}
-
-async function installCapitals(){
-  const map=window.__potatoAtlasMap,layersPop=document.querySelector('#layersMenu .menu-pop');
-  if(!map||!layersPop)return;
-  let button=document.getElementById('capitals');
-  if(!button){
-    button=document.createElement('button');button.id='capitals';button.className='active';button.textContent='Capital cities';button.setAttribute('aria-pressed','true');
-    const title=layersPop.querySelector('.menu-title');title?.after(button);
-    button.addEventListener('click',()=>setCapitalVisibility(!capitalsVisible));
-  }
-  try{
-    if(!map.getSource('capital-cities')){
-      const response=await fetch(NATURAL_EARTH_CAPITALS,{cache:'force-cache'});if(!response.ok)throw new Error(`capital snapshot ${response.status}`);
-      const features=capitalFeatures(await response.json());if(features.length<160)throw new Error(`capital coverage ${features.length}`);
-      map.addSource('capital-cities',{type:'geojson',data:{type:'FeatureCollection',features}});
-      map.addLayer({id:'capital-cities',type:'circle',source:'capital-cities',minzoom:0,paint:{'circle-radius':['interpolate',['linear'],['zoom'],1,1.7,3,2.6,6,4.4],'circle-color':'#e0bd78','circle-stroke-color':'#171a18','circle-stroke-width':1,'circle-opacity':.9}});
-      map.addLayer({id:'capital-city-major-labels',type:'symbol',source:'capital-cities',minzoom:1.3,maxzoom:3.5,filter:['<=',['get','scalerank'],2],layout:{'text-field':['get','name'],'text-size':9,'text-offset':[0,1.05],'text-anchor':'top','text-allow-overlap':false},paint:{'text-color':'#e8d7a9','text-halo-color':'#080b0b','text-halo-width':1.05}});
-      map.addLayer({id:'capital-city-labels',type:'symbol',source:'capital-cities',minzoom:3.2,layout:{'text-field':['get','name'],'text-size':10,'text-offset':[0,1.1],'text-anchor':'top','text-allow-overlap':false},paint:{'text-color':'#f7e8a4','text-halo-color':'#080b0b','text-halo-width':1.1}});
-      map.on('click','capital-cities',event=>{const code=event.features?.[0]?.properties?.iso3;if(code&&window.goCountry)window.goCountry(code)});
-      map.on('mouseenter','capital-cities',()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave','capital-cities',()=>map.getCanvas().style.cursor='');
-    }
-    setCapitalVisibility(true);
-  }catch(error){
-    console.warn('Default capital layer unavailable:',error);button.textContent='Capital cities · unavailable';button.disabled=true;
-  }
+function installCapitalsControl(){
+  if(document.getElementById('capitals'))return;
+  const pop=document.querySelector('#layersMenu .menu-pop');if(!pop)return;
+  const button=document.createElement('button');
+  button.id='capitals';button.textContent='Capital cities';button.className='active';button.setAttribute('aria-pressed','true');
+  button.title='Show or hide capital-city points and labels';
+  const title=pop.querySelector('.menu-title');if(title)title.after(button);else pop.prepend(button);
+  const sync=()=>{
+    const api=window.__potatoAtlasCapitals;
+    const visible=api?.visible!==false;
+    button.classList.toggle('active',visible);button.setAttribute('aria-pressed',String(visible));
+  };
+  button.addEventListener('click',()=>{
+    const api=window.__potatoAtlasCapitals;
+    if(!api?.setVisible)return;
+    api.setVisible(!api.visible);sync();
+  });
+  window.addEventListener('potato-atlas-capitals-ready',sync);
+  window.addEventListener('potato-atlas-capitals-change',sync);
+  sync();
 }
 
 function tuneMapSurface(){
   const map=window.__potatoAtlasMap;if(!map)return;
+  const selected=['boolean',['feature-state','selected'],false];
+  const compared=['boolean',['feature-state','compare'],false];
+  const countryColor=['case',selected,'#e7c56f',compared,'#6cafe3','#576d6b'];
+  try{if(map.getLayer('countries-fill')){map.setPaintProperty('countries-fill','fill-color',countryColor);map.setPaintProperty('countries-fill','fill-opacity',['case',selected,.9,compared,.8,.6]);}}catch{}
+  try{if(map.getLayer('countries-extrude'))map.setPaintProperty('countries-extrude','fill-extrusion-color',countryColor);}catch{}
+  try{if(map.getLayer('countries-line'))map.setPaintProperty('countries-line','line-color',['case',selected,'#f4e4ae',compared,'#b9ddf7','#22302f']);}catch{}
   try{if(map.getLayer('country-hubs'))map.setLayoutProperty('country-hubs','visibility','none');}catch{}
-  try{if(map.getLayer('relations')){map.setPaintProperty('relations','line-width',['interpolate',['linear'],['zoom'],2,.75,6,1.8]);map.setPaintProperty('relations','line-opacity',['step',['get','depth'],.58,2,.4,3,.26]);}}catch{}
-  try{if(map.getLayer('semantic-links')){map.setPaintProperty('semantic-links','line-width',.75);map.setPaintProperty('semantic-links','line-opacity',.34);}}catch{}
+  try{if(map.getLayer('semantic-hubs'))map.setPaintProperty('semantic-hubs','circle-color',['match',['get','plane'],'project-canon','#cf7d7d','interpretive-policy','#70afe2','historical','#dda06e','mixed','#aa8ed9','#c3e58d']);}catch{}
+  try{if(map.getLayer('relations')){map.setPaintProperty('relations','line-color',['step',['get','depth'],'#70afe2',2,'#8eabc5',3,'#70879c']);map.setPaintProperty('relations','line-width',['interpolate',['linear'],['zoom'],2,.75,6,1.8]);map.setPaintProperty('relations','line-opacity',['step',['get','depth'],.6,2,.42,3,.28]);}}catch{}
+  try{if(map.getLayer('semantic-links')){map.setPaintProperty('semantic-links','line-color','#84948b');map.setPaintProperty('semantic-links','line-width',.75);map.setPaintProperty('semantic-links','line-opacity',.34);}}catch{}
+  try{if(map.getLayer('trace-hubs'))map.setPaintProperty('trace-hubs','circle-color',['step',['get','depth'],'#c3e58d',2,'#70afe2',3,'#969bd0']);}catch{}
+  try{if(map.getLayer('compare-hubs'))map.setPaintProperty('compare-hubs','circle-color','#6cafe3');}catch{}
   const interior=document.getElementById('interior');
   if(interior?.classList.contains('active'))interior.click();
 }
 
+function installKeyboardNavigation(){
+  document.addEventListener('keydown',event=>{
+    if(event.key==='/'&&!event.metaKey&&!event.ctrlKey&&!event.altKey){
+      const tag=document.activeElement?.tagName;
+      if(!['INPUT','TEXTAREA','SELECT'].includes(tag)){
+        event.preventDefault();search?.focus();search?.select?.();
+      }
+    }
+    if(event.key==='Escape'){
+      const tools=document.getElementById('atlasToolsMenu');if(tools)tools.open=false;
+      for(const menu of menus)menu.open=false;
+      if(!app?.classList.contains('panel-collapsed'))setPanel(false);
+    }
+  });
+  if(search)search.title='Search countries · press / to focus';
+}
+
 installSleekSurface();
+installToolbox();
+installCapitalsControl();
 tuneMapSurface();
-installCapitals();
+installKeyboardNavigation();
 
 // Optional modules announce themselves when their import is complete. React to
 // those events exactly once instead of polling the document every 250 ms for ten
