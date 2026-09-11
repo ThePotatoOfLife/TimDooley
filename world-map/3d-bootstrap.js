@@ -133,16 +133,14 @@ window.__potatoAtlasLoadModule = loadAfterPaint;
 try {
   setStatus('Loading core atlas…');
 
-  // 3d-hover owns resilient local-first data routing and imports 3d-app, which
-  // constructs the MapLibre renderer and geographic country layers.
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
 
-  // Ordinary interaction is now registry-driven. Legacy 3d-ui.js,
-  // 3d-selection-ui.js and 3d-lenses.js are deliberately not booted here: they
-  // generated the redundant Tools hierarchy, duplicate dock, and single-fill Lens
-  // model that the composable registry replaces.
+  // Ordinary interaction is now registry-driven. Legacy Progressive UI,
+  // Selection UI and Lenses are compatibility modules only; they no longer boot
+  // into the normal map path because they generated redundant surfaces and a
+  // single-fill analytical model.
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
   await loadAfterPaint('Compositor', './3d-compositor.js');
@@ -153,6 +151,9 @@ try {
   window.__potatoAtlasDiagnostics.interactiveMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-interactive'));
 
+  declareDormant('Progressive UI', './3d-ui.js', 'legacy compatibility');
+  declareDormant('Selection UI', './3d-selection-ui.js', 'legacy compatibility');
+  declareDormant('Lenses', './3d-lenses.js', 'legacy compatibility');
   declareDormant('Path finder', './3d-pathfinder.js', 'contextual investigation');
   declareDormant('Entity Trace', './3d-entity-trace.js', 'contextual investigation');
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
@@ -173,8 +174,6 @@ try {
     ]);
   };
 
-  // Inspector enrichment follows an actual country selection. Panning/zooming
-  // alone does not promote heavier country/evidence modules.
   let inspectionPromoted = false;
   const promoteInspectionOnce = event => {
     if (inspectionPromoted) return;
