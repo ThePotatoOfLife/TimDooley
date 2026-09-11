@@ -1,8 +1,8 @@
 // D4 observable-country vector for the 3D World Relational Atlas.
 //
 // The inspector prefers a same-origin build snapshot when available, then falls
-// back to small World Bank WDI requests for the selected country only. Values
-// stay dated and typed; this module never converts magnitude into Axis height.
+// back to one small batched World Bank WDI request for the selected country.
+// Values stay dated and typed; raw magnitude never becomes Axis height.
 
 const SNAPSHOT_URL = '../data/world-country-observables.json';
 const panel = document.getElementById('panel');
@@ -20,6 +20,7 @@ const METRICS = {
   urbanization: {label:'Urban population', indicator:'SP.URB.TOTL.IN.ZS', unit:'percent of population', format:'percent'},
   internet_penetration: {label:'Internet use', indicator:'IT.NET.USER.ZS', unit:'percent of population', format:'percent'},
 };
+const INDICATOR_TO_METRIC = Object.fromEntries(Object.entries(METRICS).map(([metricId,spec]) => [spec.indicator,metricId]));
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
@@ -91,31 +92,40 @@ function normalizeSnapshotMetric(metricId, item) {
   };
 }
 
-async function fetchWorldBankMetric(code, metricId, spec) {
-  const query = new URLSearchParams({format:'json', per_page:'10', mrv:'2'});
-  const url = `https://api.worldbank.org/v2/country/${encodeURIComponent(code)}/indicator/${encodeURIComponent(spec.indicator)}?${query}`;
+async function fetchWorldBankCountry(code) {
+  const indicatorPath = Object.values(METRICS).map(spec => encodeURIComponent(spec.indicator)).join(';');
+  const query = new URLSearchParams({format:'json', source:'2', per_page:'100', mrnev:'2'});
+  const url = `https://api.worldbank.org/v2/country/${encodeURIComponent(code)}/indicator/${indicatorPath}?${query}`;
   try {
     const response = await fetch(url);
-    if (!response.ok) return null;
+    if (!response.ok) return {};
     const payload = await response.json();
     const rows = Array.isArray(payload) && Array.isArray(payload[1]) ? payload[1] : [];
-    const values = rows
-      .filter(row => row?.value != null && row?.date != null)
-      .map(row => ({value:row.value, year:Number(row.date) || row.date}))
-      .sort((a,b) => String(b.year).localeCompare(String(a.year)));
-    if (!values.length) return null;
-    return {
-      value:values[0].value,
-      year:values[0].year,
-      unit:spec.unit,
-      indicator:spec.indicator,
-      source:'World Bank World Development Indicators',
-      source_id:'world-bank-wdi',
-      status:'sourced',
-      previous:values[1] || null,
-    };
+    const grouped = Object.fromEntries(Object.keys(METRICS).map(metricId => [metricId,[]]));
+    for (const row of rows) {
+      const indicator = String(row?.indicator?.id || '');
+      const metricId = INDICATOR_TO_METRIC[indicator];
+      if (!metricId || row?.value == null || row?.date == null) continue;
+      grouped[metricId].push({value:row.value, year:Number(row.date) || row.date});
+    }
+    const metrics = {};
+    for (const [metricId,values] of Object.entries(grouped)) {
+      values.sort((a,b) => String(b.year).localeCompare(String(a.year)));
+      if (!values.length) continue;
+      metrics[metricId] = {
+        value:values[0].value,
+        year:values[0].year,
+        unit:METRICS[metricId].unit,
+        indicator:METRICS[metricId].indicator,
+        source:'World Bank World Development Indicators',
+        source_id:'world-bank-wdi',
+        status:'sourced',
+        previous:values[1] || null,
+      };
+    }
+    return metrics;
   } catch {
-    return null;
+    return {};
   }
 }
 
@@ -133,13 +143,10 @@ async function observablesFor(code) {
       if (Object.keys(metrics).length) return {code, metrics, mode:'snapshot', generated_at:snapshot.generated_at, source:snapshot.source};
     }
 
-    const entries = await Promise.all(Object.entries(METRICS).map(async ([metricId, spec]) => [
-      metricId,
-      await fetchWorldBankMetric(code, metricId, spec),
-    ]));
+    const metrics = await fetchWorldBankCountry(code);
     return {
       code,
-      metrics:Object.fromEntries(entries.filter(([,value]) => value)),
+      metrics,
       mode:'live-selected-country',
       source:{id:'world-bank-wdi', name:'World Bank World Development Indicators', url:'https://data.worldbank.org/indicator'},
     };
@@ -194,7 +201,7 @@ function insertCard(code, data) {
   const card = document.createElement('div');
   card.className = 'card atlas-d4-observables';
   card.dataset.d4Code = code;
-  card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · prosperity · motion · labour · life · settlement · connectivity</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'selected-country WDI fallback'}</small></div>
+  card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · prosperity · motion · labour · life · settlement · connectivity</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'one selected-country WDI request'}</small></div>
     <div class="d4-observable-grid">${available.length ? available.map(metricId => metricHtml(metricId, metrics[metricId])).join('') : '<div class="d4-observable-empty">No comparable D4 observations returned for this country.</div>'}</div>
     <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Prior points are retained only as dated observations to seed later D6 change analysis. Current USD is not PPP. Missing is not zero. None of these values determines Axis height or moral rank.</div>`;
 
