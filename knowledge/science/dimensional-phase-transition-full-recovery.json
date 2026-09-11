@@ -1,85 +1,163 @@
 {
   "id":"dimensional-phase-transition-full-recovery",
   "title":"Dimensional Phase Transition / 4D↔5D Door — Full Conversation Recovery",
-  "updated":"2026-09-09",
-  "status":"conversation-developed physical toy-model program built around Tim's dimensional-collapse intuition",
-  "provenance":"User supplied recurring physical intuition (including matter becoming too condensed and transitioning into another dimension; size/scale matters; black holes as transition candidates; matter/light and collapse/emergence relations). The explicit Lagrangians, scalar order parameter, spectral-dimension formulas and proposed observables were assistant-developed mathematical translations unless separately recovered as Tim-authored.",
-  "core_hypothesis":"Effective dimensionality is treated as a dynamical/scale-dependent quantity that may change when energy density, curvature, compactness and characteristic length cross a critical regime.",
+  "version":"2.0.0",
+  "updated":"2026-09-11",
+  "status":"conversation-developed speculative strong-gravity toy-model program built around Tim's dimensional-threshold intuition",
+  "provenance":"User supplied recurring physical intuition, including matter becoming too condensed and transitioning into another dimension, the importance of size/scale, black holes as transition candidates, and collapse/emergence relations. The explicit scalar order parameter, actions, spectral-dimension formulas, dimensionless triggers and proposed observables are assistant/archive-developed mathematical translations unless separately recovered as Tim-authored.",
+  "abstract":"This programme asks whether Tim Dooley's recurring 'Door' intuition can be reformulated as a controlled phase-transition model in which an ordinary four-dimensional effective regime becomes unstable above a dimensionless strong-gravity threshold and a new branch with higher-dimensional degrees of freedom becomes dynamically relevant. The model does not assume that spacetime dimension literally changes as a local thermodynamic variable. Instead it distinguishes three meanings: a scalar order parameter that labels phases, an operational effective/spectral dimension extracted from propagation or diffusion, and a genuinely higher-dimensional compactified gravitational theory. The most serious route is to build a minimal scalar-tensor or scalar-Gauss-Bonnet-like effective action whose GR branch is recovered when the new field vanishes, define a dimensionless trigger Xi from curvature/compactness/energy scales, solve for branch stability and hysteresis, and compare predicted deviations in quasinormal modes, shadows, inspiral dynamics or other strong-gravity observables against GR. The present model is T2: it has a useful mathematical skeleton and test strategy, but no derived critical scale, completed UV theory or distinctive observational prediction yet.",
+  "research_question":"Can a well-posed strong-gravity effective theory produce a threshold/bifurcation between a GR-like branch and a branch carrying additional effective or higher-dimensional degrees of freedom, with observable signatures that cannot be absorbed into ordinary modified-gravity parameters?",
+  "maturity":"T2 mathematical toy/research programme",
+  "core_hypothesis":"Effective dimensionality is treated as a scale-dependent or phase-dependent descriptor that may change when dimensionless combinations of energy density, curvature, compactness and characteristic length cross a critical regime. A separate order parameter phi may encode the transition without being identified with dimension itself.",
+  "semantic_separation":{
+    "order_parameter":"phi labels dynamical phase/branch and is an ordinary field unless a deeper derivation is supplied.",
+    "spectral_dimension":"D_s is an operational quantity inferred from return probability/diffusion scaling; it need not equal topological dimension.",
+    "compact_dimension":"A genuine fifth coordinate y belongs to a higher-dimensional spacetime and requires its own geometry, compactification/boundary conditions and field equations.",
+    "rule":"Do not substitute one of these meanings for another inside a derivation."
+  },
   "geometry":[
-    "(M_4,g_mn)",
+    "(M_4,g_mu_nu)",
     "(M_5,G_AB)",
     "X^A=(x^mu,y)",
     "Sigma_4 subset M_5",
-    "D : Sigma_4 <-> M_5"
+    "D : Sigma_4 <-> M_5 [project interface notation; not by itself a dynamical law]"
   ],
+  "minimal_4d_effective_action":{
+    "action":"S_4=integral d^4x sqrt(-g)[R/(16 pi G) - 1/2 (nabla phi)^2 - V(phi) + f_R(phi) R + f_GB(phi) G_GB + L_matter]",
+    "interpretation":"This is a model class, not a claim that all terms should be present simultaneously. One should start with the smallest coupling that can realize the desired threshold and is mathematically well behaved.",
+    "gauss_bonnet_invariant":"G_GB=R^2-4 R_mu_nu R^mu_nu+R_mu_nu_rho_sigma R^mu_nu_rho_sigma",
+    "simple_potential":"V(phi)=lambda_phi/4 (phi^2-v_phi^2)^2 or another declared stable potential with lambda_phi>0 in this convention",
+    "correspondence_limit":"Choose couplings so phi=0 or another reference vacuum reproduces GR to the required accuracy."
+  },
+  "dimensionless_trigger":{
+    "purpose":"Replace an undefined mixture of density, curvature, energy and size with dimensionless control variables before combining them.",
+    "candidates":[
+      "x_C = GM/(R c^2)",
+      "x_K = ell_*^4 K, where K=R_mu_nu_rho_sigma R^mu_nu_rho_sigma",
+      "x_rho = rho/rho_*",
+      "x_E = E/E_*",
+      "x_L = ell_*/L"
+    ],
+    "generic_form":"Xi = w_C f_C(x_C)+w_K f_K(x_K)+w_rho f_rho(x_rho)+w_E f_E(x_E)+w_L f_L(x_L)",
+    "threshold":"Xi=Xi_c, with Xi_c conventionally scalable to 1 if the weights/functions are defined accordingly",
+    "rigor_rule":"Weights and nonlinear functions must be derived, calibrated or preregistered; fitting them after seeing a desired transition makes Xi descriptive rather than predictive."
+  },
   "field_template":[
-    "D_eff=D_eff(rho,E,L,R_curvature,...)",
+    "D_eff=D_eff(rho,E,L,R_curvature,...) [schematic only]",
     "L = L_GR + L_phi + L_matter + L_coupling",
     "L_phi = -(1/2)(nabla phi)^2 - V(phi)",
-    "L_coupling = -xi phi^2 R",
-    "V(phi)=lambda(phi^2-v^2)^2"
+    "L_coupling = -xi phi^2 R [one scalar-tensor example]",
+    "V(phi)=lambda(phi^2-v^2)^2 [toy convention]"
   ],
-  "door_as_domain_wall":"phi(r)->phi_4 for r>r_c and phi(r)->phi_5 for r<r_c",
+  "door_as_phase_boundary":{
+    "historical_form":"phi(r)->phi_4 for r>r_c and phi(r)->phi_5 for r<r_c",
+    "rigorous_reading":"A Door should be represented by coexistence/transition between solution branches, not merely by assigning labels 4 and 5 to two values of phi.",
+    "bifurcation_questions":["Does the GR-like branch become linearly unstable?","Does a new branch appear continuously or discontinuously?","Is there hysteresis?","Which branch minimizes the relevant energy/free-energy functional or is dynamically stable?","What perturbation spectrum determines the onset?"]
+  },
   "gravity_triggers":[
     "C=GM/(Rc^2)",
-    "C=1/2 for the Schwarzschild horizon when R is the Schwarzschild radius",
-    "V_eff(phi)=V(phi)+alpha C phi^2",
-    "K=R_mnrs R^mnrs=48G^2M^2/(c^4 r^6) for Schwarzschild",
-    "chi=ell_*^4 K",
-    "V_eff=V+alpha C phi^2+beta chi phi^2"
+    "C=1/2 for a Schwarzschild horizon when R=2GM/c^2",
+    "K=48 G^2 M^2/(c^4 r^6) for Schwarzschild",
+    "chi=ell_*^4 K is dimensionless",
+    "V_eff(phi;Xi)=V(phi)+a(Xi) phi^2 + b phi^4 + ... is a cleaner Landau-style phase-transition ansatz than adding incomparable dimensional triggers directly"
   ],
+  "criticality_model":{
+    "landau_ansatz":"V_eff(phi;Xi)=1/2 m_eff^2(Xi) phi^2 + lambda_phi phi^4/4 + ...",
+    "example":"m_eff^2(Xi)=m_0^2[1-Xi/Xi_c]",
+    "transition_logic":"For lambda_phi>0, a sign change in m_eff^2 can destabilize phi=0 and create nonzero minima. Whether this mechanism is physically realized depends on the chosen curvature/matter coupling and field equations.",
+    "value":"This separates the generic threshold mathematics from the much stronger claim that the new phase is literally five-dimensional."
+  },
   "effective_dimension":[
-    "D_eff=4+Delta D(phi)",
+    "D_eff=4+Delta D(phi) [phenomenological mapping]",
     "D_eff=4+eta phi^2/M_*^2 [example ansatz]",
     "phi≈0 -> D_eff≈4",
     "phi!=0 -> D_eff>4",
-    "candidate target D_eff->5"
+    "candidate target D_eff->5",
+    "rigor_note":"D_eff(phi) must be tied to an operational dimensional estimator or to a derived dimensional reduction; otherwise it is only a relabeling of phi."
   ],
-  "spectral_dimension_branch":[
-    "D_s(sigma)=-2 d ln P(sigma)/d ln sigma",
-    "candidate distinctive hypothesis: D_s->5 in the proposed extreme-gravity regime",
-    "status: archive/conversation hypothesis, not an observed result"
-  ],
+  "spectral_dimension_branch":{
+    "equation":"D_s(sigma)=-2 d ln P(sigma)/d ln sigma",
+    "variables":"P(sigma) is a return probability for a specified diffusion/heat kernel and sigma is diffusion time/scale parameter.",
+    "candidate_distinctive_hypothesis":"D_s approaches a value near 5 in the proposed extreme-gravity regime.",
+    "required_derivation":"Specify the kinetic operator/geometry, compute or simulate the heat kernel, and derive P(sigma). Do not prescribe D_s->5 by hand and then call it evidence.",
+    "status":"archive/conversation hypothesis, not an observed result"
+  },
   "matter_light_coupling":[
     "L_QED,int=-e psi_bar gamma^mu A_mu psi",
-    "L_new=g_phi phi F_mn F^mn",
-    "research_question: would extreme curvature/transition states produce anomalous electromagnetic propagation or emission?"
+    "L_new=g_phi phi F_mu_nu F^mu_nu [effective scalar-photon operator]",
+    "research_question":"Would a completed transition model alter electromagnetic propagation/emission in a manner not already excluded or degenerate with plasma/accretion/environmental effects?",
+    "constraint_rule":"Gauge invariance, operator dimension and observational limits must be checked before using the coupling as a prediction."
   ],
   "five_dimensional_gravity":[
-    "S=(1/(2 kappa_5)) integral d^5x sqrt(-G)(R_5-2 Lambda_5)+S_matter",
-    "S_eff=integral d^4x sqrt(-g)[R_4/(2 kappa_4)+L_phi+L_KK+L_matter]"
-  ],
+    "S_5=(1/(2 kappa_5)) integral d^5x sqrt(-G)(R_5-2 Lambda_5)+S_matter",
+    "S_eff=integral d^4x sqrt(-g)[R_4/(2 kappa_4)+L_phi+L_KK+L_matter]",
+    "completion_requirements":["topology/size of the fifth dimension","boundary or compactification conditions","relation between kappa_5 and effective 4D Newton constant","field content in 5D","dimensional reduction procedure","stability of the compactification"]
+  },
   "kaluza_klein_branch":[
     "p_5=n hbar/R",
     "m_n^2=m_0^2+n^2 hbar^2/(R^2 c^2)",
-    "interpretive lesson: hidden-dimensional momentum can appear to a 4D observer as a mass tower rather than literal visible disappearance"
+    "E_KK,1=hbar c/R for the first massless-base excitation scale",
+    "interpretive_lesson":"Hidden-dimensional momentum can appear to a 4D observer as a mass tower rather than literal visible disappearance.",
+    "falsifiability":"Any claimed compactification radius maps to an excitation scale and therefore to experimental/astrophysical constraints; R cannot remain a purely symbolic parameter in a physical model."
   ],
-  "black_hole_observables":[
-    "G_mn -> G_mn + T_mn^(phi)+T_mn^(5D) [schematic]",
-    "g_mn = g_mn^Kerr + delta g_mn(phi)",
-    "f_ringdown=f_GR+Delta f",
-    "tau_ringdown=tau_GR+Delta tau",
-    "S_BH=k_B c^3 A/(4G hbar)+Delta S_5",
-    "Gamma_Hawking=Gamma_GR+Delta Gamma_5",
-    "possible extra gravitational polarizations/modes"
-  ],
+  "strong_gravity_observables":{
+    "metric":"g_mu_nu = g_mu_nu^GR + delta g_mu_nu(phi)",
+    "ringdown":["f_QNM=f_GR+Delta f","tau_QNM=tau_GR+Delta tau"],
+    "horizon_thermodynamics":"S_BH=k_B c^3 A/(4G hbar)+Delta S_model",
+    "radiation":"Gamma_Hawking=Gamma_GR+Delta Gamma_model [highly model dependent]",
+    "additional_targets":["extra gravitational polarizations if present","scalar radiation in binaries","inspiral phasing","black-hole shadow/photon-sphere deviations","branch-dependent stability thresholds"],
+    "baseline_rule":"Compute the same observable in GR and in the nearest conventional modified-gravity model. A deviation alone does not identify a dimensional transition."
+  },
+  "relation_to_scalarization_research":{
+    "finding":"Curvature-induced spontaneous scalarization in scalar-Gauss-Bonnet-type theories is a genuine strong-gravity example of a GR branch becoming unstable and a scalarized branch appearing above model-dependent thresholds.",
+    "project_value":"This is a rigorous mathematical neighbor for the Door-as-bifurcation idea. It does not establish a transition to a fifth dimension, but it provides real machinery for thresholds, metastability, branch transitions and observable deviations.",
+    "2026_reference":"https://link.springer.com/article/10.1140/epjc/s10052-025-15272-w",
+    "review_reference":"https://link.springer.com/article/10.1007/s10714-024-03278-w"
+  },
   "cosmology_recycling_branch":[
-    "higher-dimensional state -> 4D expanding phase",
+    "higher-dimensional state -> 4D expanding phase [speculative project branch]",
     "derive observed a(t) from higher-dimensional boundary conditions as a serious target",
-    "collapse -> higher-dimensional reservoir -> emergence",
     "nabla_mu T_4^(mu nu)=-Q^nu",
     "nabla_A T_5^(AB)=+Q^B",
     "nabla_A T_total^(AB)=0",
-    "interpretive rule: if energy is exchanged between sectors, total conservation must still hold"
+    "interpretive_rule":"If energy-momentum is exchanged between sectors, the combined theory needs a covariantly consistent conservation law; symbolic reservoir language is not enough."
   ],
   "duality_branch":[
     "T : D_low <-> D_high",
     "T^2=1 [candidate involution]",
-    "collapse <-> emergence under T"
+    "collapse <-> emergence under T",
+    "rigor_requirement":"Specify what mathematical objects T acts on and show that the action/equations or observables have the claimed symmetry. Otherwise it is a narrative duality, not a physical one."
   ],
-  "compressed_transition_grammar":"state -> threshold -> transition -> new state, controlled by energy + scale + density + curvature + geometry",
-  "critical_parameters_to_solve":["C_c","K_c","E_c","L_c","D_eff(C,K,E,L)"],
-  "observables_to_compare_with_GR":["Delta g_mn","Delta f_GW","Delta tau_GW","Delta S_BH","Delta Gamma_Hawking"],
-  "research_boundary":"This is a mathematically useful speculative program, not evidence that black holes actually open a fifth dimension or that a phi field exists. Its value is that it turns Tim's repeated dimensional-threshold intuition into variables, equations, and potentially falsifiable deviations.",
-  "connections":["unified-potato-theory-2025-recovery","theory-of-everything-archaeology","equation-lineage-and-theory-graph","axis-11d-sun-spiral-time-symmetry-recovery","model-testing-protocol","science-master-index"]
+  "minimal_falsifiable_submodel":{
+    "goal":"Produce one calculable strong-gravity threshold before pursuing full 5D cosmology.",
+    "steps":[
+      "Choose a 4D scalar-curvature action with a GR solution phi=0.",
+      "Derive the linearized scalar perturbation equation on Schwarzschild/Kerr or another declared background.",
+      "Find the parameter region where the effective mass/operator develops an instability.",
+      "Construct the nonlinear branch and test stability.",
+      "Compute at least one observable such as a QNM shift or photon-sphere shift.",
+      "Compare against GR and conventional scalarized-gravity baselines.",
+      "Only if a separate higher-dimensional derivation maps this branch to 5D should it be called evidence for dimensional transition."
+    ]
+  },
+  "critical_parameters_to_solve":["Xi_c","coupling scale(s)","ell_*","m_phi","lambda_phi","compactification radius R if a genuine 5D branch is used","mapping between phi and any operational D_eff"],
+  "falsification_and_failure_conditions":[
+    "No stable non-GR branch exists in the completed action over the claimed parameter regime.",
+    "The trigger can only be fitted retrospectively and fails to predict transition thresholds in held-out systems/simulations.",
+    "All predicted observables are degenerate with a simpler scalar-tensor/modified-gravity model, leaving the dimensional interpretation unsupported.",
+    "A claimed 5D completion violates known constraints or lacks a consistent compactification/reduction.",
+    "Operational spectral dimension does not change as predicted when computed from the specified operator/geometry."
+  ],
+  "completion_path":[
+    "Freeze the historical intuition separately from modern model construction.",
+    "Pick one meaning of effective dimension for each calculation.",
+    "Use a dimensionless threshold variable Xi.",
+    "Build and solve a minimal stable action.",
+    "Derive a transition rather than inserting D_eff->5 by hand.",
+    "Compute one discriminating strong-gravity observable with uncertainty.",
+    "Only then connect the 4D phase transition to an explicit 5D compactification if such a derivation can be constructed."
+  ],
+  "compressed_transition_grammar":"state -> dimensionless control parameter -> loss of branch stability -> nonlinear transition -> new stable/metastable state -> observable consequence",
+  "research_boundary":"This is a mathematically useful speculative programme, not evidence that black holes actually open a fifth dimension. Its strongest current value is the conversion of a qualitative dimensional-threshold intuition into branch stability, dimensionless critical variables, explicit actions and observational discriminants.",
+  "connections":["unified-potato-theory-2025-recovery","theory-of-everything-archaeology","equation-lineage-and-theory-graph","axis-11d-sun-spiral-time-symmetry-recovery","model-testing-protocol","science-master-index","research-2026-09-11-axis-door-observable-dynamics"]
 }
