@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a compact, sourced population + religion snapshot for the 3D atlas.
+"""Build compact sourced demography and adjacent runtime snapshots for the 3D atlas.
 
 Population prefers each canonical country's existing sourced observation and falls
 back to UN World Population Prospects 2024 as surfaced by Our World in Data when
@@ -7,8 +7,10 @@ the local record has no usable value. Religious composition uses the public Our
 World in Data Grapher API, adapting Pew Research Center's 2025 Global Religious
 Composition Estimates.
 
-The output is a presentation/runtime artifact. It does not overwrite canonical
-country records and it keeps observation year/source metadata explicit.
+The demography output is a presentation/runtime artifact. It does not overwrite
+canonical country records and it keeps observation year/source metadata explicit.
+Country-facts and harmonized metric snapshots are emitted beside it so Pages can
+serve same-origin map data without turning browser startup into an API workflow.
 """
 from __future__ import annotations
 
@@ -38,7 +40,7 @@ RELIGIONS = {
     "other_religions": "other_religions",
     "unaffiliated": "unaffiliated",
 }
-USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.3"
+USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.4"
 
 
 def fetch_text(url: str, timeout: int = 180) -> str:
@@ -150,6 +152,24 @@ def build_country_facts_snapshot() -> None:
     build_country_facts()
 
 
+def build_metrics_snapshot() -> dict:
+    """Build optional harmonized metrics without making demography depend on WDI uptime."""
+    target = OUT.with_name("world-country-metrics.json")
+    try:
+        from build_world_country_metrics import build as build_metrics
+        payload = build_metrics(target)
+        return {
+            "output": str(target),
+            "status": "built",
+            "metrics": {key: value.get("coverage", 0) for key, value in payload.get("metrics", {}).items()},
+            "acquisition_errors": payload.get("acquisition_errors", []),
+        }
+    except Exception as exc:
+        target.unlink(missing_ok=True)
+        print(f"World country metrics unavailable; core atlas continues without metric runtime: {exc}", flush=True)
+        return {"output": str(target), "status": "unavailable", "error": str(exc)}
+
+
 def main() -> int:
     index = json.loads(INDEX.read_text(encoding="utf-8"))
     countries = index.get("countries", [])
@@ -221,7 +241,7 @@ def main() -> int:
         )
 
     payload = {
-        "version": "1.3.0",
+        "version": "1.4.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-demography-runtime",
         "scope": "Presentation/runtime snapshot; canonical country records remain the source owners for their own sourced observations.",
@@ -239,6 +259,7 @@ def main() -> int:
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     build_country_facts_snapshot()
+    metrics = build_metrics_snapshot()
     print(json.dumps({
         "output": str(OUT),
         "population_coverage": pop_coverage,
@@ -246,6 +267,7 @@ def main() -> int:
         "religion_errors": religion_errors,
         "religion_fallbacks": religion_fallbacks,
         "country_facts_output": str(OUT.with_name("world-country-facts.json")),
+        "metrics": metrics,
     }, indent=2), flush=True)
     return 0
 
