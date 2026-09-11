@@ -1,8 +1,9 @@
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 
-const toolbar = document.querySelector('.top');
-const anchor = $('#tilt');
+// Path is an investigation tool, so its controls belong inside the progressive
+// Trace menu rather than on the persistent map toolbar.
+const traceMenu = $('#traceMenu .menu-pop');
 const input = document.createElement('input');
 input.id = 'pathTarget';
 input.setAttribute('list', 'country-list');
@@ -11,10 +12,20 @@ input.setAttribute('aria-label', 'Find relationship path to country');
 input.title = 'Find the shortest known path from the selected country using the current relation-type filter';
 const button = document.createElement('button');
 button.id = 'pathFind';
-button.textContent = 'Path';
+button.textContent = 'Find relationship path';
 button.title = 'Find shortest typed relationship path';
-toolbar.insertBefore(input, anchor);
-toolbar.insertBefore(button, anchor);
+if (traceMenu) {
+  const sep = document.createElement('div');
+  sep.className = 'menu-sep';
+  const title = document.createElement('div');
+  title.className = 'menu-title';
+  title.textContent = 'Shortest represented path';
+  traceMenu.append(sep, title, input, button);
+} else {
+  console.warn('Trace menu unavailable; Path controls were not mounted');
+  input.hidden = true;
+  button.hidden = true;
+}
 
 const style = document.createElement('style');
 style.textContent = `.path-result{position:absolute;right:12px;bottom:12px;z-index:4;width:min(520px,calc(100% - 24px));max-height:46%;overflow:auto;background:#080b0bf2;border:1px solid var(--line);border-radius:10px;padding:11px}.path-result[hidden]{display:none}.path-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.path-steps{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin:9px 0}.path-step{background:var(--panel2);border:1px solid var(--line);color:var(--ink);padding:5px 7px;border-radius:7px}.path-arrow{color:var(--muted)}.path-edge{padding:6px 0;border-top:1px solid var(--line);font-size:12px}@media(max-width:900px){.path-result{position:fixed;bottom:10px;right:10px;left:10px;width:auto;max-height:40vh}}`;
@@ -24,7 +35,7 @@ const box = document.createElement('section');
 box.id = 'pathResult';
 box.className = 'path-result';
 box.hidden = true;
-document.querySelector('.mapwrap').appendChild(box);
+document.querySelector('.mapwrap')?.appendChild(box);
 
 let worldCfg = null;
 let countries = [];
