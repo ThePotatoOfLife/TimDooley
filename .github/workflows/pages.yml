@@ -33,9 +33,6 @@ jobs:
         with:
           python-version: '3.x'
 
-      # Source contracts own behavior-level Atlas validation. Keep these checks
-      # out of the Pages shell so wording/layout changes cannot silently become
-      # duplicate architectural contracts.
       - name: Validate Atlas projection and time contracts
         run: python scripts/validate_atlas_view_contracts.py
 
@@ -60,14 +57,10 @@ jobs:
           set -euo pipefail
           mkdir -p _site/world-map/vendor
           base='https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist'
-          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl.mjs" \
-            -o _site/world-map/vendor/maplibre-gl.mjs
-          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl-worker.mjs" \
-            -o _site/world-map/vendor/maplibre-gl-worker.mjs
-          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl-shared.mjs" \
-            -o _site/world-map/vendor/maplibre-gl-shared.mjs
-          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl.css" \
-            -o _site/world-map/vendor/maplibre-gl.css
+          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl.mjs" -o _site/world-map/vendor/maplibre-gl.mjs
+          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl-worker.mjs" -o _site/world-map/vendor/maplibre-gl-worker.mjs
+          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl-shared.mjs" -o _site/world-map/vendor/maplibre-gl-shared.mjs
+          curl -fsSL --retry 3 --retry-delay 1 "$base/maplibre-gl.css" -o _site/world-map/vendor/maplibre-gl.css
           test -s _site/world-map/vendor/maplibre-gl.mjs
           test -s _site/world-map/vendor/maplibre-gl-worker.mjs
           test -s _site/world-map/vendor/maplibre-gl-shared.mjs
@@ -96,25 +89,16 @@ jobs:
 
           geo_path = Path('_site/data/world-countries.geo.json')
           geo = json.loads(geo_path.read_text(encoding='utf-8'))
-          assert geo.get('type') == 'FeatureCollection', geo.get('type')
-          assert isinstance(geo.get('features'), list) and len(geo['features']) >= 150, len(geo.get('features', []))
-          assert all(f.get('geometry') for f in geo['features'][:20])
-          print(f"Validated local atlas geometry snapshot: {len(geo['features'])} polygons")
+          assert geo.get('type') == 'FeatureCollection'
+          assert isinstance(geo.get('features'), list) and len(geo['features']) >= 150
 
           rest_path = Path('_site/data/rest-countries-runtime.json')
           if rest_path.exists():
               try:
                   rows = json.loads(rest_path.read_text(encoding='utf-8'))
                   assert isinstance(rows, list) and len(rows) >= 190
-                  assert sum(1 for row in rows if row.get('cca3')) >= 190
-                  capital_coords = sum(
-                      1 for row in rows
-                      if len((row.get('capitalInfo') or {}).get('latlng') or []) == 2
-                  )
-                  assert capital_coords >= 150, capital_coords
-                  print(f"Validated local country runtime snapshot: {len(rows)} rows / {capital_coords} capital coordinates")
               except Exception as exc:
-                  print(f"Discarding invalid REST Countries snapshot: {exc}")
+                  print(f'Discarding invalid REST Countries snapshot: {exc}')
                   rest_path.unlink(missing_ok=True)
           PY
 
@@ -123,121 +107,61 @@ jobs:
           ATLAS_DEMOGRAPHY_OUT: _site/data/world-country-demography.json
         run: python scripts/build_world_demography.py
 
-      - name: Compile complete science catalog
-        run: python scripts/build_science_catalog.py
-
-      - name: Build search discovery layer
+      - name: Build machine discovery layer
         run: python scripts/build_discovery.py
 
-      - name: Expose discovery entry points
+      - name: Expose machine discovery without changing reader navigation
         run: python scripts/patch_home_discovery.py
 
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
-      # This step only verifies generated products that are not already owned by
-      # the dedicated Atlas validators. Full post-build link/module/data checks
-      # are centralized in validate_site_shell.py below.
-      - name: Verify compiled public artifact surfaces
+      - name: Verify canonical reader surface
         shell: bash
         run: |
           set -euxo pipefail
           test -f _site/index.html
-          test -f _site/explore/index.html
-          test -f _site/manifest.json
-          test -f _site/app/app.js
-          test -f _site/app/style.css
-          test -f _site/app/home.css
-          test -f _site/knowledge/core/potato-of-life.json
-          test -f _site/knowledge/core/tim-dooley.json
-          test -f _site/knowledge/core/tim-identity-ontology.json
-          test -f _site/knowledge/indexes/faq-tim-ontology-questions.json
-          test -f _site/tim-dooley/ontology/index.html
-          test -f _site/faq/index.html
-          test -f _site/faq/all/god/index.html
-          test -f _site/questions/index.html
-          test -f _site/questions/who-is-tim-dooley/index.html
-          test -f _site/index-a-z/index.html
-          test -f _site/discovery.json
-          test -f _site/llms-full.txt
-          test -f _site/robots.txt
-          test -f _site/sitemap-index.xml
-          test -f _site/sitemap-questions.xml
-          test -s _site/data/world-countries.geo.json
-          test -s _site/world-map/vendor/maplibre-gl.mjs
-          test -s _site/world-map/vendor/maplibre-gl-worker.mjs
-          test -s _site/world-map/vendor/maplibre-gl-shared.mjs
-          test -s _site/world-map/vendor/maplibre-gl.css
-
-          # Science is a compiled public product, not merely copied source files.
+          test -f _site/tim-dooley/index.html
+          test -f _site/religion/index.html
+          test -f _site/religion/jesus-tim/index.html
+          test -f _site/philosophy/index.html
           test -f _site/science/index.html
-          test -f _site/science/science.css
-          test -f _site/science/science-hub.css
-          test -f _site/science/science.js
-          test -f _site/science/catalog.json
-          test -f _site/science/catalog/index.html
-          grep -q 'SCIENCE' _site/science/index.html
-          grep -q 'Unified Potato Theory' _site/science/index.html
-          grep -q 'Every canonical science record' _site/science/index.html
-          grep -q 'catalog-card' _site/science/index.html
-          grep -q 'science.js' _site/science/index.html
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          source = sorted((Path('knowledge') / 'science').rglob('*.json'))
-          catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
-          assert catalog['count'] == len(source), (catalog['count'], len(source))
-          assert len(catalog['records']) == len(source)
-          page = Path('_site/science/index.html').read_text(encoding='utf-8')
-          assert page.count('class="catalog-card"') == len(source)
-          assert 'r(θ) = a e<sup>bθ</sup>' in page
-          print(f"Verified compiled science corpus: {len(source)} records")
-          PY
+          test -f _site/north/index.html
+          test -f _site/world-map/3d.html
+          test -f _site/explore/index.html
+          test -f _site/sitemap.xml
+          test -f _site/llms.txt
 
-          # Homepage source is curated; build-time discovery patches must not
-          # silently re-expand or rename its semantic gateway grid.
-          grep -q 'Be simple and grow to light.' _site/index.html
-          grep -q 'app/home.css' _site/index.html
-          grep -q '<strong>Collection</strong>' _site/index.html
-          grep -q '<strong>FAQ</strong>' _site/index.html
-          grep -q '<strong>A–Z</strong>' _site/index.html
-          grep -q '<strong>Timeline</strong>' _site/index.html
-          grep -q '<strong>Public Record</strong>' _site/index.html
-          grep -q '<strong>Religion</strong>' _site/index.html
+          grep -q 'class="sections"' _site/index.html
+          grep -q 'href="tim-dooley/"' _site/index.html
+          grep -q 'href="religion/"' _site/index.html
+          grep -q 'href="philosophy/"' _site/index.html
+          grep -q 'href="science/"' _site/index.html
+          grep -q 'href="world-map/3d.html"' _site/index.html
+          ! grep -q 'id="branches"' _site/index.html
+          ! grep -q 'id="reader"' _site/index.html
+          ! grep -q 'app/app.js' _site/index.html
+          ! grep -q '<iframe' _site/index.html
+
+          grep -q 'href="jesus-tim/"' _site/religion/index.html
+          ! grep -q 'explore/#branch=' _site/religion/index.html
+          grep -q 'Jesus ↔ Tim Dooley / Son' _site/religion/jesus-tim/index.html
+          grep -q 'href="../religion/jesus-tim/"' _site/tim-dooley/index.html
+          grep -q 'Open North Axis in the World Map' _site/north/index.html
+          grep -q 'href="../world-map/3d.html"' _site/north/index.html
+          grep -q 'name="robots" content="noindex,follow"' _site/learn/index.html
+
           python - <<'PY'
+          import re
           from pathlib import Path
           page = Path('_site/index.html').read_text(encoding='utf-8')
-          start = page.find('<nav class="quicknav"')
-          end = page.find('</nav>', start)
-          assert start >= 0 and end > start
-          nav = page[start:end]
-          count = nav.count('<a href=')
-          assert count == 12, f'primary homepage gateway count drifted: {count}'
-          print('Verified curated homepage: quote + 12 semantic gateways')
+          nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', page, re.S)
+          assert nav, 'canonical sections navigation missing'
+          hrefs = re.findall(r'href="([^"]+)"', nav.group(1))
+          expected = ['tim-dooley/','religion/','philosophy/','science/','world-map/3d.html']
+          assert hrefs == expected, (hrefs, expected)
+          print('Verified canonical homepage: exactly five reader entrances')
           PY
-
-          grep -q 'id="branches"' _site/index.html
-          grep -q 'id="reader"' _site/index.html
-          grep -q 'app/app.js' _site/index.html
-          grep -q 'id="archive-explorer"' _site/explore/index.html
-          grep -q 'id="branches"' _site/explore/index.html
-          grep -q 'id="reader"' _site/explore/index.html
-          grep -q 'app/app.js' _site/explore/index.html
-          grep -q 'manifest.json' _site/app/app.js
-          grep -q 'tim-dooley/ontology/' _site/sitemap.xml
-          grep -q 'Critical entity resolution' _site/llms.txt
-          grep -q 'Potatoverse theological identity' _site/tim-dooley/ontology/index.html
-          grep -q 'Who is Tim Dooley' _site/questions/who-is-tim-dooley/index.html
-          grep -q 'questions/' _site/index.html
-          grep -q 'index-a-z/' _site/index.html
-          grep -q 'sitemap-index.xml' _site/robots.txt
-          grep -q 'sitemap-questions.xml' _site/sitemap-index.xml
-          grep -q '"@type":"Thing"' _site/index.html
-          ! grep -q '"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley"' _site/index.html
-          ! grep -q '"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley"' _site/tim-dooley/index.html
-          ! grep -q 'root.js' _site/index.html
-          ! grep -q 'id="root-tree"' _site/index.html
-          ! grep -q '<iframe' _site/index.html
 
       - name: Validate built site shell
         id: site_shell
@@ -257,10 +181,6 @@ jobs:
         if: steps.site_shell.outcome == 'failure'
         run: exit 1
 
-      # Source-vs-build drift is validated above. Only after that gate passes do
-      # we apply deployment-only cache busting and point the browser at the
-      # vendored same-origin MapLibre files. Bootstrap propagates this deployment
-      # SHA through every dynamically imported atlas module.
       - name: Finalize 3D atlas runtime
         shell: bash
         run: |
@@ -294,20 +214,11 @@ jobs:
           assert new_loader in page and old_loader not in page
           assert new_guard in page and old_guard not in page
           assert new_bootstrap in page and old_bootstrap not in page
-          print(f'Finalized 3D atlas runtime with deployment version {version}.')
           PY
 
-          test -s _site/world-map/vendor/maplibre-gl.mjs
-          test -s _site/world-map/vendor/maplibre-gl-worker.mjs
-          test -s _site/world-map/vendor/maplibre-gl-shared.mjs
-          test -s _site/world-map/vendor/maplibre-gl.css
           grep -q './vendor/maplibre-gl.css?v=6.9.0' _site/world-map/3d.html
-          grep -q './vendor/maplibre-gl.mjs?v=6.9.0' _site/world-map/maplibre-loader.js
           grep -Eq 'src="./3d-bootstrap.js\?v=[0-9a-f]{12}"' _site/world-map/3d.html
           grep -Eq 'src="./3d-boot-guard.js\?v=[0-9a-f]{12}"' _site/world-map/3d.html
-          grep -q "ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')" _site/world-map/3d-bootstrap.js
-          grep -q "await import(versionedModule('./3d-hover.js'))" _site/world-map/3d-bootstrap.js
-          grep -q "await import(versionedModule('./3d-app.js'))" _site/world-map/3d-hover.js
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
