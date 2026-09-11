@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "countries" / "index.json"
 OUT = Path(os.environ.get("ATLAS_D4_OUT", ROOT / "data" / "world-country-observables.json"))
 EXPECTED = 195
-USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.2"
+USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.3"
 
 METRICS = {
     "population": {
@@ -57,12 +57,26 @@ METRICS = {
         "domain": "labour",
         "role": "labour utilization",
     },
+    "labor_force_participation": {
+        "label": "Labour-force participation",
+        "indicator": "SL.TLF.CACT.ZS",
+        "unit": "percent of population ages 15+",
+        "domain": "labour",
+        "role": "labour-market participation",
+    },
     "life_expectancy": {
         "label": "Life expectancy",
         "indicator": "SP.DYN.LE00.IN",
         "unit": "years",
         "domain": "health/demography",
         "role": "human outcome",
+    },
+    "fertility_rate": {
+        "label": "Fertility rate",
+        "indicator": "SP.DYN.TFRT.IN",
+        "unit": "births per woman",
+        "domain": "demography",
+        "role": "population reproduction",
     },
     "urbanization": {
         "label": "Urban population",
@@ -77,6 +91,13 @@ METRICS = {
         "unit": "percent of population",
         "domain": "technology/information",
         "role": "digital connectivity",
+    },
+    "electricity_access": {
+        "label": "Electricity access",
+        "indicator": "EG.ELC.ACCS.ZS",
+        "unit": "percent of population",
+        "domain": "infrastructure/energy",
+        "role": "basic energy access",
     },
     "trade_openness": {
         "label": "Trade / GDP",
@@ -106,6 +127,13 @@ METRICS = {
         "domain": "finance/investment",
         "role": "cross-border capital inflow intensity",
     },
+    "co2_per_capita": {
+        "label": "CO2 emissions / person",
+        "indicator": "EN.ATM.CO2E.PC",
+        "unit": "metric tons CO2/person",
+        "domain": "environment/energy",
+        "role": "territorial emissions intensity per person",
+    },
 }
 
 INDICATOR_TO_METRIC = {spec["indicator"]: metric_id for metric_id, spec in METRICS.items()}
@@ -118,7 +146,7 @@ def get_json(url: str, timeout: int = 180):
 
 
 def fetch_all(wanted: set[str]) -> dict[str, dict[str, list[dict]]]:
-    """Fetch the Source-2 WDI D4 indicators in one batched API request."""
+    """Fetch the configured Source-2 WDI D4 indicators in one batched request."""
     indicators = ";".join(spec["indicator"] for spec in METRICS.values())
     query = urllib.parse.urlencode({
         "format": "json",
@@ -190,6 +218,12 @@ def main() -> int:
             f"D4 observable coverage too low: population={coverage['population']}, "
             f"gdp={coverage['gdp']}, required_each>={minimum}"
         )
+    for metric_id in ("labor_force_participation", "fertility_rate", "electricity_access", "co2_per_capita"):
+        if coverage[metric_id] < 120:
+            raise RuntimeError(
+                f"D4 observable coverage too low for {metric_id}: "
+                f"{coverage[metric_id]}, required>=120"
+            )
 
     generated = datetime.now(timezone.utc).isoformat()
     rows = {}
@@ -227,7 +261,7 @@ def main() -> int:
         }
 
     payload = {
-        "version": "1.2.0",
+        "version": "1.3.0",
         "generated_at": generated,
         "record_type": "world-country-observables-runtime",
         "axis_dimension": 4,
@@ -251,6 +285,10 @@ def main() -> int:
             "Do not assume all metrics share the same reference year.",
             "Current USD GDP and GDP/person are not PPP measures.",
             "Unemployment follows the World Bank/ILO series definition and is not identical to every national unemployment series.",
+            "Labour-force participation is not an employment rate and retains the source-series definition.",
+            "Fertility rate is a total-fertility-rate estimate, not a birth count.",
+            "Electricity access does not measure reliability, affordability, generation mix or grid quality.",
+            "CO2/person is a territorial emissions indicator, not a consumption-based carbon footprint.",
             "Trade/GDP is gross trade intensity, not bilateral dependency or trade balance.",
             "Net migration is a balance over the source reference period, not a bilateral migration edge.",
             "Negative net energy imports can indicate a net exporter; this measure is not an electricity-mix measure.",
