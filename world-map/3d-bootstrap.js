@@ -144,6 +144,10 @@ try {
   const map = await waitForCore();
   await nextPaint();
 
+  // Semantic registry loads before UI providers so optional modules can declare
+  // where they belong without injecting controls into arbitrary legacy menus.
+  await loadAfterPaint('Capability registry', './3d-capability-registry.js');
+
   // Only the observer-safe UI controller is automatic after core. Pathfinder,
   // demography, Evidence, Fields, Networks, Time and Axis are all true opt-ins.
   await loadAfterPaint('Progressive UI', './3d-ui.js');
