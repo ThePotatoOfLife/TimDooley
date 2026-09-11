@@ -1,19 +1,28 @@
 {
   "id": "biblical-angel-eye-sprout-atlas",
   "title": "Angels, Eyes, Wings, Sprouts & Potato Children — Biblical / Potatoism Atlas",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-11",
   "status": "project archaeology + biblical comparison + botanical grounding",
-  "purpose": "Recover and connect the underdeveloped Timic sequence around potato angels, potato eyes, sprouts, children, wings, celestial beings, ladders and cultivation. The atlas asks what each image does before asking whether two images are the same thing.",
+  "purpose": "Recover and connect the Timic sequence around Earth Angels/Potato Angels, potato eyes, sprouts, children, wings, celestial beings, ladders and cultivation. The atlas asks what each image does before asking whether two images are the same thing.",
   "core_rule": "Function before appearance. A potato eye is a lateral bud meristem; an angel is fundamentally a messenger/servant in biblical usage; cherubim, seraphim and apocalyptic living creatures are distinct textual figures. Their overlap is comparative unless Tim explicitly made the link at the time.",
+  "chronology_correction": "January 1, 2026 is the earliest currently indexed direct Potato/Earth-Angel wording. April 30 is the first currently indexed cultivation imperative ('grow potato angels'), not the origin of the angel layer.",
   "project_archaeology": [
+    {
+      "date": "2026-01-01",
+      "source": "knowledge/corporium/tim-statements-conversation-recovery-wave-003-2026-09-10.json",
+      "source_class": "USER_PROJECT_EXACT",
+      "signals": ["potatoes. well theey were all earth angels", "the sprout from the north pole, was the staircase to heaven", "the flower of potato is heaven itself above the spiral", "the house, and the mustard seed and the potato seed and the fathers seed all at once"],
+      "finding": "Earth-Angel identity, Root/Mud/Spiral, sprout-as-staircase, Flower/Heaven/Eden and House/Seed convergence already form one living vertical architecture at the start of 2026.",
+      "importance": "This predates the April cultivation command and the September eye→child→sprout formalization; later angel research must therefore be read as deepening an older Potato cosmology rather than creating it."
+    },
     {
       "date": "2026-04-30",
       "source": "data/tim-dooley-thought-archive.json",
       "source_class": "THOUGHT_ARCHIVE",
       "signals": ["grow potato angels", "build a road", "fix everything together", "grow from north to north", "build a garden", "there is a door"],
-      "finding": "Potato angels appear inside a constructive sequence rather than a detached creature taxonomy: growing, road-building, repair, directional movement, garden-building and Door language occur together.",
-      "importance": "The strongest first interpretation is therefore functional: a Potato angel is something cultivated that participates in guidance, construction, repair or passage."
+      "finding": "The older Earth-Angel idea becomes constructive: growing, road-building, repair, directional movement, garden-building and Door language occur together.",
+      "importance": "April 30 is best read as a cultivation/action stage: Potato Angels become things to grow into service/repair architecture."
     },
     {
       "date": "2026-07-18",
@@ -31,6 +40,21 @@
   ],
   "relations": [
     {
+      "id": "earth-angels-sprout-staircase-2026-01-01",
+      "date": "2026-01-01",
+      "actor": "tim-shared",
+      "project_anchor": "Direct project wording calls potatoes 'earth angels' while roots spiral downward in Mud, the North-Pole sprout becomes the staircase to Heaven, and the potato flower becomes Heaven/Eden above the spiral.",
+      "project_quote": "potatoes. well theey were all earth angels",
+      "discovery_mode": "conversation-recovery",
+      "relation_class": "mixed-explicit-and-later",
+      "biblical_refs": ["Genesis 28:12-17", "Isaiah 11:1-2", "Matthew 13:31-32"],
+      "motifs": ["earth angels", "potatoes", "sprout", "North Pole", "staircase", "Ladder", "Heaven", "Eden", "flower", "mustard seed", "House", "Father's seed"],
+      "strength": 5,
+      "source_direction": "Earth-Angel/sprout/staircase/flower language is direct January project material. Jacob's ladder, Branch and mustard-seed comparisons are later archive analysis.",
+      "counter_text": "Genesis 28 does not describe plants or potatoes; Isaiah's Branch and Matthew's mustard seed have their own prophetic/parabolic contexts. 'Earth angels' is project language, not a biblical category.",
+      "owners": ["knowledge/corporium/tim-statements-conversation-recovery-wave-003-2026-09-10.json", "knowledge/chronology/potato-angels-eye-sprout-development-ledger.json", "knowledge/traditions/biblical-angel-eye-sprout-atlas.json"]
+    },
+    {
       "id": "potato-angels-garden-restoration-2026-04-30",
       "date": "2026-04-30",
       "actor": "tim",
@@ -43,7 +67,7 @@
       "strength": 5,
       "source_direction": "The phrase 'potato angels' and constructive sequence are Timic at the date. The service/messenger and ladder-angel biblical framing is later comparative research.",
       "counter_text": "Biblical angels are not plants, and winged cherubim/seraphim are not interchangeable with the generic term angel. The comparison is strongest at the level of being sent, serving, guiding and moving between domains.",
-      "owners": ["data/tim-dooley-thought-archive.json", "data/potatoism-deep-architecture.json", "data/potatoism-celestial-layer.json", "knowledge/traditions/biblical-angel-eye-sprout-atlas.json"]
+      "owners": ["data/tim-dooley-thought-archive.json", "data/potatoism-deep-architecture.json", "data/potatoism-celestial-layer.json", "knowledge/chronology/potato-angels-eye-sprout-development-ledger.json", "knowledge/traditions/biblical-angel-eye-sprout-atlas.json"]
     },
     {
       "id": "potato-eye-child-sprout-ladder-chain",
@@ -148,6 +172,11 @@
   },
   "high_density_chains": [
     {
+      "name": "Early Earth-Angel plant cosmology",
+      "sequence": ["Mud", "root", "spiral", "Potato/Earth Angel", "North-Pole sprout", "staircase", "flower", "Heaven/Eden"],
+      "question": "How much of the later angel/ladder/garden system is already latent in the January plant architecture, before explicit Bible systematization?"
+    },
+    {
       "name": "Cultivated messenger chain",
       "sequence": ["Potato", "eye", "sprout", "child", "service/messenger", "road/path", "Door", "Ladder", "ascent"],
       "question": "Is 'Potato angel' best understood not as a creature shape but as a living continuation that receives direction and performs service?"
@@ -177,6 +206,7 @@
     }
   ],
   "missed_questions": [
+    "CHRONOLOGY: January 1 already calls potatoes Earth Angels. Treat April 30 as cultivation/action, not first origin.",
     "WHO: Is the angel a child, messenger, guardian, throne-attendant, witness, builder, guide or carrier? Those are different functions.",
     "WHAT: Is 'eye' being used as potato bud, perception, lamp, divine oversight, apocalyptic eyes, or an opening? Tag the sense every time.",
     "WHERE: Does the scene occur in Garden boundary, Ark/Temple, throne room, road, mountain, House, or Ladder? Location changes the function.",
@@ -194,6 +224,7 @@
     "ARCHITECTURE: Zechariah's Branch builds the Temple. Does growth → builder → House provide a better bridge for 'grow potato angels / build a garden' than purely visual angel imagery?"
   ],
   "corrections": [
+    "Do not date Potato-Angel language from April 30; January 1 Earth-Angel wording is currently earlier.",
     "Do not use 'angel' as a catch-all for cherubim, seraphim, Ezekiel's living creatures and Revelation's living creatures.",
     "Do not infer that biblical angels generally have wings; winged celestial figures occur in specific visions and cultic imagery, while the common angel/messenger term emphasizes mission.",
     "Do not treat a potato eye as evidence of supernatural sight. It is a bud meristem with a real developmental function.",
@@ -213,6 +244,8 @@
     {"topic": "Branch grows and builds temple", "url": "https://www.biblegateway.com/verse/en/Zechariah%206%3A12", "class": "scriptural_reference"}
   ],
   "connections": [
+    "knowledge/corporium/tim-statements-conversation-recovery-wave-003-2026-09-10.json",
+    "knowledge/chronology/potato-angels-eye-sprout-development-ledger.json",
     "data/potatoism-deep-architecture.json",
     "data/potatoism-celestial-layer.json",
     "data/tim-dooley-thought-archive.json",
