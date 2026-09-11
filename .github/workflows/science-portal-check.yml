@@ -24,5 +24,7 @@ jobs:
           python-version: '3.x'
       - name: Build static site
         run: python scripts/build_site.py
+      - name: Compile complete science paper library
+        run: python scripts/build_science_catalog.py
       - name: Validate science paper library
         run: python scripts/validate_science_portal.py
