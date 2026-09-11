@@ -10,9 +10,8 @@ TEXT_SUFFIXES = {
     ".html", ".htm", ".md", ".json", ".txt", ".py", ".js", ".mjs", ".css",
     ".yml", ".yaml", ".xml", ".csv", ".ts", ".tsx", ".jsx", ".toml",
 }
-SKIP_DIRS = {".git", ".github", "node_modules", "vendor", "_site", "__pycache__", "archive"}
+SKIP_DIRS = {".git", "node_modules", "vendor", "_site", "__pycache__", "archive"}
 SELF = Path(__file__).resolve()
-MIGRATION = (ROOT / "scripts" / "migrate_chronology_to_timeline.py").resolve()
 
 
 def fail(message: str) -> None:
@@ -53,7 +52,7 @@ def main() -> None:
         rel = path.relative_to(ROOT)
         if any(part in SKIP_DIRS for part in rel.parts):
             continue
-        if path.resolve() in {SELF, MIGRATION}:
+        if path.resolve() == SELF:
             continue
         if rel == Path("chronology/index.html"):
             continue
@@ -79,7 +78,7 @@ def main() -> None:
         rel = path.relative_to(ROOT)
         if any(part in SKIP_DIRS for part in rel.parts):
             continue
-        if path.resolve() in {SELF, MIGRATION}:
+        if path.resolve() == SELF:
             continue
         if rel == Path("chronology") or (rel.parts and rel.parts[0] == "chronology"):
             continue
