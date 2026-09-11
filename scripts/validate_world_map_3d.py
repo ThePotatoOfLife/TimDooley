@@ -16,6 +16,7 @@ BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 EVIDENCE = ROOT / "world-map" / "3d-evidence.js"
 UI = ROOT / "world-map" / "3d-ui.js"
 SELECTION_UI = ROOT / "world-map" / "3d-selection-ui.js"
+SELECTION = ROOT / "world-map" / "3d-country-selection.js"
 PULSE = ROOT / "world-map" / "3d-country-pulse.js"
 LENSES = ROOT / "world-map" / "3d-lenses.js"
 TIME = ROOT / "world-map" / "3d-time.js"
@@ -61,7 +62,8 @@ def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
 
-    for path in (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, UI, SELECTION_UI, PULSE, LENSES, TIME, FIELDS, NETWORKS, RUNTIME, WORLD, COUNTRIES):
+    required = (HTML, APP, HOVER, BOOTSTRAP, EVIDENCE, UI, SELECTION_UI, SELECTION, PULSE, LENSES, TIME, FIELDS, NETWORKS, RUNTIME, WORLD, COUNTRIES)
+    for path in required:
         if not path.exists():
             errors.append(f"missing required atlas file: {path.relative_to(ROOT)}")
     if errors:
@@ -76,6 +78,7 @@ def main() -> int:
     evidence = EVIDENCE.read_text(encoding="utf-8", errors="replace")
     ui = UI.read_text(encoding="utf-8", errors="replace")
     selection_ui = SELECTION_UI.read_text(encoding="utf-8", errors="replace")
+    selection = SELECTION.read_text(encoding="utf-8", errors="replace")
     pulse = PULSE.read_text(encoding="utf-8", errors="replace")
     lenses = LENSES.read_text(encoding="utf-8", errors="replace")
     time_js = TIME.read_text(encoding="utf-8", errors="replace")
@@ -86,16 +89,16 @@ def main() -> int:
     countries = load_json(COUNTRIES, errors)
 
     fail_if_missing(html, ('id="map"','id="panel"','id="status"','id="search"','id="country-list"','id="height"','id="compare"','id="interior"','id="relations"','id="relationType"','id="traceDepth"','id="fit"','id="tilt"','id="globe"','id="world"','id="layersMenu"','id="traceMenu"','id="timeMenu"','id="viewMenu"','id="panelToggle"','id="focusMode"','id="timeMode"','id="timeDate"','id="timeDate2"','id="atlasTimeState"','class="app panel-collapsed"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-evidence.js"','src="./3d-time.js"','src="./3d-ui.js"',"Geography, graph topology, project hierarchy and time are separate coordinates"),"world-map/3d.html",errors)
-    fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Progressive UI","declareDormant('Evidence'","declareDormant('Fields'","declareDormant('Networks'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
-    fail_if_missing(selection_ui,("atlasSelectionDock","__potatoAtlasLayerRegistry","potato-atlas-selection-change","Module orbit · advanced","Connections","clearCountrySelection","selection-chip","data-country-code","clearAll"),"world-map/3d-selection-ui.js",errors)
+    fail_if_missing(bootstrap,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-hover.js'))","waitForCore","countries-fill","window.__potatoAtlasReady","Path finder","Demography","Progressive UI","Country selection","Country Pulse","Lenses","declareDormant('Evidence'","declareDormant('Fields'","declareDormant('Networks'","declareDormant('Time'","declareDormant('Axis depth'","declareDormant('Axis operators'","declareDormant('North Axis'","potato-atlas-interactive","__potatoAtlasDiagnostics","deploymentVersion"),"world-map/3d-bootstrap.js",errors)
+    fail_if_missing(selection_ui,("atlasSelectionDock","__potatoAtlasLayerRegistry","potato-atlas-selection-change","Module orbit · advanced","Connections","clearCountrySelection"),"world-map/3d-selection-ui.js",errors)
+    fail_if_missing(selection,("selectedCodes","activeCode","function toggleCountrySelection","function automaticRelationData","searchParams.set('selected'","selection-chip","data-country-code","clearAll","__potatoAtlasSelection","AUTO_EDGES_ACTIVE","AUTO_EDGES_OTHER","AUTO_EDGES_TOTAL"),"world-map/3d-country-selection.js",errors)
+    fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse","More statistics"),"world-map/3d-country-pulse.js",errors)
+    fail_if_missing(lenses,("__potatoAtlasLenses","Alignment / Axis","Alliances","Religion","potato-atlas-lens-change","Project interpretation","NATO","BRICS","Unaffiliated"),"world-map/3d-lenses.js",errors)
     fail_if_missing(ui,("function setPanel","function setFocus","panel-collapsed","ui-focus","atlas:panel-open","atlas:focus-mode","axisFieldView","empiricalNetworkView","axisDepthNavigator","axisCompactToggle","MutationObserver","potato-atlas-module-ready","__potatoAtlasAttachBasemap","__potatoAtlasUI"),"world-map/3d-ui.js",errors)
     fail_if_missing(time_js,("atlas-time-contract.json","north-axis-membership-history.json","timeMode","changed_between","searchParams.set('timeMode'","atlas-time-change","unknownDatePolicy","No exact dated project-field snapshot is safe to apply automatically","Current project Fields and empirical Networks are not automatically rewritten as historical layers","__potatoAtlasTime"),"world-map/3d-time.js",errors)
     fail_if_missing(fields,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current project-field snapshot hidden in historical mode"),"world-map/3d-fields.js",errors)
     fail_if_missing(networks,("historicalSuppressed","atlas-time-change","setHistoricalSuppressed","Current network snapshot hidden in historical mode"),"world-map/3d-networks.js",errors)
     fail_if_missing(app,("function relationEdgesFor","function edgeKey","function traceGraph","function traceRelationData","function traceHubData","function updateSpatial","function geometryBounds","function fitCodes","function toggleCompareCountry","function deselectCountry","function selectFeature","__potatoAtlasSelection","potato-atlas-selection-change","__potatoAtlasOverlayHandled","function renderCompare","function traceRows","window.openModule","window.goCountry","window.fitTrace","window.fitCompare","window.leaveCompare","TRACE_MAX_DEPTH = 3","TRACE_MAX_NODES","TRACE_MAX_EDGES","new Map([[root, 0]])","queue.shift()","visited.has(other)","searchParams.set('country'","searchParams.set('compare'","searchParams.set('rel'","searchParams.set('depth'","trace-hubs","semantic-hubs","semantic-links","compare-hubs","relations","maplibre-gl@6.9.0","OpenStreetMap contributors","Atlas data failed to load","Breadth-first traversal","A relation line describes a typed connection","Project-canon material is separate from empirical country data","documented physical/public finance"),"world-map/3d-app.js",errors)
-    fail_if_missing(app,("selectedCodes","function toggleCountrySelection","function automaticRelationData","searchParams.set('selected'","activeCode"),"world-map/3d-app.js",errors)
-    fail_if_missing(pulse,("Country Pulse","GDP per capita","Inflation","Unemployment","__potatoAtlasCountryPulse"),"world-map/3d-country-pulse.js",errors)
-    fail_if_missing(lenses,("__potatoAtlasLenses","Alignment / Axis","Alliances","Religion","potato-atlas-lens-change"),"world-map/3d-lenses.js",errors)
     fail_if_missing(hover,("ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')","function versionedModule","await import(versionedModule('./3d-app.js'))","GEO_LOCAL","GEO_PRIMARY","GEO_FALLBACK","REST_LOCAL","function bestGeometryResponse","function fallbackRestCountries","atlasResilientFetch","local minimal country runtime","CAPITALS_LOCAL","world-capitals.geo.json","installCapitalsWhenUseful","capital-cities","capital-city-major-labels","capital-city-labels","function countryHtml","function capitalHtml","mousemove","mouseleave"),"world-map/3d-hover.js",errors)
     fail_if_missing(evidence,("id = 'evidenceEye'","id = 'evidencePanel'","world-country-facts.json","world-country-demography.json","world-relational-map.json","function projectStatuses","function relationsFor","Source provenance and epistemic context","Project interpretation","Repetition is not corroboration","window.refreshAtlasEvidence","function refreshIfSelectionChanged","new MutationObserver","selectedCode() !== renderedCode","function timeCompatibility","atlas-time-change"),"world-map/3d-evidence.js",errors)
 
@@ -112,7 +115,7 @@ def main() -> int:
     if "await import('./3d-app.js')" in hover:
         errors.append("hover regressed to an unversioned app-core import; deployment cache isolation would be incomplete")
 
-    for text,label in ((app,"3d-app.js"),(hover,"3d-hover.js"),(bootstrap,"3d-bootstrap.js"),(evidence,"3d-evidence.js"),(ui,"3d-ui.js"),(selection_ui,"3d-selection-ui.js"),(pulse,"3d-country-pulse.js"),(lenses,"3d-lenses.js"),(time_js,"3d-time.js"),(fields,"3d-fields.js"),(networks,"3d-networks.js")):
+    for text,label in ((app,"3d-app.js"),(hover,"3d-hover.js"),(bootstrap,"3d-bootstrap.js"),(evidence,"3d-evidence.js"),(ui,"3d-ui.js"),(selection_ui,"3d-selection-ui.js"),(selection,"3d-country-selection.js"),(pulse,"3d-country-pulse.js"),(lenses,"3d-lenses.js"),(time_js,"3d-time.js"),(fields,"3d-fields.js"),(networks,"3d-networks.js")):
         check_js_syntax(text,label,warnings,errors)
 
     if runtime.get("status") != "active renderer contract": errors.append("world-map-3d-runtime must be marked as the active renderer contract")
@@ -165,7 +168,7 @@ def main() -> int:
     print(f"Curated relation types: {len(relation_types)}")
     print(f"Referenced country/territory codes: {len(referenced)}")
     print("Trace contract: breadth-first · 1–3 hops · cycle guarded · capped")
-    print("UI contract: map-first · grouped controls · contextual inspector · opt-in Axis · focus mode")
+    print("UI contract: map-first · working selection · Country Pulse · Lenses · automatic relations")
     print("Time contract: Current / As-of / Compare-dates · URL persisted · current-only overlays suppressed historically")
     print("Eye-Time contract: observation years are checked against requested historical view")
     print("Boot contract: local snapshot · core-first · advanced overlays dormant until requested · deployment-versioned module chain")
