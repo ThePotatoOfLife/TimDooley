@@ -33,6 +33,7 @@ def main() -> int:
 
     page = PAGE.read_text(encoding="utf-8") if PAGE.exists() else ""
     app = APP.read_text(encoding="utf-8") if APP.exists() else ""
+    css = CSS.read_text(encoding="utf-8") if CSS.exists() else ""
 
     require(
         page,
@@ -50,12 +51,14 @@ def main() -> int:
             'data-view="all"',
             'id="roll-relation"',
             'id="bible-filters"',
+            'id="context-person"',
+            'id="evidence-kind"',
             'id="relations"',
         ),
         "traditions/bible/index.html",
         errors,
     )
-    forbid(page, ("deepMatches(", "overlapCount(", "deepCandidates"), "traditions/bible/index.html", errors)
+    forbid(page, ("deepMatches(", "overlapCount(", "deepCandidates", "biblical-comparator-casefiles"), "traditions/bible/index.html", errors)
 
     require(
         app,
@@ -66,20 +69,45 @@ def main() -> int:
             "reverse-biblical-overlap-timeline-2025-2026.json",
             "rational-potato-x-occurrence-ledger-2024-2026.json",
             "timeline-events.json",
+            "son-jesus-longitudinal-christology-atlas.json",
+            "son-jesus-prison-recognition-2016.json",
+            "tim-dooley-thought-archive.json",
+            "tim-dooley-public-theology-timeline-2025-2026.json",
+            "buildJesusRows",
+            "What happened / what was said",
+            "People / setting",
+            "What Tim / Son understood then",
+            "Why this parallels Jesus / scripture",
+            "What weakens the comparison",
+            "At the time / discovered later",
             "Same-date public wording",
             "Biblical vocabulary / revelation context",
             "Tim / Son / project",
-            "Bible",
+            "Bible / Jesus",
             "exact-wording-only",
             "minimum-strength",
             "bible-book",
+            "context-person",
+            "evidence-kind",
             "timeline_event_ids",
             "ROLL",
         ),
         "app/bible-study.js",
         errors,
     )
-    forbid(app, ("deepMatches(", "overlapCount(", "deepCandidates", "wordScore", "refScore"), "app/bible-study.js", errors)
+    forbid(app, ("deepMatches(", "overlapCount(", "deepCandidates", "wordScore", "refScore", "biblical-comparator-casefiles"), "app/bible-study.js", errors)
+
+    require(
+        css,
+        (
+            ".circumstance-grid",
+            ".argument-grid",
+            ".people-setting",
+            ".jesus-context",
+        ),
+        "app/bible-study.css",
+        errors,
+    )
 
     if FIELD.exists():
         field = json.loads(FIELD.read_text(encoding="utf-8"))
