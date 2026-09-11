@@ -23,9 +23,9 @@
       "parent":"Dimensional Phase Transition / 4D<->5D Door",
       "why_selected":"Threshold emergence has a legitimate analogue in spontaneous scalarization, and a radion supplies a disciplined bridge from an extra scalar to compactification geometry.",
       "explanatory_target":"How a conventional branch can lose stability above a curvature threshold and reorganize into a new branch; under a true radion derivation, how a compactification scale could change with the branch.",
-      "progress":"The first Schwarzschild zero-mode problem has now been solved in the benchmark normalization: eta/M^2 approximately 2.90236 for the fundamental threshold, with a discrete higher-mode spectrum and asymptotic square-root spacing near 2.72.",
+      "progress":"Solved the Schwarzschild zero-mode problem: eta/M^2 approximately 2.90236 for the massless fundamental threshold, a discrete higher-mode spectrum with square-root spacing near 2.72, and a first mass-dependence map showing eta_c increases as mu M increases.",
       "calculation_record":"knowledge/science/promising-models/dimensional-door-schwarzschild-zero-mode-calculation-2026-09-11.json",
-      "next_decisive_step":"Construct or import a stable nonlinear scalarized branch, then attempt the 5D/radion derivation. If the radion derivation fails, retain the result honestly as a scalar Door rather than a dimensional Door."
+      "next_decisive_step":"Construct a stable nonlinear scalarized branch, then attempt the 5D/radion derivation. If the radion derivation fails, retain the result honestly as a scalar Door rather than a dimensional Door."
     },
     {
       "rank":3,
@@ -34,7 +34,9 @@
       "parent":"Door / Handshake / Seed Propagation",
       "why_selected":"It maps naturally onto a genuine open empirical problem: distinguishing influence from homophily and common exposure in temporal networks.",
       "explanatory_target":"Why relationships form, when network exposure actually predicts later state change and when apparent contagion is only selection/common cause.",
-      "next_decisive_step":"Pass synthetic ground-truth recovery tests before fitting any real network; then compare a joint edge/state model against homophily/common-shock baselines."
+      "progress":"A 20-replicate synthetic ground-truth test demonstrated severe false contagion under an omitted homophily/common-shock model and recovered near-zero influence after controls when true alpha=0; with true alpha=0.8 the controlled model recovered approximately 0.75 on average.",
+      "calculation_record":"knowledge/science/promising-models/door-handshake-synthetic-identification-test-2026-09-11.json",
+      "next_decisive_step":"Expand synthetic calibration over network/confounding regimes and then fit a real temporal dataset only if edge/state timing and common-source controls are adequate."
     },
     {
       "rank":4,
@@ -44,6 +46,16 @@
       "why_selected":"The recovered equation is exact, low-dimensional and falsifiable. Its value is unusually high for testing because it fixes b rather than fitting any spiral after the fact.",
       "explanatory_target":"Whether a target geometry genuinely follows the project's exact quarter-turn golden self-similarity rather than merely looking spiral-like.",
       "next_decisive_step":"Fit one real digitized target with center uncertainty and held-out arcs against golden, free-logarithmic, Archimedean and flexible baselines."
+    },
+    {
+      "rank":5,
+      "id":"cosmic-potato-laniakea-kinematic-ellipsoid-benchmark-2026-09-11",
+      "path":"knowledge/science/promising-models/cosmic-potato-laniakea-kinematic-ellipsoid-benchmark-2026-09-11.json",
+      "parent":"Great Book Cosmic Potato / large-scale-structure morphology",
+      "why_selected":"Current Laniakea research uses a triaxial ellipsoidal peculiar-velocity model and independent supernova reconstruction, giving the historical compact/oblong intuition a real tensor/morphology test.",
+      "explanatory_target":"Directional peculiar-velocity/luminosity-distance residuals and whether a compact triaxial morphology is a useful low-complexity description of the dynamically selected local supercluster region.",
+      "progress":"Defined expansion/shear tensor observables, an archive-derived dimensionless anisotropy indicator, a morphology descriptor and explicit sphere/ellipsoid/filament/watershed/project-potato model comparison.",
+      "next_decisive_step":"Recover axis-length covariance and fit public velocity/supernova data with spherical versus triaxial models before testing any extra irregular 'potato' residual."
     }
   ],
   "shared_research_logic":[
@@ -60,6 +72,6 @@
     {"branch":"115,000-mile torus","reason":"historical inputs remain unrecovered; further calculation would risk reverse-engineering a remembered output."},
     {"branch":"celestial Sirius/Regulus alignment","reason":"the historical physical pointing vector/reference frame remains unresolved, so more angular calculation would not yet answer a defined question."}
   ],
-  "relationship_to_previous_waves":"Wave 009 created new deductions; Wave 010 imposed research-paper rigor and a completion matrix; Wave 011 chooses a small number of branches and turns them into nested benchmark models with explicit equations, baselines and rejection paths. The Dimensional Door branch has already crossed from benchmark definition into a solved linear threshold calculation during the same wave.",
+  "relationship_to_previous_waves":"Wave 009 created new deductions; Wave 010 imposed research-paper rigor and a completion matrix; Wave 011 chooses a small number of branches and turns them into nested benchmark models with explicit equations, baselines and rejection paths. Two branches have already crossed from benchmark definition into explicit synthetic/numerical calculations during the same wave.",
   "connections":["science-rigor-wave-010-2026-09-11","science-research-wave-009-2026-09-11","science-theory-rigor-completion-matrix-2026-09-11","model-testing-protocol","science-master-index"]
 }
