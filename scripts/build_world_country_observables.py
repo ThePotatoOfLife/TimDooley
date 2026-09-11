@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "countries" / "index.json"
 OUT = Path(os.environ.get("ATLAS_D4_OUT", ROOT / "data" / "world-country-observables.json"))
 EXPECTED = 195
-USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.1"
+USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.2"
 
 METRICS = {
     "population": {
@@ -78,6 +78,34 @@ METRICS = {
         "domain": "technology/information",
         "role": "digital connectivity",
     },
+    "trade_openness": {
+        "label": "Trade / GDP",
+        "indicator": "NE.TRD.GNFS.ZS",
+        "unit": "percent of GDP",
+        "domain": "trade",
+        "role": "cross-border trade intensity",
+    },
+    "net_migration": {
+        "label": "Net migration",
+        "indicator": "SM.POP.NETM",
+        "unit": "persons over reference period",
+        "domain": "demography/migration",
+        "role": "cross-border population flow balance",
+    },
+    "energy_dependence": {
+        "label": "Net energy imports",
+        "indicator": "EG.IMP.CONS.ZS",
+        "unit": "percent of energy use",
+        "domain": "energy",
+        "role": "external energy balance",
+    },
+    "fdi_inflow": {
+        "label": "FDI net inflow",
+        "indicator": "BX.KLT.DINV.WD.GD.ZS",
+        "unit": "percent of GDP",
+        "domain": "finance/investment",
+        "role": "cross-border capital inflow intensity",
+    },
 }
 
 INDICATOR_TO_METRIC = {spec["indicator"]: metric_id for metric_id, spec in METRICS.items()}
@@ -90,7 +118,7 @@ def get_json(url: str, timeout: int = 180):
 
 
 def fetch_all(wanted: set[str]) -> dict[str, dict[str, list[dict]]]:
-    """Fetch the eight Source-2 WDI indicators in one batched API request."""
+    """Fetch the Source-2 WDI D4 indicators in one batched API request."""
     indicators = ";".join(spec["indicator"] for spec in METRICS.values())
     query = urllib.parse.urlencode({
         "format": "json",
@@ -199,7 +227,7 @@ def main() -> int:
         }
 
     payload = {
-        "version": "1.1.0",
+        "version": "1.2.0",
         "generated_at": generated,
         "record_type": "world-country-observables-runtime",
         "axis_dimension": 4,
@@ -223,6 +251,10 @@ def main() -> int:
             "Do not assume all metrics share the same reference year.",
             "Current USD GDP and GDP/person are not PPP measures.",
             "Unemployment follows the World Bank/ILO series definition and is not identical to every national unemployment series.",
+            "Trade/GDP is gross trade intensity, not bilateral dependency or trade balance.",
+            "Net migration is a balance over the source reference period, not a bilateral migration edge.",
+            "Negative net energy imports can indicate a net exporter; this measure is not an electricity-mix measure.",
+            "FDI net inflow can be negative and does not identify the investor counterpart without bilateral data.",
             "Missing is unknown/unavailable, never zero.",
             "Prior observations seed D6 change analysis but remain ordinary dated D4 observations.",
         ],
