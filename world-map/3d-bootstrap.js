@@ -147,6 +147,7 @@ try {
   // Only the observer-safe UI controller is automatic after core. Pathfinder,
   // demography, Evidence, Fields, Networks, Time and Axis are all true opt-ins.
   await loadAfterPaint('Progressive UI', './3d-ui.js');
+  await loadAfterPaint('Selection UI', './3d-selection-ui.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';

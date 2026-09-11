@@ -15,6 +15,7 @@ function setPanel(open, {persist = true} = {}) {
   mapInspectorToggle?.setAttribute('aria-pressed', String(open));
   if (panelToggle) panelToggle.textContent = open ? 'Close' : 'Inspect';
   if (persist) localStorage.setItem('atlas:panel-open', open ? '1' : '0');
+  window.dispatchEvent(new CustomEvent('potato-atlas-panel-change',{detail:{open}}));
 }
 
 function setFocus(on, {persist = true} = {}) {
@@ -48,8 +49,9 @@ const observer = panel && new MutationObserver(() => {
   if (signature === lastSignature) return;
   lastSignature = signature;
   if (app?.classList.contains('ui-focus')) return;
+  const passiveSelection = /Canonical country|Territory \/ map polygon|World Relational Atlas/.test(signature);
   const isLanding = /Explore the world/.test(signature);
-  if (!isLanding) setPanel(true, {persist:false});
+  if (!isLanding && !passiveSelection) setPanel(true, {persist:false});
 });
 observer?.observe(panel, {childList:true, subtree:true, characterData:true});
 
@@ -59,7 +61,6 @@ function summaryText(id,text,active=false){
   summary.classList.toggle('active-state',active);
 }
 function updateLayerSummary(){
-  const relation=document.getElementById('relationType')?.value||'all';
   const capitals=document.getElementById('capitals');
   const field=document.getElementById('axisFieldView')?.value;
   const network=document.getElementById('empiricalNetworkView')?.value;
@@ -67,15 +68,16 @@ function updateLayerSummary(){
   if(capitals&&!capitals.classList.contains('active'))active.push('capitals off');
   if(field&&field!=='all'&&field!=='off')active.push(field==='brics'?'BRICS':field[0].toUpperCase()+field.slice(1));
   if(network&&network!=='off')active.push(network.replaceAll('_',' '));
-  if(relation!=='all')active.push('filtered');
   summaryText('layersMenu',active.length?`Map · ${active.slice(0,2).join(' + ')}${active.length>2?'…':''}`:'Map',active.length>0);
 }
 function updateTraceSummary(){
   const depth=Number(document.getElementById('traceDepth')?.value||1);
   const entity=document.getElementById('entityTraceToggle')?.classList.contains('active');
   const compare=document.getElementById('compare')?.classList.contains('active');
-  const parts=[];if(compare)parts.push('compare');if(depth>1)parts.push(`${depth} hops`);if(entity)parts.push('entities');
-  summaryText('traceMenu',parts.length?`Analyze · ${parts.join(' + ')}`:'Analyze',parts.length>0);
+  const relations=document.getElementById('relations')?.classList.contains('active');
+  const relation=document.getElementById('relationType')?.value||'all';
+  const parts=[];if(compare)parts.push('compare');if(relations)parts.push('connections');if(relation!=='all')parts.push('filtered');if(depth>1)parts.push(`${depth} hops`);if(entity)parts.push('entities');
+  summaryText('traceMenu',parts.length?`Analyze · ${parts.slice(0,3).join(' + ')}${parts.length>3?'…':''}`:'Analyze',parts.length>0);
 }
 function updateTimeSummary(state=window.__potatoAtlasTime?.getState?.()){
   if(!state||state.mode==='current'){summaryText('timeMenu','Time',false);return;}
@@ -96,7 +98,7 @@ document.addEventListener('change',event=>{
   if(['relationType','axisFieldView','empiricalNetworkView','traceDepth','height','timeMode','timeDate','timeDate2'].includes(event.target?.id))queueMicrotask(updateMenuSummaries);
 });
 document.addEventListener('click',event=>{
-  if(['entityTraceToggle','compare'].includes(event.target?.id))queueMicrotask(updateTraceSummary);
+  if(['entityTraceToggle','compare','relations'].includes(event.target?.id))queueMicrotask(updateTraceSummary);
   if(event.target?.id==='capitals')queueMicrotask(updateLayerSummary);
 });
 window.addEventListener('atlas-time-change',event=>updateTimeSummary(event.detail));
@@ -218,6 +220,10 @@ function installToolbox(){
     const title=tracePop.querySelector('.menu-title');
     if(title)title.after(compare);else tracePop.prepend(compare);
   }
+  const relations=document.getElementById('relations');
+  const relationType=document.getElementById('relationType');
+  if(relations&&tracePop){relations.textContent='Country connections';compare?.after(relations)}
+  if(relationType&&tracePop){relations?.after(relationType)}
 
   tools.addEventListener('toggle',()=>{
     if(!tools.open)return;
@@ -263,7 +269,7 @@ function tuneMapSurface(){
   try{if(map.getLayer('trace-hubs'))map.setPaintProperty('trace-hubs','circle-color',['step',['get','depth'],'#c3e58d',2,'#70afe2',3,'#969bd0']);}catch{}
   try{if(map.getLayer('compare-hubs'))map.setPaintProperty('compare-hubs','circle-color','#6cafe3');}catch{}
   const interior=document.getElementById('interior');
-  if(interior?.classList.contains('active'))interior.click();
+  if(interior){interior.textContent='Module orbit · advanced';interior.title='Optional on-map semantic navigation. The stable selection dock is the primary country interface.'}
 }
 
 function installKeyboardNavigation(){

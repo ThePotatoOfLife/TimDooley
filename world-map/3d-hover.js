@@ -19,6 +19,7 @@ const GEO_LOCAL = '../data/world-countries.geo.json';
 const GEO_PRIMARY = 'https://cdn.jsdelivr.net/gh/johan/world.geo.json@master/countries.geo.json';
 const GEO_FALLBACK = 'https://raw.githubusercontent.com/johan/world.geo.json/master/countries.geo.json';
 const REST_LOCAL = '../data/rest-countries-runtime.json';
+const CAPITALS_LOCAL = '../data/world-capitals.geo.json';
 const REST_PREFIX = 'https://restcountries.com/v3.1/all';
 const COUNTRY_FACTS_URL = '../data/world-country-facts.json';
 
@@ -136,34 +137,10 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
 const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: '300px' });
 
 async function loadCapitals() {
-  // Capital markers are navigation context, not a reason to run a large query in
-  // every visitor's browser. Pages already snapshots REST Countries with
-  // capitalInfo coordinates at deploy time, so the first map view can stay
-  // same-origin and deterministic.
-  const response = await fetchJsonResponse(REST_LOCAL, { cache: 'force-cache' });
-  const rows = await response.json();
-  if (!Array.isArray(rows)) throw new Error('Local country runtime snapshot has invalid shape.');
-
-  const features = rows.map(country => {
-    const name = country.capital?.[0];
-    const latlng = country.capitalInfo?.latlng;
-    if (!country.cca3 || !name || !Array.isArray(latlng) || latlng.length !== 2) return null;
-    const lat = Number(latlng[0]);
-    const lon = Number(latlng[1]);
-    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
-    return {
-      type: 'Feature',
-      properties: {
-        iso3: country.cca3,
-        name,
-        population: Number(country.population || 0),
-        source: 'REST Countries deploy snapshot'
-      },
-      geometry: { type: 'Point', coordinates: [lon, lat] }
-    };
-  }).filter(Boolean);
-
-  return { type: 'FeatureCollection', features };
+  const response = await fetchJsonResponse(CAPITALS_LOCAL, { cache: 'force-cache' });
+  const payload = await response.json();
+  if (payload?.type !== 'FeatureCollection' || !Array.isArray(payload.features)) throw new Error('Local capital snapshot has invalid shape.');
+  return payload;
 }
 
 function countryHtml(properties) {
@@ -207,7 +184,7 @@ let capitalsStarted = false;
 let capitalsVisible = true;
 function setCapitalsVisible(visible) {
   capitalsVisible = Boolean(visible);
-  for (const id of ['capital-cities', 'capital-city-labels']) {
+  for (const id of ['capital-cities', 'capital-city-major-labels', 'capital-city-labels']) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', capitalsVisible ? 'visible' : 'none');
   }
   window.dispatchEvent(new CustomEvent('potato-atlas-capitals-change', { detail: { visible: capitalsVisible } }));
@@ -228,6 +205,15 @@ async function installCapitalsWhenUseful() {
         'circle-color': '#e7c56f', 'circle-stroke-color': '#171a18',
         'circle-stroke-width': 1.1, 'circle-opacity': 0.92
       }
+    });
+    if (!map.getLayer('capital-city-major-labels')) map.addLayer({
+      id: 'capital-city-major-labels', type: 'symbol', source: 'capital-cities', minzoom: 1.1, maxzoom: 3.4,
+      filter: ['<=', ['get', 'scalerank'], 2],
+      layout: {
+        'text-field': ['get', 'name'], 'text-size': 9, 'text-offset': [0, 1.05],
+        'text-anchor': 'top', 'text-allow-overlap': false, 'text-optional': true
+      },
+      paint: { 'text-color': '#f0d98f', 'text-halo-color': '#080b0b', 'text-halo-width': 1.1 }
     });
     if (!map.getLayer('capital-city-labels')) map.addLayer({
       id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 3.1,
@@ -250,6 +236,7 @@ async function installCapitalsWhenUseful() {
       popup.remove();
     });
     map.on('click', 'capital-cities', event => {
+      if(event?.originalEvent)event.originalEvent.__potatoAtlasOverlayHandled=true;
       const code = event.features?.[0]?.properties?.iso3;
       if (code && window.goCountry) window.goCountry(code);
     });

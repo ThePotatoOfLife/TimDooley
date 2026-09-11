@@ -63,8 +63,8 @@ map.addControl(new maplibregl.NavigationControl({visualizePitch:true}));
 let selected = null;
 let selectedFeature = null;
 let globe = false;
-let showInterior = true;
-let showRelations = true;
+let showInterior = false;
+let showRelations = false;
 let currentCanonical = null;
 let compareMode = false;
 let compareCodes = [];
@@ -270,12 +270,36 @@ async function inspectComparedCountry(code){
   clearCompareStates();compareCodes=[];compareMode=false;$('#compare').classList.remove('active');
   await selectFeature(f,true);
 }
-async function selectFeature(f,fly=false){
+function selectionDetail(reason='selection'){
+  const r=selected?by3[selected]:null;
+  return {reason,code:selected,name:r?.name?.common||selected||null,selected:Boolean(selected),compareMode};
+}
+function emitSelectionChange(reason='selection'){
+  window.dispatchEvent(new CustomEvent('potato-atlas-selection-change',{detail:selectionDetail(reason)}));
+}
+function deselectCountry({keepView=true,clearCompare=false}={}){
+  if(selected)setState(selected,'selected',false);
+  selected=null;selectedFeature=null;currentCanonical=null;
+  if(clearCompare){clearCompareStates();compareCodes=[];compareMode=false;$('#compare').classList.remove('active')}
+  updateSpatial();updateUrl();
+  $('#panel').innerHTML='<div class="eyebrow">World mode</div><h1>World Relational Atlas</h1><p class="muted">Select a country to reveal its stable action dock. Detailed country modules stay off-map until requested.</p>';
+  if(!keepView)map.easeTo({center:[5,24],zoom:1.5,pitch:0,bearing:0,duration:650});
+  emitSelectionChange('cleared');
+}
+async function selectFeature(f,fly=false,{toggle=false}={}){
   const code=f.properties.iso3;if(!code)return;
   if(compareMode)return toggleCompareCountry(code);
+  if(toggle&&selected===code){deselectCountry({keepView:true});return}
   if(selected)setState(selected,'selected',false);
-  selected=code;selectedFeature=f;setState(code,'selected',true);currentCanonical=await loadCanonical(code);updateSpatial();updateUrl();if(fly)fitCodes([code]);renderCountry();
+  selected=code;selectedFeature=f;setState(code,'selected',true);currentCanonical=await loadCanonical(code);updateSpatial();updateUrl();if(fly)fitCodes([code]);renderCountry();emitSelectionChange('selected');
 }
+window.__potatoAtlasSelection={
+  get current(){return selectionDetail('read')},
+  clear(){deselectCountry({keepView:true})},
+  focus(){window.fitCountry?.()},
+  inspect(){window.showOverview?.()},
+};
+window.clearCountrySelection=()=>deselectCountry({keepView:true});
 function traceRows(code) {
   const graph=traceGraph(code);
   const groups=[];
@@ -331,18 +355,27 @@ function addLayers(){
 }
 function extrusion(){const v=$('#height').value,extrude=v!=='flat';map.setLayoutProperty('countries-extrude','visibility',extrude?'visible':'none');map.setLayoutProperty('countries-fill','visibility',extrude?'none':'visible');if(v==='population')map.setPaintProperty('countries-extrude','fill-extrusion-height',['*',250000,['sqrt',['/', ['max',['get','population'],1],1000000]]]);if(v==='area')map.setPaintProperty('countries-extrude','fill-extrusion-height',['*',9000,['sqrt',['max',['get','area'],1]]])}
 function clickRelation(e){const f=e.features?.[0];if(!f)return;const p=f.properties,raw=JSON.parse(p.raw),a=by3[p.a]?.name?.common||p.a,b=by3[p.b]?.name?.common||p.b;$('#panel').innerHTML=`<div class="eyebrow">Typed country relation · hop ${p.depth||1}</div><h1>${esc(a)} ↔ ${esc(b)}</h1><div class="pill">${esc(p.types||'relationship')}</div><div class="actions"><button onclick="goCountry('${esc(p.a)}')">Open ${esc(a)}</button><button onclick="goCountry('${esc(p.b)}')">Open ${esc(b)}</button><button onclick="showOverview()">Back to root trace</button></div><div class="card"><b>Layer</b><div>${esc(p.layer||'curated')}</div></div><div class="boundary">A relation line describes a typed connection. It does not assign one motive, identity or responsibility to the population of either country.</div><pre class="json">${esc(JSON.stringify(raw,null,2))}</pre>`}
-function resetWorld(clearCompare=true){if(selected)setState(selected,'selected',false);selected=null;selectedFeature=null;currentCanonical=null;if(clearCompare){clearCompareStates();compareCodes=[];compareMode=false;$('#compare').classList.remove('active')}updateSpatial();updateUrl();map.easeTo({center:[5,24],zoom:1.5,pitch:0,bearing:0,duration:650});$('#panel').innerHTML='<div class="eyebrow">World mode</div><h1>World Relational Atlas</h1><p class="muted">Search, compare, recursively trace typed relations, rotate and select a polygon to unfold its canonical data modules.</p>'}
+function resetWorld(clearCompare=true){deselectCountry({keepView:false,clearCompare})}
 function populateControls(){const dl=$('#country-list');for(const r of [...rest].sort((a,b)=>a.name.common.localeCompare(b.name.common))){const o=document.createElement('option');o.value=`${r.name.common} (${r.cca3})`;dl.appendChild(o)}const types=[...new Set((worldCfg.curated_edges||[]).flatMap(e=>e.types||[]))].sort();for(const t of types){const o=document.createElement('option');o.value=t;o.textContent=title(t);$('#relationType').appendChild(o)}}
 function findCountry(q){q=q.trim().toLowerCase();const code=q.match(/\(([a-z]{3})\)$/i)?.[1]||q;return rest.find(x=>x.cca3?.toLowerCase()===code||x.name?.common?.toLowerCase()===q||x.name?.official?.toLowerCase()===q)||rest.find(x=>x.name?.common?.toLowerCase().includes(q)||x.name?.official?.toLowerCase().includes(q))}
 
+function claimOverlayClick(event){if(event?.originalEvent)event.originalEvent.__potatoAtlasOverlayHandled=true}
+function handleCountryPolygonClick(event){
+  const feature=event.features?.[0];if(!feature)return;
+  const originalEvent=event.originalEvent;
+  queueMicrotask(()=>{if(originalEvent?.__potatoAtlasOverlayHandled)return;selectFeature(feature,false,{toggle:true})});
+}
+
 map.on('load',async()=>{
   addLayers();populateControls();
-  map.on('click','countries-fill',e=>e.features?.[0]&&selectFeature(e.features[0],false));
-  map.on('click','countries-extrude',e=>e.features?.[0]&&selectFeature(e.features[0],false));
-  map.on('click','country-hubs',e=>{const code=e.features?.[0]?.properties?.iso3,f=featureByCode(code);if(f)selectFeature(f,false)});
-  map.on('click','semantic-hubs',e=>{const f=e.features?.[0];if(f)window.openModule(f.properties.id)});
-  map.on('click','trace-hubs',e=>{const code=e.features?.[0]?.properties?.iso3;if(code)window.goCountry(code)});
-  map.on('click','relations',clickRelation);
+  $('#interior').classList.toggle('active',showInterior);
+  $('#relations').classList.toggle('active',showRelations);
+  map.on('click','countries-fill',handleCountryPolygonClick);
+  map.on('click','countries-extrude',handleCountryPolygonClick);
+  map.on('click','country-hubs',e=>{claimOverlayClick(e);const code=e.features?.[0]?.properties?.iso3,f=featureByCode(code);if(f)selectFeature(f,false)});
+  map.on('click','semantic-hubs',e=>{claimOverlayClick(e);const f=e.features?.[0];if(f)window.openModule(f.properties.id)});
+  map.on('click','trace-hubs',e=>{claimOverlayClick(e);const code=e.features?.[0]?.properties?.iso3;if(code)window.goCountry(code)});
+  map.on('click','relations',e=>{claimOverlayClick(e);clickRelation(e)});
   ['countries-fill','countries-extrude','country-hubs','semantic-hubs','relations','trace-hubs','compare-hubs'].forEach(id=>{map.on('mouseenter',id,()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave',id,()=>map.getCanvas().style.cursor='')});
   const u=new URL(location.href),rel=u.searchParams.get('rel'),depth=Number(u.searchParams.get('depth'));
   if(rel&&[...$('#relationType').options].some(o=>o.value===rel)){relationType=rel;$('#relationType').value=rel}
@@ -354,8 +387,8 @@ map.on('load',async()=>{
 });
 map.on('moveend',updateHud);map.on('zoom',updateHud);map.on('pitch',updateHud);map.on('rotate',updateHud);
 $('#height').onchange=extrusion;
-$('#interior').onclick=()=>{showInterior=!showInterior;$('#interior').classList.toggle('active',showInterior);updateSpatial()};
-$('#relations').onclick=()=>{showRelations=!showRelations;$('#relations').classList.toggle('active',showRelations);updateSpatial()};
+$('#interior').onclick=()=>{showInterior=!showInterior;$('#interior').classList.toggle('active',showInterior);updateSpatial();if(showInterior&&selected&&map.getZoom()<3.2)fitCodes([selected],78);window.dispatchEvent(new CustomEvent('potato-atlas-interior-change',{detail:{visible:showInterior}}))};
+$('#relations').onclick=()=>{showRelations=!showRelations;$('#relations').classList.toggle('active',showRelations);updateSpatial();window.dispatchEvent(new CustomEvent('potato-atlas-relations-change',{detail:{visible:showRelations}}))};
 $('#relationType').onchange=e=>{relationType=e.target.value;updateSpatial();if(compareMode)renderCompare();else if(selected)renderCountry();updateUrl()};
 $('#traceDepth').onchange=e=>{traceDepth=Math.max(1,Math.min(TRACE_MAX_DEPTH,Number(e.target.value)||1));updateSpatial();if(selected&&!compareMode)renderCountry();updateUrl()};
 $('#fit').onclick=()=>compareMode?window.fitCompare():selected&&traceDepth>1?window.fitTrace():window.fitCountry();
