@@ -65,11 +65,26 @@ function openAnalyze() {
   if (traceMenu) traceMenu.open = true;
 }
 
+let countryDimensionsRequested = false;
+function promoteCountryDimensions() {
+  if (countryDimensionsRequested) return;
+  const loader = window.__potatoAtlasLoadModule;
+  if (typeof loader !== 'function') return;
+  countryDimensionsRequested = true;
+  loader('Country dimensions', './3d-country-dimensions.js');
+}
+
+function onSelectionChange(event) {
+  syncDock();
+  if (event?.detail?.selected) promoteCountryDimensions();
+}
+
 dock.addEventListener('click', event => {
   const button = event.target.closest('button[data-action]');
   if (!button) return;
   const action = button.dataset.action;
   if (action === 'details') {
+    promoteCountryDimensions();
     window.showOverview?.();
     window.__potatoAtlasUI?.setPanel?.(true, { persist: false });
   } else if (action === 'connections') {
@@ -88,7 +103,7 @@ dock.addEventListener('click', event => {
   queueMicrotask(syncDock);
 });
 
-window.addEventListener('potato-atlas-selection-change', syncDock);
+window.addEventListener('potato-atlas-selection-change', onSelectionChange);
 window.addEventListener('potato-atlas-panel-change', syncDock);
 window.addEventListener('potato-atlas-relations-change', syncDock);
 document.addEventListener('click', event => {
@@ -183,3 +198,4 @@ window.addEventListener('potato-atlas-capitals-change', () => window.__potatoAtl
 window.addEventListener('potato-atlas-module-ready', adoptExistingControls);
 
 syncDock();
+if (currentSelection().selected) promoteCountryDimensions();
