@@ -1,0 +1,66 @@
+{
+  "id": "golden-spiral-center-uncertainty-profile-test-2026-09-11",
+  "title": "Golden Spiral Upgrade — Center Uncertainty, Profile Fitting and Bootstrap Rejection",
+  "updated": "2026-09-11",
+  "status": "archive-generated methodological extension of the Golden-Ratio Spiral benchmark; established geometry/statistics, not evidence of a universal golden law",
+  "parent": "knowledge/science/promising-models/golden-spiral-model-selection-benchmark-2026-09-11.json",
+  "purpose": "Fix the largest practical weakness in spiral fitting: an incorrect center can manufacture or destroy an apparent logarithmic growth constant. This upgrade treats the center, orientation and handedness as nuisance parameters that must be estimated and propagated into uncertainty on the golden growth parameter.",
+  "core_problem": {
+    "golden_model": "ln r_i = alpha + b_phi theta_i + epsilon_i, with b_phi = 2 ln(phi)/pi",
+    "free_log_model": "ln r_i = alpha + b theta_i + epsilon_i",
+    "nuisance_geometry": "c=(c_x,c_y), theta_0, handedness, scale alpha and noise parameters",
+    "warning": "If c is selected visually, the resulting b estimate is conditional on an unreported choice and can look artificially close to b_phi."
+  },
+  "center_sensitivity": {
+    "radial_definition": "r_i=||p_i-c||",
+    "first_order_log_radius_response": "For a small center perturbation delta_c, delta ln r_i approximately equals -[(p_i-c) dot delta_c]/r_i^2.",
+    "meaning": "Center error produces structured, angle-dependent residuals rather than independent noise. Points near the assumed center are especially influential because the sensitivity scales as 1/r.",
+    "angle_coupling": "The same center perturbation also changes theta_i, so uncertainty in center couples the horizontal and vertical coordinates in the linearized ln r versus theta fit."
+  },
+  "profile_fit": {
+    "procedure": [
+      "Choose a declared admissible region for the center rather than searching the entire plane.",
+      "For each candidate center and handedness, compute r_i and an unwrapped theta_i under a reproducible ordering rule.",
+      "For H_log, analytically or numerically profile alpha and b given that geometry; for H_phi, profile alpha with b fixed to b_phi.",
+      "Optimize the remaining nuisance geometry using the same residual/error model for both hypotheses.",
+      "Report the full profile surface or confidence region for c and b rather than only the best-fitting center."
+    ],
+    "profile_objective": "For Gaussian log-radius residuals, minimize RSS(c,theta_0,handedness,model)=sum_i [ln r_i - alpha_hat - b_model theta_i]^2, with b_model free for H_log and fixed for H_phi.",
+    "uncertainty_rule": "Uncertainty on b must include re-optimization of the center; a standard regression error conditional on one center is insufficient."
+  },
+  "nested_hypothesis_test": {
+    "models": "H_phi is nested inside H_log by fixing b=b_phi.",
+    "naive_statistic": "Delta = 2[log L(H_log)-log L(H_phi)] or equivalently an RSS-based likelihood-ratio statistic under a common Gaussian error model.",
+    "preferred_calibration": "Use a parametric bootstrap because center estimation, angle unwrapping, correlated residuals and finite arcs can violate simple chi-square assumptions.",
+    "bootstrap_steps": [
+      "Fit H_phi including nuisance geometry.",
+      "Simulate replicate curves from the fitted H_phi measurement model using the actual sampling pattern/noise structure.",
+      "Refit both H_phi and H_log to every replicate with center re-estimated each time.",
+      "Compare the observed Delta with the simulated null distribution.",
+      "Report both the bootstrap p-value and the distribution of recovered b under the null."
+    ]
+  },
+  "robustness_diagnostics": {
+    "leave_arc_out": "Fit after withholding contiguous angular arcs rather than random individual points; this tests whether one local segment is driving the result.",
+    "center_stability": "Report how far the fitted center moves across bootstrap/leave-arc-out replicates relative to the curve scale.",
+    "quarter_turn_residual": "Retain epsilon_Q(theta)=ln r(theta+pi/2)-ln r(theta)-ln phi as a local diagnostic after global fitting.",
+    "residual_structure": "Plot or summarize residual versus theta and radius; systematic oscillation or drift indicates model misspecification even if global RSS is small.",
+    "sampling_bias": "Dense sampling of one arc must not silently dominate the objective; use arc-length weighting or a declared resampling strategy when acquisition density is nonuniform."
+  },
+  "new_advancement_gate": {
+    "promote_golden_fit_if": [
+      "The fitted center is stable under resampling and is not manually chosen.",
+      "The free-logarithmic b estimate is statistically compatible with b_phi after center uncertainty is included.",
+      "The fixed golden model is not materially worse than the free logarithmic model on held-out arcs.",
+      "Quarter-turn residuals have no strong systematic structure.",
+      "Non-logarithmic baselines do not provide substantially better predictive fit after complexity is penalized."
+    ],
+    "downgrade_if": "If a small center shift causes large changes in b, classify the target as geometrically underidentified rather than golden or non-golden."
+  },
+  "scientific_value": "This upgrade makes the exactness of the recovered golden equation work against confirmation bias. The model becomes stronger by making it easier to reject a visually appealing but center-dependent fit.",
+  "connections": [
+    "golden-spiral-model-selection-benchmark-2026-09-11",
+    "research-2026-09-11-spiral-vortex-geometry",
+    "model-testing-protocol"
+  ]
+}
