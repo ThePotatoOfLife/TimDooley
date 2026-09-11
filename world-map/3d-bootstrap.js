@@ -145,6 +145,7 @@ try {
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
   await loadAfterPaint('Compositor', './3d-compositor.js');
   await loadAfterPaint('World Bar', './3d-world-bar.js');
+  await loadAfterPaint('Country Card', './3d-country-card.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
