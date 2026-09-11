@@ -1,19 +1,16 @@
 // Core-first bootstrap for the 3D World Relational Atlas.
 //
-// The geographic renderer is the availability boundary. The map, path finder,
-// demography and lightweight UI become interactive first. Advanced overlays are
-// dormant until the user asks for the part of the interface that needs them.
-// This preserves the last-known-working core topology and prevents background
-// enrichment from freezing an otherwise usable world map.
+// The geographic renderer is the availability boundary. The map and lightweight
+// UI become interactive first. Every analytical/enrichment module stays dormant
+// until a user action actually needs it. This prevents post-paint background work
+// from turning a healthy map into "it loaded, then started hanging".
 
 const statusNode = () => document.querySelector('#status');
 const guard = () => window.__potatoAtlasBootGuard;
 const OPTIONAL_TIMEOUT_MS = 12000;
 const modulePromises = new Map();
 
-function now() {
-  return performance.now();
-}
+function now() { return performance.now(); }
 
 function setStatus(message, kind = 'info') {
   const node = statusNode();
@@ -25,13 +22,10 @@ function setStatus(message, kind = 'info') {
   if (guard()) guard().stage = message || 'ready';
 }
 
-function sleep(ms) {
-  return new Promise(resolve => setTimeout(resolve, ms));
-}
+function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-// requestAnimationFrame can be heavily throttled in background tabs. Always
-// retain a timer escape hatch so waiting for a paint can never become a new boot
-// deadlock.
+// requestAnimationFrame can be throttled in background tabs. Always retain a
+// timer escape hatch so waiting for paint cannot become a new boot deadlock.
 function nextPaint(maxWaitMs = 160) {
   return new Promise(resolve => {
     let done = false;
@@ -52,8 +46,7 @@ async function waitForCore(timeoutMs = 15000) {
     const map = window.__potatoAtlasMap;
     if (map?.getLayer?.('countries-fill')) {
       window.__potatoAtlasReady = true;
-      const elapsed = now() - window.__potatoAtlasDiagnostics.startedAt;
-      window.__potatoAtlasDiagnostics.coreReadyMs = Math.round(elapsed);
+      window.__potatoAtlasDiagnostics.coreReadyMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
       if (guard()) guard().stage = 'core-ready';
       window.dispatchEvent(new CustomEvent('potato-atlas-core-ready', { detail: { map } }));
       return map;
@@ -92,12 +85,8 @@ function loadOptional(label, path) {
       ]);
       const durationMs = Math.round(now() - startedAt);
       diagnostic(label, { status: 'loaded', durationMs });
-      if (!window.__potatoAtlasEnhancements.loaded.includes(label)) {
-        window.__potatoAtlasEnhancements.loaded.push(label);
-      }
-      window.dispatchEvent(new CustomEvent('potato-atlas-module-ready', {
-        detail: { label, path, durationMs },
-      }));
+      if (!window.__potatoAtlasEnhancements.loaded.includes(label)) window.__potatoAtlasEnhancements.loaded.push(label);
+      window.dispatchEvent(new CustomEvent('potato-atlas-module-ready', { detail: { label, path, durationMs } }));
       return true;
     } catch (error) {
       const durationMs = Math.round(now() - startedAt);
@@ -131,21 +120,21 @@ window.__potatoAtlasDiagnostics = {
   modules: {},
 };
 window.__potatoAtlasReady = false;
+// One shared loader keeps diagnostics/deduplication intact even when the UI or
+// another optional module promotes a dormant feature on demand.
+window.__potatoAtlasLoadModule = loadAfterPaint;
 
 try {
   setStatus('Loading core atlas…');
 
-  // 3d-hover owns resilient data routing and imports 3d-app, which constructs
-  // the MapLibre map. Keeping this first preserves the last-known-working core
-  // topology from before optional layers multiplied.
+  // 3d-hover owns resilient local-first data routing and imports 3d-app, which
+  // constructs the MapLibre renderer and geographic country layers.
   await import('./3d-hover.js');
   const map = await waitForCore();
   await nextPaint();
 
-  // Historically stable helpers remain close to the core. Progressive UI is
-  // observer-safe and intentionally loaded before any advanced map overlays.
-  await loadAfterPaint('Path finder', './3d-pathfinder.js');
-  await loadAfterPaint('Demography', './3d-demography.js');
+  // Only the observer-safe UI controller is automatic after core. Pathfinder,
+  // demography, Evidence, Fields, Networks, Time and Axis are all true opt-ins.
   await loadAfterPaint('Progressive UI', './3d-ui.js');
 
   setStatus('');
@@ -153,9 +142,10 @@ try {
   window.__potatoAtlasDiagnostics.interactiveMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-interactive'));
 
-  // Advanced modules remain available, but opening the page alone does not run
-  // them. Their source names stay explicit here for validators and diagnostics.
-  declareDormant('Evidence', './3d-evidence.js', 'first map inspection');
+  declareDormant('Path finder', './3d-pathfinder.js', 'Trace menu');
+  declareDormant('Entity Trace', './3d-entity-trace.js', 'Trace menu');
+  declareDormant('Demography', './3d-demography.js', 'first country inspection');
+  declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
   declareDormant('Fields', './3d-fields.js', 'Layers menu');
   declareDormant('Networks', './3d-networks.js', 'Layers menu');
   declareDormant('Time', './3d-time.js', 'Time menu');
@@ -174,14 +164,17 @@ try {
     await loadAfterPaint('Axis operators', './3d-axis-operators.js');
     await loadAfterPaint('North Axis', './3d-axis.js');
   };
-  const promoteEvidence = () => loadAfterPaint('Evidence', './3d-evidence.js');
+  const promoteInspection = async () => {
+    await Promise.all([
+      loadAfterPaint('Demography', './3d-demography.js'),
+      loadAfterPaint('Evidence', './3d-evidence.js'),
+    ]);
+  };
 
   const layersMenu = document.getElementById('layersMenu');
   const timeMenu = document.getElementById('timeMenu');
   const viewMenu = document.getElementById('viewMenu');
 
-  // Do not use `{once:true}` on `toggle`: a programmatic close could otherwise
-  // consume the listener before the first real open. Remove only after opening.
   const onLayersToggle = () => {
     if (!layersMenu?.open) return;
     layersMenu.removeEventListener('toggle', onLayersToggle);
@@ -201,14 +194,12 @@ try {
   timeMenu?.addEventListener('toggle', onTimeToggle);
   viewMenu?.addEventListener('toggle', onViewToggle);
 
-  // Evidence is inspector enrichment. A real map click is a better activation
-  // signal than page load, and keeps it completely off the startup path.
-  map.once('click', promoteEvidence);
+  // Inspector enrichment is attached to an actual country interaction, not to
+  // page load. The core remains idle indefinitely if the user simply explores.
+  map.once('click', promoteInspection);
 
   window.__potatoAtlasDiagnostics.bootstrapWiredMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
-  window.dispatchEvent(new CustomEvent('potato-atlas-bootstrap-complete', {
-    detail: window.__potatoAtlasEnhancements,
-  }));
+  window.dispatchEvent(new CustomEvent('potato-atlas-bootstrap-complete', { detail: window.__potatoAtlasEnhancements }));
 } catch (error) {
   console.error('3D atlas core bootstrap failed.', error);
   if (guard()) guard().failures.push(error?.message || String(error));
