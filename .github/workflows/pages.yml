@@ -229,9 +229,10 @@ jobs:
         if: steps.site_shell.outcome == 'failure'
         run: exit 1
 
-      # Source-vs-build drift is validated above. Only after that gate passes do we
-      # apply deployment-only cache busting and point the browser at the vendored
-      # same-origin MapLibre files. The assertions below validate the final bytes.
+      # Source-vs-build drift is validated above. Only after that gate passes do
+      # we apply deployment-only cache busting and point the browser at the
+      # vendored same-origin MapLibre files. Bootstrap propagates this deployment
+      # SHA through every dynamically imported atlas module.
       - name: Finalize 3D atlas runtime
         shell: bash
         run: |
@@ -240,22 +241,32 @@ jobs:
           import os
           from pathlib import Path
 
+          version = os.environ['GITHUB_SHA'][:12]
           page_path = Path('_site/world-map/3d.html')
           page = page_path.read_text(encoding='utf-8')
+
           old_css = 'https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css'
           local_css = './vendor/maplibre-gl.css?v=6.9.0'
           page = page.replace(old_css, local_css)
 
           old_loader = './maplibre-loader.js?v=6466194'
-          new_loader = f"./maplibre-loader.js?v={os.environ['GITHUB_SHA'][:12]}"
+          new_loader = f'./maplibre-loader.js?v={version}'
           page = page.replace(old_loader, new_loader)
+
+          old_guard = './3d-boot-guard.js?v=6466194'
+          new_guard = f'./3d-boot-guard.js?v={version}'
+          page = page.replace(old_guard, new_guard)
+
+          old_bootstrap = 'src="./3d-bootstrap.js"'
+          new_bootstrap = f'src="./3d-bootstrap.js?v={version}"'
+          page = page.replace(old_bootstrap, new_bootstrap)
           page_path.write_text(page, encoding='utf-8')
 
-          assert local_css in page
-          assert old_css not in page
-          assert new_loader in page
-          assert old_loader not in page
-          print(f'Finalized 3D atlas runtime with loader {new_loader}.')
+          assert local_css in page and old_css not in page
+          assert new_loader in page and old_loader not in page
+          assert new_guard in page and old_guard not in page
+          assert new_bootstrap in page and old_bootstrap not in page
+          print(f'Finalized 3D atlas runtime with deployment version {version}.')
           PY
 
           test -s _site/world-map/vendor/maplibre-gl.mjs
@@ -264,7 +275,11 @@ jobs:
           test -s _site/world-map/vendor/maplibre-gl.css
           grep -q './vendor/maplibre-gl.css?v=6.9.0' _site/world-map/3d.html
           grep -q './vendor/maplibre-gl.mjs?v=6.9.0' _site/world-map/maplibre-loader.js
-          grep -q 'src="./3d-bootstrap.js"' _site/world-map/3d.html
+          grep -Eq 'src="./3d-bootstrap.js\?v=[0-9a-f]{12}"' _site/world-map/3d.html
+          grep -Eq 'src="./3d-boot-guard.js\?v=[0-9a-f]{12}"' _site/world-map/3d.html
+          grep -q "ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v')" _site/world-map/3d-bootstrap.js
+          grep -q "await import(versionedModule('./3d-hover.js'))" _site/world-map/3d-bootstrap.js
+          grep -q "await import(versionedModule('./3d-app.js'))" _site/world-map/3d-hover.js
 
       - name: Configure Pages
         uses: actions/configure-pages@v5
