@@ -73,6 +73,40 @@
           },
           "additionalProperties": true
         },
+        "visibility": {
+          "type":"object",
+          "properties": {
+            "status":{"enum":["public","partially_public","confidential_disclosed","inferred","alleged_hidden","unknown"]},
+            "basis":{"type":"string"},
+            "notes":{"type":"string"}
+          },
+          "additionalProperties": false
+        },
+        "bond": {
+          "type":"object",
+          "properties": {
+            "formality":{"enum":["informal","customary","contractual","treaty","institutional","constitutional","mixed","unknown"]},
+            "reciprocity":{"type":["number","null"],"minimum":0,"maximum":1},
+            "institutionalization":{"type":["number","null"],"minimum":0,"maximum":1},
+            "mutuality":{"type":["number","null"],"minimum":0,"maximum":1},
+            "shared_capability":{"type":["number","null"],"minimum":0,"maximum":1},
+            "description":{"type":"string"}
+          },
+          "additionalProperties": false
+        },
+        "flow": {
+          "type":"object",
+          "properties": {
+            "kind":{"enum":["money","goods","energy","people","data","authority","care","security","attention","obligation","ownership-control","knowledge","cultural-exchange","symbolic","mixed","unknown"]},
+            "stock_or_flow":{"enum":["stock","flow","both","unknown"]},
+            "direction":{"enum":["a_to_b","b_to_a","bidirectional","circulating","mixed","unknown"]},
+            "value":{"type":["number","null"]},
+            "unit":{"type":["string","null"]},
+            "period":{"type":["string","null"]},
+            "description":{"type":"string"}
+          },
+          "additionalProperties": false
+        },
         "obligation": {
           "type":"object",
           "properties": {
@@ -114,6 +148,20 @@
             "reason":{"type":"string"}
           },
           "additionalProperties": true
+        },
+        "vertical_projection": {
+          "type":"array",
+          "items": {
+            "type":"object",
+            "required":["dimension","basis","role"],
+            "properties": {
+              "dimension":{"type":"integer","minimum":1,"maximum":11},
+              "role":{"type":"string","minLength":1},
+              "basis":{"enum":["observed","derived","inferred","interpretive","project-canon"]},
+              "reason":{"type":"string"}
+            },
+            "additionalProperties": false
+          }
         },
         "fruit": {
           "type":"object",
