@@ -1,10 +1,11 @@
 {
-  "version": "1.1.0",
-  "updated": "2026-09-07",
+  "version": "1.2.0",
+  "updated": "2026-09-11",
   "name": "Tim Dooley Frame",
   "status": "canonical-project-architecture",
   "rule": "relationships-first",
   "second_rule": "study_entanglement_without_collapsing_distinct_evidence_classes",
+  "third_rule": "constraint_is_not_destiny_until_the_mechanism_is_named",
   "layers": ["mythological", "philosophical", "empirical", "calculated", "estimated", "scenario", "historical", "creative"],
   "vertical": [
     "source",
@@ -32,34 +33,74 @@
     "blue-potato": ["memory", "precision", "contraction", "rootward-movement", "fear", "conservation"]
   },
   "geometry": {
-    "circle":"totality",
+    "circle":"totality or recurrence depending context",
     "vesica-piscis":"relationship-and-door",
     "cross":"horizontal-vertical-intersection",
     "axis":"vertical-orientation",
     "plane":"horizontal-manifestation",
-    "spiral":"movement-through-time"
+    "spiral":"recurrence-with-displacement through time",
+    "leash":"constraint relative to an anchor; only when admissible motion is actually restricted",
+    "cage":"intersection of multiple boundaries/constraints, not automatically one literal wall"
   },
   "relationship_model": {
     "entanglement": "structured relational dependence, coupling, correlation, topology, feedback and path dependence",
-    "trajectory": "state transitions through time",
-    "topology": "connectivity, bridges, bottlenecks, boundaries, cycles, basins and attractors",
-    "fate_destiny": "interpretive model for perceived trajectory and constraint; never silently promoted to empirical causation"
+    "constraint": "restriction on admissible states or trajectories; may be hard, soft, causal, legal, topological, resource or model-specific",
+    "leash": "project constraint metaphor requiring anchor, constrained degree of freedom, active condition and exit/release rule",
+    "trajectory": "ordered state evolution through time under declared dynamics and constraints",
+    "timeline": "one admissible history/path; a family of timelines is a path ensemble rather than automatically a physical multiverse",
+    "topology": "connectivity, bridges, dominators, bottlenecks, cuts, cycles, winding, basins and attractors",
+    "reachability": "states that can still be reached from a starting state under declared controls, disturbances and constraints",
+    "fate_destiny": "interpretive umbrella that must be split into hard constraint, invariant, attractor, absorbing state, probability-one target, all-path target, reachable target or theological destiny before analysis"
   },
+  "fate_tests": {
+    "possible":"EF target / at least one admissible path reaches target",
+    "inevitable":"AF target / every admissible path reaches target in the declared model",
+    "invariant":"AG safe-set / all admissible paths stay inside declared set",
+    "probabilistic":"P(hit target before failure) under a specified stochastic model",
+    "absorbing":"P_aa=1 in a declared Markov model",
+    "theological":"providence, election, predestination or telos; never silently converted into mechanics"
+  },
+  "constraint_cycle": [
+    "relation",
+    "constraint/leash",
+    "admissible-state-set",
+    "trajectory",
+    "timeline/path",
+    "topology/path-class",
+    "choice/control",
+    "reachable-set",
+    "target/attractor/outcome"
+  ],
   "cycle": ["source", "life", "world", "death", "memory", "renewal", "life"],
   "canonical_transformations": [
     {"from":"father-son-relationship", "to":"door", "layer":"mythological"},
     {"from":"son", "to":"ladder", "layer":"mythological", "note":"crucifixion-transformation motif"},
     {"from":"axis", "to":"tree", "layer":"mythological", "note":"living expression of vertical continuity"},
     {"from":"tree", "to":"graph", "layer":"philosophical", "note":"relationship grammar applied to observable systems"},
-    {"from":"relationship", "to":"entanglement", "layer":"philosophical", "note":"relations can have distance, coupling, feedback, topology and trajectories"}
+    {"from":"relationship", "to":"entanglement", "layer":"philosophical", "note":"relations can have distance, coupling, feedback, topology and trajectories"},
+    {"from":"relationship", "to":"constraint", "layer":"philosophical", "note":"some relations restrict admissible states/paths while others merely correlate or enable"},
+    {"from":"constraint", "to":"leash", "layer":"mythological/philosophical", "note":"use leash only when anchor, restriction and release logic are explicit"},
+    {"from":"timeline", "to":"path", "layer":"philosophical", "note":"timeline is represented as an admissible history through state/transition space"},
+    {"from":"destiny", "to":"target-set", "layer":"comparative", "note":"target-set is a neutral mathematical comparator, not proof of providence"}
   ],
   "data_policy": {
     "metaphor_is_not_evidence": true,
     "hawkins_frequency_is_not_hz": true,
     "quantum_entanglement_is_not_fate": true,
+    "constraint_is_not_predestination": true,
+    "attractor_is_not_prophecy": true,
+    "probability_one_is_model_relative": true,
+    "all_timelines_is_not_physical_multiverse_without_model": true,
     "required_relationship_fields": ["source", "relationship", "target", "evidence", "confidence", "date", "notes"],
-    "recommended_relationship_fields": ["entanglement_type", "strength", "distance", "directionality", "dependency", "temporal_order", "path_dependence", "feedback", "topology", "trajectory", "phase", "counterfactual"],
+    "recommended_relationship_fields": ["entanglement_type", "strength", "distance", "directionality", "dependency", "temporal_order", "path_dependence", "feedback", "topology", "trajectory", "timeline", "phase", "counterfactual"],
+    "recommended_constraint_fields": ["constraint_type", "anchor", "active_when", "admissible_set", "reachable_set_effect", "exit_condition", "reversibility", "target_set", "failure_set"],
     "evidence_classes": ["observed", "calculated", "estimated", "scenario", "interpretation", "historical", "mythological", "creative"]
   },
-  "canonical_supporting_data": ["data/entanglement.json", "data/axis-topology.json", "data/hawkins-scale.json"]
+  "canonical_supporting_data": [
+    "data/entanglement.json",
+    "data/axis-topology.json",
+    "data/hawkins-scale.json",
+    "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json"
+  ]
 }
