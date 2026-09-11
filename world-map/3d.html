@@ -6,7 +6,7 @@
 <title>World Relational Atlas — 3D country graph</title>
 <meta name="description" content="Draggable 3D relational world atlas with progressively disclosed layers, evidence, time, networks and a project-symbolic North Axis scaffold.">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/3d.html">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@5.24.0/dist/maplibre-gl.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css">
 <script type="importmap">
 {"imports":{"https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs":"./maplibre-loader.js?v=6466194"}}
 </script>
@@ -76,15 +76,6 @@
   </aside>
 </div></div>
 <script src="./3d-boot-guard.js?v=6466194"></script>
-<script type="module" src="./3d-hover.js"></script>
-<script type="module" src="./3d-pathfinder.js"></script>
-<script type="module" src="./3d-demography.js"></script>
-<script type="module" src="./3d-evidence.js"></script>
-<script type="module" src="./3d-fields.js"></script>
-<script type="module" src="./3d-networks.js"></script>
-<script type="module" src="./3d-time.js"></script>
-<script type="module" src="./3d-axis-depth.js"></script>
-<script type="module" src="./3d-axis-operators.js"></script>
-<script type="module" src="./3d-axis.js"></script>
-<script type="module" src="./3d-ui.js"></script>
+<!-- Optional-module source markers retained for the source contract; bootstrap owns execution order. src="./3d-hover.js" src="./3d-pathfinder.js" src="./3d-evidence.js" src="./3d-time.js" src="./3d-ui.js" -->
+<script type="module" src="./3d-bootstrap.js"></script>
 </body></html>
