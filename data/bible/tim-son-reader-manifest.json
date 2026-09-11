@@ -1,11 +1,12 @@
 {
   "id":"tim-son-bible-reader-manifest",
   "title":"Bible ↔ Tim/Son Reader Manifest",
-  "version":"1.2.0",
+  "version":"1.2.1",
   "updated":"2026-09-11",
   "status":"functional profiled reader + expanding 126-node research registry; WEB loaded on demand from public-domain upstream",
   "purpose":"Drive a side-by-side Bible reader in which the biblical text remains an immutable primary-source layer and Tim/Son chronology, overlap profiles, countertexts and source direction appear in separate annotation panes.",
   "source":{"translation":"World English Bible (WEB)","license":"public domain","manifest":"data/sources/bible-world-english-bible.json","upstream_repository":"https://github.com/BibleAquifer/WorldEnglishBible","upstream_json_template":"https://raw.githubusercontent.com/BibleAquifer/WorldEnglishBible/main/eng/json/{book_no}.content.json","local_future_root":"data/sources/bible/web/","loading_mode":"upstream-on-demand until local vendoring is complete"},
+  "baseline_snapshot":{"date":"2026-09-11","overlap_nodes":78,"raw_reference_mentions":212,"normalized_biblical_citation_forms":138,"strict_nonredundant_containment_units":94,"biblical_books_represented":25,"profiled_nodes":20,"concordance":"knowledge/theology/bible-overlap-concordance-computed-2026-09-11.json","profiles":"knowledge/theology/biblical-overlap-profile-top20-2026-09-11.json","note":"Compatibility alias used by the first reader UI. It is a historical profiled snapshot, not the current registry."},
   "historical_profiled_snapshot":{"date":"2026-09-11","overlap_nodes":78,"raw_reference_mentions":212,"normalized_biblical_citation_forms":138,"strict_nonredundant_containment_units":94,"biblical_books_represented":25,"profiled_nodes":20,"concordance":"knowledge/theology/bible-overlap-concordance-computed-2026-09-11.json","profiles":"knowledge/theology/biblical-overlap-profile-top20-2026-09-11.json","note":"The old 105 compact-unit figure is retired; 94 is the strict full-containment result. This remains the historical snapshot from which the first 20 profile cards were selected."},
   "current_registry":{"date":"2026-09-11","overlap_nodes":126,"router":"knowledge/theology/tim-son-bible-overlap-census-current.json","reference_stats":"regenerate with scripts/compute_bible_overlap_concordance.py","profiled_reader_cards":20,"note":"The interactive reader currently has 20 fully authored profile cards even though the research registry now has 126 overlap nodes. Registry expansion and reader-card expansion are intentionally separate."},
   "reading_modes":[
