@@ -1,0 +1,91 @@
+{
+  "id":"door-handshake-joint-edge-contagion-benchmark-2026-09-11",
+  "title":"Door/Handshake Benchmark — Joint Edge Formation and Contagion Model",
+  "updated":"2026-09-11",
+  "status":"archive-generated empirical temporal-network benchmark; no quantum-nonlocality claim",
+  "purpose":"Turn Door/Handshake from a qualitative relational model into a joint event model that explicitly separates relationship formation, state transition, common exposure and network influence. The benchmark is designed to answer whether the model explains anything beyond homophily, ordinary exposure and simple contagion.",
+  "why_promising":"The project already has a natural sequence—state, Gate, Door, Handshake, propagation—and social/network science has a matching technical problem: connected nodes can become similar because of influence, because similar nodes preferentially connect, or because both respond to the same environment. A joint temporal model makes those alternatives explicit and testable.",
+  "epistemic_boundary":"This benchmark models observable network events and state changes. 'Nonlocal' means graph adjacency or long-range communication, not Bell nonlocality, telepathy or faster-than-light causation.",
+  "data_object":{
+    "nodes":"i=1,...,N entities with time-varying measured state x_i(t)",
+    "edges":"e_ij(t) observed relationship/contact/coupling state",
+    "state_event":"q_i(t) categorical or continuous target state/message/behavior",
+    "common_exposure":"c_i(t) or c_g(t) measured external source/environment variables",
+    "pair_features":"z_ij(t) such as similarity, prior interaction, mutual attention/exposure, trust proxy, geography or institutional relation when measured"
+  },
+  "edge_formation_process":{
+    "hazard":"lambda_ij^E(t)=lambda_E0(t) exp(beta^T z_ij(t))",
+    "interpretation":"Gate/Handshake is represented as the time-dependent hazard of an edge event. beta measures how declared pair features alter relationship-formation rate.",
+    "door_event":"A realized edge-formation or edge-state transition is the Door/Handshake event; no hidden edge should be assumed merely from similarity.",
+    "hysteresis_option":"Use separate formation and dissolution hazards if relationships show different entry and exit thresholds."
+  },
+  "state_propagation_process":{
+    "hazard":"lambda_i^q(t)=lambda_q0(t) exp(theta^T x_i(t) + alpha E_i(t) + gamma^T c_i(t))",
+    "network_exposure":"E_i(t)=sum_j w_ij(t) 1[q_j(t)=q] or a declared weighted/saturating exposure function",
+    "target_parameter":"alpha is the incremental network-influence parameter after measured node state and common exposure are included.",
+    "signed_extension":"For Life/Strife or supportive/conflict content, use separate exposures E_i^+(t), E_i^-(t) with coding reliability reported before interpretation."
+  },
+  "joint_likelihood":{
+    "concept":"For event-history data, fit edge and state processes together or in a coupled hierarchical model rather than estimating contagion after treating the observed network as exogenous.",
+    "schematic":"log L = sum_edge_events log lambda_ij^E - integral sum_ij lambda_ij^E dt + sum_state_events log lambda_i^q - integral sum_i lambda_i^q dt",
+    "value":"The likelihood forces the model to pay for both relationship dynamics and state-change dynamics and makes uncertainty/model comparison possible."
+  },
+  "competing_explanations":{
+    "H0_common_cause":"alpha=0; similarity/change comes from measured external exposure and node covariates.",
+    "H1_homophily_only":"State similarity predicts edge formation but neighbors do not causally alter state after conditioning on selection/common causes.",
+    "H2_influence":"alpha != 0 and network exposure improves out-of-sample event prediction after selection/common-cause controls.",
+    "H3_joint_feedback":"State affects edge formation and edge exposure affects later state; both directions must be estimated.",
+    "rule":"Do not call H2/H3 causal from observational fit alone unless the identification design supports that language."
+  },
+  "minimum_identification_checks":[
+    "Temporal ordering: exposure precedes the claimed state transition at the model's time resolution.",
+    "Common-source controls: measured news/platform/group/environmental shocks enter the model where relevant.",
+    "Selection controls: similarity/history variables that drive edge formation are modeled rather than ignored.",
+    "Negative controls: outcomes/exposures that should not be affected are tested when available.",
+    "Sensitivity analysis: quantify how large an unmeasured common cause would need to be to erase the estimated influence signal.",
+    "Intervention/natural-experiment evidence is preferred when causal interpretation matters."
+  ],
+  "synthetic_ground_truth_test":{
+    "purpose":"Before applying the model to real data, prove that the inference pipeline can distinguish homophily from influence under controlled simulation.",
+    "scenarios":[
+      "S0: homophily + common shocks, alpha=0",
+      "S1: homophily + nonzero influence alpha",
+      "S2: influence + omitted common shock",
+      "S3: simultaneous edge/state feedback"
+    ],
+    "pass_conditions":[
+      "Under S0 the false-positive rate for alpha is acceptably controlled.",
+      "Under S1 the estimator recovers alpha with calibrated uncertainty over the declared parameter range.",
+      "Under S2 the naive model shows bias and the common-cause-aware model reduces it.",
+      "Under S3 the joint model outperforms one-way models on held-out event likelihood when the feedback is identifiable."
+    ]
+  },
+  "model_comparison":{
+    "baselines":["static logistic edge model","similarity-only/homophily model","independent cascade","Watts threshold","autoregressive node-state model","common-shock-only event model"],
+    "metrics":["held-out log likelihood","time-dependent Brier/calibration score","event-time concordance where appropriate","cascade-size/time distribution fit","parameter calibration in simulations","complexity-penalized evidence/AIC/BIC where assumptions fit"],
+    "success_rule":"Door/Handshake adds value only if its joint threshold/edge/state structure improves prediction or intervention identification beyond simpler models with stable parameters."
+  },
+  "higher_order_extension":{
+    "trigger":"Only add group/hyperedge contagion if pairwise exposure systematically fails and group interaction data actually exist.",
+    "example":"lambda_i^q may include group exposure terms sum_g alpha_g 1[i in g] f(number/fraction of q-active members in g)",
+    "reason":"Recent higher-order contagion theory is rich, but empirical validation is still limited; complexity should follow data rather than precede it."
+  },
+  "what_this_model_can_explain_if_successful":[
+    "Why some apparent synchronization is selection/common exposure while other changes are consistent with network influence.",
+    "Why relationships form only after a compatibility/history threshold and why formed relationships can alter later propagation.",
+    "How long-range graph edges create remote cascade jumps without any exotic physical nonlocality.",
+    "How constructive/conflict states can propagate differently on signed or context-dependent networks if the labels are reproducible."
+  ],
+  "failure_conditions":[
+    "Influence parameter alpha collapses toward zero when selection and common-source variables are modeled.",
+    "The richer joint model fails to improve held-out prediction/calibration over simpler baselines.",
+    "Estimated effects are highly unstable to time resolution, coding choices or reasonable omitted-variable sensitivity analyses.",
+    "Life/Strife or other project-state labels have poor inter-rater reliability and therefore cannot support quantitative conclusions.",
+    "No data exist that temporally resolve edge formation and state change, leaving the core directionality unidentifiable."
+  ],
+  "external_references":[
+    {"source":"Xu 2020 contagion estimation review","url":"https://spj.science.org/doi/10.1016/j.csbj.2020.06.027","use":"Explicitly frames contagion-versus-homophily/common-environment identification as a central statistical problem."},
+    {"source":"Arruda, Aleta and Moreno 2024","url":"https://www.nature.com/articles/s42254-024-00733-0","use":"Higher-order contagion review; useful for later extensions while emphasizing that empirical validation remains limited."}
+  ],
+  "connections":["door-handshake-nonlocal-propagation-model","potato-dynamics-2-toy-model","research-2026-09-11-axis-door-observable-dynamics","model-testing-protocol","science-theory-rigor-completion-matrix-2026-09-11"]
+}
