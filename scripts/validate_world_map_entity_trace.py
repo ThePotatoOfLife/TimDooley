@@ -52,6 +52,14 @@ def main() -> int:
     if bridge.get("public_reader") != "index.html":
         errors.append("global graph bridge public reader changed; entity Trace routing must be reviewed")
 
+    evidence_contract = contract.get("evidence", {})
+    if set(evidence_contract.get("filters", [])) != {"evidence class", "confidence"}:
+        errors.append("entity Trace contract must expose evidence-class and confidence filters")
+    completed = set(contract.get("growth_gate", {}).get("completed", []))
+    for gate in ("add evidence-class filtering", "add confidence filtering", "route archive endpoints through bridge/public-reader rules"):
+        if gate not in completed:
+            errors.append(f"entity Trace completed gate not recorded: {gate}")
+
     required_js = (
         "data/relationships.json",
         "data/nodes.json",
@@ -67,6 +75,12 @@ def main() -> int:
         "window.__potatoEntityTrace",
         "atlas-time-change",
         "queueMicrotask(render)",
+        "entityEvidenceFilter",
+        "entityConfidenceFilter",
+        "function passesFilters",
+        "All evidence classes",
+        "All confidence levels",
+        "they are not a truth score",
     )
     for marker in required_js:
         if marker not in js:
@@ -84,10 +98,12 @@ def main() -> int:
     if not rels:
         errors.append("normalized relationship graph is empty")
     evidence_classes = {str(row.get("evidence")) for row in rels if row.get("evidence")}
+    confidence_classes = {str(row.get("confidence")) for row in rels if row.get("confidence")}
     if len(evidence_classes) < 2:
         warnings.append("normalized graph currently exposes fewer than two evidence classes")
+    if not confidence_classes:
+        warnings.append("normalized graph currently exposes no explicit confidence classes")
 
-    # Syntax only: no browser DOM execution is required here.
     node = shutil.which("node")
     if node:
         with tempfile.NamedTemporaryFile("w", suffix=".mjs", encoding="utf-8", delete=False) as handle:
@@ -104,7 +120,8 @@ def main() -> int:
 
     print(f"Normalized relationships: {len(rels)}")
     print(f"Evidence classes represented: {len(evidence_classes)}")
-    print("Entity Trace: one-hop inspector · bridge-routed archive links · Time-aware validity labels · no fake coordinates")
+    print(f"Confidence classes represented: {len(confidence_classes)}")
+    print("Entity Trace: one-hop inspector · bridge-routed archive links · Time-aware validity labels · evidence/confidence filters · no fake coordinates")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings:
         print("WARNING:", warning)
