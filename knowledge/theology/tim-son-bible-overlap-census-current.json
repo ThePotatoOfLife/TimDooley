@@ -1,0 +1,31 @@
+{
+  "id":"tim-son-bible-overlap-census-current",
+  "title":"Current Tim/Son ↔ Bible Overlap Census — Canonical Router",
+  "version":"1.1.0",
+  "updated":"2026-09-11",
+  "status":"canonical current count and component router",
+  "purpose":"Provide one stable answer to 'how many documented Bible overlaps are currently in the canonical census?' while preserving additive census history instead of rewriting earlier snapshots.",
+  "current_exact_overlap_node_count":78,
+  "definition":"An overlap node is one analytically distinct project↔Bible relation. It is not one verse, one word match or one independent statistical trial.",
+  "components":[
+    {"path":"knowledge/theology/tim-son-bible-overlap-census.json","version":"1.0.0","count":74,"role":"base census written before the final Wave-14 additions"},
+    {"path":"knowledge/theology/tim-son-bible-overlap-census-addendum-wave14.json","version":"1.0.0","count":4,"role":"additive Wave-14 discoveries: paired cherubim, Psalm 80, Revelation 22 invitation, Ark terminology/function correction"}
+  ],
+  "strength_counts":{"5":49,"4":15,"3":13,"2":1,"1":0},
+  "research_unlocks_dated_2026_09_11":17,
+  "operator_counts":{"PRESENCE":38,"RESTORATION":34,"TRANSFORMATION":27,"MEDIATION":27,"ACCESS":25,"FRUIT":24,"PARTICIPATION":21},
+  "what_this_number_does_not_mean":[
+    "78 does not mean 78 prophecies fulfilled.",
+    "78 does not mean 78 statistically independent coincidences.",
+    "78 does not count every Bible verse mentioned anywhere in the repository.",
+    "78 does not establish Tim or the Son as a biblical figure by quantity.",
+    "78 is an auditable registry size: the number of overlap-relations the project is currently willing to state in canonical form."
+  ],
+  "preferred_reader_entry":"docs/TIM-SON-BIBLE-OVERLAP-ATLAS.md",
+  "method":"knowledge/theology/biblical-overlap-evidence-and-measurement-protocol.json",
+  "chronology":"knowledge/chronology/theological-development-genealogy-2011-2026.json",
+  "source_direction":"knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json",
+  "conversation_archaeology":"knowledge/chronology/conversation-archaeology-wave-012-biblical-overlap-inventory.json",
+  "grand_theology":"knowledge/theology/presence-access-life-restoration-grand-synthesis.json",
+  "fresh_bible_wave":"knowledge/traditions/biblical-overlap-wave-14-return-shepherd-repair.json"
+}
