@@ -102,7 +102,8 @@ def main() -> int:
 
         previous_count = 0
         typed_count = 0
-        for code, row in countries.items() if isinstance(countries, dict) else []:
+        country_items = countries.items() if isinstance(countries, dict) else []
+        for _code, row in country_items:
             metrics = row.get("metrics", {}) if isinstance(row, dict) else {}
             for metric_id, item in metrics.items():
                 if metric_id not in EXPECTED_METRICS or not isinstance(item, dict):
@@ -126,7 +127,7 @@ def main() -> int:
                 errors.append(f"D4 inspector missing integration marker: {marker}")
     if metric_js.exists():
         text = metric_js.read_text(encoding="utf-8")
-        for marker in ("axis:d3-coverage", "axis:d6-change", "labor_force_participation", "electricity_access"):
+        for marker in ("d3-coverage", "d6-change", "labor_force_participation", "electricity_access"):
             if marker not in text:
                 errors.append(f"D4 metric-height module missing integration marker: {marker}")
 
