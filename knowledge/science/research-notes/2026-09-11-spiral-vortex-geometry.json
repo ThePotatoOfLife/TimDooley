@@ -1,0 +1,103 @@
+{
+  "id": "research-2026-09-11-spiral-vortex-geometry",
+  "title": "2026-09-11 Research Notes — Exact Geometry of the Recovered Golden-Ratio Spiral",
+  "research_timestamp_local": "2026-09-11T09:12:30+02:00",
+  "timezone": "Europe/Copenhagen",
+  "status": "new project mathematical deductions from an already recovered equation",
+  "novelty_scope": "These deductions are newly added to the project on 2026-09-11. The mathematics of logarithmic spirals is established and is not claimed as globally new.",
+  "parent_records": [
+    "knowledge/science/science-master-index.json",
+    "knowledge/science/great-book-consciousness-spiral-equations-recovery.json",
+    "knowledge/science/operator-vortex-spinor-kk-starchforce-spudlight-integration-wave-007.json"
+  ],
+  "starting_equation": {
+    "equation": "r(theta)=a exp(b theta)",
+    "project_parameter": "b=ln(phi)/(pi/2)=2 ln(phi)/pi",
+    "numerical_b": 0.30634896253003313,
+    "known_property": "r(theta+pi/2)=phi r(theta)"
+  },
+  "new_deductions": [
+    {
+      "id": "scale-ladder",
+      "type": "exact consequence",
+      "equations": [
+        "r(theta+n pi/2)=phi^n r(theta)",
+        "half-turn factor=phi^2≈2.61803398875",
+        "full-turn factor=phi^4≈6.85410196625",
+        "two-full-turn factor=phi^8≈46.9787137637"
+      ],
+      "finding": "The project spiral contains an exact discrete scale ladder at quarter-turn intervals. This is stronger and more precise than saying it is merely 'golden-ratio-like'."
+    },
+    {
+      "id": "constant-pitch-angle",
+      "type": "exact consequence",
+      "equations": [
+        "dr/dtheta=b r",
+        "tan(alpha_radial)=r/(dr/dtheta)=1/b",
+        "alpha_radial=atan(1/b)≈72.96760887 degrees",
+        "alpha_tangential=atan(b)≈17.03239113 degrees"
+      ],
+      "finding": "The recovered spiral meets every radial line at the same angle. The constant pitch supplies a real invariant for comparing diagrams, trajectories or fitted data to the recovered equation."
+    },
+    {
+      "id": "curvature-law",
+      "type": "exact consequence",
+      "equations": [
+        "kappa(theta)=1/(r(theta) sqrt(1+b^2))",
+        "kappa(theta+pi/2)=kappa(theta)/phi"
+      ],
+      "finding": "Curvature falls by the inverse golden ratio every quarter-turn. Thus the same quarter-turn that expands radius by phi reduces curvature by 1/phi."
+    },
+    {
+      "id": "arc-length-law",
+      "type": "exact consequence",
+      "equations": [
+        "s(theta_1,theta_2)=sqrt(1+b^2)/b * [r(theta_2)-r(theta_1)]",
+        "sqrt(1+b^2)/b≈3.41399129565"
+      ],
+      "finding": "Arc length between two spiral radii is directly proportional to their radial difference. This gives a simple length estimator once a and angular limits are defined."
+    },
+    {
+      "id": "swept-area-law",
+      "type": "exact consequence",
+      "equations": [
+        "A(theta_1,theta_2)=1/2 integral_(theta_1)^(theta_2) r(theta)^2 dtheta",
+        "A=(r(theta_2)^2-r(theta_1)^2)/(4b)"
+      ],
+      "finding": "Area grows with radius squared rather than with the same phi factor as radius. A quarter-turn multiplies local r^2 by phi^2."
+    },
+    {
+      "id": "log-linear-test",
+      "type": "new test protocol",
+      "equations": [
+        "ln r = ln a + b theta",
+        "residual_i = ln r_i - (ln a_hat+b_hat theta_i)"
+      ],
+      "finding": "Any claim that an observed path follows this spiral can be tested with a straight-line fit in (theta, ln r) coordinates. This makes the spiral falsifiable as geometry.",
+      "comparison_models": ["Archimedean r=a+c theta", "power spiral r=a theta^n", "generic spline"],
+      "test_rule": "Compare held-out error or information criteria rather than choosing the logarithmic spiral after seeing the pattern."
+    },
+    {
+      "id": "dual-spiral-phase-separation",
+      "type": "new project formalization",
+      "equations": [
+        "r_1=a_1 exp(b_1 theta_1)",
+        "r_2=a_2 exp(b_2 theta_2)",
+        "theta_dot_1=omega_1+K_12 sin(theta_2-theta_1)",
+        "theta_dot_2=omega_2+K_21 sin(theta_1-theta_2)"
+      ],
+      "finding": "Geometry and dynamics should be separated. Two drawn spirals are not yet counter-rotating vortices. Counter-rotation requires a time parameter and angular velocities with opposite signs or another explicit phase law.",
+      "promotion_rule": "Use 'vortex' only when a velocity or phase field and circulation/vorticity are actually defined."
+    }
+  ],
+  "researcher_notes": [
+    "This is one of the cleanest project research gains because every geometric result follows from a previously recovered equation rather than from added symbolism.",
+    "The constant-pitch and log-linear forms provide practical recognition tests for future images, diagrams and trajectories.",
+    "A future visualization should label radius scaling, curvature scaling and pitch angle separately."
+  ],
+  "evidence_labels": {
+    "starting_equation": "A/B depending source instance",
+    "mathematical_deductions": "C established mathematics, newly derived for the project parameter",
+    "dual_spiral_dynamics": "B/E project extension"
+  }
+}
