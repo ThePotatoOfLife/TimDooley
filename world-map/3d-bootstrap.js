@@ -32,8 +32,6 @@ function setStatus(message, kind = 'info') {
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-// requestAnimationFrame can be throttled in background tabs. Always retain a
-// timer escape hatch so waiting for paint cannot become a new boot deadlock.
 function nextPaint(maxWaitMs = 160) {
   return new Promise(resolve => {
     let done = false;
@@ -131,25 +129,22 @@ window.__potatoAtlasDiagnostics = {
   modules: {},
 };
 window.__potatoAtlasReady = false;
-// One shared loader keeps diagnostics/deduplication/cache versioning intact even
-// when the UI or another optional module promotes a dormant feature on demand.
 window.__potatoAtlasLoadModule = loadAfterPaint;
 
 try {
   setStatus('Loading core atlas…');
 
-  // 3d-hover owns resilient local-first data routing and imports 3d-app, which
-  // constructs the MapLibre renderer and geographic country layers.
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
 
-  // Lightweight interaction surfaces load immediately. The working-selection
-  // controller composes over the legacy active-country core rather than replacing
-  // the renderer, and Lenses own fill color without owning selection state.
+  // Lightweight interaction surfaces load immediately. Metrics only loads the
+  // canonical country index here; richer records remain lazy until a metric Lens
+  // actually asks for them.
   await loadAfterPaint('Progressive UI', './3d-ui.js');
   await loadAfterPaint('Selection UI', './3d-selection-ui.js');
   await loadAfterPaint('Country selection', './3d-country-selection.js');
+  await loadAfterPaint('Metrics', './3d-metrics.js');
   await loadAfterPaint('Lenses', './3d-lenses.js');
 
   setStatus('');
@@ -211,8 +206,6 @@ try {
   timeMenu?.addEventListener('toggle', onTimeToggle);
   viewMenu?.addEventListener('toggle', onViewToggle);
 
-  // Inspector enrichment follows an actual country selection. The map remains
-  // light when a user only pans/zooms without inspecting anything.
   let inspectionPromoted = false;
   const promoteInspectionOnce = event => {
     if (inspectionPromoted) return;
