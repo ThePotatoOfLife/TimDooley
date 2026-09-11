@@ -18,6 +18,7 @@
     timeoutMs: DEFAULT_TIMEOUT_MS,
     watchdogMs: BOOT_WATCHDOG_MS,
     installedAt: new Date().toISOString(),
+    stage: 'guard-installed',
     failures: []
   };
 
@@ -34,22 +35,23 @@
   window.addEventListener('error', event => {
     const message = event?.error?.message || event?.message || 'Unknown JavaScript error';
     window.__potatoAtlasBootGuard.failures.push(message);
-    if (!window.__potatoAtlasMap) showFailure(`Atlas boot error: ${message}`);
+    if (!window.__potatoAtlasReady) showFailure(`Atlas boot error: ${message}`);
   });
 
   window.addEventListener('unhandledrejection', event => {
     const reason = event?.reason;
     const message = reason?.message || String(reason || 'Unknown promise rejection');
     window.__potatoAtlasBootGuard.failures.push(message);
-    if (!window.__potatoAtlasMap) showFailure(`Atlas boot error: ${message}`);
+    if (!window.__potatoAtlasReady) showFailure(`Atlas boot error: ${message}`);
   });
 
   window.setTimeout(() => {
-    if (window.__potatoAtlasMap) return;
+    if (window.__potatoAtlasReady) return;
     const failures = window.__potatoAtlasBootGuard.failures;
+    const stage = window.__potatoAtlasBootGuard.stage || 'unknown';
     showFailure(failures.length
-      ? `Atlas did not finish booting: ${failures.at(-1)}`
-      : 'Atlas did not finish booting. The map engine or first application module never became ready.');
+      ? `Atlas did not finish booting at ${stage}: ${failures.at(-1)}`
+      : `Atlas did not finish booting. Last stage: ${stage}.`);
     console.error('Atlas boot watchdog fired.', window.__potatoAtlasBootGuard);
   }, BOOT_WATCHDOG_MS);
 })();
