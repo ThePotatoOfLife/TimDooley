@@ -80,6 +80,17 @@ class AtlasMap extends runtime.Map {
     }
   }
 
+  on(type, ...args) {
+    // The core HUD used to recompute graph state and rewrite DOM on every zoom,
+    // pitch and rotate frame. It already has a moveend listener, so suppress only
+    // those redundant animation-frame registrations and leave all other events intact.
+    const listener = args.find(arg => typeof arg === 'function');
+    if (['zoom', 'pitch', 'rotate'].includes(type) && listener?.name === 'updateHud') {
+      return { unsubscribe() {} };
+    }
+    return super.on(type, ...args);
+  }
+
   once(type, ...args) {
     // MapLibre's load event is one-shot, while loaded() can temporarily become
     // false again as later sources/layers settle. Replay first-load readiness to
@@ -96,8 +107,30 @@ class AtlasMap extends runtime.Map {
   }
 }
 
+class AtlasPopup extends runtime.Popup {
+  setHTML(html) {
+    // Avoid rebuilding identical popup DOM for every mousemove over one country.
+    if (html === this.__potatoAtlasLastHtml) return this;
+    if (window.__potatoAtlasMap?.isMoving?.()) return this;
+    this.__potatoAtlasLastHtml = html;
+    return super.setHTML(html);
+  }
+
+  setLngLat(lngLat) {
+    // Pointer events can keep firing while a WebGL drag is in progress. Popup
+    // layout is decorative, so never make it compete with camera rendering.
+    if (window.__potatoAtlasMap?.isMoving?.()) return this;
+    return super.setLngLat(lngLat);
+  }
+
+  addTo(map) {
+    if (map?.isMoving?.()) return this;
+    return super.addTo(map);
+  }
+}
+
 export const Map = AtlasMap;
-export const Popup = runtime.Popup;
+export const Popup = AtlasPopup;
 export const NavigationControl = runtime.NavigationControl;
 export const Marker = runtime.Marker;
 export const LngLat = runtime.LngLat;
