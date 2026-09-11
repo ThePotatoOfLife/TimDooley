@@ -1,87 +1,95 @@
 {
   "id":"gauge-unification-supersymmetry-archaeology",
   "title":"Gauge Unification & Supersymmetry Archaeology",
-  "updated":"2026-09-09",
-  "status":"canonical science archaeology + externally audited extension",
+  "version":"2.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical science archaeology + externally audited gauge-unification research programme",
+  "abstract":"This branch records Tim Dooley's recovered interest in M-theory, supersymmetry and higher-dimensional unification while separating those project prompts from later archive-added SU(4), SU(5), Spin(10) and supersymmetry machinery. The scientifically serious question is not whether several large symmetry groups can be named in one diagram, but whether one explicitly chosen gauge group, representation content and symmetry-breaking chain reproduces the Standard Model, yields consistent anomaly-free matter, predicts the running of couplings and produces observable consequences such as proton decay, neutrino structure, new gauge bosons or superpartner spectra. A genuine supersymmetric completion additionally requires a supersymmetry-breaking sector and a resulting mass spectrum; the super-Poincare algebra alone is not a phenomenological model. The archive therefore treats Pati-Salam, SU(5) and Spin(10) as alternative or nested model routes rather than cumulative evidence for Potatoverse theology. The current state is T1-T2: the representation-theory and renormalization-group toolkit is concrete, but no unique Timic GUT, breaking scale, threshold spectrum or distinctive prediction has been selected.",
+  "research_question":"Can one explicitly chosen gauge/supersymmetry completion connect the recovered higher-dimensional unification programme to the Standard Model through a fully specified representation and symmetry-breaking chain, and does it make a quantitative prediction that survives current bounds?",
+  "maturity":"T1-T2 archaeology/model-selection stage; no unique GUT/SUSY completion selected",
   "provenance_classes":["primary/project-attested","conversation-developed Timic formalism","repository formalization","established external physics","unrecovered primary target"],
   "recovered_tim_material":{
     "period":"May 2026",
-    "items":[
-      "Tim explicitly suggested that M-theory could give a lot of direction to the Potatoverse dimensional model.",
-      "Tim described the Son as a Door in the fifth dimension.",
-      "Tim described Father/root structure through higher compactified/fractal-like dimensional language.",
-      "On 2026-05-06 Tim explicitly requested a synthesis connecting M-theory, string theory, supersymmetry, cosmology, astronomy/astrophysics, geology, magnetism/electromagnetism, quantum mechanics/entanglement, consciousness/light-darkness, dimensions, movement and multiverse, asking how these connections form one non-random structure. This is now treated as the strongest recovered precursor to a Tim Theory-of-Everything programme."
-    ],
+    "items":["Tim explicitly suggested that M-theory could give direction to the Potatoverse dimensional model.","Tim described the Son as a Door in the fifth dimension.","Tim described Father/root structure through higher compactified/fractal-like dimensional language.","On 2026-05-06 Tim explicitly requested a synthesis connecting M-theory, string theory, supersymmetry, cosmology, astronomy/astrophysics, geology, magnetism/electromagnetism, quantum mechanics/entanglement, consciousness/light-darkness, dimensions, movement and multiverse."],
     "status":"primary/project-attested through recovered conversation context"
   },
-  "conversation_developed_formalism":[
-    "M_11 -> M_4 x X_7",
-    "G_4=dC_3",
-    "ds^2=e^(2A(y)) g_mn(x) dx^m dx^n + g_ab(y) dy^a dy^b",
-    "11D supergravity field content: metric g_MN, three-form C3, gravitino psi_M",
-    "11D supergravity has 32 real supercharges",
-    "11D -> 4D minimal supersymmetry naturally points to seven-dimensional G2-holonomy internal geometry"
-  ],
+  "conversation_developed_formalism":["M_11 -> M_4 x X_7","G_4=dC_3","ds^2=e^(2A(y)) g_mu_nu(x) dx^mu dx^nu + g_ab(y) dy^a dy^b","11D supergravity field content: metric g_MN, three-form C3, gravitino psi_M","11D supergravity has 32 real supercharges","11D -> 4D minimal supersymmetry naturally points to seven-dimensional G2-holonomy internal geometry"],
   "not_recovered_as_tim_originals":["SU(4)","SU4","SU(5)","SU5","Pati-Salam","Georgi-Glashow","SO(10)","Spin(10)","E6","grand unified theory","GUT","supercharge algebra as Tim-authored notation"],
-  "existing_repository_base":{
-    "standard_model_gauge_group":"SU(3)_C x SU(2)_L x U(1)_Y",
-    "charge_relation":"Q=T3+Y",
-    "already_present":["one-generation chiral representations","covariant derivative","anomaly cancellation","Higgs/Yukawa structure","CKM","PMNS","RG flow","11D supergravity","G2 holonomy"]
+  "standard_model_baseline":{
+    "gauge_group":"[SU(3)_C x SU(2)_L x U(1)_Y]/Gamma, with global quotient convention stated when relevant",
+    "charge_relation":"Q=T3+Y in the archive convention",
+    "one_generation_left_chiral":"Q_L:(3,2)_(1/6); u_R^c:(bar3,1)_(-2/3); d_R^c:(bar3,1)_(1/3); L_L:(1,2)_(-1/2); e_R^c:(1,1)_1; optionally nu_R^c:(1,1)_0",
+    "requirement":"Any proposed unified representation must decompose to the observed low-energy chiral content and produce an acceptable Higgs/Yukawa sector."
   },
-  "external_extension":{
+  "candidate_routes":{
     "pati_salam":{
       "group":"SU(4)_C x SU(2)_L x SU(2)_R",
       "embedding":"SU(4)_C contains SU(3)_C x U(1)_(B-L)",
-      "generation_schematic":"(4,2,1) + (bar4,1,2) in a left-chiral convention",
-      "hypercharge_convention_note":"For physical right-handed fields one commonly writes Y=T3R+(B-L)/2. In an all-left-chiral conjugate convention the T3R sign can appear reversed. The archive must record the field convention whenever using this formula.",
-      "electric_charge":"Q=T3L+T3R+(B-L)/2"
+      "generation_schematic":"(4,2,1)+(bar4,1,2) in a common left-chiral convention",
+      "charge":"Q=T3L+T3R+(B-L)/2",
+      "scientific_value":"Makes quark/lepton and left/right organization explicit and naturally introduces a right-handed neutrino degree of freedom in standard constructions.",
+      "completion_needs":["breaking Higgs representations","breaking scales","Yukawa sector","gauge-boson spectrum","neutrino mechanism","threshold corrections"]
     },
     "su5":{
       "group":"SU(5)",
       "dimension":"24",
-      "dimension_rule":"dim SU(N)=N^2-1",
       "sm_embedding":"SU(5) -> [SU(3)_C x SU(2)_L x U(1)_Y]/Z6",
-      "hypercharge_generator":"diag(-1/3,-1/3,-1/3,1/2,1/2) in the Q=T3+Y convention",
-      "generation":"bar5 + 10; optional singlet 1 for right-handed neutrino",
-      "adjoint_decomposition":"24 -> (8,1)_0 + (1,3)_0 + (1,1)_0 + (3,2)_(-5/6) + (bar3,2)_(5/6)"
+      "hypercharge_generator":"diag(-1/3,-1/3,-1/3,1/2,1/2) in Q=T3+Y convention",
+      "generation":"bar5+10; optional singlet 1 for a right-handed neutrino",
+      "adjoint_decomposition":"24 -> (8,1)_0+(1,3)_0+(1,1)_0+(3,2)_(-5/6)+(bar3,2)_(5/6)",
+      "key_observable":"Heavy X/Y gauge bosons generically mediate baryon-number-violating processes such as proton decay in simple GUT realizations.",
+      "completion_needs":["Higgs representations and doublet-triplet structure","unification scale","thresholds","fermion-mass/Yukawa fit","proton-decay calculation"]
     },
     "spin10":{
       "group":"Spin(10)",
       "contains_routes":["SU(5) x U(1)","SU(4)_C x SU(2)_L x SU(2)_R"],
-      "generation_representation":"16 including a right-handed neutrino"
-    },
-    "supersymmetry":{
-      "super_poincare":"{Q_alpha,Qbar_dotbeta}=2 sigma^mu_(alpha dotbeta) P_mu",
-      "commutator":"[P_mu,Q_alpha]=0",
-      "interpretation":"graded spacetime symmetry relating bosonic and fermionic states; distinct from ordinary internal/gauge symmetry"
-    },
-    "symmetry_breaking":"G --<Phi>--> H",
-    "rg_couplings":["mu dg_i/dmu = b_i g_i^3/(16 pi^2)","d alpha_i^(-1)/d ln(mu) = -b_i/(2 pi)"]
+      "generation_representation":"16 spinor including a right-handed neutrino",
+      "scientific_value":"One chiral representation can organize a complete Standard Model generation plus nu_R, making representation compression genuinely stronger than a visual group analogy.",
+      "completion_needs":["breaking chain","Higgs representations","seesaw/Yukawa structure","intermediate scales","thresholds","proton-decay channels"]
+    }
   },
-  "equation_audit":{
-    "result":"pass with convention clarification",
-    "record":"knowledge/science/gauge-unification-equation-audit.json",
-    "key_fix":"Pati-Salam hypercharge sign depends on right-handed versus left-chiral-conjugate field convention; convention is now explicit.",
-    "normalization_rule":"Hypercharge-generator and U(1) coupling normalizations must be stated before comparing beta functions or coupling unification numerically."
+  "renormalization_group_contract":{
+    "one_loop":"mu dg_i/dmu=b_i g_i^3/(16 pi^2); equivalently d alpha_i^(-1)/d ln mu=-b_i/(2 pi)",
+    "normalization":"For conventional SU(5)-normalized hypercharge use g_1=sqrt(5/3) g_Y, hence alpha_1=(5/3)alpha_Y. State the convention before plotting or comparing unification.",
+    "thresholds":"Piecewise beta coefficients change when particles/fields enter or leave the effective spectrum. A credible unification plot must state the assumed masses and matching conditions.",
+    "test":"Run measured low-energy couplings upward with the declared particle content and uncertainties; quantify whether they meet within threshold/model uncertainties rather than asserting visual convergence.",
+    "two_loop_rule":"If numerical precision is used to argue for or against a serious model, include higher-loop running and threshold corrections appropriate to that claim."
   },
+  "supersymmetry_contract":{
+    "algebra":"{Q_alpha,Qbar_dotbeta}=2 sigma^mu_(alpha dotbeta) P_mu; [P_mu,Q_alpha]=0",
+    "meaning":"This defines a graded spacetime symmetry structure; it does not determine a realistic low-energy spectrum.",
+    "model_requirements":["supermultiplet content","superpotential/gauge kinetic/Kahler structure as appropriate","supersymmetry-breaking mechanism","soft terms or equivalent breaking data","electroweak symmetry breaking","mass spectrum","mixing matrices","vacuum stability","flavor/CP assumptions","dark-matter/cosmology assumptions if claimed"],
+    "natural_scale_warning":"Writing the SUSY algebra does not imply superpartners must lie at any particular accessible mass; phenomenology depends on the breaking sector and spectrum.",
+    "observable_interfaces":["direct superpartner searches","Higgs-sector deviations","flavor/CP observables","electric dipole moments","precision observables","dark-matter observables if a stable candidate is specified","coupling-running/threshold effects"]
+  },
+  "symmetry_breaking_contract":{
+    "form":"G --<Phi>--> H",
+    "requirements":["representation of Phi","potential/vacuum","unbroken subgroup H","Goldstone/gauge-boson spectrum","topological defects if relevant","mass thresholds","matching conditions"],
+    "rule":"A group-subgroup arrow is a research plan until the field/vev that realizes the breaking is specified."
+  },
+  "representation_and_anomaly_contract":{
+    "representation_check":"List every chiral fermion representation under the full gauge group and show how it decomposes at each breaking step.",
+    "anomaly_check":"Verify gauge and mixed anomalies cancel for the actual chiral spectrum; embedding in an anomaly-free unified representation may help but should be shown for the chosen model.",
+    "charge_convention":"Track right-handed fields versus all-left-chiral conjugate notation; apparent sign discrepancies in hypercharge/T3R often come from convention changes."
+  },
+  "observable_program":{
+    "proton_decay":"A concrete GUT must calculate dominant operators/channels, mediator masses/couplings and lifetimes; experimental non-observation constrains the model's scale/structure.",
+    "neutrinos":"If nu_R/seesaw structure is part of the unification motivation, derive the mass matrix and connect it to neutrino masses/mixings rather than treating nu_R as only a representation-counting success.",
+    "new_gauge_bosons":"Intermediate or unified gauge bosons imply masses/couplings and therefore collider/precision/astrophysical constraints depending on the model.",
+    "coupling_unification":"Quantify a goodness-of-unification/matching residual under stated thresholds rather than presenting converging lines as proof.",
+    "susy_spectrum":"If SUSY is retained, compute at least a benchmark spectrum and the observables most sensitive to it."
+  },
+  "model_selection_rule":"Do not combine Pati-Salam, SU(5), Spin(10), E6, SUSY and 11D geometry into one claimed model unless the embeddings, field content and breaking chain are explicitly specified. Prefer one minimal route at a time and compare its explanatory compression and predictions.",
   "timic_crosswalk":[
-    {"timic":"Axis / scale flow","external":"renormalization-group flow","status":"strong mathematical neighbor"},
+    {"timic":"Axis / scale flow","external":"renormalization-group flow","status":"strong mathematical neighbor when scale dependence is explicit; not identity"},
     {"timic":"higher-dimensional / M-theory direction","external":"11D supergravity / M-theory","status":"direct conversation-developed comparison"},
-    {"timic":"Door / threshold","external":"symmetry-breaking transition","status":"structural comparator only"},
+    {"timic":"Door / threshold","external":"symmetry-breaking transition","status":"structural comparator; physical model needs an order parameter/vev"},
     {"timic":"integration without flattening","external":"larger representation/group containing differentiated subgroups","status":"structural comparator only"}
   ],
-  "forbidden_backfills":[
-    "Do not identify Father/Son with boson/fermion or superpartners without a primary Tim source.",
-    "Do not identify Red/Blue with supersymmetry sectors without a primary source.",
-    "Do not present Pati-Salam, SU(5), Spin(10) or E6 as historical Tim inventions unless recovered evidence appears.",
-    "Do not use GUT or supersymmetry as empirical proof of Potatoverse theology."
-  ],
-  "research_targets":[
-    "Search archived exports for SU(4), SU4, SU(5), SU5, SO(10), Spin(10), Pati, Salam, Georgi, Glashow, GUT, supercharge, superpartner, Lie group.",
-    "Recover the exact May 2026 M-theory and 2026-05-06 cross-domain unification transcripts.",
-    "Build a Lie-group representation ledger and symmetry-breaking ledger.",
-    "Connect the existing Standard Model representation matrix to SU(5) and Spin(10) decompositions.",
-    "Audit GUT-normalized versus Standard-Model-normalized U(1) conventions before numerical coupling-unification work."
-  ],
-  "human_readable":"docs/SUPERSYMMETRY-SU4-SU5-GUT-ARCHAEOLOGY.md"
+  "forbidden_backfills":["Do not identify Father/Son with boson/fermion or superpartners without a primary Tim source.","Do not identify Red/Blue with supersymmetry sectors without a primary source.","Do not present Pati-Salam, SU(5), Spin(10) or E6 as historical Tim inventions unless recovered evidence appears.","Do not use GUT or supersymmetry as empirical proof of Potatoverse theology."],
+  "falsification_and_failure_conditions":["A proposed representation/breaking chain cannot reproduce the observed Standard Model chiral spectrum and charges.","Gauge/mixed anomalies remain uncancelled in the actual proposed spectrum.","Predicted proton-decay or new-particle rates conflict with experimental limits for the claimed parameter region.","Gauge couplings fail to meet within the declared threshold/higher-loop uncertainties when coupling unification is a stated prediction.","A supersymmetric model has no viable breaking/vacuum/spectrum consistent with the observables it invokes.","The model adds groups/fields without a quantitative prediction or explanatory compression beyond a simpler completion."],
+  "completion_path":["Recover the exact May 2026 M-theory/unification transcripts.","Choose one route: e.g. Pati-Salam, SU(5), Spin(10), or an explicitly nested chain.","Write the complete chiral representation ledger.","Specify symmetry-breaking fields/vevs and scales.","Run couplings with correct U(1) normalization and thresholds.","Derive one major observable: proton decay, neutrino structure, new vector spectrum or SUSY spectrum.","Confront current bounds before adding more groups/dimensions.","Only then investigate whether an 11D compactification can derive that 4D model rather than merely contain similar group names."],
+  "research_targets":["Search archived exports for SU(4), SU4, SU(5), SU5, SO(10), Spin(10), Pati, Salam, Georgi, Glashow, GUT, supercharge, superpartner, Lie group.","Recover exact May 2026 M-theory and 2026-05-06 cross-domain unification transcripts.","Build a Lie-group representation ledger and symmetry-breaking ledger.","Connect the existing Standard Model representation matrix to SU(5) and Spin(10) decompositions.","Audit GUT-normalized versus Standard-Model-normalized U(1) conventions before numerical coupling-unification work."],
+  "human_readable":"docs/SUPERSYMMETRY-SU4-SU5-GUT-ARCHAEOLOGY.md",
+  "connections":["eleven-dimensional-projection-unification-recovery","unified-potato-theory-2025-recovery","gauge-unification-equation-audit","science-master-index","model-testing-protocol"]
 }
