@@ -25,13 +25,17 @@ const ALL_D4_METRICS = {
   gdp_per_capita:'NY.GDP.PCAP.CD',
   real_growth:'NY.GDP.MKTP.KD.ZG',
   unemployment:'SL.UEM.TOTL.ZS',
+  labor_force_participation:'SL.TLF.CACT.ZS',
   life_expectancy:'SP.DYN.LE00.IN',
+  fertility_rate:'SP.DYN.TFRT.IN',
   urbanization:'SP.URB.TOTL.IN.ZS',
   internet_penetration:'IT.NET.USER.ZS',
+  electricity_access:'EG.ELC.ACCS.ZS',
   trade_openness:'NE.TRD.GNFS.ZS',
   net_migration:'SM.POP.NETM',
   energy_dependence:'EG.IMP.CONS.ZS',
   fdi_inflow:'BX.KLT.DINV.WD.GD.ZS',
+  co2_per_capita:'EN.ATM.CO2E.PC',
 };
 const INDICATOR_TO_METRIC = Object.fromEntries(Object.entries(ALL_D4_METRICS).map(([id,indicator]) => [indicator,id]));
 
@@ -40,8 +44,10 @@ const D4_SURFACES = {
   gdp_per_capita: {label:'D4 · GDP / person', indicator:ALL_D4_METRICS.gdp_per_capita, unit:'current USD/person', scale:'log', role:'production per person'},
   trade_openness: {label:'D4 · Trade / GDP', indicator:ALL_D4_METRICS.trade_openness, unit:'percent of GDP', scale:'linear', domain:[0,250], role:'cross-border trade intensity'},
   life_expectancy: {label:'D4 · Life expectancy', indicator:ALL_D4_METRICS.life_expectancy, unit:'years', scale:'linear', domain:[45,90], role:'broad human outcome'},
+  labor_force_participation: {label:'D4 · Labour participation', indicator:ALL_D4_METRICS.labor_force_participation, unit:'percent of population ages 15+', scale:'linear', domain:[20,90], role:'labour-market participation'},
   urbanization: {label:'D4 · Urban population', indicator:ALL_D4_METRICS.urbanization, unit:'percent of population', scale:'linear', domain:[0,100], role:'settlement structure'},
   internet_penetration: {label:'D4 · Internet use', indicator:ALL_D4_METRICS.internet_penetration, unit:'percent of population', scale:'linear', domain:[0,100], role:'digital connectivity'},
+  electricity_access: {label:'D4 · Electricity access', indicator:ALL_D4_METRICS.electricity_access, unit:'percent of population', scale:'linear', domain:[0,100], role:'basic energy access'},
 };
 
 let worldGraph = null;
@@ -256,12 +262,13 @@ function updateNote() {
   if (axisMode) {
     const counts = coverageCounts(axisMode);
     const values = [...counts.values()];
-    const full = values.filter(count => count === Object.keys(ALL_D4_METRICS).length).length;
+    const totalMetrics = Object.keys(ALL_D4_METRICS).length;
+    const full = values.filter(count => count === totalMetrics).length;
     const maximum = values.length ? Math.max(...values) : 0;
     if (axisMode === 'd3-coverage') {
-      node.textContent = `D3 evidence-coverage surface · height = number of populated D4 source series (0–12). ${counts.size} countries have at least one series; ${full} currently have all 12. This maps Atlas evidence density/provenance readiness, not historical depth, truth, quality of a country, or spiritual position.`;
+      node.textContent = `D3 evidence-coverage surface · height = number of populated D4 source series (0–${totalMetrics}). ${counts.size} countries have at least one series; ${full} currently have all ${totalMetrics}. This maps Atlas evidence density/provenance readiness, not historical depth, truth, quality of a country, or spiritual position.`;
     } else {
-      node.textContent = `D6 change-coverage surface · height = number of D4 metrics with both a current and prior comparable observation (0–12; current maximum ${maximum}). It shows where change can already be derived. It is dataset readiness for recurrence analysis, not a score of national dynamism or Axis ascent.`;
+      node.textContent = `D6 change-coverage surface · height = number of D4 metrics with both a current and prior comparable observation (0–${totalMetrics}; current maximum ${maximum}). It shows where change can already be derived. It is dataset readiness for recurrence analysis, not a score of national dynamism or Axis ascent.`;
     }
     return;
   }
