@@ -66,11 +66,11 @@ jobs:
       - name: Validate Atlas mathematical calibration
         run: python scripts/validate_atlas_math_calibration.py
 
-      - name: Validate 3D world atlas runtime
-        run: python scripts/validate_world_map_3d.py
+      - name: Validate canonical World Map runtime
+        run: python scripts/validate_world_map_source.py
 
-      - name: Validate 3D relationship path finder
-        run: python scripts/validate_world_map_pathfinder.py
+      - name: Validate canonical World Map relationship path finder
+        run: python scripts/validate_world_map_pathfinder_source.py
 
       - name: Validate entity-aware Trace
         run: python scripts/validate_world_map_entity_trace.py
