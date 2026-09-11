@@ -135,12 +135,40 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
 }[char]));
 
 const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: '300px' });
+let capitalFeatures = [];
+const capitalByCode = new Map();
 
 async function loadCapitals() {
   const response = await fetchJsonResponse(CAPITALS_LOCAL, { cache: 'force-cache' });
   const payload = await response.json();
   if (payload?.type !== 'FeatureCollection' || !Array.isArray(payload.features)) throw new Error('Local capital snapshot has invalid shape.');
   return payload;
+}
+
+function indexCapitals(features) {
+  capitalFeatures = Array.isArray(features) ? features : [];
+  capitalByCode.clear();
+  for (const feature of capitalFeatures) {
+    const code = String(feature?.properties?.iso3 || '').toUpperCase();
+    const coords = feature?.geometry?.coordinates;
+    if (!code || !Array.isArray(coords) || coords.length < 2) continue;
+    const current = capitalByCode.get(code);
+    const primary = feature?.properties?.primary === true;
+    if (!current || (primary && current.properties?.primary !== true)) capitalByCode.set(code, feature);
+  }
+}
+
+function capitalFor(code) {
+  return capitalByCode.get(String(code || '').toUpperCase()) || null;
+}
+
+function focusCapital(code, options = {}) {
+  const feature = capitalFor(code);
+  const coords = feature?.geometry?.coordinates;
+  if (!feature || !Array.isArray(coords) || coords.length < 2) return false;
+  const zoom = Math.max(4.2, Math.min(8, Number(options.zoom) || 5.6));
+  map.easeTo({ center: [Number(coords[0]), Number(coords[1])], zoom, pitch: Math.min(map.getPitch(), 45), duration: 750 });
+  return true;
 }
 
 function countryHtml(properties) {
@@ -197,6 +225,7 @@ async function installCapitalsWhenUseful() {
   try {
     const capitals = await loadCapitals();
     if (capitals.features.length < 150) throw new Error(`capital coverage unexpectedly low: ${capitals.features.length}`);
+    indexCapitals(capitals.features);
     if (!map.getSource('capital-cities')) map.addSource('capital-cities', { type: 'geojson', data: capitals });
     if (!map.getLayer('capital-cities')) map.addLayer({
       id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 0,
@@ -246,7 +275,10 @@ async function installCapitalsWhenUseful() {
     setCapitalsVisible(true);
     window.__potatoAtlasCapitals = {
       setVisible: setCapitalsVisible,
-      get visible() { return capitalsVisible; }
+      focus: focusCapital,
+      forCountry: capitalFor,
+      get visible() { return capitalsVisible; },
+      get count() { return capitalFeatures.length; }
     };
     window.dispatchEvent(new CustomEvent('potato-atlas-capitals-ready', {
       detail: { count: capitals.features.length, visible: capitalsVisible }
@@ -267,4 +299,4 @@ function install() {
 }
 
 if (map.loaded()) install();
-else map.once('load', install);
+else map.once('load', install());
