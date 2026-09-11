@@ -1,6 +1,6 @@
 {
   "id": "world-map-3d-runtime",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-11",
   "status": "active renderer contract",
   "purpose": "Define the active 2.5D/3D World Relational Atlas renderer while preserving the same canonical country, relationship, issue, programme, chronology and provenance model used by the rest of the repository.",
@@ -19,16 +19,19 @@
   },
   "interface": {
     "status": "implemented-progressive-disclosure",
-    "principle": "Map first; persistent controls stay sparse while Layers, Trace, Time, View, inspector and Axis detail open only when useful.",
-    "persistent": ["country search", "Compare", "Inspector"],
-    "grouped": ["Layers", "Trace", "Time", "View", "More"],
-    "contextual": ["country inspector", "Eye/evidence", "Axis navigator", "operator HUD", "Time status"],
+    "principle": "Map first; ordinary country clicks build a persistent working selection, the active country opens a Country Pulse, and deeper Layers, Analyze/Trace, Time, View, Eye and Axis controls remain progressively disclosed.",
+    "persistent": ["country search", "working selection strip when non-empty", "Inspector"],
+    "grouped": ["Layers", "Analyze / legacy Compare and Trace", "Time", "View", "More"],
+    "contextual": ["Country Pulse", "Lens legend", "country inspector", "Eye/evidence", "Axis navigator", "operator HUD", "Time status"],
     "focus_mode": "Temporarily hides informational overlays/HUDs without changing underlying map/data state.",
     "preference_memory": ["inspector open/closed", "focus mode", "Axis open/closed"]
   },
   "renderer_architecture": {
     "shell": "world-map/3d.html contains the public interface, progressive controls and map layout",
-    "application": "world-map/3d-app.js owns MapLibre initialization, canonical country loading, Compare, recursive Trace, semantic modules, golden-angle navigation layout and URL state",
+    "application": "world-map/3d-app.js owns MapLibre initialization, canonical country loading, legacy Compare, recursive Trace, semantic modules, golden-angle navigation layout and core URL state",
+    "working_selection": "world-map/3d-country-selection.js composes over the core active-country API to own persistent multi-country working selection, active-country state, selection-strip state and bounded automatic relationship context without creating a second renderer",
+    "country_pulse": "world-map/3d-country-pulse.js owns the sourced active-country first-screen summary over canonical country records plus optional demography runtime data",
+    "lenses": "world-map/3d-lenses.js owns country fill semantics for one active Lens at a time while selection remains encoded independently through outlines",
     "hover_and_resilience": "world-map/3d-hover.js owns resilient data boot, country hover and capital-city overlays",
     "pathfinder": "world-map/3d-pathfinder.js owns shortest-known-path navigation without creating a second map renderer",
     "demography": "world-map/3d-demography.js owns sourced population/religion presentation",
@@ -43,7 +46,7 @@
     "country_hub": "Representative navigation point when an exact entity coordinate is not relevant.",
     "semantic_hub": "Navigation-only handle for a country data module. Sibling hubs use stable golden-angle/phyllotactic placement; their screen/map positions are not claims about physical location or Fibonacci structure in the country.",
     "trace_hub": "Temporary representative marker for countries reached by recursive Trace; hop depth is graph distance only.",
-    "compare_hub": "Temporary marker communicating active Compare selection state; leaving Compare clears these temporary states and URL membership.",
+    "compare_hub": "Temporary marker communicating active legacy Compare selection state; leaving Compare clears these temporary states and URL membership.",
     "real_node": "Geocoded city, institution, facility, port, airport, base, sacred site, infrastructure asset or documented event with coordinate provenance.",
     "nonspatial_node": "Treaty, statistic, scripture, theology or other concept without one honest coordinate; expose through cards/trace/Axis scenes instead of fake pins.",
     "edge": "Typed relationship rendered between honest anchors when drawing it improves understanding.",
@@ -60,12 +63,41 @@
     ],
     "source_resolution": "Modules resolve from canonical country records plus explicitly typed world/project context. Empty modules are not fabricated."
   },
+  "working_selection_mode": {
+    "status": "implemented-foundation",
+    "behavior": "Ordinary country-polygon clicks toggle persistent membership without modifier keys; the most recently selected or explicitly activated country becomes the active country while other selected countries remain visible.",
+    "active_country": "Drives the core country inspector and Country Pulse and receives the strongest outline without replacing Lens fill color.",
+    "selection_strip": "One chip per selected country supports activation, removal and clear-all directly on the map.",
+    "url_state": "selected=ISO3,ISO3... persists the working set while country=ISO3 remains the active-country compatibility state; legacy compare/country URLs are accepted during restore.",
+    "automatic_connections": "When explicit relationship Trace is off, a deterministic immediate network uses an active-country budget of 8 edges, other-selected-country budget of 4 edges and total cap of 28 with category diversity across money, systems, institutions, project and other relations.",
+    "explicit_analysis_priority": "Turning on explicit Relationship lines/Trace suppresses the automatic selection context rather than mixing both jobs.",
+    "boundary": "Automatic edge ranking is display priority over the represented curated graph; it is not a universal truth, confidence, causal or moral score."
+  },
+  "country_pulse_mode": {
+    "status": "implemented-foundation",
+    "behavior": "On active-country inspection, Country Pulse summarizes available sourced population, GDP, GDP per capita, growth, inflation, unemployment and correctly defined debt/GDP plus connections, systems, projects, institutions, religion, additional observations, coverage and freshness.",
+    "source_resolution": "Reads the canonical country record directly and optionally augments population/religion presentation from the same-origin demography runtime; local enriched fields remain usable where global WDI-shaped observations are sparse.",
+    "missing_data_policy": "Unavailable values stay unavailable and display an explicit missing state; zero is never substituted for missing evidence.",
+    "boundary": "Country Pulse is a presentation projection over canonical records, not a second country database."
+  },
+  "lens_mode": {
+    "status": "implemented-foundation",
+    "principle": "Exactly one Lens owns country fill color at a time; working selection and active-country state remain encoded through outlines so analytical meaning and interaction state are not conflated.",
+    "families": ["Neutral", "Alignment / Axis", "Alliances", "Religion", "Metric"],
+    "alignment": "Uses explicitly ISO-coded project-axis classifications for North/West/East and overlap; South remains in the legend but countries are not guessed into it where no settled ISO-coded membership exists. This is project interpretation, not empirical alliance or sovereignty.",
+    "alliances": "Uses empirical membership data for NATO, BRICS, AUKUS and Five Eyes, distinguishing members and partners where represented.",
+    "religion": "Supports dominant broad category and selected-category percentage views for Christian, Muslim, Hindu, Buddhist, Jewish, other-religion and unaffiliated identity shares from the dated demography snapshot.",
+    "metric": "Foundation metric Lens supports population and area from the current country geographic runtime; the harmonized WDI metric registry remains the next quantitative expansion.",
+    "url_state": ["lens", "lensOption"],
+    "boundaries": ["religious composition does not imply political loyalty, conduct or belief intensity", "project Axis classification does not imply sovereignty, consent or empirical institutional membership", "missing Lens data renders neutral rather than zero"]
+  },
   "compare_mode": {
     "status": "implemented-basic",
+    "role": "legacy specialist analysis retained during transition to the ordinary working-selection model",
     "capacity": 4,
     "behavior": "Keeps up to four country polygons selected while active, presents compatible descriptive comparisons, separates Inspect from Remove actions, and clears temporary compare state/hubs/URL membership on Done.",
-    "url_state": "compare=ISO3,ISO3... persists the active comparison; exiting Compare removes it.",
-    "next": "Add user-selected sourced metrics and relation-overlap/intersection views."
+    "url_state": "compare=ISO3,ISO3... persists the active legacy comparison; working selection uses selected= independently.",
+    "next": "Reuse the future harmonized metric registry for sourced side-by-side statistics and relation-overlap/intersection views."
   },
   "trace_mode": {
     "status": "implemented-recursive-country",
@@ -130,9 +162,10 @@
   "resilience": {
     "geometry": "same-origin deployed geometry snapshot is preferred, with provider fallbacks available through the resilient boot layer",
     "country_metadata": "same-origin generated country facts/demography snapshots are preferred; emergency synthesis/fallback remains available where defined",
+    "working_selection_coordinates": "automatic relation lines prefer the same-origin deployed REST Countries runtime for representative country anchors and fall back externally only when necessary; selection itself remains usable without that optional coordinate enrichment",
     "pathfinder": "same-origin country facts are preferred before REST Countries",
-    "remaining_external_risk": "MapLibre JS/CSS still loads from an external CDN and should eventually be vendored or otherwise made same-origin/version-pinned within licensing constraints.",
-    "failure_state": "Required-data failure must produce a visible unavailable/error state rather than a silent empty map."
+    "remaining_external_risk": "MapLibre source modules are deployment-vendored, while acquisition/runtime fallbacks may still depend on external providers where the same-origin snapshot is unavailable.",
+    "failure_state": "Required-data failure must produce a visible unavailable/error state rather than a silent empty map; optional Pulse/Lens enrichment failure must leave core geography usable."
   },
   "implemented_2026_09_10": [
     "map-first progressive-disclosure shell with grouped Layers / Trace / Time / View controls",
@@ -156,7 +189,11 @@
     "North Axis D1-D11 symbolic navigator and executable symbolic operators",
     "URL country, compare, relation, depth, path and time state",
     "explicit provenance boundary between navigation-only semantic points and real coordinates",
-    "machine-readable mathematical calibration contract separating geography, topology, hierarchy, time and future quantified flow"
+    "machine-readable mathematical calibration contract separating geography, topology, hierarchy, time and future quantified flow",
+    "persistent multi-country working selection with active-country state, toggle-by-click semantics, selection chips and selected= URL persistence",
+    "automatic bounded immediate relationship context for ordinary selected countries while explicit Trace remains available",
+    "Country Pulse first-screen inspector over canonical country records with sourced economic, demographic, network, system, project, institution and freshness context",
+    "single-owner country fill Lenses for project Alignment/Axis, empirical Alliances, descriptive Religion and foundation Population/Area metrics"
   ],
   "node_record_schema": {
     "required": ["id", "kind", "name", "country_or_jurisdiction", "provenance"],
@@ -168,28 +205,29 @@
     "boundary": "Never invent a coordinate for a nonspatial concept merely to make the map visually busy."
   },
   "metric_and_3d_rules": {
-    "principle": "Extrusion height is a chart encoding, not rank, holiness, guilt, value or sovereignty.",
-    "implemented": ["population", "area"],
-    "next": ["GDP", "documented gross public debt", "debt-to-GDP", "energy import dependence", "archive coverage", "sourced graph-edge count", "infrastructure capacity"],
+    "principle": "Extrusion height and Metric Lens color are chart encodings, not rank, holiness, guilt, value or sovereignty.",
+    "implemented": ["population extrusion", "area extrusion", "population color Lens", "area color Lens"],
+    "next": ["harmonized GDP", "GDP per capita", "documented gross public debt", "debt-to-GDP", "energy import dependence", "archive coverage", "sourced graph-edge count", "infrastructure capacity"],
     "required_display": ["metric name", "unit", "observation year/date", "source", "normalization/scaling method"]
   },
   "data_growth_strategy": {
-    "current": "Use country polygons, sourced facts/demography, stable semantic modules, a curated relationship graph, Path/Trace/Compare, conservative Time, an Eye evidence inspector and a project-symbolic Axis view.",
-    "next_foundation": "Make Time and Eye shared filters for normalized graph traversal and dated evidence, then expand Time only where source intervals are trustworthy.",
-    "next_graph": "Generalize country-only graph traversal into normalized country/institution/company/infrastructure/funding/ownership/programme relations.",
-    "next_physical": "Add high-value real spatial nodes: government institutions, ports, grids, cables, power plants, companies and research institutions.",
+    "current": "Use country polygons, persistent working selection, Country Pulse, bounded automatic relationship context, one active country-fill Lens, sourced facts/demography, stable semantic modules, curated relationship graph, Path/Trace/legacy Compare, conservative Time, Eye evidence and the project-symbolic Axis view.",
+    "next_foundation": "Generate one harmonized same-origin country metric registry for GDP/labour/health/digital/environment measures and let Lens, Country Pulse and legacy Compare consume the same definitions; add major cities and unified country/city search without loading an unbounded global point cloud.",
+    "next_graph": "Generalize country-only graph traversal into normalized country/institution/company/infrastructure/funding/ownership/programme relations and make automatic connections entity-aware only where provenance and screen density remain safe.",
+    "next_physical": "Add high-value real spatial nodes: major cities, government institutions, central banks, ports, grids, cables, power plants, companies, projects and research institutions, with a compact capital action window as the national machinery gateway.",
     "scale_rule": "As the graph grows, lazy-load by view/zoom/country and move high-volume geometry to vector tiles/prebuilt packages rather than shipping the whole graph to every client."
   },
   "next_priority": [
+    "Build the harmonized country-metric runtime so GDP, GDP per capita, growth, inflation, unemployment, labour participation, life expectancy, urbanization, internet, CO2, debt and energy measures can drive Lens/Compare/Pulse from one sourced definition registry.",
+    "Add the bounded major-cities runtime and unified country/city search with zoom-aware labels and sourced population/coordinate provenance.",
+    "Add the compact capital action window and progressively attach central banks, parliaments, finance institutions, ports, airports, energy assets, projects and research institutions using honest coordinates.",
     "Extend Eye from inspection into filtering for epistemic class, confidence, source class, contradictions and freshness.",
     "Expand recursive Trace into entity-aware traversal through data/global-graph-bridge.json and data/relationships.json, honoring Time/Evidence filters.",
     "Upgrade selected empirical/project layers with valid_from/valid_to so historical Time mode can safely render them rather than suppressing current-only snapshots.",
+    "Add directional money/trade/debt/energy/project flow styling only after comparable directed edges carry quantity, unit, period and source; red/green then means direction rather than moral good/bad.",
     "Prototype a separate deterministic spectral graph view before using graph-derived coordinates anywhere public.",
     "Prototype a separate hyperbolic Tree/Rooms hierarchy without changing geographic coordinates.",
     "Only after directed compatible quantitative flows are populated, evaluate graph Hodge decomposition for source/sink/cyclic structure.",
-    "Add real ports, grids, cables, power plants, institutions and company/funding/ownership chains for the North/European capability graph.",
-    "Normalize compatible GDP/debt/energy metrics with date/unit/source before new choropleths/extrusions.",
-    "Vendor or otherwise harden the remaining MapLibre CDN dependency.",
     "Add programme/scenario simulation only after Time, Evidence and entity traversal are stable."
   ],
   "connections": [
@@ -210,6 +248,9 @@
     "knowledge/core/world-atlas-integrated-layer-stack.json",
     "world-map/3d.html",
     "world-map/3d-app.js",
+    "world-map/3d-country-selection.js",
+    "world-map/3d-country-pulse.js",
+    "world-map/3d-lenses.js",
     "world-map/3d-evidence.js",
     "world-map/3d-time.js",
     "world-map/3d-ui.js"
