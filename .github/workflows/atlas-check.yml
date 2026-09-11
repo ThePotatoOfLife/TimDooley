@@ -90,9 +90,28 @@ jobs:
           ATLAS_DEMOGRAPHY_OUT: _site/data/world-country-demography.json
         run: python scripts/build_world_demography.py
       - name: Build D4 country observable snapshot
+        id: build_d4
+        continue-on-error: true
         env:
           ATLAS_D4_OUT: _site/data/world-country-observables.json
-        run: python scripts/build_world_country_observables.py
+        shell: bash
+        run: |
+          set -o pipefail
+          python scripts/build_world_country_observables.py 2>&1 | tee d4-build-report.txt
+      - name: Show D4 build diagnostics
+        if: ${{ always() && hashFiles('d4-build-report.txt') != '' }}
+        run: cat d4-build-report.txt
+      - name: Upload D4 build diagnostics
+        if: ${{ always() && hashFiles('d4-build-report.txt') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: d4-build-report
+          path: d4-build-report.txt
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Enforce D4 build gate
+        if: steps.build_d4.outcome == 'failure'
+        run: exit 1
       - name: Validate D4 observable runtime
         id: validate_d4
         continue-on-error: true
