@@ -84,7 +84,7 @@ jobs:
           test -s _site/data/world-countries.geo.json
 
           if ! curl -fsSL --retry 3 --retry-delay 1 \
-            'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders' \
+            'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,capitalInfo,region,subregion,borders' \
             -o _site/data/rest-countries-runtime.json; then
             rm -f _site/data/rest-countries-runtime.json
             echo 'REST Countries snapshot unavailable; runtime fallback remains enabled.'
@@ -107,7 +107,12 @@ jobs:
                   rows = json.loads(rest_path.read_text(encoding='utf-8'))
                   assert isinstance(rows, list) and len(rows) >= 190
                   assert sum(1 for row in rows if row.get('cca3')) >= 190
-                  print(f"Validated local country runtime snapshot: {len(rows)} rows")
+                  capital_coords = sum(
+                      1 for row in rows
+                      if len((row.get('capitalInfo') or {}).get('latlng') or []) == 2
+                  )
+                  assert capital_coords >= 150, capital_coords
+                  print(f"Validated local country runtime snapshot: {len(rows)} rows / {capital_coords} capital coordinates")
               except Exception as exc:
                   print(f"Discarding invalid REST Countries snapshot: {exc}")
                   rest_path.unlink(missing_ok=True)
