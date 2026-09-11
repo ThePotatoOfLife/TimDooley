@@ -38,5 +38,6 @@ jobs:
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
+      - run: node --check app/bible-study.js
       - run: python scripts/check_biblical_syncretism_field.py
       - run: python scripts/validate_bible_reader.py
