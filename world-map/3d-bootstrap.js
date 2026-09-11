@@ -156,6 +156,7 @@ try {
 
   declareDormant('Path finder', './3d-pathfinder.js', 'Trace menu');
   declareDormant('Entity Trace', './3d-entity-trace.js', 'Trace menu');
+  declareDormant('Relationship inspector', './3d-relation-inspector.js', 'Analyze menu');
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
   declareDormant('Demography facets', './3d-demography-facets.js', 'Layers menu');
   declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
@@ -173,6 +174,13 @@ try {
     await loadAfterPaint('Networks', './3d-networks.js');
     await loadAfterPaint('North Axis', './3d-axis.js');
   };
+  const promoteTrace = async () => {
+    await Promise.all([
+      loadAfterPaint('Path finder', './3d-pathfinder.js'),
+      loadAfterPaint('Entity Trace', './3d-entity-trace.js'),
+      loadAfterPaint('Relationship inspector', './3d-relation-inspector.js'),
+    ]);
+  };
   const promoteTime = () => loadAfterPaint('Time', './3d-time.js');
   const promoteView = async () => {
     await loadAfterPaint('Metric dimensions', './3d-metric-dimensions.js');
@@ -188,6 +196,7 @@ try {
   };
 
   const layersMenu = document.getElementById('layersMenu');
+  const traceMenu = document.getElementById('traceMenu');
   const timeMenu = document.getElementById('timeMenu');
   const viewMenu = document.getElementById('viewMenu');
 
@@ -195,6 +204,11 @@ try {
     if (!layersMenu?.open) return;
     layersMenu.removeEventListener('toggle', onLayersToggle);
     promoteLayers();
+  };
+  const onTraceToggle = () => {
+    if (!traceMenu?.open) return;
+    traceMenu.removeEventListener('toggle', onTraceToggle);
+    promoteTrace();
   };
   const onTimeToggle = () => {
     if (!timeMenu?.open) return;
@@ -207,6 +221,7 @@ try {
     promoteView();
   };
   layersMenu?.addEventListener('toggle', onLayersToggle);
+  traceMenu?.addEventListener('toggle', onTraceToggle);
   timeMenu?.addEventListener('toggle', onTimeToggle);
   viewMenu?.addEventListener('toggle', onViewToggle);
 
