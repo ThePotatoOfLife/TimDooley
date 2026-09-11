@@ -48,6 +48,8 @@ jobs:
         run: python scripts/validate_world_map_3d.py
       - name: Validate 3D relationship path finder
         run: python scripts/validate_world_map_pathfinder.py
+      - name: Validate entity-aware Trace
+        run: python scripts/validate_world_map_entity_trace.py
       - name: Validate repository spine
         run: python scripts/validate_repository_spine.py
       - name: Validate architecture layers
@@ -81,8 +83,6 @@ jobs:
         run: exit 1
 
       # Mirror the public Pages build sequence before validating the built shell.
-      # This prevents generated discovery/science/ontology routes from being
-      # incorrectly reported missing by the Atlas integrity workflow.
       - name: Build static site
         run: python scripts/build_site.py
       - name: Compile complete science catalog
