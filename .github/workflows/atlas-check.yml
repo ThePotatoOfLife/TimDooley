@@ -94,7 +94,23 @@ jobs:
           ATLAS_D4_OUT: _site/data/world-country-observables.json
         run: python scripts/build_world_country_observables.py
       - name: Validate D4 observable runtime
+        id: validate_d4
+        continue-on-error: true
         run: python scripts/validate_world_country_observables.py
+      - name: Show D4 observable diagnostics
+        if: ${{ always() && hashFiles('world-country-observables-report.txt') != '' }}
+        run: cat world-country-observables-report.txt
+      - name: Upload D4 observable diagnostics
+        if: ${{ always() && hashFiles('world-country-observables-report.txt') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: d4-observable-report
+          path: world-country-observables-report.txt
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Enforce D4 observable gate
+        if: steps.validate_d4.outcome == 'failure'
+        run: exit 1
       - name: Compile complete science catalog
         run: python scripts/build_science_catalog.py
       - name: Build search discovery layer
