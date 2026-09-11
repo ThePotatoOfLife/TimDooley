@@ -46,15 +46,17 @@ The traversable vertical connection between levels. It turns the Axis from a sta
 ### Door
 The threshold between states. Door is the interface: neither merely inside nor merely outside.
 
-In the present interface model, **Door = Frame = Window**. The Door is not only something we pass through; it is the frame through which the system becomes visible. The Window gives the act of looking, the Frame gives the boundaries and relations that organize what is seen, and the Door gives passage between what is observed and what lies beyond the current view.
+In the present interface model, **Door = Frame = Window** at the symbolic-compositional level, but the mature operator model now distinguishes their functions. The **Frame** supplies boundary and relational context; the **Window** supplies a selected view; the **Screen** projects/displays that view; the **Eye** measures or interprets it; the **Gate** tests whether passage is admissible; the **Door** enacts a transition; and the **Ladder/Path** supplies continued traversal after the threshold.
+
+The Door is therefore not only something we pass through. It belongs to a larger interface pipeline through which a system becomes visible and actionable.
 
 This produces the central learning principle:
 
 > **We learn through the frame we look through.**
 
-World and Axis therefore meet at the Door. **WORLD ↘ [DOOR / FRAME / WINDOW] ↖ AXIS.** World is the observable field opening outward and downward-right from the center; Axis is the organizing field opening upward-left. The Door remains in the middle because it is the interface between the two.
+World and Axis therefore meet at the Door. **WORLD ↘ [FRAME / WINDOW / SCREEN / DOOR] ↖ AXIS.** World is the observable field opening outward and downward-right from the center; Axis is the organizing field opening upward-left. Door remains central because it is where observation can become admissible passage and changed state.
 
-The distinction matters: the Window is not assumed to show the whole world, and the Frame is not assumed to be the world itself. What we see depends partly on the relations and boundaries through which we are looking.
+The distinction matters: the Window is not assumed to show the whole world, the Frame is not assumed to be the world itself, and the edge of a screen is not the edge of reality. What we see depends partly on the relations, camera, crop, temporal window and boundaries through which we are looking.
 
 ### Son
 The person-bearing centre of the mythic narrative. Within the canon the Son is associated with Thomas, Twin, Lion, Jesus Christ, Son of Man, and Lion of Judah. These are preserved as mythic correspondences within the project rather than asserted as historical identity claims.
@@ -90,7 +92,7 @@ The four directions form the world-field. The Axis crosses that field vertically
 
 At the interface level, the two principal directions are now rendered around the central Door:
 
-**WORLD ↘   DOOR = FRAME = WINDOW   ↖ AXIS**
+**WORLD ↘   FRAME / WINDOW / SCREEN → EYE → GATE → DOOR   ↖ AXIS**
 
 This is a view of the architecture, not a claim that physical space literally has these coordinates.
 
@@ -130,13 +132,61 @@ Within the frame:
 
 The Door therefore represents relational emergence: something new becomes possible through connection.
 
-The Door can also be read as a **Window in a Frame**. The overlap does not erase the two sides; it creates a shared region through which each side becomes legible to the other. In that sense, the Door is simultaneously:
+The Door can also be read as a **Window in a Frame**. The overlap does not erase the two sides; it creates a shared region through which each side becomes legible to the other. In that sense, the Door composition can contain several distinct functions:
 
-- **threshold** — a place of passage;
-- **frame** — the boundary that gives the passage shape;
+- **threshold** — a place at which state or access can change;
+- **frame** — the boundary that gives the relation shape;
 - **window** — the opening through which something can be seen;
-- **interface** — the place where observer and observed meet;
-- **learning surface** — the point where a relation becomes visible enough to understand.
+- **screen** — a finite projection/display surface;
+- **interface** — the place where two systems can exchange or transform signals;
+- **learning surface** — the point where a relation becomes visible enough to understand;
+- **gate** — the rule deciding whether passage is admissible;
+- **door proper** — the transition that changes state/regime when the gate is satisfied.
+
+The symbolic composition may place these functions together, but the scientific model should keep them typed.
+
+### 6.1 Door Signature
+
+Every durable Door claim can be recorded as a Door Signature:
+
+`DS = (Ω₋, Σ, Ω₊, carrier, operation, guard, permeability, directionality, reversibility, observation, timing, geometry, provenance)`
+
+This asks:
+
+- what is the origin state/domain?
+- what is the boundary/interface?
+- what is the destination?
+- what crosses: matter, energy, information, attention, identity/status, viewpoint, person or symbolic relation?
+- what happens: transmission, filtering, transformation, projection, redirection, absorption or regime change?
+- what conditions permit the transition?
+- is passage continuous, probabilistic or binary?
+- is it one-way, paired, multiway or bidirectional?
+- can the transition be reversed?
+- does the boundary also determine what can be observed?
+- is access time/phase dependent?
+- what geometry does the boundary have?
+- where did the interpretation originate?
+
+This is a classification tool, not a claim that every Door shares one mechanism.
+
+### 6.2 The stream screen as observation Door
+
+The 2026-09-11 Door census explicitly adds the edges of Tim's livestream screen to the interface family. Scientifically, a screen edge is best treated as the boundary of a finite observation viewport. A camera projects a larger three-dimensional scene into a two-dimensional image, and the displayed crop selects only part of that projection.
+
+Therefore:
+
+> **Off-screen is not the same as nonexistent; it is outside the support of the current observation window.**
+
+This makes the screen especially relevant to archive/source criticism. A clipped screenshot or short stream excerpt may be real evidence while still omitting surrounding spatial or temporal context.
+
+### 6.3 Door versus Drain
+
+The mature frame keeps Door and Drain distinct.
+
+- **Door** — selective passage or state transition; may preserve or increase accessible options.
+- **Drain** — sink/outflow operator; removes a carrier or reduces accessible options in the simple model.
+
+The distinction is functional rather than a universal moral polarity. In a physical system a drain can be useful; in a social system a Door can be harmful. The objective, carrier, direction and outcome decide the interpretation.
 
 ## 7. Crucifixion and transformation motif
 
@@ -150,6 +200,8 @@ The central transformation is:
 
 The meaning is that the route back toward integration is not merely an object. It is relationship embodied as a passage.
 
+The newer Door census adds an important distinction: **Grave/Tomb is not merely another aperture.** It belongs to the death/transformation and high-irreversibility family in ordinary physical life, while resurrection/return belongs to mythic/theological narrative. Those epistemic layers must not be merged.
+
 ## 8. The cycle
 
 The architecture is recursive:
@@ -157,6 +209,8 @@ The architecture is recursive:
 **Source → Life → World → Death → Memory → Renewal → Life**
 
 The end is therefore capable of becoming the beginning. The seed returns to the roots; the roots produce the tree; the tree produces fruit; fruit produces seed.
+
+Door mechanics add another useful distinction to recurrence: returning to a previous region does not imply the inverse Door is identical to the forward Door. One-way transitions, hysteresis, path dependence and memory may make `D⁻¹` unavailable or different.
 
 ## 9. World-building and the empirical graph
 
@@ -177,6 +231,8 @@ The graph maps:
 
 The graph's rule is the same: **map the connections, not merely the objects**.
 
+Door becomes useful empirically when it identifies a real interface such as an eligibility criterion, legal transition, border, API, procurement rule, capital-access threshold, classification change or exit path. In each case the carrier and admissibility conditions must be stated.
+
 ## 10. North Programme
 
 The North Programme is the applied policy layer. It uses the graph to study fiscal sustainability, productive investment, industrial capacity, energy security, infrastructure, technology, research, labour, and voluntary European cooperation.
@@ -189,6 +245,8 @@ The Swamp is the shadow-system metaphor for accumulated dysfunction: extraction,
 
 The Swamp is not synonymous with one real-world country or population. It is a reusable analytical metaphor.
 
+In the Door operator model, Swamp may contain attractor basins, false exits and Drains. A legitimate Door out of a basin should therefore be evaluated by whether the trajectory remains in a genuinely changed regime rather than briefly crossing a symbolic line and returning to the same dynamics.
+
 ## 12. Canonical rule for future additions
 
 Every new element should answer five questions:
@@ -199,8 +257,16 @@ Every new element should answer five questions:
 4. **What evidence supports the relationship, if any?**
 5. **Is the relationship canonical, observed, calculated, estimated, scenario-based, interpretive, historical, or creative?**
 
-This prevents the archive from becoming a pile of disconnected claims while allowing the mythology, philosophy, art, and empirical research to grow together.
+Every new Door interpretation should additionally answer:
+
+6. **What crosses the Door?**
+7. **What operation does crossing perform?**
+8. **What is the guard/access condition?**
+9. **Is the transition reversible, directional or phase-dependent?**
+10. **Does the same boundary also shape observation?**
+
+This prevents the archive from becoming a pile of disconnected claims while allowing mythology, philosophy, art and empirical research to grow together.
 
 ## 13. One-line compression
 
-> **The Tim Dooley Frame is a relationship-first architecture in which Source becomes Father, Father relates to Son, Son becomes Door and Ladder, the Door becomes Frame and Window, the Window makes World visible, the Frame gives relation and boundary, Ladder crosses the Axis, Axis lives as Tree, Tree manifests upon the Plane, roots preserve the hidden past, fruit carries life forward, and the whole system recursively returns toward Source.**
+> **The Tim Dooley Frame is a relationship-first architecture in which Source becomes Father, Father relates to Son, Son becomes person-bearing Door and Ladder, the Door composition differentiates Frame, Window, Screen, Eye, Gate and transition, the Window makes a selected World visible, the Frame gives relation and boundary, Gate tests passage, Door changes state, Ladder carries traversal, Axis orients the relation, Tree manifests upon the Plane, roots preserve hidden history, fruit carries life forward, and the whole system recursively returns toward Source without treating every threshold as the same mechanism.**
