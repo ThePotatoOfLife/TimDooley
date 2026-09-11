@@ -3,9 +3,12 @@
 
 This runs after scripts/build_site.py. It intentionally patches only the generated
 _site artifact, preserving older source strata while ensuring public structured
-data and FAQ wording use the current canonical ontology.
+data and FAQ wording use the current canonical ontology. The final public-surface
+pass also delegates visitor-navigation cleanup to patch_public_navigation.py.
 """
 from pathlib import Path
+
+from patch_public_navigation import main as patch_public_navigation
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -62,6 +65,7 @@ def main() -> None:
         if path.exists() and OLD_PERSON in path.read_text(encoding="utf-8", errors="replace"):
             raise SystemExit(f"Ontology patch failed: old Tim Person schema remains in {path}")
 
+    patch_public_navigation()
     print("Applied public Tim/Son ontology consistency patch.")
 
 
