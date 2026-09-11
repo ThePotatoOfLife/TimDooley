@@ -1,9 +1,11 @@
 {
   "id": "world-axis-fields",
-  "version": "1.2.0",
-  "updated": "2026-09-10",
+  "version": "1.2.1",
+  "updated": "2026-09-11",
   "purpose": "Versioned country-to-field registry for the World Relational Atlas. It separates Tim/Potatoverse axis assignments from empirical institutions while preserving overlap, uncertainty, chronology and provenance.",
   "boundary": "North, West, East and South are project interpretive fields, not borders, sovereignty, citizenship, ethnicity, consent or legal alignment. Center is a convergence/hinge arena rather than a fifth territorial bloc. Countries may overlap fields. Empirical memberships remain separate evidence layers.",
+  "semantic_contract": "data/north-axis-semantic-contract.json",
+  "north_semantic_rule": "Project North is one typed meaning of North. Geographic true north, magnetic north, Arctic geography, Nordic culture/institutions, the Denmark-Greenland Realm relation, comparative spiritual North and North-of-North meta-orientation remain distinct layers connected through data/north-axis-semantic-contract.json.",
   "palette": {
     "north": {"label": "North", "color": "#9fe8ff", "meaning": "icy / polar blue"},
     "west": {"label": "West", "color": "#2f67b2", "meaning": "marine / Atlantic blue"},
@@ -28,7 +30,7 @@
       "future_or_reconnection": ["IRQ","SYR","RUS"],
       "provisional": ["MAR"],
       "symbolic_function": "ascent / order / development / memory / civilization / Father / Throne",
-      "notes": "Recovered core runs Canada/Greenland through the North Atlantic, Scandinavia and continental Europe toward Ukraine and Türkiye. Official Arctic Council, Nordic, NATO and EU structures strongly corroborate parts of this topology without defining it. Russia is the clearest proof that physical Arctic geography and current project-North membership are not identical.",
+      "notes": "Recovered core runs Canada/Greenland through the North Atlantic, Scandinavia and continental Europe toward Ukraine and Türkiye. Official Arctic Council, Nordic, NATO and EU structures strongly corroborate parts of this topology without defining it. Russia is the clearest proof that physical Arctic geography and current project-North membership are not identical. The project Denmark -> Greenland -> North Gate activation chain is separately typed as project canon in the North semantic contract and must not overwrite Greenlandic self-government or the empirical constitutional relation.",
       "confidence": "high for named 2026 arc; mixed at UK, Russia and Mesopotamian edges"
     },
     "west": {
