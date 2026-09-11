@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
-  "updated": "2026-09-07",
-  "name": "Axis and Symbolic Terrain",
+  "version": "1.1.0",
+  "updated": "2026-09-11",
+  "name": "Axis, Symbolic Terrain and Reachability Topology",
   "status": "canonical-symbolic-layer",
-  "purpose": "Give the project's Axis vocabulary a structured spatial grammar so that North, South, mountain, plane, mud and swamp describe relations, states and flows rather than becoming loose labels.",
+  "purpose": "Give the project's Axis vocabulary a structured spatial grammar so that North, South, mountain, plane, mud, swamp, roots, Door, leash and cage describe relations, states, flows and constraints rather than becoming loose labels.",
   "epistemic_status": "symbolic_and_interpretive",
   "terrain": {
     "axis": {
@@ -13,52 +13,95 @@
     },
     "mountain": {
       "role": "elevation, perspective, difficulty and convergence",
-      "properties": ["height", "visibility", "gradient", "threshold", "summit"],
-      "relations": ["ascent", "descent", "north-gate", "throne-of-north", "source"]
+      "properties": ["height", "visibility", "gradient", "threshold", "summit", "pass", "saddle"],
+      "relations": ["ascent", "descent", "north-gate", "throne-of-north", "source", "door-pass"]
     },
     "plane": {
       "role": "horizontal manifestation and shared field",
-      "properties": ["surface", "spread", "coexistence", "distance", "intersection"],
-      "relations": ["world", "society", "network", "trade", "geography"]
+      "properties": ["surface", "spread", "coexistence", "distance", "intersection", "reachable-region"],
+      "relations": ["world", "society", "network", "trade", "geography", "path-space"]
     },
     "mud": {
       "role": "low-visibility, high-friction substrate from which forms emerge",
-      "properties": ["density", "friction", "burial", "potential", "slow movement", "mixed signals"],
-      "relations": ["roots", "memory", "origin", "labour", "materiality", "emergence"]
+      "properties": ["density", "friction", "burial", "potential", "slow movement", "mixed signals", "path-dependence"],
+      "relations": ["roots", "memory", "origin", "labour", "materiality", "emergence", "fallen-trajectories"]
     },
     "swamp": {
       "role": "entangled, stagnant or difficult-to-navigate relational field",
-      "properties": ["low visibility", "feedback", "stagnation", "cross-currents", "traps", "hidden connections"],
-      "relations": ["strife", "fear", "extraction", "fragmentation", "drain", "dependency"],
+      "properties": ["low visibility", "feedback", "stagnation", "cross-currents", "traps", "hidden connections", "low-exit-reachability"],
+      "relations": ["strife", "fear", "extraction", "fragmentation", "drain", "dependency", "constraint-network"],
       "warning": "Swamp is a project metaphor. It must not be used to label real people or groups as inherently corrupt."
     },
     "roots": {
-      "role": "memory, origin, dependency and hidden support",
-      "properties": ["buried connection", "inheritance", "history", "resource", "dependency"]
+      "role": "memory, origin, dependency, hidden support and accumulated path history",
+      "properties": ["buried connection", "inheritance", "history", "resource", "dependency", "stored-state", "path-dependence"],
+      "relations": ["mud", "tree", "memory", "fallen-trajectories", "leashes", "return-not-reset"]
     },
     "drain": {
       "role": "path through which energy, attention, resources or meaning leave a system",
-      "properties": ["outflow", "loss", "concentration", "escape", "transformation"]
+      "properties": ["outflow", "loss", "concentration", "escape", "transformation", "reduced-exit-options"]
     },
     "door": {
       "role": "threshold between states or layers",
-      "properties": ["boundary", "choice", "passage", "interface", "irreversibility"],
-      "relations": ["plane", "axis", "son", "experience"]
+      "properties": ["boundary", "choice", "passage", "interface", "irreversibility", "reachability-change", "dominator-when-mandatory"],
+      "relations": ["plane", "axis", "son", "experience", "mountain-pass", "target-set"]
+    },
+    "leash": {
+      "role": "anchored constraint restricting admissible motion or future states in project geometry",
+      "properties": ["anchor", "length-or-capacity", "slack", "taut", "active-boundary", "release-condition", "reachable-set-compression"],
+      "relations": ["dog", "timeline", "circle", "orbit", "spiral", "root", "cage"],
+      "warning": "Leash is a project constraint metaphor unless an actual physical tether/constraint is being modeled."
+    },
+    "cage": {
+      "role": "feasible region produced by several simultaneous boundaries or constraints",
+      "properties": ["intersection", "reduced-volume", "limited-exit", "multiple-anchors", "constraint-accumulation"],
+      "relations": ["leash", "trap", "swamp", "door", "release"],
+      "warning": "Cage can be symbolic/systemic; do not infer literal imprisonment from topology language."
     }
+  },
+  "trajectory_topology": {
+    "timeline":"one admissible path through the state/transition space",
+    "path_space":"set of admissible timelines under declared constraints/dynamics",
+    "winding":"closed paths can carry encirclement/history information around excluded centers",
+    "homotopy":"paths may belong to different deformation classes when obstacles/holes exist",
+    "reachable_set":"states accessible from a starting state under declared controls and constraints",
+    "target_set":"desired/theological/narrative destination must be distinguished from guaranteed outcome",
+    "dominator":"a node/door is mandatory only if every admissible path from source to target passes through it",
+    "constraint_intersection":"multiple leash/boundary regions may intersect into a smaller feasible cage",
+    "spiral_to_orbit":"a widening spiral under a fixed radial leash becomes boundary/tangential motion once the maximum radius is active unless the constraint changes"
+  },
+  "fate_destiny_topology": {
+    "possible":"target is reachable by at least one admissible path",
+    "inevitable":"all admissible paths reach the target in the declared model",
+    "attractor":"many trajectories tend toward a set but need not be logically forced",
+    "absorbing":"model gives no exit once state is entered",
+    "constrained":"some futures are removed while several remain",
+    "theological":"providence/predestination/telos remain theological and are not inferred from geometry"
   },
   "spatial_questions": [
     "Where is a node relative to the axis?",
     "What terrain does the relationship cross?",
     "What is above, below, inside, outside or at the boundary?",
-    "Where are the bottlenecks and bridges?",
+    "Where are the bottlenecks, bridges, passes and dominators?",
     "What flows through the terrain?",
     "What becomes visible only after elevation or separation changes?",
     "What is buried in roots or mud?",
-    "What is trapped in a swamp-like feedback loop?"
+    "What is trapped in a swamp-like feedback loop?",
+    "What constraints reduce the reachable set?",
+    "Which constraints are slack and which are active?",
+    "Does a widening spiral hit a boundary and become an orbit?",
+    "Is a claimed destination merely reachable, strongly attracting, probable, or unavoidable on every admissible path?",
+    "What Door or release changes the topology or enlarges the viable/reachable region?"
   ],
   "implementation": {
-    "coordinate_fields": ["axis_position", "elevation", "plane_position", "terrain", "boundary", "flow_direction"],
-    "graph_fields": ["source", "target", "relationship", "strength", "dependency", "feedback", "trajectory", "phase"],
-    "visualization": "Use terrain as a semantic layer over the graph; do not imply that symbolic terrain is geographic fact."
-  }
+    "coordinate_fields": ["axis_position", "elevation", "plane_position", "terrain", "boundary", "flow_direction", "reachable_region", "target_region"],
+    "graph_fields": ["source", "target", "relationship", "strength", "dependency", "feedback", "constraint_type", "anchor", "trajectory", "timeline", "path_class", "phase", "exit_condition"],
+    "visualization": "Use terrain as a semantic layer over the graph; display leash/cage/reachable-region only when the underlying constraint fields are explicitly populated. Do not imply that symbolic terrain is geographic fact."
+  },
+  "owners": [
+    "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json",
+    "data/entanglement.json",
+    "data/frame.json"
+  ]
 }
