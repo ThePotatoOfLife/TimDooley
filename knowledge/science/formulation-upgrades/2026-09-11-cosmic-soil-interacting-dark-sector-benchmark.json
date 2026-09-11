@@ -1,0 +1,90 @@
+{
+  "id": "2026-09-11-cosmic-soil-interacting-dark-sector-benchmark",
+  "title": "Cosmic Soil Upgrade — One Explicit Interacting Dark-Sector Benchmark",
+  "updated": "2026-09-11",
+  "status": "archive-generated cosmology benchmark extending the Infinite/Cosmic Soil branch; phenomenological interacting-dark-sector model, not recovered Great Book mathematics and not evidence for a common physical Soil",
+  "parent": "knowledge/science/great-book-quantum-fields-dark-sector-recovery.json",
+  "abstract": "The Cosmic Soil branch becomes more useful by replacing a menu of possible dark-sector unifications with one explicit benchmark that can be solved and rejected. This record chooses a simple phenomenological energy-transfer law Q=xi H rho_c between cold dark matter and a constant-w dark-energy component using the parent record's sign convention. The background densities can be solved analytically, exposing the exact Lambda-CDM/uncoupled limit and the parameter combinations controlling departures. The calculation also demonstrates an important limitation: specifying the background scalar Q(t) does not define a relativistic perturbation theory. A covariant transfer four-vector, momentum-transfer prescription and stability analysis are required before growth/lensing predictions are meaningful. The model is therefore a benchmark for identifiability and closure, not a claim that dark matter and dark energy are literally one substance.",
+  "conventions": {
+    "time_variable": "N=ln a; prime denotes d/dN",
+    "continuity_dark_matter": "rho_c' + 3 rho_c = +Q/H",
+    "continuity_dark_energy": "rho_de' + 3(1+w) rho_de = -Q/H",
+    "interaction": "Q=xi H rho_c",
+    "parameters": "constant w and dimensionless xi",
+    "sign_meaning": "With these conventions xi>0 transfers background energy from dark energy into cold dark matter."
+  },
+  "analytic_background_solution": {
+    "dark_matter": "rho_c(a)=rho_c0 a^(-3+xi)",
+    "dark_energy_generic": "rho_de(a)=rho_de0 a^[-3(1+w)] + [xi rho_c0/(3w+xi)] [a^(-3(1+w)) - a^(-3+xi)] for 3w+xi != 0",
+    "special_case": "If 3w+xi=0, the integral becomes logarithmic and must be treated separately rather than dividing by zero.",
+    "uncoupled_limit": "xi -> 0 gives rho_c=rho_c0 a^-3 and rho_de=rho_de0 a^[-3(1+w)]. Setting w=-1 additionally recovers the constant-density dark-energy background.",
+    "effective_dark_matter_equation_of_state": "w_c,eff=-xi/3 at the background bookkeeping level",
+    "effective_dark_energy_equation_of_state": "w_de,eff=w + xi rho_c/(3 rho_de)",
+    "warning": "Effective equations of state are bookkeeping devices for background dilution and do not turn cold dark matter into a fundamental pressureful fluid."
+  },
+  "background_observables": {
+    "hubble_function": "H^2(a)=H0^2 [Omega_r0 a^-4 + Omega_b0 a^-3 + rho_c(a)/rho_crit0 + rho_de(a)/rho_crit0 + ...] under a spatially flat benchmark unless curvature is explicitly retained",
+    "direct_effect": "xi changes the redshift evolution of the dark-matter density and, through energy conservation, the dark-energy density.",
+    "degeneracies": "Changes in xi can partially mimic changes in w, present-day density fractions and other cosmological parameters at the background level.",
+    "rule": "Distances/H(z) alone are insufficient to claim an interacting dark sector because growth and perturbation observables carry independent information."
+  },
+  "positivity_and_domain_checks": {
+    "requirement": "rho_c(a)>0 and rho_de(a)>0 over the redshift range in which the model is claimed as a physical fluid description.",
+    "importance": "A mathematically fitted parameter pair (w,xi) is not automatically physically admissible if the analytic solution drives a component negative or singular in the modeled epoch.",
+    "early_late_behavior": "Inspect asymptotic powers a^(-3+xi) and a^[-3(1+w)] rather than assuming the interaction remains perturbatively small at all epochs."
+  },
+  "perturbation_closure_problem": {
+    "covariant_requirement": "Specify four-vector transfer equations nabla_mu T_c^(mu nu)=Q_c^nu and nabla_mu T_de^(mu nu)=-Q_c^nu.",
+    "decomposition": "A general transfer can be decomposed into an energy-transfer part along a chosen four-velocity plus a momentum-transfer part orthogonal to it.",
+    "missing_choice": "The same background Q=xi H rho_c can correspond to different choices of transfer frame/direction and therefore different perturbation equations.",
+    "required_inputs": [
+      "the covariant form of Q_c^nu",
+      "which four-velocity defines the energy-transfer frame",
+      "dark-energy rest-frame sound speed or underlying field model",
+      "anisotropic stress assumptions",
+      "gauge-consistent perturbation variables",
+      "initial conditions",
+      "stability over the claimed epoch and scales"
+    ],
+    "project_lesson": "Background closure is not perturbation closure. Cosmic Soil cannot be promoted because H(a) can be written down; it must predict structure growth consistently."
+  },
+  "nested_model_comparison": {
+    "M0": "Lambda-CDM",
+    "M1": "wCDM with xi=0 and constant w",
+    "M2": "interacting background benchmark with xi != 0",
+    "M3": "fully covariant perturbation-complete interacting model",
+    "rule": "M2 must beat M1 on an observable not already absorbed by w freedom before the interaction is credited; M3 is required before using f sigma_8, lensing or matter-power predictions seriously."
+  },
+  "distinctive_tests": [
+    "Joint background-plus-growth inference rather than H(z) alone.",
+    "Posterior correlation of xi with w, Omega_c0 and growth amplitude.",
+    "Redshift dependence of the effective matter dilution exponent -3+xi.",
+    "Growth/lensing consistency once a covariant perturbation prescription is fixed.",
+    "Model comparison against xi=0 with complexity penalty or predictive validation."
+  ],
+  "failure_conditions": [
+    "The preferred xi collapses toward zero once w and other cosmological parameters are allowed to vary.",
+    "The parameter region fitting background data produces negative density, unstable perturbations or other pathologies.",
+    "Different equally plausible Q^nu prescriptions produce materially different growth predictions that current data cannot distinguish, leaving the physical interaction non-identifiable.",
+    "The interacting model fails to improve prediction relative to Lambda-CDM/wCDM after complexity is penalized.",
+    "A successful phenomenological interaction is treated as proof of the historical Infinite Soil ontology."
+  ],
+  "external_references": [
+    {
+      "topic": "interacting dark-sector review",
+      "url": "https://arxiv.org/abs/1603.08299",
+      "use": "Review of theoretical challenges, background dynamics, perturbations and observational signatures of dark matter-dark energy interactions."
+    },
+    {
+      "topic": "large-scale stability of interacting dark energy",
+      "url": "https://arxiv.org/abs/1312.6328",
+      "use": "Illustrates that simple interaction choices can generate perturbative instabilities and that carefully specified coupling structure matters."
+    }
+  ],
+  "connections": [
+    "great-book-quantum-fields-dark-sector-recovery",
+    "unified-potato-theory-2025-recovery",
+    "model-testing-protocol",
+    "2026-09-11-cross-model-defect-calculus"
+  ]
+}
