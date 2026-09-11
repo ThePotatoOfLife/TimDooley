@@ -2,8 +2,16 @@ const DATA_URL = '../data/axis-operators.json';
 const FORMAL_URL = '../data/axis-formal-lenses.json';
 const HUD_ID = 'axisOperatorHud';
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v') || '';
 let provenancePromise = null;
 let symbolicPromise = null;
+
+function versionedModule(path) {
+  if (!ATLAS_VERSION) return path;
+  const url = new URL(path, import.meta.url);
+  url.searchParams.set('v', ATLAS_VERSION);
+  return url.href;
+}
 
 function dimensionFromUrl() {
   const url = new URL(location.href);
@@ -47,7 +55,7 @@ function render(data, formal, dimension) {
 
 function ensureProvenance() {
   if (!provenancePromise) {
-    provenancePromise = import('./3d-provenance.js')
+    provenancePromise = import(versionedModule('./3d-provenance.js'))
       .catch(error => { console.warn('D3 provenance enhancement unavailable:', error); return null; });
   }
   return provenancePromise;
@@ -55,7 +63,7 @@ function ensureProvenance() {
 
 function ensureSymbolicOperators() {
   if (!symbolicPromise) {
-    symbolicPromise = import('./3d-symbolic-operators.js')
+    symbolicPromise = import(versionedModule('./3d-symbolic-operators.js'))
       .catch(error => { console.warn('Executable symbolic operators unavailable:', error); return null; });
   }
   return symbolicPromise;
