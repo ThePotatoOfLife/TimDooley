@@ -1,0 +1,111 @@
+{
+  "id": "research-2026-09-11-spudlight-starchforce-information",
+  "title": "2026-09-11 Research Notes — Spudlight, Starchforce, Storage, Release and Information Bottlenecks",
+  "research_timestamp_local": "2026-09-11T09:12:30+02:00",
+  "timezone": "Europe/Copenhagen",
+  "status": "new project research extension; stock-flow and information-theory formalization",
+  "novelty_scope": "Novel within the project research record on 2026-09-11. Standard stock-flow and information-theory results remain established external mathematics.",
+  "parent_records": [
+    "knowledge/science/spudlight-theory-and-equations.json",
+    "knowledge/science/operator-vortex-spinor-kk-starchforce-spudlight-integration-wave-007.json",
+    "knowledge/science/timic-unification-program.json"
+  ],
+  "starting_model": {
+    "storage_equation": "dK/dt=J_in-J_SL-Gamma K",
+    "linear_release_option": "J_SL=eta K",
+    "interpretation": "K is stored capacity; J_in is input; J_SL is release/expression; Gamma K is leakage/decay. Units must be chosen per application."
+  },
+  "new_deductions": [
+    {
+      "id": "effective-release-timescale",
+      "type": "exact consequence of the linear toy model",
+      "equations": [
+        "dK/dt=J_in-(eta+Gamma)K",
+        "tau_K=1/(eta+Gamma)",
+        "t_half=ln(2)/(eta+Gamma)"
+      ],
+      "finding": "If input is held fixed or removed, the linear Starchforce toy model has an explicit relaxation timescale. Storage and expression are therefore linked by a measurable temporal parameter rather than only a metaphorical opposition.",
+      "boundary": "This is a stock-flow result, not evidence for a new fundamental force."
+    },
+    {
+      "id": "steady-state-capacity",
+      "type": "exact consequence",
+      "equations": [
+        "K_star=J_in/(eta+Gamma) for constant J_in",
+        "J_SL_star=eta J_in/(eta+Gamma)"
+      ],
+      "finding": "The model predicts how sustained input divides between retained stock and expressed/released output under a specified linear release law."
+    },
+    {
+      "id": "reserve-runway",
+      "type": "new project observable",
+      "equations": [
+        "T_runway=K/J_demand",
+        "R_release=J_out/K when K>0"
+      ],
+      "finding": "A useful cross-domain quantity is not 'how much Starchforce' but how long stored capacity can support a declared demand and how quickly the stock is being released.",
+      "units": "T_runway has units of time; R_release has units of inverse time."
+    },
+    {
+      "id": "nonlinear-release-threshold",
+      "type": "new candidate extension",
+      "equations": [
+        "J_SL(K)=J_max K/(K+K_half)",
+        "dK/dt=J_in-J_max K/(K+K_half)-Gamma K"
+      ],
+      "finding": "A saturating release law prevents output from increasing without bound as storage grows and gives the model a natural capacity limit.",
+      "test_path": "Fit linear and saturating release models to an actual storage/release dataset and compare held-out error."
+    },
+    {
+      "id": "spudlight-as-relevant-information-not-total-signal",
+      "type": "new information-theory refinement",
+      "finding": "If Spudlight is used as a revelation/information analogy, raw signal volume should be separated from task-relevant information. A large signal can reveal little; a compressed representation can preserve what matters.",
+      "equations": [
+        "I(X;Y)=sum p(x,y) log[p(x,y)/(p(x)p(y))]",
+        "Information-bottleneck objective: minimize I(X;T)-beta I(T;Y_target)"
+      ],
+      "project_consequence": "Door can be studied as a bottleneck that filters an incoming source X into a representation T while preserving information relevant to a declared target Y_target.",
+      "boundary": "Information in bits/nats is not electromagnetic energy in joules and is not spiritual authority."
+    },
+    {
+      "id": "revelation-efficiency",
+      "type": "new dimensionless project metric",
+      "equations": [
+        "eta_info=I(T;Y_target)/I(X;T) when denominator>0"
+      ],
+      "finding": "For a specified dataset and target, eta_info measures how much retained representation information is relevant to the task. It is an engineering/inference metric, not a measure of holiness or truth in general.",
+      "test_path": "Estimate only with an explicit probabilistic model or estimator and report uncertainty/bias."
+    },
+    {
+      "id": "energy-information-separation",
+      "type": "research boundary",
+      "finding": "The same physical optical channel can carry different information depending on coding, noise and receiver prior; conversely similar information can be carried by different energies. Therefore the Spudlight vector should retain photon flux and information gain as separate components rather than combining them into one scalar."
+    }
+  ],
+  "possible_empirical_domains": [
+    {
+      "domain": "potato plant biology",
+      "measures": ["incident photosynthetically active radiation", "tuber starch mass or concentration", "respiration", "sprout growth", "temperature", "water status"],
+      "research_question": "Can a simple stock-flow model predict starch accumulation and mobilization better than a baseline across controlled conditions?",
+      "boundary": "A successful biological model would validate that biological stock-flow model only, not the metaphysical Spudlight/Starchforce interpretation."
+    },
+    {
+      "domain": "repository/publication system",
+      "measures": ["unpublished material stock", "publication rate", "attention", "retrieval success", "information gain"],
+      "research_question": "Does stored archive capacity and release cadence predict discoverability or useful information transfer?"
+    }
+  ],
+  "researcher_notes": [
+    "The storage/release pair becomes substantially stronger when expressed through timescale, steady state and runway rather than by inventing a fifth force.",
+    "Information bottleneck theory adds a useful distinction: revelation can be modeled as preservation of relevant information under a limited channel, not as maximum raw throughput.",
+    "This makes Source→Storage→Release→Observation→Door a testable architecture in selected non-metaphysical domains."
+  ],
+  "external_science_sources": [
+    {
+      "title": "The Information Bottleneck Method",
+      "authors": "Naftali Tishby, Fernando C. Pereira, William Bialek",
+      "year": 2000,
+      "url": "https://arxiv.org/abs/physics/0004057"
+    }
+  ]
+}
