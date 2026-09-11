@@ -25,17 +25,21 @@ function serializableActiveState() {
   };
 }
 
+function providerReportsActive(descriptor) {
+  try {
+    return Boolean(descriptor?.getState?.()?.active);
+  } catch {
+    return false;
+  }
+}
+
 function descriptorIsActive(descriptor) {
   if (!descriptor) return false;
   if (descriptor.stateSlot === 'baseSurface') return active.baseSurface === descriptor.id;
   if (descriptor.stateSlot === 'worldOverlays') return active.worldOverlays.has(descriptor.id);
   if (descriptor.stateSlot === 'relationModes') return active.relationModes.has(descriptor.id);
   if (descriptor.stateSlot === 'axisLens') return active.axisLens === descriptor.id;
-  try {
-    return Boolean(descriptor.getState?.()?.active);
-  } catch {
-    return false;
-  }
+  return providerReportsActive(descriptor);
 }
 
 function availabilityFor(descriptor, context = {}) {
@@ -99,11 +103,20 @@ function normalizeDescriptor(input) {
   return Object.freeze(descriptor);
 }
 
+function setActive(descriptor, on) {
+  const id = descriptor.id;
+  if (descriptor.stateSlot === 'baseSurface') active.baseSurface = on ? id : (active.baseSurface === id ? null : active.baseSurface);
+  else if (descriptor.stateSlot === 'worldOverlays') on ? active.worldOverlays.add(id) : active.worldOverlays.delete(id);
+  else if (descriptor.stateSlot === 'relationModes') on ? active.relationModes.add(id) : active.relationModes.delete(id);
+  else if (descriptor.stateSlot === 'axisLens') active.axisLens = on ? id : (active.axisLens === id ? null : active.axisLens);
+}
+
 function register(input) {
   const descriptor = normalizeDescriptor(input);
   const existing = descriptors.get(descriptor.id);
   if (existing && existing !== descriptor) descriptors.delete(descriptor.id);
   descriptors.set(descriptor.id, descriptor);
+  if (providerReportsActive(descriptor)) setActive(descriptor, true);
   emitRegistryChange(existing ? 'replace' : 'register', descriptor);
   return descriptor;
 }
@@ -131,14 +144,6 @@ function list(filters = {}) {
 
 function get(id) {
   return descriptors.get(id) || null;
-}
-
-function setActive(descriptor, on) {
-  const id = descriptor.id;
-  if (descriptor.stateSlot === 'baseSurface') active.baseSurface = on ? id : (active.baseSurface === id ? null : active.baseSurface);
-  else if (descriptor.stateSlot === 'worldOverlays') on ? active.worldOverlays.add(id) : active.worldOverlays.delete(id);
-  else if (descriptor.stateSlot === 'relationModes') on ? active.relationModes.add(id) : active.relationModes.delete(id);
-  else if (descriptor.stateSlot === 'axisLens') active.axisLens = on ? id : (active.axisLens === id ? null : active.axisLens);
 }
 
 async function deactivate(id, context = {}) {
@@ -204,9 +209,12 @@ function getActiveState() {
 }
 
 function refreshFromProviders() {
+  active.baseSurface = null;
+  active.axisLens = null;
+  active.worldOverlays.clear();
+  active.relationModes.clear();
   for (const descriptor of descriptors.values()) {
-    const isActive = descriptorIsActive(descriptor);
-    if (descriptor.stateSlot) setActive(descriptor, isActive);
+    if (providerReportsActive(descriptor)) setActive(descriptor, true);
   }
   emitRegistryChange('refresh', null);
   return getActiveState();
