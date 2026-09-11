@@ -41,7 +41,7 @@ function flowSummary(flow, dimension) {
     ${inflow ? `<div><span style="color:#98aaa4">↘ In:</span> ${esc(inflow)}</div>` : ''}
     ${outflow ? `<div><span style="color:#b8d6bf">↗ Out:</span> ${esc(outflow)}</div>` : ''}
     ${f.risk ? `<div style="color:#a8a09a"><b>Risk:</b> ${esc(f.risk)}</div>` : ''}
-    <small style="color:#718181">Project-symbolic Axis flow · empirical quantities keep their own units, dates and sources</small>
+    <small style="color:#718181">Project-symbolic Axis flow · empirical money, energy, people, goods, data and legal obligations keep their own units, dates and sources</small>
   </div>`;
 }
 
