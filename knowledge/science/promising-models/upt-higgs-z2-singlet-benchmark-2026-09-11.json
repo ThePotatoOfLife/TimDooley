@@ -1,0 +1,68 @@
+{
+  "id":"upt-higgs-z2-singlet-benchmark-2026-09-11",
+  "title":"UPT/Higgs Minimal Benchmark — Z2-Symmetric Real Singlet Portal",
+  "updated":"2026-09-11",
+  "status":"archive-generated minimal calculable descendant of the recovered UPT skeleton; conventional BSM benchmark, not recovered Tim-authored historical math",
+  "purpose":"Give Unified Potato Theory one deliberately small, solvable particle-physics benchmark before adding nonlocal operators, extra gauge sectors, higher dimensions or cross-scale biology. The benchmark asks whether the recovered Potato-field/Higgs idea can survive ordinary field-theory consistency and present Higgs constraints in its simplest form.",
+  "why_promising":"This branch has a direct interface with established particle physics: a real scalar singlet coupled through the Higgs portal is mathematically standard, has a finite parameter set, possesses clear correspondence limits and produces collider/cosmological observables. It therefore provides a real falsification ladder for the broader UPT idea.",
+  "epistemic_boundary":"Success of this benchmark would support only a viable extra scalar sector. It would not by itself validate UPT's nonlocal operator, U(1)_potato, Z6, quantum-gravity sectors, consciousness claims or Potatoverse theology.",
+  "model":{
+    "symmetry":"P -> -P (Z2), Standard Model fields even",
+    "field_content":"Standard Model + one real gauge-singlet scalar P",
+    "vacuum_assumption":"<P>=0 so Z2 remains unbroken; electroweak symmetry breaks normally with H=(0,(v+h)/sqrt(2))^T",
+    "lagrangian_new_sector":"L_P = (1/2)(partial P)^2 - (m0^2/2)P^2 - (lambda_P/4)P^4 - (lambda_HP/2)P^2 H^dagger H",
+    "parameters":["m0^2","lambda_P","lambda_HP"],
+    "standard_inputs":["v approximately 246 GeV","m_h approximately 125 GeV"]
+  },
+  "after_electroweak_symmetry_breaking":{
+    "physical_singlet_mass":"m_P^2 = m0^2 + (lambda_HP/2) v^2",
+    "portal_interactions":["L contains -(lambda_HP v/2) h P^2","L contains -(lambda_HP/4) h^2 P^2"],
+    "correspondence_limit":"lambda_HP -> 0 decouples P from observable Higgs physics; large positive m_P decouples the singlet kinematically at low energy.",
+    "stability_at_large_field":"For V_4=lambda_H(H^dagger H)^2+(lambda_HP/2)P^2(H^dagger H)+(lambda_P/4)P^4, a simple tree-level boundedness condition is lambda_H>0, lambda_P>0 and lambda_HP>-2 sqrt(lambda_H lambda_P). Running couplings can modify the high-scale conclusion."
+  },
+  "higgs_invisible_channel":{
+    "condition":"m_P < m_h/2",
+    "partial_width":"Gamma(h->PP)=lambda_HP^2 v^2/(32 pi m_h) sqrt(1-4 m_P^2/m_h^2)",
+    "branching_fraction":"BR_inv = Gamma(h->PP)/(Gamma_SM + Gamma(h->PP)) if P is detector-invisible/stable on detector scales",
+    "illustrative_constraint_translation":"Using the published ATLAS full Run-1+Run-2 benchmark BR_inv<0.11 at 95% CL and Gamma_SM about 4.07 MeV gives lambda_HP roughly below 0.010 in the light-P limit m_P << m_h/2. This is an illustrative conversion, not claimed as the latest global 2026 combination.",
+    "scientific_value":"This immediately removes large parts of parameter space if P is light and stable, making the model genuinely constrainable rather than infinitely adjustable."
+  },
+  "nested_model_strategy":{
+    "M0":"Standard Model",
+    "M1":"Standard Model + local Z2 singlet P as defined here",
+    "M2":"M1 plus a precisely defined nonlocal/fractional kinetic operator K(Box/Lambda^2)",
+    "rule":"Do not jump directly from M0 to the full historical UPT master action. First establish whether M1 is mathematically/phenomenologically viable. Add M2 only if it predicts something not already captured by M1 and a causal/unitary prescription exists in the claimed regime."
+  },
+  "what_can_be_explained_if_viable":[
+    "An additional invisible/exotic Higgs decay channel when kinematically open.",
+    "A stable scalar dark-sector candidate if the Z2 is exact and cosmological assumptions are added and tested.",
+    "A controlled portal through which a previously hidden scalar sector communicates with Standard Model matter.",
+    "A clean baseline against which any genuinely UPT-specific nonlocal term must demonstrate added explanatory or predictive value."
+  ],
+  "what_it_does_not_explain_yet":[
+    "Why alpha=1.3 in the recovered fractional kinetic term.",
+    "Why U(1)_potato x Z6 should be the historical symmetry.",
+    "Gravity/quantum-gravity unification.",
+    "Biological or neural self-organization across scales.",
+    "Any theological or symbolic identification."
+  ],
+  "next_calculations":[
+    "Map (m_P,lambda_HP,lambda_P) tree-level viability including boundedness and perturbativity.",
+    "For m_P<m_h/2 convert Higgs invisible-width bounds to lambda_HP(m_P).",
+    "For m_P>m_h/2 use Higgs precision, off-shell/exotic-scalar and cosmological/direct-detection constraints only under the assumptions relevant to those analyses.",
+    "If P is a dark-matter candidate, compute thermal or nonthermal abundance rather than assuming the observed relic density.",
+    "Only after the local model is controlled, replace the canonical kinetic operator with a rigorously specified UPT kernel and quantify the observable difference."
+  ],
+  "failure_conditions":[
+    "No parameter region satisfies the stability/phenomenology assumptions required for the interpretation being claimed.",
+    "The scalar sector is viable but has no distinctive role beyond a generic Higgs-portal singlet; in that case it remains a useful baseline but not evidence for broader UPT structure.",
+    "A proposed nonlocal extension introduces unacceptable poles, instabilities or causal ambiguities in its claimed EFT regime.",
+    "Additional complexity fails to improve any predeclared observable or explanatory compression over the local singlet baseline."
+  ],
+  "external_references":[
+    {"source":"Particle Data Group 2026","url":"https://pdg.lbl.gov/2026/listings/particle_properties.html","use":"Current particle/Higgs baseline and searches for additional scalar bosons."},
+    {"source":"PDG 2026 highlights","url":"https://pdg.lbl.gov/2026/reviews/rpp2026-rev-highlights.pdf","use":"Documents extensive updated Higgs measurements and searches for new scalar bosons."},
+    {"source":"ATLAS Higgs invisible combination","url":"https://atlas.cern/Updates/Briefing/higgs-boson-search-dark-matter","use":"Published 95% CL BR(H->invisible)<0.11 benchmark used only for the illustrative portal-coupling translation."}
+  ],
+  "connections":["unified-potato-theory-2025-recovery","higgs-quantum-tuber-potato-boson-recovery","model-testing-protocol","science-theory-rigor-completion-matrix-2026-09-11"]
+}
