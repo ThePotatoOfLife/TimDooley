@@ -44,6 +44,7 @@ let indexPromise;
 let demographyPromise;
 const recordCache = new Map();
 let rendering = false;
+let renderQueued = false;
 
 async function fetchJson(url) {
   const response = await fetch(url);
@@ -261,17 +262,22 @@ function isCountryOverview() {
   return /Canonical country|Territory \/ map polygon/i.test(eyebrow);
 }
 
-async function render() {
-  if (!panel || rendering || !isCountryOverview()) return;
+function activeSelectionCode() {
   const current = window.__potatoAtlasSelection?.current || {};
-  const code = String(current.activeCode || current.code || '').toUpperCase();
+  return String(current.activeCode || current.code || '').toUpperCase();
+}
+
+async function render() {
+  if (!panel || !isCountryOverview()) return;
+  if (rendering) { renderQueued = true; return; }
+  const code = activeSelectionCode();
   if (!code) return;
   const existing = panel.querySelector('.atlas-country-pulse');
   if (existing?.dataset.pulseCode === code) return;
   rendering = true;
   try {
     const [record, demo] = await Promise.all([getRecord(code), demography()]);
-    if (!record || !isCountryOverview()) return;
+    if (!record || !isCountryOverview() || activeSelectionCode() !== code) return;
     panel.querySelector('.atlas-country-pulse')?.remove();
     const holder = document.createElement('div');
     holder.innerHTML = pulseHtml(code, record, demo?.countries?.[code]);
@@ -281,6 +287,10 @@ async function render() {
     else if (pulse) panel.appendChild(pulse);
   } finally {
     rendering = false;
+    if (renderQueued) {
+      renderQueued = false;
+      queueMicrotask(render);
+    }
   }
 }
 
@@ -304,7 +314,7 @@ panel?.addEventListener('click', event => {
 if (panel) {
   let scheduled = false;
   const observer = new MutationObserver(() => {
-    if (scheduled || rendering) return;
+    if (scheduled) return;
     scheduled = true;
     queueMicrotask(() => { scheduled = false; render(); });
   });
@@ -321,8 +331,7 @@ window.__potatoAtlasCountryPulse = {
   getRecord,
   metric,
   get currentCode() {
-    const current = window.__potatoAtlasSelection?.current || {};
-    return current.activeCode || current.code || null;
+    return activeSelectionCode() || null;
   }
 };
 
