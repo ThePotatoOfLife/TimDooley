@@ -1,0 +1,142 @@
+name: Repository quality checks
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: quality-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Validate JavaScript syntax
+        run: node --check app/bible-study.js
+
+      - name: Validate Timeline naming
+        run: python scripts/validate_timeline_naming.py
+
+      - name: Build canonical record registry
+        run: python scripts/build_canonical_record_registry.py
+
+      - name: Build repository index
+        run: python scripts/build_repository_index.py
+
+      - name: Audit source-of-truth and routes
+        run: python scripts/audit_source_of_truth.py
+
+      - name: Validate blueprint contract
+        run: python scripts/validate_blueprints.py
+
+      - name: Run whole-project stability audit
+        run: python scripts/stability_audit.py
+
+      - name: Validate Atlas structure
+        run: python scripts/validate_atlas.py
+
+      - name: Validate Atlas projection and time contracts
+        run: python scripts/validate_atlas_view_contracts.py
+
+      - name: Validate Atlas mathematical calibration
+        run: python scripts/validate_atlas_math_calibration.py
+
+      - name: Validate 3D world atlas runtime
+        run: python scripts/validate_world_map_3d.py
+
+      - name: Validate 3D relationship path finder
+        run: python scripts/validate_world_map_pathfinder.py
+
+      - name: Validate entity-aware Trace
+        run: python scripts/validate_world_map_entity_trace.py
+
+      - name: Validate repository spine
+        run: python scripts/validate_repository_spine.py
+
+      - name: Validate architecture layers
+        run: python scripts/validate_architecture_layers.py
+
+      - name: Validate content integrity
+        run: python scripts/validate_content_integrity.py
+
+      - name: Validate religious-adjacent layer
+        run: python scripts/validate_religious_adjacent.py
+
+      - name: Validate religious layer coupling map
+        run: python scripts/validate_religious_layer_map.py
+
+      - name: Validate Potatoism layer
+        run: python scripts/validate_potatoism.py
+
+      - name: Validate expansion layers
+        run: python scripts/validate_expansion_layers.py
+
+      - name: Check FAQ backend
+        run: python scripts/check_faq_backend.py
+
+      - name: Check CSS namespaces
+        run: python scripts/check_css_namespace_collisions.py
+
+      - name: Check biblical syncretism field
+        run: python scripts/check_biblical_syncretism_field.py
+
+      - name: Validate Bible reader
+        run: python scripts/validate_bible_reader.py
+
+      - name: Audit backend ownership, duplicates and graph orphans
+        run: python scripts/audit_backend_coverage.py
+
+      - name: Audit Atlas links and record coverage
+        run: python scripts/audit_atlas_links.py
+
+      - name: Audit web layer
+        run: python scripts/audit_web.py
+
+      - name: Build public site
+        run: python scripts/build_site.py
+
+      - name: Compile Bible comparator
+        run: python scripts/build_bible_study.py
+
+      - name: Compile science paper library
+        run: python scripts/build_science_catalog.py
+
+      - name: Validate science paper library
+        run: python scripts/validate_science_portal.py
+
+      - name: Build machine discovery layer
+        run: python scripts/build_discovery.py
+
+      - name: Expose machine discovery entry points
+        run: python scripts/patch_home_discovery.py
+
+      - name: Apply public ontology patch
+        run: python scripts/patch_public_ontology.py
+
+      - name: Validate public navigation
+        run: python scripts/validate_public_navigation.py
+
+      - name: Audit machine discoverability
+        run: python scripts/check_machine_discoverability.py
+
+      - name: Validate built site shell
+        run: python scripts/validate_site_shell.py
