@@ -2,6 +2,8 @@ const DATA_URL = '../data/axis-operators.json';
 const FORMAL_URL = '../data/axis-formal-lenses.json';
 const HUD_ID = 'axisOperatorHud';
 const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+let provenancePromise = null;
+let symbolicPromise = null;
 
 function dimensionFromUrl() {
   const url = new URL(location.href);
@@ -38,13 +40,25 @@ function render(data, formal, dimension) {
     <div style="margin-top:5px;border-top:1px solid #263232;padding-top:5px;color:#c8d0d0"><b>Test:</b> ${esc(d.diagnostic_test)}</div>
     ${lens ? `<div style="margin-top:6px;border-top:1px dashed #314343;padding-top:5px;color:#aebcbc"><b style="color:#bdd9de">Formal lens:</b> ${esc(lens.label)}<br><span>${esc(lens.question)}</span>${neighbors ? `<br><small style="color:#879797">Neighbors · ${esc(neighbors)}</small>` : ''}<br><small style="color:#718181">Comparator/project formalism · not physical proof of the D-layer</small></div>` : ''}`;
 
-  if (dimension === 4) {
-    hud.style.borderColor = '#3b4a44';
-  } else if (dimension >= 5) {
-    hud.style.borderColor = '#477987';
-  } else {
-    hud.style.borderColor = '#5b4d3e';
+  if (dimension === 4) hud.style.borderColor = '#3b4a44';
+  else if (dimension >= 5) hud.style.borderColor = '#477987';
+  else hud.style.borderColor = '#5b4d3e';
+}
+
+function ensureProvenance() {
+  if (!provenancePromise) {
+    provenancePromise = import('./3d-provenance.js')
+      .catch(error => { console.warn('D3 provenance enhancement unavailable:', error); return null; });
   }
+  return provenancePromise;
+}
+
+function ensureSymbolicOperators() {
+  if (!symbolicPromise) {
+    symbolicPromise = import('./3d-symbolic-operators.js')
+      .catch(error => { console.warn('Executable symbolic operators unavailable:', error); return null; });
+  }
+  return symbolicPromise;
 }
 
 async function boot() {
@@ -54,13 +68,14 @@ async function boot() {
   const formal = formalResponse.ok ? await formalResponse.json() : null;
   render(data, formal, dimensionFromUrl());
   window.addEventListener('atlas-axis-dimension-change', event => {
-    render(data, formal, Number(event.detail?.dimension || 4));
+    const dimension = Number(event.detail?.dimension || 4);
+    render(data, formal, dimension);
+    // The deeper tooling is not part of map startup. It becomes relevant only
+    // after the user actually navigates the symbolic Axis away from Earth.
+    if (dimension !== 4) ensureSymbolicOperators();
+    if (dimension === 3) ensureProvenance();
   });
-  window.__potatoAxisOperators = {data, formal, render};
-  // Optional enhancements remain isolated so the geographic Atlas survives
-  // if a symbolic/provenance module ever fails independently.
-  import('./3d-provenance.js').catch(error => console.warn('D3 provenance enhancement unavailable:', error));
-  import('./3d-symbolic-operators.js').catch(error => console.warn('Executable symbolic operators unavailable:', error));
+  window.__potatoAxisOperators = {data, formal, render, ensureProvenance, ensureSymbolicOperators};
 }
 
 boot().catch(error => console.warn('Axis operator HUD unavailable:', error));
