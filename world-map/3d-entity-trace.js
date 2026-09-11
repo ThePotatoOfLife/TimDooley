@@ -14,12 +14,27 @@ async function load(){
   if(data)return data;
   const[relationships,nodes,countries,bridge]=await Promise.all([fetchJson(REL_URL),fetchJson(NODES_URL),fetchJson(COUNTRIES_URL),fetchJson(BRIDGE_URL)]);
   const countryRows=countries.countries||[];
-  data={relationships:relationships.relationships||[],nodes:Object.fromEntries((nodes.nodes||[]).map(n=>[n.id,n])),countriesByIso:Object.fromEntries(countryRows.map(c=>[c.iso3,c])),countriesById:Object.fromEntries(countryRows.map(c=>[c.id,c])),bridge};
+  data={
+    relationships:relationships.relationships||[],
+    nodes:Object.fromEntries((nodes.nodes||[]).map(n=>[n.id,n])),
+    countriesByIso:Object.fromEntries(countryRows.map(c=>[c.iso3,c])),
+    countriesById:Object.fromEntries(countryRows.map(c=>[c.id,c])),
+    bridge,
+    explicitBridges:Object.fromEntries((bridge.explicit_bridges||[]).map(row=>[row.id,row]))
+  };
   return data;
 }
 function selectedCode(){return new URL(location.href).searchParams.get('country')?.toUpperCase()||null;}
 function selectedTime(){return window.__potatoAtlasTime?.getState?.()||{mode:'current',time:'',time2:''};}
 function endpointName(id,d){return d.nodes[id]?.name||d.countriesById[id]?.name||id.replaceAll('-',' ').replace(/\b\w/g,m=>m.toUpperCase());}
+function archiveRoute(id,d){
+  const explicit=d.explicitBridges[id]?.route;
+  if(explicit)return `../${explicit}`;
+  // The bridge contract declares index.html as the public reader and canonical
+  // node/country IDs as graph-addressable anchors. Do not invent standalone routes.
+  if(d.nodes[id]||d.countriesById[id])return `../${d.bridge.public_reader||'index.html'}#node=${encodeURIComponent(id)}`;
+  return null;
+}
 function temporalState(rel,time){
   if(time.mode==='current')return{kind:'current',label:''};
   const selected=time.time;
@@ -33,10 +48,15 @@ function temporalState(rel,time){
 function relationRows(countryId,d,time){
   return d.relationships.filter(r=>r.source===countryId||r.target===countryId).map(r=>{
     const outgoing=r.source===countryId,other=outgoing?r.target:r.source,country=d.countriesById[other];
-    return{...r,outgoing,other,otherName:endpointName(other,d),otherCountry:country?.iso3||null,timeState:temporalState(r,time)};
+    return{...r,outgoing,other,otherName:endpointName(other,d),otherCountry:country?.iso3||null,archiveRoute:archiveRoute(other,d),timeState:temporalState(r,time)};
   });
 }
 function removeCard(){document.getElementById(CARD_ID)?.remove();}
+function endpointAction(row){
+  if(row.otherCountry)return `<button onclick="goCountry('${esc(row.otherCountry)}')">Map</button>`;
+  if(row.archiveRoute)return `<a href="${esc(row.archiveRoute)}">Archive</a>`;
+  return '<span class="muted">inspector only</span>';
+}
 async function render(){
   removeCard();if(!enabled)return;
   const code=selectedCode();lastCode=code;if(!code)return;
@@ -49,7 +69,7 @@ async function render(){
     const valid=rows.filter(r=>r.timeState.kind==='valid').length,unknown=rows.filter(r=>r.timeState.kind==='unknown').length,outside=rows.filter(r=>r.timeState.kind==='outside').length;
     const card=document.createElement('div');card.id=CARD_ID;card.className='card';card.style.borderColor='#435b63';
     const evidenceTags=Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span class="pill">${esc(k)} · ${v}</span>`).join('');
-    card.innerHTML=`<div class="eyebrow">Entity Trace · normalized graph</div><h2 style="margin-top:5px">${esc(country.name)} beyond country-only edges</h2><p class="muted">One-hop relationships from <code>data/relationships.json</code>. Nonspatial endpoints remain inspector objects; only canonical country endpoints can jump back to Earth geography.</p><div>${evidenceTags||'<span class="muted">No normalized relationships represented yet.</span>'}</div>${time.mode!=='current'?`<div class="row"><b>Time validity</b><br><span class="muted">${valid} explicitly valid · ${outside} outside interval · ${unknown} unknown validity. A relation's record date is not treated as its start date.</span></div>`:''}<div>${rows.slice(0,24).map(r=>`<div class="row"><span class="muted">${r.outgoing?'→':'←'} ${esc(r.relationship)}</span><br><b>${esc(r.otherName)}</b> ${r.otherCountry?`<button onclick="goCountry('${esc(r.otherCountry)}')">Map</button>`:`<a href="../#node=${encodeURIComponent(r.other)}">Archive</a>`}<br><small>${esc(r.evidence||'unknown')} · ${esc(r.confidence||'unknown')}${r.date?` · recorded ${esc(r.date)}`:''}${time.mode!=='current'?` · ${esc(r.timeState.label)}`:''}</small></div>`).join('')||'<div class="muted">No normalized graph edges touch this country yet.</div>'}</div>${rows.length>24?`<div class="muted">Showing 24 of ${rows.length} one-hop entity relations.</div>`:''}<div class="boundary">Entity Trace expands topology, not geography. A nonspatial concept, institution without coordinates, comparative text or project-symbolic node is never assigned a fake map position merely because it is connected to a country.</div>`;
+    card.innerHTML=`<div class="eyebrow">Entity Trace · normalized graph</div><h2 style="margin-top:5px">${esc(country.name)} beyond country-only edges</h2><p class="muted">One-hop relationships from <code>data/relationships.json</code>, resolved through the global graph bridge. Nonspatial endpoints remain inspector/archive objects; only canonical country endpoints can jump back to Earth geography.</p><div>${evidenceTags||'<span class="muted">No normalized relationships represented yet.</span>'}</div>${time.mode!=='current'?`<div class="row"><b>Time validity</b><br><span class="muted">${valid} explicitly valid · ${outside} outside interval · ${unknown} unknown validity. A relation's record date is not treated as its start date.</span></div>`:''}<div>${rows.slice(0,24).map(r=>`<div class="row"><span class="muted">${r.outgoing?'→':'←'} ${esc(r.relationship)}</span><br><b>${esc(r.otherName)}</b> ${endpointAction(r)}<br><small>${esc(r.evidence||'unknown')} · ${esc(r.confidence||'unknown')}${r.date?` · recorded ${esc(r.date)}`:''}${time.mode!=='current'?` · ${esc(r.timeState.label)}`:''}</small></div>`).join('')||'<div class="muted">No normalized graph edges touch this country yet.</div>'}</div>${rows.length>24?`<div class="muted">Showing 24 of ${rows.length} one-hop entity relations.</div>`:''}<div class="boundary">Entity Trace expands topology, not geography. A nonspatial concept, institution without coordinates, comparative text or project-symbolic node is never assigned a fake map position merely because it is connected to a country.</div>`;
     panel.appendChild(card);window.__potatoAtlasUI?.setPanel?.(true,{persist:false});
   }catch(error){console.warn('Entity Trace unavailable:',error);}
 }
@@ -60,7 +80,7 @@ function install(){
   button.addEventListener('click',()=>{enabled=!enabled;localStorage.setItem('atlas:entity-trace',enabled?'1':'0');button.textContent=enabled?'Entity graph · on':'Entity graph';button.classList.toggle('active',enabled);render();});
   pop.appendChild(button);render();
 }
-const panel=document.getElementById('panel');if(panel)new MutationObserver(()=>{if(enabled&&selectedCode()!==lastCode)setTimeout(render,0);else if(enabled&&selectedCode()&&!document.getElementById(CARD_ID))setTimeout(render,0);}).observe(panel,{childList:true,subtree:false});
+const panel=document.getElementById('panel');if(panel)new MutationObserver(()=>{if(enabled&&selectedCode()!==lastCode)queueMicrotask(render);else if(enabled&&selectedCode()&&!document.getElementById(CARD_ID))queueMicrotask(render);}).observe(panel,{childList:true,subtree:false});
 window.addEventListener('atlas-time-change',()=>enabled&&render());
 new MutationObserver(install).observe(document.body,{childList:true,subtree:true});install();
 window.__potatoEntityTrace={render,isEnabled:()=>enabled};
