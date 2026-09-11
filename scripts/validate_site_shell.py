@@ -43,7 +43,7 @@ def main() -> int:
     if not SITE.exists(): errors.append("_site does not exist; build_site.py must run first");pages=[]
     else:
         pages=sorted(SITE.rglob("*.html"))
-        required_files=("index.html","manifest.json","app/app.js","app/style.css","knowledge/indexes/context-graph.json","knowledge/indexes/core-index.json","world-map/index.html","world-map/3d.html","world-map/3d-app.js","world-map/3d-hover.js","world-map/3d-pathfinder.js","world-map/3d-demography.js","world-map/3d-evidence.js","world-map/3d-time.js","world-map/3d-ui.js","world-map/3d-axis.js","world-map/3d-axis-depth.js","world-map/3d-axis-operators.js","data/world-map-3d-runtime.json","data/world-relational-map.json","data/atlas-projection-contract.json","data/atlas-time-contract.json","data/atlas-mathematical-calibration.json","data/world-country-demography.json","data/world-country-facts.json","sitemap.xml","llms.txt")
+        required_files=("index.html","manifest.json","app/app.js","app/style.css","knowledge/indexes/context-graph.json","knowledge/indexes/core-index.json","world-map/index.html","world-map/3d.html","world-map/3d-app.js","world-map/3d-hover.js","world-map/3d-pathfinder.js","world-map/3d-demography.js","world-map/3d-evidence.js","world-map/3d-time.js","world-map/3d-ui.js","world-map/3d-entity-trace.js","world-map/3d-axis.js","world-map/3d-axis-depth.js","world-map/3d-axis-operators.js","data/world-map-3d-runtime.json","data/world-relational-map.json","data/atlas-projection-contract.json","data/atlas-time-contract.json","data/atlas-mathematical-calibration.json","data/atlas-entity-trace-contract.json","data/world-country-demography.json","data/world-country-facts.json","sitemap.xml","llms.txt")
         for rel in required_files:
             if not (SITE/rel).exists(): errors.append(f"missing required site file: {rel}")
 
@@ -62,7 +62,7 @@ def main() -> int:
         atlas_path=SITE/"world-map/3d.html";atlas=atlas_path.read_text(encoding="utf-8",errors="replace") if atlas_path.exists() else ""
         require_text(atlas,("World Relational Atlas",'id="map"','id="compare"','id="relationType"','id="traceDepth"','id="timeMenu"','id="timeMode"','id="atlasTimeState"','src="./3d-hover.js"','src="./3d-pathfinder.js"','src="./3d-demography.js"','src="./3d-evidence.js"','src="./3d-time.js"','src="./3d-ui.js"','src="./3d-axis.js"'),"world-map/3d.html",errors)
 
-        copied=("world-map/3d.html","world-map/3d-app.js","world-map/3d-hover.js","world-map/3d-pathfinder.js","world-map/3d-demography.js","world-map/3d-evidence.js","world-map/3d-time.js","world-map/3d-ui.js","world-map/3d-fields.js","world-map/3d-networks.js","world-map/3d-axis.js","world-map/3d-axis-depth.js","world-map/3d-axis-operators.js","data/world-map-3d-runtime.json","data/world-relational-map.json","data/atlas-projection-contract.json","data/atlas-time-contract.json","data/atlas-mathematical-calibration.json")
+        copied=("world-map/3d.html","world-map/3d-app.js","world-map/3d-hover.js","world-map/3d-pathfinder.js","world-map/3d-demography.js","world-map/3d-evidence.js","world-map/3d-time.js","world-map/3d-ui.js","world-map/3d-entity-trace.js","world-map/3d-fields.js","world-map/3d-networks.js","world-map/3d-axis.js","world-map/3d-axis-depth.js","world-map/3d-axis-operators.js","data/world-map-3d-runtime.json","data/world-relational-map.json","data/atlas-projection-contract.json","data/atlas-time-contract.json","data/atlas-mathematical-calibration.json","data/atlas-entity-trace-contract.json")
         for rel in copied: require_build_parity(rel,errors)
 
         runtime_path=SITE/"data/world-map-3d-runtime.json";runtime=load_json(runtime_path,errors) if runtime_path.exists() else {}
@@ -75,6 +75,13 @@ def main() -> int:
             if runtime.get("time_mode",{}).get("status")!="implemented-conservative-foundation": errors.append("built runtime does not preserve conservative Time implementation")
             if runtime.get("interface",{}).get("status")!="implemented-progressive-disclosure": errors.append("built runtime does not preserve progressive disclosure UI contract")
             if "experimental" in str(runtime.get("status","")).lower(): errors.append("built world-map runtime reintroduced retired experimental status wording")
+
+        entity_contract_path=SITE/"data/atlas-entity-trace-contract.json"
+        if entity_contract_path.exists():
+            entity_contract=load_json(entity_contract_path,errors)
+            if entity_contract.get("status")!="implemented-one-hop-inspector": errors.append("built entity Trace contract lost implemented one-hop status")
+            if entity_contract.get("runtime")!="world-map/3d-entity-trace.js": errors.append("built entity Trace contract lost runtime ownership")
+            if entity_contract.get("scope",{}).get("depth")!=1: errors.append("built entity Trace expanded depth without satisfying growth gate")
 
         calibration_path=SITE/"data/atlas-mathematical-calibration.json"
         if calibration_path.exists():
