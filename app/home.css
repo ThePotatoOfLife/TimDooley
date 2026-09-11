@@ -1,12 +1,8 @@
-/* Homepage-only portal, philosophy line and archive doorway. */
+/* Homepage-only portal and philosophy line. */
 .front-quote{margin:0 0 30px;padding:2px 0 3px 20px;border-left:2px solid var(--gold);max-width:780px}
 .front-quote p{margin:0;font-family:Georgia,serif;font-size:clamp(25px,3vw,37px);line-height:1.15;letter-spacing:-.02em;color:var(--ink)}
 .front-quote cite{display:block;margin-top:7px;color:var(--green);font-style:normal;font-size:11px;font-weight:800;letter-spacing:.14em;text-transform:uppercase}
 .quicknav{grid-template-columns:repeat(4,minmax(0,1fr));margin-bottom:30px}
-.archive-door{display:flex;align-items:center;justify-content:space-between;gap:28px;margin:8px 0 34px;padding:24px 26px;border:1px solid var(--line);border-radius:18px;background:rgba(255,255,255,.018)}
-.archive-door h2{margin:5px 0 6px;font-size:clamp(24px,3vw,34px)}
-.archive-door p{margin:0;max-width:700px;color:var(--muted)}
-.archive-door>a{white-space:nowrap;font-weight:800;color:var(--green)}
 @media(max-width:1000px){.quicknav{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:760px){.quicknav{grid-template-columns:repeat(2,minmax(0,1fr))}.archive-door{align-items:flex-start;flex-direction:column;gap:14px}}
+@media(max-width:760px){.quicknav{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.quicknav{grid-template-columns:1fr}.front-quote{margin-bottom:24px;padding-left:15px}}
