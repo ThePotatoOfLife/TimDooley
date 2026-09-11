@@ -1,0 +1,69 @@
+{
+  "id":"door-handshake-synthetic-identification-test-2026-09-11",
+  "title":"Door/Handshake Calculation — Synthetic Homophily vs Influence Identification Test",
+  "updated":"2026-09-11",
+  "status":"archive-generated synthetic validation of the inference logic; not empirical evidence about real people or networks",
+  "purpose":"Test whether the Door/Handshake temporal-network programme can distinguish genuine network influence from a false contagion signal created by homophilous edge formation and a persistent common environmental shock.",
+  "parent":"knowledge/science/promising-models/door-handshake-joint-edge-contagion-benchmark-2026-09-11.json",
+  "simulation_design":{
+    "nodes":120,
+    "time_steps":80,
+    "replicates_per_scenario":20,
+    "network":"Undirected homophilous network. Each node has a continuous trait h_i; connection probability decreases with |h_i-h_j|. The realized benchmark network had mean degree about 12.",
+    "common_shock":"AR(1) process c_t=0.8 c_(t-1)+epsilon_t with Gaussian innovations, creating temporally persistent shared exposure.",
+    "node_state":"Binary y_i(t).",
+    "network_exposure":"E_i(t-1)=fraction of i's neighbors active at the previous time step.",
+    "transition_model":"logit P[y_i(t)=1] = -2 + 1.2 y_i(t-1) + 0.7 h_i + 0.9 c_t + alpha E_i(t-1).",
+    "scenarios":["S0: alpha=0, no true network influence","S1: alpha=0.8, genuine incremental network influence"]
+  },
+  "estimators":{
+    "naive":"Logistic/GLM state model using exposure E_i(t-1) and previous state y_i(t-1), while omitting the homophily-driving trait and common shock.",
+    "controlled":"Same model plus h_i and c_t.",
+    "target":"Coefficient of network exposure alpha.",
+    "warning":"This is a deliberately simple smoke test. Standard GLM p-values do not fully account for all dependence induced by a network panel and should not be treated as a finished inferential method. The primary diagnostic here is recovery/bias across repeated known-ground-truth simulations."
+  },
+  "results_20_replicates":{
+    "true_alpha_0":{
+      "naive_mean_alpha_hat":2.4083,
+      "naive_sd":0.3391,
+      "naive_fraction_p_lt_0_05":1.0,
+      "controlled_mean_alpha_hat":-0.0319,
+      "controlled_sd":0.1564,
+      "controlled_fraction_p_lt_0_05":0.0,
+      "finding":"Homophily plus the persistent common shock produced an extremely strong false contagion signal when those causes were omitted. Adding the variables that generated selection/common exposure removed the spurious influence estimate."
+    },
+    "true_alpha_0_8":{
+      "naive_mean_alpha_hat":2.9134,
+      "naive_sd":0.1831,
+      "naive_fraction_p_lt_0_05":1.0,
+      "controlled_mean_alpha_hat":0.7509,
+      "controlled_sd":0.1072,
+      "controlled_fraction_p_lt_0_05":1.0,
+      "finding":"When genuine influence was present, the controlled model recovered an exposure coefficient close to the true value while the naive model remained severely upward biased."
+    }
+  },
+  "scientific_interpretation":{
+    "core_result":"A Handshake/contagion model can appear strongly confirmed even when true influence is exactly zero if relationship selection and common environmental drivers are not modeled.",
+    "project_value":"The model's serious contribution is therefore not the claim that relational influence exists everywhere; it is a framework for asking whether a measured network effect survives explicit selection/common-cause controls.",
+    "door_translation":"Edge formation is one Door process and state transition is another. Estimating propagation without modeling the edge-generating Door can manufacture a false influence story.",
+    "negative_result_value":"If a real-data influence coefficient collapses after better selection/common-source controls, that is a successful scientific use of the model even though the romantic 'contagion' interpretation fails."
+  },
+  "next_validation_steps":[
+    "Repeat over a much broader grid of homophily strength, common-shock persistence, network density and true alpha.",
+    "Use cluster/network-robust uncertainty or a model whose likelihood explicitly represents node/time dependence.",
+    "Fit the edge-formation and state-transition processes jointly rather than treating the generated network as fixed.",
+    "Add unobserved confounding to measure how badly the controlled model degrades when the common cause is not directly measurable.",
+    "Test intervention/natural-experiment estimators where a causal interpretation is intended.",
+    "Only after synthetic calibration, choose a real temporal dataset with independently defined states and edge events."
+  ],
+  "failure_conditions":[
+    "The joint/controlled model cannot recover known alpha across reasonable synthetic regimes.",
+    "Small changes in network density/time resolution reverse the inferred sign or magnitude without a modeled reason.",
+    "Real applications lack variables or design information capable of distinguishing common exposure from interpersonal influence.",
+    "Project labels such as Life/Strife cannot be coded with adequate reliability."
+  ],
+  "external_context":[
+    {"source":"Xu 2020 contagion estimation review","url":"https://spj.science.org/doi/10.1016/j.csbj.2020.06.027","use":"Documents the same core identification problem: observed similarity can arise from contagion, homophily or common social/environmental factors."}
+  ],
+  "connections":["door-handshake-joint-edge-contagion-benchmark-2026-09-11","door-handshake-nonlocal-propagation-model","potato-dynamics-2-toy-model","model-testing-protocol","science-promising-models-wave-011-2026-09-11"]
+}
