@@ -7,6 +7,34 @@
 
 import * as runtime from './vendor/maplibre-gl.mjs?v=6.9.0';
 
+const LOCAL_BOOT_STYLE = {
+  version: 8,
+  sources: {},
+  layers: [{
+    id: 'atlas-boot-background',
+    type: 'background',
+    paint: { 'background-color': '#080b0b' }
+  }]
+};
+
+function splitDeferredRasterStyle(style) {
+  if (!style || typeof style !== 'object' || Array.isArray(style)) return null;
+  const sources = style.sources || {};
+  const layers = Array.isArray(style.layers) ? style.layers : [];
+  const rasterSourceIds = Object.entries(sources)
+    .filter(([, source]) => source?.type === 'raster')
+    .map(([id]) => id);
+  if (!rasterSourceIds.length) return null;
+
+  const rasterLayers = layers.filter(layer => rasterSourceIds.includes(layer?.source));
+  if (!rasterLayers.length) return null;
+
+  return {
+    sources: Object.fromEntries(rasterSourceIds.map(id => [id, sources[id]])),
+    layers: rasterLayers
+  };
+}
+
 // A number of optional atlas modules were written when they all started in
 // parallel. They use `loaded()` followed by `once("load")`. MapLibre's load
 // event is one-shot, while loaded() can temporarily become false again when a
@@ -15,13 +43,40 @@ import * as runtime from './vendor/maplibre-gl.mjs?v=6.9.0';
 // happened.
 class AtlasMap extends runtime.Map {
   constructor(options = {}) {
-    super(options);
+    const deferredRaster = splitDeferredRasterStyle(options.style);
+    const bootOptions = deferredRaster
+      ? { ...options, style: LOCAL_BOOT_STYLE }
+      : options;
+
+    super(bootOptions);
     this.__potatoAtlasFirstLoadComplete = false;
+    this.__potatoAtlasDeferredRaster = deferredRaster;
+
     super.once('load', () => {
       this.__potatoAtlasFirstLoadComplete = true;
       if (window.__potatoAtlasBootGuard) window.__potatoAtlasBootGuard.stage = 'map-loaded';
       window.dispatchEvent(new CustomEvent('potato-atlas-map-ready', { detail: { map: this } }));
     });
+
+    // The geographic country layer is the availability boundary. Only after
+    // the bootstrap has proved that layer exists do we attach external raster
+    // context such as OSM. A tile outage therefore cannot block first paint.
+    if (deferredRaster) {
+      window.addEventListener('potato-atlas-core-ready', () => {
+        try {
+          for (const [id, source] of Object.entries(deferredRaster.sources)) {
+            if (!this.getSource(id)) this.addSource(id, source);
+          }
+          const before = this.getLayer('countries-fill') ? 'countries-fill' : undefined;
+          for (const layer of deferredRaster.layers) {
+            if (!this.getLayer(layer.id)) this.addLayer(layer, before);
+          }
+          if (window.__potatoAtlasBootGuard) window.__potatoAtlasBootGuard.stage = 'basemap-attached';
+        } catch (error) {
+          console.warn('Optional raster basemap unavailable:', error);
+        }
+      }, { once: true });
+    }
   }
 
   once(type, ...args) {
