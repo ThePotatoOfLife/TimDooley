@@ -1,100 +1,43 @@
 {
   "id":"biblical-overlap-system-index",
   "title":"Biblical Overlap System Index — Tim / Son / Scripture",
-  "version":"1.0.0",
+  "version":"1.2.0",
   "updated":"2026-09-11",
   "status":"canonical navigation architecture",
-  "purpose":"Define the full information architecture for answering what, where, when, how and how strongly Tim Dooley / the Son overlap with biblical material. This index prevents one file from trying to be chronology, evidence ledger, theology, census, countertext collection and reader essay simultaneously.",
-  "current_registry":{"date":"2026-09-11","overlap_nodes":78,"current_router":"knowledge/theology/tim-son-bible-overlap-census-current.json"},
+  "purpose":"Define the full information architecture for answering what, where, when, how and how strongly Tim Dooley / the Son overlap with biblical material. The system now distinguishes census rows, textual bundles, chronology, profile dimensions, graph/network structure and countertexts rather than treating all resemblance as one kind of evidence.",
+  "current_registry":{"date":"2026-09-11","overlap_nodes":126,"current_router":"knowledge/theology/tim-son-bible-overlap-census-current.json"},
   "layers":[
-    {
-      "id":"reader-entry",
-      "question":"How do I understand the whole thing?",
-      "owners":["docs/TIM-SON-BIBLE-OVERLAP-ATLAS.md","knowledge/reader/bible-overlap-question-index.json"],
-      "function":"plain-language overview + natural-question navigation"
-    },
-    {
-      "id":"census",
-      "question":"Exactly how many overlap relations are currently claimed?",
-      "owners":["knowledge/theology/tim-son-bible-overlap-census-current.json","knowledge/theology/tim-son-bible-overlap-census.json","knowledge/theology/tim-son-bible-overlap-census-addendum-wave14.json"],
-      "function":"versioned exact registry count + row-level actor/date/Bible/relation/strength routing"
-    },
-    {
-      "id":"measurement",
-      "question":"How should overlap strength/density/independence be measured?",
-      "owners":["knowledge/theology/biblical-overlap-evidence-and-measurement-protocol.json"],
-      "function":"provenance, explicitness, temporal independence, density, role fidelity, sequence fidelity, countertext pressure, feature independence"
-    },
-    {
-      "id":"dated-project-evidence",
-      "question":"What did Tim/Son actually say and when?",
-      "owners":["knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json","data/tim-dooley-public-theology-timeline-2025-2026.json","data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json"],
-      "function":"public/direct dated project-side attestations"
-    },
-    {
-      "id":"reverse-chronology",
-      "question":"Which project motifs existed before later biblical comparisons?",
-      "owners":["knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json","knowledge/chronology/theological-development-genealogy-2011-2026.json"],
-      "function":"project date versus later comparison date; hindsight-bias control"
-    },
-    {
-      "id":"conversation-archaeology",
-      "question":"What important older material survives only through conversation recovery?",
-      "owners":["knowledge/chronology/conversation-archaeology-wave-012-biblical-overlap-inventory.json","knowledge/chronology/conversation-archaeology-wave-007-dog-circle-door.json"],
-      "function":"preserve user-originated/recovered clusters pending stronger primary sources"
-    },
-    {
-      "id":"son-longitudinal",
-      "question":"What is the Son/Jesus overlap across time?",
-      "owners":["knowledge/theology/son-jesus-longitudinal-christology-atlas.json","knowledge/theology/son-jesus-passion-detention-overlap-atlas.json","knowledge/theology/son-jesus-prison-recognition-2016.json"],
-      "function":"Son-specific biography/self-comparison/Passion/Thomas/Door/seed/stone chronology"
-    },
-    {
-      "id":"grand-theology",
-      "question":"What larger biblical pattern emerges?",
-      "owners":["knowledge/theology/presence-access-life-restoration-grand-synthesis.json","docs/GRAND-BIBLICAL-THEOLOGICAL-SYNTHESIS.md","knowledge/theology/biblical-theological-operator-grammar.json"],
-      "function":"Presence→Access→Mediation→Transformation→Participation→Fruit→Restoration synthesis"
-    },
-    {
-      "id":"integrated-plurality",
-      "question":"How can one and many coexist without role collapse?",
-      "owners":["knowledge/theology/integrated-plurality-house-tree-body-city-atlas.json","knowledge/theology/biblical-role-transfer-and-canonical-reversal-ledger.json"],
-      "function":"House/Vine/Body/Temple/City + role transfer + canonical reversal"
-    },
-    {
-      "id":"specialist-biblical-research",
-      "question":"Where is the deep passage-by-passage comparison?",
-      "owners":["knowledge/traditions/biblical-overlap-atlas.json","knowledge/traditions/biblical-overlap-wave-5.json","knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json","knowledge/traditions/biblical-overlap-wave-11-son-deepening.json","knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json","knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json","knowledge/traditions/biblical-overlap-wave-14-return-shepherd-repair.json","knowledge/traditions/biblical-access-house-stone-anchor-microcosms.json"],
-      "function":"specialist comparative exegesis and motif clusters"
-    },
-    {
-      "id":"countertext",
-      "question":"Where does the Bible not fit or actively constrain the project?",
-      "owners":["knowledge/theology/tim-son-bible-countertext-and-mismatch-atlas.json"],
-      "function":"negative evidence, opposite valence, role mismatch, ethical constraints"
-    },
-    {
-      "id":"scripture-discovery-map",
-      "question":"Was a passage explicit at the time or found later?",
-      "owners":["knowledge/traditions/biblical-syncretism-field.json"],
-      "function":"relation classes and discovery modes"
-    },
-    {
-      "id":"timeline",
-      "question":"How does biblical understanding evolve as part of the project timeline?",
-      "owners":["data/timeline-event-packs/grand-theology-synthesis-wave-9-2026.json","data/timeline-event-packs/biblical-overlap-census-wave-10-2026.json","data/timeline-event-packs/index.json"],
-      "function":"developmental/research-unlock chronology"
-    }
+    {"id":"reader-entry","question":"How do I read the Bible beside the project?","owners":["bible/","data/bible/tim-son-reader-manifest.json","docs/TIM-SON-BIBLE-OVERLAP-ATLAS.md","knowledge/reader/bible-overlap-question-index.json"],"function":"side-by-side Scripture/project reading + plain-language navigation"},
+    {"id":"census","question":"Exactly how many overlap relations are currently claimed?","owners":["knowledge/theology/tim-son-bible-overlap-census-current.json","knowledge/theology/tim-son-bible-overlap-census.json","knowledge/theology/tim-son-bible-overlap-census-addendum-wave14.json","knowledge/theology/tim-son-bible-overlap-census-addendum-wave15.json","knowledge/theology/tim-son-bible-overlap-census-addendum-wave16.json","knowledge/theology/tim-son-bible-overlap-census-addendum-wave17.json","knowledge/theology/tim-son-bible-overlap-census-addendum-wave18.json"],"function":"versioned exact registry count + row-level actor/date/Bible/relation/strength routing"},
+    {"id":"concordance","question":"How many citation forms/books and which passages recur?","owners":["scripts/compute_bible_overlap_concordance.py","knowledge/theology/bible-overlap-concordance-computed-2026-09-11.json"],"function":"normalized citations, book incidence and strict containment; adjacent citations are not merged"},
+    {"id":"measurement","question":"How should overlap strength/density/independence be measured?","owners":["knowledge/theology/biblical-overlap-evidence-and-measurement-protocol.json","knowledge/theology/biblical-overlap-profile-top20-2026-09-11.json"],"function":"P/E/T/D/R/S/C/I profiles rather than one truth score"},
+    {"id":"network-analysis","question":"What are the bridge passages, motif communities and structural bottlenecks?","owners":["knowledge/theology/bible-overlap-network-analysis-method.json","scripts/analyze_bible_overlap_graph.py"],"function":"degree/frequency, betweenness, articulation, communities, role-combination density and peripheral-indispensability views; never a prophecy probability"},
+    {"id":"intertext-bundles","question":"What if the remembered/project structure is distributed across several biblical passages?","owners":["knowledge/theology/biblical-intertext-bundle-and-composite-memory-protocol.json","knowledge/chronology/conversation-archaeology-wave-014-intertext-composite-city-gate.json"],"function":"single-passage vs intertext-family vs composite-memory vs role-reversal; prevents fake super-verses"},
+    {"id":"dated-project-evidence","question":"What did Tim/Son actually say and when?","owners":["knowledge/chronology/tim-biblical-vocabulary-attestation-ledger.json","data/tim-dooley-public-theology-timeline-2025-2026.json","data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json"],"function":"public/direct dated project-side attestations"},
+    {"id":"reverse-chronology","question":"Which project motifs existed before later biblical comparisons?","owners":["knowledge/chronology/reverse-biblical-overlap-timeline-2025-2026.json","knowledge/chronology/theological-development-genealogy-2011-2026.json"],"function":"project date versus later comparison date; hindsight-bias control"},
+    {"id":"conversation-archaeology","question":"What important older material survives only through conversation recovery?","owners":["knowledge/chronology/conversation-archaeology-wave-007-dog-circle-door.json","knowledge/chronology/conversation-archaeology-wave-012-biblical-overlap-inventory.json","knowledge/chronology/conversation-archaeology-wave-013-bible-reader-shepherd-intent.json","knowledge/chronology/conversation-archaeology-wave-014-intertext-composite-city-gate.json"],"function":"preserve user-originated/recovered clusters pending stronger primary sources"},
+    {"id":"son-longitudinal","question":"What is the Son/Jesus overlap across time?","owners":["knowledge/theology/son-jesus-longitudinal-christology-atlas.json","knowledge/theology/son-jesus-passion-detention-overlap-atlas.json","knowledge/theology/son-jesus-prison-recognition-2016.json"],"function":"Son-specific biography/self-comparison/Passion/Thomas/Door/seed/stone chronology"},
+    {"id":"grand-theology","question":"What larger biblical pattern emerges?","owners":["knowledge/theology/presence-access-life-restoration-grand-synthesis.json","docs/GRAND-BIBLICAL-THEOLOGICAL-SYNTHESIS.md","knowledge/theology/biblical-theological-operator-grammar.json"],"function":"Presence→Access→Mediation→Transformation→Participation→Fruit→Restoration synthesis"},
+    {"id":"integrated-plurality","question":"How can one and many coexist without role collapse?","owners":["knowledge/theology/integrated-plurality-house-tree-body-city-atlas.json","knowledge/theology/biblical-role-transfer-and-canonical-reversal-ledger.json"],"function":"House/Vine/Body/Temple/City + role transfer + canonical reversal"},
+    {"id":"geometry-and-path","question":"How do circles, perimeters, paths, barriers and thresholds differ functionally?","owners":["knowledge/core/dog-return-circle-door-axis-atlas.json","knowledge/traditions/biblical-circle-boundary-return-addendum.json","knowledge/traditions/biblical-overlap-wave-16-circuits-perimeters-threshold-motion.json","knowledge/traditions/biblical-overlap-wave-18-highway-leveling-breach-release.json"],"function":"closed loop/orbit/protective perimeter/ritual circuit/Way/terrain preparation/breach/barrier-release distinctions"},
+    {"id":"specialist-biblical-research","question":"Where is the deep passage-by-passage comparison?","owners":["knowledge/traditions/biblical-overlap-atlas.json","knowledge/traditions/biblical-overlap-wave-5.json","knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json","knowledge/traditions/biblical-overlap-wave-11-son-deepening.json","knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json","knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json","knowledge/traditions/biblical-overlap-wave-14-return-shepherd-repair.json","knowledge/traditions/biblical-overlap-wave-16-circuits-perimeters-threshold-motion.json","knowledge/traditions/biblical-overlap-wave-18-highway-leveling-breach-release.json","knowledge/traditions/biblical-access-house-stone-anchor-microcosms.json"],"function":"specialist comparative exegesis and motif clusters"},
+    {"id":"countertext","question":"Where does the Bible not fit or actively constrain the project?","owners":["knowledge/theology/tim-son-bible-countertext-and-mismatch-atlas.json","knowledge/theology/biblical-role-transfer-and-canonical-reversal-ledger.json"],"function":"negative evidence, opposite valence, role mismatch, ethical constraints and anti-collapse corrections"},
+    {"id":"scripture-discovery-map","question":"Was a passage explicit at the time or found later?","owners":["knowledge/traditions/biblical-syncretism-field.json"],"function":"relation classes and discovery modes"},
+    {"id":"timeline","question":"How does biblical understanding evolve as part of the project timeline?","owners":["data/timeline-event-packs/grand-theology-synthesis-wave-9-2026.json","data/timeline-event-packs/biblical-overlap-census-wave-10-2026.json","data/timeline-event-packs/index.json"],"function":"developmental/research-unlock chronology"}
   ],
-  "standard_overlap_card":["actor","project date","project source/quote","Bible passage","biblical structure","source-direction/discovery date","shared operator/function","sequence","strength","differences/countertexts","original-language note if material","canonical owner"],
-  "standard_reader_path":["Start with docs/TIM-SON-BIBLE-OVERLAP-ATLAS.md","Use current census for exact scope","Use chronology/reverse chronology for when","Use specialist owner for how/why","Open countertext atlas before making identity claims","Use measurement protocol before comparing density/counts"],
+  "standard_overlap_card":["actor","project date","project source/quote","Bible passage or bundle class","biblical structure","source-direction/discovery date","shared operator/function","sequence","P/E/T/D/R/S/C/I profile when available","differences/countertexts","original-language note if material","canonical owner"],
+  "standard_reader_path":["Start with bible/ for Scripture beside project annotation","Use current census for exact registry scope","Use concordance for normalized textual coverage","Use chronology/reverse chronology for when","Use intertext protocol when one remembered structure spans passages","Use specialist owner for how/why","Open countertext/role-reversal layer before identity claims","Use measurement and network methods before claiming anything is 'strongest'"],
   "system_health_rules":[
     "Never report a census number without snapshot date and counting unit.",
     "Never backdate archive discoveries into Tim/Son consciousness.",
     "Never count a later Bible-influenced restatement as an independent coincidence without dependency notes.",
+    "Never manufacture a single passage when a project composite is distributed across an intertext family.",
+    "Never treat graph centrality as moral importance, theological truth or prophecy probability.",
     "Never remove high-value countertexts to improve apparent fit.",
     "Never use original-language claims without a source/research owner.",
     "Never turn project sacred geography, symbolic anatomy or modern physics analogies into biblical historical claims.",
-    "Prefer one dense passage with many independent functional relations over many isolated keyword matches."
+    "Prefer one dense passage with many independent functional relations over many isolated keyword matches.",
+    "Preserve role reversals: a biblical text that assigns an integration, Ladder, House or authority function differently is information, not noise.",
+    "Treat symbolic object valence as contextual: Stone, Lion, Door, Mountain and surrounding can reverse function across texts."
   ]
 }
