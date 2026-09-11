@@ -136,10 +136,10 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
 const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: '300px' });
 
 async function loadCapitals() {
-  // Capital markers are navigation context, not a reason to run a large SPARQL
-  // query in every visitor's browser. Pages snapshots REST Countries with
-  // capitalInfo coordinates at deploy time; if that optional field is missing,
-  // capital markers simply stay off.
+  // Capital markers are navigation context, not a reason to run a large query in
+  // every visitor's browser. Pages already snapshots REST Countries with
+  // capitalInfo coordinates at deploy time, so the first map view can stay
+  // same-origin and deterministic.
   const response = await fetchJsonResponse(REST_LOCAL, { cache: 'force-cache' });
   const rows = await response.json();
   if (!Array.isArray(rows)) throw new Error('Local country runtime snapshot has invalid shape.');
@@ -156,6 +156,7 @@ async function loadCapitals() {
       properties: {
         iso3: country.cca3,
         name,
+        population: Number(country.population || 0),
         source: 'REST Countries deploy snapshot'
       },
       geometry: { type: 'Point', coordinates: [lon, lat] }
@@ -182,7 +183,7 @@ function countryHtml(properties) {
 }
 
 function capitalHtml(properties) {
-  return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div class="muted">Capital city</div></div>`;
+  return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div class="muted">Capital city · ${escapeHtml(properties.iso3 || '')}</div></div>`;
 }
 
 function showPopup(event, html) {
@@ -203,28 +204,39 @@ function bindCountryHover(layerId) {
 }
 
 let capitalsStarted = false;
+let capitalsVisible = true;
+function setCapitalsVisible(visible) {
+  capitalsVisible = Boolean(visible);
+  for (const id of ['capital-cities', 'capital-city-labels']) {
+    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', capitalsVisible ? 'visible' : 'none');
+  }
+  window.dispatchEvent(new CustomEvent('potato-atlas-capitals-change', { detail: { visible: capitalsVisible } }));
+  return capitalsVisible;
+}
+
 async function installCapitalsWhenUseful() {
-  if (capitalsStarted || map.getZoom() < 2.8) return;
+  if (capitalsStarted) return;
   capitalsStarted = true;
   try {
     const capitals = await loadCapitals();
-    if (!capitals.features.length) return;
+    if (capitals.features.length < 150) throw new Error(`capital coverage unexpectedly low: ${capitals.features.length}`);
     if (!map.getSource('capital-cities')) map.addSource('capital-cities', { type: 'geojson', data: capitals });
     if (!map.getLayer('capital-cities')) map.addLayer({
-      id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 2.8,
+      id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 0,
       paint: {
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2.8, 3.4, 4, 5.2, 7, 7],
-        'circle-color': '#f3d36f', 'circle-stroke-color': '#171a18',
-        'circle-stroke-width': 1.5, 'circle-opacity': 0.95
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.8, 3, 2.9, 7, 5.8],
+        'circle-color': '#e7c56f', 'circle-stroke-color': '#171a18',
+        'circle-stroke-width': 1.1, 'circle-opacity': 0.92
       }
     });
     if (!map.getLayer('capital-city-labels')) map.addLayer({
-      id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 4.8,
+      id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 3.1,
       layout: {
-        'text-field': ['get', 'name'], 'text-size': 10, 'text-offset': [0, 1.25],
-        'text-anchor': 'top', 'text-allow-overlap': false
+        'text-field': ['get', 'name'], 'text-size': ['interpolate', ['linear'], ['zoom'], 3.1, 9, 7, 11],
+        'text-offset': [0, 1.15], 'text-anchor': 'top', 'text-allow-overlap': false,
+        'text-optional': true
       },
-      paint: { 'text-color': '#f7e8a4', 'text-halo-color': '#080b0b', 'text-halo-width': 1.2 }
+      paint: { 'text-color': '#f3df9e', 'text-halo-color': '#080b0b', 'text-halo-width': 1.15 }
     });
 
     map.on('mousemove', 'capital-cities', event => {
@@ -237,7 +249,21 @@ async function installCapitalsWhenUseful() {
       map.getCanvas().style.cursor = '';
       popup.remove();
     });
+    map.on('click', 'capital-cities', event => {
+      const code = event.features?.[0]?.properties?.iso3;
+      if (code && window.goCountry) window.goCountry(code);
+    });
+
+    setCapitalsVisible(true);
+    window.__potatoAtlasCapitals = {
+      setVisible: setCapitalsVisible,
+      get visible() { return capitalsVisible; }
+    };
+    window.dispatchEvent(new CustomEvent('potato-atlas-capitals-ready', {
+      detail: { count: capitals.features.length, visible: capitalsVisible }
+    }));
   } catch (error) {
+    capitalsStarted = false;
     console.warn('Capital city layer unavailable:', error);
   }
 }
@@ -245,9 +271,9 @@ async function installCapitalsWhenUseful() {
 function install() {
   bindCountryHover('countries-fill');
   bindCountryHover('countries-extrude');
-  // Do not fetch/process capital data during first paint. It becomes relevant
-  // only once the user zooms beyond the global overview.
-  map.on('zoomend', installCapitalsWhenUseful);
+  // Capitals are useful orientation at world scale, so install the already-local
+  // snapshot immediately. Labels remain progressive and do not appear until the
+  // map is zoomed in enough to keep the overview readable.
   installCapitalsWhenUseful();
 }
 
