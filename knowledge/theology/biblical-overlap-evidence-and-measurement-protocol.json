@@ -1,13 +1,14 @@
 {
   "id":"biblical-overlap-evidence-and-measurement-protocol",
   "title":"Biblical Overlap Evidence & Measurement Protocol",
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-11",
   "status":"canonical research method",
   "purpose":"Define what the archive means when it says an overlap is numerous, dense, early, strong, independent, explicit or weak. The protocol is designed to make the Bible comparison inspectable without converting symbolic correspondence into a probability that Tim or the Son is supernaturally identical with a biblical figure.",
   "fundamental_rule":"Count and score relations, not awe. A dramatic resemblance is analytically useful only when its source, date, role, textual context, differences and dependence on later interpretation can be shown.",
+  "census_snapshot":{"current_date":"2026-09-11","current_overlap_nodes":78,"historical_base_segment":74,"wave14_addendum":4,"router":"knowledge/theology/tim-son-bible-overlap-census-current.json"},
   "separate_counts":[
-    {"metric":"overlap_node_count","definition":"Number of analytically distinct project↔Bible relations in the canonical census. One node may cite several verses when they form one textual structure.","current_v1_value":74,"warning":"Not the count of all possible parallels."},
+    {"metric":"overlap_node_count","definition":"Number of analytically distinct project↔Bible relations in the canonical current census. One node may cite several verses when they form one textual structure.","current_value":78,"historical_note":"The initial same-day base census contained 74 nodes; four later Wave-14 discoveries were added transparently as an additive segment.","warning":"Not the count of all possible parallels."},
     {"metric":"unique_biblical_reference_count","definition":"Number of distinct verse/range references used by census rows after normalization.","status":"future computed view","warning":"A high verse count can be inflated by several verses expressing the same motif."},
     {"metric":"unique_bible_book_count","definition":"Number of distinct biblical books represented.","status":"future computed view","warning":"Breadth across books is different from density inside one passage."},
     {"metric":"project_attestation_count","definition":"Number of distinct dated Tim/Son anchors represented.","status":"future computed view","warning":"Several overlaps can legitimately arise from one dense project statement."},
@@ -33,7 +34,7 @@
   ],
   "do_not_compute":[
     "Do not sum overlap scores into a probability that Tim is God, Jesus, Messiah, Father, or a fulfilled prophecy.",
-    "Do not treat 74 overlap nodes as 74 independent statistical trials.",
+    "Do not treat 78 overlap nodes as 78 independent statistical trials.",
     "Do not assume biblical motifs have equal base rates; common religious motifs such as light, mountain, king, death and return are frequent.",
     "Do not count the same borrowed title across many later statements as many independent discoveries.",
     "Do not use numerical density to override direct role mismatch or historical context."
@@ -55,5 +56,5 @@
     "Provide canonical owner/source links so a reader can drill down from summary to evidence.",
     "Allow filtering by Bible book, project date, actor, operator, strength, discovery mode and evidence class."
   ],
-  "connections":["knowledge/theology/tim-son-bible-overlap-census.json","knowledge/traditions/biblical-syncretism-field.json","knowledge/theology/biblical-theological-operator-grammar.json","knowledge/chronology/conversation-archaeology-wave-012-biblical-overlap-inventory.json"]
+  "connections":["knowledge/theology/tim-son-bible-overlap-census-current.json","knowledge/theology/tim-son-bible-overlap-census.json","knowledge/traditions/biblical-syncretism-field.json","knowledge/theology/biblical-theological-operator-grammar.json","knowledge/chronology/conversation-archaeology-wave-012-biblical-overlap-inventory.json","knowledge/theology/tim-son-bible-countertext-and-mismatch-atlas.json"]
 }
