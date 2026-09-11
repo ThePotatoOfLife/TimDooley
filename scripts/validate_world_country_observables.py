@@ -26,7 +26,7 @@ EXPECTED_METRICS = {
     "net_migration": "SM.POP.NETM",
     "energy_dependence": "EG.IMP.CONS.ZS",
     "fdi_inflow": "BX.KLT.DINV.WD.GD.ZS",
-    "co2_per_capita": "EN.ATM.CO2E.PC",
+    "renewable_electricity": "EG.ELC.RNEW.ZS",
 }
 
 PARITY_FILES = (
@@ -96,7 +96,7 @@ def main() -> int:
         for metric_id in ("population", "gdp"):
             if int(coverage.get(metric_id, 0) or 0) < 150:
                 errors.append(f"D4 {metric_id} coverage fell below 150")
-        for metric_id in ("labor_force_participation", "fertility_rate", "electricity_access", "co2_per_capita"):
+        for metric_id in ("labor_force_participation", "fertility_rate", "electricity_access", "renewable_electricity"):
             if int(coverage.get(metric_id, 0) or 0) < 120:
                 errors.append(f"D4 {metric_id} coverage fell below 120")
 
@@ -122,12 +122,12 @@ def main() -> int:
     metric_js = ROOT / "world-map" / "3d-metric-dimensions.js"
     if observable_js.exists():
         text = observable_js.read_text(encoding="utf-8")
-        for marker in ("atlas-d4-compare", "D6 seed", "labor_force_participation", "electricity_access", "fertility_rate", "co2_per_capita"):
+        for marker in ("atlas-d4-compare", "D6 seed", "labor_force_participation", "electricity_access", "fertility_rate", "renewable_electricity"):
             if marker not in text:
                 errors.append(f"D4 inspector missing integration marker: {marker}")
     if metric_js.exists():
         text = metric_js.read_text(encoding="utf-8")
-        for marker in ("d3-coverage", "d6-change", "labor_force_participation", "electricity_access"):
+        for marker in ("d3-coverage", "d6-change", "labor_force_participation", "electricity_access", "renewable_electricity"):
             if marker not in text:
                 errors.append(f"D4 metric-height module missing integration marker: {marker}")
 
