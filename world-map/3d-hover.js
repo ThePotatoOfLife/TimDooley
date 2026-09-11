@@ -60,6 +60,7 @@ async function fallbackRestCountries() {
       area: null,
       latlng: representativePoint(feature) || [],
       capital: [],
+      capitalInfo: {},
       region: '',
       subregion: '',
       borders: [],
@@ -123,79 +124,34 @@ const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({
 
 const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: '300px' });
 
-function pointFromWkt(wkt) {
-  const match = String(wkt || '').match(/Point\(([-\d.]+)\s+([-\d.]+)\)/i);
-  return match ? [Number(match[1]), Number(match[2])] : null;
-}
-
-function populationObservation(row) {
-  const population = row.population?.value != null ? Number(row.population.value) : null;
-  const rawDate = row.populationDate?.value || null;
-  const timestamp = rawDate ? Date.parse(rawDate) : Number.NaN;
-  return {
-    population: Number.isFinite(population) ? population : null,
-    populationDate: rawDate,
-    populationTimestamp: Number.isFinite(timestamp) ? timestamp : null,
-  };
-}
-
-function preferPopulationObservation(candidate, previous) {
-  if (!previous) return true;
-  const candidateDated = candidate.populationTimestamp != null;
-  const previousDated = previous.populationTimestamp != null;
-  if (candidateDated !== previousDated) return candidateDated;
-  if (candidateDated && candidate.populationTimestamp !== previous.populationTimestamp) {
-    return candidate.populationTimestamp > previous.populationTimestamp;
-  }
-  if (candidate.population != null && previous.population == null) return true;
-  if (candidate.population == null) return false;
-  return candidate.population > previous.population;
-}
-
 async function loadCapitals() {
-  const query = `
-SELECT ?iso3 ?capital ?capitalLabel ?coord ?population ?populationDate WHERE {
-  ?country wdt:P298 ?iso3 ;
-           wdt:P36 ?capital .
-  ?capital wdt:P625 ?coord .
-  OPTIONAL {
-    ?capital p:P1082 ?populationStatement .
-    ?populationStatement ps:P1082 ?population .
-    OPTIONAL { ?populationStatement pq:P585 ?populationDate . }
-  }
-  SERVICE wikibase:label { bd:serviceParam wikibase:language "en". }
-}`;
-  const url = 'https://query.wikidata.org/sparql?format=json&query=' + encodeURIComponent(query);
-  const response = await nativeFetch(url, { headers: { Accept: 'application/sparql-results+json' } });
-  if (!response.ok) throw new Error(`Wikidata capitals: ${response.status}`);
-  const data = await response.json();
+  // Capital markers are navigation context, not a reason to run a large SPARQL
+  // query in every visitor's browser. Pages snapshots REST Countries with
+  // capitalInfo coordinates at deploy time; if that optional field is missing,
+  // capital markers simply stay off.
+  const response = await fetchJsonResponse(REST_LOCAL, { cache: 'force-cache' });
+  const rows = await response.json();
+  if (!Array.isArray(rows)) throw new Error('Local country runtime snapshot has invalid shape.');
 
-  const byKey = new Map();
-  for (const row of data.results?.bindings || []) {
-    const iso3 = row.iso3?.value;
-    const name = row.capitalLabel?.value;
-    const coordinates = pointFromWkt(row.coord?.value);
-    if (!iso3 || !name || !coordinates) continue;
-    const observation = populationObservation(row);
-    const key = `${iso3}|${row.capital?.value || name}`;
-    const previous = byKey.get(key);
-    const candidate = { iso3, name, coordinates, ...observation };
-    if (preferPopulationObservation(candidate, previous)) byKey.set(key, candidate);
-  }
-
-  return {
-    type: 'FeatureCollection',
-    features: [...byKey.values()].map(city => ({
+  const features = rows.map(country => {
+    const name = country.capital?.[0];
+    const latlng = country.capitalInfo?.latlng;
+    if (!country.cca3 || !name || !Array.isArray(latlng) || latlng.length !== 2) return null;
+    const lat = Number(latlng[0]);
+    const lon = Number(latlng[1]);
+    if (!Number.isFinite(lat) || !Number.isFinite(lon)) return null;
+    return {
       type: 'Feature',
       properties: {
-        iso3: city.iso3,
-        name: city.name,
-        population: city.population,
-        populationDate: city.populationDate,
+        iso3: country.cca3,
+        name,
+        source: 'REST Countries deploy snapshot'
       },
-      geometry: { type: 'Point', coordinates: city.coordinates }
-    }))
-  };
+      geometry: { type: 'Point', coordinates: [lon, lat] }
+    };
+  }).filter(Boolean);
+
+  return { type: 'FeatureCollection', features };
 }
 
 function countryHtml(properties) {
@@ -215,9 +171,7 @@ function countryHtml(properties) {
 }
 
 function capitalHtml(properties) {
-  const year = properties.populationDate ? String(properties.populationDate).slice(0, 4) : '';
-  const dateText = year ? ` <span class="muted">(${escapeHtml(year)})</span>` : '';
-  return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div>Population: ${number(properties.population)}${dateText}</div></div>`;
+  return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div class="muted">Capital city</div></div>`;
 }
 
 function showPopup(event, html) {
@@ -237,22 +191,23 @@ function bindCountryHover(layerId) {
   });
 }
 
-async function install() {
-  bindCountryHover('countries-fill');
-  bindCountryHover('countries-extrude');
-
+let capitalsStarted = false;
+async function installCapitalsWhenUseful() {
+  if (capitalsStarted || map.getZoom() < 2.8) return;
+  capitalsStarted = true;
   try {
     const capitals = await loadCapitals();
-    map.addSource('capital-cities', { type: 'geojson', data: capitals });
-    map.addLayer({
-      id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 1.2,
+    if (!capitals.features.length) return;
+    if (!map.getSource('capital-cities')) map.addSource('capital-cities', { type: 'geojson', data: capitals });
+    if (!map.getLayer('capital-cities')) map.addLayer({
+      id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 2.8,
       paint: {
-        'circle-radius': ['interpolate', ['linear'], ['zoom'], 1.2, 3.4, 4, 5.2, 7, 7],
+        'circle-radius': ['interpolate', ['linear'], ['zoom'], 2.8, 3.4, 4, 5.2, 7, 7],
         'circle-color': '#f3d36f', 'circle-stroke-color': '#171a18',
         'circle-stroke-width': 1.5, 'circle-opacity': 0.95
       }
     });
-    map.addLayer({
+    if (!map.getLayer('capital-city-labels')) map.addLayer({
       id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 4.8,
       layout: {
         'text-field': ['get', 'name'], 'text-size': 10, 'text-offset': [0, 1.25],
@@ -274,6 +229,15 @@ async function install() {
   } catch (error) {
     console.warn('Capital city layer unavailable:', error);
   }
+}
+
+function install() {
+  bindCountryHover('countries-fill');
+  bindCountryHover('countries-extrude');
+  // Do not fetch/process capital data during first paint. It becomes relevant
+  // only once the user zooms beyond the global overview.
+  map.on('zoomend', installCapitalsWhenUseful);
+  installCapitalsWhenUseful();
 }
 
 if (map.loaded()) install();
