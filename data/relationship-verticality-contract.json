@@ -1,6 +1,6 @@
 {
   "id": "relationship-verticality-contract",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "updated": "2026-09-11",
   "status": "active relational projection contract",
   "purpose": "Define how one canonical relationship can appear across factual D4 reality and multiple D1-D11 analytical/project-symbolic projections without duplicating the relationship or turning uncertainty into fact.",
@@ -25,24 +25,7 @@
     "mixed": "Several forms apply.",
     "unknown": "Formality is unresolved."
   },
-  "flow_kinds": [
-    "money",
-    "goods",
-    "energy",
-    "people",
-    "data",
-    "authority",
-    "care",
-    "security",
-    "attention",
-    "obligation",
-    "ownership-control",
-    "knowledge",
-    "cultural-exchange",
-    "symbolic",
-    "mixed",
-    "unknown"
-  ],
+  "flow_kinds": ["money","goods","energy","people","data","authority","care","security","attention","obligation","ownership-control","knowledge","cultural-exchange","symbolic","mixed","unknown"],
   "vertical_roles": {
     "1": "Lock-in, near-terminal closure, relation with no modeled viable exit or revision pathway.",
     "2": "Capture, recurrence, blocked exit, opaque circulation, adversarial orbit or disintegrating feedback.",
@@ -108,8 +91,8 @@
   },
   "relational_height_principle": {
     "meaning": "Height represents the kind or maturity of relational organization being inspected, not social worth, holiness, GDP, military power or moral rank.",
-    "higher_tendencies": ["greater reciprocity", "institutionalization", "interoperability", "shared capability", "generativity", "faithful relay", "integration with preserved agency"],
-    "lower_tendencies": ["blocked exit", "unresolved recurrence", "opacity", "capture", "fragmentation", "compounding unresolved obligation"],
+    "higher_tendencies": ["greater reciprocity","institutionalization","interoperability","shared capability","generativity","faithful relay","integration with preserved agency"],
+    "lower_tendencies": ["blocked exit","unresolved recurrence","opacity","capture","fragmentation","compounding unresolved obligation"],
     "non_monotonic_rule": "The same relation can have high institutional integration and severe asymmetry or harm. Therefore the Atlas must show multiple observables instead of one vertical goodness score."
   },
   "hidden_relation_rules": [
@@ -121,7 +104,7 @@
   ],
   "us_sovereign_debt_example": {
     "status": "modeling example; values must come from dated official/validated datasets before display",
-    "canonical_objects": ["issuer", "Treasury security/instrument", "holder/creditor class", "principal/outstanding stock", "interest obligation", "maturity schedule", "guarantee/legal terms", "time/source"],
+    "canonical_objects": ["issuer","Treasury security/instrument","holder/creditor class","principal/outstanding stock","interest obligation","maturity schedule","guarantee/legal terms","time/source"],
     "projections": {
       "D3": "issuance history, creditor composition history, refinancing path dependence",
       "D4": "actual outstanding instruments, holders, currency, rates, maturity and cash flows",
@@ -140,12 +123,12 @@
     "metric_behavior": "Never collapse reciprocity, institutionalization, asymmetry, recurrence, closure and generativity into one universal relation score."
   },
   "connections": [
-    "data/relationship-layer-blueprint.json",
+    "docs/KINGDOM-ATLAS.md",
+    "data/relationship-axis-projection-matrix.json",
     "data/relational-edge-state.schema.json",
     "data/axis-flow-contract.json",
     "data/axis-operators.json",
     "data/blueprints/finance-debt-blueprint.json",
-    "data/atlas-projection-contract.json",
-    "docs/KINGDOM-ATLAS.md"
+    "data/atlas-projection-contract.json"
   ]
 }
