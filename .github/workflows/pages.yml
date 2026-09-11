@@ -33,6 +33,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Validate repository hygiene
+        run: python scripts/validate_repo_hygiene.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
@@ -128,10 +131,14 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
+      - name: Remove internal archive from Pages artifact
+        run: rm -rf _site/archive && test ! -e _site/archive
+
       - name: Verify canonical reader surface
         shell: bash
         run: |
           set -euxo pipefail
+          test ! -e _site/archive
           test -f _site/index.html
           test -f _site/tim-dooley/index.html
           test -f _site/religion/index.html
