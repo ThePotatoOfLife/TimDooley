@@ -51,6 +51,9 @@ jobs:
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
+      - name: Compile Bible comparator
+        run: python scripts/build_bible_study.py
+
       - name: Compile complete science paper library
         run: python scripts/build_science_catalog.py
 
@@ -161,6 +164,8 @@ jobs:
 
           grep -q 'id="relations-field"' _site/traditions/bible/index.html
           grep -q 'id="search"' _site/traditions/bible/index.html
+          grep -q 'data-static-relation=' _site/traditions/bible/index.html
+          ! grep -q '<!-- BIBLE_RELATIONS_STATIC -->' _site/traditions/bible/index.html
           ! grep -q 'id="orientation"' _site/traditions/bible/index.html
           ! grep -q 'id="story-arcs"' _site/traditions/bible/index.html
           ! grep -q 'id="timic-timeline"' _site/traditions/bible/index.html
@@ -193,6 +198,11 @@ jobs:
           expected = ['tim-dooley/','religion/','philosophy/','science/','world-map/3d.html']
           assert hrefs == expected, (hrefs, expected)
           print('Verified canonical homepage: exactly five reader entrances')
+
+          bible = Path('_site/traditions/bible/index.html').read_text(encoding='utf-8')
+          relation_count = bible.count('data-static-relation=')
+          assert relation_count >= 10, relation_count
+          print(f'Verified Bible comparator: {relation_count} built relation cards')
 
           catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
           papers = catalog.get('papers', [])
