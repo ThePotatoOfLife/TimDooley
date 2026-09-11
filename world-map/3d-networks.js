@@ -6,7 +6,8 @@ const SOURCE_ID = 'empirical-network-countries';
 const FILL_ID = 'empirical-network-fill';
 const LINE_ID = 'empirical-network-line';
 const DEFAULT_VIEW = 'off';
-const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const capabilities = window.__potatoAtlasCapabilities;
+const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[ch]));
 let activeNetwork=DEFAULT_VIEW;
 let historicalSuppressed=false;
 let installedMap=null;
@@ -89,15 +90,17 @@ function applyNetwork(map,registry,id,{writeUrl=true}={}) {
     map.setPaintProperty(FILL_ID,'fill-opacity',opacityFor(id));
   }
   if(writeUrl){const next = new URL(location.href);if (id==='off') next.searchParams.delete('network'); else next.searchParams.set('network',id);history.replaceState(null,'',next);}
+  window.dispatchEvent(new CustomEvent('potato-atlas-network-change',{detail:{network:id,visible}}));
 }
 
+// Hidden compatibility selector. The normal path is Relations -> Institutions & alliances.
 function installControl(map, registry) {
   if (document.getElementById('empiricalNetworkView')) return;
   const field = document.getElementById('axisFieldView');
   const relationType = document.getElementById('relationType');
   const select = document.createElement('select');
   select.id = 'empiricalNetworkView';
-  select.title = 'Observable institutions and regional networks';
+  select.title = 'Compatibility control for empirical institutions and regional networks';
   const order = ['BRICS','NATO','EU','ARCTIC_COUNCIL','NORDIC','SCO','ASEAN','APEC','PACIFIC_ISLANDS_FORUM','SADC','GCC','MERCOSUR'];
   const labels = registry.networks || {};
   select.innerHTML = `<option value="off">Networks · off</option>` + order.filter(id=>labels[id]).map(id=>`<option value="${id}">${esc(labels[id].label)}</option>`).join('');
@@ -108,7 +111,7 @@ function installControl(map, registry) {
   select.value = labels[requested] ? requested : DEFAULT_VIEW;
   activeNetwork=select.value;
   select.addEventListener('change',()=>applyNetwork(map,registry,select.value));
-  applyNetwork(map,registry,select.value);
+  applyNetwork(map,registry,select.value,{writeUrl:false});
 }
 
 function setHistoricalSuppressed(on){
@@ -134,19 +137,61 @@ function installInteractions(map, registry) {
   map.on('mouseleave',FILL_ID,()=>{map.getCanvas().style.cursor='';popup.remove();});
 }
 
+function registerCapabilities(map, registry) {
+  if (!capabilities) return;
+  const order = ['EU','NATO','NORDIC','ARCTIC_COUNCIL','BRICS','SCO','ASEAN','APEC','PACIFIC_ISLANDS_FORUM','SADC','GCC','MERCOSUR'];
+  const ids = [...new Set([...order,...Object.keys(registry.networks || {})])].filter(id=>registry.networks?.[id]);
+  ids.forEach((id,index)=>{
+    const network = registry.networks[id];
+    capabilities.register({
+      id:`relations:institution:${id.toLowerCase()}`,
+      name:network.label || id,
+      zone:'relations',
+      category:'Institutions & alliances',
+      kind:'network',
+      stateSlot:'relationModes',
+      colorFamily:'relations',
+      description:'Observable institutional or regional membership context.',
+      order:index,
+      epistemicLayer:'empirical',
+      timeSupport:{type:'current-snapshot'},
+      availability:()=>historicalSuppressed
+        ? {available:false,reason:'Current membership snapshot is hidden in historical mode until dated membership intervals are available'}
+        : {available:true},
+      activate:()=>{
+        applyNetwork(map,registry,id);
+        queueMicrotask(()=>capabilities.refreshFromProviders());
+        return id;
+      },
+      deactivate:()=>{
+        if(activeNetwork===id)applyNetwork(map,registry,'off');
+        queueMicrotask(()=>capabilities.refreshFromProviders());
+      },
+      getState:()=>({active:activeNetwork===id,network:id}),
+    });
+  });
+}
+
 async function boot() {
   const [dataRes,geoRes] = await Promise.all([fetch(DATA_URL),fetch(GEO_URL)]);
   if (!dataRes.ok || !geoRes.ok) throw new Error('Empirical network data unavailable');
   const [registry,geo] = await Promise.all([dataRes.json(),geoRes.json()]);
   for (let i=0;i<120&&!window.__potatoAtlasMap;i+=1) await new Promise(resolve=>setTimeout(resolve,50));
-  const map = window.__potatoAtlasMap;
-  if (!map) return;
-  if (!map.loaded()) await new Promise(resolve=>map.once('load',resolve));
+  const map=window.__potatoAtlasMap;
+  if(!map)return;
+  if(!map.loaded())await new Promise(resolve=>map.once('load',resolve));
   installedMap=map;installedRegistry=registry;
   addLayers(map,geo,registry);
   installControl(map,registry);
   installInteractions(map,registry);
   const state=window.__potatoAtlasTime?.getState?.();setHistoricalSuppressed(state&&state.mode!=='current');
+  registerCapabilities(map,registry);
+  capabilities?.refreshFromProviders?.();
+  window.__potatoAtlasNetworks={
+    registry,
+    set:id=>applyNetwork(map,registry,registry.networks?.[id]?id:'off'),
+    get active(){return activeNetwork;},
+  };
 }
 window.addEventListener('atlas-time-change',event=>setHistoricalSuppressed(event.detail?.mode!=='current'));
 boot().catch(error=>console.warn('Empirical network enhancement unavailable:',error));
