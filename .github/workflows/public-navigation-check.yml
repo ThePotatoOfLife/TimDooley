@@ -28,5 +28,8 @@ jobs:
       - name: Build public site
         run: python scripts/build_site.py
 
+      - name: Apply public finalization patches
+        run: python scripts/patch_public_ontology.py
+
       - name: Validate public navigation
         run: python scripts/validate_public_navigation.py
