@@ -1,9 +1,9 @@
 // Core-first bootstrap for the 3D World Relational Atlas.
 //
 // The geographic renderer is the availability boundary. The map and lightweight
-// UI become interactive first. Every analytical/enrichment module stays dormant
-// until a user action actually needs it. This prevents post-paint background work
-// from turning a healthy map into "it loaded, then started hanging".
+// semantic navigation become interactive first. Analytical/enrichment modules
+// stay dormant until a user opens the World, Relations, Time or Axis zone (or an
+// older compatibility control requests the same module).
 
 const statusNode = () => document.querySelector('#status');
 const guard = () => window.__potatoAtlasBootGuard;
@@ -32,8 +32,6 @@ function setStatus(message, kind = 'info') {
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-// requestAnimationFrame can be throttled in background tabs. Always retain a
-// timer escape hatch so waiting for paint cannot become a new boot deadlock.
 function nextPaint(maxWaitMs = 160) {
   return new Promise(resolve => {
     let done = false;
@@ -131,26 +129,18 @@ window.__potatoAtlasDiagnostics = {
   modules: {},
 };
 window.__potatoAtlasReady = false;
-// One shared loader keeps diagnostics/deduplication/cache versioning intact even
-// when the UI or another optional module promotes a dormant feature on demand.
 window.__potatoAtlasLoadModule = loadAfterPaint;
 
 try {
   setStatus('Loading core atlas…');
 
-  // 3d-hover owns resilient local-first data routing and imports 3d-app, which
-  // constructs the MapLibre renderer and geographic country layers.
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
 
-  // Semantic registry loads before UI providers so optional modules can declare
-  // where they belong without injecting controls into arbitrary legacy menus.
   await loadAfterPaint('Capability registry', './3d-capability-registry.js');
-
-  // Only the observer-safe UI controller is automatic after core. Pathfinder,
-  // demography, Evidence, Fields, Networks, Time and Axis are all true opt-ins.
   await loadAfterPaint('Progressive UI', './3d-ui.js');
+  await loadAfterPaint('Spatial navigation', './3d-spatial-navigation.js');
   await loadAfterPaint('Selection UI', './3d-selection-ui.js');
 
   setStatus('');
@@ -158,39 +148,42 @@ try {
   window.__potatoAtlasDiagnostics.interactiveMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-interactive'));
 
-  declareDormant('Path finder', './3d-pathfinder.js', 'Trace menu');
-  declareDormant('Entity Trace', './3d-entity-trace.js', 'Trace menu');
-  declareDormant('Relationship inspector', './3d-relation-inspector.js', 'Analyze menu');
+  declareDormant('Path finder', './3d-pathfinder.js', 'Relations zone');
+  declareDormant('Entity Trace', './3d-entity-trace.js', 'Relations zone');
+  declareDormant('Relationship inspector', './3d-relation-inspector.js', 'Relations zone');
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
-  declareDormant('Demography facets', './3d-demography-facets.js', 'Layers menu');
+  declareDormant('Demography facets', './3d-demography-facets.js', 'World zone');
   declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
-  declareDormant('Fields', './3d-fields.js', 'Layers menu');
-  declareDormant('Networks', './3d-networks.js', 'Layers menu');
-  declareDormant('Time', './3d-time.js', 'Time menu');
-  declareDormant('Metric dimensions', './3d-metric-dimensions.js', 'View menu');
-  declareDormant('Axis depth', './3d-axis-depth.js', 'View menu');
-  declareDormant('Axis operators', './3d-axis-operators.js', 'View menu');
-  declareDormant('North Axis', './3d-axis.js', 'Layers or View menu');
+  declareDormant('Fields', './3d-fields.js', 'Axis zone');
+  declareDormant('Networks', './3d-networks.js', 'Relations zone');
+  declareDormant('Time', './3d-time.js', 'Time zone');
+  declareDormant('Metric dimensions', './3d-metric-dimensions.js', 'World zone');
+  declareDormant('Axis depth', './3d-axis-depth.js', 'Axis zone');
+  declareDormant('Axis operators', './3d-axis-operators.js', 'Axis zone');
+  declareDormant('North Axis', './3d-axis.js', 'Axis zone');
 
-  const promoteLayers = async () => {
-    await loadAfterPaint('Demography facets', './3d-demography-facets.js');
-    await loadAfterPaint('Fields', './3d-fields.js');
-    await loadAfterPaint('Networks', './3d-networks.js');
-    await loadAfterPaint('North Axis', './3d-axis.js');
-  };
-  const promoteTrace = async () => {
+  const promoteWorld = async () => {
     await Promise.all([
+      loadAfterPaint('Metric dimensions', './3d-metric-dimensions.js'),
+      loadAfterPaint('Demography facets', './3d-demography-facets.js'),
+    ]);
+  };
+  const promoteRelations = async () => {
+    await Promise.all([
+      loadAfterPaint('Networks', './3d-networks.js'),
       loadAfterPaint('Path finder', './3d-pathfinder.js'),
       loadAfterPaint('Entity Trace', './3d-entity-trace.js'),
       loadAfterPaint('Relationship inspector', './3d-relation-inspector.js'),
     ]);
   };
   const promoteTime = () => loadAfterPaint('Time', './3d-time.js');
-  const promoteView = async () => {
-    await loadAfterPaint('Metric dimensions', './3d-metric-dimensions.js');
-    await loadAfterPaint('Axis depth', './3d-axis-depth.js');
-    await loadAfterPaint('Axis operators', './3d-axis-operators.js');
-    await loadAfterPaint('North Axis', './3d-axis.js');
+  const promoteAxis = async () => {
+    await Promise.all([
+      loadAfterPaint('Fields', './3d-fields.js'),
+      loadAfterPaint('Axis depth', './3d-axis-depth.js'),
+      loadAfterPaint('Axis operators', './3d-axis-operators.js'),
+      loadAfterPaint('North Axis', './3d-axis.js'),
+    ]);
   };
   const promoteInspection = async () => {
     await Promise.all([
@@ -199,6 +192,16 @@ try {
     ]);
   };
 
+  window.addEventListener('potato-atlas-zone-open', event => {
+    const zone = event.detail?.zone;
+    if (zone === 'world') promoteWorld();
+    else if (zone === 'relations') promoteRelations();
+    else if (zone === 'time') promoteTime();
+    else if (zone === 'axis') promoteAxis();
+  });
+
+  // Compatibility controls remain hidden while providers migrate. They trigger
+  // the same semantic promotion functions instead of owning a second UI model.
   const layersMenu = document.getElementById('layersMenu');
   const traceMenu = document.getElementById('traceMenu');
   const timeMenu = document.getElementById('timeMenu');
@@ -207,12 +210,12 @@ try {
   const onLayersToggle = () => {
     if (!layersMenu?.open) return;
     layersMenu.removeEventListener('toggle', onLayersToggle);
-    promoteLayers();
+    Promise.all([promoteWorld(), promoteAxis(), loadAfterPaint('Networks', './3d-networks.js')]);
   };
   const onTraceToggle = () => {
     if (!traceMenu?.open) return;
     traceMenu.removeEventListener('toggle', onTraceToggle);
-    promoteTrace();
+    promoteRelations();
   };
   const onTimeToggle = () => {
     if (!timeMenu?.open) return;
@@ -222,20 +225,17 @@ try {
   const onViewToggle = () => {
     if (!viewMenu?.open) return;
     viewMenu.removeEventListener('toggle', onViewToggle);
-    promoteView();
+    Promise.all([promoteWorld(), promoteAxis()]);
   };
   layersMenu?.addEventListener('toggle', onLayersToggle);
   traceMenu?.addEventListener('toggle', onTraceToggle);
   timeMenu?.addEventListener('toggle', onTimeToggle);
   viewMenu?.addEventListener('toggle', onViewToggle);
 
-  // Restore a bookmarked religion facet without forcing all Layers tools to load.
   if (new URL(location.href).searchParams.get('religion')) {
     loadAfterPaint('Demography facets', './3d-demography-facets.js');
   }
 
-  // Inspector enrichment is attached to an actual country interaction, not to
-  // page load. The core remains idle indefinitely if the user simply explores.
   map.once('click', promoteInspection);
 
   window.__potatoAtlasDiagnostics.bootstrapWiredMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
