@@ -30,6 +30,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Validate repository hygiene
+        run: python scripts/validate_repo_hygiene.py
+
       - name: Validate JavaScript syntax
         run: node --check app/bible-study.js
 
