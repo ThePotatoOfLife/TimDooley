@@ -1,0 +1,78 @@
+{
+  "id": "human-map-identifiability-measurement-invariance-upgrade-2026-09-11",
+  "title": "Human Map Upgrade — Identifiability, Reliability and Measurement Invariance",
+  "updated": "2026-09-11",
+  "status": "archive-generated methodological extension of the Human Map / Nexus of Being framework; statistical measurement model, not a validated consciousness biomarker",
+  "parent": "knowledge/science/great-book-human-map-mathematics-audit.json",
+  "purpose": "Prevent the Human Map latent-state programme from becoming an arbitrary hidden-label system. This upgrade adds explicit identifiability, reliability and measurement-invariance conditions that must be satisfied before a latent state, trait or composite is treated as scientifically interpretable.",
+  "measurement_model": {
+    "generic_form": "y_ist = Lambda_g z_ist + b_g + epsilon_ist, where i indexes subject, s session, t epoch/trial and g condition/group/instrument context",
+    "meaning": "Observed neural, physiological, behavioral and report variables are imperfect indicators of latent state z. Loadings Lambda, intercepts b and noise structure determine what the latent coordinates actually mean.",
+    "warning": "Without constraints, latent axes can rotate, permute or change scale while producing nearly identical likelihood. A named latent dimension is therefore not identified merely because software returns one."
+  },
+  "identifiability_gates": {
+    "emission_separation": "Discrete hidden states must have observably distinguishable emission distributions under the measured channels; otherwise state labels are aliases rather than discoveries.",
+    "transition_information": "A transition matrix cannot be interpreted if temporal sampling is too coarse to resolve transitions or so sparse that multiple transition structures fit equally well.",
+    "scale_orientation": "Continuous latent variables require explicit scale/orientation constraints or anchoring observables so sign and magnitude are reproducible across fits.",
+    "label_switching": "For mixture/HMM/HSMM models, align states across bootstrap folds/subjects by declared emission/transition criteria rather than semantic names assigned after inspection.",
+    "parameter_recovery": "Before real interpretation, generate synthetic data from known parameters and verify that the fitting pipeline recovers the intended state structure over the expected signal-to-noise regime."
+  },
+  "measurement_invariance": {
+    "configural": "The same broad factor/state structure should be supported across subjects, sessions or groups before direct comparisons are made.",
+    "metric": "Comparable loading structure is needed before interpreting equal latent-unit changes as the same construct across contexts.",
+    "scalar": "Comparable intercept/baseline structure is needed before comparing latent means across contexts without bias from measurement shifts.",
+    "partial_invariance": "If only some indicators are stable, comparisons may proceed using an explicitly partial model; do not silently assume full invariance.",
+    "failure_meaning": "Failure of invariance may be scientifically interesting, but it means the same latent label is not measuring the same thing in all groups/sessions."
+  },
+  "reliability_decomposition": {
+    "trait_reliability": "For candidate trait features, quantify between-subject stability relative to within-subject/session variance, for example with an appropriate ICC or hierarchical variance decomposition.",
+    "state_sensitivity": "For candidate state features, require reproducible within-person modulation under repeated instances of the condition while allowing stable between-person offsets.",
+    "measurement_error": "Propagate channel-level measurement uncertainty rather than treating extracted EEG/fMRI/physiology features as exact inputs.",
+    "composite_rule": "A composite score should not include features whose reliability is too low for the intended timescale unless uncertainty is explicitly modeled."
+  },
+  "incremental_validity": {
+    "baseline_models": [
+      "single best spectral/physiological feature",
+      "questionnaire/report-only model",
+      "stationary connectivity model",
+      "simple mixed-effects model using condition and subject"
+    ],
+    "human_map_model": "multichannel hierarchical latent-state/trait model",
+    "success": "The Human Map earns complexity only if it improves held-out prediction, calibration, state decoding, or explanatory compression over simpler baselines with stable results across reasonable preprocessing choices.",
+    "negative_result": "If the multivariate latent model does not beat simpler baselines, retain the measurements but downgrade the unified Human Map interpretation."
+  },
+  "state_trait_factorization": {
+    "model": "z_ist = u_i + v_is + w_ist, where u_i is stable trait structure, v_is session/context deviation, and w_ist fast state variation.",
+    "value": "This prevents a temporary altered state from being mistaken for a permanent trait and prevents stable individual differences from being interpreted as state transitions.",
+    "test": "Estimate the variance contribution of each level and report uncertainty rather than collapsing all variance into one score."
+  },
+  "intervention_logic": {
+    "preferred_contrast": "For a repeated-measures intervention, estimate Delta_z = E[z_post-z_pre | intervention] - E[z_post-z_pre | control] with hierarchical uncertainty.",
+    "causal_boundary": "A latent-state change is not automatically a mechanism. Causal claims require randomization, credible natural experiment, or explicit assumptions and sensitivity analysis.",
+    "phenomenology_link": "A neural latent state should be related to independently measured report/behavior rather than named from neural data alone."
+  },
+  "anti_overfitting_rules": [
+    "Choose the primary latent dimensionality/state count using nested cross-validation, predictive criteria or preregistered theory rather than maximizing interpretive richness.",
+    "Do not select frequency bands, graph thresholds and latent-state number on the same held-out set used for final evaluation.",
+    "Use posterior predictive or residual checks to identify channels the model systematically fails to reproduce.",
+    "Report whether conclusions survive alternative preprocessing/reference/source-reconstruction pipelines where feasible.",
+    "A visually compelling latent trajectory is not evidence unless its recovery and predictive performance are quantified."
+  ],
+  "advancement_gate": {
+    "advance_to_T3_calibrated_if": [
+      "Synthetic parameter/state recovery succeeds over the expected signal-to-noise regime.",
+      "Key indicators show sufficient reliability for the intended state/trait timescale.",
+      "Latent structure is reasonably invariant or explicitly modeled as non-invariant across major comparison groups/sessions.",
+      "The multivariate model outperforms simple baselines on held-out subjects or sessions.",
+      "Latent labels have convergent links to independently defined behavioral/phenomenological outcomes."
+    ],
+    "downgrade_if": "If latent solutions rotate, relabel or change meaning substantially across folds/sessions, classify the Human Map as underidentified rather than forcing a canonical state taxonomy."
+  },
+  "scientific_value": "This upgrade makes the Human Map harder to confirm and therefore more useful. It shifts the central question from 'can many signals be combined?' to 'is there a stable, identifiable latent organization that generalizes across people, sessions and measurement pipelines?'",
+  "connections": [
+    "great-book-human-map-mathematics-audit",
+    "research-2026-09-11-consciousness-metastability-enlightenment",
+    "microtubule-tubulin-consciousness-recovery",
+    "model-testing-protocol"
+  ]
+}
