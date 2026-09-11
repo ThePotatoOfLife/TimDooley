@@ -1,0 +1,50 @@
+{
+  "id": "atlas-entity-trace-contract",
+  "version": "1.0.0",
+  "updated": "2026-09-11",
+  "status": "implemented-one-hop-inspector",
+  "purpose": "Extend country investigation into the normalized global graph without turning nonspatial entities into fake geographic features.",
+  "runtime": "world-map/3d-entity-trace.js",
+  "inputs": [
+    "data/relationships.json",
+    "data/nodes.json",
+    "data/countries/index.json",
+    "data/global-graph-bridge.json"
+  ],
+  "scope": {
+    "root": "currently selected canonical country",
+    "depth": 1,
+    "surface": "Inspector / Trace investigation",
+    "map_drawing": "Only canonical country endpoints may navigate back to Earth geography in this first implementation. Other endpoints remain nonspatial inspector/archive objects."
+  },
+  "time": {
+    "source": "window.__potatoAtlasTime",
+    "rule": "Only valid_from/valid_to are treated as validity intervals. A generic relationship date is provenance/record context and is not silently promoted to valid_from.",
+    "unknown": "Historical views label relationships with unknown validity rather than assuming timelessness."
+  },
+  "evidence": {
+    "display": ["evidence class", "confidence", "recorded date when present"],
+    "rule": "Entity Trace exposes existing classifications; it does not combine them into a single truth score."
+  },
+  "routing": {
+    "rule": "Archive navigation must resolve through data/global-graph-bridge.json or a canonical node/country ID handled by the bridge's declared public reader.",
+    "public_reader": "index.html",
+    "forbidden": "Do not invent standalone entity routes."
+  },
+  "epistemic_boundary": [
+    "Graph adjacency does not imply causation, moral responsibility, political allegiance or geographic proximity.",
+    "Nonspatial concepts are not assigned latitude/longitude merely because they connect to a country.",
+    "Project, comparative, framework and observed relations retain their evidence classes.",
+    "One-hop display is an investigation surface, not a claim of completeness."
+  ],
+  "growth_gate": {
+    "before_multi_hop": [
+      "add evidence-class filtering",
+      "define browser-safe node/edge caps",
+      "honor Time validity in traversal rather than display only",
+      "deduplicate equivalent endpoints through bridge/registry rules",
+      "define spatial-anchor provenance for any non-country map rendering"
+    ],
+    "next": "After those gates, entity BFS may expand to 2–3 hops in a nonspatial graph plane or selectively back onto Earth for honestly geocoded endpoints."
+  }
+}
