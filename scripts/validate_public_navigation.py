@@ -16,7 +16,7 @@ ROOT_BRANCH_PATTERNS = (
 NAV = re.compile(r"<nav\b[^>]*>(.*?)</nav>", re.I | re.S)
 DEEP = re.compile(r'<div\b[^>]*class=["\'][^"\']*\bdeep\b[^"\']*["\'][^>]*>(.*?)</div>', re.I | re.S)
 HREF = re.compile(r'''href=["']([^"']+)["']''', re.I)
-LEGACY_NAV_LABELS = (">Timeline</a>", ">Corporium</a>", ">Source authority</a>", ">Tim dossier</a>")
+LEGACY_NAV_LABELS = (">Corporium</a>", ">Source authority</a>", ">Tim dossier</a>")
 
 
 def duplicate_hrefs(fragment: str) -> list[str]:
