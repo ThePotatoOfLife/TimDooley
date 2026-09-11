@@ -24,8 +24,7 @@ jobs:
         run: |
           python scripts/patch_atlas_selection_layers.py
           python scripts/patch_atlas_module_groups.py
-          # The permanent Pages workflow must remain untouched by this temporary
-          # branch runner. The final capital layer is checked into data/ instead.
+          python scripts/patch_atlas_final_polish.py
           git checkout -- .github/workflows/pages.yml
 
       - name: Build pinned local capital layer
@@ -38,9 +37,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-
-          source = Path('/tmp/natural-earth-capitals.geojson')
-          payload = json.loads(source.read_text(encoding='utf-8'))
+          payload = json.loads(Path('/tmp/natural-earth-capitals.geojson').read_text(encoding='utf-8'))
           features = []
           for feature in payload.get('features', []):
               props = feature.get('properties') or {}
@@ -51,21 +48,22 @@ jobs:
               if not code or not isinstance(coords, list) or len(coords) != 2:
                   continue
               features.append({
-                  'type': 'Feature',
-                  'properties': {
-                      'iso3': code,
-                      'name': props.get('name') or props.get('nameascii') or code,
-                      'country': props.get('adm0name') or props.get('sov0name') or '',
-                      'scalerank': int(props.get('scalerank') or 9),
-                      'primary': props.get('adm0cap') == 1,
-                      'source': 'Natural Earth 1:110m populated places (pinned)',
+                  'type':'Feature',
+                  'properties':{
+                      'iso3':code,
+                      'name':props.get('name') or props.get('nameascii') or code,
+                      'country':props.get('adm0name') or props.get('sov0name') or '',
+                      'scalerank':int(props.get('scalerank') or 9),
+                      'primary':props.get('adm0cap') == 1,
+                      'source':'Natural Earth 1:110m populated places (pinned)',
                   },
-                  'geometry': {'type': 'Point', 'coordinates': [float(coords[0]), float(coords[1])]},
+                  'geometry':{'type':'Point','coordinates':[float(coords[0]),float(coords[1])]},
               })
           assert len(features) >= 150, len(features)
-          out = {'type': 'FeatureCollection', 'name': 'world-capitals', 'features': features}
-          target = Path('data/world-capitals.geo.json')
-          target.write_text(json.dumps(out, separators=(',', ':')), encoding='utf-8')
+          Path('data/world-capitals.geo.json').write_text(
+              json.dumps({'type':'FeatureCollection','name':'world-capitals','features':features}, separators=(',',':')),
+              encoding='utf-8'
+          )
           print(f'Built checked-in capital layer: {len(features)} features')
           PY
 
@@ -101,5 +99,5 @@ jobs:
           git config user.name 'ThePotatoOfLife'
           git config user.email 'thepotatooflife@hotmail.com'
           git add world-map scripts/validate_world_map_3d.py data/world-capitals.geo.json
-          git commit -m 'Group country knowledge orbit for scalable map navigation'
+          git commit -m 'Finish scalable atlas selection and layer polish'
           git push origin HEAD:atlas-selection-layers-20260911
