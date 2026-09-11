@@ -93,9 +93,6 @@ const HUBS = [
   {id:'tim',label:'Tim / Project Canon',keys:[],plane:'project-canon'}
 ];
 
-// The on-map country orbit is intentionally capped to stable knowledge groups.
-// Individual modules remain available in Details; future modules join a group
-// instead of adding another permanent dot around the selected country.
 const MODULE_GROUPS = [
   {id:'society',label:'Society',members:['religion','migration']},
   {id:'state',label:'State',members:['government','security']},
@@ -187,7 +184,8 @@ function updateHud() {
   const m = mode(), r = selected ? by3[selected] : null;
   const graph = selected ? traceGraph(selected) : null;
   $('#camera').textContent = `zoom ${map.getZoom().toFixed(1)} · pitch ${Math.round(map.getPitch())}° · bearing ${Math.round(map.getBearing())}°`;
-  $('#hud').innerHTML = `<b>${title(m)} mode${selected?' · '+esc(r?.name?.common||selected):''}${compareMode?' · compare':''}</b><div class="muted">${compareMode?`${compareCodes.length}/4 countries held · click polygons to add/remove.`:m==='world'?'Polygons and global systems dominate.':m==='regional'?'Country hubs and cross-border relations become primary.':m==='country'?'Selected polygon acts as a data shell; interior modules unfold.':'Real geocoded assets should dominate here; semantic hubs remain navigation-only.'}${selected&&showRelations?` · trace depth ${traceDepth}: ${Math.max(0,(graph?.nodes.length||1)-1)} reachable nodes / ${graph?.edges.length||0} edges.`:''}</div>`;
+  const relationText = selected&&showRelations ? ` · ${traceDepth===1?'immediate relations':`expanded ${traceDepth} levels`}: ${Math.max(0,(graph?.nodes.length||1)-1)} countries / ${graph?.edges.length||0} edges.` : '';
+  $('#hud').innerHTML = `<b>${title(m)} mode${selected?' · '+esc(r?.name?.common||selected):''}${compareMode?' · compare':''}</b><div class="muted">${compareMode?`${compareCodes.length}/4 countries held · click polygons to add/remove.`:m==='world'?'Polygons and global systems dominate.':m==='regional'?'Country hubs and cross-border relations become primary.':m==='country'?'Selected polygon acts as a data shell; interior modules unfold.':'Real geocoded assets should dominate here; semantic hubs remain navigation-only.'}${relationText}</div>`;
 }
 async function loadCanonical(code) {
   if (cache.has(code)) return cache.get(code);
@@ -231,7 +229,7 @@ function compareData() {
   const features=[];
   for (const code of compareCodes) {
     const r=by3[code];
-    if (r?.latlng) features.push({type:'Feature',properties:{iso3:code,name:r.name?.common||code},geometry:{type:'Point',coordinates:[r.latlng[1],r.latlng[0]]}});
+    if (r?.latlng) features.push({type:'Feature',properties:{iso3:code,name:r.name?.common||code},geometry:{type:'Point',coordinates:[r.latlng[1],r.latlng[0]]}}));
   }
   return {type:'FeatureCollection',features};
 }
@@ -279,16 +277,70 @@ function updateUrl(){
   traceDepth!==1?u.searchParams.set('depth',String(traceDepth)):u.searchParams.delete('depth');
   history.replaceState({},'',u);
 }
+function relationDetail(reason='relations') {
+  const graph = selected ? traceGraph(selected) : null;
+  return {
+    reason,
+    visible:showRelations,
+    type:relationType,
+    depth:traceDepth,
+    selected,
+    reachable:selected ? Math.max(0,(graph?.nodes.length||1)-1) : 0,
+    edges:graph?.edges.length || 0,
+    maximumDepth:TRACE_MAX_DEPTH,
+  };
+}
+function emitRelationsChange(reason='relations') {
+  window.dispatchEvent(new CustomEvent('potato-atlas-relations-change',{detail:relationDetail(reason)}));
+}
+function normalizeRelationType(value) {
+  const requested = String(value || 'all');
+  if (requested === 'all') return 'all';
+  const types = new Set((worldCfg.curated_edges || []).flatMap(edge => edge.types || []));
+  return types.has(requested) ? requested : 'all';
+}
+function setRelationsVisible(visible, reason='visibility') {
+  showRelations=Boolean(visible);
+  $('#relations').classList.toggle('active',showRelations);
+  updateSpatial();
+  emitRelationsChange(reason);
+  return relationDetail(reason);
+}
+function setRelationType(value, reason='type') {
+  relationType=normalizeRelationType(value);
+  $('#relationType').value=relationType;
+  updateSpatial();
+  if(compareMode)renderCompare();else if(selected)renderCountry();
+  updateUrl();
+  emitRelationsChange(reason);
+  return relationType;
+}
+function setRelationDepth(value, reason='depth') {
+  traceDepth=Math.max(1,Math.min(TRACE_MAX_DEPTH,Number(value)||1));
+  $('#traceDepth').value=String(traceDepth);
+  updateSpatial();
+  if(selected&&!compareMode)renderCountry();
+  updateUrl();
+  emitRelationsChange(reason);
+  return traceDepth;
+}
+function expand() {
+  return setRelationDepth(Math.min(TRACE_MAX_DEPTH,traceDepth+1),'expand');
+}
+function collapseToImmediate() {
+  return setRelationDepth(1,'collapse');
+}
 async function toggleCompareCountry(code){
   if(compareCodes.includes(code)){compareCodes=compareCodes.filter(x=>x!==code);setState(code,'compare',false)}
   else{if(compareCodes.length>=4){const removed=compareCodes.shift();setState(removed,'compare',false)}compareCodes.push(code);setState(code,'compare',true)}
   selected=code;selectedFeature=featureByCode(code);currentCanonical=await loadCanonical(code);updateSpatial();renderCompare();updateUrl();
+  emitSelectionChange('compare-change');
 }
 async function removeComparedCountry(code){
   if(!compareCodes.includes(code))return;
   compareCodes=compareCodes.filter(x=>x!==code);setState(code,'compare',false);
   if(compareCodes.length){selected=compareCodes.at(-1);selectedFeature=featureByCode(selected);currentCanonical=await loadCanonical(selected)}
-  updateSpatial();renderCompare();updateUrl();
+  updateSpatial();renderCompare();updateUrl();emitSelectionChange('compare-remove');
 }
 async function inspectComparedCountry(code){
   const f=featureByCode(code);if(!f)return;
@@ -325,24 +377,35 @@ window.__potatoAtlasSelection={
   inspect(){window.showOverview?.()},
 };
 window.clearCountrySelection=()=>deselectCountry({keepView:true});
+window.__potatoAtlasRelations={
+  setVisible:setRelationsVisible,
+  setType:setRelationType,
+  getType:()=>relationType,
+  getVisible:()=>showRelations,
+  getDepth:()=>traceDepth,
+  expand,
+  collapseToImmediate,
+  getState:()=>relationDetail('read'),
+};
 function traceRows(code) {
   const graph=traceGraph(code);
   const groups=[];
   for(let level=1;level<=graph.depth;level++){
     const nodes=graph.nodes.filter(n=>n.level===level);
     if(!nodes.length)continue;
-    groups.push(`<div class="trace-level"><b>Hop ${level}</b><span class="pill">${nodes.length} countr${nodes.length===1?'y':'ies'}</span>${nodes.map(n=>{const name=by3[n.code]?.name?.common||n.code;const via=(n.via?.types||[]).slice(0,2).join(' · ')||n.via?.layer||'relation';return `<button class="relation-button" onclick="goCountry('${esc(n.code)}')"><span>${esc(name)}</span><span class="pill">${esc(via)}</span></button>`}).join('')}</div>`);
+    groups.push(`<div class="trace-level"><b>${level===1?'Immediate connections':`Expanded level ${level}`}</b><span class="pill">${nodes.length} countr${nodes.length===1?'y':'ies'}</span>${nodes.map(n=>{const name=by3[n.code]?.name?.common||n.code;const via=(n.via?.types||[]).slice(0,2).join(' · ')||n.via?.layer||'relation';return `<button class="relation-button" onclick="goCountry('${esc(n.code)}')"><span>${esc(name)}</span><span class="pill">${esc(via)}</span></button>`}).join('')}</div>`);
   }
   return {graph, html:groups.join('')};
 }
 function renderCountry(){
   if(!selected||!selectedFeature)return;
-  const code=selected,r=by3[code]||{},idx=index3[code],rels=relationEdgesFor(code),allRels=(worldCfg.curated_edges||[]).filter(e=>e.a===code||e.b===code),modules=HUBS.map(h=>({...h,data:getModule(h,currentCanonical,code)})).filter(h=>h.data),trace=traceRows(code);
-  $('#panel').innerHTML=`<div class="eyebrow">${idx?'Canonical country':'Territory / map polygon'} · ${esc(code)}</div><h1>${esc(idx?.name||r.name?.common||selectedFeature.properties.name||code)}</h1><div>${axisBadges(code).map(x=>`<span class="pill">${esc(x)}</span>`).join('')}</div><div class="actions"><button onclick="fitCountry()">Focus polygon</button><button onclick="fitTrace()">Fit trace</button><button onclick="addCurrentToCompare()">Add to compare</button></div><div class="grid"><div class="metric"><span>Population</span><b>${fmt(r.population)}</b></div><div class="metric"><span>Area km²</span><b>${fmt(r.area)}</b></div><div class="metric"><span>Interior modules</span><b>${modules.length}</b></div><div class="metric"><span>Trace graph</span><b>${Math.max(0,trace.graph.nodes.length-1)} nodes · ${trace.graph.edges.length} edges</b></div></div><div class="card"><b>Data inside this polygon</b>${modules.map(h=>`<div class="row"><button onclick="openModule('${h.id}')">${esc(h.label)}</button> <span class="pill">${esc(h.plane)}</span></div>`).join('')||'<div class="muted">Canonical country record is still sparse.</div>'}</div><div class="card"><b>Trace outward · ${traceDepth} hop${traceDepth===1?'':'s'}</b><div class="muted">Breadth-first traversal follows the current typed relation filter, prevents cycles, and shows each newly reached country at its shortest discovered hop.</div>${trace.html||'<div class="muted">No curated edges match the current relation filter.</div>'}${trace.graph.truncated?'<div class="boundary">Trace hit its browser safety cap. Narrow the relation type or reduce depth.</div>':''}</div><div class="boundary">Interior dots are semantic navigation handles. Trace lines are typed connections, not claims of collective motive, guilt or causation.</div>${idx?`<div class="card"><b>Canonical owner</b><div class="muted">data/countries/${esc(idx.id)}.json</div></div>`:'<div class="card">This polygon is not one of the canonical country records; territory routing still needs its own registry.</div>'}`;
+  const code=selected,r=by3[code]||{},idx=index3[code],modules=HUBS.map(h=>({...h,data:getModule(h,currentCanonical,code)})).filter(h=>h.data),trace=traceRows(code);
+  const expandLabel=traceDepth>=TRACE_MAX_DEPTH?'Maximum expansion reached':traceDepth===1?'Expand connections':'Expand further';
+  $('#panel').innerHTML=`<div class="eyebrow">${idx?'Canonical country':'Territory / map polygon'} · ${esc(code)}</div><h1>${esc(idx?.name||r.name?.common||selectedFeature.properties.name||code)}</h1><div>${axisBadges(code).map(x=>`<span class="pill">${esc(x)}</span>`).join('')}</div><div class="actions"><button onclick="fitCountry()">Focus polygon</button><button onclick="fitTrace()">Fit relations</button><button onclick="addCurrentToCompare()">Add to compare</button>${showRelations?`<button onclick="window.__potatoAtlasRelations.expand()" ${traceDepth>=TRACE_MAX_DEPTH?'disabled':''}>${expandLabel}</button>`:''}</div><div class="grid"><div class="metric"><span>Population</span><b>${fmt(r.population)}</b></div><div class="metric"><span>Area km²</span><b>${fmt(r.area)}</b></div><div class="metric"><span>Interior modules</span><b>${modules.length}</b></div><div class="metric"><span>Relations</span><b>${Math.max(0,trace.graph.nodes.length-1)} countries · ${trace.graph.edges.length} edges</b></div></div><div class="card"><b>Data inside this polygon</b>${modules.map(h=>`<div class="row"><button onclick="openModule('${h.id}')">${esc(h.label)}</button> <span class="pill">${esc(h.plane)}</span></div>`).join('')||'<div class="muted">Canonical country record is still sparse.</div>'}</div>${showRelations?`<div class="card"><b>${traceDepth===1?'Immediate relations':`Relations expanded ${traceDepth} levels`}</b><div class="muted">Expansion follows the current typed relation filter, prevents cycles, and keeps browser-safe caps.</div>${trace.html||'<div class="muted">No curated edges match the current relation filter.</div>'}${trace.graph.truncated?'<div class="boundary">Expansion hit its browser safety cap. Narrow the relation type or reduce expansion.</div>':''}</div>`:''}<div class="boundary">Interior dots are semantic navigation handles. Relation lines are typed connections, not claims of collective motive, guilt or causation.</div>${idx?`<div class="card"><b>Canonical owner</b><div class="muted">data/countries/${esc(idx.id)}.json</div></div>`:'<div class="card">This polygon is not one of the canonical country records; territory routing still needs its own registry.</div>'}`;
 }
 async function renderCompare(){
   const rows=await Promise.all(compareCodes.map(async code=>{const r=by3[code]||{},rec=await loadCanonical(code),modules=HUBS.filter(h=>getModule(h,rec,code)).length,rels=(worldCfg.curated_edges||[]).filter(e=>e.a===code||e.b===code).length;return{code,name:r.name?.common||code,pop:r.population,area:r.area,modules,rels,badges:axisBadges(code)}}));
-  $('#panel').innerHTML=`<div class="eyebrow">Compare mode · ${rows.length}/4</div><h1>Country comparison</h1><p class="muted">Click map countries to add or remove them. Table actions deliberately separate inspection from membership.</p><div class="actions"><button onclick="fitCompare()">Fit comparison</button><button onclick="clearCompare()">Clear</button><button onclick="leaveCompare()">Done</button></div>${rows.length?`<div class="card"><table class="compare-table"><thead><tr><th>Country</th><th>Population</th><th>Area km²</th><th>Modules</th><th>Edges</th></tr></thead><tbody>${rows.map(x=>`<tr><td><b>${esc(x.name)}</b><div><button onclick="inspectComparedCountry('${x.code}')">Inspect</button> <button onclick="removeComparedCountry('${x.code}')">Remove</button></div><div>${x.badges.slice(0,2).map(b=>`<span class="pill">${esc(b)}</span>`).join('')}</div></td><td>${fmt(x.pop)}</td><td>${fmt(x.area)}</td><td>${x.modules}</td><td>${x.rels}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card muted">No countries held yet. Click up to four polygons.</div>'}<div class="boundary">Comparison is descriptive. Population, area, graph degree and project-axis labels encode different quantities; future GDP, debt and energy metrics require harmonized dated sources.</div>`;
+  $('#panel').innerHTML=`<div class="eyebrow">Compare mode · ${rows.length}/4</div><h1>Country comparison</h1><p class="muted">Click map countries to add or remove them. Table actions deliberately separate inspection from membership.</p><div class="actions"><button onclick="fitCompare()">Fit comparison</button><button onclick="clearCompare()">Clear</button><button onclick="leaveCompare()">Done</button></div>${rows.length?`<div class="card"><table class="compare-table"><thead><tr><th>Country</th><th>Population</th><th>Area km²</th><th>Modules</th><th>Edges</th></tr></thead><tbody>${rows.map(x=>`<tr><td><b>${esc(x.name)}</b><div><button onclick="inspectComparedCountry('${x.code}')">Inspect</button> <button onclick="removeComparedCountry('${x.code}')">Remove</button></div><div>${x.badges.slice(0,2).map(b=>`<span class="pill">${esc(b)}</span>`).join('')}</div></td><td>${fmt(x.pop)}</td><td>${fmt(x.area)}</td><td>${x.modules}</td><td>${x.rels}</td></tr>`).join('')}</tbody></table></div>`:'<div class="card muted">No countries held yet. Click up to four polygons.</div>'}<div class="boundary">Comparison is descriptive. Population, area, graph degree and project-axis labels encode different quantities; sourced D4 comparison is enriched separately.</div>`;
 }
 window.openModuleGroup=id=>{if(!selected)return;const group=groupedModules(currentCanonical,selected).find(item=>item.id===id);if(!group)return;$('#panel').innerHTML=`<div class="eyebrow">Country knowledge · ${esc(selected)}</div><h1>${esc(group.label)}</h1><div class="actions"><button onclick="showOverview()">Back to country</button></div><div class="card">${group.modules.map(module=>`<div class="row"><button onclick="openModule('${module.id}')">${esc(module.label)}</button> <span class="pill">${esc(module.plane)}</span></div>`).join('')}</div><div class="boundary">The on-map orbit is grouped navigation only. Detailed modules remain in the inspector so the map does not grow a new node for every future dataset.</div>`};
 window.openModule=id=>{const h=HUBS.find(x=>x.id===id);if(!h||!selected)return;const data=getModule(h,currentCanonical,selected);$('#panel').innerHTML=`<div class="eyebrow">${esc(h.plane)} · ${esc(selected)}</div><h1>${esc(h.label)}</h1><div class="actions"><button onclick="showOverview()">Back to country</button></div><div class="boundary">${h.id==='tim'?'Project-canon material is separate from empirical country data.':h.id==='debt'?'This module is for documented physical/public finance. Tim-claimed karmic amounts remain a separate project ledger.':'This is a semantic data module, not a geographic point.'}</div><div class="card">${readable(data)}</div>`};
@@ -350,12 +413,21 @@ window.showOverview=()=>renderCountry();
 window.fitCountry=()=>selected&&fitCodes([selected]);
 window.fitTrace=()=>{if(!selected)return;const codes=traceGraph(selected).nodes.map(n=>n.code);fitCodes(codes,65)};
 window.fitCompare=()=>compareCodes.length&&fitCodes(compareCodes,70);
-window.clearCompare=()=>{clearCompareStates();compareCodes=[];updateSpatial();renderCompare();updateUrl()};
-window.leaveCompare=()=>{clearCompareStates();compareCodes=[];compareMode=false;$('#compare').classList.remove('active');if(selected){setState(selected,'selected',true);renderCountry()}else resetWorld(false);updateSpatial();updateUrl()};
-window.addCurrentToCompare=async()=>{if(!selected)return;compareMode=true;$('#compare').classList.add('active');if(!compareCodes.includes(selected)){compareCodes.push(selected);setState(selected,'compare',true)}setState(selected,'selected',false);updateSpatial();renderCompare();updateUrl()};
+window.clearCompare=()=>{clearCompareStates();compareCodes=[];updateSpatial();renderCompare();updateUrl();emitSelectionChange('compare-clear')};
+window.leaveCompare=()=>{clearCompareStates();compareCodes=[];compareMode=false;$('#compare').classList.remove('active');if(selected){setState(selected,'selected',true);renderCountry()}else resetWorld(false);updateSpatial();updateUrl();emitSelectionChange('compare-finish')};
+window.addCurrentToCompare=async()=>{if(!selected)return;compareMode=true;$('#compare').classList.add('active');if(!compareCodes.includes(selected)){compareCodes.push(selected);setState(selected,'compare',true)}setState(selected,'selected',false);updateSpatial();renderCompare();updateUrl();emitSelectionChange('compare-start')};
 window.removeComparedCountry=removeComparedCountry;
 window.inspectComparedCountry=inspectComparedCountry;
 window.goCountry=async code=>{const f=featureByCode(code);if(!f)return;if(compareMode){await toggleCompareCountry(code);fitCodes(compareCodes.length?compareCodes:[code]);return}await selectFeature(f,true)};
+window.__potatoAtlasCompare={
+  startWithCurrent:window.addCurrentToCompare,
+  addCountry:toggleCompareCountry,
+  removeCountry:removeComparedCountry,
+  clear:window.clearCompare,
+  finish:window.leaveCompare,
+  getCodes:()=>[...compareCodes],
+  isActive:()=>compareMode,
+};
 
 function addLayers(){
   map.addSource('countries',{type:'geojson',data:geo,promoteId:'iso3'});
@@ -380,7 +452,7 @@ function addLayers(){
   map.addLayer({id:'compare-hubs',type:'circle',source:'compare-hubs',paint:{'circle-radius':8,'circle-color':'#73a7d8','circle-stroke-color':'#eff4eb','circle-stroke-width':2,'circle-opacity':.9}});
 }
 function extrusion(){const v=$('#height').value,extrude=v!=='flat';map.setLayoutProperty('countries-extrude','visibility',extrude?'visible':'none');map.setLayoutProperty('countries-fill','visibility',extrude?'none':'visible');if(v==='population')map.setPaintProperty('countries-extrude','fill-extrusion-height',['*',250000,['sqrt',['/', ['max',['get','population'],1],1000000]]]);if(v==='area')map.setPaintProperty('countries-extrude','fill-extrusion-height',['*',9000,['sqrt',['max',['get','area'],1]]])}
-function clickRelation(e){const f=e.features?.[0];if(!f)return;const p=f.properties,raw=JSON.parse(p.raw),a=by3[p.a]?.name?.common||p.a,b=by3[p.b]?.name?.common||p.b;$('#panel').innerHTML=`<div class="eyebrow">Typed country relation · hop ${p.depth||1}</div><h1>${esc(a)} ↔ ${esc(b)}</h1><div class="pill">${esc(p.types||'relationship')}</div><div class="actions"><button onclick="goCountry('${esc(p.a)}')">Open ${esc(a)}</button><button onclick="goCountry('${esc(p.b)}')">Open ${esc(b)}</button><button onclick="showOverview()">Back to root trace</button></div><div class="card"><b>Layer</b><div>${esc(p.layer||'curated')}</div></div><div class="boundary">A relation line describes a typed connection. It does not assign one motive, identity or responsibility to the population of either country.</div><pre class="json">${esc(JSON.stringify(raw,null,2))}</pre>`}
+function clickRelation(e){const f=e.features?.[0];if(!f)return;const p=f.properties,raw=JSON.parse(p.raw),a=by3[p.a]?.name?.common||p.a,b=by3[p.b]?.name?.common||p.b;$('#panel').innerHTML=`<div class="eyebrow">Typed country relation · level ${p.depth||1}</div><h1>${esc(a)} ↔ ${esc(b)}</h1><div class="pill">${esc(p.types||'relationship')}</div><div class="actions"><button onclick="goCountry('${esc(p.a)}')">Open ${esc(a)}</button><button onclick="goCountry('${esc(p.b)}')">Open ${esc(b)}</button><button onclick="showOverview()">Back to root relations</button></div><div class="card"><b>Layer</b><div>${esc(p.layer||'curated')}</div></div><div class="boundary">A relation line describes a typed connection. It does not assign one motive, identity or responsibility to the population of either country.</div><pre class="json">${esc(JSON.stringify(raw,null,2))}</pre>`}
 function resetWorld(clearCompare=true){deselectCountry({keepView:false,clearCompare})}
 function populateControls(){const dl=$('#country-list');for(const r of [...rest].sort((a,b)=>a.name.common.localeCompare(b.name.common))){const o=document.createElement('option');o.value=`${r.name.common} (${r.cca3})`;dl.appendChild(o)}const types=[...new Set((worldCfg.curated_edges||[]).flatMap(e=>e.types||[]))].sort();for(const t of types){const o=document.createElement('option');o.value=t;o.textContent=title(t);$('#relationType').appendChild(o)}}
 function findCountry(q){q=q.trim().toLowerCase();const code=q.match(/\(([a-z]{3})\)$/i)?.[1]||q;return rest.find(x=>x.cca3?.toLowerCase()===code||x.name?.common?.toLowerCase()===q||x.name?.official?.toLowerCase()===q)||rest.find(x=>x.name?.common?.toLowerCase().includes(q)||x.name?.official?.toLowerCase().includes(q))}
@@ -407,20 +479,20 @@ map.on('load',async()=>{
   if(rel&&[...$('#relationType').options].some(o=>o.value===rel)){relationType=rel;$('#relationType').value=rel}
   if(Number.isInteger(depth)&&depth>=1&&depth<=TRACE_MAX_DEPTH){traceDepth=depth;$('#traceDepth').value=String(depth)}
   const compare=(u.searchParams.get('compare')||'').split(',').map(x=>x.toUpperCase()).filter(x=>featureByCode(x)).slice(0,4);
-  if(compare.length){compareMode=true;$('#compare').classList.add('active');compareCodes=compare;for(const c of compareCodes)setState(c,'compare',true);selected=compareCodes.at(-1);selectedFeature=featureByCode(selected);currentCanonical=await loadCanonical(selected);updateSpatial();renderCompare();fitCodes(compareCodes,70)}
+  if(compare.length){compareMode=true;$('#compare').classList.add('active');compareCodes=compare;for(const c of compareCodes)setState(c,'compare',true);selected=compareCodes.at(-1);selectedFeature=featureByCode(selected);currentCanonical=await loadCanonical(selected);updateSpatial();renderCompare();fitCodes(compareCodes,70);emitSelectionChange('compare-restore')}
   else{const q=u.searchParams.get('country')?.toUpperCase();if(q){const f=featureByCode(q);if(f)await selectFeature(f,true)}}
-  updateHud();
+  updateHud();emitRelationsChange('restore');
 });
 map.on('moveend',updateHud);map.on('zoom',updateHud);map.on('pitch',updateHud);map.on('rotate',updateHud);
 $('#height').onchange=extrusion;
 $('#interior').onclick=()=>{showInterior=!showInterior;$('#interior').classList.toggle('active',showInterior);updateSpatial();if(showInterior&&selected&&map.getZoom()<3.2)fitCodes([selected],78);window.dispatchEvent(new CustomEvent('potato-atlas-interior-change',{detail:{visible:showInterior}}))};
-$('#relations').onclick=()=>{showRelations=!showRelations;$('#relations').classList.toggle('active',showRelations);updateSpatial();window.dispatchEvent(new CustomEvent('potato-atlas-relations-change',{detail:{visible:showRelations}}))};
-$('#relationType').onchange=e=>{relationType=e.target.value;updateSpatial();if(compareMode)renderCompare();else if(selected)renderCountry();updateUrl()};
-$('#traceDepth').onchange=e=>{traceDepth=Math.max(1,Math.min(TRACE_MAX_DEPTH,Number(e.target.value)||1));updateSpatial();if(selected&&!compareMode)renderCountry();updateUrl()};
+$('#relations').onclick=()=>setRelationsVisible(!showRelations,'compatibility-toggle');
+$('#relationType').onchange=e=>setRelationType(e.target.value,'compatibility-type');
+$('#traceDepth').onchange=e=>setRelationDepth(e.target.value,'compatibility-depth');
 $('#fit').onclick=()=>compareMode?window.fitCompare():selected&&traceDepth>1?window.fitTrace():window.fitCountry();
-$('#compare').onclick=()=>{if(compareMode){window.leaveCompare();return}compareMode=true;$('#compare').classList.add('active');if(selected&&!compareCodes.includes(selected)){compareCodes.push(selected);setState(selected,'compare',true);setState(selected,'selected',false)}updateSpatial();renderCompare();updateUrl()};
+$('#compare').onclick=()=>{if(compareMode){window.leaveCompare();return}window.addCurrentToCompare()};
 $('#tilt').onclick=()=>map.easeTo({pitch:map.getPitch()>20?0:55,duration:500});
 $('#globe').onclick=()=>{globe=!globe;try{map.setProjection({type:globe?'globe':'mercator'});$('#globe').classList.toggle('active',globe)}catch(e){console.warn(e)}};
 $('#world').onclick=()=>resetWorld(true);
 $('#search').addEventListener('keydown',async e=>{if(e.key!=='Enter')return;const r=findCountry(e.target.value);if(!r)return;const f=featureByCode(r.cca3);if(f){if(compareMode)await toggleCompareCountry(r.cca3);else await selectFeature(f,true)}});
-document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement?.tagName!=='INPUT'){e.preventDefault();$('#search').focus();$('#search').select()}else if(e.key==='Escape'){if(compareMode)window.leaveCompare();else resetWorld(true)}else if((e.key==='c'||e.key==='C')&&document.activeElement?.tagName!=='INPUT')$('#compare').click()});
+document.addEventListener('keydown',e=>{if(e.key==='/'&&document.activeElement?.tagName!=='INPUT'){e.preventDefault();$('#search').focus();$('#search').select()}else if(e.key==='Escape'){if(compareMode)window.leaveCompare();else resetWorld(true)}else if((e.key==='c'||e.key==='C')&&document.activeElement?.tagName!=='INPUT')window.addCurrentToCompare()});
