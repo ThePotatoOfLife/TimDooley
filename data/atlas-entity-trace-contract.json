@@ -1,6 +1,6 @@
 {
   "id": "atlas-entity-trace-contract",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-11",
   "status": "implemented-one-hop-inspector",
   "purpose": "Extend country investigation into the normalized global graph without turning nonspatial entities into fake geographic features.",
@@ -24,7 +24,9 @@
   },
   "evidence": {
     "display": ["evidence class", "confidence", "recorded date when present"],
-    "rule": "Entity Trace exposes existing classifications; it does not combine them into a single truth score."
+    "filters": ["evidence class", "confidence"],
+    "filter_source": "Distinct values are derived from the normalized relationship graph rather than hard-coded as if the vocabulary were fixed.",
+    "rule": "Entity Trace exposes and filters existing classifications; it does not combine them into a single truth score."
   },
   "routing": {
     "rule": "Archive navigation must resolve through data/global-graph-bridge.json or a canonical node/country ID handled by the bridge's declared public reader.",
@@ -35,11 +37,16 @@
     "Graph adjacency does not imply causation, moral responsibility, political allegiance or geographic proximity.",
     "Nonspatial concepts are not assigned latitude/longitude merely because they connect to a country.",
     "Project, comparative, framework and observed relations retain their evidence classes.",
+    "Confidence describes evidence quality, not truth itself.",
     "One-hop display is an investigation surface, not a claim of completeness."
   ],
   "growth_gate": {
-    "before_multi_hop": [
+    "completed": [
       "add evidence-class filtering",
+      "add confidence filtering",
+      "route archive endpoints through bridge/public-reader rules"
+    ],
+    "before_multi_hop": [
       "define browser-safe node/edge caps",
       "honor Time validity in traversal rather than display only",
       "deduplicate equivalent endpoints through bridge/registry rules",
