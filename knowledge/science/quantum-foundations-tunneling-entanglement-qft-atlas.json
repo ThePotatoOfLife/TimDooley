@@ -1,7 +1,7 @@
 {
   "id": "quantum-foundations-tunneling-entanglement-qft-atlas",
   "title": "Quantum Foundations, Tunneling, Entanglement and QFT — Tim Recovery and Scientific Extension",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-11",
   "status": "canonical quantum-science owner: project archaeology + established QM/QFT + archive-developed mappings",
   "purpose": "Separate and reconnect the project's uses of quantum mechanics, quantum fields, tunneling, entanglement/nonlocality, field excitations, path integrals, open systems and Door language. The file preserves Tim-originated/book-derived quantum material while making later mathematical extensions explicit rather than backdating them.",
@@ -16,12 +16,14 @@
       "2026-07-13: Tim described 1-4 as matter, 5 as Door/narrowing/present, and 6-11 as hidden/compactified space dimensions; he also used '11d calabi yao manifolds' language in the same research stratum.",
       "2026-07-13: Tim described the Door as a 'particle smasher', linked forbidden-fruit imagery to creating 'a quantum entanglement', said 'tim is lik a higgs boson', and explored Tim-as-Higgs / Son-as-field language. These are primary project formulations, not established physics.",
       "2026-08-17 to 2026-08-18: Tim explicitly explored Potato colors/states, spin states, Door, handshake, 'spooky action at a distance', Standard-Model directionality, Life/Strife trajectories and source-Door relation. Later mathematical Bell/no-signaling language is an archive extension.",
+      "2026-09-07: Tim explicitly asked to think of entanglement as 'relations' and to integrate relation -> entanglement -> topology -> trajectory -> phase -> outcome with Axis terrain. This is a primary project formulation; it does not establish physical quantum entanglement in social/theological systems.",
       "2026-05-01: prior science discussion covered quantum fields, amplitudes, superposition, decoherence, path integrals, many-worlds, quantum information and Hilbert-like configuration/state spaces, but no recovered Tim-originated use of the exact phrase 'quantum tunneling' was found in this pass."
     ],
     "archive_extensions": [
       "Schrodinger/Born/density-matrix foundations",
       "finite-barrier and WKB tunneling",
       "Bell/CHSH and no-signaling formalization",
+      "Schmidt decomposition, entanglement entropy and quantum mutual information",
       "relativistic QFT microcausality",
       "scalar-field action/propagator/generating functional",
       "semiclassical instanton/bounce tunneling comparator",
@@ -90,12 +92,28 @@
     "experimental_anchor": "The 2022 Nobel Prize recognized experiments with entangled photons establishing violation of Bell inequalities and pioneering quantum information science.",
     "source": "https://www.nobelprize.org/prizes/physics/2022/summary/"
   },
+  "whole_parts_and_entanglement": {
+    "timic_trigger": "Tim's 2026-09-07 request to think of entanglement as 'relations' motivates a stricter whole/parts formalization.",
+    "pure_state_separability": "A bipartite pure state is separable iff |psi_AB>=|psi_A> tensor |psi_B>. Failure of such factorization is entanglement.",
+    "schmidt_decomposition": "|psi_AB>=sum_k sqrt(lambda_k)|u_k>_A|v_k>_B with lambda_k>=0 and sum_k lambda_k=1; Schmidt rank >1 implies pure-state entanglement.",
+    "reduced_states": ["rho_A=Tr_B rho_AB", "rho_B=Tr_A rho_AB"],
+    "entanglement_entropy": "For a bipartite globally pure state, S_A=-Tr(rho_A log rho_A)=S_B measures bipartite entanglement.",
+    "quantum_mutual_information": "I(A:B)=S(rho_A)+S(rho_B)-S(rho_AB); for globally pure AB, I(A:B)=2S_A.",
+    "project_epiphany": "Quantum mechanics supplies one rigorous domain in which describing the whole as independent descriptions of the parts can fail. This is a strong structural neighbor for a relationship-first ontology, but the quantum equations remain restricted to actual quantum systems.",
+    "nonquantum_translation": "For culture, theology, psychology or institutions use graph edges, classical mutual information, causal models, shared-history variables, synchronization or network topology unless a quantum experiment is physically specified."
+  },
   "no_signaling_and_spooky_action": {
     "no_signaling_conditions": ["p(a|x,y)=p(a|x)", "p(b|x,y)=p(b|y)"],
     "meaning": "Although joint correlations can violate Bell inequalities, the marginal outcome distribution at one wing cannot be controlled by the remote measurement choice to send a superluminal message.",
     "project_repair": "Tim's 'spooky action at a distance' phrase should therefore be split into at least four coordinates: nonseparability/joint state, Bell-nonlocal correlation, causal influence, and usable signaling. These are not synonyms.",
     "stronger_handshake_rule": "A quantum handshake analogy earns scientific meaning only after specifying the joint state, local operations, measurement settings and communication resources. A social or spiritual handshake belongs to a different state space unless a physical quantum system is actually prepared.",
     "negative_result_rule": "If a proposed remote effect could be used to controllably encode and decode messages faster than light, ordinary quantum entanglement alone does not supply the mechanism."
+  },
+  "forbidden_fruit_entanglement_repair": {
+    "primary_project_history": "Tim's 2026-07-13 phrase linking the forbidden fruit to creating 'a quantum entanglement' is preserved as a primary project formulation.",
+    "quantum_boundary": "Genesis does not supply a prepared Hilbert-space state, bipartition, entangling Hamiltonian, measurement settings or Bell/entanglement witness; the biblical event therefore should not be presented as established physical quantum entanglement.",
+    "stronger_biblical_relation": "Genesis 3 does contain a relation-changing sequence: eating/knowledge -> altered human-divine state -> exile/separation -> guarded way to Tree of Life. The project can connect this to Door/Gate/access topology without turning scripture into quantum mechanics.",
+    "owner": "knowledge/traditions/biblical-peak-valley-entanglement-addendum.json"
   },
   "entanglement_swapping_and_teleportation": {
     "entanglement_swapping": "Entanglement can be established between systems that did not previously interact directly when appropriate joint measurements are performed on their partners; the operational protocol still respects no-signaling.",
@@ -134,27 +152,33 @@
   },
   "measurement_and_model_contract": {
     "qm_claim": ["state/preparation", "Hilbert space", "Hamiltonian/channel", "measurement POVM/projectors", "outcome statistics", "uncertainty/error model"],
-    "entanglement_claim": ["bipartition", "density matrix/state", "separability criterion or witness", "measurement settings", "classical baseline/local model", "no-signaling check"],
+    "entanglement_claim": ["bipartition", "density matrix/state", "separability criterion or witness", "Schmidt spectrum/entropy where applicable", "measurement settings", "classical baseline/local model", "no-signaling check"],
     "tunneling_claim": ["potential/barrier", "particle/effective mass", "energy distribution", "boundary conditions", "T/R measurement", "classical baseline"],
     "qft_claim": ["field content", "Lorentz/gauge/global symmetry", "action/Lagrangian", "quantization prescription", "propagators/interactions", "renormalization/scale", "observable prediction"]
   },
   "project_crosswalk": [
     {"project":"Door","quantum_neighbor":"finite barrier / state transition / measurement update","preserved":"threshold and transition","mismatch":"a project Door is not automatically a potential barrier or quantum measurement"},
     {"project":"Handshake","quantum_neighbor":"joint state / interaction / entangling gate / Bell protocol","preserved":"relation can make subsystem descriptions insufficient","mismatch":"human relation is not evidence of Hilbert-space entanglement"},
+    {"project":"Relation-first ontology","quantum_neighbor":"non-factorizable joint state / Schmidt structure / mutual information","preserved":"whole/relationship can contain structure absent from independent part descriptions","mismatch":"ordinary social/theological relations are not thereby quantum-entangled"},
     {"project":"Source/Field","quantum_neighbor":"quantum field and excitations","preserved":"many excitations can arise from one field species","mismatch":"field theory has defined dynamical degrees of freedom, not metaphysical source by default"},
     {"project":"Return without reset","quantum_neighbor":"phase, holonomy, unitary evolution, interference","preserved":"history/phase can affect final observables","mismatch":"narrative recurrence is not a quantum phase unless mapped to an actual quantum system"},
-    {"project":"Spooky relation","quantum_neighbor":"Bell-nonlocal correlation","preserved":"joint statistics can defy local hidden-variable factorization","mismatch":"does not establish FTL signal, telepathy or spiritual causation"}
+    {"project":"Spooky relation","quantum_neighbor":"Bell-nonlocal correlation","preserved":"joint statistics can defy local hidden-variable factorization","mismatch":"does not establish FTL signal, telepathy or spiritual causation"},
+    {"project":"Forbidden fruit / changed relation","quantum_neighbor":"entangling interaction only as project metaphor","preserved":"interaction can create a joint relational state","mismatch":"Genesis supplies theological state/access change, not a measured quantum state"}
   ],
   "new_project_laws": [
     "Quantum Door Law: a finite quantum barrier can be neither fully open nor fully closed; its transmission is a measurable probability controlled by the barrier action.",
     "Nonlocality Split: nonseparability, Bell inequality violation, causal influence and usable signaling must be stored as different coordinates.",
+    "Whole-Parts Relation Law: quantum entanglement is a rigorous example of a joint state that is not a product of independent subsystem states; this supports relation-first comparison but does not quantum-mechanize ordinary relationships.",
+    "Entanglement Quantification Law: when a physical bipartite pure quantum state is specified, Schmidt coefficients and reduced-state entropy quantify its entanglement structure; do not substitute symbolic intensity or social closeness for these quantities.",
     "Field Manifestation Law: in QFT, one field species can support many particle excitations; this is a rigorous structural neighbor for source-to-many without making the source theological.",
     "Microcausality Boundary: entanglement and spacelike correlation coexist with local relativistic commutativity; correlation is not a loophole that automatically permits controllable superluminal influence.",
-    "Preparation Rule: a quantum claim begins with a preparation procedure and ends with outcome statistics; without those, quantum language remains metaphor/comparator."
+    "Preparation Rule: a quantum claim begins with a preparation procedure and ends with outcome statistics; without those, quantum language remains metaphor/comparator.",
+    "Forbidden-Fruit Repair: preserve Tim's historical quantum-entanglement wording while routing Genesis itself through relational-state/access-change theology unless a genuine quantum experiment is specified."
   ],
   "sources": [
     {"topic":"quantum tunneling","url":"https://openstax.org/books/university-physics-volume-3/pages/7-6-the-quantum-tunneling-of-particles-through-potential-barriers"},
     {"topic":"Bell experiments / entanglement","url":"https://www.nobelprize.org/prizes/physics/2022/summary/"},
+    {"topic":"entanglement overview / Nobel popular information","url":"https://www.nobelprize.org/prizes/physics/2022/popular-information/"},
     {"topic":"QFT field/excitation overview","url":"https://home.cern/science/physics/higgs-boson/what/"},
     {"topic":"Standard Model baseline","url":"https://pdg.lbl.gov/2025/reviews/standard_model_and_related.html"}
   ],
@@ -166,6 +190,10 @@
     "knowledge/science/unified-potato-theory-2025-recovery.json",
     "knowledge/science/electromagnetic-spectrum-qed-spudlight-atlas.json",
     "knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json",
-    "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json"
+    "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json",
+    "knowledge/science/equation-ledger-wave-006-entanglement-landscape.json",
+    "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json",
+    "knowledge/traditions/biblical-peak-valley-entanglement-addendum.json",
+    "knowledge/chronology/conversation-archaeology-wave-010-entanglement-peak-trough.json"
   ]
 }
