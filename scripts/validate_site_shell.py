@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Validate the built GitHub Pages shell and reader-first information architecture.
 
-Deep Atlas behavior has dedicated validators. This gate protects the public
+World Map behavior has dedicated validators. This gate protects the public
 reader surface: one homepage, five canonical entrances, comparison-first
 religion, one shared timeline, North -> World Map routing, and basic built-site
 link integrity.
@@ -20,7 +20,7 @@ CANONICAL_HOME_LINKS = (
     "religion/",
     "philosophy/",
     "science/",
-    "world-map/3d.html",
+    "world-map/",
 )
 
 TIMELINE_QUERY = (
@@ -69,6 +69,7 @@ def main() -> int:
             "philosophy/index.html",
             "science/index.html",
             "north/index.html",
+            "world-map/index.html",
             "world-map/3d.html",
             "sitemap.xml",
             "llms.txt",
@@ -152,14 +153,18 @@ def main() -> int:
         )
 
         north = read("north/index.html", errors)
-        require(north, ('class="map-action" href="../world-map/3d.html"', ">WORLD MAP<"), "north/index.html", errors)
+        require(north, ('class="map-action" href="../world-map/"', ">WORLD MAP<"), "north/index.html", errors)
         forbid(north, ('class="maplink"', "Open North Axis in the World Map", "#architecture", "#ledger", "#world", "#traditions", "#timeline"), "north/index.html", errors)
 
         learn = read("learn/index.html", errors)
         require(learn, ('name="robots" content="noindex,follow"', "location.replace('../')"), "learn/index.html", errors)
 
-        atlas = read("world-map/3d.html", errors)
-        require(atlas, ("World Relational Atlas", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'), "world-map/3d.html", errors)
+        world_map = read("world-map/index.html", errors)
+        require(world_map, ("World Map", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'), "world-map/index.html", errors)
+
+        legacy_map = read("world-map/3d.html", errors)
+        require(legacy_map, ('name="robots" content="noindex,follow"', 'href="./"'), "world-map/3d.html", errors)
+        forbid(legacy_map, ('id="map"', 'src="./3d-bootstrap.js"'), "world-map/3d.html", errors)
 
         public_roots = (
             "index.html", "tim-dooley/index.html", "religion/index.html", "religion/jesus-tim/index.html",
