@@ -6,7 +6,6 @@ recreated as a noindex compatibility redirect to /timeline/.
 """
 from __future__ import annotations
 
-import os
 from pathlib import Path
 import shutil
 
@@ -54,15 +53,12 @@ def move_public_owner() -> None:
     if legacy.exists() and not canonical.exists():
         legacy.rename(canonical)
     elif legacy.exists() and canonical.exists():
-        # If this is a rerun and chronology is already the compatibility redirect,
-        # leave the canonical owner alone.
         legacy_index = legacy / "index.html"
         if not legacy_index.exists() or "../timeline/" not in legacy_index.read_text(encoding="utf-8", errors="ignore"):
             raise RuntimeError("Both chronology/ and timeline/ exist as content owners; refusing ambiguous migration")
 
 
 def rename_paths() -> None:
-    # Rename deepest paths first, excluding the public compatibility route.
     paths = []
     for path in ROOT.rglob("*"):
         try:
