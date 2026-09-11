@@ -23,8 +23,8 @@ CANONICAL_HOME_LINKS = (
     "world-map/3d.html",
 )
 
-BIBLE_TIMELINE_LINK = (
-    "../chronology/?tl_layers=roadmap,scripture-at-time,biblical-parallel,"
+TIMELINE_QUERY = (
+    "chronology/?tl_layers=roadmap,scripture-at-time,biblical-parallel,"
     "biblical-unlock&tl_actors=son,tim,shared&tl_detail=1"
 )
 
@@ -76,33 +76,21 @@ def main() -> int:
             if not (SITE / rel).exists():
                 errors.append(f"missing required site file: {rel}")
 
-        # Homepage: five reader entrances, no archive application hidden behind it.
         index = read("index.html", errors)
         require(index, ("POTATO", "Main sections"), "index.html", errors)
         for href in CANONICAL_HOME_LINKS:
             if f'href="{href}"' not in index:
                 errors.append(f"index.html missing canonical reader entrance: {href}")
-        forbid(
-            index,
-            ('id="rootbtn"', 'id="branches"', 'id="reader"', "app/app.js", "explore/#root", "<iframe"),
-            "index.html",
-            errors,
-        )
+        forbid(index, ('id="rootbtn"', 'id="branches"', 'id="reader"', "app/app.js", "explore/#root", "<iframe"), "index.html", errors)
 
-        primary_nav = re.search(
-            r'<nav class="sections"[^>]*>(.*?)</nav>', index, flags=re.I | re.S
-        )
+        primary_nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', index, flags=re.I | re.S)
         if not primary_nav:
             errors.append("index.html missing canonical sections navigation")
         else:
             hrefs = re.findall(r'href="([^"]+)"', primary_nav.group(1))
             if tuple(hrefs) != CANONICAL_HOME_LINKS:
-                errors.append(
-                    "homepage primary navigation must contain exactly five canonical entrances; "
-                    f"found {hrefs}"
-                )
+                errors.append(f"homepage primary navigation must contain exactly five canonical entrances; found {hrefs}")
 
-        # Religion owns the Jesus comparison directly and reaches the shared timeline in one click.
         religion = read("religion/index.html", errors)
         require(
             religion,
@@ -114,38 +102,20 @@ def main() -> int:
                 "Rejected stone → foundation",
                 "Grain death → multiplication",
                 "A real ethical mismatch",
-                f'href="{BIBLE_TIMELINE_LINK}"',
+                f'href="../{TIMELINE_QUERY}"',
                 'href="../traditions/bible/"',
             ),
             "religion/index.html",
             errors,
         )
-        forbid(
-            religion,
-            ("explore/#branch=", "Research</h2>", "Jesus / Son research index", "source authority"),
-            "religion/index.html",
-            errors,
-        )
+        forbid(religion, ("explore/#branch=", "Research</h2>", "Jesus / Son research index", "source authority"), "religion/index.html", errors)
 
-        # The old dedicated comparison URL remains only as a compatibility redirect.
         comparison = read("religion/jesus-tim/index.html", errors)
-        require(
-            comparison,
-            ('name="robots" content="noindex,follow"', "location.replace('../#jesus-tim')"),
-            "religion/jesus-tim/index.html",
-            errors,
-        )
+        require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../#jesus-tim')"), "religion/jesus-tim/index.html", errors)
 
-        # Tim must reach the embedded Jesus comparison in one click.
         tim = read("tim-dooley/index.html", errors)
-        require(
-            tim,
-            ('href="../religion/#jesus-tim"', "Jesus ↔ Tim / Son", "Chronology", "Public record"),
-            "tim-dooley/index.html",
-            errors,
-        )
+        require(tim, ('href="../religion/#jesus-tim"', "Jesus ↔ Tim / Son", "Chronology", "Public record"), "tim-dooley/index.html", errors)
 
-        # Bible is a specialist relation reader, not another tutorial/timeline mini-site.
         bible = read("traditions/bible/index.html", errors)
         require(
             bible,
@@ -155,7 +125,7 @@ def main() -> int:
                 'id="search"',
                 'id="relations"',
                 'href="../../religion/#jesus-tim"',
-                f'href="../../{BIBLE_TIMELINE_LINK}"'.replace("../../../", "../"),
+                f'href="../../{TIMELINE_QUERY}"',
             ),
             "traditions/bible/index.html",
             errors,
@@ -163,114 +133,43 @@ def main() -> int:
         forbid(
             bible,
             (
-                'class="focus-links"',
-                'id="orientation"',
-                'id="story-arcs"',
-                'id="meaning"',
-                'id="development"',
-                'id="missing-questions"',
-                'id="tensions"',
-                'id="timic-timeline"',
-                "Questions we missed",
-                "Four questions before comparing anything",
-                "What does “fulfilled” mean here?",
-                "Source authority",
-                ">FAQ<",
+                'class="focus-links"', 'id="orientation"', 'id="story-arcs"', 'id="meaning"',
+                'id="development"', 'id="missing-questions"', 'id="tensions"', 'id="timic-timeline"',
+                "Questions we missed", "Four questions before comparing anything", "What does “fulfilled” mean here?",
+                "Source authority", ">FAQ<",
             ),
             "traditions/bible/index.html",
             errors,
         )
 
-        # Timeline owns chronology. It should open on controls + events, not a tutorial shell.
         chronology = read("chronology/index.html", errors)
-        require(
-            chronology,
-            (
-                "THE LONG",
-                'class="timeline-explorer-standalone"',
-                'src="../app/timeline.js"',
-                'href="../religion/"',
-            ),
-            "chronology/index.html",
-            errors,
-        )
+        require(chronology, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "chronology/index.html", errors)
         forbid(
             chronology,
-            (
-                'class="source-note"',
-                'class="roadmap-note"',
-                'class="formula"',
-                "Why the live explorer replaces the old hard-coded list",
-                "Open Timeline in the complete archive",
-                'href="../context/"',
-                'href="../corporium/"',
-            ),
+            ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Why the live explorer replaces the old hard-coded list", "Open Timeline in the complete archive", 'href="../context/"', 'href="../corporium/"'),
             "chronology/index.html",
             errors,
         )
 
-        # North is subordinate to the actual World Map: one obvious header action, no duplicate giant CTA.
         north = read("north/index.html", errors)
-        require(
-            north,
-            ('class="map-action" href="../world-map/3d.html"', ">WORLD MAP<"),
-            "north/index.html",
-            errors,
-        )
-        forbid(
-            north,
-            (
-                'class="maplink"',
-                "Open North Axis in the World Map",
-                "#architecture",
-                "#ledger",
-                "#world",
-                "#traditions",
-                "#chronology",
-            ),
-            "north/index.html",
-            errors,
-        )
+        require(north, ('class="map-action" href="../world-map/3d.html"', ">WORLD MAP<"), "north/index.html", errors)
+        forbid(north, ('class="maplink"', "Open North Axis in the World Map", "#architecture", "#ledger", "#world", "#traditions", "#chronology"), "north/index.html", errors)
 
-        # The duplicate Start Here page remains a compatibility redirect only.
         learn = read("learn/index.html", errors)
         require(learn, ('name="robots" content="noindex,follow"', "location.replace('../')"), "learn/index.html", errors)
 
-        # Preserve the working World Atlas application contract.
         atlas = read("world-map/3d.html", errors)
-        require(
-            atlas,
-            (
-                "World Relational Atlas",
-                'id="map"',
-                'id="compare"',
-                'id="relationType"',
-                'id="traceDepth"',
-                'id="timeMode"',
-                'src="./3d-bootstrap.js"',
-            ),
-            "world-map/3d.html",
-            errors,
-        )
+        require(atlas, ("World Relational Atlas", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'), "world-map/3d.html", errors)
 
-        # Public-page iframe dependencies are not part of the reader architecture.
         public_roots = (
-            "index.html",
-            "tim-dooley/index.html",
-            "religion/index.html",
-            "religion/jesus-tim/index.html",
-            "traditions/bible/index.html",
-            "chronology/index.html",
-            "philosophy/index.html",
-            "science/index.html",
-            "north/index.html",
+            "index.html", "tim-dooley/index.html", "religion/index.html", "religion/jesus-tim/index.html",
+            "traditions/bible/index.html", "chronology/index.html", "philosophy/index.html", "science/index.html", "north/index.html",
         )
         for rel in public_roots:
             text = read(rel, errors)
             if "<iframe" in text.lower():
                 errors.append(f"{rel} contains iframe dependency")
 
-        # Basic local link integrity for the complete built HTML set.
         ref = re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''', re.I)
         base_ref = re.compile(r'''<base\s+[^>]*href=["']([^"'#?]+)["']''', re.I)
         bad: list[str] = []
@@ -303,10 +202,7 @@ def main() -> int:
         if not pages:
             errors.append("Pages artifact contains no HTML documents")
 
-    lines = [
-        f"Built HTML pages checked: {len(pages)}",
-        f"Errors: {len(errors)} · Warnings: {len(warnings)}",
-    ]
+    lines = [f"Built HTML pages checked: {len(pages)}", f"Errors: {len(errors)} · Warnings: {len(warnings)}"]
     if errors:
         lines.append("SITE SHELL VALIDATION FAILED")
         lines.extend(f"- {error}" for error in errors)
