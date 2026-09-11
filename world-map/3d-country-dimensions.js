@@ -201,3 +201,8 @@ window.__potatoAtlasCountryDimensions = {
 };
 
 enhancePanel();
+
+// D4 measurement is a country-detail concern, so promote it only after the
+// country-dimensions module itself has been requested. The shared loader keeps
+// cache-busting, diagnostics and failure isolation consistent with the Atlas.
+window.__potatoAtlasLoadModule?.('D4 observables', './3d-d4-observables.js');
