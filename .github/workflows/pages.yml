@@ -143,6 +143,7 @@ jobs:
         run: |
           set -euxo pipefail
           test -f _site/index.html
+          test -f _site/explore/index.html
           test -f _site/manifest.json
           test -f _site/app/app.js
           test -f _site/app/style.css
@@ -194,9 +195,15 @@ jobs:
           PY
 
           # Homepage source is curated; build-time discovery patches must not
-          # silently re-expand its primary gateway row.
+          # silently re-expand or rename its semantic gateway grid.
           grep -q 'Be simple and grow to light.' _site/index.html
           grep -q 'app/home.css' _site/index.html
+          grep -q '<strong>Collection</strong>' _site/index.html
+          grep -q '<strong>FAQ</strong>' _site/index.html
+          grep -q '<strong>A–Z</strong>' _site/index.html
+          grep -q '<strong>Timeline</strong>' _site/index.html
+          grep -q '<strong>Public Record</strong>' _site/index.html
+          grep -q '<strong>Religion</strong>' _site/index.html
           python - <<'PY'
           from pathlib import Path
           page = Path('_site/index.html').read_text(encoding='utf-8')
@@ -205,13 +212,17 @@ jobs:
           assert start >= 0 and end > start
           nav = page[start:end]
           count = nav.count('<a href=')
-          assert count == 5, f'primary homepage gateway count drifted: {count}'
-          print('Verified curated homepage: quote + 5 primary gateways')
+          assert count == 12, f'primary homepage gateway count drifted: {count}'
+          print('Verified curated homepage: quote + 12 semantic gateways')
           PY
 
           grep -q 'id="branches"' _site/index.html
           grep -q 'id="reader"' _site/index.html
           grep -q 'app/app.js' _site/index.html
+          grep -q 'id="archive-explorer"' _site/explore/index.html
+          grep -q 'id="branches"' _site/explore/index.html
+          grep -q 'id="reader"' _site/explore/index.html
+          grep -q 'app/app.js' _site/explore/index.html
           grep -q 'manifest.json' _site/app/app.js
           grep -q 'tim-dooley/ontology/' _site/sitemap.xml
           grep -q 'Critical entity resolution' _site/llms.txt
