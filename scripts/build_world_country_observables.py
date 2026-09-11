@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "countries" / "index.json"
 OUT = Path(os.environ.get("ATLAS_D4_OUT", ROOT / "data" / "world-country-observables.json"))
 EXPECTED = 195
-USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.4"
+USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.5"
 BATCH_SIZE = 4
 
 METRICS = {
@@ -92,12 +92,13 @@ def merge_series(target: dict[str, dict[str, list[dict]]], source: dict[str, dic
             target[metric_id][code].extend(observations)
 
 
-def fetch_all(wanted: set[str]) -> tuple[dict[str, dict[str, list[dict]]], int, list[str]]:
-    """Fetch D4 indicators in small resilient batches, falling back per series."""
+def fetch_all(wanted: set[str]) -> tuple[dict[str, dict[str, list[dict]]], int, list[str], list[dict]]:
+    """Fetch D4 indicators in small resilient batches, recording failed series."""
     grouped = empty_series(wanted)
     metric_ids = list(METRICS)
     request_count = 0
     fallback_metrics: list[str] = []
+    failed_metrics: list[dict] = []
 
     for start in range(0, len(metric_ids), BATCH_SIZE):
         batch = metric_ids[start:start + BATCH_SIZE]
@@ -110,20 +111,22 @@ def fetch_all(wanted: set[str]) -> tuple[dict[str, dict[str, list[dict]]], int, 
             for metric_id in batch:
                 fallback_metrics.append(metric_id)
                 print(f"Fetching WDI D4 fallback series: {metric_id}", flush=True)
-                merge_series(grouped, fetch_batch([metric_id], wanted))
-                request_count += 1
+                try:
+                    merge_series(grouped, fetch_batch([metric_id], wanted))
+                    request_count += 1
+                except Exception as metric_exc:
+                    failed_metrics.append({"metric": metric_id, "indicator": METRICS[metric_id]["indicator"], "error": str(metric_exc)})
+                    print(f"SERIES FAILED: {metric_id} ({METRICS[metric_id]['indicator']}): {metric_exc}", flush=True)
 
     for metric_values in grouped.values():
         for code in metric_values:
-            # Multiple API rows can occasionally repeat a year. Keep one value per
-            # year so D6 never interprets a duplicate observation as change.
             unique: dict[str, dict] = {}
             for item in metric_values[code]:
                 unique.setdefault(str(item.get("year")), item)
             observations = list(unique.values())
             observations.sort(key=lambda item: str(item.get("year") or ""), reverse=True)
             metric_values[code] = observations[:2]
-    return grouped, request_count, sorted(set(fallback_metrics))
+    return grouped, request_count, sorted(set(fallback_metrics)), failed_metrics
 
 
 def delta(latest: dict | None, previous: dict | None) -> dict | None:
@@ -148,16 +151,21 @@ def main() -> int:
 
     by_code = {str(country["iso3"]).upper(): country for country in countries}
     wanted = set(by_code)
-    series, request_count, fallback_metrics = fetch_all(wanted)
+    series, request_count, fallback_metrics, failed_metrics = fetch_all(wanted)
     coverage = {metric_id: sum(1 for observations in values.values() if observations) for metric_id, values in series.items()}
-    print(json.dumps({"d4_coverage": coverage, "requests": request_count, "fallback_metrics": fallback_metrics}, indent=2), flush=True)
+    print(json.dumps({"d4_coverage": coverage, "requests": request_count, "fallback_metrics": fallback_metrics, "failed_metrics": failed_metrics}, indent=2), flush=True)
 
     minimum = 150
+    failures: list[str] = []
     if coverage["population"] < minimum or coverage["gdp"] < minimum:
-        raise RuntimeError(f"D4 observable coverage too low: population={coverage['population']}, gdp={coverage['gdp']}, required_each>={minimum}")
+        failures.append(f"population={coverage['population']} and gdp={coverage['gdp']} require >= {minimum}")
     for metric_id in ("labor_force_participation", "fertility_rate", "electricity_access", "co2_per_capita"):
         if coverage[metric_id] < 120:
-            raise RuntimeError(f"D4 observable coverage too low for {metric_id}: {coverage[metric_id]}, required>=120")
+            failures.append(f"{metric_id}={coverage[metric_id]} requires >= 120")
+    if failed_metrics:
+        failures.append("series acquisition failed for: " + ", ".join(item["metric"] for item in failed_metrics))
+    if failures:
+        raise RuntimeError("D4 observable build gate failed: " + "; ".join(failures))
 
     generated = datetime.now(timezone.utc).isoformat()
     rows = {}
@@ -183,13 +191,13 @@ def main() -> int:
         rows[code] = {"name": country["name"], "country_id": country["id"], "metrics": metrics}
 
     payload = {
-        "version": "1.4.0",
+        "version": "1.5.0",
         "generated_at": generated,
         "record_type": "world-country-observables-runtime",
         "axis_dimension": 4,
         "scope": "Presentation/runtime D4 snapshot. Values remain dated sourced observations and do not determine Axis height, moral rank or project membership.",
         "source": {"id": "world-bank-wdi", "name": "World Bank World Development Indicators", "url": "https://data.worldbank.org/indicator", "api_source_id": 2},
-        "acquisition": {"batch_size": BATCH_SIZE, "request_count": request_count, "fallback_metrics": fallback_metrics},
+        "acquisition": {"batch_size": BATCH_SIZE, "request_count": request_count, "fallback_metrics": fallback_metrics, "failed_metrics": failed_metrics},
         "metric_order": list(METRICS),
         "metrics": {metric_id: {**spec, "axis_role": "D4 observable"} for metric_id, spec in METRICS.items()},
         "coverage": coverage,
