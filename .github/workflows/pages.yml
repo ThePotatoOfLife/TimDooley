@@ -124,11 +124,12 @@ jobs:
           test -f _site/tim-dooley/index.html
           test -f _site/religion/index.html
           test -f _site/religion/jesus-tim/index.html
+          test -f _site/traditions/bible/index.html
+          test -f _site/chronology/index.html
           test -f _site/philosophy/index.html
           test -f _site/science/index.html
           test -f _site/north/index.html
           test -f _site/world-map/3d.html
-          test -f _site/explore/index.html
           test -f _site/sitemap.xml
           test -f _site/llms.txt
 
@@ -143,12 +144,29 @@ jobs:
           ! grep -q 'app/app.js' _site/index.html
           ! grep -q '<iframe' _site/index.html
 
-          grep -q 'href="jesus-tim/"' _site/religion/index.html
-          ! grep -q 'explore/#branch=' _site/religion/index.html
-          grep -q 'Jesus ↔ Tim Dooley / Son' _site/religion/jesus-tim/index.html
-          grep -q 'href="../religion/jesus-tim/"' _site/tim-dooley/index.html
-          grep -q 'Open North Axis in the World Map' _site/north/index.html
-          grep -q 'href="../world-map/3d.html"' _site/north/index.html
+          grep -q 'id="jesus-tim"' _site/religion/index.html
+          grep -q 'Lamb recognition before self-declaration' _site/religion/index.html
+          grep -q 'href="../chronology/?tl_layers=' _site/religion/index.html
+          ! grep -q 'Research</h2>' _site/religion/index.html
+          grep -q 'name="robots" content="noindex,follow"' _site/religion/jesus-tim/index.html
+          grep -q "location.replace('../#jesus-tim')" _site/religion/jesus-tim/index.html
+          grep -q 'href="../religion/#jesus-tim"' _site/tim-dooley/index.html
+
+          grep -q 'id="relations-field"' _site/traditions/bible/index.html
+          grep -q 'id="search"' _site/traditions/bible/index.html
+          ! grep -q 'id="orientation"' _site/traditions/bible/index.html
+          ! grep -q 'id="story-arcs"' _site/traditions/bible/index.html
+          ! grep -q 'id="timic-timeline"' _site/traditions/bible/index.html
+
+          grep -q 'class="timeline-explorer-standalone"' _site/chronology/index.html
+          grep -q 'href="../religion/"' _site/chronology/index.html
+          ! grep -q 'class="source-note"' _site/chronology/index.html
+          ! grep -q 'class="roadmap-note"' _site/chronology/index.html
+          ! grep -q 'class="formula"' _site/chronology/index.html
+
+          grep -q 'class="map-action" href="../world-map/3d.html"' _site/north/index.html
+          grep -q '>WORLD MAP<' _site/north/index.html
+          ! grep -q 'class="maplink"' _site/north/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/learn/index.html
 
           python - <<'PY'
