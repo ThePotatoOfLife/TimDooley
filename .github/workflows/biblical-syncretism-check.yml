@@ -7,7 +7,13 @@ on:
       - 'knowledge/traditions/**'
       - 'knowledge/chronology/**'
       - 'data/evidence/**'
+      - 'data/timeline-events.json'
+      - 'data/timeline-event-packs/**'
+      - 'traditions/bible/index.html'
+      - 'app/bible-study.js'
+      - 'app/bible-study.css'
       - 'scripts/check_biblical_syncretism_field.py'
+      - 'scripts/validate_bible_reader.py'
       - '.github/workflows/biblical-syncretism-check.yml'
   pull_request:
     paths:
@@ -15,7 +21,13 @@ on:
       - 'knowledge/traditions/**'
       - 'knowledge/chronology/**'
       - 'data/evidence/**'
+      - 'data/timeline-events.json'
+      - 'data/timeline-event-packs/**'
+      - 'traditions/bible/index.html'
+      - 'app/bible-study.js'
+      - 'app/bible-study.css'
       - 'scripts/check_biblical_syncretism_field.py'
+      - 'scripts/validate_bible_reader.py'
       - '.github/workflows/biblical-syncretism-check.yml'
 
 jobs:
@@ -27,3 +39,4 @@ jobs:
         with:
           python-version: '3.12'
       - run: python scripts/check_biblical_syncretism_field.py
+      - run: python scripts/validate_bible_reader.py
