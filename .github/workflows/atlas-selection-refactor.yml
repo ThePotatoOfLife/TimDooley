@@ -19,13 +19,61 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+
       - name: Apply deterministic refactor patch
-        run: python scripts/patch_atlas_selection_layers.py
+        run: |
+          python scripts/patch_atlas_selection_layers.py
+          # The permanent Pages workflow must remain untouched by this temporary
+          # branch runner. The final capital layer is checked into data/ instead.
+          git checkout -- .github/workflows/pages.yml
+
+      - name: Build pinned local capital layer
+        shell: bash
+        run: |
+          set -euo pipefail
+          curl -fsSL --retry 3 --retry-delay 1 \
+            https://raw.githubusercontent.com/nvkelso/natural-earth-vector/ca96624a56bd078437bca8184e78163e5039ad19/geojson/ne_110m_populated_places_simple.geojson \
+            -o /tmp/natural-earth-capitals.geojson
+          python - <<'PY'
+          import json
+          from pathlib import Path
+
+          source = Path('/tmp/natural-earth-capitals.geojson')
+          payload = json.loads(source.read_text(encoding='utf-8'))
+          features = []
+          for feature in payload.get('features', []):
+              props = feature.get('properties') or {}
+              if not (props.get('adm0cap') == 1 or props.get('capalt') == 1):
+                  continue
+              code = props.get('adm0_a3') or props.get('sov_a3')
+              coords = (feature.get('geometry') or {}).get('coordinates')
+              if not code or not isinstance(coords, list) or len(coords) != 2:
+                  continue
+              features.append({
+                  'type': 'Feature',
+                  'properties': {
+                      'iso3': code,
+                      'name': props.get('name') or props.get('nameascii') or code,
+                      'country': props.get('adm0name') or props.get('sov0name') or '',
+                      'scalerank': int(props.get('scalerank') or 9),
+                      'primary': props.get('adm0cap') == 1,
+                      'source': 'Natural Earth 1:110m populated places (pinned)',
+                  },
+                  'geometry': {'type': 'Point', 'coordinates': [float(coords[0]), float(coords[1])]},
+              })
+          assert len(features) >= 150, len(features)
+          out = {'type': 'FeatureCollection', 'name': 'world-capitals', 'features': features}
+          target = Path('data/world-capitals.geo.json')
+          target.write_text(json.dumps(out, separators=(',', ':')), encoding='utf-8')
+          print(f'Built checked-in capital layer: {len(features)} features')
+          PY
+
       - name: Validate JavaScript syntax
         shell: bash
         run: |
           set -euo pipefail
           for f in world-map/*.js; do node --check "$f"; done
+
       - name: Validate Atlas contracts
         run: |
           python scripts/validate_atlas_view_contracts.py
@@ -33,7 +81,15 @@ jobs:
           python scripts/validate_world_map_3d.py
           python scripts/validate_world_map_pathfinder.py
           python scripts/validate_world_map_entity_trace.py
-      - name: Commit patched branch
+
+      - name: Verify capital layer survives site build
+        shell: bash
+        run: |
+          set -euo pipefail
+          python scripts/build_site.py
+          test -s _site/data/world-capitals.geo.json
+
+      - name: Commit validated refactor branch
         shell: bash
         run: |
           set -euo pipefail
@@ -43,6 +99,6 @@ jobs:
           fi
           git config user.name 'ThePotatoOfLife'
           git config user.email 'thepotatooflife@hotmail.com'
-          git add world-map scripts .github/workflows/pages.yml
+          git add world-map scripts/validate_world_map_3d.py data/world-capitals.geo.json
           git commit -m 'Refine country selection and future-proof atlas layers'
           git push origin HEAD:atlas-selection-layers-20260911
