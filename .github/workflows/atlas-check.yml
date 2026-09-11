@@ -48,6 +48,8 @@ jobs:
         run: python scripts/validate_world_map_3d.py
       - name: Validate composable Atlas registry
         run: python scripts/validate_world_atlas_layer_registry.py
+      - name: Validate composable Atlas functionality
+        run: python scripts/validate_world_atlas_composable_runtime.py
       - name: Validate 3D relationship path finder
         run: python scripts/validate_world_map_pathfinder.py
       - name: Validate entity-aware Trace
