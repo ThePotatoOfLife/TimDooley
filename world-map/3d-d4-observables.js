@@ -25,6 +25,7 @@ const METRICS = {
   fdi_inflow: {label:'FDI net inflow', indicator:'BX.KLT.DINV.WD.GD.ZS', unit:'percent of GDP', format:'percent'},
 };
 const INDICATOR_TO_METRIC = Object.fromEntries(Object.entries(METRICS).map(([metricId,spec]) => [spec.indicator,metricId]));
+const PERCENT_POINT_METRICS = new Set(['real_growth','unemployment','urbanization','internet_penetration','trade_openness','energy_dependence','fdi_inflow']);
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
@@ -55,6 +56,12 @@ function signedCompact(value, maximumFractionDigits = 1) {
   const n = number(value);
   if (n == null) return '—';
   return new Intl.NumberFormat('en', {notation:'compact', maximumFractionDigits, signDisplay:'exceptZero'}).format(n);
+}
+
+function signedFixed(value, digits = 1) {
+  const n = number(value);
+  if (n == null) return '—';
+  return new Intl.NumberFormat('en', {maximumFractionDigits:digits, minimumFractionDigits:0, signDisplay:'exceptZero'}).format(n);
 }
 
 function fixed(value, digits = 1) {
@@ -172,6 +179,25 @@ function priorHtml(metricId, metric) {
   return `<small class="d4-prior">prior ${esc(previous.year ?? '—')} · ${esc(formatValue(metricId, previous.value))}</small>`;
 }
 
+function changeLabel(metricId, metric) {
+  const current = number(metric?.value);
+  const previous = number(metric?.previous?.value);
+  if (current == null || previous == null) return null;
+  const delta = current - previous;
+  const arrow = delta > 0 ? '↑' : delta < 0 ? '↓' : '→';
+  if (PERCENT_POINT_METRICS.has(metricId)) return `${arrow} ${signedFixed(delta, 1)} pp`;
+  if (metricId === 'life_expectancy') return `${arrow} ${signedFixed(delta, 1)} y`;
+  if (metricId === 'net_migration') return `${arrow} ${signedCompact(delta, 2)} persons`;
+  if (previous !== 0) return `${arrow} ${signedFixed((delta / Math.abs(previous)) * 100, 1)}%`;
+  return `${arrow} ${signedCompact(delta, 2)}`;
+}
+
+function changeHtml(metricId, metric) {
+  const label = changeLabel(metricId, metric);
+  if (!label) return '';
+  return `<small class="d6-delta">D6 seed · ${esc(label)} vs ${esc(metric.previous?.year ?? 'prior')}</small>`;
+}
+
 function metricHtml(metricId, metric) {
   const spec = METRICS[metricId];
   if (!metric) return '';
@@ -179,7 +205,25 @@ function metricHtml(metricId, metric) {
     <span>${esc(spec.label)}</span>
     <b>${esc(formatValue(metricId, metric.value))}</b>
     <small>${esc(metric.year ?? '—')} · ${esc(metric.unit || spec.unit)}</small>
+    ${changeHtml(metricId, metric)}
     ${priorHtml(metricId, metric)}
+  </div>`;
+}
+
+function yearSpan(metrics) {
+  const years = Object.values(metrics).flatMap(metric => [metric?.year, metric?.previous?.year]).map(Number).filter(Number.isFinite).sort((a,b) => a-b);
+  if (!years.length) return 'unknown years';
+  return years[0] === years.at(-1) ? String(years[0]) : `${years[0]}–${years.at(-1)}`;
+}
+
+function seedHtml(metrics) {
+  const values = Object.values(metrics);
+  const priorCount = values.filter(metric => number(metric?.previous?.value) != null).length;
+  const indicators = new Set(values.map(metric => metric?.indicator).filter(Boolean)).size;
+  return `<div class="d4-axis-seeds">
+    <div><b>D3 · provenance seed</b><span>${indicators} source series · evidence spans ${esc(yearSpan(metrics))} · indicator IDs remain attached to every observation.</span></div>
+    <div><b>D5 · threshold seed</b><span>No threshold is inferred from magnitude alone. D5 appears only when a law, treaty, capacity, maturity, target or other explicit gate is attached.</span></div>
+    <div><b>D6 · change seed</b><span>${priorCount}/${values.length} available metrics currently retain a prior comparable observation. One delta is change; repeated comparable deltas can later become a cycle or spiral.</span></div>
   </div>`;
 }
 
@@ -196,10 +240,15 @@ function ensureStyle() {
     .d4-observable>span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.07em}
     .d4-observable>b{display:block;font-size:15px;margin:2px 0;overflow-wrap:anywhere}
     .d4-observable>small{display:block;color:#bac4bc;font-size:9px;line-height:1.25}
+    .d4-observable .d6-delta{color:var(--gold);margin-top:3px}
     .d4-observable .d4-prior{color:#839188;margin-top:2px}
     .d4-observable-empty{font-size:11px;color:var(--muted);padding:7px 0}
     .d4-observable-note{font-size:10px;margin-top:8px;line-height:1.35}
-    @media(max-width:900px){.d4-observable-grid{grid-template-columns:1fr}}
+    .d4-axis-seeds{margin-top:9px;border-top:1px solid var(--line)}
+    .d4-axis-seeds>div{display:grid;grid-template-columns:126px 1fr;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);font-size:10px;line-height:1.35}
+    .d4-axis-seeds b{font-size:10px}
+    .d4-axis-seeds span{color:var(--muted)}
+    @media(max-width:900px){.d4-observable-grid{grid-template-columns:1fr}.d4-axis-seeds>div{grid-template-columns:1fr}}
   `;
   document.head.appendChild(style);
 }
@@ -209,12 +258,14 @@ function insertCard(code, data) {
   panel.querySelectorAll('.atlas-d4-observables').forEach(node => node.remove());
   const metrics = data?.metrics || {};
   const available = Object.keys(METRICS).filter(metricId => metrics[metricId]);
+  const availableMetrics = Object.fromEntries(available.map(metricId => [metricId, metrics[metricId]]));
   const card = document.createElement('div');
   card.className = 'card atlas-d4-observables';
   card.dataset.d4Code = code;
   card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · prosperity · motion · labour · life · settlement · connectivity · trade · migration · energy · capital</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'one selected-country WDI request'}</small></div>
     <div class="d4-observable-grid">${available.length ? available.map(metricId => metricHtml(metricId, metrics[metricId])).join('') : '<div class="d4-observable-empty">No comparable D4 observations returned for this country.</div>'}</div>
-    <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Trade/GDP is intensity, not bilateral dependence. Net migration is a source-period balance. Negative net energy imports can indicate a net exporter. FDI can be negative. Prior points seed later D6 change analysis. Current USD is not PPP. Missing is not zero. None of these values determines Axis height or moral rank.</div>`;
+    ${available.length ? seedHtml(availableMetrics) : ''}
+    <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Trade/GDP is intensity, not bilateral dependence. Net migration is a source-period balance. Negative net energy imports can indicate a net exporter. FDI can be negative. Current USD is not PPP. Missing is not zero. Arrows describe numeric direction only—not good/bad, heaven/hell, policy success, or moral rank.</div>`;
 
   const anchor = panel.querySelector('.atlas-country-profile') || panel.querySelector('.grid');
   if (anchor?.parentNode) anchor.parentNode.insertBefore(card, anchor.nextSibling);
