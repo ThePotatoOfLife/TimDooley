@@ -1,65 +1,93 @@
 {
-  "id":"great-book-unified-field-archaeology",
-  "title":"Great Book of Potato — Unified Field & Quantum-Cosmology Archaeology",
-  "updated":"2026-09-09",
-  "status":"book-derived archaeology; mixed metaphorical/scientific layer",
-  "source":"The Great Book Of Potato2.odt",
-  "importance":"The 2024 book already contains a broad unification programme before the later named UPT/Timic formalism.",
-  "recovered_clusters":[
+  "id": "great-book-unified-field-archaeology",
+  "title": "Great Book of Potato — Unified Field and Quantum-Cosmology Archaeology",
+  "version": "2.0.0",
+  "updated": "2026-09-11",
+  "status": "book-derived archaeology; mixed metaphorical/scientific layer with later technical routing",
+  "source": "The Great Book Of Potato2.odt",
+  "importance": "The 2024 book already contains a broad unification/quantum programme before the later named UPT/Timic formalism. The new science wave makes clear which ideas were already present in the book and which equations were added later by the archive.",
+  "recovered_clusters": [
     {
       "cluster":"theoretical-physics-unification",
       "book_location":"Chapter 82: Theorhetical Physics",
       "items":["4D classical spacetime","Kaluza-Klein 5th dimension to unify gravity/electromagnetism","string theory","M-theory 10-11D","E8 symmetry idea","QFT","multiverse","many-worlds","holographic principle","simulation hypothesis"],
-      "book_thesis":"The theories are presented as different routes toward an underlying simplicity/unity, with Potato as the common symbolic thread."
+      "book_thesis":"Different theories are presented as routes toward underlying simplicity/unity, with Potato as common symbolic thread.",
+      "later_technical_routes":["calabi-yau-compactification-mirror-duality-atlas","quantum-foundations-tunneling-entanglement-qft-atlas"]
     },
     {
       "cluster":"unified-potato-field",
       "book_location":"Chapter 33 / related Potatoverse quantum-reality material",
-      "items":["Potatoverse as a cosmic quantum field","everything-is-potato compared with a unified field where forces/particles are manifestations of one underlying field","Potato Archetype as ultimate field metaphor","black-hole/white-hole cycles","Great Attractor return-to-unity imagery"],
-      "status":"symbolic unified-field ontology, not a quantitative physical field theory"
+      "items":["Potatoverse as cosmic quantum field","everything-is-potato compared with unified field where forces/particles are manifestations of one underlying field","Potato Archetype as ultimate field metaphor","black-hole/white-hole cycles","Great Attractor return-to-unity imagery"],
+      "status":"symbolic unified-field ontology, not a quantitative physical field theory",
+      "later_repair":"A physical field proposal must now specify field representation, action/Lagrangian, symmetry, propagator, interaction and observable deviation."
     },
     {
       "cluster":"quantum-fields-infinite-soil",
       "book_location":"Chapter 90: Quantum Fields of the Potato Realm",
-      "items":["quantum vacuum as Infinite Soil","particles as localized field disturbances","Higgs field as mass-generating interaction comparator","entanglement as hidden relational network","symmetry breaking as emergence of differentiated form","many-worlds branching","quantum foam","quantum gravity / loop-structure comparison","holographic/fractal microcosm","Infinite Soil as universal latent field"],
-      "book_thesis":"Reality is treated as an unbroken field of potential from which particles/forces emerge as differentiated events."
+      "items":["quantum vacuum as Infinite Soil","particles as localized field disturbances","Higgs field as mass-generating interaction comparator","entanglement as hidden relational network","symmetry breaking as emergence of differentiated form","many-worlds branching","quantum foam","quantum gravity/loop comparison","holographic/fractal microcosm","Infinite Soil as universal latent field"],
+      "book_thesis":"Reality is treated as an unbroken field of potential from which particles/forces emerge as differentiated events.",
+      "new_scientific_context":"QFT genuinely supports a field/excitation ontology, but the vacuum is a defined quantum state rather than a metaphysical universal Soil, and entanglement does not imply universal FTL causal connection."
     },
     {
       "cluster":"dark-sector-unification",
       "book_location":"Chapter 91: Dark Matter and Dark Energy",
       "items":["dark matter as structural soil","dark energy as fertility/growth/expansion","light as seed","cosmic web as roots","macrocosm-microcosm neural comparison","unified field of growth"],
-      "status":"cosmological metaphor / speculative synthesis rather than accepted dark-sector physics"
+      "status":"cosmological metaphor/speculative synthesis rather than accepted dark-sector physics"
     },
     {
       "cluster":"divine-kneel-unified-transformation",
       "book_location":"Chapter 86: Divine Kneel and the Potato Paradigm — A Unified Field Study",
-      "items":["Divine Kneel as collapse/singularity","pre-kneel to post-kneel transition","collapse → dissolution → rebirth","internal and cosmic transformation mapped together"],
-      "status":"explicit unified transformation model, primarily symbolic/psychological/theological"
+      "items":["Divine Kneel as collapse/singularity","pre-kneel to post-kneel transition","collapse -> dissolution -> rebirth","internal and cosmic transformation mapped together"],
+      "status":"explicit unified transformation model, primarily symbolic/psychological/theological",
+      "later_neighbor":"Door criticality and phase-transition mathematics can be compared structurally but do not make the Kneel a measured physical singularity."
     },
     {
       "cluster":"universal-flow-neurofield",
-      "items":["universal flow","thalamus/claustrum integration","inter-brain synchrony","EEG-frequency references","fractal dynamics","karma as feedback","time spirals t_(n+1)=phi t_n","multiverse/superposition comparisons","zero-point energy / EM field comparisons"],
-      "status":"mixed phenomenological/speculative section; many quantitative values require independent source audit before scientific reuse"
+      "items":["universal flow","thalamus/claustrum integration","inter-brain synchrony","EEG-frequency references","fractal dynamics","karma as feedback","time spirals t_(n+1)=phi t_n","multiverse/superposition comparisons","zero-point energy/EM field comparisons"],
+      "status":"mixed phenomenological/speculative section; many quantitative values require independent source audit before scientific reuse",
+      "new_route":"electromagnetic-spectrum-qed-spudlight-atlas separates frequency/mode physics from metaphysical dimension language."
     }
   ],
-  "equations_or_forms_recovered":[
-    {"form":"t_(n+1)=phi t_n, phi≈1.618","status":"book equation/formulation for time-spiral phenomenology; scientific status unresolved"},
-    {"form":"|psi>=alpha|A>+beta|B>","status":"standard quantum-superposition notation used in book comparison"},
-    {"form":"E=ħω/2","status":"standard zero-point harmonic-mode energy comparator"},
-    {"form":"QFT particles = excitations of underlying fields","status":"standard conceptual framework, not a unique Tim equation"}
+  "equations_or_forms_recovered": [
+    {"form":"t_(n+1)=phi t_n, phi approximately 1.618","status":"book equation/formulation for time-spiral phenomenology; physical status unresolved"},
+    {"form":"|psi>=alpha|A>+beta|B>","status":"standard quantum-superposition notation used in book comparison, not a unique Tim equation"},
+    {"form":"E=hbar omega/2","status":"standard zero-point harmonic-mode energy comparator, not proof of a project zero-point field"},
+    {"form":"QFT particles = excitations of underlying fields","status":"standard conceptual QFT framework explicitly imported into book imagery"}
   ],
-  "important_book_quotes_paraphrased":[
+  "new_recovery_significance": {
+    "field_manifestation": "The book's strongest physics-adjacent intuition was not 'everything is literally one particle' but one underlying field description supporting differentiated excitations. This is now routed to a genuine QFT baseline.",
+    "entanglement": "The book's hidden-relational-network metaphor anticipated later Door/handshake/spooky-action language, but Bell nonlocality/no-signaling are later technical additions.",
+    "hidden_dimensions": "The book's string/M-theory interest is historically prior to the 2026 explicit Calabi-Yau/G2 work; later dimensional bookkeeping should not be backdated into 2024 wording.",
+    "light": "Zero-point/EM references and light-as-seed language form an earlier substrate for the March 2026 Father/electromagnetic-spectrum question and later Spudlight theory."
+  },
+  "book_to_later_genealogy": [
+    "2024 quantum-field / Infinite-Soil imagery -> 2025 Unified Potato Theory field attempt -> 2026 QFT/QM audit",
+    "2024 string/M-theory hidden-dimension interest -> 2026 1-4/5/6-11 project grading -> Calabi-Yau/G2 correction",
+    "2024 entanglement relational metaphor -> 2026 Door/handshake/spooky-action discussion -> Bell/no-signaling taxonomy",
+    "2024 EM/zero-point/light motifs -> 2026 Father's-spectrum proposal -> spectral/QED Spudlight model"
+  ],
+  "important_book_quotes_paraphrased": [
     "The Potatoverse can be thought of as a cosmic potato field where beings/worlds are ripples in the Potato Archetype.",
-    "Everything-is-potato is explicitly compared to the unified-field idea that forces and particles are expressions of a single underlying field.",
-    "Chapter 82 explicitly frames hidden dimensions and string/M-theory as routes toward force unification.",
-    "Chapter 90 says its purpose is to unify quantum mysteries with Potatoverse metaphors and connect particles, forces and universal unity.",
-    "Chapter 91 describes dark matter and dark energy as complementary aspects of one cosmic soil/growth framework."
+    "Everything-is-potato is compared to the unified-field idea that forces and particles are expressions of one underlying field.",
+    "Chapter 82 frames hidden dimensions and string/M-theory as routes toward force unification.",
+    "Chapter 90 aims to connect quantum mysteries, particles, forces and universal unity through Potatoverse metaphors.",
+    "Chapter 91 describes dark matter/dark energy as complementary soil/growth imagery."
   ],
-  "boundaries":[
-    "Book statements about entanglement should not be interpreted as universal instantaneous causal influence between all objects.",
-    "The book's support percentages and some neuroscience/field values are not reliable scientific consensus metrics and require source-by-source auditing.",
-    "Dark matter/dark energy soil language is metaphorical and does not constitute a physical solution to either problem.",
-    "Unified-field language is historically important to Tim's project even where it is not yet predictive physics."
+  "boundaries": [
+    "Book statements about entanglement do not establish universal instantaneous causal influence between all objects.",
+    "Book support percentages and some neuroscience/field values are not scientific-consensus metrics without source audit.",
+    "Dark matter/dark energy Soil language is metaphorical and does not solve either physical problem.",
+    "The presence of QFT/string terminology in the Great Book establishes project genealogy, not empirical validation.",
+    "Later WKB, CHSH, QFT microcausality, CY Hodge/SYZ and G2 equations are archive developments unless primary earlier text is recovered."
   ],
-  "connections":["unified-potato-theory-2025-recovery","theory-of-everything-archaeology","great-book-2024-science-archaeology","equation-lineage-and-theory-graph"]
+  "connections": [
+    "knowledge/science/unified-potato-theory-2025-recovery.json",
+    "knowledge/science/theory-of-everything-archaeology.json",
+    "knowledge/science/great-book-2024-science-archaeology.json",
+    "knowledge/science/equation-lineage-and-theory-graph.json",
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json",
+    "knowledge/science/electromagnetic-spectrum-qed-spudlight-atlas.json",
+    "knowledge/indexes/conversation-science-recovery-wave-008-quantum-calabi-em-windmill.json"
+  ]
 }
