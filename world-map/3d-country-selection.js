@@ -1,6 +1,6 @@
 // Working-selection controller for the World Relational Atlas.
 //
-// The legacy core still owns the active country inspector, Trace and Compare.
+// The legacy core still owns the active-country inspector, Trace and Compare.
 // This controller adds the ordinary interaction users actually need: click any
 // country to add/remove it from a persistent working set, keep one active
 // country for inspection, and reveal a bounded immediate relationship network.
@@ -16,7 +16,8 @@ if (!map || typeof baseGoCountry !== 'function' || !baseSelection) {
 
 const WORLD_URL = '../data/world-relational-map.json';
 const INDEX_URL = '../data/countries/index.json';
-const REST_URL = 'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders';
+const REST_LOCAL = '../data/rest-countries-runtime.json';
+const REST_REMOTE = 'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders';
 
 const AUTO_EDGES_ACTIVE = 8;
 const AUTO_EDGES_OTHER = 4;
@@ -50,6 +51,9 @@ function edgeKey(edge) {
 function countryName(code) {
   return names[code] || by3[code]?.name?.common || code;
 }
+function allKnownCodes() {
+  return [...new Set([...Object.keys(names), ...Object.keys(by3), ...selectedCodes])];
+}
 function setFeatureState(code, key, value) {
   if (!code) return;
   try { map.setFeatureState({ source: 'countries', id: code }, { [key]: value }); }
@@ -57,6 +61,7 @@ function setFeatureState(code, key, value) {
 }
 function snapshot(reason = 'read') {
   return {
+    source: 'working-selection',
     reason,
     code: activeCode,
     activeCode,
@@ -75,13 +80,12 @@ function updateUrl() {
   else url.searchParams.delete('country');
   // Legacy Compare URLs are accepted on boot, but ordinary selection no longer
   // needs to keep the old Compare state in the address bar.
-  url.searchParams.delete('compare');
+  if (!document.getElementById('compare')?.classList.contains('active')) url.searchParams.delete('compare');
   history.replaceState({}, '', url);
 }
 
 function applySelectionStates() {
-  for (const code of Object.keys(names)) {
-    // Clearing all 195 states is cheap and makes URL restores deterministic.
+  for (const code of allKnownCodes()) {
     setFeatureState(code, 'selected', selectedCodes.includes(code));
     setFeatureState(code, 'active', code === activeCode);
   }
@@ -101,6 +105,25 @@ function applySelectionStates() {
       .7
     ]);
   }
+}
+
+function installRelationPaint() {
+  if (!map.getLayer('relations')) return;
+  map.setPaintProperty('relations', 'line-color', [
+    'case',
+    ['==', ['get', 'mode'], 'auto'], '#78908f',
+    ['step', ['get', 'depth'], '#73a7d8', 2, '#8ba5bd', 3, '#687f94']
+  ]);
+  map.setPaintProperty('relations', 'line-width', [
+    'case',
+    ['==', ['get', 'mode'], 'auto'], 1.15,
+    ['interpolate', ['linear'], ['zoom'], 2, 1.2, 6, 3]
+  ]);
+  map.setPaintProperty('relations', 'line-opacity', [
+    'case',
+    ['==', ['get', 'mode'], 'auto'], .46,
+    ['step', ['get', 'depth'], .82, 2, .62, 3, .44]
+  ]);
 }
 
 function bucketFor(edge) {
@@ -139,6 +162,10 @@ function rankedEdges(root, budget) {
     chosen.push(item.edge); used.add(item.key);
   }
   return chosen;
+}
+
+function connectionsFor(code, budget = AUTO_EDGES_ACTIVE) {
+  return rankedEdges(String(code || '').toUpperCase(), Math.max(1, Number(budget) || AUTO_EDGES_ACTIVE));
 }
 
 function automaticRelationData(codes = selectedCodes) {
@@ -182,11 +209,12 @@ function automaticRelationData(codes = selectedCodes) {
   return { type: 'FeatureCollection', features };
 }
 
+function explicitTraceVisible() {
+  return document.getElementById('relations')?.classList.contains('active') === true;
+}
+
 function applyAutomaticRelations() {
-  if (!ready) return;
-  const relationsButton = document.getElementById('relations');
-  const explicitTrace = relationsButton?.classList.contains('active');
-  if (explicitTrace) return;
+  if (!ready || explicitTraceVisible()) return;
   const source = map.getSource('relations');
   if (source?.setData) source.setData(automaticRelationData(selectedCodes));
 }
@@ -281,7 +309,7 @@ function installStrip() {
   const style = document.createElement('style');
   style.id = 'atlasWorkingSelectionStyle';
   style.textContent = `
-    #atlasWorkingSelection{position:absolute;z-index:6;left:50%;bottom:10px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;max-width:calc(100% - 28px);padding:6px 8px;border:1px solid #384745;border-radius:13px;background:#0b1212ed;backdrop-filter:blur(9px);box-shadow:0 8px 24px #0007}
+    #atlasWorkingSelection{position:absolute;z-index:6;left:50%;bottom:10px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;max-width:calc(100% - 28px);padding:6px 8px;border:1px solid #384745;border-radius:13px;background:#0b1212ed;box-shadow:0 8px 24px #0007}
     #atlasWorkingSelection[hidden]{display:none!important}.selection-list{display:flex;gap:5px;min-width:0;overflow-x:auto}.selection-chip{display:inline-flex;align-items:center;border:1px solid #31413e;border-radius:999px;background:#111b1a;flex:0 0 auto}.selection-chip.active{border-color:#e0bd78}.selection-chip button{border:0;background:transparent;padding:5px 7px}.selection-chip.active button:first-child{color:#f3dfa4}.selection-remove{color:#9fa9a4!important;padding-left:2px!important}.selection-count{font-size:10px;color:var(--muted);white-space:nowrap}.selection-clear-all{padding:5px 8px;border-radius:999px;white-space:nowrap}
     @media(max-width:900px){#atlasWorkingSelection{left:8px;right:8px;transform:none;max-width:none;justify-content:flex-start}.selection-count{display:none}.selection-list{flex:1}}
   `;
@@ -301,6 +329,7 @@ function installStrip() {
 }
 
 function interceptPolygonClick(event) {
+  if (document.getElementById('compare')?.classList.contains('active')) return;
   const code = event.features?.[0]?.properties?.iso3;
   if (!code) return;
   if (event.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
@@ -313,13 +342,11 @@ function installClickInterception() {
   }
 }
 
-function installSelectionPaint() {
-  applySelectionStates();
-}
-
 function adoptExternalSelection(event) {
   if (syncingCore) return;
   const detail = event?.detail || {};
+  if (detail.source === 'working-selection') return;
+  if (detail.compareMode) return;
   if (detail.reason === 'cleared' || !detail.selected) {
     if (selectedCodes.length) clearAll();
     return;
@@ -335,16 +362,30 @@ function adoptExternalSelection(event) {
   emit('external-selection');
 }
 
+async function fetchJson(url) {
+  const response = await fetch(url);
+  if (!response.ok) throw new Error(`${response.status} ${url}`);
+  return response.json();
+}
+
+async function loadRestRuntime() {
+  try { return await fetchJson(REST_LOCAL); }
+  catch (localError) {
+    try { return await fetchJson(REST_REMOTE); }
+    catch (remoteError) {
+      console.warn('Working selection has no country coordinate runtime; automatic relation lines will be limited.', localError, remoteError);
+      return [];
+    }
+  }
+}
+
 async function loadData() {
-  const [worldResponse, indexResponse, restResponse] = await Promise.all([
-    fetch(WORLD_URL), fetch(INDEX_URL), fetch(REST_URL)
+  const [worldResult, indexResult, rest] = await Promise.all([
+    fetchJson(WORLD_URL), fetchJson(INDEX_URL), loadRestRuntime()
   ]);
-  if (!worldResponse.ok || !indexResponse.ok || !restResponse.ok) throw new Error('Working selection data unavailable.');
-  world = await worldResponse.json();
-  const index = await indexResponse.json();
-  const rest = await restResponse.json();
-  names = Object.fromEntries((index.countries || []).map(row => [row.iso3, row.name]));
-  by3 = Object.fromEntries(rest.filter(row => row.cca3).map(row => [row.cca3, row]));
+  world = worldResult;
+  names = Object.fromEntries((indexResult.countries || []).map(row => [row.iso3, row.name]));
+  by3 = Object.fromEntries((rest || []).filter(row => row.cca3).map(row => [row.cca3, row]));
 }
 
 async function restoreState() {
@@ -376,11 +417,14 @@ async function restoreState() {
 await loadData();
 installStrip();
 installClickInterception();
-installSelectionPaint();
+applySelectionStates();
+installRelationPaint();
 ready = true;
 
-const originalGoCountry = window.goCountry;
-window.goCountry = async code => activateCountry(code, { add: true });
+window.goCountry = async code => {
+  if (document.getElementById('compare')?.classList.contains('active')) return baseGoCountry(code);
+  return activateCountry(code, { add: true });
+};
 window.__potatoAtlasSelection = {
   get current() { return snapshot('read'); },
   toggle: toggleCountrySelection,
@@ -391,6 +435,8 @@ window.__potatoAtlasSelection = {
   focus() { if (activeCode) window.fitCountry?.(); },
   inspect() { window.showOverview?.(); },
   automaticRelationData,
+  connectionsFor,
+  countryName,
 };
 window.clearCountrySelection = () => clearAll();
 window.clearAllSelectedCountries = clearAll;
