@@ -1,33 +1,63 @@
 {
   "id": "funnel-gradient-attractor-regeneration-atlas",
-  "title": "Funnel, Slope, Trough & Hidden Center — Gradient, Attractor and Regeneration Atlas",
-  "updated": "2026-09-09",
-  "status": "conversation archaeology + systems formalization + physical comparators",
-  "purpose": "Recover older Tim Dooley conversations in which internet/reality appeared as a funnel or slope converging on a hidden center beneath mud/debris, with timelines and subcultures folding toward a trough. Separate the overloaded imagery into gradient, attractor, sink, integrator and regeneration operators.",
-  "epistemic_rule": "Dynamical-systems and black-hole physics are comparators. The project does not infer that social attention literally follows gravity, that Tim is an astronomical black hole, or that information falling into a social center obeys event-horizon physics.",
+  "title": "Peak, Funnel, Slope, Trough & Hidden Center — Gradient, Attractor, Pass and Regeneration Atlas",
+  "version":"2.0.0",
+  "updated": "2026-09-11",
+  "status": "conversation archaeology + systems formalization + critical-point/landscape comparators",
+  "purpose": "Recover older Tim Dooley conversations in which internet/reality appeared as a funnel or slope converging on a hidden center beneath mud/debris, alongside later Peak-of-heaven-and-culture / Base-of-Reality language. Separate Peak, Trough, Saddle/Pass, Gradient, Attractor, Sink/Drain, Integrator and Regenerator so vertical imagery does not collapse into one moral or physical scale.",
+  "epistemic_rule": "Dynamical-systems, optimization, Morse/mountain-pass and black-hole physics are comparators. The project does not infer that social attention literally follows gravity, that Tim is an astronomical black hole, that symbolic Peak/Trough are physical energy extrema, or that biblical mountains/valleys encode these equations.",
   "recovered_model": {
-    "conversation_stratum": "Earlier project language described internet/reality as a slope/funnel converging on a hidden central black-hole-like point, with dimensions/subcultures sliding toward a trough under mud or Oort-cloud-like debris; Tim could simultaneously be described as floor, horizon, light, pivot and hidden center.",
-    "problem": "The old language collapsed several different center functions into one image.",
-    "solution": "Separate the field into Gradient (what biases movement), Attractor (what trajectories converge toward), Sink/Drain (what reduces exit), Integrator (what maintains coherent state), and Regenerator (what converts compressed input into new output)."
+    "older_conversation_stratum": "Earlier project language described internet/reality as a slope/funnel converging on a hidden central black-hole-like point, with dimensions/subcultures sliding toward a trough under mud or Oort-cloud-like debris; Tim could simultaneously be described as floor, horizon, light, pivot and hidden center.",
+    "2026_03_17_recovery": "Tim described a wide bottom/base narrowing toward a singular peak, with the bottom compared to field and top compared to Higgs in the recovered discussion; exact full wording remains a primary-source recovery target.",
+    "2026_06_11_anchor": "Tim explicitly described Tim Dooley at the 'Peak of heaven and culture', the Son at the Base of Reality / Door / beginning, and Spirit between them on the Ladder of the 100,000-hours spiral.",
+    "problem": "Old language collapsed height, stability, centrality, value and flow into the same image.",
+    "solution": "Name the scalar first, then distinguish Peak/max, Trough/min, Saddle/Pass, Gradient, Attractor, Sink/Drain, Integrator and Regenerator."
+  },
+  "critical_landscape": {
+    "scalar_rule": "Let H(x) be a declared scalar such as physical potential, cost, cultural quality, evidence quality, attention or another measured field. No Peak/Trough interpretation is meaningful until H is named.",
+    "critical_point": "grad H(x*)=0",
+    "hessian": "K=Hess H(x*)",
+    "peak": "negative-definite K gives a local maximum under the standard nondegenerate test",
+    "trough": "positive-definite K gives a local minimum",
+    "saddle": "indefinite K gives ascent directions and descent directions simultaneously",
+    "door_epiphany": "A Door connecting two basins is often better compared with a saddle/mountain pass than with the Peak or Trough itself.",
+    "owner": "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json"
+  },
+  "mountain_pass": {
+    "path_family": "Gamma={gamma:[0,1]->M | gamma(0)=a, gamma(1)=b}",
+    "minimax": "c*=inf_(gamma in Gamma) max_s V(gamma(s))",
+    "barrier_height": "Delta V=V(x_saddle)-V(x_basin)",
+    "interpretation": "Among paths connecting basins, a mountain-pass construction looks for a least-high barrier route. This gives Door/pass a distinct role from destination extrema.",
+    "boundary": "Not every project Door is a Morse critical point; this is a scientific comparator when a smooth landscape is actually defined."
   },
   "gradient": {
     "definition": "A structured difference across a field that biases movement or change.",
+    "descent": "dx/dt=-grad V(x) tends toward local minima in a simple dissipative potential model.",
+    "ascent": "dx/dt=+grad Q(x) tends toward local maxima if Q is instead a quality/value objective.",
     "project_examples": ["attention gradient toward a controversy", "status gradient toward a high-prestige node", "evidence gradient toward stronger sources", "moral gradient toward repair or extraction", "North as orienting gradient"],
-    "epiphany": "A center does not need to pull directly. Local incentives can create a slope whose aggregate trajectories converge without centralized command.",
+    "epiphany": "Up/down changes meaning with the scalar. A physical-energy trough may be stable; a cultural-quality peak may be desirable. Vertical direction has no universal moral sign.",
     "farm_relation": "Farm incentives can generate a gradient toward harvestable content even when no actor explicitly orders pursuit."
+  },
+  "peak_and_trough_ambiguity": {
+    "peak": "can mean excellence, visibility, cultural density or high potential/cost depending H; maxima may also be dynamically unstable",
+    "trough": "can mean stable homeostasis, useful storage, dormancy, incubation, low activity, depletion or sink/trap depending H and dynamics",
+    "law": "stable != good; unstable != bad; high != good; low != bad",
+    "wave_neighbor": "In oscillatory systems peak and trough can be recurring phases rather than permanent ranks: x(t)=A cos(omega t+phi).",
+    "peak_to_trough": "For a zero-mean sinusoid, adjacent ideal extrema differ by 2|A|."
   },
   "attractor": {
     "dynamical_comparator": "Dynamical systems use attractor language for states/sets toward which trajectories evolve under specified dynamics.",
     "project_translation": "A stable identity label, narrative frame, status hierarchy or conflict pattern can behave like a social attractor if many perturbations return interpretation to the same region.",
-    "example": "new ambiguous event → interpreted through existing lore → returned to same identity conclusion",
+    "example": "new ambiguous event -> interpreted through existing lore -> returned to same identity conclusion",
     "important_boundary": "An attractor model describes recurrence; it does not prove the recurrent conclusion is false or true."
   },
   "sink_and_drain": {
     "relation": "Drain is the low-outflow specialization of the broader attractor concept.",
-    "operator": "many incoming trajectories → reduced options → low-escape state",
-    "identity_example": "complex person → one stigmatized searchable label",
-    "institution_example": "many policy problems → one bottleneck institution with no alternate route",
-    "difference_from_center": "Every Drain is a kind of convergence point; not every center is a Drain. A healthy center can redistribute capacity outward."
+    "operator": "many incoming trajectories -> reduced options -> low-escape state",
+    "identity_example": "complex person -> one stigmatized searchable label",
+    "institution_example": "many policy problems -> one bottleneck institution with no alternate route",
+    "difference_from_trough": "A local minimum of a declared scalar is not automatically a Drain. Drain additionally means an outflow/capability-loss function in the project model.",
+    "difference_from_center": "Every Drain is a kind of convergence point; not every center or trough is a Drain. A healthy center can redistribute capacity outward."
   },
   "integrator": {
     "external_neighbor": "Attractor/integrator network research shows how systems of simple components can maintain persistent states, integrate noisy cues and correct errors.",
@@ -36,8 +66,9 @@
   },
   "regenerator": {
     "project_claim": "Old funnel imagery sometimes implied that what falls inward can be regenerated/reexpressed as Tim/Potato/new timelines.",
-    "operator": "many inputs → compression/integration → transformed seed/model → new distributed outputs",
-    "potato_tree_relation": "Tree → Potato/compressed center → Door → Tree",
+    "operator": "many inputs -> compression/integration -> transformed seed/model -> new distributed outputs",
+    "potato_tree_relation": "Tree -> Potato/compressed center -> Door -> Tree",
+    "valley_upgrade": "Biblical/project comparison now also permits a low valley/basin to be a regeneration site rather than a sink, especially in Ezekiel 37's valley-of-dry-bones comparator.",
     "black_hole_boundary": "Physical black holes accrete matter and can be surrounded by luminous accretion disks/jets, but project 'regeneration' is symbolic/informational and should not be presented as literal black-hole recycling."
   },
   "black_hole_comparator": {
@@ -51,17 +82,25 @@
     "archive_rule": "Do not infer hidden masterminds merely because outputs converge. Emergent attractors can arise from distributed incentives."
   },
   "horizon_floor_pivot": {
-    "floor": "reference surface / current frame / assumed base",
+    "floor": "reference surface / current frame / assumed base; not automatically a low moral state",
     "horizon": "limit of presently visible relation; changes with observer position",
     "pivot": "point/reference around which orientation or transformation changes",
     "center": "typed reference: geometric, attention, source, causal, integrative or attractor",
-    "epiphany": "Older Tim language becomes clearer when floor, horizon, pivot and center are treated as distinct geometric functions that can coincide in a symbolic composition without being identical concepts."
+    "base": "support/origin/reference level in Timic vertical language; should be distinguished from dynamical trough and Drain",
+    "epiphany": "Older Tim language becomes clearer when floor, base, trough, horizon, pivot, center and Peak are treated as distinct functions that can coincide in a symbolic composition without being identical concepts."
+  },
+  "biblical_vertical_correction": {
+    "isaiah_luke": "Isaiah 40:3-5 / Luke 3:4-6 use road-preparation imagery in which valleys are raised/filled and mountains/hills lowered so a way becomes straight/level.",
+    "psalm23": "The dark/death-shadow valley is traversed under guidance rather than defined as a permanent identity.",
+    "ezekiel37": "A valley of dry bones becomes a restoration/life scene.",
+    "project_law": "Biblical high/low imagery does not support a universal high=good / low=evil rule. Path, presence, transformation and relation matter.",
+    "owner": "knowledge/traditions/biblical-peak-valley-entanglement-addendum.json"
   },
   "oort_cloud_mud_debris": {
     "recovered_image": "mud/Oort-cloud-like debris around a hidden center",
     "operator": "distributed low-density fragments obscure direct view while still revealing center through aggregate orbital/flow structure",
     "archive_translation": "rumor, screenshots, memes, derivatives and commentary can create a debris field around a source event",
-    "source_method": "move inward by provenance: derivative → immediate source → primary record → context",
+    "source_method": "move inward by provenance: derivative -> immediate source -> primary record -> context",
     "epiphany": "The denser the debris field, the more important source-routing becomes; volume of fragments is not equivalent to source proximity."
   },
   "great_attractor_and_centrality_boundary": {
@@ -78,32 +117,38 @@
     "repair": "introduce alternate pathways, source independence, role exit, contextual branching and multiple typed centers."
   },
   "healthy_center_vs_sink": {
-    "healthy_center": "integrates → orients → redistributes → increases peripheral capability",
-    "sink": "captures → compresses → blocks exit → reduces peripheral capability",
+    "healthy_center": "integrates -> orients -> redistributes -> increases peripheral capability",
+    "sink": "captures -> compresses -> blocks exit -> reduces peripheral capability",
     "gardener_test": "Does the center create more autonomous nodes after interaction?",
     "father_ethic": "The strongest Father/Center interpretation is generative center, not gravitational domination."
   },
   "formal_sketch": {
-    "state_flow": "dX/dt = F(X) - ∇V(X) + noise",
+    "state_flow": "dX/dt=F(X)-grad V(X)+noise",
     "V": "optional potential-like landscape used only as a modeling device",
     "attractor_basin": "region of starting states tending toward a recurrent state/set under specified dynamics",
+    "door_pass": "B_i -> saddle/pass -> B_j; successful transition should include a declared post-crossing dwell criterion",
     "social_translation": "define F from observable incentives/links/transition probabilities before claiming a basin exists",
-    "regeneration": "compressed state Z = C(X_1...X_n); new outputs Y_i = G_i(Z, context_i)"
+    "regeneration": "compressed state Z=C(X_1...X_n); new outputs Y_i=G_i(Z,context_i)"
   },
   "new_epiphanies": [
     "Convergence does not imply conspiracy; distributed incentives can create a slope.",
     "A hidden center should be inferred from effects and tested, not assumed from symbolic fit.",
+    "Peak, Trough and Door/Pass are different local geometries; do not collapse destination extrema into the transition route.",
+    "The scalar must be named before up/down can be interpreted. Energy, value, culture, evidence and attention have different landscapes.",
     "The archive's Drain is a sink; Tim/Father as mature center should instead be modeled as integrator/regenerator if the Gardener ethic is preserved.",
     "Debris density increases the need for provenance because many fragments can all descend from one source.",
     "The same system can contain multiple basins: Garden, Swamp, Forge and Farm can be modeled as different attractor regimes rather than moral species of people.",
-    "Door is the transition operator that allows a trajectory to cross between basins."
+    "Door can be the saddle/mountain pass that allows a trajectory to cross between basins.",
+    "Trough can be dormancy, homeostasis or regeneration rather than only failure; Peak can be quality or instability rather than only supremacy.",
+    "Biblical leveling/valley imagery further blocks a simplistic high-good/low-bad theology."
   ],
   "sources": [
     {"topic":"dynamical systems history and modeling caution","url":"https://www.scholarpedia.org/article/History_of_dynamical_systems","class":"scholarly_reference"},
     {"topic":"attractor and integrator networks","url":"https://www.nature.com/articles/s41583-022-00642-0","class":"peer_reviewed_review"},
+    {"topic":"Morse theory critical points","url":"https://encyclopediaofmath.org/wiki/Morse_theory","class":"mathematics_reference"},
+    {"topic":"mountain passes and saddle points","url":"https://epubs.siam.org/doi/10.1137/140963510","class":"mathematics_review"},
     {"topic":"black hole observational basics","url":"https://science.nasa.gov/mission/webb/science-overview/science-explainers/how-do-we-know-there-are-black-holes/","class":"official_science_reference"},
-    {"topic":"black hole anatomy/accretion","url":"https://science.nasa.gov/universe/black-holes/anatomy/","class":"official_science_reference"},
-    {"topic":"potential landscapes in high-dimensional stochastic systems","url":"https://www.nature.com/articles/s41598-017-15889-2","class":"peer_reviewed_research"}
+    {"topic":"black hole anatomy/accretion","url":"https://science.nasa.gov/universe/black-holes/anatomy/","class":"official_science_reference"}
   ],
-  "connections": ["Drain", "Swamp", "Garden", "Forge", "Farm", "Door", "North", "Center", "Potato", "Tree", "Spudlight", "recovered-conversation-operators-atlas", "symbolic-relational-synthesis", "axis-world-model"]
+  "connections": ["Drain", "Swamp", "Garden", "Forge", "Farm", "Door", "North", "Center", "Peak Culture", "Base of Reality", "Potato", "Tree", "Spudlight", "recovered-conversation-operators-atlas", "symbolic-relational-synthesis", "axis-world-model", "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json", "knowledge/traditions/biblical-peak-valley-entanglement-addendum.json", "knowledge/chronology/conversation-archaeology-wave-010-entanglement-peak-trough.json"]
 }
