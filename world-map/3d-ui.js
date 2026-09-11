@@ -54,8 +54,8 @@ observer?.observe(panel, {childList:true, subtree:true, characterData:true});
 
 function summaryText(id,text,active=false){
   const summary=document.querySelector(`#${id}>summary`);if(!summary)return;
-  // Idempotence matters here. Rewriting textContent creates a child-list mutation;
-  // older code combined that with a body-wide MutationObserver and could spin.
+  // Idempotence matters. Rewriting textContent creates child mutations; the old
+  // body-wide observer could feed those mutations back into this function.
   if(summary.textContent!==text) summary.textContent=text;
   summary.classList.toggle('active-state',active);
 }
@@ -85,6 +85,7 @@ function updateViewSummary(){
   const parts=[];
   if(height!=='flat')parts.push(height);
   if(app?.classList.contains('ui-focus'))parts.push('focus');
+  if(window.__potatoAtlasMap?.__potatoAtlasBasemapAttached)parts.push('basemap');
   summaryText('viewMenu',parts.length?`View · ${parts.join(' + ')}`:'View',parts.length>0);
 }
 function updateMenuSummaries(){updateLayerSummary();updateTraceSummary();updateTimeSummary();updateViewSummary();}
@@ -94,6 +95,7 @@ document.addEventListener('change',event=>{
 });
 document.addEventListener('click',event=>{if(event.target?.id==='entityTraceToggle')queueMicrotask(updateTraceSummary);});
 window.addEventListener('atlas-time-change',event=>updateTimeSummary(event.detail));
+window.addEventListener('potato-atlas-basemap-change',updateViewSummary);
 
 const layersPop = document.querySelector('#layersMenu .menu-pop');
 function relocateInjectedLayerControls(){
@@ -103,13 +105,11 @@ function relocateInjectedLayerControls(){
     if(node&&layersPop&&node.parentElement!==layersPop){layersPop.appendChild(node);moved=true;}
   }
   if(moved) updateLayerSummary();
-  return Boolean(document.getElementById('axisFieldView'))&&Boolean(document.getElementById('empiricalNetworkView'));
 }
 
 function installAxisToggle(){
   const nav=document.getElementById('axisDepthNavigator');
-  if(!nav)return false;
-  if(document.getElementById('axisCompactToggle'))return true;
+  if(!nav||document.getElementById('axisCompactToggle'))return Boolean(nav);
   nav.hidden=localStorage.getItem('atlas:axis-open')!=='1';
   const button=document.createElement('button');
   button.id='axisCompactToggle';
@@ -127,36 +127,64 @@ function installAxisToggle(){
   return true;
 }
 
-// Optional modules finish their own async data fetches after import() resolves.
-// Poll for their injected controls for a finite window instead of observing the
-// entire document forever. The old body observer mutated summary text from its
-// own callback, creating a self-sustaining MutationObserver feedback loop.
-let settleAttempts=0;
-function settleLateControls(){
-  const layersReady=relocateInjectedLayerControls();
-  const axisReady=installAxisToggle();
-  updateMenuSummaries();
-  settleAttempts+=1;
-  if((!layersReady||!axisReady)&&settleAttempts<40) setTimeout(settleLateControls,250);
+function installBasemapControl(){
+  if(document.getElementById('basemapToggle'))return;
+  const pop=document.querySelector('#viewMenu .menu-pop');
+  const map=window.__potatoAtlasMap;
+  if(!pop||!map?.__potatoAtlasAttachBasemap)return;
+  const button=document.createElement('button');
+  button.id='basemapToggle';
+  button.textContent=map.__potatoAtlasBasemapAttached?'Basemap · on':'Load OSM basemap';
+  button.title='Load optional OpenStreetMap raster context. The country atlas works without it.';
+  button.classList.toggle('active',map.__potatoAtlasBasemapAttached);
+  button.addEventListener('click',()=>{
+    const attached=map.__potatoAtlasAttachBasemap();
+    button.textContent=attached?'Basemap · on':'Basemap unavailable';
+    button.classList.toggle('active',attached);
+    button.disabled=attached;
+    updateViewSummary();
+  });
+  pop.appendChild(button);
 }
-settleLateControls();
-window.addEventListener('potato-atlas-bootstrap-complete',()=>setTimeout(settleLateControls,0),{once:true});
+
+// Optional modules announce themselves when their import is complete. React to
+// those events exactly once instead of polling the document every 250 ms for ten
+// seconds. This keeps an idle world map genuinely idle.
+window.addEventListener('potato-atlas-module-ready',event=>{
+  const label=event.detail?.label;
+  if(label==='Fields'||label==='Networks')relocateInjectedLayerControls();
+  if(label==='Axis depth')installAxisToggle();
+  updateMenuSummaries();
+});
+installBasemapControl();
 
 focusMode?.addEventListener('click',()=>queueMicrotask(updateViewSummary));
 updateMenuSummaries();
 
-// Entity-aware Trace is genuinely opt-in. It is loaded only when the Trace menu
-// is opened, not during startup, so graph data/observers cannot affect first use.
+function sharedLoad(label,path){
+  return window.__potatoAtlasLoadModule
+    ? window.__potatoAtlasLoadModule(label,path)
+    : import(path).then(()=>true).catch(error=>{console.warn(`${label} unavailable:`,error);return false;});
+}
+
+let pathfinderPromise=null;
+function ensurePathfinder(){
+  if(!pathfinderPromise)pathfinderPromise=sharedLoad('Path finder','./3d-pathfinder.js');
+  return pathfinderPromise;
+}
 let entityTracePromise=null;
 function ensureEntityTrace(){
   if(!entityTracePromise){
-    entityTracePromise=import('./3d-entity-trace.js')
-      .then(()=>{updateTraceSummary();return true;})
-      .catch(error=>{console.warn('Entity Trace enhancement unavailable:',error);return false;});
+    entityTracePromise=sharedLoad('Entity Trace','./3d-entity-trace.js')
+      .then(result=>{updateTraceSummary();return result;});
   }
   return entityTracePromise;
 }
 const traceMenu=document.getElementById('traceMenu');
-traceMenu?.addEventListener('toggle',()=>{if(traceMenu.open)ensureEntityTrace();});
+traceMenu?.addEventListener('toggle',()=>{
+  if(!traceMenu.open)return;
+  ensurePathfinder();
+  ensureEntityTrace();
+});
 
-window.__potatoAtlasUI={setPanel,setFocus,updateMenuSummaries,ensureEntityTrace};
+window.__potatoAtlasUI={setPanel,setFocus,updateMenuSummaries,ensurePathfinder,ensureEntityTrace};
