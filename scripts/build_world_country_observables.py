@@ -10,6 +10,8 @@ from __future__ import annotations
 
 import json
 import os
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -19,169 +21,109 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "countries" / "index.json"
 OUT = Path(os.environ.get("ATLAS_D4_OUT", ROOT / "data" / "world-country-observables.json"))
 EXPECTED = 195
-USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.3"
+USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.4"
+BATCH_SIZE = 4
 
 METRICS = {
-    "population": {
-        "label": "Population",
-        "indicator": "SP.POP.TOTL",
-        "unit": "persons",
-        "domain": "demography",
-        "role": "scale",
-    },
-    "gdp": {
-        "label": "GDP",
-        "indicator": "NY.GDP.MKTP.CD",
-        "unit": "current USD",
-        "domain": "economy",
-        "role": "production scale",
-    },
-    "gdp_per_capita": {
-        "label": "GDP / person",
-        "indicator": "NY.GDP.PCAP.CD",
-        "unit": "current USD/person",
-        "domain": "economy",
-        "role": "production per person",
-    },
-    "real_growth": {
-        "label": "Real GDP growth",
-        "indicator": "NY.GDP.MKTP.KD.ZG",
-        "unit": "percent/year",
-        "domain": "economy",
-        "role": "motion",
-    },
-    "unemployment": {
-        "label": "Unemployment",
-        "indicator": "SL.UEM.TOTL.ZS",
-        "unit": "percent of labour force",
-        "domain": "labour",
-        "role": "labour utilization",
-    },
-    "labor_force_participation": {
-        "label": "Labour-force participation",
-        "indicator": "SL.TLF.CACT.ZS",
-        "unit": "percent of population ages 15+",
-        "domain": "labour",
-        "role": "labour-market participation",
-    },
-    "life_expectancy": {
-        "label": "Life expectancy",
-        "indicator": "SP.DYN.LE00.IN",
-        "unit": "years",
-        "domain": "health/demography",
-        "role": "human outcome",
-    },
-    "fertility_rate": {
-        "label": "Fertility rate",
-        "indicator": "SP.DYN.TFRT.IN",
-        "unit": "births per woman",
-        "domain": "demography",
-        "role": "population reproduction",
-    },
-    "urbanization": {
-        "label": "Urban population",
-        "indicator": "SP.URB.TOTL.IN.ZS",
-        "unit": "percent of population",
-        "domain": "settlement",
-        "role": "urbanization",
-    },
-    "internet_penetration": {
-        "label": "Internet use",
-        "indicator": "IT.NET.USER.ZS",
-        "unit": "percent of population",
-        "domain": "technology/information",
-        "role": "digital connectivity",
-    },
-    "electricity_access": {
-        "label": "Electricity access",
-        "indicator": "EG.ELC.ACCS.ZS",
-        "unit": "percent of population",
-        "domain": "infrastructure/energy",
-        "role": "basic energy access",
-    },
-    "trade_openness": {
-        "label": "Trade / GDP",
-        "indicator": "NE.TRD.GNFS.ZS",
-        "unit": "percent of GDP",
-        "domain": "trade",
-        "role": "cross-border trade intensity",
-    },
-    "net_migration": {
-        "label": "Net migration",
-        "indicator": "SM.POP.NETM",
-        "unit": "persons over reference period",
-        "domain": "demography/migration",
-        "role": "cross-border population flow balance",
-    },
-    "energy_dependence": {
-        "label": "Net energy imports",
-        "indicator": "EG.IMP.CONS.ZS",
-        "unit": "percent of energy use",
-        "domain": "energy",
-        "role": "external energy balance",
-    },
-    "fdi_inflow": {
-        "label": "FDI net inflow",
-        "indicator": "BX.KLT.DINV.WD.GD.ZS",
-        "unit": "percent of GDP",
-        "domain": "finance/investment",
-        "role": "cross-border capital inflow intensity",
-    },
-    "co2_per_capita": {
-        "label": "CO2 emissions / person",
-        "indicator": "EN.ATM.CO2E.PC",
-        "unit": "metric tons CO2/person",
-        "domain": "environment/energy",
-        "role": "territorial emissions intensity per person",
-    },
+    "population": {"label": "Population", "indicator": "SP.POP.TOTL", "unit": "persons", "domain": "demography", "role": "scale"},
+    "gdp": {"label": "GDP", "indicator": "NY.GDP.MKTP.CD", "unit": "current USD", "domain": "economy", "role": "production scale"},
+    "gdp_per_capita": {"label": "GDP / person", "indicator": "NY.GDP.PCAP.CD", "unit": "current USD/person", "domain": "economy", "role": "production per person"},
+    "real_growth": {"label": "Real GDP growth", "indicator": "NY.GDP.MKTP.KD.ZG", "unit": "percent/year", "domain": "economy", "role": "motion"},
+    "unemployment": {"label": "Unemployment", "indicator": "SL.UEM.TOTL.ZS", "unit": "percent of labour force", "domain": "labour", "role": "labour utilization"},
+    "labor_force_participation": {"label": "Labour-force participation", "indicator": "SL.TLF.CACT.ZS", "unit": "percent of population ages 15+", "domain": "labour", "role": "labour-market participation"},
+    "life_expectancy": {"label": "Life expectancy", "indicator": "SP.DYN.LE00.IN", "unit": "years", "domain": "health/demography", "role": "human outcome"},
+    "fertility_rate": {"label": "Fertility rate", "indicator": "SP.DYN.TFRT.IN", "unit": "births per woman", "domain": "demography", "role": "population reproduction"},
+    "urbanization": {"label": "Urban population", "indicator": "SP.URB.TOTL.IN.ZS", "unit": "percent of population", "domain": "settlement", "role": "urbanization"},
+    "internet_penetration": {"label": "Internet use", "indicator": "IT.NET.USER.ZS", "unit": "percent of population", "domain": "technology/information", "role": "digital connectivity"},
+    "electricity_access": {"label": "Electricity access", "indicator": "EG.ELC.ACCS.ZS", "unit": "percent of population", "domain": "infrastructure/energy", "role": "basic energy access"},
+    "trade_openness": {"label": "Trade / GDP", "indicator": "NE.TRD.GNFS.ZS", "unit": "percent of GDP", "domain": "trade", "role": "cross-border trade intensity"},
+    "net_migration": {"label": "Net migration", "indicator": "SM.POP.NETM", "unit": "persons over reference period", "domain": "demography/migration", "role": "cross-border population flow balance"},
+    "energy_dependence": {"label": "Net energy imports", "indicator": "EG.IMP.CONS.ZS", "unit": "percent of energy use", "domain": "energy", "role": "external energy balance"},
+    "fdi_inflow": {"label": "FDI net inflow", "indicator": "BX.KLT.DINV.WD.GD.ZS", "unit": "percent of GDP", "domain": "finance/investment", "role": "cross-border capital inflow intensity"},
+    "co2_per_capita": {"label": "CO2 emissions / person", "indicator": "EN.ATM.CO2E.PC", "unit": "metric tons CO2/person", "domain": "environment/energy", "role": "territorial emissions intensity per person"},
 }
 
 INDICATOR_TO_METRIC = {spec["indicator"]: metric_id for metric_id, spec in METRICS.items()}
 
 
-def get_json(url: str, timeout: int = 180):
-    req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(req, timeout=timeout) as response:
-        return json.load(response)
+def get_json(url: str, timeout: int = 180, attempts: int = 3):
+    last_error: Exception | None = None
+    for attempt in range(1, attempts + 1):
+        try:
+            req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+            with urllib.request.urlopen(req, timeout=timeout) as response:
+                return json.load(response)
+        except (urllib.error.URLError, urllib.error.HTTPError, TimeoutError, json.JSONDecodeError) as exc:
+            last_error = exc
+            if attempt < attempts:
+                time.sleep(attempt * 1.5)
+    raise RuntimeError(f"World Bank request failed after {attempts} attempts: {last_error}")
 
 
-def fetch_all(wanted: set[str]) -> dict[str, dict[str, list[dict]]]:
-    """Fetch the configured Source-2 WDI D4 indicators in one batched request."""
-    indicators = ";".join(spec["indicator"] for spec in METRICS.values())
-    query = urllib.parse.urlencode({
-        "format": "json",
-        "source": 2,
-        "per_page": 20000,
-        "mrnev": 2,
-    })
-    payload = get_json(
-        f"https://api.worldbank.org/v2/country/all/indicator/{urllib.parse.quote(indicators, safe=';')}?{query}"
-    )
+def empty_series(wanted: set[str]) -> dict[str, dict[str, list[dict]]]:
+    return {metric_id: {code: [] for code in wanted} for metric_id in METRICS}
+
+
+def fetch_batch(metric_ids: list[str], wanted: set[str]) -> dict[str, dict[str, list[dict]]]:
+    indicators = ";".join(METRICS[metric_id]["indicator"] for metric_id in metric_ids)
+    query = urllib.parse.urlencode({"format": "json", "source": 2, "per_page": 12000, "mrnev": 2})
+    url = f"https://api.worldbank.org/v2/country/all/indicator/{urllib.parse.quote(indicators, safe=';')}?{query}"
+    payload = get_json(url)
     if not isinstance(payload, list) or len(payload) < 2 or not isinstance(payload[1], list):
-        raise RuntimeError("World Bank returned malformed batched D4 payload")
+        raise RuntimeError(f"World Bank returned malformed D4 payload for batch {metric_ids}")
 
-    grouped = {
-        metric_id: {code: [] for code in wanted}
-        for metric_id in METRICS
-    }
+    allowed = set(metric_ids)
+    grouped = {metric_id: {code: [] for code in wanted} for metric_id in metric_ids}
     for row in payload[1]:
         code = str(row.get("countryiso3code") or "").upper()
         indicator = str((row.get("indicator") or {}).get("id") or "")
         metric_id = INDICATOR_TO_METRIC.get(indicator)
         value = row.get("value")
         year = str(row.get("date") or "")
-        if code not in wanted or not metric_id or value is None or not year:
+        if code not in wanted or metric_id not in allowed or value is None or not year:
             continue
-        grouped[metric_id][code].append({
-            "value": value,
-            "year": int(year) if year.isdigit() else year,
-        })
+        grouped[metric_id][code].append({"value": value, "year": int(year) if year.isdigit() else year})
+    return grouped
+
+
+def merge_series(target: dict[str, dict[str, list[dict]]], source: dict[str, dict[str, list[dict]]]) -> None:
+    for metric_id, by_code in source.items():
+        for code, observations in by_code.items():
+            target[metric_id][code].extend(observations)
+
+
+def fetch_all(wanted: set[str]) -> tuple[dict[str, dict[str, list[dict]]], int, list[str]]:
+    """Fetch D4 indicators in small resilient batches, falling back per series."""
+    grouped = empty_series(wanted)
+    metric_ids = list(METRICS)
+    request_count = 0
+    fallback_metrics: list[str] = []
+
+    for start in range(0, len(metric_ids), BATCH_SIZE):
+        batch = metric_ids[start:start + BATCH_SIZE]
+        try:
+            print(f"Fetching WDI D4 batch: {', '.join(batch)}", flush=True)
+            merge_series(grouped, fetch_batch(batch, wanted))
+            request_count += 1
+        except Exception as exc:
+            print(f"Batch failed ({', '.join(batch)}): {exc}; retrying each series separately.", flush=True)
+            for metric_id in batch:
+                fallback_metrics.append(metric_id)
+                print(f"Fetching WDI D4 fallback series: {metric_id}", flush=True)
+                merge_series(grouped, fetch_batch([metric_id], wanted))
+                request_count += 1
 
     for metric_values in grouped.values():
         for code in metric_values:
-            metric_values[code].sort(key=lambda item: str(item.get("year") or ""), reverse=True)
-            metric_values[code] = metric_values[code][:2]
-    return grouped
+            # Multiple API rows can occasionally repeat a year. Keep one value per
+            # year so D6 never interprets a duplicate observation as change.
+            unique: dict[str, dict] = {}
+            for item in metric_values[code]:
+                unique.setdefault(str(item.get("year")), item)
+            observations = list(unique.values())
+            observations.sort(key=lambda item: str(item.get("year") or ""), reverse=True)
+            metric_values[code] = observations[:2]
+    return grouped, request_count, sorted(set(fallback_metrics))
 
 
 def delta(latest: dict | None, previous: dict | None) -> dict | None:
@@ -206,24 +148,16 @@ def main() -> int:
 
     by_code = {str(country["iso3"]).upper(): country for country in countries}
     wanted = set(by_code)
-    series = fetch_all(wanted)
-    coverage = {
-        metric_id: sum(1 for observations in values.values() if observations)
-        for metric_id, values in series.items()
-    }
+    series, request_count, fallback_metrics = fetch_all(wanted)
+    coverage = {metric_id: sum(1 for observations in values.values() if observations) for metric_id, values in series.items()}
+    print(json.dumps({"d4_coverage": coverage, "requests": request_count, "fallback_metrics": fallback_metrics}, indent=2), flush=True)
 
     minimum = 150
     if coverage["population"] < minimum or coverage["gdp"] < minimum:
-        raise RuntimeError(
-            f"D4 observable coverage too low: population={coverage['population']}, "
-            f"gdp={coverage['gdp']}, required_each>={minimum}"
-        )
+        raise RuntimeError(f"D4 observable coverage too low: population={coverage['population']}, gdp={coverage['gdp']}, required_each>={minimum}")
     for metric_id in ("labor_force_participation", "fertility_rate", "electricity_access", "co2_per_capita"):
         if coverage[metric_id] < 120:
-            raise RuntimeError(
-                f"D4 observable coverage too low for {metric_id}: "
-                f"{coverage[metric_id]}, required>=120"
-            )
+            raise RuntimeError(f"D4 observable coverage too low for {metric_id}: {coverage[metric_id]}, required>=120")
 
     generated = datetime.now(timezone.utc).isoformat()
     rows = {}
@@ -236,47 +170,28 @@ def main() -> int:
             latest = observations[0]
             previous = observations[1] if len(observations) > 1 else None
             item = {
-                "value": latest["value"],
-                "year": latest["year"],
-                "unit": spec["unit"],
-                "source": "World Bank World Development Indicators",
-                "source_id": "world-bank-wdi",
-                "indicator": spec["indicator"],
-                "status": "sourced",
-                "retrieved_at": generated,
+                "value": latest["value"], "year": latest["year"], "unit": spec["unit"],
+                "source": "World Bank World Development Indicators", "source_id": "world-bank-wdi",
+                "indicator": spec["indicator"], "status": "sourced", "retrieved_at": generated,
             }
             if previous:
-                item["previous"] = {
-                    "value": previous["value"],
-                    "year": previous["year"],
-                }
+                item["previous"] = {"value": previous["value"], "year": previous["year"]}
                 change = delta(latest, previous)
                 if change:
                     item["change_from_previous"] = change
             metrics[metric_id] = item
-        rows[code] = {
-            "name": country["name"],
-            "country_id": country["id"],
-            "metrics": metrics,
-        }
+        rows[code] = {"name": country["name"], "country_id": country["id"], "metrics": metrics}
 
     payload = {
-        "version": "1.3.0",
+        "version": "1.4.0",
         "generated_at": generated,
         "record_type": "world-country-observables-runtime",
         "axis_dimension": 4,
         "scope": "Presentation/runtime D4 snapshot. Values remain dated sourced observations and do not determine Axis height, moral rank or project membership.",
-        "source": {
-            "id": "world-bank-wdi",
-            "name": "World Bank World Development Indicators",
-            "url": "https://data.worldbank.org/indicator",
-            "api_source_id": 2,
-        },
+        "source": {"id": "world-bank-wdi", "name": "World Bank World Development Indicators", "url": "https://data.worldbank.org/indicator", "api_source_id": 2},
+        "acquisition": {"batch_size": BATCH_SIZE, "request_count": request_count, "fallback_metrics": fallback_metrics},
         "metric_order": list(METRICS),
-        "metrics": {
-            metric_id: {**spec, "axis_role": "D4 observable"}
-            for metric_id, spec in METRICS.items()
-        },
+        "metrics": {metric_id: {**spec, "axis_role": "D4 observable"} for metric_id, spec in METRICS.items()},
         "coverage": coverage,
         "country_count": len(rows),
         "temporal_rule": "Latest available non-null observation is shown per metric; years may differ by metric. One prior comparable observation is retained when available for future D6 change analysis.",
@@ -301,13 +216,7 @@ def main() -> int:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({
-        "output": str(OUT),
-        "countries": len(rows),
-        "metrics": list(METRICS),
-        "coverage": coverage,
-        "world_bank_requests": 1,
-    }, ensure_ascii=False, indent=2), flush=True)
+    print(json.dumps({"output": str(OUT), "countries": len(rows), "metrics": list(METRICS), "coverage": coverage, "world_bank_requests": request_count, "fallback_metrics": fallback_metrics}, ensure_ascii=False, indent=2), flush=True)
     return 0
 
 
