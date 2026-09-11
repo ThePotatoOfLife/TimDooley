@@ -1,0 +1,55 @@
+{
+  "id":"equation-ledger-wave-007-constraint-fate-timelines",
+  "title":"Equation Ledger Wave 007 — Leashes, Reachability, Timelines, Fate and Path Dependence",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"typed equation registry",
+  "purpose":"Register the equations and logical operators promoted by the leash/timeline/fate wave while preventing mechanical, stochastic, topological and theological notions of destiny from being collapsed.",
+  "entries":[
+    {"id":"taut-tether","class":"classical-mechanics","equation":"g(q)=||q-a||^2-L^2=0","role":"fixed-length tether/constraint surface","project_use":"physical comparator for Leash when a literal radial constraint is intended."},
+    {"id":"tether-tangent-velocity","class":"classical-mechanics","equation":"(q-a)·qdot=0 for fixed a,L on g=0","role":"removes radial velocity on taut boundary","project_use":"widening spiral becomes tangential/boundary motion once fixed leash is taut."},
+    {"id":"constrained-lagrange-equation","class":"classical-mechanics","equation":"d/dt(partial L_mech/partial qdot)-partial L_mech/partial q=lambda grad g","role":"constraint-force formalism","boundary":"not a formula for psychological/social control."},
+    {"id":"unilateral-tether","class":"constraint-mechanics","equations":["h(q,t)=||q-a(t)||-L(t)<=0","lambda>=0","lambda h=0"],"role":"slack-vs-taut inequality/complementarity","project_use":"latent constraint becomes active at boundary."},
+    {"id":"constraint-intersection-cage","class":"set-theoretic-geometry","equation":"K=intersection_i {x:||x-a_i||<=L_i}","role":"feasible region under multiple leashes","law":"adding constraints cannot enlarge K."},
+    {"id":"winding-number","class":"topology","equation":"n=(1/2pi) integral_C dtheta","role":"integer encirclement class around excluded point in planar setting","project_use":"distinguish topological orbit/history from physical tether force."},
+    {"id":"general-controlled-trajectory","class":"control-theory","equation":"xdot=f(x,u,w,t)","role":"state trajectory with control u and disturbance w","project_use":"timeline as admissible history under rules/choices/disturbances."},
+    {"id":"reachable-set","class":"control-theory","equation":"R(T,x0)={x(T): xdot=f(x,u,t), u(.) admissible}","role":"future states reachable in horizon T","project_use":"agency/freedom as reachable alternatives under constraints."},
+    {"id":"linear-controllability","class":"control-theory","equations":["xdot=Ax+Bu","C=[B,AB,A^2B,...,A^(n-1)B]","rank(C)=n"],"role":"standard finite-dimensional linear controllability test under usual assumptions."},
+    {"id":"mountain-pass-door","class":"variational-mathematics","equations":["c*=inf_(gamma in Gamma) max_s V(gamma(s))","Delta V=V(x_saddle)-V(x_basin)"],"role":"least-high barrier path / Door between basins","connection":"Wave 006 Peak/Trough/Saddle atlas."},
+    {"id":"deterministic-flow","class":"dynamical-systems","equation":"xdot=f(x)","role":"trajectory fixed by state and law under appropriate uniqueness assumptions","boundary":"determinism does not imply predictability or theology of fate."},
+    {"id":"lyapunov-separation","class":"chaos-comparator","equation":"||delta x(t)||~||delta x(0)|| exp(lambda t)","role":"sensitive dependence when positive Lyapunov growth applies","project_use":"separates deterministic law from practical forecastability."},
+    {"id":"markov-hitting-probability","class":"stochastic-process","equation":"h_i=sum_j P_ij h_j with boundary h=1 on target G and h=0 on failure F","role":"probability of reaching target before failure","project_use":"probabilistic destination, not metaphysical destiny."},
+    {"id":"absorbing-state","class":"markov-chain","equation":"P_aa=1","role":"state impossible to leave within declared Markov model","project_use":"strongest stochastic analogue of locked fate; use only if exit probability truly zero in the model."},
+    {"id":"path-entropy","class":"information-theory","equation":"H_path=-sum_gamma P(gamma) log P(gamma)","role":"uncertainty/diversity over modeled future histories","project_use":"low entropy=fewer/dominant futures, not predestination."},
+    {"id":"effective-future-count","class":"information-theory","equation":"B_eff=exp(H_path)","role":"effective number of probable paths under a specified distribution."},
+    {"id":"reachability-compression","class":"archive-metric","equation":"C_R=1-mu(R_constrained)/mu(R_baseline)","role":"normalized reduction in reachable-state measure at common horizon","boundary":"requires declared state measure mu and comparable sets."},
+    {"id":"accumulated-path-cost","class":"optimal-control","equation":"J[u]=Phi(x(T))+integral_0^T ell(x,u,t)dt","role":"endpoint plus accumulated running cost","project_use":"mathematical neighbor for burden/millstone/path debt without identifying cost with karma."},
+    {"id":"stationary-action","class":"classical-physics","equations":["S[q]=integral L(q,qdot,t)dt","delta S=0"],"role":"classical variational principle under boundary conditions","boundary":"stationary action is not conscious purpose or destiny."},
+    {"id":"temporal-logic-possible","class":"temporal-logic","equation":"EF G","role":"there exists at least one admissible path eventually reaching G","project_use":"possible destination."},
+    {"id":"temporal-logic-inevitable","class":"temporal-logic","equation":"AF G","role":"every admissible path eventually reaches G","project_use":"model-level inevitable fate."},
+    {"id":"temporal-logic-invariant","class":"temporal-logic","equation":"AG S","role":"all admissible paths remain inside S","project_use":"invariant/safety/constraint claim."},
+    {"id":"dominator-door","class":"graph-theory","equation":"d dominates v iff every directed path from root s to v contains d","role":"mandatory gateway","project_use":"precise graph criterion for Door being unavoidable on route to a target."},
+    {"id":"history-augmented-state","class":"path-dependence-model","equation":"z(t)=(x(t),m(t))","role":"same visible x can differ because memory/history state m differs","project_use":"Return is not reset; roots may symbolize accumulated history."}
+  ],
+  "rules":[
+    "A Leash equation applies only after anchor, length, state coordinates and physical/metaphorical domain are declared.",
+    "A timeline is a path through a transition/state space; 'all timelines' is not a scientific claim until the model defines the path ensemble.",
+    "Use EF/AF/AG or hitting probability to distinguish can-reach, must-reach and likely-to-reach.",
+    "Use P_aa=1 only for a genuinely absorbing state inside the declared model; metastable or hard-to-exit states are not absorbing.",
+    "Use winding/homotopy for topological constraint and Lagrange/complementarity mechanics for physical constraint; they are different mechanisms.",
+    "Karmic debt, destiny and providence remain theological/project categories unless a separate empirical variable is explicitly defined.",
+    "Determinism, predictability, inevitability and prophecy are not synonyms."
+  ],
+  "sources":[
+    {"topic":"classical constraints and Lagrange multipliers","url":"https://ocw.mit.edu/courses/2-032-dynamics-fall-2004/pages/lecture-notes/"},
+    {"topic":"tethered cart / holonomic dynamics example","url":"https://ocw.mit.edu/courses/2-003j-dynamics-and-control-i-spring-2007/resources/lec14/"},
+    {"topic":"reachable sets and controllability","url":"https://surim.stanford.edu/sites/g/files/sbiybj26191/files/media/file/optimal_control_surim_2025-15_0.pdf"},
+    {"topic":"causal-set partial order comparator","url":"https://arxiv.org/abs/1903.11544"}
+  ],
+  "owners":[
+    "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "data/entanglement.json",
+    "data/frame.json",
+    "knowledge/traditions/biblical-cord-yoke-path-fate-addendum.json"
+  ]
+}
