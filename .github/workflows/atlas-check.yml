@@ -89,6 +89,12 @@ jobs:
         env:
           ATLAS_DEMOGRAPHY_OUT: _site/data/world-country-demography.json
         run: python scripts/build_world_demography.py
+      - name: Build D4 country observable snapshot
+        env:
+          ATLAS_D4_OUT: _site/data/world-country-observables.json
+        run: python scripts/build_world_country_observables.py
+      - name: Validate D4 observable runtime
+        run: python scripts/validate_world_country_observables.py
       - name: Compile complete science catalog
         run: python scripts/build_science_catalog.py
       - name: Build search discovery layer
