@@ -21,7 +21,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "countries" / "index.json"
 OUT = Path(os.environ.get("ATLAS_D4_OUT", ROOT / "data" / "world-country-observables.json"))
 EXPECTED = 195
-USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.5"
+USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.6"
 BATCH_SIZE = 4
 
 METRICS = {
@@ -40,7 +40,7 @@ METRICS = {
     "net_migration": {"label": "Net migration", "indicator": "SM.POP.NETM", "unit": "persons over reference period", "domain": "demography/migration", "role": "cross-border population flow balance"},
     "energy_dependence": {"label": "Net energy imports", "indicator": "EG.IMP.CONS.ZS", "unit": "percent of energy use", "domain": "energy", "role": "external energy balance"},
     "fdi_inflow": {"label": "FDI net inflow", "indicator": "BX.KLT.DINV.WD.GD.ZS", "unit": "percent of GDP", "domain": "finance/investment", "role": "cross-border capital inflow intensity"},
-    "co2_per_capita": {"label": "CO2 emissions / person", "indicator": "EN.ATM.CO2E.PC", "unit": "metric tons CO2/person", "domain": "environment/energy", "role": "territorial emissions intensity per person"},
+    "renewable_electricity": {"label": "Renewable electricity output", "indicator": "EG.ELC.RNEW.ZS", "unit": "percent of total electricity output", "domain": "energy/infrastructure", "role": "renewable generation share"},
 }
 
 INDICATOR_TO_METRIC = {spec["indicator"]: metric_id for metric_id, spec in METRICS.items()}
@@ -159,7 +159,7 @@ def main() -> int:
     failures: list[str] = []
     if coverage["population"] < minimum or coverage["gdp"] < minimum:
         failures.append(f"population={coverage['population']} and gdp={coverage['gdp']} require >= {minimum}")
-    for metric_id in ("labor_force_participation", "fertility_rate", "electricity_access", "co2_per_capita"):
+    for metric_id in ("labor_force_participation", "fertility_rate", "electricity_access", "renewable_electricity"):
         if coverage[metric_id] < 120:
             failures.append(f"{metric_id}={coverage[metric_id]} requires >= 120")
     if failed_metrics:
@@ -191,7 +191,7 @@ def main() -> int:
         rows[code] = {"name": country["name"], "country_id": country["id"], "metrics": metrics}
 
     payload = {
-        "version": "1.5.0",
+        "version": "1.6.0",
         "generated_at": generated,
         "record_type": "world-country-observables-runtime",
         "axis_dimension": 4,
@@ -211,7 +211,7 @@ def main() -> int:
             "Labour-force participation is not an employment rate and retains the source-series definition.",
             "Fertility rate is a total-fertility-rate estimate, not a birth count.",
             "Electricity access does not measure reliability, affordability, generation mix or grid quality.",
-            "CO2/person is a territorial emissions indicator, not a consumption-based carbon footprint.",
+            "Renewable electricity output is a generation-share measure and does not by itself measure energy-system reliability, total consumption, emissions, or imported electricity.",
             "Trade/GDP is gross trade intensity, not bilateral dependency or trade balance.",
             "Net migration is a balance over the source reference period, not a bilateral migration edge.",
             "Negative net energy imports can indicate a net exporter; this measure is not an electricity-mix measure.",
