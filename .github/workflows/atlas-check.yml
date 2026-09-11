@@ -94,6 +94,8 @@ jobs:
       # Mirror the public Pages build sequence before validating the built shell.
       - name: Build static site
         run: python scripts/build_site.py
+      - name: Compile Bible scripture comparator
+        run: python scripts/build_bible_study.py
       - name: Compile complete science paper library
         run: python scripts/build_science_catalog.py
       - name: Validate science paper library
