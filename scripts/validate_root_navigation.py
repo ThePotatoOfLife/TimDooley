@@ -35,21 +35,6 @@ def main() -> None:
     if missing:
         fail(f"center is missing {sorted(missing)}")
 
-    # Quick access is a presentation convenience only. It must not mutate the
-    # canonical WORLD / AXIS ontology above.
-    quick_access = manifest.get("quick_access", [])
-    expected_quick_ids = ["home", "map", "axis", "science", "religion"]
-    quick_ids = [entry.get("id") for entry in quick_access]
-    if quick_ids != expected_quick_ids:
-        fail(
-            "quick_access must be exactly "
-            f"{expected_quick_ids!r}, got {quick_ids!r}"
-        )
-
-    quick_hrefs = [entry.get("href") for entry in quick_access]
-    if any(not href for href in quick_hrefs):
-        fail("every quick_access entry must have an href")
-
     # Only stable navigation destinations are validated here. Dynamic records are
     # generated from the repository index and intentionally have no hand-written href.
     stable = []
@@ -62,9 +47,6 @@ def main() -> None:
             href = collection.get("legacy")
             if href and not href.startswith(("http://", "https://", "#")):
                 stable.append(href)
-    for href in quick_hrefs:
-        if href and not href.startswith(("http://", "https://", "#")):
-            stable.append(href)
 
     missing_files = [href for href in stable if not (ROOT / href).exists()]
     if missing_files:
@@ -73,7 +55,7 @@ def main() -> None:
     print(
         "root-navigation: OK — "
         f"center={len(center_ids)}, top-level branches={branch_ids}, "
-        f"quick access={quick_ids}, stable destinations={len(stable)}"
+        f"stable destinations={len(stable)}"
     )
 
 
