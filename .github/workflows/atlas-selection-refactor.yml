@@ -20,9 +20,10 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Apply deterministic refactor patch
+      - name: Apply deterministic refactor patches
         run: |
           python scripts/patch_atlas_selection_layers.py
+          python scripts/patch_atlas_module_groups.py
           # The permanent Pages workflow must remain untouched by this temporary
           # branch runner. The final capital layer is checked into data/ instead.
           git checkout -- .github/workflows/pages.yml
@@ -100,5 +101,5 @@ jobs:
           git config user.name 'ThePotatoOfLife'
           git config user.email 'thepotatooflife@hotmail.com'
           git add world-map scripts/validate_world_map_3d.py data/world-capitals.geo.json
-          git commit -m 'Refine country selection and future-proof atlas layers'
+          git commit -m 'Group country knowledge orbit for scalable map navigation'
           git push origin HEAD:atlas-selection-layers-20260911
