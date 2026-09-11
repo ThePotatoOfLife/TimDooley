@@ -34,7 +34,7 @@ dock.hidden = true;
 dock.innerHTML = `
   <span class="selection-name"></span>
   <button data-action="details" title="Open country details">Details</button>
-  <button data-action="connections" title="Show or hide country connections">Connections</button>
+  <button data-action="connections" title="Show or hide mapped relations">Relations</button>
   <details class="selection-more">
     <summary title="More country actions" aria-label="More country actions">•••</summary>
     <div class="selection-more-pop">
