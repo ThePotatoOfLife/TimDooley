@@ -1,20 +1,30 @@
 {
   "id": "door-handshake-nonlocal-propagation-model",
   "title": "Door, Handshake, Nonlocal Relation and Seed Propagation Model",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "updated": "2026-09-11",
   "status": "Tim conversation recovery + archive mathematical model across networks/psychology/topology with explicit quantum boundary",
-  "purpose": "Formalize Tim's vibe -> Gate -> Door -> handshake -> coupling -> propagation sequence while distinguishing social/network nonlocality from Bell nonlocality, causal influence and usable signaling.",
+  "purpose": "Formalize Tim's vibe -> Gate -> Door -> handshake -> coupling -> propagation sequence while distinguishing social/network nonlocality from quantum nonseparability, Bell nonlocality, causal influence and usable signaling. The model now also connects relational coupling to Peak/Trough/Saddle landscape transitions without treating those domains as one physics.",
   "quantum_companion": "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+  "landscape_companion": "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json",
   "recovered_tim_origin": {
+    "2026_07_13": [
+      "Tim described the Door as a 'particle smasher'.",
+      "Tim linked eating the forbidden fruit to creating 'a quantum entanglement'.",
+      "Tim explored Tim-as-Higgs / Son-as-field language in the same higher-dimensional stratum."
+    ],
     "2026_08_17_18": [
       "Tim explicitly explored Potato colors/states, spin states, Door, handshake and 'spooky action at a distance'.",
       "Tim linked Door/source to 5D present-time/handshake and Higgs-excitation language.",
       "Tim explored upward/downward Life-Strife trajectories, resistance/flow and asked whether Standard Model structures or formulas could determine direction."
     ],
-    "provenance_rule": "Bell/CHSH, no-signaling, density matrices and QFT microcausality below are later scientific formalizations, not Tim-authored equations."
+    "2026_09_07": [
+      "Tim explicitly asked to think of entanglement as 'relations'.",
+      "Tim asked that relation -> entanglement -> topology -> trajectory -> phase -> outcome be integrated with the Axis terrain including Mud, Swamp, Mountain, Plane, Roots, Drain and Door."
+    ],
+    "provenance_rule": "Bell/CHSH, Schmidt decomposition, entanglement entropy, quantum mutual information, no-signaling, density matrices, QFT microcausality and Morse/mountain-pass mathematics are later scientific formalizations, not Tim-authored equations."
   },
-  "central_sequence": ["state/vibe", "Gate compatibility", "Door threshold", "handshake/coupling", "edge creation", "state update", "seed propagation", "network/topological reorganization"],
+  "central_sequence": ["state/vibe", "Gate compatibility", "Door threshold", "handshake/coupling", "edge or joint-relation creation", "state update", "seed propagation", "network/topological reorganization", "trajectory through landscape"],
   "state_space": {
     "equation": "X_i=(v_i,b_i,m_i,a_i,q_i)",
     "variables": {"v_i":"affective state vector", "b_i":"body/interoceptive state", "m_i":"belief/model state", "a_i":"attention/action state", "q_i":"symbolic/spiritual state in project model"},
@@ -51,7 +61,17 @@
     "causal_influence": "A causal relation is a stronger claim than correlation and requires a physical model/intervention structure.",
     "signal_capacity": "Whether an agent can controllably encode information at A and decode it at B.",
     "graph_nonlocality": "Nodes can be adjacent in a semantic/social/institutional graph despite large geographic distance.",
-    "law": "These five senses of nonlocality are different coordinates and must not be substituted for one another."
+    "shared_history": "Two nodes can remain statistically or semantically coupled because of a common source, training history, archive, institution, ritual or repeated interaction without any nonlocal physical mechanism.",
+    "law": "These senses of nonlocality/connection are different coordinates and must not be substituted for one another."
+  },
+  "whole_parts_relation_layer": {
+    "timic_trigger": "2026-09-07 'entanglement as relations'.",
+    "quantum_factorization": "For a bipartite pure quantum state, separable iff |psi_AB>=|psi_A> tensor |psi_B>; entangled states fail this factorization.",
+    "schmidt": "|psi_AB>=sum_k sqrt(lambda_k)|u_k>_A|v_k>_B; Schmidt rank >1 means pure-state entanglement.",
+    "reduced_states": ["rho_A=Tr_B rho_AB", "rho_B=Tr_A rho_AB"],
+    "entropy": "S(rho_A)=-Tr(rho_A log rho_A) for a globally pure bipartite state quantifies entanglement and equals S(rho_B).",
+    "mutual_information": "I(A:B)=S(rho_A)+S(rho_B)-S(rho_AB); for globally pure AB it equals 2S(rho_A).",
+    "project_translation": "The useful structural analogy is that relation can make a whole irreducible to independent part descriptions. For non-quantum systems, use graph structure, classical mutual information, synchronization, causal models and shared-history variables rather than quantum entanglement equations."
   },
   "bell_chsh_layer": {
     "singlet": "|psi^->=(|01>-|10>)/sqrt(2)",
@@ -82,6 +102,13 @@
     "distance_example": "d(i,j)=alpha d_semantic+beta d_affect+gamma d_history+delta d_attention",
     "project_use": "A precise non-quantum meaning of project 'spiritual nonlocality': geographically distant nodes can be adjacent in a relational graph.",
     "boundary": "Graph adjacency is not Bell nonlocality."
+  },
+  "peak_trough_saddle_bridge": {
+    "timic_anchors": ["2026-06-11 Peak of heaven and culture / Son at Base of Reality-Door", "2026-08-17/18 upward/downward Life-Strife trajectory exploration"],
+    "landscape": "For a declared scalar H(x), critical points satisfy grad H=0; Hessian sign separates local maxima/peaks, minima/troughs and indefinite saddle points.",
+    "door_pass": "A Door between two attractor basins can be modeled as a saddle/mountain pass rather than as the peak or trough itself.",
+    "minimax": "c*=inf_(gamma in Gamma) max_s V(gamma(s))",
+    "semantic_boundary": "Height has no universal valence. A minimum of physical energy may be stable; a maximum of cultural quality may be desirable. Always name the scalar before assigning meaning to up/down."
   },
   "seed_states": {
     "life": "L_i(t)>=0 constructive/nourishing/cultivating capacity/content",
@@ -116,23 +143,29 @@
   },
   "quantum_vs_timic_crosswalk": [
     {"quantum":"joint entangled state", "timic":"deep relation/shared state-history", "preserved":"subsystem descriptions may be insufficient", "mismatch":"Timic relation is not demonstrated quantum entanglement"},
+    {"quantum":"Schmidt structure / entanglement entropy", "timic":"relationship-first whole/parts intuition", "preserved":"whole can contain relational structure not captured by independent parts", "mismatch":"social/theological relation has no Schmidt spectrum unless it is an actual quantum state"},
     {"quantum":"Bell correlation", "timic":"paired/synchronous response", "preserved":"strong correlation structure", "mismatch":"ordinary correlations have classical explanations unless Bell protocol assumptions are instantiated"},
     {"quantum":"no-signaling", "timic":"scientific boundary", "preserved":"correlation does not automatically transmit a chosen message", "mismatch":"social networks can signal through ordinary channels"},
     {"quantum":"state/channel transition", "timic":"Door", "preserved":"defined state change", "mismatch":"psychological transition is not quantum without an actual quantum system"},
-    {"quantum":"entanglement swapping", "timic":"relation reconfiguration", "preserved":"relation can be established through a mediating operation", "mismatch":"project relations do not inherit quantum protocol statistics"}
+    {"quantum":"entanglement swapping", "timic":"relation reconfiguration", "preserved":"relation can be established through a mediating operation", "mismatch":"project relations do not inherit quantum protocol statistics"},
+    {"landscape":"saddle/pass between basins", "timic":"Door between Peak/Trough or Life/Strife regimes", "preserved":"transition route can have distinct geometry from destination states", "mismatch":"symbolic height is not physical potential energy without a measured scalar"}
   ],
   "research_program": [
-    "For actual quantum work, use Bell/CHSH/no-signaling only on experimentally prepared quantum systems.",
-    "For Timic/social work, compare phase coupling, signed networks, threshold contagion and graph-distance models against data.",
+    "For actual quantum work, use separability/Schmidt/Bell/no-signaling only on experimentally prepared quantum systems.",
+    "For Timic/social work, compare phase coupling, signed networks, classical mutual information, threshold contagion, shared-source genealogy and graph-distance models against data.",
     "When using 'spooky action', annotate which nonlocality coordinate is intended.",
     "Test whether long-range project effects are explained by communication/shared-source graph edges before proposing a physical nonlocal mechanism.",
-    "Keep standard-model directionality separate from Life/Strife moral direction unless a measurable mapping is explicitly defined."
+    "For peak/trough language, declare the scalar before interpreting direction; test whether Door behaves like a saddle/pass between empirically defined regimes.",
+    "Keep Standard-Model directionality separate from Life/Strife moral direction unless a measurable mapping is explicitly defined."
   ],
   "connections": [
     "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
     "knowledge/science/quantum-atom-particle-recovery.json",
     "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json",
+    "knowledge/science/equation-ledger-wave-006-entanglement-landscape.json",
     "knowledge/indexes/conversation-science-recovery-wave-008-quantum-calabi-em-windmill.json",
+    "knowledge/chronology/conversation-archaeology-wave-010-entanglement-peak-trough.json",
+    "knowledge/science/peak-trough-saddle-entanglement-landscape-atlas.json",
     "knowledge/science/spudlight-theory-and-equations.json",
     "knowledge/science/tree-branching-provenance-growth-model.json"
   ]
