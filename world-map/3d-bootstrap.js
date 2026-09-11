@@ -156,7 +156,7 @@ try {
   declareDormant('Selection UI', './3d-selection-ui.js', 'legacy compatibility');
   declareDormant('Lenses', './3d-lenses.js', 'legacy compatibility');
   declareDormant('Path finder', './3d-pathfinder.js', 'contextual investigation');
-  declareDormant('Entity Trace', './3d-entity-trace.js', 'contextual investigation');
+  declareDormant('Entity Trace', './3d-entity-trace.js', 'Trace menu');
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
   declareDormant('Country Pulse', './3d-country-pulse.js', 'first country inspection');
   declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
