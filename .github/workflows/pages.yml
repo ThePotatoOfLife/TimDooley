@@ -146,6 +146,7 @@ jobs:
           test -f _site/manifest.json
           test -f _site/app/app.js
           test -f _site/app/style.css
+          test -f _site/app/home.css
           test -f _site/knowledge/core/potato-of-life.json
           test -f _site/knowledge/core/tim-dooley.json
           test -f _site/knowledge/core/tim-identity-ontology.json
@@ -182,7 +183,7 @@ jobs:
           python - <<'PY'
           import json
           from pathlib import Path
-          source = sorted((Path('knowledge') / 'science').glob('*.json'))
+          source = sorted((Path('knowledge') / 'science').rglob('*.json'))
           catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
           assert catalog['count'] == len(source), (catalog['count'], len(source))
           assert len(catalog['records']) == len(source)
@@ -190,6 +191,22 @@ jobs:
           assert page.count('class="catalog-card"') == len(source)
           assert 'r(θ) = a e<sup>bθ</sup>' in page
           print(f"Verified compiled science corpus: {len(source)} records")
+          PY
+
+          # Homepage source is curated; build-time discovery patches must not
+          # silently re-expand its primary gateway row.
+          grep -q 'Be simple and grow to light.' _site/index.html
+          grep -q 'app/home.css' _site/index.html
+          python - <<'PY'
+          from pathlib import Path
+          page = Path('_site/index.html').read_text(encoding='utf-8')
+          start = page.find('<nav class="quicknav"')
+          end = page.find('</nav>', start)
+          assert start >= 0 and end > start
+          nav = page[start:end]
+          count = nav.count('<a href=')
+          assert count == 5, f'primary homepage gateway count drifted: {count}'
+          print('Verified curated homepage: quote + 5 primary gateways')
           PY
 
           grep -q 'id="branches"' _site/index.html
