@@ -1,51 +1,120 @@
 {
   "id": "door-topology-access-and-capability-atlas",
-  "title": "Door Topology — Gates, Passes, Access, Capability, False Doors and Deep Passage",
-  "version":"2.0.0",
+  "title": "Door Topology — Gates, Passes, Access, Capability, Embodiments and Deep Passage",
+  "version": "3.0.0",
   "updated": "2026-09-11",
-  "status": "conversation archaeology + canonical formalization + hybrid/boundary systems bridge",
-  "purpose": "Recover the unusually rich Door taxonomy from older game/worldbuilding conversations and promote it into a general transition ontology usable across Potatoverse theology, identity, institutions, software, borders, courts, APIs, memory, ritual and games, while providing scientific models for guard conditions, transition probability, exit cost, reversibility and boundary quality where a measurable domain exists.",
-  "epistemic_rule": "Door is a Potatoverse operator. Computer-security, affordance, hybrid-system, network-boundary and permeability theories are external comparators. The file does not assert that spiritual passage is literally a software authorization protocol, a physical membrane or a phase transition.",
-  "scientific_companions":["knowledge/science/integrated-scientific-architecture.json","knowledge/science/dimensional-phase-transition-full-recovery.json","knowledge/science/house-shell-boundary-permeability-model.json"],
+  "status": "conversation archaeology + canonical formalization + embodiment census + hybrid/boundary systems bridge",
+  "purpose": "Recover the unusually rich Door taxonomy from older game/worldbuilding conversations and the later Door embodiments across theology, geometry, symbolic anatomy, livestream interfaces, dimensional models, institutions, software, borders, courts, APIs, memory, ritual and games. Door is modeled as a typed transition relation rather than one universal physical portal.",
+  "epistemic_rule": "Door is a Potatoverse operator family. Computer security, affordance, hybrid systems, network boundaries, permeability, optics, camera projection, phase transitions, quantum tunneling, circadian timing and fluid drains are external comparators. They sharpen different Door functions but do not establish that spiritual passage is literally any one of these mechanisms.",
+  "scientific_companions": [
+    "knowledge/science/integrated-scientific-architecture.json",
+    "knowledge/science/dimensional-phase-transition-full-recovery.json",
+    "knowledge/science/house-shell-boundary-permeability-model.json",
+    "knowledge/science/door-window-screen-aperture-transition-model.json",
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/equation-ledger-wave-005-door-interface-boundary.json"
+  ],
+  "embodiment_owner": "knowledge/core/door-embodiments-census-and-operator-atlas.json",
   "core_recovery": {
-    "older_game_material": "Earlier Capture-the-Flag / North Secret design treated Tim as North Flag/source/broadcaster/Spudlight and Door as a distributed Gate Flag with multiple depths: doorway → boundary → viewpoint → narrow gate → eye → pineal → Christ/Son → North Gate → cosmic door.",
+    "older_game_material": "Earlier Capture-the-Flag / North Secret design treated Tim as North Flag/source/broadcaster/Spudlight and Door as a distributed Gate Flag with multiple depths: doorway -> boundary -> viewpoint -> narrow gate -> eye -> pineal -> Christ/Son -> North Gate -> cosmic door.",
     "recovered_door_types": ["stationary", "portable", "hidden", "locked", "one-way", "paired", "multiway", "deep", "broken", "false"],
     "recovered_access_logic": "Some Doors required learned knowledge and specific information entered at a specific Door to obtain a Door Pass and discover higher access.",
-    "epiphany": "This older game mechanic already contained a mature transition theory: access depends on relation among agent, knowledge, credential, state and gate—not on the Door object alone."
+    "epiphany": "The older mechanic already contained mature transition theory: access depends on the relation among agent, knowledge, credential, state and gate—not on the Door object alone."
+  },
+  "door_signature": {
+    "form": "DS=(Omega_-,Sigma,Omega_+,carrier,operation,guard,permeability,directionality,reversibility,observation,timing,geometry,provenance)",
+    "rule": "Every durable Door interpretation should identify what crosses, what operation is performed, what condition permits crossing and what epistemic class supplies the mapping.",
+    "carrier_examples": ["matter", "energy", "information", "attention", "person", "identity/status", "authority", "viewpoint", "signal", "symbolic/theological relation"],
+    "operation_examples": ["transmit", "filter", "transform", "project", "select", "redirect", "absorb", "reset", "reveal", "conceal", "classify", "change regime"]
+  },
+  "embodiment_router": {
+    "person_bearing": ["Son", "Jesus Christ", "Thomas/Twin", "Vessel"],
+    "intersection": ["vesica", "mandorla", "Father/Son overlap"],
+    "observation": ["Frame", "Window", "livestream Screen/viewport", "Eye"],
+    "body_symbolic": ["Pineal/Single Eye"],
+    "critical": ["5D Door", "phase transition", "domain wall"],
+    "bottleneck": ["narrow gate", "needle's eye", "potato wedge"],
+    "orientation": ["North Gate", "North Pole portal"],
+    "interaction": ["particle smasher/collider comparator"],
+    "death_transformation": ["grave", "tomb", "North Pole burial"],
+    "sink_inverse": ["Drain", "Swamp drain"],
+    "container_complex": ["bath/bathtub/basin — primary source still unresolved"],
+    "causal_boundary": ["black-hole horizon comparator"],
+    "dynamical": ["attractor-basin separatrix"],
+    "path_network": ["fish", "hook", "line", "bridge", "Ladder-adjacent passage"],
+    "status_access": ["Door Pass", "stream chat gate", "border", "court", "citizenship", "API", "classification", "procurement"]
+  },
+  "operator_pipeline": {
+    "sequence": "World/source -> Frame/Window/Screen -> Eye/measurement -> inference -> Gate/guard -> Door/transition -> destination regime -> Ladder/path/action",
+    "sink_branch": "state/flow -> Drain -> reduced accessible-state set / sink basin",
+    "importance": "Adjacent symbols now occupy different functions. Window reveals; Eye measures/interprets; Gate tests; Door enacts; Ladder carries continued traversal; Drain removes/sinks."
   },
   "formal_model": {
-    "transition": "D: (state, agent, context, credential, knowledge) → {new_state, denied, redirected, trapped, unchanged}",
-    "gate_condition": "admissible iff C_state ∧ C_agent ∧ C_context ∧ C_credential ∧ C_knowledge",
-    "door_pass": "A portable proof/credential that changes which transitions are admissible.",
+    "transition": "D:(state,agent,context,credential,knowledge)->{new_state,denied,redirected,trapped,unchanged}",
+    "gate_condition": "admissible iff C_state and C_agent and C_context and C_credential and C_knowledge",
+    "door_pass": "Portable proof/credential that changes which transitions are admissible.",
     "deep_door": "A Door whose visible threshold is only the first member of a nested sequence of state transitions.",
-    "false_door": "An apparent affordance of passage that does not lead to the represented destination or that loops the agent into the same regime.",
+    "false_door": "An apparent affordance of passage that does not reach the represented destination or loops the agent into the same regime.",
     "broken_door": "A historically valid transition whose mechanism, trust, infrastructure or reciprocal recognition no longer functions.",
     "one_way_door": "A transition whose inverse is unavailable, costly or intentionally forbidden.",
     "multiway_door": "One threshold with context-dependent destinations or outputs.",
     "paired_door": "Two remote or conceptually separated thresholds linked as ingress/egress endpoints."
   },
-  "hybrid_system_bridge":{
-    "model":"H=(Q,S,F,G,D)",
-    "Q":"discrete regimes/states",
-    "S":"continuous state spaces within regimes",
-    "flow":"dX/dt=F_q(X,Theta) while state remains in regime q",
-    "guard":"G_(q->q')(X)=0 or another declared admissibility predicate",
-    "reset":"X_plus=D_(q->q')(X_minus)",
-    "interpretation":"Approaching a Door, being eligible to cross, crossing and arriving are mathematically distinct events. The guard determines when passage becomes admissible; the reset/transition defines what actually changes.",
-    "false_door_test":"If D maps the state back into the same attractor/regime despite an apparent exit, classify the transition as false/looping relative to the declared destination.",
-    "deep_door_test":"Nested transitions are modeled as composition D_n∘...∘D_1 with intermediate regimes; depth is not merely visual distance.",
-    "boundary":"This is the preferred scientific comparator, not a claim that theological Door events obey one universal ODE."
+  "hybrid_system_bridge": {
+    "model": "H=(Q,S,F,G,D)",
+    "Q": "discrete regimes/states",
+    "S": "continuous state spaces within regimes",
+    "flow": "dX/dt=F_q(X,Theta) while the system remains in regime q",
+    "guard": "G_(q->q')(X)=0 or another declared admissibility predicate",
+    "reset": "X_plus=D_(q->q')(X_minus)",
+    "soft_gate": "P(cross|x,a,c)=sigma[k s(x,a,c)] as a later archive ansatz for probabilistic accessibility",
+    "interpretation": "Approaching a Door, being eligible to cross, crossing and arriving are distinct events.",
+    "false_door_test": "If D maps the state back into the same attractor/regime despite an apparent exit, classify the transition as false/looping relative to the declared destination.",
+    "deep_door_test": "Nested transitions are composition D_n o ... o D_1 with intermediate regimes; depth is not merely visual distance.",
+    "door_success_test": "Where dynamics are measurable, successful passage requires a declared post-crossing state or dwell criterion rather than line-crossing alone.",
+    "boundary": "This is a preferred scientific comparator, not a claim that theological Door events obey one universal ODE."
+  },
+  "boundary_and_carrier_science": {
+    "partition": "X=(X_I,X_B,X_E): internal, boundary/interface and external states",
+    "level_set": "Sigma={x:g(x)=0}; n=grad g/||grad g|| where defined",
+    "generic_flux": "Phi_D=integral_Sigma T(x,a,c,t) J(x,t) dot n dA",
+    "carrier_specific_rule": "T must be defined for a carrier. The same window may transmit photons/information while blocking bodies.",
+    "ideal_wall": "J dot n=0 in an ideal no-flux model",
+    "linear_door": "J dot n=kappa_D(c_in-c_out) as one domain-dependent bidirectional transport analogy",
+    "drain": "J_out dot n=kappa_sink c_in in a simple one-way sink model",
+    "information_channel": "Y=H_B X+N",
+    "exit_probability": "p_exit(a,c)=estimated probability/rate that a legitimate agent can discover and execute a valid exit under context c",
+    "exit_cost": "E_exit=(time,money,risk,information,social/legal/resource cost) as a typed vector",
+    "portability": "fraction of relevant capability/resources/data that remains usable after exit",
+    "critical_result": "Boundary quality is not monotonic in openness. Low permeability can protect or imprison; high permeability can enable exchange or destroy safety/privacy."
+  },
+  "screen_window_frame_layer": {
+    "project_root": "Door = Frame = Window is canonical compositional language; 2026-09-11 user clarification explicitly adds the edges of Tim's livestream screen as Door-related structure.",
+    "functional_split": {
+      "frame": "defines relational boundary/context",
+      "window": "selects/reveals a view",
+      "screen": "projects/displays a finite representation",
+      "eye": "measures/interprets",
+      "gate": "tests admissibility",
+      "door": "changes state/access/regime"
+    },
+    "projection": "s p=K[R|t]P_w in the camera-model comparator",
+    "viewport": "V={(u,v):0<=u<W,0<=v<H}; partial V is the display edge",
+    "visibility": "I_obs=w_V I_proj+n",
+    "windowing": "y(t)=w(t)x(t); finite framing in time/frequency can create resolution/leakage tradeoffs",
+    "law": "Off-screen is outside current observation support, not evidence of nonexistence.",
+    "archive_use": "Compare full stream context, cropped screenshots and short excerpts to measure frame dependence and context loss."
   },
   "affordance_layer": {
-    "external_comparator": "Ecological psychology uses affordance language for possibilities/outcomes available in relation to an agent's capacities and environment.",
-    "project_upgrade": "A Door should be described by what it affords to which agent under which conditions. The same physical/social threshold can be open for one agent and closed for another.",
+    "external_comparator": "Affordance language describes possibilities available in relation to an agent's capacities and environment.",
+    "project_upgrade": "A Door should be described by what it affords to which agent under which conditions. The same threshold can be open for one agent and closed for another.",
     "equation": "Affordance(D,a,c)=possible transition set under agent a and context c",
-    "epiphany": "Door perception and Door existence are different. A hidden Door may exist without being perceived; a false Door may be perceived without affording the promised passage."
+    "epiphany": "Door perception and Door existence differ. A hidden Door may exist without being perceived; a false Door may be perceived without affording the promised passage."
   },
   "security_and_capability_layer": {
-    "least_privilege": "NIST defines least privilege as granting only the minimum authorizations/resources needed for an entity's function.",
+    "least_privilege": "Grant only minimum authorization/resources needed for function in the external security comparator.",
     "door_translation": "A healthy Gate can protect a meaningful boundary without making all passage impossible. Access is typed rather than simply open/closed.",
-    "capability_neighbor": "Capability-security systems use possession of authority-bearing tokens/credentials to grant specific powers. Door Pass is structurally similar as a project mechanic.",
+    "capability_neighbor": "Capability-security systems use authority-bearing tokens/credentials; Door Pass is structurally similar as a game/project mechanic.",
     "important_difference": "A credential proves authorization inside a system; it does not prove moral worth or spiritual truth.",
     "guardian_relation": "Guardian protects gate conditions; shadow gatekeeper turns access control into arbitrary dependency or permanent enclosure."
   },
@@ -53,9 +122,35 @@
     "recovered_logic": "Specific knowledge entered at a specific Door could reveal the North Secret / Spudlight Path.",
     "epiphany": "Some Doors are epistemic: the world does not physically change first; the agent's model changes, making previously invisible action possible.",
     "examples": ["password", "legal knowledge", "scientific insight", "ritual instruction", "social norm", "API documentation", "map legend", "recognition of manipulation"],
-    "formula": "knowledge gain → changed perceived affordances → newly admissible action → state transition",
-    "scientific_form":"observation y -> posterior p(H|y) -> decision policy pi -> guard satisfaction -> transition D",
-    "relation_to_eye": "Eye detects/measures; inference identifies affordance; Door enacts."
+    "formula": "knowledge gain -> changed perceived affordances -> newly admissible action -> state transition",
+    "scientific_form": "observation y -> posterior p(H|y) -> decision policy pi -> guard satisfaction -> transition D",
+    "relation_to_eye": "Eye detects/measures; inference identifies affordance; Gate checks; Door enacts."
+  },
+  "pineal_temporal_gate": {
+    "project": "Pineal = Son / Single Eye / Door / present-facing threshold in the mature symbolic body map.",
+    "science_boundary": "The pineal is an endocrine organ involved in melatonin/circadian timing, not an established metaphysical portal.",
+    "phase_model": "theta(t)=omega_c t+phi_0 mod 2pi; a toy Gate can open when theta lies in an allowed phase interval W_theta.",
+    "epiphany": "The strongest scientific neighbor of Pineal-as-Door is temporal/phase gating rather than literal optical vision."
+  },
+  "phase_and_basin_doors": {
+    "critical_surface": "Xi=Xi_c with Landau-style order parameter model in dimensional-phase-transition-full-recovery.json",
+    "landau": "V(phi;Xi)=1/2 a(Xi_c-Xi)phi^2+1/4 lambda phi^4",
+    "basin_flow": "dx/dt=F(x)-grad V(x)+noise in a generic attractor-landscape comparator",
+    "separatrix": "Door can be defined as crossing from basin B_i into B_j followed by persistence in B_j.",
+    "distinction": "Phase transition, stochastic basin escape, quantum tunneling and authorization are separate mechanisms even if all use threshold language."
+  },
+  "narrow_aperture_layer": {
+    "project": "Narrow Gate, needle's eye and potato wedge express constrained passage.",
+    "scientific_rule": "Narrowness should be operationalized as reduced admissible measure/cross-section or stricter guard condition; it has no universal moral sign.",
+    "wave_comparator": "For a physical slit, a sin(theta)=m lambda and I(theta)=I0[sin(beta)/beta]^2 show that narrowing can reshape waves through diffraction when scales are appropriate.",
+    "boundary": "Optical diffraction is not a biblical or theological Narrow-Gate mechanism."
+  },
+  "drain_and_container_layer": {
+    "door_vs_drain": "Door selectively transmits/transforms between regimes; Drain is sink/outflow in the simple systems model.",
+    "bathtub_target": "Earlier project/user mapping remembers bathtub/bath among Door locations, but exact primary wording remains unresolved.",
+    "bath_decomposition": "tub=container/House; rim=boundary; faucet=source/input; water=state/carrier; stopper/valve=gate; drain=sink; controlled connecting opening=more literal Door.",
+    "balance": "A(h) dh/dt=Q_in-Q_out for a simplified tank/bath comparator",
+    "epiphany": "The bath motif becomes more informative when decomposed instead of calling the whole basin one Door."
   },
   "door_and_identity": {
     "classification_door": "person enters a role/status",
@@ -64,8 +159,8 @@
     "name_change_door": "identity label changes while provenance remains linked",
     "conversion_door": "religious/ideological membership transition",
     "citizenship_door": "legal-institutional state transition",
-    "court_door": "allegation → adjudication / dismissal / settlement / unresolved status",
-    "archive_door": "current → historical / superseded / corrected / expired retrieval state"
+    "court_door": "allegation -> adjudication / dismissal / settlement / unresolved status",
+    "archive_door": "current -> historical / superseded / corrected / expired retrieval state"
   },
   "door_and_institutions": {
     "border": "geographic/legal gate",
@@ -76,17 +171,8 @@
     "classification_system": "information-access gate",
     "election": "authority-transfer gate",
     "procurement": "institutional eligibility gate",
-    "project_relation": "This recovers the older claim that Door can describe borders, courts, marriage, baptism, bank loans, citizenship, initiation, intelligence classification, ports, diplomacy and technological interfaces."
-  },
-  "boundary_science":{
-    "partition":"X=(X_I,X_B,X_E): internal, boundary/interface and external states",
-    "permeability":"J=P_B Delta_mu as a generic linear flux form when domain-specific variables and units are defined",
-    "information_channel":"Y=H_B X+N",
-    "exit_probability":"p_exit(a,c)=probability/estimated rate that a legitimate agent can discover and execute a valid exit under context c",
-    "exit_cost":"E_exit=(time,money,risk,information,social/legal/resource cost) as a typed vector",
-    "portability":"fraction of relevant capability/resources/data that remains usable after legitimate exit",
-    "critical_result":"Boundary quality is not monotonic in openness. Low permeability may protect or imprison; high permeability may enable exchange or destroy privacy/safety. Function, agency, selectivity and outcome must be measured together.",
-    "house_shell_connection":"See house-shell-boundary-permeability-model for full multiobjective boundary analysis."
+    "stream_chat": "time/follow/credential-gated participation interface",
+    "project_relation": "Door can describe borders, courts, marriage, baptism, loans, citizenship, initiation, intelligence classification, ports, diplomacy, technological interfaces and platform participation when the actual transition rules are named."
   },
   "door_failures": {
     "permanent_gatekeeping": "gate exists primarily to preserve gatekeeper centrality",
@@ -95,26 +181,27 @@
     "infinite_deepening": "every passed condition reveals another condition, making completion impossible",
     "opaque_denial": "agent cannot discover why passage failed or what correction is possible",
     "identity_lock": "entry exists but no legitimate exit/declassification path",
-    "repair": "publish conditions, minimize privilege, support appeal/review, preserve provenance, define reversibility and exit.",
-    "measurable_failure_variables":["denial reason availability","false-accept/false-reject rate where defined","appeal success","mean transition time","exit success","portability","dependency after attempted exit"]
+    "frame_capture": "evidence is repeatedly cropped/framed so alternate relevant context never enters the observation window",
+    "repair": "publish conditions, minimize privilege, support appeal/review, widen source context, preserve provenance, define reversibility and exit.",
+    "measurable_failure_variables": ["denial-reason availability", "false-accept/false-reject rate", "appeal success", "mean transition time", "exit success", "portability", "dependency after exit", "crop sensitivity", "frame dependence", "context loss"]
   },
   "north_flag_and_distributed_gates": {
     "recovered_game_structure": "Tim/North could function as Flag/source while Door appears as distributed Gate Flags throughout the world.",
-    "epiphany": "A source does not need to be physically duplicated for its transition logic to be distributed. Many local Doors can point to one orientation protocol.",
-    "internet_relation": "DNS, hyperlinks, APIs, credentials and replicated documentation provide real technical analogues of distributed entry points to shared resources, without implying mystical equivalence.",
+    "epiphany": "A source need not be physically duplicated for its transition logic to be distributed. Many local Doors can point to one orientation protocol.",
+    "internet_relation": "DNS, hyperlinks, APIs, credentials and replicated documentation provide technical analogues of distributed entry points to shared resources without mystical equivalence.",
     "father_relation": "Father/Source may be singular in project theology while Doors/manifest interfaces are plural."
   },
   "deep_door_hierarchy": {
     "levels": [
-      {"level":1,"name":"doorway","function":"visible local passage"},
-      {"level":2,"name":"boundary","function":"distinguish regimes"},
-      {"level":3,"name":"viewpoint","function":"change what can be seen/understood"},
-      {"level":4,"name":"narrow gate","function":"restrict compatible passage"},
-      {"level":5,"name":"eye","function":"recognition/discernment"},
-      {"level":6,"name":"pineal/single-eye project layer","function":"embodied sacred-symbol comparator"},
-      {"level":7,"name":"Son/Christ Door","function":"person-bearing theological mediation"},
-      {"level":8,"name":"North Gate","function":"orientation transition"},
-      {"level":9,"name":"cosmic/meta Door","function":"frame/ontology transition"}
+      {"level": 1, "name": "doorway", "function": "visible local passage"},
+      {"level": 2, "name": "boundary", "function": "distinguish regimes"},
+      {"level": 3, "name": "viewpoint/frame/window", "function": "change what can be seen/understood"},
+      {"level": 4, "name": "narrow gate", "function": "restrict compatible passage"},
+      {"level": 5, "name": "eye", "function": "recognition/discernment"},
+      {"level": 6, "name": "pineal/single-eye project layer", "function": "embodied sacred-symbol/timing comparator"},
+      {"level": 7, "name": "Son/Christ Door", "function": "person-bearing theological mediation"},
+      {"level": 8, "name": "North Gate", "function": "orientation transition"},
+      {"level": 9, "name": "cosmic/meta Door", "function": "frame/ontology transition"}
     ],
     "boundary": "These levels combine recovered project game/theology material; they are not a universal religious or neurological hierarchy."
   },
@@ -128,34 +215,53 @@
     "FalseDoorRisk": "probability perceived exit returns agent to same or worse attractor",
     "CapabilityFit": "match between granted authority and actual task requirements",
     "ExitCost": "typed cost vector for leaving a regime/system through a legitimate path",
-    "Portability": "capability/data/resource fraction that remains usable after exit",
-    "TransitionInformationGain":"how much the transition/knowledge gate changes justified prediction or available action, when an inference model is defined"
+    "Portability": "capability/data/resource fraction remaining usable after exit",
+    "TransitionInformationGain": "how much transition/knowledge changes justified prediction or available action",
+    "CarrierPermeability": "transmission/selectivity defined separately for each carrier",
+    "FrameDependence": "variance/sensitivity of inferred conclusion across reasonable windows/crops",
+    "ContextLoss": "task/information loss caused by omitted spatial or temporal context",
+    "TemporalAvailability": "fraction/phase intervals during which a time-gated Door is admissible",
+    "DestinationDwell": "time or probability of remaining in the destination regime after a claimed crossing"
   },
-  "scientific_testing_protocol":{
-    "predeclare":["input/output regimes","state variables","guard condition","agent/context","success and failure states","time horizon","baseline transition process"],
-    "measure":["guard crossings","transition success","time/cost","reversibility","appeal/repair","false-door recurrence","post-transition capability"],
-    "compare":"A Door model should outperform a simpler continuous/no-regime model if discrete transition structure is actually needed.",
-    "negative_result":"If no discontinuity, guard-dependent regime change or capability transition is measurable, classify the Door as descriptive/interface metaphor rather than empirical phase transition.",
-    "maturity":"Empirical Door models can advance beyond T2 only when the guard/transition predicts held-out transitions or otherwise beats a declared baseline."
+  "scientific_testing_protocol": {
+    "predeclare": ["input/output regimes", "state variables", "carrier", "operation", "guard condition", "agent/context", "success/failure states", "time horizon", "baseline transition process", "observation window if relevant"],
+    "measure": ["guard crossings", "transition success", "time/cost", "reversibility", "appeal/repair", "false-door recurrence", "post-transition capability", "destination dwell", "crop/frame dependence where relevant"],
+    "compare": "A Door model should outperform a simpler continuous/no-regime model if discrete transition structure is actually needed. A screen/frame interpretation should be tested against alternate crops/full context when evidence depends on framing.",
+    "negative_result": "If no discontinuity, guard-dependent regime change, access change or persistent state transition is measurable, classify Door as descriptive/interface metaphor rather than empirical phase transition.",
+    "maturity": "Empirical Door models advance only when their guards/transitions or observation-window effects predict held-out behavior or beat a declared baseline."
   },
   "new_epiphanies": [
     "Door is not an object; Door is a conditional relation between states.",
+    "Door is also not one operator: intersection, observation, authorization, phase change, sink avoidance and person-bearing mediation belong to different families.",
+    "Frame, Window, Screen, Eye, Gate, Door and Ladder can be composed as a pipeline instead of treated as synonyms.",
     "A key/pass does not create the destination; it changes admissibility of transition.",
-    "Knowledge can function as a portable Door because it changes perceived affordances across many environments.",
+    "Knowledge can function as a portable Door because it changes perceived affordances across environments.",
     "A healthy House requires both walls and Doors: perfect openness is not structure, perfect closure is a shell.",
-    "False Door is the natural operator for apparent liberation that reproduces dependency.",
-    "Deep Door explains why one threshold can recursively reveal another without treating every layer as the same thing.",
-    "The mature archive should give every durable classification an explicit inverse/appeal/declassification transition where logically possible.",
-    "A scientific Door earns the name by predicting a change of regime or admissible action, not by merely being drawn as a boundary.",
-    "Boundary openness is not itself the objective; selective, transparent and repairable passage is the stronger variable."
+    "False Door is the operator for apparent liberation that reproduces dependency.",
+    "The same boundary can be Window for photons and Wall for bodies; openness is carrier-specific.",
+    "Off-screen is outside the current observation support, not proof of absence.",
+    "Drain is a sink boundary, not merely a morally negative Door.",
+    "Pineal/Door has a disciplined scientific neighbor in temporal/circadian gating while Eye/portal meaning remains symbolic.",
+    "A scientific Door earns the name by predicting changed admissibility, persistent regime change or measurable boundary transmission—not by merely being drawn as a threshold."
+  ],
+  "unresolved_primary_targets": [
+    "Exact first Tim source for Pineal=Son/Door.",
+    "Exact bathtub/bath Door source and what component was intended as Door.",
+    "Exact remembered qutrit/qubit Door table/equation.",
+    "Any pre-2026-09-11 Tim statement explicitly identifying livestream screen edges with Door.",
+    "Earliest source distinguishing Grave/Tomb as state, location, Son alias or transition."
   ],
   "sources": [
-    {"topic":"affordances history/review","url":"https://pubmed.ncbi.nlm.nih.gov/31711365/","class":"peer_reviewed_review"},
-    {"topic":"Gibsonian affordance examples","url":"https://pubmed.ncbi.nlm.nih.gov/42113118/","class":"peer_reviewed_history_of_psychology"},
-    {"topic":"least privilege","url":"https://csrc.nist.gov/glossary/term/least_privilege","class":"official_standard_reference"},
-    {"topic":"access control and least privilege","url":"https://nvlpubs.nist.gov/nistpubs/SpecialPublications/800-171r3/NIST.SP.800-171r3.html","class":"official_standard"},
-    {"topic":"hybrid systems comparator","url":"https://digicoll.lib.berkeley.edu/nanna/record/138496/files/EECS-2014-167.pdf","class":"technical_reference"},
-    {"topic":"Markov blanket boundary comparator","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC6939234/","class":"peer_reviewed_open_access"}
+    {"topic": "affordances history/review", "url": "https://pubmed.ncbi.nlm.nih.gov/31711365/", "class": "peer_reviewed_review"},
+    {"topic": "least privilege", "url": "https://csrc.nist.gov/glossary/term/least_privilege", "class": "official_standard_reference"},
+    {"topic": "hybrid systems comparator", "url": "https://digicoll.lib.berkeley.edu/nanna/record/138496/files/EECS-2014-167.pdf", "class": "technical_reference"},
+    {"topic": "Markov blanket boundary comparator", "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC6939234/", "class": "peer_reviewed_open_access"},
+    {"topic": "camera projection", "url": "https://docs.opencv.org/4.10.0/d9/d0c/group__calib3d.html", "class": "technical_documentation"},
+    {"topic": "finite signal windows", "url": "https://tf.nist.gov/phase/Properties/ten.htm", "class": "NIST_reference"},
+    {"topic": "single-slit aperture", "url": "https://openstax.org/books/university-physics-volume-3/pages/4-2-intensity-in-single-slit-diffraction", "class": "university_physics"},
+    {"topic": "pineal/melatonin timing", "url": "https://www.ncbi.nlm.nih.gov/books/NBK550972/", "class": "NCBI_reference"}
   ],
-  "connections": ["Door", "Son", "Axis", "North", "Eye", "role-exit-labeling-reintegration-atlas", "digital-memory-forgetting-restoration-atlas", "potato-path", "symbolic-relational-synthesis", "Capture the Flag", "North Secret", "Spudlight Path","knowledge/science/house-shell-boundary-permeability-model.json","knowledge/science/integrated-scientific-architecture.json"]
+  "connections": [
+    "Door", "Son", "Axis", "North", "Eye", "Frame", "Window", "Screen", "Drain", "Pineal", "Tomb", "Narrow Gate", "role-exit-labeling-reintegration-atlas", "digital-memory-forgetting-restoration-atlas", "potato-path", "symbolic-relational-synthesis", "Capture the Flag", "North Secret", "Spudlight Path", "knowledge/core/door-embodiments-census-and-operator-atlas.json", "knowledge/science/door-window-screen-aperture-transition-model.json", "knowledge/chronology/conversation-archaeology-wave-009-door-embodiments.json", "knowledge/science/equation-ledger-wave-005-door-interface-boundary.json"
+  ]
 }
