@@ -144,10 +144,13 @@ try {
   const map = await waitForCore();
   await nextPaint();
 
-  // Only the observer-safe UI controller is automatic after core. Pathfinder,
-  // demography, Evidence, Fields, Networks, Time and Axis are all true opt-ins.
+  // Lightweight interaction surfaces load immediately. The working-selection
+  // controller composes over the legacy active-country core rather than replacing
+  // the renderer, and Lenses own fill color without owning selection state.
   await loadAfterPaint('Progressive UI', './3d-ui.js');
   await loadAfterPaint('Selection UI', './3d-selection-ui.js');
+  await loadAfterPaint('Country selection', './3d-country-selection.js');
+  await loadAfterPaint('Lenses', './3d-lenses.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
@@ -157,6 +160,7 @@ try {
   declareDormant('Path finder', './3d-pathfinder.js', 'Trace menu');
   declareDormant('Entity Trace', './3d-entity-trace.js', 'Trace menu');
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
+  declareDormant('Country Pulse', './3d-country-pulse.js', 'first country inspection');
   declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
   declareDormant('Fields', './3d-fields.js', 'Layers menu');
   declareDormant('Networks', './3d-networks.js', 'Layers menu');
@@ -179,6 +183,7 @@ try {
   const promoteInspection = async () => {
     await Promise.all([
       loadAfterPaint('Demography', './3d-demography.js'),
+      loadAfterPaint('Country Pulse', './3d-country-pulse.js'),
       loadAfterPaint('Evidence', './3d-evidence.js'),
     ]);
   };
@@ -206,9 +211,19 @@ try {
   timeMenu?.addEventListener('toggle', onTimeToggle);
   viewMenu?.addEventListener('toggle', onViewToggle);
 
-  // Inspector enrichment is attached to an actual country interaction, not to
-  // page load. The core remains idle indefinitely if the user simply explores.
-  map.once('click', promoteInspection);
+  // Inspector enrichment follows an actual country selection. The map remains
+  // light when a user only pans/zooms without inspecting anything.
+  let inspectionPromoted = false;
+  const promoteInspectionOnce = event => {
+    if (inspectionPromoted) return;
+    if (event?.detail && !event.detail.selected) return;
+    inspectionPromoted = true;
+    window.removeEventListener('potato-atlas-working-selection-change', promoteInspectionOnce);
+    promoteInspection();
+  };
+  window.addEventListener('potato-atlas-working-selection-change', promoteInspectionOnce);
+  map.once('click', promoteInspectionOnce);
+  if (window.__potatoAtlasSelection?.current?.selected) promoteInspectionOnce({ detail: { selected: true } });
 
   window.__potatoAtlasDiagnostics.bootstrapWiredMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-bootstrap-complete', { detail: window.__potatoAtlasEnhancements }));
