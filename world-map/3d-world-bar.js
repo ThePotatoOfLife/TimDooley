@@ -117,6 +117,9 @@ function installStyle() {
     body.atlas-registry-ui #timeMenu,
     body.atlas-registry-ui #viewMenu,
     body.atlas-registry-ui #moreMenu,
+    body.atlas-registry-ui #atlasToolsMenu,
+    body.atlas-registry-ui #atlasSelectionDock,
+    body.atlas-registry-ui #atlasWorkingSelection,
     body.atlas-registry-ui #mapInspectorToggle,
     body.atlas-registry-ui .camera,
     body.atlas-registry-ui .hud{display:none!important}
@@ -148,6 +151,9 @@ function install() {
   if (document.getElementById('atlasWorldBar')) return;
   installStyle();
   document.body.classList.add('atlas-registry-ui');
+  // The old hidden relation toggle starts active in the legacy HTML. Clear it so
+  // the working-selection controller uses its bounded automatic relation context.
+  document.getElementById('relations')?.classList.remove('active');
   const host = document.querySelector('.mapwrap');
   if (!host) return;
 
