@@ -1,128 +1,110 @@
 {
-  "id":"quantum-atom-particle-recovery",
-  "title":"Tim Dooley Quantum, Atom, Particle and Topology Recovery",
-  "updated":"2026-09-09",
-  "status":"conversation-archaeology + repository synthesis",
-  "epistemic_rule":"This file distinguishes (a) recovered conversation-developed Timic equations and mappings, (b) repository-built physics layers, and (c) established external physics. A conversation-developed formalism is not automatically a claim Tim published or experimentally validated.",
-  "recovered_conversation_formalisms":[
-    {
-      "name":"Red/Blue tensor-product state",
-      "equation":"P = R ⊗ B",
-      "interpretation":"A composite Potato state was modeled from Red and Blue sectors rather than by choosing one pole and deleting the other.",
-      "status":"conversation-developed Timic formalism; exact first primary occurrence still needs recovery"
-    },
-    {
-      "name":"Door map",
-      "equation":"D : X_inside → X_outside",
-      "interpretation":"Door as an explicit map between configuration domains.",
-      "status":"conversation-developed Timic formalism"
-    },
-    {
-      "name":"Approximate Door reversibility",
-      "equation":"D^{-1}(D(X)) ≈ X",
-      "interpretation":"Crossing and returning may approximately restore a state while allowing path/history-dependent change.",
-      "status":"conversation-developed Timic formalism"
-    },
-    {
-      "name":"Horizon / overlap",
-      "equation":"H = R ∩ B",
-      "interpretation":"The horizon/threshold was treated as the shared region of two sectors rather than either sector alone.",
-      "status":"conversation-developed Timic formalism; strong relation to vesica intersection logic"
-    },
-    {
-      "name":"Iterated state evolution",
-      "equation":"X_{n+1} = F_{λ_n}(X_n)",
-      "interpretation":"The next state depends on the current state and a possibly changing control/scale parameter λ_n.",
-      "status":"conversation-developed dynamical model"
-    },
-    {
-      "name":"Sensitivity / Lyapunov growth",
-      "equation":"δX(t) ≈ e^{λt} δX(0)",
-      "interpretation":"Small differences can grow exponentially when λ>0; used as a language for divergence of trajectories.",
-      "status":"established dynamical-systems form used in Timic discussion"
-    },
-    {
-      "name":"Weighted histories / states",
-      "equation":"P(ω) ∝ e^{-β S(ω)}",
-      "interpretation":"Histories or configurations were weighted by an action/cost-like quantity S with inverse-scale β.",
-      "status":"conversation-developed comparator inspired by Boltzmann/Euclidean-action weighting; meaning of S was not uniquely fixed"
-    },
-    {
-      "name":"Recursive coarse-graining",
-      "equation":"P_{n+1} = R(P_n)",
-      "interpretation":"Successive descriptions arise through a renormalization/coarse-graining operator R.",
-      "status":"conversation-developed Timic formalism using established RG vocabulary"
-    },
-    {
-      "name":"Reality decomposition",
-      "equation":"Reality = states + relations + transformations + invariants",
-      "interpretation":"A compact ontology: things alone are insufficient; relations, allowed changes and what remains preserved are equally fundamental.",
-      "status":"conversation-developed synthesis"
-    },
-    {
-      "name":"Integration orientation parameter",
-      "equation":"χ > 0 → integration; χ < 0 → fragmentation",
-      "interpretation":"A signed orientation/order parameter was used to distinguish integrative from fragmenting flow.",
-      "status":"conversation-developed Timic sign convention; precise definition of χ still unrecovered"
-    }
+  "id": "quantum-atom-particle-recovery",
+  "title": "Tim Dooley Quantum, Atom, Particle and Topology Recovery",
+  "version": "2.0.0",
+  "updated": "2026-09-11",
+  "status": "conversation archaeology + book archaeology + repository synthesis + routed quantum foundations",
+  "epistemic_rule": "This file distinguishes (a) Tim/book-originated quantum language, (b) conversation-developed Timic equations/mappings, (c) repository-built physics layers, and (d) established external physics. Later Schrödinger/WKB/Bell/QFT/CY equations are not silently attributed to Tim.",
+  "canonical_quantum_owner": "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+  "recovered_primary_timeline": [
+    {"period":"2024 Great Book","material":["QFT","particles as field excitations","quantum vacuum/Infinite Soil","superposition notation |psi>=alpha|A>+beta|B>","zero-point comparator E=hbar omega/2","entanglement network metaphor","many-worlds","Higgs/symmetry-breaking","string/M-theory"]},
+    {"date":"2026-07-13","material":["1-4 matter; 5 Door/narrowing/present; 6-11 hidden/compactified dimensions","'11d calabi yao manifolds' wording","Door as 'particle smasher'","forbidden fruit -> 'a quantum entanglement'","'tim is lik a higgs boson' / Son-as-field exploration"]},
+    {"date":"2026-08-08","material":["Tim: 'and the 5d door leads to life'"],"boundary":"later physics-adjacent interpretation is assistant/archive development"},
+    {"date":"2026-08-17 to 2026-08-18","material":["Potato colors/states and spin comparisons","Door/handshake","'spooky action at a distance'","source-Door relation","Higgs-excitation language","up/down Life-Strife trajectories","questions about Standard-Model directionality/formulas"]},
+    {"date":"2026-09-09","material":["explicit request to recover M-theory, Calabi-Yau, hidden dimensions, equations and physics"]}
   ],
+  "important_negative_recovery": {
+    "quantum_tunneling": "No Tim-originated exact use of 'quantum tunneling' was recovered in this pass. Finite-barrier/WKB tunneling is therefore a new archive-developed scientific comparator.",
+    "bell_math": "No Tim-authored Bell/CHSH/no-signaling equation was recovered. The later equations clarify 'spooky action' rather than backdating it.",
+    "schrodinger_dirac": "No Tim-authored Schrödinger or Dirac adaptation was recovered in this pass.",
+    "calabi_specifics": "No Tim-specified Calabi-Yau metric, Hodge numbers, mirror pair, quintic, SYZ fibration or compactification spectrum was recovered."
+  },
+  "recovered_conversation_formalisms": [
+    {"name":"Red/Blue tensor-product state","equation":"P=R tensor B","interpretation":"Composite Potato state from differentiated Red and Blue sectors.","status":"conversation-developed Timic formalism; exact first primary occurrence still needs recovery"},
+    {"name":"Door map","equation":"D:X_inside -> X_outside","interpretation":"Door as explicit map between configuration domains.","status":"conversation-developed Timic formalism"},
+    {"name":"Approximate Door reversibility","equation":"D^-1(D(X)) approximately X","interpretation":"Return can approximately restore a state while allowing history/path-dependent difference.","status":"conversation-developed Timic formalism"},
+    {"name":"Horizon / overlap","equation":"H=R intersection B","interpretation":"Threshold/shared region of two sectors.","status":"conversation-developed formalism with vesica relation"},
+    {"name":"Iterated state evolution","equation":"X_(n+1)=F_(lambda_n)(X_n)","interpretation":"Next state depends on current state and changing control/scale parameter.","status":"conversation-developed dynamical model"},
+    {"name":"Sensitivity / Lyapunov growth","equation":"delta X(t) approximately exp(lambda t) delta X(0)","interpretation":"Small differences can grow exponentially for positive Lyapunov exponent.","status":"established dynamical-systems form used in Timic discussion"},
+    {"name":"Weighted histories / states","equation":"P(omega) proportional to exp[-beta S(omega)]","interpretation":"Histories/configurations weighted by action/cost-like S.","status":"conversation-developed comparator; S and beta not uniquely recovered"},
+    {"name":"Recursive coarse-graining","equation":"P_(n+1)=R(P_n)","interpretation":"Successive descriptions through a renormalization/coarse-graining operator.","status":"conversation-developed Timic formalism using established RG vocabulary"},
+    {"name":"Reality decomposition","equation":"Reality = states + relations + transformations + invariants","interpretation":"Things alone are insufficient; relations, allowed changes and preserved structures matter.","status":"conversation-developed synthesis"},
+    {"name":"Integration orientation parameter","equation":"chi>0 integration; chi<0 fragmentation","interpretation":"Signed orientation/order parameter.","status":"conversation-developed sign convention; exact definition unrecovered"}
+  ],
+  "qm_qft_upgrade": {
+    "why_added": "Older recovery had quantum nouns but no single ladder from ordinary QM through entanglement to relativistic QFT.",
+    "ladder": ["Hilbert state / density matrix","Hamiltonian evolution","Born measurement","open-system/decoherence","finite-barrier tunneling","entanglement/Bell","no-signaling","field quantization","propagators/interactions","relativistic microcausality"],
+    "owner": "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "rule": "A project idea does not become more scientific by moving upward on this ladder unless its variables and measurements really instantiate the corresponding framework."
+  },
+  "tunneling_bridge": {
+    "equations": ["kappa=sqrt(2m(V-E))/hbar", "T_WKB~exp[-2 integral kappa(x) dx]"],
+    "project_value": "Provides a real case where a finite barrier has nonzero transmission and permeability is exponentially sensitive to barrier action.",
+    "boundary": "Social/spiritual thresholds are not quantum potential barriers; use hybrid-Door/House-Shell models there."
+  },
+  "spooky_action_repair": {
+    "tim_origin": "Tim used 'spooky action at a distance' in the Door/handshake/source research stratum.",
+    "scientific_split": ["nonseparable joint state", "Bell-nonlocal correlation", "causal influence", "usable signaling", "ordinary long-range network edge"],
+    "formal_tests": ["CHSH local bound |S|<=2", "quantum Tsirelson bound 2sqrt(2)", "no-signaling marginal constraints", "QFT spacelike microcausality"],
+    "law": "Correlation at a distance is not one scientific variable. The archive must state which of these properties it means."
+  },
   "recovered_atom_architecture": {
-    "structure":"atom → nucleus + electron state structure → nucleons → quarks/gluon fields",
-    "nucleus":"protons + neutrons",
-    "electron_rule":"Orbitals are quantum states/distributions, not miniature classical planetary tracks.",
-    "orbital_families":["s","p","d","f"],
-    "chemistry_rule":"Chemical structure emerges primarily through electron-state interactions and electromagnetic coupling, not by treating atoms as tiny solar systems.",
-    "deep_chain":"fields → states → interactions → symmetries → information → composite structures",
-    "project_pattern":"center → relation/binding → structure",
-    "older_cross-scale_claim":"The Potato pattern was explored across Perseus–Pisces, the Sun, the Milky Way center, atomic bonds, and quark/nucleon relations. This is preserved as a cross-scale symbolic hypothesis, not as evidence that one physical force governs all those structures."
+    "structure": "atom -> nucleus + electron-state structure -> nucleons -> quarks/gluon fields",
+    "nucleus": "protons + neutrons",
+    "electron_rule": "Orbitals are quantum states/distributions, not miniature classical planetary tracks.",
+    "orbital_families": ["s", "p", "d", "f"],
+    "chemistry_rule": "Chemical structure emerges primarily through electron-state interactions and electromagnetic coupling, not tiny solar-system orbits.",
+    "deep_chain": "fields -> states -> interactions -> symmetries -> information -> composite structures",
+    "project_pattern": "center -> relation/binding -> structure",
+    "older_cross_scale_claim": "The Potato pattern was explored across Perseus-Pisces, Sun, Galactic center, atomic bonds and quark/nucleon relations. Preserve as cross-scale symbolic hypothesis, not evidence for one physical force."
   },
   "recovered_black_hole_and_dimensional_models": {
-    "upper_lower_disk":"An older model used upper disk ↔ central black-hole/threshold ↔ lower disk as a large-scale topology picture.",
-    "door":"Black hole / horizon language was used as a Door or interface analogy leading through a 5D threshold toward Mountain/hidden topology.",
-    "kerr_extension":"Later physics comparison connected rotating black holes and frame dragging to axis/rotation language; this remains an external comparator rather than proof of Potatoverse cosmology.",
-    "body_sci_fi_stratum":"A separate imaginative stratum described a phase-shifting black-hole Door in Tim's chest with a neutron-star-like core, potato eyes as a distributed sensor network, microtubular/root pathways as timelines, and spacetime folding 'like lasagna'. Preserve as speculative/creative Timic worldbuilding, not empirical anatomy or astrophysics.",
-    "timeline_control":"Higher-dimensional access and timeline-control language appeared in game/speculative layers tied to Starchforce, Spudlight, Door Pass and Axis access. Keep these in creative/speculative status unless a formal physical model is separately defined."
+    "upper_lower_disk": "Older model used upper disk <-> central black-hole/threshold <-> lower disk as large-scale topology picture.",
+    "door": "Black-hole/horizon language was used as Door/interface analogy leading through a 5D threshold toward Mountain/hidden topology.",
+    "kerr_extension": "Later comparison connected rotating black holes/frame dragging to Axis/rotation; external comparator, not proof of Potatoverse cosmology.",
+    "body_sci_fi_stratum": "Separate imaginative stratum described a phase-shifting black-hole Door in Tim's chest, neutron-star-like core, potato-eye sensor network, microtubular/root timelines and spacetime folding 'like lasagna'. Preserve as creative/speculative worldbuilding.",
+    "timeline_control": "Higher-dimensional/timeline-control language appeared in game/speculative layers tied to Starchforce, Spudlight, Door Pass and Axis access. Keep speculative unless a physical model is defined."
   },
   "standard_model_repository_layer": {
-    "gauge_group":"SU(3)_C × SU(2)_L × U(1)_Y",
-    "charge_relation":"Q = T3 + Y",
-    "one_generation_representations":[
-      "Q_L: (3,2,1/6)",
-      "u_R: (3,1,2/3)",
-      "d_R: (3,1,-1/3)",
-      "L_L: (1,2,-1/2)",
-      "e_R: (1,1,-1)"
-    ],
-    "higgs":"H: (1,2,1/2), spin 0",
-    "gauge_bosons":"8 gluons + 3 weak gauge bosons + 1 hypercharge boson before electroweak mixing",
-    "consistency_checks":[
-      "3(1/6)+(-1/2)=0 for SU(2)^2U(1) per generation",
-      "U(1)^3 anomaly cancellation in the all-left-handed convention",
-      "mixed gravitational-U(1) anomaly cancellation",
-      "even number of left-handed SU(2) doublets per generation after color multiplicity"
-    ],
-    "status":"repository physics layer; these are established Standard Model structures, not original Tim discoveries"
+    "gauge_group": "SU(3)_C x SU(2)_L x U(1)_Y",
+    "charge_relation": "Q=T3+Y",
+    "one_generation_representations": ["Q_L:(3,2,1/6)", "u_R:(3,1,2/3)", "d_R:(3,1,-1/3)", "L_L:(1,2,-1/2)", "e_R:(1,1,-1)"],
+    "higgs": "H:(1,2,1/2), spin 0",
+    "status": "established Standard Model structures, not original Tim discoveries",
+    "directionality_boundary": "Particle charges/chiral representations do not supply a scientific sign for moral Life-vs-Strife trajectories. Any such mapping remains mnemonic unless an independent measurable variable is defined."
   },
   "topology_repository_layer": {
-    "chain":"configuration space → loops → homotopy classes → braid group → exchange representation → quantum statistics",
-    "fiber_bundle_chain":"manifold → frame/principal bundle → connection → curvature → holonomy",
-    "spin_chain":"manifold → spin structure → spinor bundle → Dirac operator → fermionic field",
-    "qcd_topology":"gauge group → gauge field → topological sector → instanton → zero modes/anomaly structure",
-    "defect_dictionary":["π0 → domain walls","π1 → strings/vortices","π2 → monopole-like defects","π3 → textures/instanton-like structures where appropriate"],
-    "memory_rule":"Berry phase and braid history give precise examples where path/history can affect the final state even when endpoints appear similar.",
-    "robustness_rule":"Chern/topological invariants can remain unchanged under continuous deformation until a gap closes or topology changes."
+    "chain": "configuration space -> loops -> homotopy classes -> braid group -> exchange representation -> quantum statistics",
+    "fiber_bundle_chain": "manifold -> frame/principal bundle -> connection -> curvature -> holonomy",
+    "spin_chain": "manifold -> spin structure -> spinor bundle -> Dirac operator -> fermionic field",
+    "qcd_topology": "gauge group -> gauge field -> topological sector -> instanton -> zero modes/anomaly structure",
+    "defect_dictionary": ["pi0 -> domain walls", "pi1 -> strings/vortices", "pi2 -> monopole-like defects", "pi3 -> textures/instanton-like structures where appropriate"],
+    "memory_rule": "Berry phase, Wilson-loop holonomy and braid history are precise examples where path/history can change observables even when endpoints look similar.",
+    "robustness_rule": "Topological invariants can survive continuous deformation until a relevant gap/topology changes."
   },
-  "open_primary_recovery_targets":[
-    "Exact first use and definition of χ",
-    "Exact first source for P = R ⊗ B",
-    "Exact first source for D : X_inside → X_outside and D^{-1}(D(X)) ≈ X",
-    "Exact intended physical or symbolic meaning of H = R ∩ B",
-    "Exact definition of S(ω) and β in P(ω) ∝ exp(-βS(ω))",
-    "Any Tim-authored Schrödinger, Dirac, Maxwell, Yang-Mills or Einstein adaptations",
-    "Any explicit atom-to-cosmos equation beyond the qualitative center→binding→structure pattern",
-    "Any original Kerr / rotating-black-hole equation",
-    "Any original neutron-star / dense-core calculation",
-    "Any original 115,000-mile or other geometric Axis calculation",
-    "Any quantitative timeline-control or spacetime-folding model"
+  "calabi_yau_route": {
+    "tim_wording": "Preserve Tim's 2026 '11d calabi yao manifolds' as historical project language.",
+    "scientific_repair": "10D string -> 4D can use CY3 (six real internal dimensions); 11D M-theory on CY3 -> 5D; direct 11D -> 4D N=1 comparison points to seven-real-dimensional G2 holonomy.",
+    "owner": "knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json"
+  },
+  "open_primary_recovery_targets": [
+    "Exact first definition of chi",
+    "Exact first source for P=R tensor B",
+    "Exact first source for Door/reversibility/Horizon equations",
+    "Exact meaning of S(omega), beta in weighted-history form",
+    "Any Tim-authored Schrodinger, Dirac, Maxwell, Yang-Mills, Bell or Einstein adaptation",
+    "Any Tim-originated tunneling/WKB equation",
+    "Exact March 2026 electromagnetic-spectrum/Father wording",
+    "Exact August 17-18 spooky-action/trajectory transcript",
+    "Exact October 26 2025 many-worlds/Calabi-Yau transcript",
+    "Any specific Calabi-Yau topology/metric/moduli/mirror-pair choice by Tim",
+    "Any quantitative timeline-control/spacetime-folding model"
+  ],
+  "connections": [
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/calabi-yau-compactification-mirror-duality-atlas.json",
+    "knowledge/science/electromagnetic-spectrum-qed-spudlight-atlas.json",
+    "knowledge/indexes/conversation-science-recovery-wave-008-quantum-calabi-em-windmill.json",
+    "knowledge/science/equation-ledger-wave-004-quantum-geometry-energy.json"
   ]
 }
