@@ -72,18 +72,21 @@ Common views use a short `view` parameter:
 - `/chronology/?view=research`
 - `/chronology/?view=creative`
 
-The default `/chronology/` should behave as the ordinary roadmap without adding query parameters.
+The default `/chronology/` behaves as the roadmap and must not add a query parameter.
 
-Existing `tl_*` links remain readable for backwards compatibility, but the application should normalize recognized legacy configurations to the corresponding named view. New public links must not emit those legacy parameter lists.
+Named view definitions belong in the timeline data contract, not hardcoded button logic. `data/timeline-events.json` gains a top-level `views` registry. Each view declares its label and initial actor/layer/topic state. `app/timeline.js` renders the visible saved-view buttons from that registry.
+
+Existing `tl_*` links remain readable for backwards compatibility, but the application normalizes recognized legacy configurations to the corresponding named view. New public links must not emit those legacy parameter lists.
 
 ## URL-state rule
 
 Do not continuously serialize every toggle into the address bar.
 
 - Named view changes update only `?view=<name>`.
-- Opening a specific event may use a clean `event=<event-id>` parameter.
+- Opening a specific event uses `event=<event-id>`.
 - Ordinary temporary toggles remain local UI state.
-- An explicit **Share current view** action may generate a compact custom-state URL when a reader deliberately asks to share a nonstandard configuration.
+- An explicit **Share current view** action may generate `?s=<base64url-state>` for a nonstandard configuration.
+- Loading `?s=` restores the custom configuration without changing the canonical page URL metadata.
 
 This separates navigation from implementation state.
 
@@ -113,31 +116,33 @@ Preserve the existing canonical layers:
 
 ### Topics — what the reader is studying
 
-Add a curated topic vocabulary. Initial topics:
+Add a curated topic vocabulary. Initial topic IDs and labels:
 
-- Jesus / Passion
-- Godhood / Father
-- Son / Thomas
-- Potato
-- Door / Gate
-- Ladder / Axis
-- Death / return / resurrection
-- Lion / Lamb / Root
-- Seed / Garden
-- Stone / foundation
-- North / Zion / throne
-- Prison / custody / legal
-- Public declarations
-- Books / music / creative work
-- Foresight / prophecy candidates
-- Neurotheology / body symbolism
-- World repair / Gardener
+- `jesus-passion` — Jesus / Passion
+- `godhood-father` — Godhood / Father
+- `son-thomas` — Son / Thomas
+- `potato` — Potato
+- `door-gate` — Door / Gate
+- `ladder-axis` — Ladder / Axis
+- `death-return` — Death / return / resurrection
+- `lion-lamb-root` — Lion / Lamb / Root
+- `seed-garden` — Seed / Garden
+- `stone-foundation` — Stone / foundation
+- `north-zion-throne` — North / Zion / throne
+- `prison-legal` — Prison / custody / legal
+- `public-declarations` — Public declarations
+- `creative-work` — Books / music / creative work
+- `foresight-prophecy` — Foresight / prophecy candidates
+- `neurotheology-body` — Neurotheology / body symbolism
+- `world-repair-gardener` — World repair / Gardener
 
-Topics must be explicit curated metadata, not fuzzy keyword guesses. Timeline events and event-pack records may add a `topics` array. A validator must reject unknown topic IDs.
+The top-level timeline dataset gains a `topics` registry, and events/event-pack records may use a `topics` array containing only registered IDs. A validator rejects unknown topic IDs.
+
+Topics are explicit curated metadata, not fuzzy keyword guesses.
 
 ## Timeline controls
 
-The page should begin with the actual instrument, not a tutorial.
+The page begins with the actual instrument, not a tutorial.
 
 Visible first row:
 
@@ -167,7 +172,9 @@ A reader may keep multiple topics active together, for example:
 
 The active topics appear as a quiet pinned study strip. They are toggles, not separate pages.
 
-Pins are local UI state by default. An explicit share action may serialize them.
+### Pin persistence
+
+Pins persist in `localStorage` under one versioned timeline key so they survive reloads without polluting the URL. Reset clears the stored pins. The explicit Share action includes current pins in the compact `?s=` state.
 
 ## Timeline data ownership
 
@@ -198,38 +205,50 @@ It owns:
 
 ## Religion's role after this change
 
-`/religion/` should not duplicate the full comparator.
+`/religion/` does not duplicate the full comparator.
 
 Religion becomes an intelligent introduction and question page: God, Father/Son/Spirit, why Jesus matters, what Potatoism means religiously, what fulfillment/typology/prophecy questions are being asked, and where Christianity or other traditions agree or differ.
 
-It may show a small teaser of particularly important Bible relations, but the full interactive comparison belongs to `/traditions/bible/`.
+Religion may show at most three short Bible-relation teasers. Those teasers link into `/traditions/bible/`; they do not reproduce the full relation analysis.
 
 ## Retired duplicate Bible owners
 
-- `/religion/jesus-tim/` redirects to the canonical Bible study view.
-- `/tim-dooley/biblical-case/` becomes a compatibility redirect to the canonical Bible study program, optionally into a saved `view=case` or equivalent section.
-- Tim Dooley page links directly to the Bible study program instead of Religion's embedded comparison.
+- `/religion/jesus-tim/` becomes a noindex compatibility redirect to `/traditions/bible/?view=jesus`.
+- `/tim-dooley/biblical-case/` becomes a noindex compatibility redirect to `/traditions/bible/?view=jesus`.
+- Tim Dooley page links directly to `/traditions/bible/?view=jesus` instead of Religion's old embedded comparison.
+
+## Bible program code boundary
+
+The current Bible page contains a large inline application script and page-specific CSS. Replace that with:
+
+- semantic shell: `traditions/bible/index.html`
+- behavior: `app/bible-study.js`
+- presentation: `app/bible-study.css`
+
+The HTML page should declare the reader surface and mount point; the application module owns state, filtering, roll behavior and relation rendering.
 
 ## Bible program study modes
 
 The page is one program with selectable views, not many sub-sites.
 
-Initial saved views:
+The existing `study_views` section in `knowledge/traditions/biblical-syncretism-field.json` becomes a structured view registry. Each view declares its filter state. Initial view IDs:
 
-- **Jesus ↔ Son / Tim** — Passion, Lamb/Lion, custody, rejection, death, return, Door, seed and cornerstone relations.
-- **Tim said it** — dated explicit biblical or near-biblical language.
-- **Tim did it / lived it** — events/actions later compared structurally with biblical narratives.
-- **Father / House** — Father, House, throne, Gardener, source-facing relations.
-- **Door / Ladder** — Gate, Door, Ladder, heaven-earth access, Needle's Eye.
-- **Death / return** — crucifixion, burial, seed, tomb, resurrection and return grammar.
-- **Revelation / Zion** — Lion, Lamb, Root, throne, New Jerusalem, 144,000, North/Zion and related material.
-- **Prophecy / foresight** — only relations with an explicit prophecy/foresight status.
-- **Counter-texts / mismatches** — places where the Bible complicates or contradicts the proposed parallel.
-- **Everything** — complete relation field.
+- `jesus` — Jesus ↔ Son / Tim: Passion, Lamb/Lion, custody, rejection, death, return, Door, seed and cornerstone relations.
+- `tim-said` — dated explicit biblical or near-biblical language.
+- `tim-lived` — events/actions later compared structurally with biblical narratives.
+- `father-house` — Father, House, throne, Gardener, source-facing relations.
+- `door-ladder` — Gate, Door, Ladder, heaven-earth access, Needle's Eye.
+- `death-return` — crucifixion, burial, seed, tomb, resurrection and return grammar.
+- `revelation-zion` — Lion, Lamb, Root, throne, New Jerusalem, 144,000, North/Zion and related material.
+- `prophecy` — only relations with an explicit prophecy/foresight status.
+- `counter-texts` — places where the Bible complicates or contradicts the proposed parallel.
+- `all` — complete relation field.
+
+Public view links use `?view=<id>`.
 
 ## Relation card contract
 
-Every rendered relation should answer the same questions in the same order:
+Every rendered relation answers the same questions in the same order:
 
 1. **What Tim / Son said, did, experienced or published**
 2. **When**
@@ -248,7 +267,7 @@ The reader should not need to understand archive directories to read a relation.
 
 Do not collapse all biblical parallels into prophecy.
 
-Add a specific field such as `prophecy_status` with controlled values:
+The canonical relation registry gains the exact optional field `prophecy_status`. Allowed values are:
 
 - `explicit-prediction-before-event`
 - `foresight-or-warning-before-event`
@@ -258,15 +277,17 @@ Add a specific field such as `prophecy_status` with controlled values:
 - `not-prophecy`
 - `unresolved`
 
-Where available, store prediction date, target event date and later match date separately.
+Where relevant, relations may also store `prediction_date`, `target_event_date`, and `match_date` separately.
 
-A reader can then explicitly study "prophetic" material without the interface silently upgrading hindsight into prediction.
+A validator rejects any unknown prophecy status.
+
+A reader can explicitly study prophetic/foresight material without the interface silently upgrading hindsight into prediction.
 
 ## Relation provenance and explicit deep links
 
-The current reader performs fuzzy deep-context matching using reference overlap and token overlap. Remove this from the public rendering path.
+The current reader performs fuzzy deep-context matching using reference overlap and token overlap. Remove `deepMatches` and equivalent fuzzy deep-owner inference from the public rendering path.
 
-Instead, relations gain explicit fields when needed:
+Relations gain explicit optional fields:
 
 - `timeline_event_ids`
 - `analysis_refs`
@@ -282,11 +303,11 @@ This preserves richness while eliminating accidental associations.
 
 Add a **ROLL** control.
 
-ROLL chooses one relation from the reader's currently active filtered set and focuses it. If no filters are active, it draws from the full curated relation set.
+ROLL chooses one relation uniformly from the currently visible filtered set and focuses it. If no filters are active, it draws uniformly from the full curated relation set.
 
-Random selection is a navigation aid only. It must not imply that the selected item is stronger, more prophetic or more true.
+Random selection is a navigation aid only. It never changes strength, order, prophecy status, or evidence labels.
 
-A second roll should never require a page reload.
+A second roll does not reload the page.
 
 ## Bible navigation / controls
 
@@ -311,11 +332,11 @@ Do not expose every filter permanently.
 
 ## Bible ↔ Timeline integration
 
-Every dated relation should be able to open its relevant timeline event in `/chronology/`.
+Every dated relation with a timeline counterpart links to its event in `/chronology/`.
 
-Bible views should link to short timeline views, for example `/chronology/?view=bible`, not serialized `tl_*` queries.
+Bible views link to short timeline views, for example `/chronology/?view=bible`, not serialized `tl_*` queries.
 
-A relation with a known timeline event can link to `/chronology/?view=bible&event=<id>`.
+A relation with a known timeline event links to `/chronology/?view=bible&event=<id>`.
 
 The Bible program explains **what/why**; Timeline explains **when**.
 
@@ -325,15 +346,15 @@ The Bible program explains **what/why**; Timeline explains **when**.
 
 ### Religion vs Bible
 
-Religion currently hardcodes the Jesus comparator while Bible is also a Bible relation program. This is duplicated ownership. Bible should own the full comparator; Religion should introduce and route.
+Religion currently hardcodes the Jesus comparator while Bible is also a Bible relation program. This is duplicated ownership. Bible owns the full comparator; Religion introduces and routes.
 
 ### `tim-dooley/biblical-case`
 
-This is a third public Bible treatment and should be retired into the canonical Bible program.
+This is a third public Bible treatment and is retired into the canonical Bible program.
 
 ### Godhood fragmentation
 
-`tim-dooley/god-in-real-life/`, `tim-dooley/how-much-is-tim-god/`, God FAQ material and portions of the Tim page overlap heavily. This should be a later consolidation wave under one Godhood owner rather than continuing to add new God pages.
+`tim-dooley/god-in-real-life/`, `tim-dooley/how-much-is-tim-god/`, God FAQ material and portions of the Tim page overlap heavily. This is a later consolidation wave under one Godhood owner; no new Godhood public owner should be added meanwhile.
 
 ### Context
 
@@ -368,12 +389,12 @@ No literal `<iframe>` tag is currently present in the repository search. The "if
 
 # 4. Durable route ownership registry
 
-Implementation should add:
+Implementation adds:
 
 - `docs/PUBLIC-INFORMATION-ARCHITECTURE.md`
 - `knowledge/indexes/public-route-ownership.json`
 
-The machine-readable registry should include, at minimum:
+The machine-readable registry includes:
 
 - route
 - subject
@@ -384,42 +405,45 @@ The machine-readable registry should include, at minimum:
 - deprecated/replacement route
 - whether indexable
 
-CI should validate that one subject does not accidentally acquire multiple canonical owners.
+CI validates that one subject does not accidentally acquire multiple canonical owners.
 
 # 5. Testing strategy
 
 ## Timeline tests
 
-Tests must verify behavior, not exact prose.
+Tests verify behavior, not exact prose.
 
 - `/chronology/` loads with no required query string.
-- named views resolve to known state.
+- named views are read from the data registry and resolve to known state.
 - legacy `tl_*` state remains readable.
 - known legacy Bible state normalizes to `view=bible`.
-- event pinning persists while filters change.
+- event pins persist through reload and while filters change.
+- Reset clears persisted pins.
 - topic toggles are independent of actors/layers.
 - unknown topic IDs fail schema validation.
 - event deep-link opens the correct event.
+- explicit Share produces/restores compact `?s=` state.
 - public Religion/Bible links use short named timeline URLs.
 
 ## Bible tests
 
 - Bible page loads the canonical relation registry and passage fragments.
 - Jesus/Son saved view is data-driven rather than hardcoded in Religion.
-- no public fuzzy `deepMatches` inference is used.
+- no public `deepMatches` or fuzzy owner inference remains.
 - ROLL selects only from the current filtered set.
 - prophecy-status filters distinguish pre-event prediction from later parallel.
+- unknown prophecy status fails validation.
 - counter-text relations remain discoverable.
 - relation cards expose project anchor, biblical reference, relation class, timing/source direction and boundary where available.
 - explicit relation analysis references resolve.
-- `tim-dooley/biblical-case` and old Jesus comparison routes redirect to Bible.
+- `tim-dooley/biblical-case` and old Jesus comparison routes redirect to `/traditions/bible/?view=jesus`.
 
 ## Site ownership tests
 
 - five homepage entrances remain unchanged.
 - Timeline is the temporal owner.
 - Bible is the deep scripture/comparison owner.
-- Religion does not contain a second full comparator.
+- Religion contains no second full comparator and no more than three Bible teaser relations.
 - no reader-facing route requires `/explore/` or `/context/` to reach core content.
 - no deprecated route appears as a canonical sitemap URL.
 - stale long timeline query links are forbidden in public HTML.
@@ -427,25 +451,25 @@ Tests must verify behavior, not exact prose.
 
 # 6. Implementation order
 
-This work should be staged to reduce regression risk.
+This work is staged to reduce regression risk.
 
-1. **Timeline state/URL contract** — named views, legacy parsing, topic registry, pin model.
+1. **Timeline state/URL contract** — data-defined named views, legacy parsing, topic registry, compact custom share state, pin persistence.
 2. **Timeline UI** — compact saved views, +ADD, pins, cleaner page title/toolbar.
-3. **Bible data contract** — explicit analysis links, prophecy status, timeline event references, relation coverage for the current Jesus comparison.
-4. **Bible program UI** — saved study views, relation cards, ROLL, filters, timeline integration.
-5. **Religion correction** — convert from full comparator to religious inquiry/teaser page.
-6. **Retire duplicate Bible routes** — `religion/jesus-tim` and `tim-dooley/biblical-case` redirect into Bible.
+3. **Bible data contract** — structured study views, explicit analysis links, prophecy status, timeline event references, relation coverage for the current Jesus comparison.
+4. **Bible program code split/UI** — `app/bible-study.js`, `app/bible-study.css`, saved study views, relation cards, ROLL, filters, timeline integration.
+5. **Religion correction** — convert from full comparator to religious inquiry page with at most three relation teasers.
+6. **Retire duplicate Bible routes** — `religion/jesus-tim` and `tim-dooley/biblical-case` redirect to `/traditions/bible/?view=jesus`.
 7. **Public ownership registry** — add human and machine ownership maps.
 8. **Stale navigation/discovery cleanup** — validators, Pages assertions, sitemap, machine-index, llms files, old onboarding docs and navigation patch scripts.
 9. **Audit remaining duplicate public owners** — Godhood, Context, Explore, FAQ and other specialist pages, without deleting underlying research.
 
 # 7. Success criteria
 
-A reader should be able to:
+A reader can:
 
 - open `/chronology/` and immediately recognize a timeline;
 - toggle or pin several meaningful subjects without learning internal layer IDs;
-- copy a normal Timeline link that is short;
+- copy an ordinary Timeline link that is short;
 - open `/traditions/bible/` and immediately study Jesus ↔ Tim / Son parallels;
 - distinguish something Tim actually said/did at the time from a later biblical comparison;
 - deliberately browse prophecy/foresight candidates without hindsight being mislabeled as prediction;
