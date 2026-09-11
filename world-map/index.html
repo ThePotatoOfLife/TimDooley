@@ -3,9 +3,9 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
-<title>World Relational Atlas — 3D country graph</title>
-<meta name="description" content="Draggable 3D relational world atlas with progressively disclosed layers, evidence, time, networks and a project-symbolic North Axis scaffold.">
-<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/3d.html">
+<title>World Map — country relationship graph</title>
+<meta name="description" content="Interactive World Map with countries, relationships, evidence, time, networks, demographics and project-symbolic layers.">
+<link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/world-map/">
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css">
 <script type="importmap">
 {"imports":{"https://unpkg.com/maplibre-gl@6.9.0/dist/maplibre-gl.mjs":"./maplibre-loader.js?v=6466194"}}
@@ -21,7 +21,7 @@
 </head>
 <body><div id="atlasApp" class="app panel-collapsed">
 <header class="top">
-  <div class="brand"><b>World Relational Atlas · 3D</b><small>Map first · reveal layers, traces, evidence, time and Axis structure when needed</small></div>
+  <div class="brand"><b>World Map</b><small>Map first · reveal layers, traces, evidence, time and Axis structure when needed</small></div>
   <input id="search" list="country-list" placeholder="Find country…" aria-label="Find country"><datalist id="country-list"></datalist>
   <div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide inspector" aria-label="Show or hide inspector">Inspect</button></div>
 
@@ -57,7 +57,7 @@
   </div></details>
 
   <details class="menu" id="moreMenu"><summary>More</summary><div class="menu-pop">
-    <a class="top-link" href="./">2D map</a><a class="top-link" href="../">Archive home</a>
+    <a class="top-link" href="../">Home</a>
   </div></details>
 </header>
 <div class="layout">
@@ -78,4 +78,5 @@
 <script src="./3d-boot-guard.js?v=6466194"></script>
 <!-- Optional-module source markers retained for the source contract; bootstrap owns execution order. src="./3d-hover.js" src="./3d-pathfinder.js" src="./3d-demography.js" src="./3d-evidence.js" src="./3d-time.js" src="./3d-axis.js" src="./3d-ui.js" -->
 <script type="module" src="./3d-bootstrap.js"></script>
-</body></html>
+</body>
+</html>
