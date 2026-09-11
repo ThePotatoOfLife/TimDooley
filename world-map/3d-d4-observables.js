@@ -26,11 +26,11 @@ const METRICS = {
   net_migration: {label:'Net migration', indicator:'SM.POP.NETM', unit:'persons over reference period', format:'signed-compact'},
   energy_dependence: {label:'Net energy imports', indicator:'EG.IMP.CONS.ZS', unit:'percent of energy use', format:'percent'},
   fdi_inflow: {label:'FDI net inflow', indicator:'BX.KLT.DINV.WD.GD.ZS', unit:'percent of GDP', format:'percent'},
-  co2_per_capita: {label:'CO2 / person', indicator:'EN.ATM.CO2E.PC', unit:'metric tons CO2/person', format:'number'},
+  renewable_electricity: {label:'Renewable electricity', indicator:'EG.ELC.RNEW.ZS', unit:'percent of total electricity output', format:'percent'},
 };
 const COMPARE_METRICS = ['gdp_per_capita','real_growth','life_expectancy','trade_openness','electricity_access','internet_penetration'];
 const INDICATOR_TO_METRIC = Object.fromEntries(Object.entries(METRICS).map(([metricId,spec]) => [spec.indicator,metricId]));
-const PERCENT_POINT_METRICS = new Set(['real_growth','unemployment','labor_force_participation','urbanization','internet_penetration','electricity_access','trade_openness','energy_dependence','fdi_inflow']);
+const PERCENT_POINT_METRICS = new Set(['real_growth','unemployment','labor_force_participation','urbanization','internet_penetration','electricity_access','trade_openness','energy_dependence','fdi_inflow','renewable_electricity']);
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&':'&amp;', '<':'&lt;', '>':'&gt;', '"':'&quot;', "'":'&#39;'
@@ -204,7 +204,6 @@ function changeLabel(metricId, metric) {
   if (PERCENT_POINT_METRICS.has(metricId)) return `${arrow} ${signedFixed(delta, 1)} pp`;
   if (metricId === 'life_expectancy') return `${arrow} ${signedFixed(delta, 1)} y`;
   if (metricId === 'fertility_rate') return `${arrow} ${signedFixed(delta, 2)} births/woman`;
-  if (metricId === 'co2_per_capita') return `${arrow} ${signedFixed(delta, 2)} t/person`;
   if (metricId === 'net_migration') return `${arrow} ${signedCompact(delta, 2)} persons`;
   if (previous !== 0) return `${arrow} ${signedFixed((delta / Math.abs(previous)) * 100, 1)}%`;
   return `${arrow} ${signedCompact(delta, 2)}`;
@@ -284,10 +283,10 @@ function insertCard(code, data) {
   const card = document.createElement('div');
   card.className = 'card atlas-d4-observables';
   card.dataset.d4Code = code;
-  card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · labour · life · population · settlement · connectivity · infrastructure · trade · migration · energy · capital · environment</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'one selected-country WDI request'}</small></div>
+  card.innerHTML = `<div class="atlas-d4-heading"><div><b>D4 · observable country vector</b><div class="muted" style="font-size:10px">scale · production · labour · life · population · settlement · connectivity · infrastructure · trade · migration · energy · capital · generation mix</div></div><small>${data.mode === 'snapshot' ? 'same-origin runtime snapshot' : 'one selected-country WDI request'}</small></div>
     <div class="d4-observable-grid">${available.length ? available.map(metricId => metricHtml(metricId, metrics[metricId])).join('') : '<div class="d4-observable-empty">No comparable D4 observations returned for this country.</div>'}</div>
     ${available.length ? seedHtml(availableMetrics) : ''}
-    <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Labour participation is not employment. Fertility is not birth count. Electricity access is not reliability or affordability. CO2/person is territorial, not consumption-based. Trade/GDP is intensity, not bilateral dependence. Net migration is a source-period balance. Negative net energy imports can indicate a net exporter. FDI can be negative. Current USD is not PPP. Missing is not zero. Arrows describe numeric direction only—not good/bad, heaven/hell, policy success, or moral rank.</div>`;
+    <div class="muted d4-observable-note">World Bank WDI · each metric keeps its own observation year, so years may differ. Labour participation is not employment. Fertility is not birth count. Electricity access is not reliability or affordability. Renewable electricity is generation share, not system reliability, consumption or emissions. Trade/GDP is intensity, not bilateral dependence. Net migration is a source-period balance. Negative net energy imports can indicate a net exporter. FDI can be negative. Current USD is not PPP. Missing is not zero. Arrows describe numeric direction only—not good/bad, heaven/hell, policy success, or moral rank.</div>`;
 
   const anchor = panel.querySelector('.atlas-country-profile') || panel.querySelector('.grid');
   if (anchor?.parentNode) anchor.parentNode.insertBefore(card, anchor.nextSibling);
