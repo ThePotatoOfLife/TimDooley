@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+from collections import Counter
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -12,6 +13,15 @@ ROOT_BRANCH_PATTERNS = (
     re.compile(r'''href=["'](?:\.{1,2}/)*#branch=''', re.I),
     re.compile(r'''https://thepotatooflife\.github\.io/TimDooley/#branch=''', re.I),
 )
+NAV = re.compile(r"<nav\b[^>]*>(.*?)</nav>", re.I | re.S)
+DEEP = re.compile(r'<div\b[^>]*class=["\'][^"\']*\bdeep\b[^"\']*["\'][^>]*>(.*?)</div>', re.I | re.S)
+HREF = re.compile(r'''href=["']([^"']+)["']''', re.I)
+LEGACY_NAV_LABELS = (">Chronology</a>", ">Corporium</a>", ">Source authority</a>", ">Tim dossier</a>")
+
+
+def duplicate_hrefs(fragment: str) -> list[str]:
+    counts = Counter(HREF.findall(fragment))
+    return sorted(href for href, count in counts.items() if count > 1)
 
 
 def main() -> int:
@@ -24,13 +34,30 @@ def main() -> int:
 
     for page in pages:
         text = page.read_text(encoding="utf-8", errors="replace")
+        rel = page.relative_to(SITE)
         for pattern in ROOT_BRANCH_PATTERNS:
             if pattern.search(text):
                 errors.append(
-                    f"stale homepage branch route in {page.relative_to(SITE)}; "
+                    f"stale homepage branch route in {rel}; "
                     "route deep branches through /explore/#branch=... or a domain hub"
                 )
                 break
+
+        for nav_index, nav in enumerate(NAV.findall(text), start=1):
+            duplicates = duplicate_hrefs(nav)
+            if duplicates:
+                errors.append(f"duplicate href(s) inside nav {nav_index} of {rel}: {duplicates}")
+            for label in LEGACY_NAV_LABELS:
+                if label in nav:
+                    errors.append(f"legacy visitor label {label[1:-4]!r} inside nav {nav_index} of {rel}")
+
+        for deep_index, deep in enumerate(DEEP.findall(text), start=1):
+            duplicates = duplicate_hrefs(deep)
+            if duplicates:
+                errors.append(f"duplicate href(s) inside deep-link group {deep_index} of {rel}: {duplicates}")
+
+        if "← Potato of Life archive</a>" in text:
+            errors.append(f"legacy home label remains in {rel}: use Home on the visitor surface")
 
     required_pages = (
         "religion/index.html",
