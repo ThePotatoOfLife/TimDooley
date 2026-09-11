@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 """Patch deployed homepage with durable discovery entry points.
 
-This script deliberately anchors on the quicknav element itself instead of on an
-exact previous list of links. The homepage grows over time, so matching a whole
-old navigation tail made Pages deployment fail whenever a new link was added.
+The primary homepage gateway row is intentionally curated in source. Generated
+search/discovery destinations stay in the footer and metadata so build-time
+patching cannot silently re-expand the main navigation.
 """
 from pathlib import Path
 
@@ -15,25 +15,7 @@ if not PAGE.exists():
 
 text = PAGE.read_text(encoding="utf-8")
 
-
-def ensure_quicknav_link(href: str, label: str, detail: str) -> None:
-    global text
-    if f'href="{href}"' in text:
-        return
-    start = text.find('<nav class="quicknav"')
-    if start < 0:
-        raise SystemExit("Homepage quicknav not found")
-    end = text.find("</nav>", start)
-    if end < 0:
-        raise SystemExit("Homepage quicknav closing tag not found")
-    link = f'      <a href="{href}"><strong>{label}</strong><span>{detail}</span></a>\n    '
-    text = text[:end] + link + text[end:]
-
-
-ensure_quicknav_link("questions/", "Questions", "Who · What · Why · How")
-ensure_quicknav_link("index-a-z/", "A–Z Index", "Entities · aliases · concepts")
-
-# Keep the discovery surfaces visible in the footer even when its wording evolves.
+# Keep discovery surfaces crawlable without turning them into first-tier cards.
 footer_pos = text.find('<footer class="footer">')
 if footer_pos >= 0:
     footer_end = text.find("</footer>", footer_pos)
@@ -50,7 +32,7 @@ if footer_pos >= 0:
             insert = " · " + " · ".join(additions) + "."
             text = text[:footer_end] + insert + text[footer_end:]
 
-# Prefer the sitemap index and expose the generated discovery resources.
+# Prefer the sitemap index and expose generated discovery resources in metadata.
 old_sitemap = '<link rel="sitemap" type="application/xml" href="https://thepotatooflife.github.io/TimDooley/sitemap.xml">'
 new_sitemap = '<link rel="sitemap" type="application/xml" href="https://thepotatooflife.github.io/TimDooley/sitemap-index.xml">'
 text = text.replace(old_sitemap, new_sitemap)
@@ -66,4 +48,4 @@ if head_close >= 0:
         text = text[:head_close] + "\n" + "\n".join(alternates) + "\n" + text[head_close:]
 
 PAGE.write_text(text, encoding="utf-8")
-print("Patched deployed homepage with durable crawlable discovery entry points")
+print("Patched deployed homepage with footer/metadata discovery entry points")
