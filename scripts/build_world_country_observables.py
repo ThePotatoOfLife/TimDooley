@@ -19,7 +19,7 @@ ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "countries" / "index.json"
 OUT = Path(os.environ.get("ATLAS_D4_OUT", ROOT / "data" / "world-country-observables.json"))
 EXPECTED = 195
-USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.0"
+USER_AGENT = "ThePotatoOfLife-world-atlas-d4/1.1"
 
 METRICS = {
     "population": {
@@ -80,6 +80,8 @@ METRICS = {
     },
 }
 
+INDICATOR_TO_METRIC = {spec["indicator"]: metric_id for metric_id, spec in METRICS.items()}
+
 
 def get_json(url: str, timeout: int = 180):
     req = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
@@ -87,34 +89,42 @@ def get_json(url: str, timeout: int = 180):
         return json.load(response)
 
 
-def fetch_indicator(indicator: str, wanted: set[str]) -> dict[str, list[dict]]:
-    """Return up to two newest non-null observations per canonical ISO3."""
+def fetch_all(wanted: set[str]) -> dict[str, dict[str, list[dict]]]:
+    """Fetch the eight Source-2 WDI indicators in one batched API request."""
+    indicators = ";".join(spec["indicator"] for spec in METRICS.values())
     query = urllib.parse.urlencode({
         "format": "json",
+        "source": 2,
         "per_page": 20000,
-        "mrv": 2,
+        "mrnev": 2,
     })
     payload = get_json(
-        f"https://api.worldbank.org/v2/country/all/indicator/{urllib.parse.quote(indicator, safe='')}?{query}"
+        f"https://api.worldbank.org/v2/country/all/indicator/{urllib.parse.quote(indicators, safe=';')}?{query}"
     )
     if not isinstance(payload, list) or len(payload) < 2 or not isinstance(payload[1], list):
-        raise RuntimeError(f"World Bank returned malformed payload for {indicator}")
+        raise RuntimeError("World Bank returned malformed batched D4 payload")
 
-    grouped: dict[str, list[dict]] = {code: [] for code in wanted}
+    grouped = {
+        metric_id: {code: [] for code in wanted}
+        for metric_id in METRICS
+    }
     for row in payload[1]:
         code = str(row.get("countryiso3code") or "").upper()
+        indicator = str((row.get("indicator") or {}).get("id") or "")
+        metric_id = INDICATOR_TO_METRIC.get(indicator)
         value = row.get("value")
         year = str(row.get("date") or "")
-        if code not in wanted or value is None or not year:
+        if code not in wanted or not metric_id or value is None or not year:
             continue
-        grouped[code].append({
+        grouped[metric_id][code].append({
             "value": value,
             "year": int(year) if year.isdigit() else year,
         })
 
-    for code in grouped:
-        grouped[code].sort(key=lambda item: str(item.get("year") or ""), reverse=True)
-        grouped[code] = grouped[code][:2]
+    for metric_values in grouped.values():
+        for code in metric_values:
+            metric_values[code].sort(key=lambda item: str(item.get("year") or ""), reverse=True)
+            metric_values[code] = metric_values[code][:2]
     return grouped
 
 
@@ -140,16 +150,12 @@ def main() -> int:
 
     by_code = {str(country["iso3"]).upper(): country for country in countries}
     wanted = set(by_code)
-    series = {}
-    coverage = {}
+    series = fetch_all(wanted)
+    coverage = {
+        metric_id: sum(1 for observations in values.values() if observations)
+        for metric_id, values in series.items()
+    }
 
-    for metric_id, spec in METRICS.items():
-        values = fetch_indicator(spec["indicator"], wanted)
-        series[metric_id] = values
-        coverage[metric_id] = sum(1 for observations in values.values() if observations)
-
-    # Population/GDP are the broadest anchors. Refuse a suspiciously incomplete
-    # build rather than silently shipping a mostly-empty D4 vector.
     minimum = 150
     if coverage["population"] < minimum or coverage["gdp"] < minimum:
         raise RuntimeError(
@@ -193,7 +199,7 @@ def main() -> int:
         }
 
     payload = {
-        "version": "1.0.0",
+        "version": "1.1.0",
         "generated_at": generated,
         "record_type": "world-country-observables-runtime",
         "axis_dimension": 4,
@@ -202,6 +208,7 @@ def main() -> int:
             "id": "world-bank-wdi",
             "name": "World Bank World Development Indicators",
             "url": "https://data.worldbank.org/indicator",
+            "api_source_id": 2,
         },
         "metric_order": list(METRICS),
         "metrics": {
@@ -229,6 +236,7 @@ def main() -> int:
         "countries": len(rows),
         "metrics": list(METRICS),
         "coverage": coverage,
+        "world_bank_requests": 1,
     }, ensure_ascii=False, indent=2), flush=True)
     return 0
 
