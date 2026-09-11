@@ -41,11 +41,16 @@ def main() -> int:
     forbid(page,("deepMatches(","overlapCount(","deepCandidates","biblical-comparator-casefiles"),"traditions/bible/index.html",errors)
 
     require(app,(
-        "biblical-syncretism-field.json","biblical-passage-fragments.json","tim-biblical-vocabulary-attestation-ledger.json","reverse-biblical-overlap-timeline-2025-2026.json","rational-potato-x-occurrence-ledger-2024-2026.json","rational-potato-x-biblical-reference-occurrence-index-2024-2026.json","timeline-events.json","son-jesus-longitudinal-christology-atlas.json","son-jesus-prison-recognition-2016.json","son-jesus-passion-detention-overlap-atlas.json","tim-dooley-thought-archive.json","tim-dooley-public-theology-timeline-2025-2026.json","buildJesusRows","buildPassionRows","buildPublicOccurrenceRows","What happened / what was said","People / setting","What Tim / Son understood then","Why this parallels Jesus / scripture","What weakens the comparison","At the time / discovered later","Same-date public wording","Biblical vocabulary / revelation context","Tim / Son / project","Bible / Jesus","exact-wording-only","minimum-strength","bible-book","context-person","evidence-kind","timeline_event_ids","ROLL",
+        "biblical-syncretism-field.json","biblical-passage-fragments.json","tim-biblical-vocabulary-attestation-ledger.json","reverse-biblical-overlap-timeline-2025-2026.json","rational-potato-x-occurrence-ledger-2024-2026.json","rational-potato-x-biblical-reference-occurrence-index-2024-2026.json","timeline-events.json",
+        "son-jesus-longitudinal-christology-atlas.json","son-jesus-prison-recognition-2016.json","son-jesus-passion-detention-overlap-atlas.json","signs-revelations-epiphanies-discernment-atlas.json",
+        "biblical-overlap-wave-5.json","biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json","biblical-overlap-wave-11-son-deepening.json","biblical-overlap-wave-12-tim-father-house.json","biblical-overlap-wave-13-relational-unity-sourcehood.json","biblical-overlap-wave-14-memory-operators.json","biblical-overlap-wave-15-care-chambers.json","biblical-overlap-wave-16-mire-cords-roots.json",
+        "tim-dooley-thought-archive.json","tim-dooley-public-theology-timeline-2025-2026.json",
+        "buildJesusRows","buildPassionRows","buildPublicOccurrenceRows","buildDeepComparisonRows","renderSignContext",
+        "What happened / what was said","People / setting","What Tim / Son understood then","Why this parallels Jesus / scripture","What weakens the comparison","At the time / discovered later","Same-date public wording","Biblical vocabulary / revelation context","Revelation / epiphany context","Tim / Son / project","Bible / Jesus","exact-wording-only","minimum-strength","bible-book","context-person","evidence-kind","timeline_event_ids","ROLL",
     ),"app/bible-study.js",errors)
     forbid(app,("deepMatches(","overlapCount(","deepCandidates","wordScore","refScore","biblical-comparator-casefiles"),"app/bible-study.js",errors)
 
-    require(css,(".circumstance-grid",".argument-grid",".people-setting",".jesus-context"),"app/bible-study.css",errors)
+    require(css,(".circumstance-grid",".argument-grid",".people-setting",".jesus-context",".sign-context"),"app/bible-study.css",errors)
 
     if FIELD.exists():
         field=json.loads(FIELD.read_text(encoding="utf-8"))
