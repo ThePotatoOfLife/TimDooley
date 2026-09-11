@@ -45,6 +45,7 @@ let world;
 let demography;
 let state = { id: 'neutral', option: '' };
 let applying = false;
+let pendingApply = false;
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
@@ -173,45 +174,54 @@ function showLegend(title, note, rows = '') {
   legend.hidden = state.id === 'neutral';
   legend.innerHTML = `<b>${esc(title)}</b>${rows ? `<div class="atlas-lens-keys">${rows}</div>` : ''}<small>${esc(note)}</small>`;
 }
+function sameLens(a, b) {
+  return a?.id === b?.id && a?.option === b?.option;
+}
 
 async function applyLens() {
-  if (applying) return;
+  if (applying) { pendingApply = true; return; }
   applying = true;
+  const requested = { ...state };
   try {
-    if (state.id !== 'religion') clearReligionState();
-    if (state.id === 'neutral') {
+    if (requested.id !== 'religion') clearReligionState();
+    if (requested.id === 'neutral') {
+      if (!sameLens(state, requested)) return;
       setFill(NEUTRAL);
       showLegend('Neutral', 'Country fill carries no analytical category.');
       return;
     }
-    if (state.id === 'alignment') {
+    if (requested.id === 'alignment') {
       const data = await worldData();
+      if (!sameLens(state, requested)) return;
       setFill(matchExpression(alignmentMap(data), UNKNOWN));
       showLegend('Alignment / Axis', 'Project interpretation — not sovereignty, consent or empirical alliance membership.', legendRows([
         ['North', ALIGNMENT_COLORS.north], ['West', ALIGNMENT_COLORS.west], ['East', ALIGNMENT_COLORS.east], ['South', ALIGNMENT_COLORS.south], ['Overlap', ALIGNMENT_COLORS.overlap]
       ]));
       return;
     }
-    if (state.id === 'alliances') {
+    if (requested.id === 'alliances') {
       const data = await worldData();
-      const { mapping, group, key } = allianceMap(data, state.option || 'nato');
+      if (!sameLens(state, requested)) return;
+      const { mapping, group, key } = allianceMap(data, requested.option || 'nato');
       setFill(matchExpression(mapping, UNKNOWN));
       showLegend(`Alliances · ${key.replaceAll('_', ' ')}`, `Empirical membership view${group.updated ? ` · updated ${group.updated}` : ''}. Non-members recede.`, legendRows([
         ['Member', '#5b9fd0'], ['Partner', '#8d7bc1'], ['Other / unknown', UNKNOWN]
       ]));
       return;
     }
-    if (state.id === 'religion') {
+    if (requested.id === 'religion') {
       const data = await demographyData();
-      const option = state.option || 'dominant';
+      if (!sameLens(state, requested)) return;
+      const option = requested.option || 'dominant';
       setReligionFeatureStates(data, option);
       setFill(religionExpression(option));
       const rows = option === 'dominant' ? legendRows(Object.entries(RELIGION_COLORS).map(([key, color]) => [RELIGION_LABELS[key] || key, color])) : legendRows([['Low share', '#1e2928'], ['Higher share', RELIGION_COLORS[option] || '#82a8a3'], ['Very high share', '#fff0bf']]);
       showLegend(`Religion · ${RELIGION_LABELS[option] || option}`, 'Descriptive religious-identity composition; it does not imply political loyalty, conduct or belief intensity.', rows);
       return;
     }
-    if (state.id === 'metric') {
-      const option = state.option || 'population';
+    if (requested.id === 'metric') {
+      if (!sameLens(state, requested)) return;
+      const option = requested.option || 'population';
       setFill(metricExpression(option));
       showLegend(`Metric · ${option === 'area' ? 'Area' : 'Population'}`, `Country fill encodes ${option === 'area' ? 'area (km²)' : 'population'} from the current geographic runtime. Missing values are neutral.`, legendRows([
         ['Lower', '#263432'], ['Mid', '#527466'], ['Higher', '#a7b87f'], ['Highest tier', '#d0c77e']
@@ -219,11 +229,19 @@ async function applyLens() {
     }
   } catch (error) {
     console.warn('Atlas Lens unavailable:', error);
-    state = { id: 'neutral', option: '' };
-    setFill(NEUTRAL);
-    showLegend('Lens unavailable', 'The requested optional Lens data could not be loaded; neutral geography remains usable.');
+    if (sameLens(state, requested)) {
+      state = { id: 'neutral', option: '' };
+      syncControls();
+      persist();
+      setFill(NEUTRAL);
+      showLegend('Lens unavailable', 'The requested optional Lens data could not be loaded; neutral geography remains usable.');
+    }
   } finally {
     applying = false;
+    if (pendingApply || !sameLens(state, requested)) {
+      pendingApply = false;
+      queueMicrotask(applyLens);
+    }
   }
 }
 
