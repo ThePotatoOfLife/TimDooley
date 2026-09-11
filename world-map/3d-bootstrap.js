@@ -146,11 +146,13 @@ try {
 
   // Lightweight interaction surfaces load immediately. The working-selection
   // controller composes over the legacy active-country core rather than replacing
-  // the renderer, and Lenses own fill color without owning selection state.
+  // the renderer. Lenses remain the top-level fill semantics; Metrics supplies
+  // the registry-driven Metric Lens substate without becoming another renderer.
   await loadAfterPaint('Progressive UI', './3d-ui.js');
   await loadAfterPaint('Selection UI', './3d-selection-ui.js');
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Lenses', './3d-lenses.js');
+  await loadAfterPaint('Metrics', './3d-metrics.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
