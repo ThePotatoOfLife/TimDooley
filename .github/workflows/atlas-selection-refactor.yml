@@ -20,12 +20,8 @@ jobs:
         with:
           python-version: '3.x'
 
-      - name: Apply deterministic refactor patches
-        run: |
-          python scripts/patch_atlas_selection_layers.py
-          python scripts/patch_atlas_module_groups.py
-          python scripts/patch_atlas_final_polish.py
-          git checkout -- .github/workflows/pages.yml
+      - name: Apply final interaction polish
+        run: python scripts/patch_atlas_final_polish.py
 
       - name: Build pinned local capital layer
         shell: bash
@@ -88,16 +84,16 @@ jobs:
           python scripts/build_site.py
           test -s _site/data/world-capitals.geo.json
 
-      - name: Commit validated refactor branch
+      - name: Commit validated final polish
         shell: bash
         run: |
           set -euo pipefail
           if git diff --quiet; then
-            echo 'Branch already patched and validated.'
+            echo 'Final polish already committed and validated.'
             exit 0
           fi
           git config user.name 'ThePotatoOfLife'
           git config user.email 'thepotatooflife@hotmail.com'
-          git add world-map scripts/validate_world_map_3d.py data/world-capitals.geo.json
+          git add world-map data/world-capitals.geo.json
           git commit -m 'Finish scalable atlas selection and layer polish'
           git push origin HEAD:atlas-selection-layers-20260911
