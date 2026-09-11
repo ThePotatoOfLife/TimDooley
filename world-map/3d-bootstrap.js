@@ -161,6 +161,7 @@ try {
   declareDormant('Fields', './3d-fields.js', 'Layers menu');
   declareDormant('Networks', './3d-networks.js', 'Layers menu');
   declareDormant('Time', './3d-time.js', 'Time menu');
+  declareDormant('Metric dimensions', './3d-metric-dimensions.js', 'View menu');
   declareDormant('Axis depth', './3d-axis-depth.js', 'View menu');
   declareDormant('Axis operators', './3d-axis-operators.js', 'View menu');
   declareDormant('North Axis', './3d-axis.js', 'Layers or View menu');
@@ -171,7 +172,8 @@ try {
     await loadAfterPaint('North Axis', './3d-axis.js');
   };
   const promoteTime = () => loadAfterPaint('Time', './3d-time.js');
-  const promoteAxis = async () => {
+  const promoteView = async () => {
+    await loadAfterPaint('Metric dimensions', './3d-metric-dimensions.js');
     await loadAfterPaint('Axis depth', './3d-axis-depth.js');
     await loadAfterPaint('Axis operators', './3d-axis-operators.js');
     await loadAfterPaint('North Axis', './3d-axis.js');
@@ -200,7 +202,7 @@ try {
   const onViewToggle = () => {
     if (!viewMenu?.open) return;
     viewMenu.removeEventListener('toggle', onViewToggle);
-    promoteAxis();
+    promoteView();
   };
   layersMenu?.addEventListener('toggle', onLayersToggle);
   timeMenu?.addEventListener('toggle', onTimeToggle);
