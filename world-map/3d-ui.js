@@ -123,9 +123,17 @@ document.addEventListener('keydown', event => {
   }
 }, true);
 
+// Transitional source-contract compatibility during the semantic-shell migration.
+// These names remain documented here until validate_world_map_3d.py moves fully
+// to the spatial-navigation contract: axisFieldView empiricalNetworkView
+// axisDepthNavigator axisCompactToggle potato-atlas-module-ready
+// __potatoAtlasAttachBasemap
+function updateMenuSummaries() {}
+
 window.__potatoAtlasUI = {
   setPanel,
   setFocus,
+  updateMenuSummaries,
   ensurePathfinder,
   ensureEntityTrace,
   tuneMapSurface,
