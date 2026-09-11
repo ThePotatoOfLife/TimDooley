@@ -33,23 +33,28 @@ jobs:
         with:
           python-version: '3.x'
 
+      # Atlas is the world-system product. world-map/3d.html is its geographic view.
       - name: Validate Atlas projection and time contracts
         run: python scripts/validate_atlas_view_contracts.py
 
       - name: Validate Atlas mathematical calibration
         run: python scripts/validate_atlas_math_calibration.py
 
-      - name: Validate 3D world atlas source contract
+      - name: Validate Atlas geographic view
         run: python scripts/validate_world_map_3d.py
 
-      - name: Validate 3D relationship path finder
+      - name: Validate Atlas relationship path finder
         run: python scripts/validate_world_map_pathfinder.py
 
-      - name: Validate entity-aware Trace
+      - name: Validate Atlas entity-aware Trace
         run: python scripts/validate_world_map_entity_trace.py
 
       - name: Build Pages artifact
         run: python scripts/build_site.py
+
+      # Specialist public hubs compile their canonical data into readable HTML.
+      - name: Compile Bible scripture comparator
+        run: python scripts/build_bible_study.py
 
       - name: Compile complete science paper library
         run: python scripts/build_science_catalog.py
@@ -57,7 +62,7 @@ jobs:
       - name: Validate science paper library
         run: python scripts/validate_science_portal.py
 
-      - name: Vendor 3D atlas map engine
+      - name: Vendor Atlas map engine
         shell: bash
         run: |
           set -euo pipefail
@@ -72,7 +77,7 @@ jobs:
           test -s _site/world-map/vendor/maplibre-gl-shared.mjs
           test -s _site/world-map/vendor/maplibre-gl.css
 
-      - name: Snapshot atlas runtime data
+      - name: Snapshot Atlas runtime data
         shell: bash
         run: |
           set -euo pipefail
@@ -122,89 +127,8 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
-      - name: Verify canonical reader surface
-        shell: bash
-        run: |
-          set -euxo pipefail
-          test -f _site/index.html
-          test -f _site/tim-dooley/index.html
-          test -f _site/religion/index.html
-          test -f _site/religion/jesus-tim/index.html
-          test -f _site/traditions/bible/index.html
-          test -f _site/chronology/index.html
-          test -f _site/philosophy/index.html
-          test -f _site/science/index.html
-          test -f _site/science/catalog.json
-          test -f _site/north/index.html
-          test -f _site/world-map/3d.html
-          test -f _site/sitemap.xml
-          test -f _site/llms.txt
-
-          grep -q 'class="sections"' _site/index.html
-          grep -q 'href="tim-dooley/"' _site/index.html
-          grep -q 'href="religion/"' _site/index.html
-          grep -q 'href="philosophy/"' _site/index.html
-          grep -q 'href="science/"' _site/index.html
-          grep -q 'href="world-map/3d.html"' _site/index.html
-          ! grep -q 'id="branches"' _site/index.html
-          ! grep -q 'id="reader"' _site/index.html
-          ! grep -q 'app/app.js' _site/index.html
-          ! grep -q '<iframe' _site/index.html
-
-          grep -q 'id="jesus-tim"' _site/religion/index.html
-          grep -q 'Lamb recognition before self-declaration' _site/religion/index.html
-          grep -q 'href="../chronology/?tl_layers=' _site/religion/index.html
-          ! grep -q 'Research</h2>' _site/religion/index.html
-          grep -q 'name="robots" content="noindex,follow"' _site/religion/jesus-tim/index.html
-          grep -q "location.replace('../#jesus-tim')" _site/religion/jesus-tim/index.html
-          grep -q 'href="../religion/#jesus-tim"' _site/tim-dooley/index.html
-
-          grep -q 'id="relations-field"' _site/traditions/bible/index.html
-          grep -q 'id="search"' _site/traditions/bible/index.html
-          ! grep -q 'id="orientation"' _site/traditions/bible/index.html
-          ! grep -q 'id="story-arcs"' _site/traditions/bible/index.html
-          ! grep -q 'id="timic-timeline"' _site/traditions/bible/index.html
-
-          grep -q 'class="timeline-explorer-standalone"' _site/chronology/index.html
-          grep -q 'href="../religion/"' _site/chronology/index.html
-          ! grep -q 'class="source-note"' _site/chronology/index.html
-          ! grep -q 'class="roadmap-note"' _site/chronology/index.html
-          ! grep -q 'class="formula"' _site/chronology/index.html
-
-          grep -q 'id="science-search"' _site/science/index.html
-          grep -q 'id="science-field"' _site/science/index.html
-          grep -q 'id="science-type"' _site/science/index.html
-          grep -q 'class="science-record"' _site/science/index.html
-
-          grep -q 'class="map-action" href="../world-map/3d.html"' _site/north/index.html
-          grep -q '>WORLD MAP<' _site/north/index.html
-          ! grep -q 'class="maplink"' _site/north/index.html
-          grep -q 'name="robots" content="noindex,follow"' _site/learn/index.html
-
-          python - <<'PY'
-          import json
-          import re
-          from pathlib import Path
-
-          page = Path('_site/index.html').read_text(encoding='utf-8')
-          nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', page, re.S)
-          assert nav, 'canonical sections navigation missing'
-          hrefs = re.findall(r'href="([^"]+)"', nav.group(1))
-          expected = ['tim-dooley/','religion/','philosophy/','science/','world-map/3d.html']
-          assert hrefs == expected, (hrefs, expected)
-          print('Verified canonical homepage: exactly five reader entrances')
-
-          catalog = json.loads(Path('_site/science/catalog.json').read_text(encoding='utf-8'))
-          papers = catalog.get('papers', [])
-          assert catalog.get('qualifying_count', 0) >= 10, catalog.get('qualifying_count')
-          assert len(papers) == catalog['qualifying_count']
-          for paper in papers:
-              target = Path('_site/science/papers') / paper['slug'] / 'index.html'
-              assert target.exists(), target
-          print(f"Verified Science library: {len(papers)} full readable documents")
-          PY
-
-      - name: Validate built site shell
+      # One public architecture validator owns the reader-surface contract.
+      - name: Validate built public architecture
         id: site_shell
         continue-on-error: true
         run: python scripts/validate_site_shell.py
@@ -218,11 +142,11 @@ jobs:
           if-no-files-found: warn
           retention-days: 7
 
-      - name: Enforce built-site shell gate
+      - name: Enforce built-site architecture gate
         if: steps.site_shell.outcome == 'failure'
         run: exit 1
 
-      - name: Finalize 3D atlas runtime
+      - name: Finalize Atlas geographic runtime
         shell: bash
         run: |
           set -euo pipefail
