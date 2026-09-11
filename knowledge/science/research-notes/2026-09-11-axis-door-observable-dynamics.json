@@ -1,0 +1,100 @@
+{
+  "id": "research-2026-09-11-axis-door-observable-dynamics",
+  "title": "2026-09-11 Research Notes — Axis, Eye, Door, Hysteresis and Constraint Dynamics",
+  "research_timestamp_local": "2026-09-11T09:12:30+02:00",
+  "timezone": "Europe/Copenhagen",
+  "status": "new project research extension; mathematical research notes, not validated physical theory",
+  "novelty_scope": "Novel within the Tim Dooley / Potato of Life project research record on 2026-09-11. This is not a claim of global scientific priority for the underlying mathematics.",
+  "parent_records": [
+    "knowledge/science/potato-dynamics-2-toy-model.json",
+    "knowledge/science/timic-unification-program.json",
+    "knowledge/science/model-testing-protocol.json"
+  ],
+  "research_findings": [
+    {
+      "id": "axis-eye-koopman-bridge",
+      "type": "new project formalization",
+      "finding": "The existing Axis flow and Eye/observation map can be joined without pretending the observer sees the full state. If Phi_s is the Axis flow and o is an observable, define the observable evolution K^s o = o o Phi_s. This is the Koopman-operator viewpoint: nonlinear state dynamics can induce linear evolution on observables.",
+      "equations": [
+        "X(s)=Phi_s(X_0)",
+        "K^s o = o o Phi_s",
+        "K^s psi = exp(lambda s) psi for a Koopman eigenfunction psi"
+      ],
+      "project_consequence": "Eye should be represented as a family of observables on Axis dynamics, not as access to the complete hidden state. Candidate coherent coordinates can be searched for in measured data rather than assumed in advance.",
+      "test_path": "For a chosen empirical domain, collect time/scale ordered observations, fit DMD/EDMD or another Koopman approximation, and compare out-of-sample prediction with a simpler autoregressive baseline.",
+      "evidence_label": "C→B extension"
+    },
+    {
+      "id": "door-hysteresis",
+      "type": "derived model upgrade",
+      "finding": "A Door need not use one symmetric threshold. Many real transitions are path dependent. Give entry and exit different guards so crossing into a regime does not imply immediate reversal at the same value.",
+      "equations": [
+        "enter if h(X)>=tau_up",
+        "exit if h(X)<=tau_down",
+        "tau_down < tau_up",
+        "X_plus=D_enter(X_minus) or D_exit(X_minus)"
+      ],
+      "project_consequence": "This supplies a rigorous mathematical neighbor for threshold memory, residue and return-not-reset. It also separates a one-way initiation from a reversible gate.",
+      "test_path": "Estimate separate transition thresholds from repeated trajectories; compare a hysteretic model against a single-threshold model by predictive likelihood or held-out transition error.",
+      "evidence_label": "B/E"
+    },
+    {
+      "id": "door-event-times",
+      "type": "new measurable quantity",
+      "finding": "Door events can be timestamped as first-passage or guard-crossing times rather than treated only as symbolic events.",
+      "equations": [
+        "tau_k = inf{s>tau_(k-1) : h_k(X(s)) crosses its guard}",
+        "Delta tau_k=tau_k-tau_(k-1)"
+      ],
+      "project_consequence": "A Ladder can become a sequence of measurable dwell intervals and transitions. This creates a bridge to survival analysis, renewal processes and hybrid systems.",
+      "test_path": "Measure dwell-time distributions and compare exponential, lognormal, Weibull and heavy-tail alternatives where data justify them.",
+      "evidence_label": "B/E"
+    },
+    {
+      "id": "leash-as-constraint-not-force",
+      "type": "new mathematical clarification",
+      "finding": "The leash/cord relation is better represented first as a constraint set or coupling law, not as a new physical force. The same geometric constraint can describe support, tethering, covenant, control or captivity only after agency, direction and admissible control are specified.",
+      "equations": [
+        "C={x : g_e(x)<=0}",
+        "xdot = P_T_C(x) f(x) for projected feasible dynamics",
+        "M xddot = F(x,xdot)+J_g(x)^T lambda with g(x)=0 for a mechanical constrained system"
+      ],
+      "project_consequence": "Moral or theological valence is not encoded by the multiplier lambda. It belongs in the objective, ownership/agency fields, consent state and consequences.",
+      "test_path": "For graph/control applications, compare outcomes when the constrained node controls release versus when another node exclusively controls release.",
+      "evidence_label": "B/E"
+    },
+    {
+      "id": "garden-viability-margin",
+      "type": "new derived observable",
+      "finding": "The existing viability-kernel Garden model gains a local safety quantity: distance to the non-viable boundary.",
+      "equations": [
+        "m_V(x)=dist(x,S\\V)",
+        "risk signal: dm_V/dt < 0",
+        "robust cultivation seeks controls that keep m_V(x(t))>=m_min"
+      ],
+      "project_consequence": "Garden becomes more than 'stay viable': it can measure how much room for disturbance remains before a critical boundary is reached.",
+      "test_path": "Use perturbation simulations or empirical stress events to estimate whether candidate controls increase minimum viability margin.",
+      "evidence_label": "B/E"
+    }
+  ],
+  "researcher_notes": [
+    "The strongest new connection today is Axis→Eye through observable evolution. It gives the project a mathematically standard way to study hidden dynamics without claiming total observability.",
+    "Door hysteresis appears especially useful because several existing project ideas—residue, return, initiation, ash/mud/soil path dependence—already imply history dependence.",
+    "Constraint dynamics gives the leash language a precise home while preventing the archive from inventing a literal Leash Force."
+  ],
+  "external_science_sources": [
+    {
+      "title": "Modern Koopman Theory for Dynamical Systems",
+      "publisher": "SIAM Review",
+      "year": 2022,
+      "doi": "10.1137/21M1401243",
+      "url": "https://epubs.siam.org/doi/10.1137/21M1401243"
+    }
+  ],
+  "promotion_requirements": [
+    "Choose a concrete empirical domain before assigning units.",
+    "Specify observables and baseline models before fitting.",
+    "Keep project theology separate from claims of physical mechanism.",
+    "Record parameter estimation and out-of-sample performance."
+  ]
+}
