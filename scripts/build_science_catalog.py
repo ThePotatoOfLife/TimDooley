@@ -87,11 +87,12 @@ def walk_candidates(obj, equations=None, findings=None):
 
 
 def record_from(path: Path) -> dict:
+    relative_file = path.relative_to(SRC).as_posix()
     try:
         data = json.loads(path.read_text(encoding="utf-8"))
     except Exception as exc:
         return {
-            "file": path.name, "id": path.stem,
+            "file": relative_file, "id": path.stem,
             "title": path.stem.replace("-", " ").title(), "status": "parse error",
             "abstract": f"Could not parse record: {exc}", "provenance": [],
             "equations": [], "findings": [], "updated": "", "human_readable": "",
@@ -99,7 +100,7 @@ def record_from(path: Path) -> dict:
     equations, findings = walk_candidates(data)
     title = data.get("title") or data.get("name") or data.get("id") or path.stem
     return {
-        "file": path.name,
+        "file": relative_file,
         "id": data.get("id") or path.stem,
         "title": title,
         "updated": data.get("updated") or data.get("date") or "",
@@ -198,7 +199,7 @@ def patch_legacy_readers() -> None:
 
 def main() -> None:
     OUT.mkdir(parents=True, exist_ok=True)
-    records = [record_from(path) for path in sorted(SRC.glob("*.json"))]
+    records = [record_from(path) for path in sorted(SRC.rglob("*.json"))]
     payload = {
         "generated": date.today().isoformat(),
         "source_directory": "knowledge/science/",
