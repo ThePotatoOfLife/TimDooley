@@ -3,7 +3,7 @@
 
 The repository intentionally preserves historical/internal names and research strata.
 This pass only cleans the deployed visitor surface: retired homepage branch hashes,
-parent-hub continuity, and duplicate navigation choices.
+parent-hub continuity, duplicate navigation choices, and visitor-facing vocabulary.
 """
 from __future__ import annotations
 
@@ -18,6 +18,13 @@ ROOT_BRANCH_HREF = re.compile(
 )
 ABSOLUTE_ROOT_BRANCH = "https://thepotatooflife.github.io/TimDooley/#branch="
 ABSOLUTE_EXPLORE_BRANCH = "https://thepotatooflife.github.io/TimDooley/explore/#branch="
+PUBLIC_LABEL_REPLACEMENTS = (
+    (">Chronology</a>", ">Timeline</a>"),
+    (">Corporium</a>", ">Collection</a>"),
+    (">Source authority</a>", ">Sources</a>"),
+    (">Tim dossier</a>", ">Tim Dooley</a>"),
+    ("← Potato of Life archive</a>", "← Home</a>"),
+)
 
 
 def patch_text(path: Path, replacements: tuple[tuple[str, str], ...] = ()) -> bool:
@@ -33,7 +40,7 @@ def patch_text(path: Path, replacements: tuple[tuple[str, str], ...] = ()) -> bo
     return False
 
 
-def normalize_branch_routes(path: Path) -> bool:
+def normalize_public_surface(path: Path) -> bool:
     text = path.read_text(encoding="utf-8", errors="replace")
     original = text
 
@@ -45,6 +52,8 @@ def normalize_branch_routes(path: Path) -> bool:
 
     text = ROOT_BRANCH_HREF.sub(route, text)
     text = text.replace(ABSOLUTE_ROOT_BRANCH, ABSOLUTE_EXPLORE_BRANCH)
+    for old, new in PUBLIC_LABEL_REPLACEMENTS:
+        text = text.replace(old, new)
     if text != original:
         path.write_text(text, encoding="utf-8")
         return True
@@ -59,7 +68,7 @@ def main() -> None:
     for page in OUT.rglob("*.html"):
         if page == OUT / "explore" / "index.html":
             continue
-        if normalize_branch_routes(page):
+        if normalize_public_surface(page):
             changed.add(page)
 
     religion = OUT / "religion" / "index.html"
@@ -79,7 +88,7 @@ def main() -> None:
         bible,
         (
             (
-                '<nav class="page-nav" aria-label="Page navigation"><a href="../../">← Home</a><a href="../../tim-dooley/">Tim dossier</a><a href="../../chronology/">Chronology</a><a href="../../context/source-authority/">Source authority</a><a href="../../faq/">FAQ</a></nav>',
+                '<nav class="page-nav" aria-label="Page navigation"><a href="../../">← Home</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../chronology/">Timeline</a><a href="../../context/source-authority/">Sources</a><a href="../../faq/">FAQ</a></nav>',
                 '<nav class="page-nav" aria-label="Page navigation"><a href="../../religion/">← Religion</a><a href="../../">Home</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../chronology/">Timeline</a><a href="../../context/source-authority/">Sources</a></nav>',
             ),
         ),
@@ -101,16 +110,6 @@ def main() -> None:
         ),
     ):
         changed.add(vesica)
-
-    tim = OUT / "tim-dooley" / "index.html"
-    if patch_text(
-        tim,
-        ((
-            '<a class="back" href="../">← Potato of Life archive</a>',
-            '<a class="back" href="../">← Home</a>',
-        ),),
-    ):
-        changed.add(tim)
 
     print(f"Applied public navigation cleanup to {len(changed)} generated page(s).")
 
