@@ -13,6 +13,11 @@ SPATIAL = ROOT / "world-map" / "3d-spatial-navigation.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 HTML = ROOT / "world-map" / "3d.html"
 UI = ROOT / "world-map" / "3d-ui.js"
+APP = ROOT / "world-map" / "3d-app.js"
+NETWORKS = ROOT / "world-map" / "3d-networks.js"
+SELECTION = ROOT / "world-map" / "3d-selection-ui.js"
+METRICS = ROOT / "world-map" / "3d-metric-dimensions.js"
+FAITH = ROOT / "world-map" / "3d-demography-facets.js"
 
 
 def check_js_syntax(path: Path, errors: list[str], warnings: list[str]) -> None:
@@ -129,6 +134,42 @@ def main() -> int:
         require(ui, ("function setPanel", "function setFocus", "window.__potatoAtlasUI"), "progressive UI", errors)
         check_js_syntax(UI, errors, warnings)
 
+    # World providers must register by meaning rather than renderer mechanics.
+    if METRICS.exists():
+        metrics = METRICS.read_text(encoding="utf-8")
+        require(metrics, ("zone:'world'", "category:'Economy'", "category:'People & society'", "setSurface", "renewable_electricity"), "World metric provider", errors)
+        check_js_syntax(METRICS, errors, warnings)
+    if FAITH.exists():
+        faith = FAITH.read_text(encoding="utf-8")
+        require(faith, ("zone:'world'", "category:'Faith & culture'", "unaffiliated", "diversity"), "World faith provider", errors)
+        check_js_syntax(FAITH, errors, warnings)
+    if SELECTION.exists():
+        selection = SELECTION.read_text(encoding="utf-8")
+        require(selection, ("world:places:capitals", "Overview", "Relations", "Compare", "Change", "Sources"), "selection context", errors)
+        check_js_syntax(SELECTION, errors, warnings)
+
+    # Task 4 red contract: contextual UI must drive direct domain APIs rather than
+    # synthesizing clicks on hidden legacy controls.
+    if APP.exists():
+        app = APP.read_text(encoding="utf-8")
+        require(app, (
+            "window.__potatoAtlasRelations",
+            "setVisible",
+            "setType",
+            "expand",
+            "collapseToImmediate",
+            "getDepth",
+            "window.__potatoAtlasCompare",
+            "startWithCurrent",
+            "getCodes",
+            "isActive",
+        ), "direct Relations/Compare API", errors)
+        check_js_syntax(APP, errors, warnings)
+    if NETWORKS.exists():
+        networks = NETWORKS.read_text(encoding="utf-8")
+        require(networks, ("zone:'relations'", "category:'Institutions & alliances'", "relationModes"), "Relations network provider", errors)
+        check_js_syntax(NETWORKS, errors, warnings)
+
     for warning in warnings:
         print("WARNING:", warning)
     for error in errors:
@@ -137,7 +178,7 @@ def main() -> int:
     if errors:
         print(f"Spatial navigation validation failed with {len(errors)} error(s).")
         return 1
-    print("Spatial navigation registry + four-zone shell: PASS")
+    print("Spatial navigation registry + semantic providers: PASS")
     return 0
 
 
