@@ -1,126 +1,21 @@
-// Atlas MapLibre bootstrap.
+// Same-origin MapLibre GL JS 6 bootstrap for the 3D atlas.
 //
-// MapLibre GL JS 5.x ships a classic browser bundle (dist/maplibre-gl.js)
-// with the worker embedded. Version 6 is the line that moved to the ESM-only
-// dist/maplibre-gl.mjs layout. The deployed Pages build vendors the v5 browser
-// bundle beside this module so atlas boot does not depend on a public CDN.
+// The application was authored against MapLibre 6.x. Pages vendors the ESM
+// bundle, worker and shared worker dependency into ./vendor at deploy time.
+// Keeping the engine on the same origin removes CDN availability from browser
+// boot while preserving the API/runtime version the atlas code expects.
 
-const MAPLIBRE_VERSION = '5.24.0';
-const PROVIDER_TIMEOUT_MS = 7000;
-const LOCAL_RUNTIME = new URL('./vendor/maplibre-gl.js?v=5.24.0', import.meta.url).href;
-const providers = [
-  LOCAL_RUNTIME,
-  `https://cdn.jsdelivr.net/npm/maplibre-gl@${MAPLIBRE_VERSION}/dist/maplibre-gl.js`,
-  `https://unpkg.com/maplibre-gl@${MAPLIBRE_VERSION}/dist/maplibre-gl.js`
-];
+import * as runtime from './vendor/maplibre-gl.mjs?v=6.9.0';
 
-function setBootStatus(message, kind = 'info') {
-  const status = document.querySelector('#status');
-  if (!status) return;
-  status.hidden = !message;
-  status.dataset.kind = kind;
-  status.textContent = message;
-  if (window.__potatoAtlasBootGuard) window.__potatoAtlasBootGuard.stage = message || 'ready';
-}
-
-function loadClassicScript(url, timeoutMs = PROVIDER_TIMEOUT_MS) {
-  return new Promise((resolve, reject) => {
-    if (globalThis.maplibregl?.Map) {
-      resolve(globalThis.maplibregl);
-      return;
-    }
-
-    const script = document.createElement('script');
-    script.async = true;
-    script.src = url;
-    script.dataset.atlasMapEngine = url;
-
-    let settled = false;
-    const finish = (fn, value) => {
-      if (settled) return;
-      settled = true;
-      clearTimeout(timer);
-      script.onload = null;
-      script.onerror = null;
-      fn(value);
-    };
-
-    const timer = setTimeout(() => {
-      script.remove();
-      finish(reject, new Error(`MapLibre provider timed out: ${url}`));
-    }, timeoutMs);
-
-    script.onload = () => {
-      if (globalThis.maplibregl?.Map) finish(resolve, globalThis.maplibregl);
-      else finish(reject, new Error(`MapLibre provider loaded without exposing maplibregl: ${url}`));
-    };
-    script.onerror = () => {
-      script.remove();
-      finish(reject, new Error(`MapLibre provider failed: ${url}`));
-    };
-    document.head.appendChild(script);
-  });
-}
-
-async function loadRuntime() {
-  if (globalThis.maplibregl?.Map) return globalThis.maplibregl;
-  setBootStatus('Loading map engine…');
-  const errors = [];
-  for (const url of providers) {
-    try {
-      const runtime = await loadClassicScript(url);
-      setBootStatus('Map engine ready…');
-      return runtime;
-    } catch (error) {
-      errors.push(error);
-      console.warn(error.message);
-    }
-  }
-  throw new AggregateError(errors, 'All MapLibre browser providers failed');
-}
-
-let runtime;
-try {
-  runtime = await loadRuntime();
-} catch (error) {
-  setBootStatus('Map engine failed to load. Local runtime and both fallbacks failed.', 'error');
-  console.error('Atlas MapLibre bootstrap failed.', error);
-  throw error;
-}
-
-function isRemoteOsmBootstrapStyle(style) {
-  if (!style || typeof style !== 'object') return false;
-  const osm = style.sources?.osm;
-  if (!osm || osm.type !== 'raster') return false;
-  return (osm.tiles || []).some(url => String(url).includes('tile.openstreetmap.org'));
-}
-
-function localBootstrapStyle() {
-  return {
-    version: 8,
-    sources: {},
-    layers: [
-      {
-        id: 'atlas-background',
-        type: 'background',
-        paint: { 'background-color': '#080b0b' }
-      }
-    ]
-  };
-}
-
-// The application historically used Map.loaded() + once('load') as though `load`
-// were a replayable readiness signal. MapLibre's load event is one-shot, while
-// loaded() can become false again whenever a later source/layer is still settling.
-// AtlasMap records the first load and replays only late once('load', fn)
-// subscriptions, preventing enhancement modules from waiting on an event that
-// already happened.
+// A number of optional atlas modules were written when they all started in
+// parallel. They use `loaded()` followed by `once("load")`. MapLibre's load
+// event is one-shot, while loaded() can temporarily become false again when a
+// later source/layer is settling. Replay that first-load readiness signal for
+// late enhancement modules so they cannot wait forever on an event that already
+// happened.
 class AtlasMap extends runtime.Map {
   constructor(options = {}) {
-    const sanitized = isRemoteOsmBootstrapStyle(options.style)
-      ? { ...options, style: localBootstrapStyle() }
-      : options;
-    super(sanitized);
+    super(options);
     this.__potatoAtlasFirstLoadComplete = false;
     super.once('load', () => {
       this.__potatoAtlasFirstLoadComplete = true;
@@ -153,4 +48,6 @@ export const ScaleControl = runtime.ScaleControl;
 export const FullscreenControl = runtime.FullscreenControl;
 export const GeolocateControl = runtime.GeolocateControl;
 export const LogoControl = runtime.LogoControl;
+export const setWorkerUrl = runtime.setWorkerUrl;
+export const getWorkerUrl = runtime.getWorkerUrl;
 export const version = runtime.version;
