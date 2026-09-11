@@ -33,7 +33,8 @@ if f"Sitemap: {BASE}sitemap.xml" not in robots:
 if re.search(r"(?im)^\s*Disallow:\s*/\s*$", robots):
     errors.append("robots.txt blocks the entire public archive")
 
-# Parse sitemap and map public URLs back to source HTML paths.
+# Parse sitemap and map public URLs back to source paths. Clean routes resolve
+# to <route>/index.html; explicit file routes (for example 3d.html) stay files.
 sitemap_urls = []
 if (ROOT / "sitemap.xml").exists():
     try:
@@ -51,7 +52,11 @@ for url in sitemap_urls:
         errors.append(f"sitemap URL outside canonical site: {url}")
         continue
     rel = url[len(BASE):].strip("/")
-    page = ROOT / (rel + "/index.html" if rel else "index.html")
+    rel_path = Path(rel)
+    if rel and rel_path.suffix:
+        page = ROOT / rel_path
+    else:
+        page = ROOT / (rel + "/index.html" if rel else "index.html")
     if not page.exists():
         errors.append(f"sitemap URL has no source page: {url} -> {page.relative_to(ROOT)}")
 
