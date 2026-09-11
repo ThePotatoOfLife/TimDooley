@@ -1,10 +1,10 @@
 {
   "id":"equation-ledger-wave-007-constraint-fate-timelines",
-  "title":"Equation Ledger Wave 007 — Leashes, Reachability, Timelines, Fate and Path Dependence",
-  "version":"1.0.0",
+  "title":"Equation Ledger Wave 007 — Leashes, Reachability, Timelines, Fate, Control Authority and Path Dependence",
+  "version":"1.1.0",
   "updated":"2026-09-11",
   "status":"typed equation registry",
-  "purpose":"Register the equations and logical operators promoted by the leash/timeline/fate wave while preventing mechanical, stochastic, topological and theological notions of destiny from being collapsed.",
+  "purpose":"Register the equations and logical operators promoted by the leash/timeline/fate wave while preventing mechanical, stochastic, topological, control-authority and theological notions of destiny from being collapsed.",
   "entries":[
     {"id":"taut-tether","class":"classical-mechanics","equation":"g(q)=||q-a||^2-L^2=0","role":"fixed-length tether/constraint surface","project_use":"physical comparator for Leash when a literal radial constraint is intended."},
     {"id":"tether-tangent-velocity","class":"classical-mechanics","equation":"(q-a)·qdot=0 for fixed a,L on g=0","role":"removes radial velocity on taut boundary","project_use":"widening spiral becomes tangential/boundary motion once fixed leash is taut."},
@@ -14,7 +14,11 @@
     {"id":"winding-number","class":"topology","equation":"n=(1/2pi) integral_C dtheta","role":"integer encirclement class around excluded point in planar setting","project_use":"distinguish topological orbit/history from physical tether force."},
     {"id":"general-controlled-trajectory","class":"control-theory","equation":"xdot=f(x,u,w,t)","role":"state trajectory with control u and disturbance w","project_use":"timeline as admissible history under rules/choices/disturbances."},
     {"id":"reachable-set","class":"control-theory","equation":"R(T,x0)={x(T): xdot=f(x,u,t), u(.) admissible}","role":"future states reachable in horizon T","project_use":"agency/freedom as reachable alternatives under constraints."},
-    {"id":"linear-controllability","class":"control-theory","equations":["xdot=Ax+Bu","C=[B,AB,A^2B,...,A^(n-1)B]","rank(C)=n"],"role":"standard finite-dimensional linear controllability test under usual assumptions."},
+    {"id":"linear-controllability","class":"control-theory","equations":["xdot=Ax+Bu","C=[B,AB,A^2B,...,A^(n-1)B]","rank(C)=n"],"role":"standard finite-dimensional linear controllability test under usual assumptions.","project_use":"tests whether declared input channels can move the full modeled state, not whether an actor metaphysically owns it."},
+    {"id":"controllability-gramian","class":"control-theory","equation":"W_c(T)=integral_0^T exp(A tau) B B^T exp(A^T tau) d tau","role":"finite-horizon controllability/energy geometry for continuous-time LTI systems","criterion":"invertible/positive-definite W_c corresponds to controllability under standard assumptions."},
+    {"id":"minimum-control-energy","class":"control-theory","equation":"E_min=(x_f-exp(A T)x_0)^T W_c(T)^(-1)(x_f-exp(A T)x_0)","role":"standard minimum-energy expression for a controllable LTI transfer under the corresponding quadratic input-energy formulation","project_use":"separates reachable target from cheap/easy control; control authority can be strongly direction-dependent."},
+    {"id":"multiple-controller-dynamics","class":"control/differential-game-comparator","equation":"xdot=f(x,u_1,...,u_m,w,t)","role":"several controllers plus disturbances can shape one trajectory","project_use":"prevents one-owner assumptions in systems with distributed or competing control."},
+    {"id":"observation-model","class":"systems-theory","equation":"y=C_obs x+v","role":"measurement channel","project_use":"formalizes Observation Is Not Actuation: seeing/estimating state does not imply ability to control it."},
     {"id":"mountain-pass-door","class":"variational-mathematics","equations":["c*=inf_(gamma in Gamma) max_s V(gamma(s))","Delta V=V(x_saddle)-V(x_basin)"],"role":"least-high barrier path / Door between basins","connection":"Wave 006 Peak/Trough/Saddle atlas."},
     {"id":"deterministic-flow","class":"dynamical-systems","equation":"xdot=f(x)","role":"trajectory fixed by state and law under appropriate uniqueness assumptions","boundary":"determinism does not imply predictability or theology of fate."},
     {"id":"lyapunov-separation","class":"chaos-comparator","equation":"||delta x(t)||~||delta x(0)|| exp(lambda t)","role":"sensitive dependence when positive Lyapunov growth applies","project_use":"separates deterministic law from practical forecastability."},
@@ -37,6 +41,8 @@
     "Use EF/AF/AG or hitting probability to distinguish can-reach, must-reach and likely-to-reach.",
     "Use P_aa=1 only for a genuinely absorbing state inside the declared model; metastable or hard-to-exit states are not absorbing.",
     "Use winding/homotopy for topological constraint and Lagrange/complementarity mechanics for physical constraint; they are different mechanisms.",
+    "A candidate controller requires a defined input/intervention channel; an observer, anchor or central node is not automatically a controller.",
+    "Controllability is not ownership; legal, institutional or mythic ownership requires a separate evidence field.",
     "Karmic debt, destiny and providence remain theological/project categories unless a separate empirical variable is explicitly defined.",
     "Determinism, predictability, inevitability and prophecy are not synonyms."
   ],
@@ -48,6 +54,7 @@
   ],
   "owners":[
     "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "knowledge/science/control-authority-owner-dominator-agency-atlas.json",
     "data/entanglement.json",
     "data/frame.json",
     "knowledge/traditions/biblical-cord-yoke-path-fate-addendum.json"
