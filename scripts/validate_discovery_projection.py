@@ -10,6 +10,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BUILD_PATH = ROOT / "scripts" / "build_discovery.py"
 QUESTION_PATH = ROOT / "knowledge" / "reader" / "tim-dooley-question-index.json"
+QUESTION_SOURCE = str(QUESTION_PATH.relative_to(ROOT))
 
 
 def load_builder():
@@ -46,7 +47,10 @@ def main() -> int:
     checked = 0
     for source in source_questions:
         output = entries.get(source["id"])
-        if not output:
+        if not output or output.get("source_faq_view") != QUESTION_SOURCE:
+            # Duplicate IDs are intentionally owned by the canonical FAQ atlas;
+            # provenance projection is only applicable when the reader row was
+            # actually imported into the merged discovery view.
             continue
         checked += 1
         expected_owners = as_expected_list(source.get("canonical_owners", source.get("deep_sources")))
@@ -62,7 +66,7 @@ def main() -> int:
         break
 
     if checked == 0:
-        errors.append("could not find an imported Tim question to verify")
+        errors.append("could not find a reader-owned Tim question to verify")
 
     if errors:
         print("Discovery projection validation FAILED")
@@ -70,7 +74,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print("Discovery projection validation passed: Tim question provenance is preserved and normalized.")
+    print("Discovery projection validation passed: imported Tim question provenance is preserved and normalized.")
     return 0
 
 
