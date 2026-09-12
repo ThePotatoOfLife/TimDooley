@@ -1,175 +1,111 @@
 {
-  "id":"great-book-human-map-mathematics-audit",
-  "title":"Great Book Human Map / Nexus of Being — Recovered Mathematics Audit",
-  "version":"2.0.0",
-  "updated":"2026-09-11",
-  "status":"old-document archaeology + mathematical repair + multivariate consciousness research design; not an empirical theory of enlightenment",
-  "abstract":"The Human Map / Nexus of Being material is best treated as an early multivariate consciousness framework rather than as a collection of literal biological formulas. The recovered Great Book equations combine neural oscillations, neuromodulators, cerebrospinal-fluid rhythms, graph metrics, predictive coding, fractal measures, social synchrony and phenomenological labels, but several historical expressions add incompatible units or attach unsupported numerical values to states such as 'enlightenment'. The rigorous research version therefore replaces fixed mystical constants with a hierarchical measurement-and-state model: latent cognitive/phenomenological states generate multimodal observations such as EEG/MEG features, behavior, autonomic measures and self-report, while subject, session and context effects are modeled explicitly. Transitions, dwell times, metastability, integration/segregation and behavioral outcomes can then be estimated and compared across preregistered conditions. The project-specific contribution is the attempt to organize Body, Mind and Spirit-era variables into one typed multiscale state description; its scientific value depends on whether this organization improves prediction or discriminates conditions beyond simpler neuroscience models. The framework is currently T1-T2: methodologically repairable and experimentally specifiable, but not a validated biomarker or theory of enlightenment.",
-  "source_note":"Recovered from The Great Book Of Potato2.odt, especially parsed pages 504-509 and 533-540. The source mixed established mathematics, project-created formulas, phenomenology and unsupported numerical neuroscience claims.",
-  "epistemic_rule":"Preserve the historical equations, but never promote mixed-unit or unsupported formulas into physical law. Each recovered form is typed as established comparator, project schematic, or quarantined formula.",
-  "research_question":"Can a typed multivariate state-space model of neural, physiological, behavioral and phenomenological measurements identify reproducible state/trait structure more accurately than simple single-metric accounts, without presupposing a privileged 'enlightenment frequency' or one-dimensional score?",
-  "maturity":"T1 conceptual framework with T2 candidate mathematical models; no validated composite biomarker",
-  "measurement_architecture":{
-    "latent_state":"z_t represents an unobserved cognitive/phenomenological state or state vector; its interpretation must be learned/tested rather than named in advance from one signal.",
-    "observation_vector":"y_t=(EEG/MEG features, connectivity, complexity, autonomic measures, behavior, task performance, self-report, contextual covariates)",
-    "measurement_model":"p(y_t|z_t,subject,session,context)",
-    "transition_model":"p(z_t|z_(t-1),condition,subject) or a continuous state-space/SDE analogue",
-    "hierarchy":"population -> subject -> session -> epoch/trial, with random effects or hierarchical priors when data support them",
-    "rule":"The latent state is not automatically 'Spirit' or 'enlightenment'; labels are interpretations that require convergent behavioral/phenomenological evidence."
+  "id": "great-book-human-map-mathematics-audit",
+  "title": "Human Map / Nexus of Being — Developed Multiscale State Theory",
+  "version": "3.0.0",
+  "updated": "2026-09-12",
+  "status": "Great Book archaeology + developed latent-state and measurement theory; not a validated biomarker of enlightenment",
+  "abstract": "The Human Map is most valuable as a multiscale measurement theory of changing human state rather than as a table of mystical biological constants. The original Great Book formulas attempted to combine oscillations, connectivity, neuromodulation, CSF rhythms, graph structure, predictive coding, affect, social synchrony and phenomenological labels, but often mixed units or assigned unsupported fixed values to complex states. This redevelopment converts the material into a hierarchical generative model. A latent state z_t evolves through time, observations y_t are emitted through modality-specific measurement functions, and subject/session/context effects are represented explicitly. The theory distinguishes state from trait, measurement from interpretation, and neural dynamics from self-report. It adds identifiability criteria, Fisher-information analysis, hidden semi-Markov dwell structure, continuous stochastic dynamics, multimodal fusion, intervention logic and out-of-sample model comparison. The project-specific insight retained from the Human Map is that no single frequency, transmitter or network statistic should define a person or a state; the meaningful object is the structured relation among multiple channels and transitions. The branch is T2 as a statistical/neuroscience research programme and T0 as any claim that it measures a metaphysical rank such as enlightenment.",
+  "research_question": "Can a hierarchical latent-state model of neural, physiological, behavioral and phenomenological data discover reproducible state structure and transitions that predict meaningful outcomes better than simple single-metric or static baselines?",
+  "core_generative_model": {
+    "latent_dynamics_discrete": "z_t~p(z_t|z_(t-1),u_t,s,c)",
+    "observation_model": "y_t~p(y_t|z_t,s,session,c)",
+    "continuous_option": "dz=f(z,u,t)dt+G(z)dW_t; y=h(z)+epsilon",
+    "hierarchy": "population -> subject -> session -> epoch/trial",
+    "variables": {"z_t":"latent state/vector", "y_t":"multimodal observations", "u_t":"intervention/task/input", "s":"subject effects", "c":"context/covariates"},
+    "plain_language": "the state is inferred from many noisy measurements; it is not identified with any one measurement"
   },
-  "candidate_hidden_state_model":{
-    "discrete_option":"z_t in {1,...,K}, A_ij=P(z_(t+1)=j|z_t=i)",
-    "dwell_time":"For non-geometric dwell distributions use a hidden semi-Markov model rather than forcing a basic HMM.",
-    "entropy_rate":"h=-sum_i pi_i sum_j A_ij log A_ij for a stationary Markov model",
-    "continuous_option":"dz=f(z,u,t)dt+G(z)dW_t; y=h(z)+epsilon",
-    "research_value":"This turns 'states of consciousness' into estimable transition/dwell structures rather than static mystical categories."
+  "measurement_model": {
+    "neural": ["spectral power/1-f shape", "phase-amplitude coupling", "source-space connectivity", "metastability", "signal complexity"],
+    "physiology": ["heart/respiration variables", "autonomic measures", "movement", "CSF variables only when measured appropriately"],
+    "behavior": ["task accuracy", "reaction time", "persistence", "coordination", "decision variables"],
+    "phenomenology": ["self-report", "experience sampling", "structured interview/ratings"],
+    "rule": "each channel retains its own units and noise model before fusion"
   },
-  "recovered_equations":[
-    {
-      "name":"Thalamic oscillation equation",
-      "historical_form":"Vdot_i=-0.2(V_i+65)+a_Glu[Glu]+a_GABA[GABA]+a_5HT[5HT]+a_OXT[OXT]+a_CSF[CSF]+a_Mel[Mel]",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"As written, coefficients and inputs mix concentrations, flow/frequency and membrane voltage without a dimensional model. It is not a valid biophysical membrane equation.",
-      "repair":"Use C_m dV/dt=-sum_k g_k(V-E_k)+I_ext for a conductance-style model, or use a neural-mass model. Neuromodulators should change defined parameters/gains with units rather than be directly added to voltage.",
-      "observable_link":"Membrane/neural-mass parameters must map to electrophysiological measurements or remain illustrative."
-    },
-    {
-      "name":"Claustrum synchrony",
-      "historical_form":"S_claustrum(t)=sum_i w_i sin(2 pi f_gamma t) exp(-k D_state) cos(phi_cortex)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"Evaluable only if state distance, k, phases and weights are explicitly normalized; historical interpretation as an enlightenment predictor was unsupported.",
-      "repair":"Use phase-locking value, coherence, weighted phase synchrony or Kuramoto order parameter R(t)=|N^-1 sum_j exp(i theta_j)|, with source-leakage/common-input controls.",
-      "baseline":"Compare against ordinary regional synchrony/connectivity models; claustral specificity requires anatomical/source-localized evidence."
-    },
-    {
-      "name":"CSF oscillator",
-      "historical_form":"F_CSF(t)=A sin(2 pi f_CSF t) exp(-k[amyloid])",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"Phenomenological oscillator, not a derived glymphatic or hydrodynamic equation. Exponential attenuation requires k[amyloid] dimensionless and a defined concentration variable.",
-      "repair":"Fit measured CSF waveform components from appropriate physiology/MRI if this branch is studied; treat consciousness interpretation as a separate hypothesis.",
-      "failure_condition":"If CSF dynamics add no predictive value after cardiorespiratory and motion effects are modeled, do not retain them as a consciousness-specific feature."
-    },
-    {
-      "name":"Predictive-coding score",
-      "historical_form":"P(reality)=sum_i p(sensory_i|prior_i)p(prior_i) cos(theta_gamma) cos(theta_theta)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"This is not Bayes' theorem; oscillatory phase factors were appended without a probabilistic derivation.",
-      "repair":"Use p(h|y) proportional to p(y|h)p(h), or construct an explicit generative model in which neural phases modulate a defined precision/gain parameter.",
-      "test":"Compare held-out predictive likelihood with and without the phase-dependent precision term."
-    },
-    {
-      "name":"Variational free-energy expression",
-      "historical_form":"F≈KL(q(state)||p(state|sensory)) - log p(sensory)",
-      "origin_class":"established-math-neighbor reconstructed from malformed source notation",
-      "audit":"The rigorous variational identity is F[q]=E_q[log q(s)-log p(y,s)]=KL(q(s)||p(s|y))-log p(y).",
-      "repair":"Keep as an external inference framework. A biological/free-energy-principle interpretation requires a specific generative model and empirical comparison."
-    },
-    {
-      "name":"Cultural-prior weighting",
-      "historical_form":"P_cultural=sum_i w_i p(sensory_i|culture) exp(-k D_context)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"Useful schematic for context weighting if terms are defined; not a validated cultural-neuroscience law.",
-      "repair":"Use hierarchical Bayesian or mixed-effects models with culture/context as measured predictors; predefine the comparison and avoid treating group labels as biological essences."
-    },
-    {
-      "name":"Transcendent / emotional cascade",
-      "historical_form":"T_cascade(t)=sum_i w_i sin(2 pi f_i t) exp(R_i D_state) cos(phi_i) cos(theta_i)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"The source mixed oscillatory phases, affect/fractal labels and biochemical variables without a measurement model.",
-      "repair":"Split neural oscillatory features, physiology, affect and biochemical covariates into typed channels and estimate their joint relation using a state-space, GLM/GAM or hierarchical model."
-    },
-    {
-      "name":"Self-actualization score",
-      "historical_form":"S_actualization=sum_i w_i(BDNF_i+oxytocin_i+gamma_i) exp(k D_purpose)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"Invalid as a physical equation because concentration, spectral power and psychological score are added directly.",
-      "repair":"If a composite is needed, standardize features within a declared population, preregister weights or estimate them using training data, and evaluate the score on held-out outcomes. Call it an exploratory composite rather than self-actualization itself.",
-      "failure_condition":"Discard or revise the composite if it lacks reliability, measurement invariance or out-of-sample predictive value."
-    },
-    {
-      "name":"Collective-unity oscillator",
-      "historical_form":"U_collective=sum_i w_i cos(phi_vagus,i) sin(2 pi f_theta,i t) exp(k D_ritual,i)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"No validated physiological interpretation as written.",
-      "repair":"For group experiments use hyperscanning measures plus behavioral coordination and null/permutation controls for common sensory drive, movement and task timing.",
-      "causal_warning":"Inter-brain correlation does not demonstrate direct brain-to-brain causal coupling or quantum nonlocality."
-    },
-    {
-      "name":"EEG coherence aggregate",
-      "historical_form":"C_EEG=sum_ij cov(gamma_i,gamma_j) exp(-k D_state)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"Covariance depends on amplitude scale/reference; historical fractal-state modifier was unsupported.",
-      "repair":"Prefer normalized coherence, imaginary coherence, phase-lag metrics or source-space graph measures with artifact/source-leakage controls."
-    },
-    {
-      "name":"Network score",
-      "historical_form":"G_network=sum_i d_i b_i exp(k C_clustering)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"Degree, betweenness and clustering are legitimate graph quantities, but direct multiplication creates scale dependence and unclear interpretation.",
-      "repair":"Keep metrics separate or combine only after normalization and predictive validation; compare with graph null models that preserve relevant degree/weight structure."
-    },
-    {
-      "name":"Box-counting fractal dimension",
-      "historical_form":"D=lim_(epsilon->0) log N(epsilon)/log(1/epsilon)",
-      "origin_class":"established-external-mathematics",
-      "audit":"Legitimate mathematical definition. Historical assignments D=4.5 'Enlightenment' and D=3.0 'NPD' are quarantined and must not be repeated as established findings.",
-      "rigor_note":"Finite biological signals require estimator choice, scaling range, uncertainty and surrogate-data comparison; an estimated exponent is not an identity label."
-    },
-    {
-      "name":"Neural avalanche power law",
-      "historical_form":"P(s) proportional to s^(-tau)",
-      "origin_class":"established-statistical-comparator",
-      "audit":"A legitimate criticality-style distribution family. Evidence requires likelihood-based model comparison, finite-size analysis and alternatives rather than visual log-log straightness."
-    },
-    {
-      "name":"Consciousness Spiral",
-      "historical_form":"r=a exp(b theta), b=ln(phi)/(pi/2)",
-      "origin_class":"Great-Book-derived + 2025-04-21 primary project formula",
-      "audit":"Mathematically valid logarithmic spiral with exact quarter-turn scaling r(theta+pi/2)=phi r(theta). Physical/neural interpretation remains project-specific.",
-      "test":"If fitted to empirical trajectories, estimate a,b and residuals, compare against Archimedean/power-law/spline alternatives and test the fixed golden-ratio b against a freely estimated b."
-    },
-    {
-      "name":"Human Map composite",
-      "historical_form":"C=Phi_spiral(FC,DMN,A,Phi,B,Q)",
-      "origin_class":"Great-Book-derived-formalism",
-      "audit":"Historically important but underdefined. It is a function signature, not yet a model.",
-      "repair":"Define a typed feature vector and a target variable first; choose a transparent model class, fit on training data and evaluate on held-out subjects/sessions."
-    }
+  "hidden_semi_markov_extension": {
+    "state": "z_t in {1,...,K}",
+    "transition": "A_ij=P(z_next=j|z_current=i)",
+    "duration": "p(d|z=k) explicitly models dwell time rather than forcing geometric durations",
+    "meaning": "states are characterized not only by what measurements look like but by how long they persist and how transitions occur"
+  },
+  "continuous_landscape_extension": {
+    "potential_form": "dz=-grad U(z)dt+B u(t)dt+Sigma dW_t",
+    "stationary_idea": "p(z) proportional to exp[-2U(z)/sigma^2] only under restrictive gradient/isotropic conditions",
+    "barrier": "transition rates depend on barrier geometry and noise rather than on a mystical frequency constant",
+    "project_value": "the Human Map can become a state landscape with basins, transitions and interventions"
+  },
+  "identifiability": {
+    "fisher": "I_ab(theta)=E[(partial log p(y|theta)/partial theta_a)(partial log p(y|theta)/partial theta_b)]",
+    "local_identifiability": "full-rank Fisher information is a local diagnostic when regularity conditions apply",
+    "profile_likelihood": "use when parameters trade off strongly",
+    "latent_symmetry_warning": "latent-state labels can be permuted; orientation/sign/scaling may also be unidentified depending on the model",
+    "lesson": "a beautiful latent representation is not scientifically interpretable if multiple parameterizations produce the same data"
+  },
+  "multimodal_fusion": {
+    "conditional_independence_example": "p(y_EEG,y_HRV,y_report|z)=product_m p(y_m|z) only if the assumption is justified",
+    "correlated_noise_option": "use a joint covariance or shared nuisance latent variables when modalities share motion, arousal or task timing",
+    "missing_data": "integrate over unobserved modalities rather than imputing a state label from one absent channel",
+    "calibration": "measurement reliability and session drift should be estimated separately from true state change"
+  },
+  "state_trait_decomposition": {
+    "example": "z_(i,t)=mu + b_i + s_(i,t)",
+    "b_i": "person-specific trait component",
+    "s_i_t": "within-person state deviation",
+    "meaning": "persistent individual difference and temporary state change are distinct scientific questions"
+  },
+  "intervention_and_causality": {
+    "controlled_input": "u_t may represent task, stimulation, breathing condition, meditation instruction or another declared intervention",
+    "causal_question": "does changing u alter transition probabilities, dwell times or outcomes after confound control?",
+    "counterfactual_boundary": "observational state correlations alone do not establish that a neural feature causes a phenomenological state"
+  },
+  "recovered_formula_repair_principles": [
+    "Do not add neurotransmitter concentration, EEG power, graph metrics and psychological scores directly without a typed statistical model.",
+    "Replace fixed 'enlightenment' frequencies/fractal dimensions with estimated distributions and uncertainty.",
+    "Replace ad hoc predictive-coding scores with an explicit generative Bayesian model.",
+    "Replace raw covariance synchrony with normalized/source-aware metrics and nuisance controls.",
+    "Keep the valid logarithmic Consciousness Spiral as geometry; test it against alternative trajectory models if applied to data."
   ],
-  "consciousness_research_upgrade":{
-    "principle":"Replace fixed mystical numbers with state estimation, measurement reliability and falsifiable comparisons.",
-    "candidate_observables":["EEG/MEG spectral power and 1/f exponent","phase-amplitude coupling","metastability and dwell-time distributions","functional integration/segregation","Lempel-Ziv or related signal complexity","perturbational complexity where clinically appropriate","behavioral report reliability and task performance","autonomic variables such as HRV when relevant","fMRI network connectivity with preregistered preprocessing"],
-    "exploratory_state_vector":"q_conscious=(spectral_shape,PAC,complexity,metastability,integration,segregation,connectivity,report,behavior,physiology)",
-    "state_trait_separation":"State effects are within-person/session changes; trait effects are persistent between-person differences. Analyze them separately before claiming a stable spiritual/psychological type.",
-    "enlightenment_rule":"Operationalize a specific outcome such as sustained nondual report, attentional stability, compassion behavior, meditation expertise or another defined construct; never encode 'enlightenment' as a biological constant.",
-    "exploratory_index":"E*=w^T z(q_conscious) may be used only as a preregistered dimensionless research score with held-out validation; it is not enlightenment itself."
+  "worked_observation_example": {
+    "latent": "z_t=(arousal,integration,stability) as an exploratory 3D state, not canonical biology",
+    "EEG": "y1_t=C1 z_t+epsilon1",
+    "behavior": "y2_t~Bernoulli(sigmoid(beta0+beta^T z_t))",
+    "report": "y3_t=C3 z_t+b_subject+epsilon3",
+    "dynamics": "z_(t+1)=A z_t+B u_t+eta_t",
+    "test": "compare held-out likelihood and behavioral prediction against EEG-only and report-only baselines",
+    "value": "this illustrates how heterogeneous measurements can constrain one latent state without pretending they have common physical units"
   },
-  "minimal_experimental_program":{
-    "design":"Repeated-measures longitudinal or within-subject intervention design is preferred for state changes; include matched/control conditions when causal language is used.",
-    "preprocessing":"Freeze artifact rejection, referencing/source reconstruction, frequency bands and quality thresholds before outcome analysis where feasible.",
-    "primary_outcome":"Choose one primary behavioral/phenomenological outcome and one primary neural model comparison rather than dozens of post hoc correlations.",
-    "model_comparison":"Compare the multivariate latent-state model against simpler baselines such as spectral power alone, questionnaire alone and stationary connectivity.",
-    "validation":"Use held-out sessions/subjects, posterior predictive checks or cross-validation as appropriate.",
-    "nulls":"Permutation/surrogate tests should preserve temporal/autocorrelation structure relevant to the statistic.",
-    "replication":"Any promoted biomarker should reproduce across an independent dataset and reasonable preprocessing alternatives."
+  "model_comparison": {
+    "baselines": ["single spectral metric", "questionnaire-only model", "stationary connectivity", "simple autoregressive state model"],
+    "advanced_models": ["HMM/HSMM", "linear dynamical system", "switching LDS", "nonlinear state-space model"],
+    "criteria": ["held-out log likelihood", "predictive accuracy/calibration", "state reproducibility", "parameter identifiability", "intervention sensitivity", "parsimony"],
+    "rule": "more latent dimensions are justified only when they improve prediction or stable interpretation"
   },
-  "major_confounders_and_failure_modes":[
-    "motion, muscle and eye artifacts can mimic high-frequency EEG effects",
-    "volume conduction/source leakage can inflate connectivity/coherence",
-    "respiration and cardiac rhythms can drive apparent neural/CSF coupling",
-    "multiple comparisons and flexible preprocessing can create false positives",
-    "self-report labels may be unstable, demand-characteristic or culturally conditioned",
-    "group-level separation may fail to classify individuals and vice versa",
-    "a complex latent model is not valuable if it fails to outperform a simpler baseline out of sample"
+  "operationalization_of_enlightenment_like_constructs": {
+    "rule": "never use 'enlightenment' as a biological constant",
+    "possible_targets": ["sustained nondual report", "attentional stability", "compassion-related behavior", "meditation expertise", "reduced reactivity", "another preregistered construct"],
+    "validation": "require convergent measures, reliability, discriminant validity and replication",
+    "boundary": "a latent state may correlate with a chosen construct without exhausting its philosophical or spiritual meaning"
+  },
+  "failure_conditions": [
+    "Latent states are unstable across preprocessing choices or datasets.",
+    "The complex model fails to outperform simpler baselines out of sample.",
+    "State labels depend primarily on motion, muscle, respiration, cardiac or source-leakage artifacts.",
+    "Parameters are practically non-identifiable or posterior estimates are prior-dominated.",
+    "A proposed biomarker lacks measurement invariance across subjects/sessions relevant to the claim.",
+    "Inter-brain synchrony is interpreted as direct causal/quantum coupling without excluding common input and coordination."
   ],
-  "completion_path":[
-    "Freeze the archaeology: retain historical equations exactly and separately from repaired models.",
-    "Select one operational target state/trait.",
-    "Define measurements, preprocessing and hierarchy.",
-    "Fit a latent-state or other explicit statistical model.",
-    "Quantify uncertainty, reliability and confounds.",
-    "Compare with simple baselines on held-out data.",
-    "Replicate before promoting any variable to a canonical Human Map biomarker."
+  "next_decisive_work": [
+    "Select one operational target and one dataset/experimental design.",
+    "Freeze preprocessing and measurement definitions.",
+    "Fit a small HMM/HSMM or linear dynamical system before nonlinear alternatives.",
+    "Compute identifiability/reliability and held-out performance.",
+    "Add one intervention to test whether transitions can be manipulated predictably.",
+    "Replicate before promoting any Human Map feature to a canonical biomarker."
   ],
-  "connections":["great-book-consciousness-spiral-equations-recovery","microtubule-tubulin-consciousness-recovery","science-master-index","model-testing-protocol","operator-vortex-spinor-kk-starchforce-spudlight-integration-wave-007","research-2026-09-11-consciousness-metastability-enlightenment"]
+  "connections": [
+    "microtubule-tubulin-consciousness-recovery",
+    "great-book-consciousness-spiral-equations-recovery",
+    "spudlight-theory-and-equations",
+    "model-testing-protocol",
+    "science-master-index"
+  ]
 }
