@@ -329,18 +329,7 @@ panel?.addEventListener('click', event => {
   if (button?.dataset.pulseCountry) window.goCountry?.(button.dataset.pulseCountry);
 });
 
-// Legacy panel rendering still occurs outside this module, so retain one narrow
-// top-level observer as a fallback. Explicit atlas events are the primary path.
-if (panel) {
-  let scheduled = false;
-  const observer = new MutationObserver(records => {
-    if (!records.some(record => record.type === 'childList' && record.target === panel)) return;
-    if (scheduled) return;
-    scheduled = true;
-    queueMicrotask(() => { scheduled = false; render(); });
-  });
-  observer.observe(panel, { childList: true });
-}
+window.addEventListener('potato-atlas-panel-rendered', () => render());
 window.addEventListener('potato-atlas-working-selection-change', () => render({ force:true }));
 window.addEventListener('potato-atlas-selection-change', () => render({ force:true }));
 window.addEventListener('potato-atlas-active-view-change', () => render({ force:true }));
