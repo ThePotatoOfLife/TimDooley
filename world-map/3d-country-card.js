@@ -1,6 +1,7 @@
 // Compact contextual country card for ordinary World Map exploration.
 // It reads canonical country dossiers and active registry state; it does not
-// become a second country database.
+// become a second country database. Deeper investigation stays contextual:
+// actions only appear after a country is selected.
 
 const layers = window.__potatoAtlasLayers;
 const selection = window.__potatoAtlasSelection;
@@ -16,7 +17,7 @@ let renderedCode = null;
 const records = new Map();
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'
 }[char]));
 
 async function fetchJson(url) {
@@ -120,13 +121,41 @@ async function contextualRows(code, record) {
   return rows.slice(0, 7);
 }
 
+function openInspector() {
+  document.getElementById('atlasApp')?.classList.remove('panel-collapsed');
+}
+
+async function showDetails() {
+  selection.inspect?.();
+  openInspector();
+}
+
+async function toggleEntityTrace() {
+  openInspector();
+  const loaded = window.__potatoEntityTrace
+    ? true
+    : await (window.__potatoAtlasLoadModule
+      ? window.__potatoAtlasLoadModule('Entity Trace', './3d-entity-trace.js')
+      : import('./3d-entity-trace.js').then(() => true).catch(() => false));
+  if (!loaded && !window.__potatoEntityTrace) return;
+  window.__potatoEntityTrace?.toggle?.();
+}
+
+function syncTraceAction() {
+  const button = document.querySelector('#atlasCountryCard [data-country-action="entity-trace"]');
+  if (!button) return;
+  const active = window.__potatoEntityTrace?.isEnabled?.() === true;
+  button.classList.toggle('active', active);
+  button.textContent = active ? 'Trace connections · on' : 'Trace connections';
+}
+
 function install() {
   if (document.getElementById('atlasCountryCard')) return;
   const style = document.createElement('style');
   style.id = 'atlasCountryCardStyle';
   style.textContent = `
     #atlasCountryCard{position:absolute;left:10px;top:10px;z-index:7;width:min(310px,calc(100% - 20px));max-height:calc(100% - 20px);overflow:auto;background:#0a1010ed;border:1px solid #344343;border-radius:13px;padding:11px;box-shadow:0 10px 30px #0009;backdrop-filter:blur(12px)}
-    #atlasCountryCard[hidden]{display:none!important}.atlas-country-head{display:flex;align-items:flex-start;gap:9px}.atlas-country-flag{font-size:25px;line-height:1}.atlas-country-title{min-width:0;flex:1}.atlas-country-title b{display:block;font:400 18px/1.05 Georgia,serif}.atlas-country-title small{display:block;color:#9ea9a4;font-size:10px;margin-top:2px}.atlas-country-close{border:0!important;background:transparent!important;color:#9ea9a4!important;padding:1px 4px!important;min-height:0!important}.atlas-country-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}.atlas-country-metric{padding:6px;border:1px solid #273333;border-radius:8px;min-width:0}.atlas-country-metric span{display:block;color:#8f9c96;font-size:9px;text-transform:uppercase;letter-spacing:.05em}.atlas-country-metric b{display:block;font-size:12px;overflow-wrap:anywhere}.atlas-country-row{display:flex;justify-content:space-between;gap:9px;padding:5px 0;border-bottom:1px solid #202b2a;font-size:11px}.atlas-country-row:last-child{border:0}.atlas-country-row span{color:#9aa6a0}.atlas-country-row b{text-align:right;font-weight:600}.atlas-country-section{margin-top:9px}.atlas-country-section>small{display:block;color:#7f8d87;text-transform:uppercase;letter-spacing:.09em;font-size:8px;margin-bottom:2px}.atlas-country-tags{display:flex;flex-wrap:wrap;gap:4px}.atlas-country-tag{border:1px solid #2b3937;border-radius:999px;padding:2px 6px;font-size:9px;color:#bec8c3}.atlas-country-source{margin-top:8px;color:#75827c;font-size:8px}
+    #atlasCountryCard[hidden]{display:none!important}.atlas-country-head{display:flex;align-items:flex-start;gap:9px}.atlas-country-flag{font-size:25px;line-height:1}.atlas-country-title{min-width:0;flex:1}.atlas-country-title b{display:block;font:400 18px/1.05 Georgia,serif}.atlas-country-title small{display:block;color:#9ea9a4;font-size:10px;margin-top:2px}.atlas-country-close{border:0!important;background:transparent!important;color:#9ea9a4!important;padding:1px 4px!important;min-height:0!important}.atlas-country-grid{display:grid;grid-template-columns:1fr 1fr;gap:5px;margin-top:9px}.atlas-country-metric{padding:6px;border:1px solid #273333;border-radius:8px;min-width:0}.atlas-country-metric span{display:block;color:#8f9c96;font-size:9px;text-transform:uppercase;letter-spacing:.05em}.atlas-country-metric b{display:block;font-size:12px;overflow-wrap:anywhere}.atlas-country-row{display:flex;justify-content:space-between;gap:9px;padding:5px 0;border-bottom:1px solid #202b2a;font-size:11px}.atlas-country-row:last-child{border:0}.atlas-country-row span{color:#9aa6a0}.atlas-country-row b{text-align:right;font-weight:600}.atlas-country-section{margin-top:9px}.atlas-country-section>small{display:block;color:#7f8d87;text-transform:uppercase;letter-spacing:.09em;font-size:8px;margin-bottom:2px}.atlas-country-tags{display:flex;flex-wrap:wrap;gap:4px}.atlas-country-tag{border:1px solid #2b3937;border-radius:999px;padding:2px 6px;font-size:9px;color:#bec8c3}.atlas-country-actions{display:flex;gap:5px;margin-top:9px;padding-top:8px;border-top:1px solid #273333}.atlas-country-actions button{flex:1;min-height:29px;padding:5px 7px;background:#111918;border:1px solid #2e3a38;color:#bcc8c2;border-radius:7px;font-size:10px}.atlas-country-actions button:hover,.atlas-country-actions button.active{border-color:#708d83;color:#dff1d8;background:#17211f}.atlas-country-source{margin-top:8px;color:#75827c;font-size:8px}
     @media(max-width:900px){#atlasCountryCard{top:auto;bottom:8px;left:8px;right:8px;width:auto;max-height:38vh}}
   `;
   document.head.appendChild(style);
@@ -135,6 +164,11 @@ function install() {
   card.hidden = true;
   card.setAttribute('aria-live', 'polite');
   document.querySelector('.mapwrap')?.appendChild(card);
+  card.addEventListener('click', event => {
+    const action = event.target.closest('[data-country-action]')?.dataset.countryAction;
+    if (action === 'details') showDetails();
+    if (action === 'entity-trace') toggleEntityTrace();
+  });
 }
 
 async function render(code = selection.current?.activeCode || selection.current?.code) {
@@ -174,16 +208,19 @@ async function render(code = selection.current?.activeCode || selection.current?
     </div>
     ${context.length ? `<div class="atlas-country-section"><small>Current map question</small>${context.map(([label, value]) => `<div class="atlas-country-row"><span>${esc(label)}</span><b>${esc(value)}</b></div>`).join('')}</div>` : ''}
     ${memberships.length ? `<div class="atlas-country-section"><small>Memberships</small><div class="atlas-country-tags">${memberships.map(label => `<span class="atlas-country-tag">${esc(label)}</span>`).join('')}</div></div>` : ''}
+    <div class="atlas-country-actions"><button type="button" data-country-action="details">More country data</button><button type="button" data-country-action="entity-trace">Trace connections</button></div>
     <div class="atlas-country-source">${refreshed ? `Country record · ${esc(refreshed)}` : 'Country record'} · missing values remain unavailable</div>
   `;
   card.hidden = false;
   card.querySelector('.atlas-country-close')?.addEventListener('click', () => { card.hidden = true; });
+  syncTraceAction();
 }
 
 install();
 window.addEventListener('potato-atlas-working-selection-change', event => render(event?.detail?.activeCode || event?.detail?.code));
 window.addEventListener('potato-atlas-layer-change', () => { if (renderedCode) render(renderedCode); });
 window.addEventListener('potato-atlas-query-change', () => { if (renderedCode) render(renderedCode); });
+window.addEventListener('potato-atlas-entity-trace-change', syncTraceAction);
 if (selection.current?.selected) render(selection.current.activeCode || selection.current.code);
 
 window.__potatoAtlasCountryCard = {
