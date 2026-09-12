@@ -1,5 +1,5 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-12",
   "purpose":"Canonical empirical owner for African regional integration systems and status history. REC membership does not imply North/West/East/South orientation.",
   "au_recognised_recs":{
@@ -8,78 +8,26 @@
     "ids":["amu","comesa","cen-sad","eac","eccas","ecowas","igad","sadc"]
   },
   "systems":{
-    "african-union":{
-      "label":"African Union",
-      "kind":"continental-institution",
-      "status":"current",
-      "source":"African Union",
-      "source_url":"https://au.int/en/member_states/countryprofiles2",
-      "members":["DZA","AGO","BEN","BWA","BFA","BDI","CPV","CMR","CAF","TCD","COM","COG","COD","CIV","DJI","EGY","GNQ","ERI","SWZ","ETH","GAB","GMB","GHA","GIN","GNB","KEN","LSO","LBR","LBY","MDG","MWI","MLI","MRT","MUS","MAR","MOZ","NAM","NER","NGA","RWA","STP","SEN","SYC","SLE","SOM","ZAF","SSD","SDN","TZA","TGO","TUN","UGA","ZMB","ZWE"],
-      "non_canonical_members":["Sahrawi Arab Democratic Republic / Western Sahara"]
-    },
-    "eac":{
-      "label":"East African Community",
-      "kind":"regional-economic-community",
-      "status":"current",
-      "source":"East African Community",
-      "source_url":"https://www.eac.int/eac-partner-states",
-      "members":["BDI","COD","KEN","RWA","SOM","SSD","UGA","TZA"]
-    },
-    "sadc":{
-      "label":"Southern African Development Community",
-      "kind":"regional-economic-community",
-      "status":"current",
-      "source":"SADC",
-      "source_url":"https://www.sadc.int/member-states",
-      "members":["AGO","BWA","COM","COD","SWZ","LSO","MDG","MWI","MUS","MOZ","NAM","SYC","ZAF","TZA","ZMB","ZWE"]
-    },
-    "ecowas":{
-      "label":"Economic Community of West African States",
-      "kind":"regional-economic-community",
-      "status":"current",
-      "source":"ECOWAS",
-      "source_url":"https://www.ecowas.int/member-states/",
-      "members":["BEN","CPV","CIV","GMB","GHA","GIN","GNB","LBR","NGA","SEN","SLE","TGO"],
-      "former_or_transition_members":[
-        {"code":"BFA","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"},
-        {"code":"MLI","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"},
-        {"code":"NER","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"}
-      ]
-    },
-    "amu":{
-      "label":"Arab Maghreb Union",
-      "kind":"regional-economic-community",
-      "status":"au-recognised-rec",
-      "source":"African Union",
-      "source_url":"https://au.int/en/recs"
-    },
-    "comesa":{
-      "label":"Common Market for Eastern and Southern Africa",
-      "kind":"regional-economic-community",
-      "status":"au-recognised-rec",
-      "source":"African Union",
-      "source_url":"https://au.int/en/recs"
-    },
-    "cen-sad":{
-      "label":"Community of Sahel–Saharan States",
-      "kind":"regional-economic-community",
-      "status":"au-recognised-rec",
-      "source":"African Union",
-      "source_url":"https://au.int/en/recs"
-    },
-    "eccas":{
-      "label":"Economic Community of Central African States",
-      "kind":"regional-economic-community",
-      "status":"au-recognised-rec",
-      "source":"African Union",
-      "source_url":"https://au.int/en/recs"
-    },
-    "igad":{
-      "label":"Intergovernmental Authority on Development",
-      "kind":"regional-economic-community",
-      "status":"au-recognised-rec",
-      "source":"African Union",
-      "source_url":"https://au.int/en/recs"
-    }
-  }
+    "african-union":{"label":"African Union","kind":"continental-institution","status":"current","source":"African Union","source_url":"https://au.int/en/member_states/countryprofiles2","members":["DZA","AGO","BEN","BWA","BFA","BDI","CPV","CMR","CAF","TCD","COM","COG","COD","CIV","DJI","EGY","GNQ","ERI","SWZ","ETH","GAB","GMB","GHA","GIN","GNB","KEN","LSO","LBR","LBY","MDG","MWI","MLI","MRT","MUS","MAR","MOZ","NAM","NER","NGA","RWA","STP","SEN","SYC","SLE","SOM","ZAF","SSD","SDN","TZA","TGO","TUN","UGA","ZMB","ZWE"],"non_canonical_members":["Sahrawi Arab Democratic Republic / Western Sahara"]},
+    "eac":{"label":"East African Community","kind":"regional-economic-community","status":"current","source":"East African Community","source_url":"https://www.eac.int/eac-partner-states","members":["BDI","COD","KEN","RWA","SOM","SSD","UGA","TZA"]},
+    "sadc":{"label":"Southern African Development Community","kind":"regional-economic-community","status":"current","source":"SADC","source_url":"https://www.sadc.int/member-states","members":["AGO","BWA","COM","COD","SWZ","LSO","MDG","MWI","MUS","MOZ","NAM","SYC","ZAF","TZA","ZMB","ZWE"]},
+    "ecowas":{"label":"Economic Community of West African States","kind":"regional-economic-community","status":"current","source":"ECOWAS","source_url":"https://www.ecowas.int/member-states/","members":["BEN","CPV","CIV","GMB","GHA","GIN","GNB","LBR","NGA","SEN","SLE","TGO"],"former_or_transition_members":[{"code":"BFA","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"},{"code":"MLI","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"},{"code":"NER","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"}]},
+    "amu":{"label":"Arab Maghreb Union","kind":"regional-economic-community","status":"au-recognised-rec","source":"African Union","source_url":"https://au.int/en/recs"},
+    "comesa":{"label":"Common Market for Eastern and Southern Africa","kind":"regional-economic-community","status":"au-recognised-rec","source":"African Union","source_url":"https://au.int/en/recs"},
+    "cen-sad":{"label":"Community of Sahel–Saharan States","kind":"regional-economic-community","status":"au-recognised-rec","source":"African Union","source_url":"https://au.int/en/recs"},
+    "eccas":{"label":"Economic Community of Central African States","kind":"regional-economic-community","status":"au-recognised-rec","source":"African Union","source_url":"https://au.int/en/recs"},
+    "igad":{"label":"Intergovernmental Authority on Development","kind":"regional-economic-community","status":"au-recognised-rec","source":"African Union","source_url":"https://au.int/en/recs"}
+  },
+  "axis_overlays":{
+    "EGY":[{"axis":"west","role":"bridge","basis":"empirical-correspondence","confidence":"high","note":"Egypt is a U.S. Major Non-NATO Ally while also retaining its existing East/BRICS overlap and North African/Middle Eastern junction role.","source_url":"https://samm.dsca.mil/glossary/major-non-nato-allies"}],
+    "NGA":[{"axis":"east","role":"bridge","basis":"empirical-correspondence","confidence":"medium","note":"Nigeria is a BRICS partner country, creating an East-facing bridge without overriding its primary West African/ECOWAS regional context.","source_url":"https://brics.br/en/about-the-brics/frequently-asked-questions-about-the-brics"}],
+    "UGA":[{"axis":"east","role":"bridge","basis":"empirical-correspondence","confidence":"medium","note":"Uganda is a BRICS partner country, creating an East-facing bridge while EAC remains its stronger regional institutional context.","source_url":"https://brics.br/en/about-the-brics/frequently-asked-questions-about-the-brics"}],
+    "MAR":[{"axis":"north","role":"bridge","basis":"empirical-correspondence","confidence":"high","note":"Morocco has a dense Euro-Mediterranean/EU strategic partnership that makes it a strong North-facing bridge without making it North-primary.","source_url":"https://www.consilium.europa.eu/en/press/press-releases/2026/01/29/communique-conjoint-de-la-haute-representante-kaja-kallas-et-du-ministre-des-affaires-etrangeres-du-maroc-nasser-bourita-suite-a-la-tenue-du-quinzieme-conseil-d-association-ue-maroc/"},{"axis":"west","role":"secondary","basis":"empirical-correspondence","confidence":"high","note":"Morocco is also a U.S. Major Non-NATO Ally.","source_url":"https://samm.dsca.mil/glossary/major-non-nato-allies"}],
+    "TUN":[{"axis":"north","role":"bridge","basis":"empirical-correspondence","confidence":"medium","note":"Tunisia is a Euro-Mediterranean North African bridge rather than a North-primary state."},{"axis":"west","role":"secondary","basis":"empirical-correspondence","confidence":"high","note":"Tunisia is a U.S. Major Non-NATO Ally.","source_url":"https://samm.dsca.mil/glossary/major-non-nato-allies"}],
+    "DZA":[{"axis":"north","role":"frontier","basis":"empirical-correspondence","confidence":"low","note":"Algeria belongs to the Mediterranean/North African interface but retains sufficient strategic autonomy that frontier is safer than ordinary North membership."}],
+    "KEN":[{"axis":"west","role":"secondary","basis":"empirical-correspondence","confidence":"high","note":"Kenya is a U.S. Major Non-NATO Ally; EAC remains its stronger African regional context.","source_url":"https://samm.dsca.mil/glossary/major-non-nato-allies"}],
+    "TZA":[{"axis":"south","role":"secondary","basis":"empirical-correspondence","confidence":"medium","note":"Tanzania participates in the Southern African system through SADC while simultaneously belonging to EAC; the overlap is intentional."}],
+    "AGO":[{"axis":"south","role":"secondary","basis":"empirical-correspondence","confidence":"medium","note":"Angola is a substantial SADC/Southern African node; this does not imply subordination to South Africa."}]
+  },
+  "axis_rule":"Axis overlays are selective interpretive/empirical correspondences and are never inferred automatically from REC membership. Countries absent from axis_overlays remain unchanged/unresolved unless classified by the separate world-axis-profiles owner."
 }
