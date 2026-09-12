@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Protect the public Bible study instrument from being collapsed into a thin list again."""
+"""Protect the public Bible comparison browser and its canonical data contract."""
 from __future__ import annotations
 
 import json
@@ -11,6 +11,7 @@ PAGE = ROOT / "traditions" / "bible" / "index.html"
 APP = ROOT / "app" / "bible-study.js"
 CSS = ROOT / "app" / "bible-study.css"
 FIELD = ROOT / "knowledge" / "traditions" / "biblical-syncretism-field.json"
+BUILDER = ROOT / "scripts" / "build_bible_study.py"
 
 
 def require(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -> None:
@@ -27,35 +28,51 @@ def forbid(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -
 
 def main() -> int:
     errors: list[str] = []
-    for path in (PAGE, APP, CSS, FIELD):
+    for path in (PAGE, APP, CSS, FIELD, BUILDER):
         if not path.exists():
             errors.append(f"missing required Bible reader component: {path.relative_to(ROOT)}")
 
     page = PAGE.read_text(encoding="utf-8") if PAGE.exists() else ""
     app = APP.read_text(encoding="utf-8") if APP.exists() else ""
+    css = CSS.read_text(encoding="utf-8") if CSS.exists() else ""
+    builder = BUILDER.read_text(encoding="utf-8") if BUILDER.exists() else ""
 
     require(
         page,
         (
             'href="../../app/bible-study.css"',
             'src="../../app/bible-study.js"',
-            'id="study-modes"',
-            'data-view="jesus"',
-            'data-view="tim-said"',
-            'data-view="tim-lived"',
-            'data-view="prophecy"',
-            'data-view="father-house"',
-            'data-view="door-ladder"',
-            'data-view="counter-texts"',
-            'data-view="all"',
+            'id="focus-select"',
+            'id="order-select"',
+            'id="previous-relation"',
+            'id="next-relation"',
+            'id="result-position"',
             'id="roll-relation"',
+            'id="results-toggle"',
+            'id="results-list"',
+            'id="filter-toggle"',
+            'id="filter-count"',
             'id="bible-filters"',
+            'id="active-relation"',
             'id="relations"',
+            'id="search"',
         ),
         "traditions/bible/index.html",
         errors,
     )
-    forbid(page, ("deepMatches(", "overlapCount(", "deepCandidates"), "traditions/bible/index.html", errors)
+    forbid(
+        page,
+        (
+            'class="featured-arcs"',
+            'id="study-modes"',
+            'id="shuffle-comparisons"',
+            "deepMatches(",
+            "overlapCount(",
+            "deepCandidates",
+        ),
+        "traditions/bible/index.html",
+        errors,
+    )
 
     require(
         app,
@@ -66,20 +83,64 @@ def main() -> int:
             "reverse-biblical-overlap-timeline-2025-2026.json",
             "rational-potato-x-occurrence-ledger-2024-2026.json",
             "timeline-events.json",
+            "BIBLE_BOOK_ORDER",
+            "renderActiveRelation",
+            "renderResultsList",
+            "syncUrlState",
+            "selectRelative",
+            "relatedRows",
+            "ArrowLeft",
+            "ArrowRight",
             "Same-date public wording",
             "Biblical vocabulary / revelation context",
-            "Tim / Son / project",
-            "Bible",
+            "Evidence & chronology",
+            "Sources & provenance",
+            "Related comparisons",
             "exact-wording-only",
             "minimum-strength",
             "bible-book",
             "timeline_event_ids",
-            "ROLL",
         ),
         "app/bible-study.js",
         errors,
     )
-    forbid(app, ("deepMatches(", "overlapCount(", "deepCandidates", "wordScore", "refScore"), "app/bible-study.js", errors)
+    forbid(
+        app,
+        (
+            "visible.map(row=>renderRelation",
+            "deepMatches(",
+            "overlapCount(",
+            "deepCandidates",
+            "wordScore",
+            "refScore",
+        ),
+        "app/bible-study.js",
+        errors,
+    )
+
+    require(
+        css,
+        (
+            ".reader-toolbar",
+            ".comparison-nav",
+            ".results-panel",
+            ".relation-details",
+            ".active-relation",
+        ),
+        "app/bible-study.css",
+        errors,
+    )
+
+    require(
+        builder,
+        (
+            'class="static-relation"',
+            '<details',
+            'class="static-index"',
+        ),
+        "scripts/build_bible_study.py",
+        errors,
+    )
 
     if FIELD.exists():
         field = json.loads(FIELD.read_text(encoding="utf-8"))
