@@ -1,0 +1,39 @@
+{
+  "id":"2026-09-11-potato-dynamics-frobenius-door-normal-forms",
+  "title":"Potato Dynamics Upgrade — Frobenius Closure, Door Transversality and Bifurcation Discipline",
+  "updated":"2026-09-11",
+  "status":"archive-generated mathematical contribution extending Potato Dynamics 2.0; differential geometry and dynamical-systems structure adapted to the project grammar",
+  "parent":"knowledge/science/potato-dynamics-2-toy-model.json",
+  "abstract":"Potato Dynamics already distinguishes ordinary time flow F from structural/Axis flow A and uses their Lie bracket to test commutation. This upgrade asks a stronger question: even when F and A do not commute, do they still generate a closed two-dimensional dynamical surface, or does their interaction create genuinely new directions that the current state description omits? Using the Frobenius involutivity criterion, the model distinguishes strict commutation, noncommuting-but-closed two-flow dynamics, and non-closure requiring additional state directions. Door events are sharpened by distinguishing transverse crossings, grazing contacts and true bifurcations, preventing every threshold event from receiving the same transition label.",
+  "axis_time_distribution":{
+    "distribution":"D_x=span{F(x),A(x)} wherever F and A are linearly independent.",
+    "strict_commutation":"[F,A]=0; under regularity assumptions the local flows commute.",
+    "involutive_closure":"[F,A]=alpha(x)F+beta(x)A when rank(D)=2.",
+    "frobenius_consequence":"For a smooth constant-rank involutive distribution, local integral surfaces exist whose tangent planes are D. Axis and time may fail to commute yet remain closed inside a two-dimensional leaf.",
+    "nonclosure":"If [F,A] has a component outside span{F,A}, repeated time/Axis operations generate a direction omitted by the declared two-flow state description."
+  },
+  "closure_defect":{
+    "definition":"C_perp(x)=||(I-P_D)[F,A](x)||_g, with a declared metric/inner product g and projection P_D onto span{F,A}.",
+    "meaning":"C_perp=0 is a local involutivity diagnostic; nonzero values measure omitted-direction generation.",
+    "warning":"Magnitude depends on coordinates, metric and scaling, so cross-system comparisons require normalization."
+  },
+  "door_event_geometry":{
+    "guard":"G={x:h(x)=0}.",
+    "transverse_crossing":"dh_x(F)!=0 at the event; the trajectory crosses the guard robustly to first order.",
+    "grazing":"dh_x(F)=0 at h=0; first-order transversality fails and event timing can become highly sensitive.",
+    "axis_crossing":"Use dh_x(A) for the structural flow; a guard can be transverse for one flow and tangent for the other."
+  },
+  "bifurcation_discipline":{
+    "principle":"A threshold crossing, hybrid reset and bifurcation are distinct mathematical objects.",
+    "comparators":["saddle-node: xdot=mu-x^2","transcritical: xdot=mu x-x^2","pitchfork: xdot=mu x-x^3 when symmetry supports it","Hopf: a conjugate eigenvalue pair crosses the imaginary axis with the required nondegeneracy"],
+    "rule":"Do not assign a named bifurcation merely because the visual story resembles it; derive the equilibrium, Jacobian and theorem conditions."
+  },
+  "advancement_gates":{
+    "axis":"Evaluate rank and involutivity before treating Axis as a coherent second flow.",
+    "door":"Verify transversality or explicitly model grazing before assigning robust event statistics.",
+    "bifurcation":"Derive local normal-form conditions before naming the Door's bifurcation type.",
+    "state_space":"If C_perp is systematically nonzero, enlarge the model rather than hiding the missing direction."
+  },
+  "failure_conditions":["Axis/time are called a closed two-coordinate system while their bracket generates omitted directions.","A grazing contact is treated as a robust crossing without sensitivity analysis.","A normal-form name is assigned without checking linearization/nondegeneracy/symmetry.","A threshold is called universal even though Axis transport substantially changes the guard."],
+  "connections":["potato-dynamics-2-toy-model","2026-09-11-potato-dynamics-commutator-contract-equivalence","2026-09-11-cross-model-defect-calculus","model-testing-protocol"]
+}
