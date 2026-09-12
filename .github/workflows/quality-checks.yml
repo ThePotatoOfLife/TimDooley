@@ -92,6 +92,9 @@ jobs:
       - name: Validate backend to frontend projection
         run: python scripts/validate_public_projection.py
 
+      - name: Validate discovery provenance projection
+        run: python scripts/validate_discovery_projection.py
+
       - name: Validate repository spine
         run: python scripts/validate_repository_spine.py
 
