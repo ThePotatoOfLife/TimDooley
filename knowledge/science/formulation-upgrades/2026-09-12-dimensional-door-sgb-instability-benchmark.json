@@ -1,0 +1,140 @@
+{
+  "id": "2026-09-12-dimensional-door-sgb-instability-benchmark",
+  "title": "Dimensional Door Upgrade — Scalar–Gauss–Bonnet Instability Benchmark and Critical Eigenvalue Problem",
+  "updated": "2026-09-12",
+  "version": "1.0.0",
+  "domain": "gravitation / mathematical physics",
+  "subcategory": "strong-gravity bifurcation, scalarization, dimensional-door benchmark",
+  "kind": "formulation upgrade",
+  "status": "archive-generated strong-gravity benchmark; demonstrates a calculable 4D branch transition, not a literal 5D transition",
+  "parent": "knowledge/science/dimensional-phase-transition-full-recovery.json",
+  "abstract": "This upgrade replaces the Dimensional Door programme's generic threshold Xi with one explicit, calculable strong-gravity benchmark. The chosen model is four-dimensional Einstein gravity plus a real scalar phi whose quadratic coupling to the Gauss-Bonnet invariant makes the GR/phi=0 branch susceptible to a curvature-induced tachyonic instability. On a Schwarzschild background the complete linear radial problem reduces to a one-dimensional eigenvalue equation with two dimensionless parameters: mu=m r_h and b=beta/r_h^2. The true Door is therefore the critical eigenvalue b_c(mu,l), determined by regular-horizon and decaying-asymptotic boundary conditions, not by assigning D_eff=5 or fitting an arbitrary threshold after the fact. The upgrade derives the effective mass, radial potential, dimensionless scaling law, onset boundary-value problem and the next nonlinear calculation. It gives the project a genuine bifurcation laboratory while preserving the crucial boundary: a 4D scalarized branch is not evidence of a fifth dimension unless a separate dimensional reduction, Kaluza-Klein spectrum or operational spectral-dimension calculation maps the new branch to 5D structure.",
+  "provenance_and_scope": {
+    "project_input": [
+      "Door as a threshold between regimes",
+      "strong gravity / black holes as candidate transition environments",
+      "need for a dimensionless critical trigger",
+      "distinction between order parameter, spectral dimension and genuine fifth coordinate"
+    ],
+    "archive_generated_choice": "Use a quadratic scalar-Gauss-Bonnet coupling as the smallest established mathematical neighbor that produces a real GR-branch instability and scalarized branches.",
+    "boundary": "The benchmark is a comparator and mathematical realization of branch transition. It is not evidence that black holes access a literal fifth dimension."
+  },
+  "selected_action": {
+    "natural_units": "Set G=c=hbar=1 for the derivation; dimensions can be restored after the dimensionless problem is solved.",
+    "action": "S = integral d^4x sqrt(-g)[ R/(16 pi G) - 1/2 (nabla phi)^2 - 1/2 m^2 phi^2 - lambda phi^4/4 + (beta/2) phi^2 G_GB ]",
+    "gauss_bonnet": "G_GB = R^2 - 4 R_mu_nu R^mu_nu + R_mu_nu_rho_sigma R^mu_nu_rho_sigma",
+    "parameter_dimensions_in_4d": {
+      "phi": "mass dimension 1",
+      "m": "mass dimension 1",
+      "lambda": "dimensionless",
+      "beta": "length^2 = mass^-2"
+    },
+    "correspondence_branch": "phi=0 is an exact scalar solution because the coupling derivative is proportional to phi. The background metric can therefore be the GR Schwarzschild solution before the instability sets in."
+  },
+  "linear_instability": {
+    "scalar_equation": "Box phi - m^2 phi - lambda phi^3 + beta G_GB phi = 0",
+    "linearized_equation": "(Box - m_eff^2(r)) delta_phi = 0",
+    "effective_mass_squared": "m_eff^2(r) = m^2 - beta G_GB(r)",
+    "mechanism": "For beta>0, sufficiently large positive Gauss-Bonnet curvature can make m_eff^2 negative in a near-horizon region. A negative local mass-squared region is a necessary intuition for tachyonic growth but is not by itself the global instability criterion."
+  },
+  "schwarzschild_reduction": {
+    "metric_function": "f(r)=1-r_h/r with r_h=2M in G=c=1",
+    "gauss_bonnet_invariant": "G_GB(r)=48 M^2/r^6 = 12 r_h^2/r^6",
+    "horizon_value": "G_GB(r_h)=12/r_h^4",
+    "mode_decomposition": "delta_phi = exp(-i omega t) Y_lm(theta,phi) u_l(r)/r",
+    "tortoise_coordinate": "dr_*/dr = 1/f(r)",
+    "radial_equation": "d^2u/dr_*^2 + [omega^2 - V_l(r)]u = 0",
+    "effective_potential": "V_l(r)=f(r)[ l(l+1)/r^2 + r_h/r^3 + m^2 - 12 beta r_h^2/r^6 ]",
+    "interpretation": "Angular momentum and the Schwarzschild gradient term resist localization, while the curvature coupling creates an attractive negative contribution near the hole."
+  },
+  "dimensionless_door_problem": {
+    "variables": [
+      "x=r/r_h",
+      "mu=m r_h",
+      "b=beta/r_h^2",
+      "Omega=omega r_h"
+    ],
+    "dimensionless_potential": "r_h^2 V_l = (1-1/x)[ l(l+1)/x^2 + 1/x^3 + mu^2 - 12 b/x^6 ]",
+    "onset_definition": "The linear Door is b=b_c(mu,l), the value for which the omega=0 radial equation admits a nontrivial solution regular at x=1 and satisfying the appropriate decaying/normalizable asymptotic condition.",
+    "local_horizon_heuristic": "m_eff^2(r_h)<0 implies b > mu^2/12. This is only a local necessary-style heuristic: the gradient/angular barrier means the true b_c must be found from the global boundary-value problem.",
+    "why_this_is_better_than_Xi": "The threshold is no longer a freely weighted score. Once the action is chosen, b_c is an eigenvalue fixed by differential equations and boundary conditions."
+  },
+  "critical_scaling_consequence": {
+    "massless_case": "For m=0, the onset depends only on b=beta/r_h^2 for a fixed angular branch. If the fundamental l=0 threshold is b_c, then r_h,c = sqrt(beta/b_c) and M_c = (1/2)sqrt(beta/b_c) in G=c=1.",
+    "meaning": "A fixed coupling beta predicts a definite scaling of the critical black-hole size/mass. This is a genuine consequence of the benchmark rather than a post-hoc threshold label.",
+    "massive_case": "For m!=0 the second dimensionless parameter mu=m r_h breaks the one-parameter scaling; b_c becomes a curve b_c(mu)."
+  },
+  "numerical_protocol": {
+    "linear_onset": [
+      "Set l=0 first because it is the least angularly suppressed channel.",
+      "Choose mu and integrate the omega=0 radial ODE outward from a regular near-horizon series.",
+      "Shoot on b until the growing asymptotic mode is removed.",
+      "Repeat over mu to obtain b_c(mu), then check higher-node and higher-l branches separately.",
+      "Verify the threshold with a time-domain evolution: below threshold perturbations decay; above threshold a growing mode appears."
+    ],
+    "nonlinear_branch": [
+      "Restore metric backreaction and solve the coupled static Einstein-scalar equations.",
+      "Use lambda>0 or a more complete coupling function/potential to control nonlinear saturation where appropriate.",
+      "Track ADM mass, horizon area/entropy, scalar charge and branch stability.",
+      "Locate whether the bifurcation is supercritical, subcritical or more complicated from the nonlinear branch structure rather than from analogy."
+    ]
+  },
+  "near_threshold_normal_form": {
+    "amplitude_model": "F(A;b) = a(b_c-b) A^2/2 + u A^4/4 + O(A^6)",
+    "supercritical_example": "If a>0 and u>0 under the chosen sign convention, the nonzero equilibrium amplitude scales as A^2 approximately a(b-b_c)/u for b>b_c.",
+    "observable_scaling": "If metric corrections begin at order A^2 because phi -> -phi symmetry forbids linear backreaction, near-threshold shifts of suitable observables may scale approximately with b-b_c.",
+    "warning": "The coefficients a and u must be derived from the nonlinear field equations or fitted to controlled numerical solutions; this normal form is not a substitute for that calculation."
+  },
+  "observables_and_baselines": {
+    "first_observables": [
+      "scalar charge / hair amplitude",
+      "quasinormal-mode frequencies and damping",
+      "photon-sphere or shadow shifts",
+      "binary scalar radiation/inspiral phase where the completed theory permits it",
+      "horizon entropy/area and branch stability"
+    ],
+    "primary_baseline": "general relativity Schwarzschild/Kerr",
+    "nearest_nontrivial_baseline": "ordinary Einstein-scalar-Gauss-Bonnet scalarization",
+    "dimensional_novelty_gate": "Calling the new branch '5D' requires an additional derived map: for example a consistent 5D compactification whose 4D reduction yields this branch, a Kaluza-Klein tower with the required spectrum, or an operational spectral dimension computed from a specified heat kernel. The scalarization threshold alone cannot supply that interpretation."
+  },
+  "failure_conditions": [
+    "No regular zero mode or unstable mode exists in the claimed parameter region.",
+    "The nonlinear branch is singular or dynamically unstable everywhere relevant to the claim.",
+    "The same observables are fully explained by the scalarized-gravity baseline with no dimensional information added.",
+    "A 5D interpretation is asserted without a compactification/reduction or operational dimension estimator.",
+    "Threshold parameters are re-fit after each target rather than predicted by a fixed action."
+  ],
+  "next_calculations": [
+    "Numerically solve the l=0 omega=0 boundary-value problem and tabulate b_c(mu).",
+    "Construct the first nonlinear scalarized branch including metric backreaction.",
+    "Compute one observable shift across the branch and compare it with GR and standard scalarization.",
+    "Only then attempt a quantitative map from branch order parameter to spectral dimension or a genuine 5D compactification."
+  ],
+  "validation": {
+    "level": "analytic reduction to a numerical eigenvalue problem",
+    "status": "mathematically specified benchmark; not an observationally validated dimensional transition",
+    "falsifiability": "For the declared action, existence and location of the instability are fixed by the radial eigenvalue problem. The benchmark fails as a Door mechanism if no acceptable threshold/nonlinear branch exists; the 5D interpretation remains unvalidated until independently derived."
+  },
+  "formalism": {
+    "formula": "r_h^2 V_l=(1-1/x)[l(l+1)/x^2+1/x^3+mu^2-12 b/x^6]"
+  },
+  "external_references": [
+    {
+      "topic": "curvature-induced scalarization review/comparator",
+      "url": "https://link.springer.com/article/10.1007/s10714-024-03278-w",
+      "note": "Comparator for negative curvature-induced effective mass and Schwarzschild Gauss-Bonnet invariant."
+    },
+    {
+      "topic": "nonlinear scalarization dynamics",
+      "url": "https://link.springer.com/article/10.1140/epjc/s10052-025-15272-w",
+      "note": "2026 example of scalarization thresholds, nonlinear branches and dynamical transitions."
+    }
+  ],
+  "connections": [
+    "dimensional-phase-transition-full-recovery",
+    "science-theory-rigor-completion-matrix-2026-09-11",
+    "science-project-meaning-and-equation-guide-2026-09-12",
+    "2026-09-11-potato-dynamics-frobenius-door-normal-forms",
+    "model-testing-protocol"
+  ]
+}
