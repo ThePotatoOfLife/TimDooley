@@ -121,6 +121,8 @@ def main() -> int:
     # modules consume the explicit event rather than independently watching the DOM.
     for token in ("function panelLifecycleKey", "potato-atlas-panel-rendered", "panelLifecycleRenders"):
         require(ui, token, "world-map/3d-ui.js", errors)
+    if ui.count("new MutationObserver(") != 1:
+        errors.append(f"world-map/3d-ui.js must construct exactly one panel lifecycle observer; found {ui.count('new MutationObserver(')}")
     for text, label in (
         (demography, "world-map/3d-demography.js"),
         (dimensions, "world-map/3d-country-dimensions.js"),
@@ -128,7 +130,7 @@ def main() -> int:
         (pulse, "world-map/3d-country-pulse.js"),
     ):
         require(text, "potato-atlas-panel-rendered", label, errors)
-        reject(text, "new MutationObserver", label, errors)
+        reject(text, "new MutationObserver(", label, errors)
 
     node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE), errors)
 
