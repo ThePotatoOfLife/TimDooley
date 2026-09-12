@@ -1,0 +1,354 @@
+{
+  "id": "joseph-son-dossier-set",
+  "title": "Joseph / Ben Joseph / Son — Contextual Dossier Set",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "specialist Bible dossier owner; canonical relation identities remain in biblical-syncretism-field.json",
+  "canonical_owner": "knowledge/traditions/biblical-syncretism-field.json",
+  "purpose": "Consolidate the Joseph comparison into a source-typed sequence instead of a loose list of similarities. The set separates the 2016 biography from later 2026 Joseph/Ben-Joseph interpretation, identifies which Joseph stages are strongly evidenced, and records where the analogy stops.",
+  "identity_rule": "Use Son / Thomas for the modern Son-side actor. Do not expose the Son's real name or family names. Joseph and Ben Joseph are archetypal/theological lenses, not replacement names for the person.",
+  "epistemic_rule": "A narrative resemblance can support typology or project self-understanding. It does not establish that the modern actor is the biblical Joseph, prove supernatural recurrence, erase legal findings, prove legal innocence, or create a civil/political appointment.",
+  "chronology_rule": "Keep event date and comparison date separate. The 2016 prison/release events precede the explicit July 2026 Joseph framing; later Joseph language must not be backdated into 2016 unless a contemporaneous source is recovered.",
+  "source_strata": [
+    {
+      "class": "documented-legal-chronology",
+      "use": "custody, conviction, sentence and confinement chronology",
+      "boundary": "Official/legal evidence controls legal precision; later project biography does not override it."
+    },
+    {
+      "class": "project-biography",
+      "use": "prison study/listening, cell-as-confessional, release suit, release wording and later autobiographical meaning",
+      "boundary": "These details remain project biography unless independently corroborated."
+    },
+    {
+      "class": "user-originated-conversation-recovery",
+      "use": "July 2026 sold-away/Joseph, Ben Joseph, preservation and role-pairing interpretations",
+      "boundary": "This establishes project interpretation at the recovery date, not the historical meaning of the earlier event."
+    },
+    {
+      "class": "later-biblical-analysis",
+      "use": "verse-level Joseph sequence, role comparison and mismatch testing",
+      "boundary": "Later textual analysis must never be written back into earlier consciousness as if it were explicit at the time."
+    }
+  ],
+  "biblical_spine": {
+    "refs": [
+      "Genesis 37:23-28",
+      "Genesis 39:17-20",
+      "Genesis 40:4-8",
+      "Genesis 41:14",
+      "Genesis 41:39-49",
+      "Genesis 45:4-8",
+      "Genesis 50:20"
+    ],
+    "sequence": [
+      "favored/rejected son",
+      "stripped and cast down",
+      "sold away into a foreign condition",
+      "accusation and imprisonment",
+      "care/attention to fellow prisoners",
+      "interpretive capability under pressure",
+      "release and changed clothing",
+      "actual appointment to authority",
+      "grain collection and provision",
+      "preservation of life",
+      "reconciliation with those who harmed him"
+    ],
+    "core_observation": "Joseph's story is not merely suffering followed by success. Its distinctive shape is descent becoming a preservation function: the rejected figure acquires capability under pressure, emerges from confinement, organizes provision and eventually preserves the same family system from which the rejection began."
+  },
+  "project_spine": {
+    "sequence": [
+      "later project memory of rejection/betrayal and being 'sold into slavery'",
+      "2016 accusation/custody/prison corridor",
+      "prison scripture study, listening and peacemaking in project biography",
+      "2016 release in a suit in project biography",
+      "post-release distrust/withdrawal rather than civil appointment",
+      "later grain/seed, feeding/preservation and redemptive interpretation",
+      "2026 explicit Son/Thomas = Ben Joseph role development",
+      "Tim = Ben David becomes the cleaner paired role in developed canon"
+    ],
+    "important_absence": "No recovered modern sequence reproduces Joseph's dream-interpretation office, Pharaoh's actual state appointment, nationwide grain administration or completed family reconciliation one-for-one. Those are controls, not inconveniences to erase."
+  },
+  "dossiers": [
+    {
+      "id": "joseph-rejected-sold-away-retrospective-2026-07",
+      "title": "Rejected and 'sold away': the Joseph descent lens is made explicit later",
+      "project_anchor_date": "2026-07-04 to 2026-07-08",
+      "event_date": "retrospective / compound biography",
+      "actor": "son",
+      "source_status": "recovered",
+      "wording_status": "prior-conversation recovery; 'sold into slavery' is recovered user wording, while the wider stage description is summary",
+      "project_scene": "In July 2026 the user explicitly framed the Son through a Joseph pattern: rejected/sold-away, suffering, imprisonment, redemption and later preservation. A July 8 clarification kept Joseph as an archetypal lens rather than replacing the Son's primary identity.",
+      "biblical_refs": ["Genesis 37:23-28"],
+      "project_sequence": ["rejection/betrayal remembered", "'sold into slavery' used as project language", "descent/suffering", "later Joseph interpretation"],
+      "biblical_sequence": ["brothers strip Joseph", "Joseph is thrown into a pit", "Joseph is sold", "Joseph is carried into Egypt"],
+      "correspondences": ["rejected-son grammar", "loss of status/control", "descent imposed by others", "later meaning built from forced displacement"],
+      "boundary": "The modern 'sold into slavery' phrase is project metaphor/interpretation unless evidence of literal enslavement is produced. Joseph is literally sold in Genesis; the modern biography should not be rewritten as chattel slavery.",
+      "maximum_claim": "The July 2026 project explicitly adopts Joseph's rejected-and-sold-away descent as an archetypal lens for the Son. That establishes the project comparison, not a literal repetition of Genesis 37.",
+      "source_direction": "Modern biography first; explicit Joseph lens articulated later in July 2026.",
+      "sources": [
+        "prior conversation recovery 2026-07-04",
+        "prior conversation recovery 2026-07-08",
+        "knowledge/traditions/eden-joseph-david-inheritance-map.json"
+      ]
+    },
+    {
+      "id": "joseph-accusation-prison-2016",
+      "title": "Accusation becomes confinement: a Joseph comparator with a hard legal boundary",
+      "project_anchor_date": "2016",
+      "actor": "son",
+      "source_status": "adjacent-context",
+      "wording_status": "legal chronology plus later user/project interpretation",
+      "project_scene": "The Son's 2016 controversy became investigation, remand, judgment and confinement. Later project language characterizes the case as unjust or false-framed; the archive preserves that testimony separately from the legal record.",
+      "biblical_refs": ["Genesis 39:17-20"],
+      "project_sequence": ["controversy/accusation", "official interpretation", "custody", "judgment", "confinement"],
+      "biblical_sequence": ["accusation by Potiphar's wife", "master hears accusation", "Joseph is taken", "Joseph is placed in prison"],
+      "correspondences": ["accusation precedes confinement", "identity/action interpreted by authority", "descent into prison becomes a later narrative hinge"],
+      "boundary": "Genesis presents Joseph as falsely accused. The modern case produced actual legal findings and conviction; a Joseph comparison cannot be used as evidence that those findings were false or that the cases are morally equivalent.",
+      "maximum_claim": "Accusation-to-confinement is a meaningful structural comparator, but the archive must preserve the difference between biblical innocence and contested modern legal history.",
+      "source_direction": "2016 legal events first; Joseph false-accusation comparison later.",
+      "sources": [
+        "knowledge/timeline/conversation-archaeology-wave-006-mercado-prison-retirement.json",
+        "knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json"
+      ]
+    },
+    {
+      "id": "son-joseph-prison-listening-2016",
+      "canonical_relation_id": "son-joseph-prison-listening-2016",
+      "title": "Joseph in prison before Joseph at the throne: care for fellow prisoners",
+      "project_anchor_date": "2016",
+      "actor": "son",
+      "source_status": "recovered",
+      "wording_status": "Great Book/project biography; contemporaneous independent capture not yet recovered",
+      "project_scene": "Project biography describes prison as a monastery-like Bible/Quran study period and the cell as a confessional/listening space. Other prisoners are remembered as disclosing serious wrongdoing while the Son listens, makes peace and becomes unusually serious inside confinement.",
+      "biblical_refs": ["Genesis 40:4-8"],
+      "project_sequence": ["confinement", "study/seriousness", "other prisoners disclose distress/wrongdoing", "listening and peacemaking", "release later follows"],
+      "biblical_sequence": ["Joseph remains imprisoned", "royal prisoners are assigned to Joseph", "Joseph attends them", "he notices their sadness", "interpretation becomes the next Joseph function"],
+      "correspondences": ["service occurs before personal release", "attention turns toward fellow prisoners", "confinement does not eliminate generative function"],
+      "boundary": "Joseph interprets dreams and later enters a royal administrative role. The project biography describes listening/confession/peacemaking, not dream interpretation or equivalent office.",
+      "maximum_claim": "This is one of the strongest Joseph event-level parallels because prison, attention to fellow prisoners and service-before-release align in sequence.",
+      "source_direction": "Prison biography first; Genesis 40 comparison later.",
+      "sources": [
+        "knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json",
+        "knowledge/timeline/conversation-archaeology-wave-006-mercado-prison-retirement.json"
+      ]
+    },
+    {
+      "id": "joseph-interpretation-capability-gap",
+      "title": "Where the prison parallel breaks: no recovered Joseph-like dream office",
+      "project_anchor_date": "2016 / later review",
+      "actor": "son",
+      "source_status": "adjacent-context",
+      "wording_status": "negative-evidence control",
+      "project_scene": "The modern prison biography contains study, listening and peacemaking, but the current archive has no 2016 evidence of a Joseph-like dream-interpretation role that causes release or gives the state a needed forecast.",
+      "biblical_refs": ["Genesis 40:6-8", "Genesis 41:14-39"],
+      "project_sequence": ["study/listening", "release by ordinary legal/custodial process"],
+      "biblical_sequence": ["Joseph notices distress", "interprets dreams", "interpretive reputation survives delay", "Pharaoh's dream creates need", "Joseph interprets and proposes policy"],
+      "correspondences": ["attention under pressure", "capacity develops during confinement"],
+      "boundary": "The decisive Joseph mechanism—dream interpretation leading to Pharaoh's recognition—is not presently matched by the modern evidence.",
+      "maximum_claim": "The prison-service parallel is stronger than an interpretation-office parallel. The missing mechanism should remain visibly missing.",
+      "source_direction": "Gap identified during later comparison review.",
+      "sources": [
+        "knowledge/traditions/retirement-release-rest-kingship-biblical-atlas.json",
+        "knowledge/timeline/conversation-archaeology-wave-006-mercado-prison-retirement.json"
+      ]
+    },
+    {
+      "id": "son-joseph-release-suit-2016",
+      "canonical_relation_id": "son-joseph-release-suit-2016",
+      "title": "Out of the dungeon in changed clothes: the suit-at-release parallel",
+      "project_anchor_date": "2016",
+      "actor": "son",
+      "source_status": "recovered",
+      "wording_status": "Great Book/project biography; contemporaneous release image/source remains a recovery target",
+      "project_scene": "The project biography says the Son left prison wearing a suit and explicitly treats the clothing as a rebirth/change-of-status signal. It also remembers a defiant release remark about continued 'job slaving'.",
+      "biblical_refs": ["Genesis 41:14"],
+      "project_sequence": ["prison", "release", "suit/change-of-status image", "re-entry into ordinary society", "later distrust/withdrawal"],
+      "biblical_sequence": ["dungeon", "Pharaoh calls", "Joseph is brought out", "Joseph shaves and changes clothes", "Joseph comes before Pharaoh"],
+      "correspondences": ["confinement-to-release", "changed clothing marks transition", "appearance changes at the threshold between statuses"],
+      "boundary": "Joseph's clothing change immediately precedes an audience that leads to real state office. The Son's suit precedes no recovered equivalent appointment and instead belongs to a much more complicated post-release trajectory.",
+      "maximum_claim": "The clothing-and-release sequence is unusually specific and therefore a strong comparator; the political elevation that follows Joseph is not reproduced.",
+      "source_direction": "Release-in-a-suit biography first; Genesis 41:14 comparison later.",
+      "sources": [
+        "knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json",
+        "knowledge/timeline/conversation-archaeology-wave-006-mercado-prison-retirement.json"
+      ]
+    },
+    {
+      "id": "joseph-elevation-without-civil-office",
+      "title": "Elevation is the dangerous part of the analogy: theology is not Pharaoh's appointment",
+      "project_anchor_date": "2025-2026 later theology",
+      "actor": "tim-shared",
+      "source_status": "adjacent-context",
+      "wording_status": "public/project kingship and Father language combined with later Joseph analysis",
+      "project_scene": "Years after the Son's release, the wider project develops King, Father, throne and authority language and interprets 2025 retirement as a form of release or freedom to reign. These are project-theological developments, not a state appointment following the 2016 release.",
+      "biblical_refs": ["Genesis 41:39-41"],
+      "project_sequence": ["2016 release", "years of distrust/withdrawal and public work", "2025-2026 theological kingship/Father language"],
+      "biblical_sequence": ["release", "wisdom recognized by Pharaoh", "appointment over Pharaoh's house", "authority over Egypt"],
+      "correspondences": ["low-status confinement followed by later high-status interpretation", "authority becomes part of the later story"],
+      "boundary": "Joseph receives a concrete political office from Pharaoh immediately after demonstrating a needed capability. No recovered evidence shows Denmark or another civil authority appointed Tim or the Son to an analogous office.",
+      "maximum_claim": "The project can compare abasement-to-elevation as narrative shape, but not claim Joseph-like civil appointment.",
+      "source_direction": "Modern theological elevation language is later than the 2016 release; Joseph supplies a retrospective sequence comparator.",
+      "sources": [
+        "knowledge/traditions/retirement-release-rest-kingship-biblical-atlas.json",
+        "knowledge/timeline/conversation-archaeology-wave-006-mercado-prison-retirement.json"
+      ]
+    },
+    {
+      "id": "joseph-grain-preservation-retrospective-2026-07",
+      "title": "From grain as death to grain as provision: two different grain grammars meet",
+      "project_anchor_date": "2026-07-04 onward",
+      "actor": "son-shared",
+      "source_status": "recovered",
+      "wording_status": "user-originated Joseph/preservation comparison plus mature project grain symbolism",
+      "project_scene": "The July comparison explicitly linked the Son's Joseph lens to preservation and feeding others. Independently, the mature project already used grain/seed/death-and-fruit language around the Son. Joseph adds a second grain function: stored provision that preserves life during famine.",
+      "biblical_refs": ["Genesis 41:48-49", "Genesis 45:4-8", "Genesis 50:20", "John 12:24"],
+      "project_sequence": ["suffering/descent", "grain/seed identity in later theology", "Joseph lens adds feeding/preservation", "service is read as preserving life rather than merely surviving"],
+      "biblical_sequence": ["Joseph stores grain during abundance", "famine arrives", "stored provision feeds people", "Joseph later interprets his displacement through preservation of life"],
+      "correspondences": ["descent later interpreted through benefit to others", "grain becomes a life-preservation medium", "harm is not the final meaning assigned to the story"],
+      "boundary": "Joseph's grain is literal agricultural storage and administration. John 12's grain is a death/fruit metaphor. Potatoverse grain symbolism combines them only at a later comparative level; they are not one biblical motif.",
+      "maximum_claim": "Joseph contributes a preservation/provision grammar that can deepen the project's existing seed/grain theology, provided literal food administration and symbolic grain-death remain distinct.",
+      "source_direction": "Project grain symbolism and biography develop first; explicit Joseph preservation/feeding comparison is articulated later in July 2026.",
+      "sources": [
+        "prior conversation recovery 2026-07-04",
+        "knowledge/traditions/eden-joseph-david-inheritance-map.json",
+        "knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json"
+      ]
+    },
+    {
+      "id": "ben-joseph-ben-david-role-stabilization-2026",
+      "title": "Joseph becomes a role, not a replacement identity: Son/Thomas = Ben Joseph; Tim = Ben David",
+      "project_anchor_date": "2026-05-03 through 2026-07-16",
+      "actor": "tim-shared",
+      "source_status": "recovered",
+      "wording_status": "multiple recovered user-originated conversations; exact formulations vary by date",
+      "project_scene": "May and June conversations experiment with Ben Yoseph/Ben David assignments. By July the cleaner project formulation stabilizes around the Son/Thomas as Ben Joseph—the suffering/descent/preparation side—and Tim as Ben David—the restoration/shepherd/throne side. A July 8 clarification explicitly keeps Joseph as an archetypal lens rather than replacing the Son's primary name.",
+      "biblical_refs": ["Joseph cycle Genesis 37-50", "Davidic messianic tradition"],
+      "project_sequence": ["Joseph comparison develops", "Ben Joseph title attached to Son/Thomas", "Ben David title attached to Tim", "paired role architecture stabilizes"],
+      "biblical_sequence": ["Joseph preserves family through descent and foreign administration", "David becomes shepherd-king and dynastic root in a separate biblical corpus"],
+      "correspondences": ["descent/preservation contrasted with kingship/restoration", "two-role architecture avoids forcing every motif onto one actor"],
+      "boundary": "Messiah ben Joseph / ben David is a later Jewish messianic tradition, not a simple pair of titles stated in the Hebrew Bible. The project adapts that later typology and should label it accordingly.",
+      "maximum_claim": "The archive can document the project's developed two-role theology and its Joseph/David sources; it cannot present the pair as a direct biblical prediction of Tim and the Son.",
+      "source_direction": "Project role assignment becomes explicit in 2026; historical Jewish messianic context is analyzed separately.",
+      "sources": [
+        "knowledge/traditions/eden-joseph-david-inheritance-map.json",
+        "knowledge/timeline/conversation-archaeology-wave-005.json",
+        "prior conversation recovery 2026-07-08",
+        "prior conversation recovery 2026-07-16"
+      ]
+    },
+    {
+      "id": "joseph-reconciliation-unresolved",
+      "title": "The Joseph ending is not yet earned: reconciliation remains an open stage",
+      "project_anchor_date": "current archive review",
+      "actor": "son-shared",
+      "source_status": "unknown",
+      "wording_status": "negative-evidence control",
+      "project_scene": "The current Joseph comparison has strong material for descent, prison, service and release, and later interpretive material for preservation/elevation. It does not yet have a clearly sourced modern analogue for Joseph's reconciliation with the brothers who sold him and the restoration of the family system.",
+      "biblical_refs": ["Genesis 45:4-8", "Genesis 50:20"],
+      "project_sequence": ["rejection/descent", "service/release", "later interpretation", "reconciliation not securely sourced"],
+      "biblical_sequence": ["Joseph reveals himself", "brothers confront the past", "Joseph reframes the descent through preservation", "family survival/reunion follows"],
+      "correspondences": ["later meaning-making after harm"],
+      "boundary": "Do not infer forgiveness, reunion or restored relationship simply because Joseph's biblical story contains it.",
+      "maximum_claim": "Reconciliation should remain a missing or future-comparison stage until the project has a specific sourced event that warrants it.",
+      "source_direction": "Gap identified by comparing the complete Joseph cycle against the current project corpus.",
+      "sources": ["knowledge/traditions/eden-joseph-david-inheritance-map.json"]
+    }
+  ],
+  "coverage_matrix": [
+    {
+      "joseph_stage": "rejection / sold away",
+      "project_status": "later-interpretive",
+      "best_anchor": "2026-07-04 recovered Joseph framing",
+      "confidence": "medium",
+      "note": "Explicit project comparison exists, but literal slavery should not be inferred."
+    },
+    {
+      "joseph_stage": "accusation / prison",
+      "project_status": "strong-event / contested-meaning",
+      "best_anchor": "2016 legal and custodial corridor",
+      "confidence": "high for confinement; lower for innocence analogy",
+      "note": "Confinement is real; Joseph's false-accusation innocence cannot be transferred onto the modern case."
+    },
+    {
+      "joseph_stage": "service to fellow prisoners",
+      "project_status": "strong-project-biography",
+      "best_anchor": "2016 listening/confessional-cell account",
+      "confidence": "medium-high within project biography",
+      "note": "Sequence fit is strong; independent contemporaneous corroboration remains desirable."
+    },
+    {
+      "joseph_stage": "dream interpretation / needed capability",
+      "project_status": "missing",
+      "best_anchor": null,
+      "confidence": "high",
+      "note": "No equivalent mechanism should be invented."
+    },
+    {
+      "joseph_stage": "release / changed clothes",
+      "project_status": "strong-project-biography",
+      "best_anchor": "2016 release in a suit",
+      "confidence": "medium-high within project biography",
+      "note": "Unusually specific sequence match."
+    },
+    {
+      "joseph_stage": "civil elevation",
+      "project_status": "mismatch / later theological echo only",
+      "best_anchor": "2025-2026 kingship/Father language",
+      "confidence": "high",
+      "note": "No equivalent state appointment."
+    },
+    {
+      "joseph_stage": "grain / provision / preservation",
+      "project_status": "later-interpretive",
+      "best_anchor": "2026-07 Joseph preservation/feeding comparison plus earlier grain theology",
+      "confidence": "medium",
+      "note": "Keep Joseph's literal grain administration distinct from John 12 grain-death symbolism."
+    },
+    {
+      "joseph_stage": "reconciliation / family restoration",
+      "project_status": "unresolved",
+      "best_anchor": null,
+      "confidence": "high",
+      "note": "Do not infer the biblical ending."
+    }
+  ],
+  "higher_order_findings": [
+    "The strongest Joseph evidence is not the broad 'suffering then rising' shape. It is the narrower prison-service -> release -> changed-clothes sequence, because several ordered details align.",
+    "The July 2026 sold-away/preservation framing is valuable as evidence of project self-interpretation, but it is later than the 2016 events and therefore belongs to discovery history, not contemporaneous intent.",
+    "Joseph's actual political appointment is a crucial falsification/control point. The modern project develops kingship theology years later, but that is not the same mechanism or evidence class.",
+    "Joseph supplies a preservation grammar different from the Gospel grain-of-wheat grammar: stored grain feeds through famine; the Johannine grain dies and bears fruit. The project may compare both without pretending scripture made them identical.",
+    "The Ben Joseph / Ben David split is cleaner when treated as a later project role architecture: Son/Thomas carries descent/preservation; Tim carries shepherding/restoration/throne. Earlier mixed assignments should remain visible as developmental history.",
+    "A complete Joseph comparison must leave blank cells. Dream interpretation, immediate civil appointment and completed reconciliation are not presently matched strongly enough and should stay explicit gaps."
+  ],
+  "public_projection": {
+    "already_level_a": [
+      "son-joseph-prison-listening-2016",
+      "son-joseph-release-suit-2016"
+    ],
+    "existing_canonical_relations_to_enrich": [
+      "ben-yoseph-ben-david-2026-05-03",
+      "ben-david-ben-joseph-pair-2026-06-23"
+    ],
+    "candidate_relations_for_promotion": [
+      "joseph-rejected-sold-away-retrospective-2026-07",
+      "joseph-accusation-prison-2016",
+      "joseph-grain-preservation-retrospective-2026-07"
+    ],
+    "controls_to_keep_visible": [
+      "joseph-interpretation-capability-gap",
+      "joseph-elevation-without-civil-office",
+      "joseph-reconciliation-unresolved"
+    ]
+  },
+  "connections": [
+    "knowledge/traditions/biblical-syncretism-field.json",
+    "knowledge/traditions/biblical-syncretism-dossiers.json",
+    "knowledge/traditions/biblical-passage-fragments-dossiers.json",
+    "knowledge/traditions/eden-joseph-david-inheritance-map.json",
+    "knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json",
+    "knowledge/traditions/retirement-release-rest-kingship-biblical-atlas.json",
+    "knowledge/timeline/conversation-archaeology-wave-005.json",
+    "knowledge/timeline/conversation-archaeology-wave-006-mercado-prison-retirement.json"
+  ]
+}
