@@ -30,6 +30,20 @@
     "related_event_ids":{"type":"array","uniqueItems":true,"items":{"type":"string","pattern":"^evt-"}},
     "platform":{"type":"string"},
     "public_url":{"type":"string","pattern":"^https?://"},
-    "confidence":{"type":["number","string"]}
+    "confidence":{"type":["number","string"]},
+    "places":{
+      "type":"array",
+      "items":{
+        "type":"object",
+        "additionalProperties":false,
+        "required":["name"],
+        "properties":{
+          "name":{"type":"string","minLength":1},
+          "kind":{"type":"string","minLength":1},
+          "relation":{"type":"string","minLength":1},
+          "country":{"type":"string","minLength":1}
+        }
+      }
+    }
   }
 }
