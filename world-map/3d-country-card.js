@@ -10,7 +10,7 @@ await layers.ready;
 const INDEX_URL = '../data/countries/index.json';
 const DEMOGRAPHY_URL = '../data/world-country-demography.json';
 const RELATION_LABELS = { all:'All context', money:'Money', systems:'Systems', institutions:'Institutions', project:'Project', other:'Other' };
-const RUNTIME_GROUPS = ['eu','oecd','g7','g20','schengen','euro-area','usmca','asean','african-union','sadc','pacific-islands-forum','sco','mercosur','gcc','arctic-council'];
+const RUNTIME_GROUPS = ['eu','oecd','g7','g20','schengen','euro-area','usmca','asean','african-union','sadc','pacific-islands-forum','sco','mercosur','gcc','arctic-council','nato','brics','aukus','five-eyes'];
 const FIGURE_COUNTRY_CODES = {
   'Canada':'CAN','China':'CHN','Russia':'RUS','India':'IND','United States':'USA','Israel':'ISR',
   'Australia':'AUS','New Zealand':'NZL','Papua New Guinea':'PNG','South Africa':'ZAF'
@@ -27,6 +27,8 @@ async function fetchJson(url) { const response = await fetch(url, { cache:'no-ca
 async function indexData() { if (!index) index = await fetchJson(INDEX_URL); return index; }
 async function demographyData() { if (!demography) demography = await fetchJson(DEMOGRAPHY_URL); return demography; }
 function runtime() { return window.__potatoAtlasDataRuntime; }
+async function populationObservation(code) { return runtime()?.populationObservation?.(code) || null; }
+async function areaObservation(code) { return runtime()?.areaObservation?.(code) || null; }
 
 function formatNumber(value, maximumFractionDigits = 1) {
   const number = Number(value);
@@ -42,7 +44,7 @@ function formatRuntimeCell(cell) {
   if (!cell || !Number.isFinite(Number(cell.value))) return '—';
   const value = Number(cell.value);
   const unit = String(cell.unit || '');
-  if (unit.includes('USD')) return new Intl.NumberFormat(undefined, { style:'currency', currency:'USD', maximumFractionDigits:0 }).format(value);
+  if (unit.includes('USD') || unit.includes('international $')) return new Intl.NumberFormat(undefined, { style:'currency', currency:'USD', maximumFractionDigits:0 }).format(value);
   if (unit.includes('percent')) return `${formatNumber(value, 1)}%`;
   return `${formatNumber(value, 1)}${unit ? ` ${unit}` : ''}`;
 }
@@ -76,8 +78,8 @@ async function religionShare(code, id) {
   return Number.isFinite(value) ? value : null;
 }
 
-function defaultMetrics(record) {
-  const population = observation(record, 'population');
+async function defaultMetrics(code, record) {
+  const population = await populationObservation(code);
   const gdp = observation(record, 'gdp');
   const growth = observation(record, 'real_growth') || observation(record, 'real_gdp_growth');
   const inflation = observation(record, 'inflation');
@@ -126,17 +128,18 @@ async function comparisonValue(code, record, entry) {
     return { value, display:value == null ? '—' : `${formatNumber(value, 1)}%` };
   }
   if (entry?.id === 'stat.area') {
-    const value = Number(record?.geography?.area_km2 ?? record?.geography?.land_area_km2);
-    return { value:Number.isFinite(value) ? value : null, display:Number.isFinite(value) ? `${formatNumber(value)} km²` : '—' };
+    const cell = await areaObservation(code);
+    const value = Number(cell?.value);
+    return { value:Number.isFinite(value) ? value : null, display:Number.isFinite(value) ? `${formatNumber(value)} km²` : '—', cell };
   }
   if (entry?.runtime_metric) {
     const cell = await runtime()?.metric?.(code, entry.runtime_metric);
     const value = Number(cell?.value);
     return { value:Number.isFinite(value) ? value : null, display:formatRuntimeCell(cell), cell };
   }
-  const population = observation(record, 'population');
+  const population = await populationObservation(code);
   const value = Number(population?.value);
-  return { value:Number.isFinite(value) ? value : null, display:Number.isFinite(value) ? formatCompact(value) : '—' };
+  return { value:Number.isFinite(value) ? value : null, display:Number.isFinite(value) ? formatCompact(value) : '—', cell:population };
 }
 
 async function comparisonRows(codes) {
@@ -177,11 +180,11 @@ async function contextualRows(code, record) {
       const value = await religionShare(code, entry.id);
       rows.push([entry.label, value == null ? '—' : `${formatNumber(value, 1)}%`]);
     } else if (entry.id === 'stat.population') {
-      const pop = observation(record, 'population');
+      const pop = await populationObservation(code);
       rows.push([entry.label, pop ? formatCompact(pop.value) : '—']);
     } else if (entry.id === 'stat.area') {
-      const area = record?.geography?.area_km2 ?? record?.geography?.land_area_km2;
-      rows.push([entry.label, area != null ? `${formatNumber(area)} km²` : '—']);
+      const area = await areaObservation(code);
+      rows.push([entry.label, area?.value != null ? `${formatNumber(area.value)} km²` : '—']);
     } else if (entry.runtime_metric) {
       const cell = await runtime()?.metric?.(code, entry.runtime_metric);
       rows.push([entry.label, formatRuntimeCell(cell)]);
@@ -244,7 +247,7 @@ async function render(code = selection.current?.activeCode || selection.current?
   if (renderVersion !== version || renderedCode !== code) return;
   const identity = record?.identity || {};
   const political = record?.political_system || {};
-  const metrics = defaultMetrics(record || {});
+  const metrics = await defaultMetrics(code, record || {});
   const [context, comparison, memberships, axis] = await Promise.all([
     contextualRows(code, record || {}),
     comparisonRows(selection.current?.selectedCodes || []),
@@ -263,7 +266,7 @@ async function render(code = selection.current?.activeCode || selection.current?
   const remainingChains = Math.max(0, axis.chains.length - visibleChains.length);
 
   card.innerHTML = `
-    <div class="atlas-country-head"><div class="atlas-country-flag" aria-hidden="true">${flagEmoji(identity.iso2 || record?.iso2)}</div><div class="atlas-country-title"><b>${esc(identity.name || record?.country_id || code)}</b><small>${esc(identity.capital || record?.capital || 'Capital unavailable')}${identity.official_name && identity.official_name !== identity.name ? ` · ${esc(identity.official_name)}` : ''}</small></div><button class="atlas-country-close" type="button" aria-label="Close country card">×</button></div>
+    <div class="atlas-country-head"><div class="atlas-country-flag" aria-hidden="true">${flagEmoji(identity.iso2 || record?.iso2)}</div><div class="atlas-country-title"><b>${esc(identity.name || record?.country_id || selection.countryName?.(code) || code)}</b><small>${esc(identity.capital || record?.capital || 'Capital unavailable')}${identity.official_name && identity.official_name !== identity.name ? ` · ${esc(identity.official_name)}` : ''}</small></div><button class="atlas-country-close" type="button" aria-label="Close country card">×</button></div>
     ${axis.orientations.length ? `<div class="atlas-country-section"><small>Axis orientation · project interpretation</small><div class="atlas-country-tags">${axis.orientations.map(item => `<span class="atlas-country-tag atlas-axis-tag" data-axis="${esc(item.axis)}" title="${esc(item.note || '')}">${esc(item.axis.charAt(0).toUpperCase()+item.axis.slice(1))} · ${esc(item.role)}</span>`).join('')}</div></div>` : ''}
     <div class="atlas-country-grid">${metrics.map(([label, value]) => `<div class="atlas-country-metric"><span>${esc(label)}</span><b>${esc(value)}</b></div>`).join('')}</div>
     ${comparison ? `<div class="atlas-country-section"><small>Selected comparison · ${esc(comparison.label)}</small>${comparison.rows.map(row => `<button type="button" class="atlas-country-compare${row.active ? ' active' : ''}" data-compare-code="${esc(row.code)}"><span>${esc(row.name)}</span><b>${esc(row.display)}</b></button>`).join('')}${coverage ? `<div class="atlas-country-coverage">Coverage · ${esc(coverage)}</div>` : ''}${comparison.remaining ? `<div class="atlas-country-more">+${comparison.remaining} more selected</div>` : ''}</div>` : ''}

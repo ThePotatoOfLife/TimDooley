@@ -103,6 +103,7 @@ try {
   await loadAfterPaint('World Bar', './3d-world-bar.js');
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
+  await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');
   await loadAfterPaint('System Intelligence', './3d-gateways.js');
   await loadAfterPaint('Functional Chains', './3d-chain-explorer.js');
   await loadAfterPaint('Impact Trace', './3d-impact-trace.js');

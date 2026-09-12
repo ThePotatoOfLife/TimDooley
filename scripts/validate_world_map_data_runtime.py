@@ -11,8 +11,14 @@ ROOT = Path(__file__).resolve().parents[1]
 GENERATOR = ROOT / "scripts" / "build_world_map_runtime.py"
 MEMBERSHIPS = ROOT / "data" / "world-institution-memberships.json"
 REGISTRY = ROOT / "data" / "world-map-layer-registry.json"
+ENTITIES = ROOT / "data" / "world-map-entities.json"
+SCALAR_RESOLVER = ROOT / "scripts" / "world_map_scalars.py"
+SCALAR_BRIDGE = ROOT / "world-map" / "3d-scalar-runtime-bridge.js"
 COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 CARD = ROOT / "world-map" / "3d-country-card.js"
+ENTITY_RUNTIME = ROOT / "world-map" / "3d-entity-runtime.js"
+HOVER = ROOT / "world-map" / "3d-hover.js"
+BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 BUILD_SITE = ROOT / "scripts" / "build_site.py"
 
@@ -72,10 +78,16 @@ def main() -> int:
     errors: list[str] = []
     memberships = load_json(MEMBERSHIPS, errors)
     registry = load_json(REGISTRY, errors)
+    entities = load_json(ENTITIES, errors)
     compositor = read(COMPOSITOR, errors)
     card = read(CARD, errors)
+    entity_runtime = read(ENTITY_RUNTIME, errors)
+    hover = read(HOVER, errors)
+    bootstrap = read(BOOTSTRAP, errors)
     world_bar = read(WORLD_BAR, errors)
     build_site = read(BUILD_SITE, errors)
+    scalar_resolver = read(SCALAR_RESOLVER, errors)
+    scalar_bridge = read(SCALAR_BRIDGE, errors)
     generator = load_generator(errors)
 
     groups = memberships.get("groups", {}) if isinstance(memberships, dict) else {}
@@ -118,23 +130,48 @@ def main() -> int:
         if entry.get("runtime_metric") != runtime_metric:
             errors.append(f"{entry_id} must declare runtime_metric={runtime_metric}")
 
-    for token in (
-        "WORLD_DATA_RUNTIME_URL",
-        "__potatoAtlasDataRuntime",
-        "applyRuntimeScalar",
-        "runtime_metric",
-        "coverage",
-    ):
+    for entry_id, scalar_id in {"stat.population":"population", "stat.area":"area"}.items():
+        entry = entries.get(entry_id, {})
+        if entry.get("availability") != "current":
+            errors.append(f"{entry_id} must remain current")
+        if entry.get("source_owner") != "data/world-map-data-runtime.json":
+            errors.append(f"{entry_id} must use the shared generated World Map runtime")
+        if entry.get("runtime_scalar") != scalar_id:
+            errors.append(f"{entry_id} must declare runtime_scalar={scalar_id}")
+
+    for token in ("WORLD_DATA_RUNTIME_URL", "__potatoAtlasDataRuntime", "applyRuntimeScalar", "runtime_metric", "coverage"):
         if token not in compositor:
             errors.append(f"compositor missing runtime integration marker: {token}")
-    for token in ("__potatoAtlasDataRuntime", "runtime_metric", "metricMeta"):
+    for token in ("populationObservation", "areaObservation", "defaultMetrics(code", "await populationObservation(code)"):
         if token not in card:
-            errors.append(f"country card missing shared runtime marker: {token}")
+            errors.append(f"country card missing shared scalar marker: {token}")
+    for token in ("scalarObservation", "populationObservation", "areaObservation"):
+        if token not in entity_runtime:
+            errors.append(f"entity runtime missing shared scalar helper: {token}")
+    for token in ("scalarObservation", "populationObservation", "areaObservation"):
+        if token not in hover:
+            errors.append(f"hover missing shared scalar helper: {token}")
+    if "3d-scalar-runtime-bridge.js" not in bootstrap:
+        errors.append("bootstrap must activate the shared scalar Stats bridge")
+    for token in ("runtime_scalar", "atlasEntityScalarValue", "atlasEntityScalarHas"):
+        if token not in scalar_bridge:
+            errors.append(f"scalar bridge missing marker: {token}")
+    for token in ("resolve_population", "resolve_area"):
+        if token not in scalar_resolver:
+            errors.append(f"scalar resolver missing {token}")
     for token in ("__potatoAtlasDataRuntime", "coverage", "countries"):
         if token not in world_bar:
             errors.append(f"lower-left context missing runtime coverage marker: {token}")
     if "build_world_map_runtime" not in build_site:
         errors.append("build_site.py must generate the World Map data runtime before copying the public tree")
+
+    greenland = (entities.get("entities") or {}).get("GRL") or {}
+    if (greenland.get("population") or {}).get("value") != 56740:
+        errors.append("Greenland canonical entity population must remain 56,740")
+    if (greenland.get("area") or {}).get("value") != 2166086:
+        errors.append("Greenland canonical entity area must be 2,166,086 km²")
+    if (greenland.get("area") or {}).get("definition") != "total area":
+        errors.append("Greenland area definition must be total area")
 
     if generator:
         try:
@@ -170,6 +207,19 @@ def main() -> int:
                     for key in ("value", "unit", "period", "source"):
                         if key not in cell:
                             errors.append(f"{code}/{metric_id} metric cell missing {key}")
+            scalars = runtime.get("scalars", {})
+            if scalars.get("missing_policy") != "unknown-not-zero":
+                errors.append("shared scalar plane must declare unknown-not-zero missing policy")
+            by_entity = scalars.get("by_entity", {})
+            if (by_entity.get("GRL", {}).get("population") or {}).get("value") != 56740:
+                errors.append("runtime Greenland population must resolve to 56,740")
+            if (by_entity.get("GRL", {}).get("area") or {}).get("value") != 2166086:
+                errors.append("runtime Greenland area must resolve to 2,166,086 km²")
+            if (by_entity.get("GRL", {}).get("area") or {}).get("definition") != "total area":
+                errors.append("runtime Greenland area must preserve total-area definition")
+            representative_population = (by_entity.get("DNK", {}).get("population") or {}).get("value")
+            if representative_population is None or representative_population <= 0:
+                errors.append("shared scalar plane must resolve representative sovereign population (DNK)")
 
     if errors:
         print("World Map data runtime validation FAILED:")

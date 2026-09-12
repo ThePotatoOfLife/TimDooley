@@ -16,13 +16,25 @@ AXES = {"north", "west", "east", "south"}
 ROLES = {"primary", "secondary", "bridge", "frontier", "external", "shared", "unresolved"}
 CONFIDENCE = {"high", "medium", "low"}
 BASIS = {"explicit-tim", "recovered-conversation", "project-inference", "project-synthesis", "empirical-correspondence"}
-EXPECTED_EASTERN_NORTH = {
+EXPECTED_EUROPEAN_NORTH = {
     "LVA": ("primary", "high"),
     "LTU": ("primary", "high"),
     "POL": ("primary", "high"),
     "ROU": ("secondary", "medium"),
     "CZE": ("secondary", "medium"),
     "SVK": ("secondary", "medium"),
+    "CHE": ("bridge", "medium"),
+    "AUT": ("secondary", "medium"),
+    "SVN": ("secondary", "medium"),
+    "HUN": ("bridge", "medium"),
+    "HRV": ("secondary", "medium"),
+    "SRB": ("bridge", "medium"),
+    "MNE": ("secondary", "medium"),
+    "ALB": ("secondary", "medium"),
+    "BGR": ("secondary", "medium"),
+    "MKD": ("secondary", "medium"),
+    "MDA": ("secondary", "medium"),
+    "BIH": ("secondary", "medium"),
 }
 REQUIRED_GROUP_COUNTS = {
     "asean": (11, 11), "african-union": (55, 54), "sadc": (16, 16),
@@ -89,7 +101,7 @@ def validate_axis_source(codes: set[str]) -> dict:
             assert item.get("confidence") in CONFIDENCE, f"{code}: invalid confidence {item.get('confidence')!r}"
             assert item.get("basis") in BASIS, f"{code}: invalid basis"
             assert str(item.get("note") or "").strip(), f"{code}: orientation note required"
-    for code, (role, confidence) in EXPECTED_EASTERN_NORTH.items():
+    for code, (role, confidence) in EXPECTED_EUROPEAN_NORTH.items():
         north = [item for item in (profiles.get(code, {}).get("orientations") or []) if item.get("axis") == "north"]
         assert north, f"{code}: missing required North orientation"
         assert north[0].get("role") == role, f"{code}: expected North role {role}"
@@ -154,8 +166,13 @@ def validate_runtime(codes: set[str], entity_codes: set[str]) -> None:
         assert axis_id in AXES
         assert not (set(members) - allowed), f"{axis_id}: unknown runtime members {sorted(set(members)-allowed)}"
     north_members = set((axis.get("memberships") or {}).get("north") or [])
-    for code in {"EST", "UKR", "TUR", *EXPECTED_EASTERN_NORTH.keys()}:
+    for code in {"EST", "UKR", "TUR", *EXPECTED_EUROPEAN_NORTH.keys()}:
         assert code in north_members, f"runtime North membership missing {code}; N overlay would omit it"
+    south_members = set((axis.get("memberships") or {}).get("south") or [])
+    assert "ATA" in south_members, "runtime South membership missing Antarctica (ATA); South-pole overlay would omit it"
+    antarctica = (entities.get("territories") or {}).get("ATA") or {}
+    assert antarctica.get("canonical_country") is False, "Antarctica must remain a non-sovereign map entity"
+    assert antarctica.get("render_status") == "current", "Antarctica must be renderable from the existing geometry"
     assert runtime.get("reference_figures") and runtime.get("chains")
     groups = runtime.get("groups") or {}
     for group_id in REQUIRED_GROUP_COUNTS: assert group_id in groups, f"runtime missing group {group_id}"
