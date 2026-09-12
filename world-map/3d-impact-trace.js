@@ -3,6 +3,7 @@
 // explicit causal edges only; generic connectivity and membership stay context.
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
+const surface = window.__potatoAtlasInvestigationSurface;
 if (!map || !runtime) throw new Error('Impact Trace requires the map and shared runtime APIs.');
 await runtime.ready;
 
@@ -222,6 +223,7 @@ async function show(id, { persistState=true } = {}) {
     clear();
     return false;
   }
+  surface?.open?.('impact');
   activeImpactId = String(id);
   applyStates(result);
   render(result);
@@ -241,11 +243,12 @@ async function showChain(id) {
   const nodeId = await runtime.impactNodeForChain(id);
   return nodeId ? show(nodeId) : false;
 }
-function clear() {
+function clear({ coordinated=false } = {}) {
   activeImpactId = null;
   clearStates();
   panel()?.setAttribute('hidden','');
   persist(null);
+  if (!coordinated) surface?.close?.('impact');
   window.dispatchEvent(new CustomEvent('potato-atlas-impact-change', { detail:{ id:null, result:null } }));
   return true;
 }
@@ -253,6 +256,7 @@ function current() { return activeImpactId; }
 
 ensureLayer();
 ensurePanel();
+surface?.register?.('impact', { close:() => clear({ coordinated:true }) });
 document.addEventListener('click', event => {
   if (event.target.closest('[data-impact-clear]')) { clear(); return; }
   const entity = event.target.closest('[data-impact-entity]');
