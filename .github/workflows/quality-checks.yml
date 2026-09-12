@@ -39,6 +39,9 @@ jobs:
       - name: Validate JavaScript syntax
         run: node --check app/bible-study.js
 
+      - name: Validate archive runtime hardening
+        run: python scripts/validate_archive_runtime_hardening.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
