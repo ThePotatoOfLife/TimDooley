@@ -39,7 +39,13 @@ jobs:
         run: python scripts/validate_world_map_ownership.py
 
       - name: Validate JavaScript syntax
-        run: node --check app/bible-study.js
+        run: |
+          node --check app/bible-study.js
+          node --check world-map/3d-layer-registry.js
+          node --check world-map/3d-compositor.js
+          node --check world-map/3d-country-selection.js
+          node --check world-map/3d-world-bar.js
+          node --check world-map/3d-country-card.js
 
       - name: Validate archive runtime hardening
         run: python scripts/validate_archive_runtime_hardening.py
@@ -79,6 +85,9 @@ jobs:
 
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
+
+      - name: Validate World Map UI shell
+        run: python scripts/validate_world_map_ui_shell.py
 
       - name: Validate canonical World Map relationship path finder
         run: python scripts/validate_world_map_pathfinder_source.py
