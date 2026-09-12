@@ -175,7 +175,6 @@ def validate_runtime(codes: set[str], entity_codes: set[str]) -> None:
     kosovo = (entities.get("territories") or {}).get("XKX") or {}
     assert kosovo.get("canonical_country") is False, "Kosovo must remain outside the canonical 195-country sovereign index"
     assert kosovo.get("render_status") == "current", "Kosovo must be renderable from the existing geometry"
-    assert kosovo.get("geometry_alias") == "CS-KM", "Kosovo must bind the source geometry id CS-KM to runtime entity XKX"
     south_members = set((axis.get("memberships") or {}).get("south") or [])
     assert "ATA" in south_members, "runtime South membership missing Antarctica (ATA); South-pole overlay would omit it"
     antarctica = (entities.get("territories") or {}).get("ATA") or {}
@@ -197,8 +196,15 @@ def validate_registry_and_browser() -> None:
     compositor = read_text("world-map/3d-compositor.js")
     for token in ("axisMembers", "axisProfile", "referenceFigures", "chainsForCountry"): assert token in compositor, f"compositor missing runtime API {token}"
     assert "world-axis-profiles.json" not in compositor and "collectIsoArrays(data?.project_axis?.north" not in compositor
-    app = read_text("world-map/3d-app.js")
-    assert "CS-KM" in app and "XKX" in app, "World Map geometry normalization must alias Kosovo CS-KM to XKX"
+    entity_source = load_json("data/world-map-entities.json")
+    kosovo_source = (entity_source.get("entities") or {}).get("XKX") or {}
+    assert kosovo_source.get("geometry_alias") == "CS-KM", "Kosovo source entity must bind upstream geometry id CS-KM to XKX"
+    aliases = read_text("world-map/3d-geometry-aliases.js")
+    for token in ("CS-KM", "XKX", "world-countries.geo.json"):
+        assert token in aliases, f"Kosovo geometry alias module missing marker: {token}"
+    bootstrap = read_text("world-map/3d-bootstrap.js")
+    assert "3d-geometry-aliases.js" in bootstrap, "bootstrap must load geometry aliases before the atlas core"
+    assert bootstrap.index("3d-geometry-aliases.js") < bootstrap.index("3d-hover.js"), "geometry aliases must load before hover/app captures fetch"
     world_bar = read_text("world-map/3d-world-bar.js")
     for token in ("projection", "setProjection", "mercator", "globe", "__potatoAtlasProjection"): assert token in world_bar
     card = read_text("world-map/3d-country-card.js"); assert "axisProfile" in card and "chainsForCountry" in card
