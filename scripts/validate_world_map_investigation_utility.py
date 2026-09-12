@@ -2,6 +2,8 @@
 """Validate contextual World Map investigation entry points and shell discipline."""
 from __future__ import annotations
 
+import shutil
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -72,6 +74,15 @@ def main() -> int:
             errors.append(f"World Bar must not gain permanent investigation control: {marker}")
     if "3d-pathfinder.js" not in bootstrap and "3d-pathfinder.js" not in card:
         errors.append("Path must be loadable contextually from bootstrap or country card")
+
+    node = shutil.which("node")
+    if node:
+        for module in (SURFACE, PATHFINDER, IMPACT, BOOTSTRAP):
+            if not module.is_file():
+                continue
+            result = subprocess.run([node, "--check", str(module)], text=True, capture_output=True)
+            if result.returncode:
+                errors.append(f"JavaScript syntax failed for {module.relative_to(ROOT)}: {result.stderr.strip() or result.stdout.strip()}")
 
     if errors:
         print("World Map investigation utility validation FAILED:")
