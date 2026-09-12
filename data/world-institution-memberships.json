@@ -1,0 +1,52 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "purpose": "Canonical country-polygon membership source for empirical institutional layers in the World Map. Supranational members are recorded separately and are never fabricated as country polygons.",
+  "groups": {
+    "eu": {
+      "label": "European Union",
+      "as_of": "2026-09-12",
+      "source": "European Union",
+      "source_url": "https://european-union.europa.eu/principles-countries-history/country-profiles_en",
+      "members": ["AUT","BEL","BGR","HRV","CYP","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","IRL","ITA","LVA","LTU","LUX","MLT","NLD","POL","PRT","ROU","SVK","SVN","ESP","SWE"]
+    },
+    "oecd": {
+      "label": "OECD",
+      "as_of": "2026-09-12",
+      "source": "OECD",
+      "source_url": "https://www.oecd.org/en/about/members-partners.html",
+      "members": ["AUS","AUT","BEL","CAN","CHL","COL","CRI","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","ISL","IRL","ISR","ITA","JPN","KOR","LVA","LTU","LUX","MEX","NLD","NZL","NOR","POL","PRT","SVK","SVN","ESP","SWE","CHE","TUR","GBR","USA"]
+    },
+    "g7": {
+      "label": "G7",
+      "as_of": "2026-09-12",
+      "source": "G7 Canada",
+      "source_url": "https://g7.canada.ca/en/",
+      "members": ["CAN","FRA","DEU","ITA","JPN","GBR","USA"]
+    },
+    "g20": {
+      "label": "G20",
+      "as_of": "2026-09-12",
+      "source": "G20",
+      "source_url": "https://g20.org/about-g20/",
+      "members": ["ARG","AUS","BRA","CAN","CHN","FRA","DEU","IND","IDN","ITA","JPN","KOR","MEX","RUS","SAU","ZAF","TUR","GBR","USA"],
+      "non_country_members": ["African Union", "European Union"],
+      "notes": "The World Map highlights the 19 sovereign-country members as polygons. The African Union and European Union remain explicit non-country members in metadata."
+    },
+    "schengen": {
+      "label": "Schengen Area",
+      "as_of": "2026-09-12",
+      "source": "European Commission",
+      "source_url": "https://home-affairs.ec.europa.eu/policies/schengen-borders-and-visa/schengen-area_en",
+      "members": ["AUT","BEL","BGR","HRV","CZE","DNK","EST","FIN","FRA","DEU","GRC","HUN","ITA","LVA","LTU","LUX","MLT","NLD","POL","PRT","ROU","SVK","SVN","ESP","SWE","ISL","LIE","NOR","CHE"]
+    },
+    "euro-area": {
+      "label": "Euro Area",
+      "as_of": "2026-09-12",
+      "source": "European Central Bank",
+      "source_url": "https://www.ecb.europa.eu/euro/intro/html/index.en.html",
+      "members": ["AUT","BEL","BGR","HRV","CYP","EST","FIN","FRA","DEU","GRC","IRL","ITA","LVA","LTU","LUX","MLT","NLD","PRT","SVK","SVN","ESP"],
+      "notes": "Bulgaria adopted the euro on 1 January 2026, bringing the euro area to 21 countries."
+    }
+  }
+}
