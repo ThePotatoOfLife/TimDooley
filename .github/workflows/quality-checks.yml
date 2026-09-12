@@ -151,7 +151,22 @@ jobs:
         run: python scripts/check_machine_discoverability.py
 
       - name: Validate built site shell
+        id: site_shell
+        continue-on-error: true
         run: python scripts/validate_site_shell.py
+
+      - name: Upload site-shell diagnostics
+        if: ${{ always() && hashFiles('site-shell-report.txt') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-site-shell-report
+          path: site-shell-report.txt
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Enforce built-site shell gate
+        if: steps.site_shell.outcome == 'failure'
+        run: exit 1
 
       - name: Assert internal archive is absent from artifact
         run: test ! -e _site/archive
