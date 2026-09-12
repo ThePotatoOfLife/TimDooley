@@ -48,6 +48,8 @@ jobs:
           node --check world-map/3d-country-card.js
           node --check world-map/3d-gateways.js
           node --check world-map/3d-chain-explorer.js
+          node --check world-map/3d-impact-trace.js
+          node --check world-map/3d-impact-actions.js
 
       - name: Validate archive runtime hardening
         run: python scripts/validate_archive_runtime_hardening.py
@@ -99,6 +101,9 @@ jobs:
 
       - name: Validate World Map entity and Africa repair
         run: python scripts/validate_world_map_entity_africa_repair.py
+
+      - name: Validate World Map dependency impact trace
+        run: python scripts/validate_world_map_impact_trace.py
 
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
