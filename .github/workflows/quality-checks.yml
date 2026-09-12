@@ -75,6 +75,9 @@ jobs:
       - name: Validate entity-aware Trace
         run: python scripts/validate_world_map_entity_trace.py
 
+      - name: Validate question-led reader surfaces
+        run: python scripts/validate_reader_surfaces.py
+
       - name: Validate repository spine
         run: python scripts/validate_repository_spine.py
 
