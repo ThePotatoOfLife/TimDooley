@@ -14,6 +14,7 @@ import os
 import shutil
 from pathlib import Path
 
+from build_world_map_coverage import build_coverage_file
 from build_world_map_runtime import build_runtime_file
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -305,8 +306,9 @@ def generate_machine_index(manifest, core_index, contexts):
 
 def build() -> None:
     build_world_map_runtime = build_runtime_file(ROOT / "data" / "world-map-data-runtime.json")
+    build_world_map_coverage = build_coverage_file(ROOT / "data" / "world-map-coverage-ledger.json")
     copy_tree()
-    required = [OUT / "index.html", OUT / "manifest.json", OUT / "app" / "app.js", OUT / "app" / "style.css", OUT / "knowledge" / "core" / "potato-of-life.json", OUT / "knowledge" / "core" / "tim-dooley.json", OUT / "knowledge" / "core" / "tim-identity-ontology.json", OUT / "tim-dooley" / "index.html", OUT / "tim-dooley" / "ontology" / "index.html", OUT / "faq" / "index.html", OUT / "faq" / "all" / "god" / "index.html", OUT / "data" / "world-map-data-runtime.json"]
+    required = [OUT / "index.html", OUT / "manifest.json", OUT / "app" / "app.js", OUT / "app" / "style.css", OUT / "knowledge" / "core" / "potato-of-life.json", OUT / "knowledge" / "core" / "tim-dooley.json", OUT / "knowledge" / "core" / "tim-identity-ontology.json", OUT / "tim-dooley" / "index.html", OUT / "tim-dooley" / "ontology" / "index.html", OUT / "faq" / "index.html", OUT / "faq" / "all" / "god" / "index.html", OUT / "data" / "world-map-data-runtime.json", OUT / "data" / "world-map-coverage-ledger.json"]
     missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
     if missing:
         raise SystemExit(f"Required manifest-driven archive files are missing from _site: {missing}")
@@ -325,7 +327,8 @@ def build() -> None:
     if not pages:
         raise SystemExit("No HTML pages were built into _site")
     metric_coverage = {key: value.get("coverage", 0) for key, value in build_world_map_runtime.get("metrics", {}).items()}
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, and the complete repository knowledge/data tree.")
+    coverage_entities = len(build_world_map_coverage.get("entities", {}))
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete repository knowledge/data tree.")
 
 
 if __name__ == "__main__":
