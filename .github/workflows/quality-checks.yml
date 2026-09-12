@@ -159,7 +159,22 @@ jobs:
         run: python scripts/enrich_weak_descriptions.py
 
       - name: Optimize crawl, sharing and sitemap SEO
+        id: seo
+        continue-on-error: true
         run: python scripts/optimize_seo.py
+
+      - name: Upload SEO diagnostics
+        if: ${{ always() && hashFiles('_site/seo-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-seo-report
+          path: _site/seo-report.json
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Enforce SEO gate
+        if: steps.seo.outcome == 'failure'
+        run: exit 1
 
       - name: Validate public navigation
         run: python scripts/validate_public_navigation.py
