@@ -12,9 +12,8 @@ ENTITIES = ROOT / "data" / "world-map-entities.json"
 AFRICA = ROOT / "data" / "world-africa-regional-systems.json"
 RUNTIME_BUILDER = ROOT / "scripts" / "build_world_map_runtime.py"
 ENTITY_UTILS = ROOT / "scripts" / "world_map_entity_utils.py"
-COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
-SELECTION = ROOT / "world-map" / "3d-country-selection.js"
-CARD = ROOT / "world-map" / "3d-country-card.js"
+ENTITY_RUNTIME = ROOT / "world-map" / "3d-entity-runtime.js"
+BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 DEMOGRAPHY = ROOT / "world-map" / "3d-demography.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 AXIS = ROOT / "data" / "world-axis-profiles.json"
@@ -73,6 +72,10 @@ def main() -> int:
         coords = anchor.get("coordinates") if isinstance(anchor, dict) else None
         if not (isinstance(coords, list) and len(coords) == 2):
             errors.append("GRL requires a two-coordinate label_anchor")
+        profile = grl.get("axis_profile") or {}
+        north = [row for row in profile.get("orientations", []) if row.get("axis") == "north"]
+        if not north or north[0].get("role") != "primary":
+            errors.append("GRL entity must carry a primary North profile")
 
     systems = africa.get("systems") or {}
     eac = systems.get("eac") or {}
@@ -92,36 +95,50 @@ def main() -> int:
         if transitions.get(code, {}).get("effective_date") != "2025-01-29":
             errors.append(f"ECOWAS transition history missing 2025-01-29 for {code}")
 
-    axis_profiles = axis.get("profiles") or {}
-    if "GRL" not in axis_profiles:
-        errors.append("GRL requires an Axis profile")
-    if (axis_profiles.get("COD") or {}).get("orientations"):
+    overlays = africa.get("axis_overlays") or {}
+    if "COD" in overlays:
         errors.append("COD must remain directionally unresolved in this wave")
+    for code, orientations in overlays.items():
+        for row in orientations:
+            for key in ("axis", "role", "basis", "confidence", "note"):
+                if not row.get(key):
+                    errors.append(f"African Axis overlay {code} missing {key}")
+    if "REC membership" not in str(africa.get("axis_rule") or ""):
+        errors.append("Africa axis_rule must explicitly prevent REC-driven Axis assignment")
+
+    axis_profiles = axis.get("profiles") or {}
+    if (axis_profiles.get("COD") or {}).get("orientations"):
+        errors.append("COD must remain unresolved in the base Axis owner")
 
     for chain_id in ("arctic", "north-atlantic"):
         if "GRL" not in ((chains.get("chains") or {}).get(chain_id, {}).get("members") or []):
             errors.append(f"GRL must belong to {chain_id} chain")
+    for chain_id in ("east-african-integration","west-african-integration","sahel-transition","north-african-mediterranean","african-continental-integration"):
+        if chain_id not in (chains.get("chains") or {}):
+            errors.append(f"missing African functional chain: {chain_id}")
 
-    compositor = text(COMPOSITOR, errors)
-    selection = text(SELECTION, errors)
-    card = text(CARD, errors)
+    entity_runtime = text(ENTITY_RUNTIME, errors)
+    bootstrap = text(BOOTSTRAP, errors)
     demography = text(DEMOGRAPHY, errors)
     hover = text(HOVER, errors)
     runtime_builder = text(RUNTIME_BUILDER, errors)
 
-    for marker in ("entity(code)", "entityName(code)", "entityType(code)", "populationObservation(code)", "labelAnchor(code)"):
-        require(compositor, marker, "3d-compositor.js", errors)
+    for marker in ("entity(code)", "entityName(code)", "entityType(code)", "populationObservation(code)", "labelAnchor(code)", "regionalSystems(code)"):
+        require(entity_runtime, marker, "3d-entity-runtime.js", errors)
+    require(entity_runtime, "Self-governing territory", "3d-entity-runtime.js", errors)
+    require(bootstrap, "./3d-entity-runtime.js", "3d-bootstrap.js", errors)
     require(runtime_builder, "world-map-entities.json", "build_world_map_runtime.py", errors)
     require(runtime_builder, "world-africa-regional-systems.json", "build_world_map_runtime.py", errors)
-    require(selection, "entity", "3d-country-selection.js", errors)
-    require(card, "Self-governing territory", "3d-country-card.js", errors)
+    require(runtime_builder, "axis_overlays", "build_world_map_runtime.py", errors)
     require(demography, "population-label-anchor", "3d-demography.js", errors)
 
     add_labels_start = demography.find("async function addPopulationLabels")
     if add_labels_start >= 0:
-        block = demography[add_labels_start:add_labels_start + 5000]
+        block = demography[add_labels_start:add_labels_start + 7000]
         if "REST_URL" in block or ".latlng" in block:
             errors.append("addPopulationLabels must not use REST country latlng as label authority")
+        if "GEOMETRY_URL" not in block or "runtime?.entities" not in block:
+            errors.append("addPopulationLabels must resolve placement through map geometry/entity runtime")
 
     if "(minY + maxY) / 2" in hover and "(minX + maxX) / 2" in hover:
         errors.append("3d-hover.js still contains unsafe geometry-wide bbox midpoint fallback")
@@ -133,16 +150,7 @@ def main() -> int:
         module = importlib.util.module_from_spec(spec)
         assert spec and spec.loader
         spec.loader.exec_module(module)
-        fixture = {
-            "type": "Feature",
-            "geometry": {
-                "type": "MultiPolygon",
-                "coordinates": [
-                    [[[170, 55], [179, 55], [179, 65], [170, 65], [170, 55]]],
-                    [[[-179, 60], [-170, 60], [-170, 66], [-179, 66], [-179, 60]]],
-                ],
-            },
-        }
+        fixture = {"type":"Feature","geometry":{"type":"MultiPolygon","coordinates":[[[[170,55],[179,55],[179,65],[170,65],[170,55]]],[[[-179,60],[-170,60],[-170,66],[-179,66],[-179,60]]]]}}
         anchor = module.representative_component_anchor(fixture)
         if not (isinstance(anchor, list) and len(anchor) == 2):
             errors.append("representative_component_anchor must return [lon, lat]")
