@@ -100,6 +100,8 @@ def main() -> int:
 
     require(bootstrap, "./3d-active-view.js", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js')", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "declareDormant('Progressive UI', './3d-ui.js'", "world-map/3d-bootstrap.js", errors)
+    reject(bootstrap, "loadAfterPaint('Progressive UI', './3d-ui.js')", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "specialistLazyLoads", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "potato-atlas-working-selection-change", "world-map/3d-bootstrap.js", errors)
     reject(bootstrap, "map.once('click', promoteInspectionOnce);", "world-map/3d-bootstrap.js", errors)
@@ -131,14 +133,13 @@ def main() -> int:
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
-    # A tiny always-loaded lifecycle module owns the one legacy/core panel observer.
-    # Feature modules and the dormant legacy UI consume events instead of observing
-    # the panel independently. This keeps the lifecycle live without re-enabling
-    # 3d-ui.js paint/layout side effects.
+    # A tiny always-loaded lifecycle module owns the active legacy/core panel
+    # observer. The broader 3d-ui module remains dormant compatibility code and
+    # must never be booted merely to publish lifecycle events.
     for token in ("function panelLifecycleKey", "potato-atlas-panel-rendered", "panelLifecycleRenders"):
         require(panel_lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
     if panel_lifecycle.count("new MutationObserver(") != 1:
-        errors.append(f"world-map/3d-panel-lifecycle.js must construct exactly one panel lifecycle observer; found {panel_lifecycle.count('new MutationObserver(')}")
+        errors.append(f"world-map/3d-panel-lifecycle.js must construct exactly one active panel lifecycle observer; found {panel_lifecycle.count('new MutationObserver(')}")
     require(panel_lifecycle, "window.__potatoAtlasPanelLifecycle", "world-map/3d-panel-lifecycle.js", errors)
     for text, label in (
         (demography, "world-map/3d-demography.js"),
@@ -149,7 +150,7 @@ def main() -> int:
     ):
         require(text, "potato-atlas-panel-rendered", label, errors)
     for path in sorted((ROOT / "world-map").glob("3d-*.js")):
-        if path == PANEL_LIFECYCLE:
+        if path in (PANEL_LIFECYCLE, UI):
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
