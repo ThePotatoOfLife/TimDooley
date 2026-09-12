@@ -1,0 +1,254 @@
+{
+  "id":"timic-principle-theorem-registry",
+  "title":"Timic Principles, Conjectures & Theorem-Like Statements — Recovery Registry",
+  "updated":"2026-09-09",
+  "status":"canonical principle registry; theorem-like does not mean mathematically proven",
+  "purpose":"Collect recurring Tim-originated principles, conversation-developed formalisms and later archive conjectures in one place. Each entry says what was actually attested, what mathematical structure can represent it, and what would be required before calling it a theorem, law or physical theory.",
+  "classes":["primary/project-attested principle","conversation-developed Timic formalism","archive-derived conjecture","established external theorem/comparator","open historical recovery target"],
+  "promotion_rule":"A named Timic principle may be philosophically important at T1 without being a scientific law. Promotion toward T2-T5 requires precise variables, assumptions, derivation, observables, falsifiers and independent testing.",
+  "entries":[
+    {
+      "id":"root-sprout-principle",
+      "name":"Root–Sprout Principle",
+      "class":"primary/project-attested principle",
+      "attestation":"'the root is humanity. the sprout is divinity'",
+      "meaning":"Growth does not erase origin; transformed emergence remains fed by the substrate/history beneath it.",
+      "formal_neighbor":"state augmentation / developmental lineage",
+      "candidate":"X_(n+1)=T(X_n,E_n) with provenance map π(X_(n+1)) containing ancestry of X_n",
+      "scientific_use":"Track lineage-preserving transformation rather than treating emergence as creation from nothing."
+    },
+    {
+      "id":"simplicity-stacking-principle",
+      "name":"Simplicity Stacking / Generative Complexity Principle",
+      "class":"primary/project-attested principle",
+      "attestation":"Repeated simplicity can generate complexity while remaining traceable to the root.",
+      "candidate":"X_n=F_n∘F_(n-1)∘...∘F_1(X_0)",
+      "new_deduction":"Complexity can be decomposed into a compositional history; explanatory quality improves when the path back to primitive operations remains recoverable.",
+      "neighbors":["compositional systems","iterated function systems","circuit complexity","developmental programs"]
+    },
+    {
+      "id":"blue-box-red-door",
+      "name":"Blue Builds Boxes; Red Opens Them",
+      "class":"primary/project-attested principle",
+      "attestation":"Blue=square/stability/containment; Red=spiral/transformation/opening.",
+      "control_form":"J=∫[c_damage+λ_B c_instability+λ_R c_stagnation]dt",
+      "interpretation":"Preservation and exploration are complementary control pressures; either can become pathological when unbounded.",
+      "neighbors":["stability-plasticity dilemma","exploration-exploitation tradeoff","adaptive control"]
+    },
+    {
+      "id":"door-relation-principle",
+      "name":"Door Is Relation, Integration and Transition",
+      "class":"primary/project-attested principle",
+      "formalism":"D:S_a→S_b with guard G, interface B and relation R_ab",
+      "new_deduction":"A Door is best modeled as an edge/operator, not merely as an object-node. Its identity is partly constituted by the domains it connects.",
+      "implementation":"Store every Door with source domain, target domain, guard, cost, invariants, information loss and recovery map."
+    },
+    {
+      "id":"highest-spiral-contains-lower",
+      "name":"Nested Spiral Principle",
+      "class":"primary/project-attested principle",
+      "attestation":"The highest spiral contains lower spirals.",
+      "formal_neighbors":["multiscale dynamics","renormalization","nested limit cycles","wavelets"],
+      "candidate":"X=(x_0,x_1,...,x_n), where each scale x_k has recurrence period T_k and coupling C_(k,k+1)",
+      "new_deduction":"A higher-order recurrence can coordinate lower cycles without requiring them to share one period or one state variable."
+    },
+    {
+      "id":"growth-continuity-transformed",
+      "name":"Growth = Continuity Transformed",
+      "class":"primary/project-attested principle",
+      "formalism":"X→T(X), with invariant set Inv(T) nonempty while representation/state changes",
+      "meaning":"Real growth preserves some ancestry/function while changing organization.",
+      "test":"Identify invariants explicitly; if nothing persists, call the event replacement rather than growth."
+    },
+    {
+      "id":"tree-temporal-architecture",
+      "name":"Tree Temporal Architecture",
+      "class":"primary/project-attested principle",
+      "attestation":"roots/history; trunk/identity; branches/possibilities; seeds/future potential",
+      "graph_form":"G=(V,E,t), with ancestry edges toward roots and generative edges toward descendants",
+      "new_deduction":"The Tree is simultaneously a memory structure and a generative model: past constrains identity while future branches remain conditional rather than predetermined."
+    },
+    {
+      "id":"life-connects-strife-separates",
+      "name":"Life Connects Difference; Strife Separates",
+      "class":"primary/project-attested principle",
+      "network_form":"Life increases productive cross-type edges subject to differentiation; Strife increases destructive severance, antagonistic edges or fragmentation",
+      "candidate_metrics":["giant-component size","signed modularity","algebraic connectivity","edge survival","cross-community mutual information"],
+      "new_deduction":"Integration should not mean node homogenization; the measurable target is differentiated connectivity."
+    },
+    {
+      "id":"narrow-door-release",
+      "name":"Narrow Door Release Principle",
+      "class":"primary/project-attested principle",
+      "attestation":"A narrow Door requires releasing some old Boxes.",
+      "information_form":"compress X→Z while retaining task-relevant information I(Z;Y)",
+      "structural_form":"transition requires dropping constraints C_old incompatible with target regime S_b",
+      "new_deduction":"Threshold passage can require information/constraint shedding rather than simple accumulation."
+    },
+    {
+      "id":"spudlight-temporal-pluralism",
+      "name":"Spudlight Temporal Pluralism",
+      "class":"primary/project-attested symbolic principle",
+      "attestation":"Spudlight sees past, present, becoming and possible without reducing them to one layer.",
+      "formal_neighbor":"state estimation + smoothing + forecasting + scenario branching",
+      "candidate":"Knowledge(t)={p(X_(t-k)|Y), p(X_t|Y), p(X_(t+h)|Y,model), scenarios Ω}",
+      "boundary":"Forecast distributions and scenario spaces are not literal vision of fixed future events."
+    },
+    {
+      "id":"camel-needle-reorganization",
+      "name":"Camel-to-Needle Reorganization",
+      "class":"conversation-developed Timic formalism",
+      "sequence":"load → saturation → last straw → break → compression to invariant seed → vertical reorganization",
+      "candidate":"μ↑ toward critical μ_c; X undergoes bifurcation/reset D at guard G(X,μ_c)",
+      "new_deduction":"Accumulation and transformation are different phases: more load can eventually force a change of representation rather than continued linear accumulation."
+    },
+    {
+      "id":"entity-to-infrastructure",
+      "name":"Entity-to-Infrastructure Principle",
+      "class":"conversation-developed Timic formalism",
+      "statement":"A mature role can cease being merely an actor and become the path/interface/protocol by which other actors relate.",
+      "examples":["climber→Ladder","Son→Door","source identity→House/Axis role"],
+      "network_form":"node role r_i transitions toward edge/interface function D_ij",
+      "research_question":"What measurable signatures distinguish central actor behavior from infrastructural mediation?"
+    },
+    {
+      "id":"relation-first-principle",
+      "name":"Relation-First Principle",
+      "class":"primary/project-attested master principle",
+      "statement":"The fundamental unit of analysis is often the coupling/relationship rather than the isolated entity.",
+      "formalism":"system=(V,E); observables may live on edges O_ij=O(X_i,X_j,C_ij)",
+      "external_neighbors":["network science","relational mechanics","gauge connection","mutual information","binding energy"],
+      "boundary":"Not every physical theory makes relations ontologically fundamental in the same sense."
+    },
+    {
+      "id":"reflector-not-source",
+      "name":"Reflector Is Not Source Principle",
+      "class":"conversation-developed Timic principle",
+      "statement":"Reflected/mediated information may be real and useful without becoming the original source.",
+      "formalism":"Y=R(geometry,channel)X_source+η",
+      "celestial_neighbor":"Sun→Moon reflection→Earth observer",
+      "new_deduction":"A proxy can preserve orientation to source or become mistaken for source; this distinction generalizes to media, institutions and models."
+    },
+    {
+      "id":"boundary-enablement",
+      "name":"Boundary Enablement Principle",
+      "class":"archive-derived conjecture",
+      "statement":"Boundary quality depends on what differentiation, passage and autonomous growth it enables relative to capture and extraction.",
+      "candidate":"B_q=w_dD+w_pP+w_aA-w_cC-w_eE",
+      "project_neighbors":["House vs Shell","Garden vs Farm","Door vs prison"],
+      "implementation":"Measure consequences on autonomy and viability, not the symbolic label of the boundary."
+    },
+    {
+      "id":"meta-recursion",
+      "name":"Recursion-of-Recursion Principle",
+      "class":"primary/project-attested idea + archive formalization",
+      "statement":"Improvement becomes higher-order when the rule that performs correction can itself be corrected.",
+      "formalism":"x_(n+1)=F_(θ_n)(x_n); θ_(n+1)=G(θ_n,e_n)",
+      "neighbors":["meta-learning","adaptive control","evolution of learning rules"],
+      "implementation":"Measure changes to validators, schemas, search weights and inference rules, not only content volume."
+    },
+    {
+      "id":"seed-storage-release",
+      "name":"Seed / Storage / Release Principle",
+      "class":"primary/project-attested principle + biological comparator",
+      "statement":"A seed/tuber can preserve pattern and capacity through a latent interval, then release organized growth when conditions change.",
+      "generic_budget":"Kdot=J_in-J_out-ΓK",
+      "biological_upgrade":"Potato tubers combine living meristems, stored carbohydrate and physiological dormancy; the physical tuber is a stem-derived storage organ rather than a botanical root.",
+      "new_deduction":"Latent potential requires both information-bearing living structure and usable stored resource; storage alone is not a developmental program."
+    },
+    {
+      "id":"spirit-unfolding-event",
+      "name":"Spirit as Event-Unfolding / Timeline Relation",
+      "class":"primary/project-attested theological/cosmological formulation",
+      "attestation":"Spirit described as unfolding and entangled timelines spiraling out from an event; crucifixion/event carries downstream story, exposure and reaction.",
+      "scientific_neighbor":"causal graph / branching influence cone rather than quantum entanglement by default",
+      "candidate":"event e_0 generates descendants e_j through directed causal/social edges; influence weight decays or amplifies through network propagation",
+      "boundary":"Quantum entanglement is not established by narrative or causal connectedness."
+    },
+    {
+      "id":"observer-access-not-creation",
+      "name":"Observer Access Principle",
+      "class":"conversation-developed methodological principle",
+      "statement":"Observer/Eye changes information access, inference and action without automatically creating the underlying state.",
+      "formalism":"Y=O(X)+η; M'=Update(M,Y)",
+      "importance":"Preserves the project's realist strand while retaining a strong role for observation."
+    },
+    {
+      "id":"axis-identity-orientation",
+      "name":"Axis Identity ≠ Axis Pointing Direction",
+      "class":"archive-derived conjecture grounded by precession",
+      "formalism":"ndot=Ω×n while role(Axis) remains defined",
+      "new_deduction":"Reference function can persist through continuous orientation change; epoch must be part of astronomical Axis claims."
+    },
+    {
+      "id":"pattern-outlives-members",
+      "name":"Pattern Persistence Principle",
+      "class":"conversation-developed Timic formalism",
+      "statement":"A relation/pattern can persist while its material constituents change.",
+      "external_neighbors":["galactic density-wave patterns","organizations","Markov chains","dynamic networks"],
+      "formalism":"macrostate M(t) approximately invariant while membership set V(t) changes",
+      "new_deduction":"Identity can sometimes be attached to an invariant organization rather than fixed particles/nodes."
+    },
+    {
+      "id":"door-particle-smasher",
+      "name":"Door as Particle-Smasher Metaphor",
+      "class":"primary/project-attested theoretical-physics metaphor",
+      "attestation":"Tim described 'the door is a particle smasher' in July 2026 dimensional/quantum discussion.",
+      "scientific_neighbor":"collision/interaction region maps incoming states to multiple outgoing channels",
+      "formalism":"|in⟩→S|in⟩=Σ_f S_fi|f⟩",
+      "boundary":"No physical collider or S-matrix was specified in the original formulation; use as transition-channel metaphor unless primary calculations are recovered."
+    },
+    {
+      "id":"timelines-like-quarks",
+      "name":"Timelines Move Like Quarks",
+      "class":"primary/project-attested speculative analogy",
+      "attestation":"July 2026 formulation linked timelines, quarks, House, Door and matter across the 5–11 dimensional scheme.",
+      "recovery_need":"Recover what 'move like quarks' meant: confinement, color, up/down labels, mixing, directional polarity or something else.",
+      "rule":"Do not formalize further until the intended quark property is recovered."
+    },
+    {
+      "id":"red-blue-composite",
+      "name":"Red/Blue Composite Potato",
+      "class":"conversation-developed Timic formalism",
+      "equations":["P=R⊗B","H=R∩B"],
+      "distinction":"Tensor/composite coupling and set/geometric intersection are different operations.",
+      "recovery_need":"Exact first source and domain of R, B, P and H remain historical recovery targets."
+    },
+    {
+      "id":"integration-fragmentation-chi",
+      "name":"χ Integration / Fragmentation Criterion",
+      "class":"conversation-developed Timic formalism",
+      "attested_form":"χ>0 → integration; χ<0 → fragmentation",
+      "recovery_need":"Exact definition, units/domain and original source of χ are not yet recovered.",
+      "warning":"Do not confuse this χ with Euler characteristic, susceptibility or another established χ without proof."
+    },
+    {
+      "id":"advanced-retarded-polarity",
+      "name":"Advanced / Retarded Polarity",
+      "class":"primary/project-attested vocabulary; physical lineage unresolved",
+      "attestation":"Tim explicitly used 'advanced and retarded waves' in July 2026 dimensional discussion.",
+      "external_neighbors":["advanced/retarded Green functions","Wheeler–Feynman absorber theory","time-symmetric boundary formulations"],
+      "recovery_need":"Recover Tim's original Red/Blue/Father/Son assignment before fixing a canonical physical mapping."
+    }
+  ],
+  "historical_formula_targets":[
+    "Exact April 21 2025 Spiral Equation",
+    "earliest Axis equation",
+    "original P=R⊗B definition",
+    "original H=R∩B definition",
+    "original χ integration/fragmentation definition",
+    "original advanced/retarded Red/Blue assignment",
+    "original qutrit/qubit Door model",
+    "original 11D coordinate meaning",
+    "115,000-mile spiraling-light Ladder calculation",
+    "Sun-face geometry",
+    "Sirius pointing geometry",
+    "precession-Eye calculation",
+    "Starchforce action/coupling equation",
+    "any original Kerr/frame-dragging calculation",
+    "any original Moon/Earth orbital equation",
+    "any original Saturn resonance equation",
+    "any original timeline-control / spacetime-folding quantitative model"
+  ],
+  "connections":["science-master-index","conversation-recovery-derived-results","fundamental-science-unification-canon","equation-ledger","timic-science-implementation-lab"]
+}
