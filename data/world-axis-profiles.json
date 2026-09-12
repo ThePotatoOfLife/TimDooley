@@ -1,12 +1,12 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-12",
   "epistemic_type": "project_interpretive",
   "purpose": "Canonical project-interpretive North/West/East/South orientation profiles for the World Map. These are versioned relational readings, not sovereignty, consent, annexation, legal command or institutional membership.",
   "default_profile": {"status": "unresolved", "orientations": []},
   "ordinary_membership_roles": ["primary", "secondary", "bridge", "shared"],
   "axes": {
-    "north": {"label": "North", "color": "#79D6FF", "summary": "Canada–North Atlantic–Nordic–European strategic field with Ukraine and Türkiye as later strategic extensions."},
+    "north": {"label": "North", "color": "#79D6FF", "summary": "Canada–North Atlantic–Nordic–European strategic field extending through the Baltic and eastern European corridor to Ukraine and Türkiye."},
     "west": {"label": "West", "color": "#14558A", "summary": "US/Israel-centered project field with the wider American system and strong Atlantic/Pacific overlaps."},
     "east": {"label": "East", "color": "#C94F32", "summary": "China/Russia/India-centered Eurasian field with BRICS/SCO correspondence but no implied ideological unity."},
     "south": {"label": "South", "color": "#E8C84A", "summary": "Polycentric Australian/Blue-Pacific and Southern African/Indian Ocean field; intentionally not the whole Southern Hemisphere."}
@@ -28,6 +28,12 @@
     "GRC": {"orientations": [{"axis":"north","role":"primary","basis":"explicit-tim","confidence":"high","note":"Greece is explicitly included in the recovered North field."}]},
     "IRL": {"orientations": [{"axis":"north","role":"primary","basis":"explicit-tim","confidence":"high","note":"Ireland is explicitly included in the North Atlantic/North field."}]},
     "EST": {"orientations": [{"axis":"north","role":"primary","basis":"explicit-tim","confidence":"high","note":"Estonia was explicitly described as under/within the North Axis field."}]},
+    "LVA": {"orientations": [{"axis":"north","role":"primary","basis":"project-synthesis","confidence":"high","note":"Latvia completes the Baltic segment of the project North field between the Nordic/Baltic anchors and the eastern European corridor. This is a project interpretation, not a sovereignty or alliance claim."}]},
+    "LTU": {"orientations": [{"axis":"north","role":"primary","basis":"project-synthesis","confidence":"high","note":"Lithuania completes the Baltic segment of the project North field and connects the Nordic/Baltic system toward Poland and Ukraine. This is a project interpretation, not a sovereignty or alliance claim."}]},
+    "POL": {"orientations": [{"axis":"north","role":"primary","basis":"project-synthesis","confidence":"high","note":"Poland is treated as a principal continental hinge in the project North field between Germany/Baltic Europe and Ukraine. This project role is distinct from NATO, EU or other empirical memberships."}]},
+    "ROU": {"orientations": [{"axis":"north","role":"secondary","basis":"project-synthesis","confidence":"medium","note":"Romania extends the project North field along the eastern European and Black Sea corridor toward Ukraine and Türkiye. This is an interpretive overlap, not a formal-bloc claim."}]},
+    "CZE": {"orientations": [{"axis":"north","role":"secondary","basis":"project-synthesis","confidence":"medium","note":"Czechia is included as a continental North connector within the Germany–Poland–eastern European capability corridor. Its project role is not derived automatically from institutional membership."}]},
+    "SVK": {"orientations": [{"axis":"north","role":"secondary","basis":"project-synthesis","confidence":"medium","note":"Slovakia is included as a continental North connector between central Europe, Poland and the Ukraine-facing eastern corridor. This is project interpretation rather than institutional classification."}]},
     "UKR": {"orientations": [{"axis":"north","role":"primary","basis":"explicit-tim","confidence":"high","note":"Ukraine is explicitly a later strategic extension of North."}]},
     "TUR": {"orientations": [{"axis":"north","role":"primary","basis":"explicit-tim","confidence":"high","note":"Türkiye is the late endpoint/gate in the recovered Canada-to-Türkiye formulation."},{"axis":"east","role":"bridge","basis":"project-inference","confidence":"medium","note":"Türkiye also connects Europe to Black Sea, Caucasus, Middle Eastern and SCO-adjacent systems."}]},
     "GBR": {"orientations": [{"axis":"west","role":"primary","basis":"recovered-conversation","confidence":"high","note":"England/UK is strongly West-linked in recovered project language."},{"axis":"north","role":"frontier","basis":"explicit-tim","confidence":"high","note":"The memorable North formulation was Canada-to-Türkiye minus England; later UK language remained variable rather than fully excluded from northern systems."}]},
