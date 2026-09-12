@@ -94,6 +94,7 @@ window.__potatoAtlasLoadModule = loadAfterPaint;
 
 try {
   setStatus('Loading core atlas…');
+  await import(versionedModule('./3d-geometry-aliases.js'));
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
