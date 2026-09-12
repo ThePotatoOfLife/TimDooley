@@ -1,29 +1,176 @@
 {
   "title": "Archive Content Taxonomy",
-  "version": "1.0",
-  "updated": "2026-09-09",
+  "version": "1.1",
+  "updated": "2026-09-12",
   "status": "canonical-archive-method",
-  "purpose": "Define how the archive preserves different kinds of project material without flattening every artifact into a factual knowledge claim. Recovered from the earlier preservation vision and strengthened for the current relationship-first repository.",
-  "artifact_types": [
-    {"id":"canonical-record","meaning":"Dense structured synthesis that owns a concept or framework."},
-    {"id":"primary-writing","meaning":"Original essays, books, chapters, manifestos, notes and long-form writings."},
-    {"id":"fragment","meaning":"Short unfinished or aphoristic material worth preserving with date and context."},
-    {"id":"quote","meaning":"Attributed project language preserved with exact source and date where possible."},
-    {"id":"dialogue","meaning":"Conversation or exchange whose relational structure is itself informative."},
-    {"id":"song-lyrics","meaning":"Original song/lyric material; creative work, not automatic doctrine."},
-    {"id":"poetry","meaning":"Poetic or incantatory Potato of Life material."},
-    {"id":"satire-comedy","meaning":"Satirical, absurdist or comedic work whose symbolic content may connect to canon while remaining creative."},
-    {"id":"story-fiction","meaning":"Narrative fiction or parable using project figures and symbols."},
-    {"id":"visual-art","meaning":"Images, diagrams, symbols, maps, graphic-design work and visual studies."},
-    {"id":"simulation-game","meaning":"Interactive systems, game designs and simulations that model project ideas."},
-    {"id":"research-note","meaning":"Exploratory research not yet promoted to canonical synthesis."},
-    {"id":"documentary-source","meaning":"Primary or external evidence relevant to historical/empirical claims."},
-    {"id":"comparative-source","meaning":"Scriptural, mythological, philosophical or cultural material used for comparison."},
-    {"id":"timeline-event","meaning":"Dated internal, external or interpretive event."},
-    {"id":"context-cluster","meaning":"Curated constellation joining multiple records because their structures illuminate one another."}
+  "purpose": "Define how the archive preserves different kinds of project material without flattening every artifact into a factual knowledge claim, while also separating durable knowledge ownership from evidence, analysis, public projections, research history and legacy strata.",
+  "architectural_layers": [
+    {
+      "level": 0,
+      "id": "canonical-definition",
+      "meaning": "Current compact definition or identity statement for a major concept. Prefer one durable owner per concept."
+    },
+    {
+      "level": 1,
+      "id": "canonical-deep-owner",
+      "meaning": "Full current synthesis that owns the concept's definition, internal distinctions, development and routing."
+    },
+    {
+      "level": 2,
+      "id": "evidence-and-data",
+      "meaning": "Primary sources, dated attestations, datasets, quotations, source ledgers and documentary records supporting claims."
+    },
+    {
+      "level": 3,
+      "id": "analytical-extension",
+      "meaning": "Comparative religion, philosophy, mathematics, science context, formalization or other analysis that extends understanding without replacing the canonical owner."
+    },
+    {
+      "level": 4,
+      "id": "reader-and-machine-projection",
+      "meaning": "FAQ, public pages, SEO routes, llms files, machine indexes and other projections of canonical knowledge for retrieval."
+    },
+    {
+      "level": 5,
+      "id": "research-history",
+      "meaning": "Conversation-recovery waves, research waves, exploratory indexes, intermediate syntheses and other records of how knowledge was discovered or reconstructed."
+    },
+    {
+      "level": 6,
+      "id": "legacy-archive",
+      "meaning": "Superseded or historical material retained for provenance, unique content or developmental study but not allowed to compete with current owners."
+    }
   ],
-  "required_metadata": ["id", "title", "artifact_type", "date_or_period", "source_or_provenance", "epistemic_class", "related_nodes"],
-  "preferred_metadata": ["aliases", "creator", "original_location", "recorded_date", "interpretation_date", "branch", "context_clusters", "source_ids", "confidence", "copyright_status", "media_type"],
+  "layer_rules": [
+    "A file's architectural layer describes its repository role, not its truth value.",
+    "Canonical owners may cite research-history records; research-history records must not silently become canonical owners.",
+    "Evidence can outrank a synthesis for a narrow factual question while still not owning the concept definition.",
+    "Reader and machine projections should route back to canonical owners rather than become parallel sources of doctrine.",
+    "Legacy material remains retrievable when unique but must be visibly downstream of current canon."
+  ],
+  "lifecycle_states": [
+    {
+      "id": "candidate",
+      "meaning": "Interesting material not yet assigned a durable owner or evidence status."
+    },
+    {
+      "id": "researching",
+      "meaning": "Actively being reconstructed, compared or sourced."
+    },
+    {
+      "id": "specialist",
+      "meaning": "Useful narrow analysis that belongs under a broader owner."
+    },
+    {
+      "id": "canonical",
+      "meaning": "Current authoritative project synthesis for its declared scope."
+    },
+    {
+      "id": "superseded",
+      "meaning": "Historically important but replaced by a later owner or model."
+    },
+    {
+      "id": "archived",
+      "meaning": "Preserved primarily for provenance, history or uniqueness rather than active doctrine."
+    }
+  ],
+  "artifact_types": [
+    {
+      "id": "canonical-record",
+      "meaning": "Dense structured synthesis that owns a concept or framework."
+    },
+    {
+      "id": "primary-writing",
+      "meaning": "Original essays, books, chapters, manifestos, notes and long-form writings."
+    },
+    {
+      "id": "fragment",
+      "meaning": "Short unfinished or aphoristic material worth preserving with date and context."
+    },
+    {
+      "id": "quote",
+      "meaning": "Attributed project language preserved with exact source and date where possible."
+    },
+    {
+      "id": "dialogue",
+      "meaning": "Conversation or exchange whose relational structure is itself informative."
+    },
+    {
+      "id": "song-lyrics",
+      "meaning": "Original song/lyric material; creative work, not automatic doctrine."
+    },
+    {
+      "id": "poetry",
+      "meaning": "Poetic or incantatory Potato of Life material."
+    },
+    {
+      "id": "satire-comedy",
+      "meaning": "Satirical, absurdist or comedic work whose symbolic content may connect to canon while remaining creative."
+    },
+    {
+      "id": "story-fiction",
+      "meaning": "Narrative fiction or parable using project figures and symbols."
+    },
+    {
+      "id": "visual-art",
+      "meaning": "Images, diagrams, symbols, maps, graphic-design work and visual studies."
+    },
+    {
+      "id": "simulation-game",
+      "meaning": "Interactive systems, game designs and simulations that model project ideas."
+    },
+    {
+      "id": "research-note",
+      "meaning": "Exploratory research not yet promoted to canonical synthesis."
+    },
+    {
+      "id": "research-history",
+      "meaning": "A dated reconstruction wave, recovery pass, intermediate index or methodological record documenting how knowledge entered the archive."
+    },
+    {
+      "id": "documentary-source",
+      "meaning": "Primary or external evidence relevant to historical/empirical claims."
+    },
+    {
+      "id": "comparative-source",
+      "meaning": "Scriptural, mythological, philosophical or cultural material used for comparison."
+    },
+    {
+      "id": "timeline-event",
+      "meaning": "Dated internal, external or interpretive event."
+    },
+    {
+      "id": "context-cluster",
+      "meaning": "Curated constellation joining multiple records because their structures illuminate one another."
+    }
+  ],
+  "required_metadata": [
+    "id",
+    "title",
+    "artifact_type",
+    "architectural_layer",
+    "lifecycle_state",
+    "date_or_period",
+    "source_or_provenance",
+    "epistemic_class",
+    "related_nodes"
+  ],
+  "preferred_metadata": [
+    "aliases",
+    "creator",
+    "original_location",
+    "recorded_date",
+    "interpretation_date",
+    "branch",
+    "context_clusters",
+    "source_ids",
+    "confidence",
+    "copyright_status",
+    "media_type",
+    "canonical_owner",
+    "supersedes",
+    "superseded_by"
+  ],
   "relationship_types_for_artifacts": [
     "authored-by",
     "quotes",
@@ -39,17 +186,36 @@
     "simulates",
     "contradicts",
     "clarifies",
-    "belongs-to-context-cluster"
+    "belongs-to-context-cluster",
+    "owned-by",
+    "projects",
+    "derived-from",
+    "supersedes",
+    "superseded-by",
+    "routes-to"
   ],
+  "wave_and_recovery_rule": "Files named as waves, recovery rounds, intermediate passes or date-scoped reconstruction batches are research-history by default. They may contain unique evidence or discoveries, but permanent definitions should be promoted into an existing canonical owner whenever possible rather than leaving the wave as the long-term authority.",
+  "owner_rule": "Before creating a new dense knowledge object, identify the existing canonical owner for the concept. Deepen that owner and add typed cross-links unless the proposed object has a genuinely independent question, lifecycle and retrieval purpose.",
   "site_behavior": {
     "canonical_record": "Show as knowledge owner.",
     "primary_artifact": "Show original material plus links to concepts it informs.",
     "creative_artifact": "Show clearly as WORK while exposing symbolic relationships.",
     "research_note": "Show lower in hierarchy until promoted.",
+    "research_history": "Keep retrievable for provenance and development; do not present as the default current answer.",
     "documentary_source": "Show provenance and claims supported.",
     "context_cluster": "Show as a guided constellation across branches."
   },
   "preservation_rule": "Do not discard a unique artifact merely because its ideas were synthesized elsewhere. Synthesis and preservation are different functions: the canonical record explains; the artifact proves provenance, preserves voice or shows development.",
   "authorship_rule": "Preserve creator/source relationships so distributed archival survival does not erase authorship.",
-  "connections": ["archive-epistemics", "context-graph", "works", "sources", "timeline", "conversation-recovery-inventory"]
+  "consolidation_rule": "Repository maturity should increasingly come from better ownership, routing, evidence separation and promotion of strong discoveries into existing owners—not from maximizing the number of files.",
+  "connections": [
+    "archive-epistemics",
+    "context-graph",
+    "works",
+    "sources",
+    "timeline",
+    "conversation-recovery-inventory",
+    "source-authority-and-provenance-policy",
+    "core-index"
+  ]
 }
