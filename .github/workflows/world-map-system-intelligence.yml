@@ -1,0 +1,34 @@
+name: World Map system intelligence
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'world-map/**'
+      - 'data/world-map-*.json'
+      - 'data/countries/**'
+      - 'scripts/build_world_map_runtime.py'
+      - 'scripts/validate_world_map_system_intelligence.py'
+      - '.github/workflows/world-map-system-intelligence.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Check gateway module syntax
+        run: node --check world-map/3d-gateways.js
+      - name: Validate system intelligence contract
+        run: python scripts/validate_world_map_system_intelligence.py
+      - name: Build World Map runtime
+        run: python scripts/build_world_map_runtime.py
