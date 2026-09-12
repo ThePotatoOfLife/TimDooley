@@ -20,6 +20,7 @@ INDEX = COUNTRIES / "index.json"
 CARD = ROOT / "world-map" / "3d-country-card.js"
 ENTITY_RUNTIME = ROOT / "world-map" / "3d-entity-runtime.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
+COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 
 FIRST_NORTH = {
     "LVA": ("primary", "high"),
@@ -29,14 +30,14 @@ FIRST_NORTH = {
     "CZE": ("secondary", "medium"),
     "SVK": ("secondary", "medium"),
 }
-NEW_METRICS = {
-    "gdp_per_capita_ppp",
-    "labour_force_participation",
-    "life_expectancy",
-    "fertility",
-    "urbanization",
-    "internet_use",
-    "co2_per_capita",
+NEW_METRIC_ENTRIES = {
+    "gdp_per_capita_ppp": "stat.gdp-per-capita-ppp",
+    "labour_force_participation": "stat.labour-force-participation",
+    "life_expectancy": "stat.life-expectancy",
+    "fertility": "stat.fertility",
+    "urbanization": "stat.urbanization",
+    "internet_use": "stat.internet-use",
+    "co2_per_capita": "stat.co2-per-capita",
 }
 CORE_GROUPS = {"nato", "brics", "aukus", "five-eyes"}
 
@@ -84,6 +85,9 @@ def main() -> int:
         for token in ("populationObservation", "areaObservation"):
             if token not in text:
                 errors.append(f"{path.relative_to(ROOT)} must consume shared {token}")
+    compositor = COMPOSITOR.read_text(encoding="utf-8", errors="replace")
+    if "runtime_scalar" not in compositor:
+        errors.append("3d-compositor.js must render Population/Area from the shared runtime scalar plane")
 
     if not COVERAGE.is_file():
         errors.append("missing scripts/build_world_map_coverage.py")
@@ -159,10 +163,12 @@ def main() -> int:
         if scalar_plane.get("GRL", {}).get("area", {}).get("value") != 2166086:
             errors.append("runtime scalar plane missing Greenland area")
         metrics = runtime.get("metrics", {})
-        for metric in NEW_METRICS:
-            meta = metrics.get(metric, {})
-            if meta.get("coverage", 0) <= 0:
-                errors.append(f"new comparable runtime metric has no coverage: {metric}")
+        for metric, entry_id in NEW_METRIC_ENTRIES.items():
+            coverage = metrics.get(metric, {}).get("coverage", 0)
+            availability = entries.get(entry_id, {}).get("availability")
+            expected = "current" if coverage > 0 else "planned"
+            if availability != expected:
+                errors.append(f"{entry_id} must be {expected} when runtime coverage is {coverage}")
     except Exception as exc:
         errors.append(f"runtime build contract failed: {exc}")
 
