@@ -72,6 +72,13 @@ def main() -> int:
     if "fetch-depth: 0" not in quality:
         errors.append("quality-checks.yml must fetch full history so SEO is tested like deployment")
 
+    # The deployment audit must inspect exactly the artifact that will ship.
+    prune = pages.find("Remove internal archive from Pages artifact")
+    enrich_step = pages.find("Enrich weak page descriptions")
+    optimize_step = pages.find("Optimize crawl, sharing and sitemap SEO")
+    if prune < 0 or enrich_step < 0 or optimize_step < 0 or not (prune < enrich_step < optimize_step):
+        errors.append("pages.yml must prune the internal archive before SEO normalization")
+
     # SEO must remain a build concern, not a sixth public door.
     home = read("index.html", errors)
     if 'href="seo/' in home or '>SEO<' in home:
