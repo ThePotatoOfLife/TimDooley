@@ -18,6 +18,10 @@ BUILD_SITE = ROOT / "scripts" / "build_site.py"
 
 REQUIRED_GROUPS = {
     "eu": 27,
+    "nato": 32,
+    "brics": 11,
+    "aukus": 3,
+    "five-eyes": 5,
     "oecd": 38,
     "g7": 7,
     "g20": 19,
@@ -26,9 +30,16 @@ REQUIRED_GROUPS = {
 }
 CURRENT_STATS = {
     "stat.gdp-per-capita": "gdp_per_capita",
+    "stat.gdp-per-capita-ppp": "gdp_per_capita_ppp",
     "stat.real-growth": "real_growth",
     "stat.inflation": "inflation",
     "stat.unemployment": "unemployment",
+    "stat.labour-force-participation": "labour_force_participation",
+    "stat.life-expectancy": "life_expectancy",
+    "stat.fertility": "fertility",
+    "stat.urbanization": "urbanization",
+    "stat.internet-use": "internet_use",
+    "stat.co2-per-capita": "co2_per_capita",
 }
 GATED_STATS = {"stat.debt-to-gdp": "debt_to_gdp"}
 RUNTIME_STATS = {**CURRENT_STATS, **GATED_STATS}
@@ -127,7 +138,7 @@ def main() -> int:
     ):
         if token not in compositor:
             errors.append(f"compositor missing runtime integration marker: {token}")
-    for token in ("__potatoAtlasDataRuntime", "runtime_metric", "metricMeta"):
+    for token in ("__potatoAtlasDataRuntime", "runtime_metric", "metricMeta", "populationObservation", "areaObservation"):
         if token not in card:
             errors.append(f"country card missing shared runtime marker: {token}")
     for token in ("__potatoAtlasDataRuntime", "coverage", "countries"):
@@ -170,6 +181,11 @@ def main() -> int:
                     for key in ("value", "unit", "period", "source"):
                         if key not in cell:
                             errors.append(f"{code}/{metric_id} metric cell missing {key}")
+            scalars = runtime.get("scalars", {}).get("by_entity", {})
+            if scalars.get("GRL", {}).get("population", {}).get("value") != 56740:
+                errors.append("runtime scalar plane must expose Greenland population")
+            if scalars.get("GRL", {}).get("area", {}).get("value") != 2166086:
+                errors.append("runtime scalar plane must expose Greenland area")
 
     if errors:
         print("World Map data runtime validation FAILED:")
