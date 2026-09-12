@@ -108,6 +108,9 @@ def validate_axis_source(codes: set[str]) -> dict:
         assert north[0].get("confidence") == confidence, f"{code}: expected North confidence {confidence}"
         assert north[0].get("basis") == "project-synthesis", f"{code}: expected project-synthesis basis"
         assert str(north[0].get("note") or "").strip(), f"{code}: North note required"
+    aus = profiles.get("AUS", {}).get("orientations") or []
+    assert any(item.get("axis") == "south" and item.get("role") == "primary" for item in aus), "Australia must remain South-primary"
+    assert not any(item.get("axis") == "north" for item in aus), "Australia must no longer be selected in North"
     figures = source.get("reference_figures") or []
     assert figures, "reference_figures must not be empty"
     for figure in figures:
@@ -166,8 +169,13 @@ def validate_runtime(codes: set[str], entity_codes: set[str]) -> None:
         assert axis_id in AXES
         assert not (set(members) - allowed), f"{axis_id}: unknown runtime members {sorted(set(members)-allowed)}"
     north_members = set((axis.get("memberships") or {}).get("north") or [])
-    for code in {"EST", "UKR", "TUR", *EXPECTED_EUROPEAN_NORTH.keys()}:
+    for code in {"EST", "UKR", "TUR", "XKX", *EXPECTED_EUROPEAN_NORTH.keys()}:
         assert code in north_members, f"runtime North membership missing {code}; N overlay would omit it"
+    assert "AUS" not in north_members, "runtime North membership must not include Australia"
+    kosovo = (entities.get("territories") or {}).get("XKX") or {}
+    assert kosovo.get("canonical_country") is False, "Kosovo must remain outside the canonical 195-country sovereign index"
+    assert kosovo.get("render_status") == "current", "Kosovo must be renderable from the existing geometry"
+    assert kosovo.get("geometry_alias") == "CS-KM", "Kosovo must bind the source geometry id CS-KM to runtime entity XKX"
     south_members = set((axis.get("memberships") or {}).get("south") or [])
     assert "ATA" in south_members, "runtime South membership missing Antarctica (ATA); South-pole overlay would omit it"
     antarctica = (entities.get("territories") or {}).get("ATA") or {}
@@ -189,6 +197,8 @@ def validate_registry_and_browser() -> None:
     compositor = read_text("world-map/3d-compositor.js")
     for token in ("axisMembers", "axisProfile", "referenceFigures", "chainsForCountry"): assert token in compositor, f"compositor missing runtime API {token}"
     assert "world-axis-profiles.json" not in compositor and "collectIsoArrays(data?.project_axis?.north" not in compositor
+    app = read_text("world-map/3d-app.js")
+    assert "CS-KM" in app and "XKX" in app, "World Map geometry normalization must alias Kosovo CS-KM to XKX"
     world_bar = read_text("world-map/3d-world-bar.js")
     for token in ("projection", "setProjection", "mercator", "globe", "__potatoAtlasProjection"): assert token in world_bar
     card = read_text("world-map/3d-country-card.js"); assert "axisProfile" in card and "chainsForCountry" in card
