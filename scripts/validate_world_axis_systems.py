@@ -15,6 +15,15 @@ GENERATOR = ROOT / "scripts" / "build_world_map_runtime.py"
 AXES = {"north", "west", "east", "south"}
 ROLES = {"primary", "secondary", "bridge", "frontier", "external", "shared", "unresolved"}
 CONFIDENCE = {"high", "medium", "low"}
+BASIS = {"explicit-tim", "recovered-conversation", "project-inference", "project-synthesis", "empirical-correspondence"}
+EXPECTED_EASTERN_NORTH = {
+    "LVA": ("primary", "high"),
+    "LTU": ("primary", "high"),
+    "POL": ("primary", "high"),
+    "ROU": ("secondary", "medium"),
+    "CZE": ("secondary", "medium"),
+    "SVK": ("secondary", "medium"),
+}
 REQUIRED_GROUP_COUNTS = {
     "asean": (11, 11), "african-union": (55, 54), "sadc": (16, 16),
     "pacific-islands-forum": (18, 14), "sco": (10, 10), "usmca": (3, 3),
@@ -78,8 +87,15 @@ def validate_axis_source(codes: set[str]) -> dict:
             assert item.get("axis") in AXES, f"{code}: invalid axis {item.get('axis')!r}"
             assert item.get("role") in ROLES, f"{code}: invalid role {item.get('role')!r}"
             assert item.get("confidence") in CONFIDENCE, f"{code}: invalid confidence {item.get('confidence')!r}"
-            assert item.get("basis") in {"explicit-tim", "recovered-conversation", "project-inference", "empirical-correspondence"}, f"{code}: invalid basis"
+            assert item.get("basis") in BASIS, f"{code}: invalid basis"
             assert str(item.get("note") or "").strip(), f"{code}: orientation note required"
+    for code, (role, confidence) in EXPECTED_EASTERN_NORTH.items():
+        north = [item for item in (profiles.get(code, {}).get("orientations") or []) if item.get("axis") == "north"]
+        assert north, f"{code}: missing required North orientation"
+        assert north[0].get("role") == role, f"{code}: expected North role {role}"
+        assert north[0].get("confidence") == confidence, f"{code}: expected North confidence {confidence}"
+        assert north[0].get("basis") == "project-synthesis", f"{code}: expected project-synthesis basis"
+        assert str(north[0].get("note") or "").strip(), f"{code}: North note required"
     figures = source.get("reference_figures") or []
     assert figures, "reference_figures must not be empty"
     for figure in figures:
@@ -137,6 +153,9 @@ def validate_runtime(codes: set[str], entity_codes: set[str]) -> None:
     for axis_id, members in (axis.get("memberships") or {}).items():
         assert axis_id in AXES
         assert not (set(members) - allowed), f"{axis_id}: unknown runtime members {sorted(set(members)-allowed)}"
+    north_members = set((axis.get("memberships") or {}).get("north") or [])
+    for code in {"EST", "UKR", "TUR", *EXPECTED_EASTERN_NORTH.keys()}:
+        assert code in north_members, f"runtime North membership missing {code}; N overlay would omit it"
     assert runtime.get("reference_figures") and runtime.get("chains")
     groups = runtime.get("groups") or {}
     for group_id in REQUIRED_GROUP_COUNTS: assert group_id in groups, f"runtime missing group {group_id}"
