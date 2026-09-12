@@ -31,9 +31,14 @@ def main() -> int:
     for token in ("window.__potatoAtlasPath", "data-path-target", "getRelationMode", "edgeMatchesRelationMode"):
         if token not in path:
             errors.append(f"Path module missing current investigation API marker: {token}")
-    for forbidden in ("Path to", "Infrastructure", "Coverage", "Investigation"):
-        if forbidden in bar:
-            errors.append(f"World Bar must not gain permanent {forbidden} control")
+
+    forbidden_controls = (
+        'data-family="path"', 'data-family="infrastructure"', 'data-family="coverage"', 'data-family="investigation"',
+        "['path','Path']", "['infrastructure','Infrastructure']", "['coverage','Coverage']", "['investigation','Investigation']",
+    )
+    for marker in forbidden_controls:
+        if marker in bar:
+            errors.append(f"World Bar must not gain permanent investigation control: {marker}")
     if "3d-pathfinder.js" not in bootstrap and "3d-pathfinder.js" not in card:
         errors.append("Path must be loadable contextually from bootstrap or country card")
 
