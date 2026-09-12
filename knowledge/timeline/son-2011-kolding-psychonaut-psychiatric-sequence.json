@@ -1,12 +1,22 @@
 {
   "id": "son-2011-kolding-psychonaut-psychiatric-sequence",
   "title": "2011 Kolding Sequence — Psychonaut Experiment, Tree/Oneness Episode, Psychiatric Admission and Aftermath",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-12",
   "status": "canonical autobiographical owner with unresolved variants",
   "subject": "Thomas / the Son",
   "purpose": "Own the detailed 2011 chronology so other timelines can project from one source without collapsing the acute psychedelic episode, the next-day perceptual rupture, psychiatric admission, hospital dream/crows, and later Potatoverse interpretation into one event.",
   "epistemic_rule": "This record preserves autobiographical recollection and later interpretation. It does not establish a chemical identity, supernatural perception, or a psychiatric diagnosis. Later mythology must not be backdated as contemporaneous 2011 language.",
+  "prehistory": {
+    "immediate_chain": "Designia/Louise → Aabenraa internship while relationship continues → school/internship path ends → own place → Produktionsskolen in Lunderskov → leaves Produktionsskolen → breakup/search corridor → 2011 Kolding Tree/psychiatric sequence.",
+    "important_boundary": "Direct recollection says the Son had already stopped attending Produktionsskolen before the Tree episode.",
+    "why_this_matters": "The Tree episode should not be presented as if it arose directly from a failed internship. The recovered Produktionsskolen period adds an intervening phase of technical competence, multimedia work and informal assistant-teacher responsibility.",
+    "owners": [
+      "knowledge/timeline/son-2005-2014-chronology-reconciliation.json",
+      "knowledge/timeline/son-kolding-designia-school-anchor.json",
+      "knowledge/timeline/son-lunderskov-production-school-anchor.json"
+    ]
+  },
   "biographical_setting": {
     "place": "Kolding, Denmark",
     "home_context": "Thomas was living in an apartment in Kolding during the relevant period.",
@@ -115,6 +125,11 @@
       "epistemic_class": "self-description / autobiographical event"
     }
   ],
+  "duration_and_age_rules": {
+    "duration": "Approximately 19 hours overall with an approximately six-hour unity phase; do not automatically add the two figures.",
+    "biological_age": "With birth on 1987-07-31, the Son was 23 before 2011-07-31 and 24 afterward. Age 25 is impossible in 2011.",
+    "exact_date_status": "The exact 2011 event date remains unresolved."
+  },
   "psychiatric_history_rule": {
     "preferred_wording": "During the 2011 drug-related psychiatric episode, schizophrenia or another psychotic-spectrum explanation was considered because Thomas presented in a highly altered state. According to later recollection, it was not established as the final diagnosis, while ADD/ADHD assessment continued and the effects of recent substance use and medication complicated interpretation.",
     "do_not_write": [
@@ -127,6 +142,18 @@
     "preferred": "serious lay psychonaut practice / psychonautic experimentation",
     "description": "The period combines direct altered-state experimentation, interest in chemistry and pharmaceuticals, attention to subjective effects, and philosophical questions about consciousness and reality.",
     "comparison_rule": "Alexander Shulgin and Terence McKenna may be used as cultural / methodological comparators, but Thomas should not be equated with Shulgin's professional chemical expertise."
+  },
+  "timeline_integration": {
+    "event_pack": "data/timeline-event-packs/son-biography-2005-2014.json",
+    "place_transition_index": "knowledge/timeline/son-2005-2014-place-transition-index.json",
+    "projected_event_ids": [
+      "evt-2011-breakup-search-corridor",
+      "evt-2011-post-acute-rupture",
+      "evt-2011-voluntary-psychiatric-admission",
+      "evt-2011-hospital-dream-crows"
+    ],
+    "base_roadmap_event": "evt-2011-tree",
+    "projection_rule": "The pack exposes sub-phases for navigation; this owner remains the chronology authority for the sequence."
   },
   "retrospective_connections": [
     {"from":"absent-self / ego dissolution","to":"Thomas/Twin / witness / Door questions","status":"later interpretation"},
