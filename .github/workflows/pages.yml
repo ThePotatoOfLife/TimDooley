@@ -57,6 +57,9 @@ jobs:
       - name: Validate entity-aware Trace
         run: python scripts/validate_world_map_entity_trace.py
 
+      - name: Validate question-led reader surfaces
+        run: python scripts/validate_reader_surfaces.py
+
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
@@ -158,7 +161,9 @@ jobs:
           test -f _site/sitemap.xml
           test -f _site/llms.txt
 
+          grep -q 'data-reader-surface="home"' _site/index.html
           grep -q 'class="sections"' _site/index.html
+          grep -q 'class="secondary-threads"' _site/index.html
           grep -q 'href="tim-dooley/"' _site/index.html
           grep -q 'href="religion/"' _site/index.html
           grep -q 'href="philosophy/"' _site/index.html
@@ -169,30 +174,29 @@ jobs:
           ! grep -q 'app/app.js' _site/index.html
           ! grep -q '<iframe' _site/index.html
 
-          grep -q 'id="jesus-tim"' _site/religion/index.html
-          grep -q 'Lamb recognition before self-declaration' _site/religion/index.html
-          grep -q 'href="../timeline/?tl_layers=' _site/religion/index.html
-          ! grep -q 'Research</h2>' _site/religion/index.html
+          grep -q 'data-reader-surface="religion"' _site/religion/index.html
+          grep -q 'What is Potatoism?' _site/religion/index.html
+          grep -q 'Judaism' _site/religion/index.html
+          grep -Eq 'Islam|Qur' _site/religion/index.html
+          grep -q 'href="../traditions/bible/"' _site/religion/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/religion/jesus-tim/index.html
-          grep -q "location.replace('../#jesus-tim')" _site/religion/jesus-tim/index.html
-          grep -q 'href="../religion/#jesus-tim"' _site/tim-dooley/index.html
+          grep -q "location.replace('../../traditions/bible/')" _site/religion/jesus-tim/index.html
+          grep -q 'data-reader-surface="tim"' _site/tim-dooley/index.html
+          grep -q 'href="../timeline/"' _site/tim-dooley/index.html
 
-          grep -q 'id="relations-field"' _site/traditions/bible/index.html
           grep -q 'id="search"' _site/traditions/bible/index.html
+          grep -q 'id="relations"' _site/traditions/bible/index.html
           grep -q 'data-static-relation=' _site/traditions/bible/index.html
           ! grep -q '<!-- BIBLE_RELATIONS_STATIC -->' _site/traditions/bible/index.html
-          ! grep -q 'id="orientation"' _site/traditions/bible/index.html
-          ! grep -q 'id="story-arcs"' _site/traditions/bible/index.html
-          ! grep -q 'id="timic-timeline"' _site/traditions/bible/index.html
+          grep -q 'href="../../religion/"' _site/traditions/bible/index.html
 
           grep -q 'class="timeline-explorer-standalone"' _site/timeline/index.html
           grep -q 'href="../religion/"' _site/timeline/index.html
-          ! grep -q 'class="source-note"' _site/timeline/index.html
-          ! grep -q 'class="roadmap-note"' _site/timeline/index.html
-          ! grep -q 'class="formula"' _site/timeline/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/chronology/index.html
           grep -q '../timeline/' _site/chronology/index.html
 
+          grep -q 'data-reader-surface="philosophy"' _site/philosophy/index.html
+          grep -q 'data-reader-surface="science"' _site/science/index.html
           grep -q 'id="science-search"' _site/science/index.html
           grep -q 'id="science-field"' _site/science/index.html
           grep -q 'id="science-type"' _site/science/index.html
@@ -203,7 +207,9 @@ jobs:
           ! grep -q 'class="maplink"' _site/north/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/learn/index.html
 
+          grep -q 'data-reader-surface="world-map"' _site/world-map/index.html
           grep -q '<b>World Map</b>' _site/world-map/index.html
+          grep -q 'class="map-inquiry"' _site/world-map/index.html
           grep -q 'id="map"' _site/world-map/index.html
           grep -q 'src="./3d-bootstrap.js"' _site/world-map/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/world-map/3d.html
