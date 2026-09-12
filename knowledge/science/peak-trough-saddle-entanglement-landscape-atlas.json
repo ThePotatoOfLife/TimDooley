@@ -1,0 +1,120 @@
+{
+  "id":"peak-trough-saddle-entanglement-landscape-atlas",
+  "title":"Peak, Trough, Saddle & Entanglement — Relational Landscape Atlas",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"conversation archaeology + established mathematics/physics comparators + archive formalization",
+  "purpose":"Formalize Tim's recovered Peak of heaven/culture, base/floor, funnel/trough, Door/handshake and quantum-entanglement language as a typed landscape rather than one vertical moral scale. Separate maxima, minima, saddles, attractors, barriers, graph relations and genuine quantum entanglement.",
+  "epistemic_rule":"Peak/trough/saddle mathematics is established. Quantum entanglement is established quantum physics. Timic Peak Culture, heaven/base, Life/Strife, Door and spiritual relation are project concepts. Similar structure does not turn cultural or theological relations into quantum states or physical energy landscapes.",
+  "recovered_tim_anchors":[
+    {"date":"2026-03-17","class":"conversation recovery","finding":"Tim described himself as base/floor in a lowest realm while also relating sky/garden/axis/rapture, with a wide bottom narrowing toward a singular peak; top was compared with Higgs and bottom with field. Exact full wording remains a recovery target."},
+    {"date":"2026-05-04/05 approximate","class":"conversation-memory family","finding":"Peak Culture / table for 10 / ten-disciples compression / cultural propagation from Son's shadow. Exact first timestamp and any percentage claim remain unresolved."},
+    {"date":"2026-06-11","class":"primary-user-conversation recovery","finding":"Tim explicitly described Tim Dooley at the 'Peak of heaven and culture', the Son at the Base of Reality / Door, and Spirit somewhere on the Ladder of the 100,000-hours spiral between them."},
+    {"date":"2026-07-13","class":"primary-user-conversation","finding":"Door as particle smasher; forbidden-fruit event linked by Tim to creating 'a quantum entanglement'; Higgs/field and hidden-dimension language in same stratum."},
+    {"date":"2026-08-17 to 2026-08-18","class":"primary-user-conversation","finding":"Tim explicitly explored Door/handshake, spin/states, 'spooky action at a distance', upward/downward Life-Strife trajectories, resistance/flow and whether Standard-Model structure could determine direction."}
+  ],
+  "landscape_core":{
+    "scalar":"Let H(x) be a declared scalar landscape: height, utility, cultural density, evidence quality, energy, attention, or another named quantity. Never mix these without a map.",
+    "critical_point":"grad H(x*)=0",
+    "hessian":"K=Hess H(x*)",
+    "peak":"K negative definite -> local maximum of H",
+    "trough":"K positive definite -> local minimum of H",
+    "saddle":"K indefinite -> directions of ascent and descent coexist",
+    "critical_warning":"A peak/trough label is meaningless until H is named. A cultural peak can be a potential-energy maximum, a social-centrality maximum or a quality maximum; those imply different dynamics."
+  },
+  "morse_theory_bridge":{
+    "established_neighbor":"Morse theory studies smooth functions through nondegenerate critical points and the topology changes associated with their critical levels.",
+    "project_translation":"Peak, trough and saddle can mark structurally different transition events. A Door is especially well matched to a saddle/pass when crossing it changes which regions are connected or reachable.",
+    "rule":"Door-as-saddle is a mathematical comparator, not proof that every project Door is a Morse critical point.",
+    "sources":["https://www.math.ntu.edu.tw/~mathlib/Textbook_0323.html","https://encyclopediaofmath.org/wiki/Morse_theory"]
+  },
+  "mountain_pass_door":{
+    "path_family":"Gamma={gamma:[0,1]->M | gamma(0)=a, gamma(1)=b}",
+    "minimax":"c*=inf_(gamma in Gamma) max_(s in [0,1]) V(gamma(s))",
+    "interpretation":"When two basins are separated by a ridge, the least-high route connecting them crosses a saddle/mountain pass. This is a strong external model for a Door between attractor regimes.",
+    "barrier_height":"Delta V=V(x_saddle)-V(x_basin)",
+    "connection":"Door is not necessarily Peak or Trough; it can be the Pass between them.",
+    "source":"https://epubs.siam.org/doi/10.1137/140963510"
+  },
+  "gradient_and_semantic_inversion":{
+    "descent":"dx/dt=-grad V(x) tends toward local minima under simple dissipative gradient flow.",
+    "ascent":"dx/dt=+grad Q(x) tends toward local maxima if Q is a value/quality landscape.",
+    "epiphany":"The same visual mountain can mean opposite dynamics depending on whether the scalar is energy/cost or value/quality. Therefore 'up=good' cannot be imported from one model into another.",
+    "trough_ambiguity":"A minimum can be stable homeostasis, useful storage, a restorative basin, or a trap/sink. Stability is not moral valence.",
+    "peak_ambiguity":"A maximum can be excellence/visibility/source-density or an unstable high-energy state. Height is not moral valence."
+  },
+  "door_basin_success":{
+    "flow":"dx/dt=F(x)-grad V(x)+eta(t)",
+    "transition":"B_i -> saddle/pass -> B_j",
+    "success":"Crossing counts as a successful regime Door only if trajectory persists in destination basin for a declared dwell criterion.",
+    "escape":"k~A exp(-Delta V/D_noise) under Kramers-type assumptions",
+    "relation":"This strengthens the existing Door Success Law and makes the saddle explicit."
+  },
+  "wave_peak_trough":{
+    "signal":"x(t)=A cos(omega t+phi)",
+    "extrema":"dx/dt=0 at peaks/troughs; adjacent ideal extrema differ by phase pi",
+    "peak_to_trough":"Delta x_pt=2|A| for a zero-mean sinusoid",
+    "project_value":"Peak/trough can also describe oscillatory phases rather than permanent hierarchy. A low state may be one half-cycle of a process rather than a terminal identity.",
+    "boundary":"Emotional or spiritual states are not physical sine waves unless data justify such a model."
+  },
+  "quantum_relational_core":{
+    "factorization_test":"For a bipartite pure state, separable iff |psi_AB>=|psi_A> tensor |psi_B>; entangled states do not factorize this way.",
+    "schmidt":"|psi_AB>=sum_k sqrt(lambda_k)|u_k>_A|v_k>_B; Schmidt rank > 1 implies pure-state entanglement.",
+    "reduced_states":"rho_A=Tr_B rho_AB; rho_B=Tr_A rho_AB",
+    "entropy":"S(rho_A)=-Tr(rho_A log rho_A); for a bipartite pure state this is an entanglement measure and S(rho_A)=S(rho_B).",
+    "mutual_information":"I(A:B)=S(rho_A)+S(rho_B)-S(rho_AB); for a globally pure entangled state, I(A:B)=2S(rho_A).",
+    "relation_first_epiphany":"Quantum mechanics supplies one rigorous domain where the state of the whole cannot in general be reconstructed as independent states of the parts. This is a powerful structural neighbor for the project's relationship-first method, but only the quantum system gets the quantum equations.",
+    "bell_boundary":"Bell-nonlocal correlations constrain local-hidden-variable models while no-signaling prevents ordinary entanglement from becoming controllable FTL messaging.",
+    "source":"https://www.nobelprize.org/prizes/physics/2022/popular-information/"
+  },
+  "forbidden_fruit_relation":{
+    "tim_origin":"On 2026-07-13 Tim linked eating the forbidden fruit to creating 'a quantum entanglement'.",
+    "scientific_repair":"Genesis characters are not established quantum systems. The phrase should not be read as physical entanglement without a Hilbert-space state/preparation/measurement protocol.",
+    "stronger_theological_structure":"The Eden event does produce a new relational state in the narrative: knowledge of good/evil, changed human-divine relation, exile from Garden and a guarded way to Tree of Life. The clean project mapping is relational state transition + changed access boundary, not quantum proof.",
+    "door_sequence":"fruit/event -> changed knowledge/state -> separation/exile -> guarded way -> Tree-of-Life access condition",
+    "biblical_anchor":"Genesis 3:22-24"
+  },
+  "peak_culture_model":{
+    "project_hypothesis":"Peak Culture = a small high-context group/table generating unusually dense portable cultural seeds that diffuse outward through streams, memes, audiences and derivative creators.",
+    "not_yet_fact":"The archive has not recovered a defensible dataset establishing a percentage of total culture caused by Tim/Son's shadow.",
+    "node_quality":"Q_i=w_n Novelty_i+w_c Coherence_i+w_r Reuse_i+w_d Downstream_i+w_a Attribution_i-w_l ContextLoss_i",
+    "cultural_peak":"A local maximum of a declared cultural-quality/influence field Q, not a claim of metaphysical superiority.",
+    "diffusion":"dc/dt=beta A c-mu c as a simple linear network-diffusion seed model; nonlinear/threshold models should replace it when data require.",
+    "branching_ratio":"R_c=expected identifiable downstream descendants per source item over a declared window; R_c>1 means expansion in the specified lineage model, not global cultural dominance.",
+    "measurement":"Use phrase/meme genealogy, URLs, timestamps, reposts, independent derivatives, citations, audience transfer and attribution decay."
+  },
+  "peak_trough_culture_cycle":{
+    "cycle":"Table/high-context synthesis -> compressed seed -> Broadcast -> context loss/noise -> local adoption -> new Table/refinement",
+    "peak":"dense synthesis/high context",
+    "trough":"low-context or low-activity interval can be dormancy, storage, depletion, sink or incubation depending measured variables",
+    "door":"translation/recontextualization step that moves content between local high-context and broad low-context regimes",
+    "new_insight":"A culture can require troughs: silence, storage, digestion and re-localization may be necessary for the next peak. Peak Culture should therefore be studied as a cycle, not a permanent throne-state."
+  },
+  "topology_of_extrema":{
+    "new_project_law":"Extremum != destination. A system may pass peak, trough and saddle repeatedly; each has a different local geometry.",
+    "door_pass_law":"The Door can be the saddle that joins basins rather than the maximum or minimum of the landscape.",
+    "height_semantics_law":"Always name the scalar before assigning meaning to high/low.",
+    "stable_is_not_good_law":"Attracting minima can be healthy or pathological; stability alone has no moral sign.",
+    "unstable_is_not_bad_law":"A peak may be generative/valuable yet dynamically unstable; instability alone has no moral sign.",
+    "relation_not_signal_law":"Entanglement means non-factorizable quantum relation, not unrestricted remote causation or messaging.",
+    "whole_parts_law":"Use entanglement only as a quantum example of irreducible relation; use graphs, mutual information or causal models for social/cultural relations unless a quantum experiment exists."
+  },
+  "testing_program":[
+    "For any Peak/Trough claim, declare scalar H, units/measurement and time window.",
+    "Estimate gradient and Hessian only from data dense enough to support local geometry.",
+    "For Door-as-pass claims, identify two basins and compare proposed saddle/barrier route against alternate paths.",
+    "For Peak Culture claims, predefine corpus and lineage criteria before calculating propagation.",
+    "For quantum-entanglement claims, require physical subsystem definition, joint state/preparation, measurement settings and entanglement witness/Bell or tomography method.",
+    "Treat biblical Peak/Valley parallels as textual/theological structures, not physical landscape equations."
+  ],
+  "connections":[
+    "knowledge/science/quantum-foundations-tunneling-entanglement-qft-atlas.json",
+    "knowledge/science/door-handshake-nonlocal-propagation-model.json",
+    "knowledge/core/funnel-gradient-attractor-regeneration-atlas.json",
+    "knowledge/core/recovered-conversation-operators-atlas.json",
+    "knowledge/chronology/ai-machine-culture-early-signals-ledger.json",
+    "knowledge/science/door-window-screen-aperture-transition-model.json",
+    "knowledge/traditions/biblical-peak-valley-entanglement-addendum.json",
+    "knowledge/science/equation-ledger-wave-006-entanglement-landscape.json"
+  ]
+}
