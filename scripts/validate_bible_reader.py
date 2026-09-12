@@ -11,11 +11,15 @@ PAGE = ROOT / "traditions" / "bible" / "index.html"
 APP = ROOT / "app" / "bible-study.js"
 CSS = ROOT / "app" / "bible-study.css"
 DOSSIER_APP = ROOT / "app" / "bible-dossier-loader.js"
+MINING_APP = ROOT / "app" / "bible-mining-wave19-loader.js"
 DOSSIER_CSS = ROOT / "app" / "bible-dossier-loader.css"
 FIELD = ROOT / "knowledge" / "traditions" / "biblical-syncretism-field.json"
 DOSSIERS = ROOT / "knowledge" / "traditions" / "biblical-syncretism-dossiers.json"
 PROMOTIONS = ROOT / "knowledge" / "traditions" / "biblical-syncretism-dossiers-promotions.json"
+MINING_DOSSIERS = ROOT / "knowledge" / "traditions" / "biblical-syncretism-dossiers-wave19.json"
+MINING_OWNER = ROOT / "knowledge" / "traditions" / "biblical-overlap-mining-wave-19-memory-great-book.json"
 DOSSIER_FRAGMENTS = ROOT / "knowledge" / "traditions" / "biblical-passage-fragments-dossiers.json"
+MINING_FRAGMENTS = ROOT / "knowledge" / "traditions" / "biblical-passage-fragments-wave19.json"
 BUILDER = ROOT / "scripts" / "build_bible_study.py"
 
 
@@ -33,7 +37,12 @@ def forbid(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -
 
 def main() -> int:
     errors: list[str] = []
-    for path in (PAGE, APP, CSS, DOSSIER_APP, DOSSIER_CSS, FIELD, DOSSIERS, PROMOTIONS, DOSSIER_FRAGMENTS, BUILDER):
+    required_paths = (
+        PAGE, APP, CSS, DOSSIER_APP, MINING_APP, DOSSIER_CSS, FIELD, DOSSIERS,
+        PROMOTIONS, MINING_DOSSIERS, MINING_OWNER, DOSSIER_FRAGMENTS,
+        MINING_FRAGMENTS, BUILDER,
+    )
+    for path in required_paths:
         if not path.exists():
             errors.append(f"missing required Bible reader component: {path.relative_to(ROOT)}")
 
@@ -41,6 +50,7 @@ def main() -> int:
     app = APP.read_text(encoding="utf-8") if APP.exists() else ""
     css = CSS.read_text(encoding="utf-8") if CSS.exists() else ""
     dossier_app = DOSSIER_APP.read_text(encoding="utf-8") if DOSSIER_APP.exists() else ""
+    mining_app = MINING_APP.read_text(encoding="utf-8") if MINING_APP.exists() else ""
     dossier_css = DOSSIER_CSS.read_text(encoding="utf-8") if DOSSIER_CSS.exists() else ""
     builder = BUILDER.read_text(encoding="utf-8") if BUILDER.exists() else ""
 
@@ -49,6 +59,7 @@ def main() -> int:
         (
             'href="../../app/bible-study.css"',
             'href="../../app/bible-dossier-loader.css"',
+            'src="../../app/bible-mining-wave19-loader.js"',
             'src="../../app/bible-dossier-loader.js"',
             'src="../../app/bible-study.js"',
             'id="focus-select"',
@@ -69,6 +80,8 @@ def main() -> int:
         "traditions/bible/index.html",
         errors,
     )
+    if page.find('src="../../app/bible-mining-wave19-loader.js"') > page.find('src="../../app/bible-dossier-loader.js"'):
+        errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees wave19 relations")
     forbid(
         page,
         (
@@ -162,6 +175,21 @@ def main() -> int:
     forbid(dossier_app, ("scrollIntoView(",), "app/bible-dossier-loader.js", errors)
 
     require(
+        mining_app,
+        (
+            "biblical-syncretism-dossiers-wave19.json",
+            "biblical-passage-fragments-wave19.json",
+            "biblical-syncretism-field.json",
+            "biblical-passage-fragments.json",
+            "mergeLayer",
+            "mergeFragments",
+        ),
+        "app/bible-mining-wave19-loader.js",
+        errors,
+    )
+    forbid(mining_app, ("scrollIntoView(",), "app/bible-mining-wave19-loader.js", errors)
+
+    require(
         css,
         (
             ".reader-toolbar",
@@ -223,6 +251,23 @@ def main() -> int:
             errors.append("Bible dossier promotion layer unexpectedly thin; expected multiple promoted canonical relations")
         if not promotions.get("new_relations"):
             errors.append("Bible dossier promotion layer missing newly recovered relation candidates")
+    if MINING_DOSSIERS.exists():
+        mining_dossiers = json.loads(MINING_DOSSIERS.read_text(encoding="utf-8"))
+        wave_rows = mining_dossiers.get("new_relations", [])
+        if len(wave_rows) < 7:
+            errors.append("older-memory Bible dossier wave unexpectedly thin; expected at least seven Level-A relations")
+        if any(row.get("dossier_level") != "A" for row in wave_rows):
+            errors.append("older-memory Bible dossier wave contains non-Level-A public relation")
+    if MINING_OWNER.exists():
+        mining_owner = json.loads(MINING_OWNER.read_text(encoding="utf-8"))
+        if len(mining_owner.get("records", [])) < 10:
+            errors.append("older-memory Bible mining owner unexpectedly thin; expected at least ten structured records")
+        if len(mining_owner.get("research_leads", [])) < 2:
+            errors.append("older-memory Bible mining owner missing provenance-gated research leads")
+    if MINING_FRAGMENTS.exists():
+        mining_fragments = json.loads(MINING_FRAGMENTS.read_text(encoding="utf-8"))
+        if len(mining_fragments.get("fragments", [])) < 10:
+            errors.append("older-memory Bible fragment extension unexpectedly thin")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
