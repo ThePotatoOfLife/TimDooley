@@ -1,103 +1,74 @@
 {
   "id": "research-2026-09-11-spiral-vortex-geometry",
-  "title": "2026-09-11 Research Notes — Exact Geometry of the Recovered Golden-Ratio Spiral",
-  "research_timestamp_local": "2026-09-11T09:12:30+02:00",
-  "timezone": "Europe/Copenhagen",
-  "status": "new project mathematical deductions from an already recovered equation",
-  "novelty_scope": "These deductions are newly added to the project on 2026-09-11. The mathematics of logarithmic spirals is established and is not claimed as globally new.",
-  "parent_records": [
-    "knowledge/science/science-master-index.json",
-    "knowledge/science/great-book-consciousness-spiral-equations-recovery.json",
-    "knowledge/science/operator-vortex-spinor-kk-starchforce-spudlight-integration-wave-007.json"
-  ],
+  "title": "Golden-Ratio Spiral — Exact Geometry, Statistical Inference and Dynamical Extensions",
+  "version": "2.0.0",
+  "updated": "2026-09-12",
+  "status": "project mathematical theory derived from the recovered logarithmic spiral; empirical interpretations require separate calibration",
+  "abstract": "The recovered Potato Axis spiral is one of the project's cleanest mathematical objects because its central properties follow exactly from a fixed logarithmic-spiral equation rather than from symbolic analogy. With r(theta)=a exp(b theta) and b=2 ln(phi)/pi, every quarter-turn multiplies radius by phi, reduces curvature by 1/phi and preserves a constant pitch angle. This redevelopment adds a full inference layer: coordinate noise, center/orientation uncertainty and competing geometry families are included in a likelihood so the fixed golden-ratio value of b can be tested rather than visually recognized. It also separates geometry from dynamics. A static logarithmic spiral is not a vortex; a vortex requires a velocity/phase field, circulation or angular dynamics. The theory therefore has two branches: exact geometric consequences, which are mathematically established, and dynamical spiral/vortex hypotheses, which require time-series data and additional equations. The scientific value lies in this separation: the same project equation can be tested rigorously without overclaiming a universal physical mechanism.",
   "starting_equation": {
     "equation": "r(theta)=a exp(b theta)",
-    "project_parameter": "b=ln(phi)/(pi/2)=2 ln(phi)/pi",
-    "numerical_b": 0.30634896253003313,
-    "known_property": "r(theta+pi/2)=phi r(theta)"
+    "project_parameter": "b=b_phi=2 ln(phi)/pi approximately 0.3063489625",
+    "log_form": "ln r=ln a+b theta"
   },
-  "new_deductions": [
-    {
-      "id": "scale-ladder",
-      "type": "exact consequence",
-      "equations": [
-        "r(theta+n pi/2)=phi^n r(theta)",
-        "half-turn factor=phi^2≈2.61803398875",
-        "full-turn factor=phi^4≈6.85410196625",
-        "two-full-turn factor=phi^8≈46.9787137637"
-      ],
-      "finding": "The project spiral contains an exact discrete scale ladder at quarter-turn intervals. This is stronger and more precise than saying it is merely 'golden-ratio-like'."
-    },
-    {
-      "id": "constant-pitch-angle",
-      "type": "exact consequence",
-      "equations": [
-        "dr/dtheta=b r",
-        "tan(alpha_radial)=r/(dr/dtheta)=1/b",
-        "alpha_radial=atan(1/b)≈72.96760887 degrees",
-        "alpha_tangential=atan(b)≈17.03239113 degrees"
-      ],
-      "finding": "The recovered spiral meets every radial line at the same angle. The constant pitch supplies a real invariant for comparing diagrams, trajectories or fitted data to the recovered equation."
-    },
-    {
-      "id": "curvature-law",
-      "type": "exact consequence",
-      "equations": [
-        "kappa(theta)=1/(r(theta) sqrt(1+b^2))",
-        "kappa(theta+pi/2)=kappa(theta)/phi"
-      ],
-      "finding": "Curvature falls by the inverse golden ratio every quarter-turn. Thus the same quarter-turn that expands radius by phi reduces curvature by 1/phi."
-    },
-    {
-      "id": "arc-length-law",
-      "type": "exact consequence",
-      "equations": [
-        "s(theta_1,theta_2)=sqrt(1+b^2)/b * [r(theta_2)-r(theta_1)]",
-        "sqrt(1+b^2)/b≈3.41399129565"
-      ],
-      "finding": "Arc length between two spiral radii is directly proportional to their radial difference. This gives a simple length estimator once a and angular limits are defined."
-    },
-    {
-      "id": "swept-area-law",
-      "type": "exact consequence",
-      "equations": [
-        "A(theta_1,theta_2)=1/2 integral_(theta_1)^(theta_2) r(theta)^2 dtheta",
-        "A=(r(theta_2)^2-r(theta_1)^2)/(4b)"
-      ],
-      "finding": "Area grows with radius squared rather than with the same phi factor as radius. A quarter-turn multiplies local r^2 by phi^2."
-    },
-    {
-      "id": "log-linear-test",
-      "type": "new test protocol",
-      "equations": [
-        "ln r = ln a + b theta",
-        "residual_i = ln r_i - (ln a_hat+b_hat theta_i)"
-      ],
-      "finding": "Any claim that an observed path follows this spiral can be tested with a straight-line fit in (theta, ln r) coordinates. This makes the spiral falsifiable as geometry.",
-      "comparison_models": ["Archimedean r=a+c theta", "power spiral r=a theta^n", "generic spline"],
-      "test_rule": "Compare held-out error or information criteria rather than choosing the logarithmic spiral after seeing the pattern."
-    },
-    {
-      "id": "dual-spiral-phase-separation",
-      "type": "new project formalization",
-      "equations": [
-        "r_1=a_1 exp(b_1 theta_1)",
-        "r_2=a_2 exp(b_2 theta_2)",
-        "theta_dot_1=omega_1+K_12 sin(theta_2-theta_1)",
-        "theta_dot_2=omega_2+K_21 sin(theta_1-theta_2)"
-      ],
-      "finding": "Geometry and dynamics should be separated. Two drawn spirals are not yet counter-rotating vortices. Counter-rotation requires a time parameter and angular velocities with opposite signs or another explicit phase law.",
-      "promotion_rule": "Use 'vortex' only when a velocity or phase field and circulation/vorticity are actually defined."
-    }
+  "exact_geometry": {
+    "quarter_turn": "r(theta+n pi/2)=phi^n r(theta)",
+    "pitch": "alpha_tangential=atan(b), alpha_radial=atan(1/b)",
+    "curvature": "kappa(theta)=1/[r(theta)sqrt(1+b^2)]",
+    "curvature_scaling": "kappa(theta+pi/2)=kappa(theta)/phi",
+    "arc_length": "s(theta1,theta2)=sqrt(1+b^2)/b [r(theta2)-r(theta1)]",
+    "area": "A(theta1,theta2)=[r(theta2)^2-r(theta1)^2]/(4b)",
+    "meaning": "These relations are consequences of the equation itself and require no physical interpretation."
+  },
+  "statistical_fit": {
+    "data": "observed 2D/3D points transformed into polar coordinates relative to an estimated center/orientation",
+    "measurement_model": "ln r_i=ln a+b theta_i+epsilon_i, epsilon_i~N(0,sigma_i^2+sigma_int^2) as a simple comparator",
+    "likelihood": "ln L=-1/2 sum_i[(ln r_i-ln a-b theta_i)^2/s_i^2+ln(2 pi s_i^2)]",
+    "golden_test": "Compare H_phi:b=b_phi against H_free:b estimated from data.",
+    "uncertainty": "Center, phase origin, deprojection and measurement errors must be propagated; fixing them by eye can create an artificial logarithmic fit."
+  },
+  "competing_models": {
+    "archimedean": "r=a+c theta",
+    "power": "r=a theta^n",
+    "generic_log": "r=a exp(b theta) with free b",
+    "spline": "flexible nonparametric curve baseline",
+    "selection": "Use held-out prediction, information criteria or Bayes factors appropriate to the model and priors; do not compare residuals only after manually selecting favorable arcs."
+  },
+  "scale_invariance": {
+    "self_similarity": "Rotation by Delta theta followed by scaling exp(-b Delta theta) maps the ideal spiral onto itself.",
+    "quarter_turn_operator": "T_phi:(r,theta)->(phi r,theta+pi/2)",
+    "invariant_statement": "The curve is invariant as a set under T_phi up to the chosen parameter range/domain.",
+    "research_value": "This gives Axis/scale language an exact transformation law rather than a metaphorical use of scaling."
+  },
+  "dynamical_extension": {
+    "kinematic_spiral": "r(t)=a exp(b theta(t))",
+    "radial_velocity": "r_dot=b r theta_dot",
+    "radial_acceleration": "r_ddot=b r theta_ddot+b^2 r theta_dot^2",
+    "meaning": "Once theta(t) is specified, the static geometry generates concrete velocity/acceleration relations.",
+    "counter_rotation": "Two spirals counter-rotate only if theta_dot_1 theta_dot_2<0 over the relevant interval."
+  },
+  "vortex_requirement": {
+    "velocity_field": "A fluid/field vortex requires v(x,t), not merely a spiral curve.",
+    "vorticity": "omega=curl v",
+    "circulation": "Gamma=closed_integral v dot dl",
+    "promotion_rule": "Use the word vortex only when circulation/vorticity or equivalent phase-flow structure is defined and measured/simulated."
+  },
+  "coupled_dual_spiral": {
+    "phase": "theta_dot_1=omega_1+K_12 sin(theta_2-theta_1); theta_dot_2=omega_2+K_21 sin(theta_1-theta_2)",
+    "geometry": "r_k=a_k exp(b_k theta_k)",
+    "observable": "phase difference Delta=theta_2-theta_1 and radial ratio r_2/r_1",
+    "question": "Do coupling parameters improve prediction of observed phase/radius trajectories beyond independent spirals?"
+  },
+  "failure_conditions": [
+    "A free-b logarithmic spiral substantially outperforms the fixed golden-ratio value where the golden parameter is claimed.",
+    "Archimedean/power/spline alternatives predict held-out data equally or better.",
+    "The inferred fit is unstable to plausible center/deprojection uncertainty.",
+    "A claimed vortex has no defined velocity, circulation or vorticity field.",
+    "Cross-domain occurrences of approximate spirals are treated as a shared physical mechanism without a derived coupling law."
   ],
-  "researcher_notes": [
-    "This is one of the cleanest project research gains because every geometric result follows from a previously recovered equation rather than from added symbolism.",
-    "The constant-pitch and log-linear forms provide practical recognition tests for future images, diagrams and trajectories.",
-    "A future visualization should label radius scaling, curvature scaling and pitch angle separately."
-  ],
-  "evidence_labels": {
-    "starting_equation": "A/B depending source instance",
-    "mathematical_deductions": "C established mathematics, newly derived for the project parameter",
-    "dual_spiral_dynamics": "B/E project extension"
-  }
+  "next_decisive_work": [
+    "Fit one real target using a center/orientation uncertainty model.",
+    "Compare fixed golden b against free logarithmic and non-logarithmic baselines.",
+    "If dynamics are claimed, recover/measure theta(t) and test r_dot=b r theta_dot.",
+    "Only then examine whether a common dynamic law survives across more than one domain."
+  ]
 }
