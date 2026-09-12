@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """Validate browse-first country interaction, overlay continuity, and render ownership."""
 from pathlib import Path
+import shutil
+import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 SELECTION = ROOT / "world-map" / "3d-country-selection.js"
@@ -28,6 +30,26 @@ def require(text: str, token: str, label: str, errors: list[str]) -> None:
 def reject(text: str, token: str, label: str, errors: list[str]) -> None:
     if token in text:
         errors.append(f"{label} still contains rejected legacy behavior: {token}")
+
+
+def node_check(paths: tuple[Path, ...], errors: list[str]) -> None:
+    node = shutil.which("node")
+    if not node:
+        errors.append("node executable unavailable; cannot syntax-check World Map browse modules")
+        return
+    for path in paths:
+        if not path.exists():
+            continue
+        result = subprocess.run(
+            [node, "--check", str(path)],
+            cwd=ROOT,
+            text=True,
+            capture_output=True,
+            check=False,
+        )
+        if result.returncode:
+            detail = (result.stderr or result.stdout).strip()
+            errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: {detail}")
 
 
 def main() -> int:
@@ -65,6 +87,7 @@ def main() -> int:
         require(active_view, token, "world-map/3d-active-view.js", errors)
 
     require(bootstrap, "./3d-active-view.js", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "specialistLazyLoads", "world-map/3d-bootstrap.js", errors)
 
     for token in (
         "Map color",
@@ -77,11 +100,16 @@ def main() -> int:
 
     require(pulse, "potato-atlas-inspector-rendered", "world-map/3d-country-pulse.js", errors)
     require(bar, "Color:", "world-map/3d-world-bar.js", errors)
+    require(bar, "Pinned", "world-map/3d-world-bar.js", errors)
 
     require(compositor, "scalarFeatureStateBatches", "world-map/3d-compositor.js", errors)
+    require(compositor, "applyRuntimeEntityScalar", "world-map/3d-compositor.js", errors)
     require(bridge, "compatibility adapter", "world-map/3d-scalar-runtime-bridge.js", errors)
+    require(bridge, "renderingOwner:'compositor'", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
+
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP), errors)
 
     if errors:
         print("WORLD MAP BROWSE/PERFORMANCE VALIDATION FAILED")
@@ -90,6 +118,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
+    print("Browse + Pins · active color/stat continuity · single scalar owner · lazy specialist stack")
     return 0
 
 
