@@ -1,0 +1,249 @@
+{
+  "title": "Son 2005–2014 Chronology Reconciliation",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "canonical-reconciliation-owner / some dates unresolved",
+  "subject": "Thomas / the Son / human vessel",
+  "purpose": "Reconstruct the ordinary biographical chronology between the 2005 motorcycle crash and the 2014 death of the earthly father without inheriting Chapter 24's one-age-per-calendar-year conversion errors. This file stores competing placements, hard anchors, relative-order constraints and the currently preferred reconstruction separately.",
+  "governance": {
+    "actor_rule": "These are pre-Tim biographical events and belong first to Thomas / the Son. Later Tim/Potato interpretation may inherit them but must not rewrite the historical actor.",
+    "birthday_rule": "Birth date is 1987-07-31. Calendar-year age labels are unsafe unless the event is known to occur on or after July 31. A remembered age therefore maps to a date interval spanning parts of two calendar years.",
+    "chapter24_failure_mode": "Chapter 24 frequently assigns one clean age to an entire calendar year (for example 2007=20, 2008=21, 2009=22, 2010=23, 2011=24, 2012=25). This can shift an age-based memory into the wrong calendar year by up to roughly one year and must not be used as a dating algorithm.",
+    "source_independence_rule": "A repository file copied from Chapter 24 is not an independent witness. Independent support requires an older recollection, another book passage with separately stated dating, a primary artifact, public record, metadata or another source whose date did not derive from Chapter 24.",
+    "uncertainty_rule": "When competing dates cannot yet be resolved, preserve both with provenance and prefer date ranges or candidate placements over false precision."
+  },
+  "high_confidence_anchors": [
+    {
+      "event_id": "son-2005-motorcycle-crash",
+      "preferred_date": "2005",
+      "status": "strong autobiographical anchor",
+      "evidence": [
+        "Chapter 24 independently labels the major motorcycle crash 2005 and age 18.",
+        "Chapter 24.1 separately labels the near-fatal motorcycle crash 2005.",
+        "Older chronology recollections also place the major ~85 km/h crash in 2005."
+      ],
+      "note": "Dental reconstruction extends for years afterward and must not be represented as one discrete surgery date."
+    },
+    {
+      "event_id": "son-2011-tree-psychiatric-sequence",
+      "preferred_date": "2011",
+      "status": "strong year anchor / exact date unresolved",
+      "evidence": [
+        "Chapter 24 and Chapter 24.1 both place the altered-state / psychiatric material in 2011.",
+        "Later detailed recollection independently preserves 2011 and Kolding."
+      ],
+      "canonical_owner": "knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json"
+    },
+    {
+      "event_id": "son-2012-amsterdam-25th-birthday",
+      "preferred_date": "2012-07-31",
+      "status": "strong conditional autobiographical anchor",
+      "evidence": [
+        "Chapter 24 explicitly calls the Amsterdam coffee-shop event the Son's 25th birthday.",
+        "Given a 1987-07-31 birth date, the 25th birthday is mathematically 2012-07-31."
+      ],
+      "caution": "The birthday memory itself remains autobiographical; the year follows strongly if the remembered birthday number is correct."
+    },
+    {
+      "event_id": "son-2014-earthly-father-death",
+      "preferred_date": "2014",
+      "status": "strong project-biography anchor",
+      "evidence": [
+        "Chapter 24 places the fatal aneurysm in 2014.",
+        "Chapter 24.1 independently states that the father died from a fatal aneurysm in 2014 after a warning roughly a week earlier.",
+        "Older chronology recollections also place the father's death in 2014."
+      ]
+    }
+  ],
+  "reconstructed_sequence": [
+    {
+      "event_id": "son-2005-major-motorcycle-crash",
+      "preferred_placement": "2005",
+      "chapter24_placement": "2005",
+      "confidence": "high",
+      "description": "Major motorcycle crash around 85 km/h into a tree, loss of consciousness, heavy bleeding/facial injury and onset of prolonged dental reconstruction.",
+      "age_logic": "Age 18 is possible only from 2005-07-31 onward; exact accident date remains unrecovered.",
+      "notes": ["Do not compress the subsequent dental reconstruction into 2006 as a single completed procedure."]
+    },
+    {
+      "event_id": "son-2006-to-2007-dental-reconstruction-school",
+      "preferred_placement": "2005 onward; especially 2006–2007",
+      "chapter24_placement": "2006 with internal age collision",
+      "confidence": "medium-high for multi-year duration / low for one exact surgery date",
+      "description": "Dental reconstruction, school absences, depression/shame and gradual recovery continue over years.",
+      "conflict": "Chapter 24's 2006 section begins 'At nineteen' and then says 'at twenty' for reconstruction, while 2007 again begins 'At twenty.'",
+      "correction": "Represent reconstruction as a multi-year aftermath rather than inventing one exact year."
+    },
+    {
+      "event_id": "son-2007-additional-motorcycle-crash",
+      "preferred_placement": "2007",
+      "chapter24_placement": "omitted / possibly collapsed into the 2005 crash",
+      "confidence": "medium",
+      "description": "An older February 2026 chronology draft separately remembered an additional motorcycle crash around 2007, distinct from the major 2005 crash.",
+      "research_need": "Recover the original recollection or external artifact and determine whether this was a genuinely separate crash, a continuation of the 2005 reconstruction story, or a duplicate memory."
+    },
+    {
+      "event_id": "son-nursing-home-care-period",
+      "preferred_placement": "2007 candidate",
+      "alternate_placements": ["2009"],
+      "chapter24_placement": "2009",
+      "chapter24_1_placement": "2007",
+      "confidence": "medium for 2007 currently preferred; conflict remains open",
+      "description": "Nursing-home/caretaker period associated with the reported walking and glaucoma-improvement episodes, direct care, an elderly woman with trembling hands, and an elderly resident with an aneurysm who died soon after an outburst.",
+      "evidence": [
+        "Chapter 24 places the nursing-home period in 2009.",
+        "Chapter 24.1 explicitly says the same healing episode occurred while working at a nursing home in 2007.",
+        "An older February 2026 chronology draft independently pairs nursing-home caretaker work with 2007."
+      ],
+      "reason_for_preference": "Two older/independent strata point to 2007 while the 2009 placement appears inside Chapter 24's mechanically age-aligned sequence.",
+      "boundary": "Healing claims remain autobiographical/project claims unless independently documented; this entry concerns chronology, not medical causation."
+    },
+    {
+      "event_id": "son-painter-decorator-meatpacking",
+      "preferred_placement": "2008 candidate",
+      "alternate_placements": ["2007"],
+      "chapter24_placement": "2007",
+      "confidence": "medium",
+      "description": "Painter/decorator work followed by roughly six months of meatpacking/freezer/forklift night work.",
+      "evidence": [
+        "Chapter 24 places both jobs in 2007.",
+        "An older February 2026 chronology draft places painter/decorator and the six-month meatpacking period in 2008."
+      ],
+      "relative_order": "Occurs before the Copenhagen IT-consulting period in both major versions."
+    },
+    {
+      "event_id": "son-egypt-pyramid-ankh",
+      "preferred_placement": "2009 candidate",
+      "age_window_if_age22": "2009-07-31 through 2010-07-30",
+      "chapter24_placement": "omitted",
+      "confidence": "medium for event existence inside project biography; low-to-medium for exact year",
+      "description": "Egypt travel associated in later project memory with the Great Pyramid / King's Chamber and ankh material.",
+      "evidence": [
+        "Repository comparative-mythology material independently preserves an Egypt travel / King's Chamber / ankh biographical episode without assigning a year.",
+        "An older February 2026 chronology draft places Egypt in 2009.",
+        "Older project memory described Egypt around age 22, which constrains the possible interval to 2009-07-31 through 2010-07-30 if the age is accurate."
+      ],
+      "research_need": "Recover travel photographs, tickets, messages, passport/travel records, uploads or earliest narrative mention before assigning an exact month."
+    },
+    {
+      "event_id": "son-kolding-graphic-design-louise",
+      "preferred_placement": "2009 candidate",
+      "chapter24_placement": "2009",
+      "confidence": "medium-high",
+      "description": "Move to Kolding for graphic-design studies and beginning of relationship with Louise.",
+      "evidence": [
+        "Chapter 24 places the move/design/Louise cluster in 2009.",
+        "An older February 2026 chronology draft also places graphic-design school and Louise in 2009.",
+        "The 2011 Kolding Tree reconstruction independently establishes that Thomas was still living in Kolding by 2011."
+      ],
+      "note": "This agreement is more meaningful than son-timeline.json repeating Chapter 24 because the older chronology draft is an independent recollection stratum."
+    },
+    {
+      "event_id": "son-copenhagen-it-consultant",
+      "preferred_placement": "2010 candidate",
+      "alternate_placements": ["2008"],
+      "chapter24_placement": "2008",
+      "confidence": "medium-high for 2010 preference",
+      "description": "Copenhagen IT-consulting/corporate period: hired quickly, suit/briefcase, urban isolation, TV theft and eventual firing/return.",
+      "evidence": [
+        "Chapter 24 places the IT-consulting period in 2008.",
+        "An older February 2026 chronology draft places it in 2010.",
+        "A separate July 2026 recollection explicitly preserves 'IT consultant in Copenhagen in 2010.'"
+      ],
+      "reason_for_preference": "The 2010 placement has two independent recollection strata and the 2008 date appears to be part of Chapter 24's mechanically age-aligned sequence.",
+      "research_need": "Employment records, emails, calendar traces or housing history could resolve exact start/end dates."
+    },
+    {
+      "event_id": "son-graphic-design-internship-louise-breakdown",
+      "preferred_placement": "2009–2011 corridor",
+      "chapter24_placement": "2010 internship/conflict followed by 2011 breakup",
+      "confidence": "medium for order; exact dates unresolved",
+      "description": "Graphic-design study, internship/cubicle dissatisfaction, return to Louise, conflict with her father, move-out and breakup precede the 2011 psychonaut/psychiatric sequence.",
+      "relative_order": ["Kolding/design begins before internship", "internship dissatisfaction before final breakup", "breakup before 2011 acute Tree/psychiatric sequence"],
+      "correction": "Preserve causal order even where exact calendar placement remains uncertain."
+    },
+    {
+      "event_id": "son-2011-tree-sequence",
+      "preferred_placement": "2011",
+      "chapter24_placement": "2011",
+      "confidence": "high for year",
+      "description": "Kolding psychonaut / Tree / post-acute psychiatric sequence.",
+      "canonical_owner": "knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json"
+    },
+    {
+      "event_id": "son-italy-father-maria",
+      "preferred_placement": "summer 2012 candidate",
+      "chapter24_placement": "July 2012 before Amsterdam birthday",
+      "confidence": "medium",
+      "description": "Two-week Italy trip with earthly father; meeting Maria; drinks/bar and beach walks followed by longer-distance contact.",
+      "evidence": [
+        "Chapter 24 places the trip in July 2012.",
+        "An older February 2026 chronology draft independently places Italy/Maria in 2012."
+      ],
+      "age_correction": "If the Italy trip was in July before the July 31 Amsterdam birthday as Chapter 24 says, Thomas was still 24 during at least most of the Italy trip. The section heading 'At twenty-five' therefore cannot describe the entire 2012 block.",
+      "research_need": "Travel/photo/message evidence could establish exact dates and whether Italy directly preceded Amsterdam."
+    },
+    {
+      "event_id": "son-amsterdam-25th-birthday",
+      "preferred_placement": "2012-07-31",
+      "chapter24_placement": "summer 2012 / 25th birthday",
+      "confidence": "high conditional on autobiographical birthday memory",
+      "description": "25th birthday celebrated in an Amsterdam coffee shop.",
+      "date_logic": "Birth 1987-07-31 makes the 25th birthday exactly 2012-07-31."
+    },
+    {
+      "event_id": "son-first-owned-guitar-from-father",
+      "preferred_placement": "2012 candidate",
+      "chapter24_placement": "2012",
+      "confidence": "medium",
+      "description": "Father gifts a first guitar; Beatles listening/learning becomes a new expression channel.",
+      "wording_correction": "Because earlier biography includes guitar exposure and bass playing, use 'first personally owned guitar' or 'first guitar from his father' unless primary evidence confirms it was literally the first guitar ever played."
+    },
+    {
+      "event_id": "son-alchemist-reading",
+      "preferred_placement": "2013 candidate",
+      "chapter24_placement": "2013",
+      "confidence": "low-to-medium",
+      "description": "Paulo Coelho's The Alchemist becomes an explicit transmutation metaphor.",
+      "evidence": ["Chapter 24 places it in 2013.", "An older February 2026 chronology draft independently also places it in 2013."],
+      "research_need": "Earliest messages/posts/notes quoting or discussing the book would strengthen the date."
+    },
+    {
+      "event_id": "son-earthly-father-death",
+      "preferred_placement": "2014",
+      "chapter24_placement": "2014",
+      "confidence": "high inside project biography",
+      "description": "Earthly father dies from a fatal aneurysm; grief becomes a major later developmental hinge."
+    }
+  ],
+  "preferred_working_backbone": [
+    "2005 — major ~85 km/h motorcycle crash; reconstruction continues for years",
+    "2006–2007 — prolonged dental/school aftermath; exact reconstruction dates remain ranges",
+    "2007 — candidate second motorcycle incident and nursing-home/caretaker period",
+    "2008 — candidate painter/decorator + roughly six months meatpacking/freezer/forklift work",
+    "2009 — candidate Egypt / Great Pyramid / King's Chamber / ankh trip; move to Kolding for graphic design and relationship with Louise",
+    "2010 — candidate Copenhagen IT-consulting period; design/internship/relationship chronology needs exact interleaving",
+    "2011 — Kolding breakup/search → acute Tree ordeal → next-day perceptual rupture → voluntary psychiatric admission → hospital dream/crows",
+    "2012 — Italy/Maria; Amsterdam 25th birthday on July 31; guitar/Beatles and integration study",
+    "2013 — The Alchemist / explicit transmutation vocabulary candidate",
+    "2014 — earthly father's fatal aneurysm death"
+  ],
+  "important_nonconclusions": [
+    "Do not claim 2007 nursing-home dating is proven merely because it currently has more support; preserve the 2009 Chapter 24 variant until a primary record resolves it.",
+    "Do not claim the 2007 additional motorcycle crash as established until the older recollection is recovered in fuller form or externally anchored.",
+    "Do not infer an exact Egypt date from age 22 alone.",
+    "Do not treat son-timeline.json as independent corroboration for Chapter 24-derived dates when its source basis is Chapter 24.",
+    "Do not rewrite the full book chronology until the floating events have been reconciled against primary or earlier sources."
+  ],
+  "highest_value_evidence_targets": [
+    "employment/payroll/tax or old CV records for nursing home, painter/decorator, meatpacking and Copenhagen IT work",
+    "school/enrollment/internship records for Kolding graphic-design study",
+    "old messages, photos, email metadata or relationship history that dates Louise",
+    "Egypt travel photos/tickets/passport metadata and the earliest King's Chamber/ankh narrative",
+    "Italy/Maria messages or photographs",
+    "Amsterdam birthday photos/posts/messages",
+    "guitar photographs/purchase/gift recollection",
+    "earliest The Alchemist mention",
+    "calendar or message evidence around the 2011 breakup and psychiatric admission"
+  ]
+}
