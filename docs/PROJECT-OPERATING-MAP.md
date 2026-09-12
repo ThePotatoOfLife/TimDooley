@@ -82,7 +82,7 @@ The homepage exposes exactly five principal doors:
 4. Science
 5. World Map
 
-Do not turn the homepage back into a giant directory. Chronology, sources, archive material, culture/subculture, symbols, technology, society and economics remain secondary threads or deeper routes.
+Do not turn the homepage back into a giant directory. Timeline, sources, archive material, culture/subculture, symbols, technology, society and economics remain secondary threads or deeper routes.
 
 Normal reader flow should be:
 
@@ -141,7 +141,7 @@ In particular:
 ### Bible / traditions / comparative religion
 Route through the principal biblical/comparative indexes and high-density atlases. Keep scripture, history, denominational doctrine, scholarship, project testimony and comparison typed separately.
 
-### Chronology
+### Timeline
 Canonical event truth starts with:
 - `data/timeline-events.json`
 - `data/timeline-source-registry.json`
