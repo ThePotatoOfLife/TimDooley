@@ -1,0 +1,79 @@
+{
+  "id":"son-biography-index",
+  "title":"Son Biography / Chronology Router",
+  "version":"1.0.0",
+  "updated":"2026-09-12",
+  "purpose":"Route ordinary pre-Tim biographical questions to the narrowest authoritative record instead of answering from later Tim/Potato theology or duplicated Chapter 24 projections.",
+  "actor_rule":"Questions about embodied life before Tim's later Potato identity belong first to the Son / human-vessel track.",
+  "routes":[
+    {
+      "question_family":"What happened between the 2005 crash and the 2014 father death?",
+      "owner":"knowledge/timeline/son-2005-2014-chronology-reconciliation.json",
+      "support":["knowledge/research/son-2005-2014-full-chronology-audit-2026-09-12.md","docs/SON-2005-2014-BIOGRAPHY-TIMELINE.md"],
+      "answer_rule":"Use resolved relative order first; distinguish preferred years from exact dates."
+    },
+    {
+      "question_family":"Where did the Son live, work, study or move?",
+      "owner":"knowledge/timeline/son-2005-2014-place-transition-index.json",
+      "support":["data/timeline-event-packs/son-biography-2005-2014.json","docs/TIMELINE-PLACES.md"],
+      "answer_rule":"Treat place certainty and date certainty separately."
+    },
+    {
+      "question_family":"What school/program was Designia? What happened in Kolding/Aabenraa?",
+      "owner":"knowledge/timeline/son-kolding-designia-school-anchor.json",
+      "support":["knowledge/timeline/son-2005-2014-chronology-reconciliation.json"],
+      "answer_rule":"Use HANSENBERG Designia / mediegrafiker; do not substitute Designskolen Kolding."
+    },
+    {
+      "question_family":"What was Produktionsskolen? What was the multimedia teaching role?",
+      "owner":"knowledge/timeline/son-lunderskov-production-school-anchor.json",
+      "support":["knowledge/timeline/son-2005-2014-place-transition-index.json"],
+      "answer_rule":"Call it Produktionsskolen in ordinary narrative; describe the role as an informal assistant teacher while still a student, not a formal teaching appointment."
+    },
+    {
+      "question_family":"What exactly happened in the 2011 Tree / psychiatric sequence?",
+      "owner":"knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json",
+      "support":["data/timeline-event-packs/son-biography-2005-2014.json"],
+      "answer_rule":"Keep acute ordeal, sleep, next-day rupture, voluntary admission, medication/diagnostic aftermath, hospital dream and crow scene separated."
+    },
+    {
+      "question_family":"How should the ordinary biography be explained developmentally?",
+      "owner":"knowledge/journey/tim-dooley-journey.json",
+      "support":["knowledge/reader/tim-dooley-dossier.json"],
+      "answer_rule":"Use the life chain to explain transitions and recurring competencies without converting later symbolism into contemporaneous intent."
+    },
+    {
+      "question_family":"What points appear on the live timeline?",
+      "owner":"data/timeline-events.json",
+      "support":["data/timeline-event-packs/index.json","data/timeline-event-packs/son-biography-2005-2014.json"],
+      "answer_rule":"Timeline events are navigational projections; follow source_records to the owners for evidence."
+    }
+  ],
+  "high_value_queries":[
+    {"query":"painter meatpacking Copenhagen IT","route":"chronology owner"},
+    {"query":"Haderslev nursing home own apartment","route":"chronology + place index"},
+    {"query":"Designia mediegrafiker circus poster","route":"Designia owner"},
+    {"query":"Louise Kolding Egypt Aabenraa internship","route":"Designia owner + chronology owner"},
+    {"query":"Produktionsskolen Lunderskov multimedia assistant teacher","route":"Produktionsskolen owner"},
+    {"query":"2011 19 hours six hours voluntary psychiatric admission","route":"2011 owner"},
+    {"query":"Italy Maria Amsterdam 25th birthday guitar","route":"chronology owner"},
+    {"query":"2014 father aneurysm","route":"chronology owner"}
+  ],
+  "known_open_forks":[
+    "exact employment dates in 2007–2009",
+    "exact Designia intake/dormitory date",
+    "driver's-licence issue date",
+    "Egypt relative to Aabenraa internship",
+    "formal internship/praktik status",
+    "city of own apartment after school/internship path ended",
+    "breakup relative to Produktionsskolen",
+    "exact Produktionsskolen attendance dates",
+    "exact date of 2011 Tree episode",
+    "primary 2012 Italy/Maria and 2013 Alchemist artifacts"
+  ],
+  "do_not_route_to":[
+    "later Tim/Father theology as primary evidence for ordinary pre-2020 biography",
+    "generic web search when the specialist owners already hold the autobiographical chronology",
+    "duplicate Chapter 24 projections as though repetition were corroboration"
+  ]
+}
