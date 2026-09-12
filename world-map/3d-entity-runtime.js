@@ -23,11 +23,13 @@ async function entityType(code) {
   const row = await entity(code);
   return row?.entity_type || null;
 }
-async function populationObservation(code) {
+async function scalarObservation(code, metricId) {
   const data = await runtime();
   const key = String(code || '').toUpperCase();
-  return data?.entities?.by_id?.[key]?.population || data?.countries?.[key]?.population || null;
+  return data?.scalars?.by_entity?.[key]?.[metricId] || null;
 }
+async function populationObservation(code) { return scalarObservation(code, 'population'); }
+async function areaObservation(code) { return scalarObservation(code, 'area'); }
 async function labelAnchor(code) {
   const row = await entity(code);
   return row?.label_anchor || null;
@@ -42,7 +44,9 @@ Object.assign(dataRuntime, {
   entity,
   entityName,
   entityType,
+  scalarObservation,
   populationObservation,
+  areaObservation,
   labelAnchor,
   regionalSystems,
 });
@@ -72,13 +76,16 @@ async function enhanceSelectedEntity(code) {
     if (firstCard?.parentNode) firstCard.parentNode.insertBefore(block, firstCard);
     else panel.appendChild(block);
   }
-  const population = row.population || {};
+  const population = await populationObservation(code) || {};
+  const area = await areaObservation(code) || {};
   const chains = row.systems?.chains || [];
   block.innerHTML = `
     <b>${esc(entityLabel(row))}</b>
     <div class="row"><span class="muted">Capital</span><br>${esc(row.capital || '—')}</div>
-    <div class="row"><span class="muted">Population</span><br>${esc(formatNumber(population.value))}${population.reference_date ? ` · ${esc(population.reference_date)}` : ''}</div>
+    <div class="row"><span class="muted">Population</span><br>${esc(formatNumber(population.value))}${population.period ? ` · ${esc(population.period)}` : ''}</div>
+    <div class="row"><span class="muted">Area</span><br>${area.value == null ? '—' : `${esc(formatNumber(area.value))} km²${area.definition ? ` · ${esc(area.definition)}` : ''}`}</div>
     ${population.source ? `<div class="row"><span class="muted">Population source</span><br>${esc(population.source)}</div>` : ''}
+    ${area.source ? `<div class="row"><span class="muted">Area source</span><br>${esc(area.source)}</div>` : ''}
     ${row.sovereignty_context ? `<div class="row"><span class="muted">Constitutional context</span><br>${esc(row.sovereignty_context)}</div>` : ''}
     ${row.constitutional_parent ? `<div class="row"><span class="muted">Constitutional relation</span><br>${esc(row.constitutional_parent)}</div>` : ''}
     ${chains.length ? `<div class="row"><span class="muted">Functional chains</span><br>${chains.map(id => `<span class="pill">${esc(id.replaceAll('-', ' '))}</span>`).join(' ')}</div>` : ''}
@@ -121,5 +128,7 @@ window.addEventListener('potato-atlas-selection-change', event => {
 const initial = new URL(location.href).searchParams.get('country');
 if (initial) queueMicrotask(() => refresh(initial));
 
-window.__potatoAtlasEntities = { entity, entityName, entityType, populationObservation, labelAnchor, regionalSystems, refresh };
+window.__potatoAtlasEntities = { entity, entityName, entityType, scalarObservation, populationObservation, areaObservation, labelAnchor, regionalSystems, refresh };
 window.dispatchEvent(new CustomEvent('potato-atlas-entities-ready'));
+const selected = window.__potatoAtlasSelection?.current?.activeCode || window.__potatoAtlasSelection?.current?.code || initial;
+if (selected) queueMicrotask(() => window.__potatoAtlasCountryCard?.render?.(selected));
