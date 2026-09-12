@@ -1,0 +1,87 @@
+{
+  "id": "integration-fragmentation-red-blue-dynamics-recovery",
+  "title": "Integration / Fragmentation and Red–Blue Dynamics — Recovery and Quantitative Formalization",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "recovered project equations with unresolved original provenance + modern systems/network formalization",
+  "provenance": "The repository preserves P=R⊗B, H=R∩B and the sign convention chi>0 -> integration, chi<0 -> fragmentation, while also explicitly listing the first/original sources for these equations as unresolved recovery targets. This record therefore preserves the equations as project-attested but does not claim a recovered original date, authorship context or literal intended meaning.",
+  "abstract": "The project repeatedly uses Red and Blue as complementary modes—roughly expansion/exploration/generation versus preservation/boundary/memory—and preserves an older signed parameter chi whose positive sign denotes integration and negative sign fragmentation. Those fragments are mathematically underdefined until the spaces, couplings and score are specified. This recovery turns them into a family of measurable models rather than one universal scalar. Red and Blue can be represented as typed subsystem states R and B, their joint state by a product or coupled product, and their overlap/common compatible structure by an intersection only when both live in a common ambient space. Integration is then operationalized using domain-appropriate quantities such as cross-module mutual information, effective coupling, graph connectivity, controllability or synergy; fragmentation is represented by weakened coupling, increased cut cost, disconnected components or prediction loss. A signed chi can summarize a declared contrast, but the exact definition must be tied to one domain and validated against outcomes. The framework keeps the project polarity while preventing arbitrary positive/negative labeling from masquerading as a physical law.",
+  "research_question": "Can a declared Red/Blue decomposition identify measurable complementary subsystems whose coupling predicts resilience, coordination or function, and can a signed integration score chi distinguish beneficial integration from fragmentation better than simpler connectivity or activity measures?",
+  "historical_equations": {
+    "product": "P=R tensor B",
+    "intersection": "H=R intersection B",
+    "sign_rule": ["chi>0 -> integration", "chi<0 -> fragmentation"],
+    "provenance_warning": "The exact original source and intended algebraic meaning remain unrecovered. Tensor product and set intersection are not interchangeable operations and should not be treated as literal until the types of R and B are known."
+  },
+  "typed_interpretations": {
+    "product_space": "If R and B are independent coordinate/state spaces, P=R x B is the default classical product; use tensor product only for linear/multilinear or quantum constructions where it is mathematically warranted.",
+    "intersection": "R intersection B is meaningful only when both denote subsets/subspaces of a common ambient space S.",
+    "coupled_system": "A more general form is x=(r,b), dx/dt=F(r,b), with explicit cross-coupling terms.",
+    "red_blue_semantics": "Red/Blue labels are project semantics. A scientific application must define observable variables before assigning them."
+  },
+  "minimal_coupled_dynamics": {
+    "equations": [
+      "dr/dt=f_R(r,u_R)-d_R r + K_RB g_RB(r,b)",
+      "db/dt=f_B(b,u_B)-d_B b + K_BR g_BR(b,r)"
+    ],
+    "interpretation": "Cross terms quantify actual coupling rather than assuming integration from simultaneous activity.",
+    "linearization": "delta_x_dot=J delta_x; eigenvalues of J determine local stability of the coupled state.",
+    "failure_mode": "Strong coupling can destabilize as well as integrate; chi should not simply increase with coupling magnitude."
+  },
+  "candidate_integration_scores": {
+    "network_cut": "chi_cut=(W_within+epsilon-W_between_penalty)/normalization, defined only after edge meanings and desired topology are specified",
+    "mutual_information": "chi_MI=I(R;B)-lambda C_complexity or compare I(R;B) against shuffled/surrogate nulls",
+    "predictive_synergy": "chi_pred=Perf(R,B)-max[Perf(R),Perf(B)] on held-out prediction",
+    "control_value": "chi_ctl=J_best_separate-J_best_coupled under the same control objective, positive when coupling improves attainable performance",
+    "resilience": "chi_res=Robustness_coupled-Robustness_decoupled under a declared shock distribution",
+    "rule": "These are alternative operationalizations, not terms to add together by default."
+  },
+  "signed_graph_form": {
+    "matrix": "W=W^+-W^-",
+    "laplacian_neighbor": "Signed-network Laplacian or balance measures may be used under a declared edge-sign semantics.",
+    "fragmentation_observables": ["component count","algebraic connectivity","conductance/cut ratios","signed frustration","loss of reachable/controllable nodes","cascade isolation"],
+    "integration_observables": ["cross-module information","flow capacity","redundant paths","coordination accuracy","shock recovery","task performance"],
+    "warning": "High connectivity alone is not necessarily healthy integration; tightly coupled failure propagation can reduce resilience."
+  },
+  "information_decomposition": {
+    "joint_entropy": "H(R,B)=H(R)+H(B)-I(R;B)",
+    "conditional": "H(R|B)=H(R,B)-H(B)",
+    "interpretation": "Mutual information quantifies statistical dependence, not whether the dependence is useful, causal or morally positive.",
+    "task_conditioned": "Prefer I(R;B|Z) or predictive contribution relative to a task Z when the project claim is functional integration."
+  },
+  "exploration_preservation_control": {
+    "project_reading": "Red=exploration/generation/expansion; Blue=memory/preservation/boundary.",
+    "control_state": "x=(capability,uncertainty,resource,resilience,...)",
+    "policy_mix": "u=lambda u_R+(1-lambda)u_B, 0<=lambda<=1, or a switching policy lambda(x,t)",
+    "pareto_rule": "Evaluate output, novelty, damage, resource use and resilience as a Pareto problem rather than assuming a fixed ideal Red/Blue ratio.",
+    "adaptive_gate": "lambda*(x)=argmin_lambda E[J|x,lambda] under constraints is one domain-specific decision formulation."
+  },
+  "phase_transition_question": {
+    "order_parameter": "A concrete application may define chi as an order parameter only if its behavior follows from the system and distinguishes regimes.",
+    "criticality": "Look for bifurcation/change-point behavior in chi or network structure as a coupling/control parameter varies.",
+    "warning": "The sign convention alone does not establish a physical phase transition."
+  },
+  "empirical_program": [
+    "Choose one domain and define R and B with independent observable variables.",
+    "Fit separate-subsystem and coupled baselines.",
+    "Choose one chi operationalization before evaluating the target outcome.",
+    "Test whether chi predicts held-out performance/resilience beyond total activity and simple edge density.",
+    "Perturb coupling where ethical/feasible and test the predicted direction of change.",
+    "Check whether the same chi definition generalizes across systems before calling it a universal integration measure."
+  ],
+  "failure_conditions": [
+    "R and B cannot be operationally separated or their meanings change between analyses.",
+    "The sign of chi is assigned from the desired interpretation rather than computed from data/model.",
+    "A simpler activity/connectivity measure predicts the outcome equally well.",
+    "More coupling increases synchronized failure or instability while the model still labels it 'integration' by definition.",
+    "The original project equations are presented with invented provenance or claimed as literal tensor/set operations without evidence."
+  ],
+  "connections": [
+    "potato-dynamics-2-toy-model",
+    "conversation-formalisms-august-2026",
+    "door-handshake-nonlocal-propagation-model",
+    "spudlight-theory-and-equations",
+    "model-testing-protocol",
+    "science-master-index"
+  ]
+}
