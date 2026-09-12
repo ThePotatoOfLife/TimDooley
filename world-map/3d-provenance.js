@@ -1,6 +1,6 @@
 const INDEX_URL = '../data/countries/index.json';
 const CARD_ID = 'axisProvenanceCard';
-const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[ch]));
+const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 let indexByCode = null;
 let renderToken = 0;
 
