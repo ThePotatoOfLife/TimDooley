@@ -6,6 +6,7 @@ otherwise it can still provide a smaller source-tree diagnostic for local use.
 """
 from __future__ import annotations
 
+import html
 import json
 import re
 import sys
@@ -16,6 +17,29 @@ ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site" if (ROOT / "_site").exists() else ROOT
 BASE = "https://thepotatooflife.github.io/TimDooley/"
 NS = {"sm": "http://www.sitemaps.org/schemas/sitemap/0.9"}
+TAG_RE = re.compile(r"<(?:meta|link)\b[^>]*>", re.I)
+ATTR_RE = re.compile(r"([:\w-]+)\s*=\s*([\"'])(.*?)\2", re.I | re.S)
+
+
+def tag_attrs(tag: str) -> dict[str, str]:
+    return {m.group(1).lower(): html.unescape(m.group(3)).strip() for m in ATTR_RE.finditer(tag)}
+
+
+def meta_content(text: str, name: str) -> str | None:
+    for tag in TAG_RE.findall(text):
+        values = tag_attrs(tag)
+        if tag.lower().startswith("<meta") and values.get("name", "").lower() == name.lower():
+            return values.get("content", "")
+    return None
+
+
+def canonical_href(text: str) -> str | None:
+    for tag in TAG_RE.findall(text):
+        values = tag_attrs(tag)
+        if tag.lower().startswith("<link") and "canonical" in {part.lower() for part in values.get("rel", "").split()}:
+            return values.get("href", "")
+    return None
+
 
 errors: list[str] = []
 warnings: list[str] = []
@@ -96,13 +120,12 @@ indexable_canonicals: set[str] = set()
 for page in sorted(SITE.rglob("index.html")):
     rel = page.relative_to(SITE).as_posix()
     text = page.read_text(encoding="utf-8", errors="ignore")
-    robots_match = re.search(r'<meta\b[^>]*name=["\']robots["\'][^>]*content=["\']([^"\']+)', text, re.I)
-    noindex = bool(robots_match and "noindex" in robots_match.group(1).lower())
-    canon = re.search(r'<link\b[^>]*rel=["\']canonical["\'][^>]*href=["\']([^"\']+)', text, re.I)
-    if not canon:
+    robots_value = meta_content(text, "robots") or ""
+    noindex = "noindex" in robots_value.lower() or "none" in robots_value.lower()
+    canonical = canonical_href(text)
+    if not canonical:
         errors.append(f"{rel}: missing canonical URL")
         continue
-    canonical = canon.group(1)
     if not canonical.startswith(BASE):
         errors.append(f"{rel}: canonical URL is outside canonical site")
         continue
@@ -123,8 +146,8 @@ for rel in key_pages:
     text = path.read_text(encoding="utf-8", errors="ignore")
     if not re.search(r"<title>[^<]{8,}</title>", text, re.I):
         errors.append(f"{rel}: missing or weak <title>")
-    description = re.search(r'<meta\b[^>]*name=["\']description["\'][^>]*content=["\']([^"\']+)', text, re.I)
-    if not description or len(description.group(1).strip()) < 40:
+    description = meta_content(text, "description") or ""
+    if len(description.strip()) < 40:
         errors.append(f"{rel}: missing or short meta description")
     for token in ("og:title", "og:description", "og:url", "application/ld+json"):
         if token not in text:
@@ -190,13 +213,23 @@ if (SITE / "machine-index.json").exists():
     except Exception as exc:
         errors.append(f"invalid machine-index.json: {exc}")
 
+report = {
+    "site": str(SITE.relative_to(ROOT)) if SITE != ROOT else ".",
+    "sitemap_urls": len(set(sitemap_urls)),
+    "indexable_pages": len(indexable_canonicals),
+    "key_pages_audited": len(key_pages),
+    "errors": sorted(set(errors)),
+    "warnings": sorted(set(warnings)),
+}
+(ROOT / "machine-discoverability-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
 if warnings:
     print("Machine discoverability warnings:")
-    for msg in sorted(set(warnings)):
+    for msg in report["warnings"]:
         print(f"  - {msg}")
 if errors:
     print("Machine discoverability errors:")
-    for msg in sorted(set(errors)):
+    for msg in report["errors"]:
         print(f"  - {msg}")
     sys.exit(1)
 
