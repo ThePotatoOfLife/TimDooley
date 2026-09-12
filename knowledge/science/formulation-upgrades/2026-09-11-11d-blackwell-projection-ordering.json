@@ -1,0 +1,62 @@
+{
+  "id": "2026-09-11-11d-blackwell-projection-ordering",
+  "title": "11D Projection Upgrade — Blackwell Ordering, Decision Sufficiency and Incomparable Reductions",
+  "updated": "2026-09-11",
+  "status": "archive-generated mathematical contribution extending the 11D projection programme; decision/information theory, not evidence for physical 11-dimensional spacetime",
+  "parent": "knowledge/science/eleven-dimensional-projection-unification-recovery.json",
+  "abstract": "The 11D projection programme becomes sharper when lower-dimensional descriptions are compared as statistical experiments rather than ranked by one scalar information score. A representation Y1 is decision-theoretically at least as informative as Y2 when Y2 can be generated from Y1 by a state-independent stochastic garbling. In that case every decision rule available from Y2 can be simulated from Y1, so optimal Bayes risk cannot improve after the garbling. This gives the dimension ladder a partial ordering: some reductions are strictly weaker, some are task-equivalent, and some are incomparable. The result complements reconstruction distortion and target-specific mutual information. A lower-dimensional description can be impossible to invert yet still dominate another description for every decision problem in a declared statistical experiment; conversely, a larger mutual-information value for one prior/target does not by itself establish universal decision dominance.",
+  "setup": {
+    "state_parameter": "theta indexes the underlying state/hypothesis relevant to the decision problem.",
+    "experiment_1": "Y1 has conditional law P_theta(dy1).",
+    "experiment_2": "Y2 has conditional law Q_theta(dy2).",
+    "garbling_kernel": "K(dy2|y1) is a stochastic map independent of theta once y1 is given.",
+    "blackwell_condition": "Q_theta(B)=integral K(B|y1) P_theta(dy1) for every measurable B and every theta.",
+    "project_translation": "A lower-dimensional description is a garbling of a richer one when it can be generated from the richer observation without consulting the hidden source state again."
+  },
+  "result_1_decision_monotonicity": {
+    "statement": "If Y2 is a garbling of Y1, then for any prior, admissible action set and loss function satisfying the decision problem's regularity conditions, the minimum Bayes risk using Y1 is no larger than the minimum Bayes risk using Y2.",
+    "reason": "An observer with Y1 can first sample the garbling K to manufacture Y2 and then execute any Y2-based policy. Therefore the policy class available after Y1 contains a simulation of every policy available after Y2.",
+    "meaning": "A pure reduction cannot create decision capability that was absent in the richer representation unless side information, a changed prior, intervention or new measurement is added."
+  },
+  "result_2_deterministic_projection_as_special_case": {
+    "form": "If Y2=g(Y1) deterministically, then K is the point-mass kernel at g(y1), so Y2 is automatically a Blackwell garbling of Y1.",
+    "dimension_ladder": "For a Markov reduction chain X -> Y10 -> Y9 -> ... -> Y4 in which each step is computed only from the previous representation, each earlier representation Blackwell-dominates every later one for the same underlying state experiment.",
+    "boundary": "This does not mean the earlier representation is cheaper, easier to estimate, physically realizable or better regularized; it means it contains at least the decision information of its garbling."
+  },
+  "result_3_task_equivalence": {
+    "task_specific": "For one target Z and one loss, two representations can have the same optimal risk even when one is globally more informative.",
+    "exact_sufficiency_neighbor": "If I(Z;X|Y)=0 in the deterministic projection setting, Y retains all information in X relevant to predicting Z, even though Y may discard other information.",
+    "decision_equivalence": "For a declared family of decision tasks, define Y1 approximately equivalent to Y2 when their optimal risks differ by at most epsilon_task for every task in that family.",
+    "project_value": "This is a disciplined version of an effective theory: preserve what matters for the declared low-energy/observable decisions without pretending to reconstruct the complete microscopic state."
+  },
+  "result_4_incomparability": {
+    "definition": "Y1 and Y2 are Blackwell-incomparable when neither can be obtained as a garbling of the other.",
+    "interpretation": "One representation may be better for one decision problem and worse for another. A single total dimension ladder therefore need not exist once different projections retain different features.",
+    "mutual_information_warning": "A larger I(theta;Y) for one chosen prior is not, by itself, a proof of Blackwell dominance for all decision problems. Universal decision dominance is stronger than winning one scalar information comparison.",
+    "archive_rule": "Do not rank dimensional descriptions by one entropy or mutual-information number unless the task/prior and ordering claim are explicitly restricted."
+  },
+  "projection_ladder_scorecard": {
+    "per_step_record": "Q_step=(D_rec,Delta_task,Delta_Bayes,C_cost)",
+    "D_rec": "state reconstruction distortion for the declared source class",
+    "Delta_task": "target-information loss I(Z;Y_d)-I(Z;Y_(d-1)) when well defined",
+    "Delta_Bayes": "increase in optimal Bayes risk for a declared decision family",
+    "C_cost": "measurement/computation/description cost of retaining the representation",
+    "rule": "A scientifically useful reduction may intentionally increase D_rec while keeping Delta_task and Delta_Bayes near zero and substantially lowering C_cost."
+  },
+  "new_advancement_gate": {
+    "promote_reduction_if": "The lower-dimensional representation is demonstrably sufficient or approximately decision-equivalent for the observables/tasks the effective theory claims to preserve, with its information losses explicitly bounded.",
+    "downgrade_if": "A claimed universal reduction preserves one chosen statistic but materially worsens other declared target decisions, or its ranking reverses under reasonable task/prior choices.",
+    "physical_boundary": "Decision sufficiency says nothing by itself about whether the underlying high-dimensional geometry exists physically."
+  },
+  "external_references": [
+    {"topic": "Blackwell sufficiency and comparison of experiments", "url": "https://doi.org/10.1016/j.econlet.2024.112146", "use": "Modern proof/discussion of Blackwell sufficiency and more-informative order for general state spaces."},
+    {"topic": "comparison of experiments and information measures", "url": "https://doi.org/10.1214/aos/1176344790", "use": "Classical connection between experiment sufficiency, Bayes risk and information measures."}
+  ],
+  "failure_conditions": [
+    "A projection is called more informative solely because one mutual-information value is larger under one prior.",
+    "A reduction is called lossless without naming the target/decision family relative to which losslessness is meant.",
+    "A lower layer appears to gain information but the added prior, side channel or intervention is omitted from the model.",
+    "A physical compactification claim is inferred from a purely statistical decision-ordering result."
+  ],
+  "connections": ["eleven-dimensional-projection-unification-recovery", "2026-09-11-11d-projection-sufficiency-fiber-bounds", "2026-09-11-cross-model-defect-calculus", "model-testing-protocol"]
+}
