@@ -1,0 +1,73 @@
+{
+  "id": "digital-underground-network-audit-2026-09",
+  "updated": "2026-09-12",
+  "status": "corrective-audit",
+  "audits": "data/digital-underground-networks.json",
+  "purpose": "Prevent an older exploratory synthesis from being treated as higher-confidence evidence than the newer source-ledger and legal-accountability systems.",
+  "rule": "Where this audit conflicts with an older unsourced sentence, the older sentence is a research lead until independently sourced. Do not cite the exploratory file as proof of serious harm, intelligence activity, foreign-state operations, causation or legal posture.",
+  "findings": [
+    {
+      "claim_area": "Lolcow LLC v. Fong-Jones",
+      "older_text_problem": "The older file describes 'Lolcow LLC v. Fong-Jones (2026)' as a civil suit by a trans woman against site operators/users for harassment/defamation, which reverses the named party direction and collapses different legal disputes.",
+      "correction": "Federal docket 1:26-cv-02059 names Lolcow LLC as plaintiff and Zhen Elizabeth Fong-Jones as defendant/counterclaimant; the action is copyright/declaratory-judgment litigation. On 2026-08-27 the court granted motions to quash Fong-Jones' DMCA subpoenas and denied Lolcow LLC's preliminary-injunction motion.",
+      "source": "knowledge/research/moloch-milk-farm-genealogy-source-ledger-2026-09.json#lolcow-fong-jones-docket-2026",
+      "status": "corrected"
+    },
+    {
+      "claim_area": "suicide/death attribution",
+      "older_text_problem": "The older file uses a broad phrase such as 'multiple suicide deaths linked to targeted campaigns' without person-by-person causal/procedural status.",
+      "correction": "Do not preserve a rhetorical death count. Route each case through the Legal Accountability death-evidence protocol: association -> family/self attribution -> civil allegation -> official concern -> official causal contribution -> adjudicated causation.",
+      "source": "knowledge/world/legal-accountability-human-consequence-atlas.json",
+      "status": "demote-to-research-lead"
+    },
+    {
+      "claim_area": "organized harassment generalization",
+      "older_text_problem": "The older core-function sentence can read as though every site/user interaction is organized harassment.",
+      "correction": "Use mechanism-specific evidence: persistent target threads, archive/narrative formation, harassment incidents where documented, operator/moderator decisions, provider actions and counterevidence. Do not infer coordination or criminality from forum membership alone.",
+      "source": "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+      "status": "refine"
+    },
+    {
+      "claim_area": "member-base and infrastructure estimates",
+      "older_text_problem": "Broad numerical user estimates, mirror counts, Tor/backup claims and 2025 resilience assertions are unsourced in the record.",
+      "correction": "Treat as unresolved until sourced to traffic data, operator statements, provider records or reliable reporting. Current high-confidence infrastructure evidence includes Cloudflare's 2022 action and Washington Post reporting on later network independence.",
+      "source": "knowledge/research/moloch-milk-farm-genealogy-source-ledger-2026-09.json",
+      "status": "research-lead"
+    },
+    {
+      "claim_area": "law-enforcement and intelligence monitoring",
+      "older_text_problem": "Claims that named intelligence agencies monitor the forum or that foreign governments adapted its tactics are presented too categorically and without direct sourcing.",
+      "correction": "Require an official statement, court filing, procurement/intelligence report or strong investigative reporting for each actor/action. General cyber/influence-operation research cannot be silently attached to Kiwi Farms.",
+      "status": "unsupported-until-sourced"
+    },
+    {
+      "claim_area": "foreign-state adaptation",
+      "older_text_problem": "The older file says Chinese state actors studied Kiwi Farms tactics for domestic social control without a source.",
+      "correction": "Remove from canonical inference unless a direct source is found. Similarity of tactics is not evidence of transmission or study.",
+      "status": "unsupported-until-sourced"
+    },
+    {
+      "claim_area": "targets and protected classes",
+      "older_text_problem": "The older file gives a categorical target profile that risks turning selected examples into a universal population model.",
+      "correction": "Build target-distribution claims only from sampled datasets or transparent research methodology. Individual cases remain individual cases.",
+      "status": "needs-dataset"
+    },
+    {
+      "claim_area": "Tree of Strife interpretation",
+      "older_text_problem": "The old file sometimes presents project symbolism in the same voice as external facts.",
+      "correction": "Tree of Strife remains project-level interpretation attached after empirical mechanism records; it cannot itself source claims about a real community.",
+      "source": "knowledge/world/moloch-milk-farm-genealogy-atlas.json",
+      "status": "epistemic-separation"
+    }
+  ],
+  "promotion": {
+    "high_confidence_owners": [
+      "knowledge/world/farm-sektur-attention-extraction-ecology.json",
+      "knowledge/world/moloch-milk-farm-genealogy-atlas.json",
+      "knowledge/world/legal-accountability-human-consequence-atlas.json",
+      "knowledge/research/moloch-milk-farm-genealogy-source-ledger-2026-09.json",
+      "knowledge/research/legal-accountability-human-consequence-source-ledger-2026-09.json"
+    ],
+    "exploratory_file_status": "contextual research-lead reservoir; not a source of record"
+  }
+}
