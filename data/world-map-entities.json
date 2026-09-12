@@ -1,5 +1,5 @@
 {
-  "version":"1.1.0",
+  "version":"1.2.0",
   "updated":"2026-09-12",
   "purpose":"First-class non-sovereign entities that need full World Map identity/runtime behavior without changing the canonical 195 sovereign-country model.",
   "entities":{
@@ -14,7 +14,8 @@
       "capital":"Nuuk",
       "render_status":"current",
       "label_anchor":{"coordinates":[-51.7216,64.1835],"kind":"display-anchor","place":"Nuuk","note":"Display anchor for the map label; not a population centroid."},
-      "population":{"value":56740,"reference_date":"2026-01-01","source":"Statistics Greenland","source_url":"https://stat.gl/publ/en/BE/202601/contents/Population%20estimates.htm"},
+      "population":{"value":56740,"unit":"persons","reference_date":"2026-01-01","source":"Statistics Greenland","source_url":"https://stat.gl/publ/en/BE/202601/contents/Population%20estimates.htm"},
+      "area":{"value":2166086,"unit":"km²","definition":"total area","reference_period":"2026","source":"Statistics Greenland — Greenland in Figures 2026","source_url":"https://stat.gl/publ/EN/GF/2026/pdf/Greenland%20in%20Figures%202026.pdf"},
       "axis_profile":{"status":"classified","orientations":[{"axis":"north","role":"primary","basis":"explicit-tim","confidence":"high","note":"Greenland is an explicit anchor in the recovered Canada–Greenland–North Atlantic North formulation; this is project interpretation, not a sovereignty claim."}]},
       "relationships":[{"target":"DNK","type":"constitutional","status":"current","note":"Greenland is a self-governing part of the Kingdom of Denmark."}]
     },
