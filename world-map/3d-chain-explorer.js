@@ -10,6 +10,10 @@ const MAX_INFRASTRUCTURE_TAGS = 4;
 let activeChainId = null;
 let markedCodes = new Set();
 
+function countEnhancement() {
+  const diagnostics = window.__potatoAtlasDiagnostics;
+  if (diagnostics) diagnostics.cardEnhancementPasses = (diagnostics.cardEnhancementPasses || 0) + 1;
+}
 function ensureLayer() {
   if (map.getLayer(LAYER_ID)) return;
   const before = map.getLayer('countries-line') ? 'countries-line' : (map.getLayer('countries-outline') ? 'countries-outline' : undefined);
@@ -98,6 +102,7 @@ function get() { return activeChainId; }
 async function upgradeChainTags() {
   const card = document.getElementById('atlasCountryCard');
   if (!card || card.hidden) return;
+  countEnhancement();
   const sections = [...card.querySelectorAll('.atlas-country-section')];
   const section = sections.find(node => node.querySelector(':scope > small')?.textContent?.trim() === 'Functional chains');
   if (!section) return;
@@ -145,8 +150,7 @@ document.addEventListener('click', event => {
   if (event.target.closest('[data-chain-clear]')) clear();
 });
 
-const card = document.getElementById('atlasCountryCard');
-if (card) new MutationObserver(upgradeChainTags).observe(card, { childList:true, subtree:false });
+window.addEventListener('potato-atlas-country-card-rendered', () => queueMicrotask(upgradeChainTags));
 window.addEventListener('potato-atlas-working-selection-change', upgradeChainTags);
 window.addEventListener('potato-atlas-layer-change', upgradeChainTags);
 

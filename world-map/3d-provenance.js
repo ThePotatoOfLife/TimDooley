@@ -94,11 +94,9 @@ window.addEventListener('atlas-axis-dimension-change', event => {
   setTimeout(() => updateForDimension(event.detail?.dimension), 0);
 });
 window.addEventListener('popstate', () => updateForDimension(Number(new URL(location.href).searchParams.get('axisD') || 4)));
-
-const observer = new MutationObserver(() => {
+window.addEventListener('potato-atlas-panel-rendered', () => {
   const dimension = Number(new URL(location.href).searchParams.get('axisD') || 4);
-  if (dimension === 3 && !document.getElementById(CARD_ID)) setTimeout(() => updateForDimension(3), 0);
+  if (dimension === 3 && !document.getElementById(CARD_ID)) queueMicrotask(() => updateForDimension(3));
 });
-const panel = document.getElementById('panel');
-if (panel) observer.observe(panel,{childList:true});
+
 updateForDimension(Number(new URL(location.href).searchParams.get('axisD') || 4));

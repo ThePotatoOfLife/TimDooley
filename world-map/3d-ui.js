@@ -43,17 +43,50 @@ focusMode?.addEventListener('click', () => setFocus(!app?.classList.contains('ui
 setPanel(localStorage.getItem('atlas:panel-open') === '1', {persist:false});
 setFocus(localStorage.getItem('atlas:focus-mode') === '1', {persist:false});
 
+function panelLifecycleKey() {
+  if (!panel) return '';
+  const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim() || '';
+  const heading = panel.querySelector(':scope > h1')?.textContent?.trim() || '';
+  const selection = window.__potatoAtlasSelection?.current || {};
+  const code = String(selection.activeCode || selection.code || new URL(location.href).searchParams.get('country') || '').toUpperCase();
+  const compare = new URL(location.href).searchParams.get('compare') || '';
+  return [eyebrow, heading, code, compare].join('|');
+}
+
 let lastSignature = panel?.textContent || '';
-const observer = panel && new MutationObserver(() => {
+let lastLifecycleKey = '';
+let panelLifecycleScheduled = false;
+function publishPanelLifecycle() {
+  panelLifecycleScheduled = false;
+  if (!panel) return;
   const signature = panel.textContent || '';
-  if (signature === lastSignature) return;
-  lastSignature = signature;
-  if (app?.classList.contains('ui-focus')) return;
-  const passiveSelection = /Canonical country|Territory \/ map polygon|World Relational Atlas/.test(signature);
-  const isLanding = /Explore the world/.test(signature);
-  if (!isLanding && !passiveSelection) setPanel(true, {persist:false});
-});
+  if (signature !== lastSignature) {
+    lastSignature = signature;
+    if (!app?.classList.contains('ui-focus')) {
+      const passiveSelection = /Canonical country|Territory \/ map polygon|World Relational Atlas/.test(signature);
+      const isLanding = /Explore the world/.test(signature);
+      if (!isLanding && !passiveSelection) setPanel(true, {persist:false});
+    }
+  }
+  const key = panelLifecycleKey();
+  if (!key || key === lastLifecycleKey) return;
+  lastLifecycleKey = key;
+  if (window.__potatoAtlasDiagnostics) {
+    window.__potatoAtlasDiagnostics.panelLifecycleRenders = (window.__potatoAtlasDiagnostics.panelLifecycleRenders || 0) + 1;
+    window.__potatoAtlasDiagnostics.inspectorEnhancementPasses = (window.__potatoAtlasDiagnostics.inspectorEnhancementPasses || 0) + 1;
+  }
+  window.dispatchEvent(new CustomEvent('potato-atlas-panel-rendered', {
+    detail:{ key, code:window.__potatoAtlasSelection?.current?.activeCode || window.__potatoAtlasSelection?.current?.code || null }
+  }));
+}
+function schedulePanelLifecycle() {
+  if (panelLifecycleScheduled) return;
+  panelLifecycleScheduled = true;
+  queueMicrotask(publishPanelLifecycle);
+}
+const observer = panel && new MutationObserver(schedulePanelLifecycle);
 observer?.observe(panel, {childList:true, subtree:true, characterData:true});
+queueMicrotask(publishPanelLifecycle);
 
 function summaryText(id, text, active = false) {
   const summary = document.querySelector(`#${id}>summary`);
@@ -317,4 +350,4 @@ traceMenu?.addEventListener('toggle', () => {
   ensureEntityTrace();
 });
 
-window.__potatoAtlasUI = {setPanel,setFocus,updateMenuSummaries,ensurePathfinder,ensureEntityTrace};
+window.__potatoAtlasUI = {setPanel,setFocus,updateMenuSummaries,ensurePathfinder,ensureEntityTrace,panelLifecycleKey};

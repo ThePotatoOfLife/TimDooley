@@ -62,16 +62,19 @@ def main() -> int:
         if "#atlasCountryCard{position:absolute;right:10px;top:10px" in compact:
             errors.append("country card still uses the old upper-right anchor")
         for token in (
-            "Selected comparison",
+            "Pinned comparison",
             "Connections",
             "comparisonRows",
             "connectionRows",
             "areaObservation",
             "populationObservation",
             "potato-atlas-relation-mode-change",
+            "data-atlas-pin",
+            "data-atlas-statistics",
+            "Map color",
         ):
             if token not in country_card:
-                errors.append(f"country card must expose compact multi-country intelligence marker: {token}")
+                errors.append(f"country card must expose compact browse/pin intelligence marker: {token}")
 
     if world_bar:
         compact = re.sub(r"\s+", "", world_bar)
@@ -79,7 +82,7 @@ def main() -> int:
             errors.append("ordinary world toolbar must be centered at the top so it cannot collide with the upper-left country card")
         if "#atlasWorldContext{position:absolute;left:10px;bottom:10px" not in compact:
             errors.append("ordinary map context must occupy the lower-left information surface")
-        for token in ("atlasWorldContext", "updateContext", "Current map view"):
+        for token in ("atlasWorldContext", "updateContext", "Current map view", "Color:", "Pinned"):
             if token not in world_bar:
                 errors.append(f"world toolbar must expose compact active-layer context marker: {token}")
         for token in ("data-relation-mode", "setRelationMode", "Money", "Systems", "Institutions"):
@@ -92,9 +95,17 @@ def main() -> int:
                 errors.append(f"ANY/ALL set queries must have an explicit on-map result channel: {token}")
 
     if country_selection:
-        for token in ("relationMode", "setRelationMode", "edgeMatchesRelationMode", "potato-atlas-relation-mode-change"):
+        for token in (
+            "relationMode",
+            "setRelationMode",
+            "edgeMatchesRelationMode",
+            "potato-atlas-relation-mode-change",
+            "pinnedCodes",
+            "togglePinnedCountry",
+            "potato-atlas-pin-change",
+        ):
             if token not in country_selection:
-                errors.append(f"country selection must support bounded automatic relation filtering: {token}")
+                errors.append(f"country selection must support browse-first state and bounded automatic relation filtering: {token}")
 
     if errors:
         print("World Map UI shell validation FAILED:")

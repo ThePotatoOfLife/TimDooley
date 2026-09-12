@@ -112,8 +112,8 @@ def main() -> int:
         errors.append("entity Trace still depends on the retired Progressive UI Trace menu")
 
     # The ordinary country card is the contextual door into deep investigation.
-    # It may expose two quiet actions, but it must not grow another permanent
-    # top-level toolbar.
+    # It may expose a compact set of quiet actions, but it must not grow another
+    # permanent top-level toolbar.
     required_card = (
         'data-country-action="details"',
         'data-country-action="entity-trace"',
@@ -121,7 +121,7 @@ def main() -> int:
         "./3d-entity-trace.js",
         "window.__potatoEntityTrace",
         "panel-collapsed",
-        "More country data",
+        "More data",
         "Trace connections",
     )
     for marker in required_card:

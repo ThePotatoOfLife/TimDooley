@@ -213,17 +213,9 @@ async function boot() {
   try { data = await getJson(DEMOGRAPHY_URL); }
   catch (error) { console.warn('Atlas demography snapshot unavailable; core atlas continues.', error); return; }
   window.__potatoAtlasDemography = data;
-  const panel = document.querySelector('#panel');
-  if (panel) {
-    let scheduled = false;
-    const observer = new MutationObserver(() => {
-      if (scheduled) return;
-      scheduled = true;
-      queueMicrotask(() => { scheduled = false; enhancePanel(data); });
-    });
-    observer.observe(panel,{childList:true,subtree:true});
-    enhancePanel(data);
-  }
+  enhancePanel(data);
+  window.addEventListener('potato-atlas-panel-rendered', () => enhancePanel(data));
+  window.addEventListener('potato-atlas-working-selection-change', () => queueMicrotask(() => enhancePanel(data)));
   try {
     const map = await waitForMap();
     const ready = () => addPopulationLabels(map,data).catch(error => console.warn('Population label layer failed.', error));

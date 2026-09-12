@@ -31,6 +31,10 @@ runtime.systemCoverage = async () => {
   return data?.system_coverage || {};
 };
 
+function countEnhancement() {
+  const diagnostics = window.__potatoAtlasDiagnostics;
+  if (diagnostics) diagnostics.cardEnhancementPasses = (diagnostics.cardEnhancementPasses || 0) + 1;
+}
 function emptyGeoJSON() { return { type:'FeatureCollection', features:[] }; }
 function gatewayFeature(gateway) {
   const obs = gateway.observation || {};
@@ -112,6 +116,7 @@ async function injectSystemRole(code) {
   const card = document.getElementById('atlasCountryCard');
   if (!card || card.hidden || !/^[A-Z]{3}$/.test(code)) return;
   if (card.querySelector('#atlasCountrySystemRole')) return;
+  countEnhancement();
   const systems = await runtime.systemContext(code);
   const gateways = await runtime.gatewaysForCountry(code);
   const capabilities = systems.capabilities || [];
@@ -169,11 +174,7 @@ function queueInjection(code) {
   setTimeout(async () => { injectionQueued = false; await injectSystemRole(code); }, 0);
 }
 
-const cardHost = document.getElementById('atlasCountryCard');
-if (cardHost) {
-  new MutationObserver(() => queueInjection(currentCode())).observe(cardHost, { childList:true, subtree:false });
-}
-
+window.addEventListener('potato-atlas-country-card-rendered', event => queueInjection(currentCode(event?.detail)));
 window.addEventListener('potato-atlas-working-selection-change', event => {
   const code = event?.detail?.selected === false ? '' : currentCode(event?.detail);
   updateGatewayPoints(code);

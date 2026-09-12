@@ -172,20 +172,7 @@ function handleProfileClick(event) {
 
 ensureStyle();
 panel?.addEventListener('click', handleProfileClick);
-
-if (panel) {
-  let scheduled = false;
-  const observer = new MutationObserver(() => {
-    if (scheduled) return;
-    scheduled = true;
-    queueMicrotask(() => {
-      scheduled = false;
-      enhancePanel();
-    });
-  });
-  observer.observe(panel, { childList: true, subtree: true });
-}
-
+window.addEventListener('potato-atlas-panel-rendered', enhancePanel);
 window.addEventListener('potato-atlas-selection-change', enhancePanel);
 window.addEventListener('potato-atlas-module-ready', event => {
   if (event?.detail?.label === 'Demography') enhancePanel();

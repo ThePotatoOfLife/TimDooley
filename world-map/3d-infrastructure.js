@@ -16,6 +16,10 @@ let activeContext = { kind:null, id:null };
 let visibleAssets = [];
 let activePopup = null;
 
+function countEnhancement() {
+  const diagnostics = window.__potatoAtlasDiagnostics;
+  if (diagnostics) diagnostics.cardEnhancementPasses = (diagnostics.cardEnhancementPasses || 0) + 1;
+}
 function emptyGeoJSON() { return { type:'FeatureCollection', features:[] }; }
 function humanize(value) { return String(value || '').replaceAll('-', ' ').replace(/\b\w/g, char => char.toUpperCase()); }
 function assetId(asset) { return String(asset?.id || ''); }
@@ -112,6 +116,7 @@ async function showImpact(id) {
   if (!key) return false;
   const impactNode = await impactNodeForInfrastructure(key);
   if (!impactNode) return false;
+  if (!window.__potatoAtlasImpactTrace && window.__potatoAtlasLoadModule) await window.__potatoAtlasLoadModule('Impact Trace', './3d-impact-trace.js');
   return Boolean(await window.__potatoAtlasImpactTrace?.showInfrastructure?.(key));
 }
 function latestObservation(asset) {
@@ -138,6 +143,7 @@ async function showPopup(asset, coordinates) {
 async function injectCountryContext(code = currentEntityCode()) {
   const card = document.getElementById('atlasCountryCard');
   if (!card || card.hidden || !/^[A-Z]{3}$/.test(String(code || ''))) return;
+  countEnhancement();
   const rows = bounded(await runtime.infrastructureForEntity?.(code) || []);
   let section = card.querySelector('#atlasCountryInfrastructureContext');
   if (!rows.length) {
@@ -176,11 +182,10 @@ map.on('click', POINT_LAYER, async event => {
   if (asset) await showPopup(asset, event.features[0].geometry.coordinates);
 });
 
-const cardHost = document.getElementById('atlasCountryCard');
-if (cardHost) new MutationObserver(() => {
-  if (!cardHost.querySelector('#atlasCountryInfrastructureContext')) queueMicrotask(() => injectCountryContext());
-}).observe(cardHost, {childList:true, subtree:false});
-
+window.addEventListener('potato-atlas-country-card-rendered', event => {
+  const code = String(event?.detail?.code || currentEntityCode()).toUpperCase();
+  queueMicrotask(() => injectCountryContext(code));
+});
 window.addEventListener('potato-atlas-working-selection-change', event => {
   if (activeContext.kind && activeContext.kind !== 'entity') return;
   const code = event?.detail?.selected === false ? '' : String(event?.detail?.activeCode || event?.detail?.code || '').toUpperCase();

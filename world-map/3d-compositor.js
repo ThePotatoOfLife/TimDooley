@@ -25,6 +25,12 @@ let setMemberships = new Map();
 let queryMarkedCodes = new Set();
 let renderSerial = 0;
 
+function diagnosticCount(key, amount = 1) {
+  const diagnostics = window.__potatoAtlasDiagnostics;
+  if (!diagnostics) return;
+  diagnostics[key] = (Number(diagnostics[key]) || 0) + amount;
+}
+
 async function fetchJson(url) {
   const response = await fetch(url, { cache: 'no-cache' });
   if (!response.ok) throw new Error(`${response.status} ${url}`);
@@ -36,7 +42,7 @@ async function runtimeData() { if (!worldRuntime) worldRuntime = await fetchJson
 
 const runtimeReady = runtimeData().catch(error => {
   console.warn('World Map empirical runtime unavailable:', error);
-  return { country_count: 0, groups: {}, axis: { memberships: {}, countries: {} }, reference_figures: [], chains: {}, metrics: {}, countries: {} };
+  return { country_count: 0, groups: {}, axis: { memberships: {}, countries: {} }, reference_figures: [], chains: {}, metrics: {}, countries: {}, scalars:{ by_entity:{} } };
 });
 
 window.__potatoAtlasDataRuntime = {
@@ -199,20 +205,39 @@ function religionKey(entry) {
 async function applyReligionScalar(entry) {
   const data = await demographyData();
   const key = religionKey(entry);
+  let touched = 0;
   for (const [code, row] of Object.entries(data?.countries || {})) {
     const value = Number(row?.religion?.composition?.[key]);
-    try { map.setFeatureState({ source: 'countries', id: code }, { atlasScalarHas: Number.isFinite(value), atlasScalarValue: Number.isFinite(value) ? value : 0 }); } catch {}
+    try { map.setFeatureState({ source: 'countries', id: code }, { atlasScalarHas: Number.isFinite(value), atlasScalarValue: Number.isFinite(value) ? value : 0 }); touched += 1; } catch {}
   }
+  if (touched) diagnosticCount('scalarFeatureStateBatches');
   const color = entry.color || '#7fa7a0';
   setBaseFill(['case', ['boolean', ['feature-state', 'atlasScalarHas'], false], ['interpolate', ['linear'], ['feature-state', 'atlasScalarValue'], 0, '#1e2928', 20, '#3c5551', 50, color, 80, '#dfd49c', 100, '#fff0bf'], UNKNOWN]);
 }
 
-function applyGeographicScalar(entry) {
-  if (entry.id === 'stat.area') {
-    setBaseFill(['case', ['>', ['get', 'area'], 0], ['step', ['get', 'area'], '#263432', 10000, '#36514b', 100000, '#527466', 500000, '#78977d', 1000000, '#a7b87f', 5000000, '#d0c77e'], UNKNOWN]);
-  } else {
-    setBaseFill(['case', ['>', ['get', 'population'], 0], ['step', ['get', 'population'], '#263432', 1000000, '#36514b', 10000000, '#527466', 50000000, '#78977d', 100000000, '#a7b87f', 500000000, '#d0c77e'], UNKNOWN]);
+async function applyRuntimeEntityScalar(entry) {
+  const data = await runtimeReady;
+  const metricId = entry.runtime_scalar;
+  const rows = data?.scalars?.by_entity || {};
+  let touched = 0;
+  for (const [code, values] of Object.entries(rows)) {
+    const raw = Number(values?.[metricId]?.value);
+    const has = Number.isFinite(raw);
+    try { map.setFeatureState({ source:'countries', id:code }, { atlasScalarHas:has, atlasScalarValue:has ? raw : 0 }); touched += 1; } catch {}
   }
+  if (touched) diagnosticCount('scalarFeatureStateBatches');
+  const value = ['feature-state', 'atlasScalarValue'];
+  let scale;
+  if (metricId === 'population') {
+    scale = ['step', value, '#263432', 1_000_000, '#36514b', 10_000_000, '#527466', 50_000_000, '#78977d', 100_000_000, '#a7b87f', 500_000_000, '#d0c77e'];
+  } else if (metricId === 'area') {
+    scale = ['step', value, '#263432', 10_000, '#36514b', 100_000, '#527466', 500_000, '#78977d', 1_000_000, '#a7b87f', 5_000_000, '#d0c77e'];
+  } else {
+    setBaseFill(UNKNOWN);
+    return;
+  }
+  setBaseFill(['case', ['boolean', ['feature-state', 'atlasScalarHas'], false], scale, UNKNOWN]);
+  window.dispatchEvent(new CustomEvent('potato-atlas-entity-scalar-render', { detail:{ metricId, owner:'compositor' } }));
 }
 
 function percentile(sorted, p) {
@@ -225,12 +250,14 @@ async function applyRuntimeScalar(entry) {
   const data = await runtimeReady;
   const metricId = entry.runtime_metric;
   const values = [];
+  let touched = 0;
   for (const [code, country] of Object.entries(data?.countries || {})) {
     const raw = Number(country?.metrics?.[metricId]?.value);
     const has = Number.isFinite(raw);
     if (has) values.push(raw);
-    try { map.setFeatureState({ source: 'countries', id: code }, { atlasScalarHas: has, atlasScalarValue: has ? raw : 0 }); } catch {}
+    try { map.setFeatureState({ source: 'countries', id: code }, { atlasScalarHas: has, atlasScalarValue: has ? raw : 0 }); touched += 1; } catch {}
   }
+  if (touched) diagnosticCount('scalarFeatureStateBatches');
   values.sort((a, b) => a - b);
   if (!values.length) { setBaseFill(UNKNOWN); return; }
   const valueExpr = ['feature-state', 'atlasScalarValue'];
@@ -258,7 +285,7 @@ async function applyScalar(entries) {
   const scalar = entries.find(entry => entry.kind === 'scalar') || null;
   if (!scalar) { setBaseFill(NEUTRAL); return; }
   if (scalar.family === 'religion') return applyReligionScalar(scalar);
-  if (scalar.id === 'stat.population' || scalar.id === 'stat.area') return applyGeographicScalar(scalar);
+  if (scalar.runtime_scalar) return applyRuntimeEntityScalar(scalar);
   if (scalar.runtime_metric) return applyRuntimeScalar(scalar);
   setBaseFill(NEUTRAL);
 }
@@ -340,6 +367,7 @@ async function applyQueryHighlight() {
 
 async function render() {
   const serial = ++renderSerial;
+  diagnosticCount('scalarCompositions');
   const entries = layers.active().map(id => layers.get(id)).filter(Boolean);
   try {
     await applyScalar(entries);
