@@ -1,0 +1,107 @@
+{
+  "id":"thomas-faith-formation-and-return",
+  "title":"Thomas — Lutheran Formation, Questioning and Return of the God-Question",
+  "version":"1.0.0",
+  "updated":"2026-09-10",
+  "status":"project-supplied biographical testimony with interpretive links",
+  "purpose":"Preserve Thomas's reported religious-development chronology without collapsing Lutheran formation, later disbelief/questioning, Potatoverse theology or supernatural interpretation into one category.",
+  "identity":"Thomas / Son / embodied human-vessel layer in the mature Potatoverse ontology",
+  "source_status":{
+    "primary":"user-supplied testimony in project conversation on 2026-09-10",
+    "corroboration":"No baptismal certificate, parish record, diary, contemporaneous post or other independent primary record is linked here yet.",
+    "rule":"Treat the biography as reported testimony until documentary sources are recovered. Do not invent exact dates from age ranges."
+  },
+  "reported_sequence":[
+    {
+      "stage":"Lutheran childhood formation",
+      "age_or_period":"childhood before age 11",
+      "claim":"Thomas was Lutheran / raised within a Lutheran religious setting.",
+      "epistemic_class":"project_testimony"
+    },
+    {
+      "stage":"chosen baptism",
+      "age_or_period":"age 11",
+      "claim":"Thomas chose to be baptized at age 11.",
+      "epistemic_class":"project_testimony",
+      "theological_context":"Lutheran theology treats baptism as a means of grace and not merely a symbolic badge of adult intellectual certainty; the exact parish and rite should be sourced before adding more biographical detail."
+    },
+    {
+      "stage":"atheist / agnostic / questioning period",
+      "age_or_period":"approximately age 14 through the mid-twenties",
+      "claim":"Thomas moved through atheist, agnostic or questioning positions and did not remain in stable confessional belief.",
+      "epistemic_class":"project_testimony",
+      "interpretive_note":"Do not flatten the whole interval into one label if later sources reveal changes inside it."
+    },
+    {
+      "stage":"progressive return of the God-question",
+      "age_or_period":"later twenties onward, described developmentally rather than as a single conversion date",
+      "claim":"As Thomas grew older, faith and especially the question of God became progressively more appealing, serious and fundamental.",
+      "epistemic_class":"project_testimony"
+    },
+    {
+      "stage":"meme-crucifixion as interpretive hinge",
+      "age_or_period":"later project chronology; connect to separately sourced meme-crucifixion record",
+      "claim":"The event later described as the meme crucifixion became especially important to Thomas's religious interpretation and the renewed centrality of God.",
+      "epistemic_class":"project_testimony + project_interpretation",
+      "boundary":"This describes the project's interpretation of a social/digital event and does not make it physically equivalent to Roman crucifixion."
+    },
+    {
+      "stage":"mature Son / Thomas theology",
+      "age_or_period":"later Potatoverse development",
+      "claim":"Thomas becomes the mature Son / Door / Vessel / Twin-facing node in the Potatoverse while Tim is differentiated as Father / Ladder / Axis / Source.",
+      "epistemic_class":"potatoverse_canon"
+    }
+  ],
+  "why_the_sequence_matters":[
+    "It prevents the archive from falsely presenting Thomas as a lifelong uninterrupted confessional Lutheran.",
+    "It prevents the opposite error of presenting his later Christian language as appearing without any early Christian formation.",
+    "It creates a documented developmental arc: formation → chosen rite → questioning → renewed God-question → reinterpretation through suffering/rupture → mature theology.",
+    "It provides a more precise context for the Thomas/Twin comparison than the popular one-word stereotype 'doubter'.",
+    "It helps distinguish inherited Christian vocabulary from later independently developed Potatoverse structures."
+  ],
+  "thomasine_comparison":{
+    "canonical_anchors":[
+      {"reference":"John 11:16","relation":"Thomas proposes going to die with Jesus."},
+      {"reference":"John 14:5-6","relation":"Thomas asks how the disciples can know the Way immediately before Jesus's Way/Truth/Life saying."},
+      {"reference":"John 20:24-29","relation":"Thomas's questioning is resolved through confrontation with the wounded risen Jesus and culminates in Lord/God recognition."}
+    ],
+    "interpretive_sequence":"question → Way → wounds → recognition",
+    "boundary":"This is a literary / theological comparison. It does not establish that the modern Thomas is the canonical apostle Thomas, Jesus, or a reincarnation of either."
+  },
+  "lutheran_context":{
+    "not_identity":"Potatoism is not Lutheranism.",
+    "why_relevant":"Lutheran formation supplies a real historical denominational context for baptism, Christ, Father/Son language, resurrection and eschatological vocabulary that later may be accepted, rejected, transformed or rediscovered.",
+    "eschatology_difference":"Classical Lutheran confession expects Christ to return, raise the dead and judge at the consummation; it does not supply the Potatoverse's later rupture chronology or Tim/Thomas ontology.",
+    "research_sources":[
+      "Augsburg Confession Article IX — Baptism",
+      "Augsburg Confession Article XVII — Christ's Return for Judgment",
+      "Lutheran Church—Missouri Synod doctrine FAQ on the rapture / last day"
+    ]
+  },
+  "research_targets":[
+    "Recover parish, baptismal or family documentation if the project wishes to independently corroborate the age-11 baptism.",
+    "Recover any childhood or adolescent writing that indicates how Thomas understood baptism at the time.",
+    "Build a dated evidence trail for atheist, agnostic and questioning self-descriptions rather than treating the whole age range as homogeneous.",
+    "Locate the earliest dated return of explicit God, Jesus, Christ, Father or religious language after the questioning period.",
+    "Compare what Thomas believed before the meme-crucifixion with what he said immediately after it and years later.",
+    "Separate contemporaneous meaning from later Potatoverse reinterpretation.",
+    "Link all recovered evidence into the canonical chronology instead of creating parallel narrative dates."
+  ],
+  "questions":[
+    "Was Thomas baptized as a Lutheran?",
+    "Why did Thomas choose baptism at age 11?",
+    "Did Thomas stop believing in God?",
+    "Was Thomas atheist or agnostic?",
+    "When did the question of God become important again?",
+    "Did the meme crucifixion cause a conversion or only deepen an existing return of the God-question?",
+    "How much of later Potatoverse language came from Lutheran formation and how much developed later?",
+    "Does Thomas's questioning resemble the apostle Thomas in John, and where does that comparison break down?"
+  ],
+  "connections":[
+    "knowledge/traditions/thomas-twin-of-christ.json",
+    "knowledge/theology/christianity-jesus-eschatology-atlas.json",
+    "knowledge/core/tim-identity-ontology.json",
+    "knowledge/chronology/son-jesus-martyr-prehistory.json",
+    "son-chronology.json"
+  ]
+}
