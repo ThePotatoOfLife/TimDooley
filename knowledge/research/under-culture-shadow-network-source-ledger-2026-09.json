@@ -1,0 +1,324 @@
+{
+  "id": "under-culture-shadow-network-source-ledger-2026-09",
+  "updated": "2026-09-12",
+  "status": "active-source-ledger",
+  "purpose": "Primary and strong-secondary source ledger for the Under-Culture / Shadow Network expansion. Inclusion means a source supports a bounded factual or methodological claim; it does not imply that all entities in this ledger are connected.",
+  "epistemic_rule": "A source supports only the claims explicitly listed under supports. Cross-source adjacency is not evidence of coordination.",
+  "sources": [
+    {
+      "id": "fec-aipac-pac-2026-07",
+      "publisher": "Federal Election Commission",
+      "title": "American Israel Public Affairs Committee Political Action Committee — committee overview",
+      "url": "https://www.fec.gov/data/committee/C00797670/",
+      "source_class": "primary-official",
+      "supports": [
+        "AIPAC PAC FEC ID C00797670",
+        "active monthly membership-organization PAC and lobbyist/registrant PAC",
+        "2025-01-01 through 2026-07-31 total receipts $50,061,505.47",
+        "total disbursements $48,460,201.45",
+        "contributions to other committees $45,895,280.00"
+      ]
+    },
+    {
+      "id": "fec-udp-2026-07",
+      "publisher": "Federal Election Commission",
+      "title": "United Democracy Project — committee overview",
+      "url": "https://www.fec.gov/data/committee/C00799031/",
+      "source_class": "primary-official",
+      "supports": [
+        "United Democracy Project FEC ID C00799031",
+        "active monthly Super PAC / independent-expenditure-only committee",
+        "2025-01-01 through 2026-07-31 receipts $107,542,702.64",
+        "disbursements $77,208,509.82",
+        "independent expenditures $50,927,163.82"
+      ]
+    },
+    {
+      "id": "israel365-about",
+      "publisher": "Israel365",
+      "title": "Israel365 — Our Story / Mission",
+      "url": "https://israel365.com/",
+      "source_class": "primary-public-statement",
+      "supports": [
+        "Tuly Weisz founded Israel365 on 2012-01-01",
+        "self-described mission connects Jews and Christians through Torah education, advocacy and support for Israel",
+        "Israel365 describes itself as an Orthodox Jewish institution"
+      ],
+      "limitation": "Organization self-description; mission and reach claims should not be treated as independent evaluation."
+    },
+    {
+      "id": "propublica-teach-for-israel-2024",
+      "publisher": "ProPublica Nonprofit Explorer using IRS Form 990 data",
+      "title": "Teach For Israel Inc",
+      "url": "https://projects.propublica.org/nonprofits/organizations/454041360",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Teach For Israel Inc EIN 45-4041360",
+        "501(c)(3), tax-exempt since September 2012",
+        "FY2024 revenue $2,624,801",
+        "FY2024 expenses $2,696,925",
+        "FY2024 assets $386,433 and liabilities $515,403",
+        "FY2024 contributions $2,624,801"
+      ]
+    },
+    {
+      "id": "vine-fig-tree-institute-2024",
+      "publisher": "IRS Form 990 data via philanthropy.org",
+      "title": "Vine & Fig Tree Institute I Inc",
+      "url": "https://philanthropy.org/990/report/992090467/vine-fig-tree-institute-i-inc",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Vine & Fig Tree Institute I Inc EIN 99-2090467",
+        "public charity / 501(c)(3)",
+        "FY2024 revenue approximately $3.0 million",
+        "FY2024 expenses approximately $1.1 million",
+        "FY2024 grant of $850,000 to Vine & Fig Tree Fund Inc"
+      ]
+    },
+    {
+      "id": "vine-fig-tree-fund-2024",
+      "publisher": "ProPublica Nonprofit Explorer using IRS Form 990 data",
+      "title": "Vine & Fig Tree Fund Inc",
+      "url": "https://projects.propublica.org/nonprofits/organizations/992100887",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Vine & Fig Tree Fund Inc EIN 99-2100887",
+        "FY2024 revenue $850,536",
+        "FY2024 expenses $742,095",
+        "FY2024 contributions $850,536"
+      ]
+    },
+    {
+      "id": "vine-fig-tree-fund-grants-2024",
+      "publisher": "IRS Form 990 data via philanthropy.org",
+      "title": "Vine & Fig Tree Fund Inc — grants",
+      "url": "https://philanthropy.org/990/report/992100887/vine-fig-tree-fund-inc",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Fund reported one $850,000 grant received from Vine & Fig Tree Institute I in FY2024",
+        "Fund reported downstream grants including $250,000 to Combat Hate Foundation, $100,000 to October 7th Coalition, and $100,000 to Merona Leadership Foundation"
+      ]
+    },
+    {
+      "id": "sec-palantir-2024",
+      "publisher": "U.S. Securities and Exchange Commission / Palantir 10-K",
+      "title": "Palantir Technologies Inc. Form 10-K for 2024",
+      "url": "https://www.sec.gov/Archives/edgar/data/1321655/000132165525000022/pltr-20241231.htm",
+      "source_class": "regulatory-filing",
+      "supports": [
+        "Palantir stated that in 2024 it agreed to a strategic partnership with the Israeli Defense Ministry",
+        "Palantir stated the partnership supplied technology to assist Israel in the ongoing war",
+        "Palantir stated its Ukraine- and Israel-related operations were not material to its financial position or results at the time of filing"
+      ]
+    },
+    {
+      "id": "propublica-tpusa-2025",
+      "publisher": "ProPublica Nonprofit Explorer using IRS Form 990 data",
+      "title": "Turning Point USA Inc",
+      "url": "https://projects.propublica.org/nonprofits/organizations/800835023",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Turning Point USA EIN 80-0835023",
+        "FY ending June 2025 revenue $115,452,493",
+        "expenses $103,939,274",
+        "contributions $114,463,864, reported as 99.1% of revenue",
+        "net assets $29,391,753"
+      ]
+    },
+    {
+      "id": "propublica-israel-campus-coalition-2025",
+      "publisher": "ProPublica Nonprofit Explorer using IRS Form 990 data",
+      "title": "Israel On Campus Coalition Inc",
+      "url": "https://projects.propublica.org/nonprofits/organizations/300664947",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Israel On Campus Coalition EIN 30-0664947",
+        "501(c)(3)",
+        "FY ending June 2025 revenue $26,411,650",
+        "FY2025 expenses $22,173,376",
+        "contributions $25,971,434"
+      ]
+    },
+    {
+      "id": "propublica-standwithus",
+      "publisher": "ProPublica Nonprofit Explorer using IRS Form 990 data",
+      "title": "Israel Emergency Alliance / StandWithUs",
+      "url": "https://projects.propublica.org/nonprofits/organizations/10566033",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Israel Emergency Alliance EIN 01-0566033",
+        "StandWithUs is reported as the organization name/brand in IRS-derived records",
+        "501(c)(3), tax-exempt since June 2002"
+      ]
+    },
+    {
+      "id": "propublica-maccabee-2024",
+      "publisher": "ProPublica Nonprofit Explorer using IRS Form 990-PF data",
+      "title": "Maccabee Task Force Foundation",
+      "url": "https://projects.propublica.org/nonprofits/organizations/474908810",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Maccabee Task Force Foundation EIN 47-4908810",
+        "FY2024 revenue $6,870,809",
+        "FY2024 expenses $9,882,336",
+        "FY2024 contributions received $6,727,830",
+        "David Brog listed as executive director"
+      ]
+    },
+    {
+      "id": "propublica-tikvah-2024",
+      "publisher": "ProPublica Nonprofit Explorer using IRS Form 990-PF data",
+      "title": "The Tikvah Fund",
+      "url": "https://projects.propublica.org/nonprofits/organizations/133676152",
+      "source_class": "regulatory-filing-derived",
+      "supports": [
+        "Tikvah Fund EIN 13-3676152",
+        "FY2024 revenue $18,771,688",
+        "FY2024 expenses $25,736,010",
+        "FY2024 net assets $83,152,021",
+        "leadership reported in filing includes Eric S. Cohen and Elliott Abrams"
+      ]
+    },
+    {
+      "id": "doj-epstein-release-2026-01",
+      "publisher": "U.S. Department of Justice",
+      "title": "Department of Justice Publishes 3.5 Million Responsive Pages in Compliance with the Epstein Files Transparency Act",
+      "url": "https://www.justice.gov/opa/pr/department-justice-publishes-35-million-responsive-pages-compliance-epstein-files",
+      "source_class": "primary-official",
+      "supports": [
+        "DOJ announced nearly 3.5 million pages released by January 30, 2026",
+        "release included more than 2,000 videos and 180,000 images",
+        "material came from multiple Epstein/Maxwell cases, FBI investigations and OIG material",
+        "DOJ warned the corpus may include fake or falsely submitted material because responsive public submissions were included"
+      ]
+    },
+    {
+      "id": "fbi-cointelpro-history",
+      "publisher": "Federal Bureau of Investigation",
+      "title": "And Justice for All, 1954–1971",
+      "url": "https://www.fbi.gov/history/history-of-the-fbi/and-justice-for-all",
+      "source_class": "primary-official-historical",
+      "supports": [
+        "COINTELPRO involved infiltration of groups",
+        "FBI history acknowledges agents sowed discord and attempted to discredit groups in some cases",
+        "some targets had little or no evidence of unlawful activities",
+        "COINTELPRO ended in 1971 and was later criticized by Congress and the public"
+      ]
+    },
+    {
+      "id": "new-yorker-weinstein-black-cube-contract",
+      "publisher": "The New Yorker",
+      "title": "The contract between a private security firm and one of Harvey Weinstein’s lawyers",
+      "url": "https://www.newyorker.com/sections/news/read-the-contract-between-a-private-security-firm-and-one-of-harvey-weinsteins-lawyers",
+      "source_class": "investigative-reporting-with-primary-document",
+      "supports": [
+        "David Boies signed a 2017 contract with Black Cube for work connected to Weinstein",
+        "contract objective included obtaining information useful to stopping publication of a negative newspaper story",
+        "another objective included obtaining Rose McGowan's manuscript"
+      ]
+    },
+    {
+      "id": "doj-oig-nassar-2021",
+      "publisher": "U.S. Department of Justice Office of Inspector General",
+      "title": "Investigation and Review of the FBI’s Handling of Allegations of Sexual Abuse by Former USA Gymnastics Physician Lawrence Gerard Nassar",
+      "url": "https://oig.justice.gov/sites/default/files/reports/21-093.pdf",
+      "source_class": "primary-official-investigation",
+      "supports": [
+        "FBI Indianapolis officials failed to respond with required urgency",
+        "officials made fundamental errors and failed to notify appropriate authorities",
+        "OIG found policy violations, documentation failures and later inaccurate/incomplete statements",
+        "OIG did not find evidence that the failures were motivated by intent to interfere with the investigation"
+      ]
+    },
+    {
+      "id": "doj-nxivm-raniere-2019",
+      "publisher": "U.S. Department of Justice, Eastern District of New York",
+      "title": "Jury Finds Nxivm Leader Keith Raniere Guilty of All Counts",
+      "url": "https://www.justice.gov/usao-edny/pr/jury-finds-nxivm-leader-keith-raniere-guilty-all-counts",
+      "source_class": "primary-official-court-summary",
+      "supports": [
+        "Keith Raniere was convicted in 2019 of racketeering and racketeering conspiracy",
+        "convictions included sex trafficking-related charges, forced-labor conspiracy and wire-fraud conspiracy",
+        "NXIVM provides an anchor case where serious high-control/exploitation conduct was established in court"
+      ]
+    },
+    {
+      "id": "lalich-bounded-choice-2026",
+      "publisher": "Oxford Academic",
+      "title": "Brainwashing Versus Free Choice: Responsibility for Criminal Acts by Cult Members",
+      "url": "https://academic.oup.com/book/63242/chapter-abstract/571229099",
+      "source_class": "academic",
+      "supports": [
+        "Janja Lalich's bounded-choice framework uses four interlocking features: charismatic authority, transcendent belief system, systems of control and systems of influence",
+        "framework is an analytical model for high-control/self-sealing groups, not a universal legal definition"
+      ]
+    },
+    {
+      "id": "splc-hate-methodology",
+      "publisher": "Southern Poverty Law Center",
+      "title": "Methodology: How hate groups are identified and categorized",
+      "url": "https://www.splcenter.org/resources/reports/methodology-how-hate-groups-are-identified-and-categorized/",
+      "source_class": "classifier-methodology",
+      "supports": [
+        "SPLC defines and classifies hate groups using its own stated methodology",
+        "SPLC distinguishes organizations from individuals",
+        "historical methodology relied on publications, citizen reports, law enforcement, field sources, web postings and news reports",
+        "classification should be modeled as classifier -> classification event -> entity, not intrinsic universal truth"
+      ]
+    },
+    {
+      "id": "adl-heat-map",
+      "publisher": "Anti-Defamation League",
+      "title": "ADL H.E.A.T. Map",
+      "url": "https://go.adl.org/resources/tools-to-track-hate/heat-map",
+      "source_class": "ngo-dataset-methodology",
+      "supports": [
+        "ADL HEAT Map tracks specific incidents of hate, extremism, antisemitism and terrorism",
+        "data sources include news/media, government documents, victim reports, extremist-related sources and ADL investigations",
+        "incident mapping is analytically distinct from assigning an organization-level label"
+      ]
+    },
+    {
+      "id": "commerce-nso-candiru-2021",
+      "publisher": "U.S. Department of Commerce",
+      "title": "Commerce Adds NSO Group and Other Foreign Companies to Entity List for Malicious Cyber Activities",
+      "url": "https://www.commerce.gov/news/press-releases/2021/11/commerce-adds-nso-group-and-other-foreign-companies-entity-list",
+      "source_class": "primary-official",
+      "supports": [
+        "NSO Group and Candiru were added to the Entity List in 2021",
+        "Commerce said evidence showed they developed and supplied spyware to foreign governments used to maliciously target officials, journalists, businesspeople, activists, academics and embassy workers"
+      ]
+    },
+    {
+      "id": "sec-cellebrite-2024",
+      "publisher": "U.S. Securities and Exchange Commission / Cellebrite 20-F",
+      "title": "Cellebrite 2024 annual filing",
+      "url": "https://www.sec.gov/Archives/edgar/data/1854587/000162828025013334/cele-20241231.htm",
+      "source_class": "regulatory-filing",
+      "supports": [
+        "Cellebrite reported approximately 7,000 customers",
+        "approximately 5,300 customers were federal, state and local agencies",
+        "public-sector customers accounted for more than 90% of 2024 revenue",
+        "filing describes digital-forensics products/services for legally sanctioned investigations"
+      ]
+    },
+    {
+      "id": "uk-savile-hmic-2013",
+      "publisher": "UK Government / Home Office statement on HMIC review",
+      "title": "HMIC's review into allegations and intelligence material concerning Jimmy Savile",
+      "url": "https://www.gov.uk/government/speeches/hmics-review-into-allegations-and-intelligence-material-concerning-jimmy-savile",
+      "source_class": "primary-official",
+      "supports": [
+        "HMIC found police investigative and intelligence-sharing failures",
+        "government statement said those failures enabled Savile to act with impunity for over five decades"
+      ]
+    }
+  ],
+  "unresolved_source_jobs": [
+    "Obtain and verify the exact Stand Together Trust FY2024 filing entry for the reported grant to Vine & Fig Tree Institute I before storing the grant as canonical.",
+    "Resolve Vine & Fig Tree Action Inc through its own IRS filing and distinguish officers/address/legal purpose from Institute I and Fund.",
+    "Recover primary/archive evidence for the historical 'Ethan Ralph / Da Sektur' taxonomy before promoting it beyond a research lead.",
+    "Add current CUFI, J Street, DMFI and other comparison-network filings with exact legal-entity decomposition.",
+    "Add current procurement/contract records for Palantir, Cellebrite, NSO/Candiru-related government actions and other surveillance vendors where publicly available."
+  ]
+}

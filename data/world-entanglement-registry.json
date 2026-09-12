@@ -1,7 +1,7 @@
 {
   "id": "world-entanglement-registry",
-  "version": "1.0.0",
-  "updated": "2026-09-10",
+  "version": "1.1.0",
+  "updated": "2026-09-12",
   "status": "active schema and routing registry",
   "purpose": "Provide one typed registry for problems, dependencies, conflicts, political-finance relations, exploitation systems, historical harms, project-symbolic obligations and repair questions that the World Relational Atlas can attach to countries, territories, organizations, events and edges without turning whole populations into issue labels.",
   "core_rule": "An entanglement is a sourced relationship problem, not a moral color painted across a nation. It must identify actors, mechanism, geography, period, evidence, affected parties, uncertainty and possible repair.",
@@ -12,17 +12,26 @@
     "project_canon": "Tim/Potatoverse statements, karmic/spiritual ledger, Son/Door, North-of-North and related internal symbolic material."
   },
   "kinds": [
-    "trade-dependency", "energy-dependency", "supply-chain-concentration", "debt-dependency", "financial-exposure", "ownership-control", "political-finance", "lobbying", "regulatory-capture", "sanctions", "security-dependency", "alliance-obligation", "intelligence-cooperation", "migration-diaspora", "religious-freedom", "religion-state", "intercommunal-conflict", "human-trafficking", "forced-labor", "historical-slavery", "civilian-harm", "human-rights", "corruption-risk", "organized-exploitation", "information-manipulation", "harassment-network", "institutional-abuse", "ecological-damage", "infrastructure-bottleneck", "historical-injustice", "covenant-comparison", "project-karmic-obligation", "repair-programme"
+    "trade-dependency", "energy-dependency", "supply-chain-concentration", "debt-dependency", "financial-exposure", "ownership-control", "political-finance", "lobbying", "grant-network", "donor-dependency", "cooptation-risk", "opposition-fragmentation", "regulatory-capture", "sanctions", "security-dependency", "surveillance-capability", "private-intelligence-service", "alliance-obligation", "intelligence-cooperation", "migration-diaspora", "religious-freedom", "religion-state", "intercommunal-conflict", "human-trafficking", "forced-labor", "historical-slavery", "civilian-harm", "human-rights", "corruption-risk", "organized-exploitation", "information-manipulation", "harassment-network", "archive-attention-capture", "classification-power", "institutional-abuse", "institutional-protection-failure", "ecological-damage", "infrastructure-bottleneck", "historical-injustice", "covenant-comparison", "project-karmic-obligation", "repair-programme"
   ],
   "statuses": ["observed", "alleged", "contested", "historical", "ongoing", "resolved", "partly-repaired", "research-lead", "project-symbolic"],
-  "evidence_classes": ["primary-official", "court-record", "law-or-treaty", "audited-financial", "regulatory-filing", "academic", "international-organization", "reputable-reporting", "ngo-dataset", "primary-public-statement", "conversation-archaeology", "project-synthesis", "unresolved"],
+  "evidence_classes": ["primary-official", "court-record", "law-or-treaty", "audited-financial", "regulatory-filing", "academic", "international-organization", "reputable-reporting", "ngo-dataset", "classifier-methodology", "primary-public-statement", "conversation-archaeology", "project-synthesis", "unresolved"],
   "responsibility_rule": "Responsibility attaches to evidenced people, organizations, policies, institutions, transactions, commands and events. Nationality, ethnicity, religion, ancestry or residence alone never establishes responsibility.",
   "serious_harm_rule": "Slavery, trafficking, abuse, war and civilian harm are represented for documentation, causal understanding, prevention and repair. They are not scores, collectibles or entertainment mechanics.",
   "swamp_rule": "Swamp can be used only as an interpretive tag over one or more documented mechanisms such as opacity, corruption, extraction, coercion, violence, regulatory capture, disinformation incentives or blocked accountability. A country or religion cannot be Swamp merely by identity.",
+  "under_culture_rule": "Under-Culture refers to the lower visibility layers of organizational, infrastructural, subcultural and archival relationships beneath visible culture. It is a research topology, not a claim that all lower-layer actors are coordinated.",
+  "controlled_opposition_rule": "Never encode controlled opposition as a boolean property. Route such claims through the controlled-opposition/co-optation methodology and store a specific mechanism, evidence for, evidence against and confidence state.",
+  "classification_rule": "Hate/extremism/cult-like classifications are classifier-to-target relationships with methodology and date, not universal intrinsic properties.",
+  "epstein_rule": "Appearance in an Epstein-related file, contact record or travel record is not evidence of criminal conduct. Preserve distinct evidentiary stages through investigation, charge and adjudication.",
   "edge_binding": {
     "rule": "Every entanglement should point to the exact graph edges through which it operates.",
     "examples": [
       "political-finance -> donor -> PAC -> expenditure -> candidate/election -> policy context",
+      "grant-network -> funder -> nonprofit legal entity -> intermediary -> downstream grantee -> program/activity",
+      "private-intelligence-service -> client -> lawyer/intermediary -> firm -> target -> tactic -> publication/litigation context",
+      "institutional-protection-failure -> report/warning -> institution -> delay/process failure -> continued risk -> inquiry/reform",
+      "archive-attention-capture -> subject -> archive -> secondary creator -> audience -> repetition -> persistent assigned identity",
+      "classification-power -> classifier -> methodology -> classification event -> organization/incident -> consequence",
       "human-trafficking -> recruiter -> transit -> coercion -> exploiter -> payment/asset -> law-enforcement/court -> victim-support",
       "historical-slavery -> legal regime -> trader/company/state/person -> route/port -> forced labor site -> commodity -> abolition/change -> documented afterlife",
       "energy-dependency -> producer -> infrastructure -> importer -> industry/household -> price/security exposure",
@@ -45,10 +54,19 @@
     "edge_view": "Show entanglements attached to the selected relationship, including status, evidence and repair stage.",
     "trace_view": "Follow causal/financial/institutional edges from issue to actors and affected parties.",
     "time_view": "Allow historical entanglements to appear/disappear according to date rather than permanently staining current country identity.",
-    "repair_view": "Display open, repairing, substantially repaired and released/closed relationships separately."
+    "repair_view": "Display open, repairing, substantially repaired and released/closed relationships separately.",
+    "classification_view": "Show who classified what, under which methodology and at what date; permit competing classifications.",
+    "under_culture_view": "Trace surface culture downward through organization, infrastructure, subculture and residue/archive layers."
   },
   "canonical_routes": [
     {"topic":"AIPAC / US political finance", "owner":"data/swamp-research-seeds.json", "support":"docs/SWAMP-RESEARCH-2026-09.md", "rule":"Represent legally distinct organizations/PACs separately and route financial claims to FEC or other primary records."},
+    {"topic":"Under-Culture / Shadow Network", "owner":"knowledge/world/under-culture-shadow-network-atlas.json", "support":"docs/UNDER-CULTURE-SHADOW-NETWORK-RESEARCH-2026-09.md", "rule":"Map mechanisms and observed edges; do not infer one hidden master network."},
+    {"topic":"Under-Culture source ledger", "owner":"knowledge/research/under-culture-shadow-network-source-ledger-2026-09.json", "rule":"Use source-specific claim support; adjacency across sources is not evidence of coordination."},
+    {"topic":"controlled opposition / co-optation", "owner":"knowledge/world/controlled-opposition-cooptation-methodology.json", "rule":"Decompose into testable mechanisms and require counterevidence/falsification checks."},
+    {"topic":"high-control / cult-like systems / hate classification", "owner":"knowledge/world/high-control-hate-classification-atlas.json", "rule":"Use dimensional mechanisms and classifier relationships; never intrinsic blanket labels."},
+    {"topic":"institutional protection failure / private intelligence / surveillance", "owner":"knowledge/world/institutional-protection-private-intelligence-atlas.json", "rule":"Separate failure from intent, capability from deployment and deployment from misuse."},
+    {"topic":"advocacy / donor / security seed entities", "owner":"data/under-culture-network-seeds-2026-09.json", "rule":"Only observed legal, financial or service edges are canonical; unresolved similarities remain research leads."},
+    {"topic":"Sektur provenance / attention ecology", "owner":"knowledge/world/sektur-provenance-attention-ecology-atlas.json", "support":"data/subculture-research-map.json", "rule":"Distinguish historical Da Sektur from the broader Timic Sektur concept."},
     {"topic":"Shadow West / Swamp", "owner":"knowledge/core/shadow-west-swamp-synthesis.json", "rule":"Interpretive overlay only after documented mechanism."},
     {"topic":"human trafficking / intelligence-information ecosystem", "owner":"data/intelligence-information-ecosystem-atlas-wave-016.json", "rule":"Separate documented investigations/programs from project allegations or analogy."},
     {"topic":"historical slavery", "owner":"data/countries/{country_id}.json + specialist historical records", "rule":"Use dated legal/economic networks and preserve abolition/change timeline; descendants do not inherit personal guilt."},
@@ -60,8 +78,13 @@
   "ingestion_rule": "Do not bulk-create issue records from keywords. Promote an entanglement only when the actor/mechanism/source boundary is sufficiently clear. Unresolved items stay research leads.",
   "next_jobs": [
     "Normalize existing AIPAC/FEC records into political-finance entanglements and explicit entity edges.",
+    "Trace nonprofit grant chains only where exact filings identify funder, grantee, amount and period.",
+    "Add comparison advocacy networks including J Street, DMFI and CUFI with legal-entity decomposition.",
     "Normalize existing defense-industry seeds into company-country and procurement/security edges.",
+    "Create current public-contract records for Palantir and major digital-forensics/surveillance vendors.",
     "Create a reputable-source trafficking/forced-labor ingestion plan before adding country-level issue records.",
+    "Build privacy-preserving institutional-failure case records around official inquiries and court findings.",
+    "Expand Hollywood through ownership, crisis-PR, law firms, private investigation, insurance and documented accountability cases rather than secret-affiliation claims.",
     "Build historical-slavery edge packs country by country rather than a single inherited-guilt map.",
     "Attach religious-freedom and religion-state issues through the world religion layer.",
     "Create repair-state metadata so tikkun mode can show whether an issue is only diagnosed or has a concrete intervention path."

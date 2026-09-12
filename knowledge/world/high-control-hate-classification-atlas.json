@@ -1,0 +1,96 @@
+{
+  "id": "high-control-hate-classification-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "comparative-methodology",
+  "purpose": "Represent high-control/coercive systems and hate/extremism classifications without turning contested labels into intrinsic properties of people or organizations.",
+  "high_control_rule": "Do not store cult=true. Store observable dimensions, named analytical models, legal findings and evidence status.",
+  "high_control_dimensions": [
+    {"id": "charismatic-authority", "description": "Authority concentrated around a leader whose legitimacy is treated as exceptional or overriding."},
+    {"id": "transcendent-belief-system", "description": "A binding worldview that can become self-sealing when competing information is delegitimized."},
+    {"id": "systems-of-control", "description": "Rules, surveillance, discipline, resource control, labor control or sanctions shaping member behavior."},
+    {"id": "systems-of-influence", "description": "Repeated social, informational or emotional processes reinforcing group commitments and interpretations."},
+    {"id": "information-restriction", "description": "Limits on outside sources, relationships or critical information."},
+    {"id": "punishment-of-dissent", "description": "Formal or informal retaliation for criticism, questioning, disclosure or exit."},
+    {"id": "dependency-creation", "description": "Economic, social, housing, labor, identity or relationship dependence that raises exit costs."},
+    {"id": "monitoring-surveillance", "description": "Systematic observation, reporting or documentation of member behavior."},
+    {"id": "financial-or-labor-extraction", "description": "Material extraction substantially beyond ordinary voluntary association, especially when coercive or deceptive."},
+    {"id": "sexual-or-relational-control", "description": "Control over intimate relationships or sexual behavior, especially where coercion or exploitation is documented."},
+    {"id": "high-exit-cost", "description": "Threats, collateral, social exclusion, financial loss, legal pressure or fear making exit unusually costly."},
+    {"id": "accountability-closure", "description": "Internal mechanisms block external oversight, investigation or correction."
+    }
+  ],
+  "analytical_models": [
+    {
+      "id": "lalich-bounded-choice",
+      "author": "Janja Lalich",
+      "features": ["charismatic-authority", "transcendent-belief-system", "systems-of-control", "systems-of-influence"],
+      "source": "https://academic.oup.com/book/63242/chapter-abstract/571229099",
+      "status": "scholarly analytical framework",
+      "limitation": "Not a universal legal definition and not proof that every group displaying one feature is abusive."
+    }
+  ],
+  "anchor_cases": [
+    {
+      "id": "nxivm-raniere",
+      "entity": "NXIVM / Keith Raniere",
+      "status": "court-established serious criminal conduct",
+      "source": "https://www.justice.gov/usao-edny/pr/jury-finds-nxivm-leader-keith-raniere-guilty-all-counts",
+      "findings": ["racketeering", "sex-trafficking-related convictions", "forced-labor conspiracy", "wire-fraud conspiracy"],
+      "use": "Anchor showing why a high-control analysis should connect to observable coercion and adjudicated conduct rather than unusual beliefs alone."
+    }
+  ],
+  "classification_power_model": {
+    "rule": "A classification is a dated relationship between classifier, methodology and target; it is not an eternal property of the target.",
+    "required_fields": ["classifier", "target", "category", "methodology", "classification_date_or_period", "evidence_summary", "source", "status", "counterclassification_or_dispute"]
+  },
+  "hate_extremism_objects": [
+    {
+      "id": "incident",
+      "fields": ["date", "location", "conduct", "target_or_affected_party", "bias_or_category", "criminal_status", "source", "classifier_if_any"]
+    },
+    {
+      "id": "organization-or-network",
+      "fields": ["legal_or_social_identity", "geography", "period", "membership_or_activity_evidence", "public_statements", "documented_actions"]
+    },
+    {
+      "id": "classifier",
+      "fields": ["name", "institution_type", "methodology", "jurisdiction_or_scope", "update_frequency", "known_limitations"]
+    },
+    {
+      "id": "classification-event",
+      "fields": ["classifier", "target", "category", "date", "methodology_version", "supporting_evidence", "dispute_or_response"]
+    }
+  ],
+  "classifier_seeds": [
+    {
+      "id": "splc",
+      "name": "Southern Poverty Law Center",
+      "object_type": "organization classifier",
+      "source": "https://www.splcenter.org/resources/reports/methodology-how-hate-groups-are-identified-and-categorized/",
+      "methodological_notes": [
+        "SPLC says it classifies organizations, not individuals, as hate groups.",
+        "Its methodology uses official statements/principles, leader statements and activities, plus multiple information sources.",
+        "Its historical map methodology has changed over time and should retain year/version context."
+      ]
+    },
+    {
+      "id": "adl-heat",
+      "name": "ADL H.E.A.T. Map",
+      "object_type": "incident dataset",
+      "source": "https://go.adl.org/resources/tools-to-track-hate/heat-map",
+      "methodological_notes": [
+        "Tracks specific incidents of hate, extremism, antisemitism and terrorism.",
+        "Uses news/media, government documents, victim reports, extremist-related sources and ADL investigations.",
+        "Incident mapping should not be silently converted into organization-level guilt or classification."
+      ]
+    }
+  ],
+  "safeguards": [
+    "Religious, political or unconventional beliefs alone do not establish coercive control.",
+    "A watchdog classification does not establish criminality unless criminal conduct is separately documented.",
+    "Different classifiers may disagree; store disagreement rather than flattening it.",
+    "A person should not inherit a group-level label merely through association, attendance, readership or social contact.",
+    "Classification records require dates because organizations, leadership and methodology can change."
+  ]
+}

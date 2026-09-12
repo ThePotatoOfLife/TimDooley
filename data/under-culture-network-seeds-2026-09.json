@@ -1,0 +1,47 @@
+{
+  "id": "under-culture-network-seeds-2026-09",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "research-seeds",
+  "purpose": "Normalized seed entities and observed edges for continued Under-Culture research. This is not a list of organizations under common control.",
+  "source_ledger": "knowledge/research/under-culture-shadow-network-source-ledger-2026-09.json",
+  "entities": [
+    {"id":"aipac-pac","name":"American Israel Public Affairs Committee Political Action Committee","type":"pac","identifier":"C00797670","jurisdiction":"US federal","period":"2025-01-01 to 2026-07-31","metrics":{"receipts_usd":50061505.47,"disbursements_usd":48460201.45,"contributions_to_other_committees_usd":45895280.0},"source_id":"fec-aipac-pac-2026-07"},
+    {"id":"united-democracy-project","name":"United Democracy Project","type":"super-pac","identifier":"C00799031","jurisdiction":"US federal","period":"2025-01-01 to 2026-07-31","metrics":{"receipts_usd":107542702.64,"disbursements_usd":77208509.82,"independent_expenditures_usd":50927163.82},"source_id":"fec-udp-2026-07"},
+    {"id":"israel365","name":"Israel365","type":"religious-media-advocacy-brand","founded":"2012-01-01","founder":"Tuly Weisz","source_id":"israel365-about"},
+    {"id":"teach-for-israel","name":"Teach For Israel Inc","type":"nonprofit-501c3","ein":"45-4041360","period":"FY2024","metrics":{"revenue_usd":2624801,"expenses_usd":2696925,"assets_usd":386433,"liabilities_usd":515403},"source_id":"propublica-teach-for-israel-2024"},
+    {"id":"vine-fig-tree-institute-i","name":"Vine & Fig Tree Institute I Inc","type":"nonprofit-501c3","ein":"99-2090467","period":"FY2024","metrics":{"revenue_usd_approx":3000000,"expenses_usd_approx":1100000},"source_id":"vine-fig-tree-institute-2024"},
+    {"id":"vine-fig-tree-fund","name":"Vine & Fig Tree Fund Inc","type":"nonprofit-501c3","ein":"99-2100887","period":"FY2024","metrics":{"revenue_usd":850536,"expenses_usd":742095},"source_id":"vine-fig-tree-fund-2024"},
+    {"id":"combat-hate-foundation","name":"Combat Hate Foundation","type":"downstream-grantee","status":"entity-resolution-needed","source_id":"vine-fig-tree-fund-grants-2024"},
+    {"id":"october-7th-coalition","name":"October 7th Coalition","type":"downstream-grantee","status":"entity-resolution-needed","source_id":"vine-fig-tree-fund-grants-2024"},
+    {"id":"merona-leadership-foundation","name":"Merona Leadership Foundation","type":"downstream-grantee","status":"entity-resolution-needed","source_id":"vine-fig-tree-fund-grants-2024"},
+    {"id":"palantir","name":"Palantir Technologies Inc","type":"technology-government-contractor","source_id":"sec-palantir-2024"},
+    {"id":"turning-point-usa","name":"Turning Point USA Inc","type":"nonprofit-501c3-political-mobilization","ein":"80-0835023","period":"FY ending 2025-06","metrics":{"revenue_usd":115452493,"expenses_usd":103939274,"contributions_usd":114463864},"source_id":"propublica-tpusa-2025"},
+    {"id":"israel-on-campus-coalition","name":"Israel On Campus Coalition Inc","type":"nonprofit-501c3-campus-advocacy","ein":"30-0664947","period":"FY ending 2025-06","metrics":{"revenue_usd":26411650,"expenses_usd":22173376,"contributions_usd":25971434},"source_id":"propublica-israel-campus-coalition-2025"},
+    {"id":"standwithus-israel-emergency-alliance","name":"Israel Emergency Alliance / StandWithUs","type":"nonprofit-501c3-advocacy","ein":"01-0566033","source_id":"propublica-standwithus"},
+    {"id":"maccabee-task-force-foundation","name":"Maccabee Task Force Foundation","type":"private-foundation-education-advocacy","ein":"47-4908810","period":"FY2024","metrics":{"revenue_usd":6870809,"expenses_usd":9882336,"contributions_received_usd":6727830},"source_id":"propublica-maccabee-2024"},
+    {"id":"tikvah-fund","name":"The Tikvah Fund","type":"private-foundation-education-policy","ein":"13-3676152","period":"FY2024","metrics":{"revenue_usd":18771688,"expenses_usd":25736010,"net_assets_usd":83152021},"source_id":"propublica-tikvah-2024"},
+    {"id":"black-cube","name":"Black Cube","type":"private-intelligence-firm","source_id":"new-yorker-weinstein-black-cube-contract"},
+    {"id":"nso-group","name":"NSO Group","type":"spyware-vendor","official_status":"US Commerce Entity List since 2021 action described in source","source_id":"commerce-nso-candiru-2021"},
+    {"id":"candiru","name":"Candiru","type":"spyware-vendor","official_status":"US Commerce Entity List since 2021 action described in source","source_id":"commerce-nso-candiru-2021"},
+    {"id":"cellebrite","name":"Cellebrite","type":"digital-forensics-vendor","period":"2024","metrics":{"customers_approx":7000,"government_agencies_approx":5300,"public_sector_revenue_share":"more than 90%"},"source_id":"sec-cellebrite-2024"},
+    {"id":"splc","name":"Southern Poverty Law Center","type":"watchdog-classifier","source_id":"splc-hate-methodology"},
+    {"id":"adl","name":"Anti-Defamation League","type":"watchdog-classifier","source_id":"adl-heat-map"},
+    {"id":"nxivm","name":"NXIVM","type":"high-control-group-anchor-case","source_id":"doj-nxivm-raniere-2019"}
+  ],
+  "observed_edges": [
+    {"from":"vine-fig-tree-institute-i","relationship":"GRANTS_TO","to":"vine-fig-tree-fund","amount_usd":850000,"period":"FY2024","source_id":"vine-fig-tree-institute-2024"},
+    {"from":"vine-fig-tree-fund","relationship":"GRANTS_TO","to":"combat-hate-foundation","amount_usd":250000,"period":"FY2024","source_id":"vine-fig-tree-fund-grants-2024"},
+    {"from":"vine-fig-tree-fund","relationship":"GRANTS_TO","to":"october-7th-coalition","amount_usd":100000,"period":"FY2024","source_id":"vine-fig-tree-fund-grants-2024"},
+    {"from":"vine-fig-tree-fund","relationship":"GRANTS_TO","to":"merona-leadership-foundation","amount_usd":100000,"period":"FY2024","source_id":"vine-fig-tree-fund-grants-2024"},
+    {"from":"palantir","relationship":"PARTNERS_WITH","to_external":"Israeli Defense Ministry","period":"2024","qualifier":"strategic partnership to supply technology assisting Israel in the ongoing war","source_id":"sec-palantir-2024"},
+    {"from":"black-cube","relationship":"PROVIDED_SERVICE_TO","to_external":"Harvey Weinstein legal/client network","period":"2017 reporting on engagement","qualifier":"contracted private-intelligence work; source documents objectives related to negative press story and McGowan manuscript","source_id":"new-yorker-weinstein-black-cube-contract"}
+  ],
+  "research_placeholders": [
+    {"id":"figtree-ambiguous","label":"Figtree / Fig Tree","status":"ambiguous-name-family","rule":"Do not merge unrelated ministries, nonprofits or brands by name similarity. Resolve EIN/jurisdiction/leadership first."},
+    {"id":"vine-fig-tree-action","label":"Vine & Fig Tree Action Inc","status":"research-lead","rule":"Resolve EIN, tax status, officers, address and program purpose from primary filing before adding edges."},
+    {"id":"stand-together-to-vine-fig-tree","label":"Stand Together Trust -> Vine & Fig Tree Institute I","status":"reported-lead-needs-primary-verification","rule":"Do not canonicalize the claimed $3m grant until exact filing entry is independently verified."},
+    {"id":"historical-da-sektur","label":"Ethan Ralph / Da Sektur historical taxonomy","status":"archive-provenance-lead","rule":"Require preserved primary/archive evidence before canonical promotion."}
+  ],
+  "negative_edges_rule": "Absence of an observed edge is meaningful. Do not add implicit links among entities simply because they appear in the same research dataset."
+}
