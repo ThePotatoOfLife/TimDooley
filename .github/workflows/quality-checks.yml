@@ -92,6 +92,9 @@ jobs:
       - name: Validate World Map system intelligence
         run: python scripts/validate_world_map_system_intelligence.py
 
+      - name: Validate World Map functional chain explorer
+        run: python scripts/validate_world_map_chain_explorer.py
+
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
 
