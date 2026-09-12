@@ -6,6 +6,7 @@ if (!map || !runtime) throw new Error('Functional chain explorer requires map an
 await runtime.ready;
 
 const LAYER_ID = 'atlas-chain-outline';
+const MAX_INFRASTRUCTURE_TAGS = 4;
 let activeChainId = null;
 let markedCodes = new Set();
 
@@ -40,7 +41,16 @@ function clearFeatureState() {
 }
 
 function strip() { return document.getElementById('atlasChainContext'); }
-function renderStrip(chain) {
+function escapeHtml(value) {
+  return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+}
+function infrastructureHtml(rows) {
+  if (!rows?.length) return '';
+  const visible = rows.slice(0, MAX_INFRASTRUCTURE_TAGS);
+  const remaining = Math.max(0, rows.length - visible.length);
+  return `<div class="chain-infrastructure"><small>Infrastructure</small><div class="atlas-country-tags">${visible.map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${escapeHtml(asset.id)}">${escapeHtml(asset.label || asset.id)}</button>`).join('')}${remaining ? `<span class="atlas-country-tag">+${remaining}</span>` : ''}</div></div>`;
+}
+async function renderStrip(chain) {
   let node = strip();
   if (!chain) { node?.remove(); return; }
   if (!node) {
@@ -50,11 +60,9 @@ function renderStrip(chain) {
     document.querySelector('.mapwrap')?.appendChild(node);
   }
   const systems = (chain.systems || []).slice(0,6).map(value => String(value).replaceAll('-',' ')).join(' · ');
-  node.innerHTML = `<button type="button" data-chain-clear aria-label="Clear functional chain">×</button><small>Functional chain</small><b>${escapeHtml(chain.label || activeChainId)}</b>${systems ? `<span>${escapeHtml(systems)}</span>` : ''}<p>${escapeHtml(chain.description || '')}</p><em>${escapeHtml(chain.epistemic_type || '')}${chain.source_note ? ` · ${escapeHtml(chain.source_note)}` : ''}</em>`;
-}
-
-function escapeHtml(value) {
-  return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  const infrastructure = await runtime.infrastructureForChain?.(activeChainId) || [];
+  if (!node.isConnected || activeChainId !== chain.id && chain.id) return;
+  node.innerHTML = `<button type="button" data-chain-clear aria-label="Clear functional chain">×</button><small>Functional chain</small><b>${escapeHtml(chain.label || activeChainId)}</b>${systems ? `<span>${escapeHtml(systems)}</span>` : ''}<p>${escapeHtml(chain.description || '')}</p>${infrastructureHtml(infrastructure)}<em>${escapeHtml(chain.epistemic_type || '')}${chain.source_note ? ` · ${escapeHtml(chain.source_note)}` : ''}</em>`;
 }
 
 async function setChain(id, { persistState=true } = {}) {
@@ -64,7 +72,7 @@ async function setChain(id, { persistState=true } = {}) {
   if (!chain) {
     activeChainId = null;
     if (persistState) persist();
-    renderStrip(null);
+    await renderStrip(null);
     syncCardActions();
     window.dispatchEvent(new CustomEvent('potato-atlas-chain-change', { detail:{ id:null, chain:null } }));
     return false;
@@ -74,7 +82,7 @@ async function setChain(id, { persistState=true } = {}) {
     try { map.setFeatureState({ source:'countries', id:code }, { atlasChainMatch:true }); markedCodes.add(code); } catch {}
   }
   if (persistState) persist();
-  renderStrip(chain);
+  await renderStrip({ id, ...chain });
   syncCardActions();
   window.dispatchEvent(new CustomEvent('potato-atlas-chain-change', { detail:{ id, chain } }));
   return true;
@@ -124,7 +132,7 @@ function installStyle() {
   style.textContent = `
     .atlas-chain-action{background:transparent;color:#bec8c3;cursor:pointer}.atlas-chain-action:hover,.atlas-chain-action.active{border-color:#bca666;color:#f0d58c;background:#191a14}
     #atlasChainContext{position:absolute;right:10px;bottom:10px;z-index:7;width:min(330px,calc(100% - 20px));padding:10px 12px;background:#080b0be8;border:1px solid #625a3c;border-radius:10px;box-shadow:0 8px 24px #0008;backdrop-filter:blur(10px)}
-    #atlasChainContext small{display:block;color:#8f8a70;font-size:8px;text-transform:uppercase;letter-spacing:.1em}#atlasChainContext b{display:block;margin-top:2px;color:#f0d58c;font-size:13px}#atlasChainContext span{display:block;margin-top:4px;color:#b5b19d;font-size:9px}#atlasChainContext p{margin:6px 0 3px;color:#c7cec8;font-size:10px;line-height:1.35}#atlasChainContext em{display:block;color:#747c76;font-size:8px;font-style:normal}#atlasChainContext [data-chain-clear]{float:right;border:0;background:transparent;color:#9b9e91;cursor:pointer;font-size:15px}@media(max-width:900px){#atlasChainContext{right:8px;bottom:58px;width:min(300px,calc(100% - 16px))}}
+    #atlasChainContext small{display:block;color:#8f8a70;font-size:8px;text-transform:uppercase;letter-spacing:.1em}#atlasChainContext b{display:block;margin-top:2px;color:#f0d58c;font-size:13px}#atlasChainContext span{display:block;margin-top:4px;color:#b5b19d;font-size:9px}#atlasChainContext p{margin:6px 0 3px;color:#c7cec8;font-size:10px;line-height:1.35}#atlasChainContext em{display:block;color:#747c76;font-size:8px;font-style:normal}#atlasChainContext [data-chain-clear]{float:right;border:0;background:transparent;color:#9b9e91;cursor:pointer;font-size:15px}.chain-infrastructure{margin:7px 0;padding-top:6px;border-top:1px solid #3b3828}.chain-infrastructure .atlas-country-tags{display:flex;flex-wrap:wrap;gap:4px}.chain-infrastructure .atlas-country-tag{display:inline-block;background:transparent;color:#bec8c3;cursor:pointer}@media(max-width:900px){#atlasChainContext{right:8px;bottom:58px;width:min(300px,calc(100% - 16px))}}
   `;
   document.head.appendChild(style);
 }

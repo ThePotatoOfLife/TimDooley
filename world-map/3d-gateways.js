@@ -9,7 +9,9 @@ await runtime.ready;
 const SOURCE_ID = 'atlas-context-gateways';
 const POINT_LAYER = 'atlas-context-gateways-points';
 const LABEL_LAYER = 'atlas-context-gateways-labels';
+const MAX_INFRASTRUCTURE_TAGS = 4;
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+let activeGatewayId = null;
 
 runtime.systemContext = async code => {
   const data = await runtime.ready;
@@ -29,7 +31,7 @@ runtime.systemCoverage = async () => {
   return data?.system_coverage || {};
 };
 
-function emptyGeoJSON() { return { type:'FeatureCollection', features:[] }; } // GeoJSON source contract.
+function emptyGeoJSON() { return { type:'FeatureCollection', features:[] }; }
 function gatewayFeature(gateway) {
   const obs = gateway.observation || {};
   return {
@@ -128,20 +130,36 @@ async function injectSystemRole(code) {
 function currentCode(detail = null) {
   return String(detail?.activeCode || detail?.code || selection.current?.activeCode || selection.current?.code || '').toUpperCase();
 }
+function infrastructureHtml(rows) {
+  if (!rows?.length) return '';
+  const visible = rows.slice(0, MAX_INFRASTRUCTURE_TAGS);
+  const remaining = Math.max(0, rows.length - visible.length);
+  return `<p><small>Infrastructure</small><br><span class="atlas-country-tags">${visible.map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${esc(asset.id)}" data-gateway-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('')}${remaining ? `<span class="atlas-country-tag">+${remaining}</span>` : ''}</span></p>`;
+}
+function emitGateway(id, gateway) {
+  activeGatewayId = id || null;
+  window.dispatchEvent(new CustomEvent('potato-atlas-gateway-change', { detail:{ id:activeGatewayId, gateway:gateway || null } }));
+}
 
 ensureGatewayLayers();
 map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
 map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
-map.on('click', POINT_LAYER, event => {
+map.on('click', POINT_LAYER, async event => {
   const feature = event.features?.[0];
   if (!feature) return;
   const p = feature.properties || {};
+  const gateway = await runtime.gateway(p.id) || { id:p.id, label:p.label, type:p.type };
+  const infrastructure = await runtime.infrastructureForGateway?.(p.id) || [];
   const value = Number(p.value);
   const observation = Number.isFinite(value) ? `${value} ${p.unit || ''}`.trim() : 'Observation unavailable';
-  new maplibregl.Popup({ closeButton:true, maxWidth:'300px' })
+  const popup = new maplibregl.Popup({ closeButton:true, maxWidth:'330px' })
     .setLngLat(feature.geometry.coordinates)
-    .setHTML(`<b>${esc(p.label)}</b><br><small>${esc(String(p.type || '').replaceAll('-',' '))}</small><p>${esc(observation)} · ${esc(p.period || '')}</p><small>${esc(p.source || '')}</small>`)
+    .setHTML(`<b>${esc(p.label)}</b><br><small>${esc(String(p.type || '').replaceAll('-',' '))}</small><p>${esc(observation)} · ${esc(p.period || '')}</p>${infrastructureHtml(infrastructure)}<small>${esc(p.source || '')}</small><div class="boundary">Gateway-linked Infrastructure is contextual unless an explicit dependency is represented.</div>`)
     .addTo(map);
+  emitGateway(p.id, gateway);
+  popup.on('close', () => {
+    if (activeGatewayId === p.id) emitGateway(null, null);
+  });
 });
 
 let injectionQueued = false;

@@ -3,7 +3,8 @@
 
 Dependency edges point from the dependent object to what it depends on.
 Impact queries therefore traverse incoming explicit causal edges. Generic
-connectivity, shared membership, and geographic association are not causality.
+connectivity, shared membership, geographic association, and infrastructure
+co-location are not causality.
 """
 from __future__ import annotations
 
@@ -13,6 +14,7 @@ from copy import deepcopy
 
 DEPENDENCY_TYPES = {"depends-on", "dependency", "strategic-dependency", "import-dependence", "depends_on"}
 CAUSAL_STATUSES = {"explicit-dependency"}
+INFRA_CAUSAL_RELATIONSHIPS = {"depends-on", "uses-gateway"}
 IMPORTANCE_ORDER = {"critical": 0, "high": 1, "medium": 2, "low": 3}
 
 
@@ -29,6 +31,10 @@ def importance_rank(value: object) -> int:
 def entity_node_id(code: str, canonical_country: bool = True) -> str:
     code = str(code or "").upper()
     return f"{'country' if canonical_country else 'territory'}:{code}"
+
+
+def infrastructure_node_id(asset_id: str) -> str:
+    return f"infrastructure:{str(asset_id or '').strip()}"
 
 
 def _dependency_sources(record: dict):
@@ -154,7 +160,23 @@ def _resolve_dependency_target(fact: dict, source_node_id: str, lookup: dict[str
     return node_id, {"id": node_id, "kind": "dependency-concept", "label": label, "owner": source_node_id}
 
 
-def build_impact_plane(country_rows: list[dict], country_records: dict[str, dict], entities: dict, gateways: dict, chains: dict) -> dict:
+def _infrastructure_target_node(relation: dict, nodes: dict) -> str | None:
+    target = str(relation.get("target") or "").strip()
+    if not target:
+        return None
+    if target in nodes:
+        return target
+    if ":" in target:
+        return target if target in nodes else None
+    relationship = str(relation.get("relationship") or "").strip()
+    if relationship == "uses-gateway":
+        candidate = f"gateway:{target}"
+        return candidate if candidate in nodes else None
+    candidate = f"infrastructure:{target}"
+    return candidate if candidate in nodes else None
+
+
+def build_impact_plane(country_rows: list[dict], country_records: dict[str, dict], entities: dict, gateways: dict, chains: dict, infrastructure: dict | None = None) -> dict:
     """Build one generated impact plane from canonical owners."""
     nodes: dict[str, dict] = {}
     edges: list[dict] = []
@@ -180,6 +202,18 @@ def build_impact_plane(country_rows: list[dict], country_records: dict[str, dict
         node_id = f"chain:{chain_id}"
         nodes[node_id] = {"id": node_id, "kind": "functional-chain", "chain_id": chain_id, "label": chain.get("label") or chain_id, "epistemic_type": chain.get("epistemic_type")}
 
+    infrastructure_assets = (infrastructure or {}).get("assets") or {}
+    for asset_id, asset in infrastructure_assets.items():
+        node_id = infrastructure_node_id(asset_id)
+        nodes[node_id] = {
+            "id": node_id,
+            "kind": "infrastructure",
+            "infrastructure_id": asset_id,
+            "infrastructure_type": asset.get("type"),
+            "label": asset.get("label") or asset_id,
+            "countries": deepcopy(asset.get("countries") or []),
+        }
+
     lookup = _exact_lookup(country_rows, entities, gateways, chains)
     for row in country_rows:
         code = str(row.get("iso3") or "").upper()
@@ -199,6 +233,36 @@ def build_impact_plane(country_rows: list[dict], country_records: dict[str, dict
                 edge["evidence_source"] = fact["source"]
             edges.append(edge)
 
+    for asset_id, asset in infrastructure_assets.items():
+        source_id = infrastructure_node_id(asset_id)
+        for relation in asset.get("relationships") or []:
+            if not isinstance(relation, dict):
+                continue
+            relationship = str(relation.get("relationship") or "").strip()
+            causal_status = str(relation.get("causal_status") or "").strip()
+            if relationship not in INFRA_CAUSAL_RELATIONSHIPS or causal_status != "explicit-dependency":
+                continue
+            target_id = _infrastructure_target_node(relation, nodes)
+            if not target_id:
+                continue
+            edge = {
+                "source": source_id,
+                "target": target_id,
+                "relationship": relationship,
+                "causal_status": "explicit-dependency",
+                "evidence_class": "infrastructure-owner",
+            }
+            for key in ("mechanism", "importance", "source_url", "period", "confidence"):
+                if relation.get(key) not in (None, ""):
+                    edge[key] = relation[key]
+            if relation.get("source") not in (None, ""):
+                edge["evidence_source"] = relation["source"]
+            elif asset.get("source"):
+                edge["evidence_source"] = asset["source"]
+            if asset.get("source_url") and "source_url" not in edge:
+                edge["source_url"] = asset["source_url"]
+            edges.append(edge)
+
     for chain_id, chain in chains.items():
         chain_node = f"chain:{chain_id}"
         for code in chain.get("members") or []:
@@ -206,6 +270,13 @@ def build_impact_plane(country_rows: list[dict], country_records: dict[str, dict
             member_id = entity_node_id(code, code not in entities)
             if member_id in nodes:
                 context_chains.setdefault(member_id, []).append(chain_node)
+
+    for asset_id, asset in infrastructure_assets.items():
+        asset_node = infrastructure_node_id(asset_id)
+        for chain_id in asset.get("chain_ids") or []:
+            chain_node = f"chain:{chain_id}"
+            if chain_node in nodes:
+                context_chains.setdefault(asset_node, []).append(chain_node)
 
     for gateway_id, gateway in gateways.items():
         source_id = f"gateway:{gateway_id}"
@@ -228,12 +299,12 @@ def build_impact_plane(country_rows: list[dict], country_records: dict[str, dict
         context_chains[node_id] = sorted(set(chain_ids))
 
     return {
-        "version": "1.0.0",
+        "version": "1.1.0",
         "policy": {
             "max_browser_depth": 2,
             "score_policy": "no aggregate impact score inferred",
             "missing_policy": "not represented is not no dependency",
-            "causal_policy": "generic connectivity, membership and association are not dependency",
+            "causal_policy": "generic connectivity, membership, association and proximity are not dependency",
         },
         "nodes": nodes,
         "edges": edges,

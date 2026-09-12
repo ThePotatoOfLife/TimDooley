@@ -3,6 +3,7 @@
 // explicit causal edges only; generic connectivity and membership stay context.
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
+const surface = window.__potatoAtlasInvestigationSurface;
 if (!map || !runtime) throw new Error('Impact Trace requires the map and shared runtime APIs.');
 await runtime.ready;
 
@@ -39,6 +40,11 @@ runtime.impactNodeForGateway = async function impactNodeForGateway(id) {
 runtime.impactNodeForChain = async function impactNodeForChain(id) {
   const data = await dataReady;
   const nodeId = `chain:${String(id || '')}`;
+  return data?.impact?.nodes?.[nodeId] ? nodeId : null;
+};
+runtime.impactNodeForInfrastructure = runtime.impactNodeForInfrastructure || async function impactNodeForInfrastructure(id) {
+  const data = await dataReady;
+  const nodeId = `infrastructure:${String(id || '')}`;
   return data?.impact?.nodes?.[nodeId] ? nodeId : null;
 };
 
@@ -222,6 +228,7 @@ async function show(id, { persistState=true } = {}) {
     clear();
     return false;
   }
+  surface?.open?.('impact');
   activeImpactId = String(id);
   applyStates(result);
   render(result);
@@ -241,11 +248,16 @@ async function showChain(id) {
   const nodeId = await runtime.impactNodeForChain(id);
   return nodeId ? show(nodeId) : false;
 }
-function clear() {
+async function showInfrastructure(id) {
+  const nodeId = await runtime.impactNodeForInfrastructure(id);
+  return nodeId ? show(nodeId) : false;
+}
+function clear({ coordinated=false } = {}) {
   activeImpactId = null;
   clearStates();
   panel()?.setAttribute('hidden','');
   persist(null);
+  if (!coordinated) surface?.close?.('impact');
   window.dispatchEvent(new CustomEvent('potato-atlas-impact-change', { detail:{ id:null, result:null } }));
   return true;
 }
@@ -253,6 +265,7 @@ function current() { return activeImpactId; }
 
 ensureLayer();
 ensurePanel();
+surface?.register?.('impact', { close:() => clear({ coordinated:true }) });
 document.addEventListener('click', event => {
   if (event.target.closest('[data-impact-clear]')) { clear(); return; }
   const entity = event.target.closest('[data-impact-entity]');
@@ -260,10 +273,12 @@ document.addEventListener('click', event => {
   const gateway = event.target.closest('[data-impact-gateway]');
   if (gateway) { showGateway(gateway.dataset.impactGateway); return; }
   const chain = event.target.closest('[data-impact-chain]');
-  if (chain) { showChain(chain.dataset.impactChain); }
+  if (chain) { showChain(chain.dataset.impactChain); return; }
+  const infrastructure = event.target.closest('[data-impact-infrastructure]');
+  if (infrastructure) showInfrastructure(infrastructure.dataset.impactInfrastructure);
 });
 
-window.__potatoAtlasImpactTrace = { show, showEntity, showGateway, showChain, clear, current };
+window.__potatoAtlasImpactTrace = { show, showEntity, showGateway, showChain, showInfrastructure, clear, current };
 
 const restored = new URL(location.href).searchParams.get('impact');
 if (restored) {

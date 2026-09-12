@@ -5,6 +5,7 @@ from __future__ import annotations
 import json
 import math
 import re
+from collections import defaultdict
 from copy import deepcopy
 from pathlib import Path
 
@@ -18,6 +19,7 @@ MEMBERSHIPS = ROOT / "data" / "world-institution-memberships.json"
 AXIS_PROFILES = ROOT / "data" / "world-axis-profiles.json"
 SYSTEM_CHAINS = ROOT / "data" / "world-system-chains.json"
 GATEWAYS = ROOT / "data" / "world-map-gateways.json"
+INFRASTRUCTURE = ROOT / "data" / "world-map-infrastructure.json"
 ENTITIES = ROOT / "data" / "world-map-entities.json"
 AFRICA_SYSTEMS = ROOT / "data" / "world-africa-regional-systems.json"
 DEMOGRAPHY = ROOT / "data" / "world-country-demography.json"
@@ -200,6 +202,36 @@ def africa_for_country(code: str, africa_source: dict) -> list[dict]:
     return rows
 
 
+def infrastructure_plane(source: dict) -> dict:
+    assets = deepcopy(source.get("assets") or {})
+    by_entity: dict[str, list[str]] = defaultdict(list)
+    by_gateway: dict[str, list[str]] = defaultdict(list)
+    by_chain: dict[str, list[str]] = defaultdict(list)
+    for asset_id, asset in assets.items():
+        for code in asset.get("countries") or []:
+            by_entity[str(code).upper()].append(asset_id)
+        for gateway_id in asset.get("gateway_ids") or []:
+            by_gateway[str(gateway_id)].append(asset_id)
+        for chain_id in asset.get("chain_ids") or []:
+            by_chain[str(chain_id)].append(asset_id)
+    by_entity = {key:sorted(set(values)) for key, values in sorted(by_entity.items())}
+    by_gateway = {key:sorted(set(values)) for key, values in sorted(by_gateway.items())}
+    by_chain = {key:sorted(set(values)) for key, values in sorted(by_chain.items())}
+    return {
+        "policy": deepcopy(source.get("policy") or {}),
+        "assets": assets,
+        "by_entity": by_entity,
+        "by_gateway": by_gateway,
+        "by_chain": by_chain,
+        "coverage": {
+            "assets": len(assets),
+            "entities": len(by_entity),
+            "gateways": len(by_gateway),
+            "chains": len(by_chain),
+        },
+    }
+
+
 def build_runtime() -> dict:
     index = load(COUNTRY_INDEX)
     countries = index.get("countries", [])
@@ -209,12 +241,14 @@ def build_runtime() -> dict:
     axis_source = load(AXIS_PROFILES)
     chain_source = load(SYSTEM_CHAINS)
     gateway_source = load(GATEWAYS)
+    infrastructure_source = load_optional(INFRASTRUCTURE)
     entity_source = load(ENTITIES)
     africa_source = load(AFRICA_SYSTEMS)
     demography = load_optional(DEMOGRAPHY).get("countries", {})
     facts = load_optional(COUNTRY_FACTS).get("countries", {})
     gateways = deepcopy(gateway_source.get("gateways", {}))
     chains = deepcopy(chain_source.get("chains", {}))
+    infrastructure = infrastructure_plane(infrastructure_source)
     country_records = {}
 
     groups = {}
@@ -306,10 +340,10 @@ def build_runtime() -> dict:
         observed = sorted(set(periods[metric_id]))
         metric_meta[metric_id] = {"label":definition["label"],"unit":definition["unit"],"coverage":coverage[metric_id],"country_count":len(countries),"coverage_percent":round((coverage[metric_id]/len(countries))*100,1),"period_min":observed[0] if observed else None,"period_max":observed[-1] if observed else None,"missing_policy":"unknown"}
 
-    impact = build_impact_plane(countries, country_records, entity_source.get("entities", {}), gateways, chains)
+    impact = build_impact_plane(countries, country_records, entity_source.get("entities", {}), gateways, chains, infrastructure_source)
     return {
-        "version":"1.6.0",
-        "generated_from":{"country_index":"data/countries/index.json","country_records":"data/countries/*.json","institution_memberships":"data/world-institution-memberships.json","axis_profiles":"data/world-axis-profiles.json","system_chains":"data/world-system-chains.json","gateways":"data/world-map-gateways.json","entities":"data/world-map-entities.json","africa_regional_systems":"data/world-africa-regional-systems.json","demography":"data/world-country-demography.json","country_facts":"data/world-country-facts.json","impact":"scripts/world_map_impact.py","scalars":"scripts/world_map_scalars.py"},
+        "version":"1.7.0",
+        "generated_from":{"country_index":"data/countries/index.json","country_records":"data/countries/*.json","institution_memberships":"data/world-institution-memberships.json","axis_profiles":"data/world-axis-profiles.json","system_chains":"data/world-system-chains.json","gateways":"data/world-map-gateways.json","infrastructure":"data/world-map-infrastructure.json","entities":"data/world-map-entities.json","africa_regional_systems":"data/world-africa-regional-systems.json","demography":"data/world-country-demography.json","country_facts":"data/world-country-facts.json","impact":"scripts/world_map_impact.py","scalars":"scripts/world_map_scalars.py"},
         "country_count":len(countries),
         "entities":{"country_count":len(countries),"territories":territories,"by_id":runtime_entities,"renderable_entity_count":len(countries)+sum(1 for entity in territories.values() if entity.get("render_status")=="current")},
         "scalars":{"missing_policy":"unknown-not-zero","by_entity":scalar_entities},
@@ -320,6 +354,7 @@ def build_runtime() -> dict:
         "chains":chains,
         "gateway_model":deepcopy(chain_source.get("gateway_model",{})),
         "gateways":gateways,
+        "infrastructure":infrastructure,
         "impact":impact,
         "system_coverage":system_coverage,
         "metrics":metric_meta,
@@ -336,4 +371,4 @@ def build_runtime_file(path: Path = RUNTIME_OUT) -> dict:
 
 if __name__ == "__main__":
     runtime = build_runtime_file()
-    print(json.dumps({"country_count":runtime["country_count"],"entities":runtime["entities"]["renderable_entity_count"],"groups":{key:value["member_count"] for key,value in runtime["groups"].items()},"axis":{key:len(value) for key,value in runtime["axis"]["memberships"].items()},"chains":len(runtime["chains"]),"gateways":len(runtime["gateways"]),"impact_nodes":len(runtime["impact"]["nodes"]),"impact_edges":len(runtime["impact"]["edges"]),"systems":runtime["system_coverage"],"metrics":{key:value["coverage"] for key,value in runtime["metrics"].items()},"output":str(RUNTIME_OUT.relative_to(ROOT))}, indent=2))
+    print(json.dumps({"country_count":runtime["country_count"],"entities":runtime["entities"]["renderable_entity_count"],"groups":{key:value["member_count"] for key,value in runtime["groups"].items()},"axis":{key:len(value) for key,value in runtime["axis"]["memberships"].items()},"chains":len(runtime["chains"]),"gateways":len(runtime["gateways"]),"infrastructure":runtime["infrastructure"]["coverage"],"impact_nodes":len(runtime["impact"]["nodes"]),"impact_edges":len(runtime["impact"]["edges"]),"systems":runtime["system_coverage"],"metrics":{key:value["coverage"] for key,value in runtime["metrics"].items()},"output":str(RUNTIME_OUT.relative_to(ROOT))}, indent=2))

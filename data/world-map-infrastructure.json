@@ -1,0 +1,286 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "purpose": "Sourced physical and operational infrastructure context for the World Map. This registry provides empirical asset identities and typed relationships without duplicating gateway authority or inferring causal dependency from proximity.",
+  "policy": {
+    "missing_is_unknown": true,
+    "approximate_coordinates_are_visualization_only": true,
+    "association_does_not_imply_dependency": true,
+    "gateway_authority": "data/world-map-gateways.json",
+    "chain_authority": "data/world-system-chains.json"
+  },
+  "assets": {
+    "ambarli-port-area": {
+      "id": "ambarli-port-area",
+      "label": "Ambarlı Port Area",
+      "type": "strait-associated-terminal",
+      "countries": ["TUR"],
+      "location": {
+        "type": "Point",
+        "coordinates": [28.67, 40.96],
+        "coordinate_precision": "approximate-port-area-center",
+        "navigation_use": false
+      },
+      "systems": ["black-sea", "mediterranean", "maritime-logistics"],
+      "gateway_ids": ["turkish-straits"],
+      "chain_ids": [],
+      "operator": "Multiple terminals under Turkish maritime/port authority jurisdiction",
+      "status": "current port area",
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:turkish-straits", "causal_status": "contextual"}
+      ],
+      "source": "Republic of Türkiye Ministry of Transport and Infrastructure — Ambarlı Regional Port Authority",
+      "source_url": "https://ambarliliman.uab.gov.tr/",
+      "evidence_class": "observed",
+      "description": "Major port area on the Sea of Marmara under the Ambarlı Regional Port Authority, represented as contextual infrastructure associated with the Turkish Straits system."
+    },
+    "east-port-said-port": {
+      "id": "east-port-said-port",
+      "label": "East Port Said Port",
+      "type": "canal-associated-terminal",
+      "countries": ["EGY"],
+      "location": {
+        "type": "Point",
+        "coordinates": [32.35, 31.2167],
+        "coordinate_precision": "approximate-port-center-from-official-published-coordinate",
+        "navigation_use": false
+      },
+      "systems": ["red-sea-mediterranean", "europe-asia-shipping", "maritime-logistics"],
+      "gateway_ids": ["suez-sumed"],
+      "chain_ids": [],
+      "operator": "Suez Canal Economic Zone / terminal operators",
+      "status": "operational and expanding",
+      "relationships": [
+        {"relationship": "uses-gateway", "target": "gateway:suez-sumed", "causal_status": "explicit-dependency", "mechanism": "Port is located alongside the Suez Canal and functions as a canal-linked transshipment/gateway port."}
+      ],
+      "source": "General Authority for Suez Canal Economic Zone — East Port Said Port",
+      "source_url": "https://sczone.eg/services/east-portsaid-port/",
+      "evidence_class": "observed",
+      "description": "Deep-water transshipment and gateway port located alongside the Suez Canal, with container, multipurpose, RoRo and grain terminal infrastructure."
+    },
+    "sokhna-port": {
+      "id": "sokhna-port",
+      "label": "Sokhna Port",
+      "type": "canal-associated-terminal",
+      "countries": ["EGY"],
+      "location": {
+        "type": "Point",
+        "coordinates": [32.35, 29.65],
+        "coordinate_precision": "approximate-port-center-from-official-published-coordinate",
+        "navigation_use": false
+      },
+      "systems": ["gulf-of-suez", "red-sea", "maritime-logistics", "industrial-logistics"],
+      "gateway_ids": ["suez-sumed"],
+      "chain_ids": [],
+      "operator": "SCZONE with terminal operators including DP World",
+      "status": "operational with active development",
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:suez-sumed", "causal_status": "contextual"}
+      ],
+      "source": "General Authority for Suez Canal Economic Zone — Sokhna Port",
+      "source_url": "https://sczone.eg/services/ain-sokhna-port/",
+      "evidence_class": "observed",
+      "description": "Multipurpose Gulf of Suez port with container, liquid bulk, dry bulk and general cargo infrastructure and continuing development."
+    },
+    "port-of-singapore-tuas": {
+      "id": "port-of-singapore-tuas",
+      "label": "Port of Singapore — Tuas Terminal",
+      "type": "port",
+      "countries": ["SGP"],
+      "location": {
+        "type": "Point",
+        "coordinates": [103.65, 1.25],
+        "coordinate_precision": "approximate-terminal-center",
+        "navigation_use": false
+      },
+      "systems": ["maritime-logistics", "east-asia-energy", "indian-pacific-connection"],
+      "gateway_ids": ["malacca-strait"],
+      "chain_ids": [],
+      "operator": "PSA Corporation Limited",
+      "status": "operational",
+      "observations": [
+        {"key": "official_opening", "value": "September 2022", "period": "2022-09", "source": "Maritime and Port Authority of Singapore"}
+      ],
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:malacca-strait", "causal_status": "contextual"}
+      ],
+      "source": "Maritime and Port Authority of Singapore — Cargo Terminals",
+      "source_url": "https://www.mpa.gov.sg/port-marine-ops/operations/port-infrastructure/terminals",
+      "evidence_class": "observed",
+      "description": "PSA container terminal within the Port of Singapore, represented as major gateway-adjacent infrastructure in the Straits of Malacca and Singapore system."
+    },
+    "port-klang": {
+      "id": "port-klang",
+      "label": "Port Klang",
+      "type": "port",
+      "countries": ["MYS"],
+      "location": {
+        "type": "Point",
+        "coordinates": [101.4, 3.0],
+        "coordinate_precision": "approximate-port-center",
+        "navigation_use": false
+      },
+      "systems": ["maritime-logistics", "southeast-asia-trade", "indian-pacific-connection"],
+      "gateway_ids": ["malacca-strait"],
+      "chain_ids": [],
+      "operator": "Port Klang Authority / licensed terminal operators",
+      "status": "operational",
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:malacca-strait", "causal_status": "contextual"}
+      ],
+      "source": "Port Klang Authority",
+      "source_url": "https://www.pka.gov.my/index.php/en/component/sppagebuilder/page/121",
+      "evidence_class": "observed",
+      "description": "Malaysia's principal Port Klang logistics hub, represented as contextual infrastructure adjacent to the Malacca maritime system."
+    },
+    "shahid-rajaee-port": {
+      "id": "shahid-rajaee-port",
+      "label": "Shahid Rajaee Port",
+      "type": "strait-associated-terminal",
+      "countries": ["IRN"],
+      "location": {
+        "type": "Point",
+        "coordinates": [56.07, 27.1],
+        "coordinate_precision": "approximate-port-center",
+        "navigation_use": false
+      },
+      "systems": ["persian-gulf-energy", "indian-ocean-logistics", "north-south-transport-corridor"],
+      "gateway_ids": ["hormuz-strait"],
+      "chain_ids": [],
+      "operator": "Ports and Maritime Organization of Hormozgan Province / port operators",
+      "status": "operational; new logistics terminal development recorded in 2026",
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:hormuz-strait", "causal_status": "contextual"}
+      ],
+      "source": "Government of Kazakhstan — Ministry of Trade and Integration, 2026 BOT agreement at Shahid Rajaee Port",
+      "source_url": "https://www.gov.kz/memleket/entities/mti/press/news/details/1256372?lang=en",
+      "evidence_class": "observed",
+      "description": "Major port complex at Bandar Abbas in the Hormuz/Persian Gulf logistics system; a 2026 government agreement records the Iranian port authority and a new Kazakh transport-and-logistics terminal project."
+    },
+    "port-of-balboa": {
+      "id": "port-of-balboa",
+      "label": "Port of Balboa",
+      "type": "canal-associated-terminal",
+      "countries": ["PAN"],
+      "location": {
+        "type": "Point",
+        "coordinates": [-79.5652, 8.9607],
+        "coordinate_precision": "approximate-terminal-center-from-official-published-coordinate",
+        "navigation_use": false
+      },
+      "systems": ["atlantic-pacific", "maritime-logistics", "container-trade"],
+      "gateway_ids": ["panama-canal"],
+      "chain_ids": [],
+      "operator": "Hutchison Ports PPC",
+      "status": "operational",
+      "relationships": [
+        {"relationship": "uses-gateway", "target": "gateway:panama-canal", "causal_status": "explicit-dependency", "mechanism": "Panama Canal traffic control explicitly includes the terminal port of Balboa on the Pacific side."}
+      ],
+      "source": "Autoridad Marítima de Panamá — Container Terminals",
+      "source_url": "https://www.amp.gob.pa/servicios/puertos-e-industrias-maritimas-auxiliares/infraestructura/terminal-de-contenedores/",
+      "evidence_class": "observed",
+      "description": "Operational container and multipurpose port at the Pacific entrance to the Panama Canal."
+    },
+    "manzanillo-international-terminal-panama": {
+      "id": "manzanillo-international-terminal-panama",
+      "label": "Manzanillo International Terminal — Panama",
+      "type": "canal-associated-terminal",
+      "countries": ["PAN"],
+      "location": {
+        "type": "Point",
+        "coordinates": [-79.8837, 9.3623],
+        "coordinate_precision": "approximate-terminal-center-from-official-published-coordinate",
+        "navigation_use": false
+      },
+      "systems": ["atlantic-pacific", "maritime-logistics", "container-trade"],
+      "gateway_ids": ["panama-canal"],
+      "chain_ids": [],
+      "operator": "Manzanillo International Terminal Panama, S.A.",
+      "status": "operational",
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:panama-canal", "causal_status": "contextual"}
+      ],
+      "source": "Autoridad Marítima de Panamá — Container Terminals",
+      "source_url": "https://www.amp.gob.pa/servicios/puertos-e-industrias-maritimas-auxiliares/infraestructura/terminal-de-contenedores/",
+      "evidence_class": "observed",
+      "description": "Operational Atlantic-side container terminal in Colón, represented as canal-associated infrastructure in the Panama interoceanic system."
+    },
+    "port-of-durban": {
+      "id": "port-of-durban",
+      "label": "Port of Durban",
+      "type": "port",
+      "countries": ["ZAF"],
+      "location": {
+        "type": "Point",
+        "coordinates": [31.05, -29.87],
+        "coordinate_precision": "approximate-port-center",
+        "navigation_use": false
+      },
+      "systems": ["southern-african", "maritime-logistics", "cape-route-context"],
+      "gateway_ids": ["cape-good-hope-route"],
+      "chain_ids": [],
+      "operator": "Transnet National Ports Authority",
+      "status": "operational commercial seaport",
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:cape-good-hope-route", "causal_status": "contextual"}
+      ],
+      "source": "Transnet National Ports Authority",
+      "source_url": "https://www.transnet.net/TNPA",
+      "evidence_class": "observed",
+      "description": "One of the commercial seaports managed by Transnet National Ports Authority, represented in the southern African maritime and Cape-route context."
+    },
+    "port-of-cape-town": {
+      "id": "port-of-cape-town",
+      "label": "Port of Cape Town",
+      "type": "port",
+      "countries": ["ZAF"],
+      "location": {
+        "type": "Point",
+        "coordinates": [18.44, -33.9],
+        "coordinate_precision": "approximate-port-center",
+        "navigation_use": false
+      },
+      "systems": ["southern-african", "maritime-logistics", "cape-route-context"],
+      "gateway_ids": ["cape-good-hope-route"],
+      "chain_ids": [],
+      "operator": "Transnet National Ports Authority",
+      "status": "operational commercial seaport",
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:cape-good-hope-route", "causal_status": "contextual"}
+      ],
+      "source": "Transnet National Ports Authority — Port of Cape Town",
+      "source_url": "https://www.transnet.net/SubsiteRender.aspx?id=5563476",
+      "evidence_class": "observed",
+      "description": "Western Cape commercial port providing container, liquid bulk, dry-bulk, break-bulk and other round-the-clock port services."
+    },
+    "doraleh-multipurpose-port": {
+      "id": "doraleh-multipurpose-port",
+      "label": "Doraleh Multipurpose Port",
+      "type": "port",
+      "countries": ["DJI"],
+      "location": {
+        "type": "Point",
+        "coordinates": [43.05, 11.59],
+        "coordinate_precision": "approximate-port-center",
+        "navigation_use": false
+      },
+      "systems": ["red-sea", "gulf-of-aden", "east-african-logistics"],
+      "gateway_ids": ["bab-el-mandeb"],
+      "chain_ids": [],
+      "operator": "Djibouti Ports and Free Zones Authority / affiliated port operator",
+      "status": "operational",
+      "observations": [
+        {"key": "quay_length", "value": 1200, "unit": "metres", "source": "Djibouti Ports and Free Zones Authority"},
+        {"key": "berths", "value": 6, "unit": "berths", "source": "Djibouti Ports and Free Zones Authority"}
+      ],
+      "relationships": [
+        {"relationship": "associated-with", "target": "gateway:bab-el-mandeb", "causal_status": "contextual"},
+        {"relationship": "connects", "target": "Djibouti-Addis Ababa railway", "causal_status": "contextual"}
+      ],
+      "source": "Djibouti Ports and Free Zones Authority — Doraleh Multipurpose Port",
+      "source_url": "https://dpfza.gov.dj/facilities/DMP",
+      "evidence_class": "observed",
+      "description": "Multipurpose Djibouti port with bulk, break-bulk, container and RoRo terminals and a direct connection to the Djibouti–Addis Ababa railway."
+    }
+  }
+}
