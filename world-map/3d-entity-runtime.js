@@ -1,5 +1,6 @@
-// First-class map-entity extension for territories and other non-country polygons.
-// Keeps the 195-country model intact while exposing entity-aware runtime helpers.
+// First-class map-entity extension for territories, non-country polygons and
+// empirical infrastructure. Keeps the 195-country model intact while exposing
+// one shared browser contract rather than parallel fetch paths.
 
 const dataRuntime = window.__potatoAtlasDataRuntime;
 if (!dataRuntime?.ready) throw new Error('Entity runtime requires the World Map data runtime.');
@@ -39,6 +40,31 @@ async function regionalSystems(code) {
   const key = String(code || '').toUpperCase();
   return data?.africa?.for_country?.[key] || data?.countries?.[key]?.systems?.regional || [];
 }
+function assetsFromIds(data, ids) {
+  const assets = data?.infrastructure?.assets || {};
+  return (ids || []).map(id => assets[id]).filter(Boolean);
+}
+async function infrastructure(id) {
+  const data = await runtime();
+  return data?.infrastructure?.assets?.[String(id || '')] || null;
+}
+async function infrastructureForEntity(code) {
+  const data = await runtime();
+  const key = String(code || '').toUpperCase();
+  return assetsFromIds(data, data?.infrastructure?.by_entity?.[key] || []);
+}
+async function infrastructureForGateway(id) {
+  const data = await runtime();
+  return assetsFromIds(data, data?.infrastructure?.by_gateway?.[String(id || '')] || []);
+}
+async function infrastructureForChain(id) {
+  const data = await runtime();
+  return assetsFromIds(data, data?.infrastructure?.by_chain?.[String(id || '')] || []);
+}
+async function infrastructureCoverage() {
+  const data = await runtime();
+  return data?.infrastructure?.coverage || { assets:0, entities:0, gateways:0, chains:0 };
+}
 
 Object.assign(dataRuntime, {
   entity,
@@ -49,6 +75,11 @@ Object.assign(dataRuntime, {
   areaObservation,
   labelAnchor,
   regionalSystems,
+  infrastructure,
+  infrastructureForEntity,
+  infrastructureForGateway,
+  infrastructureForChain,
+  infrastructureCoverage,
 });
 
 function entityLabel(row) {
@@ -128,7 +159,11 @@ window.addEventListener('potato-atlas-selection-change', event => {
 const initial = new URL(location.href).searchParams.get('country');
 if (initial) queueMicrotask(() => refresh(initial));
 
-window.__potatoAtlasEntities = { entity, entityName, entityType, scalarObservation, populationObservation, areaObservation, labelAnchor, regionalSystems, refresh };
+window.__potatoAtlasEntities = {
+  entity, entityName, entityType, scalarObservation, populationObservation, areaObservation,
+  labelAnchor, regionalSystems, infrastructure, infrastructureForEntity,
+  infrastructureForGateway, infrastructureForChain, infrastructureCoverage, refresh,
+};
 window.dispatchEvent(new CustomEvent('potato-atlas-entities-ready'));
 const selected = window.__potatoAtlasSelection?.current?.activeCode || window.__potatoAtlasSelection?.current?.code || initial;
 if (selected) queueMicrotask(() => window.__potatoAtlasCountryCard?.render?.(selected));
