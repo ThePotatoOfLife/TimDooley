@@ -133,15 +133,21 @@ async function showPopup(asset, coordinates) {
 async function injectCountryContext(code = currentEntityCode()) {
   const card = document.getElementById('atlasCountryCard');
   if (!card || card.hidden || !/^[A-Z]{3}$/.test(String(code || ''))) return;
-  card.querySelector('#atlasCountryInfrastructureContext')?.remove();
   const rows = bounded(await runtime.infrastructureForEntity?.(code) || []);
-  if (!rows.length) return;
-  const section = document.createElement('div');
-  section.id = 'atlasCountryInfrastructureContext';
-  section.className = 'atlas-country-section';
-  section.innerHTML = `<small>Infrastructure context</small><div class="atlas-country-tags">${rows.slice(0,4).map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('')}${rows.length > 4 ? `<span class="atlas-country-tag">+${rows.length - 4}</span>` : ''}</div><div class="atlas-country-source">Sourced physical context · association does not imply dependency</div>`;
-  const actions = card.querySelector('.atlas-country-actions');
-  if (actions) actions.before(section); else card.appendChild(section);
+  let section = card.querySelector('#atlasCountryInfrastructureContext');
+  if (!rows.length) {
+    section?.remove();
+    return;
+  }
+  if (!section) {
+    section = document.createElement('div');
+    section.id = 'atlasCountryInfrastructureContext';
+    section.className = 'atlas-country-section';
+    const actions = card.querySelector('.atlas-country-actions');
+    if (actions) actions.before(section); else card.appendChild(section);
+  }
+  const nextHtml = `<small>Infrastructure context</small><div class="atlas-country-tags">${rows.slice(0,4).map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('')}${rows.length > 4 ? `<span class="atlas-country-tag">+${rows.length - 4}</span>` : ''}</div><div class="atlas-country-source">Sourced physical context · association does not imply dependency</div>`;
+  if (section.innerHTML !== nextHtml) section.innerHTML = nextHtml;
 }
 
 function fallBackContext() {
@@ -169,7 +175,9 @@ map.on('click', POINT_LAYER, async event => {
 });
 
 const cardHost = document.getElementById('atlasCountryCard');
-if (cardHost) new MutationObserver(() => queueMicrotask(() => injectCountryContext())).observe(cardHost, {childList:true, subtree:false});
+if (cardHost) new MutationObserver(() => {
+  if (!cardHost.querySelector('#atlasCountryInfrastructureContext')) queueMicrotask(() => injectCountryContext());
+}).observe(cardHost, {childList:true, subtree:false});
 
 window.addEventListener('potato-atlas-working-selection-change', event => {
   if (activeContext.kind && activeContext.kind !== 'entity') return;
