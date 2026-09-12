@@ -1,5 +1,5 @@
 {
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-12",
   "purpose":"Empirical gateway/chokepoint seed layer for the World Map. Coordinates are approximate visualization anchors, not navigation data. Transit observations are dated rather than treated as timeless capacity.",
   "source_note":"Oil-transit observations use the U.S. Energy Information Administration Short-Term Energy Outlook, August 2026 energy-security chokepoint table for Q2 2026. EIA states that its analysis uses Vortexa tanker tracking and Panama Canal Authority data with EIA calculations.",
@@ -38,6 +38,14 @@
       "countries":["EGY"],
       "systems":["oil-trade","red-sea-mediterranean","europe-asia-shipping","maritime-logistics"],
       "observation":{"value":5.8,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "alternatives":[{
+        "target":"cape-good-hope-route",
+        "relationship":"alternative-route",
+        "status":"rerouting-option",
+        "note":"Traffic can reroute around southern Africa when Red Sea/Suez access is disrupted; this does not imply equal distance, cost or capacity.",
+        "source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026",
+        "source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"
+      }],
       "description":"Egyptian canal-and-pipeline corridor connecting Red Sea and Mediterranean energy and shipping flows."
     },
     "bab-el-mandeb":{
@@ -50,6 +58,14 @@
       "countries":["YEM","DJI","ERI"],
       "systems":["oil-trade","red-sea","gulf-of-aden","europe-asia-shipping"],
       "observation":{"value":8.1,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "alternatives":[{
+        "target":"cape-good-hope-route",
+        "relationship":"alternative-route",
+        "status":"rerouting-option",
+        "note":"Traffic can reroute around southern Africa when Bab el-Mandeb/Red Sea access is disrupted; this does not imply equal distance, cost or capacity.",
+        "source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026",
+        "source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"
+      }],
       "description":"Narrow passage connecting the Red Sea with the Gulf of Aden and Arabian Sea; disruptions alter Europe–Asia routing and can divert traffic around southern Africa."
     },
     "danish-straits":{
