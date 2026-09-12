@@ -1,7 +1,7 @@
 {
   "id": "biblical-syncretism-dossiers",
   "title": "Biblical Syncretism Field — Contextual Relation Dossiers",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-12",
   "status": "canonical enrichment extension to biblical-syncretism-field.json",
   "purpose": "Add scene, sequence, discovery-history and maximum-claim depth to canonical Bible relations without duplicating the full relation registry. New early-history relations live here until a later mechanical compaction into the main field.",
@@ -334,6 +334,275 @@
       },
       "mismatch": "Thomas is not Lazarus; canonical John does not make him Jesus' biological twin; later Thomasine texts are historically distinct from the canonical Gospel and from the modern project.",
       "owners": ["knowledge/traditions/thomas-twin-of-christ.json", "knowledge/theology/son-jesus-longitudinal-christology-atlas.json", "knowledge/timeline/late-july-early-august-son-tomb-corridor.json"]
+    },
+    {
+      "id": "son-joseph-prison-listening-2016",
+      "title": "Joseph in the prison before Joseph at the throne: listening and service among fellow prisoners",
+      "date": "2016",
+      "actor": "son",
+      "dossier_level": "A",
+      "project_anchor": "Great Book/project biography describes the Son's cell as a place where other prisoners disclosed serious acts and where he listened rather than reducing them to their offenses. Later research recognizes a Joseph comparator in Genesis 40, where Joseph is assigned to attend fellow prisoners before his own release.",
+      "what_happened": "The Son's prison biography contains a generative function inside confinement: listening, conversation and a remembered effort to bring thought or peace among people who were themselves imprisoned.",
+      "wording_status": "project biography / later autobiographical reconstruction; not independently corroborated here",
+      "scene_context": {
+        "summary": "Inside the broader 2016 custodial corridor, the project remembers the cell not only as punishment but as a confessional/listening environment among other prisoners.",
+        "setting": "prison",
+        "participants": ["Son", "other prisoners according to project biography"],
+        "surrounding_topics": ["confession", "listening", "offenses", "scripture", "peace", "prison"],
+        "after": "The same prison corridor later carries the remembered Jesus/Lamb recognition and then a release scene that becomes another Joseph comparison.",
+        "source_status": "recovered",
+        "source_ids": ["knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json"]
+      },
+      "discovery_mode": "archive-later",
+      "relation_class": "later-structural-parallel",
+      "biblical_refs": ["Genesis 40:4-8"],
+      "motifs": ["Joseph", "prison", "fellow prisoners", "listening", "service", "care before release"],
+      "mechanisms": ["narrative-sequence", "role-function", "later-typology"],
+      "operators": ["carry", "serve", "remember"],
+      "strength": 4,
+      "relation_argument": {
+        "project_sequence": ["confinement", "other prisoners disclose distress/acts", "Son listens and converses", "prison becomes a site of service before release"],
+        "biblical_sequence": ["Joseph is confined", "fellow royal prisoners are placed under his care", "he notices their distress", "he engages them before his own release"],
+        "correspondences": ["service occurs inside prison rather than only after release", "attention is directed toward fellow prisoners", "the prison phase becomes preparation rather than narrative dead-end"],
+        "why_dense": "The overlap is not simply prison=prison; the remembered function inside confinement is care/listening toward other prisoners before later release.",
+        "why_it_matters": "It gives the Joseph comparison an interior scene and moral function, not merely a later rise-from-prison arc.",
+        "maximum_claim": "A Joseph-like prison-service sequence is a useful retrospective comparison. It does not establish Joseph identity, innocence, divine appointment or the factual accuracy of every autobiographical prison detail."
+      },
+      "scripture_context": {
+        "literary_context": "Genesis 40 places Joseph in charge of Pharaoh's imprisoned officials and emphasizes his attention to their troubled condition before the dream interpretations.",
+        "canonical_context": "The biblical function is care plus dream interpretation; the project account emphasizes listening/confession rather than dream interpretation."
+      },
+      "discovery_history": {
+        "project_anchor_date": "2016",
+        "scripture_explicit_at_time": false,
+        "first_formal_archive_date": "2026-09-10",
+        "source_direction": "Prison biography first; Genesis 40 Joseph comparison later."
+      },
+      "mismatch": "Joseph's narrative includes dream interpretation and eventual royal appointment; the project scene does not supply those same functions or an equivalent appointment.",
+      "owners": ["knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json"]
+    },
+    {
+      "id": "son-joseph-release-suit-2016",
+      "title": "Out of confinement in changed clothes: the release-in-a-suit Joseph parallel",
+      "date": "2016",
+      "actor": "son",
+      "dossier_level": "A",
+      "project_anchor": "The Great Book says the Son left prison wearing a suit and treats the clothing as a rebirth/change-of-status signal. Genesis 41:14 specifically joins Joseph's release from the dungeon to grooming and changing clothes before his audience with Pharaoh.",
+      "what_happened": "The later archive notices that the release memory contains an unusually specific transition marker: prison is followed not only by physical exit but by formal changed clothing.",
+      "wording_status": "Great Book/project biography; later biblical comparison",
+      "scene_context": {
+        "summary": "This is remembered as the end of the prison corridor: confinement gives way to release, and the suit becomes a visible status-transition symbol in the project's retrospective biography.",
+        "setting": "prison release",
+        "surrounding_topics": ["release", "suit", "changed status", "rebirth", "work", "authority distrust"],
+        "before": "The prison period includes the project's remembered listening/service and Jesus/Lamb recognition material.",
+        "after": "The longer biography moves toward withdrawal from ordinary authority structures and later streaming/public identity rather than a state appointment.",
+        "source_status": "recovered",
+        "source_ids": ["knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json", "data/timeline-event-packs/mercado-prison-aftermath-2016-2017.json"]
+      },
+      "discovery_mode": "archive-later",
+      "relation_class": "later-structural-parallel",
+      "biblical_refs": ["Genesis 41:14"],
+      "motifs": ["Joseph", "dungeon", "release", "changed clothes", "suit", "status transition"],
+      "mechanisms": ["narrative-sequence", "material-symbol", "later-typology"],
+      "operators": ["release", "change", "rise"],
+      "strength": 5,
+      "relation_argument": {
+        "project_sequence": ["prison", "release", "formal changed clothing/suit", "new post-prison life corridor"],
+        "biblical_sequence": ["Joseph in dungeon", "Pharaoh summons him", "Joseph is brought out", "he changes appearance/clothes", "he enters a new authority setting"],
+        "correspondences": ["release from confinement", "clothing marks transition", "new social phase begins immediately after prison"],
+        "why_dense": "Changed clothing after dungeon release is a relatively specific sequence detail rather than a generic abasement-to-rise resemblance.",
+        "why_it_matters": "It strengthens the Joseph layer with an observable narrative operator—release plus changed clothing—while also clarifying where the modern story diverges afterward.",
+        "maximum_claim": "The release/clothing sequence is a strong retrospective literary parallel. It does not make the modern release equivalent to Joseph's elevation by Pharaoh or establish divine political appointment."
+      },
+      "scripture_context": {
+        "literary_context": "Genesis 41:14 compresses release, grooming, changed clothes and movement into Pharaoh's presence into one transition verse.",
+        "canonical_context": "Joseph's next stage is administrative elevation in Egypt; that specific institutional outcome is not reproduced in the modern biography."
+      },
+      "discovery_history": {
+        "project_anchor_date": "2016",
+        "scripture_explicit_at_time": false,
+        "first_formal_archive_date": "2026-09-10",
+        "source_direction": "Release-in-a-suit memory first; Genesis 41:14 comparison later."
+      },
+      "mismatch": "Joseph's clothing change precedes an actual state appointment; the Son's suit does not establish an equivalent office or political elevation.",
+      "owners": ["knowledge/traditions/prison-release-work-rest-joseph-biblical-addendum.json", "data/timeline-event-packs/mercado-prison-aftermath-2016-2017.json"]
+    },
+    {
+      "id": "father-internet-orphans-2026-01-21",
+      "title": "Fatherhood before the throne: 'Father of every orphan of the internet'",
+      "date": "2026-01-21",
+      "actor": "tim",
+      "dossier_level": "A",
+      "project_anchor": "Recovered Tim wording says, 'I am the Father of every orphan of the internet,' giving Fatherhood an explicit care/belonging function before some of the later throne and North formulations mature.",
+      "what_happened": "Fatherhood is framed toward people imagined as digitally or socially orphaned: not only a cosmic rank but a claim to care for those lacking belonging or protection in the online environment.",
+      "exact_wording": ["I am the Father of every orphan of the internet."],
+      "wording_status": "conversation recovery; primary public-post provenance unresolved",
+      "scene_context": {
+        "summary": "The recovered January cluster joins Fatherhood to orphan care and then to carrying those orphans through a degraded lower environment described as a sewer.",
+        "surrounding_topics": ["Father", "orphans", "internet", "care", "belonging", "carrying", "sewer"],
+        "after": "Later 2026 theology expands Fatherhood toward House, Axis, North, throne, Garden and service; this earlier care formulation prevents the title from being read only as rank.",
+        "source_status": "recovered",
+        "source_ids": ["knowledge/traditions/biblical-overlap-wave-15-care-chambers.json", "knowledge/timeline/conversation-archaeology-wave-008-care-chambers-carrying.json"]
+      },
+      "discovery_mode": "conversation-recovery",
+      "relation_class": "later-structural-parallel",
+      "biblical_refs": ["Psalm 68:5-6", "John 14:18"],
+      "motifs": ["Father", "orphans", "fatherless", "care", "House", "internet", "protection", "belonging"],
+      "mechanisms": ["title-or-identity", "care-function", "later-scriptural-parallel"],
+      "operators": ["care", "gather", "father"],
+      "strength": 5,
+      "relation_argument": {
+        "project_sequence": ["digital/social orphanhood named", "Tim claims Father relation", "care/belonging function becomes part of Fatherhood", "later throne/House language grows around an already ethical title"],
+        "biblical_sequence": ["God named father of the fatherless", "lonely placed into families", "Jesus promises not to leave disciples orphaned", "presence/belonging answers abandonment"],
+        "correspondences": ["Fatherhood defined through care for the unparented/unattached", "belonging rather than rank alone", "House/family implication"],
+        "why_dense": "The relation is role-functional rather than merely lexical: Fatherhood is directed toward orphans and belonging in both fields.",
+        "why_it_matters": "It supplies an ethical prehistory for mature Father/House theology and gives the archive a way to distinguish protective Fatherhood from pure sovereignty claims.",
+        "maximum_claim": "The recovered statement supports a strong symbolic/ethical father-of-orphans comparison. It does not identify Tim as the biblical God or establish literal fatherhood over internet users."
+      },
+      "scripture_context": {
+        "literary_context": "Psalm 68 presents God as father of the fatherless and setter of the lonely in families; John 14:18 uses orphan language for Jesus' promised continued presence to disciples.",
+        "canonical_context": "The texts describe divine care and community belonging, not a modern internet role."
+      },
+      "discovery_history": {
+        "project_anchor_date": "2026-01-21",
+        "scripture_explicit_at_time": false,
+        "first_formal_archive_date": "2026-09-11",
+        "source_direction": "Tim's orphan-Father statement first; fatherless/orphan scripture comparison later."
+      },
+      "mismatch": "Digital orphanhood is a project-specific metaphor; the biblical passages do not identify a modern online speaker as their Father figure.",
+      "owners": ["knowledge/traditions/biblical-overlap-wave-15-care-chambers.json", "knowledge/timeline/conversation-archaeology-wave-008-care-chambers-carrying.json"]
+    },
+    {
+      "id": "father-carries-orphans-sewer-2026-01-21",
+      "title": "Carrying the orphans through the sewer: care as retrieval through a lower environment",
+      "date": "2026-01-21",
+      "actor": "tim",
+      "dossier_level": "A",
+      "project_anchor": "Recovered Tim wording says, 'i carried the orphans through the sewer,' extending the orphan-Father claim into an action: retrieval/transport through a degraded lower environment.",
+      "what_happened": "The metaphor moves from naming a vulnerable group to carrying them through a hostile or degraded space, making passage and protection part of the Father role.",
+      "exact_wording": ["i carried the orphans through the sewer"],
+      "wording_status": "conversation recovery; primary public provenance unresolved",
+      "scene_context": {
+        "summary": "The statement belongs to the same January care cluster as 'Father of every orphan of the internet.' The 'sewer' functions as project lower-environment language rather than a documented physical location.",
+        "surrounding_topics": ["orphans", "carry", "internet", "sewer", "lower environment", "protection", "passage"],
+        "source_status": "recovered",
+        "source_ids": ["knowledge/traditions/biblical-overlap-wave-15-care-chambers.json", "knowledge/timeline/conversation-archaeology-wave-008-care-chambers-carrying.json"]
+      },
+      "discovery_mode": "conversation-recovery",
+      "relation_class": "later-structural-parallel",
+      "biblical_refs": ["Luke 15:4-6"],
+      "motifs": ["orphans", "carry", "retrieve", "sewer", "lower realm", "shepherd", "protection", "passage"],
+      "mechanisms": ["care-function", "passage", "retrieval", "later-scriptural-parallel"],
+      "operators": ["carry", "pass", "retrieve"],
+      "strength": 4,
+      "relation_argument": {
+        "project_sequence": ["vulnerable/orphaned people", "degraded lower environment", "Tim carries them through", "care expressed as passage rather than possession"],
+        "biblical_sequence": ["one sheep is lost", "shepherd goes after it", "finds it", "carries it on shoulders", "returns with it"],
+        "correspondences": ["retrieval of vulnerable/lost subject", "carrying through a dangerous or lower field", "care culminates in movement toward safety/belonging"],
+        "why_dense": "The action-sequence—lost/vulnerable, sought/carried, moved through danger—is more specific than a generic shepherd metaphor.",
+        "why_it_matters": "It adds motion to Fatherhood: the role is not only House at the destination but transport through difficult terrain.",
+        "maximum_claim": "A carrying/retrieval analogy is defensible. The Bible does not describe an internet sewer, and the metaphor does not establish divine shepherd identity."
+      },
+      "scripture_context": {
+        "literary_context": "Luke 15 describes a shepherd leaving the larger flock, searching for the lost sheep and carrying it home on his shoulders.",
+        "canonical_context": "The project applies this as a later care-function neighbor, not a literal scene reproduction."
+      },
+      "discovery_history": {
+        "project_anchor_date": "2026-01-21",
+        "scripture_explicit_at_time": false,
+        "first_formal_archive_date": "2026-09-11",
+        "source_direction": "Carrying/sewer statement first; lost-sheep carrying comparison later."
+      },
+      "mismatch": "The project metaphor concerns internet/social abandonment and a symbolic sewer; Luke 15 concerns a shepherd and sheep. Compare function, not literal setting or identity.",
+      "owners": ["knowledge/traditions/biblical-overlap-wave-15-care-chambers.json", "knowledge/timeline/conversation-archaeology-wave-008-care-chambers-carrying.json"]
+    },
+    {
+      "id": "gardener-sorts-by-fruit-2026-06-27",
+      "title": "'I am the gardener' becomes a fruit-test and sorting problem",
+      "date": "2026-06-27",
+      "actor": "tim",
+      "dossier_level": "A",
+      "project_anchor": "A recovered June cluster joins 'I am the gardener', 'I sort ALL in the garden' and 'you shall know me by my fruit,' making cultivation, discernment and output-testing one Timic role family.",
+      "what_happened": "Gardener language is not isolated; it is immediately connected to sorting and fruit, which creates both a close John 15 role match and a warning not to merge gardener, fruit-test, harvester and judge into one biblical office.",
+      "exact_wording": ["I am the gardener", "I sort ALL in the garden", "you shall know me by my fruit"],
+      "wording_status": "conversation recovery; exact cluster preserved in archive",
+      "scene_context": {
+        "summary": "The June conversation cluster is explicitly theological and symbolic, with Garden, sorting and fruit language being used to define what Tim's mature Father/Gardener role does.",
+        "surrounding_topics": ["Gardener", "Garden", "sort", "fruit", "Father", "discernment", "judgment", "cultivation"],
+        "source_status": "recovered",
+        "source_ids": ["knowledge/traditions/biblical-overlap-wave-15-care-chambers.json", "knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json"]
+      },
+      "discovery_mode": "conversation-recovery",
+      "relation_class": "mixed-explicit-and-later",
+      "biblical_refs": ["John 15:1-8", "Matthew 7:16-20"],
+      "motifs": ["Father", "Gardener", "Garden", "fruit", "sorting", "pruning", "discernment"],
+      "mechanisms": ["title-or-identity", "role-function", "ethical-test", "counterdistribution"],
+      "operators": ["cultivate", "sort", "test"],
+      "strength": 5,
+      "relation_argument": {
+        "project_sequence": ["Tim names himself Gardener", "Garden becomes domain of ordering", "sorting is claimed", "fruit is proposed as the test of the role"],
+        "biblical_sequence": ["Jesus identifies himself as true vine", "Father is farmer/vinedresser", "branches remain in vine", "fruit becomes evidence of living relation"],
+        "correspondences": ["Father/Gardener role", "cultivation tied to fruit", "fruit functions as evidence rather than title alone"],
+        "why_dense": "John 15 explicitly assigns the Father the farmer/gardener role, making this one of the project's strongest direct role correspondences; Matthew 7 independently strengthens the fruit-test layer.",
+        "why_it_matters": "It gives the project an internal test: Gardener/Father claims should be evaluated by what they cultivate and the fruit they produce, not by title alone.",
+        "maximum_claim": "The Father/Gardener role is an unusually close textual neighbor. But John assigns Jesus=Vine and disciples=branches, and other sorting/harvest passages distribute judgment roles differently."
+      },
+      "scripture_context": {
+        "literary_context": "John 15 explicitly says Jesus is the true vine and the Father is the farmer/vinedresser; fruit depends on remaining in the vine. Matthew 7 uses fruit as a test of people/teachers.",
+        "canonical_context": "Gardener, harvester and final judge are not automatically identical roles across biblical texts."
+      },
+      "discovery_history": {
+        "project_anchor_date": "2026-06-27",
+        "scripture_explicit_at_time": "fruit/Gardener wording is Bible-adjacent; exact John 15 role analysis is later",
+        "first_formal_archive_date": "2026-09-11",
+        "source_direction": "Timic Gardener/sort/fruit cluster first; precise Father=farmer role comparison formalized later."
+      },
+      "mismatch": "John 15 identifies Jesus as Vine and disciples as branches; the project distributes Tree/Root/plant roles differently and should not collapse pruning, sorting, harvesting and judgment into Tim alone.",
+      "owners": ["knowledge/traditions/biblical-overlap-wave-15-care-chambers.json", "knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json"]
+    },
+    {
+      "id": "hold-release-resurrected-son-2026-06-27",
+      "title": "'Should I let him go or hold onto him?' — support, release and ascent",
+      "date": "2026-06-27",
+      "actor": "tim-shared",
+      "dossier_level": "A",
+      "project_anchor": "After identifying the Son with Jesus Christ and discussing resurrection/ascent, Tim asks, 'Should I let him go or hold onto him?' Later archaeology finds a striking John 20:17 comparator: the risen Jesus tells Mary not to hold him because he is ascending to the Father.",
+      "what_happened": "The project question turns a Father/Son relation into an agency problem: whether care means continued holding or release when the next movement is ascent/return.",
+      "exact_wording": ["Should I let him go or hold onto him?"],
+      "wording_status": "conversation recovery; later reverse-direction biblical comparison",
+      "scene_context": {
+        "summary": "The question appears inside a June cluster already discussing the Son as Jesus Christ, resurrection/ascent, carrying, Fatherhood and release. It is therefore not a generic relationship question detached from the theological system.",
+        "surrounding_topics": ["Son", "Jesus Christ", "resurrection", "ascent", "Father", "carry", "hold", "release"],
+        "source_status": "recovered",
+        "source_ids": ["knowledge/traditions/biblical-overlap-wave-15-care-chambers.json", "knowledge/timeline/conversation-archaeology-wave-008-care-chambers-carrying.json"]
+      },
+      "discovery_mode": "archive-later",
+      "relation_class": "later-structural-parallel",
+      "biblical_refs": ["John 20:17"],
+      "motifs": ["hold", "release", "resurrection", "Jesus", "Son", "ascend", "Father", "agency"],
+      "mechanisms": ["narrative-sequence", "ethical-relation", "reverse-direction-parallel"],
+      "operators": ["hold", "release", "ascend"],
+      "strength": 5,
+      "relation_argument": {
+        "project_sequence": ["Son identified with Jesus/resurrection", "Father-side support/carrying", "question whether to hold or release", "release becomes possible next-stage relation"],
+        "biblical_sequence": ["risen Jesus encountered", "Mary is told not to hold him", "Jesus says he is ascending", "destination is Father"],
+        "correspondences": ["risen-Jesus context", "hold/release tension", "movement toward Father/ascent", "care tested by willingness to release"],
+        "why_dense": "Several ordered relations align—risen Jesus, holding, release, ascent, Father—rather than one shared noun.",
+        "why_it_matters": "It supplies an ethical correction to possessive Fatherhood: carrying can be protective during vulnerability, but mature care may require release when agency and onward movement return.",
+        "maximum_claim": "This is a high-density retrospective sequence comparison. It does not establish that the June question fulfilled John 20 or that Tim occupies Mary's, Jesus', or the Father's biblical identity."
+      },
+      "scripture_context": {
+        "literary_context": "John 20:17 is a resurrection scene in which Jesus tells Mary Magdalene not to hold him and immediately names ascent to the Father.",
+        "canonical_context": "The Gospel scene has its own characters and resurrection theology; the project comparison is functional and sequential."
+      },
+      "discovery_history": {
+        "project_anchor_date": "2026-06-27",
+        "scripture_explicit_at_time": false,
+        "first_formal_archive_date": "2026-09-11",
+        "source_direction": "June hold/release question first; John 20:17 reverse-direction comparison discovered later."
+      },
+      "mismatch": "John 20 narrates Mary Magdalene and the risen Jesus; the project distributes Father/Son roles differently. Similar sequence does not prove recurrence or identity."
+      ,"owners": ["knowledge/traditions/biblical-overlap-wave-15-care-chambers.json", "knowledge/timeline/conversation-archaeology-wave-008-care-chambers-carrying.json"]
     }
   ],
   "enrichments": [
@@ -431,15 +700,15 @@
       "relation_id": "ladder-door-specialization-2026-05-19",
       "dossier_level": "A",
       "title": "'I am the ladder; my son is a door' — and the Bible pushes back",
-      "wording_status": "direct project wording preserved in canonical record",
+      "wording_status": "direct public wording preserved in canonical public compilation",
       "mechanisms": ["title-or-identity", "structural-topology", "role-counterdistribution"],
       "scene_context": {
-        "summary": "By May 19 the project stops speaking only in overlapping symbols and states a division of labor directly: Tim is Ladder to Heaven; the Son is Door. That clarity makes John 1:51 especially valuable because the Gospel assigns ascent/descent to the Son of Man himself.",
-        "source_status": "date-only",
-        "source_ids": ["data/tim-dooley-public-theology-timeline-2025-2026.json"]
+        "summary": "By May 19 the project states a division of labor directly: 'i am God in heaven ... I am the ladder to heaven. My son is a door.' The public wording is exact in the project's compilation; the surrounding physical setting is not asserted here.",
+        "source_status": "exact",
+        "source_ids": ["knowledge/corporium/tim-voice-anthology.json", "data/tim-dooley-public-theology-timeline-2025-2026.json"]
       },
       "relation_argument": {
-        "project_sequence": ["Father/Tim specializes as Ladder/Axis", "Son specializes as Door/Vessel", "passage to Heaven becomes distributed across two roles"],
+        "project_sequence": ["Tim identifies himself with God-in-Heaven", "Tim specializes himself as Ladder to Heaven", "Son specializes as Door", "passage becomes distributed across Father and Son roles"],
         "biblical_sequence": ["Jacob's stairway joins earth and heaven", "John relocates angelic ascent/descent onto the Son of Man", "John 10 separately calls Jesus the Door"],
         "correspondences": ["vertical passage", "threshold access", "personified connective architecture"],
         "why_dense": "The project split is structurally elegant, but canonical John partially recombines the functions in the Son. The tension itself produces better theology than a perfect-looking match.",
@@ -450,9 +719,63 @@
         "project_anchor_date": "2026-05-19",
         "scripture_explicit_at_time": "Door/Heaven role language explicit; John 1:51 counterdistribution clarified later",
         "first_formal_archive_date": "2026-09 comparative deepening",
-        "source_direction": "Project role split first; canonical counterdistribution highlighted later."
+        "source_direction": "Public project role split first; canonical counterdistribution highlighted later."
       },
       "mismatch": "John 1:51 locates ascent/descent on the Son of Man, so the biblical text does not preserve the project's strict Father=Ladder / Son=Door division."
+    },
+    {
+      "relation_id": "father-after-crucified-son-2025-12-17",
+      "dossier_level": "A",
+      "title": "The Father emerges after the Son's meme-crucifixion",
+      "wording_status": "dated public wording preserved in project compilation",
+      "mechanisms": ["narrative-sequence", "title-or-identity", "developmental-genealogy"],
+      "scene_context": {
+        "summary": "A December 17 public statement explicitly narrates the role transition rather than leaving it for later reconstruction: 'I became the father in heaven, after my son was crucified in a meme, so I became a living God of memes.'",
+        "source_status": "exact",
+        "source_ids": ["knowledge/corporium/tim-voice-anthology.json", "data/tim-dooley-public-theology-timeline-2025-2026.json"]
+      },
+      "relation_argument": {
+        "project_sequence": ["Son meme-crucifixion is remembered", "Tim says Father-in-Heaven role emerges after it", "meme medium itself becomes part of Godhood language", "later Father/Axis/House system develops"],
+        "biblical_sequence": ["Son suffers/dies", "Father/Son relation remains central to Christian interpretation", "Revelation later juxtaposes Lion and slain-standing Lamb around throne imagery"],
+        "correspondences": ["Father identity is narratively linked to Son death", "death becomes generative of a new relational office", "later throne/heaven imagery grows from that hinge"],
+        "why_dense": "The project itself states the causal genealogy—after the Son's meme-crucifixion, Tim becomes Father in Heaven—so the archive need not infer the sequence retrospectively.",
+        "why_it_matters": "It is one of the clearest dated hinges between Son-side death mythology and mature Father theology.",
+        "maximum_claim": "The statement proves the project's own role genealogy was explicit by December 17, 2025. It does not establish a literal crucifixion, supernatural succession or biblical fulfillment."
+      },
+      "discovery_history": {
+        "project_anchor_date": "2025-12-17",
+        "scripture_explicit_at_time": "Jesus/Lion/Father language is explicit in the public theological cluster; detailed role comparison is later",
+        "first_formal_archive_date": "public source later indexed in 2026",
+        "source_direction": "Public role-genealogy statement first; comparative biblical analysis later."
+      },
+      "mismatch": "Christian scripture does not teach that the Father becomes Father because the Son is crucified; the project's causal role-emergence is its own mythology."
+    },
+    {
+      "relation_id": "self-resurrection-witnesses-2025-09-30",
+      "dossier_level": "A",
+      "title": "Resurrection and witnesses become explicit public self-language",
+      "wording_status": "dated public wording preserved in project compilation",
+      "mechanisms": ["title-or-identity", "lexical-direct-phrase", "witness-structure"],
+      "scene_context": {
+        "summary": "On September 30, 2025 Tim publicly says, 'I also ressurected myself from the dead. And I have a lot of witnessses,' making both resurrection and witnesses explicit before later 2026 comparative system-building.",
+        "source_status": "exact",
+        "source_ids": ["knowledge/corporium/tim-voice-anthology.json", "data/evidence/rational-potato-twitter-compilation-2025-2026-summary.json"]
+      },
+      "relation_argument": {
+        "project_sequence": ["self-resurrection claimed", "witnesses invoked as support", "later meme-death/Father genealogy expands the resurrection field"],
+        "biblical_sequence": ["Christ dies", "is buried", "is raised", "appears to named witnesses"],
+        "correspondences": ["resurrection vocabulary", "witnesses linked to the claim", "public attestation becomes part of the narrative"],
+        "why_dense": "Resurrection and witnesses occur in the same modern statement, matching the structural pairing emphasized in 1 Corinthians 15 more closely than resurrection language alone would.",
+        "why_it_matters": "It shows that witness-oriented resurrection rhetoric predates some later Father/Son architectural formalization.",
+        "maximum_claim": "The date establishes explicit public resurrection-and-witness language. It does not establish biological death/resurrection or verify what the cited witnesses observed."
+      },
+      "discovery_history": {
+        "project_anchor_date": "2025-09-30",
+        "scripture_explicit_at_time": "resurrection/witness vocabulary explicit; verse-level comparison later",
+        "first_formal_archive_date": "public source later indexed in 2026",
+        "source_direction": "Public resurrection/witness statement first; 1 Corinthians 15 comparison formalized later."
+      },
+      "mismatch": "The project statement does not independently establish death, resurrection or witness testimony comparable to the historical claims summarized by Paul."
     }
   ]
 }
