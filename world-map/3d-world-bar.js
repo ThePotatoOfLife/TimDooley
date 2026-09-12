@@ -64,6 +64,37 @@ async function updateSummary() {
   node.textContent = `${active.length} layer${active.length === 1 ? '' : 's'}`;
 }
 
+async function updateContext() {
+  const node = document.getElementById('atlasWorldContext');
+  if (!node) return;
+  const activeEntries = layers.active().map(id => layers.get(id)).filter(Boolean);
+  const scalar = activeEntries.find(entry => entry.kind === 'scalar') || null;
+  const sets = activeEntries.filter(entry => entry.kind === 'set');
+  const selectedCodes = window.__potatoAtlasSelection?.current?.selectedCodes || [];
+
+  if (!activeEntries.length && !selectedCodes.length) {
+    node.hidden = true;
+    node.innerHTML = '';
+    return;
+  }
+
+  const lines = [];
+  if (scalar) lines.push(`<div><span>Fill</span><b>${esc(scalar.label)}</b></div>`);
+  if (sets.length) {
+    const labels = sets.slice(0, 4).map(entry => entry.label).join(' · ');
+    lines.push(`<div><span>Sets</span><b>${esc(labels)}${sets.length > 4 ? ` +${sets.length - 4}` : ''}</b></div>`);
+    try {
+      const matched = await query.matchedCountries();
+      const mode = sets.length > 1 ? query.getMode().toUpperCase() : 'SET';
+      lines.push(`<div><span>${esc(mode)} result</span><b>${matched.length} countries</b></div>`);
+    } catch { /* layer data can remain useful without a count */ }
+  }
+  if (selectedCodes.length) lines.push(`<div><span>Selected</span><b>${selectedCodes.length} countr${selectedCodes.length === 1 ? 'y' : 'ies'}</b></div>`);
+
+  node.innerHTML = `<small>Current map view</small>${lines.join('')}`;
+  node.hidden = false;
+}
+
 function sync() {
   for (const id of AXIS_IDS) {
     const button = document.querySelector(`[data-layer-id="${CSS.escape(id)}"]`);
@@ -104,6 +135,7 @@ function sync() {
   });
 
   updateSummary();
+  updateContext();
 }
 
 function installStyle() {
@@ -126,7 +158,7 @@ function installStyle() {
     body.atlas-registry-ui .top{min-height:44px;padding:5px 9px}
     body.atlas-registry-ui .brand small{display:none}
     body.atlas-registry-ui .brand b{font-size:15px}
-    #atlasWorldBar{position:absolute;left:10px;top:10px;z-index:8;display:flex;align-items:center;gap:5px;max-width:calc(100% - 20px);padding:5px;background:#080b0be8;border:1px solid #344343;border-radius:11px;box-shadow:0 8px 26px #0008;backdrop-filter:blur(11px)}
+    #atlasWorldBar{position:absolute;left:50%;top:10px;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:5px;max-width:calc(100% - 360px);padding:5px;background:#080b0be8;border:1px solid #344343;border-radius:11px;box-shadow:0 8px 26px #0008;backdrop-filter:blur(11px)}
     #atlasWorldBar button,#atlasWorldBar summary{min-height:30px;padding:5px 8px;border-radius:7px;background:#111818;border:1px solid #2d3939;color:#e9efea;font-size:11px;line-height:1;white-space:nowrap}
     #atlasWorldBar button{cursor:pointer}
     #atlasWorldBar button.active,#atlasWorldBar .atlas-world-menu.active>summary,#atlasWorldBar .atlas-world-menu[open]>summary{border-color:#7a9892;color:#dff1d8;background:#172120}
@@ -142,7 +174,9 @@ function installStyle() {
     #atlasWorldQuery{display:flex;gap:2px;padding-left:4px;border-left:1px solid #2d3939}#atlasWorldQuery button{min-width:34px;padding-left:6px;padding-right:6px}
     #atlasWorldResult{padding:0 4px;color:#aab4aa;font-size:10px;white-space:nowrap}
     #atlasWorldReset{color:#aab4aa!important}
-    @media(max-width:900px){#atlasWorldBar{left:7px;top:7px;right:7px;max-width:none;overflow-x:auto;overflow-y:visible}.atlas-world-menu-pop{position:fixed;left:8px;right:8px;top:96px;max-width:none}.top{overflow:visible!important}.top input{width:150px;min-width:130px}}
+    #atlasWorldContext{position:absolute;left:10px;bottom:10px;z-index:7;width:min(265px,calc(100% - 20px));padding:8px 10px;background:#080b0bdc;border:1px solid #30403e;border-radius:10px;box-shadow:0 6px 22px #0007;pointer-events:none}
+    #atlasWorldContext[hidden]{display:none!important}#atlasWorldContext>small{display:block;margin-bottom:3px;color:#77857f;font-size:8px;text-transform:uppercase;letter-spacing:.1em}#atlasWorldContext>div{display:flex;justify-content:space-between;gap:10px;padding:2px 0;font-size:10px}#atlasWorldContext span{color:#92a099}#atlasWorldContext b{max-width:175px;text-align:right;font-weight:600;color:#d7dfda;overflow-wrap:anywhere}
+    @media(max-width:900px){#atlasWorldBar{left:7px;top:7px;right:7px;transform:none;max-width:none;overflow-x:auto;overflow-y:visible}.atlas-world-menu-pop{position:fixed;left:8px;right:8px;top:96px;max-width:none}.top{overflow:visible!important}.top input{width:150px;min-width:130px}#atlasWorldContext{left:8px;bottom:58px;width:min(245px,calc(100% - 16px))}}
   `;
   document.head.appendChild(style);
 }
@@ -190,7 +224,7 @@ function install() {
   const queryBox = document.createElement('div');
   queryBox.id = 'atlasWorldQuery';
   queryBox.hidden = true;
-  queryBox.innerHTML = '<button type="button" data-query-mode="any">ANY</button><button type="button" data-query-mode="all">ALL</button>';
+  queryBox.innerHTML = '<button type="button" data-query-mode="any" title="Match countries in any active set">ANY</button><button type="button" data-query-mode="all" title="Match countries in every active set">ALL</button>';
   queryBox.addEventListener('click', event => {
     const button = event.target.closest('[data-query-mode]');
     if (button) query.setMode(button.dataset.queryMode);
@@ -211,10 +245,19 @@ function install() {
   reset.addEventListener('click', () => window.__potatoAtlasCompositor?.reset?.());
   bar.appendChild(reset);
 
+  const context = document.createElement('aside');
+  context.id = 'atlasWorldContext';
+  context.hidden = true;
+  context.setAttribute('aria-label', 'Current map view');
+
   host.appendChild(bar);
+  host.appendChild(context);
   sync();
 }
 
 window.addEventListener('potato-atlas-layer-change', sync);
 window.addEventListener('potato-atlas-query-change', sync);
+window.addEventListener('potato-atlas-query-result-change', updateContext);
+window.addEventListener('potato-atlas-composition-change', updateContext);
+window.addEventListener('potato-atlas-working-selection-change', updateContext);
 install();
