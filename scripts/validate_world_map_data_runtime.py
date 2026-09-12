@@ -24,13 +24,14 @@ REQUIRED_GROUPS = {
     "schengen": 29,
     "euro-area": 21,
 }
-REQUIRED_STATS = {
+CURRENT_STATS = {
     "stat.gdp-per-capita": "gdp_per_capita",
     "stat.real-growth": "real_growth",
     "stat.inflation": "inflation",
     "stat.unemployment": "unemployment",
-    "stat.debt-to-gdp": "debt_to_gdp",
 }
+GATED_STATS = {"stat.debt-to-gdp": "debt_to_gdp"}
+RUNTIME_STATS = {**CURRENT_STATS, **GATED_STATS}
 
 
 def load_json(path: Path, errors: list[str]):
@@ -100,12 +101,20 @@ def main() -> int:
             errors.append(f"group.{group_id} must be current in the map registry")
         if entry.get("source_owner") != "data/world-institution-memberships.json":
             errors.append(f"group.{group_id} must point to canonical institutional memberships")
-    for entry_id, runtime_metric in REQUIRED_STATS.items():
+    for entry_id, runtime_metric in CURRENT_STATS.items():
         entry = entries.get(entry_id, {})
         if entry.get("availability") != "current":
             errors.append(f"{entry_id} must be current in the map registry")
         if entry.get("source_owner") != "data/world-map-data-runtime.json":
             errors.append(f"{entry_id} must use the generated World Map data runtime")
+        if entry.get("runtime_metric") != runtime_metric:
+            errors.append(f"{entry_id} must declare runtime_metric={runtime_metric}")
+    for entry_id, runtime_metric in GATED_STATS.items():
+        entry = entries.get(entry_id, {})
+        if entry.get("availability") != "planned":
+            errors.append(f"{entry_id} must remain planned until comparable canonical coverage exists")
+        if entry.get("source_owner") != "data/world-map-data-runtime.json":
+            errors.append(f"{entry_id} must still point at the generated runtime for future promotion")
         if entry.get("runtime_metric") != runtime_metric:
             errors.append(f"{entry_id} must declare runtime_metric={runtime_metric}")
 
@@ -142,13 +151,18 @@ def main() -> int:
                     errors.append(f"runtime group {group_id} has incorrect member_count")
             metrics = runtime.get("metrics", {})
             countries = runtime.get("countries", {})
-            for metric in REQUIRED_STATS.values():
+            for metric in RUNTIME_STATS.values():
                 meta = metrics.get(metric, {})
                 coverage = meta.get("coverage", 0)
                 if not isinstance(coverage, int) or coverage < 0 or coverage > 195:
                     errors.append(f"runtime metric {metric} has invalid coverage: {coverage}")
                 if not meta.get("unit"):
                     errors.append(f"runtime metric {metric} must declare a comparable unit")
+            for metric in CURRENT_STATS.values():
+                if metrics.get(metric, {}).get("coverage", 0) <= 0:
+                    errors.append(f"current runtime metric {metric} must have real canonical coverage")
+            if metrics.get("debt_to_gdp", {}).get("coverage", 0) == 0 and entries.get("stat.debt-to-gdp", {}).get("availability") == "current":
+                errors.append("debt/GDP cannot be current with zero comparable canonical coverage")
             for code, country in countries.items():
                 for metric_id, cell in country.get("metrics", {}).items():
                     if cell.get("value") == 0 and cell.get("missing") is True:
