@@ -1,9 +1,11 @@
 {
   "id":"great-book-potato-fermentation-chemistry-audit",
   "title":"Great Book Chapter 71 — Potato Fermentation and Distillation Chemistry Audit",
-  "updated":"2026-09-11",
+  "updated":"2026-09-12",
   "status":"book-derived food/fermentation chemistry archaeology; scientific correction layer, not a production protocol",
   "source":"The Great Book Of Potato2.odt, Chapter 71 'Turn Water (and Potato) into Vodka', parsed page 467",
+  "abstract":"This record turns a humorous Great Book fermentation chapter into a compact biochemical mass-balance problem. The critical scientific correction is that ordinary brewing yeast does not efficiently convert intact potato starch directly into ethanol: starch first has to be hydrolyzed or saccharified into fermentable sugars. Once that distinction is made, the process becomes a coupled stock-flow system in which potato-derived carbohydrate, externally added sugar, fermentable sugar, ethanol, carbon dioxide, biomass and losses can be tracked separately. The two core reaction equations provide stoichiometric bookkeeping, while the stock equations make the limiting stage and true potato-derived yield measurable. Distillation belongs downstream as a vapor-liquid separation process; it concentrates components already present and does not create ethanol or extract a literal metaphysical spirit. The scientific value here is therefore not a recipe but a clear example of how the project's source→storage→transformation language can be translated into ordinary chemistry with conservation, yields, kinetics and explicit safety/legal boundaries.",
+  "research_question":"Can a coupled starch-hydrolysis and fermentation model quantify how much fermentable carbon and ethanol are genuinely potato-derived, identify the rate-limiting stage, and close the carbon/material balance within measurement uncertainty?",
   "importance":"This is a small but genuine chemistry/biotechnology branch outside the project's physics-heavy science tree. The historical chapter describes potato mash, yeast, fermentation and distillation, but omits the critical starch-to-sugar conversion step and treats distillation metaphorically as extracting a potato 'spirit'.",
   "historical_chain":"potato + added sugar + water + yeast -> fermentation -> distillation -> vodka/preservation/cleaning symbolism",
   "scientific_audit":{
@@ -15,24 +17,21 @@
     "purity_boundary":"Ethanol-water mixtures have non-ideal phase behavior, so repeated equilibrium separation is not equivalent to unlimited purification by simple distillation.",
     "safety_boundary":"Any practical distillation process involves fire, pressure, vapor, contamination and legal/regulatory issues. The science archive should record the chemistry without presenting the old chapter as a safe operating recipe."
   },
+  "equation_guide":[
+    {"equation":"(C6H10O5)_n+nH2O -> nC6H12O6","role":"Idealized starch-hydrolysis bookkeeping.","variables":"n counts anhydroglucose repeat units in the starch representation; water is consumed during hydrolysis.","plain_language":"Long starch polymers are broken into smaller fermentable sugar units. Real saccharification often produces a mixture rather than pure glucose, so this equation is a simplifying carbon/mass ledger.","test":"Measure reducing/fermentable sugar accumulation versus starch disappearance and estimate a hydrolysis yield/rate."},
+    {"equation":"C6H12O6 -> 2C2H5OH+2CO2","role":"Idealized alcoholic-fermentation stoichiometry.","variables":"Glucose is the representative fermentable substrate; ethanol and carbon dioxide are principal products, with real cells also making biomass and side products.","plain_language":"One mole of glucose can yield two moles each of ethanol and CO2 in the ideal stoichiometric limit; actual yield is lower because metabolism diverts carbon and products can be lost.","test":"Compare measured ethanol/CO2/carbon recovery with the theoretical stoichiometric ceiling."},
+    {"equation":"dM_starch/dt=J_synthesis-J_hydrolysis-J_other","role":"Starch stock balance.","plain_language":"Stored starch rises through synthesis/input and falls through hydrolysis or other removal. In a prepared fermentation substrate J_synthesis may be zero, making hydrolysis the key conversion flux."},
+    {"equation":"dM_sugar/dt=J_hydrolysis+J_added-J_fermentation-J_resp","role":"Fermentable-sugar stock balance.","plain_language":"The sugar pool receives carbon from potato-starch hydrolysis and any added sugar, then loses it to fermentation and respiration/other metabolism. Keeping J_hydrolysis and J_added separate is what makes potato-derived yield identifiable."},
+    {"equation":"dM_ethanol/dt=Y_EtOH J_fermentation-J_loss","role":"Product stock balance.","plain_language":"Ethanol accumulates in proportion to the fermentation flux and its effective yield, minus evaporation, sampling or other declared losses.","failure_condition":"If the combined carbon/material ledger cannot close within measurement uncertainty, important pools/fluxes or measurements are missing."}
+  ],
   "starchforce_connection":{
     "chain":"Spudlight/solar input -> photosynthetic carbon fixation -> carbohydrate/starch storage -> enzymatic mobilization/saccharification -> microbial fermentation -> ethanol/CO2",
     "scientific_value":"This gives another ordinary-material interpretation of Starchforce: stored chemical carbon can be mobilized into a different chemical-energy carrier through biochemical transformation.",
     "typed_stock_flow":"dM_starch/dt=J_synthesis-J_hydrolysis-J_other; dM_sugar/dt=J_hydrolysis+J_added-J_fermentation-J_resp; dM_ethanol/dt=Y_EtOH J_fermentation-J_loss",
     "boundary":"These are mass/chemical-energy flows, not evidence for a new fundamental force."
   },
-  "research_upgrade":[
-    "Distinguish substrate identity: potato starch versus externally added fermentable sugar.",
-    "Measure conversion yield, carbon balance and fermentation kinetics instead of treating transformation qualitatively.",
-    "Model starch hydrolysis and fermentation as coupled biochemical stages rather than one step.",
-    "Keep food chemistry, preservation/cleaning claims and spiritual/alchemical symbolism in separate fields."
-  ],
-  "connections":[
-    "great-book-potato-tree-bioengineering-audit",
-    "starchforce",
-    "spudlight-theory-and-equations",
-    "great-book-2024-science-archaeology",
-    "model-testing-protocol",
-    "science-master-index"
-  ]
+  "testable_predictions":["If hydrolysis is rate-limiting, increasing saccharification efficiency should increase fermentable-sugar availability before yeast kinetics become limiting.","If most fermentable carbon comes from added sugar, isotopic/compositional or controlled-input accounting will show a low potato-derived fraction despite successful fermentation.","A model using separate hydrolysis and fermentation stages should predict transient sugar and ethanol curves better than a one-step starch-to-ethanol model when starch is the principal substrate."],
+  "research_upgrade":["Distinguish substrate identity: potato starch versus externally added fermentable sugar.","Measure conversion yield, carbon balance and fermentation kinetics instead of treating transformation qualitatively.","Model starch hydrolysis and fermentation as coupled biochemical stages rather than one step.","Keep food chemistry, preservation/cleaning claims and spiritual/alchemical symbolism in separate fields."],
+  "failure_conditions":["Intact starch is assumed to be directly and efficiently fermented by ordinary Saccharomyces without a saccharification mechanism.","Added sugar is counted as potato-derived carbon.","Distillation is described as producing ethanol rather than separating a mixture.","A stock-flow interpretation is promoted despite a persistent unexplained material-balance deficit."],
+  "connections":["great-book-potato-tree-bioengineering-audit","starchforce","spudlight-theory-and-equations","great-book-2024-science-archaeology","model-testing-protocol","science-master-index","science-project-meaning-and-equation-guide-2026-09-12"]
 }
