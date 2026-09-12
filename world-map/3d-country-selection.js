@@ -22,6 +22,7 @@ const REST_REMOTE = 'https://restcountries.com/v3.1/all?fields=name,cca3,populat
 const AUTO_EDGES_ACTIVE = 8;
 const AUTO_EDGES_OTHER = 4;
 const AUTO_EDGES_TOTAL = 28;
+const RELATION_MODES = new Set(['all', 'money', 'systems', 'institutions', 'project', 'other']);
 const TYPE_PRIORITY = new Map([
   ['trade', 100], ['economic', 98], ['fiscal', 96], ['funding', 95], ['investment', 94],
   ['energy', 92], ['infrastructure', 90], ['security', 86], ['alliance', 84],
@@ -40,6 +41,9 @@ let by3 = {};
 let names = {};
 let syncingCore = false;
 let ready = false;
+let relationMode = RELATION_MODES.has(new URL(location.href).searchParams.get('relation'))
+  ? new URL(location.href).searchParams.get('relation')
+  : 'all';
 
 function emptyFC() { return { type: 'FeatureCollection', features: [] }; }
 function codeList(value) {
@@ -68,6 +72,7 @@ function snapshot(reason = 'read') {
     name: activeCode ? countryName(activeCode) : null,
     selected: selectedCodes.length > 0,
     selectedCodes: [...selectedCodes],
+    relationMode,
     compareMode: false,
   };
 }
@@ -78,6 +83,8 @@ function updateUrl() {
   else url.searchParams.delete('selected');
   if (activeCode) url.searchParams.set('country', activeCode);
   else url.searchParams.delete('country');
+  if (relationMode !== 'all') url.searchParams.set('relation', relationMode);
+  else url.searchParams.delete('relation');
   // Legacy Compare URLs are accepted on boot, but ordinary selection no longer
   // needs to keep the old Compare state in the address bar.
   if (!document.getElementById('compare')?.classList.contains('active')) url.searchParams.delete('compare');
@@ -135,6 +142,10 @@ function bucketFor(edge) {
   return 'other';
 }
 
+function edgeMatchesRelationMode(edge) {
+  return relationMode === 'all' || bucketFor(edge) === relationMode;
+}
+
 function displayScore(edge) {
   const typeScore = Math.max(0, ...(edge.types || []).map(type => TYPE_PRIORITY.get(type) || 50));
   const layer = String(edge.layer || '').toLowerCase();
@@ -145,13 +156,15 @@ function displayScore(edge) {
 
 function rankedEdges(root, budget) {
   const candidates = (world.curated_edges || [])
-    .filter(edge => edge.a === root || edge.b === root)
+    .filter(edge => (edge.a === root || edge.b === root) && edgeMatchesRelationMode(edge))
     .map(edge => ({ edge, bucket: bucketFor(edge), score: displayScore(edge), key: edgeKey(edge) }))
     .sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
 
   const chosen = [];
   const used = new Set();
-  const buckets = ['money', 'systems', 'institutions', 'project', 'other'];
+  const buckets = relationMode === 'all'
+    ? ['money', 'systems', 'institutions', 'project', 'other']
+    : [relationMode];
   for (const bucket of buckets) {
     const hit = candidates.find(item => item.bucket === bucket && !used.has(item.key));
     if (hit && chosen.length < budget) { chosen.push(hit.edge); used.add(hit.key); }
@@ -198,6 +211,7 @@ function automaticRelationData(codes = selectedCodes) {
         b: edge.b,
         root,
         mode: 'auto',
+        relationMode,
         depth: 1,
         types: (edge.types || []).join(' · '),
         layer: edge.layer || '',
@@ -217,6 +231,17 @@ function applyAutomaticRelations() {
   if (!ready || explicitTraceVisible()) return;
   const source = map.getSource('relations');
   if (source?.setData) source.setData(automaticRelationData(selectedCodes));
+}
+
+function setRelationMode(mode) {
+  const next = RELATION_MODES.has(mode) ? mode : 'all';
+  if (next === relationMode) return;
+  relationMode = next;
+  updateUrl();
+  applyAutomaticRelations();
+  window.dispatchEvent(new CustomEvent('potato-atlas-relation-mode-change', {
+    detail: { mode: relationMode, selectedCodes: [...selectedCodes] },
+  }));
 }
 
 function renderSelectionStrip() {
@@ -437,6 +462,8 @@ window.__potatoAtlasSelection = {
   automaticRelationData,
   connectionsFor,
   countryName,
+  setRelationMode,
+  getRelationMode() { return relationMode; },
 };
 window.clearCountrySelection = () => clearAll();
 window.clearAllSelectedCountries = clearAll;
@@ -451,5 +478,5 @@ map.on('zoomend', applyAutomaticRelations);
 await restoreState();
 
 window.dispatchEvent(new CustomEvent('potato-atlas-working-selection-ready', {
-  detail: { selectedCodes: [...selectedCodes], activeCode }
+  detail: { selectedCodes: [...selectedCodes], activeCode, relationMode }
 }));
