@@ -100,6 +100,9 @@ jobs:
       - name: Validate World Map entity and Africa repair
         run: python scripts/validate_world_map_entity_africa_repair.py
 
+      - name: Validate World Map dependency impact trace
+        run: python scripts/validate_world_map_impact_trace.py
+
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
 
