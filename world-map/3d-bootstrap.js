@@ -16,7 +16,6 @@ function versionedModule(path) {
   url.searchParams.set('v', ATLAS_VERSION);
   return url.href;
 }
-
 function now() { return performance.now(); }
 function setStatus(message, kind = 'info') {
   const node = statusNode();
@@ -32,7 +31,6 @@ function nextPaint(maxWaitMs = 160) {
     requestAnimationFrame(() => requestAnimationFrame(finish));
   });
 }
-
 async function waitForCore(timeoutMs = 15000) {
   const started = Date.now();
   while (Date.now() - started < timeoutMs) {
@@ -48,13 +46,11 @@ async function waitForCore(timeoutMs = 15000) {
   }
   throw new Error('Core atlas map did not become ready before the bootstrap deadline.');
 }
-
 function diagnostic(label, patch) {
   const current = window.__potatoAtlasDiagnostics.modules[label] || {};
   window.__potatoAtlasDiagnostics.modules[label] = { ...current, ...patch };
 }
 function declareDormant(label, path, trigger) { diagnostic(label, { path, status: 'dormant', trigger }); }
-
 function loadOptional(label, path) {
   if (modulePromises.has(label)) return modulePromises.get(label);
   const promise = (async () => {
@@ -84,7 +80,6 @@ function loadOptional(label, path) {
   modulePromises.set(label, promise);
   return promise;
 }
-
 async function loadAfterPaint(label, path) {
   await nextPaint();
   const result = await loadOptional(label, path);
@@ -93,10 +88,7 @@ async function loadAfterPaint(label, path) {
 }
 
 window.__potatoAtlasEnhancements = { loaded: [], failed: [] };
-window.__potatoAtlasDiagnostics = {
-  startedAt:now(), startedAtIso:new Date().toISOString(), deploymentVersion:ATLAS_VERSION || 'unversioned-source',
-  coreReadyMs:null, interactiveMs:null, modules:{},
-};
+window.__potatoAtlasDiagnostics = { startedAt:now(), startedAtIso:new Date().toISOString(), deploymentVersion:ATLAS_VERSION || 'unversioned-source', coreReadyMs:null, interactiveMs:null, modules:{} };
 window.__potatoAtlasReady = false;
 window.__potatoAtlasLoadModule = loadAfterPaint;
 
@@ -105,8 +97,6 @@ try {
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
-
-  // Ordinary interaction is registry-driven; legacy toolbox surfaces remain dormant.
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
   await loadAfterPaint('Compositor', './3d-compositor.js');
@@ -116,6 +106,7 @@ try {
   await loadAfterPaint('System Intelligence', './3d-gateways.js');
   await loadAfterPaint('Functional Chains', './3d-chain-explorer.js');
   await loadAfterPaint('Impact Trace', './3d-impact-trace.js');
+  await loadAfterPaint('Impact Actions', './3d-impact-actions.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
@@ -144,7 +135,6 @@ try {
       loadAfterPaint('Evidence', './3d-evidence.js'),
     ]);
   };
-
   let inspectionPromoted = false;
   const promoteInspectionOnce = event => {
     if (inspectionPromoted) return;
@@ -156,7 +146,6 @@ try {
   window.addEventListener('potato-atlas-working-selection-change', promoteInspectionOnce);
   map.once('click', promoteInspectionOnce);
   if (window.__potatoAtlasSelection?.current?.selected) promoteInspectionOnce({ detail:{ selected:true } });
-
   window.__potatoAtlasDiagnostics.bootstrapWiredMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-bootstrap-complete', { detail:window.__potatoAtlasEnhancements }));
 } catch (error) {
