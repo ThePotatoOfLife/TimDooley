@@ -13,6 +13,7 @@ COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 BRIDGE = ROOT / "world-map" / "3d-scalar-runtime-bridge.js"
 ACTIVE_VIEW = ROOT / "world-map" / "3d-active-view.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
+PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 UI = ROOT / "world-map" / "3d-ui.js"
 DEMOGRAPHY = ROOT / "world-map" / "3d-demography.js"
 DIMENSIONS = ROOT / "world-map" / "3d-country-dimensions.js"
@@ -67,6 +68,7 @@ def main() -> int:
     bridge = read(BRIDGE, errors)
     active_view = read(ACTIVE_VIEW, errors)
     bootstrap = read(BOOTSTRAP, errors)
+    panel_lifecycle = read(PANEL_LIFECYCLE, errors)
     ui = read(UI, errors)
     demography = read(DEMOGRAPHY, errors)
     dimensions = read(DIMENSIONS, errors)
@@ -97,6 +99,7 @@ def main() -> int:
         require(active_view, token, "world-map/3d-active-view.js", errors)
 
     require(bootstrap, "./3d-active-view.js", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js')", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "specialistLazyLoads", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "potato-atlas-working-selection-change", "world-map/3d-bootstrap.js", errors)
     reject(bootstrap, "map.once('click', promoteInspectionOnce);", "world-map/3d-bootstrap.js", errors)
@@ -111,6 +114,13 @@ def main() -> int:
         require(card, token, "world-map/3d-country-card.js", errors)
 
     require(pulse, "potato-atlas-inspector-rendered", "world-map/3d-country-pulse.js", errors)
+    require(pulse, "&quot;'", "world-map/3d-country-pulse.js", errors)
+    render_start = pulse.find("async function render")
+    render_lock = pulse.find("rendering = true;", render_start)
+    view_await = pulse.find("const view = await", render_start)
+    if render_start < 0 or render_lock < 0 or view_await < 0 or render_lock > view_await:
+        errors.append("world-map/3d-country-pulse.js must acquire the render lock before awaiting active-view context")
+
     require(bar, "Color:", "world-map/3d-world-bar.js", errors)
     require(bar, "Pinned", "world-map/3d-world-bar.js", errors)
 
@@ -121,14 +131,15 @@ def main() -> int:
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
-    # One central panel observer owns legacy/core panel lifecycle detection. Feature
-    # modules consume explicit lifecycle/domain events rather than independently
-    # watching the DOM. Keep this global so newly added 3D feature modules cannot
-    # silently reintroduce subtree observers later.
+    # A tiny always-loaded lifecycle module owns the one legacy/core panel observer.
+    # Feature modules and the dormant legacy UI consume events instead of observing
+    # the panel independently. This keeps the lifecycle live without re-enabling
+    # 3d-ui.js paint/layout side effects.
     for token in ("function panelLifecycleKey", "potato-atlas-panel-rendered", "panelLifecycleRenders"):
-        require(ui, token, "world-map/3d-ui.js", errors)
-    if ui.count("new MutationObserver(") != 1:
-        errors.append(f"world-map/3d-ui.js must construct exactly one panel lifecycle observer; found {ui.count('new MutationObserver(')}")
+        require(panel_lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
+    if panel_lifecycle.count("new MutationObserver(") != 1:
+        errors.append(f"world-map/3d-panel-lifecycle.js must construct exactly one panel lifecycle observer; found {panel_lifecycle.count('new MutationObserver(')}")
+    require(panel_lifecycle, "window.__potatoAtlasPanelLifecycle", "world-map/3d-panel-lifecycle.js", errors)
     for text, label in (
         (demography, "world-map/3d-demography.js"),
         (dimensions, "world-map/3d-country-dimensions.js"),
@@ -138,11 +149,11 @@ def main() -> int:
     ):
         require(text, "potato-atlas-panel-rendered", label, errors)
     for path in sorted((ROOT / "world-map").glob("3d-*.js")):
-        if path == UI:
+        if path == PANEL_LIFECYCLE:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, PANEL_LIFECYCLE, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
 
     if errors:
         print("WORLD MAP BROWSE/PERFORMANCE VALIDATION FAILED")
@@ -151,7 +162,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · active color/stat continuity · single scalar owner · lazy specialist stack · one panel lifecycle observer")
+    print("Browse + Pins · active color/stat continuity · single scalar owner · lazy specialist stack · one live panel lifecycle observer")
     return 0
 
 
