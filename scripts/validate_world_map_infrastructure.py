@@ -1,7 +1,8 @@
 #!/usr/bin/env python3
-"""Validate canonical World Map infrastructure ownership and causal guardrails."""
+"""Validate canonical World Map infrastructure ownership, runtime projection and causal guardrails."""
 from __future__ import annotations
 
+import importlib.util
 import json
 import re
 from pathlib import Path
@@ -12,6 +13,8 @@ COUNTRIES = ROOT / "data" / "countries" / "index.json"
 ENTITIES = ROOT / "data" / "world-map-entities.json"
 GATEWAYS = ROOT / "data" / "world-map-gateways.json"
 CHAINS = ROOT / "data" / "world-system-chains.json"
+RUNTIME_BUILDER = ROOT / "scripts" / "build_world_map_runtime.py"
+ENTITY_RUNTIME = ROOT / "world-map" / "3d-entity-runtime.js"
 
 SUPPORTED_TYPES = {
     "port", "maritime-terminal", "strait-associated-terminal", "canal-associated-terminal",
@@ -35,6 +38,17 @@ def load(path: Path) -> dict:
     if not path.is_file():
         raise AssertionError(f"missing required infrastructure file: {path.relative_to(ROOT)}")
     return json.loads(path.read_text(encoding="utf-8"))
+
+
+def generated_runtime() -> dict:
+    if not RUNTIME_BUILDER.is_file():
+        raise AssertionError("missing scripts/build_world_map_runtime.py")
+    spec = importlib.util.spec_from_file_location("world_map_runtime_infrastructure_validation", RUNTIME_BUILDER)
+    assert spec and spec.loader, "could not load World Map runtime builder"
+    module = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(module)
+    assert hasattr(module, "build_runtime"), "runtime builder must expose build_runtime()"
+    return module.build_runtime()
 
 
 def main() -> int:
@@ -133,19 +147,64 @@ def main() -> int:
         if gateway_counts[gateway_id] < minimum:
             errors.append(f"first infrastructure seed requires {minimum}+ assets linked to {gateway_id}; found {gateway_counts[gateway_id]}")
 
-    # Explicit regression fixtures for the causal boundary.
+    # Explicit regression fixture for the causal boundary.
     bad = {"relationship": "member-of-chain", "causal_status": "explicit-dependency"}
-    if bad["relationship"] in CONTEXT_RELATIONSHIPS and bad["causal_status"] != "contextual":
-        pass
-    else:
+    if not (bad["relationship"] in CONTEXT_RELATIONSHIPS and bad["causal_status"] != "contextual"):
         errors.append("causal guardrail regression fixture is not exercising contextual-vs-causal distinction")
+
+    # Runtime projection must expose one canonical browser plane and reverse indexes.
+    try:
+        runtime = generated_runtime()
+        plane = runtime.get("infrastructure") or {}
+        projected_assets = plane.get("assets") or {}
+        if set(projected_assets) != set(assets):
+            errors.append("runtime infrastructure assets must exactly project canonical infrastructure ids")
+        by_entity = plane.get("by_entity") or {}
+        by_gateway = plane.get("by_gateway") or {}
+        by_chain = plane.get("by_chain") or {}
+        coverage = plane.get("coverage") or {}
+        if coverage.get("assets") != len(assets):
+            errors.append(f"runtime infrastructure coverage.assets must equal {len(assets)}")
+        if "port-of-balboa" not in (by_entity.get("PAN") or []):
+            errors.append("runtime by_entity PAN must include port-of-balboa")
+        if "east-port-said-port" not in (by_gateway.get("suez-sumed") or []):
+            errors.append("runtime by_gateway suez-sumed must include east-port-said-port")
+        for index_name, index in (("by_entity", by_entity), ("by_gateway", by_gateway), ("by_chain", by_chain)):
+            for key, asset_ids in index.items():
+                unresolved = sorted(set(asset_ids) - set(projected_assets))
+                if unresolved:
+                    errors.append(f"runtime {index_name}.{key} contains unresolved assets {unresolved}")
+
+        impact = runtime.get("impact") or {}
+        nodes = impact.get("nodes") or {}
+        edges = impact.get("edges") or []
+        for asset_id in assets:
+            node_id = f"infrastructure:{asset_id}"
+            if node_id not in nodes:
+                errors.append(f"Impact graph missing infrastructure node {node_id}")
+        if not any(edge.get("source") == "infrastructure:east-port-said-port" and edge.get("target") == "gateway:suez-sumed" and edge.get("causal_status") == "explicit-dependency" for edge in edges):
+            errors.append("explicit East Port Said uses-gateway dependency must survive into Impact graph")
+        if not any(edge.get("source") == "infrastructure:port-of-balboa" and edge.get("target") == "gateway:panama-canal" and edge.get("causal_status") == "explicit-dependency" for edge in edges):
+            errors.append("explicit Balboa uses-gateway dependency must survive into Impact graph")
+        if any(edge.get("source") == "infrastructure:manzanillo-international-terminal-panama" and edge.get("causal_status") == "explicit-dependency" for edge in edges):
+            errors.append("context-only Manzanillo association must not become an Impact dependency")
+    except Exception as exc:
+        errors.append(f"runtime infrastructure projection failed: {exc}")
+
+    if ENTITY_RUNTIME.is_file():
+        js = ENTITY_RUNTIME.read_text(encoding="utf-8", errors="replace")
+        for token in ("infrastructure", "infrastructureForEntity", "infrastructureForGateway", "infrastructureForChain"):
+            if token not in js:
+                errors.append(f"shared entity runtime missing infrastructure API marker: {token}")
+    else:
+        errors.append("missing world-map/3d-entity-runtime.js")
 
     if errors:
         print("World Map infrastructure validation FAILED:")
         for error in errors:
             print(f" - {error}")
         return 1
-    print(f"World Map infrastructure validation passed: {len(assets)} assets · {len(SEED_MINIMUMS)} gateway seed groups.")
+    print(f"World Map infrastructure validation passed: {len(assets)} assets · {len(SEED_MINIMUMS)} gateway seed groups · runtime projected.")
     return 0
 
 
