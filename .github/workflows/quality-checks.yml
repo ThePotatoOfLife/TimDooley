@@ -104,6 +104,9 @@ jobs:
       - name: Validate discovery provenance projection
         run: python scripts/validate_discovery_projection.py
 
+      - name: Validate generated navigation projection
+        run: python scripts/validate_generated_navigation.py
+
       - name: Validate repository spine
         run: python scripts/validate_repository_spine.py
 
