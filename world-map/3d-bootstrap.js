@@ -110,6 +110,7 @@ try {
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
   await loadAfterPaint('Compositor', './3d-compositor.js');
+  await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
   await loadAfterPaint('World Bar', './3d-world-bar.js');
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('System Intelligence', './3d-gateways.js');
