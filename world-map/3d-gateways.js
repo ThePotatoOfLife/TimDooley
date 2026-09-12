@@ -31,7 +31,7 @@ runtime.systemCoverage = async () => {
   return data?.system_coverage || {};
 };
 
-function emptyGeoJSON() { return { type:'FeatureCollection', features:[] }; } // GeoJSON source contract.
+function emptyGeoJSON() { return { type:'FeatureCollection', features:[] }; }
 function gatewayFeature(gateway) {
   const obs = gateway.observation || {};
   return {
@@ -134,7 +134,7 @@ function infrastructureHtml(rows) {
   if (!rows?.length) return '';
   const visible = rows.slice(0, MAX_INFRASTRUCTURE_TAGS);
   const remaining = Math.max(0, rows.length - visible.length);
-  return `<p><small>Infrastructure</small><br><span class="atlas-country-tags">${visible.map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('')}${remaining ? `<span class="atlas-country-tag">+${remaining}</span>` : ''}</span></p>`;
+  return `<p><small>Infrastructure</small><br><span class="atlas-country-tags">${visible.map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${esc(asset.id)}" data-gateway-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('')}${remaining ? `<span class="atlas-country-tag">+${remaining}</span>` : ''}</span></p>`;
 }
 function emitGateway(id, gateway) {
   activeGatewayId = id || null;
