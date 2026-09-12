@@ -1,91 +1,39 @@
 {
   "title":"European Coupling Programme",
   "status":"recovered-programme-framework",
-  "updated":"2026-09-10",
+  "updated":"2026-09-12",
   "purpose":"Recover and consolidate the conversation-developed programme for making Europe function as a more interoperable economic and institutional space while preserving national plurality. Policy proposals here are project design ideas, not claims that these systems already exist.",
   "core_thesis":"Europe can become more capable by reducing repeated administrative friction, making permissions and rights portable, exposing cross-border economic structure as data, and treating interoperability as infrastructure.",
-  "design_principles":[
-    "many nations, one interoperable economic space",
-    "tell public systems once rather than repeatedly",
-    "risk-sensitive regulation rather than identical treatment of every activity",
-    "machine-readable rights and obligations",
-    "open interfaces between institutions",
-    "public traceability of economic relationships",
-    "capability through coupling rather than forced uniformity",
-    "observe first-generation AI mistakes elsewhere and sequence European deployment deliberately",
-    "resilience and efficiency must be optimized together rather than treating maximum short-run efficiency as the only goal",
-    "measure capabilities that exist only through relationships between countries, institutions, firms and infrastructure"
+  "design_principles":["many nations, one interoperable economic space","tell public systems once rather than repeatedly","risk-sensitive regulation rather than identical treatment of every activity","machine-readable rights and obligations","open interfaces between institutions","public traceability of economic relationships","capability through coupling rather than forced uniformity","observe first-generation AI mistakes elsewhere and sequence European deployment deliberately","resilience and efficiency must be optimized together rather than treating maximum short-run efficiency as the only goal","measure capabilities that exist only through relationships between countries, institutions, firms and infrastructure"],
+  "passport_layer":{"Market_Passport":"portable proof that an actor/product may participate in defined market activities across jurisdictions","Business_Passport":"reusable business identity, registrations, permissions and compliance facts","Asset_Passport":"portable structured record of asset identity, ownership, condition, rights and regulatory status","Professional_Passport":"portable qualifications, licenses and professional permissions","Capital_Passport":"structured portability of investment/compliance information needed for lawful movement of capital"},
+  "tell_europe_once":{"principle":"A person or company should not repeatedly submit the same verified fact to multiple public bodies when lawful interoperable systems can reuse it.","requirements":["data minimization","explicit legal basis","audit trails","permission controls","correction mechanisms","privacy-preserving interoperability"],"anti_pattern":"digitizing duplicate bureaucracy without removing duplication"},
+  "risk_lanes":{"concept":"Regulatory burden should scale with observable risk, systemic importance and potential harm rather than applying maximum procedure everywhere.","possible_lanes":["low-risk fast lane","standard lane","enhanced-review lane","systemic/high-risk lane"],"rule":"Fast lanes must not become exemptions from substantive safety or rights obligations."},
+  "economic_intelligence_layer":{"function":"A queryable graph of firms, public bodies, ownership, funding, contracts, infrastructure, trade, debt, dependencies and capabilities.","inputs":["legal-entity registries","beneficial ownership","procurement","public funding","state aid","trade/value chains","sector accounts","infrastructure","energy","research","labor/skills"],"outputs":["dependency maps","concentration risk","strategic bottlenecks","cross-border opportunity","resilience gaps","procurement transparency","policy simulation"],"core_question":"What can Europe do because of its relationships that no single member could do alone, and where do fragile dependencies reduce that capability?"},
+  "regulatory_operating_system":{"machine_readable_law":"Convert relevant rules, permissions, reporting schemas and definitions into structures software can inspect without pretending legal judgment is fully automatable.","regulatory_api":"Standard interfaces for checking requirements, submitting structured information and retrieving authoritative status.","ai_bureaucracy_debugger":"Use AI to identify redundant forms, contradictory requirements, repeated data requests, dead-end procedures and cross-agency inconsistencies; humans remain responsible for legal and policy decisions.","sunset_and_deletion_logic":"Where rules or reporting duties are demonstrably redundant, obsolete or duplicative, the programme explores periodic review, deletion and sunset mechanisms rather than permanent administrative accumulation."},
+  "procurement_grid":{"idea":"Make European public demand more visible as one analyzable field while procurement remains governed by applicable institutions and law.","benefits":["supplier discovery","cross-border participation","demand aggregation","industrial-capacity visibility","contract-performance analysis"],"north_link":"Use northern and cross-border procurement visibility to expose where energy, defence, shipping, infrastructure, compute and critical-input demand could support reciprocal capability creation."},
+  "ai_infrastructure_sequence":{"components":["AI Factories","Gigafactories","compute","energy","data access","research talent","industrial demand","public-sector adoption"],"sequence":"infrastructure -> trusted data/permissions -> high-value public and industrial use -> continuous evaluation -> broader deployment","strategic_note":"The programme favors learning from first movers without assuming Europe should permanently remain a follower."},
+  "north_capability_chain":{"recovered_conversation_logic":"energy surplus / secure low-cost power -> compute -> AI capacity -> productivity -> industrial capability -> exports / higher value creation -> stronger tax base -> welfare, defence and infrastructure capacity -> greater resilience and strategic autonomy","interpretation":"This is a programme hypothesis, not an automatic economic law. Every arrow needs empirical testing for cost, transmission capacity, capital availability, skills, adoption, demand and distributional effects.","northern_inputs":["Nordic renewable generation","North Sea energy systems","Greenlandic resource and infrastructure potential","North Atlantic connectivity","cold-climate compute opportunities where economically and environmentally justified","research and engineering capability"],"constraints":["grid bottlenecks","permitting","capital cost","water/cooling impacts","labour and skills","chip supply","data governance","cybersecurity","market demand","local community benefit","environmental limits","physical/digital/financial interconnection","market-conversion capacity"],"success_condition":"Energy abundance becomes valuable only when the network can convert it into durable human, industrial and institutional capability rather than merely higher consumption or extractive export."},
+  "conversion_breakpoints":[
+    {"id":"grids","mechanism":"Generation that cannot be transmitted, balanced or interconnected does not become dependable industrial or compute capacity."},
+    {"id":"capital","mechanism":"Technically viable projects can still fail when financing depth, risk allocation or cost of capital is inadequate."},
+    {"id":"permitting","mechanism":"Slow or fragmented permitting can leave nominal resources unavailable in practice."},
+    {"id":"skills","mechanism":"Compute, research and industrial assets require technical labor, education, migration pathways and organizational competence."},
+    {"id":"semiconductors","mechanism":"Advanced compute can remain strategically dependent on foreign chips, fabrication tools, packaging or supply-chain nodes."},
+    {"id":"data","mechanism":"Compute without lawful, usable and interoperable data may fail to produce high-value applications."},
+    {"id":"cybersecurity","mechanism":"Digital capability can increase systemic exposure if security and recovery capacity do not grow with it."},
+    {"id":"environment","mechanism":"Energy, compute and industrial expansion can become politically, ecologically or economically nonviable when water, land, biodiversity or emissions constraints are ignored."},
+    {"id":"interconnection","mechanism":"Capability can remain stranded when physical, regulatory, digital or financial links to partners are weak."},
+    {"id":"market-conversion","mechanism":"Research and technical capability do not automatically become firms, exports, productivity or public revenue."}
   ],
-  "passport_layer":{
-    "Market_Passport":"portable proof that an actor/product may participate in defined market activities across jurisdictions",
-    "Business_Passport":"reusable business identity, registrations, permissions and compliance facts",
-    "Asset_Passport":"portable structured record of asset identity, ownership, condition, rights and regulatory status",
-    "Professional_Passport":"portable qualifications, licenses and professional permissions",
-    "Capital_Passport":"structured portability of investment/compliance information needed for lawful movement of capital"
-  },
-  "tell_europe_once":{
-    "principle":"A person or company should not repeatedly submit the same verified fact to multiple public bodies when lawful interoperable systems can reuse it.",
-    "requirements":["data minimization","explicit legal basis","audit trails","permission controls","correction mechanisms","privacy-preserving interoperability"],
-    "anti_pattern":"digitizing duplicate bureaucracy without removing duplication"
-  },
-  "risk_lanes":{
-    "concept":"Regulatory burden should scale with observable risk, systemic importance and potential harm rather than applying maximum procedure everywhere.",
-    "possible_lanes":["low-risk fast lane","standard lane","enhanced-review lane","systemic/high-risk lane"],
-    "rule":"Fast lanes must not become exemptions from substantive safety or rights obligations."
-  },
-  "economic_intelligence_layer":{
-    "function":"A queryable graph of firms, public bodies, ownership, funding, contracts, infrastructure, trade, debt, dependencies and capabilities.",
-    "inputs":["legal-entity registries","beneficial ownership","procurement","public funding","state aid","trade/value chains","sector accounts","infrastructure","energy","research","labor/skills"],
-    "outputs":["dependency maps","concentration risk","strategic bottlenecks","cross-border opportunity","resilience gaps","procurement transparency","policy simulation"],
-    "core_question":"What can Europe do because of its relationships that no single member could do alone, and where do fragile dependencies reduce that capability?"
-  },
-  "regulatory_operating_system":{
-    "machine_readable_law":"Convert relevant rules, permissions, reporting schemas and definitions into structures software can inspect without pretending legal judgment is fully automatable.",
-    "regulatory_api":"Standard interfaces for checking requirements, submitting structured information and retrieving authoritative status.",
-    "ai_bureaucracy_debugger":"Use AI to identify redundant forms, contradictory requirements, repeated data requests, dead-end procedures and cross-agency inconsistencies; humans remain responsible for legal and policy decisions.",
-    "sunset_and_deletion_logic":"Where rules or reporting duties are demonstrably redundant, obsolete or duplicative, the programme explores periodic review, deletion and sunset mechanisms rather than permanent administrative accumulation."
-  },
-  "procurement_grid":{
-    "idea":"Make European public demand more visible as one analyzable field while procurement remains governed by applicable institutions and law.",
-    "benefits":["supplier discovery","cross-border participation","demand aggregation","industrial-capacity visibility","contract-performance analysis"],
-    "north_link":"Use northern and cross-border procurement visibility to expose where energy, defence, shipping, infrastructure, compute and critical-input demand could support reciprocal capability creation."
-  },
-  "ai_infrastructure_sequence":{
-    "components":["AI Factories","Gigafactories","compute","energy","data access","research talent","industrial demand","public-sector adoption"],
-    "sequence":"infrastructure -> trusted data/permissions -> high-value public and industrial use -> continuous evaluation -> broader deployment",
-    "strategic_note":"The programme favors learning from first movers without assuming Europe should permanently remain a follower."
-  },
-  "north_capability_chain":{
-    "recovered_conversation_logic":"energy surplus / secure low-cost power -> compute -> AI capacity -> productivity -> industrial capability -> exports / higher value creation -> stronger tax base -> welfare, defence and infrastructure capacity -> greater resilience and strategic autonomy",
-    "interpretation":"This is a programme hypothesis, not an automatic economic law. Every arrow needs empirical testing for cost, transmission capacity, capital availability, skills, adoption, demand and distributional effects.",
-    "northern_inputs":["Nordic renewable generation","North Sea energy systems","Greenlandic resource and infrastructure potential","North Atlantic connectivity","cold-climate compute opportunities where economically and environmentally justified","research and engineering capability"],
-    "constraints":["grid bottlenecks","permitting","capital cost","water/cooling impacts","labour and skills","chip supply","data governance","cybersecurity","market demand","local community benefit","environmental limits"],
-    "success_condition":"Energy abundance becomes valuable only when the network can convert it into durable human, industrial and institutional capability rather than merely higher consumption or extractive export."
-  },
-  "functional_chains":{
-    "Arctic_chain":"Greenland/Kingdom of Denmark <-> Canada <-> Iceland <-> Norway <-> wider NATO/EU systems through security, shipping, communications, research and infrastructure",
-    "North_Atlantic_chain":"Canada/Greenland/Iceland/Faroes/UK/Ireland/Norway as overlapping sea, cable, aviation, energy, security and trade relationships",
-    "Baltic_chain":"Denmark/Sweden/Finland/Baltics/Poland/Germany through energy, logistics, industry, defence and digital infrastructure",
-    "Northern_Energy_chain":"North Sea/Nordics -> grids/interconnectors/storage/industry/compute -> continental demand",
-    "European_Industrial_chain":"energy + capital + research + suppliers + procurement + transport + customers",
-    "Eastern_Security_chain":"Nordic/Baltic/continental Europe <-> Ukraine through defence capacity, logistics, finance, reconstruction and industrial learning",
-    "strategic_gate":"Türkiye appears in later formulations as a southern/eastern gate connecting Europe to Black Sea, Mediterranean, Caucasus and Middle Eastern systems without implying a single political bloc."
-  },
-  "coupled_capability":{
-    "definition":"A capability available only, or available far more effectively, because multiple countries or institutions are connected.",
-    "examples":["cross-border electricity balancing","integrated air and missile defence","shared research infrastructure","North Atlantic surveillance and communications","multi-country supply chains","joint procurement","passport-based market access","interoperable payment and data systems"],
-    "measurement_rule":"Record participating nodes, indispensable edges, capacity, redundancy, bottlenecks, substitution options and failure consequences."
-  },
-  "partial_integration":{
-    "principle":"Deep functional integration does not require identical constitutional membership everywhere.",
-    "forms":["EU membership","EEA/single-market participation","NATO membership","bilateral treaties","Nordic cooperation","project-specific consortia","infrastructure agreements","research networks","trade and standards alignment"],
-    "importance":"This supports the user's recurring idea of a North network with different participation levels rather than forced uniform political absorption."
-  },
-  "european_commons_link":{
-    "idea":"Economic and institutional coupling should be accompanied by shared cultural access rather than reducing Europe to a market machine.",
-    "components":["multilingual translation","public cultural commons","cross-border discovery","portable rights where lawful","shared educational/research access","creative circulation"],
-    "owner":"knowledge/core/european-commons.json"
-  },
+  "feedback_loops":[
+    {"id":"productive-fiscal-loop","sequence":["productivity","value creation","tax base","public investment","skills/infrastructure","productivity"],"risk":"The loop can reverse when investment falls, tax capacity erodes or spending does not improve productive capability."},
+    {"id":"energy-industry-loop","sequence":["secure energy","industrial investment","demand certainty","grid/energy investment","secure energy"],"risk":"Badly designed subsidies, bottlenecks or stranded assets can raise cost without producing resilience."},
+    {"id":"ai-capability-loop","sequence":["compute/data/talent","AI applications","productivity/research","capital/value","more compute/data/talent"],"risk":"Concentration, imported platform dependence, weak adoption or poor governance can cause value to be captured outside the participating economy."}
+  ],
+  "functional_chains":{"Arctic_chain":"Greenland/Kingdom of Denmark <-> Canada <-> Iceland <-> Norway <-> wider NATO/EU systems through security, shipping, communications, research and infrastructure","North_Atlantic_chain":"Canada/Greenland/Iceland/Faroes/UK/Ireland/Norway as overlapping sea, cable, aviation, energy, security and trade relationships","Baltic_chain":"Denmark/Sweden/Finland/Baltics/Poland/Germany through energy, logistics, industry, defence and digital infrastructure","Northern_Energy_chain":"North Sea/Nordics -> grids/interconnectors/storage/industry/compute -> continental demand","European_Industrial_chain":"energy + capital + research + suppliers + procurement + transport + customers","Eastern_Security_chain":"Nordic/Baltic/continental Europe <-> Ukraine through defence capacity, logistics, finance, reconstruction and industrial learning","European_Strategic_Autonomy_chain":"energy + compute + finance + industry + research + security + institutions -> reduced single-point dependency","strategic_gate":"Türkiye appears in later formulations as a southern/eastern gate connecting Europe to Black Sea, Mediterranean, Caucasus and Middle Eastern systems without implying a single political bloc."},
+  "coupled_capability":{"definition":"A capability available only, or available far more effectively, because multiple countries or institutions are connected.","examples":["cross-border electricity balancing","integrated air and missile defence","shared research infrastructure","North Atlantic surveillance and communications","multi-country supply chains","joint procurement","passport-based market access","interoperable payment and data systems","renewable generation + interconnector + storage/flexibility + industrial demand","national data + interoperable permissions + cross-border compute"],"measurement_rule":"Record participating nodes, indispensable edges, capacity, redundancy, bottlenecks, substitution options and failure consequences."},
+  "partial_integration":{"principle":"Deep functional integration does not require identical constitutional membership everywhere.","forms":["EU membership","EEA/single-market participation","NATO membership","bilateral treaties","Nordic cooperation","project-specific consortia","infrastructure agreements","research networks","trade and standards alignment"],"importance":"This supports a North network with different participation levels rather than forced uniform political absorption."},
+  "european_commons_link":{"idea":"Economic and institutional coupling should be accompanied by shared cultural access rather than reducing Europe to a market machine.","components":["multilingual translation","public cultural commons","cross-border discovery","portable rights where lawful","shared educational/research access","creative circulation"],"owner":"knowledge/core/european-commons.json"},
   "repair_cycle":["map","provenance","connect","identify dependency","explain mechanism","locate harm/bottleneck/opportunity","design intervention","test","measure","update"],
   "repair_safeguard":"Dense connectivity is not evidence of conspiracy. A claimed mechanism must be demonstrated with evidence, alternatives and uncertainty.",
   "relationship_to_north_programme":"The North Programme is a geographic/strategic implementation field inside the broader European coupling logic: North Atlantic, Arctic, Nordic, Baltic, UK/Ireland, continental Europe and eastern/security chains can create capabilities through their connections.",
