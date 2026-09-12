@@ -1,73 +1,78 @@
 // Compact ordinary control surface for the World Relational Atlas.
-// The registry owns what can appear; this module only renders available ordinary
-// controls and keeps the existing specialist machinery out of the normal path.
-
 const layers = window.__potatoAtlasLayers;
 const query = window.__potatoAtlasQuery;
+const map = window.__potatoAtlasMap;
 if (!layers) throw new Error('World bar requires the layer registry.');
 if (!query) throw new Error('World bar requires the query engine.');
+if (!map) throw new Error('World bar requires the map instance.');
 await layers.ready;
 
-const AXIS_IDS = ['axis.north', 'axis.west', 'axis.east', 'axis.south'];
-const MENU_FAMILIES = [
-  ['groups', 'Groups'],
-  ['religion', 'Religion'],
-  ['stats', 'Stats'],
-  ['relations', 'Relations'],
-];
-const RELATION_MODES = [
-  ['all', 'All context'],
-  ['money', 'Money'],
-  ['systems', 'Systems'],
-  ['institutions', 'Institutions'],
-  ['project', 'Project'],
-  ['other', 'Other'],
-];
+const AXIS_IDS = ['axis.north','axis.west','axis.east','axis.south'];
+const MENU_FAMILIES = [['groups','Groups'],['religion','Religion'],['stats','Stats'],['relations','Relations']];
+const RELATION_MODES = [['all','All context'],['money','Money'],['systems','Systems'],['institutions','Institutions'],['project','Project'],['other','Other']];
+const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+const ordinaryEntries = family => layers.entries(family, { availableOnly:true, ordinaryOnly:true });
 
-const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
-}[char]));
+const initialUrl = new URL(location.href);
+let projectionMode = initialUrl.searchParams.get('projection') === 'globe' ? 'globe' : 'flat';
 
-function ordinaryEntries(family) {
-  return layers.entries(family, { availableOnly: true, ordinaryOnly: true });
+function persistProjection() {
+  const url = new URL(location.href);
+  url.searchParams.set('projection', projectionMode);
+  history.replaceState({}, '', url);
 }
+function syncProjectionButton() {
+  const button = document.getElementById('atlasProjectionToggle');
+  if (!button) return;
+  const globe = projectionMode === 'globe';
+  button.classList.toggle('active', globe);
+  button.textContent = globe ? '▭' : '◉';
+  button.title = globe ? 'Switch to flat map' : 'Switch to globe';
+  button.setAttribute('aria-label', button.title);
+  button.setAttribute('aria-pressed', globe ? 'true' : 'false');
+}
+function applyProjection() {
+  try {
+    map.setProjection({ type: projectionMode === 'globe' ? 'globe' : 'mercator' });
+  } catch (error) {
+    console.warn('World Map projection unavailable:', error);
+    projectionMode = 'flat';
+    try { map.setProjection({ type:'mercator' }); } catch {}
+  }
+  persistProjection();
+  syncProjectionButton();
+  window.dispatchEvent(new CustomEvent('potato-atlas-projection-change', { detail:{ mode:projectionMode } }));
+  return projectionMode;
+}
+function setProjectionMode(mode) {
+  projectionMode = mode === 'globe' ? 'globe' : 'flat';
+  return applyProjection();
+}
+function toggleProjection() { return setProjectionMode(projectionMode === 'globe' ? 'flat' : 'globe'); }
+
+window.__potatoAtlasProjection = {
+  get() { return projectionMode; },
+  set: setProjectionMode,
+  toggle: toggleProjection,
+};
 
 function createMenu(family, label) {
   const details = document.createElement('details');
-  details.className = 'atlas-world-menu';
-  details.dataset.family = family;
-  const summary = document.createElement('summary');
-  summary.textContent = label;
-  details.appendChild(summary);
-  const pop = document.createElement('div');
-  pop.className = 'atlas-world-menu-pop';
-  details.appendChild(pop);
+  details.className = 'atlas-world-menu'; details.dataset.family = family;
+  const summary = document.createElement('summary'); summary.textContent = label; details.appendChild(summary);
+  const pop = document.createElement('div'); pop.className = 'atlas-world-menu-pop'; details.appendChild(pop);
   return details;
 }
-
-function closeOtherMenus(current) {
-  for (const menu of document.querySelectorAll('.atlas-world-menu[open]')) {
-    if (menu !== current) menu.removeAttribute('open');
-  }
-}
+function closeOtherMenus(current) { for (const menu of document.querySelectorAll('.atlas-world-menu[open]')) if (menu !== current) menu.removeAttribute('open'); }
 
 async function updateSummary() {
   const node = document.getElementById('atlasWorldResult');
   if (!node) return;
-  const setCount = query.activeSetCount();
   const active = layers.active();
-  if (!active.length) {
-    node.textContent = '';
-    node.hidden = true;
-    return;
-  }
+  if (!active.length) { node.textContent = ''; node.hidden = true; return; }
   node.hidden = false;
-  if (setCount) {
-    try {
-      const matches = await query.matchedCountries();
-      node.textContent = `${matches.length} countries`;
-      return;
-    } catch { /* keep a useful fallback */ }
+  if (query.activeSetCount()) {
+    try { const matches = await query.matchedCountries(); node.textContent = `${matches.length} countries`; return; } catch {}
   }
   node.textContent = `${active.length} layer${active.length === 1 ? '' : 's'}`;
 }
@@ -81,15 +86,23 @@ async function updateContext() {
   const selection = window.__potatoAtlasSelection;
   const selectedCodes = selection?.current?.selectedCodes || [];
   const relationMode = selection?.getRelationMode?.() || 'all';
-
-  if (!activeEntries.length && !selectedCodes.length) {
-    node.hidden = true;
-    node.innerHTML = '';
-    return;
-  }
+  if (!activeEntries.length && !selectedCodes.length) { node.hidden = true; node.innerHTML = ''; return; }
 
   const lines = [];
-  if (scalar) lines.push(`<div><span>Fill</span><b>${esc(scalar.label)}</b></div>`);
+  if (scalar) {
+    lines.push(`<div><span>Fill</span><b>${esc(scalar.label)}</b></div>`);
+    if (scalar.runtime_metric) {
+      const meta = await window.__potatoAtlasDataRuntime?.coverage?.(scalar.runtime_metric);
+      if (meta) {
+        const countries = Number(meta.countries ?? meta.country_count ?? 0);
+        lines.push(`<div><span>Coverage</span><b>${esc(meta.coverage)}/${esc(countries)} countries</b></div>`);
+        if (meta.period_min || meta.period_max) {
+          const period = meta.period_min === meta.period_max ? meta.period_max : `${meta.period_min || '?'}–${meta.period_max || '?'}`;
+          lines.push(`<div><span>Period</span><b>${esc(period)}</b></div>`);
+        }
+      }
+    }
+  }
   if (sets.length) {
     const labels = sets.slice(0, 4).map(entry => entry.label).join(' · ');
     lines.push(`<div><span>Sets</span><b>${esc(labels)}${sets.length > 4 ? ` +${sets.length - 4}` : ''}</b></div>`);
@@ -97,7 +110,7 @@ async function updateContext() {
       const matched = await query.matchedCountries();
       const mode = sets.length > 1 ? query.getMode().toUpperCase() : 'SET';
       lines.push(`<div><span>${esc(mode)} result</span><b>${matched.length} countries</b></div>`);
-    } catch { /* layer data can remain useful without a count */ }
+    } catch {}
   }
   if (selectedCodes.length) {
     lines.push(`<div><span>Selected</span><b>${selectedCodes.length} countr${selectedCodes.length === 1 ? 'y' : 'ies'}</b></div>`);
@@ -106,7 +119,6 @@ async function updateContext() {
       lines.push(`<div><span>Connections</span><b>${esc(label)}</b></div>`);
     }
   }
-
   node.innerHTML = `<small>Current map view</small>${lines.join('')}`;
   node.hidden = false;
 }
@@ -116,38 +128,33 @@ function sync() {
     const button = document.querySelector(`[data-layer-id="${CSS.escape(id)}"]`);
     if (button) button.classList.toggle('active', layers.isActive(id));
   }
-
+  syncProjectionButton();
   for (const menu of document.querySelectorAll('.atlas-world-menu')) {
     const family = menu.dataset.family;
     const pop = menu.querySelector('.atlas-world-menu-pop');
     if (!pop) continue;
-    const rows = ordinaryEntries(family);
     if (family === 'relations') {
-      const selection = window.__potatoAtlasSelection;
-      const mode = selection?.getRelationMode?.() || 'all';
-      pop.innerHTML = `
-        <div class="atlas-world-static"><span>Selected-country connections</span><small>bounded context</small></div>
-        ${RELATION_MODES.map(([id, label]) => `<button type="button" class="atlas-world-option${mode === id ? ' active' : ''}" data-relation-mode="${esc(id)}"><span>${esc(label)}</span></button>`).join('')}`;
+      const mode = window.__potatoAtlasSelection?.getRelationMode?.() || 'all';
+      pop.innerHTML = `<div class="atlas-world-static"><span>Selected-country connections</span><small>bounded context</small></div>${RELATION_MODES.map(([id,label]) => `<button type="button" class="atlas-world-option${mode === id ? ' active' : ''}" data-relation-mode="${esc(id)}"><span>${esc(label)}</span></button>`).join('')}`;
       menu.classList.toggle('active', mode !== 'all');
       const summary = menu.querySelector('summary');
       const activeLabel = RELATION_MODES.find(([id]) => id === mode)?.[1] || mode;
       if (summary) summary.textContent = mode === 'all' ? 'Relations' : `Relations · ${activeLabel}`;
       continue;
     }
+    const rows = ordinaryEntries(family);
     pop.innerHTML = rows.map(entry => {
       const active = layers.isActive(entry.id);
       const swatch = entry.color ? `<i style="--layer-color:${esc(entry.color)}"></i>` : '';
       return `<button type="button" class="atlas-world-option${active ? ' active' : ''}" data-layer-option="${esc(entry.id)}">${swatch}<span>${esc(entry.label)}</span></button>`;
     }).join('') || '<div class="atlas-world-empty">No current layers</div>';
   }
-
   const queryBox = document.getElementById('atlasWorldQuery');
   const setCount = query.activeSetCount();
   if (queryBox) {
     queryBox.hidden = setCount < 2;
     queryBox.querySelectorAll('[data-query-mode]').forEach(button => button.classList.toggle('active', button.dataset.queryMode === query.getMode()));
   }
-
   document.querySelectorAll('.atlas-world-menu').forEach(menu => {
     const family = menu.dataset.family;
     if (family === 'relations') return;
@@ -157,131 +164,41 @@ function sync() {
     const label = MENU_FAMILIES.find(([id]) => id === family)?.[1] || family;
     if (summary) summary.textContent = count ? `${label} · ${count}` : label;
   });
-
-  updateSummary();
-  updateContext();
+  updateSummary(); updateContext();
 }
 
 function installStyle() {
   if (document.getElementById('atlasWorldBarStyle')) return;
-  const style = document.createElement('style');
-  style.id = 'atlasWorldBarStyle';
-  style.textContent = `
-    body.atlas-registry-ui .top .quick-actions,
-    body.atlas-registry-ui #layersMenu,
-    body.atlas-registry-ui #traceMenu,
-    body.atlas-registry-ui #timeMenu,
-    body.atlas-registry-ui #viewMenu,
-    body.atlas-registry-ui #moreMenu,
-    body.atlas-registry-ui #atlasToolsMenu,
-    body.atlas-registry-ui #atlasSelectionDock,
-    body.atlas-registry-ui #atlasWorkingSelection,
-    body.atlas-registry-ui #mapInspectorToggle,
-    body.atlas-registry-ui .camera,
-    body.atlas-registry-ui .hud{display:none!important}
-    body.atlas-registry-ui .top{min-height:44px;padding:5px 9px}
-    body.atlas-registry-ui .brand small{display:none}
-    body.atlas-registry-ui .brand b{font-size:15px}
-    #atlasWorldBar{position:absolute;left:50%;top:10px;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:5px;max-width:calc(100% - 360px);padding:5px;background:#080b0be8;border:1px solid #344343;border-radius:11px;box-shadow:0 8px 26px #0008;backdrop-filter:blur(11px)}
-    #atlasWorldBar button,#atlasWorldBar summary{min-height:30px;padding:5px 8px;border-radius:7px;background:#111818;border:1px solid #2d3939;color:#e9efea;font-size:11px;line-height:1;white-space:nowrap}
-    #atlasWorldBar button{cursor:pointer}
-    #atlasWorldBar button.active,#atlasWorldBar .atlas-world-menu.active>summary,#atlasWorldBar .atlas-world-menu[open]>summary{border-color:#7a9892;color:#dff1d8;background:#172120}
-    #atlasWorldBar .atlas-axis-button{font-weight:800;min-width:31px}
-    #atlasWorldBar [data-layer-id="axis.north"].active{box-shadow:inset 0 -2px #79D6FF}
-    #atlasWorldBar [data-layer-id="axis.west"].active{box-shadow:inset 0 -2px #14558A}
-    #atlasWorldBar [data-layer-id="axis.east"].active{box-shadow:inset 0 -2px #C94F32}
-    #atlasWorldBar [data-layer-id="axis.south"].active{box-shadow:inset 0 -2px #E8C84A}
-    .atlas-world-menu{position:relative}.atlas-world-menu>summary{list-style:none;cursor:pointer}.atlas-world-menu>summary::-webkit-details-marker{display:none}
-    .atlas-world-menu-pop{position:absolute;left:0;top:calc(100% + 7px);min-width:210px;max-width:260px;max-height:58vh;overflow:auto;padding:6px;background:#0b1010f7;border:1px solid #344343;border-radius:10px;box-shadow:0 12px 28px #000a}
-    .atlas-world-option{display:flex!important;align-items:center;gap:7px;width:100%;margin:2px 0;text-align:left}.atlas-world-option i{width:9px;height:9px;border-radius:3px;background:var(--layer-color);flex:0 0 auto}.atlas-world-option span{overflow:hidden;text-overflow:ellipsis}.atlas-world-option.active:after{content:'✓';margin-left:auto;color:#bbdc8a}
-    .atlas-world-static{display:flex;justify-content:space-between;gap:10px;padding:7px 6px;font-size:11px}.atlas-world-static small,.atlas-world-empty{color:#9aa6a0;font-size:9px}
-    #atlasWorldQuery{display:flex;gap:2px;padding-left:4px;border-left:1px solid #2d3939}#atlasWorldQuery button{min-width:34px;padding-left:6px;padding-right:6px}
-    #atlasWorldResult{padding:0 4px;color:#aab4aa;font-size:10px;white-space:nowrap}
-    #atlasWorldReset{color:#aab4aa!important}
-    #atlasWorldContext{position:absolute;left:10px;bottom:10px;z-index:7;width:min(265px,calc(100% - 20px));padding:8px 10px;background:#080b0bdc;border:1px solid #30403e;border-radius:10px;box-shadow:0 6px 22px #0007;pointer-events:none}
-    #atlasWorldContext[hidden]{display:none!important}#atlasWorldContext>small{display:block;margin-bottom:3px;color:#77857f;font-size:8px;text-transform:uppercase;letter-spacing:.1em}#atlasWorldContext>div{display:flex;justify-content:space-between;gap:10px;padding:2px 0;font-size:10px}#atlasWorldContext span{color:#92a099}#atlasWorldContext b{max-width:175px;text-align:right;font-weight:600;color:#d7dfda;overflow-wrap:anywhere}
-    @media(max-width:900px){#atlasWorldBar{left:7px;top:7px;right:7px;transform:none;max-width:none;overflow-x:auto;overflow-y:visible}.atlas-world-menu-pop{position:fixed;left:8px;right:8px;top:96px;max-width:none}.top{overflow:visible!important}.top input{width:150px;min-width:130px}#atlasWorldContext{left:8px;bottom:58px;width:min(245px,calc(100% - 16px))}}
-  `;
+  const style = document.createElement('style'); style.id = 'atlasWorldBarStyle';
+  style.textContent = `body.atlas-registry-ui .top .quick-actions,body.atlas-registry-ui #layersMenu,body.atlas-registry-ui #traceMenu,body.atlas-registry-ui #timeMenu,body.atlas-registry-ui #viewMenu,body.atlas-registry-ui #moreMenu,body.atlas-registry-ui #atlasToolsMenu,body.atlas-registry-ui #atlasSelectionDock,body.atlas-registry-ui #atlasWorkingSelection,body.atlas-registry-ui #mapInspectorToggle,body.atlas-registry-ui .camera,body.atlas-registry-ui .hud{display:none!important}body.atlas-registry-ui .top{min-height:44px;padding:5px 9px}body.atlas-registry-ui .brand small{display:none}body.atlas-registry-ui .brand b{font-size:15px}#atlasWorldBar{position:absolute;left:50%;top:10px;transform:translateX(-50%);z-index:8;display:flex;align-items:center;gap:5px;max-width:calc(100% - 360px);padding:5px;background:#080b0be8;border:1px solid #344343;border-radius:11px;box-shadow:0 8px 26px #0008;backdrop-filter:blur(11px)}#atlasWorldBar button,#atlasWorldBar summary{min-height:30px;padding:5px 8px;border-radius:7px;background:#111818;border:1px solid #2d3939;color:#e9efea;font-size:11px;line-height:1;white-space:nowrap}#atlasWorldBar button{cursor:pointer}#atlasWorldBar button.active,#atlasWorldBar .atlas-world-menu.active>summary,#atlasWorldBar .atlas-world-menu[open]>summary{border-color:#7a9892;color:#dff1d8;background:#172120}#atlasWorldBar .atlas-axis-button{font-weight:800;min-width:31px}#atlasWorldBar [data-layer-id="axis.north"].active{box-shadow:inset 0 -2px #79D6FF}#atlasWorldBar [data-layer-id="axis.west"].active{box-shadow:inset 0 -2px #14558A}#atlasWorldBar [data-layer-id="axis.east"].active{box-shadow:inset 0 -2px #C94F32}#atlasWorldBar [data-layer-id="axis.south"].active{box-shadow:inset 0 -2px #E8C84A}#atlasProjectionToggle{min-width:31px;font-size:15px!important;padding-left:6px!important;padding-right:6px!important;border-left-color:#40504d!important}#atlasProjectionToggle.active{box-shadow:inset 0 -2px #a8d8e8}.atlas-world-menu{position:relative}.atlas-world-menu>summary{list-style:none;cursor:pointer}.atlas-world-menu>summary::-webkit-details-marker{display:none}.atlas-world-menu-pop{position:absolute;left:0;top:calc(100% + 7px);min-width:210px;max-width:260px;max-height:58vh;overflow:auto;padding:6px;background:#0b1010f7;border:1px solid #344343;border-radius:10px;box-shadow:0 12px 28px #000a}.atlas-world-option{display:flex!important;align-items:center;gap:7px;width:100%;margin:2px 0;text-align:left}.atlas-world-option i{width:9px;height:9px;border-radius:3px;background:var(--layer-color);flex:0 0 auto}.atlas-world-option span{overflow:hidden;text-overflow:ellipsis}.atlas-world-option.active:after{content:'✓';margin-left:auto;color:#bbdc8a}.atlas-world-static{display:flex;justify-content:space-between;gap:10px;padding:7px 6px;font-size:11px}.atlas-world-static small,.atlas-world-empty{color:#9aa6a0;font-size:9px}#atlasWorldQuery{display:flex;gap:2px;padding-left:4px;border-left:1px solid #2d3939}#atlasWorldQuery button{min-width:34px;padding-left:6px;padding-right:6px}#atlasWorldResult{padding:0 4px;color:#aab4aa;font-size:10px;white-space:nowrap}#atlasWorldReset{color:#aab4aa!important}#atlasWorldContext{position:absolute;left:10px;bottom:10px;z-index:7;width:min(265px,calc(100% - 20px));padding:8px 10px;background:#080b0bdc;border:1px solid #30403e;border-radius:10px;box-shadow:0 6px 22px #0007;pointer-events:none}#atlasWorldContext[hidden]{display:none!important}#atlasWorldContext>small{display:block;margin-bottom:3px;color:#77857f;font-size:8px;text-transform:uppercase;letter-spacing:.1em}#atlasWorldContext>div{display:flex;justify-content:space-between;gap:10px;padding:2px 0;font-size:10px}#atlasWorldContext span{color:#92a099}#atlasWorldContext b{max-width:175px;text-align:right;font-weight:600;color:#d7dfda;overflow-wrap:anywhere}@media(max-width:900px){#atlasWorldBar{left:7px;top:7px;right:7px;transform:none;max-width:none;overflow-x:auto;overflow-y:visible}.atlas-world-menu-pop{position:fixed;left:8px;right:8px;top:96px;max-width:none}.top{overflow:visible!important}.top input{width:150px;min-width:130px}#atlasWorldContext{left:8px;bottom:58px;width:min(245px,calc(100% - 16px))}}`;
   document.head.appendChild(style);
 }
 
 function install() {
   if (document.getElementById('atlasWorldBar')) return;
-  installStyle();
-  document.body.classList.add('atlas-registry-ui');
-  // The old hidden relation toggle starts active in the legacy HTML. Clear it so
-  // the working-selection controller uses its bounded automatic relation context.
+  installStyle(); document.body.classList.add('atlas-registry-ui');
   document.getElementById('relations')?.classList.remove('active');
-  const host = document.querySelector('.mapwrap');
-  if (!host) return;
-
-  const bar = document.createElement('div');
-  bar.id = 'atlasWorldBar';
-  bar.setAttribute('role', 'toolbar');
-  bar.setAttribute('aria-label', 'World map analytical layers');
-
+  const host = document.querySelector('.mapwrap'); if (!host) return;
+  const bar = document.createElement('div'); bar.id = 'atlasWorldBar'; bar.setAttribute('role','toolbar'); bar.setAttribute('aria-label','World map analytical layers');
   for (const id of AXIS_IDS) {
-    const entry = layers.get(id);
-    if (!entry || entry.availability !== 'current') continue;
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = 'atlas-axis-button';
-    button.dataset.layerId = id;
-    button.title = entry.label;
-    button.setAttribute('aria-label', entry.label);
-    button.textContent = entry.label.slice(0, 1).toUpperCase();
-    button.addEventListener('click', () => layers.toggle(id));
-    bar.appendChild(button);
+    const entry = layers.get(id); if (!entry || entry.availability !== 'current') continue;
+    const button = document.createElement('button'); button.type='button'; button.className='atlas-axis-button'; button.dataset.layerId=id; button.title=entry.label; button.setAttribute('aria-label',entry.label); button.textContent=entry.label.slice(0,1).toUpperCase(); button.addEventListener('click',()=>layers.toggle(id)); bar.appendChild(button);
   }
-
-  for (const [family, label] of MENU_FAMILIES) {
-    const menu = createMenu(family, label);
-    menu.addEventListener('toggle', () => { if (menu.open) closeOtherMenus(menu); });
-    menu.addEventListener('click', event => {
-      const relationButton = event.target.closest('[data-relation-mode]');
-      if (relationButton) {
-        window.__potatoAtlasSelection?.setRelationMode?.(relationButton.dataset.relationMode);
-        return;
-      }
-      const button = event.target.closest('[data-layer-option]');
-      if (!button) return;
-      layers.toggle(button.dataset.layerOption);
+  for (const [family,label] of MENU_FAMILIES) {
+    const menu = createMenu(family,label);
+    menu.addEventListener('toggle',()=>{ if(menu.open) closeOtherMenus(menu); });
+    menu.addEventListener('click',event=>{
+      const relationButton=event.target.closest('[data-relation-mode]'); if(relationButton){window.__potatoAtlasSelection?.setRelationMode?.(relationButton.dataset.relationMode);return;}
+      const button=event.target.closest('[data-layer-option]'); if(button) layers.toggle(button.dataset.layerOption);
     });
     bar.appendChild(menu);
   }
-
-  const queryBox = document.createElement('div');
-  queryBox.id = 'atlasWorldQuery';
-  queryBox.hidden = true;
-  queryBox.innerHTML = '<button type="button" data-query-mode="any" title="Match countries in any active set">ANY</button><button type="button" data-query-mode="all" title="Match countries in every active set">ALL</button>';
-  queryBox.addEventListener('click', event => {
-    const button = event.target.closest('[data-query-mode]');
-    if (button) query.setMode(button.dataset.queryMode);
-  });
-  bar.appendChild(queryBox);
-
-  const result = document.createElement('span');
-  result.id = 'atlasWorldResult';
-  result.hidden = true;
-  bar.appendChild(result);
-
-  const reset = document.createElement('button');
-  reset.id = 'atlasWorldReset';
-  reset.type = 'button';
-  reset.textContent = '×';
-  reset.title = 'Clear analytical layers';
-  reset.setAttribute('aria-label', 'Clear analytical layers');
-  reset.addEventListener('click', () => window.__potatoAtlasCompositor?.reset?.());
-  bar.appendChild(reset);
-
-  const context = document.createElement('aside');
-  context.id = 'atlasWorldContext';
-  context.hidden = true;
-  context.setAttribute('aria-label', 'Current map view');
-
-  host.appendChild(bar);
-  host.appendChild(context);
-  sync();
+  const projection=document.createElement('button'); projection.id='atlasProjectionToggle'; projection.type='button'; projection.addEventListener('click',toggleProjection); bar.appendChild(projection);
+  const queryBox=document.createElement('div'); queryBox.id='atlasWorldQuery'; queryBox.hidden=true; queryBox.innerHTML='<button type="button" data-query-mode="any" title="Match countries in any active set">ANY</button><button type="button" data-query-mode="all" title="Match countries in every active set">ALL</button>'; queryBox.addEventListener('click',event=>{const button=event.target.closest('[data-query-mode]');if(button)query.setMode(button.dataset.queryMode);}); bar.appendChild(queryBox);
+  const result=document.createElement('span'); result.id='atlasWorldResult'; result.hidden=true; bar.appendChild(result);
+  const reset=document.createElement('button'); reset.id='atlasWorldReset'; reset.type='button'; reset.textContent='×'; reset.title='Clear analytical layers'; reset.setAttribute('aria-label','Clear analytical layers'); reset.addEventListener('click',()=>window.__potatoAtlasCompositor?.reset?.()); bar.appendChild(reset);
+  const context=document.createElement('aside'); context.id='atlasWorldContext'; context.hidden=true; context.setAttribute('aria-label','Current map view');
+  host.appendChild(bar); host.appendChild(context); applyProjection(); sync();
 }
 
 window.addEventListener('potato-atlas-layer-change', sync);
