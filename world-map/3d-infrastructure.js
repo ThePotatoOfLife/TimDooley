@@ -104,10 +104,8 @@ function clear() {
 }
 function current() { return { context:{...activeContext}, assets:[...visibleAssets] }; }
 
-async function impactNodeForAsset(id) {
-  const data = await runtime.ready;
-  const nodeId = `infrastructure:${String(id || '')}`;
-  return data?.impact?.nodes?.[nodeId] ? nodeId : null;
+async function impactNodeForInfrastructure(id) {
+  return runtime.impactNodeForInfrastructure?.(id) || null;
 }
 function latestObservation(asset) {
   const observations = Array.isArray(asset?.observations) ? asset.observations : [];
@@ -116,7 +114,7 @@ function latestObservation(asset) {
 async function showPopup(asset, coordinates) {
   activePopup?.remove?.();
   const observation = latestObservation(asset);
-  const impactNode = await impactNodeForAsset(asset.id);
+  const impactNode = await impactNodeForInfrastructure(asset.id);
   const sourceLink = asset.source_url ? `<a href="${esc(asset.source_url)}" target="_blank" rel="noopener noreferrer">${esc(asset.source || 'Source')}</a>` : esc(asset.source || 'Source unavailable');
   const linked = [
     ...(asset.gateway_ids || []).map(id => `Gateway: ${humanize(id)}`),
@@ -160,8 +158,9 @@ document.addEventListener('click', async event => {
   if (assetButton) { await showAsset(assetButton.dataset.infrastructureId); return; }
   const impactButton = event.target.closest('[data-infrastructure-impact]');
   if (impactButton) {
-    const nodeId = await impactNodeForAsset(impactButton.dataset.infrastructureImpact);
-    if (nodeId) window.__potatoAtlasImpactTrace?.show?.(nodeId);
+    const assetId = impactButton.dataset.infrastructureImpact;
+    const impactNode = await impactNodeForInfrastructure(assetId);
+    if (impactNode) window.__potatoAtlasImpactTrace?.showInfrastructure?.(assetId);
   }
 });
 
