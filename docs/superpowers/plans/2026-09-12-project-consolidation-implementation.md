@@ -19,7 +19,7 @@
 - Religion is a broad inquiry owner; the deep Tim/Son ↔ Bible comparator belongs under `traditions/bible/`.
 - Preserve observable / interpretive / project-canon distinctions.
 - Archive remains internal and excluded from Pages deployment.
-- Do not resurrect Chronology as a public subsystem; Timeline is canonical.
+- Do not resurrect Timeline as a public subsystem; Timeline is canonical.
 - Prefer current architecture over older branch-specific UI shells.
 
 ---

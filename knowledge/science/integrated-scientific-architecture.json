@@ -88,7 +88,7 @@
     "fit":"b_hat=Cov(theta,ln r)/Var(theta); ln a_hat=mean(ln r)-b_hat mean(theta) for ordinary unweighted regression assumptions",
     "candidate_models":["M0 circle: b=0","M1 Archimedean: r=a+c theta","M2 free logarithmic: b fitted","M3 golden-fixed logarithmic: b=2 ln(phi)/pi"],
     "strong_test":"Choose the coordinate mapping and data-selection rule before fitting, then compare held-out residuals or predictive likelihood across candidate models.",
-    "anti_overfit":"If theta is invented after inspecting the target chronology, agreement with phi is descriptive pattern fitting rather than independent prediction."
+    "anti_overfit":"If theta is invented after inspecting the target timeline, agreement with phi is descriptive pattern fitting rather than independent prediction."
   },
   "dimension_transition_integration":{
     "dimensionless_state":["C=GM/(Rc^2)","chi=ell_*^4 K","rho_hat=rho/rho_*","E_hat=E/E_*","L_hat=L/L_*"],
