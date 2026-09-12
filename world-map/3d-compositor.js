@@ -36,7 +36,7 @@ async function runtimeData() { if (!worldRuntime) worldRuntime = await fetchJson
 
 const runtimeReady = runtimeData().catch(error => {
   console.warn('World Map empirical runtime unavailable:', error);
-  return { country_count: 0, groups: {}, metrics: {}, countries: {} };
+  return { country_count: 0, groups: {}, axis: { memberships: {}, countries: {} }, reference_figures: [], chains: {}, metrics: {}, countries: {} };
 });
 
 window.__potatoAtlasDataRuntime = {
@@ -56,6 +56,28 @@ window.__potatoAtlasDataRuntime = {
   async groupMeta(groupId) {
     const data = await runtimeReady;
     return data?.groups?.[groupId] || null;
+  },
+  async axisMembers(axisId) {
+    const data = await runtimeReady;
+    return data?.axis?.memberships?.[axisId] || [];
+  },
+  async axisProfile(code) {
+    const data = await runtimeReady;
+    return data?.axis?.countries?.[String(code || '').toUpperCase()] || { status: 'unresolved', orientations: [] };
+  },
+  async referenceFigures(axisId = null) {
+    const data = await runtimeReady;
+    const figures = data?.reference_figures || [];
+    return axisId ? figures.filter(figure => figure.axis === axisId) : figures;
+  },
+  async chainsForCountry(code) {
+    const data = await runtimeReady;
+    const iso3 = String(code || '').toUpperCase();
+    return Object.entries(data?.chains || {}).filter(([, chain]) => (chain?.members || []).includes(iso3)).map(([id, chain]) => ({ id, ...chain }));
+  },
+  async chain(chainId) {
+    const data = await runtimeReady;
+    return data?.chains?.[chainId] || null;
   },
   async coverage(metricId) {
     const data = await runtimeReady;
@@ -134,15 +156,13 @@ function ensureQueryLayer() {
   }, before);
 }
 
-function collectIsoArrays(value, target, { excludedKeys = new Set() } = {}) {
+function collectIsoArrays(value, target) {
   if (!value || typeof value !== 'object') return;
   if (Array.isArray(value)) {
     for (const code of value) if (/^[A-Z]{3}$/.test(String(code || ''))) target.add(code);
     return;
   }
-  for (const [key, child] of Object.entries(value)) {
-    if (!excludedKeys.has(key)) collectIsoArrays(child, target, { excludedKeys });
-  }
+  for (const child of Object.values(value)) collectIsoArrays(child, target);
 }
 
 function sourceValue(root, path) {
@@ -152,16 +172,15 @@ function sourceValue(root, path) {
 async function membershipFor(entry) {
   if (setMemberships.has(entry.id)) return setMemberships.get(entry.id);
   const result = new Set();
-  if (entry.id.startsWith('group.') && entry.source_owner === 'data/world-institution-memberships.json') {
+  if (entry.runtime_axis) {
+    const data = await runtimeReady;
+    for (const code of data?.axis?.memberships?.[entry.runtime_axis] || []) result.add(code);
+  } else if (entry.id.startsWith('group.') && entry.source_owner === 'data/world-institution-memberships.json') {
     const data = await runtimeReady;
     for (const code of data?.groups?.[entry.id.slice(6)]?.members || []) result.add(code);
   } else {
     const data = await worldData();
-    if (entry.id === 'axis.north') collectIsoArrays(data?.project_axis?.north, result, { excludedKeys: new Set(['external', 'excluded_current_version', 'future_reconnection']) });
-    else if (entry.id === 'axis.west') collectIsoArrays(data?.project_axis?.west, result);
-    else if (entry.id === 'axis.east') collectIsoArrays(data?.project_axis?.east, result);
-    else if (entry.id === 'axis.south') collectIsoArrays(data?.project_axis?.south, result);
-    else if (entry.id.startsWith('group.')) {
+    if (entry.id.startsWith('group.')) {
       const keyMap = { 'group.nato': 'NATO', 'group.brics': 'BRICS', 'group.aukus': 'AUKUS', 'group.five-eyes': 'Five_Eyes' };
       const group = data?.empirical_memberships?.[keyMap[entry.id]] || sourceValue(data, entry.source_path);
       collectIsoArrays(group?.members || [], result);
