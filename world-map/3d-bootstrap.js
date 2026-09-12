@@ -112,6 +112,7 @@ try {
   const map = await waitForCore();
   await nextPaint();
   await loadAfterPaint('Country selection', './3d-country-selection.js');
+  await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
   await loadAfterPaint('Compositor', './3d-compositor.js');
   await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
