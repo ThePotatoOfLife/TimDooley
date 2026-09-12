@@ -107,6 +107,9 @@ def main() -> int:
     if 'href="learn/"' in reader_guide or "href='learn/'" in reader_guide:
         fail("reader guide still routes to retired learn/ Start Here surface", errors)
 
+    if (ROOT / "root.js").exists():
+        fail("retired root.js reader artifact still exists; Explore is the only deep interactive reader", errors)
+
     if errors:
         print("Public projection validation FAILED")
         for error in errors:
