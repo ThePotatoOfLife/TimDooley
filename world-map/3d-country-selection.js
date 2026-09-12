@@ -4,6 +4,8 @@
 // state is deliberate: pins feed Compare/Path and other multi-country tools.
 // Automatic relationship context follows the active country instead of browse
 // history, so users can simply click around the map without deselecting first.
+// Legacy URL compatibility: older builds wrote searchParams.set('selected', …).
+// This controller reads selected= during restore, but writes pins= going forward.
 
 const map = window.__potatoAtlasMap;
 const baseSelection = window.__potatoAtlasSelection;
