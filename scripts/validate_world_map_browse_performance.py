@@ -98,6 +98,8 @@ def main() -> int:
 
     require(bootstrap, "./3d-active-view.js", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "specialistLazyLoads", "world-map/3d-bootstrap.js", errors)
+    require(bootstrap, "potato-atlas-working-selection-change", "world-map/3d-bootstrap.js", errors)
+    reject(bootstrap, "map.once('click', promoteInspectionOnce);", "world-map/3d-bootstrap.js", errors)
 
     for token in (
         "Map color",
