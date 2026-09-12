@@ -1,105 +1,82 @@
 {
-  "id":"microtubule-tubulin-consciousness-recovery",
-  "title":"Microtubules / Tubulin / Body-Mind-Spirit — Recovery and Physics Audit",
-  "version":"2.0.0",
-  "updated":"2026-09-11",
-  "status":"primary project prompt + Great Book neuroscience/quantum-consciousness archaeology + multiscale scientific audit",
-  "abstract":"The microtubule/tubulin branch is scientifically meaningful only if it is split into levels and connected by explicit causal maps. Microtubules are established cytoskeletal polymers central to neuronal polarity, intracellular transport and structural plasticity. The Great Book and later project discussions additionally explore electromagnetic, oscillatory and quantum-consciousness roles. A rigorous research programme therefore starts with classical microtubule mechanics/electrodynamics and transport biology, defines candidate microscopic state variables, measures their coupling to membrane/cytoskeletal/neuronal dynamics, and only then tests whether a specifically quantum description is necessary. Any quantum branch must specify a Hamiltonian, environmental coupling, coherence observable and timescale, and must show how the microscopic state changes a neural variable that in turn affects behavior or conscious report. The mere presence of quantum effects in molecules is insufficient. The strongest project contribution is a multiscale interface question—whether microtubules can function as a Door between molecular and neural levels—rather than a predeclared claim of nonlocal consciousness. This programme is T1-T2: grounded in real cell biology, equipped with testable physical submodels, but lacking evidence that uniquely quantum microtubule processes are required for consciousness.",
-  "research_question":"Do microtubule/tubulin dynamics contribute causally to neural computation or conscious-state variables in a way that survives multiscale controls, and if so, is any specifically quantum description experimentally necessary beyond classical biochemical/mechanical/electrical models?",
-  "importance":"The user's remembered 'tubals/microtubals' strand is real and substantial. Microtubules appear both in the 2024 Great Book's Body-Mind-Spirit/Human Map model and later explicit user prompts tying tubulars/microtubules to Spiral, Tree of Strife, advanced/retarded waves and the Axis. Later dialogue sometimes over-literalized these links into unsupported quantum/social claims; this record preserves the lineage while separating the viable research questions.",
-  "maturity":"Established biology at L0; project multiscale model T1-T2; quantum-consciousness necessity unestablished",
-  "primary_project_recovery":[
-    "A later user prompt explicitly says to consider 'tubulars even, and microtubules' alongside spooky action at a distance/quantum entanglement, Tree of Strife, upward/downward spiral, advanced/retarded waves, solar-system effects and Axis Mundi.",
-    "The Great Book independently contains a detailed microtubule/tubulin section inside the Spirit/non-local layer of a Body-Mind-Spirit Human Map.",
-    "The Great Book also contains consciousness mathematics including a logarithmic spiral, Kuramoto-like synchronization, Schrodinger/Bell/Maxwell comparators, CSF oscillation toy models, connectivity statistics and fractal measures."
+  "id": "microtubule-tubulin-consciousness-recovery",
+  "title": "Microtubule / Tubulin Multiscale Causal Theory — Molecular Dynamics to Neural Function",
+  "version": "3.0.0",
+  "updated": "2026-09-12",
+  "status": "established cytoskeletal biology + project multiscale causal programme + explicitly gated quantum branch",
+  "abstract": "The microtubule branch becomes scientifically valuable when treated as a multiscale causal inference problem rather than a direct jump from tubulin to consciousness. The established foundation is strong: microtubules are dynamic cytoskeletal polymers that regulate neuronal polarity, intracellular transport, morphology and many aspects of cellular organization. The open question is whether specific lattice, mechanical, electrical or transport states modulate neuronal computation strongly enough to matter at circuit and behavioral scales. This redevelopment therefore organizes the theory around causal transfer functions between five levels—molecular, polymer, cellular, circuit and behavior—and requires each arrow to have a measurable gain, timescale and intervention. A classical driven-dissipative model is the mandatory baseline. A quantum description is promoted only if a quantum-sensitive observable is measured, a corresponding open-system model predicts it, and classical stochastic alternatives fail on the same data. The strongest test is mediation under selective perturbation: manipulate a microtubule variable, quantify the induced change in a cellular/neural mediator, and determine whether that mediator carries a reproducible effect to circuit or behavioral outcomes. This creates a rigorous Door between scales without assuming that the Door is quantum or nonlocal in advance.",
+  "research_question": "Which microtubule variables causally influence neural computation across scales, what transfer functions connect those variables to neuronal and circuit dynamics, and is any uniquely quantum mechanism required after classical mechanical, transport and biochemical explanations are fitted?",
+  "maturity": "Established biology at molecular/polymer levels; T2 multiscale causal programme; quantum-consciousness necessity unestablished",
+  "levels": [
+    {"id": "L0", "name": "molecular", "state": "q: tubulin conformation, binding/PTM state, local charge/electromechanical variables"},
+    {"id": "L1", "name": "polymer", "state": "m: lattice strain, dynamic instability, stiffness, mode amplitudes, motor traffic"},
+    {"id": "L2", "name": "cell", "state": "c: transport, morphology, organelle positioning, excitability, synaptic maintenance"},
+    {"id": "L3", "name": "circuit", "state": "n: firing rates, oscillations, effective connectivity, metastable state"},
+    {"id": "L4", "name": "behavior/report", "state": "y: task performance, perception, report, state transition"}
   ],
-  "established_microtubule_biology":{
-    "facts":[
-      "Microtubules are polymers built from alpha/beta-tubulin heterodimers and are major components of the eukaryotic cytoskeleton.",
-      "In neurons they help establish polarity, provide tracks for intracellular transport, participate in axon/dendrite development and remodeling, and interact with many microtubule-associated proteins.",
-      "Tubulin post-translational modifications and lattice properties form a biologically meaningful tubulin code affecting stability, trafficking and cellular function."
-    ],
-    "sources":["https://www.nature.com/articles/nrn2631","https://www.nature.com/articles/s41580-026-01011-w","https://www.nature.com/articles/s41467-025-60855-6"]
+  "classical_baseline": {
+    "mechanical": "M q_ddot+Gamma q_dot+Kq=B_E E(t)+B_F F(t)+xi(t)",
+    "modes": "K u_k=omega_k^2 M u_k",
+    "thermal_noise": "For an equilibrium linearized mode, noise/damping must satisfy an appropriate fluctuation-dissipation relation under the model assumptions.",
+    "transport": "partial_t rho_motor+partial_x(v rho_motor)=D partial_xx rho_motor+sources-sinks",
+    "meaning": "Mechanics, thermal fluctuations and transport create testable classical predictions before any coherent quantum-information interpretation is introduced."
   },
-  "multiscale_causal_chain":{
-    "levels":[
-      {"level":"L0 molecular","variables":"tubulin conformation, binding state, post-translational modification, local electric/mechanical state"},
-      {"level":"L1 polymer","variables":"microtubule lattice state, stiffness, dynamic instability, collective modes, motor traffic"},
-      {"level":"L2 cellular","variables":"transport, organelle positioning, neurite morphology, membrane excitability/modulation, synaptic maintenance"},
-      {"level":"L3 circuit","variables":"firing statistics, synchronization, effective connectivity, network state"},
-      {"level":"L4 behavior/report","variables":"task performance, perception, report, state transitions"}
-    ],
-    "requirement":"Every promoted mechanism must specify at least one measurable map L_k -> L_(k+1), its timescale and its effect size. Skipping levels by analogy is not a causal model.",
-    "generic_mediation":"microstate q -> mesoscopic variable m -> neural variable n -> behavioral/report y; test whether q adds predictive/causal information about y after m,n and confounders are modeled."
+  "cross_scale_transfer": {
+    "generic": "x_(k+1)(t)=F_k[x_k history,u_k,context]+eta_k",
+    "linear_response": "delta x_(k+1)(omega)=H_k(omega) delta x_k(omega)+noise",
+    "gain": "G_k(omega)=|H_k(omega)| measures frequency-dependent transmission between levels",
+    "delay": "phase[H_k]/omega provides a transfer-delay estimate where the linear approximation is appropriate",
+    "rule": "Each claimed cross-scale mechanism must estimate at least one transfer gain or causal effect rather than relying on thematic resemblance."
   },
-  "classical_physics_baseline":{
-    "driven_dissipative_modes":"M q_ddot + Gamma q_dot + K q = xi(t)",
-    "normal_modes":"K u_n = omega_n^2 M u_n",
-    "electrical_mechanical_extension":"M q_ddot+Gamma q_dot+K q = B_E E(t)+B_F F(t)+xi(t) as a schematic forced model once couplings are measured",
-    "meaning":"Before invoking coherent quantum information, estimate ordinary mode spectra, damping, thermal/noise forcing and coupling to cellular variables.",
-    "baseline_rule":"A quantum model must outperform a classical stochastic/dissipative model on an observable that is actually quantum-sensitive."
+  "mediation_model": {
+    "chain": "q -> m -> c -> n -> y",
+    "direct_effect_test": "Compare a model y~q+controls with y~q+m+c+n+controls; disappearance/reduction of q's coefficient after validated mediators is evidence consistent with mediation, not proof by itself.",
+    "interventional_target": "ATE_q->y=E[y|do(q=q1)]-E[y|do(q=q0)] for a meaningful experimentally manipulable q",
+    "selectivity": "A valid manipulation must distinguish the candidate microtubule mechanism from generalized cytotoxicity, membrane damage or broad metabolic suppression."
   },
-  "quantum_model_contract":{
-    "hamiltonian":"H_MT=sum_n hbar omega_n(a_n^dagger a_n+1/2)+H_int is only a starting comparator after physical modes are defined.",
-    "open_system":"dot rho=-(i/hbar)[H_MT,rho]+L_decoh[rho]",
-    "required_quantities":["prepared/identified quantum degrees of freedom","coherence or entanglement observable","environment/bath model","decoherence rate","control/readout protocol","coupling to a neural variable","classical null model"],
-    "timescale_gate":"A necessary but not sufficient condition for a proposed coherent mechanism is tau_coh comparable to or longer than the relevant interaction/control time tau_int. tau_coh >> tau_int still does not show functional importance without causal coupling and readout.",
-    "entanglement_gate":"Claims of entanglement require an entanglement witness, Bell-type protocol or state reconstruction appropriate to the system; ordinary correlation or synchronized neural activity is insufficient."
+  "information_bridge": {
+    "predictive_information": "I(q_t;n_(t+Delta)|n_t,controls)",
+    "transfer_entropy_neighbor": "TE_{q->n}=I(q_past;n_future|n_past) as an observational directional-information statistic",
+    "warning": "Transfer entropy or conditional mutual information does not establish causal mechanism without intervention or justified causal assumptions.",
+    "promotion": "Use information measures to locate potentially useful cross-scale variables, then test them by perturbation."
   },
-  "quantum_consciousness_status":{
-    "orch_or":"Penrose-Hameroff Orch OR proposes cognitively relevant quantum processing in neuronal microtubules; it remains controversial rather than established neuroscience.",
-    "decoherence_debate":"Published estimates differ because they model different degrees of freedom, environments and shielding assumptions. The existence of a debate does not establish a consciousness mechanism.",
-    "2026_status":"Recent work continues both proposed quantum mechanisms and critical evaluation; operational demonstration of neural-scale entanglement/coherence and uniquely quantum explanatory necessity remains insufficient/contested.",
-    "sources":["https://pubmed.ncbi.nlm.nih.gov/12188753/","https://pubmed.ncbi.nlm.nih.gov/42137085/","https://pubmed.ncbi.nlm.nih.gov/42041796/","https://pubmed.ncbi.nlm.nih.gov/42450355/"]
+  "quantum_branch": {
+    "open_system": "dot rho=-(i/hbar)[H_MT,rho]+L_decoh[rho]",
+    "coherence": "C(t) may be quantified with a declared off-diagonal/coherence measure appropriate to the prepared state and basis",
+    "timescale_gate": "tau_coh/tau_int must be large enough for the proposed operation, but this is necessary rather than sufficient.",
+    "quantum_witness": "Specify a witness, interference signature, spectroscopy feature or state-tomographic quantity that cannot be reproduced by the fitted classical stochastic model.",
+    "model_selection": "Compare quantum and classical likelihood/predictive performance on the quantum-sensitive observable, penalizing additional parameters.",
+    "boundary": "Neural synchrony, subjective unity or long-range correlation are not quantum witnesses."
   },
-  "great_book_model":{
-    "layers":[{"name":"Body","role":"measurable neural/physiological substrate"},{"name":"Mind","role":"experiential/integrative bridge"},{"name":"Spirit","role":"book's speculative non-local/quantum-like relational layer"}],
-    "microtubules":"Tubulin-based cylindrical cytoskeletal structures are proposed in the book as one candidate interface between ordinary neural physiology and the speculative Spirit layer.",
-    "consciousness_spiral":"r=a exp(b theta), b=ln(phi)/(pi/2) approximately 0.306",
-    "synchronization":"d theta_i/dt=omega_i+sum_j k_ij sin(theta_j-theta_i)",
-    "project_metric":"C=Phi_spiral(FC,DMN,A,Phi,B,Q)",
-    "note":"Historical numerical biological claims should not be reused as empirical constants unless their primary scientific sources and measurement contexts are recovered."
+  "circuit_embedding": {
+    "population_model": "tau_n n_dot=-n+phi(Wn+Bu+g c)",
+    "microtubule_entry": "The cellular mediator c changes an explicit circuit parameter such as gain g, effective coupling W, excitability threshold or transport-dependent synaptic efficacy.",
+    "test": "Estimate whether including c improves prediction of circuit dynamics and whether selective microtubule perturbation changes the predicted parameter in the declared direction.",
+    "value": "This makes the molecular-to-circuit bridge an identifiable model component instead of a verbal leap."
   },
-  "coarse_graining_and_door":{
-    "map":"C_micro_to_neural: rho_micro or q_micro -> X_cell/neural",
-    "scientific_question":"Which statistics of the microscopic state are sufficient to predict a neuronal/network variable?",
-    "information_test":"Compare I(q_micro;X_neural_future | X_neural_past,controls) or an appropriate causal/predictive measure against null/surrogate models; information association alone still does not establish direct causality.",
-    "intervention_test":"Perturb the candidate microtubule variable selectively where feasible and test whether predicted downstream neural effects occur after accounting for toxicity/general cytoskeletal disruption.",
-    "project_translation":"Door is a cross-scale interface only if a measurable map and intervention path exist."
-  },
-  "neural_scale":{
-    "synchronization_comparator":"dot theta_i=omega_i+sum_j K_ij sin(theta_j-theta_i)",
-    "network_state":"Use neural population/circuit variables at this level rather than assigning the same microscopic phase to whole-brain dynamics.",
-    "bridge_requirement":"Derive or estimate how microtubule perturbations change parameters of the circuit model. Otherwise the two equations are merely adjacent descriptions."
-  },
-  "experimental_ladder":[
-    "1. Characterize microtubule mechanical/electrical mode spectra, damping and temperature dependence in controlled preparations.",
-    "2. Measure whether candidate modes alter motor transport, membrane/cellular variables or synaptic function at physiological amplitudes.",
-    "3. Use selective perturbations to separate microtubule-specific effects from broad cytotoxic/cytoskeletal disruption.",
-    "4. Quantify the resulting effect on neuronal/circuit observables.",
-    "5. Only for a quantum hypothesis, measure a quantum-specific observable and show that a classical stochastic model fails.",
-    "6. Connect the validated cellular/circuit effect to behavior or conscious-state transitions with preregistered outcomes.",
-    "7. Replicate across preparations/labs before promoting a cross-scale mechanism."
+  "experimental_program": [
+    "Characterize classical microtubule mechanical/electrical/transport dynamics under physiological conditions.",
+    "Identify a molecular/polymer variable with a reproducible downstream cellular correlate.",
+    "Use selective perturbation to estimate the cross-scale causal effect and rule out generic damage.",
+    "Embed the cellular effect into an explicit neuronal/circuit model and test held-out prediction.",
+    "If a quantum branch remains motivated, measure a genuinely quantum-sensitive observable and fit an open-system model.",
+    "Demonstrate that the best classical stochastic model fails on that observable before invoking quantum necessity.",
+    "Link the validated circuit effect to behavior/report through preregistered intervention outcomes and replicate."
   ],
-  "hard_boundaries":[
-    "Logging onto a website, eating from a symbolic Tree of Strife, moral choices or social fixation are not known to induce quantum entanglement of neural microtubules.",
-    "Quantum entanglement does not permit ordinary controllable faster-than-light communication or prove telepathy.",
-    "Room-temperature molecular quantum effects can exist without implying a quantum computer or a quantum theory of consciousness.",
-    "Microtubules are biologically important even if quantum-consciousness hypotheses fail; the classical cytoskeletal/transport/plasticity branch stands independently."
+  "failure_conditions": [
+    "No reproducible molecular/polymer variable predicts or causes a downstream neural effect at physiological amplitudes.",
+    "Observed effects are explained by broad cytoskeletal toxicity or transport collapse.",
+    "The cross-scale transfer gain is too small/slow to influence the proposed neural computation.",
+    "Quantum-sensitive measurements are explained by classical or semiclassical stochastic models with equal or better predictive performance.",
+    "No mediation path reaches circuit/behavioral variables after confounders and measurement uncertainty are modeled."
   ],
-  "falsification_and_failure_conditions":[
-    "Candidate microscopic dynamics have no reproducible effect on downstream neuronal variables at physiological conditions.",
-    "Observed downstream effects are fully explained by general cytoskeletal disruption/toxicity rather than the proposed mechanism.",
-    "A quantum model does not outperform classical stochastic alternatives on quantum-sensitive observables.",
-    "Relevant coherence/entanglement cannot persist or be controlled/read out on the timescale required by the mechanism.",
-    "No validated causal chain connects the molecular effect to neural computation and behavior/report."
-  ],
-  "new_research_program":[
-    "Separate tubulin lattice dynamics, electromagnetic response, transport biology, neural synchronization and consciousness into distinct model levels.",
-    "Replace vague 'quantum computer' wording with explicit Hamiltonian, bath/decoherence model, quantum witness and timescale when discussing quantum variants.",
-    "Define and estimate a coarse-graining map from microtubule variables to neuronal/network observables.",
-    "Audit every Great Book frequency, piezoelectric coefficient, neurotransmitter concentration and decoherence value against primary peer-reviewed sources before reusing it.",
-    "Use intervention and model comparison to determine whether microtubules add explanatory power beyond established cellular/neural mechanisms."
-  ],
-  "connections":["great-book-consciousness-spiral-equations-recovery","great-book-human-map-mathematics-audit","april-21-2025-potato-axis-spiral-primary-recovery","yhwh-trinity-operator-toe-archaeology","spirit-context-atlas","body-ladder","quantum-atom-particle-recovery","science-master-index","model-testing-protocol"]
+  "project_boundary": "Microtubules can be a scientifically meaningful cross-scale Door because they physically couple molecular, structural and transport processes. That does not establish a spiritual, telepathic or nonlocal quantum Door without separate evidence.",
+  "connections": [
+    "great-book-human-map-mathematics-audit",
+    "great-book-consciousness-spiral-equations-recovery",
+    "quantum-atom-particle-recovery",
+    "potato-dynamics-2-toy-model",
+    "model-testing-protocol",
+    "science-master-index"
+  ]
 }
