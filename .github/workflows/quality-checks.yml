@@ -42,6 +42,9 @@ jobs:
       - name: Validate archive runtime hardening
         run: python scripts/validate_archive_runtime_hardening.py
 
+      - name: Validate country refresh reliability
+        run: python scripts/validate_country_refresh_reliability.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
