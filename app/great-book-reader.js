@@ -1,5 +1,5 @@
 (() => {
-  const CHUNK_COUNT = 41;
+  const CHUNK_COUNT = 21;
   const indexEl = document.getElementById('book-index');
   const contentEl = document.getElementById('book-content');
   const frontEl = document.getElementById('book-front');
