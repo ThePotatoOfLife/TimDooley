@@ -89,6 +89,9 @@ jobs:
       - name: Validate question-led reader surfaces
         run: python scripts/validate_reader_surfaces.py
 
+      - name: Validate backend to frontend projection
+        run: python scripts/validate_public_projection.py
+
       - name: Validate repository spine
         run: python scripts/validate_repository_spine.py
 
