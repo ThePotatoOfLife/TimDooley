@@ -1,0 +1,172 @@
+{
+  "id":"integrated-scientific-architecture",
+  "title":"Integrated Scientific Architecture — Models, Measurements, Derivations and Cross-Scale Translation",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical archive-generated science integration framework; not a validated Theory of Everything",
+  "abstract":"The repository contains recovered Tim equations, later archive formalisms, external mathematics/physics comparators and symbolic structures. The scientific problem is therefore not lack of equations but lack of a shared contract connecting equations to variables, units, observables, scale, uncertainty and falsification. This framework turns the collection into a typed modeling programme. Every scientific paper is treated as an instance of a common measurement envelope around Potato Dynamics rather than as an isolated formula. The central methodological claim is that cross-domain unification is legitimate only when the translation map, preserved structure, dimensional units, observables and failure conditions are explicit. Three high-value integrations follow immediately: the recovered logarithmic Potato Axis becomes a measurable return-map model; the 4D↔5D Door becomes a dimensionless critical-phenomena model; and the 2025 UPT Lagrangian becomes a family of gauge/dimensionally consistent repair branches rather than a single uninterpreted master equation.",
+  "epistemic_rule":"Established mathematics and physics constrain and clarify project models. They do not certify theological claims. Recovered historical equations must remain textually preserved even when later technical analysis exposes dimensional, gauge, statistical or physical defects; repaired models are descendants, not silent replacements.",
+  "scientific_measurement_envelope":{
+    "notation":"E(P+)=(P+; Theta, U, Sigma, M0, D_obs)",
+    "inherits":"P+=(S,g,F,A,D,K,L,O,I,R,C,B,Q)",
+    "added_components":{
+      "Theta":"parameter vector: constants estimated, assumed or fixed by a model",
+      "U":"unit/dimension registry for every physical quantity",
+      "Sigma":"measurement/model uncertainty structure or covariance",
+      "M0":"baseline/null model against which novelty is judged",
+      "D_obs":"observational dataset with provenance, calibration and uncertainty"
+    },
+    "principle":"Potato Dynamics supplies architecture; the measurement envelope makes an instance scientifically auditable. A model lacking units, observable mapping or a baseline can still be mathematically interesting but is not yet an empirical physical theory."
+  },
+  "equation_semantics":{
+    "definition":"Introduces a quantity, e.g. C=GM/(Rc^2). It is not by itself a law of nature.",
+    "identity":"Mathematically exact consequence of definitions, e.g. r(theta+pi/2)/r(theta)=phi for the recovered b.",
+    "dynamical_law":"Specifies evolution, e.g. dX/dt=F(X). Requires state variables, domain and initial/boundary conditions.",
+    "constraint":"Restricts admissible states, e.g. G(X)=0 or conservation law.",
+    "ansatz":"Chosen functional form to make a hypothesis calculable; must not be reported as derived fact.",
+    "measurement_equation":"Maps latent/model state to measured data, e.g. y=O(X)+epsilon.",
+    "statistical_model":"Specifies probability of data given parameters, p(y|Theta,M).",
+    "external_comparator":"Established equation imported to sharpen structure without asserting identity.",
+    "rule":"Every displayed equation in the science wing should be tagged with one of these roles."
+  },
+  "measurement_grammar":{
+    "observation":"y_i=O_i(X,Theta,c_i)+epsilon_i",
+    "uncertainty":"epsilon~distribution(0,Sigma); report uncertainty with every physical or fitted quantity",
+    "standardized_residual":"r_i=(y_i-yhat_i)/sigma_i when scalar Gaussian-like uncertainty is appropriate",
+    "chi_square":"chi2=sum_i r_i^2 as one conventional goodness-of-fit statistic under its assumptions",
+    "likelihood":"L(Theta)=product_i p(y_i|Theta,M)",
+    "posterior":"p(Theta|D,M) proportional to p(D|Theta,M)p(Theta|M)",
+    "prediction":"p(y_new|D,M)=integral p(y_new|Theta,M)p(Theta|D,M)dTheta",
+    "validation_rule":"Calibration data and evaluation data should be separated when feasible; fitting a pattern is not the same achievement as predicting held-out data.",
+    "metrology_rule":"Measurement uncertainty and model discrepancy are distinct and should not be collapsed into one error bar."
+  },
+  "dimensional_analysis":{
+    "core_rule":"Every additive physical equation must be dimensionally homogeneous. Dimensionless groups should be constructed before inventing multi-variable thresholds.",
+    "buckingham_pi":"If a physical relation uses n dimensional quantities with dimensional-matrix rank k, it can be expressed using n-k independent dimensionless groups under the usual Buckingham-Pi framework.",
+    "project_consequence":"Door thresholds such as Xi=Xi_c should preferentially be functions of dimensionless groups rather than raw mixtures of curvature, energy, density and length.",
+    "sources":["https://www.nist.gov/blogs/taking-measure/life-buckingham-pi","https://nehrpsearch.nist.gov/static/files/NSF/PB82122409.pdf"]
+  },
+  "cross_scale_translation":{
+    "problem":"Several project strands jump from microscopic physics to neural, biological, social or theological states without a mathematical bridge.",
+    "coarse_graining_map":"C_(ell->L): S_ell -> S_L",
+    "consistency_test":"epsilon_C(t)=|| C_(ell->L)(Phi_ell^t(X)) - Phi_L^t(C_(ell->L)(X)) ||",
+    "meaning":"If a proposed microscopic mechanism genuinely underwrites a macroscopic model, evolve-then-coarse-grain and coarse-grain-then-evolve should agree within a quantified approximation regime. Large unexplained epsilon_C means the cross-scale claim is incomplete.",
+    "applications":["microtubule state -> neuron/network state","UPT field -> biological organization","individual interaction -> social network state","fine repository evidence -> coarse narrative summary"],
+    "rule":"Naming phenomena at two scales is not a mechanism. A channel/coarse-graining map and error budget are required."
+  },
+  "cross_domain_translation":{
+    "map":"T_AB:S_A->S_B",
+    "structure_preservation_test":"Compare T_AB(F_A(X)) with F_B(T_AB(X)) when a dynamical analogy is claimed.",
+    "mismatch":"Delta_T(X)=distance_B[T_AB(F_A(X)),F_B(T_AB(X))] where a meaningful metric exists.",
+    "interpretation":"A strong analogy approximately preserves the relation or operation being compared and explicitly records the dimensions it does not preserve.",
+    "project_use":"This converts 'X is like Y' into a testable structural claim and prevents physics vocabulary from becoming decorative synonymy."
+  },
+  "hybrid_door_framework":{
+    "model":"H=(Q,S,F,G,D)",
+    "Q":"discrete regime labels",
+    "S":"continuous state spaces within regimes",
+    "F":"continuous vector fields/evolution laws",
+    "G":"guard/threshold surfaces at which regime change becomes admissible",
+    "D":"reset/transition maps after crossing a guard",
+    "equations":["dX/dt=F_q(X,Theta) while X is in regime q","G_(q->q')(X)=0","X_plus=D_(q->q')(X_minus)"],
+    "project_value":"Door becomes a reusable mathematical operator across phase transitions, access systems, identity-state changes and state-machine models without claiming these domains are physically identical.",
+    "external_source":"https://digicoll.lib.berkeley.edu/nanna/record/138496/files/EECS-2014-167.pdf"
+  },
+  "integrated_spiral_ladder_model":{
+    "system":["dr/dt=alpha r","dtheta/dt=omega","dz/dt=u"],
+    "solution":["r(t)=r0 exp(alpha t)","theta(t)=theta0+omega t","z(t)=z0+u t"],
+    "eliminate_time":["r(theta)=r0 exp[(alpha/omega)(theta-theta0)]","z(theta)=z0+(u/omega)(theta-theta0)"],
+    "dimensionless_shape_parameters":["b=alpha/omega","p_hat=u/(omega r0)"],
+    "special_cases":{"wheel":"alpha=0,u=0","planar_log_spiral":"u=0, alpha!=0","cylindrical_helix":"alpha=0,u!=0","spiral_ladder":"alpha!=0,u!=0"},
+    "one_turn_return_map":["T=2pi/|omega|","r_(n+1)=Lambda_r r_n with Lambda_r=exp(2pi alpha/|omega|)","z_(n+1)=z_n+Delta_z with Delta_z=2pi u/|omega|"],
+    "return_signature":"R=(phase_return, Lambda_r, Delta_z, Delta_I, Delta_K, topology_class, provenance_state)",
+    "meaning":"A trajectory can return in angular phase while changing scale, height, information, storage or topology. Full-state recurrence requires all relevant state coordinates to return, not merely one coordinate.",
+    "potato_axis_specialization":"For the recovered b=2 ln(phi)/pi and the planar case u=0, a quarter turn multiplies radius by phi and a full turn multiplies radius by phi^4≈6.854101966. This is exact geometry, not a physical growth law until r, theta and their measurement protocol are specified."
+  },
+  "spiral_measurement_protocol":{
+    "linearization":"ln r_i = ln a + b theta_i + epsilon_i",
+    "fit":"b_hat=Cov(theta,ln r)/Var(theta); ln a_hat=mean(ln r)-b_hat mean(theta) for ordinary unweighted regression assumptions",
+    "candidate_models":["M0 circle: b=0","M1 Archimedean: r=a+c theta","M2 free logarithmic: b fitted","M3 golden-fixed logarithmic: b=2 ln(phi)/pi"],
+    "strong_test":"Choose the coordinate mapping and data-selection rule before fitting, then compare held-out residuals or predictive likelihood across candidate models.",
+    "anti_overfit":"If theta is invented after inspecting the target chronology, agreement with phi is descriptive pattern fitting rather than independent prediction."
+  },
+  "dimension_transition_integration":{
+    "dimensionless_state":["C=GM/(Rc^2)","chi=ell_*^4 K","rho_hat=rho/rho_*","E_hat=E/E_*","L_hat=L/L_*"],
+    "latent_threshold":"Xi=f(C,chi,rho_hat,E_hat,L_hat,...) with Xi dimensionless",
+    "calibratable_first_order_form":"Xi=w^T z for standardized dimensionless feature vector z; weights w are parameters to be calibrated, not sacred constants",
+    "landau_family":"V(phi;Xi)=1/2 a(Xi_c-Xi)phi^2 + 1/4 lambda phi^4, with a>0 and lambda>0",
+    "mean_field_minima":["Xi<Xi_c -> phi=0","Xi>Xi_c -> phi^2=a(Xi-Xi_c)/lambda"],
+    "bounded_effective_dimension":"D_eff=4 + phi^2/(M_D^2+phi^2), giving 4<=D_eff<5",
+    "critical_scaling":"Near the mean-field transition |phi| proportional to (Xi-Xi_c)^(1/2) on the broken side under this ansatz.",
+    "important_black_hole_result":"At a Schwarzschild horizon R=2GM/c^2, compactness C=1/2 for every mass, while the Kretschmann scalar is K_h=(3/4)c^8/(G^4 M^4). Therefore compactness and curvature are not interchangeable triggers: a C-only transition would treat all Schwarzschild horizons alike, whereas a curvature-sensitive model strongly distinguishes mass scales.",
+    "interpretive_value":"This is a substantive reason to keep multiple dimensionless control variables instead of one rhetorically broad 'compression' variable."
+  },
+  "upt_integration":{
+    "historical_formula_policy":"Keep the recovered April 18 formula exactly as an archaeological object, then analyze it with a separate repair layer.",
+    "four_dimensional_natural_units":"For a 4D Lagrangian density [L]=mass^4, [partial]=mass, [Box]=mass^2 and [ell]=mass^-1.",
+    "fractional_kinetic_dimension":"If P is assigned conventional scalar dimension [P]=mass, P(-Box)^alpha P has mass dimension 2+2alpha and requires a coefficient M_*^(2-2alpha). For alpha=1.3 that coefficient has mass dimension -0.6.",
+    "kernel_problem":"The historical factor (1+ell^2/Box) is not dimensionless because ell^2/Box has length^4. Dimensionless descendants could instead use a specified function K(ell^2(-Box)), for example 1+ell^2(-Box) or 1+[ell^2(-Box)]^-1, depending whether the intended modification is ultraviolet or infrared. Choice of kernel changes the theory and must not be silently inferred.",
+    "gauge_problem":"A field-strength term F_P^2 requires a gauge potential A_P (or another explicitly defined connection). It cannot be inferred from a real neutral scalar P alone.",
+    "higgs_problem":"If H is the Standard Model Higgs doublet, P^2 H is not the ordinary electroweak gauge-invariant portal. Neutral-scalar P^2 H^dagger H or charged-scalar |Phi_P|^2 H^dagger H are coherent repair branches.",
+    "fermion_problem":"P psi_bar psi is a sensible low-energy scalar-Dirac interaction for a neutral scalar, but a fully electroweak-gauge-invariant ultraviolet completion must specify chiral representations and usually the Higgs structure or another mediator.",
+    "fractional_QFT_neighbor":"Fractional powers of the d'Alembertian are a real research topic, but their propagator, branch prescription, unitarity and renormalization properties must be defined; the existence of such literature does not validate UPT automatically.",
+    "external_sources":["https://arxiv.org/abs/2210.04914","https://arxiv.org/abs/2603.25709"]
+  },
+  "network_and_relationship_science":{
+    "state_model":"dx_i/dt=f_i(x_i)+sum_j W_ij h_ij(x_i,x_j)+B_i u_i",
+    "graph_laplacian":"L=D-W",
+    "diffusive_case":"dx/dt=-kappa L x",
+    "spectral_question":"lambda_2(L) measures algebraic connectivity for an undirected weighted graph under standard conditions and can be used as one concrete integration/connectivity observable.",
+    "information_relation":"I(X;Y) quantifies statistical dependence, not causal or spiritual unity.",
+    "project_value":"Relationship-first claims become scientifically meaningful when edges have measurable weight, direction, uncertainty and temporal persistence rather than being treated as metaphysical equivalence."
+  },
+  "model_identifiability_and_sensitivity":{
+    "identifiability":"A parameter is not scientifically recovered merely because a fit exists. Distinct parameter values must produce distinguishable observational distributions within available precision.",
+    "fisher_information":"I_ab(Theta)=E[(partial_a ln p(Y|Theta))(partial_b ln p(Y|Theta))] under regularity assumptions",
+    "sensitivity":"S_ij=partial y_i/partial Theta_j; near-collinear sensitivity columns signal practical difficulty separating parameters",
+    "project_consequence":"Large multi-parameter master formulas should be decomposed into minimal submodels before fitting; otherwise free parameters can absorb almost any pattern."
+  },
+  "paper_integration_matrix":[
+    {"paper":"unified-potato-theory-2025-recovery","instantiate":"field theory","state":"g_mu_nu, P/Phi_P, optional A_P, H, psi","equations":"action -> Euler-Lagrange/field equations","observables":"propagators, masses, mixing, scattering/decay or gravitational deviations after a coherent field-content branch is chosen","largest_gap":"historical field definition and gauge/dimensional consistency"},
+    {"paper":"dimensional-phase-transition-full-recovery","instantiate":"critical phenomena / modified gravity toy model","state":"metric, order parameter phi, matter","control":"dimensionless z=(C,chi,rho_hat,E_hat,L_hat)","observables":"fractional deviations from GR ringdown/propagation plus any extra modes","largest_gap":"no calibrated Xi or derived microscopic mechanism"},
+    {"paper":"recurrence-orbit-spiral-dynamics-atlas","instantiate":"low-dimensional dynamical system","state":"r,theta,z plus optional information/storage coordinates","observables":"return multiplier, pitch, phase, fitted b, residuals","largest_gap":"project-specific data mapping to r and theta"},
+    {"paper":"microtubule-tubulin-consciousness-recovery","instantiate":"multiscale open system","state":"microtubule modes/density operator -> neural state","required_bridge":"C_micro->neural plus epsilon_C(t)","observables":"coherence/decoherence times, mode spectra, neuronal/network effects","largest_gap":"demonstrated quantum-to-neural causal channel"},
+    {"paper":"spudlight-theory-and-equations","instantiate":"typed multi-domain measurement family","state":"physical light, information signal and social attention must remain separate","observables":"photon flux/power; information gain; graph attention measures","largest_gap":"no legitimate scalar operation combining unlike units"},
+    {"paper":"potato-dynamics-2-toy-model","instantiate":"general open/hybrid system","state":"domain-specific X","role":"shared scientific architecture rather than fundamental physical ontology","largest_gap":"must be instantiated separately in each empirical domain"}
+  ],
+  "derived_conclusions":[
+    "The project does not need a larger pile of equations; it needs composition rules. Equations compose only when variables, domains, units and interfaces are compatible.",
+    "The recovered Potato Axis is presently the cleanest exact mathematical object in the archive because its self-similarity is derivable and directly testable once a coordinate mapping is chosen.",
+    "The 4D↔5D Door becomes substantially stronger when compactness, curvature and other controls are nondimensionalized. The Schwarzschild result C_h=1/2 but K_h proportional to M^-4 proves that 'strong gravity' is not one scalar idea.",
+    "UPT is best understood as an archaeological parent model spawning several technically distinct descendants: neutral-scalar EFT, complex U(1)_P gauge sector, fractional/nonlocal kinetic model, and cross-scale systems programme. Trying to make all of these one equation before field content is fixed reduces rather than increases scientific meaning.",
+    "Cross-scale claims are the largest recurring scientific weakness. A coarse-graining/channel map with quantified commutation error is the correct place to test whether microscopic physics actually explains macroscopic project phenomena.",
+    "A Door is scientifically strongest as a hybrid transition contract: regime + guard + map + preserved quantities + cost + observables.",
+    "Return is a vector of changes, not a binary event. Phase may return while radius, height, information, topology or social role changes.",
+    "Relationship-first becomes scientific when relation strength is represented by measured coupling, information, flow or graph structure and compared against simpler baselines.",
+    "The strongest future papers should make one narrow quantitative claim each and compete with a null model; broad metaphysical synthesis belongs above those papers as interpretation, not inside every Lagrangian."
+  ],
+  "paper_quality_template":[
+    "scientific_abstract","provenance_and_authorship","research_question","state_space_and_variables","unit_registry","assumptions","baseline_model","governing_equations","derivation_or_ansatz_status","dimensionless_groups","initial_boundary_guard_conditions","measurement_equations","data_and_provenance","parameter_estimation","uncertainty","identifiability_and_sensitivity","predictions","falsifiers","known_limit_recovery","comparison_with_existing_explanations","cross_scale_map_if_needed","limitations","conclusions","project_reflection"
+  ],
+  "sources":[
+    {"topic":"dimensional analysis / Buckingham Pi","url":"https://www.nist.gov/blogs/taking-measure/life-buckingham-pi","class":"official metrology reference"},
+    {"topic":"measurement/calibration uncertainty","url":"https://www.nist.gov/publications/calibration-and-uncertainty-analysis-predictions-computational-models","class":"official metrology reference"},
+    {"topic":"measurement uncertainty","url":"https://www.nist.gov/publications/simple-guide-evaluating-and-expressing-uncertainty-nist-measurement-results","class":"official metrology reference"},
+    {"topic":"hybrid dynamical systems guard/reset structure","url":"https://digicoll.lib.berkeley.edu/nanna/record/138496/files/EECS-2014-167.pdf","class":"academic systems reference"},
+    {"topic":"fractional operators in QFT","url":"https://arxiv.org/abs/2210.04914","class":"research literature"},
+    {"topic":"fractional field theory unitarity","url":"https://arxiv.org/abs/2603.25709","class":"recent research literature"}
+  ],
+  "connections":[
+    "knowledge/science/timic-unification-program.json",
+    "knowledge/science/potato-dynamics-2-toy-model.json",
+    "knowledge/science/model-testing-protocol.json",
+    "knowledge/science/equation-ledger.json",
+    "knowledge/science/unified-potato-theory-2025-recovery.json",
+    "knowledge/science/higgs-quantum-tuber-potato-boson-recovery.json",
+    "knowledge/science/dimensional-phase-transition-full-recovery.json",
+    "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json",
+    "knowledge/science/microtubule-tubulin-consciousness-recovery.json",
+    "knowledge/science/spudlight-theory-and-equations.json",
+    "knowledge/science/science-master-index.json"
+  ]
+}

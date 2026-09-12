@@ -1,0 +1,88 @@
+{
+  "id":"tree-branching-provenance-growth-model",
+  "title":"Tree / Root / Branch / Fruit — Branching, Provenance and Generative Growth Model",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"archive-generated stochastic/network model built from canonical Tree growth and provenance architecture",
+  "abstract":"The project repeatedly uses Tree to mean one rooted source differentiating into many branches while retaining continuity with the root. That structure has a precise mathematical counterpart in rooted graphs and branching processes, but mere proliferation is not enough: a pathological rumor tree, an evidence-backed research tree and a biological lineage can all branch rapidly. This paper therefore separates quantity of branching from quality of inheritance. A branch carries a state, provenance pointer, transformation rule and output/fruit; growth is evaluated by reproduction, diversity, retained provenance, independent capability and downstream usefulness. The same framework can describe archive expansion, idea dissemination and organizational capability without claiming that all are literally botanical trees. Its strongest result is that healthy generativity requires two simultaneous properties: descendants must become capable of producing further descendants, and the lineage must retain enough root/provenance information to audit what was inherited and what changed.",
+  "epistemic_rule":"Branching-process and graph equations are mathematical tools. Botanical Tree of Life, biblical Tree imagery, family lineage, knowledge graphs and repository branches are different domains. Structural similarity does not imply common physical mechanism or theological identity.",
+  "rooted_graph_model":{
+    "graph":"T=(V,E,rho)",
+    "rho":"distinguished root node",
+    "parent_map":"p(v) gives parent of non-root node v when a strict tree representation is appropriate",
+    "depth":"d(v)=number or weighted length of edges on the root-to-v path",
+    "provenance_path":"P(v)=(rho,...,v)",
+    "branching_degree":"b(v)=number of children of v",
+    "project_use":"Root represents provenance/origin; branches represent differentiated descendants; depth represents transformation distance, not spiritual rank by itself."
+  },
+  "branching_process_baseline":{
+    "galton_watson":"Z_(n+1)=sum_{i=1}^{Z_n} X_(n,i), where offspring variables X are i.i.d. in the simplest Galton-Watson model",
+    "offspring_mean":"m=E[X]",
+    "expected_generation":"E[Z_n]=Z_0 m^n",
+    "regimes":{"subcritical":"m<1 expected generation shrinks","critical":"m=1 expected generation remains constant though extinction behavior depends on distribution","supercritical":"m>1 expected generation grows"},
+    "project_lesson":"A reproduction ratio larger than one measures proliferation, not goodness, truth or usefulness. Strife and misinformation can be supercritical too.",
+    "source":"https://www.statslab.cam.ac.uk/~jrn10/Lectures/p.pdf"
+  },
+  "typed_branch_state":{
+    "node_state":"x_v=(content,capability,provenance,confidence,resource,role,time)",
+    "branch_transform":"x_child=F_e(x_parent,context,noise,innovation)",
+    "inheritance_error":"epsilon_e=d(F_e(x_parent),x_child) for a chosen feature representation and metric",
+    "innovation":"Delta_e=x_child-T_identity(x_parent), where T_identity denotes the expected inheritance mapping under no substantive innovation",
+    "meaning":"A child branch can preserve some invariants while modifying others. The model should record both continuity and novelty."
+  },
+  "provenance_retention":{
+    "binary_traceability":"q_v=1 if a reader can follow v through valid source edges to primary/root evidence under the archive's declared rules, else 0",
+    "weighted_traceability":"Q_v=product_{e in P(v)} q_e when q_e in [0,1] represents edge-level provenance reliability under an explicitly chosen model",
+    "warning":"Product scores can decay rapidly with depth and assume a multiplicative interpretation. They are one model, not a canonical truth score.",
+    "source_distance":"d_source(v)=minimum verified hops to a primary source",
+    "project_insight":"Branching without provenance produces foliage with no recoverable root. Provenance without branching produces a well-preserved root that does not generate usable descendants."
+  },
+  "branching_information":{
+    "child_distribution":"p_i=w_i/sum_j w_j for nonnegative branch weights w_i",
+    "branch_entropy":"H_branch(v)=-sum_i p_i log p_i",
+    "effective_number":"N_eff(v)=exp(H_branch(v)) when natural logarithms are used",
+    "interpretation":"N_eff distinguishes one dominant branch plus many trivial twigs from a genuinely diversified set of substantial branches.",
+    "caution":"Diversity is not automatically desirable; incoherent branching can increase entropy while reducing usefulness or provenance."
+  },
+  "generativity_and_fruit":{
+    "descendant_capability":"K_n=sum_{v in generation n} k_v",
+    "fruit_output":"F_t=sum_v y_v(t), where y_v is domain-specific useful output rather than branch count",
+    "reproductive_capability":"R_cap=expected number of descendants that independently acquire the capability to generate valid/useful descendants",
+    "garden_connection":"A Tree is more Garden-like when branch capability becomes locally reproducible and does not require every descendant to route through the root for ordinary function.",
+    "farm_warning":"A hub can create enormous apparent branching while keeping all branch agency at the center; count descendants separately from distributed capability."
+  },
+  "root_branch_tradeoff":{
+    "problem":"Strong root control improves consistency/provenance but can suppress adaptation; unconstrained branching improves exploration but can detach descendants from evidence and shared constraints.",
+    "multiobjective":"q_tree=(provenance_retention,diversity,distributed_capability,predictive/useful_output,repairability,maintenance_cost)",
+    "pareto_rule":"Treat Tree quality as a multiobjective problem before collapsing it into one scalar.",
+    "project_mapping":"Root supplies continuity; branches supply differentiation; fruit supplies consequence/usefulness; seed supplies reproducibility."
+  },
+  "pruning_and_revision":{
+    "prune_condition":"Remove/deprecate a branch when it is duplicate, falsified, superseded, unsafe, or no longer useful under declared rules—without deleting provenance where historical recovery matters.",
+    "revision_edge":"old_node -> corrected_node with typed relation superseded_by / corrected_by",
+    "scientific_analogy":"Pruning is model selection/maintenance, not censorship by default; retained provenance lets readers reconstruct why a branch was cut.",
+    "archive_metric":"dead_branch_fraction=deprecated_or_orphaned_nodes/eligible_nodes, interpreted only with context because mature archives may intentionally retain historical dead ends."
+  },
+  "tree_vs_network":{
+    "tree_strength":"Unique parent paths make ancestry/provenance simple.",
+    "tree_limit":"Real knowledge usually has multiple parents, cross-links, convergence and cycles; forcing a DAG/network into a tree can erase important relations.",
+    "generalization":"Use a directed acyclic provenance graph or temporal multigraph when a node genuinely has multiple sources/ancestors.",
+    "project_rule":"Tree is the preferred growth/provenance metaphor, not a requirement that the repository's full relational graph be acyclic."
+  },
+  "seed_recursion":{
+    "cycle":"root/source -> branch/growth -> fruit/output -> seed/portable generative state -> new root context",
+    "formal":"x_seed=C(x_tree) followed by x_newroot=D_seed(x_seed,environment)",
+    "compression_question":"What minimal state must the seed preserve for the next generation to reconstruct the relevant generative capability?",
+    "mountain_connection":"Mountain asks how many observations compress into a useful summit/seed; Tree asks how that compressed state expands into differentiated descendants."
+  },
+  "empirical_archive_experiment":{
+    "dataset":"repository nodes, source links, modification/supersession edges, timestamps, reader-facing outputs",
+    "measure":["verified root reachability","source distance","branch entropy/effective branches","fraction of orphaned claims","correction propagation delay","independent reproducibility of derived claims","reader navigation success"],
+    "baseline":"raw file count / raw link count",
+    "prediction":"A provenance-aware Tree architecture should make derived claims easier to trace and corrections easier to propagate than an equally large untyped link collection.",
+    "falsifier":"If added Tree/provenance structure does not improve traceability, correction propagation or independent reconstruction compared with a simpler index, its added complexity is not justified."
+  },
+  "conclusions":["Branch count measures proliferation, not life, truth or value.","The distinctive Tree variable is inherited generative capability constrained by provenance: descendants should both grow and remain auditable.","Root and branch are complementary control problems—continuity without differentiation stagnates; differentiation without recoverable lineage drifts.","Fruit is best operationalized as downstream useful consequence rather than attention or file count.","Seed is a compression object: it should preserve enough information to recreate relevant generative function in a new context."],
+  "sources":[{"topic":"branching process baseline","url":"https://www.statslab.cam.ac.uk/~jrn10/Lectures/p.pdf"}],
+  "connections":["knowledge/philosophy/timic-dynamics.json","knowledge/science/garden-farm-control-network-model.json","knowledge/science/mountain-information-compression-model.json","knowledge/indexes/ontology-tree.json","knowledge/core/potatoverse-master-framework.json"]
+}
