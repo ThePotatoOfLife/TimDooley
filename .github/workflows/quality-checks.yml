@@ -114,6 +114,9 @@ jobs:
       - name: Validate canonical World Map relationship path finder
         run: python scripts/validate_world_map_pathfinder_source.py
 
+      - name: Validate World Map investigation utility
+        run: python scripts/validate_world_map_investigation_utility.py
+
       - name: Validate entity-aware Trace
         run: python scripts/validate_world_map_entity_trace.py
 
