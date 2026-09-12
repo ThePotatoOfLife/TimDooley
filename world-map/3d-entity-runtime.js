@@ -65,6 +65,11 @@ async function infrastructureCoverage() {
   const data = await runtime();
   return data?.infrastructure?.coverage || { assets:0, entities:0, gateways:0, chains:0 };
 }
+async function impactNodeForInfrastructure(id) {
+  const data = await runtime();
+  const nodeId = `infrastructure:${String(id || '')}`;
+  return data?.impact?.nodes?.[nodeId] ? nodeId : null;
+}
 
 Object.assign(dataRuntime, {
   entity,
@@ -80,6 +85,7 @@ Object.assign(dataRuntime, {
   infrastructureForGateway,
   infrastructureForChain,
   infrastructureCoverage,
+  impactNodeForInfrastructure,
 });
 
 function entityLabel(row) {
@@ -162,7 +168,8 @@ if (initial) queueMicrotask(() => refresh(initial));
 window.__potatoAtlasEntities = {
   entity, entityName, entityType, scalarObservation, populationObservation, areaObservation,
   labelAnchor, regionalSystems, infrastructure, infrastructureForEntity,
-  infrastructureForGateway, infrastructureForChain, infrastructureCoverage, refresh,
+  infrastructureForGateway, infrastructureForChain, infrastructureCoverage,
+  impactNodeForInfrastructure, refresh,
 };
 window.dispatchEvent(new CustomEvent('potato-atlas-entities-ready'));
 const selected = window.__potatoAtlasSelection?.current?.activeCode || window.__potatoAtlasSelection?.current?.code || initial;
