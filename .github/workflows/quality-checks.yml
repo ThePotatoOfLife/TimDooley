@@ -48,6 +48,8 @@ jobs:
           node --check world-map/3d-country-card.js
           node --check world-map/3d-gateways.js
           node --check world-map/3d-chain-explorer.js
+          node --check world-map/3d-impact-trace.js
+          node --check world-map/3d-impact-actions.js
 
       - name: Validate archive runtime hardening
         run: python scripts/validate_archive_runtime_hardening.py
