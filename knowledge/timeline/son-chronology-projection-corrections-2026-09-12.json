@@ -1,21 +1,79 @@
 {
   "title": "Son Chronology Projection Corrections — 2026-09-12",
-  "status": "propagation-ledger",
+  "status": "propagation-ledger / enrichment pass active",
   "canonical_owner": "knowledge/timeline/son-2005-2014-chronology-reconciliation.json",
   "tree_owner": "knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json",
   "full_audit": "knowledge/research/son-2005-2014-full-chronology-audit-2026-09-12.md",
+  "event_pack": "data/timeline-event-packs/son-biography-2005-2014.json",
+  "place_transition_index": "knowledge/timeline/son-2005-2014-place-transition-index.json",
+  "reader_guide": "docs/SON-2005-2014-BIOGRAPHY-TIMELINE.md",
   "rule": "Projection files must consume the owners above. Their repeated wording is not independent evidence.",
   "canonical_replacements": {
     "middle_backbone": "2007 painter/meatpacking → 2008 Copenhagen IT/firing → 2009 nursing home / own Haderslev apartment / Designia / Kolding / Louise → 2010 internship/Aabenraa / own-place transition → 2010–early 2011 Produktionsskolen → leaves Produktionsskolen → breakup/search corridor → 2011 Tree/psychiatric sequence",
+    "movement_spine": "Haderslev → Copenhagen → Haderslev → Kolding → Aabenraa → own-place transition → Lunderskov → Kolding/psychiatric corridor → Italy / Amsterdam → 2014 father-loss period",
     "2011_age": "Age-neutral unless exact event month is known. Biological age was 23 before 2011-07-31 and 24 afterward; age 25 is impossible.",
     "2011_duration": "Approximately 19 hours overall with an approximately six-hour unity phase; whether the six-hour phase is wholly contained within that total remains unresolved. Do not write 19 + 6 = 25 hours.",
     "2011_admission": "Voluntary psychiatric presentation/admission after the next-day perceptual rupture, according to current autobiographical reconstruction.",
     "2012_age": "The Son turned 25 on 2012-07-31; pre-birthday 2012 events occurred at age 24.",
     "design_school": "HANSENBERG Designia, mediegrafiker; not Designskolen Kolding.",
     "produktionsskolen": "Use Produktionsskolen in ordinary narrative; attendance belongs after the internship/own-place transition and before the 2011 Tree episode.",
+    "skill_interpretation": "The Designia/office path ended despite substantial technical competence; later Produktionsskolen multimedia assistant-teacher-like responsibility strengthens the environment/meaning-mismatch interpretation over an academic-failure interpretation.",
     "driver_licence": "No licence during nursing-home work; exact later issue date remains unresolved and must not be forced from the age-21 memory.",
     "egypt": "Egypt occurred after meeting Louise and while the relationship was active; exact date and relation to the Aabenraa internship remain open."
   },
+  "completed_enrichment": [
+    {
+      "path": "data/timeline-event-packs/son-biography-2005-2014.json",
+      "status": "implemented",
+      "value": "Adds dense non-duplicative biographical bridge points with confidence, source routing and place metadata."
+    },
+    {
+      "path": "data/timeline-event-packs/index.json",
+      "status": "implemented",
+      "value": "Registers the biography pack so the public timeline loader consumes it."
+    },
+    {
+      "path": "schemas/timeline-event.schema.json",
+      "status": "implemented",
+      "value": "Adds structured optional place metadata to the timeline event contract."
+    },
+    {
+      "path": "scripts/validate_timeline_events.py",
+      "status": "implemented-structurally-not-locally-executed",
+      "value": "Validates place objects and duplicate place tuples in base plus indexed packs.",
+      "verification_limit": "Sandbox networking prevented cloning the branch into the local runtime, so the validator could not be executed locally in this session."
+    },
+    {
+      "path": "knowledge/timeline/son-2005-2014-place-transition-index.json",
+      "status": "implemented",
+      "value": "Turns chronology into a movement/institution graph across Haderslev, Copenhagen, Kolding, Aabenraa, Lunderskov, Egypt, Italy and Amsterdam."
+    },
+    {
+      "path": "knowledge/timeline/son-kolding-designia-school-anchor.json",
+      "status": "enriched",
+      "value": "Adds developmental interpretation, timeline event IDs and place-index routing."
+    },
+    {
+      "path": "knowledge/timeline/son-lunderskov-production-school-anchor.json",
+      "status": "enriched",
+      "value": "Adds competence/bridge interpretation and timeline event routing."
+    },
+    {
+      "path": "knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json",
+      "status": "enriched",
+      "value": "Adds immediate prehistory, age/duration rules and projected phase-event IDs."
+    },
+    {
+      "path": "knowledge/journey/tim-dooley-journey.json",
+      "status": "enriched",
+      "value": "Replaces the overly broad pre-2011 compression with crash, labor, Copenhagen, care, Designia, Aabenraa, Produktionsskolen, 2011 and 2012–2014 developmental phases."
+    },
+    {
+      "path": "docs/SON-2005-2014-BIOGRAPHY-TIMELINE.md",
+      "status": "implemented",
+      "value": "Adds a readable source-aware chronology guide for humans."
+    }
+  ],
   "projection_audit": [
     {
       "path": "son-timeline.json",
@@ -34,6 +92,14 @@
       "issues": [
         "2011 wording says approximately nineteen-hour ordeal followed by about six hours of unity.",
         "2009–2010 period is too compressed to expose Designia/Aabenraa/Produktionsskolen distinctions."
+      ]
+    },
+    {
+      "path": "knowledge/reader/tim-dooley-dossier.json",
+      "status": "needs-reader-refresh",
+      "issues": [
+        "Its Son-side narrative still jumps from broad early development to 2011 without exposing the recovered 2005–2010 chain.",
+        "Reader timeline should route to the biography pack/place index for ordinary-life questions."
       ]
     },
     {
@@ -79,7 +145,7 @@
       "status": "broader-roadmap-refresh-needed",
       "issues": [
         "Older prose says the human biography before the Potato persona is incompletely documented more broadly than is now true for the 2005–2014 corridor.",
-        "Should point to the detailed Son reconciliation rather than reconstructing biography from public search leads."
+        "Should point to the detailed Son reconciliation and new readable biography guide rather than reconstructing biography from public search leads."
       ]
     },
     {
