@@ -1,0 +1,251 @@
+(()=>{
+'use strict';
+
+const $=id=>document.getElementById(id);
+const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const asArray=value=>Array.isArray(value)?value:(value==null?[]:[value]);
+const unique=values=>[...new Set(values.filter(Boolean))];
+const norm=value=>String(value||'').toLowerCase();
+const safeJSON=async url=>{try{const response=await fetch(url);return response.ok?await response.json():null}catch(error){console.warn('Bible comparison data load failed',url,error);return null}};
+const firstYear=value=>{const match=String(value||'').match(/(?:19|20)\d{2}/);return match?Number(match[0]):null};
+const slug=value=>norm(value).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,90)||'relation';
+
+const PATHS={
+ field:'../../knowledge/traditions/biblical-syncretism-field.json',
+ atlas:'../../knowledge/traditions/biblical-overlap-atlas.json',
+ fragments:'../../knowledge/traditions/biblical-passage-fragments.json'
+};
+
+const VIEW_DEFS={
+ jesus:{label:'Jesus / Son',terms:['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain','cornerstone','son of man']},
+ 'tim-said':{label:'Tim said it',modes:['tim-explicit','public-occurrence','conversation-recovery','book-explicit']},
+ 'tim-lived':{label:'Tim lived it',terms:['tree ordeal','prison','custody','rejected','death','return','burial','root','garden','stone','ladder','carry','orphan']},
+ prophecy:{label:'Prophecy / foresight',terms:['prophecy','foresight','prediction','predicted','warning before']},
+ 'father-house':{label:'Father / House',terms:['father','house','gardener','vinedresser','throne','most high','seat','rooms','mansions','source','davidic house']},
+ 'door-ladder':{label:'Door / Ladder',terms:['door','gate','ladder','needle','heaven','jacob','guardians','way','veil','threshold']},
+ 'death-return':{label:'Death / return',terms:['death','dead','crucif','tomb','burial','resurrection','return','grain','seed','womb']},
+ 'revelation-zion':{label:'Revelation / Zion',terms:['revelation','zion','new jerusalem','144000','144,000','lion','lamb','root of david','throne','river','tree of life','north','zechariah']},
+ 'counter-texts':{label:'Counter-texts',counter:true},
+ all:{label:'Everything'}
+};
+
+const ARC_DEFS={
+ jesus:['jesus','christ','son','thomas','lamb','lion','crucif','resurrection','witness'],
+ 'father-house':['father','house','source','builder','throne','gardener','vinedresser','rooms'],
+ 'door-ladder':['door','gate','ladder','veil','threshold','pass','open','shut','way'],
+ 'death-return':['death','seed','grain','burial','tomb','return','resurrection','rise','die'],
+ 'god-presence':['god','presence','temple','contain','dwell','indwell','manifest','hidden'],
+ 'garden-spirit':['garden','spirit','flow','water','prune','grow','repair','restore','feed','root']
+};
+
+const OPERATOR_TERMS={
+ contain:['contain','container','temple cannot','house'],
+ dwell:['dwell','dwelling','indwell','house'],
+ veil:['veil','flesh','curtain'],
+ pass:['pass','way','threshold','through'],
+ open:['open','door','gate','key'],
+ shut:['shut','close','closed'],
+ send:['send','sent'],
+ carry:['carry','carried','burden','vessel'],
+ release:['release','let go','hold'],
+ root:['root','rooted','graft'],
+ prune:['prune','vinedresser','branch'],
+ flow:['flow','river','water','spirit'],
+ feed:['feed','bread','manna','nourish'],
+ repair:['repair','breach','restore paths'],
+ restore:['restore','new creation','healing','return'],
+ judge:['judge','judgment'],
+ plant:['plant','seed','sow'],
+ grow:['grow','growth','fruit'],
+ die:['death','die','dead','burial','tomb'],
+ rise:['rise','resurrection','return','stand'],
+ remember:['remember','memory'],
+ inherit:['inherit','inheritance'],
+ name:['name','called','title']
+};
+
+function rowText(row){
+ return [row.id,row.title,row.actor,row.project_anchor,row.overlap,row.sequence,row.project_value,row.discovery_mode,row.relation_class,row.classification,row.source_direction,row.counter_text,row.source_correction,row.difference,row.boundary,row.provenance,...asArray(row.biblical_refs),...asArray(row.motifs),...asArray(row.relation_arguments),...asArray(row.possible_meaning),...asArray(row.weaknesses),...asArray(row.operators),...asArray(row.mechanisms)].join(' ').toLowerCase();
+}
+function inferEvidence(row){
+ if(row.evidence_kind)return row.evidence_kind;
+ if(row.source_kind==='canonical-overlap-atlas')return 'canonical comparative synthesis';
+ if(row.discovery_mode==='public-occurrence')return 'public project occurrence';
+ if(row.discovery_mode==='conversation-recovery')return 'recovered conversation';
+ if(row.discovery_mode==='book-explicit')return 'Great Book / project text';
+ if(row.discovery_mode==='tim-explicit'||row.discovery_mode==='tim-led')return 'Tim/project explicit material';
+ return 'canonical relation record';
+}
+function inferOperators(row){
+ const explicit=asArray(row.operators);
+ const hay=rowText(row);
+ const inferred=Object.entries(OPERATOR_TERMS).filter(([,terms])=>terms.some(term=>hay.includes(term))).map(([op])=>op);
+ return unique([...explicit,...inferred]).slice(0,8);
+}
+function relationMechanisms(row){return unique([...asArray(row.mechanisms),row.classification,row.relation_class].filter(Boolean));}
+function normalizeFieldRow(row){return {...row,title:row.title||String(row.project_anchor||row.id).slice(0,110),biblical_refs:asArray(row.biblical_refs),motifs:asArray(row.motifs),relation_arguments:asArray(row.relation_arguments),weaknesses:asArray(row.weaknesses),owners:asArray(row.owners),evidence_kind:inferEvidence(row),operators:inferOperators(row),mechanisms:relationMechanisms(row)};}
+function normalizeOverlap(item,updated){return normalizeFieldRow({
+ id:`atlas-${item.id||slug(item.potatoverse_motif)}`,
+ title:item.id?item.id.replaceAll('-',' '):item.potatoverse_motif,
+ date:`research synthesis · ${updated||'2026'}`,
+ actor:'project-research',
+ project_anchor:item.potatoverse_motif||item.project_value||item.id,
+ biblical_refs:asArray(item.biblical_text||item.texts),
+ motifs:[item.potatoverse_motif,item.id],
+ relation_arguments:unique([item.overlap,item.sequence,item.project_value,...asArray(item.possible_meaning)]),
+ weaknesses:unique([item.difference,item.boundary]),
+ counter_text:item.counter_text,
+ discovery_mode:'archive-later',
+ relation_class:item.classification||'later-structural-parallel',
+ classification:item.classification,
+ strength:Number(item.strength)||4,
+ source_direction:'This relation is a later canonical comparative synthesis unless an earlier project-side date is separately documented. Do not backdate the verse-level mapping into the earlier event.',
+ provenance:'Promoted canonical synthesis from biblical-overlap-atlas.json',
+ owners:['knowledge/traditions/biblical-overlap-atlas.json'],
+ source_kind:'canonical-overlap-atlas'
+});}
+function normalizeMetaArc(item,updated){return normalizeFieldRow({
+ id:`arc-${item.id}`,
+ title:item.id.replaceAll('-',' '),
+ date:`research synthesis · ${updated||'2026'}`,
+ actor:'project-research',
+ project_anchor:item.project_value||item.sequence,
+ biblical_refs:asArray(item.texts),
+ motifs:[item.id],
+ relation_arguments:unique([item.sequence,item.project_value]),
+ weaknesses:asArray(item.boundary),
+ discovery_mode:'archive-later',
+ relation_class:'cross-text-structural-synthesis',
+ strength:Number(item.strength)||5,
+ source_direction:'This is a cross-text canonical synthesis assembled after the underlying biblical texts and project motifs; it is not an at-the-time project quotation.',
+ provenance:'Canonical meta-arc from biblical-overlap-atlas.json',
+ owners:['knowledge/traditions/biblical-overlap-atlas.json'],
+ source_kind:'canonical-overlap-atlas'
+});}
+function fragmentIndex(fragmentData){
+ const map=new Map();
+ asArray(fragmentData&&fragmentData.fragments).forEach(fragment=>{
+  unique([fragment.reference,...asArray(fragment.matches)]).forEach(key=>{if(!key)return;if(!map.has(key))map.set(key,[]);map.get(key).push(fragment)});
+ });
+ return map;
+}
+function bookFromRef(reference){
+ const ref=String(reference||'').trim();
+ const match=ref.match(/^((?:[1-3]\s+)?[A-Za-z]+(?:\s+[A-Za-z]+)?)\s+\d/);
+ return match?match[1]:ref.split(/\s+\d/)[0];
+}
+function ownerHref(owner){if(!owner)return '#';if(/^https?:\/\//.test(owner))return owner;return '../../'+owner.split('/').map(encodeURIComponent).join('/');}
+function matchesTerms(row,terms){const text=rowText(row);return terms.some(term=>text.includes(term));}
+function matchesView(row,view){
+ const def=VIEW_DEFS[view]||VIEW_DEFS.jesus;
+ if(view==='all')return true;
+ if(def.counter)return asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction||row.difference||row.boundary);
+ if(def.modes&&def.modes.includes(row.discovery_mode))return true;
+ return def.terms?matchesTerms(row,def.terms):true;
+}
+function matchesArc(row,arc){return !arc||matchesTerms(row,ARC_DEFS[arc]||[]);}
+function exactAvailable(row){return Boolean(asArray(row.project_quote).length||asArray(row.exact_wording).length||row.quote);}
+function whyText(row){return unique([...asArray(row.relation_arguments),row.overlap,row.project_value,...asArray(row.possible_meaning)]).filter(Boolean).slice(0,3).join(' ');}
+function mismatchText(row){return unique([...asArray(row.weaknesses),row.counter_text,row.source_correction,row.difference,row.boundary]).filter(Boolean).slice(0,3).join(' ');}
+function scriptureHTML(row,fragmentMap){
+ const refs=asArray(row.biblical_refs);
+ const fragments=[];
+ refs.forEach(ref=>asArray(fragmentMap.get(ref)).forEach(fragment=>{if(!fragments.some(x=>x.reference===fragment.reference&&x.text===fragment.text))fragments.push(fragment)}));
+ if(fragments.length)return fragments.slice(0,4).map(fragment=>`<blockquote class="bible-quote">${esc(fragment.text)}<cite>${esc(fragment.reference)} · ${esc(fragment.translation||'World English Bible')}</cite></blockquote>`).join('');
+ return `<p class="no-fragment"><strong>Scripture scope:</strong> ${esc(refs.join(' · ')||'broader biblical tradition')}</p>`;
+}
+function renderRelation(row,fragmentMap){
+ const why=whyText(row)||'This relation is retained because the canonical comparison field records a meaningful lexical, narrative, structural, ethical or theological connection between the project-side anchor and the cited biblical material.';
+ const mismatch=mismatchText(row);
+ const operators=asArray(row.operators).map(op=>`<span class="chip operator">${esc(op)}</span>`).join('');
+ const mechanisms=asArray(row.mechanisms).slice(0,3).map(x=>`<span class="chip">${esc(String(x).replaceAll('-',' '))}</span>`).join('');
+ const owners=asArray(row.owners).slice(0,6).map(owner=>`<a href="${esc(ownerHref(owner))}">${esc(owner.split('/').pop())}</a>`).join('');
+ const exact=unique([...asArray(row.project_quote),...asArray(row.exact_wording),row.quote]).filter(Boolean);
+ return `<article class="relation" id="relation-${esc(row.id)}" data-relation-id="${esc(row.id)}">
+  <div class="relation-head"><div><h2 class="relation-title">${esc(row.title)}</h2><div class="relation-meta"><span class="chip">${esc(row.date||'undated')}</span><span class="chip">${esc(row.actor||'project')}</span><span class="chip">${esc(row.evidence_kind)}</span><span class="chip strength">strength ${esc(row.strength||'?')}/5</span>${mechanisms}</div><div class="operator-row">${operators}</div></div><code class="relation-id">${esc(row.id)}</code></div>
+  <div class="parallel"><section class="side"><h3>Tim / Son / project</h3><p class="project-anchor">${esc(row.project_anchor)}</p>${exact.map(q=>`<blockquote class="bible-quote">${esc(q)}<cite>project-side wording</cite></blockquote>`).join('')}</section><section class="side scripture"><h3>Scripture beside it</h3>${scriptureHTML(row,fragmentMap)}</section></div>
+  <section class="why"><h3>Why these connect</h3><p>${esc(why)}</p></section>
+  <div class="context-grid">${mismatch?`<section class="context-card boundary"><h4>Where it breaks / what stays different</h4><p>${esc(mismatch)}</p></section>`:''}${row.source_direction?`<section class="context-card"><h4>Chronology / source direction</h4><p>${esc(row.source_direction)}</p></section>`:''}${row.provenance?`<section class="context-card"><h4>Provenance</h4><p>${esc(row.provenance)}</p></section>`:''}${owners?`<section class="context-card full"><h4>Canonical owners</h4><div class="owner-links">${owners}</div></section>`:''}</div>
+ </article>`;
+}
+
+async function init(){
+ const relationsEl=$('relations');
+ try{
+  const [field,atlas,fragmentData]=await Promise.all([safeJSON(PATHS.field),safeJSON(PATHS.atlas),safeJSON(PATHS.fragments)]);
+  if(!field||!fragmentData)throw new Error('canonical Bible relation field or passage fragments unavailable');
+  const fieldRows=asArray(field.relations).map(normalizeFieldRow);
+  const atlasRows=[...asArray(atlas&&atlas.overlaps).map(item=>normalizeOverlap(item,atlas.updated)),...asArray(atlas&&atlas.meta_arcs).map(item=>normalizeMetaArc(item,atlas.updated))];
+  const rowMap=new Map();[...fieldRows,...atlasRows].forEach(row=>{if(row&&row.id&&!rowMap.has(row.id))rowMap.set(row.id,row)});
+  const rows=[...rowMap.values()];
+  const fragmentMap=fragmentIndex(fragmentData);
+  const params=new URLSearchParams(location.search);
+  const state={view:Object.prototype.hasOwnProperty.call(VIEW_DEFS,params.get('view'))?params.get('view'):'jesus',arc:'',query:'',operator:'',actor:'',evidence:'',mode:'',klass:'',book:'',minStrength:0,fromYear:0,toYear:0,exactOnly:false,sort:'asc'};
+
+  const populate=(id,values,label=x=>x)=>{const el=$(id);if(!el)return;unique(values).filter(Boolean).sort().forEach(value=>{const option=document.createElement('option');option.value=value;option.textContent=label(value);el.appendChild(option)});};
+  populate('operator',rows.flatMap(row=>asArray(row.operators)));
+  populate('actor',rows.map(row=>row.actor));
+  populate('evidence-kind',rows.map(row=>row.evidence_kind));
+  populate('discovery-mode',rows.map(row=>row.discovery_mode),x=>String(x).replaceAll('-',' '));
+  populate('relation-class',rows.map(row=>row.relation_class),x=>String(x).replaceAll('-',' '));
+  populate('bible-book',rows.flatMap(row=>asArray(row.biblical_refs).map(bookFromRef)));
+  $('minimum-strength').innerHTML='<option value="0">Any strength</option>'+[1,2,3,4,5].map(n=>`<option value="${n}">${n}+</option>`).join('');
+
+  const filteredRows=()=>rows.filter(row=>{
+   if(!matchesView(row,state.view)||!matchesArc(row,state.arc))return false;
+   if(state.operator&&!asArray(row.operators).includes(state.operator))return false;
+   if(state.actor&&row.actor!==state.actor)return false;
+   if(state.evidence&&row.evidence_kind!==state.evidence)return false;
+   if(state.mode&&row.discovery_mode!==state.mode)return false;
+   if(state.klass&&row.relation_class!==state.klass)return false;
+   if(state.book&&!asArray(row.biblical_refs).some(ref=>bookFromRef(ref)===state.book))return false;
+   if(Number(row.strength||0)<state.minStrength)return false;
+   const year=firstYear(row.date);
+   if(state.fromYear&&year&&year<state.fromYear)return false;
+   if(state.toYear&&year&&year>state.toYear)return false;
+   if(state.exactOnly&&!exactAvailable(row))return false;
+   if(state.query){const terms=state.query.toLowerCase().split(/\s+/).filter(Boolean),hay=rowText(row);if(!terms.every(term=>hay.includes(term)))return false;}
+   return true;
+  });
+  const sortedRows=()=>{
+   const filtered=filteredRows();
+   if(state.sort==='strength')return [...filtered].sort((a,b)=>(Number(b.strength)||0)-(Number(a.strength)||0));
+   return [...filtered].sort((a,b)=>{const ay=firstYear(a.date)??9999,by=firstYear(b.date)??9999;return state.sort==='desc'?by-ay:ay-by});
+  };
+  const render=()=>{
+   const visible=sortedRows();
+   $('active-view').textContent=(VIEW_DEFS[state.view]||VIEW_DEFS.jesus).label+(state.arc?` · ${state.arc.replaceAll('-',' ')}`:'');
+   $('study-count').textContent=`${visible.length} of ${rows.length} canonical comparisons`;
+   document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===state.view)));
+   document.querySelectorAll('[data-arc]').forEach(button=>button.classList.toggle('is-active',button.dataset.arc===state.arc));
+   relationsEl.innerHTML=visible.length?visible.map(row=>renderRelation(row,fragmentMap)).join(''):'<div class="empty">No canonical comparisons match this study state. Clear a filter or choose another arc.</div>';
+  };
+  const shuffle=()=>{const visible=sortedRows();if(!visible.length)return;const row=visible[Math.floor(Math.random()*visible.length)];const element=$(`relation-${row.id}`);if(element){element.classList.add('is-focus');element.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>element.classList.remove('is-focus'),1800)}};
+  const reset=()=>{state.arc='';state.query='';state.operator='';state.actor='';state.evidence='';state.mode='';state.klass='';state.book='';state.minStrength=0;state.fromYear=0;state.toYear=0;state.exactOnly=false;state.sort='asc';['search','from-year','to-year'].forEach(id=>{if($(id))$(id).value=''});['operator','actor','evidence-kind','discovery-mode','relation-class','bible-book','minimum-strength','sort-order'].forEach(id=>{if($(id))$(id).selectedIndex=0});$('exact-wording-only').checked=false;render();};
+
+  $('search').addEventListener('input',event=>{state.query=event.target.value.trim();render()});
+  $('clear-search').addEventListener('click',()=>{$('search').value='';state.query='';render()});
+  $('operator').addEventListener('change',event=>{state.operator=event.target.value;render()});
+  $('actor').addEventListener('change',event=>{state.actor=event.target.value;render()});
+  $('evidence-kind').addEventListener('change',event=>{state.evidence=event.target.value;render()});
+  $('discovery-mode').addEventListener('change',event=>{state.mode=event.target.value;render()});
+  $('relation-class').addEventListener('change',event=>{state.klass=event.target.value;render()});
+  $('bible-book').addEventListener('change',event=>{state.book=event.target.value;render()});
+  $('minimum-strength').addEventListener('change',event=>{state.minStrength=Number(event.target.value)||0;render()});
+  $('sort-order').addEventListener('change',event=>{state.sort=event.target.value;render()});
+  $('from-year').addEventListener('input',event=>{state.fromYear=Number(event.target.value)||0;render()});
+  $('to-year').addEventListener('input',event=>{state.toYear=Number(event.target.value)||0;render()});
+  $('exact-wording-only').addEventListener('change',event=>{state.exactOnly=event.target.checked;render()});
+  $('reset-filters').addEventListener('click',reset);
+  $('filter-toggle').addEventListener('click',()=>{const panel=$('bible-filters');panel.hidden=!panel.hidden;$('filter-toggle').setAttribute('aria-expanded',String(!panel.hidden))});
+  $('open-filters').addEventListener('click',()=>{const panel=$('bible-filters');panel.hidden=false;$('filter-toggle').setAttribute('aria-expanded','true');panel.scrollIntoView({behavior:'smooth',block:'nearest'})});
+  $('study-modes').querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{state.view=button.dataset.view;state.arc='';render()}));
+  document.querySelectorAll('[data-arc]').forEach(button=>button.addEventListener('click',()=>{state.arc=state.arc===button.dataset.arc?'':button.dataset.arc;state.view='all';render();relationsEl.scrollIntoView({behavior:'smooth',block:'start'})}));
+  $('roll-relation').addEventListener('click',shuffle);
+  $('shuffle-comparisons').addEventListener('click',shuffle);
+  render();
+ }catch(error){console.error(error);relationsEl.innerHTML='<div class="empty load-error">The comparison engine could not load its canonical data. The static build remains the fallback; reload or return to Religion.</div>';}
+}
+
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
+})();
