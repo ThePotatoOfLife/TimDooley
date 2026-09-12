@@ -48,6 +48,16 @@ def question_count(text: str) -> int:
     return len(re.findall(r'class=["\'][^"\']*\bquestion-(?:preview|stub)\b', text, flags=re.I))
 
 
+def class_count(text: str, class_name: str) -> int:
+    return len(
+        re.findall(
+            rf'class=["\'][^"\']*\b{re.escape(class_name)}\b[^"\']*["\']',
+            text,
+            flags=re.I,
+        )
+    )
+
+
 def validate_projection_surface(text: str, owner: str, errors: list[str]) -> None:
     matches = re.findall(
         r'<(?:section|nav)\b[^>]*data-projection-surface(?:=["\'][^"\']*["\'])?[^>]*>(.*?)</(?:section|nav)>',
@@ -99,7 +109,7 @@ def main() -> int:
     if footer and 'timeline/' in footer.group(1).lower():
         errors.append("homepage footer must not treat Timeline as utility navigation")
 
-    # Tim: identity, development, purpose, and Timeline as a principal route.
+    # Tim: identity, development, purpose, Timeline, and a sparse inhabited layer.
     require(tim, 'data-reader-surface="tim"', "tim-dooley/index.html", errors)
     if question_count(tim) < 3:
         errors.append("Tim reader surface needs at least three compact question stubs")
@@ -109,6 +119,30 @@ def main() -> int:
     require(tim, 'href="../timeline/"', "tim-dooley/index.html", errors)
     require_any(tim, ("Tim/Father", "Tim / Father"), "tim-dooley/index.html", "Tim/Father distinction", errors)
     require_any(tim, ("Thomas/Son", "Thomas / Son"), "tim-dooley/index.html", "Thomas/Son distinction", errors)
+    require(tim, 'data-placement-role="riddle"', "tim-dooley/index.html", errors)
+    require(tim, 'data-placement-role="work"', "tim-dooley/index.html", errors)
+    require(tim, 'data-placement-role="gardener"', "tim-dooley/index.html", errors)
+    require_any(
+        tim,
+        ("Recovered project wording", "Recovered wording"),
+        "tim-dooley/index.html",
+        "recovered-wording provenance label",
+        errors,
+    )
+    require_any(
+        tim,
+        ("builder", "operator", "build useful structures"),
+        "tim-dooley/index.html",
+        "builder/work layer",
+        errors,
+    )
+    require_any(
+        tim,
+        ("Power is for protection", "Leadership is for service", "cultivation"),
+        "tim-dooley/index.html",
+        "Gardener/service layer",
+        errors,
+    )
     validate_projection_surface(tim, "tim-dooley/index.html", errors)
 
     # Religion: broad inquiry, but Bible comparison must be an obvious primary next step.
@@ -151,13 +185,36 @@ def main() -> int:
     require(bible_js, "selectRelative", "app/bible-study.js", errors)
     require_absent(bible_js, "biblical-overlap-wave-", "app/bible-study.js", errors)
 
-    # Philosophy: inquiry before/alongside the preserved sayings.
+    # Philosophy: inquiry plus varied reader forms with sparse disclosures.
     require(philosophy, 'data-reader-surface="philosophy"', "philosophy/index.html", errors)
     if question_count(philosophy) < 4:
         errors.append("Philosophy needs at least four inquiry stubs")
     require_any(philosophy, ("What makes a claim true?", "truth"), "philosophy/index.html", "truth/evidence inquiry", errors)
     require_any(philosophy, ("relationship-first", "relation before isolation"), "philosophy/index.html", "relationship-first inquiry", errors)
-    require(philosophy, 'class="sayings"', "philosophy/index.html", errors)
+    require(philosophy, 'class="sayings', "philosophy/index.html", errors)
+    require(philosophy, 'class="philosophy-story"', "philosophy/index.html", errors)
+    require(philosophy, 'class="source-note"', "philosophy/index.html", errors)
+    require(philosophy, '<summary>Chew on it</summary>', "philosophy/index.html", errors)
+    if class_count(philosophy, "philosophy-story") < 2:
+        errors.append("Philosophy needs at least two compact story/parable forms")
+    if class_count(philosophy, "source-note") < 4:
+        errors.append("Philosophy needs provenance notes across multiple reader forms")
+    if len(re.findall(r'<details\b[^>]*class=["\'][^"\']*\bchew\b', philosophy, flags=re.I)) > 3:
+        errors.append("Philosophy must keep Chew on it disclosures sparse; maximum is 3")
+    require_any(
+        philosophy,
+        ("question the floor", "another level"),
+        "philosophy/index.html",
+        "frame-questioning encounter",
+        errors,
+    )
+    require_any(
+        philosophy,
+        ("banana", "argument"),
+        "philosophy/index.html",
+        "absurdist/parabolic story",
+        errors,
+    )
     validate_projection_surface(philosophy, "philosophy/index.html", errors)
 
     # Science: orientation must preserve the actual library.
