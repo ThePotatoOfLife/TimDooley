@@ -1,14 +1,86 @@
 {
-  "version":"3.1.0",
-  "updated":"2026-09-08",
-  "purpose":"Bridge for the single public index. The repository keeps modular backend data, but the homepage is the only public navigation doorway.",
-  "data_roots":["data/"],
+  "version":"4.0.0",
+  "updated":"2026-09-12",
+  "purpose":"Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus quieter global/deep surfaces.",
+  "data_roots":["data/","knowledge/"],
   "canonical_layers":["graph","world","research","systems","security","beliefs","mythology","people","culture","potatoism","north-programme"],
-  "public_spine":{"home":"index.html"},
-  "deep_surfaces":{"taoism":"taoism.html"},
-  "route_map":{"home":"index.html","record":"index.html#node={id}","country":"index.html#node={id}","dataset":"index.html","taoism":"taoism.html"},
-  "record_resolution":{"id_fields":["id","slug","country_id","countryId","key"],"name_fields":["name","title","label"],"alias_fields":["aliases","alternative_names","aka"],"description_fields":["description","summary","overview"],"relationship_fields":["relationships","edges","links"],"source_fields":["source_ids","sources","evidence","source"]},
-  "fallback_policy":{"json_failure":"skip optional dataset and continue with canonical datasets","country_failure":"use the canonical country record in data/countries/","empty_description":"show record identity plus available relationships and evidence rather than a blank page"},
-  "integrity_requirements":["Every visible Atlas entry has a route into index.html or is explicitly external-only","Every relationship endpoint resolves or is explicitly marked unresolved","Unknown data is represented as missing/unknown, never as zero","Backend-only datasets remain discoverable through the index","Canonical IDs remain stable while aliases may expand","Primary local readers are linked from the index and do not require external navigation"],
-  "design_rule":"The index is the public Door. Data files remain modular for maintainability, but the reader should not have to know which historical subsystem owns a record."
+  "public_doors":{
+    "tim":"tim-dooley/",
+    "religion":"religion/",
+    "philosophy":"philosophy/",
+    "science":"science/",
+    "world_map":"world-map/"
+  },
+  "global_secondary_surfaces":{
+    "timeline":"explore/#branch=timeline",
+    "sources":"context/source-authority/",
+    "explore":"explore/",
+    "questions":"questions/",
+    "index_a_z":"index-a-z/"
+  },
+  "branch_projection":{
+    "tim":{"primary_door":"tim","human_route":"tim-dooley/","archive_route":"explore/#branch=tim","static_topic_route":"topics/tim/","related_doors":["philosophy","religion"]},
+    "son":{"primary_door":"religion","human_route":"religion/","archive_route":"explore/#branch=son","static_topic_route":"topics/son/","related_doors":["tim","philosophy"]},
+    "spirit":{"primary_door":"religion","human_route":"religion/","archive_route":"explore/#branch=spirit","static_topic_route":"topics/spirit/","related_doors":["philosophy"]},
+    "transformation":{"primary_door":"philosophy","human_route":"philosophy/","archive_route":"explore/#branch=transformation","static_topic_route":"topics/transformation/","related_doors":["religion","science"]},
+    "cosmology":{"primary_door":"religion","human_route":"religion/","archive_route":"explore/#branch=cosmology","static_topic_route":"topics/cosmology/","related_doors":["philosophy","science"]},
+    "science":{"primary_door":"science","human_route":"science/","archive_route":"explore/#branch=science","static_topic_route":"topics/science/","related_doors":["philosophy"]},
+    "body":{"primary_door":"science","human_route":"science/","archive_route":"explore/#branch=body","static_topic_route":"topics/body/","related_doors":["religion","philosophy"]},
+    "corporium":{"primary_door":"philosophy","human_route":"philosophy/","archive_route":"explore/#branch=corporium","static_topic_route":"topics/corporium/","related_doors":["tim","science"]},
+    "traditions":{"primary_door":"religion","human_route":"religion/","archive_route":"explore/#branch=traditions","static_topic_route":"topics/traditions/","related_doors":["philosophy"]},
+    "north":{"primary_door":"world_map","human_route":"world-map/","archive_route":"explore/#branch=north","static_topic_route":"topics/north/","related_doors":["philosophy"]},
+    "world":{"primary_door":"world_map","human_route":"world-map/","archive_route":"explore/#branch=world","static_topic_route":"topics/world/","related_doors":["science","philosophy"]},
+    "timeline":{"global_route":"explore/#branch=timeline","archive_route":"explore/#branch=timeline","static_topic_route":"topics/timeline/","related_doors":["tim"]},
+    "works":{"primary_door":"tim","human_route":"tim-dooley/","archive_route":"explore/#branch=works","static_topic_route":"topics/works/","related_doors":["philosophy"]},
+    "sources":{"global_route":"context/source-authority/","archive_route":"explore/#branch=sources","static_topic_route":"topics/sources/","related_doors":["tim","religion","philosophy","science","world_map"]}
+  },
+  "backend_family_projection":{
+    "countries":{"primary_door":"world_map","canonical_owner":"data/countries/","deep_route":"world-map/"},
+    "north_europe_economic":{"primary_door":"world_map","canonical_owner":"data/north-europe-system-atlas.json","deep_route":"explore/#branch=world"},
+    "potatoism":{"primary_door":"religion","canonical_owner":"data/potatoism-concept-registry.json","related_doors":["philosophy","tim"],"deep_route":"explore/#branch=traditions"},
+    "religion":{"primary_door":"religion","canonical_owner":"data/religious-layer-manifest.json","deep_route":"explore/#branch=traditions"},
+    "research":{"global_route":"explore/","canonical_owner":"data/research-frontier.json"},
+    "relationships":{"global_route":"explore/","canonical_owner":"data/relationships.json"},
+    "intelligence_security":{"primary_door":"world_map","canonical_owner":"data/intelligence-security-graph.json","deep_route":"explore/#branch=world"},
+    "culture":{"global_route":"context/","canonical_owner":"data/culture-ontology.json"},
+    "people":{"global_route":"explore/","canonical_owner":"data/people-registry.json"},
+    "evidence":{"global_route":"context/source-authority/","canonical_owner":"data/evidence/observations.json"}
+  },
+  "route_map":{
+    "home":"index.html",
+    "public_door":"{door}/",
+    "branch":"explore/#branch={id}",
+    "record":"explore/#record={path}",
+    "context":"explore/#context={id}",
+    "pathway":"explore/#path={id}",
+    "static_record":"records/{id}/",
+    "static_topic":"topics/{id}/",
+    "static_context":"context/{id}/"
+  },
+  "record_resolution":{
+    "id_fields":["id","slug","country_id","countryId","key"],
+    "name_fields":["name","title","label"],
+    "alias_fields":["aliases","alternative_names","aka"],
+    "description_fields":["description","summary","overview"],
+    "relationship_fields":["relationships","edges","links"],
+    "source_fields":["source_ids","sources","evidence","source"],
+    "allowed_path_sources":["manifest.json","knowledge/indexes/canonical-record-registry.json","knowledge/indexes/context-graph.json"]
+  },
+  "fallback_policy":{
+    "json_failure":"skip optional dataset and continue with canonical datasets",
+    "country_failure":"use the canonical country record in data/countries/",
+    "empty_description":"show record identity plus available relationships and evidence rather than a blank page"
+  },
+  "integrity_requirements":[
+    "The homepage exposes exactly five primary public doors",
+    "Every major manifest branch has one explicit primary_door, global_route or backend_only projection state",
+    "Canonical ownership remains in source/canonical records; this bridge owns routing intent only",
+    "Deep human navigation routes through Explore rather than a competing root reader",
+    "Every relationship endpoint resolves or is explicitly marked unresolved",
+    "Unknown data is represented as missing/unknown, never as zero",
+    "Backend-only or research-heavy records remain discoverable without becoming homepage clutter",
+    "Canonical IDs remain stable while aliases may expand",
+    "Requested record paths are fetched only after resolving through an approved registry/manifest allowlist"
+  ],
+  "design_rule":"Five simple doors above, one deep archive below. Project richer backend knowledge into the relevant human surface without duplicating canon or exposing internal file organization as the navigation model."
 }
