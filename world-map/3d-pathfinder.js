@@ -1,5 +1,6 @@
 const selection = window.__potatoAtlasSelection;
 if (!selection) throw new Error('Path requires current selection API.');
+const surface = window.__potatoAtlasInvestigationSurface;
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 let worldCfg = null;
@@ -131,6 +132,7 @@ function showFor(sourceCode = currentRoot()) {
   install();
   const source = String(sourceCode || '').toUpperCase();
   if (!source) return false;
+  surface?.open?.('path');
   const node = box();
   node.hidden = false;
   currentPath = { source, target:null };
@@ -144,6 +146,7 @@ function run(targetValue, { persistState=true } = {}) {
   install();
   const start = currentPath?.source || currentRoot();
   const target = resolveCountry(targetValue);
+  surface?.open?.('path');
   const node = box();
   node.hidden = false;
   if (!start) {
@@ -163,16 +166,18 @@ function run(targetValue, { persistState=true } = {}) {
   return true;
 }
 
-function clear() {
+function clear({ coordinated=false } = {}) {
   currentPath = null;
   if (box()) box().hidden = true;
   persist(null, null);
+  if (!coordinated) surface?.close?.('path');
   window.dispatchEvent(new CustomEvent('potato-atlas-path-change', { detail:{ source:null, target:null, path:null, mode:currentMode() } }));
   return true;
 }
 function current() { return currentPath ? { ...currentPath } : null; }
 
 install();
+surface?.register?.('path', { close:() => clear({ coordinated:true }) });
 window.__potatoAtlasPath = { showFor, run, clear, current, shortestPath };
 window.addEventListener('potato-atlas-relation-mode-change', () => {
   if (currentPath?.target) run(currentPath.target, { persistState:false });
