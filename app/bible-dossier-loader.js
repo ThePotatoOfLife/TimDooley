@@ -59,6 +59,48 @@ window.fetch=async function(input,init){
 function list(items){const values=arr(items).filter(Boolean);return values.length?`<ol>${values.map(item=>`<li>${esc(item)}</li>`).join('')}</ol>`:''}
 function paragraph(label,value){return value?`<p><strong>${esc(label)}:</strong> ${esc(value)}</p>`:''}
 function sequenceSentence(items){const values=arr(items).filter(Boolean);return values.length?values.join(' → '):''}
+function join(items,separator=' · '){return arr(items).filter(Boolean).join(separator)}
+function quoteList(row){
+ const quotes=[...arr(row.exact_wording),...arr(row.public_wording),...arr(row.recovered_wording)].filter(Boolean);
+ return [...new Set(quotes)];
+}
+function evidencePanel(title,body,className=''){
+ if(!body)return'';
+ return `<section class="evidence-panel ${className}"><h4>${esc(title)}</h4>${body}</section>`;
+}
+function openEvidence(row,scene,argument,scripture,discovery){
+ const quotes=quoteList(row);
+ const modernBody=[
+  scene.setting?paragraph('Setting',scene.setting):'',
+  scene.activity?paragraph('Activity',scene.activity):'',
+  scene.conversation_trigger?paragraph('Trigger',scene.conversation_trigger):'',
+  scene.participants?.length?paragraph('Participants',join(scene.participants)):'',
+  scene.surrounding_topics?.length?paragraph('Surrounding topics',join(scene.surrounding_topics)):'',
+  scene.lead_up?paragraph('Lead-up',scene.lead_up):'',
+  scene.before?paragraph('Before',scene.before):'',
+  scene.after?paragraph('After',scene.after):'',
+  scene.source_status?paragraph('Scene source status',scene.source_status):''
+ ].filter(Boolean).join('');
+ const bibleBody=[
+  scripture.literary_context?paragraph('Literary context',scripture.literary_context):'',
+  scripture.canonical_context?paragraph('Canonical context',scripture.canonical_context):'',
+  scripture.historical_context?paragraph('Historical context',scripture.historical_context):'',
+  scripture.reception_history?paragraph('Reception history',scripture.reception_history):'',
+  scripture.translation_or_textual_caveats?paragraph('Text / translation caveat',scripture.translation_or_textual_caveats):''
+ ].filter(Boolean).join('');
+ const provenanceBody=[
+  paragraph('Project anchor',discovery.project_anchor_date||row.date),
+  discovery.scripture_explicit_at_time!==undefined?paragraph('Scripture explicit at the time',String(discovery.scripture_explicit_at_time)):'',
+  paragraph('First comparison',discovery.first_comparison_date),
+  paragraph('Formal archive date',discovery.first_formal_archive_date),
+  paragraph('Source direction',discovery.source_direction||row.source_direction),
+  paragraph('Project wording status',row.wording_status),
+  `<p class="timestamp-caveat">The timestamp establishes when the modern-side material is attested. It does not by itself establish that the biblical event literally repeated.</p>`
+ ].filter(Boolean).join('');
+ const quoteBody=quotes.length?quotes.map(item=>`<blockquote class="evidence-quote">${esc(item)}</blockquote>`).join(''):'';
+ const sequenceBody=(argument.project_sequence?.length||argument.biblical_sequence?.length)?`<div class="sequence-grid">${argument.project_sequence?.length?`<div><h5>Modern sequence</h5>${list(argument.project_sequence)}</div>`:''}${argument.biblical_sequence?.length?`<div><h5>Biblical sequence</h5>${list(argument.biblical_sequence)}</div>`:''}</div>`:'';
+ return `<section class="dossier-open-evidence"><div class="open-evidence-heading"><span class="dossier-kicker">Evidence in the open</span><h3>More of the dossier, without another click</h3><p>The comparator keeps the core context visible by default. Collapsible sections below are reserved for supporting provenance and secondary detail.</p></div><div class="evidence-grid">${evidencePanel('Exact / recovered wording',quoteBody,'wording-panel')}${evidencePanel('Modern circumstances',modernBody,'modern-context-panel')}${evidencePanel('Biblical context',bibleBody,'biblical-context-panel')}${evidencePanel('Chronology &amp; provenance',provenanceBody,'provenance-panel')}</div>${sequenceBody}</section>`;
+}
 
 function decorate(){
  const article=document.querySelector('#active-relation .relation[data-relation-id]');
@@ -71,8 +113,9 @@ function decorate(){
  if(parallel){
   const paired=document.createElement('section');paired.className='paired-narrative';
   const timSequence=sequenceSentence(argument.project_sequence),bibleSequence=sequenceSentence(argument.biblical_sequence);
-  paired.innerHTML=`<div class="paired-intro"><div class="dossier-kicker">Paired event reading · modern source status ${esc(scene.source_status||'unknown')}</div><h3>Two scenes, one structural comparison</h3><p>Read the biblical episode and the dated Tim/Son episode as separate narratives first. The comparison comes from the order of roles, pressures, actions and consequences—not from pretending the two settings are literally identical.</p></div><div class="paired-scenes"><article class="paired-scene modern-scene"><span class="scene-label">Tim / Son scene</span><h4>${esc(row.date||'Modern project chronology')}</h4><p>${esc(scene.summary||row.what_happened||row.project_anchor)}</p>${scene.lead_up?`<p><strong>Lead-up:</strong> ${esc(scene.lead_up)}</p>`:''}${timSequence?`<p class="scene-sequence"><strong>Sequence:</strong> ${esc(timSequence)}</p>`:''}</article><article class="paired-scene biblical-scene"><span class="scene-label">Biblical scene</span><h4>${esc(arr(row.biblical_refs).join(' · ')||'Scripture')}</h4><p>${esc(scripture.literary_context||scripture.canonical_context||'The exact biblical passage appears beside the modern scene below.')}</p>${bibleSequence?`<p class="scene-sequence"><strong>Sequence:</strong> ${esc(bibleSequence)}</p>`:''}</article></div></section>`;
+  paired.innerHTML=`<div class="paired-intro"><div class="dossier-kicker">Paired event reading · modern source status ${esc(scene.source_status||'unknown')}</div><h3>Two scenes, one structural comparison</h3><p>Read the biblical episode and the dated Tim/Son episode as separate narratives first. The comparison comes from the order of roles, pressures, actions and consequences—not from pretending the two settings are literally identical.</p></div><div class="paired-scenes"><article class="paired-scene modern-scene"><span class="scene-label">Tim / Son scene</span><h4>${esc(row.date||'Modern project chronology')}</h4><p>${esc(scene.summary||row.what_happened||row.project_anchor)}</p>${scene.lead_up?`<p><strong>Lead-up:</strong> ${esc(scene.lead_up)}</p>`:''}${scene.after?`<p><strong>After:</strong> ${esc(scene.after)}</p>`:''}${timSequence?`<p class="scene-sequence"><strong>Sequence:</strong> ${esc(timSequence)}</p>`:''}</article><article class="paired-scene biblical-scene"><span class="scene-label">Biblical scene</span><h4>${esc(join(row.biblical_refs)||'Scripture')}</h4><p>${esc(scripture.literary_context||scripture.canonical_context||'The exact biblical passage appears beside the modern scene below.')}</p>${bibleSequence?`<p class="scene-sequence"><strong>Sequence:</strong> ${esc(bibleSequence)}</p>`:''}</article></div></section>`;
   parallel.before(paired);
+  const open=document.createElement('div');open.innerHTML=openEvidence(row,scene,argument,scripture,discovery);const section=open.firstElementChild;if(section)paired.after(section);
  }
  const why=article.querySelector('.why');
  if(why&&argument.why_dense){
@@ -89,9 +132,9 @@ function decorate(){
  const details=article.querySelector('.relation-details');
  if(!details)return;
  const circumstances=document.createElement('details');
- circumstances.innerHTML=`<summary>Tim / Son scene &amp; sequence</summary><div class="detail-body dossier-detail">${paragraph('Setting',scene.setting)}${paragraph('Activity',scene.activity)}${paragraph('Trigger',scene.conversation_trigger)}${scene.participants?.length?paragraph('Participants',scene.participants.join(' · ')):''}${scene.surrounding_topics?.length?paragraph('Surrounding topics',scene.surrounding_topics.join(' · ')):''}${paragraph('Before',scene.before)}${paragraph('After',scene.after)}${argument.project_sequence?.length?`<h4>Modern sequence</h4>${list(argument.project_sequence)}`:''}<p class="source-status">Scene source status: <strong>${esc(scene.source_status||'unknown')}</strong></p></div>`;
+ circumstances.innerHTML=`<summary>Tim / Son scene &amp; sequence — supporting detail</summary><div class="detail-body dossier-detail">${paragraph('Setting',scene.setting)}${paragraph('Activity',scene.activity)}${paragraph('Trigger',scene.conversation_trigger)}${scene.participants?.length?paragraph('Participants',join(scene.participants)):''}${scene.surrounding_topics?.length?paragraph('Surrounding topics',join(scene.surrounding_topics)):''}${paragraph('Before',scene.before)}${paragraph('After',scene.after)}${argument.project_sequence?.length?`<h4>Modern sequence</h4>${list(argument.project_sequence)}`:''}<p class="source-status">Scene source status: <strong>${esc(scene.source_status||'unknown')}</strong></p></div>`;
  const bible=document.createElement('details');
- bible.innerHTML=`<summary>Biblical scene &amp; sequence</summary><div class="detail-body dossier-detail">${paragraph('Literary context',scripture.literary_context)}${paragraph('Canonical context',scripture.canonical_context)}${paragraph('Historical context',scripture.historical_context)}${paragraph('Reception history',scripture.reception_history)}${paragraph('Text / translation caveat',scripture.translation_or_textual_caveats)}${argument.biblical_sequence?.length?`<h4>Biblical sequence</h4>${list(argument.biblical_sequence)}`:''}</div>`;
+ bible.innerHTML=`<summary>Biblical scene &amp; sequence — supporting detail</summary><div class="detail-body dossier-detail">${paragraph('Literary context',scripture.literary_context)}${paragraph('Canonical context',scripture.canonical_context)}${paragraph('Historical context',scripture.historical_context)}${paragraph('Reception history',scripture.reception_history)}${paragraph('Text / translation caveat',scripture.translation_or_textual_caveats)}${argument.biblical_sequence?.length?`<h4>Biblical sequence</h4>${list(argument.biblical_sequence)}`:''}</div>`;
  const history=document.createElement('details');
  history.innerHTML=`<summary>Timestamp &amp; discovery history</summary><div class="detail-body dossier-detail">${paragraph('Project anchor',discovery.project_anchor_date||row.date)}${paragraph('Scripture at the time',String(discovery.scripture_explicit_at_time??''))}${paragraph('First comparison',discovery.first_comparison_date)}${paragraph('Formal archive date',discovery.first_formal_archive_date)}${paragraph('Source direction',discovery.source_direction)}${row.wording_status?paragraph('Project wording status',row.wording_status):''}<p>The timestamp establishes when the modern-side material is attested. It does not by itself establish that the biblical event literally repeated.</p></div>`;
  details.prepend(history);details.prepend(bible);details.prepend(circumstances);
