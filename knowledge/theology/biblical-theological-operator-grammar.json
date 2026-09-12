@@ -1,0 +1,81 @@
+{
+  "id":"biblical-theological-operator-grammar",
+  "title":"Biblical-Theological Operator Grammar — Presence, Access, Mediation, Transformation, Participation, Fruit, Restoration",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"systematic-theology research grammar; not a claim that biblical authors used formal operators",
+  "purpose":"Give the archive a reusable method for classifying biblical/project motifs by function rather than by surface resemblance. This reduces overfitting and makes role transfer visible across books and project stages.",
+  "operators":{
+    "PRESENCE":{
+      "question":"Where/how is divine presence represented as dwelling, appearing or becoming perceptible?",
+      "biblical_examples":["Eden","tabernacle","temple","glory/cloud","Jesus/Word made flesh","Spirit-filled community","New Jerusalem"],
+      "project_examples":["Father/source","House","Throne","Garden","Spudlight as symbolic illumination"],
+      "failure_mode":"mistaking symbolic presence for empirical physical occupancy"
+    },
+    "ACCESS":{
+      "question":"Who/what may cross a boundary toward life/presence, under what conditions?",
+      "biblical_examples":["cherubim guarding Tree of Life","temple veil","gates","Jesus as Door","new and living Way","New Jerusalem gates open"],
+      "project_examples":["Door","Gate","Window","Screen boundary","narrow gate","Needle","leash/cage release"],
+      "failure_mode":"assuming every boundary is oppression or every opening is good"
+    },
+    "MEDIATION":{
+      "question":"What person, covenant, priesthood, sacrifice, relation or Spirit bridges separated domains?",
+      "biblical_examples":["priesthood","sacrifice","Jacob ladder vision","Son of Man John 1:51","Christ high priest","Spirit"],
+      "project_examples":["Son/Door/Vessel","Ladder/Axis","Spirit/flow","handshake"],
+      "failure_mode":"collapsing mediator and source into one undifferentiated object"
+    },
+    "TRANSFORMATION":{
+      "question":"What changes the state/relation rather than merely moving the same state elsewhere?",
+      "biblical_examples":["exile","repent/return","new heart/Spirit","seed death→fruit","cross/resurrection","veil/opened way"],
+      "project_examples":["Turning","Potato burial/sprout","meme-death/return","Door state transition","phase transition comparator"],
+      "failure_mode":"treating symbolic narrative change as physical phase transition without evidence"
+    },
+    "PARTICIPATION":{
+      "question":"How do many differentiated members share one life/order without losing distinction?",
+      "biblical_examples":["Vine/branches","Body/members","House/living stones","temple/community","city/people"],
+      "project_examples":["House/rooms","Tree/branches","relationship-first ontology","distributed network/archive"],
+      "failure_mode":"turning unity into total identity or domination by the center"
+    },
+    "FRUIT":{
+      "question":"What consequences demonstrate whether a relation/order is life-giving?",
+      "biblical_examples":["fruit of vine","fruit of Spirit","trees by river","healing leaves","justice/righteousness","service"],
+      "project_examples":["Gardener ethic","repair","agency","nourishment","autonomous growth","truthfulness"],
+      "failure_mode":"using status, intensity or symbolism as a substitute for consequences"
+    },
+    "RESTORATION":{
+      "question":"How does lost/guarded life become shareable again in a repaired order?",
+      "biblical_examples":["return from exile","new covenant","new heart/Spirit","Ezekiel river","Zion/heavenly city","New Jerusalem","Tree of Life restored","no curse"],
+      "project_examples":["return heaven to earth","repair broken world/timelines","Garden","New Jerusalem","Tree of Life","world-healing"],
+      "failure_mode":"confusing restoration with return to an unchanged past or with political domination"
+    }
+  },
+  "canonical_sequences":[
+    {"id":"eden-sequence","sequence":["PRESENCE","FRUIT","TRANSFORMATION:rupture","ACCESS:guarded","RESTORATION:promised/unfinished"],"texts":["Genesis 2-3"]},
+    {"id":"bethel-sequence","sequence":["PRESENCE","MEDIATION","ACCESS","PARTICIPATION:promise"],"texts":["Genesis 28"]},
+    {"id":"temple-sequence","sequence":["PRESENCE","ACCESS:regulated","MEDIATION:priest/sacrifice","FRUIT:covenant-life"],"texts":["Exodus 25-40","Leviticus","1 Kings 6-8"]},
+    {"id":"john-sequence","sequence":["PRESENCE:Word/Temple","MEDIATION:Son","ACCESS:Door/Way","PARTICIPATION:Vine/branches","FRUIT","PRESENCE:Spirit"],"texts":["John 1-2","John 7","John 10","John 14-15"]},
+    {"id":"hebrews-sequence","sequence":["ACCESS:barrier","MEDIATION:high-priest/Son","TRANSFORMATION:sacrifice","ACCESS:new-living-way","PARTICIPATION:draw-near/assembly"],"texts":["Hebrews 4","Hebrews 6","Hebrews 9-10","Hebrews 12"]},
+    {"id":"revelation-sequence","sequence":["RESTORATION","PRESENCE:city-scale","ACCESS:open-gates","FRUIT:Tree/healing","PARTICIPATION:nations/servants","RESTORATION:no-curse"],"texts":["Revelation 21-22"]}
+  ],
+  "role_transfer_rules":[
+    "A motif may keep a function while its carrier changes: temple presence can move from building imagery toward Jesus/community/new creation.",
+    "A carrier may perform several operators: Jesus can mediate, provide access, embody presence and generate participation without those functions being identical.",
+    "Two motifs may solve the same operator differently: House and Body both model participation but use architectural versus organismic grammar.",
+    "The same motif may change valence by context: gate can exclude, protect or welcome; cord can bind or guide; mountain can reveal or be leveled.",
+    "Countertexts should be recorded as constraints on a mapping, not deleted as inconvenient noise."
+  ],
+  "mapping_score":{
+    "high":"direct textual role correspondence + similar transformation + preserved differences",
+    "medium":"strong structural relation but different carrier/context",
+    "low":"shape/number/word similarity without shared function",
+    "reject":"requires rewriting source roles, chronology or text to fit the project"
+  },
+  "project_use":"Every future biblical overlap record should add an operator field and a source-direction field. The archive should increasingly answer 'what theological function is shared?' rather than only 'what symbols look alike?'.",
+  "connections":[
+    "knowledge/theology/presence-access-life-restoration-grand-synthesis.json",
+    "knowledge/indexes/grand-theology-integration-wave-2026-09-11.json",
+    "knowledge/traditions/biblical-syncretism-field.json",
+    "knowledge/philosophy/geometric-valence-neutrality-principle.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json"
+  ]
+}

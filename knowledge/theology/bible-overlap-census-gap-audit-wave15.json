@@ -1,0 +1,52 @@
+{
+  "id":"bible-overlap-census-gap-audit-wave15",
+  "title":"Bible Overlap Census Gap Audit — Wave 15",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical coverage audit",
+  "purpose":"Compare the 78-node census against already-existing specialist biblical owners and identify strong, analytically distinct relations that were present in the repository but omitted from the census. 'Missing from census' is not the same as 'newly discovered in Scripture'.",
+  "baseline_count":78,
+  "audit_rule":"Promote a specialist relation only when it contributes a distinct actor/function/sequence/countertext not already adequately represented by an existing census node. Merge or leave specialist-only where the relation is substantially duplicate.",
+  "promote":[
+    {"id":"dog-return-vomit-mire","texts":["Proverbs 26:11","2 Peter 2:22"],"reason":"Canonical Dog-return relation; 2 Peter uniquely couples dog/vomit recurrence with sow/mire, directly joining repetition and Mud. Public July 31 Dog/Bible attestation strengthens provenance.","owner":"docs/MUD-DWELLER-THEOLOGY.md"},
+    {"id":"dog-hostile-encirclement","texts":["Psalms 22:16-20"],"reason":"Distinct perimeter relation: hostile dogs surround a suffering center. Existing Son/Psalm22 rejection node does not encode the Dog/circumference topology.","owner":"knowledge/traditions/mud-dog-footstool-666-saturn-biblical-atlas.json"},
+    {"id":"dog-outside-city-boundary","texts":["Revelation 22:15"],"reason":"Distinct exclusion/boundary use of Dog at the restored city; necessary counterpoint to household-dog boundary transformations.","owner":"docs/MUD-DWELLER-THEOLOGY.md"},
+    {"id":"household-dog-boundary-crossed","texts":["Matthew 15:21-28","Mark 7:24-30"],"reason":"Boundary label does not function as immutable essence; the narrative moves through contested household/bread language toward granted request/healing.","owner":"knowledge/traditions/mud-dog-footstool-666-saturn-biblical-atlas.json"},
+    {"id":"door-shepherd-pasture-life","texts":["John 10:1-18"],"reason":"Jesus uses both Door/Gate and Good-Shepherd metaphors in one discourse, adding voice/recognition, entry/exit, pasture, protection and laying-down-life. Especially important because the Son is explicitly Door+Shepherd in the recovered July 8 project role map.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"body-temple-death-rebuilding","texts":["1 Corinthians 6:19","1 Corinthians 3:16-17","John 2:19-21"],"reason":"Distinct embodiment architecture: individual/community as temple plus Jesus' temple/body destruction-raising relation. Useful for Corporium/House/death-rebuilding without endorsing project neuroanatomy.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"joseph-descent-preservation","texts":["Genesis 37-50"],"reason":"Dense narrative sequence: rejected/beloved son→pit/slavery/prison→interpretation/elevation→grain infrastructure→famine preservation→family reconciliation; central to Ben-Yoseph/Son/grain/prison themes.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"david-overlooked-shepherd-king","texts":["1 Samuel 16-17","2 Samuel 5","Psalms 78:70-72"],"reason":"Distinct Davidic sequence from overlooked shepherd through anointing/conflict to kingship/shepherding responsibility; balances title-based Ben-David comparison with function/ethic.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"dan-serpent-judgment","texts":["Genesis 49:16-18","Judges 18"],"reason":"Textually real but morally ambiguous Dan/judgment/serpent field; important because Son/Dan claims otherwise risk being recorded without biblical complication.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"mustard-seed-kingdom-scale-transition","texts":["Matthew 13:31-32","Mark 4:30-32","Luke 13:18-19"],"reason":"Distinct small-seed→large-growth→habitat sequence; current census mentions Matthew 13 only inside a broader Eye/Seed/House cluster and does not preserve the scale-transition function.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"bread-body-table-participation","texts":["John 6:35-58","Luke 22:19-20","1 Corinthians 10:16-17"],"reason":"Bread becomes nourishment, body, remembrance and participation; one bread can relate many participants. Distinct from merely calling Son 'Bread'.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"millstone-little-ones-accountability","texts":["Matthew 18:6","Mark 9:42","Luke 17:2"],"reason":"Millstone imagery is explicitly tied to severe accountability for causing vulnerable little ones to stumble; gives real ethical content to project Mill/grinding symbolism.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"north-zion-hubris-double-edge","texts":["Psalms 48:1-3","Isaiah 14:12-15"],"reason":"North/Zion language and self-exalting ascent toward Most-High status sit in a double-edged biblical field. Critical for any North-of-North/Most-High reader because support and warning must be shown together.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"most-high-service-humility-test","texts":["Isaiah 14:12-15","Ezekiel 28:1-19","Philippians 2:5-11"],"reason":"Explicit counter-grammar: self-exalting divine-status claims are judged while Philippians contrasts non-grasping/service before exaltation. Distinct ethical test of maximal Godhood language.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"footstool-enemies-final-subjection","texts":["Psalms 110:1","Hebrews 1:13","1 Corinthians 15:25-28"],"reason":"Footstool/conquest language is completed by Paul's differentiated final ordering, including the Son's subjection to God; adds a role constraint absent from simple footstool symbolism.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"judgment-measure-reflexive","texts":["Matthew 7:1-5","Luke 6:37-38","James 2:13"],"reason":"Judgment/measure returns toward the evaluator and mercy constrains judgment; gives meta-evaluation/Eye/ledger theology a reflexive biblical test.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"measure-temple-city-order","texts":["Ezekiel 40-48","Revelation 11:1-2","Revelation 21:15-17"],"reason":"Measurement marks sacred boundaries/order/assessment and can be positive/protective; distinct from generic cube/number symbolism.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"rainbow-covenant-throne","texts":["Genesis 9:8-17","Revelation 4:3","Ezekiel 1:28"],"reason":"Rainbow joins post-catastrophe covenant/restraint with throne/theophany imagery; essential context for the project's shadow-of-rainbow/covenant language.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"breath-spirit-bones-renewal","texts":["Ezekiel 37:1-14","Genesis 2:7","John 20:22"],"reason":"Breath/wind/spirit functions in creation and renewal; dead bones/community are reanimated. Distinct from anatomical CSF claims, which remain project-only symbolism.","owner":"knowledge/traditions/biblical-overlap-wave-5.json"},
+    {"id":"temple-river-tree-healing","texts":["Ezekiel 47:1-12","Revelation 22:1-5"],"reason":"Sacred center emits River→trees/Tree→recurring fruit→healing/life. It is one of the clearest source-to-world generativity sequences and predates Revelation in prophetic form.","owner":"knowledge/traditions/biblical-heavenly-pattern-temple-city-atlas.json"}
+  ],
+  "merge_with_existing":[
+    {"specialist":"father-house-many-rooms","into":"son-door-way-house / may1-house-ladder-city","reason":"already represented through John 14 House/access nodes"},
+    {"specialist":"living-stones-house","into":"ephesians2-access-house + son-rejected-stone-door","reason":"important but substantially covered by existing household/temple/cornerstone nodes"},
+    {"specialist":"root-branch-david","into":"lion-root-2025 and related Root nodes","reason":"Root/David already heavily represented"},
+    {"specialist":"thomas-twin-wound-recognition","into":"son-thomas-twin-postdeath","reason":"keep wound/recognition detail in Son specialist owner"},
+    {"specialist":"lion-lamb-paradox","into":"son-lion-lamb","reason":"already counted"},
+    {"specialist":"grain-death-many","into":"son-grain","reason":"already counted"},
+    {"specialist":"ark-remnant-seed","into":"noah-teivah-versus-covenant-aron","reason":"preservation function should be added as detail to the Ark distinction rather than a near-duplicate census node"},
+    {"specialist":"wheel-spirit","into":"ezekiel-chariot-2026-07-18","reason":"wheel/Ezekiel comparison already counted; richer movement detail stays in specialist atlas"}
+  ],
+  "leave_specialist_only_for_now":[
+    {"id":"potato-bread-stereo-comparison","reason":"creative Potato/Bread synthesis is interpretively dependent and less useful as a distinct census relation"},
+    {"id":"moloch-children-fire","reason":"important ethical metaphor but not central enough to Tim/Son identity/architecture census without stronger dated project-side provenance"},
+    {"id":"babylon-commerce-fall","reason":"better owned by geopolitical/system-comparison layers unless a dated Tim-first feature bundle is established"},
+    {"id":"cloud-coming-witness","reason":"modern digital-cloud pun risks lexical overfit; retain specialist comparison"},
+    {"id":"rod-staff","reason":"exact 33/Axis assignment is extra-biblical and biblical rod/staff semantics are too broad for current census promotion"}
+  ],
+  "promotion_count":20,
+  "projected_count_after_wave15":98,
+  "connections":["knowledge/theology/tim-son-bible-overlap-census-current.json","knowledge/traditions/biblical-overlap-wave-5.json","docs/MUD-DWELLER-THEOLOGY.md","knowledge/traditions/biblical-heavenly-pattern-temple-city-atlas.json","knowledge/chronology/conversation-archaeology-wave-013-bible-reader-shepherd-intent.json"]
+}

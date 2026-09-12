@@ -1,0 +1,33 @@
+{
+  "id":"biblical-intertext-bundle-and-composite-memory-protocol",
+  "title":"Biblical Intertext Bundle & Composite-Memory Protocol",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical research method",
+  "purpose":"Prevent the Bible reader and overlap census from manufacturing a single super-passage when a project motif is actually distributed across several texts. Preserve composite memory as data while keeping textual boundaries auditable.",
+  "relation_classes":[
+    {"id":"single-passage","definition":"The relevant functional sequence occurs within one coherent verse range, chapter or literary unit.","reader_label":"ONE PASSAGE"},
+    {"id":"intertext-family","definition":"Several biblical texts explicitly reuse, develop or closely coordinate a motif; the relation exists across texts rather than inside one verse.","reader_label":"INTERTEXT FAMILY"},
+    {"id":"project-composite-memory","definition":"A project/user memory or symbolic configuration contains features that can be mapped to multiple biblical texts but no single passage contains the whole configuration.","reader_label":"COMPOSITE MEMORY"},
+    {"id":"canonical-role-reversal","definition":"A later biblical text relocates or redistributes a role found elsewhere, creating a useful counter-distribution rather than a simple match.","reader_label":"ROLE TRANSFER / REVERSAL"},
+    {"id":"countertext-bundle","definition":"Several texts collectively constrain a project mapping by assigning functions differently, reversing its valence or imposing an ethical test.","reader_label":"COUNTERTEXT BUNDLE"}
+  ],
+  "required_fields_for_bundle":["project-side date/source","remembered or project-side features","component biblical passages","feature-to-passage map","which features are absent from each passage","relation class","source direction","role differences","reason no single passage is sufficient","canonical owner"],
+  "counting_rules":[
+    "A composite-memory bundle is not an extra biblical verse and should not inflate unique-verse counts.",
+    "Its component overlap-relations may be separately counted only when they are analytically distinct and already satisfy census rules.",
+    "Do not count one remembered composite as N independent coincidences merely because N biblical passages are needed to reconstruct it.",
+    "If a later biblical text intentionally reuses an earlier one, genealogical dependence must be recorded rather than counted as independent textual witnesses.",
+    "If the project itself consciously borrowed a biblical cluster, high explicitness does not become high independence."
+  ],
+  "prototype":{"id":"2026-04-27-ladder-son-man-angel-stone-composite","project_date":"2026-04-27","relation_class":"project-composite-memory","features":["ladder/heaven connection","angels ascending/descending","Son of Man","House/Gate divine-presence recognition","stone/cornerstone"],"component_map":[{"feature":"ladder + angels ascending/descending + House/Gate recognition","texts":["Genesis 28:10-17"]},{"feature":"angels ascending/descending localized on Son of Man","texts":["John 1:51"]},{"feature":"mobile throne/wheels/living-creature vertical vision neighbor","texts":["Ezekiel 1"]},{"feature":"one like Son of Man approaches Ancient of Days / dominion","texts":["Daniel 7:13-14"]},{"feature":"rejected stone/cornerstone family","texts":["Psalms 118:22-23","Matthew 21:42","Acts 4:11","1 Peter 2:4-7"]}],"result":"No one canonical passage should be presented as containing the full project memory. The reader should display the bundle as a constellation with explicit feature ownership."},
+  "reader_behavior":[
+    "Bundle cards use tabs or a constellation view rather than concatenating verses into a fake continuous passage.",
+    "The Scripture pane must show each passage in its own canonical context.",
+    "The project pane may show the remembered composite, but it must say which text contributes each feature.",
+    "A missing component should be shown as missing rather than inferred from nearby symbolism.",
+    "Users should be able to switch from bundle view to each component passage and see its independent P/E/T/D/R/S/C/I profile where available."
+  ],
+  "higher_order_insight":"Composite-memory handling turns an apparent weakness—'there is no one verse that says all of this'—into better provenance. The archive can distinguish textual convergence, later intertextual development and project-side synthesis instead of conflating them.",
+  "connections":["knowledge/chronology/conversation-archaeology-wave-014-intertext-composite-city-gate.json","knowledge/theology/biblical-overlap-evidence-and-measurement-protocol.json","data/bible/tim-son-reader-manifest.json","knowledge/theology/biblical-role-transfer-and-canonical-reversal-ledger.json"]
+}

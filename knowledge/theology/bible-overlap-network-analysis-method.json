@@ -1,0 +1,29 @@
+{
+  "id":"bible-overlap-network-analysis-method",
+  "title":"Bible Overlap Network Analysis Method — Bridges, Communities & Indispensable Periphery",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical analytical method",
+  "purpose":"Analyze the overlap corpus as a typed network rather than only a list. Separate frequency from bridge importance, structural dependence, community membership, role fidelity and ethical significance.",
+  "research_basis":[
+    {"source":"NetworkX betweenness-centrality documentation","url":"https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.centrality.betweenness_centrality.html","use":"Betweenness asks how often a node lies on shortest paths; useful as a descriptive bridge metric."},
+    {"source":"NetworkX articulation-points documentation","url":"https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.components.articulation_points.html","use":"Articulation points identify nodes whose removal disconnects a graph; useful for structural bottlenecks."},
+    {"source":"NetworkX Louvain communities documentation","url":"https://networkx.org/documentation/stable/reference/algorithms/generated/networkx.algorithms.community.louvain.louvain_communities.html","use":"Modularity-based community detection can expose motif neighborhoods without preassigning them."},
+    {"source":"Network analysis has been applied to biblical textual corpora","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC10919455/","use":"Methodological precedent for graph/community/centrality analysis of biblical textual structure; not validation of this project's theology."}
+  ],
+  "graph_model":{"node_types":["overlap","biblical-reference","biblical-book","operator","actor","project-anchor","relation-class"],"edge_types":["CITES","IN_BOOK","USES_OPERATOR","HAS_ACTOR","HAS_PROJECT_ANCHOR","HAS_RELATION_CLASS","CO_OCCURS_WITH"],"primary_graph":"bipartite overlap↔biblical-reference, projected into book/operator/motif views only for explicitly declared analytical questions"},
+  "metrics":[
+    {"id":"frequency_degree","question":"What appears most often?","warning":"High degree can result from broad/general vocabulary or repeated borrowing."},
+    {"id":"betweenness","question":"Which passage/book/operator connects otherwise separate clusters?","project_analogy":"A Door can be modeled as a bridge-like function, but a high-betweenness node is not literally the Son or a metaphysical Door."},
+    {"id":"articulation","question":"Which node is a structural bottleneck in this particular graph representation?","warning":"A cut vertex may be an artifact of how nodes/edges were encoded; it is not theological necessity."},
+    {"id":"community","question":"Which relations naturally cluster together under modularity/community detection?","warning":"A computational cluster is a descriptive grouping, not a hidden biblical doctrine."},
+    {"id":"role_combination_density","question":"Which coherent passage holds several distinct roles/functions together?","example":"John 10 combines Door/Gate, Shepherd, voice/recognition, entry/exit, pasture, protection and laying-down-life."},
+    {"id":"cross_cluster_bridge","question":"Which text connects House, Garden, Body, City, Tree, Gate or other project families that otherwise live in separate neighborhoods?"},
+    {"id":"peripheral_indispensability","question":"Which low-frequency or peripheral nodes carry a decisive correction, ethical constraint or role distinction?","biblical_neighbor":"1 Corinthians 12:12-27 explicitly warns that apparently weaker members can be indispensable."}
+  ],
+  "anti_centrality_principle":"Graph centrality is descriptive, not moral, theological or evidentiary worth. A rare countertext can be more important for integrity than a highly connected motif. The reader should therefore expose both central bridges and low-degree indispensable constraints.",
+  "derived_reader_views":["Most frequent","Bridge passages","Structural bottlenecks","Motif communities","Cross-cluster passages","Peripheral but indispensable","Most explicit","Most temporally independent","Most textually dense","Most role-faithful","Most sequence-faithful","Strongest countertexts"],
+  "do_not_compute":["Do not convert centrality into probability of prophecy/divinity.","Do not interpret community detection as divine authorship or hidden-code proof.","Do not multiply evidence by projecting one overlap node into several graph layers and recounting it.","Do not hide negative/countertext nodes because they lower apparent cohesion.","Do not assume shortest-path geometry corresponds to historical transmission."],
+  "implementation":"scripts/analyze_bible_overlap_graph.py",
+  "connections":["knowledge/theology/biblical-overlap-evidence-and-measurement-protocol.json","knowledge/theology/biblical-intertext-bundle-and-composite-memory-protocol.json","knowledge/theology/tim-son-bible-overlap-census-current.json","data/bible/tim-son-reader-manifest.json"]
+}
