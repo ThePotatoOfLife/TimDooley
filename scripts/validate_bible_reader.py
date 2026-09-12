@@ -113,6 +113,7 @@ def main() -> int:
             "deepCandidates",
             "wordScore",
             "refScore",
+            "scrollIntoView(",
         ),
         "app/bible-study.js",
         errors,
