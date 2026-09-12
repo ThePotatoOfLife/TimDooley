@@ -1,0 +1,104 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-12",
+  "purpose":"Empirical gateway/chokepoint seed layer for the World Map. Coordinates are approximate visualization anchors, not navigation data. Transit observations are dated rather than treated as timeless capacity.",
+  "source_note":"Oil-transit observations use the U.S. Energy Information Administration Short-Term Energy Outlook, August 2026 energy-security chokepoint table for Q2 2026. EIA states that its analysis uses Vortexa tanker tracking and Panama Canal Authority data with EIA calculations.",
+  "gateways":{
+    "malacca-strait":{
+      "label":"Strait of Malacca",
+      "type":"maritime-chokepoint",
+      "epistemic_type":"observed",
+      "coordinates":[101.5,2.5],
+      "coordinate_precision":"approximate-center",
+      "coordinate_note":"Approximate map anchor for visualization only; not suitable for navigation.",
+      "countries":["MYS","IDN","SGP"],
+      "systems":["oil-trade","maritime-logistics","east-asia-energy","indian-pacific-connection"],
+      "observation":{"value":16.6,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "description":"Major maritime chokepoint linking the Indian and Pacific Oceans and a critical route for energy flows into East and Southeast Asia."
+    },
+    "hormuz-strait":{
+      "label":"Strait of Hormuz",
+      "type":"maritime-chokepoint",
+      "epistemic_type":"observed",
+      "coordinates":[56.25,26.56],
+      "coordinate_precision":"approximate-center",
+      "coordinate_note":"Approximate map anchor for visualization only; not suitable for navigation.",
+      "countries":["IRN","OMN"],
+      "systems":["oil-trade","lng-trade","persian-gulf-energy","indian-ocean-logistics"],
+      "observation":{"value":4.9,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "description":"Strategic passage between the Persian Gulf and Gulf of Oman; alternatives can move only part of the normal oil flow when disruption occurs."
+    },
+    "suez-sumed":{
+      "label":"Suez Canal / SUMED corridor",
+      "type":"canal",
+      "epistemic_type":"observed",
+      "coordinates":[32.35,30.5],
+      "coordinate_precision":"approximate-center",
+      "coordinate_note":"Approximate map anchor for visualization only; not suitable for navigation.",
+      "countries":["EGY"],
+      "systems":["oil-trade","red-sea-mediterranean","europe-asia-shipping","maritime-logistics"],
+      "observation":{"value":5.8,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "description":"Egyptian canal-and-pipeline corridor connecting Red Sea and Mediterranean energy and shipping flows."
+    },
+    "bab-el-mandeb":{
+      "label":"Bab el-Mandeb",
+      "type":"maritime-chokepoint",
+      "epistemic_type":"observed",
+      "coordinates":[43.4,12.6],
+      "coordinate_precision":"approximate-center",
+      "coordinate_note":"Approximate map anchor for visualization only; not suitable for navigation.",
+      "countries":["YEM","DJI","ERI"],
+      "systems":["oil-trade","red-sea","gulf-of-aden","europe-asia-shipping"],
+      "observation":{"value":8.1,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "description":"Narrow passage connecting the Red Sea with the Gulf of Aden and Arabian Sea; disruptions alter Europe–Asia routing and can divert traffic around southern Africa."
+    },
+    "danish-straits":{
+      "label":"Danish Straits",
+      "type":"maritime-chokepoint",
+      "epistemic_type":"observed",
+      "coordinates":[12.2,56.0],
+      "coordinate_precision":"approximate-center",
+      "coordinate_note":"Approximate map anchor for visualization only; not suitable for navigation.",
+      "countries":["DNK","SWE"],
+      "systems":["baltic","north-sea","oil-trade","maritime-logistics"],
+      "observation":{"value":4.7,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "description":"Series of passages connecting the Baltic Sea and North Sea, important for Baltic maritime and petroleum flows."
+    },
+    "turkish-straits":{
+      "label":"Turkish Straits",
+      "type":"maritime-chokepoint",
+      "epistemic_type":"observed",
+      "coordinates":[28.9,40.5],
+      "coordinate_precision":"approximate-center",
+      "coordinate_note":"Approximate map anchor for visualization only; not suitable for navigation.",
+      "countries":["TUR"],
+      "systems":["black-sea","mediterranean","oil-trade","eurasian-logistics"],
+      "observation":{"value":4.1,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "description":"Bosporus and Dardanelles waterways linking the Black Sea to the Mediterranean through Türkiye."
+    },
+    "panama-canal":{
+      "label":"Panama Canal",
+      "type":"canal",
+      "epistemic_type":"observed",
+      "coordinates":[-79.7,9.1],
+      "coordinate_precision":"approximate-center",
+      "coordinate_note":"Approximate map anchor for visualization only; not suitable for navigation.",
+      "countries":["PAN"],
+      "systems":["atlantic-pacific","oil-trade","lng-trade","maritime-logistics"],
+      "observation":{"value":3.2,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "description":"Interoceanic canal linking Atlantic and Pacific shipping; water availability and operating constraints can materially affect transit patterns."
+    },
+    "cape-good-hope-route":{
+      "label":"Cape of Good Hope route",
+      "type":"strategic-maritime-route",
+      "epistemic_type":"observed",
+      "coordinates":[18.47,-34.36],
+      "coordinate_precision":"approximate-center",
+      "coordinate_note":"Approximate map anchor for visualization only; not suitable for navigation.",
+      "countries":["ZAF"],
+      "systems":["oil-trade","lng-trade","southern-african","alternative-maritime-route"],
+      "observation":{"value":9.4,"unit":"million barrels per day","period":"2026-Q2","source":"U.S. Energy Information Administration — Short-Term Energy Outlook, August 2026","source_url":"https://www.eia.gov/outlooks/steo/report/energysecurity/article.php"},
+      "description":"Major route around southern Africa and an important alternative when Suez, Bab el-Mandeb or other shorter routes are disrupted."
+    }
+  }
+}
