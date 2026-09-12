@@ -15,6 +15,10 @@ GATEWAYS = ROOT / "data" / "world-map-gateways.json"
 CHAINS = ROOT / "data" / "world-system-chains.json"
 RUNTIME_BUILDER = ROOT / "scripts" / "build_world_map_runtime.py"
 ENTITY_RUNTIME = ROOT / "world-map" / "3d-entity-runtime.js"
+INFRA_BROWSER = ROOT / "world-map" / "3d-infrastructure.js"
+WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
+BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
+COUNTRY_CARD = ROOT / "world-map" / "3d-country-card.js"
 
 SUPPORTED_TYPES = {
     "port", "maritime-terminal", "strait-associated-terminal", "canal-associated-terminal",
@@ -199,12 +203,57 @@ def main() -> int:
     else:
         errors.append("missing world-map/3d-entity-runtime.js")
 
+    # Browser infrastructure must remain a bounded contextual surface rather than a global layer/toolbox.
+    if not INFRA_BROWSER.is_file():
+        errors.append("missing contextual infrastructure browser module: world-map/3d-infrastructure.js")
+    else:
+        browser = INFRA_BROWSER.read_text(encoding="utf-8", errors="replace")
+        required_browser_markers = (
+            "atlas-infrastructure-context",
+            "atlas-infrastructure-points",
+            "showForEntity",
+            "showForGateway",
+            "showForChain",
+            "showAsset",
+            "infrastructureForEntity",
+            "infrastructureForGateway",
+            "infrastructureForChain",
+            "MAX_CONTEXT_ASSETS",
+            "geometry_status",
+            "source_url",
+            "window.__potatoAtlasInfrastructure",
+            "potato-atlas-working-selection-change",
+        )
+        for token in required_browser_markers:
+            if token not in browser:
+                errors.append(f"contextual infrastructure browser missing marker: {token}")
+        if "MAX_CONTEXT_ASSETS = 12" not in browser:
+            errors.append("contextual infrastructure browser must cap ordinary map rendering at 12 assets")
+        if "new maplibregl.Map" in browser:
+            errors.append("infrastructure browser must reuse the canonical map renderer")
+        if "world-map-infrastructure.json" in browser:
+            errors.append("infrastructure browser must consume shared runtime APIs rather than refetch canonical JSON")
+
+    if WORLD_BAR.is_file():
+        world_bar = WORLD_BAR.read_text(encoding="utf-8", errors="replace")
+        if re.search(r"Infrastructure", world_bar, re.I):
+            errors.append("World Bar must not gain a permanent Infrastructure control")
+    if BOOTSTRAP.is_file():
+        bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
+        if "./3d-infrastructure.js" not in bootstrap:
+            errors.append("bootstrap must load contextual infrastructure module")
+    if COUNTRY_CARD.is_file():
+        card = COUNTRY_CARD.read_text(encoding="utf-8", errors="replace")
+        for token in ("Infrastructure context", "infrastructureForEntity", "data-infrastructure-id"):
+            if token not in card:
+                errors.append(f"country card missing contextual infrastructure marker: {token}")
+
     if errors:
         print("World Map infrastructure validation FAILED:")
         for error in errors:
             print(f" - {error}")
         return 1
-    print(f"World Map infrastructure validation passed: {len(assets)} assets · {len(SEED_MINIMUMS)} gateway seed groups · runtime projected.")
+    print(f"World Map infrastructure validation passed: {len(assets)} assets · {len(SEED_MINIMUMS)} gateway seed groups · runtime and contextual browser projected.")
     return 0
 
 
