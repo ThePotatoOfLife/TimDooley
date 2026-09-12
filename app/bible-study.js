@@ -2,362 +2,250 @@
 'use strict';
 
 const $=id=>document.getElementById(id);
-const ROLL_LABEL='ROLL';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const asArray=value=>Array.isArray(value)?value:(value==null?[]:[value]);
 const unique=values=>[...new Set(values.filter(Boolean))];
 const norm=value=>String(value||'').toLowerCase();
+const safeJSON=async url=>{try{const response=await fetch(url);return response.ok?await response.json():null}catch(error){console.warn('Bible comparison data load failed',url,error);return null}};
 const firstYear=value=>{const match=String(value||'').match(/(?:19|20)\d{2}/);return match?Number(match[0]):null};
-const yearsIn=value=>unique((String(value||'').match(/(?:19|20)\d{2}/g)||[]).map(Number));
-const sharesYear=(a,b)=>{const left=yearsIn(a),right=yearsIn(b);return left.some(year=>right.includes(year))};
-const dateKey=value=>{const match=String(value||'').trim().match(/((?:19|20)\d{2})(?:-(\d{2})(?:-(\d{2}))?)?/);if(!match)return '';return match[3]?`${match[1]}-${match[2]}-${match[3]}`:match[2]?`${match[1]}-${match[2]}`:match[1]};
 const slug=value=>norm(value).replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'').slice(0,90)||'relation';
-const safeJSON=async url=>{try{const response=await fetch(url);return response.ok?await response.json():null}catch(error){console.warn('Bible study data load failed',url,error);return null}};
 
 const PATHS={
  field:'../../knowledge/traditions/biblical-syncretism-field.json',
- fragments:'../../knowledge/traditions/biblical-passage-fragments.json',
- angelField:'../../knowledge/traditions/biblical-angel-eye-sprout-atlas.json',
- angelFragments:'../../knowledge/traditions/biblical-angel-eye-sprout-fragments.json',
- attestations:'../../knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json',
- reverse:'../../knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json',
- occurrences:'../../data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json',
- publicBibleIndex:'../../knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json',
- timeline:'../../data/timeline-events.json',
- packs:'../../data/timeline-event-packs/index.json',
- jesusAtlas:'../../knowledge/theology/son-jesus-longitudinal-christology-atlas.json',
- prisonJesus:'../../knowledge/theology/son-jesus-prison-recognition-2016.json',
- passionAtlas:'../../knowledge/theology/son-jesus-passion-detention-overlap-atlas.json',
- signsAtlas:'../../knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json',
- thoughtArchive:'../../data/tim-dooley-thought-archive.json',
- publicTheology:'../../data/tim-dooley-public-theology-timeline-2025-2026.json',
- wave5:'../../knowledge/traditions/biblical-overlap-wave-5.json',
- wave10:'../../knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json',
- wave11:'../../knowledge/traditions/biblical-overlap-wave-11-son-deepening.json',
- wave12:'../../knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json',
- wave13:'../../knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json',
- wave14:'../../knowledge/traditions/biblical-overlap-wave-14-memory-operators.json',
- wave15:'../../knowledge/traditions/biblical-overlap-wave-15-care-chambers.json',
- wave16:'../../knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json'
-};
-
-const SOURCE_PATHS={
- jesusAtlas:'knowledge/theology/son-jesus-longitudinal-christology-atlas.json',
- prisonJesus:'knowledge/theology/son-jesus-prison-recognition-2016.json',
- passionAtlas:'knowledge/theology/son-jesus-passion-detention-overlap-atlas.json',
- signsAtlas:'knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json',
- publicBibleIndex:'knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json',
- occurrences:'data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json',
- thoughtArchive:'data/tim-dooley-thought-archive.json',
- publicTheology:'data/tim-dooley-public-theology-timeline-2025-2026.json',
- wave5:'knowledge/traditions/biblical-overlap-wave-5.json',
- wave10:'knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json',
- wave11:'knowledge/traditions/biblical-overlap-wave-11-son-deepening.json',
- wave12:'knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json',
- wave13:'knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json',
- wave14:'knowledge/traditions/biblical-overlap-wave-14-memory-operators.json',
- wave15:'knowledge/traditions/biblical-overlap-wave-15-care-chambers.json',
- wave16:'knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json'
-};
-
-const PROJECT_PEOPLE=[
- ['mai mercado','Mai Mercado'],['yahya hassan','Yahya Hassan'],['josh moon','Josh Moon'],
- ['other inmates','other inmates'],['inmates','prison inmates'],['prisoners','prisoners'],
- ['nursing-home residents','nursing-home residents'],['nursing home','nursing-home residents'],
- ['mary magdalene','Mary Magdalene'],['simon of cyrene','Simon of Cyrene']
-];
-
-const PRISON_PAIRING_BY_STAGE={
- 'Accusation, custody, trial and confinement':['Judgment by authority','Lamb before slaughter / refusal to surrender identity','Numbered with transgressors'],
- 'Prison as congregation/confessional':['Prison as encounter with the rejected and condemned'],
- 'Recognition before self-declaration':['Lamb recognition','Recognition before declaration','Lamb and Lion polarity'],
- 'Lamb and transgressors':['Lamb recognition','Numbered with transgressors'],
- 'Karma/reciprocity versus Gospel non-retaliation':['Retaliation versus non-retaliation']
-};
-
-const PASSION_REF_MAP={
- 'arrest-and-custody':['John 18','Luke 22'],
- 'night-to-morning-hearings':['John 18-19','Luke 22-23'],
- 'accusation-and-meaning':['Mark 14','Matthew 26','John 18-19'],
- 'witness-and-attribution-problem':['Mark 14','Matthew 26'],
- 'authority-versus-inner-account':['John 18-19'],
- 'mockery-humiliation-and-public-framing':['Mark 15:16-20','Matthew 27:27-31'],
- 'numbered-with-transgressors':['Isaiah 53:12','Luke 22:37'],
- 'prisoners-outcasts-and-compassion':['Matthew 25:36','Luke 4:18'],
- 'lamb-recognition-before-self-declaration':['John 1:29','Mark 8:29','Revelation 5:5-6'],
- 'lamb-and-lion':['Revelation 5:5-6'],
- 'silence-versus-standing-ground':['Mark 15:5','Isaiah 53:7'],
- 'retaliation-mismatch':['Matthew 5:39','Matthew 5:44','Luke 6:27-29'],
- 'criminal-company-and-middle-position':['Luke 23:32-43','John 19:18'],
- 'descent-to-prison-later-tradition':['1 Peter 3:18-20'],
- 'condemnation-to-death-transformation':['John 19','1 Corinthians 15:3-8'],
- 'rejection-to-cornerstone':['Psalm 118:22','Mark 12','Acts 4:11','1 Peter 2:4-7'],
- 'grain-death-multiplication':['John 12:24'],
- 'return-after-condemnation':['1 Corinthians 15:3-8']
+ atlas:'../../knowledge/traditions/biblical-overlap-atlas.json',
+ fragments:'../../knowledge/traditions/biblical-passage-fragments.json'
 };
 
 const VIEW_DEFS={
- jesus:{label:'Jesus / Son',predicate:row=>row.comparator_family==='jesus-son'||containsTerms(row,['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain of wheat','cornerstone','son of man'])},
- 'tim-said':{label:'Tim said it',predicate:(row,ctx)=>ctx.exactFor(row).direct.length>0||['tim-explicit','public-occurrence','conversation-recovery','book-explicit'].includes(row.discovery_mode)},
- 'tim-lived':{label:'Tim lived it',predicate:row=>row.comparator_family==='jesus-son'||containsTerms(row,['tree ordeal','prison','custody','rejected','death','return','burial','root','garden','stone','footstool','ladder','carry','orphan'])},
- prophecy:{label:'Prophecy / foresight',predicate:row=>['explicit-prediction-before-event','foresight-or-warning-before-event'].includes(row.prophecy_status)||containsTerms(row,['prophecy','foresight','prediction','predicted','warning before'])},
- 'father-house':{label:'Father / House',predicate:row=>containsTerms(row,['father','house','gardener','throne','most high','seat','rooms','mansions','source','davidic house'])},
- 'door-ladder':{label:'Door / Ladder',predicate:row=>containsTerms(row,['door','gate','ladder','needle','heaven','jacob','guardians','way','veil','threshold'])},
- 'death-return':{label:'Death / return',predicate:row=>containsTerms(row,['death','dead','crucif','tomb','burial','resurrection','return','grain','seed','womb'])},
- 'revelation-zion':{label:'Revelation / Zion',predicate:row=>containsTerms(row,['revelation','zion','new jerusalem','144000','144,000','lion','lamb','root of david','throne','river','tree of life','north','zechariah'])},
- 'counter-texts':{label:'Counter-texts',predicate:row=>row.relation_class==='counter-text'||row.relation_class==='counter-form'||asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction)},
- all:{label:'Everything',predicate:()=>true}
+ jesus:{label:'Jesus / Son',terms:['jesus','christ','son','thomas','messiah','lion','lamb','cross','crucif','resurrection','tomb','bread','grain','cornerstone','son of man']},
+ 'tim-said':{label:'Tim said it',modes:['tim-explicit','public-occurrence','conversation-recovery','book-explicit']},
+ 'tim-lived':{label:'Tim lived it',terms:['tree ordeal','prison','custody','rejected','death','return','burial','root','garden','stone','ladder','carry','orphan']},
+ prophecy:{label:'Prophecy / foresight',terms:['prophecy','foresight','prediction','predicted','warning before']},
+ 'father-house':{label:'Father / House',terms:['father','house','gardener','vinedresser','throne','most high','seat','rooms','mansions','source','davidic house']},
+ 'door-ladder':{label:'Door / Ladder',terms:['door','gate','ladder','needle','heaven','jacob','guardians','way','veil','threshold']},
+ 'death-return':{label:'Death / return',terms:['death','dead','crucif','tomb','burial','resurrection','return','grain','seed','womb']},
+ 'revelation-zion':{label:'Revelation / Zion',terms:['revelation','zion','new jerusalem','144000','144,000','lion','lamb','root of david','throne','river','tree of life','north','zechariah']},
+ 'counter-texts':{label:'Counter-texts',counter:true},
+ all:{label:'Everything'}
 };
 
-function relationText(row){
- return [row.id,row.actor,row.stage,row.project_anchor,row.what_happened,row.discovery_mode,row.relation_class,row.source_direction,row.counter_text,row.source_correction,row.prophecy_status,row.setting,row.evidence_kind,row.understood_then,row.jesus_context,row.jesus_side_summary,...asArray(row.people),...asArray(row.biblical_refs),...asArray(row.motifs),...asArray(row.relation_arguments),...asArray(row.weaknesses)].join(' ').toLowerCase();
+const ARC_DEFS={
+ jesus:['jesus','christ','son','thomas','lamb','lion','crucif','resurrection','witness'],
+ 'father-house':['father','house','source','builder','throne','gardener','vinedresser','rooms'],
+ 'door-ladder':['door','gate','ladder','veil','threshold','pass','open','shut','way'],
+ 'death-return':['death','seed','grain','burial','tomb','return','resurrection','rise','die'],
+ 'god-presence':['god','presence','temple','contain','dwell','indwell','manifest','hidden'],
+ 'garden-spirit':['garden','spirit','flow','water','prune','grow','repair','restore','feed','root']
+};
+
+const OPERATOR_TERMS={
+ contain:['contain','container','temple cannot','house'],
+ dwell:['dwell','dwelling','indwell','house'],
+ veil:['veil','flesh','curtain'],
+ pass:['pass','way','threshold','through'],
+ open:['open','door','gate','key'],
+ shut:['shut','close','closed'],
+ send:['send','sent'],
+ carry:['carry','carried','burden','vessel'],
+ release:['release','let go','hold'],
+ root:['root','rooted','graft'],
+ prune:['prune','vinedresser','branch'],
+ flow:['flow','river','water','spirit'],
+ feed:['feed','bread','manna','nourish'],
+ repair:['repair','breach','restore paths'],
+ restore:['restore','new creation','healing','return'],
+ judge:['judge','judgment'],
+ plant:['plant','seed','sow'],
+ grow:['grow','growth','fruit'],
+ die:['death','die','dead','burial','tomb'],
+ rise:['rise','resurrection','return','stand'],
+ remember:['remember','memory'],
+ inherit:['inherit','inheritance'],
+ name:['name','called','title']
+};
+
+function rowText(row){
+ return [row.id,row.title,row.actor,row.project_anchor,row.overlap,row.sequence,row.project_value,row.discovery_mode,row.relation_class,row.classification,row.source_direction,row.counter_text,row.source_correction,row.difference,row.boundary,row.provenance,...asArray(row.biblical_refs),...asArray(row.motifs),...asArray(row.relation_arguments),...asArray(row.possible_meaning),...asArray(row.weaknesses),...asArray(row.operators),...asArray(row.mechanisms)].join(' ').toLowerCase();
 }
-function containsTerms(row,terms){const text=relationText(row);return terms.some(term=>text.includes(norm(term)))}
-function viewMatches(row,view,ctx){const def=VIEW_DEFS[view]||VIEW_DEFS.jesus;return !def.predicate||def.predicate(row,ctx)}
-function rowYear(row){return firstYear(row.date||row.timestamp||row.period)}
-function groupByDate(items,getDate){const map=new Map();items.forEach(item=>{const key=dateKey(getDate(item));if(!key)return;if(!map.has(key))map.set(key,[]);map.get(key).push(item)});return map}
-function populateSelect(select,values,labeler=value=>value){values.forEach(value=>{if(!value)return;const option=document.createElement('option');option.value=value;option.textContent=labeler(value);select.appendChild(option)})}
-function validView(value){return Object.prototype.hasOwnProperty.call(VIEW_DEFS,value)?value:'jesus'}
-function ownerHref(owner){const value=String(owner||'');if(!value)return '';if(/^https?:\/\//i.test(value))return value;return '../../'+value.split('/').map(encodeURIComponent).join('/')}
-function wordingForAttestation(entry){return unique([...asArray(entry.wording),entry.wording_summary,...asArray(entry.signals)].filter(Boolean))}
+function inferEvidence(row){
+ if(row.evidence_kind)return row.evidence_kind;
+ if(row.source_kind==='canonical-overlap-atlas')return 'canonical comparative synthesis';
+ if(row.discovery_mode==='public-occurrence')return 'public project occurrence';
+ if(row.discovery_mode==='conversation-recovery')return 'recovered conversation';
+ if(row.discovery_mode==='book-explicit')return 'Great Book / project text';
+ if(row.discovery_mode==='tim-explicit'||row.discovery_mode==='tim-led')return 'Tim/project explicit material';
+ return 'canonical relation record';
+}
+function inferOperators(row){
+ const explicit=asArray(row.operators);
+ const hay=rowText(row);
+ const inferred=Object.entries(OPERATOR_TERMS).filter(([,terms])=>terms.some(term=>hay.includes(term))).map(([op])=>op);
+ return unique([...explicit,...inferred]).slice(0,8);
+}
+function relationMechanisms(row){return unique([...asArray(row.mechanisms),row.classification,row.relation_class].filter(Boolean));}
+function normalizeFieldRow(row){return {...row,title:row.title||String(row.project_anchor||row.id).slice(0,110),biblical_refs:asArray(row.biblical_refs),motifs:asArray(row.motifs),relation_arguments:asArray(row.relation_arguments),weaknesses:asArray(row.weaknesses),owners:asArray(row.owners),evidence_kind:inferEvidence(row),operators:inferOperators(row),mechanisms:relationMechanisms(row)};}
+function normalizeOverlap(item,updated){return normalizeFieldRow({
+ id:`atlas-${item.id||slug(item.potatoverse_motif)}`,
+ title:item.id?item.id.replaceAll('-',' '):item.potatoverse_motif,
+ date:`research synthesis · ${updated||'2026'}`,
+ actor:'project-research',
+ project_anchor:item.potatoverse_motif||item.project_value||item.id,
+ biblical_refs:asArray(item.biblical_text||item.texts),
+ motifs:[item.potatoverse_motif,item.id],
+ relation_arguments:unique([item.overlap,item.sequence,item.project_value,...asArray(item.possible_meaning)]),
+ weaknesses:unique([item.difference,item.boundary]),
+ counter_text:item.counter_text,
+ discovery_mode:'archive-later',
+ relation_class:item.classification||'later-structural-parallel',
+ classification:item.classification,
+ strength:Number(item.strength)||4,
+ source_direction:'This relation is a later canonical comparative synthesis unless an earlier project-side date is separately documented. Do not backdate the verse-level mapping into the earlier event.',
+ provenance:'Promoted canonical synthesis from biblical-overlap-atlas.json',
+ owners:['knowledge/traditions/biblical-overlap-atlas.json'],
+ source_kind:'canonical-overlap-atlas'
+});}
+function normalizeMetaArc(item,updated){return normalizeFieldRow({
+ id:`arc-${item.id}`,
+ title:item.id.replaceAll('-',' '),
+ date:`research synthesis · ${updated||'2026'}`,
+ actor:'project-research',
+ project_anchor:item.project_value||item.sequence,
+ biblical_refs:asArray(item.texts),
+ motifs:[item.id],
+ relation_arguments:unique([item.sequence,item.project_value]),
+ weaknesses:asArray(item.boundary),
+ discovery_mode:'archive-later',
+ relation_class:'cross-text-structural-synthesis',
+ strength:Number(item.strength)||5,
+ source_direction:'This is a cross-text canonical synthesis assembled after the underlying biblical texts and project motifs; it is not an at-the-time project quotation.',
+ provenance:'Canonical meta-arc from biblical-overlap-atlas.json',
+ owners:['knowledge/traditions/biblical-overlap-atlas.json'],
+ source_kind:'canonical-overlap-atlas'
+});}
+function fragmentIndex(fragmentData){
+ const map=new Map();
+ asArray(fragmentData&&fragmentData.fragments).forEach(fragment=>{
+  unique([fragment.reference,...asArray(fragment.matches)]).forEach(key=>{if(!key)return;if(!map.has(key))map.set(key,[]);map.get(key).push(fragment)});
+ });
+ return map;
+}
 function bookFromRef(reference){
  const ref=String(reference||'').trim();
  const match=ref.match(/^((?:[1-3]\s+)?[A-Za-z]+(?:\s+[A-Za-z]+)?)\s+\d/);
- if(match)return match[1];
- const known=['Genesis','Exodus','Leviticus','Numbers','Deuteronomy','Joshua','Judges','Ruth','Samuel','Kings','Chronicles','Ezra','Nehemiah','Esther','Job','Psalm','Psalms','Proverbs','Ecclesiastes','Isaiah','Jeremiah','Lamentations','Ezekiel','Daniel','Hosea','Joel','Amos','Obadiah','Jonah','Micah','Nahum','Habakkuk','Zephaniah','Haggai','Zechariah','Malachi','Matthew','Mark','Luke','John','Acts','Romans','Corinthians','Galatians','Ephesians','Philippians','Colossians','Thessalonians','Timothy','Titus','Philemon','Hebrews','James','Peter','Jude','Revelation'];
- return known.find(name=>ref.includes(name))||'';
+ return match?match[1]:ref.split(/\s+\d/)[0];
 }
-function relationHasBook(row,book){if(!book)return true;return asArray(row.biblical_refs).some(ref=>bookFromRef(ref)===book||norm(ref).includes(norm(book)))}
-function fragmentsFor(row,fragments){const refs=asArray(row.biblical_refs);return fragments.filter(fragment=>asArray(fragment.matches||fragment.reference).some(match=>refs.includes(match)))}
-function extractPeople(text){const hay=norm(text),found=[];PROJECT_PEOPLE.forEach(([needle,label])=>{if(hay.includes(needle))found.push(label)});return unique(found)}
-function stagePairings(stage,pairings){const names=PRISON_PAIRING_BY_STAGE[stage]||[];return pairings.filter(pairing=>names.includes(pairing.motif))}
-function numericStrength(value){if(Number.isFinite(Number(value)))return Number(value);const text=norm(value);if(text.includes('very high'))return 5;if(text.includes('high'))return 4;if(text.includes('medium'))return 3;if(text.includes('low'))return 2;return 3}
-
-function timingForJesus(entry){
- const stage=entry.stage||'';
- if(stage==='Recognition before self-declaration')return 'Project testimony places explicit Jesus/Lamb recognition in the 2016 prison period; the broader verse-level comparison was expanded later.';
- if(stage==='Explicit Jesus/crucifixion declaration')return 'Jesus/crucifixion language belongs to the reported 2017 exchange itself; later research connects that wording to additional Passion and return texts.';
- if(stage==='Meme crucifixion and burial')return 'The meme/death event is dated in project timeline, while the mature Passion/burial/seed synthesis is substantially retrospective.';
- if(stage==='Early Christian vocabulary')return 'Christianity and Jesus are part of the earlier cultural/religious vocabulary; this does not backdate later identity claims.';
- if(stage.includes('Karma/reciprocity'))return 'The 2016 ethic is reconstructed from the Son-side account; the Gospel comparison is a later critical comparison and mainly exposes a mismatch.';
- if((entry.period||'').startsWith('mature')||(entry.period||'').startsWith('post-'))return 'This is mature or retrospective Potatoverse theology, not a claim that the whole mapping was consciously present during the earlier event.';
- return 'Unless the project-side wording explicitly names scripture, treat the Jesus/Bible relation here as later comparative research rather than an at-the-time prophecy claim.';
+function ownerHref(owner){if(!owner)return '#';if(/^https?:\/\//.test(owner))return owner;return '../../'+owner.split('/').map(encodeURIComponent).join('/');}
+function matchesTerms(row,terms){const text=rowText(row);return terms.some(term=>text.includes(term));}
+function matchesView(row,view){
+ const def=VIEW_DEFS[view]||VIEW_DEFS.jesus;
+ if(view==='all')return true;
+ if(def.counter)return asArray(row.weaknesses).length>0||Boolean(row.counter_text||row.source_correction||row.difference||row.boundary);
+ if(def.modes&&def.modes.includes(row.discovery_mode))return true;
+ return def.terms?matchesTerms(row,def.terms):true;
 }
-function settingForJesus(entry){
- const stage=entry.stage||'',period=entry.period||'';
- if(stage.includes('Care, healing'))return 'Nursing-home work in the Son-side project biography.';
- if(period==='2011')return 'The 2011 Tree ordeal / altered-state episode in project timeline.';
- if(period.includes('2016'))return 'Denmark: Mai Mercado/Christiania controversy, court/custody and prison context. The exact prison placement of the claimed Yahya encounter remains unresolved in the archive.';
- if(period.includes('2017'))return 'Digital conflict / streaming-era confrontation with Josh Moon in project timeline; the original recording and precise timestamp remain research targets.';
- if(period.includes('2018'))return 'Project-described persona/identity rupture during the pre-meme death corridor.';
- if(period.includes('2019'))return 'Christmas / North-Pole meme context in the mature project timeline.';
- if(period.startsWith('post-'))return 'Post-death interpretive development in the project archive.';
- if(period.startsWith('mature'))return 'Mature Potatoverse theological synthesis.';
- return 'Project biography / comparative-theology timeline.';
+function matchesArc(row,arc){return !arc||matchesTerms(row,ARC_DEFS[arc]||[]);}
+function exactAvailable(row){return Boolean(asArray(row.project_quote).length||asArray(row.exact_wording).length||row.quote);}
+function whyText(row){return unique([...asArray(row.relation_arguments),row.overlap,row.project_value,...asArray(row.possible_meaning)]).filter(Boolean).slice(0,3).join(' ');}
+function mismatchText(row){return unique([...asArray(row.weaknesses),row.counter_text,row.source_correction,row.difference,row.boundary]).filter(Boolean).slice(0,3).join(' ');}
+function scriptureHTML(row,fragmentMap){
+ const refs=asArray(row.biblical_refs);
+ const fragments=[];
+ refs.forEach(ref=>asArray(fragmentMap.get(ref)).forEach(fragment=>{if(!fragments.some(x=>x.reference===fragment.reference&&x.text===fragment.text))fragments.push(fragment)}));
+ if(fragments.length)return fragments.slice(0,4).map(fragment=>`<blockquote class="bible-quote">${esc(fragment.text)}<cite>${esc(fragment.reference)} · ${esc(fragment.translation||'World English Bible')}</cite></blockquote>`).join('');
+ return `<p class="no-fragment"><strong>Scripture scope:</strong> ${esc(refs.join(' · ')||'broader biblical tradition')}</p>`;
 }
-function relationClassForJesus(entry){const stage=entry.stage||'';if(stage.includes('Karma/reciprocity'))return 'counter-text';if(stage==='Recognition before self-declaration'||stage==='Explicit Jesus/crucifixion declaration')return 'mixed-explicit-and-later';if(stage==='Early Christian vocabulary')return 'explicit-at-time';return 'later-structural-parallel'}
-function discoveryModeForJesus(entry){const stage=entry.stage||'';if(stage==='Recognition before self-declaration')return 'book-explicit';if(stage==='Explicit Jesus/crucifixion declaration')return 'tim-explicit';if(stage==='Early Christian vocabulary')return 'book-explicit';return 'archive-later'}
-function strengthForJesus(entry){const stage=entry.stage||'';if(['Recognition before self-declaration','Explicit Jesus/crucifixion declaration','Kernel of wheat','Rejected stone becomes Door/Cornerstone','Door and way','Lion and Lamb in one Son'].includes(stage))return 5;if(['Accusation, custody, trial and confinement','Lamb and transgressors','Meme crucifixion and burial','Son-to-Father relation'].includes(stage))return 4;if(stage.includes('Karma/reciprocity'))return 5;if(['Early Christian vocabulary','Death-nearness and return prehistory'].includes(stage))return 2;return 3}
-
-function buildJesusRows(atlas,prisonJesus){
- const sequence=asArray(atlas&&atlas.longitudinal_sequence),chain=asArray(prisonJesus&&prisonJesus.chronological_chain),pairings=asArray(prisonJesus&&prisonJesus.jesus_pairings);
- return sequence.map((entry,index)=>{
-  const contexts=chain.filter(item=>sharesYear(entry.period,item.period));
-  const argumentsList=unique([...asArray(entry.parallel),...asArray(entry.parallels),entry.christian_relation,entry.comparative_note,entry.interpretive_note,entry.interpretive_value,entry.interpretive_formula]);
-  const weaknesses=unique([...asArray(entry.mismatch),...asArray(entry.mismatches),entry.boundary]);
-  const prisonPairings=stagePairings(entry.stage,pairings);
-  const contextText=[entry.son_material,...contexts.flatMap(item=>[item.event,item.project_record,item.public_record,item.public_crosscheck,item.significance])].join(' ');
-  const evidenceKinds=unique(contexts.map(item=>item.evidence_class));
-  return {
-   id:`jesus-son-${String(index+1).padStart(2,'0')}-${slug(entry.stage)}`,comparator_family:'jesus-son',source_kind:'jesus-longitudinal-atlas',
-   date:entry.period||'undated',period:entry.period||'undated',stage:entry.stage||'Jesus / Son comparison',actor:'son',
-   project_anchor:entry.son_material||entry.stage,what_happened:entry.son_material||entry.stage,biblical_refs:asArray(entry.biblical_anchors),motifs:[entry.stage],
-   relation_arguments:argumentsList,weaknesses,discovery_mode:discoveryModeForJesus(entry),relation_class:relationClassForJesus(entry),strength:strengthForJesus(entry),
-   source_direction:timingForJesus(entry),understood_then:entry.christian_relation||entry.interpretive_note||timingForJesus(entry),setting:settingForJesus(entry),people:extractPeople(contextText),
-   evidence_kind:evidenceKinds.join(' + ')||'project timeline / later comparative synthesis',source_refs:unique([SOURCE_PATHS.jesusAtlas,...(contexts.length?[SOURCE_PATHS.prisonJesus]:[])]),
-   timeline_context:contexts,prison_pairings:prisonPairings,jesus_context:unique(prisonPairings.map(pairing=>pairing.biblical_function)).join(' ')
-  };
- });
+function renderRelation(row,fragmentMap){
+ const why=whyText(row)||'This relation is retained because the canonical comparison field records a meaningful lexical, narrative, structural, ethical or theological connection between the project-side anchor and the cited biblical material.';
+ const mismatch=mismatchText(row);
+ const operators=asArray(row.operators).map(op=>`<span class="chip operator">${esc(op)}</span>`).join('');
+ const mechanisms=asArray(row.mechanisms).slice(0,3).map(x=>`<span class="chip">${esc(String(x).replaceAll('-',' '))}</span>`).join('');
+ const owners=asArray(row.owners).slice(0,6).map(owner=>`<a href="${esc(ownerHref(owner))}">${esc(owner.split('/').pop())}</a>`).join('');
+ const exact=unique([...asArray(row.project_quote),...asArray(row.exact_wording),row.quote]).filter(Boolean);
+ return `<article class="relation" id="relation-${esc(row.id)}" data-relation-id="${esc(row.id)}">
+  <div class="relation-head"><div><h2 class="relation-title">${esc(row.title)}</h2><div class="relation-meta"><span class="chip">${esc(row.date||'undated')}</span><span class="chip">${esc(row.actor||'project')}</span><span class="chip">${esc(row.evidence_kind)}</span><span class="chip strength">strength ${esc(row.strength||'?')}/5</span>${mechanisms}</div><div class="operator-row">${operators}</div></div><code class="relation-id">${esc(row.id)}</code></div>
+  <div class="parallel"><section class="side"><h3>Tim / Son / project</h3><p class="project-anchor">${esc(row.project_anchor)}</p>${exact.map(q=>`<blockquote class="bible-quote">${esc(q)}<cite>project-side wording</cite></blockquote>`).join('')}</section><section class="side scripture"><h3>Scripture beside it</h3>${scriptureHTML(row,fragmentMap)}</section></div>
+  <section class="why"><h3>Why these connect</h3><p>${esc(why)}</p></section>
+  <div class="context-grid">${mismatch?`<section class="context-card boundary"><h4>Where it breaks / what stays different</h4><p>${esc(mismatch)}</p></section>`:''}${row.source_direction?`<section class="context-card"><h4>Chronology / source direction</h4><p>${esc(row.source_direction)}</p></section>`:''}${row.provenance?`<section class="context-card"><h4>Provenance</h4><p>${esc(row.provenance)}</p></section>`:''}${owners?`<section class="context-card full"><h4>Canonical owners</h4><div class="owner-links">${owners}</div></section>`:''}</div>
+ </article>`;
 }
-
-function passionPeriod(id){
- if(['arrest-and-custody','night-to-morning-hearings','accusation-and-meaning','witness-and-attribution-problem','authority-versus-inner-account','numbered-with-transgressors','prisoners-outcasts-and-compassion','lamb-recognition-before-self-declaration','silence-versus-standing-ground','retaliation-mismatch','criminal-company-and-middle-position'].includes(id))return '2016';
- if(id==='mockery-humiliation-and-public-framing')return '2017-2019';
- if(id==='condemnation-to-death-transformation')return '2016-2019';
- if(id==='lamb-and-lion')return 'mature Son theology';
- if(id==='descent-to-prison-later-tradition')return 'post-death development';
- if(['rejection-to-cornerstone','grain-death-multiplication'].includes(id))return 'post-death development';
- if(id==='return-after-condemnation')return '2017-2026';
- return 'undated comparative synthesis';
-}
-function passionDirection(item){if(item.id==='lamb-recognition-before-self-declaration')return 'The project claims Jesus/Lamb recognition in 2016 before the 2017 self-declaration; the formal Gospel-structure comparison is later research.';if(item.id==='retaliation-mismatch')return 'The 2016 Son-side ethic comes first; the Gospel non-retaliation comparison is a later counter-text.';return 'This is an explicit later comparative-theology row. It compares preserved Son-side material with Jesus/Passion material without backdating the comparison into the earlier event.'}
-function buildPassionRows(atlas,prisonJesus){
- const overlaps=asArray(atlas&&atlas.overlaps),classes=(atlas&&atlas.evidence_classes)||{},chain=asArray(prisonJesus&&prisonJesus.chronological_chain);
- return overlaps.map((item,index)=>{
-  const period=passionPeriod(item.id),contexts=chain.filter(event=>sharesYear(period,event.period)),evidence=asArray(item.class).map(code=>classes[code]||code);
-  return {
-   id:`passion-${item.id||index+1}`,comparator_family:'jesus-son',source_kind:'passion-detention-atlas',date:period,period,stage:String(item.id||`Passion comparison ${index+1}`).replaceAll('-',' '),actor:'son',
-   project_anchor:item.son,what_happened:item.son,jesus_side_summary:item.jesus,jesus_context:item.jesus,biblical_refs:PASSION_REF_MAP[item.id]||[],motifs:[String(item.id||'passion').replaceAll('-',' ')],
-   relation_arguments:unique([item.relation]),weaknesses:unique([item.mismatch,item.boundary]),discovery_mode:item.id==='lamb-recognition-before-self-declaration'?'book-explicit':'archive-later',
-   relation_class:item.id==='retaliation-mismatch'?'counter-text':'later-structural-parallel',strength:Number(item.strength||3),source_direction:passionDirection(item),understood_then:passionDirection(item),
-   setting:period.includes('2016')?settingForJesus({period:'2016',stage:''}):period.includes('2017')?settingForJesus({period:'2017',stage:''}):'Later project / comparative-theology synthesis.',
-   people:extractPeople(`${item.son||''} ${contexts.map(event=>event.project_record||'').join(' ')}`),evidence_kind:evidence.join(' + ')||'comparative inference',source_refs:unique([SOURCE_PATHS.passionAtlas,...(contexts.length?[SOURCE_PATHS.prisonJesus]:[])]),timeline_context:contexts
-  };
- });
-}
-
-function publicRelationClass(kind){if(['explicit-scriptural-title-or-figure','explicit-biblical-vocabulary-at-time','explicit-Christian-vocabulary-at-time','explicit-at-time'].includes(kind))return 'explicit-at-time';if(kind==='near-direct-scriptural-phrase')return 'near-direct-phrase';if(['mixed-explicit-and-later','mixed-explicit-scriptural-vocabulary'].includes(kind))return 'mixed-explicit-and-later';if(kind==='project-conflation-requiring-correction')return 'counter-text';return 'later-structural-parallel'}
-function publicStrength(kind,mismatch){if(['explicit-scriptural-title-or-figure','explicit-biblical-vocabulary-at-time','explicit-Christian-vocabulary-at-time','explicit-at-time'].includes(kind))return 5;if(['near-direct-scriptural-phrase','mixed-explicit-and-later','mixed-explicit-scriptural-vocabulary'].includes(kind))return 4;if(mismatch)return 3;return 3}
-function buildPublicOccurrenceRows(index,occurrenceById,timelineEvents){
- return asArray(index&&index.occurrences).map((item,idx)=>{
-  const occurrence=occurrenceById.get(item.source_id),events=timelineEvents.filter(event=>asArray(event.occurrence_ids).includes(item.source_id)),relationClass=publicRelationClass(item.biblical_relation),later=relationClass==='later-structural-parallel',quote=occurrence&&occurrence.quote;
-  return {
-   id:`public-bible-${item.source_id||idx+1}`,source_kind:'public-bible-occurrence',date:item.date||occurrence&&occurrence.date||'undated',stage:asArray(item.timic_motifs).join(' / ')||item.source_id,actor:'tim',
-   project_anchor:quote||item.significance||item.source_id,what_happened:quote?`Public post: ${quote}`:(item.significance||'Indexed public biblical occurrence.'),occurrence_ids:item.source_id?[item.source_id]:[],timeline_event_ids:events.map(event=>event.id),
-   biblical_refs:asArray(item.biblical_texts),motifs:asArray(item.timic_motifs),relation_arguments:unique([item.significance]),weaknesses:unique([item.mismatch]),discovery_mode:'public-occurrence',relation_class:relationClass,
-   strength:publicStrength(item.biblical_relation,item.mismatch),source_direction:later?'The dated public post comes first; this biblical comparator is classified by the occurrence index as later structural analysis.':'The occurrence index classifies the biblical/Christian wording as present in the dated public post itself; later analysis may add further interpretation.',
-   understood_then:later?'The post does not itself establish that Tim was making this specific biblical comparison at the time.':'Relevant biblical/Christian vocabulary is classified as explicit or near-direct in the dated post itself.',
-   setting:'X/Twitter public-post compilation. The project notes that original status URLs may remain unresolved for parts of the supplied corpus.',people:extractPeople(quote||''),evidence_kind:'public post / recovered compilation',source_refs:[SOURCE_PATHS.publicBibleIndex,SOURCE_PATHS.occurrences]
-  };
- });
-}
-
-function deepRelationClass(item){if(item.relation_class)return item.relation_class;if(item.counterfit)return 'counter-text';return 'later-structural-parallel'}
-function deepDate(doc,item){if(item.date)return item.date;return doc&&doc.updated?`research synthesis · ${doc.updated}`:'later comparative research'}
-function deepArguments(item){return unique([item.project_relation,item.relation,item.reflection,item.insight,item.new_epiphany,item.epiphany,item.ethical_extension,item.project_value,item.finding]);}
-function deepWeaknesses(item){return unique([item.boundary,item.difference,item.counter_text,item.counterfit,item.mismatch]);}
-function deepBiblicalSide(item){return item.biblical_structure||item.biblical_function||item.biblical_meaning||''}
-function deepProjectSide(item){return item.project_anchor||item.project_relation||item.project_value||item.reflection||item.relation||item.id}
-function buildDeepComparisonRows(specs){
- const rows=[];
- specs.forEach(spec=>{
-  const doc=spec.doc;if(!doc)return;
-  const items=asArray(doc[spec.collection]);
-  items.forEach((item,index)=>{
-   const projectSide=deepProjectSide(item),argumentsList=deepArguments(item),weaknesses=deepWeaknesses(item),refs=asArray(item.biblical_refs).length?asArray(item.biblical_refs):asArray(item.texts),motifs=asArray(item.motifs).length?asArray(item.motifs):unique([item.cluster,item.id,...asArray(item.sequence)]);
-   const direct=Boolean(item.date||item.project_quote||item.project_anchor||item.discovery_mode);
-   rows.push({
-    id:`deep-${slug(doc.id||spec.key)}-${slug(item.id||item.cluster||index+1)}`,source_kind:'structured-bible-research',date:deepDate(doc,item),stage:item.cluster||String(item.id||`comparison ${index+1}`).replaceAll('-',' '),actor:item.actor||spec.actor||'project-research',
-    project_anchor:projectSide,what_happened:projectSide,project_quote:item.project_quote,jesus_side_summary:deepBiblicalSide(item),jesus_context:deepBiblicalSide(item),biblical_refs:refs,motifs,
-    relation_arguments:argumentsList,weaknesses,discovery_mode:item.discovery_mode||'archive-later',relation_class:deepRelationClass(item),strength:numericStrength(item.strength),
-    source_direction:item.source_direction||(direct?'This structured row preserves its own project-side dating/wording; any additional biblical synthesis not explicit there should still be treated as later analysis.':`This is comparative research from ${doc.updated||'the later archive'}; do not backdate the Bible mapping into earlier Tim/Son material without a primary source.`),
-    understood_then:item.understood_then||(item.discovery_mode&&item.discovery_mode!=='archive-later'?'The owning record preserves project-side material from the stated date; verse-level analysis may still be later.':'The source does not claim Tim/Son held this exact verse-level mapping at the earlier event.'),
-    setting:item.setting||(item.discovery_mode==='conversation-recovery'?'Recovered conversation archaeology / project-side wording.':'Comparative biblical research layer.'),people:extractPeople([projectSide,item.project_quote,...argumentsList].join(' ')),
-    evidence_kind:doc.status||'comparative biblical research',source_refs:unique([spec.path,...asArray(item.owners)])
-   });
-  });
- });
- return rows;
-}
-
-async function loadTimeline(){
- const [base,index]=await Promise.all([safeJSON(PATHS.timeline),safeJSON(PATHS.packs)]),events=[...asArray(base&&base.events)];
- if(index){const packNames=asArray(index.packs).map(item=>typeof item==='string'?item:(item.file||item.path||item.name)).filter(Boolean),packs=await Promise.all(packNames.map(name=>safeJSON('../../data/timeline-event-packs/'+encodeURIComponent(name))));packs.filter(Boolean).forEach(pack=>events.push(...asArray(pack.events)))}
- return events;
-}
-function canonicalEvidenceKind(row,events){if(row.evidence_kind)return row.evidence_kind;const eventKinds=unique(events.map(event=>event.epistemic));if(eventKinds.length)return eventKinds.join(' + ');if(row.discovery_mode==='public-occurrence')return 'public post / recovered compilation';if(row.discovery_mode==='conversation-recovery')return 'recovered conversation';if(row.discovery_mode==='book-explicit')return 'Great Book / project text';if(row.discovery_mode==='tim-explicit')return 'Tim/project explicit wording';if(row.discovery_mode==='archive-later')return 'later archive research';return 'canonical relation record'}
-function canonicalSetting(row,events){if(row.setting)return row.setting;const platforms=unique(events.map(event=>event.platform));if(platforms.length)return platforms.join(' / ');if(row.discovery_mode==='public-occurrence')return 'Public-post corpus; original status URL may remain unresolved.';if(row.discovery_mode==='conversation-recovery')return 'Recovered conversation context.';if(row.discovery_mode==='book-explicit')return 'Great Book / project text.';return 'Project/archive relation record.'}
-function decorateCanonicalRows(rows,eventById,occurrenceById){return rows.map(row=>{const events=asArray(row.timeline_event_ids).map(id=>eventById.get(id)).filter(Boolean),occurrences=asArray(row.occurrence_ids).map(id=>occurrenceById.get(id)).filter(Boolean),people=unique([...asArray(row.people),...extractPeople([relationText(row),...events.map(event=>`${event.title||''} ${event.summary||''} ${event.quote||''}`),...occurrences.map(item=>item.quote||'')].join(' '))]);return {...row,people,evidence_kind:canonicalEvidenceKind(row,events),setting:canonicalSetting(row,events)}})}
-function exactForRow(row,occurrenceById){return {direct:asArray(row.occurrence_ids).map(id=>occurrenceById.get(id)).filter(Boolean)}}
-function exactEvidenceForSearch(row,occurrenceById){const exact=[...asArray(row.project_quote),...asArray(row.tim_quote),...asArray(row.quote)];asArray(row.occurrence_ids).map(id=>occurrenceById.get(id)).filter(Boolean).forEach(item=>exact.push(item.quote));return unique(exact)}
-function rowSearchText(row,context){
- const key=dateKey(row.date||row.timestamp),matchedFragments=fragmentsFor(row,context.fragments),exact=exactEvidenceForSearch(row,context.occurrenceById),sameDate=context.occurrenceByDate.get(key)||[],thoughts=context.thoughtByDate.get(key)||[],theology=context.theologyByDate.get(key)||[],timeline=asArray(row.timeline_context),pairings=asArray(row.prison_pairings),signs=context.signSequence.filter(item=>sharesYear(row.date,item.period));
- return [relationText(row),...exact,...sameDate.map(item=>item.quote),...matchedFragments.map(item=>`${item.reference} ${item.text}`),...thoughts.flatMap(item=>[item.thought_direction,...asArray(item.signals),item.research_question]),...theology.flatMap(item=>[item.stage,...asArray(item.signals),item.interpretation]),...timeline.flatMap(item=>[item.event,item.public_record,item.project_record,item.public_crosscheck,item.significance,item.boundary]),...pairings.flatMap(item=>[item.motif,item.biblical_function,item.project_parallel,item.strength,item.mismatch,item.boundary]),...signs.flatMap(item=>[item.role,...asArray(item.examples),item.interpretive_value])].join(' ').toLowerCase();
-}
-function matchesAll(row,state,ctx,context){if(!viewMatches(row,state.view,ctx))return false;if(state.actor&&row.actor!==state.actor)return false;if(state.person&&!asArray(row.people).includes(state.person))return false;if(state.evidence&&row.evidence_kind!==state.evidence)return false;if(state.mode&&row.discovery_mode!==state.mode)return false;if(state.klass&&row.relation_class!==state.klass)return false;if(state.book&&!relationHasBook(row,state.book))return false;if(Number(row.strength||0)<state.minStrength)return false;const year=rowYear(row);if(state.fromYear&&year&&year<state.fromYear)return false;if(state.toYear&&year&&year>state.toYear)return false;if(state.exactOnly&&!exactEvidenceForSearch(row,context.occurrenceById).length)return false;if(state.query){const terms=state.query.toLowerCase().split(/\s+/).filter(Boolean),hay=rowSearchText(row,context);if(!terms.every(term=>hay.includes(term)))return false}return true}
-function sortRows(rows,order){return [...rows].sort((a,b)=>{const ay=rowYear(a)??9999,by=rowYear(b)??9999,dateCmp=ay-by||String(a.date||'').localeCompare(String(b.date||''));return order==='desc'?-dateCmp:dateCmp})}
 
 async function init(){
- const relationsEl=$('relations'),statsEl=$('study-count'),activeViewEl=$('active-view');
+ const relationsEl=$('relations');
  try{
-  const [field,fragmentData,angelField,angelFragmentData,attestationData,reverseData,occurrenceData,publicBibleIndex,timelineEvents,jesusAtlas,prisonJesus,passionAtlas,signsAtlas,thoughtArchive,publicTheology,wave5,wave10,wave11,wave12,wave13,wave14,wave15,wave16]=await Promise.all([
-   safeJSON(PATHS.field),safeJSON(PATHS.fragments),safeJSON(PATHS.angelField),safeJSON(PATHS.angelFragments),safeJSON(PATHS.attestations),safeJSON(PATHS.reverse),safeJSON(PATHS.occurrences),safeJSON(PATHS.publicBibleIndex),loadTimeline(),safeJSON(PATHS.jesusAtlas),safeJSON(PATHS.prisonJesus),safeJSON(PATHS.passionAtlas),safeJSON(PATHS.signsAtlas),safeJSON(PATHS.thoughtArchive),safeJSON(PATHS.publicTheology),safeJSON(PATHS.wave5),safeJSON(PATHS.wave10),safeJSON(PATHS.wave11),safeJSON(PATHS.wave12),safeJSON(PATHS.wave13),safeJSON(PATHS.wave14),safeJSON(PATHS.wave15),safeJSON(PATHS.wave16)
-  ]);
-  if(!field||!fragmentData)throw new Error('canonical Bible field or passage fragments unavailable');
+  const [field,atlas,fragmentData]=await Promise.all([safeJSON(PATHS.field),safeJSON(PATHS.atlas),safeJSON(PATHS.fragments)]);
+  if(!field||!fragmentData)throw new Error('canonical Bible relation field or passage fragments unavailable');
+  const fieldRows=asArray(field.relations).map(normalizeFieldRow);
+  const atlasRows=[...asArray(atlas&&atlas.overlaps).map(item=>normalizeOverlap(item,atlas.updated)),...asArray(atlas&&atlas.meta_arcs).map(item=>normalizeMetaArc(item,atlas.updated))];
+  const rowMap=new Map();[...fieldRows,...atlasRows].forEach(row=>{if(row&&row.id&&!rowMap.has(row.id))rowMap.set(row.id,row)});
+  const rows=[...rowMap.values()];
+  const fragmentMap=fragmentIndex(fragmentData);
+  const params=new URLSearchParams(location.search);
+  const state={view:Object.prototype.hasOwnProperty.call(VIEW_DEFS,params.get('view'))?params.get('view'):'jesus',arc:'',query:'',operator:'',actor:'',evidence:'',mode:'',klass:'',book:'',minStrength:0,fromYear:0,toYear:0,exactOnly:false,sort:'asc'};
 
-  const fragments=[...asArray(fragmentData.fragments),...asArray(angelFragmentData&&angelFragmentData.fragments)],attestations=asArray(attestationData&&attestationData.entries),reverseEvents=asArray(reverseData&&reverseData.events),occurrences=asArray(occurrenceData&&occurrenceData.occurrences),occurrenceById=new Map(occurrences.map(item=>[item.id,item])),eventById=new Map(timelineEvents.map(item=>[item.id,item]));
-  const canonicalRows=decorateCanonicalRows([...asArray(field.relations),...asArray(angelField&&angelField.relations)],eventById,occurrenceById);
-  const jesusRows=buildJesusRows(jesusAtlas,prisonJesus);
-  const passionRows=buildPassionRows(passionAtlas,prisonJesus);
-  const publicRows=buildPublicOccurrenceRows(publicBibleIndex,occurrenceById,timelineEvents);
-  const deepRows=buildDeepComparisonRows([
-   {key:'wave5',doc:wave5,collection:'items',actor:'tim-shared',path:SOURCE_PATHS.wave5},
-   {key:'wave10',doc:wave10,collection:'items',actor:'tim-shared',path:SOURCE_PATHS.wave10},
-   {key:'wave11',doc:wave11,collection:'clusters',actor:'son-shared',path:SOURCE_PATHS.wave11},
-   {key:'wave12',doc:wave12,collection:'clusters',actor:'tim-shared',path:SOURCE_PATHS.wave12},
-   {key:'wave13',doc:wave13,collection:'clusters',actor:'tim-shared',path:SOURCE_PATHS.wave13},
-   {key:'wave14',doc:wave14,collection:'relations',actor:'tim-shared',path:SOURCE_PATHS.wave14},
-   {key:'wave15',doc:wave15,collection:'relations',actor:'tim-shared',path:SOURCE_PATHS.wave15},
-   {key:'wave16',doc:wave16,collection:'relations',actor:'project-research',path:SOURCE_PATHS.wave16}
-  ]);
-  const rowMap=new Map();[...canonicalRows,...jesusRows,...passionRows,...publicRows,...deepRows].forEach(row=>{if(row&&row.id&&!rowMap.has(row.id))rowMap.set(row.id,row)});const rows=[...rowMap.values()];
-
-  const relationClassLabels=new Map(asArray(field.relation_classes).map(item=>[item.id,item.meaning||item.id])),discoveryLabels=new Map(asArray(field.discovery_modes).map(item=>[item.id,item.label||item.id])),occurrenceByDate=groupByDate(occurrences,item=>item.date),attestationByDate=groupByDate(attestations,item=>item.date||item.datetime_utc),reverseByDate=groupByDate(reverseEvents,item=>item.date),timelineByDate=groupByDate(timelineEvents,item=>item.date||item.timestamp),thoughtByDate=groupByDate(asArray(thoughtArchive&&thoughtArchive.entries),item=>item.date),theologyByDate=groupByDate(asArray(publicTheology&&publicTheology.trajectory),item=>item.date),signSequence=asArray(signsAtlas&&signsAtlas.developmental_sign_sequence);
-  const context={fragments,occurrenceById,occurrenceByDate,attestationByDate,reverseByDate,timelineByDate,thoughtByDate,theologyByDate,signSequence,eventById,relationClassLabels,discoveryLabels},ctx={exactFor:row=>exactForRow(row,occurrenceById)},params=new URLSearchParams(location.search),state={view:validView(params.get('view')),query:'',actor:'',person:'',evidence:'',mode:'',klass:'',book:'',minStrength:0,fromYear:0,toYear:0,exactOnly:false,sort:'asc',focusedId:params.get('relation')||null};
-
-  populateSelect($('actor'),unique(rows.map(row=>row.actor)).sort());
-  populateSelect($('context-person'),unique(rows.flatMap(row=>asArray(row.people))).sort());
-  populateSelect($('evidence-kind'),unique(rows.map(row=>row.evidence_kind)).sort());
-  populateSelect($('discovery-mode'),unique(rows.map(row=>row.discovery_mode)).sort(),value=>discoveryLabels.get(value)||value);
-  populateSelect($('relation-class'),unique(rows.map(row=>row.relation_class)).sort(),value=>value.replaceAll('-',' '));
-  populateSelect($('bible-book'),unique(rows.flatMap(row=>asArray(row.biblical_refs).map(bookFromRef))).sort());
+  const populate=(id,values,label=x=>x)=>{const el=$(id);if(!el)return;unique(values).filter(Boolean).sort().forEach(value=>{const option=document.createElement('option');option.value=value;option.textContent=label(value);el.appendChild(option)});};
+  populate('operator',rows.flatMap(row=>asArray(row.operators)));
+  populate('actor',rows.map(row=>row.actor));
+  populate('evidence-kind',rows.map(row=>row.evidence_kind));
+  populate('discovery-mode',rows.map(row=>row.discovery_mode),x=>String(x).replaceAll('-',' '));
+  populate('relation-class',rows.map(row=>row.relation_class),x=>String(x).replaceAll('-',' '));
+  populate('bible-book',rows.flatMap(row=>asArray(row.biblical_refs).map(bookFromRef)));
   $('minimum-strength').innerHTML='<option value="0">Any strength</option>'+[1,2,3,4,5].map(n=>`<option value="${n}">${n}+</option>`).join('');
-  $('roll-relation').textContent=ROLL_LABEL;
 
-  const render=()=>{
-   const filtered=sortRows(rows.filter(row=>matchesAll(row,state,ctx,context)),state.sort);
-   activeViewEl.textContent=(VIEW_DEFS[state.view]||VIEW_DEFS.jesus).label;
-   statsEl.textContent=`${filtered.length} of ${rows.length} comparisons`;
-   updateViewButtons(state.view);
-   relationsEl.innerHTML=filtered.length?filtered.map(row=>renderRelation(row,{...context,state})).join(''):'<div class="empty">No comparisons match this study state.</div>';
-   if(state.focusedId)requestAnimationFrame(()=>focusRelation(state.focusedId,false));
+  const filteredRows=()=>rows.filter(row=>{
+   if(!matchesView(row,state.view)||!matchesArc(row,state.arc))return false;
+   if(state.operator&&!asArray(row.operators).includes(state.operator))return false;
+   if(state.actor&&row.actor!==state.actor)return false;
+   if(state.evidence&&row.evidence_kind!==state.evidence)return false;
+   if(state.mode&&row.discovery_mode!==state.mode)return false;
+   if(state.klass&&row.relation_class!==state.klass)return false;
+   if(state.book&&!asArray(row.biblical_refs).some(ref=>bookFromRef(ref)===state.book))return false;
+   if(Number(row.strength||0)<state.minStrength)return false;
+   const year=firstYear(row.date);
+   if(state.fromYear&&year&&year<state.fromYear)return false;
+   if(state.toYear&&year&&year>state.toYear)return false;
+   if(state.exactOnly&&!exactAvailable(row))return false;
+   if(state.query){const terms=state.query.toLowerCase().split(/\s+/).filter(Boolean),hay=rowText(row);if(!terms.every(term=>hay.includes(term)))return false;}
+   return true;
+  });
+  const sortedRows=()=>{
+   const filtered=filteredRows();
+   if(state.sort==='strength')return [...filtered].sort((a,b)=>(Number(b.strength)||0)-(Number(a.strength)||0));
+   return [...filtered].sort((a,b)=>{const ay=firstYear(a.date)??9999,by=firstYear(b.date)??9999;return state.sort==='desc'?by-ay:ay-by});
   };
+  const render=()=>{
+   const visible=sortedRows();
+   $('active-view').textContent=(VIEW_DEFS[state.view]||VIEW_DEFS.jesus).label+(state.arc?` · ${state.arc.replaceAll('-',' ')}`:'');
+   $('study-count').textContent=`${visible.length} of ${rows.length} canonical comparisons`;
+   document.querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===state.view)));
+   document.querySelectorAll('[data-arc]').forEach(button=>button.classList.toggle('is-active',button.dataset.arc===state.arc));
+   relationsEl.innerHTML=visible.length?visible.map(row=>renderRelation(row,fragmentMap)).join(''):'<div class="empty">No canonical comparisons match this study state. Clear a filter or choose another arc.</div>';
+  };
+  const shuffle=()=>{const visible=sortedRows();if(!visible.length)return;const row=visible[Math.floor(Math.random()*visible.length)];const element=$(`relation-${row.id}`);if(element){element.classList.add('is-focus');element.scrollIntoView({behavior:'smooth',block:'start'});setTimeout(()=>element.classList.remove('is-focus'),1800)}};
+  const reset=()=>{state.arc='';state.query='';state.operator='';state.actor='';state.evidence='';state.mode='';state.klass='';state.book='';state.minStrength=0;state.fromYear=0;state.toYear=0;state.exactOnly=false;state.sort='asc';['search','from-year','to-year'].forEach(id=>{if($(id))$(id).value=''});['operator','actor','evidence-kind','discovery-mode','relation-class','bible-book','minimum-strength','sort-order'].forEach(id=>{if($(id))$(id).selectedIndex=0});$('exact-wording-only').checked=false;render();};
 
   $('search').addEventListener('input',event=>{state.query=event.target.value.trim();render()});
   $('clear-search').addEventListener('click',()=>{$('search').value='';state.query='';render()});
+  $('operator').addEventListener('change',event=>{state.operator=event.target.value;render()});
   $('actor').addEventListener('change',event=>{state.actor=event.target.value;render()});
-  $('context-person').addEventListener('change',event=>{state.person=event.target.value;render()});
   $('evidence-kind').addEventListener('change',event=>{state.evidence=event.target.value;render()});
   $('discovery-mode').addEventListener('change',event=>{state.mode=event.target.value;render()});
   $('relation-class').addEventListener('change',event=>{state.klass=event.target.value;render()});
   $('bible-book').addEventListener('change',event=>{state.book=event.target.value;render()});
   $('minimum-strength').addEventListener('change',event=>{state.minStrength=Number(event.target.value)||0;render()});
+  $('sort-order').addEventListener('change',event=>{state.sort=event.target.value;render()});
   $('from-year').addEventListener('input',event=>{state.fromYear=Number(event.target.value)||0;render()});
   $('to-year').addEventListener('input',event=>{state.toYear=Number(event.target.value)||0;render()});
-  $('sort-order').addEventListener('change',event=>{state.sort=event.target.value;render()});
   $('exact-wording-only').addEventListener('change',event=>{state.exactOnly=event.target.checked;render()});
-  $('reset-filters').addEventListener('click',()=>{resetFilters(state);syncFilterControls(state);render()});
+  $('reset-filters').addEventListener('click',reset);
   $('filter-toggle').addEventListener('click',()=>{const panel=$('bible-filters');panel.hidden=!panel.hidden;$('filter-toggle').setAttribute('aria-expanded',String(!panel.hidden))});
-  $('study-modes').querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{state.view=validView(button.dataset.view);state.focusedId=null;setViewParam(state.view);setRelationParam(null);render()}));
-  $('roll-relation').addEventListener('click',()=>{const filtered=rows.filter(row=>matchesAll(row,state,ctx,context));if(!filtered.length)return;const chosen=filtered[Math.floor(Math.random()*filtered.length)];state.focusedId=chosen.id;setRelationParam(chosen.id);render();requestAnimationFrame(()=>focusRelation(chosen.id,true))});
-  relationsEl.addEventListener('click',event=>{const button=event.target.closest('[data-focus-relation]');if(!button)return;state.focusedId=button.dataset.focusRelation;setRelationParam(state.focusedId);focusRelation(state.focusedId,true)});
-  syncFilterControls(state);render();
- }catch(error){console.error(error);statsEl.textContent='Bible study data unavailable';relationsEl.innerHTML='<div class="empty load-error">The comparison program could not load its canonical data.</div>'}
+  $('open-filters').addEventListener('click',()=>{const panel=$('bible-filters');panel.hidden=false;$('filter-toggle').setAttribute('aria-expanded','true');panel.scrollIntoView({behavior:'smooth',block:'nearest'})});
+  $('study-modes').querySelectorAll('[data-view]').forEach(button=>button.addEventListener('click',()=>{state.view=button.dataset.view;state.arc='';render()}));
+  document.querySelectorAll('[data-arc]').forEach(button=>button.addEventListener('click',()=>{state.arc=state.arc===button.dataset.arc?'':button.dataset.arc;state.view='all';render();relationsEl.scrollIntoView({behavior:'smooth',block:'start'})}));
+  $('roll-relation').addEventListener('click',shuffle);
+  $('shuffle-comparisons').addEventListener('click',shuffle);
+  render();
+ }catch(error){console.error(error);relationsEl.innerHTML='<div class="empty load-error">The comparison engine could not load its canonical data. The static build remains the fallback; reload or return to Religion.</div>';}
 }
 
-function setViewParam(view){const url=new URL(location.href);if(view==='jesus')url.searchParams.delete('view');else url.searchParams.set('view',view);history.replaceState({},'',url)}
-function setRelationParam(id){const url=new URL(location.href);if(id)url.searchParams.set('relation',id);else url.searchParams.delete('relation');history.replaceState({},'',url)}
-function updateViewButtons(view){$('study-modes').querySelectorAll('[data-view]').forEach(button=>button.setAttribute('aria-pressed',String(button.dataset.view===view)))}
-function resetFilters(state){state.query='';state.actor='';state.person='';state.evidence='';state.mode='';state.klass='';state.book='';state.minStrength=0;state.fromYear=0;state.toYear=0;state.exactOnly=false;state.sort='asc';state.focusedId=null;$('search').value='';setRelationParam(null)}
-function syncFilterControls(state){$('actor').value=state.actor;$('context-person').value=state.person;$('evidence-kind').value=state.evidence;$('discovery-mode').value=state.mode;$('relation-class').value=state.klass;$('bible-book').value=state.book;$('minimum-strength').value=String(state.minStrength);$('from-year').value=state.fromYear||'';$('to-year').value=state.toYear||'';$('sort-order').value=state.sort;$('exact-wording-only').checked=state.exactOnly}
-
-function renderRelation(row,context){
- const key=dateKey(row.date||row.timestamp),matchedFragments=fragmentsFor(row,context.fragments),exactQuotes=exactEvidenceForSearch(row,context.occurrenceById),directOccurrenceIds=asArray(row.occurrence_ids),sameDateOccurrences=context.occurrenceByDate.get(key)||[],sameDateContext=sameDateOccurrences.filter(item=>!directOccurrenceIds.includes(item.id)),attestations=context.attestationByDate.get(key)||[],reversals=context.reverseByDate.get(key)||[],thoughts=context.thoughtByDate.get(key)||[],theology=context.theologyByDate.get(key)||[],explicitEventIds=asArray(row.timeline_event_ids),explicitEvents=explicitEventIds.map(id=>context.eventById.get(id)).filter(Boolean),sameDateEvents=(context.timelineByDate.get(key)||[]).filter(event=>!explicitEventIds.includes(event.id)),relationMeaning=context.relationClassLabels.get(row.relation_class)||row.relation_class||'',discoveryMeaning=context.discoveryLabels.get(row.discovery_mode)||row.discovery_mode||'',title=row.stage||row.title||row.project_anchor||row.id,projectBody=row.what_happened||row.project_anchor||'No project-side summary is attached.',exactChip=exactQuotes.length?' <span class="chip exact">exact wording</span>':'';
- const projectSide=`<section class="side"><h3>Tim / Son / project</h3><span class="summary-label">What happened / what was said</span><p class="project-anchor">${esc(projectBody)}</p>${row.project_anchor&&row.what_happened&&row.project_anchor!==row.what_happened?`<p class="anchor-note"><strong>Relation anchor:</strong> ${esc(row.project_anchor)}</p>`:''}${exactQuotes.map(quote=>`<blockquote class="exact-quote">${esc(quote)}<span class="quote-meta">Exact / recovered wording explicitly attached to this comparison</span></blockquote>`).join('')}</section>`;
- const scriptureFunctions=unique(asArray(row.prison_pairings).map(pairing=>pairing.biblical_function));
- const scriptureSide=`<section class="side scripture"><h3>Bible / Jesus</h3>${row.jesus_side_summary?`<p class="jesus-side-summary">${esc(row.jesus_side_summary)}</p>`:''}${matchedFragments.length?matchedFragments.map(fragment=>`<blockquote class="bible-quote">${esc(fragment.text)}<cite>${esc(fragment.reference)} · ${esc(fragment.translation||'WEB')}</cite></blockquote>`).join(''):`<p class="no-fragment">${asArray(row.biblical_refs).length?'The comparison points to the biblical scope below; no short public-domain fragment is registered for this exact scope.':'This row is contextual and does not claim a single proof-text.'}</p>`}${scriptureFunctions.length?`<div class="jesus-context"><span class="summary-label">Jesus / biblical function</span>${scriptureFunctions.map(text=>`<p>${esc(text)}</p>`).join('')}</div>`:''}</section>`;
- const peopleSettingHtml=renderPeopleSetting(row,explicitEvents,sameDateEvents),timingHtml=`<section class="context-card"><h4>At the time / discovered later</h4><p>${esc(row.source_direction||'The loaded source does not specify direction; treat the comparison as unclassified rather than assuming foreknowledge.')}</p></section>`,thoughtHtml=renderThoughtContext(row,thoughts,theology),argumentsHtml=renderArguments(row,exactQuotes),timelineContextHtml=renderTimelineContext(row),signHtml=renderSignContext(row,context.signSequence),sameDateHtml=sameDateContext.length?`<section class="context-card exact-context full"><h4>Same-date public wording</h4><p class="circumstantial">Circumstantial context only: exact public occurrences from the same date are not silently treated as direct proof of this comparison.</p>${sameDateContext.slice(0,10).map(item=>`<blockquote>${esc(item.quote)}<span class="quote-meta">${esc(item.id)} · ${esc((item.tags||[]).join(' · '))}</span></blockquote>`).join('')}</section>`:'',attestationHtml=attestations.length?`<section class="context-card full"><h4>Biblical vocabulary / revelation context</h4>${attestations.slice(0,10).map(item=>{const wording=wordingForAttestation(item);return `${wording.map(text=>`<blockquote>${esc(text)}</blockquote>`).join('')}${item.development?`<p>${esc(item.development)}</p>`:''}${item.source_class?`<p class="circumstantial">Source class: ${esc(item.source_class)}</p>`:''}`}).join('')}</section>`:'',reverseHtml=reversals.length?`<section class="context-card reverse"><h4>Reverse timeline / later recognition</h4>${reversals.slice(0,7).map(item=>`<p><strong>${esc(item.status||'tim-first timeline')}</strong> ${esc(item.significance||item.finding||'')}</p>`).join('')}</section>`:'',prophecyHtml=row.prophecy_status?`<section class="context-card"><h4>Prophecy / foresight status</h4><p>${esc(row.prophecy_status.replaceAll('-',' '))}</p>${row.prediction_date?`<p>Prediction: ${esc(row.prediction_date)}</p>`:''}${row.target_event_date?`<p>Target event: ${esc(row.target_event_date)}</p>`:''}</section>`:'',ownerHtml=renderOwners(row),timelineHtml=renderTimelineLinks(explicitEvents,sameDateEvents);
- return `<article class="relation${context.state.focusedId===row.id?' is-focus':''}" id="rel-${esc(row.id)}"><div class="relation-head"><div><h2 class="relation-title">${esc(title)}</h2><div class="relation-meta"><span class="chip">${esc(row.date||row.timestamp||'undated')}</span><span class="chip">${esc(row.actor||'unassigned')}</span><span class="chip">${esc(row.discovery_mode||'unclassified')}</span><span class="chip">${esc(row.relation_class||'unclassified')}</span><span class="chip strength">strength ${esc(row.strength||'?')}</span>${exactChip}</div></div><code class="relation-id">${esc(row.id)}</code></div><div class="parallel">${projectSide}${scriptureSide}</div><p class="scope"><strong>Scripture scope:</strong> ${asArray(row.biblical_refs).map(esc).join(' · ')||'broader Jesus/Bible context'}</p><p class="motifs"><strong>Motifs:</strong> ${asArray(row.motifs).map(esc).join(' · ')||'—'}</p><div class="circumstance-grid">${peopleSettingHtml}${timingHtml}${thoughtHtml}</div>${argumentsHtml}<div class="context-grid"><section class="context-card"><h4>How this relation is classified</h4><p><strong>${esc((row.relation_class||'relation').replaceAll('-',' '))}</strong> — ${esc(relationMeaning)}</p><p><strong>${esc(row.discovery_mode||'unknown discovery mode')}</strong> — ${esc(discoveryMeaning)}</p><p class="circumstantial">Evidence: ${esc(row.evidence_kind||'unclassified')}</p></section>${prophecyHtml}${reverseHtml}${timelineContextHtml}${signHtml}${sameDateHtml}${attestationHtml}${timelineHtml}${ownerHtml}</div><div class="card-actions"><button type="button" data-focus-relation="${esc(row.id)}">Focus this comparison</button></div></article>`;
-}
-
-function renderPeopleSetting(row,explicitEvents,sameDateEvents){const platforms=unique([...explicitEvents,...sameDateEvents].map(event=>event.platform)),people=asArray(row.people);return `<section class="context-card people-setting"><h4>People / setting</h4><p><strong>People / groups in the loaded project-side record:</strong> ${people.length?people.map(esc).join(' · '):'No named addressee or companion is documented in the structured source currently loaded for this row.'}</p><p><strong>Setting:</strong> ${esc(row.setting||'Not specified in the structured relation record.')}</p>${platforms.length?`<p><strong>Platform:</strong> ${platforms.map(esc).join(' · ')}</p>`:''}</section>`}
-function renderThoughtContext(row,thoughts,theology){const parts=[];if(row.understood_then)parts.push(`<p>${esc(row.understood_then)}</p>`);thoughts.forEach(item=>parts.push(`<p><strong>Thought archive:</strong> ${esc(item.thought_direction||'')}</p>${asArray(item.signals).length?`<p class="circumstantial">Signals: ${asArray(item.signals).map(esc).join(' · ')}</p>`:''}`));theology.forEach(item=>parts.push(`<p><strong>${esc(item.stage||'Public theology')}:</strong> ${esc(item.interpretation||'')}</p>${asArray(item.signals).length?`<p class="circumstantial">Signals: ${asArray(item.signals).map(esc).join(' · ')}</p>`:''}`));if(!parts.length)parts.push('<p>The loaded sources do not preserve a first-person explanation of what Tim/Son thought at that moment. The comparator leaves that blank rather than inventing motive.</p>');return `<section class="context-card"><h4>What Tim / Son understood then</h4>${parts.join('')}</section>`}
-function renderArguments(row,exactQuotes){const pairings=asArray(row.prison_pairings),argumentsList=unique([...asArray(row.relation_arguments),...pairings.map(pairing=>pairing.project_parallel)]),weaknesses=unique([...asArray(row.weaknesses),row.counter_text,row.source_correction,...pairings.flatMap(pairing=>[pairing.mismatch,pairing.boundary])]),strengths=unique([...pairings.map(pairing=>pairing.strength),exactQuotes.length?'Exact/recovered project wording is attached directly to this comparison.':'',['explicit-at-time','mixed-explicit-and-later'].includes(row.relation_class)?'Some relevant biblical/Christian language is present in the project-side stratum rather than being entirely introduced by later archive research.':'',asArray(row.biblical_refs).length>2?'The comparison is distributed across multiple biblical references rather than resting on one isolated keyword.':'']);return `<div class="argument-grid"><section class="context-card argument-card"><h4>Why this parallels Jesus / scripture</h4>${argumentsList.length?`<ul>${argumentsList.map(item=>`<li>${esc(item)}</li>`).join('')}</ul>`:'<p>No further argument is attached beyond the owning relation record; the comparator does not invent one.</p>'}</section><section class="context-card argument-card"><h4>What strengthens the comparison</h4>${strengths.length?`<ul>${strengths.map(item=>`<li>${esc(item)}</li>`).join('')}</ul>`:'<p>No additional strengthening factor is asserted by the loaded source.</p>'}</section><section class="context-card boundary argument-card"><h4>What weakens the comparison</h4>${weaknesses.length?`<ul>${weaknesses.map(item=>`<li>${esc(item)}</li>`).join('')}</ul>`:'<p>No specific mismatch is attached to this row. Absence of a recorded mismatch is not proof of equivalence.</p>'}</section></div>`}
-function renderTimelineContext(row){const entries=asArray(row.timeline_context);if(!entries.length)return '';return `<section class="context-card full"><h4>Circumstances from the owning timeline</h4>${entries.map(item=>`<div class="timeline-record"><p><strong>${esc(item.period||'')} · ${esc(item.event||'')}</strong></p>${item.public_record?`<p><span class="record-label">Public record</span>${esc(item.public_record)}</p>`:''}${item.project_record?`<p><span class="record-label">Project record</span>${esc(item.project_record)}</p>`:''}${item.public_crosscheck?`<p><span class="record-label">Public cross-check</span>${esc(item.public_crosscheck)}</p>`:''}${item.significance?`<p><span class="record-label">Significance</span>${esc(item.significance)}</p>`:''}${item.evidence_class?`<p class="circumstantial">Evidence class: ${esc(item.evidence_class)}</p>`:''}${item.boundary?`<p class="circumstantial">Boundary: ${esc(item.boundary)}</p>`:''}</div>`).join('')}</section>`}
-function renderSignContext(row,signSequence){const matched=asArray(signSequence).filter(item=>sharesYear(row.date,item.period));if(!matched.length)return '';return `<section class="context-card sign-context full"><h4>Revelation / epiphany context</h4><p class="circumstantial">Chronological context from the existing discernment atlas. Matching period does not make this context independent proof of the relation.</p>${matched.map(item=>`<div class="timeline-record"><p><strong>${esc(item.period||'')} · ${esc(item.role||'')}</strong></p>${asArray(item.examples).length?`<p>${asArray(item.examples).map(esc).join(' · ')}</p>`:''}${item.interpretive_value?`<p><span class="record-label">Interpretive value</span>${esc(item.interpretive_value)}</p>`:''}</div>`).join('')}<p class="circumstantial">Source: ${esc(SOURCE_PATHS.signsAtlas)}</p></section>`}
-function renderOwners(row){const owners=unique([...asArray(row.analysis_refs),...asArray(row.source_refs),...asArray(row.owners)]);if(!owners.length)return '';return `<section class="context-card sources full"><h4>Deeper records / source owners</h4><div class="owner-links">${owners.map(owner=>`<a href="${esc(ownerHref(owner))}"><code>${esc(owner)}</code></a>`).join('')}</div></section>`}
-function renderTimelineLinks(explicitEvents,sameDateEvents){const all=[...explicitEvents.slice(0,8),...sameDateEvents.slice(0,10)];if(!all.length)return '';return `<section class="context-card full"><h4>Timeline</h4>${explicitEvents.length?'<p class="circumstantial">Explicitly linked timeline event(s) first.</p>':'<p class="circumstantial">Same-date timeline context. This is timeline, not automatic proof of the biblical relation.</p>'}<div class="timeline-links">${all.map(event=>`<a class="event-link" href="../../timeline/?view=bible&event=${encodeURIComponent(event.id)}">${esc(event.date||'')} · ${esc(event.title||event.id)}</a>`).join('')}</div></section>`}
-function focusRelation(id,scroll){document.querySelectorAll('.relation.is-focus').forEach(el=>el.classList.remove('is-focus'));const el=$('rel-'+id);if(!el)return;el.classList.add('is-focus');if(scroll)el.scrollIntoView({behavior:'smooth',block:'start'})}
-
-document.addEventListener('DOMContentLoaded',init);
+document.readyState==='loading'?document.addEventListener('DOMContentLoaded',init):init();
 })();
