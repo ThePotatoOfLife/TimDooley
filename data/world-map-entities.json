@@ -1,0 +1,34 @@
+{
+  "version":"1.1.0",
+  "updated":"2026-09-12",
+  "purpose":"First-class non-sovereign entities that need full World Map identity/runtime behavior without changing the canonical 195 sovereign-country model.",
+  "entities":{
+    "GRL":{
+      "id":"greenland",
+      "iso3":"GRL",
+      "name":"Greenland",
+      "entity_type":"self-governing-territory",
+      "canonical_country":false,
+      "sovereignty_context":"Kingdom of Denmark",
+      "constitutional_parent":"DNK",
+      "capital":"Nuuk",
+      "render_status":"current",
+      "label_anchor":{"coordinates":[-51.7216,64.1835],"kind":"display-anchor","place":"Nuuk","note":"Display anchor for the map label; not a population centroid."},
+      "population":{"value":56740,"reference_date":"2026-01-01","source":"Statistics Greenland","source_url":"https://stat.gl/publ/en/BE/202601/contents/Population%20estimates.htm"},
+      "axis_profile":{"status":"classified","orientations":[{"axis":"north","role":"primary","basis":"explicit-tim","confidence":"high","note":"Greenland is an explicit anchor in the recovered Canada–Greenland–North Atlantic North formulation; this is project interpretation, not a sovereignty claim."}]},
+      "relationships":[{"target":"DNK","type":"constitutional","status":"current","note":"Greenland is a self-governing part of the Kingdom of Denmark."}]
+    },
+    "FRO":{
+      "id":"faroe-islands",
+      "iso3":"FRO",
+      "name":"Faroe Islands",
+      "entity_type":"self-governing-territory",
+      "canonical_country":false,
+      "sovereignty_context":"Kingdom of Denmark",
+      "constitutional_parent":"DNK",
+      "capital":"Tórshavn",
+      "render_status":"pending-geometry",
+      "note":"Entity semantics are registered now; the current World Map geometry source does not need to fabricate a polygon to represent it."
+    }
+  }
+}

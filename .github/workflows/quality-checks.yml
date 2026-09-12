@@ -97,6 +97,9 @@ jobs:
       - name: Validate World Map functional chain explorer
         run: python scripts/validate_world_map_chain_explorer.py
 
+      - name: Validate World Map entity and Africa repair
+        run: python scripts/validate_world_map_entity_africa_repair.py
+
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
 
