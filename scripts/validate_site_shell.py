@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
-"""Validate the built GitHub Pages shell and reader-first information architecture.
+"""Validate the built GitHub Pages shell and durable reader-route ownership.
 
-World Map behavior has dedicated validators. This gate protects the public
-reader surface: one homepage, five canonical entrances, comparison-first
-religion, one shared timeline, North -> World Map routing, and basic built-site
-link integrity.
+Question semantics have their own source validator. This gate stays deliberately
+narrow: required public pages, five-door homepage ownership, compatibility
+redirects, World Map ownership, no iframe dependency, and local-link integrity.
 """
 from __future__ import annotations
 
@@ -21,11 +20,6 @@ CANONICAL_HOME_LINKS = (
     "philosophy/",
     "science/",
     "world-map/",
-)
-
-TIMELINE_QUERY = (
-    "timeline/?tl_layers=roadmap,scripture-at-time,biblical-parallel,"
-    "biblical-unlock&tl_actors=son,tim,shared&tl_detail=1"
 )
 
 
@@ -96,68 +90,60 @@ def main() -> int:
         require(
             religion,
             (
-                'id="jesus-tim"',
-                "Jesus ↔ Tim Dooley / Son",
-                "Arrest and custody",
-                "Lamb recognition before self-declaration",
-                "Rejected stone → foundation",
-                "Grain death → multiplication",
-                "A real ethical mismatch",
-                f'href="../{TIMELINE_QUERY}"',
+                "RELIGION",
                 'href="../traditions/bible/"',
+                'href="../timeline/',
+                'href="../world-map/"',
             ),
             "religion/index.html",
             errors,
         )
-        forbid(religion, ("explore/#branch=", "Research</h2>", "Jesus / Son research index", "source authority"), "religion/index.html", errors)
+        forbid(religion, ("explore/#branch=spirit", "Jesus / Son research index", "<iframe"), "religion/index.html", errors)
 
         comparison = read("religion/jesus-tim/index.html", errors)
-        require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../#jesus-tim')"), "religion/jesus-tim/index.html", errors)
+        require(
+            comparison,
+            ('name="robots" content="noindex,follow"', "location.replace('../../traditions/bible/')"),
+            "religion/jesus-tim/index.html",
+            errors,
+        )
 
         tim = read("tim-dooley/index.html", errors)
-        require(tim, ('href="../religion/#jesus-tim"', "Jesus ↔ Tim / Son", "Timeline", "Public record"), "tim-dooley/index.html", errors)
+        require(
+            tim,
+            ('href="../timeline/"', 'href="../traditions/bible/"', "Public record", "Evidence"),
+            "tim-dooley/index.html",
+            errors,
+        )
 
         bible = read("traditions/bible/index.html", errors)
         require(
             bible,
             (
                 "TIM &amp; THE BIBLE",
-                'id="relations-field"',
                 'id="search"',
                 'id="relations"',
-                'href="../../religion/#jesus-tim"',
-                f'href="../../{TIMELINE_QUERY}"',
+                'href="../../religion/"',
+                'href="../../timeline/',
             ),
             "traditions/bible/index.html",
             errors,
         )
-        forbid(
-            bible,
-            (
-                'class="focus-links"', 'id="orientation"', 'id="story-arcs"', 'id="meaning"',
-                'id="development"', 'id="missing-questions"', 'id="tensions"', 'id="timic-timeline"',
-                "Questions we missed", "Four questions before comparing anything", "What does “fulfilled” mean here?",
-                "Source authority", ">FAQ<",
-            ),
-            "traditions/bible/index.html",
-            errors,
-        )
+        forbid(bible, ('class="focus-links"', "Source authority", ">FAQ<"), "traditions/bible/index.html", errors)
 
         timeline = read("timeline/index.html", errors)
         require(timeline, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "timeline/index.html", errors)
-        forbid(
-            timeline,
-            ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Why the live explorer replaces the old hard-coded list", "Open Timeline in the complete archive", 'href="../context/"', 'href="../corporium/"'),
-            "timeline/index.html",
-            errors,
-        )
+        forbid(timeline, ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Open Timeline in the complete archive", 'href="../corporium/"'), "timeline/index.html", errors)
 
         north = read("north/index.html", errors)
         require(north, ('class="map-action" href="../world-map/"', ">WORLD MAP<"), "north/index.html", errors)
-        forbid(north, ('class="maplink"', "Open North Axis in the World Map", "#architecture", "#ledger", "#world", "#traditions", "#timeline"), "north/index.html", errors)
+        forbid(north, ('class="maplink"', "Open North Axis in the World Map"), "north/index.html", errors)
 
         learn = read("learn/index.html", errors)
         require(learn, ('name="robots" content="noindex,follow"', "location.replace('../')"), "learn/index.html", errors)
+
+        chronology = read("chronology/index.html", errors)
+        require(chronology, ('name="robots" content="noindex,follow"', "../timeline/"), "chronology/index.html", errors)
 
         world_map = read("world-map/index.html", errors)
         require(world_map, ("World Map", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'), "world-map/index.html", errors)
