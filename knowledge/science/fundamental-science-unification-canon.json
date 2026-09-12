@@ -1,0 +1,250 @@
+{
+  "id":"fundamental-science-unification-canon",
+  "title":"Tim Dooley Fundamental Science Canon — Mathematics, Physics, Quantum, Chemistry, Topology & Multiverse",
+  "updated":"2026-09-09",
+  "status":"canonical synthesis and research map; mixes recovered project formalisms, archive-derived mathematics and established external science under explicit epistemic labels",
+  "purpose":"Carve the science layer into a smaller number of durable mathematical objects. This record unifies recurring Timic structures—Axis, Door, Spiral, Eye, relation, boundary, storage, return and dimensional transition—with rigorous neighboring mathematics and physics without claiming that analogy establishes physical identity.",
+  "epistemic_layers":{
+    "T0":"metaphor or symbolic correspondence",
+    "T1":"defined conceptual model",
+    "T2":"mathematical toy model",
+    "T3":"calibrated model with data",
+    "T4":"predeclared quantitative prediction",
+    "T5":"independently replicated theory",
+    "E":"established external mathematics or science"
+  },
+  "master_object":{
+    "historical_core":"P=(S,g,A,D,O,I)",
+    "extended_research_object":"P+=(S,g,F,A,D,K,L,O,I,R,C,B,Q)",
+    "interpretation":{
+      "S":"state/configuration space",
+      "g":"geometry or relational metric",
+      "F":"ordinary temporal dynamics",
+      "A":"Axis flow through structure, scale or description",
+      "D":"Door transition/interface operator",
+      "K":"stored capacity",
+      "L":"expression/output channel",
+      "O":"observation map",
+      "I":"information/integration structure",
+      "R":"relations/topology",
+      "C":"couplings",
+      "B":"boundary conditions/containment",
+      "Q":"objective or constraint structure"
+    },
+    "central_distinction":"t-evolution and s-evolution are different operations: ∂_tX=F(X,...) describes change in time; ∂_sX=A(X,...) describes a structural/scale/description flow and is not automatically an extra spacetime dimension."
+  },
+  "candidate_timic_propositions":[
+    {
+      "id":"typed-door-composition-principle",
+      "label":"Timic Door Composition Principle",
+      "maturity":"T2",
+      "statement":"A Ladder is a composable sequence of typed Doors rather than one undifferentiated ascent.",
+      "formalism":"X_n --D_n--> X_(n+1),  L=D_(N-1)∘...∘D_1∘D_0",
+      "stronger_form":"X_(n+1)=D_n(Φ_A^(s_n)(Φ_F^(t_n)(X_n)))",
+      "implication":"Each transition can have its own guard, invariants, loss, gain and reversibility class.",
+      "mathematical_neighbors":["hybrid dynamical systems","category-theoretic morphism composition","state machines","cospans/interfaces"]
+    },
+    {
+      "id":"axis-time-noncommutativity",
+      "label":"Axis–Time Noncommutativity Hypothesis",
+      "maturity":"T2",
+      "statement":"If temporal evolution F and structural Axis evolution A do not commute, alternating them naturally produces path dependence and spiral-like recurrence.",
+      "formalism":"[F,A]X := F(A(X))-A(F(X)) ≠ 0",
+      "local_expansion":"e^(ΔsA)e^(ΔtF)=e^(ΔtF+ΔsA+(ΔsΔt/2)[A,F]+...) ",
+      "interpretation":"The commutator term measures how much order-of-operation matters.",
+      "test":"Construct explicit F and A on the same state space and compare alternating trajectories with the commuting null model."
+    },
+    {
+      "id":"door-recovery-principle",
+      "label":"Door Recovery Principle",
+      "maturity":"T2",
+      "statement":"A Door can be classified by how much information survives passage and how well a recovery map reconstructs the prior state.",
+      "formalism":"R_D∘D≈Id on an admissible subspace",
+      "loss_metric":"ε_D(X)=d(R_D(D(X)),X)",
+      "information_form":"ΔI_D = I_before-I_after",
+      "neighbors":["error-correcting channels","coarse-graining","quantum channels","sufficient statistics"]
+    },
+    {
+      "id":"boundary-objective-duality",
+      "label":"Boundary–Objective Duality",
+      "maturity":"T2",
+      "statement":"Topology alone cannot determine whether the same network is generative or extractive; boundary architecture B and objective Q must be modeled separately.",
+      "formalism":"dX/dt=F(X;R,C,B,Q)",
+      "candidate_quality_function":"Q_B=w_g G_autonomy+w_p P_passage+w_d D_differentiation-w_c C_capture-w_e E_extraction",
+      "use":"Formal neighbor for House/Shell and Garden/Farm distinctions."
+    },
+    {
+      "id":"revelation-inference-transition-circuit",
+      "label":"Spudlight–Eye–Door Circuit",
+      "maturity":"T2",
+      "statement":"Expression matters dynamically only when it changes an observer model enough to alter a subsequent transition.",
+      "formal_chain":"X_source --L--> Y;  p(X|Y)∝p(Y|X)p(X);  X+ = D(X-;posterior)",
+      "information_gain":"IG=D_KL[p(X|Y)||p(X)]",
+      "interpretation":"This turns revelation language into a signal → inference → decision/transition architecture without equating optical light, attention and theology."
+    },
+    {
+      "id":"spiral-return-with-memory",
+      "label":"Spiral Return with Memory",
+      "maturity":"T2",
+      "statement":"A genuine spiral return is recurrence with changed internal state, phase, scale or topology, not a reset to the identical point.",
+      "formalism":"X_(n+1)=P(X_n),  d(X_(n+1),X_n) may be small while M_(n+1)≠M_n",
+      "holonomy_form":"state transported around a loop can return to the same base point with transformed fiber state",
+      "neighbors":["Poincare maps","holonomy","Berry phase","hysteresis","RG cycles"]
+    },
+    {
+      "id":"effective-dimension-threshold",
+      "label":"Effective-Dimension Door Hypothesis",
+      "maturity":"T2",
+      "statement":"The dimension relevant to observed dynamics may depend on scale or state even when the underlying mathematical space is fixed.",
+      "formalism":"D_eff=f(E,ρ,R,Φ,μ,...)",
+      "threshold":"Ξ(X)=Ξ_c marks a modeled regime boundary",
+      "established_neighbors":["spectral dimension","Kaluza-Klein effective theories","dimensional reduction","critical phenomena"],
+      "constraint":"No claim of a physical fifth dimension is warranted until variables, units and an observable threshold are specified."
+    },
+    {
+      "id":"relation-first-observable",
+      "label":"Relation-First Observable Principle",
+      "maturity":"T1/T2",
+      "statement":"Some properties belong to an edge or composite rather than either endpoint alone.",
+      "formalism":"O_ij=O(X_i,X_j,C_ij) rather than O_i=O(X_i)",
+      "examples":["phase difference","mutual information","binding energy","relative orientation","trust edge"],
+      "use":"Mathematical foundation for treating coupling/relationship as a first-class object."
+    }
+  ],
+  "mathematics_and_topology":{
+    "core_equations":[
+      {"name":"Euler characteristic","class":"E","equation":"χ(K)=Σ_k(-1)^k β_k","meaning":"Alternating sum of Betti numbers; topological invariant for suitable spaces."},
+      {"name":"fundamental group","class":"E","equation":"π_1(X,x_0)=loops at x_0 / homotopy","meaning":"Records inequivalent loop classes and therefore what kinds of return cannot be continuously unwound."},
+      {"name":"chain condition","class":"E","equation":"∂_(k-1)∘∂_k=0","meaning":"Boundaries have no boundary; basis of homology."},
+      {"name":"homology","class":"E","equation":"H_k=ker(∂_k)/im(∂_(k+1))","meaning":"Measures k-dimensional holes modulo boundaries."},
+      {"name":"Euler-Poincare","class":"E","equation":"χ=Σ_k(-1)^k dim H_k","meaning":"Connects combinatorial and homological descriptions."},
+      {"name":"Gauss-Bonnet surface case","class":"E","equation":"∫_M K dA=2πχ(M)","meaning":"Links local curvature to global topology for closed oriented surfaces."},
+      {"name":"Lie bracket","class":"E","equation":"[A,F]=AF-FA","meaning":"Tests whether two infinitesimal flows commute."},
+      {"name":"Jacobian stability","class":"E","equation":"J_ij=∂F_i/∂x_j","meaning":"Eigenvalues of J near a fixed point classify local linear stability under standard assumptions."}
+    ],
+    "timic_use":"Door becomes a map between spaces or strata; Spiral becomes a loop/return class; Axis becomes a flow/vector field; Eye becomes an observable/projection; relation becomes an edge, connection or coupling; transformation residue can be tracked by invariants.",
+    "new_research_question":"Which Timic transitions change coordinates only, which change metric, which change topology, and which change the category of admissible states? Those four operations should never be conflated."
+  },
+  "quantum_mechanics":{
+    "core_equations":[
+      {"name":"Schrodinger equation","class":"E","equation":"iħ ∂_t|ψ⟩=H|ψ⟩"},
+      {"name":"density-matrix evolution","class":"E","equation":"iħ ρdot=[H,ρ]"},
+      {"name":"Born rule","class":"E","equation":"p(a)=Tr(ρ Π_a)"},
+      {"name":"von Neumann entropy","class":"E","equation":"S(ρ)=-Tr(ρ lnρ)"},
+      {"name":"Lindblad dynamics","class":"E","equation":"ρdot=-i[H,ρ]/ħ+Σ_k(L_kρL_k†-1/2{L_k†L_k,ρ})","meaning":"Standard Markovian open-system form under its assumptions."},
+      {"name":"uncertainty relation","class":"E","equation":"ΔA ΔB≥(1/2)|⟨[A,B]⟩|"},
+      {"name":"entanglement mutual information","class":"E","equation":"I(A:B)=S(A)+S(B)-S(AB)"}
+    ],
+    "timic_connections":[
+      "Door ↔ quantum channel is useful when Door is explicitly a completely positive trace-preserving map; otherwise the comparison is only structural.",
+      "Eye ↔ measurement is useful only when a measurement model, POVM/projectors and outcome probabilities are defined.",
+      "Spiral ↔ phase/holonomy is often a better mathematical comparator than literal particle spiraling.",
+      "Many-Worlds belongs to interpretation of quantum mechanics, not an experimentally established proof that every imagined possibility is physically instantiated."
+    ],
+    "many_worlds_mapping":{
+      "established_interpretive_core":"Unitary quantum state evolution is retained and branching worlds are used to account for definite macroscopic experience.",
+      "timic_neighbor":"The 2024 Many-Worlds Potato can be recast as a branching-state tree rather than an assertion that every symbolic branch is a separate universe.",
+      "toy_branching_form":"|Ψ⟩=Σ_i c_i |i⟩_system|O_i⟩_observer|E_i⟩_environment",
+      "research_question":"Can Timic branching be modeled as epistemic, social, computational or physical branching separately, with a type label on every branch?"
+    }
+  },
+  "chemistry_and_statistical_mechanics":{
+    "why_it_belongs":"The existing project repeatedly uses seed, starch, storage, release, transformation, ash, soil, gradients and thresholds. Chemistry gives a rigorous language for stored free energy, reaction pathways, equilibrium and driven open systems without turning symbolic language into literal chemistry.",
+    "core_equations":[
+      {"name":"chemical potential","class":"E","equation":"μ_i=(∂G/∂n_i)_(T,p,n_j)"},
+      {"name":"reaction Gibbs energy","class":"E","equation":"Δ_rG=Δ_rG°+RT lnQ"},
+      {"name":"equilibrium condition","class":"E","equation":"Δ_rG=0 and Q=K"},
+      {"name":"standard equilibrium relation","class":"E","equation":"Δ_rG°=-RT lnK"},
+      {"name":"Arrhenius rate","class":"E","equation":"k=A exp(-E_a/RT)"},
+      {"name":"generic mass action","class":"E","equation":"r=k∏_i c_i^(ν_i) for an elementary-law toy form"},
+      {"name":"diffusion","class":"E","equation":"J=-D∇c"},
+      {"name":"reaction-diffusion","class":"E","equation":"∂_t c_i=D_i∇²c_i+R_i(c)"}
+    ],
+    "timic_models":[
+      {"name":"Starchforce budget","maturity":"T2","equation":"dK/dt=J_in-J_out-ΓK","interpretation":"K is generic stored capacity unless an actual chemical species and units are specified."},
+      {"name":"Door as activation threshold","maturity":"T1/T2","equation":"k∝e^(-E_a/RT) is an external comparator; Door is not activation energy unless a reaction model is actually defined."},
+      {"name":"Ash→Mud/Soil bifurcation","maturity":"T2","equation":"∂_t u=D_u∇²u+f(u,v); ∂_t v=D_v∇²v+g(u,v)","interpretation":"Reaction-diffusion is a candidate mathematics for residue that reorganizes into competing spatial regimes."}
+    ]
+  },
+  "field_theory_particle_physics_and_gravity":{
+    "core_equations":[
+      {"name":"Standard Model gauge group","class":"E","equation":"G_SM=SU(3)_C×SU(2)_L×U(1)_Y"},
+      {"name":"Yang-Mills field strength","class":"E","equation":"F^a_{μν}=∂_μA^a_ν-∂_νA^a_μ+g f^{abc}A^b_μA^c_ν"},
+      {"name":"covariant derivative","class":"E","equation":"D_μ=∂_μ-ig A^a_μT^a"},
+      {"name":"Higgs potential","class":"E","equation":"V(H)=-μ²H†H+λ(H†H)²"},
+      {"name":"Einstein equation","class":"E","equation":"G_{μν}+Λg_{μν}=(8πG/c⁴)T_{μν}"},
+      {"name":"geodesic equation","class":"E","equation":"d²x^μ/dτ²+Γ^μ_{αβ}(dx^α/dτ)(dx^β/dτ)=0"},
+      {"name":"RG beta function","class":"E","equation":"dg_i/dlnμ=β_i(g)"}
+    ],
+    "timic_connections":[
+      "Axis ↔ RG flow remains one of the strongest physics analogues because both are flows through descriptions/scales rather than ordinary motion through space.",
+      "Door ↔ symmetry breaking/phase transition is meaningful only when an order parameter and potential are specified.",
+      "North/Axis should not be equated with a gauge direction; gauge redundancy is not a hidden compass direction.",
+      "Higgs-field language is useful for vacuum structure and symmetry breaking, not as evidence for a biological or spiritual field."
+    ]
+  },
+  "dimensions_strings_and_multiverse":{
+    "typed_dimension_rule":"Keep coordinate dimensions, compact internal dimensions, Hilbert-space dimensions, configuration-space dimensions, theory-space/RG dimensions, moduli, information dimensions and emergent/spectral dimensions as distinct types.",
+    "equations_and_objects":[
+      {"name":"Kaluza-Klein metric ansatz","class":"E","equation":"ds_5²=g_{μν}dx^μdx^ν+R²(x)(dy+A_μdx^μ)²"},
+      {"name":"KK tower","class":"E","equation":"m_n²≈m_0²+n²/R²"},
+      {"name":"radion-like Timic field","maturity":"T2","equation":"φ(x)=M_* ln(R(x)/R_0)"},
+      {"name":"spectral dimension","class":"E","equation":"d_s=-2 d ln P(σ)/d lnσ","meaning":"One rigorous way effective dimension can depend on diffusion scale in appropriate models."}
+    ],
+    "multiverse_taxonomy":[
+      {"type":"Everett/Many-Worlds","status":"interpretation of quantum mechanics","branching_object":"decohered quantum branches"},
+      {"type":"eternal-inflation multiverse","status":"cosmological hypothesis/model family","branching_object":"inflating regions/bubble universes"},
+      {"type":"string landscape","status":"theoretical possibility/model-space","branching_object":"different vacua/compactifications"},
+      {"type":"modal/logical possible worlds","status":"philosophical semantics, not physical cosmology","branching_object":"possible states/worlds"},
+      {"type":"Timic/Potatoverse branches","status":"project formalism until a domain is specified","branching_object":"must be typed as physical, informational, social, narrative, epistemic or theological"}
+    ],
+    "unification_gain":"The word multiverse becomes clearer when every use declares what exactly branches, what law evolves branches, what probability measure applies, and whether branches can interact."
+  },
+  "new_cross_domain_equations":{
+    "typed_hybrid_dynamics":"dX/dt=F_q(X)+F_c(X)+F_n(X)+u(t), with explicit type/domain tags rather than adding physically incompatible terms",
+    "door_guard":"D_k executes only if G_k(X,B,Q)>τ_k",
+    "relation_energy_analogy":"E_rel is admissible only after defining a Hamiltonian or objective on edges; relation importance by itself is not physical energy",
+    "integration_index":"χ_I may be defined from network/information observables, but must not be confused with Euler characteristic χ_top",
+    "branch_measure":"Σ_i w_i=1 for probabilistic branches; branch weight is meaningless until its interpretation is declared",
+    "dimensional_consistency":"Every proposed physical equality must satisfy [LHS]=[RHS]; dimensionally invalid equations remain symbolic until repaired"
+  },
+  "consolidation_map":{
+    "canonical_owners":[
+      "knowledge/science/fundamental-science-unification-canon.json",
+      "knowledge/science/timic-unification-program.json",
+      "knowledge/science/equation-ledger.json",
+      "knowledge/science/equation-lineage-and-theory-graph.json",
+      "knowledge/science/spudlight-theory-and-equations.json",
+      "knowledge/science/model-testing-protocol.json"
+    ],
+    "provenance_or_expansion_strata":[
+      "knowledge/science/equation-ledger-wave-002.json",
+      "knowledge/science/advanced-physics-expansion-wave-003.json",
+      "knowledge/science/celestial-orbits-particles-cmb-expansion-wave-004.json",
+      "knowledge/science/contextual-strengthening-atlas.json",
+      "knowledge/science/deeper-physics-connections.json",
+      "knowledge/science/missed-hard-science-strata.json",
+      "knowledge/science/conversation-formalisms-august-2026.json"
+    ],
+    "rule":"Expansion-wave files preserve discovery provenance. New stable equations or insights should be promoted into a canonical owner instead of creating another wave file."
+  },
+  "research_frontier":[
+    "Define one explicit finite-dimensional Potato Dynamics toy state X and simulate F, A and Door compositions.",
+    "Test whether noncommuting F/A flows generate robust spiral or hysteretic behavior rather than assuming they do.",
+    "Give every Door a type signature D:S_a→S_b, guard G, recovery R_D, information loss and invariant set.",
+    "Separate topology change from metric deformation and coordinate transformation in every dimensional claim.",
+    "Build a chemistry-inspired storage/release model with actual units for one concrete substrate before using Starchforce physically.",
+    "Construct a Lindblad/quantum-channel Door toy model and state explicitly what is quantum and what is metaphorical.",
+    "Build a branching taxonomy so Many-Worlds, narrative timelines, social forks and cosmological multiverses cannot collapse into one word.",
+    "Recover the exact April 21 2025 Spiral Equation before attributing any later spiral formula to Tim.",
+    "Search the Great Book and historical conversations for original counter-rotation, vesica, field, black-hole, precession and dimensional formulas.",
+    "Promote only models that pass units, assumptions, observables and falsifier checks."
+  ],
+  "external_reference_notes":[
+    "CERN descriptions of the Standard Model support the gauge-theory comparator G_SM=SU(3)_C×SU(2)_L×U(1)_Y.",
+    "IUPAC Gold Book definitions support chemical-potential and Gibbs-equilibrium relations.",
+    "Encyclopedia of Mathematics entries support Euler characteristic, Betti-number and homology usage.",
+    "Stanford Encyclopedia of Philosophy's 2026 Many-Worlds revision is used to distinguish Everettian branching from generic multiverse language."
+  ],
+  "connections":["science-master-index","timic-unification-program","tim-dooley-equation-ledger","equation-lineage-and-theory-graph","potato-dynamics-2-toy-model","model-testing-protocol","great-book-2024-science-archaeology"]
+}

@@ -1,0 +1,93 @@
+{
+  "id":"control-authority-owner-dominator-agency-atlas",
+  "title":"Control Authority, Owner, Anchor, Dominator & Agency — Who Actually Moves the Trajectory?",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"control-theory/graph-theory comparator + Timic operator clarification",
+  "purpose":"Disambiguate the project's recurring owner/center/leash language. A symbolic center, tether anchor, graph hub, causal controller, observer and beneficiary are different roles. This atlas supplies tests for when an actor actually has intervention authority over a trajectory or reachable set.",
+  "epistemic_rule":"Project language about ownership or holding timelines is mythic/self-description unless a real intervention channel is independently evidenced. Mathematical controllability describes a declared model; it does not certify personal, spiritual or geopolitical ownership.",
+  "role_split":{
+    "anchor":"reference point appearing in a geometric or tether constraint",
+    "constraint_source":"mechanism that makes some states/actions inadmissible",
+    "controller":"agent/input channel whose interventions causally change state evolution",
+    "observer":"receives measurements without necessarily controlling state",
+    "estimator":"infers hidden state from observations",
+    "hub":"high-centrality node in a graph; centrality alone is not control",
+    "dominator":"node lying on every directed path from a specified source to target",
+    "gatekeeper":"controls authorization/access through an interface",
+    "beneficiary":"receives value/outcome without necessarily causing it",
+    "owner":"legal/property or project-mythic category; must not be inferred from anchor, hub or controller status alone"
+  },
+  "linear_control_authority":{
+    "system":"xdot=Ax+Bu",
+    "input_matrix":"columns of B specify the state directions directly actuated by control inputs in the chosen coordinates",
+    "controllability_matrix":"C=[B,AB,A^2B,...,A^(n-1)B]",
+    "criterion":"rank(C)=n under the standard finite-dimensional LTI assumptions means the state is controllable over an appropriate interval",
+    "project_rule":"If a supposed owner/controller has no modeled input channel B, no intervention evidence and no measurable state response, symbolic centrality should not be promoted into causal control."
+  },
+  "controllability_gramian":{
+    "equation":"W_c(T)=integral_0^T exp(A tau) B B^T exp(A^T tau) d tau",
+    "meaning":"For continuous-time LTI systems, positive-definite/invertible W_c over the interval corresponds to controllability under the standard assumptions.",
+    "minimum_energy":"For controllable LTI dynamics, a standard minimum-energy expression to reach x_f at T is E_min=(x_f-exp(A T)x_0)^T W_c(T)^(-1)(x_f-exp(A T)x_0), with convention/details depending on formulation.",
+    "project_value":"Control is graded: some target directions may require much more intervention energy than others. 'Can control' is therefore not the same as 'controls effortlessly'."
+  },
+  "observability_split":{
+    "system":"y=C_obs x",
+    "principle":"Seeing or predicting a state does not imply the power to move it.",
+    "project_law":"Eye/measurement/attention and leash/control are different operators. High visibility or surveillance is not ownership."
+  },
+  "intervention_test":{
+    "question":"Does changing the candidate controller's input while holding relevant confounders fixed change the trajectory or reachable set in a reproducible way?",
+    "counterfactual":"Compare x(t|do(u=u1)) with x(t|do(u=u2)) in a causal/interventional model when such intervention is ethically and empirically meaningful.",
+    "archive_rule":"Correlation, attention, orbit, naming, symbolic allegiance and graph centrality are insufficient by themselves to establish control authority."
+  },
+  "multiple_controllers":{
+    "dynamics":"xdot=f(x,u_1,...,u_m,w,t)",
+    "meaning":"Real systems often contain several actors, disturbances and feedback loops rather than one owner of every trajectory.",
+    "differential_game_neighbor":"When controllers have different objectives, differential-game/optimal-control frameworks model strategic interaction rather than one master leash.",
+    "project_epiphany":"Many timelines are more naturally a negotiated/contested field of controls and constraints than evidence for one controller."
+  },
+  "anchor_motion_vs_control":{
+    "constraint":"||x-a(t)||<=L",
+    "distinction":"A moving anchor can alter the feasible region, but the entity physically moving the anchor, the rule fixing L and the observer naming the anchor may all be different actors.",
+    "owner_test":"Do not call the anchor the owner unless legal/project semantics separately establish ownership; do not call the observer the controller unless intervention evidence exists."
+  },
+  "graph_control_vs_centrality":{
+    "centrality":"degree/eigenvector/betweenness quantify different structural prominence properties",
+    "dominator":"d dominates target v from root s iff every directed path s->v contains d",
+    "min_cut":"a minimum cut identifies a smallest-capacity or smallest-cardinality bottleneck set under the chosen graph model",
+    "project_law":"A hub can be bypassable; a low-degree dominator can be mandatory. Centrality and gatekeeping are therefore different.",
+    "door_relation":"Door is strongest as mandatory gateway only when dominator/cut/reachability analysis supports that role in the declared graph."
+  },
+  "agency_metrics":{
+    "reachable_volume":"mu(R(T,x0)) under a declared measure mu",
+    "constraint_compression":"C_R=1-mu(R_constrained)/mu(R_baseline)",
+    "control_cost":"minimum or expected intervention cost to reach a target set",
+    "robust_reachability":"states reachable despite an allowed disturbance set",
+    "interpretation":"Agency has multiple coordinates: number/volume of alternatives, robustness, cost, reversibility and ability to choose among them."
+  },
+  "leash_owner_matrix":{
+    "required_columns":["candidate_actor","role","input_channel","constraint_created","measurement_channel","target affected","counterfactual evidence","legal/project ownership basis","exit/release authority","confidence"],
+    "decision_rule":"Only promote 'controller' when an intervention channel and outcome effect are evidenced; only promote 'owner' when ownership semantics are separately established.",
+    "project_use":"Allows future maps to show center, observer, anchor, controller and owner as separate node-edge roles instead of one overloaded crown."
+  },
+  "new_project_laws":[
+    "Anchor Is Not Owner Law: geometric reference does not establish ownership.",
+    "Attention Is Not Control Law: being watched, orbited or central in discourse does not establish causal actuation.",
+    "Observation Is Not Actuation Law: Eye/measurement and Leash/control require different channels.",
+    "Centrality Is Not Dominance Law: high graph centrality need not make a node mandatory on source-target paths.",
+    "Control Requires Channel Law: causal control needs an intervention channel that changes state/reachability under a declared model.",
+    "Many-Controller Law: competing constraints and controllers can shape trajectories without any single actor owning the timeline.",
+    "Agency Is Reachability Plus Cost Law: having a reachable target is weaker than being able to reach it robustly and affordably.",
+    "Release Authority Law: a meaningful leash model should name who or what can relax, lengthen, move or remove the constraint."
+  ],
+  "connections":[
+    "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "knowledge/science/equation-ledger-wave-007-constraint-fate-timelines.json",
+    "data/entanglement.json",
+    "data/frame.json",
+    "data/axis-topology.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json",
+    "knowledge/indexes/leash-timeline-fate-integration-wave-2026-09-11.json"
+  ]
+}

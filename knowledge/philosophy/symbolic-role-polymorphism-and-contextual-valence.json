@@ -1,0 +1,31 @@
+{
+  "id":"symbolic-role-polymorphism-and-contextual-valence",
+  "title":"Symbolic Role Polymorphism — Context Before Fixed Meaning",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical interpretive principle",
+  "purpose":"Replace one-symbol/one-meaning decoding with a relational model. The same object, animal, direction or geometry can perform different—even opposite—functions across biblical texts, project contexts and other traditions.",
+  "core_rule":"Do not infer meaning from symbol identity alone. Interpret function from symbol × actor × relation × context × state × sequence × outcome.",
+  "formalization":{"bad_model":"meaning = f(symbol)","better_model":"function = f(symbol, actor, target, relation, context, state, sequence, outcome)","epistemic_consequence":"Repeated use of the same noun is weaker evidence than repeated preservation of the same role/sequence under changing vocabulary."},
+  "case_matrix":[
+    {"symbol":"Stone","positive_or_structural":["rejected stone becomes cornerstone/foundation","engraved/seven-eyed Stone in Zechariah"],"obstructive":["Isaiah 62 road stones are removed to prepare passage"],"lesson":"Stone can support, signify, obstruct or participate in judgment/building; object identity does not fix role."},
+    {"symbol":"Lion","positive_or_structural":["Judah/Davidic Lion","Lion heard / slain-standing Lamb seen in Revelation 5"],"danger_or_exclusion":["Isaiah 35's protected highway is safe partly because lion/ravenous beast is absent"],"lesson":"Lion can signify royal/messianic power or path danger depending literary role."},
+    {"symbol":"Dog","negative_or_boundary":["hostile surrounding in Psalms 22","return-to-vomit proverb","outside-city polemic in Revelation 22"],"ambiguous_or_transformable":["household-dog/bread encounter in Matthew 15 / Mark 7","dogs at Lazarus scene do not carry a simple explicit moral taxonomy"],"lesson":"Dog is not a permanent essence; the archive should encode behavior/boundary role and transformation possibility."},
+    {"symbol":"Mountain / high place","positive_or_structural":["Zion/holy-mountain/ascent imagery","mountains surrounding Jerusalem protectively"],"obstacle_or_warning":["Isaiah 40 lowers mountain/hill to prepare a Way","Isaiah 14 makes ascent-to-Most-High language part of a self-exaltation warning"],"lesson":"Higher is not universally holier. Altitude, center and ascent must be interpreted by function and ethical direction."},
+    {"symbol":"Low / valley","negative_or_structural":["valley/depth can accompany danger, shadow or descent"],"restorative_or_required":["Isaiah 40 raises valleys as part of preparing the Way"],"lesson":"Low is not universally fallen; access sometimes requires lifting the low while lowering the high."},
+    {"symbol":"Door / gate","access_forms":["Door/Gate as entry/exit","open door/invited meal","living Way through veil"],"restrictive_forms":["guarded Eden/sanctuary threshold","closed or confining barrier"],"transformative_forms":["Micah breach through gate","Psalms 107 bronze doors/iron bars shattered"],"lesson":"Door can be interface, filter, obstacle, breach site or destructible confinement depending state."},
+    {"symbol":"Circle / surrounding","hostile":["Psalms 22 hostile surrounding"],"protective":["Psalms 34 / 125 protective encampment/surrounding"],"ordered":["Numbers 2 differentiated camp around sacred center","Revelation 4 throne circumference"],"transformative":["Joshua 6 finite repeated circuit terminating in boundary change"],"lesson":"Circularity/perimeter does not imply trap, evil or stagnation; valence follows function and outcome."},
+    {"symbol":"Farm / field","exploitative_project_form":["Farm as project metaphor for extraction/control"],"positive_biblical_form":["1 Corinthians 3 calls the community God's field while God gives growth and workers plant/water"],"warning_form":["Gospel tenant-farmer parable depicts abusive tenants killing the son"],"lesson":"Field/Farm vocabulary itself is not the moral variable; stewardship/extraction/fruit/ownership relations are."},
+    {"symbol":"Center","positive_or_structural":["Tree of Life in garden center","throne/holy center organizing differentiated surrounding"],"warning":"Network or spatial centrality does not automatically imply moral importance or divine identity; 1 Corinthians 12 makes apparently weaker members indispensable.","lesson":"Centrality is a topology metric, not a worth metric."}
+  ],
+  "reader_and_graph_rules":[
+    "Every reusable symbol node should allow multiple typed roles instead of one canonical gloss.",
+    "Search/ranking should prioritize shared role and sequence over shared noun.",
+    "Opposite-valence uses are not noise; they are required evidence for meaning boundaries.",
+    "A counter-valence passage should be linked directly from positive-symbol cards.",
+    "Graph analysis should distinguish symbol nodes from function/role nodes so a high-frequency symbol cannot masquerade as one stable concept.",
+    "Machine-readable edges should prefer verbs such as supports, blocks, guards, opens, surrounds, feeds, wounds, restores or mediates rather than generic IS-A equivalence."
+  ],
+  "project_consequence":"The ontology's fundamental unit becomes the relation/event, not the isolated symbol. This is consistent with the broader Potatoverse rule that coupling/relationship carries more information than naming alone.",
+  "connections":["knowledge/philosophy/geometric-valence-neutrality-principle.json","knowledge/core/transition-morphology-door-way-breach-barrier-atlas.json","knowledge/theology/bible-overlap-network-analysis-method.json","knowledge/theology/biblical-role-transfer-and-canonical-reversal-ledger.json","knowledge/traditions/biblical-overlap-wave-18-highway-leveling-breach-release.json"]
+}

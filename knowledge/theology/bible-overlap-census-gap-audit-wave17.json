@@ -1,0 +1,42 @@
+{
+  "id":"bible-overlap-census-gap-audit-wave17",
+  "title":"Bible Overlap Census Gap Audit — Waves 10–13",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"canonical coverage audit",
+  "purpose":"Re-audit the already-existing Waves 10–13 specialist files against the 104-node registry. Promote only analytically distinct functions that are not adequately represented by prior census nodes.",
+  "baseline_count":104,
+  "source_owners":["knowledge/traditions/biblical-overlap-wave-10-zechariah-eye-stone-lampstand.json","knowledge/traditions/biblical-overlap-wave-11-son-deepening.json","knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json","knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json"],
+  "promote":[
+    {"id":"stone-seven-eyes-branch","texts":["Zechariah 3:8-9","Zechariah 4:10","Revelation 5:6"],"reason":"Stone + seven eyes + Branch + Spirit/Lamb forms a specific intertextual role cluster not preserved by the broader lamp/eye/seed census row."},
+    {"id":"olive-tree-oil-lamp-flow","texts":["Zechariah 4:2-14"],"reason":"Living source→fluid/conduit→lamp→sustained light is a distinct generative sequence and a useful boundary against literal CSF identification."},
+    {"id":"plumb-small-beginnings-completion","texts":["Zechariah 4:9-10"],"reason":"Foundation→small beginnings→plumb/alignment→completion→seeing adds an engineering/alignment function to Axis vocabulary."},
+    {"id":"living-way-through-veil-body","texts":["Exodus 26:31-33","Hebrews 9:1-12","Hebrews 10:19-22"],"reason":"House + veil/threshold + embodied/living Way + inner access is a stronger and more role-specific Door comparator than generic narrow-gate language."},
+    {"id":"son-of-man-ladder-role-counterdistribution","texts":["Genesis 28:12-17","John 1:51"],"reason":"John relocates Jacob's heaven-earth ascent/descent onto the Son of Man, creating a meaningful counter-distribution to project Father=Ladder / Son=Door role splitting."},
+    {"id":"farmers-kill-son-cornerstone","texts":["Mark 12:1-12","Matthew 21:33-46","Psalms 118:22-23"],"reason":"Tenant farmers→beloved son/heir killed/cast outside→rejected stone/cornerstone is an unusually dense Farm/Son/Stone sequence not represented by the generic rejected-stone node."},
+    {"id":"outside-gate-coming-city","texts":["Hebrews 13:12-14"],"reason":"Outside Gate→reproach/suffering→sanctifying death→no enduring present city→coming city is a discrete threshold/city sequence and was already present in March 2026 conversation archaeology."},
+    {"id":"house-builder-son-over-house","texts":["Hebrews 3:1-6"],"reason":"Builder/source ≠ House ≠ servant in House ≠ Son over House ≠ community as House. This is a high-value anti-collapse role grammar."},
+    {"id":"field-building-foundation-temple","texts":["1 Corinthians 3:5-17"],"reason":"Field/Farm and Building/House coexist as parallel community metaphors; God gives growth, workers plant/water, Christ is foundation, temple follows. This sharply prevents Farm=House flattening."},
+    {"id":"psalm24-mountain-gates-king","texts":["Psalms 24"],"reason":"Earth/foundation→holy-mountain ascent→ethical qualification→gates/ancient doors lifted→King enters is a coherent ascent/access sequence with a strong role warning."},
+    {"id":"eden-center-river-stewardship","texts":["Genesis 2:8-15"],"reason":"God plants Garden; Tree of Life at center; river waters and divides; human is placed to tend/keep. Distinguishes source/planting from delegated cultivation/stewardship."},
+    {"id":"house-city-watchman-labor","texts":["Psalms 127"],"reason":"House-building, city-guarding, labor/hours, children/fruit and gate are joined by a corrective: labor/watchfulness alone is insufficient without right source/order."},
+    {"id":"one-body-many-members","texts":["1 Corinthians 12:12-27","Romans 12:4-5"],"reason":"Unity explicitly preserves differentiated functions and calls apparently weaker members indispensable; central to integrated-plurality and anti-centrality ethics."},
+    {"id":"father-from-son-through","texts":["1 Corinthians 8:6"],"reason":"Concise directional grammar distinguishes source/from-whom from mediation/through-whom rather than treating Father and Son functions as synonyms."},
+    {"id":"source-not-contained-acts17","texts":["Acts 17:24-28"],"reason":"God not contained by human temples or dependent on human service; life/movement/being occur in relation to God. Important countertext against over-literalized House/Throne/body localization."},
+    {"id":"christ-holds-together-counterrole","texts":["Colossians 1:15-20","Ephesians 4:15-16"],"reason":"Holding-together/head/integration function is assigned to Christ/Son, constraining any rule that automatically assigns all integrative/Axis functions to Tim/Father."}
+  ],
+  "merge_or_leave_specialist":[
+    {"id":"two-olive-trees-two-witnesses","reason":"Useful but lower independence and higher identity-overreach risk; leave specialist until stronger project-side pair provenance exists."},
+    {"id":"pillar-name-new-jerusalem","reason":"already counted"},
+    {"id":"body-door-ladder-distinction","reason":"meta-synthesis over already counted relations; do not double count"},
+    {"id":"dan-serpent-judge-lion","reason":"enrich Wave-15 Dan node with lion detail rather than add another Dan node"},
+    {"id":"thomas-twin-death-tomb","reason":"existing Thomas/Twin node owns the identity relation; keep death/tomb adjacency specialist"},
+    {"id":"son-of-man-grain-glory","reason":"merge into Son-grain owner"},
+    {"id":"healing-sign-cluster","reason":"biographical health/miracle claims remain self-reported and are not necessary to this coverage correction"},
+    {"id":"lion-lamb-not-opposites","reason":"already counted"}
+  ],
+  "promotion_count":16,
+  "projected_count_after_wave17":120,
+  "principle":"The strongest new information often comes from role distribution and counter-distribution, not from adding another shared noun.",
+  "connections":["knowledge/theology/tim-son-bible-overlap-census-current.json","knowledge/theology/biblical-role-transfer-and-canonical-reversal-ledger.json","knowledge/theology/bible-overlap-network-analysis-method.json"]
+}

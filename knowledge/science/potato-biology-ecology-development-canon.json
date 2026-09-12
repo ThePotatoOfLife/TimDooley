@@ -1,0 +1,130 @@
+{
+  "id":"potato-biology-ecology-development-canon",
+  "title":"Potato Biology, Development, Ecology & Evolution — Canonical Science Layer",
+  "updated":"2026-09-09",
+  "status":"canonical external-biology context plus explicitly labeled Timic structural deductions",
+  "purpose":"Make the physical potato scientifically substantial before metaphor. This record covers tuber anatomy, eyes/meristems, stolons, dormancy, sprouting, starch storage, source-sink allocation, photoperiod, genetics, vegetative reproduction, pathogens, ecology, domestication and resilience, then states exactly which Timic ideas become more precise when grounded in plant biology.",
+  "epistemic_rule":"Botanical facts describe Solanum tuberosum and related potato biology. Potatoverse meanings are structural interpretations unless separately evidenced. The tuber is botanically a modified underground stem, not a root.",
+  "core_biology":[
+    {
+      "topic":"tuber identity",
+      "fact":"A potato tuber is a swollen underground stem derived from a stolon. Its 'eyes' are buds arranged on stem tissue.",
+      "project_upgrade":"Root/sprout language is symbolically useful, but the physical Potato itself is stem-derived storage architecture. This adds an important distinction among root, stolon, tuber and sprout rather than collapsing all underground structure into 'root'."
+    },
+    {
+      "topic":"eyes and meristems",
+      "fact":"Each eye contains bud/meristematic tissue capable of producing shoots under suitable conditions.",
+      "development_model":"latent meristem m_i transitions from dormant to active state when hormonal/environmental conditions cross a threshold",
+      "toy_equation":"dm_i/dt = activation_i(T,age,hormones,damage,light) - inhibition_i",
+      "timic_deduction":"The Eye can mean a dormant local growth point: observation and generativity need not be separate metaphors. An 'eye' is literally a site from which a new axis/shoot can emerge in a tuber."
+    },
+    {
+      "topic":"dormancy",
+      "fact":"Freshly harvested tubers normally undergo physiological dormancy before buds resume growth. Dormancy length depends on genotype, tuber age and storage/environmental conditions.",
+      "state_model":"DORMANT → APICAL_DOMINANCE → MULTIPLE_SPROUTING → SENESCENCE",
+      "timic_deduction":"Burial or latency can be modeled as an active regulated state, not biological inactivity. Potential can be preserved without visible expression."
+    },
+    {
+      "topic":"apical dominance",
+      "fact":"During early sprouting, one or a few apical buds may dominate; later the dominance can weaken and more eyes sprout.",
+      "toy_model":"growth_i = a_i/(1+Σ_j≠i κ_ji growth_j)",
+      "timic_deduction":"A single leading Axis can suppress competing shoots temporarily without permanently eliminating distributed potential. This offers a biological comparator for center vs plurality."
+    },
+    {
+      "topic":"source-sink allocation",
+      "fact":"Leaves photosynthesize and export assimilated carbon; developing tubers act as strong sinks that accumulate carbohydrate, especially starch.",
+      "budget":"dK_tuber/dt = A_source - R_growth - R_respiration - export",
+      "timic_deduction":"Starchforce is biologically strongest as stored photosynthetic work/capacity. Sunlight is converted, transported and stored; stored capacity later supports renewed growth."
+    },
+    {
+      "topic":"starch metabolism",
+      "fact":"Tubers store large quantities of starch in amyloplasts. During sprouting, stored reserves can be mobilized to support new shoot growth before the new plant becomes fully photosynthetically self-sufficient.",
+      "storage_release":"Starch --enzymatic mobilization--> soluble sugars --respiration/biosynthesis--> new tissue",
+      "timic_deduction":"Spudlight/Starchforce gains a literal biological chain: photon energy → photosynthesis → carbohydrate transport → starch storage → mobilization → sprout. The symbolic chain should be kept beside, not substituted for, this actual energy/material pathway."
+    },
+    {
+      "topic":"tuber induction",
+      "fact":"Tuber formation is regulated by genotype and environmental signals including photoperiod and temperature, mediated through mobile signaling and hormonal networks.",
+      "threshold_form":"P(tuberize)=σ(β0+β1 photoperiod+β2 temperature+β3 genotype+β4 hormonal_state+...)",
+      "timic_deduction":"A Door can be a developmental competence threshold: the same organism changes growth program when a distributed signal state crosses a regime boundary."
+    },
+    {
+      "topic":"stolons and networked growth",
+      "fact":"Stolons extend laterally underground; tubers can form at stolon tips, creating multiple storage/reproductive nodes connected to one plant.",
+      "graph_model":"plant network G=(shoot,roots,stolons,tubers) with transport edges carrying water, nutrients, hormones and assimilates",
+      "timic_deduction":"The physical Potato is already relation-first: tuber identity/function depends on a transport network rather than isolated storage."
+    },
+    {
+      "topic":"vegetative propagation",
+      "fact":"Potatoes can be propagated clonally from tubers or tuber pieces containing viable eyes. This preserves much of the parental genotype while allowing somatic mutation and pathogen carryover.",
+      "timic_deduction":"Seed/return does not require genetic recombination. Pattern persistence can occur by clonal continuity, while accumulated disease risk shows that continuity can also preserve burdens."
+    },
+    {
+      "topic":"sexual reproduction",
+      "fact":"Potato plants can also flower and produce botanical seed, creating genetic recombination distinct from clonal tuber propagation.",
+      "timic_deduction":"The project should distinguish two biological meanings of 'seed': botanical sexual seed and tuber-based vegetative propagation. They embody different continuity/change tradeoffs."
+    },
+    {
+      "topic":"ploidy and genetics",
+      "fact":"Cultivated potato genetics is complicated by multiple ploidy levels; many common cultivars are highly heterozygous autotetraploids, while diploid breeding systems are increasingly important in research and breeding.",
+      "formal_neighbor":"polyploid genotype space increases combinatorial allele dosage/state complexity",
+      "timic_deduction":"Multiplicity can coexist within one organism/genome without becoming separate organisms; this is a biological example of unity containing differentiated copies/allelic states."
+    },
+    {
+      "topic":"disease and clonal burden",
+      "fact":"Vegetative propagation can accumulate and transmit viruses and other pathogens across generations unless clean seed systems/meristem culture and phytosanitary practices intervene.",
+      "timic_deduction":"Memory/continuity is not automatically good. A lineage can preserve both capacity and pathology. Repair may require a cleansing bottleneck rather than perfect preservation of every inherited state."
+    },
+    {
+      "topic":"late blight and resilience",
+      "fact":"Phytophthora infestans causes potato late blight and historically contributed to catastrophic crop losses where genetic uniformity, weather and dependence amplified vulnerability.",
+      "systems_deduction":"Resilience depends on diversity, surveillance, clean planting material, resistant genetics, environmental conditions and response capacity—not one node alone.",
+      "timic_neighbor":"Garden resilience becomes a real systems concept: robustness emerges from coupled diversity and management rather than symbolic purity."
+    },
+    {
+      "topic":"domestication",
+      "fact":"Potato domestication arose in the Andes from wild Solanum diversity and later spread globally through human cultivation, selection and exchange.",
+      "timic_deduction":"The Potato is historically a migration and adaptation system: biological form, culture, trade, empire, famine, labor and cuisine are coupled layers."
+    }
+  ],
+  "derived_biological_principles":[
+    {
+      "name":"Dormant Eye Principle",
+      "statement":"A latent growth center may contain organized developmental potential without current expression.",
+      "formalism":"state m_i=0 active_output yet competence c_i>0",
+      "use":"Distinguish absence of output from absence of capacity."
+    },
+    {
+      "name":"Stored Sunlight Chain",
+      "statement":"Solar input can be converted into chemical storage, physically transported and later remobilized into growth.",
+      "chain":"photons → photosynthesis → sucrose transport → starch storage → remobilization → sprout",
+      "use":"The strongest literal scientific bridge among Sun, Potato, storage and emergence."
+    },
+    {
+      "name":"Distributed Eye / Shared Body Principle",
+      "statement":"Multiple meristematic eyes can each regenerate shoots while belonging to one tuber body.",
+      "use":"Useful comparator for one body containing multiple potential axes without requiring multiple independent organisms."
+    },
+    {
+      "name":"Continuity Carries Debt Principle",
+      "statement":"A propagation mechanism that preserves useful information can also preserve pathogens or deleterious states.",
+      "use":"Adds a biological correction to simple 'memory is good' narratives."
+    },
+    {
+      "name":"Sink Becomes Source Principle",
+      "statement":"A tuber that was formerly a carbon sink/storage organ can later function as a source supporting a new sprout.",
+      "formalism":"role(t): sink during filling → source during sprouting",
+      "timic_value":"This is a strong biological instance of identity/function changing with phase: receiver/storage can become giver/source."
+    }
+  ],
+  "implementation_targets":[
+    "Add a potato life-cycle state machine to the science implementation lab.",
+    "Model eye activation and apical dominance as competing bud dynamics.",
+    "Model source-sink starch allocation with explicit carbon/energy units.",
+    "Create a clean distinction table: root vs stolon vs tuber vs sprout vs botanical seed.",
+    "Add clonal lineage/pathogen accumulation as a memory-cost model.",
+    "Connect biological resilience to Garden/European resilience models through typed structural correspondence, not literal identity.",
+    "Create a domestication/ecology source ledger joining Andean origin, crop diffusion, disease and food-system dependence."
+  ],
+  "connections":["science-master-index","timic-principle-theorem-registry","conversation-recovery-derived-results","spudlight-theory-and-equations","potato-dynamics-2-toy-model"]
+}

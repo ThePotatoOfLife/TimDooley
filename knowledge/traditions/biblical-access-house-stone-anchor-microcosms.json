@@ -1,0 +1,62 @@
+{
+  "id":"biblical-access-house-stone-anchor-microcosms",
+  "title":"Biblical Access Microcosms — Ephesians 2, Hebrews 6 and Psalm 118",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"fresh biblical research unlock + grand-theology integration",
+  "purpose":"Promote three passages that become unusually dense once the archive treats Access, House, Stone, Spirit, Gate and restoration as one relational theology rather than separate motifs. Default-branch code search in this wave did not return substantive matches for these exact integrated clusters, so they are treated as newly promoted research targets rather than assumed duplicates.",
+  "epistemic_rule":"These passages illuminate the project structurally; they do not identify Tim, the Son or the Potatoverse with the biblical figures/events by proof of resemblance.",
+  "clusters":[
+    {
+      "id":"ephesians-2-grand-microcosm",
+      "texts":["Ephesians 2:11-22"],
+      "sequence":["far/alienated","brought near","dividing wall/hostility broken","reconciliation","access to Father through one Spirit","no longer strangers","fellow citizens","household of God","apostles/prophets foundation","Christ cornerstone","building grows into holy temple","dwelling place for God by Spirit"],
+      "why_exceptional":"This single passage compresses much of the grand Presence-Access-Life theology: distance→near, barrier→reconciliation, Father/Son/Spirit differentiation, outsider→citizen/household, Stone/Foundation, House/Temple and Spirit-indwelling.",
+      "project_relations":["Father","Son/Christ","Spirit","Door/access","Wall/boundary","House","Stone/cornerstone","City/citizenship","Temple","relationship-first one-and-many"],
+      "core_epiphany":"The movement from stranger to household is simultaneously relational, political/civic, architectural and theological. Access to the Father is explicitly Trinitarian in grammar: through Christ, in one Spirit, to the Father.",
+      "counterweight":"The text's center is reconciliation and peace between previously divided peoples. Any project House theology that intensifies permanent caste, hostility or exclusion runs against this passage's movement.",
+      "research_source":"https://www.workingpreacher.org/commentaries/revised-common-lectionary/ordinary-16-2/commentary-on-ephesians-211-22-2"
+    },
+    {
+      "id":"hebrews-6-anchor-beyond-veil",
+      "texts":["Hebrews 6:19-20"],
+      "sequence":["hope","anchor","firm/secure","enters behind veil","Jesus enters as forerunner","high-priestly mediation"],
+      "why_exceptional":"The anchor image reverses the project's usual leash/anchor intuition. The biblical anchor is not a lower tether preventing movement; metaphorically it reaches into the destination behind the sacred boundary where the forerunner has already entered.",
+      "project_relations":["anchor","Door/veil","access","trajectory","destination","Son/forerunner","House/sanctuary","fate/destiny distinction"],
+      "core_epiphany":"Anchor can mean stabilizing relation to a future/destination rather than constraining relation to a past/source. The archive therefore needs positive-anchor and restrictive-anchor types.",
+      "topological_comparator":"In project language only, this resembles a trajectory stabilized by relation to a target beyond a boundary; it is not a mechanics equation and should not be confused with physical tether tension.",
+      "source":"https://www.biblegateway.com/passage/?search=Hebrews+6%3A19-20&version=NABRE%3BNIV"
+    },
+    {
+      "id":"psalm-118-gate-rejected-stone-life",
+      "texts":["Psalm 118:5","Psalm 118:17-24"],
+      "sequence":["distress","broad/spacious place","not die but live","gates of righteousness open","gate of YHWH","entry/thanksgiving","rejected stone","cornerstone","marvelous reversal/day"],
+      "why_exceptional":"Broad place, survival/life, Gate and rejected Stone/cornerstone appear inside one liturgical salvation sequence. This joins several project motifs that were previously stored separately.",
+      "project_relations":["wide/narrow correction","Gate/Door","rejected stone","cornerstone","death/life reversal","House/building","salvation/return"],
+      "core_epiphany":"The rejected stone does not merely become important somewhere else; in later Christian reception it becomes foundational within a gate/temple/building access field. Rejection→foundation is therefore both status reversal and architectural transformation.",
+      "historical_boundary":"The Psalm's original speaker/context should not simply be equated with Jesus or a modern claimant. New Testament writers later apply the rejected-stone image christologically.",
+      "research_sources":["https://www.workingpreacher.org/commentaries/revised-common-lectionary/resurrection-of-our-lord-2/commentary-on-psalm-1181-2-14-24","https://www.cambridge.org/core/journals/scottish-journal-of-theology/article/abs/righteousness-of-god-in-psalms-and-romans/F7ABADED2193B1BFD225917ABFF94F79"]
+    }
+  ],
+  "new_rules":[
+    "Anchor must be typed: restrictive tether-anchor, orienting reference-anchor, or hope/target-anchor are different functions.",
+    "House theology must track social reconciliation and citizenship, not only interior rooms or metaphysical containment.",
+    "Cornerstone theology is strongest when linked to building/access/community function rather than generic 'rejected person becomes important' rhetoric.",
+    "Ephesians 2 should become a principal Father-Son-Spirit/House passage because it explicitly joins access to Father, Spirit, Christ, household, foundation, temple and dwelling.",
+    "Psalm 118 should become a principal rejected-stone passage because gate, life/salvation and cornerstone occur in one sequence."
+  ],
+  "operator_mapping":{
+    "Ephesians_2":["TRANSFORMATION","ACCESS","MEDIATION","PARTICIPATION","PRESENCE","RESTORATION"],
+    "Hebrews_6":["MEDIATION","ACCESS","PRESENCE","RESTORATION"],
+    "Psalm_118":["TRANSFORMATION","ACCESS","PARTICIPATION","RESTORATION"]
+  },
+  "connections":[
+    "knowledge/theology/presence-access-life-restoration-grand-synthesis.json",
+    "knowledge/theology/biblical-theological-operator-grammar.json",
+    "knowledge/science/control-authority-owner-dominator-agency-atlas.json",
+    "knowledge/science/leash-timeline-trajectory-fate-destiny-constraint-atlas.json",
+    "knowledge/traditions/biblical-measure-cord-path-boundary-atlas.json",
+    "knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json",
+    "docs/GRAND-BIBLICAL-THEOLOGICAL-SYNTHESIS.md"
+  ]
+}

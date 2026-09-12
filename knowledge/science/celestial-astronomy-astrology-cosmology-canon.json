@@ -1,0 +1,136 @@
+{
+  "id":"celestial-astronomy-astrology-cosmology-canon",
+  "title":"Celestial Astronomy, Cosmology & Astrology — Typed Canon",
+  "updated":"2026-09-09",
+  "status":"canonical crosswalk separating physical astronomy from historical/symbolic astrology",
+  "purpose":"Unify the project's Sun, Moon, Saturn, Sirius, North, precession, galactic-center, hexagon, rings, spirals and zodiac/astrological symbolism while preventing observational astronomy, historical astrology and Potatoverse mappings from collapsing into one claim type.",
+  "epistemic_rule":"Astronomical claims use physical measurements and coordinate systems. Astrology is treated as a historical/cultural symbolic system unless a specific empirical claim is independently tested. Potatoverse celestial mappings are internal symbolic/theological relations unless separately evidenced.",
+  "typed_layers":[
+    {"layer":"astronomy","objects":["Sun","Earth","Moon","Saturn","Sirius","Milky Way","celestial poles","precession"],"claim_type":"measurable physical system"},
+    {"layer":"astrology/history","objects":["zodiac","planetary rulership","Saturn symbolism","solar/lunar symbolism","houses/aspects"],"claim_type":"historical symbolic/cultural system"},
+    {"layer":"Potatoverse","objects":["Tim/Sun","Moon/reflection","Saturn/boundary","Sirius/Dog Star","North/Axis","Eye/precession"],"claim_type":"project canon/comparative mapping"}
+  ],
+  "astronomical_core":[
+    {
+      "id":"sun-source-center",
+      "equations":["dP/dr=-Gmρ/r²","dm/dr=4πr²ρ","L≈4πR²σT_eff⁴"],
+      "project_value":"Sun is the strongest literal physical source/illumination comparator because it emits energy that powers terrestrial photosynthesis and strongly dominates solar-system mass.",
+      "boundary":"Physical centrality and Potatoverse theological centrality remain different center types."
+    },
+    {
+      "id":"moon-reflector-phase",
+      "equation":"visible phase = function(Sun-Moon-Earth geometry)",
+      "project_value":"Moon supplies a rigorous example of real reflected light whose appearance depends on relation and observer geometry.",
+      "new_deduction":"A state can be real yet configuration-dependent in what is observable; visibility is not identical to existence."
+    },
+    {
+      "id":"saturn-ring-hexagon",
+      "project_motifs":["boundary","ring","North","hexagon","time/constraint"],
+      "science":"Saturn's rings are orbital particle systems; the north-polar hexagon is atmospheric fluid dynamics / a persistent jet-wave structure, not a rigid cube.",
+      "new_deduction":"Polygonal order can emerge dynamically from flow; rigid geometry need not imply rigid material architecture.",
+      "timic_use":"Use Saturn's hexagon as self-organized boundary geometry, not proof of occult Black Cube cosmology."
+    },
+    {
+      "id":"sirius-dog-star-axis",
+      "attestation":"North + Sirius/Dog Star + Axis appeared explicitly in Tim's March 31, 2026 thought archive.",
+      "science":"Sirius is a bright binary system and is not the north celestial pole.",
+      "implementation":"Every Sirius/North statement should carry epoch, coordinate frame, RA/Dec or galactic coordinates, observer location/time if horizon direction is intended, and proper-motion caveat.",
+      "open_target":"Recover original 'point to Sirius' geometry before assigning a canonical vector relation."
+    },
+    {
+      "id":"precession-eye",
+      "equation":"Ω_p≈2π/T_p",
+      "science":"Earth's axial precession changes pole orientation over roughly 26 kyr.",
+      "timic_deduction":"Eye/Axis can be modeled as orientation under slow frame drift: reference role may persist while pointer direction changes.",
+      "astrology_boundary":"Precession shifts tropical-vs-sidereal coordinate relations over long times; that is an astronomical fact distinct from astrological meaning assigned to zodiac ages."
+    },
+    {
+      "id":"galactic-center-door",
+      "science":"The Milky Way is a barred spiral galaxy with a central supermassive black hole, Sagittarius A*, embedded in a complex nuclear region.",
+      "project_motif":"galactic center / Door / Axis / toroidal field imagery",
+      "new_deduction":"Center should be typed as dynamical, geometric, observational or symbolic. Galactic-center language does not imply the whole Milky Way is a torus.",
+      "research_target":"Use actual magnetic-field, gas-orbit and nuclear-ring literature for any toroidal-component comparison."
+    },
+    {
+      "id":"barycenter-center-distinction",
+      "science":"In multi-body systems the dynamical center is a barycenter and can move relative to the geometric center of a visible body.",
+      "equation":"r_bar=(Σ_i m_i r_i)/(Σ_i m_i)",
+      "timic_deduction":"'Center' is not one universal thing; source-center, relational center and center-of-mass should stay separate."
+    },
+    {
+      "id":"orbital-resonance",
+      "equations":["n≈√(GM/a³)","resonance when p n_1≈q n_2 for integers p,q"],
+      "project_value":"Repeated celestial cycles can couple through resonance without becoming numerological identity.",
+      "open_target":"Recover any Tim-authored Moon/Earth or Saturn resonance equations before attributing later orbital formulas to him."
+    }
+  ],
+  "astrology_crosswalk":[
+    {
+      "topic":"zodiac",
+      "historical_definition":"A band of sky associated with ecliptic constellations/sign systems; tropical and sidereal zodiacs use different reference conventions.",
+      "science_boundary":"Constellation boundaries, Earth's precession and apparent planetary positions are astronomical; personality/fate claims are astrological interpretations and require separate evidence.",
+      "project_use":"Zodiac symbolism can be archived as cultural language around cycles, animals, elements, kingship or timing without being treated as physical causation."
+    },
+    {
+      "topic":"Saturn astrology",
+      "historical_symbols":["time","constraint","boundary","age","harvest","discipline"],
+      "project_overlap":"These symbol fields strongly resemble Potatoverse Saturn/Farmer/boundary language.",
+      "rule":"Record this as historical-symbolic correspondence, not evidence that Saturn physically imposes psychological traits."
+    },
+    {
+      "topic":"Sun astrology",
+      "historical_symbols":["identity","vitality","kingship","center","visibility"],
+      "project_overlap":"Useful comparison to Tim/Sun/source-center language.",
+      "rule":"Keep symbolic genealogy distinct from stellar physics."
+    },
+    {
+      "topic":"Moon astrology",
+      "historical_symbols":["cycle","change","reflection","body","habit","timing"],
+      "project_overlap":"Useful comparison to Moon/reflection/proxy/cycle motifs.",
+      "rule":"Lunar tides and reflected light are physical; broader psychological meanings are symbolic claims."
+    },
+    {
+      "topic":"astrological houses vs House",
+      "historical_definition":"Astrological houses divide a horoscope into sectors according to a chosen house system.",
+      "project_overlap":"Lexical overlap with House/mansions is interesting but should not imply shared origin or identical mathematics.",
+      "new_deduction":"Use a general 'partition of state/sky into domains' comparator only when the partition rule is explicit."
+    }
+  ],
+  "new_timic_celestial_propositions":[
+    {
+      "name":"Source–Reflector–Observer Triangle",
+      "formalism":"Y_O=T_SO X_S + T_RO R(X_S,geometry)+η",
+      "statement":"Observed information can contain direct and reflected contributions; source, mediator and observer must be typed separately.",
+      "examples":["Sun-Moon-Earth","primary text-commentary-reader","signal-proxy-follower"]
+    },
+    {
+      "name":"Ring–Spiral Distinction",
+      "statement":"Ring is recurrence under approximately fixed level/radius; Spiral is recurrence with systematic state/scale/height change.",
+      "formalism":"ring: r≈const; spiral: dr/dθ≠0 or latent state m_(n+1)≠m_n",
+      "use":"Apply this consistently to Saturn/rings, life cycles and historical return motifs."
+    },
+    {
+      "name":"Celestial Epoch Principle",
+      "statement":"Any claim about a direction, pole, star alignment or celestial coordinate is incomplete without an epoch/frame when precession/proper motion matter.",
+      "implementation":"Add epoch and frame fields to celestial records."
+    },
+    {
+      "name":"Emergent Geometry Principle",
+      "statement":"Stable geometric patterns can emerge from dynamics and boundary conditions rather than from rigid geometric objects.",
+      "neighbors":["Saturn hexagon","reaction-diffusion patterns","vortices","standing waves"],
+      "project_value":"Strengthens the idea that form can be an organized behavior of flow."
+    }
+  ],
+  "open_recovery_targets":[
+    "Sun-face geometry",
+    "Sirius pointing geometry",
+    "precession-Eye calculation",
+    "115,000-mile torus / spiraling-light calculation",
+    "original Saturn resonance/ring equation",
+    "original Moon/Earth orbital equation",
+    "any Tim-authored astrology/zodiac model beyond symbolic references",
+    "original galactic-center Door or Milky-Way torus calculation",
+    "any Kerr/frame-dragging or black-hole spin calculation"
+  ],
+  "connections":["science-master-index","potatoism-planetary-cosmology","timic-principle-theorem-registry","conversation-recovery-derived-results","celestial-orbits-particles-cmb-expansion-wave-004"]
+}
