@@ -3,7 +3,8 @@
 
 This checker protects the registry from becoming another untyped overlap dump.
 It validates unique IDs, relation/discovery vocabularies, required provenance fields,
-owner paths, and chronological source-direction metadata.
+owner paths, chronological source-direction metadata, and the richer dossier contract
+used for high-value contextual comparisons.
 """
 from __future__ import annotations
 
@@ -16,6 +17,18 @@ FIELD = ROOT / "knowledge/traditions/biblical-syncretism-field.json"
 FRAGMENTS = ROOT / "knowledge/traditions/biblical-passage-fragments.json"
 
 REQUIRED = {"id", "actor", "project_anchor", "discovery_mode", "relation_class", "biblical_refs", "motifs", "strength", "owners"}
+SCENE_STATUSES = {"exact", "recovered", "adjacent-context", "date-only", "unknown"}
+RICH_SCENE_KEYS = {"setting", "activity", "conversation_trigger", "participants", "surrounding_topics", "lead_up", "before", "after"}
+
+
+def nonempty(value: object) -> bool:
+    if value is None:
+        return False
+    if isinstance(value, str):
+        return bool(value.strip())
+    if isinstance(value, (list, dict, tuple, set)):
+        return bool(value)
+    return True
 
 
 def main() -> int:
@@ -28,6 +41,15 @@ def main() -> int:
         errors.append("biblical passage fragment IDs must be unique")
     if fragment_data.get("translation") != "World English Bible (WEB)":
         errors.append("passage fragments must identify the World English Bible (WEB) translation")
+
+    dossier_contract = data.get("dossier_contract")
+    if not isinstance(dossier_contract, dict):
+        errors.append("biblical field missing dossier_contract")
+    else:
+        statuses = set(dossier_contract.get("scene_source_statuses", []))
+        if not SCENE_STATUSES.issubset(statuses):
+            errors.append("dossier_contract must declare exact/recovered/adjacent-context/date-only/unknown scene statuses")
+
     rows = data.get("relations")
     if not isinstance(rows, list) or not rows:
         errors.append("relations must be a non-empty list")
@@ -71,13 +93,49 @@ def main() -> int:
         if row.get("relation_class") in {"later-structural-parallel", "research-unlock"} and not row.get("date"):
             errors.append(f"{where}: later/research relation requires a date")
 
+        scene = row.get("scene_context")
+        if scene is not None:
+            if not isinstance(scene, dict):
+                errors.append(f"{where}: scene_context must be an object")
+            else:
+                status = scene.get("source_status")
+                if status not in SCENE_STATUSES:
+                    errors.append(f"{where}: invalid scene_context.source_status {status!r}")
+                if status in {"date-only", "unknown"}:
+                    unsupported = sorted(key for key in RICH_SCENE_KEYS if nonempty(scene.get(key)))
+                    if unsupported:
+                        errors.append(f"{where}: {status} scene cannot assert rich context fields: {', '.join(unsupported)}")
+
+        if row.get("dossier_level") == "A":
+            if not row.get("title"):
+                errors.append(f"{where}: Level-A dossier requires title")
+            if not isinstance(scene, dict) or scene.get("source_status") not in SCENE_STATUSES:
+                errors.append(f"{where}: Level-A dossier requires typed scene_context")
+            if not row.get("wording_status"):
+                errors.append(f"{where}: Level-A dossier requires wording_status")
+            if not row.get("mechanisms"):
+                errors.append(f"{where}: Level-A dossier requires mechanisms")
+            argument = row.get("relation_argument")
+            if not isinstance(argument, dict):
+                errors.append(f"{where}: Level-A dossier requires relation_argument object")
+            else:
+                for key in ("project_sequence", "biblical_sequence", "why_dense", "maximum_claim"):
+                    if not nonempty(argument.get(key)):
+                        errors.append(f"{where}: Level-A relation_argument requires {key}")
+            discovery = row.get("discovery_history")
+            if not isinstance(discovery, dict) or not nonempty(discovery.get("source_direction")):
+                errors.append(f"{where}: Level-A dossier requires discovery_history.source_direction")
+            if strength in {4, 5} and not any(nonempty(row.get(key)) for key in ("mismatch", "counter_text", "weaknesses", "boundary", "source_correction")):
+                errors.append(f"{where}: strength-{strength} Level-A dossier requires mismatch/counter-fit boundary")
+
     if errors:
         print("Biblical Syncretism Field: FAIL")
         for e in errors:
             print(" -", e)
         return 1
 
-    print(f"Biblical Syncretism Field: OK — {len(rows)} relations, {len(seen)} unique IDs, {len(fragments)} passage fragments")
+    full_dossiers = sum(row.get("dossier_level") == "A" for row in rows)
+    print(f"Biblical Syncretism Field: OK — {len(rows)} relations, {len(seen)} unique IDs, {len(fragments)} passage fragments, {full_dossiers} Level-A dossiers")
     return 0
 
 
