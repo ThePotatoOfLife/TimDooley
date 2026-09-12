@@ -172,29 +172,41 @@ function focusCapital(code, options = {}) {
   map.easeTo({ center: [Number(coords[0]), Number(coords[1])], zoom, pitch: Math.min(map.getPitch(), 45), duration: 750 });
   return true;
 }
-function countryHtml(properties) {
+async function scalarObservation(code, metricId) {
+  const runtime = window.__potatoAtlasDataRuntime;
+  if (!runtime?.ready) return null;
+  if (metricId === 'population' && runtime.populationObservation) return runtime.populationObservation(code);
+  if (metricId === 'area' && runtime.areaObservation) return runtime.areaObservation(code);
+  const data = await runtime.ready;
+  return data?.scalars?.by_entity?.[String(code || '').toUpperCase()]?.[metricId] || null;
+}
+async function populationObservation(code) { return scalarObservation(code, 'population'); }
+async function areaObservation(code) { return scalarObservation(code, 'area'); }
+async function countryHtml(properties) {
   const code = String(properties.iso3 || properties.cca3 || properties.ISO_A3 || properties.id || '').toUpperCase();
   const demography = code ? window.__potatoAtlasDemography?.countries?.[code] : null;
   const facts = code ? window.__potatoAtlasCountryFacts?.countries?.[code] : null;
-  const population = demography?.population?.value ?? properties.population;
-  const populationYear = demography?.population?.year;
+  const [populationCell, areaCell] = await Promise.all([populationObservation(code), areaObservation(code)]);
+  const population = populationCell?.value ?? demography?.population?.value ?? properties.population;
+  const populationYear = populationCell?.period ?? demography?.population?.year;
   const name = facts?.name || demography?.name || properties.name || properties.NAME || properties.ADMIN || code || 'Country';
   const capital = facts?.capital || properties.capital || '—';
-  const area = facts?.area_km2 ?? properties.area;
+  const area = areaCell?.value ?? facts?.area_km2 ?? properties.area;
+  const areaDefinition = areaCell?.definition ? ` <span class="muted">(${escapeHtml(areaCell.definition)})</span>` : '';
   const region = [facts?.region || facts?.continent || properties.region, facts?.subregion || properties.subregion].filter(Boolean).join(' · ') || '—';
   const currency = facts?.currency;
   const yearText = populationYear ? ` <span class="muted">(${escapeHtml(populationYear)})</span>` : '';
   const currencyText = currency ? `<div>Currency: ${escapeHtml(currency)}</div>` : '';
-  return `<div class="atlas-hover"><b>${escapeHtml(name)}</b><div>Population: ${number(population)}${yearText}</div><div>Capital: ${escapeHtml(capital)}</div><div>Area: ${number(area)} km²</div><div>${escapeHtml(region)}</div>${currencyText}</div>`;
+  return `<div class="atlas-hover"><b>${escapeHtml(name)}</b><div>Population: ${number(population)}${yearText}</div><div>Capital: ${escapeHtml(capital)}</div><div>Area: ${number(area)} km²${areaDefinition}</div><div>${escapeHtml(region)}</div>${currencyText}</div>`;
 }
 function capitalHtml(properties) { return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div class="muted">Capital city · ${escapeHtml(properties.iso3 || '')}</div></div>`; }
 function showPopup(event, html) { popup.setLngLat(event.lngLat).setHTML(html).addTo(map); }
 function bindCountryHover(layerId) {
-  map.on('mousemove', layerId, event => {
+  map.on('mousemove', layerId, async event => {
     const feature = event.features?.[0];
     if (!feature) return;
     map.getCanvas().style.cursor = 'pointer';
-    showPopup(event, countryHtml(feature.properties || {}));
+    showPopup(event, await countryHtml(feature.properties || {}));
   });
   map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; popup.remove(); });
 }
