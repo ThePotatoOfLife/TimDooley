@@ -1,120 +1,55 @@
-const $ = s => document.querySelector(s);
-const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const selection = window.__potatoAtlasSelection;
+if (!selection) throw new Error('Path requires current selection API.');
 
-// Path is an investigation tool, so its controls belong inside the progressive
-// Trace menu rather than on the persistent map toolbar.
-const traceMenu = $('#traceMenu .menu-pop');
-const input = document.createElement('input');
-input.id = 'pathTarget';
-input.setAttribute('list', 'country-list');
-input.setAttribute('placeholder', 'Path to country…');
-input.setAttribute('aria-label', 'Find relationship path to country');
-input.title = 'Find the shortest known path from the selected country using the current relation-type filter';
-const button = document.createElement('button');
-button.id = 'pathFind';
-button.textContent = 'Find relationship path';
-button.title = 'Find shortest typed relationship path';
-if (traceMenu) {
-  const sep = document.createElement('div');
-  sep.className = 'menu-sep';
-  const title = document.createElement('div');
-  title.className = 'menu-title';
-  title.textContent = 'Shortest represented path';
-  traceMenu.append(sep, title, input, button);
-} else {
-  console.warn('Trace menu unavailable; Path controls were not mounted');
-  input.hidden = true;
-  button.hidden = true;
-}
-
-const style = document.createElement('style');
-style.textContent = `.path-result{position:absolute;right:12px;bottom:12px;z-index:4;width:min(520px,calc(100% - 24px));max-height:46%;overflow:auto;background:#080b0bf2;border:1px solid var(--line);border-radius:10px;padding:11px}.path-result[hidden]{display:none}.path-head{display:flex;justify-content:space-between;gap:8px;align-items:center}.path-steps{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin:9px 0}.path-step{background:var(--panel2);border:1px solid var(--line);color:var(--ink);padding:5px 7px;border-radius:7px}.path-arrow{color:var(--muted)}.path-edge{padding:6px 0;border-top:1px solid var(--line);font-size:12px}@media(max-width:900px){.path-result{position:fixed;bottom:10px;right:10px;left:10px;width:auto;max-height:40vh}}`;
-document.head.appendChild(style);
-
-const box = document.createElement('section');
-box.id = 'pathResult';
-box.className = 'path-result';
-box.hidden = true;
-document.querySelector('.mapwrap')?.appendChild(box);
-
+const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 let worldCfg = null;
-let countries = [];
-let by3 = {};
+let currentPath = null;
 
 async function fetchJson(url) {
-  const response = await fetch(url);
+  const response = await fetch(url, { cache:'no-cache' });
   if (!response.ok) throw new Error(`${url} returned HTTP ${response.status}`);
   return response.json();
 }
 
-function normalizeFacts(payload) {
-  const rows = payload?.countries || {};
-  return Object.entries(rows).map(([cca3, row]) => ({
-    cca3,
-    name: {
-      common: row?.name || cca3,
-      official: row?.official_name || row?.name || cca3,
-    },
-  }));
-}
-
-async function loadCountryNames() {
-  try {
-    const facts = await fetchJson('../data/world-country-facts.json');
-    const normalized = normalizeFacts(facts);
-    if (normalized.length >= 190) return normalized;
-    throw new Error(`local facts coverage too low: ${normalized.length}`);
-  } catch (localError) {
-    console.warn('Local country facts unavailable for Path; trying REST Countries', localError);
-    const live = await fetchJson('https://restcountries.com/v3.1/all?fields=name,cca3');
-    if (!Array.isArray(live) || live.filter(x => x?.cca3).length < 190) {
-      throw new Error('REST Countries pathfinder coverage unexpectedly low');
-    }
-    return live;
-  }
-}
-
 try {
-  const [world, countryRows] = await Promise.all([
-    fetchJson('../data/world-relational-map.json'),
-    loadCountryNames(),
-  ]);
-  worldCfg = world;
-  countries = countryRows;
-  by3 = Object.fromEntries(countries.filter(x => x.cca3).map(x => [x.cca3, x]));
+  worldCfg = await fetchJson('../data/world-relational-map.json');
 } catch (error) {
   console.warn('Path finder unavailable', error);
-  button.disabled = true;
-  button.title = 'Path finder data could not be loaded';
 }
 
-function nameFor(code) { return by3[code]?.name?.common || code; }
-function currentRoot() { return new URL(location.href).searchParams.get('country')?.toUpperCase() || null; }
-function currentType() { return $('#relationType')?.value || 'all'; }
+function currentRoot() { return selection.current?.activeCode || selection.current?.code || null; }
+function currentMode() { return selection.getRelationMode?.() || 'all'; }
 function filteredEdges() {
-  const type = currentType();
-  return (worldCfg?.curated_edges || []).filter(e => type === 'all' || (e.types || []).includes(type));
+  const mode = currentMode();
+  return (worldCfg?.curated_edges || []).filter(edge => selection.edgeMatchesRelationMode?.(edge, mode) ?? true);
 }
+function nameFor(code) { return selection.countryName?.(code) || code; }
 function resolveCountry(query) {
-  const q = String(query || '').trim().toLowerCase();
-  if (!q) return null;
-  const bracket = q.match(/\(([a-z]{3})\)$/i)?.[1];
-  const code = (bracket || q).toUpperCase();
-  if (by3[code]) return code;
-  const exact = countries.find(x => x.name?.common?.toLowerCase() === q || x.name?.official?.toLowerCase() === q);
-  if (exact) return exact.cca3;
-  return countries.find(x => x.name?.common?.toLowerCase().includes(q) || x.name?.official?.toLowerCase().includes(q))?.cca3 || null;
+  const raw = String(query || '').trim();
+  if (!raw) return null;
+  const bracket = raw.match(/\(([A-Za-z]{3})\)$/)?.[1];
+  const direct = String(bracket || raw).toUpperCase();
+  const candidates = new Set();
+  for (const edge of worldCfg?.curated_edges || []) { candidates.add(edge.a); candidates.add(edge.b); }
+  for (const code of selection.current?.selectedCodes || []) candidates.add(code);
+  if (/^[A-Z]{3}$/.test(direct) && (candidates.has(direct) || nameFor(direct) !== direct)) return direct;
+  const lower = raw.toLowerCase();
+  const exact = [...candidates].find(code => String(nameFor(code)).toLowerCase() === lower);
+  if (exact) return exact;
+  return [...candidates].find(code => String(nameFor(code)).toLowerCase().includes(lower)) || null;
 }
+
 function shortestPath(start, target) {
   if (!start || !target) return null;
-  if (start === target) return {codes:[start], edges:[]};
+  if (start === target) return { codes:[start], edges:[] };
   const adjacency = new Map();
   for (const edge of filteredEdges()) {
     if (!adjacency.has(edge.a)) adjacency.set(edge.a, []);
     if (!adjacency.has(edge.b)) adjacency.set(edge.b, []);
-    adjacency.get(edge.a).push({next:edge.b, edge});
-    adjacency.get(edge.b).push({next:edge.a, edge});
+    adjacency.get(edge.a).push({ next:edge.b, edge });
+    adjacency.get(edge.b).push({ next:edge.a, edge });
   }
+  for (const rows of adjacency.values()) rows.sort((a,b) => String(a.next).localeCompare(String(b.next)));
   const queue = [start];
   const seen = new Set([start]);
   const parent = new Map();
@@ -123,76 +58,133 @@ function shortestPath(start, target) {
     for (const step of adjacency.get(code) || []) {
       if (seen.has(step.next)) continue;
       seen.add(step.next);
-      parent.set(step.next, {code, edge:step.edge});
+      parent.set(step.next, { code, edge:step.edge });
       if (step.next === target) {
         const codes = [target], edges = [];
         let cursor = target;
         while (cursor !== start) {
-          const p = parent.get(cursor);
-          if (!p) return null;
-          edges.push(p.edge);
-          cursor = p.code;
+          const previous = parent.get(cursor);
+          if (!previous) return null;
+          edges.push(previous.edge);
+          cursor = previous.code;
           codes.push(cursor);
         }
-        return {codes:codes.reverse(), edges:edges.reverse()};
+        return { codes:codes.reverse(), edges:edges.reverse() };
       }
       queue.push(step.next);
     }
   }
   return null;
 }
-function closePath() {
+
+function install() {
+  if (document.getElementById('atlasPathContext')) return;
+  const style = document.createElement('style');
+  style.id = 'atlasPathStyle';
+  style.textContent = `
+    #atlasPathContext{position:absolute;right:10px;bottom:10px;z-index:8;width:min(430px,calc(100% - 20px));max-height:min(58vh,560px);overflow:auto;padding:11px 12px;background:#080c0ced;border:1px solid #465754;border-radius:11px;box-shadow:0 10px 28px #0009;backdrop-filter:blur(11px)}#atlasPathContext[hidden]{display:none!important}.path-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.path-head small{display:block;color:#83918b;font-size:8px;text-transform:uppercase;letter-spacing:.1em}.path-head b{display:block;color:#eee2b4;font-size:14px;margin-top:2px}.path-close{border:0;background:transparent;color:#98a49e;font-size:16px;cursor:pointer}.path-form{display:flex;gap:5px;margin-top:9px}.path-form input{flex:1;min-width:0;padding:7px 8px;border:1px solid #344440;border-radius:7px;background:#101616;color:#e8efea}.path-form button{padding:7px 9px;border:1px solid #344440;border-radius:7px;background:#15201e;color:#d9e7df}.path-steps{display:flex;gap:5px;align-items:center;flex-wrap:wrap;margin:9px 0}.path-step{background:#131c1b;border:1px solid #344440;color:#dfe8e3;padding:5px 7px;border-radius:7px;cursor:pointer}.path-arrow{color:#83918b}.path-edge{padding:6px 0;border-top:1px solid #263230;font-size:10px}.path-edge span{display:block;margin-top:2px;color:#8f9c96}.path-boundary{margin-top:9px;padding-top:7px;border-top:1px solid #33413f;color:#77847e;font-size:9px;line-height:1.35}.path-empty{margin-top:9px;color:#9aa6a0;font-size:10px;line-height:1.4}@media(max-width:900px){#atlasPathContext{right:8px;bottom:58px;width:min(400px,calc(100% - 16px));max-height:48vh}}
+  `;
+  document.head.appendChild(style);
+  const box = document.createElement('section');
+  box.id = 'atlasPathContext';
   box.hidden = true;
-  const u = new URL(location.href);
-  u.searchParams.delete('path');
-  history.replaceState({}, '', u);
+  box.innerHTML = `<div class="path-head"><div><small>Shortest represented path</small><b data-path-title>Select a destination</b></div><button type="button" class="path-close" data-path-clear aria-label="Clear path">×</button></div><form class="path-form" data-path-form><input data-path-target list="country-list" placeholder="Path to country…" aria-label="Find represented relationship path"><button type="submit">Find</button></form><div data-path-result></div>`;
+  document.querySelector('.mapwrap')?.appendChild(box);
+  box.addEventListener('click', event => {
+    if (event.target.closest('[data-path-clear]')) { clear(); return; }
+    const code = event.target.closest('[data-path-code]')?.dataset.pathCode;
+    if (code) selection.activate?.(code, { add:false });
+  });
+  box.querySelector('[data-path-form]')?.addEventListener('submit', event => {
+    event.preventDefault();
+    const value = box.querySelector('[data-path-target]')?.value || '';
+    run(value);
+  });
 }
-window.closeAtlasPath = closePath;
+
+function box() { return document.getElementById('atlasPathContext'); }
+function resultNode() { return box()?.querySelector('[data-path-result]'); }
+function targetInput() { return box()?.querySelector('[data-path-target]'); }
+function titleNode() { return box()?.querySelector('[data-path-title]'); }
+function persist(start, target) {
+  const url = new URL(location.href);
+  if (start && target) url.searchParams.set('path', `${start},${target}`);
+  else url.searchParams.delete('path');
+  history.replaceState({}, '', url);
+}
+
 function renderPath(start, target, path) {
-  const type = currentType();
+  const node = resultNode();
+  if (!node) return;
+  const mode = currentMode();
+  if (titleNode()) titleNode().textContent = `${nameFor(start)} → ${nameFor(target)}`;
   if (!path) {
-    box.hidden = false;
-    box.innerHTML = `<div class="path-head"><b>No known path</b><button onclick="closeAtlasPath()">×</button></div><p class="muted">No route from ${esc(nameFor(start))} to ${esc(nameFor(target))} exists in the currently curated graph${type === 'all' ? '' : ` with relation type “${esc(type)}”`}. This means “not represented in this dataset,” not “no real-world relationship exists.”</p>`;
+    node.innerHTML = `<div class="path-empty">No represented path from ${esc(nameFor(start))} to ${esc(nameFor(target))}${mode === 'all' ? '' : ` under the ${esc(mode)} filter`}. This means “not represented in this dataset,” not “no real-world relationship exists.”</div><div class="path-boundary">This is a shortest path in the represented graph under the active filter, not necessarily the shortest or strongest relationship in the real world.</div>`;
     return;
   }
-  const steps = path.codes.map((code, i) => `${i ? '<span class="path-arrow">→</span>' : ''}<button class="path-step" onclick="goCountry('${esc(code)}')">${esc(nameFor(code))}</button>`).join('');
-  const edgeRows = path.edges.map((edge, i) => `<div class="path-edge"><b>${i + 1}. ${esc(nameFor(path.codes[i]))} ↔ ${esc(nameFor(path.codes[i+1]))}</b><div class="muted">${esc((edge.types || []).join(' · ') || edge.layer || 'relation')} · ${esc(edge.layer || 'curated')}</div></div>`).join('');
-  box.hidden = false;
-  box.innerHTML = `<div class="path-head"><div><b>Shortest known relationship path</b><div class="muted">${path.edges.length} hop${path.edges.length === 1 ? '' : 's'} · ${type === 'all' ? 'all relation types' : esc(type)}</div></div><button onclick="closeAtlasPath()">×</button></div><div class="path-steps">${steps}</div>${edgeRows}<div class="boundary">This is shortest path in the curated graph under the active filter, not necessarily the shortest or strongest relationship in the real world.</div>`;
+  const steps = path.codes.map((code, index) => `${index ? '<span class="path-arrow">→</span>' : ''}<button type="button" class="path-step" data-path-code="${esc(code)}">${esc(nameFor(code))}</button>`).join('');
+  const rows = path.edges.map((edge, index) => `<div class="path-edge"><b>${index + 1}. ${esc(nameFor(path.codes[index]))} ↔ ${esc(nameFor(path.codes[index + 1]))}</b><span>${esc((edge.types || []).join(' · ') || edge.layer || 'relation')} · ${esc(edge.layer || 'curated')}</span></div>`).join('');
+  node.innerHTML = `<div class="path-steps">${steps}</div>${rows}<div class="path-boundary">${path.edges.length} hop${path.edges.length === 1 ? '' : 's'} · ${mode === 'all' ? 'all relation modes' : esc(mode)}. This is a shortest path in the represented graph under the active filter, not necessarily the shortest or strongest relationship in the real world.</div>`;
 }
-function runPath(targetValue=input.value, persist=true) {
-  const start = currentRoot();
+
+function showFor(sourceCode = currentRoot()) {
+  install();
+  const source = String(sourceCode || '').toUpperCase();
+  if (!source) return false;
+  const node = box();
+  node.hidden = false;
+  currentPath = { source, target:null };
+  if (titleNode()) titleNode().textContent = `From ${nameFor(source)}`;
+  if (resultNode()) resultNode().innerHTML = '<div class="path-empty">Choose a destination to inspect the shortest represented relationship path.</div>';
+  targetInput()?.focus();
+  return true;
+}
+
+function run(targetValue, { persistState=true } = {}) {
+  install();
+  const start = currentPath?.source || currentRoot();
   const target = resolveCountry(targetValue);
+  const node = box();
+  node.hidden = false;
   if (!start) {
-    box.hidden = false;
-    box.innerHTML = '<div class="path-head"><b>Select a starting country first</b><button onclick="closeAtlasPath()">×</button></div><p class="muted">Click or search for a country, then choose a destination.</p>';
-    return;
+    resultNode().innerHTML = '<div class="path-empty">Select a starting country first.</div>';
+    return false;
   }
   if (!target) {
-    box.hidden = false;
-    box.innerHTML = '<div class="path-head"><b>Destination not found</b><button onclick="closeAtlasPath()">×</button></div><p class="muted">Choose a country name or ISO3 code from the suggestions.</p>';
-    return;
+    resultNode().innerHTML = '<div class="path-empty">Destination not found in the represented relationship graph.</div>';
+    return false;
   }
-  input.value = `${nameFor(target)} (${target})`;
   const path = shortestPath(start, target);
+  currentPath = { source:start, target };
+  if (targetInput()) targetInput().value = `${nameFor(target)} (${target})`;
   renderPath(start, target, path);
-  if (persist) {
-    const u = new URL(location.href);
-    u.searchParams.set('path', `${start},${target}`);
-    history.replaceState({}, '', u);
-  }
+  if (persistState) persist(start, target);
+  window.dispatchEvent(new CustomEvent('potato-atlas-path-change', { detail:{ source:start, target, path, mode:currentMode() } }));
+  return true;
 }
-button.addEventListener('click', () => runPath());
-input.addEventListener('keydown', e => { if (e.key === 'Enter') runPath(); });
-$('#relationType')?.addEventListener('change', () => {
-  if (!box.hidden && input.value) runPath(input.value, false);
+
+function clear() {
+  currentPath = null;
+  if (box()) box().hidden = true;
+  persist(null, null);
+  window.dispatchEvent(new CustomEvent('potato-atlas-path-change', { detail:{ source:null, target:null, path:null, mode:currentMode() } }));
+  return true;
+}
+function current() { return currentPath ? { ...currentPath } : null; }
+
+install();
+window.__potatoAtlasPath = { showFor, run, clear, current, shortestPath };
+window.addEventListener('potato-atlas-relation-mode-change', () => {
+  if (currentPath?.target) run(currentPath.target, { persistState:false });
 });
 
 const restored = new URL(location.href).searchParams.get('path');
 if (restored && worldCfg) {
-  const [start, target] = restored.split(',').map(x => x?.toUpperCase());
+  const [start, target] = restored.split(',').map(value => String(value || '').toUpperCase());
   if (start && target) {
-    const current = currentRoot();
-    if (current === start) runPath(target, false);
+    showFor(start);
+    run(target, { persistState:false });
+  } else {
+    clear();
   }
 }
