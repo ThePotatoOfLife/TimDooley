@@ -1,0 +1,103 @@
+{
+  "id": "capability-value-resilience-chain",
+  "title": "Capability → Value → Resilience Chain",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "North Programme systems synthesis recovered from prior project conversations; analytical model, not a universal causal law",
+  "purpose": "Make an important North Programme mechanism explicit as a reusable graph: how secure foundational systems can enable compute and AI, how those capabilities can raise productive and industrial capacity, and how value creation can feed fiscal, social, infrastructure and strategic resilience. The model also records where the chain can break.",
+  "core_chain": [
+    "secure energy",
+    "compute",
+    "AI capability",
+    "productivity",
+    "industrial capability",
+    "exports / value creation",
+    "tax base",
+    "welfare / defense / infrastructure capacity",
+    "resilience / autonomy"
+  ],
+  "interpretation": "The chain is intentionally relational. A country may possess strong individual nodes yet fail to convert them into durable capability if key edges are blocked. Conversely, several countries can jointly complete a chain that none can sustain alone.",
+  "breakpoints": [
+    {"id":"grids","mechanism":"Insufficient generation, transmission, balancing or interconnection can prevent energy abundance from becoming reliable industrial/compute capacity."},
+    {"id":"capital","mechanism":"Projects with technical viability can still fail if financing, risk allocation or investment depth is inadequate."},
+    {"id":"permitting","mechanism":"Slow, unpredictable or fragmented permitting can turn nominal resources into unavailable capacity."},
+    {"id":"skills","mechanism":"Compute and industrial assets require skilled labor, education, migration pathways and organizational competence."},
+    {"id":"semiconductors","mechanism":"AI and advanced industry can depend on foreign chips, fabrication tools, packaging or supply-chain nodes."},
+    {"id":"data","mechanism":"Compute without usable, lawful, interoperable data can fail to produce high-value applications."},
+    {"id":"cybersecurity","mechanism":"Digitized infrastructure and AI increase attack surface; weak cyber resilience can reverse productivity gains into systemic risk."},
+    {"id":"environment","mechanism":"Energy, compute and industrial expansion can fail politically, ecologically or economically if resource, water, land, biodiversity or emissions constraints are ignored."},
+    {"id":"interconnection","mechanism":"National capability can remain stranded when physical, digital, financial or regulatory links to partners are weak."},
+    {"id":"market-conversion","mechanism":"Research and technical capability do not automatically become firms, exports, productivity or public revenue."}
+  ],
+  "coupled_capability": {
+    "definition": "A capability that becomes available only through relationships among multiple countries, institutions, firms or infrastructures.",
+    "examples": [
+      "renewable generation in one country + interconnector + storage/flexibility in another + industrial demand in a third",
+      "research university + venture/scale capital + semiconductor supply + cloud/AI compute + export market",
+      "Arctic geography + satellites + ports + naval/coast-guard capability + allied logistics",
+      "national data assets + interoperable identity/permissions + shared legal rules + cross-border compute"
+    ],
+    "rule": "Do not assign a jointly produced capability to one node merely because one participant is the most visible."
+  },
+  "feedback_loops": [
+    {
+      "id":"productive-fiscal-loop",
+      "sequence":["productivity", "value creation", "tax base", "public investment", "skills/infrastructure", "productivity"],
+      "risk":"The loop can reverse when investment falls, tax capacity erodes or public spending does not improve capability."
+    },
+    {
+      "id":"energy-industry-loop",
+      "sequence":["secure energy", "industrial investment", "demand certainty", "grid/energy investment", "secure energy"],
+      "risk":"Badly designed subsidies, bottlenecks or stranded assets can make the loop expensive without producing resilience."
+    },
+    {
+      "id":"ai-capability-loop",
+      "sequence":["compute/data/talent", "AI applications", "productivity/research", "capital/value", "more compute/data/talent"],
+      "risk":"Concentration, imported platform dependence, weak adoption or poor governance can capture value outside the participating economy."
+    }
+  ],
+  "functional_chain_links": [
+    "Arctic chain",
+    "North Atlantic chain",
+    "Baltic chain",
+    "Northern Energy chain",
+    "European Industrial chain",
+    "Eastern Security chain",
+    "European Strategic-Autonomy chain"
+  ],
+  "country_question_sequence": [
+    "What is the country?",
+    "What does it have?",
+    "What can it do?",
+    "What does it need?",
+    "Who depends on it?",
+    "What does it depend on?",
+    "What can it only do with others?",
+    "What can others only do with it?",
+    "What is it building?",
+    "Where is it going?"
+  ],
+  "measurement_candidates": [
+    "energy price/reliability/capacity",
+    "grid/interconnection capacity",
+    "compute capacity and access",
+    "R&D intensity and research quality",
+    "AI adoption and digital intensity",
+    "labor productivity",
+    "industrial output/value added",
+    "export complexity and external balance",
+    "tax revenue and fiscal capacity",
+    "infrastructure investment",
+    "critical import concentration",
+    "defense-industrial capacity",
+    "recovery time after shocks"
+  ],
+  "epistemic_rule": "Each edge in a country-specific implementation should be supported separately. This model suggests mechanisms and questions; it does not prove that spending on an upstream node will automatically produce every downstream outcome.",
+  "connections": [
+    "knowledge/core/european-coupling-programme.json",
+    "knowledge/core/country-relational-method.json",
+    "data/north-programme-atlas.json",
+    "knowledge/indexes/north-conversation-recovery-wave-2026-09-10.json",
+    "knowledge/indexes/chatgpt-memory-recovery-wave-2026-09-12.json"
+  ]
+}
