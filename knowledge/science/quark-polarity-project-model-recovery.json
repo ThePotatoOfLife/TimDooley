@@ -1,47 +1,23 @@
 {
   "id":"quark-polarity-project-model-recovery",
   "title":"Up/Down Quark Polarity — Project Model Recovery and Physics Audit",
-  "updated":"2026-09-09",
+  "updated":"2026-09-12",
   "status":"conversation archaeology: symbolic polarity built on real quark charge arithmetic; later assistant expansions over-literalized it",
+  "abstract":"The Up/Down Quark Polarity record contains two different objects that become useful only when they are kept typed apart. The first is established particle physics: up and down quarks carry fractional electric charges, combine as uud and udd in proton/neutron valence structure, and participate in QCD, electroweak and electromagnetic interactions according to their quantum numbers. The second is a project-specific symbolic coordinate that uses the words up and down for ascent/integration versus descent/grounding. The charge arithmetic is real; the symbolic polarity is a mnemonic state variable and is not quark flavor evolution, gravity, morality or consciousness. The scientific value of the record is therefore type discipline and a clean future model-building route: if a physical Potato field is ever proposed to interact with quarks, its Lorentz character and gauge representation must be specified and the allowed gauge-invariant operators derived. Until that is done, the symbolic and particle layers remain related by analogy rather than mechanism.",
+  "research_question":"Can the project preserve an up/down symbolic state coordinate without confusing it with quark quantum numbers, and—if a physical Potato-sector coupling is later proposed—which lowest-dimension Lorentz- and Standard-Model-gauge-invariant quark operators are actually allowed?",
   "purpose":"Preserve the recovered up/down-quark polarity model without confusing valid Standard Model facts with project symbolism or unsupported claims about consciousness, morality, gravity or social behavior.",
-  "recovered_project_core":[
-    "The conversation used the names up and down as a natural symbolic polarity for ascent versus drag/grounding.",
-    "The later 11D synthesis associated the up-quark side with Spudlight/ascending signal and the down-quark side with Mud/weight.",
-    "This polarity was connected in conversation to the broader upward/downward Spiral and Axis vocabulary."
+  "recovered_project_core":["The conversation used the names up and down as a natural symbolic polarity for ascent versus drag/grounding.","The later 11D synthesis associated the up-quark side with Spudlight/ascending signal and the down-quark side with Mud/weight.","This polarity was connected in conversation to the broader upward/downward Spiral and Axis vocabulary."],
+  "established_particle_facts":{"up_quark_charge":"+2/3 e","down_quark_charge":"-1/3 e","proton_valence_content":"uud","proton_charge":"(+2/3)+(+2/3)+(-1/3)=+1","neutron_valence_content":"udd","neutron_charge":"(+2/3)+(-1/3)+(-1/3)=0","binding":"Quarks are bound by QCD/gluon interactions; low-energy nuclear binding between nucleons is a residual strong-interaction phenomenon."},
+  "equation_guide":[
+    {"equation":"Q_p/e=(2/3)+(2/3)-(1/3)=1","variables":"Q_p is proton electric charge and e is the elementary-charge magnitude.","role":"Charge bookkeeping from the proton's uud valence flavors.","plain_language":"Two up-quark charge contributions and one down-quark contribution sum to one positive elementary charge.","boundary":"This arithmetic does not assign spatial upward motion, spiritual ascent or moral sign to an up quark."},
+    {"equation":"Q_n/e=(2/3)-(1/3)-(1/3)=0","variables":"Q_n is neutron electric charge.","role":"Charge bookkeeping from the neutron's udd valence flavors.","plain_language":"The fractional charges cancel to zero net electric charge.","boundary":"Neutrality does not mean the neutron has no internal charged constituents or that 'downness' creates gravity."},
+    {"equation":"p in [-1,+1]","variables":"p is a dimensionless project-symbolic polarity coordinate, not a Standard Model observable.","role":"Definition of a continuous symbolic state variable.","plain_language":"Positive and negative p can encode more ascent/integration versus descent/grounding inside a chosen project model.","boundary":"No map from p to quark flavor, electric charge, mass or moral state is implied."},
+    {"equation":"dp/ds=F_p(p,X)","variables":"s is a project structural-flow coordinate; X denotes other declared project state variables.","role":"Toy dynamical law for how symbolic polarity could change under a structural model.","plain_language":"The rate of change of the symbolic coordinate depends on its current state and whatever other variables the model explicitly includes.","boundary":"s is not physical time or quark-flavor evolution unless a separate physical derivation establishes that meaning."}
   ],
-  "established_particle_facts":{
-    "up_quark_charge":"+2/3 e",
-    "down_quark_charge":"-1/3 e",
-    "proton_valence_content":"uud",
-    "proton_charge":"(+2/3)+(+2/3)+(-1/3)=+1",
-    "neutron_valence_content":"udd",
-    "neutron_charge":"(+2/3)+(-1/3)+(-1/3)=0",
-    "binding":"Quarks are bound by QCD/gluon interactions; low-energy nuclear binding between nucleons is a residual strong-interaction phenomenon."
-  },
-  "safe_project_abstraction":{
-    "binary_polarity":"q_symbolic in {UP,DOWN}",
-    "continuous_version":"p in [-1,+1], with + sign reserved for project ascent/integration and - sign for descent/grounding",
-    "coupled_axis":"dp/ds = F_p(p,X), where s is a project structural-flow coordinate, not physical quark flavor evolution",
-    "purpose":"Use the particle names as mnemonic labels for a polarity while keeping the physics and symbolic state variables typed separately."
-  },
-  "physics_corrections":[
-    "An up quark is not a photon, a light particle or a literal carrier of Spudlight. Its positive fractional electric charge does not mean it inherently moves upward, ascends dimensions or occupies higher electromagnetic frequencies.",
-    "A down quark is not gravity, mud or a generic carrier of mass. Both up and down quarks have mass and participate in the same strong, electromagnetic and weak interactions according to their quantum numbers.",
-    "A neutron is slightly heavier than a proton, but neutron mass is not created by having 'more downness' in the project sense; most nucleon mass arises from QCD binding/dynamics rather than simple addition of bare quark masses.",
-    "Protons attract electrons electromagnetically because of charge, but chemistry is quantum electromagnetic structure; the proton should not be described as creating light or chemistry by itself.",
-    "Human choices, morality, internet behavior, attention or social identity do not change a person's proton/neutron valence-quark composition in the way the old assistant prose claimed.",
-    "No evidence supports moral actions tightening Calabi-Yau geometry, changing quark flavor balance, or causing literal subatomic timeline contraction."
-  ],
-  "relation_to_unification_lineage":[
-    "Standard Model / QCD branch supplies the real particle facts.",
-    "Axis/Dual-Spiral branch supplies the project up/down semantics.",
-    "Mirror/vector model allows the two domains to be compared without identity: particle_charge_projection != symbolic_orientation_projection.",
-    "Any future physical coupling between a Potato field and quarks must be written through a gauge-consistent Lagrangian rather than inferred from English words 'up' and 'down'."
-  ],
-  "future_testable_route":{
-    "question":"Could a hypothetical UPT field P couple to quark bilinears in a gauge-consistent effective field theory?",
-    "candidate_research_form":"Construct operators only after defining the gauge representation and Lorentz character of P; e.g. scalar singlet portal-like operators may be considered in EFT, with dimensions and symmetries explicitly audited.",
-    "boundary":"This is a future model-building question, not evidence for the old symbolic mapping."
-  },
-  "connections":["standard-model","quantum-atom-particle-recovery","eleven-dimensional-axis-door-dual-spiral-recovery","mirror-vector-dimensional-collapse-recovery","unified-potato-theory-2025-recovery","equation-lineage-and-theory-graph","science-master-index"]
+  "safe_project_abstraction":{"binary_polarity":"q_symbolic in {UP,DOWN}","continuous_version":"p in [-1,+1], with + sign reserved for project ascent/integration and - sign for descent/grounding","coupled_axis":"dp/ds = F_p(p,X), where s is a project structural-flow coordinate, not physical quark flavor evolution","purpose":"Use the particle names as mnemonic labels for a polarity while keeping the physics and symbolic state variables typed separately."},
+  "physics_corrections":["An up quark is not a photon, a light particle or a literal carrier of Spudlight. Its positive fractional electric charge does not mean it inherently moves upward, ascends dimensions or occupies higher electromagnetic frequencies.","A down quark is not gravity, mud or a generic carrier of mass. Both up and down quarks have mass and participate in the same strong, electromagnetic and weak interactions according to their quantum numbers.","A neutron is slightly heavier than a proton, but neutron mass is not created by having 'more downness' in the project sense; most nucleon mass arises from QCD binding/dynamics rather than simple addition of bare quark masses.","Protons attract electrons electromagnetically because of charge, but chemistry is quantum electromagnetic structure; the proton should not be described as creating light or chemistry by itself.","Human choices, morality, internet behavior, attention or social identity do not change a person's proton/neutron valence-quark composition in the way the old assistant prose claimed.","No evidence supports moral actions tightening Calabi-Yau geometry, changing quark flavor balance, or causing literal subatomic timeline contraction."],
+  "relation_to_unification_lineage":["Standard Model / QCD branch supplies the real particle facts.","Axis/Dual-Spiral branch supplies the project up/down semantics.","Mirror/vector model allows the two domains to be compared without identity: particle_charge_projection != symbolic_orientation_projection.","Any future physical coupling between a Potato field and quarks must be written through a gauge-consistent Lagrangian rather than inferred from English words 'up' and 'down'."],
+  "future_testable_route":{"question":"Could a hypothetical UPT field P couple to quark bilinears in a gauge-consistent effective field theory?","candidate_research_form":"After defining the Lorentz character and gauge representation of P, enumerate symmetry-allowed operators by mass dimension and compare the minimal set with established scalar/vector portal EFTs.","advancement_gate":"Promote a physical quark-coupling branch only after at least one explicit invariant operator, parameter regime and observable consequence are derived.","boundary":"This is a future model-building question, not evidence for the old symbolic mapping."},
+  "failure_conditions":["Symbolic up/down labels are treated as evidence for physical quark behavior.","A proposed P-quark term is not Lorentz or Standard-Model gauge invariant in the declared field representation.","The physical branch produces no observable distinction from a simpler established EFT after complexity is accounted for."],
+  "connections":["standard-model","quantum-atom-particle-recovery","eleven-dimensional-axis-door-dual-spiral-recovery","mirror-vector-dimensional-collapse-recovery","unified-potato-theory-2025-recovery","equation-lineage-and-theory-graph","science-master-index","science-project-meaning-and-equation-guide-2026-09-12"]
 }
