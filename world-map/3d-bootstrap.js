@@ -108,6 +108,7 @@ try {
   await loadAfterPaint('Investigation Surface', './3d-investigation-surface.js');
   await loadAfterPaint('System Intelligence', './3d-gateways.js');
   await loadAfterPaint('Functional Chains', './3d-chain-explorer.js');
+  await loadAfterPaint('Infrastructure Context', './3d-infrastructure.js');
   await loadAfterPaint('Impact Trace', './3d-impact-trace.js');
   await loadAfterPaint('Impact Actions', './3d-impact-actions.js');
 
