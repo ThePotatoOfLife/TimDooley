@@ -1,18 +1,24 @@
 {
-  "version":"2.3.0",
-  "updated":"2026-09-10",
+  "version":"2.4.0",
+  "updated":"2026-09-12",
   "title":"Timeline Source Registry",
   "purpose":"Declare which project records may emit candidate global timeline events, how they map into the roadmap-first event model, and which high-volume sources should remain specialist ledgers unless an event crosses the public relevance threshold.",
   "canonical_output":"data/timeline-events.json",
   "schema":"schemas/timeline-event.schema.json",
   "promotion_policy":{
-    "promote_when":["major life/project hinge","first attestation or role transition","memorable exact wording","explicit scripture/Bible use useful to the trajectory","later biblical unlock that must remain temporally distinct","dated creative work that materially illuminates development","public-witness milestone","formalization milestone that changes interpretation","dated conversation-archaeology recovery that explains later mythic architecture","administrative/biographical event that materially bridges two already-canonical phases"],
-    "do_not_promote_when":["date exists but adds no new temporal meaning","specialist taxonomy elaboration","repeated restatement without trajectory change","generic comparison without dated project-side anchor","routine repository commit","specialist prophecy audit without a life/project milestone","strong formulation with no supported date"],
+    "promote_when":["major life/project hinge","first attestation or role transition","memorable exact wording","explicit scripture/Bible use useful to the trajectory","later biblical unlock that must remain temporally distinct","dated creative work that materially illuminates development","public-witness milestone","formalization milestone that changes interpretation","dated conversation-archaeology recovery that explains later mythic architecture","administrative/biographical event that materially bridges two already-canonical phases","place/institution transition that materially constrains an otherwise ambiguous chronology"],
+    "do_not_promote_when":["date exists but adds no new temporal meaning","specialist taxonomy elaboration","repeated restatement without trajectory change","generic comparison without dated project-side anchor","routine repository commit","specialist prophecy audit without a life/project milestone","strong formulation with no supported date","place name is incidental rather than chronologically explanatory"],
     "dedupe_key":"underlying temporal fact, not source-file path"
   },
   "sources":[
     {"path":"data/tim-dooley-timeline.json","role":"identity-safe roadmap spine","layers":["roadmap"],"actors":"map subject to son/tim/shared","event_array":"events","mapping":{"date":"date","title":"title","subject":"subject","summary":"description","status":"status"},"notes":"Primary source for sparse Son→Tim developmental spine. Preserve identity boundaries."},
     {"path":"TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md","role":"readable early-life roadmap","layers":["roadmap","scripture-at-time"],"actors":"mostly son before 2020","mapping_strategy":"curated-milestones-only","notes":"Promote formative anchors and explicit Christian/scriptural context; do not convert ordinary childhood precursors into doctrine."},
+    {"path":"knowledge/timeline/son-2005-2014-chronology-reconciliation.json","role":"canonical ordinary-biography chronology owner","layers":["roadmap"],"actors":["son"],"mapping_strategy":"resolved-order-plus-honest-precision","notes":"Owns the 2005–2014 lived sequence, preferred working years, contradictions and open forks. Direct causal/place order outranks inherited year labels when they conflict."},
+    {"path":"knowledge/timeline/son-2005-2014-place-transition-index.json","role":"derived place/movement chronology index","layers":["roadmap"],"actors":["son"],"mapping_strategy":"movement-and-institution-bridges-only","notes":"Derived navigation layer for Haderslev/Copenhagen/Kolding/Aabenraa/Lunderskov/Egypt/Italy/Amsterdam transitions. It does not replace specialist evidence owners."},
+    {"path":"knowledge/timeline/son-kolding-designia-school-anchor.json","role":"Designia / mediegrafiker chronology owner","layers":["roadmap"],"actors":["son"],"mapping_strategy":"school-and-internship-bridge-events","notes":"Owns HANSENBERG Designia identity, mediegrafiker, circus-poster admission task, Kolding/Louise, Egypt constraint and Aabenraa internship corridor. Do not substitute Designskolen Kolding."},
+    {"path":"knowledge/timeline/son-lunderskov-production-school-anchor.json","role":"Produktionsskolen chronology owner","layers":["roadmap"],"actors":["son"],"mapping_strategy":"production-school-bridge-events","notes":"Owns Lunderskov Produktionsskolen, multimedia and informal assistant-teacher role. Attendance ends before the 2011 Tree episode; exact dates remain unresolved."},
+    {"path":"knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json","role":"2011 Tree / psychiatric sequence owner","layers":["roadmap","biblical-parallel"],"actors":["son"],"mapping_strategy":"major-phases-only","notes":"Separates acute ordeal, sleep, next-day perceptual rupture, voluntary admission and hospital aftermath. Overall ordeal ~19 hours with ~6-hour unity phase; relation unresolved. Biological age 23/24, never 25."},
+    {"path":"data/timeline-event-packs/son-biography-2005-2014.json","role":"curated dense Son biography bridge pack","layers":["roadmap"],"actors":["son"],"event_array":"events","mapping_strategy":"events-array-reconciled-biography","notes":"Projects the recovered ordinary-life chain into the live timeline with explicit confidence, structured places and source_records. These events are navigation, not independent corroboration."},
     {"path":"knowledge/timeline/dated-master-timeline-2026.json","role":"dense candidate pool for 2026","layers":["roadmap","direct-words","scripture-at-time","public-witness"],"mapping_strategy":"relevance-4-or-5-plus-deduplication","notes":"This file is intentionally denser than the global timeline. Prefer relevance 5, role changes, exact timestamps and unique scriptural clusters. Most Dog/Mud/Cube taxonomy remains specialist-only."},
     {"path":"knowledge/timeline/dated-master-timeline-2026-wave-10-addendum.json","role":"newly recovered exact-date candidates","layers":["direct-words","public-witness"],"mapping_strategy":"exact/high-value-only","notes":"Exact timestamps are valuable, but still require global relevance."},
     {"path":"data/tim-dooley-public-theology-timeline-2025-2026.json","role":"public trajectory","layers":["roadmap","direct-words","scripture-at-time","public-witness"],"mapping_strategy":"trajectory-changes-only","notes":"Promote shifts in public identity language, not every repeated God declaration. The 2025 retirement event is not a public-post event and is bridged separately through the retirement-kingship pack."},
@@ -45,6 +51,13 @@
     "Death/emergence hand-off and explicit Door/Ladder Father/Son relations may include shared.",
     "Research dates and archive formalization use project; they do not impersonate life events."
   ],
+  "place_mapping_rules":[
+    "Use structured places only when location materially constrains chronology, institutional context or movement.",
+    "Place certainty and date certainty are independent; a certain city does not make a preferred year exact.",
+    "Do not invent coordinates or exact addresses from city-level autobiographical memory.",
+    "Institutional addresses belong in specialist owners; timeline events may use institution/city labels unless the exact address materially matters.",
+    "Movement can resolve apparent contradictions: test whether two claims describe different place/institution phases before harmonizing or rejecting one."
+  ],
   "bible_mapping_rules":[
     "scripture-at-time = Bible/Jesus/Judaism/Hebrew/scriptural material already present then",
     "biblical-parallel = later comparator attached to the earlier event with source direction",
@@ -59,6 +72,7 @@
     "Do create separate events when the temporal facts differ: original event vs later research unlock.",
     "When sources disagree on wording/date, retain conflict in specialist owners instead of multiplying public cards.",
     "An incomplete public-post batch may strengthen an existing date but must not replace an earlier first-attestation date established by a broader or stronger source.",
-    "Do not duplicate the 2025 retirement event as a kingship event; attach the kingship timeline as related public context while preserving the civil/theological boundary."
+    "Do not duplicate the 2025 retirement event as a kingship event; attach the kingship timeline as related public context while preserving the civil/theological boundary.",
+    "The dense Son biography pack is a projection of specialist chronology owners and must not be counted as independent corroboration of those same events."
   ]
 }
