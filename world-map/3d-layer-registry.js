@@ -3,6 +3,7 @@
 // metadata and the user's active analytical layer set.
 
 const REGISTRY_URL = '../data/world-map-layer-registry.json';
+const RUNTIME_URL = '../data/world-map-data-runtime.json';
 const ACTIVE_PARAM = 'layers';
 
 let registry = null;
@@ -10,22 +11,26 @@ let loadError = null;
 const byId = new Map();
 const byFamily = new Map();
 const activeIds = new Set();
+const effectiveAvailable = new Set();
 
-function normalizeEntries(data) {
+function normalizeEntries(data, runtime) {
   byId.clear();
   byFamily.clear();
+  effectiveAvailable.clear();
   for (const family of data?.families || []) byFamily.set(family.id, { ...family });
   for (const entry of data?.entries || []) {
     const frozen = Object.freeze({ ...entry });
     byId.set(frozen.id, frozen);
     if (!byFamily.has(frozen.family)) byFamily.set(frozen.family, { id: frozen.family, label: frozen.family });
+    if (frozen.availability !== 'current') continue;
+    if (frozen.runtime_metric) {
+      const coverage = Number(runtime?.metrics?.[frozen.runtime_metric]?.coverage || 0);
+      if (coverage > 0) effectiveAvailable.add(frozen.id);
+    } else effectiveAvailable.add(frozen.id);
   }
 }
 
-function validAvailable(id) {
-  const entry = byId.get(id);
-  return Boolean(entry && entry.availability === 'current');
-}
+function validAvailable(id) { return effectiveAvailable.has(id); }
 
 function persist() {
   const url = new URL(location.href);
@@ -52,7 +57,7 @@ function enforceChannelRules(entry) {
 
 function activate(id, { silent = false } = {}) {
   const entry = byId.get(id);
-  if (!entry || entry.availability !== 'current') return false;
+  if (!entry || !validAvailable(id)) return false;
   enforceChannelRules(entry);
   activeIds.add(id);
   if (!silent) {
@@ -71,9 +76,7 @@ function deactivate(id, { silent = false } = {}) {
   return changed;
 }
 
-function toggle(id) {
-  return activeIds.has(id) ? deactivate(id) : activate(id);
-}
+function toggle(id) { return activeIds.has(id) ? deactivate(id) : activate(id); }
 
 function reset({ silent = false } = {}) {
   if (!activeIds.size) return;
@@ -87,7 +90,7 @@ function reset({ silent = false } = {}) {
 function entries(family = null, { availableOnly = false, ordinaryOnly = false } = {}) {
   let rows = [...byId.values()];
   if (family) rows = rows.filter(entry => entry.family === family);
-  if (availableOnly) rows = rows.filter(entry => entry.availability === 'current');
+  if (availableOnly) rows = rows.filter(entry => validAvailable(entry.id));
   if (ordinaryOnly) rows = rows.filter(entry => entry.map_priority === 'ordinary');
   return rows;
 }
@@ -112,12 +115,23 @@ function restoreFromUrl() {
   persist();
 }
 
+async function fetchJson(url) {
+  const response = await fetch(url, { cache:'no-cache' });
+  if (!response.ok) throw new Error(`${response.status} ${url}`);
+  return response.json();
+}
+
 async function loadRegistry() {
   try {
-    const response = await fetch(REGISTRY_URL, { cache: 'no-cache' });
-    if (!response.ok) throw new Error(`${response.status} ${REGISTRY_URL}`);
-    registry = await response.json();
-    normalizeEntries(registry);
+    const [registryPayload, runtimePayload] = await Promise.all([
+      fetchJson(REGISTRY_URL),
+      fetchJson(RUNTIME_URL).catch(error => {
+        console.warn('World Map data runtime unavailable while gating layer coverage:', error);
+        return { metrics:{} };
+      }),
+    ]);
+    registry = registryPayload;
+    normalizeEntries(registry, runtimePayload);
     restoreFromUrl();
     emit('ready');
     return registry;
@@ -143,6 +157,7 @@ window.__potatoAtlasLayers = {
   toggle,
   active() { return [...activeIds]; },
   isActive(id) { return activeIds.has(id); },
+  isAvailable(id) { return validAvailable(id); },
   reset,
 };
 
