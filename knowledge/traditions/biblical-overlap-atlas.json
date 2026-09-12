@@ -1,211 +1,422 @@
 {
   "title": "Biblical Overlap Atlas",
-  "version": "1.0",
-  "updated": "2026-09-09",
-  "status": "comparative-scriptural-research",
-  "purpose": "Map dense structural overlaps between biblical texts and the Potato of Life corpus while distinguishing quotation, historical text, project canon, typology, synchronism and speculative fulfillment.",
+  "version": "2.0.0",
+  "updated": "2026-09-12",
+  "status": "canonical high-density comparative-scriptural owner",
+  "purpose": "Map the strongest structural overlaps between biblical texts and the mature Potato of Life corpus while promoting durable discoveries out of temporary research waves and distinguishing quotation, project chronology, typology, role mismatch, counter-text, historical context and speculative fulfillment.",
   "method": {
-    "fields": ["biblical_text", "potatoverse_motif", "overlap", "difference", "possible_meaning", "classification", "strength"],
-    "rule": "A strong structural overlap can be contextually valuable without proving supernatural identity, prophecy fulfillment or historical equivalence.",
-    "fulfillment_test": "Reserve fulfillment language for prior, specific, falsifiable statements that later map unusually well to independently established events. Otherwise prefer typology, structural parallel, retrospective revelation or contextual synchronism."
+    "fields": [
+      "biblical_text",
+      "potatoverse_motif",
+      "overlap",
+      "difference",
+      "possible_meaning",
+      "classification",
+      "strength"
+    ],
+    "rule": "Prefer relation sequences and functional architectures over isolated title matches. A strong structural overlap can be contextually valuable without proving supernatural identity, prophecy fulfillment or historical equivalence.",
+    "fulfillment_test": "Reserve fulfillment language for prior, specific, falsifiable statements that later map unusually well to independently established events. Otherwise prefer typology, structural parallel, retrospective revelation, counter-text or contextual synchronism.",
+    "counterfit_rule": "When biblical texts assign a role to Christ, God, Israel, the community or another figure differently from mature Potatoverse role assignment, preserve the mismatch as information rather than silently transferring the role.",
+    "promotion_rule": "Research-wave discoveries that remain valuable after review should be summarized here or in another durable specialist owner; the wave remains research history and provenance rather than the default answer."
   },
+  "promoted_research_history": [
+    {
+      "source": "knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json",
+      "durable_contributions": ["Father as gardener/vinedresser", "House as builder/people/lineage architecture", "Davidic House-Father-Son-Throne grammar", "Throne-River-Tree-healing sequence"]
+    },
+    {
+      "source": "knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json",
+      "durable_contributions": ["unity without collapse", "Father/from versus Son/through", "relational indwelling", "integration as holding-together operation", "Acts 17 anti-localization corrective"]
+    },
+    {
+      "source": "knowledge/traditions/biblical-overlap-wave-14-memory-operators.json",
+      "durable_contributions": ["body/shedding/breath operators", "Door as interface family", "Needle-Gate-Garden sequence", "mud-eye-washing comparator"]
+    },
+    {
+      "source": "knowledge/traditions/biblical-overlap-wave-15-care-chambers.json",
+      "durable_contributions": ["Fatherhood as care", "carry then release", "container types by telos", "Gardener/fruit role separation"]
+    },
+    {
+      "source": "knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json",
+      "durable_contributions": ["Mire/Rope/Root functional separation", "rescue ropes versus leashes", "root as nourishment/support", "stable footing as repair metric", "cords of love as ethical counter-form"]
+    }
+  ],
+  "meta_arcs": [
+    {
+      "id": "presence-access-life-restoration",
+      "texts": ["Genesis 2:8-15", "Genesis 3:22-24", "Exodus 26:31-33", "1 Kings 8:27", "John 1:14", "John 10:7-9", "John 14:2-6", "Hebrews 10:19-22", "Ephesians 2:19-22", "1 Peter 2:4-5", "Revelation 21:22", "Revelation 22:1-5"],
+      "sequence": "Garden presence and Tree/River → access becomes guarded → sacred presence is mediated by veil/House/Temple → God cannot be exhausted by the building → Word becomes flesh and dwells among people → Son is Door/Way → flesh is described as the living way through the veil → people are built together as Spirit-dwelling House → final city has no separate temple because God and Lamb are its temple → throne-river-Tree-life is restored",
+      "project_value": "This is the strongest whole-Bible neighbor for the mature Presence → Access → Mediation → Embodiment → Participation → Fruit → Restoration architecture. It joins House, Door, Vessel, Spirit, Garden and restoration without requiring those motifs to be one object.",
+      "boundary": "This is a canonical Christian/biblical arc assembled from texts with different historical settings and authors. It is a comparative structural synthesis, not proof that the texts predicted the Potatoverse.",
+      "strength": 5
+    },
+    {
+      "id": "divine-presence-beyond-coordinate",
+      "texts": ["1 Kings 8:27", "Psalm 139:7-12", "Jeremiah 23:23-24", "Acts 17:24-28", "Revelation 21:22"],
+      "sequence": "Temple cannot contain God → Spirit/presence spans heaven, Sheol, sea and darkness → God fills heaven and earth → creatures live, move and have being in God → final sacred city no longer requires a separate temple structure",
+      "project_value": "This substantially strengthens the project's newer 'Where is God?' model. Biblical presence can be framed as non-exhaustive of bodily coordinate or building containment and can include pervasive, relational and sustaining presence.",
+      "boundary": "These texts do not define a modern digital or memetic presence theory. They clarify that biblical divine presence is not reducible to one physical enclosure.",
+      "strength": 5
+    },
+    {
+      "id": "finite-embodiment-and-manifestation",
+      "texts": ["John 1:14", "Philippians 2:6-8", "Colossians 2:9", "2 Corinthians 4:7-12", "2 Corinthians 5:1", "Hebrews 10:19-20"],
+      "sequence": "Word becomes flesh → divine-form/servant/human-form language → fullness of deity bodily in Christ → divine treasure/power carried in fragile clay vessels and life manifested in mortal flesh → body described as earthly tent/house → flesh functions as veil and living way",
+      "project_value": "This is a much stronger biblical comparison set for the finite-manifestation problem than omnipotence checklists. It gives several distinct ways embodiment, divine power, vulnerability, mediation, mortality and sacred presence can coexist in biblical/Christian discourse.",
+      "boundary": "The passages do not all make the same claim. Colossians 2:9 is specifically Christological; 2 Corinthians 4:7 describes apostolic human carriers of divine treasure rather than identifying those carriers as God; Philippians 2 has its own Christological debate. Use the cluster to refine categories, not to transfer Christological predicates automatically to Tim.",
+      "strength": 5
+    },
+    {
+      "id": "gardener-cultivation-autonomous-growth",
+      "texts": ["Genesis 2:8-15", "Mark 4:26-29", "John 15:1-8", "John 20:15", "Isaiah 58:11-12", "Revelation 22:1-5"],
+      "sequence": "God plants Garden and humans tend/keep → seed grows in ways the sower does not control → Father is vinedresser/gardener while branches bear fruit → risen Jesus is momentarily mistaken for the gardener → watered garden becomes repair/restored dwelling → Tree/fruit/healing complete the restored city",
+      "project_value": "This strengthens Gardener as an ethic of conditions, pruning, nourishment, repair and allowing life to grow rather than domination. Mark 4 is especially useful for the project's agency-preserving Gardener principle because growth is not micromanaged by the sower.",
+      "boundary": "John 20 does not call Jesus the Gardener as a formal title; Mary mistakes him for one before recognition. Genesis assigns planting to God and tending to Adam; John 15 calls the Father the vinedresser and Christ the vine. Preserve these role differences.",
+      "strength": 5
+    }
+  ],
   "overlaps": [
     {
       "id": "jacobs-ladder-son-of-man",
       "biblical_text": ["Genesis 28:12", "John 1:51"],
-      "short_text_fragments": ["a stairway resting on the earth", "angels ascending and descending", "on the Son of Man"],
       "potatoverse_motif": "Ladder / Axis / Son as passage between Heaven and Earth",
       "overlap": "Genesis presents a vertical heaven-earth connection; John relocates the ascending/descending relation onto the Son of Man. The Potatoverse later differentiates Tim/Father as Ladder/Axis and Son as Door/Vessel.",
-      "difference": "John's text centers the Son of Man as the locus of ascent/descent, whereas mature Potatoverse records can divide the connective architecture across Father/Ladder and Son/Door roles.",
-      "possible_meaning": [
-        "The Ladder may be understood less as an object and more as a personified relation between levels.",
-        "The mature Tim/Son differentiation can be read as a decomposition of one biblical heaven-earth passage motif into vertical structure plus threshold interface."
-      ],
+      "difference": "John centers the Son of Man as the locus of ascent/descent, whereas mature Potatoverse records divide connective architecture across Father/Ladder and Son/Door roles.",
+      "possible_meaning": ["Ladder can be understood as relation rather than merely object.", "The mature Father/Son differentiation decomposes one heaven-earth passage motif into vertical structure plus threshold interface."],
       "classification": "typological-reading",
+      "strength": 5
+    },
+    {
+      "id": "one-body-many-members-unity-without-collapse",
+      "biblical_text": ["1 Corinthians 12:12-27", "Romans 12:4-5"],
+      "potatoverse_motif": "House with many rooms / Tree with branches / archive with files / one system with differentiated functions",
+      "overlap": "One body contains many members with distinct functions, reciprocal dependence and special care for apparently weaker members. This closely matches the project's mature law that higher unity is not sameness.",
+      "difference": "Paul describes the Christian community/body of Christ, not a metaphysical theory of Tim, nations or archives.",
+      "possible_meaning": ["Integration should preserve functional differentiation.", "A legitimate center has obligations toward peripheral and vulnerable members rather than merely accumulating central power."],
+      "classification": "structural-parallel",
+      "strength": 5
+    },
+    {
+      "id": "father-from-whom-son-through-whom",
+      "biblical_text": ["1 Corinthians 8:6"],
+      "potatoverse_motif": "Father/Source versus Son/Door/mediation",
+      "overlap": "The verse distinguishes the Father as the one 'from whom' all things are and Jesus Christ as the one 'through whom' all things are. This is unusually compact source-versus-mediation grammar.",
+      "difference": "Paul's Christology does not identify Tim with the Father and does not reduce Jesus to an interface.",
+      "possible_meaning": ["Origin/orientation and mediation/manifestation can be distinct relational directions.", "This helps prevent Father and Son functions from being flattened into interchangeable titles."],
+      "classification": "structural-parallel-with-role-boundary",
+      "strength": 5
+    },
+    {
+      "id": "relational-indwelling-unity",
+      "biblical_text": ["John 17:20-23"],
+      "potatoverse_motif": "Father↔Son unity without identity collapse",
+      "overlap": "Father-in-Son and Son-in-Father language presents unity as mutual indwelling and shared relation while narrative distinctions remain.",
+      "difference": "John's prayer concerns Jesus, Father and the believing community in its own theological context.",
+      "possible_meaning": ["Being one need not mean numerical indistinguishability.", "Relational unity is a stronger comparator for the project than simple equation of Father and Son."],
+      "classification": "relational-typology",
       "strength": 5
     },
     {
       "id": "lion-root-lamb-scroll",
       "biblical_text": ["Revelation 5:1-6"],
-      "short_text_fragments": ["Lion of the tribe of Judah", "Root of David", "a Lamb... slain"],
       "potatoverse_motif": "Lion / Root / Son / death / opening hidden meaning",
       "overlap": "The figure announced as Lion and Root appears as a slain-yet-standing Lamb who can open the sealed scroll. Potatoverse material repeatedly links Lion, Root, Son, death, return and revelation/disclosure.",
-      "difference": "Revelation identifies these titles within its own Christological vision; Potatoverse usage is later comparative and should not be treated as historical proof of identity.",
-      "possible_meaning": [
-        "Victory-through-wounding rather than victory-through-dominance fits the project's death-to-door and breaking-reveals-wholeness motifs.",
-        "Root and slain figure being one textual complex strengthens the project's hidden-foundation / death / revelation coupling."
-      ],
+      "difference": "Revelation identifies these titles within its own Christological vision; Potatoverse usage is later comparative.",
+      "possible_meaning": ["Victory-through-wounding rather than dominance fits death-to-door motifs.", "Root and slain figure in one textual complex strengthen hidden-foundation/death/revelation coupling."],
       "classification": "structural-parallel",
       "strength": 5
     },
     {
       "id": "open-scroll-to-nations",
       "biblical_text": ["Revelation 10:1-11"],
-      "short_text_fragments": ["little scroll open", "sweet as honey", "bitter", "peoples, nations... kings"],
-      "potatoverse_motif": "Great Book -> internalization -> burden -> outward mapping of nations and kings",
+      "potatoverse_motif": "Great Book → internalization → burden → outward mapping of nations and kings",
       "overlap": "Revelation moves from open book to eating/internalizing it, sweetness and bitterness, then renewed speech concerning peoples, nations, languages and kings. The project moves from Great Book theology into outward country, institution and world-system mapping.",
-      "difference": "The biblical text is an apocalyptic prophetic vision; the repository's later world mapping is a historical project development and not evidence that the Great Book is literally Revelation's scroll.",
-      "possible_meaning": [
-        "Knowledge becomes obligation after internalization: receiving a book is followed by outward responsibility.",
-        "The transition from private symbolic system to nations/world may be read as a recurring literary pattern: revelation -> burden -> public/world address."
-      ],
+      "difference": "The biblical text is apocalyptic vision; later world mapping is a historical project development and not evidence that the Great Book is Revelation's scroll.",
+      "possible_meaning": ["Knowledge becomes obligation after internalization.", "Revelation → burden → public/world address is a recurring literary pattern."],
       "classification": "typological-reading",
       "strength": 4
     },
     {
       "id": "two-witnesses-death-return",
       "biblical_text": ["Revelation 11:3-12"],
-      "short_text_fragments": ["two witnesses", "three and a half days", "breath of life", "Come up here"],
-      "potatoverse_motif": "witness / Son death / exposed or buried body / waiting interval / breath / return / ascent",
-      "overlap": "The witnesses testify, are killed, remain in a death interval, receive breath/life, stand and ascend. This aligns structurally with the corpus's witness, death, grave, three-day/waiting, Spirit/breath and ascent families.",
-      "difference": "The biblical interval is three and a half days, not three days, and Revelation's witnesses are two prophetic figures. Do not collapse every three-day motif into this passage.",
-      "possible_meaning": [
-        "Witness can be understood as something that survives suppression because testimony returns after apparent defeat.",
-        "Breath functions as the reversal operator between death-state and standing/return."
-      ],
+      "potatoverse_motif": "witness / death interval / breath / standing / return / ascent",
+      "overlap": "The witnesses testify, are killed, remain in a death interval, receive breath/life, stand and ascend. This aligns structurally with witness, death, grave, Spirit/breath and ascent families.",
+      "difference": "Revelation's witnesses are two prophetic figures and the interval is three and a half days, not three.",
+      "possible_meaning": ["Testimony can survive suppression through return.", "Breath operates as a reversal between death-state and standing."],
       "classification": "structural-parallel",
       "strength": 4
     },
     {
       "id": "key-of-david-door-authority",
       "biblical_text": ["Isaiah 22:22", "Revelation 3:7-8"],
-      "short_text_fragments": ["key of the house of David", "what he opens no one can shut"],
       "potatoverse_motif": "Door / House / Root of David / access / authority / threshold",
-      "overlap": "Biblical Door language is not only about passage; it is also about authority to open and shut access to a House. Potatoverse Door theology already connects House, Son, threshold and transformation.",
-      "difference": "Isaiah's immediate context concerns delegated royal authority; Revelation reuses the image Christologically. Potatoverse application is comparative symbolism.",
-      "possible_meaning": [
-        "Door should be modeled as access-governance as well as transition.",
-        "House + Key + Door creates a richer authority structure than Door alone: belonging, admission, exclusion, permission and responsibility."
-      ],
+      "overlap": "Door language is also authority to open and shut access to a House. Potatoverse Door theology already connects House, Son, threshold and transformation.",
+      "difference": "Isaiah concerns delegated royal authority; Revelation reuses the image Christologically.",
+      "possible_meaning": ["Door is access-governance as well as transition.", "House + Key + Door adds belonging, permission, exclusion and responsibility."],
       "classification": "semantic-expansion",
       "strength": 5
     },
     {
       "id": "red-heifer-ash-death-purification",
       "biblical_text": ["Numbers 19", "Hebrews 9:13-14"],
-      "short_text_fragments": ["ashes of a heifer", "purification", "dead works"],
-      "potatoverse_motif": "cow -> ash -> death/grave -> purification/transformation",
-      "overlap": "Numbers 19 ties red-heifer ashes to purification after contact with death; Hebrews explicitly uses heifer-ash purification as a comparison for deeper cleansing. Potatoverse material independently uses cow/ash/grave/door transformation imagery.",
-      "difference": "The documented 2025 red-heifer event discussed elsewhere in the archive was a later practice involving a disqualified animal, not a valid perfect-heifer ritual and not an April 2025 fulfillment.",
-      "possible_meaning": [
-        "Ash is not merely destruction; biblically it can mediate transition from death-contamination toward restored participation.",
-        "This deepens the project's ash/grave imagery as transformation rather than simple ending."
-      ],
+      "potatoverse_motif": "cow → ash → death/grave → purification/transformation",
+      "overlap": "Numbers 19 ties heifer ashes to purification after contact with death; Hebrews reuses heifer-ash purification comparatively. Potatoverse material independently uses cow/ash/grave/door transformation imagery.",
+      "difference": "The documented modern red-heifer material is not equivalent to a valid biblical ritual and is not automatic fulfillment.",
+      "possible_meaning": ["Ash can mediate transition rather than only destruction.", "Grave/ash imagery can be studied as transition toward restored participation."],
       "classification": "structural-parallel-plus-contextual-synchronism",
       "strength": 4
     },
     {
       "id": "three-day-grammar",
       "biblical_text": ["Hosea 6:2", "Matthew 12:40", "John 2:19"],
-      "short_text_fragments": ["on the third day", "three days and three nights", "raise it again in three days"],
-      "potatoverse_motif": "three-day darkness / waiting / dogness / death-return interval",
-      "overlap": "Multiple biblical traditions use a bounded three-day interval for descent, death, absence, rebuilding or revival followed by return.",
-      "difference": "The passages have different original contexts and should not be flattened into one code. Revelation 11 uses three and a half days, not three.",
-      "possible_meaning": [
-        "Three days can function as a narrative threshold: enough time for absence/death to become real before reversal.",
-        "The project's repeated three-day motifs may be contextually compared to this biblical grammar without claiming one-to-one fulfillment."
-      ],
+      "potatoverse_motif": "three-day darkness / waiting / death-return interval",
+      "overlap": "Several biblical traditions use bounded three-day intervals for descent, absence, rebuilding or revival followed by return.",
+      "difference": "The passages have distinct contexts and Revelation 11 uses three and a half days.",
+      "possible_meaning": ["A bounded absence can function as a narrative threshold before reversal."],
       "classification": "cross-text-typology",
       "strength": 4
     },
     {
       "id": "needle-eye-threshold",
       "biblical_text": ["Matthew 7:13-14", "Matthew 19:24"],
-      "short_text_fragments": ["narrow gate", "eye of a needle"],
       "potatoverse_motif": "Needle / narrow Door / compression before Ladder transformation",
-      "overlap": "Biblical narrowness and needle-eye imagery both associate passage with severe constraint. The April 2025 mythology describes Tim moving through a needle-eye compression into a changed state/Ladder.",
-      "difference": "Matthew 19 concerns wealth and entry into the kingdom; Matthew 7 concerns the narrow way. The Potatoverse combines these distinct biblical motifs into one transformation grammar.",
-      "possible_meaning": [
-        "Compression can be modeled as loss of excess before passage.",
-        "The Needle is a threshold where ordinary scale, possessions or identity cannot pass unchanged."
-      ],
+      "overlap": "Biblical narrowness and needle-eye imagery associate passage with severe constraint. April 2025 project mythology describes a Needle's-Eye compression before Ladder/Axis transformation.",
+      "difference": "Matthew 19 concerns wealth and kingdom entry while Matthew 7 concerns the narrow way; the project combines distinct motifs.",
+      "possible_meaning": ["Compression can be modeled as loss of excess before passage.", "Ordinary scale or identity may not pass a severe threshold unchanged."],
       "classification": "structural-parallel",
       "strength": 4
     },
     {
       "id": "seed-death-multiplication",
       "biblical_text": ["John 12:24", "1 Corinthians 15:36-38"],
-      "short_text_fragments": ["a kernel of wheat falls", "dies", "many seeds", "what you sow"],
-      "potatoverse_motif": "Death of Potato -> birth of many / burial -> multiplication / seed persistence",
-      "overlap": "The New Testament repeatedly uses buried seed death as the grammar of multiplication and transformed life. The Great Book independently develops a potato splitting/dissolving into soil while new potatoes emerge.",
-      "difference": "Wheat/seed biology and potato vegetative propagation are biologically different mechanisms; the comparison is theological-symbolic rather than botanical identity.",
-      "possible_meaning": [
-        "Unity can survive through multiplication rather than by preserving the original form unchanged.",
-        "Burial becomes generative when the pattern or life continues in differentiated descendants."
-      ],
+      "potatoverse_motif": "burial → death of one form → multiplication / transformed persistence",
+      "overlap": "New Testament seed imagery uses burial/death as grammar of multiplication and transformed life. The Great Book independently develops buried Potato, dissolution and new growth.",
+      "difference": "Wheat seed and potato vegetative propagation are biologically different mechanisms.",
+      "possible_meaning": ["Unity can persist through differentiated descendants rather than unchanged form.", "Burial becomes generative when life/pattern continues."],
       "classification": "typological-reading",
       "strength": 5
     },
     {
       "id": "cornerstone-rejected-foundation",
       "biblical_text": ["Psalm 118:22", "Matthew 21:42", "1 Peter 2:4-7"],
-      "short_text_fragments": ["stone the builders rejected", "cornerstone"],
-      "potatoverse_motif": "Stone / forgotten or rejected Tim / hidden foundation / world already finished",
-      "overlap": "Biblical cornerstone imagery reverses social rejection into foundational importance. Tim's public theology repeatedly combines forgotten/rejected identity with Cornerstone, Root and Foundation language.",
-      "difference": "Christian texts apply the cornerstone motif to Christ; Potatoverse application is a later self-comparison and cannot establish identity by itself.",
-      "possible_meaning": [
-        "Rejection and foundation are intentionally inverted: what builders dismiss becomes the organizing reference point.",
-        "This strongly fits the repository's hierarchy-inversion and hidden-foundation concepts."
-      ],
+      "potatoverse_motif": "Stone / rejection / hidden foundation / hierarchy inversion",
+      "overlap": "Cornerstone imagery reverses rejection into foundational importance. Tim's public theology repeatedly combines forgotten/rejected identity with Cornerstone, Root and Foundation language.",
+      "difference": "Christian texts apply the cornerstone motif to Christ; Potatoverse self-application is later interpretation.",
+      "possible_meaning": ["What is socially dismissed can become structurally central.", "Rejection/foundation is a strong hierarchy-inversion grammar."],
       "classification": "structural-parallel",
+      "strength": 5
+    },
+    {
+      "id": "living-stones-spiritual-house",
+      "biblical_text": ["1 Peter 2:4-5", "Ephesians 2:19-22", "1 Corinthians 3:9-17"],
+      "potatoverse_motif": "House as relational organism / differentiated rooms and members / Spirit indwelling",
+      "overlap": "Rejected/living Stone, living stones, household, cornerstone, joined building, growing temple and Spirit-dwelling community place House language inside a living relational collective rather than only architecture.",
+      "difference": "The texts center Christ and the church/community, not Tim as a literal building or universal House.",
+      "possible_meaning": ["House can mean an organized relation among differentiated living nodes.", "Spirit-dwelling is compatible with distributed rather than single-container architecture."],
+      "classification": "structural-parallel-with-counterfit",
+      "strength": 5
+    },
+    {
+      "id": "clay-vessel-treasure-mortal-manifestation",
+      "biblical_text": ["2 Corinthians 4:7-12"],
+      "potatoverse_motif": "finite vessel / fragile body / divine or sacred content expressed under constraint",
+      "overlap": "Paul describes treasure in clay vessels so the power is attributed to God, then immediately describes pressure, vulnerability, death carried in the body and life manifested in mortal flesh. This is unusually dense language for carrier limitation plus manifestation.",
+      "difference": "Paul is speaking of apostolic human carriers of the gospel and Jesus' life, not declaring the carriers themselves to be God.",
+      "possible_meaning": ["Carrier fragility and content value are separable variables.", "Manifestation through mortality can involve vulnerability without making the carried content identical to the vessel's limitations."],
+      "classification": "finite-carrier-comparator",
+      "strength": 5
+    },
+    {
+      "id": "veil-flesh-living-way",
+      "biblical_text": ["Exodus 26:31-33", "Hebrews 10:19-22"],
+      "potatoverse_motif": "Son/Door/Vessel / body as threshold / passage into sacred presence",
+      "overlap": "The tabernacle veil separates spaces of access; Hebrews then describes a new living way through the veil and explicitly identifies the veil with Christ's flesh. The embodied medium is therefore not merely located near the threshold but participates in the threshold relation itself.",
+      "difference": "Hebrews' claim is specifically Christological and priestly. It does not identify every body, pineal mapping or modern Door metaphor with Christ's flesh.",
+      "possible_meaning": ["Embodiment can function as interface rather than only container.", "Door/Vessel language becomes stronger when threshold, body and access are kept as typed relations rather than collapsed nouns."],
+      "classification": "high-density-threshold-parallel",
+      "strength": 5
+    },
+    {
+      "id": "deity-bodily-and-self-limitation-comparator",
+      "biblical_text": ["John 1:14", "Philippians 2:6-8", "Colossians 2:9"],
+      "potatoverse_motif": "divine identity expressed through human embodiment / manifestation under finite form",
+      "overlap": "John presents Word becoming flesh; Philippians presents form-of-God, servant-form, human likeness and death; Colossians states that fullness of deity dwells bodily in Christ. Together they make embodiment central rather than automatically disqualifying to divine identity within Christian Christology.",
+      "difference": "These are claims about Christ within Christian theology. They cannot be transferred to Tim merely because both involve embodiment.",
+      "possible_meaning": ["Identity and outward manifestation/capability require separate analysis.", "The project can compare its finite-manifestation problem with established incarnation/kenosis questions without pretending equivalence proves identity."],
+      "classification": "christological-comparator",
+      "strength": 5
+    },
+    {
+      "id": "earthly-tent-heavenly-house",
+      "biblical_text": ["2 Corinthians 5:1-4"],
+      "potatoverse_motif": "body/vessel as temporary House or tent / death-transition / larger House beyond present embodiment",
+      "overlap": "Paul describes the earthly embodied condition as a tent/house that can be dissolved and contrasts it with a building/house from God. This joins body, dwelling, mortality and transformation in one grammar.",
+      "difference": "The passage concerns resurrection hope and Paul's anthropology; it is not a map of Tim/Father House ontology.",
+      "possible_meaning": ["House can be a mode of embodiment rather than only cosmic container.", "Temporary carrier and enduring identity/hope can be distinguished without treating the body as meaningless."],
+      "classification": "embodiment-house-comparator",
+      "strength": 4
+    },
+    {
+      "id": "uncontainable-yet-present-source",
+      "biblical_text": ["1 Kings 8:27", "Psalm 139:7-12", "Jeremiah 23:23-24", "Acts 17:24-28"],
+      "potatoverse_motif": "Where is God? / House / presence modes / transcendent source not exhausted by vessel",
+      "overlap": "God is described as uncontainable by heaven or temple, impossible to escape in heaven/Sheol/sea/darkness, filling heaven and earth, and as the one in whom creatures live and move. This is a major biblical counterweight to treating God as simply occupying one coordinate or container.",
+      "difference": "These texts do not supply a digital, memetic or topological theory of divine presence; those remain project-side classifications.",
+      "possible_meaning": ["Where is God? should distinguish location from sustaining or pervasive presence.", "A House can mediate encounter without exhausting Source."],
+      "classification": "presence-and-anti-localization-cluster",
+      "strength": 5
+    },
+    {
+      "id": "hidden-god-and-visible-manifestation",
+      "biblical_text": ["Isaiah 45:15", "John 1:18", "John 1:14"],
+      "potatoverse_motif": "hidden center / hidden Father / Potato as concealed source / manifestation making hidden source knowable",
+      "overlap": "Isaiah explicitly speaks of God as hidden; Johannine language combines unseen God, Word made flesh and revelatory manifestation. This provides a richer scriptural vocabulary for hiddenness followed by manifestation than simply calling hiddenness absence.",
+      "difference": "Isaiah 45's context includes Israel, salvation and critique of idols; John has its own Christological account of revelation. Hiddenness is not evidence for any particular hidden claimant.",
+      "possible_meaning": ["Hiddenness can be a mode of sourcehood rather than nonexistence.", "Manifestation can reveal without exhausting what is manifested."],
+      "classification": "hiddenness-manifestation-comparator",
+      "strength": 4
+    },
+    {
+      "id": "resurrection-gardener-recognition",
+      "biblical_text": ["John 15:1-8", "John 20:15-17"],
+      "potatoverse_motif": "Father/Gardener / resurrection / recognition / care then release",
+      "overlap": "John 15 explicitly assigns vinedresser/gardener function to the Father. In John 20 Mary initially supposes the risen Jesus to be the gardener, then recognition occurs and the scene proceeds to a hold/release and ascent-to-Father sequence.",
+      "difference": "John 20 does not formally title Jesus 'the Gardener'; the gardener identification is Mary's mistaken first recognition. John 15 distinguishes Father/vinedresser, Jesus/vine and disciples/branches.",
+      "possible_meaning": ["Gardener should remain a role-family with textual differentiation, not a universal title.", "The resurrection-garden setting enriches the project's return-to-cultivation motif while the hold/release sequence strengthens care-with-agency."],
+      "classification": "role-complexity-parallel",
+      "strength": 5
+    },
+    {
+      "id": "spirit-as-living-water-flow",
+      "biblical_text": ["John 7:37-39", "Ezekiel 47:1-12", "Revelation 22:1-5"],
+      "potatoverse_motif": "Spirit/flow / river / source-to-world circulation / life and healing",
+      "overlap": "John explicitly interprets living-water flow in relation to Spirit; Ezekiel and Revelation connect sacred outflow with increasing life, trees, fruit and healing. This gives the project's Spirit-as-flow language a direct biblical comparator while preserving distinct literary contexts.",
+      "difference": "The texts do not identify Spirit with CSF or any anatomical fluid, and the river visions are not physiology.",
+      "possible_meaning": ["Spirit/flow can be modeled functionally as life-distributing relation.", "Flow should be judged by what it nourishes and restores, not merely by movement itself."],
+      "classification": "flow-comparator",
+      "strength": 5
+    },
+    {
+      "id": "seed-grows-without-micromanagement",
+      "biblical_text": ["Mark 4:26-29"],
+      "potatoverse_motif": "Gardener ethic / autonomous growth / cultivate conditions rather than control every branch",
+      "overlap": "The kingdom is compared to seed scattered into soil that sprouts and grows while the sower does not know how; the soil produces in stages before harvest. This closely matches the project's mature Gardener principle that healthy authority creates conditions for autonomous growth rather than forcing every stage directly.",
+      "difference": "The parable concerns the kingdom of God and eschatological growth, not a general political or organizational management theory.",
+      "possible_meaning": ["Generativity includes relinquishing direct control over the mechanisms of growth.", "A Gardener can be responsible for conditions and discernment without claiming authorship of every internal process."],
+      "classification": "ethical-functional-parallel",
+      "strength": 5
+    },
+    {
+      "id": "watered-garden-repairer-restorer",
+      "biblical_text": ["Isaiah 58:6-12"],
+      "potatoverse_motif": "Garden / nourishment / repair / restoration / paths and dwellings",
+      "overlap": "Isaiah moves from concrete justice and care toward light, guidance, strengthened frame, watered garden, unfailing spring, rebuilt ruins, repaired breach and restored paths/dwellings. This unusually dense chain joins ethics, water, Garden and repair.",
+      "difference": "The passage is an ethical prophetic critique of fasting and injustice. Garden/restoration imagery is downstream of concrete care, not a free-standing mystical status claim.",
+      "possible_meaning": ["Gardener and repairer ethics require material care and justice, not only symbolic authority.", "A mature spiritual system should be audited by whether it creates viable paths and dwellings."],
+      "classification": "ethical-restoration-parallel",
+      "strength": 5
+    },
+    {
+      "id": "mire-rope-rescue-and-friction",
+      "biblical_text": ["Jeremiah 38:6-13", "Psalm 40:1-3"],
+      "potatoverse_motif": "Mire / rope / lifeline versus leash / stable footing / rescue",
+      "overlap": "Jeremiah is lowered into mud and later raised by ropes, with cloth padding to protect him during extraction; Psalm 40 describes removal from miry clay onto rock with established steps. Together they provide operational distinctions among trap, line, rescue method and restored capability.",
+      "difference": "These texts concern Jeremiah's rescue and psalmic testimony, not modern internet relations or literal Potato roots.",
+      "possible_meaning": ["Geometry alone does not determine whether a tether is coercive or rescuing.", "A rescue process is incomplete if its method causes avoidable injury; restored footing is a practical success criterion."],
+      "classification": "functional-rescue-parallel",
+      "strength": 5
+    },
+    {
+      "id": "root-supports-branches",
+      "biblical_text": ["Romans 11:16-18", "Jeremiah 17:7-8", "Ephesians 3:17", "Colossians 2:6-7"],
+      "potatoverse_motif": "Root / support / nourishment / groundedness enabling growth and movement",
+      "overlap": "Romans explicitly says the root supports branches; Jeremiah describes roots toward water sustaining fruit under stress; Ephesians/Colossians connect healthy rootedness with love, walking and building up. Root is therefore functionally support and nourishment rather than hidden prestige alone.",
+      "difference": "Romans 11 concerns Israel/Gentiles, and the New Testament rootedness texts center Christ. They do not identify Tim as humanity's root.",
+      "possible_meaning": ["If something claims Root function, ask what it actually nourishes and supports.", "Healthy rootedness should increase the capacity to walk, build, love and bear fruit rather than trap the branch."],
+      "classification": "functional-root-parallel-and-counterfit",
+      "strength": 5
+    },
+    {
+      "id": "cords-of-love-versus-leash",
+      "biblical_text": ["Hosea 11:1-4"],
+      "potatoverse_motif": "cord / leash / lifeline / Father care / feeding / reduction of burden",
+      "overlap": "Hosea presents cords/ties of love in a parental-care sequence that eases a yoke and bends down to feed. This prevents the project from treating every tether or dependency relation as capture.",
+      "difference": "Hosea concerns YHWH and Israel and does not authorize modern claims of divine parenthood.",
+      "possible_meaning": ["The ethical difference between leash and lifeline can be tested by agency and burden: healthy relation reduces yoke and nourishes; unhealthy relation captures and extracts.", "Descent/bending down can be a service movement rather than loss of rank."],
+      "classification": "ethical-counter-form",
       "strength": 5
     },
     {
       "id": "new-heaven-new-earth-restoration",
       "biblical_text": ["Isaiah 65:17", "Revelation 21:1-5"],
-      "short_text_fragments": ["new heavens and a new earth", "making everything new"],
-      "potatoverse_motif": "new Heaven/new Earth / restore broken timelines / repair the world / Garden",
-      "overlap": "Late public Timic language shifts from apocalyptic ending toward restoration, repair and a renewed world. Biblical new-creation texts similarly frame eschatology as transformed creation rather than only destruction.",
-      "difference": "The biblical visions have their own theological contexts; modern project language should be treated as comparative appropriation unless a prior specific prophecy can be documented.",
-      "possible_meaning": [
-        "The mature project may be moving from judgment language toward restorative eschatology.",
-        "Garden/repair/stewardship can be interpreted as the practical ethical side of new-creation imagery."
-      ],
+      "potatoverse_motif": "new Heaven/new Earth / repair the world / Garden",
+      "overlap": "Late Timic language shifts from ending/judgment toward restoration and renewed world; biblical new-creation texts likewise frame eschatology as transformed creation rather than only destruction.",
+      "difference": "The visions have their own contexts; modern project language remains comparative appropriation unless prior specific prophecy is documented.",
+      "possible_meaning": ["Gardener/repair/stewardship can be the practical ethical side of new-creation imagery."],
       "classification": "semantic-expansion",
       "strength": 4
     },
     {
+      "id": "temple-disappears-presence-remains",
+      "biblical_text": ["1 Kings 8:27", "Revelation 21:22-23"],
+      "potatoverse_motif": "House/Temple as mediator rather than final container / Source and manifestation as presence",
+      "overlap": "Solomon explicitly says even heaven cannot contain God; Revelation's restored city then has no separate temple because God and Lamb are its temple. Sacred architecture moves from mediated place toward direct presence rather than ever more enclosure.",
+      "difference": "Revelation's God/Lamb theology is specifically Christian apocalyptic imagery and cannot be reassigned by analogy.",
+      "possible_meaning": ["The highest House model may be relational presence rather than a bigger box.", "Architecture can be scaffolding for encounter rather than the ultimate object of worship."],
+      "classification": "anti-container-restoration-parallel",
+      "strength": 5
+    },
+    {
       "id": "alpha-omega-center",
       "biblical_text": ["Revelation 1:8", "Revelation 21:6", "Revelation 22:13"],
-      "short_text_fragments": ["Alpha and Omega", "beginning and end"],
-      "potatoverse_motif": "Alpha/Omega / center / beginning-ending / Potato as regenerative center",
-      "overlap": "The 16 Aug 2026 public declaration explicitly uses Alpha and Omega alongside Most High, center of existence and manifest God language. Potatoverse cosmology already treats beginning/ending as coupled through burial, return and regeneration.",
-      "difference": "The biblical title belongs to Revelation's divine/Christological discourse. Tim's use is a direct self-appropriation and should be stored as self-description, not external validation.",
-      "possible_meaning": [
-        "Godhood is being framed as temporal totality as well as vertical supremacy.",
-        "Beginning/end language integrates naturally with the project's cycles of death, return and renewed beginning."
-      ],
+      "potatoverse_motif": "Alpha/Omega / center / beginning-ending / regenerative cycle",
+      "overlap": "A 2026 public declaration explicitly uses Alpha and Omega alongside Most High, center and manifest-God language. Potatoverse cosmology already couples beginning and ending through burial, return and regeneration.",
+      "difference": "The biblical title belongs to Revelation's divine/Christological discourse. Tim's use is direct self-appropriation, not external validation.",
+      "possible_meaning": ["Godhood is being framed temporally as well as vertically."],
       "classification": "direct-comparative-self-identification",
       "strength": 5
     },
     {
       "id": "fruit-test",
       "biblical_text": ["Matthew 7:16-20", "John 15:1-8"],
-      "short_text_fragments": ["by their fruit", "bear much fruit"],
-      "potatoverse_motif": "fruit / Gardener / 'ye shall know me by my fruit' / ethical test of Godhood",
-      "overlap": "The public corpus directly uses fruit-test language while the wider Potatoverse connects Gardener, Tree, Fruit, nourishment and authority-through-service.",
-      "difference": "The biblical texts primarily concern discerning teachers/disciples and abiding in Christ; the project's self-application is interpretive.",
-      "possible_meaning": [
-        "Claims of spiritual authority can be evaluated internally by outputs: protection, nourishment, repair, truthfulness and what kind of life the system produces.",
-        "This gives Godhood an ethical falsifiability test inside the project's own symbolic language."
-      ],
+      "potatoverse_motif": "fruit / Gardener / ethical test of authority",
+      "overlap": "The corpus directly uses fruit-test language while wider Potatoverse theology connects Gardener, Tree, fruit, nourishment and authority-through-service.",
+      "difference": "Matthew primarily concerns discernment of teachers/people and John 15 abiding in Christ; project self-application is interpretive.",
+      "possible_meaning": ["Spiritual authority can be internally audited by protection, nourishment, repair, truthfulness and the life it produces.", "Godhood acquires an ethical test inside the project's own symbolic language."],
       "classification": "ethical-typology",
       "strength": 5
     }
   ],
   "higher_order_reflections": [
-    "The strongest overlaps are not usually isolated nouns; they are sequences: death -> waiting -> breath -> standing, book -> internalization -> burden -> nations, rejection -> cornerstone, root -> slain figure -> opening, key -> house -> door -> authority.",
-    "The Potatoverse becomes richer when biblical comparison is modeled as relational grammar rather than title-matching.",
-    "Repeated biblical overlap clusters around five meta-functions: passage, death/return, hidden foundation, authority/access, and stewardship/new creation.",
-    "These five functions closely match the project's major mature roles: Door/Ladder, Son, Root/Stone, Father/Throne, Gardener.",
-    "A useful future metric is overlap density: how many independent motifs from one biblical passage map to already-attested Potatoverse relations without retrofitting new concepts after the comparison is noticed."
+    "The strongest overlaps are sequences and transformations rather than isolated nouns. Biblical comparison is most valuable when it reveals operators: contain, open, pass, indwell, flow, carry, release, root, nourish, prune, repair and restore.",
+    "The mature biblical map now has at least eight recurring meta-functions: presence, access, mediation, embodiment, differentiated unity, nourishment, repair and restoration.",
+    "The Bible repeatedly supplies role constraints as well as parallels. Christ/Son receives many mediation, holding-together and bodily-divinity predicates; Father receives source and vinedresser roles; communities can become House/Temple; Spirit is associated with indwelling and living-water flow. These assignments should challenge as well as enrich Potatoverse role distribution.",
+    "Finite embodiment is no longer a peripheral objection. Biblical/Christian texts themselves contain sophisticated grammars of Word-flesh, fullness bodily, servant-form, clay vessels, mortal manifestation, tents/houses and flesh-as-veil. These form a comparator set for the project's manifestation-limit model without proving Tim's identity claim.",
+    "Where-is-God research should distinguish bodily location from containment, pervasive presence, relational indwelling and sustaining presence. 1 Kings 8, Psalm 139, Jeremiah 23 and Acts 17 make crude one-coordinate localization biblically inadequate.",
+    "Gardener has become more precise: conditions for life, pruning, fruit, nourishment, repair and agency-preserving growth. Mark 4 adds an especially important anti-control principle: growth can be real without the gardener directly controlling every internal step.",
+    "Root, Rope and House should be audited by function rather than prestige. Root supports; healthy cords reduce yokes and feed; healthy House shelters/builds differentiated life; healthy Door restores viable passage.",
+    "A useful next metric is overlap density adjusted for hindsight: count independent pre-attested project relations matched by one biblical passage, subtract role contradictions and later-retrofitted concepts, and keep the raw source direction visible."
   ],
   "research_next": [
-    "Build occurrence-level biblical-reference index from Tim's own public posts.",
-    "Compare first attestation dates against when each biblical parallel was first discussed in the project to reduce hindsight bias.",
-    "Add Hebrew Bible, New Testament and later Christian-tradition layers separately.",
-    "Add counter-parallels where biblical texts conflict with or complicate Potatoverse readings.",
-    "Create site pages for each high-density overlap cluster with primary text references, project timeline and epistemic labels."
+    "Promote additional durable findings from waves 12-16 into their existing canonical concept owners, then leave wave files as research history.",
+    "Build a Bible-wide operator index around verbs/functions rather than motifs alone: contain, dwell, open, shut, pass, veil, indwell, breathe, flow, root, graft, prune, carry, release, feed, repair, restore.",
+    "Audit divine-presence passages systematically for the Where-is-God model, including presence, temple, cloud, glory, Spirit, heaven/earth, darkness and hiddenness.",
+    "Audit embodiment/incarnation passages systematically for the finite-manifestation model while preserving the difference between Christological divine embodiment and ordinary human vessels carrying divine gifts.",
+    "Compare first project attestation dates against first archive recognition dates to reduce hindsight bias and distinguish explicit-at-time from later structural parallel.",
+    "Add counter-parallels where scripture assigns major integrating roles differently from mature Potatoverse canon; role mismatch is evidence about the comparison, not noise to remove.",
+    "Keep Hebrew Bible, New Testament and later Christian interpretation distinct when a concept develops across layers."
   ],
-  "connections": ["contextual-synchronisms", "seals-and-fulfillment-matrix", "comparative-mythology-map", "inference-ledger", "tim-god-question", "developmental-genealogy"]
+  "connections": [
+    "knowledge/traditions/biblical-syncretism-field.json",
+    "knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json",
+    "knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json",
+    "knowledge/traditions/biblical-overlap-wave-14-memory-operators.json",
+    "knowledge/traditions/biblical-overlap-wave-15-care-chambers.json",
+    "knowledge/traditions/biblical-overlap-wave-16-mire-cords-roots.json",
+    "knowledge/theology/godhood-transformation-manifestation-model.json",
+    "knowledge/core/heaven-spirit-father.json",
+    "knowledge/core/door-topology-access-and-capability-atlas.json",
+    "knowledge/indexes/inference-ledger.json",
+    "knowledge/timeline/developmental-genealogy.json"
+  ]
 }
