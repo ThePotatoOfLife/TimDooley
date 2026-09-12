@@ -3,6 +3,7 @@ const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&
 
 let manifest=null;
 let contextGraph={clusters:[]};
+let canonicalRecordRegistry={records:[]};
 let active='root';
 let viewType='root';
 let searching=false;
@@ -106,6 +107,9 @@ function indexPush(map,key,value){
   if(!map.has(key))map.set(key,[]);
   map.get(key).push(value);
 }
+function isRegistrySourcePath(path){
+  return typeof path==='string'&&/^data\/[A-Za-z0-9._/-]+\.json$/i.test(path)&&!path.includes('..')&&!path.startsWith('/');
+}
 function buildIndexes(){
   branchMap=new Map((manifest.branches||[]).map(b=>[b.id,b]));
   relationsByBranch=new Map();
@@ -128,6 +132,11 @@ function buildIndexes(){
     const rels=(relationsByBranch.get(b.id)||[]).map(r=>r.label).join(' ');
     const ctx=(contextsByBranch.get(b.id)||[]).flatMap(c=>[c.title,c.summary,...(c.concepts||[])]).join(' ');
     searchIndex.set(b.id,[b.title,b.description,...(b.children||[]),...(b.records||[]),rels,ctx].join(' ').toLowerCase());
+  }
+  for(const record of canonicalRecordRegistry.records||[]){
+    for(const occurrence of record.occurrences||[]){
+      if(isRegistrySourcePath(occurrence.source))recordPaths.add(occurrence.source);
+    }
   }
 }
 function branchById(id){return branchMap.get(id)}
@@ -253,7 +262,11 @@ async function routeHash(){
 }
 async function init(){
   try{
-    [manifest,contextGraph]=await Promise.all([loadJSON('manifest.json'),loadJSON('knowledge/indexes/context-graph.json').catch(()=>({clusters:[]}))]);
+    [manifest,contextGraph,canonicalRecordRegistry]=await Promise.all([
+      loadJSON('manifest.json'),
+      loadJSON('knowledge/indexes/context-graph.json').catch(()=>({clusters:[]})),
+      loadJSON('data/canonical-record-registry.json').catch(()=>({records:[]}))
+    ]);
     buildIndexes();buildNav();
     $('#reader')?.addEventListener('click',handleReaderClick);
     $('#branches')?.addEventListener('click',handleNavClick);
