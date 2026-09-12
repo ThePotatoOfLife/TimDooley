@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -44,6 +46,9 @@ jobs:
 
       - name: Validate country refresh reliability
         run: python scripts/validate_country_refresh_reliability.py
+
+      - name: Validate SEO pipeline
+        run: python scripts/validate_seo_pipeline.py
 
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
@@ -149,6 +154,12 @@ jobs:
 
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
+
+      - name: Enrich weak page descriptions
+        run: python scripts/enrich_weak_descriptions.py
+
+      - name: Optimize crawl, sharing and sitemap SEO
+        run: python scripts/optimize_seo.py
 
       - name: Validate public navigation
         run: python scripts/validate_public_navigation.py
