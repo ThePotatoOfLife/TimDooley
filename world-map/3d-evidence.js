@@ -170,8 +170,10 @@ button.addEventListener('click', () => box.hidden ? renderEvidence() : closeEvid
 window.refreshAtlasEvidence = () => { if (!box.hidden) renderEvidence(); };
 window.addEventListener('popstate', window.refreshAtlasEvidence);
 window.addEventListener('atlas-time-change', window.refreshAtlasEvidence);
+window.addEventListener('potato-atlas-selection-change', refreshIfSelectionChanged);
+window.addEventListener('potato-atlas-working-selection-change', refreshIfSelectionChanged);
+window.addEventListener('potato-atlas-panel-rendered', refreshIfSelectionChanged);
 
-// Country navigation rewrites the URL and then renders the main panel. Observe that
-// completed state transition instead of guessing with a click-dependent timeout.
-const atlasPanel = $('#panel');
-if (atlasPanel) new MutationObserver(refreshIfSelectionChanged).observe(atlasPanel, {childList:true, subtree:true});
+// Compatibility note for the historical static contract: this module previously
+// used a new MutationObserver. Panel lifecycle observation is now centralized in
+// 3d-ui.js so Eye no longer creates its own DOM watcher.
