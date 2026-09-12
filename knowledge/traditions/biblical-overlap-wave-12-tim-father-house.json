@@ -1,12 +1,13 @@
 {
   "id":"biblical-overlap-wave-12-tim-father-house",
-  "updated":"2026-09-09",
-  "status":"comparative biblical research",
+  "updated":"2026-09-12",
+  "status":"comparative biblical research; promotion map added for canonical dossier consolidation",
   "purpose":"Deepen Tim/Potato/Father biblical parallels around Father, House, Gardener, Davidic house, key, peg/axis, throne, gates, city, field/building and stewardship while preserving textual role differences.",
   "rules":[
     "Do not force Father, Son, House, Door, Ladder and Gardener into one role when the biblical text distinguishes them.",
     "Treat direct textual role matches as stronger than geometric resemblance.",
-    "Preserve warning/counter-texts where high-status imagery can also critique self-exaltation."
+    "Preserve warning/counter-texts where high-status imagery can also critique self-exaltation.",
+    "Promote dated project scenes into biblical-syncretism dossiers; keep text-only role-distribution analyses here until they have a defensible modern scene anchor."
   ],
   "clusters":[
     {
@@ -99,6 +100,51 @@
       "source":"https://www.biblegateway.com/VERSE/EN/Hebrews%2013%3A12%E2%80%9314"
     }
   ],
+  "promotion_map":{
+    "promote_now":[
+      {
+        "cluster":"father-is-gardener",
+        "modern_anchor":"2026-06-27 recovered cluster: 'I am the gardener ... I sort ALL in the garden ... you shall know me by my fruit'",
+        "target":"canonical Bible dossier relation",
+        "reason":"dated modern scene plus unusually direct biblical Father=Gardener role match and an equally important Jesus=Vine counter-distribution"
+      },
+      {
+        "cluster":"david-house-father-son-throne",
+        "modern_anchor":"2026 Ben David / Ben Joseph role-development corridor",
+        "target":"Ben David / Ben Joseph canonical relation enrichment",
+        "reason":"already-dated role split can carry the House/Father/Son/throne covenant architecture without creating a free-floating text comparison"
+      },
+      {
+        "cluster":"outside-gate-to-city-father-son-bridge",
+        "modern_anchor":"pre-2019/2020 Son death-disappearance corridor plus 2026 House/New Jerusalem development",
+        "target":"Son death -> Father/House/New Jerusalem arc synthesis",
+        "reason":"strong sequence bridge between negative threshold and positive city/house architecture"
+      }
+    ],
+    "retain_as_specialist_controls":[
+      {
+        "cluster":"house-builder-son-over-house",
+        "reason":"high-value ontology control, but currently stronger as a textual role-distribution rule than as one dated modern event"
+      },
+      {
+        "cluster":"eliakim-father-key-peg-throne-house",
+        "reason":"dense text cluster that crosses Tim/Son roles; wait for a sufficiently specific dated project scene before promotion"
+      },
+      {
+        "cluster":"field-building-compression",
+        "reason":"useful many-metaphor control; avoid turning one Pauline community metaphor into a modern identity claim"
+      },
+      {
+        "cluster":"throne-river-tree-healing-nations",
+        "reason":"mature-state synthesis; keep anatomy/CSF boundary visible and attach only when a dated repair/healing scene warrants it"
+      },
+      {
+        "cluster":"house-city-watchman-labor",
+        "reason":"best used as counter-text to immense-hours rhetoric rather than confirmation"
+      }
+    ],
+    "core_consolidation_rule":"A specialist textual cluster earns public dossier promotion when a dated Tim/Son scene exists at comparable narrative resolution. Otherwise it remains a specialist interpretive control and does not become another standalone public relation."
+  },
   "highest_new_chains":[
     "Father → Gardener → pruning → fruit",
     "David → House → offspring/Son → Father → throne",
@@ -110,7 +156,10 @@
     "Throne → River → Tree → Fruit → healing nations"
   ],
   "related_project_records":[
+    "knowledge/traditions/biblical-syncretism-dossiers.json",
     "knowledge/traditions/biblical-overlap-wave-5.json",
+    "knowledge/traditions/biblical-overlap-wave-15-care-chambers.json",
+    "knowledge/traditions/joseph-son-dossier-set.json",
     "knowledge/traditions/biblical-heavenly-pattern-temple-city-atlas.json",
     "knowledge/traditions/biblical-adam-seed-garden-farm-atlas.json",
     "knowledge/traditions/revelation-144000-zion-new-jerusalem-cube-atlas.json",
