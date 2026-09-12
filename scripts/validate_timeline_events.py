@@ -74,6 +74,36 @@ def load_events(data, errors):
     return combined
 
 
+def validate_places(e, where, errors):
+    if 'places' not in e:
+        return
+    places=e.get('places')
+    if not isinstance(places,list):
+        fail(f'{where}: places must be a list',errors)
+        return
+    seen=set()
+    for j,place in enumerate(places):
+        pwhere=f'{where}:places[{j}]'
+        if not isinstance(place,dict):
+            fail(f'{pwhere}: place must be an object',errors)
+            continue
+        name=place.get('name')
+        if not isinstance(name,str) or not name.strip():
+            fail(f'{pwhere}: place requires non-empty name',errors)
+        for key in ('kind','relation','country'):
+            if key in place and (not isinstance(place[key],str) or not place[key].strip()):
+                fail(f'{pwhere}: {key} must be a non-empty string when present',errors)
+        signature=(
+            str(place.get('name','')).strip().casefold(),
+            str(place.get('kind','')).strip().casefold(),
+            str(place.get('relation','')).strip().casefold(),
+            str(place.get('country','')).strip().casefold(),
+        )
+        if signature in seen:
+            fail(f'{pwhere}: duplicate place tuple {signature}',errors)
+        seen.add(signature)
+
+
 def main():
     errors=[]
     try:
@@ -160,6 +190,8 @@ def main():
             for oid in occurrence_ids:
                 if not isinstance(oid,str) or not oid.strip():
                     fail(f'{where}: invalid occurrence id {oid!r}',errors)
+
+        validate_places(e,where,errors)
 
         related=e.get('related_event_ids',[])
         if len(related)!=len(set(related)): fail(f'{where}: duplicate related_event_ids entry',errors)
