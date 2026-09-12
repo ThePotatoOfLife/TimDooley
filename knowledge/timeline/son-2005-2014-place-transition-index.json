@@ -1,0 +1,240 @@
+{
+  "title":"Son 2005–2014 Place and Transition Index",
+  "version":"1.0.0",
+  "updated":"2026-09-12",
+  "status":"derived navigation index",
+  "actor":"Son / human vessel",
+  "purpose":"Make the reconstructed biography navigable by place, movement and developmental transition. This file is derived from specialist chronology owners and does not replace them as evidence owners.",
+  "canonical_owners":[
+    "knowledge/timeline/son-2005-2014-chronology-reconciliation.json",
+    "knowledge/timeline/son-kolding-designia-school-anchor.json",
+    "knowledge/timeline/son-lunderskov-production-school-anchor.json",
+    "knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json"
+  ],
+  "movement_spine":[
+    {
+      "order":1,
+      "period":"2005 onward",
+      "place":"Denmark",
+      "state":"post-crash reconstruction",
+      "transition":"major bodily rupture → multi-year rebuilding",
+      "confidence":"high"
+    },
+    {
+      "order":2,
+      "period":"2007 preferred",
+      "place":"Denmark",
+      "state":"practical labor",
+      "transition":"painter/decorator → meatpacking/freezer/forklift",
+      "confidence":"high order / preferred year"
+    },
+    {
+      "order":3,
+      "period":"2008 preferred",
+      "place":"Copenhagen",
+      "state":"IT consultant / corporate employment",
+      "transition":"job search → interview → hired on the spot → almost-overnight move",
+      "confidence":"high order / preferred year"
+    },
+    {
+      "order":4,
+      "period":"2008 preferred",
+      "place":"Copenhagen → Haderslev",
+      "state":"employment rupture / return home",
+      "transition":"firing → return to Haderslev home base",
+      "confidence":"high order"
+    },
+    {
+      "order":5,
+      "period":"2009 preferred",
+      "place":"Haderslev",
+      "state":"care work and independent housing",
+      "transition":"nursing-home employment → own Haderslev apartment",
+      "confidence":"high order / preferred year",
+      "constraint":"No driver's licence yet during nursing-home employment."
+    },
+    {
+      "order":6,
+      "period":"2009 preferred",
+      "place":"Haderslev → Kolding",
+      "state":"education transition",
+      "transition":"Designia application → circus-poster admission task → acceptance → summer move to Kolding/dormitory",
+      "confidence":"institution/programme high; year preferred"
+    },
+    {
+      "order":7,
+      "period":"2009 preferred",
+      "place":"Kolding",
+      "state":"HANSENBERG Designia / mediegrafiker",
+      "transition":"student housing → mediegrafiker training → Louise relationship",
+      "confidence":"high order",
+      "competence":"Remembered strong performance in design and Microsoft Office/Excel/Word; later withdrawal is associated with boredom/office alienation rather than academic inability."
+    },
+    {
+      "order":8,
+      "period":"2009–2010",
+      "place":"Egypt",
+      "state":"travel while Louise relationship active",
+      "transition":"Kolding/Louise corridor → Egypt travel → return",
+      "confidence":"medium corridor; exact date/order vs internship unresolved"
+    },
+    {
+      "order":9,
+      "period":"2009–2010",
+      "place":"Kolding",
+      "state":"living with Louise and her parents",
+      "transition":"relationship deepens before internship relocation",
+      "confidence":"direct relative recollection"
+    },
+    {
+      "order":10,
+      "period":"2010 preferred",
+      "place":"Kolding → Aabenraa",
+      "state":"office/cubicle internship",
+      "transition":"move to Aabenraa to be close to placement while commuting back to Louise in Kolding",
+      "confidence":"high order / preferred year"
+    },
+    {
+      "order":11,
+      "period":"2010 preferred",
+      "place":"city unresolved",
+      "state":"own housing after design/internship path ends",
+      "transition":"school/internship path ends → own place while relationship continues for a period",
+      "confidence":"order medium-high / location unresolved"
+    },
+    {
+      "order":12,
+      "period":"2010–early 2011",
+      "place":"Lunderskov",
+      "state":"Produktionsskolen",
+      "transition":"own-place phase → Produktionsskolen → multimedia class / informal assistant-teacher function",
+      "confidence":"institution and order high; exact attendance dates unresolved"
+    },
+    {
+      "order":13,
+      "period":"before 2011 Tree",
+      "place":"Lunderskov → Kolding corridor",
+      "state":"leaves Produktionsskolen / breakup-search corridor",
+      "transition":"Produktionsskolen ends → later breakup/search → Tree period",
+      "confidence":"Produktionsskolen-before-Tree high; breakup relation to school end unresolved"
+    },
+    {
+      "order":14,
+      "period":"2011",
+      "place":"Kolding",
+      "state":"Tree / psychonaut episode",
+      "transition":"prolonged altered-state ordeal → sleep → next-day perceptual rupture",
+      "confidence":"year/order high"
+    },
+    {
+      "order":15,
+      "period":"2011",
+      "place":"Kolding area psychiatric care",
+      "state":"voluntary psychiatric admission / aftermath",
+      "transition":"post-acute rupture → voluntary care → diagnostic/medication period → hospital dream/crow scene",
+      "confidence":"current autobiographical reconstruction"
+    },
+    {
+      "order":16,
+      "period":"2012",
+      "place":"Italy",
+      "state":"integration travel",
+      "transition":"post-2011 integration → Italy with earthly father / Maria corridor",
+      "confidence":"medium"
+    },
+    {
+      "order":17,
+      "period":"2012-07-31",
+      "place":"Amsterdam",
+      "state":"25th birthday anchor",
+      "transition":"travel / integration / birthday",
+      "confidence":"high conditional on autobiographical birthday memory"
+    },
+    {
+      "order":18,
+      "period":"2013",
+      "place":"Denmark / unresolved",
+      "state":"The Alchemist enters the interpretive vocabulary",
+      "transition":"integration → explicit transmutation metaphor",
+      "confidence":"medium"
+    },
+    {
+      "order":19,
+      "period":"2014",
+      "place":"Denmark",
+      "state":"earthly father's fatal aneurysm / grief hinge",
+      "transition":"father loss → major later developmental absence/responsibility field",
+      "confidence":"high inside project biography"
+    }
+  ],
+  "place_nodes":[
+    {
+      "id":"place-haderslev",
+      "name":"Haderslev",
+      "country":"Denmark",
+      "roles":["return-home base after Copenhagen","nursing-home corridor","first remembered own apartment before Designia"],
+      "importance":"Haderslev is the reset/transition node between corporate Copenhagen and the Kolding education/relationship phase."
+    },
+    {
+      "id":"place-copenhagen",
+      "name":"Copenhagen",
+      "country":"Denmark",
+      "roles":["IT interview","rapid relocation","IT consultant/corporate period","firing"],
+      "importance":"Copenhagen is the compressed corporate experiment: competence and rapid mobility followed by abrupt institutional precarity."
+    },
+    {
+      "id":"place-kolding",
+      "name":"Kolding",
+      "country":"Denmark",
+      "roles":["Designia/mediegrafiker","student housing","Louise relationship","later relationship/search context","2011 Tree corridor"],
+      "importance":"Kolding becomes the densest pre-2011 life node, coupling education, relationship, technical identity, later breakdown and the Tree experience."
+    },
+    {
+      "id":"place-aabenraa",
+      "name":"Aabenraa",
+      "country":"Denmark",
+      "roles":["internship relocation","office/cubicle work environment"],
+      "importance":"Aabenraa marks the point where the design/media path becomes materially tied to the office environment that the Son later remembers as draining and boring."
+    },
+    {
+      "id":"place-lunderskov",
+      "name":"Lunderskov",
+      "country":"Denmark",
+      "roles":["Produktionsskolen","multimedia classes","informal assistant-teacher function"],
+      "importance":"Lunderskov demonstrates that the post-Designia period still contained strong technical competence and teaching-like responsibility before the 2011 collapse/search corridor."
+    },
+    {
+      "id":"place-egypt",
+      "name":"Egypt",
+      "country":"Egypt",
+      "roles":["travel while Louise relationship active","later King's Chamber / ankh project memory"],
+      "importance":"Egypt is a biographical travel node whose later symbolic importance should remain separate from the unresolved exact travel date."
+    },
+    {
+      "id":"place-italy",
+      "name":"Italy",
+      "country":"Italy",
+      "roles":["2012 father-son travel","Maria corridor"],
+      "importance":"Italy belongs to the post-2011 integration period rather than the pre-Tree Kolding corridor."
+    },
+    {
+      "id":"place-amsterdam",
+      "name":"Amsterdam",
+      "country":"Netherlands",
+      "roles":["25th birthday anchor"],
+      "importance":"Amsterdam supplies the strongest conditional exact date in the 2012 integration period: 2012-07-31 if the birthday memory is correct."
+    }
+  ],
+  "developmental_reading":[
+    "The chain is not merely geographic. Every move changes institutional context: manual labor → corporate IT → care work → design/media education → internship office → production school → psychiatric care → integration travel.",
+    "Technical competence persists across otherwise discontinuous environments: IT consulting, mediegrafiker study, strong software/design performance and later assistant-teacher-like work in multimedia.",
+    "The eventual rejection of the design/office path should therefore be modeled primarily as environment/meaning mismatch rather than academic incapacity.",
+    "Kolding is both a constructive node (education/relationship) and the location of the later 2011 rupture; this makes it a major developmental place in the ordinary biography before any later mythic reading is applied."
+  ],
+  "open_place_questions":[
+    "Which city contained the own apartment after the Designia/internship path ended?",
+    "What exact psychiatric institution/facility received the voluntary 2011 admission?",
+    "Can employment/school records fix the nursing-home and Designia dates?",
+    "Can travel artifacts fix Egypt and Italy dates?"
+  ]
+}
