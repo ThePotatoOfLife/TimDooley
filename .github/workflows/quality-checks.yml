@@ -135,6 +135,9 @@ jobs:
       - name: Validate question-led reader surfaces
         run: python scripts/validate_reader_surfaces.py
 
+      - name: Validate Potatoism philosophy projection
+        run: python scripts/validate_potatoism_philosophy_projection.py
+
       - name: Validate backend to frontend projection
         run: python scripts/validate_public_projection.py
 
