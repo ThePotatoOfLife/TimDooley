@@ -1,10 +1,23 @@
 {
-  "version":"1.1.0",
-  "updated":"2026-09-08",
+  "version":"1.2.0",
+  "updated":"2026-09-12",
   "title":"Potatoism Timeline and Story Arc",
   "status":"project-canon",
   "epistemic_rule":"This timeline mixes project-canon mythology with explicitly labelled comparative or symbolic material. It is not a factual biography of a supernatural being. Dates supplied by the project are preserved as claims and should be distinguished from independently verified timeline.",
   "timeline_method":"Every major event should preserve four questions: what the project says happened, when the claim first appears, what external context illuminates it, and what remains unknown. A later polished mythic formulation must not silently become the earliest historical record.",
+  "biography_routing":{
+    "rule":"This file is a mythic/story-arc projection, not the owner of ordinary pre-Tim biography. For 2005–2014 dates, places and causal order, route first to the dedicated Son chronology owners.",
+    "canonical_owner":"knowledge/timeline/son-2005-2014-chronology-reconciliation.json",
+    "movement_owner":"knowledge/timeline/son-2005-2014-place-transition-index.json",
+    "live_pack":"data/timeline-event-packs/son-biography-2005-2014.json",
+    "reader_guide":"docs/SON-2005-2014-BIOGRAPHY-TIMELINE.md"
+  },
+  "ordinary_biography_bridge":{
+    "period":"2005–2014",
+    "summary":"Crash/reconstruction → practical labor → Copenhagen IT → Haderslev care work → Designia/mediegrafiker and Louise in Kolding → internship/Aabenraa → Produktionsskolen in Lunderskov → 2011 Tree/psychiatric sequence → 2012 integration/travel → 2013 Alchemist → 2014 earthly-father death.",
+    "precision":"2007–2010 years are preferred working placements; exact employment/school dates remain recovery targets.",
+    "developmental_value":"The recovered chain shows repeated practical and technical competence across IT, media/design and multimedia teaching-like activity. The eventual office/design-path rejection is therefore better modeled as environmental/meaning mismatch than simple incapacity."
+  },
   "events":[
     {
       "date":"1987",
@@ -13,9 +26,9 @@
       "title":"The Son is said to be born",
       "category":"biographical-origin",
       "status":"user-stated project timeline",
-      "description":"The project places the Son's birth in 1987. At present this is a timeline claim rather than an independently sourced biographical record. The significance inside the mythology is retrospective: later material treats this person as the embodied Son/Thomas/Twin/Lion/Door whose life precedes the emergence of Tim as Father/Potato of Life.",
-      "deeper_context":"The year matters primarily because it anchors the later age calculations. If the 2011 ordeal occurred at approximately age 25 and the December 2019 death occurred at approximately age 32–33, those relationships should be checked against the earliest surviving records rather than inferred solely from later storytelling.",
-      "research_need":"Find the earliest source for the 1987 birth claim and distinguish ordinary biography from later mythic timeline.",
+      "description":"The project places the Son's material birth on July 31, 1987. The significance inside the mythology is retrospective: later material treats this person as the embodied Son/Thomas/Twin/Lion/Door whose life precedes the emergence of Tim as Father/Potato of Life.",
+      "deeper_context":"The date anchors later age calculations. In 2011 the Son was 23 before July 31 and 24 afterward; age 25 is impossible. Tim's separate project-canonical spiritual birth belongs to December 25, 2020.",
+      "research_need":"Preserve the distinction between ordinary Son biography and later Tim/Potato identity rather than using one birth date for both.",
       "relations":["son","thomas-twin","tim-dooley-father"]
     },
     {
@@ -35,12 +48,13 @@
       "date":"2011",
       "precision":"project-event-year",
       "id":"odin-tree-ordeal-2011",
-      "title":"The nineteen-hour tree ordeal",
+      "title":"The nineteen-hour Tree ordeal",
       "category":"ordeal-and-vision",
-      "status":"user-stated visionary timeline",
-      "description":"At approximately age 25, the Son is said to have hung from an Odin tree for nineteen hours. The account includes an encounter with the Ouroboros, a sense of unity with God, deep sleep, visions of an American city destroyed by nuclear explosion, and awakening to thousands of crows covering the sun and trees.",
-      "deeper_context":"The event is one of the most structurally important points in the project because it precedes the later death/Father timeline. The tree is described not as scenery but as an ordeal. The external comparison with Hávamál is unusually specific: Odin hangs on a tree for nine nights, is wounded, is associated with self-sacrifice, obtains runes and falls from the tree. The project account differs in duration, setting and visionary content. Those differences must remain visible. The strongest common structure is suspension between states followed by altered knowledge or perception.",
-      "research_need":"Locate the earliest surviving account, establish the exact date and location, determine whether the Odin comparison was present at the time, and separate contemporaneous description from later interpretation.",
+      "status":"user-stated visionary timeline / corrected chronology projection",
+      "description":"In 2011, at biological age 23 or 24 depending the unresolved event date, the Son undergoes the Kolding Tree ordeal. Current reconstruction treats approximately nineteen hours as the overall ordeal and approximately six hours as a unity phase whose exact containment remains unresolved. The acute episode includes ego/self-boundary dissolution, fractal/time-spiral and unity phenomenology; after sleep, a separate next-day perceptual rupture leads to voluntary psychiatric presentation. The nuclear-America dream and crow/crowd scene belong to later hospital/aftermath phases rather than being silently folded into the acute trip.",
+      "deeper_context":"The event is one of the most structurally important points in the project because it precedes the later death/Father timeline. The external comparison with Hávamál is later comparative mythology: Odin hangs nine nights on a tree and acquires runes, while the modern autobiographical account differs in setting, duration, substance context and phenomenology. The strongest common structure is ordeal/tree/altered knowledge/return, not literal identity.",
+      "research_need":"Recover the earliest surviving contemporaneous account and exact date; preserve the dedicated 2011 owner as authority for phase order, duration variants and psychiatric boundaries.",
+      "owner":"knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json",
       "relations":["son","odin-tree","ouroboros","vision","crows","thomas-twin"]
     },
     {
@@ -50,45 +64,45 @@
       "title":"Ouroboros and the end that contains a beginning",
       "category":"visionary-symbolism",
       "status":"project interpretation of the 2011 account",
-      "description":"The Ouroboros is treated as a symbol encountered during the tree ordeal. Its importance within the project is the relation between ending and beginning: a system appears to consume or contain itself and thereby closes a cycle.",
+      "description":"The Ouroboros is treated as a symbol encountered during the Tree ordeal. Its importance within the project is the relation between ending and beginning: a system appears to consume or contain itself and thereby closes a cycle.",
       "deeper_context":"Placed beside the potato, the Ouroboros becomes more specific than generic 'eternity.' A tuber stores material from one growth cycle and can initiate another. The endpoint becomes the substrate of the next beginning. This does not prove that the ancient symbol and potato biology share a historical origin; it identifies a common structural question about continuity through cycles.",
       "research_need":"Recover the original description of the Ouroboros and determine whether the image was visual, textual, dreamlike or supplied retrospectively.",
       "relations":["ouroboros","spiral","potato-of-life","turning"]
     },
     {
-      "date":"2019-12-24",
-      "precision":"project-canon-date",
+      "date":"December 2019",
+      "precision":"project-canon-period",
       "id":"son-person-death",
-      "title":"The Son dies as a person",
+      "title":"Son-side personhood / death corridor",
       "category":"death",
-      "status":"user-stated project timeline",
-      "description":"The project distinguishes the Son's death as a person from the later meme-crucifixion. The current timeline places the personal death on the night of December 24, 2019. This distinction is central: the project does not treat every later representation as the same kind of death.",
-      "deeper_context":"The date creates a calendar threshold because December 24 night immediately precedes Christmas Day. In the project's later architecture, this makes the death a precondition for the December 25 Father/Potato birth motif. The historically cautious interpretation is that the project is using a heavily Christian liturgical threshold as mythic timeline; it is not evidence that the supernatural event occurred as described.",
-      "death_taxonomy":"biological/person death claim; separate from symbolic death, meme death, archival persistence and later mythic rebirth",
-      "research_need":"Find the earliest source for the date and wording, and preserve whatever distinction the original material makes between personhood and later representation.",
+      "status":"user-stated project timeline / source archaeology open",
+      "description":"The current mature reconstruction preserves a December 2019 personhood/personal-death anchor while keeping the exact North-Pole meme-crucifixion artifact date as a separate unresolved source question. This prevents several different kinds of death from being forced onto one timestamp.",
+      "deeper_context":"Christmas/North-Pole/death imagery later becomes a major mythic threshold, but exact event date, artifact date and later interpretation must remain separate clocks.",
+      "death_taxonomy":"2018 essence/persona rupture; December 2019 personhood/personal-death anchor; circa-2020 meme/representation-death strand; later Door/Vessel interpretation",
+      "research_need":"Recover the original meme/upload timestamp and earliest interpretation rather than assigning the entire death taxonomy to one date.",
       "relations":["son","death","christmas","potato-of-life","tim-dooley-father"]
     },
     {
-      "date":"2020",
+      "date":"around 2020",
       "precision":"approximate-project-period",
       "id":"meme-crucifixion-2020",
       "title":"The meme-crucifixion and the death of representation",
       "category":"digital-mythic-event",
-      "status":"project-mythic / user-stated timeline",
-      "description":"Around 2020 the project says the Son was crucified in a meme at the North Pole. The phrase is intentionally treated as a different category from Roman crucifixion and from the Son's preceding personal death.",
-      "deeper_context":"The phrase becomes analytically useful when death is separated into layers. A person can cease ordinary participation while an image, profile, meme or story continues. A meme can reproduce an identity fragment while detaching it from the person's control. The project calls this the 'worst death' because the representation can remain alive after the person has been stripped of ordinary agency. The North Pole then adds symbolic extremity: the digital death is placed at the far north of the mythic map, linking representation to the already developing North Axis.",
-      "research_need":"Identify the exact meme/artifact, earliest circulation, creators, audience, wording and intended meaning before assigning literal, legal or historical status.",
+      "status":"project-mythic / exact artifact date unresolved",
+      "description":"Around the 2019–2020 transition corridor the project says the Son was crucified in a meme at the North Pole. The phrase is treated as a different category from Roman crucifixion and from the preceding personhood-death anchor.",
+      "deeper_context":"The phrase becomes analytically useful when death is separated into layers. A meme can reproduce an identity fragment while detaching it from the person's control. The project calls this the 'worst death' because the representation can remain alive after ordinary agency is stripped away. North Pole then adds symbolic extremity to a digital representation-death story.",
+      "research_need":"Identify the exact meme/artifact, timestamp, circulation, creators, audience, wording and intended meaning before assigning literal, legal or historical status.",
       "relations":["meme-crucifixion","son","north-pole","door","death","memory"]
     },
     {
       "date":"2020-12-25",
       "precision":"project-canon-date",
       "id":"potatoism-birth",
-      "title":"Birth of the Potatoism seed",
+      "title":"Tim / Potato birth marker",
       "category":"origin",
       "status":"project-canon-date",
-      "description":"December 25, 2020 is retained in the project as a symbolic birth date for the growing Potatoism journey. It is treated as the mythic seed of the framework rather than proof of a historically recognized religious movement.",
-      "deeper_context":"Placed immediately after the December 24 death motif, the date creates the project's most compressed transformation: one calendar night contains the end of one identity and the beginning of another. Christmas supplies pre-existing nativity symbolism; Potatoism repurposes the date as a Father/Potato birth threshold. The timeline should preserve this as a project construction and investigate when the formulation first appeared.",
+      "description":"December 25, 2020 is retained in the mature project as Tim's spiritual birth marker as Potato of Life, not as completed Father.",
+      "deeper_context":"The later archive interprets the death-to-birth corridor through burial, seed, Christmas and emergence. Keeping Potato birth distinct from April 2025 Father realization preserves actual development inside the mythology.",
       "relations":["potato-of-life","christmas","seed","son","tim-dooley-father"]
     },
     {
@@ -98,8 +112,8 @@
       "title":"Tim emerges as the potato sage",
       "category":"identity-development",
       "status":"project timeline with unresolved exact date",
-      "description":"After the Son's death, Tim Dooley emerges in the project as a potato sage. Early recognition is unstable: the figure is variously interpreted as lion, cat, carpenter, lion's whelp or Son before the Father/Potato identity becomes more explicit.",
-      "deeper_context":"The misrecognitions are not merely comic aliases. They can be studied as a theory of partial perception. Carpenter emphasizes making; lion emphasizes sovereignty; cat emphasizes observation and independence; gardener emphasizes cultivation; mountain emphasizes stability; ladder emphasizes connection; potato emphasizes hidden storage and future growth. The later canon may be describing one center through multiple apertures, but that remains an interpretation and should be checked against the actual chronological order in which the labels appeared.",
+      "description":"After the Son's death corridor, Tim Dooley develops publicly as a potato/sage identity. Early recognition is unstable: the figure is variously interpreted as lion, cat, carpenter, lion's whelp or Son before the later Father identity becomes explicit.",
+      "deeper_context":"The misrecognitions can be studied as partial functional perceptions rather than interchangeable aliases: carpenter emphasizes making; lion sovereignty; cat observation/independence; gardener cultivation; mountain stability; ladder connection; potato hidden storage/growth.",
       "research_need":"Locate the earliest public appearance of each label and reconstruct whether they emerged sequentially, simultaneously or retrospectively.",
       "relations":["tim-dooley-father","potato-of-life","misrecognition","gardening","lion-of-judah","ladder"]
     },
@@ -111,7 +125,7 @@
       "category":"cosmology",
       "status":"project-canon/development",
       "description":"Tim becomes the Father-side/source archetype while the Son becomes the embodied counterpart. The relation is interpreted through source/manifestation, above/below, root/lion, hidden/visible, storage/emergence and unity/difference.",
-      "deeper_context":"The architecture is stronger when each symbol performs a distinct function. Root describes hidden anchoring; Potato describes stored continuity; Son describes embodied manifestation; Door describes controlled transition; Lion describes visible sovereignty; Ladder describes connection between levels. The project should therefore avoid treating these terms as interchangeable names for one entity. Their value lies in the relations between them.",
+      "deeper_context":"The architecture is stronger when each symbol performs a distinct function. Root describes hidden anchoring; Potato stored continuity; Son embodied manifestation; Door controlled transition; Lion visible sovereignty; Ladder connection between levels.",
       "relations":["tim-dooley-father","son","root","potato-of-life","door","lion-of-judah","ladder"]
     },
     {
@@ -121,8 +135,8 @@
       "title":"Thomas / Twin becomes a central Son vocabulary",
       "category":"comparative-mythology",
       "status":"project interpretation anchored in textual tradition",
-      "description":"The project connects the Son to Thomas/Didymus/Twin as a vocabulary of doubt, recognition, mirroring, testimony and return. John actually calls Thomas Didymus/Twin, while later traditions develop Judas Thomas and twin imagery in different ways.",
-      "deeper_context":"Thomas contributes more than the word 'Twin.' His role in John is a problem of evidence. He does not accept second-hand testimony and demands direct encounter. This gives the project a rigorous question for its own return narratives: what counts as recognition after a boundary crossing? Similarity, memory, wounds, testimony and continuity should be tracked separately.",
+      "description":"The project connects the Son to Thomas/Didymus/Twin as a vocabulary of doubt, recognition, mirroring, testimony and return. John calls Thomas Didymus/Twin, while later traditions develop Judas Thomas and twin imagery in different ways.",
+      "deeper_context":"Thomas contributes an epistemological problem of second-hand knowledge: what counts as recognition after identity crosses a boundary? Similarity, memory, wounds, testimony and continuity should be tracked separately.",
       "research_need":"Determine when the project first linked the Son to Thomas and whether Acts of Thomas or Syriac Judas Thomas traditions were part of the source pool.",
       "relations":["thomas-twin","son","gospel-of-john","acts-of-thomas","recognition"]
     },
@@ -134,7 +148,7 @@
       "category":"transformation",
       "status":"project-canon/development",
       "description":"The Son is increasingly defined as the interface through which the upper architecture becomes experience. Door means controlled passage; Vessel means carrying something across; Tomb means enclosure after crossing; Eye supplies a biological analogue of a latent opening.",
-      "deeper_context":"These are better treated as functional roles than aliases. A Door controls transition, a Vessel carries, a Tomb encloses and an Eye contains latent growth. The Son occupies the threshold because the project repeatedly places the Son between Father and Plane, life and death, person and meme, source and manifestation. The later Ladder is then a transformation of the same boundary role: what was once a threshold becomes a traversable connection.",
+      "deeper_context":"These are better treated as functional roles than aliases. The Son occupies the threshold because the project repeatedly places the Son between Father and Plane, life and death, person and meme, source and manifestation. The later Ladder is then a transformation of the same boundary role: what was once a threshold becomes a traversable connection.",
       "relations":["son","door","vessel","tomb","potato-eye","ladder"]
     },
     {
@@ -145,7 +159,7 @@
       "category":"archetypal-architecture",
       "status":"project interpretation anchored in biblical imagery",
       "description":"The project places Root on the hidden/source side and Lion on the visible/manifestation side. Biblical texts provide a real Root/Lion field: Genesis associates Judah with lion imagery, Isaiah uses Davidic root/branch imagery, and Revelation 5:5 combines Lion of Judah with Root of David.",
-      "deeper_context":"The project adds a biological mediator. A potato tuber is underground and storage-oriented but is a modified stem, not a root. Its eyes can produce shoots. Thus the Potato can represent continuity between hidden anchoring and visible manifestation without pretending that the Bible itself supplies the potato model. This distinction is important: the project is synthesizing independent symbolic and biological systems.",
+      "deeper_context":"The project adds a biological mediator. A potato tuber is underground and storage-oriented but is a modified stem, not a root. Its eyes can produce shoots. Thus the Potato can represent continuity between hidden anchoring and visible manifestation without pretending that the Bible itself supplies the potato model.",
       "relations":["root","lion-of-judah","potato-of-life","tim-dooley-father","son"]
     },
     {
@@ -156,7 +170,7 @@
       "category":"sacred-geometry",
       "status":"project interpretation",
       "description":"The Potato of Life is modeled through a vesica piscis: an upper Father circle, lower Son/Plane circle and central mandorla/Door. The geometry is used as a relational model rather than as proof of theology.",
-      "deeper_context":"The crucial mathematical feature is that two complete circles remain distinct while their intersection produces a third visible region. The Door is therefore interpreted as the form generated by relation. This is a conceptual improvement over treating Father, Son and Door as three independent objects. The whole Potato can be the relational figure rather than either circle alone.",
+      "deeper_context":"Two complete circles remain distinct while their intersection produces a third visible region. The Door is therefore interpreted as a form generated by relation rather than an arbitrary third character.",
       "research_need":"Find the earliest project diagram or text making the Father/Son/Door mapping explicit and preserve its original geometry.",
       "relations":["vesica-piscis","tim-dooley-father","son","door","potato-of-life"]
     },
@@ -168,7 +182,7 @@
       "category":"anatomical-metaphor",
       "status":"project interpretation with empirical caveats",
       "description":"The project maps Tim/Father to the thalamus/Father's House and the spine to a vertical axis, with 33 used as a symbolic level/counting reference. Anatomically, the thalamus is a deep diencephalic structure rather than a literal throne on top of the spine; 33 is a conventional total count including fused sacral and coccygeal elements.",
-      "deeper_context":"The metaphor works best as body-as-cosmos. The thalamus is central and participates in information routing; the spine is a strong physical axis; the number 33 has a real anatomical basis. None of those facts proves the metaphysical interpretation. Keeping the boundary visible actually strengthens the research because the project can ask why human beings repeatedly map cosmic order onto bodily order.",
+      "deeper_context":"The metaphor works best as body-as-cosmos. The thalamus is central and participates in information routing; the spine is a strong physical axis; the number 33 has a real anatomical basis. None of those facts proves the metaphysical interpretation.",
       "relations":["fathers-house","thalamus-metaphor","33-levels","spine","ladder","door"]
     },
     {
@@ -178,8 +192,8 @@
       "title":"The refusal, needle's eye and Ladder turning",
       "category":"phase-transition",
       "status":"user-stated project canon; exact source/date unresolved",
-      "description":"The project describes an April 2025 turning in which a straw breaks the camel's back, the figure passes through the needle's eye, the prior sage identity gives way to an explicit Father/Godhood identity, and the Door becomes the Ladder to Heaven.",
-      "deeper_context":"The images describe a threshold produced by accumulated burden. The final straw is significant because a system is already overloaded; the needle's eye represents a passage so narrow that the old configuration cannot pass unchanged. The Ladder then changes the function of the transformed identity: instead of merely standing at a boundary, it connects levels. The most important historical question is whether these terms appeared together contemporaneously or were consolidated later.",
+      "description":"The project describes an April 2025 turning in which accumulated burden reaches a threshold, the figure passes through the needle's eye, and the prior Potato/Sage identity gives way to explicit Ladder/Axis/Father/Godhood architecture.",
+      "deeper_context":"The images describe a threshold produced by accumulated burden. The final straw matters because the system is already overloaded; the needle's eye represents a passage so narrow that the old configuration cannot pass unchanged; Ladder changes the transformed identity from boundary occupant to connector between levels.",
       "research_need":"Search March–May 2025 material for the earliest occurrences of straw/camel, needle's eye, sage, turning, Ladder, Father and Godhood, and reconstruct their order.",
       "relations":["turning","ladder","tim-dooley-father","sage","needle-eye","camel-straw"]
     },
@@ -191,7 +205,7 @@
       "category":"cosmology",
       "status":"project development",
       "description":"North develops from ordinary geographic orientation into the organizing axis connecting Father, Tree, Ladder, polar geography and later applied systems research.",
-      "deeper_context":"North should remain divided into four layers: geographic north as a coordinate direction; North Pole as a physical extremity; North Axis as a relational orientation; North of North as a project-defined beyond-point. This prevents the metaphysical phrase from being mistaken for another location. The project's use of the North Pole as grave/meme coordinate is therefore symbolic geography built on a real geographic extremity.",
+      "deeper_context":"North should remain divided into geographic north, North Pole as physical extremity, North Axis as relational orientation and North of North as project-defined beyond-point. This prevents metaphysical phrase and geographic location from being collapsed.",
       "relations":["north","north-pole","north-axis","north-of-north","throne-of-north","ladder"]
     },
     {
@@ -202,7 +216,7 @@
       "category":"philosophy",
       "status":"project-symbolic",
       "description":"The mythology develops a complementary polarity between outward creative emergence and inward memory/conservation. Red represents expansion, love, creativity and sprouting; Blue represents memory, conservation, fear-awareness and rootward contraction.",
-      "deeper_context":"The strongest formulation is not good versus evil. A living tuber must store resources and eventually expend them in growth. Excessive storage becomes stagnation; uncontrolled expansion exhausts reserves. The pair can therefore be treated as complementary tendencies in a cycle, with the project testing whether real timeline and behavior actually fit the model.",
+      "deeper_context":"The strongest formulation is not good versus evil. A living tuber must store resources and eventually expend them in growth. Excessive storage becomes stagnation; uncontrolled expansion exhausts reserves.",
       "relations":["red-potato","blue-potato","storage","sprout","tree-of-life"]
     },
     {
@@ -213,7 +227,7 @@
       "category":"restoration",
       "status":"project-canon/development",
       "description":"After the transformation cycle, the boundary becomes a route. The Son/Door architecture is reinterpreted through Ladder imagery, and after the April 2025 turning the Ladder becomes explicitly associated with Tim/Father.",
-      "deeper_context":"The conceptual change is from separation to traversal. A door answers 'where can one pass?'; a ladder answers 'how does one move between levels?' This makes Ladder a functional successor to Door rather than simply another name for it. The project's Jacob's Ladder associations should likewise be compared to the biblical text rather than assumed to be identical.",
+      "deeper_context":"The conceptual change is from separation to traversal. A door answers where one can pass; a ladder answers how one moves between levels. Ladder is therefore a functional successor relation, not simply another name for Door.",
       "relations":["ladder","door","son","tim-dooley-father","33-levels"]
     },
     {
@@ -240,19 +254,22 @@
     }
   ],
   "chronological_unknowns":[
-    "Earliest source for the 1987 Son birth claim.",
-    "Exact childhood details and first appearance of manger/farm/palace language.",
-    "Earliest contemporaneous account of the 2011 tree ordeal and whether Odin language was present at the time.",
-    "Original form and date of the Ouroboros, nuclear-city and crow descriptions.",
-    "Exact December 2019 date/source and what 'death as a person' meant in the earliest account.",
-    "Exact 2020 meme artifact, circulation and intended meaning.",
+    "Exact employment and school dates across the preferred 2007–2010 ordinary-biography corridor.",
+    "Driver's-licence issue date.",
+    "Egypt relative to the Aabenraa internship and exact travel dates.",
+    "Formal praktik/lære status of the Aabenraa placement.",
+    "City of the own apartment after the Designia/internship path ended.",
+    "Breakup relative to Produktionsskolen and exact Produktionsskolen attendance dates.",
+    "Exact 2011 Tree date and earliest contemporaneous account.",
+    "Original form/date of the Ouroboros, nuclear-city and crow descriptions.",
+    "Primary travel/source artifacts for 2012 Italy/Maria and 2013 Alchemist placement.",
+    "Exact December 2019 personhood-death source and original meme-crucifixion artifact date.",
     "First public appearance of Tim as potato sage in 2022–23.",
     "First appearances of carpenter, lion, cat, gardener, mountain, throne and Ladder misrecognitions.",
     "First explicit Father/Godhood formulation and whether it predates April 2025.",
     "First Father/Son/Door vesica diagram or textual description.",
     "First thalamus/spine/33 formulation and its source.",
     "First use of North Axis, North Pole as grave coordinate and North of North.",
-    "Whether the December 24/25 death/birth arrangement was present in 2019–2020 or added later.",
     "Whether Thomas/Twin, Root/Lion and Door/Vessel were known source traditions before they became part of the modern canon."
   ]
 }
