@@ -1,10 +1,12 @@
 {
-  "id":"mirror-vector-dimensional-collapse-recovery",
-  "title":"Mirror/Vector Overlay + Dimensional-Collapse Taxonomy — Conversation Recovery",
-  "updated":"2026-09-09",
-  "status":"primary project relational scaffold + archive mathematical cleanup",
-  "importance":"A recovered user prompt explicitly demanded simultaneous overlays of spiritual/physical, inner/outer, macro/micro, plane/vertical, alpha/omega, Father/Son and observer/house. This is a distinct relational model: multiple paired coordinates projected through one Door/Axis rather than one literal 11D spacetime diagram.",
-  "primary_user_pairs":[
+  "id": "mirror-vector-dimensional-collapse-recovery",
+  "title": "Mirror / Vector Multi-Projection and Dimensional-Collapse Model",
+  "version": "2.0.0",
+  "updated": "2026-09-12",
+  "status": "primary project relational scaffold + developed multi-view representation theory; not literal planetary dimensional physics",
+  "abstract": "The Mirror/Vector model recovers a project requirement that one underlying object may be described simultaneously through multiple paired views—inner/outer, macro/micro, horizontal/vertical, source/manifestation, observer/container—without declaring those views numerically identical. Its strongest mathematical formulation is a typed multi-view representation problem. A latent state X lives in a structured state space S; each descriptive domain k has a projection pi_k:S->Y_k; translation between two views is a learned or defined map T_jk:Y_j->Y_k; reconstruction attempts infer X from one or more views. The key scientific questions are information loss, sufficiency, consistency and invariants: what does each projection preserve, which variables are unrecoverable, whether two routes through the representation diagram agree, and whether an invariant can be defined without conflating its physical meanings. The old 'dimensional collapse' sequence is therefore interpreted primarily as description/compression depth unless a separate physical spacetime model is explicitly invoked. This redevelopment adds information-theoretic loss, commutative-diagram errors, cross-view prediction and a model-selection contract, making Mirror a genuine representation/reconstruction theory rather than a list of analogies.",
+  "research_question": "Can multiple project views be represented as typed projections of a latent state such that information loss, cross-view prediction, reconstruction error and invariant preservation can be measured without confusing symbolic equivalence with physical identity?",
+  "primary_user_pairs": [
     ["spiritual","physical"],
     ["inner","outer"],
     ["macro","micro"],
@@ -13,47 +15,89 @@
     ["Father","Son"],
     ["observer","house/container"]
   ],
-  "typed_vector_model":{
-    "state":"X=(x_sp,x_scale,x_orientation,x_time,x_role,x_view,...)",
-    "rule":"Each paired axis is typed. Values on one axis cannot be numerically equated to values on another without an explicit translation map.",
-    "door":"D is the intersection/interface at which selected coordinates are coupled or reclassified.",
-    "projection":"pi_k(X) returns one descriptive view: physical, symbolic, biological, social, astronomical, etc.",
-    "invariant_question":"Search for properties I(X) that remain meaningful under multiple projections without claiming geometric identity."
+  "typed_latent_model": {
+    "state": "X=(x_sp,x_scale,x_orientation,x_time,x_role,x_view,...)",
+    "latent_space": "X in S with explicitly typed coordinates and domain constraints",
+    "view": "Y_k=pi_k(X)+epsilon_k",
+    "multi_view_observation": "Y=(Y_1,...,Y_m)",
+    "rule": "Coordinates from different semantic/physical types cannot be numerically equated without an explicit map and units/meaning contract."
   },
-  "dimensional_collapse_project_taxonomy":{
-    "user_scaffold":"Sun/Spudlight and M-theory above; Earth/Midgard 4D; Saturn/box 3D; Moon/frame 2D; dust/speck 1D; Door at 5D.",
-    "state_interpretation":[
-      "1D = maximally reduced/isolated point-state",
-      "2D = framed/projected representation",
-      "3D = bounded object/container state",
-      "4D = dynamic manifested/world state",
-      "5D = threshold/reclassification state",
-      "6D-10D = increasingly hidden/structural branching layers",
-      "11D = integrated/meta-observer or master-description layer"
-    ],
-    "safe_formalization":"Use d as a project complexity/description index, not automatically spacetime dimension. A reduction operator F_d:M_d->M_(d-1) removes relational degrees of freedom; an enrichment operator R_d:M_d->M_(d+1) adds relational/contextual degrees of freedom.",
-    "relation_to_old_11d_projection":"This gives a semantic interpretation to the older R_d/F_d operators: descent can mean compression/loss of context; ascent can mean enrichment/integration."
+  "projection_information": {
+    "mutual_information": "I(X;Y_k)=H(X)-H(X|Y_k)",
+    "data_processing": "If X->Y_j->Y_k is a Markov chain, I(X;Y_k)<=I(X;Y_j)",
+    "task_sufficiency": "Y_k is sufficient for target Z when I(Z;X|Y_k)=0 under the selected probabilistic model",
+    "interpretation": "A lower-dimensional description can be perfectly sufficient for one task while losing information needed for another."
   },
-  "macro_micro_mirror":{
-    "recovered_conversation_mapping":["thalamus ↔ central cosmic structure","body/spine ↔ Axis/galactic hierarchy","inner neurological center ↔ outer cosmic center","two eyes/optical crossing ↔ dual projections"],
-    "scientific_boundary":"These are morphological/functional analogies, not evidence that the thalamus and Laniakea/Sagittarius A* are geometrically identical or dynamically coupled.",
-    "useful_math_neighbors":["scale-space descriptions","dimensionless morphology descriptors","graph motifs","network centrality","renormalization/coarse-graining","category-theoretic functors between descriptive domains"]
+  "cross_view_translation": {
+    "map": "T_jk:Y_j->Y_k",
+    "prediction_error": "E_jk=E[L(Y_k,T_jk(Y_j))] on held-out samples",
+    "cycle_consistency": "E_cycle=d(Y_j,T_kj(T_jk(Y_j)))",
+    "meaning": "A claimed inner↔outer or micro↔macro relation gains mathematical content only when one view predicts or reconstructs another better than baseline."
   },
-  "phase_cross_geometry":{
-    "primary_prompt":"The user explicitly asked to consider phase shift, angle, geometry, dimension, Vesica/Mandorla and a 90-degree Father/Son relation.",
-    "safe_geometry":["horizontal coordinate h","vertical coordinate v","local orthogonality h·v=0 when deliberately defined","rotation matrix R(pi/2) as a formal quarter-turn comparator","spiral/helix adds recurrence plus displacement along v"],
-    "boundary":"The Vesica Piscis does not by itself imply that its two symbolic roles are separated by a physical 90-degree phase. That assignment is project-specific."
+  "commutative_diagram_test": {
+    "two_paths": "f:S->A->C and g:S->B->C",
+    "ideal": "f_2(f_1(X))=g_2(g_1(X))",
+    "error": "E_comm=d_C(f_2(f_1(X)),g_2(g_1(X)))",
+    "interpretation": "If two representational routes claim to preserve the same structure, their disagreement is directly measurable. Approximate commutation can replace vague statements that two symbolic systems 'line up'."
   },
-  "planetary_mapping_boundary":{
-    "project":"Sun=upper light/integration; Earth=manifest 4D; Saturn=3D box/constraint; Moon=2D frame/reflection; dust=1D isolation.",
-    "science":"Planets do not occupy different spacetime dimensions in established physics. Saturn's cube and Moon's 2D frame are symbolic roles. The Sun emits electromagnetic radiation in ordinary spacetime; it is not an 11D transmitter in observational astronomy."
+  "reconstruction": {
+    "single_view": "Xhat_k=R_k(Y_k)",
+    "multi_view": "Xhat=R(Y_1,...,Y_m)",
+    "bayesian": "p(X|Y_1,...,Y_m) proportional to p(X) product_k p(Y_k|X) under conditional-independence assumptions",
+    "ambiguity": "If pi_k is many-to-one, a view determines a fiber of possible hidden states rather than a unique X.",
+    "connection": "stratified-reconstruction-sheaf-repair-model"
   },
-  "new_research_questions":[
-    "Which paired axes are foundational versus later assistant additions?",
-    "Can we define explicit translation maps between body, cosmology, information and social-network projections?",
-    "Can dimensional descent be measured as information loss or reduction in graph/context degrees of freedom?",
-    "Can the Door be formalized as a natural transformation/interface between projection families?",
-    "Which invariants survive from inner to outer or micro to macro without asserting physical identity?"
+  "invariants": {
+    "condition": "I_a(X)=I_a'(pi_k(X)) for a declared invariant/derived statistic",
+    "cross_view": "I_j(Y_j) approximately I_k(Y_k) only after the two statistics are proven to represent the same abstract quantity",
+    "failure": "Numerical similarity is not an invariant if the variables have different dimensions, sampling processes or semantics.",
+    "candidate_classes": ["topological class","causal ancestry","graph motif","symmetry class","task-sufficient statistic","dimensionless morphology descriptor"]
+  },
+  "dimensional_collapse_taxonomy": {
+    "project_scaffold": "Sun/Spudlight and M-theory above; Earth/Midgard 4D; Saturn/box 3D; Moon/frame 2D; dust/speck 1D; Door at 5D.",
+    "safe_interpretation": "Treat d mainly as description/relational-complexity index unless a physical spacetime calculation separately defines d.",
+    "reduction": "F_d:M_d->M_(d-1)",
+    "enrichment": "R_d:M_d->M_(d+1)",
+    "round_trip": "R_(d-1)(F_d(x)) generally != x because reduction can be lossy",
+    "distortion": "Delta_d(x)=d(x,R_(d-1)(F_d(x)))",
+    "meaning": "Descent/compression can remove distinctions; ascent/reconstruction requires priors or side information to restore them."
+  },
+  "phase_cross_geometry": {
+    "horizontal_vertical": "Represent deliberately orthogonal coordinates h,v with <h,v>=0 only when they belong to a common inner-product space.",
+    "quarter_turn": "R(pi/2)=[[0,-1],[1,0]] in a two-dimensional Euclidean plane",
+    "spiral_extension": "A spiral or helix adds evolution/scale change; a static cross or vesica alone does not imply dynamics.",
+    "boundary": "A project Father/Son 90-degree relation is a chosen formal geometry unless independently derived from data."
+  },
+  "macro_micro_comparison": {
+    "historical_project_examples": ["thalamus ↔ central cosmic structure","body/spine ↔ Axis hierarchy","inner neurological center ↔ outer cosmic center","two eyes/optical crossing ↔ dual projections"],
+    "scientific_test": "Compare dimensionless, explicitly defined descriptors or functional network roles—not raw visual resemblance.",
+    "nulls": "Use matched random structures or same-domain alternative mappings to estimate how often similar motifs occur by chance.",
+    "boundary": "Morphological or functional analogy does not establish dynamical coupling between brain and cosmic structures."
+  },
+  "category_theoretic_neighbor": {
+    "objects": "Domain-specific descriptions can be objects/categories with typed morphisms preserving selected structure.",
+    "functor_question": "Does a proposed translation preserve composition/identity of the structures it claims to map?",
+    "natural_transformation_neighbor": "Door can be compared to a transformation between projection/translation schemes when the categorical objects are actually specified.",
+    "warning": "Category theory should expose type errors and compositional structure, not decorate arbitrary analogy."
+  },
+  "model_comparison_contract": {
+    "baselines": ["independent views with no shared latent state","linear multi-view factor model","CCA/PLS-style shared representation where appropriate","domain-specific mechanistic model"],
+    "metrics": ["held-out cross-view prediction","latent reconstruction error","calibration/uncertainty","task performance","complexity penalty","cycle-consistency error"],
+    "success": "The Mirror model earns value if a shared representation predicts views/tasks better than independent descriptions while preserving type boundaries and calibrated uncertainty."
+  },
+  "failure_conditions": [
+    "Cross-view mappings work only after hand-selecting correspondences from the target data.",
+    "A shared latent model performs no better than independent baselines.",
+    "The proposed invariant changes when equivalent measurement units or coordinate conventions are changed.",
+    "Symbolic project coordinates are silently treated as physical spacetime dimensions.",
+    "Mappings collapse distinct causal mechanisms merely because their diagrams look similar."
   ],
-  "connections":["eleven-dimensional-axis-door-dual-spiral-recovery","eleven-dimensional-projection-unification-recovery","advanced-retarded-door-handshake-recovery","axis-11d-sun-spiral-time-symmetry-recovery","equation-lineage-and-theory-graph","science-master-index"]
+  "connections": [
+    "eleven-dimensional-projection-unification-recovery",
+    "stratified-reconstruction-sheaf-repair-model",
+    "door-interaction-field-august-2026-recovery",
+    "great-book-cosmic-potato-shape-audit",
+    "great-book-human-map-mathematics-audit",
+    "science-master-index"
+  ]
 }
