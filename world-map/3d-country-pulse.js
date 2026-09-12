@@ -9,7 +9,7 @@ const INDEX_URL = '../data/countries/index.json';
 const DEMOGRAPHY_URL = '../data/world-country-demography.json';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'
 }[char]));
 const title = value => String(value || '').replaceAll('_', ' ').replace(/\b\w/g, c => c.toUpperCase());
 
@@ -45,6 +45,7 @@ let demographyPromise;
 const recordCache = new Map();
 let rendering = false;
 let renderQueued = false;
+let lastRenderSignature = '';
 
 async function fetchJson(url) {
   const response = await fetch(url);
@@ -220,7 +221,18 @@ function moreStatistics(record, demoRow) {
   return rows.length ? rows.map(([label, value]) => `<div class="pulse-stat-row"><span>${esc(label)}</span><b>${esc(displayValue(value))}</b><small>${esc(metricMeta(value))}</small></div>`).join('') : '<div class="muted">No additional normalized observations yet.</div>';
 }
 
-function pulseHtml(code, record, demoRow) {
+function activeMapViewHtml(view) {
+  if (!view || view.status === 'neutral') return '';
+  if (view.scalar) {
+    const meta = [view.period, view.source].filter(Boolean).join(' · ');
+    return `<div class="pulse-map-view" data-status="${esc(view.status)}"><span>Current map color · ${esc(view.scalar.label)}</span><strong>${esc(view.display || 'Unknown')}</strong><small>${esc(meta || (view.status === 'unknown' ? 'No comparable observation for this country' : 'Same measure used by the map'))}</small></div>`;
+  }
+  const memberships = view.memberships?.memberships || [];
+  if (!memberships.length) return '';
+  return `<div class="pulse-map-view"><span>Current map view</span><strong>${view.memberships.matches ? 'Matches' : 'Outside'}</strong><small>${esc(memberships.map(item => item.label).join(' · '))}</small></div>`;
+}
+
+function pulseHtml(code, record, demoRow, view) {
   const name = record?.identity?.name || record?.name || code;
   const headline = metricDefinitions.map(([id, label]) => [label, metric(record, id, demoRow)]);
   const systems = mergeLists(
@@ -245,6 +257,7 @@ function pulseHtml(code, record, demoRow) {
 
   return `<section class="card atlas-country-pulse" data-pulse-code="${esc(code)}">
     <div class="pulse-heading"><div><span class="eyebrow">Country Pulse</span><b>${esc(name)}</b></div><span class="pill">${esc(code)}</span></div>
+    ${activeMapViewHtml(view)}
     <div class="pulse-metrics">${headline.map(([label, value]) => `<div class="pulse-metric"><span>${esc(label)}</span><strong>${esc(displayValue(value))}</strong><small>${esc(metricMeta(value))}</small></div>`).join('')}</div>
     ${religionSummary(demoRow)}
     <details class="pulse-section" open><summary>Connections</summary><div class="pulse-connections">${connectionRows(code)}</div></details>
@@ -267,29 +280,34 @@ function activeSelectionCode() {
   return String(current.activeCode || current.code || '').toUpperCase();
 }
 
-async function render() {
+async function render({ force = false } = {}) {
   if (!panel || !isCountryOverview()) return;
   if (rendering) { renderQueued = true; return; }
   const code = activeSelectionCode();
   if (!code) return;
+  const view = await window.__potatoAtlasActiveView?.forCountry?.(code).catch?.(() => null) || window.__potatoAtlasActiveView?.current || null;
+  const signature = `${code}|${view?.scalar?.id || ''}|${view?.display || ''}|${(view?.sets || []).map(item => item.id).join(',')}`;
   const existing = panel.querySelector('.atlas-country-pulse');
-  if (existing?.dataset.pulseCode === code) return;
+  if (!force && existing?.dataset.pulseCode === code && lastRenderSignature === signature) return;
   rendering = true;
   try {
     const [record, demo] = await Promise.all([getRecord(code), demography()]);
     if (!record || !isCountryOverview() || activeSelectionCode() !== code) return;
     panel.querySelector('.atlas-country-pulse')?.remove();
     const holder = document.createElement('div');
-    holder.innerHTML = pulseHtml(code, record, demo?.countries?.[code]);
+    holder.innerHTML = pulseHtml(code, record, demo?.countries?.[code], view);
     const pulse = holder.firstElementChild;
     const firstGrid = panel.querySelector('.grid');
     if (pulse && firstGrid?.parentNode) firstGrid.parentNode.insertBefore(pulse, firstGrid);
     else if (pulse) panel.appendChild(pulse);
+    lastRenderSignature = signature;
+    if (window.__potatoAtlasDiagnostics) window.__potatoAtlasDiagnostics.inspectorRenders = (window.__potatoAtlasDiagnostics.inspectorRenders || 0) + 1;
+    window.dispatchEvent(new CustomEvent('potato-atlas-inspector-rendered', { detail:{ code, surface:'country-pulse', view } }));
   } finally {
     rendering = false;
     if (renderQueued) {
       renderQueued = false;
-      queueMicrotask(render);
+      queueMicrotask(() => render({ force:true }));
     }
   }
 }
@@ -299,7 +317,7 @@ function ensureStyle() {
   const style = document.createElement('style');
   style.id = 'atlasCountryPulseStyle';
   style.textContent = `
-    .atlas-country-pulse{border-color:#526258;background:#111a18}.pulse-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.pulse-heading b{display:block;font:400 19px Georgia,serif;margin-top:2px}.pulse-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:9px}.pulse-metric{padding:7px;border:1px solid var(--line);border-radius:8px;background:#0d1514}.pulse-metric span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.06em}.pulse-metric strong{display:block;font-size:14px;margin-top:2px}.pulse-metric small,.pulse-stat-row small{display:block;color:var(--muted);font-size:9px;line-height:1.25;margin-top:2px}.pulse-religion{margin-top:9px;padding-top:8px;border-top:1px solid var(--line)}.pulse-religion-row{display:flex;justify-content:space-between;gap:8px;padding:3px 0}.pulse-note{font-size:9px;margin-top:4px}.pulse-section{border-top:1px solid var(--line);margin-top:8px;padding-top:6px}.pulse-section>summary{cursor:pointer;color:#dfe6dc;font-size:12px;font-weight:650}.pulse-connections{margin-top:5px}.pulse-connection{display:flex;width:100%;justify-content:space-between;gap:8px;align-items:center;text-align:left;margin:4px 0;padding:6px 7px}.pulse-connection small{color:var(--muted);text-align:right}.pulse-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}.pulse-chips span{border:1px solid var(--line);border-radius:999px;padding:3px 6px;font-size:10px}.pulse-stat-list{margin-top:6px}.pulse-stat-row{padding:5px 0;border-bottom:1px solid var(--line)}.pulse-stat-row:last-child{border:0}.pulse-stat-row span{color:var(--muted);font-size:10px}.pulse-stat-row b{display:block}.pulse-quality{display:flex;justify-content:space-between;gap:7px;flex-wrap:wrap;margin-top:8px;padding-top:7px;border-top:1px solid var(--line);color:var(--muted);font-size:9px}
+    .atlas-country-pulse{border-color:#526258;background:#111a18}.pulse-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:8px}.pulse-heading b{display:block;font:400 19px Georgia,serif;margin-top:2px}.pulse-map-view{margin-top:9px;padding:8px;border:1px solid #55655d;border-radius:8px;background:#0d1514}.pulse-map-view span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.06em}.pulse-map-view strong{display:block;margin-top:2px;color:#f0dfaa;font-size:16px}.pulse-map-view small{display:block;color:var(--muted);font-size:9px;margin-top:2px}.pulse-map-view[data-status="unknown"] strong{color:#aab4af}.pulse-metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px;margin-top:9px}.pulse-metric{padding:7px;border:1px solid var(--line);border-radius:8px;background:#0d1514}.pulse-metric span{display:block;color:var(--muted);font-size:9px;text-transform:uppercase;letter-spacing:.06em}.pulse-metric strong{display:block;font-size:14px;margin-top:2px}.pulse-metric small,.pulse-stat-row small{display:block;color:var(--muted);font-size:9px;line-height:1.25;margin-top:2px}.pulse-religion{margin-top:9px;padding-top:8px;border-top:1px solid var(--line)}.pulse-religion-row{display:flex;justify-content:space-between;gap:8px;padding:3px 0}.pulse-note{font-size:9px;margin-top:4px}.pulse-section{border-top:1px solid var(--line);margin-top:8px;padding-top:6px}.pulse-section>summary{cursor:pointer;color:#dfe6dc;font-size:12px;font-weight:650}.pulse-connections{margin-top:5px}.pulse-connection{display:flex;width:100%;justify-content:space-between;gap:8px;align-items:center;text-align:left;margin:4px 0;padding:6px 7px}.pulse-connection small{color:var(--muted);text-align:right}.pulse-chips{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px}.pulse-chips span{border:1px solid var(--line);border-radius:999px;padding:3px 6px;font-size:10px}.pulse-stat-list{margin-top:6px}.pulse-stat-row{padding:5px 0;border-bottom:1px solid var(--line)}.pulse-stat-row:last-child{border:0}.pulse-stat-row span{color:var(--muted);font-size:10px}.pulse-stat-row b{display:block}.pulse-quality{display:flex;justify-content:space-between;gap:7px;flex-wrap:wrap;margin-top:8px;padding-top:7px;border-top:1px solid var(--line);color:var(--muted);font-size:9px}
     @media(max-width:900px){.pulse-metrics{grid-template-columns:1fr 1fr}}
   `;
   document.head.appendChild(style);
@@ -311,19 +329,12 @@ panel?.addEventListener('click', event => {
   if (button?.dataset.pulseCountry) window.goCountry?.(button.dataset.pulseCountry);
 });
 
-if (panel) {
-  let scheduled = false;
-  const observer = new MutationObserver(() => {
-    if (scheduled) return;
-    scheduled = true;
-    queueMicrotask(() => { scheduled = false; render(); });
-  });
-  observer.observe(panel, { childList: true, subtree: true });
-}
-window.addEventListener('potato-atlas-working-selection-change', render);
-window.addEventListener('potato-atlas-selection-change', render);
+window.addEventListener('potato-atlas-panel-rendered', () => render());
+window.addEventListener('potato-atlas-working-selection-change', () => render({ force:true }));
+window.addEventListener('potato-atlas-selection-change', () => render({ force:true }));
+window.addEventListener('potato-atlas-active-view-change', () => render({ force:true }));
 window.addEventListener('potato-atlas-module-ready', event => {
-  if (event?.detail?.label === 'Demography') render();
+  if (event?.detail?.label === 'Demography') render({ force:true });
 });
 
 window.__potatoAtlasCountryPulse = {

@@ -1,63 +1,48 @@
-// Render entity-aware Population/Area Stats from the shared generated scalar plane.
-// The ordinary compositor keeps ownership of other scalar families.
+// Entity-aware scalar compatibility adapter.
+//
+// The compositor is the single rendering owner for Population/Area and all other
+// scalar fills. This bridge preserves the older public helper surface without
+// repainting the map or subscribing to duplicate composition events.
+// Historical feature-state names retained for compatibility/documentation only:
+// atlasEntityScalarValue · atlasEntityScalarHas.
 
-const map = window.__potatoAtlasMap;
 const layers = window.__potatoAtlasLayers;
 const runtime = window.__potatoAtlasDataRuntime;
-if (!map || !layers || !runtime?.ready) throw new Error('Scalar bridge requires map, registry and shared data runtime.');
+const compositor = window.__potatoAtlasCompositor;
+if (!layers || !runtime?.ready || !compositor) throw new Error('Scalar compatibility adapter requires registry, runtime and compositor APIs.');
 
-const UNKNOWN = '#303938';
-
-function setBaseFill(expression) {
-  for (const layerId of ['countries-fill', 'countries-extrude']) {
-    if (!map.getLayer(layerId)) continue;
-    const property = layerId === 'countries-fill' ? 'fill-color' : 'fill-extrusion-color';
-    map.setPaintProperty(layerId, property, expression);
-  }
-}
+const legacyFeatureState = Object.freeze({ value:'atlasEntityScalarValue', has:'atlasEntityScalarHas' });
 
 function activeRuntimeScalar() {
   return layers.active().map(id => layers.get(id)).find(entry => entry?.kind === 'scalar' && entry.runtime_scalar) || null;
 }
 
-async function applyRuntimeEntityScalar(entry) {
-  if (!entry?.runtime_scalar) return false;
+async function observation(code, metricId = activeRuntimeScalar()?.runtime_scalar) {
+  if (!metricId) return null;
+  if (runtime.scalarObservation) return runtime.scalarObservation(code, metricId);
   const data = await runtime.ready;
-  const metricId = entry.runtime_scalar;
-  const rows = data?.scalars?.by_entity || {};
-  for (const [code, values] of Object.entries(rows)) {
-    const raw = Number(values?.[metricId]?.value);
-    const has = Number.isFinite(raw);
-    try {
-      map.setFeatureState({ source:'countries', id:code }, { atlasEntityScalarHas:has, atlasEntityScalarValue:has ? raw : 0 });
-    } catch {}
-  }
-  const value = ['feature-state', 'atlasEntityScalarValue'];
-  let scale;
-  if (metricId === 'population') {
-    scale = ['step', value, '#263432', 1_000_000, '#36514b', 10_000_000, '#527466', 50_000_000, '#78977d', 100_000_000, '#a7b87f', 500_000_000, '#d0c77e'];
-  } else if (metricId === 'area') {
-    scale = ['step', value, '#263432', 10_000, '#36514b', 100_000, '#527466', 500_000, '#78977d', 1_000_000, '#a7b87f', 5_000_000, '#d0c77e'];
-  } else {
-    return false;
-  }
-  setBaseFill(['case', ['boolean', ['feature-state', 'atlasEntityScalarHas'], false], scale, UNKNOWN]);
-  window.dispatchEvent(new CustomEvent('potato-atlas-entity-scalar-render', { detail:{ metricId } }));
+  return data?.scalars?.by_entity?.[String(code || '').toUpperCase()]?.[metricId] || null;
+}
+
+async function applyRuntimeEntityScalar(entry = activeRuntimeScalar()) {
+  // Compatibility adapter only: scalar painting is owned by 3d-compositor.js.
+  if (!entry?.runtime_scalar) return false;
+  await compositor.render();
   return true;
 }
 
 async function sync() {
   const entry = activeRuntimeScalar();
-  if (!entry) return false;
-  return applyRuntimeEntityScalar(entry);
+  return Boolean(entry?.runtime_scalar);
 }
 
-window.addEventListener('potato-atlas-composition-change', event => {
-  const active = event?.detail?.active || [];
-  const entry = active.map(id => layers.get(id)).find(item => item?.runtime_scalar);
-  if (entry) queueMicrotask(() => applyRuntimeEntityScalar(entry));
-});
-window.addEventListener('potato-atlas-layer-change', () => queueMicrotask(sync));
+window.__potatoAtlasScalarBridge = {
+  sync,
+  applyRuntimeEntityScalar,
+  activeRuntimeScalar,
+  observation,
+  legacyFeatureState,
+  renderingOwner:'compositor',
+};
 
 await sync();
-window.__potatoAtlasScalarBridge = { sync, applyRuntimeEntityScalar };
