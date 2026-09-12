@@ -1,100 +1,83 @@
 {
-  "id":"celestial-axis-coordinate-measurement-model",
-  "title":"Celestial Axis Measurement — Frames, Unit Vectors, Angular Separation, Precession and Toroidal Geometry",
-  "version":"1.0.0",
-  "updated":"2026-09-11",
-  "status":"astronomical measurement framework + project-claim audit; not theological validation",
-  "abstract":"North/Sirius/Regulus/Galactic-Center/torus language becomes scientifically tractable only after a reference frame, epoch, observer, target vector and uncertainty are declared. This paper supplies the coordinate machinery required to test directional claims rather than relying on visual diagrams or numerical resemblance. Celestial objects are represented as unit vectors derived from right ascension and declination; alignments are quantified by great-circle angular separation; local pointing adds observer latitude/longitude and sidereal time; epoch changes are handled through standard precession/proper-motion transformations. The same discipline clarifies the remembered torus calculation: a torus has at least two independent radii, so one remembered circumference-like number cannot uniquely reconstruct its geometry. The project can therefore preserve symbolic North/Axis material while giving astronomical claims a reproducible measurement contract.",
-  "epistemic_rule":"Astronomical coordinates test physical sky geometry only. They cannot test whether North, Sirius, Regulus or any star carries a theological office. Symbolic/project mappings remain distinct even when an astronomical alignment is measured accurately.",
-  "measurement_contract":{
-    "required_fields":["claim text","source/date","coordinate frame","epoch/equinox where relevant","target object/catalog identifier","target coordinates + uncertainties","Axis definition","observer position if local horizon coordinates are used","observation time if local pointing is used","angular statistic","tolerance chosen before testing"],
-    "rule":"The phrase 'points to' is incomplete until these fields determine a physical vector comparison."
+  "id": "celestial-axis-coordinate-measurement-model",
+  "title": "Celestial Axis Inference — Directional Statistics, Frames, Precession and Toroidal Geometry",
+  "version": "2.0.0",
+  "updated": "2026-09-12",
+  "status": "astronomical directional-statistics framework + project-claim audit; symbolic meanings remain separate",
+  "abstract": "Celestial-axis claims become scientific only after the axis, reference frame, epoch, target set and uncertainty are explicitly defined. This redevelopment extends the existing coordinate machinery into a directional-statistics theory. Named objects are mapped to unit vectors in a common astrometric frame; a candidate axis is estimated from a preregistered target set; angular residuals are propagated through positional and frame uncertainties; and alignment is compared against isotropic or survey-conditioned nulls with search multiplicity included. This changes the question from 'do these stars seem to line up with North?' to 'what axis best explains the declared target directions, how uncertain is it, and is its concentration stronger than expected under a null chosen before inspection?' The framework also keeps geographic, equatorial, galactic, geomagnetic and local-horizon coordinates explicitly distinct. Precession/proper motion are transformations, not numerological coincidences. The torus branch is likewise formalized as an inverse-geometry problem: one circumference cannot determine both major and minor radii. The result is a reproducible measurement programme that can test physical directional claims while preserving symbolic North/Sirius/Regulus motifs as a separate interpretive layer.",
+  "research_question": "Given a preregistered set of celestial targets, is there a statistically identifiable axis that explains their directions better than isotropic or survey-conditioned null models, and is that axis stable across epoch/frame transformations and uncertainty propagation?",
+  "measurement_contract": [
+    "Freeze claim text/source/date before analysis.",
+    "Declare coordinate system, frame and epoch.",
+    "Declare observer/time for local-horizon claims.",
+    "Define whether the axis is directed or undirected.",
+    "Predeclare targets, weights and tolerance/statistic.",
+    "Propagate positional/frame uncertainty.",
+    "Correct for searched stars/axes/epochs/tolerances where applicable.",
+    "Report physical result separately from symbolic interpretation."
+  ],
+  "vector_geometry": {
+    "equatorial": "n(alpha,delta)=(cos delta cos alpha, cos delta sin alpha, sin delta)",
+    "directed_residual": "psi_i=acos(a dot n_i)",
+    "undirected_residual": "psi_i=acos(|a dot n_i|)",
+    "unit_rule": "alpha,delta are radians in trigonometric calculations; n and a are unit vectors."
   },
-  "equatorial_unit_vector":{
-    "input":"right ascension alpha and declination delta in a declared frame such as ICRS",
-    "vector":"n(alpha,delta)=(cos(delta)cos(alpha), cos(delta)sin(alpha), sin(delta))",
-    "units":"alpha,delta in radians inside trigonometric functions; n dimensionless and unit norm",
-    "use":"Converts named sky positions into ordinary vector geometry."
+  "axis_estimation": {
+    "quadratic_objective": "maximize a^T M a subject to a^T a=1, with M=sum_i w_i n_i n_i^T",
+    "solution": "dominant eigenvector of M for an undirected quadratic-concentration axis",
+    "residual_summary": "R_axis=sum_i w_i sin^2 psi_i",
+    "interpretation": "The axis is inferred from the declared data rather than drawn after inspection."
   },
-  "angular_separation":{
-    "dot_product":"cos(psi)=n_1 dot n_2",
-    "expanded":"cos(psi)=sin(delta_1)sin(delta_2)+cos(delta_1)cos(delta_2)cos(alpha_1-alpha_2)",
-    "result":"psi=acos(clamp(n_1 dot n_2,-1,1))",
-    "numerical_note":"For production calculations use a numerically stable great-circle routine, especially near coincident, polar or antipodal points.",
-    "source":"https://docs.astropy.org/en/latest/api/astropy.coordinates.angular_separation.html"
+  "directional_probability": {
+    "fisher_distribution": "p(n|mu,kappa)=C(kappa) exp(kappa mu dot n) for a directed spherical concentration model",
+    "watson_neighbor": "For undirected axial data, use an axial distribution such as Watson/Bingham rather than duplicating +a and -a informally.",
+    "null": "kappa=0 corresponds to isotropy for the Fisher model.",
+    "test": "Estimate concentration with uncertainty and compare against isotropic/survey-conditioned simulations."
   },
-  "axis_alignment":{
-    "directed_axis":"For a directed unit vector a and target n, psi=acos(a dot n).",
-    "undirected_axis":"If +a and -a represent the same geometric axis, use psi_axis=acos(|a dot n|), restricted to 0..pi/2.",
-    "multiple_targets":"A candidate undirected axis can be fit by maximizing sum_i w_i (a dot n_i)^2 subject to |a|=1; the solution is the dominant eigenvector of M=sum_i w_i n_i n_i^T.",
-    "interpretation":"This supplies an objective best-fit axis for a predeclared target set rather than drawing a line by eye after seeing the data.",
-    "uncertainty":"Propagate catalog coordinate uncertainties and any uncertainty in a through Monte Carlo or analytic covariance methods."
+  "null_and_multiple_testing": {
+    "single_cap": "For an isotropic directed target, P(psi<=psi0)=(1-cos psi0)/2.",
+    "undirected_cap": "For either pole of an undirected axis and psi0<=pi/2, P=1-cos psi0.",
+    "look_elsewhere": "If many targets, coordinate frames, dates, symbolic correspondences or tolerances were explored, simulate the complete search procedure under the null and compare the best-found statistic, not only the final nominal angle.",
+    "survey_null": "When target discovery/catalog selection is nonuniform, random directions should be drawn from the effective selection function rather than an ideal isotropic sky."
   },
-  "null_alignment_probability":{
-    "single_directed_target":"For an isotropically random direction, probability of lying within angular radius psi_0 of a specified directed point is p=(1-cos psi_0)/2.",
-    "undirected_axis":"For proximity within psi_0<=90 degrees of either pole of a specified undirected axis, p_axis=1-cos psi_0.",
-    "multiple_comparisons":"If many stars, axes, epochs or tolerances were searched and only the best match reported, the nominal p above is not the experiment-level probability. Search multiplicity must be predeclared or corrected.",
-    "project_value":"This distinguishes an actually narrow predeclared alignment from a post-hoc visual coincidence."
+  "uncertainty": {
+    "catalog": "Sample RA/Dec/proper-motion/parallax covariance when relevant.",
+    "frame": "Apply validated astrometric transformations for precession/nutation/Earth orientation.",
+    "axis": "Refit the axis in each Monte Carlo draw to obtain p(a|data) or an empirical confidence region.",
+    "report": "Quote angular residual distributions and axis uncertainty rather than a single over-precise bearing."
   },
-  "local_horizon_coordinates":{
-    "variables":{"phi":"observer geodetic latitude","delta":"target declination","H":"local hour angle","h":"altitude above horizon"},
-    "altitude":"sin(h)=sin(phi)sin(delta)+cos(phi)cos(delta)cos(H)",
-    "hour_angle":"H=local sidereal angle-alpha under the selected conventions",
-    "requirement":"Local azimuth/altitude claims require an explicit observer position and timestamp. Repository or account location should never be silently substituted for a historical observation.",
-    "project_use":"This lets 'look/point north and see X' be tested for a specific event while keeping global equatorial alignment claims separate."
+  "local_horizon": {
+    "altitude": "sin h=sin phi sin delta+cos phi cos delta cos H",
+    "hour_angle": "H=LST-alpha",
+    "meaning": "A local pointing claim depends on observer latitude/longitude and time; it cannot be tested with RA/Dec alone."
   },
-  "epoch_and_motion":{
-    "model":"n(t_2)=R_frame/precession(t_1->t_2)[n(t_1)+proper-motion update+...] in an appropriate astrometric pipeline",
-    "rule":"Do not compare a modern horizon direction, J2000 catalog coordinate and ancient/historical pole using raw numbers as though the frame were fixed.",
-    "standards":"Use IAU/SOFA or equivalent validated astrometry routines for precision precession-nutation and Earth-orientation work.",
-    "source":"https://www.iausofa.org/current-software"
+  "epoch_dynamics": {
+    "mapping": "n(t2)=R(t1->t2)n(t1)+proper-motion/parallax/radial-motion corrections as appropriate",
+    "precession_rate": "Omega_p=2 pi/T_p is an angular frequency, not a length or Galactic distance.",
+    "stability_test": "Track psi_i(t) or inferred axis a(t) across the historical epoch range if the claim is explicitly temporal."
   },
-  "worked_catalog_sanity_check":{
-    "purpose":"Demonstrate why the project's celestial language needs angular measurement rather than verbal proximity.",
-    "catalog_frame":"SIMBAD ICRS coordinates at epoch J2000 as listed in the cited entries; proper motion means apparent catalog positions change with epoch.",
-    "sirius":{"ra":"06 45 08.91728","dec":"-16 42 58.0171","ra_deg":101.2871553,"dec_deg":-16.7161159,"source":"https://simbad.cds.unistra.fr/simbad/sim-id?Ident=Sirius"},
-    "regulus":{"ra":"10 08 22.31099","dec":"+11 58 01.9516","ra_deg":152.0929625,"dec_deg":11.9672088,"source":"https://simbad.cds.unistra.fr/simbad/sim-basic?Ident=Regulus"},
-    "derived":"Using the great-circle formula on those J2000 coordinates gives Sirius-Regulus separation approximately 57.83 degrees. Their angular distances from the north celestial pole are approximately 106.72 degrees for Sirius and 78.03 degrees for Regulus because separation from the NCP equals 90 degrees minus declination.",
-    "conclusion":"Neither star is collinear with the north celestial pole in this coordinate sense. This does not negate symbolic North/Dog/Lion mappings; it simply prevents physical-axis language from being inferred from symbolism.",
-    "precision_note":"These values are sanity-check calculations from catalog coordinates, not a replacement for epoch-corrected astrometry in a historical pointing test."
+  "worked_project_sanity_check": {
+    "sirius_regulus": "Using J2000 ICRS catalog positions gives an angular separation near 57.8 degrees; neither is collinear with the north celestial pole in this coordinate sense.",
+    "interpretation": "The physical result constrains astronomical-axis claims but says nothing about whether Dog/Lion/North symbolism is meaningful within the project."
   },
-  "precession_measurement":{
-    "angular_frequency":"Omega_p=2 pi/T_p",
-    "dimension_rule":"A period [time] and a distance [length] are categorically different even when their numerical values happen to be near 26,000 in chosen units.",
-    "archive_correction":"Keep Earth's roughly 25.8-kyr axial-precession timescale separate from the roughly 26-kly Earth-to-Galactic-Center distance. Numeric resemblance is not dimensional equality.",
-    "testable_question":"If an Eye/Axis claim depends on a historical epoch, compute the actual pole/target separation at that epoch rather than using the modern pole."
+  "torus_inverse_problem": {
+    "geometry": "A=4 pi^2 Rr; V=2 pi^2 Rr^2; C_major=2 pi R; C_minor=2 pi r",
+    "identifiability": "One scalar circumference-like measurement supplies at most one independent constraint on two unknown radii R and r.",
+    "posterior": "p(R,r|d) proportional to p(d|R,r)p(R,r) if uncertain historical measurement and priors are available.",
+    "rule": "Do not infer area, volume or aspect ratio from one recovered length without another independent constraint."
   },
-  "torus_geometry":{
-    "parameters":{"R":"major radius from torus center to tube centerline","r":"minor/tube radius, with R>r for a ring torus"},
-    "surface_area":"A=4 pi^2 R r",
-    "volume":"V=2 pi^2 R r^2",
-    "major_circumference":"C_major=2 pi R",
-    "minor_circumference":"C_minor=2 pi r",
-    "aspect_ratio":"tau=R/r",
-    "underdetermination":"One remembered length such as 115,000 miles cannot uniquely specify both R and r. Even if it is known to be C_major, it gives R=C/(2pi) but leaves r and therefore area/volume/aspect ratio undetermined.",
-    "recovery_rule":"The historic 115,000-mile object should remain unresolved until the original quantity, units, major/minor radius and physical referent are recovered."
-  },
-  "coordinate_types_to_keep_separate":{
-    "geographic":"directions/positions on Earth's surface",
-    "geomagnetic":"magnetic field/dipole coordinates",
-    "equatorial":"RA/Dec relative to celestial reference frame",
-    "ecliptic":"coordinates relative to Earth's orbital plane",
-    "galactic":"coordinates relative to Milky Way reference plane/center",
-    "local_horizon":"azimuth/altitude for one observer/time",
-    "project_symbolic":"North/North-of-North/Axis theological or relational coordinates",
-    "rule":"Any claimed equality or alignment must name the transformation between coordinate types."
-  },
-  "research_protocol":{
-    "step_1":"Recover exact wording and date of the celestial claim.",
-    "step_2":"Classify claim as symbolic, geographic, equatorial, galactic, magnetic or local-horizon.",
-    "step_3":"Obtain catalog/ephemeris data with uncertainties and epoch.",
-    "step_4":"Define Axis vector and tolerance before computing match.",
-    "step_5":"Transform all quantities into one common frame/epoch.",
-    "step_6":"Compute separation and uncertainty.",
-    "step_7":"Evaluate null/multiple-comparison context if statistical significance is claimed.",
-    "step_8":"Report physical result separately from symbolic interpretation."
-  },
-  "conclusions":["North becomes scientifically meaningful only after its coordinate type and reference frame are declared.","An Axis can be estimated from target vectors rather than chosen visually, and alignment has a calculable angular residual.","The Sirius/Regulus project motifs are meaningful as documented symbolic/chronological objects but do not by themselves establish astronomical collinearity with terrestrial north.","Precession, proper motion and observer location are not details; they define the measurement.","The remembered torus length is mathematically underdetermined because torus geometry requires at least two independent radii."],
-  "sources":[{"topic":"catalog coordinates Sirius","url":"https://simbad.cds.unistra.fr/simbad/sim-id?Ident=Sirius"},{"topic":"catalog coordinates Regulus","url":"https://simbad.cds.unistra.fr/simbad/sim-basic?Ident=Regulus"},{"topic":"angular separation","url":"https://docs.astropy.org/en/stable/coordinates/matchsep.html"},{"topic":"precession/astrometry standards","url":"https://www.iausofa.org/current-software"}],
-  "connections":["knowledge/science/galactic-toroidal-axis-recovery.json","knowledge/science/axis-11d-sun-spiral-time-symmetry-recovery.json","knowledge/science/integrated-scientific-architecture.json","knowledge/science/model-testing-protocol.json","knowledge/core/axis-world-model.json","knowledge/philosophy/timic-dynamics.json"]
+  "failure_conditions": [
+    "Alignment significance disappears after reproducing the full look-elsewhere/search procedure under the null.",
+    "The inferred axis changes substantially under reasonable target definitions, epochs or uncertainty propagation.",
+    "A claimed local-horizon alignment cannot be reproduced for the stated observer/time.",
+    "Different coordinate systems are compared without a valid transformation.",
+    "A torus geometry is claimed from fewer independent measurements than unknown geometric parameters."
+  ],
+  "next_decisive_work": [
+    "Choose one historical/public celestial-axis claim and freeze its target set before fitting.",
+    "Run the directional-statistics pipeline with epoch-corrected catalog uncertainties.",
+    "Simulate the complete selection/search process to obtain an experiment-level null probability.",
+    "Only after a robust physical result compare it with the symbolic chronology as a separate interpretive question."
+  ],
+  "connections": ["galactic-toroidal-axis-recovery","axis-11d-sun-spiral-time-symmetry-recovery","great-book-cosmic-potato-shape-audit","model-testing-protocol","science-master-index"]
 }
