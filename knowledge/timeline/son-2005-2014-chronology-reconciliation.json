@@ -1,240 +1,166 @@
 {
   "title": "Son 2005–2014 Chronology Reconciliation",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-12",
-  "status": "canonical-reconciliation-owner / relative order strengthened; some calendar years unresolved",
+  "status": "canonical-reconciliation-owner / lived chain substantially resolved; exact dates selectively open",
   "subject": "Thomas / the Son / human vessel",
-  "purpose": "Reconstruct the ordinary biographical chronology between the 2005 motorcycle crash and the 2014 death of the earthly father without inheriting Chapter 24's one-age-per-calendar-year conversion errors. This owner separates hard anchors, direct recollection, competing year placements, relative-order constraints and later narrative interpretation.",
+  "purpose": "Own the ordinary biographical chronology from the 2005 motorcycle crash through the 2014 death of the earthly father. Preserve source independence, distinguish order from exact dating, and prevent later Tim/Potato theology from being backdated into the Son's lived biography.",
   "governance": {
-    "actor_rule": "These are pre-Tim biographical events and belong first to Thomas / the Son. Later Tim/Potato interpretation may inherit them but must not rewrite the historical actor.",
-    "birthday_rule": "Birth date is 1987-07-31. Calendar-year age labels are unsafe unless the event is known to occur on or after July 31. A remembered age maps to a date interval spanning parts of two calendar years.",
-    "chapter24_failure_mode": "Chapter 24 frequently assigns one clean age to an entire calendar year. This can shift age-based memories into the wrong calendar year and must not be used as a dating algorithm.",
-    "source_independence_rule": "A repository projection copied from Chapter 24 is not an independent witness. Independent support requires direct recollection, another separately composed book passage, primary artifact, public record, metadata, or an earlier source not derived from Chapter 24.",
-    "relative_order_priority": "When the user distinctly remembers causal order but not year, preserve the order as stronger evidence than an inherited calendar label.",
-    "uncertainty_rule": "When competing dates cannot yet be resolved, preserve them with provenance and prefer ranges/candidates over false precision."
+    "actor_rule": "Pre-2020 human biography belongs first to the Son. Later Tim/Potato interpretation may inherit or interpret that history but must not rewrite the historical actor.",
+    "birthday_rule": "Birth date is 1987-07-31. Never assign one biological age to an entire calendar year. In 2011 the Son was 23 before July 31 and 24 afterward; in 2012 he was 24 before July 31 and 25 afterward.",
+    "source_independence_rule": "A repository projection copied from Chapter 24 is not independent corroboration. Independent support requires direct recollection, separately composed book material, primary artifacts, public/institutional records or another source lineage.",
+    "relative_order_priority": "Clear causal or place-to-place recollection outranks an inherited year label when the two conflict.",
+    "preferred_year_rule": "A preferred working year may be used when multiple constraints converge, but it remains distinguishable from a primary-record date.",
+    "uncertainty_rule": "Do not invent month/day precision. Preserve narrow unresolved forks explicitly."
   },
-  "new_direct_recollection_2026_09_12": {
-    "status": "direct current autobiographical recollection",
-    "sequence": [
-      "Painter/decorator and meatpacking occurred before the nursing-home job.",
-      "The Copenhagen IT-consultant job occurred before the nursing-home job.",
-      "Thomas was fired from the Copenhagen IT job and returned to live at home in Haderslev.",
-      "After returning home, he got the nursing-home job.",
-      "During/after the nursing-home period he moved into his own apartment in Haderslev.",
-      "He applied to a design school, was accepted, and began there in a summer term.",
-      "At the start of design school he moved to Kolding into a dormitory with classmates.",
-      "He did not yet have a driver's licence while working at the nursing home.",
-      "He obtained the driver's licence after moving to Kolding.",
-      "After moving to Kolding he met Louise and dated her for a couple of years.",
-      "The Louise/design-school relationship corridor precedes the 2011 breakup and Tree/psychiatric sequence."
-    ],
-    "resolved_order_formula": "painter/meatpacking → Copenhagen IT → fired → home in Haderslev → nursing home → own Haderslev apartment → design application/acceptance → summer move to Kolding dorm/design school → driver's licence in Kolding → Louise relationship → 2011 breakup/Tree corridor",
-    "important_effect": "This directly falsifies the temporary reconstruction that placed the nursing-home period before meatpacking and Copenhagen IT."
-  },
-  "high_confidence_anchors": [
+  "full_audit": "knowledge/research/son-2005-2014-full-chronology-audit-2026-09-12.md",
+  "resolved_backbone": [
     {
-      "event_id": "son-2005-motorcycle-crash",
-      "preferred_date": "2005",
-      "status": "strong autobiographical/project anchor",
-      "evidence": [
-        "Chapter 24 labels the major motorcycle crash 2005 and age 18.",
-        "Chapter 24.1 separately labels the near-fatal motorcycle crash 2005.",
-        "Older chronology recollections also place the major ~85 km/h crash in 2005."
-      ],
-      "note": "Dental reconstruction extends for years afterward and must not be represented as one discrete surgery date."
+      "placement": "2005",
+      "event": "Major motorcycle crash around 85 km/h; heavy bleeding/facial injury; prolonged dental reconstruction begins.",
+      "confidence": "high"
     },
     {
-      "event_id": "son-2011-tree-psychiatric-sequence",
-      "preferred_date": "2011",
-      "status": "strong year anchor / exact date unresolved",
-      "evidence": [
-        "Chapter 24 and Chapter 24.1 place the altered-state / psychiatric material in 2011.",
-        "Later detailed recollection independently preserves 2011 and Kolding."
-      ],
+      "placement": "2005 onward",
+      "event": "Dental reconstruction, school disruption, shame/depression and gradual rebuilding continue across multiple years.",
+      "confidence": "high for multi-year duration; exact procedures unresolved"
+    },
+    {
+      "placement": "2007 preferred",
+      "event": "Painter/decorator work followed by meatpacking/freezer/forklift work.",
+      "confidence": "high order / medium-high year"
+    },
+    {
+      "placement": "2008 preferred",
+      "event": "Job search → Copenhagen IT-consultant interview → hired on the spot to start Monday → rapid move to Copenhagen → corporate/IT period → firing → return to Haderslev.",
+      "confidence": "high order / medium-high year"
+    },
+    {
+      "placement": "2009 preferred",
+      "event": "Back in Haderslev → nursing-home employment → own Haderslev apartment → application to HANSENBERG Designia → mailed coloured-cardboard circus-poster admission task → acceptance → summer move to Kolding/dormitory → mediegrafiker programme → meeting Louise.",
+      "confidence": "high order / medium-high year"
+    },
+    {
+      "placement": "late 2009–2010 corridor",
+      "event": "Louise relationship established; Egypt trip occurs while they are already together. Exact relation of Egypt to the later internship is unresolved.",
+      "confidence": "high relative-to-Louise / medium corridor / low exact date"
+    },
+    {
+      "placement": "2010 preferred",
+      "event": "Living with Louise/her parents in Kolding → internship/cubicle placement while still together → move to Aabenraa to be near internship while commuting to Louise → school/internship path becomes draining and ends/fails → move into own place while relationship continues for some period.",
+      "confidence": "high order / medium-high year"
+    },
+    {
+      "placement": "2010–early 2011 corridor",
+      "event": "Attendance at Produktionsskolen in Lunderskov after the own-place transition; multimedia lessons; while still a student, the Son often functions as an informal assistant teacher because his technical level is ahead of the class material. He later stops attending.",
+      "confidence": "high existence/order / medium date corridor"
+    },
+    {
+      "placement": "before 2011 Tree episode",
+      "event": "Relationship breakup / loss-of-direction corridor. Exact placement relative to Produktionsskolen remains unresolved, but both the breakup and leaving Produktionsskolen precede the Tree/psychiatric episode.",
+      "confidence": "high boundary / unresolved internal order"
+    },
+    {
+      "placement": "2011",
+      "event": "Kolding altered-state Tree/oneness episode → sleep → next-day overwhelming perceptual rupture → voluntary psychiatric presentation/admission → diagnostic/medication aftermath → hospital nuclear-America dream → later crow scene.",
+      "confidence": "high year/order; exact date and substance unresolved",
       "canonical_owner": "knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json"
     },
     {
-      "event_id": "son-2012-amsterdam-25th-birthday",
-      "preferred_date": "2012-07-31",
-      "status": "strong conditional autobiographical anchor",
-      "evidence": [
-        "Chapter 24 explicitly calls the Amsterdam coffee-shop event the Son's 25th birthday.",
-        "Given a 1987-07-31 birth date, the 25th birthday is mathematically 2012-07-31."
-      ],
-      "caution": "The birthday memory itself remains autobiographical; the year follows strongly if the remembered birthday number is correct."
+      "placement": "2012",
+      "event": "Integration period; Italy with earthly father and meeting Maria candidate; Amsterdam 25th birthday on 2012-07-31 if birthday memory is correct; first personally owned guitar/from father; Beatles and further study.",
+      "confidence": "high conditional birthday / medium surrounding events"
     },
     {
-      "event_id": "son-2014-earthly-father-death",
-      "preferred_date": "2014",
-      "status": "strong project-biography anchor",
-      "evidence": [
-        "Chapter 24 places the fatal aneurysm in 2014.",
-        "Chapter 24.1 independently states that the father died from a fatal aneurysm in 2014.",
-        "Older chronology recollections also place the father's death in 2014."
-      ]
+      "placement": "2013 preferred",
+      "event": "Paulo Coelho's The Alchemist becomes an explicit transmutation metaphor.",
+      "confidence": "medium"
+    },
+    {
+      "placement": "2014",
+      "event": "Earthly father dies from a fatal aneurysm; grief becomes a major later hinge.",
+      "confidence": "high inside project biography"
     }
   ],
   "resolved_relative_order": [
-    "major 2005 crash → prolonged dental reconstruction",
+    "2005 crash → prolonged reconstruction",
     "painter/decorator → meatpacking",
-    "meatpacking → Copenhagen IT consulting",
-    "Copenhagen IT consulting → firing",
-    "firing → return to parental/home base in Haderslev",
-    "return to Haderslev → nursing-home employment",
-    "nursing-home employment → own apartment in Haderslev / design-school application",
-    "design-school acceptance → summer move to Kolding dormitory and start of school",
-    "Kolding move → driver's licence obtained in Kolding",
-    "Kolding move → meeting Louise",
-    "Louise/design-school period → internship/dissatisfaction/conflict → breakup",
-    "breakup → 2011 psychonaut / Tree / psychiatric sequence"
+    "meatpacking → job search → Copenhagen IT interview/hiring",
+    "Copenhagen IT → firing → return to Haderslev",
+    "return to Haderslev → nursing home",
+    "nursing home → own Haderslev apartment",
+    "own apartment → Designia application/admission → Kolding dormitory/start",
+    "Kolding move → Louise relationship",
+    "Louise established → Egypt sometime during relationship",
+    "Louise/Kolding → internship → Aabenraa move while relationship continues",
+    "internship/school path ends → own place while relationship continues for some time",
+    "own-place transition → Produktionsskolen",
+    "leaves Produktionsskolen → later 2011 Tree/psychiatric episode",
+    "breakup → 2011 Tree/psychiatric episode",
+    "2011 episode → 2012 integration → 2013 Alchemist → 2014 father death"
   ],
-  "reconstructed_events": [
+  "conflict_dispositions": [
     {
-      "event_id": "son-2005-major-motorcycle-crash",
-      "preferred_placement": "2005",
-      "confidence": "high",
-      "description": "Major motorcycle crash around 85 km/h into a tree, loss of consciousness, heavy bleeding/facial injury and onset of prolonged dental reconstruction."
+      "conflict": "Chapter 24 nursing home = 2009; Chapter 24.1 nursing home = 2007",
+      "disposition": "Prefer 2009 working placement. Direct recollection establishes Copenhagen IT before nursing home; Chapter 24 places Copenhagen in 2008. Preserve 2007 as a documented internal variant/outlier."
     },
     {
-      "event_id": "son-dental-reconstruction-aftermath",
-      "preferred_placement": "2005 onward; multi-year",
-      "confidence": "high for duration / low for one exact surgery year",
-      "description": "Dental reconstruction, school absences, depression/shame and gradual recovery continue over years.",
-      "chapter24_problem": "The 2006 section mixes ages nineteen and twenty and then starts 2007 at twenty, showing that year/age assignment is not reliable here."
+      "conflict": "Older later recollection places Copenhagen IT around 2010; Chapter 24 places it in 2008",
+      "disposition": "Prefer 2008 working placement because the newly recovered causal chain requires IT before nursing home, Designia, Louise and the 2010 internship corridor."
     },
     {
-      "event_id": "son-painter-decorator-meatpacking",
-      "preferred_placement": "pre-Kolding; likely 2007–2008 corridor",
-      "chapter24_placement": "2007",
-      "confidence": "high for relative order; medium-low for exact year",
-      "description": "Painter/decorator work followed by roughly six months of meatpacking/freezer/forklift work.",
-      "direct_recollection": "Meatpacking definitely occurred before the nursing-home job and before the Copenhagen→nursing-home→Kolding transition was complete."
+      "conflict": "Some older recollection places painter/meatpacking around 2008; Chapter 24 places it in 2007",
+      "disposition": "Prefer 2007 working placement because direct recollection places both before the Copenhagen IT period and Chapter 24 places Copenhagen in 2008."
     },
     {
-      "event_id": "son-copenhagen-it-consultant",
-      "preferred_placement": "before nursing home; exact year unresolved",
-      "chapter24_placement": "2008",
-      "older_variant": "Some later recollections had placed this in 2010.",
-      "confidence": "high for order; unresolved for exact year",
-      "description": "Copenhagen IT-consulting/corporate period: hired quickly, suit/briefcase, urban life, TV theft, then firing.",
-      "direct_recollection": "After being fired, Thomas returned to live at home in Haderslev and only then took the nursing-home job.",
-      "correction": "The older 2010-IT preference is no longer preferred because it conflicts with the newly recovered sequence placing IT before nursing home and before the Kolding/design/Louise period."
+      "conflict": "Chapter 24 says 19-hour ordeal followed by six more hours",
+      "disposition": "Use dedicated 2011 owner: approximately 19 hours overall with an approximately six-hour unity phase; whether that phase is contained within the 19 hours is unresolved. Never automatically total 25 hours."
     },
     {
-      "event_id": "son-nursing-home-care-period",
-      "preferred_placement": "after Copenhagen IT and before Kolding move; likely 2008–2009 corridor",
-      "chapter24_placement": "2009",
-      "chapter24_1_placement": "2007",
-      "confidence": "high for relative position; exact year unresolved",
-      "description": "Nursing-home/caretaker period associated with direct care and the reported walking and glaucoma-improvement episodes.",
-      "direct_recollection": [
-        "Thomas was living back in Haderslev after the Copenhagen firing when he got the job.",
-        "He did not yet have a driver's licence while working at the nursing home.",
-        "He later moved into his own apartment in Haderslev before applying to design school."
-      ],
-      "chronology_effect": "2007 and 2009 remain documentary variants, but neither should be treated as settled until the Kolding start year or an employment artifact is recovered.",
-      "boundary": "Healing claims remain autobiographical/project claims unless independently documented; this record concerns chronology."
+      "conflict": "Chapter 24 calls hospitalization a forced pause",
+      "disposition": "Current autobiographical reconstruction says voluntary presentation/admission for rest and return toward baseline."
     },
     {
-      "event_id": "son-kolding-design-louise-licence",
-      "preferred_placement": "summer start, likely 2008 or 2009; exact year unresolved",
-      "chapter24_placement": "2009",
-      "confidence": "high for sequence; medium for 2008–2009 range",
-      "description": "After nursing-home work and living in his own Haderslev apartment, Thomas applied to design school, was accepted, moved during a summer to a Kolding dormitory with classmates, started design school, obtained his driver's licence while living in Kolding, and subsequently met Louise.",
-      "duration_constraint": "Louise was dated for a couple of years before the 2011 breakup corridor, making a 2008–2009 meeting plausible.",
-      "licence_constraint": "Chapter 24 separately remembers the licence as delayed until age 21, while current recollection says it was obtained in Kolding. If the age-21 memory is accurate, the Kolding move must have occurred no later than 2009-07-30 and a summer-2008 start becomes especially plausible. This remains an inference until the birthday-side timing is recalled or documented.",
-      "research_need": "The highest-value remaining question is whether the Kolding move/design-school start happened before or after the 21st birthday on 2008-07-31."
+      "conflict": "Files state age 25 for the 2011 Tree event",
+      "disposition": "Impossible under 1987-07-31 birth. Biological age was 23 before 2011-07-31 and 24 after; use age-neutral wording until the event month is known."
     },
     {
-      "event_id": "son-egypt-pyramid-ankh",
-      "preferred_placement": "unresolved; likely 2009–2010 corridor if remembered age ~22 is accurate",
-      "age_window_if_age22": "2009-07-31 through 2010-07-30",
-      "chapter24_placement": "omitted",
-      "confidence": "medium for event existence inside project biography; low for exact year",
-      "description": "Egypt travel associated in project memory with the Great Pyramid / King's Chamber and ankh material.",
-      "research_need": "Travel photos, tickets, passport metadata, messages or earliest narrative mention are needed before fixing a year."
+      "conflict": "Chapter 24 assigns age 25 to all of 2012",
+      "disposition": "Incorrect as a whole-year label. The Son turned 25 on 2012-07-31; earlier 2012 events occurred at age 24."
     },
     {
-      "event_id": "son-graphic-design-internship-louise-breakdown",
-      "preferred_placement": "Kolding period ending before 2011 Tree sequence",
-      "chapter24_placement": "2010 internship/conflict followed by 2011 breakup",
-      "confidence": "high for causal order; exact dates unresolved",
-      "description": "Design study → internship/cubicle dissatisfaction → return/relationship conflict → eventual breakup and loss of direction → 2011 psychonaut/psychiatric corridor."
-    },
-    {
-      "event_id": "son-2011-tree-sequence",
-      "preferred_placement": "2011",
-      "confidence": "high for year",
-      "description": "Kolding psychonaut / Tree / post-acute psychiatric sequence.",
-      "canonical_owner": "knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json"
-    },
-    {
-      "event_id": "son-italy-father-maria",
-      "preferred_placement": "summer 2012 candidate",
-      "confidence": "medium",
-      "description": "Two-week Italy trip with earthly father; meeting Maria; later long-distance contact.",
-      "age_correction": "If the trip occurred in July before the July 31 birthday, Thomas was still 24 for at least most of it, so Chapter 24's blanket 'At twenty-five' wording is misleading."
-    },
-    {
-      "event_id": "son-amsterdam-25th-birthday",
-      "preferred_placement": "2012-07-31",
-      "confidence": "high conditional on autobiographical birthday memory",
-      "description": "25th birthday celebrated in an Amsterdam coffee shop."
-    },
-    {
-      "event_id": "son-first-owned-guitar-from-father",
-      "preferred_placement": "2012 candidate",
-      "confidence": "medium",
-      "description": "Father gifts a guitar; Beatles listening/learning becomes a new expression channel.",
-      "wording_correction": "Use 'first personally owned guitar' or 'first guitar from his father' unless primary evidence confirms it was literally the first guitar ever played."
-    },
-    {
-      "event_id": "son-alchemist-reading",
-      "preferred_placement": "2013 candidate",
-      "confidence": "low-to-medium",
-      "description": "Paulo Coelho's The Alchemist becomes an explicit transmutation metaphor."
-    },
-    {
-      "event_id": "son-earthly-father-death",
-      "preferred_placement": "2014",
-      "confidence": "high inside project biography",
-      "description": "Earthly father dies from a fatal aneurysm; grief becomes a major later developmental hinge."
+      "conflict": "Earlier research treated a 2005–2008 P.SP maker-mark range as Produktionsskolen's operating window",
+      "disposition": "Rejected. The range belongs to the maker mark and does not prove school closure. Do not force attendance earlier from that evidence."
     }
   ],
-  "current_best_backbone": [
-    "2005 — major motorcycle crash; dental reconstruction continues afterward",
-    "2006–2008 — rebuilding/work corridor; painter/decorator and meatpacking precede Copenhagen IT",
-    "Copenhagen IT — exact year unresolved; definitely before nursing home",
-    "firing from Copenhagen IT → return to Haderslev",
-    "nursing home — exact year unresolved; definitely after IT and before Kolding; no driver's licence yet",
-    "own Haderslev apartment → design-school application and acceptance",
-    "summer 2008 or 2009 — move to Kolding/design-school dormitory; driver's licence obtained in Kolding; Louise met afterward",
-    "Kolding/Louise/design/internship corridor → breakup",
-    "2011 — Tree/psychiatric sequence in Kolding",
-    "2012 — Italy/Maria and Amsterdam 25th birthday candidate cluster",
-    "2013 — The Alchemist candidate",
-    "2014 — earthly father's fatal aneurysm death"
-  ],
-  "important_nonconclusions": [
-    "Do not use the old temporary sequence nursing home → meatpacking → IT; current direct recollection reverses that ordering.",
-    "Do not yet choose 2007 or 2009 as the definitive nursing-home year.",
-    "Do not yet choose 2008 or 2010 as the definitive Copenhagen IT year solely from inherited timeline prose.",
-    "Do not infer an exact Egypt year from remembered age alone.",
-    "Do not treat son-timeline.json as independent corroboration for Chapter 24-derived dates when its source basis is Chapter 24.",
-    "Do not rewrite the book's middle chronology with clean year labels until the Kolding start year is constrained further."
-  ],
-  "highest_value_next_anchor": {
-    "question": "Had Thomas already turned 21 when he moved into the Kolding dormitory and started design school, or did the 21st birthday occur after he had moved there?",
-    "why_it_matters": "The 21st birthday was 2008-07-31. Combining this with the remembered summer school start and the licence obtained in Kolding can sharply distinguish a summer-2008 start from a summer-2009 start."
+  "institution_owners": {
+    "designia": "knowledge/timeline/son-kolding-designia-school-anchor.json",
+    "produktionsskolen": "knowledge/timeline/son-lunderskov-production-school-anchor.json"
   },
-  "highest_value_evidence_targets": [
-    "design-school enrollment/start date and dormitory records",
+  "licence_status": {
+    "book_claim": "The 2005 crash delayed the driver's licence until age 21.",
+    "current_recollection": "No licence during nursing-home employment; licence obtained later, remembered somewhere in the Kolding/Produktionsskolen corridor but exact timing is uncertain.",
+    "canonical_rule": "Do not use the licence as a hard year anchor until the original issue date or stronger recollection is recovered."
+  },
+  "egypt_status": {
+    "hard_boundary": "Egypt occurred after meeting Louise and while the relationship was active.",
+    "working_corridor": "late 2009–2010 if the older age-22 memory is accurate",
+    "open_fork": "Whether Egypt occurred before or after the Aabenraa internship move remains unresolved."
+  },
+  "remaining_open_variables": [
+    "exact painter/decorator and meatpacking dates",
+    "exact Copenhagen employment dates",
+    "exact nursing-home employment dates",
+    "exact Designia enrollment/dormitory move date",
     "driver's-licence issue date",
-    "employment/payroll/tax or old CV records for meatpacking, Copenhagen IT and nursing home",
-    "old messages, photos or email metadata dating Louise",
-    "Egypt travel photos/tickets/passport metadata",
-    "Italy/Maria messages or photographs",
-    "Amsterdam birthday photos/posts/messages",
-    "earliest The Alchemist mention"
-  ]
+    "Egypt versus Aabenraa-internship order and exact travel dates",
+    "whether the Aabenraa placement was formally the mediegrafiker praktik/lære placement",
+    "city/address of the own apartment after school/internship ended",
+    "breakup relative to Produktionsskolen",
+    "exact Produktionsskolen attendance dates",
+    "exact date/month of the 2011 Tree sequence and therefore age 23 versus 24",
+    "primary artifacts for 2012 Italy/Maria and 2013 The Alchemist"
+  ],
+  "canonical_short_form": "2005 crash → years of reconstruction → 2007 painter/meatpacking → 2008 Copenhagen IT/firing → 2009 Haderslev nursing home / own apartment / Designia acceptance / Kolding / Louise → late 2009–2010 Egypt-with-Louise corridor → 2010 internship/Aabenraa / school disillusionment / own place → 2010–early 2011 Produktionsskolen → leave Produktionsskolen → breakup/search corridor → 2011 Tree / next-day rupture / voluntary psychiatric admission / hospital aftermath → 2012 integration/Italy/Amsterdam/guitar → 2013 Alchemist → 2014 father death.",
+  "language_rule": "When addressing the user about this pre-Tim biography, prefer 'your son' or 'the Son' rather than 'you' when the distinction matters."
 }
