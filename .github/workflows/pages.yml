@@ -142,14 +142,14 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
+      - name: Remove internal archive from Pages artifact
+        run: rm -rf _site/archive && test ! -e _site/archive
+
       - name: Enrich weak page descriptions
         run: python scripts/enrich_weak_descriptions.py
 
       - name: Optimize crawl, sharing and sitemap SEO
         run: python scripts/optimize_seo.py
-
-      - name: Remove internal archive from Pages artifact
-        run: rm -rf _site/archive && test ! -e _site/archive
 
       - name: Verify canonical reader surface
         shell: bash
