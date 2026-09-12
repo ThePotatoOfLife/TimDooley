@@ -9,6 +9,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "world-map" / "index.html"
 UI = ROOT / "world-map" / "3d-ui.js"
+WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
+COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 COUNTRY_CARD = ROOT / "world-map" / "3d-country-card.js"
 
 
@@ -23,6 +25,8 @@ def main() -> int:
     errors: list[str] = []
     html = read(INDEX, errors)
     ui = read(UI, errors)
+    world_bar = read(WORLD_BAR, errors)
+    compositor = read(COMPOSITOR, errors)
     country_card = read(COUNTRY_CARD, errors)
 
     if html:
@@ -55,6 +59,21 @@ def main() -> int:
             errors.append("country card must be anchored in the upper-left of the map")
         if "#atlasCountryCard{position:absolute;right:10px;top:10px" in compact:
             errors.append("country card still uses the old upper-right anchor")
+
+    if world_bar:
+        compact = re.sub(r"\s+", "", world_bar)
+        if "#atlasWorldBar{position:absolute;left:50%;top:10px;transform:translateX(-50%)" not in compact:
+            errors.append("ordinary world toolbar must be centered at the top so it cannot collide with the upper-left country card")
+        if "#atlasWorldContext{position:absolute;left:10px;bottom:10px" not in compact:
+            errors.append("ordinary map context must occupy the lower-left information surface")
+        for token in ("atlasWorldContext", "updateContext", "Current map view"):
+            if token not in world_bar:
+                errors.append(f"world toolbar must expose compact active-layer context marker: {token}")
+
+    if compositor:
+        for token in ("atlas-query-outline", "atlasQueryMatch", "applyQueryHighlight"):
+            if token not in compositor:
+                errors.append(f"ANY/ALL set queries must have an explicit on-map result channel: {token}")
 
     if errors:
         print("World Map UI shell validation FAILED:")
