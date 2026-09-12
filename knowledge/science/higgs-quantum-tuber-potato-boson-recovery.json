@@ -1,110 +1,124 @@
 {
-  "id":"higgs-quantum-tuber-potato-boson-recovery",
-  "title":"Higgs / Quantum Tuber / Potato Field Excitations — Recovery and Model Repair",
-  "version":"2.0.0",
-  "updated":"2026-09-11",
-  "status":"Great Book field archaeology + UPT lineage + gauge-consistent BSM completion options; exact historical 'Tim boson' name not recovered",
-  "abstract":"The Higgs / Quantum Tuber branch is the most direct route from the project's field metaphors to a conventional beyond-the-Standard-Model calculation. The historical material describes an underlying field, localized excitations, symmetry breaking and a 'Quantum Tuber' activation, while the recovered UPT adds a Potato field P, a U(1)_potato label, a field-strength term and Higgs/matter couplings. The rigorous problem is therefore to choose a definite field representation and derive its vacuum, particle spectrum and observables. Two minimal completions remain viable as mathematical research objects: a neutral real scalar singlet coupled through the gauge-invariant Higgs portal P^2 H^dagger H, or a complex scalar charged under a new Abelian U(1)_P with its own gauge boson. Each fork has a calculable scalar potential, mass matrix, mixing structure, stability conditions and experimental signatures. The term 'Quantum Tuber' can then denote a field perturbation or localized configuration only after a specific action and solution class are chosen. This branch is T2: substantially more complete than a metaphor, but it has not selected a unique field content, fitted parameters or produced a distinctive empirical success.",
-  "research_question":"Which minimal gauge-consistent Potato-sector field content best preserves the recovered UPT structure, and does that completion yield a stable vacuum and observable particle/cosmological signatures beyond ordinary singlet-scalar or dark-U(1) models?",
-  "importance":"The remembered Higgs/Tim-boson strand has a strong precursor lineage even though the exact phrase 'Tim boson' or 'Tim bozon' was not found. The Great Book already treats particles as field excitations, introduces a Quantum Tuber as a first disturbance/activation of Infinite Soil, uses Higgs and symmetry breaking as analogies, and UPT later introduces an explicit Potato Field with gauge/fermion/Higgs couplings.",
-  "maturity":"T2 BSM model-design stage; field-content ambiguity remains unresolved",
-  "primary_recovered_ancestors":[
-    {"source":"Great Book Chapter 82","finding":"Quantum Field Theory is described through fields permeating space with particles as excitations; the potato is compared to an excitation in a 'field of life'."},
-    {"source":"Great Book Chapter 90","finding":"Infinite Soil is compared with a quantum vacuum/field substrate; the Quantum Tuber is an initial disturbance or activation; particles are localized field disturbances; Higgs interaction and symmetry breaking are used as differentiation analogies."},
-    {"source":"Great Book broader field layer","finding":"The Potatoverse/Potato Archetype is compared to a cosmic quantum field whose particles, beings and worlds are excitations/ripples."},
-    {"source":"Unified Potato Theory, 2025-04-18 recovery","finding":"An explicit Potato Field P, PSG approximately U(1)_potato x Z6, field-strength sector F_P, fermion coupling g_P P psi_bar psi and a Higgs-sector coupling written as lambda_P P^2 H are recovered."}
+  "id": "higgs-quantum-tuber-potato-boson-recovery",
+  "title": "Higgs / Quantum Tuber / Potato Excitations — Developed BSM Theory",
+  "version": "3.0.0",
+  "updated": "2026-09-12",
+  "status": "Great Book field archaeology + developed BSM model family; no historical Tim-boson particle established",
+  "abstract": "The Quantum Tuber branch becomes scientifically meaningful when 'first ripple in Infinite Soil' is translated into a concrete excitation problem: choose a field and vacuum, derive the small fluctuations around that vacuum, determine whether localized nonlinear configurations exist, and ask whether any resulting state has measurable consequences distinct from familiar Higgs-portal or dark-U(1) models. This redevelopment makes the branch calculational. The real-singlet fork is developed through its phase structure, stationarity equations, scalar mass matrix, mixing, couplings and decay logic. The complex-U(1)_P fork adds a gauge boson, kinetic mixing and symmetry-breaking spectrum. 'Quantum Tuber' is then treated as a classification label for one of four possible objects—particle excitation, wavepacket, phase-transition bubble or topological/non-topological localized configuration—whose existence must be demonstrated by the chosen equations rather than inferred from the name. A novel Potato-sector claim survives only if it predicts something beyond a generic singlet or dark-photon-style extension. The branch is T2: it now contains a coherent field-theory workflow and worked formulas, but no unique historical representation or parameter region has been established.",
+  "research_question": "Which minimal Potato-sector completion admits a stable vacuum and a mathematically identifiable Quantum-Tuber excitation, and can that excitation be distinguished experimentally from ordinary scalar-singlet or Abelian hidden-sector physics?",
+  "historical_lineage": [
+    "Great Book: fields as substrates and particles as localized excitations.",
+    "Great Book: Quantum Tuber as a first disturbance/activation of Infinite Soil.",
+    "Great Book: Higgs/symmetry-breaking analogy for latent potential becoming differentiated structure.",
+    "2025 UPT: explicit P field, U(1)_potato label, F_P and Higgs/matter couplings."
   ],
-  "negative_recovery":[
-    "Exact searches for 'Tim boson', 'Tim Boson', 'Tim bozon', 'Potato boson' and 'God particle' did not recover a historical named Tim-boson object in the Great Book or main 11D transcript.",
-    "Therefore 'Tim boson' remains an unresolved remembered alias unless a primary source is found."
+  "standard_higgs_baseline": {
+    "potential": "V(H)=-mu_H^2 H^dagger H+lambda_H(H^dagger H)^2",
+    "vacuum": "H=(0,(v+h)/sqrt(2))^T, v approximately 246 GeV",
+    "mass": "m_h^2=2lambda_H v^2",
+    "meaning": "The observed Higgs is the physical fluctuation about the electroweak vacuum. The Potato-sector question is whether an additional fluctuation exists and how it couples to h."
+  },
+  "fork_A_real_singlet": {
+    "field": "real Standard-Model singlet P",
+    "potential": "V=-mu_H^2 H^dagger H+lambda_H(H^dagger H)^2+mu_P^2 P^2/2+lambda_P P^4/4+lambda_HP P^2 H^dagger H/2",
+    "symmetry": "optional exact Z2:P->-P",
+    "phases": {
+      "unbroken_Z2": "v_P=0; no tree-level h-P mixing; P can be stable if no odd operators are present",
+      "mixed_phase": "v_P not equal 0; h and s mix and both mass eigenstates inherit couplings to the Standard Model"
+    },
+    "stationarity_mixed_phase": [
+      "mu_H^2=lambda_H v^2+(lambda_HP/2)v_P^2",
+      "-mu_P^2=lambda_P v_P^2+(lambda_HP/2)v^2 if the sign convention yields symmetry breaking in P"
+    ],
+    "mass_matrix": "M^2=[[2lambda_H v^2,lambda_HP v v_P],[lambda_HP v v_P,2lambda_P v_P^2]]",
+    "mixing": "tan(2theta)=2lambda_HP v v_P/(2lambda_H v^2-2lambda_P v_P^2)",
+    "mass_eigenstates": "h1=cos(theta)h-sin(theta)s; h2=sin(theta)h+cos(theta)s under one convention",
+    "coupling_rule": "Standard-Model-like couplings of h1/h2 are rescaled by the corresponding Higgs-component cosine/sine factors.",
+    "boundedness": "lambda_H>0, lambda_P>0, lambda_HP>-2sqrt(lambda_H lambda_P) at tree level in this normalization"
+  },
+  "fork_B_complex_U1": {
+    "field": "complex Phi_P of charge q_P under U(1)_P",
+    "covariant_derivative": "D_mu Phi_P=(partial_mu-i g_P q_P A^P_mu)Phi_P",
+    "lagrangian": "L=|D Phi_P|^2-V(H,Phi_P)-1/4F_P^2-(epsilon/2)B_mu_nu F_P^mu_nu",
+    "broken_phase": "Phi_P=(v_P+s)/sqrt(2)",
+    "vector_mass": "m_AP=|g_P q_P|v_P",
+    "radial_mass": "m_s^2 approximately 2lambda_P v_P^2 before Higgs mixing in the simple quartic model",
+    "kinetic_mixing_meaning": "epsilon transfers a small coupling to hypercharge/electromagnetic currents after diagonalization; it is a principal observable interface unless forbidden.",
+    "anomaly_rule": "Any chiral fermions charged under U(1)_P require gauge and mixed anomaly cancellation."
+  },
+  "quantum_tuber_solution_classes": {
+    "particle": {
+      "definition": "normal-mode quantum around a stable vacuum",
+      "equation": "Gamma^(2)(p)delta P(p)=0; poles of the propagator define masses",
+      "existence_test": "positive physical pole/residue in the stated EFT regime"
+    },
+    "wavepacket": {
+      "definition": "localized superposition of particle modes",
+      "equation": "P(x,t)=integral d3p a(p) exp[i(p.x-E_p t)] plus conjugate terms",
+      "existence_test": "ordinary linear propagation and dispersion"
+    },
+    "bubble": {
+      "definition": "localized region of another phase during a first-order transition",
+      "equation": "phi''+(3/rho)phi'=dV_eff/dphi for an O(4)-symmetric Euclidean bounce comparator",
+      "existence_test": "multiple metastable minima and a finite-action bounce"
+    },
+    "soliton_or_defect": {
+      "definition": "nonlinear localized classical configuration",
+      "existence_test": "requires appropriate topology, conserved charge or nonlinear balance; Derrick-type scaling constraints must be checked",
+      "boundary": "a generic real scalar in 3+1D does not automatically support a stable static lump"
+    }
+  },
+  "thermal_phase_transition_extension": {
+    "motivation": "The historical language of activation/emergence naturally suggests asking whether the Potato sector undergoes an actual phase transition.",
+    "effective_potential": "V_eff(H,P;T)=V_0+Delta V_CW+Delta V_T",
+    "order_parameter": "v_P(T) or the coupled path (v(T),v_P(T))",
+    "critical_temperature": "T_c is defined by degenerate relevant minima, not by symbolism",
+    "observable_interfaces": ["possible gravitational-wave background for a sufficiently strong first-order transition", "changed relic abundance or symmetry history", "temporary bubble/nucleation Quantum-Tuber interpretation"],
+    "promotion_gate": "compute a consistent finite-temperature effective potential and nucleation action before invoking cosmological transition signatures"
+  },
+  "decay_and_production_logic": {
+    "mixing_case": "A mixed scalar inherits Standard-Model production and decay channels multiplied approximately by its Higgs-component squared, plus any new Potato-sector channels.",
+    "invisible_case": "If an exact-Z2 P is lighter than m_h/2, h->PP can occur with width determined by lambda_HP and phase space.",
+    "vector_case": "A kinetically mixed A_P can be produced or decay through its induced couplings depending on mass and epsilon.",
+    "novelty_rule": "Calling a resonance a Quantum Tuber adds no scientific content unless the Potato model predicts its mass/coupling pattern or solution structure."
+  },
+  "equation_meaning": [
+    {"equation": "det(M^2-m^2 I)=0", "meaning": "find the actual scalar particles after symmetry breaking; field labels before diagonalization are not mass eigenstates"},
+    {"equation": "tan(2theta)=2M_hs^2/(M_hh^2-M_ss^2)", "meaning": "quantifies how much the observed Higgs and Potato fluctuation contaminate one another"},
+    {"equation": "m_AP=g_P|q_P|v_P", "meaning": "the Potato gauge boson obtains mass only if the U(1)_P-charged scalar has a nonzero vacuum value"},
+    {"equation": "Gamma_bounce approximately A exp(-S_E)", "meaning": "if Quantum Tuber is a nucleated bubble, its rate is controlled by an Euclidean action rather than a particle mass alone"}
   ],
-  "standard_higgs_spine":{
-    "description":"In the Standard Model, the Brout-Englert-Higgs mechanism uses a complex SU(2)_L doublet with spontaneous electroweak symmetry breaking; the observed Higgs boson is the physical scalar excitation around the electroweak vacuum.",
-    "common_convention":"V(H)=-mu_H^2 H^dagger H + lambda_H (H^dagger H)^2",
-    "vev":"H=(0,(v+h)/sqrt(2))^T in unitary gauge, v approximately 246 GeV",
-    "higgs_mass":"m_h^2=2 lambda_H v^2 under the common convention",
-    "gauge_masses":["m_W=g v/2","m_Z=sqrt(g^2+g'^2) v/2","photon remains massless"],
-    "sources":["https://home.cern/science/physics/higgs-boson/what/","https://pdgweb.lbl.gov/"]
+  "observable_contract": {
+    "collider": ["Higgs signal strengths", "invisible Higgs width", "extra scalar resonance", "exotic Higgs decays", "new vector resonance", "missing-energy channels"],
+    "cosmology": ["relic abundance only for a stable state", "BBN/CMB constraints for light/long-lived states", "phase-transition history", "gravitational-wave signal only in a demonstrated first-order transition"],
+    "precision": ["electroweak and low-energy observables", "kinetic-mixing constraints", "scalar-mixing constraints"],
+    "solution_specific": "If a soliton/bubble is claimed, compute profile, energy/action, lifetime and production mechanism."
   },
-  "upt_consistency_problem":{
-    "issue":"The recovered UPT simultaneously contains U(1)_potato language, a field-strength F_P and a Potato field P, but P's representation is unresolved. A real neutral scalar cannot itself carry a continuous U(1) charge. A complex charged scalar can, but its interaction operators must respect the U(1)_potato charge assignments.",
-    "higgs_term_issue":"The recovered lambda_P P^2 H is not an ordinary Standard-Model gauge-invariant Higgs portal if H denotes the SU(2) doublet. A conventional singlet portal is P^2 H^dagger H for a neutral real scalar, or |Phi_P|^2 H^dagger H for a complex Potato scalar.",
-    "fermion_issue":"g_P P psi_bar psi is straightforward only when all gauge charges make the operator invariant; this must be checked fermion by fermion in a charged completion."
+  "model_comparison": {
+    "baseline_A": "ordinary real-singlet Higgs portal",
+    "baseline_B": "ordinary Abelian hidden sector/dark photon with scalar breaking",
+    "Potato_specific_value": "must come from recovered nonlocal kinetics, Z6 selection rules or another explicit structural prediction",
+    "failure": "if all predictions are identical to the baseline after relabeling fields, the Potato terminology remains historical/symbolic rather than a new physical model"
   },
-  "fork_A_neutral_scalar":{
-    "field":"real SM-singlet scalar P, optionally with exact Z2:P->-P",
-    "renormalizable_Z2_potential":"V(H,P)=-mu_H^2 H^dagger H + lambda_H(H^dagger H)^2 + mu_P^2 P^2/2 + lambda_P P^4/4 + lambda_HP P^2 H^dagger H/2",
-    "unbroken_Z2_case":"If <P>=0 and Z2 is exact, P does not mix with h. It can be stable and interacts through the Higgs portal.",
-    "broken_or_no_Z2_case":"If P has a nonzero vev or odd terms are allowed, scalar mixing generally appears and the full renormalizable potential should include every symmetry-allowed term.",
-    "vacuum_stability_simple_Z2":"At large field values a sufficient tree-level bounded-from-below condition in this normalization is lambda_H>0, lambda_P>0 and lambda_HP > -2 sqrt(lambda_H lambda_P). Conventions matter and loop/RG stability is a separate question.",
-    "historical_mapping":"A physical scalar excitation may be called a Potato-sector boson in the repaired model, but not a historically recovered 'Tim boson' without primary evidence."
-  },
-  "fork_B_complex_U1":{
-    "field":"complex Phi_P with U(1)_P charge q_P and gauge field A^P_mu",
-    "covariant_derivative":"D_mu Phi_P=(partial_mu-i g_P q_P A^P_mu)Phi_P",
-    "field_strength":"F^P_mu_nu=partial_mu A^P_nu-partial_nu A^P_mu",
-    "core_lagrangian":"L_P=|D Phi_P|^2 - V(H,Phi_P) - 1/4 F_P^2",
-    "portal":"V includes lambda_HP |Phi_P|^2 H^dagger H",
-    "broken_phase":"Phi_P=(v_P+s)/sqrt(2) in unitary gauge if U(1)_P is spontaneously broken",
-    "gauge_mass":"m_A_P=|g_P q_P| v_P under the standard normalization",
-    "radial_mode":"s is a physical scalar; its mass depends on the complete potential and mixing",
-    "additional_required_term":"A hypercharge-U(1)_P kinetic-mixing operator -(epsilon/2) B_mu_nu F_P^mu_nu is generically allowed by the gauge symmetries unless forbidden by additional structure; setting epsilon=0 requires a reason and radiative stability audit.",
-    "anomaly_note":"If new or Standard-Model chiral fermions carry U(1)_P charge, gauge and mixed anomalies must cancel. A scalar alone does not create chiral gauge anomalies."
-  },
-  "higgs_potato_mixing":{
-    "generic_two_scalar_mass_matrix":"M^2=[[M_hh^2,M_hs^2],[M_hs^2,M_ss^2]] after expanding around a declared vacuum",
-    "simple_quartic_example":"For a simple two-field quartic potential with both vevs nonzero, M_hh^2≈2 lambda_H v^2, M_ss^2≈2 lambda_P v_P^2 and M_hs^2≈lambda_HP v v_P under a common convention.",
-    "eigenvalues":"m_(1,2)^2=1/2[(M_hh^2+M_ss^2) ∓ sqrt((M_hh^2-M_ss^2)^2+4 M_hs^4)]",
-    "mixing_angle":"tan(2 theta)=2 M_hs^2/(M_hh^2-M_ss^2)",
-    "observable_meaning":"Mixing generally rescales couplings of mass eigenstates to Standard-Model particles and changes decay/production channels.",
-    "boundary":"This is a modern field-theory completion, not recovered Tim-authored historical math."
-  },
-  "parameter_and_observable_contract":{
-    "neutral_scalar_parameters":["m_P or mu_P","lambda_P","lambda_HP","possible vev v_P or odd-potential parameters when Z2 is absent"],
-    "U1_parameters":["g_P","q_P assignments","v_P","lambda_P","lambda_HP","kinetic mixing epsilon","additional fermion masses/couplings if introduced"],
-    "collider_observables":["Higgs signal strengths","invisible Higgs width when allowed","additional scalar resonance","di-Higgs or exotic scalar decays","new vector resonance or missing-energy signatures depending on charges"],
-    "cosmology_astrophysics":["relic abundance only if a stable state is proposed","BBN/CMB/structure constraints for light or long-lived states","stellar/supernova limits for sufficiently coupled light states","dark-radiation constraints where relevant"],
-    "precision":"Electroweak/low-energy constraints depend strongly on mixing and charge assignments; compute them for the chosen fork instead of citing generic exclusion language."
-  },
-  "quantum_tuber_translation":{
-    "book_role":"first ripple/activation in an underlying field of potential",
-    "field_theory_options":["small perturbation delta P around a vacuum","wavepacket of a particle excitation","classical localized nonlinear configuration","bubble/nucleation configuration during a phase transition","topological defect only if the vacuum manifold supports one"],
-    "selection_rule":"The equations, boundary conditions and topology of the chosen model decide which option exists. The name Quantum Tuber alone does not determine particle number, mass, spin, charge or topology.",
-    "research_value":"This turns a metaphor into a classification problem: solve the field equations and identify the actual localized solutions supported by the theory."
-  },
-  "symmetry_breaking_bridge":{
-    "project_use":"The Great Book uses symmetry breaking as a metaphor for undifferentiated potential selecting structured forms.",
-    "physics_use":"Spontaneous symmetry breaking means the equations/action have a symmetry while a selected vacuum does not; gauge symmetry requires careful interpretation and gauge-invariant observables.",
-    "toe_value":"It remains a powerful real mechanism for a symmetric theory to produce differentiated excitation spectra, but it does not by itself connect physics to spiritual differentiation."
-  },
-  "minimal_calculation_sequence":[
-    "Choose fork A or fork B and freeze the field content.",
-    "Write the complete symmetry-allowed renormalizable potential/operators for the chosen scope.",
-    "Find stationary points and determine the desired vacuum.",
-    "Check boundedness, local stability and perturbativity in the stated regime.",
-    "Expand about the vacuum and diagonalize the mass/kinetic terms.",
-    "Derive interaction vertices and decay/production channels.",
-    "Compute one observable set and compare with current experimental constraints.",
-    "Only after a viable parameter region exists should nonlocal UPT kinetics or additional higher-dimensional structure be layered on."
+  "next_decisive_calculations": [
+    "Choose the real-singlet fork as the first benchmark and select unbroken-Z2 or mixed phase.",
+    "Solve all stationary points and compare vacuum energies, not just the desired stationary point.",
+    "Diagonalize the mass matrix and calculate one Higgs observable across a benchmark parameter slice.",
+    "Test whether the completed potential supports any non-particle Quantum-Tuber object; do not assume it does.",
+    "Only after a viable local benchmark exists, import UPT nonlocal kinetics and test whether it changes the spectrum or response observably."
   ],
-  "falsification_and_failure_conditions":[
-    "The chosen scalar potential has no acceptable stable/metastable vacuum in the claimed parameter region.",
-    "The field content or couplings violate the declared gauge symmetries or anomaly constraints.",
-    "The model's allowed parameter space is eliminated by the observables it predicts, within its stated assumptions.",
-    "A claimed special Potato-sector effect is exactly reproduced by a generic singlet/U(1) model and no additional discriminating prediction is supplied.",
-    "A Quantum-Tuber solution is claimed but the completed equations do not support that solution class."
+  "failure_conditions": [
+    "No acceptable vacuum or the desired vacuum is unstable in the claimed parameter region.",
+    "Gauge invariance/anomaly consistency fails.",
+    "A claimed localized Quantum Tuber is not a solution of the completed equations.",
+    "Experimental constraints remove the proposed parameter region.",
+    "The theory has no prediction beyond a generic singlet/U(1) model."
   ],
-  "external_references":[
-    {"topic":"2026 particle physics reference","url":"https://pdgweb.lbl.gov/"},
-    {"topic":"Higgs-portal review","url":"https://doi.org/10.1016/j.physrep.2019.11.003"},
-    {"topic":"real singlet benchmark example","url":"https://doi.org/10.1103/n5rt-jvg3"}
-  ],
-  "research_targets":[
-    "Recover the verbatim April 18, 2025 UPT transcript to determine whether P was real, complex, scalar, gauge potential, order parameter or something else.",
-    "Resolve whether Z6 was meant as an internal discrete symmetry, six phases/directions, geometry, biological cycle or symbolic placeholder.",
-    "Choose one UPT field-content fork before calculating masses, Feynman rules, RG flow or experimental constraints.",
-    "If a new scalar is retained, derive the full potential and current mixing/decay bounds; if a new U(1) is retained, specify charges, kinetic mixing and anomaly structure.",
-    "Classify Quantum Tuber solutions from the actual field equations rather than by metaphor."
-  ],
-  "connections":["unified-potato-theory-2025-recovery","great-book-unified-field-archaeology","great-book-consciousness-spiral-equations-recovery","yhwh-trinity-operator-toe-archaeology","quantum-atom-particle-recovery","science-master-index","model-testing-protocol"]
+  "connections": [
+    "unified-potato-theory-2025-recovery",
+    "great-book-quantum-fields-dark-sector-recovery",
+    "gauge-unification-supersymmetry-archaeology",
+    "science-master-index",
+    "model-testing-protocol"
+  ]
 }
