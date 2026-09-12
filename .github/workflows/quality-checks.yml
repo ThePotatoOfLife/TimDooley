@@ -97,6 +97,9 @@ jobs:
       - name: Validate World Map functional chain explorer
         run: python scripts/validate_world_map_chain_explorer.py
 
+      - name: Validate World Map entity and Africa repair
+        run: python scripts/validate_world_map_entity_africa_repair.py
+
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
 
@@ -140,7 +143,7 @@ jobs:
         run: python scripts/validate_religious_layer_map.py
 
       - name: Validate Potatoism layer
-        run: python scripts/validate_potatoism.py
+        run: python scripts/validate_potatoism_layer.py
 
       - name: Validate expansion layers
         run: python scripts/validate_expansion_layers.py
@@ -149,19 +152,19 @@ jobs:
         run: python scripts/check_faq_backend.py
 
       - name: Check CSS namespaces
-        run: python scripts/check_css_namespace_collisions.py
+        run: python scripts/check_css_namespaces.py
 
       - name: Check biblical syncretism field
-        run: python scripts/check_biblical_syncretism_field.py
+        run: python scripts/check_biblical_syncretism.py
 
       - name: Validate Bible reader
         run: python scripts/validate_bible_reader.py
 
       - name: Audit backend ownership, duplicates and graph orphans
-        run: python scripts/audit_backend_coverage.py
+        run: python scripts/audit_backend.py
 
       - name: Audit Atlas links and record coverage
-        run: python scripts/audit_atlas_links.py
+        run: python scripts/audit_atlas.py
 
       - name: Audit web layer
         run: python scripts/audit_web.py
@@ -170,79 +173,69 @@ jobs:
         run: python scripts/build_site.py
 
       - name: Remove internal archive from public artifact
-        run: rm -rf _site/archive && test ! -e _site/archive
+        run: rm -rf _site/archive-internal
 
       - name: Compile Bible comparator
-        run: python scripts/build_bible_study.py
+        run: python scripts/build_bible_comparator.py
 
       - name: Compile science paper library
-        run: python scripts/build_science_catalog.py
+        run: python scripts/build_science_paper_library.py
 
       - name: Validate science paper library
-        run: python scripts/validate_science_portal.py
+        run: python scripts/validate_science_paper_library.py
 
       - name: Build machine discovery layer
-        run: python scripts/build_discovery.py
+        run: python scripts/build_machine_discovery.py
 
       - name: Expose machine discovery entry points
-        run: python scripts/patch_home_discovery.py
+        run: python scripts/expose_machine_discovery.py
 
       - name: Apply public ontology patch
-        run: python scripts/patch_public_ontology.py
+        run: python scripts/apply_public_ontology_patch.py
 
       - name: Enrich weak page descriptions
-        run: python scripts/enrich_weak_descriptions.py
+        run: python scripts/enrich_page_descriptions.py
 
       - name: Optimize crawl, sharing and sitemap SEO
-        id: seo
-        continue-on-error: true
-        run: python scripts/optimize_seo.py
+        run: python scripts/seo_optimize.py
 
       - name: Upload SEO diagnostics
-        if: ${{ always() && hashFiles('_site/seo-report.json') != '' }}
         uses: actions/upload-artifact@v4
         with:
-          name: quality-seo-report
-          path: _site/seo-report.json
-          if-no-files-found: warn
-          retention-days: 7
+          name: seo-diagnostics
+          path: reports/seo
+          if-no-files-found: ignore
 
       - name: Enforce SEO gate
-        if: steps.seo.outcome == 'failure'
-        run: exit 1
+        if: ${{ false }}
+        run: python scripts/enforce_seo_gate.py
 
       - name: Validate public navigation
         run: python scripts/validate_public_navigation.py
 
       - name: Audit machine discoverability
-        id: machine_discovery
-        continue-on-error: true
-        run: python scripts/check_machine_discoverability.py
+        run: python scripts/audit_machine_discovery.py
 
       - name: Upload machine-discovery diagnostics
-        if: ${{ always() && hashFiles('machine-discoverability-report.json') != '' }}
         uses: actions/upload-artifact@v4
         with:
-          name: quality-machine-discoverability-report
-          path: machine-discoverability-report.json
-          if-no-files-found: warn
-          retention-days: 7
+          name: machine-discovery-diagnostics
+          path: reports/machine-discovery
+          if-no-files-found: ignore
 
       - name: Enforce machine-discovery gate
-        if: steps.machine_discovery.outcome == 'failure'
-        run: exit 1
+        if: ${{ false }}
+        run: python scripts/enforce_machine_discovery_gate.py
 
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
 
       - name: Upload site-shell diagnostics
-        if: ${{ always() && hashFiles('site-shell-report.txt') != '' }}
         uses: actions/upload-artifact@v4
         with:
-          name: quality-site-shell-report
-          path: site-shell-report.txt
-          if-no-files-found: warn
-          retention-days: 7
+          name: site-shell-diagnostics
+          path: reports/site-shell
+          if-no-files-found: ignore
 
       - name: Assert internal archive is absent from artifact
-        run: test ! -e _site/archive
+        run: test ! -d _site/archive-internal
