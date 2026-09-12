@@ -5,7 +5,7 @@ const dataRuntime = window.__potatoAtlasDataRuntime;
 if (!dataRuntime?.ready) throw new Error('Entity runtime requires the World Map data runtime.');
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
 }[char]));
 const formatNumber = value => Number.isFinite(Number(value)) ? new Intl.NumberFormat('en').format(Math.round(Number(value))) : '—';
 
@@ -130,3 +130,5 @@ if (initial) queueMicrotask(() => refresh(initial));
 
 window.__potatoAtlasEntities = { entity, entityName, entityType, scalarObservation, populationObservation, areaObservation, labelAnchor, regionalSystems, refresh };
 window.dispatchEvent(new CustomEvent('potato-atlas-entities-ready'));
+const selected = window.__potatoAtlasSelection?.current?.activeCode || window.__potatoAtlasSelection?.current?.code || initial;
+if (selected) queueMicrotask(() => window.__potatoAtlasCountryCard?.render?.(selected));
