@@ -17,6 +17,7 @@ UI = ROOT / "world-map" / "3d-ui.js"
 DEMOGRAPHY = ROOT / "world-map" / "3d-demography.js"
 DIMENSIONS = ROOT / "world-map" / "3d-country-dimensions.js"
 EVIDENCE = ROOT / "world-map" / "3d-evidence.js"
+PROVENANCE = ROOT / "world-map" / "3d-provenance.js"
 
 
 def read(path: Path, errors: list[str]) -> str:
@@ -70,6 +71,7 @@ def main() -> int:
     demography = read(DEMOGRAPHY, errors)
     dimensions = read(DIMENSIONS, errors)
     evidence = read(EVIDENCE, errors)
+    provenance = read(PROVENANCE, errors)
 
     for token in (
         "let pinnedCodes = []",
@@ -118,7 +120,9 @@ def main() -> int:
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
     # One central panel observer owns legacy/core panel lifecycle detection. Feature
-    # modules consume the explicit event rather than independently watching the DOM.
+    # modules consume explicit lifecycle/domain events rather than independently
+    # watching the DOM. Keep this global so newly added 3D feature modules cannot
+    # silently reintroduce subtree observers later.
     for token in ("function panelLifecycleKey", "potato-atlas-panel-rendered", "panelLifecycleRenders"):
         require(ui, token, "world-map/3d-ui.js", errors)
     if ui.count("new MutationObserver(") != 1:
@@ -128,11 +132,15 @@ def main() -> int:
         (dimensions, "world-map/3d-country-dimensions.js"),
         (evidence, "world-map/3d-evidence.js"),
         (pulse, "world-map/3d-country-pulse.js"),
+        (provenance, "world-map/3d-provenance.js"),
     ):
         require(text, "potato-atlas-panel-rendered", label, errors)
-        reject(text, "new MutationObserver(", label, errors)
+    for path in sorted((ROOT / "world-map").glob("3d-*.js")):
+        if path == UI:
+            continue
+        reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
 
     if errors:
         print("WORLD MAP BROWSE/PERFORMANCE VALIDATION FAILED")
