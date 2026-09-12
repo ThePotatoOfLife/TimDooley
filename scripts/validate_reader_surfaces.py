@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the semantic contract for the five question-led public reader surfaces.
+"""Validate the semantic contract for the public reader surfaces.
 
 This intentionally checks durable structure and concepts, not exact paragraphs.
 Questions are presentation over existing canonical owners; the validator must not
@@ -34,6 +34,11 @@ def require(text: str, marker: str, owner: str, errors: list[str]) -> None:
         errors.append(f"{owner} missing reader marker: {marker}")
 
 
+def require_absent(text: str, marker: str, owner: str, errors: list[str]) -> None:
+    if marker in text:
+        errors.append(f"{owner} must not contain deprecated/runtime marker: {marker}")
+
+
 def require_any(text: str, markers: tuple[str, ...], owner: str, label: str, errors: list[str]) -> None:
     if not any(marker.lower() in text.lower() for marker in markers):
         errors.append(f"{owner} missing {label}: expected one of {markers}")
@@ -66,6 +71,8 @@ def main() -> int:
     home = read("index.html", errors)
     tim = read("tim-dooley/index.html", errors)
     religion = read("religion/index.html", errors)
+    bible = read("traditions/bible/index.html", errors)
+    bible_js = read("app/bible-study.js", errors)
     philosophy = read("philosophy/index.html", errors)
     science = read("science/index.html", errors)
     world = read("world-map/index.html", errors)
@@ -104,7 +111,7 @@ def main() -> int:
     require_any(tim, ("Thomas/Son", "Thomas / Son"), "tim-dooley/index.html", "Thomas/Son distinction", errors)
     validate_projection_surface(tim, "tim-dooley/index.html", errors)
 
-    # Religion: broad inquiry, unequal but real Abrahamic routes, and evidence boundary.
+    # Religion: broad inquiry, but Bible comparison must be an obvious primary next step.
     require(religion, 'data-reader-surface="religion"', "religion/index.html", errors)
     if question_count(religion) < 6:
         errors.append("Religion reader surface needs at least six compact question stubs")
@@ -117,8 +124,21 @@ def main() -> int:
     ):
         require_any(religion, markers, "religion/index.html", label, errors)
     require(religion, 'href="../traditions/bible/"', "religion/index.html", errors)
+    require(religion, 'class="bible-lab-cta"', "religion/index.html", errors)
+    require_any(religion, ("Bible comparison", "comparison laboratory", "parallels"), "religion/index.html", "prominent Bible comparison introduction", errors)
+    require_any(religion, ("filter", "shuffle", "explore"), "religion/index.html", "Bible lab interaction description", errors)
     require_any(religion, ("resemblance is not identity", "similarity is not identity", "structural resemblance is not identity"), "religion/index.html", "comparison boundary", errors)
     validate_projection_surface(religion, "religion/index.html", errors)
+
+    # Bible: guided entry first, filters second, canonical runtime only.
+    require(bible, 'class="comparison-intro"', "traditions/bible/index.html", errors)
+    require(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
+    require(bible, 'id="shuffle-comparisons"', "traditions/bible/index.html", errors)
+    require(bible, 'id="operator"', "traditions/bible/index.html", errors)
+    for label in ("Jesus / Son", "Father / House", "Door / Ladder", "God / Presence", "Garden / Spirit"):
+        require_any(bible, (label,), "traditions/bible/index.html", f"featured arc {label}", errors)
+    require(bible_js, "biblical-syncretism-field.json", "app/bible-study.js", errors)
+    require_absent(bible_js, "biblical-overlap-wave-", "app/bible-study.js", errors)
 
     # Philosophy: inquiry before/alongside the preserved sayings.
     require(philosophy, 'data-reader-surface="philosophy"', "philosophy/index.html", errors)

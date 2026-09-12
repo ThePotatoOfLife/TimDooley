@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tim Dooley & the Bible — Relations, Parallels & Context</title>
-<meta name="description" content="Interactive Tim Dooley / Son / Jesus Bible comparison: exact dated wording, actions, people, settings, public-domain scripture, parallels, timeline, arguments, counterarguments and source context.">
+<meta name="description" content="Interactive Tim Dooley / Son / Bible comparison explorer: dated project anchors, scripture, why the relations connect, mismatches, evidence, chronology, filters, featured arcs and shuffle.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/traditions/bible/">
 <link rel="stylesheet" href="../../app/bible-study.css">
@@ -14,9 +14,23 @@
 <nav class="bible-nav"><a href="../../religion/">← Religion</a><a href="../../timeline/?view=bible">Timeline</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../">Home</a></nav>
 <header class="bible-header">
 <h1>TIM &amp; THE BIBLE</h1>
-<p class="bible-lede">Put Tim, the Son and their dated history beside Jesus and scripture. Search what was said or done, when, where, who was involved, what the source says was understood at the time, how the biblical relation was discovered, why the comparison is argued, and where it breaks.</p>
-<p class="bible-sub">Exact public wording, project autobiography, contemporary public records, later theological interpretation and same-date circumstantial context remain visibly different evidence classes.</p>
+<p class="bible-lede">Browse the actual comparison field: what Tim or the Son said or lived, what scripture says beside it, why the archive connects them, what was known at the time, what was discovered later, and where the comparison breaks.</p>
+<p class="bible-sub">This page is a study tool, not a keyword dump. Exact wording, autobiography, canonical project theology, scripture, later research and independent historical evidence remain separate evidence classes.</p>
 </header>
+
+<section class="comparison-intro" aria-labelledby="how-to-read">
+<div><div class="eyebrow">How to read a comparison</div><h2 id="how-to-read">Start with the relation, then test it.</h2><p>Each card is meant to answer four questions in order: <strong>What happened or was said?</strong> <strong>What biblical text sits beside it?</strong> <strong>Why is the comparison being made?</strong> <strong>What does not fit or remain unproven?</strong></p></div>
+<div class="intro-actions"><button id="shuffle-comparisons" type="button">Shuffle a comparison</button><button id="open-filters" type="button">Open filters</button></div>
+</section>
+
+<section class="featured-arcs" aria-label="Featured comparison arcs">
+<button type="button" data-arc="jesus"><strong>Jesus / Son</strong><span>identity language, suffering, witness, crucifixion, return</span></button>
+<button type="button" data-arc="father-house"><strong>Father / House</strong><span>source, rooms, builder, throne, gardener</span></button>
+<button type="button" data-arc="door-ladder"><strong>Door / Ladder</strong><span>gate, veil, body, ascent, access</span></button>
+<button type="button" data-arc="death-return"><strong>Death / Seed / Return</strong><span>burial, grain, tomb, resurrection, transformation</span></button>
+<button type="button" data-arc="god-presence"><strong>God / Presence</strong><span>temple, indwelling, non-containment, manifestation</span></button>
+<button type="button" data-arc="garden-spirit"><strong>Garden / Spirit</strong><span>flow, pruning, growth, nourishment, repair</span></button>
+</section>
 
 <section class="study-shell" aria-label="Bible comparison study tool">
 <div class="study-modes" id="study-modes" aria-label="Study modes">
@@ -30,40 +44,40 @@
 <button type="button" data-view="revelation-zion" aria-pressed="false">REVELATION / ZION</button>
 <button type="button" data-view="counter-texts" aria-pressed="false">COUNTER-TEXTS</button>
 <button type="button" data-view="all" aria-pressed="false">ALL</button>
-<div class="study-actions"><button class="roll" id="roll-relation" type="button">ROLL</button><button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false">FILTERS</button></div>
+<div class="study-actions"><button class="roll" id="roll-relation" type="button">SHUFFLE</button><button class="filter-toggle" id="filter-toggle" type="button" aria-expanded="false">FILTERS</button></div>
 </div>
 
-<div class="study-status"><span>Studying:</span><strong class="active-view" id="active-view">Jesus / Son</strong><span class="study-count" id="study-count">Loading…</span><span class="study-hint">Roll chooses from whatever is currently visible.</span></div>
+<div class="study-status"><span>Studying:</span><strong class="active-view" id="active-view">Jesus / Son</strong><span class="study-count" id="study-count">Loading…</span><span class="study-hint">Shuffle chooses from whatever survives the current view, search and filters.</span></div>
 
 <div class="search-row">
-<div class="search-field"><label for="search">Search wording, person, event, action, thought, scripture, motif or date</label><input id="search" type="search" placeholder="Josh Moon, Yahya Hassan, Jesus Christ, prison, John 12, Lamb, Door, North…" autocomplete="off"></div>
+<div class="search-field"><label for="search">Search wording, person, event, action, scripture, motif, operator or date</label><input id="search" type="search" placeholder="John 12, Father, veil, prison, gardener, root, resurrection, North…" autocomplete="off"></div>
 <button class="clear-search" id="clear-search" type="button">Clear</button>
 </div>
 
 <div class="filters-panel" id="bible-filters" hidden>
 <div class="filters">
+<div class="filter"><label for="operator">Operator</label><select id="operator"><option value="">All operators</option></select></div>
 <div class="filter"><label for="actor">Actor</label><select id="actor"><option value="">All actors</option></select></div>
-<div class="filter"><label for="context-person">Person / group</label><select id="context-person"><option value="">All people / groups</option></select></div>
 <div class="filter"><label for="evidence-kind">Evidence</label><select id="evidence-kind"><option value="">All evidence classes</option></select></div>
 <div class="filter"><label for="discovery-mode">Discovery</label><select id="discovery-mode"><option value="">All discovery modes</option></select></div>
 <div class="filter"><label for="relation-class">Relation class</label><select id="relation-class"><option value="">All relation classes</option></select></div>
 <div class="filter"><label for="bible-book">Bible book</label><select id="bible-book"><option value="">All books</option></select></div>
+<div class="filter"><label for="minimum-strength">Minimum strength</label><select id="minimum-strength"></select></div>
+<div class="filter"><label for="sort-order">Order</label><select id="sort-order"><option value="asc">Oldest → newest</option><option value="desc">Newest → oldest</option><option value="strength">Strongest first</option></select></div>
 <div class="filter"><label for="from-year">From year</label><input id="from-year" inputmode="numeric" placeholder="1987"></div>
 <div class="filter"><label for="to-year">To year</label><input id="to-year" inputmode="numeric" placeholder="2026"></div>
-<div class="filter"><label for="minimum-strength">Minimum strength</label><select id="minimum-strength"></select></div>
-<div class="filter"><label for="sort-order">Order</label><select id="sort-order"><option value="asc">Oldest → newest</option><option value="desc">Newest → oldest</option></select></div>
 <div class="filter"><label>&nbsp;</label><button class="reset-filters" id="reset-filters" type="button">Reset filters</button></div>
 </div>
-<label class="toggle-filter"><input id="exact-wording-only" type="checkbox"> Only relations with exact / recovered wording attached</label>
+<label class="toggle-filter"><input id="exact-wording-only" type="checkbox"> Only relations with exact / recovered project wording attached</label>
 </div>
 
 <div class="relations" id="relations" aria-live="polite"><!-- BIBLE_RELATIONS_STATIC --></div>
 </section>
 
 <details class="research-notes"><summary>Method and evidence boundaries</summary><div class="research-grid">
-<article><strong>Exact is exact</strong><p>Quoted public wording and recovered attestation text are shown as such. A project-side summary is labeled as an archive relation anchor instead of being dressed up as a quotation.</p></article>
-<article><strong>Context is not quotation</strong><p>Who was involved, setting, court/prison timeline, thought-direction and same-date material are shown from their owning records and labeled by evidence class.</p></article>
-<article><strong>Parallel is not automatically prophecy</strong><p>Explicit-at-time language, later typology, Tim-led discoveries, foresight and strict prediction are different claims. Mismatches remain part of the comparison.</p></article>
+<article><strong>Exact is exact</strong><p>Quoted public wording and recovered attestation text are shown as such. An archive summary is labeled as a relation anchor instead of being presented as a quotation.</p></article>
+<article><strong>Chronology matters</strong><p>A later biblical discovery is not backdated into an earlier event. The page distinguishes explicit-at-time wording, Tim-led discovery, later structural comparison and research synthesis.</p></article>
+<article><strong>Mismatch is evidence too</strong><p>Role conflicts, counter-texts and historical differences stay visible. A strong structural parallel does not by itself establish prophecy, identity or historical dependence.</p></article>
 </div></details>
 </main>
 <script src="../../app/bible-study.js"></script>
