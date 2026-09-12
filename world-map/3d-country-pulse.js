@@ -9,7 +9,7 @@ const INDEX_URL = '../data/countries/index.json';
 const DEMOGRAPHY_URL = '../data/world-country-demography.json';
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
 }[char]));
 const title = value => String(value || '').replaceAll('_', ' ').replace(/\b\w/g, c => c.toUpperCase());
 
@@ -285,12 +285,12 @@ async function render({ force = false } = {}) {
   if (rendering) { renderQueued = true; return; }
   const code = activeSelectionCode();
   if (!code) return;
-  const view = await window.__potatoAtlasActiveView?.forCountry?.(code).catch?.(() => null) || window.__potatoAtlasActiveView?.current || null;
-  const signature = `${code}|${view?.scalar?.id || ''}|${view?.display || ''}|${(view?.sets || []).map(item => item.id).join(',')}`;
-  const existing = panel.querySelector('.atlas-country-pulse');
-  if (!force && existing?.dataset.pulseCode === code && lastRenderSignature === signature) return;
   rendering = true;
   try {
+    const view = await window.__potatoAtlasActiveView?.forCountry?.(code).catch?.(() => null) || window.__potatoAtlasActiveView?.current || null;
+    const signature = `${code}|${view?.scalar?.id || ''}|${view?.display || ''}|${(view?.sets || []).map(item => item.id).join(',')}`;
+    const existing = panel.querySelector('.atlas-country-pulse');
+    if (!force && existing?.dataset.pulseCode === code && lastRenderSignature === signature) return;
     const [record, demo] = await Promise.all([getRecord(code), demography()]);
     if (!record || !isCountryOverview() || activeSelectionCode() !== code) return;
     panel.querySelector('.atlas-country-pulse')?.remove();
