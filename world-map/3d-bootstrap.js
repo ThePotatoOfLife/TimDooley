@@ -171,7 +171,6 @@ try {
     promoteInspection();
   };
   window.addEventListener('potato-atlas-working-selection-change', promoteInspectionOnce);
-  map.once('click', promoteInspectionOnce);
   if (window.__potatoAtlasSelection?.current?.selected) promoteInspectionOnce({ detail:{ selected:true } });
   window.__potatoAtlasDiagnostics.bootstrapWiredMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-bootstrap-complete', { detail:window.__potatoAtlasEnhancements }));
