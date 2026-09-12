@@ -15,6 +15,8 @@ MEMBERSHIPS = ROOT / "data" / "world-institution-memberships.json"
 AXIS_PROFILES = ROOT / "data" / "world-axis-profiles.json"
 SYSTEM_CHAINS = ROOT / "data" / "world-system-chains.json"
 GATEWAYS = ROOT / "data" / "world-map-gateways.json"
+ENTITIES = ROOT / "data" / "world-map-entities.json"
+AFRICA_SYSTEMS = ROOT / "data" / "world-africa-regional-systems.json"
 RUNTIME_OUT = ROOT / "data" / "world-map-data-runtime.json"
 
 METRICS = {
@@ -133,15 +135,7 @@ def explicit_builds(record: dict) -> list[dict]:
             continue
         if not raw.get("source") or not raw.get("source_url"):
             continue
-        builds.append({
-            "id":str(key),
-            "label":str(key).replace("_", " "),
-            "value":raw.get("value"),
-            "unit":raw.get("unit"),
-            "period":raw.get("reference_period") or raw.get("year") or raw.get("period"),
-            "source":raw.get("source"),
-            "source_url":raw.get("source_url"),
-        })
+        builds.append({"id":str(key),"label":str(key).replace("_", " "),"value":raw.get("value"),"unit":raw.get("unit"),"period":raw.get("reference_period") or raw.get("year") or raw.get("period"),"source":raw.get("source"),"source_url":raw.get("source_url")})
     return builds[:10]
 
 
@@ -158,6 +152,17 @@ def evidence_domains(record: dict, capabilities: list[str], dependencies: list[s
     return list(dict.fromkeys(domains))
 
 
+def africa_for_country(code: str, africa_source: dict) -> list[dict]:
+    rows = []
+    for system_id, system in (africa_source.get("systems") or {}).items():
+        if code in (system.get("members") or []):
+            rows.append({"id":system_id,"label":system.get("label",system_id),"status":"current","kind":system.get("kind"),"source":system.get("source"),"source_url":system.get("source_url")})
+        for former in system.get("former_or_transition_members", []) or []:
+            if isinstance(former, dict) and former.get("code") == code:
+                rows.append({"id":system_id,"label":system.get("label",system_id),"status":former.get("status"),"effective_date":former.get("effective_date"),"kind":system.get("kind"),"source":system.get("source"),"source_url":former.get("source_url") or system.get("source_url")})
+    return rows
+
+
 def build_runtime() -> dict:
     index = load(COUNTRY_INDEX)
     countries = index.get("countries", [])
@@ -168,6 +173,8 @@ def build_runtime() -> dict:
     axis_source = load(AXIS_PROFILES)
     chain_source = load(SYSTEM_CHAINS)
     gateway_source = load(GATEWAYS)
+    entity_source = load(ENTITIES)
+    africa_source = load(AFRICA_SYSTEMS)
     gateways = deepcopy(gateway_source.get("gateways", {}))
 
     groups = {}
@@ -178,6 +185,7 @@ def build_runtime() -> dict:
     chains = deepcopy(chain_source.get("chains", {}))
     runtime_countries = {}
     runtime_axis_countries = {}
+    runtime_entities = {}
     axis_memberships = {axis_id:[] for axis_id in axis_source.get("axes", {})}
     axis_profiles = axis_source.get("profiles", {})
     default_axis_profile = axis_source.get("default_profile", {"status":"unresolved","orientations":[]})
@@ -207,19 +215,27 @@ def build_runtime() -> dict:
         builds = explicit_builds(record)
         for key, value in (("capabilities",capabilities),("dependencies",dependencies),("builds",builds),("chains",chain_ids),("gateways",gateway_ids)):
             if value: system_coverage[key] += 1
-        systems = {
-            "capabilities":capabilities,
-            "dependencies":dependencies,
-            "builds":builds,
-            "chains":chain_ids,
-            "gateways":gateway_ids,
-            "resilience":{"evidence_domains":evidence_domains(record,capabilities,dependencies,builds,chain_ids,gateway_ids),"policy":"no aggregate score inferred"},
-        }
-        runtime_countries[code] = {"id":country_id,"name":row.get("name"),"metrics":cells,"systems":systems}
+        regional = africa_for_country(code, africa_source)
+        systems = {"capabilities":capabilities,"dependencies":dependencies,"builds":builds,"chains":chain_ids,"gateways":gateway_ids,"regional":regional,"resilience":{"evidence_domains":evidence_domains(record,capabilities,dependencies,builds,chain_ids,gateway_ids),"policy":"no aggregate score inferred"}}
+        runtime_countries[code] = {"id":country_id,"name":row.get("name"),"entity_type":"sovereign-country","canonical_country":True,"metrics":cells,"systems":systems}
+        runtime_entities[code] = {"code":code,"id":country_id,"name":row.get("name"),"entity_type":"sovereign-country","canonical_country":True,"systems":{"chains":chain_ids,"regional":regional}}
 
         normalized = normalize_axis_profile(axis_profiles.get(code), default_axis_profile)
         runtime_axis_countries[code] = normalized
         for orientation in normalized["orientations"]:
+            if orientation.get("axis") in axis_memberships and orientation.get("role") in ORDINARY_AXIS_ROLES:
+                axis_memberships[orientation["axis"]].append(code)
+
+    territories = {}
+    for code, entity in (entity_source.get("entities") or {}).items():
+        code = str(code).upper()
+        profile = normalize_axis_profile(axis_profiles.get(code), default_axis_profile)
+        chain_ids = sorted(chain_id for chain_id, chain in chains.items() if code in (chain.get("members") or []))
+        projected = {"code":code,"id":entity.get("id"),"name":entity.get("name"),"entity_type":entity.get("entity_type"),"canonical_country":False,"sovereignty_context":entity.get("sovereignty_context"),"constitutional_parent":entity.get("constitutional_parent"),"capital":entity.get("capital"),"render_status":entity.get("render_status"),"population":deepcopy(entity.get("population")),"label_anchor":deepcopy(entity.get("label_anchor")),"relationships":deepcopy(entity.get("relationships",[])),"axis_profile":profile,"systems":{"chains":chain_ids,"regional":[]}}
+        territories[code] = projected
+        runtime_entities[code] = projected
+        runtime_axis_countries[code] = profile
+        for orientation in profile["orientations"]:
             if orientation.get("axis") in axis_memberships and orientation.get("role") in ORDINARY_AXIS_ROLES:
                 axis_memberships[orientation["axis"]].append(code)
 
@@ -232,10 +248,12 @@ def build_runtime() -> dict:
         metric_meta[metric_id] = {"label":definition["label"],"unit":definition["unit"],"coverage":coverage[metric_id],"country_count":len(countries),"coverage_percent":round((coverage[metric_id]/len(countries))*100,1),"period_min":observed[0] if observed else None,"period_max":observed[-1] if observed else None,"missing_policy":"unknown"}
 
     return {
-        "version":"1.2.0",
-        "generated_from":{"country_index":"data/countries/index.json","country_records":"data/countries/*.json","institution_memberships":"data/world-institution-memberships.json","axis_profiles":"data/world-axis-profiles.json","system_chains":"data/world-system-chains.json","gateways":"data/world-map-gateways.json"},
+        "version":"1.3.0",
+        "generated_from":{"country_index":"data/countries/index.json","country_records":"data/countries/*.json","institution_memberships":"data/world-institution-memberships.json","axis_profiles":"data/world-axis-profiles.json","system_chains":"data/world-system-chains.json","gateways":"data/world-map-gateways.json","entities":"data/world-map-entities.json","africa_regional_systems":"data/world-africa-regional-systems.json"},
         "country_count":len(countries),
+        "entities":{"country_count":len(countries),"territories":territories,"by_id":runtime_entities,"renderable_entity_count":len(countries)+sum(1 for entity in territories.values() if entity.get("render_status")=="current")},
         "groups":groups,
+        "africa":{"systems":deepcopy(africa_source.get("systems",{})),"for_country":{code:africa_for_country(code,africa_source) for code in runtime_countries}},
         "axis":{"axes":deepcopy(axis_source.get("axes",{})),"memberships":axis_memberships,"countries":runtime_axis_countries,"center_junction":deepcopy(axis_source.get("center_junction",{})),"project_cosmology":deepcopy(axis_source.get("project_cosmology",{}))},
         "reference_figures":deepcopy(axis_source.get("reference_figures",[])),
         "chains":chains,
@@ -256,4 +274,4 @@ def build_runtime_file(path: Path = RUNTIME_OUT) -> dict:
 
 if __name__ == "__main__":
     runtime = build_runtime_file()
-    print(json.dumps({"country_count":runtime["country_count"],"groups":{key:value["member_count"] for key,value in runtime["groups"].items()},"axis":{key:len(value) for key,value in runtime["axis"]["memberships"].items()},"chains":len(runtime["chains"]),"gateways":len(runtime["gateways"]),"systems":runtime["system_coverage"],"metrics":{key:value["coverage"] for key,value in runtime["metrics"].items()},"output":str(RUNTIME_OUT.relative_to(ROOT))}, indent=2))
+    print(json.dumps({"country_count":runtime["country_count"],"entities":runtime["entities"]["renderable_entity_count"],"groups":{key:value["member_count"] for key,value in runtime["groups"].items()},"axis":{key:len(value) for key,value in runtime["axis"]["memberships"].items()},"chains":len(runtime["chains"]),"gateways":len(runtime["gateways"]),"systems":runtime["system_coverage"],"metrics":{key:value["coverage"] for key,value in runtime["metrics"].items()},"output":str(RUNTIME_OUT.relative_to(ROOT))}, indent=2))
