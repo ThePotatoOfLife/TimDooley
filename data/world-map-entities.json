@@ -1,7 +1,7 @@
 {
-  "version":"1.2.0",
+  "version":"1.3.0",
   "updated":"2026-09-12",
-  "purpose":"First-class non-sovereign entities that need full World Map identity/runtime behavior without changing the canonical 195 sovereign-country model.",
+  "purpose":"First-class non-sovereign or non-canonical entities that need full World Map identity/runtime behavior without changing the canonical 195 sovereign-country model.",
   "entities":{
     "GRL":{
       "id":"greenland",
@@ -41,6 +41,19 @@
       "render_status":"current",
       "axis_profile":{"status":"classified","orientations":[{"axis":"south","role":"primary","basis":"project-synthesis","confidence":"high","note":"Antarctica contains the geographic South Pole and is used as the polar anchor of the project South field. This is a project/map interpretation and does not imply sovereignty or political authority."}]},
       "note":"Antarctica has no ordinary permanent resident national population; the map leaves population unknown rather than converting seasonal research presence into a country-style population value."
+    },
+    "XKX":{
+      "id":"kosovo",
+      "iso3":"XKX",
+      "name":"Kosovo",
+      "entity_type":"partially-recognized-state",
+      "canonical_country":false,
+      "sovereignty_context":"Kosovo is represented as a distinct map entity; international recognition is not universal and this map entry does not adjudicate sovereignty disputes.",
+      "capital":"Pristina",
+      "render_status":"current",
+      "geometry_alias":"CS-KM",
+      "axis_profile":{"status":"classified","orientations":[{"axis":"north","role":"secondary","basis":"project-synthesis","confidence":"medium","note":"Kosovo is included in the project North field as part of the western Balkan corridor between Albania, North Macedonia, Montenegro and Serbia. This is a project-geographic classification, not a sovereignty or alliance claim."}]},
+      "note":"The upstream World Map geometry identifies Kosovo as CS-KM; the browser normalizes that polygon to XKX so the entity can participate in the same runtime as other first-class map entities."
     }
   }
 }
