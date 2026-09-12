@@ -1,8 +1,17 @@
-.dossier-scene{margin:18px 0 20px;padding:18px 20px;border:1px solid #4a533f;border-radius:16px;background:linear-gradient(135deg,#121610,#0d110d)}
-.dossier-scene h3{margin:2px 0 8px;font:400 24px/1.15 Georgia,serif;color:#e9dfbf}
-.dossier-scene p{margin:7px 0;color:#d2d8cf;max-width:92ch}
-.dossier-scene .dossier-leadup{color:#bfc9b7}
+.paired-narrative{margin:18px 0 22px;padding:18px 20px;border:1px solid #4a533f;border-radius:16px;background:linear-gradient(135deg,#121610,#0d110d)}
+.paired-intro h3{margin:2px 0 8px;font:400 24px/1.15 Georgia,serif;color:#e9dfbf}
+.paired-intro p{margin:7px 0 16px;color:#d2d8cf;max-width:92ch}
 .dossier-kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#d8b56b}
+.paired-scenes{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px}
+.paired-scene{min-width:0;padding:15px 16px;border:1px solid #30382f;border-radius:12px;background:#0f130f}
+.paired-scene h4{margin:5px 0 9px;font:600 15px/1.35 system-ui,-apple-system,sans-serif;color:#e6ddc2}
+.paired-scene p{margin:7px 0;color:#cbd2c8}
+.modern-scene{border-color:#4a533f}
+.biblical-scene{border-color:#4c4634}
+.scene-label{display:inline-block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#d8b56b}
+.scene-sequence{margin-top:11px!important;padding-top:9px;border-top:1px solid #2f372e;color:#bfc9b7!important}
+.correspondence-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
+.correspondence-list span{display:inline-block;padding:5px 8px;border:1px solid #414a3c;border-radius:999px;background:#11150f;color:#cdd5c7;font-size:12px}
 .maximum-claim{margin:13px 0;padding:13px 15px;border-left:3px solid #d8b56b;background:#151209;color:#ddd4bb;border-radius:0 10px 10px 0}
 .maximum-claim strong{color:#f0dfb6}
 .dossier-detail{color:#cbd2c8}
@@ -11,4 +20,4 @@
 .dossier-detail ol{margin:7px 0 12px;padding-left:22px}
 .dossier-detail li{margin:4px 0}
 .dossier-detail .source-status{margin-top:14px;padding-top:10px;border-top:1px solid #30382f;color:#9fa79d;font-size:12px}
-@media(max-width:700px){.dossier-scene{padding:15px 16px}.dossier-scene h3{font-size:21px}}
+@media(max-width:700px){.paired-narrative{padding:15px 16px}.paired-intro h3{font-size:21px}.paired-scenes{grid-template-columns:1fr}.paired-scene{padding:14px}}
