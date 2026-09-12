@@ -1,0 +1,234 @@
+{
+  "id": "under-culture-shadow-network-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "active-analytical-atlas",
+  "purpose": "Map the institutional, financial, informational, technological, subcultural and protection-failure mechanisms beneath visible culture without presuming one hidden master network.",
+  "central_question": "What recurring mechanisms convert people, money, information, ideology, technology and institutional power into durable influence, extraction, protection failure or repair?",
+  "planes": {
+    "observable": "Externally sourceable entities, transactions, contracts, filings, events, court/inquiry findings and public statements.",
+    "analytical": "Mechanism-level interpretations derived from observable evidence, such as donor dependency, information suppression, opposition fragmentation, archive capture or accountability failure.",
+    "hypothesis": "Contested or unproven claims requiring named claimant, evidence, counterevidence and unresolved questions.",
+    "project_canon": "Tim/Potatoverse symbolic language such as Farm, Sektur, Mud, Swamp, Rubble, Tree of Strife, Axis and tikkun."
+  },
+  "epistemic_firewall": [
+    "Observable adjacency is not proof of coordination.",
+    "Shared ideology is not proof of common command.",
+    "Shared donor is not proof of donor control unless control is separately evidenced.",
+    "Shared address requires entity-resolution work; it does not by itself establish operational identity.",
+    "Appearance in a document or contact list is not evidence of criminal conduct.",
+    "Project-canon symbols can organize questions but cannot prove empirical allegations."
+  ],
+  "entity_types": [
+    "person",
+    "brand",
+    "company",
+    "nonprofit-501c3",
+    "social-welfare-501c4",
+    "private-foundation",
+    "pac",
+    "super-pac",
+    "hybrid-pac",
+    "political-party-or-committee",
+    "donor-or-funder",
+    "think-tank",
+    "advocacy-organization",
+    "religious-or-ministry-organization",
+    "government-agency",
+    "intelligence-or-security-agency",
+    "defense-or-government-contractor",
+    "private-intelligence-or-investigation-firm",
+    "surveillance-or-forensics-vendor",
+    "media-outlet-or-company",
+    "entertainment-studio-agency-or-production-company",
+    "platform-forum-or-archive",
+    "watchdog-or-classifier",
+    "ideology-or-movement",
+    "court-inquiry-or-regulator",
+    "event",
+    "filing-report-or-document",
+    "claim-or-allegation",
+    "affected-population"
+  ],
+  "relationship_types": [
+    "FOUNDED",
+    "LEADS",
+    "EMPLOYED_BY",
+    "OWNS",
+    "CONTROLS",
+    "AFFILIATED_WITH",
+    "CONNECTED_ORGANIZATION_OF",
+    "DONATED_TO",
+    "GRANTS_TO",
+    "FUNDS",
+    "RECEIVES_FROM",
+    "CONTRACTS_WITH",
+    "PAID_VENDOR",
+    "INVESTS_IN",
+    "LOBBIES",
+    "ENDORSES",
+    "SPENDS_TO_SUPPORT",
+    "SPENDS_TO_OPPOSE",
+    "INDEPENDENT_EXPENDITURE_FOR",
+    "PARTNERS_WITH",
+    "ADVISES",
+    "REPRESENTED_BY",
+    "PROVIDED_SERVICE_TO",
+    "REPORTS_ON",
+    "CITES",
+    "CLASSIFIES",
+    "INVESTIGATES",
+    "REGULATES",
+    "LITIGATES_AGAINST",
+    "HOSTS",
+    "ARCHIVES",
+    "AMPLIFIES",
+    "MODERATES",
+    "MONETIZES",
+    "MIGRATED_TO",
+    "ACCUSED_BY",
+    "ALLEGED_BY",
+    "INVESTIGATED_FOR",
+    "CHARGED_WITH",
+    "CONVICTED_OF",
+    "CLEARED_OR_EXONERATED",
+    "APPEARS_IN_DOCUMENT",
+    "CONTACT_RECORD",
+    "TRAVEL_RECORD",
+    "BUSINESS_RELATIONSHIP"
+  ],
+  "mechanism_families": [
+    {
+      "id": "political-finance",
+      "sequence": ["donor", "committee", "contribution-or-independent-expenditure", "candidate-or-election", "policy-context"],
+      "examples": ["AIPAC PAC", "United Democracy Project"],
+      "risk": "Treating spending as proof of control rather than a documented influence mechanism."
+    },
+    {
+      "id": "philanthropic-grant-chain",
+      "sequence": ["funder", "grantee-legal-entity", "program-or-intermediary", "downstream-grantee", "activity"],
+      "examples": ["Vine & Fig Tree Institute I -> Vine & Fig Tree Fund -> downstream grantees"],
+      "risk": "Collapsing related legal entities or assuming grants create command relationships."
+    },
+    {
+      "id": "religious-ideological-mobilization",
+      "sequence": ["institution", "teaching-or-message", "audience", "advocacy-or-charity", "public-action"],
+      "examples": ["Israel365"],
+      "risk": "Confusing shared theology or advocacy with covert political coordination."
+    },
+    {
+      "id": "mass-political-mobilization",
+      "sequence": ["organization", "funding", "chapters-or-audience", "events-content", "candidate-or-issue-mobilization"],
+      "examples": ["Turning Point USA"],
+      "risk": "Ignoring factional conflict and internal disagreement."
+    },
+    {
+      "id": "state-technology-security",
+      "sequence": ["vendor", "government-customer", "contract-or-partnership", "capability", "deployment"],
+      "examples": ["Palantir -> Israeli Defense Ministry", "Cellebrite -> public-sector customers"],
+      "risk": "Confusing capability or customer relationship with undocumented misuse."
+    },
+    {
+      "id": "private-intelligence-reputation-protection",
+      "sequence": ["client", "lawyer-or-intermediary", "private-intelligence-firm", "target", "surveillance-deception-or-information-acquisition", "publication-or-litigation-context"],
+      "examples": ["Weinstein -> legal intermediary -> Black Cube -> accusers/reporters"],
+      "risk": "Generalizing one documented case into a universal entertainment/intelligence conspiracy."
+    },
+    {
+      "id": "institutional-protection-failure",
+      "sequence": ["report-or-warning", "institution", "delay-or-process-failure", "continued-risk", "external-exposure", "inquiry-or-reform"],
+      "examples": ["Nassar/FBI", "Savile/policing intelligence-sharing failures"],
+      "risk": "Assuming documented incompetence or institutional failure was intentional interference without evidence."
+    },
+    {
+      "id": "opposition-management",
+      "sequence": ["opposition-group", "external-state-or-funder-or-platform", "infiltration-cooptation-amplification-or-fragmentation-mechanism", "observable-effect"],
+      "examples": ["COINTELPRO as historical anchor"],
+      "risk": "Using 'controlled opposition' as a universal unfalsifiable label."
+    },
+    {
+      "id": "attention-archive-capture",
+      "sequence": ["person-or-event", "attention", "documentation", "archive", "secondary-creator", "repetition", "persistent-assigned-identity"],
+      "examples": ["Farm / lolcow / adversarial archive ecosystems"],
+      "risk": "Archive repetition converting allegation into apparent fact."
+    },
+    {
+      "id": "classification-power",
+      "sequence": ["classifier", "methodology", "classification-event", "entity-or-incident", "public-institutional-consequence"],
+      "examples": ["SPLC hate-group methodology", "ADL HEAT incident mapping"],
+      "risk": "Treating a classifier's label as an intrinsic universal property."
+    },
+    {
+      "id": "exploitation-and-accountability",
+      "sequence": ["vulnerable-person-or-population", "exploiter", "facilitator-or-institution", "complaint-or-discovery", "investigation", "adjudication-or-reform"],
+      "examples": ["Epstein/Maxwell corpus", "NXIVM criminal case"],
+      "risk": "Turning victims into spectacle or treating document adjacency as guilt."
+    }
+  ],
+  "seed_entities": [
+    {"id": "aipac-pac", "name": "American Israel Public Affairs Committee Political Action Committee", "type": "pac", "status": "observed"},
+    {"id": "united-democracy-project", "name": "United Democracy Project", "type": "super-pac", "status": "observed"},
+    {"id": "israel365", "name": "Israel365", "type": "religious-or-ministry-organization", "status": "observed-brand-or-institution"},
+    {"id": "teach-for-israel", "name": "Teach For Israel Inc", "type": "nonprofit-501c3", "status": "observed"},
+    {"id": "vine-fig-tree-institute-i", "name": "Vine & Fig Tree Institute I Inc", "type": "nonprofit-501c3", "status": "observed"},
+    {"id": "vine-fig-tree-fund", "name": "Vine & Fig Tree Fund Inc", "type": "nonprofit-501c3", "status": "observed"},
+    {"id": "palantir", "name": "Palantir Technologies", "type": "company", "status": "observed"},
+    {"id": "tpusa", "name": "Turning Point USA Inc", "type": "nonprofit-501c3", "status": "observed"},
+    {"id": "israel-campus-coalition", "name": "Israel On Campus Coalition Inc", "type": "nonprofit-501c3", "status": "observed"},
+    {"id": "standwithus-israel-emergency-alliance", "name": "Israel Emergency Alliance / StandWithUs", "type": "nonprofit-501c3", "status": "observed"},
+    {"id": "maccabee-task-force-foundation", "name": "Maccabee Task Force Foundation", "type": "private-foundation", "status": "observed"},
+    {"id": "tikvah-fund", "name": "The Tikvah Fund", "type": "private-foundation", "status": "observed"},
+    {"id": "black-cube", "name": "Black Cube", "type": "private-intelligence-or-investigation-firm", "status": "observed"},
+    {"id": "nso-group", "name": "NSO Group", "type": "surveillance-or-forensics-vendor", "status": "observed"},
+    {"id": "candiru", "name": "Candiru", "type": "surveillance-or-forensics-vendor", "status": "observed"},
+    {"id": "cellebrite", "name": "Cellebrite", "type": "surveillance-or-forensics-vendor", "status": "observed"},
+    {"id": "splc", "name": "Southern Poverty Law Center", "type": "watchdog-or-classifier", "status": "observed"},
+    {"id": "adl", "name": "Anti-Defamation League", "type": "watchdog-or-classifier", "status": "observed"}
+  ],
+  "observed_edges": [
+    {
+      "from": "vine-fig-tree-institute-i",
+      "relationship": "GRANTS_TO",
+      "to": "vine-fig-tree-fund",
+      "amount_usd": 850000,
+      "period": "FY2024",
+      "evidence": "knowledge/research/under-culture-shadow-network-source-ledger-2026-09.json#vine-fig-tree-institute-2024"
+    },
+    {
+      "from": "palantir",
+      "relationship": "PARTNERS_WITH",
+      "to_external": "Israeli Defense Ministry",
+      "period": "2024",
+      "qualifier": "strategic partnership to supply technology assisting Israel in the ongoing war, as stated in Palantir 10-K",
+      "evidence": "knowledge/research/under-culture-shadow-network-source-ledger-2026-09.json#sec-palantir-2024"
+    }
+  ],
+  "counterevidence_rules": [
+    "Record public disagreement, factional conflict and divergent policy positions between apparently adjacent organizations.",
+    "Search for independent funding, governance and operational decision-making before inferring dependence.",
+    "Where a failure is documented, distinguish incompetence, fragmentation, negligence, conflict of interest and intentional interference.",
+    "Where a surveillance capability exists, search for evidence of actual deployment and legal authority before discussing misuse.",
+    "Where organizations share donors or staff, test whether the overlap is routine field-level networking or evidence of decision control."
+  ],
+  "project_canon_mapping": {
+    "Farm": "attention cultivation and extraction",
+    "Sektur": "social territory where repeating attention roles reproduce",
+    "Mud": "accumulated informational, reputational and legal residue",
+    "Swamp": "dense institutional/incentive environment with opacity or blocked accountability",
+    "Rubble": "wreckage and vulnerable life after institutional or geopolitical failure",
+    "Epstein Axis": "project-symbolic concentration of exploitation, elite access, secrecy and protection failure",
+    "Tree of Strife": "root incentive -> mechanism -> branches/actors -> outputs -> consequences -> reproducing seeds",
+    "Garden": "repair, protection, transparent flow and restored exit capacity",
+    "tikkun": "repair/accountability layer rather than proof of prophecy or collective guilt"
+  },
+  "next_research": [
+    "Resolve and source Vine & Fig Tree Action Inc separately.",
+    "Verify Stand Together Trust -> Vine & Fig Tree Institute I grant through exact filing data.",
+    "Add J Street, Democratic Majority for Israel and Christians United for Israel as comparison networks with legal-entity decomposition.",
+    "Trace public grant chains around anti-hate, antisemitism, campus advocacy and political education organizations.",
+    "Build a current government-contract layer for Palantir and major digital-forensics/surveillance vendors.",
+    "Map Hollywood crisis-PR, legal, private-investigation and insurance networks using documented cases.",
+    "Build privacy-preserving institutional-failure records for major abuse scandals and inquiry findings.",
+    "Resolve historical Sektur/Killstream provenance from preserved primary/archive material."
+  ]
+}
