@@ -1,6 +1,6 @@
 {
-  "version":"1.14.0",
-  "updated":"2026-09-10",
+  "version":"1.15.0",
+  "updated":"2026-09-12",
   "purpose":"Optional curated event packs merged into the layered timeline at runtime. Packs add non-redundant bridge events without bloating the sparse roadmap base.",
   "packs":[
     "trajectory-gaps.json",
@@ -17,12 +17,13 @@
     "neurotheology-unlocks.json",
     "x-public-attestations-2024-2026.json",
     "retirement-kingship-2025.json",
-    "mercado-prison-aftermath-2016-2017.json"
+    "mercado-prison-aftermath-2016-2017.json",
+    "son-biography-2005-2014.json"
   ],
   "rules":[
     "Event ids must be globally unique across base and packs.",
     "Packs may add overlays and bridge events, but should not duplicate roadmap milestones already present in data/timeline-events.json.",
-    "If a pack event later becomes a canonical roadmap milestone, move it into the base and remove it from the pack.",
+    "If a pack event later becomes a canonical roadmap milestone, move it into the base and remove it from the pack in the same change.",
     "Conversation-archaeology packs must preserve user-originated versus assistant-synthesis provenance and may not silently promote assistant material into Tim canon.",
     "Comparative packs must separate dated project-side language from later biblical or mythological research unlocks.",
     "Public-post packs must preserve first-in-batch versus first-known distinctions and must not let incomplete search coverage overwrite stronger earlier attestations.",
@@ -34,6 +35,7 @@
     "Project-biography prison/release events must not override stronger legal records; legal sentence length and court findings remain owned by legal evidence.",
     "Conversation-statement promotions must preserve conversation provenance and may not be presented as public-post first attestations unless independently sourced.",
     "Expression-development events should mark a change in grammar, modality, role or ethical orientation; routine repetitions belong in quote/occurrence ledgers rather than the timeline.",
-    "Foresight and vision events must distinguish pre-event prediction from warning, scenario, dream/vision, retrospective correspondence and unresolved memory; later matches may not be treated as prophecy without dated pre-event wording."
+    "Foresight and vision events must distinguish pre-event prediction from warning, scenario, dream/vision, retrospective correspondence and unresolved memory; later matches may not be treated as prophecy without dated pre-event wording.",
+    "Son-biography events must preserve exact versus preferred-year versus range precision, route to specialist chronology owners, and use structured places only when a location materially improves the chronology."
   ]
 }
