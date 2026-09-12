@@ -43,6 +43,23 @@ def question_count(text: str) -> int:
     return len(re.findall(r'class=["\'][^"\']*\bquestion-(?:preview|stub)\b', text, flags=re.I))
 
 
+def validate_projection_surface(text: str, owner: str, errors: list[str]) -> None:
+    matches = re.findall(
+        r'<(?:section|nav)\b[^>]*data-projection-surface(?:=["\'][^"\']*["\'])?[^>]*>(.*?)</(?:section|nav)>',
+        text,
+        flags=re.I | re.S,
+    )
+    if len(matches) != 1:
+        errors.append(f"{owner} must contain exactly one compact data-projection-surface; found {len(matches)}")
+        return
+    hrefs = re.findall(r'href=["\']([^"\']+)["\']', matches[0], flags=re.I)
+    if len(dict.fromkeys(hrefs)) < 2:
+        errors.append(f"{owner} projection surface must expose at least two distinct deeper routes")
+    forbidden = ("data/", "knowledge/", ".json", "root.js", "index.html#node=")
+    if any(token in matches[0] for token in forbidden):
+        errors.append(f"{owner} projection surface leaks backend filenames or retired routing")
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -85,6 +102,7 @@ def main() -> int:
     require(tim, 'href="../timeline/"', "tim-dooley/index.html", errors)
     require_any(tim, ("Tim/Father", "Tim / Father"), "tim-dooley/index.html", "Tim/Father distinction", errors)
     require_any(tim, ("Thomas/Son", "Thomas / Son"), "tim-dooley/index.html", "Thomas/Son distinction", errors)
+    validate_projection_surface(tim, "tim-dooley/index.html", errors)
 
     # Religion: broad inquiry, unequal but real Abrahamic routes, and evidence boundary.
     require(religion, 'data-reader-surface="religion"', "religion/index.html", errors)
@@ -100,6 +118,7 @@ def main() -> int:
         require_any(religion, markers, "religion/index.html", label, errors)
     require(religion, 'href="../traditions/bible/"', "religion/index.html", errors)
     require_any(religion, ("resemblance is not identity", "similarity is not identity", "structural resemblance is not identity"), "religion/index.html", "comparison boundary", errors)
+    validate_projection_surface(religion, "religion/index.html", errors)
 
     # Philosophy: inquiry before/alongside the preserved sayings.
     require(philosophy, 'data-reader-surface="philosophy"', "philosophy/index.html", errors)
@@ -108,6 +127,7 @@ def main() -> int:
     require_any(philosophy, ("What makes a claim true?", "truth"), "philosophy/index.html", "truth/evidence inquiry", errors)
     require_any(philosophy, ("relationship-first", "relation before isolation"), "philosophy/index.html", "relationship-first inquiry", errors)
     require(philosophy, 'class="sayings"', "philosophy/index.html", errors)
+    validate_projection_surface(philosophy, "philosophy/index.html", errors)
 
     # Science: orientation must preserve the actual library.
     require(science, 'data-reader-surface="science"', "science/index.html", errors)
@@ -118,6 +138,7 @@ def main() -> int:
     require_any(science, ("falsifi", "tested", "testing"), "science/index.html", "testing/falsifiability", errors)
     for marker in ('id="science-search"', 'id="science-field"', 'id="science-type"', '<!-- SCIENCE_CATALOG_STATIC -->'):
         require(science, marker, "science/index.html", errors)
+    validate_projection_surface(science, "science/index.html", errors)
 
     # World Map: questions teach the application without creating another toolbar.
     require(world, 'data-reader-surface="world-map"', "world-map/index.html", errors)
@@ -129,6 +150,7 @@ def main() -> int:
         require(world, marker, "world-map/index.html", errors)
     if 'id="questionMenu"' in world or 'id="inquiryMenu"' in world:
         errors.append("World Map question layer must not introduce a persistent top-level menu")
+    validate_projection_surface(world, "world-map/index.html", errors)
 
     if errors:
         print("READER SURFACE VALIDATION FAILED")
