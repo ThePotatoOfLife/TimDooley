@@ -1,0 +1,14 @@
+.dossier-scene{margin:18px 0 20px;padding:18px 20px;border:1px solid #4a533f;border-radius:16px;background:linear-gradient(135deg,#121610,#0d110d)}
+.dossier-scene h3{margin:2px 0 8px;font:400 24px/1.15 Georgia,serif;color:#e9dfbf}
+.dossier-scene p{margin:7px 0;color:#d2d8cf;max-width:92ch}
+.dossier-scene .dossier-leadup{color:#bfc9b7}
+.dossier-kicker{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:#d8b56b}
+.maximum-claim{margin:13px 0;padding:13px 15px;border-left:3px solid #d8b56b;background:#151209;color:#ddd4bb;border-radius:0 10px 10px 0}
+.maximum-claim strong{color:#f0dfb6}
+.dossier-detail{color:#cbd2c8}
+.dossier-detail p{margin:0 0 10px}
+.dossier-detail h4{margin:15px 0 7px;font:600 13px/1.3 system-ui,-apple-system,sans-serif;letter-spacing:.04em;text-transform:uppercase;color:#d8b56b}
+.dossier-detail ol{margin:7px 0 12px;padding-left:22px}
+.dossier-detail li{margin:4px 0}
+.dossier-detail .source-status{margin-top:14px;padding-top:10px;border-top:1px solid #30382f;color:#9fa79d;font-size:12px}
+@media(max-width:700px){.dossier-scene{padding:15px 16px}.dossier-scene h3{font-size:21px}}
