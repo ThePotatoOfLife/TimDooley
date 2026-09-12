@@ -1,4 +1,4 @@
-name: Consolidation JS Diagnostic
+name: Consolidation JS Repair
 
 on:
   push:
@@ -10,7 +10,7 @@ permissions:
   contents: write
 
 jobs:
-  diagnose:
+  repair:
     if: github.actor != 'github-actions[bot]'
     runs-on: ubuntu-latest
     steps:
@@ -18,14 +18,29 @@ jobs:
         with:
           ref: project-consolidation-2026-09-12
           fetch-depth: 0
-      - name: Capture parser output
+      - name: Repair merged Timeline render variables
         run: |
-          set +e
-          node --check app/bible-study.js > scripts/js-syntax-diagnostic.txt 2>&1
-          status=$?
-          echo "exit_status=$status" >> scripts/js-syntax-diagnostic.txt
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('app/bible-study.js')
+          text = path.read_text(encoding='utf-8')
+          old_decl = ',argumentsHtml=renderArguments(row,exactQuotes),timelineHtml=renderTimelineContext(row),signHtml='
+          new_decl = ',argumentsHtml=renderArguments(row,exactQuotes),timelineContextHtml=renderTimelineContext(row),signHtml='
+          old_render = '${prophecyHtml}${reverseHtml}${timelineHtml}${signHtml}${sameDateHtml}${attestationHtml}${timelineHtml}${ownerHtml}'
+          new_render = '${prophecyHtml}${reverseHtml}${timelineContextHtml}${signHtml}${sameDateHtml}${attestationHtml}${timelineHtml}${ownerHtml}'
+          if text.count(old_decl) != 1:
+              raise SystemExit(f'Expected one declaration collision, found {text.count(old_decl)}')
+          if text.count(old_render) != 1:
+              raise SystemExit(f'Expected one render collision, found {text.count(old_render)}')
+          text = text.replace(old_decl, new_decl).replace(old_render, new_render)
+          path.write_text(text, encoding='utf-8')
+          PY
+          node --check app/bible-study.js
+          rm -f scripts/js-syntax-diagnostic.txt
+      - name: Commit repair
+        run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add scripts/js-syntax-diagnostic.txt
-          git commit -m "chore: capture Bible reader syntax diagnostic"
+          git add app/bible-study.js scripts/js-syntax-diagnostic.txt
+          git commit -m "fix: separate Bible timeline context and links"
           git push origin HEAD:project-consolidation-2026-09-12
