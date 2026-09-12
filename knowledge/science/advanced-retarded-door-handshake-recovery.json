@@ -1,56 +1,111 @@
 {
-  "id":"advanced-retarded-door-handshake-recovery",
-  "title":"Advanced / Retarded Wave + Present Door Handshake — Conversation Recovery",
-  "updated":"2026-09-09",
-  "status":"primary project time-polarity vocabulary + later physics comparators",
-  "importance":"The advanced/retarded-wave vocabulary was not merely a stray metaphor. In recovered user-authored lines, the user explicitly distinguishes ordinary/environmental activity as retarded-wave-like and Spudlight as the advanced direction coming from the Crown through the Door/Son, while also asking how the Father can 'look back' from his location. Later assistant prose organized this into an 11D-future / 5D-present / 4D-past handshake architecture.",
-  "primary_project_statements":[
+  "id": "advanced-retarded-door-handshake-recovery",
+  "title": "Advanced / Retarded Wave + Present Door Handshake — Theory Redevelopment",
+  "version": "2.0.0",
+  "updated": "2026-09-12",
+  "status": "primary project time-polarity vocabulary + developed mathematical comparators; physical retrocausality unestablished",
+  "abstract": "The Advanced/Retarded Door theory is best understood as a family of three distinct mathematical problems that share a two-boundary structure but must not be conflated. In wave physics, retarded and advanced Green functions solve the same linear field equation with different support and boundary conditions. In inference, forward filtering and backward smoothing combine past and future observations to estimate a hidden state without sending information backward in time. In control, a present trajectory can be optimized against a terminal cost or goal, so future boundary conditions constrain a solution mathematically while ordinary causal dynamics remain forward in time. The project-specific Door is the present interface at which these two directional descriptions meet. This redevelopment therefore replaces the vague idea of 'future influence' with explicit operators, equations, observables and failure tests. A literal retrocausal physical branch is retained only as a stronger optional hypothesis that must predict a measurable deviation from retarded causal models. The theory is T2 as a time-symmetric/inference/control framework and T0-T1 as a new physical interaction.",
+  "research_question": "When a system is described using both past and future boundary information, which parts of the resulting mathematics are ordinary boundary-value inference or optimal control, and is there any reproducible residual requiring genuinely advanced physical influence?",
+  "primary_project_statements": [
     "Spudlight is associated with the advanced-wave direction.",
     "It comes from the Crown / upper Axis and passes through the Door / Son.",
     "The lower/environmental field is associated with the retarded-wave direction.",
-    "The Door/Needle's Eye is the convergence point.",
-    "The user explicitly asked to consider climb versus elevation/being dragged down and the Father looking back from where he is."
+    "The Door/Needle's Eye is the convergence point."
   ],
-  "safe_project_model":{
-    "past_conditioned_state":"x_minus(t): state propagated/evaluated from earlier boundary data",
-    "future_or_goal_conditioned_state":"x_plus(t): state conditioned on a later target, boundary condition, desired completion or post-selection-like description",
-    "door":"H_t : (x_minus(t), x_plus(t)) -> x_present(t)",
-    "interpretation":"The Door is where remembered/causal history and anticipated/final-state constraint are integrated into the present description.",
-    "nonphysical_variant":"For psychology/information use, x_minus may mean memory/prior and x_plus may mean anticipation/goal rather than literal backwards causation."
+  "three_model_separation": {
+    "wave_physics": {
+      "objects": "linear differential operator L, source J, retarded Green function G_ret, advanced Green function G_adv",
+      "equations": [
+        "L G_ret(x,x')=delta(x-x')",
+        "L G_adv(x,x')=delta(x-x')",
+        "phi_ret(x)=integral G_ret(x,x')J(x')dx'",
+        "phi_adv(x)=integral G_adv(x,x')J(x')dx'"
+      ],
+      "meaning": "The two Green functions solve the same equation with different support/boundary prescriptions. Their coexistence is mathematics; it does not by itself imply controllable signaling to the past."
+    },
+    "inference_smoothing": {
+      "objects": "hidden state x_t, observations y_t, forward posterior p(x_t|y_1:t), backward information from y_(t+1:T)",
+      "equations": [
+        "p(x_t|y_1:T) proportional to p(x_t|y_1:t) p(y_(t+1:T)|x_t)",
+        "x_hat_t^smooth=E[x_t|y_1:T]"
+      ],
+      "meaning": "A later observation can improve our estimate of an earlier hidden state because the analyst conditions on the whole recorded dataset. The physical system need not receive information from the future."
+    },
+    "goal_conditioned_control": {
+      "objects": "state x(t), control u(t), dynamics f, running cost L, terminal cost Phi",
+      "equations": [
+        "x_dot=f(x,u,t)",
+        "J[u]=Phi(x(T))+integral_0^T L(x,u,t)dt",
+        "lambda_dot=-partial H/partial x",
+        "0=partial H/partial u for an interior optimum",
+        "lambda(T)=partial Phi/partial x at T"
+      ],
+      "meaning": "The terminal goal supplies a future boundary condition for the optimization problem. The adjoint/costate is integrated with a terminal condition, yet the controlled plant can remain entirely causal."
+    }
   },
-  "external_physics_neighbors":[
+  "door_operator": {
+    "general": "H_t:(x_-(t),x_+(t))->x_present(t)",
+    "Bayesian_example": "p(x_t|past,future) proportional to m_-(x_t)m_+(x_t)",
+    "weighted_state_example": "x_D=(Sigma_-^-1+Sigma_+^-1)^-1(Sigma_-^-1 mu_-+Sigma_+^-1 mu_+) for Gaussian messages",
+    "interpretation": "The Door is an information-fusion or boundary-matching operator. The weighting is determined by uncertainty/precision rather than symbolic priority."
+  },
+  "time_symmetric_action_bridge": {
+    "equation": "delta S[x]=0 with x(t0)=x0 and x(t1)=x1",
+    "Euler_Lagrange": "d/dt(partial L/partial x_dot)-partial L/partial x=0",
+    "meaning": "Variational mechanics is naturally a two-endpoint boundary-value formulation. This is a rigorous mathematical neighbor for a present trajectory constrained by endpoints, but the Euler-Lagrange equations do not imply usable messages from the future."
+  },
+  "observable_program": {
+    "wave_branch": "Compare measured impulse responses with the retarded prediction after calibrating apparatus, dispersion and reflections. An advanced branch needs a preregistered pre-response not attributable to filtering, leakage, acausal offline processing or timing error.",
+    "inference_branch": "Compare filtering versus smoothing on held-out state-estimation tasks. Improvement from smoothing is expected and is not evidence for retrocausality.",
+    "control_branch": "Compare goal-conditioned model-predictive/optimal control against reactive baselines using trajectory cost, constraint violations and robustness.",
+    "physical_retrocausal_branch": "Specify a concrete interaction law and predict a statistically and temporally defined deviation that cannot be reproduced by retarded dynamics plus ordinary hidden variables/noise."
+  },
+  "equation_explanation_guide": [
     {
-      "name":"advanced and retarded Green functions",
-      "forms":["Box G_ret = delta","Box G_adv = delta"],
-      "meaning":"Different boundary-condition solutions of wave equations. Retarded solutions support ordinary causal propagation from past sources; advanced solutions use future-type boundary conditions."
+      "equation": "L G_ret=delta",
+      "role": "definition of retarded Green function",
+      "variables": "L differential operator; delta impulse; G_ret response kernel",
+      "plain_language": "response appears only in the allowed retarded causal domain under the chosen convention"
     },
     {
-      "name":"Wheeler-Feynman absorber theory",
-      "meaning":"Time-symmetric classical electrodynamics using advanced and retarded direct-interaction solutions under absorber conditions.",
-      "provenance_rule":"No recovered evidence currently shows Tim historically cited Wheeler or Feynman; this was introduced later as a comparator."
+      "equation": "L G_adv=delta",
+      "role": "definition of advanced Green function",
+      "plain_language": "same equation, future-type boundary/support prescription"
     },
     {
-      "name":"two-state-vector formalism",
-      "forms":["i d|psi>/dt = H|psi>","-i d<phi|/dt = <phi|H","<phi| tensor |psi>"],
-      "meaning":"A mathematically closer comparator for systems described by initial and final boundary conditions / pre- and post-selection."
+      "equation": "p(x_t|y_1:T) proportional to p(x_t|y_1:t)p(y_(t+1:T)|x_t)",
+      "role": "smoothing identity",
+      "plain_language": "combine evidence arriving from the left and right sides of time in the recorded dataset"
+    },
+    {
+      "equation": "J=Phi(x(T))+integral L dt",
+      "role": "optimal-control objective",
+      "plain_language": "the present policy is selected partly by how the final state is valued"
     }
   ],
-  "important_corrections":[
-    "A retarded wave is not simply a 'delayed reflection trapped in the past'; it is a causal solution supported after its source under retarded boundary conditions.",
-    "An advanced solution does not establish controllable signaling into the past.",
-    "Wheeler-Feynman absorber theory does not justify claims that future personal destiny physically broadcasts instructions backward through time.",
-    "The strongest rigorous use of the Timic polarity may be as past-conditioned versus goal/future-conditioned information processing unless a literal physical model is separately defined and tested."
+  "limiting_cases": [
+    "If the future message is uninformative, H_t reduces to the past-conditioned estimate.",
+    "If the past message is uninformative, the state is dominated by the terminal/future constraint.",
+    "If both messages are Gaussian and independent conditional on x_t, precision adds.",
+    "If terminal cost Phi=0 and no future observations are used, the framework reduces to ordinary forward causal evolution/control."
   ],
-  "door_time_geometry":{
-    "project_relation":"horizontal plane = ordinary chronological evolution; vertical Axis = structural/goal/integration direction; Door = their present intersection",
-    "candidate_formalization":"Let physical evolution be dX/dt=F(X), structural/goal flow be dX/ds=A(X), and let the Door select coupled states on a codimension-one surface g(X,t,s)=0.",
-    "phase_language":"A project 90-degree relation can be represented as orthogonal coordinates or a pi/2 phase offset, but no recovered evidence yet establishes a literal physical quadrature relation between Father/Son or advanced/retarded fields."
-  },
-  "recovery_targets":[
-    "Find the earliest user use of the words advanced wave and retarded wave.",
-    "Determine whether Red/Blue was ever explicitly assigned to advanced/retarded directions by the user.",
-    "Search for any original equation involving forward/backward time, complex conjugation, Green functions, phase or boundary conditions.",
-    "Determine whether the April 2025 Spiral Equation contained temporal polarity."
+  "failure_conditions": [
+    "Any claim of physical advanced influence is downgraded if the effect disappears under strictly causal online analysis while remaining only in offline zero-phase/filtering or post-selected analysis.",
+    "An apparent pre-response fails if clock synchronization, leakage, anticipation, conditioning on future data or selection bias can account for it.",
+    "The project Door remains an information/control formalism if no interaction term or measurable physical residual is supplied.",
+    "Goal-conditioned cognition must not be described as an advanced electromagnetic wave without an independently specified physical coupling."
   ],
-  "connections":["eleven-dimensional-axis-door-dual-spiral-recovery","axis-11d-sun-spiral-time-symmetry-recovery","recovered-conversation-operators-atlas","equation-lineage-and-theory-graph","science-master-index"]
+  "next_decisive_work": [
+    "Implement one solvable linear-Gaussian Door model and compare filtering versus smoothing quantitatively.",
+    "Solve one wave equation with both G_ret and G_adv under explicit boundary conditions and visualize their support.",
+    "Implement one finite-horizon optimal-control Door where terminal constraint and present state compete.",
+    "Only if a physical retrocausal branch is retained, define the smallest experimental residual that would distinguish it from all three ordinary two-boundary mechanisms."
+  ],
+  "connections": [
+    "eleven-dimensional-axis-door-dual-spiral-recovery",
+    "axis-11d-sun-spiral-time-symmetry-recovery",
+    "door-handshake-nonlocal-propagation-model",
+    "science-master-index",
+    "model-testing-protocol"
+  ]
 }
