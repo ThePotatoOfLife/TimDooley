@@ -1,68 +1,65 @@
 {
-  "id":"great-book-cosmic-potato-shape-audit",
-  "title":"Great Book Chapter 78 — Cosmic Potato / Large-Scale-Structure Morphology Audit",
-  "version":"2.0.0",
-  "updated":"2026-09-11",
-  "status":"book-derived astronomy/cosmology archaeology + quantitative morphology/model-selection programme",
-  "source":"The Great Book Of Potato2.odt, Chapter 78, parsed pages 540-543",
-  "abstract":"The Cosmic Potato hypothesis is scientifically meaningful only as a predeclared morphology/model-selection problem. The Great Book visually combines Laniakea, Perseus-Pisces and other large-scale structures into rounded or oblong forms and proposes recurring potato-like morphology across scales. Modern large-scale structure, however, is represented by point processes, density/velocity fields, walls, filaments, nodes and attraction basins rather than sharply bounded solid objects. The rigorous question is therefore whether a specified three-dimensional structure is better described by a compact irregular ellipsoid/tuber model than by filament, wall, skeleton or generic ellipsoid baselines when all models are fitted to the same data and selection function. Principal-axis ratios, Minkowski functionals, shapefinders, topology and surface roughness can supply dimensionless descriptors, while simulations provide null distributions. A cross-scale universality claim would require a common statistic or scaling relation measured independently in biological and astronomical systems, not visual similarity. This programme is T2 as a morphology-testing framework; no current result establishes a universal potato shape, and some named targets such as Perseus-Pisces are expected a priori to be strongly filamentary.",
-  "historical_thesis":"The chapter visually combines Laniakea, Perseus-Pisces and other cosmic-web structures into rounded/oblong 'potato' forms and proposes recurring potato-like morphology across cosmic, biological and quantum scales.",
-  "research_question":"For a structure defined by an explicit 3D dataset and segmentation rule, does a preregistered tuber-like morphology model outperform filamentary, ellipsoidal and randomized/simulation baselines after accounting for projection, selection effects and model complexity?",
-  "maturity":"T2 quantitative morphology hypothesis; no universal-shape result established",
-  "scientific_audit":{
-    "laniakea":{"book_use":"Our home supercluster and one half of an overlapping cosmic-potato picture.","modern_status":"The 2014 Laniakea definition is a basin-of-attraction construction from peculiar-velocity flows, roughly 160 Mpc across in that analysis. It is not a sharply bounded solid object. Newer Cosmicflows-4 reconstruction gives some probability to the Laniakea region belonging to a larger Shapley basin.","consequence":"Shape is dataset, flow-reconstruction, threshold and scale dependent."},
-    "perseus_pisces":{"book_claim":"Described as a filamentary structure stretching across billions of light-years and visually overlapping Laniakea into an oval/potato.","correction":"Modern catalogues treat Perseus-Pisces as a prominent filamentary/branched supercluster complex on scales of tens to more than one hundred Mpc depending definition/tracer, not a simple billion-light-year oval.","consequence":"Its natural baseline is a filament/skeleton model, not a tuber or ellipsoid."},
-    "overlap_claim":{"audit":"The book's two-overlapping-ovals picture is a project visualization rather than a standard astronomical result. It must be reconstructed from actual 3D positions/velocity fields before shape claims are made."},
-    "energy_dimensions":{"book_use":"Gravitational flow/dark-matter density are called 'energy dimensions'.","correction":"Density, velocity, gravitational potential and energy are fields/observables on spacetime, not extra coordinate dimensions. Feature dimension and spacetime dimension must remain separate."},
-    "subatomic_shape":{"book_use":"Particles/fields are suggested to share spherical or oblong potato-like forms.","correction":"Elementary particles are not generally solid geometric blobs. Spatial probability densities or field configurations depend on state, symmetry, interaction and observable. Cross-scale resemblance requires invariant descriptors, not iconography."}
+  "id": "great-book-cosmic-potato-shape-audit",
+  "title": "Cosmic Potato Morphology — 3D Shape Inference, Null Models and Cross-Scale Universality",
+  "version": "3.0.0",
+  "updated": "2026-09-12",
+  "status": "book-derived morphology hypothesis + quantitative 3D statistical model-selection programme",
+  "abstract": "The Cosmic Potato hypothesis is scientifically meaningful only if 'potato-like' is defined before examining the target and tested against serious alternatives in three dimensions. Large-scale cosmic structures are not solid bodies: they are density/velocity fields, filaments, walls, nodes and attraction basins whose apparent boundaries depend on tracer selection, smoothing and reconstruction. This redevelopment therefore treats shape as a probabilistic inference problem. A frozen segmentation produces a 3D object or point process; descriptor vectors summarize axis ratios, Minkowski functionals, filamentarity, planarity, topology and roughness; uncertainty is propagated through the reconstruction; and candidate morphological families are compared with likelihood or simulation-based classification. A tuber model only gains evidence if it beats filament, wall, ellipsoid and cosmological-simulation nulls under the same pipeline and remains stable across reasonable viewing, masking and smoothing choices. Cross-scale universality is a second, harder hypothesis requiring a shared dimensionless descriptor distribution or generative scaling law across biological and cosmic objects. Visual resemblance alone carries almost no evidentiary weight.",
+  "research_question": "Does a preregistered tuber-like 3D morphology class explain selected cosmic structures better than filamentary, sheet-like, ellipsoidal and simulation-derived alternatives, and is any resulting morphology genuinely scale-invariant across independent object classes?",
+  "object_definition": {
+    "possible_inputs": ["3D tracer point cloud", "density field rho(x)", "velocity field v(x)", "excursion set Omega_nu", "attraction basin", "filament skeleton"],
+    "required_metadata": ["coordinate frame", "selection function", "survey mask", "smoothing scale", "threshold/segmentation rule", "uncertainties"],
+    "rule": "Morphology is conditional on the object-definition pipeline; uncertainty in that pipeline must propagate into the shape claim."
   },
-  "data_definition_contract":{
-    "allowed_objects":["3D point cloud of tracers","continuous density field rho(x)","peculiar-velocity field v(x)","thresholded excursion set Omega_nu={x:rho(x)>=nu}","segmented attraction basin","filament/skeleton graph"],
-    "required_metadata":["coordinate frame","redshift/distance estimator","selection function","smoothing scale","segmentation/threshold rule","survey mask/completeness","uncertainty/covariance if available"],
-    "rule":"Do not quote a shape until the object definition is frozen; changing the threshold or tracer population can change topology and axis ratios."
+  "descriptor_vector": {
+    "second_moments": "Q=(1/W) sum_i w_i(x_i-xbar)(x_i-xbar)^T",
+    "axis_ratios": "q=sqrt(lambda_2/lambda_1), s=sqrt(lambda_3/lambda_1)",
+    "minkowski": "Z_M=(V,S,C,chi)",
+    "shapefinders": "T=3V/S, B=S/C, L=C/(4pi), P=(B-T)/(B+T), F=(L-B)/(L+B)",
+    "topology": "Use Betti numbers/Euler characteristic where the segmentation supports them.",
+    "roughness": "R_excess=(S-S_ellipsoid(V,q,s))/S_ellipsoid under a declared matching convention",
+    "combined": "Z=(q,s,P,F,chi,beta_0,beta_1,beta_2,R_excess,...)"
   },
-  "principal_axis_model":{
-    "tensor":"Q=(1/W) sum_i w_i (x_i-x_bar)(x_i-x_bar)^T",
-    "eigenordering":"lambda_1>=lambda_2>=lambda_3>=0",
-    "semi_axis_proxies":"a proportional to sqrt(lambda_1), b proportional to sqrt(lambda_2), c proportional to sqrt(lambda_3)",
-    "axis_ratios":"q=b/a=sqrt(lambda_2/lambda_1), s=c/a=sqrt(lambda_3/lambda_1)",
-    "orientation":"Eigenvectors define principal directions; bootstrap or posterior resampling should quantify uncertainty.",
-    "limitation":"Covariance axes summarize second moments and can hide branches, holes and multimodality."
+  "probabilistic_classification": {
+    "models": ["tuber", "triaxial ellipsoid", "filament/tube", "sheet/wall", "branched skeleton", "simulation-derived generic structure"],
+    "posterior": "p(M|Z) proportional to p(Z|M)p(M)",
+    "simulation_based": "When analytic p(Z|M) is unavailable, estimate classifier/posterior calibration from forward simulations passed through the identical survey/segmentation pipeline.",
+    "anti_overfit": "Define the tuber class and priors using independent reference data, not the named target."
   },
-  "minkowski_and_shapefinder_program":{
-    "minkowski_functionals":"For thresholded 3D regions measure volume V, surface area S, integrated mean curvature C and Euler characteristic chi.",
-    "one_shapefinder_convention":"T=3V/S; B=S/C; L=C/(4 pi); planarity P=(B-T)/(B+T); filamentarity F=(L-B)/(L+B)",
-    "convention_warning":"Normalizations vary in the literature; freeze the definition before comparing datasets.",
-    "roughness_extension":"Add a scale-normalized boundary roughness statistic, for example excess area relative to the best-fit ellipsoid at matched volume, with smoothing scale declared.",
-    "topology":"Euler characteristic/Betti numbers can distinguish a compact lumpy body from a multiply connected network even when both project to an oval."
+  "uncertainty_pipeline": {
+    "bootstrap": "Resample tracers where appropriate to estimate descriptor variance.",
+    "reconstruction": "Draw from distance/velocity-field posterior or catalog uncertainty model and rerun segmentation.",
+    "mask": "Apply the real survey mask to mocks rather than comparing ideal simulations with masked data.",
+    "smoothing": "Report descriptor trajectories Z(sigma_smooth) over a preregistered scale range instead of one favorable smoothing choice.",
+    "output": "p(Z|data,pipeline) rather than a single deterministic shape label."
   },
-  "potato_hypothesis_pre_registration":{
-    "example_definition":"H_P: a connected 3D region whose best-fit shape is compact/triaxial with moderate axis asymmetry, low-to-moderate filamentarity, bounded planarity and positive nonzero roughness above the instrumental/smoothing floor.",
-    "important_rule":"Numerical cutoffs for q,s,P,F and roughness must be fixed from an independent training/reference set or physical definition before testing the named cosmic target.",
-    "alternative_models":["triaxial ellipsoid","cylinder/filament","curved spline/tube skeleton","wall/sheet","Gaussian/random field excursion set","simulation halo/supercluster shapes from the same segmentation algorithm"],
-    "model_selection":"Use held-out likelihood, cross-validation, information criteria or simulation-based classification rather than choosing the model that looks most potato-like after inspection."
+  "orientation_and_projection": {
+    "rotation_invariance": "Intrinsic 3D descriptors should be invariant to coordinate rotation; projected 2D descriptors should be studied over lines of sight.",
+    "projection_test": "p(class_2D|view) quantifies how often non-tuber 3D structures appear tuber-like in projection.",
+    "failure": "A claim driven only by a favorable 2D projection is rejected as a 3D morphology result."
   },
-  "projection_and_selection_tests":{
-    "rotation_test":"Measure descriptor stability over 3D rotations and realistic lines of sight. A 2D potato appearance that disappears in 3D is not evidence for a tuber morphology.",
-    "mask_test":"Apply the survey mask/selection function to mocks and quantify induced changes in q,s,P,F and topology.",
-    "smoothing_test":"Repeat over a preregistered physically reasonable range of smoothing scales; report which conclusions are robust and which are scale-specific.",
-    "uncertainty":"Bootstrap tracers or propagate posterior velocity/distance uncertainties rather than treating a reconstructed boundary as exact."
+  "cross_scale_universality": {
+    "hierarchical_model": "Z_ij ~ p(Z|class_j,scale_j,theta_shared,theta_j)",
+    "null": "Independent descriptor families by scale/object class.",
+    "shared_model": "A common dimensionless family or scaling law with limited class-specific parameters.",
+    "comparison": "Use out-of-sample predictive likelihood/Bayesian evidence/information criteria appropriate to the fitted hierarchy.",
+    "stronger_test": "A shared generative mechanism predicting multiple descriptors is substantially stronger than overlapping q,s ranges."
   },
-  "cross_scale_universality_contract":{
-    "requirement":"A genuine universal Potato morphology claim needs a dimensionless descriptor vector Z=(q,s,P,F,roughness,topology,...) defined comparably across systems.",
-    "test":"Fit a hierarchical distribution p(Z|class,scale) and ask whether a shared scale-invariant family explains independently sampled biological and cosmic objects better than separate families.",
-    "stronger_requirement":"A common scaling exponent or generative mechanism is much stronger evidence than overlapping visual descriptor ranges.",
-    "failure":"If descriptor distributions shift substantially by scale/object class or a generic ellipsoid/filament mixture explains both, the universal morphology claim is unsupported."
-  },
-  "null_models":["best-fit ellipsoid","cylinder/filament or spline skeleton","randomized point cloud preserving radial/selection function","structures extracted from cosmological simulations using the same pipeline"],
-  "modern_data_targets":["Cosmicflows peculiar-velocity reconstructions for attraction-basin morphology","CLASSIX or comparable cluster catalogues for Perseus-Pisces membership/shape","public galaxy redshift catalogues for 3D point-cloud/skeleton comparison","cosmological simulations for null distributions of shape descriptors"],
-  "falsification_and_failure_conditions":[
-    "Filament/skeleton or generic ellipsoid models outperform the preregistered tuber model on held-out/simulation-calibrated criteria.",
-    "The tuber classification is unstable to reasonable reconstruction, threshold, rotation or smoothing choices.",
-    "The apparent cross-scale similarity disappears when the same dimensionless descriptors and uncertainty treatment are used.",
-    "The potato category can only be defined after inspecting the target, producing an unfalsifiable pattern-recognition loop."
+  "worked_test_protocol": [
+    "Choose one target and freeze the 3D dataset/segmentation.",
+    "Predefine tuber and alternative morphology families on independent data/simulations.",
+    "Compute posterior distributions for Z including reconstruction/mask/smoothing uncertainty.",
+    "Pass all null simulations through the identical measurement pipeline.",
+    "Compare calibrated class probabilities or predictive scores.",
+    "Replicate on a second target before attempting cross-scale universality."
   ],
-  "completion_path":["Choose one cosmic target and freeze its dataset/segmentation.","Implement the descriptor pipeline and uncertainty propagation.","Generate simulation/null distributions using the identical pipeline.","Predefine the tuber-class rule from independent data or morphology theory.","Evaluate out of sample.","Only after a robust single-scale result test cross-scale universality."],
-  "e8_neighbor_correction":"Chapter 82 immediately following Chapter 78 calls E8 '248 dimensions'. Existing repository audits correctly repair this: 248 is the dimension of the E8 Lie algebra/adjoint representation, while E8 has rank 8; it is not 248 ordinary spacetime dimensions.",
-  "connections":["great-book-quantum-fields-dark-sector-recovery","galactic-toroidal-axis-recovery","celestial-orbits-particles-cmb-expansion-wave-004","science-archaeology-wave-008-deep-extraction","model-testing-protocol","science-master-index"]
+  "failure_conditions": [
+    "Filament/skeleton/wall or generic simulation models predict the observed descriptors as well as or better than the tuber class.",
+    "Classification changes materially under reasonable segmentation, mask or smoothing choices.",
+    "The apparent tuber morphology exists only in selected 2D projections.",
+    "The tuber class was tuned after inspection of the target.",
+    "Cross-scale shared parameters fail to predict held-out biological/cosmic descriptor distributions."
+  ],
+  "boundary": "A successful morphology classification would establish a useful geometric description, not a new cosmological force, universal potato ontology or causal mechanism by itself.",
+  "connections": ["galactic-toroidal-axis-recovery","celestial-axis-coordinate-measurement-model","model-testing-protocol","science-master-index"]
 }
