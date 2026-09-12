@@ -5,6 +5,10 @@ const trace = window.__potatoAtlasImpactTrace;
 const selection = window.__potatoAtlasSelection;
 if (!map || !trace) throw new Error('Impact actions require the loaded Impact Trace runtime.');
 
+function countEnhancement() {
+  const diagnostics = window.__potatoAtlasDiagnostics;
+  if (diagnostics) diagnostics.cardEnhancementPasses = (diagnostics.cardEnhancementPasses || 0) + 1;
+}
 function syncCountryAction() {
   const card = document.getElementById('atlasCountryCard');
   if (!card || card.hidden) return;
@@ -12,6 +16,9 @@ function syncCountryAction() {
   if (!actions) return;
   const code = String(selection?.current?.activeCode || selection?.current?.code || '').toUpperCase();
   if (!/^[A-Z]{3}$/.test(code)) return;
+  // The browse-first card now has a native Impact action. Keep legacy injection
+  // only for older/custom card surfaces that do not expose it themselves.
+  if (actions.querySelector('[data-country-action="impact"]')) return;
   let button = actions.querySelector('[data-impact-entity]');
   if (!button) {
     button = document.createElement('button');
@@ -25,7 +32,7 @@ function syncCountryAction() {
 
 function syncEntityFallbackAction() {
   const card = document.getElementById('atlasCountryCard');
-  if (!card || card.hidden || card.querySelector('[data-impact-entity]')) return;
+  if (!card || card.hidden || card.querySelector('[data-impact-entity]') || card.querySelector('[data-country-action="impact"]')) return;
   const code = String(selection?.current?.activeCode || selection?.current?.code || '').toUpperCase();
   if (!/^[A-Z]{3}$/.test(code)) return;
   const entitySection = card.querySelector('#atlasEntityContext');
@@ -74,14 +81,18 @@ function injectGatewayAction(event) {
   });
 }
 
-const card = document.getElementById('atlasCountryCard');
-if (card) new MutationObserver(() => { syncCountryAction(); syncEntityFallbackAction(); }).observe(card, { childList:true, subtree:true });
-window.addEventListener('potato-atlas-working-selection-change', () => queueMicrotask(() => { syncCountryAction(); syncEntityFallbackAction(); }));
+function refreshCardActions() {
+  countEnhancement();
+  syncCountryAction();
+  syncEntityFallbackAction();
+}
+
+window.addEventListener('potato-atlas-country-card-rendered', () => queueMicrotask(refreshCardActions));
+window.addEventListener('potato-atlas-working-selection-change', () => queueMicrotask(refreshCardActions));
 window.addEventListener('potato-atlas-chain-change', event => queueMicrotask(() => syncChainAction(event)));
 if (map.getLayer('atlas-context-gateways-points')) map.on('click', 'atlas-context-gateways-points', injectGatewayAction);
 
-syncCountryAction();
-syncEntityFallbackAction();
+refreshCardActions();
 syncChainAction();
 
 window.__potatoAtlasImpactActions = { syncCountryAction, syncChainAction };
