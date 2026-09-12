@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -59,6 +61,9 @@ jobs:
 
       - name: Validate question-led reader surfaces
         run: python scripts/validate_reader_surfaces.py
+
+      - name: Validate SEO pipeline
+        run: python scripts/validate_seo_pipeline.py
 
       - name: Build Pages artifact
         run: python scripts/build_site.py
@@ -137,6 +142,12 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
+      - name: Enrich weak page descriptions
+        run: python scripts/enrich_weak_descriptions.py
+
+      - name: Optimize crawl, sharing and sitemap SEO
+        run: python scripts/optimize_seo.py
+
       - name: Remove internal archive from Pages artifact
         run: rm -rf _site/archive && test ! -e _site/archive
 
@@ -160,6 +171,7 @@ jobs:
           test -f _site/world-map/3d.html
           test -f _site/sitemap.xml
           test -f _site/llms.txt
+          test -f _site/seo-report.json
 
           grep -q 'data-reader-surface="home"' _site/index.html
           grep -q 'class="sections"' _site/index.html
@@ -242,6 +254,12 @@ jobs:
               target = Path('_site/science/papers') / paper['slug'] / 'index.html'
               assert target.exists(), target
           print(f"Verified Science library: {len(papers)} full readable documents")
+
+          seo = json.loads(Path('_site/seo-report.json').read_text(encoding='utf-8'))
+          assert seo['errors'] == 0, seo
+          assert seo['pages_with_open_graph'] == seo['pages'], seo
+          assert seo['pages_with_structured_data'] == seo['pages'], seo
+          print(f"Verified SEO coverage: {seo['pages']} pages")
           PY
 
       - name: Validate built site shell
