@@ -113,6 +113,7 @@ try {
   await loadAfterPaint('World Bar', './3d-world-bar.js');
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('System Intelligence', './3d-gateways.js');
+  await loadAfterPaint('Functional Chains', './3d-chain-explorer.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
