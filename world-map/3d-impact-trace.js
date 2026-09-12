@@ -42,6 +42,11 @@ runtime.impactNodeForChain = async function impactNodeForChain(id) {
   const nodeId = `chain:${String(id || '')}`;
   return data?.impact?.nodes?.[nodeId] ? nodeId : null;
 };
+runtime.impactNodeForInfrastructure = runtime.impactNodeForInfrastructure || async function impactNodeForInfrastructure(id) {
+  const data = await dataReady;
+  const nodeId = `infrastructure:${String(id || '')}`;
+  return data?.impact?.nodes?.[nodeId] ? nodeId : null;
+};
 
 function rowOrder(row) {
   const importance = String(row?.edge?.importance || '').toLowerCase();
@@ -243,6 +248,10 @@ async function showChain(id) {
   const nodeId = await runtime.impactNodeForChain(id);
   return nodeId ? show(nodeId) : false;
 }
+async function showInfrastructure(id) {
+  const nodeId = await runtime.impactNodeForInfrastructure(id);
+  return nodeId ? show(nodeId) : false;
+}
 function clear({ coordinated=false } = {}) {
   activeImpactId = null;
   clearStates();
@@ -264,10 +273,12 @@ document.addEventListener('click', event => {
   const gateway = event.target.closest('[data-impact-gateway]');
   if (gateway) { showGateway(gateway.dataset.impactGateway); return; }
   const chain = event.target.closest('[data-impact-chain]');
-  if (chain) { showChain(chain.dataset.impactChain); }
+  if (chain) { showChain(chain.dataset.impactChain); return; }
+  const infrastructure = event.target.closest('[data-impact-infrastructure]');
+  if (infrastructure) showInfrastructure(infrastructure.dataset.impactInfrastructure);
 });
 
-window.__potatoAtlasImpactTrace = { show, showEntity, showGateway, showChain, clear, current };
+window.__potatoAtlasImpactTrace = { show, showEntity, showGateway, showChain, showInfrastructure, clear, current };
 
 const restored = new URL(location.href).searchParams.get('impact');
 if (restored) {
