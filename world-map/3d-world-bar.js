@@ -84,13 +84,13 @@ async function updateContext() {
   const scalar = activeEntries.find(entry => entry.kind === 'scalar') || null;
   const sets = activeEntries.filter(entry => entry.kind === 'set');
   const selection = window.__potatoAtlasSelection;
-  const selectedCodes = selection?.current?.selectedCodes || [];
+  const pinnedCodes = selection?.current?.pinnedCodes || selection?.current?.selectedCodes || [];
   const relationMode = selection?.getRelationMode?.() || 'all';
-  if (!activeEntries.length && !selectedCodes.length) { node.hidden = true; node.innerHTML = ''; return; }
+  if (!activeEntries.length && !pinnedCodes.length) { node.hidden = true; node.innerHTML = ''; return; }
 
   const lines = [];
   if (scalar) {
-    lines.push(`<div><span>Fill</span><b>${esc(scalar.label)}</b></div>`);
+    lines.push(`<div><span>Color:</span><b>${esc(scalar.label)}</b></div>`);
     if (scalar.runtime_metric) {
       const meta = await window.__potatoAtlasDataRuntime?.coverage?.(scalar.runtime_metric);
       if (meta) {
@@ -112,8 +112,8 @@ async function updateContext() {
       lines.push(`<div><span>${esc(mode)} result</span><b>${matched.length} countries</b></div>`);
     } catch {}
   }
-  if (selectedCodes.length) {
-    lines.push(`<div><span>Selected</span><b>${selectedCodes.length} countr${selectedCodes.length === 1 ? 'y' : 'ies'}</b></div>`);
+  if (pinnedCodes.length) {
+    lines.push(`<div><span>Pinned</span><b>${pinnedCodes.length} countr${pinnedCodes.length === 1 ? 'y' : 'ies'}</b></div>`);
     if (relationMode !== 'all') {
       const label = RELATION_MODES.find(([id]) => id === relationMode)?.[1] || relationMode;
       lines.push(`<div><span>Connections</span><b>${esc(label)}</b></div>`);
@@ -135,7 +135,7 @@ function sync() {
     if (!pop) continue;
     if (family === 'relations') {
       const mode = window.__potatoAtlasSelection?.getRelationMode?.() || 'all';
-      pop.innerHTML = `<div class="atlas-world-static"><span>Selected-country connections</span><small>bounded context</small></div>${RELATION_MODES.map(([id,label]) => `<button type="button" class="atlas-world-option${mode === id ? ' active' : ''}" data-relation-mode="${esc(id)}"><span>${esc(label)}</span></button>`).join('')}`;
+      pop.innerHTML = `<div class="atlas-world-static"><span>Active-country connections</span><small>bounded context</small></div>${RELATION_MODES.map(([id,label]) => `<button type="button" class="atlas-world-option${mode === id ? ' active' : ''}" data-relation-mode="${esc(id)}"><span>${esc(label)}</span></button>`).join('')}`;
       menu.classList.toggle('active', mode !== 'all');
       const summary = menu.querySelector('summary');
       const activeLabel = RELATION_MODES.find(([id]) => id === mode)?.[1] || mode;
@@ -206,5 +206,6 @@ window.addEventListener('potato-atlas-query-change', sync);
 window.addEventListener('potato-atlas-query-result-change', updateContext);
 window.addEventListener('potato-atlas-composition-change', updateContext);
 window.addEventListener('potato-atlas-working-selection-change', updateContext);
+window.addEventListener('potato-atlas-pin-change', updateContext);
 window.addEventListener('potato-atlas-relation-mode-change', sync);
 install();
