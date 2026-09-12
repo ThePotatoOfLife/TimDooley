@@ -1,9 +1,5 @@
 #!/usr/bin/env python3
-"""Audit the final crawler/search/LLM discovery surface.
-
-When a built ``_site`` exists this validates the exact deployable artifact;
-otherwise it can still provide a smaller source-tree diagnostic for local use.
-"""
+"""Audit the final crawler/search/LLM discovery surface."""
 from __future__ import annotations
 
 import html
@@ -21,41 +17,35 @@ TAG_RE = re.compile(r"<(?:meta|link)\b[^>]*>", re.I)
 ATTR_RE = re.compile(r"([:\w-]+)\s*=\s*([\"'])(.*?)\2", re.I | re.S)
 
 
-def tag_attrs(tag: str) -> dict[str, str]:
+def attrs(tag: str) -> dict[str, str]:
     return {m.group(1).lower(): html.unescape(m.group(3)).strip() for m in ATTR_RE.finditer(tag)}
 
 
-def meta_content(text: str, name: str) -> str | None:
+def meta(text: str, name: str) -> str:
     for tag in TAG_RE.findall(text):
-        values = tag_attrs(tag)
+        values = attrs(tag)
         if tag.lower().startswith("<meta") and values.get("name", "").lower() == name.lower():
             return values.get("content", "")
-    return None
+    return ""
 
 
-def canonical_href(text: str) -> str | None:
+def canonical(text: str) -> str:
     for tag in TAG_RE.findall(text):
-        values = tag_attrs(tag)
-        if tag.lower().startswith("<link") and "canonical" in {part.lower() for part in values.get("rel", "").split()}:
+        values = attrs(tag)
+        if tag.lower().startswith("<link") and "canonical" in {x.lower() for x in values.get("rel", "").split()}:
             return values.get("href", "")
-    return None
+    return ""
+
+
+def page_url(rel: str) -> str:
+    if rel == "index.html":
+        return BASE
+    return BASE + rel[:-len("index.html")]
 
 
 errors: list[str] = []
 warnings: list[str] = []
-
-required_root = [
-    "robots.txt",
-    "sitemap.xml",
-    "sitemap-index.xml",
-    "llms.txt",
-    "llms-full.txt",
-    "discovery.json",
-    "site-index.json",
-    "machine-index.json",
-    "manifest.json",
-]
-for rel in required_root:
+for rel in ["robots.txt", "sitemap.xml", "sitemap-index.xml", "llms.txt", "llms-full.txt", "discovery.json", "site-index.json", "machine-index.json", "manifest.json"]:
     if not (SITE / rel).exists():
         errors.append(f"missing required machine-discovery file: {rel}")
 
@@ -69,75 +59,52 @@ if f"Sitemap: {BASE}sitemap-index.xml" not in robots:
 if re.search(r"(?im)^\s*Disallow:\s*/\s*$", robots):
     errors.append("robots.txt blocks the public archive")
 
-
-def local_sitemap_path(url: str) -> Path | None:
-    if not url.startswith(BASE):
-        return None
-    rel = url[len(BASE):].strip("/")
-    if not rel or "/" in rel:
-        return None
-    return SITE / rel
-
-
 sitemap_urls: list[str] = []
-if (SITE / "sitemap-index.xml").exists():
+index_path = SITE / "sitemap-index.xml"
+if index_path.exists():
     try:
-        index = ET.parse(SITE / "sitemap-index.xml")
-        for node in index.findall("sm:sitemap", NS):
+        for node in ET.parse(index_path).findall("sm:sitemap", NS):
             loc = node.find("sm:loc", NS)
-            if loc is None or not loc.text:
-                errors.append("sitemap-index.xml contains a child without loc")
+            if loc is None or not loc.text or not loc.text.startswith(BASE):
+                errors.append("sitemap-index.xml contains an invalid child")
                 continue
-            child = local_sitemap_path(loc.text.strip())
-            if child is None or not child.exists():
-                errors.append(f"sitemap-index.xml references missing/external child: {loc.text.strip()}")
+            filename = loc.text.rsplit("/", 1)[-1]
+            child = SITE / filename
+            if not child.exists():
+                errors.append(f"sitemap-index.xml references missing child: {filename}")
                 continue
-            tree = ET.parse(child)
-            for url_node in tree.findall("sm:url", NS):
+            for url_node in ET.parse(child).findall("sm:url", NS):
                 url_loc = url_node.find("sm:loc", NS)
                 if url_loc is not None and url_loc.text:
                     sitemap_urls.append(url_loc.text.strip())
     except Exception as exc:
         errors.append(f"invalid sitemap index/child: {exc}")
-
 if len(sitemap_urls) != len(set(sitemap_urls)):
     errors.append("sitemap children contain duplicate URLs")
 
-key_pages = [
-    "index.html",
-    "tim-dooley/index.html",
-    "religion/index.html",
-    "philosophy/index.html",
-    "science/index.html",
-    "world-map/index.html",
-    "timeline/index.html",
-    "traditions/bible/index.html",
-    "questions/index.html",
-    "index-a-z/index.html",
-]
-
-indexable_canonicals: set[str] = set()
-for page in sorted(SITE.rglob("index.html")):
-    rel = page.relative_to(SITE).as_posix()
-    text = page.read_text(encoding="utf-8", errors="ignore")
-    robots_value = meta_content(text, "robots") or ""
-    noindex = "noindex" in robots_value.lower() or "none" in robots_value.lower()
-    canonical = canonical_href(text)
-    if not canonical:
+indexable: set[str] = set()
+for path in sorted(SITE.rglob("index.html")):
+    rel = path.relative_to(SITE).as_posix()
+    text = path.read_text(encoding="utf-8", errors="ignore")
+    robots_value = meta(text, "robots").lower()
+    noindex = "noindex" in robots_value or "none" in robots_value
+    owner = canonical(text)
+    own_url = page_url(rel)
+    if not owner:
         errors.append(f"{rel}: missing canonical URL")
         continue
-    if not canonical.startswith(BASE):
+    if not owner.startswith(BASE):
         errors.append(f"{rel}: canonical URL is outside canonical site")
         continue
-    route = "" if rel == "index.html" else rel[:-len("/index.html")]
-    expected = BASE if not route else BASE + route + "/"
-    if not noindex:
-        if canonical != expected:
+    if noindex:
+        if own_url in sitemap_urls:
+            errors.append(f"{rel}: noindex URLs must not appear in sitemaps")
+    else:
+        if owner != own_url:
             errors.append(f"{rel}: canonical URL must match the page for indexable pages")
-        indexable_canonicals.add(canonical)
-    elif canonical in sitemap_urls:
-        errors.append(f"{rel}: noindex URLs must not appear in sitemaps")
+        indexable.add(owner)
 
+key_pages = ["index.html", "tim-dooley/index.html", "religion/index.html", "philosophy/index.html", "science/index.html", "world-map/index.html", "timeline/index.html", "traditions/bible/index.html", "questions/index.html", "index-a-z/index.html"]
 for rel in key_pages:
     path = SITE / rel
     if not path.exists():
@@ -145,92 +112,72 @@ for rel in key_pages:
         continue
     text = path.read_text(encoding="utf-8", errors="ignore")
     if not re.search(r"<title>[^<]{8,}</title>", text, re.I):
-        errors.append(f"{rel}: missing or weak <title>")
-    description = meta_content(text, "description") or ""
-    if len(description.strip()) < 40:
+        errors.append(f"{rel}: missing or weak title")
+    if len(meta(text, "description")) < 40:
         errors.append(f"{rel}: missing or short meta description")
     for token in ("og:title", "og:description", "og:url", "application/ld+json"):
         if token not in text:
             errors.append(f"{rel}: missing metadata token {token}")
 
 listed = set(sitemap_urls)
-if SITE != ROOT and listed != indexable_canonicals:
-    missing = sorted(indexable_canonicals - listed)
-    extra = sorted(listed - indexable_canonicals)
-    if missing:
-        errors.append(f"sitemaps miss {len(missing)} indexable pages; first: {missing[:5]}")
-    if extra:
-        errors.append(f"sitemaps contain {len(extra)} non-indexable pages; first: {extra[:5]}")
+if SITE != ROOT:
+    for url in sorted(indexable - listed)[:5]:
+        errors.append(f"sitemaps miss indexable page: {url}")
+    for url in sorted(listed - indexable)[:5]:
+        errors.append(f"sitemaps contain non-indexable page: {url}")
 
 llms = (SITE / "llms.txt").read_text(encoding="utf-8", errors="ignore") if (SITE / "llms.txt").exists() else ""
 for token in ["Tim Dooley", "Religion", "Philosophy", "Science", "World Map", "site-index.json", "machine-index.json", "llms-full.txt", "sitemap-index.xml"]:
     if token not in llms:
         errors.append(f"llms.txt missing current discovery route/door: {token}")
-
 full = (SITE / "llms-full.txt").read_text(encoding="utf-8", errors="ignore") if (SITE / "llms-full.txt").exists() else ""
 for token in ["site-index.json", "machine-index.json", "source-index.json", "timeline-source-registry.json", "body-system-master-atlas.json", "biblical-overlap-atlas.json"]:
     if token not in full:
         errors.append(f"llms-full.txt missing deep route: {token}")
 
-if (SITE / "discovery.json").exists():
-    try:
-        discovery = json.loads((SITE / "discovery.json").read_text(encoding="utf-8"))
-        entrypoints = discovery.get("entrypoints", {})
-        for key in ["tim", "religion", "philosophy", "science", "world_map", "site_index", "sitemap_index"]:
-            if not entrypoints.get(key):
-                errors.append(f"discovery.json missing entrypoints.{key}")
-        doors = discovery.get("reader_architecture", {}).get("doors", [])
-        if len(doors) != 5:
-            errors.append("discovery.json must expose exactly five primary reader doors")
-    except Exception as exc:
-        errors.append(f"invalid discovery.json: {exc}")
+try:
+    discovery = json.loads((SITE / "discovery.json").read_text(encoding="utf-8"))
+    entrypoints = discovery.get("entrypoints", {})
+    for key in ["tim", "religion", "philosophy", "science", "world_map", "site_index", "sitemap_index"]:
+        if not entrypoints.get(key):
+            errors.append(f"discovery.json missing entrypoints.{key}")
+    if len(discovery.get("reader_architecture", {}).get("doors", [])) != 5:
+        errors.append("discovery.json must expose exactly five primary reader doors")
+except Exception as exc:
+    errors.append(f"invalid discovery.json: {exc}")
 
-if (SITE / "site-index.json").exists():
-    try:
-        site_index = json.loads((SITE / "site-index.json").read_text(encoding="utf-8"))
-        pages = site_index.get("pages", [])
-        urls = {row.get("url") for row in pages if isinstance(row, dict) and row.get("url")}
-        if site_index.get("count") != len(pages):
-            errors.append("site-index.json count does not match pages array")
-        if SITE != ROOT and urls != indexable_canonicals:
-            errors.append("site-index.json must equal the final indexable canonical page set")
-        if len(site_index.get("primary_doors", [])) != 5:
-            errors.append("site-index.json must identify the five primary doors")
-    except Exception as exc:
-        errors.append(f"invalid site-index.json: {exc}")
+try:
+    site_index = json.loads((SITE / "site-index.json").read_text(encoding="utf-8"))
+    pages = site_index.get("pages", [])
+    urls = {row.get("url") for row in pages if isinstance(row, dict) and row.get("url")}
+    if site_index.get("count") != len(pages):
+        errors.append("site-index.json count does not match pages array")
+    if SITE != ROOT and urls != indexable:
+        errors.append("site-index.json must equal the final indexable canonical page set")
+    if len(site_index.get("primary_doors", [])) != 5:
+        errors.append("site-index.json must identify the five primary doors")
+except Exception as exc:
+    errors.append(f"invalid site-index.json: {exc}")
 
-if (SITE / "machine-index.json").exists():
-    try:
-        machine = json.loads((SITE / "machine-index.json").read_text(encoding="utf-8"))
-        surfaces = machine.get("machine_surfaces", {})
-        for key in ["llms", "llms_full", "manifest", "core_index", "source_index", "sitemap", "robots"]:
-            if key not in surfaces:
-                errors.append(f"machine-index.json missing machine_surfaces.{key}")
-        if not machine.get("canonical_branches"):
-            errors.append("machine-index.json has no canonical_branches")
-        if not machine.get("evidence_classes"):
-            errors.append("machine-index.json has no evidence_classes")
-    except Exception as exc:
-        errors.append(f"invalid machine-index.json: {exc}")
+try:
+    machine = json.loads((SITE / "machine-index.json").read_text(encoding="utf-8"))
+    surfaces = machine.get("machine_surfaces", {})
+    for key in ["llms", "llms_full", "manifest", "core_index", "source_index", "sitemap", "robots"]:
+        if key not in surfaces:
+            errors.append(f"machine-index.json missing machine_surfaces.{key}")
+    if not machine.get("canonical_branches"):
+        errors.append("machine-index.json has no canonical_branches")
+    if not machine.get("evidence_classes"):
+        errors.append("machine-index.json has no evidence_classes")
+except Exception as exc:
+    errors.append(f"invalid machine-index.json: {exc}")
 
-report = {
-    "site": str(SITE.relative_to(ROOT)) if SITE != ROOT else ".",
-    "sitemap_urls": len(set(sitemap_urls)),
-    "indexable_pages": len(indexable_canonicals),
-    "key_pages_audited": len(key_pages),
-    "errors": sorted(set(errors)),
-    "warnings": sorted(set(warnings)),
-}
+report = {"site": "_site" if SITE != ROOT else ".", "sitemap_urls": len(listed), "indexable_pages": len(indexable), "key_pages_audited": len(key_pages), "errors": sorted(set(errors)), "warnings": sorted(set(warnings))}
 (ROOT / "machine-discoverability-report.json").write_text(json.dumps(report, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-if warnings:
-    print("Machine discoverability warnings:")
-    for msg in report["warnings"]:
-        print(f"  - {msg}")
 if errors:
     print("Machine discoverability errors:")
-    for msg in report["errors"]:
-        print(f"  - {msg}")
+    for message in report["errors"]:
+        print("  -", message)
     sys.exit(1)
-
-print(f"Machine discoverability check passed: {len(sitemap_urls)} canonical sitemap URLs, {len(key_pages)} key reader/discovery pages audited.")
+print(f"Machine discoverability check passed: {len(listed)} canonical sitemap URLs, {len(key_pages)} key reader/discovery pages audited.")
