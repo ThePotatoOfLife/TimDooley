@@ -99,7 +99,7 @@ function installRelationPaint() {
   map.setPaintProperty('relations', 'line-opacity', ['case', ['==', ['get', 'mode'], 'auto'], .46, ['step', ['get', 'depth'], .82, 2, .62, 3, .44]]);
 }
 
-function bucketFor(edge) {
+function relationBucket(edge) {
   const types = edge.types || [];
   if (types.some(type => ['trade','economic','fiscal','funding','investment','ownership'].includes(type))) return 'money';
   if (types.some(type => ['energy','infrastructure'].includes(type))) return 'systems';
@@ -107,7 +107,7 @@ function bucketFor(edge) {
   if (String(edge.layer || '').includes('project')) return 'project';
   return 'other';
 }
-function edgeMatchesRelationMode(edge) { return relationMode === 'all' || bucketFor(edge) === relationMode; }
+function edgeMatchesRelationMode(edge, mode = relationMode) { return mode === 'all' || relationBucket(edge) === mode; }
 function displayScore(edge) {
   const typeScore = Math.max(0, ...(edge.types || []).map(type => TYPE_PRIORITY.get(type) || 50));
   const layer = String(edge.layer || '').toLowerCase();
@@ -116,7 +116,7 @@ function displayScore(edge) {
   return typeScore + evidenceBonus + quantifiedBonus;
 }
 function rankedEdges(root, budget) {
-  const candidates = (world.curated_edges || []).filter(edge => (edge.a === root || edge.b === root) && edgeMatchesRelationMode(edge)).map(edge => ({ edge, bucket: bucketFor(edge), score: displayScore(edge), key: edgeKey(edge) })).sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
+  const candidates = (world.curated_edges || []).filter(edge => (edge.a === root || edge.b === root) && edgeMatchesRelationMode(edge)).map(edge => ({ edge, bucket: relationBucket(edge), score: displayScore(edge), key: edgeKey(edge) })).sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
   const chosen = [], used = new Set();
   const buckets = relationMode === 'all' ? ['money', 'systems', 'institutions', 'project', 'other'] : [relationMode];
   for (const bucket of buckets) {
@@ -317,7 +317,7 @@ window.goCountry = async code => {
 window.__potatoAtlasSelection = {
   get current() { return snapshot('read'); }, toggle:toggleCountrySelection, activate:activateCountry, remove:removeCountry,
   clear:clearAll, clearAll, focus() { if (activeCode) window.fitCountry?.(); }, inspect() { window.showOverview?.(); },
-  automaticRelationData, connectionsFor, countryName, setRelationMode, getRelationMode() { return relationMode; },
+  automaticRelationData, connectionsFor, countryName, relationBucket, edgeMatchesRelationMode, setRelationMode, getRelationMode() { return relationMode; },
 };
 window.clearCountrySelection = () => clearAll();
 window.clearAllSelectedCountries = clearAll;
