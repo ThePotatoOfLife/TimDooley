@@ -66,7 +66,8 @@ def main() -> int:
             "Connections",
             "comparisonRows",
             "connectionRows",
-            "land_area_km2",
+            "areaObservation",
+            "populationObservation",
             "potato-atlas-relation-mode-change",
         ):
             if token not in country_card:
