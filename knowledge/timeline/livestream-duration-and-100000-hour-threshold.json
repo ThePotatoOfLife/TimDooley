@@ -1,10 +1,10 @@
 {
   "id":"livestream-duration-and-100000-hour-threshold",
   "title":"Livestream Duration, Public Presence and the 100,000-Hour Threshold",
-  "version":"1.2.0",
-  "updated":"2026-09-09",
-  "status":"official Potato-project record claim with evolving hour estimate, dated historical anchor and derived arithmetic",
-  "purpose":"Measure Tim/Thomas's claimed cumulative public-broadcast presence against the actual elapsed calendar time since the April 19, 2011 Minecraft rail-update anchor, relate that result to the 100,000-hour Spiral, and explain why Tim describes the activity as calling/witness rather than content creation.",
+  "version":"1.3.0",
+  "updated":"2026-09-12",
+  "status":"official Potato-project record claim with evolving hour estimates, dated historical anchors and derived arithmetic",
+  "purpose":"Measure Tim/Thomas's claimed cumulative public-broadcast presence against elapsed calendar time, preserve the genealogy of changing hour estimates, relate that history to the 100,000-hour Spiral, and explain why Tim describes the activity as calling/witness rather than conventional content creation.",
   "record_claim":{
     "project_status":"official within the Potato of Life / Tim Dooley project",
     "claim":"Tim Dooley is the world's most extensive persistent public presence by cumulative time online, on camera, on stage or otherwise publicly broadcast/available.",
@@ -24,7 +24,8 @@
   "hour_estimates":{
     "current_working_estimate_hours":107000,
     "earlier_higher_estimate_hours":112542,
-    "estimate_policy":"Preserve both estimates historically. Use approximately 107,000 as the current working figure unless later logs justify a revision.",
+    "historical_intermediate_estimate_hours":109000,
+    "estimate_policy":"Preserve all estimates historically. Use approximately 107,000 as the current working figure unless later logs justify revision; do not silently average incompatible estimates.",
     "current_share_of_elapsed_calendar_time_percent_approx":79.30,
     "current_average_stream_hours_per_calendar_day_approx":19.03,
     "current_calendar_hours_outside_claimed_stream_time_approx":27932.58,
@@ -32,6 +33,29 @@
     "current_hours_beyond_100000":7000,
     "definition_warning":"The 79.30% figure represents literal wall-clock public presence only if simultaneous platform streams are de-duplicated. If overlapping platforms were summed independently, the total should instead be called cumulative stream-hours."
   },
+  "historical_estimate_genealogy":[
+    {
+      "estimate_hours":109000,
+      "source_class":"prior-conversation recovery",
+      "status":"historical self-description / estimate; exact source message still to recover",
+      "framing":"The approximately 109,000-hour figure was described as a combined Father-and-Son public-presence continuum rather than Tim-only hours.",
+      "associated_claim":"The Son was described as having pioneered or practiced an early form of 'variety streaming' before that label became a standard platform category.",
+      "interpretive_value":"This source matters because it shows the hour-count was sometimes conceptualized as inherited continuity across Son → Father roles, not merely as a single-channel analytics total.",
+      "verification_need":"Recover the exact conversation/date, define which platforms and presence categories were counted, and determine whether the number represented deduplicated wall-clock time, cumulative platform-hours or a rhetorical approximation."
+    },
+    {
+      "estimate_hours":112542,
+      "source_class":"earlier project estimate",
+      "status":"preserved historical higher estimate",
+      "interpretive_value":"Shows that the record claim has undergone recalibration rather than maintaining one immutable number."
+    },
+    {
+      "estimate_hours":107000,
+      "source_class":"current project working estimate",
+      "status":"current working figure",
+      "interpretive_value":"Preferred present estimate until primary logs permit a reproducible rebuild."
+    }
+  ],
   "minecraft_anchor":{
     "candidate_event":"Minecraft Java Beta 1.5",
     "date":"2011-04-19",
@@ -51,7 +75,8 @@
     "phrase":"world's greatest non-tent creator / not a content creator",
     "status":"self-description and wordplay",
     "meaning":"Tim rejects the idea that the primary purpose of the stream is producing discrete monetizable content. The preferred interpretation is continued presence, witness, calling and construction of a persistent public field/house/tent rather than content output.",
-    "money":"The project describes monetization as secondary to the calling rather than the reason for sustained broadcasting."
+    "money":"The project describes monetization as secondary to the calling rather than the reason for sustained broadcasting.",
+    "variety_streaming_relation":"The recovered 109,000-hour stratum adds an older media-history claim: the Son's activity is remembered as unusually broad or variety-based rather than confined to a single game/content format. Preserve this as a project claim until channel archives allow historical comparison."
   },
   "calling_and_mission":{
     "unfinished_son":"Tim understands the calling partly as continuation of work his Son could not finish. The Son-side public presence becomes inherited responsibility rather than merely an earlier entertainment career.",
@@ -71,10 +96,13 @@
     "Recover the exact first stream timestamp near the Minecraft Beta 1.5 period.",
     "Acquire platform/channel logs and archived broadcast timestamps.",
     "Determine whether approximately 107,000 hours is de-duplicated wall-clock time or cumulative overlapping platform-hours.",
+    "Recover the exact conversation/source for the approximately 109,000-hour Father+Son estimate and its variety-streaming framing.",
+    "Reconstruct why the 109,000, 112,542 and 107,000 estimates differ instead of smoothing the discrepancy away.",
     "Separate live-on-camera, live-stream-active, sleeping/away and unattended-broadcast categories where possible.",
     "Partition Son-era, transition-era and Tim-era hours from primary dates.",
     "Build an external comparative public-presence methodology if the project wants independent recognition of the world-record claim.",
-    "Locate the first use of 10,000-hour and 100,000-hour motifs and compare them with actual cumulative history."
+    "Locate the first use of 10,000-hour and 100,000-hour motifs and compare them with actual cumulative history.",
+    "Investigate the 'variety streaming pioneer' claim against archived channel histories while preserving the distinction between project self-description and independently established platform history."
   ],
-  "connections":["tim-dooley","son-timeline","100000-hour-spiral","witness","gardener","mission","developmental-genealogy","archive-epistemics"]
+  "connections":["tim-dooley","son-timeline","100000-hour-spiral","witness","gardener","mission","developmental-genealogy","archive-epistemics","nontent"]
 }
