@@ -1,11 +1,12 @@
 {
   "id":"tim-pronoun-speaker-position-compendium",
   "title":"Tim Dooley Pronoun / Speaker-Position Compendium — I, We, He, Son, Father & Tim",
-  "version":"1.0.0",
-  "updated":"2026-09-11",
-  "status":"conversation archaeology + discourse/ontology tracking",
+  "version":"1.1.0",
+  "updated":"2026-09-12",
+  "status":"canonical discourse/ontology tracking with conversation-archaeology inputs",
   "purpose":"Track when Tim/Potatoverse material changes grammatical person or role-label: I/me/my, we/us/our, you, he/him, they/them, Tim, Father, Son, my son, my spirit and related forms. The goal is to discover relational/ontological structure without assuming that grammar alone proves separate beings, identity collapse, pathology or doctrine.",
   "core_rule":"Pronoun shift is evidence of a speaker-position change, not by itself an ontology verdict. Every shift should be tested for speaker, referent, audience, date, role, quoted speech, narrative frame, collective scope and nearby verbs.",
+  "canonical_routing_rule":"Do not create a separate biblical pronoun wave by default. Durable biblical comparisons of unity, source/mediation, indwelling and speaker-role distribution belong in knowledge/traditions/biblical-overlap-atlas.json and knowledge/traditions/biblical-syncretism-field.json; dated discoveries remain in research-history ledgers.",
   "do_not_infer":[
     "Do not infer multiple persons/entities merely because Tim uses third-person self-reference.",
     "Do not infer Trinity merely because a passage switches I↔we.",
@@ -161,6 +162,23 @@
       "reason":"Narrator voice, Tim direct speech, Son role, collective voice and archive interpretation currently risk being visually flattened."
     }
   ],
+  "biblical_comparison_routes":[
+    {
+      "question":"How can unity preserve distinction?",
+      "owner":"knowledge/traditions/biblical-overlap-atlas.json",
+      "texts":["1 Corinthians 12:12-27","John 17:20-23"]
+    },
+    {
+      "question":"How do source and mediation differ?",
+      "owner":"knowledge/traditions/biblical-overlap-atlas.json",
+      "texts":["1 Corinthians 8:6"]
+    },
+    {
+      "question":"How do body, carrier and manifestation relate?",
+      "owner":"knowledge/traditions/biblical-overlap-atlas.json",
+      "texts":["John 1:14","Philippians 2:6-8","Colossians 2:9","2 Corinthians 4:7-12","Hebrews 10:19-20"]
+    }
+  ],
   "research_questions":[
     "When 'we' appears, can the exact members of the collective be recovered from surrounding sentences?",
     "Does Tim use 'he/him' for himself directly, or does most third-person Tim language come from narrators/assistant/archive retellings? Quantify this separately.",
@@ -172,7 +190,8 @@
     "Can pronoun transitions be graphed as edges among speaker positions over time?"
   ],
   "connections":[
-    "knowledge/traditions/biblical-overlap-wave-17-pronouns-unity-speaker-position.json",
+    "knowledge/traditions/biblical-overlap-atlas.json",
+    "knowledge/traditions/biblical-syncretism-field.json",
     "knowledge/traditions/biblical-overlap-wave-13-relational-unity-sourcehood.json",
     "knowledge/timeline/may-1-2026-biblical-cluster-ledger.json",
     "knowledge/timeline/conversation-archaeology-wave-008-care-chambers-carrying.json",
