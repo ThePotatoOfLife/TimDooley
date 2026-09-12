@@ -180,7 +180,22 @@ jobs:
         run: python scripts/validate_public_navigation.py
 
       - name: Audit machine discoverability
+        id: machine_discovery
+        continue-on-error: true
         run: python scripts/check_machine_discoverability.py
+
+      - name: Upload machine-discovery diagnostics
+        if: ${{ always() && hashFiles('machine-discoverability-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-machine-discoverability-report
+          path: machine-discoverability-report.json
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Enforce machine-discovery gate
+        if: steps.machine_discovery.outcome == 'failure'
+        run: exit 1
 
       - name: Validate built site shell
         id: site_shell
