@@ -15,6 +15,14 @@ const MENU_FAMILIES = [
   ['stats', 'Stats'],
   ['relations', 'Relations'],
 ];
+const RELATION_MODES = [
+  ['all', 'All context'],
+  ['money', 'Money'],
+  ['systems', 'Systems'],
+  ['institutions', 'Institutions'],
+  ['project', 'Project'],
+  ['other', 'Other'],
+];
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
@@ -70,7 +78,9 @@ async function updateContext() {
   const activeEntries = layers.active().map(id => layers.get(id)).filter(Boolean);
   const scalar = activeEntries.find(entry => entry.kind === 'scalar') || null;
   const sets = activeEntries.filter(entry => entry.kind === 'set');
-  const selectedCodes = window.__potatoAtlasSelection?.current?.selectedCodes || [];
+  const selection = window.__potatoAtlasSelection;
+  const selectedCodes = selection?.current?.selectedCodes || [];
+  const relationMode = selection?.getRelationMode?.() || 'all';
 
   if (!activeEntries.length && !selectedCodes.length) {
     node.hidden = true;
@@ -89,7 +99,13 @@ async function updateContext() {
       lines.push(`<div><span>${esc(mode)} result</span><b>${matched.length} countries</b></div>`);
     } catch { /* layer data can remain useful without a count */ }
   }
-  if (selectedCodes.length) lines.push(`<div><span>Selected</span><b>${selectedCodes.length} countr${selectedCodes.length === 1 ? 'y' : 'ies'}</b></div>`);
+  if (selectedCodes.length) {
+    lines.push(`<div><span>Selected</span><b>${selectedCodes.length} countr${selectedCodes.length === 1 ? 'y' : 'ies'}</b></div>`);
+    if (relationMode !== 'all') {
+      const label = RELATION_MODES.find(([id]) => id === relationMode)?.[1] || relationMode;
+      lines.push(`<div><span>Connections</span><b>${esc(label)}</b></div>`);
+    }
+  }
 
   node.innerHTML = `<small>Current map view</small>${lines.join('')}`;
   node.hidden = false;
@@ -107,7 +123,15 @@ function sync() {
     if (!pop) continue;
     const rows = ordinaryEntries(family);
     if (family === 'relations') {
-      pop.innerHTML = rows.map(entry => `<div class="atlas-world-static"><span>${esc(entry.label)}</span><small>${entry.id === 'relation.auto' ? 'Selected-country context' : esc(entry.availability)}</small></div>`).join('') || '<div class="atlas-world-empty">No current relation views</div>';
+      const selection = window.__potatoAtlasSelection;
+      const mode = selection?.getRelationMode?.() || 'all';
+      pop.innerHTML = `
+        <div class="atlas-world-static"><span>Selected-country connections</span><small>bounded context</small></div>
+        ${RELATION_MODES.map(([id, label]) => `<button type="button" class="atlas-world-option${mode === id ? ' active' : ''}" data-relation-mode="${esc(id)}"><span>${esc(label)}</span></button>`).join('')}`;
+      menu.classList.toggle('active', mode !== 'all');
+      const summary = menu.querySelector('summary');
+      const activeLabel = RELATION_MODES.find(([id]) => id === mode)?.[1] || mode;
+      if (summary) summary.textContent = mode === 'all' ? 'Relations' : `Relations · ${activeLabel}`;
       continue;
     }
     pop.innerHTML = rows.map(entry => {
@@ -214,6 +238,11 @@ function install() {
     const menu = createMenu(family, label);
     menu.addEventListener('toggle', () => { if (menu.open) closeOtherMenus(menu); });
     menu.addEventListener('click', event => {
+      const relationButton = event.target.closest('[data-relation-mode]');
+      if (relationButton) {
+        window.__potatoAtlasSelection?.setRelationMode?.(relationButton.dataset.relationMode);
+        return;
+      }
       const button = event.target.closest('[data-layer-option]');
       if (!button) return;
       layers.toggle(button.dataset.layerOption);
@@ -260,4 +289,5 @@ window.addEventListener('potato-atlas-query-change', sync);
 window.addEventListener('potato-atlas-query-result-change', updateContext);
 window.addEventListener('potato-atlas-composition-change', updateContext);
 window.addEventListener('potato-atlas-working-selection-change', updateContext);
+window.addEventListener('potato-atlas-relation-mode-change', sync);
 install();
