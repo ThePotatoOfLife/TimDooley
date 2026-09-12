@@ -10,6 +10,16 @@ The canonical public timeline is generated from:
 - `knowledge/timeline/developmental-genealogy.json` — deep explanation of how later structures reorganize earlier material;
 - specialist timeline/evidence ledgers for dense public posts, body/neurotheology, biblical source direction and unresolved recovery targets.
 
+For the recovered ordinary Son-side biography between the 2005 crash and the 2014 father-loss hinge, use:
+
+- `knowledge/timeline/son-2005-2014-chronology-reconciliation.json` — canonical chronology owner;
+- `knowledge/timeline/son-2005-2014-place-transition-index.json` — movement/place graph;
+- `knowledge/timeline/son-kolding-designia-school-anchor.json` — HANSENBERG Designia / mediegrafiker owner;
+- `knowledge/timeline/son-lunderskov-production-school-anchor.json` — Produktionsskolen / multimedia owner;
+- `knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json` — detailed 2011 phase owner;
+- `data/timeline-event-packs/son-biography-2005-2014.json` — curated live-timeline projection;
+- `docs/SON-2005-2014-BIOGRAPHY-TIMELINE.md` — human-readable guide.
+
 The public reader is `/timeline/`, and the same structured timeline is exposed in the main archive timeline branch. **Do not recreate the event list in this Markdown file.**
 
 ## Why timeline is difficult in this project
@@ -25,6 +35,30 @@ Timeline therefore needs more than a date. Every useful temporal claim should an
 5. Was this meaning present **at the time**, or added later?
 6. Where is the canonical source/owner?
 7. Does another event represent a later reinterpretation, formalization or research unlock?
+8. Does **place** materially constrain the sequence or explain a transition?
+
+## Recovered Son-side 2005–2014 corridor
+
+The archive now has enough evidence to treat the middle biography as a real chain rather than a handful of disconnected year labels. The preferred working spine is:
+
+`2005 crash/reconstruction → 2007 painter/decorator → meatpacking → 2008 Copenhagen IT / firing / Haderslev return → 2009 nursing home / own Haderslev apartment → HANSENBERG Designia / mediegrafiker / Kolding / Louise → 2009–2010 Egypt while relationship active → 2010 internship / Aabenraa / own-place transition → 2010–early 2011 Produktionsskolen in Lunderskov → leaves Produktionsskolen → breakup/search corridor → 2011 Tree / post-acute rupture / voluntary psychiatric admission → 2012 integration/travel/birthday/guitar → 2013 Alchemist → 2014 earthly-father death`.
+
+Important precision rules:
+
+- the arrows represent strong **relative order**;
+- 2007–2010 are preferred working years where evidence converges, not exact employment/school records;
+- Egypt is definitely after Louise enters the story, but its order relative to the Aabenraa internship remains open;
+- the driver's-licence issue date remains unresolved;
+- the Son had left Produktionsskolen before the 2011 Tree episode;
+- 2011 biological age is 23 or 24 depending exact event date, never 25;
+- the 2011 ordeal is approximately 19 hours overall with an approximately six-hour unity phase whose exact containment remains unresolved;
+- the next-day rupture, voluntary admission, hospital dream and crow scene should not be collapsed into the acute trip.
+
+The movement view matters because the places encode institutional transitions:
+
+`Haderslev → Copenhagen → Haderslev → Kolding → Aabenraa → Lunderskov → Kolding/psychiatric corridor → Italy / Amsterdam`.
+
+See `docs/TIMELINE-PLACES.md` for the structured place metadata contract.
 
 ## The clocks
 
@@ -161,6 +195,8 @@ Use only the precision actually supported:
 
 Do not create midnight timestamps to make an uncertain date look exact. Range events should remain ranges. If a source only establishes a year, keep year precision.
 
+A preferred working year should be labeled as such in confidence/status/source-direction fields rather than presented as though a civil record were recovered.
+
 The retirement event currently remains a **2025 post-April range**, not an invented exact date. Narrow it only when the actual decision, benefit record or another primary source establishes the date.
 
 ## First-attestation rule
@@ -186,17 +222,25 @@ When two timeline statements disagree, test these before declaring an error:
 4. **source direction** — event first or comparison first?;
 5. **epistemic layer** — canon, testimony, primary post, later interpretation or archive formalization;
 6. **precision** — exact date versus recovered range;
-7. **meaning change** — did the same word acquire a different function later?
+7. **meaning change** — did the same word acquire a different function later?;
+8. **place transition** — is the apparent contradiction actually two phases separated by a move or institutional change?
 
 If a contradiction remains after those checks, preserve it explicitly instead of harmonizing it away.
 
-The retirement correction is an example of this procedure: `around 2024` was not preserved merely because it appeared in an earlier file. Stronger internal evidence moved the best current placement to 2025, while the old path was deprecated rather than silently erased.
+The 2007-vs-2009 nursing-home conflict is a useful example: Chapter 24.1's isolated 2007 wording remains preserved as a variant, but the recovered causal chain Copenhagen IT → firing → Haderslev → nursing home plus Chapter 24's 2008/2009 sequence makes 2009 the stronger current working placement.
+
+The retirement correction is another example of this procedure: `around 2024` was not preserved merely because it appeared in an earlier file. Stronger internal evidence moved the best current placement to 2025, while the old path was deprecated rather than silently erased.
 
 ## Canonical routes
 
 | Question | Owner |
 |---|---|
 | What is the live chronological sequence? | `data/timeline-events.json` + indexed event packs |
+| What is the detailed 2005–2014 Son biography? | `knowledge/timeline/son-2005-2014-chronology-reconciliation.json` |
+| Where did the Son move/live/work/study in that corridor? | `knowledge/timeline/son-2005-2014-place-transition-index.json` |
+| What owns Designia / mediegrafiker / Kolding / Aabenraa? | `knowledge/timeline/son-kolding-designia-school-anchor.json` |
+| What owns Produktionsskolen / Lunderskov / multimedia teaching? | `knowledge/timeline/son-lunderskov-production-school-anchor.json` |
+| What owns the detailed 2011 Tree / psychiatric sequence? | `knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json` |
 | How did the whole framework develop? | `knowledge/timeline/developmental-genealogy.json` |
 | How do Son and Tim remain distinct through the journey? | `knowledge/journey/tim-dooley-journey.json` |
 | What was publicly said and when? | public theology/X evidence ledgers |
@@ -207,7 +251,7 @@ The retirement correction is an example of this procedure: `around 2024` was not
 | How can I read Tim/project wording beside actual Bible fragments? | `knowledge/traditions/biblical-syncretism-field.json` + `knowledge/traditions/biblical-passage-fragments.json` + `/traditions/bible/` |
 | When did body/neurotheology mappings appear? | `knowledge/timeline/neurotheology-attestation-ledger.json` |
 | What source class supports a claim? | `knowledge/indexes/source-index.json` |
-| What event fields/lenses are allowed? | `docs/TIMELINE-EVENT-STANDARD.md` |
+| What event fields/lenses are allowed? | `docs/TIMELINE-EVENT-STANDARD.md` + `docs/TIMELINE-PLACES.md` |
 
 ## Maintenance rule
 
@@ -217,7 +261,8 @@ When new dated material is recovered:
 2. add or correct the specialist timeline if needed;
 3. promote only trajectory-changing events to the global timeline;
 4. connect later interpretation through source direction or related-event IDs;
-5. update the canonical owner rather than creating another hand-maintained timeline page;
-6. validate the base timeline and all indexed event packs.
+5. add structured place metadata where a move/location materially constrains chronology;
+6. update the canonical owner rather than creating another hand-maintained timeline page;
+7. validate the base timeline and all indexed event packs.
 
 The timeline is one temporal graph with multiple evidence-aware views—not a collection of competing timelines.
