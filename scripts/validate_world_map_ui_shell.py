@@ -12,6 +12,7 @@ UI = ROOT / "world-map" / "3d-ui.js"
 WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 COUNTRY_CARD = ROOT / "world-map" / "3d-country-card.js"
+COUNTRY_SELECTION = ROOT / "world-map" / "3d-country-selection.js"
 
 
 def read(path: Path, errors: list[str]) -> str:
@@ -28,6 +29,7 @@ def main() -> int:
     world_bar = read(WORLD_BAR, errors)
     compositor = read(COMPOSITOR, errors)
     country_card = read(COUNTRY_CARD, errors)
+    country_selection = read(COUNTRY_SELECTION, errors)
 
     if html:
         for menu_id, label in (
@@ -69,11 +71,19 @@ def main() -> int:
         for token in ("atlasWorldContext", "updateContext", "Current map view"):
             if token not in world_bar:
                 errors.append(f"world toolbar must expose compact active-layer context marker: {token}")
+        for token in ("data-relation-mode", "setRelationMode", "Money", "Systems", "Institutions"):
+            if token not in world_bar:
+                errors.append(f"ordinary Relations menu must provide actionable connection filters: {token}")
 
     if compositor:
         for token in ("atlas-query-outline", "atlasQueryMatch", "applyQueryHighlight"):
             if token not in compositor:
                 errors.append(f"ANY/ALL set queries must have an explicit on-map result channel: {token}")
+
+    if country_selection:
+        for token in ("relationMode", "setRelationMode", "edgeMatchesRelationMode", "potato-atlas-relation-mode-change"):
+            if token not in country_selection:
+                errors.append(f"country selection must support bounded automatic relation filtering: {token}")
 
     if errors:
         print("World Map UI shell validation FAILED:")
