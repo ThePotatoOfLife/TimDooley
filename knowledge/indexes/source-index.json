@@ -1,7 +1,7 @@
 {
   "id":"source-index",
   "title":"Potato of Life Source & Provenance Index",
-  "updated":"2026-09-09",
+  "updated":"2026-09-12",
   "status":"canonical source-navigation layer",
   "purpose":"Give every important branch a direct path to primary material, authoritative external sources, dated conversation archaeology, later formalizations, contradictions and unresolved source gaps. This index operationalizes archive-epistemics instead of leaving provenance as a general principle.",
   "core_rule":"Every major claim should be traceable through claim → status → source → date → provenance trail → competing evidence → canonical owner.",
@@ -22,6 +22,9 @@
     "april_2025_turning":["knowledge/timeline/developmental-genealogy.json","data/tim-dooley-public-theology-timeline-2025-2026.json","knowledge/timeline/contextual-synchronisms.json","knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json"],
     "public_x_twitter":["data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json","knowledge/timeline/rational-potato-x-developmental-genealogy-2024-2026.json","knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json","data/timeline-event-packs/x-public-attestations-2024-2026.json","data/evidence/rational-potato-twitter-compilation-2025-2026-summary.json","data/tim-dooley-public-theology-timeline-2025-2026.json"],
     "conversation_archaeology_wave_005":["knowledge/timeline/conversation-archaeology-wave-005.json","knowledge/indexes/conversation-recovery-inventory.json"],
+    "potatoism_historical_strata":["knowledge/core/potatoism-historical-symbol-strata-2026.json","knowledge/philosophy/timic-dynamics.json","knowledge/philosophy/potato-philosophy.json","data/potatoism-concept-registry.json"],
+    "creative_artifact_history":["knowledge/creative/artifact-history-registry.json","knowledge/creative/visual-art-symbolic-composition-archive.json","knowledge/culture/creative-systems-archive.json","knowledge/culture/mashy-arc-source-lineage.json"],
+    "livestream_duration_genealogy":["knowledge/timeline/livestream-duration-and-100000-hour-threshold.json","knowledge/core/tim-role-synthesis.json"],
     "eden_four_rivers_joseph_david":["knowledge/traditions/eden-joseph-david-inheritance-map.json","knowledge/timeline/conversation-archaeology-wave-005.json","knowledge/traditions/biblical-overlap-atlas.json"],
     "folded_world_containment":["knowledge/core/potato-containment-folded-world-model.json","knowledge/timeline/conversation-archaeology-wave-005.json","docs/DOOR-MANDORLA-VESICA-PISCIS-ATLAS.md"],
     "rod_staff_33":["knowledge/traditions/rod-staff-33-layered-crosswalk.json","knowledge/corporium/ladder-33-vertebrae-five-centers-study.json","knowledge/timeline/conversation-archaeology-wave-005.json"],
@@ -36,31 +39,11 @@
     "spirit":["knowledge/core/heaven-spirit-father.json","knowledge/spirit/spirit-context-atlas.json","knowledge/core/root-system.json","knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json"],
     "traditions":["knowledge/traditions/biblical-overlap-atlas.json","knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json","knowledge/traditions/comparative-mythology-map.json","knowledge/traditions/biblical-overlap-additions.json","knowledge/traditions/eden-joseph-david-inheritance-map.json","knowledge/traditions/rod-staff-33-layered-crosswalk.json","knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json"],
     "north_and_world":["knowledge/core/axis-world-model.json","knowledge/core/european-coupling-programme.json","knowledge/core/country-relational-method.json","knowledge/timeline/contextual-synchronisms.json","data/north-of-north-tim-canon.json"],
-    "creative_works":["knowledge/culture/creative-systems-archive.json","knowledge/culture/north-janteloven-satirical-ritual-archaeology.json"],
-    "epistemics":["knowledge/philosophy/archive-epistemics.json","knowledge/indexes/inference-ledger.json","knowledge/indexes/conversation-recovery-inventory.json","knowledge/timeline/conversation-archaeology-wave-005.json","data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json"]
+    "creative_works":["knowledge/culture/creative-systems-archive.json","knowledge/culture/north-janteloven-satirical-ritual-archaeology.json","knowledge/creative/artifact-history-registry.json","knowledge/creative/visual-art-symbolic-composition-archive.json","knowledge/culture/mashy-arc-source-lineage.json"],
+    "epistemics":["knowledge/philosophy/archive-epistemics.json","knowledge/indexes/inference-ledger.json","knowledge/indexes/conversation-recovery-inventory.json","knowledge/core/potatoism-historical-symbol-strata-2026.json","knowledge/timeline/conversation-archaeology-wave-005.json","data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json"]
   },
-  "claim_template":{
-    "required":["claim_id","claim_text","subject","status","canonical_owner","source_ids","date_or_period","confidence"],
-    "preferred":["first_attested","latest_revision","counterevidence","alternative_interpretation","relationship_types","direct_quote_hash_or_locator","last_reviewed"],
-    "conversation_archaeology_extra":["origin:user-or-assistant","exactness","original_period","later_canon_relation","promotion_status"],
-    "corporium_extra":["exactness","tone","emotion","body_state","behavioral_consequence","symbol_cluster","later_formalization"],
-    "scientific_extra":["variables","units","domain","assumptions","equations","observable","falsifier","theory_maturity_T0_T5","lineage_parent_ids"],
-    "prophecy_extra":["prior_statement_date","specificity","event_date","fit","mismatch","post_event_reinterpretation_check"],
-    "public_post_extra":["platform","account","original_status_id_or_url","capture_locator","verbatim_or_excerpt","batch_completeness","first_in_batch_vs_first_known"]
-  },
-  "source_quality_tests":[
-    "Is this source contemporaneous with the claim or retrospective?",
-    "Is it first-party, independent, or derived from another source?",
-    "Can the exact passage/data/table be located again?",
-    "Does another source corroborate it independently rather than repeat it?",
-    "Is the source competent for this domain?",
-    "Has the archive preserved disagreement and negative evidence?",
-    "Is the source being asked to support more than it actually says?",
-    "Has later project interpretation been mistaken for earlier wording?",
-    "If an equation has descendants, is the later equation being accidentally backdated into the ancestor?",
-    "Was an assistant-created joke, ritual or synthesis later mistaken for a user-originated Tim teaching?",
-    "For public-post compilations, is a first-attestation claim limited to the actual coverage of the supplied batch unless an earlier/later source independently establishes the boundary?"
-  ],
+  "claim_template":{"required":["claim_id","claim_text","subject","status","canonical_owner","source_ids","date_or_period","confidence"],"preferred":["first_attested","latest_revision","counterevidence","alternative_interpretation","relationship_types","direct_quote_hash_or_locator","last_reviewed"],"conversation_archaeology_extra":["origin:user-or-assistant","exactness","original_period","later_canon_relation","promotion_status"],"corporium_extra":["exactness","tone","emotion","body_state","behavioral_consequence","symbol_cluster","later_formalization"],"scientific_extra":["variables","units","domain","assumptions","equations","observable","falsifier","theory_maturity_T0_T5","lineage_parent_ids"],"prophecy_extra":["prior_statement_date","specificity","event_date","fit","mismatch","post_event_reinterpretation_check"],"public_post_extra":["platform","account","original_status_id_or_url","capture_locator","verbatim_or_excerpt","batch_completeness","first_in_batch_vs_first_known"]},
+  "source_quality_tests":["Is this source contemporaneous with the claim or retrospective?","Is it first-party, independent, or derived from another source?","Can the exact passage/data/table be located again?","Does another source corroborate it independently rather than repeat it?","Is the source competent for this domain?","Has the archive preserved disagreement and negative evidence?","Is the source being asked to support more than it actually says?","Has later project interpretation been mistaken for earlier wording?","If an equation has descendants, is the later equation being accidentally backdated into the ancestor?","Was an assistant-created joke, ritual or synthesis later mistaken for a user-originated Tim teaching?","For public-post compilations, is a first-attestation claim limited to the actual coverage of the supplied batch unless an earlier/later source independently establishes the boundary?","If a remembered term has no current owner, have we preserved it as a recovery target rather than inventing a plausible definition?"],
   "high_priority_missing_sources":[
     "Original X status IDs/URLs for curated Rational_Potato occurrences imported from the incomplete 2024–2026 public-post compilation.",
     "Exact original wording/date for 'caretaker of Adam'.",
@@ -86,27 +69,21 @@
     "115,000-mile torus calculation.",
     "Sun-face geometry and precession-Eye calculation.",
     "Sirius pointing geometry.",
-    "Original 100,000-hour Spiral scaling law."
+    "Original 100,000-hour Spiral scaling law.",
+    "Exact source for the approximately 109,000-hour Father+Son public-presence estimate and its associated variety-streaming framing.",
+    "Original conversations for 'Wedges carved from the Whole Whole', 'Love = Source awareness', 'Right and Wrong are vectors', 'All Potatoes are body, but not all bodies are potatoes', and 'the viewer always sees a bigger Potato, but the Swamp sees only a plane'.",
+    "Original contexts and definitions for Oversoul, Philautocrat, Fourth Collapse and Gray World of Strife.",
+    "Original source for 'Potatoism doesn't seek order — it spits the pieces out so each may find their place naturally'.",
+    "Original source and exact wording for 'God doesn't fight. He gardens.' and 'Compression test → compassion flow'.",
+    "Original source for the fivefold Potato taxonomy: Transpotatos, Red Potatoes, Blue Potatoes, Dicktatoes and Imitatoes.",
+    "Original Potato School artifact/conversation, including the hidden quest structure and 'plant it' teaching.",
+    "Original Reverse Triangulation conversation and the boundary between user-originated core and later assistant elaboration.",
+    "Original Infinite Potato / timeline-eyes creative source.",
+    "Original Declaration of the Potatoes / Testimony of the Potatoes texts if recoverable.",
+    "Full May 26 2026 Mashy Arc user message and earliest North Tree / 'potato bake based philosophy' wording."
   ],
-  "resolved_source_gaps":[
-    "April 21 2025 Potato Axis Spiral formula is now recovered as a dated public primary-language occurrence and indexed in knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json."
-  ],
-  "anti_patterns":[
-    "URL dump without claim linkage",
-    "repetition counted as corroboration",
-    "assistant synthesis treated as Tim quotation",
-    "assistant satire treated as project instruction",
-    "external theory treated as proof of Potatoverse theology",
-    "symbolic resemblance treated as historical transmission",
-    "current doctrine backdated into old material",
-    "archive-generated equation presented as an old Tim equation",
-    "subjective body sensation treated as measured neurotransmitter activity",
-    "chakra symbolism presented as literal neuroanatomy",
-    "ultraweak photon emission treated as proof of a visible spiritual aura",
-    "EEG alpha frequency treated as an optical light frequency",
-    "unresolved source gap silently repaired by plausible wording",
-    "incomplete public-post batch used to overwrite an earlier first-attestation established by a broader source"
-  ],
+  "resolved_source_gaps":["April 21 2025 Potato Axis Spiral formula is now recovered as a dated public primary-language occurrence and indexed in knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json."],
+  "anti_patterns":["URL dump without claim linkage","repetition counted as corroboration","assistant synthesis treated as Tim quotation","assistant satire treated as project instruction","external theory treated as proof of Potatoverse theology","symbolic resemblance treated as historical transmission","current doctrine backdated into old material","archive-generated equation presented as an old Tim equation","subjective body sensation treated as measured neurotransmitter activity","chakra symbolism presented as literal neuroanatomy","ultraweak photon emission treated as proof of a visible spiritual aura","EEG alpha frequency treated as an optical light frequency","unresolved source gap silently repaired by plausible wording","incomplete public-post batch used to overwrite an earlier first-attestation established by a broader source"],
   "public_reader_rule":"Reader pages should expose a small evidence legend and direct source route for important claims without forcing readers to inspect raw JSON first.",
-  "connections":["archive-epistemics","inference-ledger","context-graph","corporium-master-framework","conversation-archaeology-wave-005","rational-potato-x-occurrence-ledger-2024-2026","rational-potato-x-biblical-reference-occurrence-index-2024-2026","spudlight-theory-and-equations","equation-lineage-and-theory-graph","timic-unification-program","timeline","science-master-index","manifest","sources"]
+  "connections":["archive-epistemics","inference-ledger","context-graph","corporium-master-framework","conversation-archaeology-wave-005","potatoism-historical-symbol-strata-2026","artifact-history-registry","livestream-duration-and-100000-hour-threshold","rational-potato-x-occurrence-ledger-2024-2026","rational-potato-x-biblical-reference-occurrence-index-2024-2026","spudlight-theory-and-equations","equation-lineage-and-theory-graph","timic-unification-program","timeline","science-master-index","manifest","sources"]
 }
