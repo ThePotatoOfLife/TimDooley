@@ -107,6 +107,13 @@ function current() { return { context:{...activeContext}, assets:[...visibleAsse
 async function impactNodeForInfrastructure(id) {
   return runtime.impactNodeForInfrastructure?.(id) || null;
 }
+async function showImpact(id) {
+  const key = String(id || '');
+  if (!key) return false;
+  const impactNode = await impactNodeForInfrastructure(key);
+  if (!impactNode) return false;
+  return Boolean(await window.__potatoAtlasImpactTrace?.showInfrastructure?.(key));
+}
 function latestObservation(asset) {
   const observations = Array.isArray(asset?.observations) ? asset.observations : [];
   return observations[0] || null;
@@ -157,11 +164,7 @@ document.addEventListener('click', async event => {
   const assetButton = event.target.closest('[data-infrastructure-id]');
   if (assetButton) { await showAsset(assetButton.dataset.infrastructureId); return; }
   const impactButton = event.target.closest('[data-infrastructure-impact]');
-  if (impactButton) {
-    const assetId = impactButton.dataset.infrastructureImpact;
-    const impactNode = await impactNodeForInfrastructure(assetId);
-    if (impactNode) window.__potatoAtlasImpactTrace?.showInfrastructure?.(assetId);
-  }
+  if (impactButton) await showImpact(impactButton.dataset.infrastructureImpact);
 });
 
 ensureLayer();
@@ -192,5 +195,5 @@ window.addEventListener('potato-atlas-gateway-change', event => {
   if (id) showForGateway(id); else if (activeContext.kind === 'gateway') fallBackContext();
 });
 
-window.__potatoAtlasInfrastructure = { showForEntity, showForGateway, showForChain, showAsset, clear, current };
+window.__potatoAtlasInfrastructure = { showForEntity, showForGateway, showForChain, showAsset, showImpact, clear, current };
 await fallBackContext();
