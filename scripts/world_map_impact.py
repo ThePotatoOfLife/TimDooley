@@ -88,7 +88,6 @@ def structured_dependency_facts(record: dict, source_code: str) -> list[dict]:
             fact["relationship_type"] = relation_type
             facts.append(fact)
 
-    # Preserve first occurrence and merge richer metadata from later duplicate labels.
     by_label: dict[str, dict] = {}
     order: list[str] = []
     for fact in facts:
@@ -155,13 +154,7 @@ def _resolve_dependency_target(fact: dict, source_node_id: str, lookup: dict[str
     return node_id, {"id": node_id, "kind": "dependency-concept", "label": label, "owner": source_node_id}
 
 
-def build_impact_plane(
-    country_rows: list[dict],
-    country_records: dict[str, dict],
-    entities: dict,
-    gateways: dict,
-    chains: dict,
-) -> dict:
+def build_impact_plane(country_rows: list[dict], country_records: dict[str, dict], entities: dict, gateways: dict, chains: dict) -> dict:
     """Build one generated impact plane from canonical owners."""
     nodes: dict[str, dict] = {}
     edges: list[dict] = []
@@ -177,37 +170,17 @@ def build_impact_plane(
     for code, entity in entities.items():
         code = str(code).upper()
         node_id = entity_node_id(code, False)
-        nodes[node_id] = {
-            "id": node_id,
-            "kind": "territory",
-            "code": code,
-            "label": (entity or {}).get("name") or code,
-            "render_status": (entity or {}).get("render_status"),
-        }
+        nodes[node_id] = {"id": node_id, "kind": "territory", "code": code, "label": (entity or {}).get("name") or code, "render_status": (entity or {}).get("render_status")}
 
     for gateway_id, gateway in gateways.items():
         node_id = f"gateway:{gateway_id}"
-        nodes[node_id] = {
-            "id": node_id,
-            "kind": "gateway",
-            "gateway_id": gateway_id,
-            "label": gateway.get("label") or gateway_id,
-            "gateway_type": gateway.get("type"),
-            "coordinates": deepcopy(gateway.get("coordinates")),
-        }
+        nodes[node_id] = {"id": node_id, "kind": "gateway", "gateway_id": gateway_id, "label": gateway.get("label") or gateway_id, "gateway_type": gateway.get("type"), "coordinates": deepcopy(gateway.get("coordinates"))}
 
     for chain_id, chain in chains.items():
         node_id = f"chain:{chain_id}"
-        nodes[node_id] = {
-            "id": node_id,
-            "kind": "functional-chain",
-            "chain_id": chain_id,
-            "label": chain.get("label") or chain_id,
-            "epistemic_type": chain.get("epistemic_type"),
-        }
+        nodes[node_id] = {"id": node_id, "kind": "functional-chain", "chain_id": chain_id, "label": chain.get("label") or chain_id, "epistemic_type": chain.get("epistemic_type")}
 
     lookup = _exact_lookup(country_rows, entities, gateways, chains)
-
     for row in country_rows:
         code = str(row.get("iso3") or "").upper()
         if not code:
@@ -218,19 +191,14 @@ def build_impact_plane(
             target_id, concept = _resolve_dependency_target(fact, source_id, lookup)
             if concept:
                 nodes.setdefault(target_id, concept)
-            edge = {
-                "source": source_id,
-                "target": target_id,
-                "relationship": "depends-on",
-                "causal_status": "explicit-dependency",
-                "evidence_class": "canonical-country-record",
-            }
-            for key in ("mechanism", "importance", "source", "source_url", "period", "confidence"):
+            edge = {"source": source_id, "target": target_id, "relationship": "depends-on", "causal_status": "explicit-dependency", "evidence_class": "canonical-country-record"}
+            for key in ("mechanism", "importance", "source_url", "period", "confidence"):
                 if fact.get(key) not in (None, ""):
                     edge[key] = fact[key]
+            if fact.get("source") not in (None, ""):
+                edge["evidence_source"] = fact["source"]
             edges.append(edge)
 
-    # Context only: chain membership explains affected objects but never causes impact.
     for chain_id, chain in chains.items():
         chain_node = f"chain:{chain_id}"
         for code in chain.get("members") or []:
@@ -239,7 +207,6 @@ def build_impact_plane(
             if member_id in nodes:
                 context_chains.setdefault(member_id, []).append(chain_node)
 
-    # Explicit alternatives are represented separately and never traversed as affected nodes.
     for gateway_id, gateway in gateways.items():
         source_id = f"gateway:{gateway_id}"
         for alternative in gateway.get("alternatives") or []:
@@ -249,16 +216,12 @@ def build_impact_plane(
             target_id = f"gateway:{target}"
             if not target or target_id not in nodes:
                 continue
-            edge = {
-                "source": source_id,
-                "target": target_id,
-                "relationship": alternative.get("relationship") or "alternative-route",
-                "causal_status": "explicit-alternative",
-                "evidence_class": "gateway-owner",
-            }
-            for key in ("status", "note", "source", "source_url"):
+            edge = {"source": source_id, "target": target_id, "relationship": alternative.get("relationship") or "alternative-route", "causal_status": "explicit-alternative", "evidence_class": "gateway-owner"}
+            for key in ("status", "note", "source_url"):
                 if alternative.get(key) not in (None, ""):
                     edge[key] = alternative[key]
+            if alternative.get("source") not in (None, ""):
+                edge["evidence_source"] = alternative["source"]
             edges.append(edge)
 
     for node_id, chain_ids in list(context_chains.items()):
@@ -279,14 +242,7 @@ def build_impact_plane(
 
 
 def _sort_rows(rows: list[dict]) -> list[dict]:
-    return sorted(
-        rows,
-        key=lambda row: (
-            importance_rank((row.get("edge") or {}).get("importance")),
-            str((row.get("node") or {}).get("label") or (row.get("node") or {}).get("id") or "").casefold(),
-            str((row.get("node") or {}).get("id") or ""),
-        ),
-    )
+    return sorted(rows, key=lambda row: (importance_rank((row.get("edge") or {}).get("importance")), str((row.get("node") or {}).get("label") or (row.get("node") or {}).get("id") or "").casefold(), str((row.get("node") or {}).get("id") or "")))
 
 
 def trace_incoming_impact(nodes: dict, edges: list[dict], root_id: str, max_depth: int = 2) -> dict:
@@ -298,23 +254,19 @@ def trace_incoming_impact(nodes: dict, edges: list[dict], root_id: str, max_dept
     for edge in edges:
         if edge.get("causal_status") not in CAUSAL_STATUSES:
             continue
-        source = edge.get("source")
-        target = edge.get("target")
+        source = edge.get("source"); target = edge.get("target")
         if source in nodes and target in nodes:
             incoming[target].append(edge)
 
-    direct: list[dict] = []
-    direct_ids: set[str] = set()
+    direct: list[dict] = []; direct_ids: set[str] = set()
     if depth >= 1:
         for edge in incoming.get(root_id, []):
             source = edge["source"]
             if source == root_id or source in direct_ids:
                 continue
-            direct_ids.add(source)
-            direct.append({"node": nodes[source], "edge": deepcopy(edge)})
+            direct_ids.add(source); direct.append({"node": nodes[source], "edge": deepcopy(edge)})
 
-    second: list[dict] = []
-    second_ids: set[str] = set()
+    second: list[dict] = []; second_ids: set[str] = set()
     if depth >= 2:
         for direct_row in direct:
             via = direct_row["node"]["id"]
@@ -322,7 +274,6 @@ def trace_incoming_impact(nodes: dict, edges: list[dict], root_id: str, max_dept
                 source = edge["source"]
                 if source == root_id or source in direct_ids or source in second_ids:
                     continue
-                second_ids.add(source)
-                second.append({"node": nodes[source], "edge": deepcopy(edge), "via": via})
+                second_ids.add(source); second.append({"node": nodes[source], "edge": deepcopy(edge), "via": via})
 
     return {"root": nodes[root_id], "direct": _sort_rows(direct), "second_order": _sort_rows(second)}
