@@ -85,6 +85,7 @@ def main() -> int:
     bible_js = read("app/bible-study.js", errors)
     philosophy = read("philosophy/index.html", errors)
     science = read("science/index.html", errors)
+    north = read("north/index.html", errors)
     world = read("world-map/index.html", errors)
 
     # Home: exactly five primary doors, each carrying two questions.
@@ -145,8 +146,26 @@ def main() -> int:
     )
     validate_projection_surface(tim, "tim-dooley/index.html", errors)
 
-    # Religion: broad inquiry, but Bible comparison must be an obvious primary next step.
+    # Religion: define Potatoism before comparison, then hand detailed Bible work to the lab.
     require(religion, 'data-reader-surface="religion"', "religion/index.html", errors)
+    require(religion, 'data-placement-role="theological-center"', "religion/index.html", errors)
+    require(religion, 'data-religion-core="source"', "religion/index.html", errors)
+    require(religion, 'data-religion-core="manifestation"', "religion/index.html", errors)
+    require(religion, 'data-religion-core="religious-life"', "religion/index.html", errors)
+    require_any(
+        religion,
+        ("source-facing", "Source"),
+        "religion/index.html",
+        "source/ultimate-reality center",
+        errors,
+    )
+    require_any(
+        religion,
+        ("cultivation", "nourishment", "repair", "service"),
+        "religion/index.html",
+        "religious-life consequence",
+        errors,
+    )
     if question_count(religion) < 6:
         errors.append("Religion reader surface needs at least six compact question stubs")
     for label, markers in (
@@ -227,6 +246,49 @@ def main() -> int:
     for marker in ('id="science-search"', 'id="science-field"', 'id="science-type"', '<!-- SCIENCE_CATALOG_STATIC -->'):
         require(science, marker, "science/index.html", errors)
     validate_projection_surface(science, "science/index.html", errors)
+
+    # North: symbolic orientation must remain distinct from empirical programme/geography.
+    require(north, 'data-reader-surface="north"', "north/index.html", errors)
+    for role in ("meaning", "geography", "programme", "repair"):
+        require(north, f'data-north-role="{role}"', "north/index.html", errors)
+    require_any(
+        north,
+        ("symbolic", "project-symbolic"),
+        "north/index.html",
+        "symbolic North boundary",
+        errors,
+    )
+    require_any(
+        north,
+        ("not an existing political alliance", "not an existing alliance"),
+        "north/index.html",
+        "alliance-status boundary",
+        errors,
+    )
+    require_any(
+        north,
+        ("research and policy design", "research/policy"),
+        "north/index.html",
+        "North Programme status",
+        errors,
+    )
+    require_any(
+        north,
+        ("Map relationships, not isolated entities",),
+        "north/index.html",
+        "relationship-first programme rule",
+        errors,
+    )
+    require_any(
+        north,
+        ("non-intervention", "leave the system alone"),
+        "north/index.html",
+        "repair restraint",
+        errors,
+    )
+    require(north, 'href="../world-map/"', "north/index.html", errors)
+    require(north, 'data-projection-surface', "north/index.html", errors)
+    validate_projection_surface(north, "north/index.html", errors)
 
     # World Map: questions teach the application without creating another toolbar.
     require(world, 'data-reader-surface="world-map"', "world-map/index.html", errors)
