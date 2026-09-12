@@ -1,9 +1,9 @@
-// Working-selection controller for the World Relational Atlas.
+// Browse-first country controller for the World Relational Atlas.
 //
-// The legacy core still owns the active-country inspector, Trace and Compare.
-// This controller adds the ordinary interaction users actually need: click any
-// country or registered map entity to add/remove it from a persistent working set,
-// keep one active entity for inspection, and reveal a bounded relationship network.
+// Ordinary clicks inspect one active country at a time. Retained multi-country
+// state is deliberate: pins feed Compare/Path and other multi-country tools.
+// Automatic relationship context follows the active country instead of browse
+// history, so users can simply click around the map without deselecting first.
 
 const map = window.__potatoAtlasMap;
 const baseSelection = window.__potatoAtlasSelection;
@@ -21,7 +21,7 @@ const REST_LOCAL = '../data/rest-countries-runtime.json';
 const REST_REMOTE = 'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders';
 
 const AUTO_EDGES_ACTIVE = 8;
-const AUTO_EDGES_OTHER = 4;
+const AUTO_EDGES_OTHER = 4; // retained for public/runtime compatibility
 const AUTO_EDGES_TOTAL = 28;
 const RELATION_MODES = new Set(['all', 'money', 'systems', 'institutions', 'project', 'other']);
 const TYPE_PRIORITY = new Map([
@@ -35,7 +35,7 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
   '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'
 }[char]));
 
-let selectedCodes = [];
+let pinnedCodes = [];
 let activeCode = null;
 let world = { curated_edges: [] };
 let by3 = {};
@@ -57,7 +57,7 @@ function edgeKey(edge) {
 function entityKnown(code) { return Boolean(names[code] || entityNames[code] || by3[code]); }
 function countryName(code) { return names[code] || entityNames[code] || by3[code]?.name?.common || code; }
 function allKnownCodes() {
-  return [...new Set([...Object.keys(names), ...Object.keys(entityNames), ...Object.keys(by3), ...selectedCodes])];
+  return [...new Set([...Object.keys(names), ...Object.keys(entityNames), ...Object.keys(by3), ...pinnedCodes, activeCode].filter(Boolean))];
 }
 function setFeatureState(code, key, value) {
   if (!code) return;
@@ -68,13 +68,20 @@ function snapshot(reason = 'read') {
   return {
     source: 'working-selection', reason, code: activeCode, activeCode,
     name: activeCode ? countryName(activeCode) : null,
-    selected: selectedCodes.length > 0, selectedCodes: [...selectedCodes], relationMode, compareMode: false,
+    selected: Boolean(activeCode),
+    // Compatibility: older consumers use selectedCodes for retained multi-country state.
+    selectedCodes: [...pinnedCodes],
+    pinned: pinnedCodes.length > 0,
+    pinnedCodes: [...pinnedCodes],
+    isPinned: activeCode ? pinnedCodes.includes(activeCode) : false,
+    relationMode, compareMode: false,
   };
 }
 
 function updateUrl() {
   const url = new URL(location.href);
-  if (selectedCodes.length) url.searchParams.set('selected', selectedCodes.join(',')); else url.searchParams.delete('selected');
+  url.searchParams.delete('selected');
+  if (pinnedCodes.length) url.searchParams.set('pins', pinnedCodes.join(',')); else url.searchParams.delete('pins');
   if (activeCode) url.searchParams.set('country', activeCode); else url.searchParams.delete('country');
   if (relationMode !== 'all') url.searchParams.set('relation', relationMode); else url.searchParams.delete('relation');
   if (!document.getElementById('compare')?.classList.contains('active')) url.searchParams.delete('compare');
@@ -83,7 +90,7 @@ function updateUrl() {
 
 function applySelectionStates() {
   for (const code of allKnownCodes()) {
-    setFeatureState(code, 'selected', selectedCodes.includes(code));
+    setFeatureState(code, 'selected', pinnedCodes.includes(code));
     setFeatureState(code, 'active', code === activeCode);
   }
   if (map.getLayer('countries-line')) {
@@ -132,11 +139,11 @@ function rankedEdges(root, budget) {
 }
 function connectionsFor(code, budget = AUTO_EDGES_ACTIVE) { return rankedEdges(String(code || '').toUpperCase(), Math.max(1, Number(budget) || AUTO_EDGES_ACTIVE)); }
 
-function automaticRelationData(codes = selectedCodes) {
-  if (!codes.length) return emptyFC();
+function automaticRelationData(codes = activeCode ? [activeCode] : []) {
+  const roots = [...new Set((codes || []).filter(Boolean))];
+  if (!roots.length) return emptyFC();
   const chosen = [], seen = new Set();
-  const ordered = [...codes].sort((a, b) => (a === activeCode ? -1 : b === activeCode ? 1 : selectedCodes.indexOf(a) - selectedCodes.indexOf(b)));
-  for (const root of ordered) {
+  for (const root of roots) {
     const budget = root === activeCode ? AUTO_EDGES_ACTIVE : AUTO_EDGES_OTHER;
     for (const edge of rankedEdges(root, budget)) {
       if (chosen.length >= AUTO_EDGES_TOTAL) break;
@@ -158,33 +165,36 @@ function explicitTraceVisible() { return document.getElementById('relations')?.c
 function applyAutomaticRelations() {
   if (!ready || explicitTraceVisible()) return;
   const source = map.getSource('relations');
-  if (source?.setData) source.setData(automaticRelationData(selectedCodes));
+  if (source?.setData) source.setData(automaticRelationData());
 }
 function setRelationMode(mode) {
   const next = RELATION_MODES.has(mode) ? mode : 'all';
   if (next === relationMode) return;
   relationMode = next; updateUrl(); applyAutomaticRelations();
-  window.dispatchEvent(new CustomEvent('potato-atlas-relation-mode-change', { detail:{mode:relationMode,selectedCodes:[...selectedCodes]} }));
+  window.dispatchEvent(new CustomEvent('potato-atlas-relation-mode-change', { detail:{mode:relationMode,pinnedCodes:[...pinnedCodes],selectedCodes:[...pinnedCodes],activeCode} }));
 }
 
 function renderSelectionStrip() {
   const strip = document.getElementById('atlasWorkingSelection');
   if (!strip) return;
-  strip.hidden = !selectedCodes.length;
+  strip.hidden = !pinnedCodes.length;
   const list = strip.querySelector('.selection-list');
-  list.innerHTML = selectedCodes.map(code => `<span class="selection-chip${code === activeCode ? ' active' : ''}" data-country-code="${esc(code)}"><button type="button" data-activate="${esc(code)}" title="Inspect ${esc(countryName(code))}">${esc(countryName(code))}</button><button type="button" class="selection-remove" data-remove="${esc(code)}" aria-label="Remove ${esc(countryName(code))}">×</button></span>`).join('');
-  strip.querySelector('.selection-count').textContent = `${selectedCodes.length} selected`;
+  list.innerHTML = pinnedCodes.map(code => `<span class="selection-chip${code === activeCode ? ' active' : ''}" data-country-code="${esc(code)}"><button type="button" data-activate="${esc(code)}" title="Inspect ${esc(countryName(code))}">${esc(countryName(code))}</button><button type="button" class="selection-remove" data-remove="${esc(code)}" aria-label="Unpin ${esc(countryName(code))}">×</button></span>`).join('');
+  strip.querySelector('.selection-count').textContent = `${pinnedCodes.length} pinned`;
 }
 function emit(reason) {
   const detail = snapshot(reason);
   window.dispatchEvent(new CustomEvent('potato-atlas-selection-change', { detail }));
   window.dispatchEvent(new CustomEvent('potato-atlas-working-selection-change', { detail }));
 }
+function emitPins(reason) {
+  const detail = { ...snapshot(reason), pinnedCodes:[...pinnedCodes], selectedCodes:[...pinnedCodes] };
+  window.dispatchEvent(new CustomEvent('potato-atlas-pin-change', { detail }));
+}
 
-async function activateCountry(code, { fly = false, add = true } = {}) {
+async function activateCountry(code, { fly = false } = {}) {
   code = String(code || '').toUpperCase();
   if (!entityKnown(code)) return false;
-  if (add && !selectedCodes.includes(code)) selectedCodes.push(code);
   activeCode = code;
   syncingCore = true;
   try { await baseGoCountry(code); } finally { syncingCore = false; }
@@ -193,37 +203,52 @@ async function activateCountry(code, { fly = false, add = true } = {}) {
   emit('activated');
   return true;
 }
-
-async function removeCountry(code) {
+function pinCountry(code) {
   code = String(code || '').toUpperCase();
-  if (!selectedCodes.includes(code)) return;
-  selectedCodes = selectedCodes.filter(value => value !== code);
-  setFeatureState(code, 'selected', false); setFeatureState(code, 'active', false);
-  if (activeCode === code) {
-    activeCode = selectedCodes.at(-1) || null;
-    syncingCore = true;
-    try {
-      if (activeCode) await baseGoCountry(activeCode);
-      else if (typeof baseClearCountry === 'function') baseClearCountry();
-      else baseSelection.clear?.();
-    } finally { syncingCore = false; }
-  }
-  applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations(); emit('removed');
+  if (!entityKnown(code) || pinnedCodes.includes(code)) return false;
+  pinnedCodes.push(code);
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); emitPins('pinned');
+  return true;
 }
-async function toggleCountrySelection(code, options = {}) {
+function unpinCountry(code) {
   code = String(code || '').toUpperCase();
-  if (selectedCodes.includes(code)) return removeCountry(code);
-  return activateCountry(code, { ...options, add:true });
+  if (!pinnedCodes.includes(code)) return false;
+  pinnedCodes = pinnedCodes.filter(value => value !== code);
+  setFeatureState(code, 'selected', false);
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); emitPins('unpinned');
+  return true;
+}
+function togglePinnedCountry(code) {
+  code = String(code || '').toUpperCase();
+  if (pinnedCodes.includes(code)) return unpinCountry(code);
+  return pinCountry(code);
+}
+// Compatibility alias for older callers: "toggle selection" now means toggle retained pin.
+function toggleCountrySelection(code) { return togglePinnedCountry(code); }
+function clearPins() {
+  for (const code of pinnedCodes) setFeatureState(code, 'selected', false);
+  pinnedCodes = [];
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); emitPins('pins-cleared');
+}
+function clearActive() {
+  if (!activeCode) return;
+  setFeatureState(activeCode, 'active', false);
+  activeCode = null; syncingCore = true;
+  try {
+    if (typeof baseClearCountry === 'function') baseClearCountry(); else baseSelection.clear?.();
+  } finally { syncingCore = false; }
+  applySelectionStates(); updateUrl(); map.getSource('relations')?.setData?.(emptyFC()); emit('cleared');
 }
 function clearAll({ keepView = true } = {}) {
-  for (const code of selectedCodes) { setFeatureState(code, 'selected', false); setFeatureState(code, 'active', false); }
-  selectedCodes = []; activeCode = null; syncingCore = true;
+  for (const code of pinnedCodes) setFeatureState(code, 'selected', false);
+  if (activeCode) setFeatureState(activeCode, 'active', false);
+  pinnedCodes = []; activeCode = null; syncingCore = true;
   try {
     if (typeof baseClearCountry === 'function') baseClearCountry(); else baseSelection.clear?.();
   } finally { syncingCore = false; }
   renderSelectionStrip(); updateUrl(); map.getSource('relations')?.setData?.(emptyFC());
   if (!keepView) document.getElementById('world')?.click();
-  emit('cleared');
+  emitPins('pins-cleared'); emit('cleared');
 }
 
 function installStrip() {
@@ -235,12 +260,12 @@ function installStrip() {
   document.head.appendChild(style);
   const strip = document.createElement('div');
   strip.id = 'atlasWorkingSelection'; strip.hidden = true;
-  strip.innerHTML = '<span class="selection-count">0 selected</span><div class="selection-list"></div><button type="button" class="selection-clear-all">Clear</button>';
+  strip.innerHTML = '<span class="selection-count">0 pinned</span><div class="selection-list"></div><button type="button" class="selection-clear-all">Clear pins</button>';
   document.querySelector('.mapwrap')?.appendChild(strip);
   strip.addEventListener('click', event => {
-    const remove = event.target.closest('[data-remove]'); if (remove) { removeCountry(remove.dataset.remove); return; }
-    const activate = event.target.closest('[data-activate]'); if (activate) { activateCountry(activate.dataset.activate, { add:false }); return; }
-    if (event.target.closest('.selection-clear-all')) clearAll();
+    const remove = event.target.closest('[data-remove]'); if (remove) { unpinCountry(remove.dataset.remove); return; }
+    const activate = event.target.closest('[data-activate]'); if (activate) { activateCountry(activate.dataset.activate); return; }
+    if (event.target.closest('.selection-clear-all')) clearPins();
   });
 }
 function interceptPolygonClick(event) {
@@ -248,7 +273,11 @@ function interceptPolygonClick(event) {
   const code = event.features?.[0]?.properties?.iso3;
   if (!code || !entityKnown(code)) return;
   if (event.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
-  toggleCountrySelection(code);
+  if (event.originalEvent?.shiftKey) {
+    activateCountry(code).then(() => togglePinnedCountry(code));
+    return;
+  }
+  activateCountry(code);
 }
 function installClickInterception() {
   for (const layer of ['countries-fill', 'countries-extrude']) if (map.getLayer(layer)) map.on('click', layer, interceptPolygonClick);
@@ -257,10 +286,9 @@ function adoptExternalSelection(event) {
   if (syncingCore) return;
   const detail = event?.detail || {};
   if (detail.source === 'working-selection' || detail.compareMode) return;
-  if (detail.reason === 'cleared' || !detail.selected) { if (selectedCodes.length) clearAll(); return; }
+  if (detail.reason === 'cleared' || !detail.selected) { if (activeCode) clearActive(); return; }
   const code = String(detail.code || '').toUpperCase();
   if (!code || !entityKnown(code)) return;
-  if (!selectedCodes.includes(code)) selectedCodes.push(code);
   activeCode = code; applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations(); emit('external-selection');
 }
 
@@ -274,7 +302,7 @@ async function loadRestRuntime() {
   catch (localError) {
     try { return await fetchJson(REST_REMOTE); }
     catch (remoteError) {
-      console.warn('Working selection has no country coordinate runtime; automatic relation lines will be limited.', localError, remoteError);
+      console.warn('Country browsing has no coordinate runtime; automatic relation lines will be limited.', localError, remoteError);
       return [];
     }
   }
@@ -291,12 +319,12 @@ async function loadData() {
 
 async function restoreState() {
   const url = new URL(location.href);
-  const explicit = codeList(url.searchParams.get('selected'));
+  const pins = codeList(url.searchParams.get('pins'));
+  const legacySelected = codeList(url.searchParams.get('selected'));
   const legacyCompare = codeList(url.searchParams.get('compare'));
   const legacyCountry = String(url.searchParams.get('country') || baseSelection.current?.code || '').toUpperCase();
-  selectedCodes = explicit.length ? explicit : legacyCompare.length ? legacyCompare : (legacyCountry ? [legacyCountry] : []);
-  selectedCodes = selectedCodes.filter(entityKnown);
-  activeCode = selectedCodes.includes(legacyCountry) ? legacyCountry : selectedCodes.at(-1) || null;
+  pinnedCodes = (pins.length ? pins : legacySelected.length ? legacySelected : legacyCompare).filter(entityKnown);
+  activeCode = entityKnown(legacyCountry) ? legacyCountry : pinnedCodes.at(-1) || null;
   if (legacyCompare.length && typeof window.leaveCompare === 'function') {
     syncingCore = true; try { window.leaveCompare(); } finally { syncingCore = false; }
   }
@@ -304,7 +332,8 @@ async function restoreState() {
     syncingCore = true; try { await baseGoCountry(activeCode); } finally { syncingCore = false; }
   }
   applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations();
-  if (selectedCodes.length) emit('restored');
+  if (pinnedCodes.length) emitPins('restored');
+  if (activeCode) emit('restored');
 }
 
 await loadData();
@@ -312,19 +341,23 @@ installStrip(); installClickInterception(); applySelectionStates(); installRelat
 
 window.goCountry = async code => {
   if (document.getElementById('compare')?.classList.contains('active')) return baseGoCountry(code);
-  return activateCountry(code, { add:true });
+  return activateCountry(code);
 };
 window.__potatoAtlasSelection = {
-  get current() { return snapshot('read'); }, toggle:toggleCountrySelection, activate:activateCountry, remove:removeCountry,
-  clear:clearAll, clearAll, focus() { if (activeCode) window.fitCountry?.(); }, inspect() { window.showOverview?.(); },
+  get current() { return snapshot('read'); },
+  toggle:toggleCountrySelection, activate:activateCountry,
+  pin:pinCountry, unpin:unpinCountry, togglePinnedCountry,
+  isPinned(code) { return pinnedCodes.includes(String(code || '').toUpperCase()); },
+  clear:clearActive, clearActive, clearPins, clearAll,
+  focus() { if (activeCode) window.fitCountry?.(); }, inspect() { window.showOverview?.(); },
   automaticRelationData, connectionsFor, countryName, relationBucket, edgeMatchesRelationMode, setRelationMode, getRelationMode() { return relationMode; },
 };
-window.clearCountrySelection = () => clearAll();
-window.clearAllSelectedCountries = clearAll;
+window.clearCountrySelection = clearActive;
+window.clearAllSelectedCountries = clearPins;
 window.addEventListener('potato-atlas-selection-change', adoptExternalSelection);
 window.addEventListener('potato-atlas-relations-change', event => { if (!event?.detail?.visible) queueMicrotask(applyAutomaticRelations); });
 window.addEventListener('potato-atlas-lens-change', applySelectionStates);
 map.on('zoomend', applyAutomaticRelations);
 
 await restoreState();
-window.dispatchEvent(new CustomEvent('potato-atlas-working-selection-ready', { detail:{selectedCodes:[...selectedCodes],activeCode,relationMode} }));
+window.dispatchEvent(new CustomEvent('potato-atlas-working-selection-ready', { detail:{pinnedCodes:[...pinnedCodes],selectedCodes:[...pinnedCodes],activeCode,relationMode} }));
