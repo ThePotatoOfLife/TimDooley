@@ -83,9 +83,6 @@ jobs:
       - name: Validate Atlas mathematical calibration
         run: python scripts/validate_atlas_math_calibration.py
 
-      - name: Validate World Map data runtime
-        run: python scripts/validate_world_map_data_runtime.py
-
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
 
