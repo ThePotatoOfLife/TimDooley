@@ -86,6 +86,14 @@ async function loadAfterPaint(label, path) {
   await nextPaint();
   return result;
 }
+async function loadSpecialist(label, path) {
+  const alreadyLoaded = modulePromises.has(label);
+  const result = await loadAfterPaint(label, path);
+  if (!alreadyLoaded && window.__potatoAtlasDiagnostics) {
+    window.__potatoAtlasDiagnostics.specialistLazyLoads = (window.__potatoAtlasDiagnostics.specialistLazyLoads || 0) + 1;
+  }
+  return result;
+}
 
 window.__potatoAtlasEnhancements = { loaded: [], failed: [] };
 window.__potatoAtlasDiagnostics = {
@@ -112,17 +120,17 @@ try {
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');
   await loadAfterPaint('Investigation Surface', './3d-investigation-surface.js');
-  await loadAfterPaint('System Intelligence', './3d-gateways.js');
-  await loadAfterPaint('Functional Chains', './3d-chain-explorer.js');
-  await loadAfterPaint('Infrastructure Context', './3d-infrastructure.js');
-  await loadAfterPaint('Impact Trace', './3d-impact-trace.js');
-  await loadAfterPaint('Impact Actions', './3d-impact-actions.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
   window.__potatoAtlasDiagnostics.interactiveMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-interactive'));
 
+  declareDormant('System Intelligence', './3d-gateways.js', 'first country inspection');
+  declareDormant('Functional Chains', './3d-chain-explorer.js', 'first country inspection');
+  declareDormant('Infrastructure Context', './3d-infrastructure.js', 'first country inspection');
+  declareDormant('Impact Trace', './3d-impact-trace.js', 'first country inspection or explicit Impact action');
+  declareDormant('Impact Actions', './3d-impact-actions.js', 'first country inspection');
   declareDormant('Progressive UI', './3d-ui.js', 'legacy compatibility');
   declareDormant('Selection UI', './3d-selection-ui.js', 'legacy compatibility');
   declareDormant('Lenses', './3d-lenses.js', 'legacy compatibility');
@@ -139,11 +147,20 @@ try {
   declareDormant('North Axis', './3d-axis.js', 'contextual Axis action');
 
   const promoteInspection = async () => {
+    // First paint the country and its direct statistics. Investigation context is
+    // intentionally loaded after that paint so it cannot block basic browsing.
     await Promise.all([
       loadAfterPaint('Demography', './3d-demography.js'),
       loadAfterPaint('Country Pulse', './3d-country-pulse.js'),
       loadAfterPaint('Evidence', './3d-evidence.js'),
     ]);
+    await Promise.all([
+      loadSpecialist('System Intelligence', './3d-gateways.js'),
+      loadSpecialist('Functional Chains', './3d-chain-explorer.js'),
+      loadSpecialist('Infrastructure Context', './3d-infrastructure.js'),
+      loadSpecialist('Impact Trace', './3d-impact-trace.js'),
+    ]);
+    await loadSpecialist('Impact Actions', './3d-impact-actions.js');
   };
   let inspectionPromoted = false;
   const promoteInspectionOnce = event => {
