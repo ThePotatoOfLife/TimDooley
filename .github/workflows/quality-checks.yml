@@ -24,6 +24,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -33,8 +35,26 @@ jobs:
       - name: Validate repository hygiene
         run: python scripts/validate_repo_hygiene.py
 
+      - name: Validate World Map ownership
+        run: python scripts/validate_world_map_ownership.py
+
       - name: Validate JavaScript syntax
-        run: node --check app/bible-study.js
+        run: |
+          node --check app/bible-study.js
+          node --check world-map/3d-layer-registry.js
+          node --check world-map/3d-compositor.js
+          node --check world-map/3d-country-selection.js
+          node --check world-map/3d-world-bar.js
+          node --check world-map/3d-country-card.js
+
+      - name: Validate archive runtime hardening
+        run: python scripts/validate_archive_runtime_hardening.py
+
+      - name: Validate country refresh reliability
+        run: python scripts/validate_country_refresh_reliability.py
+
+      - name: Validate SEO pipeline
+        run: python scripts/validate_seo_pipeline.py
 
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
@@ -63,14 +83,32 @@ jobs:
       - name: Validate Atlas mathematical calibration
         run: python scripts/validate_atlas_math_calibration.py
 
-      - name: Validate 3D world atlas runtime
-        run: python scripts/validate_world_map_3d.py
+      - name: Validate canonical World Map runtime
+        run: python scripts/validate_world_map_source.py
 
-      - name: Validate 3D relationship path finder
-        run: python scripts/validate_world_map_pathfinder.py
+      - name: Validate World Map UI shell
+        run: python scripts/validate_world_map_ui_shell.py
+
+      - name: Validate canonical World Map relationship path finder
+        run: python scripts/validate_world_map_pathfinder_source.py
 
       - name: Validate entity-aware Trace
         run: python scripts/validate_world_map_entity_trace.py
+
+      - name: Validate question-led reader surfaces
+        run: python scripts/validate_reader_surfaces.py
+
+      - name: Validate backend to frontend projection
+        run: python scripts/validate_public_projection.py
+
+      - name: Validate discovery provenance projection
+        run: python scripts/validate_discovery_projection.py
+
+      - name: Validate generated navigation projection
+        run: python scripts/validate_generated_navigation.py
+
+      - name: Validate Explore registry projection
+        run: python scripts/validate_explore_projection.py
 
       - name: Validate repository spine
         run: python scripts/validate_repository_spine.py
@@ -138,14 +176,59 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
+      - name: Enrich weak page descriptions
+        run: python scripts/enrich_weak_descriptions.py
+
+      - name: Optimize crawl, sharing and sitemap SEO
+        id: seo
+        continue-on-error: true
+        run: python scripts/optimize_seo.py
+
+      - name: Upload SEO diagnostics
+        if: ${{ always() && hashFiles('_site/seo-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-seo-report
+          path: _site/seo-report.json
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Enforce SEO gate
+        if: steps.seo.outcome == 'failure'
+        run: exit 1
+
       - name: Validate public navigation
         run: python scripts/validate_public_navigation.py
 
       - name: Audit machine discoverability
+        id: machine_discovery
+        continue-on-error: true
         run: python scripts/check_machine_discoverability.py
+
+      - name: Upload machine-discovery diagnostics
+        if: ${{ always() && hashFiles('machine-discoverability-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-machine-discoverability-report
+          path: machine-discoverability-report.json
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Enforce machine-discovery gate
+        if: steps.machine_discovery.outcome == 'failure'
+        run: exit 1
 
       - name: Validate built site shell
         run: python scripts/validate_site_shell.py
+
+      - name: Upload site-shell diagnostics
+        if: ${{ always() && hashFiles('site-shell-report.txt') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: quality-site-shell-report
+          path: site-shell-report.txt
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Assert internal archive is absent from artifact
         run: test ! -e _site/archive

@@ -1,0 +1,88 @@
+{
+  "id":"mountain-information-compression-model",
+  "title":"Mountain / Summit / Perspective — Compression, Sufficient Representation and Information Bottleneck Model",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"archive-generated information-theoretic model built from canonical Mountain integration",
+  "abstract":"Mountain in the project means many differentiated traces converging toward a smaller, more integrated representation from which broader relations can be seen. The scientifically useful question is therefore not whether a summary is shorter, but whether compression preserves the information needed for prediction, judgment, source recovery and action. This paper formalizes Mountain as a representation Z obtained from many observations X while retaining task-relevant information about Y. Information-bottleneck, rate-distortion, reconstruction and provenance constraints separate good integration from destructive flattening. The summit is not the state of knowing everything; it is a compact coordinate system whose value is measured by what it preserves and what decisions it improves. A Mountain becomes Swamp-like when compression loses source distinctions, mixes incompatible units or hides uncertainty; it becomes an information bottleneck in the useful sense when irrelevant detail is reduced while task-relevant structure remains recoverable.",
+  "epistemic_rule":"Information theory applies literally only to defined random variables/codes and data. Mountain, debt, Zion, summit and judgment remain project-symbolic concepts unless an empirical dataset and task are specified. Compression quality cannot establish spiritual authority.",
+  "representation_model":{
+    "raw_state":"X=(x_1,...,x_n): traces/events/measurements/source records",
+    "compressed_state":"Z~p(z|x): summary/latent/summit representation",
+    "task_variable":"Y: quantity the representation is intended to predict, preserve or support",
+    "decision":"a=pi(Z) under a declared loss/utility function",
+    "project_mapping":"slopes/base=X; ascent/integration=p(z|x); summit=Z; descent/application=pi(Z)->action/repair/Garden"
+  },
+  "information_bottleneck":{
+    "objective":"L_IB=I(X;Z)-beta I(Z;Y)",
+    "interpretation":"Minimize unnecessary retained information about X while maximizing information in Z that is relevant to Y; beta sets the compression/relevance tradeoff under this convention.",
+    "source":"https://mlanthology.org/misc/1999/tishby1999misc-information/",
+    "project_insight":"Mountain is not maximal accumulation. A useful summit discards irrelevant detail while preserving relevant relation. More stored data is not automatically more perspective."
+  },
+  "reconstruction_and_provenance":{
+    "decoder":"x_hat=g(Z)",
+    "reconstruction_loss":"D_rec=E[d(X,x_hat)] for a declared distortion metric d",
+    "task_loss":"L_task=E[ell(Y,y_hat(Z))]",
+    "source_recoverability":"P_src=weighted fraction of summit claims whose source-level lineage can be traversed back to primary evidence",
+    "three_way_constraint":"A project synthesis should jointly control representation complexity, task loss and provenance loss. Low task loss with unrecoverable sources is insufficient for an evidence archive.",
+    "archive_rule":"Every summit-level conclusion should carry a descent path to the supporting slope/base records."
+  },
+  "sufficient_statistic_neighbor":{
+    "concept":"A statistic T(X) is sufficient for parameter theta when the conditional distribution of X given T does not depend on theta under the specified statistical model.",
+    "project_use":"This offers a rigorous ideal for compression: preserve everything relevant to a declared inference while discarding irrelevant detail.",
+    "caution":"Narrative/theological syntheses rarely satisfy exact statistical sufficiency; use it as a design target only when a probabilistic model exists."
+  },
+  "mountain_vs_swamp_quantitative":{
+    "mountain_profile":{"high":"source traceability, task relevance, calibrated uncertainty, separability of claims, low contradiction hiddenness","low":"unnecessary duplication after compression"},
+    "swamp_profile":{"high":"duplication, unresolved contradiction density, source ambiguity, circular citation, dependence on context not represented in Z","low":"stable footing/traceability"},
+    "candidate_metrics":["duplicate ratio","orphan/source-missing fraction","contradiction-resolution rate","source-recoverability P_src","task predictive loss","compression ratio","calibration error"],
+    "rule":"No single metric defines Mountain or Swamp. A highly compressed summary with poor provenance is not Mountain merely because it is concise."
+  },
+  "compression_ratio":{
+    "symbol":"CR=size(X)/size(Z)",
+    "warning":"High CR can mean efficient abstraction or catastrophic information loss. It is useful only alongside task/reconstruction/provenance measures.",
+    "minimum_description_neighbor":"Short descriptions are valuable when they capture reusable structure, but code length alone should not be treated as truth."
+  },
+  "perspective_as_coordinate_change":{
+    "mapping":"Z=f(X) can be viewed as a change to coordinates/features that expose larger-scale structure",
+    "example":"individual event records -> edge categories -> mechanisms -> system-level pattern",
+    "quality_test":"A perspective transformation is useful when downstream questions become easier or more accurate while source distinctions remain recoverable.",
+    "axis_connection":"Axis may parameterize levels of description; Mountain supplies a many-to-one map across those levels."
+  },
+  "multi_resolution_mountain":{
+    "levels":"X_0 -> X_1 -> ... -> X_L=Z",
+    "operators":"X_(l+1)=C_l(X_l)",
+    "descent_maps":"R_l:X_(l+1)->evidence pointers/substructure in X_l",
+    "round_trip_error":"epsilon_l=d(X_l,R_l(C_l(X_l))) for reconstructible components",
+    "project_use":"The archive can expose summit, ridge, slope and source levels rather than forcing a reader to choose between raw logs and one giant synthesis.",
+    "important_rule":"Not every abstraction needs exact reconstruction; what must be preserved should be declared before compression."
+  },
+  "debt_weighting":{
+    "typed_edges":"Each obligation/claim edge e may carry status, magnitude/unit if empirical, confidence, age, repair state and provenance.",
+    "active_weight":"w_e(t)=base_weight_e * persistence_e(t) * unresolved_indicator_e under a declared model",
+    "mountain_load":"W_active(t)=sum_e w_e(t)",
+    "closure":"When an edge is repaired/released/non-liable, historical provenance can remain while its active contribution to W_active is reduced or removed.",
+    "boundary":"Do not assign symbolic monetary amounts as empirical weights without actual financial/legal evidence and units."
+  },
+  "decision_quality_and_descent":{
+    "bayes_risk":"R(pi)=E[L(Y,pi(Z))]",
+    "value_of_information":"VOI=minimum expected loss before additional information - minimum expected loss after additional information, under a declared decision model",
+    "summit_ethic_translation":"Perspective earns value by improving decisions/repair while preserving appeal/source descent, not by making the summit-holder unchallengeable.",
+    "garden_link":"Descent completes the cycle when compressed knowledge changes conditions/capability in the lower system."
+  },
+  "overcompression_failure":{
+    "symptoms":["distinct claims merged","uncertainty removed","units collapsed","counterexamples excluded","timeline flattened","source direction lost","symbolic and empirical categories merged"],
+    "formal_signal":"Task-specific residuals or calibration errors rise while Z becomes smaller; source recoverability declines.",
+    "project_term":"This is Mountain collapsing into an information bottleneck of the bad kind: narrowness that destroys distinctions rather than revealing structure."
+  },
+  "empirical_archive_test":{
+    "task":"Compare raw-event retrieval versus multi-resolution Mountain summaries on a fixed set of questions whose source-grounded answers are known.",
+    "measure":["answer accuracy","source recovery time","citation precision","uncertainty calibration","contradiction discovery","reader confidence calibration","compression ratio"],
+    "baselines":["raw search only","flat summary","hierarchical summary with provenance descent"],
+    "prediction":"Hierarchical Mountain summaries should reduce retrieval effort without materially degrading source accuracy or contradiction detection compared with a flat summary.",
+    "falsifier":"If the hierarchical representation adds complexity without improving retrieval/accuracy or systematically hides contradictory source material, the Mountain implementation is not useful."
+  },
+  "conclusions":["Mountain is scientifically meaningful as relevance-preserving compression, not as maximal accumulation.","Perspective should have an explicit task: what does the summit representation enable one to predict, distinguish or decide?","Provenance descent is a separate requirement from predictive compression because an archive must remain auditable.","Mountain and Tree are dual operations: Mountain compresses many traces toward a reusable representation; Tree expands a compact/rooted state into differentiated descendants.","A mature Mountain can shrink in active burden while retaining historical memory because closed edges can remain in provenance without contributing to present unresolved load."],
+  "sources":[{"topic":"information bottleneck","url":"https://mlanthology.org/misc/1999/tishby1999misc-information/"}],
+  "connections":["knowledge/core/mountain-debt-integration-and-release.json","knowledge/science/tree-branching-provenance-growth-model.json","knowledge/science/integrated-scientific-architecture.json","knowledge/philosophy/timic-dynamics.json","knowledge/core/garden-mud-orientation.json"]
+}

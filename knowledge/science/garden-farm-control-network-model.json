@@ -1,0 +1,102 @@
+{
+  "id":"garden-farm-control-network-model",
+  "title":"Garden vs Farm — Capability, Dependency, Viability and Network-Control Model",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"archive-generated quantitative systems model built from canonical Garden/Farm ethics",
+  "abstract":"The Garden/Farm distinction becomes scientifically useful when it is modeled through objective functions, network structure, capability dynamics, dependence on central nodes and viability under perturbation rather than through moral labels attached to people. Two systems can have identical topology and radically different behavior because their control policies and reward functions differ. This paper therefore represents each participant or subsystem by measurable capability/resource states, represents relations by weighted directed edges, and tests whether central intervention increases durable peripheral capability or merely increases extraction and dependence. The strongest operational Garden test is counterfactual: after support is withdrawn or reduced, do peripheral nodes retain greater autonomous capability, resilience and optionality than before? The model deliberately uses a vector/Pareto score rather than one sacred scalar so that growth, autonomy, resilience, repair and harm remain distinguishable.",
+  "epistemic_rule":"Garden and Farm are Potatoverse ethical/system metaphors. The equations below are systems-science formalizations for measurable domains such as organizations, platforms, ecosystems, education or infrastructure. They are not a scientific test of anyone's spiritual status and should not be used to classify human worth.",
+  "state_space":{
+    "network":"G=(V,E,W)",
+    "node_state":"x_i=(k_i,r_i,a_i,h_i,m_i,...)",
+    "variables":{"k_i":"capability stock of node i in domain-specific units or normalized index","r_i":"resource stock/flow state","a_i":"autonomy or center-removal resilience metric","h_i":"harm/burden measure","m_i":"memory/knowledge state","W_ij":"directed weighted influence/resource/support relation j->i","u_i":"intervention/control input"},
+    "rule":"Each component must retain domain-specific units. Do not add money, health, knowledge and autonomy without an explicit normalization and value judgment."
+  },
+  "generic_capability_dynamics":{
+    "equation":"dk_i/dt=f_i(k_i,r_i)+sum_j W_ij h_ij(x_j,x_i)+B_i u_i-delta_i k_i-e_i",
+    "terms":{"f_i":"internal capability production/learning","W_ij h_ij":"relational spillovers/support or interference","B_i u_i":"direct intervention","delta_i":"depreciation/forgetting/decay rate","e_i":"extraction or burden that reduces retained capability when that interpretation is appropriate"},
+    "scientific_job":"dynamical-law template; every empirical application must replace generic functions by domain-specific measurable forms"
+  },
+  "flow_accounting":{
+    "generated":"G_i(Delta t)=total new resource/capability generated over interval",
+    "retained":"R_i(Delta t)=amount retained by/permanently available to node i",
+    "transferred":"T_ij(Delta t)=flow from i to j",
+    "extraction_fraction":"epsilon_i=E_i/max(G_i,epsilon_0), with E_i defined as resource removed without corresponding retained capability under the chosen domain accounting",
+    "center_capture_share":"chi_c=sum_i T_ic / max(total network throughput,epsilon_0)",
+    "warning":"Extraction is a normative-economic classification, not simply any payment or transfer. Legitimate exchange can increase both sides' capability and must not be automatically coded as capture."
+  },
+  "autonomy_as_counterfactual_resilience":{
+    "idea":"Autonomy is better measured by performance after support is reduced than by pretending independence means zero relationships.",
+    "baseline":"Y_i^with=performance of node i under ordinary support configuration",
+    "counterfactual":"Y_i^remove(c,tau)=performance after center c is removed/disabled for a declared horizon tau, with other conditions specified",
+    "retention_ratio":"A_i(c,tau)=Y_i^remove(c,tau)/max(Y_i^with,epsilon_0)",
+    "capability_gain_after_support":"DeltaK_i=K_i(t_after)-K_i(t_before)",
+    "garden_signature":"Support is more Garden-like when DeltaK_i>0 and the post-support A_i increases or remains high while harms/forced dependence do not rise.",
+    "farm_signature":"A system is more capture/Farm-like in the project sense when output or center capture rises while peripheral capability retention and center-removal resilience fall.",
+    "important_boundary":"Healthy interdependence is not failure. The model asks whether relationships expand choice/capability or create avoidable captive dependence."
+  },
+  "generative_radius_repair":{
+    "ancestor":"Timic Dynamics generative-radius concept",
+    "graph_distance":"d_G(c,i)=chosen shortest-path/effective distance from center c to node i",
+    "radius_profile":"G_R(R)=sum_{i:d_G(c,i)<=R} w_i max(0,DeltaK_i) A_i(c,tau)",
+    "interpretation":"This turns 'generative radius' into an autonomy-weighted capability-gain profile as a function of network distance from a center.",
+    "normalization":"For comparisons across networks use a declared normalization, e.g. divide by sum of eligible weights or baseline capability.",
+    "caution":"This is one operationalization, not the unique definition. If K or A cannot be measured, G_R remains conceptual."
+  },
+  "garden_as_viability_control":{
+    "safe_set":"V={x: constraints c_j(x)<=0 for all required life/system conditions}",
+    "viability_kernel":"Viab(V)={x_0 in V: exists admissible u(t) keeping x(t) in V over the required horizon}",
+    "project_translation":"A Garden does not maximize growth without limit. It preserves a region in which differentiated participants remain viable while retaining capacity to adapt.",
+    "control_problem":"choose u(t) to increase future capability/optionality while keeping x(t) in V and respecting resource/harm constraints",
+    "failure":"A policy that maximizes short-term yield while driving the state outside V is not sustainable cultivation even if output initially rises."
+  },
+  "multiobjective_quality_vector":{
+    "vector":"q=(Delta capability, autonomy retention, resilience, useful connectivity, repair/learning, extraction burden, harm)",
+    "sign_convention":"first five desirable when higher; extraction burden and harm undesirable when higher",
+    "pareto_rule":"Prefer Pareto comparison before collapsing q into one score. Policy A Pareto-dominates B if it is no worse on all declared criteria and strictly better on at least one.",
+    "weighted_scalar_if_needed":"J=w_cap C+w_auto A+w_res R+w_conn N+w_rep P-w_ext E-w_harm H",
+    "warning":"Weights w encode values/policy priorities and must be disclosed; they are not discovered constants of nature.",
+    "project_insight":"This prevents 'Garden' from becoming a score whose result was built into hidden weights."
+  },
+  "network_structure_metrics":{
+    "laplacian":"L=D-W for a suitable undirected/nonnegative projection when algebraic-connectivity methods are applicable",
+    "algebraic_connectivity":"lambda_2(L)>0 indicates connectedness for a connected undirected graph; larger values can signal stronger global coupling under specified weighting",
+    "centralization":"measure degree/betweenness/eigenvector concentration separately rather than calling all of them 'center'",
+    "robustness_test":"remove or degrade high-centrality nodes/edges and measure loss of performance, reachability and viability",
+    "important_caution":"High connectivity is not automatically good. A tightly connected extraction network can be highly connected; objective, direction, capacity and consequences still matter."
+  },
+  "garden_farm_policy_comparison":{
+    "shared_dynamics":"Both policies may operate on the same nodes, edges, resources and physical constraints.",
+    "garden_objective":"increase distributed durable capability, future option value and viability subject to bounded harm/resource use",
+    "farm_shadow_objective":"maximize center yield/capture/engagement subject only to enough peripheral survival to continue production",
+    "mathematical_point":"The distinction may live primarily in Q/objective and constraints rather than in topology G. This validates the Timic Unification addition of explicit objective Q and boundary B variables.",
+    "experiment":"Simulate or observe matched networks under policies that differ in reinvestment, exit freedom, knowledge transfer and extraction share, then compare capability growth and center-removal resilience."
+  },
+  "feedback_and_dependency":{
+    "simple_center_periphery":"dk_i/dt=s_i+beta_i c-gamma_i k_i; dc/dt=H({k_i})-delta_c c",
+    "capture_feedback_example":"If center output c increases peripheral dependence beta_i while reducing independent source s_i, the system can exhibit reinforcing centralization.",
+    "cultivation_feedback_example":"If support increases s_i or lowers gamma_i by transferring durable tools/knowledge, assistance can remain beneficial after center coupling decreases.",
+    "research_question":"Does intervention change the participant's production function, or only temporarily feed the participant? The former is stronger evidence of cultivation/capability transfer."
+  },
+  "repair_and_memory":{
+    "state_extension":"m_dot=J_contextualized-J_forgetting-J_reactivation_harm",
+    "soil_transition":"Mud-like residue becomes Soil-like support when contextualized memory improves prediction, repair or capability without requiring repeated re-injury.",
+    "observable":"Compare recurrence/harm rates before and after contextualization/repair while preserving source accuracy.",
+    "connection":"Links Garden/Mud ethics with Dog-return recurrence, Door transition and archive provenance."
+  },
+  "empirical_domains":[
+    {"domain":"education/mentoring","capability":"skills demonstrated independently","autonomy_test":"performance after teacher/support withdrawal","extraction":"time/money burden relative to durable learning","garden_prediction":"competence persists after support declines"},
+    {"domain":"platform/community","capability":"member-to-member creation, moderation and exit portability","autonomy_test":"network function after central account/moderator removal","capture":"traffic/revenue/data concentration","garden_prediction":"distributed capability increases rather than all value routing through one center"},
+    {"domain":"economic/infrastructure graph","capability":"production/security/energy/logistics functions","autonomy_test":"service under supplier/node failure","garden_prediction":"resilience and coupled capability rise without a single fragile dependency"},
+    {"domain":"archive/research","capability":"reader can trace source, reproduce derivation and challenge conclusion","autonomy_test":"argument remains usable without trusting Tim/assistant authority","garden_prediction":"provenance and methods let readers independently evaluate the work"}
+  ],
+  "measurement_protocol":{
+    "predeclare":["network boundary","center candidate","time horizon","capability measurands","support/intervention","harm/extraction definitions","counterfactual or perturbation design"],
+    "baseline_models":["no-support baseline","equal-resource but no-knowledge-transfer baseline","centralized support","distributed support"],
+    "outcomes":["Delta capability","autonomy retention A_i","recovery time","service loss under removal","center capture chi_c","harm","viability constraint violations"],
+    "uncertainty":"Report measurement/model uncertainty; network boundaries and counterfactual assumptions are themselves sources of uncertainty.",
+    "falsifier":"If a purported Garden policy does not improve durable capability/viability or instead systematically increases avoidable captive dependence under declared metrics, the quantitative Garden interpretation is weakened in that domain."
+  },
+  "conclusions":["Garden versus Farm is scientifically strongest as an objective-and-control distinction, not a topology or human taxonomy.","The most discriminating measurement is what remains after support or central control is reduced.","Autonomy and relationship are compatible: the target is resilient interdependence rather than isolation.","A multiobjective/Pareto representation is preferable to a hidden weighted moral scalar.","Generative radius can be operationalized as autonomy-weighted capability growth distributed outward through a graph.","The same framework can evaluate archives, institutions, economic graphs and communities while changing the domain-specific measurands."],
+  "connections":["knowledge/core/garden-mud-orientation.json","knowledge/philosophy/timic-dynamics.json","knowledge/science/potato-dynamics-2-toy-model.json","knowledge/science/integrated-scientific-architecture.json","knowledge/core/funnel-gradient-attractor-regeneration-atlas.json","knowledge/core/dog-return-circle-door-axis-atlas.json","knowledge/core/european-coupling-programme.json"]
+}

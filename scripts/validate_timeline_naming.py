@@ -12,11 +12,17 @@ TEXT_SUFFIXES = {
 }
 SKIP_DIRS = {".git", ".github", "node_modules", "vendor", "_site", "__pycache__", "archive"}
 SELF = Path(__file__).resolve()
+HYGIENE_VALIDATOR = ROOT / "scripts" / "validate_repo_hygiene.py"
 
 
 def fail(message: str) -> None:
     print(f"TIMELINE NAMING ERROR: {message}", file=sys.stderr)
     raise SystemExit(1)
+
+
+def is_internal_design_doc(rel: Path) -> bool:
+    """Implementation history may name retired products while discussing migrations."""
+    return len(rel.parts) >= 2 and rel.parts[0] == "docs" and rel.parts[1] == "superpowers"
 
 
 def main() -> None:
@@ -52,11 +58,15 @@ def main() -> None:
         rel = path.relative_to(ROOT)
         if any(part in SKIP_DIRS for part in rel.parts):
             continue
-        if path.resolve() == SELF:
+        if path.resolve() in {SELF, HYGIENE_VALIDATOR.resolve()}:
             continue
         if rel == Path("chronology/index.html"):
             continue
         if path.suffix.lower() not in TEXT_SUFFIXES and path.name != "CNAME":
+            continue
+        # Design/implementation history is not an active product surface. It must
+        # be allowed to name retired systems when explaining migrations away from them.
+        if is_internal_design_doc(rel):
             continue
         try:
             text = path.read_text(encoding="utf-8")
@@ -78,7 +88,7 @@ def main() -> None:
         rel = path.relative_to(ROOT)
         if any(part in SKIP_DIRS for part in rel.parts):
             continue
-        if path.resolve() == SELF:
+        if path.resolve() in {SELF, HYGIENE_VALIDATOR.resolve()}:
             continue
         if rel == Path("chronology") or (rel.parts and rel.parts[0] == "chronology"):
             continue

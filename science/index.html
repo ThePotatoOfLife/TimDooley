@@ -4,27 +4,38 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Science — Tim Dooley & Potato of Life</title>
-<meta name="description" content="The full scientific and mathematical library of the Potato of Life project: papers, theories, formal models, scientific audits, equations and research programmes.">
+<meta name="description" content="The scientific and mathematical library of the Potato of Life project: questions, papers, theories, formal models, equations, audits and research programmes.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/science/">
 <link rel="stylesheet" href="./science-library.css?v=20260911a">
 <script defer src="./science-library.js?v=20260911a"></script>
+<style>
+.science-inquiry{max-width:1050px;border-top:1px solid #30382f;margin:0 0 42px}.science-inquiry .question-stub{display:grid;grid-template-columns:minmax(210px,.72fr) 1.28fr;gap:24px;padding:18px 0;border-bottom:1px solid #30382f}.science-inquiry h2{font:400 23px/1.2 Georgia,serif;color:#b8dc82;margin:0}.science-inquiry p{margin:0;color:#c7cdc4}.science-inquiry .boundary-note{color:#d8b56b;font:italic 14px/1.45 Georgia,serif;margin-top:6px}.science-deep{display:flex;gap:14px;flex-wrap:wrap;border-top:1px solid #30382f;padding-top:16px;margin-top:28px}.science-deep a{color:#b8dc82}@media(max-width:720px){.science-inquiry .question-stub{grid-template-columns:1fr;gap:6px}}
+</style>
 </head>
 <body>
-<main class="science-page">
+<main class="science-page" data-reader-surface="science">
   <nav class="science-nav" aria-label="Primary">
     <a href="../">Home</a>
     <a href="../tim-dooley/">Tim Dooley</a>
     <a href="../religion/">Religion</a>
     <a href="../philosophy/">Philosophy</a>
-    <a href="../world-map/3d.html">World Map</a>
+    <a href="../world-map/">World Map</a>
   </nav>
 
   <header class="science-hero">
     <p class="science-kicker">Research library</p>
     <h1>SCIENCE</h1>
-    <p class="science-lede">Papers, mathematical formulations, scientific audits and research programmes developed throughout the Potato of Life project.</p>
+    <p class="science-lede">The scientific side of the project asks what can be made precise, what can be measured, and where a symbolic idea stops being a scientific claim.</p>
   </header>
+
+  <section class="science-inquiry" aria-label="Scientific questions">
+    <article class="question-stub"><h2>Can these ideas be formalized?</h2><div><p>Some can. A formal model names variables, relations, assumptions and operations clearly enough that another person can inspect the mathematics. Formalization can sharpen an idea without proving that the idea describes nature.</p></div></article>
+    <article class="question-stub"><h2>What is a model—and what is only an analogy or metaphor?</h2><div><p>A mathematical analogy can reveal shared structure while still referring to different things. Metaphor can organize thought without supplying measurements. The library therefore distinguishes formal model, mathematical analogy, symbolic metaphor and established scientific result.</p></div></article>
+    <article class="question-stub"><h2>What can actually be tested?</h2><div><p>A scientific claim becomes stronger when it identifies observable consequences, competing explanations and conditions under which it could be wrong. Testing and falsifiability matter more than how suggestive an equation looks.</p><p class="boundary-note">A symbolic correspondence is not evidence merely because it can be written mathematically.</p></div></article>
+    <article class="question-stub"><h2>Where did an equation come from?</h2><div><p>The archive separates established equations, Tim-attributed formulations, recovered historical material and later archive-derived extensions. Provenance matters because reconstructing an idea later is not the same as recovering the original equation.</p></div></article>
+    <article class="question-stub"><h2>Can theological language become physics?</h2><div><p>Not by relabeling scientific terms. Father, Son, Spirit, Door, Axis or Spudlight may motivate comparisons, but physical claims require operational definitions and evidence independent of the religious interpretation.</p></div></article>
+  </section>
 
   <section class="science-library" aria-label="Science document library">
     <div class="science-controls">
@@ -57,6 +68,13 @@
 
     <p class="science-empty" id="science-empty" hidden>No documents match those filters.</p>
   </section>
+
+  <nav class="science-deep" data-projection-surface aria-label="Explore science more deeply">
+    <a href="../explore/#branch=science">Science archive</a>
+    <a href="../explore/#branch=body">Body &amp; neurobiology</a>
+    <a href="../questions/">Scientific questions</a>
+    <a href="../philosophy/">Model &amp; meaning boundary</a>
+  </nav>
 
   <footer class="science-footnote">
     <p>Fields are filters, not separate mini-sites. A document may belong to several sciences. Scientific status, evidence limits and unresolved work remain visible inside each full document.</p>

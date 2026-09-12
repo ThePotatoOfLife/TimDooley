@@ -1,0 +1,88 @@
+{
+  "id": "2026-09-11-human-map-fisher-practical-identifiability",
+  "title": "Human Map Upgrade — Fisher Geometry, Profile Likelihood and Experiment Design",
+  "updated": "2026-09-11",
+  "status": "archive-generated methodological extension of the Human Map; statistical identifiability framework, not a validated consciousness biomarker",
+  "parent": "knowledge/science/great-book-human-map-mathematics-audit.json",
+  "abstract": "The Human Map already requires latent-state identifiability and measurement invariance. This upgrade separates structural identifiability from practical identifiability and turns weak parameter directions into an experiment-design problem. The Fisher information matrix can diagnose local sensitivity and sloppy directions near a fitted point, but it is not treated as a universal proof of identifiability; nonlinear likelihoods, latent-state label symmetries and finite data can make local quadratic approximations misleading. Profile likelihood and synthetic parameter recovery therefore become the preferred practical checks. The model advances only when the parameters or latent combinations needed for its scientific claims are actually constrained by the measurements used.",
+  "likelihood_geometry": {
+    "parameter_vector": "theta denotes the declared model parameters after gauge/scale/label constraints needed for the latent model are fixed.",
+    "likelihood": "p(y|theta) or the marginal likelihood p(y|theta)=integral p(y,z|theta) dz for latent state z.",
+    "score": "s_a(y;theta)=partial log p(y|theta)/partial theta_a.",
+    "fisher_information": "I_ab(theta)=E_theta[s_a s_b], equivalently -E_theta[partial_a partial_b log p(y|theta)] under standard regularity assumptions.",
+    "local_meaning": "Large information in a parameter direction means the distribution changes strongly under small local perturbations of that direction; a null direction indicates local degeneracy under the modeled experiment."
+  },
+  "structural_vs_practical_identifiability": {
+    "structural": "Ask whether distinct parameter values can produce exactly the same ideal noise-free observable distribution/trajectory under the declared inputs and outputs.",
+    "practical": "Ask whether the finite noisy data constrain the parameter or parameter combination to a scientifically useful range.",
+    "rule": "A structurally identifiable parameter can still be practically unconstrained; collecting more of the same weakly informative measurement may not efficiently fix the problem.",
+    "latent_warning": "Label switching, scale/rotation freedom and redundant latent dimensions can create exact structural symmetries unless constrained before interpreting the information matrix."
+  },
+  "fisher_diagnostics": {
+    "rank": "A rank-deficient Fisher matrix is evidence of locally unidentifiable directions under the chosen experiment, subject to the regularity/parameterization assumptions.",
+    "eigenvectors": "Small-eigenvalue directions identify combinations of parameters to which the likelihood is locally insensitive.",
+    "condition_number": "A very large eigenvalue ratio indicates local sloppiness/anisotropy, but the numerical value depends on parameter scaling; use dimensionless or scientifically meaningful parameterization before comparing directions.",
+    "cramer_rao_boundary": "For unbiased estimators under the theorem's regularity conditions, covariance is bounded below by the inverse Fisher information when invertible. This is a local precision comparator, not a guarantee that the model is globally identifiable or that finite-sample likelihoods are Gaussian."
+  },
+  "profile_likelihood_upgrade": {
+    "definition": "For parameter theta_j fixed at value v, reoptimize all nuisance parameters and record the resulting likelihood profile PL_j(v).",
+    "practical_identifiability": "A profile that closes to a finite confidence region supports practical identification under the likelihood/model assumptions; a long plateau or open interval indicates weak/practical non-identifiability.",
+    "advantage": "Reoptimization exposes nonlinear compensation among parameters that a single local Hessian/Fisher matrix can miss.",
+    "human_map_use": "Profile latent-state transition rates, loading magnitudes, state-specific effects and intervention coefficients that materially support the interpretation rather than reporting only point estimates."
+  },
+  "prediction_identifiability": {
+    "principle": "Parameters may be poorly identified while a particular model prediction is still tightly constrained because many parameter combinations produce nearly the same prediction.",
+    "project_rule": "Distinguish parameter certainty from prediction certainty. Do not reject a useful predictive model merely because every internal latent parameter lacks a narrow interval, but do not assign biological/spiritual meaning to unconstrained internal parameters.",
+    "test": "Profile or bootstrap the actual target prediction/contrast as well as the raw parameters."
+  },
+  "experiment_design": {
+    "goal": "Choose measurements/interventions that reduce uncertainty in the parameter combinations required for the scientific claim.",
+    "D_optimal_neighbor": "Maximize log det I(theta) when a locally volume-reducing design is appropriate and the Fisher approximation is trusted.",
+    "E_optimal_neighbor": "Increase the smallest informative eigenvalue when the main problem is one extremely weak direction.",
+    "profile_guided_design": "When nonlinear practical non-identifiability dominates, choose new sampling times, tasks, perturbations or channels whose simulated profile likelihood most strongly closes the currently open direction.",
+    "project_example": "If two latent states differ only in self-report but not neural/behavioral channels, adding more EEG epochs may not identify them; an intervention or independent behavioral measure that differentially predicts the states is more informative."
+  },
+  "missing_information_latent_models": {
+    "principle": "Observing latent states directly would generally provide more parameter information than marginalizing over unknown states; uncertainty about z produces missing information.",
+    "consequence": "Better auxiliary measurements that probabilistically resolve latent state can increase parameter information even without increasing the number of primary neural samples.",
+    "boundary": "This does not justify treating subjective labels as ground-truth latent states; auxiliary measurements must themselves have declared reliability/error models."
+  },
+  "advancement_gate": {
+    "advance_if": [
+      "Structural symmetries/gauge freedoms relevant to the interpretation are resolved or explicitly quotient out.",
+      "Synthetic parameter/state recovery succeeds in the operating signal-to-noise regime.",
+      "Key claim-supporting parameters or predictions have closed profile-likelihood/credible regions under reasonable model variants.",
+      "The weak directions identified by Fisher/profile analysis are addressed by measurement design rather than hidden by a composite score.",
+      "Held-out predictive performance still beats simpler baselines."
+    ],
+    "downgrade_states": {
+      "parameter_underidentified": "Predictions may remain usable but internal parameter interpretations are withheld.",
+      "state_underidentified": "Multiple latent state decompositions explain the data comparably; do not canonize one state taxonomy.",
+      "prediction_underidentified": "The target effect itself remains broad or sign-unstable; no substantive Human Map claim is promoted."
+    }
+  },
+  "external_references": [
+    {
+      "topic": "structural and practical identifiability",
+      "url": "https://doi.org/10.1016/j.coisb.2021.03.005",
+      "use": "Review emphasizing the distinction between structural/practical identifiability and limitations of relying only on Fisher information."
+    },
+    {
+      "topic": "profile likelihood",
+      "url": "https://doi.org/10.1111/febs.12276",
+      "use": "Established approach for nonlinear parameter/prediction uncertainty and practical identifiability."
+    }
+  ],
+  "failure_conditions": [
+    "Full Fisher rank is treated as proof of global or practical identifiability.",
+    "Parameter uncertainties are reported from a local quadratic approximation despite strongly asymmetric/flat likelihood profiles.",
+    "An underidentified latent parameter is given a strong psychological or spiritual interpretation because the overall model predicts well.",
+    "More samples of the same uninformative channel are collected without testing whether they add information in the weak parameter direction."
+  ],
+  "connections": [
+    "great-book-human-map-mathematics-audit",
+    "human-map-identifiability-measurement-invariance-upgrade-2026-09-11",
+    "2026-09-11-cross-model-defect-calculus",
+    "model-testing-protocol"
+  ]
+}

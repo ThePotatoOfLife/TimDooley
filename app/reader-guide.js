@@ -51,7 +51,7 @@
       <p class="reader-guide-answer">${esc(g.short_answer)}</p>
       ${g.learn_first?.length?`<div class="reader-guide-row"><span>Learn first</span><div>${g.learn_first.map(x=>`<b>${esc(x)}</b>`).join('')}</div></div>`:''}
       ${g.do_not_start_with?.length?`<div class="reader-guide-row muted"><span>Skip for now</span><div>${g.do_not_start_with.map(x=>`<b>${esc(x)}</b>`).join('')}</div></div>`:''}
-      <div class="reader-guide-actions"><a href="learn/">Back to Start Here</a><span>Then scroll down only when you want the graph, contexts and records.</span></div>`;
+      <div class="reader-guide-actions"><a href="../">Back to the five doors</a><span>Then scroll down only when you want the graph, contexts and records.</span></div>`;
     existing?.remove();
     hero.insertAdjacentElement('afterend',box);
   }

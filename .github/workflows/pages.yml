@@ -27,6 +27,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
 
       - name: Set up Python
         uses: actions/setup-python@v6
@@ -35,6 +37,9 @@ jobs:
 
       - name: Validate repository hygiene
         run: python scripts/validate_repo_hygiene.py
+
+      - name: Validate World Map ownership
+        run: python scripts/validate_world_map_ownership.py
 
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
@@ -45,14 +50,23 @@ jobs:
       - name: Validate Atlas mathematical calibration
         run: python scripts/validate_atlas_math_calibration.py
 
-      - name: Validate 3D world atlas source contract
-        run: python scripts/validate_world_map_3d.py
+      - name: Validate canonical World Map source contract
+        run: python scripts/validate_world_map_source.py
 
-      - name: Validate 3D relationship path finder
-        run: python scripts/validate_world_map_pathfinder.py
+      - name: Validate canonical World Map relationship path finder
+        run: python scripts/validate_world_map_pathfinder_source.py
 
       - name: Validate entity-aware Trace
         run: python scripts/validate_world_map_entity_trace.py
+
+      - name: Validate question-led reader surfaces
+        run: python scripts/validate_reader_surfaces.py
+
+      - name: Validate SEO pipeline
+        run: python scripts/validate_seo_pipeline.py
+
+      - name: Build canonical record registry
+        run: python scripts/build_canonical_record_registry.py
 
       - name: Build Pages artifact
         run: python scripts/build_site.py
@@ -66,7 +80,7 @@ jobs:
       - name: Validate science paper library
         run: python scripts/validate_science_portal.py
 
-      - name: Vendor 3D atlas map engine
+      - name: Vendor World Map engine
         shell: bash
         run: |
           set -euo pipefail
@@ -81,7 +95,7 @@ jobs:
           test -s _site/world-map/vendor/maplibre-gl-shared.mjs
           test -s _site/world-map/vendor/maplibre-gl.css
 
-      - name: Snapshot atlas runtime data
+      - name: Snapshot World Map runtime data
         shell: bash
         run: |
           set -euo pipefail
@@ -134,6 +148,12 @@ jobs:
       - name: Remove internal archive from Pages artifact
         run: rm -rf _site/archive && test ! -e _site/archive
 
+      - name: Enrich weak page descriptions
+        run: python scripts/enrich_weak_descriptions.py
+
+      - name: Optimize crawl, sharing and sitemap SEO
+        run: python scripts/optimize_seo.py
+
       - name: Verify canonical reader surface
         shell: bash
         run: |
@@ -150,54 +170,66 @@ jobs:
           test -f _site/science/index.html
           test -f _site/science/catalog.json
           test -f _site/north/index.html
+          test -f _site/world-map/index.html
           test -f _site/world-map/3d.html
           test -f _site/sitemap.xml
           test -f _site/llms.txt
+          test -f _site/seo-report.json
 
+          grep -q 'data-reader-surface="home"' _site/index.html
           grep -q 'class="sections"' _site/index.html
+          grep -q 'class="secondary-threads"' _site/index.html
           grep -q 'href="tim-dooley/"' _site/index.html
           grep -q 'href="religion/"' _site/index.html
           grep -q 'href="philosophy/"' _site/index.html
           grep -q 'href="science/"' _site/index.html
-          grep -q 'href="world-map/3d.html"' _site/index.html
+          grep -q 'href="world-map/"' _site/index.html
           ! grep -q 'id="branches"' _site/index.html
           ! grep -q 'id="reader"' _site/index.html
           ! grep -q 'app/app.js' _site/index.html
           ! grep -q '<iframe' _site/index.html
 
-          grep -q 'id="jesus-tim"' _site/religion/index.html
-          grep -q 'Lamb recognition before self-declaration' _site/religion/index.html
-          grep -q 'href="../timeline/?tl_layers=' _site/religion/index.html
-          ! grep -q 'Research</h2>' _site/religion/index.html
+          grep -q 'data-reader-surface="religion"' _site/religion/index.html
+          grep -q 'What is Potatoism?' _site/religion/index.html
+          grep -q 'Judaism' _site/religion/index.html
+          grep -Eq 'Islam|Qur' _site/religion/index.html
+          grep -q 'href="../traditions/bible/"' _site/religion/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/religion/jesus-tim/index.html
-          grep -q "location.replace('../#jesus-tim')" _site/religion/jesus-tim/index.html
-          grep -q 'href="../religion/#jesus-tim"' _site/tim-dooley/index.html
+          grep -q "location.replace('../../traditions/bible/')" _site/religion/jesus-tim/index.html
+          grep -q 'data-reader-surface="tim"' _site/tim-dooley/index.html
+          grep -q 'href="../timeline/"' _site/tim-dooley/index.html
 
-          grep -q 'id="relations-field"' _site/traditions/bible/index.html
           grep -q 'id="search"' _site/traditions/bible/index.html
+          grep -q 'id="relations"' _site/traditions/bible/index.html
           grep -q 'data-static-relation=' _site/traditions/bible/index.html
           ! grep -q '<!-- BIBLE_RELATIONS_STATIC -->' _site/traditions/bible/index.html
-          ! grep -q 'id="orientation"' _site/traditions/bible/index.html
-          ! grep -q 'id="story-arcs"' _site/traditions/bible/index.html
-          ! grep -q 'id="timic-timeline"' _site/traditions/bible/index.html
+          grep -q 'href="../../religion/"' _site/traditions/bible/index.html
 
           grep -q 'class="timeline-explorer-standalone"' _site/timeline/index.html
           grep -q 'href="../religion/"' _site/timeline/index.html
-          ! grep -q 'class="source-note"' _site/timeline/index.html
-          ! grep -q 'class="roadmap-note"' _site/timeline/index.html
-          ! grep -q 'class="formula"' _site/timeline/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/chronology/index.html
           grep -q '../timeline/' _site/chronology/index.html
 
+          grep -q 'data-reader-surface="philosophy"' _site/philosophy/index.html
+          grep -q 'data-reader-surface="science"' _site/science/index.html
           grep -q 'id="science-search"' _site/science/index.html
           grep -q 'id="science-field"' _site/science/index.html
           grep -q 'id="science-type"' _site/science/index.html
           grep -q 'class="science-record"' _site/science/index.html
 
-          grep -q 'class="map-action" href="../world-map/3d.html"' _site/north/index.html
+          grep -q 'class="map-action" href="../world-map/"' _site/north/index.html
           grep -q '>WORLD MAP<' _site/north/index.html
           ! grep -q 'class="maplink"' _site/north/index.html
           grep -q 'name="robots" content="noindex,follow"' _site/learn/index.html
+
+          grep -q 'data-reader-surface="world-map"' _site/world-map/index.html
+          grep -q '<b>World Map</b>' _site/world-map/index.html
+          grep -q 'class="map-inquiry"' _site/world-map/index.html
+          grep -q 'id="map"' _site/world-map/index.html
+          grep -q 'src="./3d-bootstrap.js"' _site/world-map/index.html
+          grep -q 'name="robots" content="noindex,follow"' _site/world-map/3d.html
+          grep -q 'href="./"' _site/world-map/3d.html
+          ! grep -q 'id="map"' _site/world-map/3d.html
 
           python - <<'PY'
           import json
@@ -208,7 +240,7 @@ jobs:
           nav = re.search(r'<nav class="sections"[^>]*>(.*?)</nav>', page, re.S)
           assert nav, 'canonical sections navigation missing'
           hrefs = re.findall(r'href="([^"]+)"', nav.group(1))
-          expected = ['tim-dooley/','religion/','philosophy/','science/','world-map/3d.html']
+          expected = ['tim-dooley/','religion/','philosophy/','science/','world-map/']
           assert hrefs == expected, (hrefs, expected)
           print('Verified canonical homepage: exactly five reader entrances')
 
@@ -225,6 +257,12 @@ jobs:
               target = Path('_site/science/papers') / paper['slug'] / 'index.html'
               assert target.exists(), target
           print(f"Verified Science library: {len(papers)} full readable documents")
+
+          seo = json.loads(Path('_site/seo-report.json').read_text(encoding='utf-8'))
+          assert seo['errors'] == 0, seo
+          assert seo['pages_with_open_graph'] == seo['pages'], seo
+          assert seo['pages_with_structured_data'] == seo['pages'], seo
+          print(f"Verified SEO coverage: {seo['pages']} pages")
           PY
 
       - name: Validate built site shell
@@ -245,7 +283,7 @@ jobs:
         if: steps.site_shell.outcome == 'failure'
         run: exit 1
 
-      - name: Finalize 3D atlas runtime
+      - name: Finalize World Map runtime
         shell: bash
         run: |
           set -euo pipefail
@@ -254,7 +292,7 @@ jobs:
           from pathlib import Path
 
           version = os.environ['GITHUB_SHA'][:12]
-          page_path = Path('_site/world-map/3d.html')
+          page_path = Path('_site/world-map/index.html')
           page = page_path.read_text(encoding='utf-8')
 
           old_css = 'https://cdn.jsdelivr.net/npm/maplibre-gl@6.9.0/dist/maplibre-gl.css'
@@ -280,9 +318,9 @@ jobs:
           assert new_bootstrap in page and old_bootstrap not in page
           PY
 
-          grep -q './vendor/maplibre-gl.css?v=6.9.0' _site/world-map/3d.html
-          grep -Eq 'src="./3d-bootstrap.js\?v=[0-9a-f]{12}"' _site/world-map/3d.html
-          grep -Eq 'src="./3d-boot-guard.js\?v=[0-9a-f]{12}"' _site/world-map/3d.html
+          grep -q './vendor/maplibre-gl.css?v=6.9.0' _site/world-map/index.html
+          grep -Eq 'src="./3d-bootstrap.js\?v=[0-9a-f]{12}"' _site/world-map/index.html
+          grep -Eq 'src="./3d-boot-guard.js\?v=[0-9a-f]{12}"' _site/world-map/index.html
 
       - name: Configure Pages
         uses: actions/configure-pages@v5

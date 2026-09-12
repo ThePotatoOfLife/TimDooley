@@ -1,27 +1,35 @@
 {
-  "version":"2.0.0",
-  "updated":"2026-09-08",
-  "purpose":"Backend ownership, public-index consumption and audit map. Every populated dataset either feeds the unified index or is explicitly backend-only/research-only.",
+  "version":"3.0.0",
+  "updated":"2026-09-12",
+  "purpose":"Backend ownership, public projection and audit map. Every populated dataset keeps one primary backend owner and either projects through the five-door public architecture / Explore or is explicitly backend-only/research-only.",
   "frontend_contract":"data/frontend-atlas-bridge.json",
   "country_contract":"data/country-fallback.json",
   "coupling_contract":"data/cross-domain-couplings.json",
-  "rules":["one primary owner per dataset","declare the public index route when applicable","declare backend-only status when no direct route is appropriate","relationship endpoints must resolve or be explicitly unresolved","live sources are optional enrichment and cannot be the sole source for canonical navigation","unknown is not zero"],
+  "rules":[
+    "one primary owner per dataset",
+    "declare the relevant public projection when applicable",
+    "declare backend-only status when no direct route is appropriate",
+    "relationship endpoints must resolve or be explicitly unresolved",
+    "live sources are optional enrichment and cannot be the sole source for canonical navigation",
+    "unknown is not zero",
+    "public projection does not transfer canonical ownership"
+  ],
   "layers":[
-    {"file":"data/countries/*.json","owner":"countries","consumers":["index.html","root.js"],"status":"canonical-country-layer"},
-    {"file":"data/expansions/*.json","owner":"expansion-research","consumers":["index.html","root.js"],"status":"backend-research-layer"},
-    {"file":"data/religious-adjacent/*.json","owner":"religious-adjacent","consumers":["index.html","root.js"],"status":"backend-research-layer"},
-    {"file":"data/religious-foundations/*.json","owner":"religious-foundations","consumers":["index.html","root.js"],"status":"backend-research-layer"},
-    {"file":"data/*.json","owner":"backend-registry","consumers":["index.html","root.js"],"status":"backend-owned-unclassified"}
+    {"file":"data/countries/*.json","owner":"countries","consumers":["world-map/","explore/"],"status":"canonical-country-layer"},
+    {"file":"data/expansions/*.json","owner":"expansion-research","consumers":["explore/"],"status":"backend-research-layer"},
+    {"file":"data/religious-adjacent/*.json","owner":"religious-adjacent","consumers":["religion/","explore/"],"status":"backend-research-layer"},
+    {"file":"data/religious-foundations/*.json","owner":"religious-foundations","consumers":["religion/","explore/"],"status":"backend-research-layer"},
+    {"file":"data/*.json","owner":"backend-registry","consumers":["explore/"],"status":"backend-owned-unclassified"}
   ],
   "datasets":{
-    "data/atlas-expansion-matrix.json":{"owner":"architecture","consumers":["index.html"],"status":"visible-research-control"},
-    "data/research-frontier.json":{"owner":"research","consumers":["index.html"],"status":"visible-research-control"},
-    "data/security-intelligence-organizations.json":{"owner":"security","consumers":["index.html"],"status":"backend-research-layer"},
-    "data/intelligence-security-graph.json":{"owner":"graph","consumers":["index.html"],"status":"backend-research-layer"},
-    "data/extremist-hate-groups.json":{"owner":"security","consumers":["index.html"],"status":"backend-research-layer"},
-    "data/north-europe-system-atlas.json":{"owner":"systems","consumers":["index.html"],"status":"backend-research-layer"},
-    "data/north-europe-economic-network.json":{"owner":"systems","consumers":["index.html"],"status":"backend-research-layer"},
-    "data/cross-domain-couplings.json":{"owner":"relational_dynamics","consumers":["index.html"],"status":"backend-research-layer"}
+    "data/atlas-expansion-matrix.json":{"owner":"architecture","consumers":["explore/"],"status":"visible-research-control"},
+    "data/research-frontier.json":{"owner":"research","consumers":["explore/"],"status":"visible-research-control"},
+    "data/security-intelligence-organizations.json":{"owner":"security","consumers":["world-map/","explore/"],"status":"backend-research-layer"},
+    "data/intelligence-security-graph.json":{"owner":"graph","consumers":["world-map/","explore/"],"status":"backend-research-layer"},
+    "data/extremist-hate-groups.json":{"owner":"security","consumers":["world-map/","context/","explore/"],"status":"backend-research-layer"},
+    "data/north-europe-system-atlas.json":{"owner":"systems","consumers":["world-map/","explore/"],"status":"backend-research-layer"},
+    "data/north-europe-economic-network.json":{"owner":"systems","consumers":["world-map/","explore/"],"status":"backend-research-layer"},
+    "data/cross-domain-couplings.json":{"owner":"relational_dynamics","consumers":["explore/"],"status":"backend-research-layer"}
   },
   "country_resolution":"data/country-fallback.json"
 }

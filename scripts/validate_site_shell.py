@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
-"""Validate the built GitHub Pages shell and reader-first information architecture.
+"""Validate the built GitHub Pages shell and durable reader-route ownership.
 
-Deep Atlas behavior has dedicated validators. This gate protects the public
-reader surface: one homepage, five canonical entrances, comparison-first
-religion, one shared timeline, North -> World Map routing, and basic built-site
-link integrity.
+Question semantics have their own source validator. This gate stays deliberately
+narrow: required public pages, five-door homepage ownership, compatibility
+redirects, World Map ownership, no iframe dependency, and local-link integrity.
+Deploy-generated runtime assets are recognized explicitly rather than treated as
+source-tree files.
 """
 from __future__ import annotations
 
@@ -20,12 +21,10 @@ CANONICAL_HOME_LINKS = (
     "religion/",
     "philosophy/",
     "science/",
-    "world-map/3d.html",
+    "world-map/",
 )
-
-TIMELINE_QUERY = (
-    "timeline/?tl_layers=roadmap,scripture-at-time,biblical-parallel,"
-    "biblical-unlock&tl_actors=son,tim,shared&tl_detail=1"
+DEPLOY_GENERATED_DIRS = (
+    SITE / "world-map" / "vendor",
 )
 
 
@@ -49,6 +48,17 @@ def forbid(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -
             errors.append(f"{owner} contains retired/clutter marker: {marker}")
 
 
+def deploy_generated(target: Path) -> bool:
+    resolved = target.resolve()
+    for directory in DEPLOY_GENERATED_DIRS:
+        try:
+            resolved.relative_to(directory.resolve())
+            return True
+        except ValueError:
+            continue
+    return False
+
+
 def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
@@ -69,6 +79,7 @@ def main() -> int:
             "philosophy/index.html",
             "science/index.html",
             "north/index.html",
+            "world-map/index.html",
             "world-map/3d.html",
             "sitemap.xml",
             "llms.txt",
@@ -95,71 +106,67 @@ def main() -> int:
         require(
             religion,
             (
-                'id="jesus-tim"',
-                "Jesus ↔ Tim Dooley / Son",
-                "Arrest and custody",
-                "Lamb recognition before self-declaration",
-                "Rejected stone → foundation",
-                "Grain death → multiplication",
-                "A real ethical mismatch",
-                f'href="../{TIMELINE_QUERY}"',
+                "RELIGION",
                 'href="../traditions/bible/"',
+                'href="../timeline/',
+                'href="../world-map/"',
             ),
             "religion/index.html",
             errors,
         )
-        forbid(religion, ("explore/#branch=", "Research</h2>", "Jesus / Son research index", "source authority"), "religion/index.html", errors)
+        forbid(religion, ("explore/#branch=spirit", "Jesus / Son research index", "<iframe"), "religion/index.html", errors)
 
         comparison = read("religion/jesus-tim/index.html", errors)
-        require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../#jesus-tim')"), "religion/jesus-tim/index.html", errors)
+        require(
+            comparison,
+            ('name="robots" content="noindex,follow"', "location.replace('../../traditions/bible/')"),
+            "religion/jesus-tim/index.html",
+            errors,
+        )
 
         tim = read("tim-dooley/index.html", errors)
-        require(tim, ('href="../religion/#jesus-tim"', "Jesus ↔ Tim / Son", "Timeline", "Public record"), "tim-dooley/index.html", errors)
+        require(
+            tim,
+            ('href="../timeline/"', 'href="../traditions/bible/"', "Public record", "Evidence"),
+            "tim-dooley/index.html",
+            errors,
+        )
 
         bible = read("traditions/bible/index.html", errors)
         require(
             bible,
             (
                 "TIM &amp; THE BIBLE",
-                'id="relations-field"',
                 'id="search"',
                 'id="relations"',
-                'href="../../religion/#jesus-tim"',
-                f'href="../../{TIMELINE_QUERY}"',
+                'href="../../religion/"',
+                'href="../../timeline/',
             ),
             "traditions/bible/index.html",
             errors,
         )
-        forbid(
-            bible,
-            (
-                'class="focus-links"', 'id="orientation"', 'id="story-arcs"', 'id="meaning"',
-                'id="development"', 'id="missing-questions"', 'id="tensions"', 'id="timic-timeline"',
-                "Questions we missed", "Four questions before comparing anything", "What does “fulfilled” mean here?",
-                "Source authority", ">FAQ<",
-            ),
-            "traditions/bible/index.html",
-            errors,
-        )
+        forbid(bible, ('class="focus-links"', "Source authority", ">FAQ<"), "traditions/bible/index.html", errors)
 
         timeline = read("timeline/index.html", errors)
         require(timeline, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "timeline/index.html", errors)
-        forbid(
-            timeline,
-            ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Why the live explorer replaces the old hard-coded list", "Open Timeline in the complete archive", 'href="../context/"', 'href="../corporium/"'),
-            "timeline/index.html",
-            errors,
-        )
+        forbid(timeline, ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Open Timeline in the complete archive", 'href="../corporium/"'), "timeline/index.html", errors)
 
         north = read("north/index.html", errors)
-        require(north, ('class="map-action" href="../world-map/3d.html"', ">WORLD MAP<"), "north/index.html", errors)
-        forbid(north, ('class="maplink"', "Open North Axis in the World Map", "#architecture", "#ledger", "#world", "#traditions", "#timeline"), "north/index.html", errors)
+        require(north, ('class="map-action" href="../world-map/"', ">WORLD MAP<"), "north/index.html", errors)
+        forbid(north, ('class="maplink"', "Open North Axis in the World Map"), "north/index.html", errors)
 
         learn = read("learn/index.html", errors)
         require(learn, ('name="robots" content="noindex,follow"', "location.replace('../')"), "learn/index.html", errors)
 
-        atlas = read("world-map/3d.html", errors)
-        require(atlas, ("World Relational Atlas", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'), "world-map/3d.html", errors)
+        chronology = read("chronology/index.html", errors)
+        require(chronology, ('name="robots" content="noindex,follow"', "../timeline/"), "chronology/index.html", errors)
+
+        world_map = read("world-map/index.html", errors)
+        require(world_map, ("World Map", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'), "world-map/index.html", errors)
+
+        legacy_map = read("world-map/3d.html", errors)
+        require(legacy_map, ('name="robots" content="noindex,follow"', 'href="./"'), "world-map/3d.html", errors)
+        forbid(legacy_map, ('id="map"', 'src="./3d-bootstrap.js"'), "world-map/3d.html", errors)
 
         public_roots = (
             "index.html", "tim-dooley/index.html", "religion/index.html", "religion/jesus-tim/index.html",
@@ -195,7 +202,7 @@ def main() -> int:
                     target.relative_to(site_root)
                 except ValueError:
                     continue
-                if not target.exists():
+                if not target.exists() and not deploy_generated(target):
                     bad.append(f"{html.relative_to(SITE)} -> {raw}")
         if bad:
             errors.append(f"broken local references in built site: {len(bad)}; examples: {bad[:8]}")

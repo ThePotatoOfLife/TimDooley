@@ -1,7 +1,7 @@
 {
   "id": "atlas-entity-trace-contract",
-  "version": "1.1.0",
-  "updated": "2026-09-11",
+  "version": "1.2.0",
+  "updated": "2026-09-12",
   "status": "implemented-one-hop-inspector",
   "purpose": "Extend country investigation into the normalized global graph without turning nonspatial entities into fake geographic features.",
   "runtime": "world-map/3d-entity-trace.js",
@@ -14,7 +14,7 @@
   "scope": {
     "root": "currently selected canonical country",
     "depth": 1,
-    "surface": "Inspector / Trace investigation",
+    "surface": "Country card / contextual investigation",
     "map_drawing": "Only canonical country endpoints may navigate back to Earth geography in this first implementation. Other endpoints remain nonspatial inspector/archive objects."
   },
   "time": {

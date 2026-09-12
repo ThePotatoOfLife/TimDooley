@@ -1,0 +1,101 @@
+{
+  "id": "2026-09-11-cross-model-pareto-advancement",
+  "title": "Cross-Model Upgrade — Pareto Advancement, Equivalence Classes and Stop Rules",
+  "updated": "2026-09-11",
+  "status": "archive-generated research-governance formalization; comparison logic across heterogeneous models, not a shared physical law",
+  "parent": "knowledge/science/formulation-upgrades/2026-09-11-cross-model-defect-calculus.json",
+  "abstract": "The defect calculus introduced a typed vector of reconstruction, information, commutation, Door, contract and predictive failures. This upgrade defines how such heterogeneous defects should guide model advancement without being collapsed into a scientifically arbitrary single score. Models are compared only on a common target, dataset, validity regime and set of applicable diagnostics. After scaling each defect by a declared application tolerance, Pareto dominance identifies models that are no worse on every relevant diagnostic and strictly better on at least one while not paying an unacceptable complexity cost. Models on the Pareto frontier remain legitimate trade-offs; dominated models should be simplified, revised or retired. The result gives the project a formal stopping rule for equation growth: added ontology survives only when it moves a model onto or along a defensible advancement frontier.",
+  "comparison_domain": {
+    "required_common_context": [
+      "same target observable or decision family",
+      "same dataset or simulation truth when empirical performance is compared",
+      "same declared validity regime",
+      "same uncertainty treatment where possible",
+      "same baseline/null definition"
+    ],
+    "rule": "Do not Pareto-rank a cosmology model against a consciousness model. Cross-domain comparison is methodological only; numerical dominance is meaningful only among models addressing the same problem."
+  },
+  "tolerance_normalization": {
+    "raw_defects": "Delta=(Delta_1,...,Delta_k) may contain different units and statistical meanings.",
+    "tolerances": "Choose tau_i>0 from measurement error, engineering/scientific requirement, predeclared equivalence margin or another domain-grounded threshold.",
+    "normalized_defect": "d_i=Delta_i/tau_i.",
+    "interpretation": "d_i<=1 means the defect lies within the declared tolerance; d_i>>1 means the corresponding claim fails its practical accuracy requirement.",
+    "warning": "Tolerance normalization makes diagnostics comparable to their own requirements; it does not make reconstruction error, p-values, likelihood loss and commutators physically identical quantities."
+  },
+  "complexity_coordinates": {
+    "examples": [
+      "number of identifiable free parameters",
+      "description length/model degrees of freedom",
+      "computational cost",
+      "required measurement channels",
+      "fragility to prior/initialization choices"
+    ],
+    "rule": "Complexity is a cost vector or declared scalar criterion, not automatically parameter count alone. A parameter that is fixed by theory and one that is freely tuned should not be treated as equivalent costs."
+  },
+  "pareto_dominance": {
+    "definition": "For two comparable models A and B, A weakly dominates B when every applicable normalized defect of A is <= the corresponding defect of B and A has no unacceptable increase in the declared complexity cost; strict dominance requires at least one strict improvement.",
+    "pareto_front": "The nondominated models form the advancement frontier. Each surviving model represents a different defensible trade-off among accuracy, identifiability, robustness and complexity.",
+    "scientific_use": "A richer theory should not survive merely because it can fit one aspect better while becoming dramatically less identifiable or more fragile elsewhere."
+  },
+  "observable_equivalence_class": {
+    "definition": "Models belong to the same practical equivalence class for target O when all pairwise output differences remain within the predeclared observable tolerance over the tested inputs/horizon/data regime.",
+    "selection_rule": "Within an equivalence class prefer the model with lower justified complexity unless the richer internal structure is independently measured or supports another declared task.",
+    "project_consequence": "An ornate Potatoverse mechanism that is observationally indistinguishable from a simpler model is not promoted as empirically necessary for that task."
+  },
+  "advancement_statuses": {
+    "promoted": "Passes its core defects/tolerances and adds discriminating value relative to simpler baselines.",
+    "frontier_tradeoff": "Nondominated but not uniformly best; retained because it provides a meaningful alternative trade-off.",
+    "approximation_only": "Useful within a bounded regime despite known defects outside tolerance elsewhere.",
+    "underidentified": "The relevant latent states/parameters/mechanisms cannot be separated by the current measurements/design.",
+    "nonclosed": "The declared state/flow description generates omitted directions, missing conservation terms or undefined perturbation structure.",
+    "observationally_redundant": "A simpler model lies in the same practical observable equivalence class.",
+    "dominated": "Another comparable model is no worse on all declared criteria and better on at least one without an unacceptable complexity penalty.",
+    "rejected_in_regime": "Violates a hard stability, positivity, causality, conservation or empirical constraint in the regime required for its claim."
+  },
+  "stop_rules": [
+    "Stop adding parameters when the model is observationally redundant with a simpler member of its equivalence class.",
+    "Stop interpreting hidden mechanisms when the model is underidentified and no feasible measurement/intervention resolves the ambiguity.",
+    "Stop calling a system closed when brackets, balances or perturbation equations generate missing structure.",
+    "Stop promoting a model that is Pareto-dominated under the predeclared comparison context.",
+    "Retain negative results and downgraded models in the archive because they constrain later theory construction."
+  ],
+  "application_examples": [
+    {
+      "model_family": "11D projection",
+      "criteria": "reconstruction distortion, target-information loss, decision loss, representation cost",
+      "possible_outcome": "A strongly lossy projection can still be on the frontier if it preserves target decisions while greatly reducing representation cost."
+    },
+    {
+      "model_family": "Spudlight storage",
+      "criteria": "balance defect, predictive residual, parameter identifiability, number of stores",
+      "possible_outcome": "A two-store model is dominated if its extra pole is not reproducible and the one-store model predicts equally well."
+    },
+    {
+      "model_family": "Potato Dynamics",
+      "criteria": "Axis/time closure defect, Door reduction defect, contract margin, observable error",
+      "possible_outcome": "A reduced hybrid model can dominate a richer ontology if it preserves Door events and observables while using fewer states."
+    },
+    {
+      "model_family": "Human Map",
+      "criteria": "held-out prediction, profile identifiability, measurement invariance, latent-state stability",
+      "possible_outcome": "A simple mixed-effects model can dominate a complex latent taxonomy if the latent states are unstable across folds."
+    },
+    {
+      "model_family": "Cosmic Soil",
+      "criteria": "background fit, growth/lensing fit, stability, parameter identifiability, complexity",
+      "possible_outcome": "The interaction model is dominated if xi collapses to zero and wCDM/Lambda-CDM predicts as well with fewer assumptions."
+    }
+  ],
+  "anti_scalar_score_rule": {
+    "reason": "Weighted sums can reverse rankings when arbitrary weights change and can hide catastrophic failure in one coordinate behind success in another.",
+    "preferred_use": "Keep the typed defect vector visible; if a scalar utility is needed for a specific engineering/decision application, declare the utility/tolerances explicitly and treat the result as application-specific.",
+    "project_value": "The science archive can therefore have one research-governance grammar without inventing a universal Timic quality number."
+  },
+  "new_project_principle": "A theory should become harder to keep as it becomes more complicated. New structure earns survival by reducing a named defect, creating a successful new prediction, enabling an intervention, or compressing multiple results without losing identifiability and correspondence limits.",
+  "connections": [
+    "2026-09-11-cross-model-defect-calculus",
+    "science-theory-rigor-completion-matrix-2026-09-11",
+    "model-testing-protocol",
+    "science-formulation-wave-013-2026-09-11"
+  ]
+}

@@ -3,7 +3,6 @@ const NODES_URL='../data/nodes.json';
 const COUNTRIES_URL='../data/countries/index.json';
 const BRIDGE_URL='../data/global-graph-bridge.json';
 const CARD_ID='entityTraceCard';
-const BUTTON_ID='entityTraceToggle';
 const EVIDENCE_ID='entityEvidenceFilter';
 const CONFIDENCE_ID='entityConfidenceFilter';
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -30,7 +29,10 @@ async function load(){
   };
   return data;
 }
-function selectedCode(){return new URL(location.href).searchParams.get('country')?.toUpperCase()||null;}
+function selectedCode(){
+  const current=window.__potatoAtlasSelection?.current||{};
+  return String(current.activeCode||current.code||new URL(location.href).searchParams.get('country')||'').toUpperCase()||null;
+}
 function selectedTime(){return window.__potatoAtlasTime?.getState?.()||{mode:'current',time:'',time2:''};}
 function endpointName(id,d){return d.nodes[id]?.name||d.countriesById[id]?.name||id.replaceAll('-',' ').replace(/\b\w/g,m=>m.toUpperCase());}
 function archiveRoute(id,d){
@@ -62,15 +64,41 @@ function relationRows(countryId,d,time){
 }
 function removeCard(){document.getElementById(CARD_ID)?.remove();}
 function endpointAction(row){
-  if(row.otherCountry)return `<button onclick="goCountry('${esc(row.otherCountry)}')">Map</button>`;
+  if(row.otherCountry)return `<button type="button" data-trace-country="${esc(row.otherCountry)}">Map</button>`;
   if(row.archiveRoute)return `<a href="${esc(row.archiveRoute)}">Archive</a>`;
   return '<span class="muted">inspector only</span>';
 }
+function openInspector(){document.getElementById('atlasApp')?.classList.remove('panel-collapsed');}
+function emit(){window.dispatchEvent(new CustomEvent('potato-atlas-entity-trace-change',{detail:{enabled,evidence:evidenceFilter,confidence:confidenceFilter}}));}
 
 function scheduleRender(){
   if(renderQueued)return;
   renderQueued=true;
   queueMicrotask(render);
+}
+
+function filterOptions(values,current,allLabel){
+  return `<option value="all">${esc(allLabel)}</option>${values.map(v=>`<option value="${esc(v)}"${v===current?' selected':''}>${esc(v)}</option>`).join('')}`;
+}
+
+function wireCard(card){
+  card.querySelector(`#${EVIDENCE_ID}`)?.addEventListener('change',event=>{
+    evidenceFilter=event.target.value||'all';
+    localStorage.setItem('atlas:entity-evidence',evidenceFilter);
+    scheduleRender();
+    emit();
+  });
+  card.querySelector(`#${CONFIDENCE_ID}`)?.addEventListener('change',event=>{
+    confidenceFilter=event.target.value||'all';
+    localStorage.setItem('atlas:entity-confidence',confidenceFilter);
+    scheduleRender();
+    emit();
+  });
+  card.querySelector('[data-trace-close]')?.addEventListener('click',()=>setEnabled(false));
+  card.addEventListener('click',event=>{
+    const code=event.target.closest('[data-trace-country]')?.dataset.traceCountry;
+    if(code)window.goCountry?.(code);
+  });
 }
 
 async function render(){
@@ -86,13 +114,26 @@ async function render(){
     const country=d.countriesByIso[code];if(!country)return;
     const time=selectedTime(),rows=relationRows(country.id,d,time);
     const panel=document.getElementById('panel');if(!panel)return;
+    openInspector();
     const counts={};for(const r of rows)counts[r.evidence||'unknown']=(counts[r.evidence||'unknown']||0)+1;
     const valid=rows.filter(r=>r.timeState.kind==='valid').length,unknown=rows.filter(r=>r.timeState.kind==='unknown').length,outside=rows.filter(r=>r.timeState.kind==='outside').length;
-    const card=document.createElement('div');card.id=CARD_ID;card.className='card';card.style.borderColor='#435b63';
+    const evidenceValues=[...new Set(d.relationships.map(r=>r.evidence||'unknown'))].sort();
+    const confidenceValues=[...new Set(d.relationships.map(r=>r.confidence||'unknown'))].sort();
+    if(!evidenceValues.includes(evidenceFilter))evidenceFilter='all';
+    if(!confidenceValues.includes(confidenceFilter))confidenceFilter='all';
+    const card=document.createElement('section');card.id=CARD_ID;card.className='card';card.style.borderColor='#435b63';
     const evidenceTags=Object.entries(counts).sort((a,b)=>b[1]-a[1]).map(([k,v])=>`<span class="pill">${esc(k)} · ${v}</span>`).join('');
-    const filterSummary=[evidenceFilter!=='all'?`evidence=${evidenceFilter}`:'',confidenceFilter!=='all'?`confidence=${confidenceFilter}`:''].filter(Boolean).join(' · ');
-    card.innerHTML=`<div class="eyebrow">Entity Trace · normalized graph</div><h2 style="margin-top:5px">${esc(country.name)} beyond country-only edges</h2><p class="muted">One-hop relationships from <code>data/relationships.json</code>, resolved through the global graph bridge. Nonspatial endpoints remain inspector/archive objects; only canonical country endpoints can jump back to Earth geography.</p>${filterSummary?`<div class="row"><b>Active filter</b><br><span class="muted">${esc(filterSummary)}</span></div>`:''}<div>${evidenceTags||'<span class="muted">No normalized relationships match the active filters.</span>'}</div>${time.mode!=='current'?`<div class="row"><b>Time validity</b><br><span class="muted">${valid} explicitly valid · ${outside} outside interval · ${unknown} unknown validity. A relation's record date is not treated as its start date.</span></div>`:''}<div>${rows.slice(0,24).map(r=>`<div class="row"><span class="muted">${r.outgoing?'→':'←'} ${esc(r.relationship)}</span><br><b>${esc(r.otherName)}</b> ${endpointAction(r)}<br><small>${esc(r.evidence||'unknown')} · ${esc(r.confidence||'unknown')}${r.date?` · recorded ${esc(r.date)}`:''}${time.mode!=='current'?` · ${esc(r.timeState.label)}`:''}</small></div>`).join('')||'<div class="muted">No normalized graph edges touch this country under the active filters.</div>'}</div>${rows.length>24?`<div class="muted">Showing 24 of ${rows.length} one-hop entity relations.</div>`:''}<div class="boundary">Entity Trace expands topology, not geography. Evidence and confidence filters preserve the graph's existing classifications; they are not a truth score. A nonspatial endpoint is never assigned a fake map position merely because it is connected to a country.</div>`;
-    panel.appendChild(card);window.__potatoAtlasUI?.setPanel?.(true,{persist:false});
+    card.innerHTML=`
+      <div style="display:flex;justify-content:space-between;gap:10px;align-items:start"><div><div class="eyebrow">Entity Trace · normalized graph</div><h2 style="margin-top:5px">${esc(country.name)} beyond country-only edges</h2></div><button type="button" data-trace-close aria-label="Close entity trace">×</button></div>
+      <p class="muted">One-hop relationships from <code>data/relationships.json</code>, resolved through the global graph bridge. Nonspatial endpoints remain inspector/archive objects; only canonical country endpoints can jump back to Earth geography.</p>
+      <div class="grid" style="margin:8px 0"><label class="metric"><span>Evidence class</span><select id="${EVIDENCE_ID}" style="width:100%;margin-top:4px">${filterOptions(evidenceValues,evidenceFilter,'All evidence classes')}</select></label><label class="metric"><span>Confidence</span><select id="${CONFIDENCE_ID}" style="width:100%;margin-top:4px">${filterOptions(confidenceValues,confidenceFilter,'All confidence levels')}</select></label></div>
+      <div>${evidenceTags||'<span class="muted">No normalized relationships match the active filters.</span>'}</div>
+      ${time.mode!=='current'?`<div class="row"><b>Time validity</b><br><span class="muted">${valid} explicitly valid · ${outside} outside interval · ${unknown} unknown validity. A relation's record date is not treated as its start date.</span></div>`:''}
+      <div>${rows.slice(0,24).map(r=>`<div class="row"><span class="muted">${r.outgoing?'→':'←'} ${esc(r.relationship)}</span><br><b>${esc(r.otherName)}</b> ${endpointAction(r)}<br><small>${esc(r.evidence||'unknown')} · ${esc(r.confidence||'unknown')}${r.date?` · recorded ${esc(r.date)}`:''}${time.mode!=='current'?` · ${esc(r.timeState.label)}`:''}</small></div>`).join('')||'<div class="muted">No normalized graph edges touch this country under the active filters.</div>'}</div>
+      ${rows.length>24?`<div class="muted">Showing 24 of ${rows.length} one-hop entity relations.</div>`:''}
+      <div class="boundary">Entity Trace expands topology, not geography. Evidence and confidence filters preserve the graph's existing classifications; they are not a truth score. A nonspatial endpoint is never assigned a fake map position merely because it is connected to a country.</div>`;
+    panel.prepend(card);
+    wireCard(card);
   }catch(error){
     console.warn('Entity Trace unavailable:',error);
   }finally{
@@ -101,44 +142,31 @@ async function render(){
   }
 }
 
-async function installFilters(pop){
-  const d=await load();
-  if(!document.getElementById(EVIDENCE_ID)){
-    const title=document.createElement('div');title.className='menu-title';title.textContent='Entity evidence';pop.appendChild(title);
-    const evidence=document.createElement('select');evidence.id=EVIDENCE_ID;evidence.title='Filter normalized entity relationships by evidence class';
-    const values=[...new Set(d.relationships.map(r=>r.evidence||'unknown'))].sort();
-    evidence.innerHTML='<option value="all">All evidence classes</option>'+values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');
-    evidence.value=values.includes(evidenceFilter)?evidenceFilter:'all';evidenceFilter=evidence.value;
-    evidence.addEventListener('change',()=>{evidenceFilter=evidence.value;localStorage.setItem('atlas:entity-evidence',evidenceFilter);scheduleRender();window.__potatoAtlasUI?.updateMenuSummaries?.();});pop.appendChild(evidence);
-  }
-  if(!document.getElementById(CONFIDENCE_ID)){
-    const confidence=document.createElement('select');confidence.id=CONFIDENCE_ID;confidence.title='Filter normalized entity relationships by confidence';
-    const values=[...new Set(d.relationships.map(r=>r.confidence||'unknown'))].sort();
-    confidence.innerHTML='<option value="all">All confidence levels</option>'+values.map(v=>`<option value="${esc(v)}">${esc(v)}</option>`).join('');
-    confidence.value=values.includes(confidenceFilter)?confidenceFilter:'all';confidenceFilter=confidence.value;
-    confidence.addEventListener('change',()=>{confidenceFilter=confidence.value;localStorage.setItem('atlas:entity-confidence',confidenceFilter);scheduleRender();window.__potatoAtlasUI?.updateMenuSummaries?.();});pop.appendChild(confidence);
-  }
+function setEnabled(next){
+  enabled=Boolean(next);
+  localStorage.setItem('atlas:entity-trace',enabled?'1':'0');
+  if(enabled)openInspector();
+  scheduleRender();
+  emit();
+  return enabled;
 }
-function install(){
-  if(document.getElementById(BUTTON_ID))return true;
-  const pop=document.querySelector('#traceMenu .menu-pop');if(!pop)return false;
-  const button=document.createElement('button');button.id=BUTTON_ID;button.textContent=enabled?'Entity graph · on':'Entity graph';button.title='Show normalized country→entity relationships in the inspector';button.classList.toggle('active',enabled);
-  button.addEventListener('click',()=>{enabled=!enabled;localStorage.setItem('atlas:entity-trace',enabled?'1':'0');button.textContent=enabled?'Entity graph · on':'Entity graph';button.classList.toggle('active',enabled);scheduleRender();window.__potatoAtlasUI?.updateMenuSummaries?.();});
-  pop.appendChild(button);installFilters(pop).catch(error=>console.warn('Entity Trace filters unavailable:',error));scheduleRender();return true;
-}
+function toggle(){return setEnabled(!enabled);}
 
-// Observe only the inspector panel. Ignore mutations caused by our own render,
-// and coalesce external panel replacements into one microtask so removing and
-// re-adding the card cannot recursively spawn concurrent renders.
-const panel=document.getElementById('panel');
-if(panel)new MutationObserver(()=>{
-  if(!enabled||rendering)return;
-  const code=selectedCode();
-  if(code!==lastCode||(code&&!document.getElementById(CARD_ID)))scheduleRender();
-}).observe(panel,{childList:true,subtree:false});
+// The canonical working selection owns country choice. Trace follows it rather
+// than installing a second country selector or depending on a legacy menu.
+window.addEventListener('potato-atlas-working-selection-change',event=>{
+  const code=String(event?.detail?.activeCode||event?.detail?.code||'').toUpperCase()||null;
+  if(code!==lastCode&&enabled)scheduleRender();
+});
 window.addEventListener('atlas-time-change',()=>enabled&&scheduleRender());
 
-// The Trace menu exists in the static atlas shell; a document-wide observer is
-// unnecessary and previously kept reacting to unrelated application mutations.
-install();
-window.__potatoEntityTrace={render:scheduleRender,isEnabled:()=>enabled,getFilters:()=>({evidence:evidenceFilter,confidence:confidenceFilter})};
+window.__potatoEntityTrace={
+  render:scheduleRender,
+  isEnabled:()=>enabled,
+  getFilters:()=>({evidence:evidenceFilter,confidence:confidenceFilter}),
+  setEnabled,
+  toggle
+};
+
+if(enabled)scheduleRender();
+emit();

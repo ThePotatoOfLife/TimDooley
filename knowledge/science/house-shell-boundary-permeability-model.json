@@ -1,0 +1,98 @@
+{
+  "id":"house-shell-boundary-permeability-model",
+  "title":"House vs Shell — Boundary Permeability, Exit Cost, Modularity and Interface Quality",
+  "version":"1.0.0",
+  "updated":"2026-09-11",
+  "status":"archive-generated open-systems/network model built from canonical House/Shell distinction",
+  "abstract":"The project distinguishes House from Shell not by whether a boundary exists but by what the boundary enables. Both protect an interior from an exterior; the scientific difference must therefore be expressed through permeability, selectivity, transparency, exit cost, modularity, autonomy and viability. This paper models House/Shell as an open system partitioned into internal, boundary and external states. A healthy House can reduce harmful coupling while preserving controlled exchange and genuine exits; an unhealthy Shell can preserve internal order while making exit prohibitively costly, routing all exchange through a controlling bottleneck or preventing peripheral capability from surviving outside. Graph conductance and Markov-blanket ideas supply technical neighbors, but neither determines ethical quality by itself. The central conclusion is that boundary quality is multiobjective: low permeability can be protective or imprisoning, high permeability can be enabling or destructive, and only the combination of selective flow, agency, reversibility, capability and outcomes distinguishes the project roles.",
+  "epistemic_rule":"House, Shell and Qliphoth are project/religious-comparative concepts. Markov blankets, graph cuts, access-control systems and transport/permeability equations are scientific/technical models in their own domains. They do not scientifically identify any person, institution or religious image as a literal Shell.",
+  "state_partition":{
+    "variables":"X=(X_I,X_B,X_E)",
+    "X_I":"internal states/rooms/subsystems",
+    "X_B":"boundary/interface states including Doors, sensors, credentials, membranes or gateways depending domain",
+    "X_E":"external/environment states",
+    "markov_blanket_neighbor":"In probabilistic graphical models a Markov blanket can render internal and external states conditionally independent given boundary/blanket states under the model.",
+    "formal_statement":"X_I conditionally independent of X_E given X_B for a valid Markov-blanket factorization",
+    "source":"https://pmc.ncbi.nlm.nih.gov/articles/PMC6939234/",
+    "project_use":"Boundary is not absence of relation; it can mediate relation through specialized interface states."
+  },
+  "permeability_model":{
+    "flux_template":"J=P_B Delta mu",
+    "variables":{"J":"cross-boundary flux of a defined quantity","P_B":"effective permeability/conductance coefficient with domain-specific units","Delta_mu":"driving difference/potential across boundary"},
+    "matrix_extension":"J_vec=P_matrix Delta_mu_vec for multiple typed channels when a linear approximation is appropriate",
+    "selectivity":"S_ab=P_a/P_b for two comparable transported quantities under the same domain conventions",
+    "project_lesson":"A House can be selectively permeable: some flows are encouraged, some restricted. Perfect openness is not required for healthy relation.",
+    "warning":"Do not use physical membrane units for legal/social boundaries; retain only the structural form unless a domain-specific flux is measurable."
+  },
+  "door_capacity":{
+    "door_set":"D={d_1,...,d_m}",
+    "capacity":"C_D=sum_k c_k for additive independent gateway capacities under a specified throughput model",
+    "access_probability":"p_exit(a,c)=P(agent a can discover, satisfy and execute a valid exit in context c)",
+    "exit_cost":"E_exit(a,c)=time+money+risk+information+social/legal/resource costs represented as a typed vector before optional normalization",
+    "repairability":"R_D=P(failed/denied transition can be corrected or appealed within declared process)",
+    "shell_signature":"Low p_exit combined with high E_exit and high continued-dependence after attempted exit is stronger evidence of capture than mere presence of walls."
+  },
+  "network_boundary":{
+    "cut":"For node subset S, cut(S,Sbar)=sum_{i in S,j in Sbar} w_ij in an undirected/nonnegative projection when applicable",
+    "conductance":"Phi(S)=cut(S,Sbar)/min(vol(S),vol(Sbar)) under a common graph-conductance convention",
+    "meaning":"Low conductance identifies a graph bottleneck/weakly connected module; high conductance means relatively strong cross-boundary connectivity under the chosen weights.",
+    "critical_caution":"Low conductance is not ethically bad. A secure/private room can be low-conductance by design. High conductance is not automatically good. An exploitative network can transmit value efficiently. Conductance measures structure, not purpose or consent.",
+    "source_neighbor":"graph conductance / Cheeger-cut literature"
+  },
+  "room_modularity":{
+    "house_principle":"Many rooms can remain differentiated while sharing infrastructure and controlled passage.",
+    "module_state":"Room k has internal state x_k, internal coupling W_kk and gateway couplings W_kell.",
+    "separation_question":"Are within-room functions coherent enough for local identity/capability while cross-room Doors permit needed exchange?",
+    "failure_open":"If cross-boundary coupling overwhelms all internal differentiation, rooms cease to function as rooms.",
+    "failure_closed":"If modules cannot exchange resources/information or exit/reconfigure when needed, protection becomes brittle enclosure.",
+    "project_link":"This mathematically supports House as unity-with-difference rather than undifferentiated oneness."
+  },
+  "house_shell_quality_vector":{
+    "vector":"q_B=(protection,selective_exchange,transparency,exit_access,reversibility,local_capability,privacy,repairability,capture,harm)",
+    "interpretation":"First eight are generally desired when relevant; capture and harm are generally undesired, but priorities and definitions depend on domain.",
+    "pareto_rule":"Compare boundary designs as multiobjective alternatives before inventing a single moral score.",
+    "why":"The same boundary setting can improve one goal and worsen another—for example, stronger privacy may reduce some forms of interoperability."
+  },
+  "autonomy_and_boundary":{
+    "center_removal":"A_i(c,tau)=Y_i^remove(c,tau)/Y_i^with from the Garden/Farm companion model",
+    "boundary_extension":"Also test Y_i^exit(tau): performance/capability after the node leaves the bounded system through a legitimate Door.",
+    "portability":"P_i=portable capability/resources/data retained after exit / eligible capability/resources/data before exit under a declared accounting",
+    "house_signature":"A protective House can preserve internal safety while allowing members/rooms to carry meaningful capability through legitimate exits.",
+    "shell_signature":"A captive Shell makes the participant's accumulated capability unusable outside or makes exit technically/legal/socially impossible beyond justified safety constraints."
+  },
+  "information_boundary":{
+    "channel":"Y=H_B X+N",
+    "privacy":"I(X_private;Y_external) should remain bounded under the chosen threat/privacy model",
+    "useful_exchange":"I(X_task;Y_external) or task performance should remain sufficient for intended cooperation",
+    "tradeoff":"Boundary design can seek low leakage of private state while preserving high task-relevant information flow.",
+    "project_reflection":"This supplies a rigorous version of 'walls plus Doors': protect what should remain private while enabling what must cross."
+  },
+  "boundary_control":{
+    "state_equation":"dx/dt=F(x)+B_in u_in+B_out u_out",
+    "constraints":"x(t) in V_safe; gateway actions u constrained by authorization/resource policies",
+    "least_privilege_neighbor":"Grant only capabilities required for the task rather than universal access.",
+    "door_relation":"Door logic belongs at the boundary where access conditions change admissible state transitions.",
+    "project_rule":"Healthy protection should be explainable in terms of explicit threats, functions and constraints rather than arbitrary dependence on a gatekeeper."
+  },
+  "house_to_shell_transition":{
+    "control_parameters":["exit_cost","gateway concentration","opaque denial rate","resource portability","central dependency","privacy leakage","harm rate","appeal/repair success"],
+    "transition_hypothesis":"A House can drift toward Shell when exit/appeal become less feasible, capabilities become less portable, and boundary control increasingly serves center preservation rather than declared protection/function.",
+    "not_single_threshold":"No universal numerical Shell threshold is claimed; domain-specific norms and constraints are required.",
+    "door_failure_connection":"False Door, infinite deepening and credential capture are observable failure modes already present in the canonical Door atlas."
+  },
+  "empirical_examples":{
+    "software_platform":"measure API/export capability, data portability, account-exit friction, moderation transparency, dependency on proprietary interfaces",
+    "organization":"measure internal modularity, cross-team throughput, ability to transfer skills, exit costs and appeal mechanisms",
+    "secure_system":"measure authorized throughput, unauthorized leakage, false reject/accept rates and recovery/appeal paths",
+    "archive":"measure source access, navigation between rooms/topics, export/reuse, broken links, provenance portability and whether reader conclusions survive outside one UI"
+  },
+  "measurement_protocol":{
+    "declare":"system boundary, internal/external states, legitimate protected assets, permitted flow types, agent classes, Doors, threat model and time horizon",
+    "measure":["typed flow/permeability","gateway concentration","conductance/modularity where applicable","exit success/cost","resource/data/capability portability","repair/appeal success","privacy leakage","task performance","harm"],
+    "baselines":["fully open boundary","fully closed boundary","distributed gateway design","centralized gateway design"],
+    "falsifier":"If a supposedly House-like design does not improve protection or viable differentiated function and instead primarily increases opaque dependency/exit cost without compensating safety benefit, the House interpretation is weakened in that empirical domain."
+  },
+  "conclusions":["House and Shell cannot be distinguished by closedness alone; both are boundary systems.","The scientifically informative variables are selective permeability, exit/appeal, portability, modularity, privacy, capability and objective.","A healthy Door is neither unrestricted openness nor arbitrary gatekeeping; it is a typed interface with explicit conditions and repair paths.","Unity-with-difference has a concrete systems meaning: modules can preserve local structure while exchanging selected resources/information through boundaries.","Boundary science improves the project by making 'capture' a measurable failure hypothesis rather than a label inferred from disagreement."],
+  "sources":[{"topic":"Markov blankets as internal/boundary/external partition","url":"https://pmc.ncbi.nlm.nih.gov/articles/PMC6939234/"}],
+  "connections":["knowledge/core/door-topology-access-and-capability-atlas.json","knowledge/science/garden-farm-control-network-model.json","knowledge/philosophy/timic-dynamics.json","knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json","knowledge/world/farm-swamp-tree-of-strife-atlas.json","knowledge/science/integrated-scientific-architecture.json"]
+}

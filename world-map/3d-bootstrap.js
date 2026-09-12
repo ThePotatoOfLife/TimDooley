@@ -1,9 +1,8 @@
 // Core-first bootstrap for the 3D World Relational Atlas.
 //
 // The geographic renderer is the availability boundary. The map and lightweight
-// UI become interactive first. Every analytical/enrichment module stays dormant
-// until a user action actually needs it. This prevents post-paint background work
-// from turning a healthy map into "it loaded, then started hanging".
+// registry/query UI become interactive first. Deeper analytical/enrichment modules
+// stay dormant until a user action needs them.
 
 const statusNode = () => document.querySelector('#status');
 const guard = () => window.__potatoAtlasBootGuard;
@@ -32,8 +31,6 @@ function setStatus(message, kind = 'info') {
 
 function sleep(ms) { return new Promise(resolve => setTimeout(resolve, ms)); }
 
-// requestAnimationFrame can be throttled in background tabs. Always retain a
-// timer escape hatch so waiting for paint cannot become a new boot deadlock.
 function nextPaint(maxWaitMs = 160) {
   return new Promise(resolve => {
     let done = false;
@@ -131,55 +128,45 @@ window.__potatoAtlasDiagnostics = {
   modules: {},
 };
 window.__potatoAtlasReady = false;
-// One shared loader keeps diagnostics/deduplication/cache versioning intact even
-// when the UI or another optional module promotes a dormant feature on demand.
 window.__potatoAtlasLoadModule = loadAfterPaint;
 
 try {
   setStatus('Loading core atlas…');
 
-  // 3d-hover owns resilient local-first data routing and imports 3d-app, which
-  // constructs the MapLibre renderer and geographic country layers.
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
 
-  // Lightweight interaction surfaces load immediately. The working-selection
-  // controller composes over the legacy active-country core rather than replacing
-  // the renderer, and Lenses own fill color without owning selection state.
-  await loadAfterPaint('Progressive UI', './3d-ui.js');
-  await loadAfterPaint('Selection UI', './3d-selection-ui.js');
+  // Ordinary interaction is now registry-driven. Legacy Progressive UI,
+  // Selection UI and Lenses are compatibility modules only; they no longer boot
+  // into the normal map path because they generated redundant surfaces and a
+  // single-fill analytical model.
   await loadAfterPaint('Country selection', './3d-country-selection.js');
-  await loadAfterPaint('Lenses', './3d-lenses.js');
+  await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
+  await loadAfterPaint('Compositor', './3d-compositor.js');
+  await loadAfterPaint('World Bar', './3d-world-bar.js');
+  await loadAfterPaint('Country Card', './3d-country-card.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
   window.__potatoAtlasDiagnostics.interactiveMs = Math.round(now() - window.__potatoAtlasDiagnostics.startedAt);
   window.dispatchEvent(new CustomEvent('potato-atlas-interactive'));
 
-  declareDormant('Path finder', './3d-pathfinder.js', 'Trace menu');
-  declareDormant('Entity Trace', './3d-entity-trace.js', 'Trace menu');
+  declareDormant('Progressive UI', './3d-ui.js', 'legacy compatibility');
+  declareDormant('Selection UI', './3d-selection-ui.js', 'legacy compatibility');
+  declareDormant('Lenses', './3d-lenses.js', 'legacy compatibility');
+  declareDormant('Path finder', './3d-pathfinder.js', 'contextual investigation');
+  declareDormant('Entity Trace', './3d-entity-trace.js', 'country-card contextual action');
   declareDormant('Demography', './3d-demography.js', 'first country inspection');
   declareDormant('Country Pulse', './3d-country-pulse.js', 'first country inspection');
   declareDormant('Evidence', './3d-evidence.js', 'first country inspection');
-  declareDormant('Fields', './3d-fields.js', 'Layers menu');
-  declareDormant('Networks', './3d-networks.js', 'Layers menu');
-  declareDormant('Time', './3d-time.js', 'Time menu');
-  declareDormant('Axis depth', './3d-axis-depth.js', 'View menu');
-  declareDormant('Axis operators', './3d-axis-operators.js', 'View menu');
-  declareDormant('North Axis', './3d-axis.js', 'Layers or View menu');
+  declareDormant('Fields', './3d-fields.js', 'contextual advanced layers');
+  declareDormant('Networks', './3d-networks.js', 'contextual advanced relations');
+  declareDormant('Time', './3d-time.js', 'contextual time action');
+  declareDormant('Axis depth', './3d-axis-depth.js', 'contextual Axis action');
+  declareDormant('Axis operators', './3d-axis-operators.js', 'contextual Axis action');
+  declareDormant('North Axis', './3d-axis.js', 'contextual Axis action');
 
-  const promoteLayers = async () => {
-    await loadAfterPaint('Fields', './3d-fields.js');
-    await loadAfterPaint('Networks', './3d-networks.js');
-    await loadAfterPaint('North Axis', './3d-axis.js');
-  };
-  const promoteTime = () => loadAfterPaint('Time', './3d-time.js');
-  const promoteAxis = async () => {
-    await loadAfterPaint('Axis depth', './3d-axis-depth.js');
-    await loadAfterPaint('Axis operators', './3d-axis-operators.js');
-    await loadAfterPaint('North Axis', './3d-axis.js');
-  };
   const promoteInspection = async () => {
     await Promise.all([
       loadAfterPaint('Demography', './3d-demography.js'),
@@ -188,31 +175,6 @@ try {
     ]);
   };
 
-  const layersMenu = document.getElementById('layersMenu');
-  const timeMenu = document.getElementById('timeMenu');
-  const viewMenu = document.getElementById('viewMenu');
-
-  const onLayersToggle = () => {
-    if (!layersMenu?.open) return;
-    layersMenu.removeEventListener('toggle', onLayersToggle);
-    promoteLayers();
-  };
-  const onTimeToggle = () => {
-    if (!timeMenu?.open) return;
-    timeMenu.removeEventListener('toggle', onTimeToggle);
-    promoteTime();
-  };
-  const onViewToggle = () => {
-    if (!viewMenu?.open) return;
-    viewMenu.removeEventListener('toggle', onViewToggle);
-    promoteAxis();
-  };
-  layersMenu?.addEventListener('toggle', onLayersToggle);
-  timeMenu?.addEventListener('toggle', onTimeToggle);
-  viewMenu?.addEventListener('toggle', onViewToggle);
-
-  // Inspector enrichment follows an actual country selection. The map remains
-  // light when a user only pans/zooms without inspecting anything.
   let inspectionPromoted = false;
   const promoteInspectionOnce = event => {
     if (inspectionPromoted) return;

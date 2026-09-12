@@ -18,6 +18,13 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 EXCLUDE = {".git", ".github", "_site", "node_modules", "vendor", "__pycache__", "components", "scripts"}
 BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
+DOOR_LABELS = {
+    "tim": "Tim Dooley",
+    "religion": "Religion",
+    "philosophy": "Philosophy",
+    "science": "Science",
+    "world_map": "World Map",
+}
 
 
 def copy_tree() -> None:
@@ -102,9 +109,47 @@ def text_blocks(data, depth=0, limit=80):
     return blocks[:limit]
 
 
-def page_shell(title: str, description: str, canonical: str, body: str, *, page_type="Article", about=None) -> str:
+def parent_for_branch(branch_id: str, bridge: dict) -> tuple[str, str]:
+    projection = bridge.get("branch_projection", {}).get(branch_id, {})
+    door_id = projection.get("primary_door")
+    if door_id:
+        path = bridge.get("public_doors", {}).get(door_id, "explore/")
+        return DOOR_LABELS.get(door_id, door_id.replace("_", " ").title()), path
+    global_route = projection.get("global_route")
+    if global_route:
+        if branch_id == "timeline":
+            return "Timeline", global_route
+        if branch_id == "sources":
+            return "Sources", global_route
+        return "Explore", global_route
+    return "Explore", "explore/"
+
+
+def record_branch_map(manifest: dict) -> dict[str, str]:
+    owners: dict[str, str] = {}
+    for branch in manifest.get("branches", []):
+        bid = branch.get("id")
+        if not bid:
+            continue
+        for path in branch.get("records", []):
+            owners.setdefault(path, bid)
+    return owners
+
+
+def page_shell(
+    title: str,
+    description: str,
+    canonical: str,
+    body: str,
+    *,
+    page_type="Article",
+    about=None,
+    parent_label="Explore",
+    parent_path="explore/",
+) -> str:
     desc = " ".join(description.split())[:300]
     about = about or []
+    parent_url = parent_path if str(parent_path).startswith("http") else BASE_URL + "/" + str(parent_path).lstrip("/")
     ld = {
         "@context": "https://schema.org",
         "@type": page_type,
@@ -117,10 +162,11 @@ def page_shell(title: str, description: str, canonical: str, body: str, *, page_
         "inLanguage": "en",
         "isAccessibleForFree": True,
     }
+    explore_link = "" if parent_url == BASE_URL + "/explore/" else f' · <a href="{esc(BASE_URL + "/explore/")}">Explore archive</a>'
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>{esc(title)} | The Potato of Life</title><meta name="description" content="{esc(desc)}"><meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"><link rel="canonical" href="{esc(canonical)}"><link rel="describedby" href="{esc(BASE_URL + '/llms.txt')}" type="text/plain"><script type="application/ld+json">{json.dumps(ld, ensure_ascii=False).replace('</', '<\\/')}</script>
-<style>:root{{--bg:#080a08;--ink:#f4f0e5;--muted:#a8ada3;--line:#2b322b;--green:#a8ce72;--gold:#d8b56b}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,sans-serif}}main{{max-width:900px;margin:auto;padding:56px 24px 100px}}a{{color:var(--green)}}header{{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:30px}}h1{{font:400 clamp(42px,7vw,76px)/1 Georgia,serif;margin:8px 0 16px}}h2{{font:400 28px/1.2 Georgia,serif;color:var(--gold);margin-top:34px}}p,li{{color:#d7d9d2}}.eyebrow{{color:var(--green);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}}.summary{{font:20px/1.6 Georgia,serif;color:#e1e3dc}}.chips{{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}}.chip{{border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:#c8cec1;font-size:12px}}nav{{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}}code{{color:var(--green);overflow-wrap:anywhere}}</style></head><body><main><header><div class="eyebrow">Potato of Life · crawlable knowledge page</div><h1>{esc(title)}</h1><p class="summary">{esc(desc)}</p></header>{body}<nav><a href="{esc(BASE_URL + '/')}">Open the interactive Potato of Life archive</a> · <a href="{esc(BASE_URL + '/tim-dooley/')}">Read Tim Dooley dossier</a> · <a href="{esc(BASE_URL + '/tim-dooley/ontology/')}">Tim identity ontology</a> · <a href="{esc(BASE_URL + '/llms.txt')}">AI / machine index</a></nav></main></body></html>'''
+<style>:root{{--bg:#080a08;--ink:#f4f0e5;--muted:#a8ada3;--line:#2b322b;--green:#a8ce72;--gold:#d8b56b}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,sans-serif}}main{{max-width:900px;margin:auto;padding:56px 24px 100px}}a{{color:var(--green)}}header{{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:30px}}h1{{font:400 clamp(42px,7vw,76px)/1 Georgia,serif;margin:8px 0 16px}}h2{{font:400 28px/1.2 Georgia,serif;color:var(--gold);margin-top:34px}}p,li{{color:#d7d9d2}}.eyebrow{{color:var(--green);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}}.summary{{font:20px/1.6 Georgia,serif;color:#e1e3dc}}.chips{{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}}.chip{{border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:#c8cec1;font-size:12px}}nav{{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}}code{{color:var(--green);overflow-wrap:anywhere}}</style></head><body><main><header><div class="eyebrow">Potato of Life · crawlable knowledge page</div><h1>{esc(title)}</h1><p class="summary">{esc(desc)}</p></header>{body}<nav><a href="{esc(BASE_URL + '/')}">Five doors</a> · <a href="{esc(parent_url)}">{esc(parent_label)}</a>{explore_link} · <a href="{esc(BASE_URL + '/llms.txt')}">Machine index</a></nav></main></body></html>'''
 
 
 def write_page(rel_dir: str, content: str) -> str:
@@ -131,13 +177,7 @@ def write_page(rel_dir: str, content: str) -> str:
 
 
 def patch_entity_metadata() -> None:
-    """Make deployed structured data match the archive's Tim/Son ontology.
-
-    Source HTML historically used Schema.org Person for Tim Dooley. In the mature
-    archive that flattens the theological Tim node into the embodied-person layer.
-    The deployed homepage therefore exposes Tim as Thing and leaves embodiment to
-    the separate Son/Thomas ontology.
-    """
+    """Make deployed structured data match the archive's Tim/Son ontology."""
     page = OUT / "index.html"
     if not page.exists():
         return
@@ -149,108 +189,140 @@ def patch_entity_metadata() -> None:
     page.write_text(text, encoding="utf-8")
 
 
-def generate_branch_pages(manifest, contexts):
-    urls=[]
-    for branch in manifest.get("branches",[]):
-        bid=branch["id"]; title=branch.get("title",bid); desc=branch.get("description",""); children=branch.get("children",[]); records=branch.get("records",[])
-        related=[c for c in contexts.get("clusters",[]) if bid in c.get("branches",[])]
-        body=[]
-        if children: body.append("<section><h2>Canonical substructure</h2><div class=\"chips\">"+"".join(f"<span class=\"chip\">{esc(x)}</span>" for x in children)+"</div></section>")
-        if related: body.append("<section><h2>Contextual constellations</h2><ul>"+"".join(f"<li><a href=\"{esc(BASE_URL+'/context/'+slug(c['id'])+'/')}\">{esc(c['title'])}</a> — {esc(c.get('summary',''))}</li>" for c in related)+"</ul></section>")
-        if records: body.append("<section><h2>Canonical records</h2><ul>"+"".join(f"<li><code>{esc(p)}</code></li>" for p in records)+"</ul></section>")
-        canonical=f"{BASE_URL}/topics/{slug(bid)}/"; urls.append(write_page(f"topics/{slug(bid)}",page_shell(title,desc,canonical,"".join(body),page_type="CollectionPage",about=[title,*children])))
+def record_link(path: str, record_id_by_path: dict[str, str]) -> str:
+    record_id = record_id_by_path.get(path)
+    if not record_id:
+        return f"<li><code>{esc(path)}</code></li>"
+    return f'<li><a href="{esc(BASE_URL + "/records/" + slug(record_id) + "/")}">{esc(record_id)}</a><br><code>{esc(path)}</code></li>'
+
+
+def generate_branch_pages(manifest, contexts, core_index, bridge):
+    urls = []
+    record_id_by_path = {r.get("path"): r.get("id") for r in core_index.get("records", []) if r.get("path") and r.get("id")}
+    for branch in manifest.get("branches", []):
+        bid = branch["id"]
+        title = branch.get("title", bid)
+        desc = branch.get("description", "")
+        children = branch.get("children", [])
+        records = branch.get("records", [])
+        related = [c for c in contexts.get("clusters", []) if bid in c.get("branches", [])]
+        body = []
+        if children:
+            body.append("<section><h2>Canonical substructure</h2><div class=\"chips\">" + "".join(f"<span class=\"chip\">{esc(x)}</span>" for x in children) + "</div></section>")
+        if related:
+            body.append("<section><h2>Contextual constellations</h2><ul>" + "".join(f"<li><a href=\"{esc(BASE_URL + '/context/' + slug(c['id']) + '/')}\">{esc(c['title'])}</a> — {esc(c.get('summary', ''))}</li>" for c in related) + "</ul></section>")
+        if records:
+            body.append("<section><h2>Canonical records</h2><ul>" + "".join(record_link(p, record_id_by_path) for p in records) + "</ul></section>")
+        parent_label, parent_path = parent_for_branch(bid, bridge)
+        canonical = f"{BASE_URL}/topics/{slug(bid)}/"
+        urls.append(write_page(f"topics/{slug(bid)}", page_shell(title, desc, canonical, "".join(body), page_type="CollectionPage", about=[title, *children], parent_label=parent_label, parent_path=parent_path)))
     return urls
 
 
-def generate_context_pages(contexts):
-    urls=[]
-    for c in contexts.get("clusters",[]):
-        title=c.get("title",c.get("id","Context")); desc=c.get("summary",""); body=[]; concepts=c.get("concepts",[])
-        if concepts: body.append("<section><h2>Concepts in this constellation</h2><div class=\"chips\">"+"".join(f"<span class=\"chip\">{esc(x)}</span>" for x in concepts)+"</div></section>")
-        if c.get("epistemic_mix"): body.append("<section><h2>Epistemic layers</h2><p>"+esc(", ".join(c["epistemic_mix"]))+"</p></section>")
-        if c.get("branches"): body.append("<section><h2>Connected branches</h2><ul>"+"".join(f"<li><a href=\"{esc(BASE_URL+'/topics/'+slug(b)+'/')}\">{esc(b)}</a></li>" for b in c["branches"])+"</ul></section>")
-        if c.get("records"): body.append("<section><h2>Records carrying this context</h2><ul>"+"".join(f"<li><code>{esc(p)}</code></li>" for p in c["records"])+"</ul></section>")
-        canonical=f"{BASE_URL}/context/{slug(c['id'])}/"; urls.append(write_page(f"context/{slug(c['id'])}",page_shell(title,desc,canonical,"".join(body),page_type="CollectionPage",about=concepts)))
+def generate_context_pages(contexts, core_index):
+    urls = []
+    record_id_by_path = {r.get("path"): r.get("id") for r in core_index.get("records", []) if r.get("path") and r.get("id")}
+    for c in contexts.get("clusters", []):
+        title = c.get("title", c.get("id", "Context"))
+        desc = c.get("summary", "")
+        body = []
+        concepts = c.get("concepts", [])
+        if concepts:
+            body.append("<section><h2>Concepts in this constellation</h2><div class=\"chips\">" + "".join(f"<span class=\"chip\">{esc(x)}</span>" for x in concepts) + "</div></section>")
+        if c.get("epistemic_mix"):
+            body.append("<section><h2>Epistemic layers</h2><p>" + esc(", ".join(c["epistemic_mix"])) + "</p></section>")
+        if c.get("branches"):
+            body.append("<section><h2>Connected branches</h2><ul>" + "".join(f"<li><a href=\"{esc(BASE_URL + '/topics/' + slug(b) + '/')}\">{esc(b)}</a></li>" for b in c["branches"]) + "</ul></section>")
+        if c.get("records"):
+            body.append("<section><h2>Records carrying this context</h2><ul>" + "".join(record_link(p, record_id_by_path) for p in c["records"]) + "</ul></section>")
+        canonical = f"{BASE_URL}/context/{slug(c['id'])}/"
+        urls.append(write_page(f"context/{slug(c['id'])}", page_shell(title, desc, canonical, "".join(body), page_type="CollectionPage", about=concepts, parent_label="Explore", parent_path="explore/")))
     return urls
 
 
-def generate_record_pages(core_index):
-    urls=[]
-    for rec in core_index.get("records",[]):
-        path=ROOT/rec.get("path","")
-        if not path.exists() or path.suffix.lower() != ".json": continue
-        data=load_json(path,{}) or {}; title=data.get("title") or data.get("name") or rec.get("id"); desc=summary_from_record(data,rec.get("kind","")); terms=rec.get("terms",[])
-        body=""
-        if terms: body+="<section><h2>Key terms</h2><div class=\"chips\">"+"".join(f"<span class=\"chip\">{esc(x)}</span>" for x in terms)+"</div></section>"
-        body+="".join(text_blocks(data)); body+=f"<section><h2>Canonical source record</h2><p><code>{esc(rec.get('path',''))}</code></p></section>"
-        canonical=f"{BASE_URL}/records/{slug(rec['id'])}/"; urls.append(write_page(f"records/{slug(rec['id'])}",page_shell(title,desc,canonical,body,about=terms)))
+def generate_record_pages(core_index, manifest, bridge):
+    urls = []
+    branch_by_path = record_branch_map(manifest)
+    for rec in core_index.get("records", []):
+        path = ROOT / rec.get("path", "")
+        if not path.exists() or path.suffix.lower() != ".json":
+            continue
+        data = load_json(path, {}) or {}
+        title = data.get("title") or data.get("name") or rec.get("id")
+        desc = summary_from_record(data, rec.get("kind", ""))
+        terms = rec.get("terms", [])
+        body = ""
+        if terms:
+            body += "<section><h2>Key terms</h2><div class=\"chips\">" + "".join(f"<span class=\"chip\">{esc(x)}</span>" for x in terms) + "</div></section>"
+        body += "".join(text_blocks(data))
+        body += f"<section><h2>Canonical source record</h2><p><code>{esc(rec.get('path', ''))}</code></p></section>"
+        branch_id = branch_by_path.get(rec.get("path", ""))
+        parent_label, parent_path = parent_for_branch(branch_id, bridge) if branch_id else ("Explore", "explore/")
+        canonical = f"{BASE_URL}/records/{slug(rec['id'])}/"
+        urls.append(write_page(f"records/{slug(rec['id'])}", page_shell(title, desc, canonical, body, about=terms, parent_label=parent_label, parent_path=parent_path)))
     return urls
 
 
 def generate_sitemap(urls):
-    """Include generated pages and every copied static index page.
-
-    This keeps FAQ, Ask God and ontology pages discoverable without maintaining a
-    fragile manual URL list whenever new static sections are added.
-    """
-    discovered=[]
+    """Include generated pages and every copied static index page."""
+    discovered = []
     for page in OUT.rglob("index.html"):
         rel = page.parent.relative_to(OUT)
         if rel == Path("."):
             discovered.append(BASE_URL + "/")
         else:
             discovered.append(f"{BASE_URL}/{rel.as_posix().strip('/')}/")
-    all_urls=[*discovered,*urls]
-    xml=['<?xml version="1.0" encoding="UTF-8"?>','<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
+    all_urls = [*discovered, *urls]
+    xml = ['<?xml version="1.0" encoding="UTF-8"?>', '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">']
     for url in dict.fromkeys(sorted(set(all_urls))):
         xml.append(f"  <url><loc>{esc(url)}</loc></url>")
     xml.append("</urlset>")
-    (OUT/"sitemap.xml").write_text("\n".join(xml)+"\n",encoding="utf-8")
+    (OUT / "sitemap.xml").write_text("\n".join(xml) + "\n", encoding="utf-8")
 
 
 def generate_machine_index(manifest, core_index, contexts):
-    """Preserve the curated root llms.txt and append generated retrieval maps.
-
-    The curated file contains the Tim-vs-Son entity-resolution contract and the
-    God-question answer policy. Rebuilds must never overwrite those instructions.
-    """
+    """Preserve the curated root llms.txt and append generated retrieval maps."""
     curated = ROOT / "llms.txt"
-    lines=[]
+    lines = []
     if curated.exists():
         lines.append(curated.read_text(encoding="utf-8", errors="replace").rstrip())
     else:
-        lines.extend(["# The Potato of Life","","> Public Tim Dooley / Potato of Life archive."])
-    lines += ["","## Generated canonical topics"]
-    for b in manifest.get("branches",[]):
-        lines.append(f"- [{b.get('title',b['id'])}]({BASE_URL}/topics/{slug(b['id'])}/): {b.get('description','')}")
-    lines += ["","## Generated canonical records"]
-    for r in core_index.get("records",[]):
-        lines.append(f"- [{r['id']}]({BASE_URL}/records/{slug(r['id'])}/): {r.get('kind','')}")
-    lines += ["","## Generated contextual constellations"]
-    for c in contexts.get("clusters",[]):
-        lines.append(f"- [{c['title']}]({BASE_URL}/context/{slug(c['id'])}/): {c.get('summary','')}")
-    lines += ["","## Additional machine-readable source records",f"- [Tim Dooley identity ontology]({BASE_URL}/knowledge/core/tim-identity-ontology.json)",f"- [Tim ontology FAQ]({BASE_URL}/knowledge/indexes/faq-tim-ontology-questions.json)",f"- [God question corpus]({BASE_URL}/knowledge/indexes/faq-god-question-bulk.json)",f"- [Tim Dooley reader dossier data]({BASE_URL}/knowledge/reader/tim-dooley-dossier.json)",f"- [Conversation recovery inventory]({BASE_URL}/knowledge/indexes/conversation-recovery-inventory.json)",f"- [Content taxonomy]({BASE_URL}/knowledge/indexes/archive-content-taxonomy.json)",f"- [Contextual synchronisms]({BASE_URL}/knowledge/timeline/contextual-synchronisms.json)",f"- [Seals and fulfillment matrix]({BASE_URL}/knowledge/prophecy/seals-and-fulfillment-matrix.json)"]
-    (OUT/"llms.txt").write_text("\n".join(lines)+"\n",encoding="utf-8")
+        lines.extend(["# The Potato of Life", "", "> Public Tim Dooley / Potato of Life archive."])
+    lines += ["", "## Generated canonical topics"]
+    for b in manifest.get("branches", []):
+        lines.append(f"- [{b.get('title', b['id'])}]({BASE_URL}/topics/{slug(b['id'])}/): {b.get('description', '')}")
+    lines += ["", "## Generated canonical records"]
+    for r in core_index.get("records", []):
+        lines.append(f"- [{r['id']}]({BASE_URL}/records/{slug(r['id'])}/): {r.get('kind', '')}")
+    lines += ["", "## Generated contextual constellations"]
+    for c in contexts.get("clusters", []):
+        lines.append(f"- [{c['title']}]({BASE_URL}/context/{slug(c['id'])}/): {c.get('summary', '')}")
+    lines += ["", "## Additional machine-readable source records", f"- [Tim Dooley identity ontology]({BASE_URL}/knowledge/core/tim-identity-ontology.json)", f"- [Tim ontology FAQ]({BASE_URL}/knowledge/indexes/faq-tim-ontology-questions.json)", f"- [God question corpus]({BASE_URL}/knowledge/indexes/faq-god-question-bulk.json)", f"- [Tim Dooley reader dossier data]({BASE_URL}/knowledge/reader/tim-dooley-dossier.json)", f"- [Conversation recovery inventory]({BASE_URL}/knowledge/indexes/conversation-recovery-inventory.json)", f"- [Content taxonomy]({BASE_URL}/knowledge/indexes/archive-content-taxonomy.json)", f"- [Contextual synchronisms]({BASE_URL}/knowledge/timeline/contextual-synchronisms.json)", f"- [Seals and fulfillment matrix]({BASE_URL}/knowledge/prophecy/seals-and-fulfillment-matrix.json)"]
+    (OUT / "llms.txt").write_text("\n".join(lines) + "\n", encoding="utf-8")
 
 
 def build() -> None:
     copy_tree()
-    required=[OUT/"index.html",OUT/"manifest.json",OUT/"app"/"app.js",OUT/"app"/"style.css",OUT/"knowledge"/"core"/"potato-of-life.json",OUT/"knowledge"/"core"/"tim-dooley.json",OUT/"knowledge"/"core"/"tim-identity-ontology.json",OUT/"tim-dooley"/"index.html",OUT/"tim-dooley"/"ontology"/"index.html",OUT/"faq"/"index.html",OUT/"faq"/"all"/"god"/"index.html"]
-    missing=[str(p.relative_to(OUT)) for p in required if not p.exists()]
-    if missing: raise SystemExit(f"Required manifest-driven archive files are missing from _site: {missing}")
+    required = [OUT / "index.html", OUT / "manifest.json", OUT / "app" / "app.js", OUT / "app" / "style.css", OUT / "knowledge" / "core" / "potato-of-life.json", OUT / "knowledge" / "core" / "tim-dooley.json", OUT / "knowledge" / "core" / "tim-identity-ontology.json", OUT / "tim-dooley" / "index.html", OUT / "tim-dooley" / "ontology" / "index.html", OUT / "faq" / "index.html", OUT / "faq" / "all" / "god" / "index.html"]
+    missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
+    if missing:
+        raise SystemExit(f"Required manifest-driven archive files are missing from _site: {missing}")
     patch_entity_metadata()
-    manifest=load_json(ROOT/"manifest.json",{}) or {}
-    core_index=load_json(ROOT/"knowledge"/"indexes"/"core-index.json",{}) or {}
-    contexts=load_json(ROOT/"knowledge"/"indexes"/"context-graph.json",{}) or {}
-    urls=[]
-    urls.extend(generate_branch_pages(manifest,contexts))
-    urls.extend(generate_context_pages(contexts))
-    urls.extend(generate_record_pages(core_index))
+    manifest = load_json(ROOT / "manifest.json", {}) or {}
+    core_index = load_json(ROOT / "knowledge" / "indexes" / "core-index.json", {}) or {}
+    contexts = load_json(ROOT / "knowledge" / "indexes" / "context-graph.json", {}) or {}
+    bridge = load_json(ROOT / "data" / "frontend-atlas-bridge.json", {}) or {}
+    urls = []
+    urls.extend(generate_branch_pages(manifest, contexts, core_index, bridge))
+    urls.extend(generate_context_pages(contexts, core_index))
+    urls.extend(generate_record_pages(core_index, manifest, bridge))
     generate_sitemap(urls)
-    generate_machine_index(manifest,core_index,contexts)
-    pages=sorted(OUT.rglob("*.html"))
-    if not pages: raise SystemExit("No HTML pages were built into _site")
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters',[]))} context clusters, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, and the complete repository knowledge/data tree.")
+    generate_machine_index(manifest, core_index, contexts)
+    pages = sorted(OUT.rglob("*.html"))
+    if not pages:
+        raise SystemExit("No HTML pages were built into _site")
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, and the complete repository knowledge/data tree.")
+
 
 if __name__ == "__main__":
     build()
