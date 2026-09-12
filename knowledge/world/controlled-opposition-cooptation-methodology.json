@@ -1,0 +1,106 @@
+{
+  "id": "controlled-opposition-cooptation-methodology",
+  "version": "1.0.0",
+  "updated": "2026-09-12",
+  "status": "analytical-methodology",
+  "purpose": "Replace the unfalsifiable label 'controlled opposition' with testable mechanisms, evidence requirements and disconfirmation rules.",
+  "core_rule": "Never store controlled_opposition as an intrinsic boolean property. Store a specific alleged or observed mechanism, actor, date, evidence and counterevidence.",
+  "mechanisms": [
+    {
+      "id": "state-infiltration",
+      "definition": "State or law-enforcement personnel or informants enter an organization or movement to collect intelligence or influence activity.",
+      "minimum_evidence": ["official record, court record, declassified file, inspector-general finding or multiple strong corroborating sources"],
+      "anchor_case": "COINTELPRO",
+      "falsifiers": ["no evidence of infiltrator relationship", "claimed infiltrator predates or postdates alleged operation", "documents show independent activity rather than directed influence"]
+    },
+    {
+      "id": "deliberate-disruption",
+      "definition": "An external actor intentionally creates discord, reputational damage or organizational dysfunction inside an opposition group.",
+      "minimum_evidence": ["documented instruction, operation record, payment/communication chain or credible admission"],
+      "anchor_case": "COINTELPRO historical operations",
+      "falsifiers": ["conflict is better explained by ordinary factional disagreement", "no operational link to alleged controller"]
+    },
+    {
+      "id": "cooptation",
+      "definition": "An opposition actor changes incentives or behavior after receiving access, office, funding, institutional status or other benefits from an incumbent system.",
+      "minimum_evidence": ["documented benefit plus dated behavioral/policy change", "evidence of dependency or negotiated exchange when control is alleged"],
+      "falsifiers": ["position predates benefit", "organization continues costly opposition despite benefit", "funding is unrestricted and governance remains demonstrably independent"]
+    },
+    {
+      "id": "concealed-sponsorship-astroturfing",
+      "definition": "A campaign presented as independent grassroots activity is materially organized or financed by an undisclosed sponsor.",
+      "minimum_evidence": ["funding records, contracts, internal communications, disclosure violation or investigative documentation"],
+      "falsifiers": ["sponsor publicly disclosed", "material grassroots organization predates sponsor", "claimed financing not found"]
+    },
+    {
+      "id": "strategic-opponent-amplification",
+      "definition": "An actor spends or communicates to increase the visibility of an opponent believed to be easier to defeat or more polarizing.",
+      "minimum_evidence": ["documented spending/message plus candidate/opponent and timing", "intent evidence when claiming strategic purpose"],
+      "falsifiers": ["spending actually attacks rather than amplifies opponent", "no evidence of intended electoral strategy"]
+    },
+    {
+      "id": "donor-capture",
+      "definition": "A funder acquires durable agenda-setting leverage over a nominally independent organization.",
+      "minimum_evidence": ["material funding concentration", "governance rights, conditional grants, documented pressure or consistent donor-directed program constraints"],
+      "falsifiers": ["diversified funding", "independent governance", "public disagreements with donor", "no evidence of donor conditions"]
+    },
+    {
+      "id": "vendor-consultant-capture",
+      "definition": "Consultants, vendors, legal/PR firms or contractors gain outsized influence over an organization's decisions through dependency or information asymmetry.",
+      "minimum_evidence": ["contracts, recurring payments, decision records, documented authority or dependency"],
+      "falsifiers": ["routine vendor relationship", "competitive procurement", "no evidence vendor shaped policy or strategy"]
+    },
+    {
+      "id": "platform-dependency",
+      "definition": "An opposition actor's reach or survival becomes dependent on a platform, payment processor, host, advertiser or distributor that can shape behavior through access rules.",
+      "minimum_evidence": ["documented revenue/reach concentration", "platform enforcement or contractual terms linked to behavior"],
+      "falsifiers": ["multi-platform resilience", "independent funding/distribution", "no behavior change after enforcement"]
+    },
+    {
+      "id": "informant-provocateur-allegation",
+      "definition": "Claim that a participant secretly reports to authorities or deliberately pushes a group toward harmful/illegal behavior on behalf of another actor.",
+      "minimum_evidence": ["court/official record, payment or handler communications, verified identity/admission"],
+      "default_status": "alleged until strong evidence",
+      "falsifiers": ["no handler relationship", "behavior independently motivated", "claim originates solely from factional accusation"]
+    },
+    {
+      "id": "opposition-fragmentation",
+      "definition": "Opposition capacity is reduced through factional division, splintering, rivalry or incompatible incentives.",
+      "minimum_evidence": ["observable splits, competing organizations, public conflict and consequences"],
+      "note": "Fragmentation can be endogenous. External orchestration must be separately proven.",
+      "falsifiers": ["coalition remains coordinated", "fragmentation predates alleged external intervention"]
+    },
+    {
+      "id": "autonomous-opposition",
+      "definition": "Organization or actor is independently financed/governed and meaningfully opposes the target system despite overlap, negotiation or partial cooperation.",
+      "purpose": "Positive counter-hypothesis that prevents every compromise or adjacency from becoming evidence of control.",
+      "evidence": ["independent governance", "diverse funding", "costly public disagreement", "separate decision processes", "documented conflict with alleged controller"]
+    }
+  ],
+  "historical_anchor": {
+    "case": "COINTELPRO",
+    "source": "https://www.fbi.gov/history/history-of-the-fbi/and-justice-for-all",
+    "supports": ["infiltration", "sowing discord", "attempts to discredit targeted groups"],
+    "limitation": "A historical state program establishes that these mechanisms can occur; it does not establish their presence in any modern case."
+  },
+  "claim_template": {
+    "claim": "specific mechanism claim",
+    "claimant": "named source",
+    "target": "specific actor or organization",
+    "controller_or_external_actor": "specific actor if alleged",
+    "date_or_period": "required",
+    "mechanism": "one mechanism id",
+    "evidence_for": [],
+    "evidence_against": [],
+    "alternative_explanations": [],
+    "confidence": "unresolved|low|medium|high",
+    "status": "research-lead|alleged|contested|observed|historical|resolved"
+  },
+  "anti-patterns": [
+    "They criticize X, therefore X controls them.",
+    "They received money from Y, therefore Y controls all their activity.",
+    "They failed to achieve their stated goal, therefore they were fake opposition.",
+    "They share some positions with the establishment, therefore they are controlled.",
+    "A hostile community repeats the label, therefore it is established fact."
+  ]
+}
