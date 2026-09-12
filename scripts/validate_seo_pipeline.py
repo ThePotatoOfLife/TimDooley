@@ -43,6 +43,9 @@ def main() -> int:
         "if not find_meta(text, name=\"description\")",
         "if not find_link(text, \"canonical\")",
         "if not SCRIPT_LD_RE.search(text)",
+        "PUBLIC_BASE_URL",
+        "canonical_is_internal",
+        "urlparse",
         "core_record_routes",
         "link_known_record_paths",
         "git_lastmod_map",
@@ -52,6 +55,11 @@ def main() -> int:
     ):
         if marker not in optimize:
             errors.append(f"optimize_seo.py missing conservative SEO marker: {marker}")
+
+    if "elif not canonical_is_internal(canonical):" not in optimize:
+        errors.append("SEO artifact audit must allow internal compatibility canonicals through canonical_is_internal")
+    if "canonical.startswith(BASE_URL" in optimize:
+        errors.append("SEO artifact audit still relies on brittle canonical string-prefix matching")
 
     for marker in (
         "only touches descriptions shorter than 40 characters",
@@ -91,7 +99,7 @@ def main() -> int:
         return 1
 
     print("SEO PIPELINE VALIDATION PASSED")
-    print("SEO projection: preserve curated copy · fill missing metadata · dedupe sitemaps · source-backed lastmod")
+    print("SEO projection: preserve curated copy · fill missing metadata · allow internal owner canonicals · dedupe sitemaps · source-backed lastmod")
     return 0
 
 
