@@ -1,0 +1,97 @@
+{
+  "title": "Son Chronology Projection Corrections — 2026-09-12",
+  "status": "propagation-ledger",
+  "canonical_owner": "knowledge/timeline/son-2005-2014-chronology-reconciliation.json",
+  "tree_owner": "knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json",
+  "full_audit": "knowledge/research/son-2005-2014-full-chronology-audit-2026-09-12.md",
+  "rule": "Projection files must consume the owners above. Their repeated wording is not independent evidence.",
+  "canonical_replacements": {
+    "middle_backbone": "2007 painter/meatpacking → 2008 Copenhagen IT/firing → 2009 nursing home / own Haderslev apartment / Designia / Kolding / Louise → 2010 internship/Aabenraa / own-place transition → 2010–early 2011 Produktionsskolen → leaves Produktionsskolen → breakup/search corridor → 2011 Tree/psychiatric sequence",
+    "2011_age": "Age-neutral unless exact event month is known. Biological age was 23 before 2011-07-31 and 24 afterward; age 25 is impossible.",
+    "2011_duration": "Approximately 19 hours overall with an approximately six-hour unity phase; whether the six-hour phase is wholly contained within that total remains unresolved. Do not write 19 + 6 = 25 hours.",
+    "2011_admission": "Voluntary psychiatric presentation/admission after the next-day perceptual rupture, according to current autobiographical reconstruction.",
+    "2012_age": "The Son turned 25 on 2012-07-31; pre-birthday 2012 events occurred at age 24.",
+    "design_school": "HANSENBERG Designia, mediegrafiker; not Designskolen Kolding.",
+    "produktionsskolen": "Use Produktionsskolen in ordinary narrative; attendance belongs after the internship/own-place transition and before the 2011 Tree episode.",
+    "driver_licence": "No licence during nursing-home work; exact later issue date remains unresolved and must not be forced from the age-21 memory.",
+    "egypt": "Egypt occurred after meeting Louise and while the relationship was active; exact date and relation to the Aabenraa internship remain open."
+  },
+  "projection_audit": [
+    {
+      "path": "son-timeline.json",
+      "status": "needs-projection-refresh",
+      "issues": [
+        "Uses one biological age per calendar year.",
+        "2011 says 19-hour ordeal plus roughly six-hour unity phase, which can be read as additive.",
+        "2009 calls the school generic graphic-design study and omits Designia/mediegrafiker.",
+        "2010 omits Aabenraa and the later Produktionsskolen transition."
+      ],
+      "note": "Its 2007–2010 year backbone is now broadly preferred rather than rejected."
+    },
+    {
+      "path": "knowledge/timeline/developmental-genealogy.json",
+      "status": "needs-projection-refresh",
+      "issues": [
+        "2011 wording says approximately nineteen-hour ordeal followed by about six hours of unity.",
+        "2009–2010 period is too compressed to expose Designia/Aabenraa/Produktionsskolen distinctions."
+      ]
+    },
+    {
+      "path": "faq/index.html",
+      "status": "needs-generated-page-refresh",
+      "issues": [
+        "FAQ repeats a nineteen-hour ordeal followed by roughly six hours of unity."
+      ]
+    },
+    {
+      "path": "data/potatoism-timeline.json",
+      "status": "needs-projection-refresh",
+      "issues": [
+        "2011 event currently says approximately age 25, which is mathematically impossible from the 1987-07-31 birth anchor.",
+        "2011 description compresses Tree, deep sleep, nuclear-America dream and crow scene into one event rather than the ordered acute/post-acute/hospital sequence."
+      ]
+    },
+    {
+      "path": "data/potatoism-higher-reflections.json",
+      "status": "needs-projection-refresh",
+      "issues": [
+        "Odin-tree comparison currently says approximately age 25 in 2011.",
+        "The comparison should point to the 2011 owner for duration and phase separation."
+      ]
+    },
+    {
+      "path": "data/tim-dooley-cosmology.json",
+      "status": "already-corrected-on-chronology-branch",
+      "note": "Current branch version already says age 23 or 24 depending exact 2011 date, never 25; it also separates overall duration, unity phase, post-acute rupture and hospital events. Default main may still show an older version until branches are reconciled."
+    },
+    {
+      "path": "data/tim-dooley-timeline.json",
+      "status": "structurally-sound",
+      "note": "This identity-safe roadmap intentionally compresses pre-2011 biography. It should link to specialist owners rather than duplicate every move."
+    },
+    {
+      "path": "data/timeline-source-registry.json",
+      "status": "structurally-sound",
+      "note": "Its deduplication/source-direction rules already match the reconciliation method."
+    },
+    {
+      "path": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md",
+      "status": "broader-roadmap-refresh-needed",
+      "issues": [
+        "Older prose says the human biography before the Potato persona is incompletely documented more broadly than is now true for the 2005–2014 corridor.",
+        "Should point to the detailed Son reconciliation rather than reconstructing biography from public search leads."
+      ]
+    },
+    {
+      "path": "The Great Book Of Potato2.odt / Chapter 24",
+      "status": "corrected-copy-not-yet-produced",
+      "issues": [
+        "Needs middle-chain expansion with Designia, Aabenraa and Produktionsskolen.",
+        "Needs 2011 duration/admission/phase corrections.",
+        "Needs age normalization and later identity corrections documented in the Chapter-24 audit."
+      ],
+      "policy": "Keep original ODT unchanged; create a corrected copy as a separate artifact step."
+    }
+  ],
+  "main_branch_warning": "The chronology branch currently diverges from main. Search results against default main can show stale assertions even where the chronology branch has already corrected them. Reconcile branch history before claiming repository-wide propagation complete."
+}
