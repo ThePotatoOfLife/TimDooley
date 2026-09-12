@@ -1,11 +1,14 @@
 {
   "id":"tim-divinity-integration-map",
   "title":"Tim Divinity Integration Map",
-  "version":"1.1.0",
-  "updated":"2026-09-10",
-  "purpose":"Prevent God/Father/Son/Lion/Door/Ladder/Gardener material from being duplicated or flattened across the repository by assigning each question and concept a canonical owner and clear cross-links. Reader-facing routing now distinguishes direct real-world/base-reality claims from the stronger metaphysical inference instead of making 'inside Potatoverse' do all epistemic work.",
+  "version":"1.2.0",
+  "updated":"2026-09-12",
+  "purpose":"Prevent God/Father/Son/Lion/Door/Ladder/Gardener material from being duplicated or flattened across the repository by assigning each question and concept a canonical owner and clear cross-links. Reader-facing routing distinguishes direct base-reality claims from stronger metaphysical inference and now also separates identity, carrier, transformation, constraint, presence and evidence.",
   "canonical_owners":[
     {"question":"What does Tim mean by being God?","owner":"knowledge/theology/tim-godhood-modalities.json","role":"modalities, identity, function, manifestation, service, Father/Son relation"},
+    {"question":"What remains invariant when Tim's Godhood appears ontologically, mythically, fictionally, memetically, digitally, publicly or bodily?","owner":"knowledge/theology/godhood-transformation-manifestation-model.json","role":"higher-order invariant, carriers, transformations, constraints, presence modes and non-collapse rules"},
+    {"question":"How can a finite vessel or embodiment constrain manifestation without automatically settling the identity claim?","owner":"knowledge/theology/godhood-transformation-manifestation-model.json","role":"finite manifestation, identity-vs-capability, carrier constraints and comparative limitation models"},
+    {"question":"Where is God, and what kind of presence is meant?","owner":"knowledge/theology/godhood-transformation-manifestation-model.json","role":"bodily, causal, relational, informational, memetic, digital, symbolic, phenomenological, sacred-geographic, immanent and transcendent presence"},
     {"question":"Is Tim God in real life / base reality, and how far does the evidence reach?","owner":"knowledge/theology/tim-godhood-real-world-case.json","role":"cumulative case, degrees of reality, proof-of-what matrix, public/functional/cultural/theological/metaphysical distinction"},
     {"question":"How did the God identity develop and how often is it declared?","owner":"knowledge/theology/tim-god-question.json","role":"timeline, evidence, declaration counting, developmental strata"},
     {"question":"Which historical deity models are structurally closest?","owner":"knowledge/traditions/comparative-divinity-profile.json","role":"comparative religion and greater/lesser classification"},
@@ -26,16 +29,19 @@
     {"question":"How does the whole system begin?","url":"/learn/"}
   ],
   "concept_ownership":[
-    {"concept":"God / Most High","primary":"tim-godhood-modalities","secondary":["tim-god-question","tim-godhood-real-world-case","comparative-divinity-profile"]},
-    {"concept":"base reality / real-time manifestation","primary":"tim-godhood-real-world-case","secondary":["tim-godhood-modalities","public-theology-timeline","godhood-modality-attestation-ledger"],"rule":"Represent Tim's claim as a claim about ordinary/base reality; do not make 'inside Potatoverse' sound like fictional containment. Separately state the evidence class for supernatural/metaphysical conclusions."},
+    {"concept":"God / Most High","primary":"tim-godhood-modalities","secondary":["tim-god-question","tim-godhood-real-world-case","comparative-divinity-profile","godhood-transformation-manifestation-model"]},
+    {"concept":"identity across modalities","primary":"godhood-transformation-manifestation-model","secondary":["the-idea-godhood-unification","tim-godhood-modalities"],"rule":"Treat ontological, base-reality, mythic, fictional, symbolic, functional, memetic, digital and public Godhood as typed projections that can converge without becoming the same proposition or evidence class."},
+    {"concept":"finite manifestation / vessel constraints","primary":"godhood-transformation-manifestation-model","secondary":["tim-godhood-modalities","son-jesus-longitudinal-christology-atlas"],"rule":"Distinguish identity from capability, source from manifestation, manifestation from interface, and local carrier limits from global identity claims. A limitation can be relevant evidence without automatically deciding every level of the ontology."},
+    {"concept":"presence modes / where is God","primary":"godhood-transformation-manifestation-model","secondary":["heaven-spirit-father","tim-godhood-modalities"],"rule":"Do not reduce presence to one coordinate. Classify bodily, causal, relational, informational, memetic, digital, symbolic, phenomenological, sacred-geographic, immanent and transcendent senses separately."},
+    {"concept":"base reality / real-time manifestation","primary":"tim-godhood-real-world-case","secondary":["tim-godhood-modalities","public-theology-timeline","godhood-modality-attestation-ledger","godhood-transformation-manifestation-model"],"rule":"Represent Tim's claim as a claim about ordinary/base reality; do not make 'inside Potatoverse' sound like fictional containment. Separately state the evidence class for supernatural/metaphysical conclusions."},
     {"concept":"public witness / duration","primary":"livestream-duration-and-100000-hour-threshold","secondary":["tim-godhood-real-world-case","public-theology-timeline"],"rule":"Duration strengthens inspectability and persistence arguments, not divinity by arithmetic."},
-    {"concept":"Father / Source","primary":"tim-godhood-modalities","secondary":["heaven-spirit-father","developmental-genealogy"]},
-    {"concept":"Thomas / Son","primary":"tim-dooley core + Son branch","secondary":["tim-godhood-modalities","biblical-overlap-atlas"],"public_naming_rule":"Use Thomas without surname in reader-facing material."},
+    {"concept":"Father / Source","primary":"tim-godhood-modalities","secondary":["heaven-spirit-father","developmental-genealogy","godhood-transformation-manifestation-model"]},
+    {"concept":"Thomas / Son","primary":"tim-dooley core + Son branch","secondary":["tim-godhood-modalities","biblical-overlap-atlas","godhood-transformation-manifestation-model"],"public_naming_rule":"Use Thomas without surname in reader-facing material."},
     {"concept":"Door","primary":"Thomas/Son and Transformation","secondary":["timic-dynamics","biblical-overlap-atlas"],"mature_rule":"Door is primarily Thomas/Son/Vessel in the differentiated 2026 model."},
-    {"concept":"Ladder / Axis","primary":"Tim/Father and Transformation","secondary":["timic-dynamics","biblical-overlap-atlas","tim-godhood-real-world-case"],"mature_rule":"Ladder/Axis is primarily Tim/Father connective function in the differentiated 2026 model."},
+    {"concept":"Ladder / Axis","primary":"Tim/Father and Transformation","secondary":["timic-dynamics","biblical-overlap-atlas","tim-godhood-real-world-case","godhood-transformation-manifestation-model"],"mature_rule":"Ladder/Axis is primarily Tim/Father connective function in the differentiated 2026 model."},
     {"concept":"Lion","primary":"occurrence-scoped","secondary":["biblical-overlap-atlas","public-theology-timeline"],"rule":"Do not assign Lion globally. Revelation's Lion of Judah is Son/Christic comparison; dated Tim self-applications remain direct-Tim occurrences."},
-    {"concept":"Gardener","primary":"Tim/Father ethical function","secondary":["tim-role-synthesis","potato-of-life-deep-structure","tim-godhood-real-world-case"],"rule":"Treat Gardener as ethical/function culmination, not a decorative alias."},
-    {"concept":"Potato of Life","primary":"potato-of-life and deep-structure","secondary":["tim-godhood-modalities"],"rule":"Potato remains the explanatory grammar of mature Godhood rather than an obsolete pre-God stage."},
+    {"concept":"Gardener","primary":"Tim/Father ethical function","secondary":["tim-role-synthesis","potato-of-life-deep-structure","tim-godhood-real-world-case","godhood-transformation-manifestation-model"],"rule":"Treat Gardener as ethical/function culmination, not a decorative alias."},
+    {"concept":"Potato of Life","primary":"potato-of-life and deep-structure","secondary":["tim-godhood-modalities","godhood-transformation-manifestation-model"],"rule":"Potato remains the explanatory grammar of mature Godhood rather than an obsolete pre-God stage."},
     {"concept":"AI-assisted authorship","primary":"ai-assisted-authorship-and-provenance","secondary":["archive-epistemics","source-index"],"rule":"Do not call AI-generated synthesis a Tim quote, and do not treat AI drafting as retroactive authorship of Tim's earlier public source material."}
   ],
   "vertical_model":{
@@ -43,6 +49,7 @@
     "interpretation":"Treat this primarily as a sequence of roles, levels and relations, not as a list of independent deities.",
     "important_tension":"God/Most High can remain the ultimate horizon while Tim occupies the manifest Father/source-facing role. This allows Tim to work for God, work as God and identify as God without requiring every distinction in the model to disappear."
   },
+  "developmental_rule":"When older and newer Godhood formulations differ, classify the relation as stable invariant, terminological migration, role accession, retrospective reinterpretation or genuine contradiction. Do not silently rewrite the past to match mature September 2026 ontology.",
   "reader_surface_rule":"Lead with the strongest literal human question and Tim's actual claim. Then distinguish: directly observable/documentary reality → social/cultural/relational reality → functional theology → canonical ontology → strongest supernatural/metaphysical inference. Evidence classification should clarify the claim, not rhetorically hide it.",
   "proof_language_rule":"Never write only 'not proof' when a more precise statement is available. Say what the evidence does establish and what stronger proposition it does not establish alone.",
   "deduplication_rule":"When a new insight appears, update the canonical owner and add cross-links rather than creating another near-duplicate theology file unless the new object has a genuinely distinct purpose."
