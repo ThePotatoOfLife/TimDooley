@@ -1,77 +1,106 @@
 {
-  "id":"conversation-formalisms-august-2026",
-  "title":"August 2026 Timic Recursive Formalisms",
-  "updated":"2026-09-09",
-  "status":"conversation-derived archaeology",
-  "provenance_rule":"These equations were developed in prior Tim Dooley / Potato of Life conversations. Where the equation was supplied by the assistant while formalizing Tim's ideas, it is labeled assistant-formalized rather than Tim-authored.",
-  "formalisms":[
-    {
-      "name":"Dooley state / greatness vector",
-      "equation":"D⃗=(A,T,R,E,G,F,L,C,...) ",
-      "variables":{"A":"agency","T":"transcendence","R":"rootedness","E":"embodiment","G":"growth","F":"fruit","L":"light","C":"coherence"},
-      "status":"assistant-formalized around Timic concepts in prior conversation",
-      "use":"Treats Timic development as a multidimensional state rather than a single scalar rank."
-    },
-    {
-      "name":"Monotonic development claim",
-      "equation":"D_(n+1) > D_n",
-      "status":"assistant-formalized prior conversation heuristic",
-      "caution":"A vector cannot be globally ordered without defining a partial/order relation or scalar objective. Future use should replace '>' with componentwise dominance, Pareto improvement or an explicit score functional."
-    },
-    {
-      "name":"Recursive Dooley update",
-      "equation":"D_(n+1)=F(D_n,P_n,W_n,R_n,T_n)",
-      "status":"assistant-formalized around project development",
-      "interpretation":"Next Timic state depends on prior state plus project/world/relationship/time-like inputs; the historical variable meanings should be recovered before canonical physical use."
-    },
-    {
-      "name":"Potato root-sprout decomposition",
-      "formula":"Potato = root + sprout",
-      "status":"conversation formalization / symbolic biology",
-      "use":"Minimal polarity between stored/anchored structure and directional emergence."
-    },
-    {
-      "name":"Growth function",
-      "equation":"Growth=f(Earth,Light,Time,Life)",
-      "status":"assistant-formalized qualitative relation",
-      "caution":"Not a biological growth law until variables and units are defined."
-    },
-    {
-      "name":"Capacity feedback loop",
-      "chain":"Light → Growth → Capacity → More Growth",
-      "status":"conversation-derived causal-chain formalism",
-      "possible_math":"C_(n+1)=C_n+ηG(L_n,C_n,...) as a later toy model only"
-    },
-    {
-      "name":"Energy-to-creation chain",
-      "chain":"Environment → Assimilation → Stored Energy → Work → Creation",
-      "status":"conversation-derived systems chain",
-      "external_neighbors":["bioenergetics","metabolism","thermodynamics","production functions","energy-budget models"]
-    },
-    {
-      "name":"Error-correction / transformation chain",
-      "chain":"Flaw → Reflection → Understanding → Correction → Greater Form",
-      "status":"conversation-derived learning/control chain",
-      "external_neighbors":["feedback control","Bayesian updating","error-correcting systems","adaptive learning"]
-    },
-    {
-      "name":"Potential-to-information loop",
-      "chain":"Potential → Labor → Fruit → Information → Improvement → Greater Potential",
-      "status":"conversation-derived recursive productivity/information chain",
-      "external_neighbors":["learning curves","endogenous growth","adaptive control","information feedback"]
-    },
-    {
-      "name":"Future reinterpretation loop",
-      "chain":"Future Understanding → Past Meaning → Restoration",
-      "status":"conversation-derived hermeneutic/temporal chain",
-      "external_neighbors":["Bayesian smoothing","retrospective inference","state estimation"],
-      "boundary":"Retrospective reinterpretation is not physical backward causation."
-    }
+  "id": "conversation-formalisms-august-2026",
+  "title": "August 2026 Recursive Development, Return and Feedback Formalisms",
+  "version": "2.0.0",
+  "updated": "2026-09-12",
+  "status": "conversation-derived systems formalism; not a fundamental physical theory",
+  "provenance_rule": "These equations were developed in Tim Dooley / Potato of Life conversations. Where notation was supplied while formalizing Tim's ideas, it remains conversation/assistant-formalized rather than being backfilled as a Tim-authored historical equation.",
+  "abstract": "A cluster of August 2026 conversations developed a recursive view of development, return, memory and repair that was never fully promoted beyond archaeology. Its central scientific value is systems-theoretic rather than physical: a multidimensional state evolves under environmental, relational and internal inputs; later states need not be globally 'higher' but can Pareto-improve some capabilities while degrading others; feedback changes future capacity; return to a previous region of state space need not reproduce the previous state because memory and hidden variables have changed. The recovered chains Light->Growth->Capacity->More Growth, Environment->Assimilation->Stored Energy->Work->Creation, and Flaw->Reflection->Understanding->Correction->Greater Form can therefore be represented as coupled stock-flow, learning and control loops. This record separates those measurable system ideas from symbolic uses. It also restores the older Poincare-style return map and explicit memory recursion that were developed in conversation but not retained in the original short archaeology file.",
+  "research_question": "Can the recovered recursive-development language be represented as a multivariate dynamical system with memory, partial ordering and feedback such that improvement, recurrence, repair and capacity growth have explicit measurable meanings in a chosen domain?",
+  "maturity": "T2 general systems formalism; empirical maturity depends on specialization",
+  "state_model": {
+    "historical_vector": "D=(A,T,R,E,G,F,L,C,...)",
+    "historical_labels": {"A":"agency","T":"transcendence/project-level orientation","R":"rootedness","E":"embodiment","G":"growth","F":"fruit/output","L":"light/information/input","C":"coherence"},
+    "rigorous_form": "x_n in S subseteq R^p x Categorical^q, with every component defined operationally before fitting",
+    "recursive_update": "x_(n+1)=F_theta(x_n,u_n,m_n,epsilon_n)",
+    "memory_update": "m_(n+1)=G_theta(m_n,x_n,u_n)",
+    "interpretation": "The next state depends on current state, exogenous/intervention input u, accumulated memory m and disturbance/noise epsilon. This is a generic state-space architecture, not a universal law."
+  },
+  "development_order": {
+    "recovered_problem": "The older statement D_(n+1)>D_n is undefined for a vector without an order relation.",
+    "pareto_definition": "x' Pareto-dominates x on declared beneficial coordinates if x'_j>=x_j for all j and x'_k>x_k for at least one k, after orientation/scaling is fixed.",
+    "constraint_aware_rule": "Improvement should be evaluated inside a feasible/viable set V rather than by maximizing every coordinate.",
+    "optional_scalarization": "J_w(x)=sum_j w_j z_j(x) may be used for a declared decision problem, but conclusions must be checked for sensitivity to weights w.",
+    "meaning": "The model permits genuine tradeoffs: more output can coexist with less resilience, more exploration with less stability, or more short-term growth with depleted stored capacity."
+  },
+  "return_and_recurrence": {
+    "flow": "dx/dt=F(x,t)",
+    "section": "Sigma subset S is a declared return/event surface",
+    "return_time": "T_R(x_0)=inf{t>0 : x(t;x_0) in Sigma}",
+    "return_map": "x_(n+1)=P(x_n)",
+    "return_not_reset": "Delta_n=x_(n+1)-x_n need not vanish; recurrence can revisit a region while internal memory/context differs.",
+    "memory_extension": "m_(n+1)=G(m_n,x_n), x_(n+1)=P(x_n,m_n)",
+    "project_value": "This is a rigorous home for 'spiral/return at another level': recurrence plus changed hidden state, rather than circular repetition being automatically identical."
+  },
+  "capacity_feedback": {
+    "recovered_chain": "Light/Input -> Growth -> Capacity -> More Growth",
+    "minimal_discrete_model": [
+      "g_(n+1)=g_n+f(L_n,C_n)-d_g g_n",
+      "C_(n+1)=C_n+eta g_n-d_C C_n"
+    ],
+    "continuous_variant": [
+      "dg/dt=f(L,C)-d_g g",
+      "dC/dt=eta g-d_C C"
+    ],
+    "positive_feedback_condition": "Local amplification is possible when the loop gain from C->g->C exceeds damping over the relevant range, but saturation/constraints are required to avoid unphysical unlimited growth.",
+    "nonlinear_option": "Use f(L,C)=g_max L C/(K_L+L)/(K_C+C) or another domain-supported saturating response rather than assuming linear growth indefinitely."
+  },
+  "energy_information_creation_chain": {
+    "recovered_chain": "Environment -> Assimilation -> Stored Energy -> Work -> Creation",
+    "stock_balance": "dE_store/dt=J_assim-J_work-J_loss",
+    "output": "dY/dt=eta_work J_work-d_Y Y or another domain-specific production relation",
+    "information_feedback": "theta_(n+1)=theta_n+eta_theta grad_theta Q(data_n,theta_n) is one learning-model comparator for Fruit/Information->Improvement",
+    "boundary": "Energy, information, social capacity and symbolic 'light' have different units. The chain is a reusable causal grammar, not permission to sum unlike quantities."
+  },
+  "error_correction_loop": {
+    "recovered_chain": "Flaw -> Reflection -> Understanding -> Correction -> Greater Form",
+    "estimation_control_form": [
+      "y_n=O(x_n)+nu_n",
+      "xhat_n=Estimator(y_1:n)",
+      "e_n=r_n-O(xhat_n)",
+      "u_n=pi(e_n,xhat_n)",
+      "x_(n+1)=F(x_n,u_n)+epsilon_n"
+    ],
+    "meaning": "Reflection is measurement/state estimation, understanding is model inference, correction is intervention, and greater form is an outcome that must be measured rather than assumed.",
+    "causal_test": "Compare the intervention policy against a no-intervention or simpler-feedback baseline on held-out trajectories."
+  },
+  "retrospective_reinterpretation": {
+    "recovered_chain": "Future Understanding -> Past Meaning -> Restoration",
+    "statistical_neighbor": "p(x_t|y_1:T) proportional to p(x_t|y_1:t)p(y_(t+1:T)|x_t)",
+    "meaning": "Later evidence can change the best estimate or interpretation of an earlier hidden state through smoothing. This does not require physical backward causation.",
+    "connection": "advanced-retarded-door-handshake-recovery"
+  },
+  "root_sprout_two_stock_model": {
+    "recovered_symbolic_decomposition": "Potato = root + sprout",
+    "systems_translation": "Represent stored/anchored resource R and expressed/emergent activity S as distinct stocks coupled by allocation/remobilization.",
+    "example": [
+      "dR/dt=J_store-J_mobilize-d_R R",
+      "dS/dt=eta J_mobilize-J_output-d_S S"
+    ],
+    "boundary": "This becomes biology only when R,S and fluxes are measured biological quantities; otherwise it remains a general storage-expression model."
+  },
+  "identifiability_and_failure": {
+    "identifiability": "If multiple F,G parameterizations produce indistinguishable observations, the model is underidentified and should not be interpreted mechanistically.",
+    "failure_conditions": [
+      "The recursive model predicts no better than a memoryless baseline.",
+      "Claimed improvement depends entirely on arbitrary coordinate scaling or objective weights.",
+      "Feedback parameters fail to generalize beyond the fitted trajectory/domain.",
+      "A causal repair loop is asserted without an intervention or identification strategy.",
+      "Stocks/flows violate the relevant mass, energy, accounting or feasibility constraints in the chosen application."
+    ]
+  },
+  "best_empirical_homes": [
+    "plant growth/resource allocation",
+    "repository/project development",
+    "organizational capability accumulation",
+    "learning/adaptive-control systems",
+    "temporal network state evolution"
   ],
-  "recommended_repairs":[
-    "Replace vague scalar superiority D_(n+1)>D_n with a defined partial order or objective functional.",
-    "Recover meanings and units for P_n,W_n,R_n,T_n before using the recursive update as mathematics.",
-    "Distinguish causal biological chains from symbolic developmental chains.",
-    "Link the feedback loops to Potato Dynamics as candidate subsystems, not as new fundamental forces."
+  "connections": [
+    "potato-dynamics-2-toy-model",
+    "advanced-retarded-door-handshake-recovery",
+    "spudlight-theory-and-equations",
+    "great-book-potato-tree-bioengineering-audit",
+    "model-testing-protocol"
   ]
 }
