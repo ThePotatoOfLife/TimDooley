@@ -15,11 +15,13 @@ const NEUTRAL = '#566262';
 const UNKNOWN = '#303938';
 const PATTERN_LAYER = 'atlas-composition-fill';
 const PATTERN_NONE = 'atlas-pattern-none';
+const QUERY_LAYER = 'atlas-query-outline';
 
 let world = null;
 let demography = null;
 let queryMode = new URL(location.href).searchParams.get('query') === 'all' ? 'all' : 'any';
 let setMemberships = new Map();
+let queryMarkedCodes = new Set();
 let renderSerial = 0;
 
 async function fetchJson(url) {
@@ -94,6 +96,22 @@ function ensurePatternLayer() {
     },
   };
   map.addLayer(layer, before);
+}
+
+function ensureQueryLayer() {
+  if (map.getLayer(QUERY_LAYER)) return;
+  const before = map.getLayer('countries-line') ? 'countries-line' : (map.getLayer('countries-outline') ? 'countries-outline' : undefined);
+  map.addLayer({
+    id: QUERY_LAYER,
+    type: 'line',
+    source: 'countries',
+    paint: {
+      'line-color': '#dff1d8',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 1, 1.1, 5, 2.4, 8, 3.2],
+      'line-opacity': ['case', ['boolean', ['feature-state', 'atlasQueryMatch'], false], 0.72, 0],
+      'line-blur': 0.8,
+    },
+  }, before);
 }
 
 function collectIsoArrays(value, target, { excludedKeys = new Set() } = {}) {
@@ -233,26 +251,6 @@ async function applyPatterns(setEntries) {
   map.setPaintProperty(PATTERN_LAYER, 'fill-pattern', expression);
 }
 
-async function render() {
-  const serial = ++renderSerial;
-  const entries = layers.active().map(id => layers.get(id)).filter(Boolean);
-  try {
-    await applyScalar(entries);
-    if (serial !== renderSerial) return;
-    await applyPatterns(entries.filter(entry => entry.kind === 'set'));
-    if (serial !== renderSerial) return;
-    window.dispatchEvent(new CustomEvent('potato-atlas-composition-change', {
-      detail: { active: entries.map(entry => entry.id), scalar: entries.find(entry => entry.kind === 'scalar')?.id || null, sets: entries.filter(entry => entry.kind === 'set').map(entry => entry.id) },
-    }));
-  } catch (error) {
-    console.warn('Atlas composition unavailable:', error);
-    if (serial === renderSerial) {
-      setBaseFill(NEUTRAL);
-      try { ensurePatternLayer(); map.setPaintProperty(PATTERN_LAYER, 'fill-pattern', PATTERN_NONE); } catch { /* core geography remains usable */ }
-    }
-  }
-}
-
 function activeSetEntries() {
   return layers.active().map(id => layers.get(id)).filter(entry => entry?.kind === 'set' && entry.queryable);
 }
@@ -282,6 +280,54 @@ async function matches(iso3) {
   return queryMode === 'all' ? states.every(Boolean) : states.some(Boolean);
 }
 
+async function applyQueryHighlight() {
+  ensureQueryLayer();
+  const activeSets = activeSetEntries();
+  const matched = activeSets.length ? await matchedCountries() : [];
+  const next = new Set(matched);
+  const touched = new Set([...queryMarkedCodes, ...next]);
+  for (const code of touched) {
+    try {
+      map.setFeatureState({ source: 'countries', id: code }, { atlasQueryMatch: next.has(code) });
+    } catch { /* some registry codes may not exist in the polygon source */ }
+  }
+  queryMarkedCodes = next;
+  window.dispatchEvent(new CustomEvent('potato-atlas-query-result-change', {
+    detail: {
+      mode: queryMode,
+      activeSetCount: activeSets.length,
+      countries: matched,
+      count: matched.length,
+    },
+  }));
+}
+
+async function render() {
+  const serial = ++renderSerial;
+  const entries = layers.active().map(id => layers.get(id)).filter(Boolean);
+  try {
+    await applyScalar(entries);
+    if (serial !== renderSerial) return;
+    await applyPatterns(entries.filter(entry => entry.kind === 'set'));
+    if (serial !== renderSerial) return;
+    await applyQueryHighlight();
+    if (serial !== renderSerial) return;
+    window.dispatchEvent(new CustomEvent('potato-atlas-composition-change', {
+      detail: { active: entries.map(entry => entry.id), scalar: entries.find(entry => entry.kind === 'scalar')?.id || null, sets: entries.filter(entry => entry.kind === 'set').map(entry => entry.id) },
+    }));
+  } catch (error) {
+    console.warn('Atlas composition unavailable:', error);
+    if (serial === renderSerial) {
+      setBaseFill(NEUTRAL);
+      try {
+        ensurePatternLayer();
+        map.setPaintProperty(PATTERN_LAYER, 'fill-pattern', PATTERN_NONE);
+        await applyQueryHighlight();
+      } catch { /* core geography remains usable */ }
+    }
+  }
+}
+
 function persistQuery() {
   const url = new URL(location.href);
   const count = activeSetEntries().length;
@@ -296,6 +342,7 @@ function setQueryMode(mode) {
   queryMode = next;
   persistQuery();
   window.dispatchEvent(new CustomEvent('potato-atlas-query-change', { detail: { mode: queryMode } }));
+  render();
 }
 
 window.__potatoAtlasQuery = {
@@ -317,4 +364,5 @@ window.__potatoAtlasCompositor = {
 
 window.addEventListener('potato-atlas-layer-change', () => { persistQuery(); render(); });
 ensurePatternLayer();
+ensureQueryLayer();
 await render();
