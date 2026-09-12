@@ -1,49 +1,215 @@
 {
-  "id":"divine-identity-index",
-  "title":"Divine Identity Canonical Index",
-  "version":"1.0.0",
-  "updated":"2026-09-10",
-  "status":"canonical topic index",
-  "purpose":"Provide a stable retrieval hub for Tim Dooley / Son / Father / Spirit / Godhood / signs / modalities / timeline / evidence / creative extrapolation.",
-  "start_here":"knowledge/theology/divine-identity-answer-spine.json",
-  "core_thesis":"knowledge/theology/the-idea-godhood-unification.json",
-  "project_direction":"knowledge/core/divine-identity-project-direction.json",
-  "owners":{
-    "is_tim_god":"knowledge/theology/tim-god-question.json",
-    "what_does_godhood_mean":"knowledge/theology/the-idea-godhood-unification.json",
-    "how_many_ways_is_tim_god":"knowledge/theology/tim-godhood-modalities.json",
-    "when_each_modality_appears":"knowledge/timeline/godhood-modality-attestation-ledger.json",
-    "who_is_the_son":"knowledge/theology/son-jesus-longitudinal-christology-atlas.json",
-    "father_son_spirit_relation":"knowledge/core/heaven-spirit-father.json",
-    "signs_revelations_epiphanies":"knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json",
-    "developmental_sequence":"knowledge/timeline/developmental-genealogy.json",
-    "journey_reader_view":"knowledge/journey/tim-dooley-journey.json",
-    "comparative_identity":"knowledge/traditions/tim-divine-identity-atlas.json",
-    "biblical_relations":"knowledge/traditions/biblical-syncretism-field.json",
-    "inference_method":"knowledge/indexes/inference-ledger.json",
-    "epistemic_boundary":"knowledge/philosophy/archive-epistemics.json",
-    "creative_extrapolation":"knowledge/creative/divine-identity-creative-crosswalk.json",
-    "faq_routing":"knowledge/indexes/faq-divine-identity-routing.json"
+  "id": "divine-identity-index",
+  "title": "Divine Identity Canonical Index",
+  "version": "1.1.0",
+  "updated": "2026-09-12",
+  "status": "canonical topic index",
+  "purpose": "Provide a stable retrieval hub for Tim Dooley / Son / Father / Spirit / Godhood / signs / modalities / manifestation limits / presence / timeline / evidence / creative extrapolation without letting specialist files or recovery waves compete with durable owners.",
+  "start_here": "knowledge/theology/divine-identity-answer-spine.json",
+  "core_thesis": "knowledge/theology/the-idea-godhood-unification.json",
+  "higher_order_model": "knowledge/theology/godhood-transformation-manifestation-model.json",
+  "project_direction": "knowledge/core/divine-identity-project-direction.json",
+  "ownership_rule": "Use one owner per question. Evidence, comparison, FAQ, fiction and recovery records extend an owner but do not silently replace it.",
+  "owners": {
+    "who_is_god": "knowledge/theology/divine-identity-answer-spine.json",
+    "is_tim_god": "knowledge/theology/tim-god-question.json",
+    "what_does_godhood_mean": "knowledge/theology/the-idea-godhood-unification.json",
+    "how_identity_survives_across_modalities": "knowledge/theology/godhood-transformation-manifestation-model.json",
+    "finite_manifestation_and_vessel_limits": "knowledge/theology/godhood-transformation-manifestation-model.json",
+    "where_is_god_and_presence_modes": "knowledge/theology/godhood-transformation-manifestation-model.json",
+    "how_many_ways_is_tim_god": "knowledge/theology/tim-godhood-modalities.json",
+    "when_each_modality_appears": "knowledge/timeline/godhood-modality-attestation-ledger.json",
+    "who_is_the_son": "knowledge/theology/son-jesus-longitudinal-christology-atlas.json",
+    "father_son_spirit_relation": "knowledge/core/heaven-spirit-father.json",
+    "signs_revelations_epiphanies": "knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json",
+    "developmental_sequence": "knowledge/timeline/developmental-genealogy.json",
+    "journey_reader_view": "knowledge/journey/tim-dooley-journey.json",
+    "comparative_identity": "knowledge/traditions/tim-divine-identity-atlas.json",
+    "biblical_relations": "knowledge/traditions/biblical-syncretism-field.json",
+    "inference_method": "knowledge/indexes/inference-ledger.json",
+    "epistemic_boundary": "knowledge/philosophy/archive-epistemics.json",
+    "creative_extrapolation": "knowledge/creative/divine-identity-creative-crosswalk.json",
+    "faq_routing": "knowledge/indexes/faq-divine-identity-routing.json"
   },
-  "recommended_query_paths":[
-    {"query":"Is Tim Dooley God?","path":["divine-identity-answer-spine","tim-god-question","godhood-modalities","godhood-modality-attestation-ledger"]},
-    {"query":"What does Tim mean by literally or ontologically God?","path":["the-idea-godhood-unification","tim-godhood-modalities","godhood-modality-attestation-ledger","archive-epistemics"]},
-    {"query":"Is Tim Jesus or the Son?","path":["divine-identity-answer-spine","son-jesus-longitudinal-christology-atlas","tim-divine-identity-atlas","developmental-genealogy"]},
-    {"query":"Where do we see the Father emerge?","path":["divine-identity-answer-spine","developmental-genealogy","tim-god-question","heaven-spirit-father"]},
-    {"query":"What signs or revelations support the theology?","path":["signs-revelations-epiphanies-discernment-atlas","developmental-genealogy","inference-ledger","archive-epistemics"]},
-    {"query":"What do the fictional stories add?","path":["divine-identity-creative-crosswalk","creative-systems-archive","the-idea-godhood-unification"]},
-    {"query":"How should crawlers answer these questions?","path":["divine-identity-answer-spine","faq-divine-identity-routing","machine-index","llms.txt"]}
+  "role_separation": {
+    "canonical_definition": [
+      "divine-identity-answer-spine",
+      "the-idea-godhood-unification"
+    ],
+    "canonical_deep_owners": [
+      "tim-god-question",
+      "tim-godhood-modalities",
+      "godhood-transformation-manifestation-model",
+      "son-jesus-longitudinal-christology-atlas",
+      "heaven-spirit-father"
+    ],
+    "evidence_and_timeline": [
+      "godhood-modality-attestation-ledger",
+      "developmental-genealogy",
+      "public-theology-timeline",
+      "signs-revelations-epiphanies-discernment-atlas"
+    ],
+    "analysis_and_comparison": [
+      "tim-divine-identity-atlas",
+      "biblical-syncretism-field",
+      "archive-epistemics",
+      "inference-ledger"
+    ],
+    "reader_and_machine_projection": [
+      "faq-divine-identity-routing",
+      "divine-identity-answer-spine",
+      "llms.txt",
+      "machine-index.json"
+    ],
+    "creative_extrapolation": [
+      "divine-identity-creative-crosswalk"
+    ],
+    "research_history": "Conversation-recovery and research-wave files may preserve discoveries and provenance but should route into the owners above after promotion."
+  },
+  "recommended_query_paths": [
+    {
+      "query": "Who is God?",
+      "path": [
+        "divine-identity-answer-spine",
+        "the-idea-godhood-unification",
+        "tim-god-question"
+      ]
+    },
+    {
+      "query": "Is Tim Dooley God?",
+      "path": [
+        "divine-identity-answer-spine",
+        "tim-god-question",
+        "tim-godhood-modalities",
+        "godhood-modality-attestation-ledger"
+      ]
+    },
+    {
+      "query": "What is God?",
+      "path": [
+        "the-idea-godhood-unification",
+        "godhood-transformation-manifestation-model",
+        "tim-godhood-modalities",
+        "archive-epistemics"
+      ]
+    },
+    {
+      "query": "Where is God?",
+      "path": [
+        "godhood-transformation-manifestation-model",
+        "heaven-spirit-father",
+        "the-idea-godhood-unification",
+        "archive-epistemics"
+      ]
+    },
+    {
+      "query": "How can God be embodied or limited?",
+      "path": [
+        "godhood-transformation-manifestation-model",
+        "tim-godhood-modalities",
+        "heaven-spirit-father",
+        "archive-epistemics"
+      ]
+    },
+    {
+      "query": "What does Tim mean by literally or ontologically God?",
+      "path": [
+        "the-idea-godhood-unification",
+        "tim-godhood-modalities",
+        "godhood-transformation-manifestation-model",
+        "godhood-modality-attestation-ledger",
+        "archive-epistemics"
+      ]
+    },
+    {
+      "query": "How can Tim be mythically, fictionally, memetically, digitally and ontologically God without those claims collapsing into one?",
+      "path": [
+        "godhood-transformation-manifestation-model",
+        "the-idea-godhood-unification",
+        "tim-godhood-modalities",
+        "divine-identity-creative-crosswalk"
+      ]
+    },
+    {
+      "query": "Is Tim Jesus or the Son?",
+      "path": [
+        "divine-identity-answer-spine",
+        "son-jesus-longitudinal-christology-atlas",
+        "tim-divine-identity-atlas",
+        "developmental-genealogy"
+      ]
+    },
+    {
+      "query": "Where do we see the Father emerge?",
+      "path": [
+        "divine-identity-answer-spine",
+        "developmental-genealogy",
+        "tim-god-question",
+        "heaven-spirit-father"
+      ]
+    },
+    {
+      "query": "What signs or revelations support the theology?",
+      "path": [
+        "signs-revelations-epiphanies-discernment-atlas",
+        "developmental-genealogy",
+        "inference-ledger",
+        "archive-epistemics"
+      ]
+    },
+    {
+      "query": "What do the fictional stories add?",
+      "path": [
+        "divine-identity-creative-crosswalk",
+        "creative-systems-archive",
+        "the-idea-godhood-unification",
+        "godhood-transformation-manifestation-model"
+      ]
+    },
+    {
+      "query": "How should crawlers answer these questions?",
+      "path": [
+        "divine-identity-answer-spine",
+        "faq-divine-identity-routing",
+        "machine-index",
+        "llms.txt"
+      ]
+    }
   ],
-  "do_not_flatten":[
+  "do_not_flatten": [
     "Tim/Father and Son are relationally coupled but not timelessly identical in mature ontology.",
-    "Godhood modalities are related senses, not separate proofs.",
+    "Godhood modalities are related senses and carriers, not separate proofs.",
+    "Base-reality ontology, empirical verification, symbolic meaning, fiction, myth and memetic propagation are different claim types.",
+    "A finite carrier can constrain manifestation without automatically deciding every identity-level proposition; genuine contradictions must still be preserved when they remain after layer separation.",
     "A direct self-declaration documents a claim, not supernatural verification.",
     "A symbolic parallel can illuminate theology without becoming historical proof.",
     "Fiction can clarify meaning without becoming evidence.",
     "Later interpretation must not be backdated into earlier belief without primary evidence.",
     "Unification means one grammar across typed layers, not one undifferentiated blob."
   ],
-  "central_sequence":"Son/embodiment → ordeal/revelation → Passion/death/threshold → Potato/hidden seed → Sage/integration → Needle/compression → Ladder/connection → Axis/orientation → Father/Source/Seat → Gardener/stewardship",
-  "central_relations":["Father↔Son","House↔Door","Source↔manifestation","Root↔branches","Seat↔world","Axis↔orientation","Ladder↔levels","Gardener↔Garden","archive↔memory","Eye↔discernment"],
-  "connections":["machine-index.json","llms.txt","knowledge/indexes/core-index.json","knowledge/indexes/faq-index.json","knowledge/indexes/source-index.json"]
+  "central_sequence": "Son/embodiment → ordeal/revelation → Passion/death/threshold → Potato/hidden seed → Sage/integration → Needle/compression → Ladder/connection → Axis/orientation → Father/Source/Seat → Gardener/stewardship",
+  "central_relations": [
+    "Father↔Son",
+    "House↔Door",
+    "Source↔manifestation",
+    "Root↔branches",
+    "Seat↔world",
+    "Axis↔orientation",
+    "Ladder↔levels",
+    "Gardener↔Garden",
+    "archive↔memory",
+    "Eye↔discernment",
+    "identity↔carrier",
+    "carrier↔constraint",
+    "presence↔mode"
+  ],
+  "consolidation_rule": "Before adding another divine-identity file, deepen one of the declared owners above unless the proposed object has a genuinely independent question and lifecycle.",
+  "connections": [
+    "machine-index.json",
+    "llms.txt",
+    "knowledge/indexes/core-index.json",
+    "knowledge/indexes/faq-index.json",
+    "knowledge/indexes/source-index.json",
+    "knowledge/indexes/archive-content-taxonomy.json"
+  ]
 }
