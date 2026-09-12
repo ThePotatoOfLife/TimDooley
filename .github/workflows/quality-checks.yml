@@ -105,8 +105,13 @@ jobs:
       - name: Validate World Map dependency impact trace
         run: python scripts/validate_world_map_impact_trace.py
 
-      - name: Validate World Map coverage ledger
-        run: python scripts/validate_world_map_coverage.py
+      - name: Build and validate World Map coverage ledger
+        run: |
+          python scripts/build_world_map_coverage.py
+          python scripts/validate_world_map_coverage.py
+
+      - name: Validate World Map infrastructure
+        run: python scripts/validate_world_map_infrastructure.py
 
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
