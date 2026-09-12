@@ -6,11 +6,11 @@ const map = window.__potatoAtlasMap;
 const layers = window.__potatoAtlasLayers;
 if (!map) throw new Error('Atlas compositor requires the core map.');
 if (!layers) throw new Error('Atlas compositor requires the layer registry.');
-
 await layers.ready;
 
 const WORLD_URL = '../data/world-relational-map.json';
 const DEMOGRAPHY_URL = '../data/world-country-demography.json';
+const WORLD_DATA_RUNTIME_URL = '../data/world-map-data-runtime.json';
 const NEUTRAL = '#566262';
 const UNKNOWN = '#303938';
 const PATTERN_LAYER = 'atlas-composition-fill';
@@ -19,6 +19,7 @@ const QUERY_LAYER = 'atlas-query-outline';
 
 let world = null;
 let demography = null;
+let worldRuntime = null;
 let queryMode = new URL(location.href).searchParams.get('query') === 'all' ? 'all' : 'any';
 let setMemberships = new Map();
 let queryMarkedCodes = new Set();
@@ -31,6 +32,41 @@ async function fetchJson(url) {
 }
 async function worldData() { if (!world) world = await fetchJson(WORLD_URL); return world; }
 async function demographyData() { if (!demography) demography = await fetchJson(DEMOGRAPHY_URL); return demography; }
+async function runtimeData() { if (!worldRuntime) worldRuntime = await fetchJson(WORLD_DATA_RUNTIME_URL); return worldRuntime; }
+
+const runtimeReady = runtimeData().catch(error => {
+  console.warn('World Map empirical runtime unavailable:', error);
+  return { country_count: 0, groups: {}, metrics: {}, countries: {} };
+});
+
+window.__potatoAtlasDataRuntime = {
+  ready: runtimeReady,
+  async metric(code, metricId) {
+    const data = await runtimeReady;
+    return data?.countries?.[String(code || '').toUpperCase()]?.metrics?.[metricId] || null;
+  },
+  async metricMeta(metricId) {
+    const data = await runtimeReady;
+    return data?.metrics?.[metricId] || null;
+  },
+  async members(groupId) {
+    const data = await runtimeReady;
+    return data?.groups?.[groupId]?.members || [];
+  },
+  async groupMeta(groupId) {
+    const data = await runtimeReady;
+    return data?.groups?.[groupId] || null;
+  },
+  async coverage(metricId) {
+    const data = await runtimeReady;
+    const meta = data?.metrics?.[metricId] || null;
+    return meta ? { ...meta, countries: meta.country_count } : null;
+  },
+  async countries() {
+    const data = await runtimeReady;
+    return data?.countries || {};
+  },
+};
 
 function hexToRgb(hex) {
   const value = String(hex || '').replace('#', '');
@@ -57,10 +93,7 @@ function ensurePatternImage(name, colors = [], highOverlap = 0) {
   for (let y = 0; y < height; y += 1) {
     for (let x = 0; x < width; x += 1) {
       const offset = (y * width + x) * 4;
-      if (!colors.length && !highOverlap) {
-        data[offset + 3] = 0;
-        continue;
-      }
+      if (!colors.length && !highOverlap) { data[offset + 3] = 0; continue; }
       let rgb;
       let alpha;
       if (highOverlap) {
@@ -72,10 +105,7 @@ function ensurePatternImage(name, colors = [], highOverlap = 0) {
         rgb = palette[stripe];
         alpha = 190;
       }
-      data[offset] = rgb[0];
-      data[offset + 1] = rgb[1];
-      data[offset + 2] = rgb[2];
-      data[offset + 3] = alpha;
+      data[offset] = rgb[0]; data[offset + 1] = rgb[1]; data[offset + 2] = rgb[2]; data[offset + 3] = alpha;
     }
   }
   map.addImage(name, { width, height, data });
@@ -85,17 +115,7 @@ function ensurePatternLayer() {
   ensurePatternImage(PATTERN_NONE);
   if (map.getLayer(PATTERN_LAYER)) return;
   const before = map.getLayer('countries-outline') ? 'countries-outline' : undefined;
-  const layer = {
-    id: PATTERN_LAYER,
-    type: 'fill',
-    source: 'countries',
-    paint: {
-      'fill-pattern': PATTERN_NONE,
-      'fill-opacity': 0.82,
-      'fill-antialias': true,
-    },
-  };
-  map.addLayer(layer, before);
+  map.addLayer({ id: PATTERN_LAYER, type: 'fill', source: 'countries', paint: { 'fill-pattern': PATTERN_NONE, 'fill-opacity': 0.82, 'fill-antialias': true } }, before);
 }
 
 function ensureQueryLayer() {
@@ -121,8 +141,7 @@ function collectIsoArrays(value, target, { excludedKeys = new Set() } = {}) {
     return;
   }
   for (const [key, child] of Object.entries(value)) {
-    if (excludedKeys.has(key)) continue;
-    collectIsoArrays(child, target, { excludedKeys });
+    if (!excludedKeys.has(key)) collectIsoArrays(child, target, { excludedKeys });
   }
 }
 
@@ -133,27 +152,21 @@ function sourceValue(root, path) {
 async function membershipFor(entry) {
   if (setMemberships.has(entry.id)) return setMemberships.get(entry.id);
   const result = new Set();
-  const data = await worldData();
-
-  if (entry.id === 'axis.north') {
-    collectIsoArrays(data?.project_axis?.north, result, { excludedKeys: new Set(['external', 'excluded_current_version', 'future_reconnection']) });
-  } else if (entry.id === 'axis.west') {
-    collectIsoArrays(data?.project_axis?.west, result);
-  } else if (entry.id === 'axis.east') {
-    collectIsoArrays(data?.project_axis?.east, result);
-  } else if (entry.id === 'axis.south') {
-    // Only explicit ISO arrays count. Candidate-region prose is deliberately ignored.
-    collectIsoArrays(data?.project_axis?.south, result);
-  } else if (entry.id.startsWith('group.')) {
-    const keyMap = {
-      'group.nato': 'NATO',
-      'group.brics': 'BRICS',
-      'group.aukus': 'AUKUS',
-      'group.five-eyes': 'Five_Eyes',
-    };
-    const group = data?.empirical_memberships?.[keyMap[entry.id]] || sourceValue(data, entry.source_path);
-    collectIsoArrays(group?.members || [], result);
-    collectIsoArrays(group?.partners || [], result);
+  if (entry.id.startsWith('group.') && entry.source_owner === 'data/world-institution-memberships.json') {
+    const data = await runtimeReady;
+    for (const code of data?.groups?.[entry.id.slice(6)]?.members || []) result.add(code);
+  } else {
+    const data = await worldData();
+    if (entry.id === 'axis.north') collectIsoArrays(data?.project_axis?.north, result, { excludedKeys: new Set(['external', 'excluded_current_version', 'future_reconnection']) });
+    else if (entry.id === 'axis.west') collectIsoArrays(data?.project_axis?.west, result);
+    else if (entry.id === 'axis.east') collectIsoArrays(data?.project_axis?.east, result);
+    else if (entry.id === 'axis.south') collectIsoArrays(data?.project_axis?.south, result);
+    else if (entry.id.startsWith('group.')) {
+      const keyMap = { 'group.nato': 'NATO', 'group.brics': 'BRICS', 'group.aukus': 'AUKUS', 'group.five-eyes': 'Five_Eyes' };
+      const group = data?.empirical_memberships?.[keyMap[entry.id]] || sourceValue(data, entry.source_path);
+      collectIsoArrays(group?.members || [], result);
+      collectIsoArrays(group?.partners || [], result);
+    }
   }
   setMemberships.set(entry.id, result);
   return result;
@@ -168,43 +181,66 @@ async function applyReligionScalar(entry) {
   const data = await demographyData();
   const key = religionKey(entry);
   for (const [code, row] of Object.entries(data?.countries || {})) {
-    const raw = row?.religion?.composition?.[key];
-    const value = Number(raw);
-    try {
-      map.setFeatureState({ source: 'countries', id: code }, {
-        atlasScalarHas: Number.isFinite(value),
-        atlasScalarValue: Number.isFinite(value) ? value : 0,
-      });
-    } catch { /* some territories may not exist in the polygon source */ }
+    const value = Number(row?.religion?.composition?.[key]);
+    try { map.setFeatureState({ source: 'countries', id: code }, { atlasScalarHas: Number.isFinite(value), atlasScalarValue: Number.isFinite(value) ? value : 0 }); } catch {}
   }
   const color = entry.color || '#7fa7a0';
-  setBaseFill([
-    'case',
-    ['boolean', ['feature-state', 'atlasScalarHas'], false],
-    ['interpolate', ['linear'], ['feature-state', 'atlasScalarValue'], 0, '#1e2928', 20, '#3c5551', 50, color, 80, '#dfd49c', 100, '#fff0bf'],
-    UNKNOWN,
-  ]);
+  setBaseFill(['case', ['boolean', ['feature-state', 'atlasScalarHas'], false], ['interpolate', ['linear'], ['feature-state', 'atlasScalarValue'], 0, '#1e2928', 20, '#3c5551', 50, color, 80, '#dfd49c', 100, '#fff0bf'], UNKNOWN]);
 }
 
 function applyGeographicScalar(entry) {
-  const key = entry.id === 'stat.area' ? 'area' : 'population';
-  if (key === 'area') {
+  if (entry.id === 'stat.area') {
     setBaseFill(['case', ['>', ['get', 'area'], 0], ['step', ['get', 'area'], '#263432', 10000, '#36514b', 100000, '#527466', 500000, '#78977d', 1000000, '#a7b87f', 5000000, '#d0c77e'], UNKNOWN]);
   } else {
     setBaseFill(['case', ['>', ['get', 'population'], 0], ['step', ['get', 'population'], '#263432', 1000000, '#36514b', 10000000, '#527466', 50000000, '#78977d', 100000000, '#a7b87f', 500000000, '#d0c77e'], UNKNOWN]);
   }
 }
 
+function percentile(sorted, p) {
+  if (!sorted.length) return 0;
+  const index = Math.min(sorted.length - 1, Math.max(0, Math.round((sorted.length - 1) * p)));
+  return sorted[index];
+}
+
+async function applyRuntimeScalar(entry) {
+  const data = await runtimeReady;
+  const metricId = entry.runtime_metric;
+  const values = [];
+  for (const [code, country] of Object.entries(data?.countries || {})) {
+    const raw = Number(country?.metrics?.[metricId]?.value);
+    const has = Number.isFinite(raw);
+    if (has) values.push(raw);
+    try { map.setFeatureState({ source: 'countries', id: code }, { atlasScalarHas: has, atlasScalarValue: has ? raw : 0 }); } catch {}
+  }
+  values.sort((a, b) => a - b);
+  if (!values.length) { setBaseFill(UNKNOWN); return; }
+  const valueExpr = ['feature-state', 'atlasScalarValue'];
+  let scale;
+  if (entry.transform === 'diverging-zero') {
+    const low = percentile(values, 0.05);
+    const high = percentile(values, 0.95);
+    const span = Math.max(Math.abs(low), Math.abs(high), 1);
+    scale = ['interpolate', ['linear'], valueExpr, -span, '#874d4a', 0, '#5b6661', span, entry.color || '#93B87A'];
+  } else if (entry.transform === 'log1p') {
+    const p10 = Math.max(0, percentile(values, 0.10));
+    const p50 = Math.max(p10 + Number.EPSILON, percentile(values, 0.50));
+    const p90 = Math.max(p50 + Number.EPSILON, percentile(values, 0.90));
+    scale = ['interpolate', ['linear'], valueExpr, p10, '#263432', p50, entry.color || '#78977d', p90, '#d8ce87'];
+  } else {
+    const p10 = percentile(values, 0.10);
+    const p50 = Math.max(p10 + Number.EPSILON, percentile(values, 0.50));
+    const p90 = Math.max(p50 + Number.EPSILON, percentile(values, 0.90));
+    scale = ['interpolate', ['linear'], valueExpr, p10, '#263432', p50, entry.color || '#78977d', p90, '#d8ce87'];
+  }
+  setBaseFill(['case', ['boolean', ['feature-state', 'atlasScalarHas'], false], scale, UNKNOWN]);
+}
+
 async function applyScalar(entries) {
   const scalar = entries.find(entry => entry.kind === 'scalar') || null;
-  if (!scalar) {
-    setBaseFill(NEUTRAL);
-    return;
-  }
+  if (!scalar) { setBaseFill(NEUTRAL); return; }
   if (scalar.family === 'religion') return applyReligionScalar(scalar);
   if (scalar.id === 'stat.population' || scalar.id === 'stat.area') return applyGeographicScalar(scalar);
-  // Planned scalar ids cannot become active through the registry API, but keep a
-  // safe neutral fallback for future migrations and stale URLs.
+  if (scalar.runtime_metric) return applyRuntimeScalar(scalar);
   setBaseFill(NEUTRAL);
 }
 
@@ -216,11 +252,7 @@ function hashString(input) {
 
 async function applyPatterns(setEntries) {
   ensurePatternLayer();
-  if (!setEntries.length) {
-    map.setPaintProperty(PATTERN_LAYER, 'fill-pattern', PATTERN_NONE);
-    return;
-  }
-
+  if (!setEntries.length) { map.setPaintProperty(PATTERN_LAYER, 'fill-pattern', PATTERN_NONE); return; }
   const memberships = new Map();
   const allCodes = new Set();
   for (const entry of setEntries) {
@@ -228,7 +260,6 @@ async function applyPatterns(setEntries) {
     memberships.set(entry.id, members);
     for (const code of members) allCodes.add(code);
   }
-
   const patternByCode = {};
   for (const code of allCodes) {
     const matches = setEntries.filter(entry => memberships.get(entry.id)?.has(code));
@@ -244,7 +275,6 @@ async function applyPatterns(setEntries) {
       patternByCode[code] = name;
     }
   }
-
   const expression = ['match', ['get', 'iso3']];
   for (const [code, name] of Object.entries(patternByCode).sort(([a], [b]) => a.localeCompare(b))) expression.push(code, name);
   expression.push(PATTERN_NONE);
@@ -254,14 +284,12 @@ async function applyPatterns(setEntries) {
 function activeSetEntries() {
   return layers.active().map(id => layers.get(id)).filter(entry => entry?.kind === 'set' && entry.queryable);
 }
-
 async function membershipSnapshot() {
   const entries = activeSetEntries();
   const result = new Map();
   for (const entry of entries) result.set(entry.id, await membershipFor(entry));
   return { entries, result };
 }
-
 async function matchedCountries() {
   const { entries, result } = await membershipSnapshot();
   if (!entries.length) return [];
@@ -272,7 +300,6 @@ async function matchedCountries() {
     return queryMode === 'all' ? states.every(Boolean) : states.some(Boolean);
   }).sort();
 }
-
 async function matches(iso3) {
   const { entries, result } = await membershipSnapshot();
   if (!entries.length) return true;
@@ -285,21 +312,11 @@ async function applyQueryHighlight() {
   const activeSets = activeSetEntries();
   const matched = activeSets.length ? await matchedCountries() : [];
   const next = new Set(matched);
-  const touched = new Set([...queryMarkedCodes, ...next]);
-  for (const code of touched) {
-    try {
-      map.setFeatureState({ source: 'countries', id: code }, { atlasQueryMatch: next.has(code) });
-    } catch { /* some registry codes may not exist in the polygon source */ }
+  for (const code of new Set([...queryMarkedCodes, ...next])) {
+    try { map.setFeatureState({ source: 'countries', id: code }, { atlasQueryMatch: next.has(code) }); } catch {}
   }
   queryMarkedCodes = next;
-  window.dispatchEvent(new CustomEvent('potato-atlas-query-result-change', {
-    detail: {
-      mode: queryMode,
-      activeSetCount: activeSets.length,
-      countries: matched,
-      count: matched.length,
-    },
-  }));
+  window.dispatchEvent(new CustomEvent('potato-atlas-query-result-change', { detail: { mode: queryMode, activeSetCount: activeSets.length, countries: matched, count: matched.length } }));
 }
 
 async function render() {
@@ -312,18 +329,14 @@ async function render() {
     if (serial !== renderSerial) return;
     await applyQueryHighlight();
     if (serial !== renderSerial) return;
-    window.dispatchEvent(new CustomEvent('potato-atlas-composition-change', {
-      detail: { active: entries.map(entry => entry.id), scalar: entries.find(entry => entry.kind === 'scalar')?.id || null, sets: entries.filter(entry => entry.kind === 'set').map(entry => entry.id) },
-    }));
+    const scalar = entries.find(entry => entry.kind === 'scalar') || null;
+    const coverage = scalar?.runtime_metric ? await window.__potatoAtlasDataRuntime.metricMeta(scalar.runtime_metric) : null;
+    window.dispatchEvent(new CustomEvent('potato-atlas-composition-change', { detail: { active: entries.map(entry => entry.id), scalar: scalar?.id || null, sets: entries.filter(entry => entry.kind === 'set').map(entry => entry.id), coverage } }));
   } catch (error) {
     console.warn('Atlas composition unavailable:', error);
     if (serial === renderSerial) {
       setBaseFill(NEUTRAL);
-      try {
-        ensurePatternLayer();
-        map.setPaintProperty(PATTERN_LAYER, 'fill-pattern', PATTERN_NONE);
-        await applyQueryHighlight();
-      } catch { /* core geography remains usable */ }
+      try { ensurePatternLayer(); map.setPaintProperty(PATTERN_LAYER, 'fill-pattern', PATTERN_NONE); await applyQueryHighlight(); } catch {}
     }
   }
 }
@@ -331,11 +344,9 @@ async function render() {
 function persistQuery() {
   const url = new URL(location.href);
   const count = activeSetEntries().length;
-  if (count >= 2) url.searchParams.set('query', queryMode);
-  else url.searchParams.delete('query');
+  if (count >= 2) url.searchParams.set('query', queryMode); else url.searchParams.delete('query');
   history.replaceState({}, '', url);
 }
-
 function setQueryMode(mode) {
   const next = mode === 'all' ? 'all' : 'any';
   if (queryMode === next) return;
@@ -345,14 +356,7 @@ function setQueryMode(mode) {
   render();
 }
 
-window.__potatoAtlasQuery = {
-  setMode: setQueryMode,
-  getMode() { return queryMode; },
-  matches,
-  matchedCountries,
-  activeSetCount() { return activeSetEntries().length; },
-};
-
+window.__potatoAtlasQuery = { setMode: setQueryMode, getMode() { return queryMode; }, matches, matchedCountries, activeSetCount() { return activeSetEntries().length; } };
 window.__potatoAtlasCompositor = {
   render,
   state() {
