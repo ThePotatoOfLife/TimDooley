@@ -1,0 +1,192 @@
+{
+  "id": "science-project-meaning-and-equation-guide-2026-09-12",
+  "title": "Science Project Meaning & Equation Guide — 2026-09-12",
+  "updated": "2026-09-12",
+  "status": "project-wide reader and research-value layer; does not change the evidentiary status of parent theories",
+  "document_type": "Research Programme",
+  "abstract": "This guide raises the explanatory standard of the entire Tim Dooley science archive by treating an equation as valuable only when a reader can tell what problem it solves, what each symbol represents, which assumptions make the expression meaningful, what observable or formal consequence follows, and what result would falsify, downgrade or supersede it. The strongest existing records already do this: Unified Potato Theory separates recovered history from modern EFT repair; the dimensional Door separates order parameter, spectral dimension and genuine 5D geometry; Potato Dynamics turns Axis, Door and Eye into typed dynamical objects; and the Door/Handshake model distinguishes network nonlocality from quantum nonlocality. This record propagates that discipline across the major project families. It is not a new Theory of Everything. It is a scientific reading and advancement contract: abstracts should state the precise question and present maturity, equations should be accompanied by variable/type/assumption/interpretation notes, speculative mappings should be kept distinct from established science, and every project should identify the smallest next calculation or experiment capable of materially changing its status.",
+  "research_question": "How can every science project in the archive become more informative to a technically literate reader without inflating speculative material into established science?",
+  "core_rule": "Every added paragraph or equation should reduce ambiguity, increase calculability, improve observable linkage, expose an assumption, sharpen a comparison baseline, or create a real failure test. Decorative algebra and ontology growth are negative value.",
+  "reader_contract": {
+    "abstract": "State the scientific object, exact question, strongest current result, maturity and largest unresolved gap in one compact narrative.",
+    "equation_context": "For every central equation give variables, units/types, mathematical role, assumptions, limiting case, project interpretation and at least one consequence.",
+    "separation": "Keep established external science, recovered Tim material, archive-generated formalization and speculative interpretation explicitly distinguishable.",
+    "comparison": "Name the simpler or established baseline that must be beaten before special project terminology earns explanatory necessity.",
+    "advancement": "Name the smallest calculation, dataset, derivation or experiment that could materially advance or reject the model.",
+    "failure": "State conditions under which the model, interpretation or parameter region should be downgraded rather than reinterpreted after the fact."
+  },
+  "equation_explanation_template": {
+    "equation": "Write the expression exactly enough to calculate with it.",
+    "variables": "Define every symbol and distinguish state variables, parameters, observables and coordinates.",
+    "units_and_types": "State dimensions/units or explicitly say the variables are dimensionless; do not add unlike quantities.",
+    "role": "Say whether the equation is a definition, law, ansatz, estimator, constraint, transition rule, likelihood or comparator.",
+    "assumptions": "List the conditions under which the expression is valid.",
+    "plain_language": "Explain in one or two sentences what changes when the left- or right-hand terms increase.",
+    "limiting_case": "Show at least one familiar or simpler limit when possible.",
+    "observable_consequence": "Connect the expression to something measurable, simulatable or formally checkable.",
+    "failure_condition": "State what outcome would show that the equation or interpretation is inadequate."
+  },
+  "project_guides": [
+    {
+      "project": "Unified Potato Theory",
+      "owner": "knowledge/science/unified-potato-theory-2025-recovery.json",
+      "meaning": "A candidate effective-field-theory programme asking whether the recovered Potato-sector action can be completed consistently and made distinguishable from ordinary GR + Standard Model extensions.",
+      "equation_focus": "L = sqrt(-g)[R/(16 pi G) + 1/2 P K(Box/Lambda^2) P - V(P) + interactions + L_SM + ...].",
+      "plain_language": "The equation is a ledger of dynamical sectors. The real scientific work is not writing all sectors in one bracket; it is defining P and K, deriving propagators/vacua/interactions, and showing that the added sector predicts something a simpler EFT does not.",
+      "next_high_value_step": "Choose one minimal field-content fork, define the nonlocal/fractional operator, derive its spectrum and stability, then constrain one observable sector.",
+      "downgrade_if": "The new sector is inconsistent, experimentally excluded, or observationally redundant with a simpler scalar/gauge extension."
+    },
+    {
+      "project": "Higgs / Quantum Tuber",
+      "owner": "knowledge/science/higgs-quantum-tuber-potato-boson-recovery.json",
+      "meaning": "A conventional BSM model-selection problem hidden inside the project's field language: decide whether the Potato degree of freedom is a neutral scalar or a charged complex field and derive the resulting vacuum and particle spectrum.",
+      "equation_focus": "M^2=[[M_hh^2,M_hs^2],[M_hs^2,M_ss^2]] and tan(2 theta)=2M_hs^2/(M_hh^2-M_ss^2).",
+      "plain_language": "The off-diagonal term measures how strongly Higgs-like and Potato-like excitations mix; zero mixing leaves separate particles, while nonzero mixing changes masses, production and decay couplings.",
+      "next_high_value_step": "Freeze one field representation and parameterization, solve the vacuum and mass matrix, and compare its collider/cosmological signatures with current bounds.",
+      "downgrade_if": "No stable allowed vacuum/parameter region exists or the model adds no discriminating prediction beyond a generic singlet/U(1) extension."
+    },
+    {
+      "project": "Dimensional Door / 4D↔5D transition",
+      "owner": "knowledge/science/dimensional-phase-transition-full-recovery.json",
+      "meaning": "A strong-gravity bifurcation programme that asks whether a GR-like branch can become unstable and transition to a new branch carrying additional effective degrees of freedom.",
+      "equation_focus": "V_eff(phi;Xi)=1/2 m_eff^2(Xi) phi^2 + lambda phi^4/4 + ... with m_eff^2 changing sign near a critical Xi.",
+      "plain_language": "Xi is a dimensionless control variable and phi labels the branch. A sign change can make the old state unstable and create a new state; this does not by itself prove that the new state is literally five-dimensional.",
+      "next_high_value_step": "Choose one action, derive a linear instability threshold, construct the nonlinear branch and calculate one strong-gravity observable against GR and scalarized-gravity baselines.",
+      "downgrade_if": "The extra branch is unstable/nonexistent or all observable effects are indistinguishable from a simpler modified-gravity model."
+    },
+    {
+      "project": "11D Projection / Unification",
+      "owner": "knowledge/science/eleven-dimensional-projection-unification-recovery.json",
+      "meaning": "An inverse-problem and information-loss programme asking what a lower-dimensional description preserves, discards and can reconstruct from a richer latent state.",
+      "equation_focus": "Compare projection/reconstruction loss together with I(Z;X|Y), Bayes-risk loss and Blackwell garbling relations.",
+      "plain_language": "A representation can lose microscopic detail yet retain everything needed for a declared prediction. 'Higher dimensional' only becomes physically meaningful when a geometry/action and compactification are supplied; information theory alone establishes no extra spacetime dimension.",
+      "next_high_value_step": "Solve one explicit projection/reconstruction problem and quantify which tasks remain sufficient after reduction.",
+      "downgrade_if": "Dimension labels are added without a defined map, action, spectrum or measurable loss/reconstruction problem."
+    },
+    {
+      "project": "Potato Dynamics",
+      "owner": "knowledge/science/potato-dynamics-2-toy-model.json",
+      "meaning": "A typed hybrid/open-system grammar for continuous evolution, structural flow, observations, thresholds, resets, viability and reduction across domains.",
+      "equation_focus": "dx/dt=F(x), dx/ds=A(x), [F,A]=DA·F-DF·A, plus Door guard/reset maps.",
+      "plain_language": "F describes ordinary time evolution; A describes a second structural or scale transformation. Their Lie bracket asks whether the order of those operations matters, and Door equations specify when smooth evolution is interrupted by a discrete transition.",
+      "next_high_value_step": "Instantiate the framework in one empirical system, estimate F/A/observation/transition parameters, and test whether the richer hybrid model beats a smaller baseline.",
+      "downgrade_if": "The general tuple grows without an application or reduced models preserve the same target observables within tolerance."
+    },
+    {
+      "project": "Axis / Eye / Door",
+      "owner": "knowledge/science/research-notes/2026-09-11-axis-door-observable-dynamics.json",
+      "meaning": "A control/dynamical-systems translation in which Axis is flow, Eye is an observation map and Door is a state-transition operator.",
+      "equation_focus": "y=O(x), xdot=F(x), and x+=D(x-) when a guard h(x)=0 is crossed.",
+      "plain_language": "The model separates what the system is doing from what an observer can see and from the discrete events that change regimes. That makes observability, first-passage times and hysteresis calculable rather than purely metaphorical.",
+      "next_high_value_step": "Build one low-dimensional simulator or dataset application and test whether hidden state can be reconstructed from Eye outputs through Door events.",
+      "downgrade_if": "Axis is treated as a physical spacetime dimension without a metric/action or Door thresholds are named without measurable transition rules."
+    },
+    {
+      "project": "Golden-ratio Spiral",
+      "owner": "knowledge/science/april-21-2025-potato-axis-spiral-primary-recovery.json",
+      "meaning": "A sharply defined logarithmic-spiral geometry whose empirical value can be tested against alternative curve families instead of inferred from visual resemblance.",
+      "equation_focus": "r=a exp(b theta), with b=ln(phi)/(pi/2) for quarter-turn golden-ratio radial scaling.",
+      "plain_language": "Each increase in angle multiplies radius exponentially; with the recovered b, rotating by pi/2 multiplies radius by phi. That is an exact geometric consequence, not evidence that every natural spiral uses the same mechanism.",
+      "next_high_value_step": "Fit coordinates from one target with uncertainty and compare the fixed-golden model against free logarithmic, Archimedean, power-law and spline baselines.",
+      "downgrade_if": "The golden constraint fits worse than simpler alternatives or is selected after looking at the target."
+    },
+    {
+      "project": "Spudlight / Starchforce",
+      "owner": "knowledge/science/spudlight-theory-and-equations.json",
+      "meaning": "A source→channel→storage→release framework that can model light capture, carbon/starch storage, communication or other stock-flow systems when units are kept domain-specific.",
+      "equation_focus": "dK/dt=J_in-(eta+Gamma)K; J_out=eta K.",
+      "plain_language": "The store grows when input exceeds release plus loss and decays when input stops. eta controls useful release, Gamma controls other loss, and eta+Gamma fixes the characteristic response time.",
+      "next_high_value_step": "Choose one real domain, calibrate the stock/flux parameters, close the conservation ledger and test held-out response data.",
+      "downgrade_if": "A new fundamental force is inferred without a force law/source charge or hidden stores are added without identifiable extra timescales."
+    },
+    {
+      "project": "Human Map / Consciousness",
+      "owner": "knowledge/science/great-book-human-map-mathematics-audit.json",
+      "meaning": "A latent-state measurement programme for longitudinal neural, behavioral and self-report data rather than a table of fixed mystical frequencies or neurotransmitter values.",
+      "equation_focus": "Use an HMM/HSMM/state-space likelihood with explicit measurement model and transition dynamics; evaluate identifiability with Fisher/profile-likelihood diagnostics.",
+      "plain_language": "The hidden-state model asks whether repeated measurements are better explained by a small number of recurring latent regimes and whether those regimes can be recovered reliably across people/sessions.",
+      "next_high_value_step": "Choose one operational target, predefine measurements, fit against simple mixed-effects/spectral baselines and test state/parameter recovery on held-out data.",
+      "downgrade_if": "Latent states are unstable, non-identifiable or fail measurement invariance while still receiving strong psychological/spiritual labels."
+    },
+    {
+      "project": "Microtubule / Tubulin Consciousness",
+      "owner": "knowledge/science/microtubule-tubulin-consciousness-recovery.json",
+      "meaning": "A multiscale causal programme from molecular tubulin and polymer dynamics through cellular/circuit variables to behavior, with a separate gate for any genuinely quantum mechanism.",
+      "equation_focus": "Classical baseline M q¨+Gamma q˙+Kq=xi(t); quantum candidate rho˙=-(i/hbar)[H,rho]+L_decoh[rho].",
+      "plain_language": "The classical equation asks how microtubule modes respond and dissipate under ordinary forces/noise. The quantum equation is only warranted if a quantum-specific observable survives long enough, can be controlled/read out and changes downstream neural behavior beyond classical explanations.",
+      "next_high_value_step": "Measure classical modes/couplings first, establish a selective downstream neural effect, then test a quantum-specific observable only if classical models fail.",
+      "downgrade_if": "The causal chain disappears under toxicity/cytoskeletal controls or quantum models add no predictive power over classical stochastic dynamics."
+    },
+    {
+      "project": "Cosmic Potato Morphology",
+      "owner": "knowledge/science/great-book-cosmic-potato-shape-audit.json",
+      "meaning": "A 3D statistical morphology hypothesis that should be tested with invariant shape descriptors and simulation nulls rather than 2D visual resemblance.",
+      "equation_focus": "Use axis ratios, Minkowski functionals/shapefinders, topology and shear invariants J2=(1/2)tr(sigma^2), J3=det(sigma).",
+      "plain_language": "Different descriptors measure different things: overall anisotropy, eigenvalue pattern, topology, roughness and orientation. They should not be collapsed into one 'potato-looking' judgment.",
+      "next_high_value_step": "Freeze one 3D segmentation pipeline, propagate uncertainty and compare the predeclared tuber classifier against ellipsoid/filament/sheet/simulation baselines out of sample.",
+      "downgrade_if": "The apparent morphology depends strongly on viewing angle, segmentation choice or post-hoc target selection."
+    },
+    {
+      "project": "Infinite Soil / Dark Sector",
+      "owner": "knowledge/science/great-book-quantum-fields-dark-sector-recovery.json",
+      "meaning": "A container for comparing real cosmological model classes—Lambda-CDM, scalar dark energy, interacting dark sectors or unified fluids—without treating metaphorical commonality as physical identity.",
+      "equation_focus": "For one benchmark Q=xi H rho_c, the ratio r=rho_c/rho_de obeys r'=r[3w+xi(1+r)].",
+      "plain_language": "The ratio equation asks whether dark matter and dark energy approach a stable balance. A formal constant-ratio solution matters only if it is physically positive and stable; the selected simple benchmark yields an unstable positive scaling point for the usual negative-pressure branch.",
+      "next_high_value_step": "Choose one physical descendant, derive background plus perturbations, check stability/sound speed and fit expansion, growth and lensing jointly.",
+      "downgrade_if": "Dark matter and dark energy are called one substance solely because the project metaphor groups them together."
+    },
+    {
+      "project": "Door / Handshake Propagation",
+      "owner": "knowledge/science/door-handshake-nonlocal-propagation-model.json",
+      "meaning": "A thresholded temporal-network model for edge formation and propagation that explicitly separates influence from homophily, common exposure and ordinary long-range communication.",
+      "equation_focus": "P(e_ij=1|Z_ij)=sigma(beta_0+beta^T Z_ij), followed by declared contagion/hazard dynamics on the resulting graph.",
+      "plain_language": "Pair features predict whether a coupling forms; later dynamics ask whether states spread through those couplings. The two stages must be tested separately because people can resemble each other before they connect.",
+      "next_high_value_step": "Choose a temporal network, freeze the coding rubric, establish annotation reliability, fit simple exposure/homophily baselines and validate propagation out of sample.",
+      "downgrade_if": "Apparent contagion vanishes after common exposure/selection controls or 'nonlocal' is used as evidence of quantum entanglement."
+    },
+    {
+      "project": "Gauge Unification / SUSY",
+      "owner": "knowledge/science/gauge-unification-supersymmetry-archaeology.json",
+      "meaning": "A model-selection programme where group names matter only after representations, breaking chains, thresholds and observable consequences are fully specified.",
+      "equation_focus": "Run gauge couplings with declared normalization and threshold spectrum through one selected chain such as SU(5), Spin(10) or Pati-Salam.",
+      "plain_language": "Unification is not demonstrated by listing larger symmetry groups; the couplings and particle representations must fit inside the chosen group and evolve consistently to a common high-scale structure while respecting measured low-energy physics.",
+      "next_high_value_step": "Choose one chain, write complete chiral representations/breaking fields, run RG equations with thresholds and derive one quantitative proton-decay/neutrino/new-boson or SUSY-spectrum prediction.",
+      "downgrade_if": "E6/E8/Spin(10)/SU(5)/SUSY terminology accumulates without embeddings, fields, scales or predictions."
+    },
+    {
+      "project": "Advanced / Retarded Door Handshake",
+      "owner": "knowledge/science/advanced-retarded-door-handshake-recovery.json",
+      "meaning": "A mathematical comparison between retarded/advanced Green-function boundary conditions and project past/future language, with retrocausal physics kept as a separate much stronger claim.",
+      "equation_focus": "Solve the same wave/operator equation under retarded versus advanced boundary conditions and compare the resulting Green functions.",
+      "plain_language": "The mathematics distinguishes which boundary data are used to build a solution. Future-oriented cognition or planning does not become an advanced physical wave merely because it references future goals.",
+      "next_high_value_step": "Solve one explicit standard equation both ways and define a measurable deviation from ordinary causal physics before entertaining a retrocausal interpretation.",
+      "downgrade_if": "Psychological anticipation or symbolic future orientation is presented as evidence of advanced physical influence."
+    },
+    {
+      "project": "Quark Polarity",
+      "owner": "knowledge/science/quark-polarity-project-model-recovery.json",
+      "meaning": "A type-safety exercise separating real up/down quark quantum numbers from a project-specific symbolic ascent/grounding coordinate.",
+      "equation_focus": "Proton charge=(2/3+2/3-1/3)e=+e; neutron charge=(2/3-1/3-1/3)e=0; symbolic p belongs to [-1,1] and is a different variable entirely.",
+      "plain_language": "The arithmetic explains electric charge composition. It does not make 'up' physically ascend or 'down' represent gravity/mud. A future Potato-field coupling to quarks would require gauge-invariant operators, not semantic wordplay.",
+      "next_high_value_step": "If a physical coupling is desired, choose the field representation and enumerate the lowest-dimension Lorentz- and gauge-invariant quark operators.",
+      "downgrade_if": "Symbolic polarity is inferred from quark names or moral/social states are said to alter valence-quark composition."
+    },
+    {
+      "project": "Potato Fermentation Chemistry",
+      "owner": "knowledge/science/great-book-potato-fermentation-chemistry-audit.json",
+      "meaning": "A coupled biochemical stock-flow problem asking how potato starch is hydrolyzed into fermentable sugars, converted by yeast and partitioned into ethanol, CO2, biomass and losses.",
+      "equation_focus": "(C6H10O5)_n+nH2O -> nC6H12O6 followed by C6H12O6 -> 2C2H5OH+2CO2, plus mass-balance stock equations.",
+      "plain_language": "The first stage makes starch accessible as sugars; the second converts fermentable sugar to ethanol and CO2. Tracking potato-derived sugar separately from added sugar reveals how much product actually originated in the potato substrate.",
+      "next_high_value_step": "Measure hydrolysis and fermentation kinetics, carbon balance and conversion yield in a safe/legal experimental context rather than treating the old chapter as an operating recipe.",
+      "downgrade_if": "Fermentation is modeled as direct yeast conversion of intact starch or distillation is described as creating ethanol rather than separating an existing mixture."
+    }
+  ],
+  "cross_project_advancement_rule": "Prefer the simplest model that preserves the declared observables within tolerance. Richer project ontology earns retention only when it reduces a named defect, creates a reproducible new prediction, enables a useful intervention, or compresses several otherwise separate results without losing identifiability, correspondence limits or provenance clarity.",
+  "connections": [
+    "science-theory-rigor-completion-matrix-2026-09-11",
+    "model-testing-protocol",
+    "equation-lineage-and-theory-graph",
+    "2026-09-11-cross-model-defect-calculus",
+    "2026-09-11-11d-blackwell-projection-ordering"
+  ]
+}
