@@ -1,109 +1,99 @@
 {
-  "id":"door-handshake-nonlocal-propagation-model",
-  "title":"Door, Handshake, Nonlocal Relation & Seed Propagation Model",
-  "version":"2.0.0",
-  "updated":"2026-09-11",
-  "status":"archive-generated hybrid/network model spanning psychology, communication and symbolic Potatoverse structure; not a quantum-nonlocality theory",
-  "abstract":"The Door/Handshake model is scientifically strongest as a thresholded network-dynamics framework for studying how relationships form and how states, messages or behaviors propagate once a coupling exists. Each node carries a typed psychological/behavioral state, Gates encode transition compatibility, Doors execute discrete state changes, and Handshakes create or strengthen graph edges. Subsequent propagation can be modeled with signed contagion, threshold dynamics, coupled oscillators or other domain-appropriate processes. The principal scientific difficulty is causal identification: observed similarity between connected nodes can arise from influence, homophily, shared environment or common external input. A serious application must therefore define measurable features, calibrate thresholds on training data, compare against simpler network baselines, test annotation reliability for Life/Strife labels and use longitudinal or intervention designs when making causal claims. 'Nonlocal' in this model means long-range graph adjacency or communication across geographic distance; it is explicitly distinct from Bell-type quantum nonlocality. The framework is T2 as a network/hybrid toy model and can become T3 in a specific dataset if parameters are estimated and predictive performance is validated out of sample.",
-  "research_question":"Can a thresholded hybrid-network model of state compatibility, edge formation and signed propagation predict relationship formation or subsequent state/message diffusion better than simpler similarity, exposure and contagion baselines?",
-  "maturity":"T2 general network/hybrid model; T3 possible only after domain-specific calibration and held-out validation",
-  "central_sequence":["measured state","Gate compatibility","Door threshold","handshake/edge event","state update","propagation","network/topological reorganization"],
-  "state_space":{
-    "equation":"X_i=(v_i,b_i,m_i,a_i,q_i)",
-    "variables":{"v_i":"affective/behavioral feature vector","b_i":"body/interoceptive or physiological state when actually measured","m_i":"belief/model state represented by declared variables","a_i":"attention/action state","q_i":"symbolic/project-state label when used"},
-    "space":"X_i belongs to a typed feature space or manifold M; categorical and continuous components should not be assigned one Euclidean metric by default.",
-    "boundary":"Calling M spiritual space is a project interpretation, not evidence for an independently measured extra physical dimension."
+  "id": "door-handshake-nonlocal-propagation-model",
+  "title": "Door / Handshake / Propagation — Generative Temporal Network Theory",
+  "version": "3.0.0",
+  "updated": "2026-09-12",
+  "status": "archive-developed temporal-network and hybrid-state model; graph nonlocality only, not quantum nonlocality",
+  "abstract": "The Door/Handshake theory models three coupled processes that are often studied separately: internal state change, relationship formation, and propagation over an evolving network. Each actor or node carries a partially observed state. A Gate converts state/context compatibility into transition propensity, a Door executes a state change, a Handshake creates or modifies an edge, and the resulting temporal graph changes subsequent exposure and propagation. The scientific challenge is not writing separate equations for these components but identifying them jointly without confusing influence with homophily or shared exposure. This redevelopment therefore introduces a single generative temporal-network model with hidden node states, edge-event hazards, Door-event hazards and signed propagation terms, together with likelihood-based fitting and counterfactual baselines. 'Nonlocal' means that graph edges can connect geometrically distant nodes; it does not imply Bell nonlocality, telepathy or faster-than-light interaction. The model becomes valuable when it predicts future edge/state events or intervention effects beyond static similarity and ordinary contagion baselines.",
+  "research_question": "Can one joint generative model of hidden state, edge formation and propagation explain temporal network data better than models that treat homophily, edge dynamics and contagion independently?",
+  "maturity": "T2 general model; T3 possible after calibrated out-of-sample temporal prediction",
+  "node_state": {
+    "latent": "X_i(t) in M contains the hidden continuous/categorical state of node i",
+    "observation": "Y_i(t)=O[X_i(t)]+epsilon_i(t)",
+    "typed_rule": "Affect, belief, physiology, attention and symbolic labels remain distinct variables unless a justified common representation is learned."
   },
-  "gate":{
-    "compatibility":"G_k(X_i)=sigma[beta(c_k(X_i)-theta_k)]",
-    "open_condition":"G_k(X_i)>tau_k",
-    "calibration":"theta_k,beta,tau_k must be fixed from theory/training data or estimated with regularization; post-hoc threshold tuning is exploratory.",
-    "hysteresis_option":"Use tau_open>tau_close when persistent relationship/state transitions exhibit entry/exit hysteresis.",
-    "meaning":"Gate is a probabilistic or deterministic compatibility rule, not an invisible physical barrier."
+  "joint_event_model": {
+    "edge_hazard": "lambda_ij^E(t)=lambda_0^E(t) exp(beta_E^T Z_ij(t)+rho_E^T C(t))",
+    "door_hazard": "lambda_i^D(t)=lambda_0^D(t) exp(beta_D^T X_i(t)+gamma_D exposure_i(t)+rho_D^T C(t))",
+    "edge_event": "e_ij:0->1 or edge-weight/sign update when the edge process fires",
+    "door_event": "X_i^+=D(X_i^-,context,exposure) when the Door process fires",
+    "context": "C(t) contains common shocks/platform/environment variables available to many nodes",
+    "meaning": "Shared external events enter explicitly rather than being misattributed to interpersonal influence."
   },
-  "door":{
-    "equation":"X_i^+=D_k(X_i^-;u_i,r_i,context)",
-    "meaning":"Door is a state-transition/reset map once specified guard conditions are met.",
-    "requirements":["state variables before/after","guard","transition probability or deterministic map","intervention/control","context","measurement interval"],
-    "event_observable":"Door events can be studied through transition counts, first-passage times, dwell times and transition matrices."
+  "handshake_probability": {
+    "discrete_time": "P(e_ij(t+1)=1|history)=sigma(beta_0+beta^T Z_ij(t))",
+    "features": "Z_ij may include similarity, complementarity, prior exposure, trust, common neighbors, geography, institution and historical interaction",
+    "baseline_suite": ["similarity-only", "common-neighbor", "preferential attachment", "exposure-only", "static logistic edge model"],
+    "interpretation": "Handshake is an event-generating mechanism only if its added features improve future-edge prediction beyond topology and exposure."
   },
-  "handshake":{
-    "definition":"A handshake is an observed or inferred coupling/edge-formation event, not merely similarity.",
-    "pair_score":"H_ij=w_s S_ij+w_a A_ij+w_t T_ij+w_p P_ij-kappa N_ij",
-    "edge_probability":"A calibrated alternative is P(e_ij=1|Z_ij)=sigma(beta_0+beta^T Z_ij), where Z_ij contains preregistered pair features.",
-    "threshold_version":"e_ij=1 if H_ij>theta_H, else 0",
-    "variables":{"S_ij":"semantic/state similarity or complementarity","A_ij":"mutual attention/exposure","T_ij":"trust/permission measure","P_ij":"behavioral/temporal coordination metric","N_ij":"noise/conflict/incompatibility"},
-    "identifiability_warning":"Different weight vectors can yield similar edge predictions when features are correlated. Report parameter uncertainty and regularization/prior sensitivity.",
-    "baseline":"Compare against distance/similarity-only, preferential-attachment, common-neighbor and exposure-only models before claiming a special handshake mechanism."
+  "state_propagation": {
+    "continuous": "dX_i/dt=f(X_i,t)+sum_j e_ij(t) W_ij g(X_j,X_i)+B C(t)+noise",
+    "signed_scalar_example": "dx_i/dt=a x_i-b x_i^3+sum_j W_ij tanh(x_j-x_i)+u_i(t)+noise",
+    "threshold_variant": "node i adopts q when weighted active-neighbor fraction exceeds theta_i",
+    "phase_variant": "d phi_i/dt=omega_i+sum_j K_ij sin(phi_j-phi_i)",
+    "rule": "Choose one propagation family appropriate to the measured state; do not stack contagion, Kuramoto and reaction equations into one model without data demanding them."
   },
-  "causal_inference_problem":{
-    "confounds":["homophily/selection","shared environment","common media/source exposure","time-varying external shocks","platform recommendation","measurement/annotation drift"],
-    "core_warning":"Connected people becoming more similar does not by itself identify interpersonal influence.",
-    "better_designs":["longitudinal temporal ordering","natural experiments","randomized exposure where ethical/feasible","instrumental or matched designs under explicit assumptions","dynamic models including common shocks"],
-    "promotion_rule":"Use the word causal only when the identification assumptions/design are written into the record."
+  "selection_vs_influence": {
+    "problem": "Similar nodes may connect because they were already similar; connected nodes may then become more similar; both may also respond to the same external shock.",
+    "decomposition": "edge formation model + state evolution model + common-shock covariates",
+    "lag_test": "Future change in X_i should be predicted by prior neighbor state after conditioning on X_i history, common exposure and selection variables if influence is claimed.",
+    "intervention_standard": "Randomized or quasi-experimental exposure/network changes are substantially stronger than observational lag associations."
   },
-  "phase_coupling_toy_model":{
-    "equation":"d phi_i/dt=omega_i+sum_j K_ij sin(phi_j-phi_i)",
-    "order_parameter":"r exp(i psi)=(1/N)sum_j exp(i phi_j)",
-    "meaning":"Kuramoto-style dynamics provide a real synchronization comparator after a meaningful phase variable is defined.",
-    "nulls":"Compare measured synchrony against phase-randomized/surrogate and common-input models.",
-    "boundary":"Synchronization does not imply shared quantum state, telepathy or faster-than-light influence."
+  "likelihood": {
+    "point_process": "log L_events=sum_events log lambda_e(t_e)-integral lambda_e(t)dt across declared edge/Door event types",
+    "state_component": "Add transition/emission likelihood for observed node states or a state-space likelihood if X is latent.",
+    "joint_objective": "log L_total=log L_edges+log L_doors+log L_states under the declared conditional-independence structure",
+    "regularization": "Use shrinkage/priors for correlated pair features and report sensitivity to the regularization choice."
   },
-  "nonlocal_relation":{
-    "definition":"Nonlocal means non-geometric or long-range adjacency in the chosen graph: an edge may connect geographically distant nodes through communication, common institutions, shared history, memory or symbolic relation.",
-    "graph_distance":"Use shortest-path, weighted resistance, communicability or another declared network distance separately from physical distance.",
-    "quantum_boundary":"Graph nonlocality is not Bell nonlocality. No quantum formalism should be imported unless an actual quantum system and quantum measurements are under study."
+  "causal_counterfactual": {
+    "question": "What would node-state trajectories have been under the same common shocks but with a specified edge/exposure removed or changed?",
+    "simulation": "Generate paired trajectories under policy/network A and A_0 from the same initial-state posterior/noise draws when possible.",
+    "estimand": "Delta_Y=E[Y_T(A)-Y_T(A_0)] for a clearly defined network/exposure intervention",
+    "boundary": "A counterfactual is only causal when the intervention and identification assumptions are meaningful for the data-generating process."
   },
-  "seed_states":{
-    "life":"L_i(t)>=0 is a project-defined constructive/nourishing/cultivating content or capacity variable only after an observable coding rule is specified.",
-    "strife":"S_i(t)>=0 is a project-defined conflict/fragmentation variable only after an observable coding rule is specified.",
-    "neutral":"Nodes/messages can contain both or neither; labels should apply to states/content/edges rather than essentialize persons.",
-    "annotation_contract":"Use a written coding rubric, multiple annotators where feasible, and report inter-rater reliability before treating Life/Strife as data."
+  "life_strife_layer": {
+    "status": "optional project coding layer, not universal moral physics",
+    "representation": "If used, encode Life/Strife as reproducibly annotated content/state variables or signed edge attributes.",
+    "reliability": "Report inter-rater reliability and classifier calibration; allow mixed/neutral states.",
+    "failure": "Remove the labels from empirical modeling if coding is unstable or adds no predictive value."
   },
-  "competing_propagation":{
-    "equations":["dL_i/dt=alpha_L L_i(1-L_i/K_L)-mu_L L_i+sum_j W^L_ij f_L(L_j)-gamma_LS L_i S_i","dS_i/dt=alpha_S S_i(1-S_i/K_S)-mu_S S_i+sum_j W^S_ij f_S(S_j)-gamma_SL L_i S_i"],
-    "status":"phenomenological signed-network reaction/contagion model",
-    "parameter_rule":"Growth/decay/coupling terms need domain-specific units and estimation; the equations are not universal moral dynamics.",
-    "stability_question":"Analyze fixed points/Jacobian or simulate stochastic variants before describing a state as an attractor."
+  "nonlocality_boundary": {
+    "graph": "Long-range or non-geometric graph adjacency can transmit information quickly across physical distance through an actual communication/institutional channel.",
+    "quantum": "Bell nonlocality concerns correlations of quantum measurement outcomes and is a different mathematical/experimental object.",
+    "rule": "The existence of synchronized distant nodes does not supply evidence for a quantum Handshake."
   },
-  "threshold_contagion":{
-    "equation":"node i adopts state q when [sum_j w_ij 1(q_j=q)]/[sum_j w_ij] >= theta_i",
-    "scientific_neighbors":["Watts threshold model","complex contagion","independent-cascade/contact-process baselines"],
-    "serious_test":"Fit competing contagion models to the same temporal cascade data and compare out-of-sample event likelihood and cascade-size/time distributions."
+  "topological_extension": {
+    "after_validation": "Once the event model is predictive, track how Door/Handshake events alter components, communities, cycles or persistent-homology summaries.",
+    "question": "Do specific event types systematically create bridges, fragmentation or resilient cycles beyond degree-preserving temporal nulls?",
+    "anti_bloat_rule": "Topology is downstream analysis, not a substitute for a validated event-generating model."
   },
-  "stochastic_extension":{
-    "hazard":"lambda_i^q(t)=lambda_0^q exp(beta_q^T X_i(t)+sum_j alpha_q w_ij 1[q_j(t)=q]) as an example event-hazard model",
-    "value":"A hazard/survival formulation can incorporate censoring, varying exposure and event timing more realistically than a deterministic threshold.",
-    "boundary":"This is a modern archive extension, not a recovered Tim equation."
+  "model_comparison": {
+    "metrics": ["held-out event log likelihood", "time-dependent Brier/calibration", "state-transition prediction", "cascade timing/size", "counterfactual intervention accuracy where ground truth exists"],
+    "ablation": "Remove Gate, Handshake, common-shock and propagation terms one at a time to measure what each component contributes.",
+    "success": "The full theory earns retention only if joint modeling provides stable predictive or causal value that simpler modular baselines do not."
   },
-  "long_range_seed_jump":{
-    "concept":"A state/message can appear far from the current geometric wavefront when a long-range network edge transmits it into a distant cluster.",
-    "test":"Compare observed jump distances/times with degree-preserving or spatially constrained network null models.",
-    "boundary":"A transmitting relation/channel must exist; unexplained simultaneity is not enough to infer one."
+  "worked_minimal_instance": {
+    "state": "binary/continuous adoption score x_i(t)",
+    "edge": "communication edge e_ij(t)",
+    "edge_model": "P(e_ij(t+1)=1)=sigma(beta_0+beta_1|x_i-x_j|+beta_2 common_neighbors+beta_3 exposure_ij)",
+    "state_model": "x_i(t+1)=alpha x_i(t)+gamma sum_j w_ij(t)x_j(t)+delta C(t)+epsilon_i(t)",
+    "tests": ["Does beta_1 remain after exposure/topology controls?", "Does gamma predict held-out change?", "Does gamma shrink toward zero when common shocks are modeled?", "Does the joint model beat separate edge/state baselines?"],
+    "value": "This small instance directly operationalizes homophily versus influence before more symbolic variables are introduced."
   },
-  "door_seed_operator":{
-    "equation":"(L_i^+,S_i^+)=D_k[(L_i^-,S_i^-),H_ij,context]",
-    "candidate_probability":"P(seed=q|X,H,context)=softmax(z_q)",
-    "research_use":"Estimate outcomes from observable affect, trust, conflict, message framing and prior exposure; use held-out calibration rather than mystical frequency labels."
-  },
-  "signed_network_version":{
-    "matrix":"W=W^+-W^-",
-    "meaning":"Positive/negative edges may encode support/cooperation versus antagonism/inhibition only under a declared coding scheme.",
-    "analysis":["signed balance/frustration","community structure","spectral stability","cascade sensitivity to edge sign"],
-    "warning":"Positive/negative graph signs are mathematical labels; moral interpretation is additional project semantics."
-  },
-  "model_comparison_contract":{
-    "baselines":["static logistic edge model","similarity/homophily model","common-neighbor/preferential attachment","independent cascade","Watts threshold","simple autoregressive state model"],
-    "metrics":["held-out log likelihood","Brier/calibration score for probabilities","AUC only as supplemental discrimination","cascade-size/time distribution fit","transition prediction","complexity penalty/Bayesian evidence where appropriate"],
-    "success":"The richer Door/Handshake model adds value only when it improves prediction, identifies interventions or compresses multiple recurrent transition phenomena with stable parameters."
-  },
-  "falsification_and_failure_conditions":[
-    "Handshake variables do not predict edge formation beyond simpler homophily/exposure/network-topology baselines.",
-    "Apparent contagion disappears when shared exposure, selection and temporal confounding are modeled.",
-    "Life/Strife coding has poor reliability or shifts materially with annotator/context.",
-    "Threshold/hazard parameters fail to generalize across held-out periods or networks where generalization is claimed.",
-    "Adding Door/Gate structure increases complexity without improving transition/cascade prediction or intervention usefulness."
+  "failure_conditions": [
+    "Handshake features fail to improve future edge prediction beyond topology/exposure baselines.",
+    "Neighbor-state effects vanish after common-shock and selection controls.",
+    "Parameters are unstable across held-out periods/networks where generalization is claimed.",
+    "Life/Strife or other semantic coding lacks reliability.",
+    "The full joint model increases complexity without improving temporal prediction or intervention decisions."
   ],
-  "research_program":["Choose one empirical network and one clearly observable transition.","Freeze the state/edge coding rubric and temporal resolution.","Fit simple baselines first.","Estimate Gate/Handshake parameters with uncertainty.","Separate selection from influence using longitudinal/intervention structure where possible.","Test propagation model out of sample.","Use topology/persistent-homology analyses only after the event model is validated.","Keep quantum-entanglement language in the comparator layer unless studying a genuine quantum experiment."],
-  "connections":["chakra-hawkins-frequency-crosswalk","psychology-signals-and-couplings-atlas","timic-unification-program","spudlight-theory-and-equations","potato-dynamics-2-toy-model","model-testing-protocol","door","handshake","tree-of-life","10000-trees-of-strife","world","spirit"]
+  "connections": [
+    "potato-dynamics-2-toy-model",
+    "spudlight-theory-and-equations",
+    "model-testing-protocol",
+    "psychology-signals-and-couplings-atlas",
+    "door",
+    "handshake",
+    "world"
+  ]
 }
