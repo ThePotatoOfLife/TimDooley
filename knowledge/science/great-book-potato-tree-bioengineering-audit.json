@@ -1,114 +1,71 @@
 {
-  "id":"great-book-potato-tree-bioengineering-audit",
-  "title":"Great Book Chapter 87 — Potato Tree Genetics and Synthetic Morphology Audit",
-  "updated":"2026-09-11",
-  "status":"book-derived plant-science archaeology + modern biological audit; concept proposal, not validated engineering recipe",
-  "source":"The Great Book Of Potato2.odt, Chapter 87, parsed pages 556-559",
-  "importance":"This is a substantial non-physics science branch that had not received a dedicated recovery record. The chapter proposes transforming potato into a long-lived, woody, tree-like, tuber-bearing plant using polyploid genetics, lignification/cambium, perenniality, senescence control, tuberization signals, hormones and CRISPR.",
-  "historical_recipe_recovered":{
-    "starting_claims":[
-      "Potato is treated as a genetically diverse Solanaceae crop and cultivated potato as tetraploid with 48 chromosomes.",
-      "The chapter proposes preserving potato identity/tuber biology while changing above-ground architecture toward a tree-like form."
-    ],
-    "wood_and_secondary_growth":[
-      "PAL, C4H and COMT are named as lignin-pathway genes to strengthen stems.",
-      "WOX4 and KNOX are named as cambial/tree-growth regulators intended to promote thicker stems and trunk-like secondary growth."
-    ],
-    "longevity":[
-      "FT and TFL1 are proposed as growth-cycle/perenniality controls.",
-      "ORE1 inhibition is proposed to delay senescence and extend lifespan."
-    ],
-    "tuber_and_architecture":[
-      "StSP6A is proposed as a tuberization control point.",
-      "The chapter imagines redirecting tuber production above ground so tubers hang from branches.",
-      "Abscisic acid and gibberellins are named as growth/dormancy regulators."
-    ],
-    "engineering_method":"CRISPR is proposed as the main genome-editing technology, with polyploidy/48 chromosomes framed as extra genetic possibility."
+  "id": "great-book-potato-tree-bioengineering-audit",
+  "title": "Potato Tree Synthetic Morphology — Multitrait Development, Carbon Allocation and Engineering Theory",
+  "version": "2.0.0",
+  "updated": "2026-09-12",
+  "status": "book-derived concept + modern plant-development research programme; not an executable engineering recipe",
+  "abstract": "The Potato Tree idea becomes scientifically interesting when reframed from a list of genes into a constrained developmental-engineering problem. The target is not simply 'make potato woody', but to alter several coupled traits—secondary growth, cambial persistence, shoot architecture, longevity, senescence, tuber position, carbon allocation, mechanical stability and disease resistance—without destroying the crop's source-sink economy or reproductive/tuber fitness. The key scientific insight is that these traits compete for shared resources and are controlled by overlapping gene-regulatory and hormonal networks. This redevelopment therefore treats the phenotype as a dynamical trait vector driven by regulatory state, hormone state and environment, with carbon allocation as an explicit conservation constraint. A successful design must move the phenotype through a feasible region rather than maximizing one trait such as lignin or lifespan. StSP6A, ORE1, WOX4, FT/TFL1-like regulators and phenylpropanoid genes remain biologically relevant candidate nodes, but each is treated as part of a network whose perturbation has pleiotropic consequences. The highest-value scientific programme is therefore multi-objective optimization and staged validation, not a gene-name recipe.",
+  "research_question": "Can potato-lineage developmental networks be perturbed toward greater secondary growth, architectural persistence and altered tuber placement while preserving carbon balance, viability, disease resistance and agronomic yield?",
+  "target_trait_vector": "T=(G_sec,L_lign,C_camb,A_shoot,L_life,S_sen,T_pos,Y_tuber,B_source_sink,D_dorm,R_disease,M_mech,F_repro)",
+  "developmental_dynamics": {
+    "equation": "dT/dt=F(T,G,H,E)-D_loss(T,E)",
+    "variables": "G gene-regulatory state; H hormone/signaling state; E environment; D_loss stress/senescence/damage terms",
+    "meaning": "The phenotype evolves through coupled developmental dynamics; traits are not independent knobs."
   },
-  "modern_scientific_audit":{
-    "evolutionary_timeline":{
-      "book_claim":"The chapter places the relevant potato/Solanaceae ancestry near the Carboniferous, around 350 million years ago.",
-      "audit":"This is not consistent with modern Solanaceae molecular dating. Published phylogenies place Solanaceae tens of millions, not hundreds of millions, of years old; estimates vary by calibration/method. The chapter's 350-million-year origin story should be removed from scientific use and retained only as historical book text.",
-      "references":["Särkinen et al. 2013, BMC Evolutionary Biology, dated Solanaceae phylogeny","Wu et al. 2023, nuclear phylogeny / WGD history of Solanaceae"]
-    },
-    "ploidy":{
-      "book_claim":"Potatoes are tetraploid with 48 chromosomes.",
-      "audit":"Many important cultivated S. tuberosum varieties are autotetraploid, 2n=4x=48, but potato germplasm includes multiple ploidy levels. The book should say 'many cultivated potatoes' rather than treating tetraploidy as universal.",
-      "engineering_implication":"High heterozygosity and multiple homologous alleles make editing more difficult, not automatically easier: multiallelic editing, dosage effects, regeneration and preserving elite genetic backgrounds are major constraints.",
-      "references":["Recent advances and challenges in potato improvement using CRISPR/Cas genome editing","Strategies and Protocols for Optimized Genome Editing in Potato"]
-    },
-    "stsp6a":{
-      "audit":"StSP6A is a genuine FT-family mobile tuberigen and major integrator of photoperiod, temperature, sucrose and other tuberization signals. This makes it one of the strongest biologically grounded genes named by the chapter.",
-      "correction":"Changing StSP6A is not a demonstrated recipe for producing branch-hanging aerial tubers. It participates in a complex source-sink and developmental network; recent work also illustrates trade-offs between tuberization/heat tolerance and immune responses.",
-      "references":["2026 review: StSP6A as key regulator integrating multiple tuberization signals","Yeo et al. 2025: SP6A promotes tuberization and heat tolerance but lowers immunity"]
-    },
-    "ore1":{
-      "audit":"The chapter's senescence intuition has a real modern neighbor. StORE1S02 is a positive potato senescence regulator; knockdown has been reported to delay senescence onset.",
-      "correction":"Delayed leaf senescence is not equivalent to converting an annual/herbaceous crop into a stable woody perennial. Senescence, tuberization, source-sink transport, dormancy and whole-plant lifespan are coupled traits.",
-      "reference":"'Aging later but faster: how StCDF1 regulates senescence in Solanum tuberosum', New Phytologist 2024"
-    },
-    "cambium_and_wood":{
-      "audit":"WOX4 is a genuine central regulator associated with vascular cambium proliferation in model and woody plants, embedded in broader CLE/PXY, auxin, cytokinin, ethylene and differentiation networks.",
-      "correction":"Wood formation is not achieved by simply adding WOX4 plus a few lignin-pathway genes. Secondary growth requires coordinated meristem maintenance, xylem/phloem differentiation, cell-wall synthesis, transport, mechanics, hormonal patterning and architecture. WOX4 overexpression alone is not sufficient to create woody secondary growth.",
-      "references":["Vascular Cambium: The Source of Wood Formation","Vascular Cambium Development","Current Understanding of the Genetics and Molecular Mechanisms Regulating Wood Formation in Plants"]
-    },
-    "pal_c4h_comt":{
-      "audit":"These are relevant to phenylpropanoid/lignin metabolism, but potato already possesses lignification pathways. The engineering problem is regulation and tissue patterning, not merely importing generic 'tree genes'.",
-      "correction":"Increasing lignin indiscriminately could alter vascular function, digestibility, growth allocation and disease/stress responses."
-    },
-    "ft_tfl1_and_knox":{
-      "audit":"FT/TFL1-like proteins and KNOX-family transcription factors have major developmental roles, but these are gene families/networks with lineage- and tissue-specific functions, not universal switches labelled 'perennial' and 'tree'.",
-      "correction":"A credible design must identify potato orthologs/paralogs, tissue-specific roles and regulatory context rather than transplanting a generic textbook function."
-    },
-    "hormones":{
-      "audit":"ABA, gibberellins, auxin, cytokinins, ethylene and other signals interact with dormancy, tuberization, cambium and growth architecture.",
-      "correction":"The old recipe underestimates the coupled hormonal network and source-sink feedbacks."
-    },
-    "crispr":{
-      "audit":"CRISPR/Cas editing in potato is technically real and increasingly capable, including multiplex/multiallelic editing approaches.",
-      "correction":"CRISPR is an editing platform, not evidence that a proposed multi-trait phenotype is feasible. Polyploidy, allelic variation, regeneration, somaclonal variation, off-target/pleiotropic effects and preservation of agronomic performance all matter.",
-      "references":["CRISPR/Cas genome editing in potato: current status/future perspectives","Recent advances and challenges in potato improvement using CRISPR/Cas genome editing","Strategies and Protocols for Optimized Genome Editing in Potato"]
-    }
+  "carbon_allocation": {
+    "balance": "dM_C/dt=J_assim-J_resp-J_tuber-J_wood-J_leaf-J_root-J_loss",
+    "allocation_fractions": "J_k=f_k(t,state,E) J_available with sum_k f_k<=1 after maintenance costs",
+    "tradeoff": "Increasing J_wood without increasing assimilation or reducing other sinks necessarily changes tuber, leaf, root or reserve allocation.",
+    "research_value": "This turns Starchforce into a real plant-physiology budget and makes the central engineering tradeoff quantitative."
   },
-  "refined_research_program":{
-    "goal":"Replace the single 'make a potato into a tree' recipe with a constrained synthetic-morphology research question: can a potato-lineage plant be engineered or bred toward increased secondary growth, longevity and altered tuber placement while retaining viable photosynthesis, transport, reproduction/tuber propagation, disease resistance and yield?",
-    "typed_trait_vector":"T=(secondary_growth,lignification,cambial_persistence,shoot_architecture,lifespan,senescence,tuberization_position,tuber_yield,source_sink_balance,dormancy,disease_resistance,mechanical_stability,reproductive_fitness)",
-    "network_view":"dT/dt=F(T,G,H,E) where G is gene-regulatory state, H hormone/signaling state and E environment. This is a systems-development model, not a claim that traits can be edited independently.",
-    "constraint_examples":[
-      "Increasing woody biomass may compete with tuber yield for carbon.",
-      "Changing SP6A/source-sink allocation may alter defense and stress responses.",
-      "Delaying senescence may change nutrient remobilization and tuber maturation.",
-      "Increasing lignification may change vascular hydraulics and stem flexibility.",
-      "Aerial tuberization must be distinguished from fruit production and from pathological/adventitious tuber formation."
-    ],
-    "stage_gates":[
-      "Stage 0: phylogenetic and comparative morphology review across Solanaceae, especially woody/perennial relatives",
-      "Stage 1: gene-regulatory network map for secondary growth, tuberization, senescence and source-sink allocation",
-      "Stage 2: computational/phenotypic trade-off model and candidate-trait prioritization",
-      "Stage 3: contained proof-of-concept studies only after specific causal targets are independently supported",
-      "Stage 4: agronomic viability, stability, disease resistance and multigeneration/clonal-performance testing"
-    ],
-    "non_goal":"Do not present a list of gene names as an immediately executable wet-lab recipe."
+  "mechanical_constraint": {
+    "bending_stress": "sigma_max approximately M_bend c/I for a stem section under elementary beam assumptions",
+    "buckling": "P_cr=pi^2 E I/(K L)^2 for an idealized column",
+    "meaning": "Tree-like architecture requires sufficient geometry and material stiffness; lignin concentration alone does not determine whole-stem mechanical viability."
   },
-  "connection_to_starchforce":{
-    "strong_bridge":"This chapter gives Starchforce a literal biological domain: carbon capture, carbohydrate allocation, starch/tuber storage, source-sink transport and release/remobilization can be measured using ordinary plant physiology.",
-    "typed_variables":[
-      "C_photo = carbon assimilation rate",
-      "J_phloem = photoassimilate transport flux",
-      "M_starch = starch mass/storage stock",
-      "J_tuber = carbon flux into tuber biomass",
-      "J_wood = carbon flux into structural/secondary-growth biomass",
-      "J_resp = respiratory carbon/energy expenditure"
-    ],
-    "mass_balance_schematic":"dM_C/dt = J_assim - J_resp - J_tuber - J_wood - J_other",
-    "importance":"This is a better scientific Starchforce laboratory than treating Starchforce as a fundamental fifth force."
+  "regulatory_modules": {
+    "secondary_growth": "WOX4/CLE-PXY-related cambial regulation plus auxin/cytokinin/ethylene and xylem-phloem differentiation",
+    "lignification": "PAL/C4H/COMT and broader phenylpropanoid/cell-wall network",
+    "tuberization": "StSP6A and source-sink/photoperiod/temperature/sucrose network",
+    "senescence": "ORE1-related senescence regulation and nutrient remobilization",
+    "architecture_lifespan": "FT/TFL1-like and KNOX-related developmental modules in lineage-specific context",
+    "rule": "Candidate genes are nodes in coupled modules; perturbation must be evaluated at the module and whole-plant level."
   },
-  "connections":[
-    "starchforce",
-    "spudlight-theory-and-equations",
-    "great-book-quantum-fields-dark-sector-recovery",
-    "great-book-2024-science-archaeology",
-    "model-testing-protocol",
-    "science-master-index"
-  ]
+  "multiobjective_engineering": {
+    "objective_vector": "J=(maximize structural persistence, tuber yield, disease resistance, reproductive fitness; minimize resource cost, instability and harmful pleiotropy)",
+    "pareto_rule": "Prefer Pareto-efficient designs instead of collapsing all goals into an arbitrary single score.",
+    "constraint": "T must remain inside a feasible phenotype region V defined by survival, transport, reproduction and agronomic constraints.",
+    "meaning": "A more woody plant that loses tuber productivity or disease resistance may be a worse design, not an intermediate success."
+  },
+  "causal_design_strategy": {
+    "stage_0": "Comparative phylogeny and morphology across woody/perennial Solanaceae relatives.",
+    "stage_1": "Build regulatory/trait causal graph and identify candidate leverage points.",
+    "stage_2": "Estimate tradeoffs using natural variation, perturbation data and crop models before multiplex engineering.",
+    "stage_3": "Test one trait module at a time with contained proof-of-concept perturbations.",
+    "stage_4": "Combine only interventions whose interaction effects are understood well enough to predict direction and risk.",
+    "stage_5": "Evaluate multi-season/clonal stability, yield, disease and environmental performance."
+  },
+  "aerial_tuber_question": {
+    "requirement": "Define aerial tuber identity anatomically/developmentally and distinguish it from fruit, swollen stolon-like structures and stress-induced adventitious growth.",
+    "mechanistic_question": "What meristem identity, transport connection and source-sink signal would make an aerial organ enter a tuber developmental programme?",
+    "failure": "Aerial swelling alone is not evidence that branch-hanging tubers have been achieved."
+  },
+  "model_outputs": [
+    "time-resolved biomass partitioning",
+    "secondary-growth rate and stem geometry",
+    "tuber initiation timing/location",
+    "senescence timing",
+    "mechanical safety factor",
+    "disease/stress response",
+    "yield and reproductive/clonal fitness"
+  ],
+  "failure_conditions": [
+    "A proposed intervention improves one target trait only by causing unacceptable carbon-allocation, disease or reproductive costs.",
+    "The candidate causal node does not reproduce the predicted phenotype when perturbed in potato genetic context.",
+    "Combined edits show strong epistasis/pleiotropy that invalidates the additive design assumptions.",
+    "Tree-like architecture is mechanically or hydraulically unstable.",
+    "Altered tuberization cannot be maintained without catastrophic yield or developmental defects."
+  ],
+  "boundary": "This record defines the scientific problem and mathematical tradeoffs. It intentionally does not provide a step-by-step genome-editing protocol.",
+  "connections": ["starchforce","spudlight-theory-and-equations","potato-dynamics-2-toy-model","model-testing-protocol","science-master-index"]
 }
