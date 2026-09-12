@@ -15,7 +15,7 @@ EXPECTED_WORKFLOWS = {
 }
 FORBIDDEN_TEMPORARY = {
     ".github/workflows/timeline-naming-migration.yml",
-    "scripts/migrate_timeline_to_timeline.py",
+    "scripts/migrate_chronology_to_timeline.py",
 }
 
 
@@ -34,13 +34,13 @@ def main() -> int:
         if (ROOT / rel).exists():
             errors.append(f"temporary migration debris remains: {rel}")
 
-    legacy = ROOT / "timeline" / "index.html"
+    legacy = ROOT / "chronology" / "index.html"
     if not legacy.exists():
-        errors.append("legacy timeline compatibility redirect is missing")
+        errors.append("legacy chronology compatibility redirect is missing")
     else:
         text = legacy.read_text(encoding="utf-8", errors="replace")
         if "noindex" not in text or "../timeline/" not in text:
-            errors.append("timeline compatibility route is no longer redirect-only")
+            errors.append("chronology compatibility route is no longer redirect-only")
 
     if errors:
         print("REPOSITORY HYGIENE VALIDATION FAILED")
