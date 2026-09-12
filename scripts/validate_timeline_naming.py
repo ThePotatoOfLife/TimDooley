@@ -20,6 +20,11 @@ def fail(message: str) -> None:
     raise SystemExit(1)
 
 
+def is_internal_design_doc(rel: Path) -> bool:
+    """Implementation history may name retired products while discussing migrations."""
+    return len(rel.parts) >= 2 and rel.parts[0] == "docs" and rel.parts[1] == "superpowers"
+
+
 def main() -> None:
     timeline_page = ROOT / "timeline" / "index.html"
     if not timeline_page.exists():
@@ -58,6 +63,10 @@ def main() -> None:
         if rel == Path("chronology/index.html"):
             continue
         if path.suffix.lower() not in TEXT_SUFFIXES and path.name != "CNAME":
+            continue
+        # Design/implementation history is not an active product surface. It must
+        # be allowed to name retired systems when explaining migrations away from them.
+        if is_internal_design_doc(rel):
             continue
         try:
             text = path.read_text(encoding="utf-8")
