@@ -1,0 +1,85 @@
+{
+  "version":"1.0.0",
+  "updated":"2026-09-12",
+  "purpose":"Canonical empirical owner for African regional integration systems and status history. REC membership does not imply North/West/East/South orientation.",
+  "au_recognised_recs":{
+    "source":"African Union",
+    "source_url":"https://au.int/en/recs",
+    "ids":["amu","comesa","cen-sad","eac","eccas","ecowas","igad","sadc"]
+  },
+  "systems":{
+    "african-union":{
+      "label":"African Union",
+      "kind":"continental-institution",
+      "status":"current",
+      "source":"African Union",
+      "source_url":"https://au.int/en/member_states/countryprofiles2",
+      "members":["DZA","AGO","BEN","BWA","BFA","BDI","CPV","CMR","CAF","TCD","COM","COG","COD","CIV","DJI","EGY","GNQ","ERI","SWZ","ETH","GAB","GMB","GHA","GIN","GNB","KEN","LSO","LBR","LBY","MDG","MWI","MLI","MRT","MUS","MAR","MOZ","NAM","NER","NGA","RWA","STP","SEN","SYC","SLE","SOM","ZAF","SSD","SDN","TZA","TGO","TUN","UGA","ZMB","ZWE"],
+      "non_canonical_members":["Sahrawi Arab Democratic Republic / Western Sahara"]
+    },
+    "eac":{
+      "label":"East African Community",
+      "kind":"regional-economic-community",
+      "status":"current",
+      "source":"East African Community",
+      "source_url":"https://www.eac.int/eac-partner-states",
+      "members":["BDI","COD","KEN","RWA","SOM","SSD","UGA","TZA"]
+    },
+    "sadc":{
+      "label":"Southern African Development Community",
+      "kind":"regional-economic-community",
+      "status":"current",
+      "source":"SADC",
+      "source_url":"https://www.sadc.int/member-states",
+      "members":["AGO","BWA","COM","COD","SWZ","LSO","MDG","MWI","MUS","MOZ","NAM","SYC","ZAF","TZA","ZMB","ZWE"]
+    },
+    "ecowas":{
+      "label":"Economic Community of West African States",
+      "kind":"regional-economic-community",
+      "status":"current",
+      "source":"ECOWAS",
+      "source_url":"https://www.ecowas.int/member-states/",
+      "members":["BEN","CPV","CIV","GMB","GHA","GIN","GNB","LBR","NGA","SEN","SLE","TGO"],
+      "former_or_transition_members":[
+        {"code":"BFA","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"},
+        {"code":"MLI","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"},
+        {"code":"NER","effective_date":"2025-01-29","status":"withdrawn","source_url":"https://www.ecowas.int/press-statement-2/"}
+      ]
+    },
+    "amu":{
+      "label":"Arab Maghreb Union",
+      "kind":"regional-economic-community",
+      "status":"au-recognised-rec",
+      "source":"African Union",
+      "source_url":"https://au.int/en/recs"
+    },
+    "comesa":{
+      "label":"Common Market for Eastern and Southern Africa",
+      "kind":"regional-economic-community",
+      "status":"au-recognised-rec",
+      "source":"African Union",
+      "source_url":"https://au.int/en/recs"
+    },
+    "cen-sad":{
+      "label":"Community of Sahel–Saharan States",
+      "kind":"regional-economic-community",
+      "status":"au-recognised-rec",
+      "source":"African Union",
+      "source_url":"https://au.int/en/recs"
+    },
+    "eccas":{
+      "label":"Economic Community of Central African States",
+      "kind":"regional-economic-community",
+      "status":"au-recognised-rec",
+      "source":"African Union",
+      "source_url":"https://au.int/en/recs"
+    },
+    "igad":{
+      "label":"Intergovernmental Authority on Development",
+      "kind":"regional-economic-community",
+      "status":"au-recognised-rec",
+      "source":"African Union",
+      "source_url":"https://au.int/en/recs"
+    }
+  }
+}
