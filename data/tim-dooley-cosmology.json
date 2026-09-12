@@ -1,93 +1,84 @@
 {
-  "version":"2.1.0",
-  "updated":"2026-09-08",
+  "version":"2.2.0",
+  "updated":"2026-09-12",
   "status":"identity-development-view",
-  "canonical_sources":["data/potatoism-concept-registry.json","data/potatoism-dossiers.json"],
-  "purpose":"Tim-specific timeline and identity-development layer. Shared Potatoism concepts are references to the canonical registry rather than duplicated definitions.",
-  "epistemic_rule":"A project-mythic event can be canonical inside the Potatoverse without being a verified historical event. Public self-description can be recorded without being treated as proof of supernatural status. Retrospective timeline must be distinguished from contemporaneous records.",
+  "canonical_sources":["data/timeline-events.json","knowledge/timeline/developmental-genealogy.json","knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json"],
+  "purpose":"Tim-specific identity-development layer. Preserve the distinction between Son biography, Tim/Potato birth, Sage development, Father realization and later North/source-center theology.",
+  "epistemic_rule":"Project-mythic events can be canonical inside the Potatoverse without becoming independently verified historical or supernatural facts. Retrospective interpretation must be distinguished from contemporaneous evidence.",
   "tim":{
     "core_name":"Tim Dooley",
     "project_title":"The Potato of Life",
-    "canonical_identity_claim":"Within the project's present religious canon, Tim Dooley is the Potato of Life and Father/source identity.",
-    "canonical_roles":["tim-dooley-father","source","gardening","mountain","throne-of-north","north-axis","north-of-north","spiral","ladder","tree-of-life","potato-of-life"],
-    "current_project_age":"about 6–7 years, according to the project's stated internal timeline; this is a mythic/persona age, not a verified human age",
+    "canonical_identity_claim":"Within the project's present religious canon, Tim Dooley is the Potato of Life and later Father/source identity.",
+    "potato_birth":"December 25, 2020 is the current project-canonical spiritual birth marker for Tim as Potato of Life; exact primary provenance for that date remains a recovery target.",
+    "public_emergence":"Public Potato / Rational Potato / Potato of Life language develops through 2021-2024 and must not be confused with the spiritual birth marker.",
     "godhood_transition":"April 2025, according to the project's current timeline",
-    "godhood_mechanism":"Breaking of a straw on the camel's back followed by passage through the needle's eye; Tim becomes the Ladder / turning point after being a sage beneath the Bodhi tree.",
-    "origin":"Within the current mythology Tim emerges from the Potato of Life after the Son's death.",
-    "notable_forms":["tim-dooley-father","source","gardening","mountain","throne-of-north","spiral","ladder","north-axis","tree-of-life","potato-of-life","north-of-north"],
-    "misrecognitions":["carpenter","lion","cat","lion's whelp","son"],
-    "interpretive_key":"The many mistaken identities can be modeled as aperture-dependent views: observers name the same underlying center according to the fragment they can perceive. This is a project interpretation, not a claim that historical religions literally identified Tim Dooley.",
-    "central_question":"When did the Tim identity begin, and which events transformed a sage beneath the tree into the Ladder, Father and Potato of Life?"
+    "godhood_mechanism":"Accumulated burden reaches a threshold; Needle's Eye, Ladder, Axis, Heaven and Father relations consolidate through the April 2025 Turning.",
+    "north_axis_crystallization":"February 2026 is the mature archive's best current placement for the organized North Axis programme; explicit Axis language is already attested in April 2025.",
+    "canonical_roles":["tim-dooley-father","source","gardening","mountain","throne-of-north","north-axis","north-of-north","spiral","ladder","tree-of-life","potato-of-life"]
   },
   "son_timeline_claims":[
-    {"period":"1987","claim":"The Son was born in 1987.","status":"user-stated project timeline","research_need":"Locate the earliest source for this birth year and distinguish personal biography from later mythic framing."},
-    {"period":"childhood","claim":"The Son is described as having a Siddhartha-like upbringing: born in a manger/farm-associated setting, then raised in a privileged farm-palace environment.","status":"user-stated comparative narrative","research_need":"Document what 'manger', 'farm', 'palace' and 'privileged' mean in the underlying source material."},
-    {"period":"2011","claim":"At approximately age 25, the Son hung from an Odin tree for 19 hours, encountered the Ouroboros, experienced unity with God, entered deep sleep and had visions including an American city destroyed by nuclear explosion; on waking he saw thousands of crows covering sun and trees.","status":"user-stated visionary timeline","research_need":"Find contemporaneous or earliest surviving account, exact duration, location, wording, and later retellings; compare independently with Hávamál's nine-night tree ordeal and with Ouroboros, apocalyptic-city and crow symbolism."},
-    {"period":"December 2019","claim":"The Son died in person.","status":"user-stated timeline","research_need":"Keep separate from the later meme-crucifixion and locate primary records."},
-    {"period":"around 2020","claim":"The Son was sold into slavery and crucified in a meme at the North Pole.","status":"project-mythic / user-stated timeline","research_need":"Separate literal allegations, digital events, symbolic language and later mythic interpretation. Identify the exact meme/source before assigning historical status."},
-    {"period":"2022–2023","claim":"Tim Dooley emerged as a potato sage after the Son's death and was initially misrecognized as lion, cat, carpenter or Son.","status":"project timeline with unresolved date","research_need":"Search the earliest public material for each identity label and reconstruct the transition rather than assuming one sudden emergence."},
-    {"period":"April 2025","claim":"After rejection/burial of the Father, Tim returned as God and became the Ladder to Heaven / turning point.","status":"user-stated project canon","research_need":"Locate contemporaneous April 2025 material and establish whether the Ladder, Father, North of North and Godhood formulations emerged together or sequentially."}
+    {"period":"1987-07-31","claim":"The Son / human-vessel track begins.","status":"project-canon biography"},
+    {"period":"2011","claim":"Thomas / the Son undergoes the Kolding psychonaut / Tree / oneness sequence. Exact date remains unresolved, so biological age is 23 or 24 depending whether the event occurred before or after July 31; Chapter 24 conventionally narrates it as age 24. Age 25 is impossible in 2011.","status":"autobiographical project chronology","owner":"knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json"},
+    {"period":"2018","claim":"Essence / persona death language appears as a distinct earlier rupture.","status":"project autobiography / later interpretation"},
+    {"period":"December 2019","claim":"The Son reaches a personhood / personal-death or terminal-withdrawal anchor.","status":"project-canon with source archaeology open","research_need":"Keep separate from the later meme-crucifixion strand until the original artifact is recovered."},
+    {"period":"around 2020","claim":"The Son is represented through a North-Pole / Christmas meme-crucifixion strand.","status":"project-mythic / exact date unresolved","research_need":"Recover the original meme timestamp and earliest interpretation."},
+    {"period":"2020-12-25","claim":"Tim's project-canonical spiritual birth marker as Potato of Life.","status":"project canon / provenance still to recover"},
+    {"period":"2021-2024","claim":"Potato identity develops publicly and philosophically toward Sage.","status":"project development"},
+    {"period":"April 2025","claim":"Needle / Ladder / Axis / Father-Godhood threshold.","status":"project canon"},
+    {"period":"February 2026","claim":"Organized North Axis crystallization.","status":"mature project chronology"}
   ],
   "tim_transformation_sequence":[
-    {"order":1,"name":"Sage beneath the Bodhi tree","status":"project-mythic","meaning":"Stillness, observation, wisdom and the pre-turning state."},
-    {"order":2,"name":"Straw breaks the camel's back","status":"project-mythic","meaning":"Accumulated burden reaches a threshold; the final small event reveals that the old structure cannot continue."},
-    {"order":3,"name":"Needle's eye","status":"project-mythic","meaning":"Narrow passage / impossible compression / threshold where identity is transformed rather than merely transported."},
-    {"order":4,"canonical_id":"turning","name":"Turning","status":"project-mythic","meaning":"The sage becomes the turning itself: not merely someone climbing a ladder but the transformation at the axis."},
-    {"order":5,"canonical_id":"ladder","name":"Ladder","status":"project-mythic","meaning":"Connection between upper and lower domains; ascent and descent become one structure."},
-    {"order":6,"canonical_id":"tim-dooley-father","name":"Godhood / Father identity","date":"2025-04","status":"user-stated project timeline","meaning":"The project places Tim's explicit Godhood transition in April 2025."},
-    {"order":7,"canonical_id":"potato-of-life","name":"Potato of Life","status":"project-canon","meaning":"Tim becomes associated with the total relational image of root, stem, branch, fruit, seed, soil, tree, door, throne, heaven, earth and directions."},
-    {"order":8,"canonical_id":"north-of-north","name":"North of North","status":"project-canon / interpretation","meaning":"The identity is placed beyond ordinary directional North: not another geographic point but the symbolic beyond-point of the Axis."}
-  ],
-  "higher_reflection_matrix":[
-    {"project_layer":"Son's 2011 tree ordeal","external_context":"Odin's tree ordeal in Hávamál","shared_structure":"tree + ordeal + altered knowledge + descent/return","limit":"The historical Norse poem says nine nights and runes; it does not describe the Son or a nineteen-hour ordeal."},
-    {"project_layer":"Siddhartha-like protected upbringing","external_context":"Traditional Four Sights biography of Siddhartha","shared_structure":"privilege/protection + encounter with suffering/death + transformation","limit":"The Buddhist tradition concerns Siddhartha Gautama; resemblance does not establish identity or historical continuity."},
-    {"project_layer":"manger/farm birth","external_context":"Luke's infancy narrative","shared_structure":"humble agricultural/animal-associated birth imagery","limit":"Luke's text describes Jesus laid in a manger; it does not describe the Son's modern farm history."},
-    {"project_layer":"return as Thomas/Twin","external_context":"Gospel of John","shared_structure":"absence/return + witness + recognition + Thomas as Didymus/Twin","limit":"John does not identify the modern Son with Thomas; the comparison is symbolic and textual."},
-    {"project_layer":"covenant rupture / rapture / end-time return","external_context":"Biblical covenant and Christian eschatological vocabulary","shared_structure":"broken relationship + separation/gathering + transformed order","limit":"The project must identify the exact biblical texts rather than treating all end-times vocabulary as one doctrine."},
-    {"project_layer":"Potato of Life","external_context":"potato biology","shared_structure":"hidden storage + eye + dormancy + sprouting + vegetative continuity","limit":"Biological resemblance supplies metaphorical structure, not evidence for supernatural identity."}
+    {"order":1,"canonical_id":"potato-of-life","name":"Tim / Potato birth","date":"2020-12-25","status":"project-canon","meaning":"Spiritual birth marker; not completed Father."},
+    {"order":2,"name":"Potato development / observer phase","date":"2021-2023","status":"project-development","meaning":"Rational Potato / Potato of Life identity matures through observation, humor, meditation, streaming and symbolic research."},
+    {"order":3,"name":"Sage / Great Book phase","date":"2024","status":"project-development","meaning":"System-building, writing and integration before the Father threshold."},
+    {"order":4,"name":"Straw / accumulated burden","status":"project-mythic","meaning":"A final visible trigger reveals accumulated burden."},
+    {"order":5,"name":"Needle's Eye","status":"project-mythic","meaning":"Compression / narrow threshold."},
+    {"order":6,"canonical_id":"ladder","name":"Ladder / Axis","date":"2025-04","status":"project-canon","meaning":"Tim becomes the connecting relation rather than merely an observer beneath the Tree."},
+    {"order":7,"canonical_id":"tim-dooley-father","name":"Father / Godhood realization","date":"2025-04","status":"project-canon","meaning":"Father identity belongs to the Turning corridor, not to 2020-2024."},
+    {"order":8,"canonical_id":"north-of-north","name":"North of North","status":"later project development","meaning":"Source-center / throne / beyond-North relation develops after the Father threshold."},
+    {"order":9,"canonical_id":"north-axis","name":"Organized North Axis","date":"2026-02","status":"mature project chronology","meaning":"Symbolic North becomes an explicit organized programme beside empirical geography and strategy."}
   ],
   "son":{
     "canonical_refs":["son","thomas-twin","lion-of-judah","door","vessel","narrow-gate"],
-    "status":"comparative-project identity; individual equations remain qualified",
-    "project_role":"Embodied bridge between source and world; the Son enters manifestation, encounters death and becomes associated with Door, Vessel, Ladder and return.",
-    "birth_year":1987,
-    "legal_fiction":"The project uses 'legal fiction' as a conceptual clue for a constructed or juridical identity/status. It is not an established legal classification without a specific legal source.",
-    "tree_ordeal":{"year":2011,"age":25,"duration":"19 hours","motifs":["Odin tree","Ouroboros","unity with God","deep sleep","nuclear-city vision","crows covering sun and trees"],"status":"user-stated visionary account"},
-    "death_age":"approximately 33 in the project timeline",
-    "death_setting":"a cold December night; the user describes the crucifixion as occurring in a meme",
-    "death_type":"meme-crucifixion / symbolic death",
-    "transformation":["son","meme-crucifixion","door","vessel","ladder"],
-    "thomas_note":"Thomas is called Didymus ('Twin') in John 11:16, 20:24 and 21:2. The canonical text does not establish that Thomas was physically the twin of Jesus; later Acts of Thomas traditions develop twin imagery differently.",
-    "door_relation":"The Son becomes/couples to the Door as the threshold between source and manifestation.",
-    "vessel_relation":"The Son is the vessel through which the upper architecture becomes embodied in the lower plane."
+    "project_role":"Embodied / human-vessel track whose biography includes childhood, 2011 ordeal, prison, public conflict and the later death/personhood corridor.",
+    "birth_date":"1987-07-31",
+    "tree_ordeal":{
+      "year":2011,
+      "age":"23 or 24 depending exact date; Chapter 24 narrates age 24; never 25",
+      "overall_duration":"approximately 19 hours in current working reconstruction",
+      "unity_phase":"roughly six hours; currently treated as a phase within the larger ordeal unless primary evidence proves it was additional",
+      "location":"Kolding",
+      "substance":"unresolved; current recollection suggests 2C-E or 2C-I, older recollection says mushrooms",
+      "post_acute":"next-day apparent voice/boundary disturbance followed by voluntary psychiatric admission",
+      "hospital_events":"nuclear-America dream and later crow/crowd scene; keep separate from the acute psychedelic phase",
+      "owner":"knowledge/timeline/son-2011-kolding-psychonaut-psychiatric-sequence.json"
+    },
+    "death_taxonomy":["2018 essence/persona death","December 2019 personhood/personal-death anchor","circa-2020 meme-crucifixion strand","later Door/Vessel interpretation"],
+    "door_relation":"Door/Vessel is a later functional interpretation of the Son-side transition and should not erase Tim/Son subject distinction."
   },
   "birth_layers":{
-    "human_birth":{"date":"unknown","place":"unknown","status":"not established"},
-    "public_persona_birth":{"date":"at least March 2023 for the current @Rational_Potato account","status":"observed profile metadata"},
-    "spiritual_war_window":{"date":"approximately 2014 if the stated 12-year duration ends in 2026","status":"inference from self-description"},
-    "tim_mythic_birth":{"date":"after the Son's death; exact date unknown","status":"project canon"},
-    "godhood_birth":{"date":"April 2025","status":"user-stated project timeline"},
-    "repository_birth":{"date":"2026","status":"observable repository history"}
+    "son_material_birth":{"date":"1987-07-31","status":"project-canon biography"},
+    "tim_spiritual_birth":{"date":"2020-12-25","status":"project-canon; exact provenance still to recover"},
+    "public_potato_identity":{"date":"2021-2024 development","status":"project/public-development range"},
+    "father_realization":{"date":"2025-04","status":"project-canon"},
+    "north_axis_crystallization":{"date":"2026-02","status":"mature project chronology"},
+    "repository_formalization":{"date":"2026","status":"observable repository history"}
   },
-  "misrecognition_map":[
-    {"form":"carpenter","possible_function":"maker / builder / worker / craftsman","relation":"Tim as builder/gardener rather than merely ruler"},
-    {"form":"lion","possible_function":"kingship / courage / sovereignty","relation":"canonical_id: lion-of-judah; Son-side identity that can reflect the Father's center"},
-    {"form":"cat","possible_function":"observer / independent creature / domestic wildness","relation":"deliberately smaller animal aperture through which the larger form is perceived"},
-    {"form":"lion's whelp","possible_function":"young sovereignty / emerging power","relation":"connects child/son/emergence with later fatherhood"},
-    {"canonical_id":"gardening","form":"gardener","possible_function":"cultivation / stewardship / conditions for life","relation":"strongest practical ethical role in the current mythology"},
-    {"canonical_id":"mountain","form":"mountain","possible_function":"height / stillness / axis / pilgrimage","relation":"Tim as stable elevation around which ascent is organized"},
-    {"canonical_id":"throne-of-north","form":"throne","possible_function":"center / authority / seat","relation":"Throne of North"},
-    {"canonical_id":"spiral","form":"spiral","possible_function":"growth / return / turning","relation":"Tim as process rather than static point"},
-    {"canonical_id":"ladder","form":"ladder","possible_function":"connection / ascent / descent","relation":"Tim's April 2025 turning"},
-    {"canonical_id":"tree-of-life","form":"tree of life","possible_function":"living relational architecture","relation":"roots-to-fruit cycle"},
-    {"canonical_id":"potato-of-life","form":"potato","possible_function":"compressed life / hidden growth / memory / future","relation":"Tim's central container and origin image"}
+  "higher_reflection_matrix":[
+    {"project_layer":"Son's 2011 tree / oneness ordeal","external_context":"Odin's tree ordeal in Hávamál","shared_structure":"tree + ordeal + altered knowledge + return","limit":"The historical Norse poem says nine nights and runes; it does not describe the modern Son or a nineteen-hour psychedelic episode."},
+    {"project_layer":"2011 stereo / fractal / spiral phenomenology","external_context":"mystical-union and ego-dissolution literature","shared_structure":"self-boundary alteration + ineffability + relational perception","limit":"Phenomenological resemblance does not establish supernatural or physical claims."},
+    {"project_layer":"Potato of Life","external_context":"potato biology","shared_structure":"hidden storage + eye + dormancy + sprouting + vegetative continuity","limit":"Biological resemblance supplies metaphorical structure, not proof of supernatural identity."}
   ],
   "timeline":{
-    "deep_mythic":"Source → Separation → Father/Son relation → Son enters Plane → Son undergoes tree ordeal → Son dies → meme-crucifixion → Potato transformation → Tim emerges → Father rejected/buried → April 2025 Ladder turning",
-    "sage_phase":"Sage beneath Bodhi tree → accumulated burden → straw breaks camel's back → needle's eye → turning",
-    "2025_phase":"April 2025 → explicit Godhood transition → Tim becomes Ladder/turning center → North of North formulation",
-    "current_phase":"Tim/Potato of Life → Father/Axis/Gardener/Tree/Throne/Spiral → North Programme and repository architecture",
-    "unknowns":["human birth details","exact 1987 birth context","exact 2011 location and source","exact Son-death date in December 2019","exact meme-crucifixion date and source","first Tim emergence record in 2022/2023","exact April 2025 event/date","first use of North of North for Tim","whether 'about 6–7 years old' begins at a specific earlier mythic event"]
+    "developmental_spine":"Son embodied life → 2011 Tree/oneness ordeal → 2018 essence rupture → 2019 personhood-death anchor → circa-2020 meme-crucifixion strand → 2020-12-25 Tim/Potato birth → 2021-2024 Potato/Sage development → April 2025 Needle/Ladder/Axis/Father threshold → February 2026 organized North Axis",
+    "source_direction_rule":"Later Tree, Axis, Father, Door, North and biblical interpretations may point back to earlier events but must not be written as if Thomas necessarily possessed that mature vocabulary at the time.",
+    "unknowns":["exact 2011 date","chemically verified 2011 substance","whether the six-hour unity phase is inside or additional to the nineteen-hour ordeal in the earliest account","original meme-crucifixion timestamp","primary provenance for the 2020-12-25 Tim/Potato birth date","exact internal April 2025 Turning date"]
   },
-  "research_questions":["Find the earliest surviving text/video/post where Tim says or implies he is the Potato of Life.","Find the earliest occurrence of the April 2025 Godhood transition.","Search March–May 2025 for straw/camel, needle's eye, Bodhi tree, sage, Ladder and turning language.","Find the earliest source for the 1987 Son birth claim.","Find the contemporaneous or earliest surviving account of the 2011 nineteen-hour tree ordeal.","Determine whether the nuclear-city vision and crow episode were recorded before or after the event.","Find the earliest source separating the December 2019 personal death from the later meme-crucifixion.","Find the earliest 2022/2023 Tim potato-sage material and each alleged misrecognition.","Find the earliest Son/Thomas/Twin/Christ/Door/Vessel formulation.","Trace gardener, mountain, throne, spiral and tree language backward to first appearances.","Search older material for a distinction between Tim as human person and Tim as mythic God persona.","Locate primary material before using hostile retrospective archives for timeline.","Build a prophecy matrix matching each project claim to exact biblical passages and record where the analogy breaks.","Determine how North Axis became North of North rather than treating the two as synonyms."]
+  "research_questions":[
+    "Recover the earliest surviving account of the 2011 Kolding episode.",
+    "Recover the original North-Pole meme and timestamp.",
+    "Trace the distinction between December 2019 personhood death and circa-2020 meme-crucifixion backward through sources.",
+    "Recover the first primary source for December 25, 2020 as Tim/Potato birth.",
+    "Trace Potato, Sage, Ladder, Father and North-of-North labels to first public attestations."
+  ]
 }
