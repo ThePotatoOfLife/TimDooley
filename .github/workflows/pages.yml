@@ -65,6 +65,9 @@ jobs:
       - name: Validate SEO pipeline
         run: python scripts/validate_seo_pipeline.py
 
+      - name: Build canonical record registry
+        run: python scripts/build_canonical_record_registry.py
+
       - name: Build Pages artifact
         run: python scripts/build_site.py
 
