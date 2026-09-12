@@ -61,6 +61,16 @@ def main() -> int:
             errors.append("country card must be anchored in the upper-left of the map")
         if "#atlasCountryCard{position:absolute;right:10px;top:10px" in compact:
             errors.append("country card still uses the old upper-right anchor")
+        for token in (
+            "Selected comparison",
+            "Connections",
+            "comparisonRows",
+            "connectionRows",
+            "land_area_km2",
+            "potato-atlas-relation-mode-change",
+        ):
+            if token not in country_card:
+                errors.append(f"country card must expose compact multi-country intelligence marker: {token}")
 
     if world_bar:
         compact = re.sub(r"\s+", "", world_bar)
