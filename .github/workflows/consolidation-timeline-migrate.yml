@@ -19,15 +19,16 @@ jobs:
           ref: project-consolidation-2026-09-12
           fetch-depth: 0
 
-      - name: Migrate recovered Chronology references
-        run: python scripts/consolidation_timeline_migrate.py
+      - name: Migrate recovered temporal references
+        run: |
+          python scripts/consolidation_timeline_migrate.py
+          rm scripts/consolidation_timeline_migrate.py
 
       - name: Verify Timeline naming contract
         run: python scripts/validate_timeline_naming.py
 
-      - name: Remove one-shot migration script and commit
+      - name: Commit migration
         run: |
-          rm scripts/consolidation_timeline_migrate.py
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add -A
