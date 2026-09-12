@@ -18,7 +18,6 @@ ENTITY_RUNTIME = ROOT / "world-map" / "3d-entity-runtime.js"
 INFRA_BROWSER = ROOT / "world-map" / "3d-infrastructure.js"
 WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
-COUNTRY_CARD = ROOT / "world-map" / "3d-country-card.js"
 
 SUPPORTED_TYPES = {
     "port", "maritime-terminal", "strait-associated-terminal", "canal-associated-terminal",
@@ -151,12 +150,10 @@ def main() -> int:
         if gateway_counts[gateway_id] < minimum:
             errors.append(f"first infrastructure seed requires {minimum}+ assets linked to {gateway_id}; found {gateway_counts[gateway_id]}")
 
-    # Explicit regression fixture for the causal boundary.
     bad = {"relationship": "member-of-chain", "causal_status": "explicit-dependency"}
     if not (bad["relationship"] in CONTEXT_RELATIONSHIPS and bad["causal_status"] != "contextual"):
         errors.append("causal guardrail regression fixture is not exercising contextual-vs-causal distinction")
 
-    # Runtime projection must expose one canonical browser plane and reverse indexes.
     try:
         runtime = generated_runtime()
         plane = runtime.get("infrastructure") or {}
@@ -203,7 +200,9 @@ def main() -> int:
     else:
         errors.append("missing world-map/3d-entity-runtime.js")
 
-    # Browser infrastructure must remain a bounded contextual surface rather than a global layer/toolbox.
+    # The infrastructure module owns both bounded map points and injection of the
+    # compact country-card context. This keeps canonical card logic independent of
+    # an optional empirical layer while preserving the required visible behavior.
     if not INFRA_BROWSER.is_file():
         errors.append("missing contextual infrastructure browser module: world-map/3d-infrastructure.js")
     else:
@@ -223,6 +222,9 @@ def main() -> int:
             "source_url",
             "window.__potatoAtlasInfrastructure",
             "potato-atlas-working-selection-change",
+            "Infrastructure context",
+            "data-infrastructure-id",
+            "atlasCountryInfrastructureContext",
         )
         for token in required_browser_markers:
             if token not in browser:
@@ -242,11 +244,6 @@ def main() -> int:
         bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
         if "./3d-infrastructure.js" not in bootstrap:
             errors.append("bootstrap must load contextual infrastructure module")
-    if COUNTRY_CARD.is_file():
-        card = COUNTRY_CARD.read_text(encoding="utf-8", errors="replace")
-        for token in ("Infrastructure context", "infrastructureForEntity", "data-infrastructure-id"):
-            if token not in card:
-                errors.append(f"country card missing contextual infrastructure marker: {token}")
 
     if errors:
         print("World Map infrastructure validation FAILED:")
