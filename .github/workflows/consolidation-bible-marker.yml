@@ -1,0 +1,42 @@
+name: Consolidation Bible Marker Repair
+
+on:
+  push:
+    branches:
+      - project-consolidation-2026-09-12
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  repair:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: project-consolidation-2026-09-12
+          fetch-depth: 0
+      - name: Restore static comparator insertion point
+        run: |
+          python - <<'PY'
+          from pathlib import Path
+          path = Path('traditions/bible/index.html')
+          text = path.read_text(encoding='utf-8')
+          old = '<div class="relations" id="relations" aria-live="polite"><div class="loading">Loading the Jesus comparison, relation field, exact wording and scripture…</div></div>'
+          new = '<div class="relations" id="relations" aria-live="polite"><!-- BIBLE_RELATIONS_STATIC --></div>'
+          if text.count(old) != 1:
+              raise SystemExit(f'Expected one Bible relations placeholder, found {text.count(old)}')
+          path.write_text(text.replace(old, new), encoding='utf-8')
+          PY
+          rm -rf _site
+          python scripts/build_site.py
+          python scripts/build_bible_study.py
+      - name: Commit verified marker repair
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add traditions/bible/index.html
+          git commit -m "fix: restore Bible static comparator fallback"
+          git push origin HEAD:project-consolidation-2026-09-12
