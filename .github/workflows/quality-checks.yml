@@ -86,6 +86,9 @@ jobs:
       - name: Validate World Map data runtime
         run: python scripts/validate_world_map_data_runtime.py
 
+      - name: Validate World Map Axis and systems
+        run: python scripts/validate_world_axis_systems.py
+
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
 
