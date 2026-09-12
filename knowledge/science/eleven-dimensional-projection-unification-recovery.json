@@ -1,128 +1,115 @@
 {
-  "id":"eleven-dimensional-projection-unification-recovery",
-  "title":"11D Projection / Information / Symmetry Unification — Older Research Recovery",
-  "version":"2.0.0",
-  "updated":"2026-09-11",
-  "status":"library deep-research archaeology + mathematical reconstruction programme; mixed standard and speculative elements; original date unresolved",
-  "source_class":"older deep-research report recovered from Library; not automatically primary Tim-authored notation",
-  "abstract":"This record reconstructs an older project attempt to treat eleven-dimensional structure, lower-dimensional descriptions, symmetry reduction and information preservation within one mathematical language. Its strongest scientific interpretation is not that reality literally moves up and down a numbered ladder of dimensions, but that different descriptions may be related by projection, coarse-graining, embedding and reconstruction maps whose information loss can be quantified. The core problem is therefore an inverse problem: given a higher-dimensional state X, a projection pi_d(X) and a proposed reconstruction R_d, what features of X are recoverable, what invariants survive, and which distinctions are irretrievably lost? A serious version requires an explicit 11D geometry or field configuration, a measure/probability structure, physically motivated projection or compactification maps, symmetry representations, a reconstruction loss and an observable correspondence to four-dimensional physics. Category theory, topology, mutual information and Kaluza-Klein/M-theory machinery can then be used as tools, but none supplies the missing physical derivation automatically. The model is currently T2: valuable as a rigorous architecture for multi-description systems and compactification questions, but not yet a unique or experimentally specified 11D theory.",
-  "research_question":"Under what explicit geometric, dynamical and information-theoretic conditions can an 11D state be reduced to lower-dimensional effective descriptions while retaining reconstructible structure, and can any nontrivial invariant be proved to survive the reduction?",
-  "importance":"This predates the September SU(4)/SU(5) extension as a broader group-theoretic unification route: dimensions, projections, Lie groups, supersymmetry, topology, holography and information were already being assembled into one mathematical architecture.",
-  "maturity":"T2 mathematical architecture; no unique physical compactification or experimental prediction selected",
-  "core_object":{
-    "ambient_space":"P = 11-dimensional pseudo-Riemannian manifold, intended signature (10,1), unless a different configuration/state space is explicitly chosen",
-    "dimension_layers":"M_d for d=1,...,11 should be interpreted as declared effective/model spaces, not automatically nested physical universes",
-    "projection":"pi_d : P -> M_d",
-    "raising_operator":"R_d : M_d -> M_(d+1)",
-    "lowering_operator":"F_d : M_(d+1) -> M_d",
-    "symmetry_family":"G_d assigned to each M_d only after the geometry/field content is specified",
-    "information":"I(M_d) or I(X;pi_d(X)) for an explicit probability/channel model",
-    "candidate_cross-dimensional_invariant":"I*(M_d)=I*(M_(d±1)) remains a hypothesis to derive, not an axiom justified by notation alone"
+  "id": "eleven-dimensional-projection-unification-recovery",
+  "title": "11D Projection / Reconstruction / Information Unification — Developed Theory",
+  "version": "3.0.0",
+  "updated": "2026-09-12",
+  "status": "older project archaeology + developed inverse-problem and compactification research programme",
+  "abstract": "The 11D branch is strongest when treated as a theory of descriptions rather than a numbered metaphysical ladder. A high-dimensional state X can generate many lower-dimensional descriptions Y_d through projection, coarse-graining, observation or compactification. The scientific problem is then precise: which features survive, which are erased, which can be reconstructed, and what additional assumptions are required to infer hidden structure from an observed lower-dimensional state? This redevelopment turns that idea into an explicit inverse-problem framework. It defines projection channels, fibers and equivalence classes, task-specific sufficiency, Bayes-optimal reconstruction, rate-distortion and Blackwell ordering of descriptions. It then separates this information-theoretic branch from physical 11D-to-4D compactification, where an action, metric ansatz, internal seven-manifold, moduli, fluxes, truncation and four-dimensional spectrum are required. The project's Door becomes a typed interface between descriptions rather than an automatic fifth spatial dimension. The central nontrivial question is no longer 'what is dimension 7 or 8?' but whether a proposed lower description is sufficient for a task, whether two projections are comparable or incomparable, and whether a physical compactification derives rather than merely resembles the observed low-energy theory. The framework is T2 as mathematics and T1 as physical 11D unification.",
+  "research_question": "Given a concrete high-dimensional state space and family of reductions, what information and invariants are preserved, what reconstruction error is unavoidable, and can a physical 11D compactification derive a viable 4D spectrum rather than merely organize labels?",
+  "core_objects": {
+    "ambient": "X in P, where P is either an 11D spacetime/configuration space or a high-dimensional statistical state space",
+    "projection": "Y_d=pi_d(X)",
+    "reconstruction": "X_hat=R_d(Y_d)",
+    "fiber": "F_y=pi_d^-1(y), the set of high-dimensional states indistinguishable at the lower description",
+    "task": "Z, a target/observable whose preservation defines whether a reduction is useful",
+    "rule": "physical spacetime, statistical state space and information channel interpretations must be typed separately"
   },
-  "mathematical_typing":{
-    "physical_geometry_option":"P is an 11D Lorentzian spacetime with fields; dimensional reduction requires compactification, quotienting, truncation or another physical mechanism.",
-    "state_space_option":"P is a high-dimensional configuration space; pi_d is then a data/model reduction map rather than spacetime compactification.",
-    "information_option":"X is a random variable/state and pi is a channel/coarse-graining; mutual information, sufficient statistics, rate-distortion and reconstruction error become appropriate.",
-    "rule":"These interpretations may be compared structurally but must not be mixed inside a single proof."
+  "inverse_problem_formulation": {
+    "forward_model": "p(y|x) or deterministic y=pi(x)",
+    "prior": "p(x)",
+    "posterior": "p(x|y) proportional to p(y|x)p(x)",
+    "Bayes_estimator": "R*(y)=argmin_xhat E[d(X,xhat)|Y=y]",
+    "minimum_risk": "R_Bayes=E[min_xhat E[d(X,xhat)|Y]]",
+    "meaning": "reconstruction is never just the inverse symbol pi^-1; it is an inference problem over a fiber using a loss and prior/constraint structure"
   },
-  "recovered_equations_and_relations":[
-    {"form":"pi_d : P -> M_d","role":"dimensional projection","status":"recovered-project formalism","rigor_note":"Must specify fibers/preimages and whether pi is smooth, measurable, linear, quotient, compactification or observation map."},
-    {"form":"R_d : M_d -> M_(d+1)","role":"raising / reconstruction / ascent operator","status":"recovered-project formalism","rigor_note":"R is a model-dependent decoder/section/embedding; it cannot reconstruct information erased by pi without extra prior structure."},
-    {"form":"F_d : M_(d+1) -> M_d","role":"lowering / coarse-graining / descent operator","status":"recovered-project formalism","rigor_note":"Distinguish F from pi if both are retained; otherwise they are redundant names for reduction."},
-    {"form":"I*(M_d)=I*(M_(d±1))","role":"hypothetical information/conservation invariant","status":"unproved ansatz","rigor_note":"Requires a defined quantity I* and theorem/dynamics that preserve it."},
-    {"form":"pi_(d-1) o R_(d-1)=id_(M_(d-1))","role":"candidate right-inverse relation","status":"strong assumption","rigor_note":"This means R is a section on the specified lower-dimensional domain; it does not imply R o pi=id on P."},
-    {"form":"Phi(d+1)=Phi(d)+Phi(d-1)","role":"Fibonacci state/degrees-of-freedom toy recursion","status":"free toy ansatz","rigor_note":"Retain only as a discrete recursion until a microscopic counting argument derives it."},
-    {"form":"G_11 -> G_10 -> ... -> G_5 -> G_4","role":"candidate dimensional symmetry-breaking chain","status":"schematic","rigor_note":"Each arrow requires an embedding/breaking/compactification map and field representations."},
-    {"form":"G_11 ~ SO(10,1)","role":"11D spacetime Lorentz comparator","status":"established geometric comparator"},
-    {"form":"G_4 = SO(3,1)","role":"4D Lorentz comparator","status":"established geometric comparator"},
-    {"form":"SU(3)xSU(2)xU(1)","role":"Standard Model internal gauge group","status":"established external physics","rigor_note":"Internal gauge symmetry is not the same mathematical role as spacetime Lorentz symmetry."},
-    {"form":"{Q_alpha,Q_beta-bar} ~ P_mu","role":"supersymmetry/superalgebra comparator","status":"schematic external comparator"},
-    {"form":"OSp(1|32)","role":"historical 11D superalgebra/supergroup comparator","status":"external comparator; not simply the unique symmetry group of M-theory"},
-    {"form":"I(X;Y)","role":"mutual-information language for Door/projection channels","status":"established information theory"}
+  "equivalence_and_fibers": {
+    "equivalence_relation": "x1~_pi x2 iff pi(x1)=pi(x2)",
+    "quotient_view": "the lower description identifies all states inside one equivalence class/fiber",
+    "hidden_state_dimension": "fiber geometry measures the degrees of freedom invisible to the projection",
+    "door_interpretation": "a Door may select, transmit or collapse equivalence classes between representations; this is mathematically meaningful only after its map is declared"
+  },
+  "information_theory": {
+    "mutual_information": "I(X;Y)=D_KL[p(x,y)||p(x)p(y)]",
+    "data_processing": "X->Y1->Y2 implies I(X;Y2)<=I(X;Y1)",
+    "task_sufficiency": "Y is sufficient for Z relative to X when I(Z;X|Y)=0",
+    "rate_distortion": "R(D)=min_{p(y|x):E[d(X,Xhat(Y))]<=D} I(X;Y)",
+    "meaning": "a lower-dimensional description can lose microscopic information yet preserve everything needed for a particular task"
+  },
+  "blackwell_ordering": {
+    "definition": "Y2 is a garbling of Y1 when p(y2|x)=sum_y1 K(y2|y1)p(y1|x)",
+    "consequence": "for every decision problem with the same state X, Y1 cannot have worse optimal Bayes risk than Y2",
+    "project_value": "this creates a rigorous ordering of some dimensional descriptions without pretending every pair lies on one scalar ladder",
+    "incomparability": "two projections may preserve different information and be Blackwell-incomparable; one scalar information score cannot universally rank them"
+  },
+  "projection_scorecard": {
+    "form": "Q_step=(D_rec,Delta_task,Delta_Bayes,C_cost)",
+    "D_rec": "reconstruction distortion",
+    "Delta_task": "loss in target prediction/performance",
+    "Delta_Bayes": "increase in Bayes risk",
+    "C_cost": "computational/measurement cost",
+    "use": "compare candidate reductions as a Pareto problem rather than by dimension number alone"
+  },
+  "worked_linear_gaussian_model": {
+    "high_state": "X~N(0,Sigma_X)",
+    "measurement": "Y=A X+epsilon, epsilon~N(0,Sigma_e)",
+    "posterior_covariance": "Sigma_post=(Sigma_X^-1+A^T Sigma_e^-1 A)^-1",
+    "posterior_mean": "E[X|Y]=Sigma_post A^T Sigma_e^-1 Y",
+    "reconstruction_uncertainty": "Tr(Sigma_post) is one quadratic-loss summary of what remains hidden",
+    "meaning": "rank, noise and prior covariance determine recoverability; adding dimensions to X does not automatically add recoverable information"
+  },
+  "differential_geometry_branch": {
+    "smooth_projection": "pi:P->M",
+    "vertical_space": "V_x=ker(d pi_x)",
+    "horizontal_choice": "a connection chooses a complement H_x to V_x",
+    "holonomy": "parallel transport around closed loops may return hidden/internal states transformed",
+    "project_value": "this formalizes 'return to the same visible state with changed hidden orientation' without inventing a new visible coordinate"
+  },
+  "physical_11d_to_4d_branch": {
+    "starting_point": "11D supergravity comparator with metric g_MN, 3-form C_3 and gravitino psi_M",
+    "metric_ansatz": "ds_11^2=e^(2A(y))g_mu_nu(x)dx^mu dx^nu+g_ab(y)dy^a dy^b",
+    "internal_space": "compact seven-dimensional X_7 for direct 11D->4D reduction",
+    "G2_neighbor": "G2 holonomy is a structurally appropriate route to 4D minimal supersymmetry in simple fluxless comparators",
+    "required_derivation": ["zero-mode spectrum", "4D Planck scale", "gauge sectors from geometry/singularities where relevant", "moduli fields", "chirality/matter mechanism", "effective potential and stabilization", "consistent truncation/matching"],
+    "rule": "SO(10,1), OSp(1|32), SU(5), Spin(10) or E8 labels do not substitute for this derivation"
+  },
+  "kaluza_klein_example": {
+    "simple_circle": "For a field on M4 x S1 with radius R, expand Phi(x,y)=sum_n phi_n(x)e^(iny/R)",
+    "mass_tower": "m_n^2=m_0^2+n^2/R^2 in natural units",
+    "meaning": "an extra compact coordinate becomes a tower of four-dimensional modes; this is the concrete sense in which hidden geometric structure can leave a lower-dimensional spectral signature",
+    "lesson": "a physical extra dimension earns meaning through its induced spectrum/couplings, not through a symbolic level number"
+  },
+  "candidate_invariants": {
+    "topological": "Euler characteristic, Betti numbers, index-like quantities may be robust under specific deformations but not arbitrary projections",
+    "Noether": "requires a continuous symmetry of a specified action",
+    "information": "mutual information is generally not invariant under coarse-graining; it usually decreases",
+    "task_invariant": "a target statistic T(X) is preserved exactly if T=T_tilde o pi on the allowed state set",
+    "research_goal": "replace the historical I*(M_d)=I*(M_(d±1)) slogan by one proved invariant for one explicit map"
+  },
+  "door_as_channel": {
+    "classical": "D:p(x_out|x_in)",
+    "quantum": "rho_out=E_D(rho_in), where E_D must be completely positive and trace preserving for an ordinary quantum channel",
+    "metrics": ["capacity", "fidelity", "distortion", "sufficiency", "Bayes risk", "invariant preservation"],
+    "boundary": "a quantum channel is not automatically a spatial dimension or wormhole"
+  },
+  "falsification_and_failure_conditions": [
+    "A claimed lossless reconstruction fails when two admissible X with different target properties share the same pi(X).",
+    "A proposed universal ordering fails when two projections are Blackwell-incomparable or trade reconstruction against task performance.",
+    "A claimed invariant fails when an allowed reduction changes it.",
+    "A physical compactification fails if its effective 4D spectrum, chirality, couplings or cosmology are inconsistent with observation.",
+    "A dimensional theory remains organizational if no map, action, spectrum or observable distinguishes it from a relabeling."
   ],
-  "projection_reconstruction_problem":{
-    "forward_map":"Y=pi(X)",
-    "reconstruction":"X_hat=R(Y)",
-    "loss":"L_rec=E[d(X,R(pi(X)))] for a declared metric/loss d",
-    "information_loss":"If X -> Y=pi(X) -> Z is a processing chain, data processing gives I(X;Z)<=I(X;Y).",
-    "sufficient_statistic_case":"A reduced representation can be lossless for a specific task even when it loses microscopic information; the appropriate condition is task-specific sufficiency, not universal invertibility.",
-    "identifiability":"Many X can share the same pi(X). Unique reconstruction therefore requires constraints, priors, restricted state classes or additional observations.",
-    "novel_project_value":"This gives Door/Axis language a real mathematical question: which distinctions are preserved when description changes?"
-  },
-  "fiber_bundle_upgrade":{
-    "idea":"When pi:P->M is a smooth surjection, the preimage pi^{-1}(x) can be interpreted as a fiber of hidden/internal states if appropriate regularity conditions hold.",
-    "local_form":"Locally, a bundle may resemble U x F even when the global space is twisted.",
-    "connection":"A connection specifies how to compare fibers along paths; holonomy measures accumulated transformation around loops.",
-    "project_relevance":"This is a more rigorous home for 'same lower state, different hidden orientation/history' than simply adding an unnamed dimension.",
-    "boundary":"A fiber-bundle formalism is mathematics; a physical compactification still requires an action and dynamics."
-  },
-  "compactification_contract":{
-    "required_fields":["11D action/field content","background geometry","compact seven-dimensional manifold or other reduction structure","metric ansatz","fluxes if used","boundary conditions","moduli and stabilization","4D effective fields","symmetry breaking","scale relation","spectrum","consistency/truncation argument"],
-    "M_theory_neighbor":"For an 11D-to-4D minimal-supersymmetry comparator, seven-dimensional G2-holonomy compactifications are more structurally appropriate than importing a six-real-dimensional Calabi-Yau threefold without explanation.",
-    "correspondence_target":"The reduced theory must explain how 4D gravity and any claimed gauge/matter sectors arise; naming SO(10,1), E8 or OSp(1|32) is not such a derivation."
-  },
-  "door_information_model":{
-    "historical_door":"D identified with a 5D interface between lower and higher project layers",
-    "information_channel":"A scientifically cleaner abstraction is a channel D:X_in->X_out with a specified stochastic/quantum map, noise model and observables.",
-    "questions":["channel capacity","distortion/reconstruction loss","sufficient statistics","recoverability","entanglement fidelity for a genuine quantum channel","which invariants are preserved"],
-    "neighbors":["Shannon entropy","mutual information","rate-distortion theory","black-hole area/entropy analogy","holographic coding","quantum channels"],
-    "warning":"Entropy, mutual information, channel capacity and geometric area are different quantities and must not be substituted for one another."
-  },
-  "topology_and_invariants":{
-    "descriptor":"T(M)=(chi,b_0,b_1,...,pi_1,selected homology/cohomology classes)",
-    "euler":"chi=sum_k (-1)^k b_k for appropriate finite complexes/manifolds",
-    "use":"Track whether reduction/transition preserves connectedness, cycles, winding or index data.",
-    "noether_boundary":"Noether invariants require continuous symmetries of a specified action; projection maps alone do not create conserved quantities.",
-    "witten_index_neighbor":"Delta_W=Tr[(-1)^F exp(-beta H)] can be deformation robust in appropriate supersymmetric systems but is not a generic I*."
-  },
-  "toy_models":[
-    {
-      "id":"A-11d-to-4d-linear-projection",
-      "recovered_form":"11D Minkowski-like space -> 4D by dropping seven coordinates; SO(10,1)->SO(3,1)",
-      "value":"Useful only for illustrating many-to-one projection and reconstruction degeneracy.",
-      "audit":"A conventional flat 11D spacetime comparator is R^{10,1}. Simply deleting coordinates is not a covariant physical dimensional reduction and cannot generate the Standard Model spectrum."
-    },
-    {
-      "id":"B-holographic-boundary",
-      "recovered_form":"AdS_6 x S^5 / 5D boundary-CFT style toy picture",
-      "role":"Door as bulk-boundary/horizon information interface",
-      "audit":"The recovered form is not a standard canonical 11D M-theory vacuum. Retain it as a holographic analogy unless a consistent supergravity background, dimensions and dual field theory are explicitly constructed."
-    },
-    {
-      "id":"C-fibonacci-dimensional-growth",
-      "recovered_form":"Phi(1)=1, Phi(2)=1, Phi(d+1)=Phi(d)+Phi(d-1)",
-      "role":"recursive growth of state count/degrees of freedom",
-      "audit":"Free toy assumption; no microscopic derivation currently recovered. A serious use would define what Phi counts and compare the recurrence with an actual spectrum/combinatorial construction."
-    }
+  "next_decisive_calculations": [
+    "Build one explicit 11D-or-high-dimensional synthetic state X and at least two competing projections pi_1,pi_2.",
+    "Compute posterior reconstruction error and task sufficiency for both reductions.",
+    "Test whether one projection is a garbling of the other or whether they are incomparable.",
+    "Prove one exact preserved statistic or demonstrate that the historical I* invariant fails.",
+    "For the physical branch, derive one compactification spectrum rather than extending the dimensional ladder vocabulary."
   ],
-  "minimal_solvable_research_program":{
-    "goal":"Turn the broad 11D idea into one explicit inverse problem before attempting a full physical unification.",
-    "steps":[
-      "Choose a concrete state space P and reduction map pi.",
-      "Specify a probability measure or dataset on P if information quantities are used.",
-      "Define reconstruction R and a loss d.",
-      "Compute the irreducible reconstruction error and identify sufficient variables for the chosen task.",
-      "Identify exact symmetries/topological invariants of the model and prove which are preserved by pi/R.",
-      "If the model is physical spacetime, replace the generic projection with an explicit compactification/dimensional reduction and derive the 4D spectrum.",
-      "Only after that compare the derived low-dimensional theory with observations."
-    ]
-  },
-  "falsification_and_failure_conditions":[
-    "A proposed invariant I* fails if explicit allowed states with different I* values map into one another under the claimed dimension-changing operation.",
-    "A reconstruction claim fails if multiple admissible high-dimensional states map to the same lower state and no additional information resolves the degeneracy.",
-    "A physical compactification proposal fails if it cannot produce a consistent 4D effective spectrum/dynamics or violates relevant observations.",
-    "A purported unification remains merely organizational if group names and dimension labels do not determine couplings, representations and observables."
-  ],
-  "recovered_mathematical_toolkit":["Lie groups","Lie algebras","representation theory","gauge theory","superalgebras","Clifford algebra","compactification","fiber bundles","topology","homology","homotopy","Euler characteristic","Betti numbers","category theory","commutative diagrams","holography","information theory","rate-distortion","Noether-style invariants","dynamical systems","Fibonacci recursion"],
-  "important_corrections":[
-    "The old report's G5=SO(4,1) as an AdS5 isometry is incorrect: AdS5 has isometry SO(4,2).",
-    "A six-real-dimensional Calabi-Yau threefold is a standard 10D->4D string compactification comparator; direct 11D->4D minimal supersymmetry instead naturally points to a seven-real-dimensional G2-holonomy space.",
-    "E8 or E8xE8 is an internal gauge/algebraic structure in specific string/M-theory constructions, not an alternative to the 11D Lorentz group SO(10,1) as a spacetime symmetry.",
-    "OSp(1|32) is useful in historical/algebraic discussions of 11D supersymmetry but should not be labeled simply 'the M-theory symmetry group'.",
-    "Noether conservation follows from continuous symmetries of an action; a cross-dimensional I* does not follow automatically from the existence of projection maps.",
-    "A projection pi_d is generally information-losing and need not possess an inverse or satisfy pi o R=id unless explicit section/reconstruction conditions are imposed."
-  ],
-  "research_value":"The strongest contribution of this model is a precise cross-description problem: projection, information loss, reconstruction, invariants and hidden fibers. That architecture can be used in real mathematics, dimensional reduction, machine learning or data compression even if the physical 11D interpretation is never established.",
-  "provenance_boundary":"The recovered report itself classified physical/theological mappings as metaphorical/mathematical rather than experimentally demonstrated. Preserve that boundary.",
-  "connections":["theory-of-everything-archaeology","unified-potato-theory-2025-recovery","gauge-unification-supersymmetry-archaeology","equation-lineage-and-theory-graph","timic-unification-program","science-master-index","science-archaeology-wave-008-deep-extraction","model-testing-protocol"]
+  "connections": [
+    "unified-potato-theory-2025-recovery",
+    "gauge-unification-supersymmetry-archaeology",
+    "door-handshake-nonlocal-propagation-model",
+    "science-master-index",
+    "model-testing-protocol"
+  ]
 }
