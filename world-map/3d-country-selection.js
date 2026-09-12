@@ -2,8 +2,8 @@
 //
 // The legacy core still owns the active-country inspector, Trace and Compare.
 // This controller adds the ordinary interaction users actually need: click any
-// country to add/remove it from a persistent working set, keep one active
-// country for inspection, and reveal a bounded immediate relationship network.
+// country or registered map entity to add/remove it from a persistent working set,
+// keep one active entity for inspection, and reveal a bounded relationship network.
 
 const map = window.__potatoAtlasMap;
 const baseSelection = window.__potatoAtlasSelection;
@@ -16,6 +16,7 @@ if (!map || typeof baseGoCountry !== 'function' || !baseSelection) {
 
 const WORLD_URL = '../data/world-relational-map.json';
 const INDEX_URL = '../data/countries/index.json';
+const ENTITY_URL = '../data/world-map-entities.json';
 const REST_LOCAL = '../data/rest-countries-runtime.json';
 const REST_REMOTE = 'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders';
 
@@ -31,7 +32,7 @@ const TYPE_PRIORITY = new Map([
 ]);
 
 const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
-  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'
+  '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'
 }[char]));
 
 let selectedCodes = [];
@@ -39,6 +40,7 @@ let activeCode = null;
 let world = { curated_edges: [] };
 let by3 = {};
 let names = {};
+let entityNames = {};
 let syncingCore = false;
 let ready = false;
 let relationMode = RELATION_MODES.has(new URL(location.href).searchParams.get('relation'))
@@ -52,11 +54,10 @@ function codeList(value) {
 function edgeKey(edge) {
   return [edge.a, edge.b].sort().join('|') + '|' + (edge.types || []).slice().sort().join(',') + '|' + (edge.layer || '');
 }
-function countryName(code) {
-  return names[code] || by3[code]?.name?.common || code;
-}
+function entityKnown(code) { return Boolean(names[code] || entityNames[code] || by3[code]); }
+function countryName(code) { return names[code] || entityNames[code] || by3[code]?.name?.common || code; }
 function allKnownCodes() {
-  return [...new Set([...Object.keys(names), ...Object.keys(by3), ...selectedCodes])];
+  return [...new Set([...Object.keys(names), ...Object.keys(entityNames), ...Object.keys(by3), ...selectedCodes])];
 }
 function setFeatureState(code, key, value) {
   if (!code) return;
@@ -65,28 +66,17 @@ function setFeatureState(code, key, value) {
 }
 function snapshot(reason = 'read') {
   return {
-    source: 'working-selection',
-    reason,
-    code: activeCode,
-    activeCode,
+    source: 'working-selection', reason, code: activeCode, activeCode,
     name: activeCode ? countryName(activeCode) : null,
-    selected: selectedCodes.length > 0,
-    selectedCodes: [...selectedCodes],
-    relationMode,
-    compareMode: false,
+    selected: selectedCodes.length > 0, selectedCodes: [...selectedCodes], relationMode, compareMode: false,
   };
 }
 
 function updateUrl() {
   const url = new URL(location.href);
-  if (selectedCodes.length) url.searchParams.set('selected', selectedCodes.join(','));
-  else url.searchParams.delete('selected');
-  if (activeCode) url.searchParams.set('country', activeCode);
-  else url.searchParams.delete('country');
-  if (relationMode !== 'all') url.searchParams.set('relation', relationMode);
-  else url.searchParams.delete('relation');
-  // Legacy Compare URLs are accepted on boot, but ordinary selection no longer
-  // needs to keep the old Compare state in the address bar.
+  if (selectedCodes.length) url.searchParams.set('selected', selectedCodes.join(',')); else url.searchParams.delete('selected');
+  if (activeCode) url.searchParams.set('country', activeCode); else url.searchParams.delete('country');
+  if (relationMode !== 'all') url.searchParams.set('relation', relationMode); else url.searchParams.delete('relation');
   if (!document.getElementById('compare')?.classList.contains('active')) url.searchParams.delete('compare');
   history.replaceState({}, '', url);
 }
@@ -97,40 +87,16 @@ function applySelectionStates() {
     setFeatureState(code, 'active', code === activeCode);
   }
   if (map.getLayer('countries-line')) {
-    map.setPaintProperty('countries-line', 'line-color', [
-      'case',
-      ['boolean', ['feature-state', 'active'], false], '#fff0ad',
-      ['boolean', ['feature-state', 'selected'], false], '#e0bd78',
-      ['boolean', ['feature-state', 'compare'], false], '#b9dcff',
-      '#1c2626'
-    ]);
-    map.setPaintProperty('countries-line', 'line-width', [
-      'case',
-      ['boolean', ['feature-state', 'active'], false], 3.6,
-      ['boolean', ['feature-state', 'selected'], false], 2.2,
-      ['boolean', ['feature-state', 'compare'], false], 2.5,
-      .7
-    ]);
+    map.setPaintProperty('countries-line', 'line-color', ['case', ['boolean', ['feature-state', 'active'], false], '#fff0ad', ['boolean', ['feature-state', 'selected'], false], '#e0bd78', ['boolean', ['feature-state', 'compare'], false], '#b9dcff', '#1c2626']);
+    map.setPaintProperty('countries-line', 'line-width', ['case', ['boolean', ['feature-state', 'active'], false], 3.6, ['boolean', ['feature-state', 'selected'], false], 2.2, ['boolean', ['feature-state', 'compare'], false], 2.5, .7]);
   }
 }
 
 function installRelationPaint() {
   if (!map.getLayer('relations')) return;
-  map.setPaintProperty('relations', 'line-color', [
-    'case',
-    ['==', ['get', 'mode'], 'auto'], '#78908f',
-    ['step', ['get', 'depth'], '#73a7d8', 2, '#8ba5bd', 3, '#687f94']
-  ]);
-  map.setPaintProperty('relations', 'line-width', [
-    'case',
-    ['==', ['get', 'mode'], 'auto'], 1.15,
-    ['interpolate', ['linear'], ['zoom'], 2, 1.2, 6, 3]
-  ]);
-  map.setPaintProperty('relations', 'line-opacity', [
-    'case',
-    ['==', ['get', 'mode'], 'auto'], .46,
-    ['step', ['get', 'depth'], .82, 2, .62, 3, .44]
-  ]);
+  map.setPaintProperty('relations', 'line-color', ['case', ['==', ['get', 'mode'], 'auto'], '#78908f', ['step', ['get', 'depth'], '#73a7d8', 2, '#8ba5bd', 3, '#687f94']]);
+  map.setPaintProperty('relations', 'line-width', ['case', ['==', ['get', 'mode'], 'auto'], 1.15, ['interpolate', ['linear'], ['zoom'], 2, 1.2, 6, 3]]);
+  map.setPaintProperty('relations', 'line-opacity', ['case', ['==', ['get', 'mode'], 'auto'], .46, ['step', ['get', 'depth'], .82, 2, .62, 3, .44]]);
 }
 
 function bucketFor(edge) {
@@ -141,11 +107,7 @@ function bucketFor(edge) {
   if (String(edge.layer || '').includes('project')) return 'project';
   return 'other';
 }
-
-function edgeMatchesRelationMode(edge) {
-  return relationMode === 'all' || bucketFor(edge) === relationMode;
-}
-
+function edgeMatchesRelationMode(edge) { return relationMode === 'all' || bucketFor(edge) === relationMode; }
 function displayScore(edge) {
   const typeScore = Math.max(0, ...(edge.types || []).map(type => TYPE_PRIORITY.get(type) || 50));
   const layer = String(edge.layer || '').toLowerCase();
@@ -153,18 +115,10 @@ function displayScore(edge) {
   const quantifiedBonus = Number.isFinite(Number(edge.value)) ? 10 : 0;
   return typeScore + evidenceBonus + quantifiedBonus;
 }
-
 function rankedEdges(root, budget) {
-  const candidates = (world.curated_edges || [])
-    .filter(edge => (edge.a === root || edge.b === root) && edgeMatchesRelationMode(edge))
-    .map(edge => ({ edge, bucket: bucketFor(edge), score: displayScore(edge), key: edgeKey(edge) }))
-    .sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
-
-  const chosen = [];
-  const used = new Set();
-  const buckets = relationMode === 'all'
-    ? ['money', 'systems', 'institutions', 'project', 'other']
-    : [relationMode];
+  const candidates = (world.curated_edges || []).filter(edge => (edge.a === root || edge.b === root) && edgeMatchesRelationMode(edge)).map(edge => ({ edge, bucket: bucketFor(edge), score: displayScore(edge), key: edgeKey(edge) })).sort((a, b) => b.score - a.score || a.key.localeCompare(b.key));
+  const chosen = [], used = new Set();
+  const buckets = relationMode === 'all' ? ['money', 'systems', 'institutions', 'project', 'other'] : [relationMode];
   for (const bucket of buckets) {
     const hit = candidates.find(item => item.bucket === bucket && !used.has(item.key));
     if (hit && chosen.length < budget) { chosen.push(hit.edge); used.add(hit.key); }
@@ -176,72 +130,41 @@ function rankedEdges(root, budget) {
   }
   return chosen;
 }
-
-function connectionsFor(code, budget = AUTO_EDGES_ACTIVE) {
-  return rankedEdges(String(code || '').toUpperCase(), Math.max(1, Number(budget) || AUTO_EDGES_ACTIVE));
-}
+function connectionsFor(code, budget = AUTO_EDGES_ACTIVE) { return rankedEdges(String(code || '').toUpperCase(), Math.max(1, Number(budget) || AUTO_EDGES_ACTIVE)); }
 
 function automaticRelationData(codes = selectedCodes) {
   if (!codes.length) return emptyFC();
-  const chosen = [];
-  const seen = new Set();
+  const chosen = [], seen = new Set();
   const ordered = [...codes].sort((a, b) => (a === activeCode ? -1 : b === activeCode ? 1 : selectedCodes.indexOf(a) - selectedCodes.indexOf(b)));
-
   for (const root of ordered) {
     const budget = root === activeCode ? AUTO_EDGES_ACTIVE : AUTO_EDGES_OTHER;
     for (const edge of rankedEdges(root, budget)) {
       if (chosen.length >= AUTO_EDGES_TOTAL) break;
       const key = edgeKey(edge);
       if (seen.has(key)) continue;
-      seen.add(key);
-      chosen.push({ edge, root });
+      seen.add(key); chosen.push({ edge, root });
     }
     if (chosen.length >= AUTO_EDGES_TOTAL) break;
   }
-
   const features = [];
   for (const { edge, root } of chosen) {
-    const a = by3[edge.a]?.latlng;
-    const b = by3[edge.b]?.latlng;
+    const a = by3[edge.a]?.latlng, b = by3[edge.b]?.latlng;
     if (!Array.isArray(a) || a.length !== 2 || !Array.isArray(b) || b.length !== 2) continue;
-    features.push({
-      type: 'Feature',
-      properties: {
-        a: edge.a,
-        b: edge.b,
-        root,
-        mode: 'auto',
-        relationMode,
-        depth: 1,
-        types: (edge.types || []).join(' · '),
-        layer: edge.layer || '',
-        raw: JSON.stringify(edge),
-      },
-      geometry: { type: 'LineString', coordinates: [[a[1], a[0]], [b[1], b[0]]] }
-    });
+    features.push({ type:'Feature', properties:{a:edge.a,b:edge.b,root,mode:'auto',relationMode,depth:1,types:(edge.types||[]).join(' · '),layer:edge.layer||'',raw:JSON.stringify(edge)}, geometry:{type:'LineString',coordinates:[[a[1],a[0]],[b[1],b[0]]]}});
   }
-  return { type: 'FeatureCollection', features };
+  return { type:'FeatureCollection', features };
 }
-
-function explicitTraceVisible() {
-  return document.getElementById('relations')?.classList.contains('active') === true;
-}
-
+function explicitTraceVisible() { return document.getElementById('relations')?.classList.contains('active') === true; }
 function applyAutomaticRelations() {
   if (!ready || explicitTraceVisible()) return;
   const source = map.getSource('relations');
   if (source?.setData) source.setData(automaticRelationData(selectedCodes));
 }
-
 function setRelationMode(mode) {
   const next = RELATION_MODES.has(mode) ? mode : 'all';
   if (next === relationMode) return;
-  relationMode = next;
-  updateUrl();
-  applyAutomaticRelations();
-  window.dispatchEvent(new CustomEvent('potato-atlas-relation-mode-change', {
-    detail: { mode: relationMode, selectedCodes: [...selectedCodes] },
-  }));
+  relationMode = next; updateUrl(); applyAutomaticRelations();
+  window.dispatchEvent(new CustomEvent('potato-atlas-relation-mode-change', { detail:{mode:relationMode,selectedCodes:[...selectedCodes]} }));
 }
 
 function renderSelectionStrip() {
@@ -249,14 +172,9 @@ function renderSelectionStrip() {
   if (!strip) return;
   strip.hidden = !selectedCodes.length;
   const list = strip.querySelector('.selection-list');
-  list.innerHTML = selectedCodes.map(code => `
-    <span class="selection-chip${code === activeCode ? ' active' : ''}" data-country-code="${esc(code)}">
-      <button type="button" data-activate="${esc(code)}" title="Inspect ${esc(countryName(code))}">${esc(countryName(code))}</button>
-      <button type="button" class="selection-remove" data-remove="${esc(code)}" aria-label="Remove ${esc(countryName(code))}">×</button>
-    </span>`).join('');
+  list.innerHTML = selectedCodes.map(code => `<span class="selection-chip${code === activeCode ? ' active' : ''}" data-country-code="${esc(code)}"><button type="button" data-activate="${esc(code)}" title="Inspect ${esc(countryName(code))}">${esc(countryName(code))}</button><button type="button" class="selection-remove" data-remove="${esc(code)}" aria-label="Remove ${esc(countryName(code))}">×</button></span>`).join('');
   strip.querySelector('.selection-count').textContent = `${selectedCodes.length} selected`;
 }
-
 function emit(reason) {
   const detail = snapshot(reason);
   window.dispatchEvent(new CustomEvent('potato-atlas-selection-change', { detail }));
@@ -265,16 +183,12 @@ function emit(reason) {
 
 async function activateCountry(code, { fly = false, add = true } = {}) {
   code = String(code || '').toUpperCase();
-  if (!names[code] && !by3[code]) return false;
+  if (!entityKnown(code)) return false;
   if (add && !selectedCodes.includes(code)) selectedCodes.push(code);
   activeCode = code;
   syncingCore = true;
-  try { await baseGoCountry(code); }
-  finally { syncingCore = false; }
-  applySelectionStates();
-  renderSelectionStrip();
-  updateUrl();
-  applyAutomaticRelations();
+  try { await baseGoCountry(code); } finally { syncingCore = false; }
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations();
   if (fly && window.fitCountry) window.fitCountry();
   emit('activated');
   return true;
@@ -284,9 +198,7 @@ async function removeCountry(code) {
   code = String(code || '').toUpperCase();
   if (!selectedCodes.includes(code)) return;
   selectedCodes = selectedCodes.filter(value => value !== code);
-  setFeatureState(code, 'selected', false);
-  setFeatureState(code, 'active', false);
-
+  setFeatureState(code, 'selected', false); setFeatureState(code, 'active', false);
   if (activeCode === code) {
     activeCode = selectedCodes.at(-1) || null;
     syncingCore = true;
@@ -296,34 +208,20 @@ async function removeCountry(code) {
       else baseSelection.clear?.();
     } finally { syncingCore = false; }
   }
-  applySelectionStates();
-  renderSelectionStrip();
-  updateUrl();
-  applyAutomaticRelations();
-  emit('removed');
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations(); emit('removed');
 }
-
 async function toggleCountrySelection(code, options = {}) {
   code = String(code || '').toUpperCase();
   if (selectedCodes.includes(code)) return removeCountry(code);
-  return activateCountry(code, { ...options, add: true });
+  return activateCountry(code, { ...options, add:true });
 }
-
 function clearAll({ keepView = true } = {}) {
-  for (const code of selectedCodes) {
-    setFeatureState(code, 'selected', false);
-    setFeatureState(code, 'active', false);
-  }
-  selectedCodes = [];
-  activeCode = null;
-  syncingCore = true;
+  for (const code of selectedCodes) { setFeatureState(code, 'selected', false); setFeatureState(code, 'active', false); }
+  selectedCodes = []; activeCode = null; syncingCore = true;
   try {
-    if (typeof baseClearCountry === 'function') baseClearCountry();
-    else baseSelection.clear?.();
+    if (typeof baseClearCountry === 'function') baseClearCountry(); else baseSelection.clear?.();
   } finally { syncingCore = false; }
-  renderSelectionStrip();
-  updateUrl();
-  map.getSource('relations')?.setData?.(emptyFC());
+  renderSelectionStrip(); updateUrl(); map.getSource('relations')?.setData?.(emptyFC());
   if (!keepView) document.getElementById('world')?.click();
   emit('cleared');
 }
@@ -333,58 +231,37 @@ function installStrip() {
   if (document.getElementById('atlasWorkingSelection')) return;
   const style = document.createElement('style');
   style.id = 'atlasWorkingSelectionStyle';
-  style.textContent = `
-    #atlasWorkingSelection{position:absolute;z-index:6;left:50%;bottom:10px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;max-width:calc(100% - 28px);padding:6px 8px;border:1px solid #384745;border-radius:13px;background:#0b1212ed;box-shadow:0 8px 24px #0007}
-    #atlasWorkingSelection[hidden]{display:none!important}.selection-list{display:flex;gap:5px;min-width:0;overflow-x:auto}.selection-chip{display:inline-flex;align-items:center;border:1px solid #31413e;border-radius:999px;background:#111b1a;flex:0 0 auto}.selection-chip.active{border-color:#e0bd78}.selection-chip button{border:0;background:transparent;padding:5px 7px}.selection-chip.active button:first-child{color:#f3dfa4}.selection-remove{color:#9fa9a4!important;padding-left:2px!important}.selection-count{font-size:10px;color:var(--muted);white-space:nowrap}.selection-clear-all{padding:5px 8px;border-radius:999px;white-space:nowrap}
-    @media(max-width:900px){#atlasWorkingSelection{left:8px;right:8px;transform:none;max-width:none;justify-content:flex-start}.selection-count{display:none}.selection-list{flex:1}}
-  `;
+  style.textContent = `#atlasWorkingSelection{position:absolute;z-index:6;left:50%;bottom:10px;transform:translateX(-50%);display:flex;align-items:center;gap:7px;max-width:calc(100% - 28px);padding:6px 8px;border:1px solid #384745;border-radius:13px;background:#0b1212ed;box-shadow:0 8px 24px #0007}#atlasWorkingSelection[hidden]{display:none!important}.selection-list{display:flex;gap:5px;min-width:0;overflow-x:auto}.selection-chip{display:inline-flex;align-items:center;border:1px solid #31413e;border-radius:999px;background:#111b1a;flex:0 0 auto}.selection-chip.active{border-color:#e0bd78}.selection-chip button{border:0;background:transparent;padding:5px 7px}.selection-chip.active button:first-child{color:#f3dfa4}.selection-remove{color:#9fa9a4!important;padding-left:2px!important}.selection-count{font-size:10px;color:var(--muted);white-space:nowrap}.selection-clear-all{padding:5px 8px;border-radius:999px;white-space:nowrap}@media(max-width:900px){#atlasWorkingSelection{left:8px;right:8px;transform:none;max-width:none;justify-content:flex-start}.selection-count{display:none}.selection-list{flex:1}}`;
   document.head.appendChild(style);
   const strip = document.createElement('div');
-  strip.id = 'atlasWorkingSelection';
-  strip.hidden = true;
+  strip.id = 'atlasWorkingSelection'; strip.hidden = true;
   strip.innerHTML = '<span class="selection-count">0 selected</span><div class="selection-list"></div><button type="button" class="selection-clear-all">Clear</button>';
   document.querySelector('.mapwrap')?.appendChild(strip);
   strip.addEventListener('click', event => {
-    const remove = event.target.closest('[data-remove]');
-    if (remove) { removeCountry(remove.dataset.remove); return; }
-    const activate = event.target.closest('[data-activate]');
-    if (activate) { activateCountry(activate.dataset.activate, { add: false }); return; }
+    const remove = event.target.closest('[data-remove]'); if (remove) { removeCountry(remove.dataset.remove); return; }
+    const activate = event.target.closest('[data-activate]'); if (activate) { activateCountry(activate.dataset.activate, { add:false }); return; }
     if (event.target.closest('.selection-clear-all')) clearAll();
   });
 }
-
 function interceptPolygonClick(event) {
   if (document.getElementById('compare')?.classList.contains('active')) return;
   const code = event.features?.[0]?.properties?.iso3;
-  if (!code) return;
+  if (!code || !entityKnown(code)) return;
   if (event.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
   toggleCountrySelection(code);
 }
-
 function installClickInterception() {
-  for (const layer of ['countries-fill', 'countries-extrude']) {
-    if (map.getLayer(layer)) map.on('click', layer, interceptPolygonClick);
-  }
+  for (const layer of ['countries-fill', 'countries-extrude']) if (map.getLayer(layer)) map.on('click', layer, interceptPolygonClick);
 }
-
 function adoptExternalSelection(event) {
   if (syncingCore) return;
   const detail = event?.detail || {};
-  if (detail.source === 'working-selection') return;
-  if (detail.compareMode) return;
-  if (detail.reason === 'cleared' || !detail.selected) {
-    if (selectedCodes.length) clearAll();
-    return;
-  }
+  if (detail.source === 'working-selection' || detail.compareMode) return;
+  if (detail.reason === 'cleared' || !detail.selected) { if (selectedCodes.length) clearAll(); return; }
   const code = String(detail.code || '').toUpperCase();
-  if (!code) return;
+  if (!code || !entityKnown(code)) return;
   if (!selectedCodes.includes(code)) selectedCodes.push(code);
-  activeCode = code;
-  applySelectionStates();
-  renderSelectionStrip();
-  updateUrl();
-  applyAutomaticRelations();
-  emit('external-selection');
+  activeCode = code; applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations(); emit('external-selection');
 }
 
 async function fetchJson(url) {
@@ -392,7 +269,6 @@ async function fetchJson(url) {
   if (!response.ok) throw new Error(`${response.status} ${url}`);
   return response.json();
 }
-
 async function loadRestRuntime() {
   try { return await fetchJson(REST_LOCAL); }
   catch (localError) {
@@ -403,13 +279,13 @@ async function loadRestRuntime() {
     }
   }
 }
-
 async function loadData() {
-  const [worldResult, indexResult, rest] = await Promise.all([
-    fetchJson(WORLD_URL), fetchJson(INDEX_URL), loadRestRuntime()
+  const [worldResult, indexResult, entityResult, rest] = await Promise.all([
+    fetchJson(WORLD_URL), fetchJson(INDEX_URL), fetchJson(ENTITY_URL).catch(() => ({entities:{}})), loadRestRuntime()
   ]);
   world = worldResult;
   names = Object.fromEntries((indexResult.countries || []).map(row => [row.iso3, row.name]));
+  entityNames = Object.fromEntries(Object.entries(entityResult.entities || {}).filter(([, row]) => row?.render_status === 'current').map(([code, row]) => [code, row.name || code]));
   by3 = Object.fromEntries((rest || []).filter(row => row.cca3).map(row => [row.cca3, row]));
 }
 
@@ -419,64 +295,36 @@ async function restoreState() {
   const legacyCompare = codeList(url.searchParams.get('compare'));
   const legacyCountry = String(url.searchParams.get('country') || baseSelection.current?.code || '').toUpperCase();
   selectedCodes = explicit.length ? explicit : legacyCompare.length ? legacyCompare : (legacyCountry ? [legacyCountry] : []);
-  selectedCodes = selectedCodes.filter(code => names[code] || by3[code]);
+  selectedCodes = selectedCodes.filter(entityKnown);
   activeCode = selectedCodes.includes(legacyCountry) ? legacyCountry : selectedCodes.at(-1) || null;
-
   if (legacyCompare.length && typeof window.leaveCompare === 'function') {
-    syncingCore = true;
-    try { window.leaveCompare(); }
-    finally { syncingCore = false; }
+    syncingCore = true; try { window.leaveCompare(); } finally { syncingCore = false; }
   }
   if (activeCode && baseSelection.current?.code !== activeCode) {
-    syncingCore = true;
-    try { await baseGoCountry(activeCode); }
-    finally { syncingCore = false; }
+    syncingCore = true; try { await baseGoCountry(activeCode); } finally { syncingCore = false; }
   }
-  applySelectionStates();
-  renderSelectionStrip();
-  updateUrl();
-  applyAutomaticRelations();
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations();
   if (selectedCodes.length) emit('restored');
 }
 
 await loadData();
-installStrip();
-installClickInterception();
-applySelectionStates();
-installRelationPaint();
-ready = true;
+installStrip(); installClickInterception(); applySelectionStates(); installRelationPaint(); ready = true;
 
 window.goCountry = async code => {
   if (document.getElementById('compare')?.classList.contains('active')) return baseGoCountry(code);
-  return activateCountry(code, { add: true });
+  return activateCountry(code, { add:true });
 };
 window.__potatoAtlasSelection = {
-  get current() { return snapshot('read'); },
-  toggle: toggleCountrySelection,
-  activate: activateCountry,
-  remove: removeCountry,
-  clear: clearAll,
-  clearAll,
-  focus() { if (activeCode) window.fitCountry?.(); },
-  inspect() { window.showOverview?.(); },
-  automaticRelationData,
-  connectionsFor,
-  countryName,
-  setRelationMode,
-  getRelationMode() { return relationMode; },
+  get current() { return snapshot('read'); }, toggle:toggleCountrySelection, activate:activateCountry, remove:removeCountry,
+  clear:clearAll, clearAll, focus() { if (activeCode) window.fitCountry?.(); }, inspect() { window.showOverview?.(); },
+  automaticRelationData, connectionsFor, countryName, setRelationMode, getRelationMode() { return relationMode; },
 };
 window.clearCountrySelection = () => clearAll();
 window.clearAllSelectedCountries = clearAll;
-
 window.addEventListener('potato-atlas-selection-change', adoptExternalSelection);
-window.addEventListener('potato-atlas-relations-change', event => {
-  if (!event?.detail?.visible) queueMicrotask(applyAutomaticRelations);
-});
+window.addEventListener('potato-atlas-relations-change', event => { if (!event?.detail?.visible) queueMicrotask(applyAutomaticRelations); });
 window.addEventListener('potato-atlas-lens-change', applySelectionStates);
 map.on('zoomend', applyAutomaticRelations);
 
 await restoreState();
-
-window.dispatchEvent(new CustomEvent('potato-atlas-working-selection-ready', {
-  detail: { selectedCodes: [...selectedCodes], activeCode, relationMode }
-}));
+window.dispatchEvent(new CustomEvent('potato-atlas-working-selection-ready', { detail:{selectedCodes:[...selectedCodes],activeCode,relationMode} }));
