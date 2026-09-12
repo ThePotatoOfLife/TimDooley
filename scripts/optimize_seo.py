@@ -17,11 +17,12 @@ import subprocess
 import sys
 import xml.etree.ElementTree as ET
 from pathlib import Path
-from urllib.parse import quote
+from urllib.parse import quote, urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
-BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
+PUBLIC_BASE_URL = "https://thepotatooflife.github.io/TimDooley"
+BASE_URL = os.environ.get("SITE_BASE_URL", PUBLIC_BASE_URL).rstrip("/")
 SITE_NAME = "The Potato of Life"
 SITEMAP_NS = "http://www.sitemaps.org/schemas/sitemap/0.9"
 ET.register_namespace("", SITEMAP_NS)
@@ -70,6 +71,37 @@ def find_link(text: str, rel: str) -> str | None:
         if wanted in {part.lower() for part in a.get("rel", "").split()}:
             return a.get("href", "")
     return None
+
+
+def _relative_to_base(url: str, base: str) -> str | None:
+    """Return a deployment-relative path when *url* belongs to *base*."""
+    try:
+        parsed = urlparse(url)
+        owner = urlparse(base)
+    except ValueError:
+        return None
+    if parsed.scheme.lower() != owner.scheme.lower() or parsed.netloc.lower() != owner.netloc.lower():
+        return None
+    owner_path = owner.path.rstrip("/")
+    candidate_path = parsed.path.rstrip("/")
+    if candidate_path == owner_path:
+        return ""
+    prefix = owner_path + "/"
+    if candidate_path.startswith(prefix):
+        return candidate_path[len(prefix):].strip("/")
+    return None
+
+
+def canonical_relative_path(url: str) -> str | None:
+    for base in dict.fromkeys((BASE_URL, PUBLIC_BASE_URL)):
+        relative = _relative_to_base(url, base)
+        if relative is not None:
+            return relative
+    return None
+
+
+def canonical_is_internal(url: str) -> bool:
+    return canonical_relative_path(url) is not None
 
 
 def page_url(page: Path) -> str:
@@ -181,6 +213,7 @@ def core_record_routes() -> dict[str, str]:
 def link_known_record_paths(text: str, routes: dict[str, str]) -> tuple[str, int]:
     """Link only exact deployed knowledge/data code labels to existing owners."""
     linked = 0
+
     def replace(match: re.Match[str]) -> str:
         nonlocal linked
         raw = html.unescape(match.group(1)).strip()
@@ -191,6 +224,7 @@ def link_known_record_paths(text: str, routes: dict[str, str]) -> tuple[str, int
         href = routes.get(raw, f"{BASE_URL}/{quote(raw, safe='/._-')}")
         linked += 1
         return f'<a href="{html.escape(href, quote=True)}">{match.group(0)}</a>'
+
     return CODE_RE.sub(replace, text), linked
 
 
@@ -217,34 +251,51 @@ def question_source_map() -> tuple[dict[str, str], list[str]]:
     owners: list[str] = []
     indexes = ROOT / "knowledge" / "indexes"
     for path in sorted(indexes.glob("faq-*.json")):
-        rel = path.relative_to(ROOT).as_posix(); owners.append(rel)
-        try: data = json.loads(path.read_text(encoding="utf-8"))
-        except Exception: continue
+        rel = path.relative_to(ROOT).as_posix()
+        owners.append(rel)
+        try:
+            data = json.loads(path.read_text(encoding="utf-8"))
+        except Exception:
+            continue
         for entry in data.get("entries", []) if isinstance(data, dict) else []:
-            if isinstance(entry, dict) and entry.get("id"): by_slug.setdefault(slug(entry["id"]), rel)
+            if isinstance(entry, dict) and entry.get("id"):
+                by_slug.setdefault(slug(entry["id"]), rel)
     reader = ROOT / "knowledge" / "reader" / "tim-dooley-question-index.json"
     if reader.exists():
-        rel = reader.relative_to(ROOT).as_posix(); owners.append(rel)
-        try: data = json.loads(reader.read_text(encoding="utf-8"))
-        except Exception: data = {}
+        rel = reader.relative_to(ROOT).as_posix()
+        owners.append(rel)
+        try:
+            data = json.loads(reader.read_text(encoding="utf-8"))
+        except Exception:
+            data = {}
         for entry in data.get("questions", []) if isinstance(data, dict) else []:
-            if isinstance(entry, dict) and entry.get("id"): by_slug.setdefault(slug(entry["id"]), rel)
+            if isinstance(entry, dict) and entry.get("id"):
+                by_slug.setdefault(slug(entry["id"]), rel)
     return by_slug, owners
 
 
 def source_date_for_url(url: str, dates: dict[str, str], record_routes: dict[str, str], question_sources: dict[str, str], faq_owners: list[str]) -> str | None:
-    if not url.startswith(BASE_URL + "/"):
+    rel = canonical_relative_path(url)
+    if rel is None:
         return None
-    rel = url[len(BASE_URL):].strip("/")
     static = "index.html" if not rel else f"{rel}/index.html"
-    if static in dates: return dates[static]
-    reverse_records = {route[len(BASE_URL):].strip("/"): source for source, route in record_routes.items()}
-    if rel in reverse_records: return dates.get(reverse_records[rel])
-    if rel.startswith("topics/"): return dates.get("manifest.json")
-    if rel.startswith("context/"): return dates.get("knowledge/indexes/context-graph.json")
+    if static in dates:
+        return dates[static]
+    reverse_records = {
+        canonical_relative_path(route): source
+        for source, route in record_routes.items()
+        if canonical_relative_path(route) is not None
+    }
+    if rel in reverse_records:
+        return dates.get(reverse_records[rel])
+    if rel.startswith("topics/"):
+        return dates.get("manifest.json")
+    if rel.startswith("context/"):
+        return dates.get("knowledge/indexes/context-graph.json")
     if rel.startswith("questions/"):
         tail = rel.split("/", 1)[1] if "/" in rel else ""
-        if tail in question_sources: return dates.get(question_sources[tail])
+        if tail in question_sources:
+            return dates.get(question_sources[tail])
         available = [dates[p] for p in faq_owners if p in dates]
         return max(available) if available else None
     if rel == "index-a-z":
@@ -260,101 +311,176 @@ def sitemap_children() -> list[Path]:
     index = OUT / "sitemap-index.xml"
     if not index.exists():
         return [OUT / "sitemap.xml"] if (OUT / "sitemap.xml").exists() else []
-    try: root = ET.parse(index).getroot()
-    except Exception: return []
+    try:
+        root = ET.parse(index).getroot()
+    except Exception:
+        return []
     children = []
     for node in root.findall(f"{{{SITEMAP_NS}}}sitemap"):
         loc = node.find(f"{{{SITEMAP_NS}}}loc")
-        if loc is not None and loc.text and loc.text.startswith(BASE_URL + "/"):
+        if loc is not None and loc.text and canonical_is_internal(loc.text):
             candidate = OUT / loc.text.rsplit("/", 1)[-1]
-            if candidate.exists(): children.append(candidate)
+            if candidate.exists():
+                children.append(candidate)
     return children
 
 
 def optimize_sitemaps(dates: dict[str, str], record_routes: dict[str, str], question_sources: dict[str, str], faq_owners: list[str]) -> tuple[int, int]:
-    children = sitemap_children(); seen: set[str] = set(); removed = 0; lastmods = 0; child_max: dict[str, str] = {}
+    children = sitemap_children()
+    seen: set[str] = set()
+    removed = 0
+    lastmods = 0
+    child_max: dict[str, str] = {}
     for path in children:
-        try: tree = ET.parse(path)
-        except Exception: continue
-        root = tree.getroot(); dates_here: list[str] = []
+        try:
+            tree = ET.parse(path)
+        except Exception:
+            continue
+        root = tree.getroot()
+        dates_here: list[str] = []
         for node in list(root.findall(f"{{{SITEMAP_NS}}}url")):
             loc = node.find(f"{{{SITEMAP_NS}}}loc")
-            if loc is None or not loc.text: continue
+            if loc is None or not loc.text:
+                continue
             url = loc.text.strip()
             if url in seen:
-                root.remove(node); removed += 1; continue
+                root.remove(node)
+                removed += 1
+                continue
             seen.add(url)
             modified = source_date_for_url(url, dates, record_routes, question_sources, faq_owners)
             if modified:
                 lm = node.find(f"{{{SITEMAP_NS}}}lastmod")
-                if lm is None: lm = ET.SubElement(node, f"{{{SITEMAP_NS}}}lastmod"); lastmods += 1
-                lm.text = modified; dates_here.append(modified)
-        if dates_here: child_max[path.name] = max(dates_here)
+                if lm is None:
+                    lm = ET.SubElement(node, f"{{{SITEMAP_NS}}}lastmod")
+                    lastmods += 1
+                lm.text = modified
+                dates_here.append(modified)
+        if dates_here:
+            child_max[path.name] = max(dates_here)
         tree.write(path, encoding="utf-8", xml_declaration=True)
     index = OUT / "sitemap-index.xml"
     if index.exists() and child_max:
         try:
-            tree = ET.parse(index); root = tree.getroot()
+            tree = ET.parse(index)
+            root = tree.getroot()
             for node in root.findall(f"{{{SITEMAP_NS}}}sitemap"):
                 loc = node.find(f"{{{SITEMAP_NS}}}loc")
-                if loc is None or not loc.text: continue
+                if loc is None or not loc.text:
+                    continue
                 name = loc.text.rsplit("/", 1)[-1]
-                if name not in child_max: continue
+                if name not in child_max:
+                    continue
                 lm = node.find(f"{{{SITEMAP_NS}}}lastmod")
-                if lm is None: lm = ET.SubElement(node, f"{{{SITEMAP_NS}}}lastmod"); lastmods += 1
+                if lm is None:
+                    lm = ET.SubElement(node, f"{{{SITEMAP_NS}}}lastmod")
+                    lastmods += 1
                 lm.text = child_max[name]
             tree.write(index, encoding="utf-8", xml_declaration=True)
-        except Exception: pass
+        except Exception:
+            pass
     return removed, lastmods
 
 
 def audit_pages() -> tuple[list[str], list[str], dict]:
-    errors: list[str] = []; warnings: list[str] = []; titles: dict[str, list[str]] = {}; descriptions: dict[str, list[str]] = {}
-    pages = sorted(OUT.rglob("index.html")); structured = 0; social = 0
+    errors: list[str] = []
+    warnings: list[str] = []
+    titles: dict[str, list[str]] = {}
+    descriptions: dict[str, list[str]] = {}
+    pages = sorted(OUT.rglob("index.html"))
+    structured = 0
+    social = 0
     for page in pages:
-        rel = page.relative_to(OUT).as_posix(); text = page.read_text(encoding="utf-8", errors="replace")
-        title = page_title(text, page); description = find_meta(text, name="description") or ""; canonical = find_link(text, "canonical") or ""
-        if len(title) < 8: errors.append(f"{rel}: missing or weak title")
-        if len(description) < 40: errors.append(f"{rel}: missing or weak meta description")
-        if not canonical: errors.append(f"{rel}: missing canonical")
-        elif not canonical.startswith(BASE_URL + "/"): errors.append(f"{rel}: canonical outside site: {canonical}")
-        if find_meta(text, prop="og:title") and find_meta(text, prop="og:description") and find_meta(text, prop="og:url"): social += 1
-        else: errors.append(f"{rel}: incomplete Open Graph metadata")
-        if SCRIPT_LD_RE.search(text): structured += 1
-        else: errors.append(f"{rel}: missing structured data")
-        if len(title) > 75: warnings.append(f"{rel}: title is long ({len(title)} chars)")
-        if len(description) > 180: warnings.append(f"{rel}: meta description is long ({len(description)} chars)")
-        titles.setdefault(title.casefold(), []).append(rel); descriptions.setdefault(description.casefold(), []).append(rel)
+        rel = page.relative_to(OUT).as_posix()
+        text = page.read_text(encoding="utf-8", errors="replace")
+        title = page_title(text, page)
+        description = find_meta(text, name="description") or ""
+        canonical = find_link(text, "canonical") or ""
+        if len(title) < 8:
+            errors.append(f"{rel}: missing or weak title")
+        if len(description) < 40:
+            errors.append(f"{rel}: missing or weak meta description")
+        if not canonical:
+            errors.append(f"{rel}: missing canonical")
+        elif not canonical_is_internal(canonical):
+            errors.append(f"{rel}: canonical outside site: {canonical}")
+        if find_meta(text, prop="og:title") and find_meta(text, prop="og:description") and find_meta(text, prop="og:url"):
+            social += 1
+        else:
+            errors.append(f"{rel}: incomplete Open Graph metadata")
+        if SCRIPT_LD_RE.search(text):
+            structured += 1
+        else:
+            errors.append(f"{rel}: missing structured data")
+        if len(title) > 75:
+            warnings.append(f"{rel}: title is long ({len(title)} chars)")
+        if len(description) > 180:
+            warnings.append(f"{rel}: meta description is long ({len(description)} chars)")
+        titles.setdefault(title.casefold(), []).append(rel)
+        descriptions.setdefault(description.casefold(), []).append(rel)
     duplicate_titles = [items for items in titles.values() if len(items) > 1]
     duplicate_descriptions = [items for key, items in descriptions.items() if key and len(items) > 1]
-    for items in duplicate_titles[:20]: warnings.append("duplicate title: " + ", ".join(items[:6]))
-    for items in duplicate_descriptions[:20]: warnings.append("duplicate description: " + ", ".join(items[:6]))
-    report = {"pages": len(pages), "pages_with_open_graph": social, "pages_with_structured_data": structured, "duplicate_title_groups": len(duplicate_titles), "duplicate_description_groups": len(duplicate_descriptions), "errors": len(errors), "warnings": len(warnings)}
+    for items in duplicate_titles[:20]:
+        warnings.append("duplicate title: " + ", ".join(items[:6]))
+    for items in duplicate_descriptions[:20]:
+        warnings.append("duplicate description: " + ", ".join(items[:6]))
+    report = {
+        "pages": len(pages),
+        "pages_with_open_graph": social,
+        "pages_with_structured_data": structured,
+        "duplicate_title_groups": len(duplicate_titles),
+        "duplicate_description_groups": len(duplicate_descriptions),
+        "errors": len(errors),
+        "warnings": len(warnings),
+    }
     return errors, warnings, report
 
 
 def main() -> None:
-    if not OUT.exists(): raise SystemExit("_site does not exist; run the site builders first")
-    routes = core_record_routes(); changed_pages = 0; metadata_tags = 0; linked_paths = 0
+    if not OUT.exists():
+        raise SystemExit("_site does not exist; run the site builders first")
+    routes = core_record_routes()
+    changed_pages = 0
+    metadata_tags = 0
+    linked_paths = 0
     for page in sorted(OUT.rglob("index.html")):
-        text = page.read_text(encoding="utf-8", errors="replace"); original = text
-        text, added = inject_metadata(text, page); text, linked = link_known_record_paths(text, routes)
-        metadata_tags += added; linked_paths += linked
-        if text != original: page.write_text(text, encoding="utf-8"); changed_pages += 1
-    dates = git_lastmod_map(); question_sources, faq_owners = question_source_map()
+        text = page.read_text(encoding="utf-8", errors="replace")
+        original = text
+        text, added = inject_metadata(text, page)
+        text, linked = link_known_record_paths(text, routes)
+        metadata_tags += added
+        linked_paths += linked
+        if text != original:
+            page.write_text(text, encoding="utf-8")
+            changed_pages += 1
+    dates = git_lastmod_map()
+    question_sources, faq_owners = question_source_map()
     duplicates_removed, lastmods_added = optimize_sitemaps(dates, routes, question_sources, faq_owners)
     errors, warnings, report = audit_pages()
-    report.update({"changed_pages": changed_pages, "metadata_tags_added": metadata_tags, "canonical_record_links_added": linked_paths, "duplicate_sitemap_urls_removed": duplicates_removed, "sitemap_lastmod_values_added": lastmods_added})
+    report.update({
+        "changed_pages": changed_pages,
+        "metadata_tags_added": metadata_tags,
+        "canonical_record_links_added": linked_paths,
+        "duplicate_sitemap_urls_removed": duplicates_removed,
+        "sitemap_lastmod_values_added": lastmods_added,
+    })
     (OUT / "seo-report.json").write_text(json.dumps(report, indent=2) + "\n", encoding="utf-8")
     if warnings:
         print("SEO warnings:")
-        for message in warnings[:80]: print(f"  - {message}")
-        if len(warnings) > 80: print(f"  - … {len(warnings) - 80} additional warnings")
+        for message in warnings[:80]:
+            print(f"  - {message}")
+        if len(warnings) > 80:
+            print(f"  - … {len(warnings) - 80} additional warnings")
     if errors:
         print("SEO errors:")
-        for message in errors: print(f"  - {message}")
+        for message in errors:
+            print(f"  - {message}")
         sys.exit(1)
-    print(f"SEO optimization passed: {report['pages']} HTML pages, {changed_pages} pages normalized, {metadata_tags} metadata tags added, {linked_paths} canonical/source links added, {duplicates_removed} duplicate sitemap URLs removed, {lastmods_added} lastmod values added.")
+    print(
+        f"SEO optimization passed: {report['pages']} HTML pages, {changed_pages} pages normalized, "
+        f"{metadata_tags} metadata tags added, {linked_paths} canonical/source links added, "
+        f"{duplicates_removed} duplicate sitemap URLs removed, {lastmods_added} lastmod values added."
+    )
 
 
 if __name__ == "__main__":
