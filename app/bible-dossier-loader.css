@@ -10,6 +10,25 @@
 .biblical-scene{border-color:#4c4634}
 .scene-label{display:inline-block;font-size:10px;letter-spacing:.11em;text-transform:uppercase;color:#d8b56b}
 .scene-sequence{margin-top:11px!important;padding-top:9px;border-top:1px solid #2f372e;color:#bfc9b7!important}
+.dossier-open-evidence{margin:0 0 24px;padding:18px 20px;border:1px solid #30372f;border-radius:16px;background:#0c100d}
+.open-evidence-heading{margin-bottom:14px}
+.open-evidence-heading h3{margin:3px 0 7px;font:400 22px/1.18 Georgia,serif;color:#ece2c6}
+.open-evidence-heading p{margin:0;color:#abb4a8;max-width:88ch}
+.evidence-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.evidence-panel{min-width:0;padding:14px 15px;border:1px solid #2a322a;border-radius:11px;background:#101410}
+.evidence-panel h4{margin:0 0 9px;font:600 12px/1.3 system-ui,-apple-system,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:#d8b56b}
+.evidence-panel p{margin:6px 0;color:#c6cec3}
+.wording-panel{border-color:#51452e;background:#15130d}
+.modern-context-panel{border-color:#3d4a3b}
+.biblical-context-panel{border-color:#514a39}
+.provenance-panel{border-color:#343d40}
+.evidence-quote{margin:9px 0;padding:9px 12px;border-left:3px solid #d8b56b;background:#0d100c;color:#eee1bf;font:400 15px/1.45 Georgia,serif}
+.timestamp-caveat{margin-top:11px!important;padding-top:9px;border-top:1px solid #2d352d;color:#9da79b!important;font-size:12px}
+.sequence-grid{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:12px;margin-top:12px}
+.sequence-grid>div{padding:13px 15px;border:1px solid #2d352d;border-radius:11px;background:#0f130f}
+.sequence-grid h5{margin:0 0 8px;font:600 12px/1.3 system-ui,-apple-system,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:#d8b56b}
+.sequence-grid ol{margin:0;padding-left:21px;color:#c7cec3}
+.sequence-grid li{margin:5px 0}
 .correspondence-list{display:flex;flex-wrap:wrap;gap:7px;margin-top:12px}
 .correspondence-list span{display:inline-block;padding:5px 8px;border:1px solid #414a3c;border-radius:999px;background:#11150f;color:#cdd5c7;font-size:12px}
 .maximum-claim{margin:13px 0;padding:13px 15px;border-left:3px solid #d8b56b;background:#151209;color:#ddd4bb;border-radius:0 10px 10px 0}
@@ -20,4 +39,4 @@
 .dossier-detail ol{margin:7px 0 12px;padding-left:22px}
 .dossier-detail li{margin:4px 0}
 .dossier-detail .source-status{margin-top:14px;padding-top:10px;border-top:1px solid #30382f;color:#9fa79d;font-size:12px}
-@media(max-width:700px){.paired-narrative{padding:15px 16px}.paired-intro h3{font-size:21px}.paired-scenes{grid-template-columns:1fr}.paired-scene{padding:14px}}
+@media(max-width:700px){.paired-narrative,.dossier-open-evidence{padding:15px 16px}.paired-intro h3{font-size:21px}.paired-scenes,.evidence-grid,.sequence-grid{grid-template-columns:1fr}.paired-scene,.evidence-panel{padding:14px}}
