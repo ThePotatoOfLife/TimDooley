@@ -115,6 +115,7 @@ try {
   await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
   await loadAfterPaint('System Intelligence', './3d-gateways.js');
   await loadAfterPaint('Functional Chains', './3d-chain-explorer.js');
+  await loadAfterPaint('Impact Trace', './3d-impact-trace.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';
