@@ -130,14 +130,25 @@ def main() -> int:
     require_any(religion, ("resemblance is not identity", "similarity is not identity", "structural resemblance is not identity"), "religion/index.html", "comparison boundary", errors)
     validate_projection_surface(religion, "religion/index.html", errors)
 
-    # Bible: guided entry first, filters second, canonical runtime only.
-    require(bible, 'class="comparison-intro"', "traditions/bible/index.html", errors)
-    require(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
-    require(bible, 'id="shuffle-comparisons"', "traditions/bible/index.html", errors)
-    require(bible, 'id="operator"', "traditions/bible/index.html", errors)
+    # Bible: focused comparison browser with compact discovery, filters and traversal.
+    for marker in (
+        'id="focus-select"',
+        'id="order-select"',
+        'id="previous-relation"',
+        'id="next-relation"',
+        'id="results-toggle"',
+        'id="filter-toggle"',
+        'id="operator"',
+        'id="active-relation"',
+    ):
+        require(bible, marker, "traditions/bible/index.html", errors)
     for label in ("Jesus / Son", "Father / House", "Door / Ladder", "God / Presence", "Garden / Spirit"):
-        require_any(bible, (label,), "traditions/bible/index.html", f"featured arc {label}", errors)
+        require_any(bible, (label,), "traditions/bible/index.html", f"comparison focus {label}", errors)
+    require_absent(bible, 'class="featured-arcs"', "traditions/bible/index.html", errors)
+    require_absent(bible, 'id="shuffle-comparisons"', "traditions/bible/index.html", errors)
     require(bible_js, "biblical-syncretism-field.json", "app/bible-study.js", errors)
+    require(bible_js, "renderActiveRelation", "app/bible-study.js", errors)
+    require(bible_js, "selectRelative", "app/bible-study.js", errors)
     require_absent(bible_js, "biblical-overlap-wave-", "app/bible-study.js", errors)
 
     # Philosophy: inquiry before/alongside the preserved sayings.
