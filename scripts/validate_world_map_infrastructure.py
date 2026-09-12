@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Validate canonical World Map infrastructure ownership, runtime projection and causal guardrails."""
+"""Validate canonical World Map infrastructure, contextual rendering and integration."""
 from __future__ import annotations
 
 import importlib.util
 import json
 import re
+import shutil
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,6 +18,9 @@ CHAINS = ROOT / "data" / "world-system-chains.json"
 RUNTIME_BUILDER = ROOT / "scripts" / "build_world_map_runtime.py"
 ENTITY_RUNTIME = ROOT / "world-map" / "3d-entity-runtime.js"
 INFRA_BROWSER = ROOT / "world-map" / "3d-infrastructure.js"
+GATEWAY_BROWSER = ROOT / "world-map" / "3d-gateways.js"
+CHAIN_BROWSER = ROOT / "world-map" / "3d-chain-explorer.js"
+IMPACT_BROWSER = ROOT / "world-map" / "3d-impact-trace.js"
 WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 
@@ -52,6 +57,17 @@ def generated_runtime() -> dict:
     spec.loader.exec_module(module)
     assert hasattr(module, "build_runtime"), "runtime builder must expose build_runtime()"
     return module.build_runtime()
+
+
+def require_tokens(path: Path, tokens: tuple[str, ...], label: str, errors: list[str]) -> str:
+    if not path.is_file():
+        errors.append(f"missing {label}: {path.relative_to(ROOT)}")
+        return ""
+    text = path.read_text(encoding="utf-8", errors="replace")
+    for token in tokens:
+        if token not in text:
+            errors.append(f"{label} missing marker: {token}")
+    return text
 
 
 def main() -> int:
@@ -192,49 +208,59 @@ def main() -> int:
     except Exception as exc:
         errors.append(f"runtime infrastructure projection failed: {exc}")
 
-    if ENTITY_RUNTIME.is_file():
-        js = ENTITY_RUNTIME.read_text(encoding="utf-8", errors="replace")
-        for token in ("infrastructure", "infrastructureForEntity", "infrastructureForGateway", "infrastructureForChain"):
-            if token not in js:
-                errors.append(f"shared entity runtime missing infrastructure API marker: {token}")
-    else:
-        errors.append("missing world-map/3d-entity-runtime.js")
+    entity_runtime = require_tokens(
+        ENTITY_RUNTIME,
+        ("infrastructure", "infrastructureForEntity", "infrastructureForGateway", "infrastructureForChain", "impactNodeForInfrastructure"),
+        "shared entity runtime",
+        errors,
+    )
 
-    # The infrastructure module owns both bounded map points and injection of the
-    # compact country-card context. This keeps canonical card logic independent of
-    # an optional empirical layer while preserving the required visible behavior.
-    if not INFRA_BROWSER.is_file():
-        errors.append("missing contextual infrastructure browser module: world-map/3d-infrastructure.js")
-    else:
-        browser = INFRA_BROWSER.read_text(encoding="utf-8", errors="replace")
-        required_browser_markers = (
-            "atlas-infrastructure-context",
-            "atlas-infrastructure-points",
-            "showForEntity",
-            "showForGateway",
-            "showForChain",
-            "showAsset",
-            "infrastructureForEntity",
-            "infrastructureForGateway",
-            "infrastructureForChain",
-            "MAX_CONTEXT_ASSETS",
-            "geometry_status",
-            "source_url",
-            "window.__potatoAtlasInfrastructure",
-            "potato-atlas-working-selection-change",
-            "Infrastructure context",
-            "data-infrastructure-id",
-            "atlasCountryInfrastructureContext",
-        )
-        for token in required_browser_markers:
-            if token not in browser:
-                errors.append(f"contextual infrastructure browser missing marker: {token}")
+    browser = require_tokens(
+        INFRA_BROWSER,
+        (
+            "atlas-infrastructure-context", "atlas-infrastructure-points", "showForEntity", "showForGateway", "showForChain", "showAsset",
+            "infrastructureForEntity", "infrastructureForGateway", "infrastructureForChain", "impactNodeForInfrastructure", "MAX_CONTEXT_ASSETS",
+            "geometry_status", "source_url", "window.__potatoAtlasInfrastructure", "potato-atlas-working-selection-change",
+            "Infrastructure context", "data-infrastructure-id", "atlasCountryInfrastructureContext",
+        ),
+        "contextual infrastructure browser",
+        errors,
+    )
+    if browser:
         if "MAX_CONTEXT_ASSETS = 12" not in browser:
             errors.append("contextual infrastructure browser must cap ordinary map rendering at 12 assets")
         if "new maplibregl.Map" in browser:
             errors.append("infrastructure browser must reuse the canonical map renderer")
         if "world-map-infrastructure.json" in browser:
             errors.append("infrastructure browser must consume shared runtime APIs rather than refetch canonical JSON")
+        node = shutil.which("node")
+        if node:
+            result = subprocess.run([node, "--check", str(INFRA_BROWSER)], text=True, capture_output=True)
+            if result.returncode:
+                errors.append("infrastructure JavaScript syntax failed: " + (result.stderr.strip() or result.stdout.strip()))
+        else:
+            errors.append("node unavailable; cannot verify infrastructure JavaScript syntax")
+
+    gateway_browser = require_tokens(
+        GATEWAY_BROWSER,
+        ("infrastructureForGateway", "potato-atlas-gateway-change", "Infrastructure", "data-infrastructure-id"),
+        "gateway browser integration",
+        errors,
+    )
+    chain_browser = require_tokens(
+        CHAIN_BROWSER,
+        ("infrastructureForChain", "Infrastructure", "data-infrastructure-id"),
+        "functional-chain infrastructure integration",
+        errors,
+    )
+    impact_browser = require_tokens(
+        IMPACT_BROWSER,
+        ("impactNodeForInfrastructure", "showInfrastructure", "['country','territory'].includes", "window.__potatoAtlasImpactTrace"),
+        "Impact infrastructure integration",
+        errors,
+    )
+    if impact_browser and "infrastructure" in re.search(r"function nodeCode\(node\).*?\n\}", impact_browser, re.S).group(0) if re.search(r"function nodeCode\(node\).*?\n\}", impact_browser, re.S) else False:
+        errors.append("Impact nodeCode must not map infrastructure nodes onto country polygon feature-state")
 
     if WORLD_BAR.is_file():
         world_bar = WORLD_BAR.read_text(encoding="utf-8", errors="replace")
@@ -250,7 +276,7 @@ def main() -> int:
         for error in errors:
             print(f" - {error}")
         return 1
-    print(f"World Map infrastructure validation passed: {len(assets)} assets · {len(SEED_MINIMUMS)} gateway seed groups · runtime and contextual browser projected.")
+    print(f"World Map infrastructure validation passed: {len(assets)} assets · {len(SEED_MINIMUMS)} gateway seed groups · contextual Chain/Gateway/Impact integration active.")
     return 0
 
 
