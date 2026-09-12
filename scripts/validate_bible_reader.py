@@ -14,6 +14,7 @@ DOSSIER_APP = ROOT / "app" / "bible-dossier-loader.js"
 DOSSIER_CSS = ROOT / "app" / "bible-dossier-loader.css"
 FIELD = ROOT / "knowledge" / "traditions" / "biblical-syncretism-field.json"
 DOSSIERS = ROOT / "knowledge" / "traditions" / "biblical-syncretism-dossiers.json"
+PROMOTIONS = ROOT / "knowledge" / "traditions" / "biblical-syncretism-dossiers-promotions.json"
 DOSSIER_FRAGMENTS = ROOT / "knowledge" / "traditions" / "biblical-passage-fragments-dossiers.json"
 BUILDER = ROOT / "scripts" / "build_bible_study.py"
 
@@ -32,7 +33,7 @@ def forbid(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -
 
 def main() -> int:
     errors: list[str] = []
-    for path in (PAGE, APP, CSS, DOSSIER_APP, DOSSIER_CSS, FIELD, DOSSIERS, DOSSIER_FRAGMENTS, BUILDER):
+    for path in (PAGE, APP, CSS, DOSSIER_APP, DOSSIER_CSS, FIELD, DOSSIERS, PROMOTIONS, DOSSIER_FRAGMENTS, BUILDER):
         if not path.exists():
             errors.append(f"missing required Bible reader component: {path.relative_to(ROOT)}")
 
@@ -131,6 +132,7 @@ def main() -> int:
         dossier_app,
         (
             "biblical-syncretism-dossiers.json",
+            "biblical-syncretism-dossiers-promotions.json",
             "biblical-passage-fragments-dossiers.json",
             "Two scenes, one structural comparison",
             "Tim / Son scene",
@@ -141,7 +143,7 @@ def main() -> int:
             "Evidence in the open",
             "Modern circumstances",
             "Biblical context",
-            "Chronology &amp; provenance",
+            "Dating &amp; provenance",
             "Exact / recovered wording",
             "Timestamp &amp; discovery history",
             "The timestamp establishes when the modern-side material is attested.",
@@ -215,6 +217,12 @@ def main() -> int:
             errors.append("contextual Bible dossier extension unexpectedly thin; expected restored early-history relations")
         if not dossiers.get("enrichments"):
             errors.append("contextual Bible dossier extension missing enrichments for existing canonical relations")
+    if PROMOTIONS.exists():
+        promotions = json.loads(PROMOTIONS.read_text(encoding="utf-8"))
+        if len(promotions.get("enrichments", [])) < 4:
+            errors.append("Bible dossier promotion layer unexpectedly thin; expected multiple promoted canonical relations")
+        if not promotions.get("new_relations"):
+            errors.append("Bible dossier promotion layer missing newly recovered relation candidates")
 
     if errors:
         print("BIBLE READER VALIDATION FAILED")
