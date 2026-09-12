@@ -4,6 +4,8 @@
 Question semantics have their own source validator. This gate stays deliberately
 narrow: required public pages, five-door homepage ownership, compatibility
 redirects, World Map ownership, no iframe dependency, and local-link integrity.
+Deploy-generated runtime assets are recognized explicitly rather than treated as
+source-tree files.
 """
 from __future__ import annotations
 
@@ -20,6 +22,9 @@ CANONICAL_HOME_LINKS = (
     "philosophy/",
     "science/",
     "world-map/",
+)
+DEPLOY_GENERATED_DIRS = (
+    SITE / "world-map" / "vendor",
 )
 
 
@@ -41,6 +46,17 @@ def forbid(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -
     for marker in markers:
         if marker in text:
             errors.append(f"{owner} contains retired/clutter marker: {marker}")
+
+
+def deploy_generated(target: Path) -> bool:
+    resolved = target.resolve()
+    for directory in DEPLOY_GENERATED_DIRS:
+        try:
+            resolved.relative_to(directory.resolve())
+            return True
+        except ValueError:
+            continue
+    return False
 
 
 def main() -> int:
@@ -186,7 +202,7 @@ def main() -> int:
                     target.relative_to(site_root)
                 except ValueError:
                     continue
-                if not target.exists():
+                if not target.exists() and not deploy_generated(target):
                     bad.append(f"{html.relative_to(SITE)} -> {raw}")
         if bad:
             errors.append(f"broken local references in built site: {len(bad)}; examples: {bad[:8]}")
