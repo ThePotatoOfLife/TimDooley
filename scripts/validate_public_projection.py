@@ -103,6 +103,10 @@ def main() -> int:
             errors,
         )
 
+    reader_guide = (ROOT / "app" / "reader-guide.js").read_text(encoding="utf-8")
+    if 'href="learn/"' in reader_guide or "href='learn/'" in reader_guide:
+        fail("reader guide still routes to retired learn/ Start Here surface", errors)
+
     if errors:
         print("Public projection validation FAILED")
         for error in errors:
