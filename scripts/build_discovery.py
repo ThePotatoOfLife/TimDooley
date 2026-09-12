@@ -47,6 +47,15 @@ def load(path, default):
         return default
 
 
+def as_list(value):
+    """Normalize optional scalar-or-list archive metadata to a list."""
+    if value is None:
+        return []
+    if isinstance(value, list):
+        return value
+    return [value]
+
+
 def write(rel, text):
     path = OUT / rel
     path.parent.mkdir(parents=True, exist_ok=True)
@@ -112,8 +121,10 @@ def faq_entries():
             "id": question["id"], "question": question.get("question", question["id"]),
             "variants": question.get("search_variants", []), "short_answer": question.get("answer", ""),
             "deep_answer": question.get("answer", ""), "entities": question.get("entities", ["Tim Dooley"]),
-            "dates": question.get("dates", []), "aliases": [], "epistemic_class": question.get("epistemic_class", []),
-            "canonical_owners": question.get("canonical_owners", []), "related_questions": question.get("related_questions", []),
+            "dates": question.get("dates", []), "aliases": [],
+            "epistemic_class": as_list(question.get("epistemic_class", question.get("class"))),
+            "canonical_owners": as_list(question.get("canonical_owners", question.get("deep_sources"))),
+            "related_questions": question.get("related_questions", []),
             "search_terms": question.get("search_variants", []), "source_faq_view": str(TIM_Q.relative_to(ROOT)),
         }
     return list(by_id.values())
