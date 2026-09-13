@@ -20,12 +20,17 @@ def main() -> int:
         '"unmapped_knowledge_files"',
         '"atlas_canonical_owner_files"',
         '"atlas_artifact_source_files"',
+        '"knowledge_duplicate_ids"',
+        '"candidate_unresolved_machine_ids"',
+        '"external_reference_ids"',
+        '"human_label_endpoints"',
+        '"date_like_endpoints"',
     ):
         if marker not in text:
-            fail(f"audit missing full-repository scope marker {marker}")
+            fail(f"audit missing full-repository scope/signal marker {marker}")
     if 'return sorted(DATA.rglob("*.json"))' in text:
         fail("audit still scans only data/**/*.json")
-    print("BACKEND AUDIT SCOPE PASSED: data + knowledge + Atlas ownership/depth are audited together")
+    print("BACKEND AUDIT SCOPE PASSED: data + knowledge + Atlas ownership/depth + signal classes are audited together")
     return 0
 
 
