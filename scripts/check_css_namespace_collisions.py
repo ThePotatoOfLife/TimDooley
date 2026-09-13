@@ -10,6 +10,7 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 STYLE = ROOT / "app" / "style.css"
+SITE_SYSTEM = ROOT / "app" / "site-system.css"
 READER = ROOT / "app" / "reader.css"
 GUARD = ROOT / "app" / "layout-guard.css"
 HOME = ROOT / "index.html"
@@ -31,6 +32,17 @@ if not READER.exists() or 'layout-guard.css' not in READER.read_text(encoding='u
 
 style = STYLE.read_text(encoding='utf-8') if STYLE.exists() else ""
 
+if not SITE_SYSTEM.exists():
+    errors.append("app/site-system.css is missing")
+else:
+    site_system = SITE_SYSTEM.read_text(encoding="utf-8")
+    for selector in (".nav", ".grid", ".section", ".card", ".record", ".status"):
+        for block in re.findall(re.escape(selector) + r"\s*\{([^}]*)\}", site_system):
+            if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns|grid-template-rows)\s*:", block):
+                errors.append(
+                    f"app/site-system.css must not assign structural layout through generic {selector}; use .page-* or a named component"
+                )
+
 # This was the original cross-layer collision. It is now prohibited outright.
 for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
     if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns)\s*:", block):
@@ -44,7 +56,6 @@ if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
         errors.append("homepage archive explorer must use class=\"archive-nav\"")
     if re.search(r'<aside\s+class=["\'][^"\']*\bnav\b[^"\']*["\']', home):
-        # archive-nav contains the substring nav but not the standalone nav class.
         classes = re.findall(r'<aside\s+class=["\']([^"\']+)["\']', home)
         for value in classes:
             if "nav" in value.split():
