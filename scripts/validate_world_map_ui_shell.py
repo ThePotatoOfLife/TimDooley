@@ -117,6 +117,12 @@ def main() -> int:
                 errors.append(f"ordinary Relations menu must provide actionable connection filters: {token}")
         if " · ${count}" in world_bar or "summary.textContent = count ?" in world_bar:
             errors.append("Groups, Religion and Stats menu labels must remain static when selections change")
+        if "Relations · ${relationLabel(mode)}" in world_bar or "summary.textContent = mode === 'all' ? 'Relations'" in world_bar:
+            errors.append("Relations menu label must remain static when its filter changes")
+        if "#atlasWorldResult{min-width:72px;max-width:92px" in compact:
+            errors.append("World Map result summary must not use a variable-width footprint")
+        if "#atlasWorldResult{width:92px;flex:0 0 92px" not in compact:
+            errors.append("World Map result summary must reserve one fixed header width")
 
     if active_view:
         for token in ("atlas-time-change", "timeState", "refreshSerial", "matchCount", "potato-atlas-active-view-change"):
