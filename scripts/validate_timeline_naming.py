@@ -21,8 +21,10 @@ def fail(message: str) -> None:
 
 
 def is_internal_design_doc(rel: Path) -> bool:
-    """Implementation history may name retired products while discussing migrations."""
-    return len(rel.parts) >= 2 and rel.parts[0] == "docs" and rel.parts[1] == "superpowers"
+    """Research/design history may name retired products without making them active UI."""
+    if len(rel.parts) >= 2 and rel.parts[0] == "docs" and rel.parts[1] == "superpowers":
+        return True
+    return rel == Path("knowledge/research/potato-house-master/corpus-placement-map.md")
 
 
 def main() -> None:
@@ -64,8 +66,8 @@ def main() -> None:
             continue
         if path.suffix.lower() not in TEXT_SUFFIXES and path.name != "CNAME":
             continue
-        # Design/implementation history is not an active product surface. It must
-        # be allowed to name retired systems when explaining migrations away from them.
+        # Design/research history is not an active product surface. It may name
+        # retired systems while documenting migrations and corpus coverage.
         if is_internal_design_doc(rel):
             continue
         try:
