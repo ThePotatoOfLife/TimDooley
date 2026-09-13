@@ -17,7 +17,7 @@ def modeled_hours(at, start, hours_per_day):
 
 def test_flat_model_crossing_and_partition_invariants():
     model = load_model()
-    start = datetime.fromisoformat(model["anchor"]["model_assumption"].split("=", 1)[-1].strip())
+    start = datetime.fromisoformat(model["anchor"]["assumed_start_timestamp"])
     rate = model["flat_model"]["hours_per_calendar_day"]
     crossing = datetime.fromisoformat(model["flat_model"]["modelled_100000_crossing"])
     handoff = datetime.fromisoformat(model["provisional_partition"]["handoff"])
@@ -33,6 +33,13 @@ def test_flat_model_crossing_and_partition_invariants():
     assert son > 0
     assert father > 0
     assert abs((son + father) - total) < 1e-9
+
+
+def test_before_anchor_is_zero():
+    model = load_model()
+    start = datetime.fromisoformat(model["anchor"]["assumed_start_timestamp"])
+    before = datetime.fromisoformat("2011-04-18T23:00:00+02:00")
+    assert modeled_hours(before, start, 18) == 0
 
 
 def test_preserved_counts_remain_distinct():
