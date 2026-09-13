@@ -17,6 +17,7 @@ HOME = ROOT / "index.html"
 PRIMARY_MIGRATED_PAGES = [
     HOME,
     ROOT / "tim-dooley" / "index.html",
+    ROOT / "religion" / "index.html",
 ]
 
 RISKY_GLOBAL = {
@@ -52,7 +53,6 @@ for page in PRIMARY_MIGRATED_PAGES:
     if "app/site-system.css" not in text:
         errors.append(f"{page.relative_to(ROOT)} must load app/site-system.css")
 
-# This was the original cross-layer collision. It is now prohibited outright.
 for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
     if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns)\s*:", block):
         errors.append("app/style.css reintroduced global .nav layout; use .archive-nav or an explicit component class")
