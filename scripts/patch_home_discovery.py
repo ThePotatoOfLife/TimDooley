@@ -60,9 +60,21 @@ patch_text(
     ),
 )
 
+# The source map still contains compatibility controls consumed by 3d-app.js.
+# In the public artifact they start hidden, then 3d-world-bar.js adopts the
+# functional Analyze/Time/View controls into one stable header toolbar. This
+# prevents the legacy header from flashing before the registry UI initializes.
 patch_text(
     SITE / "world-map" / "index.html",
     (
+        (
+            '<div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide deeper inspector" aria-label="Show or hide deeper inspector">Inspect</button></div>',
+            '<div class="quick-actions"><button id="compare">Compare</button><button id="panelToggle" class="panel-toggle" title="Show or hide deeper inspector" aria-label="Show or hide deeper inspector">Inspect</button></div><div id="atlasWorldBarHost" aria-label="World map controls"></div>',
+        ),
+        ('<details class="menu" id="layersMenu">', '<details class="menu" id="layersMenu" hidden>'),
+        ('<details class="menu" id="traceMenu">', '<details class="menu" id="traceMenu" hidden>'),
+        ('<details class="menu" id="timeMenu">', '<details class="menu" id="timeMenu" hidden>'),
+        ('<details class="menu" id="viewMenu">', '<details class="menu" id="viewMenu" hidden>'),
         (
             '<a class="top-home" href="../">Home</a>',
             '<a class="top-home" href="../world/">World</a><a class="top-home" href="../politics/">Politics</a><a class="top-home" href="../north/">North</a><a class="top-home" href="../world-systems/">Systems</a><a class="top-home" href="../">Home</a>',
@@ -88,4 +100,4 @@ for topic, url in world_topics.items():
     rows.append({"topic": topic, "url": url})
 machine_path.write_text(json.dumps(machine, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
-print("Patched public discovery metadata, World-family navigation and machine routes")
+print("Patched public discovery metadata, World-family navigation, unified map header and machine routes")
