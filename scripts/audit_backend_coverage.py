@@ -24,6 +24,18 @@ BACKEND=DATA/"backend.json"
 ATLAS_REGISTRY=DATA/"atlas-registry.json"
 ATLAS_ARTIFACTS=DATA/"atlas-artifacts.json"
 
+PLACEHOLDER_ENDPOINTS={"<id>","<country-id>","<slug>"}
+DATE_LIKE_RE=re.compile(
+    r"^(?:"
+    r"\d{4}"
+    r"|\d{4}-\d{2}"
+    r"|\d{4}-\d{2}-\d{2}(?:[T ][0-9:.+-]+Z?)?"
+    r"|\d{4}(?:-|/|–|—)\d{4}"
+    r")$"
+)
+MACHINE_ID_RE=re.compile(r"^[a-z0-9][a-z0-9._:-]*(?:/[a-z0-9._:-]+)*$")
+EXTERNAL_PREFIXES=("http://","https://","www.","doi:","urn:","mailto:","ftp://")
+
 
 def load(path):
     with path.open(encoding="utf-8") as f:
@@ -59,7 +71,7 @@ def relationship_endpoints(value):
         source=value.get("source") or value.get("from") or value.get("subject")
         target=value.get("target") or value.get("to") or value.get("object")
         if isinstance(source,str) and isinstance(target,str):
-            yield source,target
+            yield source.strip(),target.strip()
         for child in value.values():
             if isinstance(child,(dict,list)):
                 yield from relationship_endpoints(child)
@@ -126,6 +138,21 @@ def atlas_files():
     return {x for x in canonical if x},{x for x in depth if x}
 
 
+def classify_unresolved_endpoint(endpoint):
+    """Classify an unresolved endpoint by shape, without pretending shape proves intent."""
+    value=endpoint.strip()
+    lower=value.lower()
+    if not value or value in PLACEHOLDER_ENDPOINTS:
+        return "placeholder"
+    if lower.startswith(EXTERNAL_PREFIXES) or "://" in lower:
+        return "external_reference"
+    if DATE_LIKE_RE.fullmatch(value):
+        return "date_like"
+    if MACHINE_ID_RE.fullmatch(value):
+        return "candidate_machine_id"
+    return "human_label"
+
+
 def main():
     coverage=load(COVERAGE)
     bridge=load(BRIDGE)
@@ -165,10 +192,18 @@ def main():
         for ident in object_ids(value):
             id_locations.setdefault(ident,[]).append(rel)
         for source,target in relationship_endpoints(value):
-            endpoint_files.setdefault(source,[]).append(rel)
-            endpoint_files.setdefault(target,[]).append(rel)
+            if source:
+                endpoint_files.setdefault(source,[]).append(rel)
+            if target:
+                endpoint_files.setdefault(target,[]).append(rel)
 
-    duplicate_ids={k:v for k,v in id_locations.items() if len(set(v))>1}
+    duplicate_ids={k:sorted(set(v)) for k,v in id_locations.items() if len(set(v))>1}
+    knowledge_duplicate_ids={}
+    for ident,locations in duplicate_ids.items():
+        knowledge_locations=sorted(p for p in locations if p.startswith("knowledge/"))
+        if len(knowledge_locations)>1:
+            knowledge_duplicate_ids[ident]=knowledge_locations
+
     exact_duplicates={k:sorted(v) for k,v in content_hashes.items() if len(v)>1}
     bridge_ids={x.get("id") for x in bridge.get("explicit_bridges",[]) if isinstance(x,dict)}
     registry_ids=set()
@@ -181,10 +216,29 @@ def main():
         node_ids.update(object_ids(load(nodes)))
     declared_ids=set(id_locations)
     known_graph_ids=bridge_ids|registry_ids|node_ids|declared_ids
-    relationship_only=sorted(i for i in endpoint_files if i not in known_graph_ids and i not in {"<id>","<country-id>","<slug>"})
+    relationship_only=sorted(
+        i for i in endpoint_files
+        if i not in known_graph_ids and i not in PLACEHOLDER_ENDPOINTS
+    )
+
+    unresolved_classes={
+        "candidate_machine_id":[],
+        "external_reference":[],
+        "human_label":[],
+        "date_like":[],
+    }
+    for endpoint in relationship_only:
+        kind=classify_unresolved_endpoint(endpoint)
+        if kind in unresolved_classes:
+            unresolved_classes[kind].append(endpoint)
+
+    candidate_unresolved_machine_ids=sorted(unresolved_classes["candidate_machine_id"])
+    external_reference_ids=sorted(unresolved_classes["external_reference"])
+    human_label_endpoints=sorted(unresolved_classes["human_label"])
+    date_like_endpoints=sorted(unresolved_classes["date_like"])
 
     report={
-        "version":"2.0.0",
+        "version":"2.1.0",
         "files_scanned":len(files),
         "data_files_scanned":len(data_paths),
         "knowledge_files_scanned":len(knowledge_paths),
@@ -195,9 +249,21 @@ def main():
         "atlas_canonical_owner_files":sorted(atlas_canonical_owner_files),
         "atlas_artifact_source_files":sorted(atlas_artifact_source_files),
         "invalid_json":invalid_json,
-        "duplicate_ids":{k:sorted(set(v)) for k,v in sorted(duplicate_ids.items())},
+        "duplicate_ids":{k:v for k,v in sorted(duplicate_ids.items())},
+        "knowledge_duplicate_ids":{k:v for k,v in sorted(knowledge_duplicate_ids.items())},
         "exact_duplicate_file_contents":exact_duplicates,
         "relationship_only_unresolved_ids":relationship_only,
+        "candidate_unresolved_machine_ids":candidate_unresolved_machine_ids,
+        "external_reference_ids":external_reference_ids,
+        "human_label_endpoints":human_label_endpoints,
+        "date_like_endpoints":date_like_endpoints,
+        "unresolved_endpoint_counts":{
+            "all":len(relationship_only),
+            "candidate_machine_ids":len(candidate_unresolved_machine_ids),
+            "external_references":len(external_reference_ids),
+            "human_labels":len(human_label_endpoints),
+            "date_like":len(date_like_endpoints),
+        },
         "bridge_explicit_ids":len(bridge_ids),
         "graph_registry_ids":len(registry_ids),
         "node_ids":len(node_ids),
@@ -205,8 +271,11 @@ def main():
         "notes":[
             "Knowledge files outside the Atlas owner/Artifact registries are a consolidation frontier, not automatic errors or deletion targets.",
             "Duplicate IDs are diagnostics, not automatic deletion targets: indexes, overlays, country layers and research expansions can legitimately repeat IDs.",
+            "knowledge_duplicate_ids narrows duplicate pressure to IDs repeated across multiple knowledge files, where canonical ownership review is most useful.",
             "Exact duplicate files are candidates for consolidation after consumer migration.",
-            "Unresolved relationship endpoints are inventory debt and should either be promoted, bridged or removed.",
+            "relationship_only_unresolved_ids is retained as the compatibility inventory; candidate_unresolved_machine_ids is the higher-signal graph-debt queue.",
+            "External references, human-readable labels and date-like endpoints are reported separately so they do not inflate machine-ID cleanup pressure.",
+            "Endpoint classes are shape-based diagnostics, not semantic truth; a candidate machine ID still requires owner/provenance review before promotion or removal.",
             "A relationship endpoint is considered resolved when its ID is declared by valid data or knowledge records.",
             "Coverage layers provide broad ownership for generated data families; Atlas Node/Artifact registries provide explicit ownership/depth for knowledge records.",
             "Invalid JSON is an actionable warning in this inventory audit and must not block unrelated project changes or deployment; the file is excluded from parsed ownership calculations until repaired.",
