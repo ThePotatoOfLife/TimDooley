@@ -42,11 +42,12 @@ BUILT_MARKERS = (
     'class="science-record"',
 )
 
+# These markers are checked against a whitespace-free CSS representation below.
 COMPACT_CSS_MARKERS = (
     ".science-abstract{display:none}",
     ".science-equation-preview{display:none}",
     ".science-record-tags{display:none}",
-    ".science-record-actions .science-source{display:none}",
+    ".science-record-actions.science-source{display:none}",
 )
 
 
