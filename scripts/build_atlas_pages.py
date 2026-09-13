@@ -18,12 +18,17 @@ def write(rel:str,text:str)->None:
 def copy_design_system()->None:
     source=ROOT/'app/design-system.css';target=OUT/'app/design-system.css';target.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(source,target)
 
-def main()->int:
+def build_pages()->list[str]:
     OUT.mkdir(parents=True,exist_ok=True);copy_design_system();model=build_runtime();nodes=by_id(model)
-    write('atlas',page_shell('Atlas','Canonical current knowledge plane for the Potato of Life archive.',render_landing(model,nodes),canonical=f'{BASE_URL}/atlas/',depth=1))
+    urls=[f'{BASE_URL}/atlas/']
+    write('atlas',page_shell('Atlas','Canonical current knowledge plane for the Potato of Life archive.',render_landing(model,nodes),canonical=urls[0],depth=1))
     for node in nodes.values():
-        write(f'atlas/{node["id"]}',page_shell(node['title'],node['summary'],render_node(node,nodes),canonical=f'{BASE_URL}{node["route"]}',depth=2))
-    print(f'ATLAS PAGES BUILT: {len(nodes)} nodes + landing')
-    return 0
+        canonical=f'{BASE_URL}{node["route"]}'
+        write(f'atlas/{node["id"]}',page_shell(node['title'],node['summary'],render_node(node,nodes),canonical=canonical,depth=2))
+        urls.append(canonical)
+    return urls
+
+def main()->int:
+    urls=build_pages();print(f'ATLAS PAGES BUILT: {len(urls)-1} nodes + landing');return 0
 
 if __name__=='__main__':raise SystemExit(main())
