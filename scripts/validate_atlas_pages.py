@@ -25,6 +25,7 @@ def main()->int:
     require(landing_text,'<main id="main" class="site-main">','atlas landing')
     require(landing_text,'class="page-atlas"','atlas landing')
     require(landing_text,'class="site-skip-link"','atlas landing')
+    require(landing_text,'rel="alternate" type="application/json" href="../data/atlas-index.json"','atlas landing')
     require(landing_human,'Ways through','atlas landing')
     for view in model.get('views',[]):
         if view.get('id')!='start':require(landing_human,str(view.get('title')),'atlas landing')
@@ -38,6 +39,7 @@ def main()->int:
         require(text,'class="record-breadcrumbs"',node_id)
         require(text,'class="record-archive"',node_id)
         require(text,'../../app/design-system.css',node_id)
+        require(text,'rel="alternate" type="application/json" href="../../data/atlas-index.json"',node_id)
         forbid(text,'../../archive/',node_id)
         forbid(human,'>Five doors<',node_id)
         north_count=text.count('class="record-north"')
