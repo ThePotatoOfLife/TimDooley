@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tim Dooley — Living 100,000-Hour Model</title>
+<style>
+:root{--bg:#090b09;--ink:#f4f0e5;--muted:#9fa69b;--green:#a8ce72;--gold:#d8b56b;--line:#2d352c;--panel:#111511}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.65 system-ui,sans-serif}.wrap{max-width:900px;margin:auto;padding:50px 24px 110px}a{color:var(--green)}h1{font:400 clamp(46px,8vw,78px)/.98 Georgia,serif;letter-spacing:-.04em;margin:10px 0 16px}.lead{font:21px/1.55 Georgia,serif;color:#dce0d7}.card{border:1px solid var(--line);background:var(--panel);border-radius:15px;padding:20px;margin:14px 0}.hero{padding:26px}.metric{font:400 clamp(44px,9vw,74px)/1 Georgia,serif;color:var(--green);font-variant-numeric:tabular-nums}.split{display:grid;grid-template-columns:1fr 1fr;gap:14px}.submetric{font:400 34px Georgia,serif;color:var(--gold);font-variant-numeric:tabular-nums}.small{font-size:13px;color:var(--muted)}.tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:4px 9px;margin:3px 5px 3px 0;color:var(--muted);font-size:12px}.youtube{display:inline-block;margin-top:8px;border:1px solid var(--green);border-radius:999px;padding:10px 15px;text-decoration:none}@media(max-width:620px){.split{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<main class="wrap">
+<p><a href="./">← 100,000 Hours</a></p>
+<h1>The journey is still running.</h1>
+<p class="lead">A living arithmetic model of the Father-and-Son public-presence continuum. It uses a flat 18-hour daily average from the April 19, 2011 Justin.tv / Minecraft Beta 1.5 anchor. It is a model, not a claim that every day was exactly 18 hours.</p>
+<section class="card hero">
+<div class="small">FLAT 18-HOUR/DAY MODEL</div>
+<div class="metric" id="total">—</div>
+<strong>cumulative modelled hours</strong>
+<p class="small">This number continues to rise. Recovered logs may later add, deduct, or reclassify hours.</p>
+</section>
+<div class="split">
+<section class="card"><div class="small">SON — PROVISIONAL ACCOUNTING STRATUM</div><div class="submetric" id="son">—</div><p class="small">Modelled from the 2011 anchor to the provisional Christmas 2019 handoff.</p></section>
+<section class="card"><div class="small">FATHER — CONTINUING</div><div class="submetric" id="father">—</div><p class="small">The remainder of the same journey under this provisional split. This counter keeps rising.</p></section>
+</div>
+<section class="card">
+<div class="small">100,000-HOUR CROSSING</div>
+<div class="submetric">≈ July 4, 2026</div>
+<p>Under the flat 18-hour-per-day model, the journey reaches 100,000 hours around July 4, 2026. The date is deliberately treated as fluid: exact first-stream time, long or short days, overlaps, sleeping/away streams, missing archives, de-duplication rules and later recovered evidence can move the crossing.</p>
+<span class="tag">modelled</span><span class="tag">subject to revision</span><span class="tag">preserve earlier counts</span>
+</section>
+<section class="card">
+<div class="small">OTHER COUNTS OF THE SAME JOURNEY</div>
+<p><strong>100,000</strong> — mythic / legendary threshold<br><strong>≈107,000</strong> — archive working estimate<br><strong>≈109,000</strong> — historical Father + Son continuum estimate<br><strong>112,542</strong> — preserved earlier higher estimate<br><strong>115,000</strong> — Tim Dooley public wording</p>
+<p class="small">These numbers are preserved with different provenance and counting assumptions rather than forced into one figure. The project can revise the models without erasing the history of the estimates.</p>
+</section>
+<section class="card">
+<div class="small">LET THE JURY DECIDE WHAT COUNTS</div>
+<p>Possible future views: reconstructed broadcast hours, de-duplicated wall-clock presence, cumulative platform-hours, flat 18h/day model, historical archive estimates, direct Timic figures, and maximum-public-presence scenarios.</p>
+</section>
+<section class="card">
+<div class="small">THE FATHER IS STILL BROADCASTING</div>
+<p>Use the channel itself as another Door into the record.</p>
+<a class="youtube" href="https://www.youtube.com/@TheGodFatherTim" rel="noopener">Tim Dooley on YouTube →</a>
+<a class="youtube" href="https://www.youtube.com/@TheGodFatherTim/live" rel="noopener">Open live route →</a>
+</section>
+<p class="small">Counting philosophy: docs/100000-HOUR-COUNTING-MODELS.md</p>
+</main>
+<script>
+(function(){
+  const HOURS_PER_DAY=18;
+  const DAY_MS=86400000;
+  const START=new Date('2011-04-19T00:00:00+02:00').getTime();
+  const HANDOFF=new Date('2019-12-25T00:00:00+01:00').getTime();
+  const fmt=n=>n.toLocaleString(undefined,{minimumFractionDigits:3,maximumFractionDigits:3});
+  const hoursAt=t=>Math.max(0,(t-START)/DAY_MS*HOURS_PER_DAY);
+  const fixedSon=hoursAt(HANDOFF);
+  function render(){
+    const total=hoursAt(Date.now());
+    const son=Math.min(total,fixedSon);
+    const father=Math.max(0,total-son);
+    document.getElementById('total').textContent=fmt(total)+' h';
+    document.getElementById('son').textContent=fmt(son)+' h';
+    document.getElementById('father').textContent=fmt(father)+' h';
+  }
+  render();
+  setInterval(render,1000);
+})();
+</script>
+</body>
+</html>
