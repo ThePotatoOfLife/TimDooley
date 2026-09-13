@@ -193,7 +193,7 @@ jobs:
         run: python scripts/audit_web.py
 
       - name: Build public site
-        run: python scripts/build_site.py
+        run: python scripts/build_public_site.py
 
       - name: Remove internal archive from public artifact
         run: rm -rf _site/archive && test ! -e _site/archive
@@ -236,6 +236,15 @@ jobs:
       - name: Enforce SEO gate
         if: steps.seo.outcome == 'failure'
         run: exit 1
+
+      - name: Validate composed Atlas coexistence
+        run: python scripts/validate_public_atlas_coexistence.py
+
+      - name: Validate built Atlas pages
+        run: python scripts/validate_atlas_pages.py
+
+      - name: Validate built Atlas public index
+        run: python scripts/validate_atlas_public_index.py
 
       - name: Validate public navigation
         run: python scripts/validate_public_navigation.py
