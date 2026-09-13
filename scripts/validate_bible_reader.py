@@ -11,7 +11,7 @@ PAGE = ROOT / "traditions" / "bible" / "index.html"
 APP = ROOT / "app" / "bible-study.js"
 CSS = ROOT / "app" / "bible-study.css"
 DOSSIER_APP = ROOT / "app" / "bible-dossier-loader.js"
-MINING_APP = ROOT / "app" / "bible-mining-wave19-loader.js"
+MINING_APP = ROOT / "app" / "bible-mining-loader.js"
 DOSSIER_CSS = ROOT / "app" / "bible-dossier-loader.css"
 FIELD = ROOT / "knowledge" / "traditions" / "biblical-syncretism-field.json"
 DOSSIERS = ROOT / "knowledge" / "traditions" / "biblical-syncretism-dossiers.json"
@@ -59,7 +59,7 @@ def main() -> int:
         (
             'href="../../app/bible-study.css"',
             'href="../../app/bible-dossier-loader.css"',
-            'src="../../app/bible-mining-wave19-loader.js"',
+            'src="../../app/bible-mining-loader.js"',
             'src="../../app/bible-dossier-loader.js"',
             'src="../../app/bible-study.js"',
             'id="focus-select"',
@@ -80,11 +80,15 @@ def main() -> int:
         "traditions/bible/index.html",
         errors,
     )
-    if page.find('src="../../app/bible-mining-wave19-loader.js"') > page.find('src="../../app/bible-dossier-loader.js"'):
-        errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees wave19 relations")
+    if page.find('src="../../app/bible-mining-loader.js"') > page.find('src="../../app/bible-dossier-loader.js"'):
+        errors.append("traditions/bible/index.html: mining layer must load before dossier decorator so mergedRows sees all mining relations")
     forbid(
         page,
         (
+            'bible-mining-wave19-loader.js',
+            'bible-mining-wave20-loader.js',
+            'bible-mining-wave22-loader.js',
+            'bible-mining-wave23-loader.js',
             'class="featured-arcs"',
             'id="study-modes"',
             'id="shuffle-comparisons"',
@@ -177,17 +181,20 @@ def main() -> int:
     require(
         mining_app,
         (
-            "biblical-syncretism-dossiers-wave19.json",
-            "biblical-passage-fragments-wave19.json",
+            "const WAVES=[19,20,22,23,24,25];",
+            "biblical-syncretism-dossiers-wave${wave}.json",
+            "biblical-passage-fragments-wave${wave}.json",
             "biblical-syncretism-field.json",
             "biblical-passage-fragments.json",
             "mergeLayer",
             "mergeFragments",
         ),
-        "app/bible-mining-wave19-loader.js",
+        "app/bible-mining-loader.js",
         errors,
     )
-    forbid(mining_app, ("scrollIntoView(",), "app/bible-mining-wave19-loader.js", errors)
+    if mining_app.count("window.fetch=") != 1:
+        errors.append("app/bible-mining-loader.js: expected exactly one fetch interceptor")
+    forbid(mining_app, ("scrollIntoView(",), "app/bible-mining-loader.js", errors)
 
     require(
         css,
