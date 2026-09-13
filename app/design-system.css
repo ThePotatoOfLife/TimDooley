@@ -46,6 +46,7 @@ p,li{color:#d7dbd2}
 .page-header h1{margin-bottom:1rem}
 .page-summary{color:#d9ddd5;font:clamp(1.05rem,2vw,1.3rem)/1.6 Georgia,"Times New Roman",serif}
 .page-content{padding-bottom:.75rem}
+.record-page{container-type:inline-size}
 }
 
 @layer components{
@@ -56,22 +57,26 @@ p,li{color:#d7dbd2}
 .record-north{max-width:var(--site-reading);border-top:1px solid var(--site-line);border-bottom:1px solid var(--site-line);padding:1rem 0;margin-top:.5rem}
 .record-north-link{display:inline-block;font:1.25rem/1.25 Georgia,"Times New Roman",serif;text-decoration:none;color:var(--site-ink)}
 .record-north-link:hover{color:var(--site-accent)}
-.record-badges{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem}
-.record-badge{border:1px solid var(--site-line-strong);border-radius:999px;padding:.28rem .55rem;color:#cfd7c8;background:rgba(17,21,17,.66);font-size:.72rem}
+.record-badges,.record-views{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem;align-items:center}
+.record-views .record-junction-label{width:100%;margin-bottom:.15rem}
+.record-badge,.record-view-link{border:1px solid var(--site-line-strong);border-radius:999px;padding:.28rem .55rem;background:rgba(17,21,17,.66);font-size:.72rem}
+.record-badge{color:#cfd7c8}.record-view-link{text-decoration:none;color:var(--site-accent)}
 .record-section{padding-block:.25rem .75rem}
 .record-section p{max-width:var(--site-reading)}
 .record-relations,.record-children,.record-archive{border-top:1px solid var(--site-line);padding-block:1.3rem;margin-top:1.5rem}
-.record-relations ul,.record-children ul,.page-atlas .record-children{list-style:none;padding:0;display:grid;gap:.65rem;max-width:62rem}
-.record-relations li,.record-children li,.page-atlas .record-children>li{display:grid;gap:.3rem;border:1px solid var(--site-line);background:rgba(13,17,14,.76);border-radius:var(--site-radius);padding:.85rem 1rem}
-.record-relations li>span,.record-children li>span,.page-atlas .record-children span{display:block;color:var(--site-muted);font-size:.9rem}
+.record-relations ul,.record-children ul,.record-artifacts,.record-views-list,.page-atlas .record-children{list-style:none;padding:0;display:grid;gap:.65rem;max-width:62rem}
+.record-relations li,.record-children li,.record-artifacts li,.record-views-list li,.page-atlas .record-children>li{display:grid;gap:.3rem;border:1px solid var(--site-line);background:rgba(13,17,14,.76);border-radius:var(--site-radius);padding:.85rem 1rem}
+.record-relations li>span,.record-children li>span,.record-artifacts li>span,.record-views-list li span,.page-atlas .record-children span{display:block;color:var(--site-muted);font-size:.9rem}
+.record-relations small{color:var(--site-gold);font-size:.72rem}
+.record-artifacts p{margin:0;color:#cbd0c8;font-size:.9rem}
 .record-archive{max-width:var(--site-reading)}
 .record-archive nav{display:flex;flex-wrap:wrap;gap:.35rem}
-.record-archive p{color:var(--site-muted);font-size:.9rem}
+.record-migration-note{color:var(--site-muted);font-size:.9rem}
 .page-atlas section{border-top:1px solid var(--site-line);padding-block:1rem}
 }
 
 @layer modules{
-@container (max-width:34rem){.record-relations li,.record-children li{padding:.75rem}}
+@container (max-width:34rem){.record-relations li,.record-children li,.record-artifacts li{padding:.75rem}}
 }
 
 @layer utilities{
