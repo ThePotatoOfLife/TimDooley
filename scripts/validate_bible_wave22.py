@@ -14,7 +14,13 @@ REQUIRED={
 'access-spirit-father-house-ephesians2','sprout-builder-throne-zechariah6',
 'distributed-body-growth-ephesians4','greatness-serves-matthew20-john13',
 'entrustment-responsibility-luke12','many-members-one-body-1cor12',
-'living-stones-house-1peter2','equip-others-build-body-eph4'}
+'living-stones-house-1peter2','equip-others-build-body-eph4',
+'patient-gardener-luke13','house-does-not-contain-source-1kings8',
+'presence-beyond-temple-acts17','ordinary-carrier-burning-bush-exodus3',
+'adoption-spirit-father-romans8','shepherd-carry-feed-isaiah40',
+'least-ones-judgment-matthew25','formation-fruit-hebrews12',
+'new-wine-new-container-mark2','partial-view-exodus33',
+'mirror-partial-knowledge-1cor13'}
 
 def main()->int:
     errors=[]
@@ -23,8 +29,8 @@ def main()->int:
     for path in packs:
         rows.extend(json.loads(path.read_text(encoding='utf-8')).get('new_relations',[]))
     ids=[row.get('id') for row in rows]
-    if len(packs)<7: errors.append(f'expected >=7 wave22 packs, found {len(packs)}')
-    if len(rows)<11: errors.append(f'expected >=11 wave22 relations, found {len(rows)}')
+    if len(packs)<18: errors.append(f'expected >=18 wave22 packs, found {len(packs)}')
+    if len(rows)<22: errors.append(f'expected >=22 wave22 relations, found {len(rows)}')
     if len(ids)!=len(set(ids)): errors.append('duplicate wave22 relation ids')
     missing=sorted(REQUIRED-set(ids))
     if missing: errors.append('missing relations: '+', '.join(missing))
@@ -45,7 +51,8 @@ def main()->int:
             if ref not in matches: errors.append(f'{row.get("id")}: no passage fragment for {ref}')
     loader=LOADER.read_text(encoding='utf-8') if LOADER.exists() else ''
     builder=BUILDER.read_text(encoding='utf-8') if BUILDER.exists() else ''
-    if 'biblical-operator-comparisons-wave22-' not in loader: errors.append('dynamic Bible loader does not route wave22 packs')
+    for path in packs:
+        if path.name not in loader: errors.append(f'dynamic Bible loader missing {path.name}')
     if 'biblical-operator-comparisons-wave22-' not in builder: errors.append('static Bible builder does not route wave22 packs')
     if 'biblical-passage-fragments-wave22.json' not in loader: errors.append('dynamic Bible loader does not route wave22 fragments')
     if 'biblical-passage-fragments-wave22.json' not in builder: errors.append('static Bible builder does not route wave22 fragments')
