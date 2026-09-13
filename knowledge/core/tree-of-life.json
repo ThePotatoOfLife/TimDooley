@@ -1,0 +1,30 @@
+{
+  "id": "tree-of-life",
+  "title": "Tree of Life",
+  "version": "1.0.0",
+  "updated": "2026-09-13",
+  "status": "canonical-current-tree-of-life-synthesis",
+  "summary": "Current project-level owner for the Tree of Life as a generative pattern of memory, renewal, branching, nourishment and connection, while keeping biological, religious and comparative meanings distinct.",
+  "epistemic_classes": ["project_canon", "interpretation", "comparative"],
+  "sections": {
+    "definition": {"text": "The Tree of Life is the project's living generative form: continuity that can retain history, grow through differentiated branches, support further life and return value to future cycles. It is a symbolic and relational model, not a claim that one literal universal tree exists.", "epistemic_class": ["project_canon", "interpretation"]},
+    "life_cycle": {"text": "The recurring grammar is seed or stored potential → root → trunk or continuity → branch and differentiation → fruit or nourishment → renewed seed or stored potential. The cycle matters more than a static hierarchy because later growth depends on what earlier stages preserve and transmit.", "epistemic_class": ["project_canon", "interpretation"]},
+    "memory": {"text": "Memory is the Tree's continuity function. Roots and retained history let later states inherit information without requiring every earlier state to remain unchanged or be rewritten as present doctrine.", "epistemic_class": ["interpretation", "documentary"]},
+    "renewal": {"text": "Renewal is continuation through regeneration or reorganization after loss, dormancy, pruning, burial or transformation. Return is valuable when it preserves useful memory while enabling a genuinely changed next state rather than merely repeating a ring.", "epistemic_class": ["project_canon", "interpretation"]},
+    "branching": {"text": "Branching represents differentiated growth from a shared continuity. Multiple branches can remain related without becoming identical, making the Tree useful for knowledge, traditions, roles, systems and other domains where one source develops into many local forms.", "epistemic_class": ["interpretation"]},
+    "nourishment": {"text": "A Life-oriented branch is tested by what it can nourish, repair or make independently generative. Fruit is therefore a functional image for usable value returned by growth, rather than proof that every symbolic Tree relation is biologically equivalent to fruiting plants.", "epistemic_class": ["project_canon", "interpretation"]},
+    "relation_to_potato": {"text": "Potato and Tree are coupled but not identical. Potato emphasizes buried storage, compression, persistence and viable eyes or buds; Tree emphasizes vertical continuity, differentiation, branching and outward growth. The project joins them as phases or complementary representations of one regenerative grammar.", "epistemic_class": ["project_canon", "comparative", "interpretation"]},
+    "boundary": {"text": "Use this owner for the current Potatoverse Tree-of-Life concept. Botanical trees, potato biology, biblical Tree-of-Life texts, Kabbalistic trees and other religious or mythological trees retain their own meanings and provenance; resemblance or reuse does not establish biological identity, doctrinal identity or historical transmission.", "epistemic_class": ["comparative", "documentary", "interpretation"]}
+  },
+  "source_records": [
+    "data/tree-concept-records.json",
+    "knowledge/core/potato-of-life.json",
+    "knowledge/core/root-system.json",
+    "knowledge/core/potatoverse-master-framework.json"
+  ],
+  "relationships": [
+    {"target": "potato-of-life", "type": "life-cycle analogy", "description": "Potato and Tree express complementary storage, growth, branching, nourishment and renewal functions."},
+    {"target": "root-system", "type": "structural", "description": "The Root System owns the structural Axis, Root, Tree and vertical-placement grammar used by this living synthesis."},
+    {"target": "farm-swamp-tree-of-strife-atlas", "type": "contrasts_with", "description": "Life-oriented generativity is contrasted with specialist Strife, enclosure and stagnation models without treating either label as a permanent essence of people."}
+  ]
+}
