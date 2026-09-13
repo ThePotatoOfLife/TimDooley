@@ -1,0 +1,62 @@
+{
+  "version": "1.0.0",
+  "purpose": "Public Rooms and traversal views over canonical Atlas Nodes. Views never own subject truth and may evolve without moving canonical Nodes.",
+  "views": [
+    {
+      "id": "start",
+      "title": "Start Here",
+      "route": "/",
+      "status": "active",
+      "kind": "orientation",
+      "description": "Curated summit-level orientation into the Potato of Life, Tim Dooley and the current Atlas."
+    },
+    {
+      "id": "tim",
+      "title": "Tim Dooley",
+      "route": "/tim-dooley/",
+      "status": "legacy_view",
+      "kind": "subject_view",
+      "description": "Human-facing view across Tim Dooley biography, self-description, chronology, works, theology and evidence."
+    },
+    {
+      "id": "religion",
+      "title": "Religion & Myth",
+      "route": "/religion/",
+      "status": "legacy_view",
+      "kind": "domain_view",
+      "description": "Cross-domain view across theology, scripture, traditions, myth, comparative religion and Potatoism."
+    },
+    {
+      "id": "philosophy",
+      "title": "Philosophy",
+      "route": "/philosophy/",
+      "status": "legacy_view",
+      "kind": "domain_view",
+      "description": "Cross-domain view across Potato philosophy, Timic Dynamics, transformation, ethics and relational models."
+    },
+    {
+      "id": "science",
+      "title": "Science & Mathematics",
+      "route": "/science/",
+      "status": "legacy_view",
+      "kind": "domain_view",
+      "description": "Cross-domain view across biology, body, mathematics, physics, formal models and scientific comparators."
+    },
+    {
+      "id": "world",
+      "title": "World & Society",
+      "route": "/world/",
+      "status": "legacy_view",
+      "kind": "domain_view",
+      "description": "Cross-domain view across countries, institutions, economics, politics, technology, culture and world systems."
+    },
+    {
+      "id": "history",
+      "title": "History & Development",
+      "route": "/timeline/",
+      "status": "legacy_view",
+      "kind": "temporal_view",
+      "description": "Time-oriented projection across lived events, conceptual development, changing interpretations and dated evidence."
+    }
+  ]
+}
