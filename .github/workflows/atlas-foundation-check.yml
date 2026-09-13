@@ -49,12 +49,16 @@ jobs:
         run: python scripts/build_atlas_pages.py
       - name: Validate Atlas page shell
         run: python scripts/validate_atlas_pages.py
+      - name: Validate public Atlas machine index
+        run: python scripts/validate_atlas_public_index.py
       - name: Build composed public site
         run: python scripts/build_public_site.py
       - name: Validate public Atlas coexistence
         run: python scripts/validate_public_atlas_coexistence.py
       - name: Validate Atlas after full build
         run: python scripts/validate_atlas_pages.py
+      - name: Validate public Atlas index after full build
+        run: python scripts/validate_atlas_public_index.py
       - name: Upload Atlas frontier diagnostics
         if: ${{ always() && hashFiles('atlas-frontier-report.json') != '' }}
         uses: actions/upload-artifact@v4
