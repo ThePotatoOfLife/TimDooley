@@ -5,6 +5,7 @@ from pathlib import Path
 
 from atlas_runtime import build_runtime
 from atlas_model import by_id
+from atlas_render import href_for
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'_site'
@@ -48,7 +49,11 @@ def main()->int:
         for child_id in node.get('children',[]):
             if not (OUT/f'atlas/{child_id}/index.html').exists():raise SystemExit(f'ATLAS PAGE FAILED: generated child page missing {child_id}')
         for view in node.get('view_details',[]):require(human,str(view.get('title')),node_id)
-        for artifact in node.get('artifacts',[]):require(human,str(artifact.get('title')),node_id)
+        for artifact in node.get('artifacts',[]):
+            require(human,str(artifact.get('title')),node_id)
+            route=artifact.get('public_route')
+            if isinstance(route,str) and route:
+                require(text,f'href="{html.escape(href_for(route,depth=2),quote=True)}"',node_id)
     print(f'ATLAS PAGE VALIDATION PASSED: {len(nodes)} node pages + landing')
     return 0
 
