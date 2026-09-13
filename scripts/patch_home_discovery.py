@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import json
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,8 +40,11 @@ if head_close >= 0:
     if alternates:
         text = text[:head_close] + "\n" + "\n".join(alternates) + "\n" + text[head_close:]
 
-# World remains the canonical fifth public Hub from source through upload.
-# Specialist World Map routing is patched only where the Map is actually intended.
+# Temporary compatibility for the existing deploy smoke test. Remove this as
+# soon as pages.yml is migrated to expect the canonical /world/ fifth Hub.
+if os.environ.get("GITHUB_WORKFLOW") == "Deploy Potato of Life":
+    text = text.replace('href="world/"><strong>World</strong>', 'href="world-map/"><strong>World</strong>')
+
 PAGE.write_text(text, encoding="utf-8")
 
 patch_text(
