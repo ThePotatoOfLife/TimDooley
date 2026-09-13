@@ -14,7 +14,10 @@ SITE_SYSTEM = ROOT / "app" / "site-system.css"
 READER = ROOT / "app" / "reader.css"
 GUARD = ROOT / "app" / "layout-guard.css"
 HOME = ROOT / "index.html"
-PRIMARY_MIGRATED_PAGES = [HOME]
+PRIMARY_MIGRATED_PAGES = [
+    HOME,
+    ROOT / "tim-dooley" / "index.html",
+]
 
 RISKY_GLOBAL = {
     ".grid": ("grid-template-columns", "position", "top"),
