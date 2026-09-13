@@ -41,8 +41,11 @@ def render_children(node:dict,nodes:dict[str,dict])->str:
 def render_depth(node:dict)->str:
     rows=[]
     for artifact in node.get('artifacts',[]):
+        title=esc(artifact.get('title'))
+        route=artifact.get('public_route')
+        title_html=f'<a href="{esc(href_for(route,depth=2))}">{title}</a>' if isinstance(route,str) and route else title
         date=f'<span>{esc(artifact.get("date_or_period"))}</span>' if artifact.get('date_or_period') else ''
-        rows.append(f'<li><strong>{esc(artifact.get("title"))}</strong><span>{esc(artifact.get("kind"))}</span>{date}<p>{esc(artifact.get("summary"))}</p></li>')
+        rows.append(f'<li><strong>{title_html}</strong><span>{esc(artifact.get("kind"))}</span>{date}<p>{esc(artifact.get("summary"))}</p></li>')
     roots='' if not rows else '<h3>Archive roots</h3><ul class="record-artifacts">'+''.join(rows)+'</ul>'
     return f'''<section class="record-archive"><h2>Depth</h2><nav aria-label="Current depth routes"><a href="../../timeline/">History</a> · <a href="../../context/source-authority/">Sources</a> · <a href="../../explore/">Research</a></nav>{roots}<p class="record-migration-note">The unified public Archive projection is introduced later in the migration. Current material remains in canonical source owners until that route is safe to publish.</p></section>'''
 
