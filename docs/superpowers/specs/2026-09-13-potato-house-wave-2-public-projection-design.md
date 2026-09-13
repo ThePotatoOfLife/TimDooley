@@ -32,6 +32,25 @@ Rejected alternatives:
 - fully manual projection: too much drift as the corpus grows;
 - fully graph-generated pages: too generic, too likely to flatten distinct reader surfaces and duplicate knowledge ownership.
 
+## Visual stability and non-regression rule
+
+The current public site is a protected design baseline.
+
+Wave 2 is not permission to redesign the homepage, re-theme the site, replace the current reader surfaces with generic generated layouts, or expose the House ontology visually merely because the backend becomes more structured.
+
+Implementation should prefer, in order:
+
+1. backend-only contracts and generated metadata;
+2. validation of the current UI against those contracts;
+3. small additive reader improvements where they clearly help;
+4. replacement of existing public markup only when a concrete defect or duplicated manual contract justifies it.
+
+For Tim, Religion, Philosophy, Science, World, Home, and current specialist Views, existing typography, page identity, major layout, editorial rhythm, and reader-facing structure should remain materially recognizable unless a later explicitly approved design says otherwise.
+
+A projection-system change is successful when the page looks the same or better while becoming more coherent, auditable, and maintainable underneath.
+
+Any Wave 2 implementation plan must therefore include public-surface non-regression checks and must not bundle a broad visual redesign with projection work.
+
 ## Core invariant
 
 > Projection may know where information belongs and where a reader can go; it must not become the owner of what that information means.
@@ -361,7 +380,8 @@ Wave 2 validators should assert:
 - Tim and Science satisfy their structural invariants;
 - manual projection-block links resolve to allowed generated destinations during migration;
 - optional projection failure does not remove essential page navigation;
-- repeated builds are deterministic.
+- repeated builds are deterministic;
+- current public typography, major layout, editorial rhythm, and page identity remain materially recognizable unless a separately approved design changes them.
 
 Test contracts and representative records rather than snapshotting the complete generated JSON.
 
@@ -378,6 +398,8 @@ Wave 2 does not:
 - choose homepage features;
 - build a truth score;
 - redesign Explore or Home;
+- re-theme the existing public site;
+- replace the current major layouts merely to make projection rendering easier;
 - migrate all Subject pages;
 - replace specialist Views;
 - flatten comparison into identity;
@@ -397,7 +419,8 @@ Wave 2 succeeds when:
 7. epistemic distinctions survive projection;
 8. public HTML remains useful if optional projection generation fails;
 9. projection output is disposable/rebuildable;
-10. Wave 3 can ask maturity/readiness questions without redesigning routing again.
+10. the current public visual identity remains materially intact;
+11. Wave 3 can ask maturity/readiness questions without redesigning routing again.
 
 ## Invariants
 
@@ -412,7 +435,8 @@ Wave 2 succeeds when:
 9. Every generated relation keeps a derivation reason.
 10. Unknown targets are omitted, never guessed.
 11. Human pages remain editorially distinct.
-12. Static semantic HTML remains the primary reader substrate.
-13. Explore owns depth; ordinary pages own clarity.
-14. Wave 2 resolves presentational structure; Wave 3 resolves maturity/readiness.
-15. Rebuilding projections must never destroy knowledge.
+12. Current public visual identity is a protected baseline, not disposable scaffolding.
+13. Static semantic HTML remains the primary reader substrate.
+14. Explore owns depth; ordinary pages own clarity.
+15. Wave 2 resolves presentational structure; Wave 3 resolves maturity/readiness.
+16. Rebuilding projections must never destroy knowledge.
