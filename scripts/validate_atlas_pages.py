@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 from __future__ import annotations
+import html
 from pathlib import Path
 
 from atlas_runtime import build_runtime
@@ -19,35 +20,35 @@ def main()->int:
     if not css.exists():raise SystemExit('ATLAS PAGE FAILED: shared design-system.css missing')
     landing=OUT/'atlas/index.html'
     if not landing.exists():raise SystemExit('ATLAS PAGE FAILED: atlas landing missing')
-    landing_text=landing.read_text(encoding='utf-8')
+    landing_text=landing.read_text(encoding='utf-8');landing_human=html.unescape(landing_text)
     require(landing_text,'<main id="main" class="site-main">','atlas landing')
     require(landing_text,'class="page-atlas"','atlas landing')
     require(landing_text,'class="site-skip-link"','atlas landing')
-    require(landing_text,'Ways through','atlas landing')
+    require(landing_human,'Ways through','atlas landing')
     for view in model.get('views',[]):
-        if view.get('id')!='start':require(landing_text,str(view.get('title')),'atlas landing')
+        if view.get('id')!='start':require(landing_human,str(view.get('title')),'atlas landing')
 
     for node_id,node in nodes.items():
         path=OUT/f'atlas/{node_id}/index.html'
         if not path.exists():raise SystemExit(f'ATLAS PAGE FAILED: missing page for {node_id}')
-        text=path.read_text(encoding='utf-8')
+        text=path.read_text(encoding='utf-8');human=html.unescape(text)
         require(text,'<main id="main" class="site-main">',node_id)
         require(text,'class="record-page"',node_id)
         require(text,'class="record-breadcrumbs"',node_id)
         require(text,'class="record-archive"',node_id)
         require(text,'../../app/design-system.css',node_id)
         forbid(text,'../../archive/',node_id)
-        forbid(text,'>Five doors<',node_id)
+        forbid(human,'>Five doors<',node_id)
         north_count=text.count('class="record-north"')
         if node_id==root_id:
             if north_count!=0:raise SystemExit('ATLAS PAGE FAILED: root must not have North Gate')
         else:
             if north_count!=1:raise SystemExit(f'ATLAS PAGE FAILED: {node_id} must have exactly one North Gate')
-            parent=nodes[node['north_parent']];require(text,f'↑ {parent["title"]}',node_id)
+            parent=nodes[node['north_parent']];require(human,f'↑ {parent["title"]}',node_id)
         for child_id in node.get('children',[]):
             if not (OUT/f'atlas/{child_id}/index.html').exists():raise SystemExit(f'ATLAS PAGE FAILED: generated child page missing {child_id}')
-        for view in node.get('view_details',[]):require(text,str(view.get('title')),node_id)
-        for artifact in node.get('artifacts',[]):require(text,str(artifact.get('title')),node_id)
+        for view in node.get('view_details',[]):require(human,str(view.get('title')),node_id)
+        for artifact in node.get('artifacts',[]):require(human,str(artifact.get('title')),node_id)
     print(f'ATLAS PAGE VALIDATION PASSED: {len(nodes)} node pages + landing')
     return 0
 
