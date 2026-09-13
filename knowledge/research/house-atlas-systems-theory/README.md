@@ -19,7 +19,7 @@ This research is downstream of the architecture already present in:
 - `data/atlas-projection-contract.json`
 - `data/atlas-mathematical-calibration.json`
 
-A fuller local research notebook also exists as `HOUSE-ATLAS-SYSTEMS-INFORMATION-THEORY-2026-09-13.md`; individual findings should be promoted from that notebook only when they survive the tests in this directory.
+`index.json` is the machine-readable map of this research collection.
 
 ## Notes
 
@@ -28,6 +28,9 @@ A fuller local research notebook also exists as `HOUSE-ATLAS-SYSTEMS-INFORMATION
 - `03-graph-family-and-north.md` — one North as a selected arborescence inside a richer context graph; separate graph layers for orientation, semantic Roads, provenance, time, arguments and build dependencies.
 - `04-logic-provenance-time-and-truth-maintenance.md` — contradiction, argument graphs, multi-state evidence, valid/recorded/interpretation time, provenance processes, causal firewall and schema/type discipline.
 - `05-maintenance-health-and-growth.md` — maintenance operators, Door gates, Room/Relation/Projection pressure, health vectors, build dependency logic and alternating expansion/gardening.
+- `06-retrieval-ranking-and-question-routing.md` — lexical/semantic/graph/temporal retrieval, question decomposition, local graph ranking, diversity and retrieval provenance.
+- `07-provenance-dependency-and-invalidation.md` — process provenance, lineage, derived aggregates, invalidation, truth maintenance, event-sourcing analogy and incremental builds.
+- `08-advanced-math-candidates.md` — spectral graph, hyperbolic hierarchy, Hodge flow, topological persistence, sheaf-like consistency, Formal Concept Analysis and compositional-system candidates, all behind strict promotion gates.
 
 ## Boundary rules
 
