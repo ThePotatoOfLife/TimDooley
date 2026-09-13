@@ -14,29 +14,27 @@ def require(condition: bool, message: str) -> None:
         errors.append(message)
 
 
-family_routes = {
-    "../world/": "World",
-    "../world-map/": "Map",
-    "../politics/": "Politics",
-    "../north/": "North",
-    "../world-systems/": "Systems",
+family_contracts = {
+    "north/index.html": ("../world/", "../world-map/", "../politics/", "./", "../world-systems/"),
+    "politics/index.html": ("../world/", "../world-map/", "./", "../north/", "../world-systems/"),
+    "world-systems/index.html": ("../world/", "../world-map/", "../politics/", "../north/", "./"),
 }
 
-for rel in ("north/index.html", "politics/index.html", "world-systems/index.html"):
+for rel, routes in family_contracts.items():
     text = (ROOT / rel).read_text(encoding="utf-8")
-    for href, label in family_routes.items():
-        require(href in text, f"{rel} missing World-family route {label}: {href}")
+    for href in routes:
+        require(href in text, f"{rel} missing World-family route: {href}")
 
 north = (ROOT / "north/index.html").read_text(encoding="utf-8")
 require("<title>North Axis — World Map</title>" not in north, "North title still makes World Map its parent")
 
 world_map = (ROOT / "world-map/index.html").read_text(encoding="utf-8")
-for href, label in family_routes.items():
-    if href == "../world-map/":
-        continue
-    require(href in world_map, f"world-map/index.html missing World-family route {label}: {href}")
+map_guard = (ROOT / "world-map/3d-boot-guard.js").read_text(encoding="utf-8")
+map_navigation = world_map + "\n" + map_guard
+for href in ("../world/", "../politics/", "../north/", "../world-systems/"):
+    require(href in map_navigation, f"World Map missing World-family route: {href}")
 require(
-    'href="../explore/#branch=world">World systems</a>' not in world_map,
+    'href="../explore/#branch=world">World systems</a>' not in map_navigation,
     "World Map still labels the Explore branch as World systems instead of routing to the sibling surface",
 )
 
