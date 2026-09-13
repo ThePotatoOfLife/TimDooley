@@ -5,7 +5,7 @@ Question semantics have their own source validator. This gate stays deliberately
 narrow: required public pages, five-door homepage ownership, compatibility
 redirects, World-domain specialists, no iframe dependency, and local-link integrity.
 Deploy-generated runtime assets are recognized explicitly rather than treated as
-source-tree files.
+source-tree files. Validation reports defects but never repairs the built artifact.
 """
 from __future__ import annotations
 
@@ -68,16 +68,6 @@ def deploy_generated(target: Path) -> bool:
     return False
 
 
-def restore_canonical_world_route() -> None:
-    """Ensure the artifact uploaded to Pages always exposes World as door five."""
-    path = SITE / "index.html"
-    if not path.exists():
-        return
-    text = path.read_text(encoding="utf-8")
-    text = text.replace('href="world-map/"><strong>World</strong>', 'href="world/"><strong>World</strong>')
-    path.write_text(text, encoding="utf-8")
-
-
 def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
@@ -86,7 +76,6 @@ def main() -> int:
         errors.append("_site does not exist; build_site.py must run first")
         pages: list[Path] = []
     else:
-        restore_canonical_world_route()
         pages = sorted(SITE.rglob("*.html"))
 
         for rel in (
