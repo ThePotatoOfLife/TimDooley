@@ -15,6 +15,7 @@ BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 COUNTRY_CARD = ROOT / "world-map" / "3d-country-card.js"
 COUNTRY_SELECTION = ROOT / "world-map" / "3d-country-selection.js"
+PUBLIC_PATCH = ROOT / "scripts" / "patch_home_discovery.py"
 
 
 def read(path: Path, errors: list[str]) -> str:
@@ -34,25 +35,36 @@ def main() -> int:
     compositor = read(COMPOSITOR, errors)
     country_card = read(COUNTRY_CARD, errors)
     country_selection = read(COUNTRY_SELECTION, errors)
+    public_patch = read(PUBLIC_PATCH, errors)
 
     if html:
         header_match = re.search(r'<header[^>]+class=["\'][^"\']*top[^"\']*["\'][^>]*>(.*?)</header>', html, re.I | re.S)
         header = header_match.group(1) if header_match else ""
         if not header:
             errors.append("World Map must expose one canonical top header")
-        if 'id="atlasWorldBarHost"' not in header and "id='atlasWorldBarHost'" not in header:
-            errors.append("World Map header must reserve atlasWorldBarHost for the registry controls from first paint")
-        for menu_id in ("layersMenu", "traceMenu", "timeMenu", "viewMenu"):
-            pattern = rf'<details[^>]+id=["\']{re.escape(menu_id)}["\'][^>]*\bhidden\b'
-            if not re.search(pattern, html, re.I):
-                errors.append(f"legacy control host {menu_id} must start hidden so it cannot flash before registry UI adoption")
         for token in ('id="compare"', 'id="panelToggle"'):
             if token not in header:
                 errors.append(f"World Map header must keep core browse control visible: {token}")
+        # Compatibility IDs remain in source because 3d-app.js owns their handlers.
+        for menu_id in ("layersMenu", "traceMenu", "timeMenu", "viewMenu"):
+            if f'id="{menu_id}"' not in html:
+                errors.append(f"World Map source must retain compatibility control host {menu_id}")
         if 'id="moreMenu"' in html or "id='moreMenu'" in html:
             errors.append("World Map must not hide the Home link inside a fifth collapsible More menu")
         if not re.search(r'<a[^>]+class=["\'][^"\']*top-home[^"\']*["\'][^>]+href=["\']\.\./["\']', html, re.I):
             errors.append("World Map top navigation must expose Home as a direct link")
+
+    if public_patch:
+        for token in (
+            'atlasWorldBarHost',
+            'World map controls',
+            "'<details class=\"menu\" id=\"layersMenu\">', '<details class=\"menu\" id=\"layersMenu\" hidden>'",
+            "'<details class=\"menu\" id=\"traceMenu\">', '<details class=\"menu\" id=\"traceMenu\" hidden>'",
+            "'<details class=\"menu\" id=\"timeMenu\">', '<details class=\"menu\" id=\"timeMenu\" hidden>'",
+            "'<details class=\"menu\" id=\"viewMenu\">', '<details class=\"menu\" id=\"viewMenu\" hidden>'",
+        ):
+            if token not in public_patch:
+                errors.append(f"public World Map first-paint projection missing unified-header marker: {token}")
 
     if ui:
         forbidden = ("atlasToolsMenu", "atlas-tools-root", "function installToolbox", "installToolbox();")
@@ -88,26 +100,29 @@ def main() -> int:
         for token in (
             "__potatoAtlasLoadModule", "3d-time.js", "potato-atlas-active-view-change",
             "atlas-time-change", "Projection", "Time", "Matches", "Pinned", "Connections",
-            "Coverage", "Period", "Current map view",
+            "Coverage", "Period", "Current map view", "Interior modules",
         ):
             if token not in world_bar:
                 errors.append(f"unified header/current-view contract missing marker: {token}")
         if "host.appendChild(bar)" not in world_bar:
             errors.append("registry toolbar must render inside its stable header host")
-        if "mapwrap" in world_bar and "querySelector('.mapwrap')" in world_bar:
-            errors.append("registry toolbar must no longer install itself into the map canvas")
+        # mapwrap remains a valid host for the lower-left context card only.
+        if "const host = document.querySelector('.mapwrap')" in world_bar:
+            errors.append("registry toolbar must no longer use mapwrap as its toolbar host")
+        for token in ("#atlasWorldBar #viewMenu #globe", "#atlasWorldBar #traceMenu #relations"):
+            if token not in world_bar:
+                errors.append(f"unified header must suppress legacy duplicate control: {token}")
         for token in ("data-relation-mode", "setRelationMode", "Money", "Systems", "Institutions"):
             if token not in world_bar:
                 errors.append(f"ordinary Relations menu must provide actionable connection filters: {token}")
 
     if active_view:
-        for token in ("atlas-time-change", "timeState", "refreshSerial", "potato-atlas-active-view-change"):
+        for token in ("atlas-time-change", "timeState", "refreshSerial", "matchCount", "potato-atlas-active-view-change"):
             if token not in active_view:
                 errors.append(f"authoritative active-view state missing synchronization marker: {token}")
 
-    if bootstrap:
-        if "declareDormant('Time', './3d-time.js'" not in bootstrap:
-            errors.append("Time should remain lazy but explicitly declared in bootstrap diagnostics")
+    if bootstrap and "declareDormant('Time', './3d-time.js'" not in bootstrap:
+        errors.append("Time should remain lazy but explicitly declared in bootstrap diagnostics")
 
     if compositor:
         for token in ("atlas-query-outline", "atlasQueryMatch", "applyQueryHighlight"):
