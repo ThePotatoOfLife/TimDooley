@@ -1,0 +1,76 @@
+.witness-dossier{
+  margin:18px 0 24px;
+  border:1px solid #41493a;
+  border-radius:18px;
+  overflow:hidden;
+  background:linear-gradient(180deg,#10140f,#0c100d);
+}
+.witness-opening{
+  padding:22px 24px 18px;
+  border-bottom:1px solid #343b31;
+  background:linear-gradient(135deg,#151a13,#10130e);
+}
+.witness-kicker,.witness-label{
+  font:600 11px/1.3 system-ui,-apple-system,sans-serif;
+  letter-spacing:.12em;
+  text-transform:uppercase;
+  color:#d8b56b;
+}
+.witness-opening h2{
+  margin:5px 0 9px;
+  max-width:32ch;
+  font:400 28px/1.12 Georgia,serif;
+  color:#eee2c5;
+}
+.witness-opening p{
+  margin:0;
+  max-width:88ch;
+  color:#bfc8bc;
+}
+.witness-chapter{
+  padding:20px 24px;
+  border-bottom:1px solid #2c332a;
+}
+.witness-chapter:last-child{border-bottom:0}
+.witness-chapter h3{
+  margin:5px 0 10px;
+  font:400 21px/1.2 Georgia,serif;
+  color:#e9dec4;
+}
+.witness-chapter p{
+  max-width:92ch;
+  margin:8px 0;
+  color:#cbd2c8;
+}
+.witness-project{background:#101510}
+.witness-bible{background:#14130e}
+.witness-discovery{background:#0e1310}
+.witness-counterpressure{background:#15120e}
+.witness-chronology{
+  padding-left:12px;
+  border-left:2px solid #4b5845;
+  color:#aeb9aa!important;
+}
+.witness-refs{
+  font-size:12px;
+  color:#aab39f!important;
+}
+.witness-quote{
+  margin:12px 0;
+  padding:11px 14px;
+  border-left:3px solid #d8b56b;
+  background:#0d100c;
+  color:#eee1bf;
+  font:400 15px/1.5 Georgia,serif;
+}
+.witness-legacy-secondary{
+  opacity:.82;
+}
+.paired-narrative.witness-legacy-secondary{
+  margin-top:12px;
+}
+@media(max-width:700px){
+  .witness-opening,.witness-chapter{padding:17px 17px}
+  .witness-opening h2{font-size:24px}
+  .witness-chapter h3{font-size:19px}
+}
