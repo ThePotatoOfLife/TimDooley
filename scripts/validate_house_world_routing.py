@@ -32,8 +32,10 @@ def main() -> int:
         errors.append("patch_home_discovery.py: deploy must not rewrite canonical World to World Map")
 
     shell = (ROOT / "scripts/validate_site_shell.py").read_text(encoding="utf-8")
-    if "restore_canonical_world_route" in shell:
-        errors.append("validate_site_shell.py: validator must not repair World routing")
+    if "Pure validation entrypoint" not in shell:
+        errors.append("validate_site_shell.py: public entrypoint must be validation-only")
+    if 'href="world-map/"><strong>World</strong>' in shell:
+        errors.append("validate_site_shell.py: validator entrypoint must not repair World routing")
 
     pages = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
     expected = "['tim-dooley/','religion/','philosophy/','science/','world/']"
