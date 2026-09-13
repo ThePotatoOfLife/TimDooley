@@ -31,6 +31,8 @@ jobs:
         run: python scripts/validate_atlas_views.py
       - name: Validate Atlas relation grammar
         run: python scripts/validate_atlas_relation_types.py
+      - name: Validate Atlas relation mappings
+        run: python scripts/validate_atlas_relation_map.py
       - name: Validate Atlas artifacts
         run: python scripts/validate_atlas_artifacts.py
       - name: Validate Atlas deprecation ledger
