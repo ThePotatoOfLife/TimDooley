@@ -10,6 +10,7 @@ from atlas_adapters import adapt
 
 ROOT=Path(__file__).resolve().parents[1]
 RELATIONS=ROOT/'data/atlas-relation-types.json'
+RELATION_MAP=ROOT/'data/atlas-relation-map.json'
 ARTIFACTS=ROOT/'data/atlas-artifacts.json'
 
 
@@ -19,8 +20,9 @@ def key(value:str)->str:return re.sub(r'[^a-z0-9]+','_',value.lower()).strip('_'
 
 def build_runtime()->dict[str,Any]:
     model=build_orientation_model()
-    relation_doc=load(RELATIONS);artifact_doc=load(ARTIFACTS)
+    relation_doc=load(RELATIONS);mapping_doc=load(RELATION_MAP);artifact_doc=load(ARTIFACTS)
     relation_types={str(row['id']):dict(row) for row in relation_doc.get('types',[]) if isinstance(row,dict) and row.get('id')}
+    explicit_map={str(row['raw']):str(row['canonical']) for row in mapping_doc.get('mappings',[]) if isinstance(row,dict) and row.get('raw') and row.get('canonical')}
     artifacts=[dict(row) for row in artifact_doc.get('artifacts',[]) if isinstance(row,dict)]
     artifacts_by_node={str(node['id']):[] for node in model.get('nodes',[])}
     for artifact in artifacts:
@@ -32,13 +34,15 @@ def build_runtime()->dict[str,Any]:
         node['sections']=adapt(owner,str(node['id'])) if isinstance(owner,dict) else []
         normalized=[]
         for rel in node.get('relations',[]):
-            raw_type=str(rel.get('type') or 'related');relation_id=key(raw_type);spec=relation_types.get(relation_id)
+            raw_type=str(rel.get('type') or 'related')
+            relation_id=explicit_map.get(raw_type) or key(raw_type)
+            spec=relation_types.get(relation_id)
             enriched=dict(rel)
-            enriched.update({'canonical_type':relation_id if spec else None,'label':spec.get('label') if spec else raw_type.replace('_',' ').replace('-',' ').title(),'orientation':spec.get('orientation') if spec else 'lateral','provisional_type':spec is None})
+            enriched.update({'canonical_type':relation_id if spec else None,'label':spec.get('label') if spec else raw_type.replace('_',' ').replace('-',' ').title(),'orientation':spec.get('orientation') if spec else 'lateral','provisional_type':spec is None,'mapped_explicitly':raw_type in explicit_map})
             normalized.append(enriched)
         node['relations']=normalized
         node['artifacts']=artifacts_by_node.get(str(node['id']),[])
-    model['schema_version']='1.2.0';model['relation_types']=list(relation_types.values());model['artifacts']=artifacts
+    model['schema_version']='1.3.0';model['relation_types']=list(relation_types.values());model['relation_map']=explicit_map;model['artifacts']=artifacts
     return model
 
 if __name__=='__main__':print(json.dumps(build_runtime(),indent=2,ensure_ascii=False))
