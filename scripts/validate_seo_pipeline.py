@@ -3,7 +3,7 @@
 
 SEO remains a projection concern: curated reader copy and the five-door public
 hierarchy stay authoritative, while the build derives canonical crawler,
-search, social and LLM surfaces from the final deployable artifact.
+search, social, semantic and LLM surfaces from the final deployable artifact.
 """
 from __future__ import annotations
 
@@ -33,6 +33,9 @@ def main() -> int:
     discovery = read("scripts/build_discovery.py", errors)
     machine_audit = read("scripts/check_machine_discoverability.py", errors)
     enrich = read("scripts/enrich_weak_descriptions.py", errors)
+    strategy = read("scripts/seo_strategy.py", errors)
+    semantic = read("scripts/apply_entity_intent_seo.py", errors)
+    strategy_validator = read("scripts/validate_seo_strategy.py", errors)
     quality = read(".github/workflows/quality-checks.yml", errors)
     pages = read(".github/workflows/pages.yml", errors)
 
@@ -41,6 +44,9 @@ def main() -> int:
         ("scripts/build_discovery.py", discovery),
         ("scripts/check_machine_discoverability.py", machine_audit),
         ("scripts/enrich_weak_descriptions.py", enrich),
+        ("scripts/seo_strategy.py", strategy),
+        ("scripts/apply_entity_intent_seo.py", semantic),
+        ("scripts/validate_seo_strategy.py", strategy_validator),
     ):
         if text:
             try:
@@ -78,6 +84,58 @@ def main() -> int:
     )
     if "canonical.startswith(BASE_URL" in optimize:
         errors.append("SEO artifact audit still relies on brittle canonical string-prefix matching")
+
+    require(
+        strategy,
+        (
+            "class Strategy",
+            "ROUTE_STRATEGIES",
+            "RELATED",
+            "def classify_route(",
+            "def metadata_for(",
+            "def schema_profile(",
+            "def related_routes(",
+            '"ProfilePage"',
+            '"ScholarlyArticle"',
+            '"CollectionPage"',
+            '"Article"',
+        ),
+        "seo_strategy.py",
+        errors,
+    )
+    for forbidden in ("sameAs", "divine identity"):
+        if forbidden in strategy:
+            errors.append(f"seo_strategy.py contains unsupported entity-schema marker: {forbidden}")
+
+    require(
+        semantic,
+        (
+            "classify_route",
+            "metadata_for",
+            "schema_profile",
+            "related_routes",
+            "entity-intent-schema",
+            "related-context",
+            "seo-intent-report.json",
+            "summary_large_image",
+            "No stable site-owned social image found",
+        ),
+        "apply_entity_intent_seo.py",
+        errors,
+    )
+
+    require(
+        strategy_validator,
+        (
+            "SEMANTIC SEO STRATEGY VALIDATION",
+            "seo_strategy.py",
+            "apply_entity_intent_seo.py",
+            "ProfilePage",
+            "ScholarlyArticle",
+        ),
+        "validate_seo_strategy.py",
+        errors,
+    )
 
     require(
         discovery,
@@ -128,6 +186,8 @@ def main() -> int:
             "only touches descriptions shorter than 40 characters",
             "if len(current) >= 40",
             "first substantial paragraph",
+            "apply_entity_intent_seo",
+            "result = apply_entity_intent_seo()",
         ),
         "enrich_weak_descriptions.py",
         errors,
@@ -180,7 +240,8 @@ def main() -> int:
     print("SEO PIPELINE VALIDATION PASSED")
     print(
         "SEO projection: five-door discovery · canonical-only crawl graph · "
-        "source-backed freshness · structured data · social metadata · LLM indexes"
+        "intent-aware metadata · typed structured data · source-backed freshness · "
+        "social metadata · related canonical context · LLM indexes"
     )
     return 0
 
