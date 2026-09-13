@@ -20,6 +20,9 @@ def public_relation(row: dict[str, Any]) -> dict[str, Any]:
         "label": row.get("label"),
         "orientation": row.get("orientation"),
         "resolved": bool(row.get("resolved")),
+        "resolved_kind": row.get("resolved_kind"),
+        "node_id": row.get("node_id"),
+        "artifact_id": row.get("artifact_id"),
         "route": row.get("route"),
         "provisional": bool(row.get("provisional_type")),
     }
