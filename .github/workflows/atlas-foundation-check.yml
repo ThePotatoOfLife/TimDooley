@@ -25,6 +25,12 @@ jobs:
         run: python scripts/validate_atlas_node_schema.py
       - name: Validate Atlas North spine
         run: python scripts/validate_atlas_north.py
+      - name: Validate Atlas room views
+        run: python scripts/validate_atlas_views.py
+      - name: Validate Atlas relation grammar
+        run: python scripts/validate_atlas_relation_types.py
+      - name: Validate Atlas artifacts
+        run: python scripts/validate_atlas_artifacts.py
       - name: Validate derived Atlas model
         run: python scripts/validate_atlas_model.py
       - name: Build additive Atlas preview
