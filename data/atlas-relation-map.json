@@ -1,0 +1,15 @@
+{
+  "version": "1.0.0",
+  "purpose": "Explicit mappings from canonical-owner relation wording to permanent Atlas road types. Original owner wording is preserved; unmapped labels remain provisional rather than guessed.",
+  "mappings": [
+    {"raw":"identity-symbol coupling","canonical":"related","reason":"Identity/symbol coupling is important lateral context but does not define North ancestry."},
+    {"raw":"life-cycle analogy","canonical":"compares_with","reason":"The owner explicitly describes an analogy rather than identity or containment."},
+    {"raw":"death-transformation","canonical":"related","reason":"Transformation coupling is preserved without manufacturing temporal parentage from a symbolic relation."},
+    {"raw":"identity_and_symbol","canonical":"related","reason":"Tim/PoL identity-symbol relation is lateral because canonical North is stored separately."},
+    {"raw":"comparative","canonical":"compares_with","reason":"Comparative owner relations belong to the comparison road family."},
+    {"raw":"supporting_evidence_layer","canonical":"supported_by","reason":"A supporting evidence dossier sits behind the current subject rather than becoming its structural parent."},
+    {"raw":"formalization","canonical":"related","reason":"Formalization is a typed lateral coupling until a more specific durable road family is justified."},
+    {"raw":"nested-analogy","canonical":"compares_with","reason":"Nested analogy remains comparison, not literal identity."},
+    {"raw":"flow-comparison","canonical":"compares_with","reason":"Flow comparison remains comparative rather than causal proof."}
+  ]
+}
