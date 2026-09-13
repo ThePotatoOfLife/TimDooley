@@ -27,3 +27,7 @@ jobs:
         run: python scripts/validate_atlas_north.py
       - name: Validate derived Atlas model
         run: python scripts/validate_atlas_model.py
+      - name: Build additive Atlas preview
+        run: python scripts/build_atlas_pages.py
+      - name: Validate Atlas page shell
+        run: python scripts/validate_atlas_pages.py
