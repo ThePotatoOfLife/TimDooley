@@ -19,6 +19,7 @@ PRIMARY_MIGRATED_PAGES = [
     ROOT / "tim-dooley" / "index.html",
     ROOT / "religion" / "index.html",
     ROOT / "philosophy" / "index.html",
+    ROOT / "science" / "index.html",
 ]
 
 RISKY_GLOBAL = {
