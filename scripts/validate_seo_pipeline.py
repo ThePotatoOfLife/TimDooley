@@ -36,6 +36,8 @@ def main() -> int:
     strategy = read("scripts/seo_strategy.py", errors)
     semantic = read("scripts/apply_entity_intent_seo.py", errors)
     strategy_validator = read("scripts/validate_seo_strategy.py", errors)
+    dedupe = read("scripts/dedupe_question_intents.py", errors)
+    dedupe_validator = read("scripts/validate_question_intent_dedup.py", errors)
     quality = read(".github/workflows/quality-checks.yml", errors)
     pages = read(".github/workflows/pages.yml", errors)
 
@@ -47,6 +49,8 @@ def main() -> int:
         ("scripts/seo_strategy.py", strategy),
         ("scripts/apply_entity_intent_seo.py", semantic),
         ("scripts/validate_seo_strategy.py", strategy_validator),
+        ("scripts/dedupe_question_intents.py", dedupe),
+        ("scripts/validate_question_intent_dedup.py", dedupe_validator),
     ):
         if text:
             try:
@@ -138,6 +142,31 @@ def main() -> int:
     )
 
     require(
+        dedupe,
+        (
+            "normalize_question",
+            "content_score",
+            "noindex,follow",
+            'rel="canonical"',
+            "location.replace",
+            "question-alias-report.json",
+        ),
+        "dedupe_question_intents.py",
+        errors,
+    )
+    require(
+        dedupe_validator,
+        (
+            "QUESTION INTENT DEDUP VALIDATION",
+            "dedupe_question_intents.py",
+            "noindex,follow",
+            "question-alias-report.json",
+        ),
+        "validate_question_intent_dedup.py",
+        errors,
+    )
+
+    require(
         discovery,
         (
             "PRIMARY_DOORS",
@@ -186,6 +215,8 @@ def main() -> int:
             "only touches descriptions shorter than 40 characters",
             "if len(current) >= 40",
             "first substantial paragraph",
+            "dedupe_question_intents",
+            "dedupe_result = dedupe_question_intents()",
             "apply_entity_intent_seo",
             "result = apply_entity_intent_seo()",
         ),
@@ -240,8 +271,8 @@ def main() -> int:
     print("SEO PIPELINE VALIDATION PASSED")
     print(
         "SEO projection: five-door discovery · canonical-only crawl graph · "
-        "intent-aware metadata · typed structured data · source-backed freshness · "
-        "social metadata · related canonical context · LLM indexes"
+        "deduplicated question intents · intent-aware metadata · typed structured data · "
+        "source-backed freshness · social metadata · related canonical context · LLM indexes"
     )
     return 0
 
