@@ -28,5 +28,9 @@ jobs:
         run: python scripts/validate_house_compatibility.py
       - name: Validate public projection
         run: python scripts/validate_public_projection.py
+      - name: Build repository index
+        run: python scripts/build_repository_index.py
+      - name: Build canonical record registry
+        run: python scripts/build_canonical_record_registry.py
       - name: Audit source of truth
         run: python scripts/audit_source_of_truth.py
