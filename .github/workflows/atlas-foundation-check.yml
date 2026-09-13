@@ -33,6 +33,8 @@ jobs:
         run: python scripts/validate_atlas_views.py
       - name: Validate Atlas view projection authority
         run: python scripts/validate_atlas_view_projection.py
+      - name: Validate Atlas summit source
+        run: python scripts/validate_atlas_summit.py
       - name: Validate Atlas relation grammar
         run: python scripts/validate_atlas_relation_types.py
       - name: Validate Atlas relation mappings
