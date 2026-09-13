@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
 """Require canonical build output before validation.
 
-Validators may report defects but must not repair the deploy artifact. The home
-World entrance is /world/ in source, quality builds and deployment builds alike.
+Validators may write diagnostic reports but must not repair the deploy artifact.
+The home World entrance is /world/ in source, quality builds and deployment
+builds alike.
 """
 from __future__ import annotations
 
@@ -25,8 +26,8 @@ def main() -> int:
 
     if "restore_canonical_world_route" in validator:
         fail("site-shell validator still repairs the World route")
-    if ".write_text(" in validator:
-        fail("site-shell validator still writes to the built artifact")
+    if "path.write_text(" in validator:
+        fail("site-shell validator still writes to a built-site path")
     if "GITHUB_WORKFLOW" in patcher:
         fail("home discovery patcher still has environment-specific route mutation")
     if "href=\"world-map/\"><strong>World</strong>" in patcher:
