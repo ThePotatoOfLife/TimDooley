@@ -1,16 +1,22 @@
 #!/usr/bin/env python3
-"""Expand weak meta descriptions in the completed static site.
+"""Expand weak descriptions, then apply semantic entity-and-intent SEO.
 
-This pass only touches descriptions shorter than 40 characters. It prefers the
-first substantial paragraph already present on the page and otherwise derives a
-plain, non-promotional description from the page title. Curated descriptions of
-reasonable length are left unchanged.
+The first pass only touches descriptions shorter than 40 characters. It prefers
+the first substantial paragraph already present on the page and otherwise
+derives a plain, non-promotional description from the page title. Curated
+descriptions of reasonable length are left unchanged.
+
+After that conservative cleanup, the entity-and-intent projection classifies
+final reader pages, adds page-appropriate structured data and related canonical
+context, and synchronizes social/search metadata before sitemap generation.
 """
 from __future__ import annotations
 
 import html
 import re
 from pathlib import Path
+
+from apply_entity_intent_seo import main as apply_entity_intent_seo
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -99,6 +105,10 @@ def main() -> None:
     print(f"Enriched {len(changed)} weak meta descriptions")
     for path in changed:
         print(f"  - {path}")
+
+    result = apply_entity_intent_seo()
+    if result:
+        raise SystemExit(result)
 
 
 if __name__ == "__main__":
