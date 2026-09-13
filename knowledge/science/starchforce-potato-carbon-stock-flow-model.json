@@ -1,0 +1,92 @@
+{
+  "id":"starchforce-potato-carbon-stock-flow-model",
+  "title":"Starchforce — Potato Carbon Storage and Release Model",
+  "version":"1.0.0",
+  "updated":"2026-09-13",
+  "status":"archive-generated biological stock-flow descendant of the Starchforce motif",
+  "maturity":"T2 calculable biological toy model; not yet calibrated",
+  "abstract":"This record turns the scientifically useful core of Starchforce into a conventional biological stock-flow model for potato tuber carbohydrate storage. The model treats a measurable storage pool K(t), an input flux J_in(t), a release or mobilization flux J_out(t), and non-target loss Gamma K. Its purpose is to create a model that can be calibrated, compared with simpler baselines and rejected if unnecessary. It does not propose a fifth fundamental force. Potato tubers are a natural flagship domain because starch is their major storage carbohydrate and a principal energy reserve. The project-specific contribution is the storage/release framing and its linkage to the Potato vocabulary; the balance equations themselves are ordinary stock-flow mathematics.",
+  "research_question":"Can a small stock-flow model predict a declared potato tuber starch or carbohydrate time series better than simpler persistence or exponential baselines, and are its release and loss parameters identifiable from the available measurements?",
+  "provenance":{
+    "project_ancestors":["knowledge/science/spudlight-theory-and-equations.json","knowledge/science/research-notes/2026-09-11-spudlight-starchforce-information.json"],
+    "scientific_neighbor":"plant carbon allocation and potato tuber starch metabolism",
+    "source_boundary":"The Starchforce name is project vocabulary. The stock-flow equations below are archive-generated formalization unless separately recovered from a primary Tim source."
+  },
+  "authorship_boundary":"No equation in this record should be attributed to Tim Dooley as an original equation unless a primary source is separately recovered. The model is a 2026-09-13 archive-generated scientific descendant.",
+  "state_space":"K(t) >= 0, where K is one declared potato tuber starch/carbohydrate storage pool measured consistently through time.",
+  "variables":{
+    "K":"stored starch or declared carbohydrate pool per plant, tuber, dry-mass unit, or sampling unit",
+    "J_in":"net input into the declared storage pool",
+    "J_out":"mobilization/release flux from the pool into the declared target channel",
+    "Gamma":"first-order non-target loss/turnover coefficient",
+    "eta":"first-order release coefficient in the linear model",
+    "J_max":"maximum release flux in the saturating candidate",
+    "K_half":"storage level at half-maximal saturating release"
+  },
+  "units":{
+    "K":"mass of starch/carbohydrate per declared sampling unit",
+    "J_in":"same mass unit per unit time",
+    "J_out":"same mass unit per unit time",
+    "eta":"inverse time",
+    "Gamma":"inverse time",
+    "J_max":"mass per unit time",
+    "K_half":"same mass unit as K",
+    "rule":"A fitted study must state the exact assay, normalization and time unit; symbolic quantities, bits and joules are not interchangeable with starch mass."
+  },
+  "equations":{
+    "generic_balance":"dK/dt = J_in(t) - J_out(t) - Gamma K",
+    "linear_release":"J_out = eta K",
+    "linear_constant_input":"dK/dt = J0 - (eta + Gamma)K",
+    "linear_solution":"K(t)=K_inf + [K(0)-K_inf] exp[-(eta+Gamma)t]",
+    "steady_state":"K_inf=J0/(eta+Gamma)",
+    "relaxation_time":"tau=1/(eta+Gamma)",
+    "depletion_no_input":"For J_in=0, K(t)=K(0) exp[-(eta+Gamma)t]",
+    "saturating_candidate":"J_out=J_max K/(K_half+K)"
+  },
+  "assumptions":[
+    "The declared storage pool is sufficiently homogeneous for a one-compartment first model.",
+    "Flux definitions are non-overlapping so the same carbon is not counted twice.",
+    "The linear model assumes release and non-target loss are first-order in K over the fitted regime.",
+    "The saturating release law is a candidate extension, not a project axiom.",
+    "Environmental drivers may enter J_in or parameters only when measured and predeclared."
+  ],
+  "validity_regime":"The one-pool model is intended as a low-dimensional approximation over a stated developmental window. It is not expected to represent every enzyme, compartment, cultivar, source-sink interaction or environmental response in potato physiology.",
+  "initial_and_boundary_conditions":{
+    "initial":"K(t0)=K0 from the first valid measurement or a fitted latent initial state with uncertainty.",
+    "positivity":"Model integration and fitting must preserve K>=0 and nonnegative physical fluxes unless a signed net-flux convention is explicitly declared."
+  },
+  "exact_consequences_and_limits":[
+    "For constant J0 in the linear model, the relaxation time is tau=1/(eta+Gamma).",
+    "If eta approaches zero, there is no target release channel and only Gamma removes material from the pool.",
+    "If Gamma approaches zero, depletion is controlled by the declared release channel.",
+    "If J_in approaches zero, the linear model predicts exponential depletion.",
+    "These statements are algebraic consequences of the chosen model, not independent biological discoveries."
+  ],
+  "observables":[
+    "time-stamped tuber starch mass or concentration with normalization recorded",
+    "tuber dry mass and sampling unit",
+    "candidate source/input proxies such as assimilate supply where available",
+    "respiration or other loss measurements where available",
+    "developmental stage, cultivar, temperature, water status and treatment metadata"
+  ],
+  "baselines":[
+    "naive persistence: predict the next observed K from the previous K",
+    "constant-rate or simple exponential stock model",
+    "linear storage-release model",
+    "saturating release model only when held-out performance justifies its additional parameters"
+  ],
+  "calibration":{
+    "minimum_data":"Repeated measurements across time with enough information to distinguish input from depletion; if J_in and losses are not independently constrained, eta and Gamma may be confounded.",
+    "fit":"Use weighted least squares or a likelihood appropriate to the measurement error model.",
+    "uncertainty":"Report confidence/credible intervals or bootstrap uncertainty for fitted parameters and predictions.",
+    "identifiability":"Inspect parameter correlations/profile likelihood or equivalent diagnostics; do not report separately interpretable eta and Gamma if only their sum is identifiable.",
+    "validation":"Reserve held-out times, plants or experimental conditions where sample size permits and compare predictive error rather than visual fit alone.",
+    "model_selection":"Prefer the linear model unless the saturating model improves held-out prediction or a penalized criterion sufficiently to justify J_max and K_half."
+  },
+  "falsifier":"If the Starchforce-labelled model does not outperform an ordinary equally parameterized stock-flow baseline, violates mass balance, or requires non-identifiable parameters to obtain its apparent fit, then it has not earned status as a distinct scientific model in that application and should remain a project metaphor or naming layer.",
+  "promotion_rule":"Remain T2 until actual potato data are fitted. Promotion to T3 requires a named dataset, reproducible preprocessing, fitted parameter constraints with uncertainty, baseline comparison and held-out or otherwise honest predictive evaluation.",
+  "scientific_sources":[
+    {"citation":"Ahmad D, Ying Y, Bao J. Understanding starch biosynthesis in potatoes for metabolic engineering to improve starch quality: A detailed review. Carbohydrate Polymers 346 (2024) 122592.","doi":"10.1016/j.carbpol.2024.122592","role":"Current review establishing potato tuber starch as a major storage/energy reserve and summarizing starch biosynthesis."}
+  ],
+  "connections":["spudlight-theory-and-equations","research-2026-09-11-spudlight-starchforce-information","model-testing-protocol","science-theory-rigor-completion-matrix-2026-09-11"]
+}
