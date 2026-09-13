@@ -3,7 +3,7 @@
 
 Question semantics have their own source validator. This gate stays deliberately
 narrow: required public pages, five-door homepage ownership, compatibility
-redirects, World Map ownership, no iframe dependency, and local-link integrity.
+redirects, World-domain specialists, no iframe dependency, and local-link integrity.
 Deploy-generated runtime assets are recognized explicitly rather than treated as
 source-tree files.
 """
@@ -21,7 +21,7 @@ CANONICAL_HOME_LINKS = (
     "religion/",
     "philosophy/",
     "science/",
-    "world-map/",
+    "world/",
 )
 DEPLOY_GENERATED_DIRS = (
     SITE / "world-map" / "vendor",
@@ -78,7 +78,10 @@ def main() -> int:
             "timeline/index.html",
             "philosophy/index.html",
             "science/index.html",
+            "world/index.html",
+            "politics/index.html",
             "north/index.html",
+            "world-systems/index.html",
             "world-map/index.html",
             "world-map/3d.html",
             "sitemap.xml",
@@ -151,6 +154,15 @@ def main() -> int:
         require(timeline, ("THE LONG", 'class="timeline-explorer-standalone"', 'src="../app/timeline.js"', 'href="../religion/"'), "timeline/index.html", errors)
         forbid(timeline, ('class="source-note"', 'class="roadmap-note"', 'class="formula"', "Open Timeline in the complete archive", 'href="../corporium/"'), "timeline/index.html", errors)
 
+        world = read("world/index.html", errors)
+        require(world, ("WORLD", 'href="../world-map/"', 'href="../politics/"', 'href="../north/"', 'href="../world-systems/"'), "world/index.html", errors)
+
+        politics = read("politics/index.html", errors)
+        require(politics, ("Politics &amp; Geopolitics", 'href="../world/"', 'href="../world-map/"'), "politics/index.html", errors)
+
+        systems = read("world-systems/index.html", errors)
+        require(systems, ("WORLD", "SYSTEMS", 'href="../world/"', 'href="../world-map/"'), "world-systems/index.html", errors)
+
         north = read("north/index.html", errors)
         require(north, ('class="map-action" href="../world-map/"', ">WORLD MAP<"), "north/index.html", errors)
         forbid(north, ('class="maplink"', "Open North Axis in the World Map"), "north/index.html", errors)
@@ -170,7 +182,8 @@ def main() -> int:
 
         public_roots = (
             "index.html", "tim-dooley/index.html", "religion/index.html", "religion/jesus-tim/index.html",
-            "traditions/bible/index.html", "timeline/index.html", "philosophy/index.html", "science/index.html", "north/index.html",
+            "traditions/bible/index.html", "timeline/index.html", "philosophy/index.html", "science/index.html",
+            "world/index.html", "politics/index.html", "north/index.html", "world-systems/index.html", "world-map/index.html",
         )
         for rel in public_roots:
             text = read(rel, errors)
