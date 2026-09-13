@@ -1,18 +1,17 @@
 #!/usr/bin/env python3
 """Regression checks for current search-engine structured-data contracts.
 
-These checks intentionally exercise the projection helpers directly so that SEO
-regressions fail before the deploy artifact is published.
+These checks exercise the final projection and deploy-normalization helpers so
+SEO regressions fail before the public artifact is published.
 """
 from __future__ import annotations
 
 import json
-import re
 from pathlib import Path
 
 import apply_entity_intent_seo as semantic
-import build_discovery as discovery
 import optimize_seo as optimize
+import validate_site_shell as site_shell
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -22,10 +21,14 @@ def fail(message: str) -> None:
 
 
 def test_breadcrumb_contract() -> None:
-    home_payload = json.loads(optimize.site_graph_schema(optimize.OUT / "index.html", "Home"))
-    home_types = [node.get("@type") for node in home_payload.get("@graph", [])]
+    raw = optimize.site_graph_schema(optimize.OUT / "index.html", "Home")
+    html = f'<script id="site-discovery-schema" type="application/ld+json">{raw}</script>'
+    normalized = site_shell.normalize_home_structured_data(html)
+    payload_text = normalized.split(">", 1)[1].rsplit("</script>", 1)[0]
+    payload = json.loads(payload_text.replace("<\\/", "</"))
+    home_types = [node.get("@type") for node in payload.get("@graph", [])]
     if "BreadcrumbList" in home_types:
-        fail("homepage must not emit a one-item BreadcrumbList")
+        fail("final homepage artifact must not contain a one-item BreadcrumbList")
 
     internal_payload = json.loads(optimize.site_graph_schema(optimize.OUT / "science" / "index.html", "Science"))
     breadcrumbs = [node for node in internal_payload.get("@graph", []) if node.get("@type") == "BreadcrumbList"]
@@ -54,23 +57,23 @@ def test_primary_schema_contract() -> None:
 
 
 def test_authored_question_schema_contract() -> None:
-    _, page = discovery.question_page({
-        "id": "seo-contract-demo",
-        "question": "What is the Potato of Life?",
-        "short_answer": "A concise authored archive answer used only by this regression fixture.",
-        "deep_answer": "A concise authored archive answer used only by this regression fixture.",
-        "entities": ["Potato of Life"],
-    })
-    match = re.search(r'<script type="application/ld\+json">(.*?)</script>', page, re.S | re.I)
-    if not match:
-        fail("question page must contain JSON-LD")
-    payload = json.loads(match.group(1).replace("<\\/", "</"))
-    if payload.get("@type") != "WebPage":
-        fail("site-authored single-answer question pages must use WebPage, not FAQPage or QAPage")
-    question = payload.get("mainEntity", {})
-    answer = question.get("acceptedAnswer", {}) if isinstance(question, dict) else {}
-    if question.get("@type") != "Question" or answer.get("@type") != "Answer":
-        fail("question WebPage must expose Question -> acceptedAnswer -> Answer semantics")
+    legacy = '<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[]}</script>'
+    cleaned = semantic.strip_legacy_question_rich_result_schema(legacy)
+    if "FAQPage" in cleaned or "QAPage" in cleaned:
+        fail("site-authored answer pages must not retain FAQPage/QAPage rich-result markup")
+
+    url = semantic.page_url("questions/what-is-the-potato-of-life")
+    schema = semantic.primary_schema(
+        "questions/what-is-the-potato-of-life",
+        "What is the Potato of Life?",
+        "A source-aware archive answer about the Potato of Life.",
+        url,
+    )
+    if schema.get("@type") != "WebPage":
+        fail("site-authored single-answer question pages must use WebPage")
+    question = schema.get("mainEntity", {})
+    if question.get("@type") != "Question" or question.get("name") != "What is the Potato of Life?":
+        fail("question WebPage must expose its authored Question as mainEntity")
 
 
 def test_repository_robots_contract() -> None:
@@ -78,6 +81,8 @@ def test_repository_robots_contract() -> None:
     expected = "Sitemap: https://thepotatooflife.github.io/TimDooley/sitemap-index.xml"
     if expected not in robots:
         fail("checked-in robots.txt must advertise the same sitemap index as the deployed artifact")
+    if "User-agent: OAI-SearchBot" not in robots:
+        fail("checked-in robots.txt must match the deployed crawler policy")
 
 
 def main() -> int:
