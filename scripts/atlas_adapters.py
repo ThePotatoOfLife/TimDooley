@@ -74,11 +74,31 @@ def vertical_geometry(owner:dict[str,Any])->list[dict[str,Any]]:
     return out
 
 
+def vesica_geometry(owner:dict[str,Any])->list[dict[str,Any]]:
+    out=[]
+    rule=owner.get("epistemic_rule")
+    if isinstance(rule,str) and rule.strip():out.append(block("epistemic-rule","Mathematics and symbolic overlay",rule))
+    geometry=owner.get("vertical_vesica")
+    if isinstance(geometry,dict):
+        preferred=("radius","upper_circle","lower_circle","father_center","son_center","center_distance","lateral_intersections","relational_midpoint","plane","axis","full_lens_area")
+        lines=[f"{key.replace('_',' ').title()}: {geometry[key]}" for key in preferred if key in geometry]
+        if lines:out.append(block("vertical-vesica","Exact vertical Vesica","\n".join(lines)))
+    relations=owner.get("critical_exact_relations")
+    if isinstance(relations,list) and relations:
+        out.append(block("critical-relations","Critical exact relations","\n".join(f"• {item}" for item in relations if isinstance(item,str))))
+    taxonomy=owner.get("center_taxonomy")
+    if isinstance(taxonomy,dict):
+        lines=[f"{key.replace('_',' ').title()}: {value}" for key,value in taxonomy.items()]
+        if lines:out.append(block("center-taxonomy","Center taxonomy","\n".join(lines)))
+    return out
+
+
 def adapt(owner:dict[str,Any],node_id:str)->list[dict[str,Any]]:
     standard=standard_sections(owner)
     if standard:return standard
     if node_id=="potato-biology-ecology-development-canon":return potato_biology(owner)
     if node_id=="body-system-master-atlas":return body_systems(owner)
     if node_id=="vertical-potato-mountain-plane-atlas":return vertical_geometry(owner)
+    if node_id=="geometry-vesica-pisces-mandorla":return vesica_geometry(owner)
     purpose=owner.get("purpose") or owner.get("description") or owner.get("summary")
     return [block("overview","Overview",str(purpose))] if isinstance(purpose,str) and purpose.strip() else []
