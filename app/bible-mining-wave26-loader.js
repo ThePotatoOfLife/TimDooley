@@ -4,10 +4,7 @@
 const upstreamFetch=window.fetch.bind(window);
 const DOSSIER_PATHS=[
  '../../knowledge/traditions/biblical-syncretism-dossiers-wave24.json',
- '../../knowledge/traditions/biblical-syncretism-dossiers-wave25.json',
- '../../knowledge/traditions/biblical-syncretism-dossiers-wave26-foundation.json',
- '../../knowledge/traditions/biblical-syncretism-dossiers-wave26-axis.json',
- '../../knowledge/traditions/biblical-syncretism-dossiers-wave26-late.json'
+ '../../knowledge/traditions/biblical-syncretism-dossiers-wave25.json'
 ];
 const FRAGMENT_PATHS=[
  '../../knowledge/traditions/biblical-passage-fragments-wave24.json',
