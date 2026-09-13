@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "potato://schema/atlas-artifact-v1",
+  "title": "Potato Atlas Artifact",
+  "type": "object",
+  "required": ["id", "title", "kind", "status", "visibility", "source_path", "summary", "epistemic_classes", "node_refs", "provenance"],
+  "properties": {
+    "id": {"type": "string", "minLength": 3, "pattern": "^[a-z0-9][a-z0-9-]*$"},
+    "title": {"type": "string", "minLength": 3},
+    "kind": {
+      "enum": [
+        "primary_source",
+        "conversation",
+        "timeline_event",
+        "research_note",
+        "documentary_source",
+        "comparative_source",
+        "creative_work",
+        "dataset",
+        "version",
+        "collection",
+        "observation"
+      ]
+    },
+    "status": {"enum": ["active", "candidate", "legacy", "archive_only"]},
+    "visibility": {"enum": ["public", "internal"]},
+    "source_path": {"type": "string", "minLength": 1},
+    "public_route": {"type": ["string", "null"]},
+    "date_or_period": {"type": ["string", "null"]},
+    "summary": {"type": "string", "minLength": 20},
+    "epistemic_classes": {"type": "array", "minItems": 1, "items": {"type": "string"}, "uniqueItems": true},
+    "node_refs": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+    "provenance": {
+      "type": "object",
+      "required": ["basis"],
+      "properties": {
+        "basis": {"type": "string", "minLength": 3},
+        "source_ids": {"type": "array", "items": {"type": "string"}},
+        "notes": {"type": "string"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
