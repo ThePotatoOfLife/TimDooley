@@ -1,17 +1,10 @@
 #!/usr/bin/env python3
-"""Validate the canonical backend -> frontend projection contract.
-
-This gate protects the five-door public architecture from drifting back toward the
-retired single-index/root.js reader while ensuring every public archive branch has
-an explicit human projection status.
-"""
+"""Validate the canonical backend -> frontend projection contract."""
 
 from __future__ import annotations
 
 import json
 from pathlib import Path
-
-import validate_world_architecture_regressions  # noqa: F401
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -75,10 +68,7 @@ def main() -> int:
 
     public_doors = bridge.get("public_doors")
     if public_doors != EXPECTED_DOORS:
-        fail(
-            f"frontend bridge public_doors must equal {EXPECTED_DOORS!r}; got {public_doors!r}",
-            errors,
-        )
+        fail(f"frontend bridge public_doors must equal {EXPECTED_DOORS!r}; got {public_doors!r}", errors)
 
     if isinstance(public_doors, dict) and "world_map" in public_doors:
         fail("World Map must be a specialist route, not the fifth primary public door", errors)
@@ -120,11 +110,7 @@ def main() -> int:
     if missing:
         fail(f"manifest branches missing projection entries: {', '.join(sorted(missing))}", errors)
     if malformed:
-        fail(
-            "branch projection entries must have exactly one valid primary_door/global_route/backend_only state: "
-            + ", ".join(sorted(malformed)),
-            errors,
-        )
+        fail("branch projection entries must have exactly one valid primary_door/global_route/backend_only state: " + ", ".join(sorted(malformed)), errors)
 
     world_projection = projection.get("world", {})
     if world_projection.get("primary_door") != "world" or world_projection.get("human_route") != "world/":
@@ -143,10 +129,7 @@ def main() -> int:
 
     interactive_routes = atlas.get("interactive_routes", {})
     if interactive_routes != EXPECTED_INTERACTIVE_ROUTES:
-        fail(
-            f"atlas interactive_routes must equal {EXPECTED_INTERACTIVE_ROUTES!r}; got {interactive_routes!r}",
-            errors,
-        )
+        fail(f"atlas interactive_routes must equal {EXPECTED_INTERACTIVE_ROUTES!r}; got {interactive_routes!r}", errors)
 
     reader_guide = (ROOT / "app" / "reader-guide.js").read_text(encoding="utf-8")
     if 'href="learn/"' in reader_guide or "href='learn/'" in reader_guide:
@@ -161,10 +144,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print(
-        "Public projection validation passed: "
-        f"{len(EXPECTED_DOORS)} doors, {len(branch_ids)} projected branches, World owns the fifth domain and Explore owns deep interactive routing."
-    )
+    print(f"Public projection validation passed: {len(EXPECTED_DOORS)} doors, {len(branch_ids)} projected branches, World owns the fifth domain and Explore owns deep interactive routing.")
     return 0
 
 
