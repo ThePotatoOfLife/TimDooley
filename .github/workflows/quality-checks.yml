@@ -61,6 +61,13 @@ jobs:
       - name: Validate SEO pipeline
         run: python scripts/validate_seo_pipeline.py
 
+      - name: Validate Potato House governance
+        run: |
+          python scripts/validate_house_governance.py
+          python scripts/validate_house_topology.py
+          python scripts/validate_house_compatibility.py
+          python scripts/validate_house_world_routing.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
@@ -226,6 +233,9 @@ jobs:
         id: seo
         continue-on-error: true
         run: python scripts/optimize_seo.py
+
+      - name: Finalize public homepage metadata
+        run: python scripts/finalize_public_home.py
 
       - name: Upload SEO diagnostics
         if: ${{ always() && hashFiles('_site/seo-report.json') != '' }}
