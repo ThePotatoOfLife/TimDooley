@@ -38,6 +38,8 @@ def main() -> int:
             fail(f"Bible page still references legacy loader {legacy}")
         if legacy in routing:
             fail(f"routing metadata still names legacy loader {legacy}")
+        if (ROOT / "app" / legacy).exists():
+            fail(f"retired legacy loader still exists: app/{legacy}")
 
     if "const WAVES=[19,20,22,23,24,25];" not in loader:
         fail("unified loader must preserve canonical merge order 19,20,22,23,24,25")
@@ -57,7 +59,7 @@ def main() -> int:
     if '"owner":"app/bible-mining-loader.js"' not in routing:
         fail("wave23 routing metadata must point reader integration at unified loader")
 
-    print("BIBLE MINING LOADER PASSED: one ordered extension pipeline covers waves 19,20,22-25")
+    print("BIBLE MINING LOADER PASSED: one ordered extension pipeline covers waves 19,20,22-25; legacy wrappers retired")
     return 0
 
 
