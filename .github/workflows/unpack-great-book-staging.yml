@@ -1,0 +1,42 @@
+name: Unpack Great Book chapter payload
+
+on:
+  push:
+    branches:
+      - feat/great-book-chapter-files
+    paths:
+      - staging/great-book-payload.complete
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    if: github.actor != 'github-actions[bot]'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Reassemble and verify payload
+        shell: bash
+        run: |
+          set -euo pipefail
+          count=$(find staging -maxdepth 1 -name 'great-book-payload-*.b64' | wc -l | tr -d ' ')
+          test "$count" = "39"
+          cat staging/great-book-payload-*.b64 > /tmp/great-book-payload.b64
+          base64 -d /tmp/great-book-payload.b64 > /tmp/great-book-payload.tar.gz
+          echo '876493abb4b0ba9b4ea12a861e75ab3a4a9314c1dfe4d63c1fe431f6cc370c1b  /tmp/great-book-payload.tar.gz' | sha256sum -c -
+          tar -xzf /tmp/great-book-payload.tar.gz
+          python scripts/validate_great_book_reader.py
+      - name: Replace staging payload with generated edition
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf staging
+          rm .github/workflows/unpack-great-book-staging.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'feat: publish Great Book as one chapter per file'
+          git push
