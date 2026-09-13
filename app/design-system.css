@@ -73,6 +73,24 @@ p,li{color:#d7dbd2}
 .record-archive nav{display:flex;flex-wrap:wrap;gap:.35rem}
 .record-migration-note{color:var(--site-muted);font-size:.9rem}
 .page-atlas section{border-top:1px solid var(--site-line);padding-block:1rem}
+.summit-hero{max-width:58rem;padding:clamp(3rem,8vw,7rem) 0 3rem}
+.summit-hero h1{font-size:clamp(4rem,10vw,8.5rem);line-height:.82;margin:.12em 0 .28em;max-width:8ch}
+.summit-hero .page-summary{font-size:clamp(1.15rem,2.4vw,1.55rem);max-width:46rem}
+.summit-note{max-width:48rem;color:var(--site-muted);font-size:.9rem}
+.summit-section{border-top:1px solid var(--site-line);padding:1.35rem 0 2rem}
+.summit-section-head{display:grid;grid-template-columns:minmax(10rem,.38fr) 1fr;gap:1.25rem;align-items:start;margin-bottom:1rem}
+.summit-section-head h2{margin:0}
+.summit-section-head p{max-width:40rem;margin:0;color:var(--site-muted)}
+.summit-grid{list-style:none;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.75rem}
+.summit-card{height:100%;display:block;border:1px solid var(--site-line);border-radius:var(--site-radius);background:linear-gradient(145deg,rgba(18,23,18,.9),rgba(10,13,10,.72));padding:1.1rem;text-decoration:none}
+.summit-card strong{display:block;color:var(--site-ink);font:1.35rem/1.2 Georgia,"Times New Roman",serif;margin-bottom:.45rem}
+.summit-card span{display:block;color:var(--site-muted);font-size:.9rem}
+.summit-card:hover{border-color:var(--site-line-strong);background:rgba(19,25,18,.94)}
+.summit-deep{display:flex;flex-wrap:wrap;gap:.65rem}
+.summit-deep a{display:inline-flex;border:1px solid var(--site-line);border-radius:999px;padding:.55rem .8rem;text-decoration:none}
+.sections.summit-compatibility{display:flex;flex-wrap:wrap;gap:.45rem;border-top:1px solid var(--site-line);margin-top:2.2rem;padding-top:1rem}
+.sections.summit-compatibility a{font-size:.78rem;color:var(--site-muted);text-decoration:none;border:1px solid var(--site-line);border-radius:999px;padding:.25rem .5rem}
+.sections.summit-compatibility a:hover{color:var(--site-accent)}
 }
 
 @layer modules{
@@ -88,6 +106,9 @@ p,li{color:#d7dbd2}
 .site-main{width:min(100% - 1.25rem,var(--site-max));padding-top:.5rem}
 .page-header{padding-top:1.6rem}
 .record-breadcrumbs{font-size:.76rem}
+.summit-grid{grid-template-columns:1fr}
+.summit-section-head{grid-template-columns:1fr;gap:.35rem}
+.summit-hero{padding-top:2.5rem}
 }
 
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}}
