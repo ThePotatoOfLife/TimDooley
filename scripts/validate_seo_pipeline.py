@@ -10,6 +10,8 @@ from __future__ import annotations
 import ast
 from pathlib import Path
 
+from validate_seo_2026_contract import main as validate_current_seo_contract
+
 ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -38,6 +40,7 @@ def main() -> int:
     strategy_validator = read("scripts/validate_seo_strategy.py", errors)
     dedupe = read("scripts/dedupe_question_intents.py", errors)
     dedupe_validator = read("scripts/validate_question_intent_dedup.py", errors)
+    current_contract = read("scripts/validate_seo_2026_contract.py", errors)
     quality = read(".github/workflows/quality-checks.yml", errors)
     pages = read(".github/workflows/pages.yml", errors)
 
@@ -51,6 +54,7 @@ def main() -> int:
         ("scripts/validate_seo_strategy.py", strategy_validator),
         ("scripts/dedupe_question_intents.py", dedupe),
         ("scripts/validate_question_intent_dedup.py", dedupe_validator),
+        ("scripts/validate_seo_2026_contract.py", current_contract),
     ):
         if text:
             try:
@@ -123,6 +127,9 @@ def main() -> int:
             "seo-intent-report.json",
             "summary_large_image",
             "No stable site-owned social image found",
+            "strip_legacy_question_rich_result_schema",
+            'schema["headline"] = title',
+            'entity.setdefault("@id", canonical_url + "#person")',
         ),
         "apply_entity_intent_seo.py",
         errors,
@@ -163,6 +170,19 @@ def main() -> int:
             "question-alias-report.json",
         ),
         "validate_question_intent_dedup.py",
+        errors,
+    )
+
+    require(
+        current_contract,
+        (
+            "SEO 2026 CONTRACT VALIDATION",
+            "test_breadcrumb_contract",
+            "test_primary_schema_contract",
+            "test_authored_question_schema_contract",
+            "test_repository_robots_contract",
+        ),
+        "validate_seo_2026_contract.py",
         errors,
     )
 
@@ -261,6 +281,9 @@ def main() -> int:
         errors.append("SEO pipeline leaked into public navigation")
     if home.count('class="door"') and 'class="sections"' not in home:
         errors.append("homepage reader hierarchy marker is missing")
+
+    if not errors and validate_current_seo_contract():
+        errors.append("current SEO structured-data/crawl contract failed")
 
     if errors:
         print("SEO PIPELINE VALIDATION FAILED")

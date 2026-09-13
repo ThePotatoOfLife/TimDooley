@@ -35,6 +35,10 @@ WORLD_MACHINE_ROUTES = {
     "North Axis / North Programme": BASE + "north/",
     "World Systems": BASE + "world-systems/",
 }
+SITE_DISCOVERY_SCHEMA_RE = re.compile(
+    r'<script\b[^>]*id=["\']site-discovery-schema["\'][^>]*>(.*?)</script>',
+    re.I | re.S,
+)
 
 
 def read(rel: str, errors: list[str]) -> str:
@@ -68,13 +72,43 @@ def deploy_generated(target: Path) -> bool:
     return False
 
 
+def normalize_home_structured_data(text: str) -> str:
+    """Remove ineligible one-item homepage breadcrumb markup before deploy."""
+    def replace(match: re.Match[str]) -> str:
+        raw = match.group(1)
+        try:
+            payload = json.loads(raw.replace("<\\/", "</"))
+        except Exception:
+            return match.group(0)
+        graph = payload.get("@graph")
+        if not isinstance(graph, list):
+            return match.group(0)
+        filtered = []
+        changed = False
+        for node in graph:
+            if isinstance(node, dict) and node.get("@type") == "BreadcrumbList":
+                items = node.get("itemListElement", [])
+                if not isinstance(items, list) or len(items) < 2:
+                    changed = True
+                    continue
+            filtered.append(node)
+        if not changed:
+            return match.group(0)
+        payload["@graph"] = filtered
+        encoded = json.dumps(payload, ensure_ascii=False, separators=(",", ":")).replace("</", "<\\/")
+        return f'<script id="site-discovery-schema" type="application/ld+json">{encoded}</script>'
+
+    return SITE_DISCOVERY_SCHEMA_RE.sub(replace, text, count=1)
+
+
 def restore_canonical_world_route() -> None:
-    """Ensure the artifact uploaded to Pages always exposes World as door five."""
+    """Finalize canonical homepage route and valid structured data before upload."""
     path = SITE / "index.html"
     if not path.exists():
         return
     text = path.read_text(encoding="utf-8")
     text = text.replace('href="world-map/"><strong>World</strong>', 'href="world/"><strong>World</strong>')
+    text = normalize_home_structured_data(text)
     path.write_text(text, encoding="utf-8")
 
 
@@ -200,14 +234,14 @@ def main() -> int:
         base_ref = re.compile(r'''<base\s+[^>]*href=["']([^"'#?]+)["']''', re.I)
         bad: list[str] = []
         site_root = SITE.resolve()
-        for html in pages:
-            html_text = html.read_text(encoding="utf-8", errors="replace")
-            base_dir = html.parent.resolve()
+        for html_path in pages:
+            html_text = html_path.read_text(encoding="utf-8", errors="replace")
+            base_dir = html_path.parent.resolve()
             base_match = base_ref.search(html_text)
             if base_match:
                 base_raw = base_match.group(1)
                 if not base_raw.startswith(("http:", "https:", "mailto:", "javascript:", "data:")):
-                    candidate = (html.parent / base_raw).resolve()
+                    candidate = (html_path.parent / base_raw).resolve()
                     try:
                         candidate.relative_to(site_root)
                         base_dir = candidate
@@ -222,7 +256,7 @@ def main() -> int:
                 except ValueError:
                     continue
                 if not target.exists() and not deploy_generated(target):
-                    bad.append(f"{html.relative_to(SITE)} -> {raw}")
+                    bad.append(f"{html_path.relative_to(SITE)} -> {raw}")
         if bad:
             errors.append(f"broken local references in built site: {len(bad)}; examples: {bad[:8]}")
         if not pages:
