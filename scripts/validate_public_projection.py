@@ -11,6 +11,8 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+import validate_world_architecture_regressions  # noqa: F401
+
 ROOT = Path(__file__).resolve().parents[1]
 
 EXPECTED_DOORS = {
