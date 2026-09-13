@@ -1,0 +1,32 @@
+{
+  "schema_version": "1.0.0",
+  "root_id": "potato-of-life",
+  "object_roles": ["node", "relation", "artifact", "view"],
+  "north": {
+    "parent_cardinality": "exactly_one_for_active_non_root",
+    "root_parent": null,
+    "acyclic": true,
+    "all_active_paths_terminate_at_root": true,
+    "children_derived_from_parent": true
+  },
+  "routes": {
+    "root": "/",
+    "atlas": "/atlas/",
+    "node": "/atlas/{id}/",
+    "archive": "/archive/"
+  },
+  "migration_states": ["active", "candidate", "legacy", "archive_only"],
+  "web": {
+    "static_html_owns_meaning": true,
+    "javascript_role": "progressive_enhancement",
+    "validators_may_mutate_output": false,
+    "css_namespaces": ["site", "page", "record", "archive", "timeline", "map", "u"]
+  },
+  "epistemic_firewall": [
+    "project_canon_not_empirical_fact",
+    "analogy_not_identity",
+    "comparison_not_transmission",
+    "symbolic_mapping_not_literal_science",
+    "altitude_not_truth_rank"
+  ]
+}
