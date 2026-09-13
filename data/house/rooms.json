@@ -52,7 +52,7 @@
       "supported_primitives": ["occurrence", "transition", "activity", "assertion", "relation", "context"],
       "schema_extensions": [],
       "epistemic_policy": "Historical sequence preserves when something happened, when it was said, and when it was later interpreted as separate facts.",
-      "time_policy": "Chronology and date precision are first-class; later recognition is never silently moved to an earlier event date.",
+      "time_policy": "Temporal sequence and date precision are first-class; later recognition is never silently moved to an earlier event date.",
       "provenance_policy": "Preserve source lineage when the Room stores or derives source-bearing claims; public projection never replaces provenance.",
       "freshness_policy": "Review material when its source changes, its public synthesis becomes stale, or a validator/audit reports ownership or route drift.",
       "interfaces": ["potatoverse-canon", "archive-sources", "traditions-texts", "world-systems", "culture-information", "works"],
