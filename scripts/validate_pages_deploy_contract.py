@@ -26,7 +26,31 @@ def main()->int:
     ):
         if marker not in text:
             fail(f'missing deployment smoke check: {marker}')
-    print('PAGES DEPLOY CONTRACT PASSED: composed build + Atlas artifact + canonical World route + valid bootstrap src')
+
+    finalize=text.find('- name: Finalize World Map runtime')
+    shell=text.find('- name: Validate built site shell')
+    enforce=text.find('- name: Enforce built-site shell gate')
+    upload=text.find('- name: Upload Pages artifact')
+    if min(finalize,shell,enforce,upload)<0:
+        fail('missing finalization/shell/upload lifecycle steps')
+    if not finalize < shell < enforce < upload:
+        fail('all artifact mutation must finish before final shell validation and upload')
+
+    tail=text[enforce:]
+    forbidden_mutators=(
+        'page_path.write_text',
+        'patch_home_discovery.py',
+        'patch_public_ontology.py',
+        'enrich_weak_descriptions.py',
+        'optimize_seo.py',
+        'build_public_site.py',
+        'build_site.py',
+    )
+    for marker in forbidden_mutators:
+        if marker in tail:
+            fail(f'artifact mutation appears after final shell gate: {marker}')
+
+    print('PAGES DEPLOY CONTRACT PASSED: composed build + Atlas artifact + canonical World route + finalized artifact validated before upload')
     return 0
 
 
