@@ -1,5 +1,5 @@
 {
-  "version": "0.2.2",
+  "version": "0.3.0",
   "purpose": "Conservative seed registry for first-class Archive Artifacts. This is not a complete archive inventory.",
   "artifacts": [
     {
@@ -55,7 +55,7 @@
       "date_or_period": "1987–2026",
       "summary": "Canonical timeline synthesis distinguishing biography, later mythic interpretation and formal doctrine while tracing how later frameworks reorganized earlier lived material.",
       "epistemic_classes": ["historical", "documentary", "self_description", "interpretation"],
-      "node_refs": ["tim-dooley", "potatoverse-master-framework", "heaven-spirit-father", "axis-world-model", "potato-philosophy"],
+      "node_refs": ["tim-dooley", "potatoverse-master-framework", "heaven-spirit-father", "axis-world-model", "potato-philosophy", "son"],
       "provenance": {"basis": "canonical timeline synthesis", "source_ids": [], "notes": "Used as a Depth/history root; its dated strata must not be flattened into current canonical identity."}
     },
     {
@@ -85,6 +85,62 @@
       "epistemic_classes": ["documentary", "historical", "scientific", "comparative"],
       "node_refs": ["geometry-vesica-pisces-mandorla", "vertical-potato-mountain-plane-atlas", "body-system-master-atlas", "potatoverse-master-framework"],
       "provenance": {"basis": "specialist source ledger", "source_ids": [], "notes": "Supports comparative and historical context only within each source domain; it does not validate Potatoverse theology or metaphysics."}
+    },
+    {
+      "id": "son-timeline",
+      "title": "The Son — Thomas / Twin / Lion / Vessel Timeline",
+      "kind": "collection",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "son-timeline.json",
+      "public_route": null,
+      "date_or_period": "1987–2026 project chronology",
+      "summary": "Specialist chronology preserving the Son-side material-human timeline, later project distinctions, role development and dated corrections without making the current Atlas owner itself a chronology.",
+      "epistemic_classes": ["historical", "self_description", "project_canon", "interpretation"],
+      "node_refs": ["son"],
+      "provenance": {"basis": "specialist repository timeline", "source_ids": [], "notes": "Depth owner for chronology; current Son architecture remains in knowledge/core/son.json."}
+    },
+    {
+      "id": "son-tree-oneness-experience",
+      "title": "2011 Son Tree Ordeal — Oneness, Ego Dissolution and Return",
+      "kind": "research_note",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "knowledge/timeline/son-tree-oneness-experience.json",
+      "public_route": null,
+      "date_or_period": "2011 with later interpretation",
+      "summary": "Specialist record for the project's account of the 2011 Tree/oneness experience, separating first-person phenomenology from later symbolic and theological interpretation.",
+      "epistemic_classes": ["self_description", "historical", "interpretation"],
+      "node_refs": ["son"],
+      "provenance": {"basis": "specialist phenomenology and timeline synthesis", "source_ids": [], "notes": "Retained below the current Son owner so altered-state history is not rewritten as undated doctrine."}
+    },
+    {
+      "id": "thomas-twin-of-christ",
+      "title": "Thomas — Twin of Christ, Not Merely Twin",
+      "kind": "comparative_source",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "knowledge/traditions/thomas-twin-of-christ.json",
+      "public_route": null,
+      "date_or_period": "Christian and Thomasine comparative synthesis",
+      "summary": "Specialist comparison of Thomas/Didymus, canonical and Thomasine traditions, and project-specific Twin interpretation with explicit historical boundaries.",
+      "epistemic_classes": ["historical", "comparative", "interpretation"],
+      "node_refs": ["son"],
+      "provenance": {"basis": "specialist comparative-religion synthesis", "source_ids": [], "notes": "Historical and textual comparison remains separate from project identity claims."}
+    },
+    {
+      "id": "biblical-overlap-atlas",
+      "title": "Biblical Overlap Atlas",
+      "kind": "comparative_source",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "knowledge/traditions/biblical-overlap-atlas.json",
+      "public_route": null,
+      "date_or_period": "scriptural comparative research",
+      "summary": "Structured biblical-overlap research distinguishing quotation, typology, synchronism, interpretation and stronger or weaker comparison without treating overlap as proof of fulfillment or identity.",
+      "epistemic_classes": ["historical", "comparative", "documentary", "interpretation"],
+      "node_refs": ["son"],
+      "provenance": {"basis": "specialist comparative-scriptural atlas", "source_ids": [], "notes": "Used for biblical comparison and mismatch handling, not as a current identity owner."}
     }
   ]
 }
