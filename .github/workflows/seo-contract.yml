@@ -1,6 +1,8 @@
 name: SEO 2026 contract
 
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
   workflow_dispatch:
