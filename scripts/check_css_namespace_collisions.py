@@ -14,6 +14,7 @@ SITE_SYSTEM = ROOT / "app" / "site-system.css"
 READER = ROOT / "app" / "reader.css"
 GUARD = ROOT / "app" / "layout-guard.css"
 HOME = ROOT / "index.html"
+PRIMARY_MIGRATED_PAGES = [HOME]
 
 RISKY_GLOBAL = {
     ".grid": ("grid-template-columns", "position", "top"),
@@ -42,6 +43,11 @@ else:
                 errors.append(
                     f"app/site-system.css must not assign structural layout through generic {selector}; use .page-* or a named component"
                 )
+
+for page in PRIMARY_MIGRATED_PAGES:
+    text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
+    if "app/site-system.css" not in text:
+        errors.append(f"{page.relative_to(ROOT)} must load app/site-system.css")
 
 # This was the original cross-layer collision. It is now prohibited outright.
 for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
