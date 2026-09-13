@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://thepotatooflife.github.io/TimDooley/schemas/house-public-surface-registry.schema.json",
+  "title": "Potato House Public Surface Registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["version", "updated", "authority", "room_registry", "primary_gateway_ids", "secondary_global_ids", "surfaces"],
+  "properties": {
+    "version": {"type": "string"},
+    "updated": {"type": "string"},
+    "authority": {"const": "public-route-identity"},
+    "room_registry": {"const": "data/house/rooms.json"},
+    "primary_gateway_ids": {"type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true, "items": {"type": "string"}},
+    "secondary_global_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "surfaces": {
+      "type": "array",
+      "minItems": 14,
+      "maxItems": 14,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["id", "route", "canonical_route", "surface_type", "title", "primary_parent", "primary_room_ids", "status", "visibility", "primary_navigation", "is_view", "knowledge_owner", "legacy_routes"],
+        "properties": {
+          "id": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+          "route": {"type": "string", "pattern": "^/"},
+          "canonical_route": {"type": "string", "pattern": "^/"},
+          "surface_type": {"enum": ["home", "hub", "subject", "guide", "explorer", "evidence"]},
+          "title": {"type": "string"},
+          "primary_parent": {"type": ["string", "null"]},
+          "primary_room_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+          "status": {"enum": ["active", "compatibility", "retired"]},
+          "visibility": {"enum": ["primary", "secondary", "specialist", "compatibility"]},
+          "primary_navigation": {"type": "boolean"},
+          "is_view": {"type": "boolean"},
+          "knowledge_owner": {"const": false},
+          "legacy_routes": {"type": "array", "uniqueItems": true, "items": {"type": "string", "pattern": "^/"}}
+        }
+      }
+    }
+  }
+}
