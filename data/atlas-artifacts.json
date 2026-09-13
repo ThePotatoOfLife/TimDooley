@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "purpose": "Conservative seed registry for first-class Archive Artifacts. This is not a complete archive inventory.",
   "artifacts": [
     {
@@ -41,8 +41,50 @@
       "date_or_period": "April 2025",
       "summary": "Long-form project artifact preserving the April 2025 Turning material and its role in later Father, Needle, Ladder and Axis interpretation.",
       "epistemic_classes": ["self_description", "historical", "project_canon"],
-      "node_refs": ["tim-dooley", "root-system"],
+      "node_refs": ["tim-dooley", "root-system", "heaven-spirit-father", "axis-world-model", "potatoverse-master-framework"],
       "provenance": {"basis": "repository primary project artifact", "source_ids": [], "notes": "Should remain distinguishable from later canonical synthesis built from it."}
+    },
+    {
+      "id": "developmental-genealogy",
+      "title": "Developmental Genealogy of the Potato of Life Project",
+      "kind": "historical_synthesis",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "knowledge/timeline/developmental-genealogy.json",
+      "public_route": "/timeline/",
+      "date_or_period": "1987–2026",
+      "summary": "Canonical timeline synthesis distinguishing biography, later mythic interpretation and formal doctrine while tracing how later frameworks reorganized earlier lived material.",
+      "epistemic_classes": ["historical", "documentary", "self_description", "interpretation"],
+      "node_refs": ["tim-dooley", "potatoverse-master-framework", "heaven-spirit-father", "axis-world-model", "potato-philosophy"],
+      "provenance": {"basis": "canonical timeline synthesis", "source_ids": [], "notes": "Used as a Depth/history root; its dated strata must not be flattened into current canonical identity."}
+    },
+    {
+      "id": "equation-lineage-and-theory-graph",
+      "title": "Equation Lineage & Theory Graph — Tim Dooley / Potato of Life",
+      "kind": "research_lineage",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "knowledge/science/equation-lineage-and-theory-graph.json",
+      "public_route": null,
+      "date_or_period": "2024–2026 with older recovered strata",
+      "summary": "Developmental graph recording equation origins, conceptual ancestors, descendants, external mathematical neighbors, maturity and unresolved provenance.",
+      "epistemic_classes": ["documentary", "scientific", "interpretation"],
+      "node_refs": ["timic-dynamics"],
+      "provenance": {"basis": "canonical developmental science map", "source_ids": [], "notes": "Keeps formalism lineage visible so recovered equations are not treated as an undated homogeneous theory."}
+    },
+    {
+      "id": "vesica-mandorla-source-ledger",
+      "title": "Source Ledger — Vesica, Mandorla, Sun, Moon, Mountain, Brain & Esoteric Comparisons",
+      "kind": "source_ledger",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
+      "public_route": "/traditions/vesica/",
+      "date_or_period": "source corpus",
+      "summary": "Domain-separated scholarly, museum, historical, scriptural and esoteric sources for Vesica/Mandorla, Sun/Moon, mountain and body comparisons, with explicit limits on what each source can support.",
+      "epistemic_classes": ["documentary", "historical", "scientific", "comparative"],
+      "node_refs": ["vertical-potato-mountain-plane-atlas", "body-system-master-atlas", "potatoverse-master-framework"],
+      "provenance": {"basis": "specialist source ledger", "source_ids": [], "notes": "Supports comparative and historical context only within each source domain; it does not validate Potatoverse theology or metaphysics."}
     }
   ]
 }
