@@ -39,11 +39,14 @@ def main() -> int:
         if legacy in routing:
             fail(f"routing metadata still names legacy loader {legacy}")
 
-    for wave in (19, 20, 22, 23, 24, 25):
-        dossier = f"biblical-syncretism-dossiers-wave{wave}.json"
-        fragments = f"biblical-passage-fragments-wave{wave}.json"
-        if dossier not in loader or fragments not in loader:
-            fail(f"unified loader missing wave {wave} dossier/fragment pair")
+    if "const WAVES=[19,20,22,23,24,25];" not in loader:
+        fail("unified loader must preserve canonical merge order 19,20,22,23,24,25")
+    for template in (
+        "biblical-syncretism-dossiers-wave${wave}.json",
+        "biblical-passage-fragments-wave${wave}.json",
+    ):
+        if template not in loader:
+            fail(f"unified loader missing canonical filename template {template}")
 
     if loader.count("window.fetch=") != 1:
         fail("unified loader must install exactly one fetch interceptor")
