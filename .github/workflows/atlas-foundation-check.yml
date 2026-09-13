@@ -37,6 +37,8 @@ jobs:
         run: python scripts/validate_atlas_artifacts.py
       - name: Validate Atlas deprecation ledger
         run: python scripts/validate_atlas_deprecations.py
+      - name: Validate read-only public build contract
+        run: python scripts/validate_public_build_readonly_contract.py
       - name: Validate derived Atlas model
         run: python scripts/validate_atlas_model.py
       - name: Validate assembled Atlas runtime
