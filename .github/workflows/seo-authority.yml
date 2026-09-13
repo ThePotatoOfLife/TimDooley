@@ -37,6 +37,9 @@ jobs:
       - name: Build machine discovery layer
         run: python scripts/build_discovery.py
 
+      - name: Remove internal archive from public artifact
+        run: rm -rf _site/archive && test ! -e _site/archive
+
       - name: Enrich weak page descriptions
         run: python scripts/enrich_weak_descriptions.py
 
