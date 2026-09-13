@@ -31,6 +31,11 @@ ROUTE_STRATEGIES: dict[str, Strategy] = {
         "Tim Dooley — Biography, Timeline, Ideas & Evidence",
         "A source-aware guide to Tim Dooley: biography, public development, ideas, timeline, evidence boundaries, theology, philosophy and the Potato of Life archive.",
     ),
+    "potatoism": Strategy(
+        "potatoism",
+        "CollectionPage",
+        "Potatoism and the Potato of Life framework",
+    ),
     "traditions/bible": Strategy(
         "bible",
         "Article",
@@ -86,6 +91,7 @@ ROUTE_STRATEGIES: dict[str, Strategy] = {
 RELATED: dict[str, tuple[str, ...]] = {
     "": ("tim-dooley", "timeline", "context/source-authority", "religion", "science"),
     "tim-dooley": ("timeline", "tim-dooley/evidence", "tim-dooley/public-witness", "context/source-authority"),
+    "potatoism": ("philosophy", "religion", "tim-dooley", "timeline"),
     "traditions/bible": ("religion", "timeline", "context/source-authority", "tim-dooley/biblical-case"),
     "north": ("world-map", "timeline", "philosophy", "context/source-authority"),
     "science": ("science/research-map", "context/source-authority", "philosophy"),
@@ -110,17 +116,19 @@ def classify_route(route: str) -> str:
         return "question"
     if route.startswith("records/"):
         return "record"
+    if route == "tim-dooley/evidence":
+        return "source-authority"
     if route.startswith("tim-dooley/"):
-        return "tim-profile"
+        return "tim-research"
     if route.startswith("potatoism/"):
-        return "potatoism"
+        return "potatoism-topic"
     if route.startswith("science/"):
-        return "science"
+        return "science-topic"
     if route.startswith("north/"):
         return "north"
     if route.startswith("timeline/") or route == "chronology":
-        return "timeline"
-    if route.startswith("context/") or route.startswith("tim-dooley/evidence"):
+        return "timeline-topic"
+    if route.startswith("context/"):
         return "source-authority"
     if route.startswith("traditions/bible") or route.startswith("religion/"):
         return "bible"
@@ -173,12 +181,10 @@ def schema_profile(route: str) -> dict[str, object]:
         schema_type, topic = "WebPage", "archive topic"
     elif kind == "record":
         schema_type, topic = "Article", "canonical source record"
-    elif kind in {"science", "timeline", "potatoism"}:
-        schema_type, topic = "CollectionPage", kind.replace("-", " ")
-    elif kind == "tim-profile":
-        schema_type, topic = "ProfilePage", "Tim Dooley"
-    else:
+    elif kind in {"science-topic", "timeline-topic", "potatoism-topic", "tim-research", "north", "bible", "source-authority"}:
         schema_type, topic = "Article", kind.replace("-", " ")
+    else:
+        schema_type, topic = "WebPage", kind.replace("-", " ")
     profile: dict[str, object] = {"kind": kind, "schema_type": schema_type, "topic": topic}
     if schema_type == "ProfilePage":
         profile["main_entity"] = {"@type": "Person", "name": "Tim Dooley"}
@@ -192,12 +198,16 @@ def related_routes(route: str) -> tuple[str, ...]:
     kind = classify_route(route)
     if kind == "science-paper":
         return ("science", "science/research-map", "context/source-authority")
+    if kind == "science-topic":
+        return ("science", "science/research-map", "context/source-authority")
     if kind == "question":
         return ("tim-dooley", "timeline", "context/source-authority")
     if kind == "record":
         return ("context/source-authority", "timeline")
-    if kind == "tim-profile":
-        return RELATED["tim-dooley"]
-    if kind == "potatoism":
-        return ("philosophy", "religion", "tim-dooley", "timeline")
+    if kind == "tim-research":
+        return ("tim-dooley", "timeline", "context/source-authority")
+    if kind == "potatoism-topic":
+        return RELATED["potatoism"]
+    if kind == "timeline-topic":
+        return ("timeline", "tim-dooley", "context/source-authority")
     return ()
