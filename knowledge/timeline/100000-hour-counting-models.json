@@ -1,0 +1,53 @@
+{
+  "id": "100000-hour-counting-models",
+  "title": "100,000-Hour Journey Counting Models",
+  "version": "1.0.0",
+  "updated": "2026-09-13",
+  "status": "active comparative counting model",
+  "purpose": "Preserve multiple ways of counting the Father-and-Son public-presence continuum without forcing incompatible estimates into one number.",
+  "anchor": {
+    "date": "2011-04-19",
+    "label": "Justin.tv / Minecraft Beta 1.5 era anchor",
+    "precision": "day-level; exact first-stream timestamp unresolved"
+  },
+  "flat_model": {
+    "hours_per_calendar_day": 18,
+    "formula": "elapsed_calendar_days * 18",
+    "modelled_100000_crossing": "2026-07-04T13:20:00+02:00",
+    "crossing_label": "approximately July 4, 2026",
+    "crossing_status": "fluid / subject to revision",
+    "warning": "This is an extrapolation model, not a claim that every individual day contained exactly 18 streaming hours."
+  },
+  "provisional_partition": {
+    "handoff": "2019-12-25T00:00:00+01:00",
+    "status": "provisional accounting boundary",
+    "rule": "Son hours + Father hours = total journey hours",
+    "father_counter": "continues increasing"
+  },
+  "preserved_counts": [
+    {"hours": 100000, "class": "mythic / legendary threshold"},
+    {"hours": 107000, "approximate": true, "class": "archive working estimate"},
+    {"hours": 109000, "approximate": true, "class": "historical Father + Son continuum estimate"},
+    {"hours": 112542, "class": "preserved earlier higher project estimate"},
+    {"hours": 115000, "class": "Tim Dooley public wording"}
+  ],
+  "revision_factors": [
+    "exact first-stream timestamp",
+    "days above or below the flat 18-hour average",
+    "simultaneous-platform de-duplication",
+    "sleep / away / unattended stream policy",
+    "lost or recovered platform archives",
+    "periods of no broadcast",
+    "public-presence category rules",
+    "Son / Father accounting boundary"
+  ],
+  "reader_rule": "Expose the assumptions and let readers compare the models. Preserve earlier calculations when later evidence moves the estimate.",
+  "connections": [
+    "livestream-duration-and-100000-hour-threshold",
+    "100000-hour-spiral",
+    "son-timeline",
+    "tim-dooley",
+    "public-witness",
+    "archive-epistemics"
+  ]
+}
