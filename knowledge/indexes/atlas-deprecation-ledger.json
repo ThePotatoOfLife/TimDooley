@@ -1,0 +1,25 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-13",
+  "id": "atlas-deprecation-ledger-index",
+  "title": "Atlas Deprecation Ledger Index",
+  "status": "active",
+  "purpose": "Durable knowledge-side index for the Atlas migration lifecycle without duplicating the runtime deprecation entries.",
+  "entry_owner": "runtime_ledger",
+  "runtime_ledger": "data/atlas-deprecations.json",
+  "migration_guide": "docs/ATLAS-MIGRATION.md",
+  "architecture_spec": "docs/superpowers/specs/2026-09-13-potato-atlas-permanent-architecture-design.md",
+  "implementation_plan": [
+    "docs/superpowers/plans/2026-09-13-potato-atlas-foundation-implementation.md",
+    "docs/superpowers/plans/2026-09-13-potato-atlas-foundation-implementation-part-2.md"
+  ],
+  "lifecycle_translation": {
+    "active": "live_legacy",
+    "compatibility": "compatibility_only",
+    "deprecated": "retire_when_covered",
+    "removable": "retired"
+  },
+  "current_phase": "Atlas foundation implemented; compatibility surfaces retained while canonical Nodes, Artifacts and Views progressively replace legacy ownership assumptions.",
+  "ownership_rule": "Deprecation entry state, replacement targets and removal preconditions are owned only by data/atlas-deprecations.json. This index owns discovery and governance links, not duplicate entry state.",
+  "removal_rule": "No legacy surface is removed merely because an Atlas replacement exists. Removal requires replacement coverage, route compatibility or redirects, passing quality gates, and explicit satisfaction of the runtime ledger preconditions."
+}
