@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """Apply entity-and-intent SEO to the final built site.
 
-This pass runs after the conservative canonical SEO optimizer. It does not
-create pages or alter canonical URLs. It classifies each final indexable page,
-projects page-appropriate JSON-LD, synchronizes search/social metadata, and
-adds a small explicit related-context block when the page does not already
-provide equivalent contextual navigation.
+This pass runs after the conservative content builders and before final sitemap
+projection. It does not create public content pages or alter canonical URLs. It
+classifies each final indexable page, projects page-appropriate JSON-LD,
+synchronizes search/social metadata, and adds a small explicit related-context
+block when the page does not already provide equivalent contextual navigation.
 """
 from __future__ import annotations
 
@@ -37,6 +37,14 @@ def attrs(tag: str) -> dict[str, str]:
 
 def clean_text(value: str) -> str:
     return " ".join(html.unescape(TAG_RE.sub(" ", value)).split())
+
+
+def clip(value: str, limit: int) -> str:
+    value = " ".join(value.split())
+    if len(value) <= limit:
+        return value
+    cut = value[: limit + 1].rsplit(" ", 1)[0].rstrip(" ,;:-")
+    return (cut or value[:limit]).rstrip() + "…"
 
 
 def route_for(page: Path) -> str:
@@ -96,6 +104,16 @@ def replace_meta(text: str, *, key: str, value: str, property_key: bool = False)
     if pattern.search(text):
         return pattern.sub(replacement, text, count=1)
     return re.sub(r"</head>", replacement + "\n</head>", text, count=1, flags=re.I)
+
+
+def search_description(route: str, kind: str, value: str) -> str:
+    """Keep metadata concise and distinguish archive records from paper views."""
+    value = " ".join(value.split()).strip()
+    if kind == "record" and value and not value.casefold().startswith("canonical archive record:"):
+        value = "Canonical archive record: " + value
+    elif kind == "science-paper" and value and not value.casefold().startswith("research paper:"):
+        value = "Research paper: " + value
+    return clip(value, 170)
 
 
 def label_for_route(route: str) -> str:
@@ -228,7 +246,7 @@ def main() -> int:
         current_description = meta_value(text, name="description")
         projected = metadata_for(route, current_title, current_description)
         title = projected["title"] or current_title
-        description = projected["description"] or current_description
+        description = search_description(route, kind, projected["description"] or current_description)
         if not title:
             errors.append(f"{route or '/'}: no title after intent projection")
             continue
