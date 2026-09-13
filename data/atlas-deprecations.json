@@ -1,0 +1,56 @@
+{
+  "version": "1.0.0",
+  "purpose": "Explicit migration ledger for architectural contracts that remain live during the Atlas transition. Deprecation never means delete immediately; removal requires replacement coverage, compatibility handling and passing audits.",
+  "states": ["live_legacy", "compatibility_only", "retire_when_covered", "retired"],
+  "entries": [
+    {
+      "path": "data/frontend-atlas-bridge.json",
+      "role": "five-door backend-to-frontend projection contract",
+      "state": "live_legacy",
+      "replacement": ["data/atlas-registry.json", "data/atlas-views.json", "data/atlas-constitution.json"],
+      "removal_conditions": ["homepage no longer requires exactly five primary doors", "all major branches resolve through Atlas Nodes or Views", "legacy routes remain compatible", "public projection validators have Atlas replacements"]
+    },
+    {
+      "path": "manifest.json",
+      "role": "legacy branch/pathway navigation manifest",
+      "state": "live_legacy",
+      "replacement": ["data/atlas-registry.json", "data/atlas-views.json", "data/atlas-relation-types.json"],
+      "removal_conditions": ["branch pages are generated as Views rather than ownership containers", "all durable manifest records have canonical owners in Atlas or explicit Artifact roles", "machine discovery no longer consumes manifest branches as ontology"]
+    },
+    {
+      "path": "scripts/build_site.py",
+      "role": "legacy public artifact builder and generated topic/record page owner",
+      "state": "live_legacy",
+      "replacement": ["scripts/build_public_site.py", "scripts/build_atlas_pages.py", "scripts/atlas_render.py"],
+      "removal_conditions": ["all retained specialist outputs have focused builders", "Atlas reader adapters replace generic JSON rendering", "public build orchestrator owns the complete build sequence", "final sitemap/discovery coverage remains complete"]
+    },
+    {
+      "path": "scripts/build_discovery.py",
+      "role": "five-door-aware question and machine discovery projection",
+      "state": "live_legacy",
+      "replacement": ["data/atlas-views.json", "future Atlas discovery projection"],
+      "removal_conditions": ["question pages route through canonical Atlas identities", "machine discovery reads Nodes/Views rather than five primary doors", "A-Z and question URLs remain compatible"]
+    },
+    {
+      "path": "scripts/validate_site_shell.py",
+      "role": "legacy five-door and specialist-route public shell validator",
+      "state": "live_legacy",
+      "replacement": ["scripts/validate_atlas_pages.py", "future public-shell compatibility validator"],
+      "removal_conditions": ["new summit and Room navigation is live", "legacy route checks move into compatibility validation", "validator performs no output mutation"]
+    },
+    {
+      "path": "app/style.css",
+      "role": "legacy archive/explorer and mixed public styling owner",
+      "state": "live_legacy",
+      "replacement": ["app/design-system.css", "focused specialist module styles"],
+      "removal_conditions": ["all public structural selectors use named namespaces", "legacy explorer either migrates or remains isolated under a legacy layer", "CSS collision audit reports no dependency on generic structural owners"]
+    },
+    {
+      "path": "app/layout-guard.css",
+      "role": "legacy CSS collision containment layer",
+      "state": "retire_when_covered",
+      "replacement": ["app/design-system.css", "explicit component ownership"],
+      "removal_conditions": ["protected legacy markup count reaches zero", "namespace validator passes without guard exceptions", "responsive shell tests remain green after removal"]
+    }
+  ]
+}
