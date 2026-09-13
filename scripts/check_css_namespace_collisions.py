@@ -10,9 +10,29 @@ import sys
 
 ROOT = Path(__file__).resolve().parents[1]
 STYLE = ROOT / "app" / "style.css"
+SITE_SYSTEM = ROOT / "app" / "site-system.css"
 READER = ROOT / "app" / "reader.css"
 GUARD = ROOT / "app" / "layout-guard.css"
 HOME = ROOT / "index.html"
+
+MIGRATED_SHELL_REQUIREMENTS = {
+    HOME: ("site-system.css", 'class="page '),
+    ROOT / "tim-dooley" / "index.html": ("site-system.css", "page-nav", "page-header"),
+    ROOT / "religion" / "index.html": ("site-system.css", "page-nav", "page-header"),
+    ROOT / "philosophy" / "index.html": ("site-system.css", "page-nav", "page-header"),
+    ROOT / "science" / "index.html": ("site-system.css", "page-nav", "page-header"),
+    ROOT / "world" / "index.html": ("site-system.css", "page-nav", "page-header"),
+}
+
+MIGRATED_LOCAL_STYLE_SOURCES = [
+    HOME,
+    ROOT / "tim-dooley" / "index.html",
+    ROOT / "religion" / "index.html",
+    ROOT / "philosophy" / "philosophy.css",
+    ROOT / "science" / "science-library.css",
+    ROOT / "world" / "index.html",
+]
+CANONICAL_TOKEN_LITERALS = ("#090b09", "#f4f0e5", "#b8dc82", "#d8b56b", "#30382f")
 
 RISKY_GLOBAL = {
     ".grid": ("grid-template-columns", "position", "top"),
@@ -31,7 +51,32 @@ if not READER.exists() or 'layout-guard.css' not in READER.read_text(encoding='u
 
 style = STYLE.read_text(encoding='utf-8') if STYLE.exists() else ""
 
-# This was the original cross-layer collision. It is now prohibited outright.
+if not SITE_SYSTEM.exists():
+    errors.append("app/site-system.css is missing")
+else:
+    site_system = SITE_SYSTEM.read_text(encoding="utf-8")
+    for selector in (".nav", ".grid", ".section", ".card", ".record", ".status"):
+        for block in re.findall(re.escape(selector) + r"\s*\{([^}]*)\}", site_system):
+            if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns|grid-template-rows)\s*:", block):
+                errors.append(
+                    f"app/site-system.css must not assign structural layout through generic {selector}; use .page-* or a named component"
+                )
+
+for page, markers in MIGRATED_SHELL_REQUIREMENTS.items():
+    text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
+    for marker in markers:
+        if marker not in text:
+            errors.append(f"{page.relative_to(ROOT)} missing shared shell marker: {marker}")
+
+for path in MIGRATED_LOCAL_STYLE_SOURCES:
+    text = path.read_text(encoding="utf-8", errors="ignore") if path.exists() else ""
+    for root_block in re.findall(r":root\s*\{([^}]*)\}", text, flags=re.I | re.S):
+        repeated = [literal for literal in CANONICAL_TOKEN_LITERALS if literal.lower() in root_block.lower()]
+        if repeated:
+            warnings.append(
+                f"{path.relative_to(ROOT)} redefines canonical palette literals in :root: {', '.join(repeated)}"
+            )
+
 for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
     if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns)\s*:", block):
         errors.append("app/style.css reintroduced global .nav layout; use .archive-nav or an explicit component class")
@@ -44,7 +89,6 @@ if 'id="archive-explorer"' in home:
     if 'class="archive-nav"' not in home:
         errors.append("homepage archive explorer must use class=\"archive-nav\"")
     if re.search(r'<aside\s+class=["\'][^"\']*\bnav\b[^"\']*["\']', home):
-        # archive-nav contains the substring nav but not the standalone nav class.
         classes = re.findall(r'<aside\s+class=["\']([^"\']+)["\']', home)
         for value in classes:
             if "nav" in value.split():
