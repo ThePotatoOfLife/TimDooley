@@ -143,7 +143,6 @@
       pop.innerHTML = rows.map(entry => `<button type="button" class="atlas-world-option${layers.isActive(entry.id)?' active':''}" data-layer-option="${esc(entry.id)}">${entry.color?`<i style="--layer-color:${esc(entry.color)}"></i>`:''}<span>${esc(entry.label)}</span></button>`).join('') || '<div class="atlas-world-empty">No current layers</div>';
       const count = rows.filter(entry => layers.isActive(entry.id)).length;
       menuNode.classList.toggle('active', count > 0);
-      const summary = menuNode.querySelector(':scope > summary'); if (summary) summary.textContent = count ? `${FAMILIES.find(([id]) => id === family)?.[1] || family} · ${count}` : (FAMILIES.find(([id]) => id === family)?.[1] || family);
     });
     const queryBox = document.getElementById('atlasWorldQuery');
     if (queryBox) {
