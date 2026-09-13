@@ -12,6 +12,14 @@ const WAVE22_PATHS=[
  '../../knowledge/traditions/biblical-operator-comparisons-wave22-c2.json',
  '../../knowledge/traditions/biblical-operator-comparisons-wave22-c3.json',
  '../../knowledge/traditions/biblical-operator-comparisons-wave22-c5.json',
+ '../../knowledge/traditions/biblical-operator-comparisons-wave22-e1.json',
+ '../../knowledge/traditions/biblical-operator-comparisons-wave22-e2.json',
+ '../../knowledge/traditions/biblical-operator-comparisons-wave22-e3.json',
+ '../../knowledge/traditions/biblical-operator-comparisons-wave22-e4.json',
+ '../../knowledge/traditions/biblical-operator-comparisons-wave22-e5.json',
+ '../../knowledge/traditions/biblical-operator-comparisons-wave22-e6.json',
+ '../../knowledge/traditions/biblical-operator-comparisons-wave22-e7.json',
+ '../../knowledge/traditions/biblical-operator-comparisons-wave22-e8.json',
 ];
 const WAVE22_FRAGMENT_PATH='../../knowledge/traditions/biblical-passage-fragments-wave22.json';
 const arr=value=>Array.isArray(value)?value:(value==null?[]:[value]);
