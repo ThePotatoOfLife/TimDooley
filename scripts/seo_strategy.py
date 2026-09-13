@@ -139,6 +139,7 @@ def _looks_generic_title(title: str) -> bool:
         "science",
         "timeline",
         "north",
+        "north axis — world map",
     } or value.endswith(" — the potato of life") and len(value) < 34
 
 
