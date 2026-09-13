@@ -14,14 +14,25 @@ SITE_SYSTEM = ROOT / "app" / "site-system.css"
 READER = ROOT / "app" / "reader.css"
 GUARD = ROOT / "app" / "layout-guard.css"
 HOME = ROOT / "index.html"
-PRIMARY_MIGRATED_PAGES = [
+
+MIGRATED_SHELL_REQUIREMENTS = {
+    HOME: ("site-system.css", 'class="page '),
+    ROOT / "tim-dooley" / "index.html": ("site-system.css", "page-nav", "page-header"),
+    ROOT / "religion" / "index.html": ("site-system.css", "page-nav", "page-header"),
+    ROOT / "philosophy" / "index.html": ("site-system.css", "page-nav", "page-header"),
+    ROOT / "science" / "index.html": ("site-system.css", "page-nav", "page-header"),
+    ROOT / "world" / "index.html": ("site-system.css", "page-nav", "page-header"),
+}
+
+MIGRATED_LOCAL_STYLE_SOURCES = [
     HOME,
     ROOT / "tim-dooley" / "index.html",
     ROOT / "religion" / "index.html",
-    ROOT / "philosophy" / "index.html",
-    ROOT / "science" / "index.html",
+    ROOT / "philosophy" / "philosophy.css",
+    ROOT / "science" / "science-library.css",
     ROOT / "world" / "index.html",
 ]
+CANONICAL_TOKEN_LITERALS = ("#090b09", "#f4f0e5", "#b8dc82", "#d8b56b", "#30382f")
 
 RISKY_GLOBAL = {
     ".grid": ("grid-template-columns", "position", "top"),
@@ -51,11 +62,20 @@ else:
                     f"app/site-system.css must not assign structural layout through generic {selector}; use .page-* or a named component"
                 )
 
-for page in PRIMARY_MIGRATED_PAGES:
+for page, markers in MIGRATED_SHELL_REQUIREMENTS.items():
     text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
-    relative_href = "app/site-system.css" if page == HOME else "../app/site-system.css"
-    if relative_href not in text:
-        errors.append(f"{page.relative_to(ROOT)} must load {relative_href}")
+    for marker in markers:
+        if marker not in text:
+            errors.append(f"{page.relative_to(ROOT)} missing shared shell marker: {marker}")
+
+for path in MIGRATED_LOCAL_STYLE_SOURCES:
+    text = path.read_text(encoding="utf-8", errors="ignore") if path.exists() else ""
+    for root_block in re.findall(r":root\s*\{([^}]*)\}", text, flags=re.I | re.S):
+        repeated = [literal for literal in CANONICAL_TOKEN_LITERALS if literal.lower() in root_block.lower()]
+        if repeated:
+            warnings.append(
+                f"{path.relative_to(ROOT)} redefines canonical palette literals in :root: {', '.join(repeated)}"
+            )
 
 for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
     if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns)\s*:", block):
