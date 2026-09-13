@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "purpose": "Explicit mappings from canonical-owner relation wording to permanent Atlas road types. Original owner wording is preserved; unmapped labels remain provisional rather than guessed.",
   "mappings": [
     {"raw":"identity-symbol coupling","canonical":"related","reason":"Identity/symbol coupling is important lateral context but does not define North ancestry."},
@@ -10,6 +10,16 @@
     {"raw":"supporting_evidence_layer","canonical":"supported_by","reason":"A supporting evidence dossier sits behind the current subject rather than becoming its structural parent."},
     {"raw":"formalization","canonical":"related","reason":"Formalization is a typed lateral coupling until a more specific durable road family is justified."},
     {"raw":"nested-analogy","canonical":"compares_with","reason":"Nested analogy remains comparison, not literal identity."},
-    {"raw":"flow-comparison","canonical":"compares_with","reason":"Flow comparison remains comparative rather than causal proof."}
+    {"raw":"flow-comparison","canonical":"compares_with","reason":"Flow comparison remains comparative rather than causal proof."},
+    {"raw":"structural","canonical":"related","reason":"Structural owner coupling is a lateral road unless North ancestry or explicit containment is separately declared."},
+    {"raw":"philosophical","canonical":"related","reason":"A philosophical connection is interpretive context, not a parent edge."},
+    {"raw":"paired-with","canonical":"related","reason":"Paired concepts are lateral by definition in the Atlas orientation model."},
+    {"raw":"identity-context","canonical":"related","reason":"Identity context enriches a subject without making either endpoint the canonical parent."},
+    {"raw":"role-development","canonical":"related","reason":"This owner wording points to a specialist role synthesis rather than asserting chronological derivation."},
+    {"raw":"comparative-context","canonical":"compares_with","reason":"Comparative context is explicitly a comparison layer."},
+    {"raw":"symbolic-body-comparison","canonical":"compares_with","reason":"Symbolic body mappings are comparisons and must not imply anatomical identity."},
+    {"raw":"temporal","canonical":"documented_by","reason":"The target timeline owns dated development and therefore documents the current subject's temporal history."},
+    {"raw":"chronological","canonical":"documented_by","reason":"The target journey/timeline supplies chronological context behind the current subject."},
+    {"raw":"intellectual","canonical":"related","reason":"Intellectual dependency/context is retained laterally unless a stronger typed dependency is established."}
   ]
 }
