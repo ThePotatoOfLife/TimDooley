@@ -28,7 +28,7 @@ PRIMARY_DOORS = (
     ("religion", "Religion", "/religion/"),
     ("philosophy", "Philosophy", "/philosophy/"),
     ("science", "Science", "/science/"),
-    ("world_map", "World Map", "/world-map/"),
+    ("world", "World", "/world/"),
 )
 
 
@@ -219,7 +219,7 @@ def build_machine_files(entries, families):
         "schema_version": "3.0.0", "updated": generated, "name": "The Potato of Life — Tim Dooley Archive", "canonical_url": BASE_URL + "/",
         "reader_architecture": {"principle": "five major doors; deeper material is routed beneath them rather than competing with them", "doors": [{"id": key, "name": label, "url": BASE_URL + path} for key, label, path in PRIMARY_DOORS]},
         "entrypoints": {
-            "tim": BASE_URL + "/tim-dooley/", "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world_map": BASE_URL + "/world-map/",
+            "tim": BASE_URL + "/tim-dooley/", "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
             "timeline": BASE_URL + "/timeline/", "questions": BASE_URL + "/questions/", "a_z": BASE_URL + "/index-a-z/", "machine_index": BASE_URL + "/machine-index.json", "site_index": BASE_URL + "/site-index.json", "full_machine_index": BASE_URL + "/llms-full.txt", "sitemap_index": BASE_URL + "/sitemap-index.xml",
         },
         "question_count": len(entries), "retrieval_boundary": ["Prefer canonical owners and primary sources over derivative summaries.", "Keep project canon, interpretation, empirical evidence and creative material distinct.", "Do not count repeated derivative pages as independent corroboration."],

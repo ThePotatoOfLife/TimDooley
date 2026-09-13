@@ -18,7 +18,7 @@ EXPECTED_DOORS = {
     "religion": "religion/",
     "philosophy": "philosophy/",
     "science": "science/",
-    "world_map": "world-map/",
+    "world": "world/",
 }
 
 EXPECTED_INTERACTIVE_ROUTES = {
@@ -27,6 +27,20 @@ EXPECTED_INTERACTIVE_ROUTES = {
     "context": "explore/#context=<id>",
     "pathway": "explore/#path=<id>",
 }
+
+WORLD_SPECIALISTS = {
+    "world-map/index.html": "World Map",
+    "politics/index.html": "Politics",
+    "north/index.html": "North",
+    "world-systems/index.html": "World Systems",
+}
+
+WORLD_GATEWAY_LINKS = (
+    "../world-map/",
+    "../politics/",
+    "../north/",
+    "../world-systems/",
+)
 
 
 def load_json(relative_path: str):
@@ -64,6 +78,27 @@ def main() -> int:
             errors,
         )
 
+    if isinstance(public_doors, dict) and "world_map" in public_doors:
+        fail("World Map must be a specialist route, not the fifth primary public door", errors)
+
+    world_page = ROOT / "world" / "index.html"
+    if not world_page.exists():
+        fail("World gateway is missing: world/index.html", errors)
+    else:
+        world_text = world_page.read_text(encoding="utf-8")
+        for route in WORLD_GATEWAY_LINKS:
+            if route not in world_text:
+                fail(f"World gateway must link specialist route {route}", errors)
+
+    for relative, label in WORLD_SPECIALISTS.items():
+        path = ROOT / relative
+        if not path.exists():
+            fail(f"World specialist surface is missing: {relative}", errors)
+            continue
+        text = path.read_text(encoding="utf-8")
+        if label.lower() not in text.lower():
+            fail(f"World specialist surface {relative} must identify itself as {label}", errors)
+
     projection = bridge.get("branch_projection", {})
     allowed_status_keys = {"primary_door", "global_route", "backend_only"}
     branch_ids = [branch.get("id") for branch in manifest.get("branches", []) if branch.get("id")]
@@ -88,6 +123,14 @@ def main() -> int:
             + ", ".join(sorted(malformed)),
             errors,
         )
+
+    world_projection = projection.get("world", {})
+    if world_projection.get("primary_door") != "world" or world_projection.get("human_route") != "world/":
+        fail("world branch must project through primary_door='world' with human_route='world/'", errors)
+
+    north_projection = projection.get("north", {})
+    if north_projection.get("primary_door") != "world" or north_projection.get("human_route") != "north/":
+        fail("north branch must project through World while preserving human_route='north/'", errors)
 
     bridge_routes = bridge.get("route_map", {})
     if any("index.html#node=" in str(value) for value in bridge_routes.values()):
@@ -118,7 +161,7 @@ def main() -> int:
 
     print(
         "Public projection validation passed: "
-        f"{len(EXPECTED_DOORS)} doors, {len(branch_ids)} projected branches, Explore owns deep interactive routing."
+        f"{len(EXPECTED_DOORS)} doors, {len(branch_ids)} projected branches, World owns the fifth domain and Explore owns deep interactive routing."
     )
     return 0
 

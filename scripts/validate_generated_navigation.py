@@ -17,7 +17,7 @@ REPRESENTATIVE_BRANCHES = {
     "tim": "/tim-dooley/",
     "traditions": "/religion/",
     "science": "/science/",
-    "world": "/world-map/",
+    "world": "/world/",
 }
 
 
@@ -75,9 +75,6 @@ def main() -> int:
         print("Generated navigation validation passed: topic, record and context pages resolve to current human parents.")
         return 0
     finally:
-        # This validator runs before the normal public build in CI. Do not leak a
-        # generated artifact into source-time integrity checks that intentionally
-        # expect a clean checkout.
         if OUT.exists():
             shutil.rmtree(OUT)
 

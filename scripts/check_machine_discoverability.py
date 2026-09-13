@@ -104,7 +104,22 @@ for path in sorted(SITE.rglob("index.html")):
             errors.append(f"{rel}: canonical URL must match the page for indexable pages")
         indexable.add(owner)
 
-key_pages = ["index.html", "tim-dooley/index.html", "religion/index.html", "philosophy/index.html", "science/index.html", "world-map/index.html", "timeline/index.html", "traditions/bible/index.html", "questions/index.html", "index-a-z/index.html"]
+key_pages = [
+    "index.html",
+    "tim-dooley/index.html",
+    "religion/index.html",
+    "philosophy/index.html",
+    "science/index.html",
+    "world/index.html",
+    "world-map/index.html",
+    "politics/index.html",
+    "north/index.html",
+    "world-systems/index.html",
+    "timeline/index.html",
+    "traditions/bible/index.html",
+    "questions/index.html",
+    "index-a-z/index.html",
+]
 for rel in key_pages:
     path = SITE / rel
     if not path.exists():
@@ -127,7 +142,7 @@ if SITE != ROOT:
         errors.append(f"sitemaps contain non-indexable page: {url}")
 
 llms = (SITE / "llms.txt").read_text(encoding="utf-8", errors="ignore") if (SITE / "llms.txt").exists() else ""
-for token in ["Tim Dooley", "Religion", "Philosophy", "Science", "World Map", "site-index.json", "machine-index.json", "llms-full.txt", "sitemap-index.xml"]:
+for token in ["Tim Dooley", "Religion", "Philosophy", "Science", "World", "site-index.json", "machine-index.json", "llms-full.txt", "sitemap-index.xml"]:
     if token not in llms:
         errors.append(f"llms.txt missing current discovery route/door: {token}")
 full = (SITE / "llms-full.txt").read_text(encoding="utf-8", errors="ignore") if (SITE / "llms-full.txt").exists() else ""
@@ -138,11 +153,16 @@ for token in ["site-index.json", "machine-index.json", "source-index.json", "tim
 try:
     discovery = json.loads((SITE / "discovery.json").read_text(encoding="utf-8"))
     entrypoints = discovery.get("entrypoints", {})
-    for key in ["tim", "religion", "philosophy", "science", "world_map", "site_index", "sitemap_index"]:
+    for key in ["tim", "religion", "philosophy", "science", "world", "world_map", "site_index", "sitemap_index"]:
         if not entrypoints.get(key):
             errors.append(f"discovery.json missing entrypoints.{key}")
-    if len(discovery.get("reader_architecture", {}).get("doors", [])) != 5:
+    doors = discovery.get("reader_architecture", {}).get("doors", [])
+    if len(doors) != 5:
         errors.append("discovery.json must expose exactly five primary reader doors")
+    else:
+        door_ids = [row.get("id") for row in doors if isinstance(row, dict)]
+        if door_ids != ["tim", "religion", "philosophy", "science", "world"]:
+            errors.append(f"discovery.json primary doors must end in World, not World Map; got {door_ids}")
 except Exception as exc:
     errors.append(f"invalid discovery.json: {exc}")
 

@@ -17,7 +17,7 @@ PRIMARY = (
     ("religion/", "Religion"),
     ("philosophy/", "Philosophy"),
     ("science/", "Science"),
-    ("world-map/", "World Map"),
+    ("world/", "World"),
 )
 
 
