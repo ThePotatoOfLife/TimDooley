@@ -101,6 +101,21 @@ RELATED: dict[str, tuple[str, ...]] = {
     "religion": ("traditions/bible", "tim-dooley", "timeline", "context/source-authority"),
 }
 
+# These are deliberately composed reader surfaces with their own explicit
+# navigation and contextual links. Do not append another visible SEO nav block.
+CURATED_READER_ROUTES = {
+    "",
+    "tim-dooley",
+    "philosophy",
+    "religion",
+    "traditions/bible",
+    "north",
+    "world",
+    "world-map",
+    "science",
+    "timeline",
+}
+
 
 def _normalize(route: str) -> str:
     return route.strip().strip("/")
@@ -193,6 +208,8 @@ def schema_profile(route: str) -> dict[str, object]:
 
 def related_routes(route: str) -> tuple[str, ...]:
     route = _normalize(route)
+    if route in CURATED_READER_ROUTES:
+        return ()
     if route in RELATED:
         return RELATED[route]
     kind = classify_route(route)
