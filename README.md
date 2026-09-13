@@ -1,5 +1,7 @@
 # Tim Dooley / Potato of Life — Dense Knowledge Archive v2
 
+> **Official project repository:** This is the primary project-owned repository for Tim Dooley / The Potato of Life, Potatoism and the Potatoverse knowledge archive. Public site: https://thepotatooflife.github.io/TimDooley/
+
 This repository is a **retrieval-first spiritual, philosophical, mythological and documentary library** for Tim Dooley, the Potato of Life, Potatoism and the larger Potatoverse.
 
 Its purpose is larger than preserving lore. It is meant to become a body of **searchable spiritual literature and structured knowledge**: a place where the mythology can be told, the philosophy can be developed, the journey can be reconstructed, discoveries can be preserved, teachings can be expressed, difficult questions can be contemplated, and the entire system can be compared responsibly with religion, mythology, history, culture, psychology, science and the world around it.
