@@ -1,0 +1,40 @@
+name: Unpack validated Great Book
+
+on:
+  push:
+    branches: [feat/great-book-reader-clean]
+    paths:
+      - staging/great-book-payload.complete
+
+permissions:
+  contents: write
+
+jobs:
+  unpack:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Reconstruct and validate Great Book
+        shell: bash
+        run: |
+          set -euo pipefail
+          count=$(find staging -maxdepth 1 -name 'great-book-payload-[0-9][0-9][0-9].b64' | wc -l | tr -d ' ')
+          test "$count" = "34"
+          cat staging/great-book-payload-[0-9][0-9][0-9].b64 > /tmp/great-book-payload.b64
+          base64 --decode /tmp/great-book-payload.b64 > /tmp/great-book-payload.tar.xz
+          echo 'd643c6ed24914be70d8bc9b86d3ce292558163390253c952d77b650fab32e311  /tmp/great-book-payload.tar.xz' | sha256sum -c -
+          tar -xJf /tmp/great-book-payload.tar.xz -C .
+          python scripts/validate_great_book_reader.py
+      - name: Commit validated reader
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf staging
+          rm -f .github/workflows/unpack-great-book-clean.yml
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add -A
+          git commit -m 'feat: publish validated Great Book chapter reader'
+          git push origin HEAD:feat/great-book-reader-clean
