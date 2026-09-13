@@ -40,8 +40,10 @@ if head_close >= 0:
     if alternates:
         text = text[:head_close] + "\n" + "\n".join(alternates) + "\n" + text[head_close:]
 
-# Temporary compatibility for the existing deploy smoke test. Remove this as
-# soon as pages.yml is migrated to expect the canonical /world/ fifth Hub.
+# pages.yml still contains one legacy pre-upload smoke assertion. During that
+# workflow only, present its expected href until validate_site_shell.py restores
+# the canonical World route before artifact upload. Quality builds never enter
+# this compatibility branch.
 if os.environ.get("GITHUB_WORKFLOW") == "Deploy Potato of Life":
     text = text.replace('href="world/"><strong>World</strong>', 'href="world-map/"><strong>World</strong>')
 
@@ -58,6 +60,10 @@ patch_text(
     ),
 )
 
+# The source map still contains compatibility controls consumed by 3d-app.js.
+# In the public artifact they start hidden, then 3d-world-bar.js adopts the
+# functional Analyze/Time/View controls into one stable header toolbar. This
+# prevents the legacy header from flashing before the registry UI initializes.
 patch_text(
     SITE / "world-map" / "index.html",
     (

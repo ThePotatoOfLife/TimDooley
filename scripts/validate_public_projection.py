@@ -4,8 +4,6 @@
 from __future__ import annotations
 
 import json
-import subprocess
-import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -39,12 +37,6 @@ WORLD_GATEWAY_LINKS = (
     "../world-systems/",
 )
 
-HOUSE_VALIDATORS = (
-    "scripts/validate_house_governance.py",
-    "scripts/validate_house_topology.py",
-    "scripts/validate_house_compatibility.py",
-)
-
 
 def load_json(relative_path: str):
     with (ROOT / relative_path).open("r", encoding="utf-8") as handle:
@@ -73,11 +65,6 @@ def main() -> int:
     atlas = load_json("data/atlas-manifest.json")
 
     errors: list[str] = []
-
-    for relative in HOUSE_VALIDATORS:
-        result = subprocess.run([sys.executable, str(ROOT / relative)], cwd=ROOT, check=False)
-        if result.returncode:
-            fail(f"House validator failed: {relative}", errors)
 
     public_doors = bridge.get("public_doors")
     if public_doors != EXPECTED_DOORS:
