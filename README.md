@@ -174,6 +174,12 @@ knowledge/
 
 The old repository remains source material during migration. Existing files are evidence of prior work, not automatic v2 canon.
 
+## Atlas architecture and migration
+
+The repository is being consolidated into the permanent Atlas House model: stable **Nodes**, typed **Relations**, recoverable **Artifacts**, and replaceable **Views**. The public homepage is the Atlas summit; canonical records live at stable `/atlas/<id>/` routes; legacy reader routes remain compatibility surfaces while ownership moves underneath them.
+
+See `docs/ATLAS-MIGRATION.md` for the migration lifecycle, removal preconditions, compatibility policy and operational sources of truth. The runtime deprecation state is owned by `data/atlas-deprecations.json`; `knowledge/indexes/atlas-deprecation-ledger.json` is its durable discovery index rather than a second ledger.
+
 ## Relationship-first model
 
 The fundamental unit is often the relationship rather than the isolated thing.
