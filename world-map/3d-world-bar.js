@@ -1,3 +1,4 @@
+(async () => {
 // Unified ordinary control surface for the World Relational Atlas.
 const layers = window.__potatoAtlasLayers;
 const query = window.__potatoAtlasQuery;
