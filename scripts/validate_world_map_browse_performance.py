@@ -33,6 +33,11 @@ def require(text: str, token: str, label: str, errors: list[str]) -> None:
         errors.append(f"{label} missing required browse-performance marker: {token}")
 
 
+def require_any(text: str, tokens: tuple[str, ...], label: str, errors: list[str]) -> None:
+    if not any(token in text for token in tokens):
+        errors.append(f"{label} missing required browse-performance marker alternatives: {' | '.join(tokens)}")
+
+
 def reject(text: str, token: str, label: str, errors: list[str]) -> None:
     if token in text:
         errors.append(f"{label} still contains rejected legacy behavior: {token}")
@@ -94,9 +99,9 @@ def main() -> int:
         "window.__potatoAtlasActiveView",
         "potato-atlas-active-view-change",
         "function forCountry",
-        "status: 'unknown'",
     ):
         require(active_view, token, "world-map/3d-active-view.js", errors)
+    require_any(active_view, ("status: 'unknown'", "status:'unknown'"), "world-map/3d-active-view.js", errors)
 
     require(bootstrap, "./3d-active-view.js", "world-map/3d-bootstrap.js", errors)
     require(bootstrap, "loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js')", "world-map/3d-bootstrap.js", errors)
@@ -123,7 +128,7 @@ def main() -> int:
     if render_start < 0 or render_lock < 0 or view_await < 0 or render_lock > view_await:
         errors.append("world-map/3d-country-pulse.js must acquire the render lock before awaiting active-view context")
 
-    require(bar, "Color:", "world-map/3d-world-bar.js", errors)
+    require_any(bar, ("Color:", "<span>Color</span>"), "world-map/3d-world-bar.js", errors)
     require(bar, "Pinned", "world-map/3d-world-bar.js", errors)
 
     require(compositor, "scalarFeatureStateBatches", "world-map/3d-compositor.js", errors)

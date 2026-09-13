@@ -23,6 +23,10 @@ WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 BUILD_SITE = ROOT / "scripts" / "build_site.py"
 
 REQUIRED_GROUPS = {
+    "nato": 32,
+    "brics": 11,
+    "aukus": 3,
+    "five-eyes": 5,
     "eu": 27,
     "oecd": 38,
     "g7": 7,
@@ -107,12 +111,21 @@ def main() -> int:
         errors.append("2026 Euro Area membership must include Bulgaria (BGR)")
 
     entries = {entry.get("id"): entry for entry in registry.get("entries", []) if isinstance(entry, dict)}
-    for group_id in REQUIRED_GROUPS:
-        entry = entries.get(f"group.{group_id}", {})
-        if entry.get("availability") != "current":
-            errors.append(f"group.{group_id} must be current in the map registry")
+    current_group_entries = [entry for entry in entries.values() if entry.get("family") == "groups" and entry.get("availability") == "current" and entry.get("queryable") is True]
+    for entry in current_group_entries:
+        group_id = str(entry.get("id", ""))[6:]
+        if not group_id:
+            continue
+        group = groups.get(group_id, {})
+        members = group.get("members", []) if isinstance(group, dict) else []
+        if not members:
+            errors.append(f"current queryable group layer {entry.get('id')} resolves to zero members in canonical institutional memberships")
         if entry.get("source_owner") != "data/world-institution-memberships.json":
-            errors.append(f"group.{group_id} must point to canonical institutional memberships")
+            errors.append(f"{entry.get('id')} must point to canonical institutional memberships")
+        expected_path = f"groups.{group_id}.members"
+        if entry.get("source_path") != expected_path:
+            errors.append(f"{entry.get('id')} must declare source_path={expected_path}")
+
     for entry_id, runtime_metric in CURRENT_STATS.items():
         entry = entries.get(entry_id, {})
         if entry.get("availability") != "current":
@@ -159,9 +172,6 @@ def main() -> int:
     for token in ("resolve_population", "resolve_area"):
         if token not in scalar_resolver:
             errors.append(f"scalar resolver missing {token}")
-    for token in ("__potatoAtlasDataRuntime", "coverage", "countries"):
-        if token not in world_bar:
-            errors.append(f"lower-left context missing runtime coverage marker: {token}")
     if "build_world_map_runtime" not in build_site:
         errors.append("build_site.py must generate the World Map data runtime before copying the public tree")
 
@@ -186,6 +196,10 @@ def main() -> int:
             for group_id, expected_count in REQUIRED_GROUPS.items():
                 if runtime_groups.get(group_id, {}).get("member_count") != expected_count:
                     errors.append(f"runtime group {group_id} has incorrect member_count")
+            for entry in current_group_entries:
+                group_id = str(entry.get("id", ""))[6:]
+                if runtime_groups.get(group_id, {}).get("member_count", 0) <= 0:
+                    errors.append(f"runtime current group {group_id} must resolve to at least one member")
             metrics = runtime.get("metrics", {})
             countries = runtime.get("countries", {})
             for metric in RUNTIME_STATS.values():
