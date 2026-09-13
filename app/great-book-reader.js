@@ -26,7 +26,9 @@ function observe(){
   doc.querySelectorAll('.gb-slot').forEach(s=>active.observe(s));
 }
 async function init(){
-  const r=await fetch('book-manifest.json'); if(!r.ok)throw new Error(`book-manifest.json ${r.status}`); manifest=await r.json();
+  const r=await fetch('book-index.json'); if(!r.ok)throw new Error(`book-index.json ${r.status}`); const index=await r.json();
+  const shards=await Promise.all(index.shards.map(async path=>{const res=await fetch(path);if(!res.ok)throw new Error(`${path} ${res.status}`);return res.json();}));
+  manifest={...index,chapters:shards.flat()}; if(manifest.chapters.length!==manifest.chapter_count)throw new Error(`chapter index ${manifest.chapters.length}/${manifest.chapter_count}`);
   doc.replaceChildren(); const fm={...manifest.front_matter}; doc.appendChild(slotFor(fm,'front')); manifest.chapters.forEach(c=>doc.appendChild(slotFor(c)));
   renderToc(); observe();
   const hash=decodeURIComponent(location.hash.slice(1)); const target=document.getElementById(hash||'front-matter'); await loadSlot(target); if(hash)requestAnimationFrame(()=>target?.scrollIntoView({block:'start'}));
