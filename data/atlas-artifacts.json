@@ -1,0 +1,48 @@
+{
+  "version": "0.1.0",
+  "purpose": "Conservative seed registry for first-class Archive Artifacts. This is not a complete archive inventory.",
+  "artifacts": [
+    {
+      "id": "legacy-readme",
+      "title": "Repository README",
+      "kind": "version",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "README.md",
+      "public_route": null,
+      "date_or_period": null,
+      "summary": "Repository-level statement of mission, organization, operating rules and current knowledge-library structure.",
+      "epistemic_classes": ["documentary"],
+      "node_refs": ["potato-of-life"],
+      "provenance": {"basis": "repository source", "source_ids": [], "notes": "Preserved as a dated/versioned repository artifact rather than a canonical subject owner."}
+    },
+    {
+      "id": "legacy-life-myth-timeline",
+      "title": "Tim Dooley Life and Myth Timeline",
+      "kind": "timeline_event",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md",
+      "public_route": null,
+      "date_or_period": "historical synthesis",
+      "summary": "Earlier consolidated chronology coupling Tim Dooley lived events, Potatoverse development, mythic interpretation and later synthesis.",
+      "epistemic_classes": ["historical", "self_description", "interpretation"],
+      "node_refs": ["tim-dooley", "potato-of-life"],
+      "provenance": {"basis": "repository historical synthesis", "source_ids": [], "notes": "Retained as historical stratum even where newer canonical owners supersede individual interpretations."}
+    },
+    {
+      "id": "turning-april-2025",
+      "title": "The Turning — April 2025",
+      "kind": "primary_source",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "THE-TURNING-APRIL-2025.md",
+      "public_route": null,
+      "date_or_period": "April 2025",
+      "summary": "Long-form project artifact preserving the April 2025 Turning material and its role in later Father, Needle, Ladder and Axis interpretation.",
+      "epistemic_classes": ["self_description", "historical", "project_canon"],
+      "node_refs": ["tim-dooley", "root-system"],
+      "provenance": {"basis": "repository primary project artifact", "source_ids": [], "notes": "Should remain distinguishable from later canonical synthesis built from it."}
+    }
+  ]
+}
