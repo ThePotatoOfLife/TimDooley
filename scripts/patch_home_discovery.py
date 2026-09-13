@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import json
-import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -40,13 +39,9 @@ if head_close >= 0:
     if alternates:
         text = text[:head_close] + "\n" + "\n".join(alternates) + "\n" + text[head_close:]
 
-# pages.yml still contains one legacy pre-upload smoke assertion. During that
-# workflow only, present its expected href until validate_site_shell.py restores
-# the canonical World route before artifact upload. Quality builds never enter
-# this compatibility branch.
-if os.environ.get("GITHUB_WORKFLOW") == "Deploy Potato of Life":
-    text = text.replace('href="world/"><strong>World</strong>', 'href="world-map/"><strong>World</strong>')
-
+# The canonical homepage World entrance is /world/ in every environment.
+# Deployment normalization must never temporarily rewrite it to /world-map/;
+# validators are read-only and the public artifact is correct before they run.
 PAGE.write_text(text, encoding="utf-8")
 
 patch_text(
