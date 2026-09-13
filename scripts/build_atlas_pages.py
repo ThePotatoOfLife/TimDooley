@@ -7,6 +7,7 @@ from pathlib import Path
 from atlas_runtime import build_runtime
 from atlas_model import by_id
 from atlas_render import page_shell,render_landing,render_node
+from atlas_export import write_public_index
 
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'_site'
@@ -26,9 +27,10 @@ def build_pages()->list[str]:
         canonical=f'{BASE_URL}{node["route"]}'
         write(f'atlas/{node["id"]}',page_shell(node['title'],node['summary'],render_node(node,nodes),canonical=canonical,depth=2))
         urls.append(canonical)
+    write_public_index(model,OUT/'data'/'atlas-index.json')
     return urls
 
 def main()->int:
-    urls=build_pages();print(f'ATLAS PAGES BUILT: {len(urls)-1} nodes + landing');return 0
+    urls=build_pages();print(f'ATLAS PAGES BUILT: {len(urls)-1} nodes + landing + public index');return 0
 
 if __name__=='__main__':raise SystemExit(main())
