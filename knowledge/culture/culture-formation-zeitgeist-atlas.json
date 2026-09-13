@@ -1,0 +1,76 @@
+{
+  "id": "culture-formation-zeitgeist-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-14",
+  "status": "active-analytical-atlas",
+  "purpose": "Model how shared meaning forms, scales, fragments, institutionalizes, persists, becomes extractive or high-control, and can be corrected or repaired.",
+  "epistemic_boundaries": [
+    "A cultural category does not prove membership, motive, coordination, criminality or moral quality.",
+    "Shared audience or ideology does not establish common command.",
+    "Prestige is not truth, reach or moral superiority.",
+    "High-control claims require feature-level evidence rather than label-first inference.",
+    "Historical labels are dated relationships, not permanent intrinsic properties."
+  ],
+  "formation_states": [
+    {"id":"encounter","definition":"People share an event, object, place or recurring interaction."},
+    {"id":"microculture","definition":"A small group develops repeated language, norms, jokes, rituals or expectations."},
+    {"id":"scene","definition":"Participation becomes recognizable around venues, creators, practices or media."},
+    {"id":"subculture","definition":"A formation develops stronger identity, boundaries, insider knowledge and durable practices."},
+    {"id":"counterpublic","definition":"Participants create alternative channels of discussion, interpretation or legitimacy relative to a wider public."},
+    {"id":"movement","definition":"Culture begins producing durable organizations, campaigns, leadership or coordinated action."},
+    {"id":"institutional-culture","definition":"Rules, professions, budgets, organizations and procedures reproduce the formation."},
+    {"id":"mainstream-mass","definition":"Forms gain wide reach through established distribution and public recognition."},
+    {"id":"prestige-canonical","definition":"Institutions preserve, teach, award, archive or treat works and practices as exemplary or enduring."},
+    {"id":"tradition-civilizational-inheritance","definition":"A formation persists across generations and becomes material later cultures inherit, remix, contest or revive."}
+  ],
+  "cultural_dimensions": {
+    "reach":"intimate to mass exposure and participation",
+    "participation_depth":"exposure, audience, occasional, active, self-identification, formal membership, core production or leadership",
+    "boundary_strength":"insider vocabulary, initiation, status markers, shibboleths, credentials, rituals and outsider categories",
+    "boundary_permeability":"capacity to join, leave, disagree or participate partially",
+    "institutionalization":"reproduction through organizations, rules, funding, professions, education, archives or law",
+    "persistence":"duration and memory systems",
+    "prestige":"symbolic status conferred by institutions and gatekeepers",
+    "commerciality":"dependence on markets, sponsorship, advertising, patronage or platform economies",
+    "coercion_exit_cost":"social, economic, reputational or practical cost of dissent and departure",
+    "archive_persistence":"durability, searchability and reproducibility of traces",
+    "correctability":"capacity to revise false claims, preserve counterevidence, forgive, expire labels and restore reputation",
+    "generativity":"capacity to produce new works, skills, institutions, relations or capabilities",
+    "garden_repair_value":"project-normative measure of agency, reciprocity, protection, truth-seeking, meaningful exit and future capacity"
+  },
+  "concepts": {
+    "popular-culture":{"definition":"Culture with broad audience recognition or participation; popularity describes reach, not inferiority."},
+    "mass-culture":{"definition":"Culture produced or distributed through large-scale industrial or platform systems."},
+    "high-culture":{"definition":"Culture institutionally treated as prestigious, exemplary or refined; a prestige/canon relation rather than proof of greater human worth."},
+    "elite-culture":{"definition":"Practices, tastes or networks concentrated among high-status or high-resource groups; related to but not identical with high culture."},
+    "canonical-culture":{"definition":"Works, practices or ideas repeatedly preserved and taught as culturally important."},
+    "zeitgeist":{"definition":"A retrospective or analytical description of concerns, styles, technologies, anxieties, hopes, conflicts, symbols and assumptions especially salient in a period; not a mystical causal force."},
+    "peak-culture":{"status":"project-analytical","definition":"A formation or moment with unusually high combined cultural generativity and coherence. It is separate from moral quality."},
+    "ideal-culture":{"definition":"An explicit normative aspiration describing what a culture says human relations ought to become; compare declared ideals with observable practice."},
+    "conflict-culture":{"definition":"A dispute that develops recurring stories, roles, vocabulary, archives, rituals, status systems and institutions that reproduce the conflict."},
+    "cultural-repair":{"definition":"Processes that increase correction, accountability, proportion, exit, protection, reciprocity and future capacity."}
+  },
+  "transformation_models": {
+    "formation":"interaction -> repetition -> shared meaning -> norm -> identity -> memory -> institution -> inheritance or mutation",
+    "conflict":"incident -> story -> roles -> allies -> vocabulary -> evidence archive -> status system -> recurring rituals -> institution or legal process -> inherited memory",
+    "reputation":"event or claim -> framing -> repetition -> audience adoption -> archive persistence -> counterclaim -> platform amplification -> professional intervention -> legal or institutional response -> correction, adjudication or unresolved memory",
+    "zeitgeist":"historical conditions + technologies + institutions + shocks + repeated symbols + public mood + creative response -> recognizable period pattern"
+  },
+  "project_mapping": {
+    "sektur":"project-defined semi-bounded conflict and attention territory; keep historical Da Sektur distinct from the later Timic generalization",
+    "farm":"project analytical model of recurring attention cultivation and extraction",
+    "swamp":"project metaphor for dense, blocked or opaque overlap among incentives, institutions, media, markets and unresolved residue",
+    "tree-of-strife":"root incentive -> mechanism -> relation -> event -> consequence -> seed of recurrence",
+    "garden":"project counter-model emphasizing correction, accountability, exit, protection, reciprocity and independent future growth"
+  },
+  "research_routes": [
+    "data/culture-ontology.json",
+    "data/subculture-research-map.json",
+    "docs/FARM-SEKTUR-SWAMP-THEORY.md",
+    "knowledge/world/under-culture-shadow-network-atlas.json",
+    "knowledge/world/farm-shadow-source-ledger.json"
+  ],
+  "sources": [
+    "knowledge/culture/culture-theory-source-ledger.json"
+  ]
+}
