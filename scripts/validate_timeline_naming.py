@@ -2,6 +2,7 @@
 """Validate that Timeline is the single canonical temporal-system name."""
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import sys
 
@@ -23,6 +24,25 @@ def fail(message: str) -> None:
 def is_internal_design_doc(rel: Path) -> bool:
     """Implementation history may name retired products while discussing migrations."""
     return len(rel.parts) >= 2 and rel.parts[0] == "docs" and rel.parts[1] == "superpowers"
+
+
+def strip_declared_compatibility_routes(rel: Path, text: str) -> str:
+    """Compatibility aliases may name chronology; active/canonical fields may not."""
+    if rel not in {
+        Path("data/house/public-surfaces.json"),
+        Path("knowledge/research/potato-house-master/public-route-topology.json"),
+    }:
+        return text
+    try:
+        payload = json.loads(text)
+    except json.JSONDecodeError:
+        return text
+    rows_key = "surfaces" if rel.name == "public-surfaces.json" else "records"
+    compat_key = "legacy_routes" if rel.name == "public-surfaces.json" else "compatibility_routes"
+    for row in payload.get(rows_key, []):
+        if isinstance(row, dict):
+            row.pop(compat_key, None)
+    return json.dumps(payload, ensure_ascii=False)
 
 
 def main() -> None:
@@ -64,14 +84,13 @@ def main() -> None:
             continue
         if path.suffix.lower() not in TEXT_SUFFIXES and path.name != "CNAME":
             continue
-        # Design/implementation history is not an active product surface. It must
-        # be allowed to name retired systems when explaining migrations away from them.
         if is_internal_design_doc(rel):
             continue
         try:
             text = path.read_text(encoding="utf-8")
         except UnicodeDecodeError:
             continue
+        text = strip_declared_compatibility_routes(rel, text)
 
         if "knowledge/chronology/" in text or "/chronology/" in text or "../chronology/" in text:
             forbidden_hits.append(str(rel))
