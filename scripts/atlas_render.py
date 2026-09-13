@@ -8,8 +8,8 @@ def esc(value:object)->str:return html.escape(str(value if value is not None els
 def href_for(route:str,*,depth:int)->str:return '../'*depth if route=='/' else '../'*depth+route.strip('/')+'/'
 
 def page_shell(title:str,description:str,body:str,*,canonical:str,depth:int)->str:
-    css='../'*depth+'app/design-system.css';home='../'*depth
-    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} | The Potato of Life</title><meta name="description" content="{esc(description[:300])}"><link rel="canonical" href="{esc(canonical)}"><link rel="stylesheet" href="{esc(css)}"></head><body class="site-shell"><a class="site-skip-link" href="#main">Skip to content</a><header class="site-header"><a class="site-brand" href="{esc(home)}">Potato of Life</a></header><main id="main" class="site-main">{body}</main><footer class="site-footer"><a href="{esc(home)}">Potato of Life</a></footer></body></html>'''
+    css='../'*depth+'app/design-system.css';home='../'*depth;atlas_index='../'*depth+'data/atlas-index.json'
+    return f'''<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{esc(title)} | The Potato of Life</title><meta name="description" content="{esc(description[:300])}"><link rel="canonical" href="{esc(canonical)}"><link rel="alternate" type="application/json" href="{esc(atlas_index)}" title="Atlas graph"><link rel="stylesheet" href="{esc(css)}"></head><body class="site-shell"><a class="site-skip-link" href="#main">Skip to content</a><header class="site-header"><a class="site-brand" href="{esc(home)}">Potato of Life</a></header><main id="main" class="site-main">{body}</main><footer class="site-footer"><a href="{esc(home)}">Potato of Life</a></footer></body></html>'''
 
 def crumbs(node:dict,nodes:dict[str,dict])->str:
     items=[]
