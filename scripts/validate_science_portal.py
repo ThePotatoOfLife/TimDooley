@@ -8,6 +8,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_PAGE = ROOT / "science" / "index.html"
+LIBRARY_CSS = ROOT / "science" / "science-library.css"
 BUILDER = ROOT / "scripts" / "build_science_catalog.py"
 SITE = ROOT / "_site"
 BUILT_PAGE = SITE / "science" / "index.html"
@@ -41,6 +42,13 @@ BUILT_MARKERS = (
     'class="science-record"',
 )
 
+COMPACT_CSS_MARKERS = (
+    ".science-abstract{display:none}",
+    ".science-equation-preview{display:none}",
+    ".science-record-tags{display:none}",
+    ".science-record-actions .science-source{display:none}",
+)
+
 
 def require_markers(text: str, markers: tuple[str, ...], owner: str, errors: list[str]) -> None:
     for marker in markers:
@@ -51,14 +59,17 @@ def require_markers(text: str, markers: tuple[str, ...], owner: str, errors: lis
 def main() -> int:
     errors: list[str] = []
 
-    for path in (SOURCE_PAGE, BUILDER):
+    for path in (SOURCE_PAGE, LIBRARY_CSS, BUILDER):
         if not path.exists():
             errors.append(f"missing required Science component: {path.relative_to(ROOT)}")
 
     source = SOURCE_PAGE.read_text(encoding="utf-8", errors="replace") if SOURCE_PAGE.exists() else ""
+    css = LIBRARY_CSS.read_text(encoding="utf-8", errors="replace") if LIBRARY_CSS.exists() else ""
     builder = BUILDER.read_text(encoding="utf-8", errors="replace") if BUILDER.exists() else ""
     require_markers(source, SOURCE_MARKERS, "science/index.html", errors)
     require_markers(builder, BUILDER_MARKERS, "scripts/build_science_catalog.py", errors)
+    compact_css = "".join(css.split())
+    require_markers(compact_css, COMPACT_CSS_MARKERS, "science/science-library.css", errors)
 
     if SITE.exists():
         if not BUILT_PAGE.exists():
