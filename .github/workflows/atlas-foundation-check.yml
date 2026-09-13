@@ -25,3 +25,5 @@ jobs:
         run: python scripts/validate_atlas_node_schema.py
       - name: Validate Atlas North spine
         run: python scripts/validate_atlas_north.py
+      - name: Validate derived Atlas model
+        run: python scripts/validate_atlas_model.py
