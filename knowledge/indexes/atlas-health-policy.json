@@ -1,0 +1,7 @@
+{
+  "version":"1.0.0",
+  "purpose":"Diagnose structural debt during Atlas migration without confusing Archive depth with repository failure.",
+  "errors":["duplicate_active_id","duplicate_active_route","north_cycle","missing_active_parent","missing_owner"],
+  "warnings":["duplicate_owner_candidate","unresolved_relation","missing_provenance","legacy_navigation_contract","validator_mutates_output","generic_css_structural_owner","unclassified_research_wave"],
+  "rule":"Warnings document migration debt. Errors violate the permanent Atlas constitution."
+}
