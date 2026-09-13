@@ -76,11 +76,25 @@ jobs:
         run: python scripts/validate_atlas_pages.py
       - name: Validate public Atlas index after full build
         run: python scripts/validate_atlas_public_index.py
+      - name: Audit backend consolidation frontier
+        run: |
+          python scripts/audit_backend_coverage.py
+          python scripts/audit_atlas_swamp.py
       - name: Upload Atlas frontier diagnostics
         if: ${{ always() && hashFiles('atlas-frontier-report.json') != '' }}
         uses: actions/upload-artifact@v4
         with:
           name: atlas-frontier-report
           path: atlas-frontier-report.json
+          if-no-files-found: warn
+          retention-days: 7
+      - name: Upload backend consolidation diagnostics
+        if: ${{ always() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-consolidation-report
+          path: |
+            data/backend-coverage-report.json
+            atlas-swamp-report.json
           if-no-files-found: warn
           retention-days: 7
