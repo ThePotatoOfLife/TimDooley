@@ -1,5 +1,5 @@
 {
-  "version": "0.3.0",
+  "version": "0.3.1",
   "purpose": "Conservative seed registry for first-class Archive Artifacts. This is not a complete archive inventory.",
   "artifacts": [
     {
@@ -141,6 +141,34 @@
       "epistemic_classes": ["historical", "comparative", "documentary", "interpretation"],
       "node_refs": ["son"],
       "provenance": {"basis": "specialist comparative-scriptural atlas", "source_ids": [], "notes": "Used for biblical comparison and mismatch handling, not as a current identity owner."}
+    },
+    {
+      "id": "tim-role-synthesis",
+      "title": "Tim Role Synthesis",
+      "kind": "collection",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "knowledge/core/tim-role-synthesis.json",
+      "public_route": null,
+      "date_or_period": "recovered project interpretation",
+      "summary": "Specialist synthesis of Tim-side roles, public/material relations, source-center interpretation, stewardship, identity infrastructure and role development.",
+      "epistemic_classes": ["self_description", "documentary", "interpretation"],
+      "node_refs": ["tim-dooley", "heaven-spirit-father", "potato-philosophy"],
+      "provenance": {"basis": "specialist recovered project synthesis", "source_ids": [], "notes": "Registered as Depth/context rather than promoted to a second Tim canonical owner."}
+    },
+    {
+      "id": "farm-swamp-tree-of-strife-atlas",
+      "title": "Farm, Swamp, Forge, Sektur & Trees of Strife Atlas",
+      "kind": "collection",
+      "status": "active",
+      "visibility": "public",
+      "source_path": "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+      "public_route": null,
+      "date_or_period": "current specialist systems synthesis",
+      "summary": "Specialist systems synthesis coupling Farm, Swamp, Forge, role ecology, coordination failure, knowledge use, repair and symbolic network models with explicit boundaries around real-world claims.",
+      "epistemic_classes": ["documentary", "comparative", "interpretation"],
+      "node_refs": ["root-system", "potato-philosophy", "potatoverse-master-framework"],
+      "provenance": {"basis": "specialist mixed empirical-symbolic synthesis", "source_ids": [], "notes": "Kept as supporting context rather than promoted into the canonical North spine."}
     }
   ]
 }
