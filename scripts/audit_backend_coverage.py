@@ -199,10 +199,22 @@ def main():
 
     duplicate_ids={k:sorted(set(v)) for k,v in id_locations.items() if len(set(v))>1}
     knowledge_duplicate_ids={}
+    knowledge_index_mirror_ids={}
+    knowledge_peer_duplicate_ids={}
     for ident,locations in duplicate_ids.items():
         knowledge_locations=sorted(p for p in locations if p.startswith("knowledge/"))
-        if len(knowledge_locations)>1:
-            knowledge_duplicate_ids[ident]=knowledge_locations
+        if len(knowledge_locations)<=1:
+            continue
+        knowledge_duplicate_ids[ident]=knowledge_locations
+        index_locations=[p for p in knowledge_locations if p.startswith("knowledge/indexes/")]
+        peer_locations=[p for p in knowledge_locations if not p.startswith("knowledge/indexes/")]
+        if index_locations and peer_locations:
+            knowledge_index_mirror_ids[ident]={
+                "indexes":index_locations,
+                "owners_or_peers":peer_locations,
+            }
+        if len(peer_locations)>1:
+            knowledge_peer_duplicate_ids[ident]=peer_locations
 
     exact_duplicates={k:sorted(v) for k,v in content_hashes.items() if len(v)>1}
     bridge_ids={x.get("id") for x in bridge.get("explicit_bridges",[]) if isinstance(x,dict)}
@@ -238,7 +250,7 @@ def main():
     date_like_endpoints=sorted(unresolved_classes["date_like"])
 
     report={
-        "version":"2.1.0",
+        "version":"2.2.0",
         "files_scanned":len(files),
         "data_files_scanned":len(data_paths),
         "knowledge_files_scanned":len(knowledge_paths),
@@ -251,6 +263,13 @@ def main():
         "invalid_json":invalid_json,
         "duplicate_ids":{k:v for k,v in sorted(duplicate_ids.items())},
         "knowledge_duplicate_ids":{k:v for k,v in sorted(knowledge_duplicate_ids.items())},
+        "knowledge_index_mirror_ids":{k:v for k,v in sorted(knowledge_index_mirror_ids.items())},
+        "knowledge_peer_duplicate_ids":{k:v for k,v in sorted(knowledge_peer_duplicate_ids.items())},
+        "duplicate_signal_counts":{
+            "knowledge_duplicates":len(knowledge_duplicate_ids),
+            "index_mirrors":len(knowledge_index_mirror_ids),
+            "peer_duplicates":len(knowledge_peer_duplicate_ids),
+        },
         "exact_duplicate_file_contents":exact_duplicates,
         "relationship_only_unresolved_ids":relationship_only,
         "candidate_unresolved_machine_ids":candidate_unresolved_machine_ids,
@@ -271,7 +290,9 @@ def main():
         "notes":[
             "Knowledge files outside the Atlas owner/Artifact registries are a consolidation frontier, not automatic errors or deletion targets.",
             "Duplicate IDs are diagnostics, not automatic deletion targets: indexes, overlays, country layers and research expansions can legitimately repeat IDs.",
-            "knowledge_duplicate_ids narrows duplicate pressure to IDs repeated across multiple knowledge files, where canonical ownership review is most useful.",
+            "knowledge_duplicate_ids preserves the broad knowledge-level inventory for compatibility.",
+            "knowledge_index_mirror_ids separates likely navigation/index mirrors from ownership pressure; an index repeating a canonical record ID is usually expected.",
+            "knowledge_peer_duplicate_ids is the higher-signal ownership queue: the same ID appears in multiple non-index knowledge files and deserves canonical-owner review.",
             "Exact duplicate files are candidates for consolidation after consumer migration.",
             "relationship_only_unresolved_ids is retained as the compatibility inventory; candidate_unresolved_machine_ids is the higher-signal graph-debt queue.",
             "External references, human-readable labels and date-like endpoints are reported separately so they do not inflate machine-ID cleanup pressure.",
