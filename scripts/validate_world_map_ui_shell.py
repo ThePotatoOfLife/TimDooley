@@ -115,6 +115,8 @@ def main() -> int:
         for token in ("data-relation-mode", "setRelationMode", "Money", "Systems", "Institutions"):
             if token not in world_bar:
                 errors.append(f"ordinary Relations menu must provide actionable connection filters: {token}")
+        if " · ${count}" in world_bar or "summary.textContent = count ?" in world_bar:
+            errors.append("Groups, Religion and Stats menu labels must remain static when selections change")
 
     if active_view:
         for token in ("atlas-time-change", "timeState", "refreshSerial", "matchCount", "potato-atlas-active-view-change"):
