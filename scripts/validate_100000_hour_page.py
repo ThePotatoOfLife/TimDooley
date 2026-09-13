@@ -15,6 +15,8 @@ CANONICAL_MARKERS = (
     'id="live-son"',
     'id="live-father"',
     'id="live-beyond"',
+    'Live model · historical record',
+    'a:focus-visible',
     'WHAT AM I LOOKING AT?',
     'MODELLED 100,000-HOUR CROSSING',
     '≈ July 4, 2026 · 13:20 CEST',
