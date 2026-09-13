@@ -22,7 +22,9 @@ If adding knowledge makes the homepage harder to understand, the system has fail
 
 ## Scope
 
-This design covers the first architectural implementation wave required to make the Potato House operational for public information flow:
+This design defines the architectural direction for making the Potato House operational for public information flow. Its immediate implementation milestone is Wave 1: governance registries, schemas, current-route topology classification, validators, and primary World-routing normalization.
+
+The broader architecture also defines the interfaces later waves must respect:
 
 1. machine-readable Domain Room registry;
 2. machine-readable public surface registry;
@@ -332,7 +334,7 @@ A public homepage item should almost always draw from `publishable` or `featured
 
 ## Crystallization readiness
 
-The initial implementation should support a machine-readable readiness record or generated readiness report with boolean or enumerated checks for:
+The architecture must support a machine-readable readiness record or generated readiness report with boolean or enumerated checks for:
 
 - identity readiness;
 - canonical ownership readiness;
@@ -349,6 +351,8 @@ Readiness is not truth ranking.
 No single numeric score should decide whether a claim is true or whether a page belongs on the homepage.
 
 Editorial prominence remains curated.
+
+The first implementation plan does not need to implement the readiness report; it must only avoid schema or lifecycle choices that would block Wave 3.
 
 ## Raw → evidence → canon → synthesis → public data flow
 
@@ -381,6 +385,8 @@ It may reference:
 The projection must reference canonical IDs rather than copy complete durable records merely to simplify rendering.
 
 A generated navigation projection may be disposable and rebuilt whenever the House changes.
+
+Wave 1 needs only the route/topology fields required to classify existing major public surfaces. It does not need to build a general page-rendering engine.
 
 ## Initial page projection example
 
@@ -430,6 +436,8 @@ The topology ledger is not itself a new content owner.
 
 Its durable pieces should later become registries or generated indexes once proven.
 
+Wave 1 topology scope is intentionally limited to current major public routes and their relationship to Domain Rooms, primary Hub, canonical route, surface type, and migration status. Deeper subject-level topology belongs to Wave 2 and later.
+
 ## Representative-object acceptance set
 
 Before mass migration, the architecture must successfully normalize a deliberately diverse acceptance set:
@@ -447,7 +455,7 @@ Before mass migration, the architecture must successfully normalize a deliberate
 11. Tree of Strife — project synthesis/model;
 12. one raw source Artifact — evidence/provenance object not necessarily public-facing.
 
-For every acceptance object, the system must be able to identify or explicitly decline:
+For every acceptance object, the system must eventually be able to identify or explicitly decline:
 
 - identity;
 - owner;
@@ -459,6 +467,8 @@ For every acceptance object, the system must be able to identify or explicitly d
 - public destination or explicit backend-only status;
 - broader context;
 - related material.
+
+The full acceptance set is a precondition for mass subject migration, not a requirement for Wave 1 governance-skeleton completion.
 
 If one object requires a new universal architecture merely to fit, investigate the modeling error before extending the universal kernel.
 
@@ -645,9 +655,9 @@ The implementation plan should determine exact final paths by following existing
 - one canonical public surface registry;
 - schemas for those registries;
 - one topology research/bridge index for current major routes;
-- one crystallization/readiness model or generated report contract;
+- one crystallization/readiness model or generated report contract for a later wave;
 - validator(s) for registry and public-shell integrity;
-- shared navigation/projection helper(s) where current build patterns justify them;
+- shared navigation/projection helper(s) only when a concrete current consumer justifies them;
 - updates to current top-level Hub markup/navigation only where necessary to use World consistently;
 - documentation updates marking older whole-site navigation specs as superseded, historical, or Explore-specific where appropriate.
 
@@ -695,11 +705,19 @@ Only after destinations and contracts are stable, refine the root homepage if ne
 
 Keep it simple even if the House behind it becomes much richer.
 
+## Implementation-plan decomposition
+
+This document is an umbrella design. The next implementation plan must cover Wave 1 only.
+
+Wave 1 is one independently testable subsystem: governance registries plus route topology and validation. It should finish with the existing public homepage intact and with a stable machine-readable contract that later work can consume.
+
+Waves 2–6 are architectural direction, not permission to batch all remaining work into the first plan. Each later wave must be planned from the actual repository state produced by the prior wave. If a later wave changes public behavior or introduces a new subsystem, it receives the appropriate design/approval gate before implementation.
+
 ## Test strategy
 
-The implementation plan must use test-first changes where practical and repository-appropriate.
+The Wave 1 implementation plan must use test-first changes where practical and repository-appropriate.
 
-Tests must cover:
+Wave 1 tests must cover:
 
 - schema validation for Room registry;
 - schema validation for Public Surface registry;
@@ -709,8 +727,9 @@ Tests must cover:
 - public-surface-to-Room reference integrity;
 - topology reference integrity for the initial route set;
 - static HTML fallback / critical links where existing site-shell tests support this;
-- representative-object normalization for the acceptance set as that layer is added;
 - build/deploy artifact validation on the exact generated output where current workflow supports it.
+
+Representative-object normalization belongs to later waves and should not block Wave 1 once the governance contracts are correct.
 
 Do not use tests merely to snapshot large generated files. Prefer contract assertions that explain architectural intent.
 
@@ -736,7 +755,7 @@ The first implementation milestone succeeds when:
 - World Map, Politics, North, and World Systems are correctly represented as World lenses rather than primary peers of the five homepage hubs;
 - schema/route validators pass;
 - current homepage behavior remains reader-first and does not expose backend architecture;
-- the topology ledger can describe the representative route set without creating duplicate canonical owners;
+- the topology ledger can describe the current major route set without creating duplicate canonical owners;
 - older manifest/navigation contracts have explicit migration status instead of competing silently;
 - the next implementation wave can build projection/navigation blocks without redesigning the ontology again.
 
