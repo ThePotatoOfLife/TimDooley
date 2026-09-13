@@ -2,12 +2,13 @@
 //
 // The registry/compositor/runtime remain authoritative. This module only turns
 // the current map question into one consistent country-level answer for cards,
-// inspectors, legends and comparison surfaces.
+// inspectors, legends, comparison surfaces and the Current map view summary.
 
 const layers = window.__potatoAtlasLayers;
 const compositor = window.__potatoAtlasCompositor;
 const selection = window.__potatoAtlasSelection;
 const runtime = window.__potatoAtlasDataRuntime;
+const query = window.__potatoAtlasQuery;
 if (!layers || !compositor || !selection || !runtime?.ready) {
   throw new Error('Active view requires layer, compositor, selection and data-runtime APIs.');
 }
@@ -17,11 +18,13 @@ const DEMOGRAPHY_URL = '../data/world-country-demography.json';
 let demography = null;
 let current = null;
 let refreshSerial = 0;
+let timeState = readTimeState();
 
-async function fetchJson(url) {
-  const response = await fetch(url, { cache:'no-cache' });
-  if (!response.ok) throw new Error(`${response.status} ${url}`);
-  return response.json();
+function fetchJson(url) {
+  return fetch(url, { cache:'no-cache' }).then(response => {
+    if (!response.ok) throw new Error(`${response.status} ${url}`);
+    return response.json();
+  });
 }
 async function demographyData() {
   if (!demography) demography = await fetchJson(DEMOGRAPHY_URL);
@@ -49,6 +52,13 @@ function formatObservation(cell, unitOverride = null) {
   if (unit.includes('percent')) return `${formatNumber(value, 1)}%`;
   if (unit.includes('year')) return `${formatNumber(value, 1)} years`;
   return `${formatNumber(value, 1)}${unit ? ` ${unit}` : ''}`;
+}
+function readTimeState() {
+  const direct = window.__potatoAtlasTime?.getState?.();
+  if (direct) return direct;
+  const url = new URL(location.href);
+  const mode = ['current','as_of','changed_between'].includes(url.searchParams.get('timeMode')) ? url.searchParams.get('timeMode') : 'current';
+  return { mode, time:url.searchParams.get('time') || '', time2:url.searchParams.get('time2') || '' };
 }
 function activeEntries() {
   return layers.active().map(id => layers.get(id)).filter(Boolean);
@@ -85,16 +95,16 @@ async function scalarObservation(code, entry) {
   return null;
 }
 async function setMembership(code, entries) {
-  if (!entries.length) return { mode:window.__potatoAtlasQuery?.getMode?.() || 'any', matches:null, memberships:[] };
+  if (!entries.length) return { mode:query?.getMode?.() || 'any', matches:null, memberships:[] };
   const memberships = [];
   for (const entry of entries) {
     let member = false;
     if (entry.runtime_axis) member = (await runtime.axisMembers?.(entry.runtime_axis) || []).includes(code);
     else if (entry.id.startsWith('group.')) member = (await runtime.members?.(entry.id.slice(6)) || []).includes(code);
-    else member = Boolean(await window.__potatoAtlasQuery?.matches?.(code));
+    else member = Boolean(await query?.matches?.(code));
     memberships.push({ id:entry.id, label:entry.label, member, epistemicType:entry.epistemic_type || null, notes:entry.notes || null });
   }
-  const mode = window.__potatoAtlasQuery?.getMode?.() || 'any';
+  const mode = query?.getMode?.() || 'any';
   const states = memberships.map(item => item.member);
   const matches = mode === 'all' ? states.every(Boolean) : states.some(Boolean);
   return { mode, matches, memberships };
@@ -118,22 +128,22 @@ async function forCountry(code) {
   const observation = scalar && code ? await scalarObservation(code, scalar) : null;
   const value = number(observation?.value);
   const coverage = await coverageFor(scalar);
-  const memberships = code ? await setMembership(code, sets) : { mode:window.__potatoAtlasQuery?.getMode?.() || 'any', matches:null, memberships:[] };
+  const memberships = code ? await setMembership(code, sets) : { mode:query?.getMode?.() || 'any', matches:null, memberships:[] };
   const relationMode = selection.getRelationMode?.() || selection.current?.relationMode || 'all';
 
   if (!scalar && !sets.length) {
     return {
       status:'neutral', code, scalar:null, sets:[], observation:null, display:null,
       source:null, period:null, coverage:null, memberships, relationMode,
-      question:'No analytical overlay',
+      timeState, question:'No analytical overlay',
     };
   }
 
   if (scalar && value == null) {
     return {
-      status: 'unknown', code, scalar, sets, observation:null, display:'Unknown',
+      status:'unknown', code, scalar, sets, observation:null, display:'Unknown',
       source:sourceLabel(scalar, observation), period:periodLabel(observation), coverage,
-      memberships, relationMode, question:`Color: ${scalar.label}`,
+      memberships, relationMode, timeState, question:`Color: ${scalar.label}`,
     };
   }
 
@@ -141,7 +151,7 @@ async function forCountry(code) {
     status:'current', code, scalar, sets, observation,
     display:scalar ? formatObservation(observation, scalar.unit) : null,
     source:sourceLabel(scalar, observation), period:periodLabel(observation), coverage,
-    memberships, relationMode,
+    memberships, relationMode, timeState,
     question:scalar ? `Color: ${scalar.label}` : `${memberships.mode.toUpperCase()} set view`,
   };
 }
@@ -150,13 +160,26 @@ async function refresh(reason = 'refresh') {
   const serial = ++refreshSerial;
   const code = selection.current?.activeCode || selection.current?.code || '';
   let next;
-  try { next = await forCountry(code); }
-  catch (error) {
+  try {
+    next = await forCountry(code);
+    if (next.sets?.length && query?.matchedCountries) {
+      const matched = await query.matchedCountries();
+      next.matchCount = matched.length;
+    } else {
+      next.matchCount = null;
+    }
+  } catch (error) {
     console.warn('Active map view context unavailable:', error);
-    next = { status: 'unknown', code, scalar:scalarEntry(), sets:setEntries(), display:'Unknown', source:null, period:null, coverage:null, memberships:{ mode:window.__potatoAtlasQuery?.getMode?.() || 'any', matches:null, memberships:[] }, relationMode:selection.getRelationMode?.() || 'all', question:'Map view unavailable' };
+    next = {
+      status:'unknown', code, scalar:scalarEntry(), sets:setEntries(), display:'Unknown',
+      source:null, period:null, coverage:null,
+      memberships:{ mode:query?.getMode?.() || 'any', matches:null, memberships:[] },
+      relationMode:selection.getRelationMode?.() || 'all', timeState,
+      matchCount:null, question:'Map view unavailable',
+    };
   }
   if (serial !== refreshSerial) return current;
-  current = { ...next, reason };
+  current = { ...next, timeState, reason };
   window.dispatchEvent(new CustomEvent('potato-atlas-active-view-change', { detail:current }));
   return current;
 }
@@ -176,7 +199,11 @@ for (const eventName of [
   'potato-atlas-query-change',
   'potato-atlas-relation-mode-change',
 ]) {
-  window.addEventListener(eventName, event => queueMicrotask(() => refresh(eventName)));
+  window.addEventListener(eventName, () => queueMicrotask(() => refresh(eventName)));
 }
+window.addEventListener('atlas-time-change', event => {
+  timeState = event.detail || readTimeState();
+  queueMicrotask(() => refresh('atlas-time-change'));
+});
 
 await refresh('ready');
