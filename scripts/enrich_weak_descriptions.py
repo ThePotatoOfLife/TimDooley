@@ -1,14 +1,16 @@
 #!/usr/bin/env python3
-"""Expand weak descriptions, then apply semantic entity-and-intent SEO.
+"""Expand weak descriptions, deduplicate question intents, then apply semantic SEO.
 
 The first pass only touches descriptions shorter than 40 characters. It prefers
 the first substantial paragraph already present on the page and otherwise
 derives a plain, non-promotional description from the page title. Curated
 descriptions of reasonable length are left unchanged.
 
-After that conservative cleanup, the entity-and-intent projection classifies
-final reader pages, adds page-appropriate structured data and related canonical
-context, and synchronizes social/search metadata before sitemap generation.
+Next, exact duplicate human questions generated from different archive indexes
+are collapsed into one indexable answer plus noindex/follow aliases. Finally,
+the entity-and-intent projection classifies final reader pages, adds
+page-appropriate structured data and related canonical context, and
+synchronizes social/search metadata before sitemap generation.
 """
 from __future__ import annotations
 
@@ -17,6 +19,7 @@ import re
 from pathlib import Path
 
 from apply_entity_intent_seo import main as apply_entity_intent_seo
+from dedupe_question_intents import main as dedupe_question_intents
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -105,6 +108,10 @@ def main() -> None:
     print(f"Enriched {len(changed)} weak meta descriptions")
     for path in changed:
         print(f"  - {path}")
+
+    dedupe_result = dedupe_question_intents()
+    if dedupe_result:
+        raise SystemExit(dedupe_result)
 
     result = apply_entity_intent_seo()
     if result:
