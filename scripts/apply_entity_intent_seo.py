@@ -130,7 +130,10 @@ def label_for_route(route: str) -> str:
         "science": "Science",
         "science/research-map": "Science research map",
         "north": "North",
+        "world": "World",
         "world-map": "World Map",
+        "world-systems": "World systems",
+        "politics": "Politics",
     }
     if route in labels:
         return labels[route]
@@ -181,12 +184,16 @@ def primary_schema(route: str, title: str, description: str, canonical_url: str)
         "description": description,
         "inLanguage": "en",
         "isAccessibleForFree": True,
-        "isPartOf": {"@type": "WebSite", "@id": BASE_URL + "/#website", "name": SITE_NAME, "url": BASE_URL + "/"},
+        "isPartOf": {"@id": BASE_URL + "/#website"},
         "about": {"@type": "Thing", "name": str(profile["topic"])},
     }
     if profile.get("main_entity"):
-        schema["mainEntity"] = profile["main_entity"]
+        entity = dict(profile["main_entity"])
+        entity.setdefault("@id", canonical_url + "#person")
+        entity.setdefault("url", canonical_url)
+        schema["mainEntity"] = entity
     if profile["schema_type"] in {"Article", "ScholarlyArticle"}:
+        schema["headline"] = title
         schema["mainEntityOfPage"] = {"@type": "WebPage", "@id": canonical_url + "#webpage"}
     return schema
 
