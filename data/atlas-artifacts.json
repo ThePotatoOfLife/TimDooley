@@ -1,5 +1,5 @@
 {
-  "version": "0.2.0",
+  "version": "0.2.1",
   "purpose": "Conservative seed registry for first-class Archive Artifacts. This is not a complete archive inventory.",
   "artifacts": [
     {
@@ -47,7 +47,7 @@
     {
       "id": "developmental-genealogy",
       "title": "Developmental Genealogy of the Potato of Life Project",
-      "kind": "historical_synthesis",
+      "kind": "collection",
       "status": "active",
       "visibility": "public",
       "source_path": "knowledge/timeline/developmental-genealogy.json",
@@ -61,7 +61,7 @@
     {
       "id": "equation-lineage-and-theory-graph",
       "title": "Equation Lineage & Theory Graph — Tim Dooley / Potato of Life",
-      "kind": "research_lineage",
+      "kind": "collection",
       "status": "active",
       "visibility": "public",
       "source_path": "knowledge/science/equation-lineage-and-theory-graph.json",
@@ -75,7 +75,7 @@
     {
       "id": "vesica-mandorla-source-ledger",
       "title": "Source Ledger — Vesica, Mandorla, Sun, Moon, Mountain, Brain & Esoteric Comparisons",
-      "kind": "source_ledger",
+      "kind": "comparative_source",
       "status": "active",
       "visibility": "public",
       "source_path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
