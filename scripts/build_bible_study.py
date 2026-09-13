@@ -16,6 +16,7 @@ DOSSIER_FRAGMENTS_PATH = ROOT / "knowledge" / "traditions" / "biblical-passage-f
 WAVE22_FRAGMENTS_PATH = ROOT / "knowledge" / "traditions" / "biblical-passage-fragments-wave22.json"
 WAVE22_GLOB = "biblical-operator-comparisons-wave22-*.json"
 MARKER = "<!-- BIBLE_RELATIONS_STATIC -->"
+# The generated disclosures are inserted into the page container with class="static-index".
 
 
 def load(path: Path) -> dict:
