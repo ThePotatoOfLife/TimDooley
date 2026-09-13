@@ -29,6 +29,7 @@ META_RE = re.compile(r"<meta\b[^>]*>", re.I)
 LINK_RE = re.compile(r"<link\b[^>]*>", re.I)
 ATTR_RE = re.compile(r"([:\w-]+)\s*=\s*([\"'])(.*?)\2", re.I | re.S)
 TAG_RE = re.compile(r"<[^>]+>")
+LD_SCRIPT_RE = re.compile(r'<script\b[^>]*type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', re.I | re.S)
 
 
 def attrs(tag: str) -> dict[str, str]:
@@ -173,6 +174,29 @@ def inject_related_context(text: str, route: str) -> tuple[str, bool]:
     return text, False
 
 
+def strip_legacy_question_rich_result_schema(text: str) -> str:
+    """Remove FAQ/QAPage rich-result markup from site-authored answer pages.
+
+    Google limits FAQ rich results to authoritative government/health sites, and
+    QAPage is for pages where users can submit answers. These archive question
+    pages are authored reference pages, so the generic WebPage/Question graph
+    projected below is the accurate representation.
+    """
+    def replace(match: re.Match[str]) -> str:
+        payload = match.group(1).strip().replace("<\\/", "</")
+        try:
+            data = json.loads(payload)
+        except Exception:
+            return match.group(0)
+        types = data.get("@type")
+        values = {types} if isinstance(types, str) else set(types or [])
+        if values & {"FAQPage", "QAPage"}:
+            return ""
+        return match.group(0)
+
+    return LD_SCRIPT_RE.sub(replace, text)
+
+
 def primary_schema(route: str, title: str, description: str, canonical_url: str) -> dict:
     profile = schema_profile(route)
     schema: dict[str, object] = {
@@ -195,6 +219,8 @@ def primary_schema(route: str, title: str, description: str, canonical_url: str)
     if profile["schema_type"] in {"Article", "ScholarlyArticle"}:
         schema["headline"] = title
         schema["mainEntityOfPage"] = {"@type": "WebPage", "@id": canonical_url + "#webpage"}
+    if profile["kind"] == "question":
+        schema["mainEntity"] = {"@type": "Question", "name": title}
     return schema
 
 
@@ -261,6 +287,8 @@ def main() -> int:
             errors.append(f"{route or '/'}: weak description after intent projection")
 
         original = text
+        if kind == "question":
+            text = strip_legacy_question_rich_result_schema(text)
         text = replace_title(text, title)
         text = replace_meta(text, key="description", value=description)
         text = replace_meta(text, key="og:title", value=title, property_key=True)
