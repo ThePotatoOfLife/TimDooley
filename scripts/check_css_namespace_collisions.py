@@ -20,6 +20,7 @@ PRIMARY_MIGRATED_PAGES = [
     ROOT / "religion" / "index.html",
     ROOT / "philosophy" / "index.html",
     ROOT / "science" / "index.html",
+    ROOT / "world" / "index.html",
 ]
 
 RISKY_GLOBAL = {
