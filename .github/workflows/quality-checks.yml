@@ -64,6 +64,9 @@ jobs:
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
+      - name: Validate 100,000-hour canonical page
+        run: python scripts/validate_100000_hour_page.py
+
       - name: Build canonical record registry
         run: python scripts/build_canonical_record_registry.py
 
