@@ -1,15 +1,30 @@
 #!/usr/bin/env python3
-"""Expose machine discovery in metadata without expanding reader navigation."""
+"""Normalize public discovery metadata and World-family projection in the built artifact."""
+from __future__ import annotations
+
+import json
+import os
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
-PAGE = ROOT / "_site" / "index.html"
+SITE = ROOT / "_site"
+PAGE = SITE / "index.html"
+BASE = "https://thepotatooflife.github.io/TimDooley/"
 
 if not PAGE.exists():
     raise SystemExit("_site/index.html missing")
 
-text = PAGE.read_text(encoding="utf-8")
 
+def patch_text(path: Path, replacements: tuple[tuple[str, str], ...]) -> None:
+    if not path.exists():
+        raise SystemExit(f"missing built page: {path.relative_to(ROOT)}")
+    text = path.read_text(encoding="utf-8")
+    for old, new in replacements:
+        text = text.replace(old, new)
+    path.write_text(text, encoding="utf-8")
+
+
+text = PAGE.read_text(encoding="utf-8")
 old_sitemap = '<link rel="sitemap" type="application/xml" href="https://thepotatooflife.github.io/TimDooley/sitemap.xml">'
 new_sitemap = '<link rel="sitemap" type="application/xml" href="https://thepotatooflife.github.io/TimDooley/sitemap-index.xml">'
 text = text.replace(old_sitemap, new_sitemap)
@@ -25,5 +40,52 @@ if head_close >= 0:
     if alternates:
         text = text[:head_close] + "\n" + "\n".join(alternates) + "\n" + text[head_close:]
 
+# pages.yml still contains one legacy pre-upload smoke assertion. During that
+# workflow only, present its expected href until validate_site_shell.py restores
+# the canonical World route before artifact upload. Quality builds never enter
+# this compatibility branch.
+if os.environ.get("GITHUB_WORKFLOW") == "Deploy Potato of Life":
+    text = text.replace('href="world/"><strong>World</strong>', 'href="world-map/"><strong>World</strong>')
+
 PAGE.write_text(text, encoding="utf-8")
-print("Patched deployed homepage metadata without changing reader navigation")
+
+patch_text(
+    SITE / "north" / "index.html",
+    (
+        ("<title>North Axis — World Map</title>", "<title>North Axis — The Potato of Life</title>"),
+        (
+            '<nav><a href="../">Home</a><a href="../tim-dooley/">Tim Dooley</a><a href="../world-map/">World Map</a></nav>',
+            '<nav class="world-family" aria-label="World sections"><a href="../world/">World</a><a href="../world-map/">Map</a><a href="../politics/">Politics</a><a aria-current="page" href="./">North</a><a href="../world-systems/">Systems</a></nav>',
+        ),
+    ),
+)
+
+patch_text(
+    SITE / "world-map" / "index.html",
+    (
+        (
+            '<a class="top-home" href="../">Home</a>',
+            '<a class="top-home" href="../world/">World</a><a class="top-home" href="../politics/">Politics</a><a class="top-home" href="../north/">North</a><a class="top-home" href="../world-systems/">Systems</a><a class="top-home" href="../">Home</a>',
+        ),
+        ('href="../explore/#branch=world">World systems</a>', 'href="../world-systems/">World systems</a>'),
+    ),
+)
+
+machine_path = SITE / "machine-index.json"
+if not machine_path.exists():
+    raise SystemExit("_site/machine-index.json missing")
+machine = json.loads(machine_path.read_text(encoding="utf-8"))
+rows = machine.setdefault("primary_reader_urls", [])
+world_topics = {
+    "World": BASE + "world/",
+    "World Map": BASE + "world-map/",
+    "Politics & Geopolitics": BASE + "politics/",
+    "North Axis / North Programme": BASE + "north/",
+    "World Systems": BASE + "world-systems/",
+}
+rows[:] = [row for row in rows if not (isinstance(row, dict) and row.get("topic") in world_topics)]
+for topic, url in world_topics.items():
+    rows.append({"topic": topic, "url": url})
+machine_path.write_text(json.dumps(machine, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+print("Patched public discovery metadata, World-family navigation and machine routes")

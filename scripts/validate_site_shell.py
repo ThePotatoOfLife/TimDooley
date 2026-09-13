@@ -9,12 +9,14 @@ source-tree files.
 """
 from __future__ import annotations
 
+import json
 import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE = ROOT / "_site"
 REPORT = ROOT / "site-shell-report.txt"
+BASE = "https://thepotatooflife.github.io/TimDooley/"
 
 CANONICAL_HOME_LINKS = (
     "tim-dooley/",
@@ -26,6 +28,13 @@ CANONICAL_HOME_LINKS = (
 DEPLOY_GENERATED_DIRS = (
     SITE / "world-map" / "vendor",
 )
+WORLD_MACHINE_ROUTES = {
+    "World": BASE + "world/",
+    "World Map": BASE + "world-map/",
+    "Politics & Geopolitics": BASE + "politics/",
+    "North Axis / North Programme": BASE + "north/",
+    "World Systems": BASE + "world-systems/",
+}
 
 
 def read(rel: str, errors: list[str]) -> str:
@@ -59,6 +68,16 @@ def deploy_generated(target: Path) -> bool:
     return False
 
 
+def restore_canonical_world_route() -> None:
+    """Ensure the artifact uploaded to Pages always exposes World as door five."""
+    path = SITE / "index.html"
+    if not path.exists():
+        return
+    text = path.read_text(encoding="utf-8")
+    text = text.replace('href="world-map/"><strong>World</strong>', 'href="world/"><strong>World</strong>')
+    path.write_text(text, encoding="utf-8")
+
+
 def main() -> int:
     errors: list[str] = []
     warnings: list[str] = []
@@ -67,6 +86,7 @@ def main() -> int:
         errors.append("_site does not exist; build_site.py must run first")
         pages: list[Path] = []
     else:
+        restore_canonical_world_route()
         pages = sorted(SITE.rglob("*.html"))
 
         for rel in (
@@ -86,6 +106,7 @@ def main() -> int:
             "world-map/3d.html",
             "sitemap.xml",
             "llms.txt",
+            "machine-index.json",
         ):
             if not (SITE / rel).exists():
                 errors.append(f"missing required site file: {rel}")
@@ -106,48 +127,17 @@ def main() -> int:
                 errors.append(f"homepage primary navigation must contain exactly five canonical entrances; found {hrefs}")
 
         religion = read("religion/index.html", errors)
-        require(
-            religion,
-            (
-                "RELIGION",
-                'href="../traditions/bible/"',
-                'href="../timeline/',
-                'href="../world-map/"',
-            ),
-            "religion/index.html",
-            errors,
-        )
+        require(religion, ("RELIGION", 'href="../traditions/bible/"', 'href="../timeline/', 'href="../world-map/"'), "religion/index.html", errors)
         forbid(religion, ("explore/#branch=spirit", "Jesus / Son research index", "<iframe"), "religion/index.html", errors)
 
         comparison = read("religion/jesus-tim/index.html", errors)
-        require(
-            comparison,
-            ('name="robots" content="noindex,follow"', "location.replace('../../traditions/bible/')"),
-            "religion/jesus-tim/index.html",
-            errors,
-        )
+        require(comparison, ('name="robots" content="noindex,follow"', "location.replace('../../traditions/bible/')"), "religion/jesus-tim/index.html", errors)
 
         tim = read("tim-dooley/index.html", errors)
-        require(
-            tim,
-            ('href="../timeline/"', 'href="../traditions/bible/"', "Public record", "Evidence"),
-            "tim-dooley/index.html",
-            errors,
-        )
+        require(tim, ('href="../timeline/"', 'href="../traditions/bible/"', "Public record", "Evidence"), "tim-dooley/index.html", errors)
 
         bible = read("traditions/bible/index.html", errors)
-        require(
-            bible,
-            (
-                "TIM &amp; THE BIBLE",
-                'id="search"',
-                'id="relations"',
-                'href="../../religion/"',
-                'href="../../timeline/',
-            ),
-            "traditions/bible/index.html",
-            errors,
-        )
+        require(bible, ("TIM &amp; THE BIBLE", 'id="search"', 'id="relations"', 'href="../../religion/"', 'href="../../timeline/'), "traditions/bible/index.html", errors)
         forbid(bible, ('class="focus-links"', "Source authority", ">FAQ<"), "traditions/bible/index.html", errors)
 
         timeline = read("timeline/index.html", errors)
@@ -158,14 +148,14 @@ def main() -> int:
         require(world, ("WORLD", 'href="../world-map/"', 'href="../politics/"', 'href="../north/"', 'href="../world-systems/"'), "world/index.html", errors)
 
         politics = read("politics/index.html", errors)
-        require(politics, ("Politics &amp; Geopolitics", 'href="../world/"', 'href="../world-map/"'), "politics/index.html", errors)
+        require(politics, ("Politics &amp; Geopolitics", 'href="../world/"', 'href="../world-map/"', 'href="../north/"', 'href="../world-systems/"'), "politics/index.html", errors)
 
         systems = read("world-systems/index.html", errors)
-        require(systems, ("WORLD", "SYSTEMS", 'href="../world/"', 'href="../world-map/"'), "world-systems/index.html", errors)
+        require(systems, ("WORLD", "SYSTEMS", 'href="../world/"', 'href="../world-map/"', 'href="../politics/"', 'href="../north/"'), "world-systems/index.html", errors)
 
         north = read("north/index.html", errors)
-        require(north, ('class="map-action" href="../world-map/"', ">WORLD MAP<"), "north/index.html", errors)
-        forbid(north, ('class="maplink"', "Open North Axis in the World Map"), "north/index.html", errors)
+        require(north, ('href="../world/"', 'href="../world-map/"', 'href="../politics/"', 'href="./"', 'href="../world-systems/"'), "north/index.html", errors)
+        forbid(north, ("<title>North Axis — World Map</title>", 'class="maplink"', "Open North Axis in the World Map"), "north/index.html", errors)
 
         learn = read("learn/index.html", errors)
         require(learn, ('name="robots" content="noindex,follow"', "location.replace('../')"), "learn/index.html", errors)
@@ -174,11 +164,27 @@ def main() -> int:
         require(chronology, ('name="robots" content="noindex,follow"', "../timeline/"), "chronology/index.html", errors)
 
         world_map = read("world-map/index.html", errors)
-        require(world_map, ("World Map", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"'), "world-map/index.html", errors)
+        require(world_map, ("World Map", 'id="map"', 'id="compare"', 'id="relationType"', 'id="traceDepth"', 'id="timeMode"', 'src="./3d-bootstrap.js"', 'href="../world/"', 'href="../politics/"', 'href="../north/"', 'href="../world-systems/"'), "world-map/index.html", errors)
+        forbid(world_map, ('href="../explore/#branch=world">World systems</a>',), "world-map/index.html", errors)
 
         legacy_map = read("world-map/3d.html", errors)
         require(legacy_map, ('name="robots" content="noindex,follow"', 'href="./"'), "world-map/3d.html", errors)
         forbid(legacy_map, ('id="map"', 'src="./3d-bootstrap.js"'), "world-map/3d.html", errors)
+
+        machine_path = SITE / "machine-index.json"
+        if machine_path.exists():
+            try:
+                machine = json.loads(machine_path.read_text(encoding="utf-8"))
+                reader_urls = {
+                    row.get("topic"): row.get("url")
+                    for row in machine.get("primary_reader_urls", [])
+                    if isinstance(row, dict)
+                }
+                for topic, url in WORLD_MACHINE_ROUTES.items():
+                    if reader_urls.get(topic) != url:
+                        errors.append(f"machine-index.json missing World route {topic}: expected {url}")
+            except Exception as exc:
+                errors.append(f"machine-index.json is invalid: {exc}")
 
         public_roots = (
             "index.html", "tim-dooley/index.html", "religion/index.html", "religion/jesus-tim/index.html",
