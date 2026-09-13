@@ -18,6 +18,7 @@ PRIMARY_MIGRATED_PAGES = [
     HOME,
     ROOT / "tim-dooley" / "index.html",
     ROOT / "religion" / "index.html",
+    ROOT / "philosophy" / "index.html",
 ]
 
 RISKY_GLOBAL = {
@@ -50,8 +51,9 @@ else:
 
 for page in PRIMARY_MIGRATED_PAGES:
     text = page.read_text(encoding="utf-8", errors="ignore") if page.exists() else ""
-    if "app/site-system.css" not in text:
-        errors.append(f"{page.relative_to(ROOT)} must load app/site-system.css")
+    relative_href = "app/site-system.css" if page == HOME else "../app/site-system.css"
+    if relative_href not in text:
+        errors.append(f"{page.relative_to(ROOT)} must load {relative_href}")
 
 for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
     if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns)\s*:", block):
