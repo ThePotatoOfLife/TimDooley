@@ -43,6 +43,8 @@ jobs:
         run: python scripts/validate_atlas_model.py
       - name: Validate assembled Atlas runtime
         run: python scripts/validate_atlas_runtime.py
+      - name: Validate Node and Artifact relation resolution
+        run: python scripts/validate_atlas_relation_resolution.py
       - name: Report Atlas migration frontier
         run: python scripts/audit_atlas_frontier.py
       - name: Build additive Atlas preview
