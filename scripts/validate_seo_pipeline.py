@@ -11,6 +11,7 @@ import ast
 from pathlib import Path
 
 from validate_seo_2026_contract import main as validate_current_seo_contract
+from validate_seo_authority import main as validate_seo_authority
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -285,6 +286,9 @@ def main() -> int:
     if not errors and validate_current_seo_contract():
         errors.append("current SEO structured-data/crawl contract failed")
 
+    if not errors and validate_seo_authority():
+        errors.append("SEO first-party authority/discovery contract failed")
+
     if errors:
         print("SEO PIPELINE VALIDATION FAILED")
         for error in errors:
@@ -295,7 +299,7 @@ def main() -> int:
     print(
         "SEO projection: five-door discovery · canonical-only crawl graph · "
         "deduplicated question intents · intent-aware metadata · typed structured data · "
-        "source-backed freshness · social metadata · related canonical context · LLM indexes"
+        "source-backed freshness · social metadata · related canonical context · LLM indexes · first-party authority"
     )
     return 0
 
