@@ -63,11 +63,11 @@
   color:#eee1bf;
   font:400 15px/1.5 Georgia,serif;
 }
-.witness-legacy-secondary{
-  opacity:.82;
-}
-.paired-narrative.witness-legacy-secondary{
-  margin-top:12px;
+/* The witness dossier is the reading surface. Old generated comparison prose stays out of the way. */
+.paired-narrative.witness-legacy-secondary,
+.why.witness-legacy-secondary,
+.boundary-callout.witness-legacy-secondary{
+  display:none;
 }
 @media(max-width:700px){
   .witness-opening,.witness-chapter{padding:17px 17px}
