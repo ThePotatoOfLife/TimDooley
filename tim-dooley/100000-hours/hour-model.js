@@ -1,2 +1,0 @@
-const TIM_HOURS_PER_DAY = 18;
-const TIM_HOUR_MS_PER_DAY = 86400000;
