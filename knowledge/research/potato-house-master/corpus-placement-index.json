@@ -1,0 +1,337 @@
+{
+  "id": "potato-house-corpus-placement-index",
+  "version": "0.1.0-research",
+  "status": "research-noncanonical",
+  "purpose": "Machine-readable coverage ledger proving that every repository family has a primary project plane and, where applicable, a House role before implementation begins.",
+  "coverage_rule": "Every repository path must match exactly one primary repository-plane family. Durable knowledge families must additionally resolve to one or more House roles. Unmatched or multiply-owned families are architecture defects.",
+  "repository_planes": {
+    "knowledge_house": "Durable meaning, identities, assertions, occurrences, relations, artifacts, contexts, programmes, collections and research.",
+    "governance_gardener": "Schemas, vocabularies, ownership/source-of-truth rules, invariants, migrations, deprecations and health policy.",
+    "operations_forge": "Acquisition, transforms, builders, validators, audits, CI/CD and deployment machinery.",
+    "presentation_fruit": "Public routes, HTML/CSS/JS, specialist explorers, search/discovery and machine-facing projections.",
+    "memory_ash_archive": "Historical snapshots, superseded architectures, legacy states and preserved prior material."
+  },
+  "house_roles": [
+    "subject",
+    "assertion",
+    "observation",
+    "measurement",
+    "artifact",
+    "occurrence",
+    "relation",
+    "activity",
+    "transition",
+    "context",
+    "dossier",
+    "blueprint_seed",
+    "programme",
+    "collection_guide",
+    "room_membership",
+    "view_configuration",
+    "research_candidate"
+  ],
+  "families": [
+    {
+      "pattern": "knowledge/core/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "dossier", "relation", "context"],
+      "candidate_rooms": ["potatoverse_canon"],
+      "migration": "adapter_then_normalize",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/philosophy/**",
+      "plane": "knowledge_house",
+      "roles": ["assertion", "dossier", "context", "research_candidate"],
+      "candidate_rooms": ["potatoverse_canon", "research_lab"],
+      "migration": "classify_by_epistemic_context_then_adapt",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/practice/**",
+      "plane": "knowledge_house",
+      "roles": ["collection_guide", "programme", "transition", "dossier"],
+      "candidate_rooms": ["potatoverse_canon"],
+      "migration": "classify_guide_programme_or_transition",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/cosmology/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "dossier", "context", "relation"],
+      "candidate_rooms": ["potatoverse_canon", "traditions_texts", "science_formal"],
+      "migration": "split_project_comparative_and_empirical_assertions_without_duplicate_identity",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/journey/**",
+      "plane": "knowledge_house",
+      "roles": ["dossier", "occurrence", "assertion", "collection_guide"],
+      "candidate_rooms": ["time_history", "potatoverse_canon"],
+      "migration": "separate_occurrence_time_from_later_interpretation",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/body/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "relation", "dossier"],
+      "candidate_rooms": ["life_body", "science_formal"],
+      "migration": "adapt_scientific_and_symbolic_contexts_separately",
+      "unresolved": true,
+      "open_question": "Whether Life & Body remains a distinct Room or becomes a major subcontext inside Science & Formal Models."
+    },
+    {
+      "pattern": "knowledge/biology/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "observation", "occurrence", "relation", "dossier"],
+      "candidate_rooms": ["life_body", "science_formal"],
+      "migration": "adapt_literal_biology_using_blueprints_and_source_provenance",
+      "unresolved": true,
+      "open_question": "Final Room boundary shared with knowledge/body."
+    },
+    {
+      "pattern": "knowledge/traditions/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "artifact", "assertion", "relation", "dossier", "context"],
+      "candidate_rooms": ["traditions_texts"],
+      "migration": "preserve_text_edition_translation_and_interpretation_distinctions",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/politics/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "relation", "occurrence", "dossier"],
+      "candidate_rooms": ["world_systems"],
+      "migration": "adapt_to_world_systems_with_explicit_epistemic_context",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/geopolitics/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "relation", "occurrence", "programme", "dossier"],
+      "candidate_rooms": ["world_systems"],
+      "migration": "separate_observable_world_records_from_programme_scenario_and_project_interpretation",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/economics/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "measurement", "relation", "occurrence", "dossier", "blueprint_seed"],
+      "candidate_rooms": ["world_systems"],
+      "migration": "reuse_existing_economic_finance_trade_ownership_blueprints",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/legal/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "artifact", "assertion", "relation", "occurrence", "transition"],
+      "candidate_rooms": ["world_systems"],
+      "migration": "treat_legal_as_world_systems_facet_until_room_criteria_prove_independence",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/corporium/**",
+      "plane": "knowledge_house",
+      "roles": ["programme", "collection_guide", "dossier", "research_candidate"],
+      "candidate_rooms": ["world_systems", "culture_information", "research_lab"],
+      "migration": "do_not_promote_to_room_until_boundary_test_passes",
+      "unresolved": true,
+      "open_question": "Corporium is likely a cross-Room Programme/Collection but requires explicit boundary review."
+    },
+    {
+      "pattern": "knowledge/culture/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "relation", "occurrence", "dossier"],
+      "candidate_rooms": ["culture_information"],
+      "migration": "adapt_media_subculture_platform_and_information_ecology_records",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/creative/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "artifact", "assertion", "collection_guide"],
+      "candidate_rooms": ["works"],
+      "migration": "preserve_creative_status_and_authorship_separate_from_documentary_claims",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/guides/**",
+      "plane": "knowledge_house",
+      "roles": ["collection_guide", "view_configuration"],
+      "candidate_rooms": [],
+      "migration": "convert_duplicate_content_to_references_paths_and_guides",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/indexes/**",
+      "plane": "governance_gardener",
+      "roles": ["collection_guide", "view_configuration"],
+      "candidate_rooms": [],
+      "migration": "classify_each_index_as_generated_view_index_or_curated_collection_never_shadow_canon",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/research/**",
+      "plane": "knowledge_house",
+      "roles": ["artifact", "assertion", "research_candidate", "dossier"],
+      "candidate_rooms": ["research_lab"],
+      "migration": "retain_research_status_until_explicit_promotion_transition",
+      "unresolved": false
+    },
+    {
+      "pattern": "knowledge/schema/**",
+      "plane": "governance_gardener",
+      "roles": [],
+      "candidate_rooms": [],
+      "migration": "map_existing_schemas_into_house_kernel_room_extension_blueprint_or_legacy_contract",
+      "unresolved": false
+    },
+    {
+      "pattern": "data/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "assertion", "artifact", "occurrence", "relation", "dossier", "blueprint_seed", "view_configuration"],
+      "candidate_rooms": [],
+      "migration": "subclassify_by_data_family; data_directory_is_not_an_ontology_layer",
+      "unresolved": true,
+      "open_question": "Each data family must receive a canonical_input, source_artifact, governance_contract, generated_projection, runtime_cache, migration_compatibility, or historical classification before implementation."
+    },
+    {
+      "pattern": "books/**",
+      "plane": "knowledge_house",
+      "roles": ["subject", "artifact", "assertion", "collection_guide"],
+      "candidate_rooms": ["works", "traditions_texts", "research_lab"],
+      "migration": "classify_original_work_edition_translation_research_and_commentary_separately",
+      "unresolved": false
+    },
+    {
+      "pattern": "timeline/**|chronology/**",
+      "plane": "presentation_fruit",
+      "roles": ["view_configuration"],
+      "candidate_rooms": ["time_history"],
+      "migration": "timeline_is_view_over_occurrences_not_owner",
+      "unresolved": false
+    },
+    {
+      "pattern": "tim-dooley/**|religion/**|philosophy/**|science/**|world/**|politics/**|north/**|world-systems/**|world-map/**|traditions/**|explore/**|learn/**",
+      "plane": "presentation_fruit",
+      "roles": ["view_configuration"],
+      "candidate_rooms": [],
+      "migration": "classify_each_public_route_as_subject_alias_room_landing_programme_collection_explorer_or_compatibility_view",
+      "unresolved": false
+    },
+    {
+      "pattern": "app/**",
+      "plane": "presentation_fruit",
+      "roles": [],
+      "candidate_rooms": [],
+      "migration": "classify_shared_shell_room_component_specialist_explorer_compatibility_shim_or_deprecated_duplicate",
+      "unresolved": false
+    },
+    {
+      "pattern": "scripts/build_*|scripts/optimize_*|scripts/apply_*|scripts/enrich_*",
+      "plane": "operations_forge",
+      "roles": ["activity"],
+      "candidate_rooms": [],
+      "migration": "consolidate_build_pipeline_and_keep_projections_rebuildable",
+      "unresolved": false
+    },
+    {
+      "pattern": "scripts/import_*|scripts/fetch_*|scripts/mine_*|scripts/refresh_*",
+      "plane": "operations_forge",
+      "roles": ["activity"],
+      "candidate_rooms": [],
+      "migration": "model_acquisition_as_provenance_generating_activity",
+      "unresolved": false
+    },
+    {
+      "pattern": "scripts/validate_*|scripts/audit_*",
+      "plane": "governance_gardener",
+      "roles": [],
+      "candidate_rooms": [],
+      "migration": "consolidate_into_safety_liveness_and_house_invariant_gates_without_validator_mutation",
+      "unresolved": false
+    },
+    {
+      "pattern": "scripts/analyze_*",
+      "plane": "operations_forge",
+      "roles": ["activity", "research_candidate"],
+      "candidate_rooms": ["research_lab"],
+      "migration": "analysis_output_not_canon_without_explicit_promotion",
+      "unresolved": false
+    },
+    {
+      "pattern": ".github/workflows/**",
+      "plane": "operations_forge",
+      "roles": ["activity", "transition"],
+      "candidate_rooms": [],
+      "migration": "classify_deploy_quality_refresh_and_acquisition_workflows; deploy_only_exact_validated_artifact",
+      "unresolved": false
+    },
+    {
+      "pattern": "docs/**",
+      "plane": "governance_gardener",
+      "roles": ["artifact", "research_candidate", "collection_guide"],
+      "candidate_rooms": [],
+      "migration": "current_standards_governance; domain_research_research_lab; superseded_architecture_memory_archive",
+      "unresolved": true,
+      "open_question": "Individual docs require lifecycle classification because docs/ mixes current rules, research and historical architecture."
+    },
+    {
+      "pattern": "archive/**",
+      "plane": "memory_ash_archive",
+      "roles": ["artifact", "research_candidate"],
+      "candidate_rooms": ["archive_sources"],
+      "migration": "preserve_unique_history; allow_explicit_promotion_back_into_current_house",
+      "unresolved": false
+    },
+    {
+      "pattern": "_site/**|**/*generated*.json|**/*report*.json|**/*runtime*.json",
+      "plane": "presentation_fruit",
+      "roles": ["view_configuration"],
+      "candidate_rooms": [],
+      "migration": "generated_or_cache_by_default_unless_explicitly_archived_as_release_artifact",
+      "unresolved": false
+    },
+    {
+      "pattern": "*.md|*.json",
+      "plane": "knowledge_house",
+      "roles": ["artifact", "dossier", "research_candidate"],
+      "candidate_rooms": [],
+      "migration": "root_level_files_require_explicit_override; fallback_is_not_authority",
+      "unresolved": true,
+      "open_question": "Root-level loose files must each receive an explicit entry before total coverage can be declared."
+    },
+    {
+      "pattern": "*.yml|*.yaml|*.toml|*.ini|*.lock|.gitignore",
+      "plane": "operations_forge",
+      "roles": [],
+      "candidate_rooms": [],
+      "migration": "repository_configuration",
+      "unresolved": false
+    }
+  ],
+  "prior_architectures": [
+    {"name":"Spirit / Mind / Matter","future_role":"cross_cutting_concept_scheme_facets","constitutional":false},
+    {"name":"33-level framework","future_role":"legacy_facet_breadth_scheme_and_research_artifact","constitutional":false},
+    {"name":"D1-D11","future_role":"interrogation_operator_stack","constitutional":false},
+    {"name":"World / Axis","future_role":"analytical_and_view_distinction","constitutional":false},
+    {"name":"five homepage doors","future_role":"compatibility_public_views","constitutional":false},
+    {"name":"experimental Atlas","future_role":"engineering_donor_and_historical_architecture_artifact","constitutional":false},
+    {"name":"World Tree / Tree systems","future_role":"structural_comparators_and_operator_regimes_not_storage_tree","constitutional":false},
+    {"name":"North Axis","future_role":"selected_orientation_or_programme_depending_context","constitutional":false}
+  ],
+  "implementation_gate": {
+    "may_start": false,
+    "requirements": [
+      "Every top-level repository family has an explicit primary plane.",
+      "Every knowledge family has a Room/context/cross-Room role.",
+      "Every durable record family maps to a House primitive or composition.",
+      "Every public route is classified as Subject, Room, Programme, Collection, Explorer, Guide, or compatibility View.",
+      "Every schema and registry is classified as current contract, Room extension, Blueprint, generated projection, compatibility contract, or historical artifact.",
+      "Every major operational script/workflow family has one responsibility class.",
+      "Every legacy architecture has a preservation/deprecation role.",
+      "Representative records from every major family normalize without bespoke architecture exceptions.",
+      "All unresolved=true entries are resolved or explicitly accepted as bounded research questions that do not block the first implementation slice."
+    ]
+  }
+}
