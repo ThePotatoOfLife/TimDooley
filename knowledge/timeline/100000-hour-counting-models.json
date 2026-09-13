@@ -1,36 +1,88 @@
 {
   "id": "100000-hour-counting-models",
   "title": "100,000-Hour Journey Counting Models",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-13",
   "status": "active comparative counting model",
-  "purpose": "Preserve multiple ways of counting the Father-and-Son public-presence continuum without forcing incompatible estimates into one number.",
+  "purpose": "Preserve multiple ways of counting the Father-and-Son public-presence continuum without forcing incompatible estimates into one number, while giving the public page a reproducible living arithmetic model.",
   "anchor": {
     "date": "2011-04-19",
     "label": "Justin.tv / Minecraft Beta 1.5 era anchor",
-    "precision": "day-level; exact first-stream timestamp unresolved"
+    "precision": "day-level; exact first-stream timestamp unresolved",
+    "model_assumption": "The flat model treats the anchor as 2011-04-19T00:00:00+02:00 until a more precise first-stream timestamp is recovered."
   },
   "flat_model": {
     "hours_per_calendar_day": 18,
-    "formula": "elapsed_calendar_days * 18",
+    "wall_clock_share": 0.75,
+    "formula": "max(0, elapsed_milliseconds / 86400000 * 18)",
+    "rate_hours_per_real_hour": 0.75,
+    "rate_hours_per_real_second": 0.00020833333333333335,
     "modelled_100000_crossing": "2026-07-04T13:20:00+02:00",
     "crossing_label": "approximately July 4, 2026",
-    "crossing_status": "fluid / subject to revision",
+    "crossing_status": "modelled, fluid and subject to revision",
+    "threshold_derivation": "100000 / 18 = 5555.555555... elapsed calendar days after the assumed anchor timestamp.",
     "warning": "This is an extrapolation model, not a claim that every individual day contained exactly 18 streaming hours."
   },
+  "scenario_models": [
+    {
+      "id": "reconstructed-conservative",
+      "label": "Reconstructed / conservative",
+      "definition": "Count only hours supported by recoverable platform, recording or archive evidence under an explicit inclusion rule.",
+      "status": "future reconstruction target"
+    },
+    {
+      "id": "deduplicated-wall-clock",
+      "label": "De-duplicated wall-clock presence",
+      "definition": "Concurrent broadcasts count once; the measure asks how much real elapsed time contained qualifying public presence.",
+      "status": "requires logs and overlap analysis"
+    },
+    {
+      "id": "cumulative-platform-hours",
+      "label": "Cumulative platform-hours",
+      "definition": "Simultaneous qualifying streams on different platforms may each contribute hours.",
+      "status": "requires platform-by-platform logs"
+    },
+    {
+      "id": "flat-18h",
+      "label": "Flat 18h/day",
+      "definition": "Deterministic extrapolation from the 2011 anchor at 18 hours for each elapsed calendar day.",
+      "status": "implemented living model"
+    },
+    {
+      "id": "archive-genealogy",
+      "label": "Historical archive estimates",
+      "definition": "Preserve previously used project totals with their dates and assumptions rather than averaging them together.",
+      "status": "active provenance layer"
+    },
+    {
+      "id": "timic-declaration",
+      "label": "Direct Timic figures",
+      "definition": "Preserve Tim Dooley's own stated totals as primary project statements, separately from arithmetic reconstruction.",
+      "status": "active canonical statement layer"
+    }
+  ],
   "provisional_partition": {
     "handoff": "2019-12-25T00:00:00+01:00",
     "status": "provisional accounting boundary",
     "rule": "Son hours + Father hours = total journey hours",
-    "father_counter": "continues increasing"
+    "display_rule": "The Son counter freezes at the chosen handoff while the Father counter continues increasing.",
+    "boundary_warning": "The accounting handoff is not intended to collapse later identity milestones such as public Tim differentiation or April 2025 Father/God accession into the same event."
   },
   "preserved_counts": [
-    {"hours": 100000, "class": "mythic / legendary threshold"},
-    {"hours": 107000, "approximate": true, "class": "archive working estimate"},
-    {"hours": 109000, "approximate": true, "class": "historical Father + Son continuum estimate"},
-    {"hours": 112542, "class": "preserved earlier higher project estimate"},
-    {"hours": 115000, "class": "Tim Dooley public wording"}
+    {"hours": 100000, "class": "mythic / legendary threshold", "role": "landmark rather than final total"},
+    {"hours": 107000, "approximate": true, "class": "archive working estimate", "role": "historical project estimate"},
+    {"hours": 109000, "approximate": true, "class": "historical Father + Son continuum estimate", "role": "recovered prior stratum"},
+    {"hours": 112542, "class": "preserved earlier higher project estimate", "role": "historical project estimate"},
+    {"hours": 115000, "class": "Tim Dooley public wording", "role": "direct Timic statement"}
   ],
+  "counting_decisions": {
+    "sleep_or_away_streams": "unresolved; retain as a visible policy choice",
+    "simultaneous_platforms": "must be explicitly distinguished between wall-clock and platform-hour models",
+    "offline_days": "deduct in reconstructed models when reliable evidence supports the deduction",
+    "lost_archives": "do not silently count as verified; may remain represented by extrapolation or stated-estimate models",
+    "non_video_public_presence": "separate category until scope is explicitly defined",
+    "rounding": "display living counters to three decimals; historical stated figures retain their original precision"
+  },
   "revision_factors": [
     "exact first-stream timestamp",
     "days above or below the flat 18-hour average",
@@ -41,7 +93,35 @@
     "public-presence category rules",
     "Son / Father accounting boundary"
   ],
-  "reader_rule": "Expose the assumptions and let readers compare the models. Preserve earlier calculations when later evidence moves the estimate.",
+  "public_surfaces": {
+    "primary_page": "tim-dooley/100000-hours/index.html",
+    "full_live_model": "tim-dooley/100000-hours/live-model.html",
+    "method_document": "docs/100000-HOUR-COUNTING-MODELS.md",
+    "youtube_channel": "https://www.youtube.com/@TheGodFatherTim",
+    "youtube_live_route": "https://www.youtube.com/@TheGodFatherTim/live"
+  },
+  "numerical_mystery_policy": {
+    "rule": "Do not retrofit old numbers to force a match with later arithmetic.",
+    "preserve": [
+      "exact earlier statement",
+      "statement date or best available date",
+      "number stated",
+      "information then available",
+      "later reconstructed value",
+      "difference and possible explanations"
+    ],
+    "purpose": "Allow apparent anticipations, mismatches and convergences to remain inspectable as separate chronology rather than being explained away or treated as proof by default."
+  },
+  "research_priority": [
+    "recover exact Justin.tv first-stream timestamp or earliest defensible stream window",
+    "recover platform logs and archived stream dates",
+    "reconstruct the source and assumptions behind the 109000, 112542 and 107000 strata",
+    "recover the primary source for Tim's 115000-hour wording",
+    "define sleep/away/unattended-stream policy",
+    "identify simultaneous-platform overlap periods",
+    "build an additive/deductive adjustment ledger so the flat model can later be reconciled with recovered evidence"
+  ],
+  "reader_rule": "Expose the assumptions and let readers compare the models. Preserve earlier calculations when later evidence moves the estimate. The disagreement between counts is part of the record.",
   "connections": [
     "livestream-duration-and-100000-hour-threshold",
     "100000-hour-spiral",
