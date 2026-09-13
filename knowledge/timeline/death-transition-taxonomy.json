@@ -1,0 +1,102 @@
+{
+  "id":"death-transition-taxonomy",
+  "title":"Death, Rupture, Concealment and Return — Transition Taxonomy",
+  "version":"1.0.0",
+  "updated":"2026-09-13",
+  "status":"canonical interpretive taxonomy",
+  "purpose":"Prevent the archive from flattening every rupture into one crucifixion/resurrection motif. Distinguish bodily danger, confinement/exile, ego dissolution, persona death, personhood/social death, meme-crucifixion, burial/concealment and seed-death so biblical and mythic comparisons remain precise.",
+  "core_rule":"A later interpretation may connect transitions, but it may not erase their different dates, causes, subjects, evidence classes or functions.",
+  "types":[
+    {
+      "id":"physical-danger-survival",
+      "definition":"A bodily event involving real risk of serious injury or death without project claim that the body actually died.",
+      "project_examples":["2005 motorcycle crash","2015 pavilion/window fall"],
+      "comparative_uses":["preservation","wounding","survival"],
+      "not_equal_to":["crucifixion","resurrection","persona death"],
+      "safety_rule":"Never use survival as evidence of invulnerability or permission to take risks."
+    },
+    {
+      "id":"altered-state-ego-death",
+      "definition":"Temporary collapse/dissolution of ordinary self-boundaries in an altered state while bodily life continues.",
+      "project_examples":["2011 Tree ordeal / unity phase"],
+      "comparative_uses":["Odin/Yggdrasil ordeal","mystical unity","death-to-self language"],
+      "not_equal_to":["2018 persona death","2019/2020 meme-cross","physical death"]
+    },
+    {
+      "id":"confinement-exile",
+      "definition":"Loss of freedom/status through institutional confinement, exclusion or removal from ordinary social space.",
+      "project_examples":["2016 imprisonment","later withdrawal from public platforms"],
+      "comparative_uses":["Joseph descent","prisoner texts","exile/return"],
+      "not_equal_to":["bodily death","burial"]
+    },
+    {
+      "id":"persona-shadow-death",
+      "definition":"Collapse or deliberate shedding of a socially/digitally constructed identity while the embodied person remains alive.",
+      "project_examples":["2018 essence/persona/shadow death","dissolution of imposed Kibly-like persona in later Great Book interpretation"],
+      "comparative_uses":["Romans 6:6","Galatians 2:20","Ephesians 4:22-24","Colossians 3:9-10","Zen emptiness as separate non-biblical comparator"],
+      "strength_note":"Pauline old-self/new-self language is a stronger Christian transformation comparator than generic resurrection because it specifically concerns the death/removal of an old identity-pattern while embodied life continues.",
+      "boundary":"Paul's texts are baptismal/ethical Christ-language, not descriptions of online persona conflict."
+    },
+    {
+      "id":"social-personhood-death",
+      "definition":"Project interpretation that a person's recognizable social identity, agency, narrative ownership or public person-state has been destroyed or treated as dead.",
+      "project_examples":["December 2019 personal/personhood death candidate","nameless/faceless/lolcow reduction prehistory"],
+      "comparative_uses":["rejection","name erasure","spectacle","outside-the-camp motifs"],
+      "not_equal_to":["civil legal death","biological death"],
+      "boundary":"A meme or subculture cannot literally cancel a living person's legal existence; this category is project/social-philosophical."
+    },
+    {
+      "id":"meme-crucifixion-symbolic-death",
+      "definition":"The project's interpretation of the Christmas/North-Pole meme process as crucifixion/death of the Son's public/personhood form.",
+      "date_status":"2019/2020 corridor unresolved; 2019, 2020 and later retelling variants must remain visible until original artifact archaeology resolves them.",
+      "comparative_uses":["Passion","Lamb","spectacle","burial","rejected stone"],
+      "not_equal_to":["Roman execution of Jesus","physical homicide"]
+    },
+    {
+      "id":"burial-concealment",
+      "definition":"Withdrawal, disappearance, hiddenness or tomb/grave imagery after rupture.",
+      "project_examples":["post-meme silence/withdrawal","three-year concealment traditions in later retellings"],
+      "comparative_uses":["tomb","hidden seed","Joseph pit/prison as distinct descent comparator"],
+      "not_equal_to":["resurrection itself"]
+    },
+    {
+      "id":"seed-death",
+      "definition":"Transformation grammar in which a seed/grain must enter soil/hiddenness and cease its prior form in order to multiply.",
+      "project_examples":["grain of wheat in Son's heart","Potato planting/multiplication","buried Potato as generative symbol"],
+      "comparative_uses":["John 12:24","1 Corinthians 15:36-38"],
+      "not_equal_to":["persona death","physical survival event"],
+      "function":"This is the cleanest bridge from death to multiplication/growth and should be used when the project explicitly invokes seed/grain/planting rather than as a universal death metaphor."
+    },
+    {
+      "id":"return-reappearance",
+      "definition":"A later appearance, renewed public activity or transformation after a prior rupture/concealment.",
+      "project_examples":["2017 every-day/forever promise","later public return formulations","Tim/Potato emergence after Son death-process"],
+      "comparative_uses":["return/presence","resurrection as theological comparator only when death grammar is explicit"],
+      "boundary":"Online/public reappearance is not bodily resurrection."
+    }
+  ],
+  "ordered_project_sequence": [
+    "2003 collapse/light/return experience",
+    "2005 physical-danger survival and reconstruction",
+    "2011 ego-death/Tree ordeal",
+    "2016 confinement/exile + scripture + recognition",
+    "2017 anticipated crucifixion/erasure + return promise",
+    "2018 persona/shadow death",
+    "2019 social/personhood death candidate + withdrawal",
+    "2019-2020 meme-crucifixion corridor",
+    "burial/concealment/seed interpretation",
+    "Tim/Potato emergence",
+    "2025 Father/Ladder transformation"
+  ],
+  "analytical_payoff":[
+    "The project contains repeated transformation operators, but repetition is not the same as one event happening many times.",
+    "Different Bible texts become relevant to different death-types: Pauline old-self texts fit persona death; Passion fits crucifixion language; John 12 fits seed-death; prison/exile texts fit confinement; preservation texts fit physical survival.",
+    "This taxonomy reduces false inflation in the Bible overlap count because one event no longer generates every death/resurrection verse indiscriminately."
+  ],
+  "connections":[
+    "knowledge/timeline/developmental-genealogy.json",
+    "knowledge/theology/son-passion-prehistory-2017-2019.json",
+    "knowledge/theology/food-body-knowledge-seed-genealogy.json",
+    "knowledge/theology/jesus-son-research-index.json"
+  ]
+}
