@@ -21,3 +21,7 @@ jobs:
           python-version: '3.x'
       - name: Validate Atlas constitution
         run: python scripts/validate_atlas_constitution.py
+      - name: Validate Atlas node schema
+        run: python scripts/validate_atlas_node_schema.py
+      - name: Validate Atlas North spine
+        run: python scripts/validate_atlas_north.py
