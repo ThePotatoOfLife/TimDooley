@@ -49,6 +49,9 @@ def main()->int:
         for child_id in node.get('children',[]):
             if not (OUT/f'atlas/{child_id}/index.html').exists():raise SystemExit(f'ATLAS PAGE FAILED: generated child page missing {child_id}')
         for view in node.get('view_details',[]):require(human,str(view.get('title')),node_id)
+        for rel in node.get('relations',[]):
+            if rel.get('resolved_kind')=='artifact' and isinstance(rel.get('route'),str) and rel.get('route'):
+                require(text,f'href="{html.escape(href_for(rel["route"],depth=2),quote=True)}"',node_id)
         for artifact in node.get('artifacts',[]):
             require(human,str(artifact.get('title')),node_id)
             route=artifact.get('public_route')
