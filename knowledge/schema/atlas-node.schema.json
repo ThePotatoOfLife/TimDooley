@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "potato://schema/atlas-node-v1",
+  "title": "Potato Atlas Node",
+  "type": "object",
+  "required": ["id","title","kind","status","owner_path","north_parent","summary","epistemic_classes","relations","archive_refs","views","route"],
+  "properties": {
+    "id": {"type":"string","pattern":"^[a-z0-9][a-z0-9-]*$"},
+    "title": {"type":"string","minLength":1},
+    "kind": {"type":"string","minLength":1},
+    "status": {"enum":["active","candidate","legacy","archive_only"]},
+    "owner_path": {"type":"string","minLength":1},
+    "north_parent": {"type":["string","null"]},
+    "summary": {"type":"string","minLength":1},
+    "epistemic_classes": {"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "relations": {"type":"array","items":{"type":"object","required":["type","target"],"properties":{"type":{"type":"string"},"target":{"type":"string"},"label":{"type":"string"},"epistemic_class":{"type":"string"}},"additionalProperties":true}},
+    "archive_refs": {"type":"array","items":{"type":"object","required":["type","target"],"properties":{"type":{"type":"string"},"target":{"type":"string"}},"additionalProperties":true}},
+    "views": {"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "route": {"type":"string","pattern":"^/atlas/[a-z0-9][a-z0-9-]*/$"},
+    "aliases": {"type":"array","items":{"type":"string"},"uniqueItems":true},
+    "presentation": {"type":"object","additionalProperties":true}
+  },
+  "additionalProperties": false
+}
