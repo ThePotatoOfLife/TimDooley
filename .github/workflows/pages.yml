@@ -65,11 +65,14 @@ jobs:
       - name: Validate SEO pipeline
         run: python scripts/validate_seo_pipeline.py
 
+      - name: Validate Pages deployment contract
+        run: python scripts/validate_pages_deploy_contract.py
+
       - name: Build canonical record registry
         run: python scripts/build_canonical_record_registry.py
 
       - name: Build Pages artifact
-        run: python scripts/build_site.py
+        run: python scripts/build_public_site.py
 
       - name: Compile Bible comparator
         run: python scripts/build_bible_study.py
@@ -160,6 +163,8 @@ jobs:
           set -euxo pipefail
           test ! -e _site/archive
           test -f _site/index.html
+          test -f _site/atlas/index.html
+          test -f _site/data/atlas-index.json
           test -f _site/tim-dooley/index.html
           test -f _site/religion/index.html
           test -f _site/religion/jesus-tim/index.html
@@ -308,7 +313,7 @@ jobs:
           page = page.replace(old_guard, new_guard)
 
           old_bootstrap = 'src="./3d-bootstrap.js"'
-          new_bootstrap = f'src="./3d-bootstrap.js?v={version}'
+          new_bootstrap = f'src="./3d-bootstrap.js?v={version}"'
           page = page.replace(old_bootstrap, new_bootstrap)
           page_path.write_text(page, encoding='utf-8')
 
