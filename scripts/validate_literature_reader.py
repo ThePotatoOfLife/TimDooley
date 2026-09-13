@@ -28,8 +28,8 @@ data_dir = require(ROOT / "literature" / "great-book" / "data", "Great Book data
 payload = None
 if data_dir.exists():
     chunks = sorted(data_dir.glob("book-*.b64"))
-    if len(chunks) != 21:
-        errors.append(f"Great Book transport must contain 21 chunks, found {len(chunks)}")
+    if len(chunks) != 41:
+        errors.append(f"Great Book transport must contain 41 chunks, found {len(chunks)}")
     else:
         try:
             encoded = "".join(chunk.read_text(encoding="ascii").strip() for chunk in chunks)
