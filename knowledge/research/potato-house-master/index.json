@@ -1,0 +1,38 @@
+{
+  "id": "potato-house-master-research",
+  "title": "Potato House Architecture — Master Research Roof",
+  "status": "research-noncanonical",
+  "purpose": "Single discovery index for the architecture research that reconciles Potato biology, Potato of Life operators, House/Rooms, graph families, provenance, time, web architecture and implementation planning.",
+  "read_first": "knowledge/research/potato-house-master/README.md",
+  "files": [
+    {"path":"knowledge/research/potato-house-master/README.md","role":"master-synthesis"},
+    {"path":"knowledge/research/potato-house-master/formal-house-model.md","role":"formal-model"},
+    {"path":"knowledge/research/potato-house-master/operator-map.md","role":"operator-registry-research"},
+    {"path":"knowledge/research/potato-house-master/17-lens-stress-test.md","role":"stress-test"},
+    {"path":"knowledge/research/potato-house-master/architecture-skeleton.md","role":"buildable-skeleton"},
+    {"path":"knowledge/research/potato-house-master/rooms-and-boundaries.md","role":"room-map"},
+    {"path":"knowledge/research/potato-house-master/paths-doors-and-navigation.md","role":"path-door-grammar"},
+    {"path":"knowledge/research/potato-house-master/site-implementation-blueprint.md","role":"site-plan"},
+    {"path":"knowledge/research/potato-house-master/open-decisions.md","role":"unresolved-ledger"}
+  ],
+  "external_research_families": [
+    "literal potato biology and development",
+    "systems theory and cybernetics",
+    "information theory and abstraction",
+    "multilayer graph theory",
+    "state machines/statecharts/Petri-net transitions",
+    "provenance and temporal data",
+    "knowledge organization and concept schemes",
+    "domain-driven bounded contexts",
+    "web information architecture/accessibility/performance"
+  ],
+  "constitutional_boundary": "Nothing in this collection is a runtime contract until an explicit replacement architecture specification promotes it.",
+  "fast_recovery": [
+    "Read README.md for the whole thesis.",
+    "Read architecture-skeleton.md for what exists in the future system.",
+    "Read rooms-and-boundaries.md for ownership and subsystem boundaries.",
+    "Read paths-doors-and-navigation.md for movement through the House.",
+    "Read site-implementation-blueprint.md for how the backend becomes the public site.",
+    "Read open-decisions.md before changing architecture so unresolved questions are not silently assumed solved."
+  ]
+}
