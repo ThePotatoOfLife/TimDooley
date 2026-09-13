@@ -1,0 +1,48 @@
+{
+  "version": "1.0.0",
+  "purpose": "Typed-road vocabulary for the permanent Atlas. North ancestry remains owned by north_parent; this registry classifies all other semantic roads and Archive edges.",
+  "orientations": {
+    "north": "Canonical movement toward the one broader integrative parent. Stored only as north_parent on Nodes.",
+    "lateral": "Connection across comparable resolution without claiming parentage.",
+    "structural_down": "Movement into parts, examples, members, manifestations or narrower structures.",
+    "archival": "Movement behind current understanding into history, evidence, research, versions or provenance."
+  },
+  "types": [
+    {"id":"related","orientation":"lateral","inverse":"related","label":"Related to"},
+    {"id":"compares_with","orientation":"lateral","inverse":"compares_with","label":"Compare with"},
+    {"id":"contrasts_with","orientation":"lateral","inverse":"contrasts_with","label":"Contrasts with"},
+    {"id":"influences","orientation":"lateral","inverse":"influenced_by","label":"Influences"},
+    {"id":"influenced_by","orientation":"lateral","inverse":"influences","label":"Influenced by"},
+    {"id":"depends_on","orientation":"lateral","inverse":"supports_capability_of","label":"Depends on"},
+    {"id":"supports_capability_of","orientation":"lateral","inverse":"depends_on","label":"Supports capability of"},
+    {"id":"member_of","orientation":"lateral","inverse":"has_member","label":"Member of"},
+    {"id":"has_member","orientation":"structural_down","inverse":"member_of","label":"Has member"},
+    {"id":"contains","orientation":"structural_down","inverse":"part_of","label":"Contains"},
+    {"id":"part_of","orientation":"lateral","inverse":"contains","label":"Part of"},
+    {"id":"example_of","orientation":"lateral","inverse":"has_example","label":"Example of"},
+    {"id":"has_example","orientation":"structural_down","inverse":"example_of","label":"Examples"},
+    {"id":"manifests_as","orientation":"structural_down","inverse":"manifestation_of","label":"Manifests as"},
+    {"id":"manifestation_of","orientation":"lateral","inverse":"manifests_as","label":"Manifestation of"},
+    {"id":"developed_from","orientation":"archival","inverse":"developed_into","label":"Developed from"},
+    {"id":"developed_into","orientation":"archival","inverse":"developed_from","label":"Developed into"},
+    {"id":"historically_precedes","orientation":"archival","inverse":"historically_follows","label":"Historically precedes"},
+    {"id":"historically_follows","orientation":"archival","inverse":"historically_precedes","label":"Historically follows"},
+    {"id":"documents","orientation":"archival","inverse":"documented_by","label":"Documents"},
+    {"id":"documented_by","orientation":"archival","inverse":"documents","label":"Documented by"},
+    {"id":"supports","orientation":"archival","inverse":"supported_by","label":"Supports"},
+    {"id":"supported_by","orientation":"archival","inverse":"supports","label":"Supported by"},
+    {"id":"contradicts","orientation":"archival","inverse":"contradicted_by","label":"Contradicts"},
+    {"id":"contradicted_by","orientation":"archival","inverse":"contradicts","label":"Contradicted by"},
+    {"id":"version_of","orientation":"archival","inverse":"has_version","label":"Version of"},
+    {"id":"has_version","orientation":"archival","inverse":"version_of","label":"Has version"},
+    {"id":"researches","orientation":"archival","inverse":"researched_by","label":"Researches"},
+    {"id":"researched_by","orientation":"archival","inverse":"researches","label":"Researched by"}
+  ],
+  "rules": [
+    "north_parent is the only authoritative North edge",
+    "part_of does not automatically become North parent",
+    "lateral relations may form cycles",
+    "archival relations preserve provenance and may point to Artifacts rather than Nodes",
+    "unknown or domain-specific relation labels may remain provisional until mapped without losing their original wording"
+  ]
+}
