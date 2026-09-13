@@ -46,6 +46,8 @@ jobs:
           node --check app/bible-mining-loader.js
           python scripts/validate_bible_mining_loader.py
           python scripts/validate_bible_reader.py
+      - name: Validate backend audit scope
+        run: python scripts/validate_backend_audit_scope.py
       - name: Validate derived Atlas model
         run: python scripts/validate_atlas_model.py
       - name: Validate assembled Atlas runtime
