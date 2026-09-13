@@ -3,8 +3,8 @@
 from __future__ import annotations
 
 import html
-import json
 import os
+import shutil
 from pathlib import Path
 
 from atlas_model import build_model, by_id
@@ -40,7 +40,7 @@ def page_shell(title: str, description: str, body: str, *, canonical: str, depth
 </head>
 <body class="site-shell">
 <a class="site-skip-link" href="#main">Skip to content</a>
-<header class="site-header"><a href="{esc(home)}">Potato of Life</a></header>
+<header class="site-header"><a class="site-brand" href="{esc(home)}">Potato of Life</a></header>
 <main id="main" class="site-main">{body}</main>
 <footer class="site-footer"><a href="{esc(home)}">Potato of Life</a></footer>
 </body>
@@ -96,8 +96,12 @@ def render_node(node: dict, nodes: dict[str, dict]) -> str:
 
     archive = '''<section class="record-archive">
 <h2>Depth</h2>
-<nav aria-label="Archive depth"><a href="../../archive/">History · Sources · Research · Archive</a></nav>
-<p>The unified Archive projection is being introduced during the Atlas migration; canonical source material remains in its current owners meanwhile.</p>
+<nav aria-label="Current depth routes">
+<a href="../../timeline/">History</a> ·
+<a href="../../context/source-authority/">Sources</a> ·
+<a href="../../explore/">Research</a>
+</nav>
+<p>The unified public Archive projection is introduced later in the migration. Current source material remains in its canonical owners and existing evidence surfaces until that route is safe to publish.</p>
 </section>'''
 
     return f'''<article class="record-page">
@@ -136,8 +140,16 @@ def write(rel: str, text: str) -> None:
     path.write_text(text, encoding="utf-8")
 
 
+def copy_design_system() -> None:
+    source = ROOT / "app" / "design-system.css"
+    target = OUT / "app" / "design-system.css"
+    target.parent.mkdir(parents=True, exist_ok=True)
+    shutil.copy2(source, target)
+
+
 def main() -> int:
     OUT.mkdir(parents=True, exist_ok=True)
+    copy_design_system()
     model = build_model()
     nodes = by_id(model)
 
