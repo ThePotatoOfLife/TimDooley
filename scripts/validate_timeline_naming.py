@@ -14,6 +14,10 @@ TEXT_SUFFIXES = {
 SKIP_DIRS = {".git", ".github", "node_modules", "vendor", "_site", "__pycache__", "archive"}
 SELF = Path(__file__).resolve()
 HYGIENE_VALIDATOR = ROOT / "scripts" / "validate_repo_hygiene.py"
+INTERNAL_ARCHITECTURE_ARTIFACTS = {
+    Path("data/house/rooms.json"),
+    Path("knowledge/research/potato-house-master/corpus-placement-map.md"),
+}
 
 
 def fail(message: str) -> None:
@@ -22,8 +26,11 @@ def fail(message: str) -> None:
 
 
 def is_internal_design_doc(rel: Path) -> bool:
-    """Implementation history may name retired products while discussing migrations."""
-    return len(rel.parts) >= 2 and rel.parts[0] == "docs" and rel.parts[1] == "superpowers"
+    """Implementation/research architecture may use chronology as a generic concept."""
+    return (
+        (len(rel.parts) >= 2 and rel.parts[0] == "docs" and rel.parts[1] == "superpowers")
+        or rel in INTERNAL_ARCHITECTURE_ARTIFACTS
+    )
 
 
 def strip_declared_compatibility_routes(rel: Path, text: str) -> str:
