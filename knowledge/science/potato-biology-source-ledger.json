@@ -1,0 +1,75 @@
+{
+  "id": "potato-biology-source-ledger",
+  "title": "Potato Biology, Development, Ecology & Evolution — Source Ledger",
+  "version": "1.0.0",
+  "updated": "2026-09-13",
+  "status": "source-ledger",
+  "rule": "Sources support botanical and agronomic claims within their documented scope. They do not validate Potatoverse symbolism, theology or Timic deductions; those remain separate interpretations built beside the biology.",
+  "sources": [
+    {
+      "id": "cip-potato-facts",
+      "class": "research_center",
+      "source": "International Potato Center (CIP), Potato Facts and Figures",
+      "url": "https://cipotato.org/potato/potato-facts-and-figures/",
+      "supports": ["tuber_identity", "domestication_propagation", "eyes_buds", "sexual_and_vegetative_reproduction"],
+      "notes": "CIP describes Solanum tuberosum, Andean origin/domestication, vegetative propagation from tubers and botanical seed production."
+    },
+    {
+      "id": "potato-genome-2011",
+      "class": "peer_reviewed",
+      "source": "Potato Genome Sequencing Consortium, Genome sequence and analysis of the tuber crop potato, Nature 475 (2011)",
+      "url": "https://www.nature.com/articles/nature10158",
+      "supports": ["tuber_identity", "genetics_ploidy", "clonal_propagation", "tuber_development"],
+      "notes": "Describes stolons as underground stems that swell into tubers, tubers as storage/vegetative-propagation organs, and common cultivated potato as highly heterozygous and autotetraploid."
+    },
+    {
+      "id": "tuber-dormancy-review-2024",
+      "class": "peer_reviewed",
+      "source": "Physiological and molecular mechanisms associated with potato tuber dormancy, review (2024)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11480654/",
+      "supports": ["dormancy_sprouting", "apical_dominance", "hormonal_regulation", "physiological_aging"],
+      "notes": "Reviews initiation, maintenance and termination of tuber dormancy and the roles of apical dominance, hormones, cell-cycle regulation and storage conditions."
+    },
+    {
+      "id": "tuberization-photoperiod-review-2021",
+      "class": "peer_reviewed",
+      "source": "Development of aerial and belowground tubers in potato is governed by photoperiod and epigenetic mechanism (2021)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8567063/",
+      "supports": ["tuberization", "photoperiod", "stolon_fate", "developmental_plasticity"],
+      "notes": "Reviews molecular, genetic and epigenetic regulation of stolon/tuber fate and integration with photoperiod."
+    },
+    {
+      "id": "dormancy-starch-source-review-2024",
+      "class": "peer_reviewed",
+      "source": "Advances in the Modulation of Potato Tuber Dormancy and Sprouting (2024)",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11121589/",
+      "supports": ["dormancy_sprouting", "starch_source_sink", "starch_mobilization", "sink_to_source_transition"],
+      "notes": "Reviews carbohydrate metabolism during dormancy and sprouting, including starch storage, sugar mobilization and the tuber's transition from sink to source."
+    },
+    {
+      "id": "potato-genome-diversity-2022",
+      "class": "peer_reviewed",
+      "source": "Genome evolution and diversity of wild and cultivated potatoes, Nature 606 (2022)",
+      "url": "https://www.nature.com/articles/s41586-022-04822-x",
+      "supports": ["genetics_ploidy", "genetic_diversity", "wild_and_cultivated_evolution"],
+      "notes": "Provides modern genomic context for wild and cultivated potato diversity and the highly heterozygous tetraploid state of most commercial cultivars."
+    },
+    {
+      "id": "late-blight-review-2024",
+      "class": "peer_reviewed",
+      "source": "Potato: from functional genomics to genetic improvement (2024), late-blight section",
+      "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11331666/",
+      "supports": ["late_blight", "phytophthora_infestans", "disease_resilience", "breeding_context"],
+      "notes": "Reviews Phytophthora infestans as the cause of potato late blight, its historical and current crop impact, and resistance/genomic improvement context."
+    },
+    {
+      "id": "cip-european-potato-origins",
+      "class": "research_center",
+      "source": "International Potato Center, The origins and adaptation of European potatoes reconstructed from historical genomes",
+      "url": "https://cipotato.org/publication/the-origins-and-adaptation-of-european-potatoes-reconstructed-from-historical-genomes/",
+      "supports": ["domestication_propagation", "andean_origin", "photoperiod_adaptation", "crop_diffusion"],
+      "notes": "Summarizes genomic research tracing Andean origin, vegetative propagation and adaptation after introduction into Europe."
+    }
+  ],
+  "coverage_note": "This is a seed provenance ledger for the canonical biology owner, not a complete potato bibliography. Future expansion should add primary experimental sources where the owner makes more specific mechanistic claims."
+}
