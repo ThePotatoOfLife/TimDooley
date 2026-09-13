@@ -41,6 +41,8 @@ jobs:
         run: python scripts/validate_atlas_model.py
       - name: Validate assembled Atlas runtime
         run: python scripts/validate_atlas_runtime.py
+      - name: Report Atlas migration frontier
+        run: python scripts/audit_atlas_frontier.py
       - name: Build additive Atlas preview
         run: python scripts/build_atlas_pages.py
       - name: Validate Atlas page shell
@@ -51,3 +53,11 @@ jobs:
         run: python scripts/validate_public_atlas_coexistence.py
       - name: Validate Atlas after full build
         run: python scripts/validate_atlas_pages.py
+      - name: Upload Atlas frontier diagnostics
+        if: ${{ always() && hashFiles('atlas-frontier-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: atlas-frontier-report
+          path: atlas-frontier-report.json
+          if-no-files-found: warn
+          retention-days: 7
