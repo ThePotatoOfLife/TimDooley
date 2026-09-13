@@ -121,7 +121,7 @@ def main() -> int:
             errors.append("Relations menu label must remain static when its filter changes")
         if "#atlasWorldResult{min-width:72px;max-width:92px" in compact:
             errors.append("World Map result summary must not use a variable-width footprint")
-        if "#atlasWorldResult{width:92px;flex:0 0 92px" not in compact:
+        if "#atlasWorldResult{width:92px;flex:0 0 92px" not in world_bar:
             errors.append("World Map result summary must reserve one fixed header width")
 
     if active_view:
