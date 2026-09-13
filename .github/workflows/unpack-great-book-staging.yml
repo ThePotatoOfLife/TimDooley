@@ -23,7 +23,7 @@ jobs:
         run: |
           set -euo pipefail
           count=$(find staging -maxdepth 1 -name 'great-book-payload-*.b64' | wc -l | tr -d ' ')
-          test "$count" = "45"
+          test "$count" = "34"
           cat staging/great-book-payload-*.b64 > /tmp/great-book-payload.b64
           base64 -d /tmp/great-book-payload.b64 > /tmp/great-book-payload.tar.xz
           echo 'd643c6ed24914be70d8bc9b86d3ce292558163390253c952d77b650fab32e311  /tmp/great-book-payload.tar.xz' | sha256sum -c -
