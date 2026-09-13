@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "purpose": "Explicit mappings from canonical-owner relation wording to permanent Atlas road types. Original owner wording is preserved; unmapped labels remain provisional rather than guessed.",
   "mappings": [
     {"raw":"identity-symbol coupling","canonical":"related","reason":"Identity/symbol coupling is important lateral context but does not define North ancestry."},
@@ -20,6 +20,12 @@
     {"raw":"symbolic-body-comparison","canonical":"compares_with","reason":"Symbolic body mappings are comparisons and must not imply anatomical identity."},
     {"raw":"temporal","canonical":"documented_by","reason":"The target timeline owns dated development and therefore documents the current subject's temporal history."},
     {"raw":"chronological","canonical":"documented_by","reason":"The target journey/timeline supplies chronological context behind the current subject."},
-    {"raw":"intellectual","canonical":"related","reason":"Intellectual dependency/context is retained laterally unless a stronger typed dependency is established."}
+    {"raw":"intellectual","canonical":"related","reason":"Intellectual dependency/context is retained laterally unless a stronger typed dependency is established."},
+    {"raw":"geometry-deepening","canonical":"related","reason":"The Vertical Potato Atlas deepens placement and archaeology but does not become a second North parent for Root System."},
+    {"raw":"mathematical-owner","canonical":"depends_on","reason":"Root System's exact compass equations depend on the canonical mathematical geometry owner while North ancestry remains separate."},
+    {"raw":"foundational","canonical":"related","reason":"The master framework supplies broader theological/system context without overriding the curated North spine."},
+    {"raw":"timeline","canonical":"documented_by","reason":"The Turning artifact documents the dated development behind the current structural interpretation."},
+    {"raw":"upper-lower-tree","canonical":"compares_with","reason":"The owner explicitly describes an Angels/Qliphoth/Tree/Ladder/North comparison layer."},
+    {"raw":"lower-field","canonical":"related","reason":"Farm/Swamp/Strife is a specialist lower-field synthesis connected laterally until stronger ownership semantics are established."}
   ]
 }
