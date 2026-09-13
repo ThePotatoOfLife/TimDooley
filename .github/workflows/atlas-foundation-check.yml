@@ -1,6 +1,8 @@
 name: Atlas foundation check
 
 on:
+  push:
+    branches: [potato-atlas-foundation]
   pull_request:
     branches: [main]
   workflow_dispatch:
