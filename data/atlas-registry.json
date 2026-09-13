@@ -1,0 +1,10 @@
+{
+  "version":"0.1.0",
+  "root_id":"potato-of-life",
+  "nodes":[
+    {"id":"potato-of-life","title":"Potato of Life","kind":"central model","status":"active","owner_path":"knowledge/core/potato-of-life.json","north_parent":null,"summary":"Current root subject for the Atlas.","epistemic_classes":["project_canon","interpretation"],"relations":[],"archive_refs":[],"views":["start"],"route":"/atlas/potato-of-life/"},
+    {"id":"tim-dooley","title":"Tim Dooley","kind":"public subject","status":"active","owner_path":"knowledge/core/tim-dooley.json","north_parent":"potato-of-life","summary":"Canonical current subject for Tim Dooley.","epistemic_classes":["self_description","documentary","historical","interpretation"],"relations":[],"archive_refs":[],"views":["start","tim"],"route":"/atlas/tim-dooley/"},
+    {"id":"root-system","title":"Potato of Life Root System","kind":"foundational ontology","status":"active","owner_path":"knowledge/core/root-system.json","north_parent":"potato-of-life","summary":"Structural owner for Plane, Axis, Door, Ladder, Mountain, Tree and Swamp.","epistemic_classes":["project_canon","interpretation"],"relations":[],"archive_refs":[],"views":["philosophy"],"route":"/atlas/root-system/"},
+    {"id":"timic-dynamics","title":"Timic Dynamics","kind":"formal framework","status":"active","owner_path":"knowledge/philosophy/timic-dynamics.json","north_parent":"root-system","summary":"Formal relational framework for transition, flow and integration.","epistemic_classes":["interpretation"],"relations":[],"archive_refs":[],"views":["philosophy","science"],"route":"/atlas/timic-dynamics/"}
+  ]
+}
