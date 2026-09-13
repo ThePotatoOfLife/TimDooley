@@ -25,8 +25,12 @@ def render_views(node:dict)->str:
 def render_relations(node:dict,nodes:dict[str,dict])->str:
     rows=[]
     for rel in node.get('relations',[]):
-        target=nodes.get(rel.get('target'));target_html=esc(rel.get('target'))
-        if target:target_html=f'<a href="{esc(href_for(target["route"],depth=2))}">{esc(target["title"])}</a>'
+        target=nodes.get(rel.get('target'))
+        target_html=esc(rel.get('artifact_title') or rel.get('target'))
+        if target:
+            target_html=f'<a href="{esc(href_for(target["route"],depth=2))}">{esc(target["title"])}</a>'
+        elif rel.get('resolved_kind')=='artifact' and isinstance(rel.get('route'),str) and rel.get('route'):
+            target_html=f'<a href="{esc(href_for(rel["route"],depth=2))}">{esc(rel.get("artifact_title") or rel.get("target"))}</a>'
         provisional=' <small>provisional road type</small>' if rel.get('provisional_type') else ''
         desc=f'<span>{esc(rel.get("description"))}</span>' if rel.get('description') else ''
         rows.append(f'<li data-orientation="{esc(rel.get("orientation","lateral"))}"><strong>{esc(rel.get("label") or rel.get("type") or "Related")}</strong> · {target_html}{provisional}{desc}</li>')
