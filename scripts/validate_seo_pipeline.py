@@ -87,7 +87,7 @@ def main() -> int:
             '("religion", "Religion", "/religion/")',
             '("philosophy", "Philosophy", "/philosophy/")',
             '("science", "Science", "/science/")',
-            '("world_map", "World Map", "/world-map/")',
+            '("world", "World", "/world/")',
             "datetime.now(timezone.utc).date().isoformat()",
             'write("llms.txt"',
             '"site_index": BASE_URL + "/site-index.json"',
@@ -95,6 +95,7 @@ def main() -> int:
             '"religion": BASE_URL + "/religion/"',
             '"philosophy": BASE_URL + "/philosophy/"',
             '"science": BASE_URL + "/science/"',
+            '"world": BASE_URL + "/world/"',
             '"world_map": BASE_URL + "/world-map/"',
             "User-agent: OAI-SearchBot",
             "Sitemap: {BASE_URL}/sitemap-index.xml",
@@ -145,8 +146,6 @@ def main() -> int:
             errors,
         )
 
-    # Quality CI must preserve exact SEO artifact diagnostics even when the gate
-    # fails, then fail the job rather than silently continuing.
     require(
         quality,
         (
@@ -160,14 +159,12 @@ def main() -> int:
         errors,
     )
 
-    # The deployment audit must inspect exactly the artifact that will ship.
     prune = pages.find("Remove internal archive from Pages artifact")
     enrich_step = pages.find("Enrich weak page descriptions")
     optimize_step = pages.find("Optimize crawl, sharing and sitemap SEO")
     if prune < 0 or enrich_step < 0 or optimize_step < 0 or not (prune < enrich_step < optimize_step):
         errors.append("pages.yml must prune the internal archive before SEO normalization")
 
-    # SEO/machine discovery must remain subordinate to reader architecture.
     home = read("index.html", errors)
     if 'href="seo/' in home or '>SEO<' in home:
         errors.append("SEO pipeline leaked into public navigation")
