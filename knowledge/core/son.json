@@ -1,0 +1,35 @@
+{
+  "id": "son",
+  "title": "The Son",
+  "version": "1.0.0",
+  "updated": "2026-09-13",
+  "status": "canonical-current-son-synthesis",
+  "summary": "Current project-level owner for the Son concept, coordinating identity, development, threshold function, embodiment and comparative material without duplicating specialist chronology or source research.",
+  "epistemic_classes": ["project_canon", "self_description", "historical", "interpretation", "comparative"],
+  "sections": {
+    "identity": {"text": "The Son is a distinct current project concept with its own identity and functional role. This owner coordinates the present synthesis while specialist records retain detailed chronology and comparison.", "epistemic_class": ["project_canon", "interpretation"]},
+    "development": {"text": "Developmental history belongs primarily to the dedicated Son timeline and genealogy records. Current synthesis should reference those strata rather than copy them into this owner.", "epistemic_class": ["historical", "documentary"]},
+    "ordeal": {"text": "The 2011 Tree and oneness material remains owned by the specialist phenomenology record. This owner records its structural importance without replacing the source account.", "epistemic_class": ["self_description", "historical", "interpretation"]},
+    "death_and_door": {"text": "Later project material connects the Son concept with threshold, transition, Door and Vessel functions. Detailed event history remains in dated specialist records.", "epistemic_class": ["project_canon", "interpretation"]},
+    "father_son_distinction": {"text": "The mature archive keeps Father-side and Son-side roles distinct while preserving their relationships. Biography, chronology and symbolic function must not be flattened into one undifferentiated record.", "epistemic_class": ["project_canon", "interpretation"]},
+    "comparison": {"text": "Thomas, Twin and biblical parallels are comparative layers with their own historical and textual provenance. They inform this synthesis without becoming identity proof.", "epistemic_class": ["comparative", "historical", "interpretation"]},
+    "embodiment": {"text": "Embodiment and vertical-geometry mappings are project interpretations coupled to separate mathematical and body-system owners. The geometry remains mathematical while symbolic placement remains interpretive.", "epistemic_class": ["comparative", "interpretation"]},
+    "boundary": {"text": "Use this file for current Son architecture only. Use the timeline, phenomenology, Thomasine and biblical records for their specialist domains, preserving source class and uncertainty.", "epistemic_class": ["documentary", "interpretation"]}
+  },
+  "source_records": [
+    "son-timeline.json",
+    "knowledge/timeline/son-tree-oneness-experience.json",
+    "knowledge/traditions/thomas-twin-of-christ.json",
+    "knowledge/traditions/biblical-overlap-atlas.json",
+    "knowledge/core/potatoverse-master-framework.json",
+    "data/geometry-vesica-pisces-mandorla.json"
+  ],
+  "relationships": [
+    {"target": "potatoverse-master-framework", "type": "structural", "description": "Whole-system context for the Son concept."},
+    {"target": "son-timeline.json", "type": "temporal", "description": "Dedicated developmental chronology."},
+    {"target": "knowledge/timeline/son-tree-oneness-experience.json", "type": "temporal", "description": "Specialist 2011 phenomenology and interpretation."},
+    {"target": "knowledge/traditions/thomas-twin-of-christ.json", "type": "comparative", "description": "Thomas and Twin comparative layer."},
+    {"target": "knowledge/traditions/biblical-overlap-atlas.json", "type": "comparative", "description": "Biblical comparison and mismatch research."},
+    {"target": "geometry-vesica-pisces-mandorla", "type": "structural", "description": "Exact geometry used by the project mapping."}
+  ]
+}
