@@ -1,0 +1,32 @@
+name: Potato House Governance
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Validate House registries
+        run: python scripts/validate_house_governance.py
+      - name: Validate House route topology
+        run: python scripts/validate_house_topology.py
+      - name: Validate House compatibility
+        run: python scripts/validate_house_compatibility.py
+      - name: Validate public projection
+        run: python scripts/validate_public_projection.py
+      - name: Audit source of truth
+        run: python scripts/audit_source_of_truth.py
