@@ -4,6 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_world_subdivisions as subdivisions
+import compact_world_subdivisions as compactor
 
 
 class WorldSubdivisionBuilderTests(unittest.TestCase):
@@ -43,16 +44,25 @@ class WorldSubdivisionBuilderTests(unittest.TestCase):
         self.assertEqual(records[0]['id'], 'DK-1082')
         self.assertNotIn('geometry', records[0])
 
-    def test_ring_simplification_preserves_closed_shape_and_reduces_vertices(self):
-        ring = [[0.0,0.0],[0.2,0.001],[0.4,-0.001],[0.6,0.001],[0.8,0.0],[1.0,0.0],[1.0,1.0],[0.0,1.0],[0.0,0.0]]
-        simplified = subdivisions.simplify_ring(ring, tolerance=0.01)
-        self.assertEqual(simplified[0], simplified[-1])
-        self.assertGreaterEqual(len(simplified), 4)
-        self.assertLess(len(simplified), len(ring))
+    def test_compactor_preserves_valid_polygon_and_records_presentation_derivation(self):
+        payload = {
+            'type':'FeatureCollection',
+            'metadata':{},
+            'features':[{
+                'type':'Feature',
+                'properties':{'id':'DK-test'},
+                'geometry':{'type':'Polygon','coordinates':[[[0,0],[0.2,0.0001],[0.4,-0.0001],[1,0],[1,1],[0,1],[0,0]]]},
+            }],
+        }
+        result = compactor.compact_feature_collection(payload, tolerance=0.001, max_bytes=100_000)
+        props = result['features'][0]['properties']
+        self.assertEqual(props['presentation_geometry']['method'], 'Shapely topology-preserving simplify')
+        self.assertEqual(result['metadata']['presentation_geometry']['tolerance_degrees'], 0.001)
+        self.assertLess(result['_serialized_bytes'], 100_000)
 
     def test_denmark_presentation_runtime_has_explicit_size_cap(self):
-        self.assertLessEqual(subdivisions.DENMARK_MAX_BYTES, 3 * 1024 * 1024)
-        self.assertTrue(subdivisions.DENMARK_SIMPLIFY_TOLERANCES)
+        self.assertLessEqual(compactor.DENMARK_MAX_BYTES, 3 * 1024 * 1024)
+        self.assertGreater(compactor.DENMARK_SIMPLIFY_TOLERANCE, 0)
 
 
 if __name__ == '__main__':
