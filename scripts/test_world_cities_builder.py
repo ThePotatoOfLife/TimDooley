@@ -6,6 +6,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_world_cities as cities
+import geonames_city_acquisition as geonames
 
 
 class WorldCitiesBuilderTests(unittest.TestCase):
@@ -65,7 +66,7 @@ class WorldCitiesBuilderTests(unittest.TestCase):
     def test_geonames_parser_resolves_admin_region(self):
         canonical = {'AAA': {'iso2':'AA','iso3':'AAA','name':'Alpha'}}
         fields = ['123','Alpha Local','Alpha Metro','Alpha Metropolis,Alpha M','21','11','P','PPL','AA','','01','','','','900000','','','Zone/Test','2026-01-01']
-        rows = cities._parse_geonames_text('\t'.join(fields), canonical, {'AA.01':'Alpha Region'})
+        rows = geonames.parse_geonames_text('\t'.join(fields), canonical, {'AA.01':'Alpha Region'})
         self.assertEqual(len(rows), 1)
         self.assertEqual(rows[0]['admin_region'], 'Alpha Region')
         self.assertIn('Alpha Metropolis', rows[0]['aliases'])
