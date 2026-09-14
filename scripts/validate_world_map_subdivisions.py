@@ -5,34 +5,43 @@ from __future__ import annotations
 import json
 import shutil
 import subprocess
+import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 BUILDER = ROOT / "scripts" / "build_world_subdivisions.py"
+POPULATION_ENRICHER = ROOT / "scripts" / "enrich_world_subdivision_population.py"
+POPULATION_TEST = ROOT / "scripts" / "test_world_subdivision_population.py"
 MODULE = ROOT / "world-map" / "3d-subdivisions.js"
 SEARCH = ROOT / "world-map" / "3d-search.js"
 SEARCH_CORE = ROOT / "world-map" / "3d-search-core.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
+DNK = ROOT / "data" / "world-subdivisions" / "DNK.geo.json"
 INTERACTION_TEST = ROOT / "scripts" / "test_world_map_subdivision_interaction.mjs"
 SEARCH_TEST = ROOT / "scripts" / "test_world_map_search.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    required = (BUILDER, MODULE, SEARCH, SEARCH_CORE, LIFECYCLE, INDEX, USA, INTERACTION_TEST, SEARCH_TEST)
+    required = (
+        BUILDER, POPULATION_ENRICHER, POPULATION_TEST, MODULE, SEARCH, SEARCH_CORE,
+        LIFECYCLE, INDEX, USA, DNK, INTERACTION_TEST, SEARCH_TEST,
+    )
     for path in required:
         if not path.exists():
             errors.append(f"missing subdivision integration file: {path.relative_to(ROOT)}")
     if not errors:
         builder = BUILDER.read_text(encoding="utf-8")
+        enricher = POPULATION_ENRICHER.read_text(encoding="utf-8")
         module = MODULE.read_text(encoding="utf-8")
         search = SEARCH.read_text(encoding="utf-8")
         search_core = SEARCH_CORE.read_text(encoding="utf-8")
         lifecycle = LIFECYCLE.read_text(encoding="utf-8")
         index = json.loads(INDEX.read_text(encoding="utf-8"))
         usa = json.loads(USA.read_text(encoding="utf-8"))
+        dnk = json.loads(DNK.read_text(encoding="utf-8"))
 
         for token in (
             "GENZ2025", "cb_2025_us_state_20m.zip", "NST-EST2025-ALLDATA.csv",
@@ -41,6 +50,12 @@ def main() -> int:
         ):
             if token not in builder:
                 errors.append(f"subdivision builder missing marker: {token}")
+        for token in (
+            "BEFOLK3", "Statistics Denmark", "unknown-not-zero", "enrich_denmark_payload",
+            "official-statistical-observation",
+        ):
+            if token not in enricher:
+                errors.append(f"subdivision population enricher missing marker: {token}")
 
         for token in (
             "world-subdivisions/index.json", "atlas-subdivision", "subdivision=",
@@ -59,12 +74,12 @@ def main() -> int:
         if "3d-subdivisions.js" not in lifecycle or "map.getZoom() < 3.4" not in lifecycle:
             errors.append("regional-scale lazy subdivision loading is not registered")
 
-        descriptor = index.get("partitions", {}).get("USA", {})
-        if descriptor.get("feature_count") != 51:
+        usa_descriptor = index.get("partitions", {}).get("USA", {})
+        if usa_descriptor.get("feature_count") != 51:
             errors.append("USA subdivision index must declare 51 first-wave features")
-        if descriptor.get("id_prefix") != "US-" or not descriptor.get("viewport_bounds"):
+        if usa_descriptor.get("id_prefix") != "US-" or not usa_descriptor.get("viewport_bounds"):
             errors.append("USA partition must expose generic id_prefix and viewport_bounds metadata")
-        search_records = descriptor.get("search_records") or []
+        search_records = usa_descriptor.get("search_records") or []
         if len(search_records) != 51:
             errors.append(f"USA subdivision search manifest must contain 51 records; found {len(search_records)}")
         if any("geometry" in row for row in search_records):
@@ -89,6 +104,30 @@ def main() -> int:
             if not props.get("area_definition") or "ALAND" not in props.get("area_definition", ""):
                 errors.append(f"{props.get('id')}: area provenance is not explicit")
 
+        dnk_descriptor = index.get("partitions", {}).get("DNK", {})
+        dnk_features = dnk.get("features", []) if dnk.get("type") == "FeatureCollection" else []
+        if len(dnk_features) != 5:
+            errors.append(f"DNK subdivision snapshot must contain five current regions; found {len(dnk_features)}")
+        if dnk_descriptor.get("id_prefix") != "DK-" or not dnk_descriptor.get("viewport_bounds"):
+            errors.append("DNK partition must expose generic id_prefix and viewport_bounds metadata")
+        if any("geometry" in row for row in (dnk_descriptor.get("search_records") or [])):
+            errors.append("DNK subdivision search records must remain geometry-free")
+        for feature in dnk_features:
+            props = feature.get("properties") or {}
+            population = props.get("population")
+            if population is not None:
+                if not isinstance(population.get("value"), (int, float)) or population.get("value", 0) <= 0:
+                    errors.append(f"{props.get('id')}: Danish population must be positive when present")
+                if population.get("unit") != "persons" or "Statistics Denmark" not in population.get("source", ""):
+                    errors.append(f"{props.get('id')}: Danish population provenance is incomplete")
+
+        population_test = subprocess.run(
+            [sys.executable, "-m", "unittest", "scripts.test_world_subdivision_population", "-v"],
+            cwd=ROOT, capture_output=True, text=True,
+        )
+        if population_test.returncode:
+            errors.append("subdivision population regression failed: " + (population_test.stderr.strip() or population_test.stdout.strip()))
+
         node = shutil.which("node")
         if node:
             for js_path in (MODULE, SEARCH, SEARCH_CORE):
@@ -106,7 +145,7 @@ def main() -> int:
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · generic partitions/search · state refit loop guarded")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · DNK 5/5 · sourced observation contract · generic partitions/search · state refit loop guarded")
     return 0
 
 
