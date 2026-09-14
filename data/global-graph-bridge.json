@@ -1,12 +1,12 @@
 {
-  "version":"2.1.0",
+  "version":"2.1.1",
   "updated":"2026-09-14",
   "purpose":"Bridge registry connecting backend-layer IDs to the global graph without forcing every schema or source record into data/nodes.json. Canonical records can be promoted; references remain resolvable through source-layer routing.",
   "global_graph":"data/relationships.json",
   "canonical_node_registry":"data/nodes.json",
   "reference_registry":"data/graph-registry.json",
-  "public_reader":"explore/",
-  "bridge_rules":["A substantive entity gets one canonical ID and one primary owner.","A research-layer ID may remain outside nodes.json while its source file and route are explicit.","Relationship endpoints may point to reference-only IDs, but those IDs must resolve through this bridge or the graph registry.","Country IDs resolve through data/countries/index.json and canonical country records.","Blueprint IDs are schema identifiers, not graph entities unless a concrete record exists.","Source documents are graph-addressable source nodes but are not automatically substantive entities.","Project-symbolic records retain an epistemic class that prevents them from being mistaken for empirical observations.","Deep archive IDs resolve through Explore lookup; the homepage is not a node reader."],
+  "public_reader":"index.html",
+  "bridge_rules":["A substantive entity gets one canonical ID and one primary owner.","A research-layer ID may remain outside nodes.json while its source file and route are explicit.","Relationship endpoints may point to reference-only IDs, but those IDs must resolve through this bridge or the graph registry.","Country IDs resolve through data/countries/index.json and canonical country records.","Blueprint IDs are schema identifiers, not graph entities unless a concrete record exists.","Source documents are graph-addressable source nodes but are not automatically substantive entities.","Project-symbolic records retain an epistemic class that prevents them from being mistaken for empirical observations.","Explicit deep archive IDs resolve through Explore lookup; public_reader remains the compatibility fallback for legacy Entity Trace hashes."],
   "explicit_bridges":[
     {"id":"tim-dooley","owner":"data/tim-dooley-cosmology.json","graph_registry":"data/graph-registry.json","route":"explore/#lookup=tim-dooley","class":"project-mythic"},
     {"id":"potatoism","owner":"data/potatoism-religion.json","graph_registry":"data/graph-registry.json","route":"explore/#lookup=potatoism","class":"project-defined-symbolic"},
