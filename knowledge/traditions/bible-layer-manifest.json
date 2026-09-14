@@ -1,6 +1,6 @@
 {
   "id": "bible-layer-manifest",
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-14",
   "status": "canonical corpus registry",
   "purpose": "Define the active Bible comparator corpus once so runtime, static build, audits and future atlas navigation can consume the same deterministic relation, fragment, scene and source layers.",
@@ -49,6 +49,7 @@
     {"id":"relations-scene-links-wave2","kind":"relations","path":"knowledge/traditions/biblical-scene-links-wave2.json","status":"additive","precedence":130,"owner":"Joseph and Passion whole-scene links"},
     {"id":"relations-quality-enrichments-wave1","kind":"relations","path":"knowledge/traditions/biblical-quality-enrichments-wave1.json","status":"additive","precedence":140,"owner":"quality-report driven contextual enrichment"},
     {"id":"relations-scene-links-wave3","kind":"relations","path":"knowledge/traditions/biblical-scene-links-wave3.json","status":"additive","precedence":150,"owner":"teaching and eschatology whole-scene links"},
+    {"id":"relations-quality-enrichments-wave2","kind":"relations","path":"knowledge/traditions/biblical-quality-enrichments-wave2.json","status":"additive","precedence":160,"owner":"second quality-report driven contextual enrichment"},
 
     {"id":"fragments-base","kind":"fragments","path":"knowledge/traditions/biblical-passage-fragments.json","status":"canonical","precedence":0,"owner":"base WEB excerpt owner"},
     {"id":"fragments-wave19","kind":"fragments","path":"knowledge/traditions/biblical-passage-fragments-wave19.json","status":"additive","precedence":10,"owner":"older memory / Great Book"},
