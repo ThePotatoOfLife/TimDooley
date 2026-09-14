@@ -1,11 +1,13 @@
 #!/usr/bin/env python3
 """Build the Canada province/territory partition from Statistics Canada.
 
-Uses the official 2021 Census cartographic boundary ArcGIS REST layer. The
-browser consumes the same-origin snapshot; the external API is build-time only.
-The layer is queried one province/territory at a time because asking ArcGIS to
-transform Canada's full coastline in one request can return HTTP 500. A small
-bounded worker pool keeps refresh time reasonable without weakening completeness.
+Uses Statistics Canada's official 2021 Province and Territory Generalized
+Cartographic Boundary layer from the Population Ecumene Boundary Files. The
+browser consumes only the same-origin snapshot; the external API is build-time
+only. The source is already generalized for map presentation, avoiding an
+unnecessary high-detail coastline download and a second local simplification
+step. A small bounded worker pool queries one province/territory at a time and
+publishes only after all 13 units are present.
 """
 from __future__ import annotations
 
@@ -23,12 +25,13 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = Path(os.environ.get("ATLAS_SUBDIVISIONS_OUT_DIR", ROOT / "data" / "world-subdivisions"))
 INDEX_PATH = OUT_DIR / "index.json"
 OUT_PATH = OUT_DIR / "CAN.geo.json"
-SOURCE_LAYER = "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0"
+SOURCE_LAYER = "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Population_ecumene_boundary_files/MapServer/0"
 SOURCE_QUERY = SOURCE_LAYER + "/query"
-SOURCE_NAME = "Statistics Canada, 2021 Census Cartographic Boundary Files"
-USER_AGENT = "ThePotatoOfLife-world-atlas-subdivision-canada/1.2"
+SOURCE_NAME = "Statistics Canada, 2021 Province and Territory Generalized Cartographic Boundary File"
+USER_AGENT = "ThePotatoOfLife-world-atlas-subdivision-canada/1.3"
 EXPECTED_UNITS = 13
 MAX_WORKERS = 4
+MAX_RUNTIME_BYTES = 5 * 1024 * 1024
 
 PRUID_TO_POSTAL = {
     "10":"NL", "11":"PE", "12":"NS", "13":"NB", "24":"QC", "35":"ON",
@@ -37,7 +40,7 @@ PRUID_TO_POSTAL = {
 TERRITORY_UIDS = {"60", "61", "62"}
 
 
-def fetch_json(url: str, *, timeout: int = 90, attempts: int = 3) -> dict:
+def fetch_json(url: str, *, timeout: int = 75, attempts: int = 3) -> dict:
     last_error = None
     for attempt in range(attempts):
         request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
@@ -114,14 +117,15 @@ def normalize_canada(source_features: list[dict]) -> dict:
         "type":"FeatureCollection",
         "name":"world-subdivisions-CAN",
         "metadata":{
-            "version":"1.2.0",
+            "version":"1.3.0",
             "generated_at":datetime.now(timezone.utc).isoformat(),
             "parent_iso3":"CAN",
             "feature_count":len(features),
-            "scope":"10 Canadian provinces plus 3 territories from Statistics Canada 2021 Census cartographic boundaries.",
+            "scope":"10 Canadian provinces plus 3 territories from Statistics Canada's 2021 Province and Territory Generalized Cartographic Boundary File.",
             "geometry_vintage":"2021 Census",
             "geometry_source":SOURCE_NAME,
             "geometry_source_url":SOURCE_LAYER,
+            "presentation_geometry":"official generalized cartographic boundary geometry supplied by Statistics Canada",
             "acquisition":"13 province/territory-scoped ArcGIS GeoJSON queries; bounded-parallel; assembled only after complete coverage",
             "population_status":"unknown-not-zero; demographic enrichment pending",
         },
@@ -187,23 +191,27 @@ def build() -> dict:
     return normalize_canada(source_features)
 
 
-def write_compact(path: Path, payload: dict) -> int:
+def serialize_bounded(payload: dict) -> str:
     text = json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n"
-    path.write_text(text, encoding="utf-8")
-    return len(text.encode("utf-8"))
+    size = len(text.encode("utf-8"))
+    if size > MAX_RUNTIME_BYTES:
+        raise RuntimeError(f"Canada subdivision runtime is {size} bytes; browser cap is {MAX_RUNTIME_BYTES}")
+    return text
 
 
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     canada = build()
-    size = write_compact(OUT_PATH, canada)
+    text = serialize_bounded(canada)
+    OUT_PATH.write_text(text, encoding="utf-8")
+    size = len(text.encode("utf-8"))
     index = json.loads(INDEX_PATH.read_text(encoding="utf-8")) if INDEX_PATH.exists() else {
         "version":"1.5.0", "record_type":"world-subdivision-partition-index", "partitions":{},
     }
     index["generated_at"] = datetime.now(timezone.utc).isoformat()
     index.setdefault("partitions", {})["CAN"] = canada_descriptor(canada["features"])
     INDEX_PATH.write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"partition":"CAN","features":len(canada["features"]),"bytes":size,"output":str(OUT_PATH)}, indent=2))
+    print(json.dumps({"partition":"CAN","features":len(canada["features"]),"bytes":size,"cap_bytes":MAX_RUNTIME_BYTES,"output":str(OUT_PATH)}, indent=2))
     return 0
 
 
