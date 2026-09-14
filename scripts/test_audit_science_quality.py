@@ -8,16 +8,25 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "audit_science_quality.py"
+BUILDER = ROOT / "scripts" / "build_science_catalog.py"
 
 
-def load_auditor():
-    spec = importlib.util.spec_from_file_location("audit_science_quality", SCRIPT)
+def load_module(name: str, path: Path):
+    spec = importlib.util.spec_from_file_location(name, path)
     if spec is None or spec.loader is None:
-        raise AssertionError("audit_science_quality.py could not be loaded")
+        raise AssertionError(f"{path.name} could not be loaded")
     module = importlib.util.module_from_spec(spec)
     sys.modules[spec.name] = module
     spec.loader.exec_module(module)
     return module
+
+
+def load_auditor():
+    return load_module("audit_science_quality", SCRIPT)
+
+
+def load_builder():
+    return load_module("build_science_catalog", BUILDER)
 
 
 def assert_has(items, code: str) -> None:
@@ -120,6 +129,21 @@ def test_model_gaps_are_advisory_before_t3(auditor) -> None:
     assert_has(result["advisories"], "model_missing_failure_condition")
 
 
+def test_generated_fallback_cannot_qualify_for_public_library(builder) -> None:
+    data = {
+        "id": "thin-but-keyword-rich-model",
+        "title": "Thin But Keyword Rich Model",
+        "research_question": "Can this be tested?",
+        "model": {"kind": "toy"},
+        "equations": ["x'=ax"],
+        "observables": ["x"],
+    }
+    record = {
+        "abstract": "Canonical science record for Thin But Keyword Rich Model With A Long Display Title.",
+    }
+    assert builder.qualifies_for_library(Path("thin-model.json"), data, record) is False
+
+
 def test_science_portal_validator_invokes_semantic_audit() -> None:
     text = (ROOT / "scripts" / "validate_science_portal.py").read_text(encoding="utf-8")
     assert "audit_science_quality" in text
@@ -128,7 +152,9 @@ def test_science_portal_validator_invokes_semantic_audit() -> None:
 
 def main() -> int:
     auditor = load_auditor()
+    builder = load_builder()
     tests = [
+        lambda _: test_generated_fallback_cannot_qualify_for_public_library(builder),
         test_thin_source_record_is_flagged_without_false_hard_failure,
         test_t3_requires_calibration_or_data,
         test_future_t3_gate_does_not_raise_current_t2_maturity,
@@ -138,7 +164,7 @@ def main() -> int:
     ]
     for test in tests:
         test(auditor)
-        print("PASS", test.__name__)
+        print("PASS", getattr(test, "__name__", "test_generated_fallback_cannot_qualify_for_public_library"))
     test_science_portal_validator_invokes_semantic_audit()
     print("PASS test_science_portal_validator_invokes_semantic_audit")
     return 0
