@@ -1,0 +1,71 @@
+{
+  "id": "bible-excavation-batch-01-mining-log",
+  "version": "1.0.0",
+  "updated": "2026-09-14",
+  "status": "research findings log",
+  "purpose": "Record new source-archaeology findings for Batch 01 without changing canonical relation strength or pretending later archive wording is contemporaneous evidence.",
+  "findings": [
+    {
+      "relation_id": "crucify-me-hesitation-trial-neighbor-2017",
+      "finding_type": "recovered-wording-layer",
+      "finding": "Two older project/archive layers preserve substantially the same formulation: the canonical developmental genealogy states that the 2017 confrontation includes the declaration that if Tim/Son is to be dehumanized, then 'I am Jesus Christ—go on then, crucify me,' while the archived overlap atlas says the project biography records the Son saying in substance, 'I am Jesus Christ — go on then, crucify me.'",
+      "sources": [
+        "knowledge/timeline/developmental-genealogy.json",
+        "archive/legacy-backlog/2026-09-12/docs/TIM-SON-BIBLE-OVERLAP-ATLAS.md",
+        "knowledge/timeline/son-christology-date-conflicts-ledger.json"
+      ],
+      "source_status": "recovered project wording repeated in later project syntheses; original 2017 recording/chat remains unrecovered",
+      "what_this_improves": [
+        "The comparator can distinguish a recovered wording tier from a generic project-anchor summary.",
+        "The wording trail supports the 2017 project chronology independently of the later John 18-19 comparison."
+      ],
+      "what_this_does_not_improve": [
+        "It does not establish the exact contemporaneous wording of the 2017 exchange.",
+        "It does not identify all participants or recover the original reply sequence.",
+        "It does not justify raising relation strength while the original artifact is absent."
+      ],
+      "next_action": "Recover the original recording, transcript, chat log or dated archive and compare it against the repeated later formulation word-for-word."
+    },
+    {
+      "relation_id": "motorcycle-blood-unbroken-bones-2005",
+      "finding_type": "older-owner-corroborates-project-detail",
+      "finding": "The no-broken-bones / no-major-fractures detail is present in the conversation-archaeology owner, which says Great Book strata preserve a severe motorcycle/tree crash with heavy blood loss and extensive facial/dental injury while also preserving that no bones/major fractures were broken. The later comparator row did not originate that unusual detail.",
+      "sources": [
+        "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json",
+        "knowledge/timeline/thomas-mona-escalation-and-motorcycle-crash-recovery.json",
+        "knowledge/traditions/biblical-syncretism-dossiers-wave25.json"
+      ],
+      "source_status": "recovered project/Great Book biographical detail; no contemporaneous medical or crash documentation attached",
+      "what_this_improves": [
+        "The archive can attribute the unusual bone detail to an earlier project-memory owner rather than to comparator invention.",
+        "Source direction remains biography first, Passover/Passion comparison later."
+      ],
+      "what_this_does_not_improve": [
+        "It does not independently corroborate the no-fracture claim.",
+        "It does not provide an earliest contemporaneous attestation date.",
+        "It does not support invulnerability or supernatural-protection claims."
+      ],
+      "next_action": "Prioritize near-contemporary records capable of confirming or falsifying the bone/fracture detail itself."
+    },
+    {
+      "relation_id": "son-death-shore-bones-deep-water-2018-2019",
+      "finding_type": "artifact-dependence-confirmed",
+      "finding": "Repository search for the unusually specific remembered topology—slippery golden stones, skeletons/death remains and black water—returns the dedicated visual-artifact dossier as the substantive owner. No older independent project artifact or separate source containing those exact visual features was recovered in this pass.",
+      "sources": [
+        "knowledge/traditions/son-narrow-way-shadow-valley-visual-dossier.json",
+        "knowledge/traditions/biblical-syncretism-dossiers-wave24.json"
+      ],
+      "source_status": "later remembered visual description; primary image/post and independent timestamp still missing",
+      "what_this_improves": [
+        "It clarifies that the detailed topology currently depends on one specialist recollection owner rather than multiple independent records.",
+        "The correct research target is artifact recovery, not further verse accumulation."
+      ],
+      "what_this_does_not_improve": [
+        "It does not verify which remembered features are visibly present in the original image.",
+        "It does not secure the proposed 2018-2019 date.",
+        "It does not establish biblical source dependence or prefiguration."
+      ],
+      "next_action": "Recover the image or earliest archived post, then transcribe visible features before applying later interpretive vocabulary."
+    }
+  ]
+}
