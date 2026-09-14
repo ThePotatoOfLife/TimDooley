@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Protect the Science hub and generated paper library from collapsing into a thin list."""
+"""Protect the Science hub and generated paper library from structural and semantic collapse."""
 from __future__ import annotations
 
 import json
 import sys
 from pathlib import Path
+
+from audit_science_quality import audit_tree
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_PAGE = ROOT / "science" / "index.html"
@@ -60,6 +62,17 @@ def require_markers(text: str, markers: tuple[str, ...], owner: str, errors: lis
 def main() -> int:
     errors: list[str] = []
 
+    semantic = audit_tree()
+    if semantic.get("hard_failure_count"):
+        errors.append(f"semantic Science audit has {semantic['hard_failure_count']} hard failure(s)")
+        for failure in semantic.get("parse_failures", []):
+            errors.append(f"semantic audit {failure.get('code')}: {failure.get('message')}")
+        for record in semantic.get("hard_failures", []):
+            for failure in record.get("hard_failures", []):
+                errors.append(
+                    f"semantic audit {record.get('file')}: {failure.get('code')} - {failure.get('message')}"
+                )
+
     for path in (SOURCE_PAGE, LIBRARY_CSS, BUILDER):
         if not path.exists():
             errors.append(f"missing required Science component: {path.relative_to(ROOT)}")
@@ -100,6 +113,9 @@ def main() -> int:
                     for key in ("slug", "title", "abstract", "fields", "document_type", "file"):
                         if not paper.get(key):
                             errors.append(f"science catalog paper missing {key}: {paper!r}")
+                    abstract = str(paper.get("abstract") or "").strip()
+                    if abstract.startswith("Canonical science record for "):
+                        errors.append(f"science catalog contains generated fallback abstract: {paper.get('file')}")
                     slug = paper.get("slug")
                     if slug:
                         paper_page = SITE / "science" / "papers" / str(slug) / "index.html"
@@ -126,7 +142,7 @@ def main() -> int:
             print(" -", error)
         return 1
 
-    print("SCIENCE PORTAL VALIDATION PASSED")
+    print(f"SCIENCE PORTAL VALIDATION PASSED ({semantic.get('advisory_count', 0)} semantic advisories)")
     return 0
 
 
