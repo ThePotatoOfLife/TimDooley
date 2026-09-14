@@ -15,6 +15,7 @@ BUILDER = ROOT / "scripts" / "build_science_catalog.py"
 SITE = ROOT / "_site"
 BUILT_PAGE = SITE / "science" / "index.html"
 CATALOG = SITE / "science" / "catalog.json"
+REPORT = ROOT / "science-portal-report.json"
 
 SOURCE_MARKERS = (
     'id="science-search"',
@@ -67,8 +68,30 @@ def github_error(path: str, title: str, message: str) -> None:
     print(f"::error file={safe_path},title={safe_title}::{safe_message}")
 
 
+def write_report(errors: list[str], semantic: dict, payload: dict | None) -> None:
+    REPORT.write_text(
+        json.dumps(
+            {
+                "schema": "science-portal-report/v1",
+                "ok": not errors,
+                "errors": errors,
+                "semantic_hard_failure_count": semantic.get("hard_failure_count", 0),
+                "semantic_advisory_count": semantic.get("advisory_count", 0),
+                "catalog_record_count": payload.get("record_count") if isinstance(payload, dict) else None,
+                "catalog_qualifying_count": payload.get("qualifying_count") if isinstance(payload, dict) else None,
+                "catalog_paper_count": len(payload.get("papers", [])) if isinstance(payload, dict) and isinstance(payload.get("papers"), list) else None,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+
 def main() -> int:
     errors: list[str] = []
+    payload: dict | None = None
 
     semantic = audit_tree()
     if semantic.get("hard_failure_count"):
@@ -152,10 +175,13 @@ def main() -> int:
         else:
             errors.append("built science catalog missing: _site/science/catalog.json")
 
+    write_report(errors, semantic, payload)
+
     if errors:
         print("SCIENCE PORTAL VALIDATION FAILED")
         for error in errors:
             print(" -", error)
+            github_error("scripts/validate_science_portal.py", "Science portal validation", error)
         return 1
 
     print(f"SCIENCE PORTAL VALIDATION PASSED ({semantic.get('advisory_count', 0)} semantic advisories)")
