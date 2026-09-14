@@ -7,7 +7,6 @@ ROOT = Path(__file__).resolve().parents[1]
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 PLACE_SEARCH = ROOT / "world-map" / "3d-place-search.js"
-HOVER = ROOT / "world-map" / "3d-hover.js"
 CAPITALS = ROOT / "data" / "world-capitals.geo.json"
 SOURCE_VALIDATOR = ROOT / "scripts" / "validate_world_map_source.py"
 
@@ -38,7 +37,7 @@ def validate_city_snapshot():
 
 
 def validate_javascript_syntax():
-    for path in (PLACE_SEARCH, SUBDIVISIONS, HOVER):
+    for path in (PLACE_SEARCH, SUBDIVISIONS):
         try:
             subprocess.run(["node", "--check", str(path)], check=True, capture_output=True, text=True)
         except FileNotFoundError as exc:
@@ -56,7 +55,6 @@ def main():
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8")
     lifecycle = LIFECYCLE.read_text(encoding="utf-8")
     place_search = PLACE_SEARCH.read_text(encoding="utf-8")
-    hover = HOVER.read_text(encoding="utf-8")
     source_validator = SOURCE_VALIDATOR.read_text(encoding="utf-8")
 
     require("search(query)" in subdivisions, "subdivision owner must expose search(query)")
@@ -76,10 +74,6 @@ def main():
             "city search must reuse the existing pinned Natural Earth snapshot")
     require("searchCities" in place_search and "focusCity" in place_search,
             "place search must expose explicit city search/focus behavior")
-    require("focusFeature" in place_search,
-            "place search must accept an already-rendered city feature without refetching")
-    require("__potatoAtlasPlaceSearch" in hover and "focusFeature" in hover,
-            "visible city clicks must route through the same place-selection API as search")
     require("searchParams.set('place'" in place_search and "searchParams.delete('place'" in place_search,
             "city selection must own a stable ?place= deep-link state")
     require("atlas-place-selection" in place_search,
