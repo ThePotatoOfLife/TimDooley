@@ -5,6 +5,7 @@ import sys
 from pathlib import Path
 
 ALLOWED_CLASSES = {"person", "collective", "great_book_character", "created_being", "platform_or_system"}
+ALLOWED_DIALOGUE_STATUS = {"verbatim", "near_verbatim", "later_retelling", "great_book_literary", "public_post_exchange"}
 
 
 def _load(path: Path):
@@ -58,6 +59,43 @@ def validate_story_archive(root: Path) -> list[str]:
         for cast_id in entry.get("cast", []):
             if cast_id not in cast_ids:
                 errors.append(f"arc {entry.get('id')} references unknown cast id {cast_id}")
+
+    scene_path = story / "scene-reservoir.json"
+    if scene_path.exists():
+        try:
+            scenes = _load(scene_path).get("scenes", [])
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"story scene parse error: {exc}")
+            scenes = []
+        for scene in scenes:
+            for cast_id in scene.get("cast", []):
+                if cast_id not in cast_ids:
+                    errors.append(f"scene {scene.get('id')} references unknown cast id {cast_id}")
+
+    dialogue_path = story / "dialogue-vault.json"
+    if dialogue_path.exists():
+        try:
+            dialogues = _load(dialogue_path).get("dialogues", [])
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"story dialogue parse error: {exc}")
+            dialogues = []
+        for dialogue in dialogues:
+            if dialogue.get("status") not in ALLOWED_DIALOGUE_STATUS:
+                errors.append(f"invalid dialogue status for {dialogue.get('id')}")
+            for cast_id in dialogue.get("participants", []):
+                if cast_id not in cast_ids:
+                    errors.append(f"dialogue {dialogue.get('id')} references unknown cast id {cast_id}")
+
+    manifest_path = story / "story-manifest.json"
+    if manifest_path.exists():
+        try:
+            listed = _load(manifest_path).get("files", [])
+        except (OSError, json.JSONDecodeError) as exc:
+            errors.append(f"story manifest parse error: {exc}")
+            listed = []
+        for name in listed:
+            if not (story / name).exists():
+                errors.append(f"manifest references missing story file {name}")
 
     return errors
 
