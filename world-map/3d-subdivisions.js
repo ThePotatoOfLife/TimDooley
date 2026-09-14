@@ -107,6 +107,16 @@ function syncUrl(id) {
   else url.searchParams.delete('subdivision');
   history.replaceState({}, '', url);
 }
+async function handSubdivisionToInfrastructure(detail) {
+  try {
+    if (!window.__potatoAtlasInfrastructure && window.__potatoAtlasLoadModule) {
+      await window.__potatoAtlasLoadModule('Infrastructure Context', './3d-infrastructure.js');
+    }
+    await window.__potatoAtlasInfrastructure?.showForSubdivision?.(detail);
+  } catch (error) {
+    console.warn('Subdivision infrastructure context unavailable:', error);
+  }
+}
 function selectSubdivision(partition, feature, options = {}) {
   if (!feature) return false;
   const p = feature.properties || {};
@@ -116,7 +126,9 @@ function selectSubdivision(partition, feature, options = {}) {
   const bounds = geometryBounds(feature);
   if (options.fit !== false && bounds) map.fitBounds(bounds, { padding:80, duration:650, maxZoom:7.4 });
   renderInspector(feature, loaded.get(partition)?.descriptor || {});
-  window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-select', { detail:{ partition, id:selectedId, properties:p, feature } }));
+  const detail = { partition, id:selectedId, properties:p, feature };
+  window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-select', { detail }));
+  void handSubdivisionToInfrastructure(detail);
   return true;
 }
 function bindLayerEvents(partition) {
@@ -212,7 +224,15 @@ window.__potatoAtlasSubdivisions = {
     await loadPartition(partition);
     return selectSubdivision(partition, featureById(partition, id), options);
   },
-  clear() { selectedId = null; pendingDeepLinkId = null; syncUrl(null); hideInspector(); },
+  clear() {
+    const previousId = selectedId;
+    selectedId = null;
+    pendingDeepLinkId = null;
+    syncUrl(null);
+    hideInspector();
+    window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-clear', { detail:{ id:previousId } }));
+    window.__potatoAtlasInfrastructure?.fallBackContext?.();
+  },
   get selected() { return selectedId; },
   loadedPartitions() { return [...loaded.keys()]; },
 };
