@@ -81,3 +81,20 @@ queueMicrotask(() => {
   maybeLoadSubdivisions();
   map?.on('zoomend', maybeLoadSubdivisions);
 });
+
+// Places follow the same progressive-disclosure rule: remain dormant at global
+// scale, then load at regional scale or immediately when a stable place deep link
+// explicitly requests one.
+function maybeLoadPlaces() {
+  const map = window.__potatoAtlasMap;
+  if (!map) return;
+  const requested = new URL(location.href).searchParams.has('place');
+  if (!requested && map.getZoom() < 3.2) return;
+  map.off('zoomend', maybeLoadPlaces);
+  window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
+}
+queueMicrotask(() => {
+  const map = window.__potatoAtlasMap;
+  maybeLoadPlaces();
+  map?.on('zoomend', maybeLoadPlaces);
+});
