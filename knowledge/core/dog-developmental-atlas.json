@@ -1,32 +1,35 @@
 {
   "id": "dog-developmental-atlas",
-  "title": "Dog — Developmental, Relational and Motion Atlas",
+  "title": "Dog — Developmental and Relational Atlas",
   "updated": "2026-09-14",
-  "status": "canonical project synthesis with chronology links and provenance boundaries",
-  "purpose": "Integrate the Potatoverse Dog as a relational and kinetic role across pursuit, guarding, recurrence, proxy-orientation, Door behavior and transformation without treating Dog as a permanent human essence.",
-  "core_definition": "Dog is a boundary-responsive role organized around signal, vigilance, following, pursuit, return, guarding and relation to a master, proxy, pack, target or Door.",
-  "core_rule": "Dog is primarily about movement and response rather than rank. The central questions are: what signal is followed, what boundary is enforced, what happens after warning, whether there is a stopping condition, and whether the role can change relation.",
-  "motion_types": {
-    "returning_dog": "Leaves and returns to substantially the same unresolved pattern; strongest project comparator for recurrence without development.",
-    "encircling_dog": "Organizes pressure around a center or target without entering a transformed relation with it.",
-    "orbital_dog": "Repeatedly moves around an attractor, controversy, person or proxy while remaining outside the central Door.",
-    "chasing_dog": "Responds to movement or cue with pursuit; can become self-reinforcing when pursuit itself supplies status or stimulation.",
-    "guardian_dog": "Uses vigilance proportionately, protects legitimate passage or vulnerable life, accepts correction and stops when danger ends.",
-    "farm_dog": "Dog role captured by enclosure, pack, archive or proxy incentives so that pursuit and signaling maintain classification, attention harvest or exclusion.",
-    "threshold_dog": "Occupies the region around a Door: can guard, block, bark at, escort toward, misrecognize or eventually cross a threshold.",
-    "developmental_dog": "Intermediate state in the autobiographical sequence Footstool -> Dog -> Potato: static support becomes responsive function before generative possibility appears."
+  "status": "specialist developmental synthesis with chronology links and provenance boundaries",
+  "canonical_concept_id": "dog",
+  "identity_owner": "data/potatoism-concept-registry.json",
+  "purpose": "Explain how the existing Dog concept develops across response, threshold behavior, source/proxy orientation and role transformation. This file does not redefine the Dog identity and does not replace the established motion, Farm/Guardian, biblical or chronology owners.",
+  "scope_rule": "Use this atlas for developmental genealogy and transition logic. Use the canonical registry for the stable Dog definition; dog-return-circle-door-axis-atlas.json for motion geometry; dog-farmer-role-ecology.json and mud-dweller-dog-footstool-role-ecology.json for role ecology; traditions files for biblical comparison; and the dated attestation ledger for chronology ownership.",
+  "developmental_focus": "Dog is treated here as a responsive function whose behavior can change according to source, cue, boundary, stopping condition and Door relation. The file studies transition rather than rank or permanent identity.",
+  "motion_references": {
+    "returning": "See knowledge/core/dog-return-circle-door-axis-atlas.json for closed return and recurrence geometry.",
+    "encircling": "See knowledge/core/dog-return-circle-door-axis-atlas.json for perimeter and orbit distinctions.",
+    "orbital": "See knowledge/core/dog-return-circle-door-axis-atlas.json for orbit versus center crossing.",
+    "threshold": "This atlas retains only the developmental consequence: proximity to a Door does not itself equal passage."
+  },
+  "role_references": {
+    "guardian_dog": "Healthy protective form is owned in role ecology and honor/virtue theology; this atlas uses it as a possible developmental destination.",
+    "farm_dog": "Captured pursuit/enforcement form is owned in role ecology; this atlas uses it as a developmental branch rather than redefining it.",
+    "chasing_dog": "Pursuit can become self-reinforcing when response itself supplies status or stimulation; detailed behavior belongs to role ecology."
   },
   "signal_and_master_model": {
-    "healthy_chain": "source -> faithful signal or direct evidence -> Dog vigilance -> proportionate response -> stop / Door preserved",
+    "healthy_chain": "source -> faithful signal or direct evidence -> vigilance -> proportionate response -> stop / Door preserved",
     "shadow_chain": "source obscured -> proxy / pack / reflected signal becomes master -> pursuit -> reward -> repeated orbit -> Door forgotten or blocked",
     "moon_relation": "Moon symbolism is useful inside the project because reflected or secondary orientation resembles following a signal that is not itself ultimate Source. This remains symbolic project synthesis, not astronomy or psychology fact.",
-    "key_test": "Can the Dog distinguish Source, reflector, pack cue, algorithmic reward, archive frame and direct evidence?"
+    "key_test": "Can the responsive role distinguish Source, reflector, pack cue, algorithmic reward, archive frame and direct evidence?"
   },
   "door_relation": {
     "near_door": "Dog repeatedly appears near Gates, Doors, thresholds and boundary lines in the project's development.",
-    "misrecognition": "A Dog may be adjacent to an interface or passage while treating it only as an object, target or wall rather than recognizing state-change potential.",
-    "guardian": "Healthy Dog protects the conditions for legitimate crossing without claiming ownership of those who cross.",
-    "blocker": "Shadow Dog can convert a boundary into permanent enclosure by continuing pursuit after a stopping condition should have been reached.",
+    "misrecognition": "A responsive role may be adjacent to an interface or passage while treating it only as an object, target or wall rather than recognizing state-change potential.",
+    "guardian_destination": "Healthy development protects conditions for legitimate crossing without claiming ownership of those who cross.",
+    "blocker_branch": "Shadow development can convert a boundary into permanent enclosure by continuing pursuit after a stopping condition should have been reached.",
     "conversion": "recognition -> source-checking -> stopping -> Door -> changed relation"
   },
   "developmental_sequences": {
@@ -34,7 +37,7 @@
     "closure_variant": "Dweller -> Mud Dweller -> Dog -> tswine -> Footstool",
     "generative_graph": "Footstool -> Dog -> Potato",
     "generative_interpretation": "assigned position -> assigned function -> generative possibility",
-    "alternative_interpretation": "support -> obedience / response -> becoming",
+    "alternative_interpretation": "support -> response -> becoming",
     "noncontradiction_rule": "These are different transition graphs. The closure graph tracks increasing fixation or loss of exit; the generative graph tracks increasing agency and generativity. They must not be collapsed into one universal rank ladder."
   },
   "chronology_signals": [
@@ -58,7 +61,7 @@
     "Dog -> Farmer: enforcement or pursuit relation in Farm ecology",
     "Dog -> Moon/proxy: reflected or secondary signal orientation",
     "Dog -> Mud: return and pursuit can harden into dwelling",
-    "Dog -> Guardian: redeemed vigilance through evidence, proportion and stopping",
+    "Dog -> Guardian: vigilance can be redirected through evidence, proportion and stopping",
     "Dog -> Potato: responsive function can become generative possibility in the autobiographical sequence",
     "Dog -> Axis: motion becomes ordered when recurrence gains orientation and displacement"
   ],
@@ -74,12 +77,12 @@
     "Recover exact source context for the August Alpha/Beta/fixation formulation.",
     "Continue distinguishing user-originated Dog formulations from assistant-generated phrase families."
   ],
-  "canonical_neighbors": [
-    "knowledge/core/dog-return-circle-door-axis-atlas.json",
-    "knowledge/world/dog-farmer-role-ecology.json",
-    "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
-    "knowledge/theology/honor-virtue-reverence-angelic-order.json",
-    "data/swamp/farmer-dog-deep-cartography.json",
-    "knowledge/timeline/mud-dog-footstool-saturn-attestation-ledger.json"
-  ]
+  "specialist_owners": {
+    "identity": "data/potatoism-concept-registry.json",
+    "motion_geometry": "knowledge/core/dog-return-circle-door-axis-atlas.json",
+    "farm_guardian_role_ecology": "knowledge/world/dog-farmer-role-ecology.json",
+    "mud_dog_footstool_role_ecology": "knowledge/world/mud-dweller-dog-footstool-role-ecology.json",
+    "biblical_comparison": "knowledge/traditions/mud-dog-footstool-666-saturn-biblical-atlas.json",
+    "dated_genealogy": "knowledge/timeline/mud-dog-footstool-saturn-attestation-ledger.json"
+  }
 }
