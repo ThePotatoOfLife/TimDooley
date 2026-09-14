@@ -6,7 +6,7 @@ on:
       - feat/world-map-population-subdivisions-2026-09-14
 
 permissions:
-  contents: read
+  contents: write
 
 env:
   FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
@@ -17,6 +17,8 @@ jobs:
     timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
+        with:
+          ref: feat/world-map-population-subdivisions-2026-09-14
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
@@ -41,8 +43,15 @@ jobs:
           assert all(f['properties']['population']['value'] > 0 for f in usa['features'])
           assert (root / 'USA.geo.json').stat().st_size < 1000000
           PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: world-subdivisions-20m
-          path: _generated/world-subdivisions
-          if-no-files-found: error
+      - name: Commit generated snapshot and remove temporary workflow
+        run: |
+          set -euo pipefail
+          mkdir -p data/world-subdivisions
+          cp _generated/world-subdivisions/index.json data/world-subdivisions/index.json
+          cp _generated/world-subdivisions/USA.geo.json data/world-subdivisions/USA.geo.json
+          git rm .github/workflows/tmp-generate-world-subdivisions.yml
+          git add data/world-subdivisions/index.json data/world-subdivisions/USA.geo.json
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git commit -m 'data(world-map): pin official US subdivision snapshot'
+          git push origin HEAD:feat/world-map-population-subdivisions-2026-09-14
