@@ -8,6 +8,7 @@ from pathlib import Path
 from bible_corpus import CorpusError, assemble_fragments, assemble_relations, assemble_scenes
 from build_bible_comparator_quality import research_reasons
 from build_bible_research_queue import SPECIFIC, generic_task
+from test_bible_compact_dossiers import main as compact_dossiers_main
 
 
 def dump(root: Path, rel: str, data: dict) -> None:
@@ -109,7 +110,9 @@ def run_tests() -> None:
 
 def main() -> int:
     run_tests()
-    print('BIBLE CORPUS TESTS PASSED (17 behaviors)')
+    if compact_dossiers_main() != 0:
+        return 1
+    print('BIBLE CORPUS TESTS PASSED (18 behaviors)')
     return 0
 
 
