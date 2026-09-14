@@ -66,6 +66,10 @@ window.__potatoAtlasPanelLifecycle = {
 // Elevation and hillshade tiles remain dormant until the user enables Terrain.
 queueMicrotask(() => window.__potatoAtlasLoadModule?.('Physical Terrain', './3d-physical-terrain.js'));
 
+// Upgrade the existing country finder into one geographic entry point without
+// adding another toolbar. The controller is tiny; optional place data stays dormant.
+queueMicrotask(() => window.__potatoAtlasLoadModule?.('Place Search', './3d-place-search.js'));
+
 // Administrative detail remains code- and data-dormant at world scale. Load the
 // subdivision controller only after regional zoom, or immediately for a deep link.
 function maybeLoadSubdivisions() {
