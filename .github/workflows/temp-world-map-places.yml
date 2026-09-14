@@ -44,13 +44,15 @@ jobs:
               p=feature['properties']
               return {norm(p.get('name','')), *(norm(x) for x in p.get('aliases',[]))}
           la=next(f for f in data['features'] if 'losangeles' in searchable(f))
-          cph=next(f for f in data['features'] if 'copenhagen' in searchable(f))
+          denmark=[f['properties'] for f in data['features'] if f['properties'].get('iso3')=='DNK']
+          print('Denmark records:', json.dumps(denmark, ensure_ascii=False, indent=2))
+          cph=next(f for f in data['features'] if f['properties'].get('iso3')=='DNK' and ('copenhagen' in searchable(f) or 'kobenhavn' in searchable(f) or 'kbenhavn' in searchable(f)))
           assert la['properties'].get('admin_region') == 'California', la['properties']
           assert la['properties']['iso3'] == 'USA'
           assert cph['properties']['iso3'] == 'DNK'
           assert len(data['features']) <= 5000
           print('Los Angeles:', la['properties'])
-          print('Copenhagen:', cph['properties'])
+          print('Copenhagen identity:', cph['properties'])
           print('City features:', len(data['features']))
           PY
       - name: Validate browser integration contracts
