@@ -3,11 +3,15 @@
 
 Uses the official 2021 Census cartographic boundary ArcGIS REST layer. The
 browser consumes the same-origin snapshot; the external API is build-time only.
+The layer is queried one province/territory at a time because asking ArcGIS to
+transform Canada's full coastline in one request can return HTTP 500.
 """
 from __future__ import annotations
 
 import json
 import os
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
@@ -20,7 +24,7 @@ OUT_PATH = OUT_DIR / "CAN.geo.json"
 SOURCE_LAYER = "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0"
 SOURCE_QUERY = SOURCE_LAYER + "/query"
 SOURCE_NAME = "Statistics Canada, 2021 Census Cartographic Boundary Files"
-USER_AGENT = "ThePotatoOfLife-world-atlas-subdivision-canada/1.0"
+USER_AGENT = "ThePotatoOfLife-world-atlas-subdivision-canada/1.1"
 EXPECTED_UNITS = 13
 
 PRUID_TO_POSTAL = {
@@ -30,18 +34,27 @@ PRUID_TO_POSTAL = {
 TERRITORY_UIDS = {"60", "61", "62"}
 
 
-def fetch_json(url: str, *, timeout: int = 180) -> dict:
-    request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        return json.loads(response.read().decode("utf-8-sig"))
+def fetch_json(url: str, *, timeout: int = 90, attempts: int = 3) -> dict:
+    last_error = None
+    for attempt in range(attempts):
+        request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return json.loads(response.read().decode("utf-8-sig"))
+        except (urllib.error.HTTPError, urllib.error.URLError, TimeoutError) as exc:
+            last_error = exc
+            if attempt + 1 < attempts:
+                time.sleep(1.5 * (attempt + 1))
+    raise RuntimeError(f"Statistics Canada request failed after {attempts} attempts: {last_error}") from last_error
 
 
-def source_url() -> str:
+def source_url(pruid: str) -> str:
     query = urllib.parse.urlencode({
-        "where": "1=1",
+        "where": f"PRUID='{pruid}'",
         "outFields": "PRUID,PRNAME,PREABBR,LANDAREA,DGUID",
         "returnGeometry": "true",
         "outSR": "4326",
+        "geometryPrecision": "5",
         "f": "geojson",
     })
     return f"{SOURCE_QUERY}?{query}"
@@ -98,7 +111,7 @@ def normalize_canada(source_features: list[dict]) -> dict:
         "type":"FeatureCollection",
         "name":"world-subdivisions-CAN",
         "metadata":{
-            "version":"1.0.0",
+            "version":"1.1.0",
             "generated_at":datetime.now(timezone.utc).isoformat(),
             "parent_iso3":"CAN",
             "feature_count":len(features),
@@ -106,6 +119,7 @@ def normalize_canada(source_features: list[dict]) -> dict:
             "geometry_vintage":"2021 Census",
             "geometry_source":SOURCE_NAME,
             "geometry_source_url":SOURCE_LAYER,
+            "acquisition":"13 province/territory-scoped ArcGIS GeoJSON queries assembled only after complete coverage",
             "population_status":"unknown-not-zero; demographic enrichment pending",
         },
         "features":features,
@@ -145,10 +159,19 @@ def canada_descriptor(features: list[dict]) -> dict:
 
 
 def build() -> dict:
-    payload = fetch_json(source_url())
-    if payload.get("type") != "FeatureCollection" or not isinstance(payload.get("features"), list):
-        raise RuntimeError("Statistics Canada province layer did not return GeoJSON FeatureCollection")
-    return normalize_canada(payload["features"])
+    source_features = []
+    for pruid in PRUID_TO_POSTAL:
+        payload = fetch_json(source_url(pruid))
+        if payload.get("type") != "FeatureCollection" or not isinstance(payload.get("features"), list):
+            raise RuntimeError(f"Statistics Canada province query {pruid} did not return GeoJSON FeatureCollection")
+        matches = [
+            feature for feature in payload["features"]
+            if str((feature.get("properties") or {}).get("PRUID") or "").strip() == pruid
+        ]
+        if len(matches) != 1:
+            raise RuntimeError(f"Statistics Canada province query {pruid} returned {len(matches)} matching features")
+        source_features.extend(matches)
+    return normalize_canada(source_features)
 
 
 def write_compact(path: Path, payload: dict) -> int:
