@@ -3,7 +3,9 @@
 from __future__ import annotations
 import json,re
 from pathlib import Path
+from build_story_depth_audit import audit_is_current
 from validate_great_book_reader import validate as validate_great_book_reader
+from validate_story_archive import validate_story_archive
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]
 _TERMS=["FIX"+"ME","T"+"BD","T"+"BA","COMING"+" SOON","UNDER"+" CONSTRUCTION"]
 BAD_TERMS=re.compile(r"\b(?:"+"|".join(map(re.escape,_TERMS))+r")\b",re.I)
@@ -17,6 +19,11 @@ def main():
     chapter_count=len(list(chapter_dir.glob("*.html"))) if chapter_dir.is_dir() else 0
     for error in validate_great_book_reader(ROOT,allow_missing_chapters=chapter_count!=168):
         ERRORS.append(f"Great Book: {error}")
+
+    for error in validate_story_archive(ROOT):
+        ERRORS.append(f"Story evidence: {error}")
+    if not audit_is_current(ROOT):
+        ERRORS.append("Story evidence depth audit is stale; run scripts/build_story_depth_audit.py")
 
     countries=load("data/countries/index.json").get("countries",[])
     if len(countries)!=195:ERRORS.append(f"countries/index.json has {len(countries)} records; expected 195")
