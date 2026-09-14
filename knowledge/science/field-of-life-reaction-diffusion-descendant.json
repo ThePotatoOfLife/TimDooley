@@ -1,0 +1,107 @@
+{
+  "id": "field-of-life-reaction-diffusion-descendant",
+  "title": "Field of Life — Reaction-Diffusion Scientific Descendant",
+  "updated": "2026-09-14",
+  "status": "archive-generated scientific descendant of a historical project metaphor; not evidence for a fundamental life field",
+  "document_type": "Theory / Paper",
+  "maturity": "T2 mathematical toy model",
+  "abstract": "The historical Potatoverse Field of Life compares living organization to excitation in a field. This descendant does not promote that metaphor into fundamental physics. It asks a narrower scientific question: whether one explicitly measured biological or ecological spatial variable can be modeled as a reaction-diffusion field with declared transport, local dynamics, source terms, boundary conditions, observables and baselines. The model is scientifically useful only when phi(x,t) is tied to a real density, concentration, occupancy or other measurable proxy, and when spatial coupling improves prediction relative to simpler local or network models.",
+  "research_question": "For one specified biological or ecological dataset, does an explicit spatial field model predict the measured pattern better than local-only, diffusion-only or graph-spread baselines, and is the field representation necessary for that application?",
+  "provenance": {
+    "historical_source": "knowledge/science/great-book-2024-science-archaeology.json",
+    "historical_status": "Field of Life language is book-derived speculative/metaphorical material.",
+    "scientific_descendant_authorship": "The reaction-diffusion model below is a later archive-generated descendant using established external mathematics; it is not recovered Tim-authored physics."
+  },
+  "state_space": {
+    "domain": "A declared spatial domain Omega with coordinate x and time t.",
+    "state": "phi(x,t), a measurable scalar density, concentration, occupancy fraction or explicitly defined proxy.",
+    "units": "Units depend on the chosen application; examples include mol m^-3, organisms m^-2, biomass kg m^-2 or a dimensionless occupancy fraction."
+  },
+  "equations": {
+    "general": "partial_t phi = D nabla^2 phi + f(phi;theta) + S(x,t)",
+    "logistic_example": "f(phi)=r phi (1-phi/K)",
+    "measurement": "y_i = H_i[phi] + epsilon_i",
+    "noise": "epsilon_i is assigned a stated measurement distribution/covariance rather than absorbed into the dynamics."
+  },
+  "parameters": {
+    "D": "transport/diffusion coefficient with units length^2/time",
+    "theta": "parameters of the local reaction/growth/decay law",
+    "r": "growth rate in the logistic example, units 1/time",
+    "K": "carrying-capacity scale with the same units as phi",
+    "S": "external source/sink term with units phi/time"
+  },
+  "initial_and_boundary_conditions": {
+    "initial": "phi(x,0)=phi_0(x), measured or explicitly initialized.",
+    "boundary_options": [
+      "no-flux: n dot grad(phi)=0 on boundary",
+      "Dirichlet: phi prescribed on boundary",
+      "periodic: opposite boundaries identified where the physical domain warrants it"
+    ],
+    "rule": "The boundary condition is part of the model and must not be chosen after inspecting which option gives the desired pattern."
+  },
+  "validity_regime": [
+    "The coarse field approximation is appropriate only when the chosen spatial scale is large enough that a continuous density/proxy is meaningful.",
+    "Anisotropic transport, discrete individuals, advection, chemotaxis or network topology require explicit extensions rather than being hidden inside D.",
+    "The logistic reaction law is an established comparator, not a Potato-specific law."
+  ],
+  "baselines": [
+    {
+      "id": "local-only",
+      "model": "partial_t phi=f(phi;theta)+S",
+      "purpose": "Tests whether spatial coupling adds predictive value."
+    },
+    {
+      "id": "diffusion-only",
+      "model": "partial_t phi=D nabla^2 phi+S",
+      "purpose": "Tests whether local reaction terms are necessary."
+    },
+    {
+      "id": "standard-reaction-diffusion",
+      "model": "same conventional reaction-diffusion family without project-specific interpretation",
+      "purpose": "Separates scientific performance from Potatoverse naming."
+    },
+    {
+      "id": "network-spread",
+      "model": "dx/dt=-kappa L x + f(x)",
+      "purpose": "Preferred comparator when the true substrate is graph-like rather than Euclidean space."
+    }
+  ],
+  "observables": [
+    "spatial concentration/density maps at declared times",
+    "front speed or spread radius where meaningful",
+    "spatial correlation length",
+    "pattern wavelength or mode spectrum where a patterned state exists",
+    "held-out prediction error or predictive likelihood"
+  ],
+  "calibration_path": {
+    "procedure": [
+      "Choose one dataset and freeze the definition of phi, spatial scale and time step.",
+      "Estimate measurement noise separately from process dynamics where possible.",
+      "Fit the simplest baseline first, then the full reaction-diffusion model.",
+      "Report parameter uncertainty and practical identifiability, especially D versus reaction-rate tradeoffs.",
+      "Evaluate on held-out times/regions or by predictive cross-validation when the dataset supports it."
+    ],
+    "maturity_boundary": "This record remains T2 because no dataset is fitted here. T3 requires actual parameter constraints or calibration results with provenance."
+  },
+  "limiting_cases": [
+    "D -> 0 recovers local-only dynamics.",
+    "f -> 0 recovers diffusion/source dynamics.",
+    "S -> 0 removes external forcing.",
+    "If spatial coupling does not improve prediction over local dynamics, the field interpretation is unnecessary for that application."
+  ],
+  "falsifiers": [
+    "The proposed phi cannot be measured reproducibly or its measurement map is undefined.",
+    "A simpler local or network baseline predicts as well or better after complexity penalties.",
+    "Fitted parameters are non-identifiable over the available measurement precision.",
+    "The selected model violates known conservation/positivity constraints in the claimed domain.",
+    "No project-specific mapping adds explanatory or predictive value beyond ordinary reaction-diffusion language."
+  ],
+  "epistemic_boundary": "A successful reaction-diffusion fit would validate only the selected biological/ecological model. It would not establish a universal metaphysical Field of Life, a new quantum field, or a fundamental force.",
+  "connections": [
+    "great-book-2024-science-archaeology",
+    "integrated-scientific-architecture",
+    "science-model-registry",
+    "model-testing-protocol",
+    "potato-dynamics"
+  ]
+}
