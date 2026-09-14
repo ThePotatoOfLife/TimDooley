@@ -30,6 +30,26 @@ function cleanAliases(values = []) {
     });
 }
 
+export function subdivisionSearchRows(index = {}) {
+  const rows = [];
+  for (const [parentIso3, descriptor] of Object.entries(index?.partitions || {})) {
+    const parentName = String(descriptor?.parent_name || descriptor?.country_name || '').trim();
+    for (const item of descriptor?.search_records || []) {
+      const id = String(item?.id || '').trim();
+      const name = String(item?.name || '').trim();
+      if (!id || !name) continue;
+      rows.push({
+        ...item,
+        id,
+        name,
+        parent_iso3:String(item?.parent_iso3 || parentIso3).toUpperCase(),
+        parent_name:item?.parent_name || parentName || undefined,
+      });
+    }
+  }
+  return rows;
+}
+
 export function buildSearchRecords({countries = [], subdivisions = [], places = []} = {}) {
   const countryNames = countryNameMap(countries);
   const records = [];
