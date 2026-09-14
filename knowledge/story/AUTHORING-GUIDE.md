@@ -56,6 +56,34 @@ If the material cannot answer most of those questions, it may be useful context,
 
 A very small episode can still belong when the smallness is the point: somebody returns to chat, somebody forgets to follow back, a joke changes direction, a screen breaks, a song gets made, a word suddenly becomes important.
 
+## Evidence gate before prose
+
+The archive now distinguishes narrative depth from prose length:
+
+- `FRAGMENT` — a clue, isolated line, post or small artifact. It may be a valuable chronological card, but it is not a full scene.
+- `ANECDOTE` — an event or development is known and may have several exact quotations, but the surviving evidence does not show enough ordered action/reaction to reconstruct the event itself.
+- `SCENE` — ordered evidence supports a beginning state, action/problem, turning point or consequential development, and an ending or explicitly unresolved ending.
+- `TRANSCRIPT_DEPTH` — substantial consecutive conversation/thread evidence survives, so the interaction can be followed as it changes over time. This is the preferred standard for conversation-derived full stories.
+- `LITERARY_COMPLETE` — a complete authored literary episode survives as literature. It may be full without documentary transcript evidence, but it must remain clearly literary rather than being converted into historical dialogue.
+
+`FRAGMENT` and `ANECDOTE` never receive `Hear the full story` merely because somebody has written many paragraphs about them. Documentary `SCENE` and `TRANSCRIPT_DEPTH`, and genuinely literary `LITERARY_COMPLETE`, may receive the expandable full-story layer when their registry/source packet validates.
+
+The mandatory workflow is:
+
+1. Search archaeology summaries, ledgers, indexes and memory recovery to locate the likely source.
+2. Return to the rawest surviving transcript, public thread, post sequence, artifact history or literary text.
+3. Read contiguous context, not only the famous matching line.
+4. Create or update the source record.
+5. Build the ordered scene packet before writing full prose.
+6. Assign depth conservatively.
+7. Write the Story from the packet.
+8. Validate the registry against the HTML.
+9. Put missing turns, dates, reactions or source owners into recovery targets instead of decorating the gap.
+
+An archaeology summary, statement ledger or memory synthesis may tell us **where to dig**. It is not a substitute for the transcript when claiming transcript depth.
+
+Private material may prove sequence without being published. A private transcript can be represented by source locators, safe summaries and ordered beat metadata while its raw text remains outside the public repository.
+
 ## One river
 The reader should experience one story moving forward in time. Titles are tiny landmarks, not sealed chapters. Side stories can disappear for months and return later. A person introduced in one season does not need to be re-explained every time they reappear.
 
