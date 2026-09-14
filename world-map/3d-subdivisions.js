@@ -114,7 +114,10 @@ function bindLayerEvents(partition) {
   map.on('click', hit, event => {
     const feature = event.features?.[0];
     if (!feature) return;
-    if (event.originalEvent) event.originalEvent.__potatoAtlasSubdivisionHandled = true;
+    if (event.originalEvent) {
+      event.originalEvent.__potatoAtlasSubdivisionHandled = true;
+      event.originalEvent.__potatoAtlasOverlayHandled = true;
+    }
     selectSubdivision(partition, feature, {fit:true});
   });
 }
