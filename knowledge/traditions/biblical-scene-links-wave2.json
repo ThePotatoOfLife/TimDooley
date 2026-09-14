@@ -1,0 +1,25 @@
+{
+  "id":"biblical-scene-links-wave2",
+  "version":"1.0.0",
+  "updated":"2026-09-14",
+  "status":"additive scene-link enrichment layer",
+  "purpose":"Connect Joseph-cycle and early Son biography relations to reusable whole biblical situations.",
+  "enrichments":[
+    {
+      "relation_id":"son-joseph-prison-listening-2016",
+      "biblical_scene_ids":["genesis-joseph-prison"],
+      "primary_biblical_scene_id":"genesis-joseph-prison"
+    },
+    {
+      "relation_id":"son-joseph-release-suit-2016",
+      "biblical_scene_ids":["genesis-joseph-elevation-grain"],
+      "primary_biblical_scene_id":"genesis-joseph-elevation-grain"
+    },
+    {
+      "relation_id":"son-custody-prison-passion-2016",
+      "biblical_scene_ids":["mark-passion-arrest-trial-cross"],
+      "primary_biblical_scene_id":"mark-passion-arrest-trial-cross"
+    }
+  ],
+  "new_relations":[]
+}
