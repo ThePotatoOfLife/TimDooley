@@ -27,7 +27,8 @@ globalThis.location = { href: 'https://example.test/world-map/' };
 globalThis.history = { replaceState() {} };
 globalThis.CustomEvent = class CustomEvent { constructor(type, init={}) { this.type = type; this.detail = init.detail; } };
 globalThis.window = globalThis;
-globalThis.dispatchEvent = () => true;
+const dispatched = [];
+globalThis.dispatchEvent = event => { dispatched.push(event); return true; };
 
 const california = {
   type: 'Feature',
@@ -85,7 +86,7 @@ globalThis.fetch = async url => {
   throw new Error(`unexpected fetch ${text}`);
 };
 
-await import(new URL('../world-map/3d-subdivisions.js?subdivision-loop-test=2', import.meta.url));
+await import(new URL('../world-map/3d-subdivisions.js?subdivision-loop-test=3', import.meta.url));
 
 const click = handlers.get('click:atlas-subdivision-hit-USA');
 const moveend = handlers.get('moveend:*');
@@ -103,5 +104,14 @@ assert.equal(selectedDenmark,true,'a subdivision declared by the index should be
 assert.ok(fetched.some(url => url.includes('DNK.geo.json')),'generic selection should lazy-load the declared Denmark partition');
 assert.equal(window.__potatoAtlasSubdivisions.selected,'DK-1082');
 assert.equal(fitCount,2,'generic subdivision selection should fit once');
+
+const selectedEvent = dispatched.find(event => event.type === 'potato-atlas-subdivision-select' && event.detail?.id === 'DK-1082');
+assert.ok(selectedEvent, 'generic subdivision selection should emit a selection event with feature context');
+assert.equal(selectedEvent.detail.properties.parent_iso3, 'DNK');
+
+window.__potatoAtlasSubdivisions.clear();
+assert.equal(window.__potatoAtlasSubdivisions.selected, null, 'clear should remove persistent subdivision selection');
+const clearEvent = dispatched.find(event => event.type === 'potato-atlas-subdivision-clear' && event.detail?.id === 'DK-1082');
+assert.ok(clearEvent, 'clearing a subdivision should emit a lifecycle event so contextual overlays can fall back');
 
 console.log('WORLD MAP SUBDIVISION INTERACTION PASSED');
