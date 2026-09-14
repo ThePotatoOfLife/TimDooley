@@ -1,4 +1,11 @@
-import {buildSearchRecords, rankSearchRecords} from './3d-search-core.js';
+const ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v') || '';
+function versionedModule(path) {
+  if (!ATLAS_VERSION) return path;
+  const url = new URL(path, import.meta.url);
+  url.searchParams.set('v', ATLAS_VERSION);
+  return url.href;
+}
+const {buildSearchRecords, rankSearchRecords} = await import(versionedModule('./3d-search-core.js'));
 
 const input = document.getElementById('search');
 const datalist = document.getElementById('country-list');
