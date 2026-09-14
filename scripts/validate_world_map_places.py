@@ -8,7 +8,7 @@ errors=[]
 if not MODULE.exists(): errors.append('missing 3d-places.js')
 else:
     text=MODULE.read_text(encoding='utf-8')
-    for token in ['world-cities.geo.json','atlas-places','minimum_zoom','place','__potatoAtlasPlaces','potato-atlas-place-select','potato-atlas-places-ready']:
+    for token in ['world-cities.geo.json','atlas-places','minimum_zoom','place','__potatoAtlasPlaces','potato-atlas-place-select','potato-atlas-places-ready','data-place-country','openCountry','window.goCountry']:
         if token not in text: errors.append(f'places module missing {token}')
 if not LIFECYCLE.exists() or "./3d-places.js" not in LIFECYCLE.read_text(encoding='utf-8'):
     errors.append('places lazy loading not registered')
