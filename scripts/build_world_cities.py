@@ -1,27 +1,25 @@
 from __future__ import annotations
 
-import io
 import json
 import math
 import os
 import re
 import urllib.parse
 import urllib.request
-import zipfile
 from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
+
+from geonames_city_acquisition import fetch_geonames_candidates
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_INDEX = ROOT / 'data' / 'countries' / 'index.json'
 DEFAULT_CAPITALS = ROOT / 'data' / 'world-capitals.geo.json'
 DEFAULT_OUT = ROOT / 'data' / 'world-cities.geo.json'
-USER_AGENT = 'ThePotatoOfLife-world-atlas-cities/1.2'
+USER_AGENT = 'ThePotatoOfLife-world-atlas-cities/1.3'
 MAX_FEATURES = 5000
 MAX_BYTES = 5 * 1024 * 1024
 
-GEONAMES_ZIP_URL = 'https://download.geonames.org/export/dump/cities15000.zip'
-GEONAMES_MIRROR_URL = 'https://raw.githubusercontent.com/river-jade/cities15000/master/cities15000.txt'
 WIKIDATA_ENDPOINT = 'https://query.wikidata.org/sparql'
 WIKIDATA_LIMIT = 15000
 SPARQL = f'''SELECT ?city ?cityLabel ?iso3 ?coord ?population ?populationDate ?adminLabel WHERE {{
@@ -198,60 +196,6 @@ def _merge_capital(candidate, capitals):
     return False
 
 
-def _fetch_bytes(url, timeout=180):
-    request = urllib.request.Request(url, headers={'User-Agent': USER_AGENT})
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        return response.read()
-
-
-def _geonames_text():
-    try:
-        payload = _fetch_bytes(GEONAMES_ZIP_URL)
-        with zipfile.ZipFile(io.BytesIO(payload)) as archive:
-            return archive.read('cities15000.txt').decode('utf-8')
-    except Exception as primary_error:
-        try:
-            return _fetch_bytes(GEONAMES_MIRROR_URL).decode('utf-8')
-        except Exception as mirror_error:
-            raise RuntimeError(f'GeoNames acquisition failed: official={primary_error}; mirror={mirror_error}') from mirror_error
-
-
-def fetch_geonames_candidates(canonical):
-    iso2_to_iso3 = {
-        str(row.get('iso2') or '').upper(): iso3
-        for iso3, row in canonical.items()
-        if row.get('iso2')
-    }
-    rows = []
-    for line in _geonames_text().splitlines():
-        fields = line.split('\t')
-        if len(fields) < 19 or fields[6] != 'P':
-            continue
-        iso3 = iso2_to_iso3.get(fields[8].upper())
-        population = _number(fields[14])
-        latitude, longitude = _number(fields[4]), _number(fields[5])
-        source_id = fields[0].strip()
-        name = (fields[2] or fields[1]).strip()
-        if not iso3 or population is None or population <= 0 or latitude is None or longitude is None or not source_id or not name:
-            continue
-        alternate_names = [fields[1], *(fields[3].split(',') if fields[3] else [])]
-        rows.append({
-            'source_key': 'geonames',
-            'source_id': source_id,
-            'name': name,
-            'iso3': iso3,
-            'coordinates': [longitude, latitude],
-            'population': int(round(population)),
-            'aliases': _clean_aliases(alternate_names, name),
-            'source': 'GeoNames cities15000',
-            'coordinate_source': 'GeoNames latitude/longitude',
-            'population_source': 'GeoNames population field',
-        })
-    if len(rows) < 10_000:
-        raise RuntimeError(f'GeoNames cities15000 coverage unexpectedly low: {len(rows)} rows')
-    return rows
-
-
 def _parse_point(value):
     match = POINT_RE.fullmatch(str(value or '').strip())
     if not match:
@@ -373,7 +317,11 @@ def build(*, out_path=DEFAULT_OUT, index_path=DEFAULT_INDEX, capitals_path=DEFAU
             props['admin_region'] = candidate['admin_region']
         if candidate.get('aliases'):
             props['aliases'] = candidate['aliases']
-        extras.append({'type': 'Feature', 'properties': props, 'geometry': {'type': 'Point', 'coordinates': candidate['coordinates']}})
+        extras.append({
+            'type': 'Feature',
+            'properties': props,
+            'geometry': {'type': 'Point', 'coordinates': candidate['coordinates']},
+        })
 
     features = capitals + extras
     features.sort(key=lambda feature: (
