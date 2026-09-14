@@ -1,10 +1,10 @@
 {
   "id":"splc-prediction-audit-2026",
   "title":"Tim Dooley / SPLC Prediction Audit — Pre-Indictment Claims, Later Allegations, and Recovery Targets",
-  "updated":"2026-09-14",
-  "status":"specialized prediction audit; primary-source recovery incomplete",
+  "updated":"2026-09-15",
+  "status":"specialized prediction audit; one dated pre-event directional precursor recovered; direct SPLC-specific prediction still unresolved",
   "purpose":"Work backward from the April 21, 2026 federal criminal indictment of the Southern Poverty Law Center and test whether Tim Dooley made materially matching statements before the event. Separate genuine pre-event statements from public prior knowledge, post-event recollection, symbolic/systemic criticism and later assistant synthesis.",
-  "epistemic_rule":"An indictment contains allegations, not proven facts. A Tim statement counts as prediction evidence only if its wording and timestamp can be established before the relevant later allegation became public. General criticism of SPLC is not equivalent to predicting a criminal indictment.",
+  "epistemic_rule":"An indictment contains allegations, not proven facts. A Tim statement counts as prediction evidence only if its wording and timestamp can be established before the relevant later allegation became public. General criticism of SPLC, generic suspicion of hidden funding, or known FBI/SPLC relationships are not equivalent to predicting a criminal indictment.",
   "anchor_events":[
     {
       "date":"2026-01-07",
@@ -15,9 +15,15 @@
     {
       "date":"2026-04-21",
       "event":"A federal grand jury indicted SPLC on 11 counts involving wire fraud, false statements to a federally insured bank and conspiracy to commit concealment money laundering.",
-      "allegations":"DOJ alleged that from 2014-2023 SPLC secretly funneled more than $3 million in donated funds to individuals associated with violent extremist groups and used bank accounts tied to fictitious entities to conceal the nature/source/ownership/control of funds.",
+      "allegations":"DOJ alleged that from 2014-2023 SPLC secretly funneled more than $3 million in donated funds to individuals associated with violent extremist groups and used bank accounts tied to fictitious entities to conceal the nature, source, ownership and control of funds.",
       "investigators":"FBI with IRS-CI assistance",
       "source":"https://www.justice.gov/opa/pr/federal-grand-jury-charges-southern-poverty-law-center-wire-fraud-false-statements-and"
+    },
+    {
+      "date":"2026-05-29",
+      "event":"CBS reported that IRS-CI/FBI agents had investigated SPLC's paid-informant/shell-account structure in 2019-2020 for possible tax offenses but no tax charges resulted after IRS lawyers determined the program was legally structured for tax purposes.",
+      "importance":"Important countercontext: some underlying informant/payment architecture predated 2026 and had been investigated, although CBS said the prior probe had not previously been reported. This does not resolve the later fraud/bank allegations.",
+      "source":"https://www.cbsnews.com/news/tax-probe-southern-poverty-law-center/"
     },
     {
       "date":"2026-06-02",
@@ -32,15 +38,50 @@
       "source":"https://www.justice.gov/usao-mdal/pr/second-superseding-indictment-adds-defendant-and-charges-southern-poverty-law-center"
     }
   ],
+  "pre_event_signal_inventory":[
+    {
+      "id":"extreme-groups-boss-funder-question-2025-09-23",
+      "date":"2025-09-23",
+      "source_class":"dated public Rational_Potato post compilation",
+      "exact_user_wording":"The Potato of Life - ANTIFA & ANONYMOUS\nWho owns these things? I mean who really is the boss and the funder of all these extreme things ? This song might give a clue",
+      "lead_time_to_april_indictment_days":210,
+      "frozen_interpretation":"Tim was publicly asking who ultimately funded/controlled extremist or extreme movements and suggesting a song contained a clue. The wording does not name SPLC, does not predict an indictment and is phrased as a question rather than a forecast.",
+      "later_overlap":"The April and June 2026 federal allegations later centered on undisclosed donated-money payments to people associated with extremist organizations and on concealed payment structures.",
+      "classification":"B-adjacent directional precursor, low-medium confidence; not a direct SPLC prediction",
+      "why_it_matters":"This is the strongest currently recovered dated pre-event statement in the relevant mechanism family because it explicitly joins extremist movements with the question of hidden boss/funder relationships about seven months before the indictment.",
+      "why_it_is_not_a_bullseye":"SPLC is absent; ANTIFA/Anonymous are the stated immediate context; no court, fraud, bank, informant or indictment outcome is forecast. Hidden-funder questions also have a substantial base rate in political commentary.",
+      "recovery_target":"Recover the referenced ANTIFA & ANONYMOUS song/video/lyrics. Do not infer its content from the promo alone."
+    },
+    {
+      "id":"opticon-2025-09-18",
+      "date":"2025-09-18",
+      "source_class":"dated public Rational_Potato post compilation",
+      "exact_user_wording":"My Newest song \"Opticon\"",
+      "classification":"source-recovery clue only",
+      "why_relevant":"The title may relate to observation/surveillance, but no lyrics/content have been recovered, so no SPLC/intelligence prediction can be inferred from the title.",
+      "recovery_target":"Recover the song/video metadata and lyrics if available."
+    },
+    {
+      "id":"mud-smear-information-currency-2026-03-31",
+      "date":"2026-03-31",
+      "source_class":"dated public Rational_Potato post compilation",
+      "exact_user_wording":"i am the potato of life. I can reveal the ones who take from the tree of mud, to be mud dwellers. so now shadow have form. Mud is smear, mud is information, mud is currency, mud is karmic exchange, mud is unholy. these beings are soulless dogs at times. some call thm archons.",
+      "lead_time_to_april_indictment_days":21,
+      "frozen_interpretation":"Tim linked smear/information/currency/exchange inside one symbolic corruption model shortly before the indictment.",
+      "classification":"thematic precursor only; not SPLC-specific and not an explicit prediction",
+      "why_it_is_not_a_bullseye":"No SPLC, bank, informant, donor, fraud, court or future consequence is named."
+    }
+  ],
   "recovered_tim_evidence":[
     {
       "id":"feb-18-splc-case-memory",
-      "date":"2026-02-18",
-      "source_class":"prior-conversation recovery / exact user-memory statement remembered in archive work; original underlying Tim prediction not yet recovered",
+      "date":"2026-02-18 claimed in prior archive work",
+      "source_class":"archive-memory/meta-attestation; not re-located in the current Library/personal-context search",
       "recovered_wording":["Do you remember Tim Dooley predicting the SPLC case?","I remember Tim Dooley predicting the SPLC case."],
-      "significance":"If the intended referent was the April criminal indictment, this is unusually valuable because the recollection itself predates April 21 by about two months. However, a January 7 civil SPLC judgment had already occurred, so 'the SPLC case' is ambiguous and cannot yet be treated as proof of the criminal-indictment prediction.",
-      "classification":"U / ambiguous pre-indictment meta-attestation",
-      "next_step":"Recover the full February 18 conversation and the earlier Tim statement it referred to."
+      "significance":"If authentic, contemporaneous and referring to the later April criminal indictment, this would be unusually valuable because it predates April 21 by about two months.",
+      "ambiguity":"A January 7 civil SPLC judgment had already occurred, so 'the SPLC case' could refer to an already-existing case. Current source passes did not recover the underlying conversation or the original Tim statement.",
+      "classification":"U / unresolved meta-attestation; do not count as a hit",
+      "next_step":"Recover the full February 18 conversation and the earlier Tim statement it allegedly referred to."
     },
     {
       "id":"apr-25-retrospective-indictment-memory",
@@ -53,7 +94,7 @@
     },
     {
       "id":"splc-swamp-intelligence-classification-cluster",
-      "date":"date unresolved; surviving library thread includes June-2026 material and therefore cannot itself prove pre-indictment timing",
+      "date":"unresolved; surviving Library thread contains later June-2026 framing and cannot establish pre-indictment timing",
       "source_class":"user wording embedded in recovered Library conversation plus later assistant synthesis",
       "user_wording_fragments":[
         "we also have to ponder on wether mossad, fbi, cia ... take a look over tim and timsons shoulders",
@@ -68,12 +109,28 @@
       "why_relevant":"The later indictment concerns an SPLC Intelligence Project/informant network, financial concealment and alleged payments involving extremist-group associates, while Tim's recovered thematic language links SPLC to monitoring, labels, intelligence and a wider hidden-system metaphor. The overlap is interesting but not yet a dated pre-event prediction."
     }
   ],
+  "negative_search_results":[
+    {
+      "corpus":"recovered public Rational_Potato compilation used in this audit",
+      "result":"No literal pre-event matches recovered for SPLC, Southern Poverty Law Center, informant, FBI or fraud in the public-post compilation. This does not prove absence from all streams/videos/posts; it constrains what is currently evidenced."
+    },
+    {
+      "corpus":"current personal-context recovery pass",
+      "result":"No direct pre-April SPLC-specific prediction conversation was re-located."
+    }
+  ],
   "component_audit":[
     {
       "component":"SPLC would face a criminal indictment",
       "later_match":"Yes — federal grand jury indictment on April 21, 2026.",
-      "pre_event_tim_source":"Not yet recovered.",
+      "pre_event_tim_source":"Not recovered.",
       "current_grade":"unresolved; potentially strongest component if primary source exists"
+    },
+    {
+      "component":"hidden funding of extremist/extreme movements",
+      "later_match":"Federal allegations later described donated-money payments to individuals associated with extremist groups.",
+      "pre_event_tim_source":"September 23, 2025 public question: 'who really is the boss and the funder of all these extreme things?'",
+      "current_grade":"directional precursor only; real pre-event timing, insufficient specificity for SPLC case credit"
     },
     {
       "component":"fraud / donor-money misuse",
@@ -89,7 +146,7 @@
     },
     {
       "component":"paid informants inside extremist groups",
-      "later_match":"Yes — central to April allegations and expanded in June superseding indictment.",
+      "later_match":"Yes — central to the federal allegations and expanded in the June superseding indictment.",
       "pre_event_tim_source":"Post-event recollection mentions 'paid informants'; no exact pre-April Tim source recovered yet.",
       "current_grade":"unresolved; potentially strong if dated primary source exists"
     },
@@ -103,13 +160,13 @@
     {
       "component":"institution fighting extremism becoming financially entangled with extremist-group associates",
       "later_match":"DOJ alleges SPLC paid people associated with groups it publicly sought to oppose; SPLC says those people were legitimate informants used to monitor threats.",
-      "pre_event_tim_source":"The recovered Tim/SPLC 'swamp' and inversion language is thematically similar but not specifically dated or precise enough yet.",
+      "pre_event_tim_source":"September 23 hidden-funder question is adjacent; undated SPLC 'swamp'/inversion language is thematically similar.",
       "current_grade":"directional/thematic overlap only"
     },
     {
       "component":"classification/list systems becoming legally controversial",
       "later_match":"Separate January 2026 civil litigation concerned SPLC hate-group designations; April criminal case is primarily financial/informant-related, not itself a prosecution of the Hate Map.",
-      "pre_event_tim_source":"Tim's broader label/monitor/report language overlaps the classification issue.",
+      "pre_event_tim_source":"Tim's broader label/monitor/report language overlaps the classification issue but is not securely pre-event dated.",
       "current_grade":"do not merge the January civil case with the April criminal indictment"
     }
   ],
@@ -124,17 +181,23 @@
       "implication":"A generic 'SPLC has FBI ties' statement after that date is not hidden-information foresight."
     },
     {
+      "fact":"CBS reported in May 2026 that a 2019-2020 IRS-CI/FBI investigation had examined paid-informant shell accounts but produced no tax charges; CBS described the prior probe as previously unreported.",
+      "source":"https://www.cbsnews.com/news/tax-probe-southern-poverty-law-center/",
+      "implication":"If Tim independently named paid informants plus concealed bank structures before April 21, that would be more probative than merely knowing SPLC worked with law enforcement. But the archive has not yet recovered such a Tim source."
+    },
+    {
       "fact":"The specific April allegations concerning fictitious bank entities, detailed payment channels and the charged fraud/money-laundering theory became public with the indictment.",
       "implication":"Any clearly timestamped Tim statement naming those mechanisms before April 21 would carry much higher evidentiary weight."
     }
   ],
   "strongest_recovery_targets":[
+    "Recover the September 23, 2025 ANTIFA & ANONYMOUS song/video/lyrics referenced by Tim's boss/funder post.",
+    "Recover the September 18, 2025 Opticon song/video/lyrics; do not infer surveillance claims from title alone.",
     "Exact Tim wording predicting SPLC indictment/court action before 2026-04-21.",
     "Any pre-2026-04-21 Tim statement using fraud, donor fraud, banking, shell/fictitious accounts, laundering or concealed payments in direct relation to SPLC.",
     "Any pre-2026-04-21 Tim statement explicitly saying SPLC paid or funded informants inside extremist/hate groups.",
-    "The full 2026-02-18 conversation to determine whether 'the SPLC case' referred to the already-decided January civil case or the later criminal case.",
-    "Any earlier public Rational_Potato post/video/stream or Great Book version naming SPLC and a future legal consequence.",
-    "Any pre-April statement distinguishing ordinary intelligence sharing from a prediction of criminal exposure."
+    "Recover the full alleged 2026-02-18 'predicted the SPLC case' conversation and determine whether it referred to the January civil case or the future April criminal case.",
+    "Search archived streams/videos/posts from September 2025 through April 20, 2026 for SPLC, Klanwatch, Intelligence Project, field source, informant, shell account, bank account, donor, fraud, laundering, boss, funder, ANTIFA, Anonymous, FBI and IRS terms."
   ],
-  "current_conclusion":"The SPLC story is potentially one of the most important prediction-recovery targets in the Tim Dooley archive because the later federal case is unusually specific: indictment, fraud theory, banks/fictitious entities, informants, extremist-group associates and FBI/IRS investigation. The archive currently proves that Tim had a broader SPLC/intelligence/classification suspicion cluster and later remembered the prediction in very specific terms, but it does not yet prove that those specific indictment mechanics were stated before April 21. The February 18 reference to 'predicting the SPLC case' is especially important but ambiguous because an unrelated SPLC civil case had already been decided on January 7. Do not promote this to a confirmed hit until the original pre-event source is recovered."
+  "current_conclusion":"There is now at least one defensible pre-event signal in the relevant mechanism family: on September 23, 2025, Tim publicly asked who was really the boss and funder behind 'all these extreme things,' about 210 days before the April 21 SPLC indictment later alleged concealed donor-funded payments to people associated with extremist groups. That is an interesting directional precursor, not a direct SPLC prediction. A March 31, 2026 smear/information/currency formulation is another thematic precursor but is even less specific. No direct pre-April public statement naming SPLC plus indictment, fraud, banks or paid informants has been recovered in the current corpus. The remembered February 18 'predicted the SPLC case' claim remains unverified and ambiguous. Accordingly the archive should say Tim showed early attention to hidden funding/extremism mechanisms, while the stronger claim that he predicted the SPLC criminal case remains an open source-recovery question."
 }
