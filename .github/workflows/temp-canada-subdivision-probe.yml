@@ -3,6 +3,10 @@ name: Temporary Canada Subdivision Probe
 on:
   push:
     branches: [feat/world-map-advance-2026-09-15]
+    paths:
+      - 'scripts/build_world_subdivision_canada.py'
+      - 'scripts/test_world_subdivision_canada.py'
+      - '.github/workflows/temp-canada-subdivision-probe.yml'
 
 permissions:
   contents: read
@@ -44,5 +48,6 @@ jobs:
           assert len(index['partitions']['CAN']['search_records']) == 13
           assert all('geometry' not in r for r in index['partitions']['CAN']['search_records'])
           assert all((f['properties'].get('area_km2') or 0) > 0 for f in payload['features'])
+          assert path.stat().st_size <= 5 * 1024 * 1024
           print('LIVE CANADA PARTITION PASSED:', len(payload['features']), 'features ·', path.stat().st_size, 'bytes')
           PY
