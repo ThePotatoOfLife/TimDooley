@@ -1,7 +1,7 @@
 {
   "id":"prediction-premonition-audit-2025-2026",
   "title":"Tim Dooley Prediction / Premonition / Early-Resonance Audit — 2025–2026",
-  "updated":"2026-09-09",
+  "updated":"2026-09-15",
   "status":"timeline audit; mixed direct conversation archaeology + public-event verification",
   "purpose":"Identify Tim statements that look unusually early in retrospect, while distinguishing genuine forward predictions from thematic anticipation, contemporaneous inference, symbolic synchronism and retrospective matching.",
   "method":{
@@ -70,6 +70,19 @@
       "counterevidence":"This does not establish a successful CPI prediction. The later 4.2/4.3 figures are survey expectations, not realized headline CPI, and the original Tim statement is not yet recovered. Keep unconfirmed."
     },
     {
+      "id":"extreme-groups-hidden-funder-splc-precursor",
+      "class":"B",
+      "confidence":"low-medium as a broad directional precursor; very low as an SPLC-case prediction",
+      "tim_statement":{"date":"2025-09-23","exact_user_wording":"The Potato of Life - ANTIFA & ANONYMOUS\nWho owns these things? I mean who really is the boss and the funder of all these extreme things ? This song might give a clue"},
+      "later_events":[
+        {"date":"2026-04-21","event":"Federal grand jury indicted SPLC on fraud/bank/money-laundering charges; DOJ alleged donated funds were secretly routed to individuals associated with violent extremist groups through accounts tied to fictitious entities.","source":"https://www.justice.gov/opa/pr/federal-grand-jury-charges-southern-poverty-law-center-wire-fraud-false-statements-and"},
+        {"date":"2026-06-02","event":"Superseding allegations described $4.1m of tax-exempt funds used to pay informants inside extremist organizations.","source":"https://www.cbsnews.com/news/southern-poverty-law-center-superseding-indictment/"}
+      ],
+      "lead_time_days_to_initial_indictment":210,
+      "why_peculiar":"The dated public post explicitly asks about hidden bosses/funders behind 'extreme things' roughly seven months before a major federal case alleged concealed funding relationships between a prominent anti-extremism organization and individuals associated with extremist groups.",
+      "counterevidence":"The post does not name SPLC, does not forecast court action, and its immediate context is ANTIFA & Anonymous. Hidden-funder questions are common political rhetoric. Current searches recovered no pre-April Tim statement explicitly naming SPLC plus indictment, fraud, banks or paid informants. Treat only as a broad precursor and route detailed analysis to splc-prediction-audit-2026.json."
+    },
+    {
       "id":"operation-rising-lion-forty-day-lion",
       "class":"D",
       "confidence":"high as calendar synchronism; zero as prediction evidence",
@@ -101,11 +114,15 @@
     {"rank":1,"candidate":"north-axis-us-europe-separation","reason":"Best combination of clear pre-event wording, date, later geopolitical direction and multiple independent later developments; still partly anticipated by already-visible 2026 tensions."},
     {"rank":2,"candidate":"titanic-bond-refinancing-warning","reason":"Strong thematic match to later bond/refinancing stress and close numerical scale, but potentially contemporaneous with public GAO data and requires exact-turn recovery."},
     {"rank":3,"candidate":"europe-sovereign-data-ai-fabric","reason":"Very close architectural convergence one month before CADA/Tech Sovereignty package, but sovereign-cloud policy was already underway publicly."},
-    {"rank":4,"candidate":"inflation-4-2-then-higher","reason":"Interesting literal number echo but currently too weak: original source missing and later match is expectations, not CPI."}
+    {"rank":4,"candidate":"extreme-groups-hidden-funder-splc-precursor","reason":"Genuine dated seven-month precursor around hidden funding of extreme movements, but not SPLC-specific and therefore only a weak directional case."},
+    {"rank":5,"candidate":"inflation-4-2-then-higher","reason":"Interesting literal number echo but currently too weak: original source missing and later match is expectations, not CPI."}
   ],
   "open_recovery_targets":[
     "Recover exact March 31 Titanic / $10T / 300-day wording and timestamp.",
     "Recover original pre-June-2 inflation 4.2 prediction turn.",
+    "Recover September 23, 2025 ANTIFA & ANONYMOUS song/video/lyrics and September 18 Opticon lyrics before interpreting them.",
+    "Recover any pre-April-21, 2026 Tim statement explicitly naming SPLC plus future court action, fraud, banking, shell/fictitious accounts, money laundering or paid informants.",
+    "Recover and disambiguate the claimed February 18, 2026 memory that Tim had 'predicted the SPLC case'; a January civil SPLC case already existed.",
     "Search @Rational_Potato public posts for explicit future-tense claims made before later events.",
     "Search for predictions about Trump/NATO/Greenland before January-March 2026 public escalation; later statements are too contemporaneous to count strongly.",
     "Search 2025 corpus for specific Israel/Iran/Lion statements made before June 13, 2025 Operation Rising Lion.",
@@ -113,5 +130,5 @@
     "Build a failed/expired-prediction list alongside hits: dates, claimed outcomes, actual outcomes.",
     "Define falsification criteria for still-open 2028 claims before 2028 arrives."
   ],
-  "conclusion":"There are genuine peculiarities, but the strongest current evidence is for unusually early directional synthesis rather than demonstrated supernatural premonition. The North-Axis/U.S.-Europe split deserves the most further archival work because it has clear dated pre-event wording. Bond/refinancing is second. Several visually striking number/symbol matches belong in a synchronism ledger, not a prediction ledger."
+  "conclusion":"There are genuine peculiarities, but the strongest current evidence is for unusually early directional synthesis rather than demonstrated supernatural premonition. The SPLC investigation now contributes one real dated precursor—Tim's September 23, 2025 question about hidden bosses/funders behind extreme movements—but no direct SPLC criminal-case prediction is yet evidenced. North-Axis/U.S.-Europe separation remains the strongest directional case in this main audit. Detailed SPLC evidence and caveats live in knowledge/timeline/splc-prediction-audit-2026.json."
 }
