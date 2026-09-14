@@ -21,6 +21,8 @@ import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
+from world_population_contract import validate_population_runtime
+
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "countries" / "index.json"
 COUNTRIES_DIR = ROOT / "data" / "countries"
@@ -38,7 +40,7 @@ RELIGIONS = {
     "other_religions": "other_religions",
     "unaffiliated": "unaffiliated",
 }
-USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.3"
+USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.4"
 
 
 def fetch_text(url: str, timeout: int = 180) -> str:
@@ -56,6 +58,20 @@ def number(value):
         return None
 
 
+def population_cell(value, period, source, *, source_url=None, confidence=None, resolution_tier: str) -> dict:
+    cell = {
+        "value": int(round(value)),
+        "unit": "persons",
+        "period": period,
+        "year": period,
+        "source": source,
+        "source_url": source_url,
+        "confidence": confidence,
+        "resolution_tier": resolution_tier,
+    }
+    return {key: item for key, item in cell.items() if item is not None}
+
+
 def local_population(country: dict):
     path = COUNTRIES_DIR / f"{country['id']}.json"
     if not path.exists():
@@ -68,15 +84,19 @@ def local_population(country: dict):
     if not isinstance(obs, dict):
         return None
     value = number(obs.get("value"))
-    if value is None:
+    if value is None or value <= 0:
         return None
-    return {
-        "value": int(round(value)),
-        "year": obs.get("year") or obs.get("reference_period") or record.get("updated"),
-        "source": obs.get("source") or "canonical country record",
-        "source_url": obs.get("source_url"),
-        "confidence": obs.get("confidence") or "sourced-observation",
-    }
+    period = obs.get("year") or obs.get("reference_period") or record.get("updated")
+    if period in (None, ""):
+        return None
+    return population_cell(
+        value,
+        period,
+        obs.get("source") or "canonical country record",
+        source_url=obs.get("source_url"),
+        confidence=obs.get("confidence") or "sourced-observation",
+        resolution_tier="canonical-observation",
+    )
 
 
 def owid_population() -> dict[str, dict]:
@@ -94,16 +114,17 @@ def owid_population() -> dict[str, dict]:
             continue
         code = str(row.get("Code") or "").upper()
         value = number(row.get(value_field))
-        if len(code) != 3 or value is None:
+        if len(code) != 3 or value is None or value <= 0:
             continue
-        out[code] = {
-            "value": int(round(value)),
-            "year": 2023,
-            "source": "UN World Population Prospects 2024, processed by Our World in Data",
-            "source_url": "https://ourworldindata.org/grapher/population-unwpp",
-            "confidence": "international-official-estimate",
-        }
-    if len(out) < 190:
+        out[code] = population_cell(
+            value,
+            2023,
+            "UN World Population Prospects 2024, processed by Our World in Data",
+            source_url="https://ourworldindata.org/grapher/population-unwpp",
+            confidence="international-official-estimate",
+            resolution_tier="global-fallback",
+        )
+    if len(out) < EXPECTED:
         raise RuntimeError(f"UN WPP population coverage unexpectedly low: {len(out)}")
     return out
 
@@ -142,9 +163,16 @@ def derive_unaffiliated_from_any_religion() -> dict[str, float]:
     return {code: round(max(0.0, min(100.0, 100.0 - share)), 2) for code, share in affiliated.items()}
 
 
+def ensure_population_complete(index: dict, runtime: dict, expected: int = EXPECTED) -> None:
+    errors = validate_population_runtime(index, runtime, expected=expected)
+    if errors:
+        preview = "; ".join(errors[:12])
+        if len(errors) > 12:
+            preview += f"; +{len(errors) - 12} more"
+        raise RuntimeError(f"Population runtime is incomplete: {preview}")
+
+
 def build_country_facts_snapshot() -> None:
-    # Keep the facts file beside the demography file so Pages gets a same-origin
-    # identity/geography snapshot without another workflow stage.
     os.environ["ATLAS_COUNTRY_FACTS_OUT"] = str(OUT.with_name("world-country-facts.json"))
     from build_world_country_facts import main as build_country_facts
     build_country_facts()
@@ -213,19 +241,13 @@ def main() -> int:
 
     pop_coverage = sum(1 for row in rows.values() if row.get("population", {}).get("value") is not None)
     religion_coverage = sum(1 for row in rows.values() if len(row.get("religion", {}).get("composition", {})) == 7)
-    if pop_coverage < 150:
-        raise RuntimeError(f"Population coverage too low: {pop_coverage}")
-    if religion_coverage < 150:
-        raise RuntimeError(
-            f"Complete seven-category religion coverage too low: {religion_coverage}; errors={religion_errors}"
-        )
-
     payload = {
-        "version": "1.3.0",
+        "version": "1.4.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-demography-runtime",
         "scope": "Presentation/runtime snapshot; canonical country records remain the source owners for their own sourced observations.",
         "population_coverage": pop_coverage,
+        "population_coverage_definition": "canonical sovereign countries with a positive, sourced population observation and explicit reference period",
         "religion_coverage": religion_coverage,
         "religion_coverage_definition": "countries with all seven mutually exclusive Pew religious-identity categories",
         "religion_categories": list(RELIGIONS.keys()),
@@ -236,6 +258,12 @@ def main() -> int:
         "religion_fallbacks": religion_fallbacks,
         "countries": rows,
     }
+    ensure_population_complete(index, payload)
+    if religion_coverage < 150:
+        raise RuntimeError(
+            f"Complete seven-category religion coverage too low: {religion_coverage}; errors={religion_errors}"
+        )
+
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     build_country_facts_snapshot()

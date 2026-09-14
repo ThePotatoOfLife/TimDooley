@@ -65,3 +65,19 @@ window.__potatoAtlasPanelLifecycle = {
 // Register the lightweight physical-context controller after the core paint.
 // Elevation and hillshade tiles remain dormant until the user enables Terrain.
 queueMicrotask(() => window.__potatoAtlasLoadModule?.('Physical Terrain', './3d-physical-terrain.js'));
+
+// Administrative detail remains code- and data-dormant at world scale. Load the
+// subdivision controller only after regional zoom, or immediately for a deep link.
+function maybeLoadSubdivisions() {
+  const map = window.__potatoAtlasMap;
+  if (!map) return;
+  const requested = new URL(location.href).searchParams.has('subdivision');
+  if (!requested && map.getZoom() < 3.4) return;
+  map.off('zoomend', maybeLoadSubdivisions);
+  window.__potatoAtlasLoadModule?.('Subdivisions', './3d-subdivisions.js');
+}
+queueMicrotask(() => {
+  const map = window.__potatoAtlasMap;
+  maybeLoadSubdivisions();
+  map?.on('zoomend', maybeLoadSubdivisions);
+});
