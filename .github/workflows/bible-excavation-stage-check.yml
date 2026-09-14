@@ -1,0 +1,21 @@
+name: Bible excavation stage check
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - run: python scripts/test_build_excavation_enrichments.py
+      - run: python scripts/build_excavation_enrichments.py
+      - run: python scripts/validate_bible_excavation_enrichments.py
