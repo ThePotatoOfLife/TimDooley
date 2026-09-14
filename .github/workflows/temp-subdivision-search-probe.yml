@@ -10,6 +10,7 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-node@v5
@@ -18,7 +19,33 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - run: |
+      - name: Deterministic contracts
+        run: |
           node scripts/test_world_map_search.mjs
           node scripts/test_world_map_subdivision_interaction.mjs
           python -m unittest scripts.test_world_subdivisions_builder -v
+      - name: Build live subdivision snapshots
+        env:
+          ATLAS_SUBDIVISIONS_OUT_DIR: /tmp/world-subdivisions
+        run: python scripts/build_world_subdivisions.py
+      - name: Validate live Denmark and USA partitions
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('/tmp/world-subdivisions')
+          index=json.loads((root/'index.json').read_text(encoding='utf-8'))
+          usa=json.loads((root/'USA.geo.json').read_text(encoding='utf-8'))
+          dnk=json.loads((root/'DNK.geo.json').read_text(encoding='utf-8'))
+          assert len(usa['features']) == 51
+          assert index['partitions']['USA']['feature_count'] == 51
+          assert index['partitions']['DNK']['feature_count'] == len(dnk['features'])
+          assert index['partitions']['DNK']['id_prefix'] == 'DK-'
+          assert len(dnk['features']) >= 5
+          midt=next(f for f in dnk['features'] if f['properties'].get('code') == '1082')
+          assert midt['properties']['name'] == 'Region Midtjylland'
+          assert 'population' not in midt['properties']
+          assert len(index['partitions']['DNK']['search_records']) == len(dnk['features'])
+          assert all('geometry' not in row for row in index['partitions']['DNK']['search_records'])
+          print('LIVE SUBDIVISION BUILD PASSED:', len(usa['features']), 'USA +', len(dnk['features']), 'DNK')
+          PY
