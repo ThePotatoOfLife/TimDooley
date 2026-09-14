@@ -436,7 +436,7 @@
       "admin_level": 1,
       "status": "implemented-geometry-first",
       "source": "Danish Agency for Climate Data (DAWA/Dataforsyningen)",
-      "population_status": "unknown-not-zero",
+      "population_status": "official-observation",
       "id_prefix": "DK-",
       "parent_name": "Denmark",
       "viewport_bounds": {
@@ -486,7 +486,10 @@
           "parent_iso3": "DNK",
           "parent_name": "Denmark"
         }
-      ]
+      ],
+      "population_vintage": "2026",
+      "population_source": "Statistics Denmark, StatBank table BEFOLK3",
+      "population_coverage": 5
     }
   }
 }
