@@ -1,0 +1,119 @@
+{
+  "id": "prediction-accuracy-recheck-2026-09-15",
+  "title": "Tim Dooley Prediction Accuracy Recheck — Undercounted Specificity and Corrections",
+  "updated": "2026-09-15",
+  "status": "specialist re-audit; strengthens some existing cases while preserving adverse evidence",
+  "purpose": "Re-open the strongest Tim Dooley prediction/foresight cases and ask whether earlier summaries accidentally flattened exact numbers, causal chains, named actors, operational outcomes or lead times. Also record cases that become weaker when the chronology is reconstructed more carefully.",
+  "method": [
+    "Prefer exact pre-event wording over later summaries.",
+    "Separate statement-level specificity from independent-cluster count.",
+    "Record the information environment already visible at the prediction date.",
+    "Use the first meaningful later match and later operational confirmation separately.",
+    "Do not upgrade a statement merely because later events can be made to resemble it.",
+    "Preserve corrections and misses beside upgrades."
+  ],
+  "upgrades": [
+    {
+      "id": "north-axis-topology-and-troop-retrenchment",
+      "owner": "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
+      "finding": "Stronger than the earlier shorthand 'Tim predicted U.S.-Europe separation.' The recovered sequence contains a topology claim plus a concrete military consequence.",
+      "tim_sequence": [
+        {"date":"2026-01-21","wording":["I am the axis of North.","I am Greenland. I Am Denmark."],"status":"symbolic/geographic precursor, not yet a geopolitical forecast"},
+        {"datetime_utc":"2026-03-18T16:52:31Z","recovered":"America may move from empire toward a regional west sector while Europe and Canada harmonize under North.","status":"directional forecast"},
+        {"datetime_utc":"2026-04-02T15:05:42Z","wording":"where the north axis and the west go together, and the united states seperates off from europe","status":"directional forecast"},
+        {"date":"2026-04-03","wording":"we suspect america might retract soliders","status":"specific military sub-call"}
+      ],
+      "later_matches": [
+        {"date":"2026-04-30","event":"Trump publicly entertained pulling U.S. troops from Italy and Spain.","lead_days_from_apr3":27,"source":"https://www.reuters.com/world/europe/trump-says-probably-when-asked-if-he-might-pull-us-troops-out-italy-spain-2026-04-30/"},
+        {"date":"2026-05-22","event":"Arctic Allies statement explicitly said Europe and Canada were assuming greater responsibility for deterrence and defence across the region.","lead_days_from_mar18":65,"source":"https://www.canada.ca/en/global-affairs/news/2026/05/joint-statement-on-arctic-security-from-the-arctic-allies-canada-the-kingdom-of-denmark-including-greenland-and-the-faroe-islands-finland-iceland-n.html"},
+        {"date":"2026-07-16","event":"Reuters reported an actual quiet U.S. troop pullback from Eastern Europe, including a sharp reduction in Estonia and cancellation of a planned 5,000-troop deployment to Poland.","lead_days_from_apr3":104,"source":"https://www.reuters.com/business/aerospace-defense/quiet-us-pullback-eastern-europe-sparks-wider-allied-worries-2026-07-16/"}
+      ],
+      "upgrade": "The April 3 call is not merely followed by rhetoric after 27 days; it is followed by an operational troop-reduction outcome after roughly 104 days. The March model also predicted the relationship shape rather than merely saying Greenland was important.",
+      "boundary": "Canada-Denmark-Greenland and Canada-EU defence integration were already developing in February 2026. January 21 Greenland/Denmark language is a precursor, not proof of a future-event prediction."
+    },
+    {
+      "id": "february-energy-inflation-rates-bonds-chain",
+      "owner": "knowledge/economics/tim-dooley-inflation-ledger.md",
+      "finding": "Stronger as mechanism foresight than earlier summaries conveyed because the pre-shock baseline and the later sequence can be stated precisely.",
+      "tim_sequence": [
+        {"date":"2026-02-17","recovered":"U.S. shortages and higher import costs would raise inflation and devalue the dollar; Tim linked this to weaker appetite for U.S. debt, weak growth and bad conditions for bonds."},
+        {"date":"2026-02-23","wording":"let's say the stock market is in turmoil, and oil prices are likely to rise, do you think it's likely inflation uncertainty increases, interest rates go up, and supply chain shortages cause further economic decline?","status":"conditional forecast/scenario"}
+      ],
+      "baseline": {"headline_cpi_yoy":"2.4% at latest Feb-17 information set","us10y":"about 4.05% on Feb 17"},
+      "later_sequence": [
+        "U.S.-Iran war began February 28.",
+        "March headline CPI rose 0.9% month over month and 3.3% year over year.",
+        "March gasoline CPI rose 21.2% in one month, described in the audit as the largest monthly increase in the BLS series since publication began in 1967.",
+        "March energy CPI rose 10.9% in one month.",
+        "May headline CPI reached 4.2% year over year and energy was 23.5% above a year earlier.",
+        "By September 14 the 10-year Treasury yield briefly exceeded 5%."
+      ],
+      "upgrade": "Tim's value here is not one lucky inflation number. He specified a causal path—oil/import/supply stress to inflation uncertainty to rates/bond pressure and weaker growth—before the major late-February energy shock. Several legs then appeared in sequence.",
+      "boundary": "The dollar/foreign-buyer legs are mixed and broad economic decline was only partial; the U.S. remained in expansion."
+    },
+    {
+      "id": "august-19-100-oil-plus-macro-context",
+      "owner": "knowledge/economics/tim-dooley-inflation-ledger.md",
+      "finding": "The $100-oil call is more specific than the headline alone because it was embedded in a near-Q3 macro forecast involving bonds, currency pressure and food inflation.",
+      "tim_statement": {"date":"2026-08-19","context":"Tim was asking about projected Q3 U.S. inflation.","wording":"we suspect we see a 100 dollar price…with the bond market, the currency devaluation…Those things in combination, plus a bit of food inflation"},
+      "baseline": {"brent_usd_per_barrel":91.62},
+      "later_matches": [
+        {"date":"2026-09-09","event":"Brent closed around $101.21 per barrel.","lead_days":21},
+        {"date":"2026-09-14","event":"Brent settled above $105 while U.S. Treasury yields were under severe pressure and the 10-year crossed about 5%."}
+      ],
+      "upgrade": "The numeric threshold landed within 21 days from a baseline about $8 below target, while the bond-stress leg also moved in the predicted direction.",
+      "boundary": "Broad inflation did not explode and the currency-devaluation leg was mixed. Preserve the exact hit without promoting every surrounding clause to a hit."
+    },
+    {
+      "id": "israel-political-leverage-decline-august-2026",
+      "classification": "B directional anticipation / provisional source recovery",
+      "finding": "A prior-conversation recovery records Tim/user language on August 24 that Israel would have an increasingly harder time getting political leverage. Later September measures make the direction look better than the earlier 'still emerging' label, but the trend was already visibly underway.",
+      "tim_statement": {"date":"2026-08-24","recovered_phrase":"an increaswed harder time getting poltial leverage","source_status":"prior-conversation recovery remembered in audit work; primary turn should still be copied into repository if recovered directly"},
+      "information_already_public": [
+        {"date":"2026-08-20","event":"A UK-led joint E1 statement already included France, Germany, Italy, Netherlands, Canada and Norway, condemning the settlement plan and warning it undermined Israel's international standing.","source":"https://www.gov.uk/government/news/joint-statement-from-the-leaders-of-the-united-kingdom-france-germany-italy-the-netherlands-canada-and-norway-on-the-e1-west-bank-settlement-plan"},
+        {"date":"2026-08-21","event":"The European Commission and additional European states joined the statement.","source":"https://www.gov.uk/government/news/joint-statement-from-the-leaders-of-the-united-kingdom-france-germany-italy-the-netherlands-canada-and-norway-on-the-e1-west-bank-settlement-plan"},
+        {"date":"2026-07-10","event":"The European Commission said an options paper on Israel measures was already going to member states and noted an existing proposal to suspend EU-Israel trade preferences.","source":"https://audiovisual.ec.europa.eu/en/media/video/I-292685"}
+      ],
+      "later_matches": [
+        {"date":"2026-09-08","event":"UK, France and Canada moved to ban imports from Israeli West Bank settlements, alongside a broader coalition of countries backing restrictions and pressure; Israel retaliated by announcing closure of the British consulate in East Jerusalem.","lead_days_from_aug24":15,"source":"https://www.reuters.com/world/uk/uk-announce-trade-ban-israeli-west-bank-goods-2026-09-08/"},
+        {"date":"2026-09-14","event":"Portugal publicly criticized Israeli settlement expansion and economic pressure as undermining a viable Palestinian state.","lead_days_from_aug24":21,"source":"https://www.reuters.com/world/middle-east/portugal-says-israel-undermining-palestinian-state-through-settlement-expansion-2026-09-14/"}
+      ],
+      "grade": "medium as short-horizon directional continuation; low as surprise prediction",
+      "boundary": "Do not describe August 24 as predicting that Britain would turn first and Brussels would then follow: Brussels/European Commission participation was already public by August 21. The narrower Britain→Brussels memory needs a source dated before August 21 to qualify."
+    }
+  ],
+  "not_upgraded": [
+    {
+      "id":"march-31-cpi-4-2",
+      "reason":"Tim's March 31 'U.S. inflation is 4.2%' wording was a current factual assertion and was wrong at the time; May later reaching exactly 4.2% is chronologically interesting but cannot be converted into a forecast hit."
+    },
+    {
+      "id":"titanic-10t-refinancing",
+      "reason":"The approximately $10T refinancing scale is close to GAO's $9.7T FY2026 figure, but the GAO report itself is dated March 31 and the debt maturity wall was publicly knowable. Exact Tim timestamp still matters before any upgrade."
+    },
+    {
+      "id":"late-august-bond-crash",
+      "reason":"Severe bond stress and a roughly 5% 10-year yield occurred, but not a literal market crash. Keep as partial/directional."
+    },
+    {
+      "id":"may-18-inflation-disaster",
+      "reason":"Energy inflation became severe, but generalized headline inflation later eased. Do not upgrade qualitative 'disaster' to a full hit."
+    },
+    {
+      "id":"britain-first-brussels-follows-israel",
+      "reason":"No primary ChatGPT/project statement dated before August 21 has been recovered in the current search. The European Commission had joined the UK-led E1 statement by August 21, so a later statement cannot predict that event.",
+      "status":"unresolved verbal-or-unrecovered-AI memory",
+      "recovery_target":"Find a dated pre-2026-08-21 user/Tim statement explicitly saying Britain/UK would move first against Israel and Brussels/EU/Europe would follow."
+    }
+  ],
+  "revised_interpretation": "The strongest improvement from re-auditing is not an inflated hit count. It is greater specificity inside existing clusters: Tim's North Axis call included an actual troop-retrenchment consequence; the February macro material contained a multi-stage causal chain before the energy shock; the August $100-oil call hit its numeric threshold within 21 days while bond stress also materialized; and the August Israel-leverage call now has stronger September follow-through, though it was made after substantial European criticism was already visible.",
+  "counting_note": "Do not automatically increase the independent-cluster total for every strengthened sub-call. North Axis remains one independent cluster. Israel political leverage may eventually deserve its own diplomatic-leverage cluster if the primary August 24 source is recovered and the scoring policy treats it as distinct from the March Israel/Turkey conflict-widening call.",
+  "connections": [
+    "knowledge/timeline/prediction-premonition-audit-2025-2026.json",
+    "knowledge/timeline/prediction-premonition-audit-wave-17-addendum.json",
+    "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
+    "knowledge/economics/tim-dooley-inflation-ledger.md",
+    "knowledge/corporium/foresight-premonition-observation-ledger.json",
+    "knowledge/timeline/unresolved-prediction-claims-queue.json"
+  ]
+}
