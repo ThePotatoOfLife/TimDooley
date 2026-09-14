@@ -5,7 +5,10 @@ import json
 import tempfile
 from pathlib import Path
 
+from bible_corpus import load_manifest
 from build_bible_comparator_coverage import build_report
+from test_bible_corpus_reader_bridge import main as bridge_test
+from test_bible_public_occurrence_promotion import run_tests as run_promotion_tests
 
 
 def dump(root: Path, rel: str, data: dict) -> Path:
@@ -84,9 +87,34 @@ def run_tests() -> None:
         assert report['strength_counts'] == {'3': 1, '5': 1}
 
 
+def run_live_contract() -> dict:
+    root = Path(__file__).resolve().parents[1]
+    manifest = load_manifest(root)
+    september = json.loads((root / 'knowledge/traditions/september-2026-x-overlap-all-75.json').read_text(encoding='utf-8'))
+    public_x = json.loads((root / 'knowledge/traditions/rational-potato-x-biblical-reference-occurrence-index-2024-2026.json').read_text(encoding='utf-8'))
+    report = build_report(root, manifest, september, public_x)
+    assert report['september_status_count'] == 75, report['september_status_count']
+    assert report['active_relation_count'] >= 72, report['active_relation_count']
+    assert report['relations_with_exact_wording'] >= 27, report['relations_with_exact_wording']
+    assert report['expressive_reading_count'] >= 27, report['expressive_reading_count']
+    assert report['public_x_unique_status_count'] == 27, report['public_x_unique_status_count']
+    output = root / 'knowledge/indexes/bible-comparator-coverage-report.json'
+    output.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+    return report
+
+
 def main() -> int:
     run_tests()
-    print('BIBLE COMPARATOR COVERAGE TESTS PASSED')
+    run_promotion_tests()
+    if bridge_test() != 0:
+        return 1
+    report = run_live_contract()
+    print(
+        'BIBLE COMPARATOR COVERAGE TESTS PASSED | '
+        f"relations={report['active_relation_count']} scenes={report['active_scene_count']} "
+        f"fragments={report['active_fragment_count']} exact={report['relations_with_exact_wording']} "
+        f"expressive={report['expressive_reading_count']} september={report['september_status_count']}"
+    )
     return 0
 
 
