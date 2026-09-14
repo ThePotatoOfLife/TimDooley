@@ -66,6 +66,11 @@ window.__potatoAtlasPanelLifecycle = {
 // Elevation and hillshade tiles remain dormant until the user enables Terrain.
 queueMicrotask(() => window.__potatoAtlasLoadModule?.('Physical Terrain', './3d-physical-terrain.js'));
 
+// Search itself is light enough to wire after the core paint. Its country,
+// subdivision and place records remain data-dormant until the user focuses or
+// types into Search.
+queueMicrotask(() => window.__potatoAtlasLoadModule?.('Unified Search', './3d-search.js'));
+
 // Administrative detail remains code- and data-dormant at world scale. Load the
 // subdivision controller only after regional zoom, or immediately for a deep link.
 function maybeLoadSubdivisions() {
