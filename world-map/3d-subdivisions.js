@@ -17,7 +17,6 @@ const USA_BOUNDS = { west:-179.5, east:-65, south:17, north:72.5 };
 const loaded = new Map();
 let indexPromise = null;
 let selectedId = new URL(location.href).searchParams.get('subdivision') || null;
-let popup = null;
 
 function fmt(value) {
   if (value == null) return '—';
@@ -25,6 +24,33 @@ function fmt(value) {
 }
 function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+}
+function installInspector() {
+  if (document.getElementById('atlasSubdivisionCard')) return;
+  const style = document.createElement('style');
+  style.id = 'atlasSubdivisionStyle';
+  style.textContent = `#atlasSubdivisionCard{position:absolute;left:12px;top:54px;z-index:8;width:min(290px,calc(100% - 24px));padding:10px 11px;background:#0b1010ef;border:1px solid #40504d;border-radius:10px;box-shadow:0 8px 28px #0009;backdrop-filter:blur(9px);font-size:11px}#atlasSubdivisionCard[hidden]{display:none!important}#atlasSubdivisionCard .sub-head{display:flex;align-items:start;justify-content:space-between;gap:8px}#atlasSubdivisionCard b{font-size:14px}#atlasSubdivisionCard small{display:block;color:#9aa6a0;margin-top:4px}#atlasSubdivisionCard .sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}#atlasSubdivisionCard .sub-grid div{border:1px solid #2d3939;border-radius:7px;padding:6px}#atlasSubdivisionCard .sub-grid span{display:block;color:#8d9993;font-size:9px;text-transform:uppercase}#atlasSubdivisionCard button{padding:2px 6px;min-height:auto}`;
+  document.head.appendChild(style);
+  const card = document.createElement('div');
+  card.id = 'atlasSubdivisionCard';
+  card.hidden = true;
+  card.innerHTML = '<div class="sub-head"><div><b>Subdivision</b></div><button type="button" data-subdivision-close aria-label="Close subdivision inspector">×</button></div>';
+  document.querySelector('.mapwrap')?.appendChild(card);
+  card.querySelector('[data-subdivision-close]')?.addEventListener('click', () => window.__potatoAtlasSubdivisions?.clear?.());
+}
+function renderInspector(feature) {
+  installInspector();
+  const card = document.getElementById('atlasSubdivisionCard');
+  if (!card || !feature) return;
+  const p = feature.properties || {};
+  const population = p.population || {};
+  card.innerHTML = `<div class="sub-head"><div><b>${esc(p.name || p.id)}</b><small>${esc(p.subdivision_type || 'subdivision')} · ${esc(p.code || '')} · United States</small></div><button type="button" data-subdivision-close aria-label="Close subdivision inspector">×</button></div><div class="sub-grid"><div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '')}</small></div><div><span>Area</span><b>${fmt(p.area_km2)} km²</b><small>land + water</small></div></div><small>${esc(population.source || '')}</small>`;
+  card.hidden = false;
+  card.querySelector('[data-subdivision-close]')?.addEventListener('click', () => window.__potatoAtlasSubdivisions?.clear?.());
+}
+function hideInspector() {
+  const card = document.getElementById('atlasSubdivisionCard');
+  if (card) card.hidden = true;
 }
 async function subdivisionIndex() {
   if (!indexPromise) {
@@ -64,12 +90,6 @@ function sourceId(partition) { return `${SOURCE_PREFIX}${partition}`; }
 function lineId(partition) { return `${LINE_PREFIX}${partition}`; }
 function hitId(partition) { return `${HIT_PREFIX}${partition}`; }
 function labelId(partition) { return `${LABEL_PREFIX}${partition}`; }
-
-function infoHtml(feature) {
-  const p = feature?.properties || {};
-  const population = p.population || {};
-  return `<div class="atlas-subdivision-popup"><b>${esc(p.name || p.id)}</b><div>${esc(p.subdivision_type || 'subdivision')} · ${esc(p.code || '')}</div><div>Population: <b>${fmt(population.value)}</b> <small>(${esc(population.period || '')})</small></div><div>Area: <b>${fmt(p.area_km2)} km²</b></div><small>${esc(population.source || '')}</small></div>`;
-}
 function syncUrl(id) {
   const url = new URL(location.href);
   if (id) url.searchParams.set('subdivision', id);
@@ -81,14 +101,9 @@ function selectSubdivision(partition, feature, options = {}) {
   const p = feature.properties || {};
   selectedId = p.id || null;
   syncUrl(selectedId);
-  popup?.remove();
-  const centroid = Array.isArray(p.centroid) ? p.centroid : null;
   const bounds = geometryBounds(feature);
   if (options.fit !== false && bounds) map.fitBounds(bounds, { padding:80, duration:650, maxZoom:7.4 });
-  const anchor = centroid || (bounds ? [(bounds[0][0]+bounds[1][0])/2,(bounds[0][1]+bounds[1][1])/2] : null);
-  if (anchor && window.maplibregl?.Popup) {
-    popup = new window.maplibregl.Popup({closeButton:true, maxWidth:'320px'}).setLngLat(anchor).setHTML(infoHtml(feature)).addTo(map);
-  }
+  renderInspector(feature);
   window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-select', { detail:{ partition, id:selectedId, properties:p, feature } }));
   return true;
 }
@@ -99,7 +114,7 @@ function bindLayerEvents(partition) {
   map.on('click', hit, event => {
     const feature = event.features?.[0];
     if (!feature) return;
-    event.originalEvent.__potatoAtlasSubdivisionHandled = true;
+    if (event.originalEvent) event.originalEvent.__potatoAtlasSubdivisionHandled = true;
     selectSubdivision(partition, feature, {fit:true});
   });
 }
@@ -108,16 +123,11 @@ function installPartitionLayers(partition, data) {
   if (!map.getSource(source)) map.addSource(source, { type:'geojson', data, promoteId:'id' });
   const before = map.getLayer('countries-line') ? 'countries-line' : (map.getLayer('countries-outline') ? 'countries-outline' : undefined);
   if (!map.getLayer(hitId(partition))) {
-    map.addLayer({
-      id:hitId(partition), type:'fill', source,
-      minzoom:3.4,
-      paint:{'fill-color':'#ffffff','fill-opacity':0.001}
-    }, before);
+    map.addLayer({id:hitId(partition),type:'fill',source,minzoom:3.4,paint:{'fill-color':'#ffffff','fill-opacity':0.001}}, before);
   }
   if (!map.getLayer(lineId(partition))) {
     map.addLayer({
-      id:lineId(partition), type:'line', source,
-      minzoom:3.4,
+      id:lineId(partition),type:'line',source,minzoom:3.4,
       paint:{
         'line-color':'#9aa9a2',
         'line-opacity':['interpolate',['linear'],['zoom'],3.4,0.28,5,0.55,7,0.78],
@@ -127,12 +137,10 @@ function installPartitionLayers(partition, data) {
   }
   if (!map.getLayer(labelId(partition))) {
     map.addLayer({
-      id:labelId(partition), type:'symbol', source,
-      minzoom:4.25,
+      id:labelId(partition),type:'symbol',source,minzoom:4.25,
       layout:{
         'text-field':['step',['zoom'],['get','code'],5.8,['get','name']],
         'text-size':['interpolate',['linear'],['zoom'],4.25,9,6.5,12],
-        'text-font':['Open Sans Regular'],
         'text-max-width':8,
         'text-allow-overlap':false,
         'text-ignore-placement':false
@@ -180,7 +188,7 @@ window.__potatoAtlasSubdivisions = {
     if (!partition) return false;
     return loadPartition(partition).then(() => selectSubdivision(partition, featureById(partition, id), options));
   },
-  clear() { selectedId = null; syncUrl(null); popup?.remove(); popup = null; },
+  clear() { selectedId = null; syncUrl(null); hideInspector(); },
   get selected() { return selectedId; },
   loadedPartitions() { return [...loaded.keys()]; },
 };
