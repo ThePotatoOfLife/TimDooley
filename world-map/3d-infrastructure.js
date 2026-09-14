@@ -7,6 +7,11 @@ const selection = window.__potatoAtlasSelection;
 if (!map || !runtime || !selection) throw new Error('Infrastructure context requires map, runtime and selection APIs.');
 await runtime.ready;
 
+const ATLAS_VERSION = new URL(import.meta.url).searchParams.get('v') || '';
+const spatialUrl = new URL('./3d-spatial-core.js', import.meta.url);
+if (ATLAS_VERSION) spatialUrl.searchParams.set('v', ATLAS_VERSION);
+const {assetsWithinGeometry} = await import(spatialUrl.href);
+
 const SOURCE_ID = 'atlas-infrastructure-context';
 const POINT_LAYER = 'atlas-infrastructure-points';
 const MAX_CONTEXT_ASSETS = 12;
@@ -82,6 +87,16 @@ async function showForEntity(code) {
   const rows = /^[A-Z]{3}$/.test(key) ? await runtime.infrastructureForEntity?.(key) || [] : [];
   return setVisible(rows, key ? {kind:'entity', id:key} : {kind:null, id:null});
 }
+async function showForSubdivision(detail) {
+  const feature = detail?.feature;
+  const geometry = feature?.geometry;
+  const parentIso3 = String(detail?.properties?.parent_iso3 || feature?.properties?.parent_iso3 || '').toUpperCase();
+  const id = String(detail?.id || feature?.properties?.id || '');
+  if (!geometry || !/^[A-Z]{3}$/.test(parentIso3)) return setVisible([], id ? {kind:'subdivision', id} : {kind:null, id:null});
+  const countryAssets = await runtime.infrastructureForEntity?.(parentIso3) || [];
+  const contained = assetsWithinGeometry(countryAssets, geometry);
+  return setVisible(contained, {kind:'subdivision', id, parent_iso3:parentIso3, spatial_relation:'contained-location-context'});
+}
 async function showForGateway(id) {
   const key = String(id || '');
   const rows = key ? await runtime.infrastructureForGateway?.(key) || [] : [];
@@ -136,7 +151,7 @@ async function showPopup(asset, coordinates) {
   const impactButton = impactNode ? `<button type="button" data-infrastructure-impact="${esc(asset.id)}">Impact</button>` : '';
   activePopup = new maplibregl.Popup({ closeButton:true, maxWidth:'330px' })
     .setLngLat(coordinates)
-    .setHTML(`<div class="atlas-infrastructure-popup"><b>${esc(asset.label || asset.id)}</b><br><small>${esc(humanize(asset.type))}</small>${asset.operator ? `<p><small>Operator / authority</small><br>${esc(asset.operator)}</p>` : ''}${linked.length ? `<p><small>Context</small><br>${linked.map(esc).join(' · ')}</p>` : ''}${observationHtml}<p><small>${sourceLink}</small></p>${impactButton}<div class="boundary">Infrastructure association is contextual unless an explicit sourced dependency is represented.</div></div>`)
+    .setHTML(`<div class="atlas-infrastructure-popup"><b>${esc(asset.label || asset.id)}</b><br><small>${esc(humanize(asset.type))}</small>${asset.operator ? `<p><small>Operator / authority</small><br>${esc(asset.operator)}</p>` : ''}${linked.length ? `<p><small>Context</small><br>${linked.map(esc).join(' · ')}</p>` : ''}${observationHtml}<p><small>${sourceLink}</small></p>${impactButton}<div class="boundary">Infrastructure association or spatial containment is contextual unless an explicit sourced dependency is represented.</div></div>`)
     .addTo(map);
 }
 
@@ -157,7 +172,7 @@ async function injectCountryContext(code = currentEntityCode()) {
     const actions = card.querySelector('.atlas-country-actions');
     if (actions) actions.before(section); else card.appendChild(section);
   }
-  const nextHtml = `<small>Infrastructure context</small><div class="atlas-country-tags">${rows.slice(0,4).map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('')}${rows.length > 4 ? `<span class="atlas-country-tag">+${rows.length - 4}</span>` : ''}</div><div class="atlas-country-source">Sourced physical context · association does not imply dependency</div>`;
+  const nextHtml = `<small>Infrastructure context</small><div class="atlas-country-tags">${rows.slice(0,4).map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('')}${rows.length > 4 ? `<span class="atlas-country-tag">+${rows.length - 4}</span>` : ''}</div><div class="atlas-country-source">Sourced physical context · association and spatial containment do not imply dependency</div>`;
   if (section.innerHTML !== nextHtml) section.innerHTML = nextHtml;
 }
 
@@ -191,6 +206,12 @@ window.addEventListener('potato-atlas-working-selection-change', event => {
   const code = event?.detail?.selected === false ? '' : String(event?.detail?.activeCode || event?.detail?.code || '').toUpperCase();
   showForEntity(code);
 });
+window.addEventListener('potato-atlas-subdivision-select', event => {
+  showForSubdivision(event?.detail || {});
+});
+window.addEventListener('potato-atlas-subdivision-clear', () => {
+  if (activeContext.kind === 'subdivision') fallBackContext();
+});
 window.addEventListener('potato-atlas-chain-change', event => {
   const id = event?.detail?.id || event?.detail?.chainId || null;
   if (id) showForChain(id); else if (activeContext.kind === 'chain') fallBackContext();
@@ -200,5 +221,5 @@ window.addEventListener('potato-atlas-gateway-change', event => {
   if (id) showForGateway(id); else if (activeContext.kind === 'gateway') fallBackContext();
 });
 
-window.__potatoAtlasInfrastructure = { showForEntity, showForGateway, showForChain, showAsset, showImpact, clear, current };
+window.__potatoAtlasInfrastructure = { showForEntity, showForSubdivision, showForGateway, showForChain, showAsset, showImpact, fallBackContext, clear, current };
 await fallBackContext();
