@@ -10,9 +10,35 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - run: python -m unittest scripts.test_world_subdivision_canada -v
+      - name: Deterministic Canada contract
+        run: python -m unittest scripts.test_world_subdivision_canada -v
+      - name: Build live Canada partition
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf /tmp/world-subdivisions
+          cp -R data/world-subdivisions /tmp/world-subdivisions
+          ATLAS_SUBDIVISIONS_OUT_DIR=/tmp/world-subdivisions python scripts/build_world_subdivision_canada.py
+      - name: Validate live Canada partition
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root=Path('/tmp/world-subdivisions')
+          path=root/'CAN.geo.json'
+          payload=json.loads(path.read_text(encoding='utf-8'))
+          index=json.loads((root/'index.json').read_text(encoding='utf-8'))
+          assert len(payload['features']) == 13
+          ids={f['properties']['id'] for f in payload['features']}
+          assert {'CA-ON','CA-QC','CA-BC','CA-NU'} <= ids
+          assert len(index['partitions']['CAN']['search_records']) == 13
+          assert all('geometry' not in r for r in index['partitions']['CAN']['search_records'])
+          assert all((f['properties'].get('area_km2') or 0) > 0 for f in payload['features'])
+          print('LIVE CANADA PARTITION PASSED:', len(payload['features']), 'features ·', path.stat().st_size, 'bytes')
+          PY
