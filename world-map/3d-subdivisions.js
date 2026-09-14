@@ -27,6 +27,9 @@ function fmt(value) {
 function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[char]));
 }
+function normalizeText(value) {
+  return String(value || '').trim().toLocaleLowerCase('en').normalize('NFKD').replace(/[\u0300-\u036f]/g, '');
+}
 function installInspector() {
   if (document.getElementById('atlasSubdivisionCard')) return;
   const style = document.createElement('style');
@@ -171,6 +174,36 @@ async function loadPartition(partition) {
   installPartitionLayers(partition, data);
   return state;
 }
+async function search(query) {
+  await loadPartition('USA');
+  const needle = normalizeText(query);
+  const rows = (loaded.get('USA')?.data?.features || []).map(feature => {
+    const p = feature.properties || {};
+    return {
+      id:p.id,
+      name:p.name,
+      code:p.code,
+      subdivision_type:p.subdivision_type || 'subdivision',
+      parent_iso3:p.parent_iso3 || 'USA',
+      partition:'USA'
+    };
+  }).filter(row => row.id && row.name);
+  if (!needle) return rows.sort((a,b) => a.name.localeCompare(b.name));
+  function score(row) {
+    const id = normalizeText(row.id), code = normalizeText(row.code), name = normalizeText(row.name);
+    if (needle === id) return 0;
+    if (needle === code) return 1;
+    if (needle === name) return 2;
+    if (name.startsWith(needle)) return 3;
+    if (id.startsWith(needle) || code.startsWith(needle)) return 4;
+    if (name.includes(needle)) return 5;
+    return 99;
+  }
+  return rows.map(row => ({row, score:score(row)}))
+    .filter(item => item.score < 99)
+    .sort((a,b) => a.score - b.score || a.row.name.localeCompare(b.row.name))
+    .map(item => item.row);
+}
 async function ensureRelevantPartitions() {
   if (selectedId?.startsWith('US-') || viewportOverlaps(USA_BOUNDS)) {
     try {
@@ -190,6 +223,7 @@ await ensureRelevantPartitions();
 
 window.__potatoAtlasSubdivisions = {
   loadPartition,
+  search(query) { return search(query); },
   select(id, options={}) {
     const partition = String(id || '').startsWith('US-') ? 'USA' : null;
     if (!partition) return false;
