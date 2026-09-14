@@ -12,6 +12,8 @@ def main()->int:
           'discovery_history.source_direction':'Event first; comparison later.',
           'research_frontier':'Recover the earlier source.',
           'related_relations':['neighbor'],
+          'recovered_wording':['Later recovered wording.'],
+          'exact_wording':['Must never be promoted as exact.'],
           'strength':5,
           'date':'2017-01-01'
         }
@@ -24,9 +26,10 @@ def main()->int:
       'research_frontier':'Recover the earlier source.',
       'relation_argument':{'why_it_matters':'Reader value.'},
       'discovery_history':{'source_direction':'Event first; comparison later.'},
-      'related_relations':['neighbor']
+      'related_relations':['neighbor'],
+      'recovered_wording':['Later recovered wording.']
     }
-    forbidden={'strength','dossier_level','date','project_anchor','exact_wording','public_wording','recovered_wording','biblical_refs'}
+    forbidden={'strength','dossier_level','date','project_anchor','exact_wording','public_wording','biblical_refs'}
     assert forbidden.isdisjoint(row)
     try:
         build_layer({'items':[{'relation_id':'broken','candidate_enrichment':{}}]})
