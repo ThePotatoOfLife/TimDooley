@@ -1,9 +1,9 @@
 {
   "id": "bible-excavation-batch-01-mining-log",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-14",
   "status": "research findings log",
-  "purpose": "Record new source-archaeology findings for Batch 01 without changing canonical relation strength or pretending later archive wording is contemporaneous evidence.",
+  "purpose": "Record source-archaeology findings for all six Batch 01 relations without changing canonical relation strength or pretending later archive wording is contemporaneous evidence.",
   "findings": [
     {
       "relation_id": "crucify-me-hesitation-trial-neighbor-2017",
@@ -66,6 +66,67 @@
         "It does not establish biblical source dependence or prefiguration."
       ],
       "next_action": "Recover the image or earliest archived post, then transcribe visible features before applying later interpretive vocabulary."
+    },
+    {
+      "relation_id": "earthly-father-judgment-measure-childhood",
+      "finding_type": "recovered-family-wording-layer",
+      "finding": "The conversation-archaeology owner preserves the remembered childhood teaching more specifically than the comparator summary: Chapter 24 is said to preserve repeated earthly-father teachings including 'don't judge others because it returns threefold' and 'don't throw stones.' The same owner explicitly classifies the family ethic as first and the Gospel comparison as later.",
+      "sources": [
+        "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json",
+        "knowledge/traditions/biblical-syncretism-dossiers-wave25.json"
+      ],
+      "source_status": "later family/biographical recollection preserved in a project archaeology owner; no childhood-era primary source recovered",
+      "what_this_improves": [
+        "The project-side wording can be represented more concretely as recovered family wording instead of only a summary.",
+        "Source direction is explicit: remembered family ethic first, Matthew/John comparison later."
+      ],
+      "what_this_does_not_improve": [
+        "It does not establish that the exact phrases were recorded during childhood.",
+        "It does not establish biblical dependence; reciprocal judgment and stone-throwing ethics have broader cultural parallels.",
+        "It does not justify raising relation strength without earlier attestation."
+      ],
+      "next_action": "Search earlier family, diary, memoir or message sources for the teaching and independently date the first Matthew 7 comparison."
+    },
+    {
+      "relation_id": "light-collapse-return-2003",
+      "finding_type": "sequence-and-source-direction-confirmed",
+      "finding": "The conversation-archaeology owner preserves the remembered sequence as an age-sixteen alcohol-collapse episode: blackout, tunnel/structured light, later interpretation as a meeting with God, then waking with a sense of return and unfinished work. That owner explicitly records source direction as '2003 experience first; Acts comparison later.'",
+      "sources": [
+        "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json",
+        "knowledge/timeline/developmental-genealogy.json",
+        "knowledge/traditions/biblical-syncretism-dossiers-wave25.json"
+      ],
+      "source_status": "later autobiographical recollection of a 2003 experience; no near-contemporary diary/message/witness attestation recovered",
+      "what_this_improves": [
+        "The remembered sensory/return sequence and later spiritual interpretation can be separated more clearly.",
+        "Source direction is explicit: experience first, Acts 9 comparison later."
+      ],
+      "what_this_does_not_improve": [
+        "It does not provide a contemporaneous description of the 2003 episode.",
+        "It does not independently corroborate the experience or its spiritual interpretation.",
+        "It does not make the generic collapse/light pattern more specific to Acts 9."
+      ],
+      "next_action": "Recover the earliest attestation of the episode, preserving the remembered sensory sequence separately from later God/Acts interpretation."
+    },
+    {
+      "relation_id": "son-does-what-father-would-do-childhood",
+      "finding_type": "single-later-summary-dependence",
+      "finding": "Repository search confirms the comparator's Chapter-24 summary that a recurring earthly-father teaching was to consider what the father would have done when making decisions, while the broader developmental genealogy independently preserves a paternal teaching pattern centered on responsibility, independence, non-judgment, work, reasons and confronting problems. This pass did not recover an older source preserving the specific decision-rule wording.",
+      "sources": [
+        "knowledge/traditions/biblical-syncretism-dossiers-wave25.json",
+        "knowledge/timeline/developmental-genealogy.json"
+      ],
+      "source_status": "later family/biographical summary; specific earlier wording not independently recovered",
+      "what_this_improves": [
+        "The general paternal-formation context is independently present in the canonical developmental genealogy.",
+        "The archive can distinguish the broad father-teaching pattern from the more specific later decision-rule summary."
+      ],
+      "what_this_does_not_improve": [
+        "It does not recover the specific childhood wording from an earlier source.",
+        "It does not establish that John 5:19 influenced the childhood teaching.",
+        "It does not make ordinary parental imitation evidence of a theological Father/Son identity."
+      ],
+      "next_action": "Recover an earlier source for the specific decision-rule wording and date the first explicit John 5:19 comparison separately."
     }
   ]
 }
