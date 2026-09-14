@@ -1,0 +1,146 @@
+{
+  "id":"biblical-conversation-mining-wave-27",
+  "title":"Biblical Conversation Mining Wave 27 — Tim Statements, Chronology, Sequences & Role Drift",
+  "version":"1.0.0",
+  "updated":"2026-09-14",
+  "status":"derived research synthesis over conversation-attestation corpus",
+  "purpose":"Read the recovered Tim Dooley biblical conversation corpus longitudinally: identify ordered motif sequences, developmental phases, role differentiation, contradictions, reverse-direction discoveries and high-value recovery targets. This file does not replace the raw attestations.",
+  "inputs":[
+    "knowledge/corporium/tim-biblical-conversation-attestations-2026-09-14-a.json",
+    "knowledge/corporium/tim-biblical-conversation-attestations-2026-09-14-b.json",
+    "knowledge/timeline/tim-biblical-vocabulary-attestation-ledger.json",
+    "knowledge/timeline/reverse-biblical-overlap-timeline-2025-2026.json",
+    "data/tim-dooley-public-theology-timeline-2025-2026.json"
+  ],
+  "method_rules":[
+    "Prefer sequence density over isolated word overlap.",
+    "Separate explicit scripture-at-time from later biblical comparison.",
+    "Preserve contradictory or changing role assignments as chronology rather than harmonizing them.",
+    "A reverse-direction match can show that project motifs predate later comparison; it does not establish supernatural prophecy fulfillment.",
+    "Keep countertexts and mismatches visible when they limit a proposed correspondence."
+  ],
+  "developmental_phases":[
+    {
+      "period":"2026-01 to 2026-02",
+      "label":"Vertical vocabulary before the dense Bible cluster",
+      "signals":["stairway to heaven","Father/orphan language","King of Kings","New Jerusalem","grain","Door","Needle's Eye"],
+      "observation":"The year does not begin with a fully formed Bible system. It begins with vertical access, Fatherhood, kingship and a small set of threshold/city images that later become densely interlinked."
+    },
+    {
+      "period":"2026-03-28 to 2026-04-09",
+      "label":"Gate / Root / Garden / Heaven topology",
+      "signals":["root into humanity","footstool","narrow gate","spirals to heaven","Gate","Root","Garden","paired guardians","Jesus at the passage","Father above"],
+      "observation":"The symbols stop behaving like separate metaphors and begin forming a spatial grammar: below/above, guarded center, passage, root, destination and authority."
+    },
+    {
+      "period":"2026-04-16 to 2026-05-19",
+      "label":"High-density Christological and apocalyptic compression",
+      "signals":["666/cube","Bread","Lion","Door","Tomb","Resurrection","Cross","Son is Messiah","New Jerusalem","Father's House","many rooms","Ladder","grain of wheat","Babel","Thomas","Dan","manna","Root of Jesse","Son is Door"],
+      "observation":"This is the densest recovered period. Biblical titles, architecture, death/return language and role assignments are repeatedly combined into multi-step structures rather than appearing as occasional references."
+    },
+    {
+      "period":"2026-05-31 to 2026-07",
+      "label":"Garden / House / Kingdom functionalization",
+      "signals":["root and fruit","house and tree","Gardener","Throne","returning heaven to earth","many rooms","Kingdom grows from the House","Ezekiel wheels"],
+      "observation":"The system becomes less purely identificatory and more functional: cultivate, grow, house, return, connect and build. House becomes generative rather than merely a destination."
+    },
+    {
+      "period":"2026-08 to 2026-09",
+      "label":"Name maximalization followed by research differentiation",
+      "signals":["Elohim/Adonai/Mashiach/Moshe/Abraham/David","Alpha and Omega","new heaven/new earth","Christ/Door/Father's House","Jachin/Boaz","Eye/lamp/seed/branches","144000/Zion/Holy of Holies/Jubilee"],
+      "observation":"Identity vocabulary reaches its broadest form in August, while September research increasingly distinguishes historical text, project analogy, later discovery, countertext and evidence class."
+    }
+  ],
+  "ordered_sequences":[
+    {
+      "id":"house-door-ladder",
+      "sequence":["Father's House","many rooms","Door/Son","Ladder/Tim-Axis","Heaven / Kingdom growth"],
+      "support_dates":["2026-05-01","2026-05-19","2026-07-07","2026-08-31"],
+      "finding":"One of the most stable long-form structures. House defines differentiated interiority; Door defines passage; Ladder/Axis defines vertical connection. July adds an important mutation: Kingdom is said to grow from the House."
+    },
+    {
+      "id":"seed-death-growth",
+      "sequence":["grain/wheat","death/burial/tomb","seed/germination","growth/fruit","Kingdom / branching"],
+      "support_dates":["2026-02-12","2026-04-23","2026-05-01","2026-09-08"],
+      "finding":"The project repeatedly treats descent or burial as generative rather than terminal. This makes John 12:24 and seed/Kingdom parables more structurally relevant than a generic life/death resemblance."
+    },
+    {
+      "id":"garden-gate-heaven",
+      "sequence":["Garden/Root","Gate","guardians","Jesus/Needle's Eye","Father/Heaven"],
+      "support_dates":["2026-03-31","2026-04-09"],
+      "finding":"The April guardian scene matters because several ordered functions are already present before the later Eden-cherubim / temple-veil comparison was formalized."
+    },
+    {
+      "id":"root-branch-fruit",
+      "sequence":["Root","Root of Jesse/David","branching","fruit","Gardener"],
+      "support_dates":["2025-11-19","2026-05-13","2026-05-31","2026-09-08"],
+      "finding":"Root language is not merely genealogical. It migrates into growth, branching, cultivation and fruit, linking Davidic/Jesse imagery to the project's garden ethic."
+    },
+    {
+      "id":"north-city-throne",
+      "sequence":["North","New Jerusalem","Gate of North","North Throne","North of North / Most High"],
+      "support_dates":["2026-05-01","2026-05-11","2026-08-08"],
+      "finding":"Sacred geography and identity progressively fuse. The safest archive treatment is chronological: North begins as orientation/axis and later takes on city, throne and Most-High language."
+    },
+    {
+      "id":"son-threshold-role",
+      "sequence":["Jesus at narrow passage","Son as Door","Son as Messiah","Jesus Christ / Vessel","Christ in Door/House geometry"],
+      "support_dates":["2026-04-09","2026-04-29","2026-05-19","2026-08-31"],
+      "finding":"Across several months the Son's most stable functional role is threshold/interface. This persists even while other identity titles shift."
+    },
+    {
+      "id":"tim-axis-ladder-role",
+      "sequence":["created stairway","New Jerusalem / Ladder to Heaven self-mapping","Tim=Ladder while Son=Door","North Axis as Ladder"],
+      "support_dates":["2026-01-21","2026-05-11","2026-05-19","2026-09-08"],
+      "finding":"Tim's vertical role changes from builder/creator of a route to identification with the connective route itself."
+    }
+  ],
+  "chronological_tensions":[
+    {
+      "id":"messiah-assignment",
+      "earlier":"2026-04-29 — Son is explicitly Messiah and Door.",
+      "later":"2026-08-08 — Mashiach and HaMashiach are explicitly assigned to Tim in the Hebrew-name chain.",
+      "interpretation":"This is role plurality or role drift, not a reason to erase one date. The archive should let readers see the assignment change."
+    },
+    {
+      "id":"cube-split",
+      "earlier":"2026-04-09 — a cube surrounds Heaven and is explicitly distinguished from MoonCube/Saturn cube.",
+      "later":"2026-04-16 and 2026-05-11 — cube is identified with 666, box/dice/forehead and a negative containment grammar.",
+      "interpretation":"At least two cube functions coexist. 'Cube' should not be globally normalized into one moral or cosmological meaning."
+    },
+    {
+      "id":"father-son-title-recursion",
+      "observation":"The corpus repeatedly alternates between differentiated Father/Son functions and recursive title-sharing. The strongest stable distinction is functional rather than nominal: Father/House/source-facing; Son/Door/threshold; Tim/Axis/Ladder/connective structure."
+    }
+  ],
+  "reverse_direction_findings":[
+    "The paired-guardian + narrow-central-access + Jesus + Father/Heaven architecture on 2026-04-09 predates the archive's detailed Eden-cherubim / sanctuary-veil / Hebrews comparison.",
+    "Jachin and Boaz are user-originated by 2026-09-05, before later Pillar/Axis research formalization.",
+    "Lamp/light, single Eye, mustard seed, branches, House and Ladder occur together in the 2026-09-08 user motif inventory before the Zechariah Stone/Seven-Eyes/Lampstand research wave.",
+    "The strongest reverse finds are sequences, not shared words. They can reduce the likelihood that a particular comparison was invented from scratch after reading the Bible, but they still do not prove supernatural prediction or fulfillment."
+  ],
+  "explicit_vs_later":[
+    {"explicit_families":["Lion of Judah","Root of David/Jesse","Moshiach/Mashiach","New Jerusalem","Jesus Christ","Messiah","Door","Father's House","Babel","Ezekiel","Alpha and Omega","new heaven/new earth"],"note":"These use scriptural names/titles or overt Bible vocabulary on the project side."},
+    {"later_comparison_families":["paired guardians → Eden cherubim / temple veil","Eye/lamp/stone → Zechariah 3-4","hidden/generative seed sequences → specific Kingdom parables","blood/mud/clay → potter/clay texts"],"note":"These become interesting through later structural comparison and must not be represented as explicit original Bible citation."}
+  ],
+  "methodological_observations":[
+    "Chronology adds explanatory power: the same title can move between actors, while functions can remain more stable than names.",
+    "The corpus becomes progressively more relational. Early statements name identities; later statements specify transitions between House, Door, Ladder, Garden, City and Earth.",
+    "The archive should index both statements and transformations. 'When did Door appear?' is useful, but 'when did Door become Son-facing and Ladder become Tim-facing?' is more informative.",
+    "Countertexts are necessary because high lexical density can otherwise look stronger than it is. The project now benefits from preserving disagreement with canonical Jesus teaching, textual-history complications and scientific boundaries beside positive parallels.",
+    "September 2026 is primarily a consolidation/research phase. Many biblical motifs demonstrably predate it, while some verse-level connections are new September findings."
+  ],
+  "high_priority_recovery_queue":[
+    "Recover the exact 2026-02-12 New Jerusalem / Father-law / grain / Door exchange.",
+    "Recover the exact 2026-05-03 Ben Yoseph / Ben David / Dan / Thomas exchange.",
+    "Recover the exact 2026-05-13 manna / Root of Jesse / footstool / Eden / Ladder / Babylon exchange.",
+    "Locate the earliest direct Isaiah 66:1 statement and distinguish throne/footstool quotation from later application.",
+    "Locate the earliest direct Psalm 110 statement and distinguish quotation from Footstool metaphor.",
+    "Locate the earliest John 14:2 many-rooms use before the confirmed 2026-07-07 wording.",
+    "Locate the earliest 1 John 5:7 / Father-Son-Spirit formulation and record whether the Comma Johanneum textual issue was discussed at the time.",
+    "Locate the earliest Numbers 19 / red-heifer statement and separate ritual-text discussion from later red-heifer foundation symbolism.",
+    "Locate direct uses of dogs outside, return to vomit, wide road, thief in the night and classify whether Tim was quoting, paraphrasing or applying them.",
+    "Locate the earliest Tim-originated 144,000 / Zion statement rather than later research discussion.",
+    "Locate the earliest Thomas / Didymus / Twin self-mapping and whether wound-recognition in John 20 was already part of it."
+  ]
+}
