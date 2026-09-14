@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -25,7 +27,7 @@ def main() -> int:
         lifecycle = LIFECYCLE.read_text(encoding="utf-8")
         index = json.loads(INDEX.read_text(encoding="utf-8"))
         usa = json.loads(USA.read_text(encoding="utf-8"))
-        for token in ("TIGERweb", "NST-EST2025-ALLDATA.csv", "EXPECTED_US_UNITS = 51", "US-", "federal district"):
+        for token in ("GENZ2025", "cb_2025_us_state_5m.zip", "NST-EST2025-ALLDATA.csv", "EXPECTED_US_UNITS = 51", "parse_state_kml", "federal district"):
             if token not in builder:
                 errors.append(f"subdivision builder missing marker: {token}")
         for token in ("world-subdivisions/index.json", "USA.geo.json", "atlas-subdivision", "subdivision=", "potato-atlas-subdivision-select"):
@@ -52,6 +54,13 @@ def main() -> int:
                 errors.append(f"{props.get('id')}: missing positive population")
             if population.get("period") != 2025 or population.get("unit") != "persons" or not population.get("source"):
                 errors.append(f"{props.get('id')}: incomplete population provenance")
+            if not props.get("area_definition") or "ALAND" not in props.get("area_definition", ""):
+                errors.append(f"{props.get('id')}: area provenance is not explicit")
+        node = shutil.which("node")
+        if node:
+            checked = subprocess.run([node, "--check", str(MODULE)], capture_output=True, text=True)
+            if checked.returncode:
+                errors.append("3d-subdivisions.js syntax failed: " + (checked.stderr.strip() or checked.stdout.strip()))
     if errors:
         print("WORLD MAP SUBDIVISION VALIDATION FAILED")
         for error in errors:
