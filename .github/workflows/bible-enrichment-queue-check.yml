@@ -1,0 +1,26 @@
+name: Bible enrichment queue check
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  queue:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - run: python scripts/test_bible_enrichment_queue.py
+      - run: python scripts/build_bible_enrichment_queue.py
+      - uses: actions/upload-artifact@v4
+        with:
+          name: bible-comparator-enrichment-queue
+          path: knowledge/indexes/bible-comparator-enrichment-queue.json
+          if-no-files-found: error
+          retention-days: 7
