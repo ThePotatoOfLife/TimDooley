@@ -1,0 +1,22 @@
+name: Temporary Country Metrics Probe
+
+on:
+  push:
+    branches: [feat/world-map-advance-2026-09-15]
+    paths:
+      - 'scripts/build_world_country_metrics.py'
+      - 'scripts/test_world_country_metrics.py'
+      - '.github/workflows/temp-country-metrics-probe.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - run: python -m unittest scripts.test_world_country_metrics -v
