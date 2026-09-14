@@ -1,6 +1,6 @@
 {
   "id": "bible-layer-manifest",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "updated": "2026-09-14",
   "status": "canonical corpus registry",
   "purpose": "Define the active Bible comparator corpus once so runtime, static build, audits and future atlas navigation can consume the same deterministic relation, fragment, scene and source layers.",
@@ -57,6 +57,7 @@
     {"id":"relations-operator-context-enrichments-wave1","kind":"relations","path":"knowledge/traditions/biblical-operator-context-enrichments-wave1.json","status":"additive","precedence":180,"owner":"operator passage context enrichment"},
     {"id":"relations-operator-context-enrichments-wave2","kind":"relations","path":"knowledge/traditions/biblical-operator-context-enrichments-wave2.json","status":"additive","precedence":190,"owner":"second operator passage context enrichment"},
     {"id":"relations-operator-context-enrichments-wave3","kind":"relations","path":"knowledge/traditions/biblical-operator-context-enrichments-wave3.json","status":"additive","precedence":200,"owner":"final operator passage context enrichment"},
+    {"id":"relations-quality-enrichments-wave4","kind":"relations","path":"knowledge/traditions/biblical-quality-enrichments-wave4.json","status":"additive","precedence":210,"owner":"significance completion for remaining rich dossiers"},
 
     {"id":"fragments-base","kind":"fragments","path":"knowledge/traditions/biblical-passage-fragments.json","status":"canonical","precedence":0,"owner":"base WEB excerpt owner"},
     {"id":"fragments-wave19","kind":"fragments","path":"knowledge/traditions/biblical-passage-fragments-wave19.json","status":"additive","precedence":10,"owner":"older memory / Great Book"},
