@@ -1,0 +1,59 @@
+name: Temporary World Map Places Probe
+
+on:
+  push:
+    branches: [feat/world-map-places-search-v2]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Syntax and deterministic tests
+        run: |
+          python -m py_compile scripts/geonames_city_acquisition.py scripts/build_world_cities.py scripts/build_world_demography.py
+          python -m unittest scripts.test_world_cities_builder -v
+          node --check world-map/3d-search-core.js
+          node --check world-map/3d-search.js
+          node --check world-map/3d-places.js
+          node scripts/test_world_map_search.mjs
+      - name: Build real bounded city snapshot
+        env:
+          ATLAS_CITIES_OUT: /tmp/world-cities.geo.json
+        run: python scripts/build_world_cities.py
+      - name: Validate real city snapshot and examples
+        env:
+          ATLAS_CITIES_PATH: /tmp/world-cities.geo.json
+        run: |
+          python scripts/validate_world_cities.py
+          python - <<'PY'
+          import json, unicodedata
+          from pathlib import Path
+          data=json.loads(Path('/tmp/world-cities.geo.json').read_text(encoding='utf-8'))
+          def norm(value):
+              return ''.join(c for c in unicodedata.normalize('NFKD', str(value)).lower() if c.isalnum() and not unicodedata.combining(c))
+          def searchable(feature):
+              p=feature['properties']
+              return {norm(p.get('name','')), *(norm(x) for x in p.get('aliases',[]))}
+          la=next(f for f in data['features'] if 'losangeles' in searchable(f))
+          cph=next(f for f in data['features'] if 'copenhagen' in searchable(f))
+          assert la['properties'].get('admin_region') == 'California', la['properties']
+          assert la['properties']['iso3'] == 'USA'
+          assert cph['properties']['iso3'] == 'DNK'
+          assert len(data['features']) <= 5000
+          print('Los Angeles:', la['properties'])
+          print('Copenhagen:', cph['properties'])
+          print('City features:', len(data['features']))
+          PY
+      - name: Validate browser integration contracts
+        run: |
+          python scripts/validate_world_map_places.py
+          python scripts/validate_world_map_search.py
