@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build a compact, sourced population + religion snapshot for the 3D atlas.
+"""Build compact sourced demographic runtime snapshots for the World Map.
 
 Population prefers each canonical country's existing sourced observation and falls
 back to UN World Population Prospects 2024 as surfaced by Our World in Data when
@@ -7,8 +7,9 @@ the local record has no usable value. Religious composition uses the public Our
 World in Data Grapher API, adapting Pew Research Center's 2025 Global Religious
 Composition Estimates.
 
-The output is a presentation/runtime artifact. It does not overwrite canonical
-country records and it keeps observation year/source metadata explicit.
+The build also emits companion country-facts and bounded city/place snapshots next
+to the demography output. These are presentation/runtime artifacts; they do not
+overwrite canonical country records, and observation/source metadata stays explicit.
 """
 from __future__ import annotations
 
@@ -40,7 +41,7 @@ RELIGIONS = {
     "other_religions": "other_religions",
     "unaffiliated": "unaffiliated",
 }
-USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.4"
+USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.5"
 
 
 def fetch_text(url: str, timeout: int = 180) -> str:
@@ -172,10 +173,19 @@ def ensure_population_complete(index: dict, runtime: dict, expected: int = EXPEC
         raise RuntimeError(f"Population runtime is incomplete: {preview}")
 
 
-def build_country_facts_snapshot() -> None:
-    os.environ["ATLAS_COUNTRY_FACTS_OUT"] = str(OUT.with_name("world-country-facts.json"))
+def build_country_facts_snapshot() -> Path:
+    path = OUT.with_name("world-country-facts.json")
+    os.environ["ATLAS_COUNTRY_FACTS_OUT"] = str(path)
     from build_world_country_facts import main as build_country_facts
     build_country_facts()
+    return path
+
+
+def build_city_snapshot() -> tuple[Path, int]:
+    path = OUT.with_name("world-cities.geo.json")
+    from build_world_cities import build as build_cities
+    payload = build_cities(out_path=path)
+    return path, len(payload.get("features", []))
 
 
 def main() -> int:
@@ -242,7 +252,7 @@ def main() -> int:
     pop_coverage = sum(1 for row in rows.values() if row.get("population", {}).get("value") is not None)
     religion_coverage = sum(1 for row in rows.values() if len(row.get("religion", {}).get("composition", {})) == 7)
     payload = {
-        "version": "1.4.0",
+        "version": "1.5.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-demography-runtime",
         "scope": "Presentation/runtime snapshot; canonical country records remain the source owners for their own sourced observations.",
@@ -266,14 +276,17 @@ def main() -> int:
 
     OUT.parent.mkdir(parents=True, exist_ok=True)
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    build_country_facts_snapshot()
+    country_facts_path = build_country_facts_snapshot()
+    city_path, city_features = build_city_snapshot()
     print(json.dumps({
         "output": str(OUT),
         "population_coverage": pop_coverage,
         "religion_coverage": religion_coverage,
         "religion_errors": religion_errors,
         "religion_fallbacks": religion_fallbacks,
-        "country_facts_output": str(OUT.with_name("world-country-facts.json")),
+        "country_facts_output": str(country_facts_path),
+        "city_output": str(city_path),
+        "city_features": city_features,
     }, indent=2), flush=True)
     return 0
 
