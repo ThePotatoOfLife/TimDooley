@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import json
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -35,8 +36,20 @@ def validate_city_snapshot():
     require(non_primary >= 5, f"expected selected non-primary cities in existing snapshot: {non_primary}")
 
 
+def validate_javascript_syntax():
+    for path in (PLACE_SEARCH, SUBDIVISIONS):
+        try:
+            subprocess.run(["node", "--check", str(path)], check=True, capture_output=True, text=True)
+        except FileNotFoundError as exc:
+            raise SystemExit("PLACE SEARCH CONTRACT FAILED: node is required for JavaScript syntax validation") from exc
+        except subprocess.CalledProcessError as exc:
+            detail = (exc.stderr or exc.stdout or "JavaScript syntax error").strip()
+            raise SystemExit(f"PLACE SEARCH CONTRACT FAILED: {path.name}: {detail}") from exc
+
+
 def main():
     require(PLACE_SEARCH.exists(), "world-map/3d-place-search.js must exist")
+    validate_javascript_syntax()
     validate_city_snapshot()
 
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8")
