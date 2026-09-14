@@ -14,9 +14,40 @@ permissions:
 jobs:
   probe:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - uses: actions/checkout@v5
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - run: python -m unittest scripts.test_world_country_metrics -v
+      - name: Deterministic metrics contract
+        run: python -m unittest scripts.test_world_country_metrics -v
+      - name: Build live World Bank metrics snapshot
+        env:
+          ATLAS_COUNTRY_METRICS_OUT: /tmp/world-country-metrics.json
+        run: python scripts/build_world_country_metrics.py
+      - name: Validate live metrics coverage and semantics
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          p=Path('/tmp/world-country-metrics.json')
+          data=json.loads(p.read_text(encoding='utf-8'))
+          assert data['record_type'] == 'world-country-metrics-runtime'
+          assert len(data['countries']) == 195
+          assert data['coverage']['population'] >= 170
+          assert data['coverage']['gdp'] >= 170
+          assert data['coverage']['gdp_per_capita'] >= 170
+          assert data['coverage']['life_expectancy'] >= 150
+          assert data['coverage']['internet_penetration'] >= 140
+          assert all(spec['semantic_role'] == 'dated-observation' and spec['axis_score'] is False for spec in data['metrics'].values())
+          assert 'never zero' in data['missing_rule']
+          for code in ('DNK','USA','CAN'):
+              row=data['countries'][code]
+              assert row['metrics']['gdp']['source_id'] == 'world-bank-wdi'
+              assert row['metrics']['gdp']['year']
+              assert row['metrics']['gdp']['unit'] == 'current USD'
+          print('LIVE COUNTRY METRICS PASSED')
+          print('coverage=', data['coverage'])
+          print('errors=', len(data['acquisition_errors']), 'bytes=', p.stat().st_size)
+          PY
