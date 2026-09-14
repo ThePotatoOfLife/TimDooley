@@ -1,8 +1,10 @@
 import json
+import sys
 import tempfile
 import unittest
 from pathlib import Path
 
+sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_world_cities as cities
 
 
