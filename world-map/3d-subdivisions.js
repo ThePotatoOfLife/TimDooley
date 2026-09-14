@@ -1,27 +1,21 @@
-// Generic first-wave subdivision renderer for the World Map.
-//
-// The module is lazy-loaded by camera scale. It reads the same-origin partition
-// index, then loads country partitions only when they are relevant. The first
-// implemented partition is USA: 50 states + District of Columbia.
-// Deep-link contract: ?subdivision=US-CA (or another supported subdivision id).
+// Generic lazy subdivision renderer for the World Map.
+// Partition ownership lives in data/world-subdivisions/index.json so adding a
+// country does not require hard-coded renderer logic.
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
-const USA_PARTITION_FALLBACK = 'USA.geo.json';
 const SOURCE_PREFIX = 'atlas-subdivisions-';
 const LINE_PREFIX = 'atlas-subdivision-line-';
 const HIT_PREFIX = 'atlas-subdivision-hit-';
 const LABEL_PREFIX = 'atlas-subdivision-label-';
-const USA_BOUNDS = { west:-179.5, east:-65, south:17, north:72.5 };
 
 const loaded = new Map();
 let indexPromise = null;
 let selectedId = new URL(location.href).searchParams.get('subdivision') || null;
-// A URL deep link needs one initial camera fit after its partition loads. Keep
-// that one-shot intent separate from selectedId: selectedId persists after a
-// click, while replaying it on every moveend would create a fitBounds loop.
+// URL selection is one-shot camera intent. Persistent selectedId must never be
+// replayed on moveend or fitBounds can feed itself forever.
 let pendingDeepLinkId = selectedId;
 
 function fmt(value) {
@@ -29,28 +23,29 @@ function fmt(value) {
   return new Intl.NumberFormat('en', { maximumFractionDigits:1 }).format(value);
 }
 function esc(value) {
-  return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[char]));
+  return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
 function installInspector() {
   if (document.getElementById('atlasSubdivisionCard')) return;
   const style = document.createElement('style');
   style.id = 'atlasSubdivisionStyle';
-  style.textContent = `#atlasSubdivisionCard{position:absolute;left:12px;top:54px;z-index:8;width:min(290px,calc(100% - 24px));padding:10px 11px;background:#0b1010ef;border:1px solid #40504d;border-radius:10px;box-shadow:0 8px 28px #0009;backdrop-filter:blur(9px);font-size:11px}#atlasSubdivisionCard[hidden]{display:none!important}#atlasSubdivisionCard .sub-head{display:flex;align-items:start;justify-content:space-between;gap:8px}#atlasSubdivisionCard b{font-size:14px}#atlasSubdivisionCard small{display:block;color:#9aa6a0;margin-top:4px}#atlasSubdivisionCard .sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}#atlasSubdivisionCard .sub-grid div{border:1px solid #2d3939;border-radius:7px;padding:6px}#atlasSubdivisionCard .sub-grid span{display:block;color:#8d9993;font-size:9px;text-transform:uppercase}#atlasSubdivisionCard button{padding:2px 6px;min-height:auto}`;
+  style.textContent = `#atlasSubdivisionCard{position:absolute;left:12px;top:54px;z-index:8;width:min(310px,calc(100% - 24px));padding:10px 11px;background:#0b1010ef;border:1px solid #40504d;border-radius:10px;box-shadow:0 8px 28px #0009;backdrop-filter:blur(9px);font-size:11px}#atlasSubdivisionCard[hidden]{display:none!important}#atlasSubdivisionCard .sub-head{display:flex;align-items:start;justify-content:space-between;gap:8px}#atlasSubdivisionCard b{font-size:14px}#atlasSubdivisionCard small{display:block;color:#9aa6a0;margin-top:4px}#atlasSubdivisionCard .sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}#atlasSubdivisionCard .sub-grid div{border:1px solid #2d3939;border-radius:7px;padding:6px}#atlasSubdivisionCard .sub-grid span{display:block;color:#8d9993;font-size:9px;text-transform:uppercase}#atlasSubdivisionCard button{padding:2px 6px;min-height:auto}`;
   document.head.appendChild(style);
   const card = document.createElement('div');
   card.id = 'atlasSubdivisionCard';
   card.hidden = true;
-  card.innerHTML = '<div class="sub-head"><div><b>Subdivision</b></div><button type="button" data-subdivision-close aria-label="Close subdivision inspector">×</button></div>';
   document.querySelector('.mapwrap')?.appendChild(card);
-  card.querySelector('[data-subdivision-close]')?.addEventListener('click', () => window.__potatoAtlasSubdivisions?.clear?.());
 }
-function renderInspector(feature) {
+function renderInspector(feature, descriptor={}) {
   installInspector();
   const card = document.getElementById('atlasSubdivisionCard');
   if (!card || !feature) return;
   const p = feature.properties || {};
   const population = p.population || {};
-  card.innerHTML = `<div class="sub-head"><div><b>${esc(p.name || p.id)}</b><small>${esc(p.subdivision_type || 'subdivision')} · ${esc(p.code || '')} · United States</small></div><button type="button" data-subdivision-close aria-label="Close subdivision inspector">×</button></div><div class="sub-grid"><div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '')}</small></div><div><span>Area</span><b>${fmt(p.area_km2)} km²</b><small>land + water</small></div></div><small>${esc(population.source || '')}</small>`;
+  const parent = p.parent_name || descriptor.parent_name || p.parent_iso3 || '';
+  const type = p.subdivision_type || 'subdivision';
+  const areaText = p.area_km2 == null ? '—' : `${fmt(p.area_km2)} km²`;
+  card.innerHTML = `<div class="sub-head"><div><b>${esc(p.name || p.id)}</b><small>${esc(type)}${p.code ? ` · ${esc(p.code)}` : ''}${parent ? ` · ${esc(parent)}` : ''}</small></div><button type="button" data-subdivision-close aria-label="Close subdivision inspector">×</button></div><div class="sub-grid"><div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '')}</small></div><div><span>Area</span><b>${areaText}</b><small>${esc(p.area_definition || '')}</small></div></div><small>${esc(population.source || p.geometry_source || descriptor.source || '')}</small>`;
   card.hidden = false;
   card.querySelector('[data-subdivision-close]')?.addEventListener('click', () => window.__potatoAtlasSubdivisions?.clear?.());
 }
@@ -60,14 +55,24 @@ function hideInspector() {
 }
 async function subdivisionIndex() {
   if (!indexPromise) {
-    indexPromise = fetch(INDEX_URL).then(response => {
+    indexPromise = fetch(INDEX_URL, {cache:'force-cache'}).then(response => {
       if (!response.ok) throw new Error(`Subdivision index unavailable (${response.status})`);
       return response.json();
     });
   }
   return indexPromise;
 }
+function descriptorEntries(index) {
+  return Object.entries(index?.partitions || {}).filter(([, descriptor]) => descriptor?.path);
+}
+function partitionForId(index, id) {
+  const value = String(id || '');
+  return descriptorEntries(index)
+    .filter(([, descriptor]) => descriptor?.id_prefix && value.startsWith(String(descriptor.id_prefix)))
+    .sort((a,b) => String(b[1].id_prefix).length - String(a[1].id_prefix).length)[0] || null;
+}
 function viewportOverlaps(bounds) {
+  if (!bounds || ![bounds.west,bounds.east,bounds.south,bounds.north].every(Number.isFinite)) return false;
   const view = map.getBounds();
   const west = view.getWest(), east = view.getEast(), south = view.getSouth(), north = view.getNorth();
   const horizontal = west <= bounds.east && east >= bounds.west;
@@ -110,7 +115,7 @@ function selectSubdivision(partition, feature, options = {}) {
   syncUrl(selectedId);
   const bounds = geometryBounds(feature);
   if (options.fit !== false && bounds) map.fitBounds(bounds, { padding:80, duration:650, maxZoom:7.4 });
-  renderInspector(feature);
+  renderInspector(feature, loaded.get(partition)?.descriptor || {});
   window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-select', { detail:{ partition, id:selectedId, properties:p, feature } }));
   return true;
 }
@@ -149,7 +154,7 @@ function installPartitionLayers(partition, data) {
     map.addLayer({
       id:labelId(partition),type:'symbol',source,minzoom:4.25,
       layout:{
-        'text-field':['step',['zoom'],['get','code'],5.8,['get','name']],
+        'text-field':['step',['zoom'],['coalesce',['get','code'],['get','name']],5.8,['get','name']],
         'text-size':['interpolate',['linear'],['zoom'],4.25,9,6.5,12],
         'text-max-width':8,
         'text-allow-overlap':false,
@@ -164,32 +169,32 @@ async function loadPartition(partition) {
   if (loaded.has(partition)) return loaded.get(partition);
   const index = await subdivisionIndex();
   const descriptor = index?.partitions?.[partition];
-  const fallbackPath = partition === 'USA' ? USA_PARTITION_FALLBACK : null;
-  const partitionPath = descriptor?.path || fallbackPath;
-  if (!partitionPath) throw new Error(`Subdivision partition ${partition} is not available.`);
-  const response = await fetch(`../data/world-subdivisions/${partitionPath}`);
+  if (!descriptor?.path) throw new Error(`Subdivision partition ${partition} is not available.`);
+  const response = await fetch(`../data/world-subdivisions/${descriptor.path}`, {cache:'force-cache'});
   if (!response.ok) throw new Error(`Subdivision partition ${partition} unavailable (${response.status})`);
   const data = await response.json();
   if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error(`Subdivision partition ${partition} is not GeoJSON.`);
-  const state = { descriptor: descriptor || { path:partitionPath }, data };
+  const state = { descriptor, data };
   loaded.set(partition, state);
   installPartitionLayers(partition, data);
   return state;
 }
 async function ensureRelevantPartitions() {
+  const index = await subdivisionIndex();
   const deepLinkId = pendingDeepLinkId;
-  if (deepLinkId?.startsWith('US-') || viewportOverlaps(USA_BOUNDS)) {
+  const deepLinkEntry = deepLinkId ? partitionForId(index, deepLinkId) : null;
+  for (const [partition, descriptor] of descriptorEntries(index)) {
+    const deepLinkTarget = deepLinkEntry?.[0] === partition;
+    if (!deepLinkTarget && !viewportOverlaps(descriptor.viewport_bounds)) continue;
     try {
-      await loadPartition('USA');
-      if (deepLinkId?.startsWith('US-')) {
-        // Consume the one-shot intent before moving the camera so the moveend
-        // generated by fitBounds cannot replay the same selection.
+      await loadPartition(partition);
+      if (deepLinkTarget && pendingDeepLinkId === deepLinkId) {
         pendingDeepLinkId = null;
-        const feature = featureById('USA', deepLinkId);
-        if (feature) selectSubdivision('USA', feature, {fit:true});
+        const feature = featureById(partition, deepLinkId);
+        if (feature) selectSubdivision(partition, feature, {fit:true});
       }
     } catch (error) {
-      console.warn('U.S. subdivision layer unavailable:', error);
+      console.warn(`Subdivision layer unavailable: ${partition}`, error);
     }
   }
 }
@@ -199,10 +204,13 @@ await ensureRelevantPartitions();
 
 window.__potatoAtlasSubdivisions = {
   loadPartition,
-  select(id, options={}) {
-    const partition = String(id || '').startsWith('US-') ? 'USA' : null;
-    if (!partition) return false;
-    return loadPartition(partition).then(() => selectSubdivision(partition, featureById(partition, id), options));
+  async select(id, options={}) {
+    const index = await subdivisionIndex();
+    const entry = partitionForId(index, id);
+    if (!entry) return false;
+    const [partition] = entry;
+    await loadPartition(partition);
+    return selectSubdivision(partition, featureById(partition, id), options);
   },
   clear() { selectedId = null; pendingDeepLinkId = null; syncUrl(null); hideInspector(); },
   get selected() { return selectedId; },
