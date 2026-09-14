@@ -9,6 +9,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SCRIPT = ROOT / "scripts" / "audit_science_quality.py"
 BUILDER = ROOT / "scripts" / "build_science_catalog.py"
+VALIDATOR = ROOT / "scripts" / "validate_science_portal.py"
 
 
 def load_module(name: str, path: Path):
@@ -144,10 +145,11 @@ def test_generated_fallback_cannot_qualify_for_public_library(builder) -> None:
     assert builder.qualifies_for_library(Path("thin-model.json"), data, record) is False
 
 
-def test_science_portal_validator_invokes_semantic_audit() -> None:
-    text = (ROOT / "scripts" / "validate_science_portal.py").read_text(encoding="utf-8")
+def test_science_portal_validator_invokes_semantic_audit_and_annotations() -> None:
+    text = VALIDATOR.read_text(encoding="utf-8")
     assert "audit_science_quality" in text
     assert "generated fallback abstract" in text
+    assert "::error file=" in text
 
 
 def main() -> int:
@@ -165,8 +167,8 @@ def main() -> int:
     for test in tests:
         test(auditor)
         print("PASS", getattr(test, "__name__", "test_generated_fallback_cannot_qualify_for_public_library"))
-    test_science_portal_validator_invokes_semantic_audit()
-    print("PASS test_science_portal_validator_invokes_semantic_audit")
+    test_science_portal_validator_invokes_semantic_audit_and_annotations()
+    print("PASS test_science_portal_validator_invokes_semantic_audit_and_annotations")
     return 0
 
 
