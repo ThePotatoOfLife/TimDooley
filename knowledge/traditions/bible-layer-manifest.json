@@ -1,6 +1,6 @@
 {
   "id": "bible-layer-manifest",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-14",
   "status": "canonical corpus registry",
   "purpose": "Define the active Bible comparator corpus once so runtime, static build, audits and future atlas navigation can consume the same deterministic relation, fragment, scene and source layers.",
@@ -14,6 +14,7 @@
   },
   "layers": [
     {"id":"web-source-manifest","kind":"source","path":"data/sources/bible-world-english-bible.json","status":"canonical","precedence":0,"owner":"Bible primary-source layer"},
+    {"id":"biblical-scenes-core","kind":"scenes","path":"knowledge/traditions/biblical-scenes.json","status":"canonical","precedence":0,"owner":"reusable biblical situation registry"},
 
     {"id":"relations-base-field","kind":"relations","path":"knowledge/traditions/biblical-syncretism-field.json","status":"canonical","precedence":0,"owner":"canonical relation registry"},
     {"id":"relations-wave19","kind":"relations","path":"knowledge/traditions/biblical-syncretism-dossiers-wave19.json","status":"additive","precedence":10,"owner":"older memory / Great Book"},
