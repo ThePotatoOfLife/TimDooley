@@ -3,6 +3,7 @@
 from __future__ import annotations
 import json,re
 from pathlib import Path
+from validate_great_book_reader import validate as validate_great_book_reader
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]
 _TERMS=["FIX"+"ME","T"+"BD","T"+"BA","COMING"+" SOON","UNDER"+" CONSTRUCTION"]
 BAD_TERMS=re.compile(r"\b(?:"+"|".join(map(re.escape,_TERMS))+r")\b",re.I)
@@ -12,6 +13,11 @@ def load(rel):
     try:return json.loads(p.read_text(encoding="utf-8"))
     except Exception as e:ERRORS.append(f"Invalid JSON: {rel}: {e}");return {}
 def main():
+    chapter_dir=ROOT/"great-book"/"chapters"
+    chapter_count=len(list(chapter_dir.glob("*.html"))) if chapter_dir.is_dir() else 0
+    for error in validate_great_book_reader(ROOT,allow_missing_chapters=chapter_count!=168):
+        ERRORS.append(f"Great Book: {error}")
+
     countries=load("data/countries/index.json").get("countries",[])
     if len(countries)!=195:ERRORS.append(f"countries/index.json has {len(countries)} records; expected 195")
     ids=[x.get("id") for x in countries]; iso3=[x.get("iso3") for x in countries]
