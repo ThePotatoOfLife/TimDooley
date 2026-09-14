@@ -1,11 +1,8 @@
 #!/usr/bin/env python3
-"""Build same-origin subdivision snapshots for the World Map.
+"""Build bounded same-origin subdivision snapshots for the World Map.
 
-The first partition is the United States: 50 states plus the District of Columbia.
-Display geometry comes from the U.S. Census Bureau 2025 cartographic-boundary KML
-archive and population comes from Census Vintage 2025 state estimates. Browser code
-consumes only the generated repository/deployment snapshot; Census is a build-time
-acquisition source.
+Partitions are independent build-time acquisitions. The browser reads only the
+same-origin snapshots and the lightweight partition/search index.
 """
 from __future__ import annotations
 
@@ -24,7 +21,9 @@ OUT_DIR = Path(os.environ.get("ATLAS_SUBDIVISIONS_OUT_DIR", ROOT / "data" / "wor
 
 CENSUS_KML_ZIP = "https://www2.census.gov/geo/tiger/GENZ2025/kml/cb_2025_us_state_20m.zip"
 POPULATION_CSV = "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv"
-USER_AGENT = "ThePotatoOfLife-world-atlas-subdivisions/1.2"
+DAWA_REGIONS_GEOJSON = "https://api.dataforsyningen.dk/regioner?format=geojson"
+DAWA_SOURCE_NAME = "Danish Agency for Climate Data (DAWA/Dataforsyningen)"
+USER_AGENT = "ThePotatoOfLife-world-atlas-subdivisions/1.4"
 EXPECTED_US_UNITS = 51
 KML_NS = {"k": "http://www.opengis.net/kml/2.2"}
 
@@ -43,6 +42,10 @@ def fetch_bytes(url: str, timeout: int = 180) -> bytes:
 
 def fetch_text(url: str, timeout: int = 180) -> str:
     return fetch_bytes(url, timeout=timeout).decode("utf-8-sig")
+
+
+def fetch_json(url: str, timeout: int = 180) -> dict:
+    return json.loads(fetch_text(url, timeout=timeout))
 
 
 def coordinate_ring(text: str | None) -> list[list[float]]:
@@ -169,6 +172,7 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
         "code": abbreviation,
         "fips": fips,
         "parent_iso3": "USA",
+        "parent_name": "United States of America",
         "subdivision_type": "federal district" if abbreviation == "DC" else "state",
         "area_km2": total_km2,
         "area_definition": "Census ALAND + AWATER attributes; not calculated from simplified display geometry",
@@ -182,11 +186,70 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
         "geometry_source": "U.S. Census Bureau 2025 Cartographic Boundary Files, 1:20,000,000",
         "geometry_source_url": CENSUS_KML_ZIP,
     }
+    return {"type": "Feature", "id": properties["id"], "properties": properties, "geometry": feature.get("geometry")}
+
+
+def subdivision_search_records(features: list[dict], parent_name: str) -> list[dict]:
+    records = []
+    for feature in features:
+        props = feature.get("properties") or {}
+        if not props.get("id") or not props.get("name"):
+            continue
+        records.append({
+            "id": props["id"],
+            "name": props["name"],
+            "code": props.get("code"),
+            "subdivision_type": props.get("subdivision_type") or "subdivision",
+            "parent_iso3": props.get("parent_iso3"),
+            "parent_name": props.get("parent_name") or parent_name,
+        })
+    return records
+
+
+def normalize_denmark_regions(payload: dict) -> dict:
+    """Normalize DAWA/Dataforsyningen region GeoJSON without inventing missing facts."""
+    if payload.get("type") != "FeatureCollection" or not isinstance(payload.get("features"), list):
+        raise RuntimeError("Danish region source is not a GeoJSON FeatureCollection")
+    features = []
+    for source in payload["features"]:
+        props = source.get("properties") or {}
+        geometry = source.get("geometry") or {}
+        code = str(props.get("kode") or props.get("code") or "").strip()
+        name = str(props.get("navn") or props.get("name") or "").strip()
+        if not code or not name or geometry.get("type") not in {"Polygon", "MultiPolygon"}:
+            continue
+        normalized = {
+            "id": f"DK-{code}",
+            "name": name,
+            "code": code,
+            "nuts2": props.get("nuts2"),
+            "parent_iso3": "DNK",
+            "parent_name": "Denmark",
+            "subdivision_type": "region",
+            "geometry_source": DAWA_SOURCE_NAME,
+            "geometry_source_url": DAWA_REGIONS_GEOJSON,
+        }
+        if props.get("geo_version") is not None:
+            normalized["geometry_version"] = props.get("geo_version")
+        features.append({"type": "Feature", "id": normalized["id"], "properties": normalized, "geometry": geometry})
+    features.sort(key=lambda item: item["properties"]["name"])
+    ids = [feature["properties"]["id"] for feature in features]
+    if not features or len(ids) != len(set(ids)):
+        raise RuntimeError("Danish region coverage is empty or contains duplicate ids")
     return {
-        "type": "Feature",
-        "id": properties["id"],
-        "properties": properties,
-        "geometry": feature.get("geometry"),
+        "type": "FeatureCollection",
+        "name": "world-subdivisions-DNK",
+        "metadata": {
+            "version": "1.4.0",
+            "generated_at": datetime.now(timezone.utc).isoformat(),
+            "parent_iso3": "DNK",
+            "feature_count": len(features),
+            "scope": "Current first-order Danish regions returned by the official DAWA/Dataforsyningen region endpoint.",
+            "geometry_source": DAWA_SOURCE_NAME,
+            "geometry_source_url": DAWA_REGIONS_GEOJSON,
+            "population_status": "unknown-not-zero; Statistics Denmark enrichment pending",
+        },
+        "features": features,
     }
 
 
@@ -209,7 +272,7 @@ def build_usa() -> dict:
         "type": "FeatureCollection",
         "name": "world-subdivisions-USA",
         "metadata": {
-            "version": "1.2.0",
+            "version": "1.4.0",
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "parent_iso3": "USA",
             "feature_count": len(features),
@@ -223,29 +286,62 @@ def build_usa() -> dict:
     }
 
 
+def build_denmark() -> dict:
+    return normalize_denmark_regions(fetch_json(DAWA_REGIONS_GEOJSON))
+
+
+def write_compact(path: Path, payload: dict) -> None:
+    path.write_text(json.dumps(payload, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+
+
 def main() -> int:
     OUT_DIR.mkdir(parents=True, exist_ok=True)
     usa = build_usa()
+    denmark = build_denmark()
     usa_path = OUT_DIR / "USA.geo.json"
-    usa_path.write_text(json.dumps(usa, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
+    denmark_path = OUT_DIR / "DNK.geo.json"
+    write_compact(usa_path, usa)
+    write_compact(denmark_path, denmark)
+
     index = {
-        "version": "1.2.0",
+        "version": "1.4.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-subdivision-partition-index",
         "partitions": {
             "USA": {
                 "path": "USA.geo.json",
-                "feature_count": EXPECTED_US_UNITS,
+                "feature_count": len(usa["features"]),
                 "admin_level": 1,
                 "status": "implemented-first-wave",
                 "source": "U.S. Census Bureau",
                 "geometry_vintage": "2025",
                 "population_vintage": "2025-07-01",
-            }
+                "id_prefix": "US-",
+                "parent_name": "United States of America",
+                "viewport_bounds": {"west": -179.5, "east": -65, "south": 17, "north": 72.5},
+                "search_records": subdivision_search_records(usa["features"], "United States of America"),
+            },
+            "DNK": {
+                "path": "DNK.geo.json",
+                "feature_count": len(denmark["features"]),
+                "admin_level": 1,
+                "status": "implemented-geometry-first",
+                "source": DAWA_SOURCE_NAME,
+                "population_status": "unknown-not-zero",
+                "id_prefix": "DK-",
+                "parent_name": "Denmark",
+                "viewport_bounds": {"west": 7.5, "east": 15.3, "south": 54.4, "north": 57.9},
+                "search_records": subdivision_search_records(denmark["features"], "Denmark"),
+            },
         },
     }
     (OUT_DIR / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"output": str(usa_path), "features": EXPECTED_US_UNITS}, indent=2))
+    print(json.dumps({
+        "output_dir": str(OUT_DIR),
+        "USA_features": len(usa["features"]),
+        "DNK_features": len(denmark["features"]),
+        "search_records": sum(len(p["search_records"]) for p in index["partitions"].values()),
+    }, indent=2))
     return 0
 
 

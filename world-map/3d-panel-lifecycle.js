@@ -66,6 +66,11 @@ window.__potatoAtlasPanelLifecycle = {
 // Elevation and hillshade tiles remain dormant until the user enables Terrain.
 queueMicrotask(() => window.__potatoAtlasLoadModule?.('Physical Terrain', './3d-physical-terrain.js'));
 
+// The search controller is small and attaches to the existing input after core
+// paint. Its heavier country/subdivision/place records remain dormant until the
+// user focuses or types in Search.
+queueMicrotask(() => window.__potatoAtlasLoadModule?.('Unified Search', './3d-search.js'));
+
 // Administrative detail remains code- and data-dormant at world scale. Load the
 // subdivision controller only after regional zoom, or immediately for a deep link.
 function maybeLoadSubdivisions() {
@@ -80,4 +85,21 @@ queueMicrotask(() => {
   const map = window.__potatoAtlasMap;
   maybeLoadSubdivisions();
   map?.on('zoomend', maybeLoadSubdivisions);
+});
+
+// Places follow the same progressive-disclosure rule: remain dormant at global
+// scale, then load at regional scale or immediately when a stable place deep link
+// explicitly requests one.
+function maybeLoadPlaces() {
+  const map = window.__potatoAtlasMap;
+  if (!map) return;
+  const requested = new URL(location.href).searchParams.has('place');
+  if (!requested && map.getZoom() < 3.2) return;
+  map.off('zoomend', maybeLoadPlaces);
+  window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
+}
+queueMicrotask(() => {
+  const map = window.__potatoAtlasMap;
+  maybeLoadPlaces();
+  map?.on('zoomend', maybeLoadPlaces);
 });
