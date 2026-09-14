@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the first generic subdivision integration surface."""
+"""Validate the generic, lazy subdivision integration surface."""
 from __future__ import annotations
 
 import json
@@ -10,35 +10,66 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BUILDER = ROOT / "scripts" / "build_world_subdivisions.py"
 MODULE = ROOT / "world-map" / "3d-subdivisions.js"
+SEARCH = ROOT / "world-map" / "3d-search.js"
+SEARCH_CORE = ROOT / "world-map" / "3d-search-core.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
 INTERACTION_TEST = ROOT / "scripts" / "test_world_map_subdivision_interaction.mjs"
+SEARCH_TEST = ROOT / "scripts" / "test_world_map_search.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, INTERACTION_TEST)
+    required = (BUILDER, MODULE, SEARCH, SEARCH_CORE, LIFECYCLE, INDEX, USA, INTERACTION_TEST, SEARCH_TEST)
     for path in required:
         if not path.exists():
             errors.append(f"missing subdivision integration file: {path.relative_to(ROOT)}")
     if not errors:
         builder = BUILDER.read_text(encoding="utf-8")
         module = MODULE.read_text(encoding="utf-8")
+        search = SEARCH.read_text(encoding="utf-8")
+        search_core = SEARCH_CORE.read_text(encoding="utf-8")
         lifecycle = LIFECYCLE.read_text(encoding="utf-8")
         index = json.loads(INDEX.read_text(encoding="utf-8"))
         usa = json.loads(USA.read_text(encoding="utf-8"))
-        for token in ("GENZ2025", "cb_2025_us_state_20m.zip", "NST-EST2025-ALLDATA.csv", "EXPECTED_US_UNITS = 51", "parse_state_kml", "federal district"):
+
+        for token in (
+            "GENZ2025", "cb_2025_us_state_20m.zip", "NST-EST2025-ALLDATA.csv",
+            "EXPECTED_US_UNITS = 51", "parse_state_kml", "federal district",
+            "DAWA_REGIONS_GEOJSON", "normalize_denmark_regions", "subdivision_search_records",
+        ):
             if token not in builder:
                 errors.append(f"subdivision builder missing marker: {token}")
-        for token in ("world-subdivisions/index.json", "USA.geo.json", "atlas-subdivision", "subdivision=", "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled", "pendingDeepLinkId"):
+
+        for token in (
+            "world-subdivisions/index.json", "atlas-subdivision", "subdivision=",
+            "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled",
+            "pendingDeepLinkId", "partitionForId", "viewport_bounds", "id_prefix",
+        ):
             if token not in module:
                 errors.append(f"subdivision module missing marker: {token}")
+
+        if "startsWith('US-') ? 'USA'" in module or 'USA_BOUNDS' in module:
+            errors.append("subdivision renderer regressed to hard-coded U.S.-only partition selection")
+        if "subdivisionSearchRows" not in search or "subdivisionSearchRows" not in search_core:
+            errors.append("search must read lightweight subdivision manifests from the partition index")
+        if "world-subdivisions/${descriptor.path}" in search:
+            errors.append("search must not download subdivision polygon files during startup")
         if "3d-subdivisions.js" not in lifecycle or "map.getZoom() < 3.4" not in lifecycle:
             errors.append("regional-scale lazy subdivision loading is not registered")
+
         descriptor = index.get("partitions", {}).get("USA", {})
         if descriptor.get("feature_count") != 51:
             errors.append("USA subdivision index must declare 51 first-wave features")
+        if descriptor.get("id_prefix") != "US-" or not descriptor.get("viewport_bounds"):
+            errors.append("USA partition must expose generic id_prefix and viewport_bounds metadata")
+        search_records = descriptor.get("search_records") or []
+        if len(search_records) != 51:
+            errors.append(f"USA subdivision search manifest must contain 51 records; found {len(search_records)}")
+        if any("geometry" in row for row in search_records):
+            errors.append("subdivision search manifest must remain geometry-free")
+
         features = usa.get("features", []) if usa.get("type") == "FeatureCollection" else []
         if len(features) != 51:
             errors.append(f"USA subdivision snapshot must contain 51 features; found {len(features)}")
@@ -57,20 +88,25 @@ def main() -> int:
                 errors.append(f"{props.get('id')}: incomplete population provenance")
             if not props.get("area_definition") or "ALAND" not in props.get("area_definition", ""):
                 errors.append(f"{props.get('id')}: area provenance is not explicit")
+
         node = shutil.which("node")
         if node:
-            checked = subprocess.run([node, "--check", str(MODULE)], capture_output=True, text=True)
-            if checked.returncode:
-                errors.append("3d-subdivisions.js syntax failed: " + (checked.stderr.strip() or checked.stdout.strip()))
+            for js_path in (MODULE, SEARCH, SEARCH_CORE):
+                checked = subprocess.run([node, "--check", str(js_path)], capture_output=True, text=True)
+                if checked.returncode:
+                    errors.append(f"{js_path.name} syntax failed: " + (checked.stderr.strip() or checked.stdout.strip()))
             interaction = subprocess.run([node, str(INTERACTION_TEST)], capture_output=True, text=True)
             if interaction.returncode:
                 errors.append("subdivision interaction regression failed: " + (interaction.stderr.strip() or interaction.stdout.strip()))
+            search_test = subprocess.run([node, str(SEARCH_TEST)], capture_output=True, text=True)
+            if search_test.returncode:
+                errors.append("subdivision search regression failed: " + (search_test.stderr.strip() or search_test.stdout.strip()))
     if errors:
         print("WORLD MAP SUBDIVISION VALIDATION FAILED")
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · state click refit loop guarded")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · generic partitions/search · state refit loop guarded")
     return 0
 
 
