@@ -58,6 +58,21 @@ def test_t3_requires_calibration_or_data(auditor) -> None:
     assert_has(result["hard_failures"], "maturity_t3_plus_without_empirical_basis")
 
 
+def test_future_t3_gate_does_not_raise_current_t2_maturity(auditor) -> None:
+    data = {
+        "id": "honest-toy",
+        "title": "Honest Toy Model",
+        "abstract": "A sufficiently long scientific abstract describing a mathematical toy model whose future calibration requirements are stated explicitly without claiming they have been completed.",
+        "status": "scientific model",
+        "maturity": "T2 general model; T3 possible only after domain-specific calibration and held-out validation",
+        "equations": ["dx/dt=f(x)"],
+        "observables": ["x"],
+        "falsifiers": ["held-out prediction fails after calibration"],
+    }
+    result = auditor.audit_payload(Path("honest-toy.json"), data)
+    assert_lacks(result["hard_failures"], "maturity_t3_plus_without_empirical_basis")
+
+
 def test_t3_with_explicit_fit_result_is_allowed(auditor) -> None:
     data = {
         "id": "fitted",
@@ -116,6 +131,7 @@ def main() -> int:
     tests = [
         test_thin_source_record_is_flagged_without_false_hard_failure,
         test_t3_requires_calibration_or_data,
+        test_future_t3_gate_does_not_raise_current_t2_maturity,
         test_t3_with_explicit_fit_result_is_allowed,
         test_archaeology_is_not_forced_to_be_empirical_model,
         test_model_gaps_are_advisory_before_t3,
