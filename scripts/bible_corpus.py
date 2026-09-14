@@ -22,17 +22,23 @@ def load_manifest(root: Path) -> dict:
 
 def active_layers(manifest: dict, kind: str) -> list[dict]:
     return sorted(
-        (
-            layer for layer in manifest.get('layers', [])
-            if layer.get('kind') == kind and layer.get('status') in ACTIVE_STATUSES
-        ),
+        (layer for layer in manifest.get('layers', []) if layer.get('kind') == kind and layer.get('status') in ACTIVE_STATUSES),
         key=lambda layer: (int(layer.get('precedence', 0)), str(layer.get('id', ''))),
     )
 
 
+def merge_value(old, new):
+    if isinstance(old, dict) and isinstance(new, dict):
+        result = copy.deepcopy(old)
+        for key, value in new.items():
+            result[key] = merge_value(result[key], value) if key in result else copy.deepcopy(value)
+        return result
+    return copy.deepcopy(new)
+
+
 def assemble_relations(root: Path, manifest: dict) -> list[dict]:
-    rows: list[dict] = []
-    by_id: dict[str, dict] = {}
+    rows = []
+    by_id = {}
     for layer_meta in active_layers(manifest, 'relations'):
         data = load_json(root / layer_meta['path'])
         for row in data.get('relations', []) or []:
@@ -50,8 +56,9 @@ def assemble_relations(root: Path, manifest: dict) -> list[dict]:
             if target is None:
                 raise CorpusError(f"missing enrichment target {rid} in {layer_meta['id']}")
             for key, value in enrichment.items():
-                if key != 'relation_id':
-                    target[key] = copy.deepcopy(value)
+                if key == 'relation_id':
+                    continue
+                target[key] = merge_value(target[key], value) if key in target else copy.deepcopy(value)
         for row in data.get('new_relations', []) or []:
             rid = row.get('id')
             if not rid:
@@ -65,8 +72,8 @@ def assemble_relations(root: Path, manifest: dict) -> list[dict]:
 
 
 def assemble_fragments(root: Path, manifest: dict) -> list[dict]:
-    rows: list[dict] = []
-    seen: set[str] = set()
+    rows = []
+    seen = set()
     for layer_meta in active_layers(manifest, 'fragments'):
         data = load_json(root / layer_meta['path'])
         for fragment in data.get('fragments', []) or []:
@@ -81,8 +88,8 @@ def assemble_fragments(root: Path, manifest: dict) -> list[dict]:
 
 
 def assemble_scenes(root: Path, manifest: dict) -> list[dict]:
-    rows: list[dict] = []
-    seen: set[str] = set()
+    rows = []
+    seen = set()
     for layer_meta in active_layers(manifest, 'scenes'):
         data = load_json(root / layer_meta['path'])
         for scene in data.get('scenes', []) or []:

@@ -1,12 +1,12 @@
 {
   "id": "bible-layer-manifest",
-  "version": "1.7.0",
+  "version": "1.8.0",
   "updated": "2026-09-14",
   "status": "canonical corpus registry",
   "purpose": "Define the active Bible comparator corpus once so runtime, static build, audits and future atlas navigation can consume the same deterministic relation, fragment, scene and source layers.",
   "active_statuses": ["canonical", "additive"],
   "merge_contract": {
-    "relations": "Merge canonical relations by id; apply enrichments by relation_id in ascending precedence; add new_relations only when id is not already present.",
+    "relations": "Merge canonical relations by id; recursively merge nested enrichment objects by relation_id in ascending precedence; add new_relations only when id is not already present.",
     "fragments": "Append unique fragment ids in ascending precedence; first active occurrence owns the exact fragment record.",
     "scenes": "Merge reusable biblical scenes by stable id; active duplicates are validation failures until an explicit scene-enrichment contract exists.",
     "source": "Bible source files are immutable primary-text/source metadata and may not be overwritten by comparative layers.",
@@ -50,6 +50,7 @@
     {"id":"relations-quality-enrichments-wave1","kind":"relations","path":"knowledge/traditions/biblical-quality-enrichments-wave1.json","status":"additive","precedence":140,"owner":"quality-report driven contextual enrichment"},
     {"id":"relations-scene-links-wave3","kind":"relations","path":"knowledge/traditions/biblical-scene-links-wave3.json","status":"additive","precedence":150,"owner":"teaching and eschatology whole-scene links"},
     {"id":"relations-quality-enrichments-wave2","kind":"relations","path":"knowledge/traditions/biblical-quality-enrichments-wave2.json","status":"additive","precedence":160,"owner":"second quality-report driven contextual enrichment"},
+    {"id":"relations-quality-enrichments-wave3","kind":"relations","path":"knowledge/traditions/biblical-quality-enrichments-wave3.json","status":"additive","precedence":170,"owner":"reader significance completion for rich dossiers"},
 
     {"id":"fragments-base","kind":"fragments","path":"knowledge/traditions/biblical-passage-fragments.json","status":"canonical","precedence":0,"owner":"base WEB excerpt owner"},
     {"id":"fragments-wave19","kind":"fragments","path":"knowledge/traditions/biblical-passage-fragments-wave19.json","status":"additive","precedence":10,"owner":"older memory / Great Book"},

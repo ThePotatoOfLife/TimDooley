@@ -30,6 +30,19 @@ def run_tests() -> None:
 
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
+        dump(root, 'base.json', {'relations':[{'id':'r1','relation_argument':{'project_sequence':['a'],'biblical_sequence':['b'],'why_dense':'dense'}}]})
+        dump(root, 'late.json', {'enrichments':[{'relation_id':'r1','relation_argument':{'why_it_matters':'matters'}}]})
+        manifest = {'layers':[layer('base','relations','base.json',0,'canonical'), layer('late','relations','late.json',1)]}
+        row = assemble_relations(root, manifest)[0]
+        assert row['relation_argument'] == {
+            'project_sequence':['a'],
+            'biblical_sequence':['b'],
+            'why_dense':'dense',
+            'why_it_matters':'matters',
+        }
+
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
         dump(root, 'base.json', {'relations':[{'id':'r1'}]})
         dump(root, 'research.json', {'new_relations':[{'id':'research-only'}]})
         manifest = {'layers':[layer('base','relations','base.json',0,'canonical'), layer('research','relations','research.json',1,'research')]}
@@ -81,7 +94,7 @@ def run_tests() -> None:
 
 def main() -> int:
     run_tests()
-    print('BIBLE CORPUS TESTS PASSED (6 behaviors)')
+    print('BIBLE CORPUS TESTS PASSED (7 behaviors)')
     return 0
 
 
