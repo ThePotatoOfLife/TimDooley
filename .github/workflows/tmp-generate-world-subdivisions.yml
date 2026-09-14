@@ -1,0 +1,50 @@
+name: Temporary World Subdivision Generator
+
+on:
+  push:
+    branches:
+      - feat/world-map-population-subdivisions-2026-09-14
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  generate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Run focused population and subdivision tests
+        run: |
+          python scripts/test_world_population_contract.py
+          python scripts/test_build_world_demography_population.py
+          python scripts/test_build_world_subdivisions.py
+      - name: Generate official Census subdivision snapshot
+        env:
+          ATLAS_SUBDIVISIONS_OUT_DIR: _generated/world-subdivisions
+        run: python scripts/build_world_subdivisions.py
+      - name: Validate generated snapshot shape
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          root = Path('_generated/world-subdivisions')
+          index = json.loads((root / 'index.json').read_text())
+          usa = json.loads((root / 'USA.geo.json').read_text())
+          assert index['partitions']['USA']['feature_count'] == 51
+          assert usa['type'] == 'FeatureCollection'
+          assert len(usa['features']) == 51
+          assert len({f['properties']['id'] for f in usa['features']}) == 51
+          assert all(f['properties']['population']['value'] > 0 for f in usa['features'])
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: world-subdivisions
+          path: _generated/world-subdivisions
+          if-no-files-found: error
