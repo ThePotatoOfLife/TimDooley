@@ -62,6 +62,14 @@ class WorldCitiesBuilderTests(unittest.TestCase):
         self.assertEqual(feature['properties']['population_source'], 'GeoNames population field')
         self.assertIn('Alpha Metropolis', feature['properties']['aliases'])
 
+    def test_geonames_parser_resolves_admin_region(self):
+        canonical = {'AAA': {'iso2':'AA','iso3':'AAA','name':'Alpha'}}
+        fields = ['123','Alpha Local','Alpha Metro','Alpha Metropolis,Alpha M','21','11','P','PPL','AA','','01','','','','900000','','','Zone/Test','2026-01-01']
+        rows = cities._parse_geonames_text('\t'.join(fields), canonical, {'AA.01':'Alpha Region'})
+        self.assertEqual(len(rows), 1)
+        self.assertEqual(rows[0]['admin_region'], 'Alpha Region')
+        self.assertIn('Alpha Metropolis', rows[0]['aliases'])
+
     def test_invalid_identity_or_population_is_rejected(self):
         bad = [{'qid':'Q9','name':'Ghost','iso3':'ZZZ','coordinates':[0,0],'population':1}]
         with self.assertRaisesRegex(RuntimeError, 'noncanonical ISO3'):
