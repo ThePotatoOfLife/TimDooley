@@ -71,6 +71,23 @@ queueMicrotask(() => window.__potatoAtlasLoadModule?.('Physical Terrain', './3d-
 // user focuses or types in Search.
 queueMicrotask(() => window.__potatoAtlasLoadModule?.('Unified Search', './3d-search.js'));
 
+// Comparable country metrics remain fully dormant until a country is actually
+// selected. The controller then reads one same-origin snapshot; it never calls
+// World Bank directly from the browser.
+let countryMetricsRequested = false;
+function maybeLoadCountryMetrics(event) {
+  if (countryMetricsRequested) return;
+  const current = window.__potatoAtlasSelection?.current || {};
+  const selected = event?.detail?.selected ?? current.selected;
+  const code = String(event?.detail?.activeCode || event?.detail?.code || current.activeCode || current.code || '').toUpperCase();
+  if (!selected || !/^[A-Z]{3}$/.test(code)) return;
+  countryMetricsRequested = true;
+  window.__potatoAtlasLoadModule?.('Country metrics', './3d-country-metrics.js');
+}
+window.addEventListener('potato-atlas-selection-change', maybeLoadCountryMetrics);
+window.addEventListener('potato-atlas-working-selection-change', maybeLoadCountryMetrics);
+queueMicrotask(() => maybeLoadCountryMetrics());
+
 // Administrative detail remains code- and data-dormant at world scale. Load the
 // subdivision controller only after regional zoom, or immediately for a deep link.
 function maybeLoadSubdivisions() {
