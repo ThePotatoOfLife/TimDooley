@@ -7,9 +7,10 @@ the local record has no usable value. Religious composition uses the public Our
 World in Data Grapher API, adapting Pew Research Center's 2025 Global Religious
 Composition Estimates.
 
-The build also emits companion country-facts and bounded city/place snapshots next
-to the demography output. These are presentation/runtime artifacts; they do not
-overwrite canonical country records, and observation/source metadata stays explicit.
+The build also emits companion country-facts, city/place and neutral country-metric
+snapshots next to the demography output. These are presentation/runtime artifacts;
+they do not overwrite canonical country records, and observation/source metadata
+stays explicit.
 """
 from __future__ import annotations
 
@@ -41,7 +42,7 @@ RELIGIONS = {
     "other_religions": "other_religions",
     "unaffiliated": "unaffiliated",
 }
-USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.5"
+USER_AGENT = "ThePotatoOfLife-world-atlas-demography/1.6"
 
 
 def fetch_text(url: str, timeout: int = 180) -> str:
@@ -188,6 +189,13 @@ def build_city_snapshot() -> tuple[Path, int]:
     return path, len(payload.get("features", []))
 
 
+def build_country_metrics_snapshot() -> tuple[Path, dict]:
+    path = OUT.with_name("world-country-metrics.json")
+    from build_world_country_metrics import build as build_country_metrics
+    payload = build_country_metrics(out_path=path)
+    return path, payload.get("coverage", {})
+
+
 def main() -> int:
     index = json.loads(INDEX.read_text(encoding="utf-8"))
     countries = index.get("countries", [])
@@ -252,7 +260,7 @@ def main() -> int:
     pop_coverage = sum(1 for row in rows.values() if row.get("population", {}).get("value") is not None)
     religion_coverage = sum(1 for row in rows.values() if len(row.get("religion", {}).get("composition", {})) == 7)
     payload = {
-        "version": "1.5.0",
+        "version": "1.6.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-country-demography-runtime",
         "scope": "Presentation/runtime snapshot; canonical country records remain the source owners for their own sourced observations.",
@@ -278,6 +286,7 @@ def main() -> int:
     OUT.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     country_facts_path = build_country_facts_snapshot()
     city_path, city_features = build_city_snapshot()
+    country_metrics_path, country_metrics_coverage = build_country_metrics_snapshot()
     print(json.dumps({
         "output": str(OUT),
         "population_coverage": pop_coverage,
@@ -287,6 +296,8 @@ def main() -> int:
         "country_facts_output": str(country_facts_path),
         "city_output": str(city_path),
         "city_features": city_features,
+        "country_metrics_output": str(country_metrics_path),
+        "country_metrics_coverage": country_metrics_coverage,
     }, indent=2), flush=True)
     return 0
 
