@@ -19,6 +19,9 @@ const USA_BOUNDS = { west:-179.5, east:-65, south:17, north:72.5 };
 const loaded = new Map();
 let indexPromise = null;
 let selectedId = new URL(location.href).searchParams.get('subdivision') || null;
+// Deep-link camera intent is one-shot. Persistent selectedId must not be replayed
+// on moveend or fitBounds can recursively trigger another fitBounds forever.
+let pendingDeepLinkId = selectedId;
 
 function fmt(value) {
   if (value == null) return '—';
@@ -102,6 +105,7 @@ function selectSubdivision(partition, feature, options = {}) {
   if (!feature) return false;
   const p = feature.properties || {};
   selectedId = p.id || null;
+  pendingDeepLinkId = null;
   syncUrl(selectedId);
   const bounds = geometryBounds(feature);
   if (options.fit !== false && bounds) map.fitBounds(bounds, { padding:80, duration:650, maxZoom:7.4 });
@@ -172,11 +176,13 @@ async function loadPartition(partition) {
   return state;
 }
 async function ensureRelevantPartitions() {
-  if (selectedId?.startsWith('US-') || viewportOverlaps(USA_BOUNDS)) {
+  const deepLinkId = pendingDeepLinkId;
+  if (deepLinkId?.startsWith('US-') || viewportOverlaps(USA_BOUNDS)) {
     try {
       await loadPartition('USA');
-      if (selectedId?.startsWith('US-')) {
-        const feature = featureById('USA', selectedId);
+      if (deepLinkId?.startsWith('US-') && pendingDeepLinkId === deepLinkId) {
+        pendingDeepLinkId = null;
+        const feature = featureById('USA', deepLinkId);
         if (feature) selectSubdivision('USA', feature, {fit:true});
       }
     } catch (error) {
@@ -195,7 +201,7 @@ window.__potatoAtlasSubdivisions = {
     if (!partition) return false;
     return loadPartition(partition).then(() => selectSubdivision(partition, featureById(partition, id), options));
   },
-  clear() { selectedId = null; syncUrl(null); hideInspector(); },
+  clear() { selectedId = null; pendingDeepLinkId = null; syncUrl(null); hideInspector(); },
   get selected() { return selectedId; },
   loadedPartitions() { return [...loaded.keys()]; },
 };
