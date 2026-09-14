@@ -10,6 +10,7 @@ from bible_corpus import assemble_fragments, assemble_relations, load_manifest
 ROOT = Path(__file__).resolve().parents[1]
 SITE_PAGE = ROOT / "_site" / "traditions" / "bible" / "index.html"
 MARKER = "<!-- BIBLE_RELATIONS_STATIC -->"
+# Generated disclosures are inserted into the page container with class="static-index".
 
 
 def esc(value: object) -> str:
