@@ -19,40 +19,48 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+      - name: Install geometry build dependency
+        run: python -m pip install --disable-pip-version-check shapely==2.1.2
       - name: Deterministic contracts
         run: |
           node scripts/test_world_map_search.mjs
           node scripts/test_world_map_subdivision_interaction.mjs
           python -m unittest scripts.test_world_subdivisions_builder -v
-      - name: Build live subdivision snapshots
+      - name: Build and compact live subdivision snapshots
         env:
           ATLAS_SUBDIVISIONS_OUT_DIR: /tmp/world-subdivisions
-        run: python scripts/build_world_subdivisions.py
+        run: |
+          python scripts/build_world_subdivisions.py
+          python scripts/compact_world_subdivisions.py /tmp/world-subdivisions
       - name: Validate live Denmark and USA partitions
         run: |
           python - <<'PY'
           import json
           from pathlib import Path
+          from shapely.geometry import shape
           root=Path('/tmp/world-subdivisions')
           index=json.loads((root/'index.json').read_text(encoding='utf-8'))
           usa=json.loads((root/'USA.geo.json').read_text(encoding='utf-8'))
-          dnk=json.loads((root/'DNK.geo.json').read_text(encoding='utf-8'))
+          dnk_path=root/'DNK.geo.json'
+          dnk=json.loads(dnk_path.read_text(encoding='utf-8'))
           assert len(usa['features']) == 51
           assert index['partitions']['USA']['feature_count'] == 51
-          assert index['partitions']['DNK']['feature_count'] == len(dnk['features'])
+          assert index['partitions']['DNK']['feature_count'] == len(dnk['features']) == 5
           assert index['partitions']['DNK']['id_prefix'] == 'DK-'
-          assert len(dnk['features']) == 5
+          assert dnk_path.stat().st_size <= 3 * 1024 * 1024
+          assert all(shape(f['geometry']).is_valid for f in dnk['features'])
           midt=next(f for f in dnk['features'] if f['properties'].get('code') == '1082')
           assert midt['properties']['name'] == 'Region Midtjylland'
           assert 'population' not in midt['properties']
+          assert midt['properties']['presentation_geometry']['tolerance_degrees'] == 0.001
           assert len(index['partitions']['DNK']['search_records']) == len(dnk['features'])
           assert all('geometry' not in row for row in index['partitions']['DNK']['search_records'])
-          print('LIVE SUBDIVISION BUILD PASSED:', len(usa['features']), 'USA +', len(dnk['features']), 'DNK')
+          print('LIVE SUBDIVISION RUNTIME PASSED:', len(usa['features']), 'USA +', len(dnk['features']), 'DNK ·', dnk_path.stat().st_size, 'bytes')
           PY
       - name: Upload verified snapshots
         uses: actions/upload-artifact@v4
         with:
-          name: verified-world-subdivisions
+          name: verified-world-subdivisions-compact
           path: /tmp/world-subdivisions
           if-no-files-found: error
           retention-days: 1
