@@ -121,6 +121,8 @@ async function chosenRecord(value) {
 }
 
 if (input) {
+  input.placeholder = 'Find country, state or city…';
+  input.setAttribute('aria-label','Find country, subdivision or city');
   input.addEventListener('focus', async () => { await ensureRecords(); refreshSuggestions(input.value); });
   input.addEventListener('input', async () => { await ensureRecords(); refreshSuggestions(input.value); });
   input.addEventListener('keydown', async event => {
@@ -134,4 +136,4 @@ if (input) {
   }, true);
 }
 
-window.__potatoAtlasSearch = {ready:ensureRecords(),query,activate,refreshSuggestions};
+window.__potatoAtlasSearch = {ready:Promise.resolve(true),load:ensureRecords,query,activate,refreshSuggestions};
