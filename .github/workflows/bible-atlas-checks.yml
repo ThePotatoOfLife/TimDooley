@@ -1,0 +1,70 @@
+name: Bible Atlas checks
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'traditions/bible/**'
+      - 'app/bible-*.js'
+      - 'app/bible-*.css'
+      - 'knowledge/traditions/bible*.json'
+      - 'knowledge/traditions/biblical*.json'
+      - 'data/sources/bible*.json'
+      - 'scripts/bible_corpus.py'
+      - 'scripts/*bible*.py'
+      - '.github/workflows/bible-atlas-checks.yml'
+  pull_request:
+    branches: [main]
+    paths:
+      - 'traditions/bible/**'
+      - 'app/bible-*.js'
+      - 'app/bible-*.css'
+      - 'knowledge/traditions/bible*.json'
+      - 'knowledge/traditions/biblical*.json'
+      - 'data/sources/bible*.json'
+      - 'scripts/bible_corpus.py'
+      - 'scripts/*bible*.py'
+      - '.github/workflows/bible-atlas-checks.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+concurrency:
+  group: bible-atlas-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 12
+    steps:
+      - uses: actions/checkout@v5
+      - uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+      - name: Check Bible JavaScript syntax
+        run: |
+          node --check app/bible-study.js
+          node --check app/bible-corpus-loader.js
+          node --check app/bible-atlas-navigation.js
+          node --check app/bible-atlas-ui.js
+          node --check app/bible-scripture-reader.js
+          node --check app/bible-scene-reader.js
+          node --check app/bible-dossier-loader.js
+          node --check app/bible-witness-loader.js
+      - name: Validate manifest corpus and scenes
+        run: |
+          python scripts/validate_bible_layer_manifest.py
+          python scripts/test_bible_corpus.py
+          python scripts/check_biblical_scenes.py
+          python scripts/build_bible_comparator_quality.py
+          python scripts/validate_bible_reader.py
+      - name: Build comparator and verify parity
+        run: |
+          python scripts/build_site.py
+          python scripts/build_bible_study.py
+          python scripts/check_bible_static_dynamic_parity.py
