@@ -197,6 +197,7 @@ jobs:
         run: |
           python scripts/validate_bible_layer_manifest.py
           python scripts/test_bible_corpus.py
+          python scripts/test_bible_comparator_coverage.py
           python scripts/check_biblical_scenes.py
           python scripts/build_bible_comparator_quality.py
 
