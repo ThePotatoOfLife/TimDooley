@@ -19,6 +19,7 @@ CATALOG_PAGE = OUT / "catalog" / "index.html"
 SCIENCE_PAGE = OUT / "index.html"
 MARKER = "<!-- SCIENCE_CATALOG_STATIC -->"
 GITHUB_BLOB_BASE = "https://github.com/ThePotatoOfLife/TimDooley/blob/main/knowledge/science/"
+GENERIC_FALLBACK_PREFIX = "Canonical science record for "
 
 TEXT_KEYS = ("abstract", "summary", "purpose", "importance", "core_thesis", "description", "scope")
 PROVENANCE_KEYS = ("provenance_classes", "epistemic_classes", "source_class", "origin_class", "provenance", "provenance_rule")
@@ -252,6 +253,8 @@ def qualifies_for_library(path: Path, data: dict, record: dict) -> bool:
         return False
     abstract = str(data.get("abstract") or "").strip()
     summary = record.get("abstract", "").strip()
+    if summary.startswith(GENERIC_FALLBACK_PREFIX):
+        summary = ""
     groups = scientific_content_groups(data)
     administrative = any(token in path.stem.lower() for token in ADMIN_TOKENS)
     title_status = f"{data.get('title','')} {data.get('status','')}".lower()
@@ -317,7 +320,7 @@ def record_from(path: Path) -> tuple[dict, dict]:
         "updated": data.get("updated") or data.get("date") or data.get("first_known_date") or "",
         "status": data.get("status") or "",
         "maturity": data.get("maturity") or "",
-        "abstract": first_text(data) or f"Canonical science record for {title}.",
+        "abstract": first_text(data) or f"{GENERIC_FALLBACK_PREFIX}{title}.",
         "provenance": get_provenance(data),
         "equations": equations,
         "findings": findings,
