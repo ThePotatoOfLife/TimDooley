@@ -1,0 +1,59 @@
+import json
+import tempfile
+import unittest
+from pathlib import Path
+
+import build_world_cities as cities
+
+
+class WorldCitiesBuilderTests(unittest.TestCase):
+    def setUp(self):
+        self.tmp = tempfile.TemporaryDirectory()
+        self.root = Path(self.tmp.name)
+        self.index = self.root / 'index.json'
+        self.capitals = self.root / 'capitals.geo.json'
+        self.out = self.root / 'cities.geo.json'
+        self.index.write_text(json.dumps({'countries': [
+            {'iso3':'AAA','name':'Alpha'}, {'iso3':'BBB','name':'Beta'}
+        ]}), encoding='utf-8')
+        self.capitals.write_text(json.dumps({'type':'FeatureCollection','features':[
+            {'type':'Feature','properties':{'iso3':'AAA','name':'Alpha City','country':'Alpha','primary':True,'scalerank':2,'source':'fixture'},'geometry':{'type':'Point','coordinates':[10,20]}},
+            {'type':'Feature','properties':{'iso3':'BBB','name':'Beta City','country':'Beta','primary':True,'scalerank':3,'source':'fixture'},'geometry':{'type':'Point','coordinates':[30,40]}}
+        ]}), encoding='utf-8')
+
+    def tearDown(self):
+        self.tmp.cleanup()
+
+    def test_acquisition_failure_keeps_capital_baseline(self):
+        payload = cities.build(out_path=self.out,index_path=self.index,capitals_path=self.capitals,acquisition=lambda: (_ for _ in ()).throw(RuntimeError('offline')),expected_country_count=2)
+        self.assertEqual(len(payload['features']), 2)
+        self.assertEqual({f['properties']['iso3'] for f in payload['features']}, {'AAA','BBB'})
+        self.assertIn('offline', payload['acquisition_errors'][0])
+
+    def test_large_city_selection_and_capital_merge_are_bounded(self):
+        rows = [
+            {'qid':'Q1','name':'Alpha City','iso3':'AAA','coordinates':[10.01,20.01],'population':800000,'population_period':'2025-01-01','admin_region':'A1'},
+            {'qid':'Q2','name':'Alpha Metro','iso3':'AAA','coordinates':[11,21],'population':1200000,'population_period':'2024-01-01','admin_region':'A1'},
+            {'qid':'Q3','name':'Alpha Town','iso3':'AAA','coordinates':[12,22],'population':300000,'population_period':'2024-01-01','admin_region':'A2'},
+            {'qid':'Q4','name':'Tiny Place','iso3':'AAA','coordinates':[13,23],'population':100000,'population_period':'2024-01-01','admin_region':'A2'},
+        ]
+        payload = cities.build(out_path=self.out,index_path=self.index,capitals_path=self.capitals,acquisition=lambda: rows,expected_country_count=2)
+        ids = {f['properties']['id'] for f in payload['features']}
+        self.assertIn('wd:Q1', ids)
+        self.assertIn('wd:Q2', ids)
+        self.assertIn('wd:Q3', ids)
+        self.assertNotIn('wd:Q4', ids)
+        self.assertLessEqual(len(payload['features']), cities.MAX_FEATURES)
+        self.assertLessEqual(self.out.stat().st_size, cities.MAX_BYTES)
+
+    def test_invalid_identity_or_population_is_rejected(self):
+        bad = [{'qid':'Q9','name':'Ghost','iso3':'ZZZ','coordinates':[0,0],'population':1}]
+        with self.assertRaisesRegex(RuntimeError, 'noncanonical ISO3'):
+            cities.build(out_path=self.out,index_path=self.index,capitals_path=self.capitals,acquisition=lambda:bad,expected_country_count=2)
+        bad2 = [{'qid':'Q8','name':'Zero','iso3':'AAA','coordinates':[0,0],'population':0}]
+        with self.assertRaisesRegex(RuntimeError, 'invalid population'):
+            cities.build(out_path=self.out,index_path=self.index,capitals_path=self.capitals,acquisition=lambda:bad2,expected_country_count=2)
+
+
+if __name__ == '__main__':
+    unittest.main()
