@@ -7,6 +7,7 @@ from pathlib import Path
 
 from bible_corpus import CorpusError, assemble_fragments, assemble_relations, assemble_scenes
 from build_bible_comparator_quality import research_reasons
+from build_bible_research_queue import SPECIFIC, generic_task
 
 
 def dump(root: Path, rel: str, data: dict) -> None:
@@ -98,10 +99,17 @@ def run_tests() -> None:
     assert research_reasons({'dossier_level':'B'}, ['counterpressure','supported_conclusion']) == ['boundary-gap','unscored-provisional']
     assert research_reasons({'strength':4}, ['why_it_matters']) == ['interpretation-gap']
 
+    plan = generic_task({'strength':2}, {'research_reasons':['low-strength','interpretation-gap']})
+    assert plan['status'] == 'recover-project-evidence'
+    assert plan['priority'] == 'high'
+    assert 'solely because contextual prose becomes more complete' in plan['upgrade_rule']
+    assert SPECIFIC['crucify-me-hesitation-trial-neighbor-2017']['status'] == 'recover-original-message'
+    assert SPECIFIC['son-death-shore-bones-deep-water-2018-2019']['status'] == 'recover-primary-artifact'
+
 
 def main() -> int:
     run_tests()
-    print('BIBLE CORPUS TESTS PASSED (12 behaviors)')
+    print('BIBLE CORPUS TESTS PASSED (17 behaviors)')
     return 0
 
 
