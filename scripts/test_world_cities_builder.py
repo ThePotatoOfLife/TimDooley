@@ -16,7 +16,7 @@ class WorldCitiesBuilderTests(unittest.TestCase):
         self.capitals = self.root / 'capitals.geo.json'
         self.out = self.root / 'cities.geo.json'
         self.index.write_text(json.dumps({'countries': [
-            {'iso3':'AAA','name':'Alpha'}, {'iso3':'BBB','name':'Beta'}
+            {'iso2':'AA','iso3':'AAA','name':'Alpha'}, {'iso2':'BB','iso3':'BBB','name':'Beta'}
         ]}), encoding='utf-8')
         self.capitals.write_text(json.dumps({'type':'FeatureCollection','features':[
             {'type':'Feature','properties':{'iso3':'AAA','name':'Alpha City','country':'Alpha','primary':True,'scalerank':2,'source':'fixture'},'geometry':{'type':'Point','coordinates':[10,20]}},
@@ -47,6 +47,20 @@ class WorldCitiesBuilderTests(unittest.TestCase):
         self.assertNotIn('wd:Q4', ids)
         self.assertLessEqual(len(payload['features']), cities.MAX_FEATURES)
         self.assertLessEqual(self.out.stat().st_size, cities.MAX_BYTES)
+
+    def test_geonames_candidate_preserves_source_and_aliases(self):
+        rows = [{
+            'source_key':'geonames','source_id':'123','name':'Alpha Metro','iso3':'AAA',
+            'coordinates':[11,21],'population':900000,'aliases':['Alpha Metropolis'],
+            'source':'GeoNames cities15000','coordinate_source':'GeoNames latitude/longitude',
+            'population_source':'GeoNames population field'
+        }]
+        payload = cities.build(out_path=self.out,index_path=self.index,capitals_path=self.capitals,acquisition=lambda:rows,expected_country_count=2)
+        feature = next(f for f in payload['features'] if f['properties']['id'] == 'gn:123')
+        self.assertEqual(feature['properties']['source'], 'GeoNames cities15000')
+        self.assertEqual(feature['properties']['coordinate_source'], 'GeoNames latitude/longitude')
+        self.assertEqual(feature['properties']['population_source'], 'GeoNames population field')
+        self.assertIn('Alpha Metropolis', feature['properties']['aliases'])
 
     def test_invalid_identity_or_population_is_rejected(self):
         bad = [{'qid':'Q9','name':'Ghost','iso3':'ZZZ','coordinates':[0,0],'population':1}]
