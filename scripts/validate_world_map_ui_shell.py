@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import re
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -15,6 +17,10 @@ BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 COUNTRY_CARD = ROOT / "world-map" / "3d-country-card.js"
 COUNTRY_SELECTION = ROOT / "world-map" / "3d-country-selection.js"
+PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
+PLACES = ROOT / "world-map" / "3d-places.js"
+SEARCH = ROOT / "world-map" / "3d-search.js"
+SEARCH_CORE = ROOT / "world-map" / "3d-search-core.js"
 PUBLIC_PATCH = ROOT / "scripts" / "patch_home_discovery.py"
 
 
@@ -23,6 +29,13 @@ def read(path: Path, errors: list[str]) -> str:
         errors.append(f"missing required World Map UI file: {path.relative_to(ROOT)}")
         return ""
     return path.read_text(encoding="utf-8", errors="replace")
+
+
+def run_check(command: list[str], label: str, errors: list[str]) -> None:
+    result = subprocess.run(command, cwd=ROOT, capture_output=True, text=True)
+    if result.returncode:
+        detail = (result.stdout + "\n" + result.stderr).strip()
+        errors.append(f"{label} failed" + (f": {detail}" if detail else ""))
 
 
 def main() -> int:
@@ -35,6 +48,10 @@ def main() -> int:
     compositor = read(COMPOSITOR, errors)
     country_card = read(COUNTRY_CARD, errors)
     country_selection = read(COUNTRY_SELECTION, errors)
+    panel_lifecycle = read(PANEL_LIFECYCLE, errors)
+    places = read(PLACES, errors)
+    search = read(SEARCH, errors)
+    search_core = read(SEARCH_CORE, errors)
     public_patch = read(PUBLIC_PATCH, errors)
 
     if html:
@@ -45,7 +62,6 @@ def main() -> int:
         for token in ('id="compare"', 'id="panelToggle"'):
             if token not in header:
                 errors.append(f"World Map header must keep core browse control visible: {token}")
-        # Compatibility IDs remain in source because 3d-app.js owns their handlers.
         for menu_id in ("layersMenu", "traceMenu", "timeMenu", "viewMenu"):
             if f'id="{menu_id}"' not in html:
                 errors.append(f"World Map source must retain compatibility control host {menu_id}")
@@ -106,7 +122,6 @@ def main() -> int:
                 errors.append(f"unified header/current-view contract missing marker: {token}")
         if "host.appendChild(bar)" not in world_bar:
             errors.append("registry toolbar must render inside its stable header host")
-        # mapwrap remains a valid host for the lower-left context card only.
         if "const host = document.querySelector('.mapwrap')" in world_bar:
             errors.append("registry toolbar must no longer use mapwrap as its toolbar host")
         for token in ("#atlasWorldBar #viewMenu #globe", "#atlasWorldBar #traceMenu #relations"):
@@ -145,6 +160,42 @@ def main() -> int:
         ):
             if token not in country_selection:
                 errors.append(f"country selection must support browse-first state and bounded automatic relation filtering: {token}")
+
+    if panel_lifecycle:
+        for token in ("./3d-search.js", "./3d-places.js", "searchParams.has('place')", "map.getZoom() < 3.2"):
+            if token not in panel_lifecycle:
+                errors.append(f"World Map progressive place/search lifecycle missing marker: {token}")
+
+    if places:
+        for token in ("world-cities.geo.json", "world-capitals.geo.json", "minimum_zoom", "__potatoAtlasPlaces", "potato-atlas-place-select", "potato-atlas-places-ready"):
+            if token not in places:
+                errors.append(f"World Map Places integration missing marker: {token}")
+
+    if search:
+        for token in ("3d-search-core.js", "__potatoAtlasSubdivisions", "__potatoAtlasPlaces", "stopImmediatePropagation", "Find country, state or city"):
+            if token not in search:
+                errors.append(f"World Map unified Search integration missing marker: {token}")
+        if "ready:ensureRecords()" in search:
+            errors.append("World Map unified Search must not eagerly load place/subdivision records")
+
+    if search_core:
+        for token in ("buildSearchRecords", "rankSearchRecords", "normalizeSearchText", "country", "subdivision", "city"):
+            if token not in search_core:
+                errors.append(f"World Map search core missing marker: {token}")
+
+    node = shutil.which("node")
+    if node:
+        run_check([node, "--check", str(SEARCH_CORE)], "Search core syntax", errors)
+        run_check([node, "--check", str(SEARCH)], "Search controller syntax", errors)
+        run_check([node, "--check", str(PLACES)], "Places syntax", errors)
+        run_check([node, str(ROOT / "scripts" / "test_world_map_search.mjs")], "Search ranking contract", errors)
+    else:
+        errors.append("node is required to validate World Map Places/Search JavaScript")
+
+    run_check([sys.executable, "-m", "unittest", "scripts.test_world_cities_builder", "-v"], "City runtime builder tests", errors)
+    run_check([sys.executable, str(ROOT / "scripts" / "validate_world_cities.py")], "City runtime validation", errors)
+    run_check([sys.executable, str(ROOT / "scripts" / "validate_world_map_places.py")], "Places integration validation", errors)
+    run_check([sys.executable, str(ROOT / "scripts" / "validate_world_map_search.py")], "Search integration validation", errors)
 
     if errors:
         print("World Map UI shell validation FAILED:")
