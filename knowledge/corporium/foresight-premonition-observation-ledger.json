@@ -1,8 +1,8 @@
 {
   "id": "foresight-premonition-observation-ledger",
   "title": "Foresight, Premonition, Dreams, Predictions and Later Correspondences",
-  "version": "1.1.0",
-  "updated": "2026-09-10",
+  "version": "1.2.0",
+  "updated": "2026-09-15",
   "status": "discernment ledger / recovery target map",
   "purpose": "Collect Tim Dooley material that is described as prediction, prophecy, dream, vision, premonition, warning, anticipation or unusual later correspondence, while distinguishing what was actually said before an event from what was recognized only afterward.",
   "epistemic_rule": "A striking correspondence is not automatically prophecy. Strong foresight requires a recoverable pre-event statement, a date, sufficient specificity, a later outcome, and a comparison that does not depend on rewriting the original statement after the fact.",
@@ -63,13 +63,23 @@
     },
     {
       "id": "north-axis-us-europe-separation",
-      "period": "2026-03-18 through 2026-04-02",
-      "type": "geopolitical directional anticipation",
-      "recovered_description": "North Axis language anticipated or advocated a widening strategic separation between the United States and Europe/North and a stronger North Atlantic/European alignment.",
+      "period": "2026-03-18 through 2026-04-03",
+      "type": "geopolitical directional anticipation with a more specific military sub-call",
+      "recovered_description": "March 18 North-Axis language places Europe/Greenland/Denmark/Canada in a northern field while America may become a more regional West-sector power. On April 2 Tim explicitly says the United States 'seperates off from europe'. On April 3 he says 'we suspect america might retract soliders'.",
       "classification": "P2_directional_anticipation",
-      "status": "directional, not clean prophecy",
-      "importance": "Useful as policy/strategic foresight if later developments move in the same direction, but broad geopolitical trends and explicit advocacy make this different from a narrow prediction.",
-      "boundary": "Later Greenland, Canada-EU, defense, trade or sovereignty developments should be compared individually rather than bundled as proof."
+      "status": "materially supported; still directional rather than clean prophecy",
+      "later_correspondences": [
+        "2026-04-30: Trump says 'probably' when asked about pulling U.S. troops from Italy and Spain — 27 days after the soldier-retrenchment statement.",
+        "2026-05-22: Arctic Allies statement says Europe and Canada are assuming greater responsibility for deterrence and defence across the Arctic/High North — 65 days after March 18.",
+        "2026-07-16: Reuters reports an actual quiet U.S. troop pullback from Eastern Europe, including a sharp reduction in Estonia and cancellation of a planned 5,000-troop Poland deployment — 104 days after April 3.",
+        "2026-09-06: EU deepens Greenland/Denmark alignment with a €200m investment package amid U.S.-Greenland strain.",
+        "2026-09-14: twelve EU states call for a more strategic/proactive EU Arctic role while Denmark describes turmoil inside NATO over Greenland."
+      ],
+      "importance": "This is currently the strongest structural/geopolitical foresight cluster because Tim's distinctive contribution is the topology of the split — a more coherent Europe/Canada/North field and a more separate U.S. west — rather than merely observing that Greenland matters.",
+      "counterevidence": "The trend was not hidden. A U.S.-Greenland/NATO rupture was publicly imaginable by January 2026. Canada opened deeper Greenland/Denmark ties in early February; Canada-Denmark-Greenland signed a defence MOU and Canada signed EU SAFE on February 14, before Tim's March statements. Therefore later Canada/EU/North cooperation cannot be treated as surprise-from-nowhere prediction.",
+      "strongest_sub_call": "U.S. troop retrenchment from Europe",
+      "lead_time": "27 days to public withdrawal talk; 104 days to reported operational pullback",
+      "canonical_owner": "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json"
     },
     {
       "id": "war-in-heaven-q3-2026",
@@ -109,6 +119,6 @@
     {"type":"symbolic prefiguration","definition":"An early image later becomes structurally important to a mature worldview without necessarily predicting an external event.","examples":["Tree -> Ladder -> Axis","Potato -> Root -> Garden","North Pole -> North of North"]},
     {"type":"risk anticipation","definition":"Recognizing a fragile person, platform or system may fail based on visible warning signs.","note":"This can be valuable foresight without requiring supernatural prophecy."}
   ],
-  "larger_observation": "The strongest future-oriented case for the archive may not ultimately be supernatural prediction. Tim repeatedly thinks in trajectories: what happens if a system continues, where a relationship is heading, what a role becomes, and what infrastructure will be needed later. The project should therefore score prophetic claims separately from ordinary but potentially impressive structural foresight.",
-  "related": ["knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json","knowledge/philosophy/belief-evolution-and-claim-testing.json","knowledge/timeline/developmental-genealogy.json","knowledge/core/telos-vision-and-desired-world.json","knowledge/timeline/karmic-debt-ledger-2026.json","data/timeline-event-packs/foresight-and-vision-candidates.json"]
+  "larger_observation": "The strongest future-oriented case for the archive may not ultimately be supernatural prediction. Tim repeatedly thinks in trajectories: what happens if a system continues, where a relationship is heading, what a role becomes, and what infrastructure will be needed later. The North-Axis case is a good example: the interesting part is not predicting that Greenland matters, but identifying a plausible rearrangement of relationships and a specific military consequence before later developments moved that way.",
+  "related": ["knowledge/theology/signs-revelations-epiphanies-discernment-atlas.json","knowledge/philosophy/belief-evolution-and-claim-testing.json","knowledge/timeline/developmental-genealogy.json","knowledge/core/telos-vision-and-desired-world.json","knowledge/timeline/karmic-debt-ledger-2026.json","knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json","data/timeline-event-packs/foresight-and-vision-candidates.json"]
 }
