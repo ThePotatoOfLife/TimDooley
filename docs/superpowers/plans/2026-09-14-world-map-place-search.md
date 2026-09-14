@@ -4,7 +4,7 @@
 
 **Goal:** Extend the existing World Map search into one place resolver for countries, supported subdivisions, and a compact later city layer while preserving fast initial load and current analytical semantics.
 
-**Architecture:** Keep country selection in `3d-app.js`, subdivision ownership in `3d-subdivisions.js`, and cross-class routing in a focused `3d-place-search.js`. The optional city snapshot will be same-origin and lazy-loaded; the existing quality workflow will validate the feature.
+**Architecture:** Keep country selection owned by `3d-country-selection.js`, subdivision ownership in `3d-subdivisions.js`, and cross-class routing in a focused `3d-place-search.js`. The new controller reuses the existing header input rather than editing the giant core app. Optional city data stays same-origin and lazy-loaded. The established `validate_world_map_source.py` gate owns validation integration, so no new workflow is added.
 
 **Tech Stack:** Vanilla JavaScript, MapLibre GL JS 6.9.0, Python source validators, GitHub Actions.
 
@@ -13,7 +13,8 @@
 ## Global Constraints
 - Reuse the existing search input; do not add a second toolbar/search box.
 - Do not add a new GitHub Actions workflow.
-- Country search must remain functional if optional subdivision/city modules fail.
+- Avoid changing `3d-app.js` unless a real integration blocker requires it.
+- Country search/selection must remain functional if optional subdivision/city modules fail.
 - Subdivision data remains owned by `3d-subdivisions.js`.
 - Geographic context stays outside the analytical layer registry.
 - No live browser geocoder.
@@ -25,43 +26,40 @@
 **Files:**
 - Create: `scripts/validate_world_map_place_search.py`
 - Create: `world-map/3d-place-search.js`
-- Modify: `world-map/index.html`
-- Modify: `world-map/3d-app.js`
+- Modify: `scripts/validate_world_map_source.py`
 - Modify: `world-map/3d-subdivisions.js`
 - Modify: `world-map/3d-panel-lifecycle.js`
-- Modify: `.github/workflows/quality-checks.yml`
 
 **Interfaces:**
-- Consumes: `window.__potatoAtlasSubdivisions.select(id, options)` and existing country search/selection in `3d-app.js`.
+- Consumes: `window.__potatoAtlasSelection.activate(code, options)` and `window.__potatoAtlasSubdivisions.select(id, options)`.
 - Produces: `window.__potatoAtlasPlaceSearch.submit(query)` and `window.__potatoAtlasSubdivisions.search(query)`.
 
-- [ ] **Step 1: Write failing source validator**
+- [x] **Step 1: Write failing source validator**
 
-Create assertions for `Find place…`, `3d-place-search.js`, the `__potatoAtlasPlaceSearch` delegation hook, subdivision `search(query)`, lazy-load registration, JS syntax coverage, and a place-search validation step in the existing workflow.
+Defined the focused place-search contract before the implementation existed.
 
-- [ ] **Step 2: Run validator and confirm failure**
+- [x] **Step 2: Run validator and confirm failure**
 
-Run: `python scripts/validate_world_map_place_search.py`
-Expected: FAIL because the place-search module/delegation do not exist yet.
+Observed expected RED result: `PLACE SEARCH CONTRACT FAILED: world-map/3d-place-search.js must exist`.
 
-- [ ] **Step 3: Implement minimal country + subdivision resolver**
+- [x] **Step 3: Implement minimal country + subdivision resolver**
 
-Add subdivision lookup that normalizes exact ID/code/name first, add the focused place-search module, delegate Enter from the existing input, and preserve country fallback.
+Added normalized subdivision lookup, focused place-search orchestration, runtime `Find place…` copy, capture-phase Enter routing, country selection through the canonical selection API, and subdivision loading only when needed.
 
-- [ ] **Step 4: Run focused validation**
+- [ ] **Step 4: Run focused and repository validation**
 
-Run:
+Run through the PR quality gate and inspect any failure. Required source checks:
 ```bash
 python scripts/validate_world_map_place_search.py
+python scripts/validate_world_map_source.py
 node --check world-map/3d-place-search.js
 node --check world-map/3d-subdivisions.js
-node --check world-map/3d-app.js
 ```
 Expected: PASS.
 
-- [ ] **Step 5: Commit**
+- [ ] **Step 5: Commit/review first independently usable slice**
 
-Commit the first independently usable slice.
+Review the PR diff for ownership/performance regressions before beginning city data.
 
 ---
 
@@ -73,7 +71,7 @@ Commit the first independently usable slice.
 - Create: `data/world-places.geo.json`
 - Modify: `world-map/3d-place-search.js`
 - Modify: `scripts/validate_world_map_place_search.py`
-- Modify: `.github/workflows/quality-checks.yml`
+- Modify: `scripts/validate_world_map_source.py` only if another focused contract hook is required.
 
 **Interfaces:**
 - Consumes: Natural Earth v5.1.2 populated-place fields (`ne_id`, `name`, `adm0_a3`, `adm1name`, `adm0cap`, `scalerank`, `min_zoom`, `pop_max`, point geometry).
