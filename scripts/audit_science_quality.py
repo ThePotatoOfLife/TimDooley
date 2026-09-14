@@ -15,7 +15,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 SCIENCE = ROOT / "knowledge" / "science"
 GENERIC_FALLBACK_PREFIX = "Canonical science record for "
-T3_RE = re.compile(r"\bT([3-5])\b", re.I)
+MATURITY_LEVEL_RE = re.compile(r"\bT([0-5])\b", re.I)
 
 SUMMARY_KEYS = ("abstract", "summary", "purpose", "importance", "core_thesis", "description", "scope")
 OBSERVABLE_TOKENS = ("observable", "measurement", "readout", "output", "prediction")
@@ -109,6 +109,17 @@ def has_empirical_basis(data: dict) -> bool:
     return False
 
 
+def current_maturity_level(maturity: str) -> int | None:
+    """Return the record's currently claimed T-level.
+
+    Maturity strings in this corpus commonly state the current level first and
+    then describe a future promotion gate, e.g. ``T2; T3 possible after data``.
+    The later target must not be interpreted as a present maturity claim.
+    """
+    match = MATURITY_LEVEL_RE.search(str(maturity or ""))
+    return int(match.group(1)) if match else None
+
+
 def public_candidate(data: dict, role: str) -> bool:
     if role == "administrative":
         return False
@@ -137,6 +148,7 @@ def audit_payload(path: Path, data: dict) -> dict:
     summary = source_summary(data)
     candidate = public_candidate(data, role)
     maturity = str(data.get("maturity", ""))
+    maturity_level = current_maturity_level(maturity)
 
     if candidate and not summary:
         advisory.append(issue(
@@ -144,7 +156,7 @@ def audit_payload(path: Path, data: dict) -> dict:
             "Record has enough scientific structure to look publishable but no substantive source abstract/summary; it must not rely on generated fallback copy if projected publicly.",
         ))
 
-    if role == "model" and T3_RE.search(maturity) and not has_empirical_basis(data):
+    if role == "model" and maturity_level is not None and maturity_level >= 3 and not has_empirical_basis(data):
         hard.append(issue(
             "maturity_t3_plus_without_empirical_basis",
             "T3+ maturity requires actual calibration, parameter constraints, data or reported evaluation results, not only a future calibration path.",
@@ -171,6 +183,7 @@ def audit_payload(path: Path, data: dict) -> dict:
         "title": data.get("title") or data.get("name") or path.stem,
         "role": role,
         "maturity": maturity,
+        "current_maturity_level": maturity_level,
         "public_candidate": candidate,
         "hard_failures": hard,
         "advisories": advisory,
