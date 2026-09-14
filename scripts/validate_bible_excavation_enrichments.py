@@ -8,7 +8,7 @@ from build_excavation_enrichments import build_layer
 ROOT=Path(__file__).resolve().parents[1]
 BATCH=ROOT/'knowledge'/'indexes'/'bible-excavation-batch-01.json'
 LAYER=ROOT/'knowledge'/'traditions'/'biblical-excavation-enrichments-batch01.json'
-FORBIDDEN={'strength','dossier_level','date','project_anchor','exact_wording','public_wording','recovered_wording','biblical_refs'}
+FORBIDDEN={'strength','dossier_level','date','project_anchor','exact_wording','public_wording','biblical_refs'}
 
 
 def main()->int:
@@ -24,6 +24,9 @@ def main()->int:
             errors.append(f"{row.get('relation_id')}: forbidden promoted fields {sorted(leaked)}")
         if not row.get('research_frontier'):
             errors.append(f"{row.get('relation_id')}: missing research_frontier")
+        recovered=row.get('recovered_wording')
+        if recovered is not None and (not isinstance(recovered,list) or not recovered or any(not isinstance(value,str) or not value.strip() for value in recovered)):
+            errors.append(f"{row.get('relation_id')}: recovered_wording must be a non-empty list of non-empty strings")
     if errors:
         print('BIBLE EXCAVATION ENRICHMENTS VALIDATION FAILED')
         for error in errors:
