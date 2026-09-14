@@ -33,6 +33,8 @@ jobs:
           python scripts/build_bible_comparator_excavation.py
           python scripts/validate_bible_comparator_excavation.py
           python scripts/validate_bible_excavation_batch.py
+          python scripts/test_build_excavation_enrichments.py
+          python scripts/build_excavation_enrichments.py
 
       - name: Validate existing Bible reader contract
         run: python scripts/validate_bible_reader.py
