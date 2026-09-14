@@ -59,6 +59,14 @@ def require_markers(text: str, markers: tuple[str, ...], owner: str, errors: lis
             errors.append(f"{owner}: missing {marker!r}")
 
 
+def github_error(path: str, title: str, message: str) -> None:
+    """Emit a GitHub Actions annotation while remaining harmless outside CI."""
+    safe_path = str(path).replace("\r", " ").replace("\n", " ")
+    safe_title = str(title).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    safe_message = str(message).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    print(f"::error file={safe_path},title={safe_title}::{safe_message}")
+
+
 def main() -> int:
     errors: list[str] = []
 
@@ -66,11 +74,19 @@ def main() -> int:
     if semantic.get("hard_failure_count"):
         errors.append(f"semantic Science audit has {semantic['hard_failure_count']} hard failure(s)")
         for failure in semantic.get("parse_failures", []):
-            errors.append(f"semantic audit {failure.get('code')}: {failure.get('message')}")
+            message = str(failure.get("message") or "Science JSON parse failure")
+            errors.append(f"semantic audit {failure.get('code')}: {message}")
+            github_error("knowledge/science", f"Science quality: {failure.get('code')}", message)
         for record in semantic.get("hard_failures", []):
             for failure in record.get("hard_failures", []):
+                message = str(failure.get("message") or "Science semantic quality failure")
                 errors.append(
-                    f"semantic audit {record.get('file')}: {failure.get('code')} - {failure.get('message')}"
+                    f"semantic audit {record.get('file')}: {failure.get('code')} - {message}"
+                )
+                github_error(
+                    f"knowledge/science/{record.get('file')}",
+                    f"Science quality: {failure.get('code')}",
+                    message,
                 )
 
     for path in (SOURCE_PAGE, LIBRARY_CSS, BUILDER):
