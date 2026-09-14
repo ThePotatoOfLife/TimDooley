@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Extend the existing World Map search into one place resolver for countries, supported subdivisions, and a compact later city layer while preserving fast initial load and current analytical semantics.
+**Goal:** Extend the existing World Map search into one place resolver for countries, supported subdivisions, and the populated places already present in the map while preserving fast initial load and current analytical semantics.
 
-**Architecture:** Keep country selection owned by `3d-country-selection.js`, subdivision ownership in `3d-subdivisions.js`, and cross-class routing in a focused `3d-place-search.js`. The new controller reuses the existing header input rather than editing the giant core app. Optional city data stays same-origin and lazy-loaded. The established `validate_world_map_source.py` gate owns validation integration, so no new workflow is added.
+**Architecture:** Keep country selection owned by `3d-country-selection.js`, subdivision ownership in `3d-subdivisions.js`, and existing populated-place display ownership in `3d-hover.js`. Cross-class routing lives in focused `3d-place-search.js`, which reuses the existing header input rather than editing the giant core app. The established `validate_world_map_source.py` gate owns validation integration, so no new workflow is added.
 
 **Tech Stack:** Vanilla JavaScript, MapLibre GL JS 6.9.0, Python source validators, GitHub Actions.
 
@@ -14,8 +14,9 @@
 - Reuse the existing search input; do not add a second toolbar/search box.
 - Do not add a new GitHub Actions workflow.
 - Avoid changing `3d-app.js` unless a real integration blocker requires it.
-- Country search/selection must remain functional if optional subdivision/city modules fail.
+- Country search/selection must remain functional if optional subdivision/place data fails.
 - Subdivision data remains owned by `3d-subdivisions.js`.
+- Reuse `data/world-capitals.geo.json`; do not create a duplicate city dataset or renderer for this slice.
 - Geographic context stays outside the analytical layer registry.
 - No live browser geocoder.
 
@@ -46,58 +47,53 @@ Observed expected RED result: `PLACE SEARCH CONTRACT FAILED: world-map/3d-place-
 
 Added normalized subdivision lookup, focused place-search orchestration, runtime `Find place…` copy, capture-phase Enter routing, country selection through the canonical selection API, and subdivision loading only when needed.
 
-- [ ] **Step 4: Run focused and repository validation**
+- [x] **Step 4: Run focused and repository validation**
 
-Run through the PR quality gate and inspect any failure. Required source checks:
-```bash
-python scripts/validate_world_map_place_search.py
-python scripts/validate_world_map_source.py
-node --check world-map/3d-place-search.js
-node --check world-map/3d-subdivisions.js
-```
-Expected: PASS.
+The first implementation head (`0782b374…`) completed the full Repository quality checks successfully in run #963.
 
-- [ ] **Step 5: Commit/review first independently usable slice**
+- [x] **Step 5: Review first independently usable slice**
 
-Review the PR diff for ownership/performance regressions before beginning city data.
+Self-review reduced the integration surface: no `3d-app.js`, `index.html`, or workflow edit was required. Validation remains folded into the canonical World Map source gate.
 
 ---
 
-### Task 2: Compact pinned city layer
+### Task 2: Search the existing populated-place layer
 
 **Files:**
-- Create: `scripts/build_world_places.py`
-- Create: `scripts/test_build_world_places.py`
-- Create: `data/world-places.geo.json`
 - Modify: `world-map/3d-place-search.js`
 - Modify: `scripts/validate_world_map_place_search.py`
-- Modify: `scripts/validate_world_map_source.py` only if another focused contract hook is required.
+- Modify: this design/plan documentation only to record the discovered ownership boundary.
 
 **Interfaces:**
-- Consumes: Natural Earth v5.1.2 populated-place fields (`ne_id`, `name`, `adm0_a3`, `adm1name`, `adm0cap`, `scalerank`, `min_zoom`, `pop_max`, point geometry).
-- Produces: compact same-origin GeoJSON with stable `NE-<ne_id>` IDs and contextual place metadata.
+- Consumes: existing `data/world-capitals.geo.json` features (`iso3`, `name`, `country`, `scalerank`, `primary`, source, Point geometry) already loaded/rendered by `3d-hover.js`.
+- Produces: city search results, stable `CITY-<ISO3>-<slug>` navigation IDs, `?place=` deep links, and one transient selection marker/label for the chosen place.
 
-- [ ] **Step 1: Write failing builder tests**
+- [x] **Step 1: Scan before adding city data**
 
-Test that admin-0 capitals are retained, ordinary `scalerank <= 4` cities are retained, lower-priority small places and scientific stations are excluded, IDs are stable, and source metadata is preserved.
+Found that `3d-hover.js` and `data/world-capitals.geo.json` already provide 150+ pinned Natural Earth populated places, including primary capitals and selected non-primary cities. Cancelled the proposed duplicate city builder/dataset.
 
-- [ ] **Step 2: Run builder tests and confirm failure**
+- [x] **Step 2: Write the failing city contract**
 
-Run: `python scripts/test_build_world_places.py`
-Expected: FAIL because builder functions do not exist yet.
+Extended the focused validator to require the existing snapshot, at least 150 valid features, broad primary-capital coverage, selected non-primary places, exact city search/focus behavior, `?place=` ownership, and a visible searched-place marker.
 
-- [ ] **Step 3: Implement builder and checked-in snapshot**
+- [x] **Step 3: Confirm RED in the canonical gate**
 
-Normalize only display/navigation fields; keep Natural Earth population explicitly labeled as an estimate and do not couple it to canonical country demography.
+Repository quality run #966 reached `Validate canonical World Map runtime` after all earlier checks passed, then failed on the deliberately unmet city contract.
 
-- [ ] **Step 4: Extend renderer/search**
+- [x] **Step 4: Implement existing-data city search**
 
-Lazy-load `data/world-places.geo.json`, render scale-ranked city dots/labels, route search selections to a city inspector, and persist `?place=NE-…`.
+Reused `world-capitals.geo.json` without changing the existing renderer. Added lazy city lookup, datalist enrichment, exact/prefix matching, parent-country activation, coordinate focus, `?place=CITY-…` restoration, and a transient selection marker/label that also makes indexed non-primary cities visible when selected.
 
-- [ ] **Step 5: Run focused and repository checks**
+- [x] **Step 5: Harden selection-state ownership**
 
-Run builder tests, place validator, JS syntax, existing subdivision validator, and repository quality checks. Confirm the initial map path does not require the city snapshot.
+Added cleanup so a later direct country or subdivision selection removes a stale city marker/deep link, while city focus can retain its parent-country context. The focused validator now runs `node --check` on both new/modified JavaScript modules.
 
-- [ ] **Step 6: Commit**
+- [ ] **Step 6: Require a fresh green quality run on the exact final head**
 
-Commit the city layer only after the first search slice remains green.
+Do not merge or claim completion until the current branch head passes the full repository quality workflow.
+
+---
+
+### Task 3: Future populated-place expansion only if justified
+
+Do not automatically introduce a broader city dataset. First evaluate real search misses and whether the existing pinned Natural Earth 1:110m places are materially insufficient. If expansion is justified later, extend the canonical place source deliberately rather than layering a parallel geocoder or duplicate renderer on top of it.
