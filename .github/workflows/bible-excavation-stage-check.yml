@@ -16,6 +16,7 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
+      - run: python scripts/validate_bible_excavation_mining_log.py
       - run: python scripts/test_build_excavation_enrichments.py
       - run: python scripts/build_excavation_enrichments.py
       - run: python scripts/validate_bible_excavation_enrichments.py
