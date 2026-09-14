@@ -3,6 +3,7 @@
 const ACTIVE=new Set(['canonical','additive']);
 const clone=value=>JSON.parse(JSON.stringify(value));
 const isObject=value=>value&&typeof value==='object'&&!Array.isArray(value);
+const nativeFetch=window.fetch.bind(window);
 function mergeValue(oldValue,newValue){
   if(isObject(oldValue)&&isObject(newValue)){
     const result=clone(oldValue);
@@ -25,12 +26,36 @@ function mergeRelations(manifest,getData){
 function mergeFragments(manifest,getData){const rows=[],seen=new Set();for(const meta of layers(manifest,'fragments')){for(const fragment of (getData(meta.path)||{}).fragments||[]){if(!fragment.id)throw new Error(`fragment without id in ${meta.id}`);if(seen.has(fragment.id))continue;seen.add(fragment.id);rows.push(clone(fragment))}}return rows}
 function mergeScenes(manifest,getData){const rows=[],seen=new Set();for(const meta of layers(manifest,'scenes')){for(const scene of (getData(meta.path)||{}).scenes||[]){if(!scene.id)throw new Error(`scene without id in ${meta.id}`);if(seen.has(scene.id))throw new Error(`duplicate scene id ${scene.id}`);seen.add(scene.id);rows.push(clone(scene))}}return rows}
 async function load(base='../../'){
-  const json=async path=>{const r=await fetch(base+path);if(!r.ok)throw new Error(`${path}: ${r.status}`);return r.json()};
+  const json=async path=>{const r=await nativeFetch(base+path);if(!r.ok)throw new Error(`${path}: ${r.status}`);return r.json()};
   const manifest=await json('knowledge/traditions/bible-layer-manifest.json');
   const active=manifest.layers.filter(x=>ACTIVE.has(x.status)&&['relations','fragments','scenes'].includes(x.kind));
   const pairs=await Promise.all(active.map(async meta=>[meta.path,await json(meta.path)]));
   const data=new Map(pairs),getData=path=>data.get(path);
   return {manifest,relations:mergeRelations(manifest,getData),fragments:mergeFragments(manifest,getData),scenes:mergeScenes(manifest,getData)};
 }
-window.BibleCorpus={layers,mergeValue,mergeRelations,mergeFragments,mergeScenes,load};
+function readerRelation(row){
+  const item=clone(row);
+  if(item.project_concept&&!item.project_anchor)item.project_anchor=item.project_concept;
+  if(item.relation_type&&!item.relation_class)item.relation_class=item.relation_type;
+  if(item.reader_reading){item.relation_arguments=[item.reader_reading,...(Array.isArray(item.relation_arguments)?item.relation_arguments:[])];}
+  if(item.counterpoint&&!item.counter_text)item.counter_text=item.counterpoint;
+  if(item.source_refs&&!item.owners)item.owners=item.source_refs;
+  if(item.evidence_class==='P0-public-occurrence'&&!item.discovery_mode)item.discovery_mode='public-occurrence';
+  return item;
+}
+window.BibleCorpus={layers,mergeValue,mergeRelations,mergeFragments,mergeScenes,load,readerRelation};
+
+const corpusPromise=load('../../').catch(error=>{console.warn('Bible manifest corpus bridge unavailable',error);return null});
+window.fetch=async function bibleCorpusBridge(input,init){
+  const url=typeof input==='string'?input:String(input&&input.url||input||'');
+  if(url.endsWith('knowledge/traditions/biblical-syncretism-field.json')){
+    const corpus=await corpusPromise;
+    if(corpus)return new Response(JSON.stringify({id:'bible-reader-manifest-corpus',relations:corpus.relations.map(readerRelation)}),{status:200,headers:{'Content-Type':'application/json'}});
+  }
+  if(url.endsWith('knowledge/traditions/biblical-passage-fragments.json')){
+    const corpus=await corpusPromise;
+    if(corpus)return new Response(JSON.stringify({id:'bible-reader-manifest-fragments',fragments:corpus.fragments}),{status:200,headers:{'Content-Type':'application/json'}});
+  }
+  return nativeFetch(input,init);
+};
 })();
