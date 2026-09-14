@@ -4,6 +4,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 import build_world_country_metrics as metrics
+import build_world_demography as demography
 
 
 class WorldCountryMetricsTests(unittest.TestCase):
@@ -25,6 +26,9 @@ class WorldCountryMetricsTests(unittest.TestCase):
         self.assertEqual(spec['indicator'], 'EN.GHG.CO2.PC.CE.AR5')
         self.assertEqual(spec['unit'], 't CO2e/capita')
         self.assertNotEqual(spec['indicator'], 'EN.ATM.CO2E.PC')
+
+    def test_demography_build_orchestrates_country_metrics_snapshot(self):
+        self.assertTrue(hasattr(demography, 'build_country_metrics_snapshot'))
 
     def test_normalizes_latest_and_previous_without_inventing_zero(self):
         rows = [
