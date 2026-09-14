@@ -5,7 +5,7 @@ function versionedModule(path) {
   url.searchParams.set('v', ATLAS_VERSION);
   return url.href;
 }
-const {buildSearchRecords, rankSearchRecords} = await import(versionedModule('./3d-search-core.js'));
+const {buildSearchRecords, rankSearchRecords, subdivisionSearchRows} = await import(versionedModule('./3d-search-core.js'));
 
 const input = document.getElementById('search');
 const datalist = document.getElementById('country-list');
@@ -47,23 +47,9 @@ async function loadPlacesForSearch() {
 
 async function loadSubdivisionsForSearch() {
   try {
-    const index = await fetchJson(SUBDIVISION_INDEX);
-    const out = [];
-    for (const [parentIso3, descriptor] of Object.entries(index?.partitions || {})) {
-      if (!descriptor?.path) continue;
-      try {
-        const partition = await fetchJson(`../data/world-subdivisions/${descriptor.path}`);
-        for (const feature of partition?.features || []) {
-          const p = feature?.properties || {};
-          if (!p.id || !p.name) continue;
-          out.push({...p,parent_iso3:p.parent_iso3 || parentIso3});
-        }
-      } catch (error) {
-        console.warn(`Subdivision search partition unavailable: ${parentIso3}`, error);
-      }
-    }
-    return out;
-  } catch {
+    return subdivisionSearchRows(await fetchJson(SUBDIVISION_INDEX));
+  } catch (error) {
+    console.warn('Subdivision search manifest unavailable.', error);
     return [];
   }
 }
@@ -128,7 +114,7 @@ async function chosenRecord(value) {
 }
 
 if (input) {
-  input.placeholder = 'Find country, state or city…';
+  input.placeholder = 'Find country, state, region or city…';
   input.setAttribute('aria-label','Find country, subdivision or city');
   input.addEventListener('focus', async () => { await ensureRecords(); refreshSuggestions(input.value); });
   input.addEventListener('input', async () => { await ensureRecords(); refreshSuggestions(input.value); });
