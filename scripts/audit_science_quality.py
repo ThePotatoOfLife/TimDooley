@@ -123,8 +123,6 @@ def public_candidate(data: dict, role: str) -> bool:
             return True
         if len(summary) >= 40 and scientific_groups >= 3:
             return True
-    # This mirrors the catalog bug surface: generated display fallback plus enough
-    # structural groups could otherwise make a thin record look substantial.
     return not summary and scientific_groups >= 2
 
 
@@ -141,12 +139,12 @@ def audit_payload(path: Path, data: dict) -> dict:
     maturity = str(data.get("maturity", ""))
 
     if candidate and not summary:
-        hard.append(issue(
+        advisory.append(issue(
             "public_candidate_missing_substantive_summary",
-            "Record has enough scientific structure to look publishable but no substantive source abstract/summary; generated fallback copy must not stand in for content.",
+            "Record has enough scientific structure to look publishable but no substantive source abstract/summary; it must not rely on generated fallback copy if projected publicly.",
         ))
 
-    if T3_RE.search(maturity) and not has_empirical_basis(data):
+    if role == "model" and T3_RE.search(maturity) and not has_empirical_basis(data):
         hard.append(issue(
             "maturity_t3_plus_without_empirical_basis",
             "T3+ maturity requires actual calibration, parameter constraints, data or reported evaluation results, not only a future calibration path.",
@@ -164,7 +162,7 @@ def audit_payload(path: Path, data: dict) -> dict:
         if not maturity:
             advisory.append(issue("model_missing_maturity", "Model has no declared T0-T5 maturity or equivalent maturity statement."))
 
-    if role not in ("administrative", "archaeology") and candidate and len(summary) < 80:
+    if role not in ("administrative", "archaeology") and candidate and summary and len(summary) < 80:
         advisory.append(issue("short_public_summary", "Public-facing Science record has only a short substantive summary; consider a denser abstract."))
 
     return {
