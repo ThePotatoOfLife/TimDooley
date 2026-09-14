@@ -49,6 +49,16 @@ class WorldCitiesBuilderTests(unittest.TestCase):
         self.assertLessEqual(len(payload['features']), cities.MAX_FEATURES)
         self.assertLessEqual(self.out.stat().st_size, cities.MAX_BYTES)
 
+    def test_nearby_district_does_not_replace_capital_without_identity_match(self):
+        rows = [
+            {'source_key':'geonames','source_id':'district','name':'Alpha Inner District','iso3':'AAA','coordinates':[10.01,20.01],'population':26000,'aliases':['Inner Alpha'],'source':'fixture','coordinate_source':'fixture','population_source':'fixture'},
+            {'source_key':'geonames','source_id':'capital','name':'Alpha City','iso3':'AAA','coordinates':[10.03,20.03],'population':700000,'aliases':['Alpha Capital'],'source':'fixture','coordinate_source':'fixture','population_source':'fixture'},
+        ]
+        payload = cities.build(out_path=self.out,index_path=self.index,capitals_path=self.capitals,acquisition=lambda:rows,expected_country_count=2)
+        alpha_capital = next(f for f in payload['features'] if f['properties'].get('capital') and f['properties'].get('iso3') == 'AAA')
+        self.assertEqual(alpha_capital['properties']['id'], 'gn:capital')
+        self.assertEqual(alpha_capital['properties']['name'], 'Alpha City')
+
     def test_geonames_candidate_preserves_source_and_aliases(self):
         rows = [{
             'source_key':'geonames','source_id':'123','name':'Alpha Metro','iso3':'AAA',
