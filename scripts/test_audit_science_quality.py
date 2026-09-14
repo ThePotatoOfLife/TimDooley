@@ -28,7 +28,7 @@ def assert_lacks(items, code: str) -> None:
     assert not any(item.get("code") == code for item in items), (code, items)
 
 
-def test_generic_fallback_cannot_make_record_publishable(auditor) -> None:
+def test_thin_source_record_is_flagged_without_false_hard_failure(auditor) -> None:
     data = {
         "id": "thin-model",
         "title": "Thin Model",
@@ -39,7 +39,8 @@ def test_generic_fallback_cannot_make_record_publishable(auditor) -> None:
     }
     result = auditor.audit_payload(Path("thin-model.json"), data)
     assert result["public_candidate"] is True
-    assert_has(result["hard_failures"], "public_candidate_missing_substantive_summary")
+    assert_lacks(result["hard_failures"], "public_candidate_missing_substantive_summary")
+    assert_has(result["advisories"], "public_candidate_missing_substantive_summary")
 
 
 def test_t3_requires_calibration_or_data(auditor) -> None:
@@ -107,12 +108,13 @@ def test_model_gaps_are_advisory_before_t3(auditor) -> None:
 def test_science_portal_validator_invokes_semantic_audit() -> None:
     text = (ROOT / "scripts" / "validate_science_portal.py").read_text(encoding="utf-8")
     assert "audit_science_quality" in text
+    assert "generated fallback abstract" in text
 
 
 def main() -> int:
     auditor = load_auditor()
     tests = [
-        test_generic_fallback_cannot_make_record_publishable,
+        test_thin_source_record_is_flagged_without_false_hard_failure,
         test_t3_requires_calibration_or_data,
         test_t3_with_explicit_fit_result_is_allowed,
         test_archaeology_is_not_forced_to_be_empirical_model,
