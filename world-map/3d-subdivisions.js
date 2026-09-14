@@ -29,7 +29,7 @@ function installInspector() {
   if (document.getElementById('atlasSubdivisionCard')) return;
   const style = document.createElement('style');
   style.id = 'atlasSubdivisionStyle';
-  style.textContent = `#atlasSubdivisionCard{position:absolute;left:12px;top:54px;z-index:8;width:min(310px,calc(100% - 24px));padding:10px 11px;background:#0b1010ef;border:1px solid #40504d;border-radius:10px;box-shadow:0 8px 28px #0009;backdrop-filter:blur(9px);font-size:11px}#atlasSubdivisionCard[hidden]{display:none!important}#atlasSubdivisionCard .sub-head{display:flex;align-items:start;justify-content:space-between;gap:8px}#atlasSubdivisionCard b{font-size:14px}#atlasSubdivisionCard small{display:block;color:#9aa6a0;margin-top:4px}#atlasSubdivisionCard .sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}#atlasSubdivisionCard .sub-grid div{border:1px solid #2d3939;border-radius:7px;padding:6px}#atlasSubdivisionCard .sub-grid span{display:block;color:#8d9993;font-size:9px;text-transform:uppercase}#atlasSubdivisionCard button{padding:2px 6px;min-height:auto}`;
+  style.textContent = `#atlasSubdivisionCard{position:absolute;left:12px;top:54px;z-index:8;width:min(310px,calc(100% - 24px));padding:10px 11px;background:#0b1010ef;border:1px solid #40504d;border-radius:10px;box-shadow:0 8px 28px #0009;backdrop-filter:blur(9px);font-size:11px}#atlasSubdivisionCard[hidden]{display:none!important}#atlasSubdivisionCard .sub-head{display:flex;align-items:start;justify-content:space-between;gap:8px}#atlasSubdivisionCard b{font-size:14px}#atlasSubdivisionCard small{display:block;color:#9aa6a0;margin-top:4px}#atlasSubdivisionCard .sub-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}#atlasSubdivisionCard .sub-grid div{border:1px solid #2d3939;border-radius:7px;padding:6px}#atlasSubdivisionCard .sub-grid span{display:block;color:#8d9993;font-size:9px;text-transform:uppercase}#atlasSubdivisionCard button{padding:2px 6px;min-height:auto}#atlasSubdivisionCard .sub-infra{margin-top:8px;padding-top:7px;border-top:1px solid #2d3939}#atlasSubdivisionCard .sub-infra-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:5px}#atlasSubdivisionCard .sub-infra-tags button{border:1px solid #40504d;border-radius:999px;padding:3px 6px;background:#101817;color:#c9d5d0;font-size:10px}`;
   document.head.appendChild(style);
   const card = document.createElement('div');
   card.id = 'atlasSubdivisionCard';
@@ -45,9 +45,27 @@ function renderInspector(feature, descriptor={}) {
   const parent = p.parent_name || descriptor.parent_name || p.parent_iso3 || '';
   const type = p.subdivision_type || 'subdivision';
   const areaText = p.area_km2 == null ? '—' : `${fmt(p.area_km2)} km²`;
-  card.innerHTML = `<div class="sub-head"><div><b>${esc(p.name || p.id)}</b><small>${esc(type)}${p.code ? ` · ${esc(p.code)}` : ''}${parent ? ` · ${esc(parent)}` : ''}</small></div><button type="button" data-subdivision-close aria-label="Close subdivision inspector">×</button></div><div class="sub-grid"><div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '')}</small></div><div><span>Area</span><b>${areaText}</b><small>${esc(p.area_definition || '')}</small></div></div><small>${esc(population.source || p.geometry_source || descriptor.source || '')}</small>`;
+  card.innerHTML = `<div class="sub-head"><div><b>${esc(p.name || p.id)}</b><small>${esc(type)}${p.code ? ` · ${esc(p.code)}` : ''}${parent ? ` · ${esc(parent)}` : ''}</small></div><button type="button" data-subdivision-close aria-label="Close subdivision inspector">×</button></div><div class="sub-grid"><div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '')}</small></div><div><span>Area</span><b>${areaText}</b><small>${esc(p.area_definition || '')}</small></div></div><small>${esc(population.source || p.geometry_source || descriptor.source || '')}</small><div class="sub-infra" data-subdivision-infrastructure hidden></div>`;
   card.hidden = false;
   card.querySelector('[data-subdivision-close]')?.addEventListener('click', () => window.__potatoAtlasSubdivisions?.clear?.());
+}
+function renderInfrastructureContext(detail) {
+  const card = document.getElementById('atlasSubdivisionCard');
+  const section = card?.querySelector?.('[data-subdivision-infrastructure]');
+  if (!section) return;
+  const context = detail?.context || {};
+  if (context.kind !== 'subdivision' || context.id !== selectedId) {
+    section.hidden = true;
+    section.innerHTML = '';
+    return;
+  }
+  const assets = Array.isArray(detail?.assets) ? detail.assets : [];
+  const tags = assets.slice(0, 6).map(asset => `<button type="button" data-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('');
+  const overflow = assets.length > 6 ? `<small>+${assets.length - 6} more mapped assets</small>` : '';
+  section.innerHTML = assets.length
+    ? `<small>Mapped physical infrastructure inside this boundary</small><div class="sub-infra-tags">${tags}</div>${overflow}<small>Spatial context only · containment does not imply dependency.</small>`
+    : `<small>No point assets from the current infrastructure registry are mapped inside this boundary.</small><small>Missing map coverage is unknown, not zero.</small>`;
+  section.hidden = false;
 }
 function hideInspector() {
   const card = document.getElementById('atlasSubdivisionCard');
@@ -212,6 +230,7 @@ async function ensureRelevantPartitions() {
 }
 
 map.on('moveend', ensureRelevantPartitions);
+window.addEventListener('potato-atlas-infrastructure-change', event => renderInfrastructureContext(event?.detail || {}));
 await ensureRelevantPartitions();
 
 window.__potatoAtlasSubdivisions = {
