@@ -1,26 +1,15 @@
 #!/usr/bin/env python3
-"""Compile a compact no-JS Bible comparison index into the deployed page."""
+"""Compile a compact no-JS Bible comparison index from the canonical manifest corpus."""
 from __future__ import annotations
 
-import copy
 import html
-import json
 from pathlib import Path
+
+from bible_corpus import assemble_fragments, assemble_relations, load_manifest
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_PAGE = ROOT / "_site" / "traditions" / "bible" / "index.html"
-FIELD_PATH = ROOT / "knowledge" / "traditions" / "biblical-syncretism-field.json"
-DOSSIERS_PATH = ROOT / "knowledge" / "traditions" / "biblical-syncretism-dossiers.json"
-FRAGMENTS_PATH = ROOT / "knowledge" / "traditions" / "biblical-passage-fragments.json"
-DOSSIER_FRAGMENTS_PATH = ROOT / "knowledge" / "traditions" / "biblical-passage-fragments-dossiers.json"
-WAVE22_FRAGMENTS_PATH = ROOT / "knowledge" / "traditions" / "biblical-passage-fragments-wave22.json"
-WAVE22_GLOB = "biblical-operator-comparisons-wave22-*.json"
 MARKER = "<!-- BIBLE_RELATIONS_STATIC -->"
-# The generated disclosures are inserted into the page container with class="static-index".
-
-
-def load(path: Path) -> dict:
-    return json.loads(path.read_text(encoding="utf-8"))
 
 
 def esc(value: object) -> str:
@@ -35,46 +24,14 @@ def arr(value: object) -> list:
     return [value]
 
 
-def merge_layer(rows: list[dict], layer: dict) -> list[dict]:
-    by_id = {row.get("id"): row for row in rows if row.get("id")}
-    for enrichment in layer.get("enrichments", []):
-        target = by_id.get(enrichment.get("relation_id"))
-        if not target:
-            continue
-        for key, value in enrichment.items():
-            if key != "relation_id":
-                target[key] = copy.deepcopy(value)
-    for row in layer.get("new_relations", []):
-        if row.get("id") in by_id:
-            continue
-        item = copy.deepcopy(row)
-        rows.append(item)
-        by_id[item.get("id")] = item
-    return rows
-
-
-def merged_rows(field: dict, *layers: dict) -> list[dict]:
-    rows = [copy.deepcopy(row) for row in field.get("relations", [])]
-    for layer in layers:
-        rows = merge_layer(rows, layer)
-    return rows
-
-
-def fragment_index(*datasets: dict) -> dict[str, list[dict]]:
+def fragment_index(fragments: list[dict]) -> dict[str, list[dict]]:
     out: dict[str, list[dict]] = {}
-    seen_ids: set[str] = set()
-    for data in datasets:
-        for fragment in data.get("fragments", []):
-            fid = str(fragment.get("id") or "")
-            if fid and fid in seen_ids:
-                continue
-            if fid:
-                seen_ids.add(fid)
-            keys = set(arr(fragment.get("matches")))
-            if fragment.get("reference"):
-                keys.add(fragment["reference"])
-            for key in keys:
-                out.setdefault(str(key), []).append(fragment)
+    for fragment in fragments:
+        keys = set(arr(fragment.get("matches")))
+        if fragment.get("reference"):
+            keys.add(fragment["reference"])
+        for key in keys:
+            out.setdefault(str(key), []).append(fragment)
     return out
 
 
@@ -128,22 +85,17 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
 def main() -> int:
     if not SITE_PAGE.exists():
         raise SystemExit("Run scripts/build_site.py before build_bible_study.py")
-    field = load(FIELD_PATH)
-    dossiers = load(DOSSIERS_PATH)
-    wave22_layers = [load(path) for path in sorted((ROOT / "knowledge" / "traditions").glob(WAVE22_GLOB))]
-    fragment_data = load(FRAGMENTS_PATH)
-    dossier_fragment_data = load(DOSSIER_FRAGMENTS_PATH)
-    wave22_fragment_data = load(WAVE22_FRAGMENTS_PATH) if WAVE22_FRAGMENTS_PATH.exists() else {"fragments": []}
-    rows = merged_rows(field, dossiers, *wave22_layers)
+    manifest = load_manifest(ROOT)
+    rows = assemble_relations(ROOT, manifest)
+    fragments = fragment_index(assemble_fragments(ROOT, manifest))
     if not rows:
         raise SystemExit("Canonical Bible relation field is empty")
-    fragments = fragment_index(fragment_data, dossier_fragment_data, wave22_fragment_data)
     source = SITE_PAGE.read_text(encoding="utf-8")
     if source.count(MARKER) != 1:
         raise SystemExit(f"Expected exactly one {MARKER}")
     source = source.replace(MARKER, "\n".join(render(row, fragments) for row in rows))
     SITE_PAGE.write_text(source, encoding="utf-8")
-    print(f"Bible comparator compact fallback compiled: {len(rows)} merged canonical relations ({len(wave22_layers)} wave22 packs)")
+    print(f"Bible comparator compact fallback compiled: {len(rows)} manifest-defined active relations")
     return 0
 
 
