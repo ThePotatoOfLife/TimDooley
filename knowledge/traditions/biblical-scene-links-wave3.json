@@ -1,9 +1,9 @@
 {
   "id":"biblical-scene-links-wave3",
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-14",
   "status":"canonical additive relation enrichment",
-  "purpose":"Attach recurring high-value relations to reusable teaching, resurrection, enthronement, messianic and cloud-coming Biblical Scenes.",
+  "purpose":"Attach recurring high-value relations to reusable teaching, resurrection, enthronement, messianic and cloud-coming Biblical Scenes, with contextual enrichment where needed to complete reader-facing comparison boundaries.",
   "enrichments":[
     {
       "relation_id":"guardians-narrow-gate-2026-04-09",
@@ -52,8 +52,14 @@
     },
     {
       "relation_id":"gate-root-garden-north-2026-03-31",
+      "dossier_level":"A",
       "biblical_scene_ids":["genesis-jacob-ladder-bethel","john-son-of-man-ladder","john-door-shepherd-discourse","genesis-eden-guarded-way","isaiah-root-jesse-peace-kingdom"],
-      "primary_biblical_scene_id":"genesis-jacob-ladder-bethel"
+      "primary_biblical_scene_id":"genesis-jacob-ladder-bethel",
+      "scene_context":{"summary":"Recovered project material already couples Gate, Root, Garden, Heaven and North before the later archive resolves those motifs into a broader biblical comparison network.","source_status":"recovered"},
+      "scripture_context":{"literary_context":"Genesis 28 presents Jacob's Bethel vision as a heaven-earth encounter and names the place the gate of heaven. Genesis 2-3 supplies Garden and guarded-access imagery. Isaiah 11 develops Root/Jesse imagery within a Davidic restoration and peace vision. John 10 uses Door/Gate language for Jesus and access to life, while John 1:51 reworks Jacob-ladder imagery around the Son of Man.","canonical_context":"These passages belong to distinct narrative, prophetic and Johannine contexts. The Bible does not itself combine Gate, Root, Garden, North and Heaven into one unified symbolic map; the relation is a modern project synthesis across several biblical source families."},
+      "relation_argument":{"project_sequence":["Gate, Root, Garden, Heaven and North are already coupled in the March 31 project material","later project work develops Door/Ladder, Father/House, Garden and North-axis language more explicitly","archive research then maps the earlier cluster across Jacob/Bethel, Eden, Isaiah's Root and Johannine Door/Son-of-Man passages"],"biblical_sequence":["Eden establishes garden/life and guarded-access imagery","Jacob at Bethel encounters a heaven-earth passage and calls the place the gate of heaven","Isaiah develops Root/Jesse restoration imagery","John identifies Jesus with Door/access imagery and relocates ladder imagery around the Son of Man"],"correspondences":["gate/access as a threshold between domains","root/growth as origin and continuity imagery","garden as life/order space","heaven-earth connection through ladder/gate language","later project North symbolism becomes a spatial organizer for motifs that are separate in the biblical texts"],"why_it_matters":"This relation is useful because it captures an early project-side convergence before the later verse-level system became explicit. Reading the whole biblical scenes shows both why the cluster later became structurally productive and why it must remain a synthesis rather than being presented as one hidden biblical diagram.","maximum_claim":"The archive can establish that Gate, Root, Garden, Heaven and North were already coupled in the project by March 31, 2026 and that later research found several genuine biblical motif families that illuminate parts of that cluster. It cannot establish that the Bible encodes the project's North Axis, that the separate passages form one intended symbolic system, or that the earlier project cluster constitutes prophecy or fulfillment."},
+      "discovery_history":{"source_direction":"The project-side motif cluster predates the later verse-level synthesis. Jacob/Bethel, Eden, Isaiah and Johannine comparisons were organized afterward and must not be backdated into the March 31 material."},
+      "mismatch":"The biblical source scenes are not one story: Eden concerns creation and guarded life, Jacob concerns Bethel and divine promise, Isaiah concerns Davidic restoration, and John uses Door and Son-of-Man imagery christologically. 'North' is not the organizing connector among these passages in their literary contexts, so the project's North-centered synthesis remains a later interpretive construction rather than a canonical biblical map."
     }
   ],
   "new_relations":[]
