@@ -145,11 +145,12 @@ def test_generated_fallback_cannot_qualify_for_public_library(builder) -> None:
     assert builder.qualifies_for_library(Path("thin-model.json"), data, record) is False
 
 
-def test_science_portal_validator_invokes_semantic_audit_and_annotations() -> None:
+def test_science_portal_validator_invokes_semantic_audit_and_diagnostics() -> None:
     text = VALIDATOR.read_text(encoding="utf-8")
     assert "audit_science_quality" in text
     assert "generated fallback abstract" in text
     assert "::error file=" in text
+    assert "science-portal-report.json" in text
 
 
 def main() -> int:
@@ -167,8 +168,8 @@ def main() -> int:
     for test in tests:
         test(auditor)
         print("PASS", getattr(test, "__name__", "test_generated_fallback_cannot_qualify_for_public_library"))
-    test_science_portal_validator_invokes_semantic_audit_and_annotations()
-    print("PASS test_science_portal_validator_invokes_semantic_audit_and_annotations")
+    test_science_portal_validator_invokes_semantic_audit_and_diagnostics()
+    print("PASS test_science_portal_validator_invokes_semantic_audit_and_diagnostics")
     return 0
 
 
