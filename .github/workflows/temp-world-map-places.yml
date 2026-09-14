@@ -1,5 +1,6 @@
 name: Temporary World Map Places Probe
 
+# Temporary branch-only probe. Delete before the PR leaves draft.
 on:
   push:
     branches: [feat/world-map-places-search-v2]
@@ -50,6 +51,7 @@ jobs:
           assert la['properties'].get('admin_region') == 'California', la['properties']
           assert la['properties']['iso3'] == 'USA'
           assert cph['properties']['iso3'] == 'DNK'
+          assert cph['properties'].get('capital') is True
           assert len(data['features']) <= 5000
           print('Los Angeles:', la['properties'])
           print('Copenhagen identity:', cph['properties'])
