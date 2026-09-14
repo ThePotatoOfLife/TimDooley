@@ -18,6 +18,7 @@ TARGETS = [
     'temple-pillars-jachin-boaz-2026-09-05',
     'house-seed-eye-ladder-2026-09-08',
     'zechariah-research-unlock-2026-09-09',
+    'gate-root-garden-north-2026-03-31',
 ]
 
 
@@ -55,7 +56,7 @@ def main() -> int:
         for failure in failures:
             print(f'- {failure}')
         return 1
-    print('COMPACT DOSSIER CONTRACT PASSED (10 full dossiers)')
+    print(f'COMPACT DOSSIER CONTRACT PASSED ({len(TARGETS)} full dossiers)')
     return 0
 
 
