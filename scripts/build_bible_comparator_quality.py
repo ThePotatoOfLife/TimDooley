@@ -21,6 +21,24 @@ def present(value) -> bool:
     return True
 
 
+def research_reasons(row: dict, missing: list[str]) -> list[str]:
+    reasons: list[str] = []
+    strength = row.get('strength')
+    if strength is not None and int(strength or 0) < 4:
+        reasons.append('low-strength')
+    if any(key in missing for key in ('project_side', 'source_direction')):
+        reasons.append('project-evidence-gap')
+    if any(key in missing for key in ('bible_refs', 'biblical_sequence')):
+        reasons.append('biblical-context-gap')
+    if any(key in missing for key in ('counterpressure', 'supported_conclusion')):
+        reasons.append('boundary-gap')
+    if 'why_it_matters' in missing:
+        reasons.append('interpretation-gap')
+    if strength is None and row.get('dossier_level') != 'A':
+        reasons.append('unscored-provisional')
+    return reasons
+
+
 def assess(row: dict, scene_ids: set[str]) -> dict:
     scene = row.get('scene_context') or {}
     scripture = row.get('scripture_context') or {}
@@ -51,6 +69,7 @@ def assess(row: dict, scene_ids: set[str]) -> dict:
         action = 'enrich'
     else:
         action = 'research'
+    reasons = research_reasons(row, missing) if action == 'research' else []
     return {
         'id': row.get('id'),
         'strength': row.get('strength'),
@@ -60,6 +79,7 @@ def assess(row: dict, scene_ids: set[str]) -> dict:
         'coverage': coverage,
         'missing': missing,
         'recommended_action': action,
+        'research_reasons': reasons,
     }
 
 
@@ -67,16 +87,18 @@ def build_report(rows: list[dict], scenes: list[dict]) -> dict:
     scene_ids = {scene['id'] for scene in scenes}
     assessments = [assess(row, scene_ids) for row in rows]
     actions = Counter(item['recommended_action'] for item in assessments)
+    reason_counts = Counter(reason for item in assessments for reason in item['research_reasons'])
     scene_linked = sum(item['coverage']['scene'] for item in assessments)
     return {
         'id': 'bible-comparator-quality-report',
-        'version': '1.0.0',
+        'version': '1.1.0',
         'updated': '2026-09-14',
         'purpose': 'Machine-readable quality and enrichment map for the manifest-defined public Bible comparator corpus.',
         'active_relation_count': len(rows),
         'active_scene_count': len(scenes),
         'relations_with_reusable_scene': scene_linked,
         'action_counts': dict(sorted(actions.items())),
+        'research_reason_counts': dict(sorted(reason_counts.items())),
         'relations': assessments,
     }
 
@@ -86,7 +108,7 @@ def main() -> int:
     report = build_report(assemble_relations(ROOT, manifest), assemble_scenes(ROOT, manifest))
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-    print(f"Bible comparator quality report: {report['active_relation_count']} relations · {report['active_scene_count']} scenes · {report['action_counts']}")
+    print(f"Bible comparator quality report: {report['active_relation_count']} relations · {report['active_scene_count']} scenes · {report['action_counts']} · research reasons {report['research_reason_counts']}")
     return 0
 
 
