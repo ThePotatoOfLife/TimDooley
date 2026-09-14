@@ -5,7 +5,7 @@ import tempfile
 import unittest
 from pathlib import Path
 
-from build_story_depth_audit import build_story_depth_audit
+from build_story_depth_audit import audit_is_current, build_story_depth_audit
 
 
 def dump(path: Path, data):
@@ -46,6 +46,16 @@ class AuditTests(unittest.TestCase):
             self.assertEqual(data["full_story"]["qualified_registered"], 1)
             self.assertEqual(data["full_story"]["unregistered_full_story"], ["legacy"])
             self.assertEqual(data["recovery_priorities"][0]["story_id"], "a")
+
+    def test_audit_is_current_detects_match_and_drift(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            setup(root)
+            expected = build_story_depth_audit(root)
+            dump(root / "knowledge" / "story" / "story-depth-audit.json", expected)
+            self.assertTrue(audit_is_current(root))
+            dump(root / "knowledge" / "story" / "story-depth-audit.json", {"stale": True})
+            self.assertFalse(audit_is_current(root))
 
     def test_output_is_deterministic(self):
         with tempfile.TemporaryDirectory() as tmp:
