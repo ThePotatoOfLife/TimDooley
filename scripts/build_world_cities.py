@@ -172,7 +172,10 @@ def _merge_capital(candidate, capitals):
             continue
         capital_key = _slug(props.get('name'))
         same_name = capital_key == normalized or capital_key in alias_keys
-        close = _distance(feature['geometry']['coordinates'], candidate['coordinates']) <= 0.15
+        # Coordinate proximity is only a fallback identity hint for a substantial
+        # settlement. It must never let a nearby district/neighborhood overwrite
+        # the national-capital identity merely because it is spatially close.
+        close = candidate['population'] >= 250_000 and _distance(feature['geometry']['coordinates'], candidate['coordinates']) <= 0.15
         if not (same_name or close):
             continue
         props.update({
