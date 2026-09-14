@@ -41,6 +41,9 @@ jobs:
       - name: Validate JavaScript syntax
         run: |
           node --check app/bible-study.js
+          node --check app/bible-corpus-loader.js
+          node --check app/bible-atlas-navigation.js
+          node --check app/bible-atlas-ui.js
           node --check world-map/3d-layer-registry.js
           node --check world-map/3d-compositor.js
           node --check world-map/3d-country-selection.js
@@ -190,6 +193,13 @@ jobs:
       - name: Check biblical syncretism field
         run: python scripts/check_biblical_syncretism_field.py
 
+      - name: Validate Bible atlas corpus
+        run: |
+          python scripts/validate_bible_layer_manifest.py
+          python scripts/test_bible_corpus.py
+          python scripts/check_biblical_scenes.py
+          python scripts/build_bible_comparator_quality.py
+
       - name: Validate Bible reader
         run: python scripts/validate_bible_reader.py
 
@@ -210,6 +220,18 @@ jobs:
 
       - name: Compile Bible comparator
         run: python scripts/build_bible_study.py
+
+      - name: Validate Bible static dynamic parity
+        run: python scripts/check_bible_static_dynamic_parity.py
+
+      - name: Upload Bible comparator quality report
+        if: ${{ always() && hashFiles('knowledge/indexes/bible-comparator-quality-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: bible-comparator-quality-report
+          path: knowledge/indexes/bible-comparator-quality-report.json
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Compile science paper library
         run: python scripts/build_science_catalog.py
