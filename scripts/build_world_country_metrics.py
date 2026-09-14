@@ -18,7 +18,7 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "data" / "countries" / "index.json"
 OUT = Path(os.environ.get("ATLAS_COUNTRY_METRICS_OUT", ROOT / "data" / "world-country-metrics.json"))
-USER_AGENT = "ThePotatoOfLife-world-atlas-country-metrics/1.0"
+USER_AGENT = "ThePotatoOfLife-world-atlas-country-metrics/1.1"
 SOURCE_NAME = "World Bank World Development Indicators"
 SOURCE_ID = "world-bank-wdi"
 EXPECTED_COUNTRIES = 195
@@ -49,7 +49,7 @@ METRICS = {
     "internet_penetration": metric("Internet use", "IT.NET.USER.ZS", "percent of population", "technology/information"),
     "electricity_access": metric("Electricity access", "EG.ELC.ACCS.ZS", "percent of population", "infrastructure/energy"),
     "trade_openness": metric("Trade / GDP", "NE.TRD.GNFS.ZS", "percent of GDP", "trade"),
-    "co2_per_capita": metric("CO₂ emissions / person", "EN.ATM.CO2E.PC", "metric tonnes/person", "climate"),
+    "co2_per_capita": metric("CO₂ emissions / person", "EN.GHG.CO2.PC.CE.AR5", "t CO2e/capita", "climate"),
     "fdi_inflow": metric("FDI net inflow", "BX.KLT.DINV.WD.GD.ZS", "percent of GDP", "finance/investment"),
 }
 INDICATOR_TO_METRIC = {spec["indicator"]: metric_id for metric_id, spec in METRICS.items()}
@@ -173,7 +173,7 @@ def build(out_path: Path = OUT) -> dict:
     rows = {str(country["iso3"]).upper(): country_metrics_row(country, series, generated) for country in countries}
     coverage = {metric_id: sum(1 for code in wanted if series[metric_id].get(code)) for metric_id in METRICS}
     payload = {
-        "version":"1.0.0",
+        "version":"1.1.0",
         "generated_at":generated,
         "record_type":"world-country-metrics-runtime",
         "scope":"Neutral comparable country observations. Values do not determine Axis height, moral rank, sovereignty, project membership or a synthetic country score.",
