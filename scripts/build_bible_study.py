@@ -62,10 +62,16 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
     direction = row.get("source_direction") or (row.get("discovery_history") or {}).get("source_direction")
     scene = row.get("scene_context") or {}
     argument = row.get("relation_argument") or {}
+    recovered = [str(x).strip() for x in arr(row.get("recovered_wording")) if str(x).strip()]
+    recovered_html = "".join(
+        f'<blockquote class="project-quote recovered-wording">{esc(text)}<cite>Recovered wording</cite></blockquote>'
+        for text in recovered
+    )
     boundary = f'<p><strong>Where it breaks:</strong> {esc(mismatch)}</p>' if mismatch else ""
     direction_html = f'<p><strong>Source direction:</strong> {esc(direction)}</p>' if direction else ""
     scene_html = f'<p><strong>What was happening:</strong> {esc(scene.get("summary"))}</p>' if scene.get("summary") else ""
-    why_html = f'<p><strong>Why these connect:</strong> {esc(argument.get("why_dense"))}</p>' if argument.get("why_dense") else ""
+    why = argument.get("why_dense") or argument.get("why_it_matters")
+    why_html = f'<p><strong>Why these connect:</strong> {esc(why)}</p>' if why else ""
     max_html = f'<p><strong>Maximum defensible claim:</strong> {esc(argument.get("maximum_claim"))}</p>' if argument.get("maximum_claim") else ""
 
     return f'''<details class="static-relation" data-static-relation="{esc(row.get('id'))}">
@@ -73,6 +79,7 @@ def render(row: dict, fragments: dict[str, list[dict]]) -> str:
 <div class="static-relation-body">
 {scene_html}
 <p><strong>Project anchor:</strong> {esc(row.get('project_anchor'))}</p>
+{recovered_html}
 <p><strong>Scripture scope:</strong> {esc(scope)}</p>
 {scripture}
 {why_html}
