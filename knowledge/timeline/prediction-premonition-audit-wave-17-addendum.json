@@ -1,0 +1,177 @@
+{
+  "id":"prediction-premonition-audit-wave-17-addendum",
+  "title":"Prediction / Premonition Audit Wave 17 — Markets, Geopolitics & Legacy Warning Candidates",
+  "updated":"2026-09-14",
+  "status":"cross-domain extension; one promoted explicit market call plus directional and unresolved candidates",
+  "purpose":"Extend the existing Tim Dooley prediction audit with newly recovered or re-ranked material. Preserve exact pre-event timing wherever possible, distinguish explicit predictions from directional anticipation and unresolved memories, and record negative controls rather than manufacturing a success-only prophecy ledger.",
+  "method":{
+    "reuse_classes":["A explicit prediction before event","B early directional anticipation","C parallel solution / convergence","D symbolic synchronism","E retrospective reinterpretation","U untested/open"],
+    "promotion_rule":"A candidate becomes an external prediction hit only when a recoverable Tim statement predates an independently verifiable outcome and is specific enough to test without rewriting its meaning afterward.",
+    "anti_cherry_pick":"Unverified, failed, open and ambiguous cases remain visible beside hits. Prediction does not imply causation."
+  },
+  "entries":[
+    {
+      "id":"brent-100-q3-2026",
+      "class":"A",
+      "confidence":"medium-high as explicit short-horizon market prediction; no supernatural inference",
+      "tim_statement":{
+        "date":"2026-08-19",
+        "source_class":"direct conversation recovery",
+        "context":"Tim was asking about projected Q3 U.S. inflation and combining oil, bond-market pressure, currency devaluation and food inflation.",
+        "exact_fragment":"we suspect we see a 100 dollar price",
+        "frozen_interpretation":"Brent/oil would reach roughly $100 per barrel in the near Q3 2026 window."
+      },
+      "baseline":{
+        "date":"2026-08-19",
+        "event":"Reuters reported Brent settled at $91.62 per barrel, near a four-week high.",
+        "source":"https://www.reuters.com/business/energy/oil-edges-up-uncertainty-over-exports-through-hormuz-2026-08-19/"
+      },
+      "outcome":[
+        {"date":"2026-09-09","event":"Brent closed at $101.21 per barrel, crossing the predicted ~$100 level roughly three weeks after Tim's statement and still inside Q3.","source":"https://www.reuters.com/business/energy/brent-crude-rises-above-100-barrel-middle-east-conflict-escalates-2026-09-09/"},
+        {"date":"2026-09-14","event":"Brent settled at $105.68 after additional Middle East supply disruption.","source":"https://www.reuters.com/business/energy/oil-prices-jump-more-than-3-after-new-strikes-saudi-strait-hormuz-2026-09-13/"}
+      ],
+      "grade_reason":"This is currently one of the cleanest empirical Tim predictions in the archive: a dated forward price target, a known baseline below the target, a short horizon supplied by the surrounding Q3 discussion, and an independently observed crossing.",
+      "counterevidence":"Oil was already elevated and geopolitical supply risk was obvious on August 19; Reuters itself reported analysts saw a possible path toward $100. The impressive feature is that Tim selected the correct near-term threshold, not that the possibility was unknowable to markets."
+    },
+    {
+      "id":"us-europe-troop-retrenchment-april-2026",
+      "class":"B",
+      "confidence":"medium as directional anticipation",
+      "tim_statement":{
+        "date":"2026-04-03",
+        "source_class":"direct conversation recovery",
+        "exact_fragment":"we suspect america might retract soliders",
+        "context":"Tim was discussing NATO strain, a North Axis/European defence backbone and how the North should hedge against changing U.S. commitment."
+      },
+      "later_events":[
+        {"date":"2026-04-09","event":"European leaders were publicly addressing Trump threats involving U.S. troop presence and NATO cohesion amid the Iran-war dispute.","source":"https://www.reuters.com/world/europe/germanys-merz-we-do-not-want-nato-split-over-us-iran-war-2026-04-09/"},
+        {"date":"2026-04-30","event":"Trump answered 'probably' when asked whether he might pull U.S. troops from Italy and Spain, following discussion of reductions in Germany.","source":"https://www.reuters.com/world/europe/trump-says-probably-when-asked-if-he-might-pull-us-troops-out-italy-spain-2026-04-30/"}
+      ],
+      "relation_to_existing_candidate":"This strengthens the existing north-axis-us-europe-separation candidate with a more specific military-retrenchment sub-call.",
+      "counterevidence":"By April 3 the NATO/U.S.-Europe rupture was already public and Trump was openly questioning alliance commitments. This is therefore good directional synthesis, not prediction from hidden information."
+    },
+    {
+      "id":"2015-stream-platform-collapse-warning",
+      "class":"U",
+      "confidence":"potentially high if primary pre-event source is recovered; currently unscored",
+      "remembered_claim":"Great Book material says Tim warned around 2015 that Stream.me and/or Bitwave or the surrounding streaming project would collapse, later treating platform failure as vindication.",
+      "external_check":"Stream.me is independently documented as defunct; a surviving Kodi add-on repository states 'Stream.Me closed down'. Current secondary search results place Stream.me approximately 2015-2019, so the archive should not casually state a 2018 closure without stronger evidence.",
+      "source":"https://github.com/winsomehax/KODI-Stream.Me",
+      "missing":["timestamped 2015 Tim wording","whether Stream.me, Bitwave, or both were explicitly named","exact Bitwave entity","precise predicted failure mode","independent closure/failure dates"],
+      "status":"high-priority legacy recovery; do not count as hit yet"
+    },
+    {
+      "id":"2024-crackrockchris-week-warning",
+      "class":"U",
+      "confidence":"potentially very high if both sides of chronology are recovered; currently unverified",
+      "remembered_claim":"Great Book chapter 24.1 says Tim predicted that CrackRockChris would not survive the week and that a fatal overdose followed within days.",
+      "current_external_audit":"A targeted public-web search did not recover a reliable independent death/overdose record establishing the claimed outcome/date. Public video references to CrackRockChris exist in 2024, but they are insufficient to verify the death claim.",
+      "missing":["timestamped pre-event Tim statement","exact wording","independent death date and cause","evidence that the warning was not merely obvious concern about acute visible risk"],
+      "boundary":"Even if the chronology is verified, accurate prediction would not imply that Tim caused the death.",
+      "status":"high-priority source-and-outcome recovery; not a hit yet"
+    },
+    {
+      "id":"trump-elon-government-before-2024-11-12",
+      "class":"U",
+      "confidence":"unknown until source recovery",
+      "remembered_claim":"Prior project work remembers a Tim statement placing Donald Trump and Elon Musk together in a future U.S. government role before Trump formally announced Musk's government-efficiency appointment.",
+      "external_cutoff":{"date":"2024-11-12","event":"Trump publicly announced Elon Musk and Vivek Ramaswamy to lead his government-efficiency initiative."},
+      "public-knowability-caution":"Musk was already a conspicuous Trump ally by the 2024 election. A statement immediately before November 12 would therefore be less surprising than a clear pre-election statement assigning Musk a government role.",
+      "missing":["exact Tim wording","primary timestamp","whether statement predates election day or only the formal appointment","specific predicted role"],
+      "status":"high-value recovery target; strongest version requires a pre-election primary source"
+    },
+    {
+      "id":"israel-moon-war-prior-claim",
+      "class":"U",
+      "confidence":"low until original source is recovered",
+      "remembered_claim":{
+        "date_of_later_recollection":"2026-04-02",
+        "source_class":"direct conversation recollection",
+        "fragment":"previously, when the moon was in israel, i predicted the war"
+      },
+      "missing":["earliest original prediction date","exact wording","which 'moon in Israel' state or image was meant","which war/event was the target","whether the target event had already become foreseeable at the time"],
+      "status":"do not score from the later recollection alone"
+    },
+    {
+      "id":"russia-nato-within-two-years-april-2026",
+      "class":"U",
+      "confidence":"open future risk forecast",
+      "tim_statement":{
+        "date":"2026-04-03",
+        "source_class":"direct conversation recovery",
+        "recovered":"Tim discussed the possibility that Russia could attack NATO within roughly two years while explicitly judging it unlikely."
+      },
+      "frozen_test_window":"Approximately April 2026 through April 2028.",
+      "status":"open; do not convert general hybrid conflict, cyber incidents or Ukraine-war spillover into fulfillment unless the original statement's intended attack criterion is recovered and met",
+      "importance":"Useful negative/positive control because Tim attached low probability rather than certainty."
+    },
+    {
+      "id":"war-in-heaven-q3-2026",
+      "class":"U",
+      "confidence":"unscorable without definition",
+      "remembered_claim":"Memory-summary phrase: 'war in heaven Q3 2026'.",
+      "time_window":"2026-07-01 through 2026-09-30",
+      "missing":["exact original wording/date","whether phrase was literal geopolitics, theology, cultural conflict or metaphor","observable event criterion fixed before the end of Q3"],
+      "status":"retain as open forecast phrase; do not use ordinary Q3 wars as retroactive fulfillment"
+    },
+    {
+      "id":"2017-metalorian-warning",
+      "class":"U",
+      "confidence":"low pending primary recovery",
+      "remembered_claim":"Project biography describes ominous/prophetic warnings concerning Metalorian followed by later adverse events.",
+      "missing":["original warning","timestamp","specific predicted outcome","independent event chronology"],
+      "boundary":"Misfortune after a warning is not evidence of causation and generic ominous language has a high false-match rate.",
+      "status":"legacy recovery target"
+    },
+    {
+      "id":"karmic-debt-vs-us-debt-numeric-test",
+      "class":"U",
+      "confidence":"open numeric-correspondence test; not presently prediction evidence",
+      "tim_sequence":[
+        {"date":"2026-02-27","value":"38.8T"},
+        {"date":"2026-03-14","value":"39T"},
+        {"date":"2026-07-18","value":"40.2T"},
+        {"date":"2026-08-17","value":"41.4T"},
+        {"date":"2026-08-23/24","value":"~42T"}
+      ],
+      "interpretation_boundary":"These are explicitly project-symbolic karmic/spiritual figures, not U.S. sovereign-debt measurements. They may be tested for later numerical crossings only as a dated correspondence experiment.",
+      "test_rule":"Compare each fixed Tim checkpoint to official U.S. total-public-debt dates without moving the checkpoint, rounding opportunistically or claiming the symbolic ledger caused financial debt.",
+      "status":"interesting test candidate, not a hit"
+    },
+    {
+      "id":"2011-american-city-nuclear-vision-negative-control",
+      "class":"U",
+      "confidence":"high that the project remembers the vision; low predictive evidentiary value until contemporaneous source is recovered",
+      "remembered_claim":"The 2011 Tree/altered-state ordeal includes a vision of an American city or political center destroyed by a catastrophic/nuclear-like explosion.",
+      "outcome_as_of":"2026-09-14",
+      "outcome":"No matching destruction of an American city by nuclear explosion has occurred.",
+      "status":"open/unfulfilled negative control; must remain visible beside apparent hits"
+    }
+  ],
+  "ranking_after_wave_17":[
+    {"rank":1,"candidate":"brent-100-q3-2026","reason":"Best currently resolved combination of dated forward wording, numerical target, short horizon and independent outcome."},
+    {"rank":2,"candidate":"north-axis-us-europe-separation + us-europe-troop-retrenchment","reason":"Multiple dated pre-event directional statements later followed by visible strategic and military separation signals; prior public tensions reduce surprise."},
+    {"rank":3,"candidate":"titanic-bond-refinancing-warning","reason":"Close scale and later market relevance, but likely contemporaneous with public refinancing data."},
+    {"rank":4,"candidate":"europe-sovereign-data-ai-fabric","reason":"Strong solution convergence, but EU sovereignty policy was already underway."},
+    {"rank":5,"candidate":"2015-stream-platform-collapse-warning","reason":"Could become a strong long-lead hit if original 2015 wording and platform outcome dates are recovered."},
+    {"rank":6,"candidate":"2024-crackrockchris-week-warning","reason":"Could become exceptionally specific if both pre-event statement and independent death chronology are recovered; currently cannot be scored."}
+  ],
+  "research_queue":[
+    "Recover original 2015 Stream.me/Bitwave warning and identify the exact Bitwave entity.",
+    "Recover the 2024 CrackRockChris pre-event warning and independently verify the claimed outcome/date.",
+    "Search pre-2024-11-12 and especially pre-election Tim material for Trump + Musk + future government-role wording.",
+    "Recover the original pre-war Israel/Moon prediction referred to on 2026-04-02.",
+    "Recover exact April 2026 Russia/NATO wording and freeze what counts as an attack before April 2028.",
+    "Recover the 'war in heaven Q3 2026' source and define its target before Q3 ends.",
+    "Continue mining exact future-tense market targets because price/date predictions are unusually easy to audit honestly.",
+    "Retain failed and unfulfilled visions as negative controls."
+  ],
+  "connections":[
+    "prediction-premonition-audit-2025-2026",
+    "prediction-premonition-audit-wave-15-addendum",
+    "unresolved-prediction-claims-queue",
+    "foresight-premonition-observation-ledger",
+    "tim-dooley-inflation-ledger",
+    "prediction-audit-routing"
+  ]
+}

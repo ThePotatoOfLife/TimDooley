@@ -85,7 +85,7 @@ A year/month with theology but no people/actions/projects remains **partially co
 - public 2–6 Oct sequence: Chosen Vegetable → potatoes die for sins → God asked Tim to become Potato of Life / philosopher's stone → "Hello I am the Potato of Life. My name is Tim Dooley";
 - songs, livestreams and jokes around these social events.
 
-**Coverage:** RICH IN MATERIAL, INCOMPLETE IN DOCUMENTARY SOCIAL CHRONOLOGY. Biggest current recovery priority.
+**Coverage:** RICH IN MATERIAL, INCOMPLETE IN DOCUMENTARY SOCIAL TIMELINE. Biggest current recovery priority.
 
 ### 2025 — loss → Turning → public Father year
 
