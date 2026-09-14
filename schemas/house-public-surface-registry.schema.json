@@ -14,8 +14,8 @@
     "secondary_global_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
     "surfaces": {
       "type": "array",
-      "minItems": 14,
-      "maxItems": 14,
+      "minItems": 15,
+      "maxItems": 15,
       "items": {
         "type": "object",
         "additionalProperties": false,
