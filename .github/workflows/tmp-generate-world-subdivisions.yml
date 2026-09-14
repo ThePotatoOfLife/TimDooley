@@ -25,47 +25,14 @@ jobs:
           python scripts/test_world_population_contract.py
           python scripts/test_build_world_demography_population.py
           python scripts/test_build_world_subdivisions.py
-      - name: Diagnose Census TIGERweb response
+      - name: Inspect official Census KML state archive
         run: |
+          curl -fsSL --retry 3 --retry-delay 1 'https://www2.census.gov/geo/tiger/GENZ2025/kml/cb_2025_us_state_5m.zip' -o /tmp/states.zip
           python - <<'PY'
-          import urllib.parse, urllib.request
-          base = 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Current/MapServer/80/query'
-          params = {
-              'where':'1=1',
-              'outFields':'STATE,STUSAB,NAME,AREALAND,AREAWATER,CENTLAT,CENTLON',
-              'returnGeometry':'true',
-              'outSR':'4326',
-              'f':'geojson',
-          }
-          url = base + '?' + urllib.parse.urlencode(params)
-          req = urllib.request.Request(url, headers={'User-Agent':'ThePotatoOfLife-world-atlas-subdivisions/1.0'})
-          with urllib.request.urlopen(req, timeout=60) as response:
-              body = response.read(512)
-              print('status=', response.status)
-              print('content-type=', response.headers.get('content-type'))
-              print('final-url=', response.geturl())
-              print('prefix=', repr(body[:240]))
+          from zipfile import ZipFile
+          with ZipFile('/tmp/states.zip') as archive:
+              print('files=', archive.namelist())
+              kml = next(name for name in archive.namelist() if name.lower().endswith('.kml'))
+              text = archive.read(kml).decode('utf-8-sig')
+              print('kml-prefix=', text[:8000])
           PY
-      - name: Generate official Census subdivision snapshot
-        env:
-          ATLAS_SUBDIVISIONS_OUT_DIR: _generated/world-subdivisions
-        run: python scripts/build_world_subdivisions.py
-      - name: Validate generated snapshot shape
-        run: |
-          python - <<'PY'
-          import json
-          from pathlib import Path
-          root = Path('_generated/world-subdivisions')
-          index = json.loads((root / 'index.json').read_text())
-          usa = json.loads((root / 'USA.geo.json').read_text())
-          assert index['partitions']['USA']['feature_count'] == 51
-          assert usa['type'] == 'FeatureCollection'
-          assert len(usa['features']) == 51
-          assert len({f['properties']['id'] for f in usa['features']}) == 51
-          assert all(f['properties']['population']['value'] > 0 for f in usa['features'])
-          PY
-      - uses: actions/upload-artifact@v4
-        with:
-          name: world-subdivisions
-          path: _generated/world-subdivisions
-          if-no-files-found: error
