@@ -23,6 +23,8 @@ def build_layer(batch:dict)->dict:
         if direction: row['discovery_history']={'source_direction':direction}
         related=candidate.get('related_relations')
         if related: row['related_relations']=list(related)
+        recovered=candidate.get('recovered_wording')
+        if recovered: row['recovered_wording']=list(recovered)
         rows.append(row)
     return {'id':'biblical-excavation-enrichments-batch01','version':'1.0.0','updated':batch.get('updated'),'status':'additive excavation enrichment layer','enrichments':rows}
 
