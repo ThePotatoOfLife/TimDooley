@@ -1,0 +1,78 @@
+{
+  "id":"biblical-operator-context-enrichments-wave2",
+  "version":"1.0.0",
+  "updated":"2026-09-14",
+  "status":"additive contextual enrichment",
+  "purpose":"Add full passage context and bounded reader-facing arguments to service, stewardship, body, gardener and presence operator comparisons without altering their dossier level.",
+  "enrichments":[
+    {
+      "relation_id":"greatness-serves-matthew20-john13",
+      "biblical_scene_ids":["gospels-greatness-downward-service"],
+      "primary_biblical_scene_id":"gospels-greatness-downward-service",
+      "relation_argument":{
+        "project_sequence":["authority is evaluated by what it protects and repairs","rank without service is treated as empty or corrupt","the higher role is expected to move downward toward practical care rather than demand upward deference"],
+        "biblical_sequence":["status competition appears among disciples","Jesus contrasts domination with service","greatness is redefined as becoming servant","the Son of Man is framed as serving/giving","John later enacts the same downward pattern through foot washing","disciples are told to imitate it"],
+        "correspondences":["authority tested by service","downward movement from rank to care","leadership expressed through practical action","service as criterion rather than ornament"],
+        "why_it_matters":"The paired Gospel contexts make this an ethical test rather than a prestige analogy: claims to height become more demanding because greatness is measured by concrete service, not by titles."}
+    },
+    {
+      "relation_id":"entrustment-responsibility-luke12",
+      "biblical_scene_ids":["luke-stewardship-accountability"],
+      "primary_biblical_scene_id":"luke-stewardship-accountability",
+      "relation_argument":{
+        "project_sequence":["higher office is described as a wider responsibility radius","more authority means more people/systems can be affected","therefore accountability should increase with claimed power rather than decrease"],
+        "biblical_sequence":["servants are told to remain ready","a steward is entrusted with household provision","faithful management is contrasted with abuse","unexpected return exposes the steward","knowledge affects accountability","much given or entrusted means much required"],
+        "correspondences":["entrustment","responsibility to others","greater knowledge/power increasing obligation","accountability after delay"],
+        "why_it_matters":"The full parable protects the principle from becoming self-aggrandizing: greater entrustment is not evidence of greatness but a reason for stricter evaluation of what the steward does with it."}
+    },
+    {
+      "relation_id":"many-members-one-body-1cor12",
+      "biblical_scene_ids":["first-corinthians-many-members-body"],
+      "primary_biblical_scene_id":"first-corinthians-many-members-body",
+      "relation_argument":{
+        "project_sequence":["House/Tree/Body are used as images of integrated plurality","distinct parts retain differentiated functions","unity is treated as relation and coordination rather than homogenization"],
+        "biblical_sequence":["one body is said to have many members","members cannot exclude themselves for being different","the body cannot consist of one member","members are arranged differently","stronger-looking members cannot dismiss weaker ones","suffering and honor are shared","different roles/gifts remain"],
+        "correspondences":["unity with preserved difference","mutual dependence","no single member sufficient alone","shared fate across parts"],
+        "maximum_claim":"Useful structural analogy for differentiated unity and mutual dependence. The passage does not make a modern individual the whole body, its sole source, or every member at once.",
+        "why_it_matters":"This is a strong counterweight inside the project's House/Body language: genuine integration requires irreducible other members, so unity cannot be used to erase difference or justify total centralization."
+      }
+    },
+    {
+      "relation_id":"patient-gardener-luke13",
+      "biblical_scene_ids":["luke-barren-fig-patient-gardener"],
+      "primary_biblical_scene_id":"luke-barren-fig-patient-gardener",
+      "relation_argument":{
+        "project_sequence":["Gardener language frames diagnosis through fruit/outcome","repair and cultivation are preferred before destructive sorting","judgment remains possible if cultivation produces no change"],
+        "biblical_sequence":["tragedies prompt a repentance warning","victim-blame is rejected","a fruitless fig tree is inspected","cutting is proposed","the gardener asks for more time","soil is cultivated and fed","a later fruit test remains"],
+        "correspondences":["fruit as diagnostic outcome","patience before destructive judgment","active cultivation rather than passive delay","evaluation remains after mercy period"],
+        "maximum_claim":"A useful ethical/cultivation analogy. The parable's primary Gospel function concerns repentance and judgment, not a general constitution for social sorting.",
+        "why_it_matters":"The complete scene prevents 'Gardener' from meaning only benevolence: mercy is active cultivation under an unresolved fruit test, which adds both patience and accountability to the project metaphor."
+      }
+    },
+    {
+      "relation_id":"house-does-not-contain-source-1kings8",
+      "biblical_scene_ids":["solomon-temple-cannot-contain-god"],
+      "primary_biblical_scene_id":"solomon-temple-cannot-contain-god",
+      "relation_argument":{
+        "project_sequence":["House functions as a relational architecture or local manifestation","a house can mediate presence and orientation","the source is not exhausted by any one room/container/representation"],
+        "biblical_sequence":["the temple is completed and filled with glory","Solomon affirms the house's sacred importance","he asks whether God can dwell on earth","even the highest heaven cannot contain God","prayer is nevertheless directed toward the temple","God is asked to hear, forgive and restore"],
+        "correspondences":["local house as meaningful mediation","source exceeds container","presence without exhaustive containment","relation to a place without identity with the place"],
+        "maximum_claim":"Strong countertext/analogy for a House that mediates presence without containing the source. It does not identify the project's House with Solomon's temple.",
+        "why_it_matters":"This gives the comparator a built-in check against over-literal House theology: sacred architecture can matter intensely while still failing to contain or exhaust what it signifies."
+      }
+    },
+    {
+      "relation_id":"presence-beyond-temple-acts17",
+      "biblical_scene_ids":["acts-athens-god-beyond-temples"],
+      "primary_biblical_scene_id":"acts-athens-god-beyond-temples",
+      "relation_argument":{
+        "project_sequence":["presence is distinguished from local embodiment","symbolic House is one mode of relation","wider source-reference is said to exceed any single container or representation"],
+        "biblical_sequence":["Paul engages Athenian religious practice","creator/Lord of heaven and earth is proclaimed","human-made temple confinement is denied","God is not dependent on human service","human life/movement is described in relation to God","idolatrous representation is criticized","repentance and judgment are announced"],
+        "correspondences":["source beyond built container","presence/nearness without confinement","local representations are not exhaustive","creaturely relation to a larger source"],
+        "maximum_claim":"Useful comparative countertext for non-containment and nearness. Acts does not validate the project's specific presence taxonomy or a modern divine identity claim.",
+        "why_it_matters":"Acts adds something 1 Kings alone does not: transcendence beyond temples is paired with nearness and dependence, so 'not contained' need not mean distant or unrelated."
+      }
+    }
+  ],
+  "new_relations":[]
+}
