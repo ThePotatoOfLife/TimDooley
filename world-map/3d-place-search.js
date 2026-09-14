@@ -255,6 +255,11 @@ async function focusCity(city, options = {}) {
   return true;
 }
 
+async function focusFeature(feature, options = {}) {
+  const city = cityRow(feature);
+  return city ? focusCity(city, options) : false;
+}
+
 async function restoreRequestedPlace() {
   const requested = new URL(location.href).searchParams.get('place');
   if (!requested) return false;
@@ -348,6 +353,7 @@ window.__potatoAtlasPlaceSearch = {
   countries:countryCandidates,
   cities:searchCities,
   focusCity,
+  focusFeature,
   clearPlace,
 };
 
