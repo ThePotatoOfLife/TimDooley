@@ -15,19 +15,23 @@ POPULATION_TEST = ROOT / "scripts" / "test_world_subdivision_population.py"
 MODULE = ROOT / "world-map" / "3d-subdivisions.js"
 SEARCH = ROOT / "world-map" / "3d-search.js"
 SEARCH_CORE = ROOT / "world-map" / "3d-search-core.js"
+SPATIAL_CORE = ROOT / "world-map" / "3d-spatial-core.js"
+INFRASTRUCTURE = ROOT / "world-map" / "3d-infrastructure.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
 DNK = ROOT / "data" / "world-subdivisions" / "DNK.geo.json"
 INTERACTION_TEST = ROOT / "scripts" / "test_world_map_subdivision_interaction.mjs"
 SEARCH_TEST = ROOT / "scripts" / "test_world_map_search.mjs"
+SPATIAL_TEST = ROOT / "scripts" / "test_world_map_spatial_core.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
     required = (
         BUILDER, POPULATION_ENRICHER, POPULATION_TEST, MODULE, SEARCH, SEARCH_CORE,
-        LIFECYCLE, INDEX, USA, DNK, INTERACTION_TEST, SEARCH_TEST,
+        SPATIAL_CORE, INFRASTRUCTURE, LIFECYCLE, INDEX, USA, DNK,
+        INTERACTION_TEST, SEARCH_TEST, SPATIAL_TEST,
     )
     for path in required:
         if not path.exists():
@@ -38,6 +42,8 @@ def main() -> int:
         module = MODULE.read_text(encoding="utf-8")
         search = SEARCH.read_text(encoding="utf-8")
         search_core = SEARCH_CORE.read_text(encoding="utf-8")
+        spatial_core = SPATIAL_CORE.read_text(encoding="utf-8")
+        infrastructure = INFRASTRUCTURE.read_text(encoding="utf-8")
         lifecycle = LIFECYCLE.read_text(encoding="utf-8")
         index = json.loads(INDEX.read_text(encoding="utf-8"))
         usa = json.loads(USA.read_text(encoding="utf-8"))
@@ -59,11 +65,23 @@ def main() -> int:
 
         for token in (
             "world-subdivisions/index.json", "atlas-subdivision", "subdivision=",
-            "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled",
-            "pendingDeepLinkId", "partitionForId", "viewport_bounds", "id_prefix",
+            "potato-atlas-subdivision-select", "potato-atlas-subdivision-clear",
+            "__potatoAtlasOverlayHandled", "pendingDeepLinkId", "partitionForId",
+            "viewport_bounds", "id_prefix", "handSubdivisionToInfrastructure",
         ):
             if token not in module:
                 errors.append(f"subdivision module missing marker: {token}")
+
+        for token in ("pointInGeometry", "assetsWithinGeometry", "Polygon", "MultiPolygon"):
+            if token not in spatial_core:
+                errors.append(f"spatial containment core missing marker: {token}")
+        for token in (
+            "showForSubdivision", "assetsWithinGeometry", "potato-atlas-subdivision-select",
+            "potato-atlas-subdivision-clear", "contained-location-context",
+            "spatial containment", "fallBackContext",
+        ):
+            if token not in infrastructure:
+                errors.append(f"infrastructure subdivision context missing marker: {token}")
 
         if "startsWith('US-') ? 'USA'" in module or 'USA_BOUNDS' in module:
             errors.append("subdivision renderer regressed to hard-coded U.S.-only partition selection")
@@ -130,22 +148,24 @@ def main() -> int:
 
         node = shutil.which("node")
         if node:
-            for js_path in (MODULE, SEARCH, SEARCH_CORE):
+            for js_path in (MODULE, SEARCH, SEARCH_CORE, SPATIAL_CORE, INFRASTRUCTURE):
                 checked = subprocess.run([node, "--check", str(js_path)], capture_output=True, text=True)
                 if checked.returncode:
                     errors.append(f"{js_path.name} syntax failed: " + (checked.stderr.strip() or checked.stdout.strip()))
-            interaction = subprocess.run([node, str(INTERACTION_TEST)], capture_output=True, text=True)
-            if interaction.returncode:
-                errors.append("subdivision interaction regression failed: " + (interaction.stderr.strip() or interaction.stdout.strip()))
-            search_test = subprocess.run([node, str(SEARCH_TEST)], capture_output=True, text=True)
-            if search_test.returncode:
-                errors.append("subdivision search regression failed: " + (search_test.stderr.strip() or search_test.stdout.strip()))
+            for label, test_path in (
+                ("subdivision interaction", INTERACTION_TEST),
+                ("subdivision search", SEARCH_TEST),
+                ("subdivision spatial containment", SPATIAL_TEST),
+            ):
+                test = subprocess.run([node, str(test_path)], capture_output=True, text=True)
+                if test.returncode:
+                    errors.append(f"{label} regression failed: " + (test.stderr.strip() or test.stdout.strip()))
     if errors:
         print("WORLD MAP SUBDIVISION VALIDATION FAILED")
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · DNK 5/5 · sourced observation contract · generic partitions/search · state refit loop guarded")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · DNK 5/5 · sourced observations · generic partitions/search · spatial infrastructure context · state refit loop guarded")
     return 0
 
 
