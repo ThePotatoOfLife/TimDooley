@@ -13,11 +13,12 @@ MODULE = ROOT / "world-map" / "3d-subdivisions.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
+INTERACTION_TEST = ROOT / "scripts" / "test_world_map_subdivision_interaction.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA)
+    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, INTERACTION_TEST)
     for path in required:
         if not path.exists():
             errors.append(f"missing subdivision integration file: {path.relative_to(ROOT)}")
@@ -30,7 +31,7 @@ def main() -> int:
         for token in ("GENZ2025", "cb_2025_us_state_20m.zip", "NST-EST2025-ALLDATA.csv", "EXPECTED_US_UNITS = 51", "parse_state_kml", "federal district"):
             if token not in builder:
                 errors.append(f"subdivision builder missing marker: {token}")
-        for token in ("world-subdivisions/index.json", "USA.geo.json", "atlas-subdivision", "subdivision=", "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled"):
+        for token in ("world-subdivisions/index.json", "USA.geo.json", "atlas-subdivision", "subdivision=", "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled", "pendingDeepLinkId"):
             if token not in module:
                 errors.append(f"subdivision module missing marker: {token}")
         if "3d-subdivisions.js" not in lifecycle or "map.getZoom() < 3.4" not in lifecycle:
@@ -61,12 +62,15 @@ def main() -> int:
             checked = subprocess.run([node, "--check", str(MODULE)], capture_output=True, text=True)
             if checked.returncode:
                 errors.append("3d-subdivisions.js syntax failed: " + (checked.stderr.strip() or checked.stdout.strip()))
+            interaction = subprocess.run([node, str(INTERACTION_TEST)], capture_output=True, text=True)
+            if interaction.returncode:
+                errors.append("subdivision interaction regression failed: " + (interaction.stderr.strip() or interaction.stdout.strip()))
     if errors:
         print("WORLD MAP SUBDIVISION VALIDATION FAILED")
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · state click refit loop guarded")
     return 0
 
 
