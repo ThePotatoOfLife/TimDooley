@@ -1,0 +1,103 @@
+{
+  "id": "spudlight-plant-carbon-storage-benchmark",
+  "title": "Spudlight / Starchforce — Plant Carbon Storage Benchmark",
+  "updated": "2026-09-14",
+  "status": "archive-generated biological benchmark instantiating the existing storage/release model; not a new force",
+  "document_type": "Theory / Paper",
+  "maturity": "T2 mathematical toy model",
+  "abstract": "This benchmark gives the existing Spudlight/Starchforce storage-release formalism one concrete scientific domain: plant carbon and tuber starch storage. It treats the model as an ordinary stock-flow system rather than a fundamental force. The state K(t) is a measurable starch or declared carbohydrate pool, input J_in(t) is a measured or inferred storage flux, eta controls mobilization/release, and Gamma represents other turnover or loss. The scientific test is whether the linear storage-release model predicts held-out stock trajectories better than simpler persistence or unconstrained stock-flow baselines, and whether a saturating release term earns its extra complexity.",
+  "research_question": "Can a minimal storage-release model predict measured plant/tuber carbon or starch dynamics with identifiable parameters and outperform simpler baselines on held-out observations?",
+  "provenance": {
+    "parent_model": "knowledge/science/spudlight-theory-and-equations.json",
+    "historical_project_vocabulary": "Spudlight and Starchforce are project terms with symbolic and theological meanings.",
+    "scientific_descendant_authorship": "The plant-carbon benchmark is a later archive-generated biological instantiation of an ordinary stock-flow model, not evidence for a fifth force or Tim-authored plant-physiology law."
+  },
+  "state_and_units": {
+    "K": "starch mass, carbon-equivalent stock or another explicitly declared storage proxy; use one unit consistently, e.g. g starch or g C",
+    "J_in": "storage input flux in stock-units per time",
+    "J_out": "mobilization/release flux in stock-units per time",
+    "eta": "linear mobilization rate, 1/time",
+    "Gamma": "other first-order turnover/loss rate, 1/time",
+    "t": "time in a declared unit such as hours or days"
+  },
+  "equations": {
+    "linear_balance": "dK/dt = J_in(t) - eta K - Gamma K",
+    "linear_release": "J_out=eta K",
+    "constant_input_solution": "K(t)=K_inf+[K(0)-K_inf] exp[-(eta+Gamma)t], K_inf=J0/(eta+Gamma)",
+    "saturating_candidate": "J_out(K)=J_max K/(K+K_half)",
+    "observation": "y_i = h(K(t_i)) + epsilon_i"
+  },
+  "initial_condition": {
+    "default": "K(0) is either directly measured at the first observation or estimated as a parameter with uncertainty.",
+    "rule": "Do not silently choose K(0) to improve fit; its treatment must be declared before model comparison."
+  },
+  "measurement_model": {
+    "direct_stock": "If laboratory starch/carbon stock is measured directly, h(K)=K after unit conversion and calibration.",
+    "proxy": "If K is inferred from a proxy, h must state the calibration relation and uncertainty rather than treating proxy units as stock units.",
+    "error": "epsilon_i represents measurement uncertainty; process discrepancy should be modeled separately if required."
+  },
+  "baseline_hierarchy": [
+    {
+      "id": "persistence",
+      "model": "K_hat(t+Delta)=K(t)",
+      "role": "naive minimum predictive baseline"
+    },
+    {
+      "id": "ordinary-stock-flow",
+      "model": "dK/dt=J_in(t)-J_out(t) with J_out observed or independently prescribed",
+      "role": "tests whether fitted first-order release is actually needed"
+    },
+    {
+      "id": "linear-storage-release",
+      "model": "dK/dt=J_in-(eta+Gamma)K",
+      "role": "primary benchmark model"
+    },
+    {
+      "id": "saturating-release",
+      "model": "dK/dt=J_in-J_max K/(K+K_half)-Gamma K",
+      "role": "higher-complexity candidate admitted only if data justify it"
+    }
+  ],
+  "identifiability": {
+    "warning": "With stock observations alone, eta and Gamma can be difficult or impossible to separate because only eta+Gamma may control the linear decay timescale.",
+    "repair": "Measure release/respiration/turnover channels independently where possible, fix one rate from external measurements with provenance, or report only identifiable combinations.",
+    "saturating_warning": "J_max and K_half can be strongly correlated unless observations span a wide enough range of K."
+  },
+  "calibration_protocol": [
+    "Freeze the biological system, stock definition, units and sampling interval.",
+    "Split calibration and evaluation observations by time, plant, treatment or experiment where feasible.",
+    "Estimate parameters with uncertainty rather than reporting point estimates alone.",
+    "Check residual structure and whether errors depend systematically on light cycle, developmental stage or treatment.",
+    "Compare predictive likelihood, held-out RMSE/MAE or another declared metric across the baseline hierarchy.",
+    "Penalize the saturating model for extra parameters using a declared model-selection criterion."
+  ],
+  "observables": [
+    "starch/carbohydrate stock through time",
+    "independently measured storage-input flux where available",
+    "mobilization or respiration flux where available",
+    "growth or remobilization response under changed light/source conditions",
+    "held-out predictive error"
+  ],
+  "limiting_cases": [
+    "eta=0 removes modeled mobilization.",
+    "Gamma=0 leaves only storage input and modeled release.",
+    "J_in=0 gives exponential depletion in the linear model.",
+    "K << K_half makes the saturating release approximately linear with rate J_max/K_half.",
+    "K >> K_half makes release approach J_max."
+  ],
+  "falsifiers": [
+    "The model violates measured carbon/mass balance under the declared unit convention.",
+    "Parameters remain non-identifiable at the available measurement resolution and no independently measured flux resolves them.",
+    "Persistence or a simpler stock-flow baseline predicts held-out observations as well or better after complexity penalties.",
+    "The saturating release model does not materially improve out-of-sample performance over the linear model.",
+    "A claimed universal Starchforce interpretation is rejected if the result is fully explained by ordinary plant physiology and no preregistered residual mechanism remains."
+  ],
+  "null_result_interpretation": "Failure of the benchmark is informative: it means this stock-flow form is not a useful description for the chosen biological system or measurement scale. It does not weaken or strengthen the project symbolism by itself.",
+  "maturity_boundary": "This benchmark remains T2 because no real dataset is fitted in this record. T3 requires actual parameter constraints, uncertainty and evaluation results with dataset provenance.",
+  "connections": [
+    "spudlight-theory-and-equations",
+    "integrated-scientific-architecture",
+    "science-model-registry",
+    "model-testing-protocol"
+  ]
+}
