@@ -3,11 +3,13 @@
 // The module is lazy-loaded by camera scale. It reads the same-origin partition
 // index, then loads country partitions only when they are relevant. The first
 // implemented partition is USA: 50 states + District of Columbia.
+// Deep-link contract: ?subdivision=US-CA (or another supported subdivision id).
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
+const USA_PARTITION_FALLBACK = 'USA.geo.json';
 const SOURCE_PREFIX = 'atlas-subdivisions-';
 const LINE_PREFIX = 'atlas-subdivision-line-';
 const HIT_PREFIX = 'atlas-subdivision-hit-';
@@ -23,7 +25,7 @@ function fmt(value) {
   return new Intl.NumberFormat('en', { maximumFractionDigits:1 }).format(value);
 }
 function esc(value) {
-  return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
+  return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[char]));
 }
 function installInspector() {
   if (document.getElementById('atlasSubdivisionCard')) return;
@@ -157,12 +159,14 @@ async function loadPartition(partition) {
   if (loaded.has(partition)) return loaded.get(partition);
   const index = await subdivisionIndex();
   const descriptor = index?.partitions?.[partition];
-  if (!descriptor?.path) throw new Error(`Subdivision partition ${partition} is not available.`);
-  const response = await fetch(`../data/world-subdivisions/${descriptor.path}`);
+  const fallbackPath = partition === 'USA' ? USA_PARTITION_FALLBACK : null;
+  const partitionPath = descriptor?.path || fallbackPath;
+  if (!partitionPath) throw new Error(`Subdivision partition ${partition} is not available.`);
+  const response = await fetch(`../data/world-subdivisions/${partitionPath}`);
   if (!response.ok) throw new Error(`Subdivision partition ${partition} unavailable (${response.status})`);
   const data = await response.json();
   if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error(`Subdivision partition ${partition} is not GeoJSON.`);
-  const state = { descriptor, data };
+  const state = { descriptor: descriptor || { path:partitionPath }, data };
   loaded.set(partition, state);
   installPartitionLayers(partition, data);
   return state;
