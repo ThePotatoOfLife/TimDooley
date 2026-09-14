@@ -61,14 +61,23 @@ function syncUrl(id) {
   history.replaceState({},'',url);
 }
 
+async function openCountry(iso3) {
+  const code = String(iso3 || '').toUpperCase();
+  if (!code || typeof window.goCountry !== 'function') return false;
+  await window.goCountry(code);
+  return true;
+}
+
 function renderInspector(feature) {
   installInspector();
   const card = document.getElementById('atlasPlaceCard');
   const p = feature?.properties || {};
   if (!card) return;
-  card.innerHTML = `<div style="display:flex;justify-content:space-between;gap:8px"><div><b style="font-size:14px">${esc(p.name || p.id)}</b><div class="muted">${p.capital ? 'Capital city' : 'City'} · ${esc(p.admin_region || p.country || p.iso3 || '')}</div></div><button type="button" data-place-close>×</button></div><div class="grid" style="margin-top:8px"><div class="metric"><span>Population</span><b>${fmt(p.population)}</b><small>${esc(p.population_period || '')}</small></div><div class="metric"><span>Country</span><b>${esc(p.iso3 || '—')}</b></div></div><div class="muted" style="margin-top:7px">${esc(p.source || '')}</div>`;
+  const countryAction = p.iso3 ? `<button type="button" data-place-country style="margin-top:8px;width:100%">Open ${esc(p.country || p.iso3)}</button>` : '';
+  card.innerHTML = `<div style="display:flex;justify-content:space-between;gap:8px"><div><b style="font-size:14px">${esc(p.name || p.id)}</b><div class="muted">${p.capital ? 'Capital city' : 'City'} · ${esc(p.admin_region || p.country || p.iso3 || '')}</div></div><button type="button" data-place-close>×</button></div><div class="grid" style="margin-top:8px"><div class="metric"><span>Population</span><b>${fmt(p.population)}</b><small>${esc(p.population_period || '')}</small></div><div class="metric"><span>Country</span><b>${esc(p.iso3 || '—')}</b></div></div><div class="muted" style="margin-top:7px">${esc(p.source || '')}</div>${countryAction}`;
   card.hidden = false;
   card.querySelector('[data-place-close]')?.addEventListener('click', clear);
+  card.querySelector('[data-place-country]')?.addEventListener('click', () => openCountry(p.iso3));
 }
 
 function clear() {
@@ -132,6 +141,7 @@ window.__potatoAtlasPlaces = {
   ready:Promise.resolve(true),
   select,
   clear,
+  openCountry,
   records(){ return features.map(feature => feature.properties); },
   get selected(){ return selectedId; },
 };
