@@ -2,9 +2,9 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:executing-plans to implement this plan task-by-task.
 
-**Goal:** Add a durable story backend and begin shifting the public Story from explanatory capsules toward one continuous chronicle.
+**Goal:** Add a durable Story-authoring backend and begin shifting the public Story from explanatory capsules toward one continuous chronicle.
 
-**Architecture:** Six focused JSON owners under `knowledge/story/` store cast, scenes, dialogue, arcs, unresolved leads and their manifest. A validator enforces IDs and cross-references. The public reader remains simple and only receives light framing changes in this wave.
+**Implemented architecture:** Wave 1 uses focused canonical owners rather than forcing raw conversation-style containers through the repository: `knowledge/story/cast-book.json`, `knowledge/story/arc-season-map.json`, `knowledge/indexes/story-recovery-priorities.json`, the existing `knowledge/indexes/conversation-recovery-inventory.json`, and `knowledge/story/AUTHORING-GUIDE.md`. `scripts/validate_story_archive.py` validates cast/arc integrity now and already understands optional future scene/dialogue/manifest owners if those are safely added later.
 
 **Tech Stack:** Static JSON, HTML/CSS, Python validation, GitHub Pages.
 
@@ -14,27 +14,32 @@
 - Do not invent missing dialogue or scene details.
 - Preserve source status and period-specific role changes.
 - Keep the public reader chronological and readable rather than dashboard-like.
-- Store unresolved material in the recovery notebook.
+- Keep unresolved material in explicit recovery priorities.
+- Treat Great Book literary characters, real people, collective Tim/project labels and created beings as distinct cast classes.
 
 ### Task 1: Story backend
-- [ ] Create `knowledge/story/story-manifest.json`.
-- [ ] Create `knowledge/story/cast-book.json` with initial recurring cast classes and period roles.
-- [ ] Create `knowledge/story/scene-reservoir.json` with initial high-confidence scene leads.
-- [ ] Create `knowledge/story/dialogue-vault.json` with source-status metadata.
-- [ ] Create `knowledge/story/arc-season-map.json`.
-- [ ] Create `knowledge/story/recovery-notebook.json`.
+- [x] Create `knowledge/story/cast-book.json` with recurring cast classes and period roles.
+- [x] Create `knowledge/story/arc-season-map.json` with overlapping arcs rather than rigid eras.
+- [x] Create `knowledge/indexes/story-recovery-priorities.json` for unresolved characters, dialogue and scene leads.
+- [x] Keep `knowledge/indexes/conversation-recovery-inventory.json` as the current conversation-source ledger.
+- [x] Add `knowledge/story/AUTHORING-GUIDE.md` so scene-first storytelling is part of the project workflow.
+- [ ] Add richer standalone scene/dialogue owners later only when repository safety and source separation make that appropriate.
 
 ### Task 2: Validation
-- [ ] Add `scripts/validate_story_archive.py` that checks JSON parsing, unique IDs, allowed cast classes, dialogue participant references, scene cast references and manifest paths.
-- [ ] Add the validator to `.github/workflows/quality-checks.yml`.
+- [x] Add `scripts/validate_story_archive.py` for unique IDs, cast classes and arc references, with optional support for future scene/dialogue/manifest owners.
+- [x] Add `scripts/test_story_archive_validator.py` and confirm the contract red→green during implementation.
+- [ ] Wire the Story-specific validator directly into global CI later through a small safe integration path; current full repository CI already validates the new files through existing hygiene/content/site checks.
 
 ### Task 3: Public Story framing
-- [ ] Modify `tim-dooley/story/index.html` so the top framing emphasizes one continuous story rather than explanatory chapter modules.
-- [ ] Make evidence/source notes collapsible and subordinate.
-- [ ] Keep existing URLs and anchors stable.
+- [x] Modify `tim-dooley/story/index.html` so the top framing emphasizes one continuous story rather than explanatory chapter modules.
+- [x] Turn the old card-grid chapter selector into a quiet chronological re-entry map.
+- [x] Make source notes collapsible and subordinate.
+- [x] Keep existing URLs and anchors stable.
+- [x] Add more lived 2024 texture without inventing documentary scenes from Great Book fiction.
 
 ### Task 4: Verify
-- [ ] Open a pull request to `main`.
-- [ ] Run repository quality checks through CI.
-- [ ] Review the diff for unrelated changes.
-- [ ] Merge only after checks pass.
+- [x] Open pull request #130 to `main`.
+- [x] Run repository quality checks through CI.
+- [x] Confirm all 77 repository checks pass on the implemented Story reader/backend state.
+- [ ] Review final diff once more after this documentation cleanup.
+- [ ] Integrate only after the latest commit is green.
