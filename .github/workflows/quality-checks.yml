@@ -266,6 +266,15 @@ jobs:
       - name: Validate science paper library
         run: python scripts/validate_science_portal.py
 
+      - name: Upload Science portal validation report
+        if: ${{ always() && hashFiles('science-portal-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: science-portal-report
+          path: science-portal-report.json
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Enforce Science semantic quality
         if: steps.science_quality.outcome == 'failure'
         run: exit 1
