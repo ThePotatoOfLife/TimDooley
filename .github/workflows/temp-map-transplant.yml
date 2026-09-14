@@ -1,0 +1,51 @@
+name: Temporary Map Transplant
+
+on:
+  push:
+    branches: [feat/world-map-places-search-v2]
+
+permissions:
+  contents: write
+
+jobs:
+  transplant:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+      - name: Transplant verified map wave onto current main
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main feat/world-map-advance-2026-09-15
+          source_ref="cf477a8d242bf4de54e38c28a29a2679099d65d0"
+          target="feat/world-map-advance-2026-09-15"
+          git switch -C "$target" origin/main
+          git checkout "$source_ref" -- \
+            data/world-subdivisions/DNK.geo.json \
+            data/world-subdivisions/index.json \
+            scripts/build_world_cities.py \
+            scripts/build_world_demography.py \
+            scripts/build_world_subdivisions.py \
+            scripts/compact_world_subdivisions.py \
+            scripts/geonames_city_acquisition.py \
+            scripts/test_world_cities_builder.py \
+            scripts/test_world_map_search.mjs \
+            scripts/test_world_map_subdivision_interaction.mjs \
+            scripts/test_world_subdivisions_builder.py \
+            scripts/validate_world_cities.py \
+            scripts/validate_world_map_places.py \
+            scripts/validate_world_map_search.py \
+            scripts/validate_world_map_subdivisions.py \
+            scripts/validate_world_map_ui_shell.py \
+            world-map/3d-panel-lifecycle.js \
+            world-map/3d-places.js \
+            world-map/3d-search-core.js \
+            world-map/3d-search.js \
+            world-map/3d-subdivisions.js
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/world-subdivisions scripts world-map
+          git commit -m "feat: transplant verified World Map places and subdivisions"
+          git push origin HEAD:"$target"
