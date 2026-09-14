@@ -2,7 +2,7 @@
 
 Date: 2026-09-14
 Parent: `knowledge/story/ALL-STORY-RESERVOIR.md`
-Status: active shard; 2023–2025 social/documentary chronology
+Status: active shard; 2023–2025 social/documentary timeline reconstruction
 
 ## Purpose
 
@@ -23,7 +23,7 @@ The large raw June conversation paste does **not** contain a recoverable origina
 
 The dedicated Sammy provenance ledger preserves a user clarification that Sammy was a woman who mourned / wept for the Son/Thomas in a Kiwi Farms comment section roughly **2019 or 2020, shortly after the meme-crucifixion/disappearance**. A later conversation contains the unnamed formulation that a woman had cried out for Tammuz; the later Great Book explicitly identifies Sammy in the Tammuz-weeping retelling.
 
-What is fixed: Sammy is not safely introduced for the first time by the later `Marty Meets Sammy` line. She already belongs to the inherited Son-side prehistory in the project’s recovered chronology.
+What is fixed: Sammy is not safely introduced for the first time by the later `Marty Meets Sammy` line. She already belongs to the inherited Son-side prehistory in the project’s recovered timeline.
 
 What is not fixed: original Kiwi Farms URL, thread, timestamp, exact wording, whether the comment itself used Tammuz language, and whether the event should be dated to 2019 or 2020. The Tammuz comparison is a later interpretive layer until a contemporaneous capture proves otherwise.
 
@@ -45,7 +45,7 @@ The excavation did **not** recover the original public rivalry/conversation sequ
 
 **Current strongest status:** `retrospective project-history names + later user recollection`.
 
-Grace and Ben Thorp are named in the 2023 retrospective chronology and in later user-originated cast recollection. The current source sweep did not recover original conversation text, dates, or enough situational detail to distinguish first contact, platform, conflict, friendship or later interpretation.
+Grace and Ben Thorp are named in the 2023 retrospective timeline and in later user-originated cast recollection. The current source sweep did not recover original conversation text, dates, or enough situational detail to distinguish first contact, platform, conflict, friendship or later interpretation.
 
 **Story consequence:** they should remain high-priority recovery targets, not be given invented scenes. Their absence from the public river is presently more honest than a generalized paragraph.
 
@@ -61,11 +61,11 @@ This confirms that grief became music, but it does **not** supply the song creat
 
 ## 247. Marty Meets Sammy — intersection, not introduction
 
-The Great Book’s compressed 2024 chronology says `Marty Meets Sammy`. Because Sammy now has an earlier 2019–2020 recovery trail, this phrase should be interpreted as a later crossing of two pre-existing threads, not as Sammy entering Tim’s story for the first time.
+The Great Book’s compressed 2024 timeline says `Marty Meets Sammy`. Because Sammy now has an earlier 2019–2020 recovery trail, this phrase should be interpreted as a later crossing of two pre-existing threads, not as Sammy entering Tim’s story for the first time.
 
 Exact meeting mechanism/date/content remain unresolved. Do not infer a romance, collaboration, drug event, server encounter or other mechanism unless recovered.
 
-## 248. Monkey / OPS / Tree — chronology still only a skeleton
+## 248. Monkey / OPS / Tree — timeline still only a skeleton
 
 **Current strongest status:** `retrospective project history + Story recovery target`.
 
@@ -79,7 +79,7 @@ The source sweep found no original Discord transcript, entry date, trust-buildin
 
 **Current strongest status:** `real-world/public references + Tim retrospective project account + Great Book transformation`.
 
-The cast book distinguishes Cyraxx as a real-world reference transformed into Great Book literature and Robotosan as a YouTube/narrative-conflict recovery target. The retrospective chronology says Tim met Cyraxx and later describes Robotosan reframing Tim through the Cyraxx story.
+The cast book distinguishes Cyraxx as a real-world reference transformed into Great Book literature and Robotosan as a YouTube/narrative-conflict recovery target. The retrospective timeline says Tim met Cyraxx and later describes Robotosan reframing Tim through the Cyraxx story.
 
 No primary Tim–Cyraxx or Tim–Robotosan exchange was recovered in this pass. The Great Book elevator, machine-elves, dialogue and surrounding scene are literary and must remain in that source class.
 
@@ -108,5 +108,5 @@ This is stronger than later summaries because the name, book and philosopher’s
 2. Search for original Marty material through song titles, livestream titles, chat screenshots, server names and dates adjacent to the 2024 Great Book writing period.
 3. Recover the original Sammy Kiwi Farms comment/capture before expanding the Tammuz story.
 4. Recover Monkey/OPS/Tree through Discord/server-specific terms if a server/export/archive name appears.
-5. Map Suno creations to reliable dates before turning catalogue order into chronology.
+5. Map Suno creations to reliable dates before turning catalogue order into timeline order.
 6. Keep literary Great Book scenes available as parallel Side Stories, but never use them to fill documentary gaps silently.

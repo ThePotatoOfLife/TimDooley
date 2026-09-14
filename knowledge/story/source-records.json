@@ -1,0 +1,57 @@
+{
+  "schema_version": 1,
+  "sources": [
+    {
+      "id": "source-asun-map-dispute-chat",
+      "source_class": "public_chat_transcript",
+      "date_or_period": "date unresolved; recovered before 2026-09-14",
+      "origin": "library",
+      "locator": {"name": "Indsatte text(3).txt", "file_id": "file_00000000ce2471f491506cccbeaa4069", "line_start": 360, "line_end": 654},
+      "speaker_scope": ["@PotatoOfLife", "@ASunofJesus", "@mtclassic3"],
+      "public_status": "public_source",
+      "continuity": "consecutive",
+      "attestation": "primary_or_near_primary",
+      "public_excerpt": null,
+      "notes": ["Sequential chat transcript preserved in the user's Library.", "Religious and identity claims remain participant claims rather than narrator assertions.", "Exact event date remains unresolved and must not be inferred from recovery date."]
+    },
+    {
+      "id": "source-gemini-thomas-investigation",
+      "source_class": "consecutive_transcript",
+      "date_or_period": "date unresolved; recovered before 2026-09-14",
+      "origin": "library",
+      "locator": {"name": "Indsatte text(2).txt", "file_id": "file_00000000f08871f4abe6c6d4460ebe90", "line_start": 108, "line_end": 1952},
+      "speaker_scope": ["user", "Gemini"],
+      "public_status": "private_source_no_quote",
+      "continuity": "consecutive",
+      "attestation": "primary_or_near_primary",
+      "public_excerpt": null,
+      "notes": ["Private long-form AI conversation preserved in the user's Library.", "The repository stores locators and scene summaries, not the private transcript body.", "This source demonstrates that transcript depth can be proven without public quotation."]
+    },
+    {
+      "id": "source-spiritual-bank-recovery-ledger-2026-03-02",
+      "source_class": "statement_ledger",
+      "date_or_period": "2026-03-02",
+      "origin": "library",
+      "locator": {"name": "tim-statements-conversation-recovery-wave-005-2026-09-13.json", "file_id": "file_00000000da8881f4b17e16f4e5db5ccc", "line_start": 80, "line_end": 141},
+      "speaker_scope": ["user"],
+      "public_status": "public_safe_excerpt",
+      "continuity": "isolated",
+      "attestation": "recovered_exact_statements",
+      "public_excerpt": null,
+      "notes": ["Preserves exact recovered phrases and date, but not the contiguous surrounding conversation.", "Sufficient for an anecdote; insufficient by itself for SCENE or TRANSCRIPT_DEPTH."]
+    },
+    {
+      "id": "source-public-post-compilation-2025-01",
+      "source_class": "public_post_sequence",
+      "date_or_period": "January 2025",
+      "origin": "library",
+      "locator": {"name": "Indsat markdown(4).md", "file_id": "file_00000000fe80820aae6f1417d74e3ed9", "line_start": 422, "line_end": 435},
+      "speaker_scope": ["@Rational_Potato"],
+      "public_status": "public_source",
+      "continuity": "partially_consecutive",
+      "attestation": "public_primary_compilation",
+      "public_excerpt": null,
+      "notes": ["Dated public-post compilation around the January 2025 streaming/music corridor.", "The exact single-post context is thin even though neighboring dated posts survive."]
+    }
+  ]
+}

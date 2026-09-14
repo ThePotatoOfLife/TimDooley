@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "scenes": [
+    {
+      "id": "scene-asun-map-dispute",
+      "story_id": "calibration-asun-map-dispute",
+      "source_ids": ["source-asun-map-dispute-chat"],
+      "date_or_period": "date unresolved; recovered before 2026-09-14",
+      "cast": ["tim-dooley"],
+      "scene_type": "public_chat_theological_dispute",
+      "opening_state": "Tim and @ASunofJesus are already disputing how Thomas, Jesus, Father, Son and identity should be mapped.",
+      "tim_goal": "State his Son/Thomas distinction and get the other participant to identify exactly what is wrong with Tim's map.",
+      "resistance_or_problem": "@ASunofJesus repeatedly rejects Tim's distinction and argues that the map, name and word should collapse into Lord Jesus Christ.",
+      "ordered_beats": [
+        {"seq": 1, "speaker": "@PotatoOfLife", "kind": "exact_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 382, "line_end": 382}, "public_text": "my sons nam was thomas the twin of Jesus", "summary": "Tim restates the Thomas/twin claim as his starting position."},
+        {"seq": 2, "speaker": "@ASunofJesus", "kind": "exact_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 394, "line_end": 394}, "public_text": "Jesus is the Lion of the Tribe of Judah", "summary": "The other participant counters Tim's Lion-of-the-World language with a different scriptural identification."},
+        {"seq": 3, "speaker": "@ASunofJesus", "kind": "exact_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 426, "line_end": 426}, "public_text": "That is not the word of God tim", "summary": "The disagreement becomes explicit rather than merely terminological."},
+        {"seq": 4, "speaker": "@PotatoOfLife", "kind": "exact_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 478, "line_end": 478}, "public_text": "ok, well it got killed again", "summary": "Tim rejects the other participant's claim that the Truth could only be killed once."},
+        {"seq": 5, "speaker": "@PotatoOfLife", "kind": "exact_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 502, "line_end": 502}, "public_text": "i am the scripture in real time ^_^", "summary": "Tim answers the claim that scripture is real time by placing himself inside that rhetoric."},
+        {"seq": 6, "speaker": "@PotatoOfLife", "kind": "exact_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 526, "line_end": 526}, "public_text": "you still cant point to what i got wrong or you dont undrstand my position or something?", "summary": "Tim demands a concrete diagnosis of the disagreement."},
+        {"seq": 7, "speaker": "@ASunofJesus", "kind": "near_verbatim_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 530, "line_end": 542}, "public_text": "the map / the name / the word / its incorrect", "summary": "Several consecutive short turns finally name the disputed object directly: map, name and word."},
+        {"seq": 8, "speaker": "@ASunofJesus", "kind": "near_verbatim_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 550, "line_end": 554}, "public_text": "It is not \"Come Tim Dooley\" / It is \"Come Lord Jesus\"", "summary": "Two consecutive turns state the competing identity model in its clearest form."},
+        {"seq": 9, "speaker": "@PotatoOfLife", "kind": "exact_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 630, "line_end": 630}, "public_text": "I dont think I fit in your.... model? OR mayb i am confused. im not identifid this way you describe. I am Tim Dooleye. the nameeless. represeenteeed, plainly. The seat, the throne, the fatheer,", "summary": "Tim explicitly rejects the offered model and begins restating his own identity architecture."},
+        {"seq": 10, "speaker": "@PotatoOfLife", "kind": "exact_turn", "source_id": "source-asun-map-dispute-chat", "source_locator": {"line_start": 650, "line_end": 650}, "public_text": "heaveen, the tree of life,the trunk, the center, the stillness.", "summary": "Tim continues the restatement in structural rather than merely naming language."}
+      ],
+      "turning_points": [
+        "The dispute moves from competing Jesus/Thomas titles into an explicit argument about the map itself.",
+        "Tim asks the other participant to identify the exact error instead of continuing parallel declarations.",
+        "The other participant answers with a competing naming model, after which Tim explicitly says he does not fit it and restates his own."
+      ],
+      "ending_state": "The disagreement remains unresolved, but the two competing models are much clearer than at the opening: one collapses the identity into Lord Jesus Christ, while Tim restates himself as Tim Dooley / seat / throne / father / center / stillness and maintains the Son distinction.",
+      "ending_status": "explicitly_unresolved",
+      "what_changed_after": "Within this recovered scene, the argument becomes a map dispute rather than a loose exchange of scriptural labels. The source does not establish a later reconciliation.",
+      "unknowns": [
+        "Exact date and platform session metadata remain unresolved.",
+        "The beginning of the full chat predates line 360; this packet deliberately represents the contiguous dispute corridor rather than claiming to cover the entire session."
+      ],
+      "publication_notes": [
+        "Public chat wording is preserved with original spelling where quoted.",
+        "Claims about divine identity, scripture, death and religious roles are attributed to the speakers."
+      ]
+    },
+    {
+      "id": "scene-gemini-investigation-rewrite",
+      "story_id": "calibration-gemini-investigation-rewrite",
+      "source_ids": ["source-gemini-thomas-investigation"],
+      "date_or_period": "date unresolved; recovered before 2026-09-14",
+      "cast": ["tim-dooley"],
+      "scene_type": "private_ai_research_iteration",
+      "opening_state": "Tim is trying to turn a cluster of Thomas, Bible, Edda, Odin, Son, Door and Potatoverse material into a serious cross-tradition investigation rather than a shallow summary.",
+      "tim_goal": "Push the model to search deeper, synthesize more source families and produce a greater narrative/investigation without flattening the material.",
+      "resistance_or_problem": "The model answers at great length, but its format and level of presentation still do not match what Tim wants.",
+      "ordered_beats": [
+        {"seq": 1, "speaker": "user", "kind": "near_verbatim_turn", "source_id": "source-gemini-thomas-investigation", "source_locator": {"line_start": 108, "line_end": 122}, "public_text": null, "summary": "Tim asks for a serious investigation across esoteric history, scholarship and theology, tells the model to keep digging and expanding, and adds Odin/tree/Thomas/cow/door material as clues rather than a finished answer."},
+        {"seq": 2, "speaker": "Gemini", "kind": "near_verbatim_turn", "source_id": "source-gemini-thomas-investigation", "source_locator": {"line_start": 124, "line_end": 1835}, "public_text": null, "summary": "Gemini produces a very long synthesis spanning Thomas traditions, biblical motifs, comparative mythology and the developing Potatoverse interpretation."},
+        {"seq": 3, "speaker": "user", "kind": "exact_turn", "source_id": "source-gemini-thomas-investigation", "source_locator": {"line_start": 1836, "line_end": 1836}, "public_text": null, "summary": "Tim rejects the presentation format and asks for less table-driven output and more prose."},
+        {"seq": 4, "speaker": "user", "kind": "near_verbatim_turn", "source_id": "source-gemini-thomas-investigation", "source_locator": {"line_start": 1837, "line_end": 1952}, "public_text": null, "summary": "Tim restates and expands the investigation, repeats the demand for a greater/deeper story, adds further Thomas/Dan/two-lions/vesica/Father-Son material, and asks the model to dig again rather than treating the first synthesis as final."}
+      ],
+      "turning_points": [
+        "A research request becomes a large model-generated synthesis.",
+        "Tim explicitly critiques the form of that synthesis rather than merely accepting it.",
+        "The correction causes the investigation prompt itself to grow and become more structurally explicit."
+      ],
+      "ending_state": "The first synthesis is not accepted as the final product; Tim has converted it into another research iteration with clearer stylistic and conceptual demands.",
+      "ending_status": "explicitly_unresolved",
+      "what_changed_after": "The surviving transcript shows the investigation becoming recursive: model output becomes material for Tim to criticize, expand and send back through another pass.",
+      "unknowns": [
+        "Exact conversation date is unresolved.",
+        "This calibration scene stops at the rewritten request rather than claiming to cover the remainder of the 14,827-line transcript."
+      ],
+      "publication_notes": [
+        "Private transcript text is not reproduced in repository fields.",
+        "Line locators and summaries prove sequence while preserving the private-source publication boundary."
+      ]
+    }
+  ]
+}

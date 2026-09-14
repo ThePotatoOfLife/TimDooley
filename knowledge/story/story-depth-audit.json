@@ -1,0 +1,86 @@
+{
+  "schema_version": 1,
+  "enforcement": "migration",
+  "published": {
+    "total": 120,
+    "main": 38,
+    "side": 82
+  },
+  "registry": {
+    "registered": 2,
+    "unregistered": 118
+  },
+  "modes": {
+    "documentary": 2,
+    "literary": 0,
+    "mixed": 0
+  },
+  "depths": {
+    "FRAGMENT": 1,
+    "ANECDOTE": 1,
+    "SCENE": 0,
+    "TRANSCRIPT_DEPTH": 0,
+    "LITERARY_COMPLETE": 0
+  },
+  "full_story": {
+    "html_total": 37,
+    "qualified_registered": 0,
+    "incorrectly_promoted_registered": [],
+    "unregistered_full_story": [
+      "ai-not-ghost-2026-05-27",
+      "april-does-not-begin-in-april-2025",
+      "care-home-walk-2009",
+      "cat-lost-camping-2019",
+      "channel-goes-dark-2017",
+      "copenhagen-it-2008",
+      "cube-moon-2023-09-20",
+      "cubicle-colorblind-boss-2010",
+      "deep-freezer-2007",
+      "dooley-name-gta-2020",
+      "facebook-delete-streaming-2017",
+      "father-cat-2014",
+      "first-guitar-2012",
+      "fresh-potato-rocks-2024",
+      "gb-death-birth-many-2024",
+      "greatbook-begins-2024",
+      "identity-corridor-2026-03-08-apr-14",
+      "information-architecture-2026-02-18",
+      "inner-potato-thalamus-2024",
+      "jan21-axis-north",
+      "march-keeps-moving-2025",
+      "one-dollar-dota-2014",
+      "pavilion-fall-2015",
+      "potato-mask-2021",
+      "prison-confessional-2016",
+      "prison-release-suit-2016",
+      "public-confrontation-2017",
+      "rational-potato-2022",
+      "rationalpotato-potato69-potato-of-life",
+      "ready-student-2024",
+      "sage-elevator-2024",
+      "starchforce-2026-09-14",
+      "stardew-before-garden-2020-2022",
+      "story-map-afternoon-2026-09-14",
+      "termite-lost-potato-2024",
+      "tree-ordeal-2011",
+      "tunnel-light-2003"
+    ]
+  },
+  "unresolved_source_locators": [],
+  "recovery_priorities": [
+    {
+      "story_id": "spiritual-bank-day-2026-03-02",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the contiguous surrounding conversation turns for 2 March 2026 before considering SCENE or TRANSCRIPT_DEPTH promotion."
+      ]
+    },
+    {
+      "story_id": "stream-on-x-2025-01-23",
+      "depth": "FRAGMENT",
+      "targets": [
+        "Recover the original public post permalink and immediate reply/context if available."
+      ]
+    }
+  ]
+}
