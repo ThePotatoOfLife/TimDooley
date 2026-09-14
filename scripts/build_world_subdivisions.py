@@ -24,7 +24,7 @@ OUT_DIR = Path(os.environ.get("ATLAS_SUBDIVISIONS_OUT_DIR", ROOT / "data" / "wor
 
 CENSUS_KML_ZIP = "https://www2.census.gov/geo/tiger/GENZ2025/kml/cb_2025_us_state_20m.zip"
 POPULATION_CSV = "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv"
-USER_AGENT = "ThePotatoOfLife-world-atlas-subdivisions/1.2"
+USER_AGENT = "ThePotatoOfLife-world-atlas-subdivisions/1.3"
 EXPECTED_US_UNITS = 51
 KML_NS = {"k": "http://www.opengis.net/kml/2.2"}
 
@@ -169,6 +169,7 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
         "code": abbreviation,
         "fips": fips,
         "parent_iso3": "USA",
+        "parent_name": "United States of America",
         "subdivision_type": "federal district" if abbreviation == "DC" else "state",
         "area_km2": total_km2,
         "area_definition": "Census ALAND + AWATER attributes; not calculated from simplified display geometry",
@@ -190,6 +191,23 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
     }
 
 
+def subdivision_search_records(features: list[dict], parent_name: str) -> list[dict]:
+    records = []
+    for feature in features:
+        props = feature.get("properties") or {}
+        if not props.get("id") or not props.get("name"):
+            continue
+        records.append({
+            "id": props["id"],
+            "name": props["name"],
+            "code": props.get("code"),
+            "subdivision_type": props.get("subdivision_type") or "subdivision",
+            "parent_iso3": props.get("parent_iso3"),
+            "parent_name": props.get("parent_name") or parent_name,
+        })
+    return records
+
+
 def build_usa() -> dict:
     geometry = census_state_geojson()
     population = census_population_2025()
@@ -209,7 +227,7 @@ def build_usa() -> dict:
         "type": "FeatureCollection",
         "name": "world-subdivisions-USA",
         "metadata": {
-            "version": "1.2.0",
+            "version": "1.3.0",
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "parent_iso3": "USA",
             "feature_count": len(features),
@@ -229,7 +247,7 @@ def main() -> int:
     usa_path = OUT_DIR / "USA.geo.json"
     usa_path.write_text(json.dumps(usa, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     index = {
-        "version": "1.2.0",
+        "version": "1.3.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-subdivision-partition-index",
         "partitions": {
@@ -241,11 +259,15 @@ def main() -> int:
                 "source": "U.S. Census Bureau",
                 "geometry_vintage": "2025",
                 "population_vintage": "2025-07-01",
+                "id_prefix": "US-",
+                "parent_name": "United States of America",
+                "viewport_bounds": {"west": -179.5, "east": -65, "south": 17, "north": 72.5},
+                "search_records": subdivision_search_records(usa["features"], "United States of America"),
             }
         },
     }
     (OUT_DIR / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-    print(json.dumps({"output": str(usa_path), "features": EXPECTED_US_UNITS}, indent=2))
+    print(json.dumps({"output": str(usa_path), "features": EXPECTED_US_UNITS, "search_records": EXPECTED_US_UNITS}, indent=2))
     return 0
 
 
