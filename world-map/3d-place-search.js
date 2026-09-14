@@ -223,10 +223,16 @@ function cityExact(matches, query) {
   ) || null;
 }
 
+let cityFocusInProgress = false;
 async function focusCity(city, options = {}) {
   if (!city?.id || !Array.isArray(city.coordinates)) return false;
   const selection = window.__potatoAtlasSelection;
-  if (selection?.activate && city.iso3) await selection.activate(city.iso3, { fly:false });
+  cityFocusInProgress = true;
+  try {
+    if (selection?.activate && city.iso3) await selection.activate(city.iso3, { fly:false });
+  } finally {
+    cityFocusInProgress = false;
+  }
   ensurePlaceMarker();
   map.getSource(PLACE_SOURCE)?.setData?.({
     type:'FeatureCollection',
@@ -293,6 +299,19 @@ async function warmPlaces() {
   const [subdivisionRows, cityRowsResult] = await Promise.all([warmSubdivisions(), warmCities()]);
   return { subdivisions:subdivisionRows, cities:cityRowsResult };
 }
+
+// Keep exactly one geographic detail state. A direct country click or an external
+// subdivision selection should clear an older city marker/deep link. Country
+// activation performed as part of focusCity is exempt so the city can retain its
+// parent-country context and selected point.
+window.addEventListener('potato-atlas-selection-change', () => {
+  if (cityFocusInProgress) return;
+  if (new URL(location.href).searchParams.has('place')) clearPlace();
+});
+window.addEventListener('potato-atlas-subdivision-select', () => {
+  if (cityFocusInProgress) return;
+  if (new URL(location.href).searchParams.has('place')) clearPlace();
+});
 
 // Capture Enter before the original country-only handler. We own the complete
 // route only after the country datalist is populated; before that, the core
