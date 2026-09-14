@@ -61,3 +61,7 @@ window.__potatoAtlasPanelLifecycle = {
   publish:publishPanelLifecycle,
   get revision() { return coreRevision; },
 };
+
+// Register the lightweight physical-context controller after the core paint.
+// Elevation and hillshade tiles remain dormant until the user enables Terrain.
+queueMicrotask(() => window.__potatoAtlasLoadModule?.('Physical Terrain', './3d-physical-terrain.js'));
