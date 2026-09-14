@@ -134,3 +134,104 @@
 - [ ] Add related-path buttons from `BibleAtlas.relatedPaths`.
 - [ ] Run reader validation; expect PASS.
 - [ ] Commit as `feat: make Bible comparisons story-first`.
+
+### Task 8: Add local WEB source projection and Scripture zoom
+
+**Files:**
+- Create: `scripts/vendor_web_bible.py`
+- Create: `data/sources/bible/web/index.json`
+- Create: `app/bible-scripture-reader.js`
+- Modify: `traditions/bible/index.html`
+- Modify: `app/bible-study.css`
+- Create: `scripts/validate_web_bible_source.py`
+
+**Interfaces:**
+- `window.BibleScripture.getRange(book,startChapter,startVerse,endChapter,endVerse)`
+- `window.BibleScripture.getChapter(book,chapter)`
+
+- [ ] Implement source validation first for book index, chapter/verse identity and source metadata.
+- [ ] Implement vendoring/import from the existing WEB source manifest/upstream while preserving exact wording.
+- [ ] Populate local book data.
+- [ ] Implement Scripture reader.
+- [ ] Add `Fragment → Whole scene → Chapter → Story/Intertext` controls.
+- [ ] Validate every scene span against local WEB.
+- [ ] Commit as `feat: add local WEB scripture zoom`.
+
+### Task 9: Generate machine-readable quality and coverage reports
+
+**Files:**
+- Modify: `scripts/audit_bible_witness_coverage.py`
+- Create: `scripts/build_bible_comparator_coverage.py`
+- Create: `knowledge/indexes/bible-comparator-quality-report.json`
+- Create: `knowledge/indexes/bible-comparator-coverage.json`
+
+- [ ] Add JSON-output validation.
+- [ ] Extend witness audit to emit per-relation quality dimensions and `recommended_action`.
+- [ ] Build coverage generator from the manifest corpus and scene registry.
+- [ ] Generate committed baseline reports.
+- [ ] Validate strength-5/Level-A quality gates.
+- [ ] Commit as `feat: map Bible comparator quality and coverage`.
+
+### Task 10: Enrich the highest-priority thin relations
+
+**Files:** manifest-active dossier/enrichment/scene/fragment owners selected by the quality report.
+
+- [ ] Select strength-5 rows with `recommended_action=enrich`.
+- [ ] Add missing project context without exceeding source status.
+- [ ] Add biblical scene/literary/historical context.
+- [ ] Add sequence, role mapping, mismatch, maximum claim and why-it-matters where missing.
+- [ ] Re-run quality report and verify the high-priority gap count falls without integrity violations.
+- [ ] Commit coherent families as `data: enrich Bible comparator <family>`.
+
+### Task 11: Track reviewed/no-relation coverage
+
+**Files:**
+- Create: `knowledge/indexes/bible-scene-review-status.json`
+- Create: `scripts/validate_bible_scene_review_status.py`
+- Modify: `scripts/build_bible_comparator_coverage.py`
+
+**Interface statuses:** `unreviewed`, `reviewed-relations`, `reviewed-no-meaningful-relation`, `reviewed-weak-only`, `reviewed-duplicate-only`.
+
+- [ ] Add schema validation.
+- [ ] Seed statuses for initial authored scenes.
+- [ ] Surface review status in the coverage report, never as theological authority.
+- [ ] Commit as `feat: track Bible scene review coverage`.
+
+### Task 12: Begin Bible-wide expansion from coverage gaps
+
+**Files:** extend scenes, active enrichment owners and review status.
+
+- [ ] Work through Father/parent; burden/yoke/release; throne/source; emptying; mediation; cultivation; inheritance/adoption; exile/return; priest/king/prophet; temple/body/house.
+- [ ] Deepen Joseph, David, John 10, John 14, Daniel/cloud-coming, Passion, Thomas/resurrection, Ezekiel and Revelation city/river/Tree corridors.
+- [ ] Record weak/no-relation outcomes explicitly instead of forcing promotion.
+- [ ] Regenerate quality/coverage reports after each coherent batch.
+- [ ] Commit batches as `research: deepen Bible atlas <book-or-family>`.
+
+### Task 13: Retire redundant wave-specific runtime loaders after parity
+
+**Files:**
+- Modify: `traditions/bible/index.html`
+- Modify/remove compatibility logic in `app/bible-mining-wave19-loader.js`, `app/bible-mining-wave20-loader.js`, `app/bible-mining-wave22-loader.js`, `app/bible-mining-wave23-loader.js`
+- Modify: `scripts/validate_bible_reader.py`
+
+- [ ] Add exact active-ID parity validation before loader removal.
+- [ ] Switch the page to `app/bible-corpus-loader.js`.
+- [ ] Remove redundant wrappers only after parity passes.
+- [ ] Run the full repository quality workflow.
+- [ ] Commit as `refactor: retire Bible wave loader chain`.
+
+### Task 14: Final verification and public usability pass
+
+- [ ] Run all Bible manifest/corpus/scene/source/reader/parity validators.
+- [ ] Run the repository's full site/quality workflow.
+- [ ] Manually verify Joseph, Door/Shepherd, Thomas, Lion/Lamb, Cloud/Coming and New Jerusalem are reachable without search.
+- [ ] Verify whole-scene/chapter zoom, breadcrumbs and visible countertexts.
+- [ ] Verify mobile and keyboard behavior.
+- [ ] Commit final fixes as `fix: complete Bible atlas usability verification`.
+
+## Plan self-review
+
+- Spec coverage includes manifest, scenes, full WEB source, atlas routes, breadcrumbs, story-first view, Scripture zoom, quality audit, coverage map, book-by-book expansion, countertexts and loader retirement.
+- No placeholder/TODO instructions remain.
+- Stable interface names: `BibleCorpus`, `BibleAtlas`, `BibleScripture`, `biblical_scene_ids`, `primary_biblical_scene_id`.
+- Live reader stays usable and destructive loader retirement is deferred until parity is demonstrated.
