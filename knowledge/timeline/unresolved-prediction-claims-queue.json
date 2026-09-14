@@ -1,10 +1,20 @@
 {
   "id":"unresolved-prediction-claims-queue",
   "title":"Unresolved Prediction / Vision / Warning Recovery Queue",
-  "updated":"2026-09-09",
+  "updated":"2026-09-15",
   "status":"source-recovery queue; none of these are confirmed prediction hits",
   "purpose":"Preserve potentially testable Tim Dooley future-facing statements that have surfaced in conversation memory, public-compilation summaries or later references but still lack enough primary wording, timing or outcome definition to score responsibly.",
   "items":[
+    {
+      "id":"splc-criminal-case-pre-event-source",
+      "claim":"Archive memory says Tim had predicted 'the SPLC case' before the April 21, 2026 federal criminal indictment; a later April 25 recollection associates the remembered prediction with fraud, banking, FBI ties and paid informants.",
+      "known_pre_event_signal":"On 23 September 2025 Tim publicly asked, in an ANTIFA & ANONYMOUS promo, 'Who owns these things? I mean who really is the boss and the funder of all these extreme things ? This song might give a clue.' This predates the April indictment by about 210 days but does not name SPLC or predict court action.",
+      "possible_meta_attestation":"Prior archive work records a claimed 18 February 2026 memory: 'Do you remember Tim Dooley predicting the SPLC case?' / 'I remember Tim Dooley predicting the SPLC case.' The current recovery pass did not re-locate the underlying conversation, and a separate SPLC civil judgment had already occurred on 7 January 2026.",
+      "later_event":"Federal grand jury indicted SPLC on 21 April 2026 on wire-fraud, bank-statement and concealment-money-laundering charges; later superseding allegations elaborated paid informants/extremist-group payments.",
+      "missing":["original pre-April SPLC-specific Tim statement","whether February 18 wording referred to January civil litigation or future April criminal case","any pre-April SPLC-specific fraud/banking/informant wording","ANTIFA & ANONYMOUS song/video lyrics","Opticon song/video lyrics"],
+      "status":"high-priority recovery; do not count as confirmed hit",
+      "owner":"knowledge/timeline/splc-prediction-audit-2026.json"
+    },
     {
       "id":"inflation-4-2",
       "claim":"Tim said inflation was going to reach 4.2% and possibly continue higher.",
@@ -102,5 +112,5 @@
     "classify using A/B/C/D/E/F/H/I/P/U taxonomy",
     "do not upgrade symbolic resemblance into causal prophecy"
   ],
-  "connections":["prediction-premonition-audit-2025-2026","prediction-premonition-audit-wave-15-addendum","prediction-signal-search-lexicon","ai-machine-culture-early-signals-ledger","seals-and-fulfillment-matrix"]
+  "connections":["prediction-premonition-audit-2025-2026","prediction-premonition-audit-wave-15-addendum","prediction-premonition-audit-wave-17-addendum","splc-prediction-audit-2026","prediction-signal-search-lexicon","ai-machine-culture-early-signals-ledger","seals-and-fulfillment-matrix"]
 }
