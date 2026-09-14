@@ -2,9 +2,10 @@
 """Build same-origin subdivision snapshots for the World Map.
 
 The first partition is the United States: 50 states plus the District of Columbia.
-Geometry comes from the U.S. Census Bureau TIGERweb 2025 state layer and population
-comes from Census Vintage 2025 state estimates. Browser code consumes only the
-generated repository/deployment snapshot; Census is a build-time acquisition source.
+Display geometry comes from the U.S. Census Bureau 2025 cartographic-boundary KML
+archive and population comes from Census Vintage 2025 state estimates. Browser code
+consumes only the generated repository/deployment snapshot; Census is a build-time
+acquisition source.
 """
 from __future__ import annotations
 
@@ -12,21 +13,21 @@ import csv
 import io
 import json
 import os
-import urllib.parse
 import urllib.request
+import xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
+from zipfile import ZipFile
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = Path(os.environ.get("ATLAS_SUBDIVISIONS_OUT_DIR", ROOT / "data" / "world-subdivisions"))
 
-TIGER_LAYER = "https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Current/MapServer/80/query"
+CENSUS_KML_ZIP = "https://www2.census.gov/geo/tiger/GENZ2025/kml/cb_2025_us_state_5m.zip"
 POPULATION_CSV = "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv"
-USER_AGENT = "ThePotatoOfLife-world-atlas-subdivisions/1.0"
+USER_AGENT = "ThePotatoOfLife-world-atlas-subdivisions/1.1"
 EXPECTED_US_UNITS = 51
+KML_NS = {"k": "http://www.opengis.net/kml/2.2"}
 
-# 50 states + District of Columbia. Territories are intentionally excluded from
-# this first state layer and can later be represented with their correct types.
 STATE_FIPS_50_DC = {
     "01","02","04","05","06","08","09","10","11","12","13","15","16","17","18","19","20","21","22","23",
     "24","25","26","27","28","29","30","31","32","33","34","35","36","37","38","39","40","41","42","44",
@@ -34,29 +35,91 @@ STATE_FIPS_50_DC = {
 }
 
 
-def fetch_text(url: str, timeout: int = 180) -> str:
+def fetch_bytes(url: str, timeout: int = 180) -> bytes:
     request = urllib.request.Request(url, headers={"User-Agent": USER_AGENT})
     with urllib.request.urlopen(request, timeout=timeout) as response:
-        return response.read().decode("utf-8-sig")
+        return response.read()
 
 
-def fetch_json(url: str, timeout: int = 180) -> dict:
-    return json.loads(fetch_text(url, timeout=timeout))
+def fetch_text(url: str, timeout: int = 180) -> str:
+    return fetch_bytes(url, timeout=timeout).decode("utf-8-sig")
 
 
-def tiger_geojson() -> dict:
-    query = urllib.parse.urlencode({
-        "where": "1=1",
-        "outFields": "STATE,STUSAB,NAME,AREALAND,AREAWATER,CENTLAT,CENTLON",
-        "returnGeometry": "true",
-        "outSR": "4326",
-        "f": "geojson",
-    })
-    payload = fetch_json(f"{TIGER_LAYER}?{query}")
-    features = payload.get("features") if isinstance(payload, dict) else None
-    if not isinstance(features, list):
-        raise RuntimeError("Census TIGERweb state query did not return a GeoJSON FeatureCollection")
-    return payload
+def coordinate_ring(text: str | None) -> list[list[float]]:
+    points: list[list[float]] = []
+    for token in (text or "").split():
+        parts = token.split(",")
+        if len(parts) < 2:
+            continue
+        try:
+            points.append([float(parts[0]), float(parts[1])])
+        except ValueError:
+            continue
+    return points
+
+
+def polygon_coordinates(node: ET.Element) -> list[list[list[float]]]:
+    rings: list[list[list[float]]] = []
+    outer = node.find("k:outerBoundaryIs/k:LinearRing/k:coordinates", KML_NS)
+    ring = coordinate_ring(outer.text if outer is not None else None)
+    if ring:
+        rings.append(ring)
+    for inner in node.findall("k:innerBoundaryIs/k:LinearRing/k:coordinates", KML_NS):
+        hole = coordinate_ring(inner.text)
+        if hole:
+            rings.append(hole)
+    return rings
+
+
+def parse_state_kml(kml_bytes: bytes) -> list[dict]:
+    root = ET.fromstring(kml_bytes)
+    features: list[dict] = []
+    for placemark in root.findall(".//k:Placemark", KML_NS):
+        attrs = {
+            str(node.get("name") or ""): (node.text or "").strip()
+            for node in placemark.findall(".//k:SimpleData", KML_NS)
+        }
+        fips = attrs.get("STATEFP") or attrs.get("GEOID")
+        abbreviation = attrs.get("STUSPS")
+        name = attrs.get("NAME")
+        if not fips or not abbreviation or not name:
+            continue
+        polygons = []
+        for polygon in placemark.findall(".//k:Polygon", KML_NS):
+            rings = polygon_coordinates(polygon)
+            if rings:
+                polygons.append(rings)
+        if not polygons:
+            continue
+        geometry = (
+            {"type": "Polygon", "coordinates": polygons[0]}
+            if len(polygons) == 1
+            else {"type": "MultiPolygon", "coordinates": polygons}
+        )
+        features.append({
+            "type": "Feature",
+            "properties": {
+                "STATE": fips,
+                "STUSAB": abbreviation,
+                "NAME": name,
+                "AREALAND": attrs.get("ALAND"),
+                "AREAWATER": attrs.get("AWATER"),
+            },
+            "geometry": geometry,
+        })
+    return features
+
+
+def census_state_geojson() -> dict:
+    payload = fetch_bytes(CENSUS_KML_ZIP)
+    with ZipFile(io.BytesIO(payload)) as archive:
+        name = next((entry for entry in archive.namelist() if entry.lower().endswith(".kml")), None)
+        if not name:
+            raise RuntimeError("Census state boundary archive contains no KML file")
+        features = parse_state_kml(archive.read(name))
+    if len(features) < EXPECTED_US_UNITS:
+        raise RuntimeError(f"Census state KML coverage unexpectedly low: {len(features)}")
+    return {"type": "FeatureCollection", "features": features}
 
 
 def census_population_2025() -> dict[str, int]:
@@ -100,12 +163,6 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
     land_m2 = square_metres(source_props.get("AREALAND"))
     water_m2 = square_metres(source_props.get("AREAWATER"))
     total_km2 = round((land_m2 + water_m2) / 1_000_000, 2)
-    centroid = None
-    try:
-        centroid = [float(source_props.get("CENTLON")), float(source_props.get("CENTLAT"))]
-    except (TypeError, ValueError):
-        pass
-
     properties = {
         "id": f"US-{abbreviation}",
         "name": name,
@@ -114,7 +171,7 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
         "parent_iso3": "USA",
         "subdivision_type": "federal district" if abbreviation == "DC" else "state",
         "area_km2": total_km2,
-        "area_definition": "total area = Census AREALAND + AREAWATER",
+        "area_definition": "Census ALAND + AWATER attributes; not calculated from simplified display geometry",
         "population": {
             "value": int(population),
             "unit": "persons",
@@ -122,12 +179,9 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
             "source": "U.S. Census Bureau, Vintage 2025 Population Estimates",
             "source_url": POPULATION_CSV,
         },
-        "geometry_source": "U.S. Census Bureau TIGERweb States, January 1 2025 vintage",
-        "geometry_source_url": TIGER_LAYER.rsplit("/query", 1)[0],
+        "geometry_source": "U.S. Census Bureau 2025 Cartographic Boundary Files, 1:5,000,000",
+        "geometry_source_url": CENSUS_KML_ZIP,
     }
-    if centroid:
-        properties["centroid"] = centroid
-
     return {
         "type": "Feature",
         "id": properties["id"],
@@ -137,7 +191,7 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
 
 
 def build_usa() -> dict:
-    geometry = tiger_geojson()
+    geometry = census_state_geojson()
     population = census_population_2025()
     features = []
     for feature in geometry.get("features", []):
@@ -155,14 +209,14 @@ def build_usa() -> dict:
         "type": "FeatureCollection",
         "name": "world-subdivisions-USA",
         "metadata": {
-            "version": "1.0.0",
+            "version": "1.1.0",
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "parent_iso3": "USA",
             "feature_count": len(features),
             "scope": "50 U.S. states plus District of Columbia; territories remain separately typed and are not included in this first state partition.",
-            "geometry_vintage": "2025-01-01",
+            "geometry_vintage": "2025",
             "population_vintage": "2025-07-01",
-            "geometry_source": "U.S. Census Bureau TIGERweb",
+            "geometry_source": "U.S. Census Bureau 2025 Cartographic Boundary Files, 1:5,000,000",
             "population_source": "U.S. Census Bureau Vintage 2025 Population Estimates",
         },
         "features": features,
@@ -175,7 +229,7 @@ def main() -> int:
     usa_path = OUT_DIR / "USA.geo.json"
     usa_path.write_text(json.dumps(usa, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     index = {
-        "version": "1.0.0",
+        "version": "1.1.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-subdivision-partition-index",
         "partitions": {
@@ -185,7 +239,7 @@ def main() -> int:
                 "admin_level": 1,
                 "status": "implemented-first-wave",
                 "source": "U.S. Census Bureau",
-                "geometry_vintage": "2025-01-01",
+                "geometry_vintage": "2025",
                 "population_vintage": "2025-07-01",
             }
         },
