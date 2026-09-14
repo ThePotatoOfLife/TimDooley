@@ -2,9 +2,26 @@
   "id":"unresolved-prediction-claims-queue",
   "title":"Unresolved Prediction / Vision / Warning Recovery Queue",
   "updated":"2026-09-15",
-  "status":"source-recovery queue; none of these are confirmed prediction hits",
+  "status":"source-recovery queue; none of these are confirmed prediction hits unless separately promoted into a graded audit",
   "purpose":"Preserve potentially testable Tim Dooley future-facing statements that have surfaced in conversation memory, public-compilation summaries or later references but still lack enough primary wording, timing or outcome definition to score responsibly.",
   "items":[
+    {
+      "id":"north-axis-march-18-primary-wording",
+      "claim":"The March 18, 2026 North-Axis conversation appears to contain the core geopolitical topology: Europe/Greenland/Denmark/Canada as a northern field while America may become a more regional West-sector power.",
+      "known":"The master audit preserves timestamps 2026-03-18T16:47:18Z and 16:52:31Z; the politics compendium independently summarizes the same conversation.",
+      "later_support":"April 30 Trump troop-withdrawal talk; May 22 Arctic Allies statement saying Europe and Canada are assuming greater Arctic defence responsibility; July 16 actual U.S. troop pullback from Eastern Europe; September EU-Greenland investment and more strategic EU Arctic posture.",
+      "missing":["complete verbatim March 18 conversation","exact Greenland/Denmark wording at each timestamp","whether 'west sector' was explicitly future tense or scenario language","full surrounding discussion needed to freeze interpretation"],
+      "status":"high-priority primary-source recovery; the cluster is already graded B directionally, but exact wording could strengthen or weaken it",
+      "owner":"knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json"
+    },
+    {
+      "id":"greenland-arctic-before-public-escalation",
+      "claim":"Search late-2024/2025 Tim statements tying North/Greenland/Denmark/Arctic to a future strategic confrontation before the early-2026 public escalation.",
+      "known":"Public posts on 10 and 15 December 2025 establish North throne, North Pole, World Axis and northern-axis language. They do not currently contain Greenland or a future geopolitical confrontation.",
+      "missing":["specific future Greenland/Denmark/Arctic wording rather than timeless North symbolism","any prediction predating Trump's public Greenland pressure","original song/stream/post if such wording exists"],
+      "status":"still high-value; current December material is symbolic prefiguration only",
+      "owner":"knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json"
+    },
     {
       "id":"splc-criminal-case-pre-event-source",
       "claim":"Archive memory says Tim had predicted 'the SPLC case' before the April 21, 2026 federal criminal indictment; a later April 25 recollection associates the remembered prediction with fraud, banking, FBI ties and paid informants.",
@@ -78,7 +95,7 @@
       "id":"2011-nuclear-city",
       "claim":"2011 Tree-ordeal account includes a vision of an American city destroyed by nuclear explosion.",
       "missing":["earliest contemporaneous account","which city if specified","whether scene was vision/dream/interpretation"],
-      "outcome_as_of_2026_09_09":"No matching event; retain as unfulfilled/open vision.",
+      "outcome_as_of_2026_09_15":"No matching event; retain as unfulfilled/open vision.",
       "status":"critical negative control"
     },
     {
@@ -86,12 +103,6 @@
       "claim":"Search for other dreams, visions, warnings, symbolic scenes or 'I saw' statements that predate later independent events.",
       "search_terms":["dream","vision","I saw","showed me","revealed","warning","sign","omen","prophecy","future","will happen"],
       "status":"broad recovery family"
-    },
-    {
-      "id":"greenland-arctic-before-public-escalation",
-      "claim":"Search late-2024/2025 Tim statements tying North/Greenland/Denmark/Arctic to future strategic confrontation before the early-2026 public escalation.",
-      "missing":["specific future wording rather than timeless North symbolism"],
-      "status":"high-value because generic North imagery alone is insufficient"
     },
     {
       "id":"spudlight-first-use",
@@ -112,5 +123,5 @@
     "classify using A/B/C/D/E/F/H/I/P/U taxonomy",
     "do not upgrade symbolic resemblance into causal prophecy"
   ],
-  "connections":["prediction-premonition-audit-2025-2026","prediction-premonition-audit-wave-15-addendum","prediction-premonition-audit-wave-17-addendum","splc-prediction-audit-2026","prediction-signal-search-lexicon","ai-machine-culture-early-signals-ledger","seals-and-fulfillment-matrix"]
+  "connections":["prediction-premonition-audit-2025-2026","prediction-premonition-audit-wave-15-addendum","prediction-premonition-audit-wave-17-addendum","north-axis-greenland-prediction-audit-2025-2026","splc-prediction-audit-2026","prediction-signal-search-lexicon","ai-machine-culture-early-signals-ledger","seals-and-fulfillment-matrix"]
 }
