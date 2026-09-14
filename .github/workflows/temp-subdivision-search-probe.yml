@@ -15,4 +15,6 @@ jobs:
       - uses: actions/setup-node@v5
         with:
           node-version: '22'
-      - run: node scripts/test_world_map_search.mjs
+      - run: |
+          node scripts/test_world_map_search.mjs
+          node scripts/test_world_map_subdivision_interaction.mjs
