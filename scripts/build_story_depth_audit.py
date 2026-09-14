@@ -71,6 +71,12 @@ def build_story_depth_audit(root: Path) -> dict:
     }
 
 
+def audit_is_current(root: Path) -> bool:
+    expected = build_story_depth_audit(root)
+    path = root / "knowledge" / "story" / "story-depth-audit.json"
+    return load(path, None) == expected
+
+
 def write_story_depth_audit(root: Path) -> Path:
     data = build_story_depth_audit(root)
     out = root / "knowledge" / "story" / "story-depth-audit.json"
@@ -82,11 +88,9 @@ def main(argv=None) -> int:
     argv = list(sys.argv[1:] if argv is None else argv)
     root = Path(__file__).resolve().parents[1]
     if "--check" in argv:
-        expected = build_story_depth_audit(root)
-        path = root / "knowledge" / "story" / "story-depth-audit.json"
-        actual = load(path, None)
-        if actual != expected:
-            print("Story depth audit is stale; run python scripts/build_story_depth_audit.py")
+        if not audit_is_current(root):
+            print("Story depth audit is stale; expected report follows:")
+            print(json.dumps(build_story_depth_audit(root), indent=2, ensure_ascii=False))
             return 1
         print("Story depth audit is current")
         return 0
