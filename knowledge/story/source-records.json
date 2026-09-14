@@ -1,4 +1,31 @@
 {
   "schema_version": 1,
-  "sources": []
+  "sources": [
+    {
+      "id": "source-asun-map-dispute-chat",
+      "source_class": "public_chat_transcript",
+      "date_or_period": "date unresolved; recovered before 2026-09-14",
+      "origin": "library",
+      "locator": {
+        "name": "Indsatte text(3).txt",
+        "file_id": "file_00000000ce2471f491506cccbeaa4069",
+        "line_start": 360,
+        "line_end": 654
+      },
+      "speaker_scope": [
+        "@PotatoOfLife",
+        "@ASunofJesus",
+        "@mtclassic3"
+      ],
+      "public_status": "public_source",
+      "continuity": "consecutive",
+      "attestation": "primary_or_near_primary",
+      "public_excerpt": null,
+      "notes": [
+        "Sequential chat transcript preserved in the user's Library.",
+        "Religious and identity claims remain participant claims rather than narrator assertions.",
+        "Exact event date remains unresolved and must not be inferred from recovery date."
+      ]
+    }
+  ]
 }
