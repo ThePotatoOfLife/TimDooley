@@ -22,9 +22,9 @@ from zipfile import ZipFile
 ROOT = Path(__file__).resolve().parents[1]
 OUT_DIR = Path(os.environ.get("ATLAS_SUBDIVISIONS_OUT_DIR", ROOT / "data" / "world-subdivisions"))
 
-CENSUS_KML_ZIP = "https://www2.census.gov/geo/tiger/GENZ2025/kml/cb_2025_us_state_5m.zip"
+CENSUS_KML_ZIP = "https://www2.census.gov/geo/tiger/GENZ2025/kml/cb_2025_us_state_20m.zip"
 POPULATION_CSV = "https://www2.census.gov/programs-surveys/popest/datasets/2020-2025/state/totals/NST-EST2025-ALLDATA.csv"
-USER_AGENT = "ThePotatoOfLife-world-atlas-subdivisions/1.1"
+USER_AGENT = "ThePotatoOfLife-world-atlas-subdivisions/1.2"
 EXPECTED_US_UNITS = 51
 KML_NS = {"k": "http://www.opengis.net/kml/2.2"}
 
@@ -179,7 +179,7 @@ def normalize_us_state(feature: dict, population_by_fips: dict[str, int]) -> dic
             "source": "U.S. Census Bureau, Vintage 2025 Population Estimates",
             "source_url": POPULATION_CSV,
         },
-        "geometry_source": "U.S. Census Bureau 2025 Cartographic Boundary Files, 1:5,000,000",
+        "geometry_source": "U.S. Census Bureau 2025 Cartographic Boundary Files, 1:20,000,000",
         "geometry_source_url": CENSUS_KML_ZIP,
     }
     return {
@@ -209,14 +209,14 @@ def build_usa() -> dict:
         "type": "FeatureCollection",
         "name": "world-subdivisions-USA",
         "metadata": {
-            "version": "1.1.0",
+            "version": "1.2.0",
             "generated_at": datetime.now(timezone.utc).isoformat(),
             "parent_iso3": "USA",
             "feature_count": len(features),
             "scope": "50 U.S. states plus District of Columbia; territories remain separately typed and are not included in this first state partition.",
             "geometry_vintage": "2025",
             "population_vintage": "2025-07-01",
-            "geometry_source": "U.S. Census Bureau 2025 Cartographic Boundary Files, 1:5,000,000",
+            "geometry_source": "U.S. Census Bureau 2025 Cartographic Boundary Files, 1:20,000,000",
             "population_source": "U.S. Census Bureau Vintage 2025 Population Estimates",
         },
         "features": features,
@@ -229,7 +229,7 @@ def main() -> int:
     usa_path = OUT_DIR / "USA.geo.json"
     usa_path.write_text(json.dumps(usa, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
     index = {
-        "version": "1.1.0",
+        "version": "1.2.0",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "record_type": "world-subdivision-partition-index",
         "partitions": {
