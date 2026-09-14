@@ -232,7 +232,18 @@ async function installCapitalsWhenUseful() {
     if (!map.getLayer('capital-city-labels')) map.addLayer({ id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 3.1, filter: ['==', ['get', 'primary'], true], layout: { 'text-field': ['get', 'name'], 'text-size': ['interpolate', ['linear'], ['zoom'], 3.1, 9, 7, 11], 'text-offset': [0, 1.15], 'text-anchor': 'top', 'text-allow-overlap': false, 'text-optional': true }, paint: { 'text-color': '#f3df9e', 'text-halo-color': '#080b0b', 'text-halo-width': 1.15 } });
     map.on('mousemove', 'capital-cities', event => { const feature = event.features?.[0]; if (!feature) return; map.getCanvas().style.cursor = 'pointer'; showPopup(event, capitalHtml(feature.properties || {})); });
     map.on('mouseleave', 'capital-cities', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
-    map.on('click', 'capital-cities', event => { if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true; const code = event.features?.[0]?.properties?.iso3; if (code && window.goCountry) window.goCountry(code); });
+    map.on('click', 'capital-cities', event => {
+      if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
+      const feature = event.features?.[0];
+      if (!feature) return;
+      const placeSearch = window.__potatoAtlasPlaceSearch;
+      if (placeSearch?.focusFeature) {
+        placeSearch.focusFeature(feature).catch?.(error => console.warn('Capital place focus failed:', error));
+        return;
+      }
+      const code = feature.properties?.iso3;
+      if (code && window.goCountry) window.goCountry(code);
+    });
     setCapitalsVisible(true);
     window.__potatoAtlasCapitals = { setVisible: setCapitalsVisible, focus: focusCapital, forCountry: capitalFor, get visible() { return capitalsVisible; }, get count() { return capitalFeatures.length; } };
     window.dispatchEvent(new CustomEvent('potato-atlas-capitals-ready', { detail: { count: capitals.features.length, visible: capitalsVisible } }));
