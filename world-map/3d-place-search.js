@@ -83,9 +83,14 @@ function clearPlace({ sync = true } = {}) {
   if (sync) syncPlace(null);
 }
 
+function clearLoadedSubdivision() {
+  window.__potatoAtlasSubdivisions?.clear?.();
+}
+
 async function activateCountry(candidate) {
   if (!candidate) return false;
   clearPlace();
+  clearLoadedSubdivision();
   const selection = window.__potatoAtlasSelection;
   if (selection?.activate) return Boolean(await selection.activate(candidate.code, { fly:true }));
   if (typeof window.goCountry === 'function') return Boolean(await window.goCountry(candidate.code));
@@ -226,6 +231,7 @@ function cityExact(matches, query) {
 let cityFocusInProgress = false;
 async function focusCity(city, options = {}) {
   if (!city?.id || !Array.isArray(city.coordinates)) return false;
+  clearLoadedSubdivision();
   const selection = window.__potatoAtlasSelection;
   cityFocusInProgress = true;
   try {
@@ -300,12 +306,13 @@ async function warmPlaces() {
   return { subdivisions:subdivisionRows, cities:cityRowsResult };
 }
 
-// Keep exactly one geographic detail state. A direct country click or an external
-// subdivision selection should clear an older city marker/deep link. Country
-// activation performed as part of focusCity is exempt so the city can retain its
-// parent-country context and selected point.
+// Keep exactly one geographic detail state. A direct country click should clear
+// an older subdivision inspector and city marker/deep link. A subdivision selection
+// clears an older city detail. Country activation performed as part of focusCity is
+// exempt so the city can retain its parent-country context and selected point.
 window.addEventListener('potato-atlas-selection-change', () => {
   if (cityFocusInProgress) return;
+  clearLoadedSubdivision();
   if (new URL(location.href).searchParams.has('place')) clearPlace();
 });
 window.addEventListener('potato-atlas-subdivision-select', () => {
