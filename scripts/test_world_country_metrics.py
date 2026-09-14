@@ -20,6 +20,12 @@ class WorldCountryMetricsTests(unittest.TestCase):
             self.assertTrue(spec['indicator'])
             self.assertTrue(spec['unit'])
 
+    def test_co2_uses_current_world_bank_replacement_series(self):
+        spec = metrics.METRICS['co2_per_capita']
+        self.assertEqual(spec['indicator'], 'EN.GHG.CO2.PC.CE.AR5')
+        self.assertEqual(spec['unit'], 't CO2e/capita')
+        self.assertNotEqual(spec['indicator'], 'EN.ATM.CO2E.PC')
+
     def test_normalizes_latest_and_previous_without_inventing_zero(self):
         rows = [
             {'countryiso3code':'DNK','indicator':{'id':'NY.GDP.MKTP.CD'},'value':400.0,'date':'2024'},
