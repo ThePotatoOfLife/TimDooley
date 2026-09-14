@@ -1,6 +1,45 @@
 # The Story of Tim Dooley — Authoring Guide
 
-The Story is not the Timeline in prose and it is not an encyclopedia of Tim Dooley. It is one chronological chronicle with many side stories moving through it.
+The Story is not the Timeline in prose and it is not an encyclopedia of Tim Dooley. It is one chronological diary-like chronicle with many side stories moving through it.
+
+## Public form: one scroll, two labels
+
+Every published episode is only one of two things:
+
+- `MAIN STORY`
+- `SIDE STORY`
+
+There are no other public story classes.
+
+Main and side stories appear together in one seamless chronological scroll. Side stories do not live on a separate page. A side story belongs exactly where it happened.
+
+Between stories, keep the furniture quiet: a small Main/Side marker, a subtle date, a modest title, then the prose. The prose is the page.
+
+There is no target story count. Add stories whenever the archive gives us enough to tell one. Gaps are invitations to mine again, not reasons to merge unrelated episodes into a summary.
+
+## Rich is good; raw is allowed
+
+The Story should prefer thick, full, rich stories whenever the surviving material can carry them.
+
+Rawness is not a quality failure.
+
+Do not reject or rewrite an episode merely because it is:
+
+- uneven in length;
+- repetitive;
+- profane;
+- funny in the middle of something sacred;
+- emotionally abrupt;
+- unresolved;
+- conversational;
+- oddly spelled inside exact wording;
+- embarrassing;
+- mundane;
+- not yet elegantly shaped.
+
+Hygiene protects the archive from broken structure and false reconstruction. Hygiene does **not** polish Tim into a museum exhibit.
+
+Checks may protect dates, source status, quotation status, broken links, duplicate IDs, invalid references and clear provenance mistakes. Checks should not score grammar, elegance, profanity, seriousness, narrative tidiness or whether an ending feels complete.
 
 ## The first test
 Before drafting a Story passage, ask:
@@ -15,10 +54,14 @@ Before drafting a Story passage, ask:
 
 If the material cannot answer most of those questions, it may be useful context, theology, symbolism or timeline data, but it is probably not yet a Story scene. Put thin material into recovery instead of inventing connective tissue.
 
+A very small episode can still belong when the smallness is the point: somebody returns to chat, somebody forgets to follow back, a joke changes direction, a screen breaks, a song gets made, a word suddenly becomes important.
+
 ## One river
-The reader should experience one story moving forward in time. Headings are places to re-enter the river, not sealed explanatory modules. Side stories can disappear for months and return later. A person introduced in one season does not need to be re-explained every time they reappear.
+The reader should experience one story moving forward in time. Titles are tiny landmarks, not sealed chapters. Side stories can disappear for months and return later. A person introduced in one season does not need to be re-explained every time they reappear.
 
 The main river is Tim's changing life/configuration. Side rivers include people, friendships, losses, arguments, creative works, public encounters, recurring jokes, music, games, artwork, websites, AI sessions, livestream culture, Dogs/Farmers, Great Book characters and other ongoing threads.
+
+Do not summarize a whole season merely because it is easier to organize. If the season contains six separate stories, tell six stories.
 
 ## Scene before explanation
 Prefer:
@@ -36,6 +79,8 @@ When exact public or recovered wording exists, let Tim speak. Preserve spelling,
 
 Do not manufacture dialogue. Distinguish exact public wording, recovered conversation, later retelling and Great Book literary dialogue.
 
+When the archive is reporting Tim's theological or mythic claim, make the attribution clear enough that the narrator is not silently converted into the claimant. Raw quote, clear speaker.
+
 ## Other people are characters, not evidence tags
 Recurring people should retain personality, history and changing relations with Tim. Do not reduce a person to `supporter`, `antagonist`, `recognition event` or `theological witness` when the source lets us know more.
 
@@ -43,13 +88,24 @@ Recover what they said back.
 
 A good recurring character may disagree with Tim, disappear, return, joke, help badly, help well, frustrate him, surprise him, become part of a creative project or become important only much later.
 
+For named people, especially private or ambiguously public participants, publication status matters. A great private-conversation scene can remain a recovery/manuscript scene until its public basis is clear. Do not force private texture onto a public website merely because it improves the story.
+
+## Trigger names
+Names can be used as archaeology triggers even before their story is known.
+
+Search spelling variants, usernames, aliases, nearby speakers, shared rooms and the names immediately before and after them. A name may reopen an unrelated story that occurred in the same season.
+
+Do not convert a later remembered label such as Dog, Farmer, Footstool, Fence Sitter or Judas into a timeless biography. Let period-specific sources show when the label appears and what it meant then.
+
 ## Collective and symbolic cast
-Dogs, Farmers, Mud Dwellers, Dwellers, Cows, Sheep, Swine, Serpents, Hyenas, Goats, Potatoes and Angels are recurring project characters/categories whose meanings can change by season. Never define one of these once and silently project that definition backward through the whole Story.
+Dogs, Farmers, Soul Farmers, Mud Dwellers, Dwellers, Cows, Sheep, Swine, Serpents, Hyenas, Goats, Potatoes and Angels are recurring project characters/categories whose meanings can change by season. Never define one of these once and silently project that definition backward through the whole Story.
 
 When a collective label is applied to real people, preserve it as Tim/project language rather than treating the category as an objective fact about them.
 
 ## Great Book characters
 Fresh Potato, Ready Student, Grumbleton, Ethereal Tuber, Rahu, Optimistique, Elder Grapes, Sentinel of Silence and other Great Book inhabitants may appear in the Story as characters Tim wrote and lived with creatively. The reader should know when we have entered Tim's authored literary world; that boundary does not make the material unimportant.
+
+The Great Book can also preserve clues to documentary history. When a real name is transformed into fiction, keep two levels available: what the book wrote, and what underlying encounter still needs recovery.
 
 ## Ordinary life matters
 Do not wait for revelations.
@@ -79,7 +135,7 @@ Songs, games, simulations, visual compositions, websites and Great Book chapters
 Do not list creative titles merely to prove output volume.
 
 ## Seasons overlap
-Use `arc-season-map.json` internally. Do not force the public prose to announce every arc. Marty/Farm, Great Book/Sage, Dogs/Farmers, AI recognition, music, North, public hours, Sarah Ann, Door/interface and creative systems can overlap.
+Use `arc-season-map.json` internally. Do not force the public prose to announce every arc. Marty/Farm, Great Book/Sage, Dogs/Farmers, AI recognition, music, North, public hours, recurring conversation partners, Door/interface and creative systems can overlap.
 
 A new title does not erase an old Tim overnight.
 
