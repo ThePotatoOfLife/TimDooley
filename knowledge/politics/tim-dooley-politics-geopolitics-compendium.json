@@ -1,36 +1,22 @@
 {
   "id": "tim-dooley-politics-geopolitics-compendium",
   "title": "Tim Dooley — Politics & Geopolitics Compendium",
-  "version": "1.0.0",
-  "updated": "2026-09-13",
+  "version": "1.0.1",
+  "updated": "2026-09-15",
   "kind": "reader-facing political statement synthesis and provenance ledger",
   "method": {
     "principle": "Separate what Tim explicitly says from accepted formulations, policy proposals, programme design, thought experiments, predictions, research leads, moral judgments, satire, mythology and archive inference.",
-    "mode_enum": [
-      "explicit_position",
-      "accepted_formulation",
-      "policy_proposal",
-      "programme_design",
-      "governance_thought_experiment",
-      "political_question",
-      "empirical_hypothesis",
-      "geopolitical_prediction",
-      "research_lead",
-      "moral_judgment",
-      "satire",
-      "mythic_symbolism",
-      "conceptual_model",
-      "biographical_context",
-      "uncertain"
-    ]
+    "mode_enum": ["explicit_position","accepted_formulation","policy_proposal","programme_design","governance_thought_experiment","political_question","empirical_hypothesis","geopolitical_prediction","research_lead","moral_judgment","satire","mythic_symbolism","conceptual_model","biographical_context","uncertain"]
   },
   "entries": [
     {"date":"~2015","topic":"Drug policy / civil liberty","mode":"explicit_position","stance":"support","confidence":"high","summary":"Cannabis advocacy and later explicit opposition to criminalizing or penalizing drug use; preference for harm differentiation, prevention, rehabilitation and nonjudgmental discussion rather than moral panic.","notes":"Do not generalize this into an unrestricted all-drug legalisation doctrine; Tim differentiates psychedelics/mind-expanding drugs from heroin, fentanyl, heavy narcotics and sedatives."},
     {"date":"~2016","topic":"Law, imprisonment and property rights","mode":"biographical_context","stance":"context","confidence":"medium","summary":"Personal imprisonment and property-rights conflicts become part of the political background and later suspicion of coercive systems.","notes":"The archive should not infer a complete criminal-justice philosophy from biography alone."},
     {"date":"2026-02-13","topic":"Democracy, coordination and AI","mode":"governance_thought_experiment","stance":"explore","confidence":"high","summary":"Prefers democracy / hearing the people or the ‘heart of humanity’; explores AI as an arbiter or coordinator for roles, tasks, hiring and management while preserving individual freedom and human direction.","notes":"Capitalism versus socialism remained unresolved in this exchange."},
-    {"date":"2026-03-18","topic":"North Axis / Europe / Canada / America","mode":"geopolitical_prediction","stance":"mixed","confidence":"high","summary":"North Axis centered on Tim with Europe, Greenland, Denmark and Canada; America described as a young or adolescent power that may need humility and could become a more regional West-sector power if transatlantic relations are recalibrated.","notes":"This mixes diagnosis, prediction and symbolic programme language. It is not a treaty map."},
+    {"date":"2026-03-18","topic":"North Axis / Europe / Canada / America","mode":"geopolitical_prediction","stance":"mixed","confidence":"high","summary":"North Axis centered on Tim with Europe, Greenland, Denmark and Canada; America described as a young or adolescent power that may need humility and could become a more regional West-sector power if transatlantic relations are recalibrated. The strongest predictive interpretation is relational/topological: Europe/Canada/North may cohere more strongly while America becomes a more separate western pole.","notes":"This mixes diagnosis, prediction and symbolic programme language. It is not a treaty map. Canada-EU SAFE and Canada-Denmark-Greenland defence cooperation were already formalizing by 14 February, and Greenland/U.S. tension was already public. Route detailed prediction scoring to knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json."},
     {"date":"2026-03-18","topic":"Israel / Palestine / Iran / Turkey","mode":"moral_judgment","stance":"critical","confidence":"medium","summary":"Israel–Palestine framed morally and symbolically through Cain/Abel language; concern that Israeli policy could deepen war with Iran and possibly Turkey while US Middle East influence declines.","notes":"Prediction and symbolic framing are not the same thing as a desired war policy or a final-state settlement plan."},
-    {"date":"2026-05-01","topic":"US hegemony and reciprocity","mode":"explicit_position","stance":"conditional_support","confidence":"high","summary":"US global privileges—dollar hegemony, trade centrality and imperial/security advantages—are paired with obligations such as maritime security. If America withdraws from those obligations, it should accept becoming a nation among nations rather than expecting one-way benefits.","quote":"When the troops come home, America becomes a nation among nations.","notes":"Not simply anti-American: the core argument is reciprocal obligation."},
+    {"date":"2026-04-02","topic":"United States / Europe separation","mode":"geopolitical_prediction","stance":"forecast","confidence":"high","summary":"Tim explicitly described a model 'where the north axis and the west go together, and the united states seperates off from europe'.","quote":"where the north axis and the west go together, and the united states seperates off from europe","notes":"Best read as a directional forecast about alliance topology, not as a prediction that NATO formally dissolves. Later 2026 troop-retrenchment and Greenland/Arctic developments moved materially in this direction."},
+    {"date":"2026-04-03","topic":"U.S. troop retrenchment from Europe","mode":"geopolitical_prediction","stance":"forecast","confidence":"high","summary":"Tim suspected the United States might retract soldiers from Europe.","quote":"we suspect america might retract soliders","notes":"Trump publicly entertained troop withdrawals from Italy/Spain 27 days later on April 30. Reuters then reported an actual U.S. pullback from Eastern Europe on July 16, 104 days later. This is the sharpest testable military sub-call within the North-Axis prediction cluster."},
+    {"date":"2026-05-01","topic":"US hegemony and reciprocity","mode":"explicit_position","stance":"conditional_support","confidence":"high","summary":"US global privileges—dollar hegemony, trade centrality and imperial/security advantages—are paired with obligations such as maritime security. If America withdraws from those obligations, it should accept becoming a nation among nations rather than expecting one-way benefits.","quote":"When the troops come home, America becomes a nation among nations.","notes":"Not simply anti-American: the core argument is reciprocal obligation. This comes after April 30 withdrawal talk and therefore is not pre-event evidence for that event."},
     {"date":"2026-05-05","topic":"European digital sovereignty","mode":"programme_design","stance":"support","confidence":"high","summary":"Advocates a sovereign/federated European cloud, compute and data architecture: interoperable national systems, permissioned encrypted exchange, different civil/government/security layers, and multi-vendor alternatives to dependence on Palantir-like platforms.","notes":"Tim explicitly separated his mythic/public persona from the serious European architecture and said he had no formal authority over nations."},
     {"date":"2026-05-20—22","topic":"Shadow power / Epstein / intelligence / NGOs / media","mode":"research_lead","stance":"investigate","confidence":"high","summary":"Calls for tracing money, boards, intelligence links, surveillance contracting, NGOs, media influence, lobbying, smear systems and institutional self-protection around Epstein and adjacent power networks.","notes":"Research agenda, not proof that adjacent institutions form one coordinated conspiracy. The project standard is to graph sourced relationships and preserve uncertainty."},
     {"date":"2026-05-29","topic":"Public transport","mode":"accepted_formulation","stance":"support","confidence":"medium","summary":"Public transport can be free at point of use when mobility is socially fundamental, while implementation should avoid thoughtlessly destroying viable private providers.","notes":"Useful mixed-economy example: public financing does not automatically require a monopoly provider."},
