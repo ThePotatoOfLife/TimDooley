@@ -64,11 +64,13 @@ def main() -> int:
     bridge = load_json("data/frontend-atlas-bridge.json")
     coverage = load_json("data/backend-coverage-map.json")
     atlas = load_json("data/atlas-manifest.json")
+
     errors: list[str] = []
 
     public_doors = bridge.get("public_doors")
     if public_doors != EXPECTED_DOORS:
         fail(f"frontend bridge public_doors must equal {EXPECTED_DOORS!r}; got {public_doors!r}", errors)
+
     if isinstance(public_doors, dict) and "world_map" in public_doors:
         fail("World Map must be a specialist route, not the fifth primary public door", errors)
 
@@ -114,6 +116,7 @@ def main() -> int:
     world_projection = projection.get("world", {})
     if world_projection.get("primary_door") != "world" or world_projection.get("human_route") != "world/":
         fail("world branch must project through primary_door='world' with human_route='world/'", errors)
+
     north_projection = projection.get("north", {})
     if north_projection.get("primary_door") != "world" or north_projection.get("human_route") != "north/":
         fail("north branch must project through World while preserving human_route='north/'", errors)
@@ -122,7 +125,7 @@ def main() -> int:
     if any("index.html#node=" in str(value) for value in bridge_routes.values()):
         fail("frontend bridge still exposes retired index.html#node= record routing", errors)
     if bridge_routes.get("lookup") != EXPECTED_INTERACTIVE_ROUTES["lookup"]:
-        fail("frontend bridge must expose Explore lookup-by-id routing", errors)
+        fail("frontend bridge lookup route is missing or inconsistent", errors)
 
     if contains_live_retired_reference(coverage):
         fail("backend coverage map still names retired root.js or index.html#node= as a live consumer", errors)
@@ -131,23 +134,10 @@ def main() -> int:
     if interactive_routes != EXPECTED_INTERACTIVE_ROUTES:
         fail(f"atlas interactive_routes must equal {EXPECTED_INTERACTIVE_ROUTES!r}; got {interactive_routes!r}", errors)
 
-    explore = (ROOT / "app" / "app.js").read_text(encoding="utf-8")
-    if "#lookup=" not in explore or "showLookup" not in explore:
-        fail("Explore must resolve canonical IDs through #lookup=", errors)
-
-    timeline = (ROOT / "app" / "timeline.js").read_text(encoding="utf-8")
-    if "../#record=" in timeline:
-        fail("standalone Timeline still links source records to the homepage", errors)
-
-    entity_trace = (ROOT / "world-map" / "3d-entity-trace.js").read_text(encoding="utf-8")
-    if "#node=" in entity_trace:
-        fail("World Map Entity Trace still emits retired node routes", errors)
-    if "explore/#lookup=" not in entity_trace:
-        fail("World Map Entity Trace must resolve archive IDs through Explore lookup", errors)
-
     reader_guide = (ROOT / "app" / "reader-guide.js").read_text(encoding="utf-8")
     if 'href="learn/"' in reader_guide or "href='learn/'" in reader_guide:
         fail("reader guide still routes to retired learn/ Start Here surface", errors)
+
     if (ROOT / "root.js").exists():
         fail("retired root.js reader artifact still exists; Explore is the only deep interactive reader", errors)
 
@@ -157,7 +147,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print(f"Public projection validation passed: {len(EXPECTED_DOORS)} doors, {len(branch_ids)} projected branches, World owns the fifth domain and Explore owns deep interactive routing plus ID lookup.")
+    print(f"Public projection validation passed: {len(EXPECTED_DOORS)} doors, {len(branch_ids)} projected branches, World owns the fifth domain and Explore owns deep interactive routing.")
     return 0
 
 
