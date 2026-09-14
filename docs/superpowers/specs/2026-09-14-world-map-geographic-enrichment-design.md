@@ -1,7 +1,8 @@
 # World Map Geographic Enrichment Design
 
 Date: 2026-09-14
-Status: approved architecture
+Status: proposed architecture for user review
+Branch: `feat/world-map-geographic-enrichment-2026-09-14`
 Scope: population completeness, subnational geography, major cities/search, physical terrain, and the next value-producing World Map expansion sequence
 
 ## 1. Purpose
@@ -434,7 +435,18 @@ It must not alter analytical layer state.
 
 Do not treat generic green basemap pixels as a claim of current forest/grass coverage.
 
-A later physical-Earth wave may add separately sourced forests, grasslands, deserts/bare land, permanent ice/snow, wetlands, hydrography, bathymetry/relief and climate/environmental surfaces. Those require explicit source/date/resolution contracts and should not be smuggled into the first terrain toggle.
+A later physical-Earth wave may add separately sourced:
+
+- forests;
+- grasslands;
+- deserts/bare land;
+- permanent ice/snow;
+- wetlands;
+- hydrography;
+- bathymetry or relief;
+- climate/environmental surfaces.
+
+Those require explicit source/date/resolution contracts and should not be smuggled into the first terrain toggle.
 
 ## 8. Interaction and layer ordering
 
@@ -456,16 +468,240 @@ Exact MapLibre insertion points may vary with current layer ids, but the semanti
 
 Subdivision boundaries must not become a new analytical fill owner. Terrain must not repaint population/religion/Axis color. Cities must not compete with infrastructure for meaning through identical symbols without a legend/visual distinction.
 
-## 9. State model
+## 9. Search and selection state model
 
-Country selection remains the primary working-set state. Subdivision selection, place selection and terrain are orthogonal view/context states. The URL should preserve each without mutating the analytical `layers=` state.
+Country selection remains the primary working-set state.
 
-## 10. Implementation sequence
+Add orthogonal geographic focus state:
 
-1. Population completeness and validator strengthening.
-2. Generic subdivision contract + U.S. partition.
-3. Places/cities runtime + unified search.
-4. Physical terrain toggle.
-5. Later sourced land-cover/environment and additional subdivision countries.
+```text
+country=<ISO3>                 existing active-country compatibility
+selected=<ISO3,...>            existing working set
+subdivision=<stable-id>         new subnational focus
+city=<stable-place-id>          new place focus
+terrain=1                       new physical context preference
+```
 
-Each slice must ship independently with validators and must leave the current map useful if later slices are absent.
+A city may imply a parent subdivision/country for contextual display without automatically adding that country to the analytical working set.
+
+The state model must avoid loops where restoring `city` forces `country`, which then clears `city`.
+
+## 10. Coverage ledger integration
+
+Do not create a second geographic completeness database.
+
+Extend the existing generated World Map coverage ledger with descriptive dimensions such as:
+
+```text
+population: represented / missing + selected source tier
+subdivisions: available / unavailable + dataset vintage
+places: city count + capital coverage + latest refresh date
+infrastructure: existing coverage fields
+```
+
+These dimensions support maintenance and research prioritization. They are not a synthetic national importance score.
+
+## 11. Metrics and information expansion after the first programme
+
+Do not revive the historical `world-country-metrics.json` branch as a second canonical metric runtime unless current architecture proves incapable of the job.
+
+Current `world-map-data-runtime.json` and layer registry already carry comparable metrics. Continue expanding that owner with suitable sourced variables such as:
+
+- GDP per capita / PPP;
+- real growth;
+- inflation;
+- unemployment;
+- labour-force participation;
+- life expectancy;
+- fertility;
+- urbanization;
+- internet use;
+- CO2 per capita;
+- debt/GDP only when comparable coverage permits;
+- population density as an explicitly derived value.
+
+Metric color, subdivision geography and terrain remain separate visual semantics.
+
+## 12. Later relational enrichment
+
+After population, subdivisions, cities and terrain are stable, the highest-value next work is to make real places participate in the existing relational engine.
+
+Use the current empirical infrastructure owner and entity/Impact architecture to deepen:
+
+1. ports and maritime terminals;
+2. electricity grids/interconnectors and power pools;
+3. subsea cables, landings and IXPs;
+4. pipelines, LNG, storage/refinery interfaces;
+5. rail/freight/customs corridors;
+6. gateway operational structures;
+7. strategic industrial/mineral corridors;
+8. airports/air cargo;
+9. central banks, parliaments and major public institutions;
+10. research institutions and other sourced real nodes.
+
+Where possible, these real nodes may reference city/subdivision ids for geographic context. Their substantive ownership remains in their existing empirical registries, not copied into the city record.
+
+## 13. Implementation sequence
+
+The implementation should proceed in small independently verifiable slices.
+
+### Slice 1 — Population completeness
+
+- add failing tests for 195/195 population resolution;
+- align demography/runtime with shared scalar resolution order;
+- repair remaining country gaps;
+- expose source tier/provenance;
+- extend coverage ledger and validators;
+- verify card, hover and population Stats resolve the same values.
+
+### Slice 2 — United States subdivisions
+
+- add subdivision schema/index validator first;
+- add acquisition/build script for official U.S. state geometry/metadata;
+- generate bounded `USA.geo.json` snapshot;
+- add lazy subdivision browser module;
+- add click/hover/inspector/URL state;
+- validate 50 states + D.C. typing and territory separation;
+- validate zoom/layer behavior and no conflict with country selection.
+
+### Slice 3 — Major cities and unified search
+
+- recover/refactor historical city builder tests into current architecture;
+- generate/validate bounded city snapshot;
+- converge capitals and cities into one places runtime;
+- add progressive labels/inspection;
+- add unified country/subdivision/city search;
+- validate URL restore and collision/performance budgets.
+
+### Slice 4 — Physical terrain
+
+- add lazy terrain module contract and syntax/runtime tests;
+- add one compact toggle;
+- add hillshade/elevation below analytical layers;
+- preserve analytical rendering and selection;
+- add failure-safe behavior and URL persistence;
+- manually verify flat and pitched views across representative mountain/flat/coastal regions.
+
+### Slice 5 and later — information density
+
+- expand current metric runtime/registry;
+- connect cities/subdivisions to infrastructure context;
+- continue empirical infrastructure coverage;
+- add sourced land-cover/environment layers only after separate data/source review;
+- roll the subdivision contract out to additional countries based on usefulness and source quality.
+
+## 14. Testing and quality gates
+
+Every slice begins with failing validation for the intended contract.
+
+Required automated checks should cover:
+
+### Population
+
+- exactly 195 canonical sovereigns;
+- exactly 195 resolved population cells;
+- no missing-as-zero;
+- value/unit/period/source present;
+- same scalar answer used by runtime/card/hover/stat layer.
+
+### Subdivisions
+
+- source file/index schema;
+- stable unique ids;
+- valid parent ISO3;
+- valid geometry;
+- explicit subdivision type;
+- source/vintage metadata;
+- 50 U.S. states represented;
+- D.C. represented with correct non-state type;
+- territories not silently counted as states;
+- lazy-load and URL-state contract markers.
+
+### Cities
+
+- valid GeoJSON;
+- stable ids;
+- valid coordinates;
+- source/provenance fields;
+- population not coerced to zero;
+- capital deduplication;
+- feature-count/file-size budget;
+- progressive visibility tiers;
+- unified search result typing.
+
+### Terrain
+
+- module loads only on demand;
+- terrain/hillshade sources do not replace country sources;
+- analytical layers remain present;
+- explicit requested failure is nonfatal;
+- terrain state restores safely;
+- JavaScript syntax and existing World Map validators remain green.
+
+### Regression
+
+Existing tests for World Map ownership, runtime, entities, Trace, Impact, country browsing, Atlas projection, route contracts and public build must remain green.
+
+## 15. Data acquisition boundaries
+
+### Population
+
+Canonical sources first; UN WPP global fallback only where needed.
+
+### U.S. subdivisions
+
+Official U.S. Census Bureau 2025 TIGER/Line state/equivalent geometry and Vintage 2025 population estimates.
+
+### Cities
+
+Build-time Wikidata acquisition adapted from the historical implementation, with explicit population dates and coordinates. Additional acquisition fallback is allowed only when documented and reconciled into one runtime identity.
+
+### Terrain
+
+External runtime DEM tile service is acceptable because global DEM vendoring is out of scope. Provider must be replaceable/configurable and terrain must fail independently from core map boot.
+
+No external API becomes a mandatory source for normal country/subdivision/city browsing after snapshots are generated.
+
+## 16. Non-goals for this programme
+
+This programme does not:
+
+- build every global admin-1 unit in the first wave;
+- build counties/municipalities immediately;
+- add every settlement in the world;
+- replace MapLibre;
+- replace OpenStreetMap as the ordinary base context without a separate decision;
+- build a second metric database;
+- build a second infrastructure registry;
+- infer political/project alignment from geography;
+- infer population from polygon size;
+- use city population as metro population without definition/source support;
+- treat terrain height as geopolitical importance;
+- add decorative pseudo-physical land-cover colors without sourced land-cover data;
+- merge stale historical map branches wholesale.
+
+## 17. Supersession / continuity notes
+
+This document does not invalidate the useful principles in earlier World Map designs. It consolidates their next unfinished geographic work into current architecture.
+
+Continue from:
+
+- `2026-09-11-world-atlas-utility-design.md` for major-city/search intent;
+- `2026-09-12-world-map-coverage-enrichment-design.md` for coverage-led research and infrastructure priorities;
+- `2026-09-12-world-map-scalar-integrity-addendum.md` for one resolved scalar answer per map entity;
+- current `world-map-3d-runtime.json` for active renderer ownership and next-priority direction.
+
+Historical branches are evidence/mining sources only. In particular, `atlas-metrics-cities-search` contributes useful city builder/validator logic but is not an integration base.
+
+## 18. Success criteria
+
+The programme is successful when an ordinary user can:
+
+- hover/click any canonical country and reliably see a sourced population;
+- zoom into the United States and see/click real state boundaries with state information;
+- search naturally for countries, U.S. states and major cities from one box;
+- see more cities progressively without turning the world view into label clutter;
+- enable physical terrain and understand mountains/relief beneath the analytical map;
+- keep using existing country layers, relationships, Trace, Impact, infrastructure, Time, Evidence and Axis features without semantic or visual regression.
+
+The deeper architectural success is that the map becomes richer by scale rather than by accumulating permanent controls: world -> country -> subdivision -> city -> real assets, all coupled to the same relational Atlas.
