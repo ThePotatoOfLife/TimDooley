@@ -216,7 +216,7 @@ Evidence requires a traceable route such as:
 
 or another explicit public/index route.
 
-The audit should preserve the distinction between **publicly reachable** and **intentionally specialist-only**.
+The audit should preserve the distinction between **publicly reachable** and **intentionally specialist-only**. Intentionally specialist-only owners may be `not_applicable` for public reachability when the repository explicitly routes them through a parent owner rather than exposing them directly.
 
 ### 7.9 Research frontier
 
@@ -239,20 +239,22 @@ No owner is declared "bad" solely because its score is low. A low score means th
 
 ## 9. Evidence trace requirement
 
-Every dimension result must include an evidence object such as:
+Every dimension result must include a reason plus zero or more structured evidence references. An evidence reference uses a real repository path and may separately name the field/key that provided the signal:
 
 ```json
 {
   "status": "partial",
   "reason": "Owner has direct sources but no source-ledger connection",
   "evidence": [
-    "knowledge/core/example.json#sources",
-    "knowledge/indexes/source-index.json"
+    {"path": "knowledge/core/example.json", "field": "sources"},
+    {"path": "knowledge/indexes/source-index.json", "field": "records"}
   ]
 }
 ```
 
-A maturity status without a reason/evidence trace is invalid.
+`path` must resolve to a real repository file. `field` is descriptive metadata and is not interpreted as part of the filesystem path.
+
+A maturity status without a reason is invalid. A non-empty evidence reference with a nonexistent `path` is invalid. `missing` and some `not_applicable` results may legitimately use an empty evidence array when the reason explains the absence.
 
 This makes the audit reviewable and prevents hidden heuristic judgments.
 
@@ -323,7 +325,7 @@ CI must fail if:
 - a core-index owner path does not exist;
 - the maturity report is stale;
 - report schema/status values are invalid;
-- an evidence trace points to a nonexistent repository path;
+- a non-empty evidence reference points to a nonexistent repository path;
 - the maintenance queue references an unknown owner or unknown gap.
 
 CI must **not** fail merely because an owner has low structural coverage.
