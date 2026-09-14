@@ -25,6 +25,27 @@ jobs:
           python scripts/test_world_population_contract.py
           python scripts/test_build_world_demography_population.py
           python scripts/test_build_world_subdivisions.py
+      - name: Diagnose Census TIGERweb response
+        run: |
+          python - <<'PY'
+          import urllib.parse, urllib.request
+          base = 'https://tigerweb.geo.census.gov/arcgis/rest/services/TIGERweb/tigerWMS_Current/MapServer/80/query'
+          params = {
+              'where':'1=1',
+              'outFields':'STATE,STUSAB,NAME,AREALAND,AREAWATER,CENTLAT,CENTLON',
+              'returnGeometry':'true',
+              'outSR':'4326',
+              'f':'geojson',
+          }
+          url = base + '?' + urllib.parse.urlencode(params)
+          req = urllib.request.Request(url, headers={'User-Agent':'ThePotatoOfLife-world-atlas-subdivisions/1.0'})
+          with urllib.request.urlopen(req, timeout=60) as response:
+              body = response.read(512)
+              print('status=', response.status)
+              print('content-type=', response.headers.get('content-type'))
+              print('final-url=', response.geturl())
+              print('prefix=', repr(body[:240]))
+          PY
       - name: Generate official Census subdivision snapshot
         env:
           ATLAS_SUBDIVISIONS_OUT_DIR: _generated/world-subdivisions
