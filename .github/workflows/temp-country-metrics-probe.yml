@@ -5,6 +5,7 @@ on:
     branches: [feat/world-map-advance-2026-09-15]
     paths:
       - 'scripts/build_world_country_metrics.py'
+      - 'scripts/build_world_demography.py'
       - 'scripts/test_world_country_metrics.py'
       - '.github/workflows/temp-country-metrics-probe.yml'
 
@@ -40,6 +41,7 @@ jobs:
           assert data['coverage']['gdp_per_capita'] >= 170
           assert data['coverage']['life_expectancy'] >= 150
           assert data['coverage']['internet_penetration'] >= 140
+          assert data['coverage']['co2_per_capita'] >= 150
           assert all(spec['semantic_role'] == 'dated-observation' and spec['axis_score'] is False for spec in data['metrics'].values())
           assert 'never zero' in data['missing_rule']
           for code in ('DNK','USA','CAN'):
