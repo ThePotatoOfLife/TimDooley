@@ -32,13 +32,39 @@
       "source_class": "statement_ledger",
       "date_or_period": "2026-03-02",
       "origin": "library",
-      "locator": {"name": "tim-statements-conversation-recovery-wave-005-2026-09-13.json", "file_id": "file_00000000da8881f4b17e16f4e5db5ccc", "line_start": 80, "line_end": 141},
+      "locator": {"name": "tim-statements-conversation-recovery-wave-005-2026-09-13.json", "file_id": "file_00000000da8881f4b17e16f4e5db5ccc", "statement_family": "spiritual-bank-2026-03-02"},
       "speaker_scope": ["user"],
       "public_status": "public_safe_excerpt",
       "continuity": "isolated",
       "attestation": "recovered_exact_statements",
       "public_excerpt": null,
       "notes": ["Preserves exact recovered phrases and date, but not the contiguous surrounding conversation.", "Sufficient for an anecdote; insufficient by itself for SCENE or TRANSCRIPT_DEPTH."]
+    },
+    {
+      "id": "source-info-architecture-recovery-ledger-2026-02-18",
+      "source_class": "statement_ledger",
+      "date_or_period": "2026-02-18–2026-02-19",
+      "origin": "library",
+      "locator": {"name": "tim-statements-conversation-recovery-wave-005-2026-09-13.json", "file_id": "file_00000000da8881f4b17e16f4e5db5ccc", "statement_family": "information-architecture-2026-02-18"},
+      "speaker_scope": ["user"],
+      "public_status": "public_safe_excerpt",
+      "continuity": "isolated",
+      "attestation": "recovered_exact_statements_plus_paraphrase",
+      "public_excerpt": null,
+      "notes": ["Preserves exact user-originated formulations and paraphrase-level architecture, but not the contiguous raw dialogue.", "Do not promote to SCENE or TRANSCRIPT_DEPTH until surrounding turns are recovered."]
+    },
+    {
+      "id": "source-authorship-erasure-recovery-ledger-2026-05-27",
+      "source_class": "statement_ledger",
+      "date_or_period": "2026-05-27–2026-05-28",
+      "origin": "library",
+      "locator": {"name": "tim-statements-conversation-recovery-wave-005-2026-09-13.json", "file_id": "file_00000000da8881f4b17e16f4e5db5ccc", "statement_family": "authorship-erasure-2026-05-27"},
+      "speaker_scope": ["user"],
+      "public_status": "public_safe_excerpt",
+      "continuity": "isolated",
+      "attestation": "recovered_exact_statements",
+      "public_excerpt": null,
+      "notes": ["Preserves a dense first-person statement cluster across 27–28 May, but not the complete turn-by-turn exchange.", "The material documents Tim's reported experience; it is not independent evidence of intentional suppression."]
     },
     {
       "id": "source-public-post-compilation-2025-01",
@@ -52,6 +78,19 @@
       "attestation": "public_primary_compilation",
       "public_excerpt": null,
       "notes": ["Dated public-post compilation around the January 2025 streaming/music corridor.", "The exact single-post context is thin even though neighboring dated posts survive."]
+    },
+    {
+      "id": "source-great-book-chapter-11-1",
+      "source_class": "great_book_literary_text",
+      "date_or_period": "2024 literary stratum",
+      "origin": "repository",
+      "locator": {"path": "great-book/chapters/024--chapter-11-1--the-tale-of-termite-and-the-lost-potato.html", "chapter": "11.1"},
+      "speaker_scope": ["authored Great Book narration and dialogue"],
+      "public_status": "public_source",
+      "continuity": "literary",
+      "attestation": "direct_chapter_text",
+      "public_excerpt": null,
+      "notes": ["Direct authored literary source for Termite and the lost potato scene.", "Literary completeness does not convert the scene into documentary biography."]
     },
     {
       "id": "source-great-book-chapter-12-1",
