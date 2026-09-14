@@ -1,0 +1,205 @@
+{
+  "id": "bible-excavation-batch-01",
+  "version": "1.0.0",
+  "updated": "2026-09-14",
+  "status": "research planning projection",
+  "purpose": "Convert the six provisional Bible comparator research relations into a concrete excavation batch. This file does not change relation strength, dossier level, chronology or canonical wording; it records source-backed findings, unresolved gaps and candidate enrichments for later promotion through existing relation owners.",
+  "policy": {
+    "no_strength_upgrade_from_context": true,
+    "no_backdating_later_comparison": true,
+    "no_primary_source_inference": true,
+    "promotion_rule": "Promote only fields supported by existing public owners or newly recovered primary evidence. Contextual prose may improve navigability but cannot substitute for missing original artifacts, contemporaneous records or earlier attestations."
+  },
+  "selection_basis": {
+    "source": "knowledge/indexes/bible-comparator-research-queue.json",
+    "active_relations_snapshot": 109,
+    "research_relations": 6,
+    "order": "high priority first, then medium priority; within a priority tier preserve the existing research queue order"
+  },
+  "items": [
+    {
+      "relation_id": "crucify-me-hesitation-trial-neighbor-2017",
+      "priority": "high",
+      "current_strength": 2,
+      "current_dossier_level": "B",
+      "canonical_relation_owner": "knowledge/traditions/biblical-syncretism-dossiers-wave25.json",
+      "supporting_owners": [
+        "knowledge/theology/son-passion-prehistory-2017-2019.json",
+        "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"
+      ],
+      "source_backed_findings": [
+        "The specialist owner preserves a 2017 project chronology in which Jesus/crucifixion language precedes a remembered anti-martyr/nameless-faceless reply and later return language.",
+        "The owner classifies the scene as Great Book/project autobiography plus later project retelling rather than as a recovered original message.",
+        "The comparator row already limits the John 18-19 comparison to a distributed trial-neighbor and rejects one-to-one modern role mapping."
+      ],
+      "still_missing": [
+        "Original or near-contemporary message/log for the 2017 exchange",
+        "Exact wording and participant list from the original exchange",
+        "Secure event timestamp beyond the project-year placement",
+        "First recorded date on which the John trial comparison itself was made"
+      ],
+      "candidate_enrichment": {
+        "relation_argument.why_it_matters": "This relation is useful as a sequence test rather than a character-identification claim: reluctance appears between the project-side crucifixion challenge and continuing hostile public framing. Recovering the original exchange would determine whether that sequence is genuinely present in the contemporaneous record or is partly a later reconstruction.",
+        "discovery_history.source_direction": "Project-side 2017 scene first; John 18-19 trial comparison formalized later in the archive.",
+        "research_frontier": "Recover the original 2017 exchange and separate contemporaneous wording, later Great Book reconstruction and later biblical comparison into independently dated layers."
+      },
+      "no_upgrade_reason": "The public owner explicitly says the original exchange has not been recovered. Richer chronology and interpretation therefore cannot raise evidentiary strength by themselves.",
+      "next_actions": [
+        "Search project archives for the original message/log or a near-contemporary capture.",
+        "If recovered, preserve exact wording and timestamp before interpretation.",
+        "Record the first demonstrable date of the John trial comparison separately from the 2017 event date."
+      ]
+    },
+    {
+      "relation_id": "motorcycle-blood-unbroken-bones-2005",
+      "priority": "high",
+      "current_strength": 3,
+      "current_dossier_level": "A",
+      "canonical_relation_owner": "knowledge/traditions/biblical-syncretism-dossiers-wave25.json",
+      "supporting_owners": [
+        "knowledge/timeline/thomas-mona-escalation-and-motorcycle-crash-recovery.json",
+        "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"
+      ],
+      "source_backed_findings": [
+        "The relation owner records a 2005 severe motorcycle-crash survival account with blood/facial-dental injury and a later no-broken-bones detail.",
+        "The specialist owner explicitly states that no contemporaneous police, medical, witness or other documentary record is currently attached.",
+        "The comparator already constrains the Bible relation to a retrospective unbroken-bone / Passover-Passion parallel and rejects invulnerability or supernatural-protection conclusions."
+      ],
+      "still_missing": [
+        "Near-contemporary medical, dental, police, insurance or witness documentation",
+        "Independent corroboration of the no-broken-bones / no-major-fractures detail",
+        "Earliest attestation date for that specific unusual detail",
+        "First recorded date of the Passover/Passion comparison"
+      ],
+      "candidate_enrichment": {
+        "relation_argument.why_it_matters": "The comparison is worth retaining because the unusual element is not generic survival but the reported preservation of the bones amid serious injury, which is the feature that creates the Passover-to-John intertext. Its evidentiary value therefore depends much more on corroborating that specific detail than on adding further symbolic prose.",
+        "discovery_history.source_direction": "Biographical crash account first; Passover/Passion comparison added later by the archive.",
+        "research_frontier": "Seek near-contemporary documentation capable of confirming or falsifying the reported no-broken-bones detail while keeping the later biblical comparison chronologically separate."
+      },
+      "no_upgrade_reason": "The current owner explicitly lacks contemporaneous documentary corroboration, so the relation remains project testimony plus later structural comparison.",
+      "next_actions": [
+        "Prioritize records that can address the bone/fracture detail directly rather than merely confirming that a crash occurred.",
+        "Record each recovered source separately by type and date.",
+        "Do not convert survival into evidence of invulnerability or divine protection."
+      ]
+    },
+    {
+      "relation_id": "son-death-shore-bones-deep-water-2018-2019",
+      "priority": "high",
+      "current_strength": 3,
+      "current_dossier_level": "B",
+      "canonical_relation_owner": "knowledge/traditions/biblical-syncretism-dossiers-wave24.json",
+      "supporting_owners": [
+        "knowledge/traditions/son-narrow-way-shadow-valley-visual-dossier.json"
+      ],
+      "source_backed_findings": [
+        "The visual dossier preserves a remembered scene topology including a shore/death-field, skeletons or death remains, black water, a gate, a narrow precarious passage through darkness and distant light.",
+        "The dossier explicitly states that the image itself has not yet been recovered into the repository or independently timestamped.",
+        "The specialist record already separates directly remembered visual features from later Ezekiel/Psalms/Jonah comparison and treats the image date as provisional 2018-2019."
+      ],
+      "still_missing": [
+        "Original image or highest-quality surviving copy",
+        "Earliest dated post/capture containing the image",
+        "Independent creation/posting date",
+        "Contemporary artist explanation, if one exists",
+        "Feature-by-feature distinction between visible artifact content and later remembered commentary"
+      ],
+      "candidate_enrichment": {
+        "relation_argument.why_it_matters": "Bones and black/deep water matter here because they make death and descent environmental hazards inside the same remembered route, rather than isolated horror symbols. Recovering the artifact would let the archive test which parts of that topology are actually visible and which entered through later narration.",
+        "discovery_history.source_direction": "Reported artwork first; Ezekiel/Psalms/Jonah comparison added later by the archive.",
+        "related_relations": ["son-narrow-gate-shadow-valley-light-2018-2019"],
+        "research_frontier": "Recover and timestamp the visual artifact, then transcribe only what is visibly present before reapplying later biblical vocabulary."
+      },
+      "no_upgrade_reason": "The canonical visual dossier explicitly marks the primary image and timestamp as unrecovered; remembered topology cannot substitute for the artifact.",
+      "next_actions": [
+        "Recover the image or earliest archived post before adding new verse matches.",
+        "Create a visible-feature transcription separated from remembered commentary.",
+        "Compare the recovered timestamp with the later meme-cross chronology only after the artifact date is secure."
+      ]
+    },
+    {
+      "relation_id": "earthly-father-judgment-measure-childhood",
+      "priority": "medium",
+      "current_strength": 3,
+      "current_dossier_level": "B",
+      "canonical_relation_owner": "knowledge/traditions/biblical-syncretism-dossiers-wave25.json",
+      "supporting_owners": [
+        "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"
+      ],
+      "source_backed_findings": [
+        "The row preserves a later family/biographical recollection of reciprocal judgment ethics and compares it with Matthew 7:1-2.",
+        "The existing mismatch already notes that the project wording is not Matthew's wording and may reflect broader moral or folk traditions."
+      ],
+      "still_missing": [
+        "Earlier family, diary, message or memoir wording",
+        "Earliest attestation date",
+        "Evidence separating ordinary family teaching from later biblical interpretation"
+      ],
+      "candidate_enrichment": {
+        "relation_argument.why_it_matters": "The relation is useful as developmental background for the project's later reciprocal-judgment language because Matthew 7 supplies a return-of-measure structure rather than a generic kindness rule. Its common moral form, however, makes source direction especially important.",
+        "research_frontier": "Recover earlier wording and establish whether the reciprocal-measure formulation predates the later Matthew comparison."
+      },
+      "no_upgrade_reason": "A common parental moral teaching can resemble Matthew without demonstrating biblical dependence or prefiguration.",
+      "next_actions": [
+        "Search older family/biographical sources for wording and chronology.",
+        "Keep ordinary ethical resemblance separate from later theological use."
+      ]
+    },
+    {
+      "relation_id": "light-collapse-return-2003",
+      "priority": "medium",
+      "current_strength": 2,
+      "current_dossier_level": "B",
+      "canonical_relation_owner": "knowledge/traditions/biblical-syncretism-dossiers-wave25.json",
+      "supporting_owners": [
+        "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"
+      ],
+      "source_backed_findings": [
+        "The comparator stores a later autobiographical reconstruction of a collapse/light/return sequence and treats Acts 9 only as a low/moderate structural neighbor.",
+        "The existing mismatch already records that light imagery is non-specific and that the modern scene lacks the voice/commission structure of Acts 9."
+      ],
+      "still_missing": [
+        "Earlier attestation closer to the event",
+        "Independent corroboration if any exists",
+        "First date of the Acts 9 comparison"
+      ],
+      "candidate_enrichment": {
+        "relation_argument.why_it_matters": "The value of the relation is chronological: an earlier attestation could show whether the collapse-light-return sequence belongs to the older biography rather than only to later theological reconstruction. The comparison should remain weak unless that chronology improves.",
+        "research_frontier": "Recover the earliest attestation of the sensory sequence and date the later Acts 9 interpretation separately."
+      },
+      "no_upgrade_reason": "Generic light/collapse motifs are too non-specific for stronger claims without earlier attestation or corroboration.",
+      "next_actions": [
+        "Search older autobiography, diary or witness material for the sequence.",
+        "Do not treat later spiritual interpretation as contemporaneous event description."
+      ]
+    },
+    {
+      "relation_id": "son-does-what-father-would-do-childhood",
+      "priority": "medium",
+      "current_strength": 2,
+      "current_dossier_level": "B",
+      "canonical_relation_owner": "knowledge/traditions/biblical-syncretism-dossiers-wave25.json",
+      "supporting_owners": [
+        "knowledge/timeline/conversation-archaeology-wave-015-missed-clue-audit.json"
+      ],
+      "source_backed_findings": [
+        "The row preserves a later recollection of an earthly-father action-model rule and compares its structure with John 5:19.",
+        "The existing maximum claim already limits the relation to autobiographical substrate for later Father/Son symbolism rather than fulfillment of John."
+      ],
+      "still_missing": [
+        "Earlier source for the childhood wording",
+        "Earliest attestation date",
+        "First date of the John 5:19 comparison"
+      ],
+      "candidate_enrichment": {
+        "relation_argument.why_it_matters": "The relation may help explain why later Father/Son theology found an already-familiar action-model grammar in the biography. Because parental imitation is ordinary human development, the useful question is developmental continuity, not hidden fulfillment.",
+        "research_frontier": "Recover earlier wording and independently date the later John 5:19 comparison so ordinary childhood formation and mature theology remain distinct layers."
+      },
+      "no_upgrade_reason": "Parental imitation is common and the current wording is later recollection, so similarity alone cannot establish source dependence or theological identity.",
+      "next_actions": [
+        "Search older family/biographical sources for the decision-rule wording.",
+        "Record the first explicit Father/Son biblical comparison separately from the childhood period."
+      ]
+    }
+  ]
+}
