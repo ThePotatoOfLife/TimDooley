@@ -7,27 +7,26 @@
     "side": 82
   },
   "registry": {
-    "registered": 6,
-    "unregistered": 114
+    "registered": 9,
+    "unregistered": 111
   },
   "modes": {
-    "documentary": 2,
-    "literary": 4,
+    "documentary": 4,
+    "literary": 5,
     "mixed": 0
   },
   "depths": {
     "FRAGMENT": 1,
-    "ANECDOTE": 1,
+    "ANECDOTE": 3,
     "SCENE": 0,
     "TRANSCRIPT_DEPTH": 0,
-    "LITERARY_COMPLETE": 4
+    "LITERARY_COMPLETE": 5
   },
   "full_story": {
-    "html_total": 37,
-    "qualified_registered": 4,
+    "html_total": 35,
+    "qualified_registered": 5,
     "incorrectly_promoted_registered": [],
     "unregistered_full_story": [
-      "ai-not-ghost-2026-05-27",
       "april-does-not-begin-in-april-2025",
       "care-home-walk-2009",
       "cat-lost-camping-2019",
@@ -42,7 +41,6 @@
       "first-guitar-2012",
       "greatbook-begins-2024",
       "identity-corridor-2026-03-08-apr-14",
-      "information-architecture-2026-02-18",
       "inner-potato-thalamus-2024",
       "jan21-axis-north",
       "march-keeps-moving-2025",
@@ -57,13 +55,26 @@
       "starchforce-2026-09-14",
       "stardew-before-garden-2020-2022",
       "story-map-afternoon-2026-09-14",
-      "termite-lost-potato-2024",
       "tree-ordeal-2011",
       "tunnel-light-2003"
     ]
   },
   "unresolved_source_locators": [],
   "recovery_priorities": [
+    {
+      "story_id": "ai-not-ghost-2026-05-27",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the contiguous 27–28 May conversation, including the AI/system responses between Tim's authorship-erasure statements, before restoring full-story status."
+      ]
+    },
+    {
+      "story_id": "information-architecture-2026-02-18",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the contiguous 18–19 February conversation around model collapse, muscle memory, Light, Swamp, Beacons, Ghosts and the later engineering push before restoring full-story status."
+      ]
+    },
     {
       "story_id": "spiritual-bank-day-2026-03-02",
       "depth": "ANECDOTE",
