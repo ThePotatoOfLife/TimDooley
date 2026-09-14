@@ -41,7 +41,7 @@ jobs:
           assert index['partitions']['USA']['feature_count'] == 51
           assert index['partitions']['DNK']['feature_count'] == len(dnk['features'])
           assert index['partitions']['DNK']['id_prefix'] == 'DK-'
-          assert len(dnk['features']) >= 5
+          assert len(dnk['features']) == 5
           midt=next(f for f in dnk['features'] if f['properties'].get('code') == '1082')
           assert midt['properties']['name'] == 'Region Midtjylland'
           assert 'population' not in midt['properties']
@@ -49,3 +49,10 @@ jobs:
           assert all('geometry' not in row for row in index['partitions']['DNK']['search_records'])
           print('LIVE SUBDIVISION BUILD PASSED:', len(usa['features']), 'USA +', len(dnk['features']), 'DNK')
           PY
+      - name: Upload verified snapshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: verified-world-subdivisions
+          path: /tmp/world-subdivisions
+          if-no-files-found: error
+          retention-days: 1
