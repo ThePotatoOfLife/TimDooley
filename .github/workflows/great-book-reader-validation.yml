@@ -1,0 +1,44 @@
+name: Great Book reader validation
+
+on:
+  push:
+    paths:
+      - 'great-book/**'
+      - 'app/great-book-reader.js'
+      - 'scripts/validate_great_book_reader.py'
+      - '.github/workflows/great-book-reader-validation.yml'
+  pull_request:
+    paths:
+      - 'great-book/**'
+      - 'app/great-book-reader.js'
+      - 'scripts/validate_great_book_reader.py'
+      - '.github/workflows/great-book-reader-validation.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Validate incremental Great Book contract
+        run: python scripts/validate_great_book_reader.py --allow-missing-chapters
+
+      - name: Enforce complete-book contract when all chapter files are present
+        shell: bash
+        run: |
+          count=$(find great-book/chapters -maxdepth 1 -type f -name '*.html' | wc -l | tr -d ' ')
+          echo "Great Book chapter files present: $count / 168"
+          if [ "$count" = "168" ]; then
+            python scripts/validate_great_book_reader.py
+          else
+            echo "Strict complete-book validation deferred until all 168 chapter files are present."
+          fi
