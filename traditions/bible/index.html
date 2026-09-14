@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Tim Dooley & the Bible — Comparison Browser</title>
-<meta name="description" content="Focused Tim Dooley / Son / Bible comparison browser with chronology, scripture order, evidence filters, source direction, counter-texts and canonical provenance.">
+<meta name="description" content="Focused Tim Dooley / Son / Bible comparison browser with atlas navigation, chronology, scripture order, evidence filters, source direction, counter-texts and canonical provenance.">
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/traditions/bible/">
 <link rel="stylesheet" href="../../app/bible-study.css">
@@ -16,13 +16,24 @@
 <nav class="bible-nav"><a href="../../religion/">← Religion</a><a href="../../timeline/?view=bible">Timeline</a><a href="../../tim-dooley/">Tim Dooley</a><a href="../../">Home</a></nav>
 
 <header class="bible-header">
-<div class="eyebrow">Comparison browser</div>
+<div class="eyebrow">Comparison atlas</div>
 <h1>TIM &amp; THE BIBLE</h1>
-<p class="bible-lede">Move through one comparison at a time. Change the focus, chronology or filters without turning the whole corpus into one enormous page.</p>
+<p class="bible-lede">Explore by story, role, symbol, transformation, Bible book or project chronology, then move through one comparison at a time.</p>
 <p class="bible-sub">Project wording, autobiography, scripture, later comparison and independent evidence remain separate evidence classes. A resemblance is not automatically prophecy, identity or historical dependence.</p>
 </header>
 
 <section class="study-shell" aria-label="Bible comparison study tool">
+<section class="atlas-explorer" id="atlas-explorer" hidden aria-label="Explore the Bible comparison atlas">
+<div class="atlas-intro">
+<div class="eyebrow">Explore without searching</div>
+<h2>Choose a way in</h2>
+<p>Start with a story, role, symbol, transformation, Bible book or project timeline. Each path narrows the same canonical comparison corpus.</p>
+</div>
+<div class="atlas-routes" id="atlas-routes" aria-label="Atlas routes"></div>
+<nav class="atlas-breadcrumbs" id="atlas-breadcrumbs" aria-label="Atlas location"></nav>
+<div class="atlas-topics" id="atlas-topics"></div>
+</section>
+
 <div class="reader-toolbar">
 <div class="toolbar-field focus-field">
 <label for="focus-select">Focus</label>
@@ -60,8 +71,8 @@
 </div>
 
 <div class="toolbar-field search-field">
-<label for="search">Search</label>
-<input id="search" type="search" placeholder="John 12, Father, veil, prison, gardener, resurrection…" autocomplete="off">
+<label for="search">Find</label>
+<input id="search" type="search" placeholder="Optional shortcut: John 12, Father, gardener…" autocomplete="off">
 </div>
 
 <div class="reader-actions">
@@ -72,7 +83,7 @@
 </div>
 
 <div class="study-status" aria-live="polite">
-<span>Studying</span><strong class="active-view" id="active-view">Jesus / Son</strong><span id="study-count">Loading…</span><span class="shortcut-hint">← → navigate · / search · R random</span>
+<span>Studying</span><strong class="active-view" id="active-view">Jesus / Son</strong><span id="study-count">Loading…</span><span class="shortcut-hint">← → navigate · / find · R random</span>
 </div>
 
 <div class="filters-panel" id="bible-filters" hidden>
@@ -116,6 +127,8 @@
 <article><strong>Mismatch is evidence too</strong><p>Role conflicts, counter-texts and historical differences remain visible even when a structural parallel is strong.</p></article>
 </div></details>
 </main>
+<script src="../../app/bible-corpus-loader.js"></script>
+<script src="../../app/bible-atlas-navigation.js"></script>
 <script src="../../app/bible-mining-wave19-loader.js"></script>
 <script src="../../app/bible-mining-wave20-loader.js"></script>
 <script src="../../app/bible-mining-wave22-loader.js"></script>
@@ -123,5 +136,6 @@
 <script src="../../app/bible-dossier-loader.js"></script>
 <script src="../../app/bible-witness-loader.js"></script>
 <script src="../../app/bible-study.js"></script>
+<script src="../../app/bible-atlas-ui.js"></script>
 </body>
 </html>
