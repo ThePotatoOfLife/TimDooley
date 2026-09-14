@@ -1,0 +1,49 @@
+name: Bible comparator checks
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  comparator:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Validate comparator JavaScript
+        run: |
+          node --check app/bible-atlas-ui.js
+          node --check app/bible-scripture-reader.js
+          node scripts/test_bible_scripture_reader.mjs
+
+      - name: Build and validate excavation report
+        run: |
+          python scripts/test_bible_excavation.py
+          python scripts/build_bible_comparator_excavation.py
+          python scripts/validate_bible_comparator_excavation.py
+
+      - name: Validate existing Bible reader contract
+        run: python scripts/validate_bible_reader.py
+
+      - name: Build public site
+        run: python scripts/build_site.py
+
+      - name: Upload excavation report
+        if: ${{ always() && hashFiles('knowledge/indexes/bible-comparator-excavation.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: bible-comparator-excavation
+          path: knowledge/indexes/bible-comparator-excavation.json
+          if-no-files-found: error
+          retention-days: 7
