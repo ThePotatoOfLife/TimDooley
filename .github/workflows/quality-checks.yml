@@ -254,6 +254,15 @@ jobs:
       - name: Compile science paper library
         run: python scripts/build_science_catalog.py
 
+      - name: Upload generated Science catalog diagnostic
+        if: ${{ always() && hashFiles('_site/science/catalog.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: science-catalog-diagnostic
+          path: _site/science/catalog.json
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Validate science paper library
         run: python scripts/validate_science_portal.py
 
