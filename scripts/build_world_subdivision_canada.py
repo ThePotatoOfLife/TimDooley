@@ -4,7 +4,8 @@
 Uses the official 2021 Census cartographic boundary ArcGIS REST layer. The
 browser consumes the same-origin snapshot; the external API is build-time only.
 The layer is queried one province/territory at a time because asking ArcGIS to
-transform Canada's full coastline in one request can return HTTP 500.
+transform Canada's full coastline in one request can return HTTP 500. A small
+bounded worker pool keeps refresh time reasonable without weakening completeness.
 """
 from __future__ import annotations
 
@@ -14,6 +15,7 @@ import time
 import urllib.error
 import urllib.parse
 import urllib.request
+from concurrent.futures import ThreadPoolExecutor, as_completed
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -24,8 +26,9 @@ OUT_PATH = OUT_DIR / "CAN.geo.json"
 SOURCE_LAYER = "https://geo.statcan.gc.ca/geo_wa/rest/services/2021/Cartographic_boundary_files/MapServer/0"
 SOURCE_QUERY = SOURCE_LAYER + "/query"
 SOURCE_NAME = "Statistics Canada, 2021 Census Cartographic Boundary Files"
-USER_AGENT = "ThePotatoOfLife-world-atlas-subdivision-canada/1.1"
+USER_AGENT = "ThePotatoOfLife-world-atlas-subdivision-canada/1.2"
 EXPECTED_UNITS = 13
+MAX_WORKERS = 4
 
 PRUID_TO_POSTAL = {
     "10":"NL", "11":"PE", "12":"NS", "13":"NB", "24":"QC", "35":"ON",
@@ -111,7 +114,7 @@ def normalize_canada(source_features: list[dict]) -> dict:
         "type":"FeatureCollection",
         "name":"world-subdivisions-CAN",
         "metadata":{
-            "version":"1.1.0",
+            "version":"1.2.0",
             "generated_at":datetime.now(timezone.utc).isoformat(),
             "parent_iso3":"CAN",
             "feature_count":len(features),
@@ -119,7 +122,7 @@ def normalize_canada(source_features: list[dict]) -> dict:
             "geometry_vintage":"2021 Census",
             "geometry_source":SOURCE_NAME,
             "geometry_source_url":SOURCE_LAYER,
-            "acquisition":"13 province/territory-scoped ArcGIS GeoJSON queries assembled only after complete coverage",
+            "acquisition":"13 province/territory-scoped ArcGIS GeoJSON queries; bounded-parallel; assembled only after complete coverage",
             "population_status":"unknown-not-zero; demographic enrichment pending",
         },
         "features":features,
@@ -158,19 +161,29 @@ def canada_descriptor(features: list[dict]) -> dict:
     }
 
 
+def fetch_one(pruid: str) -> dict:
+    payload = fetch_json(source_url(pruid))
+    if payload.get("type") != "FeatureCollection" or not isinstance(payload.get("features"), list):
+        raise RuntimeError(f"Statistics Canada province query {pruid} did not return GeoJSON FeatureCollection")
+    matches = [
+        feature for feature in payload["features"]
+        if str((feature.get("properties") or {}).get("PRUID") or "").strip() == pruid
+    ]
+    if len(matches) != 1:
+        raise RuntimeError(f"Statistics Canada province query {pruid} returned {len(matches)} matching features")
+    return matches[0]
+
+
 def build() -> dict:
     source_features = []
-    for pruid in PRUID_TO_POSTAL:
-        payload = fetch_json(source_url(pruid))
-        if payload.get("type") != "FeatureCollection" or not isinstance(payload.get("features"), list):
-            raise RuntimeError(f"Statistics Canada province query {pruid} did not return GeoJSON FeatureCollection")
-        matches = [
-            feature for feature in payload["features"]
-            if str((feature.get("properties") or {}).get("PRUID") or "").strip() == pruid
-        ]
-        if len(matches) != 1:
-            raise RuntimeError(f"Statistics Canada province query {pruid} returned {len(matches)} matching features")
-        source_features.extend(matches)
+    with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
+        future_to_uid = {executor.submit(fetch_one, pruid): pruid for pruid in PRUID_TO_POSTAL}
+        for future in as_completed(future_to_uid):
+            pruid = future_to_uid[future]
+            try:
+                source_features.append(future.result())
+            except Exception as exc:
+                raise RuntimeError(f"Canada subdivision acquisition failed for PRUID {pruid}: {exc}") from exc
     return normalize_canada(source_features)
 
 
