@@ -64,8 +64,8 @@ def main() -> int:
                 errors.append(f"subdivision population enricher missing marker: {token}")
 
         for token in (
-            "world-subdivisions/index.json", "atlas-subdivision", "subdivision=",
-            "potato-atlas-subdivision-select", "potato-atlas-subdivision-clear",
+            "world-subdivisions/index.json", "searchParams.get('subdivision')", "searchParams.set('subdivision', id)",
+            "atlas-subdivision", "potato-atlas-subdivision-select", "potato-atlas-subdivision-clear",
             "__potatoAtlasOverlayHandled", "pendingDeepLinkId", "partitionForId",
             "viewport_bounds", "id_prefix", "handSubdivisionToInfrastructure",
         ):
