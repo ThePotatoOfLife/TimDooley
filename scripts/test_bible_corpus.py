@@ -6,6 +6,7 @@ import tempfile
 from pathlib import Path
 
 from bible_corpus import CorpusError, assemble_fragments, assemble_relations, assemble_scenes
+from build_bible_comparator_quality import research_reasons
 
 
 def dump(root: Path, rel: str, data: dict) -> None:
@@ -91,10 +92,16 @@ def run_tests() -> None:
         else:
             raise AssertionError('expected duplicate scene failure')
 
+    assert research_reasons({'strength':2}, ['why_it_matters']) == ['low-strength','interpretation-gap']
+    assert research_reasons({}, ['project_side','source_direction']) == ['project-evidence-gap','unscored-provisional']
+    assert research_reasons({'dossier_level':'A'}, ['biblical_sequence']) == ['biblical-context-gap']
+    assert research_reasons({'dossier_level':'B'}, ['counterpressure','supported_conclusion']) == ['boundary-gap','unscored-provisional']
+    assert research_reasons({'strength':4}, ['why_it_matters']) == ['interpretation-gap']
+
 
 def main() -> int:
     run_tests()
-    print('BIBLE CORPUS TESTS PASSED (7 behaviors)')
+    print('BIBLE CORPUS TESTS PASSED (12 behaviors)')
     return 0
 
 
