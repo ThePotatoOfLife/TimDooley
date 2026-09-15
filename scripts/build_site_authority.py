@@ -16,6 +16,8 @@ import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlparse
 
+from house_public_surfaces import primary_gateway_rows
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 BASE_URL = "https://thepotatooflife.github.io/TimDooley"
@@ -23,13 +25,7 @@ OFFICIAL_REPOSITORY = "https://github.com/ThePotatoOfLife/TimDooley"
 AUTHORITY_FILE = "site-authority.json"
 AUTHORITY_URL = f"{BASE_URL}/{AUTHORITY_FILE}"
 SOURCE_AUTHORITY = f"{BASE_URL}/context/source-authority/"
-PRIMARY_ROUTES = {
-    "tim": "/tim-dooley/",
-    "religion": "/religion/",
-    "philosophy": "/philosophy/",
-    "science": "/science/",
-    "world": "/world/",
-}
+PRIMARY_ROUTES = {row["id"]: row["canonical_route"] for row in primary_gateway_rows(ROOT)}
 AUTHORITY_LINK = (
     f'<link rel="alternate" type="application/json" href="{AUTHORITY_URL}" '
     'title="Official project authority and discovery manifest">'

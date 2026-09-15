@@ -2,13 +2,13 @@
 
 Status: operator orientation / routing document — **not a canonical source of truth**
 
-Updated: 2026-09-12
+Updated: 2026-09-15
 
 This document exists so repository work enters through the current architecture instead of rediscovering it, creating parallel masters, or mistaking presentation files for canonical knowledge. When this note conflicts with a canonical owner, registry, source ledger, validator or newer dated record, **the dedicated owner wins**.
 
 ## 1. Working loop
 
-The repository is a retrieval-first Tim Dooley / Potato of Life archive spanning project canon, biography, religion, philosophy, science, chronology, comparative research, world systems, maps, sources and reader projections.
+The repository is a retrieval-first Tim Dooley / Potato of Life archive spanning project canon, biography, religion, philosophy, science, chronology, comparative research, world systems, maps, sources, creative works and reader projections.
 
 Use this loop:
 
@@ -60,35 +60,53 @@ Owns explicit reasoning over records rather than silently rewriting them.
 Primary route:
 - `knowledge/indexes/inference-ledger.json`
 
+### Public route identity
+Owns which public surfaces exist, which are primary, and what their canonical routes are.
+
+Authority starts with:
+- `docs/POTATO-HOUSE-CONSTITUTION.md`
+- `data/house/public-surfaces.json`
+- `knowledge/research/potato-house-master/public-route-topology.json` as the checked topology projection
+
+`manifest.json` does **not** own top-level public route identity. It owns archive branch/pathway relationships and deep Explore semantics.
+
 ### Reader / presentation
 Explains canonical material to humans and machines. Presentation is a projection, not a second canon.
 
-Primary public readers:
+The five primary public gateways are:
 - `tim-dooley/`
 - `religion/`
 - `philosophy/`
 - `science/`
-- `world-map/`
+- `world/`
 
-Secondary/specialist surfaces include timeline, context, questions, A–Z, archive exploration and generated record pages.
+Mature reader/discovery surfaces include Story, Timeline, Collection, Works, Questions, A–Z, Explore, Sources and Context. World Map remains a specialist View beneath World.
 
 ## 3. Public architecture
 
-The homepage exposes exactly five principal doors:
+The homepage exposes exactly five principal subject doors:
 
 1. Tim Dooley
 2. Religion
 3. Philosophy
 4. Science
-5. World Map
+5. World
 
-Do not turn the homepage back into a giant directory. Timeline, sources, archive material, culture/subculture, symbols, technology, society and economics remain secondary threads or deeper routes.
+Do not turn the homepage back into a giant directory and do not add a sixth primary gateway merely because a backend domain becomes richer.
+
+The homepage's subordinate **Ways in** corridor is:
+- Story
+- Timeline
+- Collection
+- Works
+
+Quiet utility access includes Questions, A–Z, Explore, Sources and TTS. Specialist surfaces such as World Map, Politics, North, World Systems, Bible comparison and other focused Views stay beneath the appropriate subject/context instead of competing with the five doors.
 
 Normal reader flow should be:
 
-`major branch → natural question → compact answer/stub → quieter thread → canonical deep owner`
+`five subject doors → reader corridor/room → specialist View or explorer → canonical owner/source`
 
-The deeper the material, the smaller its visual claim.
+The deeper the material, the smaller its first-page visual claim.
 
 ## 4. Epistemic firewall
 
@@ -112,6 +130,7 @@ In particular:
 - Comparative resemblance does not establish historical transmission or identity.
 - Later interpretation must not be backdated into earlier chronology without evidence.
 - Dense connectivity is not evidence of conspiracy; causal claims need mechanism, direction, timing and evidence.
+- Creative works may reuse and test project symbols without automatically becoming doctrine, biography or independent evidence.
 
 ## 5. Canonical domain routing
 
@@ -146,7 +165,14 @@ Canonical event truth starts with:
 - `data/timeline-events.json`
 - `data/timeline-source-registry.json`
 
-Specialist chronology ledgers may preserve narrower wording, dated development and source reconstruction without competing with the canonical event model.
+Specialist chronology ledgers may preserve narrower wording, dated development and source reconstruction without competing with the canonical event model. `/timeline/` is the human-facing reader; Explore remains the deep archive route.
+
+### Works
+Canonical creative ownership starts with:
+- `knowledge/culture/creative-systems-archive.json`
+- distinct creative corpora such as the music archive where appropriate
+
+`/works/` is a curated reader over that material, not a second catalogue or owner.
 
 ### North / World / Europe
 - `knowledge/core/axis-world-model.json`
@@ -158,7 +184,7 @@ Keep symbolic/project North distinct from empirical geography, policy and geopol
 
 ## 6. World Map operating rule
 
-The World Map is a visual query engine over canonical objects, not a competing database.
+The World Map is a visual query engine over canonical objects, not a competing database and not the fifth top-level subject gateway.
 
 Ordinary interaction should stay small:
 - click countries to select/deselect/multi-select;
@@ -167,15 +193,15 @@ Ordinary interaction should stay small:
 - expose groups, alignment/faction, religion, stats and relations through a common resolver;
 - keep advanced traces/path/time functionality progressive rather than permanently open.
 
-Current canonical direction is the composable registry/layer architecture now carried by the consolidation branch. Older Tools-first, single-Lens and duplicate-map branches are historical implementation strata and should not be revived as separate public owners.
+Current canonical direction is the composable registry/layer architecture on `main`. Older Tools-first, single-Lens and duplicate-map branches are historical implementation strata and should not be revived as separate public owners.
 
 Spatial honesty still applies: map real geography and sourced relations directly; do not fake-geolocate nonspatial theology, moral rank or symbolic cosmology.
 
 ## 7. Build / CI / deployment
 
-The consolidation branch is the active implementation workspace. `main` remains the deployment base until the consolidation PR is deliberately merged.
+`main` is the current integration and deployment base. Substantial work should happen on isolated feature branches/PRs and merge only after the exact final PR head passes the relevant integration gate.
 
-Quality checks should validate the complete production build, not a partial source tree. Current gates include repository integrity, reader/runtime contracts, World Map contracts, CSS namespace checks, country refresh reliability, SEO, machine discoverability and built-site shell validation.
+Quality checks should validate the complete production build, not a partial source tree. Current gates include repository integrity, House/reader/runtime contracts, World Map contracts, CSS namespace checks, country refresh reliability, SEO, machine discoverability and built-site shell validation.
 
 The final site build should be treated as a projection pipeline:
 
@@ -221,9 +247,10 @@ Prefer one durable owner plus specialist evidence over parallel masters.
 5. Check existing relationships before inventing new edges.
 6. Prefer deepening over proliferation.
 7. Keep presentation thin and question-led.
-8. Write or update a validator for structural/runtime changes when practical.
-9. Run the relevant validators and full integration gate.
-10. Prune only after promotion and verification.
+8. For public routing, change House authority first and derive projections from it.
+9. Write or update a validator for structural/runtime changes when practical.
+10. Run the relevant validators and full integration gate on the exact final head.
+11. Prune only after promotion and verification.
 
 ## 11. Fast orientation path
 
@@ -233,14 +260,16 @@ Read in this order when entering the repository cold:
 2. `TODO.md`
 3. `docs/PROJECT-OPERATING-MAP.md`
 4. `docs/PROJECT-STRUCTURE.md`
-5. `manifest.json`
-6. `knowledge/indexes/core-index.json`
-7. `knowledge/indexes/project-consolidation-map.json`
-8. `knowledge/indexes/source-index.json`
-9. `knowledge/philosophy/archive-epistemics.json`
-10. `knowledge/indexes/inference-ledger.json`
-11. `data/canonical-source-map.json`
-12. relevant domain owners and validators
+5. `docs/POTATO-HOUSE-CONSTITUTION.md`
+6. `data/house/public-surfaces.json`
+7. `manifest.json`
+8. `knowledge/indexes/core-index.json`
+9. `knowledge/indexes/project-consolidation-map.json`
+10. `knowledge/indexes/source-index.json`
+11. `knowledge/philosophy/archive-epistemics.json`
+12. `knowledge/indexes/inference-ledger.json`
+13. `data/canonical-source-map.json`
+14. relevant domain owners and validators
 
 For World Map work, also read the current World Map design/implementation specs and the runtime/registry contracts before changing controls or rendering behavior.
 
@@ -248,13 +277,13 @@ For World Map work, also read the current World Map design/implementation specs 
 
 The strongest maintenance moves are:
 - close temporary and superseded PRs once their unique work is absorbed;
-- reconcile old documentation with the five-door public architecture;
+- keep `public-surfaces.json`, public-route topology, frontend bridge, discovery builders and current orientation docs convergent;
 - remove redundant presentation and dormant UI only after dependency checks;
 - retire generated batch/state files after promotion;
 - strengthen canonical-owner reachability;
-- keep the SEO/machine graph derived from the final built artifact;
+- keep the SEO/machine graph derived from House route authority and the final built artifact;
 - alternate expansion with consolidation so the repository grows as a tree rather than a heap.
 
 ## 13. One-sentence operating model
 
-**Recover what exists, preserve its provenance, place it under one canonical owner, connect it with typed relationships, test interpretations without flattening epistemic classes, expose it through a small number of useful reader/tool surfaces, verify the build, then prune only redundancy that no longer carries unique meaning or history.**
+**Recover what exists, preserve its provenance, place it under one canonical owner, connect it with typed relationships, expose it through five stable subject doors and richer reader corridors, verify every projection against the same House authority, then prune only redundancy that no longer carries unique meaning or history.**
