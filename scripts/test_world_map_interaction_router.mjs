@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import { createInteractionRouter } from '../world-map/3d-interaction-router.js';
 
 let rendered = [];
@@ -72,5 +73,11 @@ assert.equal(originalEvent.__potatoAtlasOverlayHandled, true, 'router must prese
 const state = router.state();
 assert.ok(state.some(row => row.owner === 'place' && row.clickPriority === 80));
 assert.ok(state.some(row => row.owner === 'overlay' && row.objectType === 'spatial-overlay'));
+
+const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', import.meta.url), 'utf8');
+const subdivisions = fs.readFileSync(new URL('../world-map/3d-subdivisions.js', import.meta.url), 'utf8');
+assert.ok(lifecycle.includes("__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js')"), 'control plane must preload the Interaction Router');
+assert.ok(subdivisions.includes("interaction.register('subdivisions'"), 'subdivisions must register with the Interaction Router');
+assert.ok(!subdivisions.includes("map.on('click', HIT_ID, handleSharedLayerClick)"), 'subdivisions must not retain a parallel click owner after migration');
 
 console.log('WORLD MAP INTERACTION ROUTER REGRESSION PASSED');
