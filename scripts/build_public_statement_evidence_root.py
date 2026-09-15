@@ -7,12 +7,10 @@ from scripts.public_statement_evidence_root import reconcile_records
 
 
 def _canonical_id(record: dict) -> str:
-    status_id = str(record.get('status_id') or '').strip()
-    if status_id:
-        return f'stmt-x-status-{status_id}'
     anchor = str(record.get('timestamp_utc') or record.get('date') or 'undated')
     safe_anchor = anchor.lower().replace(':', '-').replace('t', '-').replace('z', '').replace(' ', '-')
-    digest = hashlib.sha256(str(record.get('quote') or '').encode('utf-8')).hexdigest()[:12]
+    digest_source = f"{anchor}\n{str(record.get('quote') or '')}"
+    digest = hashlib.sha256(digest_source.encode('utf-8')).hexdigest()[:12]
     return f'stmt-x-{safe_anchor}-{digest}'
 
 
@@ -63,6 +61,7 @@ def build_evidence_root(source_payloads: list[dict]) -> dict:
         'roots': roots,
         'coverage_notes': coverage_notes,
         'traversals': {'chronological': chronological},
+        'discovery_gaps': [],
         'reconciliation': {
             'merged_groups': sum(1 for row in roots if len(row.get('provenance', [])) > 1),
             'unresolved': [],
