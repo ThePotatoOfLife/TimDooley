@@ -19,6 +19,7 @@ SOURCE_DEFAULTS = {
     "archaeology_summary": ("4_archive_synthesis", "phrase_cluster"),
     "later_autobiographical_retelling": ("2_later_first_person_retelling", "phrase_cluster"),
     "great_book_literary_text": ("0_direct_contemporaneous", "complete_literary_scene"),
+    "conversation_recovery": ("3_project_reconstruction", "phrase_cluster"),
 }
 
 EVENT_RANK = {
@@ -37,6 +38,8 @@ class StoryParser(HTMLParser):
         self.current: dict | None = None
         self.capture_source = False
         self.source_chunks: list[str] = []
+        self.capture_note = False
+        self.note_chunks: list[str] = []
 
     def handle_starttag(self, tag, attrs):
         data = dict(attrs)
@@ -50,9 +53,16 @@ class StoryParser(HTMLParser):
                 "depth": data.get("data-story-depth"),
                 "mode": data.get("data-story-mode"),
                 "source_hints": [],
+                "source_note_text": "",
             }
             self.entries.append(self.current)
             return
+        if tag == "details" and self.current is not None:
+            classes = set((data.get("class") or "").split())
+            if "source-note" in classes:
+                self.capture_note = True
+                self.note_chunks = []
+                return
         if tag == "span" and self.current is not None:
             classes = set((data.get("class") or "").split())
             if "source-paths" in classes:
@@ -62,6 +72,8 @@ class StoryParser(HTMLParser):
     def handle_data(self, data):
         if self.capture_source:
             self.source_chunks.append(data)
+        if self.capture_note:
+            self.note_chunks.append(data)
 
     def handle_endtag(self, tag):
         if tag == "span" and self.capture_source:
@@ -70,6 +82,12 @@ class StoryParser(HTMLParser):
                 self.current["source_hints"].append(hint)
             self.capture_source = False
             self.source_chunks = []
+        elif tag == "details" and self.capture_note:
+            note = " ".join("".join(self.note_chunks).split())
+            if note and self.current is not None:
+                self.current["source_note_text"] = note
+            self.capture_note = False
+            self.note_chunks = []
         elif tag == "article":
             self.current = None
 
@@ -87,7 +105,7 @@ def load_overrides(root: Path) -> dict:
 
 
 def scan_public(root: Path) -> list[dict]:
-    entries: list[dict] = []
+    entries = []
     for path in sorted((root / "story-content").glob("*.html")):
         parser = StoryParser()
         parser.feed(path.read_text(encoding="utf-8", errors="replace"))
@@ -97,8 +115,10 @@ def scan_public(root: Path) -> list[dict]:
     return entries
 
 
-def infer_source_hints(hints: list[str]) -> tuple[list[str], str | None, str | None]:
-    text = " ".join(hints).lower()
+def infer_source_hints(
+    hints: list[str], note_text: str = ""
+) -> tuple[list[str], str | None, str | None]:
+    text = " ".join([*hints, note_text]).lower()
     classes: list[str] = []
     if "suno" in text or "creative catalogue" in text or "creative archive" in text:
         classes.append("creative_artifact")
@@ -111,14 +131,24 @@ def infer_source_hints(hints: list[str]) -> tuple[list[str], str | None, str | N
             "rational_potato",
             "x occurrence",
             "public indexed",
+            "public compilation",
         )
     ):
         classes.append("public_post_sequence")
+    if "great-book" in text or "great book" in text:
+        if "retrospective" in text or "later retelling" in text:
+            classes.append("later_autobiographical_retelling")
+        elif "literary" in text or "direct chapter" in text:
+            classes.append("great_book_literary_text")
+    if "conversation recovery" in text or "conversation-derived" in text:
+        classes.append("conversation_recovery")
     classes = sorted(set(classes))
     if not classes:
         return [], None, None
-    candidates = [SOURCE_DEFAULTS[source_class] for source_class in classes]
+    candidates = [SOURCE_DEFAULTS[source_class] for source_class in classes if source_class in SOURCE_DEFAULTS]
     candidates.sort(key=lambda item: EVENT_RANK[item[0]])
+    if not candidates:
+        return classes, None, None
     event_distance, continuity = candidates[0]
     return classes, event_distance, continuity
 
@@ -141,7 +171,6 @@ def build_audit(root: Path) -> dict:
     registry_data = load_json(root / "knowledge" / "story" / "story-registry.json")
     source_data = load_json(root / "knowledge" / "story" / "source-records.json")
     overrides_data = load_overrides(root)
-
     registry = {x["id"]: x for x in registry_data.get("stories", []) if x.get("id")}
     sources = {x["id"]: x for x in source_data.get("sources", []) if x.get("id")}
     overrides = {
@@ -150,7 +179,7 @@ def build_audit(root: Path) -> dict:
         if x.get("story_id")
     }
 
-    records: list[dict] = []
+    records = []
     for public in scan_public(root):
         story_id = public.get("id")
         reg = registry.get(story_id)
@@ -162,6 +191,7 @@ def build_audit(root: Path) -> dict:
             "closest_source_ids": [],
             "source_classes": [],
             "source_hints": list(public.get("source_hints", [])),
+            "source_note_text": public.get("source_note_text", ""),
             "hinted_source_classes": [],
             "event_distance": None,
             "editorial_distance": None,
@@ -171,9 +201,10 @@ def build_audit(root: Path) -> dict:
             "lost_texture": [],
             "next_excavation": None,
         }
-
         if not reg and record["source_hints"]:
-            hinted_classes, event_distance, continuity = infer_source_hints(record["source_hints"])
+            hinted_classes, event_distance, continuity = infer_source_hints(
+                record["source_hints"], record["source_note_text"]
+            )
             record.update(
                 {
                     "mapping_status": "hinted",
@@ -183,7 +214,6 @@ def build_audit(root: Path) -> dict:
                     "continuity": continuity,
                 }
             )
-
         if reg:
             source_ids = list(reg.get("source_ids", []))
             linked = [sources[sid] for sid in source_ids if sid in sources]
@@ -202,7 +232,6 @@ def build_audit(root: Path) -> dict:
                     "next_excavation": (reg.get("recovery_targets") or [None])[0],
                 }
             )
-
         if override:
             for key in (
                 "closest_source_ids",
@@ -217,14 +246,23 @@ def build_audit(root: Path) -> dict:
                 if key in override:
                     record[key] = override[key]
             record["mapping_status"] = "mapped"
-
         records.append(record)
+
+    hinted_source_class_counts: dict[str, int] = {}
+    for record in records:
+        if record["mapping_status"] != "hinted":
+            continue
+        for source_class in record["hinted_source_classes"]:
+            hinted_source_class_counts[source_class] = (
+                hinted_source_class_counts.get(source_class, 0) + 1
+            )
 
     direct_distances = {"0_direct_contemporaneous", "1_contemporaneous_compilation"}
     summary = {
         "total_public_entries": len(records),
         "registered": sum(1 for x in records if x["story_id"] in registry),
         "source_hinted": sum(1 for x in records if x["mapping_status"] == "hinted"),
+        "hinted_source_class_counts": dict(sorted(hinted_source_class_counts.items())),
         "unmapped": sum(1 for x in records if x["mapping_status"] == "unmapped"),
         "direct_or_near_direct": sum(
             1
@@ -244,7 +282,6 @@ def build_audit(root: Path) -> dict:
             1 for x in records if x["closer_source_expected"] is True
         ),
     }
-
     return {
         "schema_version": 1,
         "summary": summary,
@@ -257,7 +294,6 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--write", type=Path, help="Optional JSON output path")
     args = parser.parse_args()
-
     root = Path(__file__).resolve().parents[1]
     audit = build_audit(root)
     text = json.dumps(audit, indent=2, ensure_ascii=False) + "\n"
