@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.2.0",
+  "schema_version": "1.3.0",
   "updated": "2026-09-15",
   "family": "physical-world",
   "principles": [
@@ -66,19 +66,22 @@
     {
       "id": "physical.land-cover",
       "label": "Land cover",
-      "kind": "raster_tiles",
-      "availability": "planned",
+      "kind": "module",
+      "availability": "current",
       "load_policy": "on_demand",
+      "module": "./3d-physical-land-cover.js",
+      "controller": "__potatoAtlasLandCover",
       "source": {
-        "provider": "ESA/Copernicus candidate",
-        "dataset": "global land cover",
-        "version": "pending pinned version",
-        "attribution": "pending pinned provider terms"
+        "provider": "ESA WorldCover",
+        "dataset": "WorldCover 2021 global land-cover map at 10 m",
+        "version": "2021 v200",
+        "delivery": "Terrascope WMS · WORLDCOVER_2021_MAP",
+        "attribution": "© ESA WorldCover project 2021 / Contains modified Copernicus Sentinel data (2021) processed by ESA WorldCover consortium"
       },
-      "default_opacity": 0.62,
+      "default_opacity": 0.58,
       "min_zoom": 0,
       "max_zoom": 14,
-      "status_note": "Preserve source classes such as trees, shrubland, grassland, cropland, built-up, bare/sparse vegetation, water, wetland and snow/ice. Bare/sparse vegetation is not the same thing as desert."
+      "status_note": "Visual land-cover context from the official cached WorldCover web map service. Classes include trees, shrubland, grassland, cropland, built-up, bare/sparse vegetation, water, wetland, mangroves, moss/lichen and snow/ice. Bare/sparse vegetation is not the same thing as desert. The RGB web layer is cartographic context, not an analytical class-query service."
     },
     {
       "id": "physical.aridity",
