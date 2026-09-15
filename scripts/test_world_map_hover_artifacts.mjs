@@ -108,4 +108,27 @@ assert.equal(renders.length, renderedBeforeLateLeave, 'late hover work must not 
 assert.ok(popupRemovals.length >= 1, 'mouseleave must remove the popup');
 assert.equal(canvas.style.cursor, '', 'mouseleave must restore the map cursor');
 
+// Moving many pixels within one country should not launch one asynchronous
+// scalar lookup per mousemove. One lookup should resolve at the latest pointer
+// position so the popup can follow the cursor without request churn/flicker.
+bindCountryHover('countries-extrude');
+const moveExtrude = handlers.get('mousemove:countries-extrude');
+const pendingBeforeSameCountry = pending.length;
+const rendersBeforeSameCountry = renders.length;
+moveExtrude(eventFor('DEU', 8, 50));
+moveExtrude(eventFor('DEU', 9, 51));
+moveExtrude(eventFor('DEU', 10, 52));
+assert.equal(
+  pending.length - pendingBeforeSameCountry,
+  1,
+  'same-country mousemove burst must share one asynchronous country lookup',
+);
+pending[pendingBeforeSameCountry].resolve('<b>Germany</b>');
+await flush();
+assert.deepEqual(
+  renders.slice(rendersBeforeSameCountry),
+  [{html:'<b>Germany</b>', lngLat:{lng:10, lat:52}}],
+  'resolved same-country popup must use the latest pointer location',
+);
+
 console.log('WORLD MAP HOVER ARTIFACT REGRESSION PASSED');
