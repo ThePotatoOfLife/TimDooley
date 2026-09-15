@@ -4,6 +4,8 @@ from __future__ import annotations
 
 import argparse
 import json
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -15,6 +17,7 @@ SEARCH = ROOT / "world-map" / "3d-search.js"
 MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
+SUBDIVISION_SEARCH_TEST = ROOT / "scripts" / "test_world_map_subdivision_search.mjs"
 
 
 def load_json(path: Path, errors: list[str]):
@@ -104,11 +107,14 @@ def validate_runtime(errors: list[str]) -> None:
     ), errors)
     require_tokens(SEARCH, (
         "__potatoAtlasSearch", "Country", "Capital", "City", "Town", "typeRank", "compareResults",
+        "world-subdivisions/index.json", "__potatoAtlasSubdivisions",
     ), errors)
     require_tokens(MAP_STATE, ("places", "subdivision"), errors)
     require_tokens(PANEL_LIFECYCLE, (
         "maybeLoadSelectedPlaces", "potato-atlas-country-card-rendered", "moveend", "loadCountry",
     ), errors)
+    if not SUBDIVISION_SEARCH_TEST.exists():
+        errors.append(f"missing subdivision search regression: {SUBDIVISION_SEARCH_TEST.relative_to(ROOT)}")
     if SUBDIVISIONS.exists():
         text = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
         if "atlasSubdivisionCard" in text:
@@ -121,6 +127,11 @@ def validate_runtime(errors: list[str]) -> None:
         submit_token = "await submit("
         if stop_token in text and submit_token in text and text.index(stop_token) > text.index(submit_token):
             errors.append("Unified search must claim Enter before awaiting async search so legacy country search cannot race it")
+    node = shutil.which("node")
+    if node and SUBDIVISION_SEARCH_TEST.exists():
+        result = subprocess.run([node, str(SUBDIVISION_SEARCH_TEST)], capture_output=True, text=True)
+        if result.returncode:
+            errors.append("subdivision search regression failed: " + (result.stderr.strip() or result.stdout.strip()))
     for path in (PLACES, SEARCH):
         if path.exists():
             text = path.read_text(encoding="utf-8", errors="replace")

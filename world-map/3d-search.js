@@ -1,10 +1,12 @@
-// Unified country/place search for the World Relational Atlas.
+// Unified country/subdivision/place search for the World Relational Atlas.
 // Reuses the existing #search input and delegates navigation to subsystem owners.
 
 const input = document.getElementById('search');
 const COUNTRY_INDEX_URL = '../data/countries/index.json';
-const TYPE_RANK = Object.freeze({ Country:0, Capital:1, City:2, Town:3 });
+const SUBDIVISION_INDEX_URL = '../data/world-subdivisions/index.json';
+const TYPE_RANK = Object.freeze({ Country:0, State:1, Region:1, District:1, Subdivision:1, Capital:2, City:3, Town:4 });
 let countriesPromise = null;
+let subdivisionsPromise = null;
 let lastResults = [];
 
 function normalize(value) {
@@ -42,6 +44,22 @@ function countryRows() {
   }
   return countriesPromise;
 }
+function subdivisionRows() {
+  if (!subdivisionsPromise) {
+    subdivisionsPromise = fetch(SUBDIVISION_INDEX_URL, {cache:'force-cache'})
+      .then(response => {
+        if (!response.ok) throw new Error(`Subdivision index unavailable (${response.status})`);
+        return response.json();
+      })
+      .then(payload => Object.values(payload?.partitions || {})
+        .flatMap(descriptor => Array.isArray(descriptor?.search_records) ? descriptor.search_records : []))
+      .catch(error => {
+        console.warn('Unified search subdivision index unavailable:', error);
+        return [];
+      });
+  }
+  return subdivisionsPromise;
+}
 function countryResult(row, query) {
   const iso3 = String(row.iso3 || row.cca3 || row.code || '').toUpperCase();
   const iso2 = String(row.iso2 || '').toUpperCase();
@@ -54,6 +72,36 @@ function countryResult(row, query) {
     ...aliases.map(alias => scoreName(alias, query))
   );
   return best < 99 ? { type:'Country', id:iso3, name, country:iso3, score:best, row } : null;
+}
+function subdivisionType(row = {}) {
+  const type = normalize(row.subdivision_type);
+  if (type === 'state') return 'State';
+  if (type === 'region') return 'Region';
+  if (type === 'federal district' || type === 'district') return 'District';
+  return 'Subdivision';
+}
+function subdivisionResult(row, query) {
+  const id = String(row.id || '');
+  const name = row.name || id;
+  const code = String(row.code || '');
+  const aliases = Array.isArray(row.aliases) ? row.aliases : [];
+  const best = Math.min(
+    scoreName(name, query),
+    scoreName(code, query),
+    scoreName(id, query),
+    ...aliases.map(alias => scoreName(alias, query))
+  );
+  if (best >= 99) return null;
+  return {
+    type:subdivisionType(row),
+    kind:'Subdivision',
+    id,
+    name,
+    country:String(row.parent_iso3 || '').toUpperCase(),
+    parentName:row.parent_name || '',
+    score:best,
+    row,
+  };
 }
 function placeResults(query, limit) {
   const api = window.__potatoAtlasPlaces;
@@ -74,10 +122,11 @@ async function search(query, options = {}) {
     return [];
   }
   const limit = Math.max(1, Math.min(30, Number(options.limit) || 12));
-  const rows = await countryRows();
-  const countries = rows.map(row => countryResult(row, needle)).filter(Boolean);
+  const [countryRowsLoaded, subdivisionRowsLoaded] = await Promise.all([countryRows(), subdivisionRows()]);
+  const countries = countryRowsLoaded.map(row => countryResult(row, needle)).filter(Boolean);
+  const subdivisions = subdivisionRowsLoaded.map(row => subdivisionResult(row, needle)).filter(Boolean);
   const places = placeResults(needle, limit);
-  lastResults = [...countries, ...places]
+  lastResults = [...countries, ...subdivisions, ...places]
     .sort(compareResults)
     .slice(0, limit);
   return lastResults;
@@ -89,6 +138,9 @@ async function focus(result) {
     if (!code || !window.goCountry) return false;
     window.goCountry(code);
     return true;
+  }
+  if (result.kind === 'Subdivision' || ['State','Region','District','Subdivision'].includes(result.type)) {
+    return Boolean(await window.__potatoAtlasSubdivisions?.select?.(result.id, {fit:true}));
   }
   if (['Capital','City','Town'].includes(result.type)) {
     return Boolean(await window.__potatoAtlasPlaces?.focus?.(result.id, {
@@ -102,7 +154,8 @@ async function focus(result) {
 async function submit(query) {
   const results = await search(query, {limit:12});
   if (!results.length) return false;
-  const exact = results.find(result => scoreName(result.name, normalize(query)) === 0 || normalize(result.id) === normalize(query));
+  const needle = normalize(query);
+  const exact = results.find(result => scoreName(result.name, needle) === 0 || normalize(result.id) === needle || normalize(result.row?.code) === needle);
   return focus(exact || results[0]);
 }
 
@@ -115,7 +168,7 @@ function installDatalist() {
     document.body.appendChild(list);
   }
   input.setAttribute('list', list.id);
-  input.title = 'Search countries, capitals, cities and towns · press / to focus';
+  input.title = 'Search countries, states, regions, capitals, cities and towns · press / to focus';
   return list;
 }
 function renderSuggestions(results) {
@@ -124,7 +177,8 @@ function renderSuggestions(results) {
   list.replaceChildren(...results.slice(0, 10).map(result => {
     const option = document.createElement('option');
     option.value = result.name;
-    option.label = `${result.type}${result.country ? ` · ${result.country}` : ''}`;
+    const context = result.parentName || result.country;
+    option.label = `${result.type}${context ? ` · ${context}` : ''}`;
     return option;
   }));
 }
