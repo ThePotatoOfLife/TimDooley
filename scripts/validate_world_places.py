@@ -107,6 +107,12 @@ def validate_runtime(errors: list[str]) -> None:
             errors.append("Subdivisions must use the canonical #panel, not atlasSubdivisionCard")
         if "document.getElementById('panel')" not in text and 'document.getElementById("panel")' not in text:
             errors.append("Subdivisions must render inspection into canonical #panel")
+    if SEARCH.exists():
+        text = SEARCH.read_text(encoding="utf-8", errors="replace")
+        stop_token = "event.stopImmediatePropagation();"
+        submit_token = "await submit("
+        if stop_token in text and submit_token in text and text.index(stop_token) > text.index(submit_token):
+            errors.append("Unified search must claim Enter before awaiting async search so legacy country search cannot race it")
     for path in (PLACES, SEARCH):
         if path.exists():
             text = path.read_text(encoding="utf-8", errors="replace")
