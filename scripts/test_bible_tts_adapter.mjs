@@ -48,5 +48,10 @@ assert.ok(adapterSource.includes("drawer?.playSection?.('both')"),'Bible Listen 
 assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"),'Bible page-level reader must mark itself as the primary TTS host');
 assert.ok(adapterSource.includes('selectionInsideActive'),'Bible adapter must constrain selection reading to the active relation');
 assert.ok(adapterSource.includes('mountSelectionAction'),'Bible comparator must use the shared read-selection action');
+assert.ok(adapterSource.includes('createPageHighlighter'),'Bible comparator must use shared actual-page word highlighting');
+assert.ok(adapterSource.includes("event.sectionId==='project'"),'Bible word highlighting must target the project side for Project scope');
+assert.ok(adapterSource.includes("event.sectionId==='scripture'"),'Bible word highlighting must target the scripture side for Scripture scope');
+assert.ok(adapterSource.includes("event.sectionId==='why'"),'Bible word highlighting must map the Why scope back to explanation/boundary text');
+assert.ok(adapterSource.includes('pageHighlighter.clear()'),'Bible page highlighting must clear at speech end or relation change');
 
 console.log('bible tts adapter contract: ok');
