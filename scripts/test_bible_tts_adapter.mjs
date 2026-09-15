@@ -39,4 +39,10 @@ const drawerPos=bible.indexOf('src="../../app/tts-drawer.js"');
 const adapterPos=bible.indexOf('src="../../app/bible-tts-adapter.js"');
 assert.ok(readerPos < drawerPos && drawerPos < adapterPos,'Bible TTS dependencies must load engine -> drawer -> adapter');
 
+const adapterSource=fs.readFileSync(new URL('../app/bible-tts-adapter.js', import.meta.url),'utf8');
+assert.ok(adapterSource.includes('function ensureRelationListen()'),'Bible adapter must expose a contextual Listen affordance');
+assert.ok(adapterSource.includes("className='ptts-inline-listen'"),'Bible comparison must use the shared inline Listen style');
+assert.ok(adapterSource.includes("drawer?.playSection?.('both')"),'Bible Listen action must start the whole active comparison');
+assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"),'Bible page-level reader must mark itself as the primary TTS host');
+
 console.log('bible tts adapter contract: ok');
