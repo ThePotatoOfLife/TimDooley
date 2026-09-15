@@ -10,11 +10,17 @@ ROOT = Path(__file__).resolve().parents[1]
 LIFECYCLE = ROOT / "world-map" / "3d-style-lifecycle.js"
 RENDER_STACK = ROOT / "world-map" / "3d-render-stack.js"
 TEST = ROOT / "scripts" / "test_world_map_style_lifecycle.mjs"
+PHYSICAL = {
+    "physical-deserts": ROOT / "world-map" / "3d-physical-deserts.js",
+    "physical-water": ROOT / "world-map" / "3d-physical-water.js",
+    "physical-land-cover": ROOT / "world-map" / "3d-physical-land-cover.js",
+    "physical-hydrology": ROOT / "world-map" / "3d-physical-hydrology.js",
+}
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LIFECYCLE, RENDER_STACK, TEST):
+    for path in (LIFECYCLE, RENDER_STACK, TEST, *PHYSICAL.values()):
         if not path.exists():
             errors.append(f"missing style-lifecycle file: {path.relative_to(ROOT)}")
     if errors:
@@ -50,11 +56,31 @@ def main() -> int:
     if "map.on('styledata'" in render_stack:
         errors.append("Render Stack must not own a direct styledata listener after migration")
 
+    for owner, path in PHYSICAL.items():
+        source = path.read_text(encoding="utf-8", errors="replace")
+        for token in (
+            "const styleLifecycle = window.__potatoAtlasStyleLifecycle",
+            f"styleLifecycle.register('{owner}'",
+            "if (!enabled || restoring) return",
+        ):
+            if token not in source:
+                errors.append(f"{path.relative_to(ROOT)} style-lifecycle migration missing marker: {token}")
+        if "map.on('styledata'" in source:
+            errors.append(f"{path.relative_to(ROOT)} must not own a direct styledata listener")
+
+    active_style_listeners = []
+    for path in sorted((ROOT / "world-map").glob("3d-*.js")):
+        source = path.read_text(encoding="utf-8", errors="replace")
+        if "map.on('styledata'" in source and path != LIFECYCLE:
+            active_style_listeners.append(str(path.relative_to(ROOT)))
+    if active_style_listeners:
+        errors.append("direct styledata ownership remains outside Style Lifecycle: " + ", ".join(active_style_listeners))
+
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot verify style lifecycle")
     else:
-        for path in (LIFECYCLE, RENDER_STACK):
+        for path in (LIFECYCLE, RENDER_STACK, *PHYSICAL.values()):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -67,6 +93,7 @@ def main() -> int:
     print("- deterministic priority-ordered restoration")
     print("- serializable generation/registration diagnostics")
     print("- Render Stack restoration migrated")
+    print("- Deserts, Water, Land Cover and Hydrology restoration migrated")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP STYLE LIFECYCLE VALIDATION FAILED")
