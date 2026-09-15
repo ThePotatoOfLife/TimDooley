@@ -4,6 +4,7 @@ import { createScaleRuntime } from '../world-map/3d-scale.js';
 
 const contract = JSON.parse(fs.readFileSync(new URL('../data/world-map-scale-contract.json', import.meta.url), 'utf8'));
 const scale = createScaleRuntime(contract);
+const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', import.meta.url), 'utf8');
 
 assert.equal(scale.bandForZoom(0), 'world');
 assert.equal(scale.bandForZoom(2.6), 'macro-region');
@@ -43,5 +44,12 @@ assert.equal(scale.atLeast('country', 4.2), true);
 assert.equal(scale.atLeast('subnational', 4.2), false);
 assert.throws(() => scale.threshold('missing', 'load'), /capability/i);
 assert.throws(() => scale.bandForZoom(Number.NaN), /finite/i);
+
+// The live lifecycle consumes this contract instead of owning duplicate zoom literals.
+assert.ok(lifecycle.includes("__potatoAtlasLoadModule?.('Scale', './3d-scale.js')"), 'panel lifecycle must load the shared Scale runtime');
+assert.ok(lifecycle.includes("capabilityActive('places-detail', 'load'"), 'Places promotion must use the scale contract');
+assert.ok(lifecycle.includes("capabilityActive('subdivisions', 'load'"), 'Subdivision promotion must use the scale contract');
+assert.ok(!lifecycle.includes('map.getZoom() < 4.2'), 'Places load threshold must not remain duplicated in panel lifecycle');
+assert.ok(!lifecycle.includes('map.getZoom() < 3.4'), 'Subdivision load threshold must not remain duplicated in panel lifecycle');
 
 console.log('WORLD MAP SCALE CONTRACT REGRESSION PASSED');
