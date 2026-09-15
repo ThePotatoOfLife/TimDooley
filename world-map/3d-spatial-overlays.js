@@ -4,6 +4,7 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Spatial overlays require the core atlas map.');
+const interaction = window.__potatoAtlasInteraction;
 
 const MANIFEST_URL = '../data/world-map-spatial-overlays.json';
 const ACTIVE_PARAM = 'overlays';
@@ -113,6 +114,36 @@ function registerRenderedLayers(row, layerIds) {
     owner:`spatial-overlays:${row.id}`,
   }));
 }
+function handleSpatialFeatureClick(event) {
+  emit('feature-click', { point:event.point, lngLat:event.lngLat, features:featuresAt(event.point) });
+}
+function bindFallbackInteraction(layerIds) {
+  for (const id of layerIds) {
+    map.on('mouseenter', id, () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', id, () => { map.getCanvas().style.cursor = ''; });
+    map.on('click', id, event => {
+      if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
+      handleSpatialFeatureClick(event);
+    });
+  }
+}
+function syncInteractionRegistration() {
+  if (!interaction?.register) return false;
+  const layers = [...rendered.values()].flatMap(state => state.layerIds || []).filter(layerId => map.getLayer(layerId));
+  if (!layers.length) {
+    interaction.unregister?.('spatial-overlays');
+    return false;
+  }
+  interaction.register('spatial-overlays', {
+    layers,
+    objectType:'spatial-overlay',
+    clickPriority:40,
+    hoverPriority:40,
+    cursor:'pointer',
+    onClick:event => emit('feature-click', { point:event.point, lngLat:event.lngLat, features:featuresAt(event.point) }),
+  });
+  return true;
+}
 function installRenderedLayers(row, fc) {
   const token = safeId(row.id);
   const sourceId = `atlas-spatial-${token}`;
@@ -159,21 +190,15 @@ function installRenderedLayers(row, fc) {
   }
 
   registerRenderedLayers(row, layerIds);
-  for (const layerId of layerIds) {
-    map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
-    map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
-    map.on('click', layerId, event => {
-      if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
-      emit('feature-click', { point:event.point, lngLat:event.lngLat, features:featuresAt(event.point) });
-    });
-  }
   rendered.set(row.id, { sourceId, layerIds });
+  if (!syncInteractionRegistration()) bindFallbackInteraction(layerIds);
 }
 async function ensureRendered(id) {
   const row = entry(id);
   if (!row || row.availability !== 'current') return false;
   if (rendered.has(id)) {
     registerRenderedLayers(row, layerIdsFor(id));
+    syncInteractionRegistration();
     return true;
   }
   const owner = await loadOwner(row.geometry_owner);
