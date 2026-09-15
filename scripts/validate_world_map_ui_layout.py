@@ -107,17 +107,19 @@ def main() -> int:
             errors.append("Terrain module must not own legacy URL state after Physical runtime migration")
 
     validators = (
-        ("render stack", RENDER_STACK_VALIDATOR),
-        ("map state / physical mixer", MAP_STATE_VALIDATOR),
-        ("physical water", WATER_VALIDATOR),
-        ("land cover", LAND_COVER_VALIDATOR),
-        ("deserts", DESERTS_VALIDATOR),
-        ("hydrology", HYDROLOGY_VALIDATOR),
-        ("places", PLACES_VALIDATOR),
+        ("render stack", RENDER_STACK_VALIDATOR, ()),
+        ("map state / physical mixer", MAP_STATE_VALIDATOR, ()),
+        ("physical water", WATER_VALIDATOR, ()),
+        ("land cover", LAND_COVER_VALIDATOR, ()),
+        ("deserts", DESERTS_VALIDATOR, ()),
+        ("hydrology", HYDROLOGY_VALIDATOR, ()),
+        # Production Places data is a separate generated-data gate. The UI/layout
+        # contract verifies that the runtime remains safe and dormant without it.
+        ("places runtime", PLACES_VALIDATOR, ("--runtime-only",)),
     )
-    for label, validator in validators:
+    for label, validator, args in validators:
         if validator.exists():
-            result = subprocess.run([sys.executable, str(validator)], capture_output=True, text=True)
+            result = subprocess.run([sys.executable, str(validator), *args], capture_output=True, text=True)
             if result.returncode:
                 errors.append(f"{label} contract failed: " + (result.stdout.strip() or result.stderr.strip()))
 
