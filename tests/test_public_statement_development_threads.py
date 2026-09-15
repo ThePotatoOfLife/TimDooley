@@ -5,10 +5,10 @@ def sample_root():
     return {
         'id': 'public-statement-evidence-root',
         'roots': [
-            {'id': 'root-c', 'timestamp_utc': '2026-05-03T10:00:00Z', 'quote': 'We can build bridges together.'},
-            {'id': 'root-a', 'timestamp_utc': '2026-03-01T10:00:00Z', 'quote': 'There is a Door beyond the gate.'},
-            {'id': 'root-d', 'timestamp_utc': '2026-06-01T10:00:00Z', 'quote': 'This route is unrelated.'},
-            {'id': 'root-b', 'timestamp_utc': '2026-04-01T10:00:00Z', 'quote': 'I am the root and the tree in the garden.'},
+            {'id': 'root-c', 'timestamp_utc': '2026-05-03T10:00:00Z', 'precision': 'second', 'quote': 'We can build bridges together.'},
+            {'id': 'root-a', 'timestamp_utc': '2026-03-01T10:00:00Z', 'precision': 'second', 'quote': 'There is a Door beyond the gate.'},
+            {'id': 'root-d', 'timestamp_utc': '2026-06-01T10:00:00Z', 'precision': 'second', 'quote': 'This route is unrelated.'},
+            {'id': 'root-b', 'timestamp_utc': '2026-04-01T10:00:00Z', 'precision': 'second', 'quote': 'I am the root and the tree in the garden.'},
         ],
         'traversals': {'chronological': ['root-a', 'root-b', 'root-c', 'root-d']},
     }
@@ -72,9 +72,9 @@ def persistent_root():
     return {
         'id': 'public-statement-evidence-root',
         'roots': [
-            {'id': 'p1', 'timestamp_utc': '2026-01-01T10:00:00Z', 'date': '2026-01-01', 'quote': 'The door and gate are here.'},
-            {'id': 'p2', 'timestamp_utc': '2026-03-15T10:00:00Z', 'date': '2026-03-15', 'quote': 'Walk through the door.'},
-            {'id': 'p3', 'timestamp_utc': '2026-06-10T10:00:00Z', 'date': '2026-06-10', 'quote': 'The gate is also a portal.'},
+            {'id': 'p1', 'timestamp_utc': '2026-01-01T10:00:00Z', 'date': '2026-01-01', 'precision': 'second', 'quote': 'The door and gate are here.'},
+            {'id': 'p2', 'timestamp_utc': '2026-03-15T10:00:00Z', 'date': '2026-03-15', 'precision': 'second', 'quote': 'Walk through the door.'},
+            {'id': 'p3', 'timestamp_utc': '2026-06-10T10:00:00Z', 'date': '2026-06-10', 'precision': 'date', 'quote': 'The gate is also a portal.'},
         ],
         'traversals': {'chronological': ['p1', 'p2', 'p3']},
     }
@@ -117,6 +117,29 @@ def persistent_bible_projection():
             'p3': ['rel-late'],
         }
     }
+
+
+def bursty_root():
+    return {
+        'id': 'public-statement-evidence-root',
+        'roots': [
+            {'id': 'b1', 'timestamp_utc': '2026-01-01T10:00:00Z', 'date': '2026-01-01', 'precision': 'second', 'quote': 'door'},
+            {'id': 'b2', 'timestamp_utc': '2026-01-02T10:00:00Z', 'date': '2026-01-02', 'precision': 'second', 'quote': 'door'},
+            {'id': 'b3', 'timestamp_utc': '2026-01-03T10:00:00Z', 'date': '2026-01-03', 'precision': 'second', 'quote': 'door'},
+            {'id': 'b4', 'timestamp_utc': '2026-01-04T10:00:00Z', 'date': '2026-01-04', 'precision': 'second', 'quote': 'gate'},
+            {'id': 'b5', 'timestamp_utc': '2026-01-05T10:00:00Z', 'date': '2026-01-05', 'precision': 'second', 'quote': 'gate'},
+            {'id': 'b6', 'timestamp_utc': '2026-06-10T10:00:00Z', 'date': '2026-06-10', 'precision': 'second', 'quote': 'portal'},
+        ],
+        'traversals': {'chronological': ['b1', 'b2', 'b3', 'b4', 'b5', 'b6']},
+    }
+
+
+def bursty_episodes():
+    return {'episodes': [{'id': 'episode-burst', 'member_root_ids': ['b1', 'b2', 'b3', 'b4', 'b5']}, {'id': 'episode-late', 'member_root_ids': ['b6']}]}
+
+
+def empty_projection():
+    return {'root_relations': {}}
 
 
 def test_thread_membership_requires_explicit_literal_terms():
@@ -188,6 +211,58 @@ def test_persistence_metrics_measure_long_range_recurrence_and_reference_coverag
     assert persistence['bible_relation_count'] == 2
     assert persistence['bible_attestation_count'] == 2
     assert persistence['bible_attestation_ratio'] == 2 / 3
+
+
+def test_persistence_dimensions_separate_span_recurrence_distribution_and_support():
+    payload = build_development_threads(
+        persistent_root(),
+        persistent_definitions(),
+        persistent_episodes(),
+        persistent_bible_projection(),
+    )
+    dimensions = payload['threads'][0]['persistence']['dimensions']
+
+    assert dimensions['span'] == {
+        'days': 160,
+        'active_month_count': 3,
+        'month_span_count': 6,
+        'temporal_coverage_ratio': 0.5,
+    }
+    assert dimensions['recurrence'] == {
+        'reappearance_count': 2,
+        'interval_days': [73, 87],
+        'longest_gap_days': 87,
+        'median_gap_days': 80.0,
+    }
+    assert dimensions['distribution'] == {
+        'attestations_by_month': {'2026-01': 1, '2026-03': 1, '2026-06': 1},
+        'max_month_attestations': 1,
+        'max_month_share': 1 / 3,
+    }
+    assert dimensions['support'] == {
+        'episode_count': 2,
+        'episode_attestation_count': 3,
+        'episode_coverage_ratio': 1.0,
+        'bible_relation_count': 2,
+        'bible_attestation_count': 2,
+        'bible_attestation_ratio': 2 / 3,
+        'second_precision_attestation_count': 2,
+        'second_precision_ratio': 2 / 3,
+    }
+
+
+def test_bursty_thread_is_visible_as_concentrated_even_with_long_span():
+    defs = persistent_definitions()
+    payload = build_development_threads(bursty_root(), defs, bursty_episodes(), empty_projection())
+    persistence = payload['threads'][0]['persistence']
+
+    assert persistence['span_days'] == 160
+    assert persistence['dimensions']['span']['month_span_count'] == 6
+    assert persistence['dimensions']['span']['temporal_coverage_ratio'] == 2 / 6
+    assert persistence['dimensions']['distribution']['attestations_by_month'] == {'2026-01': 5, '2026-06': 1}
+    assert persistence['dimensions']['distribution']['max_month_attestations'] == 5
+    assert persistence['dimensions']['distribution']['max_month_share'] == 5 / 6
+    assert persistence['dimensions']['recurrence']['longest_gap_days'] == 156
 
 
 def test_persistence_tests_use_declared_policy_without_promoting_candidate_status():
