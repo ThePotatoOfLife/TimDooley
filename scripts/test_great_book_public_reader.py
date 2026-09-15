@@ -1,12 +1,12 @@
 from __future__ import annotations
 
+import json
 import unittest
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 INDEX = ROOT / "great-book" / "index.html"
-READER = ROOT / "app" / "great-book-reader.js"
-SOURCE = ROOT / "great-book" / "source-edition.html"
+BOOK_INDEX = ROOT / "great-book" / "book-index.json"
 
 
 class GreatBookPublicReaderTests(unittest.TestCase):
@@ -42,12 +42,21 @@ class GreatBookPublicReaderTests(unittest.TestCase):
         self.assertIn('src="../app/tts-drawer.js"', html)
         self.assertIn('src="../app/longform-tts-adapter.js"', html)
 
-    def test_missing_fragments_have_canonical_source_fallback(self):
-        self.assertTrue(SOURCE.is_file(), "Great Book source fallback is missing")
-        reader = READER.read_text(encoding="utf-8")
-        self.assertIn("source-edition.html", reader)
-        self.assertIn("DOMParser", reader)
-        self.assertIn("loadFromSourceEdition", reader)
+    def test_verified_restoration_frontier_is_complete(self):
+        index = json.loads(BOOK_INDEX.read_text(encoding="utf-8"))
+        restoration = index["restoration"]
+        self.assertEqual(restoration["mode"], "verified-batches")
+        self.assertEqual(restoration["contiguous_through_order"], 45)
+        self.assertEqual(restoration["contiguous_through_chapter"], "19.8")
+
+        records = []
+        for shard in index["shards"]:
+            records.extend(json.loads((ROOT / "great-book" / shard).read_text(encoding="utf-8")))
+        for record in records[: restoration["contiguous_through_order"]]:
+            if record["status"] != "body":
+                continue
+            chapter = ROOT / "great-book" / record["path"]
+            self.assertTrue(chapter.is_file(), f"restored frontier missing {record['path']}")
 
 
 if __name__ == "__main__":
