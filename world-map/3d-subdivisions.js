@@ -7,6 +7,7 @@ if (!map) throw new Error('Atlas subdivisions require the core map.');
 const geo = window.__potatoAtlasGeo || await import('./3d-geo-kernel.js');
 if (!window.__potatoAtlasGeo) window.__potatoAtlasGeo = geo;
 const interaction = window.__potatoAtlasInteraction;
+const inspector = window.__potatoAtlasInspector;
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
@@ -29,7 +30,6 @@ let selectedId = new URL(location.href).searchParams.get('subdivision') || null;
 // Camera intent from a deep link is one-shot. Persistent selection must not be
 // replayed on every moveend or fitBounds can recurse forever.
 let pendingDeepLinkId = selectedId;
-let panelSnapshot = null;
 let eventsBound = false;
 let useClock = 0;
 let activePartitions = [];
@@ -49,10 +49,16 @@ function esc(value) {
 function countryCode(properties = {}) {
   return String(properties.country_iso3 || properties.parent_iso3 || properties.iso3 || 'USA').toUpperCase();
 }
+function countryBaseline(code) {
+  const id = String(code || '').toUpperCase();
+  return {
+    type:'country', id, owner:'country',
+    restore:() => { if (id && window.goCountry) window.goCountry(id); },
+  };
+}
 function renderInspector(feature) {
   const panel = document.getElementById('panel');
   if (!panel || !feature) return;
-  if (panel.querySelector(':scope > .eyebrow')?.textContent?.trim() !== 'Subdivision') panelSnapshot = panel.innerHTML;
   const p = feature.properties || {};
   const population = p.population || {};
   const code = countryCode(p);
@@ -70,20 +76,30 @@ function renderInspector(feature) {
       <button type="button" data-subdivision-close>Close subdivision</button>
     </div>`;
   panel.querySelector('[data-subdivision-open-country]')?.addEventListener('click', () => {
-    if (code && window.goCountry) window.goCountry(code);
+    window.__potatoAtlasSubdivisions?.clear?.({ restore:false });
+    if (inspector?.reset) inspector.reset(countryBaseline(code));
+    else if (code && window.goCountry) window.goCountry(code);
   });
   panel.querySelector('[data-subdivision-close]')?.addEventListener('click', () => window.__potatoAtlasSubdivisions?.clear?.());
   window.__potatoAtlasPanelLifecycle?.publish?.();
 }
-function restoreInspector() {
-  const panel = document.getElementById('panel');
-  if (!panel) return;
-  const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim();
-  if (eyebrow === 'Subdivision' && panelSnapshot != null) {
-    panel.innerHTML = panelSnapshot;
-    panelSnapshot = null;
-    window.__potatoAtlasPanelLifecycle?.publish?.();
+function openInspector(feature) {
+  if (!feature) return false;
+  const p = feature.properties || {};
+  const code = countryCode(p);
+  if (!inspector?.open || !code) {
+    renderInspector(feature);
+    return true;
   }
+  inspector.setBaseline(countryBaseline(code));
+  inspector.open({
+    type:'subdivision',
+    id:String(p.id || selectedId || ''),
+    owner:'subdivisions',
+    parent:{ type:'country', id:code },
+    render:() => renderInspector(feature),
+  });
+  return true;
 }
 function normalizeBudget(index) {
   const supplied = index?.runtime_budget || {};
@@ -229,7 +245,7 @@ function selectSubdivision(partition, feature, options = {}) {
   syncUrl(selectedId);
   const bounds = geometryBounds(feature);
   if (options.fit !== false && bounds) map.fitBounds(bounds, { padding:80, duration:650, maxZoom:7.4 });
-  renderInspector(feature);
+  openInspector(feature);
   window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-select', { detail:{ partition, id:selectedId, properties:p, feature } }));
   return true;
 }
@@ -426,11 +442,15 @@ window.__potatoAtlasSubdivisions = {
     if (result) await reconcileActive(index);
     return result;
   },
-  clear() {
+  clear(options={}) {
+    const code = String(new URL(location.href).searchParams.get('country') || '').toUpperCase();
     selectedId = null;
     pendingDeepLinkId = null;
     syncUrl(null);
-    restoreInspector();
+    if (options.restore !== false) {
+      if (inspector?.current?.()?.type === 'subdivision') inspector.back();
+      else if (code && window.goCountry) window.goCountry(code);
+    }
     subdivisionIndex().then(reconcileActive).catch(error => console.warn('Subdivision reconcile unavailable:', error));
     window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-clear'));
     return true;
