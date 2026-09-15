@@ -18,6 +18,15 @@ MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 SUBDIVISION_SEARCH_TEST = ROOT / "scripts" / "test_world_map_subdivision_search.mjs"
+EXPECTED_RUNTIME_BUDGET = {
+    "partition_max_bytes": 2_097_152,
+    "rendered_max_partitions": 2,
+    "cache_max_partitions": 6,
+    "cache_max_bytes": 8_388_608,
+    "global_major_max_bytes": 5_242_880,
+    "global_major_max_features": 5000,
+}
+SEARCH_KEYS = {"id", "name", "aliases", "country_iso3", "type", "capital_status", "population_rank", "partition"}
 
 
 def load_json(path: Path, errors: list[str]):
@@ -53,14 +62,22 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
         errors.append("Places index must declare GeoNames license CC BY 4.0")
     if "GeoNames" not in str(index.get("attribution") or ""):
         errors.append("Places index must preserve GeoNames attribution")
+    budget = index.get("runtime_budget") or {}
+    if budget != EXPECTED_RUNTIME_BUDGET:
+        errors.append(f"Places runtime budget must match canonical limits: {EXPECTED_RUNTIME_BUDGET}")
     if major.get("type") != "FeatureCollection" or not isinstance(major.get("features"), list):
         errors.append("global-major.geo.json must be a GeoJSON FeatureCollection")
         return
     features = major["features"]
-    if len(features) > 5000:
-        errors.append(f"global-major feature budget exceeded: {len(features)} > 5000")
-    if major_path.stat().st_size > 5 * 1024 * 1024:
-        errors.append("global-major file budget exceeded: > 5 MiB")
+    if len(features) > EXPECTED_RUNTIME_BUDGET["global_major_max_features"]:
+        errors.append(f"global-major feature budget exceeded: {len(features)} > {EXPECTED_RUNTIME_BUDGET['global_major_max_features']}")
+    if major_path.stat().st_size > EXPECTED_RUNTIME_BUDGET["global_major_max_bytes"]:
+        errors.append("global-major file budget exceeded")
+    major_descriptor = index.get("global_major") or {}
+    if int(major_descriptor.get("bytes") or -1) != major_path.stat().st_size:
+        errors.append("global-major descriptor bytes must match generated file size")
+    if int(major_descriptor.get("count") or -1) != len(features):
+        errors.append("global-major descriptor count must match generated feature count")
 
     seen: set[str] = set()
     for i, feature in enumerate(features):
@@ -89,14 +106,66 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
             errors.append(f"global-major feature {place_id or i} has population without population_source")
 
     countries = index.get("countries") or {}
+    partition_ids: set[str] = set()
     for iso3, descriptor in countries.items():
         path = data_dir / str((descriptor or {}).get("path") or "")
         if not path.exists():
             errors.append(f"Places partition indexed for {iso3} is missing: {path}")
+            continue
+        size = path.stat().st_size
+        if int((descriptor or {}).get("bytes") or -1) != size:
+            errors.append(f"Places partition {iso3} descriptor bytes do not match file size")
+        if size > EXPECTED_RUNTIME_BUDGET["partition_max_bytes"]:
+            errors.append(f"Places partition {iso3} exceeds partition byte budget: {size}")
+        payload = load_json(path, errors) or {}
+        rows = payload.get("features") if payload.get("type") == "FeatureCollection" else None
+        if not isinstance(rows, list):
+            errors.append(f"Places partition {iso3} must be a GeoJSON FeatureCollection")
+            continue
+        if int((descriptor or {}).get("count") or -1) != len(rows):
+            errors.append(f"Places partition {iso3} descriptor count does not match file feature count")
+        for feature in rows:
+            place_id = str((feature.get("properties") or {}).get("id") or "")
+            if place_id:
+                partition_ids.add(place_id)
+
+    search_records = index.get("search_records")
+    if not isinstance(search_records, list) or not search_records:
+        errors.append("Places index must provide compact search_records")
+        search_records = []
+    search_ids: set[str] = set()
+    for i, row in enumerate(search_records):
+        if not isinstance(row, dict):
+            errors.append(f"search record {i} must be an object")
+            continue
+        missing = SEARCH_KEYS - set(row)
+        if missing:
+            errors.append(f"search record {i} missing keys: {', '.join(sorted(missing))}")
+        place_id = str(row.get("id") or "")
+        if not place_id:
+            errors.append(f"search record {i} missing stable id")
+        elif place_id in search_ids:
+            errors.append(f"duplicate compact search id: {place_id}")
+        search_ids.add(place_id)
+        if "geometry" in row or "coordinates" in row:
+            errors.append(f"search record {place_id or i} must not contain geometry")
+        iso3 = str(row.get("country_iso3") or "").upper()
+        if row.get("partition") != iso3 or iso3 not in countries:
+            errors.append(f"search record {place_id or i} must point to an indexed ISO3 partition")
+        rank = row.get("population_rank")
+        if not isinstance(rank, int) or rank < 1:
+            errors.append(f"search record {place_id or i} must have a positive integer population_rank")
+    if partition_ids and search_ids != partition_ids:
+        missing_search = partition_ids - search_ids
+        stale_search = search_ids - partition_ids
+        if missing_search:
+            errors.append(f"compact search index missing {len(missing_search)} partition place ids")
+        if stale_search:
+            errors.append(f"compact search index references {len(stale_search)} absent partition place ids")
 
 
 def validate_runtime(errors: list[str]) -> None:
-    require_tokens(BUILDER, ("--fixture", "geonames-cities-sample.txt", "capitals-sample.geo.json"), errors)
+    require_tokens(BUILDER, ("--fixture", "geonames-cities-sample.txt", "capitals-sample.geo.json", "RUNTIME_BUDGET", "search_records"), errors)
     require_tokens(PLACES, (
         "__potatoAtlasPlaces", "setVisible", "focus", "current", "search", "clear", "status",
         "atlas-places-major-points", "atlas-places-major-labels",
