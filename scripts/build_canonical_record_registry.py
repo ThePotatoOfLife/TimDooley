@@ -10,10 +10,11 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
+from record_discovery_contract import iter_discovery_json
+
 ROOT = Path(__file__).resolve().parents[1]
 DATA = ROOT / "data"
 OUT = DATA / "canonical-record-registry.json"
-SKIP = {"canonical-record-registry.json", "depth-audit-live.json", "repository-index.json"}
 ID_KEYS = ("id", "slug", "key", "term", "iso3", "country_id")
 NAME_KEYS = ("name", "display_name", "proper_name", "title", "label", "term")
 
@@ -48,9 +49,7 @@ def walk(value, path, source, rows):
 def main():
     rows = []
     json_errors = []
-    for path in sorted(DATA.rglob("*.json")):
-        if path.name in SKIP:
-            continue
+    for path in iter_discovery_json(DATA):
         source = path.relative_to(ROOT).as_posix()
         try:
             value = json.loads(path.read_text(encoding="utf-8"))
@@ -72,14 +71,14 @@ def main():
 
     duplicates = {rid: occurrences for rid, occurrences in by_id.items() if len(occurrences) > 1}
     result = {
-        "version": "2.0.0",
-        "updated": "2026-09-08",
-        "purpose": "Generated inventory of record-like IDs across data files; it exposes source/path duplication without deciding canonical ownership automatically.",
+        "version": "2.1.0",
+        "updated": "2026-09-15",
+        "purpose": "Generated inventory of record-like IDs across source data files; it exposes source/path duplication without deciding canonical ownership automatically.",
         "policy": {
             "canonical_decisions_live_in": "data/canonical-source-map.json",
             "duplicates_require_review": True,
             "generated": True,
-            "discovery_contract": "Aligned with repository-index.py ID/name heuristics"
+            "discovery_contract": "Shared with repository-index.py via scripts/record_discovery_contract.py"
         },
         "record_count": len(rows),
         "unique_id_count": len(by_id),
