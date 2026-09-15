@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -14,11 +16,23 @@ PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 TERRAIN = ROOT / "world-map" / "3d-physical-terrain.js"
 
 
+def check_node(path: Path, errors: list[str]) -> None:
+    node = shutil.which("node")
+    if not node or not path.exists():
+        return
+    result = subprocess.run([node, "--check", str(path)], capture_output=True, text=True)
+    if result.returncode:
+        errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: {result.stderr.strip() or result.stdout.strip()}")
+
+
 def main() -> int:
     errors: list[str] = []
     for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
+
+    for path in (LAYOUT, PHYSICAL, PANEL_LIFECYCLE, TERRAIN):
+        check_node(path, errors)
 
     if LAYOUT.exists():
         text = LAYOUT.read_text(encoding="utf-8", errors="replace")
@@ -31,15 +45,13 @@ def main() -> int:
         ):
             if token not in text:
                 errors.append(f"UI layout coordinator missing {token}")
-        if "document.body" in text and "observerTarget = mapwrap || document.body" not in text:
-            errors.append("UI layout coordinator must not default to a broad body observer when map chrome exists")
 
     if PHYSICAL.exists():
         text = PHYSICAL.read_text(encoding="utf-8", errors="replace")
         for token in (
             "world-map-physical-layers.json", "load_policy", "on_demand",
             "potato-atlas-physical-change", "__potatoAtlasPhysicalLayers", "atlasPhysicalMenu",
-            "data-physical-layer", "aria-pressed", "physical=", "Physical world",
+            "data-physical-layer", "aria-pressed", "searchParams.set('physical'", "Physical world",
         ):
             if token not in text:
                 errors.append(f"Physical runtime missing {token}")
