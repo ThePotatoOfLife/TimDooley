@@ -136,6 +136,7 @@ def main() -> int:
             "politics/index.html",
             "north/index.html",
             "world-systems/index.html",
+            "shadow-farm/index.html",
             "world-map/index.html",
             "world-map/3d.html",
             "sitemap.xml",
@@ -191,6 +192,32 @@ def main() -> int:
         require(north, ('href="../world/"', 'href="../world-map/"', 'href="../politics/"', 'href="./"', 'href="../world-systems/"'), "north/index.html", errors)
         forbid(north, ("<title>North Axis — World Map</title>", 'class="maplink"', "Open North Axis in the World Map"), "north/index.html", errors)
 
+        shadow = read("shadow-farm/index.html", errors)
+        require(
+            shadow,
+            (
+                'id="shadow-farm-tts"',
+                'data-tts-longform',
+                'data-tts-root=".page"',
+                'data-tts-all-label="Whole deep reader"',
+                'data-tts-exclude="#shadow-farm-tts,.nav"',
+                'href="../app/tts-drawer.css"',
+                'src="../app/tts-reader.js"',
+                'src="../app/tts-drawer.js"',
+                'src="../app/longform-tts-adapter.js"',
+            ),
+            "shadow-farm/index.html",
+            errors,
+        )
+        if shadow.count('id="shadow-farm-tts"') != 1:
+            errors.append("shadow-farm/index.html must contain exactly one generated TTS host")
+        reader_pos = shadow.find('src="../app/tts-reader.js"')
+        drawer_pos = shadow.find('src="../app/tts-drawer.js"')
+        adapter_pos = shadow.find('src="../app/longform-tts-adapter.js"')
+        if not (0 <= reader_pos < drawer_pos < adapter_pos):
+            errors.append("shadow-farm/index.html TTS dependencies must load engine -> drawer -> longform adapter")
+        forbid(shadow, ('data-tts-item=',), "shadow-farm/index.html", errors)
+
         learn = read("learn/index.html", errors)
         require(learn, ('name="robots" content="noindex,follow"', "location.replace('../')"), "learn/index.html", errors)
 
@@ -223,7 +250,8 @@ def main() -> int:
         public_roots = (
             "index.html", "tim-dooley/index.html", "religion/index.html", "religion/jesus-tim/index.html",
             "traditions/bible/index.html", "timeline/index.html", "philosophy/index.html", "science/index.html",
-            "world/index.html", "politics/index.html", "north/index.html", "world-systems/index.html", "world-map/index.html",
+            "world/index.html", "politics/index.html", "north/index.html", "world-systems/index.html", "shadow-farm/index.html",
+            "world-map/index.html",
         )
         for rel in public_roots:
             text = read(rel, errors)
