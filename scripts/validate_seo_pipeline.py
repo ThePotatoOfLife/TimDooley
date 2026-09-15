@@ -34,6 +34,8 @@ def main() -> int:
     errors: list[str] = []
     optimize = read("scripts/optimize_seo.py", errors)
     discovery = read("scripts/build_discovery.py", errors)
+    authority_builder = read("scripts/build_site_authority.py", errors)
+    surface_resolver = read("scripts/house_public_surfaces.py", errors)
     machine_audit = read("scripts/check_machine_discoverability.py", errors)
     enrich = read("scripts/enrich_weak_descriptions.py", errors)
     strategy = read("scripts/seo_strategy.py", errors)
@@ -48,6 +50,8 @@ def main() -> int:
     for rel, text in (
         ("scripts/optimize_seo.py", optimize),
         ("scripts/build_discovery.py", discovery),
+        ("scripts/build_site_authority.py", authority_builder),
+        ("scripts/house_public_surfaces.py", surface_resolver),
         ("scripts/check_machine_discoverability.py", machine_audit),
         ("scripts/enrich_weak_descriptions.py", enrich),
         ("scripts/seo_strategy.py", strategy),
@@ -97,20 +101,11 @@ def main() -> int:
     require(
         strategy,
         (
-            "class Strategy",
-            "ROUTE_STRATEGIES",
-            "RELATED",
-            "def classify_route(",
-            "def metadata_for(",
-            "def schema_profile(",
-            "def related_routes(",
-            '"ProfilePage"',
-            '"ScholarlyArticle"',
-            '"CollectionPage"',
-            '"Article"',
+            "class Strategy", "ROUTE_STRATEGIES", "RELATED", "def classify_route(", "def metadata_for(",
+            "def schema_profile(", "def related_routes(", '"ProfilePage"', '"ScholarlyArticle"',
+            '"CollectionPage"', '"Article"',
         ),
-        "seo_strategy.py",
-        errors,
+        "seo_strategy.py", errors,
     )
     for forbidden in ("sameAs", "divine identity"):
         if forbidden in strategy:
@@ -119,83 +114,33 @@ def main() -> int:
     require(
         semantic,
         (
-            "classify_route",
-            "metadata_for",
-            "schema_profile",
-            "related_routes",
-            "entity-intent-schema",
-            "related-context",
-            "seo-intent-report.json",
-            "summary_large_image",
-            "No stable site-owned social image found",
-            "strip_legacy_question_rich_result_schema",
-            'schema["headline"] = title',
+            "classify_route", "metadata_for", "schema_profile", "related_routes", "entity-intent-schema",
+            "related-context", "seo-intent-report.json", "summary_large_image", "No stable site-owned social image found",
+            "strip_legacy_question_rich_result_schema", 'schema["headline"] = title',
             'entity.setdefault("@id", canonical_url + "#person")',
         ),
-        "apply_entity_intent_seo.py",
-        errors,
+        "apply_entity_intent_seo.py", errors,
     )
+    require(strategy_validator,("SEMANTIC SEO STRATEGY VALIDATION","seo_strategy.py","apply_entity_intent_seo.py","ProfilePage","ScholarlyArticle"),"validate_seo_strategy.py",errors)
+    require(dedupe,("normalize_question","content_score","noindex,follow",'rel="canonical"',"location.replace","question-alias-report.json"),"dedupe_question_intents.py",errors)
+    require(dedupe_validator,("QUESTION INTENT DEDUP VALIDATION","dedupe_question_intents.py","noindex,follow","question-alias-report.json"),"validate_question_intent_dedup.py",errors)
+    require(current_contract,("SEO 2026 CONTRACT VALIDATION","test_breadcrumb_contract","test_primary_schema_contract","test_authored_question_schema_contract","test_repository_robots_contract"),"validate_seo_2026_contract.py",errors)
 
     require(
-        strategy_validator,
+        surface_resolver,
         (
-            "SEMANTIC SEO STRATEGY VALIDATION",
-            "seo_strategy.py",
-            "apply_entity_intent_seo.py",
-            "ProfilePage",
-            "ScholarlyArticle",
+            'EXPECTED_PRIMARY_GATEWAY_IDS = ("tim", "religion", "philosophy", "science", "world")',
+            'data" / "house" / "public-surfaces.json',
+            "def primary_gateway_rows(",
         ),
-        "validate_seo_strategy.py",
-        errors,
+        "house_public_surfaces.py", errors,
     )
-
-    require(
-        dedupe,
-        (
-            "normalize_question",
-            "content_score",
-            "noindex,follow",
-            'rel="canonical"',
-            "location.replace",
-            "question-alias-report.json",
-        ),
-        "dedupe_question_intents.py",
-        errors,
-    )
-    require(
-        dedupe_validator,
-        (
-            "QUESTION INTENT DEDUP VALIDATION",
-            "dedupe_question_intents.py",
-            "noindex,follow",
-            "question-alias-report.json",
-        ),
-        "validate_question_intent_dedup.py",
-        errors,
-    )
-
-    require(
-        current_contract,
-        (
-            "SEO 2026 CONTRACT VALIDATION",
-            "test_breadcrumb_contract",
-            "test_primary_schema_contract",
-            "test_authored_question_schema_contract",
-            "test_repository_robots_contract",
-        ),
-        "validate_seo_2026_contract.py",
-        errors,
-    )
-
     require(
         discovery,
         (
-            "PRIMARY_DOORS",
-            '("tim", "Tim Dooley", "/tim-dooley/")',
-            '("religion", "Religion", "/religion/")',
-            '("philosophy", "Philosophy", "/philosophy/")',
-            '("science", "Science", "/science/")',
-            '("world", "World", "/world/")',
+            "from house_public_surfaces import primary_gateway_rows",
+            "PRIMARY_DOORS = tuple(",
+            "primary_gateway_rows(ROOT)",
             "datetime.now(timezone.utc).date().isoformat()",
             'write("llms.txt"',
             '"site_index": BASE_URL + "/site-index.json"',
@@ -208,68 +153,29 @@ def main() -> int:
             "User-agent: OAI-SearchBot",
             "Sitemap: {BASE_URL}/sitemap-index.xml",
         ),
-        "build_discovery.py",
-        errors,
+        "build_discovery.py", errors,
     )
+    if '("tim", "Tim Dooley", "/tim-dooley/")' in discovery:
+        errors.append("build_discovery.py still maintains an independent primary-door literal table")
     if '"updated": "2026-09-09"' in discovery:
         errors.append("build_discovery.py still hard-codes a stale discovery updated date")
 
     require(
-        machine_audit,
+        authority_builder,
         (
-            '"site-index.json"',
-            '"sitemap-index.xml"',
-            '"religion/index.html"',
-            '"philosophy/index.html"',
-            '"world-map/index.html"',
-            "OAI-SearchBot",
-            "noindex URLs must not appear in sitemaps",
-            "canonical URL must match the page for indexable pages",
+            "from house_public_surfaces import primary_gateway_rows",
+            "primary_gateway_rows(ROOT)",
+            'PRIMARY_ROUTES = {row["id"]: row["canonical_route"]',
         ),
-        "check_machine_discoverability.py",
-        errors,
+        "build_site_authority.py", errors,
     )
 
-    require(
-        enrich,
-        (
-            "only touches descriptions shorter than 40 characters",
-            "if len(current) >= 40",
-            "first substantial paragraph",
-            "dedupe_question_intents",
-            "dedupe_result = dedupe_question_intents()",
-            "apply_entity_intent_seo",
-            "result = apply_entity_intent_seo()",
-        ),
-        "enrich_weak_descriptions.py",
-        errors,
-    )
+    require(machine_audit,('"site-index.json"','"sitemap-index.xml"','"religion/index.html"','"philosophy/index.html"','"world-map/index.html"',"OAI-SearchBot","noindex URLs must not appear in sitemaps","canonical URL must match the page for indexable pages"),"check_machine_discoverability.py",errors)
+    require(enrich,("only touches descriptions shorter than 40 characters","if len(current) >= 40","first substantial paragraph","dedupe_question_intents","dedupe_result = dedupe_question_intents()","apply_entity_intent_seo","result = apply_entity_intent_seo()"),"enrich_weak_descriptions.py",errors)
 
     for owner, text in (("quality-checks.yml", quality), ("pages.yml", pages)):
-        require(
-            text,
-            (
-                "python scripts/enrich_weak_descriptions.py",
-                "python scripts/optimize_seo.py",
-                "fetch-depth: 0",
-                "seo-report.json",
-            ),
-            owner,
-            errors,
-        )
-
-    require(
-        quality,
-        (
-            "id: seo",
-            "continue-on-error: true",
-            "quality-seo-report",
-            "Enforce SEO gate",
-            "steps.seo.outcome == 'failure'",
-        ),
-        "quality-checks.yml",
-        errors,
-    )
+        require(text,("python scripts/enrich_weak_descriptions.py","python scripts/optimize_seo.py","fetch-depth: 0","seo-report.json"),owner,errors)
+    require(quality,("id: seo","continue-on-error: true","quality-seo-report","Enforce SEO gate","steps.seo.outcome == 'failure'"),"quality-checks.yml",errors)
 
     prune = pages.find("Remove internal archive from Pages artifact")
     enrich_step = pages.find("Enrich weak page descriptions")
@@ -285,7 +191,6 @@ def main() -> int:
 
     if not errors and validate_current_seo_contract():
         errors.append("current SEO structured-data/crawl contract failed")
-
     if not errors and validate_seo_authority():
         errors.append("SEO first-party authority/discovery contract failed")
 
@@ -296,11 +201,7 @@ def main() -> int:
         return 1
 
     print("SEO PIPELINE VALIDATION PASSED")
-    print(
-        "SEO projection: five-door discovery · canonical-only crawl graph · "
-        "deduplicated question intents · intent-aware metadata · typed structured data · "
-        "source-backed freshness · social metadata · related canonical context · LLM indexes · first-party authority"
-    )
+    print("SEO projection: House-derived five-door discovery · canonical-only crawl graph · deduplicated question intents · intent-aware metadata · typed structured data · source-backed freshness · social metadata · related canonical context · LLM indexes · first-party authority")
     return 0
 
 
