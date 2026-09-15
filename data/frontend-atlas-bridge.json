@@ -1,6 +1,6 @@
 {
-  "version":"4.1.0",
-  "updated":"2026-09-13",
+  "version":"4.2.0",
+  "updated":"2026-09-14",
   "purpose":"Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus quieter global/deep surfaces.",
   "data_roots":["data/","knowledge/"],
   "canonical_layers":["graph","world","research","systems","security","beliefs","mythology","people","culture","potatoism","north-programme"],
@@ -51,6 +51,7 @@
     "public_door":"{door}/",
     "branch":"explore/#branch={id}",
     "record":"explore/#record={path}",
+    "lookup":"explore/#lookup={id}",
     "context":"explore/#context={id}",
     "pathway":"explore/#path={id}",
     "static_record":"records/{id}/",
@@ -64,7 +65,7 @@
     "description_fields":["description","summary","overview"],
     "relationship_fields":["relationships","edges","links"],
     "source_fields":["source_ids","sources","evidence","source"],
-    "allowed_path_sources":["manifest.json","knowledge/indexes/canonical-record-registry.json","knowledge/indexes/context-graph.json"]
+    "allowed_path_sources":["manifest.json","data/canonical-record-registry.json","knowledge/indexes/context-graph.json"]
   },
   "fallback_policy":{
     "json_failure":"skip optional dataset and continue with canonical datasets",
@@ -77,6 +78,7 @@
     "Every major manifest branch has one explicit primary_door, global_route or backend_only projection state",
     "Canonical ownership remains in source/canonical records; this bridge owns routing intent only",
     "Deep human navigation routes through Explore rather than a competing root reader",
+    "Canonical IDs may be resolved through Explore lookup without inventing a second routing registry",
     "Every relationship endpoint resolves or is explicitly marked unresolved",
     "Unknown data is represented as missing/unknown, never as zero",
     "Backend-only or research-heavy records remain discoverable without becoming homepage clutter",

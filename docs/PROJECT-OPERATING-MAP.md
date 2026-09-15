@@ -2,7 +2,7 @@
 
 Status: operator orientation / routing document — **not a canonical source of truth**
 
-Updated: 2026-09-12
+Updated: 2026-09-14
 
 This document exists so repository work enters through the current architecture instead of rediscovering it, creating parallel masters, or mistaking presentation files for canonical knowledge. When this note conflicts with a canonical owner, registry, source ledger, validator or newer dated record, **the dedicated owner wins**.
 
@@ -68,9 +68,9 @@ Primary public readers:
 - `religion/`
 - `philosophy/`
 - `science/`
-- `world-map/`
+- `world/`
 
-Secondary/specialist surfaces include timeline, context, questions, A–Z, archive exploration and generated record pages.
+World-family specialist surfaces are `world-map/`, `politics/`, `north/` and `world-systems/`. Secondary surfaces include timeline, context, questions, A–Z, archive exploration and generated record pages.
 
 ## 3. Public architecture
 
@@ -80,9 +80,9 @@ The homepage exposes exactly five principal doors:
 2. Religion
 3. Philosophy
 4. Science
-5. World Map
+5. World
 
-Do not turn the homepage back into a giant directory. Timeline, sources, archive material, culture/subculture, symbols, technology, society and economics remain secondary threads or deeper routes.
+World Map is a specialist view beneath World, not a sixth or substitute top-level door. Do not turn the homepage back into a giant directory. Timeline, sources, archive material, culture/subculture, symbols, technology, society and economics remain secondary threads or deeper routes.
 
 Normal reader flow should be:
 
@@ -167,13 +167,13 @@ Ordinary interaction should stay small:
 - expose groups, alignment/faction, religion, stats and relations through a common resolver;
 - keep advanced traces/path/time functionality progressive rather than permanently open.
 
-Current canonical direction is the composable registry/layer architecture now carried by the consolidation branch. Older Tools-first, single-Lens and duplicate-map branches are historical implementation strata and should not be revived as separate public owners.
+Current canonical direction is the composable registry/layer architecture on `main`. Older Tools-first, single-Lens and duplicate-map branches are historical implementation strata and should not be revived as separate public owners.
 
 Spatial honesty still applies: map real geography and sourced relations directly; do not fake-geolocate nonspatial theology, moral rank or symbolic cosmology.
 
 ## 7. Build / CI / deployment
 
-The consolidation branch is the active implementation workspace. `main` remains the deployment base until the consolidation PR is deliberately merged.
+`main` is the current integration and deployment trunk. Substantial work should still be isolated on a fresh branch and merged only after the relevant checks pass; historical feature branches are not alternative sources of truth merely because they still exist.
 
 Quality checks should validate the complete production build, not a partial source tree. Current gates include repository integrity, reader/runtime contracts, World Map contracts, CSS namespace checks, country refresh reliability, SEO, machine discoverability and built-site shell validation.
 
@@ -181,7 +181,9 @@ The final site build should be treated as a projection pipeline:
 
 `source repository → generators/builders → discovery/SEO projection → final _site artifact → audits → Pages deployment`
 
-Debug the layer that actually fails; do not treat generated artifact behavior as though it were source behavior.
+Generated discovery files inside `_site` are deployment artifacts. Their absence from the source tree is not automatically a defect. Debug the layer that actually fails; do not treat generated artifact behavior as though it were source behavior.
+
+Deep routing belongs to Explore. Source paths use `explore/#record=<path>` and stable archive IDs may use `explore/#lookup=<id>`. The homepage may retain a small compatibility redirect for old hashes, but new code and metadata should not depend on the retired root-node reader.
 
 ## 8. Duplicate-pressure zones
 
@@ -254,6 +256,16 @@ The strongest maintenance moves are:
 - strengthen canonical-owner reachability;
 - keep the SEO/machine graph derived from the final built artifact;
 - alternate expansion with consolidation so the repository grows as a tree rather than a heap.
+
+### Deferred hygiene / future options
+
+Keep these visible for later review, but do not treat them as reasons to churn healthy code now:
+- audit remaining active metadata that still describes retired root-hash routing, especially older belief, religion and country contracts; migrate only where a live consumer benefits;
+- eventually remove direct legacy emitters from Timeline, Entity Trace and similar older modules once the shared Explore route is proven stable, while keeping compatibility redirects long enough for historical bookmarks;
+- review historical branches and superseded PRs in batches, preserving any unique commits before deletion rather than mass-pruning by age;
+- consider branch/ruleset protection for `main` once the desired solo-development workflow and required checks are settled;
+- retire legacy root/source strata only after unique facts, provenance and inbound references have been migrated;
+- revisit generated-state and batch-file cleanup only after promoted knowledge is demonstrably durable.
 
 ## 13. One-sentence operating model
 

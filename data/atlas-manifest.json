@@ -1,6 +1,6 @@
 {
-  "version":"5.1.0",
-  "updated":"2026-09-12",
+  "version":"5.2.0",
+  "updated":"2026-09-14",
   "name":"Tim Dooley / Potato of Life Atlas — Internal Data Manifest",
   "purpose":"Machine-readable map of substantive backend layers. Public navigation is owned by manifest.json plus the canonical backend-to-frontend projection contract; this file registers internal data contracts without creating a competing public reader.",
   "public_navigation":"manifest.json → data/frontend-atlas-bridge.json → five public doors + Explore",
@@ -16,7 +16,7 @@
   "repository_spine":"data/repository-spine.json",
   "repository_scale":"data/repository-scale.json",
   "legacy_vertical_framework":"data/33-level-framework.json",
-  "interactive_routes":{"branch":"explore/#branch=<id>","record":"explore/#record=<path>","context":"explore/#context=<id>","pathway":"explore/#path=<id>"},
+  "interactive_routes":{"branch":"explore/#branch=<id>","record":"explore/#record=<path>","lookup":"explore/#lookup=<id>","context":"explore/#context=<id>","pathway":"explore/#path=<id>"},
   "static_routes":{"topic":"topics/<branch-id>/","record":"records/<record-id>/","context":"context/<context-id>/","question":"questions/<question-id>/","index_a_z":"index-a-z/"},
   "fallback":"Local repository data remains available when optional live enrichment fails.",
   "maintenance_workflow":"data/project-workflow.json",

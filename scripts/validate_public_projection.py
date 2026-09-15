@@ -19,6 +19,7 @@ EXPECTED_DOORS = {
 EXPECTED_INTERACTIVE_ROUTES = {
     "branch": "explore/#branch=<id>",
     "record": "explore/#record=<path>",
+    "lookup": "explore/#lookup=<id>",
     "context": "explore/#context=<id>",
     "pathway": "explore/#path=<id>",
 }
@@ -123,6 +124,8 @@ def main() -> int:
     bridge_routes = bridge.get("route_map", {})
     if any("index.html#node=" in str(value) for value in bridge_routes.values()):
         fail("frontend bridge still exposes retired index.html#node= record routing", errors)
+    if bridge_routes.get("lookup") != "explore/#lookup={id}":
+        fail("frontend bridge lookup route is missing or inconsistent", errors)
 
     if contains_live_retired_reference(coverage):
         fail("backend coverage map still names retired root.js or index.html#node= as a live consumer", errors)
