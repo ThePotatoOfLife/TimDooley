@@ -9,6 +9,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 DEFAULT_DATA_DIR = ROOT / "data" / "world-places"
+BUILDER = ROOT / "scripts" / "build_world_places.py"
 PLACES = ROOT / "world-map" / "3d-places.js"
 SEARCH = ROOT / "world-map" / "3d-search.js"
 MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
@@ -91,6 +92,7 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
 
 
 def validate_runtime(errors: list[str]) -> None:
+    require_tokens(BUILDER, ("--fixture", "geonames-cities-sample.txt", "capitals-sample.geo.json"), errors)
     require_tokens(PLACES, (
         "__potatoAtlasPlaces", "setVisible", "focus", "current", "search", "clear", "status",
         "atlas-places-major-points", "atlas-places-major-labels",
