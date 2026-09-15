@@ -3,6 +3,7 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
+const interaction = window.__potatoAtlasInteraction;
 
 const DATA_ROOT = '../data/world-places/';
 const INDEX_URL = `${DATA_ROOT}index.json`;
@@ -343,10 +344,24 @@ function installLayers() {
   bindLayerEvents();
 }
 
-let eventsBound = false;
-function bindLayerEvents() {
-  if (eventsBound) return;
-  eventsBound = true;
+function syncInteractionRegistration() {
+  if (!interaction?.register) return false;
+  interaction.register('places', {
+    layers:[MAJOR_POINTS, DETAIL_POINTS],
+    objectType:'place',
+    clickPriority:80,
+    hoverPriority:80,
+    cursor:'pointer',
+    enabled:() => visible,
+    onClick:(event, feature) => {
+      const id = feature?.properties?.id;
+      if (id) focus(id, {feature, fit:false});
+    },
+  });
+  return true;
+}
+function bindFallbackLayerEvents() {
+  // Degraded/direct-module fallback when the shared Interaction Router is unavailable.
   for (const layerId of [MAJOR_POINTS, DETAIL_POINTS]) {
     map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
@@ -358,6 +373,13 @@ function bindLayerEvents() {
       if (id) focus(id, {feature, fit:false});
     });
   }
+}
+let eventsBound = false;
+function bindLayerEvents() {
+  if (eventsBound) return;
+  eventsBound = true;
+  if (syncInteractionRegistration()) return;
+  bindFallbackLayerEvents();
 }
 
 async function loadIndex() {
