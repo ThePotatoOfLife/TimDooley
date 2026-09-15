@@ -73,8 +73,10 @@ async function ensureControlPlane() {
     controlPlaneReady = (async () => {
       await window.__potatoAtlasLoadModule?.('Geo Kernel', './3d-geo-kernel.js');
       await window.__potatoAtlasLoadModule?.('Scale', './3d-scale.js');
+      await window.__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js');
       const scale = await window.__potatoAtlasScale?.ready;
       if (!scale) throw new Error('World Map Scale runtime unavailable.');
+      if (!window.__potatoAtlasInteraction) throw new Error('World Map Interaction Router unavailable.');
       return scale;
     })();
   }
@@ -82,8 +84,8 @@ async function ensureControlPlane() {
 }
 
 // Coordinate application surfaces before adding more optional visual layers.
-// Shared math/scale load first so later geographic detail modules consume one
-// wrap policy and one camera-scale contract.
+// Shared math/scale/interaction load first so later geographic detail modules
+// consume one wrap policy, one camera-scale contract and one hit-test owner.
 queueMicrotask(async () => {
   try {
     await ensureControlPlane();
