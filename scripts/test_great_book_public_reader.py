@@ -12,7 +12,6 @@ BOOK_INDEX = ROOT / "great-book" / "book-index.json"
 class GreatBookPublicReaderTests(unittest.TestCase):
     def test_public_index_exposes_the_real_reader_shell(self):
         html = INDEX.read_text(encoding="utf-8")
-
         self.assertNotIn("Reader restoration in progress", html)
         self.assertIn('href="great-book.css"', html)
         self.assertIn('id="gb-search"', html)
@@ -24,7 +23,6 @@ class GreatBookPublicReaderTests(unittest.TestCase):
 
     def test_reader_keeps_primary_text_separate_from_later_project_routes(self):
         html = INDEX.read_text(encoding="utf-8")
-
         self.assertIn("Read the original book", html)
         self.assertIn("Continue the Potato", html)
         self.assertIn('href="../philosophy/"', html)
@@ -33,7 +31,6 @@ class GreatBookPublicReaderTests(unittest.TestCase):
 
     def test_reader_has_shared_tts_controls(self):
         html = INDEX.read_text(encoding="utf-8")
-
         self.assertIn('href="../app/tts-drawer.css"', html)
         self.assertIn('data-tts-longform', html)
         self.assertIn('data-tts-root="#gb-document"', html)
@@ -46,16 +43,17 @@ class GreatBookPublicReaderTests(unittest.TestCase):
         index = json.loads(BOOK_INDEX.read_text(encoding="utf-8"))
         restoration = index["restoration"]
         self.assertEqual(restoration["mode"], "verified-batches")
-        self.assertEqual(restoration["materialized_through_order"], 49)
-        self.assertEqual(restoration["materialized_through_chapter"], "19.82")
-        self.assertEqual(restoration["deferred_public_review"], ["9.3", "9.31", "9.32"])
+        self.assertEqual(restoration["reader_accounted_through_order"], 49)
+        self.assertEqual(restoration["reader_accounted_through_chapter"], "19.82")
+        self.assertEqual(
+            restoration["deferred_public_review"],
+            ["7.4", "9.3", "9.31", "9.32", "15.11"],
+        )
 
         required = [
-            "chapters/012--chapter-7-4--rent-free-shadows-the-cost-of-tethering-to-illusions.html",
             "chapters/015--chapter-9-1--the-mud-dwellers-and-the-vibration-of-shame.html",
             "chapters/016--chapter-9-11--the-path-of-gluttony-and-the-sacred-potato.html",
             "chapters/017--chapter-9-2--the-ballad-of-the-mud-dwellers-and-the-potato-path.html",
-            "chapters/032--chapter-15-11--the-transition-to-the-potato-of-life.html",
             "chapters/041--chapter-19-6--axomamma-the-sacred-mother-of-potatoes.html",
             "chapters/042--chapter-19-66--the-cradle-of-judaism-from-ashes-to-identity.html",
             "chapters/043--chapter-19-67--africa-the-sacred-soil-and-the-potatos-journey.html",
