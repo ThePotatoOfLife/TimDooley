@@ -5,6 +5,7 @@ const map = window.__potatoAtlasMap;
 
 function snapshot() {
   const center = map?.getCenter?.();
+  const url = new URL(location.href);
   return {
     camera: map ? {
       center: center ? [center.lng, center.lat] : null,
@@ -15,15 +16,26 @@ function snapshot() {
     projection: window.__potatoAtlasProjection?.get?.() || null,
     physical: window.__potatoAtlasPhysicalLayers?.active?.() || [],
     overlays: window.__potatoAtlasSpatialOverlays?.active?.() || [],
+    places: window.__potatoAtlasPlaces?.current?.()?.properties?.id || url.searchParams.get('place') || null,
+    subdivision: window.__potatoAtlasSubdivisions?.selected || url.searchParams.get('subdivision') || null,
     selection: window.__potatoAtlasSelection?.current || null,
     time: window.__potatoAtlasTime?.getState?.() || null,
   };
 }
 
-function clearUnloadedTimeUrlState() {
+function clearUrlState(keys) {
   const url = new URL(location.href);
-  for (const key of ['timeMode','time','time2','timeDate','timeDate2']) url.searchParams.delete(key);
-  history.replaceState({}, '', url);
+  let changed = false;
+  for (const key of keys) {
+    if (!url.searchParams.has(key)) continue;
+    url.searchParams.delete(key);
+    changed = true;
+  }
+  if (changed) history.replaceState({}, '', url);
+}
+
+function clearUnloadedTimeUrlState() {
+  clearUrlState(['timeMode','time','time2','timeDate','timeDate2']);
 }
 
 async function runStep(name, fn, cleared, failed) {
@@ -44,6 +56,14 @@ async function reset() {
   await runStep('analytical', async () => window.__potatoAtlasCompositor?.reset?.(), cleared, failed);
   await runStep('physical', async () => window.__potatoAtlasPhysicalLayers?.reset?.(), cleared, failed);
   await runStep('geography', async () => window.__potatoAtlasSpatialOverlays?.reset?.(), cleared, failed);
+  await runStep('places', async () => {
+    if (window.__potatoAtlasPlaces?.clear) window.__potatoAtlasPlaces.clear();
+    else clearUrlState(['place']);
+  }, cleared, failed);
+  await runStep('subdivision', async () => {
+    if (window.__potatoAtlasSubdivisions?.clear) window.__potatoAtlasSubdivisions.clear();
+    else clearUrlState(['subdivision']);
+  }, cleared, failed);
   await runStep('selection', async () => window.__potatoAtlasSelection?.clearAll?.({keepView:true}), cleared, failed);
   await runStep('relations', async () => window.__potatoAtlasSelection?.setRelationMode?.('all'), cleared, failed);
   await runStep('time', async () => {

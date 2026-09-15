@@ -14,9 +14,12 @@ function panelLifecycleKey() {
   const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim() || '';
   const heading = panel.querySelector(':scope > h1')?.textContent?.trim() || '';
   const selection = window.__potatoAtlasSelection?.current || {};
-  const code = String(selection.activeCode || selection.code || new URL(location.href).searchParams.get('country') || '').toUpperCase();
-  const compare = new URL(location.href).searchParams.get('compare') || '';
-  return [eyebrow, heading, code, compare, coreRevision].join('|');
+  const url = new URL(location.href);
+  const code = String(selection.activeCode || selection.code || url.searchParams.get('country') || '').toUpperCase();
+  const compare = url.searchParams.get('compare') || '';
+  const place = url.searchParams.get('place') || '';
+  const subdivision = url.searchParams.get('subdivision') || '';
+  return [eyebrow, heading, code, compare, place, subdivision, coreRevision].join('|');
 }
 
 function containsCoreHeading(node) {
@@ -68,7 +71,46 @@ queueMicrotask(async () => {
   await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
   await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
+  await window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
+  await window.__potatoAtlasLoadModule?.('Search', './3d-search.js');
   await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
+});
+
+function selectedCountryCode(detail = null) {
+  const selection = window.__potatoAtlasSelection?.current || {};
+  return String(
+    detail?.code || detail?.activeCode ||
+    selection.activeCode || selection.code ||
+    new URL(location.href).searchParams.get('country') || ''
+  ).toUpperCase();
+}
+
+async function maybeLoadSelectedPlaces(detail = null) {
+  const map = window.__potatoAtlasMap;
+  const api = window.__potatoAtlasPlaces;
+  if (!map || !api?.loadCountry) return false;
+  const code = selectedCountryCode(detail);
+  if (!/^[A-Z]{3}$/.test(code)) return false;
+  const requested = new URL(location.href).searchParams.has('place');
+  if (!requested && map.getZoom() < 4.2) return false;
+  try {
+    await api.loadCountry(code);
+    return true;
+  } catch (error) {
+    console.warn(`Places detail unavailable for ${code}:`, error);
+    return false;
+  }
+}
+
+// Country-detail places stay dormant at world scale. Once a country is the active
+// browsing context and the camera reaches country scale, load only that partition.
+window.addEventListener('potato-atlas-country-card-rendered', event => {
+  queueMicrotask(() => maybeLoadSelectedPlaces(event?.detail));
+});
+queueMicrotask(() => {
+  const map = window.__potatoAtlasMap;
+  maybeLoadSelectedPlaces();
+  map?.on('moveend', maybeLoadSelectedPlaces);
 });
 
 // Administrative detail remains code- and data-dormant at world scale. Load the
