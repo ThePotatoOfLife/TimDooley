@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the first generic subdivision integration surface."""
+"""Validate the generic subdivision integration surface."""
 from __future__ import annotations
 
 import json
@@ -14,11 +14,12 @@ LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
 FREEZE_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_freeze.mjs"
+MULTI_COUNTRY_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_multi_country.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, FREEZE_REGRESSION)
+    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, FREEZE_REGRESSION, MULTI_COUNTRY_REGRESSION)
     for path in required:
         if not path.exists():
             errors.append(f"missing subdivision integration file: {path.relative_to(ROOT)}")
@@ -69,12 +70,15 @@ def main() -> int:
             regression = subprocess.run([node, str(FREEZE_REGRESSION)], capture_output=True, text=True)
             if regression.returncode:
                 errors.append("subdivision freeze regression failed: " + (regression.stderr.strip() or regression.stdout.strip()))
+            multi = subprocess.run([node, str(MULTI_COUNTRY_REGRESSION)], capture_output=True, text=True)
+            if multi.returncode:
+                errors.append("multi-country subdivision regression failed: " + (multi.stderr.strip() or multi.stdout.strip()))
     if errors:
         print("WORLD MAP SUBDIVISION VALIDATION FAILED")
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · freeze regression")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · freeze + multi-country regressions")
     return 0
 
 
