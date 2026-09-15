@@ -17,6 +17,7 @@ PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 HOVER_ARTIFACT_TEST = ROOT / "scripts" / "test_world_map_hover_artifacts.mjs"
+CAPITAL_OWNERSHIP_TEST = ROOT / "scripts" / "test_world_map_capital_ownership.mjs"
 OVERLAY_OVERLAP_TEST = ROOT / "scripts" / "test_world_map_overlay_overlap.mjs"
 UI = ROOT / "world-map" / "3d-ui.js"
 DEMOGRAPHY = ROOT / "world-map" / "3d-demography.js"
@@ -167,7 +168,7 @@ def main() -> int:
     # Country hover cards await scalar runtime observations. Rapid mouse movement
     # must not let older async completions move/reopen the dark popup, and repeated
     # pixels over one country must share a single in-flight lookup.
-    for token in ("hoverGeneration", "activeKey", "latestEvent", "resolvedHtml"):
+    for token in ("hoverGeneration", "activeKey", "latestEvent", "resolvedHtml", "placesCanOwnCapitals", "potato-atlas-places-ready"):
         require(hover, token, "world-map/3d-hover.js", errors)
     reject(hover, "showPopup(event, await countryHtml(", "world-map/3d-hover.js", errors)
 
@@ -175,6 +176,12 @@ def main() -> int:
     # owns that corner while open instead of stacking two dark panels together.
     for token in ("function suspendCountryCard", "function restoreCountryCard", "potato-atlas-country-card-rendered"):
         require(evidence, token, "world-map/3d-evidence.js", errors)
+
+    # Progressive UI consumes lifecycle events and may style map colors, but it
+    # no longer owns another DOM observer or country surface opacity.
+    require(ui, "potato-atlas-panel-rendered", "world-map/3d-ui.js", errors)
+    reject(ui, "new MutationObserver(", "world-map/3d-ui.js", errors)
+    reject(ui, "setPaintProperty('countries-fill','fill-opacity'", "world-map/3d-ui.js", errors)
 
     # Subdivision browsing must stay bounded as country coverage expands. A
     # fixed shared source/layer stack prevents style/listener growth from being
@@ -192,8 +199,7 @@ def main() -> int:
         reject(subdivisions, token, "world-map/3d-subdivisions.js", errors)
 
     # A tiny always-loaded lifecycle module owns the active legacy/core panel
-    # observer. The broader 3d-ui module remains dormant compatibility code and
-    # must never be booted merely to publish lifecycle events.
+    # observer. Every other 3d module must consume lifecycle events instead.
     for token in ("function panelLifecycleKey", "potato-atlas-panel-rendered", "panelLifecycleRenders"):
         require(panel_lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
     if panel_lifecycle.count("new MutationObserver(") != 1:
@@ -208,12 +214,13 @@ def main() -> int:
     ):
         require(text, "potato-atlas-panel-rendered", label, errors)
     for path in sorted((ROOT / "world-map").glob("3d-*.js")):
-        if path in (PANEL_LIFECYCLE, UI):
+        if path == PANEL_LIFECYCLE:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
     node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
+    run_node_regression(CAPITAL_OWNERSHIP_TEST, errors, "World Map capital ownership regression")
     run_node_regression(OVERLAY_OVERLAP_TEST, errors, "World Map overlay overlap regression")
 
     if errors:
@@ -223,7 +230,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · stable async hover · exclusive top-left overlays · active color/stat continuity · single scalar owner · bounded subdivisions · lazy specialist stack · one live panel lifecycle observer")
+    print("Browse + Pins · stable async hover · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions · lazy specialist stack")
     return 0
 
 
