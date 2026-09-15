@@ -37,6 +37,24 @@
     return node?cleanText(node.textContent||''):'';
   }
 
+  function configFromElement(host,doc){
+    if(!host||!doc)return null;
+    const data=host.dataset||{};
+    const rootSelector=data.ttsRoot||'';
+    const container=rootSelector?doc.querySelector(rootSelector):null;
+    if(!container)return null;
+    return {
+      mount:host,
+      root:container,
+      id:data.ttsId||container.id||'longform',
+      label:data.ttsLabel||doc.title||'Read aloud',
+      allLabel:data.ttsAllLabel||'Whole content',
+      currentLabel:data.ttsCurrentLabel||'Current section',
+      selectionLabel:data.ttsSelectionLabel||'Selection',
+      itemSelector:data.ttsItem||'',
+    };
+  }
+
   function mount(config={}){
     const doc=config.document||root?.document;
     const Drawer=config.drawer||root?.PotatoTTSDrawer;
@@ -110,5 +128,26 @@
     };
   }
 
-  return {cleanText,buildLongformPayload,selectionInside,readableText,mount};
+  function autoMount(doc=root?.document){
+    if(!doc||typeof doc.querySelectorAll!=='function')return [];
+    const mounted=[];
+    for(const host of doc.querySelectorAll('[data-tts-longform]')){
+      if(host.dataset?.ttsMounted==='true')continue;
+      const config=configFromElement(host,doc);
+      if(!config)continue;
+      const instance=mount(config);
+      if(instance){
+        if(host.dataset)host.dataset.ttsMounted='true';
+        mounted.push(instance);
+      }
+    }
+    return mounted;
+  }
+
+  if(root?.document){
+    const start=()=>autoMount(root.document);
+    root.document.readyState==='loading'?root.document.addEventListener('DOMContentLoaded',start,{once:true}):start();
+  }
+
+  return {cleanText,buildLongformPayload,selectionInside,readableText,configFromElement,mount,autoMount};
 });
