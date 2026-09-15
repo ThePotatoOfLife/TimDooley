@@ -11,13 +11,15 @@ ROUTER = ROOT / "world-map" / "3d-interaction-router.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 PLACES = ROOT / "world-map" / "3d-places.js"
+INFRASTRUCTURE = ROOT / "world-map" / "3d-infrastructure.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
 PLACES_TEST = ROOT / "scripts" / "test_world_map_places_interaction_ownership.mjs"
+INFRASTRUCTURE_TEST = ROOT / "scripts" / "test_world_map_infrastructure_interaction_ownership.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, PLACES, TEST, PLACES_TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, PLACES, INFRASTRUCTURE, TEST, PLACES_TEST, INFRASTRUCTURE_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -30,6 +32,7 @@ def main() -> int:
     lifecycle = LIFECYCLE.read_text(encoding="utf-8", errors="replace")
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
     places = PLACES.read_text(encoding="utf-8", errors="replace")
+    infrastructure = INFRASTRUCTURE.read_text(encoding="utf-8", errors="replace")
 
     for token in (
         "function createInteractionRouter",
@@ -76,15 +79,33 @@ def main() -> int:
     if "Degraded/direct-module fallback" not in places:
         errors.append("Places legacy listeners must be explicitly documented as degraded fallback")
 
+    for token in (
+        "const interaction = window.__potatoAtlasInteraction",
+        "interaction.register('infrastructure'",
+        "objectType:'infrastructure'",
+        "clickPriority:70",
+        "hoverPriority:70",
+        "async function handleInfrastructureClick",
+        "await showPopup(asset",
+    ):
+        if token not in infrastructure:
+            errors.append(f"Infrastructure interaction migration missing marker: {token}")
+    if "Degraded/direct-module fallback" not in infrastructure:
+        errors.append("Infrastructure direct listener must be explicitly documented as degraded fallback")
+
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regressions")
     else:
-        for path in (ROUTER, SUBDIVISIONS, PLACES):
+        for path in (ROUTER, SUBDIVISIONS, PLACES, INFRASTRUCTURE):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
-        for test_path, label in ((TEST, "interaction-router"), (PLACES_TEST, "Places interaction ownership")):
+        for test_path, label in (
+            (TEST, "interaction-router"),
+            (PLACES_TEST, "Places interaction ownership"),
+            (INFRASTRUCTURE_TEST, "Infrastructure interaction ownership"),
+        ):
             result = subprocess.run([node, str(test_path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"{label} regression failed: " + (result.stderr.strip() or result.stdout.strip()))
@@ -94,6 +115,7 @@ def main() -> int:
     print("- disabled registrations cannot win")
     print("- compatibility event claim retained for unmigrated handlers")
     print("- subdivisions use router on normal boots with degraded fallback")
+    print("- Infrastructure uses router at priority 70 while preserving its persistent popup")
     print("- Places use router on normal boots with degraded fallback")
     print(f"Errors: {len(errors)}")
     if errors:
