@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from datetime import date
 import json
 from pathlib import Path
 import re
@@ -42,12 +43,93 @@ def _episode_ids(root_ids: set[str], episodes: dict) -> list[str]:
     return sorted(value for value in values if value)
 
 
+def _episode_root_ids(root_ids: set[str], episodes: dict) -> set[str]:
+    covered: set[str] = set()
+    for episode in episodes.get('episodes', []):
+        members = {str(value) for value in episode.get('member_root_ids') or []}
+        covered.update(root_ids & members)
+    return covered
+
+
 def _bible_relation_ids(root_ids: set[str], bible_projection: dict) -> list[str]:
     values: set[str] = set()
     root_relations = bible_projection.get('root_relations') or {}
     for root_id in root_ids:
         values.update(str(value) for value in root_relations.get(root_id, []) if value)
     return sorted(values)
+
+
+def _persistence_metrics(
+    attestations: list[dict],
+    root_ids: set[str],
+    episode_ids: list[str],
+    episodes: dict,
+    bible_relation_ids: list[str],
+    bible_projection: dict,
+    policy: dict,
+) -> dict:
+    attestation_dates = sorted(
+        {
+            str(row.get('date') or str(row.get('timestamp_utc') or '')[:10])
+            for row in attestations
+            if str(row.get('date') or str(row.get('timestamp_utc') or '')[:10])
+        }
+    )
+    parsed_dates = [date.fromisoformat(value) for value in attestation_dates]
+    span_days = (parsed_dates[-1] - parsed_dates[0]).days if len(parsed_dates) >= 2 else 0
+    active_months = sorted({value[:7] for value in attestation_dates if len(value) >= 7})
+    matched_terms = sorted(
+        {
+            str(term).strip().lower()
+            for row in attestations
+            for term in row.get('matched_terms') or []
+            if str(term).strip()
+        }
+    )
+    covered_roots = _episode_root_ids(root_ids, episodes)
+    root_relations = bible_projection.get('root_relations') or {}
+    bible_attestation_count = sum(1 for root_id in root_ids if root_relations.get(root_id))
+    attestation_count = len(attestations)
+
+    thresholds = {
+        'cross_episode': int(policy.get('minimum_episode_count') or 0),
+        'long_span': int(policy.get('minimum_span_days') or 0),
+        'multi_month': int(policy.get('minimum_active_months') or 0),
+        'term_diversity': int(policy.get('minimum_term_diversity') or 0),
+    }
+    observed = {
+        'cross_episode': len(episode_ids),
+        'long_span': span_days,
+        'multi_month': len(active_months),
+        'term_diversity': len(matched_terms),
+    }
+    tests = {
+        key: {
+            'observed': observed[key],
+            'threshold': thresholds[key],
+            'passed': observed[key] >= thresholds[key],
+        }
+        for key in sorted(observed)
+    }
+    passed_test_count = sum(1 for test in tests.values() if test['passed'])
+
+    return {
+        'span_days': span_days,
+        'active_months': active_months,
+        'active_month_count': len(active_months),
+        'matched_terms': matched_terms,
+        'term_diversity_count': len(matched_terms),
+        'episode_count': len(episode_ids),
+        'episode_attestation_count': len(covered_roots),
+        'episode_coverage_ratio': len(covered_roots) / attestation_count if attestation_count else 0.0,
+        'bible_relation_count': len(bible_relation_ids),
+        'bible_attestation_count': bible_attestation_count,
+        'bible_attestation_ratio': bible_attestation_count / attestation_count if attestation_count else 0.0,
+        'tests': tests,
+        'passed_test_count': passed_test_count,
+        'test_count': len(tests),
+        'all_core_tests_passed': passed_test_count == len(tests),
+    }
 
 
 def build_development_threads(
@@ -59,6 +141,7 @@ def build_development_threads(
     timeline = _timeline_roots(evidence_root)
     threads: list[dict] = []
     gaps: list[dict] = []
+    persistence_policy = dict(definitions.get('persistence_policy') or {})
 
     for definition in sorted(definitions.get('threads', []), key=lambda row: str(row.get('id') or '')):
         thread_id = str(definition.get('id') or '').strip()
@@ -95,6 +178,17 @@ def build_development_threads(
         dated = [row for row in attestations if row.get('timestamp_utc')]
         first = dated[0]['timestamp_utc'] if dated else None
         last = dated[-1]['timestamp_utc'] if dated else None
+        episode_ids = _episode_ids(root_set, episodes)
+        bible_relation_ids = _bible_relation_ids(root_set, bible_projection)
+        persistence = _persistence_metrics(
+            attestations,
+            root_set,
+            episode_ids,
+            episodes,
+            bible_relation_ids,
+            bible_projection,
+            persistence_policy,
+        )
         threads.append({
             'id': thread_id,
             'label': str(definition.get('label') or thread_id),
@@ -107,8 +201,9 @@ def build_development_threads(
             'attestations': attestations,
             'first_attestation_utc': first,
             'last_attestation_utc': last,
-            'episode_ids': _episode_ids(root_set, episodes),
-            'bible_relation_ids': _bible_relation_ids(root_set, bible_projection),
+            'episode_ids': episode_ids,
+            'bible_relation_ids': bible_relation_ids,
+            'persistence': persistence,
             'actor_assignments': [],
             'interpretive_claims': [],
         })
@@ -122,12 +217,13 @@ def build_development_threads(
     gaps.sort(key=lambda row: str(row.get('id') or ''))
     return {
         'id': 'public-statement-development-threads',
-        'version': '1.0.0',
+        'version': '1.1.0',
         'model': 'rooted-spiral-development-threads',
         'source_root_id': str(evidence_root.get('id') or ''),
         'definition_source_id': str(definitions.get('id') or ''),
         'source_episode_id': str(episodes.get('id') or ''),
         'source_bible_projection_id': str(bible_projection.get('id') or ''),
+        'persistence_policy': persistence_policy,
         'threads': threads,
         'gaps': gaps,
     }
