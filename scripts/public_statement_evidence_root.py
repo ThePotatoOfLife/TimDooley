@@ -24,6 +24,14 @@ def _match_key(record: dict):
     return ("record", str(record.get("id") or id(record)))
 
 
+def _record_order(record: dict) -> tuple:
+    return (
+        str(record.get("source_record") or ""),
+        str(record.get("source_occurrence_id") or ""),
+        str(record.get("id") or ""),
+    )
+
+
 def _provenance(record: dict) -> dict:
     return {
         key: record[key]
@@ -40,26 +48,27 @@ def _provenance(record: dict) -> dict:
 
 
 def _merge_group(records: list[dict], match_basis: str) -> dict:
-    _, preferred = max(
-        enumerate(records),
-        key=lambda pair: (_PRECISION_RANK[timestamp_precision(pair[1])], pair[0]),
-    )
+    ordered = sorted(records, key=_record_order)
+    preferred = sorted(
+        ordered,
+        key=lambda record: (-_PRECISION_RANK[timestamp_precision(record)], _record_order(record)),
+    )[0]
     result = deepcopy(preferred)
     result["precision"] = timestamp_precision(preferred)
     result["source_records"] = list(
-        dict.fromkeys(str(row.get("source_record")) for row in records if row.get("source_record"))
+        dict.fromkeys(str(row.get("source_record")) for row in ordered if row.get("source_record"))
     )
     result["source_occurrence_ids"] = list(
         dict.fromkeys(
             str(row.get("source_occurrence_id"))
-            for row in records
+            for row in ordered
             if row.get("source_occurrence_id")
         )
     )
-    result["provenance"] = [_provenance(row) for row in records]
+    result["provenance"] = [_provenance(row) for row in ordered]
     result["match_basis"] = match_basis
 
-    for row in records:
+    for row in ordered:
         if not result.get("status_id") and row.get("status_id"):
             result["status_id"] = str(row["status_id"])
         if not result.get("timestamp_utc") and row.get("timestamp_utc"):
