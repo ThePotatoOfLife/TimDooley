@@ -14,6 +14,7 @@ PHYSICAL = ROOT / "world-map" / "3d-physical-layers.js"
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 TERRAIN = ROOT / "world-map" / "3d-physical-terrain.js"
+RENDER_STACK_VALIDATOR = ROOT / "scripts" / "validate_world_map_render_stack.py"
 MAP_STATE_VALIDATOR = ROOT / "scripts" / "validate_world_map_map_state.py"
 WATER_VALIDATOR = ROOT / "scripts" / "validate_world_map_physical_water.py"
 LAND_COVER_VALIDATOR = ROOT / "scripts" / "validate_world_map_land_cover.py"
@@ -32,7 +33,7 @@ def check_node(path: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, MAP_STATE_VALIDATOR, WATER_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR):
+    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
@@ -105,6 +106,7 @@ def main() -> int:
             errors.append("Terrain module must not own legacy URL state after Physical runtime migration")
 
     validators = (
+        ("render stack", RENDER_STACK_VALIDATOR),
         ("map state / physical mixer", MAP_STATE_VALIDATOR),
         ("physical water", WATER_VALIDATOR),
         ("land cover", LAND_COVER_VALIDATOR),
