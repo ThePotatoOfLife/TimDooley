@@ -1,7 +1,7 @@
 # Expression Depth / Living Corpus — Architectural Design
 
 **Date:** 2026-09-15  
-**Status:** Approved design direction; written architectural spec for review  
+**Status:** design direction approved in chat; written spec awaiting review  
 **Repository:** `ThePotatoOfLife/TimDooley`  
 **Base:** current `main` at `bdf987dce9132113c9fcdbd3a7f55060c9209220`
 
@@ -57,7 +57,7 @@ Its job is to map public surfaces to:
 
 It never becomes the owner of quotations, theology, philosophy, chronology or story facts.
 
-`data/frontend-atlas-bridge.json` may point to this contract through a single `expression_contract` field, but it must not absorb the editorial details itself.
+`data/frontend-atlas-bridge.json` will point to this contract through one `expression_contract` field. It must not absorb the editorial details itself.
 
 ---
 
@@ -231,7 +231,7 @@ Early sections may use carefully sourced North/Axis/Seat wording to explain the 
 
 Source expression is important here as historical evidence. The Timeline should preserve event-time versus interpretation-time rather than use quotations simply for atmosphere.
 
-### Story — maximum lived texture, evidence-gated
+### Story — very high lived texture, evidence-gated
 
 **Job:** scene, sequence, people, action/reaction and ordinary life.
 
@@ -313,6 +313,27 @@ Each public surface record should contain:
 - `candidate_topics`
 - `story_handoff_policy` when relevant
 
+Allowed `presence_intensity` values are exactly:
+
+- `very-high`
+- `medium-high`
+- `medium`
+- `low`
+- `method-only`
+- `cool`
+
+`provenance_requirements` is an array of policy keys chosen from:
+
+- `label-public-wording`
+- `label-recovered-wording`
+- `label-book-project-wording`
+- `label-creative-literary`
+- `label-archive-interpretation`
+- `attribute-serious-allegations`
+- `story-evidence-gate-required`
+
+The contract validator checks only these defined values.
+
 This file does **not** contain copied quotations. It points to owners and describes placement policy.
 
 The contract should also classify surfaces that are intentionally low-persona so the audit cannot mistake restraint for incompleteness.
@@ -385,11 +406,11 @@ It should fail only on objective contract errors such as:
 - missing referenced public surface;
 - missing source owner path;
 - duplicate `surface_id`;
-- invalid presence-intensity enum;
+- invalid `presence_intensity`;
+- unknown provenance policy key;
 - a routing entry claiming canonical ownership of source content;
-- Story placement that attempts to bypass the Story evidence gate;
-- malformed provenance policy;
-- a surface marked both intentionally cool and mandatory high-persona.
+- Story placement that omits `story-evidence-gate-required`;
+- a `cool` surface that also declares mandatory source-expression forms.
 
 The advisory audit itself should not fail CI because a page has unused candidates.
 
@@ -413,8 +434,8 @@ The first implementation wave should be deliberately bounded enough to prove the
 - add the structural validator;
 - add the advisory audit;
 - wire both into quality checks;
-- add a pointer from `data/frontend-atlas-bridge.json` to the expression contract;
-- add Expression Depth to the statement-corpus/index relationships where appropriate without duplicating corpus content.
+- add `expression_contract: "knowledge/indexes/expression-depth-routing.json"` to `data/frontend-atlas-bridge.json`;
+- add `expression-depth-routing` to the `connections` array of `knowledge/indexes/tim-statement-corpus-index.json`; do not duplicate corpus records there.
 
 ### 9.2 Calibrate on Religion
 
@@ -520,11 +541,11 @@ For allegations involving crimes, intelligence services, trafficking, cults or c
 The architecture is successful when:
 
 1. every major public reader surface has an explicit expression-placement policy without changing its canonical owner;
-2. the routing contract identifies intentionally high-, medium-, low- and cool-persona surfaces;
+2. the routing contract uses only the defined presence-intensity and provenance-policy enums;
 3. CI validates the contract structurally and emits an advisory expression-depth report;
 4. the report can identify rich source material that has not yet reached its natural public home;
 5. unresolved/recovered material remains visibly distinct from documented public wording;
-6. Religion becomes more source-inhabited without becoming longer or losing comparative discipline;
+6. Religion becomes more source-inhabited without becoming a quote anthology or losing comparative discipline;
 7. Tim and Philosophy remain rich but do not become quote dumps;
 8. Story candidates are routed into the Story evidence gate rather than narrated prematurely;
 9. Science, Evidence and empirical World surfaces retain appropriate distance;
