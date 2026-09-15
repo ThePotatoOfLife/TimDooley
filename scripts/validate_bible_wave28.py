@@ -25,7 +25,7 @@ def main() -> int:
         errors.append(f'missing {WAVE.relative_to(ROOT)}')
     else:
         data = json.loads(WAVE.read_text(encoding='utf-8'))
-        rows = data.get('relations', data.get('dossiers', []))
+        rows = data.get('new_relations', [])
         ids = {row.get('id') for row in rows}
         missing = sorted(REQUIRED_IDS - ids)
         if missing:
