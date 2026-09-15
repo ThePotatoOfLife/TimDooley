@@ -4,8 +4,8 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
-const geo = window.__potatoAtlasGeo;
-if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
+const geo = window.__potatoAtlasGeo || await import('./3d-geo-kernel.js');
+if (!window.__potatoAtlasGeo) window.__potatoAtlasGeo = geo;
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
