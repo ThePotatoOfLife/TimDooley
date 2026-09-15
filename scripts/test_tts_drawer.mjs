@@ -41,6 +41,6 @@ assert.ok(source.includes('options.onEvent?.({...event,sectionId})'), 'drawer mu
 assert.ok(source.includes('function buildNormalizedTextMap(container,excludeSelector='), 'drawer must map normalized speech text back to DOM text nodes');
 assert.ok(source.includes('function createPageHighlighter(options={})'), 'drawer must expose a non-mutating page highlighter');
 assert.ok(source.includes("highlights.set(name,new HighlightCtor(domRange))"), 'page highlighting must use the browser Highlight API instead of rewriting article markup');
-assert.ok(source.includes("highlights.delete(name)"), 'page highlighter must clear its named highlight');
+assert.ok(source.includes("highlights?.delete?.(name)"), 'page highlighter must safely clear its named highlight');
 
 console.log('tts drawer contract: ok');
