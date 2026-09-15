@@ -94,6 +94,26 @@ async function loadSpecialist(label, path) {
   }
   return result;
 }
+async function loadInspectionBasics() {
+  await Promise.all([
+    loadAfterPaint('Demography', './3d-demography.js'),
+    loadAfterPaint('Country Pulse', './3d-country-pulse.js'),
+    loadAfterPaint('Evidence', './3d-evidence.js'),
+  ]);
+}
+async function loadInspectionContext() {
+  await Promise.all([
+    loadSpecialist('System Intelligence', './3d-gateways.js'),
+    loadSpecialist('Functional Chains', './3d-chain-explorer.js'),
+  ]);
+}
+async function loadInspectionDeep() {
+  await Promise.all([
+    loadSpecialist('Infrastructure Context', './3d-infrastructure.js'),
+    loadSpecialist('Impact Trace', './3d-impact-trace.js'),
+  ]);
+  await loadSpecialist('Impact Actions', './3d-impact-actions.js');
+}
 
 window.__potatoAtlasEnhancements = { loaded: [], failed: [] };
 window.__potatoAtlasDiagnostics = {
@@ -150,20 +170,14 @@ try {
   declareDormant('North Axis', './3d-axis.js', 'contextual Axis action');
 
   const promoteInspection = async () => {
-    // First paint the country and its direct statistics. Investigation context is
-    // intentionally loaded after that paint so it cannot block basic browsing.
-    await Promise.all([
-      loadAfterPaint('Demography', './3d-demography.js'),
-      loadAfterPaint('Country Pulse', './3d-country-pulse.js'),
-      loadAfterPaint('Evidence', './3d-evidence.js'),
-    ]);
-    await Promise.all([
-      loadSpecialist('System Intelligence', './3d-gateways.js'),
-      loadSpecialist('Functional Chains', './3d-chain-explorer.js'),
-      loadSpecialist('Infrastructure Context', './3d-infrastructure.js'),
-      loadSpecialist('Impact Trace', './3d-impact-trace.js'),
-    ]);
-    await loadSpecialist('Impact Actions', './3d-impact-actions.js');
+    // Paint direct country statistics first, then contextual graph tools, then the
+    // deeper infrastructure/impact stack. Each stage gets a paint boundary so a
+    // first inspection stays responsive while specialist modules hydrate.
+    await loadInspectionBasics();
+    await nextPaint();
+    await loadInspectionContext();
+    await nextPaint();
+    await loadInspectionDeep();
   };
   let inspectionPromoted = false;
   const promoteInspectionOnce = event => {
@@ -171,7 +185,7 @@ try {
     if (event?.detail && !event.detail.selected) return;
     inspectionPromoted = true;
     window.removeEventListener('potato-atlas-working-selection-change', promoteInspectionOnce);
-    promoteInspection();
+    void promoteInspection();
   };
   window.addEventListener('potato-atlas-working-selection-change', promoteInspectionOnce);
   if (window.__potatoAtlasSelection?.current?.selected) promoteInspectionOnce({ detail:{ selected:true } });

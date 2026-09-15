@@ -1,5 +1,5 @@
 // Scale-aware Places runtime for the World Relational Atlas.
-// Owns place data, rendering, selection, lazy country detail and place inspection.
+// Owns place data, rendering, selection, bounded country detail and place inspection.
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
@@ -14,6 +14,14 @@ const DETAIL_POINTS = 'atlas-places-detail-points';
 const DETAIL_LABELS = 'atlas-places-detail-labels';
 const LEGACY_CAPITAL_LAYERS = Object.freeze(['capital-cities', 'capital-city-major-labels', 'capital-city-labels']);
 const EMPTY_COLLECTION = Object.freeze({ type:'FeatureCollection', features:[] });
+const DEFAULT_RUNTIME_BUDGET = Object.freeze({
+  partition_max_bytes: 2_097_152,
+  rendered_max_partitions: 2,
+  cache_max_partitions: 6,
+  cache_max_bytes: 8_388_608,
+  global_major_max_bytes: 5_242_880,
+  global_major_max_features: 5_000,
+});
 
 let indexPayload = null;
 let majorData = EMPTY_COLLECTION;
@@ -21,8 +29,19 @@ let selectedId = new URL(location.href).searchParams.get('place') || null;
 let visible = true;
 let lastError = null;
 let panelSnapshot = null;
+let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
+let usageClock = 0;
+let cacheBytes = 0;
+let cacheHits = 0;
+let cacheMisses = 0;
+let cacheEvictions = 0;
+
 const featureById = new Map();
-const loadedCountries = new Map();
+const majorFeatureIds = new Set();
+const majorFeatureById = new Map();
+const partitionCache = new Map();
+const inflightCountries = new Map();
+const renderedPartitions = new Map();
 
 function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
@@ -43,19 +62,127 @@ function sourceData(sourceId, data) {
   const source = map.getSource(sourceId);
   if (source?.setData) source.setData(data);
 }
+function boundedBudget(source = {}) {
+  const next = {};
+  for (const [key, fallback] of Object.entries(DEFAULT_RUNTIME_BUDGET)) {
+    const value = Number(source?.[key]);
+    next[key] = Number.isFinite(value) && value > 0 ? Math.min(value, fallback) : fallback;
+  }
+  return next;
+}
 function indexFeatures(features = []) {
   for (const feature of features) {
     const id = feature?.properties?.id;
     if (id) featureById.set(String(id), feature);
   }
 }
-function allLoadedFeatures() {
-  const features = [...(majorData.features || [])];
-  for (const state of loadedCountries.values()) {
-    const data = state?.data;
-    if (data?.features) features.push(...data.features);
+function indexMajorFeatures(features = []) {
+  for (const feature of features) {
+    const id = String(feature?.properties?.id || '');
+    if (!id) continue;
+    majorFeatureIds.add(id);
+    majorFeatureById.set(id, feature);
+    featureById.set(id, feature);
   }
-  return features;
+}
+function compactSearchRecords() {
+  return Array.isArray(indexPayload?.search_records) ? indexPayload.search_records : [];
+}
+function compactRecord(id) {
+  const key = String(id || '');
+  return compactSearchRecords().find(row => String(row?.id || '') === key) || null;
+}
+function selectedPartitionCode() {
+  if (!selectedId) return null;
+  const feature = featureById.get(String(selectedId));
+  const fromFeature = String(feature?.properties?.country_iso3 || '').toUpperCase();
+  if (fromFeature) return fromFeature;
+  const record = compactRecord(selectedId);
+  return String(record?.partition || record?.country_iso3 || '').toUpperCase() || null;
+}
+function touchPartition(state) {
+  if (!state) return 0;
+  state.lastUsed = ++usageClock;
+  return state.lastUsed;
+}
+function removePartitionFeatures(state) {
+  for (const feature of state?.data?.features || []) {
+    const id = String(feature?.properties?.id || '');
+    if (!id) continue;
+    if (majorFeatureIds.has(id)) {
+      const majorFeature = majorFeatureById.get(id);
+      if (majorFeature) featureById.set(id, majorFeature);
+      continue;
+    }
+    if (featureById.get(id) === feature) featureById.delete(id);
+  }
+}
+function renderedByteCount() {
+  let total = 0;
+  for (const code of renderedPartitions.keys()) total += Number(partitionCache.get(code)?.bytes || 0);
+  return total;
+}
+function syncDetailSource() {
+  const seen = new Set();
+  const features = [];
+  for (const code of renderedPartitions.keys()) {
+    const state = partitionCache.get(code);
+    for (const feature of state?.data?.features || []) {
+      const id = String(feature?.properties?.id || '');
+      if (!id || seen.has(id)) continue;
+      seen.add(id);
+      features.push(feature);
+    }
+  }
+  sourceData(DETAIL_SOURCE, collection(features));
+}
+function trimRenderedPartitions(protectCode = null) {
+  const selectedCode = selectedPartitionCode();
+  const protectedCodes = new Set([protectCode, selectedCode].filter(Boolean));
+  let changed = false;
+  while (renderedPartitions.size > runtimeBudget.rendered_max_partitions) {
+    const candidates = [...renderedPartitions.entries()]
+      .filter(([code]) => !protectedCodes.has(code))
+      .sort((a, b) => a[1] - b[1] || a[0].localeCompare(b[0]));
+    const victim = candidates[0]?.[0];
+    if (!victim) break;
+    renderedPartitions.delete(victim);
+    changed = true;
+  }
+  if (changed) syncDetailSource();
+}
+function activateRenderedPartition(code, protectCode = code) {
+  const normalized = String(code || '').toUpperCase();
+  const state = partitionCache.get(normalized);
+  if (!state) return false;
+  const stamp = touchPartition(state);
+  renderedPartitions.delete(normalized);
+  renderedPartitions.set(normalized, stamp);
+  trimRenderedPartitions(protectCode);
+  syncDetailSource();
+  return true;
+}
+function evictCache(extraProtected = []) {
+  const protectedCodes = new Set([
+    selectedPartitionCode(),
+    ...renderedPartitions.keys(),
+    ...(extraProtected instanceof Set ? extraProtected : extraProtected || []),
+  ].filter(Boolean));
+  while (
+    partitionCache.size > runtimeBudget.cache_max_partitions
+    || cacheBytes > runtimeBudget.cache_max_bytes
+  ) {
+    const candidates = [...partitionCache.entries()]
+      .filter(([code]) => !protectedCodes.has(code))
+      .sort((a, b) => (a[1]?.lastUsed || 0) - (b[1]?.lastUsed || 0) || a[0].localeCompare(b[0]));
+    const [code, state] = candidates[0] || [];
+    if (!code || !state) break;
+    partitionCache.delete(code);
+    renderedPartitions.delete(code);
+    cacheBytes = Math.max(0, cacheBytes - Number(state.bytes || 0));
+    cacheEvictions += 1;
+    removePartitionFeatures(state);
+  }
 }
 function nationalCapitalForCountry(code) {
   const iso3 = String(code || '').toUpperCase();
@@ -93,19 +220,6 @@ function convergeLegacyCapitals() {
     detail:{ visible, owner:'places', count:window.__potatoAtlasCapitals.count }
   }));
   return true;
-}
-function syncDetailSource() {
-  const seen = new Set();
-  const features = [];
-  for (const state of loadedCountries.values()) {
-    for (const feature of state?.data?.features || []) {
-      const id = String(feature?.properties?.id || '');
-      if (!id || seen.has(id)) continue;
-      seen.add(id);
-      features.push(feature);
-    }
-  }
-  sourceData(DETAIL_SOURCE, collection(features));
 }
 function syncUrl(id) {
   const url = new URL(location.href);
@@ -251,17 +365,26 @@ async function loadIndex() {
   const response = await fetch(INDEX_URL, {cache:'force-cache'});
   if (!response.ok) throw new Error(`Places index unavailable (${response.status})`);
   indexPayload = await response.json();
+  runtimeBudget = boundedBudget(indexPayload?.runtime_budget);
   return indexPayload;
 }
 async function loadMajor() {
   const index = await loadIndex();
-  const path = index?.global_major?.path || 'global-major.geo.json';
+  const descriptor = index?.global_major || {};
+  const path = descriptor.path || 'global-major.geo.json';
+  if (Number(descriptor.bytes || 0) > runtimeBudget.global_major_max_bytes) {
+    throw new Error('Global Places snapshot exceeds runtime byte budget.');
+  }
+  if (Number(descriptor.count || 0) > runtimeBudget.global_major_max_features) {
+    throw new Error('Global Places snapshot exceeds runtime feature budget.');
+  }
   const response = await fetch(`${DATA_ROOT}${path}`, {cache:'force-cache'});
   if (!response.ok) throw new Error(`Global Places snapshot unavailable (${response.status})`);
   const data = await response.json();
   if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error('Global Places snapshot is not GeoJSON.');
+  if (data.features.length > runtimeBudget.global_major_max_features) throw new Error('Global Places snapshot exceeds runtime feature budget.');
   majorData = data;
-  indexFeatures(data.features);
+  indexMajorFeatures(data.features);
   sourceData(MAJOR_SOURCE, data);
   convergeLegacyCapitals();
   return data;
@@ -269,27 +392,47 @@ async function loadMajor() {
 async function loadCountry(iso3) {
   const code = String(iso3 || '').toUpperCase();
   if (!code) return null;
-  if (loadedCountries.has(code)) return loadedCountries.get(code);
+
+  const cached = partitionCache.get(code);
+  if (cached) {
+    cacheHits += 1;
+    touchPartition(cached);
+    activateRenderedPartition(code, code);
+    return cached;
+  }
+  if (inflightCountries.has(code)) return inflightCountries.get(code);
+
+  cacheMisses += 1;
   const promise = (async () => {
     const index = await loadIndex();
     const descriptor = index?.countries?.[code];
-    if (!descriptor?.path) return { descriptor:null, data:EMPTY_COLLECTION };
+    if (!descriptor?.path) return { code, descriptor:null, data:EMPTY_COLLECTION, bytes:0, lastUsed:++usageClock };
+    const declaredBytes = Number(descriptor.bytes || 0);
+    if (declaredBytes > runtimeBudget.partition_max_bytes) {
+      throw new Error(`Places partition ${code} exceeds runtime byte budget.`);
+    }
     const response = await fetch(`${DATA_ROOT}${descriptor.path}`, {cache:'force-cache'});
     if (!response.ok) throw new Error(`Places partition ${code} unavailable (${response.status})`);
     const data = await response.json();
     if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error(`Places partition ${code} is not GeoJSON.`);
+    const bytes = declaredBytes || JSON.stringify(data).length;
+    if (bytes > runtimeBudget.partition_max_bytes) {
+      throw new Error(`Places partition ${code} exceeds runtime byte budget.`);
+    }
+    const state = { code, descriptor, data, bytes, lastUsed:++usageClock };
+    partitionCache.set(code, state);
+    cacheBytes += bytes;
     indexFeatures(data.features);
-    return { descriptor, data };
-  })();
-  loadedCountries.set(code, promise);
-  try {
-    const state = await promise;
-    loadedCountries.set(code, state);
-    syncDetailSource();
+    activateRenderedPartition(code, code);
+    evictCache(new Set([code]));
     return state;
-  } catch (error) {
-    loadedCountries.delete(code);
-    throw error;
+  })();
+
+  inflightCountries.set(code, promise);
+  try {
+    return await promise;
+  } finally {
+    inflightCountries.delete(code);
   }
 }
 function findFeature(id) {
@@ -297,14 +440,27 @@ function findFeature(id) {
 }
 async function focus(id, options = {}) {
   let feature = options.feature || findFeature(id);
-  if (!feature && options.country) {
-    await loadCountry(options.country);
+  const record = compactRecord(id);
+  const country = String(
+    options.country
+    || feature?.properties?.country_iso3
+    || record?.partition
+    || record?.country_iso3
+    || ''
+  ).toUpperCase();
+  if (!feature && country) {
+    await loadCountry(country);
     feature = findFeature(id);
   }
   if (!feature) return false;
   const p = feature.properties || {};
   const coords = feature.geometry?.coordinates;
   selectedId = String(p.id || id);
+  const selectedCode = String(p.country_iso3 || country || '').toUpperCase();
+  if (selectedCode && partitionCache.has(selectedCode)) {
+    activateRenderedPartition(selectedCode, selectedCode);
+    evictCache(new Set([selectedCode]));
+  }
   syncUrl(selectedId);
   renderInspector(feature);
   if (options.fit !== false && Array.isArray(coords) && coords.length >= 2) {
@@ -322,6 +478,7 @@ function clear(options = {}) {
   syncUrl(null);
   if (options.restore !== false) restoreInspector();
   else panelSnapshot = null;
+  evictCache();
   window.dispatchEvent(new CustomEvent('potato-atlas-place-clear'));
   return true;
 }
@@ -348,30 +505,48 @@ function search(query, options = {}) {
   if (!needle) return [];
   const limit = Math.max(1, Math.min(50, Number(options.limit) || 12));
   const normalized = value => String(value || '').toLowerCase();
-  return allLoadedFeatures()
-    .map(feature => {
-      const p = feature.properties || {};
-      const names = [p.name, p.ascii_name, ...(Array.isArray(p.aliases) ? p.aliases : [])].map(normalized);
+  const records = compactSearchRecords();
+  return records
+    .map(record => {
+      const names = [record?.name, ...(Array.isArray(record?.aliases) ? record.aliases : [])].map(normalized);
       const best = Math.min(...names.map(name => name === needle ? 0 : name.startsWith(needle) ? 1 : name.includes(needle) ? 2 : 9));
-      return {feature, best};
+      return {record, best};
     })
     .filter(row => row.best < 9)
-    .sort((a, b) => a.best - b.best || (b.feature.properties?.population || 0) - (a.feature.properties?.population || 0))
+    .sort((a, b) => a.best - b.best
+      || Number(a.record?.population_rank || Number.MAX_SAFE_INTEGER) - Number(b.record?.population_rank || Number.MAX_SAFE_INTEGER)
+      || String(a.record?.name || '').localeCompare(String(b.record?.name || ''))
+      || String(a.record?.id || '').localeCompare(String(b.record?.id || '')))
     .slice(0, limit)
-    .map(({feature}) => ({
-      id:feature.properties?.id,
-      name:feature.properties?.name,
-      country:feature.properties?.country_iso3,
-      type:placeKind(feature.properties || {}),
-      feature,
-    }));
+    .map(({record}) => {
+      const feature = findFeature(record.id);
+      return {
+        id:record.id,
+        name:record.name,
+        country:String(record.country_iso3 || record.partition || '').toUpperCase(),
+        type:['Capital','City','Town'].includes(record.type) ? record.type : (feature ? placeKind(feature.properties || {}) : 'City'),
+        population_rank:record.population_rank,
+        partition:record.partition,
+        feature:feature || undefined,
+      };
+    });
 }
 function status() {
+  const renderedCodes = [...renderedPartitions.keys()];
+  const cachedCodes = [...partitionCache.keys()];
   return {
     visible,
     selected:selectedId,
     majorCount:majorData.features?.length || 0,
-    loadedCountries:[...loadedCountries.keys()],
+    loadedCountries:cachedCodes,
+    renderedPartitions:renderedCodes,
+    renderedBytes:renderedByteCount(),
+    cachedPartitions:cachedCodes,
+    cachedBytes:cacheBytes,
+    cacheHits,
+    cacheMisses,
+    cacheEvictions,
+    runtimeBudget:{...runtimeBudget},
     indexReady:Boolean(indexPayload),
     error:lastError ? String(lastError.message || lastError) : null,
   };
