@@ -13,6 +13,7 @@ BUILDER = ROOT / "scripts" / "build_world_places.py"
 PLACES = ROOT / "world-map" / "3d-places.js"
 SEARCH = ROOT / "world-map" / "3d-search.js"
 MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
+PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 
 
@@ -104,6 +105,9 @@ def validate_runtime(errors: list[str]) -> None:
         "__potatoAtlasSearch", "Country", "Capital", "City", "Town", "typeRank", "compareResults",
     ), errors)
     require_tokens(MAP_STATE, ("places", "subdivision"), errors)
+    require_tokens(PANEL_LIFECYCLE, (
+        "maybeLoadSelectedPlaces", "potato-atlas-country-card-rendered", "moveend", "loadCountry",
+    ), errors)
     if SUBDIVISIONS.exists():
         text = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
         if "atlasSubdivisionCard" in text:
