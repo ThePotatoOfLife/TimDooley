@@ -102,16 +102,28 @@ function installAxisToggle(map) {
   setAxisVisible(map, visible);
 }
 
-function installAxisInteractions(map) {
-  const popup = new maplibregl.Popup({ closeButton:false, closeOnClick:false, offset:10 });
+async function sharedTooltip(map) {
+  if (window.__potatoAtlasTooltip) return window.__potatoAtlasTooltip;
+  const { createTooltipService } = await import('./3d-tooltip.js');
+  const tooltip = createTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window });
+  window.__potatoAtlasTooltip = tooltip;
+  return tooltip;
+}
+
+async function installAxisInteractions(map) {
+  const tooltip = await sharedTooltip(map);
   const enter = event => {
     map.getCanvas().style.cursor = 'pointer';
     const feature = event.features?.[0];
     if (!feature) return;
     const p = feature.properties || {};
-    popup.setLngLat(event.lngLat).setHTML(`<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`).addTo(map);
+    const generation = tooltip.nextGeneration('axis');
+    tooltip.show('axis', event.lngLat, `<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`, generation);
   };
-  const leave = () => { map.getCanvas().style.cursor=''; popup.remove(); };
+  const leave = () => {
+    map.getCanvas().style.cursor='';
+    tooltip.invalidate('axis-leave');
+  };
   [AXIS_FILL,AXIS_LINE,AXIS_GATE].forEach(layer => { map.on('mouseenter',layer,enter); map.on('mouseleave',layer,leave); });
 
   const openGate = () => {
@@ -135,7 +147,7 @@ async function bootAxis() {
   if (!map.loaded()) await new Promise(resolve=>map.once('load',resolve));
   addAxisLayers(map);
   installAxisToggle(map);
-  installAxisInteractions(map);
+  await installAxisInteractions(map);
 }
 
 bootAxis().catch(error => console.warn('North / Axis enhancement unavailable:', error));
