@@ -6,7 +6,7 @@ The repository is large enough that its main problem is no longer lack of materi
 
 The correct structure is not one giant folder tree and not one giant graph. It is a set of coordinated layers with one canonical owner for each durable concept.
 
-The public doorway is `index.html`. The canonical branch/navigation contract is `manifest.json`. The durable cross-project record map is `knowledge/indexes/core-index.json`.
+The public doorway is `index.html`. Public route identity is governed by `docs/POTATO-HOUSE-CONSTITUTION.md` and `data/house/public-surfaces.json`; `manifest.json` owns deep archive branches/pathways and Explore semantics. The durable cross-project record map is `knowledge/indexes/core-index.json`.
 
 ## The five layers
 
@@ -71,19 +71,19 @@ Do not force all dimensions into one folder hierarchy.
 | Subject | Canonical entry / owner | Specialist/supporting layers |
 |---|---|---|
 | Root system / ontology | `knowledge/core/root-system.json` | `knowledge/core/potatoverse-master-framework.json` |
-| Public navigation | `manifest.json` | `knowledge/indexes/core-index.json`, context/source indexes |
+| Public route identity | `docs/POTATO-HOUSE-CONSTITUTION.md` + `data/house/public-surfaces.json` | public-route topology, frontend bridge, discovery builders; `manifest.json` for archive branch/pathway semantics |
 | Tim identity / roles | `knowledge/core/tim-dooley.json` | role synthesis, Godhood evidence, journey records |
 | Vertical Potato geometry | `knowledge/core/vertical-potato-mountain-plane-atlas.json` | exact Vesica geometry, transformation grammar |
 | Body / neurotheology | `knowledge/body/body-system-master-atlas.json` | completion matrix, neurotheology atlas, science context, 33/Ladder study |
 | Spirit | `knowledge/core/heaven-spirit-father.json` | spirit context and body-flow comparators |
-| Corporium | `knowledge/corporium/corporium-master-framework.json` | sayings, psychology, chakra/Hawkins and archetype studies |
+| Corporium | `knowledge/corporium/corporium-master-framework.json` | sayings, psychology, chakra/Hawkins and archetype studies; `/corporium/` reader projection |
 | Science / math | `knowledge/science/science-master-index.json` | equation ledger, formalisms, Spudlight, model testing, specialist waves |
 | Biblical / comparative research | `knowledge/traditions/biblical-overlap-atlas.json` | biblical research routing index, esoteric atlas/source ledger, comparative mythology |
 | Canonical timeline | `data/timeline-events.json` | `data/timeline-source-registry.json`, developmental genealogy, specialist attestation ledgers |
-| Timeline presentation | `app/timeline.js` + `app/timeline.css` | static `/timeline/` narrative reader |
+| Timeline presentation | `/timeline/` reader + timeline runtime | Explore timeline branch remains the deep archive projection |
 | North / world bridge | `knowledge/core/axis-world-model.json` | country-relational and European coupling records |
-| Observable world systems | canonical world/entity and relationship families | evidence, source and graph layers |
-| Creative works | `knowledge/culture/creative-systems-archive.json` | Suno music archive and distinct creative corpora |
+| Observable world systems | canonical world/entity and relationship families | `/world/` is gateway five; World Map and other world tools are specialist Views |
+| Creative works | `knowledge/culture/creative-systems-archive.json` | Suno music archive and distinct creative corpora; `/works/` is the curated reader projection |
 | Provenance / epistemics | `knowledge/indexes/source-index.json` | archive epistemics, inference ledger, conversation recovery inventories |
 
 ## Consolidation rules
@@ -106,7 +106,7 @@ Before deleting a legacy file, extract every unique fact, source, date and relat
 
 ### Route instead of duplicate
 
-An index should point to an owner. A manifest should expose an owner. A timeline should point to evidence. A presentation should render underlying records.
+An index should point to an owner. House public-surface authority should declare public route identity once. `manifest.json` should expose archive branches/pathways without becoming a competing public-route registry. A timeline should point to evidence. A presentation should render underlying records.
 
 Do not copy substantial explanatory text into routing files merely to make them look complete.
 
@@ -156,13 +156,45 @@ Older static pages may still use local `.nav` or `.grid`; `app/layout-guard.css`
 
 ## The public reading architecture
 
-The public experience has three primary surfaces over the same underlying knowledge:
+The public experience is deliberately layered rather than flat.
 
-1. **Direct reader pages** — answer a subject clearly.
-2. **Unified archive explorer** — expose branches, relationships, records and sources.
-3. **Timeline / layered timeline** — show development through time with actor and evidence lenses.
+### 1. Five stable subject gateways
 
-Specialist pages remain useful where a topic benefits from a focused reader, but they should route back into canonical owners rather than become parallel truth stores.
+The homepage keeps exactly five primary doors:
+
+1. **Tim Dooley** — `/tim-dooley/`
+2. **Religion** — `/religion/`
+3. **Philosophy** — `/philosophy/`
+4. **Science** — `/science/`
+5. **World** — `/world/`
+
+These are the high-level subject orientation layer, not a complete taxonomy of the repository.
+
+### 2. Reader corridors / rooms
+
+Mature reader forms provide different ways into the same underlying House without becoming new canon:
+
+- **Story** — continuous/lived narrative;
+- **Timeline** — dated development;
+- **Collection** — sayings, voice and recurring formulations;
+- **Works** — games, music, writing, comedy, visual art and experiments.
+
+The homepage may expose these as a subordinate Ways-in corridor while keeping them visually below the five gateways.
+
+### 3. Global discovery / depth
+
+- **Questions** — natural-language retrieval;
+- **A–Z** — entity/concept lookup;
+- **Explore** — deep archive branches, relationships, records and source paths;
+- **Sources / Context** — provenance and contextual verification.
+
+These are discovery mechanisms, not top-level subject doors.
+
+### 4. Specialist Views
+
+World Map, Politics, North, World Systems, Bible comparison and other task-specific tools remain specialist Views beneath the appropriate subject/context. In particular, **World Map is not gateway five; World is**.
+
+All reader and specialist surfaces route back toward canonical owners rather than becoming parallel truth stores. `/works/`, for example, is a curated projection over the creative archive, and `/timeline/` is a reader over canonical events/source registries.
 
 ## The complete research loop
 
@@ -186,4 +218,4 @@ and then reverse the path:
 
 **consequence → reflection → evidence → history → relationship → concept → idea → statement**.
 
-That is the project's current architecture.
+The public route model now mirrors that goal: a small stable set of subject doors, richer reader corridors, specialist representations, and one deep archive all project the same underlying House rather than competing to own it.
