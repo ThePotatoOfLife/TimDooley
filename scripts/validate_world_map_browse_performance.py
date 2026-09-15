@@ -17,6 +17,7 @@ PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 HOVER_ARTIFACT_TEST = ROOT / "scripts" / "test_world_map_hover_artifacts.mjs"
+OVERLAY_OVERLAP_TEST = ROOT / "scripts" / "test_world_map_overlay_overlap.mjs"
 UI = ROOT / "world-map" / "3d-ui.js"
 DEMOGRAPHY = ROOT / "world-map" / "3d-demography.js"
 DIMENSIONS = ROOT / "world-map" / "3d-country-dimensions.js"
@@ -170,6 +171,11 @@ def main() -> int:
         require(hover, token, "world-map/3d-hover.js", errors)
     reject(hover, "showPopup(event, await countryHtml(", "world-map/3d-hover.js", errors)
 
+    # Eye and the compact country card are both top-left map surfaces. Evidence
+    # owns that corner while open instead of stacking two dark panels together.
+    for token in ("function suspendCountryCard", "function restoreCountryCard", "potato-atlas-country-card-rendered"):
+        require(evidence, token, "world-map/3d-evidence.js", errors)
+
     # Subdivision browsing must stay bounded as country coverage expands. A
     # fixed shared source/layer stack prevents style/listener growth from being
     # proportional to the number of country partitions visited in a session.
@@ -208,6 +214,7 @@ def main() -> int:
 
     node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
+    run_node_regression(OVERLAY_OVERLAP_TEST, errors, "World Map overlay overlap regression")
 
     if errors:
         print("WORLD MAP BROWSE/PERFORMANCE VALIDATION FAILED")
@@ -216,7 +223,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · stable async hover · active color/stat continuity · single scalar owner · bounded subdivisions · lazy specialist stack · one live panel lifecycle observer")
+    print("Browse + Pins · stable async hover · exclusive top-left overlays · active color/stat continuity · single scalar owner · bounded subdivisions · lazy specialist stack · one live panel lifecycle observer")
     return 0
 
 
