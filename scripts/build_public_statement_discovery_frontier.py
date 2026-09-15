@@ -6,6 +6,15 @@ import json
 from pathlib import Path
 
 
+PRIORITY_BY_REASON = {
+    'no_statement_at_minute': (100, 'recover_status_source'),
+    'ambiguous_statement_minute': (100, 'resolve_status_match'),
+    'conflicting_status_id': (100, 'resolve_status_conflict'),
+    'search_coverage_gap': (90, 'bridge_timeline_interval'),
+    'timestamp_precision_date_only': (60, 'upgrade_timestamp_precision'),
+}
+
+
 def _timestamp_gap(root: dict) -> dict:
     return {
         'id': f"gap-timestamp-{root['id']}",
@@ -31,6 +40,18 @@ def _coverage_gap(note: dict) -> dict:
         'candidate_root_ids': [],
         'claim_boundary': 'No matching search result does not establish that no statements existed.',
         'note': str(note.get('interpretation') or note.get('note') or ''),
+    }
+
+
+def _work_item(gap: dict) -> dict:
+    priority, action = PRIORITY_BY_REASON.get(str(gap.get('reason') or ''), (40, 'review_gap'))
+    return {
+        'gap_id': str(gap.get('id') or ''),
+        'gap_type': str(gap.get('gap_type') or ''),
+        'reason': str(gap.get('reason') or ''),
+        'priority': priority,
+        'action': action,
+        'candidate_root_ids': list(gap.get('candidate_root_ids') or []),
     }
 
 
@@ -68,13 +89,18 @@ def build_discovery_frontier(evidence_root: dict) -> dict:
         for gap in ordered
         if gap.get('state') == 'open'
     )
+    queue = sorted(
+        (_work_item(gap) for gap in ordered if gap.get('state') == 'open'),
+        key=lambda row: (-row['priority'], row['reason'], row['gap_id']),
+    )
 
     return {
         'id': 'public-statement-discovery-frontier',
-        'version': '1.0.0',
+        'version': '1.1.0',
         'model': 'rooted-spiral-discovery-frontier',
         'source_root_id': str(evidence_root.get('id') or ''),
         'gaps': ordered,
+        'work_queue': queue,
         'summary': {
             'open_total': sum(open_counts.values()),
             'open_by_type': dict(sorted(open_counts.items())),
