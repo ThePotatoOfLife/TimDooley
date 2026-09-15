@@ -10,7 +10,7 @@ const SOURCE_PREFIX = 'atlas-subdivisions-';
 const LINE_PREFIX = 'atlas-subdivision-line-';
 const HIT_PREFIX = 'atlas-subdivision-hit-';
 const LABEL_PREFIX = 'atlas-subdivision-label-';
-const USA_BOUNDS = { west:-179.5, east:-65, south:17, north:72.5 };
+const USA_BOUNDS_FALLBACK = { west:-179.5, east:-65, south:17, north:72.5 };
 
 const loaded = new Map();
 let indexPromise = null;
@@ -28,7 +28,7 @@ function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
 function countryCode(properties = {}) {
-  return String(properties.country_iso3 || properties.iso3 || 'USA').toUpperCase();
+  return String(properties.country_iso3 || properties.parent_iso3 || properties.iso3 || 'USA').toUpperCase();
 }
 function renderInspector(feature) {
   const panel = document.getElementById('panel');
@@ -40,7 +40,7 @@ function renderInspector(feature) {
   panel.innerHTML = `
     <div class="eyebrow">Subdivision</div>
     <h1>${esc(p.name || p.id || 'Subdivision')}</h1>
-    <p class="muted">${esc(p.subdivision_type || 'Subdivision')} · ${esc(p.code || p.id || '')} · ${esc(p.country_name || code)}</p>
+    <p class="muted">${esc(p.subdivision_type || 'Subdivision')} · ${esc(p.code || p.id || '')} · ${esc(p.country_name || p.parent_name || code)}</p>
     <div class="stat-grid">
       <div><span>Population</span><b>${fmt(population.value)}</b><small>${esc(population.period || '—')}</small></div>
       <div><span>Area</span><b>${fmt(p.area_km2)} km²</b><small>land + water</small></div>
@@ -75,10 +75,27 @@ async function subdivisionIndex() {
   }
   return indexPromise;
 }
+function partitionEntries(index) {
+  return Object.entries(index?.partitions || {});
+}
+function descriptorBounds(partition, descriptor = {}) {
+  if (descriptor.viewport_bounds) return descriptor.viewport_bounds;
+  return partition === 'USA' ? USA_BOUNDS_FALLBACK : null;
+}
 function viewportOverlaps(bounds) {
+  if (!bounds) return false;
   const view = map.getBounds();
   const west = view.getWest(), east = view.getEast(), south = view.getSouth(), north = view.getNorth();
   return west <= bounds.east && east >= bounds.west && south <= bounds.north && north >= bounds.south;
+}
+function partitionForId(index, id) {
+  const value = String(id || '');
+  if (!value) return null;
+  for (const [partition, descriptor] of partitionEntries(index)) {
+    const prefix = String(descriptor?.id_prefix || '');
+    if (prefix && value.startsWith(prefix)) return partition;
+  }
+  return value.startsWith('US-') ? 'USA' : null;
 }
 function recursiveBounds(node, box) {
   if (!Array.isArray(node)) return box;
@@ -181,17 +198,28 @@ async function loadPartition(partition) {
   return state;
 }
 async function ensureRelevantPartitions() {
+  let index;
+  try {
+    index = await subdivisionIndex();
+  } catch (error) {
+    console.warn('Subdivision index unavailable:', error);
+    return;
+  }
   const deepLinkId = pendingDeepLinkId;
-  if (deepLinkId?.startsWith('US-') || viewportOverlaps(USA_BOUNDS)) {
+  const deepLinkPartition = partitionForId(index, deepLinkId);
+  for (const [partition, descriptor] of partitionEntries(index)) {
+    const wantsDeepLink = partition === deepLinkPartition;
+    const wantsViewport = viewportOverlaps(descriptorBounds(partition, descriptor));
+    if (!wantsDeepLink && !wantsViewport) continue;
     try {
-      await loadPartition('USA');
-      if (deepLinkId?.startsWith('US-') && pendingDeepLinkId === deepLinkId) {
+      await loadPartition(partition);
+      if (wantsDeepLink && pendingDeepLinkId === deepLinkId) {
         pendingDeepLinkId = null;
-        const feature = featureById('USA', deepLinkId);
-        if (feature) selectSubdivision('USA', feature, {fit:true});
+        const feature = featureById(partition, deepLinkId);
+        if (feature) selectSubdivision(partition, feature, {fit:true});
       }
     } catch (error) {
-      console.warn('U.S. subdivision layer unavailable:', error);
+      console.warn(`Subdivision layer unavailable: ${partition}`, error);
     }
   }
 }
@@ -201,10 +229,12 @@ await ensureRelevantPartitions();
 
 window.__potatoAtlasSubdivisions = {
   loadPartition,
-  select(id, options={}) {
-    const partition = String(id || '').startsWith('US-') ? 'USA' : null;
+  async select(id, options={}) {
+    const index = await subdivisionIndex();
+    const partition = partitionForId(index, id);
     if (!partition) return false;
-    return loadPartition(partition).then(() => selectSubdivision(partition, featureById(partition, id), options));
+    await loadPartition(partition);
+    return selectSubdivision(partition, featureById(partition, id), options);
   },
   clear() {
     selectedId = null;

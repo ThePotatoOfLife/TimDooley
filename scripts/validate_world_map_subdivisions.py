@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the first generic subdivision integration surface."""
+"""Validate the generic subdivision integration surface."""
 from __future__ import annotations
 
 import json
@@ -13,12 +13,14 @@ MODULE = ROOT / "world-map" / "3d-subdivisions.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
+DNK = ROOT / "data" / "world-subdivisions" / "DNK.geo.json"
 FREEZE_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_freeze.mjs"
+MULTI_COUNTRY_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_multi_country.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, FREEZE_REGRESSION)
+    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, DNK, FREEZE_REGRESSION, MULTI_COUNTRY_REGRESSION)
     for path in required:
         if not path.exists():
             errors.append(f"missing subdivision integration file: {path.relative_to(ROOT)}")
@@ -28,6 +30,7 @@ def main() -> int:
         lifecycle = LIFECYCLE.read_text(encoding="utf-8")
         index = json.loads(INDEX.read_text(encoding="utf-8"))
         usa = json.loads(USA.read_text(encoding="utf-8"))
+        dnk = json.loads(DNK.read_text(encoding="utf-8"))
         for token in ("GENZ2025", "cb_2025_us_state_20m.zip", "NST-EST2025-ALLDATA.csv", "EXPECTED_US_UNITS = 51", "parse_state_kml", "federal district"):
             if token not in builder:
                 errors.append(f"subdivision builder missing marker: {token}")
@@ -35,14 +38,19 @@ def main() -> int:
             "world-subdivisions/index.json", "USA.geo.json", "atlas-subdivision",
             "searchParams.get('subdivision')", "searchParams.set('subdivision'", "searchParams.delete('subdivision')",
             "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled", "pendingDeepLinkId",
+            "id_prefix", "viewport_bounds", "partitionForId",
         ):
             if token not in module:
                 errors.append(f"subdivision module missing marker: {token}")
         if "3d-subdivisions.js" not in lifecycle or "map.getZoom() < 3.4" not in lifecycle:
             errors.append("regional-scale lazy subdivision loading is not registered")
-        descriptor = index.get("partitions", {}).get("USA", {})
-        if descriptor.get("feature_count") != 51:
+
+        partitions = index.get("partitions", {})
+        usa_descriptor = partitions.get("USA", {})
+        if usa_descriptor.get("feature_count") != 51:
             errors.append("USA subdivision index must declare 51 first-wave features")
+        if usa_descriptor.get("id_prefix") != "US-" or not isinstance(usa_descriptor.get("viewport_bounds"), dict):
+            errors.append("USA subdivision descriptor must declare id_prefix and viewport_bounds")
         features = usa.get("features", []) if usa.get("type") == "FeatureCollection" else []
         if len(features) != 51:
             errors.append(f"USA subdivision snapshot must contain 51 features; found {len(features)}")
@@ -61,6 +69,35 @@ def main() -> int:
                 errors.append(f"{props.get('id')}: incomplete population provenance")
             if not props.get("area_definition") or "ALAND" not in props.get("area_definition", ""):
                 errors.append(f"{props.get('id')}: area provenance is not explicit")
+
+        dnk_descriptor = partitions.get("DNK", {})
+        if dnk_descriptor.get("feature_count") != 5:
+            errors.append("DNK subdivision index must declare 5 region features")
+        if dnk_descriptor.get("id_prefix") != "DK-":
+            errors.append("DNK subdivision descriptor must declare DK- id_prefix")
+        if dnk_descriptor.get("parent_name") != "Denmark" or not isinstance(dnk_descriptor.get("viewport_bounds"), dict):
+            errors.append("DNK subdivision descriptor must declare Denmark parent and viewport bounds")
+        if "DAWA" not in str(dnk_descriptor.get("source") or "") and "Dataforsyningen" not in str(dnk_descriptor.get("source") or ""):
+            errors.append("DNK subdivision descriptor must retain official DAWA/Dataforsyningen provenance")
+        if dnk_descriptor.get("population_status") != "unknown-not-zero":
+            errors.append("DNK missing population must remain explicitly unknown-not-zero")
+        dnk_features = dnk.get("features", []) if dnk.get("type") == "FeatureCollection" else []
+        if len(dnk_features) != 5:
+            errors.append(f"DNK subdivision snapshot must contain 5 features; found {len(dnk_features)}")
+        dnk_ids = [str((feature.get("properties") or {}).get("id") or "") for feature in dnk_features]
+        if len(set(dnk_ids)) != 5 or not all(value.startswith("DK-") for value in dnk_ids):
+            errors.append("DNK subdivision ids must be 5 unique DK-* identifiers")
+        for feature in dnk_features:
+            props = feature.get("properties") or {}
+            if props.get("subdivision_type") != "region":
+                errors.append(f"{props.get('id')}: Danish first-order subdivision must be typed region")
+            provenance = f"{props.get('geometry_source') or ''} {props.get('geometry_source_url') or ''}"
+            if "DAWA" not in provenance and "Dataforsyningen" not in provenance and "dataforsyningen.dk" not in provenance:
+                errors.append(f"{props.get('id')}: missing official Danish geometry provenance")
+            population = props.get("population")
+            if isinstance(population, dict) and isinstance(population.get("value"), (int, float)):
+                errors.append(f"{props.get('id')}: Denmark population must not be invented in geometry-first snapshot")
+
         node = shutil.which("node")
         if node:
             checked = subprocess.run([node, "--check", str(MODULE)], capture_output=True, text=True)
@@ -69,12 +106,15 @@ def main() -> int:
             regression = subprocess.run([node, str(FREEZE_REGRESSION)], capture_output=True, text=True)
             if regression.returncode:
                 errors.append("subdivision freeze regression failed: " + (regression.stderr.strip() or regression.stdout.strip()))
+            multi = subprocess.run([node, str(MULTI_COUNTRY_REGRESSION)], capture_output=True, text=True)
+            if multi.returncode:
+                errors.append("multi-country subdivision regression failed: " + (multi.stderr.strip() or multi.stdout.strip()))
     if errors:
         print("WORLD MAP SUBDIVISION VALIDATION FAILED")
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · freeze regression")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · freeze + multi-country regressions")
     return 0
 
 
