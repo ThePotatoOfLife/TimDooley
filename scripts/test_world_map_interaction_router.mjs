@@ -77,7 +77,8 @@ assert.ok(state.some(row => row.owner === 'overlay' && row.objectType === 'spati
 const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', import.meta.url), 'utf8');
 const subdivisions = fs.readFileSync(new URL('../world-map/3d-subdivisions.js', import.meta.url), 'utf8');
 assert.ok(lifecycle.includes("__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js')"), 'control plane must preload the Interaction Router');
-assert.ok(subdivisions.includes("interaction.register('subdivisions'"), 'subdivisions must register with the Interaction Router');
-assert.ok(!subdivisions.includes("map.on('click', HIT_ID, handleSharedLayerClick)"), 'subdivisions must not retain a parallel click owner after migration');
+assert.ok(subdivisions.includes('const interaction = window.__potatoAtlasInteraction'), 'subdivisions must consume the shared Interaction Router when available');
+assert.ok(subdivisions.includes('if (interaction?.register)'), 'subdivision interaction migration must retain an explicit degraded fallback boundary');
+assert.ok(subdivisions.includes("interaction.register('subdivisions'"), 'subdivisions must register with the Interaction Router on normal app boots');
 
 console.log('WORLD MAP INTERACTION ROUTER REGRESSION PASSED');
