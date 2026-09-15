@@ -2,11 +2,11 @@
 
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
-**Goal:** Make TTS explicit, reliable, and seamless across Bible, Story, Philosophy, Religion, and Tim overview using one shared player and contextual Listen controls.
+**Goal:** Make TTS explicit, reliable, and seamless across the project's real reading surfaces while keeping maps, catalogs, filters, navigation and other operational UI quiet.
 
-**Architecture:** Keep `tts-reader.js` as the speech engine and `tts-drawer.js` as the single player UI. Repair `longform-tts-adapter.js` to use the drawer's current `{target,getPayload}` / `setPayload` contract, add idempotent section-level Listen buttons, add explicit selection reading, and keep Bible specialized.
+**Architecture:** Keep `tts-reader.js` as the speech engine and `tts-drawer.js` as the single player UI. Use `longform-tts-adapter.js` for declarative reading surfaces, keep Bible specialized through `bible-tts-adapter.js`, and use a generated-artifact projection only for legacy source pages that are unsafe to rewrite directly.
 
-**Tech Stack:** Static HTML/CSS/JavaScript, Web Speech API, Node contract tests, Python repository validators, GitHub Pages.
+**Tech Stack:** Static HTML/CSS/JavaScript, Web Speech API, CSS Custom Highlight API, Node contract tests, Python repository validators, GitHub Pages.
 
 **Spec:** `docs/superpowers/specs/2026-09-15-unified-site-reader-v2-design.md`
 
@@ -16,9 +16,11 @@
 - `Hear the full story` remains a content disclosure only and must never start speech.
 - One player instance per readable page.
 - Voice, speed and volume share the existing site-wide settings key.
-- Maps, catalogs, filters and navigation remain silent.
+- Maps, catalogs, filters and navigation remain silent unless they expose a meaningful readable object.
 - Bible keeps a contextual adapter rather than becoming a whole-DOM reader.
-- All changes stay on `feat/unified-site-reader-v2` until verification is green.
+- Actual-page highlighting must not rewrite or wrap article text.
+- Legacy source strata stay byte-stable when a generated-artifact projection can safely supply the capability.
+- All changes stay on `feat/unified-site-reader-v2` until exact-head verification is green.
 
 ---
 
@@ -68,7 +70,7 @@
 
 ---
 
-### Task 5: Verify reader surfaces and repository build
+### Task 5: Establish the first full repository verification gate
 
 - [x] Run focused TTS contracts.
 - [x] Run JavaScript syntax checks through repository CI.
@@ -80,94 +82,100 @@
 
 ### Task 6: Add explicit Read Selection interaction
 
-**Files:**
-- Modify: `app/tts-drawer.js`
-- Modify: `app/longform-tts-adapter.js`
-- Modify: `app/bible-tts-adapter.js`
-- Modify: `app/tts-drawer.css`
-- Modify: `scripts/test_tts_drawer.mjs`
-- Modify: `scripts/test_longform_tts_adapter.mjs`
-- Modify: `scripts/test_bible_tts_adapter.mjs`
+**Files:** `app/tts-drawer.js`, `app/longform-tts-adapter.js`, `app/bible-tts-adapter.js`, `app/tts-drawer.css`, TTS contracts.
 
 **Interfaces:**
-- Produces: `PotatoTTSDrawer.mountSelectionAction({ container, drawer, getPayload })`.
-- Selection action calls `drawer.setPayload(getPayload())` then `drawer.playSection('selection')` only after a user click.
-- Bible payload exposes `selection` only when selected text belongs to the active relation.
+- `PotatoTTSDrawer.mountSelectionAction({ container, drawer, getPayload })`.
+- Selection action refreshes payload and calls `drawer.playSection('selection')` only after a user click.
+- Bible exposes `selection` only when selected text belongs to the active relation.
 
-- [ ] **Step 1: Write the failing selection contract**
-
-Require a shared selection-action helper, `.ptts-selection-listen`, and `playSection('selection')`. Require Bible payload/source to expose a selection scope when active-relation text is selected.
-
-- [ ] **Step 2: Verify RED**
-
-Run:
-```bash
-node scripts/test_tts_drawer.mjs
-node scripts/test_longform_tts_adapter.mjs
-node scripts/test_bible_tts_adapter.mjs
-```
-Expected: FAIL because the selection action does not exist yet.
-
-- [ ] **Step 3: Implement the shared selection action**
-
-Create a transient fixed-position button near `Selection.getRangeAt(0).getBoundingClientRect()`. On `pointerdown`, prevent default so the browser selection remains intact. On click, refresh the payload and call `drawer.playSection('selection')`. Hide the button when selection is empty/outside the configured container, on scroll, or on Escape.
-
-- [ ] **Step 4: Wire long-form and Bible adapters**
-
-Long-form already emits a `selection` payload section; mount the shared action against the configured readable root. Extend Bible's contextual source to append `{id:'selection',label:'Selection',text:selectedText}` only for selection inside `#active-relation`.
-
-- [ ] **Step 5: Style selection action**
-
-Add a small elevated pill with clear hover/focus states and safe viewport clamping.
-
-- [ ] **Step 6: Verify GREEN and commit**
-
-Run the three focused contracts. Commit message: `feat: add explicit read-selection actions`.
+- [x] Write and verify the failing selection contract.
+- [x] Implement the transient `🔊 Read selection` action.
+- [x] Preserve selection on pointer interaction and hide on invalid/outside state.
+- [x] Wire long-form and Bible adapters.
+- [x] Style the selection action with viewport-safe positioning and focus treatment.
+- [x] Verify through the focused contracts and repository gate.
 
 ---
 
-### Task 7: Keep the active reader visible and mark the spoken section
+### Task 7: Keep reading context visible
 
-**Files:**
-- Modify: `app/tts-drawer.js`
-- Modify: `app/longform-tts-adapter.js`
-- Modify: `app/tts-drawer.css`
-- Modify: `scripts/test_tts_drawer.mjs`
-- Modify: `scripts/test_longform_tts_adapter.mjs`
+**Files:** `app/tts-drawer.js`, `app/longform-tts-adapter.js`, `app/bible-tts-adapter.js`, `app/tts-drawer.css`, TTS contracts.
 
-**Interfaces:**
-- Drawer accepts optional `onEvent(event)` and includes `sectionId` in forwarded speech events.
-- Long-form adapter applies `.ptts-reading-active` only while `sectionId==='current'` is speaking.
+**Interfaces:** Drawer forwards speech events with `sectionId`; adapters consume those events to mark current readable context.
 
-- [ ] **Step 1: Write failing event/state contracts**
-
-Require the drawer source to call an optional event hook and require the long-form adapter to add/remove `.ptts-reading-active` on start/complete/stop/error.
-
-- [ ] **Step 2: Verify RED**
-
-Run focused drawer + long-form tests.
-
-- [ ] **Step 3: Forward speech events**
-
-After internal drawer event handling, call `options.onEvent?.({...event,sectionId})`.
-
-- [ ] **Step 4: Add active-reading state**
-
-When a `current` section starts/chunks/boundaries, add `.ptts-reading-active` to the selected item. Remove it on complete/stop/error or when another item is chosen.
-
-- [ ] **Step 5: Make primary player sticky while scrolling**
-
-Use `[data-tts-primary]` as the stable hook. Keep the collapsed trigger compact, and make the primary host sticky near the viewport top while scrolling without covering page content.
-
-- [ ] **Step 6: Verify GREEN and commit**
-
-Run focused contracts. Commit message: `feat: keep reading context visible during speech`.
+- [x] Write and verify event/state contracts.
+- [x] Forward speech events through `options.onEvent`.
+- [x] Add/remove `.ptts-reading-active` for spoken sections/relations.
+- [x] Keep the primary player sticky while scrolling.
+- [x] Clear active state on completion, stop, error and context changes.
+- [x] Verify through the repository gate.
 
 ---
 
-### Task 8: Final verification
+### Task 8: Highlight the actual spoken word in page text
 
-- [ ] Run all three focused TTS contracts.
-- [ ] Confirm PR changed files stay inside shared TTS code/tests/docs and intended adapters.
-- [ ] Run the full Repository quality checks on the exact final head.
-- [ ] Do not merge until the exact final head is green.
+**Files:** `app/tts-drawer.js`, `app/longform-tts-adapter.js`, `app/bible-tts-adapter.js`, `app/tts-drawer.css`, TTS contracts.
+
+**Interfaces:** Shared non-mutating page highlighter maps normalized speech offsets back to DOM text ranges and renders them through the CSS Custom Highlight API.
+
+- [x] Add normalized speech-text → DOM text-node mapping.
+- [x] Add a shared `createPageHighlighter(...)` primitive.
+- [x] Map long-form `current` and `all` scopes back to their actual page regions.
+- [x] Map Bible Project / Scripture / Why / Both boundaries back to printed regions.
+- [x] Leave synthetic spoken labels unhighlighted rather than fabricating DOM targets.
+- [x] Add the shared highlight styling and clear it on terminal/context events.
+- [x] Verify without rewriting or wrapping article markup.
+
+---
+
+### Task 9: Roll the shared reader across mature prose surfaces
+
+**Files:** reader pages and `scripts/test_longform_tts_adapter.mjs`.
+
+- [x] Story: Whole story / Current entry / Selection + per-entry Listen.
+- [x] Philosophy: Whole journey / Current movement / Selection + per-movement Listen.
+- [x] Religion: Whole page / Current section / Selection + contextual Listen.
+- [x] Tim overview: Whole overview / Current section / Selection + contextual Listen.
+- [x] North: Whole North reader / Current section / Selection + per-section Listen.
+- [x] Culture: Whole culture reader / Selection only; no card-level button clutter.
+- [x] Keep World Systems quiet because it is an index/gateway rather than a continuous reader.
+- [x] Keep Great Book quiet while its public route remains a restoration notice rather than the validated chapter reader.
+
+---
+
+### Task 10: Make TTS a first-class repository contract
+
+**Files:** `scripts/validate_reader_surfaces.py`, TTS Node contracts.
+
+- [x] Execute all three TTS Node contracts from the required reader-surface validator.
+- [x] Catch and repair brittle contract assertions discovered by the new gate.
+- [x] Verify the TTS behavioral suite inside normal repository CI.
+
+---
+
+### Task 11: Integrate the legacy Shadow/Farm deep reader without rewriting source
+
+**Files:** `scripts/patch_public_navigation.py`, `scripts/test_longform_tts_adapter.mjs`, `scripts/site_shell_contract.py`.
+
+**Architecture:** `shadow-farm/index.html` remains legacy source. The public post-build projection injects one whole-reader + selection TTS host into `_site/shadow-farm/index.html` after source copying.
+
+- [x] Write a failing pure projection contract and verify RED.
+- [x] Move ownership to the existing public generated-artifact projection pass rather than creating a second build path.
+- [x] Add an idempotent `inject_legacy_tts_reader(...)` helper.
+- [x] Register only `shadow-farm/index.html` for the legacy projection.
+- [x] Keep the legacy source page untouched.
+- [x] Add shared CSS and engine → drawer → adapter dependency order.
+- [x] Keep Shadow/Farm to Whole deep reader / Selection; no `data-tts-item` UI confetti.
+- [x] Add a built-site shell assertion for the generated Shadow/Farm reader.
+
+---
+
+### Task 12: Merge-readiness verification
+
+- [ ] Confirm all three TTS contracts pass on the exact final head.
+- [ ] Confirm the full Repository quality checks pass on the exact final head.
+- [ ] Confirm built Shadow/Farm projection passes the site-shell contract.
+- [ ] Confirm PR #162 is current with `main` and mergeable.
+- [ ] Review final changed-file scope and PR description.
+- [ ] Do not merge until the user explicitly approves go-live / merge.
