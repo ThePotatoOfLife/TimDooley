@@ -24,6 +24,13 @@ assert.equal(adapter.cleanText('  Alpha\n\n Beta \t Gamma  '),'Alpha Beta Gamma'
 assert.equal(typeof adapter.mount,'function');
 assert.equal(typeof adapter.configFromElement,'function');
 assert.equal(typeof adapter.autoMount,'function');
+assert.equal(typeof adapter.mutationsAreInside,'function');
+const readerChromeNode={kind:'reader'};
+const contentNode={kind:'content'};
+const hostBoundary={contains(node){return node===readerChromeNode;}};
+assert.equal(adapter.mutationsAreInside([{target:readerChromeNode}],hostBoundary),true,'player-only mutations must be ignored to prevent self-observer loops');
+assert.equal(adapter.mutationsAreInside([{target:readerChromeNode},{target:contentNode}],hostBoundary),false,'real content mutations must still refresh the reader');
+assert.equal(adapter.mutationsAreInside([],hostBoundary),false,'empty mutation batches must not be treated as internal work');
 
 const fakeHost={dataset:{ttsRoot:'.journey',ttsId:'philosophy-journey',ttsLabel:'Potatoism Philosophy',ttsAllLabel:'Whole journey',ttsCurrentLabel:'Current movement',ttsSelectionLabel:'Selection',ttsItem:'.movement'}};
 const fakeRoot={id:'journey'};
@@ -62,6 +69,7 @@ assert.ok(adapterSource.includes('createPageHighlighter'), 'longform adapter mus
 assert.ok(adapterSource.includes("event.type==='boundary'&&event.absoluteWord"), 'longform adapter must map boundary words back to page text');
 assert.ok(adapterSource.includes("event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null"), 'longform highlight target must follow current vs whole-page scope');
 assert.ok(adapterSource.includes('pageHighlighter.clear()'), 'longform page highlight must clear at speech end/context change');
+assert.ok(adapterSource.includes('mutationsAreInside(records,host)'), 'observer must ignore mutations caused by its own player host');
 
 function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
   for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {
