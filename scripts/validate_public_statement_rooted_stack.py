@@ -9,6 +9,7 @@ try:
     from scripts.build_public_statement_discovery_frontier import build_discovery_frontier
     from scripts.build_public_statement_episodes import build_episodes
     from scripts.build_public_statement_evidence_root import build_evidence_root
+    from scripts.build_public_statement_role_mentions import build_role_mentions
     from scripts.enrich_public_statement_evidence_root import enrich_status_ids
     from scripts.validate_public_statement_bible_projection import validate_bible_projection
     from scripts.validate_public_statement_development_threads import validate_development_threads
@@ -20,6 +21,7 @@ except ModuleNotFoundError:
     from build_public_statement_discovery_frontier import build_discovery_frontier
     from build_public_statement_episodes import build_episodes
     from build_public_statement_evidence_root import build_evidence_root
+    from build_public_statement_role_mentions import build_role_mentions
     from enrich_public_statement_evidence_root import enrich_status_ids
     from validate_public_statement_bible_projection import validate_bible_projection
     from validate_public_statement_development_threads import validate_development_threads
@@ -33,6 +35,7 @@ def validate_built_stack(
     episodes: dict,
     projection: dict,
     threads: dict | None = None,
+    role_mentions: dict | None = None,
 ) -> list[str]:
     errors: list[str] = []
     root_id = str(root.get('id') or '')
@@ -51,6 +54,11 @@ def validate_built_stack(
             errors.append('Development Threads source_episode_id does not match Episode layer')
         if threads.get('source_bible_projection_id') != projection.get('id'):
             errors.append('Development Threads source_bible_projection_id does not match Bible projection')
+    if role_mentions is not None:
+        if role_mentions.get('source_root_id') != root_id:
+            errors.append('Role mentions source_root_id does not match Evidence Root')
+        if role_mentions.get('source_thread_id') != (threads or {}).get('id'):
+            errors.append('Role mentions source_thread_id does not match Development Threads')
 
     open_gap_ids = sorted(
         str(gap.get('id'))
@@ -91,6 +99,7 @@ def audit_repository(repository_root: Path) -> list[str]:
     ]
     episode_definitions_path = repository_root / 'data/evidence/public-statement-episode-definitions.json'
     thread_definitions_path = repository_root / 'data/evidence/public-statement-development-thread-definitions.json'
+    role_mention_definitions_path = repository_root / 'data/evidence/public-statement-role-mention-definitions.json'
 
     required = [
         *evidence_paths,
@@ -98,6 +107,7 @@ def audit_repository(repository_root: Path) -> list[str]:
         *relation_paths,
         episode_definitions_path,
         thread_definitions_path,
+        role_mention_definitions_path,
     ]
     missing = [path for path in required if not path.exists()]
     if missing:
@@ -115,6 +125,7 @@ def audit_repository(repository_root: Path) -> list[str]:
         episodes,
         projection,
     )
+    role_mentions = build_role_mentions(root, _load(role_mention_definitions_path), threads)
 
     errors = validate_evidence_root(root)
     root_ids = {str(row.get('id')) for row in root.get('roots', []) if row.get('id')}
@@ -128,7 +139,7 @@ def audit_repository(repository_root: Path) -> list[str]:
     }
     errors.extend(validate_bible_projection(projection, root_ids, episode_ids, relation_ids))
     errors.extend(validate_development_threads(threads, root_ids, episode_ids, relation_ids))
-    errors.extend(validate_built_stack(root, frontier, episodes, projection, threads))
+    errors.extend(validate_built_stack(root, frontier, episodes, projection, threads, role_mentions))
     return errors
 
 
