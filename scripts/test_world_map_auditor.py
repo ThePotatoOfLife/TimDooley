@@ -46,7 +46,7 @@ map.getSource('countries').setData(data);
 map.on('click', 'countries-fill', handler);
 map.on('styledata', restore);
 const popup = new maplibregl.Popup().setHTML('<div class="atlas-hover">Hi</div>');
-url.searchParams.set('country', 'DNK');
+const url = new URL(location.href); url.searchParams.set('country', 'DNK'); history.replaceState({}, '', url);
 window.__potatoAtlasThing = {ready:true};
 const node = document.createElement('div'); node.id = 'atlasThing';
 """)
@@ -141,6 +141,47 @@ map.on('click','points',event=>{
             proc, report = run_auditor(root)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
             self.assertTrue(any(f["code"] == "multiple-style-restorers" and f["severity"] == "warning" for f in report["findings"]))
+
+    def test_approved_guarded_style_restorers_do_not_warn_as_collision(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_module(root, "3d-a.js", "let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});")
+            write_module(root, "3d-b.js", "let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});")
+            contract = {
+                "schema_version": "1.0",
+                "style_restoration": {"allowed_modules": {
+                    "world-map/3d-a.js": "Fixture owner A.",
+                    "world-map/3d-b.js": "Fixture owner B."
+                }}
+            }
+            proc, report = run_auditor(root, contract)
+            self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            self.assertFalse(any(f["code"] == "multiple-style-restorers" for f in report["findings"]))
+
+    def test_unapproved_style_restorer_warns(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_module(root, "3d-a.js", "let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});")
+            contract = {"schema_version": "1.0", "style_restoration": {"allowed_modules": {}}}
+            proc, report = run_auditor(root, contract)
+            self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            self.assertTrue(any(f["code"] == "unapproved-style-restorer" for f in report["findings"]))
+
+    def test_module_version_url_is_not_browser_state(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_module(root, "3d-a.js", "const url=new URL(path,import.meta.url); url.searchParams.set('v','123'); return url.href;")
+            proc, report = run_auditor(root)
+            self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            self.assertNotIn("url:v", {row["resource"] for row in report["inventory"].get("url_write", [])})
+
+    def test_history_persisted_url_is_browser_state(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_module(root, "3d-a.js", "const url=new URL(location.href); url.searchParams.set('country','DNK'); history.replaceState({},'',url);")
+            proc, report = run_auditor(root)
+            self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            self.assertIn("url:country", {row["resource"] for row in report["inventory"].get("url_write", [])})
 
     def test_missing_declared_owner_blocks_and_stale_shared_warns(self):
         with tempfile.TemporaryDirectory() as tmp:
