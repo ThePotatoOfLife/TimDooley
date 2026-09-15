@@ -13,11 +13,12 @@ MODULE = ROOT / "world-map" / "3d-subdivisions.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
+FREEZE_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_freeze.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA)
+    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, FREEZE_REGRESSION)
     for path in required:
         if not path.exists():
             errors.append(f"missing subdivision integration file: {path.relative_to(ROOT)}")
@@ -33,7 +34,7 @@ def main() -> int:
         for token in (
             "world-subdivisions/index.json", "USA.geo.json", "atlas-subdivision",
             "searchParams.get('subdivision')", "searchParams.set('subdivision'", "searchParams.delete('subdivision')",
-            "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled",
+            "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled", "pendingDeepLinkId",
         ):
             if token not in module:
                 errors.append(f"subdivision module missing marker: {token}")
@@ -65,12 +66,15 @@ def main() -> int:
             checked = subprocess.run([node, "--check", str(MODULE)], capture_output=True, text=True)
             if checked.returncode:
                 errors.append("3d-subdivisions.js syntax failed: " + (checked.stderr.strip() or checked.stdout.strip()))
+            regression = subprocess.run([node, str(FREEZE_REGRESSION)], capture_output=True, text=True)
+            if regression.returncode:
+                errors.append("subdivision freeze regression failed: " + (regression.stderr.strip() or regression.stdout.strip()))
     if errors:
         print("WORLD MAP SUBDIVISION VALIDATION FAILED")
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · freeze regression")
     return 0
 
 

@@ -15,6 +15,9 @@ const USA_BOUNDS = { west:-179.5, east:-65, south:17, north:72.5 };
 const loaded = new Map();
 let indexPromise = null;
 let selectedId = new URL(location.href).searchParams.get('subdivision') || null;
+// Camera intent from a deep link is one-shot. Persistent selection must not be
+// replayed on every moveend or fitBounds can recurse forever.
+let pendingDeepLinkId = selectedId;
 let panelSnapshot = null;
 
 function fmt(value) {
@@ -109,6 +112,7 @@ function selectSubdivision(partition, feature, options = {}) {
   if (!feature) return false;
   const p = feature.properties || {};
   selectedId = p.id || null;
+  pendingDeepLinkId = null;
   syncUrl(selectedId);
   const bounds = geometryBounds(feature);
   if (options.fit !== false && bounds) map.fitBounds(bounds, { padding:80, duration:650, maxZoom:7.4 });
@@ -177,11 +181,13 @@ async function loadPartition(partition) {
   return state;
 }
 async function ensureRelevantPartitions() {
-  if (selectedId?.startsWith('US-') || viewportOverlaps(USA_BOUNDS)) {
+  const deepLinkId = pendingDeepLinkId;
+  if (deepLinkId?.startsWith('US-') || viewportOverlaps(USA_BOUNDS)) {
     try {
       await loadPartition('USA');
-      if (selectedId?.startsWith('US-')) {
-        const feature = featureById('USA', selectedId);
+      if (deepLinkId?.startsWith('US-') && pendingDeepLinkId === deepLinkId) {
+        pendingDeepLinkId = null;
+        const feature = featureById('USA', deepLinkId);
         if (feature) selectSubdivision('USA', feature, {fit:true});
       }
     } catch (error) {
@@ -202,6 +208,7 @@ window.__potatoAtlasSubdivisions = {
   },
   clear() {
     selectedId = null;
+    pendingDeepLinkId = null;
     syncUrl(null);
     restoreInspector();
     window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-clear'));
