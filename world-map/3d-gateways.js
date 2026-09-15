@@ -3,6 +3,7 @@
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
 const selection = window.__potatoAtlasSelection;
+const interaction = window.__potatoAtlasInteraction;
 if (!map || !runtime || !selection) throw new Error('System intelligence requires map, runtime and selection APIs.');
 await runtime.ready;
 
@@ -146,11 +147,7 @@ function emitGateway(id, gateway) {
   window.dispatchEvent(new CustomEvent('potato-atlas-gateway-change', { detail:{ id:activeGatewayId, gateway:gateway || null } }));
 }
 
-ensureGatewayLayers();
-map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
-map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
-map.on('click', POINT_LAYER, async event => {
-  const feature = event.features?.[0];
+async function handleGatewayClick(event, feature = event?.features?.[0]) {
   if (!feature) return;
   const p = feature.properties || {};
   const gateway = await runtime.gateway(p.id) || { id:p.id, label:p.label, type:p.type };
@@ -165,7 +162,29 @@ map.on('click', POINT_LAYER, async event => {
   popup.on('close', () => {
     if (activeGatewayId === p.id) emitGateway(null, null);
   });
-});
+}
+
+function bindGatewayInteractions() {
+  if (interaction?.register) {
+    interaction.register('gateways', {
+      layers:[POINT_LAYER],
+      objectType:'gateway',
+      clickPriority:75,
+      hoverPriority:75,
+      cursor:'pointer',
+      onClick:(event, feature) => { void handleGatewayClick(event, feature); },
+    });
+    return;
+  }
+  // Degraded/direct-module fallback when the shared Interaction Router is unavailable.
+  map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
+  const bindLayerEvent = (...args) => map.on(...args);
+  bindLayerEvent('click', POINT_LAYER, handleGatewayClick);
+}
+
+ensureGatewayLayers();
+bindGatewayInteractions();
 
 let injectionQueued = false;
 function queueInjection(code) {
