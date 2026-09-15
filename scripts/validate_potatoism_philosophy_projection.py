@@ -1,13 +1,14 @@
 #!/usr/bin/env python3
 """Validate the public Philosophy projection of the Potatoism long-form.
 
-The full long-form remains a deep source. Religion remains Potatoism's primary
-public owner for religious/theological material; Philosophy exposes a concise
-philosophical reader projection without becoming a second canon.
+The public Philosophy surface is a six-turn Spiral Reader. Canonical doctrine remains
+owned by the philosophy JSON and long-form source; Religion remains the primary public
+owner for explicit religion/theology. The Spiral Reader owns reader order, not doctrine.
 """
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -16,15 +17,32 @@ RELIGION = ROOT / "religion" / "index.html"
 DEEP_SOURCE = ROOT / "knowledge" / "philosophy" / "potatoism-reader-philosophy.md"
 ENGINE = ROOT / "knowledge" / "philosophy" / "potatoism-philosophy-engine.md"
 SOURCE_MAP = ROOT / "knowledge" / "philosophy" / "potatoism-philosophy-source-map.md"
+READER_MAP = ROOT / "knowledge" / "philosophy" / "potatoism-spiral-reader-map.json"
 CANONICAL = ROOT / "knowledge" / "philosophy" / "potato-philosophy.json"
 
-STAGES = ("potato", "grow", "transform", "see", "relate", "learn", "give", "cultivate")
+TURNS = ("seed", "root", "door", "spiral", "fruit", "garden")
 ONTOLOGY_TYPES = {"structures", "operators", "states", "resources", "relations", "outcomes"}
 DOCTRINE_FIELDS = {"title", "root", "principle", "corruption", "test"}
 
 
 def read(path: Path) -> str:
     return path.read_text(encoding="utf-8", errors="replace") if path.exists() else ""
+
+
+def load_json(path: Path, label: str, errors: list[str]) -> dict:
+    raw = read(path)
+    if not raw:
+        errors.append(f"missing {label}")
+        return {}
+    try:
+        data = json.loads(raw)
+    except json.JSONDecodeError as exc:
+        errors.append(f"{label} JSON invalid: {exc}")
+        return {}
+    if not isinstance(data, dict):
+        errors.append(f"{label} must be a JSON object")
+        return {}
+    return data
 
 
 def main() -> int:
@@ -49,12 +67,8 @@ def main() -> int:
     if not canonical:
         errors.append("missing canonical Potato philosophy record")
 
-    canonical_data: dict = {}
-    if canonical:
-        try:
-            canonical_data = json.loads(canonical)
-        except json.JSONDecodeError as exc:
-            errors.append(f"Canonical philosophy JSON invalid: {exc}")
+    canonical_data = load_json(CANONICAL, "canonical philosophy", errors)
+    reader_map = load_json(READER_MAP, "Potatoism Spiral Reader map", errors)
 
     required_canonical_keys = (
         "constitutional_laws",
@@ -98,9 +112,7 @@ def main() -> int:
 
     ontology_types = canonical_data.get("ontology_types", {}) if canonical_data else {}
     if ontology_types and set(ontology_types) != ONTOLOGY_TYPES:
-        errors.append(
-            "Canonical ontology types must be exactly: " + ", ".join(sorted(ONTOLOGY_TYPES))
-        )
+        errors.append("Canonical ontology types must be exactly: " + ", ".join(sorted(ONTOLOGY_TYPES)))
 
     required_engine = (
         "# Four constitutional laws",
@@ -138,38 +150,83 @@ def main() -> int:
         if marker.lower() not in source_map.lower():
             errors.append(f"Philosophy source map missing provenance marker: {marker}")
 
-    for stage in STAGES:
-        marker = f'data-potatoism-stage="{stage}"'
-        if marker not in philosophy:
-            errors.append(f"Philosophy missing stage marker: {stage}")
+    map_turns = reader_map.get("turns", []) if reader_map else []
+    map_turn_ids = [turn.get("id") for turn in map_turns if isinstance(turn, dict)]
+    if tuple(map_turn_ids) != TURNS:
+        errors.append(f"Spiral Reader map turns must be exactly {TURNS}; found {tuple(map_turn_ids)}")
+
+    map_station_ids: list[str] = []
+    for turn in map_turns:
+        if not isinstance(turn, dict):
+            errors.append("Spiral Reader turn must be an object")
+            continue
+        for station in turn.get("stations", []):
+            if not isinstance(station, dict):
+                errors.append(f"Spiral Reader station in {turn.get('id')} must be an object")
+                continue
+            for field in ("id", "title", "question", "sources", "provenance", "previous", "next", "priority"):
+                if field not in station:
+                    errors.append(f"Spiral Reader station {station.get('id', '<unknown>')} missing field: {field}")
+            station_id = station.get("id")
+            if station_id:
+                map_station_ids.append(station_id)
+
+    if len(map_station_ids) != 47:
+        errors.append(f"Spiral Reader map must contain exactly 47 stations; found {len(map_station_ids)}")
+    if len(set(map_station_ids)) != len(map_station_ids):
+        errors.append("Spiral Reader map contains duplicate station ids")
+
+    for turn in TURNS:
+        marker = f'data-potatoism-turn="{turn}"'
+        count = philosophy.count(marker)
+        if count != 1:
+            errors.append(f"Public Philosophy must contain turn marker {turn} exactly once; found {count}")
+
+    turn_count = philosophy.count('data-potatoism-turn="')
+    if turn_count != len(TURNS):
+        errors.append(f"Public Philosophy must expose exactly {len(TURNS)} turn markers; found {turn_count}")
+
+    page_station_ids = re.findall(r'data-potatoism-station="([^"]+)"', philosophy)
+    if not 40 <= len(page_station_ids) <= 50:
+        errors.append(f"Public Philosophy must expose 40–50 station markers; found {len(page_station_ids)}")
+    if map_station_ids and page_station_ids != map_station_ids:
+        missing = [sid for sid in map_station_ids if sid not in page_station_ids]
+        extra = [sid for sid in page_station_ids if sid not in map_station_ids]
+        if missing:
+            errors.append("Public Philosophy missing mapped station ids: " + ", ".join(missing))
+        if extra:
+            errors.append("Public Philosophy has unmapped station ids: " + ", ".join(extra))
+        if not missing and not extra:
+            errors.append("Public Philosophy station order does not match Spiral Reader map order")
 
     required_philosophy = (
         "So you want to be a potato",
         "Do you think you have what it takes?",
+        "How to read this spiral",
+        "Turn I · Seed",
+        "Turn II · Root",
+        "Turn III · Door",
+        "Turn IV · Spiral",
+        "Turn V · Fruit",
+        "Turn VI · Garden",
         "Be simple. Grow toward light.",
         "Religion remains the primary public owner",
         'href="../religion/"',
         'href="../knowledge/philosophy/potatoism-reader-philosophy.md"',
         'href="../knowledge/philosophy/potatoism-philosophy-engine.md"',
-        "Orient each part toward the conditions required by its function",
         "biology does not prove theology",
-        "Attend / reduce",
-        "Orient / develop",
-        "Metabolize",
-        "Examine / distinguish",
-        "Connect / differentiate",
-        "Model / recurse",
-        "Release / nourish",
-        "Steward / enable",
-        "The Filter generates interpretations. Potato Truth disciplines them.",
+        "We found a question. Who else has been here?",
         "Relation is not identity.",
+        "Suffering is not proof.",
+        "The Filter is not evidence.",
         "Return is not reset.",
         "Authority is not exemption.",
         "Does the participant become more capable without the system?",
+        "The Filter generates interpretations. Potato Truth disciplines them.",
     )
     for marker in required_philosophy:
         if marker.lower() not in philosophy.lower():
-            errors.append(f"Public Philosophy missing projection marker: {marker}")
+            errors.append(f"Public Philosophy missing Spiral Reader marker: {marker}")
 
     required_religion = (
         'data-reader-surface="religion"',
@@ -200,14 +257,18 @@ def main() -> int:
         'id="next-stage"',
         "scrollIntoView(",
         "autofocus",
+        "data-complete",
+        "course-progress",
+        "lesson-lock",
+        "next-lesson",
     )
     for marker in forbidden:
         if marker.lower() in philosophy.lower():
-            errors.append(f"Philosophy projection must stay calm; forbidden marker found: {marker}")
+            errors.append(f"Philosophy reader must stay calm and non-gamified; forbidden marker found: {marker}")
 
-    stage_count = philosophy.count('data-potatoism-stage="')
-    if stage_count != len(STAGES):
-        errors.append(f"Philosophy must expose exactly {len(STAGES)} stage markers; found {stage_count}")
+    # Retired public architecture: no eight-stage markers should survive the overhaul.
+    if 'data-potatoism-stage="' in philosophy:
+        errors.append("Public Philosophy still contains retired eight-stage markers")
 
     if errors:
         print("POTATOISM PHILOSOPHY PROJECTION VALIDATION FAILED")
