@@ -15,6 +15,7 @@ try:
     from scripts.validate_public_statement_development_threads import validate_development_threads
     from scripts.validate_public_statement_evidence_root import validate_evidence_root
     from scripts.validate_public_statement_episodes import validate_episodes
+    from scripts.validate_public_statement_role_mentions import validate_role_mentions
 except ModuleNotFoundError:
     from build_public_statement_bible_projection import build_bible_projection
     from build_public_statement_development_threads import build_development_threads
@@ -27,6 +28,7 @@ except ModuleNotFoundError:
     from validate_public_statement_development_threads import validate_development_threads
     from validate_public_statement_evidence_root import validate_evidence_root
     from validate_public_statement_episodes import validate_episodes
+    from validate_public_statement_role_mentions import validate_role_mentions
 
 
 def validate_built_stack(
@@ -139,6 +141,7 @@ def audit_repository(repository_root: Path) -> list[str]:
     }
     errors.extend(validate_bible_projection(projection, root_ids, episode_ids, relation_ids))
     errors.extend(validate_development_threads(threads, root_ids, episode_ids, relation_ids))
+    errors.extend(validate_role_mentions(role_mentions, root_ids, threads))
     errors.extend(validate_built_stack(root, frontier, episodes, projection, threads, role_mentions))
     return errors
 
