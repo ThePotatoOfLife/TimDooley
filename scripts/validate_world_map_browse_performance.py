@@ -14,6 +14,7 @@ BRIDGE = ROOT / "world-map" / "3d-scalar-runtime-bridge.js"
 ACTIVE_VIEW = ROOT / "world-map" / "3d-active-view.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
+SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 UI = ROOT / "world-map" / "3d-ui.js"
 DEMOGRAPHY = ROOT / "world-map" / "3d-demography.js"
 DIMENSIONS = ROOT / "world-map" / "3d-country-dimensions.js"
@@ -74,6 +75,7 @@ def main() -> int:
     active_view = read(ACTIVE_VIEW, errors)
     bootstrap = read(BOOTSTRAP, errors)
     panel_lifecycle = read(PANEL_LIFECYCLE, errors)
+    subdivisions = read(SUBDIVISIONS, errors)
     ui = read(UI, errors)
     demography = read(DEMOGRAPHY, errors)
     dimensions = read(DIMENSIONS, errors)
@@ -138,6 +140,21 @@ def main() -> int:
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
+    # Subdivision browsing must stay bounded as country coverage expands. A
+    # fixed shared source/layer stack prevents style/listener growth from being
+    # proportional to the number of country partitions visited in a session.
+    for token in (
+        "atlas-subdivisions-active",
+        "atlas-subdivision-hit",
+        "atlas-subdivision-line",
+        "atlas-subdivision-label",
+        "cacheEvictions",
+        "renderedPartitions",
+    ):
+        require(subdivisions, token, "world-map/3d-subdivisions.js", errors)
+    for token in ("SOURCE_PREFIX", "LINE_PREFIX", "HIT_PREFIX", "LABEL_PREFIX"):
+        reject(subdivisions, token, "world-map/3d-subdivisions.js", errors)
+
     # A tiny always-loaded lifecycle module owns the active legacy/core panel
     # observer. The broader 3d-ui module remains dormant compatibility code and
     # must never be booted merely to publish lifecycle events.
@@ -159,7 +176,7 @@ def main() -> int:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, PANEL_LIFECYCLE, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, PANEL_LIFECYCLE, SUBDIVISIONS, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
 
     if errors:
         print("WORLD MAP BROWSE/PERFORMANCE VALIDATION FAILED")
@@ -168,7 +185,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · active color/stat continuity · single scalar owner · lazy specialist stack · one live panel lifecycle observer")
+    print("Browse + Pins · active color/stat continuity · single scalar owner · bounded subdivisions · lazy specialist stack · one live panel lifecycle observer")
     return 0
 
 
