@@ -1,0 +1,66 @@
+{
+  "schema_version": "1.0.0",
+  "generated_from": "data/world-map-spatial-overlays.json and committed WGS84 geometry owners",
+  "method": "spherical-haversine-chamberlain-v1",
+  "earth_radius_km": 6371.0088,
+  "precision_note": "Geometry-derived approximations. Measurements do not imply that textual, historical, or project reconstructions are exact surveyed boundaries.",
+  "features": {
+    "father-mesopotamia-core-v1": {
+      "geometry_version": "v1",
+      "geometry_type": "Polygon",
+      "bbox": [35.6, 29.0, 49.0, 38.2],
+      "component_count": 1,
+      "method": "spherical-haversine-chamberlain-v1",
+      "measurement_policy": "approximate_reconstruction",
+      "area_sq_km": 839026.1,
+      "perimeter_km": 3550.2
+    },
+    "father-eden-context-v1": {
+      "geometry_version": "v1",
+      "geometry_type": "Polygon",
+      "bbox": [43.1, 27.8, 50.2, 33.4],
+      "component_count": 1,
+      "method": "spherical-haversine-chamberlain-v1",
+      "measurement_policy": "approximate_reconstruction",
+      "area_sq_km": 310997.3,
+      "perimeter_km": 2090.8
+    },
+    "tigris-reference-v1": {
+      "geometry_version": "v1",
+      "geometry_type": "LineString",
+      "bbox": [39.7, 29.8, 48.5, 38.4],
+      "component_count": 1,
+      "method": "spherical-haversine-chamberlain-v1",
+      "measurement_policy": "reference_line",
+      "length_km": 1290.4
+    },
+    "euphrates-reference-v1": {
+      "geometry_version": "v1",
+      "geometry_type": "LineString",
+      "bbox": [38.0, 29.8, 48.4, 38.9],
+      "component_count": 1,
+      "method": "spherical-haversine-chamberlain-v1",
+      "measurement_policy": "reference_line",
+      "length_km": 1587.9
+    },
+    "father-return-path-v1": {
+      "geometry_version": "v1",
+      "geometry_type": "LineString",
+      "bbox": [12.6, 33.3, 44.8, 69.5],
+      "component_count": 1,
+      "method": "spherical-haversine-chamberlain-v1",
+      "measurement_policy": "symbolic_route",
+      "length_km": 5954.4
+    },
+    "dan-to-beersheba-v1": {
+      "geometry_version": "v1",
+      "geometry_type": "Polygon",
+      "bbox": [34.55, 31.05, 35.65, 33.55],
+      "component_count": 1,
+      "method": "spherical-haversine-chamberlain-v1",
+      "measurement_policy": "approximate_reconstruction",
+      "area_sq_km": 18697.0,
+      "perimeter_km": 646.0
+    }
+  }
+}
