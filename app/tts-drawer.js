@@ -48,6 +48,73 @@
     return node;
   }
 
+  function selectionElement(selection){
+    if(!selection||selection.rangeCount===0||selection.isCollapsed)return null;
+    const node=selection.getRangeAt(0).commonAncestorContainer;
+    return node?.nodeType===1?node:node?.parentElement||node?.parentNode||null;
+  }
+
+  function mountSelectionAction(options={}){
+    const doc=options.document||root?.document;
+    const container=options.container;
+    const drawer=options.drawer;
+    const getPayload=typeof options.getPayload==='function'?options.getPayload:()=>null;
+    if(!doc||!container||!drawer||typeof doc.createElement!=='function')return null;
+
+    const control=doc.createElement('button');
+    control.type='button';
+    control.className='ptts-selection-listen';
+    control.textContent='🔊 Read selection';
+    control.setAttribute('aria-label','Read selected text aloud');
+    control.hidden=true;
+    (doc.body||container).append(control);
+
+    function hide(){control.hidden=true;control.removeAttribute('style')}
+    function update(){
+      const selection=doc.getSelection?.();
+      const element=selectionElement(selection);
+      if(!selection||selection.isCollapsed||!element||!container.contains(element)){hide();return}
+      const text=clean(selection.toString());
+      if(!text){hide();return}
+      const range=selection.getRangeAt(0);
+      const rect=range.getBoundingClientRect?.();
+      if(!rect){hide();return}
+      const viewportWidth=root?.innerWidth||doc.documentElement?.clientWidth||1024;
+      const viewportHeight=root?.innerHeight||doc.documentElement?.clientHeight||768;
+      const left=clamp(rect.left+(rect.width/2),72,Math.max(72,viewportWidth-72));
+      const top=clamp(rect.bottom+8,8,Math.max(8,viewportHeight-44));
+      control.style.left=`${left}px`;
+      control.style.top=`${top}px`;
+      control.hidden=false;
+    }
+
+    control.addEventListener('pointerdown',event=>event.preventDefault());
+    control.addEventListener('click',event=>{
+      event.preventDefault();
+      drawer.setPayload?.(getPayload());
+      drawer.playSection?.('selection');
+      hide();
+    });
+    const onSelection=()=>update();
+    const onScroll=()=>hide();
+    const onKey=event=>{if(event.key==='Escape')hide()};
+    doc.addEventListener('selectionchange',onSelection);
+    root?.addEventListener?.('scroll',onScroll,{passive:true});
+    doc.addEventListener('keydown',onKey);
+
+    return {
+      element:control,
+      update,
+      hide,
+      destroy(){
+        doc.removeEventListener('selectionchange',onSelection);
+        root?.removeEventListener?.('scroll',onScroll);
+        doc.removeEventListener('keydown',onKey);
+        control.remove();
+      }
+    };
+  }
+
   function mount(options={}){
     if(typeof document==='undefined')return null;
     const target=options.target;
@@ -124,6 +191,7 @@
         if(event.type==='chunkstart'&&state==='expanded'&&!currentWord)showPlain(activeText);
         if(['complete','stop','error'].includes(event.type)){currentWord=null;if(state==='expanded')showPlain(activeText)}
         updateButtons();
+        options.onEvent?.({...event,sectionId});
       }});
       refreshVoices();root.speechSynthesis.addEventListener?.('voiceschanged',refreshVoices);
     }else{
@@ -164,5 +232,5 @@
     return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>engine?.stop(),engine};
   }
 
-  return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,mount};
+  return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,mountSelectionAction,mount};
 });
