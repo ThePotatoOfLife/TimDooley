@@ -11,15 +11,17 @@ TOOLTIP = ROOT / "world-map" / "3d-tooltip.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 AXIS = ROOT / "world-map" / "3d-axis.js"
 FIELDS = ROOT / "world-map" / "3d-fields.js"
+NETWORKS = ROOT / "world-map" / "3d-networks.js"
 TEST = ROOT / "scripts" / "test_world_map_tooltip_lifecycle.mjs"
 HOVER_TEST = ROOT / "scripts" / "test_world_map_hover_artifacts.mjs"
 AXIS_TEST = ROOT / "scripts" / "test_world_map_axis_tooltip_ownership.mjs"
 FIELDS_TEST = ROOT / "scripts" / "test_world_map_fields_tooltip_ownership.mjs"
+NETWORKS_TEST = ROOT / "scripts" / "test_world_map_networks_tooltip_ownership.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (TOOLTIP, HOVER, AXIS, FIELDS, TEST, HOVER_TEST, AXIS_TEST, FIELDS_TEST):
+    for path in (TOOLTIP, HOVER, AXIS, FIELDS, NETWORKS, TEST, HOVER_TEST, AXIS_TEST, FIELDS_TEST, NETWORKS_TEST):
         if not path.exists():
             errors.append(f"missing tooltip file: {path.relative_to(ROOT)}")
     if errors:
@@ -32,6 +34,7 @@ def main() -> int:
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
     axis = AXIS.read_text(encoding="utf-8", errors="replace")
     fields = FIELDS.read_text(encoding="utf-8", errors="replace")
+    networks = NETWORKS.read_text(encoding="utf-8", errors="replace")
 
     for token in (
         "function createTooltipService",
@@ -68,6 +71,7 @@ def main() -> int:
     for label, source, owner in (
         ("Axis", axis, "axis"),
         ("Fields", fields, "fields"),
+        ("Networks", networks, "networks"),
     ):
         for token in (
             "import('./3d-tooltip.js')",
@@ -85,7 +89,7 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot verify tooltip behavior")
     else:
-        for path in (TOOLTIP, HOVER, AXIS, FIELDS):
+        for path in (TOOLTIP, HOVER, AXIS, FIELDS, NETWORKS):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -94,6 +98,7 @@ def main() -> int:
             (HOVER_TEST, "hover ownership/race"),
             (AXIS_TEST, "Axis tooltip ownership"),
             (FIELDS_TEST, "Fields tooltip ownership"),
+            (NETWORKS_TEST, "Networks tooltip ownership"),
         ):
             result = subprocess.run([node, str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
@@ -103,8 +108,8 @@ def main() -> int:
     print("- one shared transient popup owner")
     print("- generation-based stale async suppression")
     print("- drag / zoom / rotate / pitch / projection invalidation")
-    print("- country, fallback-capital, Axis and Fields hover migrated")
-    print("- boot-guard compatibility remains for unmigrated hover modules")
+    print("- country, fallback-capital, Axis, Fields and Networks hover migrated")
+    print("- boot-guard compatibility remains only for other unmigrated transient modules")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP TOOLTIP VALIDATION FAILED")
