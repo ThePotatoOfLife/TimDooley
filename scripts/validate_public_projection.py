@@ -120,6 +120,15 @@ def main() -> int:
     if north_projection.get("primary_door") != "world" or north_projection.get("human_route") != "north/":
         fail("north branch must project through World while preserving human_route='north/'", errors)
 
+    if projection.get("timeline", {}).get("global_route") != "timeline/":
+        fail("timeline branch must use global_route='timeline/' while keeping Explore as its archive route", errors)
+    if projection.get("corporium", {}).get("human_route") != "corporium/":
+        fail("corporium branch must use human_route='corporium/'", errors)
+    if projection.get("works", {}).get("human_route") != "works/":
+        fail("works branch must use human_route='works/'", errors)
+    if bridge.get("backend_family_projection", {}).get("culture", {}).get("global_route") != "context/culture/":
+        fail("culture backend family must use global_route='context/culture/'", errors)
+
     bridge_routes = bridge.get("route_map", {})
     if any("index.html#node=" in str(value) for value in bridge_routes.values()):
         fail("frontend bridge still exposes retired index.html#node= record routing", errors)
@@ -144,7 +153,7 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print(f"Public projection validation passed: {len(EXPECTED_DOORS)} doors, {len(branch_ids)} projected branches, World owns the fifth domain and Explore owns deep interactive routing.")
+    print(f"Public projection validation passed: {len(EXPECTED_DOORS)} doors, {len(branch_ids)} projected branches, World owns the fifth domain and mature readers own their human routes.")
     return 0
 
 
