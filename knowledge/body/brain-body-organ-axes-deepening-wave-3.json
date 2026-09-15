@@ -1,0 +1,125 @@
+{
+  "id":"brain-body-organ-axes-deepening-wave-3",
+  "version":"1.0.0",
+  "updated":"2026-09-15",
+  "title":"Brain–Body Organ Axes Deepening Wave 3 — Kidney, Liver, Adipose, Muscle, Reproduction and Skull Marrow",
+  "status":"specialist whole-organ signaling layer beneath brain-body-systems-deepening-wave-2",
+  "repository_root":"mind",
+  "repository_layer":"neurobiology",
+  "repository_scale":"record",
+  "purpose":"Extend the Potato of Life BODY branch from brain-centered neurobiology into whole-organism communication. Map organs as active sensors, endocrine/immune/metabolic participants and neural partners rather than passive tissues commanded by the brain.",
+  "principle":"The organism is a coupled network of partially autonomous tissues and control loops. Brain regulation matters, but kidneys, liver, gut, adipose tissue, muscle, reproductive organs, immune tissues and barriers also generate signals that change central state and future output.",
+  "axes":[
+    {
+      "id":"kidney-brain-axis",
+      "name":"Kidney ↔ brain / fluid-pressure axis",
+      "science":"Kidneys regulate extracellular fluid volume, electrolytes, acid-base balance and blood pressure through filtration, tubular transport and endocrine systems. Sympathetic efferent renal nerves can influence renal blood flow, sodium handling and renin release. Renal afferent sensory nerves respond to chemical and mechanical conditions within the kidney and can alter central sympathetic outflow, supporting an interoceptive role for the kidney.",
+      "channels":["renal sympathetic efferents","renal sensory afferents","renin–angiotensin–aldosterone system","vasopressin-related fluid regulation","circulating electrolytes/osmolality","kidney-derived endocrine factors including erythropoietin"],
+      "central_neighbors":["NTS/brainstem autonomic systems","hypothalamic fluid-homeostasis networks","circumventricular organs","sympathetic premotor circuits"],
+      "project_relation":{"mapping":"well / salt-water keeper / lower River regulator / body-state report","status":["flow_analogy","functional_analogy"]},
+      "why_useful":"The River metaphor gains an organ that actively decides how much water and salt remain in the body; flow is regulated by sensing and feedback rather than simply moving through tubes.",
+      "boundary":"Kidneys do not purify Spirit or karma. Renal afferent physiology is an emerging interoceptive field and should not be generalized into a kidney consciousness.",
+      "sources":["https://www.nature.com/articles/s41581-024-00893-3","https://www.nature.com/articles/s41440-024-01677-9"]
+    },
+    {
+      "id":"liver-brain-axis",
+      "name":"Liver ↔ brain / metabolic-processing axis",
+      "science":"The liver integrates nutrient flux, glucose and lipid metabolism, bile production, detoxification, protein synthesis and immune/metabolic signaling. Liver-to-brain communication can occur through circulating metabolites, hormones/hepatokines, inflammatory mediators and neural afferent pathways; brain/autonomic/endocrine outputs in turn influence hepatic metabolism. The liver also sits downstream of gut-derived nutrients and microbial metabolites through portal circulation, creating a gut–liver–brain network.",
+      "channels":["portal nutrient/metabolite flow","circulating glucose/lipids/ketones","hepatokines and hormones","inflammatory mediators","hepatic vagal/sensory signaling","autonomic efferent regulation"],
+      "project_relation":{"mapping":"processing house / harvest refinery / transformation and redistribution","status":["functional_analogy","ecological_analogy"]},
+      "why_useful":"Garden/harvest symbolism becomes more organismically precise: material absorbed from the gut is transformed, stored, released and chemically edited before becoming available to the wider body.",
+      "boundary":"The liver is not a moral detoxifier and 'detox' language should not be used to imply removal of spiritual impurity. Much liver–brain mechanistic evidence is disease- and model-dependent.",
+      "sources":["https://www.nature.com/articles/s41575-025-01142-z","https://pmc.ncbi.nlm.nih.gov/articles/PMC11749697/"]
+    },
+    {
+      "id":"adipose-brain-axis",
+      "name":"Adipose tissue ↔ brain / stored-energy axis",
+      "science":"Adipose tissue is an endocrine and innervated organ, not inert storage. White and brown adipose depots communicate energy state through circulating factors such as leptin and other adipokines, receive strong sympathetic efferent regulation and contain sensory afferents whose full physiological roles remain less resolved. Brown/beige adipose participates in thermogenesis and systemic energy balance.",
+      "channels":["leptin and other adipokines","sympathetic efferents","sensory afferents","fatty-acid/metabolic signals","immune signals within adipose tissue"],
+      "central_neighbors":["hypothalamic energy-balance circuits","brainstem/autonomic systems","reward/motivational systems"],
+      "project_relation":{"mapping":"stored harvest / reserve cellar / fuel-state report","status":["functional_analogy","ecological_analogy"]},
+      "why_useful":"Stored energy becomes part of the House's state estimation: reserves report back while central/autonomic systems decide when to store, release or burn energy.",
+      "boundary":"Leptin is not a fullness switch, obesity is not moral failure, and adipose sensory innervation remains less understood than sympathetic control.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11749697/","https://pmc.ncbi.nlm.nih.gov/articles/PMC10960112/","https://pmc.ncbi.nlm.nih.gov/articles/PMC10882147/"]
+    },
+    {
+      "id":"muscle-brain-axis",
+      "name":"Skeletal muscle ↔ brain / action-metabolism axis",
+      "science":"Skeletal muscle is simultaneously a motor effector, proprioceptive organ, major metabolic tissue and exercise-responsive secretory organ. Muscle spindles and Golgi tendon organs provide rapid mechanical feedback through proprioceptive pathways. Contracting muscle releases metabolites, cytokines and peptide factors often grouped as myokines, but their direct versus indirect contributions to human brain effects remain incompletely resolved.",
+      "channels":["motor commands","proprioceptive afferents","lactate and other metabolic changes","exercise-induced cytokines/myokines","vascular/endocrine responses","immune and temperature changes"],
+      "project_relation":{"mapping":"branches that act / work / carry / move the world; body labor returning information to the House","status":["functional_analogy","flow_analogy"]},
+      "why_useful":"The project can treat action as a closed loop rather than a brain output: movement immediately changes proprioception, circulation, metabolism and secreted signals that alter the next brain/body state.",
+      "boundary":"Myokines should not be treated as proven magic exercise-to-brain molecules; much mechanistic evidence is preclinical and individual factors have multiple tissue sources.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11647023/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11402696/"]
+    },
+    {
+      "id":"reproductive-brain-axis",
+      "name":"Reproductive ↔ hypothalamic–pituitary–gonadal axis",
+      "science":"Reproductive physiology is organized by pulsatile hypothalamic GnRH signaling, pituitary LH/FSH release, gonadal function and steroid feedback. Kisspeptin/KNDy networks are important regulators of GnRH pulse generation and steroid feedback, while metabolic, stress and developmental state influence reproductive endocrine function. Gonadal hormones also affect many non-reproductive tissues and brain systems.",
+      "channels":["kisspeptin/KNDy regulation","GnRH pulses","LH/FSH","gonadal steroid hormones","metabolic/stress feedback","reproductive sensory and autonomic pathways"],
+      "project_relation":{"mapping":"generation / season / fertility / creation-cycle neighbor","status":["functional_analogy"]},
+      "why_useful":"Generation belongs biologically to rhythmic multi-organ feedback, not to one chakra or gland. It also shows how physiology changes developmental state across time.",
+      "boundary":"Sex hormones do not determine spiritual gender, moral value, personality or metaphysical polarity. Human reproductive neuroendocrine biology is sexually differentiated in some functions but cannot be collapsed into binary symbolic essences.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11228153/","https://pmc.ncbi.nlm.nih.gov/articles/PMC12086422/"]
+    },
+    {
+      "id":"pancreas-brain-axis",
+      "name":"Pancreas ↔ brain / glucose-regulation axis",
+      "science":"Pancreatic endocrine cells regulate blood glucose and nutrient handling through insulin, glucagon and other hormones. The pancreas receives autonomic innervation, while central systems respond to circulating glucose and endocrine/metabolic signals. Glucose homeostasis therefore emerges from distributed pancreas–liver–gut–adipose–muscle–brain interactions rather than a pancreas-only loop.",
+      "channels":["insulin","glucagon","blood glucose","autonomic innervation","gut incretin hormones","hepatic and muscle glucose flux"],
+      "project_relation":{"mapping":"fuel gate / distribution clerk / harvest-to-energy switch","status":["functional_analogy"]},
+      "why_useful":"This places the Navel/Garden power imagery inside real nutrient allocation without turning metabolism into spiritual power.",
+      "boundary":"Insulin is not willpower and glucose regulation is not a moral measure of discipline.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11749697/"]
+    },
+    {
+      "id":"skull-marrow-meningeal-axis",
+      "name":"Skull bone marrow ↔ meninges ↔ CNS border axis",
+      "science":"Skull and vertebral bone marrow are anatomically connected to adjacent meninges through osseous vascular/perivascular channels. Experimental work shows local marrow can supply immune cells to meninges and that signals or tracers associated with CSF/meningeal compartments can access skull-marrow pathways. Human channel anatomy exists, but much mechanistic work remains based on rodents and disease models.",
+      "channels":["skull-marrow osseous channels","vascular/perivascular routes","meningeal immune niches","CSF-associated signals","meningeal lymphatic and cervical-node drainage relationships"],
+      "project_relation":{"mapping":"outer wall with living marrow / local guardian nursery / skull-border garden","status":["architectural_analogy","ecological_analogy"]},
+      "why_useful":"The skull is not merely a hard container: its adjacent marrow and meninges participate in border immunity. This adds literal living tissue to the project's wall/guardian imagery.",
+      "boundary":"Skull channels are not mystical cranial portals. Translation from rodents to normal human physiology is incomplete and exact CSF-to-marrow routes remain under investigation.",
+      "sources":["https://www.nature.com/articles/s41593-023-01487-1","https://www.nature.com/articles/s41419-025-07336-2","https://pmc.ncbi.nlm.nih.gov/articles/PMC11765306/"]
+    },
+    {
+      "id":"peripheral-ganglia-interface",
+      "name":"Peripheral sensory and autonomic ganglia as intermediate stations",
+      "science":"Many body-to-brain and brain-to-body pathways pass through peripheral ganglia rather than running directly from organ to cortex. Dorsal-root ganglia contain cell bodies of spinal sensory neurons; nodose/jugular ganglia contain major vagal sensory populations; trigeminal ganglia carry craniofacial somatosensory information; sympathetic and parasympathetic ganglia relay autonomic efferent signals. Ganglia therefore form distributed peripheral nodes in organism communication.",
+      "examples":["dorsal-root ganglia","nodose/jugular vagal sensory ganglia","trigeminal ganglion","sympathetic chain/prevertebral ganglia","parasympathetic terminal/intramural ganglia"],
+      "project_relation":{"mapping":"waystations / relay houses / roadside gates","status":["architectural_analogy"]},
+      "boundary":"Ganglia are not miniature spiritual centers and should not be assigned one chakra each.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11103614/"]
+    }
+  ],
+  "cross_organ_relations":[
+    {"id":"meal-allocation-network","sequence":["gut nutrient sensing","enteroendocrine/enteric/vagal signals","pancreatic insulin/glucagon","hepatic storage/release","adipose storage/mobilization","muscle uptake/work","hypothalamic/brainstem state estimation","feeding/autonomic behavior"]},
+    {"id":"fluid-pressure-network","sequence":["blood volume/osmolality/pressure changes","baroreceptors + renal sensors + circumventricular sensing","brainstem/hypothalamic integration","sympathetic/parasympathetic + vasopressin + renin-angiotensin responses","kidney/vessel/heart changes","thirst/drinking behavior"]},
+    {"id":"exercise-network","sequence":["motor command","muscle contraction","proprioceptive feedback + cardiorespiratory demand","autonomic/metabolic adjustments","muscle-derived circulating factors","changed brain/body state","future motor and motivational output"]},
+    {"id":"reproductive-state-network","sequence":["metabolic/stress/developmental context","kisspeptin/KNDy and GnRH pulses","pituitary gonadotropins","gonadal function/steroid feedback","brain/body developmental and behavioral effects"]},
+    {"id":"brain-border-immune-network","sequence":["CNS/CSF/meningeal signals","meningeal and skull-marrow interfaces","local immune-cell production/recruitment","border surveillance/inflammatory response","lymphatic/systemic feedback"]}
+  ],
+  "potatoverse_implications":[
+    "The Garden is not one organ. It is the entire ecology of organs, microbes, barriers, immune cells, circulation, metabolism and maintenance.",
+    "The House can remain the thalamic symbolic center without pretending that whole-body regulation occurs there alone.",
+    "The Steward is distributed through hypothalamic, brainstem, endocrine and autonomic control, with organs themselves reporting back and locally regulating.",
+    "The River gains tributaries: gut/portal/liver, kidney/fluid, blood/cardiovascular, endocrine, muscle-derived, CSF/interstitial and lymphatic channels.",
+    "Return-to-center is always followed by return-to-body: regulation is closed-loop, not one-way ascent.",
+    "Gardener imagery fits organism maintenance best when applied relationally across glia, immune systems, liver metabolism, kidney balance, gut ecology and tissue repair rather than identifying one literal Gardener cell."
+  ],
+  "boundaries":[
+    "Do not moralize obesity, diabetes, kidney function, reproductive function, immune state or exercise capacity.",
+    "Do not treat any organ-brain axis as a single cable; most combine neural, endocrine, immune, metabolic and vascular routes.",
+    "Do not claim every circulating factor crosses the BBB directly.",
+    "Do not infer a conscious mind in kidney, gut, adipose tissue or muscle from afferent sensing and local regulation.",
+    "Do not translate rodent circuit findings into established normal human mechanisms without qualification.",
+    "Do not use endocrine sexual differentiation as proof of metaphysical binary gender roles."
+  ],
+  "routes":{
+    "body_master":"knowledge/body/body-system-master-atlas.json",
+    "body_brain_science":"knowledge/body/body-science-context-atlas.json",
+    "systems_parent":"knowledge/body/brain-body-systems-deepening-wave-2.json",
+    "whole_brain":"knowledge/body/whole-brain-neurobiology-atlas.json",
+    "tim_reconciliation":"knowledge/body/tim-neurobiology-relational-reconciliation.json"
+  }
+}

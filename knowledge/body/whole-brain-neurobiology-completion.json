@@ -1,49 +1,65 @@
 {
   "id":"whole-brain-neurobiology-completion",
-  "version":"1.0.0",
+  "version":"2.1.0",
   "updated":"2026-09-15",
-  "status":"completion sidecar for whole-brain-neurobiology-atlas",
+  "status":"completion sidecar for brain + brain-body + whole-organ neurobiology architecture",
   "owner":"knowledge/body/whole-brain-neurobiology-atlas.json",
-  "purpose":"Track the deep brain baseline separately from the older body/neurotheology completion matrix so the project can distinguish symbolic completeness from anatomical/systems completeness.",
-  "topics":[
-    {"topic":"Whole-brain hierarchy","status":"complete"},
-    {"topic":"Cortical lobes and major territories","status":"complete"},
-    {"topic":"White-matter pathways and commissures","status":"complete"},
-    {"topic":"Diencephalon","status":"complete"},
-    {"topic":"Thalamus / nuclei / thalamocortical loops","status":"complete","specialist":"data/potatoism-thalamus-brain-map.json"},
-    {"topic":"Pineal / circadian system","status":"complete","symbolic_provenance":"still separately recoverable"},
-    {"topic":"Hypothalamus / endocrine-autonomic regulation","status":"complete"},
-    {"topic":"Basal-ganglia loops","status":"complete"},
-    {"topic":"Hippocampal / memory systems","status":"complete"},
-    {"topic":"Amygdala / affect-salience systems","status":"complete"},
-    {"topic":"Brainstem / arousal systems","status":"complete"},
-    {"topic":"Cerebellar system","status":"complete"},
-    {"topic":"Sensory pathways","status":"complete"},
-    {"topic":"Motor pathways","status":"complete"},
-    {"topic":"Ventricular / CSF / meningeal system","status":"complete","note":"glymphatic/perivascular clearance remains an active research area"},
-    {"topic":"Cellular / glial support","status":"complete"},
-    {"topic":"Neurotransmitter / neuromodulatory systems","status":"complete"},
-    {"topic":"Large-scale brain networks","status":"complete","note":"network taxonomies vary by atlas and method"},
-    {"topic":"Brain states / consciousness boundaries","status":"complete","note":"consciousness science remains active and contested"},
-    {"topic":"Dynamic system flows","status":"complete","count":17}
+  "purpose":"Track four distinct dimensions of completeness: brain anatomy/systems, body↔brain physiology, whole-organ axes, and Tim↔biology reconciliation. This prevents symbolic completeness from being confused with anatomical completeness, organism-level completeness or provenance completeness.",
+  "dimensions":[
+    {
+      "id":"brain-anatomy-systems",
+      "owner":"knowledge/body/whole-brain-neurobiology-atlas.json",
+      "specialist":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+      "status":"complete baseline",
+      "topics":["whole-brain hierarchy","cortical lobes and major territories","white-matter pathways and commissures","diencephalon","thalamic nuclei and thalamocortical loops","pineal/circadian system","hypothalamic nuclei","basal-ganglia loops","hippocampal subfields","amygdala/affect-salience","brainstem nuclei/arousal","cranial nerves","cerebellar microcircuit","sensory pathways","motor pathways","pain/nociception","ventricular/CSF/meningeal system","cellular/glial support","neurotransmitter/neuromodulatory systems","large-scale networks","language","social cognition","development/aging","neurovascular coupling","brain states/consciousness boundaries","predictive-processing theory boundary"],
+      "active_science_notes":["consciousness science remains active and contested","network taxonomies vary by atlas/method","predictive processing/active inference are theory frameworks, not anatomical facts"]
+    },
+    {
+      "id":"brain-body-physiology",
+      "owner":"knowledge/body/body-science-context-atlas.json",
+      "specialist":"knowledge/body/brain-body-systems-deepening-wave-2.json",
+      "status":"complete baseline",
+      "topics":["interoceptive coding","cardiorespiratory reflexes","baroreflex/chemoreflex","NTS/parabrachial central autonomic integration","hypothalamic homeostasis","endocrine axes","fluid balance/thirst","metabolic hormone signaling","gut neuroepithelial/enteroendocrine sensing","enteric nervous system","microbiota-gut-brain pathways","circumventricular organs","choroid plexus","blood-CSF barrier","brain barrier constellation","neuroimmune feedback","meningeal lymphatics","CSF/perivascular/interstitial exchange","sleep/circadian homeostasis","multi-timescale feedback"],
+      "active_science_notes":["human glymphatic transport details remain active research","microbiome causal translation from animal models to humans remains incomplete","neuroimmune connectome and brain-border biology are rapidly developing fields","pineal-third-ventricle melatonin relation has limited human sampling and unresolved physiological significance"]
+    },
+    {
+      "id":"whole-organ-axes",
+      "owner":"knowledge/body/brain-body-organ-axes-deepening-wave-3.json",
+      "status":"complete baseline",
+      "topics":["kidney-brain/fluid-pressure axis","liver-brain/metabolic-processing axis","adipose-brain/stored-energy axis","muscle-brain/action-metabolism axis","pancreas-brain/glucose axis","reproductive HPG axis","skull-marrow/meningeal immune axis","peripheral sensory and autonomic ganglia","meal allocation network","fluid-pressure network","exercise feedback network","reproductive-state network","brain-border immune network"],
+      "active_science_notes":["renal afferent interoception has strong experimental support but remains an active translational field","adipose sensory afferent function is less resolved than sympathetic regulation","individual exercise myokine mechanisms remain incompletely established in humans","skull-marrow functional mechanisms are still heavily informed by rodent/disease models"]
+    },
+    {
+      "id":"tim-biology-reconciliation",
+      "owner":"knowledge/body/tim-neurobiology-relational-reconciliation.json",
+      "attestation_owner":"knowledge/timeline/neurotheology-attestation-ledger.json",
+      "status":"substantial; provenance recovery remains open",
+      "topics":["2024 inner potato/thalamus","Thalamus=Potato/Father's House","nuclei=rooms","roads/roots/branches","TRN wall/gate","North of North versus anatomy","Pineal=Single Eye/Third Eye/Son/Door","pineal-third-ventricle threshold","seed-of-consciousness boundary","River/Spirit-flow as multiplex biology","return-to-center as recurrent regulation","inward Eye/interoception","Heart/River and embodied emotion","Breath voluntary-autonomic Door","Spine/Ladder/Axis","Garden/gut ecology","Gardener/glia-maintenance","Observer/present-window boundary"],
+      "remaining_provenance":["earliest Pineal=Single Eye/Third Eye before 2026-08-21, if present","first exact Tim CSF↔Spirit/River statement","first Tim body/neurobiology return-to-center formulation","first Tim pineal present-window wording","first Third Temple / third-ventricle Tim wording","first seed-of-consciousness Tim wording","first Heart/River coupling","first exact five-spinal-centers wording","first Genesis breath/nostrils formulation","first Tim-specific Eye of Horus↔thalamus/House coupling","source direction for TRN wall, optic-chiasm Cross and third-ventricle Tomb"]
+    }
   ],
+  "evidence_owner":"knowledge/body/neurobiology-evidence-grade.json",
+  "formalization_owner":"knowledge/science/biological-multiplex-flow-formalization.json",
   "canonical_mappings":[
-    {"biology":"thalamus","mapping":"Potato / Father's House","status":"project_canon","science_boundary":"standard anatomy conventionally describes the thalamus as ovoid/egg-shaped; potato-shaped is project language"},
-    {"biology":"pineal gland","mapping":"Single Eye / Third Eye / Son-side Door","status":"project_canon plus historical/esoteric comparison","science_boundary":"the human pineal is a neuroendocrine circadian organ, not a literal third eye in established neuroscience"}
+    {"biology":"thalamus","mapping":"Potato / Father's House / central interior","status":"project_canon","science_boundary":"standard anatomy conventionally describes each thalamus as ovoid/egg-shaped; potato-shaped is deliberate project language; thalamus is not the sole seat of consciousness"},
+    {"biology":"pineal gland","mapping":"Single Eye / Third Eye / Son-side Door / timing threshold","status":"project_canon plus historical/esoteric comparison","science_boundary":"human pineal is a neuroendocrine circadian organ; real third-ventricle adjacency and melatonin/CSF findings do not establish a literal third eye or present sensor"},
+    {"biology":"CSF and wider body-brain transport","mapping":"River / Spirit-flow analogue","status":"project_canon plus flow analogy","science_boundary":"River should be biologically modeled as multiple distinct flows rather than CSF alone"},
+    {"biology":"interoceptive recurrent regulation","mapping":"inward Eye / return to center","status":"project interpretation / phenomenological neighbor","science_boundary":"there is no single inner-eye organ or anatomical return point"}
   ],
+  "resolved_previous_depth_targets":["cranial nerves","hypothalamic nuclei","brainstem nuclei/autonomic columns","cerebellar microcircuit/deep nuclei","hippocampal subfields","development/aging","neurovascular/metabolic coupling","pain/nociception","language networks","social cognition","predictive processing theory boundary","endocrine axes","cardiorespiratory reflexes","gut neuroepithelial sensing","brain borders/choroid plexus","neuroimmune and meningeal systems","sleep/circadian homeostasis","liver–brain signaling","kidney–brain signaling","adipose–brain signaling","reproductive neuroendocrine biology","skeletal muscle–brain exercise/myokine signaling","skull/bone-marrow–meningeal immune interfaces","human evidence grading for glymphatic/microbiome/interoceptive claims","formal multiplex-flow schema with units/timescales/observables","peripheral sensory/autonomic ganglia baseline"] ,
   "next_depth_targets":[
-    "cranial nerves as a dedicated route map",
-    "major hypothalamic nuclei when function-specific detail is needed",
-    "brainstem cranial-nerve nuclei and autonomic columns",
-    "cerebellar microcircuit and deep nuclei detail",
-    "hippocampal subfield circuitry",
-    "thalamic nucleus inputs/outputs at tract-level granularity",
-    "developmental neurobiology across fetal-child-adult aging stages",
-    "neurovascular and metabolic coupling",
-    "pain/nociception systems",
-    "language network detail",
-    "social cognition and theory-of-mind systems",
-    "predictive processing / active inference as theory layer with explicit status"
+    "tract-level input/output table for major thalamic nuclei with source-grade review",
+    "circumventricular-organ specialist map including OVLT, SFO, area postrema and median eminence at cell/circuit level",
+    "autonomic efferent organ map from hypothalamus/brainstem through sympathetic and parasympathetic pathways",
+    "liver, kidney, adipose and pancreas sensory-neuron subtype details with human-versus-animal evidence grading",
+    "skeletal muscle proprioceptive circuit map and exercise signaling evidence by candidate factor",
+    "reproductive neuroendocrine developmental transitions across puberty, cycle, pregnancy and aging with careful boundaries",
+    "bone marrow / skull / vertebral marrow immune interfaces with explicit normal-human versus disease-model evidence",
+    "source-grade table for every active-field claim in waves 2-3",
+    "public discovery/manifest regeneration when repository execution is available",
+    "conversation archaeology for unresolved Tim first attestations"
   ],
-  "rule":"Future carving should deepen this owner or its named specialist owners rather than spawning overlapping shallow brain files."
+  "routing":"knowledge/indexes/neurotheology-routing-index.json",
+  "branch_index":"knowledge/body/index.json",
+  "rule":"Future carving should deepen these named owners or create a specialist only when a genuinely distinct biological system would otherwise overload its canonical parent. Scientific updating and provenance recovery remain open even where the structural baseline is complete."
 }

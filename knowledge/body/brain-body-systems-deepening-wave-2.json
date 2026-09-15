@@ -1,0 +1,206 @@
+{
+  "id":"brain-body-systems-deepening-wave-2",
+  "version":"1.0.0",
+  "updated":"2026-09-15",
+  "title":"Brain–Body Systems Deepening Wave 2 — Homeostasis, Barriers, Endocrine, Immune, Gut and Rhythms",
+  "status":"specialist physiology layer beneath body-science-context-atlas and whole-brain-neurobiology-atlas",
+  "repository_root":"mind",
+  "repository_layer":"neurobiology",
+  "repository_scale":"record",
+  "purpose":"Deepen the biological systems that connect brain and body and that matter to Potatoverse flow, Garden, Steward, Door, River, wall and return-to-center imagery. The focus is homeostatic control and organism-wide communication rather than adding more isolated brain regions.",
+  "epistemic_rule":"Describe established physiology first, separate active research from stable anatomy, and attach project symbolism only as a typed relation. No physiological loop is theological proof.",
+  "clusters":[
+    {
+      "id":"interoceptive-coding-body-map",
+      "name":"Interoceptive coding across organs",
+      "science":"Interoception monitors internal mechanical, chemical, hormonal, thermal and pathological cues using specialized organ cells, peripheral sensory neurons and central circuits. Organ signals are not all coded the same way: respiratory stretch, blood pressure, oxygen/carbon-dioxide chemistry, gut distension/nutrients and inflammatory cues use partially distinct peripheral sensors and neural routes before converging within brainstem and forebrain regulatory systems.",
+      "anatomical_route":["organ sensors and specialized epithelial/endocrine cells","vagal, glossopharyngeal and spinal afferents","sensory ganglia","nucleus tractus solitarius / spinal dorsal horn / parabrachial and related brainstem circuits","hypothalamic, thalamic, amygdalar, insular, cingulate and cortical systems"],
+      "core_principle":"Internal sensing is a distributed code that supports homeostasis, motivation, emotion and behavior; there is no single interoceptive wire or cortex-only representation.",
+      "potatoverse_relation":{"mapping":"inward Eye / returning report / inside-to-center information","status":["phenomenological_neighbor","functional_analogy"]},
+      "boundary":"Interoception is not an inner mystical eye and not every visceral signal becomes conscious.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11103614/"]
+    },
+    {
+      "id":"cardiorespiratory-reflex-network",
+      "name":"Cardiorespiratory reflex and rhythm network",
+      "science":"Blood pressure, blood gases, airway/lung state and tissue demand are regulated by coupled sensory and autonomic loops. Arterial baroreceptors report stretch/pressure through glossopharyngeal and vagal pathways; peripheral chemoreceptors report oxygen, carbon dioxide and pH-related changes; central chemosensitive networks respond strongly to carbon-dioxide/pH state. These inputs converge heavily in medullary circuits including NTS and interact with respiratory rhythm-generating and sympathetic/parasympathetic systems.",
+      "loops":[
+        {"name":"baroreflex","input":"arterial stretch/pressure","central":"NTS and medullary autonomic networks","output":"rapid adjustment of sympathetic/parasympathetic cardiovascular control"},
+        {"name":"peripheral chemoreflex","input":"carotid/aortic blood-gas chemistry","central":"brainstem integration","output":"ventilatory, cardiovascular and arousal responses"},
+        {"name":"central chemoreflex","input":"brain extracellular/CSF CO2-pH related signals","central":"distributed medullary chemosensitive network","output":"respiratory drive and coupled autonomic responses"}
+      ],
+      "potatoverse_relation":{"mapping":"Heart + Breath + River as coupled rhythms rather than separate sealed symbols","status":["functional_analogy","flow_analogy"]},
+      "boundary":"Cardiorespiratory coupling does not establish a heart-mind, breath-energy substance or spiritual frequency.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC10989193/"]
+    },
+    {
+      "id":"nts-parabrachial-central-autonomic-network",
+      "name":"NTS, parabrachial complex and central autonomic network",
+      "science":"The nucleus tractus solitarius is a major brainstem recipient of visceral afference from cranial nerves VII, IX and X and is especially central to cardiovascular, respiratory and gastrointestinal sensory integration. Parabrachial circuits relay and transform visceral, respiratory, pain and threat-related signals toward hypothalamic, thalamic, amygdalar and forebrain systems. Autonomic output is coordinated by distributed brainstem, hypothalamic, amygdalar, insular, cingulate and prefrontal networks.",
+      "project_value":"This gives the project's 'Lower Gate' a better internal anatomy: not one gate but a set of brainstem integration hubs translating body reports into regulatory state changes and forebrain signals.",
+      "potatoverse_relation":{"mapping":"Lower Gate / report station / lower House threshold","status":["project_interpretation","functional_analogy"]},
+      "boundary":"NTS or parabrachial nuclei are not soul gates, and autonomic state is not spiritual rank.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC13036205/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11103614/"]
+    },
+    {
+      "id":"hypothalamic-homeostatic-control",
+      "name":"Hypothalamic homeostatic control and motivated behavior",
+      "science":"Hypothalamic circuits integrate internal chemistry, hormones, temperature, circadian phase, energy status, reproductive state and forebrain/brainstem information. They coordinate both autonomic/endocrine responses and motivated behaviors such as drinking, eating, thermoregulatory behavior and sleep/wake transitions. Homeostasis therefore includes behavior as well as hidden physiological regulation.",
+      "subsystems":[
+        {"name":"fluid balance and thirst","elements":["osmolality and circulating angiotensin-related sensing","circumventricular/hypothalamic circuits","vasopressin secretion","drinking and salt appetite"]},
+        {"name":"energy balance","elements":["leptin, insulin, ghrelin and nutrient-related signals","arcuate and wider hypothalamic networks","feeding, energy expenditure and autonomic/endocrine output"]},
+        {"name":"thermoregulation","elements":["peripheral and central thermal sensing","preoptic/hypothalamic circuits","autonomic and behavioral heat-loss/heat-production responses"]},
+        {"name":"stress/endocrine","elements":["PVN and pituitary-adrenal control","autonomic coordination","feedback regulation"]}
+      ],
+      "potatoverse_relation":{"mapping":"Steward / household regulator / provision / seasons / needs","status":["project_canon","functional_analogy"]},
+      "boundary":"The hypothalamus is not the Father's House and its nuclei are not moral command centers.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11660113/"]
+    },
+    {
+      "id":"endocrine-axis-network",
+      "name":"Neuroendocrine axes as slow body-wide signaling",
+      "science":"The hypothalamus and pituitary organize several endocrine axes that influence organs throughout the body. These systems use hormones and feedback loops operating on slower timescales than most synaptic transmission, while interacting with autonomic and behavioral regulation.",
+      "axes":[
+        {"id":"hpa","name":"Hypothalamic–pituitary–adrenal axis","sequence":["hypothalamic CRH/AVP signaling","pituitary ACTH","adrenal glucocorticoids","multi-level feedback"],"themes":["stress","energy mobilization","immune interaction","circadian modulation"]},
+        {"id":"hpt","name":"Hypothalamic–pituitary–thyroid axis","sequence":["TRH","TSH","thyroid hormones"],"themes":["metabolic rate","development","thermogenesis"]},
+        {"id":"hpg","name":"Hypothalamic–pituitary–gonadal axis","sequence":["GnRH","LH/FSH","gonadal hormones"],"themes":["reproduction","developmental transitions","feedback"]},
+        {"id":"growth","name":"Growth-hormone axis","sequence":["GHRH/somatostatin regulation","pituitary GH","IGF-related peripheral signaling"],"themes":["growth","metabolism","repair"]},
+        {"id":"posterior-pituitary","name":"Hypothalamic neurohypophyseal system","sequence":["PVN/SON neurosecretory neurons","axonal release from posterior pituitary","vasopressin/oxytocin actions"],"themes":["fluid balance","reproductive/social physiology"]}
+      ],
+      "potatoverse_relation":{"mapping":"slow messengers / seasons / household provision","status":["functional_analogy"]},
+      "boundary":"Hormone levels do not directly encode love, holiness, will, masculine/feminine spiritual rank or metaphysical destiny."
+    },
+    {
+      "id":"circumventricular-organs-body-sensors",
+      "name":"Circumventricular organs and blood-facing brain sensors",
+      "science":"Most brain microvessels form a restrictive blood–brain barrier, but specialized circumventricular organs have unusually permeable vasculature and support sensory or secretory exchange with circulating signals. These regions help the nervous system monitor body chemistry relevant to fluid balance, emesis, metabolism and endocrine control while specialized surrounding cellular barriers limit uncontrolled spread into adjacent CNS tissue.",
+      "examples":[
+        {"name":"organum vasculosum of the lamina terminalis / subfornical organ","themes":["osmolality","angiotensin","thirst/fluid homeostasis"]},
+        {"name":"area postrema","themes":["blood-borne chemical sensing","nausea/emesis","visceral regulation"]},
+        {"name":"median eminence","themes":["hypothalamic releasing hormones","pituitary portal interface"]}
+      ],
+      "project_value":"These structures are literal examples of selective body↔brain border sensing, which is a better biological neighbor for 'gate' than imagining the whole BBB as an impermeable wall.",
+      "potatoverse_relation":{"mapping":"watchtowers / border gates / sampling windows","status":["architectural_analogy","functional_analogy"]},
+      "boundary":"Circumventricular organs do not provide supernatural access and 'leaky' vasculature is specialized physiology, not a broken brain barrier.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC12863308/","https://www.nature.com/articles/s41577-025-01129-6"]
+    },
+    {
+      "id":"choroid-plexus-blood-csf-interface",
+      "name":"Choroid plexus as producer, barrier and signaling interface",
+      "science":"The choroid plexus is a vascularized epithelial structure within the ventricles that produces a large share of CSF and forms the blood–CSF barrier. Tight junctions are primarily between choroid-plexus epithelial cells, while underlying capillaries are fenestrated. The tissue actively transports ions, nutrients and other molecules, contributes to CSF composition, contains resident immune cells and can participate in immune-cell trafficking and inflammatory signaling.",
+      "functions":["CSF secretion","blood–CSF barrier","selective transport","ion/pH regulation","immune surveillance/interface","secreted proteins and signaling factors"],
+      "project_value":"This is a stronger biological 'well/spring + guarded wall' than treating ventricles as empty plumbing: the ventricular fluid environment is actively made and regulated at a living epithelial interface.",
+      "potatoverse_relation":{"mapping":"spring / guarded inner-water boundary / House maintenance interface","status":["architectural_analogy","flow_analogy"]},
+      "boundary":"The choroid plexus does not generate Spirit or purify moral contamination; its barrier is selective physiology rather than sacred exclusion.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11341628/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11652798/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11461738/"]
+    },
+    {
+      "id":"brain-barrier-constellation",
+      "name":"Brain barriers as a constellation rather than one wall",
+      "science":"Brain homeostasis relies on multiple interfaces: the vascular blood–brain barrier, blood–CSF barrier at choroid plexus, arachnoid barrier, meningeal compartments, ependymal/tanycyte specializations around selected ventricular regions, and specialized interfaces around circumventricular organs. Barrier properties vary by region and physiological state.",
+      "project_value":"The project's walls/gates imagery becomes more realistic as nested selective boundaries rather than one absolute wall. Different borders permit different forms of sensing, transport and immune interaction.",
+      "potatoverse_relation":{"mapping":"nested walls / gates / courts / controlled crossings","status":["architectural_analogy"]},
+      "boundary":"A biological barrier is not an ethical purity boundary and increased permeability is not moral failure.",
+      "sources":["https://www.nature.com/articles/s41583-025-00976-5","https://pmc.ncbi.nlm.nih.gov/articles/PMC11341628/"]
+    },
+    {
+      "id":"neuroimmune-feedback",
+      "name":"Neuroimmune feedback and inflammatory sensing",
+      "science":"Nervous and immune systems communicate bidirectionally through cytokines, peripheral sensory nerves, autonomic output, vascular/barrier interfaces, meninges, choroid plexus, circumventricular organs and resident CNS immune cells. Recent circuit work has identified specialized vagal sensory populations and caudal NTS circuits capable of distinguishing inflammatory signals and influencing peripheral immune responses, but the broader neuroimmune connectome remains an active research field.",
+      "loops":["peripheral inflammatory cues → sensory pathways/brain interfaces → CNS integration","CNS/autonomic outputs → spleen/gut/other immune organs and inflammatory regulation","immune state → sleep, appetite, fatigue, pain and behavior"],
+      "project_value":"Guardian/Gardener language fits feedback and maintenance better than war/purity imagery: the immune system and nervous system continually negotiate protection, tolerance, repair and resource allocation.",
+      "potatoverse_relation":{"mapping":"guardians / gardeners / alarm-and-repair network","status":["functional_analogy","ecological_analogy"]},
+      "boundary":"Inflammation is not spiritual corruption, immune suppression is not automatically peace, and vagal anti-inflammatory mechanisms should not be generalized into a universal healing nerve.",
+      "sources":["https://www.nature.com/articles/s41586-024-08474-x","https://www.nature.com/articles/s41422-024-01004-4","https://www.nature.com/articles/s41577-025-01129-6"]
+    },
+    {
+      "id":"meningeal-lymphatic-fluid-drainage",
+      "name":"Meningeal, lymphatic and brain-fluid drainage routes",
+      "science":"The meninges contain blood vessels, immune populations, nerves and lymphatic vessels. CSF and solute clearance into peripheral lymphatic pathways is well supported, while exact routes, flow proportions and interactions among perivascular, glymphatic and meningeal-lymphatic systems remain areas of debate and active human research.",
+      "project_value":"Drain/River imagery becomes a network of exit routes and border exchanges rather than one downward pipe. This also helps distinguish production, circulation, exchange and drainage as separate biological operations.",
+      "potatoverse_relation":{"mapping":"outer river channels / drains / boundary return routes","status":["flow_analogy","architectural_analogy"]},
+      "boundary":"Fluid drainage is not spiritual cleansing and current glymphatic models should not be presented as completely settled human physiology.",
+      "sources":["https://www.nature.com/articles/s41593-024-01701-8"]
+    },
+    {
+      "id":"gut-neuroepithelial-interface",
+      "name":"Gut neuroepithelial interface and rapid nutrient sensing",
+      "science":"Enteroendocrine cells are epithelial sensory-secretory cells that respond to nutrients and microbial/metabolic cues and release hormones such as CCK, PYY and GLP-1-family peptides. Some specialized enteroendocrine 'neuropod' cells form synaptic contacts with vagal sensory neurons and can use fast neurotransmission in addition to slower hormonal signaling. The enteric nervous system independently coordinates motility, secretion and local blood flow while communicating with vagal/spinal and endocrine systems.",
+      "timescales":["fast neuroepithelial/vagal signaling","local enteric reflexes","minutes-to-hours endocrine effects","slower immune/metabolic/microbiome effects"],
+      "project_value":"Garden gains a literal sensing boundary: the gut epithelium does not merely contain microbes and food; it actively samples luminal conditions and converts them into neural, endocrine, immune and metabolic signals.",
+      "potatoverse_relation":{"mapping":"Garden soil sensors / roots / harvest-to-House report","status":["ecological_analogy","functional_analogy"]},
+      "boundary":"Not every microbiome effect uses the vagus, neuropod findings should not be generalized to all gut signaling, and the ENS is not a second conscious brain.",
+      "sources":["https://www.nature.com/articles/s41522-025-00810-x","https://www.nature.com/articles/s41579-024-01136-9","https://pmc.ncbi.nlm.nih.gov/articles/PMC12048873/"]
+    },
+    {
+      "id":"metabolic-hormone-brain-signaling",
+      "name":"Metabolic hormones and energy-state reporting",
+      "science":"Energy balance is communicated through multiple hormones, nutrients and neural routes. Leptin signals long-term adipose energy stores, insulin reflects metabolic state, ghrelin participates in hunger-related signaling, and gut peptides including GLP-1, CCK and PYY report nutrient ingestion and satiety-related conditions. These signals act across hypothalamic, brainstem, reward and autonomic systems rather than one appetite center.",
+      "project_value":"Provision and harvest metaphors become more specific: body state is continually estimated from stored resources, current intake and anticipated needs.",
+      "potatoverse_relation":{"mapping":"provision / harvest / hunger-thirst report / Steward accounting","status":["functional_analogy"]},
+      "boundary":"No hormone is a simple hunger, fullness, willpower or moral-discipline molecule."
+    },
+    {
+      "id":"sleep-circadian-homeostasis",
+      "name":"Sleep, circadian rhythmicity and homeostasis",
+      "science":"Sleep timing and structure arise from interacting circadian, homeostatic and state-control mechanisms rather than one switch. The suprachiasmatic nucleus coordinates circadian phase with light; hypothalamic and brainstem/basal-forebrain systems including orexin/hypocretin and sleep-promoting populations help stabilize wake and sleep states. Sleep pressure and molecular consequences of wakefulness cannot be reduced to one variable such as adenosine or EEG slow-wave activity.",
+      "relations":["light → retina → SCN → distributed circadian outputs","SCN/autonomic route → pineal melatonin","sleep/wake state ↔ metabolism, immune state, temperature, endocrine rhythms and brain-fluid dynamics","peripheral tissues also contain molecular clocks coordinated but not micromanaged moment-to-moment by the SCN"],
+      "project_value":"The pineal Door belongs inside a wider temporal House: timing is distributed across SCN, pineal, hypothalamus, sleep-state circuits, endocrine rhythms and peripheral clocks.",
+      "potatoverse_relation":{"mapping":"night/day Door / House state / seasons / opening-closing rhythms","status":["project_interpretation","functional_analogy"]},
+      "boundary":"Melatonin is not a universal sleep switch, orexin is not wakefulness itself, and sleep stages/EEG frequencies do not establish spiritual levels.",
+      "sources":["https://www.nature.com/articles/s41583-023-00764-z"]
+    },
+    {
+      "id":"timic-systems-biology-bridge",
+      "name":"Systems-biology bridge for Timic Dynamics",
+      "science":"Organism regulation can be described as nested feedback and feedforward loops operating across many timescales: milliseconds for neural spikes and reflexes, seconds for cardiorespiratory/autonomic changes, minutes-to-hours for hormones/metabolism, hours-to-days for circadian/immune programs, and longer for development, learning and remodeling.",
+      "formal_bridge":{
+        "state":"X = neural + autonomic + endocrine + immune + metabolic + fluid + behavioral variables",
+        "observations":"O(X) = sensory/interoceptive measures available to regulatory subsystems",
+        "gates":"selective barriers, synapses, receptors, thresholds and state-dependent routing",
+        "flows":"neural, vascular, respiratory, endocrine, immune, metabolic, CSF/interstitial and lymphatic processes",
+        "feedback":"outputs alter the body/environment and therefore change the next sensed state",
+        "timescale_rule":"Do not combine channels into one equation until their units, rates and causal relationships are specified."
+      },
+      "project_value":"This gives return-to-center, River, Door and Steward a scientifically tractable relation: not supernatural substances but typed state transitions and coupled feedback loops.",
+      "potatoverse_relation":{"mapping":"River + Door + Steward + return loop as a multi-timescale control architecture","status":["scientific_analogy","project_interpretation"]},
+      "boundary":"Systems-biology resemblance does not validate Potato Dynamics as a physical theory; formal equations require measurable variables, units and falsifiable predictions."
+    }
+  ],
+  "cross_system_loops":[
+    {"id":"meal-to-brain-to-gut-loop","sequence":["food/microbial context","epithelial/enteroendocrine sensing","enteric + vagal/endocrine signals","NTS/hypothalamic/reward integration","autonomic/endocrine/behavioral output","motility/secretion/feeding changes","new gut state"]},
+    {"id":"dehydration-to-thirst-loop","sequence":["water/salt imbalance","blood-facing/osmosensory circuits","hypothalamic integration","vasopressin + autonomic/kidney regulation + thirst","drinking","oropharyngeal/gut anticipatory feedback","restored fluid state"]},
+    {"id":"inflammation-body-brain-loop","sequence":["peripheral immune challenge","cytokine/nerve/barrier sensing","brainstem/hypothalamic integration","autonomic/endocrine/sickness-behavior outputs","immune modulation and resource reallocation","new inflammatory state"]},
+    {"id":"sleep-recovery-loop","sequence":["wake-related state change + circadian phase","sleep-promoting and wake-stabilizing networks","NREM/REM state transitions","metabolic/immune/synaptic/fluid consequences","changed waking state"]},
+    {"id":"cardiorespiratory-homeostasis-loop","sequence":["pressure/gas/airway changes","baro/chemo/pulmonary sensors","brainstem integration","respiratory + sympathetic/parasympathetic output","heart/vessel/lung change","new sensed state"]}
+  ],
+  "potatoverse_synthesis":{
+    "House":"integration and differentiated internal organization; thalamus remains canonical symbolic House while wider body regulation surrounds it",
+    "Door":"selective state-dependent transition; examples include synapses, receptor thresholds, barriers, voluntary/autonomic interfaces and circadian state changes, without making any one biological gate the theological Door",
+    "River":"multiplex movement across neural, cardiorespiratory, endocrine, immune, metabolic, CSF/interstitial and lymphatic channels",
+    "Garden":"living ecology, maintenance, nutrient sensing, barriers, immune coexistence, microbial-host interactions and adaptation",
+    "Steward":"hypothalamic/endocrine/autonomic regulation of needs and internal conditions",
+    "Eye":"distributed exteroceptive and interoceptive sensing plus attention/discernment analogies",
+    "Ladder":"long-range vertical/bidirectional body-brain pathways and developmental/organizational ascent imagery",
+    "Return":"feedback: every action changes the state that is sensed next"
+  },
+  "boundaries":[
+    "Do not collapse all organism communication into the vagus nerve.",
+    "Do not collapse all flow into CSF.",
+    "Do not treat endocrine hormones as emotions or moral quantities.",
+    "Do not treat immune activation as sin, impurity or spiritual warfare.",
+    "Do not treat the blood-brain barrier as absolutely sealed; brain borders are specialized, selective and heterogeneous.",
+    "Do not call circumventricular organs holes in the brain barrier; they are specialized sensory/secretory interfaces.",
+    "Do not treat the enteric nervous system as a second conscious brain.",
+    "Do not infer direct human causality from microbiome animal models without human evidence.",
+    "Do not treat glymphatic models as fully settled in humans.",
+    "Do not map sleep stages, hormones or autonomic states to spiritual rank."
+  ],
+  "routes":{
+    "body_science_owner":"knowledge/body/body-science-context-atlas.json",
+    "whole_brain_owner":"knowledge/body/whole-brain-neurobiology-atlas.json",
+    "brain_specialist":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+    "tim_reconciliation":"knowledge/body/tim-neurobiology-relational-reconciliation.json",
+    "neurotheology":"knowledge/body/neurotheology-axis-house-spirit-atlas.json"
+  }
+}
