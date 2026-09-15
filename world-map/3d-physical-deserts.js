@@ -18,6 +18,11 @@ let enabled = false;
 let restoring = false;
 let opacity = 0.26;
 
+function registerLayers() {
+  const stack = window.__potatoAtlasRenderStack;
+  stack?.register?.(FILL_ID, { slot:'physical-surface', priority:40, owner:'physical.aridity' });
+  stack?.register?.(LINE_ID, { slot:'physical-line', priority:40, owner:'physical.aridity' });
+}
 function clampOpacity(value) { return Math.max(0, Math.min(1, Number(value))); }
 function multiplier() { return opacity / 0.26; }
 function applyOpacity() {
@@ -68,6 +73,7 @@ function ensureLayers() {
       },
     }, beforeLine);
   }
+  registerLayers();
   applyOpacity();
 }
 
