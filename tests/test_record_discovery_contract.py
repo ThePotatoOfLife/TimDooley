@@ -67,7 +67,31 @@ def test_registry_index_delta_explains_consolidated_and_synthesized_ids():
     assert delta["registry_only"] == ["the-door"]
     assert delta["index_only"] == ["axis"]
     assert delta["consolidated_source_ids"] == {"the-door": "door"}
+    assert delta["canonicalized_concept_ids"] == []
     assert delta["synthesized_canonical_ids"] == ["axis"]
+    assert delta["unexplained_registry_only"] == []
+    assert delta["unexplained_index_only"] == []
+
+
+def test_registry_index_delta_explains_canonical_slug_created_from_raw_label():
+    audit = importlib.import_module("audit_source_of_truth")
+    registry = {"records": [{"id": "Blood"}]}
+    index = {
+        "records": [
+            {
+                "id": "blood",
+                "canonical_concept": True,
+                "occurrence_count": 1,
+                "occurrences": [{"id": "Blood"}],
+            }
+        ]
+    }
+
+    delta = audit.explain_registry_index_delta(registry, index)
+
+    assert delta["consolidated_source_ids"] == {"Blood": "blood"}
+    assert delta["canonicalized_concept_ids"] == ["blood"]
+    assert delta["synthesized_canonical_ids"] == []
     assert delta["unexplained_registry_only"] == []
     assert delta["unexplained_index_only"] == []
 
