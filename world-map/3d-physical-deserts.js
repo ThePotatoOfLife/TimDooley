@@ -57,7 +57,7 @@ function ensureLayers() {
 }
 
 function setVisibility(visibility) {
-  for (const id of (FILL_ID, LINE_ID)) {
+  for (const id of [FILL_ID, LINE_ID]) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
   }
 }
