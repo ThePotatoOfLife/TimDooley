@@ -12,6 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 LAND = ROOT / "world-map" / "3d-physical-land-cover.js"
 RUNTIME = ROOT / "world-map" / "3d-physical-layers.js"
+CURRENT_WMS = "https://titiler.terrascope.be/wms"
+CURRENT_LAYER = "esa-worldcover-map-10m-2021-v2_map"
 
 
 def main() -> int:
@@ -44,13 +46,13 @@ def main() -> int:
     else:
         text = LAND.read_text(encoding="utf-8", errors="replace")
         for token in (
-            "https://services.terrascope.be/wms/v2",
-            "WORLDCOVER_2021_MAP",
+            CURRENT_WMS,
+            CURRENT_LAYER,
             "{bbox-epsg-3857}",
             "type: 'raster'",
             "tileSize: 256",
             "raster-opacity",
-            "countries-fill",
+            "physical-surface",
             "atlasLandCoverLegend",
             "Tree cover",
             "Grassland",
@@ -62,6 +64,8 @@ def main() -> int:
         ):
             if token not in text:
                 errors.append(f"land-cover module missing {token}")
+        if "https://services.terrascope.be/wms/v2" in text:
+            errors.append("land-cover module must not use the phased-out Terrascope WMS v2 endpoint")
         if "new MutationObserver(" in text or "setInterval(" in text:
             errors.append("land-cover module must not poll or observe the DOM")
         if "queryRenderedFeatures" in text or "pixel" in text.lower() and "analysis" in text.lower():
