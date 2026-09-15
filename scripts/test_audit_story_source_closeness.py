@@ -118,8 +118,8 @@ class SourceHintTests(unittest.TestCase):
                     "great-book-retro",
                     "note-only-retro",
                     "note-only-public",
-                    "note-only-creative",
                     "public-post",
+                    "note-only-creative",
                     "song",
                 ],
             )
