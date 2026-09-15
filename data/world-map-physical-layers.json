@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.3.0",
+  "schema_version": "1.4.0",
   "updated": "2026-09-15",
   "family": "physical-world",
   "principles": [
@@ -85,20 +85,23 @@
     },
     {
       "id": "physical.aridity",
-      "label": "Deserts / aridity",
-      "kind": "raster_tiles",
-      "availability": "planned",
+      "label": "Deserts / xeric",
+      "kind": "module",
+      "availability": "current",
       "load_policy": "on_demand",
+      "module": "./3d-physical-deserts.js",
+      "controller": "__potatoAtlasDeserts",
       "source": {
-        "provider": "pending climatic/ecoregional source",
-        "dataset": "aridity/desert regime",
-        "version": "pending",
-        "attribution": "pending"
+        "provider": "The Nature Conservancy",
+        "dataset": "Global Terrestrial Ecoregions · Deserts and Xeric Shrublands",
+        "version": "snapshot as of 2009-12-14",
+        "delivery": "ArcGIS FeatureServer GeoJSON query",
+        "attribution": "The Nature Conservancy"
       },
-      "default_opacity": 0.55,
+      "default_opacity": 0.26,
       "min_zoom": 0,
-      "max_zoom": 14,
-      "status_note": "Climatic/ecological aridity is a distinct variable from satellite land-cover class and must use its own sourced dataset."
+      "max_zoom": 9,
+      "status_note": "Ecological ecoregion context for Deserts and Xeric Shrublands. This is a dated 2009 terrestrial ecoregion classification, not a continuous aridity index, not current desert extent, and not equivalent to WorldCover bare/sparse vegetation."
     }
   ]
 }
