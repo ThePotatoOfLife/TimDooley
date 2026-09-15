@@ -1,6 +1,6 @@
 {
   "id": "public-statement-root-manifest",
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-15",
   "model": "rooted-spiral",
   "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, Development Threads, persistence tests, and deterministic reference projections.",
@@ -67,7 +67,8 @@
     "Candidate Development Threads use explicit literal terms only.",
     "Every Development Thread attestation records the exact terms that caused membership.",
     "Function threads remain separate from actor/title assignments and carry no interpretive claims while candidate.",
-    "Persistence tests measure recurrence and coverage only; passing them never changes candidate status automatically."
+    "Persistence tests measure recurrence and coverage only; passing them never changes candidate status automatically.",
+    "A long span alone is not enough to establish distributed persistence; burst concentration and reappearance structure remain visible separately."
   ],
   "gap_types": [
     "evidence",
@@ -126,19 +127,45 @@
       "minimum_span_days": 90,
       "minimum_term_diversity": 2,
       "minimum_episode_count": 2,
-      "metrics": [
+      "core_metrics": [
         "span_days",
         "active_month_count",
         "term_diversity_count",
-        "episode_count",
-        "episode_coverage_ratio",
-        "bible_relation_count",
-        "bible_attestation_count",
-        "bible_attestation_ratio"
+        "episode_count"
       ],
+      "shape_dimensions": {
+        "span": [
+          "days",
+          "active_month_count",
+          "month_span_count",
+          "temporal_coverage_ratio"
+        ],
+        "recurrence": [
+          "reappearance_count",
+          "interval_days",
+          "longest_gap_days",
+          "median_gap_days"
+        ],
+        "distribution": [
+          "attestations_by_month",
+          "max_month_attestations",
+          "max_month_share"
+        ],
+        "support": [
+          "episode_count",
+          "episode_attestation_count",
+          "episode_coverage_ratio",
+          "bible_relation_count",
+          "bible_attestation_count",
+          "bible_attestation_ratio",
+          "second_precision_attestation_count",
+          "second_precision_ratio"
+        ]
+      },
+      "interpretation": "Span asks how long a thread exists; recurrence asks whether and how it reappears; distribution distinguishes spread from burst concentration; support records structural/reference and source-precision coverage.",
       "promotion_effect": "none"
     },
-    "promotion_rule": "Broader functional interpretation requires a later testing pass; candidate membership and persistence testing establish only explicit recurrence, temporal spread, vocabulary diversity, and reference coverage in the supplied corpus."
+    "promotion_rule": "Broader functional interpretation requires a later testing pass; candidate membership and persistence testing establish only explicit recurrence, temporal spread, vocabulary diversity, distribution shape, and reference coverage in the supplied corpus."
   },
   "claim_boundary": "The Evidence Root records what was supplied, how records reconcile, and what remains unknown. It does not establish supernatural identity, prophecy fulfillment, or the truth of theological claims contained in source statements."
 }
