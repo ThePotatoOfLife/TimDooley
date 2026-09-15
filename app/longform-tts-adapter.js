@@ -160,9 +160,6 @@
     container.addEventListener('click',onActivate);
     container.addEventListener('focusin',onActivate);
 
-    const onSelection=()=>refresh();
-    doc.addEventListener('selectionchange',onSelection);
-
     const Observer=config.MutationObserver||root?.MutationObserver;
     const observer=Observer?new Observer(records=>{
       if(mutationsAreInside(records,host))return;
@@ -189,7 +186,6 @@
         observer?.disconnect();
         container.removeEventListener('click',onActivate);
         container.removeEventListener('focusin',onActivate);
-        doc.removeEventListener('selectionchange',onSelection);
         selectionAction?.destroy?.();
         pageHighlighter.clear();
         clearReadingActive();

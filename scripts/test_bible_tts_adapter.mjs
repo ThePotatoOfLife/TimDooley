@@ -42,9 +42,8 @@ const adapterPos=bible.indexOf('src="../../app/bible-tts-adapter.js"');
 assert.ok(readerPos < drawerPos && drawerPos < adapterPos,'Bible TTS dependencies must load engine -> drawer -> adapter');
 
 const adapterSource=fs.readFileSync(new URL('../app/bible-tts-adapter.js', import.meta.url),'utf8');
-assert.ok(adapterSource.includes('function ensureRelationListen()'),'Bible adapter must expose a contextual Listen affordance');
-assert.ok(adapterSource.includes("className='ptts-inline-listen'"),'Bible comparison must use the shared inline Listen style');
-assert.ok(adapterSource.includes("drawer?.playSection?.('both')"),'Bible Listen action must start the whole active comparison');
+assert.ok(!adapterSource.includes('function ensureRelationListen()'),'Bible should use one primary reader instead of a duplicate contextual Listen button');
+assert.ok(!adapterSource.includes("className='ptts-inline-listen'"),'Bible active comparison must not inject a second Listen entry point');
 assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"),'Bible page-level reader must mark itself as the primary TTS host');
 assert.ok(adapterSource.includes('selectionInsideActive'),'Bible adapter must constrain selection reading to the active relation');
 assert.ok(adapterSource.includes('mountSelectionAction'),'Bible comparator must use the shared read-selection action');
