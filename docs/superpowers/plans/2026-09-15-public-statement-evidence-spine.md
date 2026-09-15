@@ -1,5 +1,7 @@
 # Public Statement Evidence Spine Implementation Plan
 
+> **STATUS — SUPERSEDED / HISTORICAL DESIGN.** This linear “Evidence Spine” plan was replaced by the rooted Evidence architecture. Do not execute this checklist as the current backlog. The authoritative contract is `data/evidence/public-statement-root-manifest.json`; the successor execution history is `docs/superpowers/plans/2026-09-15-public-statement-evidence-root.md`.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development (recommended) or superpowers:executing-plans to implement this plan task-by-task. Steps use checkbox (`- [ ]`) syntax for tracking.
 
 **Goal:** Build one canonical, lossless public-statement evidence spine that reconciles date-only X records, second-level timestamp records, and known status IDs before any new Bible/UI projection is added.
