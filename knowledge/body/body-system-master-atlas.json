@@ -1,134 +1,197 @@
 {
   "id":"body-system-master-atlas",
-  "version":"1.0.0",
-  "updated":"2026-09-09",
+  "version":"1.2.0",
+  "updated":"2026-09-15",
   "status":"canonical body/neurobiology entry point",
-  "purpose":"Provide one clean map of the biological body, neurobiology, chakra/body-center symbolism and theology relations. Detailed owners remain authoritative for evidence; this file is the simple navigation and synthesis layer.",
-  "reader_rule":"Read each row left-to-right: real biology → project meaning → theological/mythic comparator → boundary. Never reverse the arrow and treat symbolism as scientific proof.",
+  "purpose":"Provide one clean map of whole-body biology, brain/body physiology, Potatoverse symbolism and theology relations. Detailed owners remain authoritative for evidence; this file is the concise navigation and synthesis layer.",
+  "reader_rule":"Read each row left-to-right: real biology → project meaning → theological/mythic comparator where useful → boundary. Use the specialist owner for technical detail. Never reverse the arrow and treat symbolism as scientific proof.",
+  "four_layer_rule":["anatomical structure","physiological process","subjective/phenomenological experience","project symbolism/comparative interpretation"],
   "master_sequence":[
-    "environment/soil",
-    "skin/boundary",
-    "gut/ecology",
-    "breath/circulation",
+    "environment/soil and external inputs",
+    "skin/barriers/sensory sampling",
+    "gut/ecology/nutrient sensing",
+    "metabolism/endocrine provision",
+    "heart/lungs/cardiorespiratory rhythms",
+    "immune/barrier surveillance",
     "autonomic/interoceptive reporting",
-    "spine/vertical transport",
-    "brainstem/arousal",
-    "hypothalamus/homeostasis",
-    "thalamus/House",
-    "memory-affect-action networks",
-    "pineal/timing threshold",
-    "cortex/world-model",
-    "whole-body return loop"
+    "spine/long-range vertical transport",
+    "brainstem/lower-gate integration",
+    "hypothalamus/steward/homeostasis",
+    "diencephalon/central regulation",
+    "thalamus/Potato/Father's House",
+    "memory-affect-action systems",
+    "pineal/circadian Door and timing threshold",
+    "cerebellar prediction/correction",
+    "cortex/networks/world-model",
+    "CSF/interstitial/lymphatic inner-flow systems",
+    "whole-body recurrent return loop"
   ],
   "systems":[
     {
       "id":"boundary-skin-senses",
-      "biology":"Skin, somatosensory receptors, proprioception, vestibular systems and special senses establish body/world boundaries and continuous environmental sampling.",
+      "biology":"Skin, sensory epithelia, somatosensory receptors, proprioception, vestibular systems and special senses establish multiple body/world interfaces and continuously sample environmental conditions.",
       "project":"Plane / membrane / Vessel boundary / outer court.",
       "comparators":["Temple outer boundary","garment/skin imagery","Door as controlled transition"],
-      "boundary":"The body boundary is distributed across sensory and predictive systems, not a single metaphysical membrane."
+      "boundary":"The body boundary is distributed across tissues, barriers and sensory/predictive systems, not one metaphysical membrane.",
+      "owner":"knowledge/body/body-science-context-atlas.json"
     },
     {
       "id":"gut-ecology-metabolism",
-      "biology":"Enteric nervous system, microbiome, liver/pancreatic metabolism, endocrine and immune signaling form a distributed metabolic ecology linked bidirectionally to the brain.",
-      "project":"Garden / soil / digestion / transformation / Navel center.",
+      "biology":"Gut epithelium, enteric nervous system, enteroendocrine cells, microbiome, liver/pancreatic metabolism, immune systems and vagal/spinal pathways form a bidirectional metabolic ecology. Some enteroendocrine neuropod cells can communicate rapidly with sensory neurons while hormones and metabolites operate over slower timescales.",
+      "project":"Garden / soil / roots / digestion / transformation / harvest / Navel center.",
       "comparators":["Garden cultivation","fruit/harvest","bread/grain","clean/unclean as symbolic—not microbial—categories"],
-      "boundary":"Microbiome composition is not a moral purity score; gut serotonin does not simply become brain serotonin."
+      "boundary":"The microbiome is not a moral purity score, the ENS is not a second conscious brain, and gut-produced neurotransmitters do not simply become brain emotion.",
+      "owner":"knowledge/body/brain-body-systems-deepening-wave-2.json"
+    },
+    {
+      "id":"metabolic-endocrine-provision",
+      "biology":"Hypothalamic-pituitary axes, pancreatic hormones, adipose signals and gut peptides communicate energy, stress, growth, reproduction and fluid-state information across the organism. Endocrine signals generally operate more slowly and diffusely than fast synaptic communication and are shaped by feedback loops.",
+      "project":"Provision / seasons / harvest accounting / Steward's slower messengers.",
+      "comparators":["stewardship","daily bread/provision","times and seasons"],
+      "boundary":"Hormone concentrations are not direct measures of emotion, holiness, willpower, gendered spiritual rank or destiny.",
+      "owner":"knowledge/body/brain-body-systems-deepening-wave-2.json"
     },
     {
       "id":"heart-lungs-breath-circulation",
-      "biology":"Heart, lungs, blood, baroreceptors, chemoreceptors and respiratory control generate rhythmic internal signals tightly coupled to autonomic state and interoception.",
-      "project":"Heart/Door + Breath/Spirit-flow + life circulation.",
+      "biology":"Heart, lungs, blood vessels, baroreceptors, chemoreceptors, pulmonary sensors and brainstem respiratory/autonomic circuits generate coupled rhythms and feedback loops. Cardiorespiratory signals contribute strongly to interoception and felt bodily state.",
+      "project":"Heart/Door + Breath/Spirit-flow + River/life circulation + love/grief/longing as embodied symbolism.",
       "comparators":["Genesis 2:7 breath into nostrils","biblical heart as orientation/affection","living water as flow image"],
-      "boundary":"Emotion is not stored literally in the heart; Spirit is not oxygen, blood or breath."
+      "boundary":"Emotion and memory are not stored literally in cardiac muscle; Spirit is not oxygen, blood or breath; heartbeat-related brain signals do not prove a separate heart consciousness.",
+      "owner":"knowledge/body/body-science-context-atlas.json"
+    },
+    {
+      "id":"immune-barriers-meninges",
+      "biology":"BBB, blood-CSF barrier, meninges, choroid plexus, immune signaling, resident border immune cells and meningeal lymphatics form a constellation of selective interfaces rather than one sealed wall. These systems regulate exchange, surveillance, inflammation and drainage.",
+      "project":"Walls / guardians / courts / controlled gates / drainage / protected Garden.",
+      "comparators":["guardians","walls","stewardship","cleaning/repair as metaphor only"],
+      "boundary":"Immune activation is not sin or impurity, increased permeability is not moral failure, and lymphatic/CSF clearance is not spiritual purification.",
+      "owner":"knowledge/body/brain-body-systems-deepening-wave-2.json"
     },
     {
       "id":"autonomic-vagus-interoception",
-      "biology":"Sympathetic/parasympathetic systems, vagal and spinal visceral afferents, brainstem nuclei, insula and cingulate networks continuously report and regulate internal bodily state.",
-      "project":"Ascending/descending body report loop; inward Eye; embodied Spirit-flow; biological neighbor for chakra sensations.",
+      "biology":"Sympathetic/parasympathetic systems, vagal/glossopharyngeal/spinal visceral afferents, NTS and parabrachial circuits, hypothalamus, thalamus, insula and cingulate networks continuously sense and regulate internal bodily state. Interoception includes mechanical, chemical, hormonal, thermal and immune-related cues.",
+      "project":"Ascending/descending body report loop; inward Eye; return-to-center; embodied Spirit-flow; biological neighbor for some chakra sensations.",
       "comparators":["watchfulness","discernment","breath/Spirit","ascent/descent"],
-      "boundary":"No chakra maps one-to-one to the vagus, insula or a single ganglion."
+      "boundary":"No chakra maps one-to-one to the vagus, insula or a ganglion; organism communication is not reducible to the vagus nerve.",
+      "owner":"knowledge/body/body-science-context-atlas.json"
     },
     {
       "id":"spine-atlas-axis",
-      "biology":"Vertebral column protects/supports; spinal tracts carry ascending sensory and descending motor/autonomic information. C1 Atlas supports the skull; C2 Axis provides a pivot for head rotation.",
+      "biology":"Vertebral column protects/supports; spinal cord contains local circuits and carries ascending sensory plus descending motor/autonomic information. C1 Atlas supports the skull; C2 Axis provides a pivot for head rotation.",
       "project":"Ladder / Tree trunk / 33-step symbolic ascent; Atlas=bearer; Axis=turning/pivot.",
       "comparators":["Jacob's Ladder","Axis Mundi/Yggdrasil","33 as project recurrence"],
-      "boundary":"33 vertebrae are anatomy, not proof of 33 metaphysical levels."
+      "boundary":"33 vertebrae are anatomy, not proof of 33 metaphysical levels or a literal Ladder to Heaven.",
+      "owner":"knowledge/corporium/ladder-33-vertebrae-five-centers-study.json"
     },
     {
       "id":"brainstem-arousal-gateway",
-      "biology":"Brainstem arousal and autonomic systems help regulate wakefulness, respiration, cardiovascular function and state transitions.",
-      "project":"Lower Gate / wake-sleep threshold / life-support root beneath the House.",
+      "biology":"Brainstem circuits support cardiorespiratory control, visceral integration, orienting, pain modulation, cranial motor/sensory functions and wake-sleep state. NTS, parabrachial, reticular, locus-coeruleus, raphe and other systems participate in overlapping networks.",
+      "project":"Lower Gate / report station / wake-sleep threshold / life-support root beneath the House.",
       "comparators":["watchfulness","sleep/awakening","lamp kept burning"],
-      "boundary":"Arousal systems are distributed and do not define soul or spiritual rank."
+      "boundary":"The brainstem is not a primitive soul layer and arousal systems do not define spiritual rank.",
+      "owner":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json"
     },
     {
       "id":"hypothalamus-steward",
-      "biology":"Hypothalamus regulates homeostasis, temperature, hunger, thirst, reproduction, stress, circadian coordination and pituitary/endocrine control.",
-      "project":"Steward / household manager adjacent to House; regulates needs and seasons rather than being the canonical House itself.",
+      "biology":"Hypothalamic systems regulate temperature, hunger, thirst/osmolality, reproduction, stress, endocrine axes, autonomic state, circadian coordination and motivated homeostatic behaviors. Different nuclei and cell populations participate in overlapping functions.",
+      "project":"Steward / household manager adjacent to House; regulates needs, provision and seasons rather than being the canonical House itself.",
       "comparators":["stewardship","provision","seasons/times","hunger/thirst"],
-      "boundary":"Older Potato Room=hypothalamus language is historical project strata; canonical House mapping is thalamic."
+      "boundary":"Older Potato Room=hypothalamus language is historical project strata; canonical House mapping is thalamic and no hypothalamic nucleus is a moral command center.",
+      "owner":"knowledge/body/brain-body-systems-deepening-wave-2.json"
     },
     {
       "id":"thalamus-trn-house",
-      "biology":"Thalamic nuclei participate in sensory/motor relay, attention, arousal, learning, memory and thalamocortical coordination. TRN provides inhibitory modulation of thalamic traffic.",
-      "project":"Father's House / rooms / central interior; TRN=wall/gate/sieve.",
+      "biology":"The paired thalamic system contains heterogeneous nuclei participating in sensory/motor transformation, attention, arousal, learning/memory and reciprocal thalamocortical coordination. TRN supplies inhibitory modulation around much of the thalamus. Conscious-state research implicates thalamic and thalamocortical interactions but not a single unique consciousness nucleus.",
+      "project":"Potato / Father's House / rooms / central interior / seed-core; nuclei=rooms, reciprocal pathways=roads/roots/branches, TRN=wall/gate/sieve. Potato-shaped is canonical project shape language while ovoid/egg-shaped is conventional anatomy.",
       "comparators":["John 14 Father's House with many dwellings","House/rooms","mustard seed as compact generative potential"],
-      "boundary":"Thalamus is not the sole seat of consciousness or literal divine residence; TRN does not filter spiritual frequencies."
+      "boundary":"Thalamus is not the sole seat or seed of consciousness, literal divine residence or literal potato; TRN does not filter spiritual frequencies.",
+      "owner":"data/potatoism-thalamus-brain-map.json"
     },
     {
       "id":"memory-affect-action",
-      "biology":"Hippocampal systems support episodic/contextual memory; amygdala contributes to affective salience/threat learning; basal ganglia participate in action selection, habits, reward and cognitive-motor loops; cerebellum contributes to timing, prediction, error correction, learning and cognition.",
-      "project":"Thought/Memory return loop + judgment/action selection + correction/refinement. Cerebellar arbor vitae adds a genuine anatomical Tree-of-Life name.",
+      "biology":"Hippocampal systems support episodic/contextual memory; amygdalar networks contribute to salience, learning and affective/autonomic coordination; basal ganglia participate in action selection, habit and reinforcement loops; cerebellum contributes to timing, prediction, error correction, learning and cognition.",
+      "project":"Thought/Memory return loop + warning/affective marking + judgment/action selection + correction/refinement. Cerebellar arbor vitae supplies a genuine anatomical Tree-of-Life name comparator.",
       "comparators":["Huginn/Muninn as Thought/Memory","judgment/choice","pruning/correction","Tree of Life as name-comparator only"],
-      "boundary":"No single structure equals Thought, Memory, Judgment or Tree of Life."
-    },
-    {
-      "id":"ventricles-csf-glymphatic",
-      "biology":"Ventricles contain CSF; CSF circulates through ventricular/subarachnoid spaces and participates in buoyancy, homeostasis and transport. Perivascular/glymphatic exchange is linked to sleep and clearance but remains an active research area.",
-      "project":"Inner chamber / River / Spirit-flow analogue / Tomb-as-empty-space metaphor.",
-      "comparators":["Genesis river","Ezekiel 47 river","Revelation 22 river","tomb/void as symbolic threshold"],
-      "boundary":"CSF is not Holy Spirit; glymphatic flow is not spiritual purification."
+      "boundary":"No single structure equals Thought, Memory, fear, Judgment or Tree of Life.",
+      "owner":"knowledge/body/whole-brain-neurobiology-atlas.json"
     },
     {
       "id":"pineal-circadian-door",
-      "biology":"Pineal gland produces melatonin under circadian control; retinal light information reaches the suprachiasmatic clock and influences pineal output indirectly.",
-      "project":"Son / Single Eye / Door / timing threshold / light-dark marker.",
-      "comparators":["single-eye/lamp imagery","Door","narrow gate","historical Descartes pineal-soul theory"],
-      "boundary":"Pineal is not a human photoreceptor, projector of spiritual light, or proven seat of soul."
+      "biology":"Pineal gland is a small epithalamic neuroendocrine organ producing rhythmic melatonin. Retinal light entrains the SCN, which influences pineal output through a multisynaptic autonomic route. The pineal lies beside the posterior third-ventricle/pineal-recess region; small human studies report relatively high third-ventricular melatonin and suggest entry through the pineal recess, while physiological significance remains unresolved.",
+      "project":"Son / Single Eye / Third Eye / Door / timing threshold / light-dark marker / later present-window and chamber symbolism.",
+      "comparators":["single-eye/lamp imagery","Door","narrow gate","historical/esoteric third-eye associations","Descartes pineal-soul history"],
+      "boundary":"Pineal is not a human retinal-style photoreceptor, projector of spiritual light, direct present sensor, dimensional portal or proven seat of soul/consciousness. Real pineal↔third-ventricle adjacency does not establish mystical CSF sensing.",
+      "owner":"knowledge/body/tim-neurobiology-relational-reconciliation.json"
+    },
+    {
+      "id":"ventricles-csf-choroid-fluid-interfaces",
+      "biology":"Ventricles contain CSF; choroid plexus produces a large share of CSF and forms the blood-CSF barrier; CSF circulates through ventricular/subarachnoid spaces; perivascular/interstitial exchange and meningeal lymphatic drainage provide additional nested fluid interfaces. Human glymphatic details remain an active research area.",
+      "project":"Inner chamber / spring / River / Spirit-flow analogue / Tomb-as-empty-space metaphor / guarded inner-water boundary.",
+      "comparators":["Genesis river","Ezekiel 47 river","Revelation 22 river","tomb/void as symbolic threshold"],
+      "boundary":"CSF is not Holy Spirit, choroid plexus is not a sacred purifier, and glymphatic/lymphatic flow is not spiritual cleansing.",
+      "owner":"knowledge/body/brain-body-systems-deepening-wave-2.json"
     },
     {
       "id":"cortex-networks-world-model",
-      "biology":"Cortical sensory, association, executive, default-mode and salience networks support perception, planning, self-related thought, attention and model-building through distributed interactions with thalamus and subcortical systems.",
+      "biology":"Cortical sensory, association, executive, default-mode, salience, attention, language and sensorimotor networks support distributed perception, planning, self-related thought, attention and model-building through interactions with thalamic and subcortical systems.",
       "project":"Rooms opening into the world / narrative map / Observer's changing model / branches of House.",
       "comparators":["many rooms/branches as organizational metaphor","Word/story/narrative","discernment"],
-      "boundary":"Networks are not theological dimensions and EEG/fMRI states do not map to spiritual rank."
+      "boundary":"Networks are dynamic research constructs rather than theological dimensions; EEG/fMRI states do not map to spiritual rank and there is no one neural present point.",
+      "owner":"knowledge/body/whole-brain-neurobiology-atlas.json"
     },
     {
-      "id":"immune-glia-barrier-repair",
-      "biology":"BBB, meninges, immune signaling, astrocytes, microglia and oligodendrocytes regulate protection, metabolism, myelination, inflammatory surveillance and maintenance of neural environments.",
-      "project":"Walls / groundskeepers / repair crews / protected Garden.",
+      "id":"glia-neurovascular-maintenance",
+      "biology":"Astrocytes, oligodendrocytes, microglia, vascular cells and other support systems regulate extracellular conditions, metabolic support, myelination, immune surveillance, neurovascular coupling and tissue maintenance.",
+      "project":"Groundskeepers / Gardeners / repair crews / provision / protected Garden.",
       "comparators":["guardians","walls","stewardship","pruning/repair"],
-      "boundary":"Immune activation is not sin, impurity or karmic punishment."
+      "boundary":"Glial remodeling is not moral pruning, immune activation is not sin, and fMRI blood-flow signals are not direct measures of thought or spiritual intensity.",
+      "owner":"knowledge/body/body-science-context-atlas.json"
+    },
+    {
+      "id":"sleep-circadian-house-states",
+      "biology":"Sleep and wake arise from interacting circadian, homeostatic and state-control mechanisms. SCN coordinates circadian phase; hypothalamic/brainstem/basal-forebrain systems stabilize sleep/wake states; pineal melatonin is one timing signal among many; peripheral tissues maintain molecular clocks.",
+      "project":"House opening/closing states / night-day Door / seasons/times / lamp and watchfulness symbolism.",
+      "comparators":["watchfulness","night/day","times and seasons","lamp"],
+      "boundary":"Melatonin is not a universal sleep switch and sleep stages/EEG frequencies do not establish spiritual levels.",
+      "owner":"knowledge/body/brain-body-systems-deepening-wave-2.json"
     },
     {
       "id":"plasticity-development-epigenetics",
-      "biology":"Experience alters synaptic strength, network organization and gene regulation; development, stress, learning and environment interact across multiple biological timescales.",
+      "biology":"Development and lifelong adaptation involve gene regulation, neurogenesis in restricted contexts, synaptogenesis, pruning, myelination, learning-related plasticity, endocrine transitions, immune/metabolic state and aging-related vascular/neurochemical change.",
       "project":"Growth / pruning / grafting / seed becoming Tree / transformation over time.",
       "comparators":["John 15 pruning/fruit","mustard seed growth","renewal/transformation"],
-      "boundary":"Epigenetics does not encode mystical destiny or measurable karmic debt."
+      "boundary":"Epigenetics and development do not encode mystical destiny, fixed spiritual rank or measurable karmic debt.",
+      "owner":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json"
+    },
+    {
+      "id":"whole-body-return-loop",
+      "biology":"The organism operates through recurrent multi-timescale feedback: sense external and internal conditions → integrate across neural/endocrine/immune/metabolic systems → act or regulate → alter body/environment → sense the changed state again. No single structure receives every report or controls every output.",
+      "project":"Return to center / River returning / orientation restored / center as loop rather than anatomical dot.",
+      "comparators":["return","homecoming","river to source as metaphor"],
+      "boundary":"Return-to-center is a systems analogy. Biology does not identify one hidden anatomical center to which all perception or consciousness literally returns.",
+      "owner":"knowledge/body/tim-neurobiology-relational-reconciliation.json"
     }
   ],
+  "functional_symbol_grammar":{
+    "House":"organized integration and differentiated internal spaces; canonical symbolic biological anchor = thalamus",
+    "Door":"selective transition or state-dependent gating; biological neighbors are many, while pineal/Son remains canonical Potatoverse Door/Eye symbolism",
+    "River":"movement/exchange across multiple channels rather than CSF alone",
+    "Garden":"ecology, maintenance, nourishment, barriers and adaptation",
+    "Steward":"homeostatic/endocrine/autonomic regulation of needs",
+    "Eye":"perception, attention, interoceptive sensing and discernment; distributed biological neighbors",
+    "Ladder":"long-range/bidirectional vertical connectivity and ascent-descent symbolism",
+    "Return":"feedback and recurrent state updating",
+    "Gardener":"maintenance, support, selective remodeling and cultivation rather than a single cell type"
+  },
   "chakra_overlay":{
     "rule":"Chakras are phenomenological/symbolic centers overlaid on many biological systems; they are not hidden organs.",
     "centers":[
-      {"name":"Root","project":"foundation/safety/ground","biology_neighbors":["pelvic floor","posture","proprioception","sacral pathways","autonomic survival state"]},
+      {"name":"Root","project":"foundation/safety/ground","biology_neighbors":["pelvic floor","posture","proprioception","sacral pathways","autonomic defensive state"]},
       {"name":"Pelvic","project":"generation/desire/fluidity","biology_neighbors":["reproductive endocrine systems","pelvic autonomics","sexual sensation","visceral interoception"]},
-      {"name":"Navel","project":"power/digestion/transformation","biology_neighbors":["enteric nervous system","metabolism","sympathetic state","gut-brain signaling"]},
-      {"name":"Heart","project":"Door/love/grief/courage","biology_neighbors":["cardiorespiratory interoception","baroreception","insula/cingulate","social-affective networks"]},
+      {"name":"Navel","project":"power/digestion/transformation","biology_neighbors":["enteric nervous system","enteroendocrine signaling","metabolism","sympathetic state","gut-brain signaling"]},
+      {"name":"Heart","project":"Door/love/grief/courage","biology_neighbors":["cardiorespiratory interoception","baroreception","brainstem autonomic networks","insula/cingulate","social-affective networks"]},
       {"name":"Throat","project":"breath/Word/witness","biology_neighbors":["larynx","respiratory coordination","speech/language networks","vagal sensory pathways"]},
-      {"name":"Brow","project":"Eye/discernment/observer","biology_neighbors":["vision","attention","prefrontal control","thalamocortical selection"]},
+      {"name":"Brow","project":"Eye/discernment/observer","biology_neighbors":["vision","attention","prefrontal control","thalamocortical selection","interoceptive/metacognitive processes"]},
       {"name":"Crown","project":"House/North/integration","biology_neighbors":["distributed cranial networks","thalamic House metaphor"]}
     ]
   },
@@ -145,7 +208,11 @@
   ],
   "canonical_owners":{
     "symbolic_body":"knowledge/body/body-symbolism-map.json",
-    "science_basics":"knowledge/body/body-science-context-atlas.json",
+    "body_brain_science":"knowledge/body/body-science-context-atlas.json",
+    "whole_brain_neurobiology":"knowledge/body/whole-brain-neurobiology-atlas.json",
+    "brain_anatomy_deepening":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+    "brain_body_systems":"knowledge/body/brain-body-systems-deepening-wave-2.json",
+    "tim_neurobiology_reconciliation":"knowledge/body/tim-neurobiology-relational-reconciliation.json",
     "broad_recovered_biology":"knowledge/body/neurobiology-recovery-wave-2.json",
     "neurotheology_synthesis":"knowledge/body/neurotheology-axis-house-spirit-atlas.json",
     "thalamus_detail":"data/potatoism-thalamus-brain-map.json",
@@ -153,5 +220,15 @@
     "timeline":"knowledge/timeline/neurotheology-attestation-ledger.json",
     "routing":"knowledge/indexes/neurotheology-routing-index.json"
   },
-  "definition_of_finished":"A topic is finished enough for baseline use when it has a biological description, project role, comparator, mismatch/boundary, owner and timeline status. New discoveries extend the atlas but should not create duplicate owners."
+  "deep_reading_routes":[
+    {"question":"What is the whole biological body map?","route":"this file"},
+    {"question":"What is the actual body↔brain physiology?","route":"knowledge/body/body-science-context-atlas.json"},
+    {"question":"What structures and flows exist in the brain?","route":"knowledge/body/whole-brain-neurobiology-atlas.json"},
+    {"question":"What finer brain anatomy exists?","route":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json"},
+    {"question":"How do endocrine, immune, gut, cardiovascular, barrier and circadian systems connect brain and body?","route":"knowledge/body/brain-body-systems-deepening-wave-2.json"},
+    {"question":"What did Tim actually mean and what is the closest biological neighbor?","route":"knowledge/body/tim-neurobiology-relational-reconciliation.json"},
+    {"question":"When did each Tim mapping appear?","route":"knowledge/timeline/neurotheology-attestation-ledger.json"},
+    {"question":"How does this connect to theology/mythology?","route":"knowledge/body/neurotheology-axis-house-spirit-atlas.json"}
+  ],
+  "definition_of_finished":"A baseline topic is finished enough when it has a biological description, relations/flows, project role where relevant, explicit mismatch/boundary, canonical owner and attestation/source status. Active scientific fields remain updateable even after baseline completion. New discoveries should deepen these owners instead of creating duplicate shallow files."
 }
