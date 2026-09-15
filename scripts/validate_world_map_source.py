@@ -9,6 +9,7 @@ import validate_world_map_ui_shell as ui_shell
 import validate_world_map_terrain as terrain
 import validate_world_map_geo_kernel as geo_kernel
 import validate_world_map_scale_contract as scale_contract
+import validate_world_map_interaction_router as interaction_router
 import validate_world_map_subdivisions as subdivisions
 import validate_world_map_search_race as search_race
 import validate_world_map_browse_performance as browse_performance
@@ -29,6 +30,9 @@ if __name__ == "__main__":
     if status:
         raise SystemExit(status)
     status = scale_contract.main()
+    if status:
+        raise SystemExit(status)
+    status = interaction_router.main()
     if status:
         raise SystemExit(status)
     status = subdivisions.main()
