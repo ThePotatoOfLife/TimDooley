@@ -32,27 +32,29 @@ function extractFunction(name) {
 }
 
 const card = { hidden:false };
+const box = { hidden:true };
 const elements = new Map([['atlasCountryCard', card]]);
 const document = { getElementById(id) { return elements.get(id) || null; } };
 let rendered = 0;
 const window = { __potatoAtlasCountryCard:{ render() { rendered += 1; } } };
-let countryCardWasVisible = false;
 
 const suspendCountryCard = new Function(
-  'document',
+  'document', 'box',
   `"use strict"; let countryCardWasVisible = false; ${extractFunction('suspendCountryCard')}; return {run:suspendCountryCard, wasVisible:()=>countryCardWasVisible};`,
-)(document);
+)(document, box);
 
 const suspended = suspendCountryCard.run();
 assert.equal(suspended, true, 'opening Eye should record a visible country card');
 assert.equal(card.hidden, true, 'opening Eye must hide the overlapping country card');
 assert.equal(suspendCountryCard.wasVisible(), true);
 
-// A country-card rerender while Eye is open must be suppressible again; this
-// simulates selection/runtime refresh events that normally unhide the card.
+// A country-card rerender while Eye is open must be suppressed without changing
+// the original restoration intent.
+box.hidden = false;
 card.hidden = false;
 suspendCountryCard.run();
 assert.equal(card.hidden, true, 'Eye must retain exclusive ownership of the top-left overlay corner');
+assert.equal(suspendCountryCard.wasVisible(), true, 'rerender suppression must not rewrite restore intent');
 
 // Test the restore helper independently with the remembered state injected.
 const restoreFactory = new Function(
