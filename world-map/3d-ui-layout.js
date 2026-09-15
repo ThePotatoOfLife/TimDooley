@@ -14,6 +14,7 @@ function ensureStyle() {
   const style = document.createElement('style');
   style.id = 'atlasUILayoutStyle';
   style.textContent = `
+    body.atlas-registry-ui .hud,body.atlas-registry-ui .camera{display:none!important}
     #atlasUILeftStatus{position:absolute;left:10px;bottom:10px;z-index:7;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;width:min(300px,calc(100% - 20px));pointer-events:none}
     #atlasUILeftStatus>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin:0!important;max-width:100%;pointer-events:auto}
     #atlasUILeftStatus #atlasWorldContext{width:min(290px,100%)!important}
