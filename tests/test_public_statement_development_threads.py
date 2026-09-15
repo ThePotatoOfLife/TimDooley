@@ -17,6 +17,12 @@ def sample_root():
 def definitions():
     return {
         'id': 'public-statement-development-thread-definitions',
+        'persistence_policy': {
+            'minimum_active_months': 3,
+            'minimum_span_days': 90,
+            'minimum_term_diversity': 2,
+            'minimum_episode_count': 2,
+        },
         'threads': [
             {
                 'id': 'threshold-door-gate',
@@ -58,6 +64,57 @@ def sample_bible_projection():
             'root-a': ['rel-door'],
             'root-b': ['rel-tree'],
             'root-c': ['rel-repair'],
+        }
+    }
+
+
+def persistent_root():
+    return {
+        'id': 'public-statement-evidence-root',
+        'roots': [
+            {'id': 'p1', 'timestamp_utc': '2026-01-01T10:00:00Z', 'date': '2026-01-01', 'quote': 'The door and gate are here.'},
+            {'id': 'p2', 'timestamp_utc': '2026-03-15T10:00:00Z', 'date': '2026-03-15', 'quote': 'Walk through the door.'},
+            {'id': 'p3', 'timestamp_utc': '2026-06-10T10:00:00Z', 'date': '2026-06-10', 'quote': 'The gate is also a portal.'},
+        ],
+        'traversals': {'chronological': ['p1', 'p2', 'p3']},
+    }
+
+
+def persistent_definitions():
+    return {
+        'id': 'public-statement-development-thread-definitions',
+        'persistence_policy': {
+            'minimum_active_months': 3,
+            'minimum_span_days': 90,
+            'minimum_term_diversity': 3,
+            'minimum_episode_count': 2,
+        },
+        'threads': [
+            {
+                'id': 'threshold-door-gate',
+                'label': 'Threshold / Door / Gate',
+                'status': 'candidate',
+                'terms': ['door', 'gate', 'portal'],
+                'minimum_attestations': 2,
+            },
+        ],
+    }
+
+
+def persistent_episodes():
+    return {
+        'episodes': [
+            {'id': 'episode-early', 'member_root_ids': ['p1']},
+            {'id': 'episode-late', 'member_root_ids': ['p2', 'p3']},
+        ]
+    }
+
+
+def persistent_bible_projection():
+    return {
+        'root_relations': {
+            'p1': ['rel-early'],
+            'p3': ['rel-late'],
         }
     }
 
@@ -109,3 +166,69 @@ def test_definition_order_does_not_change_output():
     forward_payload = build_development_threads(sample_root(), defs, sample_episodes(), sample_bible_projection())
     reverse_payload = build_development_threads(sample_root(), reverse, sample_episodes(), sample_bible_projection())
     assert forward_payload == reverse_payload
+
+
+def test_persistence_metrics_measure_long_range_recurrence_and_reference_coverage():
+    payload = build_development_threads(
+        persistent_root(),
+        persistent_definitions(),
+        persistent_episodes(),
+        persistent_bible_projection(),
+    )
+    thread = payload['threads'][0]
+    persistence = thread['persistence']
+
+    assert persistence['span_days'] == 160
+    assert persistence['active_months'] == ['2026-01', '2026-03', '2026-06']
+    assert persistence['active_month_count'] == 3
+    assert persistence['matched_terms'] == ['door', 'gate', 'portal']
+    assert persistence['term_diversity_count'] == 3
+    assert persistence['episode_count'] == 2
+    assert persistence['episode_coverage_ratio'] == 1.0
+    assert persistence['bible_relation_count'] == 2
+    assert persistence['bible_attestation_count'] == 2
+    assert persistence['bible_attestation_ratio'] == 2 / 3
+
+
+def test_persistence_tests_use_declared_policy_without_promoting_candidate_status():
+    payload = build_development_threads(
+        persistent_root(),
+        persistent_definitions(),
+        persistent_episodes(),
+        persistent_bible_projection(),
+    )
+    thread = payload['threads'][0]
+    tests = thread['persistence']['tests']
+
+    assert tests == {
+        'cross_episode': {'observed': 2, 'threshold': 2, 'passed': True},
+        'long_span': {'observed': 160, 'threshold': 90, 'passed': True},
+        'multi_month': {'observed': 3, 'threshold': 3, 'passed': True},
+        'term_diversity': {'observed': 3, 'threshold': 3, 'passed': True},
+    }
+    assert thread['persistence']['passed_test_count'] == 4
+    assert thread['persistence']['test_count'] == 4
+    assert thread['persistence']['all_core_tests_passed'] is True
+    assert thread['status'] == 'candidate'
+    assert thread['interpretive_claims'] == []
+
+
+def test_persistence_policy_thresholds_can_fail_without_removing_the_thread():
+    defs = persistent_definitions()
+    defs['persistence_policy']['minimum_active_months'] = 4
+    defs['persistence_policy']['minimum_span_days'] = 200
+    defs['persistence_policy']['minimum_term_diversity'] = 4
+    defs['persistence_policy']['minimum_episode_count'] = 3
+
+    payload = build_development_threads(
+        persistent_root(),
+        defs,
+        persistent_episodes(),
+        persistent_bible_projection(),
+    )
+    thread = payload['threads'][0]
+
+    assert thread['persistence']['passed_test_count'] == 0
+    assert thread['persistence']['all_core_tests_passed'] is False
+    assert thread['status'] == 'candidate'
+    assert thread['root_ids'] == ['p1', 'p2', 'p3']
