@@ -16,6 +16,13 @@ USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
 DNK = ROOT / "data" / "world-subdivisions" / "DNK.geo.json"
 FREEZE_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_freeze.mjs"
 MULTI_COUNTRY_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_multi_country.mjs"
+EXPECTED_RUNTIME_BUDGET = {
+    "partition_max_bytes": 1_500_000,
+    "rendered_max_bytes": 3_000_000,
+    "rendered_max_partitions": 4,
+    "cache_max_bytes": 6_000_000,
+    "cache_max_partitions": 8,
+}
 
 
 def main() -> int:
@@ -45,7 +52,22 @@ def main() -> int:
         if "3d-subdivisions.js" not in lifecycle or "map.getZoom() < 3.4" not in lifecycle:
             errors.append("regional-scale lazy subdivision loading is not registered")
 
+        budget = index.get("runtime_budget")
+        if budget != EXPECTED_RUNTIME_BUDGET:
+            errors.append(f"subdivision runtime budget mismatch: {budget!r}")
+
         partitions = index.get("partitions", {})
+        for partition, descriptor in partitions.items():
+            path = ROOT / "data" / "world-subdivisions" / str(descriptor.get("path") or "")
+            if not path.exists():
+                errors.append(f"{partition}: partition path is missing")
+                continue
+            actual_bytes = path.stat().st_size
+            if descriptor.get("bytes") != actual_bytes:
+                errors.append(f"{partition}: descriptor bytes must equal {actual_bytes}")
+            if actual_bytes > EXPECTED_RUNTIME_BUDGET["partition_max_bytes"]:
+                errors.append(f"{partition}: partition exceeds hard byte budget")
+
         usa_descriptor = partitions.get("USA", {})
         if usa_descriptor.get("feature_count") != 51:
             errors.append("USA subdivision index must declare 51 first-wave features")
@@ -114,7 +136,7 @@ def main() -> int:
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · freeze + multi-country regressions")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · budgets · freeze + multi-country regressions")
     return 0
 
 
