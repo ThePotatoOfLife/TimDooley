@@ -30,6 +30,7 @@ QUALIFYING_DOCUMENTARY_SOURCES = {
     "consecutive_transcript", "public_chat_transcript", "public_thread", "public_post_sequence",
     "external_documentary_source", "creative_artifact",
 }
+QUALIFYING_LITERARY_SOURCES = {"great_book_literary_text", "creative_artifact"}
 NO_QUOTE_STATUSES = {"private_source_no_quote", "internal_recovery_only"}
 
 
@@ -276,8 +277,12 @@ def validate_story_archive(root: Path) -> list[str]:
                 errors.append(f"story {rid} TRANSCRIPT_DEPTH requires multiple ordered beats")
         if depth == "LITERARY_COMPLETE":
             story_sources = [source_map[sid] for sid in reg.get("source_ids", []) if sid in source_map]
-            if not any(src.get("source_class") == "great_book_literary_text" for src in story_sources):
-                errors.append(f"story {rid} LITERARY_COMPLETE lacks great_book_literary_text source")
+            if not any(
+                src.get("source_class") in QUALIFYING_LITERARY_SOURCES
+                and src.get("continuity") == "literary"
+                for src in story_sources
+            ):
+                errors.append(f"story {rid} LITERARY_COMPLETE lacks qualifying literary source")
 
         matches = public_by_id.get(rid, [])
         if len(matches) != 1:
