@@ -13,6 +13,7 @@ COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 BRIDGE = ROOT / "world-map" / "3d-scalar-runtime-bridge.js"
 ACTIVE_VIEW = ROOT / "world-map" / "3d-active-view.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
+BOOTSTRAP_STAGING_TEST = ROOT / "scripts" / "test_world_map_inspection_bootstrap_staging.mjs"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
@@ -218,10 +219,11 @@ def main() -> int:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
     run_node_regression(CAPITAL_OWNERSHIP_TEST, errors, "World Map capital ownership regression")
     run_node_regression(OVERLAY_OVERLAP_TEST, errors, "World Map overlay overlap regression")
+    run_node_regression(BOOTSTRAP_STAGING_TEST, errors, "World Map inspection bootstrap staging regression")
 
     if errors:
         print("WORLD MAP BROWSE/PERFORMANCE VALIDATION FAILED")
@@ -230,7 +232,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · stable async hover · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions · lazy specialist stack")
+    print("Browse + Pins · stable async hover · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
     return 0
 
 
