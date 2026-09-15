@@ -265,9 +265,16 @@ async function installCapitalsWhenUseful() {
     window.dispatchEvent(new CustomEvent('potato-atlas-capitals-ready', { detail: { count: capitals.features.length, visible: capitalsVisible } }));
   } catch (error) { capitalsStarted = false; console.warn('Capital city layer unavailable:', error); }
 }
+function placesCanOwnCapitals(detail = {}) {
+  const status = window.__potatoAtlasPlaces?.status?.() || detail || {};
+  return Number(status.majorCount || 0) > 0 && !status.error;
+}
+window.addEventListener('potato-atlas-places-ready', event => {
+  if (placesCanOwnCapitals(event?.detail || {})) return;
+  void installCapitalsWhenUseful();
+});
 function install() {
   bindCountryHover('countries-fill');
   bindCountryHover('countries-extrude');
-  installCapitalsWhenUseful();
 }
 if (map.loaded()) install(); else map.once('load', install);
