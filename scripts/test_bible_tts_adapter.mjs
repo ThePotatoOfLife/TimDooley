@@ -8,18 +8,20 @@ const payload = adapter.buildBiblePayload({
   project:'Project anchor. Project quote.',
   scripture:'John 12 text.',
   why:'The grain pattern connects the two.',
-  mismatch:'Where it breaks: roles differ.'
+  mismatch:'Where it breaks: roles differ.',
+  selection:'grain pattern'
 });
 
 assert.equal(payload.id,'rel-7');
-assert.deepEqual(payload.sections.map(x=>x.id),['both','project','scripture','why']);
+assert.deepEqual(payload.sections.map(x=>x.id),['both','project','scripture','why','selection']);
 assert.match(payload.sections[0].text,/Project anchor/);
-assert.match(payload.sections[0].text,/John 12 text/);
+assert.match(payload.sections[0].text,/John 12 text./);
 assert.match(payload.sections[0].text,/roles differ/);
 assert.equal(payload.sections[1].text,'Project anchor. Project quote.');
 assert.equal(payload.sections[2].text,'John 12 text.');
 assert.match(payload.sections[3].text,/grain pattern/);
 assert.match(payload.sections[3].text,/roles differ/);
+assert.equal(payload.sections[4].text,'grain pattern');
 
 const bible = fs.readFileSync(new URL('../traditions/bible/index.html', import.meta.url),'utf8');
 for (const marker of [
@@ -44,5 +46,7 @@ assert.ok(adapterSource.includes('function ensureRelationListen()'),'Bible adapt
 assert.ok(adapterSource.includes("className='ptts-inline-listen'"),'Bible comparison must use the shared inline Listen style');
 assert.ok(adapterSource.includes("drawer?.playSection?.('both')"),'Bible Listen action must start the whole active comparison');
 assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"),'Bible page-level reader must mark itself as the primary TTS host');
+assert.ok(adapterSource.includes('selectionInsideActive'),'Bible adapter must constrain selection reading to the active relation');
+assert.ok(adapterSource.includes('mountSelectionAction'),'Bible comparator must use the shared read-selection action');
 
 console.log('bible tts adapter contract: ok');
