@@ -13,6 +13,7 @@ ROOT = Path(__file__).resolve().parents[1]
 PHILOSOPHY = ROOT / "philosophy" / "index.html"
 RELIGION = ROOT / "religion" / "index.html"
 DEEP_SOURCE = ROOT / "knowledge" / "philosophy" / "potatoism-reader-philosophy.md"
+CANONICAL = ROOT / "knowledge" / "philosophy" / "potato-philosophy.json"
 
 STAGES = ("potato", "grow", "transform", "see", "relate", "learn", "give", "cultivate")
 
@@ -22,6 +23,7 @@ def main() -> int:
     philosophy = PHILOSOPHY.read_text(encoding="utf-8", errors="replace") if PHILOSOPHY.exists() else ""
     religion = RELIGION.read_text(encoding="utf-8", errors="replace") if RELIGION.exists() else ""
     deep_source = DEEP_SOURCE.read_text(encoding="utf-8", errors="replace") if DEEP_SOURCE.exists() else ""
+    canonical = CANONICAL.read_text(encoding="utf-8", errors="replace") if CANONICAL.exists() else ""
 
     if not philosophy:
         errors.append("missing philosophy/index.html")
@@ -29,6 +31,35 @@ def main() -> int:
         errors.append("missing religion/index.html")
     if not deep_source:
         errors.append("missing deep Potatoism long-form source")
+    if not canonical:
+        errors.append("missing canonical Potato philosophy record")
+
+    required_canonical_keys = (
+        '"constitutional_laws"',
+        '"core_doctrines"',
+        '"ontology_types"',
+        '"concept_grammar"',
+        '"negative_definitions"',
+        '"evaluation_sequence"',
+    )
+    for marker in required_canonical_keys:
+        if marker not in canonical:
+            errors.append(f"Canonical philosophy missing enrichment marker: {marker}")
+
+    required_canonical_concepts = (
+        "Relational Valence",
+        "Generativity",
+        "Reciprocal Transformation",
+        "Functional Identity",
+        "Potato Truth",
+        "Curiosity Before Allegiance",
+        "Garden Over Shadow Farm",
+        "Authority Increases Burden",
+        "Return Is Not Reset",
+    )
+    for marker in required_canonical_concepts:
+        if marker.lower() not in canonical.lower():
+            errors.append(f"Canonical philosophy missing enrichment concept: {marker}")
 
     for stage in STAGES:
         marker = f'data-potatoism-stage="{stage}"'
