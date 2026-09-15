@@ -5,25 +5,35 @@ from pathlib import Path
 
 try:
     from scripts.build_public_statement_bible_projection import build_bible_projection
+    from scripts.build_public_statement_development_threads import build_development_threads
     from scripts.build_public_statement_discovery_frontier import build_discovery_frontier
     from scripts.build_public_statement_episodes import build_episodes
     from scripts.build_public_statement_evidence_root import build_evidence_root
     from scripts.enrich_public_statement_evidence_root import enrich_status_ids
     from scripts.validate_public_statement_bible_projection import validate_bible_projection
+    from scripts.validate_public_statement_development_threads import validate_development_threads
     from scripts.validate_public_statement_evidence_root import validate_evidence_root
     from scripts.validate_public_statement_episodes import validate_episodes
 except ModuleNotFoundError:
     from build_public_statement_bible_projection import build_bible_projection
+    from build_public_statement_development_threads import build_development_threads
     from build_public_statement_discovery_frontier import build_discovery_frontier
     from build_public_statement_episodes import build_episodes
     from build_public_statement_evidence_root import build_evidence_root
     from enrich_public_statement_evidence_root import enrich_status_ids
     from validate_public_statement_bible_projection import validate_bible_projection
+    from validate_public_statement_development_threads import validate_development_threads
     from validate_public_statement_evidence_root import validate_evidence_root
     from validate_public_statement_episodes import validate_episodes
 
 
-def validate_built_stack(root: dict, frontier: dict, episodes: dict, projection: dict) -> list[str]:
+def validate_built_stack(
+    root: dict,
+    frontier: dict,
+    episodes: dict,
+    projection: dict,
+    threads: dict | None = None,
+) -> list[str]:
     errors: list[str] = []
     root_id = str(root.get('id') or '')
     if frontier.get('source_root_id') != root_id:
@@ -34,6 +44,13 @@ def validate_built_stack(root: dict, frontier: dict, episodes: dict, projection:
         errors.append('Bible projection source_root_id does not match Evidence Root')
     if projection.get('source_episode_id') != episodes.get('id'):
         errors.append('Bible projection source_episode_id does not match Episode layer')
+    if threads is not None:
+        if threads.get('source_root_id') != root_id:
+            errors.append('Development Threads source_root_id does not match Evidence Root')
+        if threads.get('source_episode_id') != episodes.get('id'):
+            errors.append('Development Threads source_episode_id does not match Episode layer')
+        if threads.get('source_bible_projection_id') != projection.get('id'):
+            errors.append('Development Threads source_bible_projection_id does not match Bible projection')
 
     open_gap_ids = sorted(
         str(gap.get('id'))
@@ -72,9 +89,16 @@ def audit_repository(repository_root: Path) -> list[str]:
         repository_root / 'knowledge/traditions/public-x-biblical-occurrence-relations-10-18.json',
         repository_root / 'knowledge/traditions/public-x-biblical-occurrence-relations-19-27.json',
     ]
-    definitions_path = repository_root / 'data/evidence/public-statement-episode-definitions.json'
+    episode_definitions_path = repository_root / 'data/evidence/public-statement-episode-definitions.json'
+    thread_definitions_path = repository_root / 'data/evidence/public-statement-development-thread-definitions.json'
 
-    required = [*evidence_paths, *specialist_paths, *relation_paths, definitions_path]
+    required = [
+        *evidence_paths,
+        *specialist_paths,
+        *relation_paths,
+        episode_definitions_path,
+        thread_definitions_path,
+    ]
     missing = [path for path in required if not path.exists()]
     if missing:
         return [f"missing rooted-stack source: {path.relative_to(repository_root)}" for path in missing]
@@ -82,9 +106,15 @@ def audit_repository(repository_root: Path) -> list[str]:
     root = build_evidence_root([_load(path) for path in evidence_paths])
     root = enrich_status_ids(root, [_load(path) for path in specialist_paths])
     frontier = build_discovery_frontier(root)
-    episodes = build_episodes(root, _load(definitions_path))
+    episodes = build_episodes(root, _load(episode_definitions_path))
     relations = [_load(path) for path in relation_paths]
     projection = build_bible_projection(root, episodes, relations)
+    threads = build_development_threads(
+        root,
+        _load(thread_definitions_path),
+        episodes,
+        projection,
+    )
 
     errors = validate_evidence_root(root)
     root_ids = {str(row.get('id')) for row in root.get('roots', []) if row.get('id')}
@@ -97,7 +127,8 @@ def audit_repository(repository_root: Path) -> list[str]:
         if row.get('id')
     }
     errors.extend(validate_bible_projection(projection, root_ids, episode_ids, relation_ids))
-    errors.extend(validate_built_stack(root, frontier, episodes, projection))
+    errors.extend(validate_development_threads(threads, root_ids, episode_ids, relation_ids))
+    errors.extend(validate_built_stack(root, frontier, episodes, projection, threads))
     return errors
 
 
