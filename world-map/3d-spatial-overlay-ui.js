@@ -3,7 +3,6 @@
 
 const spatial = window.__potatoAtlasSpatialOverlays;
 if (!spatial) throw new Error('Spatial overlay UI requires the spatial overlay runtime.');
-await spatial.ready;
 
 const app = document.querySelector('#atlasApp');
 const panel = document.querySelector('#panel');
@@ -90,7 +89,7 @@ function renderControls() {
         const current = row.availability === 'current';
         const active = spatial.isActive(row.id);
         return `<button class="spatial-toggle${active?' active':''}" data-spatial-overlay="${esc(row.id)}" ${current?'':'disabled'} title="${esc(row.status_note || '')}">
-          <span>${active?'✓ ':'}${esc(row.label)}<small>${esc(EPISTEMIC_LABEL[row.epistemic_type] || title(row.epistemic_type))}${current?'':' · planned'}</small></span>
+          <span>${active?'✓ ':''}${esc(row.label)}<small>${esc(EPISTEMIC_LABEL[row.epistemic_type] || title(row.epistemic_type))}${current?'':' · planned'}</small></span>
         </button>`;
       }).join('')}
     </div>`).join('')}
@@ -149,5 +148,5 @@ window.addEventListener('potato-atlas-spatial-overlay-change', event => {
   renderControls();
 });
 
-renderControls();
+spatial.ready.then(renderControls);
 window.__potatoAtlasSpatialOverlayUI = { render:renderControls, inspect:openInspector };
