@@ -3,6 +3,7 @@
 // Compatibility map: physical.terrain -> __potatoAtlasTerrain.
 // Current water map: physical.water.base -> __potatoAtlasPhysicalWater.
 // Current land-cover map: physical.land-cover -> __potatoAtlasLandCover.
+// Current deserts map: physical.aridity -> __potatoAtlasDeserts.
 
 const MANIFEST_URL = '../data/world-map-physical-layers.json';
 const active = new Set();
