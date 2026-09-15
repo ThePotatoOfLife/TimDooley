@@ -1,0 +1,43 @@
+name: Story source-closeness tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'scripts/audit_story_source_closeness.py'
+      - 'scripts/test_audit_story_source_closeness.py'
+      - 'story-content/**'
+      - 'knowledge/story/**'
+      - 'docs/story-source-closeness/**'
+      - '.github/workflows/story-source-closeness-tests.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Run Story source-closeness regression test
+        run: python scripts/test_audit_story_source_closeness.py
+
+      - name: Run Story source-closeness audit
+        run: python scripts/audit_story_source_closeness.py --write story-source-closeness-report.json
+
+      - name: Upload Story source-closeness report
+        uses: actions/upload-artifact@v4
+        with:
+          name: story-source-closeness-report
+          path: story-source-closeness-report.json
+          if-no-files-found: error
+          retention-days: 7
