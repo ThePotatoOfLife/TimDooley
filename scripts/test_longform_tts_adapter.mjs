@@ -53,6 +53,10 @@ assert.ok(adapterSource.includes("drawer.playSection?.('current')"), 'inline Lis
 assert.ok(adapterSource.includes("ttsListenReady==='true'"), 'inline Listen injection must be idempotent');
 assert.ok(adapterSource.includes("'.ptts-inline-listen'"), 'injected Listen controls must be excluded from spoken text');
 assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"), 'page-level reader host should mark itself as primary automatically');
+assert.ok(adapterSource.includes('mountSelectionAction'), 'longform pages must mount the shared read-selection action');
+assert.ok(adapterSource.includes("classList.add('ptts-reading-active')"), 'current spoken item must gain an active-reading state');
+assert.ok(adapterSource.includes("classList.remove('ptts-reading-active')"), 'active-reading state must be cleared when speech ends or context changes');
+assert.ok(adapterSource.includes('onEvent:event=>'), 'longform adapter must consume drawer speech events');
 
 function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
   for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {
