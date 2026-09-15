@@ -12,6 +12,7 @@ const MAJOR_POINTS = 'atlas-places-major-points';
 const MAJOR_LABELS = 'atlas-places-major-labels';
 const DETAIL_POINTS = 'atlas-places-detail-points';
 const DETAIL_LABELS = 'atlas-places-detail-labels';
+const LEGACY_CAPITAL_LAYERS = Object.freeze(['capital-cities', 'capital-city-major-labels', 'capital-city-labels']);
 const EMPTY_COLLECTION = Object.freeze({ type:'FeatureCollection', features:[] });
 
 let indexPayload = null;
@@ -54,6 +55,43 @@ function allLoadedFeatures() {
     if (data?.features) features.push(...data.features);
   }
   return features;
+}
+function nationalCapitalForCountry(code) {
+  const iso3 = String(code || '').toUpperCase();
+  return (majorData.features || []).find(feature => {
+    const p = feature?.properties || {};
+    return String(p.country_iso3 || '').toUpperCase() === iso3
+      && (p.is_national_capital === true || p.capital_status === 'national');
+  }) || null;
+}
+function hideLegacyCapitalLayers() {
+  for (const layerId of LEGACY_CAPITAL_LAYERS) {
+    if (map.getLayer(layerId)) map.setLayoutProperty(layerId, 'visibility', 'none');
+  }
+}
+function convergeLegacyCapitals() {
+  if (!(majorData.features?.length > 0)) return false;
+  hideLegacyCapitalLayers();
+  window.__potatoAtlasCapitals = {
+    setVisible(next) { return setVisible(next); },
+    focus(code, options = {}) {
+      const feature = nationalCapitalForCountry(code);
+      if (!feature) return false;
+      return focus(feature.properties?.id, { ...options, feature, fit:options.fit !== false });
+    },
+    forCountry(code) { return nationalCapitalForCountry(code); },
+    get visible() { return visible; },
+    get count() {
+      return (majorData.features || []).filter(feature => {
+        const p = feature?.properties || {};
+        return p.is_national_capital === true || p.capital_status === 'national';
+      }).length;
+    },
+  };
+  window.dispatchEvent(new CustomEvent('potato-atlas-capitals-change', {
+    detail:{ visible, owner:'places', count:window.__potatoAtlasCapitals.count }
+  }));
+  return true;
 }
 function syncDetailSource() {
   const seen = new Set();
@@ -200,6 +238,7 @@ async function loadMajor() {
   majorData = data;
   indexFeatures(data.features);
   sourceData(MAJOR_SOURCE, data);
+  convergeLegacyCapitals();
   return data;
 }
 async function loadCountry(iso3) {
@@ -265,7 +304,13 @@ function setVisible(next, options = {}) {
   for (const id of [MAJOR_POINTS, MAJOR_LABELS, DETAIL_POINTS, DETAIL_LABELS]) {
     if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
   }
-  if (!options.silent) window.dispatchEvent(new CustomEvent('potato-atlas-places-change', {detail:{visible}}));
+  if (majorData.features?.length) hideLegacyCapitalLayers();
+  if (!options.silent) {
+    window.dispatchEvent(new CustomEvent('potato-atlas-places-change', {detail:{visible}}));
+    if (majorData.features?.length) {
+      window.dispatchEvent(new CustomEvent('potato-atlas-capitals-change', {detail:{visible, owner:'places'}}));
+    }
+  }
   return visible;
 }
 function current() {
@@ -304,6 +349,8 @@ function status() {
     error:lastError ? String(lastError.message || lastError) : null,
   };
 }
+
+window.addEventListener('potato-atlas-capitals-ready', () => convergeLegacyCapitals());
 
 async function initialize() {
   if (map.loaded()) installLayers();
