@@ -36,7 +36,7 @@ assert.equal(declarative.currentLabel,'Current movement');
 assert.equal(declarative.itemSelector,'.movement');
 
 const removalState={removed:false};
-const fakeReadable={cloneNode(){return {querySelectorAll(selector){assert.equal(selector,'.chrome');return [{remove(){removalState.removed=true;}}]},get textContent(){return removalState.removed?'Keep this':'Keep this Skip this';}}}};
+const fakeReadable={cloneNode(){return {querySelectorAll(selector){assert.ok(selector.includes('.chrome'));assert.ok(selector.includes('.ptts-inline-listen'));assert.ok(selector.includes('.ptts-drawer'));return [{remove(){removalState.removed=true;}}]},get textContent(){return removalState.removed?'Keep this':'Keep this Skip this';}}}};
 assert.equal(adapter.readableText(fakeReadable,'.chrome'),'Keep this');
 const excludeHost={dataset:{ttsRoot:'#main',ttsExclude:'.nav,.footer'}};
 const mainRoot={id:'main'};
@@ -51,6 +51,8 @@ assert.ok(!adapterSource.includes('updatePayload('), 'obsolete updatePayload API
 assert.ok(adapterSource.includes("className='ptts-inline-listen'"), 'readable items need explicit Listen buttons');
 assert.ok(adapterSource.includes("drawer.playSection?.('current')"), 'inline Listen must start only the current readable item');
 assert.ok(adapterSource.includes("ttsListenReady==='true'"), 'inline Listen injection must be idempotent');
+assert.ok(adapterSource.includes("'.ptts-inline-listen'"), 'injected Listen controls must be excluded from spoken text');
+assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"), 'page-level reader host should mark itself as primary automatically');
 
 function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
   for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {
