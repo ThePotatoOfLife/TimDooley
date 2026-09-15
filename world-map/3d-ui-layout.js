@@ -141,11 +141,8 @@ document.addEventListener('click', event => {
 window.addEventListener('atlas-axis-dimension-change', () => queueMicrotask(appendAxisInspectorNavigator));
 window.addEventListener('potato-atlas-panel-rendered', () => queueMicrotask(refresh));
 window.addEventListener('potato-atlas-module-ready', () => queueMicrotask(refresh));
-
-// Narrow observer: map chrome only, so late-created status/Axis controls are adopted without polling.
-const observerTarget = mapwrap || document.body;
-const observer = new MutationObserver(() => queueMicrotask(refresh));
-observer.observe(observerTarget, { childList:true, subtree:true });
+window.addEventListener('atlas-time-change', () => queueMicrotask(refresh));
+window.addEventListener('load', () => queueMicrotask(refresh), { once:true });
 
 window.__potatoAtlasUILayout = { register, unregister, setVisible, getState, refresh };
 refresh();
