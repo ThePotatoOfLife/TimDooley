@@ -1,6 +1,5 @@
-// Optional physical context for the World Map.
-// The control loads with the core, but elevation/hillshade tiles remain dormant
-// until the user explicitly enables Terrain.
+// Optional physical terrain behavior for the World Map.
+// Loaded only by the Physical World runtime after explicit Terrain activation.
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Physical Terrain requires the core map.');
@@ -14,46 +13,8 @@ const BASE_RASTER_DEFAULT_OPACITY = 0.25;
 const BASE_RASTER_TERRAIN_OPACITY = 0.55;
 const TERRAIN_EXAGGERATION = 1.05;
 
-let enabled = new URL(location.href).searchParams.get('terrain') === '1';
+let enabled = false;
 let busy = false;
-
-function terrainButton() {
-  return document.getElementById('atlasTerrainToggle');
-}
-
-function setUrlState(on) {
-  const url = new URL(location.href);
-  if (on) url.searchParams.set('terrain', '1');
-  else url.searchParams.delete('terrain');
-  history.replaceState({}, '', url);
-}
-
-function setButtonState(message = '') {
-  const button = terrainButton();
-  if (!button) return;
-  button.classList.toggle('active', enabled);
-  button.setAttribute('aria-pressed', enabled ? 'true' : 'false');
-  button.textContent = enabled ? 'Terrain · on' : 'Terrain';
-  button.title = message || (enabled
-    ? 'Physical terrain is on · shaded relief and elevation'
-    : 'Show physical terrain · shaded relief and elevation');
-}
-
-function installControl() {
-  if (terrainButton()) return terrainButton();
-  const pop = document.querySelector('#viewMenu .atlas-world-menu-pop, #viewMenu .menu-pop');
-  if (!pop) return null;
-  const button = document.createElement('button');
-  button.id = 'atlasTerrainToggle';
-  button.type = 'button';
-  button.setAttribute('aria-pressed', 'false');
-  button.addEventListener('click', () => toggle());
-  const separator = pop.querySelector('.menu-sep');
-  if (separator) pop.insertBefore(button, separator);
-  else pop.prepend(button);
-  setButtonState();
-  return button;
-}
 
 function ensureSources() {
   if (!map.getSource(TERRAIN_SOURCE)) {
@@ -98,21 +59,18 @@ async function setEnabled(next) {
   busy = true;
   try {
     if (next) {
+      // Network-backed DEM sources are created only here, after explicit activation.
       ensureSources();
       ensureHillshade();
       map.setLayoutProperty(HILLSHADE_LAYER, 'visibility', 'visible');
-      map.setTerrain({ source: TERRAIN_SOURCE, exaggeration: TERRAIN_EXAGGERATION });
+      map.setTerrain({ source:TERRAIN_SOURCE, exaggeration:TERRAIN_EXAGGERATION });
       setBaseOpacity(BASE_RASTER_TERRAIN_OPACITY);
       enabled = true;
-      setUrlState(true); // canonical state is terrain=1
-      setButtonState();
     } else {
       try { map.setTerrain(null); } catch {}
       if (map.getLayer(HILLSHADE_LAYER)) map.setLayoutProperty(HILLSHADE_LAYER, 'visibility', 'none');
       setBaseOpacity(BASE_RASTER_DEFAULT_OPACITY);
       enabled = false;
-      setUrlState(false);
-      setButtonState();
     }
   } catch (error) {
     console.warn('Physical terrain unavailable:', error);
@@ -122,8 +80,6 @@ async function setEnabled(next) {
     }
     setBaseOpacity(BASE_RASTER_DEFAULT_OPACITY);
     enabled = false;
-    setUrlState(false);
-    setButtonState('Terrain unavailable; the ordinary map remains active.');
   } finally {
     busy = false;
   }
@@ -132,13 +88,6 @@ async function setEnabled(next) {
 
 function toggle() {
   return setEnabled(!enabled);
-}
-
-installControl();
-if (enabled) {
-  // Restore URL state only after the map is ready; failures remain nonfatal.
-  enabled = false;
-  queueMicrotask(() => setEnabled(true));
 }
 
 window.__potatoAtlasTerrain = {
