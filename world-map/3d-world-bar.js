@@ -11,9 +11,13 @@
   const spatial = window.__potatoAtlasSpatialOverlays;
   const GEOGRAPHIES = [
     ['father.mesopotamia-core','Mesopotamia'],
+    ['father.lower-mesopotamia-gulf','Lower Mesopotamia / Gulf'],
+    ['physical.tigris-euphrates-basin','Tigris–Euphrates basin extent'],
     ['father.eden-context','Eden'],
     ['biblical.dan-to-beersheba','Dan → Beer-sheba'],
-    ['biblical.genesis-15','Genesis 15'],
+    ['biblical.numbers-34','Numbers 34'],
+    ['biblical.genesis-15','Genesis 15 · Wadi el-Arish'],
+    ['biblical.genesis-15-nile','Genesis 15 · Nile'],
     ['modern.greater-israel','Greater Israel'],
   ];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -58,8 +62,9 @@
       const button = event.target.closest('[data-geography-overlay]');
       if (!button || !spatial) return;
       const id = button.dataset.geographyOverlay;
-      if (!spatial.isActive(id)) await spatial.activate(id);
-      spatial.fit(id);
+      const wasActive = spatial.isActive(id);
+      await spatial.toggle(id);
+      if (!wasActive) spatial.fit(id);
       syncGeographyMenu(details);
     });
     return details;
