@@ -115,6 +115,8 @@ try {
   await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
   await loadAfterPaint('Compositor', './3d-compositor.js');
+  await loadAfterPaint('Spatial Overlays', './3d-spatial-overlays.js');
+  await loadAfterPaint('Spatial Overlay UI', './3d-spatial-overlay-ui.js');
   await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
   await loadAfterPaint('Active View', './3d-active-view.js');
   await loadAfterPaint('World Bar', './3d-world-bar.js');
