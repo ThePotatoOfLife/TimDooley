@@ -1,6 +1,6 @@
 {
   "id": "public-statement-root-manifest",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "updated": "2026-09-15",
   "model": "rooted-spiral",
   "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, and deterministic generated projections.",
@@ -38,7 +38,7 @@
     "Timestamp equality alone never merges statements.",
     "Recovered external status IDs strengthen a Root without renaming its canonical ID.",
     "Ambiguous joins remain open gaps rather than guessed matches.",
-    "Chronology is a traversal over Roots, not the canonical identity order.",
+    "Timeline order is a traversal over Roots, not the canonical identity order.",
     "Source loading order must not change canonical output."
   ],
   "gap_types": [
