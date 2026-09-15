@@ -1,8 +1,15 @@
 {
   "id": "public-statement-development-thread-definitions",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-15",
   "purpose": "Candidate long-range function threads built from explicit literal source-language attestations. Terms establish first-pass membership only; they do not establish theological equivalence, causation, or actor identity.",
+  "persistence_policy": {
+    "minimum_active_months": 3,
+    "minimum_span_days": 90,
+    "minimum_term_diversity": 2,
+    "minimum_episode_count": 2,
+    "boundary": "Persistence tests measure recurrence, temporal spread, vocabulary diversity, and cross-Episode presence. Passing does not promote a candidate thread or establish an interpretive, theological, causal, or identity claim."
+  },
   "threads": [
     {
       "id": "source-house-dwelling",
