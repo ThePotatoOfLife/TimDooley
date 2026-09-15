@@ -4,6 +4,11 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Hydrology requires the core map.');
+if (!window.__potatoAtlasStyleLifecycle) {
+  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
+  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
+}
+const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 
 const PHYSICAL_ID = 'physical.water.hydrology';
 const MIN_ZOOM = 4;
@@ -293,22 +298,25 @@ async function toggle() { return enabled ? disable() : enable(); }
 
 map.on('moveend', scheduleRefresh);
 map.on('zoomend', scheduleRefresh);
-map.on('styledata', () => {
-  if (!enabled || restoring) return;
-  restoring = true;
-  queueMicrotask(() => {
-    try {
-      ensureSources();
-      ensureLayers();
-      setVisibility('visible');
-      applyOpacity();
-      map.getSource(BASIN_SOURCE)?.setData(lastBasins);
-      map.getSource(RIVER_SOURCE)?.setData(lastRivers);
-      scheduleRefresh();
-    } finally {
-      restoring = false;
-    }
-  });
+styleLifecycle.register('physical-hydrology', {
+  priority:50,
+  restore:() => {
+    if (!enabled || restoring) return;
+    restoring = true;
+    queueMicrotask(() => {
+      try {
+        ensureSources();
+        ensureLayers();
+        setVisibility('visible');
+        applyOpacity();
+        map.getSource(BASIN_SOURCE)?.setData(lastBasins);
+        map.getSource(RIVER_SOURCE)?.setData(lastRivers);
+        scheduleRefresh();
+      } finally {
+        restoring = false;
+      }
+    });
+  },
 });
 
 window.__potatoAtlasHydrology = {
