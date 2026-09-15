@@ -31,7 +31,7 @@ These missions remain. **What changes is how we store them: fewer, thicker, clea
 4. Move unique information into its strongest canonical owner where practical.
 5. Delete files whose only purpose was duplication, temporary state, retired presentation or obsolete routing.
 6. Keep primary texts, substantive research, evidence and useful historical records.
-7. Keep the unified `index.html` as the public doorway and `manifest.json` as the canonical branch/navigation map.
+7. Keep the unified `index.html` as the public doorway; use `docs/POTATO-HOUSE-CONSTITUTION.md` + `data/house/public-surfaces.json` for public route identity, and `manifest.json` for archive branch/pathway and Explore semantics.
 8. Keep the data layer modular internally, but make ownership and relationships explicit.
 9. Prefer one canonical entrypoint plus specialist owners over several competing "master" files.
 
@@ -72,7 +72,14 @@ Indexes, manifests and projections should point to the canonical material rather
 ## Current structural work
 
 - [x] Unified `index.html` established as the main doorway.
-- [x] Manifest-driven first-class branches established for Tim, Son, Spirit, Transformation, Cosmology, Science, Body, Corporium, Traditions, North, World, Timeline, Works and Sources.
+- [x] Archive branch/pathway structure established in `manifest.json` for Tim, Son, Spirit, Transformation, Cosmology, Science, Body, Corporium, Traditions, North, World, Timeline, Works and Sources.
+- [x] Potato House public-surface authority established for exactly five primary gateways: Tim Dooley, Religion, Philosophy, Science and World.
+- [x] Mature public surfaces registered for Story, Collection, Works, Questions, A–Z and Context without creating new primary gateways.
+- [x] Registry/topology convergence validation added so every active public surface has one matching topology record.
+- [x] Human-facing routes corrected so Timeline, Collection, Works and Culture route to their strongest public readers while Explore remains the deep archive.
+- [x] Public `/works/` reader added over the existing creative archive with explicit creative/doctrine/evidence boundaries.
+- [x] Homepage Ways-in corridor established for Story, Timeline, Collection and Works while preserving exactly five primary gateway rows.
+- [x] Discovery and site-authority builders now derive the five primary routes from House public-surface authority instead of maintaining independent route tables.
 - [x] Repository data can be opened from the central reading surface.
 - [x] Retired `center.html` removed.
 - [x] Retired standalone UI/header files removed.
@@ -84,13 +91,13 @@ Indexes, manifests and projections should point to the canonical material rather
 - [x] Project-wide growth compass added at `knowledge/guides/project-growth-compass.json` to define what "greater" means and route future deepening toward source precision, role transitions, contradiction surfaces, relation-sequence comparison, maturity testing and reader usefulness.
 - [ ] Finish pruning obsolete presentation assets that are no longer referenced.
 - [ ] Remove remaining generated batch/state files after their useful information is consolidated and references are migrated.
-- [ ] Reconcile all secondary indexes against `manifest.json` after each major consolidation.
+- [ ] Reconcile public-route projections against House route authority and archive/deep-navigation projections against `manifest.json` after each major consolidation.
 - [ ] Audit remaining JSON files for purpose, ownership, depth and duplication.
 - [ ] Merge genuinely duplicate concept definitions into canonical owners.
 - [ ] Strengthen thin but important entries with real information rather than filler.
 - [ ] Make long records readable in the index without losing depth.
-- [ ] Ensure every important surviving body is reachable from the index.
-- [ ] Run the complete integrity/build/Pages chain and fix what actually fails.
+- [ ] Ensure every important surviving body is reachable through an appropriate reader, discovery surface or archive path.
+- [ ] Run the complete integrity/build/Pages chain on every final integration head and fix what actually fails.
 
 ## Growth compass — current high-value frontiers
 
@@ -102,7 +109,7 @@ Use `knowledge/guides/project-growth-compass.json` as the editorial compass for 
 4. Rank comparative religious and mythological parallels by **relation sequences and mismatches**, not isolated shared words.
 5. Develop a universal canonical-owner maturity test spanning definition, timeline, relations, provenance, counterevidence, reader answer, aliases, reachability and research frontier.
 6. Continue using one relationship grammar across mythology and world systems while keeping domain-specific truth and evidence standards distinct.
-7. Generate reader journeys from canonical metadata where possible so story, theology, timeline, science, North/world and verification paths do not become manually duplicated mini-canons.
+7. Generate reader journeys from canonical metadata where possible so Story, Timeline, Collection, Works, theology, science, North/World and verification paths do not become manually duplicated mini-canons.
 
 The hidden spine tying these priorities together is the **claim lifecycle**:
 
@@ -120,6 +127,7 @@ Prioritize existing rich layers before inventing new ones:
 - Country records and enrichment, consolidating batch history into canonical country knowledge.
 - Religious foundations, comparative religion, belief, dimensions, sources and primary texts.
 - Culture and subculture research.
+- Creative works and their canonical archives, with public readers remaining projections.
 - People and organization registries.
 - Graph, evidence, relationship and provenance layers.
 - Swamp / Farm / information-ecology research where it contains substantive material.
@@ -146,7 +154,7 @@ Keep these visibly distinct:
 - speculation;
 - creative/lore material.
 
-A symbolic correspondence is not automatically historical proof. A correlation is not automatically causation. A spiritual conclusion is not automatically an empirical finding.
+A symbolic correspondence is not automatically historical proof. A correlation is not automatically causation. A spiritual conclusion is not automatically an empirical finding. A creative work may reuse project symbols without automatically becoming doctrine, biography or independent evidence.
 
 ## Workflow reset
 
@@ -159,7 +167,7 @@ When choosing the next task, prefer this order:
 3. Important thin entries.
 4. Missing provenance or unresolved relationships.
 5. High-value enrichment of existing canonical records.
-6. Better exposure through the unified index.
+6. Better exposure through the correct House reader/discovery surface.
 7. New research only after the existing material has been properly absorbed.
 
 ## The permanent test
@@ -170,9 +178,10 @@ At the end of a pass ask:
 - Did we put it in the correct canonical home?
 - Did we make an existing entry thicker rather than create another shallow copy?
 - Did we remove anything that no longer deserved to exist?
-- Can a reader actually reach the material from the index?
+- Can a reader actually reach the material through the right surface?
+- Are public routes derived from one House authority rather than copied across builders?
 - Are claims and interpretations properly distinguished?
-- Did we verify the resulting structure?
+- Did we verify the resulting structure on the exact final integration head?
 
 If the answer to the cleanup question is no, the pass is not finished.
 
