@@ -34,20 +34,44 @@ class StoryParser(HTMLParser):
     def __init__(self) -> None:
         super().__init__()
         self.entries: list[dict] = []
+        self.current: dict | None = None
+        self.capture_source = False
+        self.source_chunks: list[str] = []
 
     def handle_starttag(self, tag, attrs):
-        if tag != "article":
-            return
         data = dict(attrs)
-        classes = set((data.get("class") or "").split())
-        if "story-entry" not in classes:
+        if tag == "article":
+            classes = set((data.get("class") or "").split())
+            if "story-entry" not in classes:
+                return
+            self.current = {
+                "id": data.get("id"),
+                "story_type": data.get("data-story-type"),
+                "depth": data.get("data-story-depth"),
+                "mode": data.get("data-story-mode"),
+                "source_hints": [],
+            }
+            self.entries.append(self.current)
             return
-        self.entries.append({
-            "id": data.get("id"),
-            "story_type": data.get("data-story-type"),
-            "depth": data.get("data-story-depth"),
-            "mode": data.get("data-story-mode"),
-        })
+        if tag == "span" and self.current is not None:
+            classes = set((data.get("class") or "").split())
+            if "source-paths" in classes:
+                self.capture_source = True
+                self.source_chunks = []
+
+    def handle_data(self, data):
+        if self.capture_source:
+            self.source_chunks.append(data)
+
+    def handle_endtag(self, tag):
+        if tag == "span" and self.capture_source:
+            hint = " ".join("".join(self.source_chunks).split())
+            if hint and self.current is not None:
+                self.current["source_hints"].append(hint)
+            self.capture_source = False
+            self.source_chunks = []
+        elif tag == "article":
+            self.current = None
 
 
 def load_json(path: Path) -> dict:
@@ -73,6 +97,32 @@ def scan_public(root: Path) -> list[dict]:
     return entries
 
 
+def infer_source_hints(hints: list[str]) -> tuple[list[str], str | None, str | None]:
+    text = " ".join(hints).lower()
+    classes: list[str] = []
+    if "suno" in text or "creative catalogue" in text or "creative archive" in text:
+        classes.append("creative_artifact")
+    if any(
+        token in text
+        for token in (
+            "public-post",
+            "public post",
+            "twitter",
+            "rational_potato",
+            "x occurrence",
+            "public indexed",
+        )
+    ):
+        classes.append("public_post_sequence")
+    classes = sorted(set(classes))
+    if not classes:
+        return [], None, None
+    candidates = [SOURCE_DEFAULTS[source_class] for source_class in classes]
+    candidates.sort(key=lambda item: EVENT_RANK[item[0]])
+    event_distance, continuity = candidates[0]
+    return classes, event_distance, continuity
+
+
 def choose_closest(sources: list[dict]) -> tuple[str | None, str | None]:
     choices: list[tuple[int, str, str]] = []
     for src in sources:
@@ -94,7 +144,11 @@ def build_audit(root: Path) -> dict:
 
     registry = {x["id"]: x for x in registry_data.get("stories", []) if x.get("id")}
     sources = {x["id"]: x for x in source_data.get("sources", []) if x.get("id")}
-    overrides = {x["story_id"]: x for x in overrides_data.get("story_overrides", []) if x.get("story_id")}
+    overrides = {
+        x["story_id"]: x
+        for x in overrides_data.get("story_overrides", [])
+        if x.get("story_id")
+    }
 
     records: list[dict] = []
     for public in scan_public(root):
@@ -107,6 +161,8 @@ def build_audit(root: Path) -> dict:
             "mapping_status": "unmapped",
             "closest_source_ids": [],
             "source_classes": [],
+            "source_hints": list(public.get("source_hints", [])),
+            "hinted_source_classes": [],
             "event_distance": None,
             "editorial_distance": None,
             "continuity": None,
@@ -116,25 +172,47 @@ def build_audit(root: Path) -> dict:
             "next_excavation": None,
         }
 
+        if not reg and record["source_hints"]:
+            hinted_classes, event_distance, continuity = infer_source_hints(record["source_hints"])
+            record.update(
+                {
+                    "mapping_status": "hinted",
+                    "hinted_source_classes": hinted_classes,
+                    "event_distance": event_distance,
+                    "editorial_distance": "4_public_story_edit",
+                    "continuity": continuity,
+                }
+            )
+
         if reg:
             source_ids = list(reg.get("source_ids", []))
             linked = [sources[sid] for sid in source_ids if sid in sources]
             event_distance, continuity = choose_closest(linked)
-            record.update({
-                "mapping_status": "mapped" if len(linked) == len(source_ids) else "partially_mapped",
-                "closest_source_ids": source_ids,
-                "source_classes": sorted({x.get("source_class") for x in linked if x.get("source_class")}),
-                "event_distance": event_distance,
-                "editorial_distance": "4_public_story_edit",
-                "continuity": continuity,
-                "closer_source_expected": bool(reg.get("recovery_targets")),
-                "next_excavation": (reg.get("recovery_targets") or [None])[0],
-            })
+            record.update(
+                {
+                    "mapping_status": "mapped" if len(linked) == len(source_ids) else "partially_mapped",
+                    "closest_source_ids": source_ids,
+                    "source_classes": sorted(
+                        {x.get("source_class") for x in linked if x.get("source_class")}
+                    ),
+                    "event_distance": event_distance,
+                    "editorial_distance": "4_public_story_edit",
+                    "continuity": continuity,
+                    "closer_source_expected": bool(reg.get("recovery_targets")),
+                    "next_excavation": (reg.get("recovery_targets") or [None])[0],
+                }
+            )
 
         if override:
             for key in (
-                "closest_source_ids", "event_distance", "editorial_distance", "continuity",
-                "source_near_status", "closer_source_expected", "lost_texture", "next_excavation",
+                "closest_source_ids",
+                "event_distance",
+                "editorial_distance",
+                "continuity",
+                "source_near_status",
+                "closer_source_expected",
+                "lost_texture",
+                "next_excavation",
             ):
                 if key in override:
                     record[key] = override[key]
@@ -142,15 +220,29 @@ def build_audit(root: Path) -> dict:
 
         records.append(record)
 
+    direct_distances = {"0_direct_contemporaneous", "1_contemporaneous_compilation"}
     summary = {
         "total_public_entries": len(records),
         "registered": sum(1 for x in records if x["story_id"] in registry),
+        "source_hinted": sum(1 for x in records if x["mapping_status"] == "hinted"),
         "unmapped": sum(1 for x in records if x["mapping_status"] == "unmapped"),
         "direct_or_near_direct": sum(
-            1 for x in records if x["event_distance"] in {"0_direct_contemporaneous", "1_contemporaneous_compilation"}
+            1
+            for x in records
+            if x["mapping_status"] in {"mapped", "partially_mapped"}
+            and x["event_distance"] in direct_distances
         ),
-        "source_near_present": sum(1 for x in records if x["source_near_status"] in {"draft", "complete"}),
-        "closer_source_expected": sum(1 for x in records if x["closer_source_expected"] is True),
+        "hinted_direct_or_near_direct": sum(
+            1
+            for x in records
+            if x["mapping_status"] == "hinted" and x["event_distance"] in direct_distances
+        ),
+        "source_near_present": sum(
+            1 for x in records if x["source_near_status"] in {"draft", "complete"}
+        ),
+        "closer_source_expected": sum(
+            1 for x in records if x["closer_source_expected"] is True
+        ),
     }
 
     return {
