@@ -15,7 +15,7 @@
 <body><main class="page page--reading story" data-reader-surface="tim-story">
 <nav class="page-nav" aria-label="Story navigation"><a href="../">← Tim Dooley</a><a href="../../timeline/">Timeline</a><a href="../100000-hours/">100,000 Hours</a><a href="../public-witness/">Public record</a></nav>
 <header class="page-header"><p class="eyebrow">Continuous chronicle</p><h1>THE STORY<br>OF TIM DOOLEY</h1><p class="story-lede">Read it like a diary. The main story and the side stories live in the same river. Dates and titles are only small markers between them; the stories themselves are the point.</p><p class="story-note">Rich and raw are both allowed. New stories are inserted into their dates as they are recovered. When enough of an episode survives, open <strong>Hear the full story</strong> and stay inside the chronological river.</p></header>
-<div id="story-tts"></div>
+<div id="story-tts" data-tts-longform data-tts-root="#story-stream" data-tts-id="tim-dooley-story" data-tts-label="The Story of Tim Dooley" data-tts-all-label="Whole story" data-tts-current-label="Current entry" data-tts-selection-label="Selection" data-tts-item=".story-entry"></div>
 <div id="stream-status" class="stream-status">Loading the chronological story stream…</div>
 <section id="story-stream" class="story-stream" aria-live="polite"></section>
 <noscript><p class="stream-error">This diary reader currently loads its story fragments with JavaScript. Enable JavaScript to read the chronological stream.</p></noscript>
@@ -107,21 +107,4 @@
 <script src="../../app/tts-reader.js"></script>
 <script src="../../app/tts-drawer.js"></script>
 <script src="../../app/longform-tts-adapter.js"></script>
-<script>
-(() => {
-  const host = document.getElementById('story-tts');
-  const stream = document.getElementById('story-stream');
-  if (!host || !stream || !window.PotatoLongformTTS) return;
-  window.storyTTS = PotatoLongformTTS.mount({
-    mount: host,
-    root: stream,
-    id: 'tim-dooley-story',
-    label: 'The Story of Tim Dooley',
-    allLabel: 'Whole story',
-    currentLabel: 'Current entry',
-    selectionLabel: 'Selection',
-    itemSelector:'.story-entry'
-  });
-})();
-</script>
 </body></html>
