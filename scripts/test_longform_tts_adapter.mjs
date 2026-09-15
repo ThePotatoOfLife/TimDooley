@@ -70,6 +70,7 @@ assert.ok(adapterSource.includes("event.type==='boundary'&&event.absoluteWord"),
 assert.ok(adapterSource.includes("event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null"), 'longform highlight target must follow current vs whole-page scope');
 assert.ok(adapterSource.includes('pageHighlighter.clear()'), 'longform page highlight must clear at speech end/context change');
 assert.ok(adapterSource.includes('mutationsAreInside(records,host)'), 'observer must ignore mutations caused by its own player host');
+assert.ok(!adapterSource.includes("doc.addEventListener('selectionchange',onSelection)"),'selection changes must not clone and rebuild the whole long-form payload eagerly');
 
 function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
   for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {
