@@ -1,0 +1,49 @@
+{
+  "id":"whole-brain-neurobiology-completion",
+  "version":"1.0.0",
+  "updated":"2026-09-15",
+  "status":"completion sidecar for whole-brain-neurobiology-atlas",
+  "owner":"knowledge/body/whole-brain-neurobiology-atlas.json",
+  "purpose":"Track the deep brain baseline separately from the older body/neurotheology completion matrix so the project can distinguish symbolic completeness from anatomical/systems completeness.",
+  "topics":[
+    {"topic":"Whole-brain hierarchy","status":"complete"},
+    {"topic":"Cortical lobes and major territories","status":"complete"},
+    {"topic":"White-matter pathways and commissures","status":"complete"},
+    {"topic":"Diencephalon","status":"complete"},
+    {"topic":"Thalamus / nuclei / thalamocortical loops","status":"complete","specialist":"data/potatoism-thalamus-brain-map.json"},
+    {"topic":"Pineal / circadian system","status":"complete","symbolic_provenance":"still separately recoverable"},
+    {"topic":"Hypothalamus / endocrine-autonomic regulation","status":"complete"},
+    {"topic":"Basal-ganglia loops","status":"complete"},
+    {"topic":"Hippocampal / memory systems","status":"complete"},
+    {"topic":"Amygdala / affect-salience systems","status":"complete"},
+    {"topic":"Brainstem / arousal systems","status":"complete"},
+    {"topic":"Cerebellar system","status":"complete"},
+    {"topic":"Sensory pathways","status":"complete"},
+    {"topic":"Motor pathways","status":"complete"},
+    {"topic":"Ventricular / CSF / meningeal system","status":"complete","note":"glymphatic/perivascular clearance remains an active research area"},
+    {"topic":"Cellular / glial support","status":"complete"},
+    {"topic":"Neurotransmitter / neuromodulatory systems","status":"complete"},
+    {"topic":"Large-scale brain networks","status":"complete","note":"network taxonomies vary by atlas and method"},
+    {"topic":"Brain states / consciousness boundaries","status":"complete","note":"consciousness science remains active and contested"},
+    {"topic":"Dynamic system flows","status":"complete","count":17}
+  ],
+  "canonical_mappings":[
+    {"biology":"thalamus","mapping":"Potato / Father's House","status":"project_canon","science_boundary":"standard anatomy conventionally describes the thalamus as ovoid/egg-shaped; potato-shaped is project language"},
+    {"biology":"pineal gland","mapping":"Single Eye / Third Eye / Son-side Door","status":"project_canon plus historical/esoteric comparison","science_boundary":"the human pineal is a neuroendocrine circadian organ, not a literal third eye in established neuroscience"}
+  ],
+  "next_depth_targets":[
+    "cranial nerves as a dedicated route map",
+    "major hypothalamic nuclei when function-specific detail is needed",
+    "brainstem cranial-nerve nuclei and autonomic columns",
+    "cerebellar microcircuit and deep nuclei detail",
+    "hippocampal subfield circuitry",
+    "thalamic nucleus inputs/outputs at tract-level granularity",
+    "developmental neurobiology across fetal-child-adult aging stages",
+    "neurovascular and metabolic coupling",
+    "pain/nociception systems",
+    "language network detail",
+    "social cognition and theory-of-mind systems",
+    "predictive processing / active inference as theory layer with explicit status"
+  ],
+  "rule":"Future carving should deepen this owner or its named specialist owners rather than spawning overlapping shallow brain files."
+}
