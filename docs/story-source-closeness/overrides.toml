@@ -1,0 +1,48 @@
+schema_version = 1
+
+[[story_overrides]]
+story_id = "ai-not-ghost-2026-05-27"
+closest_source_ids = ["source-authorship-erasure-recovery-ledger-2026-05-27"]
+event_distance = "3_project_reconstruction"
+editorial_distance = "4_public_story_edit"
+continuity = "phrase_cluster"
+source_near_status = "planned"
+closer_source_expected = true
+lost_texture = ["response", "speaker_order", "chronology", "emotional_turn", "mundane_context"]
+next_excavation = "Recover the contiguous May 27-28 conversation before rewriting the public story."
+
+[[story_overrides]]
+story_id = "termite-lost-potato-2024"
+closest_source_ids = ["source-great-book-chapter-11-1"]
+event_distance = "0_direct_contemporaneous"
+editorial_distance = "4_public_story_edit"
+continuity = "complete_literary_scene"
+source_near_status = "planned"
+closer_source_expected = false
+lost_texture = []
+next_excavation = ""
+
+[[excavation_targets]]
+id = "great-book-creation-2024"
+priority = "highest"
+target = "Recover actual Great Book writing sessions and source neighborhoods rather than narrating the whole year from later synthesis."
+
+[[excavation_targets]]
+id = "authorship-erasure-2026-05-27"
+priority = "highest"
+target = "Recover the original May 27-28 conversation and adjacent system turns."
+
+[[excavation_targets]]
+id = "social-originals"
+priority = "high"
+target = "Recover original social and creative exchanges before later retellings or literary transformations."
+
+[[excavation_targets]]
+id = "wall-practice-original"
+priority = "high"
+target = "Recover the original wall-practice conversation before expanding the scene."
+
+[[excavation_targets]]
+id = "creative-project-days"
+priority = "high"
+target = "Connect songs, games, images and software builds to the conversations and sessions that produced them."
