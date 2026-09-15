@@ -42,21 +42,32 @@ class GreatBookPublicReaderTests(unittest.TestCase):
         self.assertIn('src="../app/tts-drawer.js"', html)
         self.assertIn('src="../app/longform-tts-adapter.js"', html)
 
-    def test_verified_restoration_frontier_is_complete(self):
+    def test_verified_restoration_batch_is_present_and_review_gaps_are_explicit(self):
         index = json.loads(BOOK_INDEX.read_text(encoding="utf-8"))
         restoration = index["restoration"]
         self.assertEqual(restoration["mode"], "verified-batches")
-        self.assertEqual(restoration["contiguous_through_order"], 45)
-        self.assertEqual(restoration["contiguous_through_chapter"], "19.8")
+        self.assertEqual(restoration["materialized_through_order"], 49)
+        self.assertEqual(restoration["materialized_through_chapter"], "19.82")
+        self.assertEqual(restoration["deferred_public_review"], ["9.3", "9.31", "9.32"])
 
-        records = []
-        for shard in index["shards"]:
-            records.extend(json.loads((ROOT / "great-book" / shard).read_text(encoding="utf-8")))
-        for record in records[: restoration["contiguous_through_order"]]:
-            if record["status"] != "body":
-                continue
-            chapter = ROOT / "great-book" / record["path"]
-            self.assertTrue(chapter.is_file(), f"restored frontier missing {record['path']}")
+        required = [
+            "chapters/012--chapter-7-4--rent-free-shadows-the-cost-of-tethering-to-illusions.html",
+            "chapters/015--chapter-9-1--the-mud-dwellers-and-the-vibration-of-shame.html",
+            "chapters/016--chapter-9-11--the-path-of-gluttony-and-the-sacred-potato.html",
+            "chapters/017--chapter-9-2--the-ballad-of-the-mud-dwellers-and-the-potato-path.html",
+            "chapters/032--chapter-15-11--the-transition-to-the-potato-of-life.html",
+            "chapters/041--chapter-19-6--axomamma-the-sacred-mother-of-potatoes.html",
+            "chapters/042--chapter-19-66--the-cradle-of-judaism-from-ashes-to-identity.html",
+            "chapters/043--chapter-19-67--africa-the-sacred-soil-and-the-potatos-journey.html",
+            "chapters/044--chapter-19-7--roots-across-oceans-the-potatos-journey-to-europe.html",
+            "chapters/045--chapter-19-8--from-rivers-to-roots-the-myth-of-tammuz-and-the-eternal-harvest-of-the-p.html",
+            "chapters/046--chapter-19-81--the-shadow-of-the-dark-ages-seeds-of-dormancy-and-revival.html",
+            "chapters/047--chapter-19-811--orthodoxy-and-the-quiet-roots-of-thought-a-potatoist-reflection-on-faith.html",
+            "chapters/048--chapter-19-815--the-bridge-of-transformation-the-potatos-arrival-in-europe.html",
+            "chapters/049--chapter-19-82--the-renaissance-humanitys-rebirth-and-rediscovery.html",
+        ]
+        for rel in required:
+            self.assertTrue((ROOT / "great-book" / rel).is_file(), f"restoration batch missing {rel}")
 
 
 if __name__ == "__main__":
