@@ -2,9 +2,12 @@
 from __future__ import annotations
 import json,re
 from pathlib import Path
+
+from record_discovery_contract import iter_discovery_json
+
 ROOT=Path(__file__).resolve().parents[1]; DATA=ROOT/'data'; OUT=DATA/'repository-index.json'; CONCEPT_REGISTRY=DATA/'potatoism-concept-registry.json'
 ID_KEYS=('id','slug','key','term','iso3','country_id'); NAME_KEYS=('name','display_name','proper_name','title','label','term'); DESC_KEYS=('description','definition','summary','purpose','meaning','notes','worldview','core','origin')
-SKIP={'repository-index.json','canonical-record-registry.json','source-of-truth-audit.json'}; ROOTS={'spirit','mind','matter'}; SPIRIT={'source','meaning','belief','myths'}; MIND={'psychology','hawkinscale','neurobiology'}; MATTER={'world','region','institution','network','person','object','event','record','ground'}; SCALES={'source','principle','concept','world','region','institution','network','person','object','event','record','ground'}
+ROOTS={'spirit','mind','matter'}; SPIRIT={'source','meaning','belief','myths'}; MIND={'psychology','hawkinscale','neurobiology'}; MATTER={'world','region','institution','network','person','object','event','record','ground'}; SCALES={'source','principle','concept','world','region','institution','network','person','object','event','record','ground'}
 ROLE_RULES=(('enrichment',lambda s:'-enrichment' in s or '/enrichment' in s),('projection',lambda s:any(x in s for x in ('-nodes','repository-index','country-atlas','lexicon','glossary','comparative-library'))),('relationship',lambda s:s.endswith('relationships.json') or '/relationships' in s),('research',lambda s:'/research/' in s or 'research-' in Path(s).name or '/expansions/' in s or 'expansion-' in Path(s).name),('source',lambda s:'/sources/' in s or Path(s).name.startswith('source-')),('identity-index',lambda s:Path(s).name=='index.json' or Path(s).name.endswith('-index.json')),('schema',lambda s:'blueprint' in Path(s).name),('archive',lambda s:'archive' in Path(s).name))
 PREFERRED_CONCEPT_SOURCES=('data/potatoism-dossiers.json','data/potatoism-canonical-corpus.json','data/potatoism-lexicon-expanded.json','data/potatoism-lexicon.json','data/potatoism-cosmology.json')
 NEURO_TERMS=('neurobiology','neuroscience','neuroanatom','brain','thalam','pineal','neuron','axon','cortex','cortical','cerebr','dienceph','hypothalam','hippocamp','amygdala','nervous system','spinal cord','cerebrospinal','csf')
@@ -46,8 +49,6 @@ def classify_repository(source,obj,rid,name,description,rtype,role,fam):
     root=explicit_value(obj,('repository_root','root_branch','branch')); layer=explicit_value(obj,('repository_layer','root_layer','navigation_layer')); scale=explicit_value(obj,('repository_scale','scale'))
     if root in ROOTS and layer in (SPIRIT|MIND|MATTER) and ((root=='spirit' and layer in SPIRIT) or (root=='mind' and layer in MIND) or (root=='matter' and layer in MATTER)): return root,layer,scale if scale in SCALES else layer,'explicit'
     s=source.lower(); n=Path(s).name; subject=semantic_subject(source,rid,name,rtype,description)
-    # Subject classification must outrank source-family classification. A neurobiology
-    # record does not stop being neurobiology merely because it lives in Potatoism data.
     if has_term(subject,HAWKINS_TERMS): return 'mind','hawkinscale','concept','semantic-subject'
     if has_term(subject,NEURO_TERMS): return 'mind','neurobiology','record','semantic-subject'
     if has_term(subject,PSYCHOLOGY_TERMS): return 'mind','psychology','record','semantic-subject'
@@ -100,8 +101,7 @@ def concept_priority(r):
     except ValueError:return 99
 def main():
     records=[]; files=[]; errors=[]
-    for p in sorted(DATA.rglob('*.json')):
-        if p.name in SKIP:continue
+    for p in iter_discovery_json(DATA):
         source=p.relative_to(ROOT).as_posix()
         try:data=json.loads(p.read_text(encoding='utf-8'))
         except Exception as e:errors.append({'source':source,'error':f'{type(e).__name__}: {e}'});continue
@@ -126,7 +126,7 @@ def main():
         key=(r['source'],r['id'],json.dumps(r['path'],separators=(',',':')))
         if key not in seen:seen.add(key);unique.append(r)
     unique.sort(key=lambda r:(r['repository_root'],r['repository_layer'],r['name'].casefold(),r['source'],r['id']))
-    OUT.write_text(json.dumps({'version':'4.2.0','taxonomy_version':'repository-spine-4.0.0','concept_registry_version':'2.0.0','record_count':len(unique),'raw_record_count':len(records),'consolidated_concept_count':len(consolidated),'file_count':len(files),'json_errors':errors,'files':files,'records':unique},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+    OUT.write_text(json.dumps({'version':'4.3.0','taxonomy_version':'repository-spine-4.0.0','concept_registry_version':'2.0.0','record_count':len(unique),'raw_record_count':len(records),'consolidated_concept_count':len(consolidated),'file_count':len(files),'json_errors':errors,'files':files,'records':unique},ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
     counts={r:sum(1 for x in unique if x['repository_root']==r) for r in ('spirit','mind','matter')}
     mind_layers={layer:sum(1 for x in unique if x['repository_root']=='mind' and x['repository_layer']==layer) for layer in ('psychology','hawkinscale','neurobiology')}
     print(f'repository-index: {len(unique)} visible records from {len(records)} raw occurrences, {len(consolidated)} canonical concepts, {len(files)} JSON files, {len(errors)} JSON errors; roots={counts}; mind_layers={mind_layers}')
