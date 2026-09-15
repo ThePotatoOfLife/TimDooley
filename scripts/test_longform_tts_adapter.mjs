@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import adapter from '../app/longform-tts-adapter.js';
 
 const payload = adapter.buildLongformPayload({
@@ -93,5 +94,35 @@ assertLongformPage(north,{name:'north',host:'id="north-tts"',css:'href="../app/t
 
 const culture = fs.readFileSync(new URL('../context/culture/index.html', import.meta.url),'utf8');
 assertLongformPage(culture,{name:'culture',host:'id="culture-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root=".culture-page"',allLabel:'data-tts-all-label="Whole culture reader"',exclude:'data-tts-exclude="#culture-tts,.page-nav"'});
+assert.ok(!culture.includes('data-tts-item='),'Culture should keep one calm page-level reader instead of adding Listen controls to every small card');
+
+const pythonProbe = String.raw`
+import sys
+sys.path.insert(0, 'scripts')
+import build_site
+sample = '<!doctype html><html><head><title>X</title></head><body><main class="page"><nav class="nav">Nav</nav><p>Readable.</p></main></body></html>'
+config = {
+    'id': 'shadow-farm',
+    'root': '.page',
+    'label': 'The Farm & Trees of Strife',
+    'all_label': 'Whole deep reader',
+    'exclude': '#shadow-farm-tts,.nav',
+    'asset_prefix': '../',
+}
+out = build_site.inject_legacy_tts_reader(sample, config)
+assert out.count('id="shadow-farm-tts"') == 1
+assert out.count('data-tts-longform') == 1
+assert 'data-tts-root=".page"' in out
+assert 'data-tts-all-label="Whole deep reader"' in out
+assert 'data-tts-exclude="#shadow-farm-tts,.nav"' in out
+assert 'href="../app/tts-drawer.css"' in out
+assert 'src="../app/tts-reader.js"' in out
+assert 'src="../app/tts-drawer.js"' in out
+assert 'src="../app/longform-tts-adapter.js"' in out
+assert 'data-tts-item=' not in out
+assert build_site.inject_legacy_tts_reader(out, config) == out
+`;
+const projectionProbe=spawnSync('python',['-c',pythonProbe],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
+assert.equal(projectionProbe.status,0,`legacy TTS build projection failed: ${projectionProbe.stdout}\n${projectionProbe.stderr}`);
 
 console.log('longform tts adapter contract: ok');
