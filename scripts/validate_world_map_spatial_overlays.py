@@ -6,6 +6,8 @@ import json
 import sys
 from pathlib import Path
 
+from world_map_sacred_overlay_expectations import validate as validate_sacred_expectations
+
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data" / "world-map-spatial-overlays.json"
 MEASUREMENTS = ROOT / "data" / "world-map-spatial-measurements.json"
@@ -160,6 +162,8 @@ def main() -> int:
     for token in ("world-map-spatial-measurements.json", "Geometry-derived", "area_sq_km", "length_km"):
         if token not in ui:
             errors.append(f"spatial overlay inspector missing measurement marker: {token}")
+
+    errors.extend(validate_sacred_expectations(ROOT))
 
     if errors:
         print("World Map spatial overlay validation FAILED:")
