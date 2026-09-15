@@ -8,10 +8,34 @@ function extractFunction(source, name) {
   const marker = `function ${name}(`;
   const start = source.indexOf(marker);
   assert.ok(start >= 0, `missing ${name}`);
-  const bodyStart = source.indexOf('{', start);
-  let depth = 0;
+
+  const paramsStart = source.indexOf('(', start);
+  let paramsDepth = 0;
+  let paramsEnd = -1;
   let quote = null;
   let escaped = false;
+  for (let i = paramsStart; i < source.length; i += 1) {
+    const char = source[i];
+    if (quote) {
+      if (escaped) { escaped = false; continue; }
+      if (char === '\\') { escaped = true; continue; }
+      if (char === quote) quote = null;
+      continue;
+    }
+    if (char === '"' || char === "'" || char === '`') { quote = char; continue; }
+    if (char === '(') paramsDepth += 1;
+    if (char === ')') {
+      paramsDepth -= 1;
+      if (paramsDepth === 0) { paramsEnd = i; break; }
+    }
+  }
+  assert.ok(paramsEnd >= 0, `unterminated parameters for ${name}`);
+
+  const bodyStart = source.indexOf('{', paramsEnd);
+  assert.ok(bodyStart >= 0, `missing body for ${name}`);
+  let depth = 0;
+  quote = null;
+  escaped = false;
   for (let i = bodyStart; i < source.length; i += 1) {
     const char = source[i];
     if (quote) {
