@@ -49,17 +49,20 @@ def main() -> int:
         (
             "__potatoAtlasRenderStack", "register", "unregister", "reconcile", "state", "slotOrder",
             "physical-surface", "physical-water", "physical-line", "geography-context", "context-network", "selection-emphasis",
-            "moveLayer", "potato-atlas-render-stack-change", "queueMicrotask", "styledata",
+            "moveLayer", "potato-atlas-render-stack-change", "queueMicrotask",
             "potato-atlas-module-ready", "localeCompare",
             "function styleSnapshot", "orderIndex", "renderStackStyleSnapshots",
+            "const styleLifecycle = window.__potatoAtlasStyleLifecycle",
+            "styleLifecycle.register('render-stack'",
+            "restore:() => schedule('style-generation')",
         ),
         errors,
         "render stack",
     )
     check_node(RENDER_STACK, errors)
-    for forbidden in ("MutationObserver", "setInterval", "removeLayer(", "removeSource(", "setPaintProperty(", "zIndex"):
+    for forbidden in ("MutationObserver", "setInterval", "removeLayer(", "removeSource(", "setPaintProperty(", "zIndex", "map.on('styledata'"):
         if forbidden in render:
-            errors.append(f"render stack must not own map data/paint lifecycle or arbitrary z-index state: found {forbidden}")
+            errors.append(f"render stack must not own map data/paint/style lifecycle or arbitrary z-index state: found {forbidden}")
     if render:
         expected_order = ("physical-surface", "physical-water", "physical-line", "geography-context", "context-network", "selection-emphasis")
         positions = [render.find(repr(slot).replace('"', "'")) for slot in expected_order]
