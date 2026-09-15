@@ -1,21 +1,25 @@
 {
   "id":"neurotheology-routing-index",
-  "version":"2.3.0",
+  "version":"2.4.0",
   "updated":"2026-09-15",
   "title":"Neurotheology / Body–Symbol Routing Index",
-  "purpose":"Keep empirical neurobiology, whole-body biology, Potatoverse symbolism, Tim-specific formulations, timeline and religious/mythic comparison coordinated without duplicate owners or metaphor-to-anatomy collapse.",
+  "purpose":"Keep empirical neurobiology, whole-body biology, Potatoverse symbolism, Tim-specific formulations, systems formalization, timeline and religious/mythic comparison coordinated without duplicate owners or metaphor-to-anatomy collapse.",
   "canonical_entry":"knowledge/body/body-system-master-atlas.json",
-  "completion_tracker":"knowledge/body/body-topic-completion-matrix.json",
-  "navigation_rule":"Start with the body-system master atlas. Use body-science-context for body↔brain physiology and scientific corrections; use the whole-brain atlas for brain anatomy/networks/flows; use brain-body-systems-deepening-wave-2 for endocrine, immune, gut, barrier, cardiorespiratory, circadian and homeostatic systems; use tim-neurobiology-relational-reconciliation when asking how Tim's own formulations relate to biology. Use specialist deepening files only when finer anatomical or theoretical detail is needed. Preserve attestation separately from later research.",
+  "branch_index":"knowledge/body/index.json",
+  "completion_tracker":"knowledge/body/whole-brain-neurobiology-completion.json",
+  "navigation_rule":"Start with body-system-master-atlas or body/index. Use body-science-context for body↔brain physiology; whole-brain-neurobiology-atlas for brain anatomy/networks/flows; brain-body-systems-deepening-wave-2 for homeostatic/endocrine/immune/barrier/gut/circadian physiology; brain-body-organ-axes-deepening-wave-3 for kidney, liver, adipose, muscle, pancreas, reproduction, skull marrow and peripheral ganglia; tim-neurobiology-relational-reconciliation for Tim's own formulations and chronology; biological-multiplex-flow-formalization for a mathematical/systems comparison. Preserve attestation separately from later research.",
   "owners":[
+    {"priority":1,"topic":"BODY canonical navigation","owner":"knowledge/body/index.json","use_for":["full BODY reading order","owner discovery","whole organism layer map","symbol relation lookup"]},
     {"priority":1,"topic":"simple whole-body canonical map","owner":"knowledge/body/body-system-master-atlas.json","use_for":["reader-facing synthesis","system-to-symbol relations","chakra overlay","theology chain","canonical owner lookup"]},
-    {"priority":2,"topic":"completion / finished-baseline status","owner":"knowledge/body/body-topic-completion-matrix.json","use_for":["what is complete","what is substantial/provisional","remaining recovery targets","avoid duplicate expansion"]},
+    {"priority":2,"topic":"completion / baseline status","owner":"knowledge/body/whole-brain-neurobiology-completion.json","use_for":["brain anatomy completeness","brain-body physiology completeness","Tim-biology reconciliation completeness","remaining provenance and science targets"]},
     {"priority":3,"topic":"body↔brain science context","owner":"knowledge/body/body-science-context-atlas.json","use_for":["body-brain flow ecology","interoception","heart and cardiorespiratory sensing","breath","gut-brain ecology","endocrine axes","neuroimmune and meningeal systems","glia","neurovascular coupling","CSF/glymphatic/lymphatic distinctions","scientific corrections"]},
     {"priority":3,"topic":"whole-brain neurobiology","owner":"knowledge/body/whole-brain-neurobiology-atlas.json","use_for":["brain hierarchy","cortical lobes","white-matter pathways","diencephalon","basal ganglia","memory-affect systems","brainstem","cerebellum","sensory pathways","motor pathways","ventricles and CSF","glia and neurovascular support","neurotransmitter systems","large-scale brain networks","brain states","system flows"]},
     {"priority":3,"topic":"Tim ↔ neurobiology reconciliation","owner":"knowledge/body/tim-neurobiology-relational-reconciliation.json","use_for":["inner potato chronology","House/rooms/roads/wall","North of North versus anatomy","pineal Single Eye/Door","third ventricle threshold","seed of consciousness boundary","River/Spirit flow","return to center","inward Eye/interoception","Heart/River/love/longing","breath Door","spine Ladder","Garden/microbiome","Gardener/glia","Observer/present-window","source-direction boundaries"]},
     {"priority":3,"topic":"integrated neurotheology synthesis","owner":"knowledge/body/neurotheology-axis-house-spirit-atlas.json","use_for":["House/Seed","Pineal threshold","CSF Spirit-flow","Genesis breath","Atlas/Axis","Eye of Horus","mustard seed","Huginn/Muninn","anti-collapse rules"]},
     {"priority":4,"topic":"brain↔body systems specialist deepening","owner":"knowledge/body/brain-body-systems-deepening-wave-2.json","use_for":["interoceptive coding","baroreflex and chemoreflex","NTS and parabrachial systems","central autonomic network","hypothalamic homeostasis","endocrine axes","circumventricular organs","choroid plexus","blood-CSF barrier","brain barrier constellation","neuroimmune feedback","meningeal lymphatics","gut neuroepithelial interface","metabolic hormones","sleep/circadian homeostasis","multi-timescale systems biology"]},
+    {"priority":4,"topic":"whole-organ brain↔body axes","owner":"knowledge/body/brain-body-organ-axes-deepening-wave-3.json","use_for":["kidney-brain axis","liver-brain axis","adipose-brain axis","muscle-brain axis","reproductive neuroendocrine axis","pancreas-brain glucose regulation","skull marrow-meningeal axis","peripheral sensory and autonomic ganglia","cross-organ metabolic/fluid/exercise/reproductive/immune loops"]},
     {"priority":4,"topic":"whole-brain specialist deepening","owner":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json","use_for":["cranial nerves","hypothalamic nuclei","brainstem nuclei","hippocampal subfields","cerebellar microcircuit","pain and nociception","neurovascular coupling","development and aging","language networks","social cognition","predictive processing and active inference"]},
+    {"priority":4,"topic":"biological River / Door / Axis formalization","owner":"knowledge/science/biological-multiplex-flow-formalization.json","use_for":["typed biological flow layers","units/timescales","multilayer graph","Door gate functions","Axis state flow","Eye observation map","Return feedback loop","testability rules","Potato Dynamics bridge"]},
     {"priority":4,"topic":"recovered broader neurobiology / biology / chakra neighbors","owner":"knowledge/body/neurobiology-recovery-wave-2.json","use_for":["TRN","insula/interoception","autonomic/vagus","hypothalamus/endocrine","hippocampus/amygdala","claustrum","sleep/arousal","optic chiasm","ventricles/aqueduct","cerebellar arbor vitae","olfaction","microbiome","BBB","glia","plasticity/epigenetics","legacy-science quarantine"]},
     {"priority":5,"topic":"thalamus detail","owner":"data/potatoism-thalamus-brain-map.json","use_for":["thalamic nuclei","rooms","axons","roads","thalamocortical architecture","potato eyes","Eye of Horus hypothesis"]},
     {"priority":5,"topic":"whole-body symbolic distinctions","owner":"knowledge/body/body-symbolism-map.json","use_for":["House vs Temple vs Door vs Vessel","serpent/flow","historical pineal/thalamus context","Sistine comparator"]},
@@ -32,11 +36,12 @@
     "A real pineal↔third-ventricle relationship exists through anatomy and melatonin/CSF measurements, but this does not establish a CSF-reading third eye, present sensor or dimensional portal.",
     "River should not be collapsed into CSF alone: biological flow is multiplex across neural, respiratory, cardiovascular, endocrine, immune, metabolic, interstitial/CSF and lymphatic systems.",
     "Return-to-center should not be collapsed into one anatomical dot: its strongest biological neighbor is recurrent distributed regulation and state estimation.",
+    "Organs are active participants in body-brain signaling but afferent sensing does not imply a separate conscious mind in each organ.",
     "Do not infer hidden biblical neuroanatomy from House, Eye, Seed, Ladder, river, cross, tomb, garden or temple imagery.",
     "Do not map chakras one-to-one onto glands, ganglia, nerves or brain regions; biological neighbors are many-to-many.",
     "Do not collapse organism communication into the vagus nerve, microbiome, hormones, CSF or any other single channel.",
     "Legacy Great Book quantitative neuroscience claims require independent verification before scientific reuse.",
-    "Do not use psychiatric, immune, endocrine or neurological states as moral or theological proof.",
+    "Do not use psychiatric, immune, endocrine, metabolic, reproductive or neurological states as moral or theological proof.",
     "Preserve Tim/user attestation dates independently from later research-unlock dates."
   ],
   "remaining_high_value_recovery":[
@@ -52,5 +57,5 @@
     "first Tim-specific Eye of Horus↔thalamus/House coupling",
     "source-direction audit for optic-chiasm Cross, TRN wall and third-ventricle Tomb"
   ],
-  "baseline_state":"The project now has a whole-body entry layer, a deep whole-brain atlas, a Tim-specific reconciliation ledger, a brain-anatomy specialist layer, and a body↔brain systems physiology layer covering homeostasis, endocrine, immune, barriers, gut, cardiorespiratory and circadian systems. Remaining work is primarily provenance recovery, finer specialist anatomy where useful, and continued scientific updating in active research areas."
+  "baseline_state":"BODY now has a canonical index, whole-body synthesis, deep whole-brain anatomy, brain-body physiology, whole-organ axes, Tim-specific reconciliation, systems formalization, neurotheology comparison and separate attestation chronology. Remaining work is mostly provenance recovery, human-evidence grading in active fields, finer specialist anatomy/organ signaling when useful, and safe public discovery regeneration."
 }
