@@ -87,3 +87,19 @@ def test_frontier_is_independent_of_root_order():
     root = sample_root()
     reversed_root = dict(root, roots=list(reversed(root['roots'])))
     assert build_discovery_frontier(root) == build_discovery_frontier(reversed_root)
+
+
+def test_priority_follows_epistemic_leverage_not_date_order():
+    frontier = build_discovery_frontier(sample_root())
+    queue = frontier['work_queue']
+    assert [item['reason'] for item in queue] == [
+        'no_statement_at_minute',
+        'search_coverage_gap',
+        'timestamp_precision_date_only',
+    ]
+    assert [item['priority'] for item in queue] == [100, 90, 60]
+    assert [item['action'] for item in queue] == [
+        'recover_status_source',
+        'bridge_timeline_interval',
+        'upgrade_timestamp_precision',
+    ]
