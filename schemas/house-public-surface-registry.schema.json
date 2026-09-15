@@ -4,7 +4,7 @@
   "title": "Potato House Public Surface Registry",
   "type": "object",
   "additionalProperties": false,
-  "required": ["version", "updated", "authority", "room_registry", "primary_gateway_ids", "secondary_global_ids", "surfaces"],
+  "required": ["version", "updated", "authority", "room_registry", "primary_gateway_ids", "secondary_global_ids", "generated_surface_ids", "surfaces"],
   "properties": {
     "version": {"type": "string"},
     "updated": {"type": "string"},
@@ -12,6 +12,7 @@
     "room_registry": {"const": "data/house/rooms.json"},
     "primary_gateway_ids": {"type": "array", "minItems": 5, "maxItems": 5, "uniqueItems": true, "items": {"type": "string"}},
     "secondary_global_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
+    "generated_surface_ids": {"type": "array", "uniqueItems": true, "items": {"type": "string"}},
     "surfaces": {
       "type": "array",
       "minItems": 15,
