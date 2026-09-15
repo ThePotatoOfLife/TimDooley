@@ -16,6 +16,14 @@ const TERRAIN_EXAGGERATION = 1.05;
 let enabled = false;
 let busy = false;
 
+function registerHillshade() {
+  window.__potatoAtlasRenderStack?.register?.(HILLSHADE_LAYER, {
+    slot:'physical-surface',
+    priority:10,
+    owner:'physical.terrain',
+  });
+}
+
 function ensureSources() {
   if (!map.getSource(TERRAIN_SOURCE)) {
     map.addSource(TERRAIN_SOURCE, {
@@ -38,15 +46,17 @@ function ensureSources() {
 }
 
 function ensureHillshade() {
-  if (map.getLayer(HILLSHADE_LAYER)) return;
-  const before = map.getLayer('countries-fill') ? 'countries-fill' : undefined;
-  map.addLayer({
-    id: HILLSHADE_LAYER,
-    type: 'hillshade',
-    source: HILLSHADE_SOURCE,
-    layout: { visibility: 'none' },
-    paint: { 'hillshade-exaggeration': 0.35 },
-  }, before);
+  if (!map.getLayer(HILLSHADE_LAYER)) {
+    const before = map.getLayer('countries-fill') ? 'countries-fill' : undefined;
+    map.addLayer({
+      id: HILLSHADE_LAYER,
+      type: 'hillshade',
+      source: HILLSHADE_SOURCE,
+      layout: { visibility: 'none' },
+      paint: { 'hillshade-exaggeration': 0.35 },
+    }, before);
+  }
+  registerHillshade();
 }
 
 function setBaseOpacity(value) {
