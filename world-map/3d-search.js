@@ -104,9 +104,15 @@ function subdivisionResult(row, query) {
     row,
   };
 }
-function placeResults(query, limit) {
+async function placeResults(query, limit) {
   const api = window.__potatoAtlasPlaces;
   if (!api?.search) return [];
+  try {
+    await api.ready;
+  } catch (error) {
+    console.warn('Unified search Places index unavailable:', error);
+    return [];
+  }
   return api.search(query, {limit}).map(result => ({
     type:['Capital','City','Town'].includes(result.type) ? result.type : 'City',
     id:result.id,
@@ -123,10 +129,13 @@ async function search(query, options = {}) {
     return [];
   }
   const limit = Math.max(1, Math.min(30, Number(options.limit) || 12));
-  const [countryRowsLoaded, subdivisionRowsLoaded] = await Promise.all([countryRows(), subdivisionRows()]);
+  const [countryRowsLoaded, subdivisionRowsLoaded, places] = await Promise.all([
+    countryRows(),
+    subdivisionRows(),
+    placeResults(needle, limit),
+  ]);
   const countries = countryRowsLoaded.map(row => countryResult(row, needle)).filter(Boolean);
   const subdivisions = subdivisionRowsLoaded.map(row => subdivisionResult(row, needle)).filter(Boolean);
-  const places = placeResults(needle, limit);
   const results = [...countries, ...subdivisions, ...places]
     .sort(compareResults)
     .slice(0, limit);
