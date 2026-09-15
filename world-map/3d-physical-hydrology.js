@@ -32,6 +32,12 @@ let lastBasins = EMPTY();
 let lastRivers = EMPTY();
 let opacity = DEFAULT_OPACITY;
 
+function registerLayers() {
+  const stack = window.__potatoAtlasRenderStack;
+  stack?.register?.(BASIN_FILL, { slot:'physical-surface', priority:50, owner:PHYSICAL_ID });
+  stack?.register?.(BASIN_LINE, { slot:'physical-line', priority:50, owner:PHYSICAL_ID });
+  stack?.register?.(RIVER_LINE, { slot:'physical-line', priority:60, owner:PHYSICAL_ID });
+}
 function clampOpacity(value) { return Math.max(0, Math.min(1, Number(value))); }
 function opacityScale() { return DEFAULT_OPACITY ? opacity / DEFAULT_OPACITY : 1; }
 function applyOpacity() {
@@ -86,6 +92,7 @@ function ensureLayers() {
   if (!map.getLayer(BASIN_FILL)) map.addLayer({id:BASIN_FILL,type:'fill',source:BASIN_SOURCE,layout:{visibility:'none'},paint:{'fill-color':'#4b8392','fill-opacity':BASE_BASIN_FILL_OPACITY}}, beforeFill);
   if (!map.getLayer(BASIN_LINE)) map.addLayer({id:BASIN_LINE,type:'line',source:BASIN_SOURCE,layout:{visibility:'none'},paint:{'line-color':'#69a5b3','line-opacity':BASE_BASIN_LINE_OPACITY,'line-width':['interpolate',['linear'],['zoom'],4,0.55,8,1.15]}}, beforeLine);
   if (!map.getLayer(RIVER_LINE)) map.addLayer({id:RIVER_LINE,type:'line',source:RIVER_SOURCE,layout:{visibility:'none','line-cap':'round','line-join':'round'},paint:{'line-color':'#67b8da','line-opacity':BASE_RIVER_OPACITY,'line-width':['interpolate',['linear'],['zoom'],4,0.55,6,0.9,9,1.35]}}, beforeLine);
+  registerLayers();
   applyOpacity();
 }
 
