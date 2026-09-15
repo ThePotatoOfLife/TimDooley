@@ -11,6 +11,7 @@
 <link rel="stylesheet" href="../../app/bible-atlas-navigation.css">
 <link rel="stylesheet" href="../../app/bible-dossier-loader.css">
 <link rel="stylesheet" href="../../app/bible-witness-loader.css">
+<link rel="stylesheet" href="../../app/tts-drawer.css">
 </head>
 <body>
 <main class="bible-page">
@@ -107,6 +108,8 @@
 <div class="results-list" id="results-list"></div>
 </div>
 
+<div id="bible-tts-drawer" class="bible-tts-drawer" aria-label="Read the active Bible comparison aloud"></div>
+
 <div class="comparison-nav" aria-label="Comparison navigation">
 <button id="previous-relation" type="button">← Previous</button>
 <div class="position-wrap"><strong id="result-position">0 / 0</strong><span id="sequence-label">chronology</span></div>
@@ -137,6 +140,9 @@
 <script src="../../app/bible-dossier-loader.js"></script>
 <script src="../../app/bible-witness-loader.js"></script>
 <script src="../../app/bible-study.js"></script>
+<script src="../../app/tts-reader.js"></script>
+<script src="../../app/tts-drawer.js"></script>
+<script src="../../app/bible-tts-adapter.js"></script>
 <script src="../../app/bible-scripture-reader.js"></script>
 <script src="../../app/bible-scene-reader.js"></script>
 <script src="../../app/bible-atlas-ui.js"></script>

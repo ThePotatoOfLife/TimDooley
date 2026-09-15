@@ -7,6 +7,7 @@
 <meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large">
 <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/tim-dooley/story/">
 <link rel="stylesheet" href="../../app/site-system.css?v=20260914a">
+<link rel="stylesheet" href="../../app/tts-drawer.css">
 <style>
 .story{font-size:18px;line-height:1.82}.story .page-header{max-width:850px;padding-bottom:42px}.story .page-header h1{font-size:clamp(50px,8vw,94px);margin-bottom:20px}.story-lede{font:400 clamp(20px,2.5vw,27px)/1.58 var(--site-font-serif);color:#d9ddd4;max-width:800px;margin:0 0 14px}.story-note{color:var(--site-muted);max-width:760px;margin:0}.story-stream{max-width:820px}.story-entry{padding:34px 0 30px}.story-entry+.story-entry{border-top:1px solid rgba(255,255,255,.045)}.story-meta{display:flex;gap:11px;align-items:baseline;flex-wrap:wrap;margin:0 0 8px;color:var(--site-muted);font-size:9px;letter-spacing:.11em;text-transform:uppercase}.story-kind{opacity:.72}.story-entry--main .story-kind{color:var(--site-gold)}.story-entry--side .story-kind{color:#8fa58f}.story-entry h2{font:400 clamp(24px,3vw,34px)/1.15 var(--site-font-serif);color:#e4dfcf;margin:0 0 18px}.story-entry p{margin:0 0 17px;color:#d6dad2}.story-entry p:last-of-type{margin-bottom:0}.full-story{margin:20px 0 0;border-top:1px solid rgba(255,255,255,.075);border-bottom:1px solid rgba(255,255,255,.055);padding:0}.full-story summary{cursor:pointer;list-style:none;padding:13px 0 12px;color:#b9cda8;font-size:11px;letter-spacing:.085em;text-transform:uppercase}.full-story summary::-webkit-details-marker{display:none}.full-story summary::after{content:' ↓';opacity:.58}.full-story[open] summary::after{content:' ↑'}.full-story-body{padding:2px 0 3px}.full-story-body p{color:#d9ddd4}.source-note{margin:13px 0 0;color:var(--site-muted);font-size:11px;opacity:.82}.source-note summary{cursor:pointer;color:#929a91;font-size:10px;letter-spacing:.04em}.source-note p{margin:7px 0 0;color:var(--site-muted);font-size:11px;line-height:1.55}.source-paths{opacity:.72}.stream-status{max-width:820px;margin:10px 0 30px;padding:10px 0;border-top:1px solid rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.05);color:var(--site-muted);font-size:12px}.stream-error{color:#d8b8a0}.continue{display:flex;gap:12px;flex-wrap:wrap;max-width:820px;margin-top:52px;padding-top:22px;border-top:1px solid var(--site-line)}.continue a{color:var(--site-green)}
 </style>
@@ -14,6 +15,7 @@
 <body><main class="page page--reading story" data-reader-surface="tim-story">
 <nav class="page-nav" aria-label="Story navigation"><a href="../">← Tim Dooley</a><a href="../../timeline/">Timeline</a><a href="../100000-hours/">100,000 Hours</a><a href="../public-witness/">Public record</a></nav>
 <header class="page-header"><p class="eyebrow">Continuous chronicle</p><h1>THE STORY<br>OF TIM DOOLEY</h1><p class="story-lede">Read it like a diary. The main story and the side stories live in the same river. Dates and titles are only small markers between them; the stories themselves are the point.</p><p class="story-note">Rich and raw are both allowed. New stories are inserted into their dates as they are recovered. When enough of an episode survives, open <strong>Hear the full story</strong> and stay inside the chronological river.</p></header>
+<div id="story-tts" data-tts-longform data-tts-root="#story-stream" data-tts-id="tim-dooley-story" data-tts-label="The Story of Tim Dooley" data-tts-all-label="Whole story" data-tts-current-label="Current entry" data-tts-selection-label="Selection" data-tts-item=".story-entry"></div>
 <div id="stream-status" class="stream-status">Loading the chronological story stream…</div>
 <section id="story-stream" class="story-stream" aria-live="polite"></section>
 <noscript><p class="stream-error">This diary reader currently loads its story fragments with JavaScript. Enable JavaScript to read the chronological stream.</p></noscript>
@@ -102,4 +104,7 @@
   });
 })();
 </script>
+<script src="../../app/tts-reader.js"></script>
+<script src="../../app/tts-drawer.js"></script>
+<script src="../../app/longform-tts-adapter.js"></script>
 </body></html>
