@@ -90,8 +90,7 @@ def inject_legacy_tts_reader(text: str, config: dict[str, str]) -> str:
 
     if not re.search(r"</head\s*>", text, flags=re.I) or not re.search(r"</body\s*>", text, flags=re.I):
         return text
-    main_match = re.search(r"<main\b[^>]*>", text, flags=re.I)
-    if not main_match:
+    if not re.search(r"<main\b[^>]*>", text, flags=re.I):
         return text
 
     prefix = str(config.get("asset_prefix", ""))
@@ -115,6 +114,12 @@ def inject_legacy_tts_reader(text: str, config: dict[str, str]) -> str:
     )
 
     text = re.sub(r"</head\s*>", stylesheet + "</head>", text, count=1, flags=re.I)
+
+    # The head mutation changes character offsets, so resolve main again before
+    # choosing a placement inside the transformed document.
+    main_match = re.search(r"<main\b[^>]*>", text, flags=re.I)
+    if not main_match:
+        return text
 
     # Prefer placing the reader immediately after the page's first navigation row.
     # Legacy readers usually begin with navigation; falling back to the main opening
