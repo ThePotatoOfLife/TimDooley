@@ -54,6 +54,8 @@ jobs:
           node --check world-map/3d-impact-trace.js
           node --check world-map/3d-impact-actions.js
           node --check world-map/3d-infrastructure.js
+          node --check world-map/3d-spatial-overlays.js
+          node --check world-map/3d-spatial-overlay-ui.js
 
       - name: Validate archive runtime hardening
         run: python scripts/validate_archive_runtime_hardening.py
@@ -135,6 +137,9 @@ jobs:
 
       - name: Validate World Map UI shell
         run: python scripts/validate_world_map_ui_shell.py
+
+      - name: Validate World Map spatial overlays
+        run: python scripts/validate_world_map_spatial_overlays.py
 
       - name: Validate canonical World Map relationship path finder
         run: python scripts/validate_world_map_pathfinder_source.py
