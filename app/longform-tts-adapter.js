@@ -72,6 +72,7 @@
     const itemSelector=config.itemSelector||'';
     let currentItem=null;
     let drawer=null;
+    let selectionAction=null;
     const getItems=()=>itemSelector?[...container.querySelectorAll(itemSelector)]:[];
     const firstItem=()=>getItems()[0]||null;
     const source=()=>{
@@ -88,7 +89,13 @@
       });
     };
     const refresh=()=>drawer?.setPayload?.(source());
+    const clearReadingActive=()=>getItems().forEach(item=>item.classList?.remove('ptts-reading-active'));
+    const setReadingActive=active=>{
+      clearReadingActive();
+      if(active&&currentItem?.classList)currentItem.classList.add('ptts-reading-active');
+    };
     const chooseCurrent=item=>{
+      setReadingActive(false);
       if(item&&container.contains(item))currentItem=item;
       refresh();
     };
@@ -97,6 +104,10 @@
       target:host,
       getPayload:source,
       settingsKey:config.settingsKey||'potato-tts-settings',
+      onEvent:event=>{
+        if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
+        if(['complete','stop','error'].includes(event.type))setReadingActive(false);
+      },
     });
     if(!drawer)return null;
 
@@ -137,7 +148,7 @@
 
     const Observer=config.MutationObserver||root?.MutationObserver;
     const observer=Observer?new Observer(()=>{
-      if(currentItem&&!container.contains(currentItem))currentItem=null;
+      if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null}
       ensureListenButtons();
       refresh();
     }):null;
@@ -145,6 +156,7 @@
 
     ensureListenButtons();
     refresh();
+    selectionAction=Drawer.mountSelectionAction?.({document:doc,container,drawer,getPayload:source});
 
     return {
       drawer,
@@ -152,11 +164,14 @@
       setCurrent:chooseCurrent,
       source,
       ensureListenButtons,
+      selectionAction,
       destroy(){
         observer?.disconnect();
         container.removeEventListener('click',onActivate);
         container.removeEventListener('focusin',onActivate);
         doc.removeEventListener('selectionchange',onSelection);
+        selectionAction?.destroy?.();
+        clearReadingActive();
         drawer.stop?.();
       }
     };
