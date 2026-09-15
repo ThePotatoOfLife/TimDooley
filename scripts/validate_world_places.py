@@ -100,6 +100,7 @@ def validate_runtime(errors: list[str]) -> None:
         "atlas-places-detail-points", "atlas-places-detail-labels",
         "context-network", "__potatoAtlasOverlayHandled", "Open country",
         "convergeLegacyCapitals", "potato-atlas-capitals-ready",
+        "panelSnapshot", "restoreInspector",
     ), errors)
     require_tokens(SEARCH, (
         "__potatoAtlasSearch", "Country", "Capital", "City", "Town", "typeRank", "compareResults",
@@ -132,11 +133,16 @@ def main() -> int:
     parser = argparse.ArgumentParser()
     parser.add_argument("--data-dir", type=Path, default=DEFAULT_DATA_DIR)
     parser.add_argument("--data-only", action="store_true")
+    parser.add_argument("--runtime-only", action="store_true")
     parser.add_argument("--allow-runtime-missing", action="store_true")
     args = parser.parse_args()
 
+    if args.data_only and args.runtime_only:
+        parser.error("--data-only and --runtime-only are mutually exclusive")
+
     errors: list[str] = []
-    validate_data(args.data_dir, errors)
+    if not args.runtime_only:
+        validate_data(args.data_dir, errors)
     if not args.data_only:
         runtime_errors: list[str] = []
         validate_runtime(runtime_errors)
