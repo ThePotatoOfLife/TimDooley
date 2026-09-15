@@ -1,9 +1,11 @@
 from __future__ import annotations
 
+from collections import Counter
 from datetime import date
 import json
 from pathlib import Path
 import re
+from statistics import median
 
 
 def _timeline_roots(evidence_root: dict) -> list[dict]:
@@ -59,6 +61,10 @@ def _bible_relation_ids(root_ids: set[str], bible_projection: dict) -> list[str]
     return sorted(values)
 
 
+def _month_span_count(first_date: date, last_date: date) -> int:
+    return (last_date.year - first_date.year) * 12 + (last_date.month - first_date.month) + 1
+
+
 def _persistence_metrics(
     attestations: list[dict],
     root_ids: set[str],
@@ -69,15 +75,14 @@ def _persistence_metrics(
     policy: dict,
 ) -> dict:
     attestation_dates = sorted(
-        {
-            str(row.get('date') or str(row.get('timestamp_utc') or '')[:10])
-            for row in attestations
-            if str(row.get('date') or str(row.get('timestamp_utc') or '')[:10])
-        }
+        str(row.get('date') or str(row.get('timestamp_utc') or '')[:10])
+        for row in attestations
+        if str(row.get('date') or str(row.get('timestamp_utc') or '')[:10])
     )
     parsed_dates = [date.fromisoformat(value) for value in attestation_dates]
     span_days = (parsed_dates[-1] - parsed_dates[0]).days if len(parsed_dates) >= 2 else 0
     active_months = sorted({value[:7] for value in attestation_dates if len(value) >= 7})
+    month_span_count = _month_span_count(parsed_dates[0], parsed_dates[-1]) if parsed_dates else 0
     matched_terms = sorted(
         {
             str(term).strip().lower()
@@ -90,6 +95,16 @@ def _persistence_metrics(
     root_relations = bible_projection.get('root_relations') or {}
     bible_attestation_count = sum(1 for root_id in root_ids if root_relations.get(root_id))
     attestation_count = len(attestations)
+    second_precision_attestation_count = sum(
+        1 for row in attestations if str(row.get('precision') or '') == 'second'
+    )
+
+    intervals = [
+        (later - earlier).days
+        for earlier, later in zip(parsed_dates, parsed_dates[1:])
+    ]
+    month_counts = dict(sorted(Counter(value[:7] for value in attestation_dates if len(value) >= 7).items()))
+    max_month_attestations = max(month_counts.values(), default=0)
 
     thresholds = {
         'cross_episode': int(policy.get('minimum_episode_count') or 0),
@@ -113,6 +128,13 @@ def _persistence_metrics(
     }
     passed_test_count = sum(1 for test in tests.values() if test['passed'])
 
+    episode_attestation_count = len(covered_roots)
+    episode_coverage_ratio = episode_attestation_count / attestation_count if attestation_count else 0.0
+    bible_attestation_ratio = bible_attestation_count / attestation_count if attestation_count else 0.0
+    second_precision_ratio = second_precision_attestation_count / attestation_count if attestation_count else 0.0
+    temporal_coverage_ratio = len(active_months) / month_span_count if month_span_count else 0.0
+    max_month_share = max_month_attestations / attestation_count if attestation_count else 0.0
+
     return {
         'span_days': span_days,
         'active_months': active_months,
@@ -120,11 +142,40 @@ def _persistence_metrics(
         'matched_terms': matched_terms,
         'term_diversity_count': len(matched_terms),
         'episode_count': len(episode_ids),
-        'episode_attestation_count': len(covered_roots),
-        'episode_coverage_ratio': len(covered_roots) / attestation_count if attestation_count else 0.0,
+        'episode_attestation_count': episode_attestation_count,
+        'episode_coverage_ratio': episode_coverage_ratio,
         'bible_relation_count': len(bible_relation_ids),
         'bible_attestation_count': bible_attestation_count,
-        'bible_attestation_ratio': bible_attestation_count / attestation_count if attestation_count else 0.0,
+        'bible_attestation_ratio': bible_attestation_ratio,
+        'dimensions': {
+            'span': {
+                'days': span_days,
+                'active_month_count': len(active_months),
+                'month_span_count': month_span_count,
+                'temporal_coverage_ratio': temporal_coverage_ratio,
+            },
+            'recurrence': {
+                'reappearance_count': max(attestation_count - 1, 0),
+                'interval_days': intervals,
+                'longest_gap_days': max(intervals, default=0),
+                'median_gap_days': float(median(intervals)) if intervals else 0.0,
+            },
+            'distribution': {
+                'attestations_by_month': month_counts,
+                'max_month_attestations': max_month_attestations,
+                'max_month_share': max_month_share,
+            },
+            'support': {
+                'episode_count': len(episode_ids),
+                'episode_attestation_count': episode_attestation_count,
+                'episode_coverage_ratio': episode_coverage_ratio,
+                'bible_relation_count': len(bible_relation_ids),
+                'bible_attestation_count': bible_attestation_count,
+                'bible_attestation_ratio': bible_attestation_ratio,
+                'second_precision_attestation_count': second_precision_attestation_count,
+                'second_precision_ratio': second_precision_ratio,
+            },
+        },
         'tests': tests,
         'passed_test_count': passed_test_count,
         'test_count': len(tests),
@@ -157,6 +208,7 @@ def build_development_threads(
                 'root_id': str(root.get('id')),
                 'timestamp_utc': timestamp or None,
                 'date': str(root.get('date') or timestamp[:10] or ''),
+                'precision': str(root.get('precision') or ''),
                 'matched_terms': matched,
             })
 
@@ -217,7 +269,7 @@ def build_development_threads(
     gaps.sort(key=lambda row: str(row.get('id') or ''))
     return {
         'id': 'public-statement-development-threads',
-        'version': '1.1.0',
+        'version': '1.2.0',
         'model': 'rooted-spiral-development-threads',
         'source_root_id': str(evidence_root.get('id') or ''),
         'definition_source_id': str(definitions.get('id') or ''),
