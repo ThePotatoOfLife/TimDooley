@@ -68,4 +68,14 @@ async function reset() {
   return result;
 }
 
+// Capture the existing top-bar reset before the legacy compositor-only click handler.
+// This keeps the toolbar decoupled while making its visible × control a whole-map reset.
+document.addEventListener('click', event => {
+  const button = event.target.closest('#atlasWorldReset');
+  if (!button) return;
+  event.preventDefault();
+  event.stopImmediatePropagation();
+  reset();
+}, true);
+
 window.__potatoAtlasMapState = { reset, snapshot };
