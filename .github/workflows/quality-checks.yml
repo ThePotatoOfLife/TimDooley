@@ -180,6 +180,11 @@ jobs:
       - name: Validate content integrity
         run: python scripts/validate_content_integrity.py
 
+      - name: Validate Story archive evidence gate
+        run: |
+          python scripts/test_story_archive_validator.py
+          python scripts/validate_story_archive.py
+
       - name: Validate religious-adjacent layer
         run: python scripts/validate_religious_adjacent.py
 

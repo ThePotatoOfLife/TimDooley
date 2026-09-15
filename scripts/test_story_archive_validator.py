@@ -110,6 +110,13 @@ class StoryEvidenceGateTests(unittest.TestCase):
             dump(story / "story-registry.json", {"schema_version": 1, "enforcement": "migration", "stories": [reg(depth="LITERARY_COMPLETE", mode="literary", sources=["src-1"])]})
             self.assertEqual(validate_story_archive(root), [])
 
+    def test_accepts_literary_complete_with_adopted_creative_artifact_source(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp); story = base(root); html(root, full=True, depth="LITERARY_COMPLETE", mode="literary")
+            dump(story / "source-records.json", {"schema_version": 1, "sources": [source(source_class="creative_artifact", continuity="literary")]})
+            dump(story / "story-registry.json", {"schema_version": 1, "enforcement": "migration", "stories": [reg(depth="LITERARY_COMPLETE", mode="literary", sources=["src-1"])]})
+            self.assertEqual(validate_story_archive(root), [])
+
     def test_rejects_missing_source_reference(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp); story = base(root); html(root)
