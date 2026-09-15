@@ -203,17 +203,36 @@ function capitalHtml(properties) { return `<div class="atlas-hover atlas-hover-c
 function showPopup(event, html) { popup.setLngLat(event.lngLat).setHTML(html).addTo(map); }
 function bindCountryHover(layerId) {
   let hoverGeneration = 0;
+  let activeKey = '';
+  let latestEvent = null;
+  let resolvedHtml = null;
   map.on('mousemove', layerId, async event => {
     const feature = event.features?.[0];
     if (!feature) return;
-    const generation = ++hoverGeneration;
+    const properties = feature.properties || {};
+    const key = String(
+      properties.iso3 || properties.cca3 || properties.ISO_A3 || properties.id ||
+      properties.name || properties.NAME || properties.ADMIN || ''
+    ).toUpperCase();
+    latestEvent = event;
     map.getCanvas().style.cursor = 'pointer';
-    const html = await countryHtml(feature.properties || {});
-    if (generation !== hoverGeneration) return;
-    showPopup(event, html);
+    if (key === activeKey) {
+      if (resolvedHtml) showPopup(latestEvent, resolvedHtml);
+      return;
+    }
+    activeKey = key;
+    resolvedHtml = null;
+    const generation = ++hoverGeneration;
+    const html = await countryHtml(properties);
+    if (generation !== hoverGeneration || key !== activeKey || !latestEvent) return;
+    resolvedHtml = html;
+    showPopup(latestEvent, html);
   });
   map.on('mouseleave', layerId, () => {
     hoverGeneration += 1;
+    activeKey = '';
+    latestEvent = null;
+    resolvedHtml = null;
     map.getCanvas().style.cursor = '';
     popup.remove();
   });
