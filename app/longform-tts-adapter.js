@@ -72,10 +72,6 @@
     let drawer=null;
     const getItems=()=>itemSelector?[...container.querySelectorAll(itemSelector)]:[];
     const firstItem=()=>getItems()[0]||null;
-    const chooseCurrent=item=>{
-      if(item&&container.contains(item))currentItem=item;
-      drawer?.updatePayload('current-entry');
-    };
     const source=()=>{
       if(itemSelector&&(!currentItem||!container.contains(currentItem)))currentItem=firstItem();
       return buildLongformPayload({
@@ -89,46 +85,77 @@
         selection:selectionInside(doc,container),
       });
     };
+    const refresh=()=>drawer?.setPayload?.(source());
+    const chooseCurrent=item=>{
+      if(item&&container.contains(item))currentItem=item;
+      refresh();
+    };
 
     drawer=Drawer.mount({
-      mount:host,
-      source,
-      label:config.buttonLabel||'Read aloud',
-      settingsKey:config.settingsKey||'potato-tts-drawer-settings',
-      className:config.className||'tts-drawer--longform',
+      target:host,
+      getPayload:source,
+      settingsKey:config.settingsKey||'potato-tts-settings',
     });
     if(!drawer)return null;
 
+    function ensureListenButtons(){
+      if(!itemSelector||typeof doc.createElement!=='function')return;
+      for(const item of getItems()){
+        if(item.dataset?.ttsListenReady==='true')continue;
+        const control=doc.createElement('button');
+        control.type='button';
+        control.className='ptts-inline-listen';
+        control.dataset.ttsListen='';
+        control.textContent='🔊 Listen';
+        control.setAttribute('aria-label','Listen to this section');
+        control.addEventListener('click',event=>{
+          event.preventDefault();
+          event.stopPropagation();
+          chooseCurrent(item);
+          drawer.playSection?.('current');
+        });
+        const anchor=item.querySelector?.('h1,h2,h3,.movement-label,.story-meta');
+        if(anchor?.insertAdjacentElement)anchor.insertAdjacentElement('afterend',control);
+        else if(item.prepend)item.prepend(control);
+        else item.append?.(control);
+        if(item.dataset)item.dataset.ttsListenReady='true';
+      }
+    }
+
     const onActivate=event=>{
-      if(!itemSelector)return;
+      if(!itemSelector||event.target?.closest?.('[data-tts-listen]'))return;
       const item=event.target?.closest?.(itemSelector);
       if(item&&container.contains(item))chooseCurrent(item);
     };
     container.addEventListener('click',onActivate);
     container.addEventListener('focusin',onActivate);
 
-    const onSelection=()=>drawer.updatePayload('selection');
+    const onSelection=()=>refresh();
     doc.addEventListener('selectionchange',onSelection);
 
     const Observer=config.MutationObserver||root?.MutationObserver;
     const observer=Observer?new Observer(()=>{
       if(currentItem&&!container.contains(currentItem))currentItem=null;
-      drawer.updatePayload('content');
+      ensureListenButtons();
+      refresh();
     }):null;
     observer?.observe(container,{childList:true,subtree:true,characterData:true});
-    drawer.updatePayload('mount');
+
+    ensureListenButtons();
+    refresh();
 
     return {
       drawer,
-      refresh:()=>drawer.updatePayload('refresh'),
+      refresh,
       setCurrent:chooseCurrent,
       source,
+      ensureListenButtons,
       destroy(){
         observer?.disconnect();
         container.removeEventListener('click',onActivate);
         container.removeEventListener('focusin',onActivate);
         doc.removeEventListener('selectionchange',onSelection);
-        drawer.destroy?.();
+        drawer.stop?.();
       }
     };
   }
