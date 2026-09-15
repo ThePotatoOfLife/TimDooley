@@ -98,11 +98,20 @@ function geometryKinds(fc) {
   return kinds;
 }
 function beforeLayerId() {
+  // Compatibility fallback only; Render Stack owns final semantic ordering.
   return map.getLayer('country-labels') ? 'country-labels' : undefined;
 }
 function addMapLayer(definition, beforeId) {
   if (beforeId && map.getLayer(beforeId)) map.addLayer(definition, beforeId);
   else map.addLayer(definition);
+}
+function registerRenderedLayers(row, layerIds) {
+  const stack = window.__potatoAtlasRenderStack;
+  layerIds.forEach((layerId, index) => stack?.register?.(layerId, {
+    slot:'geography-context',
+    priority:100 + index,
+    owner:`spatial-overlays:${row.id}`,
+  }));
 }
 function installRenderedLayers(row, fc) {
   const token = safeId(row.id);
@@ -149,6 +158,7 @@ function installRenderedLayers(row, fc) {
     layerIds.push(pointId);
   }
 
+  registerRenderedLayers(row, layerIds);
   for (const layerId of layerIds) {
     map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
@@ -162,7 +172,10 @@ function installRenderedLayers(row, fc) {
 async function ensureRendered(id) {
   const row = entry(id);
   if (!row || row.availability !== 'current') return false;
-  if (rendered.has(id)) return true;
+  if (rendered.has(id)) {
+    registerRenderedLayers(row, layerIdsFor(id));
+    return true;
+  }
   const owner = await loadOwner(row.geometry_owner);
   const fc = featureCollectionFor(row, owner);
   if (!fc.features.length) throw new Error(`Spatial overlay ${id} has no matching geometry features.`);

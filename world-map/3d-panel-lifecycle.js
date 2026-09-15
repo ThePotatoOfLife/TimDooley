@@ -63,11 +63,12 @@ window.__potatoAtlasPanelLifecycle = {
 };
 
 // Coordinate application surfaces before adding more optional visual layers.
-// Physical World loads only a tiny manifest/runtime here; Terrain DEM stays on-demand.
+// Render Stack is tiny and data-free; Physical World still keeps providers lazy.
 queueMicrotask(async () => {
   await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
-  await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
+  await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
+  await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
 });
 
 // Administrative detail remains code- and data-dormant at world scale. Load the

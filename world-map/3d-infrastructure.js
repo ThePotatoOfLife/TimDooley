@@ -45,6 +45,14 @@ function pointFeature(asset) {
   };
 }
 
+function registerPointLayer() {
+  window.__potatoAtlasRenderStack?.register?.(POINT_LAYER, {
+    slot:'context-network',
+    priority:20,
+    owner:'infrastructure',
+  });
+}
+
 function ensureLayer() {
   if (!map.getSource(SOURCE_ID)) map.addSource(SOURCE_ID, { type:'geojson', data:emptyGeoJSON() });
   if (!map.getLayer(POINT_LAYER)) {
@@ -61,6 +69,7 @@ function ensureLayer() {
       },
     });
   }
+  registerPointLayer();
 }
 
 function setVisible(rows, context) {

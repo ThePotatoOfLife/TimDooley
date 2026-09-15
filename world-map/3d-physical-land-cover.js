@@ -30,6 +30,13 @@ let enabled = false;
 let restoring = false;
 let opacity = 0.58;
 
+function registerLayer() {
+  window.__potatoAtlasRenderStack?.register?.(LAYER_ID, {
+    slot:'physical-surface',
+    priority:20,
+    owner:'physical.land-cover',
+  });
+}
 function clampOpacity(value) { return Math.max(0, Math.min(1, Number(value))); }
 function applyOpacity() {
   if (map.getLayer(LAYER_ID)) map.setPaintProperty(LAYER_ID, 'raster-opacity', opacity);
@@ -93,18 +100,20 @@ function ensureSource() {
 }
 
 function ensureLayer() {
-  if (map.getLayer(LAYER_ID)) return;
-  const before = map.getLayer('countries-fill') ? 'countries-fill' : undefined;
-  map.addLayer({
-    id: LAYER_ID,
-    type: 'raster',
-    source: SOURCE_ID,
-    layout: { visibility: 'none' },
-    paint: {
-      'raster-opacity': opacity,
-      'raster-fade-duration': 120,
-    },
-  }, before);
+  if (!map.getLayer(LAYER_ID)) {
+    const before = map.getLayer('countries-fill') ? 'countries-fill' : undefined;
+    map.addLayer({
+      id: LAYER_ID,
+      type: 'raster',
+      source: SOURCE_ID,
+      layout: { visibility: 'none' },
+      paint: {
+        'raster-opacity': opacity,
+        'raster-fade-duration': 120,
+      },
+    }, before);
+  }
+  registerLayer();
 }
 
 function setLegendVisible(visible) {
