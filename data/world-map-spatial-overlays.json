@@ -14,7 +14,7 @@
   ],
   "families": [
     {"id": "sacred.father-land", "label": "Father’s Land / Eden"},
-    {"id": "sacred.chosen-children-land", "label": "Chosen Children’s Land / biblical scenarios"},
+    {"id": "sacred.chosen-children-land", "label": "Chosen Children’s Land / biblical and Greater Israel scenarios"},
     {"id": "current.israel-palestine", "label": "Current Israel / Palestine"},
     {"id": "conflict.context", "label": "Conflict context"}
   ],
@@ -119,16 +119,16 @@
     },
     {
       "id": "biblical.genesis-15",
-      "label": "Chosen Children · Genesis 15 river-to-river",
+      "label": "Chosen Children · Genesis 15 · Wadi el-Arish to Euphrates",
       "family": "sacred.chosen-children-land",
       "epistemic_type": "textual_reconstruction",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": [],
-      "source_ids": ["genesis-15-18"],
+      "feature_ids": ["genesis-15-river-to-river-v1"],
+      "source_ids": ["genesis-15-18", "river-of-egypt-wadi-el-arish-interpretation", "euphrates-reference"],
       "confidence": "interpretive",
-      "availability": "planned",
-      "measurable": false,
-      "status_note": "Waiting for explicit River of Egypt and Euphrates-segment interpretation; the text is not silently converted into one GIS polygon.",
+      "availability": "current",
+      "measurable": true,
+      "status_note": "One explicit Genesis 15:18 reconstruction using Wadi el-Arish for the River of Egypt and a broad Euphrates-facing eastern extent. It is a textual scenario, not a surveyed ancient border or modern sovereignty claim.",
       "visual": {"channel": "overlay-fill-line", "legend_class": "textual"}
     },
     {
@@ -147,16 +147,16 @@
     },
     {
       "id": "modern.greater-israel",
-      "label": "Modern Greater Israel · sourced ideological scenarios",
+      "label": "Greater Israel · maximal Nile-to-Euphrates scenario",
       "family": "sacred.chosen-children-land",
       "epistemic_type": "political_ideology",
       "geometry_owner": "data/world-map-spatial/sacred-covenant-foundation.geojson",
-      "feature_ids": [],
-      "source_ids": [],
+      "feature_ids": ["greater-israel-nile-euphrates-v1"],
+      "source_ids": ["greater-israel-maximal-discourse", "genesis-15-18-nile-reading"],
       "confidence": "interpretive",
-      "availability": "planned",
-      "measurable": false,
-      "status_note": "No single universal polygon. Each future scenario must name the person, movement, period and source it represents.",
+      "availability": "current",
+      "measurable": true,
+      "status_note": "Maximal Nile-to-Euphrates Greater Israel scenario used in political and religious discourse. This is not an official border, not a sovereignty claim, and not a statement that the modern State of Israel has adopted this scenario.",
       "visual": {"channel": "overlay-fill-line", "legend_class": "ideology"}
     },
     {
