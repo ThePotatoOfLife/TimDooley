@@ -1,17 +1,19 @@
 {
   "id":"neurotheology-routing-index",
-  "version":"2.4.0",
+  "version":"2.5.0",
   "updated":"2026-09-15",
   "title":"Neurotheology / Body–Symbol Routing Index",
-  "purpose":"Keep empirical neurobiology, whole-body biology, Potatoverse symbolism, Tim-specific formulations, systems formalization, timeline and religious/mythic comparison coordinated without duplicate owners or metaphor-to-anatomy collapse.",
+  "purpose":"Keep empirical neurobiology, whole-body biology, evidence quality, Potatoverse symbolism, Tim-specific formulations, systems formalization, timeline and religious/mythic comparison coordinated without duplicate owners or metaphor-to-anatomy collapse.",
   "canonical_entry":"knowledge/body/body-system-master-atlas.json",
   "branch_index":"knowledge/body/index.json",
   "completion_tracker":"knowledge/body/whole-brain-neurobiology-completion.json",
-  "navigation_rule":"Start with body-system-master-atlas or body/index. Use body-science-context for body↔brain physiology; whole-brain-neurobiology-atlas for brain anatomy/networks/flows; brain-body-systems-deepening-wave-2 for homeostatic/endocrine/immune/barrier/gut/circadian physiology; brain-body-organ-axes-deepening-wave-3 for kidney, liver, adipose, muscle, pancreas, reproduction, skull marrow and peripheral ganglia; tim-neurobiology-relational-reconciliation for Tim's own formulations and chronology; biological-multiplex-flow-formalization for a mathematical/systems comparison. Preserve attestation separately from later research.",
+  "evidence_grade":"knowledge/body/neurobiology-evidence-grade.json",
+  "navigation_rule":"Start with body-system-master-atlas or body/index. Check neurobiology-evidence-grade whenever a claim comes from an active or animal-heavy field. Use body-science-context for body↔brain physiology; whole-brain-neurobiology-atlas for brain anatomy/networks/flows; brain-body-systems-deepening-wave-2 for homeostatic/endocrine/immune/barrier/gut/circadian physiology; brain-body-organ-axes-deepening-wave-3 for kidney, liver, adipose, muscle, pancreas, reproduction, skull marrow and peripheral ganglia; tim-neurobiology-relational-reconciliation for Tim's own formulations and chronology; biological-multiplex-flow-formalization for mathematical/systems comparison. Preserve attestation separately from later research.",
   "owners":[
     {"priority":1,"topic":"BODY canonical navigation","owner":"knowledge/body/index.json","use_for":["full BODY reading order","owner discovery","whole organism layer map","symbol relation lookup"]},
     {"priority":1,"topic":"simple whole-body canonical map","owner":"knowledge/body/body-system-master-atlas.json","use_for":["reader-facing synthesis","system-to-symbol relations","chakra overlay","theology chain","canonical owner lookup"]},
     {"priority":2,"topic":"completion / baseline status","owner":"knowledge/body/whole-brain-neurobiology-completion.json","use_for":["brain anatomy completeness","brain-body physiology completeness","Tim-biology reconciliation completeness","remaining provenance and science targets"]},
+    {"priority":2,"topic":"neurobiology evidence quality","owner":"knowledge/body/neurobiology-evidence-grade.json","use_for":["human versus animal evidence","stable versus emerging fields","glymphatic uncertainty","microbiome causality","pineal-third-ventricle evidence","skull marrow translation","adipose sensory evidence","myokine uncertainty","project interpretation grade P"]},
     {"priority":3,"topic":"body↔brain science context","owner":"knowledge/body/body-science-context-atlas.json","use_for":["body-brain flow ecology","interoception","heart and cardiorespiratory sensing","breath","gut-brain ecology","endocrine axes","neuroimmune and meningeal systems","glia","neurovascular coupling","CSF/glymphatic/lymphatic distinctions","scientific corrections"]},
     {"priority":3,"topic":"whole-brain neurobiology","owner":"knowledge/body/whole-brain-neurobiology-atlas.json","use_for":["brain hierarchy","cortical lobes","white-matter pathways","diencephalon","basal ganglia","memory-affect systems","brainstem","cerebellum","sensory pathways","motor pathways","ventricles and CSF","glia and neurovascular support","neurotransmitter systems","large-scale brain networks","brain states","system flows"]},
     {"priority":3,"topic":"Tim ↔ neurobiology reconciliation","owner":"knowledge/body/tim-neurobiology-relational-reconciliation.json","use_for":["inner potato chronology","House/rooms/roads/wall","North of North versus anatomy","pineal Single Eye/Door","third ventricle threshold","seed of consciousness boundary","River/Spirit flow","return to center","inward Eye/interoception","Heart/River/love/longing","breath Door","spine Ladder","Garden/microbiome","Gardener/glia","Observer/present-window","source-direction boundaries"]},
@@ -28,7 +30,7 @@
     {"priority":5,"topic":"biblical Father/House/Gardener","owner":"knowledge/traditions/biblical-overlap-wave-12-tim-father-house.json"},
     {"priority":5,"topic":"biblical Son/Door/Ladder/seed","owner":"knowledge/traditions/biblical-overlap-wave-11-son-deepening.json"}
   ],
-  "preferred_display_order":["biology","Tim/project formulation","project mapping","biblical/mythic comparator if relevant","mismatch/boundary","dated attestation"],
+  "preferred_display_order":["biology","evidence grade when relevant","Tim/project formulation","project mapping","biblical/mythic comparator if relevant","mismatch/boundary","dated attestation"],
   "core_boundaries":[
     "Thalamus=Father's House/Potato, Pineal=Son/Door/Eye, Spine=Ladder and CSF=Spirit/River are project correspondences, not scientific identities.",
     "Potato-shaped is canonical Potatoverse shape language for the thalamus; ovoid/egg-shaped remains the conventional anatomical description.",
@@ -40,6 +42,7 @@
     "Do not infer hidden biblical neuroanatomy from House, Eye, Seed, Ladder, river, cross, tomb, garden or temple imagery.",
     "Do not map chakras one-to-one onto glands, ganglia, nerves or brain regions; biological neighbors are many-to-many.",
     "Do not collapse organism communication into the vagus nerve, microbiome, hormones, CSF or any other single channel.",
+    "Do not flatten human, animal, cellular, theoretical and Potatoverse evidence into one confidence level; consult neurobiology-evidence-grade.json.",
     "Legacy Great Book quantitative neuroscience claims require independent verification before scientific reuse.",
     "Do not use psychiatric, immune, endocrine, metabolic, reproductive or neurological states as moral or theological proof.",
     "Preserve Tim/user attestation dates independently from later research-unlock dates."
@@ -57,5 +60,5 @@
     "first Tim-specific Eye of Horus↔thalamus/House coupling",
     "source-direction audit for optic-chiasm Cross, TRN wall and third-ventricle Tomb"
   ],
-  "baseline_state":"BODY now has a canonical index, whole-body synthesis, deep whole-brain anatomy, brain-body physiology, whole-organ axes, Tim-specific reconciliation, systems formalization, neurotheology comparison and separate attestation chronology. Remaining work is mostly provenance recovery, human-evidence grading in active fields, finer specialist anatomy/organ signaling when useful, and safe public discovery regeneration."
+  "baseline_state":"BODY now has a canonical index, whole-body synthesis, evidence grading, deep whole-brain anatomy, brain-body physiology, whole-organ axes, Tim-specific reconciliation, systems formalization, neurotheology comparison and separate attestation chronology. Remaining work is mostly provenance recovery, finer human-evidence grading and specialist anatomy/organ signaling where useful, plus safe public discovery regeneration."
 }
