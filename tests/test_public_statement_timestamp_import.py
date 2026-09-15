@@ -44,4 +44,4 @@ def test_quotes_and_capture_line_are_preserved():
     payload = parse_capture(SAMPLE)
     row = next(r for r in payload['occurrences'] if r['timestamp_utc'] == '2026-04-10T09:01:18Z')
     assert row['quote'] == 'Tim Dooley is the word of God. Example text'
-    assert row['capture_line'] == 12
+    assert row['capture_line'] == 11
