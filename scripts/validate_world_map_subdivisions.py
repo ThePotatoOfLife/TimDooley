@@ -10,10 +10,15 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 BUILDER = ROOT / "scripts" / "build_world_subdivisions.py"
 MODULE = ROOT / "world-map" / "3d-subdivisions.js"
+GEO_KERNEL = ROOT / "world-map" / "3d-geo-kernel.js"
+SCALE = ROOT / "world-map" / "3d-scale.js"
+SCALE_CONTRACT = ROOT / "data" / "world-map-scale-contract.json"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 INDEX = ROOT / "data" / "world-subdivisions" / "index.json"
 USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
 DNK = ROOT / "data" / "world-subdivisions" / "DNK.geo.json"
+GEO_KERNEL_REGRESSION = ROOT / "scripts" / "test_world_map_geo_kernel.mjs"
+WRAP_MATH_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_wrap_math.mjs"
 FREEZE_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_freeze.mjs"
 MULTI_COUNTRY_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_multi_country.mjs"
 BOUNDED_RUNTIME_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_bounded_runtime.mjs"
@@ -28,14 +33,20 @@ EXPECTED_RUNTIME_BUDGET = {
 
 def main() -> int:
     errors: list[str] = []
-    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, DNK, FREEZE_REGRESSION, MULTI_COUNTRY_REGRESSION, BOUNDED_RUNTIME_REGRESSION)
+    required = (
+        BUILDER, MODULE, GEO_KERNEL, SCALE, SCALE_CONTRACT, LIFECYCLE, INDEX, USA, DNK,
+        GEO_KERNEL_REGRESSION, WRAP_MATH_REGRESSION,
+        FREEZE_REGRESSION, MULTI_COUNTRY_REGRESSION, BOUNDED_RUNTIME_REGRESSION,
+    )
     for path in required:
         if not path.exists():
             errors.append(f"missing subdivision integration file: {path.relative_to(ROOT)}")
     if not errors:
         builder = BUILDER.read_text(encoding="utf-8")
         module = MODULE.read_text(encoding="utf-8")
+        geo_kernel = GEO_KERNEL.read_text(encoding="utf-8")
         lifecycle = LIFECYCLE.read_text(encoding="utf-8")
+        scale_contract = json.loads(SCALE_CONTRACT.read_text(encoding="utf-8"))
         index = json.loads(INDEX.read_text(encoding="utf-8"))
         usa = json.loads(USA.read_text(encoding="utf-8"))
         dnk = json.loads(DNK.read_text(encoding="utf-8"))
@@ -47,11 +58,33 @@ def main() -> int:
             "searchParams.get('subdivision')", "searchParams.set('subdivision'", "searchParams.delete('subdivision')",
             "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled", "pendingDeepLinkId",
             "id_prefix", "viewport_bounds", "partitionForId",
+            "window.__potatoAtlasGeo", "unwrappedInterval", "distanceToMapCenterKm", "haversineDistanceKm",
         ):
             if token not in module:
                 errors.append(f"subdivision module missing marker: {token}")
-        if "3d-subdivisions.js" not in lifecycle or "map.getZoom() < 3.4" not in lifecycle:
-            errors.append("regional-scale lazy subdivision loading is not registered")
+        for token in (
+            "normalizeLongitude", "shortestLongitudeDelta", "unwrapLongitude",
+            "minimalLongitudeInterval", "antimeridianAwareBounds", "haversineDistanceKm",
+        ):
+            if token not in geo_kernel:
+                errors.append(f"geospatial kernel missing marker: {token}")
+        geo_load = lifecycle.find("__potatoAtlasLoadModule?.('Geo Kernel', './3d-geo-kernel.js')")
+        scale_load = lifecycle.find("__potatoAtlasLoadModule?.('Scale', './3d-scale.js')")
+        subdivision_load = lifecycle.find("__potatoAtlasLoadModule?.('Subdivisions', './3d-subdivisions.js')")
+        if geo_load < 0:
+            errors.append("shared Geo Kernel is not registered before geographic detail modules")
+        if scale_load < 0 or "capabilityActive('subdivisions', 'load'" not in lifecycle:
+            errors.append("regional-scale lazy subdivision loading is not owned by the Scale contract")
+        if subdivision_load < 0:
+            errors.append("lazy Subdivisions module loading is not registered")
+        if "map.getZoom() < 3.4" in lifecycle:
+            errors.append("panel lifecycle still owns the old raw 3.4 subdivision threshold")
+        if geo_load >= 0 and scale_load >= 0 and geo_load >= scale_load:
+            errors.append("Geo Kernel must load before Scale")
+        if scale_load >= 0 and subdivision_load >= 0 and scale_load >= subdivision_load:
+            errors.append("Scale must load before Subdivisions")
+        if scale_contract.get("capabilities", {}).get("subdivisions", {}).get("load") != 3.4:
+            errors.append("Scale contract must preserve the first-wave subdivision load threshold at 3.4")
 
         budget = index.get("runtime_budget")
         if budget != EXPECTED_RUNTIME_BUDGET:
@@ -126,6 +159,15 @@ def main() -> int:
             checked = subprocess.run([node, "--check", str(MODULE)], capture_output=True, text=True)
             if checked.returncode:
                 errors.append("3d-subdivisions.js syntax failed: " + (checked.stderr.strip() or checked.stdout.strip()))
+            geo_checked = subprocess.run([node, "--check", str(GEO_KERNEL)], capture_output=True, text=True)
+            if geo_checked.returncode:
+                errors.append("3d-geo-kernel.js syntax failed: " + (geo_checked.stderr.strip() or geo_checked.stdout.strip()))
+            geo_regression = subprocess.run([node, str(GEO_KERNEL_REGRESSION)], capture_output=True, text=True)
+            if geo_regression.returncode:
+                errors.append("geospatial-kernel regression failed: " + (geo_regression.stderr.strip() or geo_regression.stdout.strip()))
+            wrap = subprocess.run([node, str(WRAP_MATH_REGRESSION)], capture_output=True, text=True)
+            if wrap.returncode:
+                errors.append("subdivision wrap-math regression failed: " + (wrap.stderr.strip() or wrap.stdout.strip()))
             regression = subprocess.run([node, str(FREEZE_REGRESSION)], capture_output=True, text=True)
             if regression.returncode:
                 errors.append("subdivision freeze regression failed: " + (regression.stderr.strip() or regression.stdout.strip()))
@@ -140,7 +182,7 @@ def main() -> int:
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · budgets · freeze + multi-country + bounded-runtime regressions")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · wrap-safe geo kernel · shared scale ownership · budgets · freeze + multi-country + bounded-runtime regressions")
     return 0
 
 

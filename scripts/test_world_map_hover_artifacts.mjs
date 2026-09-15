@@ -17,21 +17,12 @@ function extractFunction(name) {
   for (let i = bodyStart; i < source.length; i += 1) {
     const char = source[i];
     if (quote) {
-      if (escaped) {
-        escaped = false;
-        continue;
-      }
-      if (char === '\\') {
-        escaped = true;
-        continue;
-      }
+      if (escaped) { escaped = false; continue; }
+      if (char === '\\') { escaped = true; continue; }
       if (char === quote) quote = null;
       continue;
     }
-    if (char === '"' || char === "'" || char === '`') {
-      quote = char;
-      continue;
-    }
+    if (char === '"' || char === "'" || char === '`') { quote = char; continue; }
     if (char === '{') depth += 1;
     if (char === '}') {
       depth -= 1;
@@ -41,6 +32,10 @@ function extractFunction(name) {
   throw new Error(`unterminated ${name}`);
 }
 
+assert.ok(source.includes("await import(versionedModule('./3d-tooltip.js'))"), 'hover runtime must load the shared Tooltip service');
+assert.ok(source.includes('window.__potatoAtlasTooltip'), 'hover runtime must publish/reuse the shared Tooltip service');
+assert.ok(!source.includes('const popup = new maplibregl.Popup'), 'country hover must not own a private transient popup');
+
 const bindCountryHoverSource = extractFunction('bindCountryHover');
 const handlers = new Map();
 const canvas = { style:{} };
@@ -49,12 +44,18 @@ const map = {
   getCanvas() { return canvas; },
 };
 
-const popupRemovals = [];
-const popup = { remove() { popupRemovals.push(true); } };
 const renders = [];
-function showPopup(event, html) {
-  renders.push({ html, lngLat:event.lngLat });
-}
+let generation = 0;
+let invalidations = 0;
+const tooltip = {
+  nextGeneration() { generation += 1; return generation; },
+  show(owner, lngLat, html, expectedGeneration) {
+    if (expectedGeneration !== generation) return false;
+    renders.push({ owner, html, lngLat });
+    return true;
+  },
+  invalidate() { generation += 1; invalidations += 1; },
+};
 
 const pending = [];
 function countryHtml(properties) {
@@ -62,9 +63,9 @@ function countryHtml(properties) {
 }
 
 const bindCountryHover = new Function(
-  'map', 'showPopup', 'countryHtml', 'popup',
+  'map', 'tooltip', 'countryHtml',
   `"use strict"; ${bindCountryHoverSource}; return bindCountryHover;`,
-)(map, showPopup, countryHtml, popup);
+)(map, tooltip, countryHtml);
 
 bindCountryHover('countries-fill');
 const move = handlers.get('mousemove:countries-fill');
@@ -78,8 +79,7 @@ const eventFor = (code, lng, lat) => ({
   features:[{properties:{iso3:code}}],
 });
 
-// Reproduce the reported black/trailing hover artifact: two asynchronous hover
-// lookups finish out of order while the pointer has already moved countries.
+// Two asynchronous hover lookups finish out of order while the pointer moves.
 move(eventFor('USA', -100, 40));
 move(eventFor('DNK', 10, 56));
 assert.equal(pending.length, 2, 'fixture must create two pending country hover lookups');
@@ -87,30 +87,28 @@ assert.equal(pending.length, 2, 'fixture must create two pending country hover l
 pending[1].resolve('<b>Denmark</b>');
 await flush();
 assert.deepEqual(renders, [
-  {html:'<b>Denmark</b>', lngLat:{lng:10, lat:56}},
+  {owner:'country', html:'<b>Denmark</b>', lngLat:{lng:10, lat:56}},
 ], 'newest hover should render when it resolves first');
 
 pending[0].resolve('<b>United States</b>');
 await flush();
 assert.deepEqual(renders, [
-  {html:'<b>Denmark</b>', lngLat:{lng:10, lat:56}},
-], 'an older asynchronous hover must not yank the popup back to a stale country/position');
+  {owner:'country', html:'<b>Denmark</b>', lngLat:{lng:10, lat:56}},
+], 'older asynchronous hover must not move/reopen the shared tooltip');
 
-// Leaving the country layer must invalidate work already in flight. A late
-// scalar lookup must not reopen the dark popup after mouseleave.
+// Leaving the country layer invalidates work already in flight.
 move(eventFor('USA', -99, 41));
 assert.equal(pending.length, 3);
 leave();
 const renderedBeforeLateLeave = renders.length;
 pending[2].resolve('<b>United States late</b>');
 await flush();
-assert.equal(renders.length, renderedBeforeLateLeave, 'late hover work must not reopen popup after mouseleave');
-assert.ok(popupRemovals.length >= 1, 'mouseleave must remove the popup');
+assert.equal(renders.length, renderedBeforeLateLeave, 'late hover work must not reopen tooltip after mouseleave');
+assert.ok(invalidations >= 1, 'mouseleave must invalidate the shared transient tooltip generation');
 assert.equal(canvas.style.cursor, '', 'mouseleave must restore the map cursor');
 
-// Moving many pixels within one country should not launch one asynchronous
-// scalar lookup per mousemove. One lookup should resolve at the latest pointer
-// position so the popup can follow the cursor without request churn/flicker.
+// Moving many pixels within one country should share one async lookup, while the
+// resolved tooltip follows the latest pointer position.
 bindCountryHover('countries-extrude');
 const moveExtrude = handlers.get('mousemove:countries-extrude');
 const pendingBeforeSameCountry = pending.length;
@@ -127,8 +125,8 @@ pending[pendingBeforeSameCountry].resolve('<b>Germany</b>');
 await flush();
 assert.deepEqual(
   renders.slice(rendersBeforeSameCountry),
-  [{html:'<b>Germany</b>', lngLat:{lng:10, lat:52}}],
-  'resolved same-country popup must use the latest pointer location',
+  [{owner:'country', html:'<b>Germany</b>', lngLat:{lng:10, lat:52}}],
+  'resolved same-country tooltip must use the latest pointer location',
 );
 
 console.log('WORLD MAP HOVER ARTIFACT REGRESSION PASSED');
