@@ -12,6 +12,8 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 LAND = ROOT / "world-map" / "3d-physical-land-cover.js"
 RUNTIME = ROOT / "world-map" / "3d-physical-layers.js"
+CURRENT_WMS = "https://titiler.terrascope.be/wms"
+CURRENT_LAYER = "esa-worldcover-map-10m-2021-v2_map"
 
 
 def main() -> int:
@@ -36,21 +38,26 @@ def main() -> int:
     if source.get("provider") != "ESA WorldCover": errors.append("land cover provider must be ESA WorldCover")
     if "2021" not in str(source.get("dataset", "")) or "v200" not in str(source.get("version", "")):
         errors.append("land cover must pin WorldCover 2021 v200")
-    if "WMS" not in str(source.get("delivery", "")):
+    delivery = str(source.get("delivery", ""))
+    if "WMS" not in delivery:
         errors.append("land cover must document WMS delivery")
+    if CURRENT_LAYER not in delivery:
+        errors.append("land cover manifest must name the current Terrascope WorldCover layer")
+    if "WORLDCOVER_2021_MAP" in delivery:
+        errors.append("land cover manifest must not advertise the retired WorldCover layer identifier")
 
     if not LAND.exists():
         errors.append("missing world-map/3d-physical-land-cover.js")
     else:
         text = LAND.read_text(encoding="utf-8", errors="replace")
         for token in (
-            "https://services.terrascope.be/wms/v2",
-            "WORLDCOVER_2021_MAP",
+            CURRENT_WMS,
+            CURRENT_LAYER,
             "{bbox-epsg-3857}",
             "type: 'raster'",
             "tileSize: 256",
             "raster-opacity",
-            "countries-fill",
+            "physical-surface",
             "atlasLandCoverLegend",
             "Tree cover",
             "Grassland",
@@ -62,6 +69,8 @@ def main() -> int:
         ):
             if token not in text:
                 errors.append(f"land-cover module missing {token}")
+        if "https://services.terrascope.be/wms/v2" in text:
+            errors.append("land-cover module must not use the phased-out Terrascope WMS v2 endpoint")
         if "new MutationObserver(" in text or "setInterval(" in text:
             errors.append("land-cover module must not poll or observe the DOM")
         if "queryRenderedFeatures" in text or "pixel" in text.lower() and "analysis" in text.lower():
