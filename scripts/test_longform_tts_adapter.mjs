@@ -55,7 +55,7 @@ assert.ok(adapterSource.includes("'.ptts-inline-listen'"), 'injected Listen cont
 assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"), 'page-level reader host should mark itself as primary automatically');
 assert.ok(adapterSource.includes('mountSelectionAction'), 'longform pages must mount the shared read-selection action');
 assert.ok(adapterSource.includes("classList.add('ptts-reading-active')"), 'current spoken item must gain an active-reading state');
-assert.ok(adapterSource.includes("classList.remove('ptts-reading-active')"), 'active-reading state must be cleared when speech ends or context changes');
+assert.ok(adapterSource.includes("classList?.remove('ptts-reading-active')"), 'active-reading state must be safely cleared when speech ends or context changes');
 assert.ok(adapterSource.includes('onEvent:event=>'), 'longform adapter must consume drawer speech events');
 assert.ok(adapterSource.includes('createPageHighlighter'), 'longform adapter must use shared actual-page word highlighting');
 assert.ok(adapterSource.includes("event.type==='boundary'&&event.absoluteWord"), 'longform adapter must map boundary words back to page text');
