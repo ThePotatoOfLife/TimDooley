@@ -5,8 +5,12 @@ import hashlib
 import json
 from pathlib import Path
 
-from scripts.enrich_public_statement_evidence_root import enrich_status_ids
-from scripts.public_statement_evidence_root import reconcile_records
+try:
+    from scripts.enrich_public_statement_evidence_root import enrich_status_ids
+    from scripts.public_statement_evidence_root import reconcile_records
+except ModuleNotFoundError:
+    from enrich_public_statement_evidence_root import enrich_status_ids
+    from public_statement_evidence_root import reconcile_records
 
 
 def _canonical_id(record: dict) -> str:
