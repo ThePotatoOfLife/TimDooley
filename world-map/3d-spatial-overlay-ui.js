@@ -7,6 +7,7 @@ if (!spatial) throw new Error('Spatial overlay UI requires the spatial overlay r
 const app = document.querySelector('#atlasApp');
 const panel = document.querySelector('#panel');
 const layersMenu = document.querySelector('#layersMenu .menu-pop');
+const MEASUREMENTS_URL = '../data/world-map-spatial-measurements.json';
 const GROUP_ORDER = [
   'sacred.father-land',
   'sacred.chosen-children-land',
@@ -30,11 +31,33 @@ const EPISTEMIC_LABEL = {
   humanitarian_observed:'Humanitarian observed',
 };
 
+const measurementPromise = fetch(MEASUREMENTS_URL, { cache:'no-cache' })
+  .then(response => response.ok ? response.json() : null)
+  .catch(error => { console.warn('Spatial measurements unavailable:', error); return null; });
+
 function esc(value) {
   return String(value ?? '').replace(/[&<>"']/g, char => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[char]));
 }
 function title(value) {
   return String(value || '').replaceAll('_',' ').replace(/\b\w/g, letter => letter.toUpperCase());
+}
+function number(value) {
+  return Number(value).toLocaleString(undefined, { maximumFractionDigits:1 });
+}
+function measurementHtml(feature, measurements) {
+  const row = measurements?.features?.[feature.feature_id];
+  if (!row) return '';
+  const values = [];
+  if (row.area_sq_km != null) values.push(`${number(row.area_sq_km)} km² area`);
+  if (row.perimeter_km != null) values.push(`${number(row.perimeter_km)} km perimeter`);
+  if (row.length_km != null) values.push(`${number(row.length_km)} km line length`);
+  if (!values.length) return '';
+  const policy = row.measurement_policy === 'approximate_reconstruction'
+    ? 'Approximate reconstruction geometry'
+    : row.measurement_policy === 'symbolic_route'
+      ? 'Symbolic route geometry'
+      : 'Reference geometry';
+  return `<div class="spatial-measurement"><b>Geometry-derived</b> · ${esc(values.join(' · '))}<small>${esc(policy)}. These measurements describe the stored map geometry; they do not make an ancient text, sacred interpretation, or symbolic route into an exact surveyed boundary.</small></div>`;
 }
 
 let host = document.querySelector('#atlasSpatialOverlayHost');
@@ -62,6 +85,8 @@ style.textContent = `
 .atlas-spatial-overlap .spatial-overlap-card{border:1px solid #344343;border-radius:9px;padding:9px;margin:7px 0;background:#151d1d}
 .atlas-spatial-overlap .spatial-overlap-card h3{font:400 17px Georgia,serif;margin:2px 0 5px}
 .atlas-spatial-overlap .spatial-source{font-size:10px;color:#aab4aa;overflow-wrap:anywhere}
+.atlas-spatial-overlap .spatial-measurement{border-top:1px solid #283333;margin-top:8px;padding-top:8px;font-size:11px}
+.atlas-spatial-overlap .spatial-measurement small{display:block;color:#aab4aa;margin-top:3px;line-height:1.3}
 `;
 document.head.appendChild(style);
 
@@ -119,8 +144,9 @@ function renderControls() {
   }
 }
 
-function openInspector(features) {
+async function openInspector(features) {
   if (!panel || !features?.length) return;
+  const measurements = await measurementPromise;
   if (app) app.classList.remove('panel-collapsed');
   const overlap = features.length > 1;
   panel.innerHTML = `<div class="atlas-spatial-overlap">
@@ -134,6 +160,7 @@ function openInspector(features) {
         <h3>${esc(feature.label)}</h3>
         <div><span class="pill">${esc(feature.confidence || 'unknown confidence')}</span><span class="pill">${esc(feature.geometry_version || 'geometry')}</span></div>
         <p>${esc(feature.status_note || row.status_note || '')}</p>
+        ${measurementHtml(feature, measurements)}
         <div class="spatial-source">Overlay: ${esc(feature.overlay_id)}<br>Feature: ${esc(feature.feature_id)}<br>Sources: ${esc((feature.source_ids || []).join(' · ') || 'source metadata pending')}<br>Measurement policy: ${esc(feature.measurement_policy || 'not specified')}</div>
         <div class="actions"><button data-fit-overlay="${esc(feature.overlay_id)}">Fit overlay</button></div>
       </article>`;
@@ -149,4 +176,4 @@ window.addEventListener('potato-atlas-spatial-overlay-change', event => {
 });
 
 spatial.ready.then(renderControls);
-window.__potatoAtlasSpatialOverlayUI = { render:renderControls, inspect:openInspector };
+window.__potatoAtlasSpatialOverlayUI = { render:renderControls, inspect:openInspector, measurements:measurementPromise };
