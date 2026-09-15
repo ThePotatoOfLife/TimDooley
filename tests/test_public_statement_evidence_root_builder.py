@@ -52,3 +52,12 @@ def test_builder_carries_coverage_gaps_without_turning_them_into_roots():
         {'kind': 'search-gap', 'period': '2026-01/2026-02', 'source_record': 'timestamp-ledger'}
     ]
     assert all(row.get('kind') != 'search-gap' for row in root['roots'])
+
+
+def test_canonical_root_id_does_not_change_when_status_id_is_recovered():
+    base_sources = sources()
+    with_status = sources()
+    with_status[1]['occurrences'][0]['status_id'] = '1234567890'
+    base_alpha = next(row for row in build_evidence_root(base_sources)['roots'] if row['quote'] == 'Alpha')
+    status_alpha = next(row for row in build_evidence_root(with_status)['roots'] if row['quote'] == 'Alpha')
+    assert base_alpha['id'] == status_alpha['id']
