@@ -1,20 +1,20 @@
 {
   "id": "tim-statement-corpus-index",
   "title": "Tim Dooley Statement Corpus Index",
-  "version": "1.0.1",
-  "updated": "2026-09-10",
+  "version": "1.0.2",
+  "updated": "2026-09-15",
   "status": "canonical navigation and ingestion layer",
   "purpose": "Make Tim Dooley's statements a first-class archival object. This index connects public-post evidence, thought archives, conversation archaeology, book/project maxims, voice anthologies, sayings ledgers, timeline and future recovery waves without pretending all source classes are equivalent.",
   "core_rule": "Preserve statement -> source -> date -> exactness -> context -> concept links -> canonical owners -> later revisions. Never replace an older statement with a later synthesis merely because the later version is more complete.",
   "source_priority": [
-    {"rank":1,"class":"P0_PUBLIC_PRIMARY","description":"Original Tim post, stream transcript, recording, book passage, screenshot or first-party artifact with date/locator."},
-    {"rank":2,"class":"PUBLIC_INDEXED","description":"Direct wording already preserved in a repository public-occurrence/timeline compilation; original status URL may still be pending."},
-    {"rank":3,"class":"USER_PROJECT_EXACT","description":"Exact user-originated project/canon wording from dated conversation history; important developmental evidence but not automatically a public Tim quotation."},
-    {"rank":4,"class":"CONVERSATION_EXACT","description":"Exact or near-exact conversation-recovered Tim/project wording where public provenance is unresolved."},
-    {"rank":5,"class":"BOOK_OR_PROJECT_MAXIM","description":"Great Book/project formulation that may be exact, title-level or compressed depending on its owner record."},
-    {"rank":6,"class":"MEMORY_SUMMARY_PHRASE","description":"A remembered phrase preserved so it can be recovered later. Never display as verified public quotation until upgraded by a locatable source."},
-    {"rank":7,"class":"PARAPHRASE","description":"Memory or archive summary. Never render with quotation marks as Tim's exact wording."},
-    {"rank":8,"class":"INTERPRETIVE_SYNTHESIS","description":"Later archive explanation, crosswalk or philosophical compression."}
+    {"rank": 1, "class": "P0_PUBLIC_PRIMARY", "description": "Original Tim post, stream transcript, recording, book passage, screenshot or first-party artifact with date/locator."},
+    {"rank": 2, "class": "PUBLIC_INDEXED", "description": "Direct wording already preserved in a repository public-occurrence/timeline compilation; original status URL may still be pending."},
+    {"rank": 3, "class": "USER_PROJECT_EXACT", "description": "Exact user-originated project/canon wording from dated conversation history; important developmental evidence but not automatically a public Tim quotation."},
+    {"rank": 4, "class": "CONVERSATION_EXACT", "description": "Exact or near-exact conversation-recovered Tim/project wording where public provenance is unresolved."},
+    {"rank": 5, "class": "BOOK_OR_PROJECT_MAXIM", "description": "Great Book/project formulation that may be exact, title-level or compressed depending on its owner record."},
+    {"rank": 6, "class": "MEMORY_SUMMARY_PHRASE", "description": "A remembered phrase preserved so it can be recovered later. Never display as verified public quotation until upgraded by a locatable source."},
+    {"rank": 7, "class": "PARAPHRASE", "description": "Memory or archive summary. Never render with quotation marks as Tim's exact wording."},
+    {"rank": 8, "class": "INTERPRETIVE_SYNTHESIS", "description": "Later archive explanation, crosswalk or philosophical compression."}
   ],
   "corpus_sources": {
     "public_primary_and_compilations": [
@@ -34,7 +34,8 @@
       "knowledge/corporium/tim-statements-conversation-recovery-2026-09-10.json",
       "knowledge/corporium/tim-statements-conversation-recovery-wave-002-2026-09-10.json",
       "knowledge/corporium/tim-statements-conversation-recovery-wave-003-2026-09-10.json",
-      "knowledge/corporium/tim-statements-memory-recovery-wave-004-2026-09-10.json"
+      "knowledge/corporium/tim-statements-memory-recovery-wave-004-2026-09-10.json",
+      "knowledge/corporium/tim-statements-conversation-recovery-wave-006-2026-09-15.json"
     ],
     "timeline_and_attestation": [
       "knowledge/timeline/dated-master-timeline-2026.json",
@@ -80,8 +81,8 @@
     "archive epistemics and source-quality rules"
   ],
   "statement_record_template": {
-    "required": ["statement_id","wording_or_paraphrase","source_class","date_or_period","exactness","context","domains","routing"],
-    "recommended": ["original_url_or_locator","speaker","audience","platform","preceded_by","followed_by","later_revision","contradiction","status","confidence","privacy_class","empirical_boundary"]
+    "required": ["statement_id", "wording_or_paraphrase", "source_class", "date_or_period", "exactness", "context", "domains", "routing"],
+    "recommended": ["original_url_or_locator", "speaker", "audience", "platform", "preceded_by", "followed_by", "later_revision", "contradiction", "status", "confidence", "privacy_class", "empirical_boundary"]
   },
   "ingestion_pipeline": [
     "1. Recover candidate wording from public post, book, upload, stream transcript, screenshot, prior conversation or memory summary.",
@@ -114,8 +115,8 @@
     "Exact wording for the 69-like Door/gate and 60-minute follow-wait mechanics.",
     "Original aura/aurafarming language and its distinction from Spudlight/source.",
     "Original wording for Potato Bank, spiritual banker, Soul Farmer, mud dweller, below dweller and related social-role terms.",
-    "Exact statements connecting thalamus/Father's House, pineal/Son Door and CSF/river.",
-    "Exact 144,000 purpose statements and associated Eye/Throne language.",
+    "Original public or first-party sources upgrading recovered thalamus/Father's House, pineal/Son Door and CSF/river conversation wording.",
+    "Original public or first-party sources upgrading recovered 144,000 purpose statements and associated Eye/Throne language.",
     "Exact statements around April 2025 rapture/Godhood threshold and April 2026 return.",
     "Exact pre-repository Tim formulations behind SU(4), SU(5), supersymmetry, Theory of Everything and early Axis equations.",
     "Exact Tim-authored language behind Market Passport, Business Passport, Asset Passport, Professional Passport, Capital Passport, Tell Europe Once, European Commons and European Economic Graph.",
@@ -127,6 +128,7 @@
     "conversation-recovery-inventory",
     "tim-voice-anthology",
     "tim-sayings-and-formulations-ledger",
+    "tim-statements-conversation-recovery-wave-006-2026-09-15",
     "dated-master-timeline-2026",
     "archive-epistemics",
     "ontology-tree"
