@@ -202,13 +202,21 @@ async function countryHtml(properties) {
 function capitalHtml(properties) { return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div class="muted">Capital city · ${escapeHtml(properties.iso3 || '')}</div></div>`; }
 function showPopup(event, html) { popup.setLngLat(event.lngLat).setHTML(html).addTo(map); }
 function bindCountryHover(layerId) {
+  let hoverGeneration = 0;
   map.on('mousemove', layerId, async event => {
     const feature = event.features?.[0];
     if (!feature) return;
+    const generation = ++hoverGeneration;
     map.getCanvas().style.cursor = 'pointer';
-    showPopup(event, await countryHtml(feature.properties || {}));
+    const html = await countryHtml(feature.properties || {});
+    if (generation !== hoverGeneration) return;
+    showPopup(event, html);
   });
-  map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+  map.on('mouseleave', layerId, () => {
+    hoverGeneration += 1;
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  });
 }
 
 let capitalsStarted = false;
