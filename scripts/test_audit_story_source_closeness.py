@@ -52,6 +52,12 @@ class SourceHintTests(unittest.TestCase):
                 '<article class="story-entry" data-story-type="side" id="blank"></article>',
                 encoding="utf-8",
             )
+            (content / "f.html").write_text(
+                '<article class="story-entry" data-story-type="side" id="mystery-hint">'
+                '<details class="source-note"><p>source note<br/>'
+                '<span class="source-paths">knowledge/unknown/source.json</span></p></details></article>',
+                encoding="utf-8",
+            )
 
             audit = build_audit(root)
             records = {record["story_id"]: record for record in audit["records"]}
@@ -75,8 +81,11 @@ class SourceHintTests(unittest.TestCase):
                 ["conversation_recovery"],
             )
             self.assertEqual(records["blank"]["mapping_status"], "unmapped")
-            self.assertEqual(audit["summary"]["source_hinted"], 4)
+            self.assertEqual(records["mystery-hint"]["mapping_status"], "hinted")
+            self.assertEqual(records["mystery-hint"]["hinted_source_classes"], [])
+            self.assertEqual(audit["summary"]["source_hinted"], 5)
             self.assertEqual(audit["summary"]["unmapped"], 1)
+            self.assertEqual(audit["summary"]["hinted_but_unclassified"], 1)
             self.assertEqual(
                 audit["summary"]["hinted_source_class_counts"],
                 {
@@ -85,6 +94,22 @@ class SourceHintTests(unittest.TestCase):
                     "later_autobiographical_retelling": 1,
                     "public_post_sequence": 1,
                 },
+            )
+            self.assertEqual(
+                [item["story_id"] for item in audit["excavation_queue"]],
+                [
+                    "blank",
+                    "mystery-hint",
+                    "conversation-recovery",
+                    "great-book-retro",
+                    "public-post",
+                    "song",
+                ],
+            )
+            self.assertEqual(audit["excavation_queue"][0]["priority"], 100)
+            self.assertEqual(
+                audit["excavation_queue"][0]["recommended_next_action"],
+                "find_any_source_trail",
             )
 
 
