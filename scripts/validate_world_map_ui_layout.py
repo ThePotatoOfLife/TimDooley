@@ -22,6 +22,7 @@ LAND_COVER_VALIDATOR = ROOT / "scripts" / "validate_world_map_land_cover.py"
 DESERTS_VALIDATOR = ROOT / "scripts" / "validate_world_map_deserts.py"
 HYDROLOGY_VALIDATOR = ROOT / "scripts" / "validate_world_map_hydrology.py"
 PLACES_VALIDATOR = ROOT / "scripts" / "validate_world_places.py"
+PLACES_PIPELINE_VALIDATOR = ROOT / "scripts" / "validate_world_places_fixture_pipeline.py"
 
 
 def check_node(path: Path, errors: list[str]) -> None:
@@ -35,7 +36,7 @@ def check_node(path: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR):
+    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
@@ -118,6 +119,9 @@ def main() -> int:
         # Production Places data is a separate generated-data gate. The UI/layout
         # contract verifies that the runtime remains safe and dormant without it.
         ("places runtime", PLACES_VALIDATOR, ("--runtime-only",)),
+        # The deterministic fixture pipeline proves builder -> generated data ->
+        # data validator without depending on a live GeoNames download in CI.
+        ("places fixture pipeline", PLACES_PIPELINE_VALIDATOR, ()),
     )
     for label, validator, args in validators:
         if validator.exists():
