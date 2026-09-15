@@ -18,6 +18,7 @@ function ensureStyle() {
     #atlasUILeftStatus>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin:0!important;max-width:100%;pointer-events:auto}
     #atlasUILeftStatus #atlasWorldContext{width:min(290px,100%)!important}
     #atlasUILeftStatus #atlasTimeState{width:auto!important}
+    #atlasUILeftStatus #atlasLensLegend{width:min(340px,100%)!important}
     #axisDepthNavigator[data-layout-hosted="1"]{display:none!important}
     .atlas-axis-inspector-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin:9px 0}
     .atlas-axis-inspector-nav button{min-width:0;padding:6px 4px;font-size:9px}
@@ -102,6 +103,8 @@ function adoptKnownSurfaces() {
   if (context && !registrations.has('world-context')) upsertRegistration({ id:'world-context', zone:'left-status', element:context, priority:30 });
   const time = document.getElementById('atlasTimeState');
   if (time && !registrations.has('time-state')) upsertRegistration({ id:'time-state', zone:'left-status', element:time, priority:20 });
+  const lens = document.getElementById('atlasLensLegend');
+  if (lens && !registrations.has('lens-legend')) upsertRegistration({ id:'lens-legend', zone:'left-status', element:lens, priority:40 });
   if (panel && !registrations.has('main-inspector')) upsertRegistration({ id:'main-inspector', zone:'right-inspector', element:panel, priority:100 });
   const axisToggle = document.getElementById('axisCompactToggle');
   if (axisToggle && !registrations.has('axis-compact')) upsertRegistration({ id:'axis-compact', zone:'canvas-control', element:axisToggle, priority:50 });
