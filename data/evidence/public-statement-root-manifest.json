@@ -1,9 +1,9 @@
 {
   "id": "public-statement-root-manifest",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "updated": "2026-09-15",
   "model": "rooted-spiral",
-  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, and deterministic generated projections.",
+  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, and deterministic generated projections.",
   "cycle": [
     "root",
     "spiral",
@@ -12,7 +12,7 @@
     "consolidation",
     "next_spiral"
   ],
-  "ownership_rule": "Source ledgers own captured wording and provenance. This manifest owns the reconciliation contract and stable rooted identity model. Generated Root and Discovery Frontier files are projections and must be rebuilt rather than hand-edited.",
+  "ownership_rule": "Source ledgers own captured wording and provenance. This manifest owns the reconciliation contract and stable rooted identity model. Generated Root, Discovery Frontier, and Episode files are projections and must be rebuilt rather than hand-edited.",
   "evidence_sources": [
     "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
     "data/evidence/rational-potato-x-timestamped-ledger-2025-2026.json"
@@ -21,16 +21,22 @@
     "knowledge/traditions/september-2026-x-biblical-overlap-01-10.json",
     "knowledge/traditions/september-2026-x-biblical-overlap-11-20.json"
   ],
+  "structural_sources": [
+    "data/evidence/public-statement-episode-definitions.json"
+  ],
   "builders": {
     "evidence_root": "scripts/build_public_statement_evidence_root.py",
-    "discovery_frontier": "scripts/build_public_statement_discovery_frontier.py"
+    "discovery_frontier": "scripts/build_public_statement_discovery_frontier.py",
+    "episodes": "scripts/build_public_statement_episodes.py"
   },
   "validators": [
-    "scripts/validate_public_statement_evidence_root.py"
+    "scripts/validate_public_statement_evidence_root.py",
+    "scripts/validate_public_statement_episodes.py"
   ],
   "generated_outputs": [
     "data/evidence/public-statement-evidence-root.json",
-    "data/evidence/public-statement-discovery-frontier.json"
+    "data/evidence/public-statement-discovery-frontier.json",
+    "data/evidence/public-statement-episodes.json"
   ],
   "root_invariants": [
     "Exact captured wording is never rewritten by reconciliation.",
@@ -39,7 +45,9 @@
     "Recovered external status IDs strengthen a Root without renaming its canonical ID.",
     "Ambiguous joins remain open gaps rather than guessed matches.",
     "Timeline order is a traversal over Roots, not the canonical identity order.",
-    "Source loading order must not change canonical output."
+    "Source loading order must not change canonical output.",
+    "Episodes resolve existing Roots; they never create or rewrite statement evidence.",
+    "Candidate Episodes remain descriptively bounded and carry no interpretive claims."
   ],
   "gap_types": [
     "evidence",
@@ -67,7 +75,17 @@
     },
     "chronology_gap_reasons": {
       "search_coverage_gap": 1
-    }
+    },
+    "work_order": [
+      "recover_status_source",
+      "bridge_timeline_interval",
+      "upgrade_timestamp_precision"
+    ]
+  },
+  "episode_policy": {
+    "status": "candidate-first",
+    "membership": "inclusive UTC bounds over existing second-precision Roots",
+    "promotion_rule": "Theme, Bible, role, or causal interpretation requires a later testing pass and is not part of candidate Episode construction."
   },
   "claim_boundary": "The Evidence Root records what was supplied, how records reconcile, and what remains unknown. It does not establish supernatural identity, prophecy fulfillment, or the truth of theological claims contained in source statements."
 }
