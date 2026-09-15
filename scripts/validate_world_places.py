@@ -98,7 +98,7 @@ def validate_runtime(errors: list[str]) -> None:
         "context-network", "__potatoAtlasOverlayHandled", "Open country",
     ), errors)
     require_tokens(SEARCH, (
-        "__potatoAtlasSearch", "Country", "Capital", "City", "Town",
+        "__potatoAtlasSearch", "Country", "Capital", "City", "Town", "typeRank", "compareResults",
     ), errors)
     require_tokens(MAP_STATE, ("places", "subdivision"), errors)
     if SUBDIVISIONS.exists():
