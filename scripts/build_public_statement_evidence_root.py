@@ -2,7 +2,10 @@ from __future__ import annotations
 
 from copy import deepcopy
 import hashlib
+import json
+from pathlib import Path
 
+from scripts.enrich_public_statement_evidence_root import enrich_status_ids
 from scripts.public_statement_evidence_root import reconcile_records
 
 
@@ -58,6 +61,7 @@ def build_evidence_root(source_payloads: list[dict]) -> dict:
         'version': '1.0.0',
         'model': 'rooted-spiral',
         'source_owners': sorted(set(source_owners)),
+        'identifier_sources': [],
         'roots': roots,
         'coverage_notes': coverage_notes,
         'traversals': {'chronological': chronological},
@@ -67,3 +71,45 @@ def build_evidence_root(source_payloads: list[dict]) -> dict:
             'unresolved': [],
         },
     }
+
+
+def _load_json(path: Path) -> dict:
+    return json.loads(path.read_text(encoding='utf-8'))
+
+
+def build_live_root(repository_root: Path) -> dict:
+    evidence_paths = [
+        repository_root / 'data' / 'evidence' / 'rational-potato-x-occurrence-ledger-2024-2026.json',
+        repository_root / 'data' / 'evidence' / 'rational-potato-x-timestamped-ledger-2025-2026.json',
+    ]
+    specialist_paths = [
+        repository_root / 'knowledge' / 'traditions' / 'september-2026-x-biblical-overlap-01-10.json',
+        repository_root / 'knowledge' / 'traditions' / 'september-2026-x-biblical-overlap-11-20.json',
+    ]
+
+    source_payloads = [_load_json(path) for path in evidence_paths]
+    root = build_evidence_root(source_payloads)
+    specialists = [_load_json(path) for path in specialist_paths if path.exists()]
+    root = enrich_status_ids(root, specialists)
+    root['identifier_sources'] = sorted(str(path.relative_to(repository_root)) for path in specialist_paths if path.exists())
+    root['source_paths'] = sorted(str(path.relative_to(repository_root)) for path in evidence_paths)
+    root['reconciliation']['open_gap_count'] = sum(
+        1 for gap in root.get('discovery_gaps', []) if gap.get('state') == 'open'
+    )
+    return root
+
+
+def main() -> int:
+    repository_root = Path(__file__).resolve().parents[1]
+    payload = build_live_root(repository_root)
+    output = repository_root / 'data' / 'evidence' / 'public-statement-evidence-root.json'
+    output.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
+    print(
+        'PUBLIC STATEMENT EVIDENCE ROOT BUILT '
+        f"({len(payload['roots'])} roots; {len(payload.get('discovery_gaps', []))} gaps)"
+    )
+    return 0
+
+
+if __name__ == '__main__':
+    raise SystemExit(main())
