@@ -18,7 +18,9 @@ BOOTSTRAP_STAGING_TEST = ROOT / "scripts" / "test_world_map_inspection_bootstrap
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
+TOOLTIP = ROOT / "world-map" / "3d-tooltip.js"
 HOVER_ARTIFACT_TEST = ROOT / "scripts" / "test_world_map_hover_artifacts.mjs"
+TOOLTIP_LIFECYCLE_TEST = ROOT / "scripts" / "test_world_map_tooltip_lifecycle.mjs"
 POINTER_DRAG_ARTIFACT_TEST = ROOT / "scripts" / "test_world_map_pointer_drag_artifacts.mjs"
 CAPITAL_OWNERSHIP_TEST = ROOT / "scripts" / "test_world_map_capital_ownership.mjs"
 OVERLAY_OVERLAP_TEST = ROOT / "scripts" / "test_world_map_overlay_overlap.mjs"
@@ -105,6 +107,7 @@ def main() -> int:
     panel_lifecycle = read(PANEL_LIFECYCLE, errors)
     subdivisions = read(SUBDIVISIONS, errors)
     hover = read(HOVER, errors)
+    tooltip = read(TOOLTIP, errors)
     ui = read(UI, errors)
     demography = read(DEMOGRAPHY, errors)
     dimensions = read(DIMENSIONS, errors)
@@ -169,16 +172,31 @@ def main() -> int:
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
-    # Country hover cards await scalar runtime observations. Rapid mouse movement
-    # must not let older async completions move/reopen the dark popup, and repeated
-    # pixels over one country must share a single in-flight lookup.
-    for token in ("hoverGeneration", "activeKey", "latestEvent", "resolvedHtml", "placesCanOwnCapitals", "potato-atlas-places-ready"):
+    # Country hover now consumes the one shared transient-tooltip service. Rapid
+    # mouse movement must not let older async completions move/reopen it, and one
+    # country lookup is reused while the pointer moves within the same country.
+    for token in (
+        "activeKey", "latestEvent", "resolvedHtml",
+        "tooltip.nextGeneration('country')", "tooltip.show('country'",
+        "tooltip.invalidate('country-leave')",
+        "placesCanOwnCapitals", "potato-atlas-places-ready",
+    ):
         require(hover, token, "world-map/3d-hover.js", errors)
+    require(hover, "await import(versionedModule('./3d-tooltip.js'))", "world-map/3d-hover.js", errors)
+    require(hover, "window.__potatoAtlasTooltip", "world-map/3d-hover.js", errors)
+    reject(hover, "const popup = new maplibregl.Popup", "world-map/3d-hover.js", errors)
     reject(hover, "showPopup(event, await countryHtml(", "world-map/3d-hover.js", errors)
 
-    # Dragging is a hard visual boundary for transient Atlas hover popups. The
-    # early boot guard owns this across country, Axis, Fields, Networks and capital
-    # hover surfaces so no dark popup/tip can appear to be dragged with geography.
+    for token in (
+        "function createTooltipService",
+        "nextGeneration", "staleSuppressions", "invalidate",
+        "dragstart", "zoomstart", "rotatestart", "pitchstart",
+        "potato-atlas-projection-change",
+    ):
+        require(tooltip, token, "world-map/3d-tooltip.js", errors)
+
+    # The early boot guard is retained as a compatibility boundary for remaining
+    # Axis/Fields/Networks popup owners until every transient hover surface migrates.
     for token in (
         "potato-atlas-pointer-dragging",
         "POINTER_DRAG_THRESHOLD_PX",
@@ -233,7 +251,8 @@ def main() -> int:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, TOOLTIP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    run_node_regression(TOOLTIP_LIFECYCLE_TEST, errors, "World Map tooltip lifecycle regression")
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
     run_node_regression(POINTER_DRAG_ARTIFACT_TEST, errors, "World Map pointer drag artifact regression")
     run_node_regression(CAPITAL_OWNERSHIP_TEST, errors, "World Map capital ownership regression")
@@ -247,7 +266,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · stable async hover · drag-safe transient popups · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
+    print("Browse + Pins · shared transient country/capital tooltip · drag-safe compatibility guard · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
     return 0
 
 
