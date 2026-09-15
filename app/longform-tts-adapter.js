@@ -33,8 +33,12 @@
     return cleanText(selection.toString());
   }
 
-  function readableText(node){
-    return node?cleanText(node.textContent||''):'';
+  function readableText(node,excludeSelector=''){
+    if(!node)return '';
+    if(!excludeSelector||typeof node.cloneNode!=='function')return cleanText(node.textContent||'');
+    const clone=node.cloneNode(true);
+    if(typeof clone.querySelectorAll==='function')clone.querySelectorAll(excludeSelector).forEach(item=>item.remove());
+    return cleanText(clone.textContent||'');
   }
 
   function configFromElement(host,doc){
@@ -52,6 +56,7 @@
       currentLabel:data.ttsCurrentLabel||'Current section',
       selectionLabel:data.ttsSelectionLabel||'Selection',
       itemSelector:data.ttsItem||'',
+      excludeSelector:data.ttsExclude||'',
     };
   }
 
@@ -79,8 +84,8 @@
         allLabel:config.allLabel||'Whole story',
         currentLabel:config.currentLabel||'Current entry',
         selectionLabel:config.selectionLabel||'Selection',
-        whole:readableText(container),
-        current:readableText(currentItem),
+        whole:readableText(container,config.excludeSelector||''),
+        current:readableText(currentItem,config.excludeSelector||''),
         selection:selectionInside(doc,container),
       });
     };
