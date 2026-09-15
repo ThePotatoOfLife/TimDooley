@@ -76,8 +76,17 @@ function createInspectorRouter(options = {}) {
       snapshot('refresh');
       return true;
     }
+
     const existingIndex = stack.findIndex(row => row.type === next.type && row.id === next.id && row.owner === next.owner);
-    if (existingIndex >= 0) stack = stack.slice(0, existingIndex);
+    if (existingIndex >= 0) {
+      stack = stack.slice(0, existingIndex);
+    } else if (next.parent) {
+      const parentIndex = stack.map((row, index) => ({ row, index }))
+        .filter(({row}) => row.type === next.parent.type && row.id === next.parent.id)
+        .at(-1)?.index;
+      if (Number.isInteger(parentIndex)) stack = stack.slice(0, parentIndex + 1);
+    }
+
     stack.push(next);
     invoke(next);
     snapshot('open');
