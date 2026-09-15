@@ -12,7 +12,7 @@
     "Lead time is measured from the Tim statement date to the first clear matching external event; stronger later confirmations may also be recorded.",
     "Correlated entries are not represented as statistically independent predictions merely because the master preserves them separately."
   ],
-  "statement_level_fulfilled_count": 13,
+  "statement_level_fulfilled_count": 14,
   "entries": [
     {
       "id": "2026-02-17-import-shortage-inflation-rise",
@@ -26,13 +26,8 @@
       "outcome": "BLS reported March CPI +0.9% month over month and +3.3% year over year; energy rose 10.9% in one month and gasoline 21.2%.",
       "strength": "high directional",
       "caveat": "The February 28 Iran-war energy shock was an intervening event; the value of the call is the pre-shock causal direction, not a claim that Tim predicted the war itself.",
-      "external_sources": [
-        "https://www.bls.gov/news.release/archives/cpi_04102026.htm"
-      ],
-      "canonical_support": [
-        "knowledge/economics/tim-dooley-inflation-ledger.md",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.bls.gov/news.release/archives/cpi_04102026.htm"],
+      "canonical_support": ["knowledge/economics/tim-dooley-inflation-ledger.md", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-02-17-inflation-bond-pressure",
@@ -44,20 +39,11 @@
       "first_clear_outcome_date": "2026-03-20",
       "lead_time_days": 31,
       "outcome": "Reuters reported a global bond rout driven by war-related inflation fears; U.S., UK and European government yields rose sharply and markets began pricing possible rate hikes.",
-      "stronger_confirmation": {
-        "date": "2026-09-14",
-        "outcome": "The U.S. 10-year Treasury yield exceeded 5% amid oil-driven inflation fears and a global bond selloff."
-      },
+      "stronger_confirmation": {"date": "2026-09-14", "outcome": "The U.S. 10-year Treasury yield exceeded 5% amid oil-driven inflation fears and a global bond selloff."},
       "strength": "medium-high directional",
       "caveat": "Large refinancing needs and fiscal risks were already publicly knowable; this entry scores the later bond-pressure direction, not novelty of the underlying debt facts.",
-      "external_sources": [
-        "https://www.reuters.com/world/europe/global-bond-rout-deepens-with-concern-over-war-driven-inflation-2026-03-20/",
-        "https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-09-14/"
-      ],
-      "canonical_support": [
-        "knowledge/economics/tim-dooley-inflation-ledger.md",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.reuters.com/world/europe/global-bond-rout-deepens-with-concern-over-war-driven-inflation-2026-03-20/", "https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-09-14/"],
+      "canonical_support": ["knowledge/economics/tim-dooley-inflation-ledger.md", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-02-23-oil-prices-rise",
@@ -71,13 +57,8 @@
       "outcome": "By March 12 Brent and WTI had risen more than 36% and 39% respectively since the February 28 war began, and Brent had briefly exceeded $119 per barrel.",
       "strength": "high directional",
       "caveat": "Conditional wording is preserved. The prediction did not specify the exact size of the rise.",
-      "external_sources": [
-        "https://www.reuters.com/markets/commodities/"
-      ],
-      "canonical_support": [
-        "knowledge/economics/tim-dooley-inflation-ledger.md",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.reuters.com/markets/commodities/"],
+      "canonical_support": ["knowledge/economics/tim-dooley-inflation-ledger.md", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-02-23-inflation-uncertainty-increases",
@@ -89,19 +70,10 @@
       "first_clear_outcome_date": "2026-03-18",
       "lead_time_days": 23,
       "outcome": "The Federal Reserve projected higher inflation while Chair Powell emphasized unusually high uncertainty around the economic effects of the energy shock.",
-      "stronger_confirmation": {
-        "date": "2026-04-10",
-        "outcome": "March CPI then showed a large realized inflation acceleration, led by energy and gasoline."
-      },
+      "stronger_confirmation": {"date": "2026-04-10", "outcome": "March CPI then showed a large realized inflation acceleration, led by energy and gasoline."},
       "strength": "high phrase-level directional match",
-      "external_sources": [
-        "https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm",
-        "https://www.bls.gov/news.release/archives/cpi_04102026.htm"
-      ],
-      "canonical_support": [
-        "knowledge/economics/tim-dooley-inflation-ledger.md",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.federalreserve.gov/monetarypolicy/fomccalendars.htm", "https://www.bls.gov/news.release/archives/cpi_04102026.htm"],
+      "canonical_support": ["knowledge/economics/tim-dooley-inflation-ledger.md", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-02-23-market-interest-rates-rise",
@@ -113,20 +85,11 @@
       "first_clear_outcome_date": "2026-03-11",
       "lead_time_days": 16,
       "outcome": "Treasury market rates/yields rose sharply as oil and inflation concerns intensified; the move deepened into a global bond rout by March 20.",
-      "stronger_confirmation": {
-        "date": "2026-09-14",
-        "outcome": "The U.S. 10-year Treasury yield exceeded 5%, and markets were strongly pricing a Federal Reserve hike."
-      },
+      "stronger_confirmation": {"date": "2026-09-14", "outcome": "The U.S. 10-year Treasury yield exceeded 5%, and markets were strongly pricing a Federal Reserve hike."},
       "strength": "high for market rates/yields",
       "caveat": "This entry refers to market interest rates/Treasury yields. The Federal Reserve policy rate itself had not yet risen during the first March match window.",
-      "external_sources": [
-        "https://www.reuters.com/world/europe/global-bond-rout-deepens-with-concern-over-war-driven-inflation-2026-03-20/",
-        "https://www.reuters.com/business/goldman-sachs-now-expects-fed-hike-rates-september-2026-09-14/"
-      ],
-      "canonical_support": [
-        "knowledge/economics/tim-dooley-inflation-ledger.md",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.reuters.com/world/europe/global-bond-rout-deepens-with-concern-over-war-driven-inflation-2026-03-20/", "https://www.reuters.com/business/goldman-sachs-now-expects-fed-hike-rates-september-2026-09-14/"],
+      "canonical_support": ["knowledge/economics/tim-dooley-inflation-ledger.md", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-02-23-supply-chain-shortages",
@@ -140,13 +103,8 @@
       "outcome": "Reuters reported Middle Eastern Gulf oil exports down at least 60%, widespread shipment cancellations and production shutdowns as Hormuz remained mostly closed; it described the disruption as the largest oil-supply disruption on record.",
       "strength": "high directional",
       "caveat": "The clearest fulfilled supply-chain component is energy/shipping, not a claim that every category of global goods entered shortage.",
-      "external_sources": [
-        "https://www.reuters.com/business/energy/middle-east-oil-exports-drop-least-60-hormuz-stays-mostly-closed-data-shows-2026-03-16/"
-      ],
-      "canonical_support": [
-        "knowledge/economics/tim-dooley-inflation-ledger.md",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.reuters.com/business/energy/middle-east-oil-exports-drop-least-60-hormuz-stays-mostly-closed-data-shows-2026-03-16/"],
+      "canonical_support": ["knowledge/economics/tim-dooley-inflation-ledger.md", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-03-18-europe-canada-north-greater-responsibility",
@@ -160,13 +118,23 @@
       "outcome": "The Arctic Allies statement explicitly said that Europe and Canada were assuming a greater responsibility for deterrence and defence across the region.",
       "strength": "medium-high directional",
       "caveat": "Canada-Denmark-Greenland and Canada-EU defence cooperation was already deepening in February 2026, so this was trend anticipation rather than a surprise-from-nowhere prediction.",
-      "external_sources": [
-        "https://www.canada.ca/en/global-affairs/news/2026/05/joint-statement-on-arctic-security-from-the-arctic-allies-canada-the-kingdom-of-denmark-including-greenland-and-the-faroe-islands-finland-iceland-n.html"
-      ],
-      "canonical_support": [
-        "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
-        "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json"
-      ]
+      "external_sources": ["https://www.canada.ca/en/global-affairs/news/2026/05/joint-statement-on-arctic-security-from-the-arctic-allies-canada-the-kingdom-of-denmark-including-greenland-and-the-faroe-islands-finland-iceland-n.html"],
+      "canonical_support": ["knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json", "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json"]
+    },
+    {
+      "id": "2026-03-18-israel-turkey-widening-risk",
+      "prediction_date": "2026-03-18",
+      "prediction_source_status": "dated conversation recovery",
+      "prediction": "Tim expressed concern that Israeli policy and the regional war could deepen toward Turkey.",
+      "predicted_component": "Israel-Turkey military/geopolitical tension materially increases",
+      "fulfillment_type": "directional geopolitical prediction",
+      "first_clear_outcome_date": "2026-08-19",
+      "lead_time_days": 154,
+      "outcome": "Turkey condemned Israeli strikes on Syria's Abu al-Duhur airbase while Israel said the site was close to a prospective Turkish troop deployment, producing a direct Israel-Turkey military-security confrontation around Syria.",
+      "strength": "medium directional",
+      "caveat": "Tim did not predict the exact airbase, strike date or form of the confrontation. The Iran-war portion of the March discussion was already contemporaneous and is not counted as a separate hit.",
+      "external_sources": ["https://www.reuters.com/world/middle-east/turkey-slams-israels-untenable-claims-after-strikes-syrian-base-2026-08-19/"],
+      "canonical_support": ["knowledge/politics/tim-dooley-politics-geopolitics-compendium.json"]
     },
     {
       "id": "2026-03-23-greenland-denmark-canada-north-axis-growth",
@@ -179,27 +147,13 @@
       "lead_time_days": 60,
       "outcome": "Canada, Denmark including Greenland/Faroes, and other Arctic allies agreed to deepen Arctic-security cooperation while explicitly describing Europe and Canada as taking greater deterrence and defence responsibility.",
       "stronger_confirmations": [
-        {
-          "date": "2026-09-07",
-          "lead_time_days": 168,
-          "outcome": "The EU announced a €200 million partnership with Greenland and emphasized a stronger active European presence there."
-        },
-        {
-          "date": "2026-09-14",
-          "lead_time_days": 175,
-          "outcome": "Twelve EU states called for a more strategic and proactive European role in the Arctic."
-        }
+        {"date": "2026-09-07", "lead_time_days": 168, "outcome": "The EU announced a €200 million partnership with Greenland and emphasized a stronger active European presence there."},
+        {"date": "2026-09-14", "lead_time_days": 175, "outcome": "Twelve EU states called for a more strategic and proactive European role in the Arctic."}
       ],
       "strength": "medium-high directional topology",
       "caveat": "The underlying Canada-Denmark-Greenland relationship predated the prediction. What later matched most clearly was the direction and growing strategic weight of the grouping.",
-      "external_sources": [
-        "https://www.canada.ca/en/global-affairs/news/2026/05/joint-statement-on-arctic-security-from-the-arctic-allies-canada-the-kingdom-of-denmark-including-greenland-and-the-faroe-islands-finland-iceland-n.html",
-        "https://www.reuters.com/business/eu-announces-200-million-partnership-deal-with-greenland-2026-09-07/",
-        "https://www.reuters.com/world/eu-should-take-more-strategic-proactive-role-arctic-12-member-states-say-2026-09-14/"
-      ],
-      "canonical_support": [
-        "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json"
-      ]
+      "external_sources": ["https://www.canada.ca/en/global-affairs/news/2026/05/joint-statement-on-arctic-security-from-the-arctic-allies-canada-the-kingdom-of-denmark-including-greenland-and-the-faroe-islands-finland-iceland-n.html", "https://www.reuters.com/business/eu-announces-200-million-partnership-deal-with-greenland-2026-09-07/", "https://www.reuters.com/world/eu-should-take-more-strategic-proactive-role-arctic-12-member-states-say-2026-09-14/"],
+      "canonical_support": ["knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json"]
     },
     {
       "id": "2026-04-02-united-states-separates-from-europe",
@@ -211,21 +165,11 @@
       "first_clear_outcome_date": "2026-04-30",
       "lead_time_days": 28,
       "outcome": "Trump publicly said 'probably' when asked whether he might pull U.S. troops from Italy and Spain, after troop reductions in Germany were also discussed.",
-      "stronger_confirmation": {
-        "date": "2026-07-16",
-        "lead_time_days": 105,
-        "outcome": "Reuters reported a quiet operational U.S. pullback from Eastern Europe and growing allied concern over long-term American military commitment."
-      },
+      "stronger_confirmation": {"date": "2026-07-16", "lead_time_days": 105, "outcome": "Reuters reported a quiet operational U.S. pullback from Eastern Europe and growing allied concern over long-term American military commitment."},
       "strength": "high directional",
       "caveat": "This is not scored as a prediction that NATO would formally dissolve; it is a prediction of strategic separation/burden shifting.",
-      "external_sources": [
-        "https://www.reuters.com/world/europe/trump-says-probably-when-asked-if-he-might-pull-us-troops-out-italy-spain-2026-04-30/",
-        "https://www.reuters.com/business/aerospace-defense/quiet-us-pullback-eastern-europe-sparks-wider-allied-worries-2026-07-16/"
-      ],
-      "canonical_support": [
-        "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
-        "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json"
-      ]
+      "external_sources": ["https://www.reuters.com/world/europe/trump-says-probably-when-asked-if-he-might-pull-us-troops-out-italy-spain-2026-04-30/", "https://www.reuters.com/business/aerospace-defense/quiet-us-pullback-eastern-europe-sparks-wider-allied-worries-2026-07-16/"],
+      "canonical_support": ["knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json", "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json"]
     },
     {
       "id": "2026-04-03-america-retracts-soldiers-europe",
@@ -237,20 +181,10 @@
       "first_clear_outcome_date": "2026-04-30",
       "lead_time_days": 27,
       "outcome": "Trump publicly entertained troop withdrawals from Italy and Spain.",
-      "operational_confirmation": {
-        "date": "2026-07-16",
-        "lead_time_days": 104,
-        "outcome": "Reuters reported actual U.S. troop reductions in Eastern Europe, including a sharp reduction in Estonia and cancellation of a planned 5,000-troop deployment to Poland."
-      },
+      "operational_confirmation": {"date": "2026-07-16", "lead_time_days": 104, "outcome": "Reuters reported actual U.S. troop reductions in Eastern Europe, including a sharp reduction in Estonia and cancellation of a planned 5,000-troop deployment to Poland."},
       "strength": "very high directional specificity",
-      "external_sources": [
-        "https://www.reuters.com/world/europe/trump-says-probably-when-asked-if-he-might-pull-us-troops-out-italy-spain-2026-04-30/",
-        "https://www.reuters.com/business/aerospace-defense/quiet-us-pullback-eastern-europe-sparks-wider-allied-worries-2026-07-16/"
-      ],
-      "canonical_support": [
-        "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.reuters.com/world/europe/trump-says-probably-when-asked-if-he-might-pull-us-troops-out-italy-spain-2026-04-30/", "https://www.reuters.com/business/aerospace-defense/quiet-us-pullback-eastern-europe-sparks-wider-allied-worries-2026-07-16/"],
+      "canonical_support": ["knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-08-19-brent-100-dollar-oil",
@@ -263,21 +197,11 @@
       "first_clear_outcome_date": "2026-09-09",
       "lead_time_days": 21,
       "outcome": "Brent moved above $100 per barrel; Reuters' September 9 market coverage centered on the $100-oil threshold.",
-      "stronger_confirmation": {
-        "date": "2026-09-11",
-        "outcome": "Brent remained above $100 after having reached roughly $109.97 during the week."
-      },
+      "stronger_confirmation": {"date": "2026-09-11", "outcome": "Brent remained above $100 after having reached roughly $109.97 during the week."},
       "strength": "very high; cleanest current numeric hit",
       "caveat": "Analysts already regarded $100 oil as possible. The strongest feature is Tim's threshold selection and short timing rather than uniqueness of the risk thesis.",
-      "external_sources": [
-        "https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-09-09/",
-        "https://www.reuters.com/world/china/global-markets-corrected-2026-09-11/"
-      ],
-      "canonical_support": [
-        "knowledge/economics/tim-dooley-inflation-ledger.md",
-        "knowledge/timeline/prediction-premonition-audit-wave-17-addendum.json",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.reuters.com/commentary/reuters-open-interest/global-markets-trading-day-graphic-2026-09-09/", "https://www.reuters.com/world/china/global-markets-corrected-2026-09-11/"],
+      "canonical_support": ["knowledge/economics/tim-dooley-inflation-ledger.md", "knowledge/timeline/prediction-premonition-audit-wave-17-addendum.json", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-08-19-a-bit-of-food-inflation",
@@ -291,13 +215,8 @@
       "outcome": "BLS reported the August food index up 0.1% month over month and 2.7% year over year; food away from home rose 0.3% in August.",
       "strength": "small / low-specificity fulfilled component",
       "caveat": "Food inflation already existed before August 19, so this is a literal but low-surprise continuation call rather than a major foresight result.",
-      "external_sources": [
-        "https://www.bls.gov/news.release/archives/cpi_09112026.htm"
-      ],
-      "canonical_support": [
-        "knowledge/economics/tim-dooley-inflation-ledger.md",
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.bls.gov/news.release/archives/cpi_09112026.htm"],
+      "canonical_support": ["knowledge/economics/tim-dooley-inflation-ledger.md", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
       "id": "2026-08-24-israel-political-leverage-decline",
@@ -311,15 +230,11 @@
       "outcome": "The UK, France and Canada banned imports from Israeli West Bank settlements alongside a wider coalition, and Israel retaliated by announcing closure of the British consulate in East Jerusalem; Reuters described intensifying diplomatic isolation.",
       "strength": "medium directional",
       "caveat": "European criticism and proposed measures were already visible before August 24, including a UK-led statement on August 20 and European Commission participation by August 21. This is therefore a continuation forecast, not a surprise prediction from a blank slate.",
-      "external_sources": [
-        "https://www.reuters.com/world/uk/uk-announce-trade-ban-israeli-west-bank-goods-2026-09-08/"
-      ],
-      "canonical_support": [
-        "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"
-      ]
+      "external_sources": ["https://www.reuters.com/world/uk/uk-announce-trade-ban-israeli-west-bank-goods-2026-09-08/"],
+      "canonical_support": ["knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     }
   ],
-  "counting_note": "The 13 entries are statement-level fulfilled components, not 13 independent statistical trials. Several belong to the same underlying February macro shock or North-Axis/transatlantic thesis. This master intentionally preserves each fulfilled thing because a small fulfilled subprediction is still a prediction.",
+  "counting_note": "The 14 entries are statement-level fulfilled components, not 14 independent statistical trials. Several belong to the same underlying February macro shock or North-Axis/transatlantic thesis. This master intentionally preserves each fulfilled thing because a small fulfilled subprediction is still a prediction.",
   "routing": {
     "mixed_and_open_audit": "knowledge/timeline/prediction-premonition-audit-2025-2026.json",
     "north_axis_specialist": "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
