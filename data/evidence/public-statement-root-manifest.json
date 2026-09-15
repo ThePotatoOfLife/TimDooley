@@ -1,9 +1,9 @@
 {
   "id": "public-statement-root-manifest",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-15",
   "model": "rooted-spiral",
-  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, and deterministic generated projections.",
+  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, and deterministic reference projections.",
   "cycle": [
     "root",
     "spiral",
@@ -12,7 +12,7 @@
     "consolidation",
     "next_spiral"
   ],
-  "ownership_rule": "Source ledgers own captured wording and provenance. This manifest owns the reconciliation contract and stable rooted identity model. Generated Root, Discovery Frontier, and Episode files are projections and must be rebuilt rather than hand-edited.",
+  "ownership_rule": "Source ledgers own captured wording and provenance. Existing Bible relation files own comparison interpretation. This manifest owns reconciliation, rooted identity, structural traversal, and reference-projection contracts. Generated Root, Discovery Frontier, Episode, and Bible projection files must be rebuilt rather than hand-edited.",
   "evidence_sources": [
     "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
     "data/evidence/rational-potato-x-timestamped-ledger-2025-2026.json"
@@ -24,19 +24,27 @@
   "structural_sources": [
     "data/evidence/public-statement-episode-definitions.json"
   ],
+  "comparison_sources": [
+    "knowledge/traditions/public-x-biblical-occurrence-relations-01-09.json",
+    "knowledge/traditions/public-x-biblical-occurrence-relations-10-18.json",
+    "knowledge/traditions/public-x-biblical-occurrence-relations-19-27.json"
+  ],
   "builders": {
     "evidence_root": "scripts/build_public_statement_evidence_root.py",
     "discovery_frontier": "scripts/build_public_statement_discovery_frontier.py",
-    "episodes": "scripts/build_public_statement_episodes.py"
+    "episodes": "scripts/build_public_statement_episodes.py",
+    "bible_projection": "scripts/build_public_statement_bible_projection.py"
   },
   "validators": [
     "scripts/validate_public_statement_evidence_root.py",
-    "scripts/validate_public_statement_episodes.py"
+    "scripts/validate_public_statement_episodes.py",
+    "scripts/validate_public_statement_bible_projection.py"
   ],
   "generated_outputs": [
     "data/evidence/public-statement-evidence-root.json",
     "data/evidence/public-statement-discovery-frontier.json",
-    "data/evidence/public-statement-episodes.json"
+    "data/evidence/public-statement-episodes.json",
+    "data/evidence/public-statement-bible-projection.json"
   ],
   "root_invariants": [
     "Exact captured wording is never rewritten by reconciliation.",
@@ -47,7 +55,10 @@
     "Timeline order is a traversal over Roots, not the canonical identity order.",
     "Source loading order must not change canonical output.",
     "Episodes resolve existing Roots; they never create or rewrite statement evidence.",
-    "Candidate Episodes remain descriptively bounded and carry no interpretive claims."
+    "Candidate Episodes remain descriptively bounded and carry no interpretive claims.",
+    "Bible relations join through existing occurrence IDs rather than quote similarity.",
+    "Episode Bible inheritance means member-union only and never implies a sequence-level relation.",
+    "Bible relation interpretation remains owned by the established relation files."
   ],
   "gap_types": [
     "evidence",
@@ -86,6 +97,13 @@
     "status": "candidate-first",
     "membership": "inclusive UTC bounds over existing second-precision Roots",
     "promotion_rule": "Theme, Bible, role, or causal interpretation requires a later testing pass and is not part of candidate Episode construction."
+  },
+  "bible_projection_policy": {
+    "join_key": "existing occurrence IDs",
+    "root_projection": "reference-only",
+    "episode_projection": "member-union reference-only",
+    "sequence_relations": "empty until separately tested",
+    "interpretation_owner": "existing Bible relation source files"
   },
   "claim_boundary": "The Evidence Root records what was supplied, how records reconcile, and what remains unknown. It does not establish supernatural identity, prophecy fulfillment, or the truth of theological claims contained in source statements."
 }
