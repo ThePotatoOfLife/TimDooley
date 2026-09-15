@@ -14,6 +14,7 @@ PHYSICAL = ROOT / "world-map" / "3d-physical-layers.js"
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 TERRAIN = ROOT / "world-map" / "3d-physical-terrain.js"
+WATER_VALIDATOR = ROOT / "scripts" / "validate_world_map_physical_water.py"
 
 
 def check_node(path: Path, errors: list[str]) -> None:
@@ -27,7 +28,7 @@ def check_node(path: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN):
+    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, WATER_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
@@ -73,7 +74,10 @@ def main() -> int:
             errors.append("physical.terrain must remain on_demand")
         if terrain.get("kind") != "module":
             errors.append("physical.terrain must be represented as a lazy module")
-        for overlay_id in ("physical.water.base", "physical.water.hydrology", "physical.land-cover", "physical.aridity"):
+        water = by_id.get("physical.water.base") or {}
+        if water.get("availability") not in {"planned", "current"}:
+            errors.append("physical.water.base must be planned or current")
+        for overlay_id in ("physical.water.hydrology", "physical.land-cover", "physical.aridity"):
             row = by_id.get(overlay_id)
             if not row:
                 errors.append(f"physical manifest missing provider-ready slot {overlay_id}")
@@ -103,6 +107,11 @@ def main() -> int:
             errors.append("Terrain module must not inject a second legacy control after Physical menu migration")
         if "terrain=1" in terrain or "searchParams.set('terrain'" in terrain:
             errors.append("Terrain module must not own legacy URL state after Physical runtime migration")
+
+    if WATER_VALIDATOR.exists():
+        water_result = subprocess.run([sys.executable, str(WATER_VALIDATOR)], capture_output=True, text=True)
+        if water_result.returncode:
+            errors.append("physical water contract failed: " + (water_result.stdout.strip() or water_result.stderr.strip()))
 
     if errors:
         print("WORLD MAP UI LAYOUT VALIDATION FAILED")
