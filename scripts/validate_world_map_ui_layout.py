@@ -17,6 +17,7 @@ TERRAIN = ROOT / "world-map" / "3d-physical-terrain.js"
 RENDER_STACK_VALIDATOR = ROOT / "scripts" / "validate_world_map_render_stack.py"
 MAP_STATE_VALIDATOR = ROOT / "scripts" / "validate_world_map_map_state.py"
 WATER_VALIDATOR = ROOT / "scripts" / "validate_world_map_physical_water.py"
+SURFACE_FOCUS_VALIDATOR = ROOT / "scripts" / "validate_world_map_physical_surface_focus.py"
 LAND_COVER_VALIDATOR = ROOT / "scripts" / "validate_world_map_land_cover.py"
 DESERTS_VALIDATOR = ROOT / "scripts" / "validate_world_map_deserts.py"
 HYDROLOGY_VALIDATOR = ROOT / "scripts" / "validate_world_map_hydrology.py"
@@ -33,7 +34,7 @@ def check_node(path: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR):
+    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
@@ -109,6 +110,7 @@ def main() -> int:
         ("render stack", RENDER_STACK_VALIDATOR),
         ("map state / physical mixer", MAP_STATE_VALIDATOR),
         ("physical water", WATER_VALIDATOR),
+        ("physical surface focus", SURFACE_FOCUS_VALIDATOR),
         ("land cover", LAND_COVER_VALIDATOR),
         ("deserts", DESERTS_VALIDATOR),
         ("hydrology", HYDROLOGY_VALIDATOR),
