@@ -9,6 +9,7 @@ from collections import defaultdict
 from datetime import datetime, timezone
 from pathlib import Path
 
+ROOT = Path(__file__).resolve().parents[1]
 FIELDS = (
     "geonameid", "name", "asciiname", "alternatenames", "latitude", "longitude",
     "feature_class", "feature_code", "country_code", "cc2", "admin1_code", "admin2_code",
@@ -218,29 +219,60 @@ def build_outputs(features: list[dict], out_dir: Path, refresh_date: str, select
     (out_dir / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
+def resolve_inputs(args: argparse.Namespace, parser: argparse.ArgumentParser) -> tuple[Path, Path, Path, str]:
+    if args.fixture:
+        fixture = args.fixture
+        geonames = fixture / "geonames-cities-sample.txt"
+        capitals = fixture / "capitals-sample.geo.json"
+        country_index = args.country_index or ROOT / "data" / "countries" / "index.json"
+        refresh_date = args.refresh_date or "fixture"
+    else:
+        missing = [
+            flag for flag, value in (
+                ("--geonames", args.geonames),
+                ("--capitals", args.capitals),
+                ("--country-index", args.country_index),
+                ("--refresh-date", args.refresh_date),
+            ) if not value
+        ]
+        if missing:
+            parser.error(f"production build requires {', '.join(missing)}")
+        geonames = args.geonames
+        capitals = args.capitals
+        country_index = args.country_index
+        refresh_date = args.refresh_date
+
+    for path, label in ((geonames, "GeoNames input"), (capitals, "capital input"), (country_index, "country index")):
+        if not path.exists():
+            parser.error(f"{label} not found: {path}")
+    return geonames, capitals, country_index, refresh_date
+
+
 def main() -> None:
     parser = argparse.ArgumentParser()
-    parser.add_argument("--geonames", type=Path, required=True)
-    parser.add_argument("--capitals", type=Path, required=True)
-    parser.add_argument("--country-index", type=Path, required=True)
+    parser.add_argument("--fixture", type=Path, help="Use checked-in GeoNames/capital fixture files from this directory")
+    parser.add_argument("--geonames", type=Path)
+    parser.add_argument("--capitals", type=Path)
+    parser.add_argument("--country-index", type=Path)
     parser.add_argument("--output", type=Path, required=True)
-    parser.add_argument("--refresh-date", required=True)
+    parser.add_argument("--refresh-date")
     parser.add_argument("--countries", default="")
     args = parser.parse_args()
 
-    iso2_to_iso3, _ = country_maps(args.country_index)
+    geonames_path, capitals_path, country_index_path, refresh_date = resolve_inputs(args, parser)
+    iso2_to_iso3, _ = country_maps(country_index_path)
     features: list[dict] = []
-    for line in args.geonames.read_text(encoding="utf-8").splitlines():
+    for line in geonames_path.read_text(encoding="utf-8").splitlines():
         if not line.strip():
             continue
-        feature = normalize_place(parse_geonames_line(line), iso2_to_iso3, args.refresh_date)
+        feature = normalize_place(parse_geonames_line(line), iso2_to_iso3, refresh_date)
         if feature:
             features.append(feature)
 
-    capitals = json.loads(args.capitals.read_text(encoding="utf-8"))
-    merge_capitals(features, capitals, args.refresh_date)
+    capitals = json.loads(capitals_path.read_text(encoding="utf-8"))
+    merge_capitals(features, capitals, refresh_date)
     selected = {value.strip().upper() for value in args.countries.split(",") if value.strip()} or None
-    build_outputs(features, args.output, args.refresh_date, selected)
+    build_outputs(features, args.output, refresh_date, selected)
 
 
 if __name__ == "__main__":
