@@ -37,7 +37,7 @@
     if(!node)return '';
     if(typeof node.cloneNode!=='function')return cleanText(node.textContent||'');
     const clone=node.cloneNode(true);
-    const exclusions=['.ptts-inline-listen','.ptts-drawer',excludeSelector].filter(Boolean).join(',');
+    const exclusions=['button','summary','.ptts-inline-listen','.ptts-drawer',excludeSelector].filter(Boolean).join(',');
     if(exclusions&&typeof clone.querySelectorAll==='function')clone.querySelectorAll(exclusions).forEach(item=>item.remove());
     return cleanText(clone.textContent||'');
   }
