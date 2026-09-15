@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the established renderer, UI-shell, terrain, subdivision, search, and browse-performance contracts."""
+"""Run the established renderer, UI-shell, terrain, control-plane, subdivision, search, and browse-performance contracts."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -7,6 +7,8 @@ from pathlib import Path
 import validate_world_map_3d as validator
 import validate_world_map_ui_shell as ui_shell
 import validate_world_map_terrain as terrain
+import validate_world_map_geo_kernel as geo_kernel
+import validate_world_map_scale_contract as scale_contract
 import validate_world_map_subdivisions as subdivisions
 import validate_world_map_search_race as search_race
 import validate_world_map_browse_performance as browse_performance
@@ -21,6 +23,12 @@ if __name__ == "__main__":
     if status:
         raise SystemExit(status)
     status = terrain.main()
+    if status:
+        raise SystemExit(status)
+    status = geo_kernel.main()
+    if status:
+        raise SystemExit(status)
+    status = scale_contract.main()
     if status:
         raise SystemExit(status)
     status = subdivisions.main()
