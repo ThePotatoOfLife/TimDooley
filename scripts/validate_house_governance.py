@@ -18,6 +18,20 @@ REQUIRED_SURFACES={
     'index-a-z':'/index-a-z/',
     'context':'/context/',
 }
+WORKS_FILE=ROOT/'works/index.html'
+WORKS_MARKERS=(
+    'data-reader-surface="works"',
+    'Play &amp; Simulation',
+    'Writing &amp; Performance',
+    'Music &amp; Sound',
+    'Visual &amp; Symbolic Art',
+    'Recovered &amp; Experimental Works',
+    '../tim-dooley/',
+    '../tim-dooley/story/',
+    '../corporium/',
+    '../explore/#branch=works',
+    '../context/source-authority/',
+)
 
 def load(path,errors):
     try:v=json.loads(path.read_text(encoding='utf-8'))
@@ -66,6 +80,17 @@ def validate_rooms(errors):
                 if target not in known: errors.append(f'Room {row.get("id")} unknown interface {target}')
     return r
 
+def validate_works_reader(errors):
+    if not WORKS_FILE.is_file():
+        errors.append('registered Works surface missing source reader: works/index.html')
+        return
+    text=WORKS_FILE.read_text(encoding='utf-8',errors='replace')
+    for marker in WORKS_MARKERS:
+        if marker not in text: errors.append(f'works/index.html missing reader marker: {marker}')
+    lower=text.lower()
+    if not ('does not automatically become doctrine' in lower and 'evidence' in lower):
+        errors.append('works/index.html must preserve creative-work doctrine/evidence boundary')
+
 def validate_surfaces(errors,rooms):
     p=load(SURFACES,errors); s=load(SURFACE_SCHEMA,errors); topology=load(TOPOLOGY,errors)
     if p and s: schema(p,s,'public_surfaces',errors)
@@ -104,12 +129,13 @@ def validate_surfaces(errors,rooms):
         if topo.get('canonical_route')!=row.get('canonical_route'): errors.append(f'{sid} topology route drift')
         if topo.get('surface_type')!=row.get('surface_type'): errors.append(f'{sid} topology surface_type drift')
         if topo.get('room_ids')!=row.get('primary_room_ids'): errors.append(f'{sid} topology Room drift')
+    validate_works_reader(errors)
     return p
 
 def main():
     errors=[]; rooms=validate_rooms(errors); validate_surfaces(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, public surfaces and topology converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, public surfaces, topology and Works reader converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
