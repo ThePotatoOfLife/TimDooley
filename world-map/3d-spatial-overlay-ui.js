@@ -1,5 +1,5 @@
 // UI for independent sacred/textual/current spatial overlays.
-// Installs inside the existing Layers menu so the World Map keeps one stable shell.
+// Layers remains the advanced multi-overlay surface; Analyze gets a quick Geography picker.
 
 const spatial = window.__potatoAtlasSpatialOverlays;
 if (!spatial) throw new Error('Spatial overlay UI requires the spatial overlay runtime.');
@@ -7,6 +7,7 @@ if (!spatial) throw new Error('Spatial overlay UI requires the spatial overlay r
 const app = document.querySelector('#atlasApp');
 const panel = document.querySelector('#panel');
 const layersMenu = document.querySelector('#layersMenu .menu-pop');
+const analyzeMenu = document.querySelector('#traceMenu .menu-pop');
 const MEASUREMENTS_URL = '../data/world-map-spatial-measurements.json';
 const GROUP_ORDER = [
   'sacred.father-land',
@@ -16,7 +17,7 @@ const GROUP_ORDER = [
 ];
 const GROUP_LABELS = {
   'sacred.father-land':'Father’s Land / Eden',
-  'sacred.chosen-children-land':'Chosen Children’s Land',
+  'sacred.chosen-children-land':'Chosen Children’s Land / Greater Israel scenarios',
   'current.israel-palestine':'Israel / Palestine',
   'conflict.context':'Conflict context',
 };
@@ -30,6 +31,13 @@ const EPISTEMIC_LABEL = {
   event_observed:'Observed event context',
   humanitarian_observed:'Humanitarian observed',
 };
+const QUICK_GEOGRAPHIES = [
+  ['father.mesopotamia-core','Mesopotamia · Father’s Land'],
+  ['father.eden-context','Eden · contextual field'],
+  ['biblical.dan-to-beersheba','Dan → Beer-sheba'],
+  ['biblical.genesis-15','Genesis 15 · Wadi el-Arish → Euphrates'],
+  ['modern.greater-israel','Greater Israel · maximal Nile → Euphrates scenario'],
+];
 
 const measurementPromise = fetch(MEASUREMENTS_URL, { cache:'no-cache' })
   .then(response => response.ok ? response.json() : null)
@@ -57,7 +65,7 @@ function measurementHtml(feature, measurements) {
     : row.measurement_policy === 'symbolic_route'
       ? 'Symbolic route geometry'
       : 'Reference geometry';
-  return `<div class="spatial-measurement"><b>Geometry-derived</b> · ${esc(values.join(' · '))}<small>${esc(policy)}. These measurements describe the stored map geometry; they do not make an ancient text, sacred interpretation, or symbolic route into an exact surveyed boundary.</small></div>`;
+  return `<div class="spatial-measurement"><b>Geometry-derived</b> · ${esc(values.join(' · '))}<small>${esc(policy)}. These measurements describe the stored map geometry; they do not make an ancient text, sacred interpretation, ideological scenario or symbolic route into an exact surveyed boundary.</small></div>`;
 }
 
 let host = document.querySelector('#atlasSpatialOverlayHost');
@@ -71,17 +79,35 @@ if (!host && layersMenu) {
   layersMenu.appendChild(host);
 }
 
+let geographyHost = document.querySelector('#atlasGeographyHost');
+if (!geographyHost && analyzeMenu) {
+  const traversalTitle = [...analyzeMenu.querySelectorAll('.menu-title')]
+    .find(node => node.textContent?.trim() === 'Network traversal');
+  const divider = document.createElement('div');
+  divider.className = 'menu-sep';
+  geographyHost = document.createElement('section');
+  geographyHost.id = 'atlasGeographyHost';
+  geographyHost.setAttribute('aria-label','Historical textual and interpretive geographies');
+  if (traversalTitle) {
+    analyzeMenu.insertBefore(divider, traversalTitle);
+    analyzeMenu.insertBefore(geographyHost, traversalTitle);
+  } else {
+    analyzeMenu.appendChild(divider);
+    analyzeMenu.appendChild(geographyHost);
+  }
+}
+
 const style = document.createElement('style');
 style.textContent = `
 #atlasSpatialOverlayHost{border-top:1px solid #283333;margin-top:8px;padding-top:7px}
 #atlasSpatialOverlayHost .spatial-group{margin:7px 0 10px}
-#atlasSpatialOverlayHost .spatial-group-title{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#aab4aa;margin:3px 2px 5px}
+#atlasSpatialOverlayHost .spatial-group-title,#atlasGeographyHost .spatial-group-title{font-size:9px;text-transform:uppercase;letter-spacing:.12em;color:#aab4aa;margin:3px 2px 5px}
 #atlasSpatialOverlayHost .spatial-toggle{display:flex;align-items:flex-start;gap:7px;width:100%;text-align:left;margin:3px 0;padding:6px 7px}
 #atlasSpatialOverlayHost .spatial-toggle span{display:block;min-width:0}
 #atlasSpatialOverlayHost .spatial-toggle small{display:block;color:#aab4aa;font-size:9px;line-height:1.25;margin-top:2px}
 #atlasSpatialOverlayHost .spatial-toggle[disabled]{opacity:.48;cursor:not-allowed}
-#atlasSpatialOverlayHost .spatial-status{font-size:9px;color:#aab4aa;margin:5px 2px}
-#atlasBoundaryView{width:100%;margin-top:4px}
+#atlasSpatialOverlayHost .spatial-status,#atlasGeographyHost .spatial-status{font-size:9px;color:#aab4aa;margin:5px 2px;line-height:1.3}
+#atlasBoundaryView,#spatialGeographyView{width:100%;margin-top:4px}
 .atlas-spatial-overlap .spatial-overlap-card{border:1px solid #344343;border-radius:9px;padding:9px;margin:7px 0;background:#151d1d}
 .atlas-spatial-overlap .spatial-overlap-card h3{font:400 17px Georgia,serif;margin:2px 0 5px}
 .atlas-spatial-overlap .spatial-source{font-size:10px;color:#aab4aa;overflow-wrap:anywhere}
@@ -103,45 +129,71 @@ function activeBoundaryView() {
   return ['atlas','iso','israel','palestine'].includes(value) ? value : 'atlas';
 }
 
-function renderControls() {
-  if (!host) return;
-  const rows = spatial.entries();
-  const groups = GROUP_ORDER.map(family => ({ family, rows:rows.filter(row => row.family === family) })).filter(group => group.rows.length);
-  host.innerHTML = `<div class="menu-title">Sacred / territorial overlays</div>${groups.map(group => `
-    <div class="spatial-group" data-family="${esc(group.family)}">
-      <div class="spatial-group-title">${esc(GROUP_LABELS[group.family] || group.family)}</div>
-      ${group.rows.map(row => {
-        const current = row.availability === 'current';
-        const active = spatial.isActive(row.id);
-        return `<button class="spatial-toggle${active?' active':''}" data-spatial-overlay="${esc(row.id)}" ${current?'':'disabled'} title="${esc(row.status_note || '')}">
-          <span>${active?'✓ ':''}${esc(row.label)}<small>${esc(EPISTEMIC_LABEL[row.epistemic_type] || title(row.epistemic_type))}${current?'':' · planned'}</small></span>
-        </button>`;
-      }).join('')}
-    </div>`).join('')}
-    <div class="spatial-group">
-      <div class="spatial-group-title">Boundary view</div>
-      <select id="atlasBoundaryView" title="Boundary rendering contract">
-        <option value="atlas">Atlas / de-facto base</option>
-        <option value="iso" disabled>ISO / international coding · source pending</option>
-        <option value="israel" disabled>Israel viewpoint · source pending</option>
-        <option value="palestine" disabled>Palestine viewpoint · source pending</option>
-      </select>
-      <div class="spatial-status">Boundary view changes cartographic rendering only. It never changes canonical country identity, theology or project records.</div>
-    </div>
-    <div class="spatial-status">Overlays may cross borders and overlap each other by design. Their meanings stay independent.</div>`;
+function renderGeographyPicker() {
+  if (!geographyHost) return;
+  const rows = new Map(spatial.entries().map(row => [row.id,row]));
+  const options = QUICK_GEOGRAPHIES
+    .map(([id,label]) => [rows.get(id),label])
+    .filter(([row]) => row?.availability === 'current');
+  geographyHost.innerHTML = `
+    <div class="spatial-group-title">Geographies</div>
+    <select id="spatialGeographyView" title="Show and fit a historical, textual, sacred or ideological geography">
+      <option value="">Geographies · choose…</option>
+      ${options.map(([row,label]) => `<option value="${esc(row.id)}">${esc(label)}</option>`).join('')}
+    </select>
+    <div class="spatial-status">Quick access like a network selector, but these are geographies—not organization memberships or current sovereignty. Selecting one adds it without clearing other active overlays.</div>`;
+  const picker = geographyHost.querySelector('#spatialGeographyView');
+  if (picker) picker.onchange = async event => {
+    const id = event.target.value;
+    if (!id) return;
+    await spatial.activate(id);
+    await spatial.fit(id);
+    event.target.value = '';
+    renderControls();
+  };
+}
 
-  const boundary = host.querySelector('#atlasBoundaryView');
-  if (boundary) {
-    boundary.value = activeBoundaryView();
-    boundary.onchange = event => persistBoundaryView(event.target.value);
+function renderControls() {
+  if (host) {
+    const rows = spatial.entries();
+    const groups = GROUP_ORDER.map(family => ({ family, rows:rows.filter(row => row.family === family) })).filter(group => group.rows.length);
+    host.innerHTML = `<div class="menu-title">Sacred / territorial overlays</div>${groups.map(group => `
+      <div class="spatial-group" data-family="${esc(group.family)}">
+        <div class="spatial-group-title">${esc(GROUP_LABELS[group.family] || group.family)}</div>
+        ${group.rows.map(row => {
+          const current = row.availability === 'current';
+          const active = spatial.isActive(row.id);
+          return `<button class="spatial-toggle${active?' active':''}" data-spatial-overlay="${esc(row.id)}" ${current?'':'disabled'} title="${esc(row.status_note || '')}">
+            <span>${active?'✓ ':''}${esc(row.label)}<small>${esc(EPISTEMIC_LABEL[row.epistemic_type] || title(row.epistemic_type))}${current?'':' · planned'}</small></span>
+          </button>`;
+        }).join('')}
+      </div>`).join('')}
+      <div class="spatial-group">
+        <div class="spatial-group-title">Boundary view</div>
+        <select id="atlasBoundaryView" title="Boundary rendering contract">
+          <option value="atlas">Atlas / de-facto base</option>
+          <option value="iso" disabled>ISO / international coding · source pending</option>
+          <option value="israel" disabled>Israel viewpoint · source pending</option>
+          <option value="palestine" disabled>Palestine viewpoint · source pending</option>
+        </select>
+        <div class="spatial-status">Boundary view changes cartographic rendering only. It never changes canonical country identity, theology or project records.</div>
+      </div>
+      <div class="spatial-status">Overlays may cross borders and overlap each other by design. Their meanings stay independent.</div>`;
+
+    const boundary = host.querySelector('#atlasBoundaryView');
+    if (boundary) {
+      boundary.value = activeBoundaryView();
+      boundary.onchange = event => persistBoundaryView(event.target.value);
+    }
+    for (const button of host.querySelectorAll('[data-spatial-overlay]')) {
+      button.onclick = async () => {
+        const id = button.dataset.spatialOverlay;
+        await spatial.toggle(id);
+        renderControls();
+      };
+    }
   }
-  for (const button of host.querySelectorAll('[data-spatial-overlay]')) {
-    button.onclick = async () => {
-      const id = button.dataset.spatialOverlay;
-      await spatial.toggle(id);
-      renderControls();
-    };
-  }
+  renderGeographyPicker();
 }
 
 async function openInspector(features) {
@@ -165,7 +217,7 @@ async function openInspector(features) {
         <div class="actions"><button data-fit-overlay="${esc(feature.overlay_id)}">Fit overlay</button></div>
       </article>`;
     }).join('')}
-    <div class="boundary">Current sovereignty, disputed status, historical reconstruction, scripture and Potatoverse sacred geography never share an unlabeled visual meaning.</div>
+    <div class="boundary">Current sovereignty, disputed status, historical reconstruction, scripture, ideological scenarios and Potatoverse sacred geography never share an unlabeled visual meaning.</div>
   </div>`;
   for (const button of panel.querySelectorAll('[data-fit-overlay]')) button.onclick = () => spatial.fit(button.dataset.fitOverlay);
 }
