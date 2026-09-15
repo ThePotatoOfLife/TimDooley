@@ -1,10 +1,11 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-15",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": ["tim", "religion", "philosophy", "science", "world"],
   "secondary_global_ids": ["timeline", "explore", "sources", "questions", "index-a-z", "context"],
+  "generated_surface_ids": ["questions", "index-a-z"],
   "surfaces": [
     {"id":"home","route":"/","canonical_route":"/","surface_type":"home","title":"Home","primary_parent":null,"primary_room_ids":[],"status":"active","visibility":"primary","primary_navigation":false,"is_view":false,"knowledge_owner":false,"legacy_routes":["/learn/"]},
     {"id":"tim","route":"/tim-dooley/","canonical_route":"/tim-dooley/","surface_type":"hub","title":"Tim Dooley","primary_parent":"home","primary_room_ids":["potatoverse-canon","time-history","archive-sources","works","culture-information"],"status":"active","visibility":"primary","primary_navigation":true,"is_view":false,"knowledge_owner":false,"legacy_routes":[]},
