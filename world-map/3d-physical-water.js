@@ -38,6 +38,13 @@ let detailInstalled = false;
 let restoring = false;
 let opacity = DEFAULT_OPACITY;
 
+function registerGroup(layers) {
+  const stack = window.__potatoAtlasRenderStack;
+  stack?.register?.(layers.lakeFill, { slot:'physical-surface', priority:30, owner:'physical.water.base' });
+  stack?.register?.(layers.lakeLine, { slot:'physical-line', priority:20, owner:'physical.water.base' });
+  stack?.register?.(layers.rivers, { slot:'physical-line', priority:24, owner:'physical.water.base' });
+  stack?.register?.(layers.coastline, { slot:'physical-line', priority:29, owner:'physical.water.base' });
+}
 function clampOpacity(value) { return Math.max(0, Math.min(1, Number(value))); }
 function opacityScale() { return DEFAULT_OPACITY ? opacity / DEFAULT_OPACITY : 1; }
 function sourceUrl(name) { return `${NE_BASE}/${name}`; }
@@ -73,6 +80,7 @@ function waterLayers(sources, layers, detail = false) {
   addLayer({id:layers.lakeLine,type:'line',source:sources.lakes,minzoom:minZoom,layout:{visibility:'none'},paint:{'line-color':'#9dc6d8','line-opacity':0.8,'line-width':['interpolate',['linear'],['zoom'],0,0.35,5,detail?1.05:0.9]}}, beforeLine);
   addLayer({id:layers.rivers,type:'line',source:sources.rivers,minzoom:minZoom,layout:{visibility:'none','line-cap':'round','line-join':'round'},paint:{'line-color':'#7fb8d0','line-opacity':0.88,'line-width':['interpolate',['linear'],['zoom'],0,0.35,3,0.7,6,detail?1.35:1.15]}}, beforeLine);
   addLayer({id:layers.coastline,type:'line',source:sources.coastline,minzoom:minZoom,layout:{visibility:'none'},paint:{'line-color':'#9ec7d7','line-opacity':detail?0.72:0.62,'line-width':['interpolate',['linear'],['zoom'],0,0.25,5,detail?0.9:0.7]}}, beforeLine);
+  registerGroup(layers);
 }
 
 function applyGroupOpacity(layers, detail = false) {
