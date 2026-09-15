@@ -2,6 +2,7 @@
 // Uses the shared runtime and a dedicated outline feature-state channel.
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
+const surface = window.__potatoAtlasInvestigationSurface;
 if (!map || !runtime) throw new Error('Functional chain explorer requires map and runtime APIs.');
 await runtime.ready;
 
@@ -69,7 +70,7 @@ async function renderStrip(chain) {
   node.innerHTML = `<button type="button" data-chain-clear aria-label="Clear functional chain">×</button><small>Functional chain</small><b>${escapeHtml(chain.label || activeChainId)}</b>${systems ? `<span>${escapeHtml(systems)}</span>` : ''}<p>${escapeHtml(chain.description || '')}</p>${infrastructureHtml(infrastructure)}<em>${escapeHtml(chain.epistemic_type || '')}${chain.source_note ? ` · ${escapeHtml(chain.source_note)}` : ''}</em>`;
 }
 
-async function setChain(id, { persistState=true } = {}) {
+async function setChain(id, { persistState=true, coordinated=false } = {}) {
   ensureLayer();
   const chain = id ? await runtime.chain(id) : null;
   clearFeatureState();
@@ -78,9 +79,11 @@ async function setChain(id, { persistState=true } = {}) {
     if (persistState) persist();
     await renderStrip(null);
     syncCardActions();
+    if (!coordinated) surface?.close?.('chain');
     window.dispatchEvent(new CustomEvent('potato-atlas-chain-change', { detail:{ id:null, chain:null } }));
     return false;
   }
+  surface?.open?.('chain');
   activeChainId = id;
   for (const code of chain.members || []) {
     try { map.setFeatureState({ source:'countries', id:code }, { atlasChainMatch:true }); markedCodes.add(code); } catch {}
@@ -93,10 +96,10 @@ async function setChain(id, { persistState=true } = {}) {
 }
 
 async function toggleChain(id) {
-  if (activeChainId === id) return setChain(null);
+  if (activeChainId === id) return clear();
   return setChain(id);
 }
-function clear() { return setChain(null); }
+function clear({ coordinated=false } = {}) { return setChain(null, { coordinated }); }
 function get() { return activeChainId; }
 
 async function upgradeChainTags() {
@@ -144,6 +147,7 @@ function installStyle() {
 
 installStyle();
 ensureLayer();
+surface?.register?.('chain', { close:() => clear({ coordinated:true }) });
 document.addEventListener('click', event => {
   const chainButton = event.target.closest('[data-chain-id]');
   if (chainButton) { toggleChain(chainButton.dataset.chainId); return; }
