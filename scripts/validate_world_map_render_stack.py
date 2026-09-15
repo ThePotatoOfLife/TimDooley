@@ -56,9 +56,9 @@ def main() -> int:
         "render stack",
     )
     check_node(RENDER_STACK, errors)
-    for forbidden in ("MutationObserver", "setInterval", "removeLayer(", "removeSource(", "setPaintProperty("):
+    for forbidden in ("MutationObserver", "setInterval", "removeLayer(", "removeSource(", "setPaintProperty(", "zIndex"):
         if forbidden in render:
-            errors.append(f"render stack must not own map data/paint lifecycle: found {forbidden}")
+            errors.append(f"render stack must not own map data/paint lifecycle or arbitrary z-index state: found {forbidden}")
 
     lifecycle = require_tokens(
         PANEL,
