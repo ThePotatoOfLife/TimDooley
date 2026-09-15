@@ -1,0 +1,21 @@
+{
+  "id": "great-book-source-archaeology",
+  "edition": "Library source: The Great Book Of Potato2.odt",
+  "updated": "2026-09-16",
+  "status": "source-boundary archaeology; does not alter the 168-entry reader manifest",
+  "purpose": "Record literal chapter bodies found in the ODT that are not represented by the reader manifest, so restoration can proceed without merging, renumbering, or discarding source material.",
+  "unindexed_bodies": [
+    {
+      "number": "59.1",
+      "title": "The Sage\u2019s Move\u2014Pushing from the Back",
+      "status": "unindexed-body",
+      "source_paragraph_count": 20,
+      "between_manifest_chapters": [
+        "59",
+        "60"
+      ],
+      "boundary_note": "The literal Chapter 59.1 marker is glued to the final paragraph block of Chapter 59. Its body continues for 20 extracted source paragraphs; the literal Chapter 60 marker is glued to the end of the final 59.1 paragraph.",
+      "reader_policy": "Do not merge this body into Chapter 59 or Chapter 60 and do not change manifest ordinals implicitly. Preserve it as a source-archaeology finding until a deliberate supplemental/unindexed-body architecture is adopted."
+    }
+  ]
+}
