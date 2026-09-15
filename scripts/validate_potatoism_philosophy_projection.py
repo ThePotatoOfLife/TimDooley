@@ -176,6 +176,7 @@ def main() -> int:
     if len(set(map_station_ids)) != len(map_station_ids):
         errors.append("Spiral Reader map contains duplicate station ids")
 
+    # Turn identity is structural rather than dependent on a particular visual heading layout.
     for turn in TURNS:
         marker = f'data-potatoism-turn="{turn}"'
         count = philosophy.count(marker)
@@ -203,12 +204,6 @@ def main() -> int:
         "So you want to be a potato",
         "Do you think you have what it takes?",
         "How to read this spiral",
-        "Turn I · Seed",
-        "Turn II · Root",
-        "Turn III · Door",
-        "Turn IV · Spiral",
-        "Turn V · Fruit",
-        "Turn VI · Garden",
         "Be simple. Grow toward light.",
         "Religion remains the primary public owner",
         'href="../religion/"',
