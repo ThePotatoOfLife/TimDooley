@@ -13,13 +13,23 @@
     node.dataset.kind = 'error';
     node.textContent = message;
   };
+  const recordDiagnostic = message => {
+    const guard = window.__potatoAtlasBootGuard;
+    if (!guard) return;
+    guard.failures.push(message);
+    guard.lastDiagnosticAt = new Date().toISOString();
+    guard.lastDiagnostic = message;
+    console.warn('Atlas boot diagnostic recorded; waiting for the core readiness boundary before surfacing a failure.', message);
+  };
 
   window.__potatoAtlasBootGuard = {
     timeoutMs: DEFAULT_TIMEOUT_MS,
     watchdogMs: BOOT_WATCHDOG_MS,
     installedAt: new Date().toISOString(),
     stage: 'guard-installed',
-    failures: []
+    failures: [],
+    lastDiagnostic: null,
+    lastDiagnosticAt: null
   };
 
   window.fetch = function atlasBoundedFetch(input, init = {}) {
@@ -32,17 +42,18 @@
       .finally(() => window.clearTimeout(timer));
   };
 
+  // Early browser/module errors can be recoverable because the Atlas has local and
+  // optional-module fallbacks. Record them for diagnostics, but do not flash a red
+  // fatal banner unless the core itself fails or the watchdog confirms no readiness.
   window.addEventListener('error', event => {
     const message = event?.error?.message || event?.message || 'Unknown JavaScript error';
-    window.__potatoAtlasBootGuard.failures.push(message);
-    if (!window.__potatoAtlasReady) showFailure(`Atlas boot error: ${message}`);
+    recordDiagnostic(message);
   });
 
   window.addEventListener('unhandledrejection', event => {
     const reason = event?.reason;
     const message = reason?.message || String(reason || 'Unknown promise rejection');
-    window.__potatoAtlasBootGuard.failures.push(message);
-    if (!window.__potatoAtlasReady) showFailure(`Atlas boot error: ${message}`);
+    recordDiagnostic(message);
   });
 
   window.setTimeout(() => {
