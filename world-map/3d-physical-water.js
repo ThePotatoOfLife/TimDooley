@@ -10,22 +10,26 @@ const NE_BASE = `https://raw.githubusercontent.com/nvkelso/natural-earth-vector/
 const DETAIL_ZOOM = 3.4;
 const DEFAULT_OPACITY = 0.72;
 const OVERVIEW_SOURCES = {
+  ocean: 'atlas-physical-water-ocean-110m',
   rivers: 'atlas-physical-water-rivers-110m',
   lakes: 'atlas-physical-water-lakes-110m',
   coastline: 'atlas-physical-water-coastline-110m',
 };
 const DETAIL_SOURCES = {
+  ocean: 'atlas-physical-water-ocean-50m',
   rivers: 'atlas-physical-water-rivers-50m',
   lakes: 'atlas-physical-water-lakes-50m',
   coastline: 'atlas-physical-water-coastline-50m',
 };
 const OVERVIEW_LAYERS = {
+  oceanFill: 'atlas-physical-water-ocean-fill-110m',
   lakeFill: 'atlas-physical-water-lake-fill-110m',
   lakeLine: 'atlas-physical-water-lake-line-110m',
   rivers: 'atlas-physical-water-river-line-110m',
   coastline: 'atlas-physical-water-coastline-line-110m',
 };
 const DETAIL_LAYERS = {
+  oceanFill: 'atlas-physical-water-ocean-fill-50m',
   lakeFill: 'atlas-physical-water-lake-fill-50m',
   lakeLine: 'atlas-physical-water-lake-line-50m',
   rivers: 'atlas-physical-water-river-line-50m',
@@ -40,7 +44,8 @@ let opacity = DEFAULT_OPACITY;
 
 function registerGroup(layers) {
   const stack = window.__potatoAtlasRenderStack;
-  stack?.register?.(layers.lakeFill, { slot:'physical-surface', priority:30, owner:'physical.water.base' });
+  stack?.register?.(layers.oceanFill, { slot:'physical-water', priority:10, owner:'physical.water.base' });
+  stack?.register?.(layers.lakeFill, { slot:'physical-water', priority:20, owner:'physical.water.base' });
   stack?.register?.(layers.lakeLine, { slot:'physical-line', priority:20, owner:'physical.water.base' });
   stack?.register?.(layers.rivers, { slot:'physical-line', priority:24, owner:'physical.water.base' });
   stack?.register?.(layers.coastline, { slot:'physical-line', priority:29, owner:'physical.water.base' });
@@ -58,11 +63,13 @@ function addGeoJsonSource(id, filename) {
 }
 
 function ensureSources() {
+  addGeoJsonSource(OVERVIEW_SOURCES.ocean, 'ne_110m_ocean.geojson');
   addGeoJsonSource(OVERVIEW_SOURCES.rivers, 'ne_110m_rivers_lake_centerlines.geojson');
   addGeoJsonSource(OVERVIEW_SOURCES.lakes, 'ne_110m_lakes.geojson');
   addGeoJsonSource(OVERVIEW_SOURCES.coastline, 'ne_110m_coastline.geojson');
 }
 function ensureDetailSources() {
+  addGeoJsonSource(DETAIL_SOURCES.ocean, 'ne_50m_ocean.geojson');
   addGeoJsonSource(DETAIL_SOURCES.rivers, 'ne_50m_rivers_lake_centerlines.geojson');
   addGeoJsonSource(DETAIL_SOURCES.lakes, 'ne_50m_lakes.geojson');
   addGeoJsonSource(DETAIL_SOURCES.coastline, 'ne_50m_coastline.geojson');
@@ -73,26 +80,31 @@ function addLayer(definition, before) {
 }
 
 function waterLayers(sources, layers, detail = false) {
-  const beforeFill = map.getLayer('countries-fill') ? 'countries-fill' : undefined;
   const beforeLine = map.getLayer('countries-line') ? 'countries-line' : undefined;
   const minZoom = detail ? DETAIL_ZOOM : 0;
-  addLayer({id:layers.lakeFill,type:'fill',source:sources.lakes,minzoom:minZoom,layout:{visibility:'none'},paint:{'fill-color':'#6a9db4','fill-opacity':detail ? 0.54 : 0.48}}, beforeFill);
-  addLayer({id:layers.lakeLine,type:'line',source:sources.lakes,minzoom:minZoom,layout:{visibility:'none'},paint:{'line-color':'#9dc6d8','line-opacity':0.8,'line-width':['interpolate',['linear'],['zoom'],0,0.35,5,detail?1.05:0.9]}}, beforeLine);
+  addLayer({id:layers.oceanFill,type:'fill',source:sources.ocean,minzoom:minZoom,layout:{visibility:'none'},paint:{'fill-color':'#426f86','fill-opacity':detail ? 0.42 : 0.36}}, beforeLine);
+  addLayer({id:layers.lakeFill,type:'fill',source:sources.lakes,minzoom:minZoom,layout:{visibility:'none'},paint:{'fill-color':'#6a9db4','fill-opacity':detail ? 0.64 : 0.58}}, beforeLine);
+  addLayer({id:layers.lakeLine,type:'line',source:sources.lakes,minzoom:minZoom,layout:{visibility:'none'},paint:{'line-color':'#a7d3e4','line-opacity':0.86,'line-width':['interpolate',['linear'],['zoom'],0,0.35,5,detail?1.05:0.9]}}, beforeLine);
   addLayer({id:layers.rivers,type:'line',source:sources.rivers,minzoom:minZoom,layout:{visibility:'none','line-cap':'round','line-join':'round'},paint:{'line-color':'#7fb8d0','line-opacity':0.88,'line-width':['interpolate',['linear'],['zoom'],0,0.35,3,0.7,6,detail?1.35:1.15]}}, beforeLine);
-  addLayer({id:layers.coastline,type:'line',source:sources.coastline,minzoom:minZoom,layout:{visibility:'none'},paint:{'line-color':'#9ec7d7','line-opacity':detail?0.72:0.62,'line-width':['interpolate',['linear'],['zoom'],0,0.25,5,detail?0.9:0.7]}}, beforeLine);
+  addLayer({id:layers.coastline,type:'line',source:sources.coastline,minzoom:minZoom,layout:{visibility:'none'},paint:{'line-color':'#b2d8e6','line-opacity':detail?0.8:0.72,'line-width':['interpolate',['linear'],['zoom'],0,0.3,5,detail?1.0:0.78]}}, beforeLine);
   registerGroup(layers);
 }
 
 function applyGroupOpacity(layers, detail = false) {
   const scale = opacityScale();
   const values = {
-    lakeFill:(detail ? 0.54 : 0.48) * scale,
-    lakeLine:0.8 * scale,
+    oceanFill:(detail ? 0.42 : 0.36) * scale,
+    lakeFill:(detail ? 0.64 : 0.58) * scale,
+    lakeLine:0.86 * scale,
     rivers:0.88 * scale,
-    coastline:(detail ? 0.72 : 0.62) * scale,
+    coastline:(detail ? 0.8 : 0.72) * scale,
   };
-  if (map.getLayer(layers.lakeFill)) map.setPaintProperty(layers.lakeFill, 'fill-opacity', Math.min(1, values.lakeFill));
-  for (const key of ['lakeLine','rivers','coastline']) if (map.getLayer(layers[key])) map.setPaintProperty(layers[key], 'line-opacity', Math.min(1, values[key]));
+  for (const key of ['oceanFill','lakeFill']) {
+    if (map.getLayer(layers[key])) map.setPaintProperty(layers[key], 'fill-opacity', Math.min(1, values[key]));
+  }
+  for (const key of ['lakeLine','rivers','coastline']) {
+    if (map.getLayer(layers[key])) map.setPaintProperty(layers[key], 'line-opacity', Math.min(1, values[key]));
+  }
 }
 function applyOpacity() {
   if (installed) applyGroupOpacity(OVERVIEW_LAYERS, false);
@@ -167,7 +179,7 @@ map.on('styledata', () => {
     try {
       ensureSources();
       ensureLayers();
-      detailInstalled = Boolean(map.getSource(DETAIL_SOURCES.rivers));
+      detailInstalled = Boolean(map.getSource(DETAIL_SOURCES.ocean));
       syncScaleDetail();
       applyOpacity();
     } catch (error) {

@@ -6,6 +6,7 @@ if (!map) throw new Error('Render Stack requires the core map.');
 
 const SLOT_ORDER = Object.freeze([
   'physical-surface',
+  'physical-water',
   'physical-line',
   'geography-context',
   'context-network',
@@ -62,9 +63,14 @@ function reconcile(reason = 'manual') {
   const moved = [];
   const missing = [...entries.values()].filter(entry => !map.getLayer(entry.layerId)).map(entry => entry.layerId);
 
+  // Broad physical surfaces remain below the country tint.
   moveRegion(sorted('physical-surface').map(entry => entry.layerId), firstExisting(['countries-fill', 'countries-line', 'country-hubs', 'country-labels']), moved);
 
+  // True water surfaces deliberately sit above countries-fill so lakes and seas
+  // remain legible. Physical linework and contextual overlays follow them while
+  // all remain below the canonical country boundary.
   const middle = [
+    ...sorted('physical-water'),
     ...sorted('physical-line'),
     ...sorted('geography-context'),
     ...sorted('context-network'),
