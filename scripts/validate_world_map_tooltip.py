@@ -10,14 +10,16 @@ ROOT = Path(__file__).resolve().parents[1]
 TOOLTIP = ROOT / "world-map" / "3d-tooltip.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 AXIS = ROOT / "world-map" / "3d-axis.js"
+FIELDS = ROOT / "world-map" / "3d-fields.js"
 TEST = ROOT / "scripts" / "test_world_map_tooltip_lifecycle.mjs"
 HOVER_TEST = ROOT / "scripts" / "test_world_map_hover_artifacts.mjs"
 AXIS_TEST = ROOT / "scripts" / "test_world_map_axis_tooltip_ownership.mjs"
+FIELDS_TEST = ROOT / "scripts" / "test_world_map_fields_tooltip_ownership.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (TOOLTIP, HOVER, AXIS, TEST, HOVER_TEST, AXIS_TEST):
+    for path in (TOOLTIP, HOVER, AXIS, FIELDS, TEST, HOVER_TEST, AXIS_TEST, FIELDS_TEST):
         if not path.exists():
             errors.append(f"missing tooltip file: {path.relative_to(ROOT)}")
     if errors:
@@ -29,6 +31,7 @@ def main() -> int:
     tooltip = TOOLTIP.read_text(encoding="utf-8", errors="replace")
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
     axis = AXIS.read_text(encoding="utf-8", errors="replace")
+    fields = FIELDS.read_text(encoding="utf-8", errors="replace")
 
     for token in (
         "function createTooltipService",
@@ -62,23 +65,27 @@ def main() -> int:
     if "const popup = new maplibregl.Popup" in hover:
         errors.append("hover runtime still constructs its own transient MapLibre popup")
 
-    for token in (
-        "import('./3d-tooltip.js')",
-        "window.__potatoAtlasTooltip",
-        "tooltip.nextGeneration('axis')",
-        "tooltip.show('axis'",
-        "tooltip.invalidate('axis-leave')",
+    for label, source, owner in (
+        ("Axis", axis, "axis"),
+        ("Fields", fields, "fields"),
     ):
-        if token not in axis:
-            errors.append(f"Axis runtime does not consume shared tooltip: {token}")
-    if "new maplibregl.Popup" in axis:
-        errors.append("Axis runtime still constructs its own transient MapLibre popup")
+        for token in (
+            "import('./3d-tooltip.js')",
+            "window.__potatoAtlasTooltip",
+            f"tooltip.nextGeneration('{owner}')",
+            f"tooltip.show('{owner}'",
+            f"tooltip.invalidate('{owner}-leave')",
+        ):
+            if token not in source:
+                errors.append(f"{label} runtime does not consume shared tooltip: {token}")
+        if "new maplibregl.Popup" in source:
+            errors.append(f"{label} runtime still constructs its own transient MapLibre popup")
 
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot verify tooltip behavior")
     else:
-        for path in (TOOLTIP, HOVER, AXIS):
+        for path in (TOOLTIP, HOVER, AXIS, FIELDS):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -86,6 +93,7 @@ def main() -> int:
             (TEST, "tooltip lifecycle"),
             (HOVER_TEST, "hover ownership/race"),
             (AXIS_TEST, "Axis tooltip ownership"),
+            (FIELDS_TEST, "Fields tooltip ownership"),
         ):
             result = subprocess.run([node, str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
@@ -95,7 +103,7 @@ def main() -> int:
     print("- one shared transient popup owner")
     print("- generation-based stale async suppression")
     print("- drag / zoom / rotate / pitch / projection invalidation")
-    print("- country, fallback-capital and Axis hover migrated")
+    print("- country, fallback-capital, Axis and Fields hover migrated")
     print("- boot-guard compatibility remains for unmigrated hover modules")
     print(f"Errors: {len(errors)}")
     if errors:
