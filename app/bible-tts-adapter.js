@@ -7,7 +7,7 @@
   const clean=value=>String(value??'').replace(/\s+/g,' ').trim();
   function join(parts){return parts.map(clean).filter(Boolean).join(' ')}
   function buildBiblePayload(parts={}){
-    const project=clean(parts.project),scripture=clean(parts.scripture),why=clean(parts.why),mismatch=clean(parts.mismatch);
+    const project=clean(parts.project),scripture=clean(parts.scripture),why=clean(parts.why),mismatch=clean(parts.mismatch),selection=clean(parts.selection);
     const both=join([
       project&&`Project. ${project}`,
       scripture&&`Scripture. ${scripture}`,
@@ -23,11 +23,21 @@
         {id:'project',label:'Project',text:project},
         {id:'scripture',label:'Scripture',text:scripture},
         {id:'why',label:'Why',text:whyText},
+        {id:'selection',label:'Selection',text:selection},
       ].filter(section=>section.text),
     };
   }
   function textOf(node,selector){return clean(node?.querySelector(selector)?.textContent)}
-  function extractRelation(node){
+  function selectionInsideActive(node,doc=root?.document){
+    const selection=doc?.getSelection?.();
+    if(!node||!selection||selection.rangeCount===0||selection.isCollapsed)return '';
+    const range=selection.getRangeAt(0);
+    const common=range.commonAncestorContainer;
+    const element=common?.nodeType===1?common:common?.parentElement||common?.parentNode;
+    if(!element||!node.contains(element))return '';
+    return clean(selection.toString());
+  }
+  function extractRelation(node,selection=''){
     if(!node)return buildBiblePayload({});
     const article=node.matches?.('.relation')?node:node.querySelector?.('.relation');
     if(!article)return buildBiblePayload({});
@@ -39,6 +49,7 @@
       scripture:clean(sides[1]?.textContent),
       why:textOf(article,'.why p'),
       mismatch:textOf(article,'.boundary-callout'),
+      selection,
     });
   }
   function mount(){
@@ -49,8 +60,17 @@
     let host=document.getElementById('bible-tts-drawer');
     if(!host){host=document.createElement('div');host.id='bible-tts-drawer';host.className='bible-tts-drawer';nav.before(host)}
     host.dataset.ttsPrimary='';
-    const read=()=>extractRelation(active);
-    const drawer=root.PotatoTTSDrawer.mount({target:host,getPayload:read,settingsKey:'potato-tts-settings'});
+    const read=()=>extractRelation(active,selectionInsideActive(active,document));
+    const setRelationActive=value=>active.querySelector?.('.relation')?.classList?.toggle('ptts-reading-active',Boolean(value));
+    const drawer=root.PotatoTTSDrawer.mount({
+      target:host,
+      getPayload:read,
+      settingsKey:'potato-tts-settings',
+      onEvent:event=>{
+        if(['chunkstart','boundary'].includes(event.type))setRelationActive(true);
+        if(['complete','stop','error'].includes(event.type))setRelationActive(false);
+      },
+    });
 
     function ensureRelationListen(){
       const article=active.querySelector?.('.relation');
@@ -75,16 +95,17 @@
     let lastId=read().id;
     const observer=new MutationObserver(()=>{
       const next=read();
-      if(next.id!==lastId){lastId=next.id;drawer?.setPayload(next)}
+      if(next.id!==lastId){lastId=next.id;setRelationActive(false);drawer?.setPayload(next)}
       else drawer?.setPayload(next);
       ensureRelationListen();
     });
     observer.observe(active,{childList:true,subtree:true,characterData:true});
     ensureRelationListen();
-    return {drawer,observer,refresh:()=>{drawer?.setPayload(read());ensureRelationListen()}};
+    const selectionAction=root.PotatoTTSDrawer.mountSelectionAction?.({container:active,drawer,getPayload:read});
+    return {drawer,observer,selectionAction,refresh:()=>{drawer?.setPayload(read());ensureRelationListen()},destroy(){observer.disconnect();selectionAction?.destroy?.();setRelationActive(false);drawer?.stop?.()}};
   }
   if(typeof document!=='undefined'){
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else setTimeout(mount,0);
   }
-  return {buildBiblePayload,extractRelation,mount};
+  return {buildBiblePayload,selectionInsideActive,extractRelation,mount};
 });
