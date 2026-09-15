@@ -3,6 +3,8 @@
 from __future__ import annotations
 
 import json
+import shutil
+import subprocess
 import sys
 from pathlib import Path
 
@@ -63,6 +65,11 @@ def main() -> int:
                 errors.append(f"physical water module missing {token}")
         if "new MutationObserver(" in text or "setInterval(" in text:
             errors.append("physical water module must not poll or observe the DOM")
+        node = shutil.which("node")
+        if node:
+            result = subprocess.run([node, "--check", str(WATER)], capture_output=True, text=True)
+            if result.returncode:
+                errors.append("physical water JavaScript syntax failed: " + (result.stderr.strip() or result.stdout.strip()))
 
     if not RUNTIME.exists():
         errors.append("missing physical layer runtime")
