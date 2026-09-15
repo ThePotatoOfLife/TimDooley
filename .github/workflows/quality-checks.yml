@@ -79,6 +79,11 @@ jobs:
       - name: Validate 100,000-hour canonical page
         run: python scripts/validate_100000_hour_page.py
 
+      - name: Validate Story archive and source closeness
+        run: |
+          python scripts/validate_story_archive.py
+          python scripts/audit_story_source_closeness.py
+
       - name: Build canonical record registry
         run: python scripts/build_canonical_record_registry.py
 
