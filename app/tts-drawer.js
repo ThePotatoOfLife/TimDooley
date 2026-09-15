@@ -69,7 +69,7 @@
     let engine=null;
 
     const host=el('section','ptts-drawer');host.dataset.state=state;
-    const closed=el('button','ptts-trigger','🔊 Read aloud');closed.type='button';closed.setAttribute('aria-expanded','false');
+    const closed=el('button','ptts-trigger','🔊 Listen');closed.type='button';closed.setAttribute('aria-expanded','false');
     const panel=el('div','ptts-panel');panel.hidden=true;
     const rail=el('div','ptts-rail');
     const collapse=button('Collapse reader','⌃');
@@ -140,6 +140,13 @@
       if(changed&&engine&&engine.state!=='idle')engine.stop();
       activeText=buildReadingText(payload,sectionId);if(state==='expanded')showPlain(activeText);
     }
+    function playSection(id){
+      setPayload(getPayload()||payload);
+      if(payload.sections.some(section=>section.id===id))sectionId=id;
+      updateScope();
+      setState('open');
+      start();
+    }
 
     closed.addEventListener('click',()=>{setPayload(getPayload()||payload);setState('open')});
     collapse.addEventListener('click',()=>{engine?.stop();setState('closed')});
@@ -154,7 +161,7 @@
     mute.addEventListener('click',()=>{if(Number(volume.value)>0){lastVolume=Number(volume.value);volume.value='0'}else volume.value=String(lastVolume||1);volume.dispatchEvent(new Event('input'))});
 
     updateScope();updateButtons();
-    return {element:host,setPayload,getPayload:()=>payload,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>engine?.stop(),engine};
+    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>engine?.stop(),engine};
   }
 
   return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,mount};
