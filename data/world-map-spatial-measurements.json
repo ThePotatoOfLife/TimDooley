@@ -3,84 +3,19 @@
   "generated_from": "data/world-map-spatial-overlays.json and committed WGS84 geometry owners",
   "method": "spherical-haversine-chamberlain-v1",
   "earth_radius_km": 6371.0088,
-  "precision_note": "Geometry-derived approximations. Measurements do not imply that textual, historical, ideological or project reconstructions are exact surveyed boundaries.",
+  "precision_note": "Geometry-derived approximations. Measurements do not imply that textual, historical, ideological or project reconstructions are exact surveyed boundaries. source_extent_reference areas describe published reference extents, not the underlying basin area.",
   "features": {
-    "father-mesopotamia-core-v1": {
-      "geometry_version": "v1",
-      "geometry_type": "Polygon",
-      "bbox": [35.6, 29.0, 49.0, 38.2],
-      "component_count": 1,
-      "method": "spherical-haversine-chamberlain-v1",
-      "measurement_policy": "approximate_reconstruction",
-      "area_sq_km": 839026.1,
-      "perimeter_km": 3550.2
-    },
-    "father-eden-context-v1": {
-      "geometry_version": "v1",
-      "geometry_type": "Polygon",
-      "bbox": [43.1, 27.8, 50.2, 33.4],
-      "component_count": 1,
-      "method": "spherical-haversine-chamberlain-v1",
-      "measurement_policy": "approximate_reconstruction",
-      "area_sq_km": 310997.3,
-      "perimeter_km": 2090.8
-    },
-    "tigris-reference-v1": {
-      "geometry_version": "v1",
-      "geometry_type": "LineString",
-      "bbox": [39.7, 29.8, 48.5, 38.4],
-      "component_count": 1,
-      "method": "spherical-haversine-chamberlain-v1",
-      "measurement_policy": "reference_line",
-      "length_km": 1290.4
-    },
-    "euphrates-reference-v1": {
-      "geometry_version": "v1",
-      "geometry_type": "LineString",
-      "bbox": [38.0, 29.8, 48.4, 38.9],
-      "component_count": 1,
-      "method": "spherical-haversine-chamberlain-v1",
-      "measurement_policy": "reference_line",
-      "length_km": 1587.9
-    },
-    "father-return-path-v1": {
-      "geometry_version": "v1",
-      "geometry_type": "LineString",
-      "bbox": [12.6, 33.3, 44.8, 69.5],
-      "component_count": 1,
-      "method": "spherical-haversine-chamberlain-v1",
-      "measurement_policy": "symbolic_route",
-      "length_km": 5954.4
-    },
-    "dan-to-beersheba-v1": {
-      "geometry_version": "v1",
-      "geometry_type": "Polygon",
-      "bbox": [34.55, 31.05, 35.65, 33.55],
-      "component_count": 1,
-      "method": "spherical-haversine-chamberlain-v1",
-      "measurement_policy": "approximate_reconstruction",
-      "area_sq_km": 18697.0,
-      "perimeter_km": 646.0
-    },
-    "genesis-15-river-to-river-v1": {
-      "geometry_version": "v1",
-      "geometry_type": "Polygon",
-      "bbox": [33.8, 29.9, 41.4, 36.7],
-      "component_count": 1,
-      "method": "spherical-haversine-chamberlain-v1",
-      "measurement_policy": "approximate_reconstruction",
-      "area_sq_km": 158941.5,
-      "perimeter_km": 2143.8
-    },
-    "greater-israel-nile-euphrates-v1": {
-      "geometry_version": "v1",
-      "geometry_type": "Polygon",
-      "bbox": [31.1, 29.3, 44.7, 36.8],
-      "component_count": 1,
-      "method": "spherical-haversine-chamberlain-v1",
-      "measurement_policy": "approximate_reconstruction",
-      "area_sq_km": 543296.4,
-      "perimeter_km": 3284.1
-    }
+    "father-mesopotamia-core-v2": {"geometry_version":"v2","geometry_type":"Polygon","bbox":[36.6,29.0,49.0,38.5],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"sourced_historical_reconstruction","area_sq_km":624759.5,"perimeter_km":3263.7},
+    "father-lower-mesopotamia-gulf-v1": {"geometry_version":"v1","geometry_type":"Polygon","bbox":[43.7,28.7,48.7,33.5],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"sourced_historical_reconstruction","area_sq_km":151564.6,"perimeter_km":1555.1},
+    "tigris-euphrates-basin-reference-v1": {"geometry_version":"v1","geometry_type":"Polygon","bbox":[38.945294,29.075,48.4625,37.377264],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"source_extent_reference","area_sq_km":816527.1,"perimeter_km":3611.6},
+    "father-eden-context-v1": {"geometry_version":"v1","geometry_type":"Polygon","bbox":[43.1,27.8,50.2,33.4],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"approximate_reconstruction","area_sq_km":310997.3,"perimeter_km":2090.8},
+    "tigris-reference-v1": {"geometry_version":"v1","geometry_type":"LineString","bbox":[39.7,29.8,48.5,38.4],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"reference_line","length_km":1290.4},
+    "euphrates-reference-v1": {"geometry_version":"v1","geometry_type":"LineString","bbox":[38.0,29.8,48.4,38.9],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"reference_line","length_km":1587.9},
+    "father-return-path-v1": {"geometry_version":"v1","geometry_type":"LineString","bbox":[12.6,33.3,44.8,69.5],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"symbolic_route","length_km":5954.4},
+    "dan-to-beersheba-v1": {"geometry_version":"v1","geometry_type":"Polygon","bbox":[34.55,31.05,35.65,33.55],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"approximate_reconstruction","area_sq_km":18697.0,"perimeter_km":646.0},
+    "numbers-34-v1": {"geometry_version":"v1","geometry_type":"Polygon","bbox":[33.8,30.63,37.23,34.32],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"sourced_textual_reconstruction","area_sq_km":47901.7,"perimeter_km":1159.7},
+    "genesis-15-river-to-river-v2": {"geometry_version":"v2","geometry_type":"Polygon","bbox":[33.8,30.3,41.4,36.7],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"sourced_textual_reconstruction","area_sq_km":85671.0,"perimeter_km":2040.7},
+    "genesis-15-nile-to-euphrates-v1": {"geometry_version":"v1","geometry_type":"Polygon","bbox":[31.05,29.7,41.5,36.8],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"sourced_textual_reconstruction","area_sq_km":145907.6,"perimeter_km":2641.0},
+    "greater-israel-nile-euphrates-v2": {"geometry_version":"v2","geometry_type":"Polygon","bbox":[31.05,29.2,44.7,36.8],"component_count":1,"method":"spherical-haversine-chamberlain-v1","measurement_policy":"sourced_ideological_scenario","area_sq_km":578289.3,"perimeter_km":3340.6}
   }
 }
