@@ -3,6 +3,7 @@
 from __future__ import annotations
 import json,re
 from pathlib import Path
+from house_public_surfaces import generated_public_route_roots
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]; WARNINGS=[]
 
 REQUIRED_BRANCHES={'tim','son','spirit','transformation','cosmology','body','traditions','north','world','timeline','works','sources'}
@@ -100,13 +101,15 @@ def main():
     if len(ri)!=len(set(ri)):ERRORS.append('Religious lexicon contains duplicate IDs')
     if set(pi)&set(ri):ERRORS.append('Political and religious lexicons contain colliding IDs')
 
+    generated_roots=generated_public_route_roots(ROOT)
     ref=re.compile(r'''(?:href|src)=["']([^"'#?]+)["']''',re.I)
     for h in ROOT.glob('*.html'):
         for x in ref.findall(h.read_text(encoding='utf-8',errors='replace')):
             if x.startswith(('http:','https:','mailto:','javascript:','data:')) or '${' in x:continue
             t=(ROOT/x).resolve()
-            try:t.relative_to(ROOT.resolve())
+            try:rel=t.relative_to(ROOT.resolve())
             except ValueError:continue
+            if rel.parts and rel.parts[0] in generated_roots:continue
             if not t.exists():WARNINGS.append(f'Local HTML reference does not exist: {h.name} → {x}')
 
     print(f'Manifest root: {manifest.get("root",{}).get("id","?")} · branches: {len(manifest.get("branches",[]))}')
