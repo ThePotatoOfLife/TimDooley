@@ -38,8 +38,13 @@ def main() -> int:
     if source.get("provider") != "ESA WorldCover": errors.append("land cover provider must be ESA WorldCover")
     if "2021" not in str(source.get("dataset", "")) or "v200" not in str(source.get("version", "")):
         errors.append("land cover must pin WorldCover 2021 v200")
-    if "WMS" not in str(source.get("delivery", "")):
+    delivery = str(source.get("delivery", ""))
+    if "WMS" not in delivery:
         errors.append("land cover must document WMS delivery")
+    if CURRENT_LAYER not in delivery:
+        errors.append("land cover manifest must name the current Terrascope WorldCover layer")
+    if "WORLDCOVER_2021_MAP" in delivery:
+        errors.append("land cover manifest must not advertise the retired WorldCover layer identifier")
 
     if not LAND.exists():
         errors.append("missing world-map/3d-physical-land-cover.js")
