@@ -1,9 +1,9 @@
 {
   "id": "public-statement-root-manifest",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-15",
   "model": "rooted-spiral",
-  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, Development Threads, persistence tests, and deterministic reference projections.",
+  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, Development Threads, persistence tests, dated role/title mention observations, and deterministic reference projections.",
   "cycle": [
     "root",
     "spiral",
@@ -12,7 +12,7 @@
     "consolidation",
     "next_spiral"
   ],
-  "ownership_rule": "Source ledgers own captured wording and provenance. Existing Bible relation files own comparison interpretation. This manifest owns reconciliation, rooted identity, structural traversal, function-thread, persistence-testing, and reference-projection contracts. Generated Root, Discovery Frontier, Episode, Bible projection, and Development Thread files must be rebuilt rather than hand-edited.",
+  "ownership_rule": "Source ledgers own captured wording and provenance. Existing Bible relation files own comparison interpretation. This manifest owns reconciliation, rooted identity, structural traversal, function-thread, persistence-testing, literal role/title observation, and reference-projection contracts. Generated Root, Discovery Frontier, Episode, Bible projection, Development Thread, and Role Mention files must be rebuilt rather than hand-edited.",
   "evidence_sources": [
     "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
     "data/evidence/rational-potato-x-timestamped-ledger-2025-2026.json"
@@ -23,7 +23,8 @@
   ],
   "structural_sources": [
     "data/evidence/public-statement-episode-definitions.json",
-    "data/evidence/public-statement-development-thread-definitions.json"
+    "data/evidence/public-statement-development-thread-definitions.json",
+    "data/evidence/public-statement-role-mention-definitions.json"
   ],
   "comparison_sources": [
     "knowledge/traditions/public-x-biblical-occurrence-relations-01-09.json",
@@ -35,13 +36,15 @@
     "discovery_frontier": "scripts/build_public_statement_discovery_frontier.py",
     "episodes": "scripts/build_public_statement_episodes.py",
     "bible_projection": "scripts/build_public_statement_bible_projection.py",
-    "development_threads": "scripts/build_public_statement_development_threads.py"
+    "development_threads": "scripts/build_public_statement_development_threads.py",
+    "role_mentions": "scripts/build_public_statement_role_mentions.py"
   },
   "validators": [
     "scripts/validate_public_statement_evidence_root.py",
     "scripts/validate_public_statement_episodes.py",
     "scripts/validate_public_statement_bible_projection.py",
     "scripts/validate_public_statement_development_threads.py",
+    "scripts/validate_public_statement_role_mentions.py",
     "scripts/validate_public_statement_rooted_stack.py"
   ],
   "generated_outputs": [
@@ -49,7 +52,8 @@
     "data/evidence/public-statement-discovery-frontier.json",
     "data/evidence/public-statement-episodes.json",
     "data/evidence/public-statement-bible-projection.json",
-    "data/evidence/public-statement-development-threads.json"
+    "data/evidence/public-statement-development-threads.json",
+    "data/evidence/public-statement-role-mentions.json"
   ],
   "root_invariants": [
     "Exact captured wording is never rewritten by reconciliation.",
@@ -68,7 +72,9 @@
     "Every Development Thread attestation records the exact terms that caused membership.",
     "Function threads remain separate from actor/title assignments and carry no interpretive claims while candidate.",
     "Persistence tests measure recurrence and coverage only; passing them never changes candidate status automatically.",
-    "A long span alone is not enough to establish distributed persistence; burst concentration and reappearance structure remain visible separately."
+    "A long span alone is not enough to establish distributed persistence; burst concentration and reappearance structure remain visible separately.",
+    "Role/title observations record literal dated mentions only; a mention never establishes who occupies a role.",
+    "Function-thread overlap with a role/title mention is a reference fact only and never establishes identity, equivalence, causation, or role transfer."
   ],
   "gap_types": [
     "evidence",
@@ -167,5 +173,23 @@
     },
     "promotion_rule": "Broader functional interpretation requires a later testing pass; candidate membership and persistence testing establish only explicit recurrence, temporal spread, vocabulary diversity, distribution shape, and reference coverage in the supplied corpus."
   },
-  "claim_boundary": "The Evidence Root records what was supplied, how records reconcile, and what remains unknown. It does not establish supernatural identity, prophecy fulfillment, or the truth of theological claims contained in source statements."
+  "role_mention_policy": {
+    "status": "observation-only",
+    "membership": "case-insensitive explicit literal title/role terms with word boundaries",
+    "tracked_mentions": [
+      "god",
+      "father",
+      "son",
+      "messiah",
+      "king",
+      "jesus-christ",
+      "odin"
+    ],
+    "root_index": "records which literal mention classes occur in each Root",
+    "function_overlap": "counts mention classes on Roots already belonging to Development Threads",
+    "actor_assignments": "forbidden in this layer",
+    "interpretive_claims": "forbidden in this layer",
+    "promotion_rule": "Any claim that a person occupies, transfers, inherits, or is identical with a role requires a separate later testing layer with explicit evidence and counterpressure."
+  },
+  "claim_boundary": "The Evidence Root records what was supplied, how records reconcile, which literal functions/titles recur, and what remains unknown. It does not establish supernatural identity, prophecy fulfillment, actor-role identity, role transfer, or the truth of theological claims contained in source statements."
 }
