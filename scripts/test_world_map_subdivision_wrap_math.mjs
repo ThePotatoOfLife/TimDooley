@@ -66,8 +66,8 @@ const farPartition = { west:-80, east:-70, south:-2, north:2 };
 assert.ok(distanceToMapCenterKm(farPartition) > 9000);
 assert.equal(viewportOverlaps(farPartition), false);
 
-const geoLoad = lifecycle.indexOf("loadModule?.('Geo Kernel', './3d-geo-kernel.js')");
-const subdivisionLoad = lifecycle.indexOf("loadModule?.('Subdivisions', './3d-subdivisions.js')");
+const geoLoad = lifecycle.indexOf("__potatoAtlasLoadModule?.('Geo Kernel', './3d-geo-kernel.js')");
+const subdivisionLoad = lifecycle.indexOf("__potatoAtlasLoadModule?.('Subdivisions', './3d-subdivisions.js')");
 assert.ok(geoLoad >= 0, 'panel lifecycle must load the shared Geo Kernel');
 assert.ok(subdivisionLoad >= 0, 'panel lifecycle must retain lazy Subdivisions loading');
 assert.ok(geoLoad < subdivisionLoad, 'Geo Kernel must load before Subdivisions can be promoted');
