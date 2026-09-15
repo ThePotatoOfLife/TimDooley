@@ -172,9 +172,9 @@ def main() -> int:
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
-    # Country hover now consumes the one shared transient-tooltip service. Rapid
-    # mouse movement must not let older async completions move/reopen it, and one
-    # country lookup is reused while the pointer moves within the same country.
+    # Country hover consumes the one shared transient-tooltip service. Rapid
+    # pointer movement must not let older async completions move/reopen it, and
+    # one country lookup is reused while the pointer moves within the same country.
     for token in (
         "activeKey", "latestEvent", "resolvedHtml",
         "tooltip.nextGeneration('country')", "tooltip.show('country'",
@@ -195,15 +195,16 @@ def main() -> int:
     ):
         require(tooltip, token, "world-map/3d-tooltip.js", errors)
 
-    # The early boot guard is retained as a compatibility boundary for remaining
-    # Axis/Fields/Networks popup owners until every transient hover surface migrates.
+    # Map motion is owned by the shared Tooltip Service now. The old browser-level
+    # pointer tracker and :has(.atlas-hover) CSS suppression must stay retired.
     for token in (
         "potato-atlas-pointer-dragging",
         "POINTER_DRAG_THRESHOLD_PX",
         "suppressUntilMove",
         ".maplibregl-popup:has(.atlas-hover)",
+        "pointerDragSuppressions",
     ):
-        require(boot_guard, token, "world-map/3d-boot-guard.js", errors)
+        reject(boot_guard, token, "world-map/3d-boot-guard.js", errors)
 
     # Eye and the compact country card are both top-left map surfaces. Evidence
     # owns that corner while open instead of stacking two dark panels together.
@@ -254,7 +255,7 @@ def main() -> int:
     node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, TOOLTIP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
     run_node_regression(TOOLTIP_LIFECYCLE_TEST, errors, "World Map tooltip lifecycle regression")
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
-    run_node_regression(POINTER_DRAG_ARTIFACT_TEST, errors, "World Map pointer drag artifact regression")
+    run_node_regression(POINTER_DRAG_ARTIFACT_TEST, errors, "World Map pointer-drag workaround retirement regression")
     run_node_regression(CAPITAL_OWNERSHIP_TEST, errors, "World Map capital ownership regression")
     run_node_regression(OVERLAY_OVERLAP_TEST, errors, "World Map overlay overlap regression")
     run_node_regression(BOOTSTRAP_STAGING_TEST, errors, "World Map inspection bootstrap staging regression")
@@ -266,7 +267,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · shared transient country/capital tooltip · drag-safe compatibility guard · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
+    print("Browse + Pins · shared motion-safe transient tooltip · no pointer-drag compatibility shim · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
     return 0
 
 
