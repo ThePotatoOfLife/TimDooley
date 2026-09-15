@@ -26,6 +26,7 @@ These capabilities are established enough to build on:
 - persistent country selection / active country;
 - layer registry and compositor foundation;
 - render-stack ordering;
+- centralized style-generation restoration and generation diagnostics;
 - active-view model;
 - current/as-of/compare-date time foundation;
 - evidence/Eye inspection;
@@ -84,7 +85,7 @@ These capabilities are established enough to build on:
 
 - [ ] Add visual-channel compatibility matrix.
 - [ ] Audit every writer of country fill/pattern/outline/height.
-- [ ] Centralize style-generation restoration.
+- [x] Centralize style-generation restoration. *(Style Lifecycle owns the single active `styledata` listener; physical restorers run before Render Stack reconciliation.)*
 - [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
 - [ ] Make top-level controls increasingly question-oriented: Browse / Compare / Connections / Evidence / Time / View.
 - [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
@@ -93,7 +94,7 @@ These capabilities are established enough to build on:
 ## NEXT — VERIFICATION + OBSERVABILITY
 
 - [ ] Add real behavioral scenario tests for drag/zoom/projection/wrap/overlap/inspector transitions.
-- [ ] Track active source/layer counts and style restoration work.
+- [ ] Track active source/layer counts and style restoration work. *(Style Lifecycle generation/restore counters now exist; source/layer count telemetry remains.)*
 - [ ] Track interaction registry size and tooltip generation/stale suppression.
 - [x] Retain bounded Places/subdivision cache diagnostics.
 - [ ] Publish useful backend/map audit artifacts in CI rather than creating disposable repository state.
@@ -106,7 +107,7 @@ Drain only after unique behavior is preserved and tested:
 - [ ] `world-map/3d-selection-ui.js`
 - [ ] old Lens ownership after registry/compositor parity
 - [ ] old Atlas naming/routing remnants
-- [ ] duplicated styledata/lifecycle ownership
+- [x] duplicated styledata/lifecycle ownership
 - [ ] stale generated/retired map artifacts already represented by canonical owners
 
 ## DATA EXPANSION AFTER CONTROL-PLANE STABILITY
