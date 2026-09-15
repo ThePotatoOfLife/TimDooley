@@ -42,6 +42,16 @@
     return cleanText(clone.textContent||'');
   }
 
+  function mutationsAreInside(records,boundary){
+    const list=Array.from(records||[]);
+    if(!list.length||!boundary)return false;
+    return list.every(record=>{
+      const target=record?.target;
+      if(!target)return false;
+      return target===boundary||Boolean(boundary.contains?.(target));
+    });
+  }
+
   function configFromElement(host,doc){
     if(!host||!doc)return null;
     const data=host.dataset||{};
@@ -154,7 +164,8 @@
     doc.addEventListener('selectionchange',onSelection);
 
     const Observer=config.MutationObserver||root?.MutationObserver;
-    const observer=Observer?new Observer(()=>{
+    const observer=Observer?new Observer(records=>{
+      if(mutationsAreInside(records,host))return;
       pageHighlighter.invalidate();
       if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null}
       ensureListenButtons();
@@ -208,5 +219,5 @@
     root.document.readyState==='loading'?root.document.addEventListener('DOMContentLoaded',start,{once:true}):start();
   }
 
-  return {cleanText,buildLongformPayload,selectionInside,readableText,configFromElement,mount,autoMount};
+  return {cleanText,buildLongformPayload,selectionInside,readableText,mutationsAreInside,configFromElement,mount,autoMount};
 });

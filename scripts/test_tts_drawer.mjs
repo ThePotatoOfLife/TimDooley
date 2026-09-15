@@ -43,4 +43,11 @@ assert.ok(source.includes('function createPageHighlighter(options={})'), 'drawer
 assert.ok(source.includes("highlights.set(name,new HighlightCtor(domRange))"), 'page highlighting must use the browser Highlight API instead of rewriting article markup');
 assert.ok(source.includes("highlights?.delete?.(name)"), 'page highlighter must safely clear its named highlight');
 
+const css = fs.readFileSync(new URL('../app/tts-drawer.css', import.meta.url),'utf8');
+assert.match(css,/\.ptts-select\s+option\s*\{[^}]*background\s*:\s*#(?:111|121|141|1[0-9a-f]{5}|[0-9a-f]{6})/i,'TTS native dropdown options need an explicit dark background');
+assert.match(css,/\.ptts-select\s+option\s*\{[^}]*color\s*:\s*#(?:e|f)[0-9a-f]{5}/i,'TTS native dropdown options need an explicit readable foreground');
+assert.ok(css.includes('@media(prefers-color-scheme:light)'), 'TTS controls must support light color scheme');
+assert.match(css,/@media\(prefers-color-scheme:light\)[\s\S]*\.ptts-select\s+option\s*\{[^}]*background\s*:\s*#(?:f[0-9a-f]{5}|fff(?:fff)?)/i,'Light-mode dropdown options need an explicit light background');
+assert.match(css,/@media\(prefers-color-scheme:light\)[\s\S]*\.ptts-select\s+option\s*\{[^}]*color\s*:\s*#(?:1|2|3)[0-9a-f]{5}/i,'Light-mode dropdown options need an explicit dark foreground');
+
 console.log('tts drawer contract: ok');
