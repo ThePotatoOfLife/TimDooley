@@ -124,12 +124,11 @@ if (input) {
   input.addEventListener('input', async event => {
     renderSuggestions(await search(event.target.value, {limit:10}));
   });
-  input.addEventListener('keydown', async event => {
+  input.addEventListener('keydown', event => {
     if (event.key !== 'Enter') return;
-    const handled = await submit(event.target.value);
-    if (!handled) return;
     event.preventDefault();
     event.stopImmediatePropagation();
+    void submit(event.target.value);
   }, true);
 }
 
