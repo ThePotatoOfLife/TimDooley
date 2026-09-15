@@ -18,6 +18,16 @@ EXPECTED_SHARD_SIZE = 42
 MAX_CHAPTER_BYTES = 500_000
 REQUIRED_NUMBERS = ["1", "20", "24", "26.32", "47", "78", "125"]
 CHAPTER_FILENAME_RE = re.compile(r"^(?P<order>\d{3})--(?P<anchor>chapter-[0-9-]+)--(?P<slug>[a-z0-9-]+)\.html$")
+READER_MARKERS = [
+    'href="great-book.css"',
+    'id="gb-search"',
+    'id="gb-toc"',
+    'id="gb-document"',
+    'id="gb-status"',
+    'src="../app/great-book-reader.js"',
+    'Read the original book',
+    'Continue the Potato',
+]
 
 
 def load_json(path: Path, errors: list[str]) -> Any | None:
@@ -232,6 +242,19 @@ def validate(root: Path, allow_missing_chapters: bool = False) -> list[str]:
     for path in required_runtime:
         if not path.is_file():
             errors.append(f"missing runtime file {safe_rel(root, path)}")
+
+    public_index = gb / "index.html"
+    if public_index.is_file():
+        try:
+            public_html = public_index.read_text(encoding="utf-8")
+        except (OSError, UnicodeError) as exc:
+            errors.append(f"unreadable public reader shell: {exc}")
+        else:
+            if "Reader restoration in progress" in public_html:
+                errors.append("public Great Book route is still a restoration placeholder")
+            for marker in READER_MARKERS:
+                if marker not in public_html:
+                    errors.append(f"public Great Book reader shell missing marker: {marker}")
 
     chapter_dir = gb / "chapters"
     if chapter_dir.is_dir():
