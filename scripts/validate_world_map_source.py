@@ -12,6 +12,7 @@ import validate_world_map_scale_contract as scale_contract
 import validate_world_map_interaction_router as interaction_router
 import validate_world_map_inspector_router as inspector_router
 import validate_world_map_tooltip as tooltip
+import validate_world_map_style_lifecycle as style_lifecycle
 import validate_world_map_spatial_interaction as spatial_interaction
 import validate_world_map_subdivisions as subdivisions
 import validate_world_map_search_race as search_race
@@ -42,6 +43,9 @@ if __name__ == "__main__":
     if status:
         raise SystemExit(status)
     status = tooltip.main()
+    if status:
+        raise SystemExit(status)
+    status = style_lifecycle.main()
     if status:
         raise SystemExit(status)
     status = spatial_interaction.main()
