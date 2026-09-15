@@ -1,8 +1,8 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.1.0",
-  "updated": "2026-09-10",
+  "version": "1.2.0",
+  "updated": "2026-09-15",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
@@ -31,7 +31,9 @@
     "epistemics": "knowledge/philosophy/archive-epistemics.json",
     "source_routing": "knowledge/indexes/source-index.json",
     "inference_epiphany_method": "knowledge/indexes/inference-ledger.json",
-    "public_navigation": "manifest.json"
+    "public_navigation": "data/house/public-surfaces.json",
+    "archive_navigation": "manifest.json",
+    "frontend_projection": "data/frontend-atlas-bridge.json"
   },
   "major_domain_owners": {
     "body": "knowledge/body/body-system-master-atlas.json",
@@ -93,7 +95,7 @@
     {
       "zone": "master/synthesis proliferation",
       "risk": "Several files can sound authoritative because they contain 'master', 'framework', 'synthesis' or 'atlas' in the title.",
-      "cleanup": "Use root-system + potatoverse-master-framework + core-index/manifest as the authoritative entry chain; classify others by specialist role."
+      "cleanup": "Use root-system + potatoverse-master-framework + core-index plus the House route registry/manifest archive map as the authoritative entry chain; classify others by specialist role."
     },
     {
       "zone": "conversation recovery waves",
@@ -113,7 +115,7 @@
     {
       "zone": "root-level legacy files",
       "risk": "Older master documents at repository root may look more canonical than the newer knowledge/ architecture.",
-      "cleanup": "Treat root-level legacy research as historical/source material unless manifest or canonical index explicitly promotes it. Do not delete substantive material until its unique content is audited."
+      "cleanup": "Treat root-level legacy research as historical/source material unless canonical ownership maps explicitly promote it. Do not delete substantive material until its unique content is audited."
     }
   ],
   "safe_cleanup_targets": [
@@ -131,12 +133,12 @@
     "Specialist atlases with genuinely distinct mechanisms or schemas"
   ],
   "next_merge_sequence": [
-    "1. Reconcile core-index and manifest so every current canonical owner is reachable.",
+    "1. Reconcile public route authority, archive branch navigation and frontend projection so every current canonical owner is reachable without competing routing masters.",
     "2. Build a machine-readable promotion-status field for conversation/biblical/research wave files.",
     "3. Audit root-level legacy master files against knowledge/ owners and mark legacy/canonical status explicitly.",
     "4. Audit generated assets and obsolete UI references before deletion.",
     "5. Run integrity/build checks after structural changes.",
     "6. Only then begin deleting fully absorbed temporary files."
   ],
-  "success_test": "A newcomer should be able to start at manifest/index, reach one canonical owner for a concept, descend to specialist and source layers, and return without encountering contradictory competing masters whose roles are unexplained."
+  "success_test": "A newcomer should be able to start at a House route, descend through manifest archive branches to one canonical owner for a concept, reach specialist/source layers, and return without encountering contradictory competing masters whose roles are unexplained."
 }

@@ -1,9 +1,11 @@
 #!/usr/bin/env python3
-"""Validate synchronized internal architecture, entanglement, terrain and Hawkins layers.
+"""Validate synchronized internal architecture, route authority, archive navigation and core layers.
 
-Public navigation is owned by manifest.json. Internal architecture datasets remain
-required when they carry substantive information, but retired standalone readers
-such as hawkins.html are not part of the current contract.
+Stable public route identity is owned by data/house/public-surfaces.json.
+manifest.json owns archive branch/pathway navigation and Explore semantics.
+Internal architecture datasets remain required when they carry substantive
+information, but retired standalone readers such as hawkins.html are not part
+of the current contract.
 """
 from __future__ import annotations
 import json
@@ -23,6 +25,7 @@ def main():
     backend=load("data/backend.json")
     atlas=load("data/atlas-manifest.json")
     public=load("manifest.json")
+    surfaces=load("data/house/public-surfaces.json")
     workflow=load("data/project-workflow.json")
     tree=load("data/tree.json")
     ent=load("data/entanglement.json")
@@ -30,15 +33,19 @@ def main():
     hawkins=load("data/hawkins-scale.json")
 
     required_paths={
-        "data/backend.json","data/atlas-manifest.json","manifest.json",
+        "data/backend.json","data/atlas-manifest.json","manifest.json","data/house/public-surfaces.json",
         "data/project-workflow.json","data/tree.json","data/entanglement.json",
         "data/axis-topology.json","data/hawkins-scale.json"
     }
     for rel in required_paths:
         if not(ROOT/rel).exists():ERRORS.append(f"Missing synchronized architecture path: {rel}")
 
-    if public.get("root",{}).get("id")!="potato-of-life":ERRORS.append("Public manifest root must be potato-of-life")
-    if atlas.get("public_manifest")!="manifest.json":ERRORS.append("Atlas manifest must delegate public navigation to manifest.json")
+    if surfaces.get("authority")!="public-route-identity":ERRORS.append("House public surfaces must own public route identity")
+    if surfaces.get("primary_gateway_ids")!=["tim","religion","philosophy","science","world"]:ERRORS.append("House public gateway registry must preserve the five canonical doors")
+    if public.get("root",{}).get("id")!="potato-of-life":ERRORS.append("Archive manifest root must be potato-of-life")
+    if atlas.get("public_route_registry")!="data/house/public-surfaces.json":ERRORS.append("Atlas manifest must delegate stable route identity to data/house/public-surfaces.json")
+    if atlas.get("public_manifest")!="manifest.json":ERRORS.append("Atlas manifest must delegate archive branch/pathway navigation to manifest.json")
+    if atlas.get("frontend_projection")!="data/frontend-atlas-bridge.json":ERRORS.append("Atlas manifest must delegate backend-to-reader projection to data/frontend-atlas-bridge.json")
     retired=set(atlas.get("retired_public_contracts",[]))
     if not any("hawkins.html" in x for x in retired):WARNINGS.append("Atlas manifest does not document retired hawkins.html contract")
 
@@ -104,7 +111,6 @@ def main():
     phase_fields={"initial_state","trigger","transition","phase","constraint","attractor","outcome","reversal_condition"}
     if not phase_fields.issubset(set(ent.get("trajectory_model",{}).get("fields",[]))):ERRORS.append("Trajectory model lacks required phase-transition fields")
 
-    # Validate the current workflow contract rather than retired phase names.
     workflow_ids={p.get("id") for p in workflow.get("phases",[]) if isinstance(p,dict)}
     required_phases={"audit","prune","canonicalize","deepen","world","relationships","religion-texts","north-programme","potatoism-canon","spiritual-inquiry","systems","entanglement","comparative","evidence","website","release-audit"}
     missing=required_phases-workflow_ids
