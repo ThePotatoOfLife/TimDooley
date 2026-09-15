@@ -46,3 +46,8 @@ def test_provenance_keeps_each_contributing_source_occurrence():
     result = reconcile_records(rows)
     assert result[0]["source_occurrence_ids"] == ["old-1", "new-1"]
     assert len(result[0]["provenance"]) == 2
+
+
+def test_reconciliation_is_independent_of_input_order():
+    rows = load_fixture()["status_id_merge"]
+    assert reconcile_records(rows) == reconcile_records(list(reversed(rows)))
