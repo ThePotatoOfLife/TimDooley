@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 HYDRO = ROOT / "world-map" / "3d-physical-hydrology.js"
 RUNTIME = ROOT / "world-map" / "3d-physical-layers.js"
+DEDUPE = ROOT / "scripts" / "validate_world_map_hydrology_dedupe.py"
 
 
 def main() -> int:
@@ -55,17 +56,27 @@ def main() -> int:
             "__potatoAtlasHydrology",
             "enable",
             "disable",
+            "hydrologyRequestKey",
+            "shouldSkipHydrologyRequest",
+            "hydrologyDeduplicatedRefreshes",
         ):
             if token not in text: errors.append(f"hydrology module missing {token}")
         if "new MutationObserver(" in text or "setInterval(" in text:
             errors.append("hydrology module must not poll or observe the DOM")
-        if "map.getZoom() < MIN_ZOOM" not in text:
+        if "map.getZoom() < MIN_ZOOM" not in text and "zoom < MIN_ZOOM" not in text:
             errors.append("hydrology requests must be blocked below regional zoom")
         node = shutil.which("node")
         if node:
             result = subprocess.run([node, "--check", str(HYDRO)], capture_output=True, text=True)
             if result.returncode:
                 errors.append("hydrology JavaScript syntax failed: " + (result.stderr.strip() or result.stdout.strip()))
+
+    if DEDUPE.exists():
+        result = subprocess.run([sys.executable, str(DEDUPE)], capture_output=True, text=True)
+        if result.returncode:
+            errors.append("hydrology request-dedupe contract failed: " + (result.stdout.strip() or result.stderr.strip()))
+    else:
+        errors.append("missing hydrology request-dedupe validator")
 
     if RUNTIME.exists() and "__potatoAtlasHydrology" not in RUNTIME.read_text(encoding="utf-8", errors="replace"):
         errors.append("physical runtime missing hydrology controller marker")

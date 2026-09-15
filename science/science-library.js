@@ -33,6 +33,20 @@
     populateSelect(type,rows.map(row=>row.dataset.type).filter(Boolean),'All document types');
   }
 
+  function addResearchPath(){
+    const library=document.querySelector('.science-library');
+    if(!library||document.getElementById('science-research-path')) return;
+    const section=document.createElement('section');
+    section.id='science-research-path';
+    section.className='science-inquiry';
+    section.setAttribute('aria-label','Research path');
+    section.innerHTML=`
+      <article class="question-stub"><h2>How does a question become a research object?</h2><div><p>Move through observation → relation → model → comparator → test → record. Each step makes assumptions and evidence boundaries easier to inspect.</p></div></article>
+      <article class="question-stub"><h2>Where can I follow that development?</h2><div><p><a href="../timeline/?tl_layers=roadmap,formalization&amp;tl_detail=1">Open the research and formalization timeline →</a></p></div></article>
+    `;
+    library.parentNode.insertBefore(section,library);
+  }
+
   function matchesSearch(row,tokens){
     if(!tokens.length) return true;
     const haystack=(row.dataset.search||row.textContent||'').toLowerCase();
@@ -61,6 +75,7 @@
     if(empty) empty.hidden=shown!==0;
   }
 
+  addResearchPath();
   prepareFilters();
   [search,field,type].filter(Boolean).forEach(control=>{
     control.addEventListener(control===search?'input':'change',draw);

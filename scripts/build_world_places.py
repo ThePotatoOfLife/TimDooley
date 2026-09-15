@@ -16,6 +16,14 @@ FIELDS = (
     "admin3_code", "admin4_code", "population", "elevation", "dem", "timezone",
     "modification_date",
 )
+RUNTIME_BUDGET = {
+    "partition_max_bytes": 2_097_152,
+    "rendered_max_partitions": 2,
+    "cache_max_partitions": 6,
+    "cache_max_bytes": 8_388_608,
+    "global_major_max_bytes": 5_242_880,
+    "global_major_max_features": 5000,
+}
 
 
 def country_maps(path: Path) -> tuple[dict[str, str], dict[str, str]]:
@@ -180,6 +188,58 @@ def choose_global_major(features: list[dict]) -> list[dict]:
     return sorted(chosen.values(), key=lambda feature: (feature["properties"]["country_iso3"], feature["properties"]["name"]))
 
 
+def place_type(properties: dict) -> str:
+    if properties.get("is_national_capital") or properties.get("capital_status") == "national":
+        return "Capital"
+    population = properties.get("population")
+    if population is not None and int(population) < 50_000:
+        return "Town"
+    return "City"
+
+
+def compact_search_records(features: list[dict]) -> list[dict]:
+    ranked = sorted(
+        features,
+        key=lambda feature: (
+            -(int((feature.get("properties") or {}).get("population") or 0)),
+            str((feature.get("properties") or {}).get("country_iso3") or ""),
+            str((feature.get("properties") or {}).get("name") or ""),
+            str((feature.get("properties") or {}).get("id") or ""),
+        ),
+    )
+    rank_by_id = {
+        str((feature.get("properties") or {}).get("id") or ""): rank
+        for rank, feature in enumerate(ranked, start=1)
+    }
+    records: list[dict] = []
+    for feature in features:
+        props = feature.get("properties") or {}
+        place_id = str(props.get("id") or "")
+        iso3 = str(props.get("country_iso3") or "").upper()
+        aliases = []
+        seen_aliases: set[str] = set()
+        for value in [props.get("ascii_name"), *(props.get("aliases") or [])]:
+            alias = str(value or "").strip()
+            key = alias.casefold()
+            if not alias or key == str(props.get("name") or "").casefold() or key in seen_aliases:
+                continue
+            seen_aliases.add(key)
+            aliases.append(alias)
+            if len(aliases) >= 8:
+                break
+        records.append({
+            "id": place_id,
+            "name": props.get("name") or props.get("ascii_name") or place_id,
+            "aliases": aliases,
+            "country_iso3": iso3,
+            "type": place_type(props),
+            "capital_status": props.get("capital_status") or "none",
+            "population_rank": rank_by_id.get(place_id),
+            "partition": iso3,
+        })
+    return sorted(records, key=lambda row: (row["population_rank"] or 10**9, row["id"]))
+
+
 def write_geojson(path: Path, features: list[dict]) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     payload = {"type": "FeatureCollection", "features": features}
@@ -188,35 +248,39 @@ def write_geojson(path: Path, features: list[dict]) -> None:
 
 def build_outputs(features: list[dict], out_dir: Path, refresh_date: str, selected: set[str] | None = None) -> None:
     out_dir.mkdir(parents=True, exist_ok=True)
-    major = choose_global_major(features)
+    generated_features = [
+        feature for feature in features
+        if not selected or feature["properties"]["country_iso3"] in selected
+    ]
+    major = choose_global_major(generated_features)
     major_path = out_dir / "global-major.geo.json"
     write_geojson(major_path, major)
 
     grouped: defaultdict[str, list[dict]] = defaultdict(list)
-    for feature in features:
+    for feature in generated_features:
         grouped[feature["properties"]["country_iso3"]].append(feature)
 
     countries: dict[str, dict] = {}
     for iso3, rows in sorted(grouped.items()):
-        if selected and iso3 not in selected:
-            continue
         rel = f"countries/{iso3}.geo.json"
         path = out_dir / rel
         write_geojson(path, rows)
         countries[iso3] = {"path": rel, "count": len(rows), "bytes": path.stat().st_size}
 
     index = {
-        "schema_version": "1.0.0",
+        "schema_version": "1.1.0",
         "source": "GeoNames cities5000",
         "license": "CC BY 4.0",
         "attribution": "GeoNames",
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "dataset_refresh_date": refresh_date,
-        "total_place_count": len(features),
+        "total_place_count": len(generated_features),
+        "runtime_budget": dict(RUNTIME_BUDGET),
         "global_major": {"path": "global-major.geo.json", "count": len(major), "bytes": major_path.stat().st_size},
         "countries": countries,
+        "search_records": compact_search_records(generated_features),
     }
-    (out_dir / "index.json").write_text(json.dumps(index, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    (out_dir / "index.json").write_text(json.dumps(index, ensure_ascii=False, separators=(",", ":")) + "\n", encoding="utf-8")
 
 
 def resolve_inputs(args: argparse.Namespace, parser: argparse.ArgumentParser) -> tuple[Path, Path, Path, str]:

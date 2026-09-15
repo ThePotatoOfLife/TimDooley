@@ -10,7 +10,7 @@ button.title = 'Inspect source provenance, observation dates and epistemic layer
 toolbar.insertBefore(button, anchor);
 
 const style = document.createElement('style');
-style.textContent = `.evidence-eye{position:absolute;left:12px;top:12px;z-index:5;width:min(470px,calc(100% - 24px));max-height:72%;overflow:auto;background:#080b0bf2;border:1px solid var(--line);border-radius:10px;padding:11px}.evidence-eye[hidden]{display:none}.evidence-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.evidence-section{margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}.evidence-kv{display:grid;grid-template-columns:115px minmax(0,1fr);gap:4px 8px;padding:3px 0;font-size:11px}.evidence-kv span:first-child{color:var(--muted)}.evidence-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 6px;margin:2px 2px 2px 0;font-size:10px}.evidence-observed{border-color:#4f8064}.evidence-project{border-color:#8c7350}.evidence-source{font:10px/1.35 ui-monospace,monospace;overflow-wrap:anywhere}.evidence-time-warning{border-left:3px solid #8c7350;background:#171410;padding:6px 8px;margin:5px 0;font-size:10px;color:#d9cfbd}@media(max-width:900px){.evidence-eye{position:fixed;left:10px;right:10px;top:76px;width:auto;max-height:54vh}}`;
+style.textContent = `.evidence-eye{position:absolute;left:12px;top:12px;z-index:8;width:min(470px,calc(100% - 24px));max-height:72%;overflow:auto;background:#080b0bf2;border:1px solid var(--line);border-radius:10px;padding:11px}.evidence-eye[hidden]{display:none}.evidence-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.evidence-section{margin-top:10px;padding-top:8px;border-top:1px solid var(--line)}.evidence-kv{display:grid;grid-template-columns:115px minmax(0,1fr);gap:4px 8px;padding:3px 0;font-size:11px}.evidence-kv span:first-child{color:var(--muted)}.evidence-tag{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:2px 6px;margin:2px 2px 2px 0;font-size:10px}.evidence-observed{border-color:#4f8064}.evidence-project{border-color:#8c7350}.evidence-source{font:10px/1.35 ui-monospace,monospace;overflow-wrap:anywhere}.evidence-time-warning{border-left:3px solid #8c7350;background:#171410;padding:6px 8px;margin:5px 0;font-size:10px;color:#d9cfbd}@media(max-width:900px){.evidence-eye{position:fixed;left:10px;right:10px;top:76px;width:auto;max-height:54vh}}`;
 document.head.appendChild(style);
 
 const box = document.createElement('section');
@@ -21,6 +21,29 @@ document.querySelector('.mapwrap').appendChild(box);
 
 let cache = null;
 let renderedCode = null;
+let countryCardWasVisible = false;
+
+function suspendCountryCard() {
+  const card = document.getElementById('atlasCountryCard');
+  if (box.hidden) countryCardWasVisible = Boolean(card && !card.hidden);
+  if (card) card.hidden = true;
+  return countryCardWasVisible;
+}
+
+function restoreCountryCard() {
+  const shouldRestore = countryCardWasVisible;
+  countryCardWasVisible = false;
+  if (!shouldRestore) return false;
+  const api = window.__potatoAtlasCountryCard;
+  if (api?.render) {
+    void api.render();
+    return true;
+  }
+  const card = document.getElementById('atlasCountryCard');
+  if (!card) return false;
+  card.hidden = false;
+  return true;
+}
 
 async function fetchJson(url) {
   const response = await fetch(url);
@@ -86,10 +109,12 @@ function metricRow(label, value) {
 function closeEvidence() {
   box.hidden = true;
   button.classList.remove('active');
+  restoreCountryCard();
 }
 window.closeAtlasEvidence = closeEvidence;
 
 async function renderEvidence() {
+  suspendCountryCard();
   const code = selectedCode();
   renderedCode = code;
   if (!code) {
@@ -173,7 +198,8 @@ window.addEventListener('atlas-time-change', window.refreshAtlasEvidence);
 window.addEventListener('potato-atlas-selection-change', refreshIfSelectionChanged);
 window.addEventListener('potato-atlas-working-selection-change', refreshIfSelectionChanged);
 window.addEventListener('potato-atlas-panel-rendered', refreshIfSelectionChanged);
+window.addEventListener('potato-atlas-country-card-rendered', () => { if (!box.hidden) suspendCountryCard(); });
 
-// Compatibility note for the historical static contract: this module previously
-// used a new MutationObserver. Panel lifecycle observation is now centralized in
-// 3d-ui.js so Eye no longer creates its own DOM watcher.
+// Compatibility note for the historical static contract: panel lifecycle
+// observation is centralized in 3d-panel-lifecycle.js; Eye consumes events and
+// does not create its own DOM watcher.

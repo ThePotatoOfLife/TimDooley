@@ -53,6 +53,12 @@ function addLayers(map,geo,cfg){
   map.addLayer({id:FILL_ID,type:'fill',source:SOURCE_ID,filter:viewFilter(DEFAULT_VIEW),paint:{'fill-color':allColorExpression(cfg),'fill-opacity':viewOpacity(DEFAULT_VIEW)}},before);
   map.addLayer({id:LINE_ID,type:'line',source:SOURCE_ID,filter:viewFilter(DEFAULT_VIEW),paint:{'line-color':allColorExpression(cfg),'line-width':['interpolate',['linear'],['zoom'],0,.55,4,1.15,7,1.8],'line-opacity':.76}},before);
 }
+function syncLegendVisibility(){
+  const legend=document.getElementById('axisFieldLegend');if(!legend)return;
+  const visible=activeView!=='off'&&!historicalSuppressed;
+  legend.hidden=!visible;
+  window.__potatoAtlasUILayout?.setVisible?.('axis-field-legend',visible);
+}
 function applyView(map,cfg,view,{writeUrl=true}={}){
   activeView=view;
   const visible=view!=='off'&&!historicalSuppressed;
@@ -61,13 +67,17 @@ function applyView(map,cfg,view,{writeUrl=true}={}){
     map.setFilter(FILL_ID,viewFilter(view));map.setFilter(LINE_ID,viewFilter(view));
     map.setPaintProperty(FILL_ID,'fill-color',viewColor(view,cfg));map.setPaintProperty(LINE_ID,'line-color',viewColor(view,cfg));map.setPaintProperty(FILL_ID,'fill-opacity',viewOpacity(view));
   }
+  syncLegendVisibility();
   if(writeUrl){const url=new URL(location.href);if(view===DEFAULT_VIEW)url.searchParams.delete('field');else url.searchParams.set('field',view);history.replaceState(null,'',url);}
 }
 function installLegend(cfg){
   if(document.getElementById('axisFieldLegend'))return;
   const wrap=document.querySelector('.mapwrap');if(!wrap)return;
   const legend=document.createElement('div');legend.id='axisFieldLegend';legend.style.cssText='position:absolute;left:12px;top:12px;z-index:2;background:#080b0be8;border:1px solid #283333;border-radius:9px;padding:8px 10px;font-size:11px;max-width:430px;pointer-events:none';
-  legend.innerHTML=['north','west','east','south','center','brics'].map(k=>{const p=cfg.palette[k];return`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:10px"><i style="width:9px;height:9px;border-radius:50%;background:${esc(p.color)}"></i>${esc(p.label)}</span>`}).join('')+'<div style="margin-top:5px;color:#aab4aa">solid = stronger recovered assignment · faint = hinge / provisional / future · Center = convergence, not territory</div>';wrap.appendChild(legend);
+  legend.innerHTML=['north','west','east','south','center','brics'].map(k=>{const p=cfg.palette[k];return`<span style="display:inline-flex;align-items:center;gap:5px;margin-right:10px"><i style="width:9px;height:9px;border-radius:50%;background:${esc(p.color)}"></i>${esc(p.label)}</span>`}).join('')+'<div style="margin-top:5px;color:#aab4aa">solid = stronger recovered assignment · faint = hinge / provisional / future · Center = convergence, not territory</div>';
+  const layout=window.__potatoAtlasUILayout;
+  if(layout?.register)layout.register({id:'axis-field-legend', zone:'left-status', element:legend, priority:45});else wrap.appendChild(legend);
+  syncLegendVisibility();
 }
 function installControl(map,cfg){
   if(document.getElementById('axisFieldView'))return;
@@ -80,7 +90,7 @@ function setHistoricalSuppressed(on){
   const select=document.getElementById('axisFieldView');
   if(select){select.disabled=historicalSuppressed;select.title=historicalSuppressed?'Current project-field snapshot hidden in historical mode until a dated field snapshot is available':'Project fields and convergence view';}
   if(installedMap&&installedCfg)applyView(installedMap,installedCfg,activeView,{writeUrl:false});
-  const legend=document.getElementById('axisFieldLegend');if(legend)legend.hidden=historicalSuppressed;
+  syncLegendVisibility();
 }
 function roleLabel(r){return({primary:'primary/recovered',overlap:'overlap',hinge:'hinge',provisional:'provisional',future:'future/reconnection'}[r]||r);}
 function installInteractions(map){

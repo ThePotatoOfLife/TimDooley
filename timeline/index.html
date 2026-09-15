@@ -10,13 +10,24 @@
 <link rel="stylesheet" href="../app/timeline.css">
 <link rel="stylesheet" href="../app/timeline-enhancements.css">
 <style>
-.page{max-width:1180px;margin:auto;padding:38px 20px 96px}.nav{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}.nav a{color:var(--muted,#9fa79d);text-decoration:none}.nav a:hover{color:#b8dc82}.page h1{font-size:clamp(3rem,8vw,6.4rem);line-height:.9;margin-bottom:16px}.summary{max-width:820px;margin:0 0 38px;color:#cdd3c8;font:400 20px/1.5 Georgia,serif}
+.page{max-width:1180px;margin:auto;padding:38px 20px 96px}.nav{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:42px}.nav a{color:var(--muted,#9fa79d);text-decoration:none}.nav a:hover{color:#b8dc82}.page h1{font-size:clamp(3rem,8vw,6.4rem);line-height:.9;margin-bottom:16px}.summary{max-width:820px;margin:0 0 26px;color:#cdd3c8;font:400 20px/1.5 Georgia,serif}.paths{max-width:1080px;margin:0 0 36px;border-top:1px solid rgba(127,127,127,.25);border-bottom:1px solid rgba(127,127,127,.25);padding:18px 0}.paths h2{font-size:1rem;letter-spacing:.08em;text-transform:uppercase;margin:0 0 12px;opacity:.8}.path-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:9px}.path-grid a{display:block;border:1px solid rgba(127,127,127,.24);padding:12px 13px;text-decoration:none}.path-grid strong{display:block;margin-bottom:4px}.path-grid span{font-size:.88rem;opacity:.72;line-height:1.35}
 </style>
 </head>
 <body><main class="page">
-<nav class="nav"><a href="../">← Home</a><a href="../religion/">Religion</a><a href="../tim-dooley/">Tim Dooley</a><a href="../science/">Science</a></nav>
+<nav class="nav"><a href="../">← Home</a><a href="../religion/">Religion</a><a href="../tim-dooley/">Tim Dooley</a><a href="../science/">Science</a><a href="../tim-dooley/story/">Story</a></nav>
 <h1>THE LONG<br>TURNING</h1>
 <p class="summary">One timeline. Toggle Son, Tim, public witness, scripture-at-time, later biblical parallels, research, creative work and date ranges here.</p>
+<section class="paths" aria-labelledby="timeline-paths-title">
+<h2 id="timeline-paths-title">Follow a development</h2>
+<div class="path-grid">
+<a href="./?tl_layers=roadmap,creative&amp;tl_actors=tim&amp;tl_detail=1"><strong>Creative work</strong><span>Keep making, projects and creative events visible.</span></a>
+<a href="./?tl_layers=roadmap,direct-words,public-witness&amp;tl_actors=tim&amp;tl_detail=1"><strong>Public trajectory</strong><span>Focus on dated public wording and witness material.</span></a>
+<a href="./?tl_layers=roadmap,formalization&amp;tl_detail=1"><strong>Research &amp; formalization</strong><span>Follow when concepts become models, papers or structured research.</span></a>
+<a href="./?tl_q=North&amp;tl_detail=1"><strong>North through time</strong><span>Search North-related records across the full chronology.</span></a>
+<a href="./?tl_q=build&amp;tl_detail=1"><strong>Building through time</strong><span>Search construction, project and cultivation language.</span></a>
+<a href="./?tl_layers=roadmap,scripture-at-time,biblical-parallel,biblical-unlock&amp;tl_detail=1"><strong>Comparison through time</strong><span>Separate at-the-time material from later comparative research.</span></a>
+</div>
+</section>
 <section class="timeline-explorer-standalone" aria-label="Interactive layered timeline"></section>
 </main>
 <script src="../app/timeline.js"></script>

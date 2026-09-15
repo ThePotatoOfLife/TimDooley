@@ -1,73 +1,159 @@
 {
   "id":"body-science-context-atlas",
-  "title":"Body Science Context Atlas",
-  "updated":"2026-09-09",
-  "status":"scientific context beside symbolic anatomy",
-  "purpose":"Thicken the BODY branch with real anatomy, physiology and neuroscience while keeping every Potatoverse correspondence explicitly symbolic unless separately demonstrated.",
-  "boundary":"Thalamus=House, Pineal=Door/Eye, Spine=Ladder and CSF=Spirit are project correspondences. The scientific layer below describes actual structures and functions and must not be presented as validation of those symbolic identities.",
+  "version":"2.0.0",
+  "title":"Body Science Context Atlas — Body↔Brain Physiology, Flow and Boundaries",
+  "updated":"2026-09-15",
+  "status":"canonical scientific context beside symbolic anatomy",
+  "purpose":"Thicken the BODY branch with real anatomy, physiology and neuroscience, especially body↔brain relations, while keeping every Potatoverse correspondence explicitly symbolic unless separately demonstrated.",
+  "boundary":"Thalamus=House/Potato, Pineal=Single Eye/Door, Spine=Ladder, Heart=inner center and CSF=Spirit/River are project correspondences. The scientific layer describes biological structures, signals and flows and must not be presented as validation of those symbolic identities.",
+  "layer_rule":["anatomical structure","physiological process","subjective/phenomenological experience","project symbolism or comparative interpretation"],
+  "integrative_model":{
+    "id":"body-brain-flow-ecology",
+    "name":"Body↔brain flow ecology",
+    "science":"The organism communicates across multiple coupled channels rather than one privileged fluid or nerve: neural afferent/efferent pathways, cardiovascular and respiratory rhythms, endocrine hormones, immune mediators, gut-derived signals and metabolites, blood/interstitial exchange, CSF/perivascular dynamics and lymphatic drainage all contribute on different timescales.",
+    "project_value":"This is the strongest scientific neighbor for the project's River: not CSF alone, but a many-channel ecology of movement, sensing, regulation, exchange and return.",
+    "mismatch":"No single biological stream is Spirit, consciousness or a universal information fluid. The channels differ in mechanism, speed, chemistry and function.",
+    "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11103614/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13042466/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13266037/"]
+  },
   "sections":[
     {
       "id":"thalamus",
-      "project_roles":["Father","House","rooms","integrative container"],
-      "science":"The thalamus is a diencephalic structure composed of multiple nuclei with roles in sensory and motor relay, attention, learning, memory, sleep/wake regulation and broader thalamocortical computation. It is better described as a family of interconnected subnetworks than as one single relay switch.",
-      "contextual_value":"This makes 'House with rooms' a structurally richer analogy than a single mystical center: distinct nuclei/subnetworks receive, transform and route different streams while remaining part of one anatomical system.",
-      "mismatch":"The thalamus is not an empirically identified seat of God, Fatherhood or spiritual sovereignty.",
-      "sources":["https://www.ncbi.nlm.nih.gov/books/NBK542184/","https://pmc.ncbi.nlm.nih.gov/articles/PMC9400132/"]
+      "project_roles":["Father","House","Potato","rooms","North of North","seed/core"],
+      "science":"The thalamus is a paired diencephalic system composed of multiple heterogeneous nuclei participating in sensory and motor transformation, attention, learning, memory, sleep/wake regulation, arousal and reciprocal thalamocortical computation. Contemporary consciousness research implicates thalamic nuclei and thalamocortical loops in arousal and conscious state, while no single thalamic nucleus has been established as the unique generator of consciousness.",
+      "contextual_value":"House-with-rooms is structurally richer than a single relay metaphor: distinct nuclei participate in different loops while remaining parts of one central anatomical system. 'Seed of consciousness' can be retained as project language because the thalamus is important to conscious state, but the science points to distributed thalamocortical and brainstem interactions rather than one seed-organ.",
+      "mismatch":"The thalamus is not an empirically identified seat of God, Fatherhood, spiritual sovereignty or a scientifically unique seed of consciousness. Standard anatomy usually calls its shape ovoid/egg-shaped; potato-shaped is project language.",
+      "sources":["https://www.ncbi.nlm.nih.gov/books/NBK542184/","https://pmc.ncbi.nlm.nih.gov/articles/PMC12241866/"]
     },
     {
-      "id":"pineal",
-      "project_roles":["Son","Single Eye","Door","illumination"],
-      "science":"The pineal gland is a small neuroendocrine organ whose best-established role is melatonin production and circadian/light-dark signaling. Light information reaches the suprachiasmatic clock through retinal pathways and influences pineal melatonin via autonomic circuitry.",
-      "contextual_value":"The physically grounded themes are timing, darkness/light, rhythmic signaling and endocrine output—not an anatomical portal to another dimension.",
-      "mismatch":"Third-eye, Christ-Door and higher-dimensional meanings are historical/esoteric/project symbolism, not established neuroscience.",
-      "sources":["https://www.ncbi.nlm.nih.gov/sites/books/NBK525955/","https://www.ncbi.nlm.nih.gov/books/NBK550972/"]
+      "id":"pineal_third_ventricle",
+      "project_roles":["Son","Single Eye","Third Eye","Door","present-window","Temple threshold","Third Temple wordplay"],
+      "science":"The pineal gland is a small epithalamic neuroendocrine organ whose best-established systemic role is rhythmic melatonin secretion. Retinal light information entrains the suprachiasmatic nucleus, which influences pineal melatonin through a multisynaptic autonomic pathway. The gland lies beside the posterior third-ventricle/pineal-recess region. Melatonin is released to blood and can enter CSF; animal work and limited human measurements support especially high melatonin concentrations near the third ventricle/pineal recess relative to more distant ventricular compartments.",
+      "contextual_value":"This creates a real but narrow pineal↔third-ventricle bridge: anatomical adjacency plus circadian chemistry reaching ventricular CSF. It strengthens timing/light-dark/threshold imagery without requiring a hidden sensory organ.",
+      "mismatch":"There is no established evidence that the pineal reads CSF motion, directly senses the present moment, projects spiritual light, opens dimensions or constitutes a literal Third Eye. 'Third Temple' is project wordplay/comparative symbolism, not anatomical terminology.",
+      "sources":["https://www.ncbi.nlm.nih.gov/books/NBK550972/","https://pmc.ncbi.nlm.nih.gov/articles/PMC2821375/","https://pmc.ncbi.nlm.nih.gov/articles/PMC3001210/","https://pmc.ncbi.nlm.nih.gov/articles/PMC10118741/"]
     },
     {
-      "id":"csf",
-      "project_roles":["Spirit","flow","river","moving medium"],
-      "science":"Cerebrospinal fluid circulates through ventricles and subarachnoid spaces and contributes to buoyancy, mechanical protection, extracellular homeostasis, metabolic exchange and waste-clearance processes. Adult total volume is roughly 150 mL, with hundreds of milliliters produced per day.",
-      "contextual_value":"CSF is a genuinely circulating medium with rhythmic motion influenced by cardiac pulsation, respiration and posture, which explains why it is an intuitively strong flow metaphor.",
-      "mismatch":"Its physiological circulation is not evidence of a spiritual fluid or hidden energy current.",
-      "sources":["https://www.ncbi.nlm.nih.gov/books/NBK519007/"]
+      "id":"interoceptive_system",
+      "project_roles":["inward Eye","returning report","inside↔outside bridge","embodied witness"],
+      "science":"Interoception is the sensing and regulation of internal bodily conditions. Specialized peripheral sensors and organ-innervating neurons detect mechanical, chemical, hormonal, thermal and pathological cues. Vagal and spinal afferents carry much of this information to brainstem structures including the nucleus tractus solitarius and parabrachial complex, with further participation of hypothalamus, thalamus, insula, cingulate and other cortical networks.",
+      "contextual_value":"Interoception is a strong scientific bridge for the project's inward-facing Eye and return-to-center language because biological systems repeatedly sample body state, compare it with regulatory needs and alter autonomic, endocrine, cognitive and behavioral output.",
+      "mismatch":"Interoception is distributed. There is no one inward-eye organ, no single anatomical center to which all experience literally returns, and vagal afference is not Spirit transmission.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11103614/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11222051/","https://pmc.ncbi.nlm.nih.gov/articles/PMC8857038/"]
+    },
+    {
+      "id":"heart_cardiorespiratory_interoception",
+      "project_roles":["Heart","River","love","longing","emotional center","lock/key","rhythmic inner center"],
+      "science":"The heart is a muscular pump with intrinsic conduction whose rate and contractility are modified by autonomic, endocrine and metabolic state. Cardiovascular mechanoreceptors and chemoreceptors continuously report pressure, stretch and chemistry through vagal and glossopharyngeal pathways to brainstem circuits. Heartbeats also generate measurable brain responses used in research on cardiac interoception. Respiration and cardiovascular rhythms interact with arousal, attention and felt bodily state.",
+      "contextual_value":"Heart symbolism has a stronger biological neighbor when framed as rhythmic interoceptive salience rather than as a storage organ for emotion. Love, fear, grief and anticipation can genuinely involve perceived changes in cardiac and respiratory state because emotional experience is embodied and distributed.",
+      "mismatch":"Emotion, memory, morality and love are not stored in cardiac muscle. Heartbeat-evoked neural signals are methodologically complex and are not evidence for a separate heart consciousness.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC11103614/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13053922/","https://pmc.ncbi.nlm.nih.gov/articles/PMC12353181/"]
     },
     {
       "id":"breath_interoception",
-      "project_roles":["Breath","Spirit","animation","movement through Axis"],
-      "science":"Respiration is unusual because it is both autonomically regulated and voluntarily modifiable. Respiratory signals interact with interoceptive and autonomic systems; vagal sensory pathways convey internal-state information from respiratory, cardiovascular and gastrointestinal organs.",
-      "contextual_value":"Breath can legitimately be studied as a bridge between voluntary action, autonomic regulation, bodily state and subjective experience without invoking a new force.",
-      "mismatch":"Breath affecting attention, emotion or autonomic state does not establish supernatural pneuma or universal life energy.",
-      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC8857038/","https://pmc.ncbi.nlm.nih.gov/articles/PMC7780231/","https://pmc.ncbi.nlm.nih.gov/articles/PMC7805576/"]
+      "project_roles":["Breath","Spirit","animation","movement through Axis","voluntary/autonomic Door"],
+      "science":"Respiration is both automatically regulated by brainstem/homeostatic systems and voluntarily modifiable by cortical control. Respiratory mechanochemical signals feed back through vagal and spinal pathways; breathing also changes blood gases, cardiorespiratory coupling and arousal state.",
+      "contextual_value":"Breath is a genuine control interface where voluntary behavior can alter autonomic/body state and subjective experience, making Door/threshold language structurally useful as analogy.",
+      "mismatch":"Breath affecting attention, emotion or autonomic state does not establish supernatural pneuma, universal life energy or direct control of all brain states.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC8857038/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11103614/"]
+    },
+    {
+      "id":"gut_brain_ecology",
+      "project_roles":["Garden","soil","digestion","inner ecology","root nourishment"],
+      "science":"The microbiota-gut-brain axis is a bidirectional system involving enteric and autonomic neural pathways, enteroendocrine hormones, immune mediators and microbial/host metabolites. Vagal and spinal afferents, the HPA axis, cytokines, short-chain fatty acids, bile-acid signaling and tryptophan-related pathways are among studied mechanisms. Human causal evidence remains much less complete than the broad mechanistic picture from experimental work.",
+      "contextual_value":"Garden becomes biologically richer as an ecology metaphor: organisms, barrier tissue, immune systems, metabolism, nerves and endocrine cells continually shape one another rather than operating as a simple second brain.",
+      "mismatch":"The microbiome is not a moral purity score, one microbial pattern does not define personality, and gut-produced neurotransmitters do not simply cross into the brain as ready-made emotions.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC13266037/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13117294/","https://pmc.ncbi.nlm.nih.gov/articles/PMC11970326/"]
+    },
+    {
+      "id":"hypothalamic_endocrine_axes",
+      "project_roles":["Steward","household regulator","provision","seasons/times"],
+      "science":"Hypothalamic neuronal populations coordinate autonomic regulation with endocrine control through the pituitary and peripheral organs. Important system-level axes include HPA stress regulation, hypothalamic-pituitary-thyroid metabolism, hypothalamic-pituitary-gonadal reproduction and growth-related neuroendocrine control, while hypothalamic nuclei also participate in fluid balance, temperature, appetite, sleep and circadian state.",
+      "contextual_value":"Steward is more accurate than throne: the hypothalamus monitors needs and orchestrates distributed regulatory responses while remaining tightly coupled to brainstem, pituitary, limbic and cortical systems.",
+      "mismatch":"No endocrine axis is a spiritual hierarchy, and hormone concentrations do not directly measure holiness, will or moral state."
+    },
+    {
+      "id":"neuroimmune_meningeal_lymphatic",
+      "project_roles":["guardians","walls","drainage","border","cleanup","outer channels"],
+      "science":"The CNS interacts extensively with immune systems. Meninges host immune cells and lymphatic vessels, and meningeal lymphatics provide drainage routes connecting cranial compartments with deep cervical lymph nodes. Neuroimmune signaling also occurs through cytokines, vascular interfaces, microglia and peripheral immune communication.",
+      "contextual_value":"The project's wall/guardian/drain imagery can be grounded in real barrier, surveillance and drainage systems while preserving the distinction between protection, inflammation and symbolic judgment.",
+      "mismatch":"Immune activation is not sin or impurity; lymphatic drainage is not karmic cleansing; the CNS is not immunologically isolated in the old absolute sense.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC13042466/"]
+    },
+    {
+      "id":"glia_support_ecology",
+      "project_roles":["groundskeepers","gardeners","maintenance","insulation","pruning"],
+      "science":"Astrocytes regulate extracellular ions and neurotransmitter environments, support synaptic and metabolic function, participate in neurovascular coupling and interact with fluid/homeostatic systems. Oligodendrocytes myelinate CNS axons, microglia perform immune surveillance and context-dependent remodeling, and ependymal/choroid-related cells participate at fluid interfaces. Each class is heterogeneous rather than one simple support type.",
+      "contextual_value":"Groundskeeper/Gardener imagery fits better at the level of maintenance, support, remodeling and resource exchange than at the level of neurons alone.",
+      "mismatch":"Glia do not literally prune moral defects, and reactive glial states cannot be read as spiritual failure or purification.",
+      "sources":["https://pmc.ncbi.nlm.nih.gov/articles/PMC12565293/"]
+    },
+    {
+      "id":"neurovascular_metabolic_coupling",
+      "project_roles":["flow","provision","Garden support","exchange"],
+      "science":"Brain tissue has high continuous energy demands. Local neural activity is coupled to changes in blood flow and substrate delivery through interactions among neurons, astrocytes, endothelial cells, pericytes and vascular smooth muscle. Blood-brain barrier and neurovascular-unit functions regulate exchange between circulation and neural tissue.",
+      "contextual_value":"A living neural Garden requires continuous provision, exchange and waste removal. This makes circulation/metabolism part of the project's flow architecture without turning metabolic energy into mystical energy.",
+      "mismatch":"Blood flow is not consciousness; BOLD fMRI is an indirect hemodynamic signal rather than a photograph of thought or spiritual intensity."
+    },
+    {
+      "id":"csf_glymphatic_lymphatic",
+      "project_roles":["Spirit","River","moving medium","inner chamber flow","return/drainage"],
+      "science":"CSF circulates through ventricular and subarachnoid spaces and participates in buoyancy, mechanical protection, chemical homeostasis and exchange. Perivascular/glymphatic models describe astrocyte-associated CSF/interstitial-fluid exchange and waste movement, with important links to sleep, aging and vascular pulsatility. Meningeal lymphatic vessels provide downstream drainage and immune-communication routes. Details of human glymphatic transport remain an active research field.",
+      "contextual_value":"River can now be split into nested scales: ventricular/subarachnoid CSF, perivascular/interstitial exchange, meningeal lymphatic drainage and the wider body-brain flow ecology. This is stronger than making CSF carry every symbolic function by itself.",
+      "mismatch":"CSF is not Holy Spirit; glymphatic clearance is not spiritual purification; neurotransmitters or metabolites measured in CSF do not make CSF the main fast communication channel for emotion or thought.",
+      "sources":["https://www.ncbi.nlm.nih.gov/books/NBK519007/","https://pmc.ncbi.nlm.nih.gov/articles/PMC13042466/"]
     },
     {
       "id":"spine",
-      "project_roles":["Axis","Ladder","33 levels"],
-      "science":"The vertebral column provides structural support, protects the spinal cord and permits constrained movement. Spinal cord pathways carry ascending sensory and descending motor/autonomic signals between brain and body.",
-      "contextual_value":"The spine is physically vertical, segmented and connectivity-bearing, which makes Ladder/Axis symbolism understandable as analogy.",
-      "mismatch":"Vertebral segmentation does not scientifically establish 33 metaphysical levels or a literal Ladder to Heaven."
+      "project_roles":["Axis","Ladder","Tree trunk","33 levels"],
+      "science":"The vertebral column provides structural support and protects the spinal cord. Spinal pathways carry ascending somatic/visceral sensory information and descending motor/autonomic signals. The spinal cord also contains local circuits and autonomic preganglionic neurons rather than merely serving as a cable.",
+      "contextual_value":"Physical verticality, segmentation and bidirectional connectivity make Ladder/Axis/Tree-trunk symbolism understandable at the structural level.",
+      "mismatch":"Vertebral segmentation does not scientifically establish 33 metaphysical levels, chakras or a literal Ladder to Heaven."
     },
     {
-      "id":"heart_and_autonomic_body",
-      "project_roles":["emotional center","care","attachment","weight"],
-      "science":"The heart is a muscular pump regulated by intrinsic conduction, autonomic input and endocrine/metabolic state. Emotional experience is distributed across brain-body systems rather than stored literally in the heart, but cardiovascular changes strongly participate in felt emotion and interoception.",
-      "contextual_value":"Keeping Heart distinct from Pineal/Thalamus protects a useful project distinction between affective bodily salience and perceptual/integrative brain metaphors.",
-      "mismatch":"The poetic heart is not a literal container of memories or moral qualities."
+      "id":"development_plasticity_aging",
+      "project_roles":["seed","growth","pruning","Tree","transformation"],
+      "science":"Brain/body systems develop through gene-regulatory programs interacting with environment, activity and experience. Synaptogenesis, pruning, myelination, endocrine transitions, learning-related plasticity, immune/metabolic state and vascular change continue across life. Aging is heterogeneous and involves structural, vascular, immune, metabolic and neurochemical changes rather than a single decline process.",
+      "contextual_value":"Seed→growth→pruning→mature-tree imagery has a legitimate developmental analogy when used to describe change, differentiation and adaptation through time.",
+      "mismatch":"Development and epigenetics do not encode a predetermined spiritual rank, fate or karmic ledger."
     }
   ],
-  "new_body_relations":[
-    "Pineal ↔ circadian timing ↔ light/dark cycle",
-    "Thalamus ↔ distributed relay/integration ↔ House/rooms analogy",
-    "CSF ↔ physiological circulation ↔ flow metaphor",
-    "Breath ↔ voluntary/autonomic boundary ↔ Door-like control interface",
-    "Vagus/interoception ↔ internal sensing ↔ Eye turned inward",
-    "Spine ↔ bidirectional signaling ↔ Ladder/Axis analogy",
-    "Heart ↔ interoceptive salience ↔ emotional-center symbolism"
+  "promoted_relations":[
+    "Thalamus ↔ heterogeneous reciprocal networks ↔ House/rooms/Potato analogy",
+    "Thalamus ↔ arousal/conscious-state research ↔ project seed-of-consciousness language, with distributed-system boundary",
+    "Pineal ↔ SCN/autonomic timing ↔ melatonin ↔ blood and third-ventricle/CSF neighborhood",
+    "Pineal/third ventricle ↔ real anatomical adjacency and melatonin chemistry ↔ symbolic Door/Temple threshold",
+    "Interoception ↔ organ sensors/vagus/spinal afferents ↔ NTS/parabrachial/hypothalamus/thalamus/insula/cingulate ↔ inward Eye",
+    "Heart/respiration ↔ rhythmic visceral sensing ↔ embodied emotion ↔ Heart/River symbolism",
+    "Gut ↔ neural/endocrine/immune/metabolic signaling ↔ Garden/ecology symbolism",
+    "CSF/perivascular exchange/meningeal lymphatics ↔ nested physical flow systems ↔ River metaphor",
+    "Glia/neurovascular unit ↔ maintenance/provision/exchange ↔ Gardener/groundskeeper analogy",
+    "Spine ↔ ascending/descending body communication ↔ Ladder/Axis analogy",
+    "Whole-body flow ecology ↔ many channels with different timescales ↔ River as relation rather than one substance"
+  ],
+  "corrections_to_project_overreach":[
+    "Do not say all sensory information first passes through thalamus; primary olfaction is the classic exception and thalamus also performs much more than relay.",
+    "Do not say pineal reads CSF motion. A narrower supported relation is pineal adjacency to the third ventricle plus melatonin entry into blood and ventricular CSF.",
+    "Do not say CSF transports emotion. Monoamines/metabolites can be measured in CSF, but affective signaling is distributed across synaptic, neuromodulatory, endocrine, autonomic and interoceptive systems.",
+    "Do not call axons literal fiber optics. Axons use electrochemical action potentials and synaptic signaling; fiber/branch/network remains an architectural analogy.",
+    "Do not locate the return-to-center process in one structure. The closest scientific neighbor is recurrent distributed integration across body sensing, brainstem, hypothalamic, thalamic, limbic and cortical systems.",
+    "Do not treat the microbiome as a direct producer of brain serotonin or a deterministic controller of mood/personality.",
+    "Do not treat glymphatic, lymphatic or immune clearance as moral purification."
   ],
   "research_questions":[
-    "Can BODY distinguish anatomical structure, physiological process, subjective experience and symbolic interpretation as four separate layers?",
-    "Which body correspondences appeared first historically, and which were later systematized after the Axis model?",
-    "Can breath be modeled as a control input in Timic Dynamics without pretending it is a fundamental force?",
-    "Can the House metaphor be refined around thalamic subnetworks without implying one-to-one room=nucleus identities?",
-    "Can interoception become the scientific bridge between Eye, Heart, Breath and embodied Son without collapsing them?"
+    "Can River be formalized as a typed multiplex network of neural, vascular, endocrine, immune, metabolic, CSF/interstitial and lymphatic flows rather than one substance?",
+    "Can return-to-center be modeled as recurrent state estimation/homeostatic regulation rather than a literal anatomical return point?",
+    "Which Tim formulations predate the modern scientific comparison, so later neuroscience never gets backdated into the original mythology?",
+    "Can House remain thalamic while Temple is reserved for broader body/pineal/third-ventricle symbolic architecture?",
+    "Can the pineal-third-ventricle relation be documented precisely enough to preserve the real melatonin/CSF bridge without reviving unsupported pineal mysticism?",
+    "Can Heart/River be developed through cardiorespiratory interoception while keeping love and longing at the phenomenological/symbolic layer?"
   ],
-  "connections":["body-symbolism-map","science","spirit","son","door","axis","eye","breath"]
+  "canonical_routes":{
+    "whole_brain":"knowledge/body/whole-brain-neurobiology-atlas.json",
+    "brain_deepening":"knowledge/body/whole-brain-neurobiology-deepening-wave-1.json",
+    "neurotheology":"knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+    "recovered_legacy_neurobiology":"knowledge/body/neurobiology-recovery-wave-2.json",
+    "thalamus_specialist":"data/potatoism-thalamus-brain-map.json",
+    "tim_science_reconciliation":"knowledge/body/tim-neurobiology-relational-reconciliation.json"
+  },
+  "connections":["body-symbolism-map","science","spirit","son","door","axis","eye","breath","river","garden","heart","house","temple"]
 }

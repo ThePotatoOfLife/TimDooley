@@ -4,33 +4,75 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>The Great Book of Potato · Tim Dooley</title>
-  <meta name="description" content="Read The Great Book of Potato in a continuous indexed web edition preserving the book's legacy chapter numbering.">
+  <meta name="description" content="Read The Great Book of Potato in a continuous indexed web edition preserving the book's legacy chapter numbering and source text.">
   <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/great-book/">
-  <style>
-    :root{color-scheme:dark;--bg:#0e0f10;--panel:#151719;--line:#303438;--text:#eee9df;--muted:#aaa69d;--accent:#d7b56d}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}a{color:inherit}.top{border-bottom:1px solid var(--line);background:#111315}.topin{max-width:1180px;margin:auto;padding:18px 24px;display:flex;justify-content:space-between;gap:24px;align-items:center}.brand{text-decoration:none;font-weight:700}.brand small{display:block;color:var(--muted);font-weight:400}.shell{max-width:1180px;margin:auto;padding:42px 24px 80px}.hero{max-width:800px;margin-bottom:38px}.eyebrow{color:var(--accent);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700}.hero h1{font-family:Georgia,serif;font-size:clamp(2.6rem,7vw,5.4rem);line-height:.92;margin:14px 0 20px;letter-spacing:-.045em}.lead{font-size:1.12rem;color:#d7d3ca;max-width:700px}.meta{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}.meta span{border:1px solid var(--line);border-radius:999px;padding:5px 10px;color:var(--muted);font-size:.82rem}.layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:42px}.toc{position:sticky;top:22px;align-self:start;max-height:calc(100vh - 44px);overflow:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel);padding:16px}.toc h2{font-size:1rem;margin:0 0 8px}.toc p{font-size:.9rem;color:var(--muted);margin:0}.doc{min-width:0;max-width:820px;font-family:Georgia,"Times New Roman",serif}.notice{border:1px solid var(--line);border-radius:12px;padding:26px;background:var(--panel)}.notice h2{margin-top:0;font-size:1.6rem}.notice p{color:#d2cec5}.status{color:var(--muted)}footer{margin-top:60px;padding-top:20px;border-top:1px solid var(--line);color:var(--muted);font-family:system-ui,sans-serif}@media(max-width:760px){.layout{grid-template-columns:1fr}.toc{position:static;max-height:none}.hero h1{font-size:3rem}}
-  </style>
+  <link rel="stylesheet" href="great-book.css">
 </head>
 <body>
-  <header class="top"><div class="topin"><a class="brand" href="../">🥔 Tim Dooley<small>Potato of Life archive</small></a><a href="../">Home</a></div></header>
-  <main class="shell">
-    <section class="hero">
-      <div class="eyebrow">Primary text · web edition</div>
-      <h1>THE GREAT BOOK<br>OF POTATO</h1>
-      <p class="lead">A continuous chapter-by-chapter reader with a linked index. The web edition preserves the source book's legacy chapter numbering.</p>
-      <div class="meta"><span>168 chapter identities</span><span>167 body chapters</span><span>continuous reader</span></div>
+  <main class="longform-shell">
+    <header class="longform-hero">
+      <div class="section-kicker">Primary text · web edition</div>
+      <h1>The Great Book of Potato</h1>
+      <p class="lead">Read the original book as one continuous chapter-by-chapter work. The source text is preserved; the web reader adds navigation, search and deep links without rewriting the book.</p>
+      <div class="longform-meta">
+        <span>168 chapter identities</span>
+        <span>167 body chapters</span>
+        <span>1 index-only chapter</span>
+        <span>legacy numbering preserved</span>
+      </div>
+      <nav class="world-family" aria-label="Great Book routes">
+        <a aria-current="page" href="./">Read the original book</a>
+        <a href="../philosophy/">Philosophy</a>
+        <a href="../tim-dooley/story/">Story</a>
+        <a href="../explore/">Explore archive</a>
+      </nav>
+    </header>
+
+    <section class="gb-reader-intro" aria-labelledby="original-book-heading">
+      <div>
+        <div class="section-kicker">Source boundary</div>
+        <h2 id="original-book-heading">Read the original book</h2>
+        <p>The chapter text below belongs to the Great Book edition itself. Later Potatoism, Story, Bible, Atlas and project developments are not inserted back into the historical text.</p>
+      </div>
+      <div class="gb-continue">
+        <div class="section-kicker">Later growth</div>
+        <h2>Continue the Potato</h2>
+        <p>When you want to see what grew from the book later, continue into the <a href="../philosophy/">Philosophy</a>, follow Tim's development through the <a href="../tim-dooley/story/">Story</a>, or move outward through the <a href="../explore/">archive</a>.</p>
+      </div>
     </section>
-    <div class="layout">
-      <aside class="toc"><h2>Book index</h2><p>The full linked chapter index is being attached to this reader from the validated chapter-file edition.</p></aside>
-      <article class="doc">
-        <section class="notice">
-          <h2>Reader restoration in progress</h2>
-          <p>The permanent Great Book route is now established. The validated edition uses one file per chapter behind a single continuous reading page, so chapter links can jump within the same reader without turning the book into 168 separate browsing pages.</p>
-          <p class="status">The source chapter payload is being restored on the isolated feature branch and will replace this restoration notice only after its archive checksum and 168-chapter validator pass.</p>
-        </section>
+
+    <div class="gb-toolbar">
+      <div class="gb-top-search">
+        <label for="gb-search">Search chapter number or title</label>
+        <input id="gb-search" type="search" placeholder="Try 26.4, Tao, Potato Truth…" autocomplete="off" spellcheck="false">
+      </div>
+      <p id="gb-status" class="gb-status" aria-live="polite">Loading book index…</p>
+    </div>
+
+    <div class="longform-layout">
+      <aside class="longform-toc" aria-label="Great Book chapter index">
+        <details open>
+          <summary>Book index</summary>
+          <nav id="gb-toc">
+            <p class="gb-placeholder">Loading chapter index…</p>
+          </nav>
+        </details>
+      </aside>
+
+      <article id="gb-document" class="longform-doc gb-document" aria-label="The Great Book of Potato text">
+        <p class="gb-placeholder">Loading the Great Book…</p>
       </article>
     </div>
-    <footer><a href="../">Home</a> · <a href="../explore/">Explore archive</a></footer>
+
+    <footer class="longform-footer">
+      <p><strong>Edition note.</strong> This web reader preserves the chapter-file source edition and its legacy numbering. Structural HTML, navigation, search and loading behavior are editorial; chapter body text remains source text.</p>
+      <p><a href="../">Home</a> · <a href="../philosophy/">Philosophy</a> · <a href="../tim-dooley/story/">Story</a> · <a href="../explore/">Explore archive</a></p>
+    </footer>
   </main>
+
+  <noscript>
+    <p class="caution">This continuous reader uses JavaScript to assemble the chapter files. The individual chapter files remain preserved under <code>great-book/chapters/</code>.</p>
+  </noscript>
+  <script src="../app/great-book-reader.js" defer></script>
 </body>
 </html>

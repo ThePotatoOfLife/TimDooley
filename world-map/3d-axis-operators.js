@@ -26,7 +26,9 @@ function ensureHud() {
   hud = document.createElement('div');
   hud.id = HUD_ID;
   hud.style.cssText = 'position:absolute;left:12px;top:78px;z-index:3;width:min(420px,calc(100% - 190px));background:#080b0be6;border:1px solid #304040;border-radius:10px;padding:9px 11px;backdrop-filter:blur(7px);box-shadow:0 6px 24px rgba(0,0,0,.22);font-size:11px;line-height:1.35;pointer-events:none';
-  wrap.appendChild(hud);
+  const layout = window.__potatoAtlasUILayout;
+  if (layout?.register) layout.register({ id:'axis-operator-hud', zone:'left-status', element:hud, priority:50 });
+  else wrap.appendChild(hud);
   return hud;
 }
 
