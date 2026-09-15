@@ -109,7 +109,11 @@ def validate_home_corridor(errors):
         if hrefs!=[x.lstrip('/') for x in GATEWAY_ROUTES]: errors.append(f'homepage primary routes drifted: {hrefs!r}')
 
 def validate_builder_authority(errors):
-    for path,legacy in ((DISCOVERY_BUILDER,'PRIMARY_DOORS = ('),(AUTHORITY_BUILDER,'PRIMARY_ROUTES = {')):
+    checks=(
+        (DISCOVERY_BUILDER,'PRIMARY_DOORS = (\n    ("tim"'),
+        (AUTHORITY_BUILDER,'PRIMARY_ROUTES = {\n    "tim"'),
+    )
+    for path,legacy in checks:
         text=path.read_text(encoding='utf-8',errors='replace')
         if 'from house_public_surfaces import primary_gateway_rows' not in text:
             errors.append(f'{path.name} must consume House primary_gateway_rows')
