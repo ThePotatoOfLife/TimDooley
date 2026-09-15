@@ -68,6 +68,7 @@ queueMicrotask(async () => {
   await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
   await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
+  await window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
   await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
 });
 
