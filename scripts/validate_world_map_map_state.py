@@ -56,6 +56,8 @@ def main() -> int:
         "setRelationMode",
         "mode:'current'",
         "potato-atlas-map-state-reset",
+        "atlasWorldReset",
+        "stopImmediatePropagation",
         "failed",
         "preserved",
     ), "Map State coordinator", errors)
@@ -63,13 +65,7 @@ def main() -> int:
         if forbidden in map_state:
             errors.append(f"Map State coordinator must preserve camera/projection and may not call {forbidden}")
 
-    bar = require_tokens(WORLD_BAR, (
-        "atlasWorldReset",
-        "__potatoAtlasMapState",
-        ".reset?.()",
-    ), "World Bar reset", errors)
-    if "__potatoAtlasCompositor?.reset?.()" in bar:
-        errors.append("World Bar reset must delegate to Map State coordinator, not compositor directly")
+    require_tokens(WORLD_BAR, ("atlasWorldReset",), "World Bar reset control", errors)
 
     require_tokens(LIFECYCLE, (
         "Map State",
