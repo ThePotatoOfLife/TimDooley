@@ -43,6 +43,15 @@ const mainRoot={id:'main'};
 const excludeDoc={querySelector(selector){return selector==='#main'?mainRoot:null;}};
 assert.equal(adapter.configFromElement(excludeHost,excludeDoc).excludeSelector,'.nav,.footer');
 
+const adapterSource=fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url),'utf8');
+assert.ok(adapterSource.includes('target:host'), 'longform adapter must use drawer target API');
+assert.ok(adapterSource.includes('getPayload:source'), 'longform adapter must use drawer getPayload API');
+assert.ok(adapterSource.includes('drawer?.setPayload?.(source())'), 'longform adapter must refresh with setPayload');
+assert.ok(!adapterSource.includes('updatePayload('), 'obsolete updatePayload API must not return');
+assert.ok(adapterSource.includes("className='ptts-inline-listen'"), 'readable items need explicit Listen buttons');
+assert.ok(adapterSource.includes("drawer.playSection?.('current')"), 'inline Listen must start only the current readable item');
+assert.ok(adapterSource.includes("ttsListenReady==='true'"), 'inline Listen injection must be idempotent');
+
 function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
   for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {
     assert.ok(source.includes(marker),`${name} TTS integration missing ${marker}`);
@@ -56,6 +65,9 @@ function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterS
 
 const story = fs.readFileSync(new URL('../tim-dooley/story/index.html', import.meta.url),'utf8');
 assertLongformPage(story,{name:'story',host:'id="story-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root="#story-stream"',item:'data-tts-item=".story-entry"',allLabel:'data-tts-all-label="Whole story"',currentLabel:'data-tts-current-label="Current entry"'});
+assert.ok(story.includes('Hear the full story'), 'Story must preserve its content expander');
+assert.ok(!story.includes('data-tts-item=".full-story"'), 'Hear the full story must not become a TTS trigger');
+assert.ok(!story.includes('data-tts-item="summary"'), 'Story disclosure summaries must remain silent');
 
 const philosophy = fs.readFileSync(new URL('../philosophy/index.html', import.meta.url),'utf8');
 assertLongformPage(philosophy,{name:'philosophy',host:'id="philosophy-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".journey"',item:'data-tts-item=".movement"',allLabel:'data-tts-all-label="Whole journey"',currentLabel:'data-tts-current-label="Current movement"'});
