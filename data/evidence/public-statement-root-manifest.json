@@ -1,0 +1,73 @@
+{
+  "id": "public-statement-root-manifest",
+  "version": "1.0.0",
+  "updated": "2026-09-15",
+  "model": "rooted-spiral",
+  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, and deterministic generated projections.",
+  "cycle": [
+    "root",
+    "spiral",
+    "discovery",
+    "testing",
+    "consolidation",
+    "next_spiral"
+  ],
+  "ownership_rule": "Source ledgers own captured wording and provenance. This manifest owns the reconciliation contract and stable rooted identity model. Generated Root and Discovery Frontier files are projections and must be rebuilt rather than hand-edited.",
+  "evidence_sources": [
+    "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
+    "data/evidence/rational-potato-x-timestamped-ledger-2025-2026.json"
+  ],
+  "identifier_sources": [
+    "knowledge/traditions/september-2026-x-biblical-overlap-01-10.json",
+    "knowledge/traditions/september-2026-x-biblical-overlap-11-20.json"
+  ],
+  "builders": {
+    "evidence_root": "scripts/build_public_statement_evidence_root.py",
+    "discovery_frontier": "scripts/build_public_statement_discovery_frontier.py"
+  },
+  "validators": [
+    "scripts/validate_public_statement_evidence_root.py"
+  ],
+  "generated_outputs": [
+    "data/evidence/public-statement-evidence-root.json",
+    "data/evidence/public-statement-discovery-frontier.json"
+  ],
+  "root_invariants": [
+    "Exact captured wording is never rewritten by reconciliation.",
+    "More precise time evidence may strengthen a Root without deleting weaker provenance.",
+    "Timestamp equality alone never merges statements.",
+    "Recovered external status IDs strengthen a Root without renaming its canonical ID.",
+    "Ambiguous joins remain open gaps rather than guessed matches.",
+    "Chronology is a traversal over Roots, not the canonical identity order.",
+    "Source loading order must not change canonical output."
+  ],
+  "gap_types": [
+    "evidence",
+    "chronology",
+    "relationship",
+    "role",
+    "comparator",
+    "countertext",
+    "consolidation"
+  ],
+  "current_frontier": {
+    "root_count": 134,
+    "second_precision_roots": 104,
+    "date_precision_roots": 30,
+    "secure_status_ids": 8,
+    "resolved_duplicate_groups": 7,
+    "open_gaps": 43,
+    "open_gap_breakdown": {
+      "evidence": 42,
+      "chronology": 1
+    },
+    "evidence_gap_reasons": {
+      "timestamp_precision_date_only": 30,
+      "no_statement_at_minute": 12
+    },
+    "chronology_gap_reasons": {
+      "search_coverage_gap": 1
+    }
+  },
+  "claim_boundary": "The Evidence Root records what was supplied, how records reconcile, and what remains unknown. It does not establish supernatural identity, prophecy fulfillment, or the truth of theological claims contained in source statements."
+}
