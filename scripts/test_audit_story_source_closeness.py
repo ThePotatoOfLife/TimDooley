@@ -58,32 +58,45 @@ class SourceHintTests(unittest.TestCase):
                 '<span class="source-paths">knowledge/unknown/source.json</span></p></details></article>',
                 encoding="utf-8",
             )
+            (content / "g.html").write_text(
+                '<article class="story-entry" data-story-type="side" id="note-only-retro">'
+                '<details class="source-note"><p>Source note Great Book autobiographical Chapter 24 stratum.</p></details>'
+                '</article>',
+                encoding="utf-8",
+            )
+            (content / "h.html").write_text(
+                '<article class="story-entry" data-story-type="side" id="note-only-creative">'
+                '<details class="source-note"><p>source note Great Book creative scene.</p></details>'
+                '</article>',
+                encoding="utf-8",
+            )
+            (content / "i.html").write_text(
+                '<article class="story-entry" data-story-type="side" id="note-only-public">'
+                '<details class="source-note"><p>Dated public-post compilation, 30 January 2025.</p></details>'
+                '</article>',
+                encoding="utf-8",
+            )
 
             audit = build_audit(root)
             records = {record["story_id"]: record for record in audit["records"]}
 
             self.assertEqual(records["public-post"]["mapping_status"], "hinted")
-            self.assertEqual(
-                records["public-post"]["hinted_source_classes"],
-                ["public_post_sequence"],
-            )
+            self.assertEqual(records["public-post"]["hinted_source_classes"], ["public_post_sequence"])
             self.assertEqual(records["song"]["hinted_source_classes"], ["creative_artifact"])
-            self.assertEqual(
-                records["great-book-retro"]["hinted_source_classes"],
-                ["later_autobiographical_retelling"],
-            )
-            self.assertEqual(
-                records["great-book-retro"]["event_distance"],
-                "2_later_first_person_retelling",
-            )
-            self.assertEqual(
-                records["conversation-recovery"]["hinted_source_classes"],
-                ["conversation_recovery"],
-            )
+            self.assertEqual(records["great-book-retro"]["hinted_source_classes"], ["later_autobiographical_retelling"])
+            self.assertEqual(records["great-book-retro"]["event_distance"], "2_later_first_person_retelling")
+            self.assertEqual(records["conversation-recovery"]["hinted_source_classes"], ["conversation_recovery"])
             self.assertEqual(records["blank"]["mapping_status"], "unmapped")
             self.assertEqual(records["mystery-hint"]["mapping_status"], "hinted")
             self.assertEqual(records["mystery-hint"]["hinted_source_classes"], [])
-            self.assertEqual(audit["summary"]["source_hinted"], 5)
+
+            self.assertEqual(records["note-only-retro"]["mapping_status"], "hinted")
+            self.assertEqual(records["note-only-retro"]["source_hints"], [])
+            self.assertEqual(records["note-only-retro"]["hinted_source_classes"], ["later_autobiographical_retelling"])
+            self.assertEqual(records["note-only-creative"]["hinted_source_classes"], ["great_book_literary_text"])
+            self.assertEqual(records["note-only-public"]["hinted_source_classes"], ["public_post_sequence"])
+
+            self.assertEqual(audit["summary"]["source_hinted"], 8)
             self.assertEqual(audit["summary"]["unmapped"], 1)
             self.assertEqual(audit["summary"]["hinted_but_unclassified"], 1)
             self.assertEqual(
@@ -91,8 +104,9 @@ class SourceHintTests(unittest.TestCase):
                 {
                     "conversation_recovery": 1,
                     "creative_artifact": 1,
-                    "later_autobiographical_retelling": 1,
-                    "public_post_sequence": 1,
+                    "great_book_literary_text": 1,
+                    "later_autobiographical_retelling": 2,
+                    "public_post_sequence": 2,
                 },
             )
             self.assertEqual(
@@ -102,15 +116,15 @@ class SourceHintTests(unittest.TestCase):
                     "mystery-hint",
                     "conversation-recovery",
                     "great-book-retro",
+                    "note-only-retro",
+                    "note-only-public",
+                    "note-only-creative",
                     "public-post",
                     "song",
                 ],
             )
             self.assertEqual(audit["excavation_queue"][0]["priority"], 100)
-            self.assertEqual(
-                audit["excavation_queue"][0]["recommended_next_action"],
-                "find_any_source_trail",
-            )
+            self.assertEqual(audit["excavation_queue"][0]["recommended_next_action"], "find_any_source_trail")
 
 
 if __name__ == "__main__":
