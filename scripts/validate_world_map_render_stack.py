@@ -59,6 +59,11 @@ def main() -> int:
     for forbidden in ("MutationObserver", "setInterval", "removeLayer(", "removeSource(", "setPaintProperty(", "zIndex"):
         if forbidden in render:
             errors.append(f"render stack must not own map data/paint lifecycle or arbitrary z-index state: found {forbidden}")
+    if render:
+        expected_order = ("physical-surface", "physical-line", "geography-context", "context-network", "selection-emphasis")
+        positions = [render.find(repr(slot).replace('"', "'")) for slot in expected_order]
+        if any(position < 0 for position in positions) or positions != sorted(positions):
+            errors.append("render stack must declare canonical slot order bottom-to-top")
 
     lifecycle = require_tokens(
         PANEL,
