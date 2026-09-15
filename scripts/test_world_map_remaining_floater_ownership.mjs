@@ -14,8 +14,10 @@ assert.ok(
   'left-status layout must attach registered elements itself',
 );
 assert.ok(
-  layout.includes('#atlasUILeftStatus #axisOperatorHud{width:min(420px,100%)!important}'),
-  'Axis operator HUD needs a hosted width override inside the shared status stack',
+  layout.includes('#atlasUILeftStatus #axisOperatorHud{') &&
+  layout.includes('width:min(420px,100%)!important') &&
+  layout.includes('pointer-events:none!important'),
+  'Axis operator HUD needs hosted sizing and must remain input-transparent inside the shared status stack',
 );
 
 assert.ok(
