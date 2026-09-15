@@ -120,8 +120,10 @@ def infer_source_hints(
 ) -> tuple[list[str], str | None, str | None]:
     text = " ".join([*hints, note_text]).lower()
     classes: list[str] = []
+
     if "suno" in text or "creative catalogue" in text or "creative archive" in text:
         classes.append("creative_artifact")
+
     if any(
         token in text
         for token in (
@@ -132,16 +134,38 @@ def infer_source_hints(
             "x occurrence",
             "public indexed",
             "public compilation",
+            "dated public",
+            "buy me a coffee",
         )
     ):
         classes.append("public_post_sequence")
+
     if "great-book" in text or "great book" in text:
-        if "retrospective" in text or "later retelling" in text:
+        if any(
+            token in text
+            for token in (
+                "retrospective",
+                "later retelling",
+                "autobiographical",
+                "project autobiography",
+                "project-autobiographical",
+            )
+        ):
             classes.append("later_autobiographical_retelling")
-        elif "literary" in text or "direct chapter" in text:
+        elif any(token in text for token in ("literary", "direct chapter", "creative scene", "creative/social layer")):
             classes.append("great_book_literary_text")
-    if "conversation recovery" in text or "conversation-derived" in text:
+
+    if any(
+        token in text
+        for token in (
+            "conversation recovery",
+            "conversation-derived",
+            "prior-conversation recovery",
+            "conversation archaeology",
+        )
+    ):
         classes.append("conversation_recovery")
+
     classes = sorted(set(classes))
     if not classes:
         return [], None, None
@@ -247,7 +271,9 @@ def build_audit(root: Path) -> dict:
             "lost_texture": [],
             "next_excavation": None,
         }
-        if not reg and record["source_hints"]:
+
+        has_provenance_hint = bool(record["source_hints"] or record["source_note_text"])
+        if not reg and has_provenance_hint:
             hinted_classes, event_distance, continuity = infer_source_hints(
                 record["source_hints"], record["source_note_text"]
             )
@@ -260,6 +286,7 @@ def build_audit(root: Path) -> dict:
                     "continuity": continuity,
                 }
             )
+
         if reg:
             source_ids = list(reg.get("source_ids", []))
             linked = [sources[sid] for sid in source_ids if sid in sources]
@@ -278,6 +305,7 @@ def build_audit(root: Path) -> dict:
                     "next_excavation": (reg.get("recovery_targets") or [None])[0],
                 }
             )
+
         if override:
             for key in (
                 "closest_source_ids",
@@ -292,6 +320,7 @@ def build_audit(root: Path) -> dict:
                 if key in override:
                     record[key] = override[key]
             record["mapping_status"] = "mapped"
+
         records.append(record)
 
     hinted_source_class_counts: dict[str, int] = {}
@@ -299,9 +328,7 @@ def build_audit(root: Path) -> dict:
         if record["mapping_status"] != "hinted":
             continue
         for source_class in record["hinted_source_classes"]:
-            hinted_source_class_counts[source_class] = (
-                hinted_source_class_counts.get(source_class, 0) + 1
-            )
+            hinted_source_class_counts[source_class] = hinted_source_class_counts.get(source_class, 0) + 1
 
     direct_distances = {"0_direct_contemporaneous", "1_contemporaneous_compilation"}
     summary = {
