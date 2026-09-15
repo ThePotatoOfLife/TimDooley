@@ -13,11 +13,13 @@ COMPOSITOR = ROOT / "world-map" / "3d-compositor.js"
 BRIDGE = ROOT / "world-map" / "3d-scalar-runtime-bridge.js"
 ACTIVE_VIEW = ROOT / "world-map" / "3d-active-view.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
+BOOT_GUARD = ROOT / "world-map" / "3d-boot-guard.js"
 BOOTSTRAP_STAGING_TEST = ROOT / "scripts" / "test_world_map_inspection_bootstrap_staging.mjs"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 HOVER_ARTIFACT_TEST = ROOT / "scripts" / "test_world_map_hover_artifacts.mjs"
+POINTER_DRAG_ARTIFACT_TEST = ROOT / "scripts" / "test_world_map_pointer_drag_artifacts.mjs"
 CAPITAL_OWNERSHIP_TEST = ROOT / "scripts" / "test_world_map_capital_ownership.mjs"
 OVERLAY_OVERLAP_TEST = ROOT / "scripts" / "test_world_map_overlay_overlap.mjs"
 UI = ROOT / "world-map" / "3d-ui.js"
@@ -99,6 +101,7 @@ def main() -> int:
     bridge = read(BRIDGE, errors)
     active_view = read(ACTIVE_VIEW, errors)
     bootstrap = read(BOOTSTRAP, errors)
+    boot_guard = read(BOOT_GUARD, errors)
     panel_lifecycle = read(PANEL_LIFECYCLE, errors)
     subdivisions = read(SUBDIVISIONS, errors)
     hover = read(HOVER, errors)
@@ -173,6 +176,17 @@ def main() -> int:
         require(hover, token, "world-map/3d-hover.js", errors)
     reject(hover, "showPopup(event, await countryHtml(", "world-map/3d-hover.js", errors)
 
+    # Dragging is a hard visual boundary for transient Atlas hover popups. The
+    # early boot guard owns this across country, Axis, Fields, Networks and capital
+    # hover surfaces so no dark popup/tip can appear to be dragged with geography.
+    for token in (
+        "potato-atlas-pointer-dragging",
+        "POINTER_DRAG_THRESHOLD_PX",
+        "suppressUntilMove",
+        ".maplibregl-popup:has(.atlas-hover)",
+    ):
+        require(boot_guard, token, "world-map/3d-boot-guard.js", errors)
+
     # Eye and the compact country card are both top-left map surfaces. Evidence
     # owns that corner while open instead of stacking two dark panels together.
     for token in ("function suspendCountryCard", "function restoreCountryCard", "potato-atlas-country-card-rendered"):
@@ -219,8 +233,9 @@ def main() -> int:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
+    run_node_regression(POINTER_DRAG_ARTIFACT_TEST, errors, "World Map pointer drag artifact regression")
     run_node_regression(CAPITAL_OWNERSHIP_TEST, errors, "World Map capital ownership regression")
     run_node_regression(OVERLAY_OVERLAP_TEST, errors, "World Map overlay overlap regression")
     run_node_regression(BOOTSTRAP_STAGING_TEST, errors, "World Map inspection bootstrap staging regression")
@@ -232,7 +247,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · stable async hover · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
+    print("Browse + Pins · stable async hover · drag-safe transient popups · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
     return 0
 
 
