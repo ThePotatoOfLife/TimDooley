@@ -20,18 +20,25 @@ REQUIRED_SURFACES={
 }
 WORKS_FILE=ROOT/'works/index.html'
 WORKS_MARKERS=(
-    'data-reader-surface="works"',
-    'Play &amp; Simulation',
-    'Writing &amp; Performance',
-    'Music &amp; Sound',
-    'Visual &amp; Symbolic Art',
-    'Recovered &amp; Experimental Works',
-    '../tim-dooley/',
-    '../tim-dooley/story/',
-    '../corporium/',
-    '../explore/#branch=works',
-    '../context/source-authority/',
+    'data-reader-surface="works"','Play &amp; Simulation','Writing &amp; Performance','Music &amp; Sound',
+    'Visual &amp; Symbolic Art','Recovered &amp; Experimental Works','../tim-dooley/','../tim-dooley/story/',
+    '../corporium/','../explore/#branch=works','../context/source-authority/',
 )
+HOME_FILE=ROOT/'index.html'
+HOME_CORRIDOR=(
+    '<strong>Ways in</strong>',
+    'href="tim-dooley/story/">Story</a>',
+    'href="timeline/">Timeline</a>',
+    'href="corporium/">Collection</a>',
+    'href="works/">Works</a>',
+    'href="questions/"',
+    'href="index-a-z/"',
+    'href="explore/"',
+    'href="context/source-authority/"',
+    'href="tools/tts/"',
+)
+DISCOVERY_BUILDER=ROOT/'scripts/build_discovery.py'
+AUTHORITY_BUILDER=ROOT/'scripts/build_site_authority.py'
 
 def load(path,errors):
     try:v=json.loads(path.read_text(encoding='utf-8'))
@@ -82,14 +89,32 @@ def validate_rooms(errors):
 
 def validate_works_reader(errors):
     if not WORKS_FILE.is_file():
-        errors.append('registered Works surface missing source reader: works/index.html')
-        return
+        errors.append('registered Works surface missing source reader: works/index.html'); return
     text=WORKS_FILE.read_text(encoding='utf-8',errors='replace')
     for marker in WORKS_MARKERS:
         if marker not in text: errors.append(f'works/index.html missing reader marker: {marker}')
     lower=text.lower()
     if not ('does not automatically become doctrine' in lower and 'evidence' in lower):
         errors.append('works/index.html must preserve creative-work doctrine/evidence boundary')
+
+def validate_home_corridor(errors):
+    if not HOME_FILE.is_file(): errors.append('missing homepage index.html'); return
+    text=HOME_FILE.read_text(encoding='utf-8',errors='replace')
+    for marker in HOME_CORRIDOR:
+        if marker not in text: errors.append(f'index.html missing Ways-in/utility marker: {marker}')
+    nav=re.search(r'<nav class="sections"[^>]*>(.*?)</nav>',text,flags=re.I|re.S)
+    if not nav: errors.append('index.html missing canonical sections nav')
+    else:
+        hrefs=re.findall(r'href=["\']([^"\']+)["\']',nav.group(1),flags=re.I)
+        if hrefs!=[x.lstrip('/') for x in GATEWAY_ROUTES]: errors.append(f'homepage primary routes drifted: {hrefs!r}')
+
+def validate_builder_authority(errors):
+    for path,legacy in ((DISCOVERY_BUILDER,'PRIMARY_DOORS = ('),(AUTHORITY_BUILDER,'PRIMARY_ROUTES = {')):
+        text=path.read_text(encoding='utf-8',errors='replace')
+        if 'from house_public_surfaces import primary_gateway_rows' not in text:
+            errors.append(f'{path.name} must consume House primary_gateway_rows')
+        if legacy in text:
+            errors.append(f'{path.name} must not maintain independent primary route table')
 
 def validate_surfaces(errors,rooms):
     p=load(SURFACES,errors); s=load(SURFACE_SCHEMA,errors); topology=load(TOPOLOGY,errors)
@@ -120,8 +145,7 @@ def validate_surfaces(errors,rooms):
     topology_by={x.get('surface_id'):x for x in topology_rows if isinstance(x,dict) and x.get('surface_id')}
     if len(topology_by)!=len(topology_rows): errors.append('topology contains duplicate or invalid surface_id records')
     active_ids={sid for sid,row in by.items() if row.get('status')=='active'}
-    missing_topology=sorted(active_ids-set(topology_by))
-    extra_topology=sorted(set(topology_by)-active_ids)
+    missing_topology=sorted(active_ids-set(topology_by)); extra_topology=sorted(set(topology_by)-active_ids)
     if missing_topology: errors.append('active public surfaces missing topology: '+', '.join(missing_topology))
     if extra_topology: errors.append('topology contains non-active/unknown surfaces: '+', '.join(extra_topology))
     for sid in sorted(active_ids & set(topology_by)):
@@ -129,13 +153,13 @@ def validate_surfaces(errors,rooms):
         if topo.get('canonical_route')!=row.get('canonical_route'): errors.append(f'{sid} topology route drift')
         if topo.get('surface_type')!=row.get('surface_type'): errors.append(f'{sid} topology surface_type drift')
         if topo.get('room_ids')!=row.get('primary_room_ids'): errors.append(f'{sid} topology Room drift')
-    validate_works_reader(errors)
+    validate_works_reader(errors); validate_home_corridor(errors); validate_builder_authority(errors)
     return p
 
 def main():
     errors=[]; rooms=validate_rooms(errors); validate_surfaces(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, public surfaces, topology and Works reader converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, topology, reader corridor and route authority converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
