@@ -14,9 +14,12 @@ function panelLifecycleKey() {
   const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim() || '';
   const heading = panel.querySelector(':scope > h1')?.textContent?.trim() || '';
   const selection = window.__potatoAtlasSelection?.current || {};
-  const code = String(selection.activeCode || selection.code || new URL(location.href).searchParams.get('country') || '').toUpperCase();
-  const compare = new URL(location.href).searchParams.get('compare') || '';
-  return [eyebrow, heading, code, compare, coreRevision].join('|');
+  const url = new URL(location.href);
+  const code = String(selection.activeCode || selection.code || url.searchParams.get('country') || '').toUpperCase();
+  const compare = url.searchParams.get('compare') || '';
+  const place = url.searchParams.get('place') || '';
+  const subdivision = url.searchParams.get('subdivision') || '';
+  return [eyebrow, heading, code, compare, place, subdivision, coreRevision].join('|');
 }
 
 function containsCoreHeading(node) {
