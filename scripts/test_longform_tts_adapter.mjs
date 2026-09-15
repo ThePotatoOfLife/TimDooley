@@ -23,20 +23,42 @@ assert.equal(sparse.sections[0].text,'hello world');
 assert.equal(adapter.cleanText('  Alpha\n\n Beta \t Gamma  '),'Alpha Beta Gamma');
 assert.equal(typeof adapter.mount,'function');
 
-const story = fs.readFileSync(new URL('../tim-dooley/story/index.html', import.meta.url),'utf8');
-for (const marker of [
-  'id="story-tts"',
-  'href="../../app/tts-drawer.css"',
-  'src="../../app/tts-reader.js"',
-  'src="../../app/tts-drawer.js"',
-  'src="../../app/longform-tts-adapter.js"',
-  'PotatoLongformTTS.mount',
-  "itemSelector:'.story-entry'"
-]) assert.ok(story.includes(marker),`story TTS integration missing ${marker}`);
+function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,mount,itemSelector,rootMarker}){
+  for (const marker of [host,css,reader,drawer,adapterSrc,mount,itemSelector,rootMarker]) {
+    assert.ok(source.includes(marker),`${name} TTS integration missing ${marker}`);
+  }
+  const readerPos=source.indexOf(reader);
+  const drawerPos=source.indexOf(drawer);
+  const adapterPos=source.indexOf(adapterSrc);
+  assert.ok(readerPos < drawerPos && drawerPos < adapterPos,`${name} TTS dependencies must load engine -> drawer -> longform adapter`);
+}
 
-const readerPos=story.indexOf('src="../../app/tts-reader.js"');
-const drawerPos=story.indexOf('src="../../app/tts-drawer.js"');
-const adapterPos=story.indexOf('src="../../app/longform-tts-adapter.js"');
-assert.ok(readerPos < drawerPos && drawerPos < adapterPos,'TTS dependencies must load engine -> drawer -> longform adapter');
+const story = fs.readFileSync(new URL('../tim-dooley/story/index.html', import.meta.url),'utf8');
+assertLongformPage(story,{
+  name:'story',
+  host:'id="story-tts"',
+  css:'href="../../app/tts-drawer.css"',
+  reader:'src="../../app/tts-reader.js"',
+  drawer:'src="../../app/tts-drawer.js"',
+  adapter:'src="../../app/longform-tts-adapter.js"',
+  mount:'PotatoLongformTTS.mount',
+  itemSelector:"itemSelector:'.story-entry'",
+  rootMarker:"getElementById('story-stream')"
+});
+
+const philosophy = fs.readFileSync(new URL('../philosophy/index.html', import.meta.url),'utf8');
+assertLongformPage(philosophy,{
+  name:'philosophy',
+  host:'id="philosophy-tts"',
+  css:'href="../app/tts-drawer.css"',
+  reader:'src="../app/tts-reader.js"',
+  drawer:'src="../app/tts-drawer.js"',
+  adapter:'src="../app/longform-tts-adapter.js"',
+  mount:'PotatoLongformTTS.mount',
+  itemSelector:"itemSelector:'.movement'",
+  rootMarker:"querySelector('.journey')"
+});
+assert.ok(philosophy.includes("allLabel:'Whole journey'"),'philosophy must label whole-scope reading as Whole journey');
+assert.ok(philosophy.includes("currentLabel:'Current movement'"),'philosophy must label focused scope as Current movement');
 
 console.log('longform tts adapter contract: ok');
