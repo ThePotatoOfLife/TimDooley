@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 LAYOUT = ROOT / "world-map" / "3d-ui-layout.js"
 LAYOUT_COALESCING_TEST = ROOT / "scripts" / "test_world_map_ui_layout_coalescing.mjs"
 UI_OWNERSHIP_TEST = ROOT / "scripts" / "test_world_map_ui_ownership.mjs"
+LENS_LAYOUT_TEST = ROOT / "scripts" / "test_world_map_lens_layout_ownership.mjs"
 PHYSICAL = ROOT / "world-map" / "3d-physical-layers.js"
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
@@ -51,11 +52,11 @@ def run_node(path: Path, errors: list[str], label: str) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
+    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, LENS_LAYOUT_TEST, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
-    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, PHYSICAL, PANEL_LIFECYCLE, TERRAIN):
+    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, LENS_LAYOUT_TEST, PHYSICAL, PANEL_LIFECYCLE, TERRAIN):
         check_node(path, errors)
 
     if LAYOUT.exists():
@@ -64,8 +65,8 @@ def main() -> int:
             "__potatoAtlasUILayout", "right-inspector", "left-status", "canvas-control",
             "register", "unregister", "setVisible", "getState", "refresh", "scheduleRefresh",
             "upsertRegistration", "uiLayoutRefreshes", "atlasUILeftStatus",
-            "atlasWorldContext", "atlasTimeState", "axisDepthNavigator", "axisCompactToggle",
-            "main-inspector", "world-context", "time-state", "axis-compact",
+            "atlasWorldContext", "atlasTimeState", "atlasLensLegend", "axisDepthNavigator", "axisCompactToggle",
+            "main-inspector", "world-context", "time-state", "lens-legend", "axis-compact",
             "atlas-axis-inspector-nav", "@media(max-width:900px)",
         ):
             if token not in text:
@@ -126,6 +127,7 @@ def main() -> int:
 
     run_node(LAYOUT_COALESCING_TEST, errors, "World Map UI layout coalescing regression")
     run_node(UI_OWNERSHIP_TEST, errors, "World Map UI ownership regression")
+    run_node(LENS_LAYOUT_TEST, errors, "World Map Lens layout ownership regression")
 
     validators = (
         ("render stack", RENDER_STACK_VALIDATOR, ()),
@@ -135,11 +137,7 @@ def main() -> int:
         ("land cover", LAND_COVER_VALIDATOR, ()),
         ("deserts", DESERTS_VALIDATOR, ()),
         ("hydrology", HYDROLOGY_VALIDATOR, ()),
-        # Production Places data is a separate generated-data gate. The UI/layout
-        # contract verifies that the runtime remains safe and dormant without it.
         ("places runtime", PLACES_VALIDATOR, ("--runtime-only",)),
-        # The deterministic fixture pipeline proves builder -> generated data ->
-        # data validator without depending on a live GeoNames download in CI.
         ("places fixture pipeline", PLACES_PIPELINE_VALIDATOR, ()),
     )
     for label, validator, args in validators:
