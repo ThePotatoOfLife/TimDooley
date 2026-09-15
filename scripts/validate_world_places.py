@@ -74,6 +74,9 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
         coords = geom.get("coordinates") if geom.get("type") == "Point" else None
         if not (isinstance(coords, list) and len(coords) >= 2):
             errors.append(f"global-major feature {i} must have Point coordinates")
+        for key in ("population", "population_period", "population_source", "dataset_refresh_date"):
+            if key not in props:
+                errors.append(f"global-major feature {place_id or i} missing provenance field: {key}")
         pop = props.get("population")
         if pop == 0:
             errors.append(f"global-major feature {place_id or i} uses numeric zero for missing population")
