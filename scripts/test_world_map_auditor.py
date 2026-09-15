@@ -93,6 +93,15 @@ const node = document.createElement('div'); node.id = 'atlasThing';
             proc, report = run_auditor(root, contract)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
 
+    def test_feature_state_parser_does_not_invent_ternary_value_keys(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_module(root, "3d-a.js", "map.setFeatureState({source:'countries',id:code},{atlasScalarHas:Number.isFinite(value),atlasScalarValue:Number.isFinite(value) ? value : 0});")
+            proc, report = run_auditor(root)
+            self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            resources = {row["resource"] for row in report["inventory"].get("feature_state_write", [])}
+            self.assertEqual(resources, {"feature-state:countries:atlasScalarHas", "feature-state:countries:atlasScalarValue"})
+
     def test_hover_popup_requires_atlas_hover_class(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -100,6 +109,29 @@ const node = document.createElement('div'); node.id = 'atlasThing';
             proc, report = run_auditor(root)
             self.assertEqual(proc.returncode, 1)
             self.assertTrue(any(f["code"] == "transient-popup-class-missing" for f in report["findings"]))
+
+    def test_click_popup_is_not_misclassified_by_nearby_mouseenter(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_module(root, "3d-a.js", """
+map.on('mouseenter','points',()=>map.getCanvas().style.cursor='pointer');
+map.on('mouseleave','points',()=>map.getCanvas().style.cursor='');
+map.on('click','points',event=>{
+  const popup = new maplibregl.Popup({closeButton:true}).setHTML('<b>Persistent</b>').addTo(map);
+});
+""")
+            proc, report = run_auditor(root)
+            self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            self.assertFalse(any(f["code"] == "transient-popup-class-missing" for f in report["findings"]))
+
+    def test_template_html_id_is_not_treated_as_literal_dom_owner(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_module(root, "3d-a.js", "const html = `<button id=\"${esc(asset.id)}\">x</button>`; const node=document.createElement('div'); node.id='literalId';")
+            proc, report = run_auditor(root)
+            self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            resources = {row["resource"] for row in report["inventory"].get("dom_id", [])}
+            self.assertEqual(resources, {"dom:literalId"})
 
     def test_multiple_styledata_participants_warn(self):
         with tempfile.TemporaryDirectory() as tmp:
