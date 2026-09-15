@@ -6,9 +6,25 @@ from pathlib import Path
 ROOT=Path(__file__).resolve().parents[1]
 ROOMS=ROOT/'data/house/rooms.json'; ROOM_SCHEMA=ROOT/'schemas/house-room-registry.schema.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/house-public-surface-registry.schema.json'
+TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
 ROOM_IDS=('potatoverse-canon','archive-sources','time-history','traditions-texts','science-formal-models','life-body','world-systems','culture-information','works','research-lab')
 GATEWAYS=('tim','religion','philosophy','science','world')
 GATEWAY_ROUTES=('/tim-dooley/','/religion/','/philosophy/','/science/','/world/')
+REQUIRED_SURFACES={
+    'story':'/tim-dooley/story/',
+    'collection':'/corporium/',
+    'works':'/works/',
+    'questions':'/questions/',
+    'index-a-z':'/index-a-z/',
+    'context':'/context/',
+}
+GENERATED_SURFACES={'questions','index-a-z'}
+STATIC_SURFACE_FILES={
+    'story':ROOT/'tim-dooley/story/index.html',
+    'collection':ROOT/'corporium/index.html',
+    'works':ROOT/'works/index.html',
+    'context':ROOT/'context/index.html',
+}
 
 def load(path,errors):
     try:v=json.loads(path.read_text(encoding='utf-8'))
@@ -58,12 +74,17 @@ def validate_rooms(errors):
     return r
 
 def validate_surfaces(errors,rooms):
-    p=load(SURFACES,errors); s=load(SURFACE_SCHEMA,errors)
+    p=load(SURFACES,errors); s=load(SURFACE_SCHEMA,errors); topology=load(TOPOLOGY,errors)
     if p and s: schema(p,s,'public_surfaces',errors)
     rows=p.get('surfaces',[]); by={x.get('id'):x for x in rows if isinstance(x,dict) and x.get('id')}
     if tuple(p.get('primary_gateway_ids',[]))!=GATEWAYS: errors.append('primary_gateway_ids invalid')
     routes=tuple(by.get(x,{}).get('canonical_route') for x in GATEWAYS)
     if routes!=GATEWAY_ROUTES: errors.append(f'primary gateway routes invalid: {routes!r}')
+    for sid,route in REQUIRED_SURFACES.items():
+        if sid not in by: errors.append(f'missing required mature public surface: {sid}')
+        elif by[sid].get('canonical_route')!=route: errors.append(f'{sid} canonical route must be {route}')
+    for sid in p.get('secondary_global_ids',[]):
+        if sid not in by: errors.append(f'secondary_global_ids references unknown surface {sid}')
     room_ids={x.get('id') for x in rooms.get('rooms',[]) if isinstance(x,dict)}; seen={}; legacy={}
     for sid,row in by.items():
         route=row.get('canonical_route')
@@ -77,12 +98,27 @@ def validate_surfaces(errors,rooms):
         for route in row.get('legacy_routes',[]):
             if route in seen or route in legacy: errors.append(f'legacy route collision {route}')
             legacy[route]=sid
+    for sid,path in STATIC_SURFACE_FILES.items():
+        if not path.is_file(): errors.append(f'{sid} registered static surface missing source file: {path.relative_to(ROOT)}')
+    topology_rows=topology.get('records',[])
+    topology_by={x.get('surface_id'):x for x in topology_rows if isinstance(x,dict) and x.get('surface_id')}
+    if len(topology_by)!=len(topology_rows): errors.append('topology contains duplicate or invalid surface_id records')
+    active_ids={sid for sid,row in by.items() if row.get('status')=='active'}
+    missing_topology=sorted(active_ids-set(topology_by))
+    extra_topology=sorted(set(topology_by)-active_ids)
+    if missing_topology: errors.append('active public surfaces missing topology: '+', '.join(missing_topology))
+    if extra_topology: errors.append('topology contains non-active/unknown surfaces: '+', '.join(extra_topology))
+    for sid in sorted(active_ids & set(topology_by)):
+        row=by[sid]; topo=topology_by[sid]
+        if topo.get('canonical_route')!=row.get('canonical_route'): errors.append(f'{sid} topology route drift')
+        if topo.get('surface_type')!=row.get('surface_type'): errors.append(f'{sid} topology surface_type drift')
+        if topo.get('room_ids')!=row.get('primary_room_ids'): errors.append(f'{sid} topology Room drift')
     return p
 
 def main():
     errors=[]; rooms=validate_rooms(errors); validate_surfaces(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms and public surfaces'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, public surfaces and topology converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
