@@ -1,0 +1,98 @@
+{
+  "schema_version": "1.0.0",
+  "updated": "2026-09-15",
+  "family": "physical-world",
+  "principles": [
+    "Dense global physical data loads on demand through tiles or provider services.",
+    "Physical hydrology is independent from sacred or textual river overlays.",
+    "Bare or sparse vegetation is not synonymous with desert or aridity."
+  ],
+  "entries": [
+    {
+      "id": "physical.terrain",
+      "label": "Terrain",
+      "kind": "module",
+      "availability": "current",
+      "load_policy": "on_demand",
+      "module": "./3d-physical-terrain.js",
+      "source": {
+        "provider": "Mapterhorn",
+        "dataset": "Terrain DEM",
+        "version": "live TileJSON endpoint",
+        "attribution": "Terrain © Mapterhorn"
+      },
+      "default_opacity": 0.55,
+      "min_zoom": 0,
+      "max_zoom": 14,
+      "status_note": "Elevation and hillshade load only after explicit activation. Provider failure is nonfatal."
+    },
+    {
+      "id": "physical.water.base",
+      "label": "Water",
+      "kind": "physical_context",
+      "availability": "planned",
+      "load_policy": "on_demand",
+      "source": {
+        "provider": "pending",
+        "dataset": "ocean, coastline, major lakes and rivers",
+        "version": "pending",
+        "attribution": "pending"
+      },
+      "default_opacity": 0.7,
+      "min_zoom": 0,
+      "max_zoom": 14,
+      "status_note": "Lightweight cartographic physical-water context. Not a legal boundary or basin-authority layer."
+    },
+    {
+      "id": "physical.water.hydrology",
+      "label": "Hydrology",
+      "kind": "vector_tiles",
+      "availability": "planned",
+      "load_policy": "on_demand",
+      "source": {
+        "provider": "HydroSHEDS family candidate",
+        "dataset": "HydroBASINS / HydroRIVERS / HydroLAKES",
+        "version": "pending pinned version",
+        "attribution": "pending pinned provider terms"
+      },
+      "default_opacity": 0.8,
+      "min_zoom": 0,
+      "max_zoom": 14,
+      "status_note": "Measured physical drainage context. It remains independent from Eden/Four-Rivers sacred or textual overlays."
+    },
+    {
+      "id": "physical.land-cover",
+      "label": "Land cover",
+      "kind": "raster_tiles",
+      "availability": "planned",
+      "load_policy": "on_demand",
+      "source": {
+        "provider": "ESA/Copernicus candidate",
+        "dataset": "global land cover",
+        "version": "pending pinned version",
+        "attribution": "pending pinned provider terms"
+      },
+      "default_opacity": 0.62,
+      "min_zoom": 0,
+      "max_zoom": 14,
+      "status_note": "Preserve source classes such as trees, shrubland, grassland, cropland, built-up, bare/sparse vegetation, water, wetland and snow/ice. Bare/sparse vegetation is not the same thing as desert."
+    },
+    {
+      "id": "physical.aridity",
+      "label": "Deserts / aridity",
+      "kind": "raster_tiles",
+      "availability": "planned",
+      "load_policy": "on_demand",
+      "source": {
+        "provider": "pending climatic/ecoregional source",
+        "dataset": "aridity/desert regime",
+        "version": "pending",
+        "attribution": "pending"
+      },
+      "default_opacity": 0.55,
+      "min_zoom": 0,
+      "max_zoom": 14,
+      "status_note": "Climatic/ecological aridity is a distinct variable from satellite land-cover class and must use its own sourced dataset."
+    }
+  ]
+}
