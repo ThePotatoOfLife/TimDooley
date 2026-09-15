@@ -14,6 +14,15 @@ VALIDATOR = ROOT / "scripts" / "validate_world_places.py"
 FIXTURE = ROOT / "tests" / "fixtures" / "world-places"
 COUNTRY_INDEX = ROOT / "data" / "countries" / "index.json"
 EXPECTED_COUNTRIES = {"DNK", "DEU"}
+EXPECTED_BUDGET = {
+    "partition_max_bytes": 2_097_152,
+    "rendered_max_partitions": 2,
+    "cache_max_partitions": 6,
+    "cache_max_bytes": 8_388_608,
+    "global_major_max_bytes": 5_242_880,
+    "global_major_max_features": 5000,
+}
+SEARCH_KEYS = {"id", "name", "aliases", "country_iso3", "type", "capital_status", "population_rank", "partition"}
 
 
 def load_json(path: Path) -> dict:
@@ -72,6 +81,25 @@ def main() -> int:
             errors.append("fixture refresh date was not propagated into the generated index")
         if index.get("license") != "CC BY 4.0" or "GeoNames" not in str(index.get("attribution") or ""):
             errors.append("fixture output lost GeoNames license/attribution metadata")
+        if index.get("runtime_budget") != EXPECTED_BUDGET:
+            errors.append(f"fixture runtime budget must be exact: {EXPECTED_BUDGET}")
+
+        search_records = index.get("search_records") or []
+        if not search_records:
+            errors.append("fixture index must contain compact search_records")
+        search_by_id = {str(row.get("id") or ""): row for row in search_records if isinstance(row, dict)}
+        for place_id in ("gn:2618425", "gn:2624652", "gn:2950159"):
+            row = search_by_id.get(place_id)
+            if not row:
+                errors.append(f"compact search record missing {place_id}")
+                continue
+            missing = sorted(SEARCH_KEYS - set(row))
+            if missing:
+                errors.append(f"compact search record {place_id} missing keys: {', '.join(missing)}")
+            if "geometry" in row or "coordinates" in row:
+                errors.append(f"compact search record {place_id} must not duplicate geometry")
+            if row.get("partition") != row.get("country_iso3"):
+                errors.append(f"compact search record {place_id} must point to its ISO3 partition")
 
         major_by_id = {
             str((feature.get("properties") or {}).get("id")): feature
@@ -108,7 +136,7 @@ def main() -> int:
 
     if errors:
         return fail(errors)
-    print("WORLD PLACES FIXTURE PIPELINE VALIDATION PASSED · builder → data contract · DNK/DEU · population null semantics")
+    print("WORLD PLACES FIXTURE PIPELINE VALIDATION PASSED · builder → bounded data/search contract · DNK/DEU · population null semantics")
     return 0
 
 
