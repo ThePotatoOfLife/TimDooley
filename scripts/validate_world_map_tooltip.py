@@ -109,7 +109,7 @@ def main() -> int:
     print("- generation-based stale async suppression")
     print("- drag / zoom / rotate / pitch / projection invalidation")
     print("- country, fallback-capital, Axis, Fields and Networks hover migrated")
-    print("- boot-guard compatibility remains only for other unmigrated transient modules")
+    print("- pointer-drag boot-guard compatibility shim retired")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP TOOLTIP VALIDATION FAILED")
