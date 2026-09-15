@@ -1,0 +1,148 @@
+# World Map Roadmap
+
+**Updated:** 2026-09-16  
+**Authority:** current live roadmap for the World Map / World Relational Atlas. Older `docs/superpowers/specs/` and `docs/superpowers/plans/` remain design history unless explicitly referenced here.
+
+## Vision
+
+The World Map should become a stable relational instrument rather than a growing collection of overlays. It should make geography, relationships, time, evidence, capability, infrastructure and project context understandable without confusing unlike kinds of claim.
+
+The quality target is not maximum visible density. It is maximum useful structure with explicit ownership, provenance, scale, interaction and mathematical meaning.
+
+## Governing architecture
+
+See `docs/superpowers/specs/2026-09-16-world-map-control-plane-design.md`.
+
+The active direction is:
+
+`canonical data → active view → geospatial/scale/render/interaction/inspector control plane → MapLibre presentation`
+
+## DONE / FOUNDATION
+
+These capabilities are established enough to build on:
+
+- one primary World Map public surface;
+- canonical country geometry and country records;
+- persistent country selection / active country;
+- layer registry and compositor foundation;
+- render-stack ordering;
+- active-view model;
+- current/as-of/compare-date time foundation;
+- evidence/Eye inspection;
+- relationship Trace and Path foundations;
+- scale-aware Places with bounded runtime budgets;
+- lazy bounded subdivision rendering;
+- physical-world layer system;
+- independent epistemically typed spatial overlays;
+- investigation-surface arbitration;
+- panel lifecycle ownership;
+- progressive/lazy specialist loading;
+- mathematical calibration separating geography, topology, hierarchy, time and gated flow;
+- browse/performance regressions for known hover, panel, cache and overlap failures.
+
+## ACTIVE — CONTROL-PLANE HARDENING
+
+### A. Spatial safety
+
+- [ ] Add shared geospatial kernel.
+- [ ] Normalize longitudes and wrapped world-copy identity.
+- [ ] Make bounds/fit calculations antimeridian-aware.
+- [ ] Replace degree-squared partition prioritization where physical/geographic distance is intended.
+- [ ] Define schematic-vs-physical route geometry semantics.
+- [ ] Add dateline/globe/Mercator regressions.
+
+### B. Scale safety
+
+- [ ] Add canonical named scale bands.
+- [ ] Separate load/render/label/interaction thresholds.
+- [ ] Add hysteresis for boundary crossings where churn is possible.
+- [ ] Migrate Places/subdivision thresholds first.
+- [ ] Audit every remaining module for raw zoom magic numbers.
+
+### C. Interaction safety
+
+- [ ] Add central interaction registry/router.
+- [ ] Define hover/click semantic priority independent of render z-order.
+- [ ] Migrate Places, subdivisions, spatial overlays and countries.
+- [ ] Retire `__potatoAtlasOverlayHandled` after migration.
+
+### D. Tooltip safety
+
+- [ ] Add one transient-tooltip service.
+- [ ] Centralize stale async suppression and motion invalidation.
+- [ ] Migrate country hover, Axis, Fields, Networks and infrastructure.
+- [ ] Remove the boot-guard CSS workaround only after behavioral regressions prove equivalent behavior.
+
+### E. Inspector/state safety
+
+- [ ] Add typed inspector router/history.
+- [ ] Replace raw `panel.innerHTML` snapshots in Places and subdivisions.
+- [ ] Make child → parent → back semantics deterministic.
+- [ ] Align URL restoration with typed inspector state.
+
+## NEXT — RENDER + UI CONVERGENCE
+
+- [ ] Add visual-channel compatibility matrix.
+- [ ] Audit every writer of country fill/pattern/outline/height.
+- [ ] Centralize style-generation restoration.
+- [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
+- [ ] Make top-level controls increasingly question-oriented: Browse / Compare / Connections / Evidence / Time / View.
+- [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
+- [ ] Add concise accessible active-view summaries.
+
+## NEXT — VERIFICATION + OBSERVABILITY
+
+- [ ] Add real behavioral scenario tests for drag/zoom/projection/wrap/overlap/inspector transitions.
+- [ ] Track active source/layer counts and style restoration work.
+- [ ] Track interaction registry size and tooltip generation/stale suppression.
+- [ ] Retain bounded Places/subdivision cache diagnostics.
+- [ ] Publish useful backend/map audit artifacts in CI rather than creating disposable repository state.
+
+## COMPATIBILITY RETIREMENT
+
+Drain only after unique behavior is preserved and tested:
+
+- [ ] `world-map/3d-ui.js`
+- [ ] `world-map/3d-selection-ui.js`
+- [ ] old Lens ownership after registry/compositor parity
+- [ ] old Atlas naming/routing remnants
+- [ ] duplicated styledata/lifecycle ownership
+- [ ] stale generated/retired map artifacts already represented by canonical owners
+
+## DATA EXPANSION AFTER CONTROL-PLANE STABILITY
+
+Use the same relationship-first method for:
+
+1. economy and public finance;
+2. trade/value chains;
+3. energy/resources/interconnectors;
+4. infrastructure and logistics;
+5. companies, ownership and control;
+6. technology, research and skills;
+7. institutions, procurement and funding;
+8. dependency, capability and resilience;
+9. dated flows and transitions.
+
+Every new data family must expose identity, geography where honest, ownership/control, function, relationships, date/period, source, confidence/status and missing-data semantics.
+
+## RESEARCH READY / NOT DEFAULT EARTH GEOGRAPHY
+
+These are valid future mathematical views once their input requirements exist:
+
+- spectral layouts for dense non-geographic relationship graphs;
+- hyperbolic hierarchy for Tree/Rooms-like structures;
+- Hodge-style decomposition for directed quantitative flows with compatible quantities, units and reference periods;
+- scenario/programme views only after observed-state, time and evidence separation is robust.
+
+## PERMANENT GUARDRAILS
+
+- Geography uses real coordinates.
+- Zoom is camera scale, not ontology.
+- Graph distance is represented relationship distance, not moral or geopolitical distance.
+- Axis depth is analytical/project navigation, not physical altitude or extra-dimensional geography.
+- Symbolic/project geography is explicitly typed and never silently becomes sovereignty or surveyed terrain.
+- Missing data remains missing.
+- Repetition is not corroboration.
+- Visual overlap does not merge unlike claims.
+- World copies may repeat visually; canonical entities do not.
+- Compatibility code is removed only after unique behavior has a tested canonical owner.
