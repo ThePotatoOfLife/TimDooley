@@ -15,6 +15,8 @@ ACTIVE_VIEW = ROOT / "world-map" / "3d-active-view.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
+HOVER = ROOT / "world-map" / "3d-hover.js"
+HOVER_ARTIFACT_TEST = ROOT / "scripts" / "test_world_map_hover_artifacts.mjs"
 UI = ROOT / "world-map" / "3d-ui.js"
 DEMOGRAPHY = ROOT / "world-map" / "3d-demography.js"
 DIMENSIONS = ROOT / "world-map" / "3d-country-dimensions.js"
@@ -64,6 +66,26 @@ def node_check(paths: tuple[Path, ...], errors: list[str]) -> None:
             errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: {detail}")
 
 
+def run_node_regression(path: Path, errors: list[str], label: str) -> None:
+    node = shutil.which("node")
+    if not node:
+        errors.append(f"node executable unavailable; cannot run {label}")
+        return
+    if not path.exists():
+        errors.append(f"missing required regression: {path.relative_to(ROOT)}")
+        return
+    result = subprocess.run(
+        [node, str(path)],
+        cwd=ROOT,
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    if result.returncode:
+        detail = (result.stderr or result.stdout).strip()
+        errors.append(f"{label} failed: {detail}")
+
+
 def main() -> int:
     errors: list[str] = []
     selection = read(SELECTION, errors)
@@ -76,6 +98,7 @@ def main() -> int:
     bootstrap = read(BOOTSTRAP, errors)
     panel_lifecycle = read(PANEL_LIFECYCLE, errors)
     subdivisions = read(SUBDIVISIONS, errors)
+    hover = read(HOVER, errors)
     ui = read(UI, errors)
     demography = read(DEMOGRAPHY, errors)
     dimensions = read(DIMENSIONS, errors)
@@ -140,6 +163,13 @@ def main() -> int:
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
+    # Country hover cards await scalar runtime observations. Rapid mouse movement
+    # must not let older async completions move/reopen the dark popup, and repeated
+    # pixels over one country must share a single in-flight lookup.
+    for token in ("hoverGeneration", "activeKey", "latestEvent", "resolvedHtml"):
+        require(hover, token, "world-map/3d-hover.js", errors)
+    reject(hover, "showPopup(event, await countryHtml(", "world-map/3d-hover.js", errors)
+
     # Subdivision browsing must stay bounded as country coverage expands. A
     # fixed shared source/layer stack prevents style/listener growth from being
     # proportional to the number of country partitions visited in a session.
@@ -176,7 +206,8 @@ def main() -> int:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, PANEL_LIFECYCLE, SUBDIVISIONS, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
 
     if errors:
         print("WORLD MAP BROWSE/PERFORMANCE VALIDATION FAILED")
@@ -185,7 +216,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · active color/stat continuity · single scalar owner · bounded subdivisions · lazy specialist stack · one live panel lifecycle observer")
+    print("Browse + Pins · stable async hover · active color/stat continuity · single scalar owner · bounded subdivisions · lazy specialist stack · one live panel lifecycle observer")
     return 0
 
 
