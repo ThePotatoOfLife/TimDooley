@@ -41,6 +41,15 @@ assert.equal(router.back(), true);
 assert.deepEqual(router.state().stack.map(row => `${row.type}:${row.id}`), ['country:DNK','subdivision:DK-83']);
 assert.equal(countCall('subdivision','DK-83'), subdivisionBackBefore + 1, 'back from place must rerender subdivision');
 
+// A new sibling subdivision belongs directly under the country. It must replace
+// stale child history instead of being pushed beneath a previous subdivision/place.
+router.open(place);
+router.open({
+  type:'subdivision', id:'DK-84', owner:'subdivisions', parent:{type:'country', id:'DNK'},
+  render:() => calls.push(['subdivision','DK-84']),
+});
+assert.deepEqual(router.state().stack.map(row => `${row.type}:${row.id}`), ['country:DNK','subdivision:DK-84']);
+
 const countryBefore = countCall('country','DNK');
 assert.equal(router.back(), true);
 assert.deepEqual(router.state().stack.map(row => `${row.type}:${row.id}`), ['country:DNK']);
