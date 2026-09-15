@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'data'; MAP=DATA/'canonical-source-map.json'; INDEX=DATA/'repository-index.json'; REGISTRY=DATA/'canonical-record-registry.json'
-NON_SOURCE_KEYS={'policy','rule','purpose','empirical_rule','consolidation_actions','known_stale_references','semantic_identity_registry'}
+NON_SOURCE_KEYS={'policy','rule','purpose','empirical_rule','consolidation_actions','known_stale_references','semantic_identity_registry','identity_delegations'}
 RETIRED_KEYS={'retired_layers'}
 ROOT_LAYERS={'spirit':{'source','meaning','belief','myths'},'mind':{'psychology','hawkinscale','neurobiology'},'matter':{'world','region','institution','network','person','object','event','record','ground'}}
 
@@ -40,6 +40,18 @@ def at_path(root,path):
     return cur
 def candidate_identity(obj):
     return str(obj.get('id') or obj.get('slug') or obj.get('key') or obj.get('term') or obj.get('iso3') or obj.get('country_id') or '')
+
+def effective_owner_families(record_id, owner_families, families):
+    """Apply explicit cross-family identity delegation without hiding invalid targets."""
+    effective=set(owner_families); applied={}
+    for family in sorted(owner_families):
+        spec=families.get(family,{}) if isinstance(families,dict) else {}
+        delegations=spec.get('identity_delegations',{}) if isinstance(spec,dict) else {}
+        target=delegations.get(record_id) if isinstance(delegations,dict) else None
+        if target in owner_families and target!=family:
+            effective.discard(family)
+            applied[family]=target
+    return effective,applied
 
 def explain_registry_index_delta(registry,index):
     """Explain expected identity differences between raw discovery and semantic index."""
@@ -84,7 +96,7 @@ def explain_registry_index_delta(registry,index):
     }
 
 def main():
-    errors=[]; warnings=[]; registry_index_delta=None
+    errors=[]; warnings=[]; registry_index_delta=None; identity_delegations_applied=[]
     if not MAP.exists(): errors.append('missing data/canonical-source-map.json')
     if not INDEX.exists(): errors.append('missing data/repository-index.json')
     if errors: print('\n'.join(errors)); return 1
@@ -149,7 +161,13 @@ def main():
     for rid,rows in by_id.items():
         sources={r.get('source') for r in rows if r.get('source') in owners}
         if len(sources)<=1: continue
-        fams=set().union(*(owners[s] for s in sources)); msg=f'canonical ID {rid} has owners {sorted(sources)} across families {sorted(fams)}'
+        fams=set().union(*(owners[s] for s in sources))
+        effective_fams,applied=effective_owner_families(rid,fams,families)
+        if applied:
+            identity_delegations_applied.append({'id':rid,'delegations':applied,'effective_owner_families':sorted(effective_fams)})
+        if len(effective_fams)<=1: continue
+        msg=f'canonical ID {rid} has owners {sorted(sources)} across families {sorted(fams)}'
+        if len(effective_fams)<=1: continue
         if len(fams)<=1: errors.append('duplicate canonical owner within family: '+msg)
         else: warnings.append('cross-family canonical ID requires namespace review: '+msg)
 
@@ -174,7 +192,7 @@ def main():
             sample=', '.join(registry_index_delta['unexplained_index_only'][:8])
             warnings.append(f'index-only IDs require review: {sample}')
 
-    result={'version':'1.9.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'registry_index_delta':registry_index_delta,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
+    result={'version':'2.0.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'identity_delegations_applied':identity_delegations_applied,'registry_index_delta':registry_index_delta,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
     (DATA/'source-of-truth-audit.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     print(json.dumps(result,indent=2))
     return 1 if errors else 0
