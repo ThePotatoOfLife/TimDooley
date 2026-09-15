@@ -116,7 +116,7 @@
           chooseCurrent(item);
           drawer.playSection?.('current');
         });
-        const anchor=item.querySelector?.('h1,h2,h3,.movement-label,.story-meta');
+        const anchor=item.querySelector?.('h2,h3,h1')||item.querySelector?.('.movement-label,.story-meta');
         if(anchor?.insertAdjacentElement)anchor.insertAdjacentElement('afterend',control);
         else if(item.prepend)item.prepend(control);
         else item.append?.(control);
