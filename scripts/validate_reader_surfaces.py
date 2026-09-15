@@ -8,6 +8,7 @@ turn reader copy into a second content database.
 from __future__ import annotations
 
 import re
+import subprocess
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -73,6 +74,25 @@ def validate_projection_surface(text: str, owner: str, errors: list[str]) -> Non
     forbidden = ("data/", "knowledge/", ".json", "root.js", "index.html#node=")
     if any(token in matches[0] for token in forbidden):
         errors.append(f"{owner} projection surface leaks backend filenames or retired routing")
+
+
+def validate_tts_contracts(errors: list[str]) -> None:
+    scripts = (
+        "scripts/test_tts_drawer.mjs",
+        "scripts/test_bible_tts_adapter.mjs",
+        "scripts/test_longform_tts_adapter.mjs",
+    )
+    for rel in scripts:
+        result = subprocess.run(
+            ["node", str(ROOT / rel)],
+            cwd=ROOT,
+            capture_output=True,
+            text=True,
+            check=False,
+        )
+        if result.returncode != 0:
+            detail = (result.stdout + "\n" + result.stderr).strip()
+            errors.append(f"TTS contract failed: {rel}: {detail}")
 
 
 def main() -> int:
@@ -301,6 +321,8 @@ def main() -> int:
     if 'id="questionMenu"' in world or 'id="inquiryMenu"' in world:
         errors.append("World Map question layer must not introduce a persistent top-level menu")
     validate_projection_surface(world, "world-map/index.html", errors)
+
+    validate_tts_contracts(errors)
 
     if errors:
         print("READER SURFACE VALIDATION FAILED")
