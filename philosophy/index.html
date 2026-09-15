@@ -20,7 +20,7 @@
 <p>Potatoism begins with an ordinary organism and keeps asking what follows if you pay attention instead of rushing past it: what growth requires, how change can be recognized, what relations make life possible, and what mature capability owes the world around it.</p>
 </div>
 </header>
-<div id="philosophy-tts"></div>
+<div id="philosophy-tts" data-tts-longform data-tts-root=".journey" data-tts-id="philosophy-journey" data-tts-label="Potatoism Philosophy" data-tts-all-label="Whole journey" data-tts-current-label="Current movement" data-tts-selection-label="Selection" data-tts-item=".movement"></div>
 <section class="ownership" data-potatoism-owner="philosophy-projection"><strong>Ownership boundary:</strong> Religion remains the primary public owner of Potatoism as religion, theology and religious practice. <a href="../religion/">Religion</a> defines that center. This page follows the philosophical method: how one idea produces another, how the method corrects itself, and what questions a reader can carry into ordinary life.</section>
 <section class="journey" aria-label="Potatoism philosophical journey">
 <article class="movement question-stub" data-potatoism-stage="potato"><div class="movement-head"><div class="movement-label">I · Potato</div><div class="body"><h2>Notice what is actually there</h2><p class="pressure">Why begin with something so ordinary?</p><p>A potato is easy to dismiss precisely because we think we already know what it is. Potatoism begins before symbolism: look again. Separate the thing from the label, the observation from the story, and the evidence from what you wanted to find.</p><p>The first philosophical move is therefore not belief. It is attention.</p><p class="reflection">What have you stopped seeing because you already have a name for it?</p></div></div></article>
@@ -38,21 +38,4 @@
 <script src="../app/tts-reader.js"></script>
 <script src="../app/tts-drawer.js"></script>
 <script src="../app/longform-tts-adapter.js"></script>
-<script>
-(() => {
-  const host = document.getElementById('philosophy-tts');
-  const journey = document.querySelector('.journey');
-  if (!host || !journey || !window.PotatoLongformTTS) return;
-  window.philosophyTTS = PotatoLongformTTS.mount({
-    mount: host,
-    root: journey,
-    id: 'philosophy-journey',
-    label: 'Potatoism Philosophy',
-    allLabel:'Whole journey',
-    currentLabel:'Current movement',
-    selectionLabel:'Selection',
-    itemSelector:'.movement'
-  });
-})();
-</script>
 </body></html>
