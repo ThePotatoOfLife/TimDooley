@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.4.0",
+  "schema_version": "1.5.0",
   "updated": "2026-09-15",
   "family": "physical-world",
   "principles": [
@@ -49,19 +49,22 @@
     {
       "id": "physical.water.hydrology",
       "label": "Hydrology",
-      "kind": "vector_tiles",
-      "availability": "planned",
+      "kind": "module",
+      "availability": "current",
       "load_policy": "on_demand",
+      "module": "./3d-physical-hydrology.js",
+      "controller": "__potatoAtlasHydrology",
       "source": {
-        "provider": "HydroSHEDS family candidate",
-        "dataset": "HydroBASINS / HydroRIVERS / HydroLAKES",
-        "version": "pending pinned version",
-        "attribution": "pending pinned provider terms"
+        "provider": "HydroSHEDS · HydroBASINS / HydroRIVERS",
+        "dataset": "HydroBASINS level 5 watershed boundaries + HydroRIVERS v1.0 major-river network",
+        "version": "HydroBASINS v1c / HydroRIVERS v1.0",
+        "delivery": "regional viewport-bounded ArcGIS FeatureServer queries",
+        "attribution": "HydroSHEDS · Lehner & Grill (2013); hosted FeatureServer delivery mirrors"
       },
-      "default_opacity": 0.8,
-      "min_zoom": 0,
+      "default_opacity": 0.72,
+      "min_zoom": 4,
       "max_zoom": 14,
-      "status_note": "Measured physical drainage context. It remains independent from Eden/Four-Rivers sacred or textual overlays."
+      "status_note": "Measured regional physical drainage context from HydroBASINS and HydroRIVERS. Requests are viewport-bounded and begin only at regional zoom. This physical hydrology remains independent from Eden/Four-Rivers or other sacred and textual overlays."
     },
     {
       "id": "physical.land-cover",
