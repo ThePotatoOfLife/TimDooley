@@ -8,6 +8,9 @@ const panel = document.getElementById('panel');
 let lastLifecycleKey = '';
 let panelLifecycleScheduled = false;
 let coreRevision = 0;
+let controlPlaneReady = null;
+let placesDetailScaleActive = null;
+let subdivisionsScaleActive = null;
 
 function panelLifecycleKey() {
   if (!panel) return '';
@@ -65,11 +68,28 @@ window.__potatoAtlasPanelLifecycle = {
   get revision() { return coreRevision; },
 };
 
+async function ensureControlPlane() {
+  if (!controlPlaneReady) {
+    controlPlaneReady = (async () => {
+      await window.__potatoAtlasLoadModule?.('Geo Kernel', './3d-geo-kernel.js');
+      await window.__potatoAtlasLoadModule?.('Scale', './3d-scale.js');
+      const scale = await window.__potatoAtlasScale?.ready;
+      if (!scale) throw new Error('World Map Scale runtime unavailable.');
+      return scale;
+    })();
+  }
+  return controlPlaneReady;
+}
+
 // Coordinate application surfaces before adding more optional visual layers.
-// Shared math loads first so later geographic detail modules consume one wrap policy.
-// Render Stack is tiny and data-free; Physical World still keeps providers lazy.
+// Shared math/scale load first so later geographic detail modules consume one
+// wrap policy and one camera-scale contract.
 queueMicrotask(async () => {
-  await window.__potatoAtlasLoadModule?.('Geo Kernel', './3d-geo-kernel.js');
+  try {
+    await ensureControlPlane();
+  } catch (error) {
+    console.warn('World Map control-plane foundation unavailable:', error);
+  }
   await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
   await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
@@ -99,7 +119,13 @@ async function maybeLoadSelectedPlaces(detail = null) {
   const code = selectedCountryCode(detail);
   if (!/^[A-Z]{3}$/.test(code)) return false;
   const requested = new URL(location.href).searchParams.has('place');
-  if (!requested && map.getZoom() < 4.2) return false;
+  if (!requested) {
+    let scale;
+    try { scale = await ensureControlPlane(); }
+    catch { return false; }
+    placesDetailScaleActive = scale.capabilityActive('places-detail', 'load', map.getZoom(), placesDetailScaleActive);
+    if (!placesDetailScaleActive) return false;
+  }
   try {
     await api.loadCountry(code);
     return true;
@@ -110,7 +136,7 @@ async function maybeLoadSelectedPlaces(detail = null) {
 }
 
 // Country-detail places stay dormant at world scale. Once a country is the active
-// browsing context and the camera reaches country scale, load only that partition.
+// browsing context and the shared scale contract admits detail, load one partition.
 window.addEventListener('potato-atlas-country-card-rendered', event => {
   queueMicrotask(() => maybeLoadSelectedPlaces(event?.detail));
 });
@@ -120,13 +146,19 @@ queueMicrotask(() => {
   map?.on('moveend', maybeLoadSelectedPlaces);
 });
 
-// Administrative detail remains code- and data-dormant at world scale. Load the
-// subdivision controller only after regional zoom, or immediately for a deep link.
-function maybeLoadSubdivisions() {
+// Administrative detail remains code- and data-dormant at world scale. The shared
+// scale contract owns promotion; deep links bypass the camera threshold.
+async function maybeLoadSubdivisions() {
   const map = window.__potatoAtlasMap;
   if (!map) return;
   const requested = new URL(location.href).searchParams.has('subdivision');
-  if (!requested && map.getZoom() < 3.4) return;
+  if (!requested) {
+    let scale;
+    try { scale = await ensureControlPlane(); }
+    catch { return; }
+    subdivisionsScaleActive = scale.capabilityActive('subdivisions', 'load', map.getZoom(), subdivisionsScaleActive);
+    if (!subdivisionsScaleActive) return;
+  }
   map.off('zoomend', maybeLoadSubdivisions);
   window.__potatoAtlasLoadModule?.('Subdivisions', './3d-subdivisions.js');
 }
