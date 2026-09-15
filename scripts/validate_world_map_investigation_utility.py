@@ -67,14 +67,20 @@ def main() -> int:
     if "coordinated:true" not in chain:
         errors.append("Chain must support coordinator-driven close without recursion")
 
-    surface_import = "3d-investigation-surface.js"
-    if surface_import not in bootstrap:
-        errors.append("bootstrap must load the investigation surface coordinator")
+    surface_load = "loadAfterPaint('Investigation Surface', './3d-investigation-surface.js')"
+    if surface_load not in bootstrap:
+        errors.append("bootstrap must load the investigation surface coordinator during the interactive core")
     else:
-        first = bootstrap.find(surface_import)
-        for label, module_name in (("Impact", "3d-impact-trace.js"), ("Chain", "3d-chain-explorer.js")):
-            pos = bootstrap.find(module_name)
-            if pos >= 0 and first > pos:
+        first = bootstrap.find(surface_load)
+        specialist_loads = (
+            ("Impact", "loadSpecialist('Impact Trace', './3d-impact-trace.js')"),
+            ("Chain", "loadSpecialist('Functional Chains', './3d-chain-explorer.js')"),
+        )
+        for label, load_marker in specialist_loads:
+            pos = bootstrap.find(load_marker)
+            if pos < 0:
+                errors.append(f"bootstrap must retain contextual {label} loading")
+            elif first > pos:
                 errors.append(f"investigation surface coordinator must load before {label}")
 
     forbidden_controls = (
