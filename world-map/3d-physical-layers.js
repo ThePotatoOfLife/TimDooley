@@ -2,6 +2,7 @@
 // Manifest metadata loads with the core; expensive providers/modules do not.
 // Compatibility map: physical.terrain -> __potatoAtlasTerrain.
 // Current water map: physical.water.base -> __potatoAtlasPhysicalWater.
+// Current land-cover map: physical.land-cover -> __potatoAtlasLandCover.
 
 const MANIFEST_URL = '../data/world-map-physical-layers.json';
 const active = new Set();
