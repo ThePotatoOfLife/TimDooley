@@ -44,41 +44,41 @@ These capabilities are established enough to build on:
 
 ### A. Spatial safety
 
-- [ ] Add shared geospatial kernel.
-- [ ] Normalize longitudes and wrapped world-copy identity.
-- [ ] Make bounds/fit calculations antimeridian-aware.
-- [ ] Replace degree-squared partition prioritization where physical/geographic distance is intended.
+- [x] Add shared geospatial kernel.
+- [ ] Normalize longitudes and wrapped world-copy identity. *(longitude normalization is live; canonical world-copy identity remains to be completed)*
+- [x] Make bounds/fit calculations antimeridian-aware for the migrated subdivision/geospatial paths.
+- [x] Replace degree-squared subdivision partition prioritization where physical/geographic distance is intended.
 - [ ] Define schematic-vs-physical route geometry semantics.
-- [ ] Add dateline/globe/Mercator regressions.
+- [ ] Add complete dateline/globe/Mercator regressions. *(dateline regressions exist; projection coverage remains incomplete)*
 
 ### B. Scale safety
 
-- [ ] Add canonical named scale bands.
-- [ ] Separate load/render/label/interaction thresholds.
-- [ ] Add hysteresis for boundary crossings where churn is possible.
-- [ ] Migrate Places/subdivision thresholds first.
+- [x] Add canonical named scale bands.
+- [x] Separate load/render/label/interaction thresholds in the scale contract.
+- [x] Add hysteresis for boundary crossings where churn is possible.
+- [ ] Finish migrating Places/subdivision thresholds. *(promotion/loading is shared; MapLibre layer `minzoom` literals remain)*
 - [ ] Audit every remaining module for raw zoom magic numbers.
 
 ### C. Interaction safety
 
-- [ ] Add central interaction registry/router.
-- [ ] Define hover/click semantic priority independent of render z-order.
-- [ ] Migrate Places, subdivisions, spatial overlays and countries.
-- [ ] Retire `__potatoAtlasOverlayHandled` after migration.
+- [x] Add central interaction registry/router.
+- [x] Define hover/click semantic priority independent of render z-order.
+- [ ] Finish migrating active targets. *(Places 80, Gateways 75, Infrastructure 70, subdivisions 60 and spatial overlays 40 are centralized; country/Axis compatibility paths remain)*
+- [ ] Retire `__potatoAtlasOverlayHandled` after all relevant targets migrate.
 
 ### D. Tooltip safety
 
-- [ ] Add one transient-tooltip service.
-- [ ] Centralize stale async suppression and motion invalidation.
-- [ ] Migrate country hover, Axis, Fields, Networks and infrastructure.
-- [ ] Remove the boot-guard CSS workaround only after behavioral regressions prove equivalent behavior.
+- [x] Add one transient-tooltip service.
+- [x] Centralize stale async suppression and drag/zoom/rotate/pitch/projection invalidation.
+- [x] Migrate country/capital hover, Axis, Fields and Networks to the shared transient owner.
+- [x] Remove the boot-guard pointer/CSS workaround after behavioral regressions prove equivalent behavior.
 
 ### E. Inspector/state safety
 
-- [ ] Add typed inspector router/history.
-- [ ] Replace raw `panel.innerHTML` snapshots in Places and subdivisions.
-- [ ] Make child → parent → back semantics deterministic.
-- [ ] Align URL restoration with typed inspector state.
+- [x] Add typed inspector router/history.
+- [x] Replace raw `panel.innerHTML` snapshots in Places and subdivisions.
+- [x] Make child → parent → back semantics deterministic.
+- [ ] Align full URL restoration/hydration with typed inspector state.
 
 ## NEXT — RENDER + UI CONVERGENCE
 
@@ -95,7 +95,7 @@ These capabilities are established enough to build on:
 - [ ] Add real behavioral scenario tests for drag/zoom/projection/wrap/overlap/inspector transitions.
 - [ ] Track active source/layer counts and style restoration work.
 - [ ] Track interaction registry size and tooltip generation/stale suppression.
-- [ ] Retain bounded Places/subdivision cache diagnostics.
+- [x] Retain bounded Places/subdivision cache diagnostics.
 - [ ] Publish useful backend/map audit artifacts in CI rather than creating disposable repository state.
 
 ## COMPATIBILITY RETIREMENT
