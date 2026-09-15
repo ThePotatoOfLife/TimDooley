@@ -8,6 +8,11 @@
 
 const MANIFEST_URL = '../data/world-map-physical-layers.json';
 const OPACITY_IDS = new Set(['physical.water.base','physical.water.hydrology','physical.land-cover','physical.aridity']);
+const SURFACE_FOCUS_IDS = new Set(['physical.land-cover','physical.aridity']);
+const DEFAULT_COUNTRY_OPACITY = 0.60;
+const SURFACE_COUNTRY_OPACITY = 0.18;
+const SELECTED_COUNTRY_OPACITY = 0.90;
+const COMPARED_COUNTRY_OPACITY = 0.80;
 const active = new Set();
 const statusRecords = new Map();
 let manifest = { entries:[] };
@@ -57,6 +62,32 @@ function getOpacity(id) {
   return status(id)?.opacity ?? null;
 }
 
+function surfaceFocusActive() {
+  for (const id of SURFACE_FOCUS_IDS) {
+    if (!active.has(id)) continue;
+    const row = get(id);
+    const opacity = ensureStatus(row)?.opacity ?? defaultOpacity(row);
+    if (opacity > 0.02) return true;
+  }
+  return false;
+}
+function countryOpacityExpression(surfaceFocus = surfaceFocusActive()) {
+  const selected = ['boolean',['feature-state','selected'],false];
+  const compared = ['boolean',['feature-state','compare'],false];
+  return ['case', selected, SELECTED_COUNTRY_OPACITY, compared, COMPARED_COUNTRY_OPACITY, surfaceFocus ? SURFACE_COUNTRY_OPACITY : DEFAULT_COUNTRY_OPACITY];
+}
+function syncCountrySurfaceTint() {
+  const map = window.__potatoAtlasMap;
+  if (!map?.getLayer?.('countries-fill')) return false;
+  try {
+    map.setPaintProperty('countries-fill', 'fill-opacity', countryOpacityExpression());
+    return true;
+  } catch (error) {
+    console.warn('Physical surface country tint could not be synchronized:', error);
+    return false;
+  }
+}
+
 function persist() {
   const url = new URL(location.href);
   const values = activeIds().sort();
@@ -96,10 +127,12 @@ async function setOpacity(id, value) {
     if (applied === false) throw new Error(`${row.label} rejected opacity update`);
     record.opacity = Number.isFinite(Number(api.getOpacity?.())) ? clampOpacity(api.getOpacity()) : next;
     record.updatedAt = Date.now();
+    syncCountrySurfaceTint();
     renderMenu();
     return true;
   } catch (error) {
     record.opacity = previous;
+    syncCountrySurfaceTint();
     setStatus(id, { phase:'error', message:`Opacity unavailable · ${error?.message || error}` });
     return false;
   }
@@ -123,11 +156,13 @@ async function activate(id, { persistState = true } = {}) {
     const record = ensureStatus(row);
     if (OPACITY_IDS.has(id) && api?.setOpacity) await api.setOpacity(record.opacity);
     if (!['zoom-needed','partial'].includes(record.phase)) setStatus(id, { phase:'active', message:'Active' });
+    syncCountrySurfaceTint();
     if (persistState) persist();
     emit('activate', id);
     return true;
   } catch (error) {
     active.delete(id);
+    syncCountrySurfaceTint();
     if (persistState) persist();
     console.warn(`Physical layer unavailable: ${id}`, error);
     setStatus(id, { phase:'error', message:error?.message || 'Provider unavailable' });
@@ -139,6 +174,7 @@ async function activate(id, { persistState = true } = {}) {
 async function deactivate(id, { persistState = true, emitChange = true } = {}) {
   if (!active.has(id)) {
     const row = get(id); if (row) setStatus(id, { phase:'idle', message:row.status_note || '' });
+    syncCountrySurfaceTint();
     return true;
   }
   const row = get(id);
@@ -146,6 +182,7 @@ async function deactivate(id, { persistState = true, emitChange = true } = {}) {
   try { await api?.disable?.(); } catch (error) { console.warn(`Physical layer disable failed: ${id}`, error); }
   active.delete(id);
   setStatus(id, { phase:'idle', message:row?.status_note || '' });
+  syncCountrySurfaceTint();
   if (persistState) persist();
   if (emitChange) emit('deactivate', id);
   return true;
@@ -175,6 +212,7 @@ async function reset() {
     }
   }
   active.clear();
+  syncCountrySurfaceTint();
   persist();
   emit('reset', null);
   return { ok:failed.length === 0, failed };
@@ -236,6 +274,7 @@ async function restoreUrlState() {
   const requested = (new URL(location.href).searchParams.get('physical') || '')
     .split(',').map(value => value.trim()).filter(Boolean);
   for (const id of requested) await activate(id, { persistState:false });
+  syncCountrySurfaceTint();
   persist();
 }
 
@@ -260,7 +299,7 @@ window.addEventListener('potato-atlas-physical-layer-status', event => {
   if (!get(detail.id)) return;
   setStatus(detail.id, { phase:detail.phase || 'active', message:detail.message || '' });
 });
-window.addEventListener('potato-atlas-module-ready', () => queueMicrotask(renderMenu));
+window.addEventListener('potato-atlas-module-ready', () => queueMicrotask(() => { renderMenu(); syncCountrySurfaceTint(); }));
 window.addEventListener('potato-atlas-ui-layout-change', () => queueMicrotask(renderMenu));
 
 window.__potatoAtlasPhysicalLayers = {
