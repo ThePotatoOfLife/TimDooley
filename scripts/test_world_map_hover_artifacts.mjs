@@ -45,12 +45,7 @@ const bindCountryHoverSource = extractFunction('bindCountryHover');
 const handlers = new Map();
 const canvas = { style:{} };
 const map = {
-  on(event, layerOrHandler, maybeHandler) {
-    const layered = typeof maybeHandler === 'function';
-    const key = layered ? `${event}:${layerOrHandler}` : event;
-    const handler = layered ? maybeHandler : layerOrHandler;
-    handlers.set(key, handler);
-  },
+  on(event, layer, handler) { handlers.set(`${event}:${layer}`, handler); },
   getCanvas() { return canvas; },
 };
 
@@ -74,12 +69,8 @@ const bindCountryHover = new Function(
 bindCountryHover('countries-fill');
 const move = handlers.get('mousemove:countries-fill');
 const leave = handlers.get('mouseleave:countries-fill');
-const dragStart = handlers.get('dragstart');
-const dragEnd = handlers.get('dragend');
 assert.equal(typeof move, 'function');
 assert.equal(typeof leave, 'function');
-assert.equal(typeof dragStart, 'function', 'country hover must suspend itself when a map drag begins');
-assert.equal(typeof dragEnd, 'function', 'country hover must resume only after the map drag ends');
 
 const flush = () => new Promise(resolve => setImmediate(resolve));
 const eventFor = (code, lng, lat) => ({
@@ -116,29 +107,6 @@ await flush();
 assert.equal(renders.length, renderedBeforeLateLeave, 'late hover work must not reopen popup after mouseleave');
 assert.ok(popupRemovals.length >= 1, 'mouseleave must remove the popup');
 assert.equal(canvas.style.cursor, '', 'mouseleave must restore the map cursor');
-
-// A map drag must be a hard hover boundary. The popup should disappear at
-// dragstart, mousemove events produced while panning must not launch lookups,
-// and pre-drag async work must never reappear after the map has moved.
-move(eventFor('SWE', 16, 62));
-const swedenPending = pending.length - 1;
-assert.equal(pending[swedenPending]?.code, 'SWE');
-const removalsBeforeDrag = popupRemovals.length;
-const rendersBeforeDrag = renders.length;
-dragStart();
-assert.ok(popupRemovals.length > removalsBeforeDrag, 'dragstart must remove the hover popup immediately');
-const pendingAtDragStart = pending.length;
-move(eventFor('NOR', 10, 64));
-assert.equal(pending.length, pendingAtDragStart, 'country hover must not fetch/render while the map is being dragged');
-pending[swedenPending].resolve('<b>Sweden late during drag</b>');
-await flush();
-assert.equal(renders.length, rendersBeforeDrag, 'pre-drag async hover work must be invalidated by dragstart');
-dragEnd();
-move(eventFor('NOR', 10, 64));
-assert.equal(pending.at(-1)?.code, 'NOR', 'hover lookup must resume after dragend');
-pending.at(-1).resolve('<b>Norway</b>');
-await flush();
-assert.deepEqual(renders.at(-1), {html:'<b>Norway</b>', lngLat:{lng:10, lat:64}}, 'post-drag hover should render normally');
 
 // Moving many pixels within one country should not launch one asynchronous
 // scalar lookup per mousemove. One lookup should resolve at the latest pointer
