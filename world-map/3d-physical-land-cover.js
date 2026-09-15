@@ -8,8 +8,8 @@ if (!map) throw new Error('Land cover requires the core map.');
 const SOURCE_ID = 'atlas-land-cover-worldcover-2021';
 const LAYER_ID = 'atlas-land-cover-worldcover-2021-raster';
 const LEGEND_ID = 'atlasLandCoverLegend';
-const WMS_BASE = 'https://services.terrascope.be/wms/v2';
-const WMS_LAYER = 'WORLDCOVER_2021_MAP';
+const WMS_BASE = 'https://titiler.terrascope.be/wms';
+const WMS_LAYER = 'esa-worldcover-map-10m-2021-v2_map';
 const WMS_TILE = `${WMS_BASE}?service=WMS&request=GetMap&version=1.1.1&layers=${WMS_LAYER}&styles=&format=image/png&transparent=true&srs=EPSG:3857&bbox={bbox-epsg-3857}&width=256&height=256`;
 
 const CLASSES = [
