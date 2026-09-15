@@ -9,7 +9,6 @@ const payload = adapter.buildLongformPayload({
   current:'2020. GTA roleplay.',
   selection:'Tree ordeal.'
 });
-
 assert.equal(payload.id,'tim-story');
 assert.deepEqual(payload.sections.map(x=>x.id),['all','current','selection']);
 assert.equal(payload.sections[0].label,'Whole story');
@@ -56,18 +55,15 @@ function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterS
 }
 
 const story = fs.readFileSync(new URL('../tim-dooley/story/index.html', import.meta.url),'utf8');
-assertLongformPage(story,{
-  name:'story',host:'id="story-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root="#story-stream"',item:'data-tts-item=".story-entry"',allLabel:'data-tts-all-label="Whole story"',currentLabel:'data-tts-current-label="Current entry"'
-});
+assertLongformPage(story,{name:'story',host:'id="story-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root="#story-stream"',item:'data-tts-item=".story-entry"',allLabel:'data-tts-all-label="Whole story"',currentLabel:'data-tts-current-label="Current entry"'});
 
 const philosophy = fs.readFileSync(new URL('../philosophy/index.html', import.meta.url),'utf8');
-assertLongformPage(philosophy,{
-  name:'philosophy',host:'id="philosophy-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".journey"',item:'data-tts-item=".movement"',allLabel:'data-tts-all-label="Whole journey"',currentLabel:'data-tts-current-label="Current movement"'
-});
+assertLongformPage(philosophy,{name:'philosophy',host:'id="philosophy-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".journey"',item:'data-tts-item=".movement"',allLabel:'data-tts-all-label="Whole journey"',currentLabel:'data-tts-current-label="Current movement"'});
 
 const religion = fs.readFileSync(new URL('../religion/index.html', import.meta.url),'utf8');
-assertLongformPage(religion,{
-  name:'religion',host:'id="religion-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".religion-page"',item:'data-tts-item=".theology-core,.question-stub"',allLabel:'data-tts-all-label="Whole page"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#religion-tts,.page-nav,.bible-lab-cta,.minor,.footer"'
-});
+assertLongformPage(religion,{name:'religion',host:'id="religion-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".religion-page"',item:'data-tts-item=".theology-core,.question-stub"',allLabel:'data-tts-all-label="Whole page"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#religion-tts,.page-nav,.bible-lab-cta,.minor,.footer"'});
+
+const tim = fs.readFileSync(new URL('../tim-dooley/index.html', import.meta.url),'utf8');
+assertLongformPage(tim,{name:'tim overview',host:'id="tim-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".tim-page"',item:'data-tts-item=".reading-frame,.question-stub,.work-row,.sequence>div"',allLabel:'data-tts-all-label="Whole overview"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#tim-tts,.page-nav,.primary,.deep"'});
 
 console.log('longform tts adapter contract: ok');
