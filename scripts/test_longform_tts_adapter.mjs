@@ -99,7 +99,7 @@ assert.ok(!culture.includes('data-tts-item='),'Culture should keep one calm page
 const pythonProbe = String.raw`
 import sys
 sys.path.insert(0, 'scripts')
-import build_site
+import patch_public_navigation as projection
 sample = '<!doctype html><html><head><title>X</title></head><body><main class="page"><nav class="nav">Nav</nav><p>Readable.</p></main></body></html>'
 config = {
     'id': 'shadow-farm',
@@ -109,7 +109,7 @@ config = {
     'exclude': '#shadow-farm-tts,.nav',
     'asset_prefix': '../',
 }
-out = build_site.inject_legacy_tts_reader(sample, config)
+out = projection.inject_legacy_tts_reader(sample, config)
 assert out.count('id="shadow-farm-tts"') == 1
 assert out.count('data-tts-longform') == 1
 assert 'data-tts-root=".page"' in out
@@ -120,7 +120,7 @@ assert 'src="../app/tts-reader.js"' in out
 assert 'src="../app/tts-drawer.js"' in out
 assert 'src="../app/longform-tts-adapter.js"' in out
 assert 'data-tts-item=' not in out
-assert build_site.inject_legacy_tts_reader(out, config) == out
+assert projection.inject_legacy_tts_reader(out, config) == out
 `;
 const projectionProbe=spawnSync('python',['-c',pythonProbe],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
 assert.equal(projectionProbe.status,0,`legacy TTS build projection failed: ${projectionProbe.stdout}\n${projectionProbe.stderr}`);
