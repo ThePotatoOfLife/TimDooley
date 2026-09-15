@@ -26,6 +26,9 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install test dependency
+        run: python -m pip install pytest
+
       - name: Build Evidence Root
         run: python scripts/build_public_statement_evidence_root.py
 
