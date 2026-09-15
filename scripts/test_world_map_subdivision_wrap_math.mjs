@@ -49,7 +49,7 @@ const distanceToMapCenterKm = new Function(
 
 const viewportOverlaps = new Function(
   'map', 'geo',
-  `"use strict"; ${extractFunction('viewportOverlaps')} return viewportOverlaps;`,
+  `"use strict"; ${extractFunction('unwrappedInterval')} ${extractFunction('viewportOverlaps')} return viewportOverlaps;`,
 )(map, geo);
 
 const datelinePartition = { west:-180, east:-178, south:-2, north:2 };
