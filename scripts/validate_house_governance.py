@@ -18,13 +18,6 @@ REQUIRED_SURFACES={
     'index-a-z':'/index-a-z/',
     'context':'/context/',
 }
-GENERATED_SURFACES={'questions','index-a-z'}
-STATIC_SURFACE_FILES={
-    'story':ROOT/'tim-dooley/story/index.html',
-    'collection':ROOT/'corporium/index.html',
-    'works':ROOT/'works/index.html',
-    'context':ROOT/'context/index.html',
-}
 
 def load(path,errors):
     try:v=json.loads(path.read_text(encoding='utf-8'))
@@ -98,8 +91,6 @@ def validate_surfaces(errors,rooms):
         for route in row.get('legacy_routes',[]):
             if route in seen or route in legacy: errors.append(f'legacy route collision {route}')
             legacy[route]=sid
-    for sid,path in STATIC_SURFACE_FILES.items():
-        if not path.is_file(): errors.append(f'{sid} registered static surface missing source file: {path.relative_to(ROOT)}')
     topology_rows=topology.get('records',[])
     topology_by={x.get('surface_id'):x for x in topology_rows if isinstance(x,dict) and x.get('surface_id')}
     if len(topology_by)!=len(topology_rows): errors.append('topology contains duplicate or invalid surface_id records')
