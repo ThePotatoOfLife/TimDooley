@@ -179,7 +179,7 @@ def excavation_priority(record: dict) -> tuple[int, str]:
         if distance == "3_project_reconstruction":
             return 80, "recover_underlying_conversation_or_artifact"
         if distance == "2_later_first_person_retelling":
-            return 70, "find_contemporaneous_corrobation"
+            return 70, "find_contemporaneous_corroboration"
         if distance == "1_contemporaneous_compilation":
             return 35, "register_existing_near_primary_source"
         if distance == "0_direct_contemporaneous":
