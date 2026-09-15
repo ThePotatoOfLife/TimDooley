@@ -52,6 +52,33 @@
     });
   }
 
+  function addRoomPaths(doc){
+    if(!doc||doc.getElementById('reader-room-paths'))return;
+    const main=doc.querySelector('main[data-reader-surface]');
+    const surface=main?.dataset?.readerSurface;
+    const links={
+      tim:[
+        ['story/','Story'],['../timeline/','Timeline'],['../corporium/','Collection'],['../works/','Works'],['../context/source-authority/','Sources']
+      ],
+      religion:[
+        ['../traditions/bible/','Bible comparison'],['../timeline/?tl_layers=roadmap,scripture-at-time,biblical-parallel,biblical-unlock&tl_detail=1','Comparison in time'],['../philosophy/','Philosophy'],['../context/source-authority/','Sources']
+      ]
+    }[surface];
+    if(!main||!links)return;
+    const nav=doc.createElement('nav');
+    nav.id='reader-room-paths';
+    nav.setAttribute('aria-label','Ways through this room');
+    nav.style.cssText='display:flex;gap:10px 14px;flex-wrap:wrap;margin:0 0 30px;padding:12px 0;border-top:1px solid rgba(127,127,127,.22);border-bottom:1px solid rgba(127,127,127,.22);font-size:13px';
+    for(const [href,label] of links){
+      const a=doc.createElement('a');
+      a.href=href;
+      a.textContent=label;
+      nav.appendChild(a);
+    }
+    const header=main.querySelector('.page-header');
+    header?.insertAdjacentElement('afterend',nav);
+  }
+
   function configFromElement(host,doc){
     if(!host||!doc)return null;
     const data=host.dataset||{};
@@ -196,6 +223,7 @@
 
   function autoMount(doc=root?.document){
     if(!doc||typeof doc.querySelectorAll!=='function')return [];
+    addRoomPaths(doc);
     const mounted=[];
     for(const host of doc.querySelectorAll('[data-tts-longform]')){
       if(host.dataset?.ttsMounted==='true')continue;
@@ -215,5 +243,5 @@
     root.document.readyState==='loading'?root.document.addEventListener('DOMContentLoaded',start,{once:true}):start();
   }
 
-  return {cleanText,buildLongformPayload,selectionInside,readableText,mutationsAreInside,configFromElement,mount,autoMount};
+  return {cleanText,buildLongformPayload,selectionInside,readableText,mutationsAreInside,configFromElement,mount,autoMount,addRoomPaths};
 });
