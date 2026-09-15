@@ -73,6 +73,7 @@
     let currentItem=null;
     let drawer=null;
     let selectionAction=null;
+    const pageHighlighter=Drawer.createPageHighlighter?.({document:doc})||{highlight:()=>false,clear:()=>{},invalidate:()=>{}};
     const getItems=()=>itemSelector?[...container.querySelectorAll(itemSelector)]:[];
     const firstItem=()=>getItems()[0]||null;
     const source=()=>{
@@ -96,6 +97,7 @@
     };
     const chooseCurrent=item=>{
       setReadingActive(false);
+      pageHighlighter.invalidate();
       if(item&&container.contains(item))currentItem=item;
       refresh();
     };
@@ -106,7 +108,12 @@
       settingsKey:config.settingsKey||'potato-tts-settings',
       onEvent:event=>{
         if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
-        if(['complete','stop','error'].includes(event.type))setReadingActive(false);
+        if(event.type==='boundary'&&event.absoluteWord){
+          const target=event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null;
+          if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'');
+          else pageHighlighter.clear();
+        }
+        if(['complete','stop','error'].includes(event.type)){setReadingActive(false);pageHighlighter.clear()}
       },
     });
     if(!drawer)return null;
@@ -148,6 +155,7 @@
 
     const Observer=config.MutationObserver||root?.MutationObserver;
     const observer=Observer?new Observer(()=>{
+      pageHighlighter.invalidate();
       if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null}
       ensureListenButtons();
       refresh();
@@ -165,12 +173,14 @@
       source,
       ensureListenButtons,
       selectionAction,
+      pageHighlighter,
       destroy(){
         observer?.disconnect();
         container.removeEventListener('click',onActivate);
         container.removeEventListener('focusin',onActivate);
         doc.removeEventListener('selectionchange',onSelection);
         selectionAction?.destroy?.();
+        pageHighlighter.clear();
         clearReadingActive();
         drawer.stop?.();
       }
