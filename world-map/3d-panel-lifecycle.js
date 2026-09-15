@@ -66,8 +66,10 @@ window.__potatoAtlasPanelLifecycle = {
 };
 
 // Coordinate application surfaces before adding more optional visual layers.
+// Shared math loads first so later geographic detail modules consume one wrap policy.
 // Render Stack is tiny and data-free; Physical World still keeps providers lazy.
 queueMicrotask(async () => {
+  await window.__potatoAtlasLoadModule?.('Geo Kernel', './3d-geo-kernel.js');
   await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
   await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
