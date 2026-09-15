@@ -36,8 +36,16 @@ assert.equal(declarative.allLabel,'Whole journey');
 assert.equal(declarative.currentLabel,'Current movement');
 assert.equal(declarative.itemSelector,'.movement');
 
-function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel}){
-  for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel]) {
+const removalState={removed:false};
+const fakeReadable={cloneNode(){return {querySelectorAll(selector){assert.equal(selector,'.chrome');return [{remove(){removalState.removed=true;}}]},get textContent(){return removalState.removed?'Keep this':'Keep this Skip this';}}}};
+assert.equal(adapter.readableText(fakeReadable,'.chrome'),'Keep this');
+const excludeHost={dataset:{ttsRoot:'#main',ttsExclude:'.nav,.footer'}};
+const mainRoot={id:'main'};
+const excludeDoc={querySelector(selector){return selector==='#main'?mainRoot:null;}};
+assert.equal(adapter.configFromElement(excludeHost,excludeDoc).excludeSelector,'.nav,.footer');
+
+function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
+  for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {
     assert.ok(source.includes(marker),`${name} TTS integration missing ${marker}`);
   }
   assert.ok(!source.includes('PotatoLongformTTS.mount({'),`${name} should use declarative auto-mounting instead of page-specific TTS JavaScript`);
@@ -49,30 +57,17 @@ function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterS
 
 const story = fs.readFileSync(new URL('../tim-dooley/story/index.html', import.meta.url),'utf8');
 assertLongformPage(story,{
-  name:'story',
-  host:'id="story-tts"',
-  css:'href="../../app/tts-drawer.css"',
-  reader:'src="../../app/tts-reader.js"',
-  drawer:'src="../../app/tts-drawer.js"',
-  adapter:'src="../../app/longform-tts-adapter.js"',
-  root:'data-tts-root="#story-stream"',
-  item:'data-tts-item=".story-entry"',
-  allLabel:'data-tts-all-label="Whole story"',
-  currentLabel:'data-tts-current-label="Current entry"'
+  name:'story',host:'id="story-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root="#story-stream"',item:'data-tts-item=".story-entry"',allLabel:'data-tts-all-label="Whole story"',currentLabel:'data-tts-current-label="Current entry"'
 });
 
 const philosophy = fs.readFileSync(new URL('../philosophy/index.html', import.meta.url),'utf8');
 assertLongformPage(philosophy,{
-  name:'philosophy',
-  host:'id="philosophy-tts"',
-  css:'href="../app/tts-drawer.css"',
-  reader:'src="../app/tts-reader.js"',
-  drawer:'src="../app/tts-drawer.js"',
-  adapter:'src="../app/longform-tts-adapter.js"',
-  root:'data-tts-root=".journey"',
-  item:'data-tts-item=".movement"',
-  allLabel:'data-tts-all-label="Whole journey"',
-  currentLabel:'data-tts-current-label="Current movement"'
+  name:'philosophy',host:'id="philosophy-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".journey"',item:'data-tts-item=".movement"',allLabel:'data-tts-all-label="Whole journey"',currentLabel:'data-tts-current-label="Current movement"'
+});
+
+const religion = fs.readFileSync(new URL('../religion/index.html', import.meta.url),'utf8');
+assertLongformPage(religion,{
+  name:'religion',host:'id="religion-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".religion-page"',item:'data-tts-item=".theology-core,.question-stub"',allLabel:'data-tts-all-label="Whole page"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#religion-tts,.page-nav,.bible-lab-cta,.minor,.footer"'
 });
 
 console.log('longform tts adapter contract: ok');
