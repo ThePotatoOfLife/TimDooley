@@ -48,16 +48,40 @@
     if(!active||!nav)return null;
     let host=document.getElementById('bible-tts-drawer');
     if(!host){host=document.createElement('div');host.id='bible-tts-drawer';host.className='bible-tts-drawer';nav.before(host)}
+    host.dataset.ttsPrimary='';
     const read=()=>extractRelation(active);
     const drawer=root.PotatoTTSDrawer.mount({target:host,getPayload:read,settingsKey:'potato-tts-settings'});
+
+    function ensureRelationListen(){
+      const article=active.querySelector?.('.relation');
+      if(!article||article.querySelector?.('.ptts-inline-listen[data-tts-listen]'))return;
+      const control=document.createElement('button');
+      control.type='button';
+      control.className='ptts-inline-listen';
+      control.dataset.ttsListen='';
+      control.textContent='🔊 Listen';
+      control.setAttribute('aria-label','Listen to this Bible comparison');
+      control.addEventListener('click',event=>{
+        event.preventDefault();
+        event.stopPropagation();
+        drawer?.setPayload(read());
+        drawer?.playSection?.('both');
+      });
+      const title=article.querySelector?.('.relation-title');
+      if(title?.insertAdjacentElement)title.insertAdjacentElement('afterend',control);
+      else article.prepend(control);
+    }
+
     let lastId=read().id;
     const observer=new MutationObserver(()=>{
       const next=read();
       if(next.id!==lastId){lastId=next.id;drawer?.setPayload(next)}
       else drawer?.setPayload(next);
+      ensureRelationListen();
     });
     observer.observe(active,{childList:true,subtree:true,characterData:true});
-    return {drawer,observer,refresh:()=>drawer?.setPayload(read())};
+    ensureRelationListen();
+    return {drawer,observer,refresh:()=>{drawer?.setPayload(read());ensureRelationListen()}};
   }
   if(typeof document!=='undefined'){
     if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',mount,{once:true});else setTimeout(mount,0);
