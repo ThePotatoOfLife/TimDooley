@@ -13,6 +13,9 @@ function entries() { return [...(manifest.entries || [])]; }
 function get(id) { return entries().find(row => row.id === id) || null; }
 function isActive(id) { return active.has(id); }
 function activeIds() { return [...active]; }
+function controller(row) {
+  return row?.controller ? window[row.controller] : null;
+}
 
 function persist() {
   const url = new URL(location.href);
@@ -31,10 +34,10 @@ function emit(reason, id) {
 
 async function ensureModule(row) {
   if (!row?.module) throw new Error(`Physical layer ${row?.id || '<unknown>'} has no module`);
-  if (row.id === 'physical.terrain' && window.__potatoAtlasTerrain) return true;
+  if (controller(row)) return true;
   if (loading.has(row.id)) return loading.get(row.id);
   const promise = Promise.resolve(window.__potatoAtlasLoadModule?.(`Physical · ${row.label}`, row.module))
-    .then(result => Boolean(result || (row.id === 'physical.terrain' && window.__potatoAtlasTerrain)))
+    .then(result => Boolean(result || controller(row)))
     .finally(() => loading.delete(row.id));
   loading.set(row.id, promise);
   return promise;
@@ -46,13 +49,12 @@ async function activate(id, { persistState = true } = {}) {
   if (active.has(id)) return true;
   try {
     if (row.load_policy !== 'on_demand') throw new Error(`Unsupported physical load policy: ${row.load_policy}`);
-    if (row.kind === 'module') {
-      const ok = await ensureModule(row);
-      if (!ok) throw new Error(`Could not load ${row.label}`);
-      if (id === 'physical.terrain') await window.__potatoAtlasTerrain?.enable?.();
-    } else {
-      throw new Error(`${row.label} provider is not activated yet`);
-    }
+    if (row.kind !== 'module') throw new Error(`${row.label} provider is not activated yet`);
+    const ok = await ensureModule(row);
+    if (!ok) throw new Error(`Could not load ${row.label}`);
+    const api = controller(row);
+    if (!api?.enable) throw new Error(`${row.label} has no controller enable() API`);
+    await api.enable();
     active.add(id);
     if (persistState) persist();
     emit('activate', id);
@@ -66,7 +68,9 @@ async function activate(id, { persistState = true } = {}) {
 
 async function deactivate(id, { persistState = true } = {}) {
   if (!active.has(id)) return true;
-  if (id === 'physical.terrain') await window.__potatoAtlasTerrain?.disable?.();
+  const row = get(id);
+  const api = controller(row);
+  try { await api?.disable?.(); } catch (error) { console.warn(`Physical layer disable failed: ${id}`, error); }
   active.delete(id);
   if (persistState) persist();
   emit('deactivate', id);
