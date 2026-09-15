@@ -43,50 +43,26 @@ focusMode?.addEventListener('click', () => setFocus(!app?.classList.contains('ui
 setPanel(localStorage.getItem('atlas:panel-open') === '1', {persist:false});
 setFocus(localStorage.getItem('atlas:focus-mode') === '1', {persist:false});
 
+// Panel MutationObserver ownership lives in 3d-panel-lifecycle.js. Progressive
+// UI consumes the canonical lifecycle event and keeps only its panel-open policy.
 function panelLifecycleKey() {
-  if (!panel) return '';
-  const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim() || '';
-  const heading = panel.querySelector(':scope > h1')?.textContent?.trim() || '';
-  const selection = window.__potatoAtlasSelection?.current || {};
-  const code = String(selection.activeCode || selection.code || new URL(location.href).searchParams.get('country') || '').toUpperCase();
-  const compare = new URL(location.href).searchParams.get('compare') || '';
-  return [eyebrow, heading, code, compare].join('|');
+  return window.__potatoAtlasPanelLifecycle?.panelLifecycleKey?.() || '';
 }
 
 let lastSignature = panel?.textContent || '';
-let lastLifecycleKey = '';
-let panelLifecycleScheduled = false;
-function publishPanelLifecycle() {
-  panelLifecycleScheduled = false;
+function consumePanelLifecycle() {
   if (!panel) return;
   const signature = panel.textContent || '';
-  if (signature !== lastSignature) {
-    lastSignature = signature;
-    if (!app?.classList.contains('ui-focus')) {
-      const passiveSelection = /Canonical country|Territory \/ map polygon|World Relational Atlas/.test(signature);
-      const isLanding = /Explore the world/.test(signature);
-      if (!isLanding && !passiveSelection) setPanel(true, {persist:false});
-    }
+  if (signature === lastSignature) return;
+  lastSignature = signature;
+  if (!app?.classList.contains('ui-focus')) {
+    const passiveSelection = /Canonical country|Territory \/ map polygon|World Relational Atlas/.test(signature);
+    const isLanding = /Explore the world/.test(signature);
+    if (!isLanding && !passiveSelection) setPanel(true, {persist:false});
   }
-  const key = panelLifecycleKey();
-  if (!key || key === lastLifecycleKey) return;
-  lastLifecycleKey = key;
-  if (window.__potatoAtlasDiagnostics) {
-    window.__potatoAtlasDiagnostics.panelLifecycleRenders = (window.__potatoAtlasDiagnostics.panelLifecycleRenders || 0) + 1;
-    window.__potatoAtlasDiagnostics.inspectorEnhancementPasses = (window.__potatoAtlasDiagnostics.inspectorEnhancementPasses || 0) + 1;
-  }
-  window.dispatchEvent(new CustomEvent('potato-atlas-panel-rendered', {
-    detail:{ key, code:window.__potatoAtlasSelection?.current?.activeCode || window.__potatoAtlasSelection?.current?.code || null }
-  }));
 }
-function schedulePanelLifecycle() {
-  if (panelLifecycleScheduled) return;
-  panelLifecycleScheduled = true;
-  queueMicrotask(publishPanelLifecycle);
-}
-const observer = panel && new MutationObserver(schedulePanelLifecycle);
-observer?.observe(panel, {childList:true, subtree:true, characterData:true});
-queueMicrotask(publishPanelLifecycle);
+window.addEventListener('potato-atlas-panel-rendered', consumePanelLifecycle);
+queueMicrotask(consumePanelLifecycle);
 
 function summaryText(id, text, active = false) {
   const summary = document.querySelector(`#${id}>summary`);
@@ -184,6 +160,7 @@ function installAxisToggle() {
     button.classList.toggle('active', !nav.hidden);
   });
   document.querySelector('.mapwrap')?.appendChild(button);
+  window.__potatoAtlasUILayout?.register?.({ id:'axis-compact', zone:'canvas-control', element:button, priority:50 });
   return true;
 }
 
@@ -272,7 +249,7 @@ function tuneMapSurface() {
   const selected = ['boolean',['feature-state','selected'],false];
   const compared = ['boolean',['feature-state','compare'],false];
   const countryColor = ['case',selected,'#e7c56f',compared,'#6cafe3','#576d6b'];
-  try { if (map.getLayer('countries-fill')) { map.setPaintProperty('countries-fill','fill-color',countryColor); map.setPaintProperty('countries-fill','fill-opacity',['case',selected,.9,compared,.8,.6]); } } catch {}
+  try { if (map.getLayer('countries-fill')) map.setPaintProperty('countries-fill','fill-color',countryColor); } catch {}
   try { if (map.getLayer('countries-extrude')) map.setPaintProperty('countries-extrude','fill-extrusion-color',countryColor); } catch {}
   try { if (map.getLayer('countries-line')) map.setPaintProperty('countries-line','line-color',['case',selected,'#f4e4ae',compared,'#b9ddf7','#22302f']); } catch {}
   try { if (map.getLayer('country-hubs')) map.setLayoutProperty('country-hubs','visibility','none'); } catch {}
