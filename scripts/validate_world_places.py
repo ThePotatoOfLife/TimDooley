@@ -98,6 +98,7 @@ def validate_runtime(errors: list[str]) -> None:
         "atlas-places-major-points", "atlas-places-major-labels",
         "atlas-places-detail-points", "atlas-places-detail-labels",
         "context-network", "__potatoAtlasOverlayHandled", "Open country",
+        "convergeLegacyCapitals", "potato-atlas-capitals-ready",
     ), errors)
     require_tokens(SEARCH, (
         "__potatoAtlasSearch", "Country", "Capital", "City", "Town", "typeRank", "compareResults",
