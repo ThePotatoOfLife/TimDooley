@@ -16,6 +16,7 @@ PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 TERRAIN = ROOT / "world-map" / "3d-physical-terrain.js"
 WATER_VALIDATOR = ROOT / "scripts" / "validate_world_map_physical_water.py"
 LAND_COVER_VALIDATOR = ROOT / "scripts" / "validate_world_map_land_cover.py"
+DESERTS_VALIDATOR = ROOT / "scripts" / "validate_world_map_deserts.py"
 
 
 def check_node(path: Path, errors: list[str]) -> None:
@@ -29,7 +30,7 @@ def check_node(path: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, WATER_VALIDATOR, LAND_COVER_VALIDATOR):
+    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, WATER_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
@@ -76,16 +77,17 @@ def main() -> int:
         if water.get("availability") not in {"planned", "current"}: errors.append("physical.water.base must be planned or current")
         land = by_id.get("physical.land-cover") or {}
         if land.get("availability") not in {"planned", "current"}: errors.append("physical.land-cover must be planned or current")
-        for overlay_id in ("physical.water.hydrology", "physical.aridity"):
-            row = by_id.get(overlay_id)
-            if not row:
-                errors.append(f"physical manifest missing provider-ready slot {overlay_id}")
-            elif row.get("availability") != "planned":
-                errors.append(f"{overlay_id} must stay planned until its provider/version is pinned")
+        desert = by_id.get("physical.aridity") or {}
+        if desert.get("availability") not in {"planned", "current"}: errors.append("physical.aridity must be planned or current")
+        hydrology = by_id.get("physical.water.hydrology")
+        if not hydrology:
+            errors.append("physical manifest missing provider-ready slot physical.water.hydrology")
+        elif hydrology.get("availability") != "planned":
+            errors.append("physical.water.hydrology must stay planned until its provider/version is pinned")
         land_note = str(land.get("status_note") or "").lower()
         if "not the same thing as desert" not in land_note:
             errors.append("land-cover contract must distinguish bare/sparse vegetation from desert")
-        hydro_note = str((by_id.get("physical.water.hydrology") or {}).get("status_note") or "").lower()
+        hydro_note = str((hydrology or {}).get("status_note") or "").lower()
         if "sacred" not in hydro_note:
             errors.append("hydrology contract must remain independent from sacred river overlays")
 
@@ -107,7 +109,7 @@ def main() -> int:
         if "terrain=1" in terrain or "searchParams.set('terrain'" in terrain:
             errors.append("Terrain module must not own legacy URL state after Physical runtime migration")
 
-    for label, validator in (("physical water", WATER_VALIDATOR), ("land cover", LAND_COVER_VALIDATOR)):
+    for label, validator in (("physical water", WATER_VALIDATOR), ("land cover", LAND_COVER_VALIDATOR), ("deserts", DESERTS_VALIDATOR)):
         if validator.exists():
             result = subprocess.run([sys.executable, str(validator)], capture_output=True, text=True)
             if result.returncode:
