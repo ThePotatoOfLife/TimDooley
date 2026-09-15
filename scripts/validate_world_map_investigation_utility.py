@@ -10,7 +10,9 @@ ROOT = Path(__file__).resolve().parents[1]
 CARD = ROOT / "world-map" / "3d-country-card.js"
 PATHFINDER = ROOT / "world-map" / "3d-pathfinder.js"
 IMPACT = ROOT / "world-map" / "3d-impact-trace.js"
+CHAIN = ROOT / "world-map" / "3d-chain-explorer.js"
 SURFACE = ROOT / "world-map" / "3d-investigation-surface.js"
+SURFACE_OWNERSHIP_TEST = ROOT / "scripts" / "test_world_map_investigation_surface_ownership.mjs"
 WORLD_BAR = ROOT / "world-map" / "3d-world-bar.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 
@@ -27,6 +29,7 @@ def main() -> int:
     card = read(CARD, errors)
     path = read(PATHFINDER, errors)
     impact = read(IMPACT, errors)
+    chain = read(CHAIN, errors)
     surface = read(SURFACE, errors)
     bar = read(WORLD_BAR, errors)
     bootstrap = read(BOOTSTRAP, errors)
@@ -48,22 +51,31 @@ def main() -> int:
     for token in surface_tokens:
         if token not in surface:
             errors.append(f"investigation surface missing coordination marker: {token}")
-    if "register?.('path'" not in path and "register('path'" not in path:
-        errors.append("Path must register with investigation surface coordinator")
-    if "open?.('path'" not in path and "open('path'" not in path:
-        errors.append("Path must announce its temporary surface before rendering")
-    if "register?.('impact'" not in impact and "register('impact'" not in impact:
-        errors.append("Impact must register with investigation surface coordinator")
-    if "open?.('impact'" not in impact and "open('impact'" not in impact:
-        errors.append("Impact must announce its temporary surface before rendering")
+
+    for label, source, identifier in (
+        ("Path", path, "path"),
+        ("Impact", impact, "impact"),
+        ("Chain", chain, "chain"),
+    ):
+        if f"register?.('{identifier}'" not in source and f"register('{identifier}'" not in source:
+            errors.append(f"{label} must register with investigation surface coordinator")
+        if f"open?.('{identifier}'" not in source and f"open('{identifier}'" not in source:
+            errors.append(f"{label} must announce its temporary surface before rendering")
+
+    if "surface?.close?.('chain')" not in chain and "surface.close('chain')" not in chain:
+        errors.append("Chain direct clear must release investigation surface ownership")
+    if "coordinated:true" not in chain:
+        errors.append("Chain must support coordinator-driven close without recursion")
+
     surface_import = "3d-investigation-surface.js"
     if surface_import not in bootstrap:
         errors.append("bootstrap must load the investigation surface coordinator")
     else:
         first = bootstrap.find(surface_import)
-        impact_pos = bootstrap.find("3d-impact-trace.js")
-        if impact_pos >= 0 and first > impact_pos:
-            errors.append("investigation surface coordinator must load before Impact")
+        for label, module_name in (("Impact", "3d-impact-trace.js"), ("Chain", "3d-chain-explorer.js")):
+            pos = bootstrap.find(module_name)
+            if pos >= 0 and first > pos:
+                errors.append(f"investigation surface coordinator must load before {label}")
 
     forbidden_controls = (
         'data-family="path"', 'data-family="infrastructure"', 'data-family="coverage"', 'data-family="investigation"',
@@ -77,12 +89,18 @@ def main() -> int:
 
     node = shutil.which("node")
     if node:
-        for module in (SURFACE, PATHFINDER, IMPACT, BOOTSTRAP):
+        for module in (SURFACE, PATHFINDER, IMPACT, CHAIN, BOOTSTRAP, SURFACE_OWNERSHIP_TEST):
             if not module.is_file():
                 continue
             result = subprocess.run([node, "--check", str(module)], text=True, capture_output=True)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {module.relative_to(ROOT)}: {result.stderr.strip() or result.stdout.strip()}")
+        if SURFACE_OWNERSHIP_TEST.is_file():
+            result = subprocess.run([node, str(SURFACE_OWNERSHIP_TEST)], cwd=ROOT, text=True, capture_output=True)
+            if result.returncode:
+                errors.append("investigation surface ownership regression failed: " + (result.stderr.strip() or result.stdout.strip()))
+        else:
+            errors.append(f"missing investigation surface ownership regression: {SURFACE_OWNERSHIP_TEST.relative_to(ROOT)}")
 
     if errors:
         print("World Map investigation utility validation FAILED:")
