@@ -1,9 +1,9 @@
 {
   "id": "public-statement-root-manifest",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-15",
   "model": "rooted-spiral",
-  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, Development Threads, and deterministic reference projections.",
+  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, Development Threads, persistence tests, and deterministic reference projections.",
   "cycle": [
     "root",
     "spiral",
@@ -12,7 +12,7 @@
     "consolidation",
     "next_spiral"
   ],
-  "ownership_rule": "Source ledgers own captured wording and provenance. Existing Bible relation files own comparison interpretation. This manifest owns reconciliation, rooted identity, structural traversal, function-thread, and reference-projection contracts. Generated Root, Discovery Frontier, Episode, Bible projection, and Development Thread files must be rebuilt rather than hand-edited.",
+  "ownership_rule": "Source ledgers own captured wording and provenance. Existing Bible relation files own comparison interpretation. This manifest owns reconciliation, rooted identity, structural traversal, function-thread, persistence-testing, and reference-projection contracts. Generated Root, Discovery Frontier, Episode, Bible projection, and Development Thread files must be rebuilt rather than hand-edited.",
   "evidence_sources": [
     "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
     "data/evidence/rational-potato-x-timestamped-ledger-2025-2026.json"
@@ -66,7 +66,8 @@
     "Bible relation interpretation remains owned by the established relation files.",
     "Candidate Development Threads use explicit literal terms only.",
     "Every Development Thread attestation records the exact terms that caused membership.",
-    "Function threads remain separate from actor/title assignments and carry no interpretive claims while candidate."
+    "Function threads remain separate from actor/title assignments and carry no interpretive claims while candidate.",
+    "Persistence tests measure recurrence and coverage only; passing them never changes candidate status automatically."
   ],
   "gap_types": [
     "evidence",
@@ -120,7 +121,24 @@
     "actor_assignments": "separate later observation layer",
     "episode_links": "member overlap references only",
     "bible_links": "Root relation references only",
-    "promotion_rule": "Broader functional interpretation requires a later testing pass; candidate membership itself establishes only explicit source-language recurrence."
+    "persistence_tests": {
+      "minimum_active_months": 3,
+      "minimum_span_days": 90,
+      "minimum_term_diversity": 2,
+      "minimum_episode_count": 2,
+      "metrics": [
+        "span_days",
+        "active_month_count",
+        "term_diversity_count",
+        "episode_count",
+        "episode_coverage_ratio",
+        "bible_relation_count",
+        "bible_attestation_count",
+        "bible_attestation_ratio"
+      ],
+      "promotion_effect": "none"
+    },
+    "promotion_rule": "Broader functional interpretation requires a later testing pass; candidate membership and persistence testing establish only explicit recurrence, temporal spread, vocabulary diversity, and reference coverage in the supplied corpus."
   },
   "claim_boundary": "The Evidence Root records what was supplied, how records reconcile, and what remains unknown. It does not establish supernatural identity, prophecy fulfillment, or the truth of theological claims contained in source statements."
 }
