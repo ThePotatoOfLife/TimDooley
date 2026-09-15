@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import fs from 'node:fs';
 import drawer from '../app/tts-drawer.js';
 
 const { normalizePayload, resolveSection, buildReadingText } = drawer;
@@ -26,5 +27,10 @@ assert.equal(buildReadingText(sparse, 'project'), 'hello world');
 assert.equal(typeof drawer.mount, 'function');
 assert.equal(typeof drawer.renderFocusedText, 'function');
 assert.deepEqual(drawer.renderFocusedText('alpha beta gamma', {start:6,end:10}), {before:'alpha ',active:'beta',after:' gamma'});
+
+const source = fs.readFileSync(new URL('../app/tts-drawer.js', import.meta.url),'utf8');
+assert.ok(source.includes('function playSection(id)'), 'drawer must expose explicit section playback');
+assert.ok(source.includes('playSection,'), 'drawer public API must return playSection');
+assert.ok(source.includes("'🔊 Listen'"), 'collapsed shared player should use the Listen label');
 
 console.log('tts drawer contract: ok');
