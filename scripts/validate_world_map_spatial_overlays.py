@@ -8,6 +8,8 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 MANIFEST = ROOT / "data" / "world-map-spatial-overlays.json"
+MEASUREMENTS = ROOT / "data" / "world-map-spatial-measurements.json"
+UI = ROOT / "world-map" / "3d-spatial-overlay-ui.js"
 ALLOWED_TYPES = {
     "current_observed",
     "current_disputed",
@@ -88,6 +90,7 @@ def main() -> int:
                 data = load_json(ROOT / owner, errors)
                 owners[owner] = data if isinstance(data, dict) else {}
 
+    feature_lookup: dict[str, dict] = {}
     for owner, collection in owners.items():
         if collection.get("type") != "FeatureCollection":
             errors.append(f"{owner} must be a GeoJSON FeatureCollection")
@@ -102,6 +105,7 @@ def main() -> int:
             if fid in feature_map:
                 errors.append(f"{owner} contains duplicate feature_id {fid}")
             feature_map[fid] = feature
+            feature_lookup[fid] = feature
             missing = sorted(REQUIRED_FEATURE - set(props))
             if missing:
                 errors.append(f"feature {fid} missing properties: {', '.join(missing)}")
@@ -125,13 +129,45 @@ def main() -> int:
                 if props.get("epistemic_type") != entry.get("epistemic_type"):
                     errors.append(f"feature {fid} epistemic_type differs from manifest")
 
+    measurements = load_json(MEASUREMENTS, errors)
+    measurement_rows = measurements.get("features") if isinstance(measurements, dict) else {}
+    if not isinstance(measurement_rows, dict):
+        errors.append("world-map-spatial-measurements.json must contain an object named features")
+        measurement_rows = {}
+    for entry in entries:
+        if entry.get("availability") != "current" or not entry.get("measurable"):
+            continue
+        for fid in entry.get("feature_ids") or []:
+            feature = feature_lookup.get(fid) or {}
+            geometry_type = (feature.get("geometry") or {}).get("type")
+            row = measurement_rows.get(fid)
+            if not isinstance(row, dict):
+                errors.append(f"missing measurement record for {fid}")
+                continue
+            for key in ("geometry_version", "geometry_type", "bbox", "component_count", "method", "measurement_policy"):
+                if key not in row:
+                    errors.append(f"measurement {fid} missing {key}")
+            if row.get("geometry_type") != geometry_type:
+                errors.append(f"measurement {fid} geometry_type differs from owner geometry")
+            if geometry_type in {"Polygon", "MultiPolygon"}:
+                for key in ("area_sq_km", "perimeter_km"):
+                    if key not in row:
+                        errors.append(f"polygon measurement {fid} missing {key}")
+            if geometry_type in {"LineString", "MultiLineString"} and "length_km" not in row:
+                errors.append(f"line measurement {fid} missing length_km")
+
+    ui = UI.read_text(encoding="utf-8", errors="replace") if UI.is_file() else ""
+    for token in ("world-map-spatial-measurements.json", "Geometry-derived", "area_sq_km", "length_km"):
+        if token not in ui:
+            errors.append(f"spatial overlay inspector missing measurement marker: {token}")
+
     if errors:
         print("World Map spatial overlay validation FAILED:")
         for error in errors:
             print(f" - {error}")
         return 1
 
-    print(f"World Map spatial overlay validation passed: {len(entries)} overlays, {len(owners)} geometry owner(s).")
+    print(f"World Map spatial overlay validation passed: {len(entries)} overlays, {len(owners)} geometry owner(s), {len(measurement_rows)} measurement(s).")
     return 0
 
 

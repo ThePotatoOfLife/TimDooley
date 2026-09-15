@@ -1,0 +1,56 @@
+{
+  "type": "FeatureCollection",
+  "name": "Palestine base-map Gaza repair",
+  "metadata": {
+    "purpose": "Repair the legacy world.geo.json PSE base feature, which contains West Bank only, by adding the disconnected Gaza Strip component. This is a base-map completeness repair, not the authoritative current political-boundary overlay.",
+    "canonical_entity": "PSE",
+    "source_note": "Gaza geometry copied from a Natural Earth 1:10m admin-0 breakaway/disputed feature snapshot exposed in the cited Natural Earth-derived GeoJSON gist. Natural Earth documentation records Gaza Strip and West Bank as Palestine components. The dedicated current Palestine overlay remains separately source-pinned and viewpoint-aware.",
+    "license_note": "Natural Earth data are public domain."
+  },
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "component": "Gaza Strip",
+        "canonical_entity": "PSE",
+        "source": "Natural Earth 1:10m admin-0 breakaway/disputed geometry",
+        "source_version": "Natural-Earth-derived snapshot, accessed 2026-09-15",
+        "source_reference": "https://gist.github.com/tianyi-luo/9765381",
+        "status_note": "Base-map completeness repair only; current/disputed boundary semantics belong to the dedicated spatial overlay contract."
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[
+          [34.24835085700005,31.21144895800009],
+          [34.23039595600011,31.259230041000137],
+          [34.224608195000144,31.27571482400012],
+          [34.20026944114147,31.31426668914756],
+          [34.200287306000064,31.314276434000107],
+          [34.222666863000086,31.326646226000065],
+          [34.23666425900012,31.342352606000105],
+          [34.28142337300005,31.376695054000066],
+          [34.301605665000125,31.407700914000088],
+          [34.348399285000085,31.437648830000057],
+          [34.36817467500009,31.468166408000116],
+          [34.443369988000086,31.53457265800003],
+          [34.47877037900008,31.57827383000003],
+          [34.481204125001,31.583141322999523],
+          [34.51141239400005,31.56158884700008],
+          [34.5304293210001,31.54138336200009],
+          [34.52825891100014,31.520144348000116],
+          [34.495702759000096,31.494409485000034],
+          [34.495496054000114,31.494409485000034],
+          [34.48040653500004,31.485624492000056],
+          [34.36733850100012,31.392813619000037],
+          [34.34584110500009,31.357725322000107],
+          [34.345531046000076,31.34072377600009],
+          [34.35379927600013,31.306358948000138],
+          [34.350905396000144,31.289254049000107],
+          [34.315868775000126,31.256904602000105],
+          [34.26439904800014,31.22419342000012],
+          [34.24835085700005,31.21144895800009]
+        ]]
+      }
+    }
+  ]
+}
