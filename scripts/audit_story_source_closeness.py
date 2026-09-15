@@ -118,7 +118,8 @@ def scan_public(root: Path) -> list[dict]:
 def infer_source_hints(
     hints: list[str], note_text: str = ""
 ) -> tuple[list[str], str | None, str | None]:
-    text = " ".join([*hints, note_text]).lower()
+    raw_text = " ".join([*hints, note_text]).lower()
+    text = " ".join(raw_text.replace("_", " ").replace("-", " ").split())
     classes: list[str] = []
 
     if "suno" in text or "creative catalogue" in text or "creative archive" in text:
@@ -127,10 +128,9 @@ def infer_source_hints(
     if any(
         token in text
         for token in (
-            "public-post",
             "public post",
             "twitter",
-            "rational_potato",
+            "rational potato",
             "x occurrence",
             "public indexed",
             "public compilation",
@@ -140,7 +140,7 @@ def infer_source_hints(
     ):
         classes.append("public_post_sequence")
 
-    if "great-book" in text or "great book" in text:
+    if "great book" in text:
         if any(
             token in text
             for token in (
@@ -148,23 +148,48 @@ def infer_source_hints(
                 "later retelling",
                 "autobiographical",
                 "project autobiography",
-                "project-autobiographical",
+                "project biography",
             )
         ):
             classes.append("later_autobiographical_retelling")
-        elif any(token in text for token in ("literary", "direct chapter", "creative scene", "creative/social layer")):
+        elif any(
+            token in text
+            for token in (
+                "literary",
+                "direct chapter",
+                "creative scene",
+                "creative social layer",
+                "great book creative",
+            )
+        ):
             classes.append("great_book_literary_text")
+
+    if "chapter 24 biography" in text or "chapter 24 stratum" in text:
+        classes.append("later_autobiographical_retelling")
 
     if any(
         token in text
         for token in (
             "conversation recovery",
-            "conversation-derived",
-            "prior-conversation recovery",
+            "conversation derived",
+            "prior conversation recovery",
             "conversation archaeology",
         )
     ):
         classes.append("conversation_recovery")
+
+    if "statement ledger" in text:
+        classes.append("statement_ledger")
+
+    if any(
+        token in text
+        for token in (
+            "retrospective recovery",
+            "project canon retrospective",
+            "administrative lead retrospective",
+        )
+    ):
+        classes.append("archaeology_summary")
 
     classes = sorted(set(classes))
     if not classes:
