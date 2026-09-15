@@ -51,6 +51,7 @@ def main() -> int:
             "physical-surface", "physical-water", "physical-line", "geography-context", "context-network", "selection-emphasis",
             "moveLayer", "potato-atlas-render-stack-change", "queueMicrotask", "styledata",
             "potato-atlas-module-ready", "localeCompare",
+            "function styleSnapshot", "orderIndex", "renderStackStyleSnapshots",
         ),
         errors,
         "render stack",
@@ -64,6 +65,14 @@ def main() -> int:
         positions = [render.find(repr(slot).replace('"', "'")) for slot in expected_order]
         if any(position < 0 for position in positions) or positions != sorted(positions):
             errors.append("render stack must declare canonical slot order bottom-to-top")
+        move_start = render.find("function moveRegion")
+        reconcile_start = render.find("function reconcile")
+        move_body = render[move_start:reconcile_start] if move_start >= 0 and reconcile_start > move_start else ""
+        if "map.getStyle()" in move_body or "styleOrder()" in move_body:
+            errors.append("moveRegion must use the reconcile style snapshot instead of rebuilding style order per layer")
+        reconcile_body = render[reconcile_start:] if reconcile_start >= 0 else ""
+        if reconcile_body.count("styleSnapshot()") != 1:
+            errors.append("each render-stack reconcile must capture exactly one style snapshot")
 
     lifecycle = require_tokens(
         PANEL,

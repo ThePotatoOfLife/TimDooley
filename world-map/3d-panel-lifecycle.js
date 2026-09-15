@@ -71,7 +71,12 @@ queueMicrotask(async () => {
   await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
   await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
-  await window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
+  const placesLoaded = await window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
+  if (!placesLoaded) {
+    window.dispatchEvent(new CustomEvent('potato-atlas-places-ready', {
+      detail:{ majorCount:0, error:'Places module unavailable', fallback:true }
+    }));
+  }
   await window.__potatoAtlasLoadModule?.('Search', './3d-search.js');
   await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
 });

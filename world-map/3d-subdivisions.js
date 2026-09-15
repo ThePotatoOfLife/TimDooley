@@ -1,24 +1,40 @@
 // Generic lazy subdivision renderer for the World Map.
-// Uses same-origin country partitions and the canonical right inspector (#panel).
+// Uses same-origin country partitions, one bounded shared rendering surface,
+// and the canonical right inspector (#panel).
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
-const SOURCE_PREFIX = 'atlas-subdivisions-';
-const LINE_PREFIX = 'atlas-subdivision-line-';
-const HIT_PREFIX = 'atlas-subdivision-hit-';
-const LABEL_PREFIX = 'atlas-subdivision-label-';
+const SOURCE_ID = 'atlas-subdivisions-active';
+const LINE_ID = 'atlas-subdivision-line';
+const HIT_ID = 'atlas-subdivision-hit';
+const LABEL_ID = 'atlas-subdivision-label';
 const USA_BOUNDS_FALLBACK = { west:-179.5, east:-65, south:17, north:72.5 };
+const DEFAULT_RUNTIME_BUDGET = Object.freeze({
+  partition_max_bytes:1500000,
+  rendered_max_bytes:3000000,
+  rendered_max_partitions:4,
+  cache_max_bytes:6000000,
+  cache_max_partitions:8,
+});
 
-const loaded = new Map();
+const cache = new Map();
 let indexPromise = null;
 let selectedId = new URL(location.href).searchParams.get('subdivision') || null;
 // Camera intent from a deep link is one-shot. Persistent selection must not be
 // replayed on every moveend or fitBounds can recurse forever.
 let pendingDeepLinkId = selectedId;
 let panelSnapshot = null;
+let eventsBound = false;
+let useClock = 0;
+let activePartitions = [];
+let activeBytes = 0;
+let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
+let cacheHits = 0;
+let cacheMisses = 0;
+let cacheEvictions = 0;
 
 function fmt(value) {
   if (value == null || !Number.isFinite(Number(value))) return '—';
@@ -66,11 +82,25 @@ function restoreInspector() {
     window.__potatoAtlasPanelLifecycle?.publish?.();
   }
 }
+function normalizeBudget(index) {
+  const supplied = index?.runtime_budget || {};
+  runtimeBudget = {
+    partition_max_bytes:Number(supplied.partition_max_bytes) || DEFAULT_RUNTIME_BUDGET.partition_max_bytes,
+    rendered_max_bytes:Number(supplied.rendered_max_bytes) || DEFAULT_RUNTIME_BUDGET.rendered_max_bytes,
+    rendered_max_partitions:Number(supplied.rendered_max_partitions) || DEFAULT_RUNTIME_BUDGET.rendered_max_partitions,
+    cache_max_bytes:Number(supplied.cache_max_bytes) || DEFAULT_RUNTIME_BUDGET.cache_max_bytes,
+    cache_max_partitions:Number(supplied.cache_max_partitions) || DEFAULT_RUNTIME_BUDGET.cache_max_partitions,
+  };
+  return runtimeBudget;
+}
 async function subdivisionIndex() {
   if (!indexPromise) {
     indexPromise = fetch(INDEX_URL).then(response => {
       if (!response.ok) throw new Error(`Subdivision index unavailable (${response.status})`);
       return response.json();
+    }).then(index => {
+      normalizeBudget(index);
+      return index;
     });
   }
   return indexPromise;
@@ -97,6 +127,20 @@ function partitionForId(index, id) {
   }
   return value.startsWith('US-') ? 'USA' : null;
 }
+function descriptorCenter(bounds) {
+  if (!bounds) return null;
+  return [(Number(bounds.west) + Number(bounds.east)) / 2, (Number(bounds.south) + Number(bounds.north)) / 2];
+}
+function squaredDistanceToMapCenter(bounds) {
+  const center = descriptorCenter(bounds);
+  const mapCenter = map.getCenter?.();
+  if (!center || !mapCenter || !Number.isFinite(Number(mapCenter.lng)) || !Number.isFinite(Number(mapCenter.lat))) {
+    return Number.POSITIVE_INFINITY;
+  }
+  const dx = center[0] - Number(mapCenter.lng);
+  const dy = center[1] - Number(mapCenter.lat);
+  return dx * dx + dy * dy;
+}
 function recursiveBounds(node, box) {
   if (!Array.isArray(node)) return box;
   if (node.length >= 2 && typeof node[0] === 'number' && typeof node[1] === 'number') {
@@ -112,13 +156,52 @@ function geometryBounds(feature) {
   const box = recursiveBounds(feature?.geometry?.coordinates, [Infinity, Infinity, -Infinity, -Infinity]);
   return box.every(Number.isFinite) ? [[box[0],box[1]],[box[2],box[3]]] : null;
 }
-function featureById(partition, id) {
-  return loaded.get(partition)?.data?.features?.find(feature => feature?.properties?.id === id) || null;
+function touch(state) {
+  state.lastUsed = ++useClock;
+  return state;
 }
-function sourceId(partition) { return `${SOURCE_PREFIX}${partition}`; }
-function lineId(partition) { return `${LINE_PREFIX}${partition}`; }
-function hitId(partition) { return `${HIT_PREFIX}${partition}`; }
-function labelId(partition) { return `${LABEL_PREFIX}${partition}`; }
+function cacheBytes() {
+  return [...cache.values()].reduce((sum, state) => sum + state.bytes, 0);
+}
+function syncDiagnostics() {
+  const diagnostics = window.__potatoAtlasDiagnostics;
+  if (!diagnostics) return;
+  diagnostics.subdivisions = {
+    ...(diagnostics.subdivisions || {}),
+    cacheHits,
+    cacheMisses,
+    cacheEvictions,
+    cacheBytes:cacheBytes(),
+    cachedPartitions:cache.size,
+    renderedBytes:activeBytes,
+    renderedPartitions:activePartitions.length,
+  };
+}
+function featureById(partition, id) {
+  return cache.get(partition)?.data?.features?.find(feature => feature?.properties?.id === id) || null;
+}
+function enforceCacheBudget(index, extraProtected = []) {
+  const protectedIds = new Set(activePartitions);
+  const selectedPartition = partitionForId(index, selectedId);
+  const pendingPartition = partitionForId(index, pendingDeepLinkId);
+  if (selectedPartition) protectedIds.add(selectedPartition);
+  if (pendingPartition) protectedIds.add(pendingPartition);
+  for (const partition of extraProtected) if (partition) protectedIds.add(partition);
+
+  let bytes = cacheBytes();
+  const evictable = [...cache.entries()]
+    .filter(([partition]) => !protectedIds.has(partition))
+    .sort((a, b) => a[1].lastUsed - b[1].lastUsed || a[0].localeCompare(b[0]));
+
+  while ((cache.size > runtimeBudget.cache_max_partitions || bytes > runtimeBudget.cache_max_bytes) && evictable.length) {
+    const [partition, state] = evictable.shift();
+    if (!cache.has(partition)) continue;
+    cache.delete(partition);
+    bytes -= state.bytes;
+    cacheEvictions += 1;
+  }
+  syncDiagnostics();
+}
 function syncUrl(id) {
   const url = new URL(location.href);
   if (id) url.searchParams.set('subdivision', id);
@@ -137,30 +220,42 @@ function selectSubdivision(partition, feature, options = {}) {
   window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-select', { detail:{ partition, id:selectedId, properties:p, feature } }));
   return true;
 }
-function bindLayerEvents(partition) {
-  const hit = hitId(partition);
-  map.on('mouseenter', hit, () => { map.getCanvas().style.cursor = 'pointer'; });
-  map.on('mouseleave', hit, () => { map.getCanvas().style.cursor = ''; });
-  map.on('click', hit, event => {
-    const feature = event.features?.[0];
-    if (!feature) return;
-    if (event.originalEvent) {
-      event.originalEvent.__potatoAtlasSubdivisionHandled = true;
-      event.originalEvent.__potatoAtlasOverlayHandled = true;
-    }
-    selectSubdivision(partition, feature, {fit:true});
-  });
-}
-function installPartitionLayers(partition, data) {
-  const source = sourceId(partition);
-  if (!map.getSource(source)) map.addSource(source, { type:'geojson', data, promoteId:'id' });
-  const before = map.getLayer('countries-line') ? 'countries-line' : (map.getLayer('countries-outline') ? 'countries-outline' : undefined);
-  if (!map.getLayer(hitId(partition))) {
-    map.addLayer({id:hitId(partition),type:'fill',source,minzoom:3.4,paint:{'fill-color':'#ffffff','fill-opacity':0.001}}, before);
+async function handleSharedLayerClick(event) {
+  const id = event.features?.[0]?.properties?.id;
+  if (!id) return;
+  if (event.originalEvent) {
+    event.originalEvent.__potatoAtlasSubdivisionHandled = true;
+    event.originalEvent.__potatoAtlasOverlayHandled = true;
   }
-  if (!map.getLayer(lineId(partition))) {
+  try {
+    const index = await subdivisionIndex();
+    const partition = partitionForId(index, id);
+    if (!partition) return;
+    await loadPartition(partition);
+    const feature = featureById(partition, id);
+    if (feature) selectSubdivision(partition, feature, {fit:true});
+  } catch (error) {
+    console.warn(`Subdivision selection unavailable: ${id}`, error);
+  }
+}
+function bindSharedLayerEvents() {
+  if (eventsBound) return;
+  map.on('mouseenter', HIT_ID, () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', HIT_ID, () => { map.getCanvas().style.cursor = ''; });
+  map.on('click', HIT_ID, handleSharedLayerClick);
+  eventsBound = true;
+}
+function installSharedLayers() {
+  if (!map.getSource(SOURCE_ID)) {
+    map.addSource(SOURCE_ID, { type:'geojson', data:{type:'FeatureCollection',features:[]}, promoteId:'id' });
+  }
+  const before = map.getLayer('countries-line') ? 'countries-line' : (map.getLayer('countries-outline') ? 'countries-outline' : undefined);
+  if (!map.getLayer(HIT_ID)) {
+    map.addLayer({id:HIT_ID,type:'fill',source:SOURCE_ID,minzoom:3.4,paint:{'fill-color':'#ffffff','fill-opacity':0.001}}, before);
+  }
+  if (!map.getLayer(LINE_ID)) {
     map.addLayer({
-      id:lineId(partition),type:'line',source,minzoom:3.4,
+      id:LINE_ID,type:'line',source:SOURCE_ID,minzoom:3.4,
       paint:{
         'line-color':'#9aa9a2',
         'line-opacity':['interpolate',['linear'],['zoom'],3.4,0.28,5,0.55,7,0.78],
@@ -168,34 +263,102 @@ function installPartitionLayers(partition, data) {
       }
     }, before);
   }
-  if (!map.getLayer(labelId(partition))) {
+  if (!map.getLayer(LABEL_ID)) {
     map.addLayer({
-      id:labelId(partition),type:'symbol',source,minzoom:4.25,
+      id:LABEL_ID,type:'symbol',source:SOURCE_ID,minzoom:4.25,
       layout:{
         'text-field':['step',['zoom'],['get','code'],5.8,['get','name']],
         'text-size':['interpolate',['linear'],['zoom'],4.25,9,6.5,12],
         'text-max-width':8,'text-allow-overlap':false,'text-ignore-placement':false
       },
       paint:{'text-color':'#d4ddd7','text-halo-color':'#0a0f0f','text-halo-width':1.1,'text-opacity':0.86}
-    });
+    }, before);
   }
-  bindLayerEvents(partition);
+  bindSharedLayerEvents();
 }
 async function loadPartition(partition) {
-  if (loaded.has(partition)) return loaded.get(partition);
+  if (cache.has(partition)) {
+    cacheHits += 1;
+    const state = touch(cache.get(partition));
+    syncDiagnostics();
+    return state;
+  }
+  cacheMisses += 1;
   const index = await subdivisionIndex();
   const descriptor = index?.partitions?.[partition];
   const fallbackPath = partition === 'USA' ? USA_PARTITION_FALLBACK : null;
   const partitionPath = descriptor?.path || fallbackPath;
-  if (!partitionPath) throw new Error(`Subdivision partition ${partition} is not available.`);
+  if (!partitionPath) {
+    syncDiagnostics();
+    throw new Error(`Subdivision partition ${partition} is not available.`);
+  }
   const response = await fetch(`../data/world-subdivisions/${partitionPath}`);
-  if (!response.ok) throw new Error(`Subdivision partition ${partition} unavailable (${response.status})`);
+  if (!response.ok) {
+    syncDiagnostics();
+    throw new Error(`Subdivision partition ${partition} unavailable (${response.status})`);
+  }
   const data = await response.json();
-  if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error(`Subdivision partition ${partition} is not GeoJSON.`);
-  const state = { descriptor: descriptor || { path:partitionPath }, data };
-  loaded.set(partition, state);
-  installPartitionLayers(partition, data);
+  if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) {
+    syncDiagnostics();
+    throw new Error(`Subdivision partition ${partition} is not GeoJSON.`);
+  }
+  const state = touch({
+    descriptor: descriptor || { path:partitionPath },
+    data,
+    bytes:Number(descriptor?.bytes) || 0,
+    lastUsed:0,
+  });
+  cache.set(partition, state);
+  installSharedLayers();
+  enforceCacheBudget(index, [partition]);
   return state;
+}
+function relevantCandidates(index) {
+  const pendingPartition = partitionForId(index, pendingDeepLinkId);
+  const selectedPartition = partitionForId(index, selectedId);
+  return partitionEntries(index)
+    .map(([partition, descriptor]) => {
+      const bounds = descriptorBounds(partition, descriptor);
+      let priority = 2;
+      if (partition === pendingPartition) priority = 0;
+      else if (partition === selectedPartition) priority = 1;
+      if (priority === 2 && !viewportOverlaps(bounds)) return null;
+      return { partition, descriptor, priority, distance:squaredDistanceToMapCenter(bounds) };
+    })
+    .filter(Boolean)
+    .sort((a, b) => a.priority - b.priority || a.distance - b.distance || a.partition.localeCompare(b.partition));
+}
+async function reconcileActive(index) {
+  installSharedLayers();
+  normalizeBudget(index);
+  const selected = [];
+  let bytes = 0;
+  for (const candidate of relevantCandidates(index)) {
+    let state;
+    try {
+      state = await loadPartition(candidate.partition);
+    } catch (error) {
+      console.warn(`Subdivision layer unavailable: ${candidate.partition}`, error);
+      continue;
+    }
+    const nextCount = selected.length + 1;
+    const nextBytes = bytes + state.bytes;
+    if (nextCount > runtimeBudget.rendered_max_partitions || nextBytes > runtimeBudget.rendered_max_bytes) continue;
+    selected.push({ partition:candidate.partition, state });
+    bytes = nextBytes;
+  }
+  const merged = {
+    type:'FeatureCollection',
+    features:selected.flatMap(entry => entry.state.data.features || []),
+  };
+  const source = map.getSource(SOURCE_ID);
+  if (source?.setData) source.setData(merged);
+  else if (source) source.data = merged;
+  activePartitions = selected.map(entry => entry.partition);
+  activeBytes = bytes;
+  enforceCacheBudget(index);
+  syncDiagnostics();
+  return activePartitions;
 }
 async function ensureRelevantPartitions() {
   let index;
@@ -206,24 +369,24 @@ async function ensureRelevantPartitions() {
     return;
   }
   const deepLinkId = pendingDeepLinkId;
+  await reconcileActive(index);
+  if (!deepLinkId || pendingDeepLinkId !== deepLinkId) return;
   const deepLinkPartition = partitionForId(index, deepLinkId);
-  for (const [partition, descriptor] of partitionEntries(index)) {
-    const wantsDeepLink = partition === deepLinkPartition;
-    const wantsViewport = viewportOverlaps(descriptorBounds(partition, descriptor));
-    if (!wantsDeepLink && !wantsViewport) continue;
-    try {
-      await loadPartition(partition);
-      if (wantsDeepLink && pendingDeepLinkId === deepLinkId) {
-        pendingDeepLinkId = null;
-        const feature = featureById(partition, deepLinkId);
-        if (feature) selectSubdivision(partition, feature, {fit:true});
-      }
-    } catch (error) {
-      console.warn(`Subdivision layer unavailable: ${partition}`, error);
+  if (!deepLinkPartition) return;
+  try {
+    await loadPartition(deepLinkPartition);
+    if (pendingDeepLinkId === deepLinkId) {
+      // Consume camera intent before fitBounds so the resulting moveend cannot replay it.
+      pendingDeepLinkId = null;
+      const feature = featureById(deepLinkPartition, deepLinkId);
+      if (feature) selectSubdivision(deepLinkPartition, feature, {fit:true});
     }
+  } catch (error) {
+    console.warn(`Subdivision layer unavailable: ${deepLinkPartition}`, error);
   }
 }
 
+installSharedLayers();
 map.on('moveend', ensureRelevantPartitions);
 await ensureRelevantPartitions();
 
@@ -234,18 +397,35 @@ window.__potatoAtlasSubdivisions = {
     const partition = partitionForId(index, id);
     if (!partition) return false;
     await loadPartition(partition);
-    return selectSubdivision(partition, featureById(partition, id), options);
+    const result = selectSubdivision(partition, featureById(partition, id), options);
+    if (result) await reconcileActive(index);
+    return result;
   },
   clear() {
     selectedId = null;
     pendingDeepLinkId = null;
     syncUrl(null);
     restoreInspector();
+    subdivisionIndex().then(reconcileActive).catch(error => console.warn('Subdivision reconcile unavailable:', error));
     window.dispatchEvent(new CustomEvent('potato-atlas-subdivision-clear'));
     return true;
   },
   get selected() { return selectedId; },
-  loadedPartitions() { return [...loaded.keys()]; },
+  loadedPartitions() { return [...cache.keys()]; },
+  status() {
+    return {
+      selected:selectedId,
+      renderedPartitions:[...activePartitions],
+      renderedBytes:activeBytes,
+      cachedPartitions:[...cache.keys()],
+      cacheBytes:cacheBytes(),
+      cacheHits,
+      cacheMisses,
+      cacheEvictions,
+      budget:{...runtimeBudget},
+    };
+  },
 };
 
+syncDiagnostics();
 window.dispatchEvent(new CustomEvent('potato-atlas-subdivisions-ready', { detail:{ selected:selectedId } }));

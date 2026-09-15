@@ -29,25 +29,46 @@ function sorted(slot) {
     .sort((a, b) => a.priority - b.priority || a.layerId.localeCompare(b.layerId));
 }
 
-function styleOrder() {
-  return map.getStyle()?.layers?.map(layer => layer.id) || [];
+function rebuildOrderIndex(snapshot) {
+  snapshot.orderIndex.clear();
+  snapshot.order.forEach((id, index) => snapshot.orderIndex.set(id, index));
 }
 
-function moveRegion(layerIds, anchorId, moved) {
+function styleSnapshot() {
+  const order = map.getStyle()?.layers?.map(layer => layer.id) || [];
+  const snapshot = { order, orderIndex:new Map() };
+  rebuildOrderIndex(snapshot);
+  if (window.__potatoAtlasDiagnostics) {
+    window.__potatoAtlasDiagnostics.renderStackStyleSnapshots = (window.__potatoAtlasDiagnostics.renderStackStyleSnapshots || 0) + 1;
+  }
+  return snapshot;
+}
+
+function recordLocalMove(snapshot, layerId, beforeId) {
+  const layerIndex = snapshot.orderIndex.get(layerId);
+  const beforeIndex = snapshot.orderIndex.get(beforeId);
+  if (layerIndex == null || beforeIndex == null || layerIndex === beforeIndex) return;
+  snapshot.order.splice(layerIndex, 1);
+  const insertIndex = layerIndex < beforeIndex ? beforeIndex - 1 : beforeIndex;
+  snapshot.order.splice(insertIndex, 0, layerId);
+  rebuildOrderIndex(snapshot);
+}
+
+function moveRegion(layerIds, anchorId, moved, snapshot) {
   if (!layerIds.length || !anchorId || !map.getLayer(anchorId)) return;
   let beforeId = anchorId;
   for (const layerId of [...layerIds].reverse()) {
     if (!map.getLayer(layerId)) continue;
-    const order = styleOrder();
-    const layerIndex = order.indexOf(layerId);
-    const beforeIndex = order.indexOf(beforeId);
-    if (layerIndex >= 0 && beforeIndex >= 0 && layerIndex + 1 === beforeIndex) {
+    const layerIndex = snapshot.orderIndex.get(layerId);
+    const beforeIndex = snapshot.orderIndex.get(beforeId);
+    if (layerIndex != null && beforeIndex != null && layerIndex + 1 === beforeIndex) {
       beforeId = layerId;
       continue;
     }
     try {
       map.moveLayer(layerId, beforeId);
       moved.push(layerId);
+      recordLocalMove(snapshot, layerId, beforeId);
       beforeId = layerId;
     } catch (error) {
       console.warn(`Render Stack could not move ${layerId}:`, error);
@@ -62,9 +83,10 @@ function firstExisting(ids) {
 function reconcile(reason = 'manual') {
   const moved = [];
   const missing = [...entries.values()].filter(entry => !map.getLayer(entry.layerId)).map(entry => entry.layerId);
+  const snapshot = styleSnapshot();
 
   // Broad physical surfaces remain below the country tint.
-  moveRegion(sorted('physical-surface').map(entry => entry.layerId), firstExisting(['countries-fill', 'countries-line', 'country-hubs', 'country-labels']), moved);
+  moveRegion(sorted('physical-surface').map(entry => entry.layerId), firstExisting(['countries-fill', 'countries-line', 'country-hubs', 'country-labels']), moved, snapshot);
 
   // True water surfaces deliberately sit above countries-fill so lakes and seas
   // remain legible. Physical linework and contextual overlays follow them while
@@ -75,9 +97,9 @@ function reconcile(reason = 'manual') {
     ...sorted('geography-context'),
     ...sorted('context-network'),
   ].map(entry => entry.layerId);
-  moveRegion(middle, firstExisting(['countries-line', 'country-hubs', 'country-labels']), moved);
+  moveRegion(middle, firstExisting(['countries-line', 'country-hubs', 'country-labels']), moved, snapshot);
 
-  moveRegion(sorted('selection-emphasis').map(entry => entry.layerId), firstExisting(['country-hubs', 'country-labels']), moved);
+  moveRegion(sorted('selection-emphasis').map(entry => entry.layerId), firstExisting(['country-hubs', 'country-labels']), moved, snapshot);
 
   reconcileCount += 1;
   lastReason = reason;

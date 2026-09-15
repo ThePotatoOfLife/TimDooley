@@ -26,12 +26,22 @@ const EMPTY = () => ({ type:'FeatureCollection', features:[] });
 let enabled = false;
 let controller = null;
 let requestSerial = 0;
+let activeRequestKey = null;
+let completedRequestKey = null;
 let refreshScheduled = false;
 let restoring = false;
 let lastBasins = EMPTY();
 let lastRivers = EMPTY();
 let opacity = DEFAULT_OPACITY;
 
+function diagnostics() {
+  if (!window.__potatoAtlasDiagnostics) return null;
+  const d = window.__potatoAtlasDiagnostics;
+  if (!Number.isFinite(d.hydrologyRequests)) d.hydrologyRequests = 0;
+  if (!Number.isFinite(d.hydrologyDeduplicatedRefreshes)) d.hydrologyDeduplicatedRefreshes = 0;
+  if (!Number.isFinite(d.hydrologyAbortedRequests)) d.hydrologyAbortedRequests = 0;
+  return d;
+}
 function registerLayers() {
   const stack = window.__potatoAtlasRenderStack;
   stack?.register?.(BASIN_FILL, { slot:'physical-surface', priority:50, owner:PHYSICAL_ID });
@@ -102,6 +112,7 @@ function setVisibility(visibility) {
 function clearData() {
   lastBasins = EMPTY();
   lastRivers = EMPTY();
+  completedRequestKey = null;
   map.getSource(BASIN_SOURCE)?.setData(lastBasins);
   map.getSource(RIVER_SOURCE)?.setData(lastRivers);
 }
@@ -121,6 +132,14 @@ function viewportEnvelope() {
   if (!(east > west && north > south)) return null;
   return `${west},${south},${east},${north}`;
 }
+function hydrologyRequestKey(envelope, threshold, zoom) {
+  const rounded = String(envelope || '').split(',').map(value => Number(value).toFixed(2)).join(',');
+  const regime = zoom < 5.2 ? 'regional' : zoom < 6.7 ? 'subregional' : zoom < 8.2 ? 'local' : 'detailed';
+  return `${regime}|${threshold}|${rounded}`;
+}
+function shouldSkipHydrologyRequest(requestKey) {
+  return Boolean(requestKey && (requestKey === activeRequestKey || requestKey === completedRequestKey));
+}
 function queryUrl(service, where, fields, envelope) {
   return `${service}?where=${encodeURIComponent(where)}&outFields=${encodeURIComponent(fields)}&geometry=${encodeURIComponent(envelope)}${COMMON_QUERY}`;
 }
@@ -135,8 +154,12 @@ async function fetchGeoJSON(url, signal) {
 
 async function refreshViewport() {
   if (!enabled) return;
-  if (map.getZoom() < MIN_ZOOM) {
+  const zoom = map.getZoom();
+  if (zoom < MIN_ZOOM) {
+    if (controller && activeRequestKey) diagnostics() && (diagnostics().hydrologyAbortedRequests += 1);
     controller?.abort();
+    controller = null;
+    activeRequestKey = null;
     clearData();
     setStatus('Hydrology · zoom in to regional scale');
     reportStatus('zoom-needed', 'Zoom in to regional scale');
@@ -149,10 +172,23 @@ async function refreshViewport() {
     return;
   }
 
-  controller?.abort();
-  controller = new AbortController();
-  const serial = ++requestSerial;
   const threshold = riverThreshold();
+  const requestKey = hydrologyRequestKey(envelope, threshold, zoom);
+  if (shouldSkipHydrologyRequest(requestKey)) {
+    const d = diagnostics();
+    if (d) d.hydrologyDeduplicatedRefreshes += 1;
+    return;
+  }
+  if (controller && activeRequestKey) {
+    const d = diagnostics();
+    if (d) d.hydrologyAbortedRequests += 1;
+    controller.abort();
+  }
+  controller = new AbortController();
+  activeRequestKey = requestKey;
+  const d = diagnostics();
+  if (d) d.hydrologyRequests += 1;
+  const serial = ++requestSerial;
   const loadingMessage = `Loading regional drainage ≥ ${threshold.toLocaleString()} km² catchments`;
   setStatus(`Hydrology · ${loadingMessage.toLowerCase()}`);
   reportStatus('loading', loadingMessage);
@@ -180,6 +216,13 @@ async function refreshViewport() {
     failures += 1;
     console.warn('HydroRIVERS regional query unavailable:', rivers.reason);
   }
+
+  if (serial === requestSerial) {
+    activeRequestKey = null;
+    controller = null;
+    if (failures < 2 || lastBasins.features.length || lastRivers.features.length) completedRequestKey = requestKey;
+  }
+
   setVisibility('visible');
   applyOpacity();
   const basinCount = lastBasins.features.length;
@@ -206,6 +249,8 @@ function scheduleRefresh() {
   queueMicrotask(() => {
     refreshScheduled = false;
     refreshViewport().catch(error => {
+      activeRequestKey = null;
+      controller = null;
       if (error?.name === 'AbortError') return;
       console.warn('Regional hydrology unavailable:', error);
       setStatus('Hydrology · regional provider unavailable');
@@ -231,8 +276,13 @@ async function enable() {
   return true;
 }
 async function disable() {
+  if (controller && activeRequestKey) {
+    const d = diagnostics();
+    if (d) d.hydrologyAbortedRequests += 1;
+  }
   controller?.abort();
   controller = null;
+  activeRequestKey = null;
   requestSerial += 1;
   setVisibility('none');
   enabled = false;

@@ -71,12 +71,12 @@ globalThis.fetch = async url => {
 
 await import(new URL('../world-map/3d-subdivisions.js?freeze-regression=1', import.meta.url));
 
-const click = handlers.get('click:atlas-subdivision-hit-USA');
+const click = handlers.get('click:atlas-subdivision-hit');
 const moveend = handlers.get('moveend:*');
 assert.equal(typeof click, 'function');
 assert.equal(typeof moveend, 'function');
 
-click({ features:[california], originalEvent:{} });
+await click({ features:[california], originalEvent:{} });
 assert.equal(fitCount, 1, 'clicking a state should fit exactly once');
 await moveend();
 assert.equal(fitCount, 1, 'moveend after state selection must not refit the same state');

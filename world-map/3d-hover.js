@@ -202,13 +202,40 @@ async function countryHtml(properties) {
 function capitalHtml(properties) { return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div class="muted">Capital city · ${escapeHtml(properties.iso3 || '')}</div></div>`; }
 function showPopup(event, html) { popup.setLngLat(event.lngLat).setHTML(html).addTo(map); }
 function bindCountryHover(layerId) {
+  let hoverGeneration = 0;
+  let activeKey = '';
+  let latestEvent = null;
+  let resolvedHtml = null;
   map.on('mousemove', layerId, async event => {
     const feature = event.features?.[0];
     if (!feature) return;
+    const properties = feature.properties || {};
+    const key = String(
+      properties.iso3 || properties.cca3 || properties.ISO_A3 || properties.id ||
+      properties.name || properties.NAME || properties.ADMIN || ''
+    ).toUpperCase();
+    latestEvent = event;
     map.getCanvas().style.cursor = 'pointer';
-    showPopup(event, await countryHtml(feature.properties || {}));
+    if (key === activeKey) {
+      if (resolvedHtml) showPopup(latestEvent, resolvedHtml);
+      return;
+    }
+    activeKey = key;
+    resolvedHtml = null;
+    const generation = ++hoverGeneration;
+    const html = await countryHtml(properties);
+    if (generation !== hoverGeneration || key !== activeKey || !latestEvent) return;
+    resolvedHtml = html;
+    showPopup(latestEvent, html);
   });
-  map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+  map.on('mouseleave', layerId, () => {
+    hoverGeneration += 1;
+    activeKey = '';
+    latestEvent = null;
+    resolvedHtml = null;
+    map.getCanvas().style.cursor = '';
+    popup.remove();
+  });
 }
 
 let capitalsStarted = false;
@@ -238,9 +265,16 @@ async function installCapitalsWhenUseful() {
     window.dispatchEvent(new CustomEvent('potato-atlas-capitals-ready', { detail: { count: capitals.features.length, visible: capitalsVisible } }));
   } catch (error) { capitalsStarted = false; console.warn('Capital city layer unavailable:', error); }
 }
+function placesCanOwnCapitals(detail = {}) {
+  const status = window.__potatoAtlasPlaces?.status?.() || detail || {};
+  return Number(status.majorCount || 0) > 0 && !status.error;
+}
+window.addEventListener('potato-atlas-places-ready', event => {
+  if (placesCanOwnCapitals(event?.detail || {})) return;
+  void installCapitalsWhenUseful();
+});
 function install() {
   bindCountryHover('countries-fill');
   bindCountryHover('countries-extrude');
-  installCapitalsWhenUseful();
 }
 if (map.loaded()) install(); else map.once('load', install);

@@ -8,6 +8,7 @@ const TYPE_RANK = Object.freeze({ Country:0, State:1, Region:1, District:1, Subd
 let countriesPromise = null;
 let subdivisionsPromise = null;
 let lastResults = [];
+let suggestionGeneration = 0;
 
 function normalize(value) {
   return String(value || '').trim().toLowerCase();
@@ -118,7 +119,7 @@ function placeResults(query, limit) {
 async function search(query, options = {}) {
   const needle = normalize(query);
   if (!needle) {
-    lastResults = [];
+    if (options.store !== false) lastResults = [];
     return [];
   }
   const limit = Math.max(1, Math.min(30, Number(options.limit) || 12));
@@ -126,10 +127,11 @@ async function search(query, options = {}) {
   const countries = countryRowsLoaded.map(row => countryResult(row, needle)).filter(Boolean);
   const subdivisions = subdivisionRowsLoaded.map(row => subdivisionResult(row, needle)).filter(Boolean);
   const places = placeResults(needle, limit);
-  lastResults = [...countries, ...subdivisions, ...places]
+  const results = [...countries, ...subdivisions, ...places]
     .sort(compareResults)
     .slice(0, limit);
-  return lastResults;
+  if (options.store !== false) lastResults = results;
+  return results;
 }
 async function focus(result) {
   if (!result) return false;
@@ -186,7 +188,16 @@ function renderSuggestions(results) {
 if (input) {
   installDatalist();
   input.addEventListener('input', async event => {
-    renderSuggestions(await search(event.target.value, {limit:10}));
+    const generation = ++suggestionGeneration;
+    const results = await search(event.target.value, {limit:10, store:false});
+    if (generation !== suggestionGeneration) {
+      if (window.__potatoAtlasDiagnostics) {
+        window.__potatoAtlasDiagnostics.staleSearchSuppressions = (window.__potatoAtlasDiagnostics.staleSearchSuppressions || 0) + 1;
+      }
+      return;
+    }
+    lastResults = results;
+    renderSuggestions(results);
   });
   input.addEventListener('keydown', event => {
     if (event.key !== 'Enter') return;
