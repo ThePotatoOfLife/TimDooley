@@ -1,5 +1,5 @@
 {
-  "schema_version": "1.1.0",
+  "schema_version": "1.2.0",
   "updated": "2026-09-15",
   "family": "physical-world",
   "principles": [
@@ -37,14 +37,14 @@
       "controller": "__potatoAtlasPhysicalWater",
       "source": {
         "provider": "Natural Earth",
-        "dataset": "1:110m coastline, lakes, rivers and lake centerlines",
+        "dataset": "1:110m world overview + 1:50m regional-detail coastline, lakes, rivers and lake centerlines",
         "version": "pinned commit ca96624a56bd078437bca8184e78163e5039ad19",
         "attribution": "Made with Natural Earth · public domain"
       },
       "default_opacity": 0.72,
       "min_zoom": 0,
-      "max_zoom": 7,
-      "status_note": "Generalized world-scale physical-water context from Natural Earth. It is cartographic context, not a legal boundary or drainage-basin authority layer."
+      "max_zoom": 9,
+      "status_note": "Scale-adaptive cartographic water context: 1:110m at world scale and lazily loaded 1:50m detail at regional zoom. It is not a legal boundary or drainage-basin authority layer."
     },
     {
       "id": "physical.water.hydrology",

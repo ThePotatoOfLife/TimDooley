@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the lazy Natural Earth physical-water context for the World Map."""
+"""Validate the lazy, scale-adaptive Natural Earth physical-water context."""
 from __future__ import annotations
 
 import json
@@ -30,19 +30,15 @@ def main() -> int:
 
     entries = {row.get("id"): row for row in manifest.get("entries", []) if isinstance(row, dict)}
     water = entries.get("physical.water.base") or {}
-    if water.get("availability") != "current":
-        errors.append("physical.water.base must be current")
-    if water.get("load_policy") != "on_demand":
-        errors.append("physical.water.base must remain on_demand")
-    if water.get("kind") != "module":
-        errors.append("physical.water.base must be module-backed")
-    if water.get("module") != "./3d-physical-water.js":
-        errors.append("physical.water.base must point to ./3d-physical-water.js")
+    if water.get("availability") != "current": errors.append("physical.water.base must be current")
+    if water.get("load_policy") != "on_demand": errors.append("physical.water.base must remain on_demand")
+    if water.get("kind") != "module": errors.append("physical.water.base must be module-backed")
+    if water.get("module") != "./3d-physical-water.js": errors.append("physical.water.base must point to ./3d-physical-water.js")
     source = water.get("source") or {}
-    if source.get("provider") != "Natural Earth":
-        errors.append("physical.water.base must name Natural Earth as provider")
-    if "1:110m" not in str(source.get("dataset", "")):
-        errors.append("physical.water.base must document the 1:110m overview scale")
+    if source.get("provider") != "Natural Earth": errors.append("physical.water.base must name Natural Earth as provider")
+    dataset = str(source.get("dataset", ""))
+    if "1:110m" not in dataset or "1:50m" not in dataset:
+        errors.append("physical.water.base must document both 1:110m overview and 1:50m regional detail")
     if PINNED_NE_SHA not in str(source.get("version", "")):
         errors.append("physical.water.base must pin the Natural Earth source commit")
 
@@ -55,6 +51,13 @@ def main() -> int:
             "ne_110m_rivers_lake_centerlines.geojson",
             "ne_110m_lakes.geojson",
             "ne_110m_coastline.geojson",
+            "ne_50m_rivers_lake_centerlines.geojson",
+            "ne_50m_lakes.geojson",
+            "ne_50m_coastline.geojson",
+            "DETAIL_ZOOM",
+            "ensureDetailSources",
+            "detailInstalled",
+            "zoomend",
             "countries-line",
             "visibility",
             "__potatoAtlasPhysicalWater",
@@ -63,6 +66,8 @@ def main() -> int:
         ):
             if token not in text:
                 errors.append(f"physical water module missing {token}")
+        if "map.getZoom() >= DETAIL_ZOOM" not in text:
+            errors.append("physical water detail must be zoom-gated")
         if "new MutationObserver(" in text or "setInterval(" in text:
             errors.append("physical water module must not poll or observe the DOM")
         node = shutil.which("node")
@@ -81,8 +86,7 @@ def main() -> int:
 
     if errors:
         print("WORLD MAP PHYSICAL WATER VALIDATION FAILED")
-        for error in errors:
-            print("-", error)
+        for error in errors: print("-", error)
         return 1
 
     print("WORLD MAP PHYSICAL WATER VALIDATION PASSED")
