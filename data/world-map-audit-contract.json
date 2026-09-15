@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0",
+  "owners": {},
+  "shared": {},
+  "style_restoration": {
+    "allowed_modules": {
+      "world-map/3d-render-stack.js": "Canonical semantic z-order reconciliation after style changes."
+    }
+  },
+  "conventions": {
+    "transient_popup_class": "atlas-hover"
+  },
+  "ignore": {},
+  "render_stack_slots": [
+    "physical-surface",
+    "physical-water",
+    "physical-line",
+    "geography-context",
+    "context-network",
+    "selection-emphasis"
+  ]
+}
