@@ -11,9 +11,26 @@ const LINE_ID = 'atlas-physical-deserts-xeric-line';
 const SERVICE = 'https://services.arcgis.com/As5CFN3ThbQpy8Ph/arcgis/rest/services/TerrestrialEcoRegions/FeatureServer/0/query';
 const WHERE = "WWF_MHTNAM='Deserts and Xeric Shrublands'";
 const QUERY_URL = `${SERVICE}?where=${encodeURIComponent(WHERE)}&outFields=ECO_NAME,WWF_MHTNAM,WWF_REALM2&returnGeometry=true&outSR=4326&f=geojson`;
+const BASE_FILL_OPACITY = 0.26;
+const BASE_LINE_OPACITY = 0.62;
 
 let enabled = false;
 let restoring = false;
+let opacity = 0.26;
+
+function clampOpacity(value) { return Math.max(0, Math.min(1, Number(value))); }
+function multiplier() { return opacity / 0.26; }
+function applyOpacity() {
+  const scale = multiplier();
+  if (map.getLayer(FILL_ID)) map.setPaintProperty(FILL_ID, 'fill-opacity', Math.min(1, BASE_FILL_OPACITY * scale));
+  if (map.getLayer(LINE_ID)) map.setPaintProperty(LINE_ID, 'line-opacity', Math.min(1, BASE_LINE_OPACITY * scale));
+}
+function setOpacity(value) {
+  opacity = clampOpacity(value);
+  applyOpacity();
+  return true;
+}
+function getOpacity() { return opacity; }
 
 function ensureSource() {
   if (map.getSource(SOURCE_ID)) return;
@@ -34,10 +51,7 @@ function ensureLayers() {
       source: SOURCE_ID,
       maxzoom: 9,
       layout: { visibility: 'none' },
-      paint: {
-        'fill-color': '#d3a85f',
-        'fill-opacity': 0.26,
-      },
+      paint: { 'fill-color': '#d3a85f', 'fill-opacity': BASE_FILL_OPACITY },
     }, beforeFill);
   }
   if (!map.getLayer(LINE_ID)) {
@@ -49,17 +63,16 @@ function ensureLayers() {
       layout: { visibility: 'none' },
       paint: {
         'line-color': '#e4bc78',
-        'line-opacity': 0.62,
+        'line-opacity': BASE_LINE_OPACITY,
         'line-width': ['interpolate', ['linear'], ['zoom'], 0, 0.35, 6, 0.9],
       },
     }, beforeLine);
   }
+  applyOpacity();
 }
 
 function setVisibility(visibility) {
-  for (const id of [FILL_ID, LINE_ID]) {
-    if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
-  }
+  for (const id of [FILL_ID, LINE_ID]) if (map.getLayer(id)) map.setLayoutProperty(id, 'visibility', visibility);
 }
 
 async function enable() {
@@ -92,6 +105,7 @@ map.on('styledata', () => {
     try {
       ensureSource();
       ensureLayers();
+      applyOpacity();
       setVisibility('visible');
     } catch (error) {
       console.warn('Ecological deserts/xeric layer could not restore after style change.', error);
@@ -106,4 +120,6 @@ window.__potatoAtlasDeserts = {
   enable,
   disable,
   toggle,
+  setOpacity,
+  getOpacity,
 };

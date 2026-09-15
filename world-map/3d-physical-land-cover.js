@@ -10,7 +10,6 @@ const LAYER_ID = 'atlas-land-cover-worldcover-2021-raster';
 const LEGEND_ID = 'atlasLandCoverLegend';
 const WMS_BASE = 'https://services.terrascope.be/wms/v2';
 const WMS_LAYER = 'WORLDCOVER_2021_MAP';
-const OPACITY = 0.58;
 const WMS_TILE = `${WMS_BASE}?service=WMS&request=GetMap&version=1.1.1&layers=${WMS_LAYER}&styles=&format=image/png&transparent=true&srs=EPSG:3857&bbox={bbox-epsg-3857}&width=256&height=256`;
 
 const CLASSES = [
@@ -29,6 +28,18 @@ const CLASSES = [
 
 let enabled = false;
 let restoring = false;
+let opacity = 0.58;
+
+function clampOpacity(value) { return Math.max(0, Math.min(1, Number(value))); }
+function applyOpacity() {
+  if (map.getLayer(LAYER_ID)) map.setPaintProperty(LAYER_ID, 'raster-opacity', opacity);
+}
+function setOpacity(value) {
+  opacity = clampOpacity(value);
+  applyOpacity();
+  return true;
+}
+function getOpacity() { return opacity; }
 
 function ensureStyle() {
   if (document.getElementById('atlasLandCoverStyle')) return;
@@ -90,7 +101,7 @@ function ensureLayer() {
     source: SOURCE_ID,
     layout: { visibility: 'none' },
     paint: {
-      'raster-opacity': OPACITY,
+      'raster-opacity': opacity,
       'raster-fade-duration': 120,
     },
   }, before);
@@ -107,6 +118,7 @@ async function enable() {
   try {
     ensureSource();
     ensureLayer();
+    applyOpacity();
     map.setLayoutProperty(LAYER_ID, 'visibility', 'visible');
     enabled = true;
     setLegendVisible(true);
@@ -135,6 +147,7 @@ map.on('styledata', () => {
     try {
       ensureSource();
       ensureLayer();
+      applyOpacity();
       map.setLayoutProperty(LAYER_ID, 'visibility', 'visible');
       setLegendVisible(true);
     } catch (error) {
@@ -150,4 +163,6 @@ window.__potatoAtlasLandCover = {
   enable,
   disable,
   toggle,
+  setOpacity,
+  getOpacity,
 };
