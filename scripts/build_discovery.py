@@ -17,18 +17,17 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote
 
+from house_public_surfaces import primary_gateway_rows
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
 FAQ = ROOT / "knowledge" / "indexes" / "faq-answer-atlas.json"
 TIM_Q = ROOT / "knowledge" / "reader" / "tim-dooley-question-index.json"
 
-PRIMARY_DOORS = (
-    ("tim", "Tim Dooley", "/tim-dooley/"),
-    ("religion", "Religion", "/religion/"),
-    ("philosophy", "Philosophy", "/philosophy/"),
-    ("science", "Science", "/science/"),
-    ("world", "World", "/world/"),
+PRIMARY_DOORS = tuple(
+    (row["id"], row["title"], row["canonical_route"])
+    for row in primary_gateway_rows(ROOT)
 )
 
 
