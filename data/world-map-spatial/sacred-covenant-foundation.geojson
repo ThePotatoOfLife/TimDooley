@@ -1,0 +1,121 @@
+{
+  "type": "FeatureCollection",
+  "name": "sacred-covenant-foundation",
+  "crs_note": "WGS84 longitude/latitude",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "father-mesopotamia-core-v1",
+        "overlay_id": "father.mesopotamia-core",
+        "label": "Mesopotamian core · broad reconstruction",
+        "epistemic_type": "historical_reconstruction",
+        "source_ids": ["project-fathers-land-consolidation", "historical-mesopotamia-general"],
+        "source_date": "2026-09-15",
+        "geometry_version": "v1",
+        "confidence": "interpretive",
+        "status_note": "Broad historical-geographic envelope centered on the Tigris-Euphrates alluvium and adjacent upper Mesopotamia. Deliberately not a cadastral or sovereignty boundary.",
+        "measurement_policy": "approximate_reconstruction"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[35.6,37.4],[39.4,38.2],[44.2,37.8],[47.2,35.6],[49.0,31.4],[48.1,29.3],[44.2,29.0],[40.0,31.0],[37.0,34.1],[35.6,37.4]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "father-eden-context-v1",
+        "overlay_id": "father.eden-context",
+        "label": "Eden context · lower Mesopotamian hypothesis field",
+        "epistemic_type": "project_interpretive",
+        "source_ids": ["genesis-2", "project-fathers-land-consolidation"],
+        "source_date": "2026-09-15",
+        "geometry_version": "v1",
+        "confidence": "hypothesis",
+        "status_note": "Project interpretive field around lower Mesopotamia. The biblical text does not provide a modern surveyed boundary.",
+        "measurement_policy": "approximate_reconstruction"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[43.4,33.2],[47.0,33.4],[49.6,31.7],[50.2,29.2],[48.1,27.8],[45.0,28.4],[43.1,30.7],[43.4,33.2]]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "tigris-reference-v1",
+        "overlay_id": "father.four-rivers.tigris",
+        "label": "Tigris · simplified reference",
+        "epistemic_type": "current_observed",
+        "source_ids": ["genesis-2", "modern-river-reference"],
+        "source_date": "2026-09-15",
+        "geometry_version": "v1",
+        "confidence": "strong",
+        "status_note": "Simplified cartographic reference line, intended to identify the river system rather than reproduce a precision hydrological centreline.",
+        "measurement_policy": "reference_line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[39.7,38.4],[41.2,37.2],[42.7,36.2],[43.7,35.0],[44.4,33.3],[45.2,31.9],[47.0,30.5],[48.5,29.8]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "euphrates-reference-v1",
+        "overlay_id": "father.four-rivers.euphrates",
+        "label": "Euphrates · simplified reference",
+        "epistemic_type": "current_observed",
+        "source_ids": ["genesis-2", "modern-river-reference"],
+        "source_date": "2026-09-15",
+        "geometry_version": "v1",
+        "confidence": "strong",
+        "status_note": "Simplified cartographic reference line, intended to identify the river system rather than reproduce a precision hydrological centreline.",
+        "measurement_policy": "reference_line"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[38.0,38.9],[39.1,37.0],[38.0,36.1],[39.8,35.2],[41.2,34.5],[42.2,33.5],[43.4,32.5],[44.8,31.3],[47.2,30.5],[48.4,29.8]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "father-return-path-v1",
+        "overlay_id": "father.return-path",
+        "label": "Father’s Return Path · symbolic route",
+        "epistemic_type": "project_interpretive",
+        "source_ids": ["project-fathers-land-consolidation"],
+        "source_date": "2026-09-15",
+        "geometry_version": "v1",
+        "confidence": "interpretive",
+        "status_note": "Symbolic project route linking North / North-of-North motifs toward an eastward Mesopotamian return. It is not a border.",
+        "measurement_policy": "symbolic_route"
+      },
+      "geometry": {
+        "type": "LineString",
+        "coordinates": [[12.6,55.7],[18.1,59.3],[25.0,65.0],[31.0,69.5],[34.0,60.0],[40.0,50.0],[44.0,41.0],[44.8,33.3]]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "dan-to-beersheba-v1",
+        "overlay_id": "biblical.dan-to-beersheba",
+        "label": "Dan to Beer-sheba · textual extent corridor",
+        "epistemic_type": "textual_reconstruction",
+        "source_ids": ["judges-20-1", "1-samuel-3-20"],
+        "source_date": "textual",
+        "geometry_version": "v1",
+        "confidence": "interpretive",
+        "status_note": "A corridor-like visualisation of the textual north-south expression, not a surveyed territorial boundary.",
+        "measurement_policy": "approximate_reconstruction"
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [[[34.55,31.15],[34.95,31.05],[35.45,31.3],[35.65,33.25],[35.45,33.55],[35.05,33.4],[34.75,32.3],[34.55,31.15]]]
+      }
+    }
+  ]
+}
