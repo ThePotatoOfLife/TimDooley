@@ -58,6 +58,12 @@ def explain_registry_index_delta(registry,index):
             if source_id in registry_only and source_id!=canonical_id:
                 consolidated[source_id]=canonical_id
 
+    canonicalized=sorted(
+        str(row.get('id')) for row in idx_rows
+        if str(row.get('id')) in index_only
+        and row.get('canonical_concept')
+        and bool(row.get('occurrences'))
+    )
     synthesized=sorted(
         str(row.get('id')) for row in idx_rows
         if str(row.get('id')) in index_only
@@ -66,11 +72,12 @@ def explain_registry_index_delta(registry,index):
         and not row.get('occurrences')
     )
     unexplained_registry=sorted(set(registry_only)-set(consolidated))
-    unexplained_index=sorted(set(index_only)-set(synthesized))
+    unexplained_index=sorted(set(index_only)-set(canonicalized)-set(synthesized))
     return {
         'registry_only':registry_only,
         'index_only':index_only,
         'consolidated_source_ids':dict(sorted(consolidated.items())),
+        'canonicalized_concept_ids':canonicalized,
         'synthesized_canonical_ids':synthesized,
         'unexplained_registry_only':unexplained_registry,
         'unexplained_index_only':unexplained_index,
@@ -155,6 +162,7 @@ def main():
             warnings.append(
                 'registry/index semantic delta: '
                 f"consolidated_source_ids={len(registry_index_delta['consolidated_source_ids'])} "
+                f"canonicalized_concept_ids={len(registry_index_delta['canonicalized_concept_ids'])} "
                 f"synthesized_canonical_ids={len(registry_index_delta['synthesized_canonical_ids'])} "
                 f"unexplained_registry_only={len(registry_index_delta['unexplained_registry_only'])} "
                 f"unexplained_index_only={len(registry_index_delta['unexplained_index_only'])}"
@@ -166,7 +174,7 @@ def main():
             sample=', '.join(registry_index_delta['unexplained_index_only'][:8])
             warnings.append(f'index-only IDs require review: {sample}')
 
-    result={'version':'1.8.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'registry_index_delta':registry_index_delta,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
+    result={'version':'1.9.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'registry_index_delta':registry_index_delta,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
     (DATA/'source-of-truth-audit.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     print(json.dumps(result,indent=2))
     return 1 if errors else 0
