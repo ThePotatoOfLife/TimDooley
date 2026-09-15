@@ -76,6 +76,43 @@ queueMicrotask(async () => {
   await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
 });
 
+function selectedCountryCode(detail = null) {
+  const selection = window.__potatoAtlasSelection?.current || {};
+  return String(
+    detail?.code || detail?.activeCode ||
+    selection.activeCode || selection.code ||
+    new URL(location.href).searchParams.get('country') || ''
+  ).toUpperCase();
+}
+
+async function maybeLoadSelectedPlaces(detail = null) {
+  const map = window.__potatoAtlasMap;
+  const api = window.__potatoAtlasPlaces;
+  if (!map || !api?.loadCountry) return false;
+  const code = selectedCountryCode(detail);
+  if (!/^[A-Z]{3}$/.test(code)) return false;
+  const requested = new URL(location.href).searchParams.has('place');
+  if (!requested && map.getZoom() < 4.2) return false;
+  try {
+    await api.loadCountry(code);
+    return true;
+  } catch (error) {
+    console.warn(`Places detail unavailable for ${code}:`, error);
+    return false;
+  }
+}
+
+// Country-detail places stay dormant at world scale. Once a country is the active
+// browsing context and the camera reaches country scale, load only that partition.
+window.addEventListener('potato-atlas-country-card-rendered', event => {
+  queueMicrotask(() => maybeLoadSelectedPlaces(event?.detail));
+});
+queueMicrotask(() => {
+  const map = window.__potatoAtlasMap;
+  maybeLoadSelectedPlaces();
+  map?.on('moveend', maybeLoadSelectedPlaces);
+});
+
 // Administrative detail remains code- and data-dormant at world scale. Load the
 // subdivision controller only after regional zoom, or immediately for a deep link.
 function maybeLoadSubdivisions() {
