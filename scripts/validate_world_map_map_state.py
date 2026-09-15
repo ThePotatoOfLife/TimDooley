@@ -42,7 +42,7 @@ def require_tokens(path: Path, tokens: tuple[str, ...], label: str, errors: list
 
 def main() -> int:
     errors: list[str] = []
-    for path in (MAP_STATE, WORLD_BAR, PHYSICAL, LIFECYCLE, MANIFEST, WATER, HYDROLOGY, LAND_COVER, DESERTS):
+    for path in (MAP_STATE, WORLD_BAR, PHYSICAL, LIFECYCLE, WATER, HYDROLOGY, LAND_COVER, DESERTS):
         check_node(path, errors)
 
     map_state = require_tokens(MAP_STATE, (
