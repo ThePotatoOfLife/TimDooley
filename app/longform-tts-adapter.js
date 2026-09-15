@@ -35,9 +35,10 @@
 
   function readableText(node,excludeSelector=''){
     if(!node)return '';
-    if(!excludeSelector||typeof node.cloneNode!=='function')return cleanText(node.textContent||'');
+    if(typeof node.cloneNode!=='function')return cleanText(node.textContent||'');
     const clone=node.cloneNode(true);
-    if(typeof clone.querySelectorAll==='function')clone.querySelectorAll(excludeSelector).forEach(item=>item.remove());
+    const exclusions=['button','summary','.ptts-inline-listen','.ptts-drawer',excludeSelector].filter(Boolean).join(',');
+    if(exclusions&&typeof clone.querySelectorAll==='function')clone.querySelectorAll(exclusions).forEach(item=>item.remove());
     return cleanText(clone.textContent||'');
   }
 
@@ -66,16 +67,15 @@
     const host=config.mount;
     const container=config.root;
     if(!doc||!Drawer||typeof Drawer.mount!=='function'||!host||!container)return null;
+    if(host.dataset)host.dataset.ttsPrimary='';
 
     const itemSelector=config.itemSelector||'';
     let currentItem=null;
     let drawer=null;
+    let selectionAction=null;
+    const pageHighlighter=Drawer.createPageHighlighter?.({document:doc})||{highlight:()=>false,clear:()=>{},invalidate:()=>{}};
     const getItems=()=>itemSelector?[...container.querySelectorAll(itemSelector)]:[];
     const firstItem=()=>getItems()[0]||null;
-    const chooseCurrent=item=>{
-      if(item&&container.contains(item))currentItem=item;
-      drawer?.updatePayload('current-entry');
-    };
     const source=()=>{
       if(itemSelector&&(!currentItem||!container.contains(currentItem)))currentItem=firstItem();
       return buildLongformPayload({
@@ -89,46 +89,100 @@
         selection:selectionInside(doc,container),
       });
     };
+    const refresh=()=>drawer?.setPayload?.(source());
+    const clearReadingActive=()=>getItems().forEach(item=>item.classList?.remove('ptts-reading-active'));
+    const setReadingActive=active=>{
+      clearReadingActive();
+      if(active&&currentItem?.classList)currentItem.classList.add('ptts-reading-active');
+    };
+    const chooseCurrent=item=>{
+      setReadingActive(false);
+      pageHighlighter.invalidate();
+      if(item&&container.contains(item))currentItem=item;
+      refresh();
+    };
 
     drawer=Drawer.mount({
-      mount:host,
-      source,
-      label:config.buttonLabel||'Read aloud',
-      settingsKey:config.settingsKey||'potato-tts-drawer-settings',
-      className:config.className||'tts-drawer--longform',
+      target:host,
+      getPayload:source,
+      settingsKey:config.settingsKey||'potato-tts-settings',
+      onEvent:event=>{
+        if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
+        if(event.type==='boundary'&&event.absoluteWord){
+          const target=event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null;
+          if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'');
+          else pageHighlighter.clear();
+        }
+        if(['complete','stop','error'].includes(event.type)){setReadingActive(false);pageHighlighter.clear()}
+      },
     });
     if(!drawer)return null;
 
+    function ensureListenButtons(){
+      if(!itemSelector||typeof doc.createElement!=='function')return;
+      for(const item of getItems()){
+        if(item.dataset?.ttsListenReady==='true')continue;
+        const control=doc.createElement('button');
+        control.type='button';
+        control.className='ptts-inline-listen';
+        control.dataset.ttsListen='';
+        control.textContent='🔊 Listen';
+        control.setAttribute('aria-label','Listen to this section');
+        control.addEventListener('click',event=>{
+          event.preventDefault();
+          event.stopPropagation();
+          chooseCurrent(item);
+          drawer.playSection?.('current');
+        });
+        const anchor=item.querySelector?.('h2,h3,h1')||item.querySelector?.('.movement-label,.story-meta');
+        if(anchor?.insertAdjacentElement)anchor.insertAdjacentElement('afterend',control);
+        else if(item.prepend)item.prepend(control);
+        else item.append?.(control);
+        if(item.dataset)item.dataset.ttsListenReady='true';
+      }
+    }
+
     const onActivate=event=>{
-      if(!itemSelector)return;
+      if(!itemSelector||event.target?.closest?.('[data-tts-listen]'))return;
       const item=event.target?.closest?.(itemSelector);
       if(item&&container.contains(item))chooseCurrent(item);
     };
     container.addEventListener('click',onActivate);
     container.addEventListener('focusin',onActivate);
 
-    const onSelection=()=>drawer.updatePayload('selection');
+    const onSelection=()=>refresh();
     doc.addEventListener('selectionchange',onSelection);
 
     const Observer=config.MutationObserver||root?.MutationObserver;
     const observer=Observer?new Observer(()=>{
-      if(currentItem&&!container.contains(currentItem))currentItem=null;
-      drawer.updatePayload('content');
+      pageHighlighter.invalidate();
+      if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null}
+      ensureListenButtons();
+      refresh();
     }):null;
     observer?.observe(container,{childList:true,subtree:true,characterData:true});
-    drawer.updatePayload('mount');
+
+    ensureListenButtons();
+    refresh();
+    selectionAction=Drawer.mountSelectionAction?.({document:doc,container,drawer,getPayload:source});
 
     return {
       drawer,
-      refresh:()=>drawer.updatePayload('refresh'),
+      refresh,
       setCurrent:chooseCurrent,
       source,
+      ensureListenButtons,
+      selectionAction,
+      pageHighlighter,
       destroy(){
         observer?.disconnect();
         container.removeEventListener('click',onActivate);
         container.removeEventListener('focusin',onActivate);
         doc.removeEventListener('selectionchange',onSelection);
-        drawer.destroy?.();
+        selectionAction?.destroy?.();
+        pageHighlighter.clear();
+        clearReadingActive();
+        drawer.stop?.();
       }
     };
   }

@@ -3,10 +3,12 @@
 
 The repository intentionally preserves historical/internal names and research strata.
 This pass only cleans the deployed visitor surface: retired homepage branch hashes,
-parent-hub continuity, duplicate navigation choices, and visitor-facing vocabulary.
+parent-hub continuity, duplicate navigation choices, visitor-facing vocabulary, and
+small public-only capability projections that should not mutate legacy source strata.
 """
 from __future__ import annotations
 
+import html
 import re
 from pathlib import Path
 
@@ -25,6 +27,16 @@ PUBLIC_LABEL_REPLACEMENTS = (
     (">Tim dossier</a>", ">Tim Dooley</a>"),
     ("← Potato of Life archive</a>", "← Home</a>"),
 )
+LEGACY_TTS_READERS = {
+    "shadow-farm/index.html": {
+        "id": "shadow-farm",
+        "root": ".page",
+        "label": "The Farm & Trees of Strife",
+        "all_label": "Whole deep reader",
+        "exclude": "#shadow-farm-tts,.nav",
+        "asset_prefix": "../",
+    },
+}
 
 
 def patch_text(path: Path, replacements: tuple[tuple[str, str], ...] = ()) -> bool:
@@ -60,6 +72,83 @@ def normalize_public_surface(path: Path) -> bool:
     return False
 
 
+def inject_legacy_tts_reader(text: str, config: dict[str, str]) -> str:
+    """Project the shared long-form TTS reader into copied legacy HTML.
+
+    This is intentionally a generated-artifact transform. It keeps legacy source
+    byte-stable while giving mature public readers the same shared speech capability.
+    The transform is fail-closed and idempotent.
+    """
+    reader_id = str(config.get("id", "")).strip()
+    root_selector = str(config.get("root", "")).strip()
+    if not reader_id or not root_selector:
+        return text
+
+    host_id = f"{reader_id}-tts"
+    if f'id="{host_id}"' in text or f"id='{host_id}'" in text:
+        return text
+
+    if not re.search(r"</head\s*>", text, flags=re.I) or not re.search(r"</body\s*>", text, flags=re.I):
+        return text
+    if not re.search(r"<main\b[^>]*>", text, flags=re.I):
+        return text
+
+    prefix = str(config.get("asset_prefix", ""))
+    label = html.escape(str(config.get("label", "Read aloud")), quote=True)
+    all_label = html.escape(str(config.get("all_label", "Whole reader")), quote=True)
+    exclude = html.escape(str(config.get("exclude", f"#{host_id}")), quote=True)
+    root_attr = html.escape(root_selector, quote=True)
+    id_attr = html.escape(reader_id, quote=True)
+
+    stylesheet = f'<link rel="stylesheet" href="{prefix}app/tts-drawer.css">'
+    host = (
+        f'<div id="{html.escape(host_id, quote=True)}" data-tts-longform '
+        f'data-tts-root="{root_attr}" data-tts-id="{id_attr}" data-tts-label="{label}" '
+        f'data-tts-all-label="{all_label}" data-tts-selection-label="Selection" '
+        f'data-tts-exclude="{exclude}"></div>'
+    )
+    scripts = (
+        f'<script src="{prefix}app/tts-reader.js"></script>'
+        f'<script src="{prefix}app/tts-drawer.js"></script>'
+        f'<script src="{prefix}app/longform-tts-adapter.js"></script>'
+    )
+
+    text = re.sub(r"</head\s*>", stylesheet + "</head>", text, count=1, flags=re.I)
+
+    # The head mutation changes character offsets, so resolve main again before
+    # choosing a placement inside the transformed document.
+    main_match = re.search(r"<main\b[^>]*>", text, flags=re.I)
+    if not main_match:
+        return text
+
+    # Prefer placing the reader immediately after the page's first navigation row.
+    # Legacy readers usually begin with navigation; falling back to the main opening
+    # tag still keeps the player inside its configured readable root.
+    nav_match = re.search(r"<nav\b[^>]*>.*?</nav\s*>", text[main_match.end():], flags=re.I | re.S)
+    if nav_match:
+        insert_at = main_match.end() + nav_match.end()
+    else:
+        insert_at = main_match.end()
+    text = text[:insert_at] + host + text[insert_at:]
+    text = re.sub(r"</body\s*>", scripts + "</body>", text, count=1, flags=re.I)
+    return text
+
+
+def patch_legacy_tts_readers(out: Path = OUT) -> set[Path]:
+    changed: set[Path] = set()
+    for rel, config in LEGACY_TTS_READERS.items():
+        path = out / rel
+        if not path.exists():
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        projected = inject_legacy_tts_reader(text, config)
+        if projected == text:
+            continue
+        path.write_text(projected, encoding="utf-8")
+        changed.add(path)
+    return changed
+
+
 def main() -> None:
     if not OUT.exists():
         raise SystemExit("_site does not exist; build_site.py must run first")
@@ -70,6 +159,8 @@ def main() -> None:
             continue
         if normalize_public_surface(page):
             changed.add(page)
+
+    changed.update(patch_legacy_tts_readers(OUT))
 
     religion = OUT / "religion" / "index.html"
     if patch_text(

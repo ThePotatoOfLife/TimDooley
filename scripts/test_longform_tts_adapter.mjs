@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import adapter from '../app/longform-tts-adapter.js';
 
 const payload = adapter.buildLongformPayload({
@@ -36,12 +37,31 @@ assert.equal(declarative.currentLabel,'Current movement');
 assert.equal(declarative.itemSelector,'.movement');
 
 const removalState={removed:false};
-const fakeReadable={cloneNode(){return {querySelectorAll(selector){assert.equal(selector,'.chrome');return [{remove(){removalState.removed=true;}}]},get textContent(){return removalState.removed?'Keep this':'Keep this Skip this';}}}};
+const fakeReadable={cloneNode(){return {querySelectorAll(selector){assert.ok(selector.includes('.chrome'));assert.ok(selector.includes('.ptts-inline-listen'));assert.ok(selector.includes('.ptts-drawer'));return [{remove(){removalState.removed=true;}}]},get textContent(){return removalState.removed?'Keep this':'Keep this Skip this';}}}};
 assert.equal(adapter.readableText(fakeReadable,'.chrome'),'Keep this');
 const excludeHost={dataset:{ttsRoot:'#main',ttsExclude:'.nav,.footer'}};
 const mainRoot={id:'main'};
 const excludeDoc={querySelector(selector){return selector==='#main'?mainRoot:null;}};
 assert.equal(adapter.configFromElement(excludeHost,excludeDoc).excludeSelector,'.nav,.footer');
+
+const adapterSource=fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url),'utf8');
+assert.ok(adapterSource.includes('target:host'), 'longform adapter must use drawer target API');
+assert.ok(adapterSource.includes('getPayload:source'), 'longform adapter must use drawer getPayload API');
+assert.ok(adapterSource.includes('drawer?.setPayload?.(source())'), 'longform adapter must refresh with setPayload');
+assert.ok(!adapterSource.includes('updatePayload('), 'obsolete updatePayload API must not return');
+assert.ok(adapterSource.includes("className='ptts-inline-listen'"), 'readable items need explicit Listen buttons');
+assert.ok(adapterSource.includes("drawer.playSection?.('current')"), 'inline Listen must start only the current readable item');
+assert.ok(adapterSource.includes("ttsListenReady==='true'"), 'inline Listen injection must be idempotent');
+assert.ok(adapterSource.includes("'.ptts-inline-listen'"), 'injected Listen controls must be excluded from spoken text');
+assert.ok(adapterSource.includes("host.dataset.ttsPrimary=''"), 'page-level reader host should mark itself as primary automatically');
+assert.ok(adapterSource.includes('mountSelectionAction'), 'longform pages must mount the shared read-selection action');
+assert.ok(adapterSource.includes("classList.add('ptts-reading-active')"), 'current spoken item must gain an active-reading state');
+assert.ok(adapterSource.includes("classList?.remove('ptts-reading-active')"), 'active-reading state must be safely cleared when speech ends or context changes');
+assert.ok(adapterSource.includes('onEvent:event=>'), 'longform adapter must consume drawer speech events');
+assert.ok(adapterSource.includes('createPageHighlighter'), 'longform adapter must use shared actual-page word highlighting');
+assert.ok(adapterSource.includes("event.type==='boundary'&&event.absoluteWord"), 'longform adapter must map boundary words back to page text');
+assert.ok(adapterSource.includes("event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null"), 'longform highlight target must follow current vs whole-page scope');
+assert.ok(adapterSource.includes('pageHighlighter.clear()'), 'longform page highlight must clear at speech end/context change');
 
 function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
   for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {
@@ -56,6 +76,9 @@ function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterS
 
 const story = fs.readFileSync(new URL('../tim-dooley/story/index.html', import.meta.url),'utf8');
 assertLongformPage(story,{name:'story',host:'id="story-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root="#story-stream"',item:'data-tts-item=".story-entry"',allLabel:'data-tts-all-label="Whole story"',currentLabel:'data-tts-current-label="Current entry"'});
+assert.ok(story.includes('Hear the full story'), 'Story must preserve its content expander');
+assert.ok(!story.includes('data-tts-item=".full-story"'), 'Hear the full story must not become a TTS trigger');
+assert.ok(!story.includes('data-tts-item="summary"'), 'Story disclosure summaries must remain silent');
 
 const philosophy = fs.readFileSync(new URL('../philosophy/index.html', import.meta.url),'utf8');
 assertLongformPage(philosophy,{name:'philosophy',host:'id="philosophy-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".journey"',item:'data-tts-item=".movement"',allLabel:'data-tts-all-label="Whole journey"',currentLabel:'data-tts-current-label="Current movement"'});
@@ -65,5 +88,45 @@ assertLongformPage(religion,{name:'religion',host:'id="religion-tts"',css:'href=
 
 const tim = fs.readFileSync(new URL('../tim-dooley/index.html', import.meta.url),'utf8');
 assertLongformPage(tim,{name:'tim overview',host:'id="tim-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".tim-page"',item:'data-tts-item=".reading-frame,.question-stub,.work-row,.sequence>div"',allLabel:'data-tts-all-label="Whole overview"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#tim-tts,.page-nav,.primary,.deep"'});
+
+const north = fs.readFileSync(new URL('../north/index.html', import.meta.url),'utf8');
+assertLongformPage(north,{name:'north',host:'id="north-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".wrap"',item:'data-tts-item=".north-section"',allLabel:'data-tts-all-label="Whole North reader"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#north-tts,nav,.map-action,.links"'});
+
+const culture = fs.readFileSync(new URL('../context/culture/index.html', import.meta.url),'utf8');
+assertLongformPage(culture,{name:'culture',host:'id="culture-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root=".culture-page"',allLabel:'data-tts-all-label="Whole culture reader"',exclude:'data-tts-exclude="#culture-tts,.page-nav"'});
+assert.ok(!culture.includes('data-tts-item='),'Culture should keep one calm page-level reader instead of adding Listen controls to every small card');
+
+const pythonProbe = String.raw`
+import sys
+sys.path.insert(0, 'scripts')
+import patch_public_navigation as projection
+sample = '<!doctype html><html><head><title>X</title></head><body><main class="page"><nav class="nav">Nav</nav><p>Readable.</p></main></body></html>'
+config = {
+    'id': 'shadow-farm',
+    'root': '.page',
+    'label': 'The Farm & Trees of Strife',
+    'all_label': 'Whole deep reader',
+    'exclude': '#shadow-farm-tts,.nav',
+    'asset_prefix': '../',
+}
+out = projection.inject_legacy_tts_reader(sample, config)
+assert out.count('id="shadow-farm-tts"') == 1
+assert out.count('data-tts-longform') == 1
+assert 'data-tts-root=".page"' in out
+assert 'data-tts-all-label="Whole deep reader"' in out
+assert 'data-tts-exclude="#shadow-farm-tts,.nav"' in out
+assert 'href="../app/tts-drawer.css"' in out
+assert 'src="../app/tts-reader.js"' in out
+assert 'src="../app/tts-drawer.js"' in out
+assert 'src="../app/longform-tts-adapter.js"' in out
+assert 'data-tts-item=' not in out
+assert out.index('</nav>') < out.index('id="shadow-farm-tts"') < out.index('</main>')
+assert projection.inject_legacy_tts_reader(out, config) == out
+navless = '<!doctype html><html><head><title>X</title></head><body><main class="page"><p>Readable.</p></main></body></html>'
+navless_out = projection.inject_legacy_tts_reader(navless, config)
+assert navless_out.index('<main') < navless_out.index('id="shadow-farm-tts"') < navless_out.index('</main>')
+`;
+const projectionProbe=spawnSync('python',['-c',pythonProbe],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
+assert.equal(projectionProbe.status,0,`legacy TTS build projection failed: ${projectionProbe.stdout}\n${projectionProbe.stderr}`);
 
 console.log('longform tts adapter contract: ok');
