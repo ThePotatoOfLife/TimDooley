@@ -6,154 +6,95 @@
     {
       "type": "Feature",
       "properties": {
-        "feature_id": "father-mesopotamia-core-v1",
+        "feature_id": "father-mesopotamia-core-v2",
         "overlay_id": "father.mesopotamia-core",
-        "label": "Mesopotamian core · broad reconstruction",
+        "label": "Mesopotamia · sourced historical consensus envelope",
         "epistemic_type": "historical_reconstruction",
-        "source_ids": ["project-fathers-land-consolidation", "historical-mesopotamia-general"],
+        "source_ids": ["british-museum-mesopotamia", "cambridge-mesopotamia-definition", "historical-mesopotamia-general"],
         "source_date": "2026-09-15",
-        "geometry_version": "v1",
-        "confidence": "interpretive",
-        "status_note": "Broad historical-geographic envelope centered on the Tigris-Euphrates alluvium and adjacent upper Mesopotamia. Deliberately not a cadastral or sovereignty boundary.",
-        "measurement_policy": "approximate_reconstruction"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[35.6,37.4],[39.4,38.2],[44.2,37.8],[47.2,35.6],[49.0,31.4],[48.1,29.3],[44.2,29.0],[40.0,31.0],[37.0,34.1],[35.6,37.4]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "feature_id": "father-eden-context-v1",
-        "overlay_id": "father.eden-context",
-        "label": "Eden context · lower Mesopotamian hypothesis field",
-        "epistemic_type": "project_interpretive",
-        "source_ids": ["genesis-2", "project-fathers-land-consolidation"],
-        "source_date": "2026-09-15",
-        "geometry_version": "v1",
-        "confidence": "hypothesis",
-        "status_note": "Project interpretive field around lower Mesopotamia. The biblical text does not provide a modern surveyed boundary.",
-        "measurement_policy": "approximate_reconstruction"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[43.4,33.2],[47.0,33.4],[49.6,31.7],[50.2,29.2],[48.1,27.8],[45.0,28.4],[43.1,30.7],[43.4,33.2]]]
-      }
-    },
-    {
-      "type": "Feature",
-      "properties": {
-        "feature_id": "tigris-reference-v1",
-        "overlay_id": "father.four-rivers.tigris",
-        "label": "Tigris · simplified reference",
-        "epistemic_type": "current_observed",
-        "source_ids": ["genesis-2", "modern-river-reference"],
-        "source_date": "2026-09-15",
-        "geometry_version": "v1",
+        "geometry_version": "v2",
         "confidence": "strong",
-        "status_note": "Simplified cartographic reference line, intended to identify the river system rather than reproduce a precision hydrological centreline.",
-        "measurement_policy": "reference_line"
+        "status_note": "Sourced historical-geographic envelope: centered on modern Iraq and northeastern Syria, extending into southeastern Turkey and the western-Iran/Zagros fringe. The edge is a reconstruction of a historical region, not a surveyed ancient border or sovereignty line.",
+        "measurement_policy": "sourced_historical_reconstruction"
       },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [[39.7,38.4],[41.2,37.2],[42.7,36.2],[43.7,35.0],[44.4,33.3],[45.2,31.9],[47.0,30.5],[48.5,29.8]]
-      }
+      "geometry": {"type": "Polygon", "coordinates": [[[36.6,36.8],[37.2,37.4],[38.2,37.8],[39.4,38.2],[40.8,38.5],[42.2,38.4],[43.6,38.0],[44.7,37.3],[45.7,36.5],[46.5,35.5],[47.2,34.4],[47.8,33.2],[48.5,31.8],[49.0,30.5],[48.5,29.7],[47.7,29.2],[46.7,29.0],[45.6,29.3],[44.7,30.0],[43.7,30.7],[42.8,31.5],[41.8,32.2],[40.8,33.0],[39.9,33.8],[39.0,34.6],[38.2,35.3],[37.4,35.9],[36.8,36.3],[36.6,36.8]]]}
     },
     {
       "type": "Feature",
       "properties": {
-        "feature_id": "euphrates-reference-v1",
-        "overlay_id": "father.four-rivers.euphrates",
-        "label": "Euphrates · simplified reference",
+        "feature_id": "father-lower-mesopotamia-gulf-v1",
+        "overlay_id": "father.lower-mesopotamia-gulf",
+        "label": "Lower Mesopotamia · Gulf / Kuwait fringe",
+        "epistemic_type": "historical_reconstruction",
+        "source_ids": ["lower-mesopotamia-kuwait-geomorphology", "lower-mesopotamia-persian-gulf-historical"],
+        "source_date": "2026-09-15",
+        "geometry_version": "v1",
+        "confidence": "interpretive",
+        "status_note": "Lower-Mesopotamian/Gulf fringe used to show why southern Iraq and the northern Gulf/Kuwait context can belong to the broader source-region discussion without treating all modern Kuwait as an uncontested Mesopotamian core.",
+        "measurement_policy": "sourced_historical_reconstruction"
+      },
+      "geometry": {"type": "Polygon", "coordinates": [[[43.7,33.5],[45.0,33.4],[46.2,32.9],[47.3,32.1],[48.3,31.1],[48.7,30.1],[48.4,29.3],[47.7,28.8],[46.8,28.7],[45.9,29.2],[45.1,30.0],[44.4,31.0],[43.9,32.1],[43.7,33.5]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "feature_id": "tigris-euphrates-basin-reference-v1",
+        "overlay_id": "physical.tigris-euphrates-basin",
+        "label": "Tigris–Euphrates catchment · HydroSHEDS published extent",
         "epistemic_type": "current_observed",
-        "source_ids": ["genesis-2", "modern-river-reference"],
+        "source_ids": ["hydrosheds-hydrobasins", "unep-iraq-tigris-euphrates-catchment"],
         "source_date": "2026-09-15",
         "geometry_version": "v1",
-        "confidence": "strong",
-        "status_note": "Simplified cartographic reference line, intended to identify the river system rather than reproduce a precision hydrological centreline.",
-        "measurement_policy": "reference_line"
+        "confidence": "direct",
+        "status_note": "Exact published extent of the UNEP-Iraq ArcGIS HydroSHEDS catchment layer, stored as a reference window. This is NOT a substitute for the full HydroSHEDS basin boundary and its area must not be read as basin area.",
+        "measurement_policy": "source_extent_reference"
       },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [[38.0,38.9],[39.1,37.0],[38.0,36.1],[39.8,35.2],[41.2,34.5],[42.2,33.5],[43.4,32.5],[44.8,31.3],[47.2,30.5],[48.4,29.8]]
-      }
+      "geometry": {"type": "Polygon", "coordinates": [[[38.945294,29.075],[48.4625,29.075],[48.4625,37.377264],[38.945294,37.377264],[38.945294,29.075]]]}
     },
     {
       "type": "Feature",
-      "properties": {
-        "feature_id": "father-return-path-v1",
-        "overlay_id": "father.return-path",
-        "label": "Father’s Return Path · symbolic route",
-        "epistemic_type": "project_interpretive",
-        "source_ids": ["project-fathers-land-consolidation"],
-        "source_date": "2026-09-15",
-        "geometry_version": "v1",
-        "confidence": "interpretive",
-        "status_note": "Symbolic project route linking North / North-of-North motifs toward an eastward Mesopotamian return. It is not a border.",
-        "measurement_policy": "symbolic_route"
-      },
-      "geometry": {
-        "type": "LineString",
-        "coordinates": [[12.6,55.7],[18.1,59.3],[25.0,65.0],[31.0,69.5],[34.0,60.0],[40.0,50.0],[44.0,41.0],[44.8,33.3]]
-      }
+      "properties": {"feature_id":"father-eden-context-v1","overlay_id":"father.eden-context","label":"Eden context · lower Mesopotamian hypothesis field","epistemic_type":"project_interpretive","source_ids":["genesis-2","project-fathers-land-consolidation"],"source_date":"2026-09-15","geometry_version":"v1","confidence":"hypothesis","status_note":"Project interpretive field around lower Mesopotamia. The biblical text does not provide a modern surveyed boundary.","measurement_policy":"approximate_reconstruction"},
+      "geometry": {"type":"Polygon","coordinates":[[[43.4,33.2],[47.0,33.4],[49.6,31.7],[50.2,29.2],[48.1,27.8],[45.0,28.4],[43.1,30.7],[43.4,33.2]]]}
     },
     {
       "type": "Feature",
-      "properties": {
-        "feature_id": "dan-to-beersheba-v1",
-        "overlay_id": "biblical.dan-to-beersheba",
-        "label": "Dan to Beer-sheba · textual extent corridor",
-        "epistemic_type": "textual_reconstruction",
-        "source_ids": ["judges-20-1", "1-samuel-3-20"],
-        "source_date": "textual",
-        "geometry_version": "v1",
-        "confidence": "interpretive",
-        "status_note": "A corridor-like visualisation of the textual north-south expression, not a surveyed territorial boundary.",
-        "measurement_policy": "approximate_reconstruction"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[34.55,31.15],[34.95,31.05],[35.45,31.3],[35.65,33.25],[35.45,33.55],[35.05,33.4],[34.75,32.3],[34.55,31.15]]]
-      }
+      "properties": {"feature_id":"tigris-reference-v1","overlay_id":"father.four-rivers.tigris","label":"Tigris · simplified reference","epistemic_type":"current_observed","source_ids":["genesis-2","modern-river-reference"],"source_date":"2026-09-15","geometry_version":"v1","confidence":"strong","status_note":"Simplified cartographic reference line, intended to identify the river system rather than reproduce a precision hydrological centreline.","measurement_policy":"reference_line"},
+      "geometry": {"type":"LineString","coordinates":[[39.7,38.4],[41.2,37.2],[42.7,36.2],[43.7,35.0],[44.4,33.3],[45.2,31.9],[47.0,30.5],[48.5,29.8]]}
     },
     {
       "type": "Feature",
-      "properties": {
-        "feature_id": "genesis-15-river-to-river-v1",
-        "overlay_id": "biblical.genesis-15",
-        "label": "Genesis 15 · Wadi el-Arish to Euphrates scenario",
-        "epistemic_type": "textual_reconstruction",
-        "source_ids": ["genesis-15-18", "river-of-egypt-wadi-el-arish-interpretation", "euphrates-reference"],
-        "source_date": "textual / interpretive reconstruction 2026-09-15",
-        "geometry_version": "v1",
-        "confidence": "interpretive",
-        "status_note": "One explicit reconstruction of Genesis 15:18 using Wadi el-Arish for the River of Egypt and a broad Euphrates-facing eastern extent. It is not a surveyed ancient border or a modern sovereignty claim.",
-        "measurement_policy": "approximate_reconstruction"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[33.8,31.1],[34.6,31.0],[35.5,31.7],[36.4,32.8],[37.4,34.0],[38.4,35.1],[39.2,36.1],[40.5,36.7],[41.4,35.5],[40.0,33.8],[38.3,32.1],[36.4,30.6],[34.6,29.9],[33.8,31.1]]]
-      }
+      "properties": {"feature_id":"euphrates-reference-v1","overlay_id":"father.four-rivers.euphrates","label":"Euphrates · simplified reference","epistemic_type":"current_observed","source_ids":["genesis-2","modern-river-reference"],"source_date":"2026-09-15","geometry_version":"v1","confidence":"strong","status_note":"Simplified cartographic reference line, intended to identify the river system rather than reproduce a precision hydrological centreline.","measurement_policy":"reference_line"},
+      "geometry": {"type":"LineString","coordinates":[[38.0,38.9],[39.1,37.0],[38.0,36.1],[39.8,35.2],[41.2,34.5],[42.2,33.5],[43.4,32.5],[44.8,31.3],[47.2,30.5],[48.4,29.8]]}
     },
     {
       "type": "Feature",
-      "properties": {
-        "feature_id": "greater-israel-nile-euphrates-v1",
-        "overlay_id": "modern.greater-israel",
-        "label": "Greater Israel · maximal Nile-to-Euphrates scenario",
-        "epistemic_type": "political_ideology",
-        "source_ids": ["greater-israel-maximal-discourse", "genesis-15-18-nile-reading"],
-        "source_date": "scenario reconstruction 2026-09-15",
-        "geometry_version": "v1",
-        "confidence": "interpretive",
-        "status_note": "Maximal Nile-to-Euphrates Greater Israel scenario used in political and religious discourse. This is not an official border, not a sovereignty claim, and not a statement that the modern State of Israel has adopted this scenario.",
-        "measurement_policy": "approximate_reconstruction"
-      },
-      "geometry": {
-        "type": "Polygon",
-        "coordinates": [[[31.1,30.2],[31.6,31.4],[33.8,31.2],[35.2,32.6],[36.5,34.0],[38.5,35.6],[40.1,36.8],[41.5,36.0],[43.2,34.0],[44.7,32.2],[43.0,30.8],[40.5,30.0],[37.8,29.5],[34.8,29.3],[32.8,29.6],[31.1,30.2]]]
-      }
+      "properties": {"feature_id":"father-return-path-v1","overlay_id":"father.return-path","label":"Father’s Return Path · symbolic route","epistemic_type":"project_interpretive","source_ids":["project-fathers-land-consolidation"],"source_date":"2026-09-15","geometry_version":"v1","confidence":"interpretive","status_note":"Symbolic project route linking North / North-of-North motifs toward an eastward Mesopotamian return. It is not a border.","measurement_policy":"symbolic_route"},
+      "geometry": {"type":"LineString","coordinates":[[12.6,55.7],[18.1,59.3],[25.0,65.0],[31.0,69.5],[34.0,60.0],[40.0,50.0],[44.0,41.0],[44.8,33.3]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"feature_id":"dan-to-beersheba-v1","overlay_id":"biblical.dan-to-beersheba","label":"Dan to Beer-sheba · textual extent corridor","epistemic_type":"textual_reconstruction","source_ids":["judges-20-1","1-samuel-3-20"],"source_date":"textual","geometry_version":"v1","confidence":"interpretive","status_note":"A corridor-like visualisation of the textual north-south expression, not a surveyed territorial boundary.","measurement_policy":"approximate_reconstruction"},
+      "geometry": {"type":"Polygon","coordinates":[[[34.55,31.15],[34.95,31.05],[35.45,31.3],[35.65,33.25],[35.45,33.55],[35.05,33.4],[34.75,32.3],[34.55,31.15]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"feature_id":"numbers-34-v1","overlay_id":"biblical.numbers-34","label":"Numbers 34 · sourced Canaan boundary reconstruction","epistemic_type":"textual_reconstruction","source_ids":["numbers-34","thetorah-numbers-34-borders","levin-numbers-34-historical-geography"],"source_date":"textual / scholarly reconstruction 2026-09-15","geometry_version":"v1","confidence":"interpretive","status_note":"Textual reconstruction using widely accepted or argued identifications including Kadesh-barnea at ‘En el-Qudeirat, Wadi el-Arish for the Brook of Egypt, Lebo-Hamath in the Beqa‘, and the Jordan/Dead Sea water boundaries. Several northern/eastern points remain debated.","measurement_policy":"sourced_textual_reconstruction"},
+      "geometry": {"type":"Polygon","coordinates":[[[35.45,30.98],[35.22,30.75],[34.85,30.63],[34.42,30.65],[34.15,30.78],[33.95,30.95],[33.8,31.13],[34.1,31.5],[34.4,32.1],[34.7,32.8],[35.05,33.5],[35.35,34.0],[35.75,34.3],[36.2,34.2],[36.63,34.32],[36.93,34.31],[37.23,34.23],[36.75,33.75],[36.2,33.35],[35.8,33.05],[35.65,32.9],[35.58,32.55],[35.55,32.2],[35.5,31.75],[35.45,31.3],[35.45,30.98]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"feature_id":"genesis-15-river-to-river-v2","overlay_id":"biblical.genesis-15","label":"Genesis 15 · Wadi el-Arish to Euphrates scenario","epistemic_type":"textual_reconstruction","source_ids":["genesis-15-18","river-of-egypt-wadi-el-arish-interpretation","euphrates-reference"],"source_date":"textual / interpretive reconstruction 2026-09-15","geometry_version":"v2","confidence":"interpretive","status_note":"One explicit Genesis 15:18 reconstruction using Wadi el-Arish for the River of Egypt and a broad Euphrates-facing eastern extent. It is a textual scenario, not a surveyed ancient border or modern sovereignty claim.","measurement_policy":"sourced_textual_reconstruction"},
+      "geometry": {"type":"Polygon","coordinates":[[[33.8,31.13],[34.2,31.1],[34.7,31.4],[35.2,31.8],[35.8,32.4],[36.5,33.0],[37.2,33.6],[38.0,34.3],[38.8,35.0],[39.5,35.8],[40.3,36.4],[41.0,36.7],[41.4,36.2],[40.8,35.4],[40.0,34.7],[39.0,33.9],[38.0,33.1],[37.0,32.3],[36.0,31.5],[35.0,30.8],[34.4,30.3],[33.9,30.6],[33.8,31.13]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"feature_id":"genesis-15-nile-to-euphrates-v1","overlay_id":"biblical.genesis-15-nile","label":"Genesis 15 · Nile to Euphrates reading","epistemic_type":"textual_reconstruction","source_ids":["genesis-15-18","river-of-egypt-nile-interpretation","euphrates-reference"],"source_date":"textual / interpretive reconstruction 2026-09-15","geometry_version":"v1","confidence":"interpretive","status_note":"Alternative Genesis 15:18 reconstruction taking the River of Egypt as a Nile/Nile-delta reference rather than Wadi el-Arish. It is an interpretive textual scenario, not a surveyed ancient border or modern sovereignty claim.","measurement_policy":"sourced_textual_reconstruction"},
+      "geometry": {"type":"Polygon","coordinates":[[[31.05,30.2],[31.35,31.15],[32.3,31.25],[33.2,31.25],[34.0,31.2],[35.0,31.8],[36.0,32.7],[37.2,33.7],[38.3,34.8],[39.4,35.8],[40.4,36.6],[41.1,36.8],[41.5,36.2],[40.7,35.2],[39.8,34.4],[38.8,33.5],[37.7,32.5],[36.5,31.7],[35.2,30.9],[33.8,30.3],[32.5,29.8],[31.5,29.7],[31.05,30.2]]]}
+    },
+    {
+      "type": "Feature",
+      "properties": {"feature_id":"greater-israel-nile-euphrates-v2","overlay_id":"modern.greater-israel","label":"Greater Israel · maximal Nile-to-Euphrates scenario","epistemic_type":"political_ideology","source_ids":["greater-israel-maximal-discourse","genesis-15-18-nile-reading"],"source_date":"scenario reconstruction 2026-09-15","geometry_version":"v2","confidence":"interpretive","status_note":"Maximal Nile-to-Euphrates Greater Israel scenario used in some political and religious discourse. This is not an official border, not a sovereignty claim, and not a statement that the modern State of Israel has adopted this scenario.","measurement_policy":"sourced_ideological_scenario"},
+      "geometry": {"type":"Polygon","coordinates":[[[31.05,30.2],[31.3,31.2],[32.2,31.5],[33.3,31.4],[34.4,31.7],[35.4,32.4],[36.4,33.3],[37.5,34.2],[38.7,35.2],[39.8,36.1],[41.0,36.8],[42.2,36.3],[43.2,35.2],[44.0,34.0],[44.7,32.7],[44.5,31.7],[43.6,30.8],[42.0,30.2],[40.2,29.8],[38.2,29.5],[36.0,29.3],[34.0,29.2],[32.4,29.5],[31.05,30.2]]]}
     }
   ]
 }

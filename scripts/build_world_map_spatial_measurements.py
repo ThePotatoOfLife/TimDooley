@@ -122,7 +122,7 @@ def main():
         "generated_from": "data/world-map-spatial-overlays.json and committed WGS84 geometry owners",
         "method": METHOD,
         "earth_radius_km": EARTH_RADIUS_KM,
-        "precision_note": "Geometry-derived approximations. Measurements do not imply that textual, historical, or project reconstructions are exact surveyed boundaries.",
+        "precision_note": "Geometry-derived approximations. Measurements do not imply that textual, historical, ideological or project reconstructions are exact surveyed boundaries. source_extent_reference areas describe published reference extents, not the underlying basin area.",
         "features": output,
     }
     OUT.write_text(json.dumps(payload, indent=2, ensure_ascii=False) + "\n", encoding="utf-8")
