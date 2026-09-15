@@ -54,6 +54,93 @@
     return node?.nodeType===1?node:node?.parentElement||node?.parentNode||null;
   }
 
+  function buildNormalizedTextMap(container,excludeSelector=''){
+    const doc=container?.ownerDocument||root?.document;
+    if(!container||!doc||typeof doc.createTreeWalker!=='function')return {text:'',segments:[]};
+    const exclusions=['script','style','noscript','button','summary','.ptts-inline-listen','.ptts-selection-listen','.ptts-drawer',excludeSelector].filter(Boolean).join(',');
+    const walker=doc.createTreeWalker(container,4);
+    const segments=[];
+    let text='';
+    let pendingSpace=null;
+    let node=null;
+    const isSpace=char=>/\s/u.test(char);
+    while((node=walker.nextNode())){
+      const parent=node.parentElement||node.parentNode;
+      if(exclusions&&parent?.closest?.(exclusions))continue;
+      const raw=String(node.nodeValue||'');
+      let i=0;
+      while(i<raw.length){
+        if(isSpace(raw[i])){
+          let j=i+1;while(j<raw.length&&isSpace(raw[j]))j+=1;
+          if(text&&!text.endsWith(' '))pendingSpace={node,start:i,end:j};
+          i=j;
+          continue;
+        }
+        let j=i+1;while(j<raw.length&&!isSpace(raw[j]))j+=1;
+        if(pendingSpace&&text){
+          const outStart=text.length;
+          text+=' ';
+          segments.push({outStart,outEnd:outStart+1,node:pendingSpace.node,nodeStart:pendingSpace.start,nodeEnd:pendingSpace.end,collapsed:true});
+          pendingSpace=null;
+        }
+        const chunk=raw.slice(i,j);
+        const outStart=text.length;
+        text+=chunk;
+        segments.push({outStart,outEnd:outStart+chunk.length,node,nodeStart:i,nodeEnd:j,collapsed:false});
+        i=j;
+      }
+    }
+    return {text,segments};
+  }
+
+  function mapPoint(map,index,endBias=false){
+    const segments=map?.segments||[];
+    if(!segments.length)return null;
+    const limit=map.text.length;
+    const safe=clamp(Number(index)||0,0,limit);
+    if(safe===limit){const last=segments[segments.length-1];return {node:last.node,offset:last.nodeEnd}}
+    const probe=endBias&&safe>0?safe-1:safe;
+    const segment=segments.find(part=>probe>=part.outStart&&probe<part.outEnd);
+    if(!segment)return null;
+    if(segment.collapsed)return {node:segment.node,offset:endBias?segment.nodeEnd:segment.nodeStart};
+    const relative=endBias?safe-segment.outStart:probe-segment.outStart;
+    return {node:segment.node,offset:clamp(segment.nodeStart+relative,segment.nodeStart,segment.nodeEnd)};
+  }
+
+  function rangeFromTextMap(map,range,doc){
+    if(!map?.text||!range||!doc?.createRange)return null;
+    const start=clamp(Number(range.start)||0,0,map.text.length);
+    const end=clamp(Number(range.end)||start,start,map.text.length);
+    if(end<=start)return null;
+    const a=mapPoint(map,start,false),b=mapPoint(map,end,true);
+    if(!a||!b)return null;
+    const domRange=doc.createRange();
+    try{domRange.setStart(a.node,a.offset);domRange.setEnd(b.node,b.offset)}catch{return null}
+    return domRange;
+  }
+
+  function createPageHighlighter(options={}){
+    const doc=options.document||root?.document;
+    const win=doc?.defaultView||root;
+    const highlights=win?.CSS?.highlights;
+    const HighlightCtor=win?.Highlight||root?.Highlight;
+    const name=options.name||'potato-tts-word';
+    let cachedContainer=null,cachedExclude='',cachedMap=null;
+    function clear(){highlights?.delete?.(name)}
+    function invalidate(){cachedContainer=null;cachedExclude='';cachedMap=null;clear()}
+    function highlight(container,range,excludeSelector=''){
+      if(!container||!highlights||typeof HighlightCtor!=='function')return false;
+      if(container!==cachedContainer||excludeSelector!==cachedExclude||!cachedMap){
+        cachedContainer=container;cachedExclude=excludeSelector;cachedMap=buildNormalizedTextMap(container,excludeSelector);
+      }
+      const domRange=rangeFromTextMap(cachedMap,range,doc);
+      if(!domRange){clear();return false}
+      highlights.set(name,new HighlightCtor(domRange));
+      return true;
+    }
+    return {highlight,clear,invalidate,get text(){return cachedMap?.text||''}};
+  }
+
   function mountSelectionAction(options={}){
     const doc=options.document||root?.document;
     const container=options.container;
@@ -232,5 +319,5 @@
     return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>engine?.stop(),engine};
   }
 
-  return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,mountSelectionAction,mount};
+  return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,buildNormalizedTextMap,createPageHighlighter,mountSelectionAction,mount};
 });
