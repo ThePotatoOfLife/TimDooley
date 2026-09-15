@@ -120,7 +120,11 @@ assert 'src="../app/tts-reader.js"' in out
 assert 'src="../app/tts-drawer.js"' in out
 assert 'src="../app/longform-tts-adapter.js"' in out
 assert 'data-tts-item=' not in out
+assert out.index('</nav>') < out.index('id="shadow-farm-tts"') < out.index('</main>')
 assert projection.inject_legacy_tts_reader(out, config) == out
+navless = '<!doctype html><html><head><title>X</title></head><body><main class="page"><p>Readable.</p></main></body></html>'
+navless_out = projection.inject_legacy_tts_reader(navless, config)
+assert navless_out.index('<main') < navless_out.index('id="shadow-farm-tts"') < navless_out.index('</main>')
 `;
 const projectionProbe=spawnSync('python',['-c',pythonProbe],{cwd:new URL('..',import.meta.url),encoding:'utf8'});
 assert.equal(projectionProbe.status,0,`legacy TTS build projection failed: ${projectionProbe.stdout}\n${projectionProbe.stderr}`);
