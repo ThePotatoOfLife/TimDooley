@@ -87,7 +87,7 @@ def main():
     haw=load("data/hawkins-scale.json"); levels_h=haw.get("scale",haw.get("levels",[]))
     if len(levels_h)<17:ERRORS.append(f"Hawkins scale has {len(levels_h)} levels; expected at least 17 principal levels")
     if haw.get("physical_frequency_status")!="not_established":ERRORS.append("Hawkins physical-frequency guardrail must remain not_established")
-    if "no validated one-to-one mapping" not in str(haw.get("em_spectrum_status,"")).lower():ERRORS.append("Hawkins electromagnetic mapping must remain explicitly non-physical")
+    if "no validated one-to-one mapping" not in str(haw.get("em_spectrum_status","")).lower():ERRORS.append("Hawkins electromagnetic mapping must remain explicitly non-physical")
     workflow=load("data/project-workflow.json")
     phase_ids={x.get("id") for x in workflow.get("phases",[]) if isinstance(x,dict)}
     for phase in ("audit","canonicalize","deepen","potatoism-canon","spiritual-inquiry","evidence","website","release-audit"):
