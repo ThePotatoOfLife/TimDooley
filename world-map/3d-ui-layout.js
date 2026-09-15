@@ -19,6 +19,8 @@ function ensureStyle() {
     #atlasUILeftStatus #atlasWorldContext{width:min(290px,100%)!important}
     #atlasUILeftStatus #atlasTimeState{width:auto!important}
     #atlasUILeftStatus #atlasLensLegend{width:min(340px,100%)!important}
+    #atlasUILeftStatus #axisFieldLegend{width:min(430px,100%)!important;pointer-events:none!important}
+    #atlasUILeftStatus #axisOperatorHud{width:min(420px,100%)!important;pointer-events:none!important}
     #axisDepthNavigator[data-layout-hosted="1"]{display:none!important}
     .atlas-axis-inspector-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin:9px 0}
     .atlas-axis-inspector-nav button{min-width:0;padding:6px 4px;font-size:9px}
@@ -93,7 +95,7 @@ function refreshLeftStatus() {
   const host = ensureLeftStatusHost();
   if (!host) return;
   const rows = [...registrations.values()]
-    .filter(row => row.zone === 'left-status' && row.element?.isConnected)
+    .filter(row => row.zone === 'left-status' && row.element)
     .sort((a,b) => a.priority - b.priority || a.id.localeCompare(b.id));
   for (const row of rows) if (row.element.parentElement !== host) host.appendChild(row.element);
 }
@@ -105,6 +107,10 @@ function adoptKnownSurfaces() {
   if (time && !registrations.has('time-state')) upsertRegistration({ id:'time-state', zone:'left-status', element:time, priority:20 });
   const lens = document.getElementById('atlasLensLegend');
   if (lens && !registrations.has('lens-legend')) upsertRegistration({ id:'lens-legend', zone:'left-status', element:lens, priority:40 });
+  const fieldLegend = document.getElementById('axisFieldLegend');
+  if (fieldLegend && !registrations.has('axis-field-legend')) upsertRegistration({ id:'axis-field-legend', zone:'left-status', element:fieldLegend, priority:45 });
+  const operatorHud = document.getElementById('axisOperatorHud');
+  if (operatorHud && !registrations.has('axis-operator-hud')) upsertRegistration({ id:'axis-operator-hud', zone:'left-status', element:operatorHud, priority:50 });
   if (panel && !registrations.has('main-inspector')) upsertRegistration({ id:'main-inspector', zone:'right-inspector', element:panel, priority:100 });
   const axisToggle = document.getElementById('axisCompactToggle');
   if (axisToggle && !registrations.has('axis-compact')) upsertRegistration({ id:'axis-compact', zone:'canvas-control', element:axisToggle, priority:50 });
