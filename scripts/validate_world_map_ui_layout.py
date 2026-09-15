@@ -10,6 +10,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
 LAYOUT = ROOT / "world-map" / "3d-ui-layout.js"
+LAYOUT_COALESCING_TEST = ROOT / "scripts" / "test_world_map_ui_layout_coalescing.mjs"
 PHYSICAL = ROOT / "world-map" / "3d-physical-layers.js"
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
@@ -34,20 +35,34 @@ def check_node(path: Path, errors: list[str]) -> None:
         errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: {result.stderr.strip() or result.stdout.strip()}")
 
 
+def run_node(path: Path, errors: list[str], label: str) -> None:
+    node = shutil.which("node")
+    if not node:
+        errors.append(f"node executable unavailable; cannot run {label}")
+        return
+    if not path.exists():
+        errors.append(f"missing required World Map regression: {path.relative_to(ROOT)}")
+        return
+    result = subprocess.run([node, str(path)], cwd=ROOT, capture_output=True, text=True)
+    if result.returncode:
+        errors.append(f"{label} failed: " + (result.stderr.strip() or result.stdout.strip()))
+
+
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
+    for path in (LAYOUT, LAYOUT_COALESCING_TEST, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
-    for path in (LAYOUT, PHYSICAL, PANEL_LIFECYCLE, TERRAIN):
+    for path in (LAYOUT, LAYOUT_COALESCING_TEST, PHYSICAL, PANEL_LIFECYCLE, TERRAIN):
         check_node(path, errors)
 
     if LAYOUT.exists():
         text = LAYOUT.read_text(encoding="utf-8", errors="replace")
         for token in (
             "__potatoAtlasUILayout", "right-inspector", "left-status", "canvas-control",
-            "register", "unregister", "setVisible", "getState", "refresh", "atlasUILeftStatus",
+            "register", "unregister", "setVisible", "getState", "refresh", "scheduleRefresh",
+            "upsertRegistration", "uiLayoutRefreshes", "atlasUILeftStatus",
             "atlasWorldContext", "atlasTimeState", "axisDepthNavigator", "axisCompactToggle",
             "main-inspector", "world-context", "time-state", "axis-compact",
             "atlas-axis-inspector-nav", "@media(max-width:900px)",
@@ -77,7 +92,7 @@ def main() -> int:
         by_id = {row.get("id"): row for row in entries if isinstance(row, dict)}
         terrain = by_id.get("physical.terrain") or {}
         if terrain.get("availability") != "current": errors.append("physical.terrain must be current")
-        if terrain.get("load_policy") != "on_demand": errors.append("physical.terrain must remain on_demand")
+        if terrain.get("load_policy") != "on_demand": errors.append("hydrology must remain on_demand" if False else "physical.terrain must remain on_demand")
         if terrain.get("kind") != "module": errors.append("physical.terrain must be represented as a lazy module")
         for overlay_id in ("physical.water.base", "physical.land-cover", "physical.aridity", "physical.water.hydrology"):
             row = by_id.get(overlay_id) or {}
@@ -107,6 +122,8 @@ def main() -> int:
             errors.append("Terrain module must not inject a second legacy control after Physical menu migration")
         if "terrain=1" in terrain or "searchParams.set('terrain'" in terrain:
             errors.append("Terrain module must not own legacy URL state after Physical runtime migration")
+
+    run_node(LAYOUT_COALESCING_TEST, errors, "World Map UI layout coalescing regression")
 
     validators = (
         ("render stack", RENDER_STACK_VALIDATOR, ()),
