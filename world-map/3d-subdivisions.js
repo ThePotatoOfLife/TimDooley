@@ -4,6 +4,8 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
+const geo = window.__potatoAtlasGeo;
+if (!geo) throw new Error('Atlas subdivisions require the shared geospatial kernel.');
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
@@ -112,11 +114,21 @@ function descriptorBounds(partition, descriptor = {}) {
   if (descriptor.viewport_bounds) return descriptor.viewport_bounds;
   return partition === 'USA' ? USA_BOUNDS_FALLBACK : null;
 }
+function unwrappedInterval(west, east, reference) {
+  const left = geo.unwrapLongitude(west, reference);
+  let right = geo.unwrapLongitude(east, left);
+  if (right < left) right += 360;
+  return [left, right];
+}
 function viewportOverlaps(bounds) {
   if (!bounds) return false;
   const view = map.getBounds();
-  const west = view.getWest(), east = view.getEast(), south = view.getSouth(), north = view.getNorth();
-  return west <= bounds.east && east >= bounds.west && south <= bounds.north && north >= bounds.south;
+  const mapCenter = map.getCenter?.();
+  const reference = Number.isFinite(Number(mapCenter?.lng)) ? Number(mapCenter.lng) : Number(view.getWest());
+  const [west, east] = unwrappedInterval(view.getWest(), view.getEast(), reference);
+  const [boundsWest, boundsEast] = unwrappedInterval(bounds.west, bounds.east, reference);
+  const south = view.getSouth(), north = view.getNorth();
+  return west <= boundsEast && east >= boundsWest && south <= bounds.north && north >= bounds.south;
 }
 function partitionForId(index, id) {
   const value = String(id || '');
@@ -129,17 +141,17 @@ function partitionForId(index, id) {
 }
 function descriptorCenter(bounds) {
   if (!bounds) return null;
-  return [(Number(bounds.west) + Number(bounds.east)) / 2, (Number(bounds.south) + Number(bounds.north)) / 2];
+  const west = Number(bounds.west);
+  const east = geo.unwrapLongitude(bounds.east, west);
+  return [(west + east) / 2, (Number(bounds.south) + Number(bounds.north)) / 2];
 }
-function squaredDistanceToMapCenter(bounds) {
+function distanceToMapCenterKm(bounds) {
   const center = descriptorCenter(bounds);
   const mapCenter = map.getCenter?.();
   if (!center || !mapCenter || !Number.isFinite(Number(mapCenter.lng)) || !Number.isFinite(Number(mapCenter.lat))) {
     return Number.POSITIVE_INFINITY;
   }
-  const dx = center[0] - Number(mapCenter.lng);
-  const dy = center[1] - Number(mapCenter.lat);
-  return dx * dx + dy * dy;
+  return geo.haversineDistanceKm(center, [Number(mapCenter.lng), Number(mapCenter.lat)]);
 }
 function recursiveBounds(node, box) {
   if (!Array.isArray(node)) return box;
@@ -323,7 +335,7 @@ function relevantCandidates(index) {
       if (partition === pendingPartition) priority = 0;
       else if (partition === selectedPartition) priority = 1;
       if (priority === 2 && !viewportOverlaps(bounds)) return null;
-      return { partition, descriptor, priority, distance:squaredDistanceToMapCenter(bounds) };
+      return { partition, descriptor, priority, distance:distanceToMapCenterKm(bounds) };
     })
     .filter(Boolean)
     .sort((a, b) => a.priority - b.priority || a.distance - b.distance || a.partition.localeCompare(b.partition));
