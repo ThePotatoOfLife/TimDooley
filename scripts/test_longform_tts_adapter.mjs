@@ -57,6 +57,10 @@ assert.ok(adapterSource.includes('mountSelectionAction'), 'longform pages must m
 assert.ok(adapterSource.includes("classList.add('ptts-reading-active')"), 'current spoken item must gain an active-reading state');
 assert.ok(adapterSource.includes("classList.remove('ptts-reading-active')"), 'active-reading state must be cleared when speech ends or context changes');
 assert.ok(adapterSource.includes('onEvent:event=>'), 'longform adapter must consume drawer speech events');
+assert.ok(adapterSource.includes('createPageHighlighter'), 'longform adapter must use shared actual-page word highlighting');
+assert.ok(adapterSource.includes("event.type==='boundary'&&event.absoluteWord"), 'longform adapter must map boundary words back to page text');
+assert.ok(adapterSource.includes("event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null"), 'longform highlight target must follow current vs whole-page scope');
+assert.ok(adapterSource.includes('pageHighlighter.clear()'), 'longform page highlight must clear at speech end/context change');
 
 function assertLongformPage(source,{name,host,css,reader,drawer,adapter:adapterSrc,root,item,allLabel,currentLabel,exclude}){
   for (const marker of [host,css,reader,drawer,adapterSrc,'data-tts-longform',root,item,allLabel,currentLabel,exclude].filter(Boolean)) {
