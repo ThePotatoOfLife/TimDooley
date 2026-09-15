@@ -32,6 +32,9 @@ let useClock = 0;
 let activePartitions = [];
 let activeBytes = 0;
 let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
+let cacheHits = 0;
+let cacheMisses = 0;
+let cacheEvictions = 0;
 
 function fmt(value) {
   if (value == null || !Number.isFinite(Number(value))) return '—';
@@ -157,8 +160,47 @@ function touch(state) {
   state.lastUsed = ++useClock;
   return state;
 }
+function cacheBytes() {
+  return [...cache.values()].reduce((sum, state) => sum + state.bytes, 0);
+}
+function syncDiagnostics() {
+  const diagnostics = window.__potatoAtlasDiagnostics;
+  if (!diagnostics) return;
+  diagnostics.subdivisions = {
+    ...(diagnostics.subdivisions || {}),
+    cacheHits,
+    cacheMisses,
+    cacheEvictions,
+    cacheBytes:cacheBytes(),
+    cachedPartitions:cache.size,
+    renderedBytes:activeBytes,
+    renderedPartitions:activePartitions.length,
+  };
+}
 function featureById(partition, id) {
   return cache.get(partition)?.data?.features?.find(feature => feature?.properties?.id === id) || null;
+}
+function enforceCacheBudget(index, extraProtected = []) {
+  const protectedIds = new Set(activePartitions);
+  const selectedPartition = partitionForId(index, selectedId);
+  const pendingPartition = partitionForId(index, pendingDeepLinkId);
+  if (selectedPartition) protectedIds.add(selectedPartition);
+  if (pendingPartition) protectedIds.add(pendingPartition);
+  for (const partition of extraProtected) if (partition) protectedIds.add(partition);
+
+  let bytes = cacheBytes();
+  const evictable = [...cache.entries()]
+    .filter(([partition]) => !protectedIds.has(partition))
+    .sort((a, b) => a[1].lastUsed - b[1].lastUsed || a[0].localeCompare(b[0]));
+
+  while ((cache.size > runtimeBudget.cache_max_partitions || bytes > runtimeBudget.cache_max_bytes) && evictable.length) {
+    const [partition, state] = evictable.shift();
+    if (!cache.has(partition)) continue;
+    cache.delete(partition);
+    bytes -= state.bytes;
+    cacheEvictions += 1;
+  }
+  syncDiagnostics();
 }
 function syncUrl(id) {
   const url = new URL(location.href);
@@ -235,16 +277,31 @@ function installSharedLayers() {
   bindSharedLayerEvents();
 }
 async function loadPartition(partition) {
-  if (cache.has(partition)) return touch(cache.get(partition));
+  if (cache.has(partition)) {
+    cacheHits += 1;
+    const state = touch(cache.get(partition));
+    syncDiagnostics();
+    return state;
+  }
+  cacheMisses += 1;
   const index = await subdivisionIndex();
   const descriptor = index?.partitions?.[partition];
   const fallbackPath = partition === 'USA' ? USA_PARTITION_FALLBACK : null;
   const partitionPath = descriptor?.path || fallbackPath;
-  if (!partitionPath) throw new Error(`Subdivision partition ${partition} is not available.`);
+  if (!partitionPath) {
+    syncDiagnostics();
+    throw new Error(`Subdivision partition ${partition} is not available.`);
+  }
   const response = await fetch(`../data/world-subdivisions/${partitionPath}`);
-  if (!response.ok) throw new Error(`Subdivision partition ${partition} unavailable (${response.status})`);
+  if (!response.ok) {
+    syncDiagnostics();
+    throw new Error(`Subdivision partition ${partition} unavailable (${response.status})`);
+  }
   const data = await response.json();
-  if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) throw new Error(`Subdivision partition ${partition} is not GeoJSON.`);
+  if (data?.type !== 'FeatureCollection' || !Array.isArray(data.features)) {
+    syncDiagnostics();
+    throw new Error(`Subdivision partition ${partition} is not GeoJSON.`);
+  }
   const state = touch({
     descriptor: descriptor || { path:partitionPath },
     data,
@@ -253,6 +310,7 @@ async function loadPartition(partition) {
   });
   cache.set(partition, state);
   installSharedLayers();
+  enforceCacheBudget(index, [partition]);
   return state;
 }
 function relevantCandidates(index) {
@@ -298,6 +356,8 @@ async function reconcileActive(index) {
   else if (source) source.data = merged;
   activePartitions = selected.map(entry => entry.partition);
   activeBytes = bytes;
+  enforceCacheBudget(index);
+  syncDiagnostics();
   return activePartitions;
 }
 async function ensureRelevantPartitions() {
@@ -358,10 +418,14 @@ window.__potatoAtlasSubdivisions = {
       renderedPartitions:[...activePartitions],
       renderedBytes:activeBytes,
       cachedPartitions:[...cache.keys()],
-      cacheBytes:[...cache.values()].reduce((sum, state) => sum + state.bytes, 0),
+      cacheBytes:cacheBytes(),
+      cacheHits,
+      cacheMisses,
+      cacheEvictions,
       budget:{...runtimeBudget},
     };
   },
 };
 
+syncDiagnostics();
 window.dispatchEvent(new CustomEvent('potato-atlas-subdivisions-ready', { detail:{ selected:selectedId } }));
