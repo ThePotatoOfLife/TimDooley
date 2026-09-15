@@ -20,6 +20,7 @@ WATER_VALIDATOR = ROOT / "scripts" / "validate_world_map_physical_water.py"
 LAND_COVER_VALIDATOR = ROOT / "scripts" / "validate_world_map_land_cover.py"
 DESERTS_VALIDATOR = ROOT / "scripts" / "validate_world_map_deserts.py"
 HYDROLOGY_VALIDATOR = ROOT / "scripts" / "validate_world_map_hydrology.py"
+PLACES_VALIDATOR = ROOT / "scripts" / "validate_world_places.py"
 
 
 def check_node(path: Path, errors: list[str]) -> None:
@@ -33,7 +34,7 @@ def check_node(path: Path, errors: list[str]) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR):
+    for path in (LAYOUT, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
@@ -112,6 +113,7 @@ def main() -> int:
         ("land cover", LAND_COVER_VALIDATOR),
         ("deserts", DESERTS_VALIDATOR),
         ("hydrology", HYDROLOGY_VALIDATOR),
+        ("places", PLACES_VALIDATOR),
     )
     for label, validator in validators:
         if validator.exists():
