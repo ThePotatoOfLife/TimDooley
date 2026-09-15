@@ -6,6 +6,7 @@ const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas subdivisions require the core map.');
 const geo = window.__potatoAtlasGeo || await import('./3d-geo-kernel.js');
 if (!window.__potatoAtlasGeo) window.__potatoAtlasGeo = geo;
+const interaction = window.__potatoAtlasInteraction;
 
 const INDEX_URL = '../data/world-subdivisions/index.json';
 const USA_PARTITION_FALLBACK = 'USA.geo.json';
@@ -252,9 +253,21 @@ async function handleSharedLayerClick(event) {
 }
 function bindSharedLayerEvents() {
   if (eventsBound) return;
-  map.on('mouseenter', HIT_ID, () => { map.getCanvas().style.cursor = 'pointer'; });
-  map.on('mouseleave', HIT_ID, () => { map.getCanvas().style.cursor = ''; });
-  map.on('click', HIT_ID, handleSharedLayerClick);
+  if (interaction?.register) {
+    interaction.register('subdivisions', {
+      layers:[HIT_ID],
+      objectType:'subdivision',
+      clickPriority:60,
+      hoverPriority:60,
+      onClick:(event, feature) => handleSharedLayerClick({ ...event, features:[feature] }),
+    });
+  } else {
+    // Degraded/direct-module fallback for tests and partial boots. Normal app boots
+    // preload the Interaction Router, so production click ownership is centralized.
+    map.on('mouseenter', HIT_ID, () => { map.getCanvas().style.cursor = 'pointer'; });
+    map.on('mouseleave', HIT_ID, () => { map.getCanvas().style.cursor = ''; });
+    map.on('click', HIT_ID, handleSharedLayerClick);
+  }
   eventsBound = true;
 }
 function installSharedLayers() {
