@@ -80,6 +80,8 @@ def validate_data(data_dir: Path, errors: list[str]) -> None:
         pop = props.get("population")
         if pop == 0:
             errors.append(f"global-major feature {place_id or i} uses numeric zero for missing population")
+        if pop is not None and not props.get("population_source"):
+            errors.append(f"global-major feature {place_id or i} has population without population_source")
 
     countries = index.get("countries") or {}
     for iso3, descriptor in countries.items():
