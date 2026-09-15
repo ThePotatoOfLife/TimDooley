@@ -1,0 +1,50 @@
+name: Evidence Root checks
+
+on:
+  push:
+    branches: [feature/evidence-root]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
+jobs:
+  evidence-root:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Build Evidence Root
+        run: python scripts/build_public_statement_evidence_root.py
+
+      - name: Validate Evidence Root
+        run: python scripts/validate_public_statement_evidence_root.py
+
+      - name: Run Evidence Root tests
+        run: |
+          python -m pytest tests/test_public_statement_evidence_root.py -q
+          python -m pytest tests/test_public_statement_evidence_root_builder.py -q
+          python -m pytest tests/test_public_statement_timestamp_import.py -q
+          python -m pytest tests/test_public_statement_status_enrichment.py -q
+          python -m pytest tests/test_validate_public_statement_evidence_root.py -q
+
+      - name: Upload generated Evidence Root
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: public-statement-evidence-root
+          path: data/evidence/public-statement-evidence-root.json
+          if-no-files-found: error
+          retention-days: 7
