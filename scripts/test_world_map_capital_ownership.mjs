@@ -31,10 +31,14 @@ function extractFunction(source, name) {
 }
 
 const canOwnSource = extractFunction(hover, 'placesCanOwnCapitals');
-const placesCanOwnCapitals = new Function(`"use strict"; ${canOwnSource}; return placesCanOwnCapitals;`)();
+const placesCanOwnCapitals = new Function('window', `"use strict"; ${canOwnSource}; return placesCanOwnCapitals;`)({});
 assert.equal(placesCanOwnCapitals({majorCount:3, error:null}), true);
 assert.equal(placesCanOwnCapitals({majorCount:0, error:null}), false);
 assert.equal(placesCanOwnCapitals({majorCount:3, error:'snapshot unavailable'}), false);
+
+const livePlaces = { __potatoAtlasPlaces:{ status:() => ({majorCount:4, error:null}) } };
+const liveOwner = new Function('window', `"use strict"; ${canOwnSource}; return placesCanOwnCapitals;`)(livePlaces);
+assert.equal(liveOwner({majorCount:0, error:'stale event'}), true, 'live Places status should win over stale event detail');
 
 const installSource = extractFunction(hover, 'install');
 assert.ok(!installSource.includes('installCapitalsWhenUseful()'), 'core hover install must not eagerly create legacy capital layers');
