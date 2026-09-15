@@ -3,6 +3,7 @@
 
 const input = document.getElementById('search');
 const COUNTRY_INDEX_URL = '../data/countries/index.json';
+const TYPE_RANK = Object.freeze({ Country:0, Capital:1, City:2, Town:3 });
 let countriesPromise = null;
 let lastResults = [];
 
@@ -16,6 +17,15 @@ function scoreName(name, query) {
   if (value.startsWith(query)) return 1;
   if (value.includes(query)) return 2;
   return 99;
+}
+function typeRank(type) {
+  return TYPE_RANK[type] ?? 9;
+}
+function compareResults(a, b) {
+  return a.score - b.score
+    || typeRank(a.type) - typeRank(b.type)
+    || String(a.name || '').localeCompare(String(b.name || ''))
+    || String(a.id || '').localeCompare(String(b.id || ''));
 }
 function countryRows() {
   if (!countriesPromise) {
@@ -68,7 +78,7 @@ async function search(query, options = {}) {
   const countries = rows.map(row => countryResult(row, needle)).filter(Boolean);
   const places = placeResults(needle, limit);
   lastResults = [...countries, ...places]
-    .sort((a, b) => a.score - b.score || (a.type === 'Country' ? -1 : 1) || a.name.localeCompare(b.name))
+    .sort(compareResults)
     .slice(0, limit);
   return lastResults;
 }
