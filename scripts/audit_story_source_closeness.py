@@ -167,6 +167,52 @@ def choose_closest(sources: list[dict]) -> tuple[str | None, str | None]:
     return choices[0][1], choices[0][2]
 
 
+def excavation_priority(record: dict) -> tuple[int, str]:
+    if record["mapping_status"] == "unmapped":
+        return 100, "find_any_source_trail"
+    if record["mapping_status"] == "hinted" and not record["hinted_source_classes"]:
+        return 90, "classify_existing_source_hint"
+    if record["mapping_status"] == "hinted":
+        distance = record.get("event_distance")
+        if distance == "4_archive_synthesis":
+            return 85, "recover_underlying_source"
+        if distance == "3_project_reconstruction":
+            return 80, "recover_underlying_conversation_or_artifact"
+        if distance == "2_later_first_person_retelling":
+            return 70, "find_contemporaneous_corrobation"
+        if distance == "1_contemporaneous_compilation":
+            return 35, "register_existing_near_primary_source"
+        if distance == "0_direct_contemporaneous":
+            return 25, "register_existing_direct_source"
+        return 60, "inspect_source_hint"
+    if record["mapping_status"] in {"mapped", "partially_mapped"}:
+        if record.get("closer_source_expected"):
+            return 65, "pursue_registered_recovery_target"
+        return 10, "no_immediate_excavation"
+    return 50, "review_manually"
+
+
+def build_excavation_queue(records: list[dict]) -> list[dict]:
+    queue = []
+    for record in records:
+        priority, action = excavation_priority(record)
+        queue.append(
+            {
+                "story_id": record["story_id"],
+                "path": record["path"],
+                "priority": priority,
+                "mapping_status": record["mapping_status"],
+                "event_distance": record["event_distance"],
+                "hinted_source_classes": record["hinted_source_classes"],
+                "recommended_next_action": action,
+                "source_hints": record["source_hints"],
+                "next_excavation": record["next_excavation"],
+            }
+        )
+    queue.sort(key=lambda item: (-item["priority"], item["story_id"] or ""))
+    return queue
+
+
 def build_audit(root: Path) -> dict:
     registry_data = load_json(root / "knowledge" / "story" / "story-registry.json")
     source_data = load_json(root / "knowledge" / "story" / "source-records.json")
@@ -262,6 +308,11 @@ def build_audit(root: Path) -> dict:
         "total_public_entries": len(records),
         "registered": sum(1 for x in records if x["story_id"] in registry),
         "source_hinted": sum(1 for x in records if x["mapping_status"] == "hinted"),
+        "hinted_but_unclassified": sum(
+            1
+            for x in records
+            if x["mapping_status"] == "hinted" and not x["hinted_source_classes"]
+        ),
         "hinted_source_class_counts": dict(sorted(hinted_source_class_counts.items())),
         "unmapped": sum(1 for x in records if x["mapping_status"] == "unmapped"),
         "direct_or_near_direct": sum(
@@ -286,6 +337,7 @@ def build_audit(root: Path) -> dict:
         "schema_version": 1,
         "summary": summary,
         "records": records,
+        "excavation_queue": build_excavation_queue(records),
         "excavation_targets": overrides_data.get("excavation_targets", []),
     }
 
