@@ -35,6 +35,9 @@ jobs:
       - name: Validate Evidence Root
         run: python scripts/validate_public_statement_evidence_root.py
 
+      - name: Build Discovery Frontier
+        run: python scripts/build_public_statement_discovery_frontier.py
+
       - name: Run Evidence Root tests
         run: |
           python -m pytest tests/test_public_statement_evidence_root.py -q
@@ -42,12 +45,15 @@ jobs:
           python -m pytest tests/test_public_statement_timestamp_import.py -q
           python -m pytest tests/test_public_statement_status_enrichment.py -q
           python -m pytest tests/test_validate_public_statement_evidence_root.py -q
+          python -m pytest tests/test_public_statement_discovery_frontier.py -q
 
-      - name: Upload generated Evidence Root
+      - name: Upload generated rooted evidence artifacts
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: public-statement-evidence-root
-          path: data/evidence/public-statement-evidence-root.json
+          name: rooted-public-statement-evidence
+          path: |
+            data/evidence/public-statement-evidence-root.json
+            data/evidence/public-statement-discovery-frontier.json
           if-no-files-found: error
           retention-days: 7
