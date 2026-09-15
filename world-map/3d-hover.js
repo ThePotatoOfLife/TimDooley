@@ -130,6 +130,9 @@ finally { maplibregl.Map.prototype.addControl = originalAddControl; }
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('World atlas map instance was not captured.');
+const { createTooltipService } = await import(versionedModule('./3d-tooltip.js'));
+const tooltip = window.__potatoAtlasTooltip || createTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window });
+window.__potatoAtlasTooltip = tooltip;
 
 try {
   const response = await fetchJsonResponse(COUNTRY_FACTS_URL);
@@ -141,7 +144,6 @@ try {
 
 const number = value => value == null || Number.isNaN(Number(value)) ? '—' : new Intl.NumberFormat('en', { maximumFractionDigits: 0 }).format(Number(value));
 const escapeHtml = value => String(value ?? '').replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[char]));
-const popup = new maplibregl.Popup({ closeButton: false, closeOnClick: false, offset: 12, maxWidth: '300px' });
 let capitalFeatures = [];
 const capitalByCode = new Map();
 
@@ -200,12 +202,11 @@ async function countryHtml(properties) {
   return `<div class="atlas-hover"><b>${escapeHtml(name)}</b><div>Population: ${number(population)}${yearText}</div><div>Capital: ${escapeHtml(capital)}</div><div>Area: ${number(area)} km²${areaDefinition}</div><div>${escapeHtml(region)}</div>${currencyText}</div>`;
 }
 function capitalHtml(properties) { return `<div class="atlas-hover atlas-hover-capital"><b>${escapeHtml(properties.name)}</b><div class="muted">Capital city · ${escapeHtml(properties.iso3 || '')}</div></div>`; }
-function showPopup(event, html) { popup.setLngLat(event.lngLat).setHTML(html).addTo(map); }
 function bindCountryHover(layerId) {
-  let hoverGeneration = 0;
   let activeKey = '';
   let latestEvent = null;
   let resolvedHtml = null;
+  let generation = null;
   map.on('mousemove', layerId, async event => {
     const feature = event.features?.[0];
     if (!feature) return;
@@ -217,24 +218,24 @@ function bindCountryHover(layerId) {
     latestEvent = event;
     map.getCanvas().style.cursor = 'pointer';
     if (key === activeKey) {
-      if (resolvedHtml) showPopup(latestEvent, resolvedHtml);
+      if (resolvedHtml && generation != null) tooltip.show('country', latestEvent.lngLat, resolvedHtml, generation);
       return;
     }
     activeKey = key;
     resolvedHtml = null;
-    const generation = ++hoverGeneration;
+    generation = tooltip.nextGeneration('country');
     const html = await countryHtml(properties);
-    if (generation !== hoverGeneration || key !== activeKey || !latestEvent) return;
+    if (key !== activeKey || !latestEvent) return;
     resolvedHtml = html;
-    showPopup(latestEvent, html);
+    tooltip.show('country', latestEvent.lngLat, html, generation);
   });
   map.on('mouseleave', layerId, () => {
-    hoverGeneration += 1;
     activeKey = '';
     latestEvent = null;
     resolvedHtml = null;
+    generation = null;
     map.getCanvas().style.cursor = '';
-    popup.remove();
+    tooltip.invalidate('country-leave');
   });
 }
 
@@ -257,8 +258,17 @@ async function installCapitalsWhenUseful() {
     if (!map.getLayer('capital-cities')) map.addLayer({ id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 0, filter: ['==', ['get', 'primary'], true], paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.8, 3, 2.9, 7, 5.8], 'circle-color': '#e7c56f', 'circle-stroke-color': '#171a18', 'circle-stroke-width': 1.1, 'circle-opacity': 0.92 } });
     if (!map.getLayer('capital-city-major-labels')) map.addLayer({ id: 'capital-city-major-labels', type: 'symbol', source: 'capital-cities', minzoom: 1.1, maxzoom: 3.4, filter: ['all', ['==', ['get', 'primary'], true], ['<=', ['get', 'scalerank'], 3]], layout: { 'text-field': ['get', 'name'], 'text-size': 9, 'text-offset': [0, 1.05], 'text-anchor': 'top', 'text-allow-overlap': false, 'text-optional': true }, paint: { 'text-color': '#f0d98f', 'text-halo-color': '#080b0b', 'text-halo-width': 1.1 } });
     if (!map.getLayer('capital-city-labels')) map.addLayer({ id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 3.1, filter: ['==', ['get', 'primary'], true], layout: { 'text-field': ['get', 'name'], 'text-size': ['interpolate', ['linear'], ['zoom'], 3.1, 9, 7, 11], 'text-offset': [0, 1.15], 'text-anchor': 'top', 'text-allow-overlap': false, 'text-optional': true }, paint: { 'text-color': '#f3df9e', 'text-halo-color': '#080b0b', 'text-halo-width': 1.15 } });
-    map.on('mousemove', 'capital-cities', event => { const feature = event.features?.[0]; if (!feature) return; map.getCanvas().style.cursor = 'pointer'; showPopup(event, capitalHtml(feature.properties || {})); });
-    map.on('mouseleave', 'capital-cities', () => { map.getCanvas().style.cursor = ''; popup.remove(); });
+    map.on('mousemove', 'capital-cities', event => {
+      const feature = event.features?.[0];
+      if (!feature) return;
+      map.getCanvas().style.cursor = 'pointer';
+      const generation = tooltip.nextGeneration('capital');
+      tooltip.show('capital', event.lngLat, capitalHtml(feature.properties || {}), generation);
+    });
+    map.on('mouseleave', 'capital-cities', () => {
+      map.getCanvas().style.cursor = '';
+      tooltip.invalidate('capital-leave');
+    });
     map.on('click', 'capital-cities', event => { if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true; const code = event.features?.[0]?.properties?.iso3; if (code && window.goCountry) window.goCountry(code); });
     setCapitalsVisible(true);
     window.__potatoAtlasCapitals = { setVisible: setCapitalsVisible, focus: focusCapital, forCountry: capitalFor, get visible() { return capitalsVisible; }, get count() { return capitalFeatures.length; } };
