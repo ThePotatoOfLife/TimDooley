@@ -88,4 +88,10 @@ assertLongformPage(religion,{name:'religion',host:'id="religion-tts"',css:'href=
 const tim = fs.readFileSync(new URL('../tim-dooley/index.html', import.meta.url),'utf8');
 assertLongformPage(tim,{name:'tim overview',host:'id="tim-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".tim-page"',item:'data-tts-item=".reading-frame,.question-stub,.work-row,.sequence>div"',allLabel:'data-tts-all-label="Whole overview"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#tim-tts,.page-nav,.primary,.deep"'});
 
+const north = fs.readFileSync(new URL('../north/index.html', import.meta.url),'utf8');
+assertLongformPage(north,{name:'north',host:'id="north-tts"',css:'href="../app/tts-drawer.css"',reader:'src="../app/tts-reader.js"',drawer:'src="../app/tts-drawer.js"',adapter:'src="../app/longform-tts-adapter.js"',root:'data-tts-root=".wrap"',item:'data-tts-item=".north-section"',allLabel:'data-tts-all-label="Whole North reader"',currentLabel:'data-tts-current-label="Current section"',exclude:'data-tts-exclude="#north-tts,nav,.map-action,.links"'});
+
+const culture = fs.readFileSync(new URL('../context/culture/index.html', import.meta.url),'utf8');
+assertLongformPage(culture,{name:'culture',host:'id="culture-tts"',css:'href="../../app/tts-drawer.css"',reader:'src="../../app/tts-reader.js"',drawer:'src="../../app/tts-drawer.js"',adapter:'src="../../app/longform-tts-adapter.js"',root:'data-tts-root=".culture-page"',allLabel:'data-tts-all-label="Whole culture reader"',exclude:'data-tts-exclude="#culture-tts,.page-nav"'});
+
 console.log('longform tts adapter contract: ok');
