@@ -1,5 +1,7 @@
 # Public Statement Evidence Root Implementation Plan
 
+> **STATUS — IMPLEMENTED / HISTORICAL EXECUTION PLAN.** The authoritative current contract is `data/evidence/public-statement-root-manifest.json`, enforced by the rooted-stack builders and validators. Unchecked boxes below are retained as execution history and must not be interpreted as the current backlog.
+
 > **For agentic workers:** REQUIRED SUB-SKILL: Use superpowers:subagent-driven-development or superpowers:executing-plans. Steps use checkbox syntax for tracking.
 
 **Goal:** Build a lossless Evidence Root that supplies trustworthy Ring-0 statement anchors for the Root → Spiral → Discovery → Testing → Consolidation architecture.
