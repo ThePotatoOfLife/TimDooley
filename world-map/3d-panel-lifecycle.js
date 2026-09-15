@@ -74,9 +74,11 @@ async function ensureControlPlane() {
       await window.__potatoAtlasLoadModule?.('Geo Kernel', './3d-geo-kernel.js');
       await window.__potatoAtlasLoadModule?.('Scale', './3d-scale.js');
       await window.__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js');
+      await window.__potatoAtlasLoadModule?.('Inspector Router', './3d-inspector-router.js');
       const scale = await window.__potatoAtlasScale?.ready;
       if (!scale) throw new Error('World Map Scale runtime unavailable.');
       if (!window.__potatoAtlasInteraction) throw new Error('World Map Interaction Router unavailable.');
+      if (!window.__potatoAtlasInspector) throw new Error('World Map Inspector Router unavailable.');
       return scale;
     })();
   }
@@ -84,8 +86,9 @@ async function ensureControlPlane() {
 }
 
 // Coordinate application surfaces before adding more optional visual layers.
-// Shared math/scale/interaction load first so later geographic detail modules
-// consume one wrap policy, one camera-scale contract and one hit-test owner.
+// Shared math/scale/interaction/inspector ownership loads first so later geographic
+// detail modules consume one wrap policy, one camera scale, one hit-test owner and
+// one semantic inspector history.
 queueMicrotask(async () => {
   try {
     await ensureControlPlane();
