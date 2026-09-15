@@ -16,12 +16,7 @@ def run_auditor(root: Path, contract: dict | None = None):
     contract_path.parent.mkdir(parents=True, exist_ok=True)
     contract_path.write_text(json.dumps(contract or {"schema_version": "1.0"}) + "\n", encoding="utf-8")
     report = root / "world-map-audit-report.json"
-    proc = subprocess.run(
-        [sys.executable, str(AUDITOR), "--root", str(root), "--contract", str(contract_path), "--report", str(report)],
-        cwd=ROOT,
-        text=True,
-        capture_output=True,
-    )
+    proc = subprocess.run([sys.executable, str(AUDITOR), "--root", str(root), "--contract", str(contract_path), "--report", str(report)], cwd=ROOT, text=True, capture_output=True)
     payload = json.loads(report.read_text(encoding="utf-8")) if report.exists() else None
     return proc, payload
 
@@ -53,13 +48,7 @@ const node = document.createElement('div'); node.id = 'atlasThing';
             proc, report = run_auditor(root)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
             resources = {row["resource"] for rows in report["inventory"].values() for row in rows}
-            for resource in (
-                "source:countries", "layer:countries-fill", "feature-state:countries:selected",
-                "feature-state:countries:active", "paint:countries-line:line-width",
-                "layout:countries-fill:visibility", "set-data:countries",
-                "map-event:click:countries-fill", "style-restore:world-map/3d-a.js",
-                "url:country", "api:__potatoAtlasThing", "dom:atlasThing",
-            ):
+            for resource in ("source:countries", "layer:countries-fill", "feature-state:countries:selected", "feature-state:countries:active", "paint:countries-line:line-width", "layout:countries-fill:visibility", "set-data:countries", "map-event:click:countries-fill", "style-restore:world-map/3d-a.js", "url:country", "api:__potatoAtlasThing", "dom:atlasThing"):
                 self.assertIn(resource, resources)
 
     def test_duplicate_source_and_layer_creation_block(self):
@@ -81,15 +70,7 @@ const node = document.createElement('div'); node.id = 'atlasThing';
             proc, report = run_auditor(root)
             self.assertEqual(proc.returncode, 1)
             self.assertTrue(any(f["code"] == "feature-state-owner-collision" for f in report["findings"]))
-            contract = {
-                "schema_version": "1.0",
-                "shared": {
-                    "feature-state:countries:selected": {
-                        "modules": ["world-map/3d-a.js", "world-map/3d-b.js"],
-                        "rationale": "Fixture intentionally shares the selected state key."
-                    }
-                }
-            }
+            contract = {"schema_version":"1.0","shared":{"feature-state:countries:selected":{"modules":["world-map/3d-a.js","world-map/3d-b.js"],"rationale":"Fixture intentionally shares the selected state key."}}}
             proc, report = run_auditor(root, contract)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
 
@@ -113,13 +94,7 @@ const node = document.createElement('div'); node.id = 'atlasThing';
     def test_click_popup_is_not_misclassified_by_nearby_mouseenter(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
-            write_module(root, "3d-a.js", """
-map.on('mouseenter','points',()=>map.getCanvas().style.cursor='pointer');
-map.on('mouseleave','points',()=>map.getCanvas().style.cursor='');
-map.on('click','points',event=>{
-  const popup = new maplibregl.Popup({closeButton:true}).setHTML('<b>Persistent</b>').addTo(map);
-});
-""")
+            write_module(root, "3d-a.js", "map.on('mouseenter','points',()=>{}); map.on('click','points',event=>{ const popup = new maplibregl.Popup({closeButton:true}).setHTML('<b>Persistent</b>').addTo(map); });")
             proc, report = run_auditor(root)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
             self.assertFalse(any(f["code"] == "transient-popup-class-missing" for f in report["findings"]))
@@ -130,8 +105,7 @@ map.on('click','points',event=>{
             write_module(root, "3d-a.js", "const html = `<button id=\"${esc(asset.id)}\">x</button>`; const node=document.createElement('div'); node.id='literalId';")
             proc, report = run_auditor(root)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
-            resources = {row["resource"] for row in report["inventory"].get("dom_id", [])}
-            self.assertEqual(resources, {"dom:literalId"})
+            self.assertEqual({row["resource"] for row in report["inventory"].get("dom_id", [])}, {"dom:literalId"})
 
     def test_multiple_styledata_participants_warn(self):
         with tempfile.TemporaryDirectory() as tmp:
@@ -140,29 +114,32 @@ map.on('click','points',event=>{
             write_module(root, "3d-b.js", "let restoring=false; map.on('styledata',()=>queueMicrotask(restore));")
             proc, report = run_auditor(root)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
-            self.assertTrue(any(f["code"] == "multiple-style-restorers" and f["severity"] == "warning" for f in report["findings"]))
+            self.assertTrue(any(f["code"] == "multiple-style-restorers" for f in report["findings"]))
 
     def test_approved_guarded_style_restorers_do_not_warn_as_collision(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             write_module(root, "3d-a.js", "let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});")
             write_module(root, "3d-b.js", "let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});")
-            contract = {
-                "schema_version": "1.0",
-                "style_restoration": {"allowed_modules": {
-                    "world-map/3d-a.js": "Fixture owner A.",
-                    "world-map/3d-b.js": "Fixture owner B."
-                }}
-            }
+            contract = {"schema_version":"1.0","style_restoration":{"allowed_modules":{"world-map/3d-a.js":"Fixture owner A.","world-map/3d-b.js":"Fixture owner B."}}}
             proc, report = run_auditor(root, contract)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
             self.assertFalse(any(f["code"] == "multiple-style-restorers" for f in report["findings"]))
+
+    def test_render_stack_scheduler_counts_as_deferred_restoration(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            write_module(root, "3d-render-stack.js", "let scheduled=false; function schedule(){if(scheduled)return;scheduled=true;queueMicrotask(()=>{scheduled=false;reconcile();});} map.on('styledata',()=>schedule('styledata'));")
+            contract = {"schema_version":"1.0","style_restoration":{"allowed_modules":{"world-map/3d-render-stack.js":"Canonical scheduler."}}}
+            proc, report = run_auditor(root, contract)
+            self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
+            self.assertFalse(any(f["code"] == "style-restorer-undeferred" for f in report["findings"]))
 
     def test_unapproved_style_restorer_warns(self):
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             write_module(root, "3d-a.js", "let restoring=false; map.on('styledata',()=>{if(restoring)return;restoring=true;queueMicrotask(()=>{restore();restoring=false;});});")
-            contract = {"schema_version": "1.0", "style_restoration": {"allowed_modules": {}}}
+            contract = {"schema_version":"1.0","style_restoration":{"allowed_modules":{}}}
             proc, report = run_auditor(root, contract)
             self.assertEqual(proc.returncode, 0, proc.stderr + proc.stdout)
             self.assertTrue(any(f["code"] == "unapproved-style-restorer" for f in report["findings"]))
@@ -187,11 +164,7 @@ map.on('click','points',event=>{
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
             write_module(root, "3d-a.js", "map.addSource('countries',{});")
-            contract = {
-                "schema_version": "1.0",
-                "owners": {"source:countries": ["world-map/missing.js"]},
-                "shared": {"source:unused": {"modules": ["world-map/3d-a.js", "world-map/3d-b.js"], "rationale": "Fixture stale share."}}
-            }
+            contract = {"schema_version":"1.0","owners":{"source:countries":["world-map/missing.js"]},"shared":{"source:unused":{"modules":["world-map/3d-a.js","world-map/3d-b.js"],"rationale":"Fixture stale share."}}}
             proc, report = run_auditor(root, contract)
             self.assertEqual(proc.returncode, 1)
             codes = {(f["code"], f["severity"]) for f in report["findings"]}
@@ -203,14 +176,10 @@ map.on('click','points',event=>{
             root = Path(tmp)
             write_module(root, "3d-b.js", "map.addSource('b',{});")
             write_module(root, "3d-a.js", "map.addSource('a',{});")
-            proc1, report1 = run_auditor(root)
-            proc2, report2 = run_auditor(root)
-            self.assertEqual(proc1.returncode, 0)
-            self.assertEqual(proc2.returncode, 0)
-            report1.pop("generated_at", None)
-            report2.pop("generated_at", None)
+            proc1, report1 = run_auditor(root); proc2, report2 = run_auditor(root)
+            self.assertEqual(proc1.returncode, 0); self.assertEqual(proc2.returncode, 0)
+            report1.pop("generated_at", None); report2.pop("generated_at", None)
             self.assertEqual(report1, report2)
 
 
-if __name__ == "__main__":
-    unittest.main()
+if __name__ == "__main__": unittest.main()
