@@ -10,6 +10,7 @@ def validate(root: Path) -> list[str]:
     errors: list[str] = []
     manifest_path = root / "data" / "world-map-spatial-overlays.json"
     ui_path = root / "world-map" / "3d-spatial-overlay-ui.js"
+    world_bar_path = root / "world-map" / "3d-world-bar.js"
     guard_path = root / "world-map" / "3d-boot-guard.js"
     bootstrap_path = root / "world-map" / "3d-bootstrap.js"
 
@@ -54,7 +55,15 @@ def validate(root: Path) -> list[str]:
         "Chosen Children’s Land / Greater Israel scenarios",
     ):
         if token not in ui:
-            errors.append(f"spatial geography UI missing first-class geography marker: {token}")
+            errors.append(f"spatial geography UI missing geography marker: {token}")
+
+    world_bar = world_bar_path.read_text(encoding="utf-8", errors="replace") if world_bar_path.is_file() else ""
+    for token in (
+        "GEOGRAPHIES", "Geography", "data-geography-overlay", "__potatoAtlasSpatialOverlays",
+        "father.mesopotamia-core", "biblical.genesis-15", "modern.greater-israel",
+    ):
+        if token not in world_bar:
+            errors.append(f"canonical visible World Map bar missing first-class geography marker: {token}")
 
     guard = guard_path.read_text(encoding="utf-8", errors="replace") if guard_path.is_file() else ""
     for event_name in ("error", "unhandledrejection"):

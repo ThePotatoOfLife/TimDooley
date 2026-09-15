@@ -8,6 +8,14 @@
   const AXES = ['axis.north','axis.west','axis.east','axis.south'];
   const FAMILIES = [['groups','Groups'],['religion','Religion'],['stats','Stats'],['relations','Relations']];
   const RELATIONS = [['all','All context'],['money','Money'],['systems','Systems'],['institutions','Institutions'],['project','Project'],['other','Other']];
+  const spatial = window.__potatoAtlasSpatialOverlays;
+  const GEOGRAPHIES = [
+    ['father.mesopotamia-core','Mesopotamia'],
+    ['father.eden-context','Eden'],
+    ['biblical.dan-to-beersheba','Dan → Beer-sheba'],
+    ['biblical.genesis-15','Genesis 15'],
+    ['modern.greater-israel','Greater Israel'],
+  ];
   const esc = v => String(v ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const entries = family => layers.entries(family, {availableOnly:true, ordinaryOnly:true});
   let projection = new URL(location.href).searchParams.get('projection') === 'globe' ? 'globe' : 'flat';
@@ -39,6 +47,40 @@
       if (layerButton) layers.toggle(layerButton.dataset.layerOption);
     });
     return details;
+  }
+  function geographyMenu() {
+    const details = document.createElement('details');
+    details.id = 'atlasGeographyMenu';
+    details.className = 'atlas-world-menu';
+    details.innerHTML = '<summary>Geography</summary><div class="atlas-world-menu-pop"></div>';
+    details.addEventListener('toggle', () => { if (details.open) { closeMenus(details); syncGeographyMenu(details); } });
+    details.addEventListener('click', async event => {
+      const button = event.target.closest('[data-geography-overlay]');
+      if (!button || !spatial) return;
+      const id = button.dataset.geographyOverlay;
+      if (!spatial.isActive(id)) await spatial.activate(id);
+      spatial.fit(id);
+      syncGeographyMenu(details);
+    });
+    return details;
+  }
+  function syncGeographyMenu(details = document.getElementById('atlasGeographyMenu')) {
+    if (!details) return;
+    const pop = details.querySelector('.atlas-world-menu-pop');
+    if (!pop) return;
+    if (!spatial) {
+      pop.innerHTML = '<div class="atlas-world-empty">Geography overlays unavailable</div>';
+      return;
+    }
+    const rows = GEOGRAPHIES.map(([id,label]) => {
+      const entry = spatial.get(id);
+      if (!entry || entry.availability !== 'current') return '';
+      const active = spatial.isActive(id);
+      const kind = String(entry.epistemic_type || '').replaceAll('_',' ');
+      return `<button type="button" class="atlas-world-option${active?' active':''}" data-geography-overlay="${esc(id)}"><span>${esc(label)}<small>${esc(kind)}</small></span></button>`;
+    }).join('');
+    pop.innerHTML = `<div class="atlas-world-static"><span>Geographies</span><small>stackable overlays</small></div>${rows || '<div class="atlas-world-empty">No current geographies</div>'}`;
+    details.classList.toggle('active', GEOGRAPHIES.some(([id]) => spatial.isActive(id)));
   }
   function adoptLegacyMenu(id, label, onOpen) {
     const details = document.getElementById(id);
@@ -149,6 +191,7 @@
       queryBox.hidden = query.activeSetCount() < 2;
       queryBox.querySelectorAll('[data-query-mode]').forEach(button => button.classList.toggle('active', button.dataset.queryMode === query.getMode()));
     }
+    syncGeographyMenu();
     renderSummary(); renderContext();
   }
   function installStyle() {
@@ -168,6 +211,7 @@
       const button=document.createElement('button'); button.type='button'; button.className='atlas-axis-button'; button.dataset.layerId=id; button.title=entry.label; button.textContent=entry.label.slice(0,1).toUpperCase(); button.addEventListener('click',()=>layers.toggle(id)); bar.appendChild(button);
     });
     FAMILIES.forEach(([family,label]) => bar.appendChild(menu(family,label)));
+    const geography=geographyMenu(); bar.appendChild(geography);
     const analyze=adoptLegacyMenu('traceMenu','Analyze'); if (analyze) bar.appendChild(analyze);
     const time=adoptLegacyMenu('timeMenu','Time',ensureTime); if (time) bar.appendChild(time);
     const view=adoptLegacyMenu('viewMenu','View'); if (view) bar.appendChild(view);
@@ -188,6 +232,7 @@
   window.addEventListener('potato-atlas-working-selection-change', () => window.__potatoAtlasActiveView?.refresh?.('selection'));
   window.addEventListener('potato-atlas-pin-change', () => window.__potatoAtlasActiveView?.refresh?.('pins'));
   window.addEventListener('potato-atlas-relation-mode-change', syncMenus);
+  window.addEventListener('potato-atlas-spatial-overlay-change', () => syncGeographyMenu());
   window.addEventListener('potato-atlas-active-view-change', event => { activeView=event.detail||null; renderSummary(activeView); renderContext(activeView); });
   window.addEventListener('atlas-time-change', event => { timeState=event.detail||null; renderContext(); window.__potatoAtlasActiveView?.refresh?.('time'); });
   window.addEventListener('potato-atlas-projection-change', renderContext);
