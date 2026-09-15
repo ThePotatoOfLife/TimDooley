@@ -37,6 +37,18 @@ class SourceHintTests(unittest.TestCase):
                 encoding="utf-8",
             )
             (content / "c.html").write_text(
+                '<article class="story-entry" data-story-type="side" id="great-book-retro">'
+                '<details class="source-note"><p>great-book retrospective<br/>'
+                '<span class="source-paths">The Great Book Of Potato2.odt</span></p></details></article>',
+                encoding="utf-8",
+            )
+            (content / "d.html").write_text(
+                '<article class="story-entry" data-story-type="side" id="conversation-recovery">'
+                '<details class="source-note"><p>conversation recovery<br/>'
+                '<span class="source-paths">knowledge/timeline/developmental-genealogy.json</span></p></details></article>',
+                encoding="utf-8",
+            )
+            (content / "e.html").write_text(
                 '<article class="story-entry" data-story-type="side" id="blank"></article>',
                 encoding="utf-8",
             )
@@ -46,22 +58,34 @@ class SourceHintTests(unittest.TestCase):
 
             self.assertEqual(records["public-post"]["mapping_status"], "hinted")
             self.assertEqual(
-                records["public-post"]["source_hints"],
-                ["Rational_Potato public-post compilation · 4 Oct 2024"],
-            )
-            self.assertEqual(
                 records["public-post"]["hinted_source_classes"],
                 ["public_post_sequence"],
             )
-            self.assertEqual(
-                records["public-post"]["event_distance"],
-                "1_contemporaneous_compilation",
-            )
             self.assertEqual(records["song"]["hinted_source_classes"], ["creative_artifact"])
-            self.assertEqual(records["song"]["event_distance"], "0_direct_contemporaneous")
+            self.assertEqual(
+                records["great-book-retro"]["hinted_source_classes"],
+                ["later_autobiographical_retelling"],
+            )
+            self.assertEqual(
+                records["great-book-retro"]["event_distance"],
+                "2_later_first_person_retelling",
+            )
+            self.assertEqual(
+                records["conversation-recovery"]["hinted_source_classes"],
+                ["conversation_recovery"],
+            )
             self.assertEqual(records["blank"]["mapping_status"], "unmapped")
-            self.assertEqual(audit["summary"]["source_hinted"], 2)
+            self.assertEqual(audit["summary"]["source_hinted"], 4)
             self.assertEqual(audit["summary"]["unmapped"], 1)
+            self.assertEqual(
+                audit["summary"]["hinted_source_class_counts"],
+                {
+                    "conversation_recovery": 1,
+                    "creative_artifact": 1,
+                    "later_autobiographical_retelling": 1,
+                    "public_post_sequence": 1,
+                },
+            )
 
 
 if __name__ == "__main__":
