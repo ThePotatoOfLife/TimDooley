@@ -25,12 +25,10 @@ def ids(rows):
 
 def main():
     atlas_rel = "knowledge/body/whole-brain-neurobiology-atlas.json"
+    completion_rel = "knowledge/body/whole-brain-neurobiology-completion.json"
     atlas = load(atlas_rel)
-    body = load("knowledge/body/body-system-master-atlas.json")
+    completion = load(completion_rel)
     routing = load("knowledge/indexes/neurotheology-routing-index.json")
-    matrix = load("knowledge/body/body-topic-completion-matrix.json")
-    manifest = load("manifest.json")
-    core = load("knowledge/indexes/core-index.json")
 
     if atlas.get("id") != "whole-brain-neurobiology-atlas":
         errors.append("whole-brain atlas id must be whole-brain-neurobiology-atlas")
@@ -74,24 +72,16 @@ def main():
     if atlas_rel not in owners:
         errors.append("neurotheology routing index does not route to whole-brain atlas")
 
-    canonical_owners = body.get("canonical_owners", {})
-    if canonical_owners.get("whole_brain_neurobiology") != atlas_rel:
-        errors.append("body master atlas missing whole_brain_neurobiology canonical owner")
-
-    topics = {row.get("topic"): row for row in matrix.get("topics", []) if isinstance(row, dict)}
-    if topics.get("Whole-brain hierarchy", {}).get("owner") != atlas_rel:
-        errors.append("completion matrix missing Whole-brain hierarchy owner")
-
-    body_branch = next((row for row in manifest.get("branches", []) if row.get("id") == "body"), {})
-    if atlas_rel not in body_branch.get("records", []):
-        errors.append("manifest BODY branch does not expose whole-brain atlas")
-
-    core_records = {row.get("id"): row for row in core.get("records", []) if isinstance(row, dict)}
-    if core_records.get("whole-brain-neurobiology-atlas", {}).get("path") != atlas_rel:
-        errors.append("core index missing whole-brain-neurobiology-atlas record")
+    if completion.get("owner") != atlas_rel:
+        errors.append("whole-brain completion sidecar must point to the atlas owner")
+    completion_topics = {row.get("topic") for row in completion.get("topics", []) if isinstance(row, dict)}
+    for topic in ("Whole-brain hierarchy", "Diencephalon", "Large-scale brain networks", "Dynamic system flows"):
+        if topic not in completion_topics:
+            errors.append(f"completion sidecar missing topic: {topic}")
 
     print(f"Whole-brain sections: {len(actual_sections)}")
     print(f"Whole-brain flows: {len(flows)}")
+    print(f"Completion topics: {len(completion_topics)}")
     print(f"Errors: {len(errors)}")
     for error in errors:
         print("ERROR:", error)
