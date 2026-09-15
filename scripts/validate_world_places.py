@@ -172,7 +172,7 @@ def validate_runtime(errors: list[str]) -> None:
         "atlas-places-detail-points", "atlas-places-detail-labels",
         "context-network", "__potatoAtlasOverlayHandled", "Open country",
         "convergeLegacyCapitals", "potato-atlas-capitals-ready",
-        "panelSnapshot", "restoreInspector",
+        "const inspector = window.__potatoAtlasInspector", "inspector.setBaseline(", "inspector.open(", "inspector.back()",
     ), errors)
     require_tokens(SEARCH, (
         "__potatoAtlasSearch", "Country", "Capital", "City", "Town", "typeRank", "compareResults",
@@ -184,6 +184,11 @@ def validate_runtime(errors: list[str]) -> None:
     ), errors)
     if not SUBDIVISION_SEARCH_TEST.exists():
         errors.append(f"missing subdivision search regression: {SUBDIVISION_SEARCH_TEST.relative_to(ROOT)}")
+    if PLACES.exists():
+        text = PLACES.read_text(encoding="utf-8", errors="replace")
+        for retired in ("panelSnapshot", "restoreInspector", "captureInspector"):
+            if retired in text:
+                errors.append(f"Places must not reintroduce retired raw inspector state: {retired}")
     if SUBDIVISIONS.exists():
         text = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
         if "atlasSubdivisionCard" in text:
