@@ -54,6 +54,12 @@ const syddanmark = {
   geometry: { type: 'Polygon', coordinates: [[[8.0,54.7],[10.8,54.7],[10.8,55.7],[8.0,55.7],[8.0,54.7]]] },
 };
 
+const uusimaa = {
+  type:'Feature',
+  properties:{ id:'FI-18', name:'Uusimaa', code:'18', subdivision_type:'region', parent_iso3:'FIN', parent_name:'Finland' },
+  geometry:{ type:'Polygon', coordinates:[[[23.5,59.7],[26.8,59.7],[26.8,60.8],[23.5,60.8],[23.5,59.7]]] },
+};
+
 const handlers = new Map();
 const sources = new Map();
 const layers = new Map();
@@ -90,11 +96,12 @@ globalThis.fetch = async url => {
           rendered_max_bytes:3000000,
           rendered_max_partitions:4,
           cache_max_bytes:6000000,
-          cache_max_partitions:8,
+          cache_max_partitions:2,
         },
         partitions:{
           USA:{ path:'USA.geo.json', bytes:389005, id_prefix:'US-', viewport_bounds:{west:-179.5,east:-65,south:17,north:72.5} },
           DNK:{ path:'DNK.geo.json', bytes:551315, id_prefix:'DK-', viewport_bounds:{west:7.5,east:15.3,south:54.4,north:57.9} },
+          FIN:{ path:'FIN.geo.json', bytes:120000, id_prefix:'FI-', viewport_bounds:{west:19,east:32,south:59,north:70} },
         },
       }),
     };
@@ -104,6 +111,9 @@ globalThis.fetch = async url => {
   }
   if (text.includes('world-subdivisions/DNK.geo.json')) {
     return { ok:true, json:async()=>({ type:'FeatureCollection', features:[syddanmark] }) };
+  }
+  if (text.includes('world-subdivisions/FIN.geo.json')) {
+    return { ok:true, json:async()=>({ type:'FeatureCollection', features:[uusimaa] }) };
   }
   throw new Error(`unexpected fetch ${text}`);
 };
@@ -123,5 +133,14 @@ assert.equal(await window.__potatoAtlasSubdivisions.select('US-CA', {fit:false})
 assert.equal(selectedEvents.at(-1)?.feature?.properties?.population?.source, 'U.S. Census Bureau', 'selection must preserve raw nested population provenance');
 assert.equal(await window.__potatoAtlasSubdivisions.select('DK-1083', {fit:false}), true);
 assert.equal(selectedEvents.at(-1)?.feature?.properties?.geometry_source_url, 'https://api.dataforsyningen.dk/regioner?format=geojson', 'selection must preserve raw nested/source provenance');
+
+await window.__potatoAtlasSubdivisions.loadPartition('FIN');
+const status = window.__potatoAtlasSubdivisions.status();
+assert.ok(status.cachedPartitions.length <= 2, 'cache partition count must stay within budget');
+assert.ok(status.cachedPartitions.includes('DNK'), 'selected subdivision partition must be protected from eviction');
+assert.ok(status.cacheEvictions >= 1, 'loading beyond cache budget must evict an unprotected LRU partition');
+assert.equal(typeof status.cacheHits, 'number');
+assert.equal(typeof status.cacheMisses, 'number');
+assert.ok(status.renderedPartitions.length <= status.budget.rendered_max_partitions);
 
 console.log('WORLD MAP BOUNDED SUBDIVISION RUNTIME REGRESSION PASSED');
