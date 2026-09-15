@@ -98,6 +98,7 @@ The adapter observes asynchronous content changes, tracks the current item from 
 - `/tools/tts/` — full advanced reader.
 - `/traditions/bible/` — specialized context adapter for active comparisons.
 - `/tim-dooley/story/` — declarative long-form reader over the asynchronous chronological story stream.
+- `/tim-dooley/` — declarative overview reader spanning question, work, developmental and quotation sections while skipping route/navigation chrome.
 - `/philosophy/` — declarative reader over the eight-stage philosophical journey.
 - `/religion/` — declarative mixed-content reader using exclusion rules to skip site chrome and the Bible-lab promo.
 
