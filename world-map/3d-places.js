@@ -20,6 +20,7 @@ let majorData = EMPTY_COLLECTION;
 let selectedId = new URL(location.href).searchParams.get('place') || null;
 let visible = true;
 let lastError = null;
+let panelSnapshot = null;
 const featureById = new Map();
 const loadedCountries = new Map();
 
@@ -112,9 +113,30 @@ function syncUrl(id) {
   else url.searchParams.delete('place');
   history.replaceState({}, '', url);
 }
+function captureInspector() {
+  const panel = document.getElementById('panel');
+  if (!panel || panelSnapshot !== null) return;
+  const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim() || '';
+  if (eyebrow === 'Place') return;
+  panelSnapshot = panel.innerHTML;
+}
+function restoreInspector() {
+  const panel = document.getElementById('panel');
+  if (!panel || panelSnapshot === null) return false;
+  const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim() || '';
+  if (eyebrow !== 'Place') {
+    panelSnapshot = null;
+    return false;
+  }
+  panel.innerHTML = panelSnapshot;
+  panelSnapshot = null;
+  window.__potatoAtlasPanelLifecycle?.publish?.();
+  return true;
+}
 function renderInspector(feature) {
   const panel = document.getElementById('panel');
   if (!panel || !feature) return;
+  captureInspector();
   const p = feature.properties || {};
   const [lon, lat] = feature.geometry?.coordinates || [];
   const populationPeriod = p.population_period || '—';
@@ -136,7 +158,10 @@ function renderInspector(feature) {
     </div>`;
   panel.querySelector('[data-place-open-country]')?.addEventListener('click', () => {
     const code = String(p.country_iso3 || '').toUpperCase();
-    if (code && window.goCountry) window.goCountry(code);
+    if (code && window.goCountry) {
+      clear({ restore:false });
+      window.goCountry(code);
+    }
   });
   panel.querySelector('[data-place-close]')?.addEventListener('click', () => clear());
   window.__potatoAtlasPanelLifecycle?.publish?.();
@@ -292,9 +317,11 @@ async function focus(id, options = {}) {
   window.dispatchEvent(new CustomEvent('potato-atlas-place-select', {detail:{id:selectedId, properties:p, feature}}));
   return true;
 }
-function clear() {
+function clear(options = {}) {
   selectedId = null;
   syncUrl(null);
+  if (options.restore !== false) restoreInspector();
+  else panelSnapshot = null;
   window.dispatchEvent(new CustomEvent('potato-atlas-place-clear'));
   return true;
 }
