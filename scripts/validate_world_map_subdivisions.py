@@ -16,6 +16,7 @@ USA = ROOT / "data" / "world-subdivisions" / "USA.geo.json"
 DNK = ROOT / "data" / "world-subdivisions" / "DNK.geo.json"
 FREEZE_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_freeze.mjs"
 MULTI_COUNTRY_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_multi_country.mjs"
+BOUNDED_RUNTIME_REGRESSION = ROOT / "scripts" / "test_world_map_subdivision_bounded_runtime.mjs"
 EXPECTED_RUNTIME_BUDGET = {
     "partition_max_bytes": 1_500_000,
     "rendered_max_bytes": 3_000_000,
@@ -27,7 +28,7 @@ EXPECTED_RUNTIME_BUDGET = {
 
 def main() -> int:
     errors: list[str] = []
-    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, DNK, FREEZE_REGRESSION, MULTI_COUNTRY_REGRESSION)
+    required = (BUILDER, MODULE, LIFECYCLE, INDEX, USA, DNK, FREEZE_REGRESSION, MULTI_COUNTRY_REGRESSION, BOUNDED_RUNTIME_REGRESSION)
     for path in required:
         if not path.exists():
             errors.append(f"missing subdivision integration file: {path.relative_to(ROOT)}")
@@ -131,12 +132,15 @@ def main() -> int:
             multi = subprocess.run([node, str(MULTI_COUNTRY_REGRESSION)], capture_output=True, text=True)
             if multi.returncode:
                 errors.append("multi-country subdivision regression failed: " + (multi.stderr.strip() or multi.stdout.strip()))
+            bounded = subprocess.run([node, str(BOUNDED_RUNTIME_REGRESSION)], capture_output=True, text=True)
+            if bounded.returncode:
+                errors.append("bounded subdivision runtime regression failed: " + (bounded.stderr.strip() or bounded.stdout.strip()))
     if errors:
         print("WORLD MAP SUBDIVISION VALIDATION FAILED")
         for error in errors:
             print("-", error)
         return 1
-    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · budgets · freeze + multi-country regressions")
+    print("WORLD MAP SUBDIVISION VALIDATION PASSED · USA 51/51 · Denmark 5/5 · budgets · freeze + multi-country + bounded-runtime regressions")
     return 0
 
 
