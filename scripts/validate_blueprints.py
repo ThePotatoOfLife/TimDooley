@@ -4,19 +4,21 @@
 Hard failures are reserved for structural problems that can break discovery:
 invalid JSON, non-canonical filenames, duplicate registry IDs, missing registry
 files, or blueprints with no identifiable schema/domain guidance. Richer metadata
-is reported as warnings so legacy blueprints can be upgraded deliberately rather
-than blocking the whole site during migration.
+is reported as grouped advisories so legacy blueprints can be upgraded deliberately
+without flooding CI with one warning per file/field pair.
 """
 from __future__ import annotations
 import json
 from pathlib import Path
+
+from blueprint_advisories import collect_missing_optional_metadata, format_advisory_summary
 
 ROOT = Path(__file__).resolve().parents[1]
 BLUEPRINT_DIR = ROOT / "data" / "blueprints"
 REGISTRY = ROOT / "data" / "blueprint-registry.json"
 
 errors: list[str] = []
-warnings: list[str] = []
+advisory_rows: list[tuple[str, dict]] = []
 files = sorted(BLUEPRINT_DIR.glob("*.json"))
 
 for path in files:
@@ -43,9 +45,7 @@ for path in files:
         errors.append(f"{rel} has no identifiable domain/schema guidance")
     if not (quality_guidance & set(data)):
         errors.append(f"{rel} has no schema/relationship/validation guidance")
-    for key in ("status", "entity", "implementation_notes", "validation_rules", "acquisition_plan"):
-        if key not in data:
-            warnings.append(f"{rel} should eventually add: {key}")
+    advisory_rows.append((rel, data))
 
 try:
     registry = json.loads(REGISTRY.read_text(encoding="utf-8"))
@@ -76,11 +76,16 @@ for item in entries:
     if not p.exists():
         errors.append(f"registry points to missing blueprint: {ref}")
 
+missing_optional = collect_missing_optional_metadata(advisory_rows)
+advisory_count = sum(len(paths) for paths in missing_optional.values())
+summary_lines = format_advisory_summary(missing_optional)
+
 print(f"Blueprint files checked: {len(files)}")
 print(f"Registry blueprint IDs: {len(ids)}")
-print(f"Blueprint contract warnings: {len(warnings)}")
-for warning in warnings:
-    print(f"- WARNING: {warning}")
+print(f"Blueprint contract advisory items: {advisory_count}")
+print(f"Blueprint advisory groups: {len(summary_lines)}")
+for line in summary_lines:
+    print(f"- ADVISORY: {line}")
 if errors:
     print("\nBLUEPRINT VALIDATION FAILED")
     for error in errors:
