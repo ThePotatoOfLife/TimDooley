@@ -57,10 +57,10 @@ winner = router.resolve({x:10,y:10}, 'click');
 assert.equal(winner.owner, 'overlay');
 
 router.register('disabled-place', {
-  layers:['place-point'], objectType:'place', clickPriority:100,
+  layers:['disabled-place-point'], objectType:'place', clickPriority:100,
   enabled:() => false,
 });
-rendered.unshift(feature('place-point','disabled'));
+rendered.unshift(feature('disabled-place-point','disabled'));
 winner = router.resolve({x:10,y:10}, 'click');
 assert.equal(winner.owner, 'overlay', 'disabled registrations must not win');
 
