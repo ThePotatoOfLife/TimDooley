@@ -62,9 +62,12 @@ window.__potatoAtlasPanelLifecycle = {
   get revision() { return coreRevision; },
 };
 
-// Register the lightweight physical-context controller after the core paint.
-// Elevation and hillshade tiles remain dormant until the user enables Terrain.
-queueMicrotask(() => window.__potatoAtlasLoadModule?.('Physical Terrain', './3d-physical-terrain.js'));
+// Coordinate application surfaces before adding more optional visual layers.
+// Physical World loads only a tiny manifest/runtime here; Terrain DEM stays on-demand.
+queueMicrotask(async () => {
+  await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
+  await window.__potatoAtlasLoadModule?.('Physical World', './3d-physical-layers.js');
+});
 
 // Administrative detail remains code- and data-dormant at world scale. Load the
 // subdivision controller only after regional zoom, or immediately for a deep link.
