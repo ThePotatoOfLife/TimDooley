@@ -3,6 +3,7 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
+const interaction = window.__potatoAtlasInteraction;
 
 const DATA_ROOT = '../data/world-places/';
 const INDEX_URL = `${DATA_ROOT}index.json`;
@@ -285,7 +286,17 @@ function registerLayer(layerId, priority) {
     slot:'context-network', priority, owner:'places'
   });
 }
-function installLayers() {
+async function scaleRuntime() {
+  const scale = await window.__potatoAtlasScale?.ready;
+  if (!scale?.threshold || !scale?.bandThreshold) {
+    throw new Error('World Map Scale runtime unavailable to Places.');
+  }
+  return scale;
+}
+async function installLayers() {
+  const scale = await scaleRuntime();
+  const PLACE_DETAIL_RENDER_ZOOM = scale.threshold('places-detail', 'render');
+  const PLACE_DETAIL_LABEL_ZOOM = scale.threshold('places-detail', 'label');
   if (!map.getSource(MAJOR_SOURCE)) map.addSource(MAJOR_SOURCE, { type:'geojson', data:majorData });
   if (!map.getSource(DETAIL_SOURCE)) map.addSource(DETAIL_SOURCE, { type:'geojson', data:EMPTY_COLLECTION });
 
@@ -306,7 +317,14 @@ function installLayers() {
       layout:{
         'text-field':['get','name'],
         'text-size':['interpolate',['linear'],['zoom'],1.2,8,5,10.5,8,12],
-        'text-offset':[0,1.05], 'text-anchor':'top', 'text-optional':true,
+        'symbol-sort-key':['+',
+          ['case',['boolean',['get','is_national_capital'],false],0,1000000000],
+          ['-',1000000000,['coalesce',['to-number',['get','population']],0]]
+        ],
+        'text-variable-anchor':['top','bottom','left','right'],
+        'text-radial-offset':1.05,
+        'text-padding':['interpolate',['linear'],['zoom'],1.2,5,6,2],
+        'text-optional':true,
         'text-allow-overlap':false
       },
       paint:{
@@ -318,19 +336,24 @@ function installLayers() {
   }
   if (!map.getLayer(DETAIL_POINTS)) {
     map.addLayer({
-      id:DETAIL_POINTS, type:'circle', source:DETAIL_SOURCE, minzoom:4.2,
+      id:DETAIL_POINTS, type:'circle', source:DETAIL_SOURCE, minzoom:PLACE_DETAIL_RENDER_ZOOM,
       paint:{
-        'circle-radius':['interpolate',['linear'],['zoom'],4.2,2,8,4.4,11,6],
+        'circle-radius':['interpolate',['linear'],['zoom'],PLACE_DETAIL_RENDER_ZOOM,2,8,4.4,11,6],
         'circle-color':'#cdd8d2','circle-stroke-color':'#111716','circle-stroke-width':0.9,'circle-opacity':0.88
       }
     });
   }
   if (!map.getLayer(DETAIL_LABELS)) {
     map.addLayer({
-      id:DETAIL_LABELS, type:'symbol', source:DETAIL_SOURCE, minzoom:5.0,
+      id:DETAIL_LABELS, type:'symbol', source:DETAIL_SOURCE, minzoom:PLACE_DETAIL_LABEL_ZOOM,
       layout:{
-        'text-field':['get','name'], 'text-size':['interpolate',['linear'],['zoom'],5,8.5,9,11],
-        'text-offset':[0,1.0], 'text-anchor':'top', 'text-optional':true, 'text-allow-overlap':false
+        'text-field':['get','name'],
+        'text-size':['interpolate',['linear'],['zoom'],PLACE_DETAIL_LABEL_ZOOM,8.5,9,11],
+        'text-variable-anchor':['top','bottom','left','right'],
+        'text-radial-offset':1.0,
+        'text-padding':3,
+        'text-optional':true,
+        'text-allow-overlap':false
       },
       paint:{'text-color':'#d3ddd7','text-halo-color':'#080b0b','text-halo-width':1.0}
     });
@@ -344,9 +367,24 @@ function installLayers() {
 }
 
 let eventsBound = false;
-function bindLayerEvents() {
-  if (eventsBound) return;
-  eventsBound = true;
+function syncInteractionRegistration() {
+  if (!interaction?.register) return false;
+  interaction.register('places', {
+    layers:[MAJOR_POINTS, DETAIL_POINTS],
+    objectType:'place',
+    clickPriority:80,
+    hoverPriority:80,
+    cursor:'pointer',
+    enabled:() => visible,
+    onClick:(event, feature) => {
+      const id = feature?.properties?.id;
+      if (id) focus(id, {feature, fit:false});
+    },
+  });
+  return true;
+}
+function bindFallbackLayerEvents() {
+  // Degraded/direct-module fallback when shared Interaction Router unavailable.
   for (const layerId of [MAJOR_POINTS, DETAIL_POINTS]) {
     map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
@@ -358,6 +396,12 @@ function bindLayerEvents() {
       if (id) focus(id, {feature, fit:false});
     });
   }
+}
+function bindLayerEvents() {
+  if (eventsBound) return;
+  eventsBound = true;
+  if (syncInteractionRegistration()) return;
+  bindFallbackLayerEvents();
 }
 
 async function loadIndex() {
@@ -555,8 +599,8 @@ function status() {
 window.addEventListener('potato-atlas-capitals-ready', () => convergeLegacyCapitals());
 
 async function initialize() {
-  if (map.loaded()) installLayers();
-  else await new Promise(resolve => map.once('load', () => { installLayers(); resolve(); }));
+  if (map.loaded()) await installLayers();
+  else await new Promise(resolve => map.once('load', async () => { await installLayers(); resolve(); }));
   try {
     await loadMajor();
     const url = new URL(location.href);
