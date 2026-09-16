@@ -17,6 +17,7 @@ REQUIRED_SURFACES={
     'questions':'/questions/',
     'index-a-z':'/index-a-z/',
     'context':'/context/',
+    'interpretive-justice':'/philosophy/interpretive-justice.html',
 }
 WORKS_FILE=ROOT/'works/index.html'
 WORKS_MARKERS=(
@@ -130,6 +131,8 @@ def validate_surfaces(errors,rooms):
     for sid,route in REQUIRED_SURFACES.items():
         if sid not in by: errors.append(f'missing required mature public surface: {sid}')
         elif by[sid].get('canonical_route')!=route: errors.append(f'{sid} canonical route must be {route}')
+    if by.get('interpretive-justice',{}).get('primary_parent')!='philosophy':
+        errors.append('Interpretive Justice specialist surface must live under Philosophy')
     for sid in p.get('secondary_global_ids',[]):
         if sid not in by: errors.append(f'secondary_global_ids references unknown surface {sid}')
     room_ids={x.get('id') for x in rooms.get('rooms',[]) if isinstance(x,dict)}; seen={}; legacy={}
