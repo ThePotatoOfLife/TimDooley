@@ -34,6 +34,7 @@ def main() -> int:
         "layerTypes",
         "interaction",
         "style",
+        "tooltip",
         "sampleCount",
         "potato-atlas-module-ready",
         "potato-atlas-style-generation",
@@ -51,10 +52,9 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot run runtime telemetry regression")
     else:
-        for path in (MODULE,):
-            result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
-            if result.returncode:
-                errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
+        result = subprocess.run([node, "--check", str(MODULE)], cwd=ROOT, text=True, capture_output=True, check=False)
+        if result.returncode:
+            errors.append(f"JavaScript syntax failed for {MODULE.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
         result = subprocess.run([node, str(TEST)], cwd=ROOT, text=True, capture_output=True, check=False)
         if result.returncode:
             errors.append("runtime telemetry regression failed: " + (result.stderr.strip() or result.stdout.strip()))
@@ -64,6 +64,7 @@ def main() -> int:
     print("- source/layer type breakdowns")
     print("- Interaction Router registry/dispatch diagnostics")
     print("- Style Lifecycle generation/restore diagnostics")
+    print("- Tooltip generation/invalidation/stale-suppression diagnostics")
     print("- refreshes through existing custom lifecycle events only")
     print(f"Errors: {len(errors)}")
     if errors:
