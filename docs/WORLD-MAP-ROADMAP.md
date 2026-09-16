@@ -11,11 +11,15 @@ The quality target is not maximum visible density. It is maximum useful structur
 
 ## Governing architecture
 
-See `docs/superpowers/specs/2026-09-16-world-map-control-plane-design.md`.
+See `docs/superpowers/specs/2026-09-16-world-map-control-plane-design.md` and `docs/superpowers/specs/2026-09-16-world-map-consolidation-design.md`.
 
 The active direction is:
 
 `canonical data → active view → geospatial/scale/render/interaction/inspector control plane → MapLibre presentation`
+
+The reconstruction rule is:
+
+**Salvage behavior, contracts, data and verified fixes — not stale branch history.**
 
 ## DONE / FOUNDATION
 
@@ -38,53 +42,65 @@ These capabilities are established enough to build on:
 - panel lifecycle ownership;
 - progressive/lazy specialist loading;
 - mathematical calibration separating geography, topology, hierarchy, time and gated flow;
-- browse/performance regressions for known hover, panel, cache and overlap failures.
+- browse/performance regressions for known hover, panel, cache and overlap failures;
+- shared geospatial kernel with normalized longitude/wrapped identity and antimeridian-safe bounds;
+- shared scale runtime with named thresholds and hysteresis, used by Places and subdivisions;
+- central Interaction Router with semantic click/hover priority;
+- router ownership for Places, subdivisions and spatial overlays;
+- typed Inspector Router and canonical inspector URL path with deterministic child/back semantics;
+- shared Style Lifecycle for Render Stack and physical layer restoration;
+- event-driven runtime telemetry for map/style/interaction/tooltip state;
+- integrated behavioral regression spanning wrapped geometry, overlap arbitration, tooltip invalidation and inspector URL/back state.
 
 ## ACTIVE — CONTROL-PLANE HARDENING
 
 ### A. Spatial safety
 
-- [ ] Add shared geospatial kernel.
-- [ ] Normalize longitudes and wrapped world-copy identity.
-- [ ] Make bounds/fit calculations antimeridian-aware.
+- [x] Add shared geospatial kernel.
+- [x] Normalize longitudes and wrapped world-copy identity.
+- [x] Make bounds/fit calculations antimeridian-aware.
 - [ ] Replace degree-squared partition prioritization where physical/geographic distance is intended.
 - [ ] Define schematic-vs-physical route geometry semantics.
-- [ ] Add dateline/globe/Mercator regressions.
+- [x] Add dateline/globe/Mercator regressions for the shared kernel.
 
 ### B. Scale safety
 
-- [ ] Add canonical named scale bands.
-- [ ] Separate load/render/label/interaction thresholds.
-- [ ] Add hysteresis for boundary crossings where churn is possible.
-- [ ] Migrate Places/subdivision thresholds first.
+- [x] Add canonical named scale bands / shared thresholds.
+- [x] Separate load/render/label/interaction thresholds for migrated consumers.
+- [x] Add hysteresis for boundary crossings where churn is possible.
+- [x] Migrate Places/subdivision thresholds first.
 - [ ] Audit every remaining module for raw zoom magic numbers.
 
 ### C. Interaction safety
 
-- [ ] Add central interaction registry/router.
-- [ ] Define hover/click semantic priority independent of render z-order.
-- [ ] Migrate Places, subdivisions, spatial overlays and countries.
-- [ ] Retire `__potatoAtlasOverlayHandled` after migration.
+- [x] Add central interaction registry/router.
+- [x] Define hover/click semantic priority independent of render z-order.
+- [x] Migrate Places, subdivisions and spatial overlays.
+- [ ] Migrate the remaining core country/capital paths (`3d-app.js`, `3d-hover.js`, `3d-country-selection.js`) without weakening core-first boot.
+- [ ] Retire `__potatoAtlasOverlayHandled` only after those remaining early-boot consumers have a tested canonical owner.
+
+Current compatibility rule: the marker is still live protection against duplicate early-boot country/capital clicks. Router-owned consumers may retain it only inside degraded fallback paths until the core path is migrated.
 
 ### D. Tooltip safety
 
-- [ ] Add one transient-tooltip service.
-- [ ] Centralize stale async suppression and motion invalidation.
-- [ ] Migrate country hover, Axis, Fields, Networks and infrastructure.
+- [x] Add one transient-tooltip service.
+- [x] Centralize stale async suppression and motion/projection/style invalidation in the shared service.
+- [ ] Migrate every remaining country hover, Axis, Fields, Networks and infrastructure tooltip path.
 - [ ] Remove the boot-guard CSS workaround only after behavioral regressions prove equivalent behavior.
 
 ### E. Inspector/state safety
 
-- [ ] Add typed inspector router/history.
-- [ ] Replace raw `panel.innerHTML` snapshots in Places and subdivisions.
-- [ ] Make child → parent → back semantics deterministic.
-- [ ] Align URL restoration with typed inspector state.
+- [x] Add typed inspector router/history.
+- [x] Replace raw `panel.innerHTML` snapshots in Places and subdivisions.
+- [x] Make child → parent → back semantics deterministic.
+- [x] Align URL restoration with typed inspector state.
 
 ## NEXT — RENDER + UI CONVERGENCE
 
 - [ ] Add visual-channel compatibility matrix.
 - [ ] Audit every writer of country fill/pattern/outline/height.
-- [ ] Centralize style-generation restoration.
+- [x] Centralize style-generation restoration for Render Stack and migrated physical layers.
+- [ ] Drain remaining duplicate style/lifecycle writers discovered by the architecture auditor.
 - [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
 - [ ] Make top-level controls increasingly question-oriented: Browse / Compare / Connections / Evidence / Time / View.
 - [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
@@ -92,11 +108,12 @@ These capabilities are established enough to build on:
 
 ## NEXT — VERIFICATION + OBSERVABILITY
 
-- [ ] Add real behavioral scenario tests for drag/zoom/projection/wrap/overlap/inspector transitions.
-- [ ] Track active source/layer counts and style restoration work.
-- [ ] Track interaction registry size and tooltip generation/stale suppression.
-- [ ] Retain bounded Places/subdivision cache diagnostics.
-- [ ] Publish useful backend/map audit artifacts in CI rather than creating disposable repository state.
+- [x] Add real behavioral scenario tests for drag/projection/wrap/overlap/inspector transitions.
+- [x] Track active source/layer counts and style restoration work.
+- [x] Track interaction registry size, dispatch counts and tooltip generation/stale suppression.
+- [x] Retain bounded Places/subdivision cache diagnostics.
+- [x] Publish and enforce the World Map architecture audit in CI.
+- [ ] Expand scenarios toward route geometry, remaining legacy interaction consumers and accessibility behavior.
 
 ## COMPATIBILITY RETIREMENT
 
@@ -106,8 +123,11 @@ Drain only after unique behavior is preserved and tested:
 - [ ] `world-map/3d-selection-ui.js`
 - [ ] old Lens ownership after registry/compositor parity
 - [ ] old Atlas naming/routing remnants
-- [ ] duplicated styledata/lifecycle ownership
+- [ ] remaining duplicated style/lifecycle ownership not yet under Style Lifecycle
+- [ ] `__potatoAtlasOverlayHandled` after core country/capital interaction migration
 - [ ] stale generated/retired map artifacts already represented by canonical owners
+
+See `docs/world-map-consolidation-dispositions.md` for the branch-by-branch reconstruction record and compatibility classification.
 
 ## DATA EXPANSION AFTER CONTROL-PLANE STABILITY
 
