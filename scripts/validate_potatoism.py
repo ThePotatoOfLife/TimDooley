@@ -11,6 +11,11 @@ def load(rel):
     try:return json.loads(p.read_text(encoding='utf-8'))
     except Exception as e: errors.append(f'Invalid JSON: {rel}: {e}'); return {}
 
+def read(rel):
+    p=ROOT/rel
+    if not p.exists(): errors.append(f'Missing: {rel}'); return ''
+    return p.read_text(encoding='utf-8',errors='replace')
+
 def main():
     religion=load('data/potatoism-religion.json')
     cosm=load('data/potatoism-cosmology.json')
@@ -22,6 +27,8 @@ def main():
     archive=load('knowledge/philosophy/archive-epistemics.json')
     authority=load('knowledge/philosophy/source-authority-and-provenance-policy.json')
     culture=load('data/culture-ontology.json')
+    information_war=load('data/spiritual-war-information-war.json')
+    philosophy_page=read('philosophy/index.html')
 
     if not religion.get('birth',{}).get('date'): errors.append('Potatoism birth marker missing')
     if len(religion.get('timeline',[]))<5: errors.append('Potatoism timeline is too short')
@@ -62,6 +69,21 @@ def main():
     metrics=culture.get('interpretive_justice_metrics',{}) if isinstance(culture,dict) else {}
     for key in ('RepresentationGap','IndependentSourceRatio','ReplyAvailability','CorrectionReachRatio','ContextRetention','LabelPersistenceAfterCorrection','ClassificationReviewLatency','ClassifierClassifiedAsymmetry'):
         if key not in metrics: errors.append(f'Culture ontology missing Interpretive Justice metric: {key}')
+
+    for marker in ('Person Before Dossier','Hear Before You Close the Case','Memory That Can Update'):
+        if marker.casefold() not in philosophy_page.casefold():
+            errors.append(f'Public Philosophy missing Interpretive Justice teaching: {marker}')
+    if 'interpretive-justice-laws.json' not in philosophy_page:
+        errors.append('Public Philosophy does not link the Interpretive Justice law owner')
+
+    bridge=information_war.get('interpretive_justice_bridge',{}) if isinstance(information_war,dict) else {}
+    if bridge.get('canonical_owner')!='knowledge/philosophy/interpretive-justice-laws.json':
+        errors.append('Information-war model missing canonical Interpretive Justice owner link')
+    for key in ('representation_gap','identity_compression','narrative_lock_in','correction_asymmetry','source_independence'):
+        if key not in bridge.get('shared_operators',[]):
+            errors.append(f'Information-war bridge missing shared operator: {key}')
+    if 'does not prove' not in str(bridge.get('boundary','')).casefold():
+        errors.append('Information-war Interpretive Justice bridge needs non-verdict boundary')
 
     branches={b.get('id'):b for b in manifest.get('branches',[]) if isinstance(b,dict) and b.get('id')}
     if manifest.get('root',{}).get('id')!='potato-of-life': errors.append('Potatoism public root must be potato-of-life')
