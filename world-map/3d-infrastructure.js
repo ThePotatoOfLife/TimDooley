@@ -4,6 +4,7 @@
 const map = window.__potatoAtlasMap;
 const runtime = window.__potatoAtlasDataRuntime;
 const selection = window.__potatoAtlasSelection;
+const interaction = window.__potatoAtlasInteraction;
 if (!map || !runtime || !selection) throw new Error('Infrastructure context requires map, runtime and selection APIs.');
 await runtime.ready;
 
@@ -149,6 +150,32 @@ async function showPopup(asset, coordinates) {
     .addTo(map);
 }
 
+async function handleInfrastructureClick(event, feature = event?.features?.[0]) {
+  const id = feature?.properties?.id;
+  const asset = id ? await runtime.infrastructure?.(id) : null;
+  const coordinates = feature?.geometry?.coordinates;
+  if (asset && Array.isArray(coordinates)) await showPopup(asset, coordinates);
+}
+
+function bindInfrastructureInteractions() {
+  if (interaction?.register) {
+    interaction.register('infrastructure', {
+      layers:[POINT_LAYER],
+      objectType:'infrastructure',
+      clickPriority:70,
+      hoverPriority:70,
+      cursor:'pointer',
+      onClick:(event, feature) => { void handleInfrastructureClick(event, feature); },
+    });
+    return;
+  }
+  // Degraded/direct-module fallback when the shared Interaction Router is unavailable.
+  map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
+  map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
+  const bindLayerEvent = (...args) => map.on(...args);
+  bindLayerEvent('click', POINT_LAYER, handleInfrastructureClick);
+}
+
 async function injectCountryContext(code = currentEntityCode()) {
   const card = document.getElementById('atlasCountryCard');
   if (!card || card.hidden || !/^[A-Z]{3}$/.test(String(code || ''))) return;
@@ -183,13 +210,7 @@ document.addEventListener('click', async event => {
 });
 
 ensureLayer();
-map.on('mouseenter', POINT_LAYER, () => { map.getCanvas().style.cursor = 'pointer'; });
-map.on('mouseleave', POINT_LAYER, () => { map.getCanvas().style.cursor = ''; });
-map.on('click', POINT_LAYER, async event => {
-  const id = event.features?.[0]?.properties?.id;
-  const asset = id ? await runtime.infrastructure?.(id) : null;
-  if (asset) await showPopup(asset, event.features[0].geometry.coordinates);
-});
+bindInfrastructureInteractions();
 
 window.addEventListener('potato-atlas-country-card-rendered', event => {
   const code = String(event?.detail?.code || currentEntityCode()).toUpperCase();

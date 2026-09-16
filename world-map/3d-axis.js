@@ -102,17 +102,32 @@ function installAxisToggle(map) {
   setAxisVisible(map, visible);
 }
 
-function installAxisInteractions(map) {
-  const popup = new maplibregl.Popup({ closeButton:false, closeOnClick:false, offset:10 });
-  const enter = event => {
-    map.getCanvas().style.cursor = 'pointer';
-    const feature = event.features?.[0];
-    if (!feature) return;
-    const p = feature.properties || {};
-    popup.setLngLat(event.lngLat).setHTML(`<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`).addTo(map);
+async function sharedTooltip(map) {
+  if (window.__potatoAtlasTooltip) return window.__potatoAtlasTooltip;
+  const { createTooltipService } = await import('./3d-tooltip.js');
+  const tooltip = createTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window });
+  window.__potatoAtlasTooltip = tooltip;
+  return tooltip;
+}
+
+async function sharedInteraction() {
+  if (window.__potatoAtlasInteraction?.register) return window.__potatoAtlasInteraction;
+  await import('./3d-interaction-router.js');
+  const interaction = window.__potatoAtlasInteraction;
+  if (!interaction?.register) throw new Error('Axis interaction requires the shared Interaction Router.');
+  return interaction;
+}
+
+async function installAxisInteractions(map) {
+  const [tooltip, interaction] = await Promise.all([sharedTooltip(map), sharedInteraction()]);
+  const hoverAxis = (event, feature) => {
+    const p = feature?.properties || {};
+    const generation = tooltip.nextGeneration('axis');
+    tooltip.show('axis', event.lngLat, `<div class="atlas-hover"><b>${p.name || 'North / Axis'}</b><br><span>${p.subtitle || ''}</span><br><small>Project-symbolic atlas layer · D5 threshold, not a nation, border, territory, or physical dimension</small></div>`, generation);
   };
-  const leave = () => { map.getCanvas().style.cursor=''; popup.remove(); };
-  [AXIS_FILL,AXIS_LINE,AXIS_GATE].forEach(layer => { map.on('mouseenter',layer,enter); map.on('mouseleave',layer,leave); });
+  const leaveAxis = () => {
+    tooltip.invalidate('axis-leave');
+  };
 
   const openGate = () => {
     map.easeTo({center:[ARC_CENTER_LON,79.7],zoom:Math.max(map.getZoom(),2.55),pitch:48,bearing:0,duration:1100});
@@ -124,8 +139,36 @@ function installAxisInteractions(map) {
     const panel = document.getElementById('panel');
     if (panel) panel.innerHTML = `<div class="eyebrow">D5 · project-symbolic threshold</div><h1>North / Axis Gate</h1><p class="muted">The icy-blue polar bubble is D5: the first spiritual threshold above the ordinary D4 world map. The Door and Ladder meet here. The spiral continues upward toward North of North and downward through roots, Swamp and lower disintegration planes.</p><div class="boundary"><b>Boundary:</b> Greenland and the geographic Arctic remain ordinary D4 geography. D5–D11 and D1–D3 are project-symbolic navigation states, not physical dimensions, altitude, sovereignty, borders, territory, or empirical cosmology.</div>`;
   };
-  map.on('click',AXIS_GATE,openGate);
-  map.on('click',AXIS_FILL,openGate);
+
+  interaction.register('axis-gate', {
+    layers:[AXIS_GATE],
+    objectType:'axis-gate',
+    clickPriority:58,
+    hoverPriority:58,
+    cursor:'pointer',
+    onClick:() => openGate(),
+    onHover:hoverAxis,
+    onLeave:leaveAxis,
+  });
+  interaction.register('axis-line', {
+    layers:[AXIS_LINE],
+    objectType:'axis-threshold-line',
+    clickPriority:0,
+    hoverPriority:25,
+    cursor:'pointer',
+    onHover:hoverAxis,
+    onLeave:leaveAxis,
+  });
+  interaction.register('axis-fill', {
+    layers:[AXIS_FILL],
+    objectType:'axis-threshold',
+    clickPriority:5,
+    hoverPriority:5,
+    cursor:'pointer',
+    onClick:() => openGate(),
+    onHover:hoverAxis,
+    onLeave:leaveAxis,
+  });
 }
 
 async function bootAxis() {
@@ -135,7 +178,7 @@ async function bootAxis() {
   if (!map.loaded()) await new Promise(resolve=>map.once('load',resolve));
   addAxisLayers(map);
   installAxisToggle(map);
-  installAxisInteractions(map);
+  await installAxisInteractions(map);
 }
 
 bootAxis().catch(error => console.warn('North / Axis enhancement unavailable:', error));

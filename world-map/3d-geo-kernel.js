@@ -11,6 +11,22 @@ function normalizeLongitude(lng) {
   return ((value + 180) % 360 + 360) % 360 - 180;
 }
 
+function canonicalWorldCopyLongitude(lng) {
+  const value = finiteNumber(lng, 'longitude');
+  const longitude = normalizeLongitude(value);
+  const worldCopy = Math.round((value - longitude) / 360);
+  return { longitude, worldCopy };
+}
+
+function canonicalWorldCopyPoint(point) {
+  if (!Array.isArray(point) || point.length < 2) throw new TypeError('point must be [longitude, latitude]');
+  const lng = finiteNumber(point[0], 'point longitude');
+  const lat = finiteNumber(point[1], 'point latitude');
+  if (lat < -90 || lat > 90) throw new RangeError('point latitude must be between -90 and 90');
+  const { longitude, worldCopy } = canonicalWorldCopyLongitude(lng);
+  return { coordinate:[longitude, lat], worldCopy };
+}
+
 function shortestLongitudeDelta(fromLng, toLng) {
   return normalizeLongitude(normalizeLongitude(toLng) - normalizeLongitude(fromLng));
 }
@@ -113,6 +129,8 @@ function haversineDistanceKm(a, b) {
 const api = Object.freeze({
   EARTH_MEAN_RADIUS_KM,
   normalizeLongitude,
+  canonicalWorldCopyLongitude,
+  canonicalWorldCopyPoint,
   shortestLongitudeDelta,
   unwrapLongitude,
   minimalLongitudeInterval,
@@ -125,6 +143,8 @@ if (typeof window !== 'undefined') window.__potatoAtlasGeo = api;
 export {
   EARTH_MEAN_RADIUS_KM,
   normalizeLongitude,
+  canonicalWorldCopyLongitude,
+  canonicalWorldCopyPoint,
   shortestLongitudeDelta,
   unwrapLongitude,
   minimalLongitudeInterval,

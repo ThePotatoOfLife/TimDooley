@@ -118,8 +118,16 @@ function setHistoricalSuppressed(on){
   if(installedMap&&installedRegistry)applyNetwork(installedMap,installedRegistry,activeNetwork,{writeUrl:false});
 }
 
-function installInteractions(map, registry) {
-  const popup = new maplibregl.Popup({closeButton:false,closeOnClick:false,offset:8});
+async function sharedTooltip(map) {
+  if (window.__potatoAtlasTooltip) return window.__potatoAtlasTooltip;
+  const { createTooltipService } = await import('./3d-tooltip.js');
+  const tooltip = createTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window });
+  window.__potatoAtlasTooltip = tooltip;
+  return tooltip;
+}
+
+async function installInteractions(map, registry) {
+  const tooltip = await sharedTooltip(map);
   map.on('mouseenter',FILL_ID,event=>{
     if(historicalSuppressed)return;
     map.getCanvas().style.cursor='pointer';
@@ -129,9 +137,13 @@ function installInteractions(map, registry) {
       const label = registry.networks?.[id]?.label || id;
       return `${label} · ${role}`;
     });
-    popup.setLngLat(event.lngLat).setHTML(`<div class="atlas-hover"><b>${esc(p.name || p.iso3 || 'Country')}</b><br>${memberships.length ? memberships.map(esc).join('<br>') : 'No selected network membership'}<br><small>Observable institutional/regional layer · separate from project fields.</small></div>`).addTo(map);
+    const generation = tooltip.nextGeneration('networks');
+    tooltip.show('networks', event.lngLat, `<div class="atlas-hover"><b>${esc(p.name || p.iso3 || 'Country')}</b><br>${memberships.length ? memberships.map(esc).join('<br>') : 'No selected network membership'}<br><small>Observable institutional/regional layer · separate from project fields.</small></div>`, generation);
   });
-  map.on('mouseleave',FILL_ID,()=>{map.getCanvas().style.cursor='';popup.remove();});
+  map.on('mouseleave',FILL_ID,()=>{
+    map.getCanvas().style.cursor='';
+    tooltip.invalidate('networks-leave');
+  });
 }
 
 async function boot() {
@@ -145,7 +157,7 @@ async function boot() {
   installedMap=map;installedRegistry=registry;
   addLayers(map,geo,registry);
   installControl(map,registry);
-  installInteractions(map,registry);
+  await installInteractions(map,registry);
   const state=window.__potatoAtlasTime?.getState?.();setHistoricalSuppressed(state&&state.mode!=='current');
 }
 window.addEventListener('atlas-time-change',event=>setHistoricalSuppressed(event.detail?.mode!=='current'));

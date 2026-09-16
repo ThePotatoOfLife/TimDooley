@@ -134,6 +134,14 @@ const { createTooltipService } = await import(versionedModule('./3d-tooltip.js')
 const tooltip = window.__potatoAtlasTooltip || createTooltipService(map, { PopupClass:maplibregl.Popup, eventTarget:window });
 window.__potatoAtlasTooltip = tooltip;
 
+async function sharedInteraction() {
+  if (window.__potatoAtlasInteraction?.register) return window.__potatoAtlasInteraction;
+  await import(versionedModule('./3d-interaction-router.js'));
+  const interaction = window.__potatoAtlasInteraction;
+  if (!interaction?.register) throw new Error('Fallback capital interaction requires the shared Interaction Router.');
+  return interaction;
+}
+
 try {
   const response = await fetchJsonResponse(COUNTRY_FACTS_URL);
   window.__potatoAtlasCountryFacts = await response.json();
@@ -258,18 +266,24 @@ async function installCapitalsWhenUseful() {
     if (!map.getLayer('capital-cities')) map.addLayer({ id: 'capital-cities', type: 'circle', source: 'capital-cities', minzoom: 0, filter: ['==', ['get', 'primary'], true], paint: { 'circle-radius': ['interpolate', ['linear'], ['zoom'], 1, 1.8, 3, 2.9, 7, 5.8], 'circle-color': '#e7c56f', 'circle-stroke-color': '#171a18', 'circle-stroke-width': 1.1, 'circle-opacity': 0.92 } });
     if (!map.getLayer('capital-city-major-labels')) map.addLayer({ id: 'capital-city-major-labels', type: 'symbol', source: 'capital-cities', minzoom: 1.1, maxzoom: 3.4, filter: ['all', ['==', ['get', 'primary'], true], ['<=', ['get', 'scalerank'], 3]], layout: { 'text-field': ['get', 'name'], 'text-size': 9, 'text-offset': [0, 1.05], 'text-anchor': 'top', 'text-allow-overlap': false, 'text-optional': true }, paint: { 'text-color': '#f0d98f', 'text-halo-color': '#080b0b', 'text-halo-width': 1.1 } });
     if (!map.getLayer('capital-city-labels')) map.addLayer({ id: 'capital-city-labels', type: 'symbol', source: 'capital-cities', minzoom: 3.1, filter: ['==', ['get', 'primary'], true], layout: { 'text-field': ['get', 'name'], 'text-size': ['interpolate', ['linear'], ['zoom'], 3.1, 9, 7, 11], 'text-offset': [0, 1.15], 'text-anchor': 'top', 'text-allow-overlap': false, 'text-optional': true }, paint: { 'text-color': '#f3df9e', 'text-halo-color': '#080b0b', 'text-halo-width': 1.15 } });
-    map.on('mousemove', 'capital-cities', event => {
-      const feature = event.features?.[0];
-      if (!feature) return;
-      map.getCanvas().style.cursor = 'pointer';
-      const generation = tooltip.nextGeneration('capital');
-      tooltip.show('capital', event.lngLat, capitalHtml(feature.properties || {}), generation);
+    const interaction = await sharedInteraction();
+    interaction.register('fallback-capitals', {
+      layers:['capital-cities'],
+      objectType:'capital',
+      clickPriority:68,
+      hoverPriority:68,
+      enabled:() => capitalsVisible,
+      cursor:'pointer',
+      onClick:(_event, feature) => {
+        const code = feature?.properties?.iso3;
+        if (code && window.goCountry) void window.goCountry(code);
+      },
+      onHover:(event, feature) => {
+        const generation = tooltip.nextGeneration('capital');
+        tooltip.show('capital', event.lngLat, capitalHtml(feature?.properties || {}), generation);
+      },
+      onLeave:() => tooltip.invalidate('capital-leave'),
     });
-    map.on('mouseleave', 'capital-cities', () => {
-      map.getCanvas().style.cursor = '';
-      tooltip.invalidate('capital-leave');
-    });
-    map.on('click', 'capital-cities', event => { if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true; const code = event.features?.[0]?.properties?.iso3; if (code && window.goCountry) window.goCountry(code); });
     setCapitalsVisible(true);
     window.__potatoAtlasCapitals = { setVisible: setCapitalsVisible, focus: focusCapital, forCountry: capitalFor, get visible() { return capitalsVisible; }, get count() { return capitalFeatures.length; } };
     window.dispatchEvent(new CustomEvent('potato-atlas-capitals-ready', { detail: { count: capitals.features.length, visible: capitalsVisible } }));

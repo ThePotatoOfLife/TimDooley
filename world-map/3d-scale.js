@@ -43,6 +43,12 @@ function createScaleRuntime(contract) {
     return current >= requested;
   }
 
+  function bandThreshold(bandId) {
+    const index = bandIndex.get(String(bandId || ''));
+    if (index == null) throw new TypeError(`unknown scale band: ${bandId}`);
+    return state.bands[index].min_zoom;
+  }
+
   function threshold(capability, phase) {
     const row = state.capabilities?.[capability];
     if (!row) throw new TypeError(`unknown scale capability: ${capability}`);
@@ -86,6 +92,7 @@ function createScaleRuntime(contract) {
     hysteresis:state.hysteresis,
     bandForZoom,
     atLeast,
+    bandThreshold,
     threshold,
     transition,
     capabilityActive,

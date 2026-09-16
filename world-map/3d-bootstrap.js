@@ -46,6 +46,14 @@ async function waitForCore(timeoutMs = 15000) {
   }
   throw new Error('Core atlas map did not become ready before the bootstrap deadline.');
 }
+async function waitForInteractionRouter(timeoutMs = 5000) {
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    if (window.__potatoAtlasInteraction?.register) return window.__potatoAtlasInteraction;
+    await sleep(20);
+  }
+  throw new Error('World Map Interaction Router did not become ready before country interaction boot.');
+}
 function diagnostic(label, patch) {
   const current = window.__potatoAtlasDiagnostics.modules[label] || {};
   window.__potatoAtlasDiagnostics.modules[label] = { ...current, ...patch };
@@ -131,14 +139,19 @@ try {
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
+  await loadAfterPaint('Inspector Router', './3d-inspector-router.js');
+  await loadAfterPaint('Inspector URL', './3d-inspector-url.js');
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
+  await waitForInteractionRouter();
+  await loadAfterPaint('Country interaction', './3d-country-interaction.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
   await loadAfterPaint('Compositor', './3d-compositor.js');
   await loadAfterPaint('Spatial Overlays', './3d-spatial-overlays.js');
   await loadAfterPaint('Spatial Overlay UI', './3d-spatial-overlay-ui.js');
   await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
   await loadAfterPaint('Active View', './3d-active-view.js');
+  await loadAfterPaint('Runtime Telemetry', './3d-runtime-telemetry.js');
   await loadAfterPaint('World Bar', './3d-world-bar.js');
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');

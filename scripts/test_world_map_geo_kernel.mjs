@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import {
   normalizeLongitude,
+  canonicalWorldCopyLongitude,
+  canonicalWorldCopyPoint,
   shortestLongitudeDelta,
   unwrapLongitude,
   minimalLongitudeInterval,
@@ -14,6 +16,15 @@ assert.equal(normalizeLongitude(180), -180);
 assert.equal(normalizeLongitude(-180), -180);
 assert.equal(normalizeLongitude(540), -180);
 assert.throws(() => normalizeLongitude(Number.NaN), /finite/i);
+
+assert.deepEqual(canonicalWorldCopyLongitude(190), { longitude:-170, worldCopy:1 });
+assert.deepEqual(canonicalWorldCopyLongitude(-190), { longitude:170, worldCopy:-1 });
+assert.deepEqual(canonicalWorldCopyLongitude(-170), { longitude:-170, worldCopy:0 });
+assert.deepEqual(canonicalWorldCopyLongitude(180), { longitude:-180, worldCopy:1 });
+assert.deepEqual(canonicalWorldCopyLongitude(540), { longitude:-180, worldCopy:2 });
+assert.deepEqual(canonicalWorldCopyPoint([550,55]), { coordinate:[-170,55], worldCopy:2 });
+assert.deepEqual(canonicalWorldCopyPoint([-530,-20]), { coordinate:[-170,-20], worldCopy:-1 });
+assert.throws(() => canonicalWorldCopyPoint([0,91]), /latitude/i);
 
 assert.equal(shortestLongitudeDelta(170, -170), 20);
 assert.equal(shortestLongitudeDelta(-170, 170), -20);

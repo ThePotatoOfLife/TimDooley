@@ -69,6 +69,25 @@ assert.ok(!installSource.includes('installCapitalsWhenUseful()'), 'core hover in
 assert.ok(hover.includes("window.addEventListener('potato-atlas-places-ready'"), 'legacy capitals must be gated by Places readiness');
 assert.ok(hover.includes('void installCapitalsWhenUseful()'), 'Places-unavailable path must retain legacy capital fallback');
 
+assert.ok(hover.includes('async function sharedInteraction()'), 'fallback capitals must be able to acquire the shared Interaction Router on direct loads');
+assert.ok(hover.includes("interaction.register('fallback-capitals'"), 'fallback capitals need one semantic interaction owner');
+assert.ok(hover.includes("layers:['capital-cities']"), 'fallback capital owner must target the capital point layer');
+assert.ok(hover.includes("objectType:'capital'"), 'fallback capitals must declare their semantic object type');
+assert.ok(hover.includes('clickPriority:68'), 'fallback capital click must outrank country/hub context while remaining below Infrastructure/Gateways/Places');
+assert.ok(hover.includes('hoverPriority:68'), 'fallback capital hover must share the same semantic priority');
+assert.ok(hover.includes('enabled:() => capitalsVisible'), 'hidden fallback capitals must not win interaction arbitration');
+assert.ok(hover.includes("tooltip.nextGeneration('capital')"), 'fallback capital hover must keep shared tooltip generations');
+assert.ok(hover.includes("tooltip.invalidate('capital-leave')"), 'fallback capital leave must invalidate shared tooltip state');
+assert.ok(hover.includes('if (code && window.goCountry) void window.goCountry(code);'), 'fallback capital click must preserve country navigation');
+for (const direct of [
+  "map.on('mousemove', 'capital-cities'",
+  "map.on('mouseleave', 'capital-cities'",
+  "map.on('click', 'capital-cities'",
+]) {
+  assert.ok(!hover.includes(direct), `fallback capitals must retire direct layer interaction ownership: ${direct}`);
+}
+assert.ok(!hover.includes('__potatoAtlasOverlayHandled'), 'fallback capital path must not keep the compatibility event flag alive');
+
 assert.ok(lifecycle.includes("const placesLoaded = await window.__potatoAtlasLoadModule?.('Places', './3d-places.js')"), 'panel lifecycle must capture Places module load result');
 assert.ok(lifecycle.includes('if (!placesLoaded)'), 'panel lifecycle must signal Places module failure');
 assert.ok(lifecycle.includes("new CustomEvent('potato-atlas-places-ready'"), 'Places module failure must trigger capital fallback signal');

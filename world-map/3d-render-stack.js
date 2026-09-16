@@ -3,6 +3,11 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Render Stack requires the core map.');
+if (!window.__potatoAtlasStyleLifecycle) {
+  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
+  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
+}
+const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 
 const SLOT_ORDER = Object.freeze([
   'physical-surface',
@@ -152,7 +157,10 @@ function state() {
 
 function slotOrder() { return [...SLOT_ORDER]; }
 
-map.on('styledata', () => schedule('styledata'));
+styleLifecycle.register('render-stack', {
+  priority:90,
+  restore:() => schedule('style-generation'),
+});
 window.addEventListener('potato-atlas-module-ready', () => schedule('module-ready'));
 
 window.__potatoAtlasRenderStack = { register, unregister, reconcile, state, slotOrder };

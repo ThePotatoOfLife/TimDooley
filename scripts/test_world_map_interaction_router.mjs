@@ -74,6 +74,15 @@ const state = router.state();
 assert.ok(state.some(row => row.owner === 'place' && row.clickPriority === 80));
 assert.ok(state.some(row => row.owner === 'overlay' && row.objectType === 'spatial-overlay'));
 
+const diagnostics = router.diagnostics();
+assert.equal(diagnostics.registrationCount, 4, 'diagnostics must expose current registry size');
+assert.equal(diagnostics.enabledCount, 3, 'diagnostics must distinguish enabled registrations');
+assert.equal(diagnostics.clickOwnerCount, 3, 'diagnostics must expose active click owners');
+assert.equal(diagnostics.layerCount, 4, 'diagnostics must expose unique registered layer coverage');
+assert.equal(diagnostics.clickDispatches, 1, 'diagnostics must count click arbitration');
+assert.equal(diagnostics.hoverDispatches, 0, 'diagnostics must count hover arbitration separately');
+assert.equal(diagnostics.activeHoverOwner, null, 'diagnostics must expose current hover owner');
+
 const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', import.meta.url), 'utf8');
 const subdivisions = fs.readFileSync(new URL('../world-map/3d-subdivisions.js', import.meta.url), 'utf8');
 assert.ok(lifecycle.includes("__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js')"), 'control plane must preload the Interaction Router');
