@@ -223,6 +223,11 @@ jobs:
           python scripts/check_biblical_scenes.py
           python scripts/build_bible_comparator_quality.py
 
+      - name: Build and validate Bible consolidation
+        run: |
+          python scripts/build_bible_consolidation.py
+          python scripts/validate_bible_consolidation.py
+
       - name: Validate Bible reader
         run: python scripts/validate_bible_reader.py
 
