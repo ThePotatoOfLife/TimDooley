@@ -41,6 +41,7 @@ These capabilities are established enough to build on:
 - mathematical calibration separating geography, topology, hierarchy, time and gated flow;
 - viewport-safe UI padding so map camera state accounts for the desktop inspector;
 - deterministic collision priority and adaptive placement for place labels;
+- runtime telemetry for live source/layer counts, style restoration and interaction-registry health;
 - browse/performance regressions for known hover, panel, cache, overlap and occlusion failures.
 
 ## ACTIVE — CONTROL-PLANE HARDENING
@@ -66,7 +67,7 @@ These capabilities are established enough to build on:
 
 - [x] Add central interaction registry/router.
 - [x] Define hover/click semantic priority independent of render z-order.
-- [ ] Finish migrating active targets. *(Places 80, Gateways 75, Infrastructure 70, subdivisions 60 and spatial overlays 40 are centralized; country/Axis compatibility paths remain)*
+- [ ] Finish migrating active targets. *(Places 80, Gateways 75, Infrastructure 70, subdivisions 60, spatial overlays 40 and base country polygons 10 are centralized; core hub/relation compatibility actions and Axis paths remain.)*
 - [ ] Retire `__potatoAtlasOverlayHandled` after all relevant targets migrate.
 
 ### D. Tooltip safety
@@ -98,8 +99,8 @@ These capabilities are established enough to build on:
 ## NEXT — VERIFICATION + OBSERVABILITY
 
 - [ ] Add real behavioral scenario tests for drag/zoom/projection/wrap/overlap/inspector transitions.
-- [ ] Track active source/layer counts and style restoration work. *(Style Lifecycle generation/restore counters now exist; source/layer count telemetry remains.)*
-- [ ] Track interaction registry size and tooltip generation/stale suppression.
+- [x] Track active source/layer counts and style restoration work. *(Runtime Telemetry now aggregates source/layer counts and Style Lifecycle generation/restore state through existing lifecycle events.)*
+- [ ] Track interaction registry size and tooltip generation/stale suppression. *(Interaction Router registry/layer/dispatch counts are now live; tooltip stale-generation metrics remain.)*
 - [x] Retain bounded Places/subdivision cache diagnostics.
 - [ ] Publish useful backend/map audit artifacts in CI rather than creating disposable repository state.
 
