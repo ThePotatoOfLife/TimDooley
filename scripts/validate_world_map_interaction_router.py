@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate deterministic World Map interaction arbitration and first migration."""
+"""Validate deterministic World Map interaction arbitration and early-boot handoff."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -10,12 +10,16 @@ ROOT = Path(__file__).resolve().parents[1]
 ROUTER = ROOT / "world-map" / "3d-interaction-router.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
+BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
+APP = ROOT / "world-map" / "3d-app.js"
+HOVER = ROOT / "world-map" / "3d-hover.js"
+COUNTRY = ROOT / "world-map" / "3d-country-selection.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HOVER, COUNTRY, TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -27,6 +31,10 @@ def main() -> int:
     router = ROUTER.read_text(encoding="utf-8", errors="replace")
     lifecycle = LIFECYCLE.read_text(encoding="utf-8", errors="replace")
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
+    bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
+    app = APP.read_text(encoding="utf-8", errors="replace")
+    hover = HOVER.read_text(encoding="utf-8", errors="replace")
+    country = COUNTRY.read_text(encoding="utf-8", errors="replace")
 
     for token in (
         "function createInteractionRouter",
@@ -39,12 +47,13 @@ def main() -> int:
         "queryRenderedFeatures",
         "__potatoAtlasOverlayHandled",
         "window.__potatoAtlasInteraction",
+        "potato-atlas-interaction-ready",
     ):
         if token not in router:
             errors.append(f"interaction router missing interface marker: {token}")
 
     if "__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js')" not in lifecycle:
-        errors.append("panel lifecycle must preload the shared Interaction Router")
+        errors.append("panel lifecycle must retain the shared Interaction Router preload")
 
     for token in (
         "const interaction = window.__potatoAtlasInteraction",
@@ -59,11 +68,47 @@ def main() -> int:
     if "Degraded/direct-module fallback" not in subdivisions:
         errors.append("subdivision legacy listener must be explicitly documented as degraded fallback")
 
+    router_index = bootstrap.find("loadAfterPaint('Interaction Router', './3d-interaction-router.js')")
+    country_index = bootstrap.find("loadAfterPaint('Country selection', './3d-country-selection.js')")
+    if router_index < 0 or country_index < 0 or router_index >= country_index:
+        errors.append("bootstrap must load Interaction Router before canonical country selection")
+
+    for token in (
+        "function handoffCoreInteractions(interaction)",
+        "interaction.register('core-country-fallback'",
+        "interaction.register('core-country-hubs'",
+        "interaction.register('core-semantic-hubs'",
+        "interaction.register('core-trace-hubs'",
+        "interaction.register('core-relations'",
+        "map.off('click','countries-fill',handleCountryPolygonClick)",
+    ):
+        if token not in app:
+            errors.append(f"3d-app early-boot handoff missing marker: {token}")
+
+    for token in (
+        "const interaction = window.__potatoAtlasInteraction",
+        "interaction.unregister('core-country-fallback')",
+        "interaction.register('countries'",
+        "objectType:'country'",
+        "clickPriority:10",
+        "Degraded/direct-module fallback",
+    ):
+        if token not in country:
+            errors.append(f"country selection router migration missing marker: {token}")
+
+    for token in (
+        "interaction.register('country-hover'",
+        "interaction.register('legacy-capitals'",
+        "Degraded/direct-module fallback",
+    ):
+        if token not in hover:
+            errors.append(f"hover/capital router migration missing marker: {token}")
+
     node = shutil.which("node")
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regression")
     else:
-        for path in (ROUTER, SUBDIVISIONS):
+        for path in (ROUTER, SUBDIVISIONS, APP, HOVER, COUNTRY):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -74,8 +119,9 @@ def main() -> int:
     print("World Map interaction router:")
     print("- semantic priority independent of rendered-feature order")
     print("- disabled registrations cannot win")
-    print("- compatibility event claim retained for unmigrated handlers")
-    print("- subdivisions use router on normal boots with degraded fallback")
+    print("- explicit early-boot handoff from direct listeners to the shared router")
+    print("- country and legacy-capital interaction owned by the router on normal boots")
+    print("- compatibility event claim retained only for degraded direct-handler fallback")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP INTERACTION ROUTER VALIDATION FAILED")
