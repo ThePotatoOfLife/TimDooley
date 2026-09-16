@@ -46,6 +46,14 @@ async function waitForCore(timeoutMs = 15000) {
   }
   throw new Error('Core atlas map did not become ready before the bootstrap deadline.');
 }
+async function waitForInteractionRouter(timeoutMs = 5000) {
+  const started = Date.now();
+  while (Date.now() - started < timeoutMs) {
+    if (window.__potatoAtlasInteraction?.register) return window.__potatoAtlasInteraction;
+    await sleep(20);
+  }
+  throw new Error('World Map Interaction Router did not become ready before country interaction boot.');
+}
 function diagnostic(label, patch) {
   const current = window.__potatoAtlasDiagnostics.modules[label] || {};
   window.__potatoAtlasDiagnostics.modules[label] = { ...current, ...patch };
@@ -133,6 +141,8 @@ try {
   await nextPaint();
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
+  await waitForInteractionRouter();
+  await loadAfterPaint('Country interaction', './3d-country-interaction.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
   await loadAfterPaint('Compositor', './3d-compositor.js');
   await loadAfterPaint('Spatial Overlays', './3d-spatial-overlays.js');
