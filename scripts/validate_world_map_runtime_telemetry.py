@@ -39,6 +39,7 @@ def main() -> int:
         "potato-atlas-module-ready",
         "potato-atlas-style-generation",
         "potato-atlas-ui-layout-change",
+        "potato-atlas-tooltip-state",
         "window.__potatoAtlasRuntimeTelemetry",
     ):
         if token not in module:
@@ -64,7 +65,7 @@ def main() -> int:
     print("- source/layer type breakdowns")
     print("- Interaction Router registry/dispatch diagnostics")
     print("- Style Lifecycle generation/restore diagnostics")
-    print("- Tooltip generation/invalidation/stale-suppression diagnostics")
+    print("- live Tooltip generation/invalidation/stale-suppression diagnostics")
     print("- refreshes through existing custom lifecycle events only")
     print(f"Errors: {len(errors)}")
     if errors:
