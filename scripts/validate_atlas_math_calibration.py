@@ -9,7 +9,6 @@ ROOT = Path(__file__).resolve().parents[1]
 CAL = ROOT / "data" / "atlas-mathematical-calibration.json"
 RUNTIME = ROOT / "data" / "world-map-3d-runtime.json"
 APP = ROOT / "world-map" / "3d-app.js"
-APP_CORE = ROOT / "world-map" / "3d-app-core.js"
 
 
 def load(path: Path, errors: list[str]) -> dict:
@@ -24,11 +23,7 @@ def main() -> int:
     errors: list[str] = []
     data = load(CAL, errors)
     runtime = load(RUNTIME, errors)
-    app_parts = []
-    for path in (APP, APP_CORE):
-        if path.exists():
-            app_parts.append(path.read_text(encoding="utf-8", errors="replace"))
-    app = "\n".join(app_parts)
+    app = APP.read_text(encoding="utf-8", errors="replace") if APP.exists() else ""
 
     if data.get("status") != "active design/calibration contract":
         errors.append("calibration contract must be active")
