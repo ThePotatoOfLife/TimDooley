@@ -1,0 +1,38 @@
+{
+  "id":"information-war-interpretive-justice-bridge",
+  "title":"Information War ↔ Interpretive Justice Bridge",
+  "updated":"2026-09-16",
+  "status":"typed cross-domain bridge",
+  "canonical_owner":"knowledge/philosophy/interpretive-justice-laws.json",
+  "information_war_owner":"data/spiritual-war-information-war.json",
+  "purpose":"Connect the existing information-war research model to the shared Interpretive Justice operators without duplicating either owner. The information-war model studies classification, framing, repetition, search/archive persistence, source independence and correction asymmetry; Interpretive Justice supplies the general philosophy of subjecthood, jurisdiction, hearing, correction and proportional memory beneath those mechanisms.",
+  "shared_operators":[
+    "representation_gap",
+    "identity_compression",
+    "narrative_lock_in",
+    "correction_asymmetry",
+    "source_independence",
+    "jurisdiction_creep",
+    "reply_and_correctability",
+    "proportional_memory",
+    "classifier_classified_asymmetry"
+  ],
+  "mapping":{
+    "information_ecology_pipeline":"event/self-description -> selection -> label -> narrative frame -> repetition -> archive/search -> audience inheritance -> future interpretation",
+    "interpretive_justice_reading":"At each transition, ask who is classifying whom, what jurisdiction the frame has, how independent the sources are, whether reply can change the record, and whether later corrections travel with comparable reach.",
+    "narrative_lock_in":"Information-war NarrativeLockIn is the domain-specific expression of the more general Interpretive Justice concept in which labels shape selective attention and later reactions are recursively interpreted through the existing label.",
+    "source_independence":"Information-war SourceIndependence operationalizes the Independent Witness law: copies and derivative summaries should not be counted as separate provenance roots.",
+    "correction_reach":"Information-war CorrectionReachRatio operationalizes proportional memory and correctability by comparing audience exposure to corrections with audience exposure to original claims.",
+    "identity_capture":"Information-war IdentityCaptureRisk overlaps with representation gap, identity compression and classifier/classified asymmetry; it describes how a circulating model can become easier to retrieve than the subject's changing self-description or fuller record.",
+    "counterarchive":"The existing counterarchive principle is retained: correction should improve provenance and context rather than merely reverse the moral polarity of the archive."
+  },
+  "healthy_sequence":"source -> provenance -> claim typing -> hearing -> independent evidence -> contradiction -> reply -> correction -> dated update -> reader agency",
+  "shadow_sequence":"fragment -> decontextualization -> label -> derivative repetition -> search dominance -> reply ignored or reinterpreted through label -> role lock",
+  "boundary":"These operators describe information ecology and procedural quality. Their presence does not prove that a claim is false, that a subject is innocent, that a classifier acted maliciously, that coordination occurred, or that any alleged crime or conspiracy took place. The same framework can strengthen criticism when hearing and independent evidence support it.",
+  "future_applications":[
+    {"domain":"geopolitics","status":"deferred","note":"May later support sourced analysis of propaganda, strategic narratives, enemy construction, state/media framing and legitimacy disputes."},
+    {"domain":"AI/user representation","status":"deferred","note":"May later support analysis of persistent model representations, correction channels, memory updates and provenance."},
+    {"domain":"institutional investigation","status":"deferred","note":"May later support moderation, journalism, safeguarding, HR or governance analysis when a concrete process and evidence base exist."}
+  ],
+  "anti_duplication_rule":"Do not create parallel definitions in the information-war owner when the generic concept is already owned by Interpretive Justice. Domain files should reference the shared operator and add only domain-specific mechanisms, evidence or measurements."
+}
