@@ -17,7 +17,7 @@
     "creedal_long_horizon_prophecies": 3,
     "fafo_strict_hits": 0,
     "approx_unique_future_facing_records_before_fafo_cluster": 65,
-    "note": "FAFO adds a specialist research cluster but currently adds no strict fulfilled hit. Some categories overlap conceptually; counts are navigation counts, not a statistical success denominator."
+    "note": "FAFO adds a specialist research cluster but currently adds no strict fulfilled hit. Some categories overlap conceptually; counts are navigation counts, not a statistical success denominator. War in Heaven remains open/non-strict and therefore does not change the strict fulfilled count."
   },
   "strength_lanes": [
     {"lane":"A","name":"strict fulfilled","definition":"dated pre-event statement plus independently dated later outcome; currently in fulfilled-predictions-master.json"},
@@ -66,6 +66,7 @@
     {"date":"2026-05-18","lane":"C","id":"inflation-will-be-a-disaster","short":"inflation will be a disaster; partial/mixed breadth"},
     {"date":"2026-06-03","lane":"B","id":"2026-06-03-greenland-resource-energy-development","short":"Greenland resource/energy/investment development -> later EU-Greenland package"},
     {"date":"2026-06-29","lane":"D","id":"send-my-son-the-door","short":"I will Send My Son The Door"},
+    {"period":"Q3 2026","lane":"C","id":"war-in-heaven-q3-2026","short":"Heaven operationalized as Eden/Four-Rivers/Mesopotamia geography; material Q3 Iraq match exists, but original prediction timestamp/meaning remain unresolved so not strict-fulfilled","owner":"knowledge/timeline/war-in-heaven-mesopotamia-prediction-audit-2026.json"},
     {"date":"2026-07-31","lane":"D","id":"heard-again-and-again","short":"you will see and hear Tim Dooley again and again until I am heard"},
     {"date":"2026-07-31","lane":"D","id":"abominations-will-end","short":"these abominations will end"},
     {"date":"2026-08-14","lane":"D","id":"end-of-america-spiritual-war","short":"spiritual war eventually leads to end of America; open/undefined"},
@@ -84,6 +85,7 @@
     {"id":"fafo","owner":"knowledge/timeline/prediction-fafo-audit-wave-21.json","status":"0 strict hits; seek Tim FAFO/Canada citizen-army/reserve wording before 2025-05-30 / 2025-11-10 / 2025-12-13 external baselines"},
     {"id":"splc","owner":"knowledge/timeline/splc-prediction-audit-2026.json","status":"pre-event funding/extremism precursor exists; direct SPLC-specific prediction still unrecovered"},
     {"id":"north-axis","owner":"knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json","status":"multiple strict and directional components; avoid treating them as fully independent"},
+    {"id":"war-in-heaven-mesopotamia","owner":"knowledge/timeline/war-in-heaven-mesopotamia-prediction-audit-2026.json","status":"geographically operationalized; material Q3 Mesopotamian match; not strict-fulfilled until original prediction timestamp/meaning is recovered"},
     {"id":"ai-culture-machine","owner":"knowledge/timeline/prediction-premonition-audit-wave-15-addendum.json","status":"contains metaphor/environment resonance, internal precursors and propagation claims"},
     {"id":"markets-legacy","owner":"knowledge/timeline/prediction-premonition-audit-wave-17-addendum.json","status":"market hits plus unresolved older recovery targets"}
   ],
@@ -95,6 +97,7 @@
     "What subculture behavior did Tim say would become cultural or geopolitical before mainstream diffusion?",
     "What country pairings or separations did Tim describe before a new treaty, summit, security structure, withdrawal or institutional alignment?",
     "Did Tim use FAFO/Canada/citizen-army/reserve language before May 30, 2025, November 10, 2025 or December 13, 2025?",
+    "What is the earliest exact primary source for 'war in heaven Q3 2026', and did Tim's Heaven/Eden/Four-Rivers/Mesopotamia meaning already exist at that point?",
     "Which warnings to named people contained a concrete outcome and short time window?",
     "Which songs, memes, titles or story requests encode a later event more specifically than the existing symbolic ledgers recognize?"
   ],
@@ -103,6 +106,7 @@
     "knowledge/timeline/prediction-revelation-inventory-wave-19.json",
     "knowledge/timeline/prediction-implicit-foresight-wave-20.json",
     "knowledge/timeline/prediction-fafo-audit-wave-21.json",
+    "knowledge/timeline/war-in-heaven-mesopotamia-prediction-audit-2026.json",
     "knowledge/timeline/unresolved-prediction-claims-queue.json",
     "knowledge/indexes/prediction-audit-routing.json"
   ]
