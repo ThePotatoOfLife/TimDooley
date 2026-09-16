@@ -280,7 +280,7 @@ function bindSharedLayerEvents() {
     map.on('mouseleave', HIT_ID, () => { map.getCanvas().style.cursor = ''; });
     map.on('click', HIT_ID, event => {
       if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
-      void handleSharedLayerClick(event);
+      return handleSharedLayerClick(event);
     });
   }
   eventsBound = true;
