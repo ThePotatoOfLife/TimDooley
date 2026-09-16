@@ -154,8 +154,24 @@ def classify_pair(left: dict, right: dict) -> dict:
     reasons: list[str] = []
     classification = "unrelated"
 
-    # Contrasts must win over surface similarity.
-    if _contrast_signal(left, right, shared_symbols):
+    strong_equivalence = same_scripture and (
+        (bible_sim >= 0.55 and claim_sim >= 0.45)
+        or (bible_sim >= 0.75 and anchor_sim >= 0.30)
+        or (anchor_sim >= 0.45 and claim_sim >= 0.45 and project_sim >= 0.45)
+    )
+
+    # Strong same-passage/same-sequence equivalence outranks loose polarity words.
+    # This prevents terms such as "anti-boasting" from fabricating a contrast.
+    if strong_equivalence:
+        classification = "duplicate_candidate"
+        reasons.append("same_scripture")
+        if bible_sim >= 0.55:
+            reasons.append("same_biblical_sequence")
+        if anchor_sim >= 0.45:
+            reasons.append("same_project_function")
+        if claim_sim >= 0.45:
+            reasons.append("same_maximum_claim")
+    elif _contrast_signal(left, right, shared_symbols):
         classification = "contrast_candidate"
         reasons.extend(["shared_symbol", "opposing_function_cues"])
     elif same_scripture and (
@@ -174,7 +190,7 @@ def classify_pair(left: dict, right: dict) -> dict:
     elif (
         (shared_scripture and (anchor_sim >= 0.25 or bible_sim >= 0.25 or project_sim >= 0.25))
         or (shared_scenes and (anchor_sim >= 0.20 or bible_sim >= 0.20))
-        or (shared_symbols and (len(shared_symbols) >= 1) and (anchor_sim >= 0.08 or shared_operators))
+        or (shared_symbols and (anchor_sim >= 0.08 or shared_operators))
     ):
         classification = "overlap_candidate"
         if shared_scripture:
