@@ -297,7 +297,15 @@ function registerLayer(layerId, priority) {
     slot:'context-network', priority, owner:'places'
   });
 }
-function installLayers() {
+async function scaleRuntime() {
+  const scale = await window.__potatoAtlasScale?.ready;
+  if (!scale?.threshold || !scale?.bandThreshold) throw new Error('World Map Scale runtime unavailable to Places.');
+  return scale;
+}
+async function installLayers() {
+  const scale = await scaleRuntime();
+  const detailRenderZoom = scale.threshold('places-detail', 'render');
+  const detailLabelZoom = scale.threshold('places-detail', 'label');
   if (!map.getSource(MAJOR_SOURCE)) map.addSource(MAJOR_SOURCE, { type:'geojson', data:majorData });
   if (!map.getSource(DETAIL_SOURCE)) map.addSource(DETAIL_SOURCE, { type:'geojson', data:EMPTY_COLLECTION });
 
@@ -330,18 +338,18 @@ function installLayers() {
   }
   if (!map.getLayer(DETAIL_POINTS)) {
     map.addLayer({
-      id:DETAIL_POINTS, type:'circle', source:DETAIL_SOURCE, minzoom:4.2,
+      id:DETAIL_POINTS, type:'circle', source:DETAIL_SOURCE, minzoom:detailRenderZoom,
       paint:{
-        'circle-radius':['interpolate',['linear'],['zoom'],4.2,2,8,4.4,11,6],
+        'circle-radius':['interpolate',['linear'],['zoom'],detailRenderZoom,2,8,4.4,11,6],
         'circle-color':'#cdd8d2','circle-stroke-color':'#111716','circle-stroke-width':0.9,'circle-opacity':0.88
       }
     });
   }
   if (!map.getLayer(DETAIL_LABELS)) {
     map.addLayer({
-      id:DETAIL_LABELS, type:'symbol', source:DETAIL_SOURCE, minzoom:5.0,
+      id:DETAIL_LABELS, type:'symbol', source:DETAIL_SOURCE, minzoom:detailLabelZoom,
       layout:{
-        'text-field':['get','name'], 'text-size':['interpolate',['linear'],['zoom'],5,8.5,9,11],
+        'text-field':['get','name'], 'text-size':['interpolate',['linear'],['zoom'],detailLabelZoom,8.5,9,11],
         'text-offset':[0,1.0], 'text-anchor':'top', 'text-optional':true, 'text-allow-overlap':false
       },
       paint:{'text-color':'#d3ddd7','text-halo-color':'#080b0b','text-halo-width':1.0}
@@ -592,8 +600,8 @@ function status() {
 window.addEventListener('potato-atlas-capitals-ready', () => convergeLegacyCapitals());
 
 async function initialize() {
-  if (map.loaded()) installLayers();
-  else await new Promise(resolve => map.once('load', () => { installLayers(); resolve(); }));
+  if (map.loaded()) await installLayers();
+  else await new Promise(resolve => map.once('load', async () => { await installLayers(); resolve(); }));
   try {
     await loadMajor();
     const url = new URL(location.href);
