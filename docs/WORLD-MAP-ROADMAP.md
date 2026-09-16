@@ -82,7 +82,7 @@ These capabilities are established enough to build on:
 - [x] Add typed inspector router/history.
 - [x] Replace raw `panel.innerHTML` snapshots in Places and subdivisions.
 - [x] Make child → parent → back semantics deterministic.
-- [ ] Align full URL restoration/hydration with typed inspector state.
+- [x] Align full URL restoration/hydration with typed inspector state. *(typed `inspect=` paths now round-trip with legacy `country`, `subdivision` and `place` params before domain loaders hydrate.)*
 
 ## NEXT — RENDER + UI CONVERGENCE
 
@@ -98,7 +98,7 @@ These capabilities are established enough to build on:
 
 ## NEXT — VERIFICATION + OBSERVABILITY
 
-- [ ] Add real behavioral scenario tests for drag/zoom/projection/wrap/overlap/inspector transitions.
+- [x] Add real behavioral scenario tests for drag/zoom/projection/wrap/overlap/inspector transitions. *(the integrated control-plane scenario now covers antimeridian geometry, semantic click arbitration, tooltip invalidation/stale suppression and typed inspector back/URL transitions in the canonical CI chain.)*
 - [x] Track active source/layer counts and style restoration work. *(Runtime Telemetry now aggregates source/layer counts and Style Lifecycle generation/restore state through existing lifecycle events.)*
 - [x] Track interaction registry size and tooltip generation/stale suppression. *(Interaction Router and Runtime Telemetry expose live registry, dispatch, generation, invalidation and stale-suppression diagnostics through lightweight custom events without polling.)*
 - [x] Retain bounded Places/subdivision cache diagnostics.
