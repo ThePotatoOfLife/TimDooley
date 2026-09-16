@@ -56,7 +56,7 @@ def main() -> int:
         for token in (
             "world-subdivisions/index.json", "USA.geo.json", "atlas-subdivision",
             "searchParams.get('subdivision')", "searchParams.set('subdivision'", "searchParams.delete('subdivision')",
-            "potato-atlas-subdivision-select", "__potatoAtlasOverlayHandled", "pendingDeepLinkId",
+            "potato-atlas-subdivision-select", "pendingDeepLinkId",
             "id_prefix", "viewport_bounds", "partitionForId",
             "window.__potatoAtlasGeo", "unwrappedInterval", "distanceToMapCenterKm", "haversineDistanceKm",
         ):
