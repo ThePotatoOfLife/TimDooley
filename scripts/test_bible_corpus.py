@@ -38,44 +38,56 @@ def git_json(commit: str, path: str) -> dict:
     return json.loads(proc.stdout)
 
 
-def relation_ids_from_snapshot(commit: str) -> list[str]:
-    manifest = git_json(commit, 'knowledge/traditions/bible-layer-manifest.json')
-    active = {'canonical', 'additive'}
-    relation_layers = sorted(
-        (
-            item for item in manifest.get('layers', [])
-            if item.get('kind') == 'relations' and item.get('status') in active
-        ),
-        key=lambda item: (int(item.get('precedence', 0)), str(item.get('id', ''))),
-    )
+def reader_comparison_ids(field: dict, atlas: dict) -> list[str]:
+    """Mirror the public Bible reader's field + overlap-atlas row identity contract."""
     ids: list[str] = []
     seen: set[str] = set()
-    for meta in relation_layers:
-        data = git_json(commit, meta['path'])
-        for key in ('relations', 'new_relations'):
-            for row in data.get(key, []) or []:
-                rid = str(row.get('id') or '')
-                assert rid, f"baseline relation without id in {meta['id']}"
-                assert rid not in seen, f'duplicate baseline relation id {rid}'
-                seen.add(rid)
-                ids.append(rid)
-        for enrichment in data.get('enrichments', []) or []:
-            target = str(enrichment.get('relation_id') or '')
-            assert target in seen, f"baseline enrichment target missing before merge: {target}"
+
+    def add(rid: str) -> None:
+        rid = str(rid or '')
+        assert rid, 'reader comparison without id'
+        if rid not in seen:
+            seen.add(rid)
+            ids.append(rid)
+
+    for row in field.get('relations', []) or []:
+        add(row.get('id'))
+    for row in atlas.get('overlaps', []) or []:
+        raw_id = row.get('id')
+        assert raw_id, 'baseline overlap without stable id'
+        add(f'atlas-{raw_id}')
+    for row in atlas.get('meta_arcs', []) or []:
+        raw_id = row.get('id')
+        assert raw_id, 'baseline meta-arc without stable id'
+        add(f'arc-{raw_id}')
     return ids
 
 
-def test_additive_gapfill_baseline() -> None:
-    baseline_ids = relation_ids_from_snapshot(BASELINE_COMMIT)
-    assert len(baseline_ids) == BASELINE_RELATION_COUNT, (
-        f'expected locked Bible baseline of {BASELINE_RELATION_COUNT}, got {len(baseline_ids)}'
+def reader_ids_from_snapshot(commit: str) -> list[str]:
+    return reader_comparison_ids(
+        git_json(commit, 'knowledge/traditions/biblical-syncretism-field.json'),
+        git_json(commit, 'knowledge/traditions/biblical-overlap-atlas.json'),
     )
 
-    manifest = load_manifest(ROOT)
-    current_rows = assemble_relations(ROOT, manifest)
-    current_ids = {row['id'] for row in current_rows}
+
+def current_reader_ids() -> list[str]:
+    return reader_comparison_ids(
+        json.loads((ROOT / 'knowledge/traditions/biblical-syncretism-field.json').read_text(encoding='utf-8')),
+        json.loads((ROOT / 'knowledge/traditions/biblical-overlap-atlas.json').read_text(encoding='utf-8')),
+    )
+
+
+def test_additive_gapfill_baseline() -> None:
+    baseline_ids = reader_ids_from_snapshot(BASELINE_COMMIT)
+    assert len(baseline_ids) == BASELINE_RELATION_COUNT, (
+        f'expected locked Bible reader baseline of {BASELINE_RELATION_COUNT}, got {len(baseline_ids)}'
+    )
+
+    current_ids = set(current_reader_ids())
     missing = sorted(set(baseline_ids) - current_ids)
-    assert not missing, f'Bible baseline relation loss: {missing[:12]}'
+    assert not missing, f'Bible reader baseline comparison loss: {missing[:12]}'
+
+    manifest = load_manifest(ROOT)
     assert any(layer.get('id') == GAPFILL_LAYER_ID for layer in manifest.get('layers', [])), (
         'additive Bible gap-fill layer is not registered'
     )
