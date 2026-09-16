@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Run the established renderer, UI-shell, terrain, control-plane, subdivision, search, and browse-performance contracts."""
+"""Run the established renderer, UI-shell, terrain, control-plane, scenario, subdivision, search, and browse-performance contracts."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -14,6 +14,7 @@ import validate_world_map_inspector_router as inspector_router
 import validate_world_map_tooltip as tooltip
 import validate_world_map_style_lifecycle as style_lifecycle
 import validate_world_map_runtime_telemetry as runtime_telemetry
+import validate_world_map_behavioral_scenarios as behavioral_scenarios
 import validate_world_map_spatial_interaction as spatial_interaction
 import validate_world_map_subdivisions as subdivisions
 import validate_world_map_search_race as search_race
@@ -50,6 +51,9 @@ if __name__ == "__main__":
     if status:
         raise SystemExit(status)
     status = runtime_telemetry.main()
+    if status:
+        raise SystemExit(status)
+    status = behavioral_scenarios.main()
     if status:
         raise SystemExit(status)
     status = spatial_interaction.main()
