@@ -4,6 +4,11 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Deserts / xeric requires the core map.');
+if (!window.__potatoAtlasStyleLifecycle) {
+  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
+  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
+}
+const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 
 const SOURCE_ID = 'atlas-physical-deserts-xeric';
 const FILL_ID = 'atlas-physical-deserts-xeric-fill';
@@ -104,21 +109,24 @@ async function disable() {
 
 async function toggle() { return enabled ? disable() : enable(); }
 
-map.on('styledata', () => {
-  if (!enabled || restoring) return;
-  restoring = true;
-  queueMicrotask(() => {
-    try {
-      ensureSource();
-      ensureLayers();
-      applyOpacity();
-      setVisibility('visible');
-    } catch (error) {
-      console.warn('Ecological deserts/xeric layer could not restore after style change.', error);
-    } finally {
-      restoring = false;
-    }
-  });
+styleLifecycle.register('physical-deserts', {
+  priority:30,
+  restore:() => {
+    if (!enabled || restoring) return;
+    restoring = true;
+    queueMicrotask(() => {
+      try {
+        ensureSource();
+        ensureLayers();
+        applyOpacity();
+        setVisibility('visible');
+      } catch (error) {
+        console.warn('Ecological deserts/xeric layer could not restore after style change.', error);
+      } finally {
+        restoring = false;
+      }
+    });
+  },
 });
 
 window.__potatoAtlasDeserts = {

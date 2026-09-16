@@ -4,6 +4,11 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Physical Water requires the core map.');
+if (!window.__potatoAtlasStyleLifecycle) {
+  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
+  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
+}
+const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 
 const NE_SHA = 'ca96624a56bd078437bca8184e78163e5039ad19';
 const NE_BASE = `https://raw.githubusercontent.com/nvkelso/natural-earth-vector/${NE_SHA}/geojson`;
@@ -175,22 +180,25 @@ map.on('zoomend', () => {
   try { syncScaleDetail(); }
   catch (error) { console.warn('Physical Water detail unavailable at this zoom.', error); }
 });
-map.on('styledata', () => {
-  if (!enabled || restoring) return;
-  restoring = true;
-  queueMicrotask(() => {
-    try {
-      ensureSources();
-      ensureLayers();
-      detailInstalled = Boolean(map.getSource(DETAIL_SOURCES.ocean));
-      syncScaleDetail();
-      applyOpacity();
-    } catch (error) {
-      console.warn('Physical Water could not restore after style change.', error);
-    } finally {
-      restoring = false;
-    }
-  });
+styleLifecycle.register('physical-water', {
+  priority:40,
+  restore:() => {
+    if (!enabled || restoring) return;
+    restoring = true;
+    queueMicrotask(() => {
+      try {
+        ensureSources();
+        ensureLayers();
+        detailInstalled = Boolean(map.getSource(DETAIL_SOURCES.ocean));
+        syncScaleDetail();
+        applyOpacity();
+      } catch (error) {
+        console.warn('Physical Water could not restore after style change.', error);
+      } finally {
+        restoring = false;
+      }
+    });
+  },
 });
 
 window.__potatoAtlasPhysicalWater = {
