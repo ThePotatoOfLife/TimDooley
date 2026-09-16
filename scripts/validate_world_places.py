@@ -18,6 +18,7 @@ MAP_STATE = ROOT / "world-map" / "3d-map-state.js"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 SUBDIVISION_SEARCH_TEST = ROOT / "scripts" / "test_world_map_subdivision_search.mjs"
+LABEL_DENSITY_TEST = ROOT / "scripts" / "test_world_map_place_label_density.mjs"
 EXPECTED_RUNTIME_BUDGET = {
     "partition_max_bytes": 2_097_152,
     "rendered_max_partitions": 2,
@@ -184,6 +185,8 @@ def validate_runtime(errors: list[str]) -> None:
     ), errors)
     if not SUBDIVISION_SEARCH_TEST.exists():
         errors.append(f"missing subdivision search regression: {SUBDIVISION_SEARCH_TEST.relative_to(ROOT)}")
+    if not LABEL_DENSITY_TEST.exists():
+        errors.append(f"missing place label density regression: {LABEL_DENSITY_TEST.relative_to(ROOT)}")
     if PLACES.exists():
         text = PLACES.read_text(encoding="utf-8", errors="replace")
         for retired in ("panelSnapshot", "restoreInspector", "captureInspector"):
@@ -206,6 +209,10 @@ def validate_runtime(errors: list[str]) -> None:
         result = subprocess.run([node, str(SUBDIVISION_SEARCH_TEST)], capture_output=True, text=True)
         if result.returncode:
             errors.append("subdivision search regression failed: " + (result.stderr.strip() or result.stdout.strip()))
+    if node and LABEL_DENSITY_TEST.exists():
+        result = subprocess.run([node, str(LABEL_DENSITY_TEST)], capture_output=True, text=True)
+        if result.returncode:
+            errors.append("place label density regression failed: " + (result.stderr.strip() or result.stdout.strip()))
     for path in (PLACES, SEARCH):
         if path.exists():
             text = path.read_text(encoding="utf-8", errors="replace")
