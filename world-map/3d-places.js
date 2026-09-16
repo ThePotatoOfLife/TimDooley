@@ -326,7 +326,14 @@ async function installLayers() {
       layout:{
         'text-field':['get','name'],
         'text-size':['interpolate',['linear'],['zoom'],1.2,8,5,10.5,8,12],
-        'text-offset':[0,1.05], 'text-anchor':'top', 'text-optional':true,
+        'symbol-sort-key':['+',
+          ['case',['boolean',['get','is_national_capital'],false],0,1000000000],
+          ['-',1000000000,['coalesce',['to-number',['get','population']],0]]
+        ],
+        'text-variable-anchor':['top','bottom','left','right'],
+        'text-radial-offset':1.05,
+        'text-padding':['interpolate',['linear'],['zoom'],1.2,5,6,2],
+        'text-optional':true,
         'text-allow-overlap':false
       },
       paint:{
@@ -349,8 +356,13 @@ async function installLayers() {
     map.addLayer({
       id:DETAIL_LABELS, type:'symbol', source:DETAIL_SOURCE, minzoom:PLACE_DETAIL_LABEL_ZOOM,
       layout:{
-        'text-field':['get','name'], 'text-size':['interpolate',['linear'],['zoom'],PLACE_DETAIL_LABEL_ZOOM,8.5,9,11],
-        'text-offset':[0,1.0], 'text-anchor':'top', 'text-optional':true, 'text-allow-overlap':false
+        'text-field':['get','name'],
+        'text-size':['interpolate',['linear'],['zoom'],PLACE_DETAIL_LABEL_ZOOM,8.5,9,11],
+        'text-variable-anchor':['top','bottom','left','right'],
+        'text-radial-offset':1.0,
+        'text-padding':3,
+        'text-optional':true,
+        'text-allow-overlap':false
       },
       paint:{'text-color':'#d3ddd7','text-halo-color':'#080b0b','text-halo-width':1.0}
     });
