@@ -6,6 +6,7 @@ from pathlib import Path
 from build_story_depth_audit import audit_is_current
 from validate_great_book_reader import validate as validate_great_book_reader
 from validate_story_archive import validate_story_archive
+from validate_public_statement_evidence_contract import validate_contract as validate_evidence_contract
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]
 _TERMS=["FIX"+"ME","T"+"BD","T"+"BA","COMING"+" SOON","UNDER"+" CONSTRUCTION"]
 BAD_TERMS=re.compile(r"\b(?:"+"|".join(map(re.escape,_TERMS))+r")\b",re.I)
@@ -24,6 +25,9 @@ def main():
         ERRORS.append(f"Story evidence: {error}")
     if not audit_is_current(ROOT):
         ERRORS.append("Story evidence depth audit is stale; run scripts/build_story_depth_audit.py")
+
+    for error in validate_evidence_contract():
+        ERRORS.append(f"Evidence Root: {error}")
 
     countries=load("data/countries/index.json").get("countries",[])
     if len(countries)!=195:ERRORS.append(f"countries/index.json has {len(countries)} records; expected 195")
