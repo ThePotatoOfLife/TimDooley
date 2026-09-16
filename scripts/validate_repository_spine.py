@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the internal Spirit / Mind / Matter filing spine and its public-manifest boundary."""
+"""Validate the internal Spirit / Mind / Matter filing spine and route/archive boundaries."""
 from __future__ import annotations
 
 import json
@@ -49,19 +49,33 @@ def main():
         errors.append("Independent coordinates must include scale, domain, time, epistemic_status and graph")
 
     public = spine.get("public_navigation", {})
-    if public.get("source") != "manifest.json" or public.get("root_id") != "potato-of-life":
-        errors.append("Internal spine must delegate public navigation to manifest.json root potato-of-life")
+    expected_public = {
+        "source": "data/house/public-surfaces.json",
+        "archive_source": "manifest.json",
+        "projection": "data/frontend-atlas-bridge.json",
+        "root_id": "potato-of-life",
+    }
+    for field, expected_value in expected_public.items():
+        if public.get(field) != expected_value:
+            errors.append(f"Internal spine public_navigation.{field} must be {expected_value!r}")
+
+    surfaces = load("data/house/public-surfaces.json")
+    if surfaces.get("authority") != "public-route-identity":
+        errors.append("House public surfaces must remain the public-route-identity authority")
+    primary_gateway_ids = surfaces.get("primary_gateway_ids", [])
+    if primary_gateway_ids != ["tim", "religion", "philosophy", "science", "world"]:
+        errors.append(f"House primary gateways are not canonical: {primary_gateway_ids}")
 
     manifest = load("manifest.json")
     if manifest.get("root", {}).get("id") != "potato-of-life":
-        errors.append("Public manifest root is not potato-of-life")
+        errors.append("Archive manifest root is not potato-of-life")
     branch_ids = {b.get("id") for b in manifest.get("branches", []) if isinstance(b, dict)}
     required_public = {"tim","son","spirit","transformation","cosmology","body","traditions","north","world","timeline","works","sources"}
     missing_public = required_public - branch_ids
     if missing_public:
-        errors.append(f"Public manifest missing branches: {sorted(missing_public)}")
+        errors.append(f"Archive manifest missing branches: {sorted(missing_public)}")
     if "axis" in branch_ids:
-        warnings.append("Public manifest still exposes legacy AXIS branch")
+        warnings.append("Archive manifest still exposes legacy AXIS branch")
 
     legacy = spine.get("legacy_navigation_mapping", {})
     for old in ("axis", "world"):
@@ -88,7 +102,8 @@ def main():
     print(f"Spirit sections: {len(spine.get('spirit_layers', []))}")
     print(f"Mind sections: {len(spine.get('mind_layers', []))}")
     print(f"Matter sections: {len(spine.get('matter_layers', []))}")
-    print(f"Public manifest branches: {len(branch_ids)}")
+    print(f"House public gateways: {len(primary_gateway_ids)}")
+    print(f"Archive manifest branches: {len(branch_ids)}")
     print(f"Indexed records checked: {len(index.get('records', []))}")
     print(f"Errors: {len(errors)} · Warnings: {len(warnings)}")
     for warning in warnings:

@@ -1,9 +1,9 @@
 {
-  "version":"4.0.0",
-  "updated":"2026-09-09",
+  "version":"4.1.0",
+  "updated":"2026-09-15",
   "status":"canonical-internal-classification-spine",
-  "purpose":"Underlying filing and coordinate model for repository records. Public navigation is owned by manifest.json and begins at POTATO OF LIFE. This spine is an internal classification coordinate used by indexes and validators; it is not the public homepage tree.",
-  "public_navigation":{"source":"manifest.json","root_id":"potato-of-life","rule":"Do not derive the public root from repository_root taxonomy fields."},
+  "purpose":"Underlying filing and coordinate model for repository records. Stable public route identity is owned by data/house/public-surfaces.json; manifest.json owns archive branch/pathway navigation and Explore semantics. This spine is an internal classification coordinate used by indexes and validators; it is not the public homepage tree.",
+  "public_navigation":{"source":"data/house/public-surfaces.json","archive_source":"manifest.json","projection":"data/frontend-atlas-bridge.json","root_id":"potato-of-life","rule":"Do not derive public route identity from repository_root taxonomy fields or from archive branch placement."},
   "root_order":[
     {"id":"spirit","label":"SPIRIT / MEANING","meaning":"Source, meaning, belief and mythic or religious structures, with epistemic status preserved separately."},
     {"id":"mind","label":"MIND","meaning":"Psychology, comparative consciousness frameworks and neurobiology or embodied-cognition research."},
@@ -32,15 +32,15 @@
     {"id":"record","label":"RECORDS & SIGNALS","meaning":"Texts, measurements, documents, datasets and other observable traces."},
     {"id":"ground","label":"GROUND / GRAIN / DUST","meaning":"Smallest concrete trace or material unit relevant to an investigation."}
   ],
-  "principle":"The public archive is relationship-first and manifest-driven. The internal spine gives each record a coarse primary classification while scale, domain, time, epistemic status and graph relationships remain independent coordinates.",
+  "principle":"The public archive is relationship-first: House route authority provides stable human routes, manifest.json supplies archive branches/pathways, and the internal spine gives each record a coarse primary classification while scale, domain, time, epistemic status and graph relationships remain independent coordinates.",
   "epistemic_rule":"Spirit, Mind and Matter are filing coordinates, not ranks of truth or metaphysical certainty. Project canon, self-description, documentary evidence, historical evidence, science, comparison, interpretation, inference, creative lore, disputed claims and unknowns remain independently labeled.",
-  "potatoism_rule":"Potato of Life / Potatoism material may primarily classify under Spirit/Meaning or Spirit/Belief while remaining reachable publicly through TIM, SON, SPIRIT, TRANSFORMATION, COSMOLOGY, TRADITIONS, TIMELINE, SOURCES and other manifest branches according to relationship.",
+  "potatoism_rule":"Potato of Life / Potatoism material may primarily classify under Spirit/Meaning or Spirit/Belief while remaining reachable through House routes and manifest archive branches according to relationship.",
   "mind_rule":"Psychological or neurobiological material should classify under Mind when the record's substantive subject is psychology, Hawkins-scale comparison or neurobiology, even if it is discussed inside Potatoverse material.",
   "matter_rule":"Observable geopolitical, country, institutional, economic, infrastructural and documentary records classify under Matter while their symbolic interpretations remain separate related records or epistemic layers.",
   "placement_rule":"Give each record one primary internal repository_root/repository_layer placement. Use graph edges, context clusters and manifest branches for cross-navigation rather than duplicating substantive records.",
   "door_rule":"Door is a concept and transformation relation, not an internal filing root.",
   "axis_rule":"Axis is a formal/symbolic concept and may appear in COSMOLOGY and NORTH. It is no longer a public root or an internal repository_root value.",
-  "world_rule":"WORLD is a public manifest branch. It is broader than the internal Matter/world layer and may include proposals, analytical frameworks and contextual records linked to observable systems.",
+  "world_rule":"WORLD is a public/archive branch concept. Stable human route identity for World is declared by House public surfaces, while manifest.json describes the broader archive relationship context.",
   "independent_coordinates":{
     "scale":"Canonical material granularity from Worlds & Domains through Ground / Grain / Dust, primarily for Matter records.",
     "domain":"Religion, mythology, geography, politics, economy, science, technology, culture, security and other domains can occur at every root and scale.",
@@ -62,5 +62,6 @@
     "Do not duplicate records solely to satisfy navigation."
   ],
   "consumers":["scripts/build_repository_index.py","scripts/audit_source_of_truth.py","scripts/validate_repository_spine.py"],
-  "public_consumer":"manifest.json"
+  "public_consumer":"data/house/public-surfaces.json",
+  "archive_consumer":"manifest.json"
 }
