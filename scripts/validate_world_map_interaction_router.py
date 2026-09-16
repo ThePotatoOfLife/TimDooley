@@ -12,6 +12,7 @@ LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 APP = ROOT / "world-map" / "3d-app.js"
+APP_CORE = ROOT / "world-map" / "3d-app-core.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 COUNTRY = ROOT / "world-map" / "3d-country-selection.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
@@ -19,7 +20,7 @@ TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HOVER, COUNTRY, TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, APP_CORE, HOVER, COUNTRY, TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -33,6 +34,7 @@ def main() -> int:
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
     bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
     app = APP.read_text(encoding="utf-8", errors="replace")
+    app_core = APP_CORE.read_text(encoding="utf-8", errors="replace")
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
     country = COUNTRY.read_text(encoding="utf-8", errors="replace")
 
@@ -73,6 +75,8 @@ def main() -> int:
     if router_index < 0 or country_index < 0 or router_index >= country_index:
         errors.append("bootstrap must load Interaction Router before canonical country selection")
 
+    if "map.on('click','countries-fill',handleCountryPolygonClick)" not in app_core:
+        errors.append("preserved 3d-app core must retain the early country listener captured by the wrapper")
     for token in (
         "function handoffCoreInteractions(interaction)",
         "interaction.register('core-country-fallback'",
@@ -80,7 +84,7 @@ def main() -> int:
         "interaction.register('core-semantic-hubs'",
         "interaction.register('core-trace-hubs'",
         "interaction.register('core-relations'",
-        "map.off('click','countries-fill',handleCountryPolygonClick)",
+        "map.off('click', layerId, listener)",
     ):
         if token not in app:
             errors.append(f"3d-app early-boot handoff missing marker: {token}")
@@ -108,7 +112,7 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regression")
     else:
-        for path in (ROUTER, SUBDIVISIONS, APP, HOVER, COUNTRY):
+        for path in (ROUTER, SUBDIVISIONS, APP, APP_CORE, HOVER, COUNTRY):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -120,6 +124,7 @@ def main() -> int:
     print("- semantic priority independent of rendered-feature order")
     print("- disabled registrations cannot win")
     print("- explicit early-boot handoff from direct listeners to the shared router")
+    print("- preserved renderer core is wrapped rather than broadly rewritten")
     print("- country and legacy-capital interaction owned by the router on normal boots")
     print("- compatibility event claim retained only for degraded direct-handler fallback")
     print(f"Errors: {len(errors)}")
