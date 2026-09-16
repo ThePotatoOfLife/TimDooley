@@ -1,0 +1,62 @@
+{
+  "id": "public-statement-episode-definitions",
+  "version": "1.0.0",
+  "updated": "2026-09-15",
+  "purpose": "Neutral bounded definitions for evidence-dense public-statement clusters. These windows create candidate Episodes only; they do not assign theological or causal interpretation.",
+  "episodes": [
+    {
+      "id": "episode-2026-03-29-31-dense-sequence",
+      "label": "March 29–31 public-statement sequence",
+      "status": "candidate",
+      "start_utc": "2026-03-29T23:13:28Z",
+      "end_utc": "2026-03-31T10:41:47Z",
+      "minimum_members": 10,
+      "evidence_basis": "Ten second-precision statements occur inside this bounded interval in the supplied capture."
+    },
+    {
+      "id": "episode-2026-04-29-30-dense-sequence",
+      "label": "April 29–30 public-statement sequence",
+      "status": "candidate",
+      "start_utc": "2026-04-29T15:44:06Z",
+      "end_utc": "2026-04-30T10:14:22Z",
+      "minimum_members": 5,
+      "evidence_basis": "Five second-precision statements occur inside this bounded interval in the supplied capture."
+    },
+    {
+      "id": "episode-2026-05-31-dense-sequence",
+      "label": "May 31 public-statement sequence",
+      "status": "candidate",
+      "start_utc": "2026-05-31T01:46:40Z",
+      "end_utc": "2026-05-31T14:33:08Z",
+      "minimum_members": 9,
+      "evidence_basis": "Nine second-precision statements occur inside this bounded interval in the supplied capture."
+    },
+    {
+      "id": "episode-2026-06-30-dense-sequence",
+      "label": "June 30 public-statement sequence",
+      "status": "candidate",
+      "start_utc": "2026-06-30T07:32:12Z",
+      "end_utc": "2026-06-30T16:16:57Z",
+      "minimum_members": 8,
+      "evidence_basis": "Eight second-precision statements occur inside this bounded interval in the supplied capture."
+    },
+    {
+      "id": "episode-2026-08-20-23-dense-sequence",
+      "label": "August 20–23 public-statement sequence",
+      "status": "candidate",
+      "start_utc": "2026-08-20T07:31:31Z",
+      "end_utc": "2026-08-23T10:16:11Z",
+      "minimum_members": 5,
+      "evidence_basis": "Five second-precision statements occur inside this bounded interval in the supplied capture."
+    },
+    {
+      "id": "episode-2026-09-13-14-dense-sequence",
+      "label": "September 13–14 public-statement sequence",
+      "status": "candidate",
+      "start_utc": "2026-09-13T16:58:53Z",
+      "end_utc": "2026-09-14T08:11:59Z",
+      "minimum_members": 21,
+      "evidence_basis": "Twenty-one second-precision statements occur inside this bounded interval in the supplied capture."
+    }
+  ]
+}
