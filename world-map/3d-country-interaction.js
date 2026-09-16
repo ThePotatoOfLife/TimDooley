@@ -27,15 +27,35 @@ function cameraSnapshot() {
   };
 }
 
-async function selectCountry(feature) {
+async function selectCountry(feature, event = {}) {
   const code = featureCode(feature);
   if (!code) return false;
-  const current = window.__potatoAtlasSelection?.current;
-  if (current?.selected && current.code === code && !current.compareMode) {
-    window.__potatoAtlasSelection?.clear?.();
+
+  // Compare mode intentionally delegates to the public action because the core
+  // atlas owns compare membership and its fit behavior.
+  if (document.getElementById('compare')?.classList.contains('active')) {
+    await window.goCountry?.(code);
     return true;
   }
+
+  const selection = window.__potatoAtlasSelection;
   const camera = cameraSnapshot();
+
+  // Once the browse-first working-selection controller is loaded it owns
+  // activation/pinning state, while the Interaction Router owns the map click.
+  if (typeof selection?.activate === 'function') {
+    await selection.activate(code);
+    if (event?.originalEvent?.shiftKey) selection?.togglePinnedCountry?.(code);
+    map.jumpTo(camera);
+    return true;
+  }
+
+  // Core-boot fallback before the working-selection controller has loaded.
+  const current = selection?.current;
+  if (current?.selected && current.code === code && !current.compareMode) {
+    selection?.clear?.();
+    return true;
+  }
   await window.goCountry?.(code);
   map.jumpTo(camera);
   return true;
@@ -47,7 +67,7 @@ interaction.register('countries', {
   clickPriority:10,
   hoverPriority:10,
   cursor:'pointer',
-  onClick:(_event, feature) => { void selectCountry(feature); },
+  onClick:(event, feature) => { void selectCountry(feature, event); },
 });
 
 interaction.register('core-country-hubs', {
