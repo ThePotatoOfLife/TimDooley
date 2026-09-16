@@ -1,0 +1,146 @@
+{
+  "id":"internet-subculture-farm-moloch-precedence-map",
+  "version":"1.0.0",
+  "updated":"2026-09-17",
+  "status":"culture/subculture genealogy + prediction-independence bridge",
+  "purpose":"Map how lolcow, Cow, Milk, Farm, Farmer, Dog/Guard Dog, Moloch, Moon/Cube, Tree, archive, spectacle and extraction vocabulary moves between older internet subculture, Joshua Moon/Kiwi Farms history, Tim's independent symbolic development and later prediction/precedence claims.",
+  "culture_owner":"data/culture-ontology.json",
+  "prediction_owner":"knowledge/timeline/moloch-moon-cow-precedence-prediction-audit.json",
+  "public_prior_owner":"knowledge/research/moloch-farm-subculture-prior-baseline-2026-09.json",
+  "core_model":"Do not ask only whether two parties used the same symbol. Ask where the symbol entered the culture, how common it was, what relation Tim independently built around it, when a named actor entered that relation, and whether any later statement/event actually tests the earlier relation.",
+  "planes":[
+    {
+      "id":"emic-subculture",
+      "definition":"Vocabulary and meanings native to or historically circulating inside the internet scene itself.",
+      "examples":["lolcow","milking for laughs","Farm/Farms","archive/thread lore","Guard Dogs"],
+      "use":"Explains cultural availability and lowers prediction uniqueness for obvious terms."
+    },
+    {
+      "id":"public-biographical",
+      "definition":"Documented public facts about named people, organizations and roles.",
+      "examples":["Joshua Moon/Null as Kiwi Farms operator","Moon as surname","2018 Guard Dogs episode"],
+      "use":"Prevents public facts from being mistaken for hidden predictions."
+    },
+    {
+      "id":"timic-symbolic",
+      "definition":"Tim/Potatoverse meanings developed in the project's own symbolic architecture.",
+      "examples":["Moloch as consuming/extractive pole","Farm as enclosure/attention extraction","Milk as harvested reaction/value","Tree of Strife","Mud/debt","MoonCube","Door/Garden counter-model"],
+      "use":"Tracks genuine project development even when it is not predictive."
+    },
+    {
+      "id":"named-relational-precedence",
+      "definition":"A named person is explicitly placed inside an already-existing Timic mechanism before the later candidate event.",
+      "example":"2026-07-08 recovery places Josh Moon inside the Farm/Farmers/Dogs/Mud/karmic-debt repair field.",
+      "use":"Stronger than generic symbolism; weaker than a future-tense prediction."
+    },
+    {
+      "id":"prediction-test",
+      "definition":"An earlier timestamped statement specifies a later testable outcome/referent narrowly enough to compare against independent evidence.",
+      "example":"A pre-event statement that Josh would later say/reveal Moloch, sacrifice, sold-soul or equivalent language, followed by a recovered primary Josh passage.",
+      "use":"Only this plane can promote the branch toward strict fulfilled-prediction status."
+    }
+  ],
+  "historical_genealogy":[
+    {
+      "stage":1,
+      "name":"target-centered documentation",
+      "description":"Early lolcow/Chris Chan archive and forum culture converts a person's public events into persistent, searchable lore.",
+      "mechanisms":["observation","threading","archiving","classification","recirculation"]
+    },
+    {
+      "stage":2,
+      "name":"Cow and Milk semantics",
+      "description":"Lolcow language explicitly imagines a person as repeatedly harvestable for laughs/reaction; 'milk' is already part of the subculture's conceptual grammar.",
+      "mechanisms":["reaction extraction","repeatability","audience reward"]
+    },
+    {
+      "stage":3,
+      "name":"generalized Farm",
+      "description":"The CWCki forum lineage broadens into Kiwi Farms, making agricultural/Farm language part of the public platform identity while the target ecology expands beyond one person.",
+      "mechanisms":["multi-target scaling","persistent archive","role reproduction"]
+    },
+    {
+      "stage":4,
+      "name":"Guard Dog ambiguity",
+      "description":"Public/adversarial subculture history includes a Guard Dogs role around Josh Moon, showing that Dog vocabulary can describe protection, patrol or boundary enforcement rather than a fixed moral essence.",
+      "mechanisms":["protection","gatekeeping","boundary enforcement","role inversion"]
+    },
+    {
+      "stage":5,
+      "name":"Moloch as wider internet metaphor",
+      "description":"Moloch circulates outside Tim as a religious/literary/systems metaphor for sacrifice, devouring machinery or destructive incentive traps; an archived 2023 MATI/Kiwi-Farms-adjacent user comment shows the word already existed in the surrounding discourse.",
+      "mechanisms":["metaphor borrowing","coordination-failure framing","sacrifice language"]
+    },
+    {
+      "stage":6,
+      "name":"Timic recombination",
+      "description":"Tim's 2026 corpus develops a distinct relation among Moloch, soul/humanity consumption, Farm/enclosure, Milk/Cow/Bull, Farmer/Dog roles, cube/box, Tree of Life/Death or Strife, Mud/debt and Garden/Door repair.",
+      "mechanisms":["symbolic recombination","moral systems model","extraction vs repair"]
+    },
+    {
+      "stage":7,
+      "name":"Josh enters the Timic relation",
+      "date":"2026-07-08",
+      "description":"Josh Moon is explicitly named inside the Farm/Farmers/Dogs/Mud/karmic-debt repair field before the candidate late-July MATI corridor.",
+      "mechanisms":["named-entity coupling","relational precedence"]
+    },
+    {
+      "stage":8,
+      "name":"later Moloch convergence claim",
+      "period":"2026-07-24 to 2026-07-27",
+      "description":"Tim later associates Josh/MATI with Moloch/sacrifice/sold-soul/government language, but the exact primary Josh passage remains unrecovered.",
+      "mechanisms":["possible convergence","memory/recollection","source-recovery problem"]
+    }
+  ],
+  "motif_origin_rules":[
+    {"motif":"Cow/Milk","default_origin":"emic lolcow vocabulary","timic_addition":"ethical/extraction model and measurable yield proxies","prediction_rule":"do not score bare overlap"},
+    {"motif":"Farm/Farmer","default_origin":"platform name + ordinary derivative","timic_addition":"attention cultivation/enclosure process","prediction_rule":"score only narrower mechanism or future event"},
+    {"motif":"Dog/Guard Dog","default_origin":"ordinary metaphor + documented subculture role","timic_addition":"pursuit/patrol/protection/enforcement taxonomy","prediction_rule":"require exact context and chronology"},
+    {"motif":"Moon","default_origin":"Josh surname when discussing Josh","timic_addition":"independent celestial/cyclical/MoonCube symbolism","prediction_rule":"surname match has no foresight weight without explicit bridge"},
+    {"motif":"Cube/MoonCube","default_origin":"older Tim symbolic history","timic_addition":"enclosure/constraint architecture","prediction_rule":"synchronism only unless tied to Josh before later event"},
+    {"motif":"Moloch","default_origin":"ancient + literary + internet systems metaphor","timic_addition":"anti-Gardener/extractive attractor consuming soul/humanity/future capacity","prediction_rule":"bare word insufficient; relation + named referent + time required"},
+    {"motif":"Tree of Strife","default_origin":"project-defined synthesis","timic_addition":"reproductive conflict ecology","prediction_rule":"can strengthen mechanism specificity but is not a prediction by itself"},
+    {"motif":"Mud/debt","default_origin":"project-defined synthesis","timic_addition":"accumulated relational residue/obligation and repair condition","prediction_rule":"use named/date-specific coupling, not generic symbolism"}
+  ],
+  "culture_dynamics":[
+    "person/event -> classification -> thread/archive -> repeated interpretation -> audience memory -> role lock -> fresh reaction -> new archive material",
+    "target reaction can become additional Milk when it is recirculated as content",
+    "archives preserve evidence but can also preserve obsolete roles after context changes",
+    "subcultural vocabulary can migrate into outsiders' critiques and later be mistaken for independent invention",
+    "a critic can reuse emic vocabulary while giving it a different moral or systems meaning",
+    "named actors can move between protector, operator, archivist, commentator, target and Farmer/Cow-like roles depending relation and time"
+  ],
+  "independence_checks":[
+    "Was the word already native to the subculture?",
+    "Was the named-person relation publicly known before Tim used it?",
+    "Was Tim's exact relation independently developed or merely an obvious pun/name association?",
+    "Is the earlier source exact, dated and user-originated?",
+    "Did the earlier wording contain future tense or a testable consequence?",
+    "Is the later event independently recoverable from a primary source?",
+    "Are apparently multiple motifs actually correlated outputs of one pre-existing vocabulary?",
+    "What mismatches or non-occurrences would falsify the proposed relation?"
+  ],
+  "mapping_outputs":[
+    "subculture genealogy",
+    "motif origin/provenance",
+    "named-entity role transitions",
+    "vocabulary diffusion",
+    "archive/reputation feedback loops",
+    "prediction independence baseline",
+    "synchronism vs prediction classification",
+    "Garden/repair exit mechanisms"
+  ],
+  "reader_routes":[
+    {"route":"context/culture/","use":"broad culture/subculture/control/memory model"},
+    {"route":"shadow-farm/","use":"specialized Farm/Sektur/lolcow/Moloch attention-extraction reader"}
+  ],
+  "connections":[
+    "data/culture-ontology.json",
+    "knowledge/world/moloch-milk-farm-genealogy-atlas.json",
+    "knowledge/world/moloch-milk-farm-routing.json",
+    "knowledge/research/moloch-farm-subculture-prior-baseline-2026-09.json",
+    "knowledge/research/josh-moon-moloch-provenance-dossier-2026-09.json",
+    "knowledge/timeline/moloch-moon-cow-precedence-prediction-audit.json",
+    "knowledge/theology/son-passion-prehistory-2017-2019.json"
+  ]
+}
