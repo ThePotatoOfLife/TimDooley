@@ -16,6 +16,7 @@ INFRASTRUCTURE = ROOT / "world-map" / "3d-infrastructure.js"
 GATEWAYS = ROOT / "world-map" / "3d-gateways.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
 COUNTRY_TEST = ROOT / "scripts" / "test_world_map_country_interaction_ownership.mjs"
+CORE_TEST = ROOT / "scripts" / "test_world_map_core_interaction_ownership.mjs"
 PLACES_TEST = ROOT / "scripts" / "test_world_map_places_interaction_ownership.mjs"
 INFRASTRUCTURE_TEST = ROOT / "scripts" / "test_world_map_infrastructure_interaction_ownership.mjs"
 GATEWAY_TEST = ROOT / "scripts" / "test_world_map_gateway_interaction_ownership.mjs"
@@ -23,7 +24,7 @@ GATEWAY_TEST = ROOT / "scripts" / "test_world_map_gateway_interaction_ownership.
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, COUNTRY_INTERACTION, SUBDIVISIONS, PLACES, INFRASTRUCTURE, GATEWAYS, TEST, COUNTRY_TEST, PLACES_TEST, INFRASTRUCTURE_TEST, GATEWAY_TEST):
+    for path in (ROUTER, LIFECYCLE, COUNTRY_INTERACTION, SUBDIVISIONS, PLACES, INFRASTRUCTURE, GATEWAYS, TEST, COUNTRY_TEST, CORE_TEST, PLACES_TEST, INFRASTRUCTURE_TEST, GATEWAY_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -68,11 +69,17 @@ def main() -> int:
         "window.__potatoAtlasSelection?.clear?.()",
         "await window.goCountry?.(code)",
         "map.jumpTo(camera)",
+        "window.__potatoAtlasCoreInteractions?.countryHub?.(feature)",
+        "window.__potatoAtlasCoreInteractions?.semanticHub?.(feature)",
+        "window.__potatoAtlasCoreInteractions?.traceHub?.(feature)",
+        "window.__potatoAtlasCoreInteractions?.relation?.(feature)",
     ):
         if token not in country_interaction:
             errors.append(f"country interaction migration missing marker: {token}")
-    if "Legacy core overlay actions remain direct until their dedicated migration" not in country_interaction:
-        errors.append("country interaction must document temporary core-overlay compatibility blockers")
+    if "Legacy core overlay actions remain direct until their dedicated migration" in country_interaction:
+        errors.append("country interaction still documents retired core-overlay direct ownership")
+    if "onClick:() => {}" in country_interaction:
+        errors.append("core interaction registrations must not remain compatibility no-ops")
     if "map.on('click'" in country_interaction:
         errors.append("country interaction bridge must not attach a direct click listener")
 
@@ -142,6 +149,7 @@ def main() -> int:
         for test_path, label in (
             (TEST, "interaction-router"),
             (COUNTRY_TEST, "Country interaction ownership"),
+            (CORE_TEST, "Core interaction ownership"),
             (PLACES_TEST, "Places interaction ownership"),
             (INFRASTRUCTURE_TEST, "Infrastructure interaction ownership"),
             (GATEWAY_TEST, "Gateway interaction ownership"),
@@ -153,8 +161,9 @@ def main() -> int:
     print("World Map interaction router:")
     print("- semantic priority independent of rendered-feature order")
     print("- disabled registrations cannot win")
-    print("- compatibility event claim retained for unmigrated handlers")
-    print("- country polygons use router priority 10 with temporary blockers above legacy core overlays")
+    print("- compatibility event claim retained only for still-unmigrated handlers")
+    print("- country polygons use router priority 10")
+    print("- country hubs, semantic hubs, trace hubs and relation lines use router-owned semantic actions")
     print("- subdivisions use router on normal boots with degraded fallback")
     print("- Infrastructure uses router at priority 70 while preserving its persistent popup")
     print("- Gateways use router at priority 75 while preserving gateway-change lifecycle")
