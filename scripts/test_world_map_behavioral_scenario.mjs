@@ -24,7 +24,7 @@ const map = {
   on(type, handler) { mapHandlers.set(type, handler); },
   getCanvas() { return canvas; },
 };
-const feature = (layer, id) => ({layer:{id},properties:{id}});
+const feature = (layer, id) => ({layer:{id:layer},properties:{id}});
 
 // 2. Overlap arbitration must follow semantic priority, not render/query order.
 // Use the same layer identities as the production interaction owners rather than
