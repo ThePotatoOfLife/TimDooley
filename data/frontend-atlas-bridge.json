@@ -1,6 +1,6 @@
 {
-  "version":"4.3.0",
-  "updated":"2026-09-16",
+  "version":"4.3.1",
+  "updated":"2026-09-17",
   "purpose":"Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
   "data_roots":["data/","knowledge/"],
   "canonical_layers":["graph","world","research","systems","security","beliefs","mythology","people","culture","potatoism","north-programme"],
@@ -48,6 +48,8 @@
   "backend_family_projection":{
     "countries":{"primary_door":"world","canonical_owner":"data/countries/","deep_route":"world-map/"},
     "north_europe_economic":{"primary_door":"world","canonical_owner":"data/north-europe-system-atlas.json","deep_route":"explore/#branch=world"},
+    "legal":{"global_route":"law/","canonical_owner":"knowledge/legal/"},
+    "economics":{"global_route":"economy/","canonical_owner":"knowledge/economics/"},
     "potatoism":{"primary_door":"religion","canonical_owner":"data/potatoism-concept-registry.json","related_doors":["philosophy","tim"],"deep_route":"explore/#branch=traditions"},
     "religion":{"primary_door":"religion","canonical_owner":"data/religious-layer-manifest.json","deep_route":"explore/#branch=traditions"},
     "research":{"global_route":"explore/","canonical_owner":"data/research-frontier.json"},
