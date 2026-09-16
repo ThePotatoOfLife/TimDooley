@@ -14,6 +14,7 @@ function ensureStyle() {
   const style = document.createElement('style');
   style.id = 'atlasUILayoutStyle';
   style.textContent = `
+    body.atlas-registry-ui{--panel-w:clamp(300px,24vw,360px)}
     body.atlas-registry-ui .hud,body.atlas-registry-ui .camera{display:none!important}
     #atlasUILeftStatus{position:absolute;left:10px;bottom:10px;z-index:7;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;width:min(300px,calc(100% - 20px));pointer-events:none}
     #atlasUILeftStatus>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin:0!important;max-width:100%;pointer-events:auto}
@@ -25,10 +26,12 @@ function ensureStyle() {
     #axisDepthNavigator[data-layout-hosted="1"]{display:none!important}
     .atlas-axis-inspector-nav{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:5px;margin:9px 0}
     .atlas-axis-inspector-nav button{min-width:0;padding:6px 4px;font-size:9px}
+    #atlasWorldBar .atlas-world-menu-pop{max-height:min(420px,calc(100dvh - 76px))!important;overflow:auto;overscroll-behavior:contain;scrollbar-gutter:stable}
     @media(max-width:900px){
       #atlasUILeftStatus{left:8px;bottom:8px;width:min(250px,calc(100% - 16px));gap:4px}
       body:has(#atlasWorldBar details[open]) #atlasUILeftStatus{opacity:0;pointer-events:none}
       .panel{top:auto!important;left:8px!important;right:8px!important;bottom:8px!important;width:auto!important;max-height:44vh!important}
+      #atlasWorldBar .atlas-world-menu-pop{max-height:min(56vh,calc(100dvh - 72px))!important}
     }
   `;
   document.head.appendChild(style);
@@ -92,6 +95,39 @@ function getState() {
   return [...registrations.values()].map(row => ({ id:row.id, zone:row.zone, priority:row.priority, mode:row.mode, visible:row.visible }));
 }
 
+function cameraPadding(base = 0) {
+  const inset = Math.max(0, Number(base) || 0);
+  const desktop = typeof window.matchMedia !== 'function' || window.matchMedia('(min-width:901px)').matches;
+  const inspector = registrations.get('main-inspector');
+  const inspectorOpen = desktop
+    && !app?.classList.contains('panel-collapsed')
+    && inspector?.visible !== false
+    && panel
+    && !panel.hidden;
+  const panelWidth = inspectorOpen ? Math.max(0, Number(panel.getBoundingClientRect?.().width) || 0) : 0;
+  return {
+    top:inset,
+    bottom:inset,
+    left:inset,
+    right:inset + panelWidth,
+  };
+}
+
+function syncMapPadding() {
+  const setPadding = window.__potatoAtlasMap?.setPadding;
+  if (typeof setPadding !== 'function') return false;
+  const padding = cameraPadding(0);
+  try {
+    window.__potatoAtlasMap.setPadding(padding);
+    if (window.__potatoAtlasDiagnostics) {
+      window.__potatoAtlasDiagnostics.uiCameraPadding = { ...padding };
+    }
+    return true;
+  } catch {
+    return false;
+  }
+}
+
 function refreshLeftStatus() {
   const host = ensureLeftStatusHost();
   if (!host) return;
@@ -145,7 +181,10 @@ function openAxisInspector() {
   if (!axis?.setDimension) return;
   app?.classList.remove('panel-collapsed');
   axis.setDimension(axis.getDimension?.() || 4, { silentCamera:true });
-  queueMicrotask(appendAxisInspectorNavigator);
+  queueMicrotask(() => {
+    appendAxisInspectorNavigator();
+    scheduleRefresh();
+  });
 }
 
 function refresh() {
@@ -158,10 +197,11 @@ function refresh() {
     ensureStyle();
     adoptKnownSurfaces();
     refreshLeftStatus();
+    syncMapPadding();
     if (window.__potatoAtlasDiagnostics) {
       window.__potatoAtlasDiagnostics.uiLayoutRefreshes = (window.__potatoAtlasDiagnostics.uiLayoutRefreshes || 0) + 1;
     }
-    window.dispatchEvent(new CustomEvent('potato-atlas-ui-layout-change', { detail:{ surfaces:getState() } }));
+    window.dispatchEvent(new CustomEvent('potato-atlas-ui-layout-change', { detail:{ surfaces:getState(), cameraPadding:cameraPadding(0) } }));
   } finally {
     refreshing = false;
   }
@@ -176,11 +216,16 @@ document.addEventListener('click', event => {
   openAxisInspector();
 }, true);
 
+document.addEventListener('click', event => {
+  if (!event.target.closest('#panelToggle,#mapInspectorToggle')) return;
+  requestAnimationFrame(scheduleRefresh);
+});
+window.addEventListener('resize', scheduleRefresh);
 window.addEventListener('atlas-axis-dimension-change', () => queueMicrotask(appendAxisInspectorNavigator));
 window.addEventListener('potato-atlas-panel-rendered', scheduleRefresh);
 window.addEventListener('potato-atlas-module-ready', scheduleRefresh);
 window.addEventListener('atlas-time-change', scheduleRefresh);
 window.addEventListener('load', scheduleRefresh, { once:true });
 
-window.__potatoAtlasUILayout = { register, unregister, setVisible, getState, refresh, scheduleRefresh };
+window.__potatoAtlasUILayout = { register, unregister, setVisible, getState, cameraPadding, syncMapPadding, refresh, scheduleRefresh };
 refresh();
