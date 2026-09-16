@@ -1,7 +1,7 @@
 {
-  "version":"4.2.0",
-  "updated":"2026-09-15",
-  "purpose":"Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus quieter global/deep surfaces.",
+  "version":"4.3.1",
+  "updated":"2026-09-17",
+  "purpose":"Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
   "data_roots":["data/","knowledge/"],
   "canonical_layers":["graph","world","research","systems","security","beliefs","mythology","people","culture","potatoism","north-programme"],
   "public_doors":{
@@ -11,12 +11,23 @@
     "science":"science/",
     "world":"world/"
   },
+  "public_rooms":{
+    "culture":"context/culture/",
+    "history":"history/",
+    "politics":"politics/",
+    "law":"law/",
+    "economy":"economy/",
+    "world_systems":"world-systems/",
+    "sources":"context/source-authority/",
+    "rooms":"rooms/"
+  },
   "global_secondary_surfaces":{
     "timeline":"timeline/",
     "sources":"context/source-authority/",
     "explore":"explore/",
     "questions":"questions/",
-    "index_a_z":"index-a-z/"
+    "index_a_z":"index-a-z/",
+    "rooms":"rooms/"
   },
   "branch_projection":{
     "tim":{"primary_door":"tim","human_route":"tim-dooley/","archive_route":"explore/#branch=tim","static_topic_route":"topics/tim/","related_doors":["philosophy","religion"]},
@@ -37,6 +48,8 @@
   "backend_family_projection":{
     "countries":{"primary_door":"world","canonical_owner":"data/countries/","deep_route":"world-map/"},
     "north_europe_economic":{"primary_door":"world","canonical_owner":"data/north-europe-system-atlas.json","deep_route":"explore/#branch=world"},
+    "legal":{"global_route":"law/","canonical_owner":"knowledge/legal/"},
+    "economics":{"global_route":"economy/","canonical_owner":"knowledge/economics/"},
     "potatoism":{"primary_door":"religion","canonical_owner":"data/potatoism-concept-registry.json","related_doors":["philosophy","tim"],"deep_route":"explore/#branch=traditions"},
     "religion":{"primary_door":"religion","canonical_owner":"data/religious-layer-manifest.json","deep_route":"explore/#branch=traditions"},
     "research":{"global_route":"explore/","canonical_owner":"data/research-frontier.json"},
@@ -73,6 +86,7 @@
   },
   "integrity_requirements":[
     "The homepage exposes exactly five primary public doors",
+    "Rooms are secondary subject corridors and never additional primary Doors",
     "World is the fifth public domain; World Map, Politics, North and World Systems are specialist sibling routes beneath it",
     "Every major manifest branch has one explicit primary_door, global_route or backend_only projection state",
     "Canonical ownership remains in source/canonical records; this bridge owns routing intent only",
@@ -83,5 +97,5 @@
     "Canonical IDs remain stable while aliases may expand",
     "Requested record paths are fetched only after resolving through an approved registry/manifest allowlist"
   ],
-  "design_rule":"Five simple doors above, mature reader rooms in the middle, one deep archive below. World is the public domain; specialist Map, Politics, North and Systems views project the same canonical backend without duplicating truth or exposing internal file organization as navigation."
+  "design_rule":"Five simple doors above, visible subject Rooms in the middle, one deep archive below. World is the public domain; specialist views project the same canonical backend without duplicating truth or exposing internal file organization as navigation."
 }

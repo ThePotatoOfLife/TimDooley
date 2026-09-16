@@ -55,6 +55,9 @@ jobs:
           python scripts/validate_house_world_routing.py
           python scripts/test_coordination_convergence.py
 
+      - name: Validate public Rooms navigation
+        run: python scripts/validate_public_rooms.py
+
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
