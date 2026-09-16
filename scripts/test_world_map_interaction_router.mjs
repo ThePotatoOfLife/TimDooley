@@ -35,9 +35,6 @@ router.register('place', {
 });
 
 const feature = (layer, id) => ({ layer:{id:layer}, properties:{id} });
-
-// Deliberately put the country first and the place last: semantic priority, not
-// renderer return order, must choose the interaction target.
 rendered = [
   feature('countries-fill','DNK'),
   feature('overlay-fill','eden'),
@@ -52,7 +49,6 @@ assert.equal(winner.feature.properties.id, 'gn:2618425');
 rendered = rendered.filter(row => row.layer.id !== 'place-point');
 winner = router.resolve({x:10,y:10}, 'click');
 assert.equal(winner.owner, 'subdivision');
-
 router.unregister('subdivision');
 winner = router.resolve({x:10,y:10}, 'click');
 assert.equal(winner.owner, 'overlay');
@@ -89,6 +85,7 @@ const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', 
 const subdivisions = fs.readFileSync(new URL('../world-map/3d-subdivisions.js', import.meta.url), 'utf8');
 const bootstrap = fs.readFileSync(new URL('../world-map/3d-bootstrap.js', import.meta.url), 'utf8');
 const app = fs.readFileSync(new URL('../world-map/3d-app.js', import.meta.url), 'utf8');
+const appCore = fs.readFileSync(new URL('../world-map/3d-app-core.js', import.meta.url), 'utf8');
 const hover = fs.readFileSync(new URL('../world-map/3d-hover.js', import.meta.url), 'utf8');
 const countrySelection = fs.readFileSync(new URL('../world-map/3d-country-selection.js', import.meta.url), 'utf8');
 const routerSource = fs.readFileSync(new URL('../world-map/3d-interaction-router.js', import.meta.url), 'utf8');
@@ -103,6 +100,7 @@ const bootstrapRouter = bootstrap.indexOf("loadAfterPaint('Interaction Router', 
 const bootstrapCountry = bootstrap.indexOf("loadAfterPaint('Country selection', './3d-country-selection.js')");
 assert.ok(bootstrapRouter >= 0 && bootstrapCountry >= 0 && bootstrapRouter < bootstrapCountry, 'bootstrap must load Interaction Router before canonical country selection');
 
+assert.ok(appCore.includes("map.on('click','countries-fill',handleCountryPolygonClick)"), 'preserved core renderer must still expose the captured early country click path');
 for (const marker of [
   'function handoffCoreInteractions(interaction)',
   "interaction.register('core-country-fallback'",
@@ -110,7 +108,7 @@ for (const marker of [
   "interaction.register('core-semantic-hubs'",
   "interaction.register('core-trace-hubs'",
   "interaction.register('core-relations'",
-  "map.off('click','countries-fill',handleCountryPolygonClick)",
+  "map.off('click', layerId, listener)",
 ]) assert.ok(app.includes(marker), `3d-app early-boot handoff missing marker: ${marker}`);
 
 for (const marker of [
