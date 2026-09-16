@@ -12,7 +12,7 @@ LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 BOOTSTRAP = ROOT / "world-map" / "3d-bootstrap.js"
 APP = ROOT / "world-map" / "3d-app.js"
-APP_CORE = ROOT / "world-map" / "3d-app-core.js"
+HANDOFF = ROOT / "world-map" / "3d-core-interaction-handoff.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 COUNTRY = ROOT / "world-map" / "3d-country-selection.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
@@ -20,7 +20,7 @@ TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, APP_CORE, HOVER, COUNTRY, TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -34,7 +34,7 @@ def main() -> int:
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
     bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
     app = APP.read_text(encoding="utf-8", errors="replace")
-    app_core = APP_CORE.read_text(encoding="utf-8", errors="replace")
+    handoff = HANDOFF.read_text(encoding="utf-8", errors="replace")
     hover = HOVER.read_text(encoding="utf-8", errors="replace")
     country = COUNTRY.read_text(encoding="utf-8", errors="replace")
 
@@ -70,13 +70,17 @@ def main() -> int:
     if "Degraded/direct-module fallback" not in subdivisions:
         errors.append("subdivision legacy listener must be explicitly documented as degraded fallback")
 
+    capture_index = bootstrap.find("await import(versionedModule('./3d-core-interaction-handoff.js'))")
+    hover_index = bootstrap.find("await import(versionedModule('./3d-hover.js'))")
+    if capture_index < 0 or hover_index < 0 or capture_index >= hover_index:
+        errors.append("bootstrap must arm core interaction capture before the renderer boots")
     router_index = bootstrap.find("loadAfterPaint('Interaction Router', './3d-interaction-router.js')")
     country_index = bootstrap.find("loadAfterPaint('Country selection', './3d-country-selection.js')")
     if router_index < 0 or country_index < 0 or router_index >= country_index:
         errors.append("bootstrap must load Interaction Router before canonical country selection")
 
-    if "map.on('click','countries-fill',handleCountryPolygonClick)" not in app_core:
-        errors.append("preserved 3d-app core must retain the early country listener captured by the wrapper")
+    if "map.on('click','countries-fill',handleCountryPolygonClick)" not in app:
+        errors.append("canonical 3d-app renderer must remain in-place for the capture handoff")
     for token in (
         "function handoffCoreInteractions(interaction)",
         "interaction.register('core-country-fallback'",
@@ -85,9 +89,11 @@ def main() -> int:
         "interaction.register('core-trace-hubs'",
         "interaction.register('core-relations'",
         "map.off('click', layerId, listener)",
+        "potato-atlas-core-ready",
+        "potato-atlas-interaction-ready",
     ):
-        if token not in app:
-            errors.append(f"3d-app early-boot handoff missing marker: {token}")
+        if token not in handoff:
+            errors.append(f"core interaction handoff missing marker: {token}")
 
     for token in (
         "const interaction = window.__potatoAtlasInteraction",
@@ -112,7 +118,7 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regression")
     else:
-        for path in (ROUTER, SUBDIVISIONS, APP, APP_CORE, HOVER, COUNTRY):
+        for path in (ROUTER, SUBDIVISIONS, APP, HANDOFF, HOVER, COUNTRY):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -123,8 +129,8 @@ def main() -> int:
     print("World Map interaction router:")
     print("- semantic priority independent of rendered-feature order")
     print("- disabled registrations cannot win")
-    print("- explicit early-boot handoff from direct listeners to the shared router")
-    print("- preserved renderer core is wrapped rather than broadly rewritten")
+    print("- pre-core capture hands direct click listeners to the shared router")
+    print("- canonical 3d-app renderer remains in-place and unchanged")
     print("- country and legacy-capital interaction owned by the router on normal boots")
     print("- compatibility event claim retained only for degraded direct-handler fallback")
     print(f"Errors: {len(errors)}")
