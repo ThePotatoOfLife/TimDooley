@@ -70,6 +70,17 @@ router.dispatch('click', { point:{x:4,y:5}, originalEvent });
 assert.deepEqual(calls, ['overlay:eden']);
 assert.equal(originalEvent.__potatoAtlasOverlayHandled, true, 'router must preserve the legacy claim flag while unmigrated country handlers remain');
 
+const diagnostics = router.diagnostics();
+assert.equal(typeof diagnostics.registrationCount, 'number');
+assert.equal(typeof diagnostics.enabledCount, 'number');
+assert.equal(typeof diagnostics.clickOwnerCount, 'number');
+assert.equal(typeof diagnostics.hoverOwnerCount, 'number');
+assert.equal(typeof diagnostics.layerCount, 'number');
+assert.equal(typeof diagnostics.clickDispatches, 'number');
+assert.equal(typeof diagnostics.hoverDispatches, 'number');
+assert.equal(diagnostics.clickDispatches, 1, 'diagnostics must count routed click dispatches');
+assert.equal(diagnostics.activeHoverOwner, null);
+
 const state = router.state();
 assert.ok(state.some(row => row.owner === 'place' && row.clickPriority === 80));
 assert.ok(state.some(row => row.owner === 'overlay' && row.objectType === 'spatial-overlay'));
