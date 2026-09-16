@@ -4,6 +4,7 @@
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Atlas Places require the core map.');
 const interaction = window.__potatoAtlasInteraction;
+const inspector = window.__potatoAtlasInspector;
 
 const DATA_ROOT = '../data/world-places/';
 const INDEX_URL = `${DATA_ROOT}index.json`;
@@ -29,7 +30,6 @@ let majorData = EMPTY_COLLECTION;
 let selectedId = new URL(location.href).searchParams.get('place') || null;
 let visible = true;
 let lastError = null;
-let panelSnapshot = null;
 let runtimeBudget = { ...DEFAULT_RUNTIME_BUDGET };
 let usageClock = 0;
 let cacheBytes = 0;
@@ -228,30 +228,22 @@ function syncUrl(id) {
   else url.searchParams.delete('place');
   history.replaceState({}, '', url);
 }
-function captureInspector() {
-  const panel = document.getElementById('panel');
-  if (!panel || panelSnapshot !== null) return;
-  const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim() || '';
-  if (eyebrow === 'Place') return;
-  panelSnapshot = panel.innerHTML;
+function countryBaseline(code) {
+  const id = String(code || '').toUpperCase();
+  return {
+    type:'country', id, owner:'country',
+    restore:() => { if (id && window.goCountry) window.goCountry(id); },
+  };
 }
-function restoreInspector() {
-  const panel = document.getElementById('panel');
-  if (!panel || panelSnapshot === null) return false;
-  const eyebrow = panel.querySelector(':scope > .eyebrow')?.textContent?.trim() || '';
-  if (eyebrow !== 'Place') {
-    panelSnapshot = null;
-    return false;
-  }
-  panel.innerHTML = panelSnapshot;
-  panelSnapshot = null;
-  window.__potatoAtlasPanelLifecycle?.publish?.();
-  return true;
+function placeParent(code) {
+  const current = inspector?.current?.();
+  if (current?.type === 'subdivision') return { type:'subdivision', id:current.id };
+  if (current?.type === 'place' && current.parent?.type === 'subdivision') return { ...current.parent };
+  return { type:'country', id:String(code || '').toUpperCase() };
 }
 function renderInspector(feature) {
   const panel = document.getElementById('panel');
   if (!panel || !feature) return;
-  captureInspector();
   const p = feature.properties || {};
   const [lon, lat] = feature.geometry?.coordinates || [];
   const populationPeriod = p.population_period || '—';
@@ -273,13 +265,32 @@ function renderInspector(feature) {
     </div>`;
   panel.querySelector('[data-place-open-country]')?.addEventListener('click', () => {
     const code = String(p.country_iso3 || '').toUpperCase();
-    if (code && window.goCountry) {
-      clear({ restore:false });
-      window.goCountry(code);
-    }
+    if (!code) return;
+    clear({ restore:false });
+    if (inspector?.reset) inspector.reset(countryBaseline(code));
+    else if (window.goCountry) window.goCountry(code);
   });
   panel.querySelector('[data-place-close]')?.addEventListener('click', () => clear());
   window.__potatoAtlasPanelLifecycle?.publish?.();
+}
+function openInspector(feature) {
+  if (!feature) return false;
+  const p = feature.properties || {};
+  const code = String(p.country_iso3 || '').toUpperCase();
+  if (!inspector?.open || !code) {
+    renderInspector(feature);
+    return true;
+  }
+  const parent = placeParent(code);
+  inspector.setBaseline(countryBaseline(code));
+  inspector.open({
+    type:'place',
+    id:String(p.id || selectedId || ''),
+    owner:'places',
+    parent,
+    render:() => renderInspector(feature),
+  });
+  return true;
 }
 function registerLayer(layerId, priority) {
   window.__potatoAtlasRenderStack?.register?.(layerId, {
@@ -288,9 +299,7 @@ function registerLayer(layerId, priority) {
 }
 async function scaleRuntime() {
   const scale = await window.__potatoAtlasScale?.ready;
-  if (!scale?.threshold || !scale?.bandThreshold) {
-    throw new Error('World Map Scale runtime unavailable to Places.');
-  }
+  if (!scale?.threshold || !scale?.bandThreshold) throw new Error('World Map Scale runtime unavailable to Places.');
   return scale;
 }
 async function installLayers() {
@@ -366,7 +375,6 @@ async function installLayers() {
   bindLayerEvents();
 }
 
-let eventsBound = false;
 function syncInteractionRegistration() {
   if (!interaction?.register) return false;
   interaction.register('places', {
@@ -384,7 +392,7 @@ function syncInteractionRegistration() {
   return true;
 }
 function bindFallbackLayerEvents() {
-  // Degraded/direct-module fallback when shared Interaction Router unavailable.
+  // Degraded/direct-module fallback when the shared Interaction Router is unavailable.
   for (const layerId of [MAJOR_POINTS, DETAIL_POINTS]) {
     map.on('mouseenter', layerId, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', layerId, () => { map.getCanvas().style.cursor = ''; });
@@ -397,6 +405,7 @@ function bindFallbackLayerEvents() {
     });
   }
 }
+let eventsBound = false;
 function bindLayerEvents() {
   if (eventsBound) return;
   eventsBound = true;
@@ -506,7 +515,7 @@ async function focus(id, options = {}) {
     evictCache(new Set([selectedCode]));
   }
   syncUrl(selectedId);
-  renderInspector(feature);
+  openInspector(feature);
   if (options.fit !== false && Array.isArray(coords) && coords.length >= 2) {
     map.easeTo({
       center:[Number(coords[0]), Number(coords[1])],
@@ -518,10 +527,14 @@ async function focus(id, options = {}) {
   return true;
 }
 function clear(options = {}) {
+  const previous = current();
+  const code = String(previous?.properties?.country_iso3 || new URL(location.href).searchParams.get('country') || '').toUpperCase();
   selectedId = null;
   syncUrl(null);
-  if (options.restore !== false) restoreInspector();
-  else panelSnapshot = null;
+  if (options.restore !== false) {
+    if (inspector?.current?.()?.type === 'place') inspector.back();
+    else if (code && window.goCountry) window.goCountry(code);
+  }
   evictCache();
   window.dispatchEvent(new CustomEvent('potato-atlas-place-clear'));
   return true;
