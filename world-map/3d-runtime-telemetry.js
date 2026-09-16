@@ -79,6 +79,7 @@ function createRuntimeTelemetry(map, options = {}) {
     bindEvent('potato-atlas-module-ready', 'module-ready');
     bindEvent('potato-atlas-style-generation', 'style-generation');
     bindEvent('potato-atlas-ui-layout-change', 'ui-layout');
+    bindEvent('potato-atlas-tooltip-state', 'tooltip-state');
   }
 
   refresh('init');
