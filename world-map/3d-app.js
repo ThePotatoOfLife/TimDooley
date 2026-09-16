@@ -93,9 +93,6 @@ const HUBS = [
   {id:'tim',label:'Tim / Project Canon',keys:[],plane:'project-canon'}
 ];
 
-// The on-map country orbit is intentionally capped to stable knowledge groups.
-// Individual modules remain available in Details; future modules join a group
-// instead of adding another permanent dot around the selected country.
 const MODULE_GROUPS = [
   {id:'society',label:'Society',members:['religion','migration']},
   {id:'state',label:'State',members:['government','security']},
@@ -385,7 +382,24 @@ function resetWorld(clearCompare=true){deselectCountry({keepView:false,clearComp
 function populateControls(){const dl=$('#country-list');for(const r of [...rest].sort((a,b)=>a.name.common.localeCompare(b.name.common))){const o=document.createElement('option');o.value=`${r.name.common} (${r.cca3})`;dl.appendChild(o)}const types=[...new Set((worldCfg.curated_edges||[]).flatMap(e=>e.types||[]))].sort();for(const t of types){const o=document.createElement('option');o.value=t;o.textContent=title(t);$('#relationType').appendChild(o)}}
 function findCountry(q){q=q.trim().toLowerCase();const code=q.match(/\(([a-z]{3})\)$/i)?.[1]||q;return rest.find(x=>x.cca3?.toLowerCase()===code||x.name?.common?.toLowerCase()===q||x.name?.official?.toLowerCase()===q)||rest.find(x=>x.name?.common?.toLowerCase().includes(q)||x.name?.official?.toLowerCase().includes(q))}
 
-function claimOverlayClick(event){if(event?.originalEvent)event.originalEvent.__potatoAtlasOverlayHandled=true}
+window.__potatoAtlasCoreInteractions = Object.freeze({
+  countryHub(feature) {
+    const code=feature?.properties?.iso3,f=featureByCode(code);
+    if(f) void selectFeature(f,false);
+  },
+  semanticHub(feature) {
+    const id=feature?.properties?.id;
+    if(id) window.openModuleGroup(id);
+  },
+  traceHub(feature) {
+    const code=feature?.properties?.iso3;
+    if(code) void window.goCountry(code);
+  },
+  relation(feature) {
+    if(feature) clickRelation({features:[feature]});
+  },
+});
+
 function handleCountryPolygonClick(event){
   const feature=event.features?.[0];if(!feature)return;
   const originalEvent=event.originalEvent;
@@ -398,11 +412,6 @@ map.on('load',async()=>{
   $('#relations').classList.toggle('active',showRelations);
   map.on('click','countries-fill',handleCountryPolygonClick);
   map.on('click','countries-extrude',handleCountryPolygonClick);
-  map.on('click','country-hubs',e=>{claimOverlayClick(e);const code=e.features?.[0]?.properties?.iso3,f=featureByCode(code);if(f)selectFeature(f,false)});
-  map.on('click','semantic-hubs',e=>{claimOverlayClick(e);const f=e.features?.[0];if(f)window.openModuleGroup(f.properties.id)});
-  map.on('click','trace-hubs',e=>{claimOverlayClick(e);const code=e.features?.[0]?.properties?.iso3;if(code)window.goCountry(code)});
-  map.on('click','relations',e=>{claimOverlayClick(e);clickRelation(e)});
-  ['countries-fill','countries-extrude','country-hubs','semantic-hubs','relations','trace-hubs','compare-hubs'].forEach(id=>{map.on('mouseenter',id,()=>map.getCanvas().style.cursor='pointer');map.on('mouseleave',id,()=>map.getCanvas().style.cursor='')});
   const u=new URL(location.href),rel=u.searchParams.get('rel'),depth=Number(u.searchParams.get('depth'));
   if(rel&&[...$('#relationType').options].some(o=>o.value===rel)){relationType=rel;$('#relationType').value=rel}
   if(Number.isInteger(depth)&&depth>=1&&depth<=TRACE_MAX_DEPTH){traceDepth=depth;$('#traceDepth').value=String(depth)}
