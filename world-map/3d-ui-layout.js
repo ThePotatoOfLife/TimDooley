@@ -100,7 +100,7 @@ function cameraPadding(base = 0) {
   const desktop = typeof window.matchMedia !== 'function' || window.matchMedia('(min-width:901px)').matches;
   const inspector = registrations.get('main-inspector');
   const inspectorOpen = desktop
-    && !app?.classList.contains('panel-collapsed')
+    && !app?.classList?.contains?.('panel-collapsed')
     && inspector?.visible !== false
     && panel
     && !panel.hidden;
