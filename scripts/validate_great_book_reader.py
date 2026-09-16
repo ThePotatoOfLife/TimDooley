@@ -195,9 +195,15 @@ def validate(root: Path, allow_missing_chapters: bool = False) -> list[str]:
         except (OSError, UnicodeError) as exc:
             errors.append(f"unreadable chapter file {rel_path}: {exc}")
             continue
-        if f'data-chapter-number="{number}"' not in text:
+        chapter_number_attr = re.compile(
+            rf"""data-chapter-number\s*=\s*["']{re.escape(number)}["']"""
+        )
+        if chapter_number_attr.search(text) is None:
             errors.append(f"chapter {number}: fragment does not declare matching data-chapter-number")
-        if status in {"body", "index-only"} and f'data-status="{status}"' not in text:
+        status_attr = re.compile(
+            rf"""data-status\s*=\s*["']{re.escape(str(status))}["']"""
+        )
+        if status in {"body", "index-only"} and status_attr.search(text) is None:
             errors.append(f"chapter {number}: fragment does not declare matching data-status={status!r}")
 
     for label, values in [
