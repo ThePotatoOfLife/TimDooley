@@ -10,6 +10,7 @@ ROOT = Path(__file__).resolve().parents[1]
 ROUTER = ROOT / "world-map" / "3d-interaction-router.js"
 LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
 COUNTRY_INTERACTION = ROOT / "world-map" / "3d-country-interaction.js"
+AXIS = ROOT / "world-map" / "3d-axis.js"
 SUBDIVISIONS = ROOT / "world-map" / "3d-subdivisions.js"
 PLACES = ROOT / "world-map" / "3d-places.js"
 INFRASTRUCTURE = ROOT / "world-map" / "3d-infrastructure.js"
@@ -17,6 +18,7 @@ GATEWAYS = ROOT / "world-map" / "3d-gateways.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
 COUNTRY_TEST = ROOT / "scripts" / "test_world_map_country_interaction_ownership.mjs"
 CORE_TEST = ROOT / "scripts" / "test_world_map_core_interaction_ownership.mjs"
+AXIS_TEST = ROOT / "scripts" / "test_world_map_axis_interaction_ownership.mjs"
 PLACES_TEST = ROOT / "scripts" / "test_world_map_places_interaction_ownership.mjs"
 INFRASTRUCTURE_TEST = ROOT / "scripts" / "test_world_map_infrastructure_interaction_ownership.mjs"
 GATEWAY_TEST = ROOT / "scripts" / "test_world_map_gateway_interaction_ownership.mjs"
@@ -24,7 +26,7 @@ GATEWAY_TEST = ROOT / "scripts" / "test_world_map_gateway_interaction_ownership.
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, COUNTRY_INTERACTION, SUBDIVISIONS, PLACES, INFRASTRUCTURE, GATEWAYS, TEST, COUNTRY_TEST, CORE_TEST, PLACES_TEST, INFRASTRUCTURE_TEST, GATEWAY_TEST):
+    for path in (ROUTER, LIFECYCLE, COUNTRY_INTERACTION, AXIS, SUBDIVISIONS, PLACES, INFRASTRUCTURE, GATEWAYS, TEST, COUNTRY_TEST, CORE_TEST, AXIS_TEST, PLACES_TEST, INFRASTRUCTURE_TEST, GATEWAY_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -36,6 +38,7 @@ def main() -> int:
     router = ROUTER.read_text(encoding="utf-8", errors="replace")
     lifecycle = LIFECYCLE.read_text(encoding="utf-8", errors="replace")
     country_interaction = COUNTRY_INTERACTION.read_text(encoding="utf-8", errors="replace")
+    axis = AXIS.read_text(encoding="utf-8", errors="replace")
     subdivisions = SUBDIVISIONS.read_text(encoding="utf-8", errors="replace")
     places = PLACES.read_text(encoding="utf-8", errors="replace")
     infrastructure = INFRASTRUCTURE.read_text(encoding="utf-8", errors="replace")
@@ -82,6 +85,31 @@ def main() -> int:
         errors.append("core interaction registrations must not remain compatibility no-ops")
     if "map.on('click'" in country_interaction:
         errors.append("country interaction bridge must not attach a direct click listener")
+
+    for token in (
+        "window.__potatoAtlasInteraction",
+        "interaction.register('axis-gate'",
+        "layers:[AXIS_GATE]",
+        "objectType:'axis-gate'",
+        "clickPriority:58",
+        "hoverPriority:58",
+        "interaction.register('axis-fill'",
+        "layers:[AXIS_FILL]",
+        "objectType:'axis-threshold'",
+        "clickPriority:5",
+        "hoverPriority:5",
+        "interaction.register('axis-line'",
+        "layers:[AXIS_LINE]",
+        "clickPriority:0",
+        "hoverPriority:25",
+        "onHover:hoverAxis",
+        "onLeave:leaveAxis",
+    ):
+        if token not in axis:
+            errors.append(f"Axis interaction migration missing marker: {token}")
+    for token in ("map.on('click',AXIS_GATE", "map.on('click',AXIS_FILL", "map.on('mouseenter',layer", "map.on('mouseleave',layer"):
+        if token in axis:
+            errors.append(f"Axis must retire direct interaction ownership: {token}")
 
     for token in (
         "const interaction = window.__potatoAtlasInteraction",
@@ -142,7 +170,7 @@ def main() -> int:
     if not node:
         errors.append("node executable unavailable; cannot run interaction-router regressions")
     else:
-        for path in (ROUTER, COUNTRY_INTERACTION, SUBDIVISIONS, PLACES, INFRASTRUCTURE, GATEWAYS):
+        for path in (ROUTER, COUNTRY_INTERACTION, AXIS, SUBDIVISIONS, PLACES, INFRASTRUCTURE, GATEWAYS):
             result = subprocess.run([node, "--check", str(path)], cwd=ROOT, text=True, capture_output=True, check=False)
             if result.returncode:
                 errors.append(f"JavaScript syntax failed for {path.relative_to(ROOT)}: " + (result.stderr.strip() or result.stdout.strip()))
@@ -150,6 +178,7 @@ def main() -> int:
             (TEST, "interaction-router"),
             (COUNTRY_TEST, "Country interaction ownership"),
             (CORE_TEST, "Core interaction ownership"),
+            (AXIS_TEST, "Axis interaction ownership"),
             (PLACES_TEST, "Places interaction ownership"),
             (INFRASTRUCTURE_TEST, "Infrastructure interaction ownership"),
             (GATEWAY_TEST, "Gateway interaction ownership"),
@@ -164,6 +193,7 @@ def main() -> int:
     print("- compatibility event claim retained only for still-unmigrated handlers")
     print("- country polygons use router priority 10")
     print("- country hubs, semantic hubs, trace hubs and relation lines use router-owned semantic actions")
+    print("- Axis gate uses priority 58 while broad symbolic fill stays below physical geography at priority 5")
     print("- subdivisions use router on normal boots with degraded fallback")
     print("- Infrastructure uses router at priority 70 while preserving its persistent popup")
     print("- Gateways use router at priority 75 while preserving gateway-change lifecycle")
