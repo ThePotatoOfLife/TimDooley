@@ -27,6 +27,20 @@ globalThis.CustomEvent = class CustomEvent { constructor(type, init={}) { this.t
 globalThis.window = globalThis;
 globalThis.dispatchEvent = () => true;
 
+const scaleRuntime = Object.freeze({
+  threshold(capability, phase) {
+    const values = { subdivisions:{ render:3.4, label:4.25 } };
+    const value = values?.[capability]?.[phase];
+    if (!Number.isFinite(value)) throw new Error(`unexpected scale threshold ${capability}.${phase}`);
+    return value;
+  },
+  bandThreshold(band) {
+    if (band !== 'subnational') throw new Error(`unexpected scale band ${band}`);
+    return 5.8;
+  },
+});
+window.__potatoAtlasScale = { ...scaleRuntime, ready:Promise.resolve(scaleRuntime) };
+
 const syddanmark = {
   type: 'Feature',
   properties: {
