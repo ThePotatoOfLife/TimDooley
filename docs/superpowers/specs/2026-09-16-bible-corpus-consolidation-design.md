@@ -24,6 +24,7 @@ The consolidation layer must improve retrieval and maintenance without silently 
 - No automatic prophecy, identity, causation, role-transfer, or supernatural inference.
 - No reduction of a symbol to one meaning. Stone, Door, Mountain, Valley, Yoke, Dog, Cube, Gate, etc. remain context-dependent.
 - No replacement of `bible_corpus.py`, `bible_excavation.py`, or the canonical manifest.
+- No generated family-level theological prose that is stronger than, or independent from, the existing relation records.
 
 ## Existing foundations to reuse
 
@@ -96,6 +97,8 @@ Families do not own theology. The original relation records remain authoritative
 
 Examples of useful families include Door, Mountain, Stone, Root/Branch, Debt/Release, Garden/Farm, Yoke/Cord, House/Temple/City, but family creation should be data-driven rather than hard-coded to those names.
 
+**Family-ID stability rule:** family IDs must be derived deterministically from normalized family identity/features, not from input ordering. Reordering relations must not change IDs. Adding a new member that clearly joins an existing family should not unnecessarily rename that family.
+
 ### 4. Representative selection
 
 When a family needs one entry point, select the best representative using the existing excavation dimensions rather than recency or naming style.
@@ -109,6 +112,8 @@ Prefer relations with stronger existing support in this order:
 5. explicit maximum defensible claim
 6. explicit source direction
 7. broader supporting provenance/occurrence links
+
+Selection must use a deterministic lexicographic decision over these existing dimensions rather than inventing a separate opaque weighted score.
 
 The representative is only the best retrieval entry point. It does not replace other members.
 
@@ -125,7 +130,7 @@ For each duplicate candidate, output:
 - fields that would be lost by a naive merge
 - suggested action: `alias`, `enrich_existing`, `keep_distinct`, or `manual_review`
 
-An `alias` decision may later map an older ID to a canonical ID, but aliases must remain resolvable and provenance-preserving.
+An `alias` is only a recommendation in Phase 1. Phase 1 does not rewrite IDs, relation files, or references. Any later alias decision must remain resolvable and provenance-preserving.
 
 ### 6. Retrieval bundles
 
@@ -133,16 +138,16 @@ Generate a compact bundle for each family so readers/tools do not need to scan d
 
 Each bundle contains:
 
-- central finding/representative
+- central retrieval representative
 - strongest supporting relations
 - strongest counterpressure/contrast relations
 - exact Bible references
 - project-side source owners
-- maximum safe inference from existing records
+- the existing maximum-defensible-claim texts from relevant member relations
 - unresolved gaps
 - member IDs for drill-down
 
-The bundle is derived only. It cannot strengthen a claim beyond its members' maximum defensible claims.
+The bundle is derived only. It does **not** synthesize a new theological maximum claim. It surfaces the existing member-level claim ceilings and must never imply a stronger combined conclusion than those source records permit.
 
 ### 7. New-ingestion duplicate pressure
 
@@ -222,11 +227,12 @@ Existing `bible_excavation.py` remains the quality/completeness owner.
 3. Exact active relation-ID collisions remain hard failures in `bible_corpus.py`.
 4. A relation may belong to more than one retrieval family only when the memberships represent distinct existing functions and are explicitly explainable.
 5. A contrast cannot be auto-promoted to a duplicate.
-6. Representative selection is deterministic and input-order independent.
-7. A family/bundle maximum claim cannot exceed the strongest common defensible claim supported by its members.
+6. Representative selection and family IDs are deterministic and input-order independent.
+7. Retrieval bundles may expose member-level maximum claims but may not generate a stronger family-level theological claim.
 8. Alias recommendations cannot erase unique evidence; unique fields must be surfaced before any later manual alias decision.
 9. Shared vocabulary alone cannot create a duplicate or family.
 10. Generated indexes are rebuild-only and must match the active manifest version they were generated from.
+11. Phase 1 cannot mutate canonical relation IDs, relation ownership, manifest relation contents, or public rendering.
 
 ## TDD cases from the real corpus
 
@@ -256,6 +262,10 @@ Cornerstone/foundation and road-obstacle/downward-judgment stone relations shoul
 
 Reordering input relations must not change the selected representative or family IDs.
 
+### Family-ID stability
+
+Adding a clearly related member to an existing family must preserve the family ID when the normalized family identity is unchanged.
+
 ### Unique evidence preservation
 
 If two duplicate candidates differ because one has a stronger countertext or exact source occurrence, the duplicate queue must identify that unique evidence rather than recommending blind replacement.
@@ -263,6 +273,10 @@ If two duplicate candidates differ because one has a stronger countertext or exa
 ### Weak lexical coincidence
 
 Two relations sharing only a word such as `light`, `house` or `root` without passage/function/sequence support must remain unrelated.
+
+### No synthesized theology
+
+A family containing several member-level maximum claims must return those existing claims by source relation ID and must not emit a newly invented stronger claim string.
 
 ## Integration
 
@@ -294,4 +308,4 @@ If the generated families merely restate relation tags or create additional clut
 
 Phase 1 is backend-only consolidation and validation.
 
-Do not alter public Bible rendering, relation ownership, or canonical relation records until the generated indexes demonstrate useful consolidation on the real corpus and pass full repository verification.
+Do not alter public Bible rendering, relation ownership, canonical relation records, relation IDs, or aliases until the generated indexes demonstrate useful consolidation on the real corpus and pass full repository verification.
