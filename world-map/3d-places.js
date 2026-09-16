@@ -304,8 +304,8 @@ async function scaleRuntime() {
 }
 async function installLayers() {
   const scale = await scaleRuntime();
-  const detailRenderZoom = scale.threshold('places-detail', 'render');
-  const detailLabelZoom = scale.threshold('places-detail', 'label');
+  const PLACE_DETAIL_RENDER_ZOOM = scale.threshold('places-detail', 'render');
+  const PLACE_DETAIL_LABEL_ZOOM = scale.threshold('places-detail', 'label');
   if (!map.getSource(MAJOR_SOURCE)) map.addSource(MAJOR_SOURCE, { type:'geojson', data:majorData });
   if (!map.getSource(DETAIL_SOURCE)) map.addSource(DETAIL_SOURCE, { type:'geojson', data:EMPTY_COLLECTION });
 
@@ -338,18 +338,18 @@ async function installLayers() {
   }
   if (!map.getLayer(DETAIL_POINTS)) {
     map.addLayer({
-      id:DETAIL_POINTS, type:'circle', source:DETAIL_SOURCE, minzoom:detailRenderZoom,
+      id:DETAIL_POINTS, type:'circle', source:DETAIL_SOURCE, minzoom:PLACE_DETAIL_RENDER_ZOOM,
       paint:{
-        'circle-radius':['interpolate',['linear'],['zoom'],detailRenderZoom,2,8,4.4,11,6],
+        'circle-radius':['interpolate',['linear'],['zoom'],PLACE_DETAIL_RENDER_ZOOM,2,8,4.4,11,6],
         'circle-color':'#cdd8d2','circle-stroke-color':'#111716','circle-stroke-width':0.9,'circle-opacity':0.88
       }
     });
   }
   if (!map.getLayer(DETAIL_LABELS)) {
     map.addLayer({
-      id:DETAIL_LABELS, type:'symbol', source:DETAIL_SOURCE, minzoom:detailLabelZoom,
+      id:DETAIL_LABELS, type:'symbol', source:DETAIL_SOURCE, minzoom:PLACE_DETAIL_LABEL_ZOOM,
       layout:{
-        'text-field':['get','name'], 'text-size':['interpolate',['linear'],['zoom'],detailLabelZoom,8.5,9,11],
+        'text-field':['get','name'], 'text-size':['interpolate',['linear'],['zoom'],PLACE_DETAIL_LABEL_ZOOM,8.5,9,11],
         'text-offset':[0,1.0], 'text-anchor':'top', 'text-optional':true, 'text-allow-overlap':false
       },
       paint:{'text-color':'#d3ddd7','text-halo-color':'#080b0b','text-halo-width':1.0}
