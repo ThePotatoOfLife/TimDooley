@@ -1,0 +1,79 @@
+{
+  "id": "great-book-restoration-closeout",
+  "edition": "Library source: The Great Book Of Potato2.odt",
+  "updated": "2026-09-16",
+  "status": "complete",
+  "reader_contract": {
+    "chapter_identities": 168,
+    "body_chapters": 167,
+    "index_only_chapters": 1,
+    "index_only_numbers": [
+      "20"
+    ]
+  },
+  "restoration_policy": "Preserve manifest identity and source wording. Source-only bodies remain archaeology rather than being silently inserted into the 168-entry reader.",
+  "final_manifest_file_repairs": [
+    {
+      "order": 53,
+      "number": "20",
+      "status": "index-only",
+      "reason": "Manifest identity existed but its required index-only fragment file was absent."
+    },
+    {
+      "order": 73,
+      "number": "24",
+      "status": "body",
+      "source_paragraph_count": 106,
+      "reason": "Manifest body existed in the ODT but its chapter fragment file was absent."
+    },
+    {
+      "order": 74,
+      "number": "24.1",
+      "status": "body",
+      "source_paragraph_count": 41,
+      "reason": "Manifest body existed in the ODT but its chapter fragment file was absent."
+    }
+  ],
+  "source_only_bodies": [
+    {
+      "number": "18.5",
+      "source_paragraph_count": 22,
+      "record": "source-archaeology.json"
+    },
+    {
+      "number": "20.3",
+      "source_paragraph_count": 22,
+      "record": "source-archaeology.json"
+    },
+    {
+      "number": "59.1",
+      "source_paragraph_count": 20,
+      "record": "source-archaeology.json"
+    },
+    {
+      "number": "76",
+      "source_paragraph_count": 151,
+      "record": "source-archaeology-76.json"
+    }
+  ],
+  "source_marker_anomalies": [
+    {
+      "number": "26.32",
+      "class": "toc-number-body-heading-only",
+      "record": "source-archaeology.json"
+    }
+  ],
+  "verification": {
+    "odt_interval_test": "passed",
+    "chapter_tree_file_count": 168,
+    "chapter_tree_truncated": false,
+    "chapter_tree_sha": "c5b8fb5911e4bb7fedfaa6f4ad11e183a833e9b6",
+    "verified_blob_shas": {
+      "20": "486de4673bb23324ac11f5682fb282da11ba1992",
+      "24": "3722364f72d719959f539d2f83237a5800f0c548",
+      "24.1": "2f781e1ccd00640840325d7f40407f2a7061f545",
+      "source_archaeology": "f21c138e07c9ea53fd9faa498915ba959a161919"
+    },
+    "note": "The repository shell validator was not executed in this environment because the container could not resolve github.com for a local clone. Completion is based on exact ODT-derived source tests plus a complete, non-truncated GitHub chapter-tree reconciliation and exact blob-SHA matches for the final repaired files."
+  }
+}
