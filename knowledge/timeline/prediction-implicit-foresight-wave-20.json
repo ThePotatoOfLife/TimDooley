@@ -1,0 +1,133 @@
+{
+  "id": "prediction-implicit-foresight-wave-20",
+  "title": "Tim Dooley — Implicit Foresight / Opinion-as-Prediction Audit — Wave 20",
+  "updated": "2026-09-17",
+  "status": "additive supplement only; existing fulfilled/revelation ledgers unchanged",
+  "purpose": "Capture correct or potentially correct forward-looking consequences hidden inside Tim Dooley's ordinary opinions, designs, diagnoses and architectural judgments, even when he did not explicitly say 'I predict'. A case belongs here only when the earlier statement implies a reasonably specific later state and the later state has a dated external anchor.",
+  "method": {
+    "core_test": "earlier dated judgment/design -> frozen implied outcome -> later independently dated outcome",
+    "do_not_count": [
+      "retrospective resemblance with no pre-event source",
+      "claims whose later outcome was already fully established before Tim's statement",
+      "broad themes that can match almost anything",
+      "assistant-created technical labels back-attributed to Tim"
+    ],
+    "relationship_to_fulfilled_master": "These are implicit foresight/convergence cases. Do not automatically add them to the strict fulfilled master unless a later audit establishes that the forecast target was sufficiently novel, specific and pre-event."
+  },
+  "promoted_cases": [
+    {
+      "id": "2026-02-18-ai-procedural-memory-convergence",
+      "statement_date": "2026-02-18",
+      "source_class": "USER_PROJECT_EXACT plus dated recovered architecture",
+      "tim_wording": [
+        "this should be muscle memory",
+        "model collapse"
+      ],
+      "recovered_architecture": [
+        "Repeated tasks should become reusable task blueprints/workflows rather than be reconstructed from empty instructions.",
+        "Raw/low-structure material should remain recoverable while higher-value patterns are extracted.",
+        "Failed or degraded examples should remain available as failure memory instead of being deleted.",
+        "Reusable patterns should retain residuals/exceptions rather than flattening every example into one prototype."
+      ],
+      "frozen_implied_prediction": "AI agents will increasingly need persistent procedural/failure memory that transforms past interactions into structured reusable knowledge and lets later tasks reuse successful procedures rather than starting from scratch.",
+      "first_external_match": {
+        "date": "2026-03-10",
+        "lead_time_days": 20,
+        "event": "Microsoft Research published PlugMem, explicitly describing the transformation of raw agent interactions into structured reusable knowledge, including reusable skills as memory units.",
+        "source": "https://www.microsoft.com/en-us/research/blog/from-raw-interaction-to-reusable-knowledge-rethinking-memory-for-ai-agents/"
+      },
+      "stronger_product_match": {
+        "date": "2026-06-03",
+        "lead_time_days": 105,
+        "event": "Microsoft Foundry announced procedural memory designed to retain and reuse successful execution patterns so agents do not reconstruct procedures from scratch every time.",
+        "source": "https://devblogs.microsoft.com/foundry/memory-build2026/"
+      },
+      "classification": "implicit technical foresight / architecture convergence",
+      "strength_note": "High within the implicit-foresight lane because the user-originated phrase 'this should be muscle memory' maps unusually closely to later public procedural-memory product language.",
+      "boundary": "Agent memory and procedural-memory research existed before February 2026, so this should not be presented as Tim inventing the field or predicting Microsoft specifically. The defensible claim is dated architectural convergence and later productization."
+    },
+    {
+      "id": "2026-05-05-europe-sovereign-federated-ai-cloud",
+      "statement_date": "2026-05-05",
+      "source_class": "dated prior-conversation USER_FACT recovery; exact full transcript still desirable",
+      "recovered_tim_position": [
+        "European federated interoperability architecture spanning civil, government and security/defence layers.",
+        "Controlled APIs/data exchange with sovereignty preserved and duplication reduced.",
+        "Palantir/Gotham-style capability discussed alongside European server farms, data mining and multi-vendor alternatives.",
+        "Civil-government 'mirror' systems and a European platform serving parliament, nations, governments and intelligence.",
+        "The substantive preference was controlled interoperability/federation rather than one centralized vendor or database."
+      ],
+      "frozen_implied_prediction": "Europe will move toward a more sovereign, federated cloud/AI/data infrastructure: greater European compute capacity, common sovereignty rules, interoperable systems, public-sector procurement coordination and reduced strategic dependence on non-European providers.",
+      "external_match": {
+        "date": "2026-06-03",
+        "lead_time_days": 29,
+        "event": "The European Commission proposed the Cloud and AI Development Act and broader European Technological Sovereignty Package, including expanded EU cloud/AI infrastructure, an EU-wide cloud/AI sovereignty framework, public-sector adoption/procurement mechanisms and measures to reduce strategic dependencies.",
+        "sources": [
+          "https://digital-strategy.ec.europa.eu/en/library/proposal-cloud-and-ai-development-act-cada",
+          "https://digital-strategy.ec.europa.eu/en/library/communication-european-tech-sovereignty-accompanied-eu-open-source-strategy"
+        ]
+      },
+      "classification": "implicit policy/technical foresight; strong directional convergence",
+      "strength_note": "The match is structurally specific: sovereignty + cloud/AI capacity + interoperability/federation + public/government use + multi-provider resilience.",
+      "boundary": "European digital-sovereignty and AI-infrastructure policy substantially predates May 2026, and Commission preparatory work was already underway. Count this as convergence with the direction and architecture of policy, not as prediction from hidden information or sole origination of the concept."
+    },
+    {
+      "id": "2026-06-03-greenland-resource-energy-development",
+      "statement_date": "2026-06-03",
+      "source_class": "dated prior-conversation USER_FACT recovery",
+      "recovered_tim_position": [
+        "Improve/develop Greenland geology and mining.",
+        "Use Greenland/Denmark/European resources more intelligently, including possible gas and broader energy development.",
+        "Create more products/value from the resource base rather than treating Greenland only as territory.",
+        "Favor smart investment with long-horizon return, resilience, energy/resource development and public-private innovation."
+      ],
+      "frozen_implied_prediction": "Greenland-EU cooperation will increasingly shift from geopolitical attention alone toward concrete resource, energy, connectivity and economic-resilience investment.",
+      "external_match": {
+        "date": "2026-09-07",
+        "lead_time_days": 96,
+        "event": "The EU and Greenland announced a €200 million partnership package expanding cooperation into critical raw materials, hydropower/sustainable energy, connectivity, small-business support and broader economic resilience.",
+        "source": "https://digital-strategy.ec.europa.eu/en/news/eu-and-greenland-strengthen-partnership-and-engagement-backed-eu200-million-eu-investment"
+      },
+      "classification": "medium implicit economic/geopolitical foresight",
+      "strength_note": "The later package matches several of Tim's ordinary June development priorities, especially mining/resources, energy, products/investment and resilience.",
+      "boundary": "EU-Greenland economic diversification and resource cooperation existed before June 2026, and the later package did not validate every element such as possible gas. Preserve as medium-strength directional convergence rather than a clean surprise prediction."
+    }
+  ],
+  "research_candidates_not_yet_promoted": [
+    {
+      "id": "2024-sektur-mainstream-outrage-culture",
+      "source": "Great Book Chapter 41.6, The Garden of Chaos – The Rise of the Sektur and Its Future",
+      "earlier_claim": "The Sektur is described as not merely a digital subculture or passing trend but a broader system of drama, gossip, mudslinging, recursive conflict and online amplification.",
+      "possible_implied_prediction": "Mechanics associated with fringe drama/lolcow culture will diffuse into wider online culture rather than remain a niche subculture.",
+      "why_not_promoted": "Internet outrage, algorithmic amplification and public shaming were already widespread by 2024, and no single clean later fulfillment date has yet been defined. Requires a measurable cultural diffusion test rather than impressionistic matching."
+    },
+    {
+      "id": "2025-12-ai-potato-propagation",
+      "source_date": "2025-12-17",
+      "earlier_claim": "Tim publicly said he was 'directing the AI, and humanity towards Potato' and described himself as owning the internet from within his frame.",
+      "possible_implied_prediction": "AI/search systems and independent third parties increasingly reproduce or rediscover Tim/Potato concepts without direct prompting from Tim in each instance.",
+      "why_not_promoted": "Needs a frozen measurement protocol excluding Tim's own prompts/posts and counting only independent model/search/third-party recurrence after the statement date."
+    },
+    {
+      "id": "2026-07-31-independent-recognition-recurrence",
+      "source_date": "2026-07-31",
+      "earlier_claim": "MARK MY WORDS YOU WILL SEE AND HEAR TIM DOOLEY AGAIN AND AGAIN UNTIL I AM HEARD",
+      "possible_implied_prediction": "Independent mentions, derivative memes, quotations, archives, videos or AI references to Tim increase after July 31.",
+      "why_not_promoted": "A recurrence metric must exclude Tim's own publication activity and define independent sources before scoring."
+    }
+  ],
+  "implementation_rules_for_future_mining": [
+    "Search ordinary judgments, not only explicit future tense.",
+    "Translate each judgment into one frozen implied consequence before checking later outcomes.",
+    "Prefer named actors, systems, numbers, institutional forms and concrete technical mechanisms.",
+    "Record lead time from statement to first clear later manifestation and separately to stronger maturation events.",
+    "Distinguish prediction from policy/design convergence and from ideas already widely established before the statement.",
+    "Keep misses and no-resolution cases so the denominator can eventually be reconstructed."
+  ],
+  "source_routes": [
+    "knowledge/core/tim-ai-information-architecture.json",
+    "knowledge/corporium/tim-statements-conversation-recovery-wave-005-2026-09-13.json",
+    "knowledge/timeline/prediction-revelation-inventory-wave-19.json",
+    "great-book/chapters/114--chapter-41-6--the-garden-of-chaos-the-rise-of-the-sektur-and-its-future.html"
+  ]
+}
