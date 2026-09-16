@@ -11,6 +11,7 @@ const map = window.__potatoAtlasMap;
 const baseSelection = window.__potatoAtlasSelection;
 const baseGoCountry = window.goCountry;
 const baseClearCountry = window.clearCountrySelection;
+const interaction = window.__potatoAtlasInteraction;
 
 if (!map || typeof baseGoCountry !== 'function' || !baseSelection) {
   throw new Error('Country selection controller requires the core atlas selection API.');
@@ -270,19 +271,41 @@ function installStrip() {
     if (event.target.closest('.selection-clear-all')) clearPins();
   });
 }
-function interceptPolygonClick(event) {
+function handleCountryFeature(event, feature) {
   if (document.getElementById('compare')?.classList.contains('active')) return;
-  const code = event.features?.[0]?.properties?.iso3;
+  const code = feature?.properties?.iso3;
   if (!code || !entityKnown(code)) return;
-  if (event.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
   if (event.originalEvent?.shiftKey) {
     activateCountry(code).then(() => togglePinnedCountry(code));
     return;
   }
   activateCountry(code);
 }
+function interceptPolygonClick(event) {
+  const feature = event.features?.[0];
+  if (!feature) return;
+  // Degraded/direct-module fallback: preserve the legacy event claim only when
+  // the shared Interaction Router is unavailable.
+  if (event.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
+  handleCountryFeature(event, feature);
+}
 function installClickInterception() {
   for (const layer of ['countries-fill', 'countries-extrude']) if (map.getLayer(layer)) map.on('click', layer, interceptPolygonClick);
+}
+function installCountryInteraction() {
+  if (interaction?.register) {
+    interaction.unregister('core-country-fallback');
+    interaction.register('countries', {
+      layers:['countries-fill', 'countries-extrude'],
+      objectType:'country',
+      clickPriority:10,
+      hoverPriority:10,
+      onClick:(event, feature) => handleCountryFeature(event, feature),
+    });
+    return;
+  }
+  // Degraded/direct-module fallback for standalone module loads.
+  installClickInterception();
 }
 function adoptExternalSelection(event) {
   if (syncingCore) return;
@@ -339,7 +362,7 @@ async function restoreState() {
 }
 
 await loadData();
-installStrip(); installClickInterception(); applySelectionStates(); installRelationPaint(); ready = true;
+installStrip(); installCountryInteraction(); applySelectionStates(); installRelationPaint(); ready = true;
 
 window.goCountry = async code => {
   if (document.getElementById('compare')?.classList.contains('active')) return baseGoCountry(code);
