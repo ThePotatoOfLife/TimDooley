@@ -27,13 +27,20 @@ const map = {
 const feature = (layer, id) => ({layer:{id},properties:{id}});
 
 // 2. Overlap arbitration must follow semantic priority, not render/query order.
+// Use the same layer identities as the production interaction owners rather than
+// generic stand-ins so this scenario catches ownership-contract drift.
 const clicks = [];
 const interaction = createInteractionRouter(map, {bind:false});
-interaction.register('country', {layers:['country'],objectType:'country',clickPriority:10,onClick:(_e,f)=>clicks.push(`country:${f.properties.id}`)});
-interaction.register('overlay', {layers:['overlay'],objectType:'overlay',clickPriority:40,onClick:(_e,f)=>clicks.push(`overlay:${f.properties.id}`)});
-interaction.register('subdivision', {layers:['subdivision'],objectType:'subdivision',clickPriority:60,onClick:(_e,f)=>clicks.push(`subdivision:${f.properties.id}`)});
-interaction.register('place', {layers:['place'],objectType:'place',clickPriority:80,onClick:(_e,f)=>clicks.push(`place:${f.properties.id}`)});
-rendered = [feature('country','DNK'),feature('overlay','claim'),feature('subdivision','DK-83'),feature('place','place:haderslev')];
+interaction.register('country', {layers:['countries-fill'],objectType:'country',clickPriority:10,onClick:(_e,f)=>clicks.push(`country:${f.properties.id}`)});
+interaction.register('overlay', {layers:['overlay-fill'],objectType:'overlay',clickPriority:40,onClick:(_e,f)=>clicks.push(`overlay:${f.properties.id}`)});
+interaction.register('subdivision', {layers:['subdivision-hit'],objectType:'subdivision',clickPriority:60,onClick:(_e,f)=>clicks.push(`subdivision:${f.properties.id}`)});
+interaction.register('place', {layers:['place-point'],objectType:'place',clickPriority:80,onClick:(_e,f)=>clicks.push(`place:${f.properties.id}`)});
+rendered = [
+  feature('countries-fill','DNK'),
+  feature('overlay-fill','claim'),
+  feature('subdivision-hit','DK-83'),
+  feature('place-point','place:haderslev'),
+];
 const originalEvent = {};
 const winner = interaction.dispatch('click',{point:{x:20,y:20},originalEvent});
 assert.equal(winner.owner,'place');
