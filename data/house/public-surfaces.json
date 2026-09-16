@@ -1,6 +1,6 @@
 {
-  "version": "1.1.0",
-  "updated": "2026-09-15",
+  "version": "1.2.0",
+  "updated": "2026-09-16",
   "authority": "public-route-identity",
   "room_registry": "data/house/rooms.json",
   "primary_gateway_ids": ["tim", "religion", "philosophy", "science", "world"],
@@ -21,6 +21,7 @@
     {"id":"story","route":"/tim-dooley/story/","canonical_route":"/tim-dooley/story/","surface_type":"guide","title":"Story","primary_parent":"tim","primary_room_ids":["potatoverse-canon","time-history","archive-sources","works","culture-information"],"status":"active","visibility":"specialist","primary_navigation":false,"is_view":true,"knowledge_owner":false,"legacy_routes":[]},
     {"id":"collection","route":"/corporium/","canonical_route":"/corporium/","surface_type":"guide","title":"Collection","primary_parent":"tim","primary_room_ids":["potatoverse-canon","culture-information","life-body","science-formal-models","archive-sources"],"status":"active","visibility":"specialist","primary_navigation":false,"is_view":true,"knowledge_owner":false,"legacy_routes":[]},
     {"id":"works","route":"/works/","canonical_route":"/works/","surface_type":"guide","title":"Works","primary_parent":"tim","primary_room_ids":["works","culture-information","archive-sources","time-history"],"status":"active","visibility":"specialist","primary_navigation":false,"is_view":true,"knowledge_owner":false,"legacy_routes":[]},
+    {"id":"interpretive-justice","route":"/philosophy/interpretive-justice.html","canonical_route":"/philosophy/interpretive-justice.html","surface_type":"guide","title":"Interpretive Justice","primary_parent":"philosophy","primary_room_ids":["potatoverse-canon","archive-sources","culture-information","research-lab"],"status":"active","visibility":"specialist","primary_navigation":false,"is_view":true,"knowledge_owner":false,"legacy_routes":[]},
     {"id":"world-map","route":"/world-map/","canonical_route":"/world-map/","surface_type":"explorer","title":"World Map","primary_parent":"world","primary_room_ids":["world-systems","time-history","archive-sources"],"status":"active","visibility":"specialist","primary_navigation":false,"is_view":true,"knowledge_owner":false,"legacy_routes":["/world-map/3d.html"]},
     {"id":"politics","route":"/politics/","canonical_route":"/politics/","surface_type":"guide","title":"Politics & Geopolitics","primary_parent":"world","primary_room_ids":["world-systems","time-history","culture-information","archive-sources"],"status":"active","visibility":"specialist","primary_navigation":false,"is_view":false,"knowledge_owner":false,"legacy_routes":[]},
     {"id":"north","route":"/north/","canonical_route":"/north/","surface_type":"guide","title":"North","primary_parent":"world","primary_room_ids":["world-systems","potatoverse-canon","time-history","archive-sources","research-lab"],"status":"active","visibility":"specialist","primary_navigation":false,"is_view":false,"knowledge_owner":false,"legacy_routes":[]},
