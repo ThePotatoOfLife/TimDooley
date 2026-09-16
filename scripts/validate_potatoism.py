@@ -27,8 +27,8 @@ def main():
     archive=load('knowledge/philosophy/archive-epistemics.json')
     authority=load('knowledge/philosophy/source-authority-and-provenance-policy.json')
     culture=load('data/culture-ontology.json')
-    information_war=load('data/spiritual-war-information-war.json')
-    philosophy_page=read('philosophy/index.html')
+    bridge=load('knowledge/philosophy/information-war-interpretive-justice-bridge.json')
+    interpretive_page=read('philosophy/interpretive-justice.html')
 
     if not religion.get('birth',{}).get('date'): errors.append('Potatoism birth marker missing')
     if len(religion.get('timeline',[]))<5: errors.append('Potatoism timeline is too short')
@@ -71,14 +71,17 @@ def main():
         if key not in metrics: errors.append(f'Culture ontology missing Interpretive Justice metric: {key}')
 
     for marker in ('Person Before Dossier','Hear Before You Close the Case','Memory That Can Update'):
-        if marker.casefold() not in philosophy_page.casefold():
-            errors.append(f'Public Philosophy missing Interpretive Justice teaching: {marker}')
-    if 'interpretive-justice-laws.json' not in philosophy_page:
-        errors.append('Public Philosophy does not link the Interpretive Justice law owner')
+        if marker.casefold() not in interpretive_page.casefold():
+            errors.append(f'Interpretive Justice reader missing teaching: {marker}')
+    if 'interpretive-justice-laws.json' not in interpretive_page:
+        errors.append('Interpretive Justice reader does not link canonical law owner')
+    if 'hearing can strengthen a criticism' not in interpretive_page.casefold():
+        errors.append('Interpretive Justice reader must state that hearing can strengthen criticism as well as revise it')
 
-    bridge=information_war.get('interpretive_justice_bridge',{}) if isinstance(information_war,dict) else {}
     if bridge.get('canonical_owner')!='knowledge/philosophy/interpretive-justice-laws.json':
-        errors.append('Information-war model missing canonical Interpretive Justice owner link')
+        errors.append('Information-war bridge missing canonical Interpretive Justice owner link')
+    if bridge.get('information_war_owner')!='data/spiritual-war-information-war.json':
+        errors.append('Information-war bridge missing information-war owner link')
     for key in ('representation_gap','identity_compression','narrative_lock_in','correction_asymmetry','source_independence'):
         if key not in bridge.get('shared_operators',[]):
             errors.append(f'Information-war bridge missing shared operator: {key}')
