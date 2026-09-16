@@ -2,13 +2,19 @@
 from __future__ import annotations
 
 import json
+import subprocess
 import tempfile
 from pathlib import Path
 
-from bible_corpus import CorpusError, assemble_fragments, assemble_relations, assemble_scenes
+from bible_corpus import CorpusError, assemble_fragments, assemble_relations, assemble_scenes, load_manifest
 from build_bible_comparator_quality import research_reasons
 from build_bible_research_queue import SPECIFIC, generic_task
 from test_bible_compact_dossiers import main as compact_dossiers_main
+
+ROOT = Path(__file__).resolve().parents[1]
+BASELINE_COMMIT = '834e153309c1594b9024ad05c9fc2f458160e7c5'
+BASELINE_RELATION_COUNT = 474
+GAPFILL_LAYER_ID = 'relations-gapfill-wave27'
 
 
 def dump(root: Path, rel: str, data: dict) -> None:
@@ -19,6 +25,60 @@ def dump(root: Path, rel: str, data: dict) -> None:
 
 def layer(layer_id: str, kind: str, path: str, precedence: int, status: str = 'additive') -> dict:
     return {'id': layer_id, 'kind': kind, 'path': path, 'status': status, 'precedence': precedence}
+
+
+def git_json(commit: str, path: str) -> dict:
+    proc = subprocess.run(
+        ['git', 'show', f'{commit}:{path}'],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    return json.loads(proc.stdout)
+
+
+def relation_ids_from_snapshot(commit: str) -> list[str]:
+    manifest = git_json(commit, 'knowledge/traditions/bible-layer-manifest.json')
+    active = {'canonical', 'additive'}
+    relation_layers = sorted(
+        (
+            item for item in manifest.get('layers', [])
+            if item.get('kind') == 'relations' and item.get('status') in active
+        ),
+        key=lambda item: (int(item.get('precedence', 0)), str(item.get('id', ''))),
+    )
+    ids: list[str] = []
+    seen: set[str] = set()
+    for meta in relation_layers:
+        data = git_json(commit, meta['path'])
+        for key in ('relations', 'new_relations'):
+            for row in data.get(key, []) or []:
+                rid = str(row.get('id') or '')
+                assert rid, f"baseline relation without id in {meta['id']}"
+                assert rid not in seen, f'duplicate baseline relation id {rid}'
+                seen.add(rid)
+                ids.append(rid)
+        for enrichment in data.get('enrichments', []) or []:
+            target = str(enrichment.get('relation_id') or '')
+            assert target in seen, f"baseline enrichment target missing before merge: {target}"
+    return ids
+
+
+def test_additive_gapfill_baseline() -> None:
+    baseline_ids = relation_ids_from_snapshot(BASELINE_COMMIT)
+    assert len(baseline_ids) == BASELINE_RELATION_COUNT, (
+        f'expected locked Bible baseline of {BASELINE_RELATION_COUNT}, got {len(baseline_ids)}'
+    )
+
+    manifest = load_manifest(ROOT)
+    current_rows = assemble_relations(ROOT, manifest)
+    current_ids = {row['id'] for row in current_rows}
+    missing = sorted(set(baseline_ids) - current_ids)
+    assert not missing, f'Bible baseline relation loss: {missing[:12]}'
+    assert any(layer.get('id') == GAPFILL_LAYER_ID for layer in manifest.get('layers', [])), (
+        'additive Bible gap-fill layer is not registered'
+    )
 
 
 def run_tests() -> None:
@@ -107,12 +167,14 @@ def run_tests() -> None:
     assert SPECIFIC['crucify-me-hesitation-trial-neighbor-2017']['status'] == 'recover-original-message'
     assert SPECIFIC['son-death-shore-bones-deep-water-2018-2019']['status'] == 'recover-primary-artifact'
 
+    test_additive_gapfill_baseline()
+
 
 def main() -> int:
     run_tests()
     if compact_dossiers_main() != 0:
         return 1
-    print('BIBLE CORPUS TESTS PASSED (18 behaviors)')
+    print('BIBLE CORPUS TESTS PASSED (19 behaviors)')
     return 0
 
 
