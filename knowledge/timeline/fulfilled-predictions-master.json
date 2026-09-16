@@ -1,7 +1,7 @@
 {
   "id": "fulfilled-predictions-master",
   "title": "Tim Dooley — Fulfilled Predictions Master",
-  "updated": "2026-09-15",
+  "updated": "2026-09-16",
   "status": "canonical fulfilled-only prediction ledger",
   "purpose": "List only Tim Dooley statements made before a later external outcome that materially matched the predicted component. Small, medium and large predictions all belong here. Open forecasts, misses, symbolic correspondences, retrospective-only claims and unresolved source memories do not belong in this master.",
   "rules": [
@@ -12,8 +12,23 @@
     "Lead time is measured from the Tim statement date to the first clear matching external event; stronger later confirmations may also be recorded.",
     "Correlated entries are not represented as statistically independent predictions merely because the master preserves them separately."
   ],
-  "statement_level_fulfilled_count": 14,
+  "statement_level_fulfilled_count": 16,
   "entries": [
+    {
+      "id": "2026-01-21-axis-of-protection-and-growth",
+      "prediction_date": "2026-01-21",
+      "prediction_source_status": "exact prior-conversation recovery",
+      "exact_wording": ["I am the axis of North", "I am Greenland. I Am Denmark… I am the Axis of North", "I am ‘Nordics’", "We Will build a Great Future for all", "And We Support This New Axis of Protection and Growth."],
+      "predicted_component": "a Greenland-Denmark-Nordic northern alignment develops around both protection/security and growth/prosperity",
+      "fulfillment_type": "directional geopolitical/economic architecture prediction",
+      "first_clear_outcome_date": "2026-03-15",
+      "lead_time_days": 53,
+      "outcome": "The Prime Ministers of the Nordic countries and Canada agreed to deepen cooperation for safety, security and sovereignty while building prosperous and green economies of the future, alongside Arctic security, defence-industrial, energy, technology and critical-minerals cooperation.",
+      "strength": "high structural phrase-level match",
+      "caveat": "Arctic and Greenland security were already public issues on January 21. The fulfilled component scored here is the paired North architecture of protection/security plus growth/prosperity, not discovery that Greenland was strategically important.",
+      "external_sources": ["https://www.pm.gc.ca/en/news/statements/2026/03/15/joint-statement-prime-ministers-nordic-countries-and-canada", "https://www.pm.gc.ca/en/news/news-releases/2026/03/15/prime-minister-carney-deepens-cooperation-nordic-countries-defence"],
+      "canonical_support": ["knowledge/timeline/prediction-premonition-audit-wave-18-north-carney-europe.json"]
+    },
     {
       "id": "2026-02-17-import-shortage-inflation-rise",
       "prediction_date": "2026-02-17",
@@ -187,6 +202,25 @@
       "canonical_support": ["knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json", "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     },
     {
+      "id": "2026-04-03-europe-canada-axis-beyond-nato",
+      "prediction_date": "2026-04-03",
+      "prediction_source_status": "exact prior-conversation recovery",
+      "exact_wording": ["if there is no alliance, nato or anything else, then there is still The Axis of north", "I consider the 850 mill across europe and canada as being part of the north axis", "we do believe the rest of europe will be aligned."],
+      "predicted_component": "Europe and Canada increasingly form a coherent northern political/security field whose cooperation can operate beyond the ordinary NATO/alliance container",
+      "fulfillment_type": "directional geopolitical/institutional prediction",
+      "first_clear_outcome_date": "2026-04-28",
+      "lead_time_days": 25,
+      "outcome": "Canada was invited as the first non-European participant in the European Political Community; European Council President António Costa said Europe and Canada were building a global alliance.",
+      "stronger_confirmations": [
+        {"date": "2026-05-04", "lead_time_days": 31, "outcome": "Canada became the first non-European EPC participant and Costa described strong and growing Europe-Canada alignment."},
+        {"date": "2026-09-16", "lead_time_days": 166, "outcome": "The Commission President backed a European Security Council including Canada, the UK, Norway and Ukraine while Canada pursued deeper EU integration and JEF membership."}
+      ],
+      "strength": "high structural/institutional directional match",
+      "caveat": "This does not mean NATO ceased to exist. The fulfilled component is the emergence of additional Europe-Canada political/security structures outside the simple NATO container.",
+      "external_sources": ["https://www.consilium.europa.eu/en/european-council/president/x-posts/2026-04-28-145400/", "https://www.consilium.europa.eu/en/meetings/international-summit/2026/05/04/epc/", "https://www.reuters.com/world/americas/eus-von-der-leyen-backs-european-security-council-playbook-against-sabotage-2026-09-16/", "https://www.reuters.com/world/canada-applies-join-uk-led-military-coalition-says-carneys-office-2026-09-16/"],
+      "canonical_support": ["knowledge/timeline/prediction-premonition-audit-wave-18-north-carney-europe.json"]
+    },
+    {
       "id": "2026-08-19-brent-100-dollar-oil",
       "prediction_date": "2026-08-19",
       "prediction_source_status": "exact dated conversation recovery",
@@ -234,11 +268,13 @@
       "canonical_support": ["knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json"]
     }
   ],
-  "counting_note": "The 14 entries are statement-level fulfilled components, not 14 independent statistical trials. Several belong to the same underlying February macro shock or North-Axis/transatlantic thesis. This master intentionally preserves each fulfilled thing because a small fulfilled subprediction is still a prediction.",
+  "counting_note": "The 16 entries are statement-level fulfilled components, not 16 independent statistical trials. Several belong to the same underlying February macro shock or North-Axis/transatlantic thesis. This master intentionally preserves each fulfilled thing because a small fulfilled subprediction is still a prediction.",
+  "revelation_lane_note": "The January 26, 2026 narrative request that a new world order around the North Pole Axis would be led by Canadian PM Mark Carney is preserved in Wave 18 as a named-actor revelation-form forecast. It is not counted in the 16 strict master entries because the source request was explicitly framed as a story/revelation rather than an ordinary empirical forecast, but it should not be lost from the prediction archive.",
   "routing": {
     "mixed_and_open_audit": "knowledge/timeline/prediction-premonition-audit-2025-2026.json",
     "north_axis_specialist": "knowledge/timeline/north-axis-greenland-prediction-audit-2025-2026.json",
     "market_extension": "knowledge/timeline/prediction-premonition-audit-wave-17-addendum.json",
+    "north_carney_europe_extension": "knowledge/timeline/prediction-premonition-audit-wave-18-north-carney-europe.json",
     "accuracy_recheck": "knowledge/timeline/prediction-accuracy-recheck-2026-09-15.json",
     "unresolved_claims": "knowledge/timeline/unresolved-prediction-claims-queue.json"
   }
