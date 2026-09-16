@@ -131,6 +131,7 @@ try {
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
+  await loadAfterPaint('Interaction Router', './3d-interaction-router.js');
   await loadAfterPaint('Inspector Router', './3d-inspector-router.js');
   await loadAfterPaint('Inspector URL', './3d-inspector-url.js');
   await loadAfterPaint('Country selection', './3d-country-selection.js');
