@@ -29,6 +29,7 @@ def main():
     culture=load('data/culture-ontology.json')
     bridge=load('knowledge/philosophy/information-war-interpretive-justice-bridge.json')
     interpretive_page=read('philosophy/interpretive-justice.html')
+    interpretive_source_map=read('knowledge/philosophy/interpretive-justice-source-map.md')
 
     if not religion.get('birth',{}).get('date'): errors.append('Potatoism birth marker missing')
     if len(religion.get('timeline',[]))<5: errors.append('Potatoism timeline is too short')
@@ -54,9 +55,17 @@ def main():
     if missing_laws: errors.append('Interpretive Justice missing laws: '+', '.join(missing_laws))
     if 'disciplines judgment' not in str(interpretive.get('boundary','')).casefold():
         errors.append('Interpretive Justice must explicitly discipline rather than abolish judgment')
+    if interpretive.get('source_map')!='knowledge/philosophy/interpretive-justice-source-map.md':
+        errors.append('Interpretive Justice canonical owner missing provenance source_map')
+    if 'september 16, 2026' not in str(interpretive.get('historical_boundary','')).casefold():
+        errors.append('Interpretive Justice canonical owner missing dated historical boundary')
     situated=laws.get('situated_first_person_authority',{}) if isinstance(laws,dict) else {}
     if 'does not automatically settle external empirical' not in str(situated.get('boundary','')).casefold():
         errors.append('Situated first-person authority lacks external-fact boundary')
+
+    for marker in ('PRE_EXISTING_CANON','ARCHIVE_SYNTHESIS','BIBLICAL_COMPARISON','DEFERRED_APPLICATION','September 16, 2026'):
+        if marker.casefold() not in interpretive_source_map.casefold():
+            errors.append(f'Interpretive Justice source map missing provenance marker: {marker}')
 
     mechanics=archive.get('representation_mechanics',{}) if isinstance(archive,dict) else {}
     for key in ('representation_gap','identity_compression','narrative_lock_in','jurisdiction_creep','falsifier_loss','proportional_memory'):
@@ -75,6 +84,10 @@ def main():
             errors.append(f'Interpretive Justice reader missing teaching: {marker}')
     if 'interpretive-justice-laws.json' not in interpretive_page:
         errors.append('Interpretive Justice reader does not link canonical law owner')
+    if 'interpretive-justice-source-map.md' not in interpretive_page:
+        errors.append('Interpretive Justice reader does not link provenance source map')
+    if '../context/culture/' not in interpretive_page or '../context/source-authority/' not in interpretive_page:
+        errors.append('Interpretive Justice reader corridor must link Culture and Sources')
     if 'hearing can strengthen a criticism' not in interpretive_page.casefold():
         errors.append('Interpretive Justice reader must state that hearing can strengthen criticism as well as revise it')
 
