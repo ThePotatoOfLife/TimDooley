@@ -1,0 +1,56 @@
+{
+  "precision_upgrade": [
+    {
+      "id": "date-ledger-row",
+      "date": "2026-04-29",
+      "quote": "Example statement",
+      "source_record": "date-ledger",
+      "source_occurrence_id": "old-1"
+    },
+    {
+      "id": "timestamp-ledger-row",
+      "date": "2026-04-29",
+      "timestamp_utc": "2026-04-29T20:05:28Z",
+      "quote": "Example statement",
+      "source_record": "timestamp-ledger",
+      "source_occurrence_id": "new-1"
+    }
+  ],
+  "same_second_distinct": [
+    {
+      "id": "same-second-a",
+      "date": "2026-07-31",
+      "timestamp_utc": "2026-07-31T20:07:22Z",
+      "quote": "First distinct statement",
+      "source_record": "timestamp-ledger",
+      "source_occurrence_id": "same-a"
+    },
+    {
+      "id": "same-second-b",
+      "date": "2026-07-31",
+      "timestamp_utc": "2026-07-31T20:07:22Z",
+      "quote": "Second distinct statement",
+      "source_record": "timestamp-ledger",
+      "source_occurrence_id": "same-b"
+    }
+  ],
+  "status_id_merge": [
+    {
+      "id": "status-a",
+      "date": "2026-09-14",
+      "quote": "Status-backed statement",
+      "status_id": "1234567890",
+      "source_record": "status-index",
+      "source_occurrence_id": "status-source"
+    },
+    {
+      "id": "status-b",
+      "date": "2026-09-14",
+      "timestamp_utc": "2026-09-14T08:11:59Z",
+      "quote": "Status-backed statement",
+      "status_id": "1234567890",
+      "source_record": "timestamp-ledger",
+      "source_occurrence_id": "timestamp-source"
+    }
+  ]
+}
