@@ -6,7 +6,6 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
-from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -66,9 +65,15 @@ EXPECTED_PUBLIC_ROOMS = {
     "rooms": "rooms/",
 }
 
-DEEP_RECORDS = {
-    "law/index.html": "knowledge/legal/mai-mercado-2016-research-index.md",
-    "economy/index.html": "knowledge/economics/tim-dooley-inflation-ledger.md",
+SPECIALIST_LINKS = {
+    "law/index.html": (
+        "knowledge/legal/mai-mercado-2016-research-index.md",
+        "data/blueprints/law-regulation-blueprint.json",
+    ),
+    "economy/index.html": (
+        "knowledge/economics/tim-dooley-inflation-ledger.md",
+        "knowledge/economics/north-obligation-graph-schema.json",
+    ),
 }
 
 EXPECTED_BACKEND_FAMILIES = {
@@ -132,13 +137,14 @@ def main() -> int:
     if "cult" not in rooms_text.lower() or "high-control" not in rooms_text.lower():
         errors.append("Rooms directory must expose cult/high-control analysis by name")
 
-    for relative, record_path in DEEP_RECORDS.items():
+    for relative, source_paths in SPECIALIST_LINKS.items():
         text = page_text.get(relative, "")
-        target = f"../explore/#record={quote(record_path, safe='')}"
-        if target not in text:
-            errors.append(f"{relative} must deep-link its specialist record through Explore: {record_path}")
-        if not (ROOT / record_path).is_file():
-            errors.append(f"deep Room record does not exist: {record_path}")
+        for source_path in source_paths:
+            target = f"../{source_path}"
+            if target not in text:
+                errors.append(f"{relative} must link specialist source {source_path}")
+            if not (ROOT / source_path).is_file():
+                errors.append(f"specialist Room source does not exist: {source_path}")
 
     world_path = ROOT / "world" / "index.html"
     if not world_path.exists():
@@ -153,10 +159,9 @@ def main() -> int:
         surfaces = load_json("data/house/public-surfaces.json")
         topology = load_json("knowledge/research/potato-house-master/public-route-topology.json")
         bridge = load_json("data/frontend-atlas-bridge.json")
-        manifest = load_json("manifest.json")
     except Exception as exc:
         errors.append(f"could not load Rooms projection contracts: {exc}")
-        surfaces = topology = bridge = manifest = {}
+        surfaces = topology = bridge = {}
 
     surface_rows = {
         row.get("id"): row
@@ -204,19 +209,13 @@ def main() -> int:
             if row.get(field) != value:
                 errors.append(f"frontend bridge {family}.{field} must be {value!r}")
 
-    world_branch = next((row for row in manifest.get("branches", []) if row.get("id") == "world"), {})
-    world_records = set(world_branch.get("records", []))
-    for record_path in DEEP_RECORDS.values():
-        if record_path not in world_records:
-            errors.append(f"World manifest must register deep Room record for Explore: {record_path}")
-
     if errors:
         print("PUBLIC ROOMS VALIDATION FAILED")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    print("PUBLIC ROOMS VALIDATION PASSED: five Doors preserved; subject Rooms and deep Law/Economy records are directly discoverable.")
+    print("PUBLIC ROOMS VALIDATION PASSED: five Doors preserved; subject Rooms and specialist Law/Economy sources are directly discoverable.")
     return 0
 
 
