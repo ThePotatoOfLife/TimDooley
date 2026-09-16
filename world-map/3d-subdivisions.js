@@ -252,10 +252,6 @@ function selectSubdivision(partition, feature, options = {}) {
 async function handleSharedLayerClick(event) {
   const id = event.features?.[0]?.properties?.id;
   if (!id) return;
-  if (event.originalEvent) {
-    event.originalEvent.__potatoAtlasSubdivisionHandled = true;
-    event.originalEvent.__potatoAtlasOverlayHandled = true;
-  }
   try {
     const index = await subdivisionIndex();
     const partition = partitionForId(index, id);
@@ -282,7 +278,10 @@ function bindSharedLayerEvents() {
     // preload the Interaction Router, so production click ownership is centralized.
     map.on('mouseenter', HIT_ID, () => { map.getCanvas().style.cursor = 'pointer'; });
     map.on('mouseleave', HIT_ID, () => { map.getCanvas().style.cursor = ''; });
-    map.on('click', HIT_ID, handleSharedLayerClick);
+    map.on('click', HIT_ID, event => {
+      if (event?.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
+      return handleSharedLayerClick(event);
+    });
   }
   eventsBound = true;
 }
