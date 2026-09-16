@@ -2,14 +2,14 @@
 """Stdlib-only contract smoke test for the public-statement Evidence Root subsystem."""
 from __future__ import annotations
 
-from scripts.public_statement_evidence_root import reconcile_records
-from scripts.build_public_statement_evidence_root import build_evidence_root
-from scripts.enrich_public_statement_evidence_root import enrich_status_ids
-from scripts.import_public_statement_timestamp_capture import parse_capture
-from scripts.validate_public_statement_evidence_root import validate_evidence_root
-from scripts.build_public_statement_episodes import build_episodes
-from scripts.build_public_statement_role_mentions import build_role_mentions
-from scripts.build_public_statement_development_threads import build_development_threads
+from public_statement_evidence_root import reconcile_records
+from build_public_statement_evidence_root import build_evidence_root
+from enrich_public_statement_evidence_root import enrich_status_ids
+from import_public_statement_timestamp_capture import parse_capture
+from validate_public_statement_evidence_root import validate_evidence_root
+from build_public_statement_episodes import build_episodes
+from build_public_statement_role_mentions import build_role_mentions
+from build_public_statement_development_threads import build_development_threads
 
 
 def validate_contract() -> list[str]:
