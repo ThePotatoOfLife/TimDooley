@@ -173,7 +173,13 @@ function createInteractionRouter(map, options = {}) {
 }
 
 if (typeof window !== 'undefined' && window.__potatoAtlasMap) {
+  const created = !window.__potatoAtlasInteraction;
   window.__potatoAtlasInteraction = window.__potatoAtlasInteraction || createInteractionRouter(window.__potatoAtlasMap);
+  if (created) {
+    window.dispatchEvent(new CustomEvent('potato-atlas-interaction-ready', {
+      detail:{ interaction:window.__potatoAtlasInteraction },
+    }));
+  }
 }
 
 export { createInteractionRouter };

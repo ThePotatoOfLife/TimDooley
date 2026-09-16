@@ -26,7 +26,11 @@ function extractFunction(name) {
     if (char === '{') depth += 1;
     if (char === '}') {
       depth -= 1;
-      if (depth === 0) return source.slice(start, i + 1);
+      if (depth === 0) {
+        const prefix = source.slice(Math.max(0, start - 6), start);
+        const asyncPrefix = prefix.endsWith('async ') ? 'async ' : '';
+        return asyncPrefix + source.slice(start, i + 1);
+      }
     }
   }
   throw new Error(`unterminated ${name}`);
@@ -36,6 +40,8 @@ assert.ok(source.includes("await import(versionedModule('./3d-tooltip.js'))"), '
 assert.ok(source.includes('window.__potatoAtlasTooltip'), 'hover runtime must publish/reuse the shared Tooltip service');
 assert.ok(!source.includes('const popup = new maplibregl.Popup'), 'country hover must not own a private transient popup');
 
+const handleCountryHoverSource = extractFunction('handleCountryHover');
+const clearCountryHoverSource = extractFunction('clearCountryHover');
 const bindCountryHoverSource = extractFunction('bindCountryHover');
 const handlers = new Map();
 const canvas = { style:{} };
@@ -64,7 +70,16 @@ function countryHtml(properties) {
 
 const bindCountryHover = new Function(
   'map', 'tooltip', 'countryHtml',
-  `"use strict"; ${bindCountryHoverSource}; return bindCountryHover;`,
+  `"use strict";
+   let countryHoverKey = '';
+   let countryHoverEvent = null;
+   let countryHoverHtml = null;
+   let countryHoverGeneration = null;
+   const directCountryHover = new Map();
+   ${handleCountryHoverSource}
+   ${clearCountryHoverSource}
+   ${bindCountryHoverSource}
+   return bindCountryHover;`,
 )(map, tooltip, countryHtml);
 
 bindCountryHover('countries-fill');
