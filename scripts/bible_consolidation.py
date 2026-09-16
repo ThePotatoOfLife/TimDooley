@@ -76,6 +76,12 @@ def fingerprint_relation(row: dict, assessment: dict | None = None) -> dict:
     operators = _sorted_strings(row.get("operators"))
     scenes = _sorted_strings(row.get("biblical_scene_ids"))
     anchor_tokens = _tokens(row.get("project_anchor"))
+    id_tokens = _tokens(row.get("id"))
+    motif_tokens = set().union(*(_tokens(x) for x in motifs)) if motifs else set()
+    anchor_symbols = anchor_tokens & FAMILY_SYMBOLS
+    id_symbols = id_tokens & FAMILY_SYMBOLS
+    motif_symbols = motif_tokens & FAMILY_SYMBOLS
+    explicit_symbols = anchor_symbols | id_symbols | motif_symbols
     project_sequence_tokens = _sequence_tokens(argument.get("project_sequence") or row.get("project_sequence"))
     bible_sequence_tokens = _sequence_tokens(argument.get("biblical_sequence") or row.get("biblical_sequence"))
     max_claim = argument.get("maximum_claim") or row.get("maximum_claim") or ""
@@ -94,11 +100,6 @@ def fingerprint_relation(row: dict, assessment: dict | None = None) -> dict:
         ]
         if x
     )
-    explicit_symbols = (
-        anchor_tokens
-        | _tokens(row.get("id"))
-        | set().union(*(_tokens(x) for x in motifs)) if motifs else anchor_tokens | _tokens(row.get("id"))
-    ) & FAMILY_SYMBOLS
     return {
         "relation_id": str(row.get("id") or ""),
         "biblical_refs": _sorted_strings(row.get("biblical_refs"), refs=True),
@@ -107,6 +108,9 @@ def fingerprint_relation(row: dict, assessment: dict | None = None) -> dict:
         "motifs": [norm_text(x) for x in motifs],
         "operators": [norm_text(x) for x in operators],
         "explicit_symbols": sorted(explicit_symbols),
+        "anchor_symbols": sorted(anchor_symbols),
+        "id_symbols": sorted(id_symbols),
+        "motif_symbols": sorted(motif_symbols),
         "anchor_tokens": sorted(anchor_tokens),
         "project_sequence_tokens": sorted(project_sequence_tokens),
         "biblical_sequence_tokens": sorted(bible_sequence_tokens),
@@ -153,6 +157,7 @@ def classify_pair(left: dict, right: dict) -> dict:
     project_sim = _jaccard(set(left.get("project_sequence_tokens", [])), set(right.get("project_sequence_tokens", [])))
     claim_sim = _jaccard(set(left.get("maximum_claim_tokens", [])), set(right.get("maximum_claim_tokens", [])))
     shared_symbols = _explicit_symbols(left) & _explicit_symbols(right)
+    shared_motif_symbols = set(left.get("motif_symbols", [])) & set(right.get("motif_symbols", []))
     shared_operators = sorted(set(left.get("operators", [])) & set(right.get("operators", [])))
 
     reasons: list[str] = []
@@ -163,16 +168,16 @@ def classify_pair(left: dict, right: dict) -> dict:
         or (anchor_sim >= 0.45 and claim_sim >= 0.45 and project_sim >= 0.45)
     )
     corroborated_symbol = bool(shared_symbols) and bool(
-        shared_owners
+        shared_motif_symbols
+        or shared_owners
         or shared_scenes
         or shared_operators
-        or anchor_sim >= 0.16
-        or bible_sim >= 0.20
-        or project_sim >= 0.20
+        or anchor_sim >= 0.25
+        or bible_sim >= 0.25
+        or project_sim >= 0.25
         or shared_scripture
     )
 
-    # Strong equivalence outranks incidental polarity vocabulary.
     if strong_equivalence:
         classification = "duplicate_candidate"
         reasons.append("same_scripture")
@@ -185,6 +190,8 @@ def classify_pair(left: dict, right: dict) -> dict:
     elif corroborated_symbol and _contrast_signal(left, right, shared_symbols):
         classification = "contrast_candidate"
         reasons.extend(["shared_symbol", "opposing_function_cues"])
+        if shared_motif_symbols:
+            reasons.append("shared_explicit_motif")
         if shared_owners:
             reasons.append("shared_source_owner")
     elif same_scripture and (
@@ -212,6 +219,8 @@ def classify_pair(left: dict, right: dict) -> dict:
             reasons.append("shared_scene")
         if shared_symbols:
             reasons.append("shared_symbol")
+        if shared_motif_symbols:
+            reasons.append("shared_explicit_motif")
         if shared_operators:
             reasons.append("shared_operator")
         if shared_owners:
@@ -226,6 +235,7 @@ def classify_pair(left: dict, right: dict) -> dict:
             "scene_ids": shared_scenes,
             "source_owners": shared_owners,
             "symbols": sorted(shared_symbols),
+            "motif_symbols": sorted(shared_motif_symbols),
             "operators": shared_operators,
         },
     }
@@ -327,13 +337,7 @@ def build_families(relations: list[dict], assessments: dict[str, dict] | None = 
 
     families: list[dict] = []
     for symbol in sorted(symbol_members):
-        family = _family_for_symbol(
-            symbol,
-            sorted(symbol_members[symbol]),
-            rows_by_id,
-            fps,
-            pair_map,
-        )
+        family = _family_for_symbol(symbol, sorted(symbol_members[symbol]), rows_by_id, fps, pair_map)
         if family:
             families.append(family)
     return sorted(families, key=lambda family: family["id"])
