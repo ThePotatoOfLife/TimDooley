@@ -15,6 +15,8 @@ import validate_world_map_places_ownership as places_ownership
 import validate_world_map_inspector_router as inspector_router
 import validate_world_map_tooltip as tooltip
 import validate_world_map_style_lifecycle as style_lifecycle
+import validate_world_map_runtime_telemetry as runtime_telemetry
+import validate_world_map_behavioral_scenarios as behavioral_scenarios
 import validate_world_map_physical_water as physical_water
 import validate_world_map_subdivisions as subdivisions
 import validate_world_map_search_race as search_race
@@ -54,6 +56,12 @@ if __name__ == "__main__":
     if status:
         raise SystemExit(status)
     status = style_lifecycle.main()
+    if status:
+        raise SystemExit(status)
+    status = runtime_telemetry.main()
+    if status:
+        raise SystemExit(status)
+    status = behavioral_scenarios.main()
     if status:
         raise SystemExit(status)
     status = physical_water.main()

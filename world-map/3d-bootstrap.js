@@ -145,6 +145,7 @@ try {
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');
   await loadAfterPaint('Investigation Surface', './3d-investigation-surface.js');
+  await loadAfterPaint('Runtime Telemetry', './3d-runtime-telemetry.js');
 
   setStatus('');
   if (guard()) guard().stage = 'interactive';

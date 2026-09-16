@@ -17,6 +17,32 @@ function createTooltipService(map, options = {}) {
   let invalidations = 0;
   let staleSuppressions = 0;
 
+  function state() {
+    return {
+      generation,
+      owner:activeOwner,
+      visible,
+      lastReason,
+      invalidations,
+      staleSuppressions,
+    };
+  }
+
+  function publishState(reason = lastReason) {
+    const snapshot = state();
+    const detail = { reason:String(reason || snapshot.lastReason || 'state'), state:snapshot };
+    if (eventTarget?.dispatchEvent) {
+      const event = typeof CustomEvent === 'function'
+        ? new CustomEvent('potato-atlas-tooltip-state', { detail })
+        : { type:'potato-atlas-tooltip-state', detail };
+      eventTarget.dispatchEvent(event);
+    }
+    if (typeof window !== 'undefined' && window.__potatoAtlasDiagnostics) {
+      window.__potatoAtlasDiagnostics.tooltip = snapshot;
+    }
+    return snapshot;
+  }
+
   function removeVisual() {
     popup.remove?.();
     visible = false;
@@ -29,6 +55,7 @@ function createTooltipService(map, options = {}) {
     // immediately; async content for the new target may arrive later.
     if (visible) removeVisual();
     lastReason = owner ? `generation:${owner}` : 'generation';
+    publishState('generation');
     return generation;
   }
 
@@ -37,12 +64,14 @@ function createTooltipService(map, options = {}) {
     if (!key) throw new TypeError('tooltip owner is required');
     if (expectedGeneration !== generation) {
       staleSuppressions += 1;
+      publishState('stale-suppression');
       return false;
     }
     popup.setLngLat?.(lngLat).setHTML?.(String(html ?? '')).addTo?.(map);
     activeOwner = key;
     visible = true;
     lastReason = 'show';
+    publishState('show');
     return true;
   }
 
@@ -51,6 +80,7 @@ function createTooltipService(map, options = {}) {
     invalidations += 1;
     lastReason = String(reason || 'invalidate');
     removeVisual();
+    publishState(lastReason);
     return generation;
   }
 
@@ -61,23 +91,13 @@ function createTooltipService(map, options = {}) {
     return true;
   }
 
-  function state() {
-    return {
-      generation,
-      owner:activeOwner,
-      visible,
-      lastReason,
-      invalidations,
-      staleSuppressions,
-    };
-  }
-
   for (const eventName of ['dragstart','zoomstart','rotatestart','pitchstart']) {
     map.on(eventName, () => invalidate(eventName));
   }
   eventTarget?.addEventListener?.('potato-atlas-projection-change', () => invalidate('projection-change'));
   eventTarget?.addEventListener?.('potato-atlas-style-generation', () => invalidate('style-generation'));
 
+  publishState('init');
   return Object.freeze({ nextGeneration, show, invalidate, clear, state });
 }
 
