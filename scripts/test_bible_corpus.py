@@ -12,7 +12,7 @@ from build_bible_research_queue import SPECIFIC, generic_task
 from test_bible_compact_dossiers import main as compact_dossiers_main
 
 ROOT = Path(__file__).resolve().parents[1]
-BASELINE_COMMIT = '834e153309c1594b9024ad05c9fc2f458160e7c5'
+BASELINE_COMMIT = '11928304ecbde5290cac5fca818bdb449a25f3c6'
 BASELINE_RELATION_COUNT = 474
 GAPFILL_LAYER_ID = 'relations-gapfill-wave27'
 
