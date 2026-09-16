@@ -4,6 +4,11 @@
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Land cover requires the core map.');
+if (!window.__potatoAtlasStyleLifecycle) {
+  const { createStyleLifecycle } = await import('./3d-style-lifecycle.js');
+  window.__potatoAtlasStyleLifecycle = createStyleLifecycle(map);
+}
+const styleLifecycle = window.__potatoAtlasStyleLifecycle;
 
 const SOURCE_ID = 'atlas-land-cover-worldcover-2021';
 const LAYER_ID = 'atlas-land-cover-worldcover-2021-raster';
@@ -149,22 +154,25 @@ async function disable() {
 
 async function toggle() { return enabled ? disable() : enable(); }
 
-map.on('styledata', () => {
-  if (!enabled || restoring) return;
-  restoring = true;
-  queueMicrotask(() => {
-    try {
-      ensureSource();
-      ensureLayer();
-      applyOpacity();
-      map.setLayoutProperty(LAYER_ID, 'visibility', 'visible');
-      setLegendVisible(true);
-    } catch (error) {
-      console.warn('ESA WorldCover layer could not restore after style change.', error);
-    } finally {
-      restoring = false;
-    }
-  });
+styleLifecycle.register('physical-land-cover', {
+  priority:20,
+  restore:() => {
+    if (!enabled || restoring) return;
+    restoring = true;
+    queueMicrotask(() => {
+      try {
+        ensureSource();
+        ensureLayer();
+        applyOpacity();
+        map.setLayoutProperty(LAYER_ID, 'visibility', 'visible');
+        setLegendVisible(true);
+      } catch (error) {
+        console.warn('ESA WorldCover layer could not restore after style change.', error);
+      } finally {
+        restoring = false;
+      }
+    });
+  },
 });
 
 window.__potatoAtlasLandCover = {
