@@ -39,7 +39,9 @@ These capabilities are established enough to build on:
 - panel lifecycle ownership;
 - progressive/lazy specialist loading;
 - mathematical calibration separating geography, topology, hierarchy, time and gated flow;
-- browse/performance regressions for known hover, panel, cache and overlap failures.
+- viewport-safe UI padding so map camera state accounts for the desktop inspector;
+- deterministic collision priority and adaptive placement for place labels;
+- browse/performance regressions for known hover, panel, cache, overlap and occlusion failures.
 
 ## ACTIVE — CONTROL-PLANE HARDENING
 
@@ -57,7 +59,7 @@ These capabilities are established enough to build on:
 - [x] Add canonical named scale bands.
 - [x] Separate load/render/label/interaction thresholds in the scale contract.
 - [x] Add hysteresis for boundary crossings where churn is possible.
-- [ ] Finish migrating Places/subdivision thresholds. *(promotion/loading is shared; MapLibre layer `minzoom` literals remain)*
+- [x] Finish migrating Places/subdivision load/render/label thresholds, including MapLibre layer `minzoom` ownership.
 - [ ] Audit every remaining module for raw zoom magic numbers.
 
 ### C. Interaction safety
@@ -86,9 +88,11 @@ These capabilities are established enough to build on:
 - [ ] Add visual-channel compatibility matrix.
 - [ ] Audit every writer of country fill/pattern/outline/height.
 - [x] Centralize style-generation restoration. *(Style Lifecycle owns the single active `styledata` listener; physical restorers run before Render Stack reconciliation.)*
-- [ ] Consolidate global UI design tokens, z-index bands and common surfaces.
+- [ ] Consolidate global UI design tokens, z-index bands and common surfaces. *(Inspector width and map-safe camera padding are centralized; broader token convergence remains.)*
+- [x] Bound World Bar dropdown height/scroll ownership and keep map camera fits clear of the desktop inspector.
+- [x] Add deterministic place-label collision priority, flexible anchors and scale-aware collision spacing.
 - [ ] Make top-level controls increasingly question-oriented: Browse / Compare / Connections / Evidence / Time / View.
-- [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion.
+- [ ] Audit mobile occlusion, keyboard access, focus return, color-only semantics and reduced motion. *(mobile inspector/menu occlusion now has bounded layout rules; accessibility work remains)*
 - [ ] Add concise accessible active-view summaries.
 
 ## NEXT — VERIFICATION + OBSERVABILITY
