@@ -26,7 +26,11 @@ function extractFunction(name) {
     if (char === '{') depth += 1;
     if (char === '}') {
       depth -= 1;
-      if (depth === 0) return source.slice(start, i + 1);
+      if (depth === 0) {
+        const prefix = source.slice(Math.max(0, start - 6), start);
+        const asyncPrefix = prefix.endsWith('async ') ? 'async ' : '';
+        return asyncPrefix + source.slice(start, i + 1);
+      }
     }
   }
   throw new Error(`unterminated ${name}`);
