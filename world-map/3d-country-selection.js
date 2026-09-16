@@ -270,20 +270,6 @@ function installStrip() {
     if (event.target.closest('.selection-clear-all')) clearPins();
   });
 }
-function interceptPolygonClick(event) {
-  if (document.getElementById('compare')?.classList.contains('active')) return;
-  const code = event.features?.[0]?.properties?.iso3;
-  if (!code || !entityKnown(code)) return;
-  if (event.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
-  if (event.originalEvent?.shiftKey) {
-    activateCountry(code).then(() => togglePinnedCountry(code));
-    return;
-  }
-  activateCountry(code);
-}
-function installClickInterception() {
-  for (const layer of ['countries-fill', 'countries-extrude']) if (map.getLayer(layer)) map.on('click', layer, interceptPolygonClick);
-}
 function adoptExternalSelection(event) {
   if (syncingCore) return;
   const detail = event?.detail || {};
@@ -339,7 +325,7 @@ async function restoreState() {
 }
 
 await loadData();
-installStrip(); installClickInterception(); applySelectionStates(); installRelationPaint(); ready = true;
+installStrip(); applySelectionStates(); installRelationPaint(); ready = true;
 
 window.goCountry = async code => {
   if (document.getElementById('compare')?.classList.contains('active')) return baseGoCountry(code);
