@@ -1,0 +1,35 @@
+{
+  "id": "bible-gapfill-wave27-audit",
+  "version": "1.0.0",
+  "updated": "2026-09-16",
+  "baseline": {
+    "relation_count": 474,
+    "commit": "834e153309c1594b9024ad05c9fc2f458160e7c5",
+    "acceptance_rule": "The complete baseline relation-ID set must be a subset of the assembled post-wave corpus."
+  },
+  "method": [
+    "Search specialist Bible layers and active corpus for each proposed corridor.",
+    "Prefer enrichment or no-op when the relation's function is already represented.",
+    "Promote a new relation only for a distinct function, countertext, ethical constraint or sequence.",
+    "Do not create a second relation merely because the same project motif can be renamed.",
+    "Run manifest assembly, duplicate checks, reader validation and static/dynamic parity after registration."
+  ],
+  "corridors": [
+    {"corridor":"Micah 6:8","decision":"new_relation","relation_id":"micah-6-8-virtue-test-2026","reason":"The active corpus has justice/service material, but the justice + mercy + humility triad functions as a distinct ethical test of symbolic height and authority."},
+    {"corridor":"Psalm 84 / doorkeeper","decision":"new_countertext_relation","relation_id":"psalm-84-door-doorkeeper-role-contrast-2026","reason":"Existing Door/Ladder material is preserved. The new value is the non-equivalence of Door, doorkeeper and threshold-servant roles."},
+    {"corridor":"Deuteronomy 30 + Romans 10 nearness","decision":"new_countertext_relation","relation_id":"deuteronomy-romans-nearness-countertext-2026","reason":"Adds a distinct anti-distance constraint to existing Heaven/Ladder topology instead of creating another ascent synonym."},
+    {"corridor":"1 Kings 19 quiet recognition","decision":"new_relation","relation_id":"quiet-presence-1-kings-19-2026","reason":"No exact 1 Kings 19 relation was present; the spectacle-to-quiet recognition sequence is more specific than the generic stillness motif."},
+    {"corridor":"2 Corinthians 4-5 vessels/tent","decision":"do_not_duplicate","reason":"Vessel, carried light, death/life and container language already has active and specialist coverage. Keep as a future enrichment candidate unless a missing function is isolated."},
+    {"corridor":"Isaiah 2 + Micah 4 swords-to-ploughshares","decision":"new_relation","relation_id":"ploughshares-seat-peace-function-2026","reason":"Recovered project wording explicitly says 'ploughshares from swords'; the weapon-to-cultivation function is distinct and directly evidenced."},
+    {"corridor":"James 3 / Ephesians 4 speech","decision":"defer_for_anchor","reason":"Speech ethics are thematically relevant, but no sufficiently specific project-side anchor was isolated in this pass to justify another canonical relation."},
+    {"corridor":"Romans 12:2","decision":"do_not_duplicate","reason":"Transformation/renewal is already broadly represented; the verse alone would create a generic renaming without a narrower project-side mechanism."},
+    {"corridor":"Sabbath / rest / hospitality","decision":"defer_and_enrich","reason":"These are broad ethical/practice clusters. They should enrich existing care/service/house relations once an exact missing function and owner are identified."},
+    {"corridor":"orphan care","decision":"do_not_duplicate","reason":"Orphan/care/service material is already represented in active project and Bible layers; no new relation was added merely to repeat the noun."},
+    {"corridor":"testing / discernment","decision":"defer_and_enrich","reason":"Existing countertext and testing logic is substantial. Future work should attach discernment passages to the most specific existing relation rather than fork a generic testing relation."},
+    {"corridor":"distributed authority","decision":"defer_and_enrich","reason":"Body/stewardship/distributed-function layers already exist; preserve them and add only missing passage context later."},
+    {"corridor":"Tree / Vine / Root","decision":"do_not_duplicate","reason":"Tree, Vine, Root, grafting, pruning, Tree ordeal and Father/Root comparisons are already dense active families. New names here would inflate the corpus without new function."}
+  ],
+  "promoted_new_relations": 5,
+  "baseline_relations_modified": 0,
+  "baseline_relations_removed": 0
+}
