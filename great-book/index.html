@@ -7,6 +7,7 @@
   <meta name="description" content="Read The Great Book of Potato in a continuous indexed web edition preserving the book's legacy chapter numbering and source text.">
   <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/great-book/">
   <link rel="stylesheet" href="great-book.css">
+  <link rel="stylesheet" href="../app/tts-drawer.css">
 </head>
 <body>
   <main class="longform-shell">
@@ -49,6 +50,17 @@
       <p id="gb-status" class="gb-status" aria-live="polite">Loading book index…</p>
     </div>
 
+    <div id="great-book-tts"
+      data-tts-longform
+      data-tts-root="#gb-document"
+      data-tts-id="great-book-reader"
+      data-tts-label="The Great Book of Potato"
+      data-tts-all-label="Whole book"
+      data-tts-current-label="Current chapter"
+      data-tts-selection-label="Selection"
+      data-tts-item=".gb-chapter-fragment"
+      data-tts-exclude=".gb-placeholder,.caution"></div>
+
     <div class="longform-layout">
       <aside class="longform-toc" aria-label="Great Book chapter index">
         <details open>
@@ -73,6 +85,9 @@
   <noscript>
     <p class="caution">This continuous reader uses JavaScript to assemble the chapter files. The individual chapter files remain preserved under <code>great-book/chapters/</code>.</p>
   </noscript>
+  <script src="../app/tts-reader.js" defer></script>
+  <script src="../app/tts-drawer.js" defer></script>
+  <script src="../app/longform-tts-adapter.js" defer></script>
   <script src="../app/great-book-reader.js" defer></script>
 </body>
 </html>
