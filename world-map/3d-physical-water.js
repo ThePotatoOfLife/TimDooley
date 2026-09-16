@@ -81,7 +81,10 @@ function addLayer(definition, before) {
 
 function waterLayers(sources, layers, detail = false) {
   const beforeLine = map.getLayer('countries-line') ? 'countries-line' : undefined;
-  const minZoom = detail ? DETAIL_ZOOM : 0;
+  // Scale ownership lives in syncScaleDetail(). Do not also put DETAIL_ZOOM on
+  // MapLibre's native minzoom: zoomend switching plus native minzoom can leave a
+  // transient frame where neither overview nor detail water is drawable.
+  const minZoom = 0;
   addLayer({id:layers.oceanFill,type:'fill',source:sources.ocean,minzoom:minZoom,layout:{visibility:'none'},paint:{'fill-color':'#426f86','fill-opacity':detail ? 0.42 : 0.36}}, beforeLine);
   addLayer({id:layers.lakeFill,type:'fill',source:sources.lakes,minzoom:minZoom,layout:{visibility:'none'},paint:{'fill-color':'#6a9db4','fill-opacity':detail ? 0.64 : 0.58}}, beforeLine);
   addLayer({id:layers.lakeLine,type:'line',source:sources.lakes,minzoom:minZoom,layout:{visibility:'none'},paint:{'line-color':'#a7d3e4','line-opacity':0.86,'line-width':['interpolate',['linear'],['zoom'],0,0.35,5,detail?1.05:0.9]}}, beforeLine);

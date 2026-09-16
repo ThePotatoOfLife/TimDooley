@@ -72,6 +72,10 @@ def main() -> int:
                 errors.append(f"physical water module missing {token}")
         if "map.getZoom() >= DETAIL_ZOOM" not in text:
             errors.append("physical water detail must be zoom-gated")
+        detail_has_native_minzoom = "const minZoom = detail ? DETAIL_ZOOM : 0;" in text
+        syncs_only_after_zoom = "map.on('zoomend'" in text and "map.on('zoom'," not in text
+        if detail_has_native_minzoom and syncs_only_after_zoom:
+            errors.append("physical water detail must not combine native DETAIL_ZOOM minzoom with zoomend-only visibility switching; it creates a transient water gap while zooming out")
         if "new MutationObserver(" in text or "setInterval(" in text:
             errors.append("physical water module must not poll or observe the DOM")
         node = shutil.which("node")
