@@ -32,6 +32,12 @@ jobs:
         with:
           python-version: '3.x'
 
+      - name: Install Python test dependency
+        run: python -m pip install --disable-pip-version-check pytest
+
+      - name: Run Python unit tests
+        run: python -m pytest -q tests
+
       - name: Validate repository hygiene
         run: python scripts/validate_repo_hygiene.py
 
@@ -216,6 +222,11 @@ jobs:
           python scripts/test_bible_comparator_coverage.py
           python scripts/check_biblical_scenes.py
           python scripts/build_bible_comparator_quality.py
+
+      - name: Build and validate Bible consolidation
+        run: |
+          python scripts/build_bible_consolidation.py
+          python scripts/validate_bible_consolidation.py
 
       - name: Validate Bible reader
         run: python scripts/validate_bible_reader.py

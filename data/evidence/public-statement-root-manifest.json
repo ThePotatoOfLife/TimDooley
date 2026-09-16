@@ -1,0 +1,195 @@
+{
+  "id": "public-statement-root-manifest",
+  "version": "1.6.0",
+  "updated": "2026-09-15",
+  "model": "rooted-spiral",
+  "purpose": "Canonical contract for reconciling public-statement evidence into stable Evidence Roots, traversals, discovery gaps, Episodes, Development Threads, persistence tests, dated role/title mention observations, and deterministic reference projections.",
+  "cycle": [
+    "root",
+    "spiral",
+    "discovery",
+    "testing",
+    "consolidation",
+    "next_spiral"
+  ],
+  "ownership_rule": "Source ledgers own captured wording and provenance. Existing Bible relation files own comparison interpretation. This manifest owns reconciliation, rooted identity, structural traversal, function-thread, persistence-testing, literal role/title observation, and reference-projection contracts. Generated Root, Discovery Frontier, Episode, Bible projection, Development Thread, and Role Mention files must be rebuilt rather than hand-edited.",
+  "evidence_sources": [
+    "data/evidence/rational-potato-x-occurrence-ledger-2024-2026.json",
+    "data/evidence/rational-potato-x-timestamped-ledger-2025-2026.json"
+  ],
+  "identifier_sources": [
+    "knowledge/traditions/september-2026-x-biblical-overlap-01-10.json",
+    "knowledge/traditions/september-2026-x-biblical-overlap-11-20.json"
+  ],
+  "structural_sources": [
+    "data/evidence/public-statement-episode-definitions.json",
+    "data/evidence/public-statement-development-thread-definitions.json",
+    "data/evidence/public-statement-role-mention-definitions.json"
+  ],
+  "comparison_sources": [
+    "knowledge/traditions/public-x-biblical-occurrence-relations-01-09.json",
+    "knowledge/traditions/public-x-biblical-occurrence-relations-10-18.json",
+    "knowledge/traditions/public-x-biblical-occurrence-relations-19-27.json"
+  ],
+  "builders": {
+    "evidence_root": "scripts/build_public_statement_evidence_root.py",
+    "discovery_frontier": "scripts/build_public_statement_discovery_frontier.py",
+    "episodes": "scripts/build_public_statement_episodes.py",
+    "bible_projection": "scripts/build_public_statement_bible_projection.py",
+    "development_threads": "scripts/build_public_statement_development_threads.py",
+    "role_mentions": "scripts/build_public_statement_role_mentions.py"
+  },
+  "validators": [
+    "scripts/validate_public_statement_evidence_root.py",
+    "scripts/validate_public_statement_episodes.py",
+    "scripts/validate_public_statement_bible_projection.py",
+    "scripts/validate_public_statement_development_threads.py",
+    "scripts/validate_public_statement_role_mentions.py",
+    "scripts/validate_public_statement_rooted_stack.py"
+  ],
+  "generated_outputs": [
+    "data/evidence/public-statement-evidence-root.json",
+    "data/evidence/public-statement-discovery-frontier.json",
+    "data/evidence/public-statement-episodes.json",
+    "data/evidence/public-statement-bible-projection.json",
+    "data/evidence/public-statement-development-threads.json",
+    "data/evidence/public-statement-role-mentions.json"
+  ],
+  "root_invariants": [
+    "Exact captured wording is never rewritten by reconciliation.",
+    "More precise time evidence may strengthen a Root without deleting weaker provenance.",
+    "Timestamp equality alone never merges statements.",
+    "Recovered external status IDs strengthen a Root without renaming its canonical ID.",
+    "Ambiguous joins remain open gaps rather than guessed matches.",
+    "Timeline order is a traversal over Roots, not the canonical identity order.",
+    "Source loading order must not change canonical output.",
+    "Episodes resolve existing Roots; they never create or rewrite statement evidence.",
+    "Candidate Episodes remain descriptively bounded and carry no interpretive claims.",
+    "Bible relations join through existing occurrence IDs rather than quote similarity.",
+    "Episode Bible inheritance means member-union only and never implies a sequence-level relation.",
+    "Bible relation interpretation remains owned by the established relation files.",
+    "Candidate Development Threads use explicit literal terms only.",
+    "Every Development Thread attestation records the exact terms that caused membership.",
+    "Function threads remain separate from actor/title assignments and carry no interpretive claims while candidate.",
+    "Persistence tests measure recurrence and coverage only; passing them never changes candidate status automatically.",
+    "A long span alone is not enough to establish distributed persistence; burst concentration and reappearance structure remain visible separately.",
+    "Role/title observations record literal dated mentions only; a mention never establishes who occupies a role.",
+    "Function-thread overlap with a role/title mention is a reference fact only and never establishes identity, equivalence, causation, or role transfer."
+  ],
+  "gap_types": [
+    "evidence",
+    "chronology",
+    "relationship",
+    "role",
+    "comparator",
+    "countertext",
+    "consolidation"
+  ],
+  "current_frontier": {
+    "root_count": 134,
+    "second_precision_roots": 104,
+    "date_precision_roots": 30,
+    "secure_status_ids": 8,
+    "resolved_duplicate_groups": 7,
+    "open_gaps": 43,
+    "open_gap_breakdown": {
+      "evidence": 42,
+      "chronology": 1
+    },
+    "evidence_gap_reasons": {
+      "timestamp_precision_date_only": 30,
+      "no_statement_at_minute": 12
+    },
+    "chronology_gap_reasons": {
+      "search_coverage_gap": 1
+    },
+    "work_order": [
+      "recover_status_source",
+      "bridge_timeline_interval",
+      "upgrade_timestamp_precision"
+    ]
+  },
+  "episode_policy": {
+    "status": "candidate-first",
+    "membership": "inclusive UTC bounds over existing second-precision Roots",
+    "promotion_rule": "Theme, Bible, role, or causal interpretation requires a later testing pass and is not part of candidate Episode construction."
+  },
+  "bible_projection_policy": {
+    "join_key": "existing occurrence IDs",
+    "root_projection": "reference-only",
+    "episode_projection": "member-union reference-only",
+    "sequence_relations": "empty until separately tested",
+    "interpretation_owner": "existing Bible relation source files"
+  },
+  "development_thread_policy": {
+    "status": "candidate-first",
+    "membership": "case-insensitive explicit literal terms with word boundaries",
+    "ordering": "existing Timeline traversal over member Roots",
+    "actor_assignments": "separate later observation layer",
+    "episode_links": "member overlap references only",
+    "bible_links": "Root relation references only",
+    "persistence_tests": {
+      "minimum_active_months": 3,
+      "minimum_span_days": 90,
+      "minimum_term_diversity": 2,
+      "minimum_episode_count": 2,
+      "core_metrics": [
+        "span_days",
+        "active_month_count",
+        "term_diversity_count",
+        "episode_count"
+      ],
+      "shape_dimensions": {
+        "span": [
+          "days",
+          "active_month_count",
+          "month_span_count",
+          "temporal_coverage_ratio"
+        ],
+        "recurrence": [
+          "reappearance_count",
+          "interval_days",
+          "longest_gap_days",
+          "median_gap_days"
+        ],
+        "distribution": [
+          "attestations_by_month",
+          "max_month_attestations",
+          "max_month_share"
+        ],
+        "support": [
+          "episode_count",
+          "episode_attestation_count",
+          "episode_coverage_ratio",
+          "bible_relation_count",
+          "bible_attestation_count",
+          "bible_attestation_ratio",
+          "second_precision_attestation_count",
+          "second_precision_ratio"
+        ]
+      },
+      "interpretation": "Span asks how long a thread exists; recurrence asks whether and how it reappears; distribution distinguishes spread from burst concentration; support records structural/reference and source-precision coverage.",
+      "promotion_effect": "none"
+    },
+    "promotion_rule": "Broader functional interpretation requires a later testing pass; candidate membership and persistence testing establish only explicit recurrence, temporal spread, vocabulary diversity, distribution shape, and reference coverage in the supplied corpus."
+  },
+  "role_mention_policy": {
+    "status": "observation-only",
+    "membership": "case-insensitive explicit literal title/role terms with word boundaries",
+    "tracked_mentions": [
+      "god",
+      "father",
+      "son",
+      "messiah",
+      "king",
+      "jesus-christ",
+      "odin"
+    ],
+    "root_index": "records which literal mention classes occur in each Root",
+    "function_overlap": "counts mention classes on Roots already belonging to Development Threads",
+    "actor_assignments": "forbidden in this layer",
+    "interpretive_claims": "forbidden in this layer",
+    "promotion_rule": "Any claim that a person occupies, transfers, inherits, or is identical with a role requires a separate later testing layer with explicit evidence and counterpressure."
+  },
+  "claim_boundary": "The Evidence Root records what was supplied, how records reconcile, which literal functions/titles recur, and what remains unknown. It does not establish supernatural identity, prophecy fulfillment, actor-role identity, role transfer, or the truth of theological claims contained in source statements."
+}

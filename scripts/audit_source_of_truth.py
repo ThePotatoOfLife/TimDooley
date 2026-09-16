@@ -13,7 +13,7 @@ from pathlib import Path
 
 ROOT=Path(__file__).resolve().parents[1]
 DATA=ROOT/'data'; MAP=DATA/'canonical-source-map.json'; INDEX=DATA/'repository-index.json'; REGISTRY=DATA/'canonical-record-registry.json'
-NON_SOURCE_KEYS={'policy','rule','purpose','empirical_rule','consolidation_actions','known_stale_references','semantic_identity_registry'}
+NON_SOURCE_KEYS={'policy','rule','purpose','empirical_rule','consolidation_actions','known_stale_references','semantic_identity_registry','identity_delegations'}
 RETIRED_KEYS={'retired_layers'}
 ROOT_LAYERS={'spirit':{'source','meaning','belief','myths'},'mind':{'psychology','hawkinscale','neurobiology'},'matter':{'world','region','institution','network','person','object','event','record','ground'}}
 
@@ -41,8 +41,62 @@ def at_path(root,path):
 def candidate_identity(obj):
     return str(obj.get('id') or obj.get('slug') or obj.get('key') or obj.get('term') or obj.get('iso3') or obj.get('country_id') or '')
 
+def effective_owner_families(record_id, owner_families, families):
+    """Apply explicit cross-family identity delegation without hiding invalid targets."""
+    effective=set(owner_families); applied={}
+    for family in sorted(owner_families):
+        spec=families.get(family,{}) if isinstance(families,dict) else {}
+        delegations=spec.get('identity_delegations',{}) if isinstance(spec,dict) else {}
+        target=delegations.get(record_id) if isinstance(delegations,dict) else None
+        if target in owner_families and target!=family:
+            effective.discard(family)
+            applied[family]=target
+    return effective,applied
+
+def explain_registry_index_delta(registry,index):
+    """Explain expected identity differences between raw discovery and semantic index."""
+    reg_ids={str(r.get('id')) for r in registry.get('records',[]) if r.get('id') is not None}
+    idx_rows=[r for r in index.get('records',[]) if isinstance(r,dict)]
+    idx_ids={str(r.get('id')) for r in idx_rows if r.get('id') is not None}
+    registry_only=sorted(reg_ids-idx_ids); index_only=sorted(idx_ids-reg_ids)
+
+    consolidated={}
+    for row in idx_rows:
+        if not row.get('canonical_concept'): continue
+        canonical_id=str(row.get('id',''))
+        for occurrence in row.get('occurrences',[]):
+            if not isinstance(occurrence,dict): continue
+            source_id=str(occurrence.get('id',''))
+            if source_id in registry_only and source_id!=canonical_id:
+                consolidated[source_id]=canonical_id
+
+    canonicalized=sorted(
+        str(row.get('id')) for row in idx_rows
+        if str(row.get('id')) in index_only
+        and row.get('canonical_concept')
+        and bool(row.get('occurrences'))
+    )
+    synthesized=sorted(
+        str(row.get('id')) for row in idx_rows
+        if str(row.get('id')) in index_only
+        and row.get('canonical_concept')
+        and row.get('classification_basis')=='canonical-concept-registry'
+        and not row.get('occurrences')
+    )
+    unexplained_registry=sorted(set(registry_only)-set(consolidated))
+    unexplained_index=sorted(set(index_only)-set(canonicalized)-set(synthesized))
+    return {
+        'registry_only':registry_only,
+        'index_only':index_only,
+        'consolidated_source_ids':dict(sorted(consolidated.items())),
+        'canonicalized_concept_ids':canonicalized,
+        'synthesized_canonical_ids':synthesized,
+        'unexplained_registry_only':unexplained_registry,
+        'unexplained_index_only':unexplained_index,
+    }
+
 def main():
-    errors=[]; warnings=[]
+    errors=[]; warnings=[]; registry_index_delta=None; identity_delegations_applied=[]
     if not MAP.exists(): errors.append('missing data/canonical-source-map.json')
     if not INDEX.exists(): errors.append('missing data/repository-index.json')
     if errors: print('\n'.join(errors)); return 1
@@ -66,8 +120,6 @@ def main():
                     if not p.is_dir(): warnings.append(f'{family}: declared directory is absent: {raw}')
                 elif '<' in raw and '>' in raw:
                     matches=matches_for(raw)
-                    # Template collections commonly contain an index alongside real records;
-                    # require at least one non-index record when possible.
                     concrete=[m for m in matches if m.name!='index.json']
                     if not concrete:
                         errors.append(f'{family}: declared template has no concrete matches: {raw} -> {template_pattern(raw)}')
@@ -109,17 +161,38 @@ def main():
     for rid,rows in by_id.items():
         sources={r.get('source') for r in rows if r.get('source') in owners}
         if len(sources)<=1: continue
-        fams=set().union(*(owners[s] for s in sources)); msg=f'canonical ID {rid} has owners {sorted(sources)} across families {sorted(fams)}'
+        fams=set().union(*(owners[s] for s in sources))
+        effective_fams,applied=effective_owner_families(rid,fams,families)
+        if applied:
+            identity_delegations_applied.append({'id':rid,'delegations':applied,'effective_owner_families':sorted(effective_fams)})
+        if len(effective_fams)<=1: continue
+        msg=f'canonical ID {rid} has owners {sorted(sources)} across families {sorted(fams)}'
+        if len(effective_fams)<=1: continue
         if len(fams)<=1: errors.append('duplicate canonical owner within family: '+msg)
         else: warnings.append('cross-family canonical ID requires namespace review: '+msg)
 
     if REGISTRY.exists():
-        reg=load(REGISTRY); reg_ids={str(r.get('id')) for r in reg.get('records',[])}; idx_ids=set(by_id)
+        reg=load(REGISTRY); reg_ids={str(r.get('id')) for r in reg.get('records',[])}
         missing={rid for rid,rows in by_id.items() if rid not in reg_ids and not any(r.get('canonical_concept') for r in rows)}
         if missing: errors.append(f'registry missing non-canonical indexed IDs: {len(missing)}')
-        if reg_ids!=idx_ids: warnings.append(f'registry/index ID sets differ: registry={len(reg_ids)} index={len(idx_ids)}; index consolidates semantic concepts and may add canonical IDs')
+        registry_index_delta=explain_registry_index_delta(reg,idx)
+        if registry_index_delta['registry_only'] or registry_index_delta['index_only']:
+            warnings.append(
+                'registry/index semantic delta: '
+                f"consolidated_source_ids={len(registry_index_delta['consolidated_source_ids'])} "
+                f"canonicalized_concept_ids={len(registry_index_delta['canonicalized_concept_ids'])} "
+                f"synthesized_canonical_ids={len(registry_index_delta['synthesized_canonical_ids'])} "
+                f"unexplained_registry_only={len(registry_index_delta['unexplained_registry_only'])} "
+                f"unexplained_index_only={len(registry_index_delta['unexplained_index_only'])}"
+            )
+        if registry_index_delta['unexplained_registry_only']:
+            sample=', '.join(registry_index_delta['unexplained_registry_only'][:8])
+            warnings.append(f'registry-only IDs require review: {sample}')
+        if registry_index_delta['unexplained_index_only']:
+            sample=', '.join(registry_index_delta['unexplained_index_only'][:8])
+            warnings.append(f'index-only IDs require review: {sample}')
 
-    result={'version':'1.7.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
+    result={'version':'2.0.0','checked_routes':checked,'indexed_ids':len(by_id),'families':len(families),'canonical_sources':len(owners),'taxonomy_counts':taxonomy_counts,'identity_delegations_applied':identity_delegations_applied,'registry_index_delta':registry_index_delta,'errors':errors,'warnings':warnings,'status':'fail' if errors else 'pass'}
     (DATA/'source-of-truth-audit.json').write_text(json.dumps(result,indent=2,ensure_ascii=False)+'\n',encoding='utf-8')
     print(json.dumps(result,indent=2))
     return 1 if errors else 0
