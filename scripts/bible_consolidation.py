@@ -318,17 +318,37 @@ def _family_for_symbol(
     }
 
 
-def build_families(relations: list[dict], assessments: dict[str, dict] | None = None) -> list[dict]:
-    """Build bounded per-symbol retrieval families over existing relations."""
+def build_families(
+    relations: list[dict],
+    assessments: dict[str, dict] | None = None,
+    *,
+    fingerprints: dict[str, dict] | None = None,
+    pair_results: list[dict] | None = None,
+) -> list[dict]:
+    """Build bounded per-symbol retrieval families over existing relations.
+
+    Precomputed fingerprints and pair results may be supplied by callers that have
+    already analyzed the corpus. Reusing them avoids a second all-pairs pass.
+    """
     assessments = assessments or {}
     rows = sorted((row for row in relations if row.get("id")), key=lambda row: str(row["id"]))
     rows_by_id = {str(row["id"]): row for row in rows}
-    fps = {rid: fingerprint_relation(row, assessments.get(rid)) for rid, row in rows_by_id.items()}
-    pair_map: dict[tuple[str, str], dict] = {}
-    for i, left in enumerate(rows):
-        for right in rows[i + 1:]:
-            pair = classify_pair(fps[left["id"]], fps[right["id"]])
-            pair_map[tuple(pair["relation_ids"])] = pair
+    fps = dict(fingerprints) if fingerprints is not None else {
+        rid: fingerprint_relation(row, assessments.get(rid))
+        for rid, row in rows_by_id.items()
+    }
+    if pair_results is None:
+        pairs: list[dict] = []
+        for i, left in enumerate(rows):
+            for right in rows[i + 1:]:
+                pairs.append(classify_pair(fps[left["id"]], fps[right["id"]]))
+    else:
+        pairs = list(pair_results)
+    pair_map = {
+        tuple(sorted(str(x) for x in pair.get("relation_ids", []))): pair
+        for pair in pairs
+        if len(pair.get("relation_ids", [])) == 2
+    }
 
     symbol_members: dict[str, list[str]] = defaultdict(list)
     for rid, fp in fps.items():
