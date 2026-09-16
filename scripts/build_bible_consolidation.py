@@ -46,7 +46,12 @@ def build_outputs(root: Path) -> dict[str, dict]:
         if row.get("id")
     }
     pairs = _all_pairs(relations, fingerprints)
-    families = build_families(relations, assessments)
+    families = build_families(
+        relations,
+        assessments,
+        fingerprints=fingerprints,
+        pair_results=pairs,
+    )
     duplicates = build_duplicate_queue(relations, fingerprints, pairs)
     relation_ids = sorted(fingerprints)
     grouped = {rid for family in families for rid in family.get("member_relation_ids", [])}
@@ -86,6 +91,35 @@ def build_outputs(root: Path) -> dict[str, dict]:
     }
 
 
+def summary_lines(outputs: dict[str, dict], family_limit: int = 8) -> list[str]:
+    families = sorted(
+        outputs["families"]["families"],
+        key=lambda family: (
+            -len(family.get("member_relation_ids", [])),
+            str(family.get("label") or ""),
+            str(family.get("id") or ""),
+        ),
+    )[:family_limit]
+    lines: list[str] = []
+    for family in families:
+        lines.append(
+            f"FAMILY {family.get('label')}: "
+            f"members={len(family.get('member_relation_ids', []))} "
+            f"representative={family.get('representative_relation_id')} "
+            f"contrasts={len(family.get('contrast_relation_ids', []))} "
+            f"duplicates={len(family.get('duplicate_candidate_relation_ids', []))}"
+        )
+    for item in outputs["duplicates"]["candidates"]:
+        pair = " <> ".join(item.get("relation_ids", []))
+        lines.append(
+            f"DUPLICATE {pair}: "
+            f"representative={item.get('recommended_representative_id')} "
+            f"action={item.get('suggested_action')} "
+            f"migration={'yes' if item.get('requires_evidence_migration') else 'no'}"
+        )
+    return lines
+
+
 def write_outputs(root: Path, outputs: dict[str, dict]) -> None:
     index_dir = root / "knowledge" / "indexes"
     index_dir.mkdir(parents=True, exist_ok=True)
@@ -111,6 +145,8 @@ def main() -> int:
         f"contrasts={outputs['families']['contrast_pair_count']} "
         f"ungrouped={outputs['families']['ungrouped_relation_count']}"
     )
+    for line in summary_lines(outputs):
+        print(line)
     return 0
 
 
