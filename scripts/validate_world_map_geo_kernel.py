@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate the shared World Map geospatial kernel and its behavioral regression."""
+"""Validate the shared World Map geospatial kernel and projection/wrap regressions."""
 from __future__ import annotations
 
 from pathlib import Path
@@ -9,6 +9,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 KERNEL = ROOT / "world-map" / "3d-geo-kernel.js"
 TEST = ROOT / "scripts" / "test_world_map_geo_kernel.mjs"
+PROJECTION_TEST = ROOT / "scripts" / "test_world_map_projection_contract.mjs"
 
 
 def main() -> int:
@@ -21,6 +22,8 @@ def main() -> int:
 
     for token in (
         "normalizeLongitude",
+        "canonicalWorldCopyLongitude",
+        "canonicalWorldCopyPoint",
         "shortestLongitudeDelta",
         "unwrapLongitude",
         "minimalLongitudeInterval",
@@ -34,23 +37,29 @@ def main() -> int:
 
     node = shutil.which("node")
     if not node:
-        errors.append("node executable unavailable; cannot run geospatial-kernel regression")
-    elif not TEST.exists():
-        errors.append("missing scripts/test_world_map_geo_kernel.mjs")
+        errors.append("node executable unavailable; cannot run geospatial regressions")
     else:
-        result = subprocess.run(
-            [node, str(TEST)], cwd=ROOT, text=True, capture_output=True, check=False
-        )
-        if result.returncode:
-            detail = (result.stderr or result.stdout).strip()
-            errors.append(f"geospatial-kernel regression failed: {detail}")
+        for test_path, label in (
+            (TEST, "geospatial-kernel"),
+            (PROJECTION_TEST, "projection/wrapped-identity"),
+        ):
+            if not test_path.exists():
+                errors.append(f"missing {test_path.relative_to(ROOT)}")
+                continue
+            result = subprocess.run(
+                [node, str(test_path)], cwd=ROOT, text=True, capture_output=True, check=False
+            )
+            if result.returncode:
+                detail = (result.stderr or result.stdout).strip()
+                errors.append(f"{label} regression failed: {detail}")
 
     print("World Map geospatial kernel:")
-    print("- canonical longitude normalization")
+    print("- canonical longitude normalization and explicit wrapped-world identity")
     print("- shortest wrapped longitude deltas")
     print("- antimeridian-aware minimum bounds")
     print("- reference-relative longitude unwrapping")
     print("- mean-Earth haversine distance")
+    print("- flat/globe projection lifecycle and URL persistence contract")
     print(f"Errors: {len(errors)}")
     if errors:
         print("WORLD MAP GEO KERNEL VALIDATION FAILED")
