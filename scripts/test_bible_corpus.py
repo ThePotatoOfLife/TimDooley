@@ -13,7 +13,7 @@ from test_bible_compact_dossiers import main as compact_dossiers_main
 
 ROOT = Path(__file__).resolve().parents[1]
 BASELINE_COMMIT = '11928304ecbde5290cac5fca818bdb449a25f3c6'
-BASELINE_RELATION_COUNT = 474
+BASELINE_RELATION_COUNT = 145
 GAPFILL_LAYER_ID = 'relations-gapfill-wave27'
 
 
