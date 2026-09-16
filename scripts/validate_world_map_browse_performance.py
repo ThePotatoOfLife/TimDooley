@@ -6,6 +6,7 @@ import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
 SELECTION = ROOT / "world-map" / "3d-country-selection.js"
+COUNTRY_INTERACTION = ROOT / "world-map" / "3d-country-interaction.js"
 CARD = ROOT / "world-map" / "3d-country-card.js"
 PULSE = ROOT / "world-map" / "3d-country-pulse.js"
 BAR = ROOT / "world-map" / "3d-world-bar.js"
@@ -96,6 +97,7 @@ def run_node_regression(path: Path, errors: list[str], label: str) -> None:
 def main() -> int:
     errors: list[str] = []
     selection = read(SELECTION, errors)
+    country_interaction = read(COUNTRY_INTERACTION, errors)
     card = read(CARD, errors)
     pulse = read(PULSE, errors)
     bar = read(BAR, errors)
@@ -121,11 +123,18 @@ def main() -> int:
         "function unpinCountry",
         "potato-atlas-pin-change",
         "searchParams.set('pins'",
-        "event.originalEvent?.shiftKey",
         "activateCountry(code",
     ):
         require(selection, token, "world-map/3d-country-selection.js", errors)
+    for token in (
+        "event?.originalEvent?.shiftKey",
+        "selection?.togglePinnedCountry?.(code)",
+        "onClick:(event, feature) => { void selectCountry(feature, event); }",
+    ):
+        require(country_interaction, token, "world-map/3d-country-interaction.js", errors)
 
+    reject(selection, "function interceptPolygonClick", "world-map/3d-country-selection.js", errors)
+    reject(selection, "function installClickInterception", "world-map/3d-country-selection.js", errors)
     reject(selection, "toggleCountrySelection(code);", "world-map/3d-country-selection.js", errors)
     reject(selection, "selectedCodes.push(code)", "world-map/3d-country-selection.js", errors)
 
@@ -172,9 +181,6 @@ def main() -> int:
     reject(bridge, "map.setFeatureState", "world-map/3d-scalar-runtime-bridge.js", errors)
     reject(bridge, "map.setPaintProperty", "world-map/3d-scalar-runtime-bridge.js", errors)
 
-    # Country hover consumes the one shared transient-tooltip service. Rapid
-    # pointer movement must not let older async completions move/reopen it, and
-    # one country lookup is reused while the pointer moves within the same country.
     for token in (
         "activeKey", "latestEvent", "resolvedHtml",
         "tooltip.nextGeneration('country')", "tooltip.show('country'",
@@ -195,8 +201,6 @@ def main() -> int:
     ):
         require(tooltip, token, "world-map/3d-tooltip.js", errors)
 
-    # Map motion is owned by the shared Tooltip Service now. The old browser-level
-    # pointer tracker and :has(.atlas-hover) CSS suppression must stay retired.
     for token in (
         "potato-atlas-pointer-dragging",
         "POINTER_DRAG_THRESHOLD_PX",
@@ -206,20 +210,13 @@ def main() -> int:
     ):
         reject(boot_guard, token, "world-map/3d-boot-guard.js", errors)
 
-    # Eye and the compact country card are both top-left map surfaces. Evidence
-    # owns that corner while open instead of stacking two dark panels together.
     for token in ("function suspendCountryCard", "function restoreCountryCard", "potato-atlas-country-card-rendered"):
         require(evidence, token, "world-map/3d-evidence.js", errors)
 
-    # Progressive UI consumes lifecycle events and may style map colors, but it
-    # no longer owns another DOM observer or country surface opacity.
     require(ui, "potato-atlas-panel-rendered", "world-map/3d-ui.js", errors)
     reject(ui, "new MutationObserver(", "world-map/3d-ui.js", errors)
     reject(ui, "setPaintProperty('countries-fill','fill-opacity'", "world-map/3d-ui.js", errors)
 
-    # Subdivision browsing must stay bounded as country coverage expands. A
-    # fixed shared source/layer stack prevents style/listener growth from being
-    # proportional to the number of country partitions visited in a session.
     for token in (
         "atlas-subdivisions-active",
         "atlas-subdivision-hit",
@@ -232,8 +229,6 @@ def main() -> int:
     for token in ("SOURCE_PREFIX", "LINE_PREFIX", "HIT_PREFIX", "LABEL_PREFIX"):
         reject(subdivisions, token, "world-map/3d-subdivisions.js", errors)
 
-    # A tiny always-loaded lifecycle module owns the active legacy/core panel
-    # observer. Every other 3d module must consume lifecycle events instead.
     for token in ("function panelLifecycleKey", "potato-atlas-panel-rendered", "panelLifecycleRenders"):
         require(panel_lifecycle, token, "world-map/3d-panel-lifecycle.js", errors)
     if panel_lifecycle.count("new MutationObserver(") != 1:
@@ -252,7 +247,7 @@ def main() -> int:
             continue
         reject(read(path, errors), "new MutationObserver(", str(path.relative_to(ROOT)), errors)
 
-    node_check((SELECTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, TOOLTIP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
+    node_check((SELECTION, COUNTRY_INTERACTION, CARD, PULSE, BAR, COMPOSITOR, BRIDGE, ACTIVE_VIEW, BOOTSTRAP, BOOT_GUARD, BOOTSTRAP_STAGING_TEST, PANEL_LIFECYCLE, SUBDIVISIONS, HOVER, TOOLTIP, UI, DEMOGRAPHY, DIMENSIONS, EVIDENCE, PROVENANCE), errors)
     run_node_regression(TOOLTIP_LIFECYCLE_TEST, errors, "World Map tooltip lifecycle regression")
     run_node_regression(HOVER_ARTIFACT_TEST, errors, "World Map hover artifact regression")
     run_node_regression(POINTER_DRAG_ARTIFACT_TEST, errors, "World Map pointer-drag workaround retirement regression")
@@ -267,7 +262,7 @@ def main() -> int:
         return 1
 
     print("WORLD MAP BROWSE/PERFORMANCE VALIDATION PASSED")
-    print("Browse + Pins · shared motion-safe transient tooltip · no pointer-drag compatibility shim · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
+    print("Browse + Pins · router-owned country clicks · shared motion-safe transient tooltip · no pointer-drag compatibility shim · fallback-only capitals · exclusive top-left overlays · single panel observer · single surface-opacity owner · bounded subdivisions/Places · staged lazy specialist stack")
     return 0
 
 
