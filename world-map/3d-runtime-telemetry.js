@@ -23,6 +23,9 @@ function createRuntimeTelemetry(map, options = {}) {
   const getStyleLifecycle = typeof options.getStyleLifecycle === 'function'
     ? options.getStyleLifecycle
     : () => options.styleLifecycle;
+  const getTooltip = typeof options.getTooltip === 'function'
+    ? options.getTooltip
+    : () => options.tooltip;
 
   const listeners = [];
   let sampleCount = 0;
@@ -42,6 +45,7 @@ function createRuntimeTelemetry(map, options = {}) {
       layerTypes:countTypes(layers),
       interaction:getInteraction()?.diagnostics?.() || null,
       style:getStyleLifecycle()?.state?.() || null,
+      tooltip:getTooltip()?.state?.() || null,
       sampleCount:++sampleCount,
       reason:String(reason || 'manual'),
     };
@@ -87,6 +91,7 @@ if (typeof window !== 'undefined') {
     window.__potatoAtlasRuntimeTelemetry = createRuntimeTelemetry(map, {
       getInteraction:() => window.__potatoAtlasInteraction,
       getStyleLifecycle:() => window.__potatoAtlasStyleLifecycle,
+      getTooltip:() => window.__potatoAtlasTooltip,
     });
   }
 }
