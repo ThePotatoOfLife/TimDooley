@@ -6,6 +6,7 @@ from __future__ import annotations
 import json
 import re
 from pathlib import Path
+from urllib.parse import quote
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -65,6 +66,16 @@ EXPECTED_PUBLIC_ROOMS = {
     "rooms": "rooms/",
 }
 
+DEEP_RECORDS = {
+    "law/index.html": "knowledge/legal/mai-mercado-2016-research-index.md",
+    "economy/index.html": "knowledge/economics/tim-dooley-inflation-ledger.md",
+}
+
+EXPECTED_BACKEND_FAMILIES = {
+    "legal": {"global_route": "law/", "canonical_owner": "knowledge/legal/"},
+    "economics": {"global_route": "economy/", "canonical_owner": "knowledge/economics/"},
+}
+
 
 def load_json(relative: str):
     return json.loads((ROOT / relative).read_text(encoding="utf-8"))
@@ -96,13 +107,18 @@ def main() -> int:
     for href, label in REQUIRED_HOME_ROOM_LINKS.items():
         if f'href="{href}"' not in home and f"href='{href}'" not in home:
             errors.append(f"homepage Rooms corridor missing route {href} ({label})")
+    corridor = re.search(r'<section\s+class=["\']rooms-corridor["\'][^>]*>(.*?)</section>', home, flags=re.I | re.S)
+    if not corridor or "cult" not in corridor.group(1).lower():
+        errors.append("homepage Rooms corridor must name cult/high-control culture explicitly")
 
+    page_text: dict[str, str] = {}
     for relative, (surface_id, label) in ROOM_PAGE_CONTRACTS.items():
         path = ROOT / relative
         if not path.exists():
             errors.append(f"missing public Room page: {relative}")
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
+        page_text[relative] = text
         if f'data-reader-surface="{surface_id}"' not in text:
             errors.append(f"{relative} missing data-reader-surface={surface_id!r}")
         if label.lower() not in text.lower():
@@ -111,6 +127,18 @@ def main() -> int:
             errors.append(f"{relative} must route to Sources & Evidence")
         if "explore/" not in text:
             errors.append(f"{relative} must route to Explore/deep archive")
+
+    rooms_text = page_text.get("rooms/index.html", "")
+    if "cult" not in rooms_text.lower() or "high-control" not in rooms_text.lower():
+        errors.append("Rooms directory must expose cult/high-control analysis by name")
+
+    for relative, record_path in DEEP_RECORDS.items():
+        text = page_text.get(relative, "")
+        target = f"../explore/#record={quote(record_path, safe='')}"
+        if target not in text:
+            errors.append(f"{relative} must deep-link its specialist record through Explore: {record_path}")
+        if not (ROOT / record_path).is_file():
+            errors.append(f"deep Room record does not exist: {record_path}")
 
     world_path = ROOT / "world" / "index.html"
     if not world_path.exists():
@@ -125,9 +153,10 @@ def main() -> int:
         surfaces = load_json("data/house/public-surfaces.json")
         topology = load_json("knowledge/research/potato-house-master/public-route-topology.json")
         bridge = load_json("data/frontend-atlas-bridge.json")
+        manifest = load_json("manifest.json")
     except Exception as exc:
         errors.append(f"could not load Rooms projection contracts: {exc}")
-        surfaces = topology = bridge = {}
+        surfaces = topology = bridge = manifest = {}
 
     surface_rows = {
         row.get("id"): row
@@ -165,13 +194,29 @@ def main() -> int:
     if bridge.get("public_rooms") != EXPECTED_PUBLIC_ROOMS:
         errors.append(f"frontend bridge public_rooms must equal {EXPECTED_PUBLIC_ROOMS!r}")
 
+    backend = bridge.get("backend_family_projection", {})
+    for family, expected in EXPECTED_BACKEND_FAMILIES.items():
+        row = backend.get(family)
+        if not isinstance(row, dict):
+            errors.append(f"frontend bridge missing {family} backend-family projection")
+            continue
+        for field, value in expected.items():
+            if row.get(field) != value:
+                errors.append(f"frontend bridge {family}.{field} must be {value!r}")
+
+    world_branch = next((row for row in manifest.get("branches", []) if row.get("id") == "world"), {})
+    world_records = set(world_branch.get("records", []))
+    for record_path in DEEP_RECORDS.values():
+        if record_path not in world_records:
+            errors.append(f"World manifest must register deep Room record for Explore: {record_path}")
+
     if errors:
         print("PUBLIC ROOMS VALIDATION FAILED")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    print("PUBLIC ROOMS VALIDATION PASSED: five Doors preserved and subject Rooms are directly discoverable.")
+    print("PUBLIC ROOMS VALIDATION PASSED: five Doors preserved; subject Rooms and deep Law/Economy records are directly discoverable.")
     return 0
 
 
