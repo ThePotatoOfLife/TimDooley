@@ -49,11 +49,11 @@ These capabilities are established enough to build on:
 ### A. Spatial safety
 
 - [x] Add shared geospatial kernel.
-- [ ] Normalize longitudes and wrapped world-copy identity. *(longitude normalization is live; canonical world-copy identity remains to be completed)*
+- [x] Normalize longitudes and wrapped world-copy identity. *(the kernel now returns a canonical longitude/point plus an explicit integer `worldCopy`, so repeated rendered worlds do not create duplicate geographic identities.)*
 - [x] Make bounds/fit calculations antimeridian-aware for the migrated subdivision/geospatial paths.
 - [x] Replace degree-squared subdivision partition prioritization where physical/geographic distance is intended.
 - [ ] Define schematic-vs-physical route geometry semantics.
-- [ ] Add complete dateline/globe/Mercator regressions. *(dateline regressions exist; projection coverage remains incomplete)*
+- [ ] Add complete dateline/globe/Mercator regressions. *(dateline and canonical wrapped-copy regressions exist; projection coverage remains incomplete.)*
 
 ### B. Scale safety
 
