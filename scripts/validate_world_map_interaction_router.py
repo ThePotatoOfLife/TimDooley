@@ -48,7 +48,6 @@ def main() -> int:
         "clickPriority",
         "hoverPriority",
         "queryRenderedFeatures",
-        "__potatoAtlasOverlayHandled",
         "window.__potatoAtlasInteraction",
         "potato-atlas-interaction-ready",
     ):
