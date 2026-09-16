@@ -140,6 +140,27 @@ jobs:
       - name: Validate canonical World Map runtime
         run: python scripts/validate_world_map_source.py
 
+      - name: Test World Map architecture auditor
+        run: python scripts/test_world_map_auditor.py
+
+      - name: Audit World Map runtime architecture
+        id: world_map_audit
+        continue-on-error: true
+        run: python scripts/audit_world_map.py
+
+      - name: Upload World Map audit report
+        if: ${{ always() && hashFiles('world-map-audit-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: world-map-audit-report
+          path: world-map-audit-report.json
+          if-no-files-found: error
+          retention-days: 7
+
+      - name: Enforce World Map audit gate
+        if: steps.world_map_audit.outcome == 'failure'
+        run: exit 1
+
       - name: Validate World Map UI shell
         run: python scripts/validate_world_map_ui_shell.py
 
