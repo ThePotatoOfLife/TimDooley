@@ -33,6 +33,10 @@ function stopCapture() {
 function routedEvent(event, feature) {
   const routed = Object.create(event || null);
   Object.defineProperty(routed, 'features', { value:[feature], configurable:true });
+  // The router has already arbitrated and claimed this click. Hide the real
+  // DOM event from captured legacy listeners so their early-boot compatibility
+  // marker cannot be written/read again after handoff.
+  Object.defineProperty(routed, 'originalEvent', { value:null, configurable:true });
   return routed;
 }
 
