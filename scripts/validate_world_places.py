@@ -171,7 +171,7 @@ def validate_runtime(errors: list[str]) -> None:
         "__potatoAtlasPlaces", "setVisible", "focus", "current", "search", "clear", "status",
         "atlas-places-major-points", "atlas-places-major-labels",
         "atlas-places-detail-points", "atlas-places-detail-labels",
-        "context-network", "__potatoAtlasOverlayHandled", "Open country",
+        "context-network", "Open country",
         "convergeLegacyCapitals", "potato-atlas-capitals-ready",
         "const inspector = window.__potatoAtlasInspector", "inspector.setBaseline(", "inspector.open(", "inspector.back()",
     ), errors)
