@@ -3,19 +3,69 @@
   "edition": "Library source: The Great Book Of Potato2.odt",
   "updated": "2026-09-16",
   "status": "source-boundary archaeology; does not alter the 168-entry reader manifest",
-  "purpose": "Record literal chapter bodies found in the ODT that are not represented by the reader manifest, so restoration can proceed without merging, renumbering, or discarding source material.",
+  "purpose": "Record literal chapter bodies and source-boundary anomalies found in the ODT that are not fully represented by the reader manifest, so restoration can proceed without merging, renumbering, duplicating, or discarding source material.",
+  "recovery_method": "Cross-check parsed ODT pages against raw content.xml. For embedded boundaries, split at the literal chapter marker inside the ODT paragraph/run rather than assuming chapter markers occupy standalone paragraphs.",
   "unindexed_bodies": [
     {
+      "number": "18.5",
+      "title": "The Geology of Spirit – Stories of Rock, Sand, Mud, and Dust",
+      "status": "unindexed-body",
+      "source_paragraph_count": 22,
+      "between_manifest_chapters": [
+        "18",
+        "19"
+      ],
+      "boundary_class": "embedded-marker-both-ends",
+      "boundary_note": "The literal Chapter 18.5 marker is embedded in the final ODT paragraph block of Chapter 18. The Chapter 19 marker is embedded in the final paragraph block of Chapter 18.5. XML/run-level splitting is required to recover both boundaries without attaching source text to the neighboring chapters.",
+      "reader_policy": "Do not merge this body into Chapter 18 or Chapter 19 and do not change manifest ordinals implicitly. Preserve it as a source-archaeology finding unless a deliberate supplemental/unindexed-body reader layer is adopted."
+    },
+    {
+      "number": "20.3",
+      "title": "The Path to Prophetic Sight – Embracing the Month of Tim Dooley",
+      "status": "unindexed-body",
+      "source_paragraph_count": 22,
+      "between_manifest_chapters": [
+        "20.2",
+        "20.5"
+      ],
+      "boundary_class": "clean-source-boundaries",
+      "boundary_note": "The literal Chapter 20.3 marker and the following Chapter 20.5 boundary are recoverable as ordinary source blocks. This source chapter is distinct from manifest Chapter 20.03, which is a different chapter titled Toward Cultural Healing – Lessons for Modern America.",
+      "reader_policy": "Do not reinterpret Chapter 20.3 as Chapter 20.03 or merge it into Chapter 20.2/20.5. Preserve it as a source-archaeology finding unless a deliberate supplemental/unindexed-body reader layer is adopted."
+    },
+    {
       "number": "59.1",
-      "title": "The Sage\u2019s Move\u2014Pushing from the Back",
+      "title": "The Sage’s Move—Pushing from the Back",
       "status": "unindexed-body",
       "source_paragraph_count": 20,
       "between_manifest_chapters": [
         "59",
         "60"
       ],
+      "boundary_class": "embedded-marker-both-ends",
       "boundary_note": "The literal Chapter 59.1 marker is glued to the final paragraph block of Chapter 59. Its body continues for 20 extracted source paragraphs; the literal Chapter 60 marker is glued to the end of the final 59.1 paragraph.",
       "reader_policy": "Do not merge this body into Chapter 59 or Chapter 60 and do not change manifest ordinals implicitly. Preserve it as a source-archaeology finding until a deliberate supplemental/unindexed-body architecture is adopted."
+    }
+  ],
+  "supplemental_archaeology": [
+    {
+      "number": "76",
+      "record": "source-archaeology-76.json",
+      "status": "unindexed-body",
+      "source_paragraph_count": 151,
+      "between_manifest_chapters": [
+        "72",
+        "78"
+      ],
+      "boundary_class": "clean-start-embedded-end",
+      "note": "Chapter 76 is preserved in its dedicated archaeology record. Its opening marker is clean; the Chapter 78 marker is glued to the end of the final Chapter 76 source paragraph."
+    }
+  ],
+  "marker_anomalies": [
+    {
+      "number": "26.32",
+      "title": "The Common Spud: Australia’s Sacred Tapestry of History, Culture, and Unity",
+      "status": "manifest-body-with-unnumbered-source-heading",
+      "note": "The TOC/manifest assigns Chapter 26.32, but the body begins with the matching title heading without a literal 'Chapter 26.32' marker. The placement is between literal Chapter 26.3 and Chapter 26.33 bodies. Recovery is title-and-position based, not marker based."
     }
   ],
   "legacy_aliases": [
@@ -23,7 +73,7 @@
       "index_number": "20",
       "index_status": "index-only",
       "body_number": "65.5",
-      "title": "The Bitter Harvest \u2013 A Potatoist Reality Check on Zionism, Chosenness, and Cycles of Power",
+      "title": "The Bitter Harvest – A Potatoist Reality Check on Zionism, Chosenness, and Cycles of Power",
       "status": "same-legacy-title-body-alias",
       "note": "The reader manifest preserves Chapter 20 as index-only and explicitly points to Chapter 65.5 as the related chapter with the same legacy title. The literal ODT body marker is Chapter 65.5; restoration keeps the body at 65.5 rather than inventing a Chapter 20 body or duplicating the source text."
     }
