@@ -131,6 +131,8 @@ try {
   await import(versionedModule('./3d-hover.js'));
   const map = await waitForCore();
   await nextPaint();
+  await loadAfterPaint('Inspector Router', './3d-inspector-router.js');
+  await loadAfterPaint('Inspector URL', './3d-inspector-url.js');
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
@@ -170,9 +172,6 @@ try {
   declareDormant('North Axis', './3d-axis.js', 'contextual Axis action');
 
   const promoteInspection = async () => {
-    // Paint direct country statistics first, then contextual graph tools, then the
-    // deeper infrastructure/impact stack. Each stage gets a paint boundary so a
-    // first inspection stays responsive while specialist modules hydrate.
     await loadInspectionBasics();
     await nextPaint();
     await loadInspectionContext();
