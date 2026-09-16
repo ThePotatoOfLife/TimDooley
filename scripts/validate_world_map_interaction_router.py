@@ -16,11 +16,12 @@ HANDOFF = ROOT / "world-map" / "3d-core-interaction-handoff.js"
 HOVER = ROOT / "world-map" / "3d-hover.js"
 COUNTRY = ROOT / "world-map" / "3d-country-selection.js"
 TEST = ROOT / "scripts" / "test_world_map_interaction_router.mjs"
+COMPAT_TEST = ROOT / "scripts" / "test_world_map_interaction_compatibility.mjs"
 
 
 def main() -> int:
     errors: list[str] = []
-    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, TEST):
+    for path in (ROUTER, LIFECYCLE, SUBDIVISIONS, BOOTSTRAP, APP, HANDOFF, HOVER, COUNTRY, TEST, COMPAT_TEST):
         if not path.exists():
             errors.append(f"missing interaction-router file: {path.relative_to(ROOT)}")
     if errors:
@@ -125,6 +126,9 @@ def main() -> int:
         result = subprocess.run([node, str(TEST)], cwd=ROOT, text=True, capture_output=True, check=False)
         if result.returncode:
             errors.append("interaction-router regression failed: " + (result.stderr.strip() or result.stdout.strip()))
+        result = subprocess.run([node, str(COMPAT_TEST)], cwd=ROOT, text=True, capture_output=True, check=False)
+        if result.returncode:
+            errors.append("interaction compatibility regression failed: " + (result.stderr.strip() or result.stdout.strip()))
 
     print("World Map interaction router:")
     print("- semantic priority independent of rendered-feature order")
