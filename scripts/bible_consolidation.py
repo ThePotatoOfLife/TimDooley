@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 """Deterministic, non-destructive consolidation helpers for the Bible comparator.
 
-This module never mutates canonical relation rows. It derives fingerprints,
-pair classifications, retrieval families, and duplicate-review suggestions.
+The module derives indexes over canonical relations. It never mutates, deletes,
+renames, or strengthens the underlying relation records.
 """
 from __future__ import annotations
 
-from collections import Counter, defaultdict, deque
+from collections import Counter, defaultdict
 import hashlib
 import re
 from typing import Any
@@ -21,12 +21,12 @@ FAMILY_SYMBOLS = {
     "mountain", "valley", "door", "gate", "stone", "yoke", "cord", "root",
     "branch", "branches", "garden", "farm", "temple", "city", "seed", "tree",
     "dog", "cube", "river", "bread", "debt", "release", "anchor", "wheel",
-    "grain", "field", "vine", "shepherd", "path", "road",
+    "grain", "field", "vine", "shepherd", "path", "road", "house",
 }
 NEGATIVE_CUES = {
     "barrier", "blocked", "confinement", "enslaving", "enslaved", "slavery",
     "temptation", "possession", "obstruction", "obstacle", "judgment", "downward",
-    "danger", "predatory", "exclusion", "closed", "harm", "boast", "boasting",
+    "danger", "predatory", "exclusion", "closed", "harm",
 }
 POSITIVE_CUES = {
     "access", "invitation", "open", "opening", "rest", "learning", "guidance",
@@ -47,8 +47,7 @@ def norm_text(value: object) -> str:
 
 def normalize_ref(value: str) -> str:
     return re.sub(
-        r"\s+",
-        " ",
+        r"\s+", " ",
         str(value or "").strip().lower().replace("–", "-").replace("—", "-"),
     )
 
@@ -82,7 +81,7 @@ def fingerprint_relation(row: dict, assessment: dict | None = None) -> dict:
     max_claim = argument.get("maximum_claim") or row.get("maximum_claim") or ""
     boundary_parts = [
         row.get("boundary"), row.get("mismatch"), row.get("counter_text"),
-        row.get("difference"), *(_arr(row.get("weaknesses"))),
+        row.get("difference"), *_arr(row.get("weaknesses")),
     ]
     boundary_text = " ".join(str(x) for x in boundary_parts if x)
     all_text = " ".join(
@@ -90,11 +89,16 @@ def fingerprint_relation(row: dict, assessment: dict | None = None) -> dict:
         for x in [
             row.get("id"), row.get("project_anchor"), max_claim, boundary_text,
             *motifs, *operators,
-            *(_arr(argument.get("project_sequence"))),
-            *(_arr(argument.get("biblical_sequence"))),
+            *_arr(argument.get("project_sequence")),
+            *_arr(argument.get("biblical_sequence")),
         ]
         if x
     )
+    explicit_symbols = (
+        anchor_tokens
+        | _tokens(row.get("id"))
+        | set().union(*(_tokens(x) for x in motifs)) if motifs else anchor_tokens | _tokens(row.get("id"))
+    ) & FAMILY_SYMBOLS
     return {
         "relation_id": str(row.get("id") or ""),
         "biblical_refs": _sorted_strings(row.get("biblical_refs"), refs=True),
@@ -102,6 +106,7 @@ def fingerprint_relation(row: dict, assessment: dict | None = None) -> dict:
         "scene_ids": scenes,
         "motifs": [norm_text(x) for x in motifs],
         "operators": [norm_text(x) for x in operators],
+        "explicit_symbols": sorted(explicit_symbols),
         "anchor_tokens": sorted(anchor_tokens),
         "project_sequence_tokens": sorted(project_sequence_tokens),
         "biblical_sequence_tokens": sorted(bible_sequence_tokens),
@@ -122,9 +127,7 @@ def _jaccard(left: set[str], right: set[str]) -> float:
 
 
 def _explicit_symbols(fp: dict) -> set[str]:
-    motif_tokens = set().union(*(_tokens(x) for x in fp.get("motifs", []))) if fp.get("motifs") else set()
-    id_tokens = _tokens(fp.get("relation_id"))
-    return (motif_tokens | id_tokens) & FAMILY_SYMBOLS
+    return set(fp.get("explicit_symbols", []))
 
 
 def _contrast_signal(left: dict, right: dict, shared_symbols: set[str]) -> bool:
@@ -144,6 +147,7 @@ def classify_pair(left: dict, right: dict) -> dict:
     same_scripture = bool(refs_l) and refs_l == refs_r
     shared_scripture = sorted(refs_l & refs_r)
     shared_scenes = sorted(set(left.get("scene_ids", [])) & set(right.get("scene_ids", [])))
+    shared_owners = sorted(set(left.get("source_owners", [])) & set(right.get("source_owners", [])))
     anchor_sim = _jaccard(set(left.get("anchor_tokens", [])), set(right.get("anchor_tokens", [])))
     bible_sim = _jaccard(set(left.get("biblical_sequence_tokens", [])), set(right.get("biblical_sequence_tokens", [])))
     project_sim = _jaccard(set(left.get("project_sequence_tokens", [])), set(right.get("project_sequence_tokens", [])))
@@ -153,15 +157,22 @@ def classify_pair(left: dict, right: dict) -> dict:
 
     reasons: list[str] = []
     classification = "unrelated"
-
     strong_equivalence = same_scripture and (
         (bible_sim >= 0.55 and claim_sim >= 0.45)
         or (bible_sim >= 0.75 and anchor_sim >= 0.30)
         or (anchor_sim >= 0.45 and claim_sim >= 0.45 and project_sim >= 0.45)
     )
+    corroborated_symbol = bool(shared_symbols) and bool(
+        shared_owners
+        or shared_scenes
+        or shared_operators
+        or anchor_sim >= 0.16
+        or bible_sim >= 0.20
+        or project_sim >= 0.20
+        or shared_scripture
+    )
 
-    # Strong same-passage/same-sequence equivalence outranks loose polarity words.
-    # This prevents terms such as "anti-boasting" from fabricating a contrast.
+    # Strong equivalence outranks incidental polarity vocabulary.
     if strong_equivalence:
         classification = "duplicate_candidate"
         reasons.append("same_scripture")
@@ -171,9 +182,11 @@ def classify_pair(left: dict, right: dict) -> dict:
             reasons.append("same_project_function")
         if claim_sim >= 0.45:
             reasons.append("same_maximum_claim")
-    elif _contrast_signal(left, right, shared_symbols):
+    elif corroborated_symbol and _contrast_signal(left, right, shared_symbols):
         classification = "contrast_candidate"
         reasons.extend(["shared_symbol", "opposing_function_cues"])
+        if shared_owners:
+            reasons.append("shared_source_owner")
     elif same_scripture and (
         bible_sim >= 0.55
         or (anchor_sim >= 0.45 and claim_sim >= 0.45)
@@ -190,7 +203,7 @@ def classify_pair(left: dict, right: dict) -> dict:
     elif (
         (shared_scripture and (anchor_sim >= 0.25 or bible_sim >= 0.25 or project_sim >= 0.25))
         or (shared_scenes and (anchor_sim >= 0.20 or bible_sim >= 0.20))
-        or (shared_symbols and (anchor_sim >= 0.08 or shared_operators))
+        or corroborated_symbol
     ):
         classification = "overlap_candidate"
         if shared_scripture:
@@ -201,6 +214,8 @@ def classify_pair(left: dict, right: dict) -> dict:
             reasons.append("shared_symbol")
         if shared_operators:
             reasons.append("shared_operator")
+        if shared_owners:
+            reasons.append("shared_source_owner")
 
     return {
         "relation_ids": [lid, rid],
@@ -209,6 +224,7 @@ def classify_pair(left: dict, right: dict) -> dict:
         "shared": {
             "biblical_refs": shared_scripture,
             "scene_ids": shared_scenes,
+            "source_owners": shared_owners,
             "symbols": sorted(shared_symbols),
             "operators": shared_operators,
         },
@@ -216,7 +232,6 @@ def classify_pair(left: dict, right: dict) -> dict:
 
 
 def _quality_key(fp: dict) -> tuple:
-    """Lexicographic completeness key; relation ID is the stable final tie-breaker."""
     return (
         int(fp.get("excavation_level", 0)),
         int(bool(fp.get("source_owners"))),
@@ -231,8 +246,10 @@ def _quality_key(fp: dict) -> tuple:
 
 
 def select_representative(member_ids: list[str], fingerprints: dict[str, dict]) -> str:
-    ranked = sorted(member_ids, key=lambda rid: tuple(-x for x in _quality_key(fingerprints[rid])) + (rid,))
-    return ranked[0]
+    return sorted(
+        member_ids,
+        key=lambda rid: tuple(-x for x in _quality_key(fingerprints[rid])) + (rid,),
+    )[0]
 
 
 def stable_family_id(member_ids: list[str], shared_terms: list[str] | None = None) -> str:
@@ -240,84 +257,85 @@ def stable_family_id(member_ids: list[str], shared_terms: list[str] | None = Non
     return "family-" + hashlib.sha256(basis.encode("utf-8")).hexdigest()[:12]
 
 
-def _family_label(member_ids: list[str], fps: dict[str, dict]) -> str:
-    counts: Counter[str] = Counter()
-    for rid in member_ids:
-        counts.update(_explicit_symbols(fps[rid]))
-    if counts:
-        token = sorted(counts.items(), key=lambda item: (-item[1], item[0]))[0][0]
-        return token.replace("-", " ").title()
-    common = None
-    for rid in member_ids:
-        current = set(fps[rid].get("anchor_tokens", []))
-        common = current if common is None else common & current
-    tokens = sorted((common or set()) - STOPWORDS)
-    return (tokens[0].title() if tokens else "Related Bible Relations")
+def _family_for_symbol(
+    symbol: str,
+    member_ids: list[str],
+    rows_by_id: dict[str, dict],
+    fps: dict[str, dict],
+    pair_map: dict[tuple[str, str], dict],
+) -> dict | None:
+    linked: set[str] = set()
+    edges: list[dict] = []
+    for i, left_id in enumerate(member_ids):
+        for right_id in member_ids[i + 1:]:
+            pair = pair_map.get(tuple(sorted((left_id, right_id))))
+            if not pair or pair["classification"] == "unrelated":
+                continue
+            if symbol not in pair.get("shared", {}).get("symbols", []):
+                continue
+            linked.update((left_id, right_id))
+            edges.append(pair)
+    if len(linked) < 2:
+        return None
+    members = sorted(linked)
+    contrast_ids = sorted({rid for edge in edges if edge["classification"] == "contrast_candidate" for rid in edge["relation_ids"]})
+    duplicate_ids = sorted({rid for edge in edges if edge["classification"] == "duplicate_candidate" for rid in edge["relation_ids"]})
+    representative = select_representative(members, fps)
+    source_owners = sorted({owner for rid in members for owner in fps[rid].get("source_owners", [])})
+    ref_counts = Counter(ref for rid in members for ref in fps[rid].get("biblical_refs", []))
+    shared_refs = sorted(ref for ref, count in ref_counts.items() if count >= 2)
+    member_claims = {
+        rid: str((rows_by_id[rid].get("relation_argument") or {}).get("maximum_claim") or rows_by_id[rid].get("maximum_claim") or "")
+        for rid in members
+    }
+    functions = {
+        rid: sorted((set(fps[rid].get("anchor_tokens", [])) | {symbol}) - STOPWORDS)[:10]
+        for rid in members
+    }
+    return {
+        "id": stable_family_id(members, [symbol]),
+        "label": symbol.title(),
+        "family_symbol": symbol,
+        "member_relation_ids": members,
+        "representative_relation_id": representative,
+        "supporting_relation_ids": sorted(set(members) - set(contrast_ids)),
+        "contrast_relation_ids": contrast_ids,
+        "duplicate_candidate_relation_ids": duplicate_ids,
+        "member_functions": functions,
+        "shared_biblical_refs": shared_refs,
+        "source_owners": source_owners,
+        "member_maximum_claims": member_claims,
+    }
 
 
 def build_families(relations: list[dict], assessments: dict[str, dict] | None = None) -> list[dict]:
-    """Build deterministic retrieval families over existing relations."""
+    """Build bounded per-symbol retrieval families over existing relations."""
     assessments = assessments or {}
-    rows = sorted(relations, key=lambda row: str(row.get("id", "")))
-    fps = {row["id"]: fingerprint_relation(row, assessments.get(row["id"])) for row in rows if row.get("id")}
-    edges: list[dict] = []
-    adjacency: dict[str, set[str]] = defaultdict(set)
+    rows = sorted((row for row in relations if row.get("id")), key=lambda row: str(row["id"]))
+    rows_by_id = {str(row["id"]): row for row in rows}
+    fps = {rid: fingerprint_relation(row, assessments.get(rid)) for rid, row in rows_by_id.items()}
+    pair_map: dict[tuple[str, str], dict] = {}
     for i, left in enumerate(rows):
         for right in rows[i + 1:]:
-            result = classify_pair(fps[left["id"]], fps[right["id"]])
-            if result["classification"] in {"duplicate_candidate", "overlap_candidate", "contrast_candidate"}:
-                edges.append(result)
-                a, b = result["relation_ids"]
-                adjacency[a].add(b)
-                adjacency[b].add(a)
+            pair = classify_pair(fps[left["id"]], fps[right["id"]])
+            pair_map[tuple(pair["relation_ids"])] = pair
+
+    symbol_members: dict[str, list[str]] = defaultdict(list)
+    for rid, fp in fps.items():
+        for symbol in fp.get("explicit_symbols", []):
+            symbol_members[symbol].append(rid)
 
     families: list[dict] = []
-    visited: set[str] = set()
-    for start in sorted(adjacency):
-        if start in visited:
-            continue
-        queue = deque([start])
-        members: set[str] = set()
-        while queue:
-            node = queue.popleft()
-            if node in visited:
-                continue
-            visited.add(node)
-            members.add(node)
-            queue.extend(sorted(adjacency[node] - visited))
-        if len(members) < 2:
-            continue
-        member_ids = sorted(members)
-        family_edges = [e for e in edges if set(e["relation_ids"]) <= members]
-        contrast_ids = sorted({rid for e in family_edges if e["classification"] == "contrast_candidate" for rid in e["relation_ids"]})
-        duplicate_ids = sorted({rid for e in family_edges if e["classification"] == "duplicate_candidate" for rid in e["relation_ids"]})
-        shared_terms = sorted({s for e in family_edges for s in e["shared"].get("symbols", [])})
-        representative = select_representative(member_ids, fps)
-        source_owners = sorted({owner for rid in member_ids for owner in fps[rid].get("source_owners", [])})
-        ref_counts = Counter(ref for rid in member_ids for ref in fps[rid].get("biblical_refs", []))
-        shared_refs = sorted(ref for ref, count in ref_counts.items() if count >= 2)
-        relation_by_id = {row["id"]: row for row in rows}
-        member_claims = {
-            rid: str((relation_by_id[rid].get("relation_argument") or {}).get("maximum_claim") or relation_by_id[rid].get("maximum_claim") or "")
-            for rid in member_ids
-        }
-        functions = {
-            rid: sorted((set(fps[rid].get("anchor_tokens", [])) | _explicit_symbols(fps[rid])) - STOPWORDS)[:8]
-            for rid in member_ids
-        }
-        families.append({
-            "id": stable_family_id(member_ids, shared_terms),
-            "label": _family_label(member_ids, fps),
-            "member_relation_ids": member_ids,
-            "representative_relation_id": representative,
-            "supporting_relation_ids": sorted(set(member_ids) - set(contrast_ids)),
-            "contrast_relation_ids": contrast_ids,
-            "duplicate_candidate_relation_ids": duplicate_ids,
-            "member_functions": functions,
-            "shared_biblical_refs": shared_refs,
-            "source_owners": source_owners,
-            "member_maximum_claims": member_claims,
-        })
+    for symbol in sorted(symbol_members):
+        family = _family_for_symbol(
+            symbol,
+            sorted(symbol_members[symbol]),
+            rows_by_id,
+            fps,
+            pair_map,
+        )
+        if family:
+            families.append(family)
     return sorted(families, key=lambda family: family["id"])
 
 
@@ -363,10 +381,9 @@ def build_duplicate_queue(
             continue
         unique = unique_evidence(by_id[left_id], by_id[right_id])
         requires_migration = bool(unique[left_id] or unique[right_id])
-        representative = select_representative([left_id, right_id], fingerprints)
         queue.append({
             "relation_ids": [left_id, right_id],
-            "recommended_representative_id": representative,
+            "recommended_representative_id": select_representative([left_id, right_id], fingerprints),
             "reasons": pair.get("reasons", []),
             "unique_evidence": unique,
             "requires_evidence_migration": requires_migration,
