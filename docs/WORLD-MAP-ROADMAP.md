@@ -41,7 +41,7 @@ These capabilities are established enough to build on:
 - mathematical calibration separating geography, topology, hierarchy, time and gated flow;
 - viewport-safe UI padding so map camera state accounts for the desktop inspector;
 - deterministic collision priority and adaptive placement for place labels;
-- runtime telemetry for live source/layer counts, style restoration and interaction-registry health;
+- runtime telemetry for live source/layer counts, style restoration, interaction-registry health and tooltip stale-generation health;
 - browse/performance regressions for known hover, panel, cache, overlap and occlusion failures.
 
 ## ACTIVE — CONTROL-PLANE HARDENING
@@ -100,7 +100,7 @@ These capabilities are established enough to build on:
 
 - [ ] Add real behavioral scenario tests for drag/zoom/projection/wrap/overlap/inspector transitions.
 - [x] Track active source/layer counts and style restoration work. *(Runtime Telemetry now aggregates source/layer counts and Style Lifecycle generation/restore state through existing lifecycle events.)*
-- [ ] Track interaction registry size and tooltip generation/stale suppression. *(Interaction Router registry/layer/dispatch counts are now live; tooltip stale-generation metrics remain.)*
+- [x] Track interaction registry size and tooltip generation/stale suppression. *(Interaction Router and Runtime Telemetry expose live registry, dispatch, generation, invalidation and stale-suppression diagnostics through lightweight custom events without polling.)*
 - [x] Retain bounded Places/subdivision cache diagnostics.
 - [ ] Publish useful backend/map audit artifacts in CI rather than creating disposable repository state.
 
