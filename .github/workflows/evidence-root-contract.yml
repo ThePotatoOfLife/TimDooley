@@ -1,0 +1,31 @@
+name: Evidence Root contract
+
+on:
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  evidence-root:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Run Evidence Root contract tests
+        run: |
+          python -m pip install pytest
+          pytest -q \
+            tests/test_public_statement_evidence_root.py \
+            tests/test_public_statement_evidence_root_builder.py \
+            tests/test_public_statement_status_enrichment.py \
+            tests/test_public_statement_timestamp_import.py \
+            tests/test_validate_public_statement_evidence_root.py
