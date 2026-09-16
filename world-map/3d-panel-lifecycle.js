@@ -75,6 +75,7 @@ async function ensureControlPlane() {
       await window.__potatoAtlasLoadModule?.('Scale', './3d-scale.js');
       await window.__potatoAtlasLoadModule?.('Interaction Router', './3d-interaction-router.js');
       await window.__potatoAtlasLoadModule?.('Inspector Router', './3d-inspector-router.js');
+      await window.__potatoAtlasLoadModule?.('Inspector URL', './3d-inspector-url.js');
       const scale = await window.__potatoAtlasScale?.ready;
       if (!scale) throw new Error('World Map Scale runtime unavailable.');
       if (!window.__potatoAtlasInteraction) throw new Error('World Map Interaction Router unavailable.');
