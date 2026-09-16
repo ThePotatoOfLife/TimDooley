@@ -1,12 +1,13 @@
 {
   "id": "bible-gapfill-wave27-audit",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "updated": "2026-09-16",
   "verification_workflow": ".github/workflows/quality-checks.yml",
   "baseline": {
-    "relation_count": 474,
-    "commit": "834e153309c1594b9024ad05c9fc2f458160e7c5",
-    "acceptance_rule": "The complete baseline relation-ID set must be a subset of the assembled post-wave corpus."
+    "relation_count": 145,
+    "commit": "11928304ecbde5290cac5fca818bdb449a25f3c6",
+    "scope": "Active canonical/additive relation IDs assembled from bible-layer-manifest.json on main immediately before the wave-27 merge.",
+    "acceptance_rule": "The complete verified baseline relation-ID set must be a subset of the assembled post-wave corpus. Reader totals remain dynamically derived from the live assembled corpus plus the overlap-atlas layer rather than from a hard-coded historical count."
   },
   "method": [
     "Search specialist Bible layers and active corpus for each proposed corridor.",
