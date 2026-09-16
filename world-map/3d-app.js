@@ -400,18 +400,10 @@ window.__potatoAtlasCoreInteractions = Object.freeze({
   },
 });
 
-function handleCountryPolygonClick(event){
-  const feature=event.features?.[0];if(!feature)return;
-  const originalEvent=event.originalEvent;
-  queueMicrotask(()=>{if(originalEvent?.__potatoAtlasOverlayHandled)return;selectFeature(feature,false,{toggle:true})});
-}
-
 map.on('load',async()=>{
   addLayers();populateControls();
   $('#interior').classList.toggle('active',showInterior);
   $('#relations').classList.toggle('active',showRelations);
-  map.on('click','countries-fill',handleCountryPolygonClick);
-  map.on('click','countries-extrude',handleCountryPolygonClick);
   const u=new URL(location.href),rel=u.searchParams.get('rel'),depth=Number(u.searchParams.get('depth'));
   if(rel&&[...$('#relationType').options].some(o=>o.value===rel)){relationType=rel;$('#relationType').value=rel}
   if(Number.isInteger(depth)&&depth>=1&&depth<=TRACE_MAX_DEPTH){traceDepth=depth;$('#traceDepth').value=String(depth)}
