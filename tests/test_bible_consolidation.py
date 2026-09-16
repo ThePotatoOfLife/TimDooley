@@ -130,8 +130,8 @@ def test_shared_generic_word_alone_is_unrelated():
     assert result["classification"] == "unrelated"
 
 
-def test_family_and_representative_are_order_stable():
-    rows = [
+def _mountain_rows():
+    return [
         make_relation(
             "mountain-revelation",
             ["Exodus 19:20"],
@@ -155,6 +155,10 @@ def test_family_and_representative_are_order_stable():
             motifs=["mountain", "kingdoms", "temptation"],
         ),
     ]
+
+
+def test_family_and_representative_are_order_stable():
+    rows = _mountain_rows()
     first = build_families(rows)
     shuffled = rows[:]
     random.Random(7).shuffle(shuffled)
@@ -163,6 +167,19 @@ def test_family_and_representative_are_order_stable():
     assert len(first) == 1
     assert set(first[0]["member_relation_ids"]) == {r["id"] for r in rows}
     assert "mountain-temptation" in first[0]["contrast_relation_ids"]
+
+
+def test_family_builder_can_reuse_precomputed_analysis_without_changing_output():
+    rows = _mountain_rows()
+    fingerprints = {row["id"]: fingerprint_relation(row) for row in rows}
+    pairs = []
+    ordered = sorted(rows, key=lambda row: row["id"])
+    for index, left in enumerate(ordered):
+        for right in ordered[index + 1:]:
+            pairs.append(classify_pair(fingerprints[left["id"]], fingerprints[right["id"]]))
+    expected = build_families(rows)
+    actual = build_families(rows, fingerprints=fingerprints, pair_results=pairs)
+    assert actual == expected
 
 
 def test_duplicate_queue_preserves_unique_evidence():
