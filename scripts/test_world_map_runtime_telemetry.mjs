@@ -19,10 +19,14 @@ const interaction = {
 const styleLifecycle = {
   state:() => ({ generation:3, restoreRuns:9, styleEvents:4, registrations:[{owner:'water'},{owner:'render-stack'}] }),
 };
+const tooltip = {
+  state:() => ({ generation:11, owner:'country', visible:true, lastReason:'show', invalidations:4, staleSuppressions:3 }),
+};
 const published = [];
 const telemetry = createRuntimeTelemetry(map, {
   interaction,
   styleLifecycle,
+  tooltip,
   bind:false,
   publish:snapshot => published.push(snapshot),
 });
@@ -36,6 +40,9 @@ assert.deepEqual(state.sourceTypes, {geojson:1, vector:1});
 assert.equal(state.interaction.registrationCount, 5);
 assert.equal(state.style.generation, 3);
 assert.equal(state.style.restoreRuns, 9);
+assert.equal(state.tooltip.generation, 11, 'runtime telemetry must expose tooltip generation');
+assert.equal(state.tooltip.invalidations, 4, 'runtime telemetry must expose tooltip invalidation count');
+assert.equal(state.tooltip.staleSuppressions, 3, 'runtime telemetry must expose stale async suppression count');
 assert.equal(state.sampleCount, 1, 'runtime telemetry must publish an initial snapshot');
 assert.equal(state.reason, 'init');
 assert.equal(published.length, 1);
@@ -48,6 +55,7 @@ state = telemetry.refresh('module-ready');
 assert.equal(state.sourceCount, 1);
 assert.equal(state.layerCount, 1);
 assert.equal(state.visibleLayerCount, 1);
+assert.equal(state.tooltip.owner, 'country');
 assert.equal(state.sampleCount, 2);
 assert.equal(state.reason, 'module-ready');
 assert.equal(published.length, 2);
