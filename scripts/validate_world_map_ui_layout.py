@@ -15,6 +15,7 @@ UI_OWNERSHIP_TEST = ROOT / "scripts" / "test_world_map_ui_ownership.mjs"
 LENS_LAYOUT_TEST = ROOT / "scripts" / "test_world_map_lens_layout_ownership.mjs"
 REMAINING_FLOATER_TEST = ROOT / "scripts" / "test_world_map_remaining_floater_ownership.mjs"
 FLOATER_INVENTORY_TEST = ROOT / "scripts" / "test_world_map_floater_inventory.mjs"
+VIEWPORT_OCCLUSION_TEST = ROOT / "scripts" / "test_world_map_viewport_occlusion.mjs"
 PHYSICAL = ROOT / "world-map" / "3d-physical-layers.js"
 MANIFEST = ROOT / "data" / "world-map-physical-layers.json"
 PANEL_LIFECYCLE = ROOT / "world-map" / "3d-panel-lifecycle.js"
@@ -54,11 +55,11 @@ def run_node(path: Path, errors: list[str], label: str) -> None:
 
 def main() -> int:
     errors: list[str] = []
-    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, LENS_LAYOUT_TEST, REMAINING_FLOATER_TEST, FLOATER_INVENTORY_TEST, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
+    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, LENS_LAYOUT_TEST, REMAINING_FLOATER_TEST, FLOATER_INVENTORY_TEST, VIEWPORT_OCCLUSION_TEST, PHYSICAL, MANIFEST, PANEL_LIFECYCLE, TERRAIN, RENDER_STACK_VALIDATOR, MAP_STATE_VALIDATOR, WATER_VALIDATOR, SURFACE_FOCUS_VALIDATOR, LAND_COVER_VALIDATOR, DESERTS_VALIDATOR, HYDROLOGY_VALIDATOR, PLACES_VALIDATOR, PLACES_PIPELINE_VALIDATOR):
         if not path.exists():
             errors.append(f"missing required World Map architecture file: {path.relative_to(ROOT)}")
 
-    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, LENS_LAYOUT_TEST, REMAINING_FLOATER_TEST, FLOATER_INVENTORY_TEST, PHYSICAL, PANEL_LIFECYCLE, TERRAIN):
+    for path in (LAYOUT, LAYOUT_COALESCING_TEST, UI_OWNERSHIP_TEST, LENS_LAYOUT_TEST, REMAINING_FLOATER_TEST, FLOATER_INVENTORY_TEST, VIEWPORT_OCCLUSION_TEST, PHYSICAL, PANEL_LIFECYCLE, TERRAIN):
         check_node(path, errors)
 
     if LAYOUT.exists():
@@ -132,6 +133,7 @@ def main() -> int:
     run_node(LENS_LAYOUT_TEST, errors, "World Map Lens layout ownership regression")
     run_node(REMAINING_FLOATER_TEST, errors, "World Map remaining floater ownership regression")
     run_node(FLOATER_INVENTORY_TEST, errors, "World Map floater inventory regression")
+    run_node(VIEWPORT_OCCLUSION_TEST, errors, "World Map viewport occlusion regression")
 
     validators = (
         ("render stack", RENDER_STACK_VALIDATOR, ()),
