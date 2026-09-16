@@ -18,6 +18,10 @@ def main():
     graph=load('data/potatoism-relationships.json')
     research=load('data/potatoism-research-expansion.json')
     manifest=load('manifest.json')
+    interpretive=load('knowledge/philosophy/interpretive-justice-laws.json')
+    archive=load('knowledge/philosophy/archive-epistemics.json')
+    authority=load('knowledge/philosophy/source-authority-and-provenance-policy.json')
+    culture=load('data/culture-ontology.json')
 
     if not religion.get('birth',{}).get('date'): errors.append('Potatoism birth marker missing')
     if len(religion.get('timeline',[]))<5: errors.append('Potatoism timeline is too short')
@@ -31,6 +35,33 @@ def main():
     if len(research.get('layers',[]))<8: errors.append('Research expansion unexpectedly small')
     if not research.get('deep_research_essays'): errors.append('Research expansion lacks deep research essays')
     if not research.get('cross_layer_synthesis'): errors.append('Research expansion lacks cross-layer synthesis')
+
+    required_laws={
+        'irreducible_subjecthood','situated_first_person_authority','recognition_without_ownership',
+        'bounded_jurisdiction','hearing_before_totalization','evidentiary_proportionality',
+        'independent_witness','reply_and_correctability','contextual_reaction',
+        'proportional_memory','non_retaliatory_correction'
+    }
+    laws=interpretive.get('laws',{}) if isinstance(interpretive,dict) else {}
+    missing_laws=sorted(required_laws-set(laws))
+    if missing_laws: errors.append('Interpretive Justice missing laws: '+', '.join(missing_laws))
+    if 'disciplines judgment' not in str(interpretive.get('boundary','')).casefold():
+        errors.append('Interpretive Justice must explicitly discipline rather than abolish judgment')
+    situated=laws.get('situated_first_person_authority',{}) if isinstance(laws,dict) else {}
+    if 'does not automatically settle external empirical' not in str(situated.get('boundary','')).casefold():
+        errors.append('Situated first-person authority lacks external-fact boundary')
+
+    mechanics=archive.get('representation_mechanics',{}) if isinstance(archive,dict) else {}
+    for key in ('representation_gap','identity_compression','narrative_lock_in','jurisdiction_creep','falsifier_loss','proportional_memory'):
+        if key not in mechanics: errors.append(f'Archive Epistemics missing representation mechanic: {key}')
+
+    protocol=authority.get('living_subject_representation_protocol',{}) if isinstance(authority,dict) else {}
+    if not protocol.get('sequence'): errors.append('Source authority missing living-subject representation protocol')
+    if not protocol.get('symmetry'): errors.append('Living-subject representation protocol missing symmetry rule')
+
+    metrics=culture.get('interpretive_justice_metrics',{}) if isinstance(culture,dict) else {}
+    for key in ('RepresentationGap','IndependentSourceRatio','ReplyAvailability','CorrectionReachRatio','ContextRetention','LabelPersistenceAfterCorrection','ClassificationReviewLatency','ClassifierClassifiedAsymmetry'):
+        if key not in metrics: errors.append(f'Culture ontology missing Interpretive Justice metric: {key}')
 
     branches={b.get('id'):b for b in manifest.get('branches',[]) if isinstance(b,dict) and b.get('id')}
     if manifest.get('root',{}).get('id')!='potato-of-life': errors.append('Potatoism public root must be potato-of-life')
@@ -51,6 +82,7 @@ def main():
     print(f'Lexicon entries: {len(lex.get("entries",[]))}')
     print(f'Symbolic graph nodes: {len(nodes)} · edges: {len(graph.get("edges",[]))}')
     print(f'Research layers: {len(research.get("layers",[]))} · essays: {len(research.get("deep_research_essays",[]))}')
+    print(f'Interpretive Justice laws: {len(laws)}')
     print(f'Public manifest branches: {len(branches)} · root: {manifest.get("root",{}).get("id","?")}')
     print(f'Errors: {len(errors)}')
     for e in errors: print('ERROR:',e)
