@@ -1,7 +1,7 @@
 # Public Rooms Navigation Design
 
 **Date:** 2026-09-16  
-**Status:** approved direction; implementation pending  
+**Status:** implemented on PR #209; exact-head verification required before merge  
 **Scope:** public information architecture and route projection only
 
 ## Problem
@@ -50,7 +50,7 @@ The homepage continues to expose exactly five links in the primary `.sections` n
 
 Immediately below the five Doors, add a visually separate **Explore the Rooms** corridor with at least:
 
-- Culture & Society → `/context/culture/`
+- Culture, Cult & Society → `/context/culture/`
 - History & Time → `/history/`
 - Politics & Geopolitics → `/politics/`
 - Law & Justice → `/law/`
@@ -65,15 +65,15 @@ The existing Story, Timeline, Collection and Works “Ways in” corridor remain
 
 `/rooms/` is the human-readable middle-floor map of the project. It explains that Rooms cross-cut the five Doors and groups mature surfaces without exposing internal file layout.
 
-It should include the principal public subject surfaces already present in the House, including Culture, History, Politics/Geopolitics, Law, Economy, World Systems, World Map, North, Sources/Evidence, Timeline, Works, Bible/Traditions, Science/formal models and other mature readers where appropriate.
+It includes the principal public subject surfaces already present in the House, including Culture/Cult/high-control analysis, History, Politics/Geopolitics, Law, Economy, World Systems, World Map, North, Sources/Evidence, Timeline, Works, Bible/Traditions, Science/formal models and the deep archive.
 
-It must link back to Home and to Explore for deeper browsing.
+It links back to Home and to Explore for deeper browsing.
 
 ## History & Time
 
 `/history/` broadens discoverability beyond the Tim-specific Timeline without pretending the repository already contains a complete universal history.
 
-The page should route readers to:
+The page routes readers to:
 
 - `/timeline/` for project chronology and dated material;
 - existing chronology/history records and Explore paths;
@@ -82,13 +82,13 @@ The page should route readers to:
 - Religion/Bible for textual and tradition history;
 - Sources & Evidence for attestation and provenance.
 
-The page must clearly distinguish historical occurrence, later interpretation and project mythology.
+The page clearly distinguishes historical occurrence, later interpretation and project mythology.
 
 ## Law & Justice
 
 `/law/` is a public guide over the existing legal backend, law/regulation blueprint material and related governance/justice surfaces.
 
-It should expose themes such as:
+It exposes themes such as:
 
 - constitutions and legislation;
 - rights, duties and prohibitions;
@@ -98,13 +98,15 @@ It should expose themes such as:
 - evidence, procedure, due process and accountability;
 - Interpretive Justice as a related philosophical surface, not a substitute for positive law.
 
-The page must not convert project claims, case reconstructions or political assertions into established legal findings. It routes to source/evidence layers and preserves provenance boundaries.
+The page does not convert project claims, case reconstructions or political assertions into established legal findings. It routes to source/evidence layers and preserves provenance boundaries.
+
+The implementation also exposes the existing generic law/regulation blueprint and specialist legal research index directly from the Law guide while `data/frontend-atlas-bridge.json` projects `knowledge/legal/` to `/law/` without moving or duplicating canonical ownership.
 
 ## Economy & Finance
 
 `/economy/` is a focused human-facing index over the existing World Systems and economic-network material.
 
-It should route readers through:
+It routes readers through:
 
 - public finance and debt;
 - banking and capital markets;
@@ -118,11 +120,13 @@ It should route readers through:
 
 It does not introduce synthetic scores or fill missing values.
 
+The implementation directly exposes existing specialist economic sources, including the inflation/rates/bond ledger and North obligation graph, while `data/frontend-atlas-bridge.json` projects `knowledge/economics/` to `/economy/` without creating a second source of truth.
+
 ## World gateway
 
-`/world/` remains the fifth primary Door. It should visibly expose the expanded subject corridors instead of only Map, Politics, North and Systems.
+`/world/` remains the fifth primary Door. It visibly exposes the expanded subject corridors instead of only Map, Politics, North and Systems.
 
-At minimum it should link to:
+At minimum it links to:
 
 - World Map;
 - Politics & Geopolitics;
@@ -138,42 +142,44 @@ These are sibling lenses over shared canonical owners; World does not duplicate 
 
 ## House registry and projection contracts
 
-Update `data/house/public-surfaces.json` and `knowledge/research/potato-house-master/public-route-topology.json` so `rooms`, `history`, `law` and `economy` are registered active public surfaces.
+`data/house/public-surfaces.json` and `knowledge/research/potato-house-master/public-route-topology.json` register `rooms`, `history`, `law` and `economy` as active public surfaces.
 
-Suggested classifications:
+Classifications:
 
 - `rooms`: guide, parent `home`, cross-room directory, secondary visibility.
 - `history`: guide, parent `home`, rooms `time-history`, `archive-sources`, `culture-information`, `world-systems`.
 - `law`: guide, parent `world`, rooms `world-systems`, `archive-sources`, `culture-information`, `research-lab`.
 - `economy`: guide, parent `world`, rooms `world-systems`, `archive-sources`, `research-lab`.
 
-Keep `primary_gateway_ids` exactly `tim`, `religion`, `philosophy`, `science`, `world`.
+`primary_gateway_ids` remains exactly `tim`, `religion`, `philosophy`, `science`, `world`.
 
-Update `data/frontend-atlas-bridge.json` with an explicit rooms/subject projection map or equivalent secondary-surface entries while preserving the five-door contract. Canonical owners remain unchanged.
+`data/frontend-atlas-bridge.json` contains the explicit `public_rooms` projection and backend-family routes for legal and economic material. Canonical owners remain unchanged.
 
 ## Navigation contract
 
-Add a dedicated validator for the Rooms layer rather than weakening the existing five-door validators.
+A dedicated `scripts/validate_public_rooms.py` validator protects the Rooms layer without weakening the existing five-door validators.
 
-The regression contract must assert:
+The regression contract asserts:
 
 1. Homepage primary `.sections` still contains exactly the five existing Door routes in order.
-2. Homepage contains a separate Rooms corridor linking Culture, History, Politics, Law, Economy, World Systems and All Rooms.
+2. Homepage contains a separate Rooms corridor linking Culture/Cult, History, Politics, Law, Economy, World Systems and All Rooms.
 3. `/rooms/`, `/history/`, `/law/` and `/economy/` exist and identify themselves correctly.
 4. `/world/` links History, Culture, Politics, Law, Economy, World Systems, Map, North and Sources.
 5. House registry and route topology contain the new surfaces and remain convergent.
-6. New pages link to evidence/deep archive rather than embedding new canonical data copies.
-7. Build output contains the new routes and public-navigation validation passes.
+6. Law and Economy expose existing specialist sources while remaining non-owning guide surfaces.
+7. The frontend bridge maps legal/economic backend families into their public Rooms without moving canonical ownership.
+8. Build output contains the new routes and public-navigation validation passes.
 
 ## Testing strategy
 
-Use TDD:
+The implementation used TDD:
 
-1. Add a focused failing `scripts/validate_public_rooms.py` regression on the feature branch.
-2. Run it before production changes and confirm it fails because the Rooms corridor/routes do not exist.
-3. Implement the smallest navigation/pages/registry changes that satisfy the contract.
-4. Run the focused validator plus House/public-projection validators.
-5. Open a PR and require the full repository quality workflow to pass on the exact head before merge.
+1. A focused `scripts/validate_public_rooms.py` regression was introduced before production navigation changes and observed failing on the missing Rooms/routes.
+2. The initial implementation made that contract green.
+3. Code review identified semantic-access gaps for specialist Law/Economy material and missing Cult wording.
+4. The validator was strengthened first and observed failing specifically on those gaps.
+5. The public pages and projection contract were then tightened until the strengthened contract passed.
+6. Full repository quality checks are required on the exact final branch head before merge.
 
 ## Non-goals
 
@@ -187,6 +193,21 @@ This wave does **not**:
 - claim completeness for law, economics or world history;
 - collapse political interpretation, project mythology or legal allegations into observed fact.
 
+## Implementation status
+
+Implemented on PR #209:
+
+- separate Home Rooms corridor while preserving the five primary Doors;
+- `/rooms/`, `/history/`, `/law/` and `/economy/` public guide routes;
+- expanded World and World Systems routing;
+- House registry and route-topology entries;
+- explicit frontend `public_rooms`, legal and economics projections;
+- direct specialist legal/economic source access;
+- explicit Culture/Cult/high-control discoverability;
+- focused Rooms regression validation wired into the repository quality workflow.
+
+The feature remains a presentation/routing layer. Canonical facts continue to live with their existing owners.
+
 ## Success criterion
 
-A visitor starting at `/` can discover Culture, History, Politics/Geopolitics, Law, Economy and World Systems without knowing hidden URLs, while the repository still has exactly five primary Doors and one authoritative backend for each fact.
+A visitor starting at `/` can discover Culture/Cult, History, Politics/Geopolitics, Law, Economy and World Systems without knowing hidden URLs, while the repository still has exactly five primary Doors and one authoritative backend for each fact.
