@@ -1,7 +1,7 @@
 (()=>{'use strict';
 const $=s=>document.querySelector(s),doc=$('#gb-document'),toc=$('#gb-toc'),search=$('#gb-search'),status=$('#gb-status');
 if(!doc||!toc)return;
-const loaded=new Map();let manifest=null,ttsInstance=null;
+const loaded=new Map();let manifest=null,ttsInstance=null,wholeBookTask=null;
 const esc=s=>String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const safeChapterToken=value=>String(value||'').replace(/\./g,'-');
 const safeChapterPath=path=>String(path||'').replace(/chapter-(\d+(?:\.\d+)+)/g,(_,number)=>`chapter-${safeChapterToken(number)}`);
@@ -13,9 +13,27 @@ async function loadSlot(slot){
   loaded.set(slot.id,task);return task;
 }
 async function loadAllSlots(){
-  const slots=[...doc.querySelectorAll('.gb-slot')];
-  await Promise.all(slots.map(loadSlot));
-  return slots;
+  if(wholeBookTask)return wholeBookTask;
+  wholeBookTask=(async()=>{
+    const slots=[...doc.querySelectorAll('.gb-slot')];
+    await Promise.all(slots.map(loadSlot));
+    const failed=slots.filter(slot=>slot.dataset.loaded==='error');
+    if(failed.length)throw new Error(`${failed.length} chapter${failed.length===1?'':'s'} could not be loaded`);
+    return slots;
+  })().catch(err=>{wholeBookTask=null;throw err});
+  return wholeBookTask;
+}
+async function prepareWholeBook(){
+  status.textContent='Loading the complete book for reading…';
+  try{
+    await loadAllSlots();
+    ttsInstance?.refresh?.();
+    status.textContent='Complete book loaded for reading.';
+    return true;
+  }catch(err){
+    status.textContent=`Could not prepare the complete book: ${err.message}`;
+    return false;
+  }
 }
 function slotFor(entry,kind='chapter'){
   const s=document.createElement('section');s.className='gb-slot';s.id=kind==='front'?entry.anchor:`chapter-${safeChapterToken(entry.number)}`;s.dataset.path=kind==='front'?entry.path:safeChapterPath(entry.path);s.dataset.loaded='false';
@@ -35,8 +53,16 @@ function mountTts(){
   if(!host||!Longform||!Drawer)return;
   ttsInstance=Longform.mount({mount:host,root:doc,id:'great-book-reader',label:'The Great Book of Potato',allLabel:'Whole book',currentLabel:'Current chapter',selectionLabel:'Selection',itemSelector:'.gb-chapter-fragment',excludeSelector:'.gb-placeholder,.caution'});
   if(!ttsInstance)return;
+  host.dataset.ttsMounted='true';
   const drawer=ttsInstance.drawer,originalPlay=drawer.playSection?.bind(drawer);
-  if(originalPlay)drawer.playSection=async id=>{if(id==='all'){status.textContent='Loading the complete book for reading…';await loadAllSlots();ttsInstance.refresh();status.textContent='Complete book loaded for reading.'}return originalPlay(id)};
+  if(originalPlay)drawer.playSection=async id=>{if(id==='all'&&!await prepareWholeBook())return;return originalPlay(id)};
+  drawer.element?.addEventListener('click',event=>{
+    const play=event.target?.closest?.('button[title="Play"]');
+    const scope=drawer.element?.querySelector?.('select[aria-label="Reading scope"]');
+    if(!play||scope?.value!=='all'||wholeBookTask)return;
+    event.preventDefault();event.stopImmediatePropagation();
+    prepareWholeBook().then(ok=>{if(ok)drawer.playSection?.('all')});
+  },true);
 }
 async function init(){
   const spec=await fetch('../great-book/book-index.json').then(r=>{if(!r.ok)throw new Error(`book-index.json ${r.status}`);return r.json()}),parts=await Promise.all(spec.shards.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(`${p} ${r.status}`);return r.json()})));
