@@ -9,6 +9,7 @@ const deadSubdivisionMarker = '__potatoAtlasSubdivisionHandled';
 
 const runtimePaths = [
   'world-map/3d-app.js',
+  'world-map/3d-core-interaction-handoff.js',
   'world-map/3d-interaction-router.js',
   'world-map/3d-country-selection.js',
   'world-map/3d-hover.js',
@@ -18,19 +19,24 @@ const runtimePaths = [
 ];
 const runtime = Object.fromEntries(runtimePaths.map(path => [path, read(path)]));
 
-// The compatibility marker has one canonical reader: the early core polygon
-// microtask. It prevents a pre-router overlay/direct handler from also selecting
-// the polygon underneath the same click.
+// The compatibility marker has one canonical reader/writer pair in the early
+// core renderer. Those handlers are still valid before the router exists.
 const app = runtime['world-map/3d-app.js'];
 assert.ok(
   app.includes('if(originalEvent?.__potatoAtlasOverlayHandled)return'),
   'core polygon fallback must retain the one compatibility read',
 );
+assert.equal(count(app, overlayMarker), 2, '3d-app should retain exactly its legacy early-core read/write pair');
+
+// Once the router owns dispatch, captured core listeners must not receive the
+// real DOM originalEvent. That keeps legacy handlers behaviorally useful without
+// letting them re-claim a click that the router has already arbitrated.
+const handoff = runtime['world-map/3d-core-interaction-handoff.js'];
 assert.ok(
-  app.includes('function claimOverlayClick(event){if(window.__potatoAtlasInteraction)return;'),
-  'core overlay writers must stop claiming once the shared router exists',
+  handoff.includes("Object.defineProperty(routed, 'originalEvent', { value:null, configurable:true });"),
+  'core interaction handoff must shadow originalEvent before invoking captured legacy handlers',
 );
-assert.equal(count(app, overlayMarker), 2, '3d-app should contain exactly one compatibility read and one pre-router write');
+assert.ok(!handoff.includes(overlayMarker), 'handoff must isolate the legacy marker without becoming another marker owner');
 
 // Shared router owns the normal-path claim; direct modules may write the marker
 // only inside their degraded fallback handlers.
