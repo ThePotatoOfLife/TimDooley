@@ -6,7 +6,7 @@ from pathlib import Path
 from build_story_depth_audit import audit_is_current
 from validate_great_book_reader import validate as validate_great_book_reader
 from validate_story_archive import validate_story_archive
-from validate_public_statement_evidence_contract import validate_contract as validate_evidence_contract
+from validate_public_statement_rooted_stack import audit_repository as audit_public_statement_rooted_stack
 ROOT=Path(__file__).resolve().parents[1]; ERRORS=[]
 _TERMS=["FIX"+"ME","T"+"BD","T"+"BA","COMING"+" SOON","UNDER"+" CONSTRUCTION"]
 BAD_TERMS=re.compile(r"\b(?:"+"|".join(map(re.escape,_TERMS))+r")\b",re.I)
@@ -26,8 +26,8 @@ def main():
     if not audit_is_current(ROOT):
         ERRORS.append("Story evidence depth audit is stale; run scripts/build_story_depth_audit.py")
 
-    for error in validate_evidence_contract():
-        ERRORS.append(f"Evidence Root: {error}")
+    for error in audit_public_statement_rooted_stack(ROOT):
+        ERRORS.append(f"Public statement rooted stack: {error}")
 
     countries=load("data/countries/index.json").get("countries",[])
     if len(countries)!=195:ERRORS.append(f"countries/index.json has {len(countries)} records; expected 195")
@@ -49,7 +49,6 @@ def main():
     if supersession.get("vertical_axis")!="data/axis-depths.json":
         ERRORS.append("33-level-framework.json must point vertical navigation to data/axis-depths.json")
     if "not metaphysical" not in supersession.get("warning","").lower() and "not metaphysical" not in legacy33.get("purpose","").lower():
-        # Wording may evolve; enforce the semantic boundary with the current explicit phrase too.
         warning=(supersession.get("warning","")+" "+legacy33.get("purpose","")).lower()
         if "not metaphysical" not in warning and "not metaphysical or navigational dimensions" not in warning:
             ERRORS.append("33-level-framework.json must state that legacy facets are not competing metaphysical dimensions")
