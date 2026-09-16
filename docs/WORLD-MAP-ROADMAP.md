@@ -76,10 +76,11 @@ These capabilities are established enough to build on:
 - [x] Add central interaction registry/router.
 - [x] Define hover/click semantic priority independent of render z-order.
 - [x] Migrate Places, subdivisions and spatial overlays.
-- [ ] Migrate the remaining core country/capital paths (`3d-app.js`, `3d-hover.js`, `3d-country-selection.js`) without weakening core-first boot.
-- [ ] Retire `__potatoAtlasOverlayHandled` only after those remaining early-boot consumers have a tested canonical owner.
+- [x] Migrate the core country/capital paths (`3d-app.js`, `3d-hover.js`, `3d-country-selection.js`) without weakening core-first boot.
+- [x] Narrow `__potatoAtlasOverlayHandled` to a tested early-boot/degraded compatibility boundary.
+- [ ] Retire the marker entirely only if/when direct standalone/degraded interaction boot paths are removed.
 
-Current compatibility rule: the marker is still live protection against duplicate early-boot country/capital clicks. Router-owned consumers may retain it only inside degraded fallback paths until the core path is migrated.
+Current compatibility rule: normal application interaction is Router-owned and does not use the marker for arbitration. During the core handoff, captured legacy listeners receive a routed event without the real `originalEvent`, so they cannot re-claim an already-arbitrated click. The marker remains only as protection for the genuine pre-Router core window and explicitly documented degraded/direct-module fallbacks. `scripts/test_world_map_interaction_compatibility.mjs` is the single contract for that boundary.
 
 ### D. Tooltip safety
 
@@ -124,7 +125,7 @@ Drain only after unique behavior is preserved and tested:
 - [ ] old Lens ownership after registry/compositor parity
 - [ ] old Atlas naming/routing remnants
 - [ ] remaining duplicated style/lifecycle ownership not yet under Style Lifecycle
-- [ ] `__potatoAtlasOverlayHandled` after core country/capital interaction migration
+- [ ] `__potatoAtlasOverlayHandled` after direct standalone/degraded interaction fallbacks are retired
 - [ ] stale generated/retired map artifacts already represented by canonical owners
 
 See `docs/world-map-consolidation-dispositions.md` for the branch-by-branch reconstruction record and compatibility classification.
