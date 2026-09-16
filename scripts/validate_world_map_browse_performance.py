@@ -176,7 +176,7 @@ def main() -> int:
     # mouse movement must not let older async completions move/reopen it, and one
     # country lookup is reused while the pointer moves within the same country.
     for token in (
-        "activeKey", "latestEvent", "resolvedHtml",
+        "countryHoverKey", "countryHoverEvent", "countryHoverHtml",
         "tooltip.nextGeneration('country')", "tooltip.show('country'",
         "tooltip.invalidate('country-leave')",
         "placesCanOwnCapitals", "potato-atlas-places-ready",
