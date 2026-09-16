@@ -1,4 +1,4 @@
-// Shared Interaction Router bridge for core country selection.
+// Shared Interaction Router bridge for core country selection and core semantic map actions.
 // Base country stays at priority 10 while higher semantic targets arbitrate above it.
 
 const map = window.__potatoAtlasMap;
@@ -50,17 +50,13 @@ interaction.register('countries', {
   onClick:(_event, feature) => { void selectCountry(feature); },
 });
 
-// Legacy core overlay actions remain direct until their dedicated migration.
-// These temporary registrations only arbitrate hits above the base country. The
-// existing direct core handlers still execute the semantic action and will be
-// retired one-by-one once their behavior has dedicated router regressions.
 interaction.register('core-country-hubs', {
   layers:['country-hubs'],
   objectType:'country-hub',
   clickPriority:65,
   hoverPriority:65,
   cursor:'pointer',
-  onClick:() => {},
+  onClick:(_event, feature) => { window.__potatoAtlasCoreInteractions?.countryHub?.(feature); },
 });
 interaction.register('core-semantic-hubs', {
   layers:['semantic-hubs'],
@@ -68,7 +64,7 @@ interaction.register('core-semantic-hubs', {
   clickPriority:65,
   hoverPriority:65,
   cursor:'pointer',
-  onClick:() => {},
+  onClick:(_event, feature) => { window.__potatoAtlasCoreInteractions?.semanticHub?.(feature); },
 });
 interaction.register('core-trace-hubs', {
   layers:['trace-hubs'],
@@ -76,7 +72,7 @@ interaction.register('core-trace-hubs', {
   clickPriority:55,
   hoverPriority:55,
   cursor:'pointer',
-  onClick:() => {},
+  onClick:(_event, feature) => { window.__potatoAtlasCoreInteractions?.traceHub?.(feature); },
 });
 interaction.register('core-relations', {
   layers:['relations'],
@@ -84,7 +80,7 @@ interaction.register('core-relations', {
   clickPriority:50,
   hoverPriority:50,
   cursor:'pointer',
-  onClick:() => {},
+  onClick:(_event, feature) => { window.__potatoAtlasCoreInteractions?.relation?.(feature); },
 });
 
 window.__potatoAtlasCountryInteraction = Object.freeze({
