@@ -85,7 +85,7 @@ const lifecycle = fs.readFileSync(new URL('../world-map/3d-panel-lifecycle.js', 
 const subdivisions = fs.readFileSync(new URL('../world-map/3d-subdivisions.js', import.meta.url), 'utf8');
 const bootstrap = fs.readFileSync(new URL('../world-map/3d-bootstrap.js', import.meta.url), 'utf8');
 const app = fs.readFileSync(new URL('../world-map/3d-app.js', import.meta.url), 'utf8');
-const appCore = fs.readFileSync(new URL('../world-map/3d-app-core.js', import.meta.url), 'utf8');
+const handoff = fs.readFileSync(new URL('../world-map/3d-core-interaction-handoff.js', import.meta.url), 'utf8');
 const hover = fs.readFileSync(new URL('../world-map/3d-hover.js', import.meta.url), 'utf8');
 const countrySelection = fs.readFileSync(new URL('../world-map/3d-country-selection.js', import.meta.url), 'utf8');
 const routerSource = fs.readFileSync(new URL('../world-map/3d-interaction-router.js', import.meta.url), 'utf8');
@@ -96,11 +96,14 @@ assert.ok(subdivisions.includes('if (interaction?.register)'), 'subdivision inte
 assert.ok(subdivisions.includes("interaction.register('subdivisions'"), 'subdivisions must register with the Interaction Router on normal app boots');
 
 assert.ok(routerSource.includes('potato-atlas-interaction-ready'), 'Interaction Router must publish an explicit ready signal for early-boot handoff');
+const bootstrapCapture = bootstrap.indexOf("await import(versionedModule('./3d-core-interaction-handoff.js'))");
+const bootstrapHover = bootstrap.indexOf("await import(versionedModule('./3d-hover.js'))");
 const bootstrapRouter = bootstrap.indexOf("loadAfterPaint('Interaction Router', './3d-interaction-router.js')");
 const bootstrapCountry = bootstrap.indexOf("loadAfterPaint('Country selection', './3d-country-selection.js')");
+assert.ok(bootstrapCapture >= 0 && bootstrapHover >= 0 && bootstrapCapture < bootstrapHover, 'bootstrap must arm core interaction capture before the renderer boots');
 assert.ok(bootstrapRouter >= 0 && bootstrapCountry >= 0 && bootstrapRouter < bootstrapCountry, 'bootstrap must load Interaction Router before canonical country selection');
 
-assert.ok(appCore.includes("map.on('click','countries-fill',handleCountryPolygonClick)"), 'preserved core renderer must still expose the captured early country click path');
+assert.ok(app.includes("map.on('click','countries-fill',handleCountryPolygonClick)"), 'canonical core renderer must remain in-place for capture and existing runtime contracts');
 for (const marker of [
   'function handoffCoreInteractions(interaction)',
   "interaction.register('core-country-fallback'",
@@ -109,7 +112,9 @@ for (const marker of [
   "interaction.register('core-trace-hubs'",
   "interaction.register('core-relations'",
   "map.off('click', layerId, listener)",
-]) assert.ok(app.includes(marker), `3d-app early-boot handoff missing marker: ${marker}`);
+  'potato-atlas-core-ready',
+  'potato-atlas-interaction-ready',
+]) assert.ok(handoff.includes(marker), `core interaction handoff missing marker: ${marker}`);
 
 for (const marker of [
   'const interaction = window.__potatoAtlasInteraction',
