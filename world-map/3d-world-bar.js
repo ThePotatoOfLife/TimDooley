@@ -35,6 +35,20 @@
     if (state.mode === 'as_of') return `As of ${state.time || '—'}`;
     return `${state.time || '—'} → ${state.time2 || '—'}`;
   }
+  function humanMeta(value) {
+    return String(value || '').replaceAll('_', ' ').trim();
+  }
+  function layerMeta(entry) {
+    if (!entry) return '';
+    return [humanMeta(entry.epistemic_type), humanMeta(entry.visual_channel)].filter(Boolean).join(' · ');
+  }
+  function layerSource(entry) {
+    const owner = String(entry?.source_owner || '').trim();
+    return owner ? owner.replace(/^data\//, '').replace(/\.json$/i, '') : '';
+  }
+  function layerTitle(entry) {
+    return [entry?.label, layerMeta(entry), layerSource(entry), entry?.notes].filter(Boolean).join(' · ');
+  }
   function closeMenus(current) {
     document.querySelectorAll('#atlasWorldBar details[open]').forEach(menu => { if (menu !== current) menu.removeAttribute('open'); });
   }
@@ -149,6 +163,10 @@
     const lines = [];
     if (scalar) {
       lines.push(`<div><span>Color</span><b>${esc(scalar.label)}</b></div>`);
+      const semantic = layerMeta(scalar);
+      if (semantic) lines.push(`<div><span>Layer type</span><b>${esc(semantic)}</b></div>`);
+      const source = layerSource(scalar);
+      if (source) lines.push(`<div><span>Source owner</span><b>${esc(source)}</b></div>`);
       const coverage = view?.coverage;
       if (coverage) {
         const covered = Number(coverage.coverage ?? 0), countries = Number(coverage.countries ?? coverage.country_count ?? 0);
@@ -162,6 +180,8 @@
     if (sets.length) {
       const labels = sets.slice(0,3).map(entry => entry.label).join(' · ');
       lines.push(`<div><span>Sets</span><b>${esc(labels)}${sets.length>3?` +${sets.length-3}`:''}</b></div>`);
+      const semantics = [...new Set(sets.map(layerMeta).filter(Boolean))].join(' · ');
+      if (semantics) lines.push(`<div><span>Set types</span><b>${esc(semantics)}</b></div>`);
       const matchCount = Number(view?.matchCount);
       lines.push(`<div><span>Matches</span><b>${esc((view?.memberships?.mode || query.getMode() || 'any').toUpperCase())} · ${Number.isFinite(matchCount) ? `${matchCount} countries` : 'calculating…'}</b></div>`);
     }
@@ -187,7 +207,7 @@
         return;
       }
       const rows = entries(family);
-      pop.innerHTML = rows.map(entry => `<button type="button" class="atlas-world-option${layers.isActive(entry.id)?' active':''}" data-layer-option="${esc(entry.id)}">${entry.color?`<i style="--layer-color:${esc(entry.color)}"></i>`:''}<span>${esc(entry.label)}</span></button>`).join('') || '<div class="atlas-world-empty">No current layers</div>';
+      pop.innerHTML = rows.map(entry => `<button type="button" class="atlas-world-option${layers.isActive(entry.id)?' active':''}" data-layer-option="${esc(entry.id)}" title="${esc(layerTitle(entry))}">${entry.color?`<i style="--layer-color:${esc(entry.color)}"></i>`:''}<span>${esc(entry.label)}<small>${esc(layerMeta(entry))}</small></span></button>`).join('') || '<div class="atlas-world-empty">No current layers</div>';
       const count = rows.filter(entry => layers.isActive(entry.id)).length;
       menuNode.classList.toggle('active', count > 0);
     });
@@ -202,7 +222,7 @@
   function installStyle() {
     if (document.getElementById('atlasWorldBarStyle')) return;
     const style = document.createElement('style'); style.id = 'atlasWorldBarStyle';
-    style.textContent = `body.atlas-registry-ui .top{min-height:50px;overflow:visible!important}body.atlas-registry-ui .brand small{display:none}body.atlas-registry-ui .brand b{font-size:15px}#atlasWorldBarHost{display:flex;align-items:center;flex:1 1 auto;min-width:0;overflow:visible}#atlasWorldBar{position:relative;display:flex;align-items:center;gap:5px;width:100%;min-width:0;padding:0;background:transparent;border:0;box-shadow:none}#atlasWorldBar button,#atlasWorldBar summary{min-height:30px;padding:5px 8px;border-radius:7px;background:#111818;border:1px solid #2d3939;color:#e9efea;font-size:11px;line-height:1;white-space:nowrap}#atlasWorldBar button.active,#atlasWorldBar .atlas-world-menu.active>summary,#atlasWorldBar .atlas-world-menu[open]>summary{border-color:#7a9892;color:#dff1d8;background:#172120}#atlasWorldBar .atlas-axis-button{font-weight:800;min-width:31px}.atlas-world-menu{position:relative}.atlas-world-menu>summary{list-style:none;cursor:pointer}.atlas-world-menu>summary::-webkit-details-marker{display:none}.atlas-world-menu-pop{position:absolute;left:0;top:calc(100% + 7px);z-index:30;min-width:210px;max-width:280px;max-height:58vh;overflow:auto;padding:6px;background:#0b1010f7;border:1px solid #344343;border-radius:10px;box-shadow:0 12px 28px #000a}.atlas-world-legacy-menu>.atlas-world-menu-pop{right:0;left:auto}.atlas-world-option{display:flex!important;align-items:center;gap:7px;width:100%;margin:2px 0;text-align:left}.atlas-world-option i{width:9px;height:9px;border-radius:3px;background:var(--layer-color);flex:0 0 auto}.atlas-world-option.active:after{content:'✓';margin-left:auto;color:#bbdc8a}.atlas-world-static{display:flex;justify-content:space-between;gap:10px;padding:7px 6px;font-size:11px}.atlas-world-static small,.atlas-world-empty{color:#9aa6a0;font-size:9px}#atlasWorldQuery{display:flex;gap:2px;padding-left:4px;border-left:1px solid #2d3939}#atlasWorldResult{width:92px;flex:0 0 92px;padding:0 4px;color:#aab4aa;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#atlasWorldContext{position:absolute;left:10px;bottom:10px;z-index:7;width:min(290px,calc(100% - 20px));padding:8px 10px;background:#080b0bdc;border:1px solid #30403e;border-radius:10px;box-shadow:0 6px 22px #0007;pointer-events:none}#atlasWorldContext[hidden]{display:none!important}#atlasWorldContext>small{display:block;margin-bottom:3px;color:#77857f;font-size:8px;text-transform:uppercase;letter-spacing:.1em}#atlasWorldContext>div{display:flex;justify-content:space-between;gap:10px;padding:2px 0;font-size:10px}#atlasWorldContext span{color:#92a099}#atlasWorldContext b{max-width:190px;text-align:right;font-weight:600;color:#d7dfda;overflow-wrap:anywhere}#atlasWorldBar #viewMenu #globe,#atlasWorldBar #traceMenu #relations{display:none}@media(max-width:1150px){#atlasWorldResult{display:none}.top-home{font-size:11px}}@media(max-width:900px){body.atlas-registry-ui .top{overflow-x:auto!important;overflow-y:visible!important}#atlasWorldBarHost{flex:0 0 auto}#atlasWorldBar{width:max-content}.atlas-world-menu-pop{position:fixed;left:8px!important;right:8px!important;top:52px;max-width:none}.top input{width:145px;min-width:130px}#atlasWorldContext{left:8px;bottom:58px;width:min(270px,calc(100% - 16px))}}`;
+    style.textContent = `body.atlas-registry-ui .top{min-height:50px;overflow:visible!important}body.atlas-registry-ui .brand small{display:none}body.atlas-registry-ui .brand b{font-size:15px}#atlasWorldBarHost{display:flex;align-items:center;flex:1 1 auto;min-width:0;overflow:visible}#atlasWorldBar{position:relative;display:flex;align-items:center;gap:5px;width:100%;min-width:0;padding:0;background:transparent;border:0;box-shadow:none}#atlasWorldBar button,#atlasWorldBar summary{min-height:30px;padding:5px 8px;border-radius:7px;background:#111818;border:1px solid #2d3939;color:#e9efea;font-size:11px;line-height:1;white-space:nowrap}#atlasWorldBar button.active,#atlasWorldBar .atlas-world-menu.active>summary,#atlasWorldBar .atlas-world-menu[open]>summary{border-color:#7a9892;color:#dff1d8;background:#172120}#atlasWorldBar .atlas-axis-button{font-weight:800;min-width:31px}.atlas-world-menu{position:relative}.atlas-world-menu>summary{list-style:none;cursor:pointer}.atlas-world-menu>summary::-webkit-details-marker{display:none}.atlas-world-menu-pop{position:absolute;left:0;top:calc(100% + 7px);z-index:30;min-width:210px;max-width:280px;max-height:58vh;overflow:auto;padding:6px;background:#0b1010f7;border:1px solid #344343;border-radius:10px;box-shadow:0 12px 28px #000a}.atlas-world-legacy-menu>.atlas-world-menu-pop{right:0;left:auto}.atlas-world-option{display:flex!important;align-items:center;gap:7px;width:100%;margin:2px 0;text-align:left}.atlas-world-option>span{display:block;min-width:0;flex:1}.atlas-world-option>span>small{display:block;margin-top:3px;color:#87958e;font-size:9px;line-height:1.15;text-transform:none;white-space:normal}.atlas-world-option i{width:9px;height:9px;border-radius:3px;background:var(--layer-color);flex:0 0 auto}.atlas-world-option.active:after{content:'✓';margin-left:auto;color:#bbdc8a}.atlas-world-static{display:flex;justify-content:space-between;gap:10px;padding:7px 6px;font-size:11px}.atlas-world-static small,.atlas-world-empty{color:#9aa6a0;font-size:9px}#atlasWorldQuery{display:flex;gap:2px;padding-left:4px;border-left:1px solid #2d3939}#atlasWorldResult{width:92px;flex:0 0 92px;padding:0 4px;color:#aab4aa;font-size:10px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}#atlasWorldContext{position:absolute;left:10px;bottom:10px;z-index:7;width:min(290px,calc(100% - 20px));padding:8px 10px;background:#080b0bdc;border:1px solid #30403e;border-radius:10px;box-shadow:0 6px 22px #0007;pointer-events:none}#atlasWorldContext[hidden]{display:none!important}#atlasWorldContext>small{display:block;margin-bottom:3px;color:#77857f;font-size:8px;text-transform:uppercase;letter-spacing:.1em}#atlasWorldContext>div{display:flex;justify-content:space-between;gap:10px;padding:2px 0;font-size:10px}#atlasWorldContext span{color:#92a099}#atlasWorldContext b{max-width:190px;text-align:right;font-weight:600;color:#d7dfda;overflow-wrap:anywhere}#atlasWorldBar #viewMenu #globe,#atlasWorldBar #traceMenu #relations{display:none}@media(max-width:1150px){#atlasWorldResult{display:none}.top-home{font-size:11px}}@media(max-width:900px){body.atlas-registry-ui .top{overflow-x:auto!important;overflow-y:visible!important}#atlasWorldBarHost{flex:0 0 auto}#atlasWorldBar{width:max-content}.atlas-world-menu-pop{position:fixed;left:8px!important;right:8px!important;top:52px;max-width:none}.top input{width:145px;min-width:130px}#atlasWorldContext{left:8px;bottom:58px;width:min(270px,calc(100% - 16px))}}`;
     document.head.appendChild(style);
   }
   function install() {
@@ -213,7 +233,7 @@
     const bar = document.createElement('div'); bar.id='atlasWorldBar'; bar.setAttribute('role','toolbar'); bar.setAttribute('aria-label','World map analytical layers');
     AXES.forEach(id => {
       const entry = layers.get(id); if (!entry || entry.availability !== 'current') return;
-      const button=document.createElement('button'); button.type='button'; button.className='atlas-axis-button'; button.dataset.layerId=id; button.title=entry.label; button.textContent=entry.label.slice(0,1).toUpperCase(); button.addEventListener('click',()=>layers.toggle(id)); bar.appendChild(button);
+      const button=document.createElement('button'); button.type='button'; button.className='atlas-axis-button'; button.dataset.layerId=id; button.title=layerTitle(entry); button.textContent=entry.label.slice(0,1).toUpperCase(); button.addEventListener('click',()=>layers.toggle(id)); bar.appendChild(button);
     });
     FAMILIES.forEach(([family,label]) => bar.appendChild(menu(family,label)));
     const geography=geographyMenu(); bar.appendChild(geography);
