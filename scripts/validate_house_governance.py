@@ -29,6 +29,7 @@ WORKS_MARKERS=(
 HOME_FILE=ROOT/'index.html'
 HOME_CORRIDOR=(
     '<strong>Ways in</strong>',
+    'href="great-book/">Great Book</a>',
     'href="tim-dooley/story/">Story</a>',
     'href="timeline/">Timeline</a>',
     'href="corporium/">Collection</a>',
