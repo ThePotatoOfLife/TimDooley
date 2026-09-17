@@ -26,6 +26,7 @@ function ensureRail() {
     .atlas-pinned-main{min-width:0;border:0;background:transparent;padding:0;text-align:left;cursor:pointer}
     .atlas-pinned-name{display:block;font-size:11px;font-weight:650;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .atlas-pinned-value{display:block;margin-top:3px;font-size:10px;color:#c6d0cc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .atlas-pinned-population{display:block;margin-top:2px;font-size:9px;color:#aebbb5;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .atlas-pinned-meta{display:block;margin-top:2px;font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .atlas-pinned-remove{align-self:start;border:0;background:transparent;color:#9fa9a4;padding:0 2px;font-size:14px;cursor:pointer}
     .atlas-pinned-overflow{display:flex;align-items:center;justify-content:center;min-width:76px;padding:7px 9px;border:1px dashed #3a4745;border-radius:10px;color:var(--muted);font-size:10px;flex:0 0 auto;background:#0f1716;cursor:pointer}
@@ -72,10 +73,25 @@ function cardMeta(view) {
   return view.relationMode && view.relationMode !== 'all' ? `${view.relationMode} connections` : '';
 }
 
+function formatPopulation(value) {
+  if (value == null || value === '') return '—';
+  const number = Number(value);
+  if (!Number.isFinite(number)) return '—';
+  return new Intl.NumberFormat(undefined, { notation:'compact', maximumFractionDigits:1 }).format(number);
+}
+
+async function populationObservation(code) {
+  try { return await window.__potatoAtlasDataRuntime?.populationObservation?.(code) || null; }
+  catch { return null; }
+}
+
 async function resolveView(api, code) {
-  if (!api) return { code, view:null };
-  try { return { code, view:await api.forCountry(code) }; }
-  catch { return { code, view:null }; }
+  const [view, population] = await Promise.all([
+    api ? api.forCountry(code).catch(() => null) : Promise.resolve(null),
+    populationObservation(code),
+  ]);
+  const fallbackPopulation = window.__potatoAtlasDemography?.countries?.[code]?.population?.value;
+  return { code, view, population:population?.value ?? fallbackPopulation ?? null, populationPeriod:population?.period || '' };
 }
 
 async function refresh(reason = 'refresh') {
@@ -111,12 +127,13 @@ async function refresh(reason = 'refresh') {
       ? '<button type="button" class="atlas-pinned-overflow" data-collapse aria-label="Collapse pinned country context">Collapse</button>'
       : '';
 
-  node.innerHTML = rows.map(({code, view}) => {
+  node.innerHTML = rows.map(({code, view, population, populationPeriod}) => {
     const active = code === snapshot.activeCode;
     const name = selection.countryName?.(code) || code;
     const value = view?.display || (view?.memberships?.memberships?.length ? `${view.memberships.memberships.filter(item => item.member).length} matching sets` : api ? 'Context available' : 'Loading context…');
     const meta = cardMeta(view);
-    return `<article class="atlas-pinned-card${active ? ' active' : ''}" data-country="${esc(code)}"><button type="button" class="atlas-pinned-main" data-activate="${esc(code)}" aria-label="Inspect ${esc(name)}"><span class="atlas-pinned-name">${esc(name)}</span><span class="atlas-pinned-value">${esc(value)}</span>${meta ? `<span class="atlas-pinned-meta">${esc(meta)}</span>` : ''}</button><button type="button" class="atlas-pinned-remove" data-unpin="${esc(code)}" aria-label="Unpin ${esc(name)}">×</button></article>`;
+    const populationLabel = `Population · ${formatPopulation(population)}${populationPeriod ? ` (${populationPeriod})` : ''}`;
+    return `<article class="atlas-pinned-card${active ? ' active' : ''}" data-country="${esc(code)}"><button type="button" class="atlas-pinned-main" data-activate="${esc(code)}" aria-label="Inspect ${esc(name)}"><span class="atlas-pinned-name">${esc(name)}</span><span class="atlas-pinned-value">${esc(value)}</span><span class="atlas-pinned-population">${esc(populationLabel)}</span>${meta ? `<span class="atlas-pinned-meta">${esc(meta)}</span>` : ''}</button><button type="button" class="atlas-pinned-remove" data-unpin="${esc(code)}" aria-label="Unpin ${esc(name)}">×</button></article>`;
   }).join('') + overflow;
   node.hidden = false;
   layout.setVisible?.('pinned-context', true);

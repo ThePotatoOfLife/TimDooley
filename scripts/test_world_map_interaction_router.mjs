@@ -66,6 +66,16 @@ router.dispatch('click', { point:{x:4,y:5}, originalEvent });
 assert.deepEqual(calls, ['overlay:eden']);
 assert.equal(originalEvent.__potatoAtlasOverlayHandled, true, 'router must preserve the legacy claim flag while degraded direct handlers remain possible');
 
+rendered = [{ layer:{id:'countries-fill'}, properties:{iso3:'DNK', name:'Denmark'} }];
+router.dispatch('hover', { point:{x:10,y:10} });
+assert.equal(router.currentHover()?.objectType, 'country');
+assert.equal(router.currentHover()?.feature?.properties?.iso3, 'DNK', 'hover state must expose the semantic country subject');
+rendered = [{ layer:{id:'countries-fill'}, properties:{iso3:'DEU', name:'Germany'} }];
+router.dispatch('hover', { point:{x:11,y:10} });
+assert.equal(router.currentHover()?.feature?.properties?.iso3, 'DEU', 'id-less country polygons must not collapse into one hover identity');
+router.clearHover();
+assert.equal(router.currentHover(), null, 'clearing hover must clear the ephemeral subject');
+
 const diagnostics = router.diagnostics();
 assert.equal(typeof diagnostics.registrationCount, 'number');
 assert.equal(typeof diagnostics.enabledCount, 'number');
