@@ -165,6 +165,26 @@ def render_specialist_house_escape(root: Path, surface_id: str, *, from_route: s
     )
 
 
+def render_utility_house_escape(root: Path, surface_id: str, *, from_route: str | None = None) -> str:
+    """Render a geometry-safe House escape for compact self-contained tools."""
+    surface = surface_by_id(root, surface_id)
+    if surface.get("shell_type") != "utility":
+        raise ValueError(f"surface is not utility: {surface_id}")
+
+    link_route = from_route or surface["canonical_route"]
+    home = surface_by_id(root, "home")
+    return (
+        f'<nav class="site-utility-house" data-house-surface="{esc(surface_id)}" aria-label="House context">'
+        f'<a class="site-utility-house__link" href="{esc(relative_href(link_route, home["canonical_route"]))}" aria-label="Return to Potato of Life">'
+        '<span class="site-utility-house__mark" aria-hidden="true">◆</span>'
+        '<span>House</span>'
+        '</a>'
+        '<span class="site-utility-house__sep" aria-hidden="true">/</span>'
+        f'<span class="site-utility-house__current" aria-current="page">{esc(surface["title"])}</span>'
+        '</nav>'
+    )
+
+
 def render_breadcrumbs(root: Path, surface_id: str) -> str:
     surface = surface_by_id(root, surface_id)
     from_route = surface["canonical_route"]
