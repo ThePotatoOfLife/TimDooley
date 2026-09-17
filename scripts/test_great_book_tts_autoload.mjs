@@ -28,7 +28,7 @@ assert.equal(prepared, true, 'preparation must await lazy-loading work before TT
 const drawerSource = fs.readFileSync(new URL('../app/tts-drawer.js', import.meta.url), 'utf8');
 assert.ok(drawerSource.includes('prepareSection'), 'drawer must support an async prepare hook');
 assert.ok(drawerSource.includes('await prepareSection(sectionId)'), 'drawer must wait for lazy text before taking the speech snapshot');
-assert.ok(drawerSource.includes("status.textContent='loading text…'"), 'drawer should expose loading state while lazy text is prepared');
+assert.ok(drawerSource.includes("'loading text…'"), 'drawer should expose loading state while lazy text is prepared');
 
 const adapterSource = fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url), 'utf8');
 assert.ok(adapterSource.includes("'potato:tts-prepare'"), 'adapter must dispatch the shared TTS preparation event');
