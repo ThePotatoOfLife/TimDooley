@@ -19,9 +19,6 @@ DEEP = re.compile(r'<div\b[^>]*class=["\'][^"\']*\bdeep\b[^"\']*["\'][^>]*>(.*?)
 HREF = re.compile(r'''href=["']([^"']+)["']''', re.I)
 LEGACY_NAV_LABELS = (">Corporium</a>", ">Source authority</a>", ">Tim dossier</a>")
 
-# Readable public Rooms / sub-room surfaces that should expose the shared
-# long-form speech reader in the deployed artifact. Interactive map and deep
-# archive-explorer surfaces are intentionally excluded.
 PROJECTED_TTS_PAGES = {
     "rooms/index.html": "rooms",
     "history/index.html": "history",
@@ -42,14 +39,21 @@ TTS_ASSET_MARKERS = (
     "longform-tts-adapter.js",
 )
 
-# These canonical House surfaces were historically built without the semantic
-# data-reader-surface marker even though they are registered public readers.
-# Keep the deployed markup aligned with data/house/public-surfaces.json.
 CANONICAL_READER_SURFACES = {
     "politics/index.html": "politics",
     "timeline/index.html": "timeline",
     "context/source-authority/index.html": "sources",
 }
+
+CULTURE_FIELD_MARKERS = (
+    'data-culture-field="concrete-culture-field"',
+    "Who is actually here?",
+    "Where violence actually appears",
+    "Follow the flows",
+    "People behind the labels",
+    "How a formation changes type",
+    "Concrete Tree of Strife",
+)
 
 
 def duplicate_hrefs(fragment: str) -> list[str]:
@@ -60,9 +64,6 @@ def duplicate_hrefs(fragment: str) -> list[str]:
 def main() -> int:
     errors: list[str] = []
 
-    # The concrete Culture field is a source-data contract as well as a rendered
-    # public-page contract. Run its focused validator here so pull-request CI sees
-    # a red build before production data/projector code exists.
     culture_contract = subprocess.run(
         ["python", str(ROOT / "scripts" / "test_concrete_culture_field.py")],
         cwd=ROOT,
@@ -148,6 +149,27 @@ def main() -> int:
             if marker not in text:
                 errors.append(f"{rel} missing shared TTS asset {marker}")
 
+    culture_path = SITE / "context" / "culture" / "index.html"
+    if not culture_path.exists():
+        errors.append("missing Culture reader for concrete field projection")
+    else:
+        culture_text = culture_path.read_text(encoding="utf-8", errors="replace")
+        for marker in CULTURE_FIELD_MARKERS:
+            if marker not in culture_text:
+                errors.append(f"Culture reader missing concrete field marker: {marker}")
+        if 'id="culture-tts"' not in culture_text or "data-tts-longform" not in culture_text:
+            errors.append("Culture reader lost its shared TTS host after concrete field projection")
+        field_start = culture_text.find('data-culture-field="concrete-culture-field"')
+        field_end = culture_text.find("<h2>Culture is multidimensional</h2>", field_start)
+        if field_start >= 0 and field_end > field_start:
+            field_fragment = culture_text[field_start:field_end]
+            if "href=" not in field_fragment or "<strong>Sources:</strong>" not in field_fragment:
+                errors.append("Concrete Culture field must expose source links inside the public projection")
+            if "aggregate environment figures are not assigned to a named group" not in field_fragment:
+                errors.append("Concrete Culture field lost its aggregate-statistics legal/evidence boundary")
+            if "comparative, not a claim of moral or organizational equivalence" not in field_fragment:
+                errors.append("Concrete Culture field lost its contrastive-not-equivalent framing")
+
     if errors:
         print("PUBLIC NAVIGATION VALIDATION FAILED")
         for error in errors:
@@ -157,7 +179,7 @@ def main() -> int:
     print(
         f"PUBLIC NAVIGATION VALIDATION PASSED ({len(pages)} HTML pages checked; "
         f"{len(PROJECTED_TTS_PAGES)} projected TTS surfaces; "
-        f"{len(CANONICAL_READER_SURFACES)} canonical reader IDs)"
+        f"{len(CANONICAL_READER_SURFACES)} canonical reader IDs; concrete Culture field)"
     )
     return 0
 
