@@ -20,6 +20,7 @@ function snapshot() {
     subdivision: window.__potatoAtlasSubdivisions?.selected || url.searchParams.get('subdivision') || null,
     selection: window.__potatoAtlasSelection?.current || null,
     time: window.__potatoAtlasTime?.getState?.() || null,
+    contextVisibility: window.__potatoAtlasContextVisibility?.current || null,
   };
 }
 
@@ -74,6 +75,7 @@ async function reset() {
     }
   }, cleared, failed);
 
+  await window.__potatoAtlasContextVisibility?.refresh?.('map-state-reset');
   const result = {
     ok: failed.length === 0,
     cleared,
