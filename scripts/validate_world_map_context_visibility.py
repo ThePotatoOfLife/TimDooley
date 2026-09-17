@@ -8,6 +8,7 @@ CONTEXT = ROOT / 'world-map' / '3d-context-visibility.js'
 STATUS = ROOT / 'world-map' / '3d-context-status.js'
 SELECTION = ROOT / 'world-map' / '3d-country-selection.js'
 PINNED = ROOT / 'world-map' / '3d-pinned-context.js'
+LAYOUT_POLICY = ROOT / 'world-map' / '3d-ui-layout-policy.js'
 LAYOUT = ROOT / 'world-map' / '3d-ui-layout.js'
 PANEL = ROOT / 'world-map' / '3d-panel-lifecycle.js'
 STATE = ROOT / 'world-map' / '3d-map-state.js'
@@ -16,6 +17,7 @@ TIME = ROOT / 'world-map' / '3d-time.js'
 INVESTIGATION = ROOT / 'world-map' / '3d-investigation-surface.js'
 EVIDENCE = ROOT / 'world-map' / '3d-evidence.js'
 POLICY_TEST = ROOT / 'scripts' / 'test_world_map_context_policy.mjs'
+UI_BUDGET_TEST = ROOT / 'scripts' / 'test_world_map_ui_surface_budget.mjs'
 STATUS_TEST = ROOT / 'scripts' / 'test_world_map_context_status.mjs'
 PINNED_TEST = ROOT / 'scripts' / 'test_world_map_pinned_context_contract.mjs'
 TIME_TEST = ROOT / 'scripts' / 'test_world_map_time_policy.mjs'
@@ -39,6 +41,7 @@ context = text(CONTEXT)
 status = text(STATUS)
 selection = text(SELECTION)
 pinned = text(PINNED)
+layout_policy = text(LAYOUT_POLICY)
 layout = text(LAYOUT)
 panel = text(PANEL)
 state = text(STATE)
@@ -47,6 +50,7 @@ time_runtime = text(TIME)
 investigation = text(INVESTIGATION)
 evidence = text(EVIDENCE)
 policy_test = text(POLICY_TEST)
+ui_budget_test = text(UI_BUDGET_TEST)
 status_test = text(STATUS_TEST)
 pinned_test = text(PINNED_TEST)
 time_test = text(TIME_TEST)
@@ -108,13 +112,26 @@ for forbidden in ('const AUTO_EDGES_ACTIVE =', 'const AUTO_EDGES_OTHER =', 'cons
     if forbidden in selection:
         errors.append(f'3d-country-selection.js still owns fixed auto-relation constant: {forbidden}')
 
+for token in ('selectVisibleSurfaceIds', 'normalizedBudget'):
+    require(layout_policy, token, '3d-ui-layout-policy.js')
 for token in (
+    "from './3d-ui-layout-policy.js'",
     "'bottom-context'",
     'atlasUIBottomContext',
     'refreshBottomContext',
     'pinned-context',
+    'applyLeftStatusBudget',
+    'data-layout-suppressed',
+    'statusSurfaceBudget',
+    'statusSurfacesSuppressed',
+    'potato-atlas-context-visibility-change',
 ):
     require(layout, token, '3d-ui-layout.js')
+for token in (
+    'selectVisibleSurfaceIds',
+    'highest-priority visible surfaces',
+):
+    require(ui_budget_test, token, 'test_world_map_ui_surface_budget.mjs')
 
 for token in (
     'atlasPinnedContextRail',
@@ -143,6 +160,8 @@ for token in (
     "window.__potatoAtlasContextVisibility?.refresh?.('map-state-reset')",
     "runStep('investigation'",
     '__potatoAtlasInvestigationSurface?.closeActive',
+    "runStep('compare'",
+    'window.leaveCompare?.()',
     "runStep('pinned-context'",
     '__potatoAtlasPinnedContext?.collapse',
 ):
@@ -186,10 +205,7 @@ for token in (
     'local browse should prioritize physical/local context over abstract global lines',
 ):
     require(policy_test, token, 'test_world_map_context_policy.mjs')
-for token in (
-    'Current view',
-    './3d-context-status.js',
-):
+for token in ('Current view', './3d-context-status.js'):
     require(status_test, token, 'test_world_map_context_status.mjs')
 for token in (
     'Promise\\.all',
@@ -197,11 +213,7 @@ for token in (
     'pinned context should explain hidden overflow',
 ):
     require(pinned_test, token, 'test_world_map_pinned_context_contract.mjs')
-for token in (
-    "reordered.issue, 'reordered-range'" if False else "reversed.issue, 'reordered-range'",
-    'invalid-date',
-    'missing-range-end',
-):
+for token in ("reversed.issue, 'reordered-range'", 'invalid-date', 'missing-range-end'):
     require(time_test, token, 'test_world_map_time_policy.mjs')
 for token in (
     'Escape should close the active investigation surface centrally',
@@ -211,19 +223,19 @@ for token in (
     require(investigation_test, token, 'test_world_map_investigation_contract.mjs')
 for token in (
     'map reset should explicitly close temporary investigations',
+    'map reset should explicitly leave Compare mode',
     'map reset should reset transient pinned-context presentation state',
 ):
     require(reset_test, token, 'test_world_map_reset_context_contract.mjs')
 
-# New modules may query map zoom only through the shared scale API. Direct numeric
-# map.getZoom() threshold comparisons here would recreate the raw-zoom problem.
+# New context modules may query map zoom only through the shared scale API.
 for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context.js', pinned), ('3d-context-status.js', status)]:
     for bad in ('getZoom() >', 'getZoom() >=', 'getZoom() <', 'getZoom() <='):
         if bad in source:
             errors.append(f'{owner} introduces raw zoom threshold: {bad}')
 
 # Context presentation must never become a country-fill owner.
-for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context.js', pinned), ('3d-context-status.js', status)]:
+for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context.js', pinned), ('3d-context-status.js', status), ('3d-ui-layout.js', layout)]:
     if "setPaintProperty('countries-fill'" in source or 'setFeatureState({ source: \'countries\'' in source:
         errors.append(f'{owner} must not own country analytical/selection paint')
 
