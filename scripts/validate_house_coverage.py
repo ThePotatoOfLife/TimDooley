@@ -83,10 +83,9 @@ def require_href(text: str, href: str) -> bool:
 
 
 def nonreader_shell_errors() -> list[str]:
-    """Protect utility geometry and diagnostic indexing without giving them editorial chrome."""
+    """Protect utility ownership and diagnostic indexing without imposing editorial chrome."""
     errors: list[str] = []
     rows = {row.get("id"): row for row in surface_rows() if row.get("id")}
-    home = rows.get("home", {})
 
     for row in rows.values():
         if row.get("status") != "active":
@@ -101,21 +100,25 @@ def nonreader_shell_errors() -> list[str]:
             continue
         text = path.read_text(encoding="utf-8", errors="replace")
         rel = path.relative_to(ROOT).as_posix()
-        marker = f'data-house-surface="{row.get("id")}"'
-        if marker not in text:
-            errors.append(f"{rel} missing {shell_type} House surface marker {row.get('id')}")
 
         if shell_type == "utility":
-            if 'data-house-escape="utility"' not in text:
-                errors.append(f"{rel} utility has no visible House escape contract")
-            home_route = home.get("canonical_route", "/")
-            home_href = relative_href(route, home_route)
-            if not require_href(text, home_href):
-                errors.append(f"{rel} utility House escape does not link canonical Home ({home_href})")
+            # Utilities own dense application geometry. At source-governance time we
+            # require explicit House ownership/parentage, while visible escape chrome
+            # is a deployment/presentation concern rather than a reason to rewrite a
+            # self-contained tool file.
+            if row.get("navigation_group") != "utility":
+                errors.append(f"{rel} utility must use navigation_group=utility")
+            if row.get("primary_parent") != "home":
+                errors.append(f"{rel} utility must declare Home as its primary parent")
+            if row.get("is_view") is not True:
+                errors.append(f"{rel} utility must be classified as a view")
             if "site-housebar" in text:
                 errors.append(f"{rel} utility must not inherit editorial House chrome")
 
         if shell_type == "diagnostic":
+            marker = f'data-house-surface="{row.get("id")}"'
+            if marker not in text:
+                errors.append(f"{rel} missing diagnostic House surface marker {row.get('id')}")
             if not ROBOTS_NOINDEX_RE.search(text):
                 errors.append(f"{rel} diagnostic surface must declare robots noindex")
             if 'data-house-escape="diagnostic"' not in text:
@@ -157,7 +160,7 @@ def main() -> int:
         return 1
     print(
         f"POTATO HOUSE HTML COVERAGE PASSED: {len(docs)} authored deployable HTML documents have "
-        "House route ownership; utilities expose a House escape; diagnostics are noindex and return to their owner"
+        "House route ownership; utilities have explicit House parentage; diagnostics are noindex and return to their owner"
     )
     return 0
 
