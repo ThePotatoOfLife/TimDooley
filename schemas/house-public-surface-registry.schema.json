@@ -53,6 +53,7 @@
           "canonical_route": {"type": "string", "pattern": "^/"},
           "surface_type": {"enum": ["home", "hub", "subject", "guide", "explorer", "evidence", "work"]},
           "shell_type": {"enum": ["home", "editorial", "longform", "specialist", "utility", "redirect", "diagnostic"]},
+          "specialist_mount": {"enum": ["header", "main"]},
           "navigation_group": {"enum": ["home", "door", "read", "room", "discover", "specialist", "utility", "technical"]},
           "title": {"type": "string"},
           "nav_label": {"type": "string"},
