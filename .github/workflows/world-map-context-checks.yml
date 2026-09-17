@@ -58,6 +58,9 @@ jobs:
       - name: Semantic reset contract
         run: node scripts/test_world_map_reset_context_contract.mjs
 
+      - name: Search selection synchronization
+        run: node scripts/test_world_map_search_selection_contract.mjs
+
       - name: Runtime telemetry validation
         run: python scripts/validate_world_map_runtime_telemetry.py
 
