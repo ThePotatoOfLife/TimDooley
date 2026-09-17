@@ -91,13 +91,29 @@ def main() -> int:
     expected_physical_slots = {
         "terrain": ("__potatoAtlasRenderStack", "physical-surface"),
         "land-cover": ("__potatoAtlasRenderStack", "physical-surface"),
-        "water": ("__potatoAtlasRenderStack", "physical-water", "physical-line"),
+        "water": ("__potatoAtlasRenderStack", "physical-surface", "physical-water", "physical-line"),
         "deserts": ("__potatoAtlasRenderStack", "physical-surface", "physical-line"),
         "hydrology": ("__potatoAtlasRenderStack", "physical-surface", "physical-line"),
     }
+    physical_text = {}
     for label, path in PHYSICAL_MODULES.items():
-        require_tokens(path, expected_physical_slots[label], errors, f"Physical {label}")
+        physical_text[label] = require_tokens(path, expected_physical_slots[label], errors, f"Physical {label}")
         check_node(path, errors)
+
+    # Water/terrain visual invariant: the seam-safe ocean base is first, the opaque
+    # canonical-land mask is directly above it, and terrain hillshade is above both.
+    # MapLibre DEM terrain itself is draped geometry, not a separate solid slab; this
+    # contract guarantees compositing order rather than claiming a literal 3D sea plane.
+    water = physical_text.get("water", "")
+    terrain = physical_text.get("terrain", "")
+    for token in (
+        "BASE_LAYERS.oceanBase, { slot:'physical-surface', priority:8",
+        "BASE_LAYERS.landMask, { slot:'physical-surface', priority:9",
+    ):
+        if token not in water:
+            errors.append(f"Physical water must preserve ocean/land-mask ordering invariant: missing {token}")
+    if "HILLSHADE_LAYER, {\n    slot:'physical-surface',\n    priority:10" not in terrain:
+        errors.append("Physical terrain hillshade must remain physical-surface priority 10 above water priorities 8/9")
 
     spatial = require_tokens(
         SPATIAL,
