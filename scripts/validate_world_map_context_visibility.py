@@ -5,6 +5,7 @@ import sys
 ROOT = Path(__file__).resolve().parents[1]
 POLICY = ROOT / 'world-map' / '3d-context-policy.js'
 CONTEXT = ROOT / 'world-map' / '3d-context-visibility.js'
+STATUS = ROOT / 'world-map' / '3d-context-status.js'
 SELECTION = ROOT / 'world-map' / '3d-country-selection.js'
 PINNED = ROOT / 'world-map' / '3d-pinned-context.js'
 LAYOUT = ROOT / 'world-map' / '3d-ui-layout.js'
@@ -15,6 +16,8 @@ TIME = ROOT / 'world-map' / '3d-time.js'
 INVESTIGATION = ROOT / 'world-map' / '3d-investigation-surface.js'
 EVIDENCE = ROOT / 'world-map' / '3d-evidence.js'
 POLICY_TEST = ROOT / 'scripts' / 'test_world_map_context_policy.mjs'
+STATUS_TEST = ROOT / 'scripts' / 'test_world_map_context_status.mjs'
+PINNED_TEST = ROOT / 'scripts' / 'test_world_map_pinned_context_contract.mjs'
 TIME_TEST = ROOT / 'scripts' / 'test_world_map_time_policy.mjs'
 INVESTIGATION_TEST = ROOT / 'scripts' / 'test_world_map_investigation_contract.mjs'
 
@@ -32,6 +35,7 @@ def require(haystack, needle, owner):
 
 policy = text(POLICY)
 context = text(CONTEXT)
+status = text(STATUS)
 selection = text(SELECTION)
 pinned = text(PINNED)
 layout = text(LAYOUT)
@@ -42,6 +46,8 @@ time_runtime = text(TIME)
 investigation = text(INVESTIGATION)
 evidence = text(EVIDENCE)
 policy_test = text(POLICY_TEST)
+status_test = text(STATUS_TEST)
+pinned_test = text(PINNED_TEST)
 time_test = text(TIME_TEST)
 investigation_test = text(INVESTIGATION_TEST)
 
@@ -65,6 +71,8 @@ for token in (
     'investigationId',
     'budgets',
     'epistemic',
+    'window.__potatoAtlasLayers',
+    'window.__potatoAtlasScale',
 ):
     require(context, token, '3d-context-visibility.js')
 
@@ -72,6 +80,17 @@ require(context, 'queueMicrotask', '3d-context-visibility.js')
 require(context, 'refreshSerial', '3d-context-visibility.js')
 require(context, 'selection.setAutomaticRelationBudget', '3d-context-visibility.js')
 require(context, 'api.active()', '3d-context-visibility.js')
+
+for token in (
+    'atlasContextStatus',
+    'Current view',
+    "zone:'left-status'",
+    'context.question?.investigation',
+    'context.scaleBand',
+    'context.pinnedCountries',
+    'context.time',
+):
+    require(status, token, '3d-context-status.js')
 
 for token in (
     'setAutomaticRelationBudget',
@@ -101,6 +120,7 @@ for token in (
     'potato-atlas-active-view-change',
     'atlas-pinned-overflow',
     'staleSuppressions',
+    'Promise.all',
 ):
     require(pinned, token, '3d-pinned-context.js')
 
@@ -109,6 +129,7 @@ if 'setTimeout' in pinned:
 
 for token in (
     "loadModule?.('Context Visibility', './3d-context-visibility.js')",
+    "loadModule?.('Context Status', './3d-context-status.js')",
     "loadModule?.('Pinned Context', './3d-pinned-context.js')",
 ):
     require(panel, token, '3d-panel-lifecycle.js')
@@ -154,6 +175,17 @@ for token in (
 ):
     require(policy_test, token, 'test_world_map_context_policy.mjs')
 for token in (
+    'Current view',
+    "loadModule?.('Context Status', './3d-context-status.js')",
+):
+    require(status_test, token, 'test_world_map_context_status.mjs')
+for token in (
+    'Promise.all',
+    'pinned context must stay event-driven instead of polling',
+    'pinned context should explain hidden overflow',
+):
+    require(pinned_test, token, 'test_world_map_pinned_context_contract.mjs')
+for token in (
     'reversed ranges should normalize chronologically',
     'invalid-date',
     'missing-range-end',
@@ -168,13 +200,13 @@ for token in (
 
 # New modules may query map zoom only through the shared scale API. Direct numeric
 # map.getZoom() threshold comparisons here would recreate the raw-zoom problem.
-for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context.js', pinned)]:
+for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context.js', pinned), ('3d-context-status.js', status)]:
     for bad in ('getZoom() >', 'getZoom() >=', 'getZoom() <', 'getZoom() <='):
         if bad in source:
             errors.append(f'{owner} introduces raw zoom threshold: {bad}')
 
 # Context and pinned presentation must never become country-fill owners.
-for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context.js', pinned)]:
+for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context.js', pinned), ('3d-context-status.js', status)]:
     if "setPaintProperty('countries-fill'" in source or 'setFeatureState({ source: \'countries\'' in source:
         errors.append(f'{owner} must not own country analytical/selection paint')
 
