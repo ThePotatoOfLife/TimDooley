@@ -19,7 +19,9 @@ jobs:
         with:
           python-version: '3.x'
       - name: Apply asserted SEO changes
-        run: python scripts/apply_seo_ai_discovery_patch.py
+        run: |
+          python scripts/apply_seo_ai_discovery_patch.py
+          python scripts/fix_seo_pipeline_marker_patch.py
       - name: Commit implementation when changed
         run: |
           git config user.name "Tim Dooley"
@@ -30,5 +32,5 @@ jobs:
             exit 0
           fi
           git diff --cached --check
-          git commit -m "feat(seo): harden multi-engine discovery"
+          git commit -m "fix(seo): align crawler source contract"
           git push origin HEAD:feature/seo-ai-discovery-20260917
