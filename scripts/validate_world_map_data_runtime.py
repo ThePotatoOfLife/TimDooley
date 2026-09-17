@@ -155,9 +155,9 @@ def main() -> int:
     for token in ("WORLD_DATA_RUNTIME_URL", "__potatoAtlasDataRuntime", "applyRuntimeScalar", "runtime_metric", "coverage"):
         if token not in compositor:
             errors.append(f"compositor missing runtime integration marker: {token}")
-    for token in ("populationObservation", "areaObservation", "defaultMetrics(code", "await populationObservation(code)"):
+    for token in ("populationObservation", "areaObservation", "defaultMetrics(code", "await populationObservation(code)", "demographyData()", "demography?.countries?.[code]?.population?.value"):
         if token not in card:
-            errors.append(f"country card missing shared scalar marker: {token}")
+            errors.append(f"country card missing shared scalar/fallback marker: {token}")
     for token in ("scalarObservation", "populationObservation", "areaObservation"):
         if token not in entity_runtime:
             errors.append(f"entity runtime missing shared scalar helper: {token}")
