@@ -1,0 +1,24 @@
+name: Verify TTS audit edge cases
+
+on:
+  push:
+    branches:
+      - audit/tts-edge-cases-2026-09-17
+
+jobs:
+  tts-audit:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node scripts/test_tts_audit_edges.mjs
+      - run: node scripts/test_tts_drawer.mjs
+      - run: node scripts/test_tts_follow_page_highlight.mjs
+      - run: node scripts/test_tts_follow_lazy_integration.mjs
+      - run: node scripts/test_tts_reader_polish.mjs
+      - run: node scripts/test_longform_tts_adapter.mjs
+      - run: node scripts/test_great_book_tts_autoload.mjs
+      - run: node scripts/test_bible_tts_adapter.mjs
+      - run: python scripts/test_great_book_public_reader.py
