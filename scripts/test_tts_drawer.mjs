@@ -53,7 +53,9 @@ assert.ok(source.includes('function buildNormalizedTextMap(container,excludeSele
 assert.ok(source.includes('function createPageHighlighter(options={})'), 'drawer must expose a non-mutating page highlighter');
 assert.ok(source.includes("highlights.set(name,new HighlightCtor(domRange))"), 'page highlighting must use the browser Highlight API instead of rewriting article markup');
 assert.ok(source.includes("highlights?.delete?.(name)"), 'page highlighter must safely clear its named highlight');
-assert.ok(source.includes('const prepareSection='), 'drawer must preserve async content preparation for lazy-loaded longform reading');
+assert.ok(source.includes('prepareSection=typeof options.prepareSection'), 'drawer must preserve async content preparation for lazy-loaded longform reading');
+assert.ok(source.includes('await prepareSection(sectionId,{signal:'), 'drawer must await cancellable content preparation before speech');
+assert.ok(source.includes('preparationController?.abort?.()'), 'drawer stop/collapse must abort pending preparation');
 
 const css = fs.readFileSync(new URL('../app/tts-drawer.css', import.meta.url),'utf8');
 assert.match(css,/\.ptts-button\[aria-pressed="true"\]/,'active follow-reading toggle needs a visible pressed state');

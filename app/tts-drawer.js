@@ -124,8 +124,11 @@
     if(!rect)return false;
     const viewportHeight=Number(win?.innerHeight||doc?.documentElement?.clientHeight)||0;
     if(!viewportHeight||typeof win?.scrollTo!=='function')return false;
-    const currentScroll=Number(win?.scrollY??win?.pageYOffset)||0;
     const wordCenter=(Number(rect.top)||0)+((Number(rect.height)||0)/2);
+    const comfortTop=viewportHeight*.3;
+    const comfortBottom=viewportHeight*.7;
+    if(wordCenter>=comfortTop&&wordCenter<=comfortBottom)return false;
+    const currentScroll=Number(win?.scrollY??win?.pageYOffset)||0;
     const delta=wordCenter-(viewportHeight/2);
     const top=Math.max(0,currentScroll+delta);
     const reduced=Boolean(win?.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches);
@@ -147,13 +150,13 @@
       try{return JSON.parse(win?.localStorage?.getItem?.(settingsKey)||'{}').followReading===true}catch{return false}
     }
     function highlight(container,range,excludeSelector='',follow){
-      if(!container||!highlights||typeof HighlightCtor!=='function')return false;
+      if(!container)return false;
       if(container!==cachedContainer||excludeSelector!==cachedExclude||!cachedMap){
         cachedContainer=container;cachedExclude=excludeSelector;cachedMap=buildNormalizedTextMap(container,excludeSelector);
       }
       const domRange=rangeFromTextMap(cachedMap,range,doc);
       if(!domRange){clear();return false}
-      highlights.set(name,new HighlightCtor(domRange));
+      if(highlights&&typeof HighlightCtor==='function')highlights.set(name,new HighlightCtor(domRange));
       if(typeof follow==='boolean'?follow:persistedFollow())centerDomRange(win,doc,domRange);
       return true;
     }
@@ -243,6 +246,7 @@
     let engine=null;
     let preparing=false;
     let startRequest=0;
+    let preparationController=null;
 
     const host=el('section','ptts-drawer');host.dataset.state=state;
     const closed=el('button','ptts-trigger','🔊 Listen');closed.type='button';closed.setAttribute('aria-expanded','false');
@@ -289,7 +293,7 @@
     function refreshVoices(){
       if(!speechOk)return;
       voices=[...root.speechSynthesis.getVoices()];
-      const wanted=root.PotatoTTS.chooseVoice(voices,saved.voice);
+      const wanted=root.PotatoTTS.chooseVoice(voices,readSettings().voice);
       voice.replaceChildren();voices.forEach((v,i)=>voice.add(new Option(`${v.name} · ${v.lang}`,String(i))));
       selectedVoice=wanted||voices[0]||null;voice.value=String(Math.max(0,voices.indexOf(selectedVoice)));
     }
@@ -326,17 +330,23 @@
 
     function cancelPendingStart(){
       startRequest+=1;
+      preparationController?.abort?.();
+      preparationController=null;
       if(preparing){preparing=false;updateButtons()}
     }
     async function start(){
       const request=++startRequest;
       if(prepareSection){
-        preparing=true;updateButtons();
+        preparing=true;
+        preparationController=typeof AbortController==='function'?new AbortController():null;
+        const controller=preparationController;
+        updateButtons();
         try{
-          const next=await prepareSection(sectionId);
+          const next=await prepareSection(sectionId,{signal:controller?.signal});
           if(request!==startRequest)return;
           if(next)payload=normalizePayload(next);
         }catch(error){
+          if(error?.name==='AbortError')return;
           if(request===startRequest){
             preparing=false;
             status.textContent='could not load text';host.dataset.speech='error';
@@ -344,6 +354,7 @@
           }
           return;
         }finally{
+          if(preparationController===controller)preparationController=null;
           if(request===startRequest&&preparing){preparing=false;updateButtons()}
         }
       }

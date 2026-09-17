@@ -52,13 +52,14 @@
     });
   }
 
-  async function requestContentPreparation(container,sectionId,EventCtor=root?.CustomEvent){
+  async function requestContentPreparation(container,sectionId,EventCtor=root?.CustomEvent,options={}){
     if(!container||typeof container.dispatchEvent!=='function'||typeof EventCtor!=='function')return false;
     const pending=[];
     const event=new EventCtor('potato:tts-prepare',{
       bubbles:false,
       detail:{
         sectionId,
+        signal:options.signal,
         waitUntil(task){
           if(task&&typeof task.then==='function')pending.push(Promise.resolve(task));
         },
@@ -130,10 +131,10 @@
       if(item&&container.contains(item))currentItem=item;
       refresh();
     };
-    const prepareForPlayback=async sectionId=>{
+    const prepareForPlayback=async(sectionId,options={})=>{
       preparing=true;
       try{
-        await requestContentPreparation(container,sectionId,doc.defaultView?.CustomEvent||root?.CustomEvent);
+        await requestContentPreparation(container,sectionId,doc.defaultView?.CustomEvent||root?.CustomEvent,options);
       }finally{
         preparing=false;
         pageHighlighter.invalidate();
@@ -154,7 +155,7 @@
         if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
         if(event.type==='boundary'&&event.absoluteWord){
           const target=event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null;
-          if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'');
+          if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'',event.followReading);
           else pageHighlighter.clear();
         }
         if(['complete','stop','error'].includes(event.type)){setReadingActive(false);pageHighlighter.clear()}
@@ -191,8 +192,13 @@
       const item=event.target?.closest?.(itemSelector);
       if(item&&container.contains(item))chooseCurrent(item);
     };
+    const onCurrent=event=>{
+      const item=event.detail?.item;
+      if(itemSelector&&item&&container.contains(item)&&item.matches?.(itemSelector)&&item!==currentItem)chooseCurrent(item);
+    };
     container.addEventListener('click',onActivate);
     container.addEventListener('focusin',onActivate);
+    container.addEventListener('potato:tts-current',onCurrent);
 
     const Observer=config.MutationObserver||root?.MutationObserver;
     const observer=Observer?new Observer(records=>{
@@ -221,6 +227,7 @@
         observer?.disconnect();
         container.removeEventListener('click',onActivate);
         container.removeEventListener('focusin',onActivate);
+        container.removeEventListener('potato:tts-current',onCurrent);
         selectionAction?.destroy?.();
         pageHighlighter.clear();
         clearReadingActive();
