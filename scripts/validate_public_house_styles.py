@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import re
-import sys
 from pathlib import Path
 
 from house_public_surfaces import surface_rows
@@ -25,6 +24,24 @@ def owners(text: str) -> list[str]:
     return [name for name, pattern in FORBIDDEN.items() if pattern.search(css)]
 
 
+def legacy_source_for_surface(surface: dict) -> Path | None:
+    """Return the authored page only when it actually needs compatibility scoping.
+
+    Tim/FAQ ancestry identifies the convergence family, but ancestry alone does not
+    imply style debt. Clean descendants such as Story, Collection, and Works must not
+    be required to carry a compatibility marker they never needed.
+    """
+    source = output_path_for_route(ROOT, surface["canonical_route"])
+    if not source.exists():
+        return None
+    text = source.read_text(encoding="utf-8", errors="replace")
+    if "reader.css" in text or "layout-guard.css" in text:
+        return None
+    if not has_legacy_global_theme(text):
+        return None
+    return source
+
+
 def main() -> int:
     if not OUT.exists():
         print("Public House style validation FAILED")
@@ -41,14 +58,19 @@ def main() -> int:
         if not family:
             continue
 
+        source = legacy_source_for_surface(surface)
+        if source is None:
+            continue
+
+        checked += 1
         page = output_path_for_route(OUT, surface["canonical_route"])
         if not page.exists():
+            errors.append(
+                f"{source.relative_to(ROOT)} ({family}) is a legacy self-themed reader but its public output is missing"
+            )
             continue
-        text = page.read_text(encoding="utf-8", errors="replace")
-        if "reader.css" in text or "layout-guard.css" in text:
-            continue
-        checked += 1
 
+        text = page.read_text(encoding="utf-8", errors="replace")
         remaining = owners(text)
         if remaining:
             errors.append(
