@@ -50,7 +50,8 @@
       data-tts-all-label="Whole book"
       data-tts-current-label="Current chapter"
       data-tts-selection-label="Selection"
-      data-tts-item=".gb-slot[data-loaded='true']"></div>
+      data-tts-item=".gb-slot[data-loaded='true']"
+      data-tts-exclude=".gb-placeholder,.gb-load-error"></div>
 
     <div class="gb-toolbar">
       <div class="gb-top-search">
@@ -84,6 +85,7 @@
   <noscript>
     <p class="caution">This continuous reader uses JavaScript to assemble the chapter files. The individual chapter files remain preserved under <code>great-book/chapters/</code>.</p>
   </noscript>
+  <script src="../app/great-book-loader.js" defer></script>
   <script src="../app/great-book-reader.js" defer></script>
   <script src="../app/tts-reader.js" defer></script>
   <script src="../app/tts-drawer.js" defer></script>
