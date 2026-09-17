@@ -3,6 +3,8 @@ from __future__ import annotations
 import json,re
 from pathlib import Path
 
+from validate_house_coverage import coverage_errors
+
 ROOT=Path(__file__).resolve().parents[1]
 ROOMS=ROOT/'data/house/rooms.json'; ROOM_SCHEMA=ROOT/'schemas/house-room-registry.schema.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/house-public-surface-registry.schema.json'
@@ -189,9 +191,9 @@ def validate_surfaces(errors,rooms):
     return p
 
 def main():
-    errors=[]; rooms=validate_rooms(errors); validate_surfaces(errors,rooms)
+    errors=[]; rooms=validate_rooms(errors); validate_surfaces(errors,rooms); errors.extend(coverage_errors())
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, topology, navigation subsets, shell mounts, reader corridor and route authority converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, topology, navigation subsets, shell mounts, HTML ownership, reader corridor and route authority converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
