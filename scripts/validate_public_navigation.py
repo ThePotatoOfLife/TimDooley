@@ -69,10 +69,57 @@ CULTURE_FIELD_MARKERS = (
     "Concrete Tree of Strife",
 )
 
+GENERATED_REPRESENTATIVES = (
+    "questions/index.html",
+    "index-a-z/index.html",
+)
+
 
 def duplicate_hrefs(fragment: str) -> list[str]:
     counts = Counter(HREF.findall(fragment))
     return sorted(href for href, count in counts.items() if count > 1)
+
+
+def primary_nav_fragment(text: str) -> str:
+    match = re.search(
+        r'<nav\b[^>]*class=["\'][^"\']*\bsite-primary-nav\b[^"\']*["\'][^>]*>(.*?)</nav>',
+        text,
+        re.I | re.S,
+    )
+    return match.group(1) if match else ""
+
+
+def validate_source_architecture(errors: list[str]) -> None:
+    build_site = (ROOT / "scripts" / "build_site.py").read_text(encoding="utf-8", errors="replace")
+    discovery = (ROOT / "scripts" / "build_discovery.py").read_text(encoding="utf-8", errors="replace")
+    site_css = (ROOT / "app" / "site-system.css").read_text(encoding="utf-8", errors="replace")
+
+    if '"archive"' not in build_site.split("EXCLUDE", 1)[1].split("}", 1)[0]:
+        errors.append("build_site.py does not exclude archive from the public copy boundary")
+    if "DOOR_LABELS" in build_site:
+        errors.append("build_site.py still owns a duplicate DOOR_LABELS taxonomy")
+    if "from house_shell import" not in build_site or "render_house_bar_for_route" not in build_site:
+        errors.append("build_site.py does not consume the shared House renderer")
+    if "<style>:root" in build_site:
+        errors.append("build_site.py still embeds a second global :root theme")
+
+    if "from house_public_surfaces import primary_gateway_rows" not in discovery:
+        errors.append("build_discovery.py does not derive primary Doors from House authority")
+    if "from house_shell import" not in discovery or "render_house_bar_for_route" not in discovery:
+        errors.append("build_discovery.py does not consume the shared House renderer")
+    if "<style>:root" in discovery:
+        errors.append("build_discovery.py still embeds a second global :root theme")
+
+    for marker in (
+        ".site-housebar",
+        ".site-primary-nav",
+        ".site-breadcrumbs",
+        ".site-local-nav",
+        ".site-related",
+        ".site-footer",
+    ):
+        if marker not in site_css:
+            errors.append(f"shared site system missing House primitive: {marker}")
 
 
 def validate_house_authority(errors: list[str]) -> None:
@@ -102,12 +149,12 @@ def validate_house_authority(errors: list[str]) -> None:
             except ValueError as exc:
                 errors.append(str(exc))
 
-        # Smoke-test renderer and relative URL behavior before any built pages consume it.
         housebar = render_house_bar(ROOT, "world")
         for label in ("Tim Dooley", "Religion", "Philosophy", "Science", "World"):
             if label not in housebar:
                 errors.append(f"House renderer missing primary Door label: {label}")
-        if "World Map" in re.sub(r"\s+", " ", housebar.split('site-primary-nav', 1)[-1].split('</nav>', 1)[0]):
+        primary_fragment = primary_nav_fragment(housebar)
+        if "World Map" in re.sub(r"\s+", " ", primary_fragment):
             errors.append("House primary navigation still exposes World Map as a primary Door")
         if 'aria-current="page"' not in housebar:
             errors.append("House renderer does not mark the current Door")
@@ -117,8 +164,44 @@ def validate_house_authority(errors: list[str]) -> None:
         errors.append(f"House public-surface authority invalid: {exc}")
 
 
+def validate_generated_house_pages(errors: list[str]) -> None:
+    if not SITE.exists():
+        return
+
+    representatives = list(GENERATED_REPRESENTATIVES)
+    topics = sorted((SITE / "topics").glob("*/index.html")) if (SITE / "topics").exists() else []
+    records = sorted((SITE / "records").glob("*/index.html")) if (SITE / "records").exists() else []
+    contexts = sorted((SITE / "context").glob("*/index.html")) if (SITE / "context").exists() else []
+    for collection in (topics, records, contexts):
+        if collection:
+            representatives.append(str(collection[0].relative_to(SITE)))
+
+    expected_labels = [row["title"] for row in primary_gateway_rows(ROOT)]
+    for rel in representatives:
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"missing generated House representative: {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        if "site-housebar" not in text:
+            errors.append(f"generated page lacks shared House bar: {rel}")
+        if "app/site-system.css" not in text and "../app/site-system.css" not in text:
+            if "site-system.css" not in text:
+                errors.append(f"generated page does not load shared site system: {rel}")
+        primary = primary_nav_fragment(text)
+        if not primary:
+            errors.append(f"generated page lacks primary Door nav: {rel}")
+            continue
+        for label in expected_labels:
+            if label not in primary:
+                errors.append(f"generated primary nav missing {label!r}: {rel}")
+        if "World Map" in primary:
+            errors.append(f"generated primary nav incorrectly exposes World Map as a Door: {rel}")
+
+
 def main() -> int:
     errors: list[str] = []
+    validate_source_architecture(errors)
     validate_house_authority(errors)
 
     culture_contract = subprocess.run(
@@ -141,6 +224,8 @@ def main() -> int:
         if archive_html:
             preview = ", ".join(str(path.relative_to(SITE)) for path in archive_html[:10])
             errors.append(f"historical archive HTML leaked into _site: {preview}")
+
+    validate_generated_house_pages(errors)
 
     for page in pages:
         text = page.read_text(encoding="utf-8", errors="replace")
@@ -261,7 +346,7 @@ def main() -> int:
     print(
         f"PUBLIC NAVIGATION VALIDATION PASSED ({len(pages)} HTML pages checked; "
         f"{len(PROJECTED_TTS_PAGES)} projected TTS surfaces; "
-        f"{len(CANONICAL_READER_SURFACES)} canonical reader IDs; House authority; concrete Culture field)"
+        f"{len(CANONICAL_READER_SURFACES)} canonical reader IDs; shared generated House shell; concrete Culture field)"
     )
     return 0
 
