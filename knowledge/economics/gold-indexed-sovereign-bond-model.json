@@ -1,0 +1,103 @@
+{
+  "id": "gold-indexed-sovereign-bond-model",
+  "title": "Gold-Indexed Sovereign Bond — Debt Unit of Account and Fiat Settlement Model",
+  "updated": "2026-09-14",
+  "status": "North Programme economic model / policy design thought experiment; not an existing monetary regime",
+  "purpose": "Represent a sovereign bond whose principal obligation is indexed to a fixed quantity of gold while settlement may still occur in a fiat currency, so currency dilution does not automatically reduce the real gold-denominated principal owed.",
+  "core_distinction": "A gold standard disciplines the money by fixing or redeeming the currency against gold. This model instead disciplines the debt: the currency can remain fiat and floating while the debt unit of account is gold-linked.",
+  "variables": {
+    "P0": "initial principal in settlement currency at issuance",
+    "G0": "gold price in settlement currency per unit of gold at issuance",
+    "Q": "gold quantity defining principal obligation, Q=P0/G0",
+    "GT": "gold price in settlement currency per unit of gold at maturity T",
+    "principal_T": "fiat settlement amount of indexed principal at maturity, principal_T=Q*GT",
+    "i": "contractual coupon rate",
+    "coupon_t": "coupon cash flow under the chosen coupon convention"
+  },
+  "equations": [
+    "Q=P0/G0",
+    "principal_T=Q*GT",
+    "fiat_coupon_variant: coupon_t=i*P0",
+    "gold_indexed_coupon_variant: coupon_t=i*Q*Gt"
+  ],
+  "variants": [
+    {
+      "id": "gold-principal-fiat-coupon",
+      "description": "Principal is gold-indexed but coupons are fixed in fiat. This protects the principal from currency dilution relative to gold while leaving coupon purchasing power exposed to inflation/depreciation."
+    },
+    {
+      "id": "gold-principal-gold-indexed-coupon",
+      "description": "Both principal and coupons are defined against the gold-denominated obligation and settled in fiat at the prevailing gold price. This is a stronger creditor-protection design but creates a larger currency/gold mismatch for the issuer."
+    }
+  ],
+  "worked_mechanism": {
+    "example": "If P0=50,000 currency units and G0=500 per gram, the bond represents Q=100 g of gold. If GT=2,000 per gram at maturity, indexed principal settlement becomes 200,000 currency units before any coupon obligation.",
+    "interpretation": "Issuing more currency does not by itself reduce the gold quantity owed. A weaker currency raises the nominal amount required to settle the indexed principal."
+  },
+  "what_it_protects": [
+    "creditor exposure to issuer-currency depreciation relative to gold",
+    "principal dilution through ordinary inflation of the settlement unit, to the extent gold preserves the intended reference value",
+    "clarity between debt unit of account and settlement medium"
+  ],
+  "what_it_does_not_guarantee": [
+    "Gold is not identical to a consumer-price index or domestic purchasing power.",
+    "Gold prices can be volatile in real-goods terms.",
+    "A sovereign can still default, restructure, tax, impose capital controls or change domestic law where legally possible.",
+    "Indexation can increase default risk if state revenues remain mostly fiat while debt service rises sharply after currency depreciation.",
+    "A fiat coupon can still be inflated away even when principal is gold-indexed."
+  ],
+  "issuer_balance_sheet_risk": {
+    "mismatch": "Taxes and most public revenues are normally collected in domestic currency while the indexed liability rises when that currency weakens against gold.",
+    "consequence": "The design exchanges part of the creditor's currency-dilution risk for greater fiscal and refinancing risk on the sovereign balance sheet.",
+    "stress_test": "Model debt-service-to-revenue under joint paths for gold price, exchange rate, nominal GDP, tax revenue and interest rates rather than judging the bond from the indexation formula alone."
+  },
+  "comparators": [
+    {
+      "model": "nominal fiat sovereign bond",
+      "principal_reference": "fixed currency units",
+      "main_risk": "inflation/currency dilution borne substantially by creditor"
+    },
+    {
+      "model": "CPI-indexed sovereign bond",
+      "principal_reference": "consumer-price index",
+      "main_risk": "designed more directly around domestic purchasing power than gold"
+    },
+    {
+      "model": "foreign-currency-linked sovereign bond",
+      "principal_reference": "external currency",
+      "main_risk": "currency mismatch between domestic revenues and external debt"
+    },
+    {
+      "model": "gold-indexed sovereign bond",
+      "principal_reference": "gold quantity/value",
+      "main_risk": "gold/currency and fiscal-revenue mismatch"
+    },
+    {
+      "model": "classical gold standard",
+      "principal_reference": "currency itself tied to gold parity/convertibility",
+      "main_risk": "monetary system as a whole is constrained rather than only the debt contract"
+    }
+  ],
+  "policy_questions": [
+    "Should indexation apply only to principal or also coupons?",
+    "Which gold benchmark, fixing time, currency and settlement convention define Gt?",
+    "Should contracts be governed by domestic or external law?",
+    "What share of sovereign debt could be indexed before currency/gold mismatch becomes destabilizing?",
+    "How does the design compare with CPI-linked debt for the actual policy objective?",
+    "Should the government hedge some gold-price exposure or maintain gold-linked reserves/revenues?"
+  ],
+  "north_programme_use": "Use as one optional debt-contract design inside the broader European/North obligation graph. It is a model for studying monetary discipline and creditor protection, not a claim that North Programme states should automatically adopt it.",
+  "epistemic_status": [
+    "economic model",
+    "policy thought experiment",
+    "historical analogue to gold-clause/indexed debt",
+    "not a gold-standard definition",
+    "not a claim of default-proof sovereign debt"
+  ],
+  "connections": [
+    "knowledge/economics/north-obligation-graph-schema.json",
+    "data/blueprints/finance-debt-blueprint.json",
+    "data/north-programme-atlas.json",
+    "knowledge/core/european-coupling-programme.json"
+  ]
+}
