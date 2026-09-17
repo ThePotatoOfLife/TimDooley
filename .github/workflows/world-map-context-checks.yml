@@ -1,0 +1,56 @@
+name: World Map context checks
+
+on:
+  push:
+    branches:
+      - 'feature/world-map-context-orchestrator-*'
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: world-map-context-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate-context:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Context architecture validator
+        run: python scripts/validate_world_map_context_visibility.py
+
+      - name: Context policy behavior
+        run: node scripts/test_world_map_context_policy.mjs
+
+      - name: Time-window behavior
+        run: node scripts/test_world_map_time_policy.mjs
+
+      - name: Investigation arbitration contract
+        run: node scripts/test_world_map_investigation_contract.mjs
+
+      - name: Pinned-country context contract
+        run: node scripts/test_world_map_pinned_context_contract.mjs
+
+      - name: Current-view status contract
+        run: node scripts/test_world_map_context_status.mjs
+
+      - name: Semantic reset contract
+        run: node scripts/test_world_map_reset_context_contract.mjs
+
+      - name: Runtime telemetry validation
+        run: python scripts/validate_world_map_runtime_telemetry.py
+
+      - name: Focused workflow self-contract
+        run: node scripts/test_world_map_context_ci_contract.mjs
