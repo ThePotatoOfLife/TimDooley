@@ -25,8 +25,8 @@ for (const token of [
   'formatPopulation',
   "if (value == null || value === '') return '—';",
   'stat.population',
-  "import('./3d-country-hover-presentation.js')",
 ]) assert.ok(presentation.includes(token), `Country Presentation missing ${token}`);
+assert.ok(!presentation.includes("import('./3d-country-hover-presentation.js')"), 'Country Presentation must not secretly own hover loading; bootstrap owns module order and versioning');
 
 assert.ok(bootstrap.includes("loadAfterPaint('Country Presentation', './3d-country-presentation.js')"), 'bootstrap must load Country Presentation');
 assert.ok(bootstrap.includes("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')"), 'bootstrap must explicitly load the minimal country hover replacement');
