@@ -1,16 +1,28 @@
 {
   "id":"biblical-syncretism-dossiers-wave37",
   "title":"Biblical Syncretism Dossiers — Wave 37 Staged Return & Recognition",
-  "version":"1.0.0",
+  "version":"1.1.0",
   "updated":"2026-09-17",
   "status":"additive contextual dossier layer",
-  "purpose":"Add distinct biblical return/recognition mechanisms missed by the current comparator without duplicating the existing death, resurrection, Thomas, Door, seed or Gardener relations.",
+  "purpose":"Add distinct biblical return/recognition mechanisms missed by the current comparator while consolidating duplicate public-X reader projections into their stronger canonical relations.",
   "epistemic_rule":"These are structural comparisons. They do not prove literal identity, prophecy fulfillment, bodily resurrection or historical dependence. Project chronology and biblical chronology remain distinct.",
   "method_rules":[
     "A new relation must add a distinct mechanism, scene or sequence rather than another wording of death/return.",
     "Delayed recognition is kept separate from resurrection itself.",
     "The project chronology is not forced into a literal three-day equivalence.",
-    "Reader-facing 2011 terminology uses Ego Death when referring to the transformative event; literal Tree imagery remains available where the tree itself is analytically relevant."
+    "Reader-facing 2011 terminology uses Ego Death when referring to the transformative event; literal Tree imagery remains available where the tree itself is analytically relevant.",
+    "Duplicate public-occurrence projections are redirected to richer canonical relations while their occurrence provenance remains attached."
+  ],
+  "enrichments":[
+    {"relation_id":"chosen-gentile-potato-2024-10-02","occurrence_ids":["x-2024-10-02-chosen-gentile"],"consolidated_legacy_relation_ids":["public-x-bible-x-2024-10-02-chosen-gentile"]},
+    {"relation_id":"potatoes-die-for-sins-2024-10-03","occurrence_ids":["x-2024-10-03-die-for-sins"],"consolidated_legacy_relation_ids":["public-x-bible-x-2024-10-03-die-for-sins"]},
+    {"relation_id":"self-resurrection-witnesses-2025-09-30","occurrence_ids":["x-2025-09-30-self-resurrection"],"consolidated_legacy_relation_ids":["public-x-bible-x-2025-09-30-self-resurrection"]},
+    {"relation_id":"bread-door-tomb-resurrection-2026-04-23","occurrence_ids":["x-2026-04-23-son-door-tomb"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-04-23-son-door-tomb"]},
+    {"relation_id":"tree-timelines-jacob-ezekiel-2026-05-24","occurrence_ids":["x-2026-05-24-tree-timelines"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-05-24-tree-timelines"]},
+    {"relation_id":"breath-nostrils-2026-07-23","occurrence_ids":["x-2026-07-23-breath-nostrils"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-07-23-breath-nostrils"]},
+    {"relation_id":"son-cornerstone-2026-08-17","occurrence_ids":["x-2026-08-17-cornerstone"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-17-cornerstone"]},
+    {"relation_id":"zion-2026-08-23","occurrence_ids":["x-2026-08-23-zion"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-23-zion"]},
+    {"relation_id":"christ-wedge-door-2026-08-31","occurrence_ids":["x-2026-08-31-wedge-christ"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-31-wedge-christ"]}
   ],
   "new_relations":[
     {
@@ -27,12 +39,7 @@
       "relation_class":"staged-return recognition comparator",
       "discovery_mode":"conversation-recovery",
       "source_direction":"Project staged-return reasoning was made explicit in the September 17, 2026 conversation; Emmaus was then mined as a later biblical comparator.",
-      "relation_argument":{
-        "project_sequence":["death threshold","hidden becoming","new identity develops","return becomes explicit","recognition catches up"],
-        "biblical_sequence":["Jesus is already risen","companions walk with him without recognition","scripture is interpreted","bread is broken","recognition occurs"],
-        "maximum_claim":"Luke 24 provides a strong biblical example in which return and recognition are temporally distinct stages.",
-        "why_it_matters":"It gives the comparator a more precise model than treating resurrection, manifestation and recognition as one timestamp."
-      },
+      "relation_argument":{"project_sequence":["death threshold","hidden becoming","new identity develops","return becomes explicit","recognition catches up"],"biblical_sequence":["Jesus is already risen","companions walk with him without recognition","scripture is interpreted","bread is broken","recognition occurs"],"maximum_claim":"Luke 24 provides a strong biblical example in which return and recognition are temporally distinct stages.","why_it_matters":"It gives the comparator a more precise model than treating resurrection, manifestation and recognition as one timestamp."},
       "boundary":"The Emmaus narrative does not establish the Potatoverse chronology, and its short post-resurrection interval is not numerically equivalent to the project's multi-year development.",
       "source_owners":["conversation recovery 2026-09-17","Luke 24:13-35"]
     },
@@ -50,12 +57,7 @@
       "relation_class":"gardener-return recognition comparator",
       "discovery_mode":"conversation-recovery",
       "source_direction":"The Gardener identity and staged-return model are project-side material; the John 20 gardener-misrecognition scene was identified later as a comparison.",
-      "relation_argument":{
-        "project_sequence":["return develops","observer sees returned figure","existing category misreads the figure","recognition arrives later"],
-        "biblical_sequence":["Mary encounters risen Jesus","supposes him to be the gardener","Jesus addresses her by name","Mary recognizes him"],
-        "maximum_claim":"John 20 supplies an unusually dense neighbor for the project's Gardener plus delayed-recognition motifs because gardener imagery appears inside a resurrection-recognition scene.",
-        "why_it_matters":"It joins two previously separate comparator families — Gardener and Return/Recognition — without claiming that John literally titles Jesus 'the Gardener'."
-      },
+      "relation_argument":{"project_sequence":["return develops","observer sees returned figure","existing category misreads the figure","recognition arrives later"],"biblical_sequence":["Mary encounters risen Jesus","supposes him to be the gardener","Jesus addresses her by name","Mary recognizes him"],"maximum_claim":"John 20 supplies an unusually dense neighbor for the project's Gardener plus delayed-recognition motifs because gardener imagery appears inside a resurrection-recognition scene.","why_it_matters":"It joins two previously separate comparator families — Gardener and Return/Recognition — without claiming that John literally titles Jesus 'the Gardener'."},
       "boundary":"Mary is mistaken when she supposes Jesus to be the gardener. The passage therefore cannot be cited as a direct biblical title identifying Jesus as Gardener.",
       "source_owners":["conversation recovery 2026-09-17","John 20:11-18"]
     },
@@ -73,12 +75,7 @@
       "relation_class":"post-resurrection staging comparator",
       "discovery_mode":"conversation-recovery",
       "source_direction":"Project multi-stage return reasoning first; Acts 1 was then mined as a biblical model in which resurrection is followed by additional temporal stages.",
-      "relation_argument":{
-        "project_sequence":["death","becoming","identity development","recognition","later ascent/return markers"],
-        "biblical_sequence":["resurrection","appearances over forty days","teaching about the kingdom","commission/witness","ascension"],
-        "maximum_claim":"Acts 1 establishes that the canonical Christian resurrection narrative itself contains post-resurrection staging rather than ending at the instant of rising.",
-        "why_it_matters":"It supports comparing process shape — death to return to recognition to ascent — without demanding identical durations."
-      },
+      "relation_argument":{"project_sequence":["death","becoming","identity development","recognition","later ascent/return markers"],"biblical_sequence":["resurrection","appearances over forty days","teaching about the kingdom","commission/witness","ascension"],"maximum_claim":"Acts 1 establishes that the canonical Christian resurrection narrative itself contains post-resurrection staging rather than ending at the instant of rising.","why_it_matters":"It supports comparing process shape — death to return to recognition to ascent — without demanding identical durations."},
       "boundary":"Acts' forty-day interval belongs to the New Testament narrative and does not supply a numerical key for the project's multi-year chronology.",
       "source_owners":["conversation recovery 2026-09-17","Acts 1:1-11"]
     },
@@ -96,12 +93,7 @@
       "relation_class":"return-feeding-shepherd comparator",
       "discovery_mode":"conversation-recovery",
       "source_direction":"Project feeding/shepherd/return motifs pre-existed this later John 21 comparison.",
-      "relation_argument":{
-        "project_sequence":["return","recognition through function","food/service","shepherd responsibility"],
-        "biblical_sequence":["risen Jesus stands on shore unrecognized","catch of fish triggers recognition","meal with bread and fish","Peter is charged to feed/tend"],
-        "maximum_claim":"John 21 adds a distinct post-return function: recognition develops through action and is followed by feeding/shepherd responsibility.",
-        "why_it_matters":"This is not merely another delayed-recognition card; it connects return to the project's feeding and shepherd-service operators."
-      },
+      "relation_argument":{"project_sequence":["return","recognition through function","food/service","shepherd responsibility"],"biblical_sequence":["risen Jesus stands on shore unrecognized","catch of fish triggers recognition","meal with bread and fish","Peter is charged to feed/tend"],"maximum_claim":"John 21 adds a distinct post-return function: recognition develops through action and is followed by feeding/shepherd responsibility.","why_it_matters":"This is not merely another delayed-recognition card; it connects return to the project's feeding and shepherd-service operators."},
       "boundary":"The fishing miracle, meal and Petrine commission belong to John's narrative and do not validate modern shepherd or divine-office claims.",
       "source_owners":["conversation recovery 2026-09-17","John 21:1-17"]
     }
