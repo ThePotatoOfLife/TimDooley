@@ -3,14 +3,15 @@
 
 The interactive archive owns .archive-nav. Generic .nav is reserved for local/static
 legacy pages and must never regain global layout behavior in app/style.css. Active
-self-themed Tim/FAQ readers must also leave global palette/body/link ownership to the
-shared House shell rather than rebuilding it in inline CSS.
+self-themed Tim/FAQ readers may preserve historical source CSS only when the public
+compatibility scoper proves their deployed theme ownership becomes local.
 """
 from pathlib import Path
 import re
 import sys
 
 from house_public_surfaces import parent_chain, surface_rows
+from house_style_scope import has_legacy_global_theme, scope_legacy_inline_theme
 
 ROOT = Path(__file__).resolve().parents[1]
 STYLE = ROOT / "app" / "style.css"
@@ -77,6 +78,11 @@ def branch_family(surface_id: str) -> str | None:
     return None
 
 
+def global_theme_owners(text: str) -> list[str]:
+    inline_css = "\n".join(INLINE_STYLE_RE.findall(text))
+    return [name for name, pattern in GLOBAL_THEME_SELECTORS.items() if pattern.search(inline_css)]
+
+
 if not GUARD.exists():
     errors.append("app/layout-guard.css is missing")
 if not READER.exists() or 'layout-guard.css' not in READER.read_text(encoding='utf-8'):
@@ -121,9 +127,9 @@ for path in MIGRATED_LOCAL_STYLE_SOURCES:
                 f"{path.relative_to(ROOT)} redefines canonical palette literals in :root: {', '.join(repeated)}"
             )
 
-# Tim/FAQ branch convergence: only self-themed authored readers are targeted here.
-# Legacy app/style.css + reader.css readers already enter Reader v2 through the shared
-# compatibility layer and should not be forced through a second presentation rewrite.
+# Tim/FAQ branch convergence: historical source may still contain its old theme,
+# but the compatibility transform must prove those selectors become local before
+# the generated public page is considered safe.
 for surface in surface_rows(ROOT):
     if surface.get("status") != "active" or surface.get("shell_type") not in {"editorial", "longform"}:
         continue
@@ -136,12 +142,28 @@ for surface in surface_rows(ROOT):
     text = source.read_text(encoding="utf-8", errors="ignore")
     if "reader.css" in text or "layout-guard.css" in text:
         continue
-    inline_css = "\n".join(INLINE_STYLE_RE.findall(text))
-    owned = [name for name, pattern in GLOBAL_THEME_SELECTORS.items() if pattern.search(inline_css)]
-    if owned:
-        errors.append(
-            f"{source.relative_to(ROOT)} ({family} branch) still owns global House selectors inline: {', '.join(owned)}"
+
+    source_owned = global_theme_owners(text)
+    if source_owned:
+        warnings.append(
+            f"{source.relative_to(ROOT)} ({family} branch) retains legacy source theme debt: {', '.join(source_owned)}"
         )
+    if not has_legacy_global_theme(text):
+        continue
+
+    try:
+        projected = scope_legacy_inline_theme(text)
+    except ValueError as exc:
+        errors.append(f"{source.relative_to(ROOT)} cannot be House-scoped: {exc}")
+        continue
+
+    remaining = global_theme_owners(projected)
+    if remaining:
+        errors.append(
+            f"{source.relative_to(ROOT)} ({family} branch) still owns global selectors after public scoping: {', '.join(remaining)}"
+        )
+    if "house-content-scope" not in projected:
+        errors.append(f"{source.relative_to(ROOT)} public style scoping did not mark the content root")
 
 for block in re.findall(r"\.nav\s*\{([^}]*)\}", style):
     if re.search(r"\b(position|top|inset|z-index|display|grid-template-columns)\s*:", block):
