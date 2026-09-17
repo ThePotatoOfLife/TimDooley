@@ -3,7 +3,7 @@
 // Reads public subsystem state and publishes one deterministic presentation policy.
 // It does not own domain data, geometry, analytical semantics or canonical state.
 
-import { contextScaleBand, contextBudgets, contextVisibility } from './3d-context-policy.js';
+import { contextScaleBand, contextBudgets, contextVisibility, contextInvestigationMode } from './3d-context-policy.js';
 
 const map = window.__potatoAtlasMap;
 const selection = window.__potatoAtlasSelection;
@@ -57,10 +57,9 @@ function evidenceActive() {
     document.getElementById('evidenceEye')?.classList.contains('active')
   );
 }
-function connectionsActive(snapshot) {
+function specialistConnectionsActive() {
   const id = activeInvestigationId();
   return Boolean(
-    snapshot?.relationMode && snapshot.relationMode !== 'all' ||
     document.getElementById('relations')?.classList.contains('active') ||
     ['trace','path','impact','entity-trace','chain-detail'].includes(String(id || ''))
   );
@@ -73,10 +72,12 @@ function compareActive(snapshot) {
   );
 }
 function investigationMode(snapshot) {
-  if (evidenceActive()) return 'evidence';
-  if (connectionsActive(snapshot)) return 'connections';
-  if (compareActive(snapshot)) return 'compare';
-  return 'browse';
+  return contextInvestigationMode({
+    evidence:evidenceActive(),
+    specialistConnections:specialistConnectionsActive(),
+    compare:compareActive(snapshot),
+    relationFiltered:Boolean(snapshot?.relationMode && snapshot.relationMode !== 'all'),
+  });
 }
 
 async function buildContext(reason) {
