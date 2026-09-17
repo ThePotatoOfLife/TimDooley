@@ -23,6 +23,7 @@ from house_shell import (
     render_house_bar_for_route,
     render_house_footer_for_route,
     render_route_breadcrumbs,
+    render_specialist_house_escape,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -81,6 +82,17 @@ def ensure_house_stylesheet(text: str, route: str) -> str:
     link = f'<link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">\n'
     if not HEAD_CLOSE_RE.search(text):
         raise SystemExit(f"Curated House surface lacks a head element: {route}")
+    return HEAD_CLOSE_RE.sub(link + "</head>", text, count=1)
+
+
+def ensure_specialist_stylesheet(text: str, route: str) -> str:
+    """Load only the namespaced specialist House CSS, never the editorial reset."""
+    if "specialist-house.css" in text:
+        return text
+    stylesheet = relative_href(route, "/app/specialist-house.css")
+    link = f'<link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">\n'
+    if not HEAD_CLOSE_RE.search(text):
+        raise SystemExit(f"Specialist House surface lacks a head element: {route}")
     return HEAD_CLOSE_RE.sub(link + "</head>", text, count=1)
 
 
@@ -146,6 +158,32 @@ def project_curated_house_surfaces() -> None:
             strip_authored_page_nav=True,
             ensure_stylesheet=True,
         )
+
+
+def project_specialist_house_surfaces() -> None:
+    """Mount compact House context inside specialist-owned chrome by registry policy."""
+    for surface in surface_rows(ROOT):
+        if surface.get("status") != "active" or surface.get("shell_type") != "specialist":
+            continue
+        route = surface["canonical_route"]
+        page = output_path_for_route(route)
+        if not page.exists():
+            continue
+
+        mount = surface.get("specialist_mount")
+        if mount not in {"header", "main"}:
+            raise SystemExit(f"Specialist surface lacks valid specialist_mount policy: {surface['id']}")
+
+        text = page.read_text(encoding="utf-8", errors="replace")
+        if 'class="site-specialist-house"' in text:
+            continue
+        text = ensure_specialist_stylesheet(text, route)
+        fragment = render_specialist_house_escape(ROOT, surface["id"])
+        mount_re = re.compile(fr"(<{mount}\b[^>]*>)", re.I)
+        if not mount_re.search(text):
+            raise SystemExit(f"Specialist mount element <{mount}> missing for {route}")
+        text = mount_re.sub(lambda match: match.group(1) + fragment, text, count=1)
+        page.write_text(text, encoding="utf-8")
 
 
 def load_json(path: Path, default=None):
@@ -449,6 +487,7 @@ def build() -> None:
     build_world_map_coverage = build_coverage_file(ROOT / "data" / "world-map-coverage-ledger.json")
     copy_tree()
     project_curated_house_surfaces()
+    project_specialist_house_surfaces()
     required = [OUT / "index.html", OUT / "manifest.json", OUT / "app" / "app.js", OUT / "app" / "style.css", OUT / "knowledge" / "core" / "potato-of-life.json", OUT / "knowledge" / "core" / "tim-dooley.json", OUT / "knowledge" / "core" / "tim-identity-ontology.json", OUT / "tim-dooley" / "index.html", OUT / "tim-dooley" / "ontology" / "index.html", OUT / "faq" / "index.html", OUT / "faq" / "all" / "god" / "index.html", OUT / "data" / "world-map-data-runtime.json", OUT / "data" / "world-map-coverage-ledger.json"]
     missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
     if missing:
@@ -471,7 +510,7 @@ def build() -> None:
         raise SystemExit("No HTML pages were built into _site")
     metric_coverage = {key: value.get("coverage", 0) for key, value in build_world_map_runtime.get("metrics", {}).items()}
     coverage_entities = len(build_world_map_coverage.get("entities", {}))
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, House-authority curated and generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete deployable repository knowledge/data tree.")
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, House-authority curated, specialist and generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete deployable repository knowledge/data tree.")
 
 
 if __name__ == "__main__":
