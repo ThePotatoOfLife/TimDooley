@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { selectVisibleSurfaceIds } from '../world-map/3d-ui-layout-policy.js';
+import { selectVisibleSurfaceIds, surfaceNaturallyVisible } from '../world-map/3d-ui-layout-policy.js';
 
 const rows = [
   {id:'operator', priority:50, visible:true},
@@ -20,5 +20,13 @@ assert.deepEqual(
 );
 assert.deepEqual(selectVisibleSurfaceIds(rows, 0), []);
 assert.deepEqual(selectVisibleSurfaceIds(rows, Infinity), ['current-view','time','world-context','operator']);
+
+assert.equal(
+  surfaceNaturallyVisible({ visible:false, element:{ hidden:false } }),
+  true,
+  'live element visibility must win over stale registration-time visibility',
+);
+assert.equal(surfaceNaturallyVisible({ visible:true, element:{ hidden:true } }), false);
+assert.equal(surfaceNaturallyVisible({ visible:true }), true, 'registration visibility is only the fallback when no element exists');
 
 console.log('World Map UI surface budget tests passed');
