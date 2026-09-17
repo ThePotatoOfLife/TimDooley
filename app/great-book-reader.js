@@ -3,7 +3,7 @@ const $=s=>document.querySelector(s),doc=$('#gb-document'),toc=$('#gb-toc'),sear
 if(!doc||!toc)return;
 const loaderApi=globalThis.PotatoGreatBookLoader;
 if(!loaderApi?.createChapterLoader){(status||doc).textContent='Reader error: chapter loader unavailable';return}
-let manifest=null;
+let manifest=null,activeCurrentId='';
 const esc=s=>String(s).replace(/[&<>\"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
 const safeChapterToken=value=>String(value||'').replace(/\./g,'-');
 const safeChapterPath=path=>String(path||'').replace(/chapter-(\d+(?:\.\d+)+)/g,(_,number)=>`chapter-${safeChapterToken(number)}`);
@@ -11,7 +11,11 @@ const chapterLoader=loaderApi.createChapterLoader({
   sanitizePath:safeChapterPath,
   onError:(slot,error)=>{slot.innerHTML=`<p class="caution gb-load-error">Could not load this chapter: ${esc(error.message)}</p>`},
 });
-const loadSlot=(slot,options={})=>chapterLoader.loadSlot(slot,options);
+async function loadSlot(slot,options={}){
+  const result=await chapterLoader.loadSlot(slot,options);
+  if(result?.id&&result.id===activeCurrentId)publishCurrent(result);
+  return result;
+}
 async function loadAllSlots(options={}){
   const slots=[...doc.querySelectorAll('.gb-slot')];
   if(!slots.length)return {loaded:[],failed:[]};
@@ -36,13 +40,14 @@ function publishCurrent(slot){
   doc.dispatchEvent(new CustomEvent('potato:tts-current',{bubbles:false,detail:{item:slot}}));
 }
 function observe(){
-  const lazy=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)loadSlot(x.target).catch(()=>{})}),{rootMargin:'900px 0px'}),active=new IntersectionObserver(xs=>xs.forEach(x=>{if(!x.isIntersecting)return;toc.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current',String(a.hash==='#'+x.target.id)));publishCurrent(x.target)}),{rootMargin:'-20% 0px -70%'});
+  const lazy=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)loadSlot(x.target).catch(()=>{})}),{rootMargin:'900px 0px'}),active=new IntersectionObserver(xs=>xs.forEach(x=>{if(!x.isIntersecting)return;activeCurrentId=x.target.id;toc.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current',String(a.hash==='#'+x.target.id)));publishCurrent(x.target)}),{rootMargin:'-20% 0px -70%'});
   doc.querySelectorAll('.gb-slot').forEach(s=>{lazy.observe(s);active.observe(s)});
 }
 async function init(){
   const spec=await fetch('../great-book/book-index.json').then(r=>{if(!r.ok)throw new Error(`book-index.json ${r.status}`);return r.json()}),parts=await Promise.all(spec.shards.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(`${p} ${r.status}`);return r.json()})));
   manifest={front_matter:spec.front_matter,chapters:parts.flat()};doc.replaceChildren();doc.appendChild(slotFor(manifest.front_matter,'front'));manifest.chapters.forEach(c=>doc.appendChild(slotFor(c)));renderToc();observe();
   const hash=safeChapterToken(decodeURIComponent(location.hash.slice(1))).replace(/^chapter-/,'chapter-'),target=document.getElementById(hash||'front-matter');
+  activeCurrentId=target?.id||'';
   try{await loadSlot(target)}catch(error){if(status)status.textContent=`Could not load chapter: ${error.message}`}
   publishCurrent(target);if(hash)requestAnimationFrame(()=>target?.scrollIntoView({block:'start'}));
 }
