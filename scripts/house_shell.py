@@ -136,23 +136,23 @@ def render_house_bar(root: Path, surface_id: str, *, compact: bool = False) -> s
     )
 
 
-def render_specialist_house_escape(root: Path, surface_id: str) -> str:
+def render_specialist_house_escape(root: Path, surface_id: str, *, from_route: str | None = None) -> str:
     """Render a tiny House context trail for specialist apps without editorial chrome."""
     surface = surface_by_id(root, surface_id)
     if surface.get("shell_type") != "specialist":
         raise ValueError(f"surface is not specialist: {surface_id}")
 
-    route = surface["canonical_route"]
+    link_route = from_route or surface["canonical_route"]
     home = surface_by_id(root, "home")
     parent_id = surface.get("primary_parent")
     parts = [
-        f'<a class="site-specialist-house__link site-specialist-house__home" href="{esc(relative_href(route, home["canonical_route"]))}">Potato of Life</a>'
+        f'<a class="site-specialist-house__link site-specialist-house__home" href="{esc(relative_href(link_route, home["canonical_route"]))}">Potato of Life</a>'
     ]
     if parent_id and parent_id != "home":
         parent = surface_by_id(root, parent_id)
         parts.extend([
             '<span class="site-specialist-house__sep" aria-hidden="true">/</span>',
-            f'<a class="site-specialist-house__link" href="{esc(relative_href(route, parent["canonical_route"]))}">{esc(_nav_label(parent))}</a>',
+            f'<a class="site-specialist-house__link" href="{esc(relative_href(link_route, parent["canonical_route"]))}">{esc(_nav_label(parent))}</a>',
         ])
     parts.extend([
         '<span class="site-specialist-house__sep" aria-hidden="true">/</span>',
