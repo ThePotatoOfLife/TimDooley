@@ -22,3 +22,43 @@ jobs:
 
       - name: Run browser compatibility source contract
         run: node scripts/test_browser_compat_contract.mjs
+
+  browser-smoke:
+    needs: contract
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: '3.x'
+
+      - name: Build public site
+        run: python scripts/build_site.py
+
+      - name: Install Playwright test runner
+        run: npm install --no-save @playwright/test@1.55.0
+
+      - name: Install browser engines
+        run: npx playwright install --with-deps chromium firefox webkit
+
+      - name: Start local site
+        run: |
+          python -m http.server 4173 --directory _site >/tmp/potato-browser-compat-server.log 2>&1 &
+          echo $! >/tmp/potato-browser-compat-server.pid
+          for i in {1..30}; do
+            if curl --fail --silent http://127.0.0.1:4173/ >/dev/null; then exit 0; fi
+            sleep 1
+          done
+          cat /tmp/potato-browser-compat-server.log
+          exit 1
+
+      - name: Run Chromium Firefox and WebKit smoke matrix
+        run: npx playwright test --config=playwright.compat.config.mjs
+
+      - name: Show local server log on failure
+        if: failure()
+        run: cat /tmp/potato-browser-compat-server.log || true
