@@ -24,18 +24,19 @@ let renderGeneration = 0;
 let renderScheduled = false;
 let lastHoverKey = null;
 
-const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[ch]));
 
 function ensureNode() {
   if (node) return node;
   const style = document.createElement('style');
   style.id = 'atlasContextStatusStyle';
   style.textContent = `
-    #atlasContextStatus{display:flex;align-items:center;gap:5px;max-width:min(720px,calc(100% - 20px));padding:6px 9px;border:1px solid #33413f;border-radius:12px;background:#0b1212e8;box-shadow:0 5px 16px #0005;color:#c7d0cd;font-size:10px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;backdrop-filter:blur(10px)}
+    #atlasContextStatus{display:flex;align-items:center;gap:5px;max-width:min(760px,calc(100% - 20px));padding:6px 9px;border:1px solid #33413f;border-radius:12px;background:#0b1212e8;box-shadow:0 5px 16px #0005;color:#c7d0cd;font-size:10px;line-height:1.25;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;backdrop-filter:blur(10px)}
     #atlasContextStatus .atlas-context-status-label{color:var(--muted)}
     #atlasContextStatus .atlas-context-status-country{color:#eef3ef;font-weight:650}
     #atlasContextStatus .atlas-context-status-population{color:#d8e3dc}
     #atlasContextStatus .atlas-context-status-answer{color:#f0dfaa;min-width:0;overflow:hidden;text-overflow:ellipsis}
+    #atlasContextStatus .atlas-context-status-selected-ref{color:#a9b6b0;min-width:0;overflow:hidden;text-overflow:ellipsis}
     #atlasContextStatus .atlas-context-status-meta{color:#86938d;min-width:0;overflow:hidden;text-overflow:ellipsis}
     #atlasContextStatus .atlas-context-status-sep{color:#66726f}
     #atlasContextStatus[data-subject="preview"]{border-color:#557b76}
@@ -43,7 +44,7 @@ function ensureNode() {
     #atlasContextStatus[data-mode="evidence"]{border-color:#6f775a}
     #atlasContextStatus[data-mode="connections"]{border-color:#486978}
     #atlasContextStatus[data-mode="compare"]{border-color:#6d617e}
-    @media(max-width:900px){#atlasContextStatus{max-width:min(92vw,520px);padding:5px 8px;font-size:9px}.atlas-context-status-meta{display:none}}
+    @media(max-width:900px){#atlasContextStatus{max-width:min(92vw,540px);padding:5px 8px;font-size:9px}.atlas-context-status-meta{display:none}}
   `;
   document.head.appendChild(style);
   node = document.createElement('div');
@@ -84,6 +85,14 @@ function subject() {
   const selectedCode = selectedCountryCode();
   if (selectedCode) return { kind:'selected', label:'Selected', code:selectedCode, fallbackName:selectedCode };
   return null;
+}
+
+function selectedReference(details) {
+  if (details?.kind !== 'preview') return null;
+  const code = selectedCountryCode();
+  if (!code || code === details.code) return null;
+  const selection = window.__potatoAtlasSelection;
+  return { code, name:selection?.countryName?.(code) || code };
 }
 
 function formatPopulation(value) {
@@ -157,8 +166,10 @@ async function render() {
     target.dataset.subject = details.kind;
     const populationPeriod = details.populationPeriod ? ` (${esc(details.populationPeriod)})` : '';
     const answer = activeViewAnswer(details.view);
-    target.innerHTML = `<span class="atlas-context-status-label">${esc(details.label)}</span><span class="atlas-context-status-country">${esc(details.name)}</span><span class="atlas-context-status-sep">·</span><span class="atlas-context-status-population">Population · ${esc(formatPopulation(details.population))}${populationPeriod}</span>${answer ? `<span class="atlas-context-status-sep">·</span><span class="atlas-context-status-answer">${esc(answer)}</span>` : ''}${parts.length ? `<span class="atlas-context-status-sep">·</span><span class="atlas-context-status-meta">Current view · ${esc(parts.join(' · '))}</span>` : ''}`;
-    target.title = `${details.label}: ${details.name} · Population ${formatPopulation(details.population)}${answer ? ` · ${answer}` : ''}${parts.length ? ` · Current view: ${parts.join(' · ')}` : ''}`;
+    const selected = selectedReference(details);
+    const selectedHtml = selected ? `<span class="atlas-context-status-sep">·</span><span class="atlas-context-status-selected-ref">Selected · ${esc(selected.name)}</span>` : '';
+    target.innerHTML = `<span class="atlas-context-status-label">${esc(details.label)}</span><span class="atlas-context-status-country">${esc(details.name)}</span><span class="atlas-context-status-sep">·</span><span class="atlas-context-status-population">Population · ${esc(formatPopulation(details.population))}${populationPeriod}</span>${answer ? `<span class="atlas-context-status-sep">·</span><span class="atlas-context-status-answer">${esc(answer)}</span>` : ''}${selectedHtml}${parts.length ? `<span class="atlas-context-status-sep">·</span><span class="atlas-context-status-meta">Current view · ${esc(parts.join(' · '))}</span>` : ''}`;
+    target.title = `${details.label}: ${details.name} · Population ${formatPopulation(details.population)}${answer ? ` · ${answer}` : ''}${selected ? ` · Selected: ${selected.name}` : ''}${parts.length ? ` · Current view: ${parts.join(' · ')}` : ''}`;
   } else {
     delete target.dataset.subject;
     if (!context) {
@@ -177,6 +188,7 @@ async function render() {
       pins:context?.pinnedCountries?.length || 0,
       time:context?.time?.mode || 'current',
       subject:details ? { kind:details.kind, code:details.code } : null,
+      selectedReference:details ? selectedReference(details)?.code || null : null,
     };
   }
 }
