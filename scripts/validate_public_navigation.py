@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Guard the small public navigation contract without constraining archive internals."""
+"""Guard the small public navigation and deployed reader capability contract."""
 from __future__ import annotations
 
 import re
@@ -17,6 +17,29 @@ NAV = re.compile(r"<nav\b[^>]*>(.*?)</nav>", re.I | re.S)
 DEEP = re.compile(r'<div\b[^>]*class=["\'][^"\']*\bdeep\b[^"\']*["\'][^>]*>(.*?)</div>', re.I | re.S)
 HREF = re.compile(r'''href=["']([^"']+)["']''', re.I)
 LEGACY_NAV_LABELS = (">Corporium</a>", ">Source authority</a>", ">Tim dossier</a>")
+
+# Readable public Rooms / sub-room surfaces that should expose the shared
+# long-form speech reader in the deployed artifact. Interactive map and deep
+# archive-explorer surfaces are intentionally excluded.
+PROJECTED_TTS_PAGES = {
+    "rooms/index.html": "rooms",
+    "history/index.html": "history",
+    "law/index.html": "law",
+    "economy/index.html": "economy",
+    "world-systems/index.html": "world-systems",
+    "politics/index.html": "politics",
+    "timeline/index.html": "timeline",
+    "works/index.html": "works",
+    "science/index.html": "science",
+    "context/source-authority/index.html": "source-authority",
+    "philosophy/interpretive-justice.html": "interpretive-justice",
+}
+TTS_ASSET_MARKERS = (
+    "tts-drawer.css",
+    "tts-reader.js",
+    "tts-drawer.js",
+    "longform-tts-adapter.js",
+)
 
 
 def duplicate_hrefs(fragment: str) -> list[str]:
@@ -75,13 +98,28 @@ def main() -> int:
             if '../../religion/' not in text:
                 errors.append(f"{rel} does not link back to its Religion parent hub")
 
+    for rel, reader_id in PROJECTED_TTS_PAGES.items():
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"missing TTS-covered public page: {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        host_id = f'id="{reader_id}-tts"'
+        if host_id not in text:
+            errors.append(f"{rel} missing projected TTS host {host_id}")
+        if "data-tts-longform" not in text:
+            errors.append(f"{rel} missing data-tts-longform reader contract")
+        for marker in TTS_ASSET_MARKERS:
+            if marker not in text:
+                errors.append(f"{rel} missing shared TTS asset {marker}")
+
     if errors:
         print("PUBLIC NAVIGATION VALIDATION FAILED")
         for error in errors:
             print(f"- {error}")
         return 1
 
-    print(f"PUBLIC NAVIGATION VALIDATION PASSED ({len(pages)} HTML pages checked)")
+    print(f"PUBLIC NAVIGATION VALIDATION PASSED ({len(pages)} HTML pages checked; {len(PROJECTED_TTS_PAGES)} projected TTS surfaces)")
     return 0
 
 
