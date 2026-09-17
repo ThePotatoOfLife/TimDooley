@@ -62,6 +62,12 @@ function cardMeta(view) {
   return view.relationMode && view.relationMode !== 'all' ? `${view.relationMode} connections` : '';
 }
 
+async function resolveView(api, code) {
+  if (!api) return { code, view:null };
+  try { return { code, view:await api.forCountry(code) }; }
+  catch { return { code, view:null }; }
+}
+
 async function refresh(reason = 'refresh') {
   const node = ensureRail();
   const serial = ++renderSerial;
@@ -79,12 +85,7 @@ async function refresh(reason = 'refresh') {
 
   const api = activeViewApi();
   const visiblePins = pins.slice(0, budget);
-  const rows = [];
-  for (const code of visiblePins) {
-    let view = null;
-    try { view = api ? await api.forCountry(code) : null; } catch { view = null; }
-    rows.push({ code, view });
-  }
+  const rows = await Promise.all(visiblePins.map(code => resolveView(api, code)));
   if (serial !== renderSerial) {
     staleSuppressions += 1;
     if (window.__potatoAtlasDiagnostics) window.__potatoAtlasDiagnostics.pinnedContextStaleSuppressions = staleSuppressions;
