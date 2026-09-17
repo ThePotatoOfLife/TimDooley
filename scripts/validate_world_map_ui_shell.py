@@ -45,7 +45,6 @@ def main() -> int:
         for token in ('id="compare"', 'id="panelToggle"'):
             if token not in header:
                 errors.append(f"World Map header must keep core browse control visible: {token}")
-        # Compatibility IDs remain in source because 3d-app.js owns their handlers.
         for menu_id in ("layersMenu", "traceMenu", "timeMenu", "viewMenu"):
             if f'id="{menu_id}"' not in html:
                 errors.append(f"World Map source must retain compatibility control host {menu_id}")
@@ -79,12 +78,20 @@ def main() -> int:
         if "#atlasCountryCard{position:absolute;right:10px;top:10px" in compact:
             errors.append("country card still uses the old upper-right anchor")
         for token in (
-            "Pinned comparison", "Connections", "comparisonRows", "connectionRows",
-            "areaObservation", "populationObservation", "potato-atlas-relation-mode-change",
-            "data-atlas-pin", "data-atlas-statistics", "Map color",
+            "__potatoAtlasCountryPresentation", "atlas-country-current-answer",
+            'data-country-tab="overview"', 'data-country-tab="context"', 'data-country-tab="connections"',
+            "atlas-country-tab-panel", "Population ·", "connectionRows", "contextualRows",
+            "data-country-context-enrichments", "potato-atlas-relation-mode-change",
+            "data-atlas-pin", "data-atlas-statistics",
         ):
             if token not in country_card:
-                errors.append(f"country card must expose compact browse/pin intelligence marker: {token}")
+                errors.append(f"country card missing selected-country workspace marker: {token}")
+        if "Pinned comparison" in country_card:
+            errors.append("country card must not duplicate the dedicated pinned-country rail")
+        if "Map color" in country_card:
+            errors.append("country card must use the normalized Current Map answer instead of legacy Map color copy")
+        if "populationPrimary" not in country_card:
+            errors.append("country card must deduplicate Population when Population is the primary analytical layer")
 
     if world_bar:
         compact = re.sub(r"\s+", "", world_bar)
@@ -106,7 +113,6 @@ def main() -> int:
                 errors.append(f"unified header/current-view contract missing marker: {token}")
         if "host.appendChild(bar)" not in world_bar:
             errors.append("registry toolbar must render inside its stable header host")
-        # mapwrap remains a valid host for the lower-left context card only.
         if "const host = document.querySelector('.mapwrap')" in world_bar:
             errors.append("registry toolbar must no longer use mapwrap as its toolbar host")
         for token in ("#atlasWorldBar #viewMenu #globe", "#atlasWorldBar #traceMenu #relations"):
@@ -123,6 +129,8 @@ def main() -> int:
             errors.append("World Map result summary must not use a variable-width footprint")
         if "#atlasWorldResult{width:92px;flex:0 0 92px" not in world_bar:
             errors.append("World Map result summary must reserve one fixed header width")
+        if '<span>Active</span>' in world_bar:
+            errors.append("Current Map View must remain global and never display selected-country identity")
 
     if active_view:
         for token in ("atlas-time-change", "timeState", "refreshSerial", "matchCount", "potato-atlas-active-view-change"):
@@ -131,6 +139,8 @@ def main() -> int:
 
     if bootstrap and "declareDormant('Time', './3d-time.js'" not in bootstrap:
         errors.append("Time should remain lazy but explicitly declared in bootstrap diagnostics")
+    if bootstrap and "loadAfterPaint('Country Presentation', './3d-country-presentation.js')" not in bootstrap:
+        errors.append("Country Presentation must be part of the ordinary interactive bootstrap sequence")
 
     if compositor:
         for token in ("atlas-query-outline", "atlasQueryMatch", "applyQueryHighlight"):
