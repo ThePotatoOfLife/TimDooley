@@ -7,7 +7,7 @@ const longformCss = read('app/longform-reader.css');
 const minimalCss = read('minimal.css');
 const greatBook = read('app/great-book-reader.js');
 const timeline = read('app/timeline.js');
-const ttsReader = read('app/tts-reader.js');
+const ttsDrawer = read('app/tts-drawer.js');
 const standaloneTts = read('tools/tts/index.html');
 
 assert.match(siteCss, /overflow-wrap\s*:\s*anywhere/, 'shared site CSS should contain a long-content overflow fallback');
@@ -19,8 +19,8 @@ assert.match(longformCss, /overflow-x\s*:\s*auto/, 'wide longform content should
 assert.match(greatBook, /typeof\s+IntersectionObserver|['"]IntersectionObserver['"]\s+in\s+(?:window|globalThis)/, 'Great Book must feature-detect IntersectionObserver');
 assert.match(timeline, /try\s*\{\s*await\s+navigator\.clipboard\.writeText|navigator\.clipboard\?\.|navigator\.clipboard\s*&&|if\s*\(\s*navigator\.clipboard/, 'timeline copy must fail safely when Clipboard API is unavailable');
 
-assert.match(ttsReader, /CSS\.highlights|Highlight/, 'shared TTS should retain its Custom Highlight capability path');
-assert.match(ttsReader, /createRange|Range/, 'shared TTS should retain a DOM/range fallback path');
+assert.match(ttsDrawer, /CSS\.highlights|Highlight/, 'shared TTS drawer should retain its Custom Highlight capability path');
+assert.match(ttsDrawer, /createRange|Range/, 'shared TTS drawer should retain a DOM/range fallback path');
 assert.match(standaloneTts, /navigator\.clipboard\?\./, 'standalone TTS copy should remain guarded when Clipboard API is unavailable');
 
 console.log('Browser compatibility contract OK');
