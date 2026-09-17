@@ -1,0 +1,145 @@
+/*
+  House-scoped compatibility layer for older public readers.
+
+  This file deliberately owns no global page shell. It only activates when the
+  build has projected a shared .site-housebar immediately before an authored
+  reader. Specialist applications therefore keep their own geometry, while old
+  editorial/long-form readers gain the quieter Visual System v2 treatment.
+*/
+
+.site-housebar ~ main {
+  --reader-v2-panel: rgba(14, 19, 15, .72);
+  --reader-v2-panel-raised: rgba(20, 26, 21, .82);
+  --reader-v2-line: var(--site-line, #2b352d);
+  --reader-v2-line-strong: var(--site-line-strong, #3a483e);
+  --reader-v2-soft: var(--site-soft, #d8ddd4);
+  --reader-v2-muted: var(--site-muted, #a3ada2);
+  --reader-v2-green: var(--site-green, #b7e17e);
+  --reader-v2-gold: var(--site-gold, #dfba6a);
+}
+
+/* Old mini-site navigation becomes a quiet local path row under the House. */
+.site-housebar ~ main > nav.nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px 16px;
+  margin: 0 0 30px;
+  padding: 0 0 16px;
+  border-bottom: 1px solid var(--reader-v2-line);
+  background: transparent;
+  font-size: 12px;
+}
+
+.site-housebar ~ main > nav.nav a {
+  color: var(--reader-v2-muted);
+  text-decoration: none;
+}
+
+.site-housebar ~ main > nav.nav a:hover,
+.site-housebar ~ main > nav.nav a:focus-visible {
+  color: var(--reader-v2-green);
+}
+
+/* Establish one editorial rhythm without changing the reader's content model. */
+.site-housebar ~ main h2 {
+  color: var(--site-ink, #f3f0e7);
+  font-family: var(--site-font-serif, Georgia, serif);
+  font-size: clamp(1.65rem, 3vw, 2.25rem);
+  font-weight: 400;
+  letter-spacing: -.025em;
+  line-height: 1.16;
+}
+
+.site-housebar ~ main h3 {
+  color: var(--site-ink, #f3f0e7);
+  font-family: var(--site-font-serif, Georgia, serif);
+  font-weight: 500;
+  letter-spacing: -.015em;
+  line-height: 1.24;
+}
+
+.site-housebar ~ main :where(p, li) {
+  text-wrap: pretty;
+}
+
+.site-housebar ~ main :where(hr) {
+  border: 0;
+  border-top: 1px solid var(--reader-v2-line);
+}
+
+/* Normalize recurring legacy content surfaces without imposing their layout. */
+.site-housebar ~ main :where(.card, .distinction) {
+  border-color: var(--reader-v2-line);
+  border-radius: var(--site-radius-md, 14px);
+  background: linear-gradient(180deg, var(--reader-v2-panel-raised), var(--reader-v2-panel));
+  box-shadow: inset 0 1px rgba(255, 255, 255, .018);
+}
+
+.site-housebar ~ main :where(.card, .distinction):hover {
+  border-color: var(--reader-v2-line-strong);
+}
+
+.site-housebar ~ main :where(.note) {
+  border-left-color: var(--reader-v2-green);
+  border-radius: 0 var(--site-radius-sm, 8px) var(--site-radius-sm, 8px) 0;
+  background: rgba(183, 225, 126, .07);
+  color: var(--reader-v2-soft);
+}
+
+.site-housebar ~ main :where(.eq, .diagram, .chain, pre) {
+  border-color: var(--reader-v2-line);
+  border-radius: var(--site-radius-md, 14px);
+  background: rgba(6, 9, 7, .72);
+  box-shadow: inset 0 1px rgba(255, 255, 255, .018);
+}
+
+.site-housebar ~ main :where(.eq, .diagram, .chain) {
+  color: var(--reader-v2-soft);
+}
+
+.site-housebar ~ main :where(code, kbd, samp) {
+  color: #e5d6ad;
+}
+
+.site-housebar ~ main blockquote {
+  margin-inline: 0;
+  padding: 14px 18px;
+  border-left: 2px solid var(--reader-v2-gold);
+  background: rgba(223, 186, 106, .06);
+  color: var(--reader-v2-soft);
+}
+
+.site-housebar ~ main table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.site-housebar ~ main :where(th, td) {
+  padding: 10px 12px;
+  border-bottom: 1px solid var(--reader-v2-line);
+  text-align: left;
+  vertical-align: top;
+}
+
+.site-housebar ~ main th {
+  color: var(--reader-v2-muted);
+  font-size: 11px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.site-housebar ~ main :where(.sources, .mini) {
+  color: var(--reader-v2-muted);
+}
+
+@media (max-width: 700px) {
+  .site-housebar ~ main > nav.nav {
+    gap: 6px 12px;
+    margin-bottom: 24px;
+  }
+
+  .site-housebar ~ main :where(.eq, .diagram, .chain, pre) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+}
