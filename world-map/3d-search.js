@@ -147,8 +147,7 @@ async function focus(result) {
   if (result.type === 'Country') {
     const code = String(result.country || result.id || '').toUpperCase();
     if (!code || !window.goCountry) return false;
-    window.goCountry(code);
-    return true;
+    return Boolean(await window.goCountry(code));
   }
   if (result.kind === 'Subdivision' || ['State','Region','District','Subdivision'].includes(result.type)) {
     return Boolean(await window.__potatoAtlasSubdivisions?.select?.(result.id, {fit:true}));
