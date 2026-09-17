@@ -35,6 +35,7 @@ assert.equal(drawer.playbackPayloadChanged(before,{...same,id:'other'},'current'
 const drawerSource=fs.readFileSync(new URL('../app/tts-drawer.js',import.meta.url),'utf8');
 const longformSource=fs.readFileSync(new URL('../app/longform-tts-adapter.js',import.meta.url),'utf8');
 const bibleSource=fs.readFileSync(new URL('../app/bible-tts-adapter.js',import.meta.url),'utf8');
+const toolSource=fs.readFileSync(new URL('../tools/tts/index.html',import.meta.url),'utf8');
 
 // Switching follow ON mid-playback must immediately hand the current spoken
 // word to the page adapter; waiting for another speech boundary can leave the
@@ -48,5 +49,15 @@ assert.ok(bibleSource.includes("event.type==='followchange'"),'Bible page must r
 // is intentionally instant, so there is no smooth animation left running.
 assert.ok(drawerSource.includes("behavior:'auto'"),'page-highlight follow must use immediate positioning');
 assert.ok(!drawerSource.includes("scrollIntoView?.({block:followReading"),'drawer copy must never compete with the real page highlight');
+
+// The standalone TTS tool has its own follow checkbox. It needs the same
+// guarantees: follow state persists immediately, enabling it recenters the
+// current word, disabling it leaves no smooth scroll in flight, and editing
+// source text cannot leave old speech offsets highlighting new text.
+assert.ok(toolSource.includes("$('follow').onchange=()=>"),'standalone Auto-follow needs an explicit toggle handler');
+assert.ok(toolSource.includes("if($('follow').checked&&word)showWord(word)"),'enabling standalone follow must apply to the current word immediately');
+assert.ok(!toolSource.includes("behavior:'smooth'"),'standalone follow must not leave uncancellable smooth scrolling after toggle-off');
+assert.ok(toolSource.includes("if(['speaking','paused'].includes(engine.state))engine.stop()"),'editing standalone source text must stop stale playback');
+assert.ok(toolSource.includes("$('draft').onchange=()=>save()"),'Remember toggle must persist immediately too');
 
 console.log('tts audit edge-case contract: ok');
