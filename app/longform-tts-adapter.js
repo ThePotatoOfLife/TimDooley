@@ -120,7 +120,7 @@
         if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
         if(event.type==='boundary'&&event.absoluteWord){
           const target=event.sectionId==='current'?currentItem:event.sectionId==='all'?container:null;
-          if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'');
+          if(target)pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'',event.followReading);
           else pageHighlighter.clear();
         }
         if(['complete','stop','error'].includes(event.type)){setReadingActive(false);pageHighlighter.clear()}
