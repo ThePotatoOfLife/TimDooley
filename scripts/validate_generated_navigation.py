@@ -51,6 +51,17 @@ def source_backed_shell_surfaces() -> list[dict]:
     return eligible
 
 
+def source_backed_specialist_surfaces() -> list[dict]:
+    """Return registered authored specialist apps that own their local chrome."""
+    eligible = []
+    for surface in surface_rows(ROOT):
+        if surface.get("status") != "active" or surface.get("shell_type") != "specialist":
+            continue
+        if path_for_route(ROOT, surface["canonical_route"]).exists():
+            eligible.append(surface)
+    return eligible
+
+
 def validate_curated_shell_policy(errors: list[str]) -> None:
     eligible = source_backed_shell_surfaces()
     if len(eligible) < 10:
@@ -87,6 +98,50 @@ def validate_curated_shell_policy(errors: list[str]) -> None:
             errors.append("great-book/index.html lost its reader-local Great Book navigation")
 
 
+def validate_specialist_escape_policy(errors: list[str]) -> None:
+    specialists = source_backed_specialist_surfaces()
+    expected_ids = {"timeline", "explore", "world-map", "bible"}
+    actual_ids = {surface["id"] for surface in specialists}
+    if actual_ids != expected_ids:
+        errors.append(f"specialist shell registry drift: expected {sorted(expected_ids)}, got {sorted(actual_ids)}")
+
+    for surface in specialists:
+        route = surface["canonical_route"]
+        rel = path_for_route(Path("."), route)
+        source = path_for_route(ROOT, route).read_text(encoding="utf-8", errors="replace")
+        if 'data-house-escape-slot' not in source:
+            errors.append(f"{rel} does not expose a source-owned specialist House escape slot")
+
+        page = path_for_route(OUT, route)
+        if not page.exists():
+            errors.append(f"missing specialist House surface after build: {rel}")
+            continue
+        text = page.read_text(encoding="utf-8", errors="replace")
+        if 'class="site-housebar' in text:
+            errors.append(f"{rel} incorrectly received editorial House chrome")
+        if 'class="site-specialist-house"' not in text:
+            errors.append(f"{rel} missing compact specialist House escape")
+        if "specialist-house.css" not in text:
+            errors.append(f"{rel} missing namespaced specialist House stylesheet")
+        if f'data-house-surface="{surface["id"]}"' not in text:
+            errors.append(f"{rel} specialist House escape does not identify surface {surface['id']}")
+
+        home = surface_by_id(ROOT, "home")
+        home_href = relative_href(route, home["canonical_route"])
+        require_href(text, home_href, f"{rel} specialist House escape does not link Home", errors)
+
+        parent_id = surface.get("primary_parent")
+        if parent_id and parent_id != "home":
+            parent = surface_by_id(ROOT, parent_id)
+            parent_href = relative_href(route, parent["canonical_route"])
+            require_href(
+                text,
+                parent_href,
+                f"{rel} specialist House escape does not link parent {parent['canonical_route']}",
+                errors,
+            )
+
+
 def main() -> int:
     errors: list[str] = []
     try:
@@ -104,6 +159,7 @@ def main() -> int:
             return 1
 
         validate_curated_shell_policy(errors)
+        validate_specialist_escape_policy(errors)
 
         for branch_id, parent_surface_id in REPRESENTATIVE_BRANCHES.items():
             page = OUT / "topics" / branch_id / "index.html"
@@ -164,7 +220,7 @@ def main() -> int:
                 print(f" - {error}")
             return 1
 
-        print("Generated navigation validation passed: all source-backed editorial/long-form surfaces plus generated topic, record and context pages use shared House orientation.")
+        print("Generated navigation validation passed: editorial/long-form readers, specialist apps and generated topic/record/context pages all use their declared House orientation contract.")
         return 0
     finally:
         if OUT.exists():
