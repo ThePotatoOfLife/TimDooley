@@ -1,4 +1,4 @@
-import { selectVisibleSurfaceIds } from './3d-ui-layout-policy.js';
+import { selectVisibleSurfaceIds, surfaceNaturallyVisible } from './3d-ui-layout-policy.js';
 
 // World Map application-surface layout coordinator.
 // Owns placement only; domain modules continue to own content and behavior.
@@ -92,7 +92,7 @@ function getState() {
     zone:row.zone,
     priority:row.priority,
     mode:row.mode,
-    visible:row.visible,
+    visible:surfaceNaturallyVisible(row),
     layoutSuppressed:row.element?.dataset?.layoutSuppressed === '1',
   }));
 }
@@ -113,12 +113,12 @@ function applyLeftStatusBudget(rows) {
   const candidates = rows.map(row => ({
     id:row.id,
     priority:row.priority,
-    visible:row.visible !== false && !row.element.hidden,
+    visible:surfaceNaturallyVisible(row),
   }));
   const selected = new Set(selectVisibleSurfaceIds(candidates, budget));
   let suppressed = 0;
   for (const row of rows) {
-    const naturallyVisible = row.visible !== false && !row.element.hidden;
+    const naturallyVisible = surfaceNaturallyVisible(row);
     const suppress = naturallyVisible && !selected.has(row.id);
     if (suppress) suppressed += 1;
     if (suppress) row.element.dataset.layoutSuppressed = '1';
