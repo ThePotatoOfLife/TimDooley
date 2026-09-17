@@ -7,6 +7,8 @@ assert.match(source, /Promise\.all\(/, 'pinned country views should resolve in p
 assert.doesNotMatch(source, /setTimeout/, 'pinned context must stay event-driven instead of polling');
 assert.match(source, /potato-atlas-active-view-change/, 'pinned context should refresh when Active View publishes data');
 assert.match(source, /atlas-pinned-overflow/, 'pinned context should explain hidden overflow instead of silently truncating pins');
+assert.match(source, /data-show-all/, 'pinned overflow should let the user temporarily reveal all pinned countries');
+assert.match(source, /data-collapse/, 'expanded pinned context should offer a compact collapse action');
 assert.match(source, /pinnedContextOverflow/, 'pinned context diagnostics should expose hidden pin count');
 
 console.log('World Map pinned context contract tests passed');
