@@ -1,9 +1,12 @@
 #!/usr/bin/env python3
-"""Require every deployable authored HTML document to have House route ownership."""
+"""Require every deployable authored HTML document to have House route ownership and shell behavior."""
 from __future__ import annotations
 
 import json
+import re
 from pathlib import Path
+
+from house_shell import relative_href
 
 ROOT = Path(__file__).resolve().parents[1]
 SURFACES = ROOT / "data" / "house" / "public-surfaces.json"
@@ -17,6 +20,10 @@ EXCLUDED_PARTS = {
     "components",
     "__pycache__",
 }
+ROBOTS_NOINDEX_RE = re.compile(
+    r'<meta\b[^>]*name=["\']robots["\'][^>]*content=["\'][^"\']*\bnoindex\b[^"\']*["\'][^>]*>',
+    re.I,
+)
 
 
 def route_for_path(path: Path) -> str:
@@ -26,6 +33,16 @@ def route_for_path(path: Path) -> str:
     if rel.endswith("/index.html"):
         return "/" + rel[: -len("index.html")]
     return "/" + rel
+
+
+def path_for_route(route: str) -> Path:
+    normalized = route if route.startswith("/") else "/" + route
+    stripped = normalized.strip("/")
+    if not stripped:
+        return ROOT / "index.html"
+    if normalized.endswith("/"):
+        return ROOT / stripped / "index.html"
+    return ROOT / stripped
 
 
 def authored_html_documents() -> list[Path]:
@@ -41,11 +58,15 @@ def authored_html_documents() -> list[Path]:
     return sorted(docs)
 
 
-def owned_routes() -> tuple[set[str], dict[str, str]]:
+def surface_rows() -> list[dict]:
     data = json.loads(SURFACES.read_text(encoding="utf-8"))
+    return [row for row in data.get("surfaces", []) if isinstance(row, dict)]
+
+
+def owned_routes() -> tuple[set[str], dict[str, str]]:
     routes: set[str] = set()
     owners: dict[str, str] = {}
-    for row in data.get("surfaces", []):
+    for row in surface_rows():
         sid = row.get("id")
         canonical = row.get("canonical_route")
         if canonical:
@@ -57,6 +78,61 @@ def owned_routes() -> tuple[set[str], dict[str, str]]:
     return routes, owners
 
 
+def require_href(text: str, href: str) -> bool:
+    return f'href="{href}"' in text or f"href='{href}'" in text
+
+
+def nonreader_shell_errors() -> list[str]:
+    """Protect utility geometry and diagnostic indexing without giving them editorial chrome."""
+    errors: list[str] = []
+    rows = {row.get("id"): row for row in surface_rows() if row.get("id")}
+    home = rows.get("home", {})
+
+    for row in rows.values():
+        if row.get("status") != "active":
+            continue
+        shell_type = row.get("shell_type")
+        if shell_type not in {"utility", "diagnostic"}:
+            continue
+        route = row.get("canonical_route", "")
+        path = path_for_route(route)
+        if not path.exists():
+            errors.append(f"{shell_type} surface source missing: {row.get('id')} -> {route}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        rel = path.relative_to(ROOT).as_posix()
+        marker = f'data-house-surface="{row.get("id")}"'
+        if marker not in text:
+            errors.append(f"{rel} missing {shell_type} House surface marker {row.get('id')}")
+
+        if shell_type == "utility":
+            if 'data-house-escape="utility"' not in text:
+                errors.append(f"{rel} utility has no visible House escape contract")
+            home_route = home.get("canonical_route", "/")
+            home_href = relative_href(route, home_route)
+            if not require_href(text, home_href):
+                errors.append(f"{rel} utility House escape does not link canonical Home ({home_href})")
+            if "site-housebar" in text:
+                errors.append(f"{rel} utility must not inherit editorial House chrome")
+
+        if shell_type == "diagnostic":
+            if not ROBOTS_NOINDEX_RE.search(text):
+                errors.append(f"{rel} diagnostic surface must declare robots noindex")
+            if 'data-house-escape="diagnostic"' not in text:
+                errors.append(f"{rel} diagnostic has no return path to its owning surface")
+            parent_id = row.get("primary_parent")
+            parent = rows.get(parent_id, {}) if parent_id else {}
+            parent_route = parent.get("canonical_route")
+            if parent_route:
+                parent_href = relative_href(route, parent_route)
+                if not require_href(text, parent_href):
+                    errors.append(f"{rel} diagnostic return path does not link owner {parent_route} ({parent_href})")
+            if "site-housebar" in text:
+                errors.append(f"{rel} diagnostic must not inherit editorial House chrome")
+
+    return errors
+
+
 def coverage_errors() -> list[str]:
     routes, _owners = owned_routes()
     errors: list[str] = []
@@ -66,6 +142,7 @@ def coverage_errors() -> list[str]:
             errors.append(
                 f"unowned public HTML: {path.relative_to(ROOT).as_posix()} -> {route}"
             )
+    errors.extend(nonreader_shell_errors())
     return errors
 
 
@@ -78,7 +155,10 @@ def main() -> int:
         for error in errors:
             print("-", error)
         return 1
-    print(f"POTATO HOUSE HTML COVERAGE PASSED: {len(docs)} authored deployable HTML documents have House route ownership")
+    print(
+        f"POTATO HOUSE HTML COVERAGE PASSED: {len(docs)} authored deployable HTML documents have "
+        "House route ownership; utilities expose a House escape; diagnostics are noindex and return to their owner"
+    )
     return 0
 
 
