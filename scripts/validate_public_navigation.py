@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import re
+import subprocess
 from collections import Counter
 from pathlib import Path
 
@@ -58,6 +59,21 @@ def duplicate_hrefs(fragment: str) -> list[str]:
 
 def main() -> int:
     errors: list[str] = []
+
+    # The concrete Culture field is a source-data contract as well as a rendered
+    # public-page contract. Run its focused validator here so pull-request CI sees
+    # a red build before production data/projector code exists.
+    culture_contract = subprocess.run(
+        ["python", str(ROOT / "scripts" / "test_concrete_culture_field.py")],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        check=False,
+    )
+    if culture_contract.returncode != 0:
+        detail = (culture_contract.stdout + "\n" + culture_contract.stderr).strip()
+        errors.append(f"concrete Culture field contract failed: {detail}")
+
     if not SITE.exists():
         errors.append("_site does not exist; build_site.py must run first")
         pages: list[Path] = []
