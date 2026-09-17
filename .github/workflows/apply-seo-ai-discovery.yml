@@ -18,17 +18,15 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - name: Apply asserted SEO changes
-        run: |
-          python scripts/apply_seo_ai_discovery_patch.py
-          python scripts/fix_seo_pipeline_marker_patch.py
-      - name: Commit implementation when changed
+      - name: Correct crawler source markers
+        run: python scripts/fix_seo_pipeline_marker_patch.py
+      - name: Commit correction when changed
         run: |
           git config user.name "Tim Dooley"
           git config user.email "thepotatooflife@hotmail.com"
-          git add scripts/build_discovery.py scripts/validate_seo_pipeline.py robots.txt index.html
+          git add scripts/validate_seo_pipeline.py
           if git diff --cached --quiet; then
-            echo "SEO implementation already applied"
+            echo "SEO validator correction already applied"
             exit 0
           fi
           git diff --cached --check
