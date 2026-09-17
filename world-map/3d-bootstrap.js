@@ -135,6 +135,7 @@ try {
   await loadAfterPaint('Interaction Router', './3d-interaction-router.js');
   await loadAfterPaint('Inspector Router', './3d-inspector-router.js');
   await loadAfterPaint('Inspector URL', './3d-inspector-url.js');
+  await loadAfterPaint('Inspector Visibility', './3d-inspector-visibility.js');
   await loadAfterPaint('Country selection', './3d-country-selection.js');
   await loadAfterPaint('Panel lifecycle', './3d-panel-lifecycle.js');
   await loadAfterPaint('Layer Registry', './3d-layer-registry.js');
