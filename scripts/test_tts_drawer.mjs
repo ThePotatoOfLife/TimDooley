@@ -49,9 +49,9 @@ assert.ok(source.includes('writeSettings({followReading})'), 'follow-reading pre
 assert.ok(source.includes("mark?.scrollIntoView?.({block:followReading?'center':'nearest',inline:'nearest'})"), 'expanded reader should center its active word while follow mode is enabled');
 
 const longform = fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url),'utf8');
-assert.ok(longform.includes('pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||\'\',event.followReading)'), 'long-form TTS must pass follow state into page highlighting');
+assert.ok(longform.includes("pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||'',event.followReading)"), 'long-form TTS must pass follow state into page highlighting');
 const bible = fs.readFileSync(new URL('../app/bible-tts-adapter.js', import.meta.url),'utf8');
-assert.ok(bible.includes('pageHighlighter.highlight(target,event.absoluteWord,config.excludeSelector||\'\',event.followReading)'), 'Bible TTS must pass follow state into page highlighting');
+assert.ok(bible.includes("pageHighlighter.highlight(pieces.project.node,event.absoluteWord,'',event.followReading)"), 'Bible TTS must pass follow state into page highlighting');
 
 const css = fs.readFileSync(new URL('../app/tts-drawer.css', import.meta.url),'utf8');
 assert.match(css,/\.ptts-select\s+option\s*\{[^}]*background\s*:\s*#(?:111|121|141|1[0-9a-f]{5}|[0-9a-f]{6})/i,'TTS native dropdown options need an explicit dark background');
