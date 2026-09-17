@@ -40,6 +40,12 @@ jobs:
       - name: Investigation arbitration contract
         run: node scripts/test_world_map_investigation_contract.mjs
 
+      - name: Investigation surface ownership
+        run: node scripts/test_world_map_investigation_surface_ownership.mjs
+
+      - name: Investigation utility validation
+        run: python scripts/validate_world_map_investigation_utility.py
+
       - name: Pinned-country context contract
         run: node scripts/test_world_map_pinned_context_contract.mjs
 
