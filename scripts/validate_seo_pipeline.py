@@ -91,12 +91,17 @@ def main() -> int:
             '"error_messages": errors',
             '"warning_messages": warnings',
             "seo-report.json",
+            "from house_public_surfaces import primary_gateway_rows",
+            "PRIMARY_DOORS = tuple(",
+            "primary_gateway_rows(ROOT)",
         ),
         "optimize_seo.py",
         errors,
     )
     if "canonical.startswith(BASE_URL" in optimize:
         errors.append("SEO artifact audit still relies on brittle canonical string-prefix matching")
+    if '("world-map", "World Map")' in optimize:
+        errors.append("optimize_seo.py still maintains stale World Map-as-fifth-Door taxonomy")
 
     require(
         strategy,
