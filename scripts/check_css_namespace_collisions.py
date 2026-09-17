@@ -12,6 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 STYLE = ROOT / "app" / "style.css"
 SITE_SYSTEM = ROOT / "app" / "site-system.css"
 READER = ROOT / "app" / "reader.css"
+READER_V2 = ROOT / "app" / "reader-v2.css"
 GUARD = ROOT / "app" / "layout-guard.css"
 HOME = ROOT / "index.html"
 
@@ -48,6 +49,17 @@ if not GUARD.exists():
     errors.append("app/layout-guard.css is missing")
 if not READER.exists() or 'layout-guard.css' not in READER.read_text(encoding='utf-8'):
     errors.append("app/reader.css must import layout-guard.css")
+if not READER.exists() or 'reader-v2.css' not in READER.read_text(encoding='utf-8'):
+    errors.append("app/reader.css must import the House-scoped reader-v2.css convergence layer")
+if not READER_V2.exists():
+    errors.append("app/reader-v2.css is missing")
+else:
+    reader_v2 = READER_V2.read_text(encoding="utf-8")
+    if ".site-housebar ~ main" not in reader_v2:
+        errors.append("app/reader-v2.css must scope legacy-reader convergence beneath .site-housebar ~ main")
+    for forbidden in (r"(?m)^\s*body\s*\{", r"(?m)^\s*:root\s*\{", r"(?m)^\s*\.nav\s*\{", r"(?m)^\s*\.card\s*\{"):
+        if re.search(forbidden, reader_v2):
+            errors.append("app/reader-v2.css must not introduce unscoped global reader selectors")
 
 style = STYLE.read_text(encoding='utf-8') if STYLE.exists() else ""
 
