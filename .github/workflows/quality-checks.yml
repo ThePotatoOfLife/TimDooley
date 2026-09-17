@@ -61,6 +61,9 @@ jobs:
       - name: Validate Timeline naming
         run: python scripts/validate_timeline_naming.py
 
+      - name: Validate under-mined prediction domains
+        run: python scripts/validate_prediction_under_mined_domains.py
+
       - name: Validate 100,000-hour canonical page
         run: python scripts/validate_100000_hour_page.py
 
