@@ -136,7 +136,7 @@ def main() -> int:
     )
     require(
         redirect_app,
-        ('BibleCorpus.ready','resolveRelationId','searchParams.get(\'id\')','location.replace'),
+        ('BibleCorpus?.ready','resolveRelationId','searchParams.get(\'id\')','location.replace'),
         'app/bible-relation-redirects.js', errors,
     )
     require(
