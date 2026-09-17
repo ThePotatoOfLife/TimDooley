@@ -94,6 +94,8 @@ queueMicrotask(async () => {
   await window.__potatoAtlasLoadModule?.('UI Layout', './3d-ui-layout.js');
   await window.__potatoAtlasLoadModule?.('Render Stack', './3d-render-stack.js');
   await window.__potatoAtlasLoadModule?.('Map State', './3d-map-state.js');
+  await window.__potatoAtlasLoadModule?.('Context Visibility', './3d-context-visibility.js');
+  await window.__potatoAtlasLoadModule?.('Pinned Context', './3d-pinned-context.js');
   const placesLoaded = await window.__potatoAtlasLoadModule?.('Places', './3d-places.js');
   if (!placesLoaded) {
     window.dispatchEvent(new CustomEvent('potato-atlas-places-ready', {
