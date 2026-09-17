@@ -17,6 +17,7 @@ from house_shell import relative_href
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 BASE_HREF_RE = re.compile(r'<base\b[^>]*href=["\']([^"\']+)["\']', re.I)
+READER_CSS_RE = re.compile(r'<link\b[^>]*href=["\'][^"\']*\breader\.css["\']', re.I)
 
 REPRESENTATIVE_BRANCHES = {
     "tim": "tim",
@@ -83,6 +84,8 @@ def validate_curated_shell_policy(errors: list[str]) -> None:
     for surface in eligible:
         route = surface["canonical_route"]
         rel = path_for_route(Path("."), route)
+        source_page = path_for_route(ROOT, route)
+        source_text = source_page.read_text(encoding="utf-8", errors="replace")
         page = path_for_route(OUT, route)
         if not page.exists():
             errors.append(f"missing registered authored House surface after build: {rel}")
@@ -103,6 +106,13 @@ def validate_curated_shell_policy(errors: list[str]) -> None:
             errors.append(f"{rel} does not load the shared House stylesheet")
         if f'data-house-surface="{surface["id"]}"' not in text:
             errors.append(f"{rel} House projection does not identify surface {surface['id']}")
+
+        # Legacy readers already loading app/reader.css receive Reader v2 through
+        # that shared integration point. Self-themed editorial readers must receive
+        # reader-v2.css directly from the build so every authored House reader gets
+        # the same convergence layer without maintaining a page-ID allowlist.
+        if not READER_CSS_RE.search(source_text) and "reader-v2.css" not in text:
+            errors.append(f"{rel} has no Reader v2 convergence path")
 
     great_book = path_for_route(OUT, "/great-book/")
     if great_book.exists():
