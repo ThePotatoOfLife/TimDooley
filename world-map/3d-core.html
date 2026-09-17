@@ -3,14 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
 <title>3D Atlas Core Diagnostic</title>
 <link rel="stylesheet" href="./vendor/maplibre-gl.css">
 <style>
-html,body,#map{height:100%;margin:0;background:#080b0b}body{overflow:hidden;font:14px/1.4 system-ui,sans-serif;color:#eff4eb}#map{position:absolute;inset:0}#status{position:absolute;z-index:5;left:50%;top:14px;transform:translateX(-50%);max-width:min(720px,calc(100% - 24px));padding:8px 12px;border:1px solid #405050;border-radius:999px;background:#101616ed;color:#d8e1d8;text-align:center}#status[data-kind="ok"]{border-color:#8ab36d;color:#d9efc6}#status[data-kind="error"]{border-color:#c27878;color:#ffd0d0}#details{position:absolute;z-index:5;left:12px;bottom:12px;max-width:min(620px,calc(100% - 24px));padding:8px 10px;border:1px solid #283333;border-radius:8px;background:#101616e8;color:#aab4aa;font:11px/1.45 ui-monospace,monospace;white-space:pre-wrap}
+html,body,#map{height:100%;margin:0;background:#080b0b}body{overflow:hidden;font:14px/1.4 system-ui,sans-serif;color:#eff4eb}#map{position:absolute;inset:0}#status{position:absolute;z-index:5;left:50%;top:14px;transform:translateX(-50%);max-width:min(720px,calc(100% - 24px));padding:8px 12px;border:1px solid #405050;border-radius:999px;background:#101616ed;color:#d8e1d8;text-align:center}#status[data-kind="ok"]{border-color:#8ab36d;color:#d9efc6}#status[data-kind="error"]{border-color:#c27878;color:#ffd0d0}#details{position:absolute;z-index:5;left:12px;bottom:12px;max-width:min(620px,calc(100% - 24px));padding:8px 10px;border:1px solid #283333;border-radius:8px;background:#101616e8;color:#aab4aa;font:11px/1.45 ui-monospace,monospace;white-space:pre-wrap}.diagnostic-house{position:absolute;z-index:6;right:12px;top:12px;padding:7px 10px;border:1px solid #405050;border-radius:999px;background:#101616ed;color:#d9efc6;text-decoration:none;font:600 12px/1 system-ui,sans-serif}.diagnostic-house:hover,.diagnostic-house:focus-visible{border-color:#8ab36d;outline:none;color:#fff}
 </style>
 </head>
-<body>
+<body data-house-surface="world-map-3d-core">
 <div id="map"></div>
+<a class="diagnostic-house" data-house-escape="diagnostic" href="./" aria-label="Return to World Map">World Map</a>
 <div id="status">Checking WebGL2 and loading the same-origin atlas core…</div>
 <div id="details"></div>
 <script type="module">
