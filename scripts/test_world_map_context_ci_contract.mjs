@@ -8,6 +8,8 @@ for (const command of [
   'node scripts/test_world_map_context_policy.mjs',
   'node scripts/test_world_map_time_policy.mjs',
   'node scripts/test_world_map_investigation_contract.mjs',
+  'node scripts/test_world_map_investigation_surface_ownership.mjs',
+  'python scripts/validate_world_map_investigation_utility.py',
   'node scripts/test_world_map_pinned_context_contract.mjs',
   'node scripts/test_world_map_context_status.mjs',
   'node scripts/test_world_map_reset_context_contract.mjs',
