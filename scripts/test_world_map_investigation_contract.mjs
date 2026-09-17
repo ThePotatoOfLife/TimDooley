@@ -9,6 +9,8 @@ const context = fs.readFileSync(new URL('world-map/3d-context-visibility.js', ro
 assert.match(investigation, /function active\(\)/, 'investigation surface must expose active id');
 assert.match(investigation, /get current\(\)/, 'investigation surface should expose a stable current snapshot for consumers');
 assert.match(investigation, /isActive/, 'investigation surface should expose active-state query');
+assert.match(investigation, /function closeActive\(/, 'investigation surface should expose one shared close-active operation');
+assert.match(investigation, /event\.key === 'Escape'/, 'Escape should close the active investigation surface centrally');
 
 assert.match(evidence, /register\('evidence'/, 'Evidence must register with the shared investigation surface');
 assert.match(evidence, /\.open\('evidence'\)/, 'opening Eye must claim the shared investigation surface');
