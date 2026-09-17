@@ -63,10 +63,10 @@ assert.ok(started<6,`abort should stop queueing new chapters, but started ${star
 const scrolls=[];
 const fakeWin={innerHeight:800,scrollY:300,scrollTo:opts=>scrolls.push(opts),matchMedia:()=>({matches:false})};
 const fakeDoc={documentElement:{clientHeight:800}};
-assert.equal(drawer.centerDomRange(fakeWin,fakeDoc,{getBoundingClientRect:()=>({top:360,height:20})}),false,'word already in central comfort zone should not scroll');
-assert.equal(scrolls.length,0);
-assert.equal(drawer.centerDomRange(fakeWin,fakeDoc,{getBoundingClientRect:()=>({top:700,height:20})}),true,'word outside comfort zone should recenter');
-assert.deepEqual(scrolls[0],{top:610,behavior:'smooth'});
+assert.equal(drawer.centerDomRange(fakeWin,fakeDoc,{getBoundingClientRect:()=>({top:360,height:20})}),true,'follow mode should always recenter the real page highlight');
+assert.deepEqual(scrolls[0],{top:270,behavior:'auto'});
+assert.equal(drawer.centerDomRange(fakeWin,fakeDoc,{getBoundingClientRect:()=>({top:700,height:20})}),true,'off-center highlighted word should recenter');
+assert.deepEqual(scrolls[1],{top:610,behavior:'auto'});
 
 const drawerSource=fs.readFileSync(new URL('../app/tts-drawer.js', import.meta.url),'utf8');
 const longformSource=fs.readFileSync(new URL('../app/longform-tts-adapter.js', import.meta.url),'utf8');
@@ -77,6 +77,7 @@ const greatBookHtml=fs.readFileSync(new URL('../great-book/index.html', import.m
 assert.ok(drawerSource.includes('AbortController'),'drawer must own an AbortController for pending content preparation');
 assert.ok(drawerSource.includes('prepareSection(sectionId,{signal:'),'drawer must pass cancellation into lazy preparation');
 assert.ok(drawerSource.includes('readSettings().voice'),'voice refresh must use the latest persisted voice rather than the mount-time snapshot');
+assert.ok(!drawerSource.includes('scrollIntoView'),'drawer copy must never take over viewport following');
 assert.ok(longformSource.includes('event.followReading'),'long-form highlighting must consume the live follow state from the speech event');
 assert.ok(bibleSource.includes('event.followReading'),'Bible highlighting must consume the live follow state from the speech event');
 assert.ok(longformSource.includes("addEventListener('potato:tts-current'"),'long-form reader must accept scroll-driven current-item updates');

@@ -35,7 +35,7 @@ const scrolls=[];
 const fakeWin={innerHeight:800,scrollY:300,scrollTo:opts=>scrolls.push(opts),matchMedia:()=>({matches:false})};
 const fakeDoc={documentElement:{clientHeight:800}};
 assert.equal(centerDomRange(fakeWin,fakeDoc,{getBoundingClientRect:()=>({top:700,height:20})}),true);
-assert.deepEqual(scrolls[0],{top:610,behavior:'smooth'});
+assert.deepEqual(scrolls[0],{top:610,behavior:'auto'});
 
 const source = fs.readFileSync(new URL('../app/tts-drawer.js', import.meta.url),'utf8');
 assert.ok(source.includes('function playSection(id)'), 'drawer must expose explicit section playback');
@@ -43,7 +43,7 @@ assert.ok(source.includes('playSection,'), 'drawer public API must return playSe
 assert.ok(source.includes("'🔊 Listen'"), 'collapsed shared player should use the Listen label');
 assert.ok(source.includes("button('Follow reading','🎯')"), 'shared player must expose the bullseye follow-reading toggle');
 assert.ok(source.includes("writeSettings({followReading})"), 'follow-reading preference must persist in shared TTS settings');
-assert.ok(source.includes("block:followReading?'center':'nearest'"), 'expanded reader should center the active word only while follow-reading is enabled');
+assert.ok(!source.includes('scrollIntoView'), 'drawer reading copy must never move the page viewport');
 assert.ok(source.includes("persistedFollow()"), 'page highlighter must read the persisted follow-reading preference');
 assert.ok(source.includes('function mountSelectionAction(options={})'), 'drawer must expose shared read-selection UI');
 assert.ok(source.includes("className='ptts-selection-listen'"), 'selection UI must use the shared selection class');
