@@ -41,6 +41,15 @@ TTS_ASSET_MARKERS = (
     "longform-tts-adapter.js",
 )
 
+# These canonical House surfaces were historically built without the semantic
+# data-reader-surface marker even though they are registered public readers.
+# Keep the deployed markup aligned with data/house/public-surfaces.json.
+CANONICAL_READER_SURFACES = {
+    "politics/index.html": "politics",
+    "timeline/index.html": "timeline",
+    "context/source-authority/index.html": "sources",
+}
+
 
 def duplicate_hrefs(fragment: str) -> list[str]:
     counts = Counter(HREF.findall(fragment))
@@ -98,6 +107,16 @@ def main() -> int:
             if '../../religion/' not in text:
                 errors.append(f"{rel} does not link back to its Religion parent hub")
 
+    for rel, surface_id in CANONICAL_READER_SURFACES.items():
+        path = SITE / rel
+        if not path.exists():
+            errors.append(f"missing canonical reader surface: {rel}")
+            continue
+        text = path.read_text(encoding="utf-8", errors="replace")
+        marker = f'data-reader-surface="{surface_id}"'
+        if marker not in text:
+            errors.append(f"{rel} missing canonical reader marker {marker}")
+
     for rel, reader_id in PROJECTED_TTS_PAGES.items():
         path = SITE / rel
         if not path.exists():
@@ -119,7 +138,11 @@ def main() -> int:
             print(f"- {error}")
         return 1
 
-    print(f"PUBLIC NAVIGATION VALIDATION PASSED ({len(pages)} HTML pages checked; {len(PROJECTED_TTS_PAGES)} projected TTS surfaces)")
+    print(
+        f"PUBLIC NAVIGATION VALIDATION PASSED ({len(pages)} HTML pages checked; "
+        f"{len(PROJECTED_TTS_PAGES)} projected TTS surfaces; "
+        f"{len(CANONICAL_READER_SURFACES)} canonical reader IDs)"
+    )
     return 0
 
 
