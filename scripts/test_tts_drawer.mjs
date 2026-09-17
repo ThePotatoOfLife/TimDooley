@@ -31,6 +31,18 @@ assert.equal(typeof drawer.createPageHighlighter, 'function');
 assert.equal(typeof drawer.centerDomRange, 'function');
 assert.deepEqual(drawer.renderFocusedText('alpha beta gamma', {start:6,end:10}), {before:'alpha ',active:'beta',after:' gamma'});
 
+let centeredScroll=null;
+const centeredWin={innerHeight:800,scrollY:200,scrollTo:args=>{centeredScroll=args},matchMedia:()=>({matches:false})};
+const centeredDoc={documentElement:{clientHeight:800}};
+const centeredRange={getBoundingClientRect:()=>({top:700,height:20})};
+assert.equal(drawer.centerDomRange(centeredWin,centeredDoc,centeredRange),true);
+assert.deepEqual(centeredScroll,{top:510,behavior:'smooth'});
+
+let reducedScroll=null;
+const reducedWin={innerHeight:800,scrollY:0,scrollTo:args=>{reducedScroll=args},matchMedia:()=>({matches:true})};
+assert.equal(drawer.centerDomRange(reducedWin,centeredDoc,{getBoundingClientRect:()=>({top:500,height:0})}),true);
+assert.deepEqual(reducedScroll,{top:100,behavior:'auto'});
+
 const source = fs.readFileSync(new URL('../app/tts-drawer.js', import.meta.url),'utf8');
 assert.ok(source.includes('function playSection(id)'), 'drawer must expose explicit section playback');
 assert.ok(source.includes('playSection,'), 'drawer public API must return playSection');
