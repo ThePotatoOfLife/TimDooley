@@ -10,7 +10,8 @@ assert.match(investigation, /function active\(\)/, 'investigation surface must e
 assert.match(investigation, /get current\(\)/, 'investigation surface should expose a stable current snapshot for consumers');
 assert.match(investigation, /isActive/, 'investigation surface should expose active-state query');
 assert.match(investigation, /function closeActive\(/, 'investigation surface should expose one shared close-active operation');
-assert.match(investigation, /event\.key === 'Escape'/, 'Escape should close the active investigation surface centrally');
+assert.match(investigation, /event\.key !== 'Escape'/, 'Escape handler should ignore non-Escape keys');
+assert.match(investigation, /closeActive\('escape'\)/, 'Escape should close the active investigation surface centrally');
 assert.match(investigation, /if \(activeId !== key\) return false;/, 'closing an inactive surface should be idempotent and emit no redundant state change');
 
 assert.match(evidence, /register\('evidence'/, 'Evidence must register with the shared investigation surface');
