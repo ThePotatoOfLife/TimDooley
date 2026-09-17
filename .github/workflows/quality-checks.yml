@@ -287,6 +287,9 @@ jobs:
       - name: Apply public ontology patch
         run: python scripts/patch_public_ontology.py
 
+      - name: Validate public House style ownership
+        run: python scripts/validate_public_house_styles.py
+
       - name: Enrich weak page descriptions
         run: python scripts/enrich_weak_descriptions.py
 
