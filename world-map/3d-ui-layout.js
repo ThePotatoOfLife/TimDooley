@@ -1,3 +1,5 @@
+import { selectVisibleSurfaceIds, surfaceNaturallyVisible } from './3d-ui-layout-policy.js';
+
 // World Map application-surface layout coordinator.
 // Owns placement only; domain modules continue to own content and behavior.
 
@@ -5,7 +7,7 @@ const mapwrap = document.querySelector('.mapwrap');
 const app = document.getElementById('atlasApp');
 const panel = document.getElementById('panel');
 const registrations = new Map();
-const ZONES = new Set(['top','right-inspector','left-status','canvas-control']);
+const ZONES = new Set(['top','right-inspector','left-status','bottom-context','canvas-control']);
 let refreshScheduled = false;
 let refreshing = false;
 
@@ -17,6 +19,9 @@ function ensureStyle() {
     body.atlas-registry-ui .hud,body.atlas-registry-ui .camera{display:none!important}
     #atlasUILeftStatus{position:absolute;left:10px;bottom:10px;z-index:7;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;width:min(300px,calc(100% - 20px));pointer-events:none}
     #atlasUILeftStatus>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin:0!important;max-width:100%;pointer-events:auto}
+    #atlasUILeftStatus>*[data-layout-suppressed="1"]{display:none!important}
+    #atlasUIBottomContext{position:absolute;left:50%;bottom:10px;z-index:8;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;width:min(760px,calc(100% - 360px));max-width:calc(100% - 24px);pointer-events:none}
+    #atlasUIBottomContext>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;max-width:100%;pointer-events:auto}
     #atlasUILeftStatus #atlasWorldContext{width:min(290px,100%)!important}
     #atlasUILeftStatus #atlasTimeState{width:auto!important}
     #atlasUILeftStatus #atlasLensLegend{width:min(340px,100%)!important}
@@ -27,24 +32,28 @@ function ensureStyle() {
     .atlas-axis-inspector-nav button{min-width:0;padding:6px 4px;font-size:9px}
     @media(max-width:900px){
       #atlasUILeftStatus{left:8px;bottom:8px;width:min(250px,calc(100% - 16px));gap:4px}
+      #atlasUIBottomContext{left:8px;right:8px;bottom:8px;transform:none;width:auto;max-width:none;justify-content:flex-start}
       body:has(#atlasWorldBar details[open]) #atlasUILeftStatus{opacity:0;pointer-events:none}
       .panel{top:auto!important;left:8px!important;right:8px!important;bottom:8px!important;width:auto!important;max-height:44vh!important}
+      body:not(.panel-collapsed) #atlasUIBottomContext{bottom:calc(44vh + 16px)}
     }
   `;
   document.head.appendChild(style);
 }
 
-function ensureLeftStatusHost() {
+function ensureHost(id, ariaLabel) {
   if (!mapwrap) return null;
-  let host = document.getElementById('atlasUILeftStatus');
+  let host = document.getElementById(id);
   if (!host) {
     host = document.createElement('aside');
-    host.id = 'atlasUILeftStatus';
-    host.setAttribute('aria-label','Map status');
+    host.id = id;
+    host.setAttribute('aria-label', ariaLabel);
     mapwrap.appendChild(host);
   }
   return host;
 }
+function ensureLeftStatusHost() { return ensureHost('atlasUILeftStatus', 'Map status'); }
+function ensureBottomContextHost() { return ensureHost('atlasUIBottomContext', 'Pinned map context'); }
 
 function resolveElement(value) {
   if (value instanceof Element) return value;
@@ -67,18 +76,8 @@ function scheduleRefresh() {
     refresh();
   });
 }
-
-function register(options) {
-  const node = upsertRegistration(options);
-  scheduleRefresh();
-  return node;
-}
-
-function unregister(id) {
-  registrations.delete(id);
-  scheduleRefresh();
-}
-
+function register(options) { const node = upsertRegistration(options); scheduleRefresh(); return node; }
+function unregister(id) { registrations.delete(id); scheduleRefresh(); }
 function setVisible(id, visible) {
   const row = registrations.get(id);
   if (!row) return false;
@@ -87,19 +86,55 @@ function setVisible(id, visible) {
   scheduleRefresh();
   return true;
 }
-
 function getState() {
-  return [...registrations.values()].map(row => ({ id:row.id, zone:row.zone, priority:row.priority, mode:row.mode, visible:row.visible }));
+  return [...registrations.values()].map(row => ({
+    id:row.id,
+    zone:row.zone,
+    priority:row.priority,
+    mode:row.mode,
+    visible:surfaceNaturallyVisible(row),
+    layoutSuppressed:row.element?.dataset?.layoutSuppressed === '1',
+  }));
 }
 
-function refreshLeftStatus() {
-  const host = ensureLeftStatusHost();
-  if (!host) return;
-  const rows = [...registrations.values()]
-    .filter(row => row.zone === 'left-status' && row.element)
+function zoneRows(zone) {
+  return [...registrations.values()]
+    .filter(row => row.zone === zone && row.element)
     .sort((a,b) => a.priority - b.priority || a.id.localeCompare(b.id));
-  for (const row of rows) if (row.element.parentElement !== host) host.appendChild(row.element);
 }
+function refreshZone(zone, host) {
+  if (!host) return [];
+  const rows = zoneRows(zone);
+  for (const row of rows) if (row.element.parentElement !== host) host.appendChild(row.element);
+  return rows;
+}
+function applyLeftStatusBudget(rows) {
+  const budget = window.__potatoAtlasContextVisibility?.current?.budgets?.statusSurfaces ?? Infinity;
+  const candidates = rows.map(row => ({
+    id:row.id,
+    priority:row.priority,
+    visible:surfaceNaturallyVisible(row),
+  }));
+  const selected = new Set(selectVisibleSurfaceIds(candidates, budget));
+  let suppressed = 0;
+  for (const row of rows) {
+    const naturallyVisible = surfaceNaturallyVisible(row);
+    const suppress = naturallyVisible && !selected.has(row.id);
+    if (suppress) suppressed += 1;
+    if (suppress) row.element.dataset.layoutSuppressed = '1';
+    else delete row.element.dataset.layoutSuppressed;
+  }
+  if (window.__potatoAtlasDiagnostics) {
+    window.__potatoAtlasDiagnostics.statusSurfaceBudget = budget;
+    window.__potatoAtlasDiagnostics.statusSurfacesShown = selected.size;
+    window.__potatoAtlasDiagnostics.statusSurfacesSuppressed = suppressed;
+  }
+}
+function refreshLeftStatus() {
+  const rows = refreshZone('left-status', ensureLeftStatusHost());
+  applyLeftStatusBudget(rows);
+}
+function refreshBottomContext() { refreshZone('bottom-context', ensureBottomContextHost()); }
 
 function adoptKnownSurfaces() {
   const context = document.getElementById('atlasWorldContext');
@@ -113,13 +148,12 @@ function adoptKnownSurfaces() {
   const operatorHud = document.getElementById('axisOperatorHud');
   if (operatorHud && !registrations.has('axis-operator-hud')) upsertRegistration({ id:'axis-operator-hud', zone:'left-status', element:operatorHud, priority:50 });
   if (panel && !registrations.has('main-inspector')) upsertRegistration({ id:'main-inspector', zone:'right-inspector', element:panel, priority:100 });
+  const pinned = document.getElementById('atlasPinnedContextRail');
+  if (pinned && !registrations.has('pinned-context')) upsertRegistration({ id:'pinned-context', zone:'bottom-context', element:pinned, priority:20 });
   const axisToggle = document.getElementById('axisCompactToggle');
   if (axisToggle && !registrations.has('axis-compact')) upsertRegistration({ id:'axis-compact', zone:'canvas-control', element:axisToggle, priority:50 });
   const axisNav = document.getElementById('axisDepthNavigator');
-  if (axisNav) {
-    axisNav.dataset.layoutHosted = '1';
-    axisNav.hidden = true;
-  }
+  if (axisNav) { axisNav.dataset.layoutHosted = '1'; axisNav.hidden = true; }
 }
 
 function appendAxisInspectorNavigator() {
@@ -139,7 +173,6 @@ function appendAxisInspectorNavigator() {
   const actions = panel.querySelector('.actions');
   if (actions) actions.before(nav); else panel.appendChild(nav);
 }
-
 function openAxisInspector() {
   const axis = window.__potatoAxisDepth;
   if (!axis?.setDimension) return;
@@ -149,25 +182,18 @@ function openAxisInspector() {
 }
 
 function refresh() {
-  if (refreshing) {
-    scheduleRefresh();
-    return;
-  }
+  if (refreshing) { scheduleRefresh(); return; }
   refreshing = true;
   try {
     ensureStyle();
     adoptKnownSurfaces();
     refreshLeftStatus();
-    if (window.__potatoAtlasDiagnostics) {
-      window.__potatoAtlasDiagnostics.uiLayoutRefreshes = (window.__potatoAtlasDiagnostics.uiLayoutRefreshes || 0) + 1;
-    }
+    refreshBottomContext();
+    if (window.__potatoAtlasDiagnostics) window.__potatoAtlasDiagnostics.uiLayoutRefreshes = (window.__potatoAtlasDiagnostics.uiLayoutRefreshes || 0) + 1;
     window.dispatchEvent(new CustomEvent('potato-atlas-ui-layout-change', { detail:{ surfaces:getState() } }));
-  } finally {
-    refreshing = false;
-  }
+  } finally { refreshing = false; }
 }
 
-// Capture the legacy Axis compact button before its old "show floating navigator" handler.
 document.addEventListener('click', event => {
   const button = event.target.closest('#axisCompactToggle');
   if (!button) return;
@@ -179,6 +205,8 @@ document.addEventListener('click', event => {
 window.addEventListener('atlas-axis-dimension-change', () => queueMicrotask(appendAxisInspectorNavigator));
 window.addEventListener('potato-atlas-panel-rendered', scheduleRefresh);
 window.addEventListener('potato-atlas-module-ready', scheduleRefresh);
+window.addEventListener('potato-atlas-pinned-context-ready', scheduleRefresh);
+window.addEventListener('potato-atlas-context-visibility-change', scheduleRefresh);
 window.addEventListener('atlas-time-change', scheduleRefresh);
 window.addEventListener('load', scheduleRefresh, { once:true });
 

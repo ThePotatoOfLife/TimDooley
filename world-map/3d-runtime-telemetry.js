@@ -27,10 +27,29 @@ function createRuntimeTelemetry(map, options = {}) {
   const getTooltip = typeof options.getTooltip === 'function'
     ? options.getTooltip
     : () => options.tooltip;
+  const getContextVisibility = typeof options.getContextVisibility === 'function'
+    ? options.getContextVisibility
+    : () => options.contextVisibility;
 
   const listeners = [];
   let sampleCount = 0;
   let current = null;
+
+  function contextSnapshot() {
+    const context = getContextVisibility()?.current || getContextVisibility?.() || null;
+    if (!context) return null;
+    return {
+      scaleBand:context.scaleBand || null,
+      investigation:context.question?.investigation || null,
+      investigationId:context.question?.investigationId || null,
+      relationMode:context.question?.relationMode || 'all',
+      pinCount:Array.isArray(context.pinnedCountries) ? context.pinnedCountries.length : 0,
+      activeCountry:context.activeCountry || null,
+      activeRelations:Number(context.budgets?.activeRelations ?? 0),
+      pinnedRelations:Number(context.budgets?.pinnedRelations ?? 0),
+      totalRelations:Number(context.budgets?.totalRelations ?? 0),
+    };
+  }
 
   function snapshot(reason = 'manual') {
     const style = map.getStyle?.() || {};
@@ -47,6 +66,7 @@ function createRuntimeTelemetry(map, options = {}) {
       interaction:getInteraction()?.diagnostics?.() || null,
       style:getStyleLifecycle()?.state?.() || null,
       tooltip:getTooltip()?.state?.() || null,
+      context:contextSnapshot(),
       sampleCount:++sampleCount,
       reason:String(reason || 'manual'),
     };
@@ -82,6 +102,9 @@ function createRuntimeTelemetry(map, options = {}) {
     bindEvent('potato-atlas-ui-layout-change', 'ui-layout');
     bindEvent('potato-atlas-tooltip-state', 'tooltip-state');
     bindEvent('potato-atlas-interaction-state', 'interaction-state');
+    bindEvent('potato-atlas-context-visibility-change', 'context-visibility');
+    bindEvent('potato-atlas-investigation-change', 'investigation-change');
+    bindEvent('atlas-time-change', 'time-change');
   }
 
   refresh('init');
@@ -95,6 +118,7 @@ if (typeof window !== 'undefined') {
       getInteraction:() => window.__potatoAtlasInteraction,
       getStyleLifecycle:() => window.__potatoAtlasStyleLifecycle,
       getTooltip:() => window.__potatoAtlasTooltip,
+      getContextVisibility:() => window.__potatoAtlasContextVisibility,
     });
   }
 }

@@ -25,6 +25,7 @@ def main() -> int:
 
     module = MODULE.read_text(encoding="utf-8", errors="replace")
     bootstrap = BOOTSTRAP.read_text(encoding="utf-8", errors="replace")
+    test = TEST.read_text(encoding="utf-8", errors="replace")
     for token in (
         "function createRuntimeTelemetry",
         "sourceCount",
@@ -35,15 +36,31 @@ def main() -> int:
         "interaction",
         "style",
         "tooltip",
+        "contextSnapshot",
+        "scaleBand",
+        "investigation",
+        "pinCount",
+        "totalRelations",
         "sampleCount",
         "potato-atlas-module-ready",
         "potato-atlas-style-generation",
         "potato-atlas-ui-layout-change",
         "potato-atlas-tooltip-state",
+        "potato-atlas-context-visibility-change",
+        "potato-atlas-investigation-change",
+        "atlas-time-change",
         "window.__potatoAtlasRuntimeTelemetry",
     ):
         if token not in module:
             errors.append(f"runtime telemetry missing contract marker: {token}")
+    for token in (
+        "runtime telemetry must expose semantic scale context",
+        "runtime telemetry must expose current investigation mode",
+        "runtime telemetry must expose retained-country count",
+        "runtime telemetry must expose relation display budget",
+    ):
+        if token not in test:
+            errors.append(f"runtime telemetry test missing assertion: {token}")
     if "map.on('styledata'" in module or 'map.on("styledata"' in module:
         errors.append("runtime telemetry must consume Style Lifecycle events instead of adding another styledata listener")
     if "loadAfterPaint('Runtime Telemetry', './3d-runtime-telemetry.js')" not in bootstrap:
@@ -66,6 +83,7 @@ def main() -> int:
     print("- Interaction Router registry/dispatch diagnostics")
     print("- Style Lifecycle generation/restore diagnostics")
     print("- live Tooltip generation/invalidation/stale-suppression diagnostics")
+    print("- semantic scale / investigation / pin / relation-budget context")
     print("- refreshes through existing custom lifecycle events only")
     print(f"Errors: {len(errors)}")
     if errors:
