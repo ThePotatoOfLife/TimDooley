@@ -25,6 +25,19 @@ function contextScaleBand(scale, previousBand, zoom) {
   return previousBand || 'world';
 }
 
+function contextInvestigationMode({
+  evidence = false,
+  specialistConnections = false,
+  compare = false,
+  relationFiltered = false,
+} = {}) {
+  if (evidence) return 'evidence';
+  if (specialistConnections) return 'connections';
+  if (compare) return 'compare';
+  if (relationFiltered) return 'connections';
+  return 'browse';
+}
+
 function contextBudgets({ band = 'world', mode = 'browse', pinCount = 0, narrow = false } = {}) {
   const source = BAND_BASE[band] || BAND_BASE.world;
   const base = { ...source, cards:narrow ? 2 : source.cards };
@@ -73,4 +86,4 @@ function contextVisibility({ band = 'world', mode = 'browse' } = {}) {
   };
 }
 
-export { contextScaleBand, contextBudgets, contextVisibility };
+export { contextScaleBand, contextInvestigationMode, contextBudgets, contextVisibility };
