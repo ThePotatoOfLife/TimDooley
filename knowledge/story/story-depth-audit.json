@@ -1,52 +1,225 @@
 {
   "schema_version": 1,
   "enforcement": "migration",
-  "published": {"total": 120, "main": 38, "side": 82},
-  "registry": {"registered": 15, "unregistered": 105},
-  "modes": {"documentary": 10, "literary": 5, "mixed": 0},
-  "depths": {"FRAGMENT": 1, "ANECDOTE": 9, "SCENE": 0, "TRANSCRIPT_DEPTH": 0, "LITERARY_COMPLETE": 5},
+  "published": {
+    "total": 120,
+    "main": 38,
+    "side": 82
+  },
+  "registry": {
+    "registered": 31,
+    "unregistered": 89
+  },
+  "modes": {
+    "documentary": 26,
+    "literary": 5,
+    "mixed": 0
+  },
+  "depths": {
+    "FRAGMENT": 1,
+    "ANECDOTE": 25,
+    "SCENE": 0,
+    "TRANSCRIPT_DEPTH": 0,
+    "LITERARY_COMPLETE": 5
+  },
   "full_story": {
-    "html_total": 29,
+    "html_total": 13,
     "qualified_registered": 5,
     "incorrectly_promoted_registered": [],
     "unregistered_full_story": [
       "april-does-not-begin-in-april-2025",
-      "care-home-walk-2009",
-      "cat-lost-camping-2019",
-      "channel-goes-dark-2017",
-      "copenhagen-it-2008",
-      "cubicle-colorblind-boss-2010",
-      "deep-freezer-2007",
-      "facebook-delete-streaming-2017",
-      "father-cat-2014",
-      "first-guitar-2012",
       "greatbook-begins-2024",
       "identity-corridor-2026-03-08-apr-14",
       "inner-potato-thalamus-2024",
       "jan21-axis-north",
       "march-keeps-moving-2025",
-      "one-dollar-dota-2014",
-      "pavilion-fall-2015",
-      "prison-confessional-2016",
-      "prison-release-suit-2016",
-      "public-confrontation-2017",
       "starchforce-2026-09-14",
-      "story-map-afternoon-2026-09-14",
-      "tree-ordeal-2011",
-      "tunnel-light-2003"
+      "story-map-afternoon-2026-09-14"
     ]
   },
   "unresolved_source_locators": [],
   "recovery_priorities": [
-    {"story_id":"ai-not-ghost-2026-05-27","depth":"ANECDOTE","targets":["Recover the contiguous 27–28 May conversation, including the AI/system responses between Tim's authorship-erasure statements, before restoring full-story status."]},
-    {"story_id":"cube-moon-2023-09-20","depth":"ANECDOTE","targets":["Recover the original 20 September 2023 Cube post, stream, clip or conversation before treating the date as a reconstructed scene."]},
-    {"story_id":"dooley-name-gta-2020","depth":"ANECDOTE","targets":["Recover contemporaneous GTA clips, logs, screenshots or messages establishing the first Tim Dooley name use and approximate date."]},
-    {"story_id":"information-architecture-2026-02-18","depth":"ANECDOTE","targets":["Recover the contiguous 18–19 February conversation around model collapse, muscle memory, Light, Swamp, Beacons, Ghosts and the later engineering push before restoring full-story status."]},
-    {"story_id":"potato-mask-2021","depth":"ANECDOTE","targets":["Recover the first potato-filter appearance, platform/session context and contemporaneous discussion of the avatar as mask or protection."]},
-    {"story_id":"rational-potato-2022","depth":"ANECDOTE","targets":["Recover the first exact Rational Potato use, the people/context around Son identification, and primary AI/music or meditation-session evidence."]},
-    {"story_id":"rationalpotato-potato69-potato-of-life","depth":"ANECDOTE","targets":["Recover first/last visible uses of RationalPotato and Potato69, first visible Potato of Life use, and Twitch/Kick account-history snapshots."]},
-    {"story_id":"spiritual-bank-day-2026-03-02","depth":"ANECDOTE","targets":["Recover the contiguous surrounding conversation turns for 2 March 2026 before considering SCENE or TRANSCRIPT_DEPTH promotion."]},
-    {"story_id":"stardew-before-garden-2020-2022","depth":"ANECDOTE","targets":["Recover contemporaneous game/chat logs or dated references for Stardew Valley, films and the period's economics/growth conversations."]},
-    {"story_id":"stream-on-x-2025-01-23","depth":"FRAGMENT","targets":["Recover the original public post permalink and immediate reply/context if available."]}
+    {
+      "story_id": "ai-not-ghost-2026-05-27",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the contiguous 27–28 May conversation, including the AI/system responses between Tim's authorship-erasure statements, before restoring full-story status."
+      ]
+    },
+    {
+      "story_id": "care-home-walk-2009",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover care-work employment chronology and, if available, contemporaneous witness/clinical documentation for the reported walk; do not infer supernatural causation."
+      ]
+    },
+    {
+      "story_id": "cat-lost-camping-2019",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the camping date and contemporaneous messages/photos/witness material about the cat's disappearance or later fate."
+      ]
+    },
+    {
+      "story_id": "channel-goes-dark-2017",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover archived channel snapshots, subscriber/view evidence and dated shutdown traces before treating the early YouTube closure as a reconstructed scene."
+      ]
+    },
+    {
+      "story_id": "copenhagen-it-2008",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover contemporaneous employment, commute, correspondence or account material for the Copenhagen IT-consultant period and job ending."
+      ]
+    },
+    {
+      "story_id": "cube-moon-2023-09-20",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the original 20 September 2023 Cube post, stream, clip or conversation before treating the date as a reconstructed scene."
+      ]
+    },
+    {
+      "story_id": "cubicle-colorblind-boss-2010",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover school/internship records or same-period messages establishing the graphic-design internship, workplace details and exit."
+      ]
+    },
+    {
+      "story_id": "deep-freezer-2007",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover employment records, dated photographs/messages or same-period material anchoring the meatpacking night-shift period and its duration."
+      ]
+    },
+    {
+      "story_id": "dooley-name-gta-2020",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover contemporaneous GTA clips, logs, screenshots or messages establishing the first Tim Dooley name use and approximate date."
+      ]
+    },
+    {
+      "story_id": "facebook-delete-streaming-2017",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover Facebook account-history evidence and dated streaming traces that establish the deletion/streaming sequence and reported motive."
+      ]
+    },
+    {
+      "story_id": "father-cat-2014",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover contemporaneous material establishing the father-loss/cat-rescue ordering; keep later Father/Gardener interpretation separate from the event clock."
+      ]
+    },
+    {
+      "story_id": "first-guitar-2012",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover dated travel material, photographs, correspondence or other same-period evidence for the Italy/Amsterdam/guitar sequence."
+      ]
+    },
+    {
+      "story_id": "information-architecture-2026-02-18",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the contiguous 18–19 February conversation around model collapse, muscle memory, Light, Swamp, Beacons, Ghosts and the later engineering push before restoring full-story status."
+      ]
+    },
+    {
+      "story_id": "one-dollar-dota-2014",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover a dated Dota match/post/video or other primary trace for the AngryTestie one-dollar game and nearby Photoshop-tutorial activity."
+      ]
+    },
+    {
+      "story_id": "pavilion-fall-2015",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover earliest incident documentation or same-period witness material for the reported pavilion/window fall and outcome."
+      ]
+    },
+    {
+      "story_id": "potato-mask-2021",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the first potato-filter appearance, platform/session context and contemporaneous discussion of the avatar as mask or protection."
+      ]
+    },
+    {
+      "story_id": "prison-confessional-2016",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover contemporaneous prison reading lists, letters, notes or corroborating material for the scripture/listening period; treat other prisoners' disclosures and recognition claims cautiously."
+      ]
+    },
+    {
+      "story_id": "prison-release-suit-2016",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover exact release date, contemporaneous photograph/account and original release wording before reconstructing the suit scene at scene depth."
+      ]
+    },
+    {
+      "story_id": "public-confrontation-2017",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the original 2017 recording/transcript or a near-primary capture before restoring reconstructed dialogue or full-story status."
+      ]
+    },
+    {
+      "story_id": "rational-potato-2022",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the first exact Rational Potato use, the people/context around Son identification, and primary AI/music or meditation-session evidence."
+      ]
+    },
+    {
+      "story_id": "rationalpotato-potato69-potato-of-life",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover first/last visible uses of RationalPotato and Potato69, first visible Potato of Life use, and Twitch/Kick account-history snapshots."
+      ]
+    },
+    {
+      "story_id": "spiritual-bank-day-2026-03-02",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover the contiguous surrounding conversation turns for 2 March 2026 before considering SCENE or TRANSCRIPT_DEPTH promotion."
+      ]
+    },
+    {
+      "story_id": "stardew-before-garden-2020-2022",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover contemporaneous game/chat logs or dated references for Stardew Valley, films and the period's economics/growth conversations."
+      ]
+    },
+    {
+      "story_id": "stream-on-x-2025-01-23",
+      "depth": "FRAGMENT",
+      "targets": [
+        "Recover the original public post permalink and immediate reply/context if available."
+      ]
+    },
+    {
+      "story_id": "tree-ordeal-2011",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover contemporaneous 2011 notes, messages, witness accounts or clinical records that can anchor the reported altered-state chronology and phenomenology without backdating later mythic interpretation."
+      ]
+    },
+    {
+      "story_id": "tunnel-light-2003",
+      "depth": "ANECDOTE",
+      "targets": [
+        "Recover a same-period diary, witness account, medical/incident record or other contemporaneous source for the 2003 collapse/light experience."
+      ]
+    }
   ]
 }
