@@ -34,8 +34,10 @@ test('standalone TTS exposes usable controls without requiring clipboard support
   });
 
   await page.goto('/tools/tts/', { waitUntil: 'domcontentloaded' });
-  await expect(page.locator('#follow')).toBeVisible();
   await expect(page.locator('#play')).toBeVisible();
+  await page.locator('#more').click();
+  await expect(page.locator('#moreMenu')).toBeVisible();
+  await expect(page.getByText('Auto-follow')).toBeVisible();
   await page.locator('#follow').click();
   expect(errors).toEqual([]);
 });
