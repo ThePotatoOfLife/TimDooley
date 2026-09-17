@@ -4,16 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>The Great Book of Potato · Tim Dooley</title>
-  <meta name="description" content="Read The Great Book of Potato in a continuous indexed web edition preserving the book's legacy chapter numbering and source text.">
+  <meta name="description" content="Read and listen to The Great Book of Potato in a continuous indexed web edition preserving the book's legacy chapter numbering and source text.">
   <link rel="canonical" href="https://thepotatooflife.github.io/TimDooley/great-book/">
   <link rel="stylesheet" href="great-book.css">
+  <link rel="stylesheet" href="../app/tts-drawer.css">
 </head>
 <body>
   <main class="longform-shell">
     <header class="longform-hero">
       <div class="section-kicker">Primary text · web edition</div>
       <h1>The Great Book of Potato</h1>
-      <p class="lead">Read the original book as one continuous chapter-by-chapter work. The source text is preserved; the web reader adds navigation, search and deep links without rewriting the book.</p>
+      <p class="lead">Read the original book as one continuous chapter-by-chapter work. The source text is preserved; the web reader adds navigation, search, deep links and read-aloud controls without rewriting the book.</p>
       <div class="longform-meta">
         <span>168 chapter identities</span>
         <span>167 body chapters</span>
@@ -41,6 +42,16 @@
       </div>
     </section>
 
+    <div id="great-book-tts"
+      data-tts-longform
+      data-tts-root="#gb-document"
+      data-tts-id="great-book-reader"
+      data-tts-label="The Great Book of Potato"
+      data-tts-all-label="Loaded book text"
+      data-tts-current-label="Current chapter"
+      data-tts-selection-label="Selection"
+      data-tts-item=".gb-slot[data-loaded='true']"></div>
+
     <div class="gb-toolbar">
       <div class="gb-top-search">
         <label for="gb-search">Search chapter number or title</label>
@@ -65,7 +76,7 @@
     </div>
 
     <footer class="longform-footer">
-      <p><strong>Edition note.</strong> This web reader preserves the chapter-file source edition and its legacy numbering. Structural HTML, navigation, search and loading behavior are editorial; chapter body text remains source text.</p>
+      <p><strong>Edition note.</strong> This web reader preserves the chapter-file source edition and its legacy numbering. Structural HTML, navigation, search, read-aloud controls and loading behavior are editorial; chapter body text remains source text.</p>
       <p><a href="../">Home</a> · <a href="../philosophy/">Philosophy</a> · <a href="../tim-dooley/story/">Story</a> · <a href="../explore/">Explore archive</a></p>
     </footer>
   </main>
@@ -74,5 +85,8 @@
     <p class="caution">This continuous reader uses JavaScript to assemble the chapter files. The individual chapter files remain preserved under <code>great-book/chapters/</code>.</p>
   </noscript>
   <script src="../app/great-book-reader.js" defer></script>
+  <script src="../app/tts-reader.js" defer></script>
+  <script src="../app/tts-drawer.js" defer></script>
+  <script src="../app/longform-tts-adapter.js" defer></script>
 </body>
 </html>
