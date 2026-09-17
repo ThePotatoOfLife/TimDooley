@@ -15,9 +15,17 @@ def main() -> int:
         errors.append("missing world-map/3d-physical-terrain.js")
     else:
         text = TERRAIN.read_text(encoding="utf-8")
-        for token in ("raster-dem", "hillshade", "setTerrain", "tilejson.json", "ensureSources", "countries-fill", "__potatoAtlasTerrain"):
+        for token in ("raster-dem", "hillshade", "setTerrain", "tilejson.json", "ensureSources", "countries-fill", "__potatoAtlasTerrain", "TERRAIN_MAX_SOURCE_ZOOM"):
             if token not in text:
                 errors.append(f"terrain module missing {token}")
+        if text.count("type: 'raster-dem'") != 1:
+            errors.append("terrain and hillshade must share one raster-dem source")
+        if "HILLSHADE_SOURCE" in text:
+            errors.append("terrain module still declares a duplicate hillshade DEM source")
+        if "source: TERRAIN_SOURCE" not in text:
+            errors.append("hillshade does not reuse the terrain DEM source")
+        if "maxzoom: TERRAIN_MAX_SOURCE_ZOOM" not in text:
+            errors.append("terrain DEM source is not capped for lightweight browsing")
         if "atlasTerrainToggle" in text or "installControl" in text:
             errors.append("terrain module still injects a legacy View-menu control")
         if "terrain=1" in text:
