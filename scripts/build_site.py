@@ -16,21 +16,32 @@ from pathlib import Path
 
 from build_world_map_coverage import build_coverage_file
 from build_world_map_runtime import build_runtime_file
+from house_public_surfaces import surface_by_id, surface_by_route
+from house_shell import (
+    relative_href,
+    render_house_bar_for_route,
+    render_house_footer_for_route,
+    render_route_breadcrumbs,
+)
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
-EXCLUDE = {".git", ".github", "_site", "node_modules", "vendor", "__pycache__", "components", "scripts"}
-BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
-DOOR_LABELS = {
-    "tim": "Tim Dooley",
-    "religion": "Religion",
-    "philosophy": "Philosophy",
-    "science": "Science",
-    "world_map": "World Map",
+EXCLUDE = {
+    ".git",
+    ".github",
+    "_site",
+    "node_modules",
+    "vendor",
+    "__pycache__",
+    "components",
+    "scripts",
+    "archive",
 }
+BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
 
 
 def copy_tree() -> None:
+    """Copy deployable source while keeping historical archive presentation private to git."""
     if OUT.exists():
         shutil.rmtree(OUT)
     OUT.mkdir(parents=True)
@@ -66,6 +77,13 @@ def slug(value: str) -> str:
             out.append("-")
             dash = True
     return "".join(out).strip("-") or "item"
+
+
+def route_from_canonical(canonical: str) -> str:
+    if canonical.startswith(BASE_URL):
+        route = canonical[len(BASE_URL):]
+        return route or "/"
+    return "/"
 
 
 def summary_from_record(data: dict, fallback: str = "") -> str:
@@ -112,20 +130,26 @@ def text_blocks(data, depth=0, limit=80):
     return blocks[:limit]
 
 
-def parent_for_branch(branch_id: str, bridge: dict) -> tuple[str, str]:
+def parent_for_branch(branch_id: str, bridge: dict) -> tuple[str, str, str | None]:
+    """Resolve generated branch parentage through House authority, never local Door labels."""
     projection = bridge.get("branch_projection", {}).get(branch_id, {})
     door_id = projection.get("primary_door")
     if door_id:
-        path = bridge.get("public_doors", {}).get(door_id, "explore/")
-        return DOOR_LABELS.get(door_id, door_id.replace("_", " ").title()), path
+        try:
+            row = surface_by_id(ROOT, door_id)
+            return row["title"], row["canonical_route"], row["id"]
+        except ValueError:
+            pass
+
     global_route = projection.get("global_route")
     if global_route:
-        if branch_id == "timeline":
-            return "Timeline", global_route
-        if branch_id == "sources":
-            return "Sources", global_route
-        return "Explore", global_route
-    return "Explore", "explore/"
+        route = global_route if str(global_route).startswith("/") else "/" + str(global_route)
+        row = surface_by_route(ROOT, route)
+        if row:
+            return row["title"], row["canonical_route"], row["id"]
+
+    explore = surface_by_id(ROOT, "explore")
+    return explore["title"], explore["canonical_route"], explore["id"]
 
 
 def record_branch_map(manifest: dict) -> dict[str, str]:
@@ -148,11 +172,29 @@ def page_shell(
     page_type="Article",
     about=None,
     parent_label="Explore",
-    parent_path="explore/",
+    parent_path="/explore/",
+    parent_surface_id: str | None = "explore",
 ) -> str:
+    """Render generated knowledge pages inside the same House as curated readers."""
     desc = " ".join(description.split())[:300]
     about = about or []
-    parent_url = parent_path if str(parent_path).startswith("http") else BASE_URL + "/" + str(parent_path).lstrip("/")
+    route = route_from_canonical(canonical)
+    stylesheet = relative_href(route, "/app/site-system.css")
+    house = render_house_bar_for_route(
+        ROOT,
+        route,
+        active_surface_id=parent_surface_id,
+        data_surface="generated",
+    )
+    breadcrumbs = render_route_breadcrumbs(
+        ROOT,
+        route,
+        title,
+        parent_surface_id=parent_surface_id,
+    )
+    footer = render_house_footer_for_route(ROOT, route, current_surface_id=parent_surface_id)
+    parent_href = relative_href(route, parent_path)
+    machine_href = relative_href(route, "/llms.txt")
     ld = {
         "@context": "https://schema.org",
         "@type": page_type,
@@ -165,11 +207,10 @@ def page_shell(
         "inLanguage": "en",
         "isAccessibleForFree": True,
     }
-    explore_link = "" if parent_url == BASE_URL + "/explore/" else f' · <a href="{esc(BASE_URL + "/explore/")}">Explore archive</a>'
     return f'''<!doctype html>
 <html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>{esc(title)} | The Potato of Life</title><meta name="description" content="{esc(desc)}"><meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"><link rel="canonical" href="{esc(canonical)}"><link rel="describedby" href="{esc(BASE_URL + '/llms.txt')}" type="text/plain"><script type="application/ld+json">{json.dumps(ld, ensure_ascii=False).replace('</', '<\\/')}</script>
-<style>:root{{--bg:#080a08;--ink:#f4f0e5;--muted:#a8ada3;--line:#2b322b;--green:#a8ce72;--gold:#d8b56b}}*{{box-sizing:border-box}}body{{margin:0;background:var(--bg);color:var(--ink);font:16px/1.7 system-ui,sans-serif}}main{{max-width:900px;margin:auto;padding:56px 24px 100px}}a{{color:var(--green)}}header{{border-bottom:1px solid var(--line);padding-bottom:24px;margin-bottom:30px}}h1{{font:400 clamp(42px,7vw,76px)/1 Georgia,serif;margin:8px 0 16px}}h2{{font:400 28px/1.2 Georgia,serif;color:var(--gold);margin-top:34px}}p,li{{color:#d7d9d2}}.eyebrow{{color:var(--green);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}}.summary{{font:20px/1.6 Georgia,serif;color:#e1e3dc}}.chips{{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}}.chip{{border:1px solid var(--line);border-radius:999px;padding:5px 9px;color:#c8cec1;font-size:12px}}nav{{margin-top:28px;padding-top:20px;border-top:1px solid var(--line)}}code{{color:var(--green);overflow-wrap:anywhere}}</style></head><body><main><header><div class="eyebrow">Potato of Life · crawlable knowledge page</div><h1>{esc(title)}</h1><p class="summary">{esc(desc)}</p></header>{body}<nav><a href="{esc(BASE_URL + '/')}">Five doors</a> · <a href="{esc(parent_url)}">{esc(parent_label)}</a>{explore_link} · <a href="{esc(BASE_URL + '/llms.txt')}">Machine index</a></nav></main></body></html>'''
+<title>{esc(title)} | The Potato of Life</title><meta name="description" content="{esc(desc)}"><meta name="robots" content="index,follow,max-snippet:-1,max-image-preview:large"><link rel="canonical" href="{esc(canonical)}"><link rel="describedby" href="{esc(BASE_URL + '/llms.txt')}" type="text/plain"><link rel="stylesheet" href="{esc(stylesheet)}"><script type="application/ld+json">{json.dumps(ld, ensure_ascii=False).replace('</', '<\\/')}</script>
+<style>.generated-page{{max-width:900px;margin:auto;padding:28px 24px 100px}}.generated-page h1{{font:400 clamp(42px,7vw,76px)/1 Georgia,serif;margin:8px 0 16px}}.generated-page h2{{font:400 28px/1.2 Georgia,serif;color:var(--gold,#d8b56b);margin-top:34px}}.generated-page p,.generated-page li{{color:var(--text-soft,#d7d9d2)}}.generated-page__eyebrow{{color:var(--green,#a8ce72);text-transform:uppercase;letter-spacing:.16em;font-size:11px;font-weight:800}}.generated-page__summary{{font:20px/1.6 Georgia,serif;color:var(--text,#e1e3dc)}}.chips{{display:flex;gap:7px;flex-wrap:wrap;margin:18px 0}}.chip{{border:1px solid var(--line,#2b322b);border-radius:999px;padding:5px 9px;color:var(--text-soft,#c8cec1);font-size:12px}}.generated-page__meta{{margin-top:44px;padding-top:20px;border-top:1px solid var(--line,#2b322b)}}code{{color:var(--green,#a8ce72);overflow-wrap:anywhere}}</style></head><body>{house}<main class="generated-page">{breadcrumbs}<header><div class="generated-page__eyebrow">Potato of Life · generated knowledge page</div><h1>{esc(title)}</h1><p class="generated-page__summary">{esc(desc)}</p></header>{body}<nav class="generated-page__meta" aria-label="Generated page context"><a href="{esc(parent_href)}">{esc(parent_label)}</a> · <a href="{esc(machine_href)}">Machine index</a></nav></main>{footer}</body></html>'''
 
 
 def write_page(rel_dir: str, content: str) -> str:
@@ -216,15 +257,16 @@ def generate_branch_pages(manifest, contexts, core_index, bridge):
             body.append("<section><h2>Contextual constellations</h2><ul>" + "".join(f"<li><a href=\"{esc(BASE_URL + '/context/' + slug(c['id']) + '/')}\">{esc(c['title'])}</a> — {esc(c.get('summary', ''))}</li>" for c in related) + "</ul></section>")
         if records:
             body.append("<section><h2>Canonical records</h2><ul>" + "".join(record_link(p, record_id_by_path) for p in records) + "</ul></section>")
-        parent_label, parent_path = parent_for_branch(bid, bridge)
+        parent_label, parent_path, parent_surface_id = parent_for_branch(bid, bridge)
         canonical = f"{BASE_URL}/topics/{slug(bid)}/"
-        urls.append(write_page(f"topics/{slug(bid)}", page_shell(title, desc, canonical, "".join(body), page_type="CollectionPage", about=[title, *children], parent_label=parent_label, parent_path=parent_path)))
+        urls.append(write_page(f"topics/{slug(bid)}", page_shell(title, desc, canonical, "".join(body), page_type="CollectionPage", about=[title, *children], parent_label=parent_label, parent_path=parent_path, parent_surface_id=parent_surface_id)))
     return urls
 
 
 def generate_context_pages(contexts, core_index):
     urls = []
     record_id_by_path = {r.get("path"): r.get("id") for r in core_index.get("records", []) if r.get("path") and r.get("id")}
+    context_surface = surface_by_id(ROOT, "context")
     for c in contexts.get("clusters", []):
         title = c.get("title", c.get("id", "Context"))
         desc = c.get("summary", "")
@@ -239,13 +281,14 @@ def generate_context_pages(contexts, core_index):
         if c.get("records"):
             body.append("<section><h2>Records carrying this context</h2><ul>" + "".join(record_link(p, record_id_by_path) for p in c["records"]) + "</ul></section>")
         canonical = f"{BASE_URL}/context/{slug(c['id'])}/"
-        urls.append(write_page(f"context/{slug(c['id'])}", page_shell(title, desc, canonical, "".join(body), page_type="CollectionPage", about=concepts, parent_label="Explore", parent_path="explore/")))
+        urls.append(write_page(f"context/{slug(c['id'])}", page_shell(title, desc, canonical, "".join(body), page_type="CollectionPage", about=concepts, parent_label=context_surface["title"], parent_path=context_surface["canonical_route"], parent_surface_id=context_surface["id"])))
     return urls
 
 
 def generate_record_pages(core_index, manifest, bridge):
     urls = []
     branch_by_path = record_branch_map(manifest)
+    explore = surface_by_id(ROOT, "explore")
     for rec in core_index.get("records", []):
         path = ROOT / rec.get("path", "")
         if not path.exists() or path.suffix.lower() != ".json":
@@ -260,9 +303,12 @@ def generate_record_pages(core_index, manifest, bridge):
         body += "".join(text_blocks(data))
         body += f"<section><h2>Canonical source record</h2><p><code>{esc(rec.get('path', ''))}</code></p></section>"
         branch_id = branch_by_path.get(rec.get("path", ""))
-        parent_label, parent_path = parent_for_branch(branch_id, bridge) if branch_id else ("Explore", "explore/")
+        if branch_id:
+            parent_label, parent_path, parent_surface_id = parent_for_branch(branch_id, bridge)
+        else:
+            parent_label, parent_path, parent_surface_id = explore["title"], explore["canonical_route"], explore["id"]
         canonical = f"{BASE_URL}/records/{slug(rec['id'])}/"
-        urls.append(write_page(f"records/{slug(rec['id'])}", page_shell(title, desc, canonical, body, about=terms, parent_label=parent_label, parent_path=parent_path)))
+        urls.append(write_page(f"records/{slug(rec['id'])}", page_shell(title, desc, canonical, body, about=terms, parent_label=parent_label, parent_path=parent_path, parent_surface_id=parent_surface_id)))
     return urls
 
 
@@ -312,6 +358,8 @@ def build() -> None:
     missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
     if missing:
         raise SystemExit(f"Required manifest-driven archive files are missing from _site: {missing}")
+    if (OUT / "archive").exists():
+        raise SystemExit("Historical archive leaked into _site; archive must remain repository-only")
     patch_entity_metadata()
     manifest = load_json(ROOT / "manifest.json", {}) or {}
     core_index = load_json(ROOT / "knowledge" / "indexes" / "core-index.json", {}) or {}
@@ -328,7 +376,7 @@ def build() -> None:
         raise SystemExit("No HTML pages were built into _site")
     metric_coverage = {key: value.get("coverage", 0) for key, value in build_world_map_runtime.get("metrics", {}).items()}
     coverage_entities = len(build_world_map_coverage.get("entities", {}))
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, five-door-aware generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete repository knowledge/data tree.")
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, House-authority generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete deployable repository knowledge/data tree.")
 
 
 if __name__ == "__main__":
