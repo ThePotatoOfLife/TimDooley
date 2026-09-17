@@ -2,7 +2,6 @@ import assert from 'node:assert/strict';
 import fs from 'node:fs';
 import drawer from '../app/tts-drawer.js';
 
-// Great Book loading gets a small testable state machine rather than living only in page glue.
 const loaderUrl = new URL('../app/great-book-loader.js', import.meta.url);
 assert.ok(fs.existsSync(loaderUrl), 'Great Book needs a reusable/testable chapter loader');
 const loaderModule = await import(loaderUrl);
@@ -11,7 +10,6 @@ assert.equal(typeof loaderApi.createChapterLoader, 'function', 'chapter loader f
 
 const makeSlot = (id, path=id) => ({id,dataset:{loaded:'false',path},innerHTML:'placeholder'});
 
-// A failed chapter must leave the cache so a second attempt can genuinely retry.
 let retryAttempts = 0;
 const retryLoader = loaderApi.createChapterLoader({
   fetchImpl: async () => {
@@ -28,7 +26,6 @@ assert.equal(retryAttempts,2,'failed chapter should issue a fresh request on ret
 assert.equal(retrySlot.dataset.loaded,'true');
 assert.equal(retrySlot.innerHTML,'<p>recovered</p>');
 
-// Whole-book preload must be bounded instead of firing every request simultaneously.
 let active = 0;
 let maxActive = 0;
 const boundedLoader = loaderApi.createChapterLoader({
@@ -46,7 +43,6 @@ assert.equal(boundedResult.failed.length,0);
 assert.equal(boundedResult.loaded.length,7);
 assert.ok(maxActive<=2,`preload exceeded concurrency limit: ${maxActive}`);
 
-// Stop/collapse must be able to abort pending preload and prevent the queue from starting everything.
 let started = 0;
 const abortLoader = loaderApi.createChapterLoader({
   fetchImpl: (path,{signal}={}) => new Promise((resolve,reject)=>{
@@ -64,7 +60,6 @@ setTimeout(()=>abortController.abort(),10);
 await assert.rejects(abortPromise,error=>error?.name==='AbortError');
 assert.ok(started<6,`abort should stop queueing new chapters, but started ${started}`);
 
-// Follow-reading should have a comfort zone so it does not restart smooth scrolling every word.
 const scrolls=[];
 const fakeWin={innerHeight:800,scrollY:300,scrollTo:opts=>scrolls.push(opts),matchMedia:()=>({matches:false})};
 const fakeDoc={documentElement:{clientHeight:800}};
@@ -88,6 +83,6 @@ assert.ok(longformSource.includes("addEventListener('potato:tts-current'"),'long
 assert.ok(greatBookSource.includes("new CustomEvent('potato:tts-current'"),'Great Book must publish the chapter that becomes active while scrolling');
 assert.ok(greatBookSource.includes('detail.signal'),'Great Book preload must honor TTS cancellation');
 assert.ok(greatBookSource.includes('failed.length'),'Great Book must distinguish partial load failure from ready state');
-assert.ok(greatBookHtml.includes('data-tts-exclude=".gb-placeholder,.caution"'),'placeholder/error prose must never become spoken book content');
+assert.ok(greatBookHtml.includes('data-tts-exclude=".gb-placeholder,.gb-load-error"'),'placeholder/error prose must never become spoken book content');
 
 console.log('tts reader polish interaction contract: ok');
