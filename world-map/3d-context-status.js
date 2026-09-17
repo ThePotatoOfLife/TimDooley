@@ -24,7 +24,7 @@ let renderGeneration = 0;
 let renderScheduled = false;
 let lastHoverKey = null;
 
-const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot',"'":'&#39;'}[ch]));
+const esc = value => String(value ?? '').replace(/[&<>"']/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
 
 function ensureNode() {
   if (node) return node;
