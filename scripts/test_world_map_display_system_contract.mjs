@@ -17,6 +17,9 @@ const pins = read('world-map/3d-pinned-context.js');
 const pulse = read('world-map/3d-country-pulse.js');
 const panel = read('world-map/3d-panel-lifecycle.js');
 const bootstrap = read('world-map/3d-bootstrap.js');
+const gateways = read('world-map/3d-gateways.js');
+const infrastructure = read('world-map/3d-infrastructure.js');
+const chains = read('world-map/3d-chain-explorer.js');
 
 for (const token of [
   '__potatoAtlasCountryPresentation',
@@ -47,10 +50,15 @@ assert.ok(worldBar.includes('select a country'), 'relationship context without a
 for (const tab of ['overview','context','connections']) {
   assert.ok(card.includes(`data-country-tab="${tab}"`), `Country Card missing ${tab} tab`);
 }
-for (const token of ['atlas-country-current-answer','atlas-country-tab-panel','__potatoAtlasCountryPresentation','Population']) {
+for (const token of ['atlas-country-current-answer','atlas-country-tab-panel','__potatoAtlasCountryPresentation','Population','data-country-context-enrichments']) {
   assert.ok(card.includes(token), `Country Card missing ${token}`);
 }
 assert.ok(!/>\s*Pinned comparison\s*</i.test(card), 'Country Card must not render a duplicate pinned-comparison section');
+for (const [owner, source] of [['System Intelligence', gateways], ['Infrastructure', infrastructure]]) {
+  assert.ok(source.includes("querySelector('[data-country-context-enrichments]')"), `${owner} must inject into the Country Card Context tab enrichment host`);
+  assert.ok(!source.includes("actions.before(section)"), `${owner} must not append specialist context outside the tab system`);
+}
+assert.ok(chains.includes("[data-country-panel=\"context\"]"), 'Functional Chains must scope Country Card tag upgrades to the Context tab');
 
 assert.ok(pins.includes('__potatoAtlasCountryPresentation'), 'pins must consume shared Country Presentation');
 assert.ok(!pins.includes('function populationObservation'), 'pins must not own a second population resolver');
