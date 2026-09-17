@@ -64,6 +64,9 @@ jobs:
       - name: Relation budget idempotence
         run: node scripts/test_world_map_relation_budget_contract.mjs
 
+      - name: Compare state bridge
+        run: node scripts/test_world_map_compare_state_bridge.mjs
+
       - name: Runtime telemetry validation
         run: python scripts/validate_world_map_runtime_telemetry.py
 
