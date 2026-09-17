@@ -32,7 +32,12 @@ function unregister(id) {
 function open(id) {
   const key = String(id || '').trim();
   if (!key) return false;
-  if (activeId && activeId !== key) handlers.get(activeId)?.close?.({ coordinated:true });
+  if (activeId === key) return true;
+  const previous = activeId;
+  if (previous) {
+    activeId = null;
+    handlers.get(previous)?.close?.({ coordinated:true, reason:'replaced' });
+  }
   activeId = key;
   publish('opened');
   return true;
@@ -41,7 +46,8 @@ function open(id) {
 function close(id) {
   const key = String(id || '').trim();
   if (!key) return false;
-  if (activeId === key) activeId = null;
+  if (activeId !== key) return false;
+  activeId = null;
   publish('closed');
   return true;
 }
@@ -49,8 +55,8 @@ function close(id) {
 function closeActive(reason = 'closed-active') {
   if (!activeId) return false;
   const key = activeId;
+  activeId = null;
   handlers.get(key)?.close?.({ coordinated:true, reason });
-  if (activeId === key) activeId = null;
   publish(reason);
   return true;
 }
