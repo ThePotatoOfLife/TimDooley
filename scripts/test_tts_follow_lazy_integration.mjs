@@ -17,7 +17,7 @@ const win = {innerHeight:800,scrollY:200,scrollTo:args=>{scrolled=args},matchMed
 const doc = {documentElement:{clientHeight:800}};
 const range = {getBoundingClientRect:()=>({top:700,height:20})};
 assert.equal(drawer.centerDomRange(win,doc,range), true);
-assert.deepEqual(scrolled, {top:510,behavior:'smooth'});
+assert.deepEqual(scrolled, {top:510,behavior:'auto'});
 
 const source = fs.readFileSync(new URL('../app/tts-drawer.js', import.meta.url), 'utf8');
 assert.ok(source.includes("const follow=button('Follow reading','🎯')")||source.includes("follow=button('Follow reading','🎯')"), 'shared TTS drawer must contain the bullseye toggle');
@@ -27,7 +27,7 @@ assert.ok(source.includes("status.textContent=!speechOk?'speech unavailable':pre
 assert.ok(source.includes('prepareSection=typeof options.prepareSection'), 'drawer must retain async preparation support');
 assert.ok(source.includes('await prepareSection(sectionId,{signal:'), 'speech must wait for cancellable lazy content preparation before starting');
 assert.ok(source.includes("typeof follow==='boolean'?follow:persistedFollow()"), 'page highlighting must honor explicit live follow state with persisted fallback');
-assert.ok(source.includes("block:followReading?'center':'nearest'"), 'expanded reader must center the active word only when follow is enabled');
+assert.ok(!source.includes('scrollIntoView'), 'drawer copy must not compete with the real page highlight for scrolling');
 
 const css = fs.readFileSync(new URL('../app/tts-drawer.css', import.meta.url), 'utf8');
 assert.ok(css.includes('.ptts-button[aria-pressed="true"]'), 'active bullseye state needs visible styling');
