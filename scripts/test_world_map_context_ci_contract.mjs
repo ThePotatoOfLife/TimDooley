@@ -14,6 +14,7 @@ for (const command of [
   'node scripts/test_world_map_pinned_context_contract.mjs',
   'node scripts/test_world_map_context_status.mjs',
   'node scripts/test_world_map_display_system_contract.mjs',
+  'node scripts/test_world_map_inspector_visibility.mjs',
   'node scripts/test_world_map_reset_context_contract.mjs',
   'node scripts/test_world_map_search_selection_contract.mjs',
   'node scripts/test_world_map_relation_budget_contract.mjs',
