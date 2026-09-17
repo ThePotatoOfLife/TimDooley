@@ -399,7 +399,7 @@
     });
 
     updateScope();updateFollowButton();updateButtons();
-    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>{cancelPendingStart();engine?.stop()},isFollowing:()=>followReading,engine};
+    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>{cancelPendingStart();engine?.stop();setState('closed')},stop:()=>{cancelPendingStart();engine?.stop()},isFollowing:()=>followReading,engine};
   }
 
   return {normalizePayload,resolveSection,buildReadingText,playbackPayloadChanged,renderFocusedText,buildNormalizedTextMap,centerDomRange,createPageHighlighter,mountSelectionAction,mount};
