@@ -28,6 +28,23 @@ body {
   font-family: var(--site-font-sans);
   font-size: 16px;
   line-height: 1.64;
+  overflow-wrap: anywhere;
+}
+
+img,
+video,
+svg,
+canvas {
+  max-width: 100%;
+}
+
+pre,
+table {
+  max-width: 100%;
+}
+
+pre {
+  overflow-x: auto;
 }
 
 a {
@@ -47,6 +64,7 @@ textarea:focus-visible,
 
 .page {
   width: min(100%, calc(var(--site-content-standard) + (2 * var(--site-gutter))));
+  min-width: 0;
   margin-inline: auto;
   padding: 38px var(--site-gutter) 100px;
 }
@@ -125,6 +143,13 @@ textarea:focus-visible,
   .page {
     padding-top: 30px;
     padding-bottom: 76px;
+    padding-left: max(var(--site-gutter), env(safe-area-inset-left));
+    padding-right: max(var(--site-gutter), env(safe-area-inset-right));
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
   }
 
   .page-nav {

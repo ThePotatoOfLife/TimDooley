@@ -40,8 +40,13 @@ function publishCurrent(slot){
   doc.dispatchEvent(new CustomEvent('potato:tts-current',{bubbles:false,detail:{item:slot}}));
 }
 function observe(){
+  const slots=[...doc.querySelectorAll('.gb-slot')];
+  if(typeof IntersectionObserver!=='function'){
+    slots.forEach(s=>loadSlot(s).catch(()=>{}));
+    return;
+  }
   const lazy=new IntersectionObserver(xs=>xs.forEach(x=>{if(x.isIntersecting)loadSlot(x.target).catch(()=>{})}),{rootMargin:'900px 0px'}),active=new IntersectionObserver(xs=>xs.forEach(x=>{if(!x.isIntersecting)return;activeCurrentId=x.target.id;toc.querySelectorAll('a').forEach(a=>a.setAttribute('aria-current',String(a.hash==='#'+x.target.id)));publishCurrent(x.target)}),{rootMargin:'-20% 0px -70%'});
-  doc.querySelectorAll('.gb-slot').forEach(s=>{lazy.observe(s);active.observe(s)});
+  slots.forEach(s=>{lazy.observe(s);active.observe(s)});
 }
 async function init(){
   const spec=await fetch('../great-book/book-index.json').then(r=>{if(!r.ok)throw new Error(`book-index.json ${r.status}`);return r.json()}),parts=await Promise.all(spec.shards.map(p=>fetch(p).then(r=>{if(!r.ok)throw new Error(`${p} ${r.status}`);return r.json()})));
