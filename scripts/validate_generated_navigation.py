@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate that generated knowledge pages return readers through the shared House."""
+"""Validate that generated and curated public pages return readers through the shared House."""
 
 from __future__ import annotations
 
@@ -20,6 +20,15 @@ REPRESENTATIVE_BRANCHES = {
     "traditions": "religion",
     "science": "science",
     "world": "world",
+}
+
+CURATED_HOUSE_REPRESENTATIVES = {
+    "tim-dooley/index.html": "tim",
+    "religion/index.html": "religion",
+    "philosophy/index.html": "philosophy",
+    "science/index.html": "science",
+    "world/index.html": "world",
+    "rooms/index.html": "rooms",
 }
 
 
@@ -43,6 +52,22 @@ def main() -> int:
             print("Generated navigation validation FAILED")
             print(" - build_site.py failed")
             return 1
+
+        for rel, surface_id in CURATED_HOUSE_REPRESENTATIVES.items():
+            page = OUT / rel
+            if not page.exists():
+                errors.append(f"missing curated House representative: {rel}")
+                continue
+            text = page.read_text(encoding="utf-8", errors="replace")
+            if 'class="site-housebar' not in text:
+                errors.append(f"{rel} missing projected shared House bar")
+            if 'class="site-breadcrumbs' not in text:
+                errors.append(f"{rel} missing projected House breadcrumb")
+            if 'class="page-nav"' in text:
+                errors.append(f"{rel} still contains duplicate authored page-nav after House projection")
+            surface = surface_by_id(ROOT, surface_id)
+            if f'data-house-surface="{surface["id"]}"' not in text:
+                errors.append(f"{rel} House projection does not identify surface {surface_id}")
 
         for branch_id, parent_surface_id in REPRESENTATIVE_BRANCHES.items():
             page = OUT / "topics" / branch_id / "index.html"
@@ -103,7 +128,7 @@ def main() -> int:
                 print(f" - {error}")
             return 1
 
-        print("Generated navigation validation passed: topic, record and context pages use House-resolved parents and shared orientation.")
+        print("Generated navigation validation passed: curated gateways plus topic, record and context pages use shared House orientation.")
         return 0
     finally:
         if OUT.exists():
