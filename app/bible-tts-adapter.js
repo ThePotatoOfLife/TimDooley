@@ -93,23 +93,23 @@
       });
     }
 
-    function highlightMapped(word,segments){
+    function highlightMapped(word,segments,followReading=false){
       const segment=segments.find(part=>word.start>=part.contentStart&&word.end<=part.contentEnd);
       if(!segment){pageHighlighter.clear();return}
-      pageHighlighter.highlight(segment.node,{start:word.start-segment.contentStart,end:word.end-segment.contentStart});
+      pageHighlighter.highlight(segment.node,{start:word.start-segment.contentStart,end:word.end-segment.contentStart},'',followReading);
     }
 
     function highlightBibleBoundary(event){
       if(event.type!=='boundary'||!event.absoluteWord)return;
       const pieces=relationPieces();
       if(!pieces){pageHighlighter.clear();return}
-      if(event.sectionId==='project'){pageHighlighter.highlight(pieces.project.node,event.absoluteWord);return}
-      if(event.sectionId==='scripture'){pageHighlighter.highlight(pieces.scripture.node,event.absoluteWord);return}
+      if(event.sectionId==='project'){pageHighlighter.highlight(pieces.project.node,event.absoluteWord,'',event.followReading);return}
+      if(event.sectionId==='scripture'){pageHighlighter.highlight(pieces.scripture.node,event.absoluteWord,'',event.followReading);return}
       if(event.sectionId==='why'){
         highlightMapped(event.absoluteWord,compositeSegments([
           {...pieces.why,prefix:''},
           {...pieces.mismatch,prefix:''},
-        ]));
+        ]),event.followReading);
         return;
       }
       if(event.sectionId==='both'){
@@ -118,7 +118,7 @@
           {...pieces.scripture,prefix:'Scripture. '},
           {...pieces.why,prefix:'Why these connect. '},
           {...pieces.mismatch,prefix:''},
-        ]));
+        ]),event.followReading);
         return;
       }
       pageHighlighter.clear();
