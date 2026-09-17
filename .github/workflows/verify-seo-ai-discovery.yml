@@ -13,5 +13,8 @@ jobs:
       - uses: actions/setup-python@v6
         with:
           python-version: '3.x'
-      - name: Run SEO 2026 contract
-        run: python scripts/validate_seo_2026_contract.py
+      - name: Run focused SEO and discovery validators
+        run: |
+          python scripts/validate_seo_2026_contract.py
+          python scripts/validate_seo_pipeline.py
+          python scripts/validate_discovery_projection.py
