@@ -1,6 +1,6 @@
 {
-  "schema_version": "1.5.0",
-  "updated": "2026-09-15",
+  "schema_version": "1.5.1",
+  "updated": "2026-09-17",
   "family": "physical-world",
   "principles": [
     "Dense global physical data loads on demand through tiles or provider services.",
@@ -22,10 +22,10 @@
         "version": "live TileJSON endpoint",
         "attribution": "Terrain © Mapterhorn"
       },
-      "default_opacity": 0.55,
+      "default_opacity": 0.5,
       "min_zoom": 0,
-      "max_zoom": 14,
-      "status_note": "Elevation and hillshade load only after explicit activation. Provider failure is nonfatal."
+      "max_zoom": 12,
+      "status_note": "Elevation and hillshade share one capped DEM source and load only after explicit activation. Provider failure is nonfatal."
     },
     {
       "id": "physical.water.base",
