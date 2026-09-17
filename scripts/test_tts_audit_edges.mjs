@@ -1,5 +1,6 @@
 import assert from 'node:assert/strict';
 import fs from 'node:fs';
+import drawer from '../app/tts-drawer.js';
 import longform from '../app/longform-tts-adapter.js';
 
 // Passive viewport changes must not retarget the item while its "current" text
@@ -17,6 +18,19 @@ assert.equal(guard.offer(c),false,'latest passive current should replace older p
 assert.deepEqual(applied,[a],'speaking target must remain stable');
 guard.setActive(false);
 assert.deepEqual(applied,[a,c],'latest deferred current should apply once playback releases the lock');
+
+// If live page content changes while the engine is reading an older snapshot,
+// word offsets are no longer trustworthy. The active playback must be stopped
+// rather than allowing old speech boundaries to point at new text.
+assert.equal(typeof drawer.playbackPayloadChanged,'function','drawer needs a testable payload-drift guard');
+const before={id:'page',sections:[{id:'all',label:'All',text:'alpha beta'},{id:'current',label:'Current',text:'alpha'}]};
+const same={id:'page',sections:[{id:'all',label:'All',text:'alpha beta'},{id:'current',label:'Current',text:'alpha'}]};
+const changedCurrent={id:'page',sections:[{id:'all',label:'All',text:'alpha beta'},{id:'current',label:'Current',text:'gamma'}]};
+const changedOther={id:'page',sections:[{id:'all',label:'All',text:'alpha beta changed'},{id:'current',label:'Current',text:'alpha'}]};
+assert.equal(drawer.playbackPayloadChanged(before,same,'current'),false);
+assert.equal(drawer.playbackPayloadChanged(before,changedCurrent,'current'),true,'active section text mutation must invalidate playback');
+assert.equal(drawer.playbackPayloadChanged(before,changedOther,'current'),false,'unrelated section mutation should not interrupt current playback');
+assert.equal(drawer.playbackPayloadChanged(before,{...same,id:'other'},'current'),true,'payload identity change must invalidate playback');
 
 const drawerSource=fs.readFileSync(new URL('../app/tts-drawer.js',import.meta.url),'utf8');
 const longformSource=fs.readFileSync(new URL('../app/longform-tts-adapter.js',import.meta.url),'utf8');
