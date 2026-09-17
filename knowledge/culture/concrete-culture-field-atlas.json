@@ -1,0 +1,425 @@
+{
+  "id": "concrete-culture-field-atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-17",
+  "purpose": "Evidence-backed concrete cases that make Culture-page mechanisms inspectable while preserving category, legal-status, provenance and privacy boundaries.",
+  "formations": [
+    {
+      "id": "loyal-to-familia",
+      "name": "Loyal to Familia (LTF)",
+      "formation_types": ["gang_or_criminal_group"],
+      "description": "A Danish formation used here to show that social association, police classification, dated conflict relations and court-established dissolution are separate analytical layers.",
+      "places": ["Denmark"],
+      "period": "2013-2021 legal dissolution; conflict history appears in later police reporting",
+      "status": "dissolved_by_court",
+      "legal_status": {
+        "status": "dissolved_by_court",
+        "date": "2021",
+        "note": "The Danish Supreme Court upheld dissolution; this does not assign identical conduct to every person ever associated with LTF."
+      },
+      "uncertainties": ["The atlas does not infer individual guilt from organizational association."],
+      "source_refs": ["dk-police-rocker-gang-2025", "dk-supreme-court-ltf-2021"]
+    },
+    {
+      "id": "danish-rocker-gang-conflict-field",
+      "name": "Danish rocker/gang conflict field",
+      "formation_types": ["institution"],
+      "description": "An analytical field built from Danish Police reporting on named conflict pairs and aggregate environment statistics. It is not itself a single organization.",
+      "places": ["Denmark"],
+      "period": "2025 reporting year",
+      "status": "analytical_field",
+      "uncertainties": ["Aggregate environment statistics are not attributed to each named group or every associated person."],
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "otf-grimm-violence-as-a-service",
+      "name": "OTF GRIMM / Violence-as-a-Service",
+      "formation_types": ["criminal_network"],
+      "description": "Europol operational framework for violence-as-a-service, used here to model a distributed service chain rather than a culturally homogeneous group.",
+      "places": ["Europe", "Denmark", "Sweden"],
+      "period": "2025-2026",
+      "status": "ongoing_law_enforcement_framework",
+      "structure": ["instigator", "recruiter", "enabler", "perpetrator"],
+      "recruitment_channels": ["encrypted messaging", "social platforms", "gaming/chat platforms"],
+      "legal_status": {
+        "status": "investigated",
+        "note": "OTF GRIMM coordinates investigations; operational reporting includes suspicions and arrests, not universal convictions."
+      },
+      "source_refs": ["europol-vaas-chain-2025", "europol-grimm-operation-2026", "europol-denmark-sweden-vaas-2025"]
+    },
+    {
+      "id": "nxivm",
+      "name": "NXIVM",
+      "formation_types": ["high_control_formation", "company"],
+      "description": "A self-described personal-development organization used here as a court-grounded high-control case because federal convictions established racketeering and sex-trafficking offenses tied to its leadership and nested structures.",
+      "places": ["United States"],
+      "period": "1998-2018 organizational period; convictions/sentencing 2019-2020",
+      "status": "historical_case",
+      "self_description": "Personal-development / executive-success organization.",
+      "high_control_features": ["concentrated charismatic authority", "collateral mechanisms", "secret nested structure", "dependency and coercive leverage described in court proceedings"],
+      "legal_status": {
+        "status": "convicted",
+        "note": "Keith Raniere was convicted in 2019 and sentenced in 2020; other participants must be described according to their own legal records."
+      },
+      "source_refs": ["doj-nxivm-raniere-2020"]
+    },
+    {
+      "id": "kiwi-farms",
+      "name": "Kiwi Farms",
+      "formation_types": ["online_forum", "anti_fandom"],
+      "description": "An adversarial online forum/archive ecology used to distinguish forum infrastructure, user activity, target communities and provider decisions from one another.",
+      "places": ["online"],
+      "period": "2013-present public history; 2022 infrastructure crisis used here",
+      "status": "active_or_migratory_online_formation",
+      "platforms": ["web forum", "third-party infrastructure providers"],
+      "uncertainties": ["Forum repetition is not treated as factual corroboration about targets.", "The atlas does not infer a single motive or command structure for all users."],
+      "source_refs": ["cloudflare-kiwifarms-2022"]
+    },
+    {
+      "id": "online-snark-communities",
+      "name": "Online snark communities",
+      "formation_types": ["anti_fandom", "subculture"],
+      "description": "A general scholarly case for recurring commentary communities that can develop vernacular, rules, sanctions, collective identity and informal knowledge hierarchies.",
+      "places": ["online"],
+      "period": "contemporary digital culture",
+      "status": "general_formation_class",
+      "structure": ["informal governance", "vernacular", "status and knowledge hierarchies"],
+      "uncertainties": ["The cited study covers two celebrity-snark spaces and should not be generalized to every anti-fandom community."],
+      "source_refs": ["sage-snarking-tiny-publics-2026"]
+    },
+    {
+      "id": "hip-hop",
+      "name": "Hip-hop",
+      "formation_types": ["scene", "subculture", "mainstream_culture", "canonical_culture"],
+      "description": "A non-criminal cultural pathway showing how local scenes and practices can become mass culture and later enter museum, anthology and preservation institutions.",
+      "places": ["Bronx, New York", "United States", "global"],
+      "period": "1970s-present",
+      "status": "living_global_culture",
+      "source_refs": ["smithsonian-hiphop-anthology-2021", "smithsonian-hiphop-release-2021"]
+    },
+    {
+      "id": "medecins-sans-frontieres",
+      "name": "Médecins Sans Frontières (MSF)",
+      "formation_types": ["ngo", "charity"],
+      "description": "Humanitarian organization included to make lawful NGO funding architecture concrete without implying donor control from funding share alone.",
+      "places": ["international"],
+      "period": "2025 financial year",
+      "status": "active",
+      "funding_model": "MSF reports more than EUR 2.6 billion in 2025 revenue and 98% of operating income from private sources, with more than 7.5 million private donors/foundations.",
+      "uncertainties": ["Funding source mix does not by itself establish control over specific operational decisions."],
+      "source_refs": ["msf-2025-figures"]
+    },
+    {
+      "id": "icrc",
+      "name": "International Committee of the Red Cross (ICRC)",
+      "formation_types": ["ngo", "institution"],
+      "description": "Humanitarian organization included as a contrasting lawful funding architecture with a much larger governmental/public donor share.",
+      "places": ["international"],
+      "period": "2025 financial year",
+      "status": "active",
+      "funding_model": "ICRC reports around CHF 1.76 billion in donor contributions for 2025, with 84% from governments and the European Commission in its published source mix.",
+      "uncertainties": ["Funding source mix does not by itself establish donor control over specific operational decisions."],
+      "source_refs": ["icrc-annual-report-2025"]
+    }
+  ],
+  "human_cases": [
+    {
+      "id": "ghyslain-raza-star-wars-kid",
+      "display_name": "Ghyslain Raza",
+      "public_basis": "Raza deliberately participated in a National Film Board of Canada documentary reconstructing the story and its digital afterlife.",
+      "case_type": "viral_subject",
+      "summary": "A person-behind-the-label case showing how a private recording can be published by others, detached from its maker, repeated as a viral role, archived for years and later publicly recontextualized by the person involved.",
+      "timeline": [
+        {"period": "2003", "event": "A private school recording was published online by other students and became widely remixed and circulated."},
+        {"period": "2003 onward", "event": "The public label and remix culture became more persistent than the original private context."},
+        {"period": "2022", "event": "Raza participated in the NFB documentary Star Wars Kid: The Rise of the Digital Shadows, adding his own later account and reclamation context."}
+      ],
+      "network_path": ["private recording", "publication by others", "viral circulation", "public label", "remix/archive persistence", "long digital identity", "later documentary participation and reclamation"],
+      "public_label_or_role": "Star Wars Kid - treated here as an audience-created public label, not an intrinsic type of person.",
+      "reply_or_reclamation": "Later public participation in the documentary places the person back inside the story rather than leaving the inherited label as the only frame.",
+      "privacy_notes": "No humiliating clip, private address, private contact information, incidental family details, diagnosis or other sensitive dossier material is reproduced.",
+      "source_refs": ["nfb-star-wars-kid-2022", "nfb-star-wars-kid-lesson-2022"]
+    }
+  ],
+  "events": [
+    {
+      "id": "ltf-supreme-court-dissolution-2021",
+      "event_type": "court_dissolution",
+      "date_or_period": "2021",
+      "places": ["Denmark"],
+      "participants": ["loyal-to-familia", "Danish Supreme Court"],
+      "description": "The Danish Supreme Court upheld dissolution of Loyal to Familia. The legal finding concerns the organization/association and does not establish identical conduct by every associated person.",
+      "evidence_status": "court_established",
+      "legal_status": "dissolved_by_court",
+      "source_refs": ["dk-supreme-court-ltf-2021"]
+    },
+    {
+      "id": "danish-rocker-gang-2025-aggregate",
+      "event_type": "official_environment_report",
+      "date_or_period": "2025",
+      "places": ["Denmark"],
+      "participants": ["danish-rocker-gang-conflict-field"],
+      "description": "Danish Police published aggregate 2025 rocker/gang-environment statistics alongside named conflict reporting. The atlas keeps those aggregate figures at environment level rather than assigning them to every named group.",
+      "evidence_status": "official_record",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "cloudflare-blocks-kiwi-farms-2022",
+      "event_type": "platform_block",
+      "date_or_period": "2022-09-03",
+      "places": ["online"],
+      "participants": ["Cloudflare", "kiwi-farms"],
+      "description": "Cloudflare blocked Kiwi Farms from its services and published its own emergency rationale. This establishes the provider action and its stated reason, not every allegation ever made about the forum or its users.",
+      "evidence_status": "first_party_stated",
+      "source_refs": ["cloudflare-kiwifarms-2022"]
+    },
+    {
+      "id": "raniere-sentencing-2020",
+      "event_type": "conviction",
+      "date_or_period": "2020-10-27",
+      "places": ["United States"],
+      "participants": ["nxivm", "Keith Raniere", "U.S. federal court"],
+      "description": "Keith Raniere was sentenced to 120 years after federal convictions including racketeering and sex-trafficking offenses.",
+      "evidence_status": "court_established",
+      "legal_status": "convicted",
+      "source_refs": ["doj-nxivm-raniere-2020"]
+    },
+    {
+      "id": "smithsonian-hiphop-anthology-2021",
+      "event_type": "museum_or_canon_milestone",
+      "date_or_period": "2021",
+      "places": ["United States"],
+      "participants": ["hip-hop", "Smithsonian National Museum of African American History and Culture", "Smithsonian Folkways"],
+      "description": "The Smithsonian anthology preserved and interpreted hip-hop as a major cultural history, marking an institutional preservation/canon milestone.",
+      "evidence_status": "official_record",
+      "source_refs": ["smithsonian-hiphop-anthology-2021", "smithsonian-hiphop-release-2021"]
+    }
+  ],
+  "flows": [
+    {
+      "id": "vaas-order-flow",
+      "flow_type": "violent_task",
+      "from": "instigator",
+      "to": "recruiter",
+      "period": "typical model described 2025",
+      "description": "An instigator initiates the request/order that enters the Violence-as-a-Service chain.",
+      "evidence_status": "official_record",
+      "source_refs": ["europol-vaas-chain-2025"]
+    },
+    {
+      "id": "vaas-recruitment-flow",
+      "flow_type": "recruitment",
+      "from": "recruiter",
+      "to": "perpetrator",
+      "period": "typical model described 2025",
+      "description": "Recruiters identify or recruit perpetrators, including via encrypted messaging and online platforms in reported cases.",
+      "evidence_status": "official_record",
+      "source_refs": ["europol-vaas-chain-2025", "europol-denmark-sweden-vaas-2025"]
+    },
+    {
+      "id": "vaas-enablement-flow",
+      "flow_type": "instruction",
+      "from": "enabler",
+      "to": "perpetrator",
+      "period": "typical model described 2025",
+      "description": "Enablers support logistics, information, tools or instructions needed to execute the violent task.",
+      "evidence_status": "official_record",
+      "source_refs": ["europol-vaas-chain-2025"]
+    },
+    {
+      "id": "msf-private-funding-2025",
+      "flow_type": "donation",
+      "from": "private donors and foundations",
+      "to": "medecins-sans-frontieres",
+      "period": "2025",
+      "amount": 2600000000,
+      "currency": "EUR",
+      "amount_type": "reported_total_revenue_greater_than_rounded",
+      "description": "MSF reports more than EUR 2.6 billion in 2025 revenue and says 98% of operating income came from private sources.",
+      "evidence_status": "audited_financial",
+      "source_refs": ["msf-2025-figures"]
+    },
+    {
+      "id": "icrc-donor-contributions-2025",
+      "flow_type": "donation",
+      "from": "published donor mix",
+      "to": "icrc",
+      "period": "2025",
+      "amount": 1760000000,
+      "currency": "CHF",
+      "amount_type": "reported_approximate_total_contributions",
+      "description": "ICRC reports roughly CHF 1.76 billion in donor contributions in 2025 and a source mix with 84% from governments and the European Commission.",
+      "evidence_status": "audited_financial",
+      "source_refs": ["icrc-annual-report-2025"]
+    },
+    {
+      "id": "viral-attention-raza",
+      "flow_type": "attention",
+      "from": "online audiences and remix culture",
+      "to": "ghyslain-raza-star-wars-kid",
+      "period": "2003 onward",
+      "description": "Audience attention, copying and remixing moved a private recording into durable public meme culture.",
+      "evidence_status": "institutional_history",
+      "source_refs": ["nfb-star-wars-kid-2022", "nfb-star-wars-kid-lesson-2022"]
+    },
+    {
+      "id": "hiphop-scene-to-mainstream",
+      "flow_type": "audience",
+      "from": "Bronx hip-hop scenes",
+      "to": "mass and global audiences",
+      "period": "1970s onward",
+      "description": "Local practices and scenes expanded through recording, performance and distribution into broad national and global culture.",
+      "evidence_status": "institutional_history",
+      "source_refs": ["smithsonian-hiphop-release-2021"]
+    }
+  ],
+  "relationships": [
+    {
+      "id": "dk-conflict-ltf-ha",
+      "from": "Loyal to Familia",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "Hells Angels MC",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting. This edge does not assign aggregate environment statistics or identical conduct to every associated person.",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "dk-conflict-brabrand-sort",
+      "from": "Brabrandgruppen",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "Sort på Sort",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; no group-wide or person-wide guilt inference is made.",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "dk-conflict-satudarah-a26",
+      "from": "Satudarah MC",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "A26",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "dk-conflict-nbv-vo",
+      "from": "NBV",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "VO Status",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "dk-conflict-lgp-mv",
+      "from": "LGP Gruppen",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "MV Gruppen",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "dk-conflict-gt-afdeling12",
+      "from": "GT Gruppen",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "Afdeling 12",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "dk-conflict-ltf-nnv",
+      "from": "Loyal to Familia",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "NNV",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "dk-conflict-nnv-tingbjerg202",
+      "from": "NNV",
+      "relationship": "IN_CONFLICT_WITH",
+      "to": "Tingbjerg 202",
+      "period": "reported in Danish Police 2025 overview",
+      "evidence_status": "official_record",
+      "description": "Named conflict relation in Danish Police reporting; aggregate police statistics remain separate.",
+      "source_refs": ["dk-police-rocker-gang-2025"]
+    },
+    {
+      "id": "cloudflare-blocks-kiwifarms",
+      "from": "Cloudflare",
+      "relationship": "BLOCKS_OR_DEPLATFORMS",
+      "to": "kiwi-farms",
+      "period": "2022-09-03",
+      "evidence_status": "first_party_stated",
+      "description": "Cloudflare blocked Kiwi Farms from its services and stated its emergency rationale.",
+      "source_refs": ["cloudflare-kiwifarms-2022"]
+    },
+    {
+      "id": "hiphop-mainstreams",
+      "from": "hip-hop",
+      "relationship": "MAINSTREAMS_INTO",
+      "to": "mass and global culture",
+      "period": "late 20th century onward",
+      "evidence_status": "institutional_history",
+      "description": "Hip-hop expanded beyond originating local scenes into broad national and global culture.",
+      "source_refs": ["smithsonian-hiphop-release-2021"]
+    },
+    {
+      "id": "hiphop-canonized-smithsonian",
+      "from": "hip-hop",
+      "relationship": "CANONIZED_BY",
+      "to": "Smithsonian institutional preservation",
+      "period": "2021",
+      "evidence_status": "official_record",
+      "description": "Smithsonian anthology and museum work preserve hip-hop history as canonical cultural material.",
+      "source_refs": ["smithsonian-hiphop-anthology-2021", "smithsonian-hiphop-release-2021"]
+    }
+  ],
+  "pathways": [
+    {
+      "id": "vaas-four-role-chain",
+      "name": "Violence-as-a-Service role chain",
+      "steps": ["instigator", "recruiter", "enabler", "perpetrator"],
+      "description": "A typical operational sequence described by Europol; it is a model, not a claim that every violent offense uses all four roles.",
+      "evidence_status": "official_record",
+      "source_refs": ["europol-vaas-chain-2025"]
+    },
+    {
+      "id": "star-wars-kid-digital-shadow",
+      "name": "Private act to durable public role",
+      "steps": ["private recording", "publication by others", "viral label and remix culture", "archive/search persistence", "long public identity", "later documentary reclamation"],
+      "description": "A human trajectory showing how the audience/archive layer can outlast the initiating event and later be re-entered by the person involved.",
+      "evidence_status": "institutional_history",
+      "source_refs": ["nfb-star-wars-kid-2022", "nfb-star-wars-kid-lesson-2022"]
+    },
+    {
+      "id": "hiphop-scene-to-canon",
+      "name": "Hip-hop scene to mainstream to canon",
+      "steps": ["Bronx neighborhood/block-party scenes", "local creative practices and crews", "recorded/commercial circulation", "national and global mass culture", "museum and anthology preservation"],
+      "description": "A non-pathological formation pathway demonstrating that strong scenes and subcultures can become mainstream and canonical without being coercive.",
+      "evidence_status": "institutional_history",
+      "source_refs": ["smithsonian-hiphop-anthology-2021", "smithsonian-hiphop-release-2021"]
+    }
+  ],
+  "case_groups": [
+    {"id": "conflict-and-violence", "label": "Where violence actually appears", "formation_ids": ["danish-rocker-gang-conflict-field", "loyal-to-familia", "otf-grimm-violence-as-a-service"]},
+    {"id": "control-and-tribunal", "label": "Control, tribunal and adversarial archive", "formation_ids": ["nxivm", "kiwi-farms", "online-snark-communities"]},
+    {"id": "mainstreaming", "label": "Scene to mainstream to canon", "formation_ids": ["hip-hop"]},
+    {"id": "funding-contrast", "label": "Lawful funding architectures", "formation_ids": ["medecins-sans-frontieres", "icrc"]}
+  ],
+  "public_projection": {
+    "intro": "These cases are intentionally unlike one another. Their coexistence in one atlas is comparative, not a claim of moral or organizational equivalence.",
+    "legal_notice": "Named conflict edges and aggregate police statistics are kept separate. A group-level relation does not establish guilt for every associated person, and aggregate environment figures are not assigned to a named group unless the source does so.",
+    "source_notice": "Every externally testable claim in the canonical records resolves to the source ledger; project-analysis language is kept distinguishable from sourced external facts."
+  }
+}

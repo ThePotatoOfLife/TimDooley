@@ -9,6 +9,7 @@ pass also delegates visitor-navigation cleanup to patch_public_navigation.py.
 from pathlib import Path
 
 from patch_public_navigation import main as patch_public_navigation
+from project_public_culture_field import project_culture_field
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -65,6 +66,9 @@ def main() -> None:
         if path.exists() and OLD_PERSON in path.read_text(encoding="utf-8", errors="replace"):
             raise SystemExit(f"Ontology patch failed: old Tim Person schema remains in {path}")
 
+    # Generated public content should come from canonical Culture data rather
+    # than becoming a second hand-maintained database in source HTML.
+    project_culture_field()
     patch_public_navigation()
     print("Applied public Tim/Son ontology consistency patch.")
 
