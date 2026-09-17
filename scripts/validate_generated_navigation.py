@@ -9,7 +9,7 @@ import subprocess
 import sys
 from pathlib import Path
 
-from house_public_surfaces import surface_by_id
+from house_public_surfaces import surface_by_id, surface_rows
 from house_shell import relative_href
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -22,23 +22,69 @@ REPRESENTATIVE_BRANCHES = {
     "world": "world",
 }
 
-CURATED_HOUSE_REPRESENTATIVES = {
-    "tim-dooley/index.html": "tim",
-    "religion/index.html": "religion",
-    "philosophy/index.html": "philosophy",
-    "science/index.html": "science",
-    "world/index.html": "world",
-    "rooms/index.html": "rooms",
-}
-
-LONGFORM_HOUSE_REPRESENTATIVES = {
-    "great-book/index.html": "great-book",
-}
-
 
 def require_href(text: str, href: str, label: str, errors: list[str]) -> None:
     if f'href="{href}"' not in text and f"href='{href}'" not in text:
         errors.append(label)
+
+
+def path_for_route(root: Path, route: str) -> Path:
+    normalized = route if route.startswith("/") else "/" + route
+    stripped = normalized.strip("/")
+    if not stripped:
+        return root / "index.html"
+    if normalized.endswith("/"):
+        return root / stripped / "index.html"
+    return root / stripped
+
+
+def source_backed_shell_surfaces() -> list[dict]:
+    """Return registered authored readers whose shell policy belongs to build_site."""
+    eligible = []
+    for surface in surface_rows(ROOT):
+        if surface.get("status") != "active":
+            continue
+        if surface.get("shell_type") not in {"editorial", "longform"}:
+            continue
+        if path_for_route(ROOT, surface["canonical_route"]).exists():
+            eligible.append(surface)
+    return eligible
+
+
+def validate_curated_shell_policy(errors: list[str]) -> None:
+    eligible = source_backed_shell_surfaces()
+    if len(eligible) < 10:
+        errors.append(f"shell-policy test discovered unexpectedly few authored surfaces: {len(eligible)}")
+
+    for surface in eligible:
+        route = surface["canonical_route"]
+        rel = path_for_route(Path("."), route)
+        page = path_for_route(OUT, route)
+        if not page.exists():
+            errors.append(f"missing registered authored House surface after build: {rel}")
+            continue
+        text = page.read_text(encoding="utf-8", errors="replace")
+        shell_type = surface["shell_type"]
+        if shell_type == "longform":
+            if 'class="site-housebar site-housebar--compact"' not in text:
+                errors.append(f"{rel} missing compact shared House bar")
+        elif 'class="site-housebar' not in text:
+            errors.append(f"{rel} missing projected shared House bar")
+
+        if 'class="site-breadcrumbs' not in text:
+            errors.append(f"{rel} missing projected House breadcrumb")
+        if 'class="page-nav"' in text:
+            errors.append(f"{rel} still contains duplicate authored page-nav after House projection")
+        if "site-system.css" not in text:
+            errors.append(f"{rel} does not load the shared House stylesheet")
+        if f'data-house-surface="{surface["id"]}"' not in text:
+            errors.append(f"{rel} House projection does not identify surface {surface['id']}")
+
+    great_book = path_for_route(OUT, "/great-book/")
+    if great_book.exists():
+        text = great_book.read_text(encoding="utf-8", errors="replace")
+        if 'class="world-family"' not in text:
+            errors.append("great-book/index.html lost its reader-local Great Book navigation")
 
 
 def main() -> int:
@@ -57,38 +103,7 @@ def main() -> int:
             print(" - build_site.py failed")
             return 1
 
-        for rel, surface_id in CURATED_HOUSE_REPRESENTATIVES.items():
-            page = OUT / rel
-            if not page.exists():
-                errors.append(f"missing curated House representative: {rel}")
-                continue
-            text = page.read_text(encoding="utf-8", errors="replace")
-            if 'class="site-housebar' not in text:
-                errors.append(f"{rel} missing projected shared House bar")
-            if 'class="site-breadcrumbs' not in text:
-                errors.append(f"{rel} missing projected House breadcrumb")
-            if 'class="page-nav"' in text:
-                errors.append(f"{rel} still contains duplicate authored page-nav after House projection")
-            surface = surface_by_id(ROOT, surface_id)
-            if f'data-house-surface="{surface["id"]}"' not in text:
-                errors.append(f"{rel} House projection does not identify surface {surface_id}")
-
-        for rel, surface_id in LONGFORM_HOUSE_REPRESENTATIVES.items():
-            page = OUT / rel
-            if not page.exists():
-                errors.append(f"missing long-form House representative: {rel}")
-                continue
-            text = page.read_text(encoding="utf-8", errors="replace")
-            if 'class="site-housebar site-housebar--compact"' not in text:
-                errors.append(f"{rel} missing compact shared House bar")
-            if 'class="site-breadcrumbs' not in text:
-                errors.append(f"{rel} missing projected House breadcrumb")
-            if "site-system.css" not in text:
-                errors.append(f"{rel} does not load the shared House stylesheet")
-            if f'data-house-surface="{surface_id}"' not in text:
-                errors.append(f"{rel} House projection does not identify surface {surface_id}")
-            if 'class="world-family"' not in text:
-                errors.append(f"{rel} lost its reader-local Great Book navigation")
+        validate_curated_shell_policy(errors)
 
         for branch_id, parent_surface_id in REPRESENTATIVE_BRANCHES.items():
             page = OUT / "topics" / branch_id / "index.html"
@@ -149,7 +164,7 @@ def main() -> int:
                 print(f" - {error}")
             return 1
 
-        print("Generated navigation validation passed: curated gateways, Great Book, topic, record and context pages use shared House orientation.")
+        print("Generated navigation validation passed: all source-backed editorial/long-form surfaces plus generated topic, record and context pages use shared House orientation.")
         return 0
     finally:
         if OUT.exists():
