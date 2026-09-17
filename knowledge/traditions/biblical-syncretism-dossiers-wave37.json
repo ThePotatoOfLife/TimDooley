@@ -1,7 +1,7 @@
 {
   "id":"biblical-syncretism-dossiers-wave37",
   "title":"Biblical Syncretism Dossiers — Wave 37 Staged Return & Recognition",
-  "version":"1.1.0",
+  "version":"1.2.0",
   "updated":"2026-09-17",
   "status":"additive contextual dossier layer",
   "purpose":"Add distinct biblical return/recognition mechanisms missed by the current comparator while consolidating duplicate public-X reader projections into their stronger canonical relations.",
@@ -11,18 +11,63 @@
     "Delayed recognition is kept separate from resurrection itself.",
     "The project chronology is not forced into a literal three-day equivalence.",
     "Reader-facing 2011 terminology uses Ego Death when referring to the transformative event; literal Tree imagery remains available where the tree itself is analytically relevant.",
-    "Duplicate public-occurrence projections are redirected to richer canonical relations while their occurrence provenance remains attached."
+    "Duplicate public-occurrence projections are redirected to richer canonical relations while their occurrence provenance and reader interpretation remain attached."
   ],
   "enrichments":[
-    {"relation_id":"chosen-gentile-potato-2024-10-02","occurrence_ids":["x-2024-10-02-chosen-gentile"],"consolidated_legacy_relation_ids":["public-x-bible-x-2024-10-02-chosen-gentile"]},
-    {"relation_id":"potatoes-die-for-sins-2024-10-03","occurrence_ids":["x-2024-10-03-die-for-sins"],"consolidated_legacy_relation_ids":["public-x-bible-x-2024-10-03-die-for-sins"]},
-    {"relation_id":"self-resurrection-witnesses-2025-09-30","occurrence_ids":["x-2025-09-30-self-resurrection"],"consolidated_legacy_relation_ids":["public-x-bible-x-2025-09-30-self-resurrection"]},
-    {"relation_id":"bread-door-tomb-resurrection-2026-04-23","occurrence_ids":["x-2026-04-23-son-door-tomb"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-04-23-son-door-tomb"]},
-    {"relation_id":"tree-timelines-jacob-ezekiel-2026-05-24","occurrence_ids":["x-2026-05-24-tree-timelines"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-05-24-tree-timelines"]},
-    {"relation_id":"breath-nostrils-2026-07-23","occurrence_ids":["x-2026-07-23-breath-nostrils"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-07-23-breath-nostrils"]},
-    {"relation_id":"son-cornerstone-2026-08-17","occurrence_ids":["x-2026-08-17-cornerstone"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-17-cornerstone"]},
-    {"relation_id":"zion-2026-08-23","occurrence_ids":["x-2026-08-23-zion"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-23-zion"]},
-    {"relation_id":"christ-wedge-door-2026-08-31","occurrence_ids":["x-2026-08-31-wedge-christ"],"consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-31-wedge-christ"]}
+    {
+      "relation_id":"chosen-gentile-potato-2024-10-02",
+      "occurrence_ids":["x-2024-10-02-chosen-gentile"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2024-10-02-chosen-gentile"],
+      "reader_reading":"The closest biblical neighbors are Deuteronomy 7:6 and Romans 11:11-24. Election/Gentile vocabulary is already being used in Potato satire before the mature Father/North theology. The post is comic/project appropriation; these passages do not identify potatoes as a biblical chosen people."
+    },
+    {
+      "relation_id":"potatoes-die-for-sins-2024-10-03",
+      "occurrence_ids":["x-2024-10-03-die-for-sins"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2024-10-03-die-for-sins"],
+      "reader_reading":"The closest biblical neighbor is 1 Corinthians 15:3. Atonement-for-sins language appears publicly in Potato form in 2024. The post is wordplay; Paul's text concerns Christ."
+    },
+    {
+      "relation_id":"self-resurrection-witnesses-2025-09-30",
+      "occurrence_ids":["x-2025-09-30-self-resurrection"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2025-09-30-self-resurrection"],
+      "reader_reading":"The closest biblical neighbor is 1 Corinthians 15:3-8. Self-resurrection language enters the supplied public corpus before the later Father/Son role specialization. The biblical passage concerns Christ's resurrection and witnesses; the post is a self-application."
+    },
+    {
+      "relation_id":"bread-door-tomb-resurrection-2026-04-23",
+      "occurrence_ids":["x-2026-04-23-son-door-tomb"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2026-04-23-son-door-tomb"],
+      "reader_reading":"The closest biblical neighbors are John 6:35, John 10:7-9, 1 Corinthians 15:3-8, and Gospel crucifixion/resurrection narratives. A dense Christological threshold cluster: the Son is publicly defined through nourishment, passage, death and return."
+    },
+    {
+      "relation_id":"tree-timelines-jacob-ezekiel-2026-05-24",
+      "occurrence_ids":["x-2026-05-24-tree-timelines"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2026-05-24-tree-timelines"],
+      "reader_reading":"The closest biblical neighbors are Genesis 2:9, Genesis 28:12-17, John 1:51, and Ezekiel 1:4-28. Tree, timeline, Door and biblical verticality are explicitly fused in one post. The post says 'Ezekiel's ladder'. The canonical ladder vision is Jacob's in Genesis 28; Ezekiel contributes throne/chariot/whirlwind imagery, so the archive preserves the original wording and records the conflation rather than silently correcting it."
+    },
+    {
+      "relation_id":"breath-nostrils-2026-07-23",
+      "occurrence_ids":["x-2026-07-23-breath-nostrils"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2026-07-23-breath-nostrils"],
+      "reader_reading":"The closest biblical neighbor is Genesis 2:7. One of the strongest phrase-level matches in the batch: near-direct Genesis creation language is used as a public divine-action formulation."
+    },
+    {
+      "relation_id":"son-cornerstone-2026-08-17",
+      "occurrence_ids":["x-2026-08-17-cornerstone"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-17-cornerstone"],
+      "reader_reading":"The closest biblical neighbors are Psalm 118:22, Matthew 21:42, and 1 Peter 2:4-7. Cornerstone is directly attached to the Son inside the public crucifixion narrative."
+    },
+    {
+      "relation_id":"zion-2026-08-23",
+      "occurrence_ids":["x-2026-08-23-zion"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-23-zion"],
+      "reader_reading":"The closest biblical neighbors are Psalm 48:1-2, Hebrews 12:22, and Revelation 14:1. Zion vocabulary is explicit within the mature debt/Swamp cosmology."
+    },
+    {
+      "relation_id":"christ-wedge-door-2026-08-31",
+      "occurrence_ids":["x-2026-08-31-wedge-christ"],
+      "consolidated_legacy_relation_ids":["public-x-bible-x-2026-08-31-wedge-christ"],
+      "reader_reading":"The closest biblical neighbors are John 6:35, John 10:7-9, and Matthew 19:24. A highly compressed public formula joins Christological nourishment, threshold and narrow-passage motifs inside Potato geometry."
+    }
   ],
   "new_relations":[
     {
