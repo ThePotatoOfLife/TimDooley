@@ -20,6 +20,8 @@ function snapshot() {
     subdivision: window.__potatoAtlasSubdivisions?.selected || url.searchParams.get('subdivision') || null,
     selection: window.__potatoAtlasSelection?.current || null,
     time: window.__potatoAtlasTime?.getState?.() || null,
+    investigation: window.__potatoAtlasInvestigationSurface?.current || null,
+    pinnedContextExpanded: window.__potatoAtlasPinnedContext?.expanded === true,
     contextVisibility: window.__potatoAtlasContextVisibility?.current || null,
   };
 }
@@ -54,6 +56,8 @@ async function reset() {
   const cleared = [];
   const failed = [];
 
+  await runStep('investigation', async () => window.__potatoAtlasInvestigationSurface?.closeActive?.('map-state-reset'), cleared, failed);
+  await runStep('pinned-context', async () => window.__potatoAtlasPinnedContext?.collapse?.(), cleared, failed);
   await runStep('analytical', async () => window.__potatoAtlasCompositor?.reset?.(), cleared, failed);
   await runStep('physical', async () => window.__potatoAtlasPhysicalLayers?.reset?.(), cleared, failed);
   await runStep('geography', async () => window.__potatoAtlasSpatialOverlays?.reset?.(), cleared, failed);
