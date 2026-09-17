@@ -86,8 +86,8 @@ def main() -> int:
         ):
             if token not in country_card:
                 errors.append(f"country card missing selected-country workspace marker: {token}")
-        if "Pinned comparison" in country_card:
-            errors.append("country card must not duplicate the dedicated pinned-country rail")
+        if re.search(r">\s*Pinned comparison\s*<", country_card, re.I):
+            errors.append("country card must not render a duplicate pinned-country comparison section")
         if "Map color" in country_card:
             errors.append("country card must use the normalized Current Map answer instead of legacy Map color copy")
         if "populationPrimary" not in country_card:
@@ -141,6 +141,8 @@ def main() -> int:
         errors.append("Time should remain lazy but explicitly declared in bootstrap diagnostics")
     if bootstrap and "loadAfterPaint('Country Presentation', './3d-country-presentation.js')" not in bootstrap:
         errors.append("Country Presentation must be part of the ordinary interactive bootstrap sequence")
+    if bootstrap and "loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')" not in bootstrap:
+        errors.append("minimal country hover must be explicitly bootstrapped after Country Presentation")
 
     if compositor:
         for token in ("atlas-query-outline", "atlasQueryMatch", "applyQueryHighlight"):
