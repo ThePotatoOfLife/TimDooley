@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { contextScaleBand, contextBudgets, contextVisibility } from '../world-map/3d-context-policy.js';
+import { contextScaleBand, contextBudgets, contextVisibility, contextInvestigationMode } from '../world-map/3d-context-policy.js';
 
 const calls = [];
 const fakeScale = {
@@ -10,6 +10,12 @@ const fakeScale = {
 assert.equal(contextScaleBand(fakeScale, null, 4.9), 'region');
 assert.equal(contextScaleBand(fakeScale, 'region', 5.1), 'region', 'context scale should respect scale-runtime hysteresis');
 assert.ok(calls.some(call => call[0] === 'transition'), 'context scale must use scale.transition once a prior band exists');
+
+assert.equal(contextInvestigationMode({ evidence:true, compare:true, relationFiltered:true }), 'evidence', 'Evidence should dominate all other presentation modes');
+assert.equal(contextInvestigationMode({ specialistConnections:true, compare:true, relationFiltered:true }), 'connections', 'an explicit Path/Trace-style investigation should dominate Compare');
+assert.equal(contextInvestigationMode({ compare:true, relationFiltered:true }), 'compare', 'explicit Compare should not be lost merely because a relation filter is active');
+assert.equal(contextInvestigationMode({ relationFiltered:true }), 'connections');
+assert.equal(contextInvestigationMode({}), 'browse');
 
 const browseWorld = contextBudgets({ band:'world', mode:'browse', pinCount:3, narrow:false });
 assert.deepEqual(
