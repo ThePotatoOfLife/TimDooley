@@ -12,6 +12,14 @@ async function loadSlot(slot){
   const task=fetch(path).then(r=>{if(!r.ok)throw new Error(`${path} ${r.status}`);return r.text()}).then(markup=>{slot.innerHTML=markup;slot.dataset.loaded='true';return slot}).catch(err=>{slot.dataset.loaded='error';slot.innerHTML=`<p class="caution">Could not load this chapter: ${esc(err.message)}</p>`;return slot});
   loaded.set(slot.id,task);return task;
 }
+async function loadAllSlots(){
+  const slots=[...doc.querySelectorAll('.gb-slot')];
+  if(!slots.length)return [];
+  if(status)status.textContent='Loading remaining book text for read-aloud…';
+  const result=await Promise.all(slots.map(loadSlot));
+  if(status)status.textContent='Whole book ready to read aloud.';
+  return result;
+}
 function slotFor(entry,kind='chapter'){
   const s=document.createElement('section');s.className='gb-slot';s.id=kind==='front'?entry.anchor:`chapter-${safeChapterToken(entry.number)}`;s.dataset.path=kind==='front'?entry.path:safeChapterPath(entry.path);s.dataset.loaded='false';
   s.innerHTML=`<p class="gb-placeholder">${kind==='front'?'Front matter':`Chapter ${esc(entry.number)}`} · loading when needed…</p>`;return s;
@@ -30,5 +38,10 @@ async function init(){
   manifest={front_matter:spec.front_matter,chapters:parts.flat()};doc.replaceChildren();doc.appendChild(slotFor(manifest.front_matter,'front'));manifest.chapters.forEach(c=>doc.appendChild(slotFor(c)));renderToc();observe();
   const hash=safeChapterToken(decodeURIComponent(location.hash.slice(1))).replace(/^chapter-/,'chapter-'),target=document.getElementById(hash||'front-matter');await loadSlot(target);if(hash)requestAnimationFrame(()=>target?.scrollIntoView({block:'start'}));
 }
+doc.addEventListener('potato:tts-prepare',event=>{
+  const detail=event.detail;
+  if(!detail||detail.sectionId!=='all'||typeof detail.waitUntil!=='function')return;
+  detail.waitUntil(loadAllSlots());
+});
 search?.addEventListener('input',e=>renderToc(e.target.value));init().catch(err=>{(status||doc).textContent=`Reader error: ${err.message}`});
 })();
