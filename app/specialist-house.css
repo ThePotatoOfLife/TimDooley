@@ -17,12 +17,21 @@
 
 .site-specialist-house__link,
 .site-specialist-house__current {
-  display: inline-block;
   min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   color: inherit;
   text-decoration: none;
+}
+
+.site-specialist-house__link {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+}
+
+.site-specialist-house__current {
+  display: inline-block;
 }
 
 .site-specialist-house__home {
