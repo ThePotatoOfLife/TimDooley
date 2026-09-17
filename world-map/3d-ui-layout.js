@@ -1,3 +1,5 @@
+import { selectVisibleSurfaceIds } from './3d-ui-layout-policy.js';
+
 // World Map application-surface layout coordinator.
 // Owns placement only; domain modules continue to own content and behavior.
 
@@ -17,6 +19,7 @@ function ensureStyle() {
     body.atlas-registry-ui .hud,body.atlas-registry-ui .camera{display:none!important}
     #atlasUILeftStatus{position:absolute;left:10px;bottom:10px;z-index:7;display:flex;flex-direction:column-reverse;align-items:flex-start;gap:6px;width:min(300px,calc(100% - 20px));pointer-events:none}
     #atlasUILeftStatus>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;margin:0!important;max-width:100%;pointer-events:auto}
+    #atlasUILeftStatus>*[data-layout-suppressed="1"]{display:none!important}
     #atlasUIBottomContext{position:absolute;left:50%;bottom:10px;z-index:8;transform:translateX(-50%);display:flex;align-items:flex-end;justify-content:center;width:min(760px,calc(100% - 360px));max-width:calc(100% - 24px);pointer-events:none}
     #atlasUIBottomContext>*{position:static!important;left:auto!important;right:auto!important;top:auto!important;bottom:auto!important;transform:none!important;max-width:100%;pointer-events:auto}
     #atlasUILeftStatus #atlasWorldContext{width:min(290px,100%)!important}
@@ -84,17 +87,53 @@ function setVisible(id, visible) {
   return true;
 }
 function getState() {
-  return [...registrations.values()].map(row => ({ id:row.id, zone:row.zone, priority:row.priority, mode:row.mode, visible:row.visible }));
+  return [...registrations.values()].map(row => ({
+    id:row.id,
+    zone:row.zone,
+    priority:row.priority,
+    mode:row.mode,
+    visible:row.visible,
+    layoutSuppressed:row.element?.dataset?.layoutSuppressed === '1',
+  }));
 }
 
-function refreshZone(zone, host) {
-  if (!host) return;
-  const rows = [...registrations.values()]
+function zoneRows(zone) {
+  return [...registrations.values()]
     .filter(row => row.zone === zone && row.element)
     .sort((a,b) => a.priority - b.priority || a.id.localeCompare(b.id));
-  for (const row of rows) if (row.element.parentElement !== host) host.appendChild(row.element);
 }
-function refreshLeftStatus() { refreshZone('left-status', ensureLeftStatusHost()); }
+function refreshZone(zone, host) {
+  if (!host) return [];
+  const rows = zoneRows(zone);
+  for (const row of rows) if (row.element.parentElement !== host) host.appendChild(row.element);
+  return rows;
+}
+function applyLeftStatusBudget(rows) {
+  const budget = window.__potatoAtlasContextVisibility?.current?.budgets?.statusSurfaces ?? Infinity;
+  const candidates = rows.map(row => ({
+    id:row.id,
+    priority:row.priority,
+    visible:row.visible !== false && !row.element.hidden,
+  }));
+  const selected = new Set(selectVisibleSurfaceIds(candidates, budget));
+  let suppressed = 0;
+  for (const row of rows) {
+    const naturallyVisible = row.visible !== false && !row.element.hidden;
+    const suppress = naturallyVisible && !selected.has(row.id);
+    if (suppress) suppressed += 1;
+    if (suppress) row.element.dataset.layoutSuppressed = '1';
+    else delete row.element.dataset.layoutSuppressed;
+  }
+  if (window.__potatoAtlasDiagnostics) {
+    window.__potatoAtlasDiagnostics.statusSurfaceBudget = budget;
+    window.__potatoAtlasDiagnostics.statusSurfacesShown = selected.size;
+    window.__potatoAtlasDiagnostics.statusSurfacesSuppressed = suppressed;
+  }
+}
+function refreshLeftStatus() {
+  const rows = refreshZone('left-status', ensureLeftStatusHost());
+  applyLeftStatusBudget(rows);
+}
 function refreshBottomContext() { refreshZone('bottom-context', ensureBottomContextHost()); }
 
 function adoptKnownSurfaces() {
@@ -167,6 +206,7 @@ window.addEventListener('atlas-axis-dimension-change', () => queueMicrotask(appe
 window.addEventListener('potato-atlas-panel-rendered', scheduleRefresh);
 window.addEventListener('potato-atlas-module-ready', scheduleRefresh);
 window.addEventListener('potato-atlas-pinned-context-ready', scheduleRefresh);
+window.addEventListener('potato-atlas-context-visibility-change', scheduleRefresh);
 window.addEventListener('atlas-time-change', scheduleRefresh);
 window.addEventListener('load', scheduleRefresh, { once:true });
 
