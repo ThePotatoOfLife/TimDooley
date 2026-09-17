@@ -12,6 +12,7 @@ const esc = value => String(value ?? '').replace(/[&<>"']/g, char => ({
 let rail = null;
 let renderSerial = 0;
 let staleSuppressions = 0;
+let expanded = false;
 
 function ensureRail() {
   if (rail) return rail;
@@ -27,7 +28,8 @@ function ensureRail() {
     .atlas-pinned-value{display:block;margin-top:3px;font-size:10px;color:#c6d0cc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .atlas-pinned-meta{display:block;margin-top:2px;font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .atlas-pinned-remove{align-self:start;border:0;background:transparent;color:#9fa9a4;padding:0 2px;font-size:14px;cursor:pointer}
-    .atlas-pinned-overflow{display:flex;align-items:center;justify-content:center;min-width:76px;padding:7px 9px;border:1px dashed #3a4745;border-radius:10px;color:var(--muted);font-size:10px;flex:0 0 auto}
+    .atlas-pinned-overflow{display:flex;align-items:center;justify-content:center;min-width:76px;padding:7px 9px;border:1px dashed #3a4745;border-radius:10px;color:var(--muted);font-size:10px;flex:0 0 auto;background:#0f1716;cursor:pointer}
+    .atlas-pinned-overflow:hover{color:#d7dfdc;border-color:#556563}
     @media(max-width:900px){#atlasPinnedContextRail{max-width:none}.atlas-pinned-card{min-width:138px;max-width:180px;padding:6px 8px}.atlas-pinned-meta{display:none}}
   `;
   document.head.appendChild(style);
@@ -39,11 +41,19 @@ function ensureRail() {
     const remove = event.target.closest('[data-unpin]');
     if (remove) { selection.unpin?.(remove.dataset.unpin); return; }
     const activate = event.target.closest('[data-activate]');
-    if (activate) selection.activate?.(activate.dataset.activate);
+    if (activate) { selection.activate?.(activate.dataset.activate); return; }
+    if (event.target.closest('[data-show-all]')) { expanded = true; void refresh('expand'); return; }
+    if (event.target.closest('[data-collapse]')) { expanded = false; void refresh('collapse'); }
   });
   document.querySelector('.mapwrap')?.appendChild(rail);
   layout.register({ id:'pinned-context', zone:'bottom-context', element:rail, priority:20, mode:'context' });
-  window.__potatoAtlasPinnedContext = { refresh, get element() { return rail; } };
+  window.__potatoAtlasPinnedContext = {
+    refresh,
+    expand() { expanded = true; return refresh('expand-api'); },
+    collapse() { expanded = false; return refresh('collapse-api'); },
+    get expanded() { return expanded; },
+    get element() { return rail; },
+  };
   window.dispatchEvent(new CustomEvent('potato-atlas-pinned-context-ready', { detail:{ id:rail.id } }));
   return rail;
 }
@@ -76,6 +86,7 @@ async function refresh(reason = 'refresh') {
   const context = window.__potatoAtlasContextVisibility?.current;
   const budget = Math.max(0, Number(context?.budgets?.pinnedCards ?? 4));
   if (!pins.length || !context?.visibility?.showPinnedContext || budget === 0) {
+    expanded = false;
     node.hidden = true;
     node.innerHTML = '';
     layout.setVisible?.('pinned-context', false);
@@ -83,8 +94,9 @@ async function refresh(reason = 'refresh') {
     return;
   }
 
+  if (pins.length <= budget) expanded = false;
   const api = activeViewApi();
-  const visiblePins = pins.slice(0, budget);
+  const visiblePins = expanded ? pins : pins.slice(0, budget);
   const rows = await Promise.all(visiblePins.map(code => resolveView(api, code)));
   if (serial !== renderSerial) {
     staleSuppressions += 1;
@@ -92,13 +104,20 @@ async function refresh(reason = 'refresh') {
     return;
   }
 
+  const hiddenCount = Math.max(0, pins.length - visiblePins.length);
+  const overflow = hiddenCount > 0
+    ? `<button type="button" class="atlas-pinned-overflow" data-show-all aria-label="Show ${hiddenCount} more pinned countries">+${hiddenCount} more</button>`
+    : expanded && pins.length > budget
+      ? '<button type="button" class="atlas-pinned-overflow" data-collapse aria-label="Collapse pinned country context">Collapse</button>'
+      : '';
+
   node.innerHTML = rows.map(({code, view}) => {
     const active = code === snapshot.activeCode;
     const name = selection.countryName?.(code) || code;
     const value = view?.display || (view?.memberships?.memberships?.length ? `${view.memberships.memberships.filter(item => item.member).length} matching sets` : api ? 'Context available' : 'Loading context…');
     const meta = cardMeta(view);
     return `<article class="atlas-pinned-card${active ? ' active' : ''}" data-country="${esc(code)}"><button type="button" class="atlas-pinned-main" data-activate="${esc(code)}" aria-label="Inspect ${esc(name)}"><span class="atlas-pinned-name">${esc(name)}</span><span class="atlas-pinned-value">${esc(value)}</span>${meta ? `<span class="atlas-pinned-meta">${esc(meta)}</span>` : ''}</button><button type="button" class="atlas-pinned-remove" data-unpin="${esc(code)}" aria-label="Unpin ${esc(name)}">×</button></article>`;
-  }).join('') + (pins.length > visiblePins.length ? `<div class="atlas-pinned-overflow" aria-label="${pins.length - visiblePins.length} more pinned countries">+${pins.length - visiblePins.length} more</div>` : '');
+  }).join('') + overflow;
   node.hidden = false;
   layout.setVisible?.('pinned-context', true);
   layout.refresh?.();
@@ -106,7 +125,8 @@ async function refresh(reason = 'refresh') {
   if (window.__potatoAtlasDiagnostics) {
     window.__potatoAtlasDiagnostics.pinnedContextCards = rows.length;
     window.__potatoAtlasDiagnostics.pinnedContextTotalPins = pins.length;
-    window.__potatoAtlasDiagnostics.pinnedContextOverflow = Math.max(0, pins.length - rows.length);
+    window.__potatoAtlasDiagnostics.pinnedContextOverflow = hiddenCount;
+    window.__potatoAtlasDiagnostics.pinnedContextExpanded = expanded;
     window.__potatoAtlasDiagnostics.pinnedContextStaleSuppressions = staleSuppressions;
   }
 }
