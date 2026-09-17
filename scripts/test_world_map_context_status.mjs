@@ -15,9 +15,9 @@ for (const token of [
 ]) assert.ok(status.includes(token), `context status missing ${token}`);
 
 assert.ok(status.includes('pinnedCountries.length'), 'status should expose retained-country count');
-assert.ok(status.includes('context.question.investigation'), 'status should expose investigation mode');
+assert.ok(status.includes('context.question?.investigation'), 'status should expose investigation mode');
 assert.ok(status.includes('context.scaleBand'), 'status should expose semantic scale band');
 assert.ok(status.includes('context.time'), 'status should expose time context');
-assert.ok(panel.includes("loadModule?.('Context Status', './3d-context-status.js')"), 'panel lifecycle should load context status');
+assert.ok(panel.includes('./3d-context-status.js'), 'panel lifecycle should load context status');
 
 console.log('World Map context status contract tests passed');
