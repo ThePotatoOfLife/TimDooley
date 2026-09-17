@@ -17,7 +17,7 @@ from pathlib import Path
 
 from build_world_map_coverage import build_coverage_file
 from build_world_map_runtime import build_runtime_file
-from house_public_surfaces import surface_by_id, surface_by_route
+from house_public_surfaces import surface_by_id, surface_by_route, surface_rows
 from house_shell import (
     relative_href,
     render_house_bar_for_route,
@@ -39,8 +39,6 @@ EXCLUDE = {
     "archive",
 }
 BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
-CURATED_HOUSE_SURFACE_IDS = ("tim", "religion", "philosophy", "science", "world", "rooms")
-LONGFORM_HOUSE_SURFACE_IDS = ("great-book",)
 AUTHORED_PAGE_NAV_RE = re.compile(
     r'<nav\b[^>]*class=["\'][^"\']*\bpage-nav\b[^"\']*["\'][^>]*>.*?</nav>\s*',
     re.I | re.S,
@@ -133,11 +131,21 @@ def project_house_surface(
 
 
 def project_curated_house_surfaces() -> None:
-    """Project House chrome by shell family without rewriting authored content."""
-    for surface_id in CURATED_HOUSE_SURFACE_IDS:
-        project_house_surface(surface_id, strip_authored_page_nav=True)
-    for surface_id in LONGFORM_HOUSE_SURFACE_IDS:
-        project_house_surface(surface_id, compact=True, ensure_stylesheet=True)
+    """Project House chrome from registry shell policy without rewriting authored content."""
+    for surface in surface_rows(ROOT):
+        if surface.get("status") != "active":
+            continue
+        shell_type = surface.get("shell_type")
+        if shell_type not in {"editorial", "longform"}:
+            continue
+        if not output_path_for_route(surface["canonical_route"]).exists():
+            continue
+        project_house_surface(
+            surface["id"],
+            compact=shell_type == "longform",
+            strip_authored_page_nav=True,
+            ensure_stylesheet=True,
+        )
 
 
 def load_json(path: Path, default=None):
