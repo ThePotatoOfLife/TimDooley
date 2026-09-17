@@ -98,6 +98,20 @@ function createInteractionRouter(map, options = {}) {
     }
   }
 
+  function featureIdentity(feature) {
+    const properties = feature?.properties || {};
+    return String(
+      feature?.id ?? properties.id ?? properties.iso3 ?? properties.cca3 ?? properties.ISO_A3 ?? properties.code ??
+      properties.name ?? properties.NAME ?? properties.ADMIN ?? ''
+    );
+  }
+
+  function currentHover() {
+    if (!activeHover) return null;
+    const { key, owner, winner } = activeHover;
+    return { key, owner, objectType:winner.objectType, layerId:winner.layerId, feature:winner.feature };
+  }
+
   function dispatch(kind, event = {}) {
     if (kind === 'click') clickDispatches += 1;
     else if (kind === 'hover') hoverDispatches += 1;
@@ -113,11 +127,12 @@ function createInteractionRouter(map, options = {}) {
       publishState('click-dispatch');
       return winner;
     }
-    const featureId = winner.feature?.id ?? winner.feature?.properties?.id ?? '';
-    const key = `${winner.owner}|${winner.layerId}|${featureId}`;
+    const key = `${winner.owner}|${winner.layerId}|${featureIdentity(winner.feature)}`;
     if (activeHover?.key !== key) {
       clearHover(event);
       activeHover = { key, owner:winner.owner, winner };
+    } else {
+      activeHover.winner = winner;
     }
     const canvas = map.getCanvas?.();
     if (canvas?.style) canvas.style.cursor = winner.registration.cursor;
@@ -169,7 +184,7 @@ function createInteractionRouter(map, options = {}) {
     map.on?.('mouseout', event => clearHover(event));
   }
 
-  return Object.freeze({ register, unregister, resolve, dispatch, clearHover, state, diagnostics });
+  return Object.freeze({ register, unregister, resolve, dispatch, clearHover, currentHover, state, diagnostics });
 }
 
 if (typeof window !== 'undefined' && window.__potatoAtlasMap) {
