@@ -27,6 +27,7 @@ function ensureRail() {
     .atlas-pinned-value{display:block;margin-top:3px;font-size:10px;color:#c6d0cc;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .atlas-pinned-meta{display:block;margin-top:2px;font-size:9px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
     .atlas-pinned-remove{align-self:start;border:0;background:transparent;color:#9fa9a4;padding:0 2px;font-size:14px;cursor:pointer}
+    .atlas-pinned-overflow{display:flex;align-items:center;justify-content:center;min-width:76px;padding:7px 9px;border:1px dashed #3a4745;border-radius:10px;color:var(--muted);font-size:10px;flex:0 0 auto}
     @media(max-width:900px){#atlasPinnedContextRail{max-width:none}.atlas-pinned-card{min-width:138px;max-width:180px;padding:6px 8px}.atlas-pinned-meta{display:none}}
   `;
   document.head.appendChild(style);
@@ -47,13 +48,8 @@ function ensureRail() {
   return rail;
 }
 
-async function activeViewApi(timeoutMs = 12000) {
-  const started = Date.now();
-  while (Date.now() - started < timeoutMs) {
-    if (window.__potatoAtlasActiveView?.forCountry) return window.__potatoAtlasActiveView;
-    await new Promise(resolve => setTimeout(resolve, 40));
-  }
-  return null;
+function activeViewApi() {
+  return window.__potatoAtlasActiveView?.forCountry ? window.__potatoAtlasActiveView : null;
 }
 
 function cardMeta(view) {
@@ -81,7 +77,7 @@ async function refresh(reason = 'refresh') {
     return;
   }
 
-  const api = await activeViewApi();
+  const api = activeViewApi();
   const visiblePins = pins.slice(0, budget);
   const rows = [];
   for (const code of visiblePins) {
@@ -98,16 +94,18 @@ async function refresh(reason = 'refresh') {
   node.innerHTML = rows.map(({code, view}) => {
     const active = code === snapshot.activeCode;
     const name = selection.countryName?.(code) || code;
-    const value = view?.display || (view?.memberships?.memberships?.length ? `${view.memberships.memberships.filter(item => item.member).length} matching sets` : 'Context available');
+    const value = view?.display || (view?.memberships?.memberships?.length ? `${view.memberships.memberships.filter(item => item.member).length} matching sets` : api ? 'Context available' : 'Loading context…');
     const meta = cardMeta(view);
     return `<article class="atlas-pinned-card${active ? ' active' : ''}" data-country="${esc(code)}"><button type="button" class="atlas-pinned-main" data-activate="${esc(code)}" aria-label="Inspect ${esc(name)}"><span class="atlas-pinned-name">${esc(name)}</span><span class="atlas-pinned-value">${esc(value)}</span>${meta ? `<span class="atlas-pinned-meta">${esc(meta)}</span>` : ''}</button><button type="button" class="atlas-pinned-remove" data-unpin="${esc(code)}" aria-label="Unpin ${esc(name)}">×</button></article>`;
-  }).join('');
+  }).join('') + (pins.length > visiblePins.length ? `<div class="atlas-pinned-overflow" aria-label="${pins.length - visiblePins.length} more pinned countries">+${pins.length - visiblePins.length} more</div>` : '');
   node.hidden = false;
   layout.setVisible?.('pinned-context', true);
   layout.refresh?.();
   document.getElementById('atlasWorkingSelection')?.setAttribute('hidden', '');
   if (window.__potatoAtlasDiagnostics) {
     window.__potatoAtlasDiagnostics.pinnedContextCards = rows.length;
+    window.__potatoAtlasDiagnostics.pinnedContextTotalPins = pins.length;
+    window.__potatoAtlasDiagnostics.pinnedContextOverflow = Math.max(0, pins.length - rows.length);
     window.__potatoAtlasDiagnostics.pinnedContextStaleSuppressions = staleSuppressions;
   }
 }
@@ -119,6 +117,8 @@ for (const eventName of [
   'potato-atlas-composition-change',
   'potato-atlas-relation-mode-change',
   'potato-atlas-context-visibility-change',
+  'potato-atlas-active-view-change',
+  'potato-atlas-module-ready',
   'atlas-time-change',
 ]) window.addEventListener(eventName, () => queueMicrotask(() => refresh(eventName)));
 
