@@ -49,6 +49,7 @@ assert.ok(bibleSource.includes("event.type==='followchange'"),'Bible page must r
 // is intentionally instant, so there is no smooth animation left running.
 assert.ok(drawerSource.includes("behavior:'auto'"),'page-highlight follow must use immediate positioning');
 assert.ok(!drawerSource.includes("scrollIntoView?.({block:followReading"),'drawer copy must never compete with the real page highlight');
+assert.ok(drawerSource.includes("close:()=>{cancelPendingStart();engine?.stop();setState('closed')}"),'programmatic close must not leave invisible speech running');
 
 // The standalone TTS tool has its own follow checkbox. It needs the same
 // guarantees: follow state persists immediately, enabling it recenters the
@@ -66,5 +67,11 @@ assert.ok(toolSource.includes('JSON.stringify({...saved(),'),'standalone setting
 assert.ok(toolSource.includes("followReading:$('follow').checked"),'standalone follow state must update the shared followReading preference');
 assert.ok(toolSource.includes("$('follow').checked=(s.follow??s.followReading)!==false"),'standalone reader must honor a follow-off preference saved by the embedded reader');
 assert.ok(toolSource.includes('volume:+vol.value'),'standalone volume changes must also update the shared drawer volume preference');
+
+// Initial styling must not save before voices have loaded, otherwise the
+// currentVoice() null value overwrites the user's stored voice on every visit.
+assert.ok(toolSource.includes('function applyTheme(k,persist=true)'),'theme application needs a no-persist startup mode');
+assert.ok(toolSource.includes('applyTheme(theme.value,false)'),'startup theme application must preserve the stored voice');
+assert.ok(toolSource.includes('lastVol=+vol.value||1'),'saved nonzero volume must become the mute/unmute restore level');
 
 console.log('tts audit edge-case contract: ok');
