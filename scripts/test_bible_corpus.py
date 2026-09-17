@@ -72,10 +72,17 @@ def test_additive_gapfill_baseline() -> None:
     )
 
     manifest = load_manifest(ROOT)
+    redirects = load_relation_redirects(ROOT)
     current_rows = assemble_relations(ROOT, manifest)
     current_ids = {row['id'] for row in current_rows}
-    missing = sorted(set(baseline_ids) - current_ids)
+    missing = sorted(
+        rid for rid in set(baseline_ids) - current_ids
+        if rid not in redirects
+    )
     assert not missing, f'Bible baseline relation loss: {missing[:12]}'
+    for legacy in sorted(set(baseline_ids) - current_ids):
+        target = redirects.get(legacy)
+        assert target in current_ids, f'Bible baseline redirect target missing: {legacy} -> {target}'
     assert any(layer.get('id') == GAPFILL_LAYER_ID for layer in manifest.get('layers', [])), (
         'additive Bible gap-fill layer is not registered'
     )
