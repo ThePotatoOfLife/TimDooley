@@ -154,8 +154,9 @@ async function injectCountryContext(code = currentEntityCode()) {
   if (!card || card.hidden || !/^[A-Z]{3}$/.test(String(code || ''))) return;
   countEnhancement();
   const rows = bounded(await runtime.infrastructureForEntity?.(code) || []);
-  let section = card.querySelector('#atlasCountryInfrastructureContext');
-  if (!rows.length) {
+  const host = card.querySelector('[data-country-context-enrichments]');
+  let section = host?.querySelector('#atlasCountryInfrastructureContext') || card.querySelector('#atlasCountryInfrastructureContext');
+  if (!rows.length || !host) {
     section?.remove();
     return;
   }
@@ -163,8 +164,9 @@ async function injectCountryContext(code = currentEntityCode()) {
     section = document.createElement('div');
     section.id = 'atlasCountryInfrastructureContext';
     section.className = 'atlas-country-section';
-    const actions = card.querySelector('.atlas-country-actions');
-    if (actions) actions.before(section); else card.appendChild(section);
+    host.appendChild(section);
+  } else if (section.parentElement !== host) {
+    host.appendChild(section);
   }
   const nextHtml = `<small>Infrastructure context</small><div class="atlas-country-tags">${rows.slice(0,4).map(asset => `<button type="button" class="atlas-country-tag" data-infrastructure-id="${esc(asset.id)}">${esc(asset.label || asset.id)}</button>`).join('')}${rows.length > 4 ? `<span class="atlas-country-tag">+${rows.length - 4}</span>` : ''}</div><div class="atlas-country-source">Sourced physical context · association does not imply dependency</div>`;
   if (section.innerHTML !== nextHtml) section.innerHTML = nextHtml;
