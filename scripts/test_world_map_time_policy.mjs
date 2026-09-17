@@ -2,7 +2,7 @@ import assert from 'node:assert/strict';
 import { normalizeTimeState, describeTimeWindow } from '../world-map/3d-time-policy.js';
 
 assert.deepEqual(normalizeTimeState({mode:'current', time:'2026-01-01', time2:'2026-02-01'}), {
-  mode:'current', time:'', time2:'', valid:true, normalized:false, issue:null,
+  mode:'current', time:'', time2:'', valid:true, normalized:true, issue:null,
 });
 
 assert.deepEqual(normalizeTimeState({mode:'as_of', time:'2026-09-17'}), {
