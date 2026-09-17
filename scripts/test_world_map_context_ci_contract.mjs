@@ -14,6 +14,7 @@ for (const command of [
   'node scripts/test_world_map_pinned_context_contract.mjs',
   'node scripts/test_world_map_context_status.mjs',
   'node scripts/test_world_map_reset_context_contract.mjs',
+  'node scripts/test_world_map_search_selection_contract.mjs',
   'python scripts/validate_world_map_runtime_telemetry.py',
 ]) {
   assert.ok(workflow.includes(command), `world map context workflow missing ${command}`);
