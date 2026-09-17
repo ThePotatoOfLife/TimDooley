@@ -12,6 +12,7 @@ from house_public_surfaces import (
     parent_chain,
     primary_gateway_rows,
     surface_by_id,
+    surface_rows,
     surfaces_by_id,
 )
 
@@ -250,32 +251,100 @@ def render_local_nav(root: Path, surface_id: str) -> str:
     return f'<nav class="site-local-nav" aria-label="{esc(parent["title"])} section">{links}</nav>'
 
 
+def _continuation_eligible(row: dict) -> bool:
+    """Limit continuation targets to active visitor-facing routes."""
+    return (
+        row.get("status") == "active"
+        and row.get("shell_type") not in {"redirect", "diagnostic", "utility"}
+        and row.get("visibility") != "compatibility"
+    )
+
+
+def _branch_anchor_id(root: Path, surface_id: str) -> str:
+    """Return the first non-Home ancestor/current node defining a public branch."""
+    chain = [row for row in parent_chain(root, surface_id) if row["id"] != "home"]
+    return chain[0]["id"] if chain else "home"
+
+
+def _rank_by_affinity(surface: dict, row: dict, registry_index: int) -> tuple:
+    surface_rooms = set(surface.get("primary_room_ids", []))
+    row_rooms = set(row.get("primary_room_ids", []))
+    shared_rooms = len(surface_rooms & row_rooms)
+    same_group = row.get("navigation_group") == surface.get("navigation_group")
+    return (-shared_rooms, 0 if same_group else 1, registry_index, row["canonical_route"])
+
+
 def render_related_routes(root: Path, surface_id: str) -> str:
+    """Render deterministic Up/Beside/Across/Deeper routes from House authority."""
     surface = surface_by_id(root, surface_id)
     from_route = surface["canonical_route"]
     by_id = surfaces_by_id(root)
+    registry = surface_rows(root)
+    registry_order = {row["id"]: index for index, row in enumerate(registry)}
     parent_id = surface.get("primary_parent")
+    surface_rooms = set(surface.get("primary_room_ids", []))
 
     blocks: list[str] = []
+    used_ids = {surface_id}
+
     if parent_id and parent_id in by_id:
         parent = by_id[parent_id]
-        blocks.append(
-            '<div class="site-related__item"><span class="site-related__eyebrow">Up</span>'
-            f'{_anchor(from_route, parent)}</div>'
-        )
+        if _continuation_eligible(parent) or parent_id == "home":
+            blocks.append(
+                '<div class="site-related__item"><span class="site-related__eyebrow">Up</span>'
+                f'{_anchor(from_route, parent)}</div>'
+            )
+            used_ids.add(parent_id)
 
     if parent_id:
-        siblings = [row for row in child_rows(root, parent_id) if row["id"] != surface_id][:3]
+        siblings = [
+            row for row in child_rows(root, parent_id)
+            if row["id"] not in used_ids and _continuation_eligible(row)
+        ]
+        siblings.sort(key=lambda row: _rank_by_affinity(surface, row, registry_order.get(row["id"], 10**6)))
+        siblings = siblings[:3]
         if siblings:
             links = " · ".join(_anchor(from_route, row) for row in siblings)
             blocks.append(
                 '<div class="site-related__item"><span class="site-related__eyebrow">Beside</span>'
                 f'<span>{links}</span></div>'
             )
+            used_ids.update(row["id"] for row in siblings)
 
-    explore = by_id.get("explore")
-    sources = by_id.get("sources")
-    deeper = [row for row in (explore, sources) if row and row["id"] != surface_id]
+    own_branch = _branch_anchor_id(root, surface_id)
+    across_candidates = []
+    if surface_rooms:
+        for index, row in enumerate(registry):
+            if row["id"] in used_ids or not _continuation_eligible(row):
+                continue
+            if _branch_anchor_id(root, row["id"]) == own_branch:
+                continue
+            shared = surface_rooms & set(row.get("primary_room_ids", []))
+            if not shared:
+                continue
+            across_candidates.append((
+                -len(shared),
+                0 if row.get("navigation_group") == surface.get("navigation_group") else 1,
+                index,
+                row["canonical_route"],
+                row,
+            ))
+    across_candidates.sort(key=lambda item: item[:4])
+    across = [item[-1] for item in across_candidates[:2]]
+    if across:
+        links = " · ".join(_anchor(from_route, row) for row in across)
+        blocks.append(
+            '<div class="site-related__item"><span class="site-related__eyebrow">Across</span>'
+            f'<span>{links}</span></div>'
+        )
+        used_ids.update(row["id"] for row in across)
+
+    deeper = [
+        row for row in child_rows(root, surface_id)
+        if row["id"] not in used_ids and _continuation_eligible(row)
+    ]
+    deeper.sort(key=lambda row: _rank_by_affinity(surface, row, registry_order.get(row["id"], 10**6)))
+    deeper = deeper[:3]
     if deeper:
         links = " · ".join(_anchor(from_route, row) for row in deeper)
         blocks.append(
