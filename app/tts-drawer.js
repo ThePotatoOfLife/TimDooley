@@ -382,7 +382,13 @@
     speed.addEventListener('change',()=>{writeSettings({speed:speed.value});restartLive()});
     volume.addEventListener('input',()=>{const v=Number(volume.value);if(v>0)lastVolume=v;mute.textContent=v===0?'🔇':v<.5?'🔉':'🔊';writeSettings({volume:v});restartLive()});
     mute.addEventListener('click',()=>{if(Number(volume.value)>0){lastVolume=Number(volume.value);volume.value='0'}else volume.value=String(lastVolume||1);volume.dispatchEvent(new Event('input'))});
-    follow.addEventListener('click',()=>{followReading=!followReading;updateFollowButton();writeSettings({followReading});if(followReading&&currentWord)showWord(currentWord)});
+    follow.addEventListener('click',()=>{
+      followReading=!followReading;
+      updateFollowButton();
+      writeSettings({followReading});
+      if(currentWord)showWord(currentWord);
+      options.onEvent?.({type:'followchange',state:engine?.state||'idle',sectionId,followReading,absoluteWord:currentWord});
+    });
 
     updateScope();updateFollowButton();updateButtons();
     return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>{cancelPendingStart();engine?.stop()},isFollowing:()=>followReading,engine};
