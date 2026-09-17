@@ -4,7 +4,6 @@ from __future__ import annotations
 
 import importlib.util
 import json
-import tempfile
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -31,8 +30,20 @@ REQUIRED_CASE_IDS = {
     "hip-hop",
     "medecins-sans-frontieres",
     "icrc",
+    "organization-for-transformative-works-ao3",
+    "burning-man",
+    "skateboarding",
+    "wikipedia",
+    "mastodon-activitypub",
 }
 REQUIRED_HUMAN_CASE_IDS = {"ghyslain-raza-star-wars-kid"}
+REQUIRED_EXPANSION_FIELDS = {
+    "organization-for-transformative-works-ao3": {"governance_model", "infrastructure_model"},
+    "burning-man": {"governance_model", "correction_mechanisms"},
+    "skateboarding": {"commercialization_tensions"},
+    "wikipedia": {"governance_model", "correction_mechanisms"},
+    "mastodon-activitypub": {"governance_model", "infrastructure_model", "exit_or_portability"},
+}
 PRIVATE_FIELD_TOKENS = {
     "home_address",
     "phone",
@@ -121,6 +132,21 @@ def validate_money_flows(atlas: dict, errors: list[str]) -> None:
             errors.append(f"money flow {flow.get('id')} missing period")
 
 
+def validate_expansion_fields(atlas: dict, errors: list[str]) -> None:
+    by_id = {
+        item.get("id"): item
+        for item in atlas.get("formations", [])
+        if isinstance(item, dict) and isinstance(item.get("id"), str)
+    }
+    for case_id, required_fields in REQUIRED_EXPANSION_FIELDS.items():
+        record = by_id.get(case_id)
+        if not record:
+            continue
+        missing = sorted(field for field in required_fields if not record.get(field))
+        if missing:
+            errors.append(f"formation {case_id} missing expansion fields: {missing}")
+
+
 def validate_projector(errors: list[str]) -> None:
     if not PROJECTOR.exists():
         errors.append("missing public projector: scripts/project_public_culture_field.py")
@@ -147,6 +173,10 @@ def validate_projector(errors: list[str]) -> None:
         "People behind the labels",
         "How a formation changes type",
         "Concrete Tree of Strife",
+        "Who owns the infrastructure?",
+        "How correction works",
+        "Ritual without captivity",
+        "When underground becomes institution",
     )
     for marker in required:
         if marker not in rendered:
@@ -184,6 +214,7 @@ def main() -> int:
             errors.append(f"atlas missing required human cases: {missing_human}")
         validate_privacy_and_types(atlas, errors)
         validate_money_flows(atlas, errors)
+        validate_expansion_fields(atlas, errors)
 
     if atlas and ledger:
         validate_source_refs(atlas, ledger, errors)

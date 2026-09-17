@@ -74,6 +74,24 @@ def _formation_card(record: dict, sources: dict[str, dict]) -> str:
     )
 
 
+def _mechanism_card(record: dict, fields: tuple[tuple[str, str], ...], sources: dict[str, dict]) -> str:
+    body = [
+        '<article class="card">',
+        f'<strong>{_esc(record.get("name", record.get("id", "Formation")))}</strong>',
+        f'<p>{_esc(record.get("description", ""))}</p>',
+    ]
+    for field, label in fields:
+        value = record.get(field)
+        if not value:
+            continue
+        if isinstance(value, list):
+            value = " · ".join(str(item) for item in value)
+        body.append(f'<p><strong>{_esc(label)}:</strong> {_esc(value)}</p>')
+    body.append(_source_links(record.get("source_refs", []), sources))
+    body.append('</article>')
+    return "".join(body)
+
+
 def _flow_card(record: dict, sources: dict[str, dict]) -> str:
     amount = ""
     if "amount" in record:
@@ -129,6 +147,11 @@ def render_concrete_culture_field(atlas: dict, sources: dict[str, dict]) -> str:
         "hip-hop",
         "medecins-sans-frontieres",
         "icrc",
+        "organization-for-transformative-works-ao3",
+        "burning-man",
+        "skateboarding",
+        "wikipedia",
+        "mastodon-activitypub",
     ]
     featured = [by_id[item_id] for item_id in featured_ids if item_id in by_id]
 
@@ -140,10 +163,7 @@ def render_concrete_culture_field(atlas: dict, sources: dict[str, dict]) -> str:
         item for item in flows
         if isinstance(item, dict) and item.get("flow_type") in {"money", "grant", "donation", "membership_fee", "commercial_revenue", "illicit_proceeds"}
     ]
-    other_flows = [
-        item for item in flows
-        if isinstance(item, dict) and item not in money_flows
-    ]
+    other_flows = [item for item in flows if isinstance(item, dict) and item not in money_flows]
 
     human_html = ""
     for case in human_cases:
@@ -166,9 +186,33 @@ def render_concrete_culture_field(atlas: dict, sources: dict[str, dict]) -> str:
     violence_html = "".join(_relationship_card(item, sources) for item in violence_relationships)
     flow_html = "".join(_flow_card(item, sources) for item in money_flows + other_flows)
 
+    infrastructure_ids = ("organization-for-transformative-works-ao3", "wikipedia", "mastodon-activitypub")
+    infrastructure_html = "".join(
+        _mechanism_card(by_id[item_id], (("governance_model", "Governance"), ("infrastructure_model", "Infrastructure"), ("exit_or_portability", "Exit / portability")), sources)
+        for item_id in infrastructure_ids if item_id in by_id
+    )
+    correction_ids = ("wikipedia", "organization-for-transformative-works-ao3", "burning-man")
+    correction_html = "".join(
+        _mechanism_card(by_id[item_id], (("correction_mechanisms", "Correction / accountability"), ("governance_model", "Governance")), sources)
+        for item_id in correction_ids if item_id in by_id
+    )
+    ritual_html = ""
+    if "burning-man" in by_id:
+        ritual_html = _mechanism_card(
+            by_id["burning-man"],
+            (("stated_purpose_or_beliefs", "Shared principles"), ("governance_model", "Institutional layer"), ("correction_mechanisms", "Accountability")),
+            sources,
+        )
+    institution_ids = ("skateboarding", "organization-for-transformative-works-ao3", "hip-hop")
+    institution_html = "".join(
+        _mechanism_card(by_id[item_id], (("commercialization_tensions", "Commercialization tension"), ("governance_model", "Governance / institution"), ("infrastructure_model", "Infrastructure")), sources)
+        for item_id in institution_ids if item_id in by_id
+    )
+
     intro = _esc(projection.get("intro", "These examples are contrastive rather than equivalent."))
     legal_notice = _esc(projection.get("legal_notice", "Named conflict edges and aggregate statistics must remain separate."))
     source_notice = _esc(projection.get("source_notice", "Claims are sourced through the canonical ledger."))
+    expansion_notice = _esc(projection.get("expansion_notice", "The added roads examine governance and cultural reproduction."))
 
     return (
         f'<section {FIELD_MARKER}>'
@@ -180,7 +224,7 @@ def render_concrete_culture_field(atlas: dict, sources: dict[str, dict]) -> str:
         f'<p>{legal_notice}</p>'
         f'<div class="cards">{violence_html}</div>'
         '<h2>Follow the flows</h2>'
-        '<p>Culture becomes more concrete when the model records what actually moves: money, attention, recruitment, information, tasks and people.</p>'
+        '<p>Culture becomes more concrete when the model records what actually moves: money, attention, recruitment, information, tasks, people and archive material.</p>'
         f'<div class="cards">{flow_html}</div>'
         '<h2>People behind the labels</h2>'
         '<p>A public label can become more durable than the event that created it. Human cases restore sequence, authorship and later reply without rebuilding a hostile dossier.</p>'
@@ -188,8 +232,20 @@ def render_concrete_culture_field(atlas: dict, sources: dict[str, dict]) -> str:
         '<h2>How a formation changes type</h2>'
         '<p>These pathways are not a moral ladder. They show changes in reach, structure, infrastructure and institutional treatment.</p>'
         f'<div class="cards">{pathway_html}</div>'
+        '<h2>Who owns the infrastructure?</h2>'
+        f'<p>{expansion_notice} Infrastructure decides who stores memory, who can change rules, whether one operator is a single point of dependency, and whether a community can reproduce itself outside a commercial host.</p>'
+        f'<div class="cards">{infrastructure_html}</div>'
+        '<h2>How correction works</h2>'
+        '<p>Correction capacity is a cultural property. The useful questions are whether disagreement is visible, whether rules can be revised, whether outsiders can inspect decisions, and whether a mistaken claim can lose authority without the whole community collapsing.</p>'
+        f'<div class="cards">{correction_html}</div>'
+        '<h2>Ritual without captivity</h2>'
+        '<p>Strong ritual, symbolism, shared vocabulary and intense participation do not by themselves establish high control. The control axis remains separate: look for concentrated authority, surveillance, dependency, punishment of dissent and costly exit rather than intensity alone.</p>'
+        f'<div class="cards">{ritual_html}</div>'
+        '<h2>When underground becomes institution</h2>'
+        '<p>Mainstreaming creates trade-offs rather than a simple victory. A scene can gain money, preservation, professional roles and public legitimacy while arguing internally about authenticity, ownership, commercialization and who gets to define the culture.</p>'
+        f'<div class="cards">{institution_html}</div>'
         '<h2>Concrete Tree of Strife</h2>'
-        '<p>The concrete field treats conflict as a graph of dated relations, events and flows rather than a single all-explaining category. A conflict edge can coexist with uncertainty, legal process, platform action, cultural mainstreaming, humanitarian funding and human reclamation elsewhere in the same field.</p>'
+        '<p>The concrete field treats conflict as a graph of dated relations, events and flows rather than a single all-explaining category. A conflict edge can coexist with uncertainty, legal process, platform action, cultural mainstreaming, humanitarian funding, community-owned infrastructure, correction systems and human reclamation elsewhere in the same field.</p>'
         '</section>'
     )
 

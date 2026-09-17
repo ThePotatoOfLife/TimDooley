@@ -1,6 +1,6 @@
 {
   "id": "concrete-culture-source-ledger",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-17",
   "purpose": "Provenance ledger for externally testable claims in the concrete Culture field atlas.",
   "sources": [
@@ -157,6 +157,149 @@
       "source_class": "first_party_financial",
       "claim_scope": "2025 donor contributions of around CHF 1.76 billion and published donor-source mix, including 84% governments and the European Commission.",
       "limitations": "Organization's annual reporting; funding proportions describe source mix and do not by themselves establish donor control over specific operational decisions."
+    },
+    {
+      "id": "ao3-open-beta-exit-2026",
+      "title": "AO3 is Exiting Open Beta!",
+      "publisher": "Archive of Our Own / Organization for Transformative Works",
+      "url": "https://archive.transformativeworks.org/admin_posts/34626",
+      "publication_date": "2026-04-02",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_stated",
+      "claim_scope": "AO3's 2009 open-beta launch and April 2026 exit from open beta.",
+      "limitations": "First-party operational history; does not independently evaluate the broader social effects of fan-archive governance."
+    },
+    {
+      "id": "ao3-membership-drive-2026",
+      "title": "April 2026 Membership Drive: Behind the Scenes of AO3",
+      "publisher": "Archive of Our Own / Organization for Transformative Works",
+      "url": "https://archive.transformativeworks.org/admin_posts/34816",
+      "publication_date": "2026-04",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_stated",
+      "claim_scope": "AO3 reported reaching 10 million users and 17 million fanworks in early 2026 and described volunteer technical maintenance by OTW's Accessibility, Design & Technology committee.",
+      "limitations": "First-party milestone and governance description; user/work counts are reported by the operator."
+    },
+    {
+      "id": "otw-reports-2025",
+      "title": "Organization for Transformative Works reports and budget updates",
+      "publisher": "Organization for Transformative Works",
+      "url": "https://www.transformativeworks.org/category/report/",
+      "publication_date": "2025",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_financial",
+      "claim_scope": "Public annual reporting, committee/organizational updates, budget reporting and financial statements for OTW projects including AO3.",
+      "limitations": "First-party governance and financial reporting; used here to establish organizational structure and transparency, not independent impact evaluation."
+    },
+    {
+      "id": "burning-man-principles",
+      "title": "What are the Ten Principles?",
+      "publisher": "Burning Man Project",
+      "url": "https://help.burningman.org/hc/en-us/articles/360024794691-What-are-the-Ten-Principles",
+      "publication_date": "2022-01-19",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_stated",
+      "claim_scope": "Burning Man's Ten Principles and the organization's explanation that they were written as a reflection of an already-developed community ethos rather than dictates.",
+      "limitations": "First-party description of community principles; it does not establish how consistently every participant follows them."
+    },
+    {
+      "id": "burning-man-financials",
+      "title": "Financials & Public Reporting",
+      "publisher": "Burning Man Project",
+      "url": "https://burningman.org/about-us/what-we-do/financials-public-reporting/",
+      "publication_date": "2026",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_financial",
+      "claim_scope": "Burning Man Project's nonprofit status, Forms 990, annual/Dispatch reporting and public-document practices.",
+      "limitations": "First-party financial/transparency source; nonprofit status and disclosure do not by themselves establish the quality of every governance decision."
+    },
+    {
+      "id": "burning-man-summary-financials-2024",
+      "title": "Summary Financial Information",
+      "publisher": "Burning Man Project",
+      "url": "https://burningman.org/about-us/what-we-do/financials-public-reporting/summary-financial-info/",
+      "publication_date": "2025",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_financial",
+      "claim_scope": "Burning Man Project's 2024 management-reported revenue/expense figures and description of nonprofit program-area reporting.",
+      "limitations": "Management/first-party financial reporting; used to demonstrate transparent institutionalization rather than cultural success or failure."
+    },
+    {
+      "id": "sage-skateboarding-subculture-olympics-2022",
+      "title": "Skateboarding: From Urban Spaces to Subcultural Olympians",
+      "publisher": "Young / SAGE",
+      "url": "https://journals.sagepub.com/doi/full/10.1177/11033088221081944",
+      "publication_date": "2022",
+      "accessed": "2026-09-17",
+      "source_class": "scholarly_analysis",
+      "claim_scope": "Skateboarding's evolution from creative urban/subcultural practice into Olympic sport and multinational industry, including tensions over authenticity, commercialization and sportification.",
+      "limitations": "Scholarly cultural analysis; skateboarding is diverse and the degree of commercialization/institutionalization varies by place and participant."
+    },
+    {
+      "id": "olympics-skateboarding-tokyo",
+      "title": "Skateboarding - an Olympic debut for an essential feature of street culture",
+      "publisher": "International Olympic Committee / Olympics",
+      "url": "https://library.olympics.com/Default/digitalCollection/DigitalCollectionAttachmentDownloadHandler.ashx?documentId=207321&parentDocumentId=206701&skipCopyright=true&skipWatermark=true",
+      "publication_date": "2020",
+      "accessed": "2026-09-17",
+      "source_class": "official_record",
+      "claim_scope": "IOC description of skateboarding as an essential part of street culture and its Olympic debut at Tokyo 2020.",
+      "limitations": "Olympic institutional framing; it does not represent every skateboarder's view of sportification."
+    },
+    {
+      "id": "wikimedia-disputes-2025",
+      "title": "The art of disagreement: How Wikipedia navigates disputes",
+      "publisher": "Wikimedia Foundation",
+      "url": "https://wikimediafoundation.org/news/2025/11/10/how-wikipedia-navigates-disputes/",
+      "publication_date": "2025-11-10",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_stated",
+      "claim_scope": "Wikipedia talk pages, consensus processes, Requests for Comment and the Foundation's stated non-role in deciding content disputes.",
+      "limitations": "First-party governance explanation; used to establish visible correction mechanisms, not to claim every dispute is resolved well."
+    },
+    {
+      "id": "wikimedia-transparency-2025",
+      "title": "Transparency builds trust: Lessons from Wikipedia",
+      "publisher": "Wikimedia Foundation",
+      "url": "https://wikimediafoundation.org/news/2025/10/22/transparency-builds-trust/",
+      "publication_date": "2025-10-22",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_stated",
+      "claim_scope": "Public edit histories, talk pages, consensus decision-making and transparent revision practices on Wikipedia.",
+      "limitations": "First-party interpretation of Wikipedia's governance model; transparency enables inspection but does not eliminate error, bias or conflict."
+    },
+    {
+      "id": "w3c-activitypub-2018",
+      "title": "ActivityPub is now a W3C Recommendation",
+      "publisher": "World Wide Web Consortium (W3C)",
+      "url": "https://www.w3.org/news/2018/activitypub-is-now-a-w3c-recommendation/",
+      "publication_date": "2018-01-23",
+      "accessed": "2026-09-17",
+      "source_class": "technical_standard",
+      "claim_scope": "ActivityPub as a decentralized social-networking protocol with client-to-server and federated server-to-server APIs enabling interoperability across implementations.",
+      "limitations": "Technical standard; protocol-level interoperability does not guarantee social or governance portability in every implementation."
+    },
+    {
+      "id": "mastodon-town-square-2025",
+      "title": "The people should own the town square",
+      "publisher": "Mastodon",
+      "url": "https://blog.joinmastodon.org/2025/01/the-people-should-own-the-town-square/",
+      "publication_date": "2025-01-13",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_stated",
+      "claim_scope": "Mastodon's plan to transfer key project assets to a European nonprofit structure and its stated preference for federation/community-oriented control.",
+      "limitations": "First-party organizational intent; transition plans should be separated from completed legal restructuring."
+    },
+    {
+      "id": "mastodon-admin-update-2026",
+      "title": "Administrative updates",
+      "publisher": "Mastodon",
+      "url": "https://blog.joinmastodon.org/2026/02/administrative-updates/",
+      "publication_date": "2026-02-13",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_stated",
+      "claim_scope": "Mastodon's February 2026 organizational status: German operating-company terminology, fiscal sponsorship/nonprofit status and continuing plan for a Belgian nonprofit parent.",
+      "limitations": "First-party legal/organizational update; records an in-progress restructuring rather than a completed future state."
     }
   ]
 }
