@@ -6,7 +6,7 @@ import subprocess
 import tempfile
 from pathlib import Path
 
-from bible_corpus import CorpusError, assemble_fragments, assemble_relations, assemble_scenes, load_manifest
+from bible_corpus import CorpusError, assemble_fragments, assemble_relations, assemble_scenes, load_manifest, load_relation_redirects
 from build_bible_comparator_quality import research_reasons
 from build_bible_research_queue import SPECIFIC, generic_task
 from test_bible_compact_dossiers import main as compact_dossiers_main
@@ -72,13 +72,30 @@ def test_additive_gapfill_baseline() -> None:
     )
 
     manifest = load_manifest(ROOT)
+    redirects = load_relation_redirects(ROOT)
     current_rows = assemble_relations(ROOT, manifest)
     current_ids = {row['id'] for row in current_rows}
-    missing = sorted(set(baseline_ids) - current_ids)
+    missing = sorted(
+        rid for rid in set(baseline_ids) - current_ids
+        if rid not in redirects
+    )
     assert not missing, f'Bible baseline relation loss: {missing[:12]}'
+    for legacy in sorted(set(baseline_ids) - current_ids):
+        target = redirects.get(legacy)
+        assert target in current_ids, f'Bible baseline redirect target missing: {legacy} -> {target}'
     assert any(layer.get('id') == GAPFILL_LAYER_ID for layer in manifest.get('layers', [])), (
         'additive Bible gap-fill layer is not registered'
     )
+
+
+def test_current_redirect_contract() -> None:
+    redirects = load_relation_redirects(ROOT)
+    assert len(redirects) >= 9, 'expected duplicate public-X projections to be consolidated'
+    rows = assemble_relations(ROOT, load_manifest(ROOT))
+    ids = {row['id'] for row in rows}
+    for source, target in redirects.items():
+        assert source not in ids, f'redirected duplicate still active: {source}'
+        assert target in ids, f'redirect target missing from active corpus: {target}'
 
 
 def run_tests() -> None:
@@ -103,6 +120,14 @@ def run_tests() -> None:
             'why_dense':'dense',
             'why_it_matters':'matters',
         }
+
+    with tempfile.TemporaryDirectory() as td:
+        root = Path(td)
+        dump(root, 'base.json', {'relations':[{'id':'r1'},{'id':'legacy'}]})
+        dump(root, 'knowledge/traditions/bible-relation-redirects.json', {'redirects':{'legacy':'r1'}})
+        manifest = {'layers':[layer('base','relations','base.json',0,'canonical')]}
+        rows = assemble_relations(root, manifest)
+        assert [row['id'] for row in rows] == ['r1']
 
     with tempfile.TemporaryDirectory() as td:
         root = Path(td)
@@ -168,13 +193,14 @@ def run_tests() -> None:
     assert SPECIFIC['son-death-shore-bones-deep-water-2018-2019']['status'] == 'recover-primary-artifact'
 
     test_additive_gapfill_baseline()
+    test_current_redirect_contract()
 
 
 def main() -> int:
     run_tests()
     if compact_dossiers_main() != 0:
         return 1
-    print('BIBLE CORPUS TESTS PASSED (19 behaviors)')
+    print('BIBLE CORPUS TESTS PASSED (21 behaviors)')
     return 0
 
 

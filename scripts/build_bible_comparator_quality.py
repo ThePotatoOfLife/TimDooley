@@ -6,6 +6,7 @@ from collections import Counter
 from pathlib import Path
 
 from bible_corpus import assemble_relations, assemble_scenes, load_manifest
+from bible_duplicate_analysis import candidate_pairs
 
 ROOT = Path(__file__).resolve().parents[1]
 OUTPUT = ROOT / 'knowledge' / 'indexes' / 'bible-comparator-quality-report.json'
@@ -89,26 +90,30 @@ def build_report(rows: list[dict], scenes: list[dict]) -> dict:
     actions = Counter(item['recommended_action'] for item in assessments)
     reason_counts = Counter(reason for item in assessments for reason in item['research_reasons'])
     scene_linked = sum(item['coverage']['scene'] for item in assessments)
+    duplicates = candidate_pairs(rows)
     return {
         'id': 'bible-comparator-quality-report',
-        'version': '1.1.0',
-        'updated': '2026-09-14',
-        'purpose': 'Machine-readable quality and enrichment map for the manifest-defined public Bible comparator corpus.',
+        'version': '1.2.0',
+        'updated': '2026-09-17',
+        'purpose': 'Machine-readable quality, enrichment, and duplicate-candidate map for the manifest-defined public Bible comparator corpus.',
         'active_relation_count': len(rows),
         'active_scene_count': len(scenes),
         'relations_with_reusable_scene': scene_linked,
         'action_counts': dict(sorted(actions.items())),
         'research_reason_counts': dict(sorted(reason_counts.items())),
+        'duplicate_candidate_count': len(duplicates),
+        'duplicate_candidates': duplicates,
         'relations': assessments,
     }
 
 
 def main() -> int:
     manifest = load_manifest(ROOT)
-    report = build_report(assemble_relations(ROOT, manifest), assemble_scenes(ROOT, manifest))
+    rows = assemble_relations(ROOT, manifest)
+    report = build_report(rows, assemble_scenes(ROOT, manifest))
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     OUTPUT.write_text(json.dumps(report, indent=2, ensure_ascii=False) + '\n', encoding='utf-8')
-    print(f"Bible comparator quality report: {report['active_relation_count']} relations · {report['active_scene_count']} scenes · {report['action_counts']} · research reasons {report['research_reason_counts']}")
+    print(f"Bible comparator quality report: {report['active_relation_count']} relations · {report['active_scene_count']} scenes · {report['action_counts']} · {report['duplicate_candidate_count']} duplicate candidates · research reasons {report['research_reason_counts']}")
     return 0
 
 
