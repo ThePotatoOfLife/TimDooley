@@ -1,5 +1,6 @@
 const $ = s => document.querySelector(s);
 const esc = s => String(s ?? '').replace(/[&<>"']/g, m => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const investigation = window.__potatoAtlasInvestigationSurface;
 
 const toolbar = document.querySelector('.top');
 const anchor = $('#tilt');
@@ -106,14 +107,16 @@ function metricRow(label, value) {
   return `<div class="evidence-kv"><span>${esc(label)}</span><span>${esc(value)}</span></div>`;
 }
 
-function closeEvidence() {
+function closeEvidence(options = {}) {
   box.hidden = true;
   button.classList.remove('active');
   restoreCountryCard();
+  if (!options.coordinated) investigation?.close('evidence');
 }
 window.closeAtlasEvidence = closeEvidence;
 
 async function renderEvidence() {
+  investigation?.open('evidence');
   suspendCountryCard();
   const code = selectedCode();
   renderedCode = code;
@@ -191,6 +194,7 @@ function refreshIfSelectionChanged() {
   if (!box.hidden && selectedCode() !== renderedCode) renderEvidence();
 }
 
+investigation?.register('evidence', { close:() => closeEvidence({ coordinated:true }) });
 button.addEventListener('click', () => box.hidden ? renderEvidence() : closeEvidence());
 window.refreshAtlasEvidence = () => { if (!box.hidden) renderEvidence(); };
 window.addEventListener('popstate', window.refreshAtlasEvidence);

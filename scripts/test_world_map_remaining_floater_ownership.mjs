@@ -10,8 +10,13 @@ assert.ok(
   'left-status layout must accept detached registered surfaces so modules do not briefly paint at legacy coordinates',
 );
 assert.ok(
-  layout.includes(".filter(row => row.zone === 'left-status' && row.element)"),
-  'left-status layout must attach registered elements itself',
+  layout.includes('.filter(row => row.zone === zone && row.element)') &&
+  layout.includes("const rows = refreshZone('left-status', ensureLeftStatusHost());"),
+  'left-status layout must route detached registered elements through the shared zone attachment path',
+);
+assert.ok(
+  layout.includes('for (const row of rows) if (row.element.parentElement !== host) host.appendChild(row.element);'),
+  'shared zone attachment must move registered surfaces into the canonical host',
 );
 assert.ok(
   layout.includes('#atlasUILeftStatus #axisOperatorHud{') &&

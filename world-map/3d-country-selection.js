@@ -23,9 +23,8 @@ const ENTITY_URL = '../data/world-map-entities.json';
 const REST_LOCAL = '../data/rest-countries-runtime.json';
 const REST_REMOTE = 'https://restcountries.com/v3.1/all?fields=name,cca3,population,area,latlng,capital,region,subregion,borders';
 
-const AUTO_EDGES_ACTIVE = 8;
-const AUTO_EDGES_OTHER = 4; // retained for public/runtime compatibility
-const AUTO_EDGES_TOTAL = 28;
+const DEFAULT_AUTO_RELATION_BUDGET = Object.freeze({ active:8, pinned:4, total:28 });
+let automaticRelationBudget = { ...DEFAULT_AUTO_RELATION_BUDGET };
 const RELATION_MODES = new Set(['all', 'money', 'systems', 'institutions', 'project', 'other']);
 const TYPE_PRIORITY = new Map([
   ['trade', 100], ['economic', 98], ['fiscal', 96], ['funding', 95], ['investment', 94],
@@ -49,6 +48,21 @@ let ready = false;
 let relationMode = RELATION_MODES.has(new URL(location.href).searchParams.get('relation'))
   ? new URL(location.href).searchParams.get('relation')
   : 'all';
+
+function clampBudget(value, fallback, max = 64) {
+  const parsed = Number(value);
+  return Number.isFinite(parsed) ? Math.max(0, Math.min(max, Math.round(parsed))) : fallback;
+}
+function setAutomaticRelationBudget(next = {}) {
+  automaticRelationBudget = {
+    active:clampBudget(next.active, automaticRelationBudget.active, 24),
+    pinned:clampBudget(next.pinned, automaticRelationBudget.pinned, 12),
+    total:clampBudget(next.total, automaticRelationBudget.total, 64),
+  };
+  applyAutomaticRelations();
+  window.dispatchEvent(new CustomEvent('potato-atlas-automatic-relation-budget-change', { detail:{ ...automaticRelationBudget } }));
+  return { ...automaticRelationBudget };
+}
 
 function emptyFC() { return { type: 'FeatureCollection', features: [] }; }
 function codeList(value) {
@@ -78,6 +92,7 @@ function snapshot(reason = 'read') {
     pinnedCodes: [...pinnedCodes],
     isPinned: activeCode ? pinnedCodes.includes(activeCode) : false,
     relationMode, compareMode: false,
+    automaticRelationBudget:{ ...automaticRelationBudget },
   };
 }
 
@@ -140,21 +155,22 @@ function rankedEdges(root, budget) {
   }
   return chosen;
 }
-function connectionsFor(code, budget = AUTO_EDGES_ACTIVE) { return rankedEdges(String(code || '').toUpperCase(), Math.max(1, Number(budget) || AUTO_EDGES_ACTIVE)); }
+function connectionsFor(code, budget = automaticRelationBudget.active) { return rankedEdges(String(code || '').toUpperCase(), Math.max(1, Number(budget) || automaticRelationBudget.active)); }
 
-function automaticRelationData(codes = activeCode ? [activeCode] : []) {
+function automaticRelationData(codes = activeCode ? [activeCode, ...pinnedCodes.filter(code => code !== activeCode)] : [...pinnedCodes]) {
   const roots = [...new Set((codes || []).filter(Boolean))];
   if (!roots.length) return emptyFC();
   const chosen = [], seen = new Set();
   for (const root of roots) {
-    const budget = root === activeCode ? AUTO_EDGES_ACTIVE : AUTO_EDGES_OTHER;
+    const budget = root === activeCode ? automaticRelationBudget.active : automaticRelationBudget.pinned;
+    if (budget <= 0) continue;
     for (const edge of rankedEdges(root, budget)) {
-      if (chosen.length >= AUTO_EDGES_TOTAL) break;
+      if (chosen.length >= automaticRelationBudget.total) break;
       const key = edgeKey(edge);
       if (seen.has(key)) continue;
       seen.add(key); chosen.push({ edge, root });
     }
-    if (chosen.length >= AUTO_EDGES_TOTAL) break;
+    if (chosen.length >= automaticRelationBudget.total) break;
   }
   const features = [];
   for (const { edge, root } of chosen) {
@@ -180,7 +196,7 @@ function setRelationMode(mode) {
 function renderSelectionStrip() {
   const strip = document.getElementById('atlasWorkingSelection');
   if (!strip) return;
-  strip.hidden = !pinnedCodes.length;
+  strip.hidden = !pinnedCodes.length || Boolean(window.__potatoAtlasPinnedContext);
   const list = strip.querySelector('.selection-list');
   list.innerHTML = pinnedCodes.map(code => `<span class="selection-chip${code === activeCode ? ' active' : ''}" data-country-code="${esc(code)}"><button type="button" data-activate="${esc(code)}" title="Inspect ${esc(countryName(code))}">${esc(countryName(code))}</button><button type="button" class="selection-remove" data-remove="${esc(code)}" aria-label="Unpin ${esc(countryName(code))}">×</button></span>`).join('');
   strip.querySelector('.selection-count').textContent = `${pinnedCodes.length} pinned`;
@@ -210,7 +226,7 @@ function pinCountry(code) {
   code = String(code || '').toUpperCase();
   if (!entityKnown(code) || pinnedCodes.includes(code)) return false;
   pinnedCodes.push(code);
-  applySelectionStates(); renderSelectionStrip(); updateUrl(); emitPins('pinned');
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations(); emitPins('pinned');
   return true;
 }
 function unpinCountry(code) {
@@ -218,7 +234,7 @@ function unpinCountry(code) {
   if (!pinnedCodes.includes(code)) return false;
   pinnedCodes = pinnedCodes.filter(value => value !== code);
   setFeatureState(code, 'selected', false);
-  applySelectionStates(); renderSelectionStrip(); updateUrl(); emitPins('unpinned');
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations(); emitPins('unpinned');
   return true;
 }
 function togglePinnedCountry(code) {
@@ -226,12 +242,11 @@ function togglePinnedCountry(code) {
   if (pinnedCodes.includes(code)) return unpinCountry(code);
   return pinCountry(code);
 }
-// Compatibility alias for older callers: "toggle selection" now means toggle retained pin.
 function toggleCountrySelection(code) { return togglePinnedCountry(code); }
 function clearPins() {
   for (const code of pinnedCodes) setFeatureState(code, 'selected', false);
   pinnedCodes = [];
-  applySelectionStates(); renderSelectionStrip(); updateUrl(); emitPins('pins-cleared');
+  applySelectionStates(); renderSelectionStrip(); updateUrl(); applyAutomaticRelations(); emitPins('pins-cleared');
 }
 function clearActive() {
   if (!activeCode) return;
@@ -240,7 +255,7 @@ function clearActive() {
   try {
     if (typeof baseClearCountry === 'function') baseClearCountry(); else baseSelection.clear?.();
   } finally { syncingCore = false; }
-  applySelectionStates(); updateUrl(); map.getSource('relations')?.setData?.(emptyFC()); emit('cleared');
+  applySelectionStates(); updateUrl(); applyAutomaticRelations(); emit('cleared');
 }
 function clearAll({ keepView = true } = {}) {
   for (const code of pinnedCodes) setFeatureState(code, 'selected', false);
@@ -284,8 +299,6 @@ function handleCountryFeature(event, feature) {
 function interceptPolygonClick(event) {
   const feature = event.features?.[0];
   if (!feature) return;
-  // Degraded/direct-module fallback: preserve the legacy event claim only when
-  // the shared Interaction Router is unavailable.
   if (event.originalEvent) event.originalEvent.__potatoAtlasOverlayHandled = true;
   handleCountryFeature(event, feature);
 }
@@ -304,7 +317,6 @@ function installCountryInteraction() {
     });
     return;
   }
-  // Degraded/direct-module fallback for standalone module loads.
   installClickInterception();
 }
 function adoptExternalSelection(event) {
@@ -375,14 +387,17 @@ window.__potatoAtlasSelection = {
   isPinned(code) { return pinnedCodes.includes(String(code || '').toUpperCase()); },
   clear:clearActive, clearActive, clearPins, clearAll,
   focus() { if (activeCode) window.fitCountry?.(); }, inspect() { window.showOverview?.(); },
-  automaticRelationData, connectionsFor, countryName, relationBucket, edgeMatchesRelationMode, setRelationMode, getRelationMode() { return relationMode; },
+  automaticRelationData, connectionsFor, countryName, relationBucket, edgeMatchesRelationMode,
+  setAutomaticRelationBudget, getAutomaticRelationBudget() { return { ...automaticRelationBudget }; },
+  setRelationMode, getRelationMode() { return relationMode; },
 };
 window.clearCountrySelection = clearActive;
 window.clearAllSelectedCountries = clearPins;
 window.addEventListener('potato-atlas-selection-change', adoptExternalSelection);
 window.addEventListener('potato-atlas-relations-change', event => { if (!event?.detail?.visible) queueMicrotask(applyAutomaticRelations); });
 window.addEventListener('potato-atlas-lens-change', applySelectionStates);
+window.addEventListener('potato-atlas-pinned-context-ready', renderSelectionStrip);
 map.on('zoomend', applyAutomaticRelations);
 
 await restoreState();
-window.dispatchEvent(new CustomEvent('potato-atlas-working-selection-ready', { detail:{pinnedCodes:[...pinnedCodes],selectedCodes:[...pinnedCodes],activeCode,relationMode} }));
+window.dispatchEvent(new CustomEvent('potato-atlas-working-selection-ready', { detail:{pinnedCodes:[...pinnedCodes],selectedCodes:[...pinnedCodes],activeCode,relationMode,automaticRelationBudget:{...automaticRelationBudget}} }));
