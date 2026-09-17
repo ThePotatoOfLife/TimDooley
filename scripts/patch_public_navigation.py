@@ -36,6 +36,94 @@ LEGACY_TTS_READERS = {
         "exclude": "#shadow-farm-tts,.nav",
         "asset_prefix": "../",
     },
+    "rooms/index.html": {
+        "id": "rooms",
+        "root": ".rooms-page",
+        "label": "Rooms",
+        "all_label": "Whole Rooms directory",
+        "exclude": "#rooms-tts,.page-nav,.deep",
+        "asset_prefix": "../",
+    },
+    "history/index.html": {
+        "id": "history",
+        "root": ".page",
+        "label": "History & Time",
+        "all_label": "Whole History & Time room",
+        "exclude": "#history-tts,.page-nav,.deep",
+        "asset_prefix": "../",
+    },
+    "law/index.html": {
+        "id": "law",
+        "root": ".page",
+        "label": "Law & Justice",
+        "all_label": "Whole Law & Justice room",
+        "exclude": "#law-tts,.page-nav,.deep",
+        "asset_prefix": "../",
+    },
+    "economy/index.html": {
+        "id": "economy",
+        "root": ".page",
+        "label": "Economy & Finance",
+        "all_label": "Whole Economy & Finance room",
+        "exclude": "#economy-tts,.page-nav,.deep",
+        "asset_prefix": "../",
+    },
+    "world-systems/index.html": {
+        "id": "world-systems",
+        "root": ".wrap",
+        "label": "World Systems",
+        "all_label": "Whole World Systems room",
+        "exclude": "#world-systems-tts,.family,.deep",
+        "asset_prefix": "../",
+    },
+    "politics/index.html": {
+        "id": "politics",
+        "root": ".longform-doc",
+        "label": "Politics & Geopolitics",
+        "all_label": "Whole politics reader",
+        "exclude": "#politics-tts,.status",
+        "asset_prefix": "../",
+    },
+    "timeline/index.html": {
+        "id": "timeline",
+        "root": ".page",
+        "label": "Timeline",
+        "all_label": "Whole timeline",
+        "exclude": "#timeline-tts,.nav,.paths",
+        "asset_prefix": "../",
+    },
+    "works/index.html": {
+        "id": "works",
+        "root": ".works-page",
+        "label": "Works",
+        "all_label": "Whole Works room",
+        "exclude": "#works-tts,.page-nav,.deep",
+        "asset_prefix": "../",
+    },
+    "science/index.html": {
+        "id": "science",
+        "root": ".science-page",
+        "label": "Science",
+        "all_label": "Whole Science room",
+        "exclude": "#science-tts,.page-nav,.science-controls,.science-library-status,.science-empty,.science-deep",
+        "asset_prefix": "../",
+    },
+    "context/source-authority/index.html": {
+        "id": "source-authority",
+        "root": ".wrap",
+        "label": "Sources & Evidence",
+        "all_label": "Whole Sources & Evidence reader",
+        "exclude": "#source-authority-tts,.nav,.small",
+        "asset_prefix": "../../",
+    },
+    "philosophy/interpretive-justice.html": {
+        "id": "interpretive-justice",
+        "root": ".philosophy-page",
+        "label": "Interpretive Justice",
+        "all_label": "Whole Interpretive Justice reader",
+        "exclude": "#interpretive-justice-tts,.page-nav,.deep-source",
+        "asset_prefix": "../",
+    },
 }
 
 
@@ -73,10 +161,10 @@ def normalize_public_surface(path: Path) -> bool:
 
 
 def inject_legacy_tts_reader(text: str, config: dict[str, str]) -> str:
-    """Project the shared long-form TTS reader into copied legacy HTML.
+    """Project the shared long-form TTS reader into generated public HTML.
 
-    This is intentionally a generated-artifact transform. It keeps legacy source
-    byte-stable while giving mature public readers the same shared speech capability.
+    This is intentionally a generated-artifact transform. It keeps source pages
+    stable while giving mature public readers the same shared speech capability.
     The transform is fail-closed and idempotent.
     """
     reader_id = str(config.get("id", "")).strip()
@@ -122,8 +210,8 @@ def inject_legacy_tts_reader(text: str, config: dict[str, str]) -> str:
         return text
 
     # Prefer placing the reader immediately after the page's first navigation row.
-    # Legacy readers usually begin with navigation; falling back to the main opening
-    # tag still keeps the player inside its configured readable root.
+    # Falling back to the main opening tag still keeps the player close to the
+    # readable content while allowing the configured root to be narrower than main.
     nav_match = re.search(r"<nav\b[^>]*>.*?</nav\s*>", text[main_match.end():], flags=re.I | re.S)
     if nav_match:
         insert_at = main_match.end() + nav_match.end()
