@@ -74,6 +74,7 @@ function cardMeta(view) {
 }
 
 function formatPopulation(value) {
+  if (value == null || value === '') return '—';
   const number = Number(value);
   if (!Number.isFinite(number)) return '—';
   return new Intl.NumberFormat(undefined, { notation:'compact', maximumFractionDigits:1 }).format(number);
