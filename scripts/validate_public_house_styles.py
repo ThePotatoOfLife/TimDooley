@@ -7,7 +7,7 @@ from pathlib import Path
 
 from house_public_surfaces import surface_rows
 from house_style_scope import has_legacy_global_theme
-from patch_public_house_styles import convergence_family, output_path_for_route
+from patch_public_house_styles import convergence_family, is_scope_candidate, output_path_for_route
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -25,19 +25,12 @@ def owners(text: str) -> list[str]:
 
 
 def legacy_source_for_surface(surface: dict) -> Path | None:
-    """Return the authored page only when it actually needs compatibility scoping.
-
-    Tim/FAQ ancestry identifies the convergence family, but ancestry alone does not
-    imply style debt. Clean descendants such as Story, Collection, and Works must not
-    be required to carry a compatibility marker they never needed.
-    """
+    """Return the authored page only when it actually needs compatibility scoping."""
     source = output_path_for_route(ROOT, surface["canonical_route"])
     if not source.exists():
         return None
     text = source.read_text(encoding="utf-8", errors="replace")
-    if "reader.css" in text or "layout-guard.css" in text:
-        return None
-    if not has_legacy_global_theme(text):
+    if not is_scope_candidate(surface, text):
         return None
     return source
 
@@ -51,18 +44,20 @@ def main() -> int:
     errors: list[str] = []
     checked = 0
     scoped = 0
+    tim_faq_checked = 0
     for surface in surface_rows(ROOT):
         if surface.get("status") != "active" or surface.get("shell_type") not in {"editorial", "longform"}:
-            continue
-        family = convergence_family(surface["id"])
-        if not family:
             continue
 
         source = legacy_source_for_surface(surface)
         if source is None:
             continue
 
+        family = convergence_family(surface["id"])
         checked += 1
+        if family in {"Tim", "FAQ"}:
+            tim_faq_checked += 1
+
         page = output_path_for_route(OUT, surface["canonical_route"])
         if not page.exists():
             errors.append(
@@ -85,10 +80,14 @@ def main() -> int:
         if "site-system.css" not in text or 'class="site-housebar' not in text:
             errors.append(f"{page.relative_to(OUT)} ({family}) lost shared House shell while scoping legacy theme")
 
-    if checked < 10:
-        errors.append(f"expected at least 10 self-themed Tim/FAQ public readers, checked {checked}")
+    if tim_faq_checked < 10:
+        errors.append(f"expected at least 10 self-themed Tim/FAQ public readers, checked {tim_faq_checked}")
+    if checked < 12:
+        errors.append(
+            f"expected the Tim/FAQ wave plus remaining registered standalone legacy readers; checked only {checked} total"
+        )
     if scoped != checked:
-        errors.append(f"only {scoped}/{checked} self-themed Tim/FAQ readers carry the public scope marker")
+        errors.append(f"only {scoped}/{checked} registered self-themed readers carry the public scope marker")
 
     if errors:
         print("Public House style validation FAILED")
@@ -96,7 +95,10 @@ def main() -> int:
             print(f" - {error}")
         return 1
 
-    print(f"Public House style validation passed: {scoped}/{checked} Tim/FAQ self-themed readers are locally scoped beneath the shared House.")
+    print(
+        f"Public House style validation passed: {scoped}/{checked} registered legacy readers "
+        f"({tim_faq_checked} Tim/FAQ) are locally scoped beneath the shared House."
+    )
     return 0
 
 
