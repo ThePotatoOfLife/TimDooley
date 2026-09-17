@@ -65,14 +65,19 @@ def _top_level_door_id(root: Path, surface_id: str) -> str | None:
     return surface_id if surface_id in primary_ids else None
 
 
-def render_house_bar(root: Path, surface_id: str, *, compact: bool = False) -> str:
-    """Render the permanent House identity and global navigation layer."""
-    surface = surface_by_id(root, surface_id)
-    from_route = surface["canonical_route"]
+def render_house_bar_for_route(
+    root: Path,
+    from_route: str,
+    *,
+    active_surface_id: str | None = None,
+    compact: bool = False,
+    data_surface: str = "generated",
+) -> str:
+    """Render House navigation for a route that may not have a durable registry row."""
     data = load_public_surfaces(root)
     by_id = surfaces_by_id(root)
     home = by_id["home"]
-    active_door = _top_level_door_id(root, surface_id)
+    active_door = _top_level_door_id(root, active_surface_id) if active_surface_id else None
 
     primary = "".join(
         _anchor(from_route, row, current_id=active_door, class_name="site-nav__link site-nav__link--door")
@@ -85,13 +90,13 @@ def render_house_bar(root: Path, surface_id: str, *, compact: bool = False) -> s
         if row and row.get("status") == "active":
             utility_rows.append(row)
     secondary = "".join(
-        _anchor(from_route, row, current_id=surface_id, class_name="site-nav__link site-nav__link--secondary")
+        _anchor(from_route, row, current_id=active_surface_id, class_name="site-nav__link site-nav__link--secondary")
         for row in utility_rows
     )
 
     compact_class = " site-housebar--compact" if compact else ""
     return (
-        f'<header class="site-housebar{compact_class}" data-house-surface="{esc(surface_id)}">'
+        f'<header class="site-housebar{compact_class}" data-house-surface="{esc(data_surface)}">'
         '<div class="site-housebar__inner">'
         f'<a class="site-brand" href="{esc(relative_href(from_route, home["canonical_route"]))}" aria-label="Potato of Life home">'
         '<span class="site-brand__mark" aria-hidden="true">◆</span>'
@@ -119,6 +124,18 @@ def render_house_bar(root: Path, surface_id: str, *, compact: bool = False) -> s
     )
 
 
+def render_house_bar(root: Path, surface_id: str, *, compact: bool = False) -> str:
+    """Render the permanent House identity and global navigation layer."""
+    surface = surface_by_id(root, surface_id)
+    return render_house_bar_for_route(
+        root,
+        surface["canonical_route"],
+        active_surface_id=surface_id,
+        compact=compact,
+        data_surface=surface_id,
+    )
+
+
 def render_breadcrumbs(root: Path, surface_id: str) -> str:
     surface = surface_by_id(root, surface_id)
     from_route = surface["canonical_route"]
@@ -129,6 +146,27 @@ def render_breadcrumbs(root: Path, surface_id: str) -> str:
             links.append(f'<span aria-current="page">{esc(row["title"])}</span>')
         else:
             links.append(_anchor(from_route, row))
+    return '<nav class="site-breadcrumbs" aria-label="Breadcrumb">' + '<span class="site-breadcrumbs__sep" aria-hidden="true">/</span>'.join(links) + '</nav>'
+
+
+def render_route_breadcrumbs(
+    root: Path,
+    from_route: str,
+    current_title: str,
+    *,
+    parent_surface_id: str | None = None,
+) -> str:
+    """Render a compact breadcrumb for generated pages outside the durable registry."""
+    by_id = surfaces_by_id(root)
+    rows: list[dict] = [by_id["home"]]
+    if parent_surface_id and parent_surface_id in by_id and parent_surface_id != "home":
+        chain = parent_chain(root, parent_surface_id)
+        for row in chain:
+            if row["id"] != "home" and row["id"] not in {item["id"] for item in rows}:
+                rows.append(row)
+
+    links = [_anchor(from_route, row) for row in rows]
+    links.append(f'<span aria-current="page">{esc(current_title)}</span>')
     return '<nav class="site-breadcrumbs" aria-label="Breadcrumb">' + '<span class="site-breadcrumbs__sep" aria-hidden="true">/</span>'.join(links) + '</nav>'
 
 
@@ -201,16 +239,27 @@ def render_related_routes(root: Path, surface_id: str) -> str:
     return '<aside class="site-related" aria-label="Continue exploring">' + "".join(blocks) + "</aside>"
 
 
-def render_house_footer(root: Path, surface_id: str) -> str:
-    surface = surface_by_id(root, surface_id)
-    from_route = surface["canonical_route"]
+def render_house_footer_for_route(
+    root: Path,
+    from_route: str,
+    *,
+    current_surface_id: str | None = None,
+) -> str:
+    """Render the shared footer for registered or generated routes."""
     data = load_public_surfaces(root)
     by_id = surfaces_by_id(root)
     rows = [by_id[row_id] for row_id in data.get("footer_global_ids", []) if row_id in by_id]
-    links = "".join(_anchor(from_route, row, current_id=surface_id, class_name="site-footer__link") for row in rows)
+    links = "".join(
+        _anchor(from_route, row, current_id=current_surface_id, class_name="site-footer__link") for row in rows
+    )
     return (
         '<footer class="site-footer">'
         '<div class="site-footer__brand">Potato of Life</div>'
         f'<nav class="site-footer__nav" aria-label="Footer navigation">{links}</nav>'
         '</footer>'
     )
+
+
+def render_house_footer(root: Path, surface_id: str) -> str:
+    surface = surface_by_id(root, surface_id)
+    return render_house_footer_for_route(root, surface["canonical_route"], current_surface_id=surface_id)
