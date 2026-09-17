@@ -11,7 +11,7 @@ import sys
 from pathlib import Path
 from urllib.parse import urljoin, urlparse
 
-from house_public_surfaces import surface_by_id, surface_rows
+from house_public_surfaces import child_rows, parent_chain, surface_by_id, surface_rows, surfaces_by_id
 from house_shell import relative_href
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,6 +19,7 @@ OUT = ROOT / "_site"
 BASE_HREF_RE = re.compile(r'<base\b[^>]*href=["\']([^"\']+)["\']', re.I)
 LEGACY_STYLE_RE = re.compile(r'<link\b[^>]*href=["\'][^"\']*\bapp/style\.css["\']', re.I)
 READER_CSS_RE = re.compile(r'<link\b[^>]*href=["\'][^"\']*\breader\.css["\']', re.I)
+SITE_RELATED_RE = re.compile(r'<aside\b[^>]*class=["\'][^"\']*\bsite-related\b[^"\']*["\'][^>]*>.*?</aside>', re.I | re.S)
 
 REPRESENTATIVE_BRANCHES = {
     "tim": "tim",
@@ -85,6 +86,78 @@ def source_backed_utility_surfaces() -> list[dict]:
     return eligible
 
 
+def continuation_eligible(row: dict) -> bool:
+    return (
+        row.get("status") == "active"
+        and row.get("shell_type") not in {"redirect", "diagnostic", "utility"}
+        and row.get("visibility") != "compatibility"
+    )
+
+
+def branch_anchor(surface_id: str) -> str:
+    chain = [row for row in parent_chain(ROOT, surface_id) if row["id"] != "home"]
+    return chain[0]["id"] if chain else "home"
+
+
+def expected_across(surface: dict) -> dict | None:
+    rooms = set(surface.get("primary_room_ids", []))
+    if not rooms:
+        return None
+    own_branch = branch_anchor(surface["id"])
+    candidates = []
+    for index, row in enumerate(surface_rows(ROOT)):
+        if row["id"] == surface["id"] or not continuation_eligible(row):
+            continue
+        if branch_anchor(row["id"]) == own_branch:
+            continue
+        shared = rooms & set(row.get("primary_room_ids", []))
+        if not shared:
+            continue
+        candidates.append((
+            -len(shared),
+            0 if row.get("navigation_group") == surface.get("navigation_group") else 1,
+            index,
+            row["canonical_route"],
+            row,
+        ))
+    return sorted(candidates, key=lambda item: item[:4])[0][-1] if candidates else None
+
+
+def validate_continuation(surface: dict, route: str, text: str, rel: Path, errors: list[str]) -> None:
+    match = SITE_RELATED_RE.search(text)
+    if not match:
+        errors.append(f"{rel} missing shared House continuation routes")
+        return
+
+    fragment = match.group(0)
+    if 'aria-label="Continue exploring"' not in fragment:
+        errors.append(f"{rel} continuation layer lacks accessible label")
+
+    parent_id = surface.get("primary_parent")
+    if parent_id:
+        parent = surface_by_id(ROOT, parent_id)
+        if "Up" not in fragment:
+            errors.append(f"{rel} continuation layer missing Up direction")
+        require_href(fragment, relative_href(route, parent["canonical_route"]), f"{rel} Up route does not resolve to {parent['canonical_route']}", errors)
+
+    children = [row for row in child_rows(ROOT, surface["id"]) if continuation_eligible(row)]
+    if children:
+        if "Deeper" not in fragment:
+            errors.append(f"{rel} continuation layer missing Deeper direction despite active children")
+        if not any(f'href="{relative_href(route, row["canonical_route"])}"' in fragment for row in children):
+            errors.append(f"{rel} Deeper direction does not reach an active child")
+
+    across = expected_across(surface)
+    if across:
+        if "Across" not in fragment:
+            errors.append(f"{rel} continuation layer missing Room-derived Across direction")
+        require_href(fragment, relative_href(route, across["canonical_route"]), f"{rel} Across route does not reach strongest shared-Room surface {across['canonical_route']}", errors)
+
+    self_href = relative_href(route, route)
+    if self_href != "./" and f'href="{self_href}"' in fragment:
+        errors.append(f"{rel} continuation layer links back to itself")
+
+
 def validate_curated_shell_policy(errors: list[str]) -> None:
     eligible = source_backed_shell_surfaces()
     if len(eligible) < 10:
@@ -118,6 +191,8 @@ def validate_curated_shell_policy(errors: list[str]) -> None:
 
         if LEGACY_STYLE_RE.search(source_text) and not READER_CSS_RE.search(source_text) and "reader-v2.css" not in text:
             errors.append(f"{rel} uses legacy app/style.css without a Reader v2 convergence path")
+
+        validate_continuation(surface, route, text, rel, errors)
 
     great_book = path_for_route(OUT, "/great-book/")
     if great_book.exists():
