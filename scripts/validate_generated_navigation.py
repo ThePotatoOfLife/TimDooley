@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate that generated knowledge pages return readers to the right human surface."""
+"""Validate that generated knowledge pages return readers through the shared House."""
 
 from __future__ import annotations
 
@@ -9,16 +9,23 @@ import subprocess
 import sys
 from pathlib import Path
 
+from house_public_surfaces import surface_by_id
+from house_shell import relative_href
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
-BASE_URL = "https://thepotatooflife.github.io/TimDooley"
 
 REPRESENTATIVE_BRANCHES = {
-    "tim": "/tim-dooley/",
-    "traditions": "/religion/",
-    "science": "/science/",
-    "world": "/world/",
+    "tim": "tim",
+    "traditions": "religion",
+    "science": "science",
+    "world": "world",
 }
+
+
+def require_href(text: str, href: str, label: str, errors: list[str]) -> None:
+    if f'href="{href}"' not in text and f"href='{href}'" not in text:
+        errors.append(label)
 
 
 def main() -> int:
@@ -37,15 +44,22 @@ def main() -> int:
             print(" - build_site.py failed")
             return 1
 
-        for branch_id, parent_path in REPRESENTATIVE_BRANCHES.items():
+        for branch_id, parent_surface_id in REPRESENTATIVE_BRANCHES.items():
             page = OUT / "topics" / branch_id / "index.html"
             if not page.exists():
                 errors.append(f"missing generated topic page: {page.relative_to(ROOT)}")
                 continue
             text = page.read_text(encoding="utf-8", errors="replace")
-            expected = BASE_URL + parent_path
-            if expected not in text:
-                errors.append(f"topics/{branch_id}/ does not link back to {parent_path}")
+            parent = surface_by_id(ROOT, parent_surface_id)
+            expected = relative_href(f"/topics/{branch_id}/", parent["canonical_route"])
+            require_href(
+                text,
+                expected,
+                f"topics/{branch_id}/ does not link back to {parent['canonical_route']} through the House route resolver",
+                errors,
+            )
+            if "site-housebar" not in text:
+                errors.append(f"topics/{branch_id}/ missing shared House bar")
 
         contexts = json.loads((ROOT / "knowledge" / "indexes" / "context-graph.json").read_text(encoding="utf-8"))
         clusters = contexts.get("clusters", [])
@@ -55,8 +69,25 @@ def main() -> int:
                 page = OUT / "context" / cid / "index.html"
                 if page.exists():
                     text = page.read_text(encoding="utf-8", errors="replace")
-                    if BASE_URL + "/explore/" not in text:
-                        errors.append(f"context/{cid}/ does not route back to Explore")
+                    route = f"/context/{cid}/"
+                    context_surface = surface_by_id(ROOT, "context")
+                    explore_surface = surface_by_id(ROOT, "explore")
+                    context_href = relative_href(route, context_surface["canonical_route"])
+                    explore_href = relative_href(route, explore_surface["canonical_route"])
+                    require_href(
+                        text,
+                        context_href,
+                        f"context/{cid}/ does not route up to {context_surface['canonical_route']}",
+                        errors,
+                    )
+                    require_href(
+                        text,
+                        explore_href,
+                        f"context/{cid}/ does not retain Explore in shared House navigation",
+                        errors,
+                    )
+                    if "site-housebar" not in text or "site-breadcrumbs" not in text:
+                        errors.append(f"context/{cid}/ missing shared House orientation")
 
         manifest = json.loads((ROOT / "manifest.json").read_text(encoding="utf-8"))
         record_branch = next((b for b in manifest.get("branches", []) if b.get("records")), None)
@@ -72,7 +103,7 @@ def main() -> int:
                 print(f" - {error}")
             return 1
 
-        print("Generated navigation validation passed: topic, record and context pages resolve to current human parents.")
+        print("Generated navigation validation passed: topic, record and context pages use House-resolved parents and shared orientation.")
         return 0
     finally:
         if OUT.exists():
