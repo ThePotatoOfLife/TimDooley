@@ -120,7 +120,7 @@
     }
 
     function highlightBibleBoundary(event){
-      if(event.type!=='boundary'||!event.absoluteWord)return;
+      if(!['boundary','followchange'].includes(event.type)||!event.absoluteWord)return;
       const pieces=relationPieces();
       if(!pieces){pageHighlighter.clear();return}
       if(event.sectionId==='project'){pageHighlighter.highlight(pieces.project.node,event.absoluteWord,'',event.followReading);return}
@@ -180,7 +180,7 @@
       settingsKey,
       onEvent:event=>{
         if(['chunkstart','boundary'].includes(event.type))setRelationActive(true);
-        if(event.type==='boundary'&&event.absoluteWord)highlightBibleBoundary(event);
+        if((event.type==='boundary'||event.type==='followchange')&&event.absoluteWord)highlightBibleBoundary(event);
         if(['complete','stop','error'].includes(event.type)){setRelationActive(false);pageHighlighter.clear()}
         if(event.type==='complete'&&continuing)void continueToNext(event.sectionId,drawer);
         if(event.type==='stop'){continuing=false;continueToggle.checked=false}
