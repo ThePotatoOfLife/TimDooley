@@ -46,12 +46,19 @@ def _nav_label(row: dict) -> str:
     return str(row.get("nav_label") or row.get("title") or row.get("id") or "")
 
 
-def _anchor(from_route: str, row: dict, *, current_id: str | None = None, class_name: str = "") -> str:
+def _anchor(
+    from_route: str,
+    row: dict,
+    *,
+    current_id: str | None = None,
+    current_value: str = "page",
+    class_name: str = "",
+) -> str:
     attrs = []
     if class_name:
         attrs.append(f'class="{esc(class_name)}"')
     if current_id and row.get("id") == current_id:
-        attrs.append('aria-current="page"')
+        attrs.append(f'aria-current="{esc(current_value)}"')
     attrs_text = (" " + " ".join(attrs)) if attrs else ""
     href = relative_href(from_route, row["canonical_route"])
     return f'<a href="{esc(href)}"{attrs_text}>{esc(_nav_label(row))}</a>'
@@ -79,9 +86,16 @@ def render_house_bar_for_route(
     by_id = surfaces_by_id(root)
     home = by_id["home"]
     active_door = _top_level_door_id(root, active_surface_id) if active_surface_id else None
+    door_current_value = "page" if active_surface_id and active_surface_id == active_door else "location"
 
     primary = "".join(
-        _anchor(from_route, row, current_id=active_door, class_name="site-nav__link site-nav__link--door")
+        _anchor(
+            from_route,
+            row,
+            current_id=active_door,
+            current_value=door_current_value,
+            class_name="site-nav__link site-nav__link--door",
+        )
         for row in primary_gateway_rows(root)
     )
 
@@ -97,6 +111,7 @@ def render_house_bar_for_route(
 
     compact_class = " site-housebar--compact" if compact else ""
     return (
+        '<a class="site-skip-link" href="#main-content">Skip to content</a>'
         f'<header class="site-housebar{compact_class}" data-house-surface="{esc(data_surface)}">'
         '<div class="site-housebar__inner">'
         f'<a class="site-brand" href="{esc(relative_href(from_route, home["canonical_route"]))}" aria-label="Potato of Life home">'
@@ -112,10 +127,10 @@ def render_house_bar_for_route(
         '<details class="site-mobile-nav">'
         '<summary>Menu</summary>'
         '<div class="site-mobile-nav__panel">'
-        '<div class="site-mobile-nav__group" aria-label="Primary Doors">'
+        '<div class="site-mobile-nav__group" role="group" aria-label="Primary Doors">'
         f'{primary}'
         '</div>'
-        '<div class="site-mobile-nav__group" aria-label="House utilities">'
+        '<div class="site-mobile-nav__group" role="group" aria-label="House utilities">'
         f'{secondary}'
         '</div>'
         '</div>'
@@ -196,7 +211,7 @@ def render_breadcrumbs(root: Path, surface_id: str) -> str:
             links.append(f'<span aria-current="page">{esc(row["title"])}</span>')
         else:
             links.append(_anchor(from_route, row))
-    return '<nav class="site-breadcrumbs" aria-label="Breadcrumb">' + '<span class="site-breadcrumbs__sep" aria-hidden="true">/</span>'.join(links) + '</nav>'
+    return '<nav id="main-content" class="site-breadcrumbs" aria-label="Breadcrumb">' + '<span class="site-breadcrumbs__sep" aria-hidden="true">/</span>'.join(links) + '</nav>'
 
 
 def render_route_breadcrumbs(
@@ -217,7 +232,7 @@ def render_route_breadcrumbs(
 
     links = [_anchor(from_route, row) for row in rows]
     links.append(f'<span aria-current="page">{esc(current_title)}</span>')
-    return '<nav class="site-breadcrumbs" aria-label="Breadcrumb">' + '<span class="site-breadcrumbs__sep" aria-hidden="true">/</span>'.join(links) + '</nav>'
+    return '<nav id="main-content" class="site-breadcrumbs" aria-label="Breadcrumb">' + '<span class="site-breadcrumbs__sep" aria-hidden="true">/</span>'.join(links) + '</nav>'
 
 
 def render_local_nav(root: Path, surface_id: str) -> str:
