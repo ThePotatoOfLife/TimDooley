@@ -206,6 +206,7 @@
     if(typeof document==='undefined')return null;
     const target=options.target;
     const getPayload=typeof options.getPayload==='function'?options.getPayload:()=>options.payload;
+    const prepareSection=typeof options.prepareSection==='function'?options.prepareSection:null;
     if(!target)throw new Error('PotatoTTSDrawer.mount requires a target element.');
 
     const speechOk=Boolean(root?.speechSynthesis&&root?.SpeechSynthesisUtterance&&root?.PotatoTTS?.TTSEngine);
@@ -221,6 +222,8 @@
     let voices=[];
     let selectedVoice=null;
     let engine=null;
+    let preparing=false;
+    let startRequest=0;
 
     const host=el('section','ptts-drawer');host.dataset.state=state;
     const closed=el('button','ptts-trigger','🔊 Listen');closed.type='button';closed.setAttribute('aria-expanded','false');
@@ -270,7 +273,15 @@
       const parts=renderFocusedText(activeText,range);reading.replaceChildren(document.createTextNode(parts.before),el('mark','ptts-word',parts.active),document.createTextNode(parts.after));
       const mark=reading.querySelector('.ptts-word');mark?.scrollIntoView?.({block:'nearest',inline:'nearest'});
     }
-    function updateButtons(){const s=engine?.state||'idle';pause.disabled=!['speaking','paused'].includes(s);stop.disabled=s==='idle';pause.textContent=s==='paused'?'▶':'Ⅱ';status.textContent=s==='speaking'?'reading':s==='paused'?'paused':'';host.dataset.speech=s;}
+    function updateButtons(){
+      const s=engine?.state||'idle';
+      play.disabled=!speechOk||preparing;
+      pause.disabled=!speechOk||preparing||!['speaking','paused'].includes(s);
+      stop.disabled=!speechOk||(s==='idle'&&!preparing);
+      pause.textContent=s==='paused'?'▶':'Ⅱ';
+      status.textContent=!speechOk?'speech unavailable':preparing?'loading text…':s==='speaking'?'reading':s==='paused'?'paused':'';
+      host.dataset.speech=preparing?'preparing':s;
+    }
 
     if(speechOk){
       engine=new root.PotatoTTS.TTSEngine({synth:root.speechSynthesis,Utterance:root.SpeechSynthesisUtterance,onEvent:event=>{
@@ -285,7 +296,30 @@
       [play,pause,stop,voice,volume,speed,mute].forEach(node=>node.disabled=true);status.textContent='speech unavailable';
     }
 
-    function start(){
+    function cancelPendingStart(){
+      startRequest+=1;
+      if(preparing){preparing=false;updateButtons()}
+    }
+    async function start(){
+      const request=++startRequest;
+      if(prepareSection){
+        preparing=true;updateButtons();
+        try{
+          const next=await prepareSection(sectionId);
+          if(request!==startRequest)return;
+          if(next)payload=normalizePayload(next);
+        }catch(error){
+          if(request===startRequest){
+            preparing=false;
+            status.textContent='could not load text';host.dataset.speech='error';
+            options.onEvent?.({type:'error',error,sectionId});
+          }
+          return;
+        }finally{
+          if(request===startRequest&&preparing){preparing=false;updateButtons()}
+        }
+      }
+      if(request!==startRequest)return;
       payload=normalizePayload(getPayload()||payload);updateScope();activeText=buildReadingText(payload,sectionId);if(!activeText)return;currentWord=null;showPlain(activeText);engine?.start(activeText,currentOptions());if(state==='closed')setState('open');
     }
     function restartLive(){if(engine?.state!=='speaking')return;const at=currentWord?.start||engine.cursor||0;engine.start(activeText,{...currentOptions(),startAt:at});}
@@ -300,23 +334,23 @@
       if(payload.sections.some(section=>section.id===id))sectionId=id;
       updateScope();
       setState('open');
-      start();
+      void start();
     }
 
     closed.addEventListener('click',()=>{setPayload(getPayload()||payload);setState('open')});
-    collapse.addEventListener('click',()=>{engine?.stop();setState('closed')});
+    collapse.addEventListener('click',()=>{cancelPendingStart();engine?.stop();setState('closed')});
     expand.addEventListener('click',()=>{setState(state==='expanded'?'open':'expanded');activeText=buildReadingText(payload,sectionId);showPlain(activeText)});
-    play.addEventListener('click',()=>{if(engine?.state==='paused')engine.resume();else start()});
+    play.addEventListener('click',()=>{if(engine?.state==='paused')engine.resume();else void start()});
     pause.addEventListener('click',()=>{if(engine?.state==='paused')engine.resume();else engine?.pause()});
-    stop.addEventListener('click',()=>engine?.stop());
-    scope.addEventListener('change',()=>{sectionId=scope.value;activeText=buildReadingText(payload,sectionId);engine?.stop();showPlain(activeText);label.textContent=[payload.label,resolveSection(payload,sectionId)?.label].filter(Boolean).join(' · ')});
+    stop.addEventListener('click',()=>{cancelPendingStart();engine?.stop()});
+    scope.addEventListener('change',()=>{cancelPendingStart();sectionId=scope.value;activeText=buildReadingText(payload,sectionId);engine?.stop();showPlain(activeText);label.textContent=[payload.label,resolveSection(payload,sectionId)?.label].filter(Boolean).join(' · ')});
     voice.addEventListener('change',()=>{selectedVoice=voices[Number(voice.value)]||null;writeSettings({voice:root.PotatoTTS.voiceIdentity(selectedVoice)});restartLive()});
     speed.addEventListener('change',()=>{writeSettings({speed:speed.value});restartLive()});
     volume.addEventListener('input',()=>{const v=Number(volume.value);if(v>0)lastVolume=v;mute.textContent=v===0?'🔇':v<.5?'🔉':'🔊';writeSettings({volume:v});restartLive()});
     mute.addEventListener('click',()=>{if(Number(volume.value)>0){lastVolume=Number(volume.value);volume.value='0'}else volume.value=String(lastVolume||1);volume.dispatchEvent(new Event('input'))});
 
     updateScope();updateButtons();
-    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>engine?.stop(),engine};
+    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>{cancelPendingStart();engine?.stop()},engine};
   }
 
   return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,buildNormalizedTextMap,createPageHighlighter,mountSelectionAction,mount};
