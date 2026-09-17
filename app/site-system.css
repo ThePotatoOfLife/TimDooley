@@ -89,6 +89,27 @@ summary:focus-visible,
   outline-offset: 3px;
 }
 
+.site-skip-link {
+  position: fixed;
+  top: 10px;
+  left: var(--site-gutter);
+  z-index: 200;
+  padding: 10px 14px;
+  border: 1px solid var(--site-line-strong);
+  border-radius: var(--site-radius-sm);
+  background: var(--site-surface-strong);
+  color: var(--site-ink);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+  transform: translateY(calc(-100% - 24px));
+  transition: transform var(--site-transition);
+}
+
+.site-skip-link:focus {
+  transform: translateY(0);
+}
+
 ::selection {
   background: rgba(183, 225, 126, .23);
   color: var(--site-ink);
@@ -154,7 +175,7 @@ summary:focus-visible,
 .site-nav__link {
   display: inline-flex;
   align-items: center;
-  min-height: 36px;
+  min-height: 44px;
   padding: 6px 10px;
   border-radius: var(--site-radius-sm);
   color: var(--site-muted);
@@ -170,7 +191,8 @@ summary:focus-visible,
   background: rgba(255, 255, 255, .04);
 }
 
-.site-nav__link[aria-current="page"] {
+.site-nav__link[aria-current="page"],
+.site-nav__link[aria-current="location"] {
   color: var(--site-green);
   background: var(--site-green-soft);
 }
@@ -193,6 +215,7 @@ summary:focus-visible,
   font-size: 12px;
   white-space: nowrap;
   scrollbar-width: none;
+  scroll-margin-top: calc(var(--site-housebar-height) + 12px);
 }
 
 .site-breadcrumbs::-webkit-scrollbar { display: none; }
@@ -222,7 +245,9 @@ summary:focus-visible,
 
 .site-local-nav__link {
   flex: 0 0 auto;
-  min-height: 36px;
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
   padding: 7px 10px;
   border-radius: var(--site-radius-sm);
   color: var(--site-muted);
@@ -355,7 +380,10 @@ summary:focus-visible,
   text-transform: uppercase;
 }
 
-.site-related a { text-decoration: none; }
+.site-related a {
+  text-decoration: none;
+  overflow-wrap: anywhere;
+}
 
 .site-footer {
   border-top: 1px solid var(--site-line);
@@ -427,7 +455,7 @@ summary:focus-visible,
 
   .site-mobile-nav > summary {
     min-width: 44px;
-    min-height: 40px;
+    min-height: 44px;
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -453,6 +481,9 @@ summary:focus-visible,
     top: calc(100% + 10px);
     right: 0;
     width: min(88vw, 360px);
+    max-height: calc(100dvh - var(--site-housebar-height) - 24px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
     padding: 10px;
     border: 1px solid var(--site-line-strong);
     border-radius: var(--site-radius-md);
