@@ -7,8 +7,6 @@ import { contextScaleBand, contextBudgets, contextVisibility } from './3d-contex
 
 const map = window.__potatoAtlasMap;
 const selection = window.__potatoAtlasSelection;
-const layers = window.__potatoAtlasLayers;
-const scale = window.__potatoAtlasScale;
 
 if (!map || !selection) throw new Error('Context visibility requires map and selection APIs.');
 
@@ -30,14 +28,16 @@ function timeState() {
 }
 
 function activeLayerEntries() {
-  try { return layers?.active?.().map(id => layers.get(id)).filter(Boolean) || []; }
-  catch { return []; }
+  try {
+    const layers = window.__potatoAtlasLayers;
+    return layers?.active?.().map(id => layers.get(id)).filter(Boolean) || [];
+  } catch { return []; }
 }
 
 function scaleBand() {
   const zoom = Number(map.getZoom?.());
   if (!Number.isFinite(zoom)) return stableScaleBand || 'world';
-  stableScaleBand = contextScaleBand(scale, stableScaleBand, zoom);
+  stableScaleBand = contextScaleBand(window.__potatoAtlasScale, stableScaleBand, zoom);
   return stableScaleBand;
 }
 
@@ -45,7 +45,7 @@ function activeInvestigationId() {
   try {
     const api = window.__potatoAtlasInvestigationSurface;
     if (typeof api?.active === 'function') return api.active();
-    return api?.current?.id || api?.current?.type || null;
+    return api?.current?.id || null;
   } catch { return null; }
 }
 function evidenceActive() {
@@ -169,6 +169,7 @@ for (const eventName of [
   'potato-atlas-inspector-change',
   'potato-atlas-investigation-change',
   'potato-atlas-scale-ready',
+  'potato-atlas-module-ready',
 ]) window.addEventListener(eventName, () => scheduleRefresh(eventName));
 
 map.on?.('moveend', () => scheduleRefresh('moveend'));
