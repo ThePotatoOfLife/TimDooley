@@ -25,6 +25,7 @@ from house_shell import (
     render_house_footer_for_route,
     render_route_breadcrumbs,
     render_specialist_house_escape,
+    render_utility_house_escape,
 )
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -49,6 +50,7 @@ BODY_OPEN_RE = re.compile(r"(<body\b[^>]*>)", re.I)
 MAIN_OPEN_RE = re.compile(r"(<main\b[^>]*>)", re.I)
 HEAD_CLOSE_RE = re.compile(r"</head>", re.I)
 BASE_HREF_RE = re.compile(r'<base\b[^>]*href=["\']([^"\']+)["\']', re.I)
+TOOLBAR_OPEN_RE = re.compile(r'(<[^>]+\brole=["\']toolbar["\'][^>]*>)', re.I)
 
 
 def copy_tree() -> None:
@@ -105,6 +107,17 @@ def ensure_specialist_stylesheet(text: str, link_route: str, canonical_route: st
     link = f'<link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">\n'
     if not HEAD_CLOSE_RE.search(text):
         raise SystemExit(f"Specialist House surface lacks a head element: {canonical_route}")
+    return HEAD_CLOSE_RE.sub(link + "</head>", text, count=1)
+
+
+def ensure_utility_stylesheet(text: str, link_route: str, canonical_route: str) -> str:
+    """Load the namespaced utility House CSS without importing editorial geometry."""
+    if "utility-house.css" in text:
+        return text
+    stylesheet = relative_href(link_route, "/app/utility-house.css")
+    link = f'<link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">\n'
+    if not HEAD_CLOSE_RE.search(text):
+        raise SystemExit(f"Utility House surface lacks a head element: {canonical_route}")
     return HEAD_CLOSE_RE.sub(link + "</head>", text, count=1)
 
 
@@ -196,6 +209,28 @@ def project_specialist_house_surfaces() -> None:
         if not mount_re.search(text):
             raise SystemExit(f"Specialist mount element <{mount}> missing for {route}")
         text = mount_re.sub(lambda match: match.group(1) + fragment, text, count=1)
+        page.write_text(text, encoding="utf-8")
+
+
+def project_utility_house_surfaces() -> None:
+    """Mount House escape inside utility-owned toolbars without changing app geometry."""
+    for surface in surface_rows(ROOT):
+        if surface.get("status") != "active" or surface.get("shell_type") != "utility":
+            continue
+        route = surface["canonical_route"]
+        page = output_path_for_route(route)
+        if not page.exists():
+            continue
+
+        text = page.read_text(encoding="utf-8", errors="replace")
+        if 'class="site-utility-house"' in text:
+            continue
+        link_route = effective_document_route(route, text)
+        text = ensure_utility_stylesheet(text, link_route, route)
+        fragment = render_utility_house_escape(ROOT, surface["id"], from_route=link_route)
+        if not TOOLBAR_OPEN_RE.search(text):
+            raise SystemExit(f"Utility surface lacks a role=toolbar mount: {route}")
+        text = TOOLBAR_OPEN_RE.sub(lambda match: match.group(1) + fragment, text, count=1)
         page.write_text(text, encoding="utf-8")
 
 
@@ -501,6 +536,7 @@ def build() -> None:
     copy_tree()
     project_curated_house_surfaces()
     project_specialist_house_surfaces()
+    project_utility_house_surfaces()
     required = [OUT / "index.html", OUT / "manifest.json", OUT / "app" / "app.js", OUT / "app" / "style.css", OUT / "knowledge" / "core" / "potato-of-life.json", OUT / "knowledge" / "core" / "tim-dooley.json", OUT / "knowledge" / "core" / "tim-identity-ontology.json", OUT / "tim-dooley" / "index.html", OUT / "tim-dooley" / "ontology" / "index.html", OUT / "faq" / "index.html", OUT / "faq" / "all" / "god" / "index.html", OUT / "data" / "world-map-data-runtime.json", OUT / "data" / "world-map-coverage-ledger.json"]
     missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
     if missing:
@@ -523,7 +559,7 @@ def build() -> None:
         raise SystemExit("No HTML pages were built into _site")
     metric_coverage = {key: value.get("coverage", 0) for key, value in build_world_map_runtime.get("metrics", {}).items()}
     coverage_entities = len(build_world_map_coverage.get("entities", {}))
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, House-authority curated, specialist and generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete deployable repository knowledge/data tree.")
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, House-authority curated, specialist, utility and generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete deployable repository knowledge/data tree.")
 
 
 if __name__ == "__main__":
