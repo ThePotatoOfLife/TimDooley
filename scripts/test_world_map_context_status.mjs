@@ -30,6 +30,7 @@ assert.ok(status.includes('renderGeneration'), 'async hover/selection summaries 
 assert.ok(status.includes('selectedReference'), 'hover preview must retain a compact reference to the committed selection');
 assert.ok(status.includes("details?.kind !== 'preview'"), 'selected reference must only be appended while previewing another country');
 assert.ok(status.includes('code === details.code'), 'hovering the already-selected country must not duplicate its identity');
+assert.ok(status.includes('value == null'), 'missing preview population must stay unknown instead of Number(null) becoming zero');
 assert.ok(panel.includes('./3d-context-status.js'), 'panel lifecycle should load context status');
 
 console.log('World Map context status contract tests passed');
