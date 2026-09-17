@@ -47,11 +47,6 @@ pre {
   overflow-x: auto;
 }
 
-table {
-  display: block;
-  overflow-x: auto;
-}
-
 a {
   color: var(--site-green);
   text-underline-offset: 3px;
@@ -150,6 +145,11 @@ textarea:focus-visible,
     padding-bottom: 76px;
     padding-left: max(var(--site-gutter), env(safe-area-inset-left));
     padding-right: max(var(--site-gutter), env(safe-area-inset-right));
+  }
+
+  table {
+    display: block;
+    overflow-x: auto;
   }
 
   .page-nav {
