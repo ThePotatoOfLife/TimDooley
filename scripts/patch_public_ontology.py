@@ -11,6 +11,7 @@ from pathlib import Path
 from patch_public_house_styles import patch_public_house_styles
 from patch_public_navigation import main as patch_public_navigation
 from project_public_culture_field import project_culture_field
+from validate_public_house_styles import main as validate_public_house_styles
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
@@ -72,6 +73,8 @@ def main() -> None:
     project_culture_field()
     scoped = patch_public_house_styles(OUT)
     patch_public_navigation()
+    if validate_public_house_styles() != 0:
+        raise SystemExit("Public House style validation failed after public artifact projection")
     print(f"Applied public Tim/Son ontology consistency patch and House-scoped {len(scoped)} legacy reader theme(s).")
 
 
