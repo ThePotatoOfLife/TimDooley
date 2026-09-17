@@ -164,6 +164,12 @@ def validate_surfaces(errors,rooms):
         parent=row.get('primary_parent')
         if parent is not None and parent not in by: errors.append(f'{sid} unknown parent {parent}')
         if row.get('is_view') and row.get('knowledge_owner'): errors.append(f'{sid} View cannot own knowledge')
+        shell_type=row.get('shell_type'); specialist_mount=row.get('specialist_mount')
+        if shell_type=='specialist':
+            if row.get('status')=='active' and specialist_mount not in {'header','main'}:
+                errors.append(f'{sid} active specialist surface requires specialist_mount header/main')
+        elif specialist_mount is not None:
+            errors.append(f'{sid} non-specialist surface must not declare specialist_mount')
         for route in row.get('legacy_routes',[]):
             if route in seen or route in legacy: errors.append(f'legacy route collision {route}')
             legacy[route]=sid
@@ -186,6 +192,6 @@ def main():
     errors=[]; rooms=validate_rooms(errors); validate_surfaces(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, topology, navigation subsets, reader corridor and route authority converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, topology, navigation subsets, shell mounts, reader corridor and route authority converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
