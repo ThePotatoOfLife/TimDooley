@@ -1,17 +1,20 @@
 // Optional physical terrain behavior for the World Map.
 // Loaded only by the Physical World runtime after explicit Terrain activation.
+// One capped DEM source is shared by 3D terrain and hillshade to avoid duplicate
+// elevation tile requests and keep the optional physical layer lightweight.
 
 const map = window.__potatoAtlasMap;
 if (!map) throw new Error('Physical Terrain requires the core map.');
 
 const TERRAIN_SOURCE = 'atlas-terrain-dem';
-const HILLSHADE_SOURCE = 'atlas-hillshade-dem';
 const HILLSHADE_LAYER = 'atlas-hillshade';
 const TERRAIN_TILEJSON = 'https://tiles.mapterhorn.com/tilejson.json';
+const TERRAIN_MAX_SOURCE_ZOOM = 12;
 const BASE_RASTER_LAYER = 'osm';
 const BASE_RASTER_DEFAULT_OPACITY = 0.25;
-const BASE_RASTER_TERRAIN_OPACITY = 0.55;
-const TERRAIN_EXAGGERATION = 1.05;
+const BASE_RASTER_TERRAIN_OPACITY = 0.50;
+const TERRAIN_EXAGGERATION = 1.03;
+const HILLSHADE_EXAGGERATION = 0.28;
 
 let enabled = false;
 let busy = false;
@@ -25,24 +28,15 @@ function registerHillshade() {
 }
 
 function ensureSources() {
-  if (!map.getSource(TERRAIN_SOURCE)) {
-    map.addSource(TERRAIN_SOURCE, {
-      type: 'raster-dem',
-      url: TERRAIN_TILEJSON,
-      tileSize: 512,
-      encoding: 'terrarium',
-      attribution: 'Terrain © Mapterhorn',
-    });
-  }
-  if (!map.getSource(HILLSHADE_SOURCE)) {
-    map.addSource(HILLSHADE_SOURCE, {
-      type: 'raster-dem',
-      url: TERRAIN_TILEJSON,
-      tileSize: 512,
-      encoding: 'terrarium',
-      attribution: 'Terrain © Mapterhorn',
-    });
-  }
+  if (map.getSource(TERRAIN_SOURCE)) return;
+  map.addSource(TERRAIN_SOURCE, {
+    type: 'raster-dem',
+    url: TERRAIN_TILEJSON,
+    tileSize: 512,
+    maxzoom: TERRAIN_MAX_SOURCE_ZOOM,
+    encoding: 'terrarium',
+    attribution: 'Terrain © Mapterhorn',
+  });
 }
 
 function ensureHillshade() {
@@ -51,9 +45,9 @@ function ensureHillshade() {
     map.addLayer({
       id: HILLSHADE_LAYER,
       type: 'hillshade',
-      source: HILLSHADE_SOURCE,
+      source: TERRAIN_SOURCE,
       layout: { visibility: 'none' },
-      paint: { 'hillshade-exaggeration': 0.35 },
+      paint: { 'hillshade-exaggeration': HILLSHADE_EXAGGERATION },
     }, before);
   }
   registerHillshade();
@@ -69,7 +63,8 @@ async function setEnabled(next) {
   busy = true;
   try {
     if (next) {
-      // Network-backed DEM sources are created only here, after explicit activation.
+      // Network-backed DEM data is created only here, after explicit activation.
+      // Terrain and hillshade intentionally share one source and one tile cache.
       ensureSources();
       ensureHillshade();
       map.setLayoutProperty(HILLSHADE_LAYER, 'visibility', 'visible');
@@ -102,6 +97,7 @@ function toggle() {
 
 window.__potatoAtlasTerrain = {
   get enabled() { return enabled; },
+  get maxSourceZoom() { return TERRAIN_MAX_SOURCE_ZOOM; },
   enable: () => setEnabled(true),
   disable: () => setEnabled(false),
   toggle,
