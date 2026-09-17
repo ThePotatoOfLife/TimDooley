@@ -2,6 +2,7 @@
 """Validate that Timeline is the single canonical temporal-system name."""
 from __future__ import annotations
 
+import json
 from pathlib import Path
 import sys
 
@@ -13,6 +14,10 @@ TEXT_SUFFIXES = {
 SKIP_DIRS = {".git", ".github", "node_modules", "vendor", "_site", "__pycache__", "archive"}
 SELF = Path(__file__).resolve()
 HYGIENE_VALIDATOR = ROOT / "scripts" / "validate_repo_hygiene.py"
+PUBLIC_SURFACES = ROOT / "data" / "house" / "public-surfaces.json"
+ROUTE_TOPOLOGY = ROOT / "knowledge" / "research" / "potato-house-master" / "public-route-topology.json"
+COMPATIBILITY_AUTHORITY_FILES = {PUBLIC_SURFACES.resolve(), ROUTE_TOPOLOGY.resolve()}
+LEGACY_ROUTE = "/chronology/"
 
 
 def fail(message: str) -> None:
@@ -25,6 +30,34 @@ def is_internal_design_doc(rel: Path) -> bool:
     if len(rel.parts) >= 2 and rel.parts[0] == "docs" and rel.parts[1] == "superpowers":
         return True
     return rel == Path("knowledge/research/potato-house-master/corpus-placement-map.md")
+
+
+def validate_compatibility_authority() -> None:
+    """Allow the retired route only as an explicit alias owned by canonical Timeline."""
+    surfaces = json.loads(PUBLIC_SURFACES.read_text(encoding="utf-8"))
+    timeline = next((row for row in surfaces.get("surfaces", []) if row.get("id") == "timeline"), None)
+    if not timeline:
+        fail("House authority is missing the Timeline surface")
+    if timeline.get("canonical_route") != "/timeline/":
+        fail("House authority no longer declares /timeline/ as canonical")
+    if LEGACY_ROUTE not in timeline.get("legacy_routes", []):
+        fail("House authority must own /chronology/ as a Timeline compatibility route")
+
+    topology = json.loads(ROUTE_TOPOLOGY.read_text(encoding="utf-8"))
+    timeline_topology = next((row for row in topology.get("records", []) if row.get("surface_id") == "timeline"), None)
+    if not timeline_topology:
+        fail("route topology is missing the Timeline surface")
+    if timeline_topology.get("canonical_route") != "/timeline/":
+        fail("route topology no longer declares /timeline/ as canonical")
+    if LEGACY_ROUTE not in timeline_topology.get("compatibility_routes", []):
+        fail("route topology must classify /chronology/ as a Timeline compatibility route")
+
+    for row in surfaces.get("surfaces", []):
+        if row.get("id") != "timeline" and LEGACY_ROUTE in row.get("legacy_routes", []):
+            fail(f"/chronology/ compatibility route is owned by non-Timeline surface {row.get('id')}")
+    for row in topology.get("records", []):
+        if row.get("surface_id") != "timeline" and LEGACY_ROUTE in row.get("compatibility_routes", []):
+            fail(f"/chronology/ topology alias is owned by non-Timeline surface {row.get('surface_id')}")
 
 
 def main() -> None:
@@ -46,6 +79,8 @@ def main() -> None:
     if "app/timeline.js" in legacy_text or "id=\"timeline\"" in legacy_text:
         fail("legacy chronology route still contains the Timeline application")
 
+    validate_compatibility_authority()
+
     canonical = timeline_page.read_text(encoding="utf-8")
     if "Tim Dooley Timeline" not in canonical and "TIMELINE" not in canonical.upper():
         fail("canonical Timeline page does not identify itself as Timeline")
@@ -63,6 +98,8 @@ def main() -> None:
         if path.resolve() in {SELF, HYGIENE_VALIDATOR.resolve()}:
             continue
         if rel == Path("chronology/index.html"):
+            continue
+        if path.resolve() in COMPATIBILITY_AUTHORITY_FILES:
             continue
         if path.suffix.lower() not in TEXT_SUFFIXES and path.name != "CNAME":
             continue
