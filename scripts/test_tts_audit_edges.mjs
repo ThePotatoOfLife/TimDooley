@@ -60,4 +60,11 @@ assert.ok(!toolSource.includes("behavior:'smooth'"),'standalone follow must not 
 assert.ok(toolSource.includes("if(['speaking','paused'].includes(engine.state))engine.stop()"),'editing standalone source text must stop stale playback');
 assert.ok(toolSource.includes("$('draft').onchange=()=>save()"),'Remember toggle must persist immediately too');
 
+// Standalone and embedded readers deliberately share the same settings key.
+// Saving in one reader must merge, not erase preferences owned by another.
+assert.ok(toolSource.includes('JSON.stringify({...saved(),'),'standalone settings writes must preserve unknown shared TTS preferences');
+assert.ok(toolSource.includes("followReading:$('follow').checked"),'standalone follow state must update the shared followReading preference');
+assert.ok(toolSource.includes("$('follow').checked=(s.follow??s.followReading)!==false"),'standalone reader must honor a follow-off preference saved by the embedded reader');
+assert.ok(toolSource.includes('volume:+vol.value'),'standalone volume changes must also update the shared drawer volume preference');
+
 console.log('tts audit edge-case contract: ok');
