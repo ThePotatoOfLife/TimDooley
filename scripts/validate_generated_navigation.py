@@ -4,16 +4,19 @@
 from __future__ import annotations
 
 import json
+import re
 import shutil
 import subprocess
 import sys
 from pathlib import Path
+from urllib.parse import urljoin, urlparse
 
 from house_public_surfaces import surface_by_id, surface_rows
 from house_shell import relative_href
 
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
+BASE_HREF_RE = re.compile(r'<base\b[^>]*href=["\']([^"\']+)["\']', re.I)
 
 REPRESENTATIVE_BRANCHES = {
     "tim": "tim",
@@ -36,6 +39,16 @@ def path_for_route(root: Path, route: str) -> Path:
     if normalized.endswith("/"):
         return root / stripped / "index.html"
     return root / stripped
+
+
+def effective_document_route(route: str, source_text: str) -> str:
+    """Return the route relative URLs resolve against after any HTML <base href>."""
+    match = BASE_HREF_RE.search(source_text)
+    if not match:
+        return route
+    resolved = urljoin("https://house.invalid" + route, match.group(1))
+    path = urlparse(resolved).path or "/"
+    return path if path.startswith("/") else "/" + path
 
 
 def source_backed_shell_surfaces() -> list[dict]:
@@ -109,6 +122,7 @@ def validate_specialist_escape_policy(errors: list[str]) -> None:
         route = surface["canonical_route"]
         rel = path_for_route(Path("."), route)
         source = path_for_route(ROOT, route).read_text(encoding="utf-8", errors="replace")
+        link_route = effective_document_route(route, source)
         mount = surface.get("specialist_mount")
         if mount not in {"header", "main"}:
             errors.append(f"{rel} has no valid specialist_mount policy in public-surfaces.json")
@@ -124,23 +138,23 @@ def validate_specialist_escape_policy(errors: list[str]) -> None:
             errors.append(f"{rel} incorrectly received editorial House chrome")
         if 'class="site-specialist-house"' not in text:
             errors.append(f"{rel} missing compact specialist House escape")
-        if "specialist-house.css" not in text:
-            errors.append(f"{rel} missing namespaced specialist House stylesheet")
+        expected_css = relative_href(link_route, "/app/specialist-house.css")
+        require_href(text, expected_css, f"{rel} specialist stylesheet does not respect document base", errors)
         if f'data-house-surface="{surface["id"]}"' not in text:
             errors.append(f"{rel} specialist House escape does not identify surface {surface['id']}")
 
         home = surface_by_id(ROOT, "home")
-        home_href = relative_href(route, home["canonical_route"])
-        require_href(text, home_href, f"{rel} specialist House escape does not link Home", errors)
+        home_href = relative_href(link_route, home["canonical_route"])
+        require_href(text, home_href, f"{rel} specialist House escape does not link Home through document base", errors)
 
         parent_id = surface.get("primary_parent")
         if parent_id and parent_id != "home":
             parent = surface_by_id(ROOT, parent_id)
-            parent_href = relative_href(route, parent["canonical_route"])
+            parent_href = relative_href(link_route, parent["canonical_route"])
             require_href(
                 text,
                 parent_href,
-                f"{rel} specialist House escape does not link parent {parent['canonical_route']}",
+                f"{rel} specialist House escape does not link parent {parent['canonical_route']} through document base",
                 errors,
             )
 
