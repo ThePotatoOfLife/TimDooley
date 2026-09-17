@@ -29,8 +29,10 @@ for (const token of [
 ]) assert.ok(presentation.includes(token), `Country Presentation missing ${token}`);
 
 assert.ok(bootstrap.includes("loadAfterPaint('Country Presentation', './3d-country-presentation.js')"), 'bootstrap must load Country Presentation');
+assert.ok(bootstrap.includes("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')"), 'bootstrap must explicitly load the minimal country hover replacement');
 assert.ok(bootstrap.indexOf("loadAfterPaint('Active View', './3d-active-view.js')") < bootstrap.indexOf("loadAfterPaint('Country Presentation', './3d-country-presentation.js')"), 'Country Presentation must load after Active View');
-assert.ok(bootstrap.indexOf("loadAfterPaint('Country Presentation', './3d-country-presentation.js')") < bootstrap.indexOf("loadAfterPaint('World Bar', './3d-world-bar.js')"), 'Country Presentation must load before World Bar');
+assert.ok(bootstrap.indexOf("loadAfterPaint('Country Presentation', './3d-country-presentation.js')") < bootstrap.indexOf("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')"), 'minimal hover must load after Country Presentation');
+assert.ok(bootstrap.indexOf("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')") < bootstrap.indexOf("loadAfterPaint('World Bar', './3d-world-bar.js')"), 'minimal hover must install before ordinary analytical browsing surfaces');
 
 for (const token of ['__potatoAtlasCountryPresentation', "unregister('country-hover')", "register('country-hover-presentation'", 'Population ·']) {
   assert.ok(countryHover.includes(token), `minimal country hover missing ${token}`);
@@ -48,7 +50,7 @@ for (const tab of ['overview','context','connections']) {
 for (const token of ['atlas-country-current-answer','atlas-country-tab-panel','__potatoAtlasCountryPresentation','Population']) {
   assert.ok(card.includes(token), `Country Card missing ${token}`);
 }
-assert.ok(!card.includes('Pinned comparison'), 'Country Card must not duplicate pinned comparison rail');
+assert.ok(!/>\s*Pinned comparison\s*</i.test(card), 'Country Card must not render a duplicate pinned-comparison section');
 
 assert.ok(pins.includes('__potatoAtlasCountryPresentation'), 'pins must consume shared Country Presentation');
 assert.ok(!pins.includes('function populationObservation'), 'pins must not own a second population resolver');
