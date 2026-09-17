@@ -14,6 +14,7 @@ import os
 import re
 import shutil
 from pathlib import Path
+from urllib.parse import urljoin, urlparse
 
 from build_world_map_coverage import build_coverage_file
 from build_world_map_runtime import build_runtime_file
@@ -47,6 +48,7 @@ AUTHORED_PAGE_NAV_RE = re.compile(
 BODY_OPEN_RE = re.compile(r"(<body\b[^>]*>)", re.I)
 MAIN_OPEN_RE = re.compile(r"(<main\b[^>]*>)", re.I)
 HEAD_CLOSE_RE = re.compile(r"</head>", re.I)
+BASE_HREF_RE = re.compile(r'<base\b[^>]*href=["\']([^"\']+)["\']', re.I)
 
 
 def copy_tree() -> None:
@@ -74,6 +76,16 @@ def output_path_for_route(route: str) -> Path:
     return OUT / stripped
 
 
+def effective_document_route(route: str, text: str) -> str:
+    """Return the route relative URLs resolve against after an HTML base element."""
+    match = BASE_HREF_RE.search(text)
+    if not match:
+        return route
+    resolved = urljoin("https://house.invalid" + route, match.group(1))
+    path = urlparse(resolved).path or "/"
+    return path if path.startswith("/") else "/" + path
+
+
 def ensure_house_stylesheet(text: str, route: str) -> str:
     """Load the shared House CSS on page families that do not already own it."""
     if "site-system.css" in text:
@@ -85,14 +97,14 @@ def ensure_house_stylesheet(text: str, route: str) -> str:
     return HEAD_CLOSE_RE.sub(link + "</head>", text, count=1)
 
 
-def ensure_specialist_stylesheet(text: str, route: str) -> str:
+def ensure_specialist_stylesheet(text: str, link_route: str, canonical_route: str) -> str:
     """Load only the namespaced specialist House CSS, never the editorial reset."""
     if "specialist-house.css" in text:
         return text
-    stylesheet = relative_href(route, "/app/specialist-house.css")
+    stylesheet = relative_href(link_route, "/app/specialist-house.css")
     link = f'<link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">\n'
     if not HEAD_CLOSE_RE.search(text):
-        raise SystemExit(f"Specialist House surface lacks a head element: {route}")
+        raise SystemExit(f"Specialist House surface lacks a head element: {canonical_route}")
     return HEAD_CLOSE_RE.sub(link + "</head>", text, count=1)
 
 
@@ -177,8 +189,9 @@ def project_specialist_house_surfaces() -> None:
         text = page.read_text(encoding="utf-8", errors="replace")
         if 'class="site-specialist-house"' in text:
             continue
-        text = ensure_specialist_stylesheet(text, route)
-        fragment = render_specialist_house_escape(ROOT, surface["id"])
+        link_route = effective_document_route(route, text)
+        text = ensure_specialist_stylesheet(text, link_route, route)
+        fragment = render_specialist_house_escape(ROOT, surface["id"], from_route=link_route)
         mount_re = re.compile(fr"(<{mount}\b[^>]*>)", re.I)
         if not mount_re.search(text):
             raise SystemExit(f"Specialist mount element <{mount}> missing for {route}")
