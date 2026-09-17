@@ -272,11 +272,50 @@ jobs:
           if-no-files-found: warn
           retention-days: 7
 
+      - name: Test Science semantic quality gate
+        run: python scripts/test_audit_science_quality.py
+
+      - name: Audit Science semantic quality
+        id: science_quality
+        continue-on-error: true
+        run: python scripts/audit_science_quality.py --report science-quality-report.json
+
+      - name: Upload Science quality report
+        if: ${{ always() && hashFiles('science-quality-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: science-quality-report
+          path: science-quality-report.json
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Compile science paper library
         run: python scripts/build_science_catalog.py
 
+      - name: Upload generated Science catalog diagnostic
+        if: ${{ always() && hashFiles('_site/science/catalog.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: science-catalog-diagnostic
+          path: _site/science/catalog.json
+          if-no-files-found: warn
+          retention-days: 7
+
       - name: Validate science paper library
         run: python scripts/validate_science_portal.py
+
+      - name: Upload Science portal validation report
+        if: ${{ always() && hashFiles('science-portal-report.json') != '' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: science-portal-report
+          path: science-portal-report.json
+          if-no-files-found: warn
+          retention-days: 7
+
+      - name: Enforce Science semantic quality
+        if: steps.science_quality.outcome == 'failure'
+        run: exit 1
 
       - name: Build machine discovery layer
         run: python scripts/build_discovery.py

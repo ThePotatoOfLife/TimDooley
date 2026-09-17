@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
-"""Protect the Science hub and generated paper library from collapsing into a thin list."""
+"""Protect the Science hub and generated paper library from structural and semantic collapse."""
 from __future__ import annotations
 
 import json
 import sys
 from pathlib import Path
+
+from audit_science_quality import audit_tree
 
 ROOT = Path(__file__).resolve().parents[1]
 SOURCE_PAGE = ROOT / "science" / "index.html"
@@ -13,6 +15,7 @@ BUILDER = ROOT / "scripts" / "build_science_catalog.py"
 SITE = ROOT / "_site"
 BUILT_PAGE = SITE / "science" / "index.html"
 CATALOG = SITE / "science" / "catalog.json"
+REPORT = ROOT / "science-portal-report.json"
 
 SOURCE_MARKERS = (
     'id="science-search"',
@@ -57,8 +60,57 @@ def require_markers(text: str, markers: tuple[str, ...], owner: str, errors: lis
             errors.append(f"{owner}: missing {marker!r}")
 
 
+def github_error(path: str, title: str, message: str) -> None:
+    """Emit a GitHub Actions annotation while remaining harmless outside CI."""
+    safe_path = str(path).replace("\r", " ").replace("\n", " ")
+    safe_title = str(title).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    safe_message = str(message).replace("%", "%25").replace("\r", "%0D").replace("\n", "%0A")
+    print(f"::error file={safe_path},title={safe_title}::{safe_message}")
+
+
+def write_report(errors: list[str], semantic: dict, payload: dict | None) -> None:
+    REPORT.write_text(
+        json.dumps(
+            {
+                "schema": "science-portal-report/v1",
+                "ok": not errors,
+                "errors": errors,
+                "semantic_hard_failure_count": semantic.get("hard_failure_count", 0),
+                "semantic_advisory_count": semantic.get("advisory_count", 0),
+                "catalog_record_count": payload.get("record_count") if isinstance(payload, dict) else None,
+                "catalog_qualifying_count": payload.get("qualifying_count") if isinstance(payload, dict) else None,
+                "catalog_paper_count": len(payload.get("papers", [])) if isinstance(payload, dict) and isinstance(payload.get("papers"), list) else None,
+            },
+            indent=2,
+            ensure_ascii=False,
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+
 def main() -> int:
     errors: list[str] = []
+    payload: dict | None = None
+
+    semantic = audit_tree()
+    if semantic.get("hard_failure_count"):
+        errors.append(f"semantic Science audit has {semantic['hard_failure_count']} hard failure(s)")
+        for failure in semantic.get("parse_failures", []):
+            message = str(failure.get("message") or "Science JSON parse failure")
+            errors.append(f"semantic audit {failure.get('code')}: {message}")
+            github_error("knowledge/science", f"Science quality: {failure.get('code')}", message)
+        for record in semantic.get("hard_failures", []):
+            for failure in record.get("hard_failures", []):
+                message = str(failure.get("message") or "Science semantic quality failure")
+                errors.append(
+                    f"semantic audit {record.get('file')}: {failure.get('code')} - {message}"
+                )
+                github_error(
+                    f"knowledge/science/{record.get('file')}",
+                    f"Science quality: {failure.get('code')}",
+                    message,
+                )
 
     for path in (SOURCE_PAGE, LIBRARY_CSS, BUILDER):
         if not path.exists():
@@ -100,6 +152,9 @@ def main() -> int:
                     for key in ("slug", "title", "abstract", "fields", "document_type", "file"):
                         if not paper.get(key):
                             errors.append(f"science catalog paper missing {key}: {paper!r}")
+                    abstract = str(paper.get("abstract") or "").strip()
+                    if abstract.startswith("Canonical science record for "):
+                        errors.append(f"science catalog contains generated fallback abstract: {paper.get('file')}")
                     slug = paper.get("slug")
                     if slug:
                         paper_page = SITE / "science" / "papers" / str(slug) / "index.html"
@@ -120,13 +175,16 @@ def main() -> int:
         else:
             errors.append("built science catalog missing: _site/science/catalog.json")
 
+    write_report(errors, semantic, payload)
+
     if errors:
         print("SCIENCE PORTAL VALIDATION FAILED")
         for error in errors:
             print(" -", error)
+            github_error("scripts/validate_science_portal.py", "Science portal validation", error)
         return 1
 
-    print("SCIENCE PORTAL VALIDATION PASSED")
+    print(f"SCIENCE PORTAL VALIDATION PASSED ({semantic.get('advisory_count', 0)} semantic advisories)")
     return 0
 
 
