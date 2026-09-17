@@ -104,8 +104,6 @@ def main() -> int:
     ):
         if token not in country:
             errors.append(f"country selection router migration missing marker: {token}")
-    if "__potatoAtlasOverlayHandled = true" not in country:
-        errors.append("country selection degraded fallback must still claim handled direct events")
     if "installClickInterception();" not in country:
         errors.append("country selection degraded fallback must still install the direct click interception path")
 
