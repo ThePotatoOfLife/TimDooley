@@ -1,0 +1,23 @@
+name: Verify TTS follow lazy main
+
+on:
+  push:
+    branches:
+      - verify/tts-follow-lazy-main-2026-09-17
+
+jobs:
+  tts-follow-lazy-main:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run combined integration contract
+        run: node scripts/test_tts_follow_lazy_integration.mjs
+      - name: Run shared drawer contract
+        run: node scripts/test_tts_drawer.mjs
+      - name: Run Great Book lazy-loading contract
+        run: node scripts/test_great_book_tts_autoload.mjs
+      - name: Run Great Book public reader contract
+        run: python scripts/test_great_book_public_reader.py
