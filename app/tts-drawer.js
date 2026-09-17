@@ -119,6 +119,20 @@
     return domRange;
   }
 
+  function centerDomRange(win,doc,domRange){
+    const rect=domRange?.getBoundingClientRect?.();
+    if(!rect)return false;
+    const viewportHeight=Number(win?.innerHeight||doc?.documentElement?.clientHeight)||0;
+    if(!viewportHeight||typeof win?.scrollTo!=='function')return false;
+    const currentScroll=Number(win?.scrollY??win?.pageYOffset)||0;
+    const wordCenter=(Number(rect.top)||0)+((Number(rect.height)||0)/2);
+    const delta=wordCenter-(viewportHeight/2);
+    const top=Math.max(0,currentScroll+delta);
+    const reduced=Boolean(win?.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches);
+    win.scrollTo({top,behavior:reduced?'auto':'smooth'});
+    return true;
+  }
+
   function createPageHighlighter(options={}){
     const doc=options.document||root?.document;
     const win=doc?.defaultView||root;
@@ -128,7 +142,7 @@
     let cachedContainer=null,cachedExclude='',cachedMap=null;
     function clear(){highlights?.delete?.(name)}
     function invalidate(){cachedContainer=null;cachedExclude='';cachedMap=null;clear()}
-    function highlight(container,range,excludeSelector=''){
+    function highlight(container,range,excludeSelector='',follow=false){
       if(!container||!highlights||typeof HighlightCtor!=='function')return false;
       if(container!==cachedContainer||excludeSelector!==cachedExclude||!cachedMap){
         cachedContainer=container;cachedExclude=excludeSelector;cachedMap=buildNormalizedTextMap(container,excludeSelector);
@@ -136,6 +150,7 @@
       const domRange=rangeFromTextMap(cachedMap,range,doc);
       if(!domRange){clear();return false}
       highlights.set(name,new HighlightCtor(domRange));
+      if(follow)centerDomRange(win,doc,domRange);
       return true;
     }
     return {highlight,clear,invalidate,get text(){return cachedMap?.text||''}};
@@ -237,15 +252,24 @@
     const volume=el('input','ptts-volume');volume.type='range';volume.min='0';volume.max='1';volume.step='.05';volume.setAttribute('aria-label','Volume');
     const speed=el('select','ptts-select ptts-speed');speed.setAttribute('aria-label','Speed');
     [['0.75×','.75'],['0.9×','.9'],['1.0×','1'],['1.1×','1.1'],['1.25×','1.25'],['1.5×','1.5'],['1.75×','1.75'],['2.0×','2']].forEach(([label,value])=>{const o=new Option(label,value);if(value==='1')o.selected=true;speed.add(o)});
+    const follow=button('Follow reading','🎯');follow.setAttribute('aria-pressed','false');
     const expand=button('Expand reading view','▣');
     const status=el('span','ptts-status');status.setAttribute('aria-live','polite');
-    rail.append(collapse,play,pause,stop,scope,voice,mute,volume,speed,status,expand);
+    rail.append(collapse,play,pause,stop,scope,voice,mute,volume,speed,status,follow,expand);
     const viewport=el('div','ptts-viewport');viewport.hidden=true;viewport.setAttribute('aria-live','off');
     const label=el('div','ptts-label');const reading=el('div','ptts-reading');viewport.append(label,reading);
     panel.append(rail,viewport);host.append(closed,panel);target.append(host);
 
     const saved=readSettings();volume.value=String(Number.isFinite(Number(saved.volume))?clamp(Number(saved.volume),0,1):1);speed.value=saved.speed||'1';
+    let followReading=saved.followReading===true;
     let lastVolume=Number(volume.value)||1;
+
+    function updateFollowButton(){
+      follow.setAttribute('aria-pressed',String(followReading));
+      follow.setAttribute('aria-label',followReading?'Stop following reading':'Follow reading');
+      follow.title=followReading?'Stop following reading':'Follow reading';
+      host.dataset.follow=followReading?'true':'false';
+    }
 
     function setState(next){
       state=next;host.dataset.state=state;
@@ -271,7 +295,7 @@
     function showWord(range){
       if(state!=='expanded')return;
       const parts=renderFocusedText(activeText,range);reading.replaceChildren(document.createTextNode(parts.before),el('mark','ptts-word',parts.active),document.createTextNode(parts.after));
-      const mark=reading.querySelector('.ptts-word');mark?.scrollIntoView?.({block:'nearest',inline:'nearest'});
+      const mark=reading.querySelector('.ptts-word');mark?.scrollIntoView?.({block:followReading?'center':'nearest',inline:'nearest'});
     }
     function updateButtons(){
       const s=engine?.state||'idle';
@@ -289,11 +313,11 @@
         if(event.type==='chunkstart'&&state==='expanded'&&!currentWord)showPlain(activeText);
         if(['complete','stop','error'].includes(event.type)){currentWord=null;if(state==='expanded')showPlain(activeText)}
         updateButtons();
-        options.onEvent?.({...event,sectionId});
+        options.onEvent?.({...event,sectionId,followReading});
       }});
       refreshVoices();root.speechSynthesis.addEventListener?.('voiceschanged',refreshVoices);
     }else{
-      [play,pause,stop,voice,volume,speed,mute].forEach(node=>node.disabled=true);status.textContent='speech unavailable';
+      [play,pause,stop,voice,volume,speed,mute,follow].forEach(node=>node.disabled=true);status.textContent='speech unavailable';
     }
 
     function cancelPendingStart(){
@@ -312,7 +336,7 @@
           if(request===startRequest){
             preparing=false;
             status.textContent='could not load text';host.dataset.speech='error';
-            options.onEvent?.({type:'error',error,sectionId});
+            options.onEvent?.({type:'error',error,sectionId,followReading});
           }
           return;
         }finally{
@@ -348,10 +372,11 @@
     speed.addEventListener('change',()=>{writeSettings({speed:speed.value});restartLive()});
     volume.addEventListener('input',()=>{const v=Number(volume.value);if(v>0)lastVolume=v;mute.textContent=v===0?'🔇':v<.5?'🔉':'🔊';writeSettings({volume:v});restartLive()});
     mute.addEventListener('click',()=>{if(Number(volume.value)>0){lastVolume=Number(volume.value);volume.value='0'}else volume.value=String(lastVolume||1);volume.dispatchEvent(new Event('input'))});
+    follow.addEventListener('click',()=>{followReading=!followReading;updateFollowButton();writeSettings({followReading});if(followReading&&currentWord)showWord(currentWord)});
 
-    updateScope();updateButtons();
-    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>{cancelPendingStart();engine?.stop()},engine};
+    updateScope();updateFollowButton();updateButtons();
+    return {element:host,setPayload,getPayload:()=>payload,playSection,open:()=>setState('open'),expand:()=>setState('expanded'),close:()=>setState('closed'),stop:()=>{cancelPendingStart();engine?.stop()},isFollowing:()=>followReading,engine};
   }
 
-  return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,buildNormalizedTextMap,createPageHighlighter,mountSelectionAction,mount};
+  return {normalizePayload,resolveSection,buildReadingText,renderFocusedText,buildNormalizedTextMap,centerDomRange,createPageHighlighter,mountSelectionAction,mount};
 });
