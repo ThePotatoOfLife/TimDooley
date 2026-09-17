@@ -5,10 +5,12 @@ const root = new URL('../', import.meta.url);
 const read = path => fs.readFileSync(new URL(path, root), 'utf8');
 
 const presentationPath = new URL('world-map/3d-country-presentation.js', root);
+const countryHoverPath = new URL('world-map/3d-country-hover-presentation.js', root);
 assert.ok(fs.existsSync(presentationPath), 'shared Country Presentation adapter must exist');
+assert.ok(fs.existsSync(countryHoverPath), 'dedicated minimal country-hover presentation must exist');
 
 const presentation = read('world-map/3d-country-presentation.js');
-const hover = read('world-map/3d-hover.js');
+const countryHover = read('world-map/3d-country-hover-presentation.js');
 const worldBar = read('world-map/3d-world-bar.js');
 const card = read('world-map/3d-country-card.js');
 const pins = read('world-map/3d-pinned-context.js');
@@ -26,12 +28,16 @@ for (const token of [
 ]) assert.ok(presentation.includes(token), `Country Presentation missing ${token}`);
 
 assert.ok(bootstrap.includes("loadAfterPaint('Country Presentation', './3d-country-presentation.js')"), 'bootstrap must load Country Presentation');
+assert.ok(bootstrap.includes("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')"), 'bootstrap must load dedicated country hover presentation');
 assert.ok(bootstrap.indexOf("loadAfterPaint('Active View', './3d-active-view.js')") < bootstrap.indexOf("loadAfterPaint('Country Presentation', './3d-country-presentation.js')"), 'Country Presentation must load after Active View');
-assert.ok(bootstrap.indexOf("loadAfterPaint('Country Presentation', './3d-country-presentation.js')") < bootstrap.indexOf("loadAfterPaint('World Bar', './3d-world-bar.js')"), 'Country Presentation must load before World Bar');
+assert.ok(bootstrap.indexOf("loadAfterPaint('Country Presentation', './3d-country-presentation.js')") < bootstrap.indexOf("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')"), 'minimal country hover must load after Country Presentation');
+assert.ok(bootstrap.indexOf("loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js')") < bootstrap.indexOf("loadAfterPaint('World Bar', './3d-world-bar.js')"), 'minimal country hover must be installed before ordinary analytical browsing surfaces');
 
-assert.ok(hover.includes('__potatoAtlasCountryPresentation'), 'hover must consume shared Country Presentation');
-for (const forbidden of ['Capital:', 'Area:', 'Currency:']) {
-  assert.ok(!hover.includes(forbidden), `ordinary country hover must stay minimal: ${forbidden}`);
+for (const token of ['__potatoAtlasCountryPresentation', "unregister('country-hover')", "register('country-hover-presentation'", 'Population ·']) {
+  assert.ok(countryHover.includes(token), `minimal country hover missing ${token}`);
+}
+for (const forbidden of ['Capital:', 'Area:', 'Currency:', 'Government', 'Memberships']) {
+  assert.ok(!countryHover.includes(forbidden), `ordinary country hover must stay minimal: ${forbidden}`);
 }
 
 assert.ok(!worldBar.includes('<span>Active</span>'), 'Current Map View must not expose selected-country identity');
