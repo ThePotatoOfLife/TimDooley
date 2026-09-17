@@ -111,12 +111,12 @@ function closeEvidence(options = {}) {
   box.hidden = true;
   button.classList.remove('active');
   restoreCountryCard();
-  if (!options.coordinated) investigation?.close?.('evidence');
+  if (!options.coordinated) investigation?.close('evidence');
 }
 window.closeAtlasEvidence = closeEvidence;
 
 async function renderEvidence() {
-  investigation?.open?.('evidence');
+  investigation?.open('evidence');
   suspendCountryCard();
   const code = selectedCode();
   renderedCode = code;
@@ -194,7 +194,7 @@ function refreshIfSelectionChanged() {
   if (!box.hidden && selectedCode() !== renderedCode) renderEvidence();
 }
 
-investigation?.register?.('evidence', { close:() => closeEvidence({ coordinated:true }) });
+investigation?.register('evidence', { close:() => closeEvidence({ coordinated:true }) });
 button.addEventListener('click', () => box.hidden ? renderEvidence() : closeEvidence());
 window.refreshAtlasEvidence = () => { if (!box.hidden) renderEvidence(); };
 window.addEventListener('popstate', window.refreshAtlasEvidence);
