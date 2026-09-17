@@ -144,6 +144,3 @@ window.__potatoAtlasCountryPresentation = Object.freeze({
   formatArea,
 });
 window.dispatchEvent(new CustomEvent('potato-atlas-country-presentation-ready'));
-await import('./3d-country-hover-presentation.js').catch(error => {
-  console.warn('Minimal country hover presentation unavailable:', error);
-});
