@@ -54,7 +54,6 @@ def effective_document_route(route: str, source_text: str) -> str:
 
 
 def source_backed_shell_surfaces() -> list[dict]:
-    """Return registered authored readers whose shell policy belongs to build_site."""
     eligible = []
     for surface in surface_rows(ROOT):
         if surface.get("status") != "active":
@@ -67,10 +66,19 @@ def source_backed_shell_surfaces() -> list[dict]:
 
 
 def source_backed_specialist_surfaces() -> list[dict]:
-    """Return registered authored specialist apps that own their local chrome."""
     eligible = []
     for surface in surface_rows(ROOT):
         if surface.get("status") != "active" or surface.get("shell_type") != "specialist":
+            continue
+        if path_for_route(ROOT, surface["canonical_route"]).exists():
+            eligible.append(surface)
+    return eligible
+
+
+def source_backed_utility_surfaces() -> list[dict]:
+    eligible = []
+    for surface in surface_rows(ROOT):
+        if surface.get("status") != "active" or surface.get("shell_type") != "utility":
             continue
         if path_for_route(ROOT, surface["canonical_route"]).exists():
             eligible.append(surface)
@@ -108,11 +116,6 @@ def validate_curated_shell_policy(errors: list[str]) -> None:
         if f'data-house-surface="{surface["id"]}"' not in text:
             errors.append(f"{rel} House projection does not identify surface {surface['id']}")
 
-        # The legacy app/style.css reader family must enter convergence through
-        # app/reader.css (which imports reader-v2.css), or explicitly load Reader v2.
-        # Self-themed House pages are governed separately by site-system.css and the
-        # dossier/FAQ CSS-ownership migration; they are intentionally not folded into
-        # this compatibility-layer contract.
         if LEGACY_STYLE_RE.search(source_text) and not READER_CSS_RE.search(source_text) and "reader-v2.css" not in text:
             errors.append(f"{rel} uses legacy app/style.css without a Reader v2 convergence path")
 
@@ -163,23 +166,44 @@ def validate_specialist_escape_policy(errors: list[str]) -> None:
         if parent_id and parent_id != "home":
             parent = surface_by_id(ROOT, parent_id)
             parent_href = relative_href(link_route, parent["canonical_route"])
-            require_href(
-                text,
-                parent_href,
-                f"{rel} specialist House escape does not link parent {parent['canonical_route']} through document base",
-                errors,
-            )
+            require_href(text, parent_href, f"{rel} specialist House escape does not link parent {parent['canonical_route']} through document base", errors)
+
+
+def validate_utility_escape_policy(errors: list[str]) -> None:
+    utilities = source_backed_utility_surfaces()
+    if not utilities:
+        errors.append("utility shell registry has no source-backed active utility surfaces")
+        return
+
+    for surface in utilities:
+        route = surface["canonical_route"]
+        rel = path_for_route(Path("."), route)
+        page = path_for_route(OUT, route)
+        if not page.exists():
+            errors.append(f"missing utility House surface after build: {rel}")
+            continue
+        text = page.read_text(encoding="utf-8", errors="replace")
+        if 'class="site-housebar' in text or "site-system.css" in text:
+            errors.append(f"{rel} utility surface incorrectly received editorial House chrome")
+        if 'class="site-utility-house"' not in text:
+            errors.append(f"{rel} missing compact utility House escape")
+        if f'data-house-surface="{surface["id"]}"' not in text:
+            errors.append(f"{rel} utility House escape does not identify surface {surface['id']}")
+        expected_css = relative_href(route, "/app/utility-house.css")
+        require_href(text, expected_css, f"{rel} missing namespaced utility House stylesheet", errors)
+        home = surface_by_id(ROOT, "home")
+        require_href(text, relative_href(route, home["canonical_route"]), f"{rel} utility House escape does not link Home", errors)
+
+        if surface["id"] == "tts":
+            for marker in ('id="app"', 'id="play"', 'id="text"', 'role="toolbar"'):
+                if marker not in text:
+                    errors.append(f"{rel} lost TTS application contract marker {marker}")
 
 
 def main() -> int:
     errors: list[str] = []
     try:
-        proc = subprocess.run(
-            [sys.executable, str(ROOT / "scripts" / "build_site.py")],
-            cwd=ROOT,
-            text=True,
-            capture_output=True,
-        )
+        proc = subprocess.run([sys.executable, str(ROOT / "scripts" / "build_site.py")], cwd=ROOT, text=True, capture_output=True)
         if proc.returncode != 0:
             print(proc.stdout)
             print(proc.stderr)
@@ -189,6 +213,7 @@ def main() -> int:
 
         validate_curated_shell_policy(errors)
         validate_specialist_escape_policy(errors)
+        validate_utility_escape_policy(errors)
 
         for branch_id, parent_surface_id in REPRESENTATIVE_BRANCHES.items():
             page = OUT / "topics" / branch_id / "index.html"
@@ -198,12 +223,7 @@ def main() -> int:
             text = page.read_text(encoding="utf-8", errors="replace")
             parent = surface_by_id(ROOT, parent_surface_id)
             expected = relative_href(f"/topics/{branch_id}/", parent["canonical_route"])
-            require_href(
-                text,
-                expected,
-                f"topics/{branch_id}/ does not link back to {parent['canonical_route']} through the House route resolver",
-                errors,
-            )
+            require_href(text, expected, f"topics/{branch_id}/ does not link back to {parent['canonical_route']} through the House route resolver", errors)
             if "site-housebar" not in text:
                 errors.append(f"topics/{branch_id}/ missing shared House bar")
 
@@ -218,20 +238,8 @@ def main() -> int:
                     route = f"/context/{cid}/"
                     context_surface = surface_by_id(ROOT, "context")
                     explore_surface = surface_by_id(ROOT, "explore")
-                    context_href = relative_href(route, context_surface["canonical_route"])
-                    explore_href = relative_href(route, explore_surface["canonical_route"])
-                    require_href(
-                        text,
-                        context_href,
-                        f"context/{cid}/ does not route up to {context_surface['canonical_route']}",
-                        errors,
-                    )
-                    require_href(
-                        text,
-                        explore_href,
-                        f"context/{cid}/ does not retain Explore in shared House navigation",
-                        errors,
-                    )
+                    require_href(text, relative_href(route, context_surface["canonical_route"]), f"context/{cid}/ does not route up to {context_surface['canonical_route']}", errors)
+                    require_href(text, relative_href(route, explore_surface["canonical_route"]), f"context/{cid}/ does not retain Explore in shared House navigation", errors)
                     if "site-housebar" not in text or "site-breadcrumbs" not in text:
                         errors.append(f"context/{cid}/ missing shared House orientation")
 
@@ -249,7 +257,7 @@ def main() -> int:
                 print(f" - {error}")
             return 1
 
-        print("Generated navigation validation passed: editorial/long-form readers, specialist apps and generated topic/record/context pages all use their declared House orientation contract.")
+        print("Generated navigation validation passed: editorial/long-form readers, specialist apps, utility tools and generated topic/record/context pages all use their declared House orientation contract.")
         return 0
     finally:
         if OUT.exists():
