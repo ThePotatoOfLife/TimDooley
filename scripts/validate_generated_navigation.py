@@ -31,6 +31,10 @@ CURATED_HOUSE_REPRESENTATIVES = {
     "rooms/index.html": "rooms",
 }
 
+LONGFORM_HOUSE_REPRESENTATIVES = {
+    "great-book/index.html": "great-book",
+}
+
 
 def require_href(text: str, href: str, label: str, errors: list[str]) -> None:
     if f'href="{href}"' not in text and f"href='{href}'" not in text:
@@ -68,6 +72,23 @@ def main() -> int:
             surface = surface_by_id(ROOT, surface_id)
             if f'data-house-surface="{surface["id"]}"' not in text:
                 errors.append(f"{rel} House projection does not identify surface {surface_id}")
+
+        for rel, surface_id in LONGFORM_HOUSE_REPRESENTATIVES.items():
+            page = OUT / rel
+            if not page.exists():
+                errors.append(f"missing long-form House representative: {rel}")
+                continue
+            text = page.read_text(encoding="utf-8", errors="replace")
+            if 'class="site-housebar site-housebar--compact"' not in text:
+                errors.append(f"{rel} missing compact shared House bar")
+            if 'class="site-breadcrumbs' not in text:
+                errors.append(f"{rel} missing projected House breadcrumb")
+            if "site-system.css" not in text:
+                errors.append(f"{rel} does not load the shared House stylesheet")
+            if f'data-house-surface="{surface_id}"' not in text:
+                errors.append(f"{rel} House projection does not identify surface {surface_id}")
+            if 'class="world-family"' not in text:
+                errors.append(f"{rel} lost its reader-local Great Book navigation")
 
         for branch_id, parent_surface_id in REPRESENTATIVE_BRANCHES.items():
             page = OUT / "topics" / branch_id / "index.html"
@@ -128,7 +149,7 @@ def main() -> int:
                 print(f" - {error}")
             return 1
 
-        print("Generated navigation validation passed: curated gateways plus topic, record and context pages use shared House orientation.")
+        print("Generated navigation validation passed: curated gateways, Great Book, topic, record and context pages use shared House orientation.")
         return 0
     finally:
         if OUT.exists():
