@@ -23,6 +23,7 @@ from house_shell import (
     relative_href,
     render_house_bar_for_route,
     render_house_footer_for_route,
+    render_related_routes,
     render_route_breadcrumbs,
     render_specialist_house_escape,
     render_utility_house_escape,
@@ -48,6 +49,7 @@ AUTHORED_PAGE_NAV_RE = re.compile(
 )
 BODY_OPEN_RE = re.compile(r"(<body\b[^>]*>)", re.I)
 MAIN_OPEN_RE = re.compile(r"(<main\b[^>]*>)", re.I)
+MAIN_CLOSE_RE = re.compile(r"</main>", re.I)
 HEAD_CLOSE_RE = re.compile(r"</head>", re.I)
 BASE_HREF_RE = re.compile(r'<base\b[^>]*href=["\']([^"\']+)["\']', re.I)
 TOOLBAR_OPEN_RE = re.compile(r'(<[^>]+\brole=["\']toolbar["\'][^>]*>)', re.I)
@@ -163,6 +165,13 @@ def project_house_surface(
         if not MAIN_OPEN_RE.search(text):
             raise SystemExit(f"Curated House surface lacks a main element: {route}")
         text = MAIN_OPEN_RE.sub(lambda match: match.group(1) + breadcrumbs, text, count=1)
+
+    if 'class="site-related"' not in text:
+        continuation = render_related_routes(ROOT, surface_id)
+        if continuation:
+            if not MAIN_CLOSE_RE.search(text):
+                raise SystemExit(f"Curated House surface lacks a closing main element: {route}")
+            text = MAIN_CLOSE_RE.sub(lambda match: match.group(0) + continuation, text, count=1)
 
     page.write_text(text, encoding="utf-8")
 
