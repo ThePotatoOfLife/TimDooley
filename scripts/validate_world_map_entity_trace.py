@@ -113,7 +113,8 @@ def main() -> int:
 
     # The ordinary country card is the contextual door into deep investigation.
     # It may expose a compact set of quiet actions, but it must not grow another
-    # permanent top-level toolbar.
+    # permanent top-level toolbar. The visible label is intentionally concise;
+    # data-country-action remains the stable semantic contract.
     required_card = (
         'data-country-action="details"',
         'data-country-action="entity-trace"',
@@ -122,7 +123,7 @@ def main() -> int:
         "window.__potatoEntityTrace",
         "panel-collapsed",
         "More data",
-        "Trace connections",
+        ">Trace</button>",
     )
     for marker in required_card:
         if marker not in card:

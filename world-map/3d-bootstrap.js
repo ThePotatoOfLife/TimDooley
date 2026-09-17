@@ -143,6 +143,8 @@ try {
   await loadAfterPaint('Spatial Overlay UI', './3d-spatial-overlay-ui.js');
   await loadAfterPaint('Entity Runtime', './3d-entity-runtime.js');
   await loadAfterPaint('Active View', './3d-active-view.js');
+  await loadAfterPaint('Country Presentation', './3d-country-presentation.js');
+  await loadAfterPaint('Country Hover Presentation', './3d-country-hover-presentation.js');
   await loadAfterPaint('World Bar', './3d-world-bar.js');
   await loadAfterPaint('Country Card', './3d-country-card.js');
   await loadAfterPaint('Scalar Runtime Bridge', './3d-scalar-runtime-bridge.js');

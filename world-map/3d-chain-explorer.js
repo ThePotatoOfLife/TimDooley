@@ -106,7 +106,9 @@ async function upgradeChainTags() {
   const card = document.getElementById('atlasCountryCard');
   if (!card || card.hidden) return;
   countEnhancement();
-  const sections = [...card.querySelectorAll('.atlas-country-section')];
+  const contextPanel = card.querySelector('[data-country-panel="context"]');
+  if (!contextPanel) return;
+  const sections = [...contextPanel.querySelectorAll('.atlas-country-section')];
   const section = sections.find(node => node.querySelector(':scope > small')?.textContent?.trim() === 'Functional chains');
   if (!section) return;
   const code = String(window.__potatoAtlasSelection?.current?.activeCode || window.__potatoAtlasSelection?.current?.code || '').toUpperCase();

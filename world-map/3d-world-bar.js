@@ -154,7 +154,9 @@
     const currentEntries = layers.active().map(id => layers.get(id)).filter(Boolean);
     const scalar = view?.scalar || currentEntries.find(entry => entry.kind === 'scalar') || null;
     const sets = view?.sets || currentEntries.filter(entry => entry.kind === 'set');
-    const pinned = window.__potatoAtlasSelection?.current?.pinnedCodes || window.__potatoAtlasSelection?.current?.selectedCodes || [];
+    const currentSelection = window.__potatoAtlasSelection?.current || {};
+    const activeCode = currentSelection.activeCode || currentSelection.code || '';
+    const pinned = currentSelection.pinnedCodes || currentSelection.selectedCodes || [];
     const relationMode = view?.relationMode || window.__potatoAtlasSelection?.getRelationMode?.() || 'all';
     const currentTime = view?.timeState || timeState;
     if (!currentEntries.length && !pinned.length && relationMode === 'all' && (!currentTime || currentTime.mode === 'current')) {
@@ -185,9 +187,11 @@
       const matchCount = Number(view?.matchCount);
       lines.push(`<div><span>Matches</span><b>${esc((view?.memberships?.mode || query.getMode() || 'any').toUpperCase())} · ${Number.isFinite(matchCount) ? `${matchCount} countries` : 'calculating…'}</b></div>`);
     }
-    if (view?.code) lines.push(`<div><span>Active</span><b>${esc(view.code)}</b></div>`);
     if (pinned.length) lines.push(`<div><span>Pinned</span><b>${pinned.length} countr${pinned.length===1?'y':'ies'}</b></div>`);
-    if (relationMode !== 'all') lines.push(`<div><span>Connections</span><b>${esc(relationLabel(relationMode))}</b></div>`);
+    if (relationMode !== 'all') {
+      const relation = relationLabel(relationMode);
+      lines.push(`<div><span>Connections</span><b>${esc(activeCode ? relation : `${relation} · select a country`)}</b></div>`);
+    }
     lines.push(`<div><span>Projection</span><b>${projection === 'globe' ? 'Globe' : 'Flat'}</b></div>`);
     if (currentTime) lines.push(`<div><span>Time</span><b>${esc(timeLabel(currentTime))}</b></div>`);
     node.innerHTML = `<small>Current map view</small>${lines.join('')}`;
