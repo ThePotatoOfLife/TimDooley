@@ -52,6 +52,24 @@
     });
   }
 
+  async function requestContentPreparation(container,sectionId,EventCtor=root?.CustomEvent){
+    if(!container||typeof container.dispatchEvent!=='function'||typeof EventCtor!=='function')return false;
+    const pending=[];
+    const event=new EventCtor('potato:tts-prepare',{
+      bubbles:false,
+      detail:{
+        sectionId,
+        waitUntil(task){
+          if(task&&typeof task.then==='function')pending.push(Promise.resolve(task));
+        },
+      },
+    });
+    container.dispatchEvent(event);
+    if(!pending.length)return false;
+    await Promise.all(pending);
+    return true;
+  }
+
   function configFromElement(host,doc){
     if(!host||!doc)return null;
     const data=host.dataset||{};
@@ -83,6 +101,7 @@
     let currentItem=null;
     let drawer=null;
     let selectionAction=null;
+    let preparing=false;
     const pageHighlighter=Drawer.createPageHighlighter?.({document:doc})||{highlight:()=>false,clear:()=>{},invalidate:()=>{}};
     const getItems=()=>itemSelector?[...container.querySelectorAll(itemSelector)]:[];
     const firstItem=()=>getItems()[0]||null;
@@ -111,10 +130,25 @@
       if(item&&container.contains(item))currentItem=item;
       refresh();
     };
+    const prepareForPlayback=async sectionId=>{
+      preparing=true;
+      try{
+        await requestContentPreparation(container,sectionId,doc.defaultView?.CustomEvent||root?.CustomEvent);
+      }finally{
+        preparing=false;
+        pageHighlighter.invalidate();
+        if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null}
+        ensureListenButtons();
+      }
+      const next=source();
+      drawer?.setPayload?.(next);
+      return next;
+    };
 
     drawer=Drawer.mount({
       target:host,
       getPayload:source,
+      prepareSection:prepareForPlayback,
       settingsKey:config.settingsKey||'potato-tts-settings',
       onEvent:event=>{
         if(event.sectionId==='current'&&['chunkstart','boundary'].includes(event.type))setReadingActive(true);
@@ -164,6 +198,7 @@
     const observer=Observer?new Observer(records=>{
       if(mutationsAreInside(records,host))return;
       pageHighlighter.invalidate();
+      if(preparing)return;
       if(currentItem&&!container.contains(currentItem)){setReadingActive(false);currentItem=null}
       ensureListenButtons();
       refresh();
@@ -215,5 +250,5 @@
     root.document.readyState==='loading'?root.document.addEventListener('DOMContentLoaded',start,{once:true}):start();
   }
 
-  return {cleanText,buildLongformPayload,selectionInside,readableText,mutationsAreInside,configFromElement,mount,autoMount};
+  return {cleanText,buildLongformPayload,selectionInside,readableText,mutationsAreInside,requestContentPreparation,configFromElement,mount,autoMount};
 });
