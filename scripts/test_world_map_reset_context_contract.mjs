@@ -7,6 +7,8 @@ const pinned = fs.readFileSync(new URL('world-map/3d-pinned-context.js', root), 
 
 assert.ok(state.includes("runStep('investigation'"), 'map reset should explicitly close temporary investigations');
 assert.ok(state.includes('__potatoAtlasInvestigationSurface?.closeActive'), 'map reset should use the shared investigation coordinator');
+assert.ok(state.includes("runStep('compare'"), 'map reset should explicitly leave Compare mode');
+assert.ok(state.includes('window.leaveCompare?.()'), 'map reset should release legacy Compare state through its public API');
 assert.ok(state.includes("runStep('pinned-context'"), 'map reset should reset transient pinned-context presentation state');
 assert.ok(state.includes('__potatoAtlasPinnedContext?.collapse'), 'map reset should collapse expanded pinned context');
 assert.ok(pinned.includes('collapse'), 'pinned context API should expose collapse');
