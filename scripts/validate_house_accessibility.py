@@ -5,13 +5,12 @@ from __future__ import annotations
 import re
 from pathlib import Path
 
-from house_shell import render_house_bar
+from house_shell import render_house_bar, render_route_breadcrumbs
 
 ROOT = Path(__file__).resolve().parents[1]
 SITE_CSS = ROOT / "app" / "site-system.css"
 SPECIALIST_CSS = ROOT / "app" / "specialist-house.css"
 UTILITY_CSS = ROOT / "app" / "utility-house.css"
-BUILD_SITE = ROOT / "scripts" / "build_site.py"
 
 
 def css_block(css: str, selector: str) -> str:
@@ -29,10 +28,15 @@ def main() -> int:
     site_css = SITE_CSS.read_text(encoding="utf-8")
     specialist_css = SPECIALIST_CSS.read_text(encoding="utf-8")
     utility_css = UTILITY_CSS.read_text(encoding="utf-8")
-    build_site = BUILD_SITE.read_text(encoding="utf-8")
 
     descendant_bar = render_house_bar(ROOT, "tim-ontology")
     exact_bar = render_house_bar(ROOT, "tim")
+    breadcrumbs = render_route_breadcrumbs(
+        ROOT,
+        "/tim-dooley/ontology/",
+        "Ontology",
+        parent_surface_id="tim",
+    )
 
     require(
         errors,
@@ -56,8 +60,8 @@ def main() -> int:
     )
     require(
         errors,
-        "ensure_main_content_target" in build_site,
-        "public House projection must guarantee a #main-content skip target",
+        'id="main-content"' in breadcrumbs,
+        "editorial House breadcrumbs must provide the #main-content skip target inside main content",
     )
 
     require(errors, ".site-skip-link" in site_css, "site-system.css must style the skip link")
