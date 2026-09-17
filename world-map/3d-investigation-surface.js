@@ -46,14 +46,36 @@ function close(id) {
   return true;
 }
 
+function closeActive(reason = 'closed-active') {
+  if (!activeId) return false;
+  const key = activeId;
+  handlers.get(key)?.close?.({ coordinated:true, reason });
+  if (activeId === key) activeId = null;
+  publish(reason);
+  return true;
+}
+
 function active() { return activeId; }
 function isActive(id) { return activeId === String(id || '').trim(); }
+
+// Temporary investigation panels share one keyboard dismissal path. Avoid stealing
+// Escape from text-entry controls or native dialog widgets that may own the key.
+document.addEventListener('keydown', event => {
+  if (event.key !== 'Escape' || event.defaultPrevented || !activeId) return;
+  const target = event.target;
+  if (target instanceof Element && target.closest('input,textarea,select,[contenteditable="true"],[role="dialog"][aria-modal="true"]')) return;
+  if (closeActive('escape')) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+}, true);
 
 window.__potatoAtlasInvestigationSurface = {
   register,
   unregister,
   open,
   close,
+  closeActive,
   active,
   isActive,
   get current() { return snapshot('read'); },
