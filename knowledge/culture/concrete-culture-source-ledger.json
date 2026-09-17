@@ -1,0 +1,162 @@
+{
+  "id": "concrete-culture-source-ledger",
+  "version": "1.0.0",
+  "updated": "2026-09-17",
+  "purpose": "Provenance ledger for externally testable claims in the concrete Culture field atlas.",
+  "sources": [
+    {
+      "id": "dk-police-rocker-gang-2025",
+      "title": "Rocker- og bandesituationen i Danmark 2025",
+      "publisher": "National enhed for Særlig Kriminalitet / Danish Police",
+      "url": "https://politi.dk/-/media/mediefiler/landsdaekkende-dokumenter/aktuelt/statistik-og-udgivelser/rocker-og-bandesituationen/rocker-og-bandesituationen-i-danmark-2025.pdf",
+      "publication_date": "2026",
+      "accessed": "2026-09-17",
+      "source_class": "official_record",
+      "claim_scope": "Named rocker/gang conflict pairs and Danish police aggregate 2025 environment statistics.",
+      "limitations": "Police describes figures as dynamic snapshots; conflict and environment-level statistics do not assign criminal conduct to every person associated with a named formation."
+    },
+    {
+      "id": "dk-supreme-court-ltf-2021",
+      "title": "Højesteret - sag 123/2020, opløsning af Loyal to Familia",
+      "publisher": "Danmarks Domstole / Højesteret",
+      "url": "https://www.domstol.dk/media/rkfnpmdi/123-20-hjr-anonymiseret.pdf",
+      "publication_date": "2021",
+      "accessed": "2026-09-17",
+      "source_class": "court_record",
+      "claim_scope": "Supreme Court treatment of Loyal to Familia as an association and the legal basis for dissolution.",
+      "limitations": "The judgment concerns the organization and legal dissolution; it is not a finding that every person ever associated with LTF committed the same conduct."
+    },
+    {
+      "id": "europol-vaas-chain-2025",
+      "title": "From instigator to perpetrator: how violence-as-a-service operates",
+      "publisher": "Europol",
+      "url": "https://www.europol.europa.eu/media-press/newsroom/news/instigator-to-perpetrator-how-violence%E2%80%91%E2%80%91%E2%80%91service-operates",
+      "publication_date": "2025-08-14",
+      "accessed": "2026-09-17",
+      "source_class": "official_record",
+      "claim_scope": "Four-stage VaaS model: instigator, recruiter, enabler and perpetrator; recruitment through encrypted messaging or gaming/chat platforms.",
+      "limitations": "Europol presents a typical operational model, not a claim that every violent offence follows the same chain."
+    },
+    {
+      "id": "europol-grimm-operation-2026",
+      "title": "Operational Taskforce GRIMM",
+      "publisher": "Europol",
+      "url": "https://www.europol.europa.eu/how-we-work/operations/operational-taskforce-grimm",
+      "publication_date": "2026-04-29",
+      "accessed": "2026-09-17",
+      "source_class": "official_record",
+      "claim_scope": "Operational definition of violence-as-a-service, taskforce partners and youth recruitment mechanisms.",
+      "limitations": "Operational/law-enforcement framing; individual investigations retain separate evidentiary and legal statuses."
+    },
+    {
+      "id": "europol-denmark-sweden-vaas-2025",
+      "title": "Teenagers recruited as hitmen: Denmark and Sweden strike back at violence-as-a-service",
+      "publisher": "Europol",
+      "url": "https://www.europol.europa.eu/media-press/newsroom/news/teenagers-recruited-hitmen-denmark-and-sweden-strike-back-violence-service",
+      "publication_date": "2025-06-19",
+      "accessed": "2026-09-17",
+      "source_class": "official_record",
+      "claim_scope": "Cross-border investigations into suspected recruitment of young people for targeted killings in Denmark and Sweden, including use of encrypted/social platforms.",
+      "limitations": "The article reports arrests and suspicions in ongoing investigations; suspicion is not conviction. Minors are not named in this atlas."
+    },
+    {
+      "id": "doj-nxivm-raniere-2020",
+      "title": "NXIVM Leader Keith Raniere Sentenced to 120 Years in Prison for Racketeering and Sex Trafficking Offenses",
+      "publisher": "U.S. Department of Justice, Eastern District of New York",
+      "url": "https://www.justice.gov/usao-edny/pr/nxivm-leader-keith-raniere-sentenced-120-years-prison-racketeering-and-sex-trafficking",
+      "publication_date": "2020-10-27",
+      "accessed": "2026-09-17",
+      "source_class": "court_record",
+      "claim_scope": "Raniere's 2019 federal convictions, 2020 sentence, the racketeering enterprise, DOS recruitment and collateral mechanisms proved at trial.",
+      "limitations": "DOJ prosecution/sentencing summary; claims about other participants must follow their own dispositions rather than being inferred from association."
+    },
+    {
+      "id": "cloudflare-kiwifarms-2022",
+      "title": "Blocking Kiwifarms",
+      "publisher": "Cloudflare",
+      "url": "https://blog.cloudflare.com/kiwifarms-blocked/",
+      "publication_date": "2022-09-03",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_stated",
+      "claim_scope": "Cloudflare's decision to block Kiwi Farms from its services and Cloudflare's stated emergency rationale.",
+      "limitations": "First-party account by an infrastructure provider explaining its own decision; it does not independently establish every factual claim made about forum users or targets."
+    },
+    {
+      "id": "sage-snarking-tiny-publics-2026",
+      "title": "The governance of snarking: Anti-fandom as tiny publics",
+      "publisher": "New Media & Society / SAGE",
+      "url": "https://journals.sagepub.com/doi/full/10.1177/14614448261473906",
+      "publication_date": "2026-08-17",
+      "accessed": "2026-09-17",
+      "source_class": "scholarly_analysis",
+      "claim_scope": "Digital ethnography of two celebrity snark spaces, including emergent rules, sanctions, vernacular, knowledge hierarchies and collective identity.",
+      "limitations": "Study of two spaces; findings illuminate mechanisms but should not be generalized to every anti-fandom community."
+    },
+    {
+      "id": "nfb-star-wars-kid-2022",
+      "title": "Star Wars Kid: The Rise of the Digital Shadows",
+      "publisher": "National Film Board of Canada",
+      "url": "https://www.nfb.ca/film/star-wars-kid-the-rise-of-the-digital-shadows/",
+      "publication_date": "2022",
+      "accessed": "2026-09-17",
+      "source_class": "institutional_history",
+      "claim_scope": "Ghyslain Raza's public participation in a documentary about the 2003 viral video, involuntary publication and later reflection on digital memory.",
+      "limitations": "Documentary framing and participant recollection; the atlas uses it for the public trajectory and reclamation story rather than as a complete biography."
+    },
+    {
+      "id": "nfb-star-wars-kid-lesson-2022",
+      "title": "Mini-Lesson for Star Wars Kid: The Rise of Digital Shadows",
+      "publisher": "National Film Board of Canada",
+      "url": "https://blog.nfb.ca/blog/2022/03/31/mini-lesson-for-star-wars-kid-the-rise-of-digital-shadows/",
+      "publication_date": "2022-03-31",
+      "accessed": "2026-09-17",
+      "source_class": "institutional_history",
+      "claim_scope": "Educational framing emphasizing the human behind a viral caricature and the effects of platform-mediated sharing.",
+      "limitations": "Educational interpretation rather than a court or empirical causal finding."
+    },
+    {
+      "id": "smithsonian-hiphop-anthology-2021",
+      "title": "Smithsonian Anthology of Hip-Hop and Rap",
+      "publisher": "Smithsonian National Museum of African American History and Culture",
+      "url": "https://nmaahc.si.edu/explore/publications/smithsonian-anthology-hip-hop-and-rap",
+      "publication_date": "2021",
+      "accessed": "2026-09-17",
+      "source_class": "institutional_history",
+      "claim_scope": "Institutional preservation of hip-hop's genesis, rise, evolution and cultural impact.",
+      "limitations": "Museum/canonical framing; the broad history of hip-hop contains many local scenes and contested origin narratives beyond a single institutional summary."
+    },
+    {
+      "id": "smithsonian-hiphop-release-2021",
+      "title": "National Museum of African American History and Culture and Smithsonian Folkways Announce Aug. 20 Release of the Smithsonian Anthology of Hip-Hop and Rap",
+      "publisher": "Smithsonian National Museum of African American History and Culture",
+      "url": "https://nmaahc.si.edu/about/news/national-museum-african-american-history-and-culture-and-smithsonian-folkways-announce",
+      "publication_date": "2021-06-30",
+      "accessed": "2026-09-17",
+      "source_class": "institutional_history",
+      "claim_scope": "Hip-hop's growth from parks of the Bronx to broad American and worldwide influence and Smithsonian preservation.",
+      "limitations": "Institutional overview; does not imply a single linear or centralized pathway for the entire culture."
+    },
+    {
+      "id": "msf-2025-figures",
+      "title": "2025 in figures",
+      "publisher": "Médecins Sans Frontières",
+      "url": "https://www.msf.org/international-activity-report-2025/2025-figures",
+      "publication_date": "2026",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_financial",
+      "claim_scope": "Audited combined 2025 international figures: revenue above EUR 2.6 billion, 98% operating income from private sources and more than 7.5 million private donors/foundations.",
+      "limitations": "Combined international reporting; amounts are rounded and do not identify every individual donor-to-programme path."
+    },
+    {
+      "id": "icrc-annual-report-2025",
+      "title": "ICRC Annual Report 2025",
+      "publisher": "International Committee of the Red Cross",
+      "url": "https://www.icrc.org/en/report/icrc-annual-report-2025",
+      "publication_date": "2026-07-15",
+      "accessed": "2026-09-17",
+      "source_class": "first_party_financial",
+      "claim_scope": "2025 donor contributions of around CHF 1.76 billion and published donor-source mix, including 84% governments and the European Commission.",
+      "limitations": "Organization's annual reporting; funding proportions describe source mix and do not by themselves establish donor control over specific operational decisions."
+    }
+  ]
+}
