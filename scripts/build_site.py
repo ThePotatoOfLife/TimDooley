@@ -11,6 +11,7 @@ from __future__ import annotations
 import html
 import json
 import os
+import re
 import shutil
 from pathlib import Path
 
@@ -38,6 +39,13 @@ EXCLUDE = {
     "archive",
 }
 BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
+CURATED_HOUSE_SURFACE_IDS = ("tim", "religion", "philosophy", "science", "world", "rooms")
+AUTHORED_PAGE_NAV_RE = re.compile(
+    r'<nav\b[^>]*class=["\'][^"\']*\bpage-nav\b[^"\']*["\'][^>]*>.*?</nav>\s*',
+    re.I | re.S,
+)
+BODY_OPEN_RE = re.compile(r"(<body\b[^>]*>)", re.I)
+MAIN_OPEN_RE = re.compile(r"(<main\b[^>]*>)", re.I)
 
 
 def copy_tree() -> None:
@@ -52,6 +60,59 @@ def copy_tree() -> None:
             shutil.copytree(src, OUT / src.name, ignore=shutil.ignore_patterns(*EXCLUDE))
         else:
             shutil.copy2(src, OUT / src.name)
+
+
+def output_path_for_route(route: str) -> Path:
+    """Map a public canonical route to its copied HTML artifact."""
+    normalized = route if route.startswith("/") else "/" + route
+    stripped = normalized.strip("/")
+    if not stripped:
+        return OUT / "index.html"
+    if normalized.endswith("/"):
+        return OUT / stripped / "index.html"
+    return OUT / stripped
+
+
+def project_curated_house_surfaces() -> None:
+    """Project authoritative House orientation onto the first curated gateway wave.
+
+    Source readers remain authored documents. The public artifact receives shared
+    global orientation at build time so canonical navigation is not hand-maintained
+    in every page family.
+    """
+    for surface_id in CURATED_HOUSE_SURFACE_IDS:
+        surface = surface_by_id(ROOT, surface_id)
+        route = surface["canonical_route"]
+        page = output_path_for_route(route)
+        if not page.exists():
+            raise SystemExit(f"Curated House surface is missing from _site: {route}")
+
+        text = page.read_text(encoding="utf-8", errors="replace")
+        text = AUTHORED_PAGE_NAV_RE.sub("", text, count=1)
+
+        if 'class="site-housebar' not in text:
+            house = render_house_bar_for_route(
+                ROOT,
+                route,
+                active_surface_id=surface_id,
+                data_surface=surface_id,
+            )
+            if not BODY_OPEN_RE.search(text):
+                raise SystemExit(f"Curated House surface lacks a body element: {route}")
+            text = BODY_OPEN_RE.sub(lambda match: match.group(1) + house, text, count=1)
+
+        if 'class="site-breadcrumbs' not in text:
+            breadcrumbs = render_route_breadcrumbs(
+                ROOT,
+                route,
+                surface["title"],
+                parent_surface_id=surface.get("primary_parent"),
+            )
+            if not MAIN_OPEN_RE.search(text):
+                raise SystemExit(f"Curated House surface lacks a main element: {route}")
+            text = MAIN_OPEN_RE.sub(lambda match: match.group(1) + breadcrumbs, text, count=1)
+
+        page.write_text(text, encoding="utf-8")
 
 
 def load_json(path: Path, default=None):
@@ -354,6 +415,7 @@ def build() -> None:
     build_world_map_runtime = build_runtime_file(ROOT / "data" / "world-map-data-runtime.json")
     build_world_map_coverage = build_coverage_file(ROOT / "data" / "world-map-coverage-ledger.json")
     copy_tree()
+    project_curated_house_surfaces()
     required = [OUT / "index.html", OUT / "manifest.json", OUT / "app" / "app.js", OUT / "app" / "style.css", OUT / "knowledge" / "core" / "potato-of-life.json", OUT / "knowledge" / "core" / "tim-dooley.json", OUT / "knowledge" / "core" / "tim-identity-ontology.json", OUT / "tim-dooley" / "index.html", OUT / "tim-dooley" / "ontology" / "index.html", OUT / "faq" / "index.html", OUT / "faq" / "all" / "god" / "index.html", OUT / "data" / "world-map-data-runtime.json", OUT / "data" / "world-map-coverage-ledger.json"]
     missing = [str(p.relative_to(OUT)) for p in required if not p.exists()]
     if missing:
@@ -376,7 +438,7 @@ def build() -> None:
         raise SystemExit("No HTML pages were built into _site")
     metric_coverage = {key: value.get("coverage", 0) for key, value in build_world_map_runtime.get("metrics", {}).items()}
     coverage_entities = len(build_world_map_coverage.get("entities", {}))
-    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, House-authority generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete deployable repository knowledge/data tree.")
+    print(f"Built Potato of Life archive with {len(pages)} crawlable HTML pages, {len(contexts.get('clusters', []))} context clusters, House-authority curated and generated navigation, identity ontology, FAQ/God answer surfaces, sitemap.xml, llms.txt, World Map metric coverage {metric_coverage}, coverage ledger for {coverage_entities} map entities, and the complete deployable repository knowledge/data tree.")
 
 
 if __name__ == "__main__":
