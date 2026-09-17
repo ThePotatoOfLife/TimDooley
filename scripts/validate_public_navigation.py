@@ -52,6 +52,10 @@ CULTURE_FIELD_MARKERS = (
     "Follow the flows",
     "People behind the labels",
     "How a formation changes type",
+    "Who owns the infrastructure?",
+    "How correction works",
+    "Ritual without captivity",
+    "When underground becomes institution",
     "Concrete Tree of Strife",
 )
 
@@ -169,6 +173,19 @@ def main() -> int:
                 errors.append("Concrete Culture field lost its aggregate-statistics legal/evidence boundary")
             if "comparative, not a claim of moral or organizational equivalence" not in field_fragment:
                 errors.append("Concrete Culture field lost its contrastive-not-equivalent framing")
+            for required_case in (
+                "Organization for Transformative Works / Archive of Our Own",
+                "Burning Man / Burning Man Project",
+                "Skateboarding",
+                "Wikipedia editing culture",
+                "Mastodon / ActivityPub federation",
+            ):
+                if required_case not in field_fragment:
+                    errors.append(f"Concrete Culture field missing expansion case: {required_case}")
+            if "intensity alone" not in field_fragment:
+                errors.append("Concrete Culture field lost ritual-versus-high-control distinction")
+            if "single point of dependency" not in field_fragment:
+                errors.append("Concrete Culture field lost infrastructure-ownership analysis")
 
     if errors:
         print("PUBLIC NAVIGATION VALIDATION FAILED")
