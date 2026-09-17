@@ -81,6 +81,7 @@ assert.ok(longformSource.includes('event.followReading'),'long-form highlighting
 assert.ok(bibleSource.includes('event.followReading'),'Bible highlighting must consume the live follow state from the speech event');
 assert.ok(longformSource.includes("addEventListener('potato:tts-current'"),'long-form reader must accept scroll-driven current-item updates');
 assert.ok(greatBookSource.includes("new CustomEvent('potato:tts-current'"),'Great Book must publish the chapter that becomes active while scrolling');
+assert.ok(greatBookSource.includes("result.id===activeCurrentId"),'a chapter that finishes lazy-loading while active must immediately become the current TTS chapter');
 assert.ok(greatBookSource.includes('detail.signal'),'Great Book preload must honor TTS cancellation');
 assert.ok(greatBookSource.includes('failed.length'),'Great Book must distinguish partial load failure from ready state');
 assert.ok(greatBookHtml.includes('data-tts-exclude=".gb-placeholder,.gb-load-error"'),'placeholder/error prose must never become spoken book content');
