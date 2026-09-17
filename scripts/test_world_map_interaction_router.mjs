@@ -122,8 +122,9 @@ for (const marker of [
   "interaction.register('countries'",
   "objectType:'country'",
   'clickPriority:10',
-  'Degraded/direct-module fallback',
 ]) assert.ok(countrySelection.includes(marker), `country selection router migration missing marker: ${marker}`);
+assert.ok(countrySelection.includes('__potatoAtlasOverlayHandled = true'), 'country selection degraded fallback must still claim handled direct events');
+assert.ok(countrySelection.includes('installClickInterception();'), 'country selection degraded fallback must still install the direct click interception path');
 
 for (const marker of [
   "interaction.register('country-hover'",
