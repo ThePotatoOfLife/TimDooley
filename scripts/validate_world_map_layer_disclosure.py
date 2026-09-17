@@ -53,7 +53,7 @@ def main() -> int:
             "Set types",
             "entry.epistemic_type",
             "entry.visual_channel",
-            "entry.source_owner",
+            "entry?.source_owner",
         ):
             if token not in text:
                 errors.append(f"World Bar missing layer disclosure marker {token}")
