@@ -1,8 +1,18 @@
 {
   "id": "bible-relation-redirects",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-17",
   "status": "canonical compatibility registry",
-  "purpose": "Preserve legacy Bible comparator relation links when a true duplicate is consolidated into a stronger canonical relation.",
-  "redirects": {}
+  "purpose": "Preserve legacy Bible comparator relation links when a duplicate public-occurrence projection is consolidated into a stronger canonical relation. Source occurrence records remain intact in their evidence owners.",
+  "redirects": {
+    "public-x-bible-x-2024-10-02-chosen-gentile": "chosen-gentile-potato-2024-10-02",
+    "public-x-bible-x-2024-10-03-die-for-sins": "potatoes-die-for-sins-2024-10-03",
+    "public-x-bible-x-2025-09-30-self-resurrection": "self-resurrection-witnesses-2025-09-30",
+    "public-x-bible-x-2026-04-23-son-door-tomb": "bread-door-tomb-resurrection-2026-04-23",
+    "public-x-bible-x-2026-05-24-tree-timelines": "tree-timelines-jacob-ezekiel-2026-05-24",
+    "public-x-bible-x-2026-07-23-breath-nostrils": "breath-nostrils-2026-07-23",
+    "public-x-bible-x-2026-08-17-cornerstone": "son-cornerstone-2026-08-17",
+    "public-x-bible-x-2026-08-23-zion": "zion-2026-08-23",
+    "public-x-bible-x-2026-08-31-wedge-christ": "christ-wedge-door-2026-08-31"
+  }
 }
