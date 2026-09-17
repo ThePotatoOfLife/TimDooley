@@ -6,6 +6,7 @@ const workflow = fs.readFileSync(new URL('../.github/workflows/world-map-context
 for (const command of [
   'python scripts/validate_world_map_context_visibility.py',
   'node scripts/test_world_map_context_policy.mjs',
+  'node scripts/test_world_map_ui_surface_budget.mjs',
   'node scripts/test_world_map_time_policy.mjs',
   'node scripts/test_world_map_investigation_contract.mjs',
   'node scripts/test_world_map_investigation_surface_ownership.mjs',
