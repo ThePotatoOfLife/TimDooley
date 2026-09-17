@@ -40,12 +40,14 @@ EXCLUDE = {
 }
 BASE_URL = os.environ.get("SITE_BASE_URL", "https://thepotatooflife.github.io/TimDooley").rstrip("/")
 CURATED_HOUSE_SURFACE_IDS = ("tim", "religion", "philosophy", "science", "world", "rooms")
+LONGFORM_HOUSE_SURFACE_IDS = ("great-book",)
 AUTHORED_PAGE_NAV_RE = re.compile(
     r'<nav\b[^>]*class=["\'][^"\']*\bpage-nav\b[^"\']*["\'][^>]*>.*?</nav>\s*',
     re.I | re.S,
 )
 BODY_OPEN_RE = re.compile(r"(<body\b[^>]*>)", re.I)
 MAIN_OPEN_RE = re.compile(r"(<main\b[^>]*>)", re.I)
+HEAD_CLOSE_RE = re.compile(r"</head>", re.I)
 
 
 def copy_tree() -> None:
@@ -73,46 +75,69 @@ def output_path_for_route(route: str) -> Path:
     return OUT / stripped
 
 
-def project_curated_house_surfaces() -> None:
-    """Project authoritative House orientation onto the first curated gateway wave.
+def ensure_house_stylesheet(text: str, route: str) -> str:
+    """Load the shared House CSS on page families that do not already own it."""
+    if "site-system.css" in text:
+        return text
+    stylesheet = relative_href(route, "/app/site-system.css")
+    link = f'<link rel="stylesheet" href="{html.escape(stylesheet, quote=True)}">\n'
+    if not HEAD_CLOSE_RE.search(text):
+        raise SystemExit(f"Curated House surface lacks a head element: {route}")
+    return HEAD_CLOSE_RE.sub(link + "</head>", text, count=1)
 
-    Source readers remain authored documents. The public artifact receives shared
-    global orientation at build time so canonical navigation is not hand-maintained
-    in every page family.
-    """
-    for surface_id in CURATED_HOUSE_SURFACE_IDS:
-        surface = surface_by_id(ROOT, surface_id)
-        route = surface["canonical_route"]
-        page = output_path_for_route(route)
-        if not page.exists():
-            raise SystemExit(f"Curated House surface is missing from _site: {route}")
 
-        text = page.read_text(encoding="utf-8", errors="replace")
+def project_house_surface(
+    surface_id: str,
+    *,
+    compact: bool = False,
+    strip_authored_page_nav: bool = False,
+    ensure_stylesheet: bool = False,
+) -> None:
+    """Project shared House orientation onto one copied registered surface."""
+    surface = surface_by_id(ROOT, surface_id)
+    route = surface["canonical_route"]
+    page = output_path_for_route(route)
+    if not page.exists():
+        raise SystemExit(f"Curated House surface is missing from _site: {route}")
+
+    text = page.read_text(encoding="utf-8", errors="replace")
+    if strip_authored_page_nav:
         text = AUTHORED_PAGE_NAV_RE.sub("", text, count=1)
+    if ensure_stylesheet:
+        text = ensure_house_stylesheet(text, route)
 
-        if 'class="site-housebar' not in text:
-            house = render_house_bar_for_route(
-                ROOT,
-                route,
-                active_surface_id=surface_id,
-                data_surface=surface_id,
-            )
-            if not BODY_OPEN_RE.search(text):
-                raise SystemExit(f"Curated House surface lacks a body element: {route}")
-            text = BODY_OPEN_RE.sub(lambda match: match.group(1) + house, text, count=1)
+    if 'class="site-housebar' not in text:
+        house = render_house_bar_for_route(
+            ROOT,
+            route,
+            active_surface_id=surface_id,
+            compact=compact,
+            data_surface=surface_id,
+        )
+        if not BODY_OPEN_RE.search(text):
+            raise SystemExit(f"Curated House surface lacks a body element: {route}")
+        text = BODY_OPEN_RE.sub(lambda match: match.group(1) + house, text, count=1)
 
-        if 'class="site-breadcrumbs' not in text:
-            breadcrumbs = render_route_breadcrumbs(
-                ROOT,
-                route,
-                surface["title"],
-                parent_surface_id=surface.get("primary_parent"),
-            )
-            if not MAIN_OPEN_RE.search(text):
-                raise SystemExit(f"Curated House surface lacks a main element: {route}")
-            text = MAIN_OPEN_RE.sub(lambda match: match.group(1) + breadcrumbs, text, count=1)
+    if 'class="site-breadcrumbs' not in text:
+        breadcrumbs = render_route_breadcrumbs(
+            ROOT,
+            route,
+            surface["title"],
+            parent_surface_id=surface.get("primary_parent"),
+        )
+        if not MAIN_OPEN_RE.search(text):
+            raise SystemExit(f"Curated House surface lacks a main element: {route}")
+        text = MAIN_OPEN_RE.sub(lambda match: match.group(1) + breadcrumbs, text, count=1)
 
-        page.write_text(text, encoding="utf-8")
+    page.write_text(text, encoding="utf-8")
+
+
+def project_curated_house_surfaces() -> None:
+    """Project House chrome by shell family without rewriting authored content."""
+    for surface_id in CURATED_HOUSE_SURFACE_IDS:
+        project_house_surface(surface_id, strip_authored_page_nav=True)
+    for surface_id in LONGFORM_HOUSE_SURFACE_IDS:
+        project_house_surface(surface_id, compact=True, ensure_stylesheet=True)
 
 
 def load_json(path: Path, default=None):
