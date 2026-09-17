@@ -20,6 +20,8 @@ from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import quote, urlparse
 
+from house_public_surfaces import primary_gateway_rows
+
 ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 PUBLIC_BASE_URL = "https://thepotatooflife.github.io/TimDooley"
@@ -38,12 +40,13 @@ SCRIPT_LD_RE = re.compile(r"<script\b[^>]*type=[\"']application/ld\+json[\"'][^>
 CODE_RE = re.compile(r"<code>([^<]+)</code>", re.I)
 TAG_RE = re.compile(r"<[^>]+>")
 
-PRIMARY_DOORS = (
-    ("tim-dooley", "Tim Dooley"),
-    ("religion", "Religion"),
-    ("philosophy", "Philosophy"),
-    ("science", "Science"),
-    ("world-map", "World Map"),
+PRIMARY_DOORS = tuple(
+    (
+        row["canonical_route"].strip("/").split("/", 1)[0],
+        row["title"],
+        row["canonical_route"],
+    )
+    for row in primary_gateway_rows(ROOT)
 )
 
 
@@ -369,7 +372,7 @@ def classify_page(route: str) -> tuple[str, str]:
         return "record", "records"
     if route.startswith("science/papers/"):
         return "science-paper", "science"
-    if first in {key for key, _ in PRIMARY_DOORS}:
+    if first in {key for key, _, _ in PRIMARY_DOORS}:
         return "reader", first
     return "support", first
 
@@ -401,7 +404,7 @@ def build_site_index(dates: dict[str, str], record_routes: dict[str, str], quest
         "canonical_site": BASE_URL + "/",
         "policy": "Only final, indexable, self-canonical HTML pages are listed.",
         "count": len(pages),
-        "primary_doors": [{"name": name, "url": f"{BASE_URL}/{key}/"} for key, name in PRIMARY_DOORS],
+        "primary_doors": [{"name": name, "url": f"{BASE_URL}{route}"} for _, name, route in PRIMARY_DOORS],
         "pages": pages,
     }
     (OUT / "site-index.json").write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
