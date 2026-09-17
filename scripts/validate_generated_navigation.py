@@ -109,8 +109,11 @@ def validate_specialist_escape_policy(errors: list[str]) -> None:
         route = surface["canonical_route"]
         rel = path_for_route(Path("."), route)
         source = path_for_route(ROOT, route).read_text(encoding="utf-8", errors="replace")
-        if 'data-house-escape-slot' not in source:
-            errors.append(f"{rel} does not expose a source-owned specialist House escape slot")
+        mount = surface.get("specialist_mount")
+        if mount not in {"header", "main"}:
+            errors.append(f"{rel} has no valid specialist_mount policy in public-surfaces.json")
+        elif f"<{mount}" not in source.lower():
+            errors.append(f"{rel} specialist_mount={mount} has no matching semantic source element")
 
         page = path_for_route(OUT, route)
         if not page.exists():
