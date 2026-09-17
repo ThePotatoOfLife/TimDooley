@@ -14,6 +14,7 @@ REQUIRED_SURFACES={
     'story':'/tim-dooley/story/',
     'collection':'/corporium/',
     'works':'/works/',
+    'great-book':'/great-book/',
     'questions':'/questions/',
     'index-a-z':'/index-a-z/',
     'context':'/context/',
@@ -121,6 +122,24 @@ def validate_builder_authority(errors):
         if legacy in text:
             errors.append(f'{path.name} must not maintain independent primary route table')
 
+def validate_navigation_subsets(public_surfaces,by,errors):
+    primary=set(public_surfaces.get('primary_gateway_ids',[]))
+    for field in ('housebar_secondary_ids','footer_global_ids','secondary_global_ids'):
+        values=public_surfaces.get(field,[])
+        for sid in values:
+            row=by.get(sid)
+            if row is None:
+                errors.append(f'{field} references unknown surface {sid}')
+            elif row.get('status')!='active':
+                errors.append(f'{field} references non-active surface {sid}')
+    for field in ('housebar_secondary_ids','footer_global_ids'):
+        overlap=sorted(primary & set(public_surfaces.get(field,[])))
+        if overlap:
+            errors.append(f'{field} must not duplicate primary Doors: {", ".join(overlap)}')
+    housebar=public_surfaces.get('housebar_secondary_ids',[])
+    if not housebar or housebar[0]!='great-book':
+        errors.append('housebar_secondary_ids must keep Great Book as the first secondary path')
+
 def validate_surfaces(errors,rooms):
     p=load(SURFACES,errors); s=load(SURFACE_SCHEMA,errors); topology=load(TOPOLOGY,errors)
     if p and s: schema(p,s,'public_surfaces',errors)
@@ -133,8 +152,7 @@ def validate_surfaces(errors,rooms):
         elif by[sid].get('canonical_route')!=route: errors.append(f'{sid} canonical route must be {route}')
     if by.get('interpretive-justice',{}).get('primary_parent')!='philosophy':
         errors.append('Interpretive Justice specialist surface must live under Philosophy')
-    for sid in p.get('secondary_global_ids',[]):
-        if sid not in by: errors.append(f'secondary_global_ids references unknown surface {sid}')
+    validate_navigation_subsets(p,by,errors)
     room_ids={x.get('id') for x in rooms.get('rooms',[]) if isinstance(x,dict)}; seen={}; legacy={}
     for sid,row in by.items():
         route=row.get('canonical_route')
@@ -167,6 +185,6 @@ def main():
     errors=[]; rooms=validate_rooms(errors); validate_surfaces(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, topology, reader corridor and route authority converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, topology, navigation subsets, reader corridor and route authority converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
