@@ -10,7 +10,13 @@ PINNED = ROOT / 'world-map' / '3d-pinned-context.js'
 LAYOUT = ROOT / 'world-map' / '3d-ui-layout.js'
 PANEL = ROOT / 'world-map' / '3d-panel-lifecycle.js'
 STATE = ROOT / 'world-map' / '3d-map-state.js'
+TIME_POLICY = ROOT / 'world-map' / '3d-time-policy.js'
+TIME = ROOT / 'world-map' / '3d-time.js'
+INVESTIGATION = ROOT / 'world-map' / '3d-investigation-surface.js'
+EVIDENCE = ROOT / 'world-map' / '3d-evidence.js'
 POLICY_TEST = ROOT / 'scripts' / 'test_world_map_context_policy.mjs'
+TIME_TEST = ROOT / 'scripts' / 'test_world_map_time_policy.mjs'
+INVESTIGATION_TEST = ROOT / 'scripts' / 'test_world_map_investigation_contract.mjs'
 
 errors = []
 
@@ -31,7 +37,13 @@ pinned = text(PINNED)
 layout = text(LAYOUT)
 panel = text(PANEL)
 state = text(STATE)
+time_policy = text(TIME_POLICY)
+time_runtime = text(TIME)
+investigation = text(INVESTIGATION)
+evidence = text(EVIDENCE)
 policy_test = text(POLICY_TEST)
+time_test = text(TIME_TEST)
+investigation_test = text(INVESTIGATION_TEST)
 
 for token in (
     'contextScaleBand',
@@ -59,6 +71,7 @@ for token in (
 require(context, 'queueMicrotask', '3d-context-visibility.js')
 require(context, 'refreshSerial', '3d-context-visibility.js')
 require(context, 'selection.setAutomaticRelationBudget', '3d-context-visibility.js')
+require(context, 'api.active()', '3d-context-visibility.js')
 
 for token in (
     'setAutomaticRelationBudget',
@@ -104,12 +117,54 @@ require(state, 'contextVisibility: window.__potatoAtlasContextVisibility?.curren
 require(state, "window.__potatoAtlasContextVisibility?.refresh?.('map-state-reset')", '3d-map-state.js')
 
 for token in (
+    'normalizeTimeState',
+    'describeTimeWindow',
+    'reordered-range',
+    'missing-range-end',
+    'validIsoDate',
+):
+    require(time_policy, token, '3d-time-policy.js')
+for token in (
+    "import { normalizeTimeState, describeTimeWindow } from './3d-time-policy.js'",
+    'Time needs attention',
+    'Comparison window',
+    'describe(){return describeTimeWindow',
+):
+    require(time_runtime, token, '3d-time.js')
+
+for token in (
+    'get current()',
+    'isActive',
+    'closeActive',
+    "event.key !== 'Escape'",
+):
+    require(investigation, token, '3d-investigation-surface.js')
+for token in (
+    "register('evidence'",
+    ".open('evidence')",
+    ".close('evidence')",
+):
+    require(evidence, token, '3d-evidence.js')
+
+for token in (
     "contextScaleBand(fakeScale, 'region', 5.1)",
     'compare mode should grant pinned countries a larger relation budget',
     'narrow screens should keep the pinned rail bounded',
     'local browse should prioritize physical/local context over abstract global lines',
 ):
     require(policy_test, token, 'test_world_map_context_policy.mjs')
+for token in (
+    'reversed ranges should normalize chronologically',
+    'invalid-date',
+    'missing-range-end',
+):
+    require(time_test, token, 'test_world_map_time_policy.mjs')
+for token in (
+    'Escape should close the active investigation surface centrally',
+    'Evidence must register with the shared investigation surface',
+    'context visibility must consume the actual investigation API',
+):
+    require(investigation_test, token, 'test_world_map_investigation_contract.mjs')
 
 # New modules may query map zoom only through the shared scale API. Direct numeric
 # map.getZoom() threshold comparisons here would recreate the raw-zoom problem.
