@@ -124,15 +124,11 @@
     if(!rect)return false;
     const viewportHeight=Number(win?.innerHeight||doc?.documentElement?.clientHeight)||0;
     if(!viewportHeight||typeof win?.scrollTo!=='function')return false;
-    const wordCenter=(Number(rect.top)||0)+((Number(rect.height)||0)/2);
-    const comfortTop=viewportHeight*.3;
-    const comfortBottom=viewportHeight*.7;
-    if(wordCenter>=comfortTop&&wordCenter<=comfortBottom)return false;
     const currentScroll=Number(win?.scrollY??win?.pageYOffset)||0;
+    const wordCenter=(Number(rect.top)||0)+((Number(rect.height)||0)/2);
     const delta=wordCenter-(viewportHeight/2);
     const top=Math.max(0,currentScroll+delta);
-    const reduced=Boolean(win?.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches);
-    win.scrollTo({top,behavior:reduced?'auto':'smooth'});
+    win.scrollTo({top,behavior:'auto'});
     return true;
   }
 
@@ -303,7 +299,6 @@
     function showWord(range){
       if(state!=='expanded')return;
       const parts=renderFocusedText(activeText,range);reading.replaceChildren(document.createTextNode(parts.before),el('mark','ptts-word',parts.active),document.createTextNode(parts.after));
-      const mark=reading.querySelector('.ptts-word');mark?.scrollIntoView?.({block:followReading?'center':'nearest',inline:'nearest'});
     }
     function updateButtons(){
       const s=engine?.state||'idle';
