@@ -7,6 +7,7 @@ from pathlib import Path
 import validate_world_map_3d as validator
 import validate_world_map_ui_shell as ui_shell
 import validate_world_map_terrain as terrain
+import validate_world_map_layer_disclosure as layer_disclosure
 import validate_world_map_geo_kernel as geo_kernel
 import validate_world_map_scale_contract as scale_contract
 import validate_world_map_interaction_router as interaction_router
@@ -32,6 +33,9 @@ if __name__ == "__main__":
     if status:
         raise SystemExit(status)
     status = terrain.main()
+    if status:
+        raise SystemExit(status)
+    status = layer_disclosure.main()
     if status:
         raise SystemExit(status)
     status = geo_kernel.main()
