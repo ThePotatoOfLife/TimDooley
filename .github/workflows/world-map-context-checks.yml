@@ -61,6 +61,9 @@ jobs:
       - name: Search selection synchronization
         run: node scripts/test_world_map_search_selection_contract.mjs
 
+      - name: Relation budget idempotence
+        run: node scripts/test_world_map_relation_budget_contract.mjs
+
       - name: Runtime telemetry validation
         run: python scripts/validate_world_map_runtime_telemetry.py
 
