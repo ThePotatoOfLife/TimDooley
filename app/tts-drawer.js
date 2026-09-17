@@ -125,7 +125,7 @@
     const viewportHeight=Number(win?.innerHeight||doc?.documentElement?.clientHeight)||0;
     if(!viewportHeight||typeof win?.scrollTo!=='function')return false;
     const currentScroll=Number(win?.scrollY??win?.pageYOffset)||0;
-    const wordCenter=Number(rect.top)||0+(Number(rect.height)||0)/2;
+    const wordCenter=(Number(rect.top)||0)+((Number(rect.height)||0)/2);
     const delta=wordCenter-(viewportHeight/2);
     const top=Math.max(0,currentScroll+delta);
     const reduced=Boolean(win?.matchMedia?.('(prefers-reduced-motion: reduce)')?.matches);
