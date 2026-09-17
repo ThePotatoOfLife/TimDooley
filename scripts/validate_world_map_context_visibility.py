@@ -20,6 +20,7 @@ STATUS_TEST = ROOT / 'scripts' / 'test_world_map_context_status.mjs'
 PINNED_TEST = ROOT / 'scripts' / 'test_world_map_pinned_context_contract.mjs'
 TIME_TEST = ROOT / 'scripts' / 'test_world_map_time_policy.mjs'
 INVESTIGATION_TEST = ROOT / 'scripts' / 'test_world_map_investigation_contract.mjs'
+RESET_TEST = ROOT / 'scripts' / 'test_world_map_reset_context_contract.mjs'
 
 errors = []
 
@@ -50,9 +51,11 @@ status_test = text(STATUS_TEST)
 pinned_test = text(PINNED_TEST)
 time_test = text(TIME_TEST)
 investigation_test = text(INVESTIGATION_TEST)
+reset_test = text(RESET_TEST)
 
 for token in (
     'contextScaleBand',
+    'contextInvestigationMode',
     'contextBudgets',
     'contextVisibility',
     'scale.transition',
@@ -60,13 +63,13 @@ for token in (
     require(policy, token, '3d-context-policy.js')
 
 for token in (
-    "import { contextScaleBand, contextBudgets, contextVisibility } from './3d-context-policy.js'",
+    "from './3d-context-policy.js'",
+    'contextInvestigationMode',
     'window.__potatoAtlasContextVisibility',
     'potato-atlas-context-visibility-change',
     'potato-atlas-working-selection-change',
     'potato-atlas-pin-change',
     'atlas-time-change',
-    "return 'browse'",
     'stableScaleBand',
     'investigationId',
     'budgets',
@@ -121,21 +124,29 @@ for token in (
     'atlas-pinned-overflow',
     'staleSuppressions',
     'Promise.all',
+    'collapse()',
 ):
     require(pinned, token, '3d-pinned-context.js')
 
 if 'setTimeout' in pinned:
     errors.append('3d-pinned-context.js must not poll for Active View with setTimeout')
 
-for token in (
-    "loadModule?.('Context Visibility', './3d-context-visibility.js')",
-    "loadModule?.('Context Status', './3d-context-status.js')",
-    "loadModule?.('Pinned Context', './3d-pinned-context.js')",
+for module_path in (
+    './3d-context-visibility.js',
+    './3d-context-status.js',
+    './3d-pinned-context.js',
 ):
-    require(panel, token, '3d-panel-lifecycle.js')
+    require(panel, module_path, '3d-panel-lifecycle.js')
 
-require(state, 'contextVisibility: window.__potatoAtlasContextVisibility?.current || null', '3d-map-state.js')
-require(state, "window.__potatoAtlasContextVisibility?.refresh?.('map-state-reset')", '3d-map-state.js')
+for token in (
+    'contextVisibility: window.__potatoAtlasContextVisibility?.current || null',
+    "window.__potatoAtlasContextVisibility?.refresh?.('map-state-reset')",
+    "runStep('investigation'",
+    '__potatoAtlasInvestigationSurface?.closeActive',
+    "runStep('pinned-context'",
+    '__potatoAtlasPinnedContext?.collapse',
+):
+    require(state, token, '3d-map-state.js')
 
 for token in (
     'normalizeTimeState',
@@ -146,7 +157,7 @@ for token in (
 ):
     require(time_policy, token, '3d-time-policy.js')
 for token in (
-    "import { normalizeTimeState, describeTimeWindow } from './3d-time-policy.js'",
+    "from './3d-time-policy.js'",
     'Time needs attention',
     'Comparison window',
     'describe(){return describeTimeWindow',
@@ -168,6 +179,7 @@ for token in (
     require(evidence, token, '3d-evidence.js')
 
 for token in (
+    'contextInvestigationMode',
     "contextScaleBand(fakeScale, 'region', 5.1)",
     'compare mode should grant pinned countries a larger relation budget',
     'narrow screens should keep the pinned rail bounded',
@@ -176,17 +188,17 @@ for token in (
     require(policy_test, token, 'test_world_map_context_policy.mjs')
 for token in (
     'Current view',
-    "loadModule?.('Context Status', './3d-context-status.js')",
+    './3d-context-status.js',
 ):
     require(status_test, token, 'test_world_map_context_status.mjs')
 for token in (
-    'Promise.all',
+    'Promise\\.all',
     'pinned context must stay event-driven instead of polling',
     'pinned context should explain hidden overflow',
 ):
     require(pinned_test, token, 'test_world_map_pinned_context_contract.mjs')
 for token in (
-    'reversed ranges should normalize chronologically',
+    "reordered.issue, 'reordered-range'" if False else "reversed.issue, 'reordered-range'",
     'invalid-date',
     'missing-range-end',
 ):
@@ -197,6 +209,11 @@ for token in (
     'context visibility must consume the actual investigation API',
 ):
     require(investigation_test, token, 'test_world_map_investigation_contract.mjs')
+for token in (
+    'map reset should explicitly close temporary investigations',
+    'map reset should reset transient pinned-context presentation state',
+):
+    require(reset_test, token, 'test_world_map_reset_context_contract.mjs')
 
 # New modules may query map zoom only through the shared scale API. Direct numeric
 # map.getZoom() threshold comparisons here would recreate the raw-zoom problem.
@@ -205,7 +222,7 @@ for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context
         if bad in source:
             errors.append(f'{owner} introduces raw zoom threshold: {bad}')
 
-# Context and pinned presentation must never become country-fill owners.
+# Context presentation must never become a country-fill owner.
 for owner, source in [('3d-context-visibility.js', context), ('3d-pinned-context.js', pinned), ('3d-context-status.js', status)]:
     if "setPaintProperty('countries-fill'" in source or 'setFeatureState({ source: \'countries\'' in source:
         errors.append(f'{owner} must not own country analytical/selection paint')
