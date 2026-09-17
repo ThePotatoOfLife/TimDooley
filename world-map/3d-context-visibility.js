@@ -3,6 +3,8 @@
 // Reads public subsystem state and publishes one deterministic presentation policy.
 // It does not own domain data, geometry, analytical semantics or canonical state.
 
+import { contextScaleBand, contextBudgets, contextVisibility } from './3d-context-policy.js';
+
 const map = window.__potatoAtlasMap;
 const selection = window.__potatoAtlasSelection;
 const layers = window.__potatoAtlasLayers;
@@ -14,6 +16,7 @@ let current = null;
 let refreshScheduled = false;
 let refreshSerial = 0;
 let staleSuppressions = 0;
+let stableScaleBand = null;
 
 function timeState() {
   const direct = window.__potatoAtlasTime?.getState?.();
@@ -32,35 +35,41 @@ function activeLayerEntries() {
 }
 
 function scaleBand() {
-  try {
-    const direct = scale?.bandForZoom?.(map.getZoom?.());
-    if (direct) return direct;
-    const state = scale?.current?.();
-    if (state?.band) return state.band;
-  } catch { /* fall through to semantic default */ }
-  return 'world';
+  const zoom = Number(map.getZoom?.());
+  if (!Number.isFinite(zoom)) return stableScaleBand || 'world';
+  stableScaleBand = contextScaleBand(scale, stableScaleBand, zoom);
+  return stableScaleBand;
 }
 
+function activeInvestigationId() {
+  try {
+    const api = window.__potatoAtlasInvestigationSurface;
+    if (typeof api?.active === 'function') return api.active();
+    return api?.current?.id || api?.current?.type || null;
+  } catch { return null; }
+}
 function evidenceActive() {
+  const id = activeInvestigationId();
   return Boolean(
+    id === 'evidence' ||
     document.querySelector('[data-investigation="evidence"].active') ||
     document.getElementById('evidence')?.classList.contains('active') ||
-    window.__potatoAtlasInvestigationSurface?.current?.type === 'evidence'
+    document.getElementById('evidenceEye')?.classList.contains('active')
   );
 }
 function connectionsActive(snapshot) {
+  const id = activeInvestigationId();
   return Boolean(
     snapshot?.relationMode && snapshot.relationMode !== 'all' ||
     document.getElementById('relations')?.classList.contains('active') ||
-    window.__potatoAtlasInvestigationSurface?.current?.type === 'trace' ||
-    window.__potatoAtlasInvestigationSurface?.current?.type === 'path'
+    ['trace','path','impact','entity-trace','chain-detail'].includes(String(id || ''))
   );
 }
 function compareActive(snapshot) {
   return Boolean(
     document.getElementById('compare')?.classList.contains('active') ||
     snapshot?.compareMode ||
-    (snapshot?.pinnedCodes?.length || 0) > 1 && new URL(location.href).searchParams.get('compare')
+    ((snapshot?.pinnedCodes?.length || 0) > 1 && new URL(location.href).searchParams.get('compare'))
   );
 }
 function investigationMode(snapshot) {
@@ -68,37 +77,6 @@ function investigationMode(snapshot) {
   if (connectionsActive(snapshot)) return 'connections';
   if (compareActive(snapshot)) return 'compare';
   return 'browse';
-}
-
-function budgetsFor(band, mode, pinCount) {
-  const narrow = matchMedia?.('(max-width: 900px)')?.matches === true;
-  const base = {
-    world:{ active:8, pinned:2, total:20, cards:narrow ? 2 : 4 },
-    'macro-region':{ active:8, pinned:2, total:22, cards:narrow ? 2 : 4 },
-    region:{ active:9, pinned:2, total:24, cards:narrow ? 2 : 4 },
-    country:{ active:10, pinned:2, total:26, cards:narrow ? 2 : 5 },
-    subnational:{ active:6, pinned:1, total:16, cards:narrow ? 2 : 5 },
-    local:{ active:4, pinned:1, total:12, cards:narrow ? 2 : 5 },
-  }[band] || { active:8, pinned:2, total:20, cards:narrow ? 2 : 4 };
-
-  if (mode === 'connections') return { ...base, active:Math.min(12, base.active + 2), total:Math.min(32, base.total + 6), pinnedCards:Math.min(base.cards, Math.max(pinCount, 1)), statusSurfaces:3 };
-  if (mode === 'compare') return { ...base, active:Math.max(6, base.active - 1), pinned:Math.min(3, base.pinned + 1), pinnedCards:Math.min(base.cards, Math.max(pinCount, 1)), statusSurfaces:3 };
-  if (mode === 'evidence') return { ...base, active:Math.max(4, base.active - 2), total:Math.max(12, base.total - 4), pinnedCards:Math.min(base.cards, Math.max(pinCount, 1)), statusSurfaces:4 };
-  return { ...base, pinnedCards:Math.min(base.cards, Math.max(pinCount, 1)), statusSurfaces:3 };
-}
-
-function detailFlags(band, mode) {
-  const place = ['country','subnational','local'].includes(band);
-  const subdivision = ['subnational','local'].includes(band);
-  return {
-    showActiveRelations: mode !== 'evidence',
-    showPinnedContext: true,
-    showPlaceDetail: place,
-    showSubdivisionDetail: subdivision,
-    emphasizeEvidence: mode === 'evidence',
-    suppressDecorativeProjectOverlays: mode === 'evidence',
-    reduceAbstractRelations: ['subnational','local'].includes(band) && mode === 'browse',
-  };
 }
 
 async function buildContext(reason) {
@@ -111,8 +89,9 @@ async function buildContext(reason) {
   const entries = activeLayerEntries();
   const scalar = entries.find(entry => entry.kind === 'scalar') || null;
   const epistemicTypes = [...new Set(entries.map(entry => entry.epistemic_type).filter(Boolean))];
-  const budgets = budgetsFor(band, mode, pinnedCountries.length);
-  const visibility = detailFlags(band, mode);
+  const narrow = typeof matchMedia === 'function' && matchMedia('(max-width: 900px)').matches === true;
+  const budgets = contextBudgets({ band, mode, pinCount:pinnedCountries.length, narrow });
+  const visibility = contextVisibility({ band, mode });
 
   await Promise.resolve();
   if (serial !== refreshSerial) {
@@ -130,6 +109,7 @@ async function buildContext(reason) {
       analytical:scalar?.id || null,
       relationMode:snapshot.relationMode || selection.getRelationMode?.() || 'all',
       investigation:mode,
+      investigationId:activeInvestigationId(),
     },
     epistemic:{ activeTypes:epistemicTypes },
     budgets:{
@@ -149,9 +129,9 @@ async function refresh(reason = 'refresh') {
   if (!next) return current;
   current = next;
   selection.setAutomaticRelationBudget?.({
-    active:current.budgets.activeRelations,
-    pinned:current.budgets.pinnedRelations,
-    total:current.budgets.totalRelations,
+    active:current.visibility.showActiveRelations ? current.budgets.activeRelations : 0,
+    pinned:current.visibility.showActiveRelations ? current.budgets.pinnedRelations : 0,
+    total:current.visibility.showActiveRelations ? current.budgets.totalRelations : 0,
   });
   if (window.__potatoAtlasDiagnostics) {
     window.__potatoAtlasDiagnostics.contextVisibilityRefreshes = (window.__potatoAtlasDiagnostics.contextVisibilityRefreshes || 0) + 1;
@@ -188,6 +168,7 @@ for (const eventName of [
   'atlas-time-change',
   'potato-atlas-inspector-change',
   'potato-atlas-investigation-change',
+  'potato-atlas-scale-ready',
 ]) window.addEventListener(eventName, () => scheduleRefresh(eventName));
 
 map.on?.('moveend', () => scheduleRefresh('moveend'));
