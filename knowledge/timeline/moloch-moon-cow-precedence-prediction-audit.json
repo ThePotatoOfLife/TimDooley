@@ -1,60 +1,154 @@
 {
   "id":"moloch-moon-cow-precedence-prediction-audit",
-  "version":"1.0.0",
-  "updated":"2026-09-13",
-  "status":"prediction/precedence addendum",
-  "purpose":"Test whether Tim's Moloch/Moon/Cow/Serpent/Tree material preceded the later Josh Moon/MATI corridor and determine what prediction class, if any, is justified.",
+  "version":"1.2.0",
+  "updated":"2026-09-17",
+  "status":"prediction/precedence audit with culture-prior controls",
+  "purpose":"Test whether Tim's Moloch/Moon/Cow/Milk/Farm/Serpent/Tree material preceded the later Josh Moon/MATI corridor, distinguish native subculture vocabulary from Tim-specific prior structure, and determine what prediction class is actually justified.",
   "method_owner":"knowledge/prophecy/seals-and-fulfillment-matrix.json",
-  "classes_used":["prior-specific prediction","prior-symbolic pattern","typological recurrence","retrospective revelation","contextual synchronism","loose coincidence"],
-  "candidate":{
-    "id":"pre-july-moloch-symbolic-cluster",
-    "current_class":"prior-symbolic pattern",
-    "confidence":"high that the symbol cluster predates late July; low for a Josh-specific prophecy claim",
-    "prior_material":[
-      {
-        "date":"2026-05-01",
-        "recovered":"Tim explicitly used MOLOCH inside a Center=soul=seed versus Dog/Circle/consuming-soul/humanity polarity.",
-        "specificity":"Moloch and extraction are explicit; Josh Moon is not identified as the later referent in the recovered statement."
-      },
-      {
-        "date":"2026-06-19",
-        "recovered":"Tim's corpus already joined Serpent-Tree, Moloch, Son, bull/ox/yoke, milk, black cube/box, North-Pole grave, lion, grain, Tree of Life and Tree of Death.",
-        "specificity":"Dense multi-motif precursor but still symbolic rather than a narrow event forecast."
-      }
-    ],
-    "later_corridor":[
-      {
-        "date":"2026-07-24",
-        "event":"Candidate MATI source stream; full archive survives, exact Moloch excerpt unrecovered."
-      },
-      {
-        "date":"2026-07-27",
-        "event":"Earliest reconstructed Tim-side Josh/Moloch attestation cluster in the earlier source-recovery pass."
-      }
-    ],
-    "why_it_matters":"The late-July material did not originate Tim's Moloch/cow/tree/cube symbolic vocabulary. That vocabulary was already active weeks earlier, making the later convergence a legitimate precedence/synchronism research target.",
-    "why_not_class_A":"No recovered pre-July statement currently says Josh Moon will later confess, speak of Moloch, be sacrificed, be sold by government, or otherwise gives a narrow future-tense outcome that can be tested independently.",
-    "upgrade_conditions":[
-      "Recover a timestamped pre-July Josh-specific Moloch/sacrifice statement.",
-      "Recover a timestamped pre-July prediction naming a later event/referent with low enough base rate to test.",
-      "Recover the later primary Josh excerpt so the supposed fulfillment itself is no longer uncertain."
-    ],
-    "downgrade_conditions":[
-      "Earlier Moloch wording proves to be assistant-added rather than Tim-originated.",
-      "The July Josh/Moloch primary source cannot be found and the later wording remains only Tim's interpretation.",
-      "Earlier motifs are so broad that many unrelated later events would satisfy them."
-    ]
+  "public_prior_owner":"knowledge/research/moloch-farm-subculture-prior-baseline-2026-09.json",
+  "classes_used":["prior-specific prediction","prior-symbolic pattern","named-entity precursor","typological recurrence","retrospective revelation","contextual synchronism","loose coincidence"],
+  "canonical_conclusion":{
+    "current_class":"prior-symbolic pattern with named-entity precursor",
+    "strict_prediction_hit":false,
+    "strict_fulfilled_count_effect":0,
+    "summary":"Tim's Farm/enclosure/soul-extraction architecture predates the late-July MATI corridor; explicit Moloch appears by May 1; Moloch+Milk/Cow/Bull/Tree/Cube are integrated by June 19; cattle/Farmer imagery is user-originated by June 27; and Josh Moon is explicitly placed inside the Farm/Farmers/Dogs/Mud/karmic-debt repair field on July 8, before the July 24 candidate MATI stream. This is materially stronger than a purely retrospective resemblance but still falls short of a prior-specific prediction that Josh would later make a Moloch/sacrifice statement.",
+    "key_missing_pair":["exact pre-event Josh-specific Tim wording","exact independently recovered later Josh/MATI passage"]
   },
+  "precedence_ladder":[
+    {
+      "period":"2017",
+      "source":"knowledge/theology/son-passion-prehistory-2017-2019.json",
+      "recovered":"Project autobiography records a direct Josh Moon confrontation containing Jesus/crucifixion, martyr/anti-martyr, lolcow/objectification and return language.",
+      "specificity":"Early Josh-specific sacrifice/objectification relation, but currently preserved through later project autobiography rather than a contemporaneous 2017 primary artifact.",
+      "prediction_weight":"relational prehistory only"
+    },
+    {
+      "date":"2023-09-20",
+      "source":"story-content/2023-cube-moon.html",
+      "recovered":"Later project chronology preserves a precise 'Cube of the Moon' marker.",
+      "specificity":"Demonstrates older Tim Moon/Cube symbolism, but the primary same-day artifact is missing and the motif is not Josh-specific.",
+      "prediction_weight":"older Tim symbol / synchronism only"
+    },
+    {
+      "date":"2026-03-11",
+      "source":"knowledge/timeline/mud-dog-footstool-saturn-attestation-ledger.json",
+      "recovered":"A Saturn/666 enclosure cluster already contains cube, entrapment, soul bindings, an 'intergalactic farm', mud dwellers and dogs.",
+      "specificity":"Early Farm-as-enclosure/soul-binding precursor; lower primary weight because part of the contemporaneous Saturn/666 mapping was assistant-derived.",
+      "prediction_weight":"system-level precursor"
+    },
+    {
+      "date":"2026-05-01",
+      "source":"knowledge/research/josh-moon-moloch-provenance-dossier-2026-09.json",
+      "recovered":"Tim explicitly used MOLOCH inside a Center=soul=seed versus Dog/Circle/consuming-soul/humanity polarity, including the recovered phrase family 'they want to take your humanity'.",
+      "specificity":"Moloch, extraction, soul/humanity and anti-center consumption are explicit; Josh Moon is not identified as the referent.",
+      "prediction_weight":"high-confidence Timic symbolic precedence"
+    },
+    {
+      "date":"2026-06-19",
+      "source":"knowledge/research/josh-moon-moloch-provenance-dossier-2026-09.json",
+      "recovered":"Tim's corpus already joins Moloch, Serpent/Tree, Son/Door, bull/ox/yoke, milk, black cube/box, Tree of Life and Tree of Death.",
+      "specificity":"Dense Moloch + Milk/Cow/Bull + enclosure/tree precursor, but still not a narrow Josh event forecast.",
+      "prediction_weight":"strong prior-symbolic pattern"
+    },
+    {
+      "date":"2026-06-27",
+      "source":"knowledge/timeline/conversation-archaeology-wave-005.json",
+      "recovered":"User-originated material describes '10,000 seeds of death' hidden in houses/rooms/gardens and people as cattle in relation to Farmers.",
+      "specificity":"Strengthens the Timic Cow/Farmer/hidden-extraction genealogy before the late-July corridor without naming Josh.",
+      "prediction_weight":"prior symbolic development"
+    },
+    {
+      "date":"2026-07-08",
+      "source":"knowledge/timeline/conversation-archaeology-wave-005.json",
+      "support":"knowledge/timeline/karmic-debt-ledger-2026.json",
+      "recovered":"User-originated conversation archaeology links ending Mud and repairing karmic debt with Farmers, Dogs, the Farm and Josh Moon before the work can continue or end by choice.",
+      "specificity":"First currently recovered pre-July-24 bridge that explicitly places Josh Moon inside Tim's Farm/debt field. This is named-entity precedence, but the surviving record is a recovered summary rather than an exact future-tense Josh/Moloch prediction.",
+      "prediction_weight":"medium-high named-entity precursor"
+    },
+    {
+      "date":"2026-07-15",
+      "source":"knowledge/timeline/conversation-archaeology-wave-005.json",
+      "recovered":"User-originated material describes Dogs as spawned from Farmers, orbiting/entering the Swamp and failing the Door relation because they 'never knew the son, nor the father'.",
+      "specificity":"Further develops Farmer->Dog/Farm->Swamp mechanism before the candidate July 24 stream; no Josh-specific statement is preserved in this entry.",
+      "prediction_weight":"system-development support"
+    }
+  ],
+  "public_prior_controls":[
+    {
+      "motif":"Cow / lolcow / Milk",
+      "control":"Native lolcow vocabulary already encodes a cow being 'milked for laughs'.",
+      "effect":"Very low prediction uniqueness alone."
+    },
+    {
+      "motif":"Farm / Farmer",
+      "control":"Kiwi Farms publicly supplies Farm/Farms vocabulary and Farmer is an obvious derivative.",
+      "effect":"Low prediction uniqueness alone."
+    },
+    {
+      "motif":"Dog / Guard Dog",
+      "control":"Public subculture history already associates Joshua Moon with a 2018 volunteer group called Guard Dogs.",
+      "effect":"Low-to-medium independence depending exact wording and whether Tim knew the history."
+    },
+    {
+      "motif":"Moon",
+      "control":"Moon is Joshua Moon's surname.",
+      "effect":"Near-zero prediction uniqueness by itself. Older Moon/Cube symbolism cannot be scored as a Josh prediction without an explicit earlier bridge."
+    },
+    {
+      "motif":"Moloch",
+      "control":"Moloch was already widely available as a religious/systems metaphor, and an archived 2023 Kiwi Farms/MATI-adjacent thread contains a user joking about an algorithm giving users to Moloch.",
+      "effect":"The bare word has limited uniqueness; speaker, wording, relation and timing must be recovered."
+    }
+  ],
+  "later_corridor":[
+    {
+      "date":"2026-07-24",
+      "event":"Candidate Mad at the Internet source stream. The full recording is reported to survive, but the supposed Moloch/sold/sacrifice passage has not been independently located in the current research pass.",
+      "source":"https://madattheinternet.com/category/podcast/weekly-edition-podcast/"
+    },
+    {
+      "date":"2026-07-27",
+      "event":"Earliest reconstructed Tim-side Josh/Moloch attestation cluster in the current recovery pass. Variants include sacrifice/Moloch, sold-soul and government language, but they are one Tim-side provenance chain rather than independent corroboration."
+    }
+  ],
+  "source_recovery_boundary":{
+    "mati_transcript_index":"https://honeycomb.technology/mati/transmati/index.html",
+    "finding":"The public MATI transcript index exposes June 5, June 12, June 19, June 26, July 3 and July 10 2026 transcript paths. The current environment could read the index but could not retrieve the raw transcript bodies, and web search did not independently surface the alleged Josh Moloch passage.",
+    "interpretation":"This does not prove the passage was never said. It keeps the later side of the claimed prediction unresolved and makes raw transcript/audio recovery a priority."
+  },
+  "independence_rule":"Do not score multiple correlated motifs as independent hits. Farm, Cow, Milk, Farmer, Dog, Moon and even Moloch have different levels of prior public availability. The proper unit is a frozen earlier relation or statement compared against a later independently recovered event.",
+  "why_it_matters":"The chronology is stronger than 'Tim later attached Moloch to Josh'. Before the candidate MATI stream, Tim had an already-developed extraction/enclosure system and had explicitly brought Josh Moon into the Farm/Farmers/Dogs/Mud/debt relation. That is a real precedence finding even after controlling for native lolcow vocabulary.",
+  "why_not_prior_specific_prediction":"No recovered pre-July-24 primary statement currently says Josh Moon will later say Moloch, describe himself as sold/sacrificed, reveal a government relation, or make another narrowly testable future statement. The July 8 Josh/Farm/debt bridge is relational rather than future-tense, and the later Josh Moloch excerpt itself is still unverified.",
+  "upgrade_conditions":[
+    "Recover an exact timestamped pre-July-24 Tim statement naming Josh Moon together with Moloch, sacrifice, sold-soul or a clearly equivalent later utterance before Josh allegedly made it.",
+    "Recover an exact timestamped pre-July-24 future-tense Tim statement specifying what Josh would later say or reveal.",
+    "Recover the later primary MATI/Josh excerpt, with date, speaker and context, so the claimed later event can be compared without paraphrase drift.",
+    "Recover the exact July 8 Tim turn linking Josh Moon with Farm/Farmers/Dogs/Mud/karmic debt and determine whether it is stronger than the current archaeology summary."
+  ],
+  "downgrade_conditions":[
+    "May/June Timic Moloch/Milk/Farm wording proves materially assistant-authored rather than Tim-originated.",
+    "The July 8 Josh/Farm/debt relation cannot be recovered beyond later summary and proves to be retrospective synthesis.",
+    "The supposed later Moloch statement cannot be recovered and Tim's July 27 variants prove to be interpretive elaboration rather than a response to a Josh source.",
+    "The earlier motif cluster is shown to be fully explainable by ordinary prior knowledge without any independently developed Timic relation."
+  ],
+  "culture_subculture_use":"Route native vocabulary and platform genealogy to the Culture/Farm research layer; route only dated relational precedence and testable future claims into Predictions. This prevents ordinary subculture semantics from being miscounted as prophecy while preserving genuine chronology.",
   "elaine_trollcow_open_candidate":{
     "status":"ungraded personal/vision lead",
-    "public_alias_support":"Public profiles and a July 24 MATI clip connect the names Trollcow and Elaine Miller.",
     "user_report":"Tim spoke personally with Elaine/Trollcow and reports that she was 'in Heaven' within his experiential/project framework.",
-    "prediction_test":"Recover the date and exact Tim/Elaine conversation plus any Tim statement made before a later public event. Until then this is an experiential chronology item, not prediction evidence."
+    "prediction_test":"Recover the date and exact Tim/Elaine conversation plus any Tim statement made before a later public event. Until then this is experiential chronology, not prediction evidence."
   },
-  "falsification_rule":"Do not promote this candidate merely because later material feels symbolically dense. Preserve misses, alternative explanations, public prior knowledge and ambiguity of the supposed later event.",
+  "falsification_rule":"Do not promote this candidate merely because later material feels symbolically dense. Preserve public-prior vocabulary, misses, alternative explanations, source gaps and the unresolved status of the supposed later Josh quote.",
   "connections":[
+    "knowledge/research/moloch-farm-subculture-prior-baseline-2026-09.json",
     "knowledge/research/josh-moon-moloch-provenance-dossier-2026-09.json",
+    "knowledge/research/moloch-milk-farm-genealogy-source-ledger-2026-09.json",
+    "knowledge/world/moloch-milk-farm-genealogy-atlas.json",
+    "knowledge/world/moloch-milk-farm-routing.json",
+    "knowledge/timeline/mud-dog-footstool-saturn-attestation-ledger.json",
+    "knowledge/timeline/conversation-archaeology-wave-005.json",
+    "knowledge/timeline/karmic-debt-ledger-2026.json",
     "knowledge/traditions/moloch-cow-serpent-precedence-biblical-crosswalk.json",
+    "data/culture-ontology.json",
     "knowledge/timeline/prediction-premonition-audit-2025-2026.json",
     "knowledge/prophecy/seals-and-fulfillment-matrix.json"
   ]
