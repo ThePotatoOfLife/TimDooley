@@ -3,8 +3,9 @@
 
 The interactive archive owns .archive-nav. Generic .nav is reserved for local/static
 legacy pages and must never regain global layout behavior in app/style.css. Active
-self-themed Tim/FAQ readers may preserve historical source CSS only when the public
-compatibility scoper proves their deployed theme ownership becomes local.
+registered editorial/longform readers may preserve historical source CSS only when
+the public compatibility scoper proves their deployed global theme ownership becomes
+local beneath the House.
 """
 from pathlib import Path
 import re
@@ -12,6 +13,7 @@ import sys
 
 from house_public_surfaces import parent_chain, surface_rows
 from house_style_scope import has_legacy_global_theme, scope_legacy_inline_theme
+from validate_house_accessibility import main as validate_house_accessibility
 
 ROOT = Path(__file__).resolve().parents[1]
 STYLE = ROOT / "app" / "style.css"
@@ -68,14 +70,14 @@ def route_source_path(route: str) -> Path:
     return ROOT / stripped
 
 
-def branch_family(surface_id: str) -> str | None:
-    """Return the convergence family derived from House ancestry, if targeted."""
+def branch_family(surface_id: str) -> str:
+    """Return a useful reporting family while convergence policy stays generic."""
     chain_ids = {row["id"] for row in parent_chain(ROOT, surface_id)}
     if "faq" in chain_ids:
         return "FAQ"
     if "tim" in chain_ids and surface_id != "tim":
         return "Tim"
-    return None
+    return "House"
 
 
 def global_theme_owners(text: str) -> list[str]:
@@ -127,15 +129,13 @@ for path in MIGRATED_LOCAL_STYLE_SOURCES:
                 f"{path.relative_to(ROOT)} redefines canonical palette literals in :root: {', '.join(repeated)}"
             )
 
-# Tim/FAQ branch convergence: historical source may still contain its old theme,
-# but the compatibility transform must prove those selectors become local before
-# the generated public page is considered safe.
+# Registered editorial/longform convergence: historical source may still contain
+# an old theme, but the compatibility transform must prove those selectors become
+# local before generated public output is considered safe.
 for surface in surface_rows(ROOT):
     if surface.get("status") != "active" or surface.get("shell_type") not in {"editorial", "longform"}:
         continue
     family = branch_family(surface["id"])
-    if not family:
-        continue
     source = route_source_path(surface["canonical_route"])
     if not source.exists():
         continue
@@ -146,7 +146,7 @@ for surface in surface_rows(ROOT):
     source_owned = global_theme_owners(text)
     if source_owned:
         warnings.append(
-            f"{source.relative_to(ROOT)} ({family} branch) retains legacy source theme debt: {', '.join(source_owned)}"
+            f"{source.relative_to(ROOT)} ({family}) retains legacy source theme debt: {', '.join(source_owned)}"
         )
     if not has_legacy_global_theme(text):
         continue
@@ -160,7 +160,7 @@ for surface in surface_rows(ROOT):
     remaining = global_theme_owners(projected)
     if remaining:
         errors.append(
-            f"{source.relative_to(ROOT)} ({family} branch) still owns global selectors after public scoping: {', '.join(remaining)}"
+            f"{source.relative_to(ROOT)} ({family}) still owns global selectors after public scoping: {', '.join(remaining)}"
         )
     if "house-content-scope" not in projected:
         errors.append(f"{source.relative_to(ROOT)} public style scoping did not mark the content root")
@@ -214,3 +214,5 @@ if errors:
     sys.exit(1)
 
 print(f"CSS namespace check passed ({len(html_files)} HTML files scanned).")
+if validate_house_accessibility() != 0:
+    sys.exit(1)
