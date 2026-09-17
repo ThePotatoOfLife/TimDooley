@@ -15,6 +15,7 @@ let refreshScheduled = false;
 let refreshSerial = 0;
 let staleSuppressions = 0;
 let stableScaleBand = null;
+let relationBudgetSkips = 0;
 
 function timeState() {
   const direct = window.__potatoAtlasTime?.getState?.();
@@ -79,6 +80,12 @@ function investigationMode(snapshot) {
     relationFiltered:Boolean(snapshot?.relationMode && snapshot.relationMode !== 'all'),
   });
 }
+function relationBudgetsEqual(a, b) {
+  return Boolean(a && b
+    && Number(a.active) === Number(b.active)
+    && Number(a.pinned) === Number(b.pinned)
+    && Number(a.total) === Number(b.total));
+}
 
 async function buildContext(reason) {
   const serial = ++refreshSerial;
@@ -129,17 +136,24 @@ async function refresh(reason = 'refresh') {
   const next = await buildContext(reason);
   if (!next) return current;
   current = next;
-  selection.setAutomaticRelationBudget?.({
+  const desiredRelationBudget = {
     active:current.visibility.showActiveRelations ? current.budgets.activeRelations : 0,
     pinned:current.visibility.showActiveRelations ? current.budgets.pinnedRelations : 0,
     total:current.visibility.showActiveRelations ? current.budgets.totalRelations : 0,
-  });
+  };
+  const existingRelationBudget = selection.getAutomaticRelationBudget?.();
+  if (relationBudgetsEqual(existingRelationBudget, desiredRelationBudget)) {
+    relationBudgetSkips += 1;
+  } else {
+    selection.setAutomaticRelationBudget?.(desiredRelationBudget);
+  }
   if (window.__potatoAtlasDiagnostics) {
     window.__potatoAtlasDiagnostics.contextVisibilityRefreshes = (window.__potatoAtlasDiagnostics.contextVisibilityRefreshes || 0) + 1;
     window.__potatoAtlasDiagnostics.contextVisibilityMode = current.question.investigation;
     window.__potatoAtlasDiagnostics.contextVisibilityScale = current.scaleBand;
     window.__potatoAtlasDiagnostics.contextVisibilityBudgets = { ...current.budgets };
     window.__potatoAtlasDiagnostics.contextVisibilityStaleSuppressions = staleSuppressions;
+    window.__potatoAtlasDiagnostics.contextRelationBudgetSkips = relationBudgetSkips;
   }
   window.dispatchEvent(new CustomEvent('potato-atlas-context-visibility-change', { detail:current }));
   return current;
