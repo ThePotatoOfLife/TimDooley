@@ -1,5 +1,5 @@
 {
-  "version": "5.2.0",
+  "version": "5.3.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -87,7 +87,8 @@
       "house-federation-scale",
       "house-holdings",
       "house-collections",
-      "house-data-holdings"
+      "house-data-holdings",
+      "house-room-dossiers"
     ]
   },
   "records": [
@@ -1225,6 +1226,21 @@
         "primary Room owner",
         "backend data"
       ]
+    },
+    {
+      "id": "house-room-dossiers",
+      "path": "data/house/room-dossiers.json",
+      "branch": "root",
+      "kind": "reader and maintainer dossiers composing each Room's holdings, datasets, passages, collections and public surfaces",
+      "terms": [
+        "Room dossier",
+        "entrance",
+        "featured holdings",
+        "data holdings",
+        "passages",
+        "collections",
+        "next work"
+      ]
     }
   ],
   "retrieval_routes": [
@@ -1449,6 +1465,16 @@
         "house-data-holdings",
         "house-holdings",
         "house-subrooms",
+        "house-collections"
+      ]
+    },
+    {
+      "question": "How do I enter and understand a specific Room?",
+      "records": [
+        "house-room-dossiers",
+        "house-holdings",
+        "house-data-holdings",
+        "house-interfaces",
         "house-collections"
       ]
     }
