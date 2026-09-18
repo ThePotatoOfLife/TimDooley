@@ -1,0 +1,331 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-architectural-vocabulary",
+  "purpose": "Distinguish biblical/project architectural metaphors by function and scale so House, Dwelling/Mansion, Room, Chamber, Court, Gate, Door, Temple, City, Body, Garden and other images can cooperate without collapsing into one filing metaphor.",
+  "biblical_boundary": "John 14:2 supplies Father's House plus monai, commonly translated dwelling places/rooms and historically mansions in English. The project uses this translation history as an architectural analogy; it does not claim that the biblical text enumerates the repository's ten domains or describes a literal digital/cosmic floorplan.",
+  "scale_ladder": [
+    {
+      "id": "house",
+      "label": "House",
+      "scale": "whole",
+      "definition": "The compositional whole that preserves differentiated internal spaces, relations, boundaries and inhabitants.",
+      "project_use": "The Potato House as the total knowledge organism.",
+      "not_equivalent_to": [
+        "city",
+        "temple",
+        "body",
+        "tree"
+      ]
+    },
+    {
+      "id": "dwelling",
+      "label": "Dwelling / Mansion",
+      "scale": "major-domain",
+      "definition": "A substantial abiding domain inside a larger House, capable of containing several Rooms and its own internal circulation.",
+      "project_use": "Public architectural projection of the ten canonical top-level bounded contexts. 'Mansion' is retained as an older English symbolic bridge; 'dwelling' is the preferred neutral scale term.",
+      "not_equivalent_to": [
+        "luxury house",
+        "literal afterlife geography",
+        "single room"
+      ]
+    },
+    {
+      "id": "room",
+      "label": "Room",
+      "scale": "bounded-subcontext",
+      "definition": "A differentiated functional space inside a Dwelling with local vocabulary, tasks, boundaries and interfaces.",
+      "project_use": "The 38 registered nested Rooms.",
+      "not_equivalent_to": [
+        "public view",
+        "webpage",
+        "top-level owner by default"
+      ]
+    },
+    {
+      "id": "chamber",
+      "label": "Chamber",
+      "scale": "specialist-cell",
+      "definition": "A smaller, more specialized or protected space inside a Room; created only when a local topic has a stable boundary or access/task distinction.",
+      "project_use": "Future third-level local architecture; not globally instantiated by default.",
+      "not_equivalent_to": [
+        "every topic",
+        "every file"
+      ]
+    }
+  ],
+  "families": {
+    "access_and_circulation": [
+      {
+        "id": "court",
+        "label": "Court / Courtyard",
+        "function": "Shared approach or common space serving several inner destinations before a more selective threshold.",
+        "project_use": "Public hub/common comparison space where several Rooms meet without transferring ownership."
+      },
+      {
+        "id": "gate",
+        "label": "Gate",
+        "function": "Perimeter access regime controlling entry to a larger domain, city, garden or compound.",
+        "project_use": "Admission boundary between outside/public context and a wider domain; broader than a local Door."
+      },
+      {
+        "id": "door",
+        "label": "Door",
+        "function": "Local guarded transition whose crossing changes state, context, capability or ownership regime.",
+        "project_use": "Existing House/Axis transition operator and guarded Room interface."
+      },
+      {
+        "id": "road",
+        "label": "Road / Way / Corridor",
+        "function": "Repeatable traversable relation connecting spaces without itself owning them.",
+        "project_use": "Paths, navigation, relation routes and semantic corridors."
+      },
+      {
+        "id": "ladder",
+        "label": "Ladder / Stair",
+        "function": "Ordered sequence of distinct thresholds allowing vertical or staged traversal.",
+        "project_use": "Living Axis ordered transformation path."
+      }
+    ],
+    "structural_support": [
+      {
+        "id": "foundation",
+        "label": "Foundation",
+        "function": "Load-bearing invariant beneath later construction.",
+        "project_use": "Constitution, stable IDs, source-of-truth rules, schemas and ownership contracts."
+      },
+      {
+        "id": "cornerstone",
+        "label": "Cornerstone",
+        "function": "Alignment/reference element whose placement constrains the geometry of the larger structure.",
+        "project_use": "A small set of orientation contracts or principles that align multiple parts; not a universal label for one person or file."
+      },
+      {
+        "id": "pillar",
+        "label": "Pillar",
+        "function": "Repeated vertical support carrying load while leaving open space around it.",
+        "project_use": "Cross-cutting durable principles such as identity, provenance, time, context and evidence boundaries."
+      },
+      {
+        "id": "wall",
+        "label": "Wall / Boundary",
+        "function": "Selective separation defining inside/outside and protecting local integrity.",
+        "project_use": "Room boundaries, privacy/epistemic firewalls and interface contracts; judged by what passage they enable or block."
+      },
+      {
+        "id": "roof",
+        "label": "Roof / Crown",
+        "function": "Upper integration or covering that joins lower supports without becoming their owner.",
+        "project_use": "Summary/integration Views and Crown orientation."
+      }
+    ],
+    "presence_and_protection": [
+      {
+        "id": "temple",
+        "label": "Temple",
+        "function": "Organized presence/meaning architecture whose internal roles are defined by worship, dwelling, service and access.",
+        "project_use": "A distinct theological visualization mode, especially for presence/access, not a synonym for the whole House."
+      },
+      {
+        "id": "sanctuary",
+        "label": "Sanctuary",
+        "function": "Protected presence space with stronger access conditions than ordinary habitation.",
+        "project_use": "High-care contexts where provenance, privacy or sacred/interpretive boundaries need explicit protection."
+      },
+      {
+        "id": "inner-chamber",
+        "label": "Inner Chamber / Holy Place",
+        "function": "Highly restricted or concentrated inner zone inside a larger sanctuary architecture.",
+        "project_use": "An access pattern only; not a justification for hiding evidence or creating unquestionable authority."
+      },
+      {
+        "id": "throne",
+        "label": "Throne / Seat",
+        "function": "Orientation, judgment and responsibility point rather than a container.",
+        "project_use": "Decision/orientation responsibility; legitimacy is tested by service and return."
+      }
+    ],
+    "growth_and_stewardship": [
+      {
+        "id": "field",
+        "label": "Field",
+        "function": "Open work/problem space with relatively porous boundaries and many possible cultivations.",
+        "project_use": "Broad research or world problem domain before it earns a bounded Room."
+      },
+      {
+        "id": "vineyard",
+        "label": "Vineyard",
+        "function": "Stewarded productive field whose health is evaluated by fruit and treatment of entrusted life.",
+        "project_use": "Programme/workstream metaphor when a bounded mission is cultivated toward accountable outputs."
+      },
+      {
+        "id": "garden",
+        "label": "Garden",
+        "function": "Cultivated living regime supporting differentiated autonomous growth.",
+        "project_use": "Healthy system-state, not a filing container."
+      },
+      {
+        "id": "tree-vine",
+        "label": "Tree / Vine",
+        "function": "Organic differentiation from shared continuity into branches, leaves and fruit.",
+        "project_use": "Generative/output topology and participation view."
+      },
+      {
+        "id": "fruit-seed",
+        "label": "Fruit / Seed",
+        "function": "Outcome and transferable continuation.",
+        "project_use": "Useful outputs followed by compressed patterns that can begin another cycle."
+      }
+    ],
+    "federation_and_participation": [
+      {
+        "id": "body",
+        "label": "Body",
+        "function": "One coordinated organism composed of differentiated members/functions.",
+        "project_use": "Alternative visualization of functional dependence across Rooms; members remain distinct."
+      },
+      {
+        "id": "city",
+        "label": "City",
+        "function": "Federation at civic scale: many dwellings, gates, roads, institutions, citizens and shared infrastructure.",
+        "project_use": "A future federation/network view above one House, or the Garden-City/New Jerusalem comparison; not simply a bigger Room."
+      },
+      {
+        "id": "household",
+        "label": "Household",
+        "function": "Relational community inhabiting or constituted by the House.",
+        "project_use": "People/agents and belonging layer distinguished from the architecture itself."
+      }
+    ],
+    "storage_and_flow": [
+      {
+        "id": "treasury",
+        "label": "Treasury / Storehouse",
+        "function": "Stored future capacity/resources retained for later use.",
+        "project_use": "Knowledge, seed, trust, financial or institutional capacity when properly typed; not identical to Archive."
+      },
+      {
+        "id": "archive",
+        "label": "Archive / Memory House",
+        "function": "Preserved records and provenance enabling later reconstruction and correction.",
+        "project_use": "Archive & Sources; evidence roots rather than a treasury of unquestioned truth."
+      },
+      {
+        "id": "river",
+        "label": "River / Stream",
+        "function": "Flow that distributes life, resources, information or capability through a structure.",
+        "project_use": "Data/information/resource flow topology, kept distinct from the nodes it connects."
+      },
+      {
+        "id": "well",
+        "label": "Well / Spring",
+        "function": "Local access point to a deeper or replenishing source.",
+        "project_use": "Source/retrieval interface where a user draws from deeper stored material."
+      },
+      {
+        "id": "table",
+        "label": "Table",
+        "function": "Shared place of participation, deliberation, exchange or distribution.",
+        "project_use": "Cross-Room review/comparison surface where distinct participants or records meet without merger."
+      }
+    ],
+    "provisional_and_portable": [
+      {
+        "id": "tent-tabernacle",
+        "label": "Tent / Tabernacle",
+        "function": "Portable or provisional dwelling/presence architecture that can move before a durable House is established.",
+        "project_use": "Temporary research workspace, prototype, migration layer or candidate architecture that has not earned permanent constitutional status."
+      },
+      {
+        "id": "ark-vessel",
+        "label": "Ark / Vessel",
+        "function": "Protected portable container carrying selected life, memory, covenant or capability through transition.",
+        "project_use": "Export bundle, preserved collection or transition container; the exact biblical ark traditions remain distinct."
+      }
+    ]
+  },
+  "dwelling_projection": [
+    {
+      "canonical_room_id": "potatoverse-canon",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Potatoverse / Canon",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "archive-sources",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Archive & Sources",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "time-history",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Time & History",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "traditions-texts",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Traditions & Texts",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "science-formal-models",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Science & Formal Models",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "life-body",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Life & Body",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "world-systems",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "World Systems",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "culture-information",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Culture & Information",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "works",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Works",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    },
+    {
+      "canonical_room_id": "research-lab",
+      "public_scale_label": "Dwelling",
+      "symbolic_alias": "Mansion",
+      "title": "Research Lab",
+      "rule": "This is an architectural projection of a top-level bounded context because it contains multiple nested Rooms. It is not a claim that John 14:2 names this specific domain."
+    }
+  ],
+  "view_rules": [
+    "Use House for the whole composition, not for every container.",
+    "Use Dwelling/Mansion when a major stable domain contains several Rooms.",
+    "Use Room for mature nested bounded contexts.",
+    "Use Chamber only for smaller stable specialist cells with a real boundary/task distinction.",
+    "Use Court for shared approach/common space; Gate for perimeter access; Door for local guarded transition.",
+    "Use Temple/Sanctuary only when presence/access is the governing problem, not as a generic prettier word for House.",
+    "Use City and Body as alternate integrated-plurality Views, not replacements for House ownership.",
+    "Use Field/Vineyard/Garden for work and stewardship regimes, not as aliases for folders.",
+    "Use Foundation/Cornerstone/Pillar for support/alignment/invariant functions, not status rank.",
+    "Use Treasury for stored capability and Archive for preserved provenance; do not collapse them."
+  ]
+}
