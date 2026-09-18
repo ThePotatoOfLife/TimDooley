@@ -1,9 +1,13 @@
 {
   "id": "house-topology-golden-fixture",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "purpose": "Semantic regression fixture for the minimal Potato House topology. These assertions protect meaning, not presentation order.",
   "required_concepts": [
+    "spirit",
+    "son",
+    "father",
+    "potato-of-life",
     "source-field",
     "manifestation-field",
     "door",
@@ -20,6 +24,36 @@
     "swamp"
   ],
   "required_relations": [
+    {
+      "from": "son",
+      "to": "door",
+      "type": "specializes-as"
+    },
+    {
+      "from": "son",
+      "to": "manifestation-field",
+      "type": "oriented-toward"
+    },
+    {
+      "from": "father",
+      "to": "source-field",
+      "type": "oriented-toward"
+    },
+    {
+      "from": "potato-of-life",
+      "to": "spirit",
+      "type": "expresses-through"
+    },
+    {
+      "from": "potato-of-life",
+      "to": "son",
+      "type": "expresses-through"
+    },
+    {
+      "from": "potato-of-life",
+      "to": "father",
+      "type": "expresses-through"
+    },
     {
       "from": "door",
       "to": "source-field",
@@ -110,9 +144,22 @@
     {
       "concept": "shell-cube",
       "contains": "not inherently evil"
+    },
+    {
+      "concept": "potato-of-life",
+      "contains": "whole triune"
+    },
+    {
+      "concept": "father",
+      "contains": "does not by itself exhaust"
+    },
+    {
+      "concept": "son",
+      "contains": "not identical with the entire Manifestation Field"
     }
   ],
   "required_traversals": [
+    "triune-potato",
     "growth-return-cycle",
     "recognition-circuit",
     "shared-door-bridge",
