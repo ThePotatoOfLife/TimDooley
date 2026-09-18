@@ -215,6 +215,7 @@ def main() -> int:
         'id="active-relation"',
     ):
         require(bible, marker, "traditions/bible/index.html", errors)
+    # Public labels may become more readable while these semantic focus categories remain stable.
     bible_focuses = (
         ("Jesus / Son", ("Jesus / Son", "Jesus &amp; Son", "Jesus & Son")),
         ("Father / House", ("Father / House", "Father &amp; House", "Father & House")),
