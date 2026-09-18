@@ -1,8 +1,8 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.13.0",
-  "updated": "2026-09-18",
+  "version": "1.14.0",
+  "updated": "2026-09-19",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
   "repository_observation": "The project already has a strong retrieval-first architecture, but rapid research waves have produced several specialist files whose relationship to canonical owners is not always obvious. Consolidation should therefore prioritize ownership clarity and promotion rules before deleting substantive material.",
@@ -220,7 +220,10 @@
       "POTATOVERSE-DEEP-RESEARCH.md remains only as a readable historical donor and no longer points to live staging JSON.",
       "Research frontier House holdings no longer count retired alternative/deep Potatoverse staging files.",
       "Root research.json unique concepts are being drained into specialist owners before retirement; Center-as-reactor, Sacred Hypocrisy, Two-Faced Potato, comparison-adapter, generative-overlap, identity invariance, Crow transition, Third Temple living architecture and Merkaba choice have now been promoted.",
-      "All research.json sections now have successor owners; its 15 open questions moved into data/research-frontier.json and the root donor is closed for new research."
+      "All research.json sections now have successor owners; its 15 open questions moved into data/research-frontier.json and the root donor is closed for new research.",
+      "Great Book 2024 extraction now lives under knowledge/research/great-book-2024-source-extraction.json; live consumers were rewired from the retired root book-research.json path.",
+      "Law of Positional Meaning now lives in symbolic-relational-synthesis; later reinterpretation is modeled as graph growth in Timic dynamics.",
+      "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md is intentionally retained only as early-life roadmap provenance; canonical event ownership remains in data/timeline-events.json."
     ],
     "next_retirement_candidates": [
       {
@@ -303,6 +306,18 @@
         "reason": "full extraction retained intact under knowledge/research and every live consumer rewired",
         "successor": "knowledge/research/great-book-2024-source-extraction.json",
         "last_live_blob": "9168248304e821b4af092c5c5f9c506b7db51fb1"
+      },
+      {
+        "path": "book-research.json",
+        "action": "root path retired after relocation",
+        "successor": "knowledge/research/great-book-2024-source-extraction.json",
+        "reason": "cross-domain Great Book extraction remains valuable, but root location falsely implied global authority"
+      },
+      {
+        "path": "relational-objects.json",
+        "action": "deleted",
+        "reason": "orphaned root theory absorbed into canonical positional-meaning and temporal-reinterpretation owners",
+        "last_live_blob": "806538c82dcda0d00128f8841cfc7ca704ac5298"
       }
     ],
     "root_source_strata": {
