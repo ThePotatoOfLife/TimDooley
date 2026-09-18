@@ -1,5 +1,5 @@
 {
-  "version": "2.6.0",
+  "version": "2.7.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -6063,6 +6063,16 @@
       "path": "data/house/rare-value-contract.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "purpose-discovery-embodiment-wave-005"
+    },
+    {
+      "path": "knowledge/research/concrete-revelations-wave-006.json",
+      "primary_owner_room_id": "open-questions",
+      "basis": "concrete-revelations-wave-006"
+    },
+    {
+      "path": "data/house/concrete-revelation-evidence-matrix.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "concrete-revelations-wave-006"
     }
   ],
   "curated_unowned_paths": [
