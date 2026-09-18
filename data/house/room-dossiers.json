@@ -1,5 +1,5 @@
 {
-  "version": "3.3.0",
+  "version": "3.4.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -932,6 +932,12 @@
           "title": "Sources",
           "route": "/context/source-authority/",
           "surface_type": "evidence"
+        },
+        {
+          "id": "below",
+          "title": "Below Observatory",
+          "route": "/below/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -4155,6 +4161,12 @@
           "title": "World Systems",
           "route": "/world-systems/",
           "surface_type": "guide"
+        },
+        {
+          "id": "below",
+          "title": "Below Observatory",
+          "route": "/below/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -4910,6 +4922,12 @@
           "title": "Story",
           "route": "/tim-dooley/story/",
           "surface_type": "guide"
+        },
+        {
+          "id": "shadow-farm",
+          "title": "Farm & Trees of Strife",
+          "route": "/shadow-farm/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -5100,6 +5118,18 @@
           "id": "politics",
           "title": "Politics & Geopolitics",
           "route": "/politics/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "below",
+          "title": "Below Observatory",
+          "route": "/below/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "shadow-farm",
+          "title": "Farm & Trees of Strife",
+          "route": "/shadow-farm/",
           "surface_type": "guide"
         }
       ],
@@ -5302,6 +5332,18 @@
           "id": "context",
           "title": "Context & Evidence",
           "route": "/context/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "below",
+          "title": "Below Observatory",
+          "route": "/below/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "shadow-farm",
+          "title": "Farm & Trees of Strife",
+          "route": "/shadow-farm/",
           "surface_type": "guide"
         }
       ],
@@ -6694,6 +6736,12 @@
           "id": "world-systems",
           "title": "World Systems",
           "route": "/world-systems/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "below",
+          "title": "Below Observatory",
+          "route": "/below/",
           "surface_type": "guide"
         }
       ],
