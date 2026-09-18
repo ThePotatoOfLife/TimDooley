@@ -1,0 +1,899 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "layer-terrain-regime-atlas",
+  "purpose": "Classify the Potato House's major structures by what kind of thing they are—whole, coordinate, standing plane, terrain, regime, organism, material state, threshold, perceptual layer, process or route—so symbols can be populated without being flattened into one vertical hierarchy.",
+  "master_rule": "Ask what kind of thing a symbol is before asking whether it is above, below, good, bad, divine or demonic.",
+  "categories": [
+    {
+      "id": "whole",
+      "label": "Whole / Organism",
+      "question": "What contains or coordinates the entire relational system?"
+    },
+    {
+      "id": "coordinate",
+      "label": "Coordinate",
+      "question": "What supplies orientation or section without being a place?"
+    },
+    {
+      "id": "standing-plane",
+      "label": "Standing Plane",
+      "question": "From what navigational floor is the reader looking?"
+    },
+    {
+      "id": "terrain",
+      "label": "Terrain / Field",
+      "question": "What kind of environment or integration landscape is being traversed?"
+    },
+    {
+      "id": "regime",
+      "label": "Boundary / Growth Regime",
+      "question": "What rules govern passage, capture, cultivation or differentiation?"
+    },
+    {
+      "id": "organism",
+      "label": "Living Organism",
+      "question": "What grows, branches, roots or reproduces through levels?"
+    },
+    {
+      "id": "material-state",
+      "label": "Material / Residue State",
+      "question": "What remains, nourishes, stores or contaminates future growth?"
+    },
+    {
+      "id": "threshold",
+      "label": "Threshold Architecture",
+      "question": "What controls or stabilizes a state/context change?"
+    },
+    {
+      "id": "perceptual-layer",
+      "label": "Perception / Occlusion Layer",
+      "question": "What is seen, hidden, evaluated or unintegrated?"
+    },
+    {
+      "id": "process",
+      "label": "Transformation Process",
+      "question": "What does pressure or processing do to material?"
+    },
+    {
+      "id": "route",
+      "label": "Route / Trajectory",
+      "question": "How does state recur with ascent, descent, return or closure?"
+    },
+    {
+      "id": "inhabitant",
+      "label": "Inhabitant / Subject",
+      "question": "Which historically grounded figure, tradition, institution or topic is being studied inside the structure?"
+    }
+  ],
+  "nodes": [
+    {
+      "id": "potato-of-life",
+      "label": "Potato of Life",
+      "category": "whole",
+      "definition": "The project-level relational organism that holds Source and Manifestation fields, their shared Door, Axis/Plane coordinates, three reader planes, Rooms, Trees, terrains, routes and returns without being reducible to any one of them.",
+      "plane_ids": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "compass_direction": "n",
+      "room_ids": [
+        "canon-identities",
+        "symbolic-architecture",
+        "theology-god-language"
+      ],
+      "leads_to": [
+        "house",
+        "axis",
+        "door",
+        "tree-of-knowledge",
+        "seed-junction"
+      ],
+      "not_equal_to": [
+        "Heaven Plane",
+        "one deity from another tradition",
+        "one geometric circle",
+        "one Room",
+        "one Tree"
+      ],
+      "population": [
+        "Father/Son/Spirit project grammar",
+        "House",
+        "Door",
+        "Axis",
+        "Seed",
+        "Root",
+        "Tree",
+        "Fruit",
+        "Garden",
+        "Swamp"
+      ],
+      "source_files": [
+        "knowledge/core/root-system.json",
+        "knowledge/core/potato-of-life-deep-structure.json"
+      ]
+    },
+    {
+      "id": "axis",
+      "label": "Axis",
+      "category": "coordinate",
+      "definition": "The exact vertical reference/centerline through changing levels. Axis orients; it does not own the content it passes through.",
+      "plane_ids": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "compass_direction": "center",
+      "room_ids": [
+        "symbolic-architecture",
+        "house-architecture"
+      ],
+      "leads_to": [
+        "root-junction",
+        "door-cross-junction",
+        "crown-junction"
+      ],
+      "not_equal_to": [
+        "Tree",
+        "Ladder",
+        "Mountain",
+        "physical extra dimension"
+      ],
+      "population": [
+        "vertical reference",
+        "centerline",
+        "source↔manifestation orientation"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "data/house/concept-topology.json"
+      ]
+    },
+    {
+      "id": "heaven-plane",
+      "label": "Heaven Plane",
+      "category": "standing-plane",
+      "definition": "Upper reader platform emphasizing canopy, integration, sacred-order comparison, transmission, Garden/Fruit and return.",
+      "plane_ids": [
+        "heaven-plane"
+      ],
+      "compass_direction": "crosscutting",
+      "room_ids": [
+        "symbolic-architecture",
+        "comparative-mythology",
+        "bible-christianity"
+      ],
+      "leads_to": [
+        "canopy",
+        "garden",
+        "fruit",
+        "return-spiral"
+      ],
+      "not_equal_to": [
+        "Tree of Life",
+        "goodness",
+        "truth",
+        "all religion"
+      ],
+      "population": [
+        "angelologies",
+        "divine/celestial figures where sources support them",
+        "heavens",
+        "sacred mountains",
+        "Garden",
+        "Fruit"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "data/house/topology.json"
+      ]
+    },
+    {
+      "id": "world-plane",
+      "label": "World Plane",
+      "category": "standing-plane",
+      "definition": "Middle reader platform emphasizing embodiment, evidence, history, institutions, ritual, public culture, choice and observable consequence.",
+      "plane_ids": [
+        "world-plane"
+      ],
+      "compass_direction": "crosscutting",
+      "room_ids": [
+        "chronology-events",
+        "world-systems",
+        "culture-information",
+        "life-body"
+      ],
+      "leads_to": [
+        "door-cross-junction",
+        "trunk",
+        "world-consequence"
+      ],
+      "not_equal_to": [
+        "mere materialism",
+        "inferiority",
+        "secular-only"
+      ],
+      "population": [
+        "historical religions",
+        "institutions",
+        "bodies",
+        "states",
+        "markets",
+        "platforms",
+        "texts",
+        "public reception"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "data/house/topology.json"
+      ]
+    },
+    {
+      "id": "below-plane",
+      "label": "Below Plane",
+      "category": "standing-plane",
+      "definition": "Lower reader platform emphasizing provenance, buried context, memory, root states, descent, shadow-facing material, subculture, underworld traditions and Swamp/repair entry.",
+      "plane_ids": [
+        "below-plane"
+      ],
+      "compass_direction": "crosscutting",
+      "room_ids": [
+        "memory-recovery",
+        "developmental-genealogy",
+        "subculture-group-formation",
+        "comparative-mythology"
+      ],
+      "leads_to": [
+        "root-junction",
+        "roots",
+        "swamp",
+        "repair-spiral"
+      ],
+      "not_equal_to": [
+        "evil",
+        "Earth",
+        "matter",
+        "Tree of Strife",
+        "demonology"
+      ],
+      "population": [
+        "archives",
+        "ancestry",
+        "burial/descent traditions",
+        "underworlds",
+        "Roots of Ash",
+        "Living Roots",
+        "subculture/shadow material"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "data/house/topology.json"
+      ]
+    },
+    {
+      "id": "mountain",
+      "label": "Mountain",
+      "category": "terrain",
+      "definition": "An integration/perspective gradient in which many paths, burdens or records are compressed toward fewer coordinating principles or a summit view.",
+      "plane_ids": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "compass_direction": "n",
+      "room_ids": [
+        "symbolic-architecture",
+        "bible-christianity",
+        "systems-dynamics"
+      ],
+      "leads_to": [
+        "summit",
+        "house",
+        "city",
+        "eye-evaluation",
+        "return"
+      ],
+      "not_equal_to": [
+        "truth",
+        "holiness",
+        "domination",
+        "Pyramid",
+        "Eye"
+      ],
+      "population": [
+        "Sinai",
+        "Zion",
+        "sacred-mountain comparators",
+        "debt/integration models",
+        "perspective",
+        "law/instruction",
+        "descent with teaching"
+      ],
+      "source_files": [
+        "knowledge/core/swamp-mud-mountain-debt-relational-model.json",
+        "knowledge/science/mountain-information-compression-model.json",
+        "knowledge/traditions/biblical-mountains-sinai-zion-tabor-olives-atlas.json"
+      ]
+    },
+    {
+      "id": "pyramid",
+      "label": "Pyramid",
+      "category": "terrain",
+      "definition": "A constructed, stepped compression architecture that represents broad-base-to-narrow-apex ordering; a static architectural cousin of Mountain rather than a separate cosmic floor.",
+      "plane_ids": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "compass_direction": "ne",
+      "room_ids": [
+        "esoteric-sacred-geometry",
+        "symbolic-architecture"
+      ],
+      "leads_to": [
+        "unfinished-apex",
+        "eye-evaluation",
+        "mountain"
+      ],
+      "not_equal_to": [
+        "Mountain",
+        "Eye",
+        "secret hierarchy by default"
+      ],
+      "population": [
+        "Great Seal unfinished pyramid",
+        "stepped abstraction",
+        "foundation inscriptions",
+        "incomplete synthesis"
+      ],
+      "source_files": [
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json",
+        "data/house/providence-pillars-esoteric-structure.json"
+      ]
+    },
+    {
+      "id": "garden",
+      "label": "Garden",
+      "category": "regime",
+      "definition": "A generative regime in which boundaries, soil, passage and cultivation support differentiated life, increasing competence and future seed rather than permanent dependency.",
+      "plane_ids": [
+        "world-plane",
+        "heaven-plane"
+      ],
+      "compass_direction": "n",
+      "room_ids": [
+        "practice-ethics",
+        "symbolic-architecture",
+        "systems-dynamics"
+      ],
+      "leads_to": [
+        "fruit",
+        "seed",
+        "return",
+        "house"
+      ],
+      "not_equal_to": [
+        "Heaven Plane",
+        "absence of boundaries",
+        "mere comfort"
+      ],
+      "population": [
+        "living soil",
+        "cultivation",
+        "repair",
+        "nourishment",
+        "autonomous growth",
+        "open but protected Doors"
+      ],
+      "source_files": [
+        "knowledge/core/garden-mud-orientation.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ]
+    },
+    {
+      "id": "swamp",
+      "label": "Swamp",
+      "category": "terrain",
+      "definition": "A project-symbolic entangled system-state where unresolved residue, recurrence and blocked flow accumulate until the environment itself begins shaping future behavior and exit becomes difficult.",
+      "plane_ids": [
+        "below-plane",
+        "world-plane"
+      ],
+      "compass_direction": "sw",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology",
+        "systems-dynamics",
+        "symbolic-architecture"
+      ],
+      "leads_to": [
+        "drain-spiral",
+        "roots-of-strife",
+        "forge",
+        "repair-spiral"
+      ],
+      "not_equal_to": [
+        "literal wetland",
+        "Below Plane",
+        "evil people",
+        "all subculture"
+      ],
+      "population": [
+        "archive-reactivation loops",
+        "reaction economies",
+        "role entanglement",
+        "mixed provenance",
+        "blocked exits",
+        "attention capture"
+      ],
+      "source_files": [
+        "knowledge/core/swamp-mud-mountain-debt-relational-model.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ]
+    },
+    {
+      "id": "shadow",
+      "label": "Shadow",
+      "category": "perceptual-layer",
+      "definition": "Occluded, disowned, unintegrated or under-recognized content relative to a declared self/model/system. Shadow can contain harmful patterns or neglected positive capacities and can occur on any plane.",
+      "plane_ids": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "compass_direction": "crosscutting",
+      "room_ids": [
+        "symbolic-architecture",
+        "subculture-group-formation",
+        "open-questions",
+        "practice-ethics"
+      ],
+      "leads_to": [
+        "projection",
+        "evidence",
+        "forge",
+        "repair",
+        "integration"
+      ],
+      "not_equal_to": [
+        "Swamp",
+        "Below Plane",
+        "evil",
+        "demon",
+        "secret conspiracy"
+      ],
+      "population": [
+        "unexamined assumptions",
+        "disowned motives",
+        "neglected capacities",
+        "ideal-vs-reality gaps",
+        "hidden incentives",
+        "unacknowledged residue"
+      ],
+      "source_files": [
+        "knowledge/core/shadow-ledger-entanglement-axis.json",
+        "knowledge/world/world-shadow-research-index.json"
+      ]
+    },
+    {
+      "id": "roots",
+      "label": "Roots",
+      "category": "organism",
+      "definition": "Downward deployment of memory, provenance, stored consequence and nourishment. Roots are a fork: they can feed Living Root/Soil or unresolved Ash/Strife.",
+      "plane_ids": [
+        "below-plane",
+        "world-plane"
+      ],
+      "compass_direction": "w",
+      "room_ids": [
+        "memory-recovery",
+        "developmental-genealogy",
+        "symbolic-architecture"
+      ],
+      "leads_to": [
+        "soil",
+        "living-root",
+        "roots-of-ash",
+        "roots-of-strife"
+      ],
+      "not_equal_to": [
+        "Strife",
+        "past as destiny",
+        "evil"
+      ],
+      "population": [
+        "archive",
+        "ancestry",
+        "causal history",
+        "buried evidence",
+        "stored capacity"
+      ],
+      "source_files": [
+        "knowledge/core/root-system.json",
+        "data/axis-flow-contract.json"
+      ]
+    },
+    {
+      "id": "tree-of-knowledge",
+      "label": "Tree of Knowledge",
+      "category": "organism",
+      "definition": "The distinction/information fork upstream of both Life and Strife; what is known can be metabolized into responsibility/growth or weaponized into recurrence/capture.",
+      "plane_ids": [
+        "world-plane",
+        "below-plane"
+      ],
+      "compass_direction": "n",
+      "room_ids": [
+        "symbolic-architecture",
+        "bible-christianity",
+        "information-ecology"
+      ],
+      "leads_to": [
+        "tree-of-life",
+        "tree-of-strife",
+        "repair"
+      ],
+      "not_equal_to": [
+        "Tree of Strife",
+        "evil knowledge"
+      ],
+      "population": [
+        "evidence",
+        "classification",
+        "memory",
+        "choice",
+        "interpretation"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ]
+    },
+    {
+      "id": "tree-of-life",
+      "label": "Tree of Life",
+      "category": "organism",
+      "definition": "Generative vertical organism spanning roots, World trunk and upper canopy: rooted memory becomes growth, branching, nourishment, Fruit, Seed and accountable return.",
+      "plane_ids": [
+        "below-plane",
+        "world-plane",
+        "heaven-plane"
+      ],
+      "compass_direction": "n",
+      "room_ids": [
+        "symbolic-architecture",
+        "practice-ethics",
+        "comparative-mythology"
+      ],
+      "leads_to": [
+        "garden",
+        "fruit",
+        "seed",
+        "return-spiral"
+      ],
+      "not_equal_to": [
+        "Heaven Plane",
+        "external Tree-of-Life traditions"
+      ],
+      "population": [
+        "Living Root",
+        "Door/Ladder",
+        "branching",
+        "Garden",
+        "Fruit",
+        "Seed",
+        "service"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "data/house/seed-spiral-routing.json"
+      ]
+    },
+    {
+      "id": "tree-of-strife",
+      "label": "Tree of Strife",
+      "category": "organism",
+      "definition": "Unresolved reproductive organism whose roots remain in Ash/Strife while visible branches may grow through World culture, institutions and conflict systems.",
+      "plane_ids": [
+        "below-plane",
+        "world-plane"
+      ],
+      "compass_direction": "sw",
+      "room_ids": [
+        "subculture-group-formation",
+        "information-ecology",
+        "symbolic-architecture"
+      ],
+      "leads_to": [
+        "wide-road",
+        "swamp",
+        "drain-spiral"
+      ],
+      "not_equal_to": [
+        "Below Plane",
+        "all conflict",
+        "demonology",
+        "a class of people"
+      ],
+      "population": [
+        "archived grievance",
+        "enemy production",
+        "role-lock",
+        "capture",
+        "reaction economies",
+        "blocked correction"
+      ],
+      "source_files": [
+        "data/house/tree-plane-routing.json",
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json"
+      ]
+    },
+    {
+      "id": "mud",
+      "label": "Mud",
+      "category": "material-state",
+      "definition": "Mixed, low-resolution residue whose provenance may be obscured; it can contaminate recurrence or be processed into usable Soil.",
+      "plane_ids": [
+        "below-plane",
+        "world-plane"
+      ],
+      "compass_direction": "sw",
+      "room_ids": [
+        "information-ecology",
+        "symbolic-architecture"
+      ],
+      "leads_to": [
+        "swamp",
+        "soil",
+        "forge"
+      ],
+      "not_equal_to": [
+        "Swamp",
+        "a person or population"
+      ],
+      "population": [
+        "smear residue",
+        "mixed archive material",
+        "unresolved trace",
+        "low-resolution information"
+      ],
+      "source_files": [
+        "knowledge/core/swamp-mud-mountain-debt-relational-model.json"
+      ]
+    },
+    {
+      "id": "ash",
+      "label": "Ash",
+      "category": "material-state",
+      "definition": "Post-rupture residue: what remains after destruction, collapse, burned relation or failed form. Ash is a Door-state because it can become Mud/Strife or Soil/Life.",
+      "plane_ids": [
+        "below-plane"
+      ],
+      "compass_direction": "w",
+      "room_ids": [
+        "memory-recovery",
+        "symbolic-architecture"
+      ],
+      "leads_to": [
+        "mud",
+        "soil",
+        "roots-of-strife",
+        "repair-spiral"
+      ],
+      "not_equal_to": [
+        "permanent Strife",
+        "nothingness"
+      ],
+      "population": [
+        "grief",
+        "memory",
+        "collapsed identity",
+        "burned relation",
+        "unresolved evidence"
+      ],
+      "source_files": [
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+        "data/house/seed-spiral-routing.json"
+      ]
+    },
+    {
+      "id": "soil",
+      "label": "Soil",
+      "category": "material-state",
+      "definition": "Processed context/residue that can support new root growth without requiring the original injury or conflict to recur.",
+      "plane_ids": [
+        "below-plane",
+        "world-plane"
+      ],
+      "compass_direction": "se",
+      "room_ids": [
+        "practice-ethics",
+        "life-body",
+        "symbolic-architecture"
+      ],
+      "leads_to": [
+        "living-root",
+        "garden",
+        "tree-of-life"
+      ],
+      "not_equal_to": [
+        "Mud",
+        "purity",
+        "forgetting provenance"
+      ],
+      "population": [
+        "integrated memory",
+        "usable context",
+        "nourishment",
+        "recovered capacity"
+      ],
+      "source_files": [
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+        "data/axis-flow-contract.json"
+      ]
+    },
+    {
+      "id": "door-pillars",
+      "label": "Door & Twin Pillars",
+      "category": "threshold",
+      "definition": "State/context-changing passage stabilized by differentiated supports. Door performs transition; Pillars support or announce passage without being the passage itself.",
+      "plane_ids": [
+        "world-plane",
+        "heaven-plane",
+        "below-plane"
+      ],
+      "compass_direction": "center",
+      "room_ids": [
+        "symbolic-architecture",
+        "bible-christianity",
+        "esoteric-sacred-geometry"
+      ],
+      "leads_to": [
+        "new-regime",
+        "ladder",
+        "room",
+        "repair"
+      ],
+      "not_equal_to": [
+        "wall",
+        "Pillars as Door",
+        "mere hyperlink"
+      ],
+      "population": [
+        "Door",
+        "Jachin/Boaz comparator",
+        "Guardians",
+        "Mandorla",
+        "Needle"
+      ],
+      "source_files": [
+        "data/house/concept-topology.json",
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json"
+      ]
+    },
+    {
+      "id": "eye",
+      "label": "Eye",
+      "category": "perceptual-layer",
+      "definition": "Perception/discernment/evaluation interface. Eye can receive, compare and evaluate structure but must remain distinct from hierarchy, summit or surveillance claims.",
+      "plane_ids": [
+        "heaven-plane",
+        "world-plane"
+      ],
+      "compass_direction": "n",
+      "room_ids": [
+        "symbolic-architecture",
+        "esoteric-sacred-geometry",
+        "symbolic-body-comparison"
+      ],
+      "leads_to": [
+        "discernment",
+        "evaluation",
+        "door-choice"
+      ],
+      "not_equal_to": [
+        "Mountain",
+        "Pyramid",
+        "secret control",
+        "pineal proof"
+      ],
+      "population": [
+        "Eye of Providence comparator",
+        "potato eye/generative bud",
+        "Face↔Eye relation",
+        "evaluation at summit"
+      ],
+      "source_files": [
+        "data/house/concept-topology.json",
+        "knowledge/traditions/providence-pyramid-pillars-atlas.json"
+      ]
+    },
+    {
+      "id": "forge",
+      "label": "Forge",
+      "category": "process",
+      "definition": "Bounded transformation under heat/pressure that can convert residue into clarified tool/capacity or, if misdirected, weaponize resentment into further Strife.",
+      "plane_ids": [
+        "below-plane",
+        "world-plane"
+      ],
+      "compass_direction": "center",
+      "room_ids": [
+        "open-questions",
+        "experiments-formalization",
+        "practice-ethics"
+      ],
+      "leads_to": [
+        "soil",
+        "tool",
+        "weapon",
+        "repair",
+        "garden"
+      ],
+      "not_equal_to": [
+        "Swamp",
+        "Research Lab itself",
+        "automatically constructive pressure"
+      ],
+      "population": [
+        "evidence processing",
+        "conflict transformation",
+        "research testing",
+        "cooling/integration"
+      ],
+      "source_files": [
+        "knowledge/world/farm-swamp-tree-of-strife-atlas.json",
+        "data/house/tree-plane-routing.json"
+      ]
+    },
+    {
+      "id": "spiral-family",
+      "label": "Spiral / Ladder / Ring / Drain / Return",
+      "category": "route",
+      "definition": "Trajectory family describing recurrence and level-change: rooting, Drain/Strife, sprouting/Life, repair and fruitful return; Ring is recurrence without net displacement.",
+      "plane_ids": [
+        "heaven-plane",
+        "world-plane",
+        "below-plane"
+      ],
+      "compass_direction": "center",
+      "room_ids": [
+        "symbolic-architecture",
+        "systems-dynamics",
+        "math-geometry"
+      ],
+      "leads_to": [
+        "tree-of-life",
+        "tree-of-strife",
+        "garden",
+        "swamp",
+        "world-return"
+      ],
+      "not_equal_to": [
+        "one universal upward path",
+        "any repetition"
+      ],
+      "population": [
+        "Rooting Spiral",
+        "Drain Spiral",
+        "Sprouting Spiral",
+        "Repair Spiral",
+        "Return Spiral",
+        "Ring"
+      ],
+      "source_files": [
+        "data/house/seed-spiral-routing.json",
+        "knowledge/science/recurrence-orbit-spiral-dynamics-atlas.json"
+      ]
+    }
+  ],
+  "crucial_differences": [
+    "Below is a reader plane; Swamp is a project-symbolic system-state; Shadow is an occlusion/unintegration layer; Tree of Strife is a reproductive organism. They can overlap without being synonyms.",
+    "Mountain is terrain/integration; Pyramid is constructed stepped compression; Eye is evaluation/perception. A summit does not automatically possess sight or truth.",
+    "Garden is a generative regime; House is a bounded container; a House becomes Garden-like when protected differentiation and passage produce autonomous future growth.",
+    "Mud is residue; Ash is post-rupture residue; Soil is processed generative substrate; Swamp is the environment produced when unresolved material and recurrence dominate.",
+    "Roots are not Strife. Rooting is not Drain. Descent may be generative, degenerative or return.",
+    "Shadow is not inherently evil and can include neglected positive capacities; it may appear on any plane.",
+    "Literal wetlands are not the project's symbolic Swamp and should not inherit its negative valence."
+  ],
+  "population_rule": "Every new subject should receive: canonical Room owner → category → plane projection → compass direction → Tree/route affinity → source/provenance → visibility. If the subject cannot be placed without inventing meaning, keep it in Research/Open Questions."
+}
