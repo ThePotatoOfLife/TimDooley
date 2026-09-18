@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -287,5 +287,12 @@
     ],
     "hypercube_note": "The eight House directions behave more like independent relational questions than eight physical axes. Hypercube imagery is acceptable as a View when it does not imply metric distance, truth rank or fixed ontology."
   },
-  "interface_registry": "data/house/interfaces.json"
+  "interface_registry": "data/house/interfaces.json",
+  "architectural_vocabulary": "data/house/architectural-vocabulary.json",
+  "scale_projection": {
+    "house": "Potato House — compositional whole",
+    "dwelling": "ten canonical top-level bounded contexts; public architectural alias: Mansion",
+    "room": "38 delegated nested bounded contexts",
+    "chamber": "future/local specialist cell when a Room contains a stable smaller boundary"
+  }
 }
