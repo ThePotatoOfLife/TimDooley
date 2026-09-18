@@ -159,6 +159,8 @@ def main() -> int:
             "datetime.now(timezone.utc).date().isoformat()",
             'write("llms.txt"',
             '"site_index": BASE_URL + "/site-index.json"',
+            '"house_index": BASE_URL + "/house-index.json"',
+            "House topology index",
             '"sitemap_index": BASE_URL + "/sitemap-index.xml"',
             '"religion": BASE_URL + "/religion/"',
             '"philosophy": BASE_URL + "/philosophy/"',
