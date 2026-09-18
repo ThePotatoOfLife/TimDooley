@@ -29,7 +29,7 @@ PUBLIC_LABEL_REPLACEMENTS = (
     (">Tim dossier</a>", ">Tim Dooley</a>"),
     ("← Potato of Life archive</a>", "← Home</a>"),
 )
-HOUSE_BRIDGE_EXCLUDED = {"home", "house", "rooms", "explore", "world-map", "questions", "index-a-z"}
+HOUSE_BRIDGE_EXCLUDED = {"home", "potato-of-life", "house", "rooms", "explore", "world-map", "questions", "index-a-z"}
 HOUSE_BRIDGE_STYLE = """<style data-house-bridge-style>
 .house-bridge{margin:18px 0 34px;padding:14px 16px;border:1px solid var(--site-line,#30382f);border-radius:12px;background:color-mix(in srgb,var(--site-panel,#0f130f) 88%,transparent);font-family:var(--site-font-sans,system-ui,sans-serif)}
 .house-bridge__top{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap}.house-bridge__trail{display:flex;align-items:center;gap:6px;flex-wrap:wrap;font-size:12px}.house-bridge__trail a{color:var(--site-green,#b8dc82);text-decoration:none}.house-bridge__trail span{color:var(--site-faint,#727a70)}
