@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "2.0.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -113,6 +113,11 @@
       "concern": "human-readable master synthesis",
       "owner": "knowledge/core/root-system.json",
       "rule": "Explains the whole architecture but should reference—not silently override—the machine-readable owners above."
+    },
+    {
+      "concern": "symbol-depth research pipeline and conversation archaeology",
+      "owner": "knowledge/research/symbol-depth-programme-wave-002.json",
+      "rule": "Deepen recurring symbols through conversation recovery, repository ownership, external scholarship, structural synthesis and bounded commits; preserve provenance and epistemic class at each handoff."
     }
   ],
   "resolver_order": [
