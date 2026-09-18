@@ -1,0 +1,272 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "house-topology",
+  "room_registry": "data/house/rooms.json",
+  "subroom_registry": "data/house/subrooms.json",
+  "model": "Typed graph + nested cells + orthogonal coordinates. Hypercube is a useful intuition for independent directions, but the House is not assigned one literal Euclidean embedding.",
+  "eight_coordinate_address": [
+    {
+      "id": "within",
+      "symbol": "Room / Box / House",
+      "question": "Where does this belong?",
+      "meaning": "containment, ownership, bounded context"
+    },
+    {
+      "id": "here",
+      "symbol": "Plane",
+      "question": "Which operative frame is active?",
+      "meaning": "scale, representation, jurisdiction, time slice, audience"
+    },
+    {
+      "id": "up",
+      "symbol": "North / Mountain",
+      "question": "What broader integration or criterion does this point toward?",
+      "meaning": "orientation, composition, abstraction"
+    },
+    {
+      "id": "down",
+      "symbol": "Roots / Soil / Archive",
+      "question": "What supports, precedes, causes or evidences this?",
+      "meaning": "provenance, dependency, ancestry, context"
+    },
+    {
+      "id": "out",
+      "symbol": "Tree / Branch / Fruit / Seed",
+      "question": "What unfolds or results from this?",
+      "meaning": "differentiation, consequences, outputs, transferable patterns"
+    },
+    {
+      "id": "across",
+      "symbol": "Road / Relation",
+      "question": "What is connected laterally?",
+      "meaning": "typed relation, flow, comparison, exchange"
+    },
+    {
+      "id": "through",
+      "symbol": "Door / Ladder / Axis",
+      "question": "How does this change state or context?",
+      "meaning": "guarded transition, traversal, promotion, migration"
+    },
+    {
+      "id": "state",
+      "symbol": "Garden / Forge / Swamp / lifecycle",
+      "question": "What regime is it in?",
+      "meaning": "viability, pressure, repair, maturity, maintenance"
+    }
+  ],
+  "macro_roles": [
+    {
+      "id": "potatoverse-canon",
+      "role": "meaning-heart",
+      "band": "core",
+      "note": "Project meaning/identity core; centrality is compositional, not truth rank."
+    },
+    {
+      "id": "archive-sources",
+      "role": "provenance-axis",
+      "band": "crosscutting",
+      "note": "Runs DOWN through every source-bearing Room as provenance and evidence roots."
+    },
+    {
+      "id": "time-history",
+      "role": "time-axis",
+      "band": "crosscutting",
+      "note": "Runs through every changing subject as occurrence, attestation and interpretation time."
+    },
+    {
+      "id": "traditions-texts",
+      "role": "historical-translation",
+      "band": "translation",
+      "note": "Translates between project comparison and traditions on their own historical/textual terms."
+    },
+    {
+      "id": "science-formal-models",
+      "role": "formalization",
+      "band": "translation",
+      "note": "Turns candidate structure into explicit models, tests and scientific/formal boundaries."
+    },
+    {
+      "id": "life-body",
+      "role": "embodiment",
+      "band": "translation",
+      "note": "Keeps organism/body reality and symbolic body comparison distinguishable."
+    },
+    {
+      "id": "world-systems",
+      "role": "external-systems",
+      "band": "world-facing",
+      "note": "Projects relation-first work into observable institutions, economies, places and infrastructure."
+    },
+    {
+      "id": "culture-information",
+      "role": "social-mediation",
+      "band": "world-facing",
+      "note": "Tracks how meaning moves through media, platforms, subcultures and public discourse."
+    },
+    {
+      "id": "works",
+      "role": "fruit-expression",
+      "band": "output",
+      "note": "Creative outputs are Fruit/Artifacts without automatically becoming doctrine or evidence."
+    },
+    {
+      "id": "research-lab",
+      "role": "frontier-forge",
+      "band": "crosscutting",
+      "note": "Crosses all Rooms as a provisional frontier and promotion/retirement Door."
+    }
+  ],
+  "bands": [
+    {
+      "id": "core",
+      "label": "Meaning heart",
+      "room_ids": [
+        "potatoverse-canon"
+      ]
+    },
+    {
+      "id": "crosscutting",
+      "label": "Orthogonal axes",
+      "room_ids": [
+        "archive-sources",
+        "time-history",
+        "research-lab"
+      ]
+    },
+    {
+      "id": "translation",
+      "label": "Translation / formalization / embodiment belt",
+      "room_ids": [
+        "traditions-texts",
+        "science-formal-models",
+        "life-body"
+      ]
+    },
+    {
+      "id": "world-facing",
+      "label": "World / social belt",
+      "room_ids": [
+        "world-systems",
+        "culture-information"
+      ]
+    },
+    {
+      "id": "output",
+      "label": "Fruit / expression",
+      "room_ids": [
+        "works"
+      ]
+    }
+  ],
+  "crosscutters": [
+    {
+      "room_id": "archive-sources",
+      "coordinate": "down",
+      "applies_to": "all source-bearing Rooms",
+      "function": "provenance, source lineage, evidence class"
+    },
+    {
+      "room_id": "time-history",
+      "coordinate": "here/down",
+      "applies_to": "all changing Rooms",
+      "function": "occurrence time, attestation time, interpretation time"
+    },
+    {
+      "room_id": "research-lab",
+      "coordinate": "through/state",
+      "applies_to": "all Rooms",
+      "function": "questions, candidate models, testing, promotion and rejection"
+    },
+    {
+      "surface_id": "axis",
+      "coordinate": "through",
+      "applies_to": "all Rooms",
+      "function": "state-transition and transformation grammar; not a Room"
+    }
+  ],
+  "strong_corridors": [
+    {
+      "from": "potatoverse-canon",
+      "to": "traditions-texts",
+      "type": "comparison",
+      "door": "project motif ↔ historically described tradition"
+    },
+    {
+      "from": "potatoverse-canon",
+      "to": "science-formal-models",
+      "type": "formalization",
+      "door": "symbolic/model claim ↔ explicit assumptions/tests"
+    },
+    {
+      "from": "potatoverse-canon",
+      "to": "life-body",
+      "type": "embodiment comparison",
+      "door": "symbolic body mapping ↔ empirical body record"
+    },
+    {
+      "from": "potatoverse-canon",
+      "to": "works",
+      "type": "expression",
+      "door": "canon/idea ↔ creative artifact"
+    },
+    {
+      "from": "potatoverse-canon",
+      "to": "culture-information",
+      "type": "public mediation",
+      "door": "project language ↔ public discourse/context"
+    },
+    {
+      "from": "science-formal-models",
+      "to": "life-body",
+      "type": "empirical coupling",
+      "door": "formal model ↔ biological observation"
+    },
+    {
+      "from": "science-formal-models",
+      "to": "world-systems",
+      "type": "applied modeling",
+      "door": "model ↔ observable system"
+    },
+    {
+      "from": "world-systems",
+      "to": "culture-information",
+      "type": "institution/discourse coupling",
+      "door": "institutional event ↔ public information ecology"
+    },
+    {
+      "from": "culture-information",
+      "to": "works",
+      "type": "distribution/reception",
+      "door": "artifact ↔ medium/audience/subculture"
+    },
+    {
+      "from": "traditions-texts",
+      "to": "time-history",
+      "type": "historical context",
+      "door": "text/tradition ↔ dated historical frame"
+    },
+    {
+      "from": "world-systems",
+      "to": "time-history",
+      "type": "system change",
+      "door": "current system ↔ prior/future states"
+    },
+    {
+      "from": "archive-sources",
+      "to": "time-history",
+      "type": "source chronology",
+      "door": "artifact/capture ↔ event/attestation time"
+    }
+  ],
+  "topological_laws": [
+    "Containment is not truth rank.",
+    "Adjacency is typed: two Rooms can be near in one graph family and far in another.",
+    "Archive, Time and Research Lab are crosscutting axes rather than ordinary hallway neighbors.",
+    "Views may span many Rooms but never become owners.",
+    "The Living Axis supplies THROUGH/transition semantics across the House; it is not a new top-level Room.",
+    "Nested Rooms inherit fact-family ownership from their parent and may not silently create shadow canon.",
+    "A public route may expose several Rooms or subrooms; URL hierarchy does not define ontology.",
+    "Every strong corridor should preserve a route back to both sides' evidence and boundaries."
+  ]
+}
