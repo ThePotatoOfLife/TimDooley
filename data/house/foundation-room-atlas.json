@@ -1,7 +1,7 @@
 {
   "id": "foundation-room-atlas",
   "title": "Foundation Rooms — Door, Place, House and Today",
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "as_of": "2026-09-18",
   "population": 52,
@@ -9,9 +9,9 @@
   "purpose": "Canonical reader projection for the Foundation population: each Foundation becomes a tangible Room/blob with an origin Door, a map-ready Earth anchor where possible, a House/circle home, a dated current snapshot and a technical genealogy drawer.",
   "summary": {
     "total_rooms": 52,
-    "map_ready_origins": 38,
-    "current_quantitative_snapshots": 13,
-    "current_structural_only": 39,
+    "map_ready_origins": 49,
+    "current_quantitative_snapshots": 26,
+    "current_structural_only": 26,
     "circle_counts": {
       "upper-source-circle": 12,
       "middle-plane-overlap": 36,
@@ -31,7 +31,8 @@
       "physics-cosmology": 1,
       "subculture-group-formation": 4
     },
-    "unresolved_owner_count": 0
+    "unresolved_owner_count": 0,
+    "current_metric_count": 49
   },
   "magnitude_rule": "Magnitudes are a vector, not a ranking. Age, clocks, places, branches, reproduction mode, continuity and typed reach answer different questions.",
   "rooms": [
@@ -174,9 +175,30 @@
         "continuity_mode": "living-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through Folketing practice, courts, ministries, municipal government, and additional branches.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "folketing_members",
+            "value": 179,
+            "unit": "members",
+            "as_of": "2026-04-15",
+            "scope": "Folketing under the Danish constitutional order",
+            "source_title": "Folketinget — Fakta om det nye Folketing",
+            "source_url": "https://www.ft.dk/aktuelt/nyheder/2026/04/fakta-om-det-nye-folketing",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "eligible_voters_2026_election",
+            "value": 4303429,
+            "unit": "eligible voters",
+            "as_of": "2026-03-24",
+            "scope": "2026 Danish parliamentary election",
+            "source_title": "Folketinget — Fakta om det nye Folketing",
+            "source_url": "https://www.ft.dk/aktuelt/nyheder/2026/04/fakta-om-det-nye-folketing",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -189,7 +211,7 @@
         "branch_count": 5,
         "reproduction_family": "law-office-institution",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -270,9 +292,30 @@
         "continuity_mode": "living-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through federal institutions, amendments, constitutional jurisprudence, state-federal relations.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "ratified_amendments",
+            "value": 27,
+            "unit": "amendments",
+            "as_of": "2026-09-18",
+            "scope": "United States Constitution",
+            "source_title": "National Archives — The Constitution of the United States",
+            "source_url": "https://www.archives.gov/founding-docs/constitution",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "states_required_for_amendment_ratification",
+            "value": 38,
+            "unit": "states",
+            "as_of": "2026-09-18",
+            "scope": "Article V amendment threshold out of 50 states",
+            "source_title": "National Archives — Constitutional Amendment Process",
+            "source_url": "https://www.archives.gov/federal-register/constitution",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 2
       },
       "magnitude_facets": {
         "time_depth": {
@@ -285,7 +328,7 @@
         "branch_count": 4,
         "reproduction_family": "law-office-institution",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -775,12 +818,13 @@
         "event": "The Articles are adopted at Bretton Woods, enter into force, and later become operational lending/surveillance machinery.",
         "time": "1944 → 1945 → 1947",
         "status": "documented",
-        "physical_origin": "Washington, D.C., USA / international operations",
-        "place_precision": "city+distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1947-03-01"
+        "physical_origin": "Bretton Woods, New Hampshire, USA",
+        "place_precision": "locality",
+        "map_geometry": "point-ready",
+        "map_ready": true,
+        "geocode_query": "Bretton Woods, New Hampshire, USA",
+        "clock": "1947-03-01",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "economy-finance",
@@ -911,9 +955,20 @@
         "continuity_mode": "living-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through Eurosystem, single monetary policy, banking supervision layers.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "euro_area_countries",
+            "value": 21,
+            "unit": "countries",
+            "as_of": "2026-01-01",
+            "scope": "Euro area / Eurosystem after Bulgaria adopted the euro",
+            "source_title": "ECB — Bulgaria introduces the euro",
+            "source_url": "https://www.ecb.europa.eu/press/pr/date/2026/html/ecb.pr260101~c830245e42.en.html",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -926,7 +981,7 @@
         "branch_count": 3,
         "reproduction_family": "law-office-institution",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 1
       },
       "genealogy": {
         "seed_of_death": {
@@ -1006,9 +1061,20 @@
         "continuity_mode": "refounded-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through modern payment infrastructure, financial stability oversight, fixed-exchange-rate operations.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "average_bankday_payment_value",
+            "value": 838,
+            "unit": "DKK billion per bank day",
+            "as_of": "2025",
+            "scope": "Danish payment infrastructure overseen by Danmarks Nationalbank",
+            "source_title": "Danmarks Nationalbank — Overvågning af den finansielle infrastruktur 2025",
+            "source_url": "https://www.nationalbanken.dk/da/viden-og-nyheder/publikationer-og-taler/rapport/2026/overvaagning-af-den-finansielle-infrastruktur-2025",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -1021,7 +1087,7 @@
         "branch_count": 3,
         "reproduction_family": "law-infrastructure-institution",
         "continuity_mode": "refounded-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 1
       },
       "genealogy": {
         "seed_of_death": {
@@ -2259,9 +2325,30 @@
         "continuity_mode": "living-refounded-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through faculties, departments, research institutes, degree programmes, and additional branches.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "students_enrolled",
+            "value": 36758,
+            "unit": "students",
+            "as_of": "2026-09-18",
+            "scope": "University of Copenhagen",
+            "source_title": "University of Copenhagen — Students facts and figures",
+            "source_url": "https://about.ku.dk/facts-figures/students/",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "employee_fte",
+            "value": 10738,
+            "unit": "FTE employees",
+            "as_of": "2025",
+            "scope": "University of Copenhagen",
+            "source_title": "University of Copenhagen — Employees facts and figures",
+            "source_url": "https://about.ku.dk/facts-figures/employees/",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 2
       },
       "magnitude_facets": {
         "time_depth": {
@@ -2274,7 +2361,7 @@
         "branch_count": 5,
         "reproduction_family": "education-office-institution",
         "continuity_mode": "living-refounded-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -2357,9 +2444,32 @@
         "continuity_mode": "living-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through publications, medals, scientific committees, grant/policy programmes.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "fellows",
+            "value": 1900,
+            "unit": "Fellows",
+            "as_of": "2026-09-18",
+            "scope": "Royal Society Fellowship",
+            "source_title": "Royal Society — Mission and priorities",
+            "source_url": "https://royalsociety.org/about-us/who-we-are/mission-priorities/",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "approximately"
+          },
+          {
+            "measure": "nobel_laureates_among_fellows",
+            "value": 85,
+            "unit": "Nobel Laureates",
+            "as_of": "2026-09-18",
+            "scope": "Royal Society Fellowship",
+            "source_title": "Royal Society — Mission and priorities",
+            "source_url": "https://royalsociety.org/about-us/who-we-are/mission-priorities/",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "around"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -2372,7 +2482,7 @@
         "branch_count": 4,
         "reproduction_family": "fellowship-publication-practice",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -2617,12 +2727,13 @@
         "event": "UNESCO-backed negotiations become a signed Convention in Paris and then a legal organization after ratification.",
         "time": "1951→1953→1954",
         "status": "documented",
-        "physical_origin": "European treaty network; laboratory established in Geneva/Meyrin region, Switzerland",
-        "place_precision": "distributed+site region",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1954-09-29"
+        "physical_origin": "Paris, France",
+        "place_precision": "city",
+        "map_geometry": "point-ready",
+        "map_ready": true,
+        "geocode_query": "Paris, France",
+        "clock": "1954-09-29",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "research-programmes",
@@ -2761,9 +2872,20 @@
         "continuity_mode": "refounded-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through HTML/CSS/Web APIs/accessibility standards and working groups.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "member_organizations",
+            "value": 317,
+            "unit": "member organizations",
+            "as_of": "2026-09-18",
+            "scope": "World Wide Web Consortium current membership list",
+            "source_title": "W3C — Current Members & Testimonials",
+            "source_url": "https://www.w3.org/membership/list/",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -2776,7 +2898,7 @@
         "branch_count": 1,
         "reproduction_family": "technical-standard-working-groups",
         "continuity_mode": "refounded-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 1
       },
       "genealogy": {
         "seed_of_death": {
@@ -2826,12 +2948,13 @@
         "event": "The Wikimedia Foundation is created under Florida law and the project assets are transferred into a nonprofit institutional base.",
         "time": "2003-06-20",
         "status": "documented",
-        "physical_origin": "Florida, USA / online announcement",
-        "place_precision": "state+virtual",
-        "map_geometry": "virtual",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "2003-06-20"
+        "physical_origin": "Florida, USA",
+        "place_precision": "state",
+        "map_geometry": "region-ready",
+        "map_ready": true,
+        "geocode_query": "Florida, USA",
+        "clock": "2003-06-20",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "information-ecology",
@@ -3077,9 +3200,31 @@
         "continuity_mode": "living-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through lithography platforms, metrology/software, supplier ecosystems.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "employees_fte",
+            "value": 44000,
+            "unit": "FTE employees",
+            "as_of": "2025",
+            "scope": "ASML global workforce",
+            "source_title": "ASML 2025 Annual Report",
+            "source_url": "https://www.asml.com/en/investors/annual-report/2025",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "over"
+          },
+          {
+            "measure": "suppliers",
+            "value": 5100,
+            "unit": "suppliers",
+            "as_of": "2025",
+            "scope": "ASML supplier network",
+            "source_title": "ASML 2025 Annual Report",
+            "source_url": "https://www.asml.com/en/investors/annual-report/2025",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -3092,7 +3237,7 @@
         "branch_count": 3,
         "reproduction_family": "capital-rd-supplier-network",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -3172,9 +3317,30 @@
         "continuity_mode": "merged-living-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through diabetes, obesity and chronic-disease products, global manufacturing/research, Novo Nordisk Foundation ownership ecosystem.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "employees_headcount",
+            "value": 69505,
+            "unit": "employees",
+            "as_of": "2025-12-31",
+            "scope": "Novo Nordisk worldwide",
+            "source_title": "Novo Nordisk Annual Report 2025",
+            "source_url": "https://annualreport.novonordisk.com/",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "patients_reached",
+            "value": 45.6,
+            "unit": "million people",
+            "as_of": "2025",
+            "scope": "people living with obesity and diabetes reached",
+            "source_title": "Novo Nordisk Annual Report 2025 — at a glance",
+            "source_url": "https://annualreport.novonordisk.com/2025/introducing-novo-nordisk/2025-at-a-glance.html",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 2
       },
       "magnitude_facets": {
         "time_depth": {
@@ -3187,7 +3353,7 @@
         "branch_count": 4,
         "reproduction_family": "research-manufacturing-enterprise",
         "continuity_mode": "merged-living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -3452,9 +3618,30 @@
         "continuity_mode": "living-standard-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through UTF-8/16/32, CLDR, internationalization software, Web/software text infrastructure.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "full_members_good_standing",
+            "value": 8,
+            "unit": "full members",
+            "as_of": "2026-07-30",
+            "scope": "Unicode Technical Committee meeting 188",
+            "source_title": "Unicode — UTC 188 Minutes",
+            "source_url": "https://www.unicode.org/L2/L2026/26151.htm",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "supporting_members_good_standing",
+            "value": 4,
+            "unit": "supporting members",
+            "as_of": "2026-07-30",
+            "scope": "Unicode Technical Committee meeting 188",
+            "source_title": "Unicode — UTC 188 Minutes",
+            "source_url": "https://www.unicode.org/L2/L2026/26151.htm",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -3467,7 +3654,7 @@
         "branch_count": 4,
         "reproduction_family": "technical-standard-implementation",
         "continuity_mode": "living-standard-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -3795,12 +3982,13 @@
         "event": "1652 movement crystallization and gathering",
         "time": "1652",
         "status": "documented event + project Door interpretation",
-        "physical_origin": "North of England / Lancashire",
-        "place_precision": "city/region/distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1647"
+        "physical_origin": "Lancashire, England, United Kingdom",
+        "place_precision": "region",
+        "map_geometry": "region-ready",
+        "map_ready": true,
+        "geocode_query": "Lancashire, England, United Kingdom",
+        "clock": "1647",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "other-traditions",
@@ -3891,11 +4079,12 @@
         "time": "1830-04-06",
         "status": "documented event + project Door interpretation",
         "physical_origin": "Fayette, New York, USA",
-        "place_precision": "city/region/distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1829–1830"
+        "place_precision": "city/locality",
+        "map_geometry": "point-ready",
+        "map_ready": true,
+        "geocode_query": "Fayette, New York, USA",
+        "clock": "1829–1830",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "other-traditions",
@@ -3922,9 +4111,40 @@
         "continuity_mode": "living-branched-continuity",
         "current_status": "active",
         "current_form": "Current or surviving form is carried through main LDS Church, historical Latter-day Saint denominations.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "membership",
+            "value": 17887212,
+            "unit": "members",
+            "as_of": "2025-12-31",
+            "scope": "Church of Jesus Christ of Latter-day Saints worldwide",
+            "source_title": "2025 Statistical Report",
+            "source_url": "https://newsroom.churchofjesuschrist.org/article/2025-statistical-report",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "wards_and_branches",
+            "value": 32046,
+            "unit": "congregations",
+            "as_of": "2025-12-31",
+            "scope": "Church of Jesus Christ of Latter-day Saints worldwide",
+            "source_title": "2025 Statistical Report",
+            "source_url": "https://newsroom.churchofjesuschrist.org/article/2025-statistical-report",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "operating_temples",
+            "value": 204,
+            "unit": "temples",
+            "as_of": "2025-12-31",
+            "scope": "operating temples",
+            "source_title": "2025 Statistical Report",
+            "source_url": "https://newsroom.churchofjesuschrist.org/article/2025-statistical-report",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -3937,7 +4157,7 @@
         "branch_count": 2,
         "reproduction_family": "congregation-office-mission",
         "continuity_mode": "living-branched-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 3
       },
       "genealogy": {
         "seed_of_death": {
@@ -3985,12 +4205,13 @@
         "event": "1865 mission organization",
         "time": "1865",
         "status": "documented event + project Door interpretation",
-        "physical_origin": "East London, England",
-        "place_precision": "city/region/distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1865"
+        "physical_origin": "East London, England, United Kingdom",
+        "place_precision": "city district",
+        "map_geometry": "region-ready",
+        "map_ready": true,
+        "geocode_query": "East London, England, United Kingdom",
+        "clock": "1865",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "other-traditions",
@@ -4017,9 +4238,40 @@
         "continuity_mode": "living-continuity",
         "current_status": "active",
         "current_form": "Current or surviving form is carried through national territories/commands, local corps and social-service institutions.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "countries_served",
+            "value": 134,
+            "unit": "countries",
+            "as_of": "2026-09-18",
+            "scope": "The Salvation Army worldwide",
+            "source_title": "Salvation Army — Global presence",
+            "source_url": "https://www.salvationarmy.org/global-presence",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "worshipping_communities",
+            "value": 14495,
+            "unit": "communities",
+            "as_of": "2026-09-18",
+            "scope": "The Salvation Army worldwide",
+            "source_title": "Salvation Army — Global presence",
+            "source_url": "https://www.salvationarmy.org/global-presence",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "senior_soldiers",
+            "value": 1260832,
+            "unit": "soldiers",
+            "as_of": "2026-09-18",
+            "scope": "The Salvation Army worldwide",
+            "source_title": "Salvation Army — Global presence",
+            "source_url": "https://www.salvationarmy.org/global-presence",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -4032,7 +4284,7 @@
         "branch_count": 2,
         "reproduction_family": "corps-training-service",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 3
       },
       "genealogy": {
         "seed_of_death": {
@@ -4080,12 +4332,13 @@
         "event": "Geneva committee formation",
         "time": "1863-02",
         "status": "documented event + project Door interpretation",
-        "physical_origin": "Solferino, Italy",
-        "place_precision": "city/region/distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1859"
+        "physical_origin": "Geneva, Switzerland",
+        "place_precision": "city",
+        "map_geometry": "point-ready",
+        "map_ready": true,
+        "geocode_query": "Geneva, Switzerland",
+        "clock": "1859",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "law-justice",
@@ -4331,11 +4584,12 @@
         "time": "1935",
         "status": "documented event + project Door interpretation",
         "physical_origin": "Akron, Ohio, USA",
-        "place_precision": "city/region/distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1935"
+        "place_precision": "city",
+        "map_geometry": "point-ready",
+        "map_ready": true,
+        "geocode_query": "Akron, Ohio, USA",
+        "clock": "1935",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "subculture-group-formation",
@@ -4575,11 +4829,12 @@
         "time": "1971",
         "status": "documented event + project Door interpretation",
         "physical_origin": "Vancouver, British Columbia, Canada",
-        "place_precision": "city/region/distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1970"
+        "place_precision": "city",
+        "map_geometry": "point-ready",
+        "map_ready": true,
+        "geocode_query": "Vancouver, British Columbia, Canada",
+        "clock": "1970",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "subculture-group-formation",
@@ -4606,9 +4861,31 @@
         "continuity_mode": "living-continuity",
         "current_status": "active",
         "current_form": "Current or surviving form is carried through Greenpeace International, national/regional offices, issue campaigns.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "national_regional_organizations",
+            "value": 25,
+            "unit": "organizations",
+            "as_of": "2026-09-18",
+            "scope": "Greenpeace global network",
+            "source_title": "Greenpeace International — How we're structured",
+            "source_url": "https://www.greenpeace.org/international/about/structure/",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "countries",
+            "value": 50,
+            "unit": "countries",
+            "as_of": "2026-09-18",
+            "scope": "Greenpeace global network",
+            "source_title": "Greenpeace International — How we're structured",
+            "source_url": "https://www.greenpeace.org/international/about/structure/",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "over"
+          }
+        ],
+        "snapshot_coverage": "current quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -4621,7 +4898,7 @@
         "branch_count": 3,
         "reproduction_family": "campaign-network-action",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -4670,12 +4947,13 @@
         "event": "1909 organizational founding",
         "time": "1909-02-12",
         "status": "documented event + project Door interpretation",
-        "physical_origin": "New York City, USA",
-        "place_precision": "city/region/distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1908"
+        "physical_origin": "New York City, New York, USA",
+        "place_precision": "city",
+        "map_geometry": "point-ready",
+        "map_ready": true,
+        "geocode_query": "New York City, New York, USA",
+        "clock": "1908",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "law-justice",
@@ -4766,12 +5044,13 @@
         "event": "1961 public appeal",
         "time": "1961-05-28",
         "status": "documented event + project Door interpretation",
-        "physical_origin": "London, England",
-        "place_precision": "city/region/distributed",
-        "map_geometry": "distributed-network",
-        "map_ready": false,
-        "geocode_query": null,
-        "clock": "1961-05-28"
+        "physical_origin": "London, England, United Kingdom",
+        "place_precision": "city",
+        "map_geometry": "point-ready",
+        "map_ready": true,
+        "geocode_query": "London, England, United Kingdom",
+        "clock": "1961-05-28",
+        "map_anchor_basis": "Recovered from canonical Foundation clocks/places and official history source already linked by the Foundation record."
       },
       "house_location": {
         "primary_room": "law-justice",
@@ -5273,5 +5552,10 @@
       "today"
     ],
     "genealogy_link": "timeline/foundations/#foundation-rooms"
+  },
+  "population_program": {
+    "priority": "Fill concrete Today and first-reproduction evidence before adding more Foundation theory.",
+    "today_target": "Prefer official, dated, domain-native measures. A Foundation may remain structural-only where no honest comparable current measure exists.",
+    "earth_target": "Promote city/site/region anchors to map-ready when the canonical Foundation history establishes them; retain virtual/distributed origins as non-point geometry."
   }
 }
