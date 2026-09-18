@@ -1,7 +1,7 @@
 {
   "id": "project-consolidation-map",
   "title": "Project Consolidation Map — Canonical Owners, Specialist Views and Merge Rules",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "status": "project-wide consolidation guide",
   "purpose": "Reduce fragmentation across the Tim Dooley / Potato of Life repository by distinguishing root owners, specialist atlases, timeline/evidence owners, recovery strata and reader projections. The goal is fewer competing masters, clearer routing and safer future pruning.",
@@ -210,7 +210,10 @@
       "House reader now loads Foundation wave 003 so Home, House and Foundation Timeline describe the same 52-Foundation corpus.",
       "Timeline product naming is being normalized away from the retired chronology product label while retaining chronology as a legitimate conceptual/analytical term.",
       "Country atlas House holdings now exclude retired September 7 batch-stage files.",
-      "Order of Nine Angles keeps one canonical extremism/network entity ID; religious-adjacent research now uses a namespaced contextual projection with canonical_entity_id back-reference."
+      "Order of Nine Angles keeps one canonical extremism/network entity ID; religious-adjacent research now uses a namespaced contextual projection with canonical_entity_id back-reference.",
+      "FAQ canonical ownership no longer depends on root research.json; current specialist owners now carry those concepts.",
+      "Root legacy research artifacts now declare their own lifecycle/authority status instead of relying on filename semantics.",
+      "knowledge.json stale 'still live' metadata removed; its retirement is now consistently documented."
     ],
     "next_retirement_candidates": [
       {
@@ -245,6 +248,50 @@
         "action": "deleted",
         "reason": "retired generated node migration layer; data/country-nodes.json remains the consolidated graph projection"
       }
-    ]
+    ],
+    "root_source_strata": {
+      "research.json": {
+        "state": "superseded-retained",
+        "role": "mixed research donor",
+        "authority": "non-canonical",
+        "next": "continue unique-content promotion; canonical FAQ ownership already migrated away"
+      },
+      "book-research.json": {
+        "state": "retained-source-bridge",
+        "role": "2024 Great Book extraction",
+        "authority": "source/provenance",
+        "next": "preserve while dependent citations remain"
+      },
+      "2026-master-framework.json": {
+        "state": "historical-donor",
+        "role": "2026 synthesis history",
+        "authority": "non-current",
+        "next": "rewire any authority-like consumers; retain historical source references"
+      },
+      "POTATOVERSE-DEEP-RESEARCH.md": {
+        "state": "historical-donor",
+        "role": "readable research stratum",
+        "authority": "non-canonical",
+        "next": "unique-content diff"
+      },
+      "POTATOVERSE-ALTERNATIVE-RESEARCH.md": {
+        "state": "historical-donor",
+        "role": "readable research stratum",
+        "authority": "non-canonical",
+        "next": "unique-content diff"
+      },
+      "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md": {
+        "state": "retained-source-stratum",
+        "role": "readable timeline/provenance",
+        "authority": "not canonical event owner",
+        "next": "retain until timeline-source consumers can route directly to promoted evidence"
+      },
+      "knowledge.json": {
+        "state": "retired",
+        "role": "former all-in-one master",
+        "authority": "none",
+        "next": "historical recovery via recorded blob only"
+      }
+    }
   }
 }
