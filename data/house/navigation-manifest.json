@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -63,6 +63,11 @@
       "concern": "symbol category / terrain / regime classification",
       "owner": "data/house/layer-terrain-regime-atlas.json",
       "rule": "Classifies whether a symbol is plane, terrain, regime, organism, material state, threshold, perceptual layer, process, route or inhabitant before spatial/moral interpretation."
+    },
+    {
+      "concern": "general subject placement / what-goes-where resolver",
+      "owner": "data/house/placement-matrix.json",
+      "rule": "Operationally resolves category, Room, plane, Tree/route affinity, corridors, boundaries and visibility for new subjects before they are promoted into curated atlases."
     },
     {
       "concern": "human-readable master synthesis",
