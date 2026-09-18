@@ -1,8 +1,8 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "living-project-map",
-  "purpose": "Compose the center-adjacent project into four interacting metabolisms—organism, Spirit/relation, memory/history and culture/formation—without creating new knowledge owners.",
+  "purpose": "Compose the center-adjacent project into interacting metabolisms—organism, Spirit/relation, memory/history, foundations/generative memory and culture/formation—without creating new knowledge owners.",
   "semantic_center": "potato-of-life",
   "ownership_rule": "This map coordinates existing Rooms. It never overrides their ownership: Life & Body owns biology/embodiment; Potatoverse Canon owns project theology; Time & History plus Archive & Sources own chronology/memory/provenance; Culture & Information owns social formation; Research Lab owns unresolved synthesis.",
   "systems": [
@@ -205,6 +205,81 @@
       ]
     },
     {
+      "id": "foundations-generative-memory",
+      "label": "Foundations / Generative Memory",
+      "primary_room_ids": [
+        "time-history",
+        "world-systems",
+        "traditions-texts",
+        "culture-information"
+      ],
+      "subroom_ids": [
+        "developmental-genealogy",
+        "chronology-events",
+        "politics-governance",
+        "law-justice",
+        "other-traditions",
+        "subculture-group-formation"
+      ],
+      "crossing_subroom_ids": [
+        "symbolic-architecture",
+        "research-programmes",
+        "experiments-formalization"
+      ],
+      "project_question": "Which past state still has generative authority now, and by what mechanism does it reproduce, branch, amend or refound itself?",
+      "pipeline": [
+        "substrate",
+        "Seed",
+        "F0/reference",
+        "operation",
+        "reproduction",
+        "branching",
+        "revision/refoundation",
+        "inheritance",
+        "supersession"
+      ],
+      "functions": [
+        "identity reference",
+        "mission anchor",
+        "reproduction",
+        "succession",
+        "amendment",
+        "interoperability",
+        "lineage",
+        "anti-amnesia"
+      ],
+      "failure_modes": [
+        "single fake birthday",
+        "founder cult without reproduction mechanism",
+        "superseded rules silently treated as current",
+        "mission drift hidden by unchanged slogans",
+        "retrospective myth replacing provenance"
+      ],
+      "repair_routes": [
+        "multiple clocks",
+        "source-preserved versions",
+        "reproduction mechanism",
+        "branch genealogy",
+        "refoundation record",
+        "continuity/invariant test"
+      ],
+      "project_nodes": [
+        "root",
+        "seed",
+        "foundation",
+        "center",
+        "plane",
+        "archive",
+        "spiral",
+        "tree"
+      ],
+      "source_files": [
+        "knowledge/core/foundation-rule-law-ontology.json",
+        "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+        "data/house/foundation-timeline-wave-001.json"
+      ]
+    },
+    {
       "id": "culture-formation",
       "label": "Culture / Formation",
       "primary_room_ids": [
@@ -323,6 +398,27 @@
       "type": "development",
       "question": "How do dormancy, growth, injury and repair become dated developmental sequences?",
       "rule": "Biological lifecycle comparison must remain separate from biography or theology."
+    },
+    {
+      "from": "memory-history",
+      "to": "foundations-generative-memory",
+      "type": "generative-selection",
+      "question": "Which remembered past states remain operative reference points rather than merely historical facts?",
+      "rule": "A remembered event becomes Foundation only when it establishes a durable platform/reference and reproduction mechanism."
+    },
+    {
+      "from": "foundations-generative-memory",
+      "to": "culture-formation",
+      "type": "institutional-reproduction",
+      "question": "How do founding rules become habits, offices, standards, rituals, curricula, ownership or styles?",
+      "rule": "Transmission must identify a concrete reproduction carrier."
+    },
+    {
+      "from": "foundations-generative-memory",
+      "to": "spirit-relation",
+      "type": "purpose-continuity",
+      "question": "How does founding purpose remain living without becoming untouchable?",
+      "rule": "Foundations may orient purpose but remain revisable; Fruit and evidence can justify refoundation."
     }
   ],
   "shared_tests": [
@@ -377,6 +473,16 @@
         "culture-formation",
         "organism"
       ]
+    },
+    {
+      "id": "foundation-test",
+      "question": "What became repeatable here, how does another generation reproduce it, and what would count as refoundation?",
+      "applies_to": [
+        "memory-history",
+        "foundations-generative-memory",
+        "culture-formation",
+        "spirit-relation"
+      ]
     }
   ],
   "public_routes": {
@@ -385,13 +491,15 @@
     "spirit": "potato-of-life/spirit/",
     "memory": "history/",
     "culture": "context/culture/",
-    "research": "research-lab/"
+    "research": "research-lab/",
+    "foundations": "house/#foundations"
   },
   "anti_redundancy": [
     "Do not create a Spirit Room; Spirit remains a center-native role/relation owned by project canon and compared across existing Rooms.",
     "Do not create a Memory realm; chronology and archive Rooms already own occurrence, provenance, recovery and interpretation.",
     "Do not make Culture synonymous with Strife; Garden-like and Strife-like cultural directions are outcomes of formation, not definitions of culture.",
     "Do not turn body metaphors into anatomy.",
-    "Do not let this coordination map become a replacement ontology for Rooms."
+    "Do not let this coordination map become a replacement ontology for Rooms.",
+    "Do not make Foundations a new Room; Foundations are cross-domain generative-history records owned substantively by their domain entities and coordinated through Time & History / House."
   ]
 }
