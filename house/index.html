@@ -68,6 +68,20 @@
 .case-meta span{border:1px solid var(--site-line);border-radius:999px;padding:5px 8px;color:var(--site-muted);font-size:9px}
 @media(max-width:760px){.case-triad,.case-grid{grid-template-columns:1fr}}
 
+
+.foundation-strip{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:7px;margin:14px 0}
+.foundation-step{border:1px solid var(--site-line);border-radius:10px;padding:10px;background:var(--site-panel)}
+.foundation-step b{display:block;font:400 14px var(--site-font-serif);color:var(--site-gold)}
+.foundation-step span{display:block;color:var(--site-muted);font-size:9px;line-height:1.35;margin-top:3px}
+.foundation-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:9px;margin-top:12px}
+.foundation-card{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}
+.foundation-card strong{display:block;font:400 18px var(--site-font-serif);color:var(--site-gold)}
+.foundation-card em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin:4px 0}
+.foundation-card p{color:var(--site-muted);font-size:11px;line-height:1.45;margin:5px 0}
+.foundation-rule{font:400 20px/1.5 var(--site-font-serif);border-left:2px solid var(--site-green);padding-left:14px;color:#dce4d8}
+@media(max-width:900px){.foundation-strip{grid-template-columns:repeat(3,1fr)}.foundation-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.foundation-strip,.foundation-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body class="house-depth-overview"><main class="page page--reading">
@@ -94,6 +108,24 @@
 
 
 
+
+
+<section class="page-section" id="foundations">
+<p class="eyebrow">Foundations</p>
+<h2>What keeps beginning again?</h2>
+<p class="foundation-rule">A Foundation is more than an origin date. It is a Seed that becomes a Center, a Platform, and a preserved reference state from which later generations can reproduce, amend, branch, or refound the system.</p>
+<div class="foundation-strip">
+<article class="foundation-step"><b>Substrate</b><span>What existed before the foundation.</span></article>
+<article class="foundation-step"><b>Seed</b><span>The generative idea, covenant, rule, design or initiative.</span></article>
+<article class="foundation-step"><b>F₀</b><span>The first stable recoverable reference state.</span></article>
+<article class="foundation-step"><b>Operation</b><span>When the founded thing actually begins acting.</span></article>
+<article class="foundation-step"><b>Refoundation</b><span>A later change that alters the operating plane while preserving some continuity.</span></article>
+<article class="foundation-step"><b>Branches</b><span>Descendant institutions, schools, practices, protocols or interpretations.</span></article>
+</div>
+<p class="topology-note">The crucial question is not only <em>when did this begin?</em> but <strong>how does another generation become it again?</strong> Constitutions reproduce through offices and amendment; monasteries through disciplined practice; science through methods and instruments; protocols through interoperable implementations; cooperatives through ownership rules; movements through manifestos, works and schools.</p>
+<div class="foundation-grid" id="foundationExamples"><p class="boundary">Loading foundation examples…</p></div>
+<div class="corridor"><a href="../timeline/">Timeline</a><a href="../world/">World</a><a href="../religion/">Traditions</a><a href="../philosophy/">Philosophy</a></div>
+</section>
 
 <section class="page-section" id="crystallized-cases">
 <p class="eyebrow">Crystallized cases</p>
@@ -280,11 +312,22 @@
 (async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
-    const [subRes,topoRes,intRes,projRes,conceptRes,holdRes,collRes,dataHoldRes,dossierRes,societyRes,entityRes]=await Promise.all([fetch('../data/house/subrooms.json'),fetch('../data/house/topology.json'),fetch('../data/house/interfaces.json'),fetch('../data/house/projections.json'),fetch('../data/house/concept-topology.json'),fetch('../data/house/holdings.json'),fetch('../data/house/collections.json'),fetch('../data/house/data-holdings.json'),fetch('../data/house/room-dossiers.json'),fetch('../data/house/society-population.json'),fetch('../data/house/entity-dossiers-wave-001.json')]);
-    if(!subRes.ok||!topoRes.ok||!intRes.ok||!projRes.ok||!conceptRes.ok||!holdRes.ok||!collRes.ok||!dataHoldRes.ok||!dossierRes.ok||!societyRes.ok||!entityRes.ok)throw new Error('House topology unavailable');
-    const sub=await subRes.json(),topo=await topoRes.json(),interfaces=await intRes.json(),projections=await projRes.json(),concepts=await conceptRes.json(),holdings=await holdRes.json(),collections=await collRes.json(),dataHoldings=await dataHoldRes.json(),dossiers=await dossierRes.json(),society=await societyRes.json(),entityDossiers=await entityRes.json();
+    const [subRes,topoRes,intRes,projRes,conceptRes,holdRes,collRes,dataHoldRes,dossierRes,societyRes,entityRes,foundationRes,foundation2Res]=await Promise.all([fetch('../data/house/subrooms.json'),fetch('../data/house/topology.json'),fetch('../data/house/interfaces.json'),fetch('../data/house/projections.json'),fetch('../data/house/concept-topology.json'),fetch('../data/house/holdings.json'),fetch('../data/house/collections.json'),fetch('../data/house/data-holdings.json'),fetch('../data/house/room-dossiers.json'),fetch('../data/house/society-population.json'),fetch('../data/house/entity-dossiers-wave-001.json'),fetch('../data/house/foundations-wave-001.json'),fetch('../data/house/foundations-wave-002.json')]);
+    if(!subRes.ok||!topoRes.ok||!intRes.ok||!projRes.ok||!conceptRes.ok||!holdRes.ok||!collRes.ok||!dataHoldRes.ok||!dossierRes.ok||!societyRes.ok||!entityRes.ok||!foundationRes.ok||!foundation2Res.ok)throw new Error('House topology unavailable');
+    const sub=await subRes.json(),topo=await topoRes.json(),interfaces=await intRes.json(),projections=await projRes.json(),concepts=await conceptRes.json(),holdings=await holdRes.json(),collections=await collRes.json(),dataHoldings=await dataHoldRes.json(),dossiers=await dossierRes.json(),society=await societyRes.json(),entityDossiers=await entityRes.json(),foundation1=await foundationRes.json(),foundation2=await foundation2Res.json();
     const groups=document.getElementById('houseSubrooms'),corridors=document.getElementById('houseCorridors'),interfaceRoot=document.getElementById('houseInterfaces'),projectionTabs=document.getElementById('houseProjectionTabs'),projectionPanel=document.getElementById('houseProjectionPanel'),operatorRoot=document.getElementById('houseOperators'),operatorRelations=document.getElementById('houseOperatorRelations'),holdingsRoot=document.getElementById('houseHoldingsGrid'),collectionStrip=document.getElementById('houseCollectionStrip');
 
+
+
+    const foundationRoot=document.getElementById('foundationExamples');
+    if(foundationRoot){
+      const combined=[...(foundation1.records||[]),...(foundation2.records||[])];
+      const picks=['potatoism-foundation','eu-treaty-foundation','christianity-foundation','university-copenhagen-foundation','tcp-ip-internet-foundation','unicode-foundation','rochdale-cooperative-foundation','rule-of-saint-benedict','newtonian-mechanics-foundation'];
+      foundationRoot.innerHTML=picks.map(id=>combined.find(x=>x.id===id)).filter(Boolean).map(x=>{
+        const first=(x.clocks||[])[0],repro=x.reproduction_mechanism||((x.foundation_rules||x.load_bearing_rules||[]).slice(0,3).join(' · '));
+        return '<article class="foundation-card"><strong>'+esc(x.name)+'</strong><em>'+esc(x.domain)+'</em><p>'+esc(x.why_foundational)+'</p><p><b>First clock:</b> '+esc(first?.date_or_range||'')+' · '+esc(first?.label||'')+'</p><p><b>Reproduces through:</b> '+esc(repro||'')+'</p></article>';
+      }).join('');
+    }
 
     const entityTabs=document.getElementById('entityCaseTabs'),entityPanel=document.getElementById('entityCasePanel');
     if(entityTabs&&entityPanel){

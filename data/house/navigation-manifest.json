@@ -1,5 +1,5 @@
 {
-  "version": "2.7.0",
+  "version": "2.8.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -158,6 +158,11 @@
       "concern": "cross-domain foundations rules laws and refoundations",
       "owner": "knowledge/core/foundation-rule-law-ontology.json",
       "rule": "Treat foundations as time-aware Seed+Center+Platform records with multiple clocks. Preserve substrate, adoption, legal effect, operation, consolidation, branching and refoundation separately; do not force ancient traditions or modern institutions into one birthday model."
+    },
+    {
+      "concern": "foundation reproduction and larger purpose",
+      "owner": "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+      "rule": "A Foundation is mature only when its reproduction mechanism is identified: how later actors can reinstantiate the founded order through law, discipline, canon, pedagogy, science, protocol, ownership, manifesto or lineage."
     }
   ],
   "resolver_order": [

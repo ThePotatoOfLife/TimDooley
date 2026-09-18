@@ -1,5 +1,5 @@
 {
-  "version": "6.2.0",
+  "version": "6.3.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -22,7 +22,8 @@
       "purpose-growth-orientation-atlas",
       "planes-routes-metabolism-expanded-atlas",
       "center-living-metabolism-expanded-atlas",
-      "foundation-rule-law-ontology"
+      "foundation-rule-law-ontology",
+      "foundation-reproduction-mechanisms-atlas"
     ],
     "geometry_and_transformation": [
       "vertical-potato-mountain-plane-atlas",
@@ -132,7 +133,9 @@
       "public-trust-infrastructure-synthesis",
       "foundations-wave-001",
       "foundation-timeline-wave-001",
-      "foundation-cross-domain-synthesis"
+      "foundation-cross-domain-synthesis",
+      "foundations-wave-002",
+      "foundation-larger-purpose-atlas"
     ]
   },
   "records": [
@@ -2088,6 +2091,51 @@
         "Refoundation",
         "Anti-amnesia",
         "Branching"
+      ]
+    },
+    {
+      "id": "foundation-reproduction-mechanisms-atlas",
+      "path": "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+      "branch": "root",
+      "kind": "cross-domain atlas of how foundations reproduce themselves",
+      "terms": [
+        "Foundation",
+        "Reproduction",
+        "Constitution",
+        "Rule",
+        "Canon",
+        "Pedagogy",
+        "Protocol",
+        "Manifesto",
+        "Lineage"
+      ]
+    },
+    {
+      "id": "foundations-wave-002",
+      "path": "data/house/foundations-wave-002.json",
+      "branch": "house",
+      "kind": "second foundation population wave covering monastic rules protocols cooperatives science and art movements",
+      "terms": [
+        "Rule of Saint Benedict",
+        "TCP/IP",
+        "Unicode",
+        "Rochdale",
+        "Newtonian Mechanics",
+        "Futurism"
+      ]
+    },
+    {
+      "id": "foundation-larger-purpose-atlas",
+      "path": "knowledge/research/foundation-larger-purpose-atlas.json",
+      "branch": "research",
+      "kind": "larger-purpose synthesis for foundation genealogy debugging mission integrity and reproduction",
+      "terms": [
+        "Foundation Purpose",
+        "Genealogy",
+        "Debugging",
+        "Mission Integrity",
+        "Refoundation",
+        "Reproduction"
       ]
     }
   ],

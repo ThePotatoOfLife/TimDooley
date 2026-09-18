@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "title": "Foundation Timeline — F0, Operation, Consolidation and Refoundation",
   "purpose": "Cross-domain chronological projection of foundation clocks. It is explicitly not a claim that every tradition has one birthday.",
@@ -216,6 +216,34 @@
       "sequence": 1
     },
     {
+      "foundation_id": "rule-of-saint-benedict",
+      "name": "Rule of Saint Benedict",
+      "domain": "religion-monasticism",
+      "date_or_range": "c. 530 CE",
+      "year_start": 530,
+      "year_end": 530,
+      "event_type": "adoption_signature",
+      "precision": "approximate-year",
+      "status": "scholarly-estimate",
+      "label": "Rule composed in sixth-century Italy; exact date uncertain.",
+      "source": "https://www.britannica.com/topic/Rule-of-Saint-Benedict",
+      "sequence": 0
+    },
+    {
+      "foundation_id": "rule-of-saint-benedict",
+      "name": "Rule of Saint Benedict",
+      "domain": "religion-monasticism",
+      "date_or_range": "6th century CE onward",
+      "year_start": 530,
+      "year_end": 600,
+      "event_type": "first_operation",
+      "precision": "range",
+      "status": "scholarly-estimate",
+      "label": "Rule practiced in Benedictine monastic communities and later spreads widely in Western monasticism.",
+      "source": "https://www.archive.osb.org/rb/",
+      "sequence": 1
+    },
+    {
       "foundation_id": "islam-foundation",
       "name": "Islam / early umma",
       "domain": "religion",
@@ -356,6 +384,34 @@
       "sequence": 1
     },
     {
+      "foundation_id": "newtonian-mechanics-foundation",
+      "name": "Newtonian mechanics / Principia programme",
+      "domain": "science",
+      "date_or_range": "1684",
+      "year_start": 1684,
+      "year_end": 1684,
+      "event_type": "seed_idea",
+      "precision": "year",
+      "status": "documented",
+      "label": "Newton's De Motu work circulated through Royal Society context after Halley's prompting.",
+      "source": "https://pictures.royalsociety.org/image-rs-14397",
+      "sequence": 0
+    },
+    {
+      "foundation_id": "newtonian-mechanics-foundation",
+      "name": "Newtonian mechanics / Principia programme",
+      "domain": "science",
+      "date_or_range": "1687",
+      "year_start": 1687,
+      "year_end": 1687,
+      "event_type": "consolidation",
+      "precision": "year",
+      "status": "documented",
+      "label": "Principia published.",
+      "source": "https://royalsociety.org/news/2014/astronaut-tim-peake-principia/",
+      "sequence": 1
+    },
+    {
       "foundation_id": "sikh-foundation",
       "name": "Sikh tradition / Khalsa",
       "domain": "religion",
@@ -440,6 +496,20 @@
       "sequence": 0
     },
     {
+      "foundation_id": "rochdale-cooperative-foundation",
+      "name": "Rochdale cooperative model",
+      "domain": "economy-governance",
+      "date_or_range": "1844",
+      "year_start": 1844,
+      "year_end": 1844,
+      "event_type": "first_operation",
+      "precision": "year",
+      "status": "documented",
+      "label": "28 artisans establish the Rochdale Equitable Pioneers Society.",
+      "source": "https://ica.coop/en/cooperatives/history-cooperative-movement",
+      "sequence": 0
+    },
+    {
       "foundation_id": "denmark-constitutional-order",
       "name": "Danish constitutional order",
       "domain": "nation-governance",
@@ -454,6 +524,20 @@
       "sequence": 0
     },
     {
+      "foundation_id": "rochdale-cooperative-foundation",
+      "name": "Rochdale cooperative model",
+      "domain": "economy-governance",
+      "date_or_range": "1860",
+      "year_start": 1860,
+      "year_end": 1860,
+      "event_type": "consolidation",
+      "precision": "year",
+      "status": "documented",
+      "label": "Rules later known as Rochdale Principles are published in the Pioneers' almanac.",
+      "source": "https://ccr.ica.coop/sites/default/files/2022-08/Congress_Discussion_Paper_Final_EN_2021-10-09.pdf",
+      "sequence": 1
+    },
+    {
       "foundation_id": "bahai-foundation",
       "name": "Bahá’í Faith",
       "domain": "religion",
@@ -466,6 +550,20 @@
       "label": "Bahá’u’lláh's Riḍván declaration marks emergence of the Bahá’í Faith from the Bábí movement.",
       "source": "https://reference.bahai.org/en/t/o/BNE/bne-32.html",
       "sequence": 1
+    },
+    {
+      "foundation_id": "rochdale-cooperative-foundation",
+      "name": "Rochdale cooperative model",
+      "domain": "economy-governance",
+      "date_or_range": "1895-08-19",
+      "year_start": 1895,
+      "year_end": 1895,
+      "event_type": "branching",
+      "precision": "exact-day",
+      "status": "documented",
+      "label": "International Cooperative Alliance founded and begins global principle coordination.",
+      "source": "https://ica.coop/en/whats-co-op/history-co-operative-movement",
+      "sequence": 2
     },
     {
       "foundation_id": "denmark-constitutional-order",
@@ -510,6 +608,20 @@
       "sequence": 0
     },
     {
+      "foundation_id": "futurism-foundation",
+      "name": "Futurism",
+      "domain": "culture-art",
+      "date_or_range": "1909-02-20",
+      "year_start": 1909,
+      "year_end": 1909,
+      "event_type": "adoption_signature",
+      "precision": "exact-day",
+      "status": "documented",
+      "label": "Marinetti's Foundation and Manifesto of Futurism published on front page of Le Figaro.",
+      "source": "https://www.moma.org/documents/moma_catalogue_2821_300062224.pdf",
+      "sequence": 0
+    },
+    {
       "foundation_id": "montessori-foundation",
       "name": "Montessori education",
       "domain": "education-philosophy",
@@ -521,6 +633,20 @@
       "status": "documented",
       "label": "First training course and first major method publication.",
       "source": "https://montessori-ami.org/node/1821",
+      "sequence": 1
+    },
+    {
+      "foundation_id": "futurism-foundation",
+      "name": "Futurism",
+      "domain": "culture-art",
+      "date_or_range": "1910-02-11",
+      "year_start": 1910,
+      "year_end": 1910,
+      "event_type": "branching",
+      "precision": "exact-day",
+      "status": "documented",
+      "label": "Manifesto of Futurist Painters dated; specialized movement branches proliferate.",
+      "source": "https://www.moma.org/documents/moma_catalogue_2821_300062224.pdf",
       "sequence": 1
     },
     {
@@ -846,6 +972,20 @@
       "sequence": 2
     },
     {
+      "foundation_id": "tcp-ip-internet-foundation",
+      "name": "TCP/IP Internet protocol foundation",
+      "domain": "technology-protocol",
+      "date_or_range": "1974",
+      "year_start": 1974,
+      "year_end": 1974,
+      "event_type": "seed_idea",
+      "precision": "year",
+      "status": "documented",
+      "label": "Cerf and Kahn publish foundational internetworking protocol work.",
+      "source": "https://www.internetsociety.org/internet/history-internet/brief-history-internet/",
+      "sequence": 0
+    },
+    {
       "foundation_id": "asml-foundation",
       "name": "ASML",
       "domain": "company-technology",
@@ -858,6 +998,20 @@
       "label": "Philips and ASM announce intention to form a lithography joint venture.",
       "source": "https://www.asml.com/en/company/stories/2024/asml-founding-story",
       "sequence": 0
+    },
+    {
+      "foundation_id": "tcp-ip-internet-foundation",
+      "name": "TCP/IP Internet protocol foundation",
+      "domain": "technology-protocol",
+      "date_or_range": "1983-01-01",
+      "year_start": 1983,
+      "year_end": 1983,
+      "event_type": "refoundation_revision",
+      "precision": "exact-day",
+      "status": "documented",
+      "label": "ARPANET transitions from NCP to TCP/IP in a flag-day conversion.",
+      "source": "https://www.internetsociety.org/internet/history-internet/brief-history-internet/",
+      "sequence": 1
     },
     {
       "foundation_id": "asml-foundation",
@@ -874,6 +1028,20 @@
       "sequence": 1
     },
     {
+      "foundation_id": "unicode-foundation",
+      "name": "Unicode",
+      "domain": "technology-standards",
+      "date_or_range": "1988-08-29",
+      "year_start": 1988,
+      "year_end": 1988,
+      "event_type": "seed_idea",
+      "precision": "exact-day",
+      "status": "documented",
+      "label": "Unicode 88 manifesto lays out core proposal/design principles.",
+      "source": "https://www.unicode.org/history/publicationdates.html",
+      "sequence": 0
+    },
+    {
       "foundation_id": "novo-nordisk-foundation",
       "name": "Novo Nordisk",
       "domain": "company-health",
@@ -886,6 +1054,48 @@
       "label": "Novo and Nordisk merge to form Novo Nordisk A/S.",
       "source": "https://www.novonordisk.com/about/our-heritage.html",
       "sequence": 2
+    },
+    {
+      "foundation_id": "unicode-foundation",
+      "name": "Unicode",
+      "domain": "technology-standards",
+      "date_or_range": "1991-01-03",
+      "year_start": 1991,
+      "year_end": 1991,
+      "event_type": "first_operation",
+      "precision": "exact-day",
+      "status": "documented",
+      "label": "Unicode Consortium incorporated.",
+      "source": "https://www.unicode.org/L2/meetings/utc-meetings-early.html",
+      "sequence": 1
+    },
+    {
+      "foundation_id": "unicode-foundation",
+      "name": "Unicode",
+      "domain": "technology-standards",
+      "date_or_range": "1991-10",
+      "year_start": 1991,
+      "year_end": 1991,
+      "event_type": "consolidation",
+      "precision": "month",
+      "status": "documented",
+      "label": "Unicode Standard Version 1.0 Volume 1 published.",
+      "source": "https://www.unicode.org/history/publicationdates.html",
+      "sequence": 2
+    },
+    {
+      "foundation_id": "unicode-foundation",
+      "name": "Unicode",
+      "domain": "technology-standards",
+      "date_or_range": "1991",
+      "year_start": 1991,
+      "year_end": 1991,
+      "event_type": "refoundation_revision",
+      "precision": "year",
+      "status": "documented",
+      "label": "Unicode and ISO 10646 efforts agree to converge on one universal coded character standard.",
+      "source": "https://www.unicode.org/faq/unicode_iso.html",
+      "sequence": 3
     },
     {
       "foundation_id": "eu-treaty-foundation",
