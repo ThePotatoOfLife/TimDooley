@@ -3194,7 +3194,7 @@
         "tuber anatomy",
         "eyes/dormancy/sprouting",
         "storage growth propagation and pathology",
-        "Material rooted in knowledge/biology/potato-growth-principles.json"
+        "Material rooted in knowledge/science/potato-biology-ecology-development-canon.json; practice projection in knowledge/biology/potato-growth-principles.json"
       ],
       "stays_out": [
         "symbolic anatomy presented as established physiology",
@@ -3208,19 +3208,19 @@
         "primary_file_count": 3,
         "featured": [
           {
-            "id": "potato-growth-principles",
-            "path": "knowledge/biology/potato-growth-principles.json",
-            "kind": "room holding"
-          },
-          {
             "id": "potato-biology-ecology-development-canon",
             "path": "knowledge/science/potato-biology-ecology-development-canon.json",
-            "kind": "room holding"
+            "kind": "canonical science owner"
+          },
+          {
+            "id": "potato-growth-principles",
+            "path": "knowledge/biology/potato-growth-principles.json",
+            "kind": "practice-facing projection"
           },
           {
             "id": "potato-angels-eye-sprout-development-ledger",
             "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
-            "kind": "room holding"
+            "kind": "development/attestation ledger"
           }
         ]
       },
