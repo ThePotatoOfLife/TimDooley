@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "foundation-integration-contract",
   "purpose": "One integration map for Foundation across ontology, domain schemas, graph, Rooms, Timeline, archive and public readers.",
@@ -9,11 +9,15 @@
     "schema": "data/blueprints/foundation-blueprint.json",
     "records": [
       "data/house/foundations-wave-001.json",
-      "data/house/foundations-wave-002.json"
+      "data/house/foundations-wave-002.json",
+      "data/house/foundations-wave-003.json"
     ],
     "timeline": "data/house/foundation-timeline-wave-001.json",
     "canonical_map": "data/canonical-source-map.json",
-    "graph_bridge": "data/global-graph-bridge.json"
+    "graph_bridge": "data/global-graph-bridge.json",
+    "seed_genealogy": "data/house/foundation-door-seed-genealogy.json",
+    "axis_placement_contract": "data/house/foundation-axis-placement-contract.json",
+    "placement_wave_003": "data/house/foundation-placement-wave-003.json"
   },
   "domain_inheritance": {
     "country": "data/countries-blueprint.json",
@@ -64,7 +68,10 @@
     "Which foundations reproduce primarily through pedagogy rather than law?",
     "Which current rules descend from a superseded foundation?",
     "Which branches claim continuity with the same F0 but use different reproduction mechanisms?",
-    "Where did a technical protocol create a new operating Plane?"
+    "Where did a technical protocol create a new operating Plane?",
+    "Which Foundations are still active today, and which survive only through successor institutions, diaspora or transferable Seed?",
+    "Which Foundations crossed the Door through migration, publication, protocol switch, incorporation, first meeting or merger?",
+    "Show the same Foundation as root, Door, sprout, branch and return rather than assigning it one vertical location."
   ],
   "anti_duplication": [
     "Domain records retain substantive identity and current facts.",
