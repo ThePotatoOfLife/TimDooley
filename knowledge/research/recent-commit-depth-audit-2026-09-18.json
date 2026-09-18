@@ -122,7 +122,10 @@
         "state-machine/permission transitions",
         "biological developmental thresholds"
       ],
-      "likely_structural_answer": "A strong Door should have BEFORE state, SEPARATION condition, LIMINAL state, GUARD/TEST, AFTER state, and INCORPORATION/RETURN."
+      "likely_structural_answer": "A strong Door should have BEFORE state, SEPARATION condition, LIMINAL state, GUARD/TEST, AFTER state, and INCORPORATION/RETURN.",
+      "materialization_status": "deepened in research/deepen-p0-operators-2026-09-18",
+      "canonical_owner": "knowledge/core/door-topology-access-and-capability-atlas.json",
+      "materialization_note": "Added formal state-transition crosswalk, guard/controller observables, liminal dwell and recognition-gap metrics, plus rites-of-passage boundaries."
     },
     {
       "priority": "P0",
@@ -144,7 +147,10 @@
         "systems approaches to spirituality",
         "communication/circulation theory"
       ],
-      "likely_structural_answer": "Spirit should be modeled as a family of relational functions with carriers, not as one substance or vague synonym for flow."
+      "likely_structural_answer": "Spirit should be modeled as a family of relational functions with carriers, not as one substance or vague synonym for flow.",
+      "materialization_status": "deepened in research/deepen-p0-operators-2026-09-18",
+      "canonical_owner": "knowledge/spirit/spirit-context-atlas.json",
+      "materialization_note": "Added typed relation observables, Stoic pneuma and qi precision, and explicit carrier-vs-theology measurement boundaries."
     },
     {
       "priority": "P0",
@@ -167,7 +173,10 @@
         "coercive control",
         "exit/correction mechanisms"
       ],
-      "likely_structural_answer": "Culture should have state transitions from interaction→norm→identity→institution, with independent axes for cohesion, correction, authority concentration, dependency and exit cost."
+      "likely_structural_answer": "Culture should have state transitions from interaction→norm→identity→institution, with independent axes for cohesion, correction, authority concentration, dependency and exit cost.",
+      "materialization_status": "deepened in research/deepen-p0-operators-2026-09-18",
+      "canonical_owner": "knowledge/culture/culture-formation-zeitgeist-atlas.json",
+      "materialization_note": "Added multilevel norm observables, identity-conditioned influence, coercive-control scope limits, and concrete exit/correction variables."
     },
     {
       "priority": "P0",
@@ -187,7 +196,10 @@
         "microcosm replication",
         "house/temple/body/city center analogies"
       ],
-      "likely_structural_answer": "Keep one project semantic center and one global navigation Axis, but permit scoped local centers/axes as projections with explicit parent scope."
+      "likely_structural_answer": "Keep one project semantic center and one global navigation Axis, but permit scoped local centers/axes as projections with explicit parent scope.",
+      "materialization_status": "already substantially materialized on main",
+      "canonical_owner": "data/house/project-synthesis.json#scoped_centers",
+      "materialization_note": "Search of current main shows scoped center levels, explicit semantic-global and spatial-global centers, parent-scope rules and validation in validate_house_governance.py; no duplicate research file added in this pass."
     },
     {
       "priority": "P0",
@@ -209,7 +221,10 @@
         "delayed fruit",
         "Goodhart-like metric failure"
       ],
-      "likely_structural_answer": "Fruit should record output, beneficiary, timescale, observable effects, externalities, reversibility and whether new independent Seed/capacity is produced."
+      "likely_structural_answer": "Fruit should record output, beneficiary, timescale, observable effects, externalities, reversibility and whether new independent Seed/capacity is produced.",
+      "materialization_status": "deepened in research/deepen-p0-operators-2026-09-18",
+      "canonical_owner": "knowledge/core/fruit-consequence-evaluation-atlas.json",
+      "materialization_note": "Added monitoring/contribution/attribution distinctions, counterfactual fields, OECD evaluation criteria crosswalk and anti-gaming review protocol."
     },
     {
       "priority": "P0",
@@ -229,7 +244,10 @@
         "branching mathematical models",
         "pruning/apical dominance/resource allocation"
       ],
-      "likely_structural_answer": "Tree should expose branch initiation, suppression, resource cost, pruning, convergence and branch death—not only more branches."
+      "likely_structural_answer": "Tree should expose branch initiation, suppression, resource cost, pruning, convergence and branch death—not only more branches.",
+      "materialization_status": "deepened in research/deepen-p0-operators-2026-09-18",
+      "canonical_owner": "knowledge/core/tree-branching-pruning-atlas.json",
+      "materialization_note": "Separated root-architecture plasticity from shoot-bud regulation and added branch economics, lifecycle metrics and pruning protocol."
     },
     {
       "priority": "P1",
@@ -351,5 +369,5 @@
     }
   ],
   "crystallization_authority": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
-  "current_rule": "Structural convergence through #283 is crystallized. Use this audit for remaining source depth, population, longitudinal cases, instrumentation and pruning rather than as authority to add another broad ontology layer."
+  "current_rule": "Structural convergence through #283 remains crystallized. The 2026-09-18 operator-depth pass materially deepens Door, Spirit, Culture, Fruit and Tree in their canonical owners; scoped local centers were already implemented. Future work should propagate these stronger contracts into Room dossiers/readers and test them on real cases rather than create parallel atlases."
 }
