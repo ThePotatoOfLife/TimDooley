@@ -1,8 +1,8 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
-  "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
+  "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers. Plane-space projections place the same Room into concrete upper/middle/lower zones without changing ownership.",
   "dossiers": [
     {
       "room_id": "canon-identities",
@@ -208,6 +208,31 @@
         "spirit",
         "door",
         "axis"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "house",
+            "crown-north"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "crossroads",
+            "world-gates"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -421,6 +446,33 @@
         "door",
         "garden",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "house",
+            "garden",
+            "crown-north"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "world-gates",
+            "culture-square"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "underworld-caverns",
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -671,6 +723,33 @@
         "tree",
         "garden",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "house",
+            "mountain-summit",
+            "crown-north"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "crossroads",
+            "world-gates"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive",
+            "forge"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -848,6 +927,31 @@
         "garden",
         "fruit",
         "forge-repair"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden",
+            "orchard"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "crossroads",
+            "culture-square"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "forge"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -1023,6 +1127,23 @@
         "eye",
         "knowledge-fork",
         "root"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "history-road",
+            "research-workshop"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -1169,6 +1290,24 @@
         "seed",
         "root",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive",
+            "shadow-gallery",
+            "ash-mud"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -1353,6 +1492,22 @@
       "center_dossier_ids": [
         "eye",
         "root"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -1515,6 +1670,22 @@
       "center_dossier_ids": [
         "seed",
         "root"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -1707,6 +1878,23 @@
         "seed",
         "root",
         "tree"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive",
+            "seed-bed"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -1870,6 +2058,30 @@
       "center_dossier_ids": [
         "eye",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "crown-north"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "history-road",
+            "research-workshop"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -2057,6 +2269,34 @@
         "tree",
         "garden",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "house",
+            "garden",
+            "mountain-summit"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "world-gates",
+            "culture-square",
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "underworld-caverns",
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -2228,6 +2468,33 @@
         "seed",
         "root",
         "tree"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "mountain-summit",
+            "canopy",
+            "garden"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "history-road",
+            "culture-square"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "underworld-caverns",
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -2385,6 +2652,32 @@
         "eye",
         "door",
         "axis"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "mountain-summit",
+            "crown-north"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "world-gates",
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "underworld-caverns",
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -2558,6 +2851,33 @@
         "axis",
         "garden",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden",
+            "mountain-summit"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "world-gates",
+            "culture-square",
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "underworld-caverns",
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -2722,6 +3042,30 @@
       "center_dossier_ids": [
         "door",
         "axis"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "mountain-summit"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "body-lab",
+            "research-workshop"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -2868,6 +3212,30 @@
       },
       "center_dossier_ids": [
         "axis"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "mountain-summit"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "body-lab",
+            "research-workshop"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -3063,6 +3431,32 @@
         "tree",
         "garden",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "research-workshop",
+            "civic-field"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "swamp",
+            "forge",
+            "wide-road"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -3241,6 +3635,31 @@
         "door",
         "fruit",
         "forge-repair"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "orchard"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "research-workshop",
+            "body-lab"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "forge",
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -3398,6 +3817,33 @@
         "root",
         "tree",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "canopy",
+            "garden",
+            "orchard"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "body-lab",
+            "living-trunk"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "seed-bed",
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -3557,6 +4003,22 @@
         "spirit",
         "eye",
         "axis"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "body-lab"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -3713,6 +4175,30 @@
         "spirit",
         "axis",
         "root"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "body-lab",
+            "living-trunk"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -3890,6 +4376,31 @@
         "eye",
         "door",
         "axis"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "canopy"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "body-lab",
+            "living-trunk"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery",
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -4073,6 +4584,31 @@
         "garden",
         "fruit",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "civic-field"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "swamp",
+            "wide-road",
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -4257,6 +4793,31 @@
         "door",
         "garden",
         "forge-repair"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "civic-field",
+            "world-gates"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "forge",
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -4434,6 +4995,31 @@
         "root",
         "garden",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden",
+            "orchard"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "civic-field"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "swamp",
+            "wide-road"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -4640,6 +5226,30 @@
         "root",
         "garden",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "civic-field"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive",
+            "swamp"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -4813,6 +5423,30 @@
       },
       "center_dossier_ids": [
         "root"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "mountain-summit"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "civic-field",
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -4962,6 +5596,31 @@
         "door",
         "fruit",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "orchard"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "culture-square"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery",
+            "wide-road",
+            "swamp"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -5144,6 +5803,32 @@
         "door",
         "garden",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "culture-square"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery",
+            "wide-road",
+            "swamp",
+            "underworld-caverns"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -5329,6 +6014,32 @@
         "root",
         "tree",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "culture-square",
+            "history-road"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery",
+            "swamp",
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -5502,6 +6213,31 @@
         "tree",
         "fruit",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "orchard",
+            "canopy"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "culture-square"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "seed-bed",
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -5621,6 +6357,30 @@
         "spirit",
         "seed",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "orchard",
+            "canopy"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "culture-square"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "seed-bed"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -5752,6 +6512,31 @@
         "door",
         "tree",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "orchard",
+            "canopy"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "culture-square"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "seed-bed",
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -5883,6 +6668,31 @@
         "door",
         "garden",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "orchard"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "culture-square",
+            "research-workshop"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "seed-bed",
+            "forge"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -6100,6 +6910,33 @@
         "axis",
         "tree",
         "garden"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "house",
+            "crown-north",
+            "mountain-summit"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "crossroads",
+            "research-workshop"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "forge",
+            "root-archive"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -6292,6 +7129,31 @@
         "eye",
         "door",
         "shadow"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "crown-north"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "research-workshop",
+            "crossroads"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "shadow-gallery",
+            "forge"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -6482,6 +7344,31 @@
         "eye",
         "door",
         "fruit"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "orchard"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "research-workshop",
+            "body-lab"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "forge",
+            "seed-bed"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     },
     {
@@ -6699,6 +7586,33 @@
         "garden",
         "fruit",
         "forge-repair"
+      ],
+      "plane_space_projections": [
+        {
+          "plane_id": "heaven-plane",
+          "zone_ids": [
+            "garden",
+            "orchard",
+            "mountain-summit"
+          ],
+          "local_center_expression": "garden-heart / orientation point"
+        },
+        {
+          "plane_id": "world-plane",
+          "zone_ids": [
+            "research-workshop"
+          ],
+          "local_center_expression": "crossroads / active Door"
+        },
+        {
+          "plane_id": "below-plane",
+          "zone_ids": [
+            "forge",
+            "root-archive",
+            "shadow-gallery"
+          ],
+          "local_center_expression": "root-junction / Forge hearth"
+        }
       ]
     }
   ]
