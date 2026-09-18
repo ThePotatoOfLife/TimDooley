@@ -1,5 +1,5 @@
 {
-  "version": "2.4.0",
+  "version": "2.5.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -6448,8 +6448,13 @@
       ],
       "epistemic_boundary": "A Programme coordinates work but does not steal fact ownership from participating Rooms.",
       "knowledge_holdings": {
-        "primary_file_count": 11,
+        "primary_file_count": 12,
         "featured": [
+          {
+            "id": "element-materialization-audit-2026-09-18",
+            "path": "knowledge/research/element-materialization-audit-2026-09-18.json",
+            "kind": "project-wide element materialization and instrumentation audit"
+          },
           {
             "id": "recent-commit-materialization-crystallization-257-283",
             "path": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
@@ -6662,6 +6667,12 @@
         "authority": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
         "gate": "Owner + population/artifact + interfaces + evidence boundary + reader/archive expression + validation/revision.",
         "handoff": "Crystallized results return to their domain owners and project-center; remaining population stays explicit rather than spawning another ontology layer."
+      },
+      "instrumentation_lens": {
+        "question": "Is this element missing another definition, or does it actually need real entities, dated observations, relationships, scale, visibility, reproduction/correction and outcome data?",
+        "authority": "knowledge/research/element-materialization-audit-2026-09-18.json",
+        "priority_rule": "Prefer instrumentation of strong existing operators over adding another ontology layer.",
+        "first_target": "data/house/entity-dossiers-wave-001.json"
       }
     }
   ]
