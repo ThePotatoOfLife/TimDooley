@@ -24,11 +24,11 @@ This directory records legacy strata that have been superseded, retired, or are 
 
 These files remain at repository root until their unique content and downstream references have been fully migrated:
 
-- `research.json` — dense Great Book/comparative research layer; some formulas still cite it.
-- `book-research.json` — important 2024 Great Book extraction/source bridge.
-- `2026-master-framework.json` — conversation-developed 2026 synthesis used as historical development evidence.
-- `POTATOVERSE-DEEP-RESEARCH.md` and `POTATOVERSE-ALTERNATIVE-RESEARCH.md` — older readable research strata pending unique-content diff.
-- `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — readable timeline still used by the public timeline layer.
+- `research.json` — **superseded-retained mixed research donor**. Preserve for provenance and unmigrated source-derived material; do not use as a current canonical owner.
+- `book-research.json` — **retained source bridge** for the 2024 Great Book extraction. Keep while source citations depend on it.
+- `2026-master-framework.json` — **historical donor** recording the conversation-developed 2026 synthesis; current definitions live in dedicated owners.
+- `POTATOVERSE-DEEP-RESEARCH.md` and `POTATOVERSE-ALTERNATIVE-RESEARCH.md` — **historical readable research donors** pending final unique-content diff.
+- `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md` — **retained timeline/source stratum** used for provenance and early roadmap context; canonical event identity lives in the timeline data owners.
 - `THE-TURNING-APRIL-2025.md` — dedicated Turning document; remains a distinct historical/interpretive artifact.
 
 ## Migration rule
