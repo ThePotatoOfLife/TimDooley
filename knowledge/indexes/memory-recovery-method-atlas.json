@@ -1,0 +1,193 @@
+{
+  "id": "memory-recovery-method-atlas",
+  "title": "Memory Recovery Method Atlas — From Buried Trace to Contextualized Project Memory",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "memory-recovery",
+  "purpose": "Turn recovery into a disciplined process: locate traces, reconstruct context, grade temporal/source certainty, detect later reinterpretation, and promote only what another canonical owner can safely use.",
+  "master_distinction": "Remembered meaning, recovered artifact, reconstructed context and later interpretation are four different objects.",
+  "recovery_objects": [
+    {
+      "id": "artifact",
+      "definition": "A surviving file, message, commit, image, transcript, metadata record or other trace.",
+      "key_fields": [
+        "source_type",
+        "source_id_or_path",
+        "created_at_if_known",
+        "modified_at_if_known",
+        "hash_or_stable_identifier",
+        "access_scope"
+      ]
+    },
+    {
+      "id": "attestation",
+      "definition": "A person's dated statement about what happened, was meant or was believed.",
+      "key_fields": [
+        "speaker",
+        "date",
+        "exact_or_paraphrased",
+        "contemporaneous_or_retrospective",
+        "scope"
+      ]
+    },
+    {
+      "id": "reconstruction",
+      "definition": "A best-fit sequence assembled from multiple traces when no single source gives the whole context.",
+      "key_fields": [
+        "inputs",
+        "assumptions",
+        "uncertainties",
+        "alternative_sequences"
+      ]
+    },
+    {
+      "id": "interpretation",
+      "definition": "A later account of significance, symbolism, causation or continuity.",
+      "key_fields": [
+        "author",
+        "date",
+        "depends_on",
+        "evidence_class",
+        "possible_backdating_risk"
+      ]
+    }
+  ],
+  "temporal_strata": [
+    {
+      "id": "T0-contemporaneous",
+      "meaning": "Created during or immediately around the event/state being reconstructed.",
+      "weight": "highest for what was said or recorded then; not automatically highest for objective truth."
+    },
+    {
+      "id": "T1-near-retrospective",
+      "meaning": "Created after the event while contextual memory is still relatively near.",
+      "risk": "memory compression and emerging narrative."
+    },
+    {
+      "id": "T2-later-retrospective",
+      "meaning": "Created substantially later.",
+      "risk": "later canon, new vocabulary and present identity may be projected backward."
+    },
+    {
+      "id": "T3-derived-archive",
+      "meaning": "Copies, quotations, summaries or reposts preserved by others.",
+      "risk": "context loss, selection and derivative repetition."
+    },
+    {
+      "id": "T4-current-synthesis",
+      "meaning": "Present reconstruction used to connect the archive.",
+      "risk": "highest harmonization pressure; must expose its inputs."
+    }
+  ],
+  "pipeline": [
+    {
+      "stage": "discover",
+      "question": "What trace exists and where did it come from?",
+      "output": "candidate artifact list"
+    },
+    {
+      "stage": "authenticate",
+      "question": "Is the trace what it claims to be?",
+      "output": "source identity + integrity notes"
+    },
+    {
+      "stage": "date",
+      "question": "What is the strongest defensible date/range?",
+      "output": "date + precision + basis"
+    },
+    {
+      "stage": "contextualize",
+      "question": "What conversation, file, platform or event surrounded it?",
+      "output": "context window"
+    },
+    {
+      "stage": "separate",
+      "question": "Which parts are direct wording, memory, inference and later interpretation?",
+      "output": "typed claims"
+    },
+    {
+      "stage": "compare",
+      "question": "What earlier/later traces support, contradict or transform the meaning?",
+      "output": "continuity/change ledger"
+    },
+    {
+      "stage": "promote",
+      "question": "Which owner Room should receive the recovered material, at what status?",
+      "output": "handoff record"
+    },
+    {
+      "stage": "preserve",
+      "question": "What should remain archived even if not promoted?",
+      "output": "recovery index + unresolved queue"
+    }
+  ],
+  "confidence_vector": {
+    "rule": "Do not collapse confidence into one number.",
+    "dimensions": [
+      {
+        "id": "identity_confidence",
+        "asks": "Do we know what source/account/file this is?"
+      },
+      {
+        "id": "date_confidence",
+        "asks": "How precise and supported is the date?"
+      },
+      {
+        "id": "wording_confidence",
+        "asks": "Is wording exact, partial, paraphrased or reconstructed?"
+      },
+      {
+        "id": "context_confidence",
+        "asks": "How much surrounding material survives?"
+      },
+      {
+        "id": "independence_confidence",
+        "asks": "Are multiple supporting traces independent or copies?"
+      },
+      {
+        "id": "continuity_confidence",
+        "asks": "Is the claimed link to a later concept directly evidenced or interpretive?"
+      }
+    ]
+  },
+  "backdating_tests": [
+    "Does the recovered source actually contain the later term, or only a looser precursor?",
+    "Could the later framework explain the earlier material without having existed explicitly at the time?",
+    "Are several older symbols being merged because the current canon now relates them?",
+    "Is an approximate date being silently converted into an exact anniversary?",
+    "Did a later title replace an earlier self-description?"
+  ],
+  "contradiction_policy": {
+    "rule": "Contradiction is information, not damage.",
+    "outcomes": [
+      "retain both states as dated development",
+      "prefer a stronger contemporaneous source for wording/date",
+      "mark unresolved where evidence does not decide",
+      "treat revision as a refoundation event when the later project explicitly changes meaning"
+    ]
+  },
+  "promotion_contract": {
+    "required": [
+      "artifact or attestation reference",
+      "date/range and precision",
+      "claim type",
+      "source stratum",
+      "uncertainty",
+      "target Room",
+      "what changed relative to current canon"
+    ],
+    "forbidden": [
+      "promoting paraphrase as quote",
+      "silently merging contradictory dates",
+      "using current doctrine to fill missing historical wording",
+      "discarding evidence because it complicates the narrative"
+    ]
+  },
+  "joins": [
+    "provenance-evidence",
+    "witness-attestation",
+    "developmental-genealogy",
+    "canon-identities",
+    "information-ecology"
+  ]
+}

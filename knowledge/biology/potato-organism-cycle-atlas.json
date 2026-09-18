@@ -1,0 +1,192 @@
+{
+  "id": "potato-organism-cycle-atlas",
+  "title": "Potato Organism Cycle Atlas — Tuber, Eye, Sprout, Root, Stolons, Storage and Return",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "potato-biology",
+  "purpose": "Give the Potato of Life project a rigorous literal organism underneath its metaphors by treating the potato as a developmental and storage system with distinct organs, stages, resource flows and environmental constraints.",
+  "biological_identity": {
+    "species_context": "Cultivated potato is Solanum tuberosum in the nightshade family.",
+    "tuber": "The edible potato is a swollen underground stem organ, not a botanical root.",
+    "eyes": "Eyes are bud complexes associated with stem nodes; under suitable conditions they can produce sprouts.",
+    "roots": "True roots emerge from the developing plant and differ anatomically/functionally from the tuber itself.",
+    "stolons": "Underground stems can extend from the plant and terminate in tuber development under suitable developmental conditions."
+  },
+  "cycle": [
+    {
+      "stage": "dormant-tuber",
+      "process": "Stored reserves and living buds persist while visible shoot growth is suppressed.",
+      "variables": [
+        "cultivar",
+        "physiological age",
+        "temperature",
+        "storage duration",
+        "damage/disease"
+      ]
+    },
+    {
+      "stage": "sprout-initiation",
+      "process": "Bud growth resumes and an eye becomes a visible shoot.",
+      "variables": [
+        "dormancy status",
+        "temperature",
+        "light",
+        "sprout position"
+      ]
+    },
+    {
+      "stage": "emergence-and-rooting",
+      "process": "Shoots establish above-ground growth while true roots develop below ground.",
+      "variables": [
+        "soil temperature",
+        "moisture",
+        "seed-piece reserves",
+        "root establishment"
+      ]
+    },
+    {
+      "stage": "canopy-growth",
+      "process": "Leaves and stems expand, shifting the plant toward photosynthetic resource production.",
+      "variables": [
+        "light",
+        "water",
+        "nutrients",
+        "leaf area",
+        "disease pressure"
+      ]
+    },
+    {
+      "stage": "stolon-and-tuber-initiation",
+      "process": "Underground stolons and developmental signals establish new tuber sinks.",
+      "variables": [
+        "photoperiod response by genotype",
+        "temperature",
+        "carbon availability",
+        "hormonal/developmental signals"
+      ]
+    },
+    {
+      "stage": "tuber-bulking",
+      "process": "Assimilated carbon and nutrients accumulate in expanding tubers.",
+      "variables": [
+        "source-sink balance",
+        "water",
+        "canopy health",
+        "tuber number",
+        "temperature"
+      ]
+    },
+    {
+      "stage": "maturation",
+      "process": "Canopy senescence and skin maturation change storage behavior and harvest readiness.",
+      "variables": [
+        "maturity",
+        "skin set",
+        "disease",
+        "harvest timing"
+      ]
+    },
+    {
+      "stage": "harvest-storage-return",
+      "process": "Tubers enter a human-managed storage interval; viable buds can later restart the cycle.",
+      "variables": [
+        "temperature",
+        "humidity",
+        "light exclusion",
+        "ventilation",
+        "wounding",
+        "sprout control"
+      ]
+    }
+  ],
+  "organism_functions": [
+    {
+      "function": "storage",
+      "structure": "tuber",
+      "meaning": "Accumulates reserves that support survival, propagation and early sprout growth."
+    },
+    {
+      "function": "renewal",
+      "structure": "eyes/buds",
+      "meaning": "Multiple latent growth points allow one tuber body to generate shoots."
+    },
+    {
+      "function": "acquisition",
+      "structure": "roots",
+      "meaning": "Water and mineral acquisition from the surrounding substrate."
+    },
+    {
+      "function": "transport",
+      "structure": "vascular tissues",
+      "meaning": "Connects photosynthetic source tissues, roots and storage sinks."
+    },
+    {
+      "function": "capture",
+      "structure": "leaves",
+      "meaning": "Photosynthetic production supplies growth and tuber filling."
+    },
+    {
+      "function": "propagation",
+      "structure": "tuber pieces with viable buds / seed in breeding contexts",
+      "meaning": "Vegetative reproduction preserves genotype; sexual reproduction creates genetic recombination."
+    }
+  ],
+  "distinction_table": [
+    {
+      "confusion": "tuber = root",
+      "correction": "A potato tuber is modified stem tissue; true roots are separate organs."
+    },
+    {
+      "confusion": "eye = literal eye",
+      "correction": "A potato eye is a bud complex; 'eye' is ordinary morphological language and a project metaphor can build on it without changing the biology."
+    },
+    {
+      "confusion": "sprout = root",
+      "correction": "A sprout is a shoot arising from a bud; roots develop separately."
+    },
+    {
+      "confusion": "one potato = one plant identity forever",
+      "correction": "Vegetative propagation can produce genetically clonal plants while each new plant has its own developmental history and environment."
+    }
+  ],
+  "project_crosswalk": [
+    {
+      "biological": "dormancy",
+      "project_use": "burial, latent capacity, stored possibility",
+      "boundary": "Dormancy is a plant physiological state, not evidence for spiritual resurrection."
+    },
+    {
+      "biological": "eye/bud",
+      "project_use": "Door or latent transition point",
+      "boundary": "Functional analogy only."
+    },
+    {
+      "biological": "sprouting",
+      "project_use": "emergence / ascent / new path",
+      "boundary": "Developmental analogy only."
+    },
+    {
+      "biological": "tuber storage",
+      "project_use": "memory/reserve/hidden body",
+      "boundary": "Storage physiology does not imply information memory in the neurological sense."
+    },
+    {
+      "biological": "source-sink flow",
+      "project_use": "resource flow through roots, leaves and tubers",
+      "boundary": "Use as a formal resource-flow comparator, not proof of metaphysical energy."
+    },
+    {
+      "biological": "vegetative propagation",
+      "project_use": "reproduction from a preserved body with viable eyes",
+      "boundary": "Botanical reproduction is literal; theological parallels remain interpretation."
+    }
+  ],
+  "research_program": [
+    "Represent the organism as a typed graph: organ, developmental stage, resource flow and environmental constraint.",
+    "Separate morphology from metaphor in all public pages.",
+    "Use measurable plant variables when testing storage/release or growth analogies.",
+    "Connect dormancy/sprouting to the Foundation grammar as a biological example of latent capacity becoming active reproduction.",
+    "Add pathology, soil ecology, cultivar variation and agricultural history as distinct later branches rather than mixing them into one generic potato."
+  ],
+  "source_policy": "This atlas synthesizes the Room's existing biological holdings; specific quantitative claims should be attached to primary agricultural/botanical sources before publication."
+}

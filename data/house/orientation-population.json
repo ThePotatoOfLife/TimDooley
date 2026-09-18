@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "authority": "house-orientation-population",
   "purpose": "Populate the three-plane cardinal House from existing governed Rooms and holdings, then add a small curated landmark layer for religious, mythic and project-symbolic wayfinding.",
@@ -252,7 +252,7 @@
         "across",
         "down"
       ],
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "id": "context-graph",
@@ -273,6 +273,11 @@
           "id": "archive-epistemics",
           "path": "knowledge/philosophy/archive-epistemics.json",
           "kind": "archive evidence doctrine"
+        },
+        {
+          "id": "provenance-chain-of-custody-atlas",
+          "path": "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+          "kind": "claim-to-source chain-of-custody and corroboration atlas"
         }
       ]
     },
@@ -300,12 +305,22 @@
         "across",
         "down"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "id": "conversation-recovery-inventory",
           "path": "knowledge/indexes/conversation-recovery-inventory.json",
           "kind": "room holding"
+        },
+        {
+          "id": "memory-recovery-method-atlas",
+          "path": "knowledge/indexes/memory-recovery-method-atlas.json",
+          "kind": "recovery method and temporal-strata atlas"
+        },
+        {
+          "id": "memory-recovery-promotion-state-atlas",
+          "path": "knowledge/indexes/memory-recovery-promotion-state-atlas.json",
+          "kind": "recovery-to-canon promotion state machine"
         }
       ]
     },
@@ -647,7 +662,7 @@
         "down",
         "up"
       ],
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "id": "qliphoth-angels-ladder",
@@ -663,6 +678,11 @@
           "id": "vesica-esoteric-source-ledger",
           "path": "knowledge/traditions/vesica-mandorla-sun-moon-source-ledger.json",
           "kind": "source ledger for Vesica/Mandorla/Sun/Moon research"
+        },
+        {
+          "id": "sacred-geometry-method-and-invariants-atlas",
+          "path": "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json",
+          "kind": "exact geometry and historical-symbolic layer method"
         }
       ]
     },
@@ -888,7 +908,7 @@
         "up",
         "through"
       ],
-      "primary_file_count": 5,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "id": "model-testing-protocol",
@@ -909,6 +929,11 @@
           "id": "2026-09-11-axis-door-observable-dynamics",
           "path": "knowledge/science/research-notes/2026-09-11-axis-door-observable-dynamics.json",
           "kind": "room holding"
+        },
+        {
+          "id": "model-discrimination-calibration-atlas",
+          "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+          "kind": "model comparison, calibration and falsification atlas"
         }
       ]
     },
@@ -939,7 +964,7 @@
         "here",
         "down"
       ],
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "id": "potato-growth-principles",
@@ -955,6 +980,11 @@
           "id": "potato-angels-eye-sprout-development-ledger",
           "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
           "kind": "room holding"
+        },
+        {
+          "id": "potato-organism-cycle-atlas",
+          "path": "knowledge/biology/potato-organism-cycle-atlas.json",
+          "kind": "literal potato organism and developmental-cycle atlas"
         }
       ]
     },
@@ -1036,7 +1066,7 @@
         "here",
         "down"
       ],
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "id": "body-science-context-atlas",
@@ -1057,6 +1087,11 @@
           "id": "index",
           "path": "knowledge/body/index.json",
           "kind": "room holding"
+        },
+        {
+          "id": "whole-body-regulation-coupling-atlas",
+          "path": "knowledge/body/whole-body-regulation-coupling-atlas.json",
+          "kind": "whole-organism regulatory coupling and feedback atlas"
         }
       ]
     },
@@ -1086,7 +1121,7 @@
         "here",
         "down"
       ],
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "id": "body-symbolism-map",
@@ -1102,6 +1137,11 @@
           "id": "tim-neurobiology-relational-reconciliation",
           "path": "knowledge/body/tim-neurobiology-relational-reconciliation.json",
           "kind": "room holding"
+        },
+        {
+          "id": "symbolic-body-crosswalk-method-atlas",
+          "path": "knowledge/body/symbolic-body-crosswalk-method-atlas.json",
+          "kind": "typed anatomy-symbol comparison method"
         }
       ]
     },
@@ -1133,12 +1173,17 @@
         "here",
         "up"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "id": "tim-dooley-politics-geopolitics-compendium",
           "path": "knowledge/politics/tim-dooley-politics-geopolitics-compendium.json",
           "kind": "room holding"
+        },
+        {
+          "id": "governance-institutions-policy-lifecycle-atlas",
+          "path": "knowledge/politics/governance-institutions-policy-lifecycle-atlas.json",
+          "kind": "neutral governance institutions and policy-lifecycle atlas"
         }
       ]
     },
@@ -1220,7 +1265,7 @@
         "here",
         "up"
       ],
-      "primary_file_count": 3,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "id": "gold-indexed-sovereign-bond-model",
@@ -1236,6 +1281,16 @@
           "id": "tim-dooley-inflation-ledger",
           "path": "knowledge/economics/tim-dooley-inflation-ledger.md",
           "kind": "room holding"
+        },
+        {
+          "id": "stock-flow-obligation-network-atlas",
+          "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+          "kind": "stock-flow-balance-sheet and obligation network grammar"
+        },
+        {
+          "id": "public-finance-fiscal-capacity-atlas",
+          "path": "knowledge/economics/public-finance-fiscal-capacity-atlas.json",
+          "kind": "government balance-sheet and fiscal-capacity atlas"
         }
       ]
     },
@@ -1315,7 +1370,7 @@
         "across",
         "here"
       ],
-      "primary_file_count": 4,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "id": "greater-israel-covenant-land-tikkun-atlas",
@@ -1336,6 +1391,16 @@
           "id": "operation-rising-lion-tim-window-2025",
           "path": "knowledge/geopolitics/operation-rising-lion-tim-window-2025.json",
           "kind": "room holding"
+        },
+        {
+          "id": "geography-place-state-boundary-atlas",
+          "path": "knowledge/world/geography-place-state-boundary-atlas.json",
+          "kind": "neutral geographic object and boundary atlas"
+        },
+        {
+          "id": "country-capability-dependency-atlas",
+          "path": "knowledge/world/country-capability-dependency-atlas.json",
+          "kind": "country capability dependency and complementarity atlas"
         }
       ]
     },
@@ -1364,12 +1429,22 @@
         "across",
         "out"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "id": "digital-witness-livestream-liturgy",
           "path": "knowledge/culture/digital-witness-livestream-liturgy.json",
           "kind": "room holding"
+        },
+        {
+          "id": "platform-mechanics-atlas",
+          "path": "knowledge/culture/platform-mechanics-atlas.json",
+          "kind": "platform mediation and mechanics atlas"
+        },
+        {
+          "id": "platform-governance-portability-atlas",
+          "path": "knowledge/culture/platform-governance-portability-atlas.json",
+          "kind": "platform governance dependency and portability atlas"
         }
       ]
     },
@@ -1450,12 +1525,22 @@
         "across",
         "out"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 3,
       "featured_holdings": [
         {
           "id": "digital-memory-forgetting-restoration-atlas",
           "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
           "kind": "room holding"
+        },
+        {
+          "id": "information-ecology-mechanics-atlas",
+          "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
+          "kind": "attention, memory and correction mechanics atlas"
+        },
+        {
+          "id": "information-correction-memory-repair-atlas",
+          "path": "knowledge/culture/information-correction-memory-repair-atlas.json",
+          "kind": "correction propagation and memory repair atlas"
         }
       ]
     },

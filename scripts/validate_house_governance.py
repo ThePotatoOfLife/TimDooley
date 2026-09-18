@@ -31,6 +31,7 @@ PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json
 LAYER_TERRAIN_ATLAS=ROOT/'data/house/layer-terrain-regime-atlas.json'
 PLACEMENT_MATRIX=ROOT/'data/house/placement-matrix.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
+SPECIALIST_SUBVIEWS=ROOT/'data/house/specialist-subviews.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
 TOPOLOGY_CONTEXT_JS=ROOT/'app/topology-context.js'
@@ -229,6 +230,35 @@ def validate_surfaces(errors,rooms):
     validate_works_reader(errors); validate_home_corridor(errors); validate_builder_authority(errors)
     return p
 
+
+
+def validate_specialist_subviews(errors,surfaces):
+    data=load(SPECIALIST_SUBVIEWS,errors)
+    if not data: return
+    surface_ids={x.get('id') for x in surfaces.get('surfaces',[]) if isinstance(x,dict) and x.get('id')}
+    subrooms=load(SUBROOMS,errors)
+    room_ids={x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict) and x.get('id')}
+    ids=[]; routes=[]
+    for row in data.get('records',[]):
+        if not isinstance(row,dict):
+            errors.append('specialist subview record must be object'); continue
+        sid=row.get('id'); route=row.get('route'); parent=row.get('parent_surface_id')
+        ids.append(sid); routes.append(route)
+        if not sid or not isinstance(sid,str): errors.append('specialist subview missing id')
+        if not route or not str(route).startswith('/'): errors.append(f'specialist subview {sid} invalid route')
+        if parent not in surface_ids: errors.append(f'specialist subview {sid} unknown parent surface {parent}')
+        if row.get('classification') not in {'living-specialist','historical-source','generated-view','compatibility','duplicate-candidate'}:
+            errors.append(f'specialist subview {sid} invalid classification')
+        for rid in row.get('room_ids',[]):
+            if rid not in room_ids: errors.append(f'specialist subview {sid} unknown nested Room {rid}')
+        source=ROOT/str(route).strip('/')/'index.html' if str(route).endswith('/') else ROOT/str(route).lstrip('/')
+        if not source.exists(): errors.append(f'specialist subview {sid} missing source route {route}')
+        for owner in row.get('current_owner_refs',[]):
+            if not (ROOT/owner).exists(): errors.append(f'specialist subview {sid} missing current owner ref {owner}')
+    if len(ids)!=len(set(ids)): errors.append('specialist subview ids must be unique')
+    if len(routes)!=len(set(routes)): errors.append('specialist subview routes must be unique')
+    if set(routes) & {x.get('canonical_route') for x in surfaces.get('surfaces',[]) if isinstance(x,dict)}:
+        errors.append('specialist subview route must not duplicate a main public surface route')
 
 def validate_concept_topology(errors,rooms,surfaces):
     data=load(CONCEPT_TOPOLOGY,errors); sch=load(CONCEPT_TOPOLOGY_SCHEMA,errors)
@@ -627,8 +657,7 @@ def validate_placement_matrix(errors):
     if data.get('output_contract',{}).get('unresolved_destination')!='research-lab/open-questions': errors.append('unresolved placements must route to Research Lab/Open Questions')
 
 
-def validate_project_center(errors)
-    validate_crosscutting_lenses(errors):
+def validate_project_center(errors):
     data=load(PROJECT_CENTER,errors)
     if not data: return
     centers=data.get('center_distinctions',{})
@@ -763,6 +792,7 @@ def main():
     errors=[]
     rooms=validate_rooms(errors)
     surfaces=validate_surfaces(errors,rooms)
+    validate_specialist_subviews(errors,surfaces)
     validate_concept_topology(errors,rooms,surfaces)
     validate_project_center(errors)
     validate_symbolic_planes(errors,rooms)

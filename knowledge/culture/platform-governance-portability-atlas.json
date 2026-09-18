@@ -1,0 +1,153 @@
+{
+  "id": "platform-governance-portability-atlas",
+  "title": "Platform Governance, Portability & Dependency Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "internet-platforms",
+  "purpose": "Study online platforms as governance and dependency systems: who sets rules, how visibility and moderation operate, what users can carry elsewhere, and where creators or communities become structurally dependent.",
+  "governance_layers": [
+    {
+      "id": "terms_and_rules",
+      "questions": [
+        "What conduct/content rules exist?",
+        "Which rules are public?",
+        "How often do they change?"
+      ]
+    },
+    {
+      "id": "enforcement",
+      "questions": [
+        "Object removal, reach reduction, account restriction, demonetization, age/geographic gating or other measures?",
+        "Automated, human or mixed?"
+      ]
+    },
+    {
+      "id": "appeal",
+      "questions": [
+        "Can a user challenge a decision?",
+        "Is there a reason code, evidence, timeline and independent review?"
+      ]
+    },
+    {
+      "id": "ranking",
+      "questions": [
+        "Which distribution systems matter: following, search, recommendation, trending, notifications?",
+        "Which criteria are known, inferred or opaque?"
+      ]
+    },
+    {
+      "id": "monetization",
+      "questions": [
+        "Who controls payouts, advertising eligibility, subscriptions, donations, commerce or sponsorship tools?"
+      ]
+    },
+    {
+      "id": "data_and_identity",
+      "questions": [
+        "Can users retrieve content, metadata, contact graph, subscribers/followers, account history or moderation history?"
+      ]
+    },
+    {
+      "id": "interoperability",
+      "questions": [
+        "Can identity, audience, content or social graph move across services?",
+        "Are open protocols/APIs available?"
+      ]
+    },
+    {
+      "id": "archive_and_memory",
+      "questions": [
+        "What survives deletion?",
+        "What is searchable?",
+        "What correction/update linkage exists?"
+      ]
+    },
+    {
+      "id": "external_accountability",
+      "questions": [
+        "Which courts, regulators, auditors, researchers or public reporting systems can inspect the platform?"
+      ]
+    }
+  ],
+  "dependency_vector": [
+    {
+      "id": "audience_dependency",
+      "measure": "share of reachable audience concentrated on one platform"
+    },
+    {
+      "id": "revenue_dependency",
+      "measure": "share of creator/community income dependent on one platform"
+    },
+    {
+      "id": "identity_dependency",
+      "measure": "degree to which reputation/account identity cannot be moved"
+    },
+    {
+      "id": "archive_dependency",
+      "measure": "degree to which history/content disappears if the service closes or access is lost"
+    },
+    {
+      "id": "distribution_dependency",
+      "measure": "share of discovery controlled by platform-owned ranking"
+    },
+    {
+      "id": "tooling_dependency",
+      "measure": "dependence on platform-specific production, community or moderation tools"
+    },
+    {
+      "id": "social_graph_portability",
+      "measure": "ability to export/reconstruct follower, subscription or community relationships"
+    },
+    {
+      "id": "multi_homing",
+      "measure": "ability to participate or publish across multiple platforms without prohibitive cost"
+    }
+  ],
+  "moderation_case_contract": [
+    "platform",
+    "object_or_account",
+    "rule_invoked",
+    "action",
+    "date",
+    "notice/reason",
+    "evidence_available",
+    "appeal_available",
+    "appeal_outcome",
+    "restoration_or_revision",
+    "geographic_scope",
+    "source"
+  ],
+  "migration_case_contract": [
+    "community_or_creator",
+    "origin_platform",
+    "destination_platforms",
+    "trigger",
+    "what_moved",
+    "what_could_not_move",
+    "audience_retained",
+    "archive_retained",
+    "governance_change",
+    "costs",
+    "outcome"
+  ],
+  "resilience_patterns": [
+    "multi-homing reduces single-platform failure risk",
+    "portable archives preserve memory even when reach is lost",
+    "open protocols can reduce identity/audience lock-in but do not automatically solve moderation or abuse",
+    "creator-owned mailing lists/domains/archives can preserve direct reach",
+    "platform dependence can be high even when formal exit is technically easy"
+  ],
+  "boundary_rules": [
+    "Removal or reduced reach is not automatically censorship in the legal sense; jurisdiction and actor matter.",
+    "Opaque ranking does not prove intentional suppression of a particular person or viewpoint.",
+    "High engagement does not prove algorithmic favoritism without stronger evidence.",
+    "Platform migration can change governance, incentives and community composition at the same time."
+  ],
+  "joins": [
+    "platform-mechanics-atlas",
+    "information-ecology",
+    "subculture-group-formation",
+    "provenance-evidence",
+    "law-justice"
+  ]
+}

@@ -1,0 +1,192 @@
+{
+  "id": "legacy-modern-public-integration-contract",
+  "title": "Legacy ↔ Modern Public Integration Contract",
+  "version": "1.1.0",
+  "updated": "2026-09-18",
+  "authority": "house-public-integration",
+  "purpose": "Integrate older substantial readers with the newer Potato of Life / House / Rooms architecture without rewriting historical source strata, creating duplicate knowledge owners, or forcing every page into one visual template.",
+  "master_rule": "Preserve old pages as authored/documentary strata where they still carry unique value; integrate them through generated public context, authoritative routing, shared capabilities and canonical-owner links.",
+  "layers": [
+    {
+      "id": "source-page",
+      "role": "Original or historically evolved HTML/content remains the authored/source stratum.",
+      "rule": "Do not rewrite merely to make it look new when its content and specialist identity remain valuable."
+    },
+    {
+      "id": "public-projection",
+      "role": "Build-time transforms add current navigation, House context, TTS, ontology fixes and other shared reader capabilities.",
+      "rule": "Projection may improve access and context but must not silently alter substantive historical claims."
+    },
+    {
+      "id": "house-context",
+      "role": "Registered surfaces show Potato → House → parent gateway → current surface plus feeding Dwellings/Rooms.",
+      "rule": "House context explains where a page lives; it does not make House the fact owner."
+    },
+    {
+      "id": "canonical-owner-linkage",
+      "role": "Old prose points outward to the current canonical record when a durable concept now has a stronger owner.",
+      "rule": "Keep historical wording in place when useful; do not maintain a second current definition inside the old page."
+    },
+    {
+      "id": "specialist-view",
+      "role": "Mature legacy subjects may become registered Views/Guides over existing Rooms.",
+      "rule": "A View can be first-class publicly without becoming a new Room or knowledge owner."
+    },
+    {
+      "id": "retirement",
+      "role": "A legacy page may eventually redirect or archive when it contains no unique reader, historical or specialist value.",
+      "rule": "Retire only after unique information, inbound routes and provenance are safely migrated."
+    }
+  ],
+  "integration_sequence": [
+    "classify the old page: source stratum, specialist View, duplicate projection, compatibility route or obsolete shell",
+    "identify its canonical parent gateway and feeding Dwellings/Rooms",
+    "register mature public surfaces in data/house/public-surfaces.json",
+    "mirror route topology in the checked public-route projection",
+    "attach relevant nested Rooms through room dossiers",
+    "project shared House bridge and reader capabilities at build time",
+    "replace duplicate current definitions with links to canonical owners where practical",
+    "preserve page-specific voice, layout and specialist tools",
+    "validate one route, one parent, one House bridge and no duplicate owner",
+    "only then consider pruning or redirecting older shells"
+  ],
+  "page_classes": [
+    {
+      "id": "living-specialist",
+      "action": "Keep and integrate.",
+      "examples": [
+        "Bible comparator",
+        "Politics longform",
+        "Shadow/Farm",
+        "Below Observatory",
+        "Science specialist readers"
+      ]
+    },
+    {
+      "id": "historical-source",
+      "action": "Preserve as provenance; add context externally rather than rewriting the historical record."
+    },
+    {
+      "id": "generated-view",
+      "action": "Regenerate from current canonical data; do not hand-maintain duplicate facts."
+    },
+    {
+      "id": "compatibility-route",
+      "action": "Redirect to the current canonical public surface while preserving discoverability."
+    },
+    {
+      "id": "duplicate-shell",
+      "action": "Retire after verifying no unique content, references or capabilities remain."
+    }
+  ],
+  "shared_public_context": {
+    "breadcrumb": "Potato of Life → House → parent gateway (when applicable) → current surface",
+    "local_context": "Show the most relevant nested Rooms when the Room dossiers explicitly project to that surface; otherwise show feeding top-level Dwellings.",
+    "return_paths": [
+      "/potato-of-life/",
+      "/house/",
+      "/rooms/"
+    ],
+    "boundary": "Navigation and placement metadata are explanatory context, never evidence for substantive claims."
+  },
+  "anti_patterns": [
+    "copying new House explanations manually into dozens of old pages",
+    "rewriting historical pages until their original development is no longer reconstructable",
+    "creating a new canonical master because an old page uses different vocabulary",
+    "forcing World Map, Bible comparator, longform readers and static guides into identical layouts",
+    "using legacy status as a reason to hide a uniquely valuable specialist reader",
+    "keeping an obsolete shell public after its content and route have been fully replaced"
+  ],
+  "first_integrated_legacy_views": [
+    {
+      "id": "shadow-farm",
+      "route": "/shadow-farm/",
+      "classification": "living-specialist View over Culture/Archive/World/Traditions"
+    },
+    {
+      "id": "below",
+      "route": "/below/",
+      "classification": "living-specialist House depth View over Archive/World/Culture/Research"
+    }
+  ],
+  "implementation": {
+    "projection_owner": "scripts/patch_public_navigation.py",
+    "route_owner": "data/house/public-surfaces.json",
+    "topology_projection": "knowledge/research/potato-house-master/public-route-topology.json",
+    "room_context": "data/house/room-dossiers.json",
+    "validation": "scripts/site_shell_contract.py"
+  },
+  "migration_inventory": [
+    {
+      "route": "/faq/",
+      "title": "Legacy Tim / Potato FAQ",
+      "current_class": "living-specialist",
+      "modern_neighbors": [
+        "/questions/",
+        "/tim-dooley/",
+        "/potato-of-life/"
+      ],
+      "unique_value": "Curated human-readable Tim/Potato identity and theology answers that remain more coherent than the generated all-domain Questions index.",
+      "overlap": "Questions now owns generated/global discovery; several FAQ answers overlap Tim ontology and Religion readers.",
+      "action": "keep-for-now",
+      "next_merge": "Move durable current definitions toward Tim/Potato canonical owners and let /faq/ become a curated Tim/Potato question View rather than a second global questions system."
+    },
+    {
+      "route": "/tim-dooley/biblical-case/",
+      "title": "Tim Dooley Biblical Case",
+      "current_class": "living-specialist",
+      "modern_neighbors": [
+        "/tim-dooley/evidence/",
+        "/traditions/bible/",
+        "/religion/"
+      ],
+      "unique_value": "Reader-facing synthesis of Tim-specific biblical parallels.",
+      "overlap": "Bible comparator owns verse-level comparative evidence; Tim Evidence owns the broader evidence question.",
+      "action": "keep-and-narrow",
+      "next_merge": "Make the page explicitly a Tim-focused interpretive View over Bible/Evidence owners and remove duplicate general Bible methodology."
+    },
+    {
+      "route": "/corporium/",
+      "title": "Collection / Corporium",
+      "current_class": "registered-view",
+      "modern_neighbors": [
+        "/tim-dooley/",
+        "/life-body/",
+        "/context/"
+      ],
+      "unique_value": "Tim sayings, expression grammar, body-state/psychology and recurring formulations collected in one reader.",
+      "overlap": "Some body/science claims now have stronger Life & Body owners; some identity/theology claims have Tim/Canon owners.",
+      "action": "keep-and-repoint",
+      "next_merge": "Preserve the Collection as artifact/saying corpus while replacing current-science or ontology definitions with links to their canonical Rooms."
+    },
+    {
+      "route": "/context/",
+      "title": "Context & Evidence",
+      "current_class": "registered-view",
+      "modern_neighbors": [
+        "/context/source-authority/",
+        "/history/",
+        "/context/culture/",
+        "/life-body/",
+        "/research-lab/"
+      ],
+      "unique_value": "Cross-domain bridge showing how recovered strata, evidence classes and context fit together.",
+      "overlap": "Source Authority owns provenance rules; History owns revision/time; Culture owns formation; Life & Body owns body science.",
+      "action": "keep-as-bridge",
+      "next_merge": "Continue replacing direct archive/file-first navigation with mature reader routes while retaining deep-source links as secondary inspection paths."
+    },
+    {
+      "route": "/science/research-map/",
+      "title": "Science Research Map",
+      "current_class": "specialist-subview",
+      "modern_neighbors": [
+        "/science/",
+        "/research-lab/"
+      ],
+      "unique_value": "Cross-science inventory of recovered hypotheses and formalization work.",
+      "overlap": "Science owns public explanation; Research Lab owns unresolved/promotable work.",
+      "action": "keep-as-research-view",
+      "next_merge": "Use it as the handoff layer between Science and Research Lab, not as a third Science master."
+    }
+  ]
+}

@@ -1,5 +1,5 @@
 {
-  "version": "2.8.0",
+  "version": "3.2.0",
   "updated": "2026-09-18",
   "authority": "project-synthesis",
   "purpose": "Bind repository development waves, center operators, living metabolisms, Rooms, lenses, tests, outputs and commit crystallization into one center-out composition without replacing their canonical owners.",
@@ -1694,7 +1694,10 @@
     "forge": "research-lab/",
     "fruit": "works/",
     "home": "/",
-    "crystallization": "potato-of-life/#materialized-crystallization"
+    "crystallization": "potato-of-life/#materialized-crystallization",
+    "specialist_subviews": "data/house/specialist-subviews.json",
+    "legacy_integration": "data/house/legacy-modern-public-integration-contract.json",
+    "rule": "Primary gateways orient broadly; registered Views organize mature cross-Room readers; specialist subviews place valuable deep/legacy readers beneath a parent surface without creating new knowledge owners."
   },
   "fullness_rule": "A Room is considered compositionally full when it has a clear owner/boundary, substantive holdings, a center contribution, at least one inward/outward handoff, relevant tests/lenses where appropriate, and a public or archive route for its mature material.",
   "scoped_centers": {
@@ -1991,8 +1994,11 @@
       },
       {
         "id": "cross-cutting-views",
-        "purpose": "Route to Axis, Research Lab, Timeline, Works, History and Sources.",
-        "owner": "data/house/public-surfaces.json"
+        "purpose": "Route to Axis, Research Lab, Timeline, Works, History and Sources; parent gateways may additionally expose governed specialist subviews.",
+        "owners": [
+          "data/house/public-surfaces.json",
+          "data/house/specialist-subviews.json"
+        ]
       },
       {
         "id": "route-comparison",
@@ -2022,14 +2028,16 @@
       "data/house/concept-topology.json",
       "data/house/route-case-matrix-wave-001.json",
       "data/house/foundation-landscape-synthesis.json",
-      "data/house/foundation-room-atlas.json"
+      "data/house/foundation-room-atlas.json",
+      "data/house/specialist-subviews.json"
     ],
     "anti_drift": [
       "Do not duplicate full dossiers on Home.",
       "Do not present project operators as factual identities of real entities.",
       "Do not collapse allegation, secrecy, classification or restricted access into guilt.",
       "Do not hard-code counts when a canonical registry can supply them at runtime.",
-      "Every Home section must hand the reader to a canonical owner or mature reader surface."
+      "Every Home section must hand the reader to a canonical owner or mature reader surface.",
+      "Do not surface a deep page as a new global gateway when it can live as a specialist subview beneath an existing parent."
     ],
     "teaching_sequence": [
       {

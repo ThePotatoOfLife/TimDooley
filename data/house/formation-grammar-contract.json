@@ -1,7 +1,7 @@
 {
   "id": "formation-grammar-contract",
   "title": "Formation Grammar — From Interaction to Durable Social Form",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "status": "canonical cross-domain social formation contract",
   "purpose": "Unify Culture formation, Foundation reproduction and Below/high-control reproduction analysis without turning structural similarity into moral equivalence.",
@@ -143,5 +143,277 @@
     "below": "knowledge/core/below-intelligence-shadow-observatory.json",
     "entity_dossiers": "data/house/entity-dossiers-wave-001.json",
     "public_reader": "context/culture/"
+  },
+  "formation_state_model": [
+    {
+      "id": "signal-encounter",
+      "meaning": "People, units or ideas come into contact before a durable shared form exists.",
+      "observables": [
+        "first contact or founding event",
+        "initial participants",
+        "shared problem/opportunity",
+        "place or medium of encounter"
+      ],
+      "exit_test": "Can the encounter be dated or bounded well enough to distinguish origin from later mythology?"
+    },
+    {
+      "id": "repeated-practice",
+      "meaning": "Interaction becomes patterned enough that participants can anticipate what happens next.",
+      "observables": [
+        "repetition cadence",
+        "shared practices",
+        "recurring venues/channels",
+        "recognizable vocabulary"
+      ],
+      "exit_test": "Would the pattern continue if the original event were not repeated verbatim?"
+    },
+    {
+      "id": "bounded-identity",
+      "meaning": "A recognizable inside/outside, role, scene, membership or affiliation forms.",
+      "observables": [
+        "self-description",
+        "role vocabulary",
+        "membership or participation boundary",
+        "shared memory",
+        "recognizable symbols"
+      ],
+      "exit_test": "Can insiders and outsiders identify the formation without relying on one person?"
+    },
+    {
+      "id": "coordinated-form",
+      "meaning": "Rules, roles, resources and communication coordinate action beyond spontaneous interaction.",
+      "observables": [
+        "decision procedure",
+        "resource flow",
+        "role differentiation",
+        "communication infrastructure",
+        "conflict/correction process"
+      ],
+      "exit_test": "Can coordinated action occur without everyone negotiating from zero each time?"
+    },
+    {
+      "id": "durable-institution",
+      "meaning": "The formation persists through offices, standards, archives, property, legal forms or stable procedures.",
+      "observables": [
+        "formal organization",
+        "stable infrastructure",
+        "archives/records",
+        "repeatable procedures",
+        "external counterparties"
+      ],
+      "exit_test": "Does the system retain recognizable continuity across participant turnover?"
+    },
+    {
+      "id": "reproduced-network",
+      "meaning": "The formation can create new competent participants, units, chapters, implementations or successors.",
+      "observables": [
+        "training/socialization",
+        "succession",
+        "branching",
+        "replication of practices",
+        "transfer of authority/capability"
+      ],
+      "exit_test": "Can the formation reproduce capacity rather than only preserve memory?"
+    },
+    {
+      "id": "branch-refoundation",
+      "meaning": "A fork, denomination, chapter, successor, merger or redesign preserves some invariants while changing others.",
+      "observables": [
+        "declared break or reform",
+        "retained canon/standards",
+        "changed governance",
+        "new place/name/legal form",
+        "successor claims"
+      ],
+      "exit_test": "Can preserved invariants and changed mechanisms be named separately?"
+    },
+    {
+      "id": "decline-archive-memory",
+      "meaning": "Active reproduction weakens or ends while artifacts, institutions, stories or descendant practices remain.",
+      "observables": [
+        "membership/participation decline",
+        "institutional closure",
+        "archive survival",
+        "revival attempts",
+        "memory without active capacity"
+      ],
+      "exit_test": "Is the object still a living formation, an archive, or both?"
+    }
+  ],
+  "transition_tests": [
+    {
+      "from": "signal-encounter",
+      "to": "repeated-practice",
+      "test": "Look for recurrence across time, participants or places; one dramatic event is not yet a culture or institution."
+    },
+    {
+      "from": "repeated-practice",
+      "to": "bounded-identity",
+      "test": "Look for self-recognition, role language, shared memory or a boundary that makes the pattern socially legible."
+    },
+    {
+      "from": "bounded-identity",
+      "to": "coordinated-form",
+      "test": "Look for rules, decision rights, communication and resources that reduce the need for ad hoc coordination."
+    },
+    {
+      "from": "coordinated-form",
+      "to": "durable-institution",
+      "test": "Look for persistence mechanisms such as offices, standards, records, property, legal personality or durable infrastructure."
+    },
+    {
+      "from": "durable-institution",
+      "to": "reproduced-network",
+      "test": "Look for training, succession, chaptering, licensing, schooling, implementation or another mechanism that creates new capacity."
+    },
+    {
+      "from": "reproduced-network",
+      "to": "branch-refoundation",
+      "test": "Identify what is inherited, what is changed, who authorizes the change and whether the successor can reproduce independently."
+    },
+    {
+      "from": "any",
+      "to": "decline-archive-memory",
+      "test": "Separate loss of current capacity from persistence of artifacts, reputation, law, doctrine, infrastructure or descendant practice."
+    }
+  ],
+  "cross_domain_examples": [
+    {
+      "formation": "open-source software project",
+      "structural_path": [
+        "contribution",
+        "maintainer norms",
+        "governance",
+        "release infrastructure",
+        "documentation",
+        "new maintainers/forks"
+      ],
+      "diagnostic_focus": [
+        "contribution rights",
+        "review/correction",
+        "bus factor",
+        "forkability",
+        "release succession"
+      ]
+    },
+    {
+      "formation": "religious congregation or denomination",
+      "structural_path": [
+        "gathering",
+        "ritual/practice",
+        "membership/identity",
+        "office/canon",
+        "institution",
+        "training/ordination/branching"
+      ],
+      "diagnostic_focus": [
+        "authority",
+        "teaching transmission",
+        "property/resources",
+        "dissent/exit",
+        "succession"
+      ],
+      "boundary": "Religious intensity or unusual belief is not evidence of coercion or illegality."
+    },
+    {
+      "formation": "fandom or scene",
+      "structural_path": [
+        "shared object",
+        "repeated participation",
+        "insider vocabulary",
+        "events/archives",
+        "moderation/curation",
+        "spin-offs or institutions"
+      ],
+      "diagnostic_focus": [
+        "participation depth",
+        "boundary permeability",
+        "archive memory",
+        "platform dependence",
+        "creator/audience distinction"
+      ]
+    },
+    {
+      "formation": "scientific or professional society",
+      "structural_path": [
+        "shared field",
+        "meetings/publications",
+        "membership",
+        "standards/offices",
+        "institution",
+        "training/chapters"
+      ],
+      "diagnostic_focus": [
+        "credentialing",
+        "peer correction",
+        "governance",
+        "funding",
+        "succession",
+        "external accountability"
+      ]
+    },
+    {
+      "formation": "commercial firm",
+      "structural_path": [
+        "venture",
+        "roles/contracts",
+        "process",
+        "capital/infrastructure",
+        "organization",
+        "hiring/training/expansion"
+      ],
+      "diagnostic_focus": [
+        "ownership/control",
+        "resource concentration",
+        "labor dependency",
+        "accountability",
+        "succession",
+        "externalities"
+      ]
+    },
+    {
+      "formation": "high-control or illicit network",
+      "structural_path": [
+        "recruitment",
+        "identity/dependency",
+        "rules/secrecy",
+        "resource extraction",
+        "enforcement",
+        "succession/branching"
+      ],
+      "diagnostic_focus": [
+        "coercion",
+        "deception",
+        "exit cost",
+        "victimization",
+        "legal status",
+        "counterevidence",
+        "outside oversight"
+      ],
+      "boundary": "Structure alone does not establish harm or criminality; those require separate evidence."
+    }
+  ],
+  "completed_analysis_contract": {
+    "required_outputs": [
+      "origin or earliest recoverable state",
+      "current state and continuity mode",
+      "state-transition timeline",
+      "role/authority/resource map",
+      "reproduction and succession mechanism",
+      "magnitude vector with dated denominators where available",
+      "geography or virtual/distributed geometry",
+      "source/provenance roots and counterevidence",
+      "harm/benefit/externality evidence kept separate from structure",
+      "exit/correction/accountability profile",
+      "branch/refoundation/decline paths"
+    ],
+    "anti_shortcuts": [
+      "Do not infer morality from cohesion.",
+      "Do not infer criminality from secrecy.",
+      "Do not infer truth from institutionalization.",
+      "Do not infer popularity from prestige.",
+      "Do not infer control from mere influence.",
+      "Do not infer one continuous entity when a refoundation materially changes governance or purpose."
+    ]
   }
 }

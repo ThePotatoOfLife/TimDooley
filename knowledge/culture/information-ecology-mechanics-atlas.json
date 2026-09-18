@@ -1,0 +1,155 @@
+{
+  "id": "information-ecology-mechanics-atlas",
+  "title": "Information Ecology Mechanics — Attention, Repetition, Memory, Correction and Forgetting",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "information-ecology",
+  "purpose": "Describe how information survives, spreads, mutates, concentrates, disappears and becomes collective memory across people, platforms, institutions and archives.",
+  "unit_of_analysis": "A claim/object plus its copies, framings, audiences, corrections, sources and memory traces.",
+  "flow_model": "source → encoding → channel → exposure → interpretation → repetition/remix → archive → retrieval → correction/revision → memory or forgetting",
+  "quantities": [
+    {
+      "id": "exposure",
+      "meaning": "How many opportunities existed for an audience to encounter the object/claim?",
+      "caution": "Usually platform-specific and not equivalent to unique people."
+    },
+    {
+      "id": "adoption",
+      "meaning": "How many people or institutions repeat, endorse, act on or incorporate it?",
+      "caution": "Repetition can be criticism rather than endorsement."
+    },
+    {
+      "id": "source_independence",
+      "meaning": "How many apparently separate repetitions come from genuinely independent provenance roots?"
+    },
+    {
+      "id": "context_retention",
+      "meaning": "How much origin, sequence, date and qualification survive through recirculation?"
+    },
+    {
+      "id": "correction_reach",
+      "meaning": "How far corrective material travels relative to the original claim?"
+    },
+    {
+      "id": "retrievability",
+      "meaning": "How likely a future searcher is to find the object and its provenance/correction."
+    },
+    {
+      "id": "half_life",
+      "meaning": "The time over which attention or retrieval decays in a defined environment.",
+      "caution": "Empirical fit required; not assumed to be exponential."
+    },
+    {
+      "id": "memory_concentration",
+      "meaning": "How dependent durable memory is on a few platforms, archives or institutions."
+    }
+  ],
+  "mechanisms": [
+    {
+      "id": "derivative-corroboration",
+      "description": "Many visible sources repeat one root source, creating an illusion of independent confirmation.",
+      "test": "Cluster citations/links/textual lineage before counting sources."
+    },
+    {
+      "id": "repetition-familiarity",
+      "description": "Repeated exposure can make a claim feel familiar regardless of truth.",
+      "test": "Separate frequency from evidence quality."
+    },
+    {
+      "id": "context-erosion",
+      "description": "Quotes, clips and summaries may retain the memorable fragment while losing timing, trigger, scope or uncertainty.",
+      "test": "Compare each derivative object with the nearest recoverable source context."
+    },
+    {
+      "id": "correction-asymmetry",
+      "description": "A correction may reach fewer people or travel through different channels than the original.",
+      "test": "Measure audience overlap and linkage where possible."
+    },
+    {
+      "id": "archive-lock-in",
+      "description": "Searchable archives can stabilize an old representation long after the underlying status changes.",
+      "test": "Check whether later corrections, dismissals or revisions are linked and comparably discoverable."
+    },
+    {
+      "id": "attention-extraction",
+      "description": "Conflict, novelty or target production can become a repeatable source of content/status/revenue.",
+      "test": "Trace incentives and outputs; do not infer motive solely from high engagement."
+    },
+    {
+      "id": "collective-forgetting",
+      "description": "Material can disappear through deletion, link rot, platform closure, inaccessible formats or loss of social relevance.",
+      "test": "Distinguish absence from nonexistence."
+    },
+    {
+      "id": "memory-repair",
+      "description": "Provenance restoration, contextual annotation and correction linkage can improve future interpretation without deleting history.",
+      "test": "Preserve original state plus dated repair."
+    }
+  ],
+  "minimal_claim_graph": {
+    "nodes": [
+      "source",
+      "claim",
+      "artifact",
+      "copy",
+      "actor",
+      "platform",
+      "institution",
+      "correction",
+      "classification",
+      "archive"
+    ],
+    "edges": [
+      "asserts",
+      "quotes",
+      "copies",
+      "links_to",
+      "amplifies",
+      "contests",
+      "corrects",
+      "classifies",
+      "archives",
+      "removes",
+      "reinstates"
+    ],
+    "edge_fields": [
+      "date",
+      "direction",
+      "source_ref",
+      "independent_or_derivative",
+      "context_retention",
+      "status"
+    ]
+  },
+  "ecology_states": [
+    {
+      "id": "healthy-contested",
+      "description": "Multiple sources and interpretations remain visible, correction is possible, provenance is recoverable."
+    },
+    {
+      "id": "fragmented",
+      "description": "Information is distributed across incompatible archives or communities with weak common context."
+    },
+    {
+      "id": "monoculture",
+      "description": "One interpretation/source dominates retrieval despite possible alternatives."
+    },
+    {
+      "id": "swamp-like",
+      "description": "High repetition, low provenance clarity, role lock, conflict incentives and weak correction combine.",
+      "boundary": "Project terrain description; not proof of malicious coordination."
+    },
+    {
+      "id": "restored",
+      "description": "Source lineage, context and corrections become easier to retrieve while historical versions remain inspectable."
+    }
+  ],
+  "joins": [
+    "internet-platforms",
+    "provenance-evidence",
+    "memory-recovery",
+    "subculture-group-formation",
+    "culture-ontology",
+    "below-intelligence-shadow-observatory"
+  ]
+}
