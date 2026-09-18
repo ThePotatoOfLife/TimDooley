@@ -1,0 +1,76 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "foundation-integration-contract",
+  "purpose": "One integration map for Foundation across ontology, domain schemas, graph, Rooms, Timeline, archive and public readers.",
+  "owners": {
+    "ontology": "knowledge/core/foundation-rule-law-ontology.json",
+    "reproduction": "knowledge/core/foundation-reproduction-mechanisms-atlas.json",
+    "schema": "data/blueprints/foundation-blueprint.json",
+    "records": [
+      "data/house/foundations-wave-001.json",
+      "data/house/foundations-wave-002.json"
+    ],
+    "timeline": "data/house/foundation-timeline-wave-001.json",
+    "canonical_map": "data/canonical-source-map.json",
+    "graph_bridge": "data/global-graph-bridge.json"
+  },
+  "domain_inheritance": {
+    "country": "data/countries-blueprint.json",
+    "governance": "data/blueprints/governance-state-blueprint.json",
+    "law": "data/blueprints/law-regulation-blueprint.json",
+    "education": "data/blueprints/education-system-blueprint.json",
+    "technology": "data/blueprints/technology-system-blueprint.json",
+    "research": "data/blueprints/research-knowledge-blueprint.json",
+    "culture": "data/blueprints/culture-subculture-blueprint.json",
+    "ownership": "data/blueprints/ownership-control-blueprint.json",
+    "religion": "data/blueprints/religious-foundation-blueprint.json"
+  },
+  "graph_relations": [
+    "founded-by",
+    "constituted-by",
+    "authorized-by",
+    "emerges-from",
+    "reproduces-through",
+    "refounded-by",
+    "branches-from",
+    "supersedes",
+    "preserves-invariant"
+  ],
+  "room_lenses": [
+    "canon-identities",
+    "symbolic-architecture",
+    "chronology-events",
+    "developmental-genealogy",
+    "other-traditions",
+    "politics-governance",
+    "law-justice",
+    "economy-finance",
+    "geography-countries",
+    "internet-platforms",
+    "subculture-group-formation",
+    "research-programmes",
+    "experiments-formalization",
+    "house-architecture"
+  ],
+  "public_routes": {
+    "house": "house/#foundations",
+    "foundation_timeline": "timeline/foundations/",
+    "general_timeline": "timeline/"
+  },
+  "query_examples": [
+    "Which current institutions have been refounded more than once?",
+    "Show systems where authorization and first operation were separated by years.",
+    "Which foundations reproduce primarily through pedagogy rather than law?",
+    "Which current rules descend from a superseded foundation?",
+    "Which branches claim continuity with the same F0 but use different reproduction mechanisms?",
+    "Where did a technical protocol create a new operating Plane?"
+  ],
+  "anti_duplication": [
+    "Domain records retain substantive identity and current facts.",
+    "Foundation records own generative chronology/reproduction, not the whole entity.",
+    "Timeline events are projections of foundation clocks, not new canonical foundation records.",
+    "Graph edges reference Foundation records; they do not duplicate their clock payloads.",
+    "Religious foundation records remain the canonical substantive religious-formation owners and can link to cross-domain Foundation records."
+  ]
+}
