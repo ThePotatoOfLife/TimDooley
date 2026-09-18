@@ -201,6 +201,30 @@ def validate_concept_topology(errors,rooms,surfaces):
     manifestation=by.get('manifestation-field',{})
     if manifestation.get('boundary_regime')=='shell-cube':
         errors.append('Manifestation field must not collapse into Shell/Cube regime')
+    relation_type_ids=[x.get('id') for x in data.get('relation_types',[]) if isinstance(x,dict)]
+    relation_types=set(relation_type_ids)
+    if len(relation_type_ids)!=len(relation_types): errors.append('concept topology relation type ids must be unique')
+    relation_ids=[]; relation_rows=[]
+    for rel in data.get('relations',[]):
+        if not isinstance(rel,dict): continue
+        relation_rows.append(rel); relation_ids.append(rel.get('id'))
+        if rel.get('from') not in by: errors.append(f'relation {rel.get("id")} unknown source concept {rel.get("from")}')
+        if rel.get('to') not in by: errors.append(f'relation {rel.get("id")} unknown target concept {rel.get("to")}')
+        if rel.get('type') not in relation_types: errors.append(f'relation {rel.get("id")} unknown relation type {rel.get("type")}')
+    if len(relation_ids)!=len(set(relation_ids)): errors.append('concept topology relation ids must be unique')
+    required_relations={
+        ('door','source-field','intersection-of'),
+        ('door','manifestation-field','intersection-of'),
+        ('plane','door','sections'),
+        ('cross','door','located-within'),
+        ('ladder','door','orders'),
+        ('root','tree','supports'),
+        ('tree','fruit','differentiates-into'),
+        ('fruit','seed','returns-as'),
+    }
+    actual_relations={(x.get('from'),x.get('to'),x.get('type')) for x in relation_rows}
+    missing_relations=sorted(required_relations-actual_relations)
+    if missing_relations: errors.append('concept topology missing core relations: '+', '.join(map(str,missing_relations)))
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces)

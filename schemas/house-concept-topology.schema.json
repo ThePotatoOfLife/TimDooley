@@ -13,7 +13,9 @@
     "topology_roles",
     "boundary_regimes",
     "rules",
-    "concepts"
+    "concepts",
+    "relation_types",
+    "relations"
   ],
   "properties": {
     "version": {
@@ -132,6 +134,72 @@
             "uniqueItems": true
           },
           "boundary": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "relation_types": {
+      "type": "array",
+      "minItems": 1,
+      "uniqueItems": true,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "label",
+          "directed",
+          "semantics"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "label": {
+            "type": "string"
+          },
+          "directed": {
+            "type": "boolean"
+          },
+          "semantics": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "relations": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id",
+          "from",
+          "to",
+          "type",
+          "description"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "from": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "to": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "type": {
+            "type": "string",
+            "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"
+          },
+          "description": {
             "type": "string"
           }
         }
