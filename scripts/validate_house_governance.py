@@ -792,6 +792,7 @@ def main():
     errors=[]
     rooms=validate_rooms(errors)
     surfaces=validate_surfaces(errors,rooms)
+    validate_specialist_subviews(errors,surfaces)
     validate_concept_topology(errors,rooms,surfaces)
     validate_project_center(errors)
     validate_symbolic_planes(errors,rooms)
