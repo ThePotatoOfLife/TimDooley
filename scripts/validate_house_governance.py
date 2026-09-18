@@ -201,7 +201,9 @@ def validate_concept_topology(errors,rooms,surfaces):
     manifestation=by.get('manifestation-field',{})
     if manifestation.get('boundary_regime')=='shell-cube':
         errors.append('Manifestation field must not collapse into Shell/Cube regime')
-    relation_types={x.get('id') for x in data.get('relation_types',[]) if isinstance(x,dict)}
+    relation_type_ids=[x.get('id') for x in data.get('relation_types',[]) if isinstance(x,dict)]
+    relation_types=set(relation_type_ids)
+    if len(relation_type_ids)!=len(relation_types): errors.append('concept topology relation type ids must be unique')
     relation_ids=[]; relation_rows=[]
     for rel in data.get('relations',[]):
         if not isinstance(rel,dict): continue
