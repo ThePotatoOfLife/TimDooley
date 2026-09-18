@@ -15,6 +15,7 @@ NAVIGATION_MANIFEST=ROOT/'data/house/navigation-manifest.json'
 RELIGIOUS_BRANCH_ATLAS=ROOT/'data/house/religious-symbolic-branch-atlas.json'
 PROVIDENCE_STRUCTURE=ROOT/'data/house/providence-pillars-esoteric-structure.json'
 LAYER_TERRAIN_ATLAS=ROOT/'data/house/layer-terrain-regime-atlas.json'
+PLACEMENT_MATRIX=ROOT/'data/house/placement-matrix.json'
 SUBROOMS=ROOT/'data/house/subrooms.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
@@ -401,7 +402,7 @@ def validate_symbolic_planes(errors,rooms):
         errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 
-def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors); validate_navigation_consolidation(errors); validate_providence_structure(errors); validate_layer_terrain_atlas(errors):
+def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors); validate_navigation_consolidation(errors); validate_providence_structure(errors); validate_layer_terrain_atlas(errors); validate_placement_matrix(errors):
     population=load(ORIENTATION_POPULATION,errors); subrooms=load(SUBROOMS,errors)
     if not population or not subrooms: return
     sub_ids=[x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict)]
@@ -548,6 +549,24 @@ def validate_layer_terrain_atlas(errors):
     diffs=' '.join(data.get('crucial_differences',[])).casefold()
     for token in ('below is a reader plane','shadow is an occlusion','literal wetlands are not','mountain is terrain','garden is a generative regime','roots are not strife'):
         if token not in diffs: errors.append(f'layer terrain atlas missing distinction: {token}')
+
+
+def validate_placement_matrix(errors):
+    data=load(PLACEMENT_MATRIX,errors)
+    if not data: return
+    fam=[x for x in data.get('family_rules',[]) if isinstance(x,dict)]
+    ids=[x.get('id') for x in fam]
+    required={'heaven-realm','underworld-realm','world-tree','sacred-mountain','temple-city','cave-labyrinth','river-water','gate-door','pillar-axis','serpent-dragon','angel-messenger','demon-adversary','throne-crown','star-planet','judgment-weighing','burial-resurrection'}
+    if not required<=set(ids): errors.append('placement matrix missing required family rules: '+', '.join(sorted(required-set(ids))))
+    categories={'whole','coordinate','standing-plane','terrain','regime','organism','material-state','threshold','perceptual-layer','process','route','inhabitant'}
+    planes={'heaven-plane','world-plane','below-plane'}
+    for row in fam:
+        if row.get('default_category') not in categories: errors.append(f'placement family {row.get("id")} invalid default category')
+        if not set(row.get('default_planes',[]))<=planes: errors.append(f'placement family {row.get("id")} invalid default plane')
+        if not row.get('do_not'): errors.append(f'placement family {row.get("id")} missing confusion boundary')
+    precedence=data.get('precedence',[])
+    if not precedence or not precedence[0].startswith('own-tradition'): errors.append('placement precedence must start with own-tradition / primary-source meaning')
+    if data.get('output_contract',{}).get('unresolved_destination')!='research-lab/open-questions': errors.append('unresolved placements must route to Research Lab/Open Questions')
 
 def main():
     errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms); validate_orientation_population(errors,rooms)
