@@ -1,5 +1,5 @@
 {
-  "version": "2.7.0",
+  "version": "2.8.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -6073,6 +6073,26 @@
       "path": "data/house/concrete-revelation-evidence-matrix.json",
       "primary_owner_room_id": "house-architecture",
       "basis": "concrete-revelations-wave-006"
+    },
+    {
+      "path": "data/house/entity-dossier-schema.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "crystallized-entity-dossiers-wave-001"
+    },
+    {
+      "path": "data/house/entity-dossiers-wave-001.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "crystallized-entity-dossiers-wave-001"
+    },
+    {
+      "path": "data/house/trust-infrastructure-comparison.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "crystallized-entity-dossiers-wave-001"
+    },
+    {
+      "path": "knowledge/research/public-trust-infrastructure-synthesis.json",
+      "primary_owner_room_id": "open-questions",
+      "basis": "crystallized-entity-dossiers-wave-001"
     }
   ],
   "curated_unowned_paths": [
