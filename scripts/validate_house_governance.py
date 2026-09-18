@@ -8,6 +8,8 @@ ROOMS=ROOT/'data/house/rooms.json'; ROOM_SCHEMA=ROOT/'schemas/house-room-registr
 SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/house-public-surface-registry.schema.json'
 TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
 HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
+ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
+SUBROOMS=ROOT/'data/house/subrooms.json'
 CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 TOPOLOGY_FIXTURE=ROOT/'data/house/topology-golden-fixture.json'
 TOPOLOGY_CONTEXT_JS=ROOT/'app/topology-context.js'
@@ -392,10 +394,36 @@ def validate_symbolic_planes(errors,rooms):
     if 'does not assert a literal Akashic Record' not in akashic.get('boundary',''):
         errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
+
+def validate_orientation_population(errors,rooms):
+    population=load(ORIENTATION_POPULATION,errors); subrooms=load(SUBROOMS,errors)
+    if not population or not subrooms: return
+    sub_ids=[x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict)]
+    rows=population.get('room_population',[])
+    ids=[x.get('id') for x in rows if isinstance(x,dict)]
+    if ids!=sub_ids:
+        errors.append('orientation population must cover every nested Room exactly in registry order')
+    compass_dirs={'n','ne','e','se','s','sw','w','nw','center','outer','crosscutting'}
+    plane_ids={'heaven-plane','world-plane','below-plane'}
+    zone_ids={'roots','trunk','life-branches','strife-branches','canopy'}
+    for row in rows:
+        if not isinstance(row,dict): continue
+        rid=row.get('id')
+        if row.get('compass_direction') not in compass_dirs: errors.append(f'orientation population {rid} invalid compass direction')
+        if not set(row.get('plane_ids',[]))<=plane_ids: errors.append(f'orientation population {rid} invalid plane')
+        if not set(row.get('tree_zone_ids',[]))<=zone_ids: errors.append(f'orientation population {rid} invalid tree zone')
+        if row.get('visibility') not in {'landmark','room-detail','archive-only'}: errors.append(f'orientation population {rid} invalid visibility')
+    landmark_ids=[x.get('id') for x in population.get('landmarks',[]) if isinstance(x,dict)]
+    if len(landmark_ids)!=len(set(landmark_ids)): errors.append('orientation landmark ids must be unique')
+    if len(population.get('landmarks',[]))>24: errors.append('orientation landmarks should remain sparse; move excess nodes to Room detail or archive-only')
+    rules=' '.join(population.get('rules',[])).casefold()
+    for token in ('do not change knowledge ownership','compass shows landmarks sparingly','remain rooted in their own traditions','not the moral essence'):
+        if token not in rules: errors.append(f'orientation population missing governance rule: {token}')
+
 def main():
-    errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms)
+    errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms); validate_orientation_population(errors,rooms)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, three planes, cardinal compass, reader corridor and route authority converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, three planes, cardinal compass, populated Rooms, reader corridor and route authority converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
