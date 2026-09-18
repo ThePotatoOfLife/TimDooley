@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "authority": "house-topology",
   "room_registry": "data/house/rooms.json",
@@ -556,6 +556,413 @@
             "route": "research-lab/"
           }
         ]
+      }
+    ]
+  },
+  "symbolic_compass": {
+    "status": "canonical orientation projection",
+    "purpose": "Give the three symbolic planes one stable cardinal reading wheel. Direction chooses the kind of question/Room; vertical plane chooses the orientation or depth from which that question is read; distance from center controls specialization. The compass is a navigation projection over the same House, not a new ownership system.",
+    "angular_rule": "The eight cardinal/intercardinal directions stay stable across Heaven, World and Below so readers can change plane without losing subject orientation.",
+    "depth_rule": "Center is Research Lab / unresolved synthesis. Moving toward a Door enters a Dwelling and its nested Rooms. Moving farther outward reaches specialist material and Works/Fruit. Distance is reading depth, not truth rank.",
+    "entity_projection_rule": [
+      "Named gods, spirits, demons, saints, heroes, movements and symbols remain historically rooted in their own traditions, texts and receptions before project comparison.",
+      "One entity may project onto several planes when different historically grounded aspects or receptions are being read; this does not create several entities.",
+      "Comparative resemblance must not be rewritten as historical identity, influence or equivalence without evidence.",
+      "Demonology, esotericism, modern Satanisms, occult subcultures and high-control-group analysis are distinct research categories. Placement near one another never makes them synonyms.",
+      "Potatoverse mappings are a separate project-interpretive relation and do not overwrite a figure's own-tradition meaning."
+    ],
+    "center": {
+      "room_id": "research-lab",
+      "label": "Research Lab",
+      "symbol": "Axis / Forge",
+      "route": "research-lab/",
+      "question": "What remains unresolved, and what must be tested before promotion?",
+      "note": "The center is where cross-Room questions can be held without prematurely forcing them into one tradition, plane or conclusion."
+    },
+    "outer_ring": {
+      "room_id": "works",
+      "label": "Works / Fruit",
+      "symbol": "Outer ring",
+      "route": "works/",
+      "question": "What does the House produce, express or return?",
+      "note": "Works sit at the output edge because writing, music, art and games can grow from any direction without becoming evidence or doctrine automatically."
+    },
+    "directions": [
+      {
+        "id": "n",
+        "bearing": 0,
+        "label": "N",
+        "room_id": "potatoverse-canon",
+        "title": "Potatoverse / Canon",
+        "route": "religion/",
+        "question": "What does the project mean on its own terms?",
+        "subroom_ids": [
+          "canon-identities",
+          "theology-god-language",
+          "symbolic-architecture",
+          "practice-ethics"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Source & integration",
+            "topics": [
+              "Father / Son / Spirit",
+              "House / Heaven / Garden",
+              "North / Crown / orientation",
+              "Tree of Life / return"
+            ]
+          },
+          "world-plane": {
+            "label": "Project self-description",
+            "topics": [
+              "dated canon",
+              "public claims",
+              "practice and ethics",
+              "lived project vocabulary"
+            ]
+          },
+          "below-plane": {
+            "label": "Canon roots & unresolved strata",
+            "topics": [
+              "developmental layers",
+              "buried precedents",
+              "Strife readings",
+              "symbols awaiting repair or clarification"
+            ]
+          }
+        }
+      },
+      {
+        "id": "ne",
+        "bearing": 45,
+        "label": "NE",
+        "room_id": "traditions-texts",
+        "title": "Traditions & Texts",
+        "route": "religion/#traditions-atlas",
+        "question": "What does this mean in its own religious, mythic or textual tradition?",
+        "subroom_ids": [
+          "bible-christianity",
+          "comparative-mythology",
+          "esoteric-sacred-geometry",
+          "other-traditions"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Divine & sacred structures",
+            "topics": [
+              "gods and divine figures",
+              "heavens and sacred mountains",
+              "angels / messengers / salvation",
+              "comparative cosmologies"
+            ],
+            "examples": [
+              "Jesus",
+              "Odin",
+              "Thor",
+              "Zeus",
+              "Baal"
+            ]
+          },
+          "world-plane": {
+            "label": "Historical religion",
+            "topics": [
+              "texts and translation",
+              "ritual and institutions",
+              "historical communities",
+              "reception and material context"
+            ],
+            "examples": [
+              "Christian traditions",
+              "Norse traditions",
+              "Greek traditions",
+              "Canaanite traditions"
+            ]
+          },
+          "below-plane": {
+            "label": "Descent, adversarial & esoteric traditions",
+            "topics": [
+              "underworld and death/descent traditions",
+              "demonologies and adversarial figures",
+              "esoteric and initiatory schools",
+              "polemical reinterpretation and later reception"
+            ],
+            "examples": [
+              "Lucifer reception",
+              "Baphomet reception",
+              "underworld traditions",
+              "demonology"
+            ]
+          }
+        }
+      },
+      {
+        "id": "e",
+        "bearing": 90,
+        "label": "E",
+        "room_id": "science-formal-models",
+        "title": "Science & Formal Models",
+        "route": "science/",
+        "question": "What can be formalized, measured, modeled or tested?",
+        "subroom_ids": [
+          "math-geometry",
+          "physics-cosmology",
+          "systems-dynamics",
+          "model-testing"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Formal integration",
+            "topics": [
+              "geometry of relation",
+              "topology and symmetry",
+              "integration models",
+              "limits of analogy"
+            ]
+          },
+          "world-plane": {
+            "label": "Empirical testing",
+            "topics": [
+              "mathematics",
+              "physics and cosmology",
+              "systems models",
+              "falsifiability and calibration"
+            ]
+          },
+          "below-plane": {
+            "label": "Failure modes & hidden assumptions",
+            "topics": [
+              "model closure",
+              "unobserved assumptions",
+              "control and capture models",
+              "uncertainty / falsifiers"
+            ]
+          }
+        }
+      },
+      {
+        "id": "se",
+        "bearing": 135,
+        "label": "SE",
+        "room_id": "life-body",
+        "title": "Life & Body",
+        "route": "life-body/",
+        "question": "How is this embodied, alive, metabolized or constrained?",
+        "subroom_ids": [
+          "potato-biology",
+          "neurobiology",
+          "whole-body",
+          "symbolic-body-comparison"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Growth & generativity",
+            "topics": [
+              "seed / sprout / fruit",
+              "nourishment",
+              "organism integration",
+              "life as return"
+            ]
+          },
+          "world-plane": {
+            "label": "Embodied life",
+            "topics": [
+              "potato biology",
+              "neurobiology",
+              "whole-body physiology",
+              "empirical body boundaries"
+            ]
+          },
+          "below-plane": {
+            "label": "Burial, dormancy & material roots",
+            "topics": [
+              "burial and decay",
+              "dormancy",
+              "roots and stored capacity",
+              "body symbolism kept separate from biology"
+            ]
+          }
+        }
+      },
+      {
+        "id": "s",
+        "bearing": 180,
+        "label": "S",
+        "room_id": "world-systems",
+        "title": "World Systems",
+        "route": "world/",
+        "question": "How does this operate in observable institutions and material systems?",
+        "subroom_ids": [
+          "politics-governance",
+          "law-justice",
+          "economy-finance",
+          "infrastructure-capability",
+          "geography-countries"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Stewardship & responsibility",
+            "topics": [
+              "governance ideals",
+              "institutional responsibility",
+              "repair and resilience",
+              "systems serving future capacity"
+            ]
+          },
+          "world-plane": {
+            "label": "Institutions & material systems",
+            "topics": [
+              "countries and geography",
+              "politics and law",
+              "economy and finance",
+              "infrastructure and capability"
+            ]
+          },
+          "below-plane": {
+            "label": "Hidden dependency & capture",
+            "topics": [
+              "opaque dependencies",
+              "extraction and lock-in",
+              "institutional residue",
+              "systemic failure and blocked repair"
+            ]
+          }
+        }
+      },
+      {
+        "id": "sw",
+        "bearing": 225,
+        "label": "SW",
+        "room_id": "culture-information",
+        "title": "Culture & Information",
+        "route": "context/culture/",
+        "question": "How does this move through groups, media, subcultures and public memory?",
+        "subroom_ids": [
+          "internet-platforms",
+          "subculture-group-formation",
+          "information-ecology"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Generative culture",
+            "topics": [
+              "ritual and shared meaning",
+              "repair and correction",
+              "tradition and inheritance",
+              "creative public life"
+            ]
+          },
+          "world-plane": {
+            "label": "Media & group formation",
+            "topics": [
+              "platforms",
+              "subcultures and movements",
+              "information ecology",
+              "public discourse and memory"
+            ]
+          },
+          "below-plane": {
+            "label": "Shadow culture & control analysis",
+            "topics": [
+              "adversarial archives and reaction economies",
+              "high-control mechanisms",
+              "occult or religious subcultures",
+              "hidden incentives and role lock"
+            ],
+            "examples": [
+              "modern Satanisms as religious/subcultural movements",
+              "high-control-group analysis",
+              "occult subcultures",
+              "internet conflict cultures"
+            ],
+            "boundary": "The examples are separate research paths; Satanism, occultism and high-control systems are not synonyms."
+          }
+        }
+      },
+      {
+        "id": "w",
+        "bearing": 270,
+        "label": "W",
+        "room_id": "time-history",
+        "title": "Time & History",
+        "route": "history/",
+        "question": "How did this develop, change, split or acquire later meanings?",
+        "subroom_ids": [
+          "chronology-events",
+          "developmental-genealogy",
+          "prediction-revelation-time"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Ascent & interpretive development",
+            "topics": [
+              "revelation histories",
+              "development toward integration",
+              "sacred chronology",
+              "later synthesis"
+            ]
+          },
+          "world-plane": {
+            "label": "Chronology & reception",
+            "topics": [
+              "events",
+              "developmental genealogy",
+              "attestation time",
+              "historical reception"
+            ]
+          },
+          "below-plane": {
+            "label": "Buried history & residue",
+            "topics": [
+              "forgotten strata",
+              "suppressed or rejected interpretations",
+              "inherited conflict",
+              "long-lived historical residue"
+            ]
+          }
+        }
+      },
+      {
+        "id": "nw",
+        "bearing": 315,
+        "label": "NW",
+        "room_id": "archive-sources",
+        "title": "Archive & Sources",
+        "route": "context/source-authority/",
+        "question": "What sources, witnesses and provenance let us know this?",
+        "subroom_ids": [
+          "provenance-evidence",
+          "memory-recovery",
+          "witness-attestation"
+        ],
+        "focus_by_plane": {
+          "heaven-plane": {
+            "label": "Source traditions & testimony",
+            "topics": [
+              "scriptural/source lineages",
+              "upper-symbol attestations",
+              "witness traditions",
+              "source boundaries"
+            ]
+          },
+          "world-plane": {
+            "label": "Evidence & provenance",
+            "topics": [
+              "primary sources",
+              "captures and citations",
+              "evidence classes",
+              "source authority"
+            ]
+          },
+          "below-plane": {
+            "label": "Archive recovery & missing context",
+            "topics": [
+              "buried evidence",
+              "recovered conversations/files",
+              "provenance gaps",
+              "forgotten witness and context"
+            ]
+          }
+        }
       }
     ]
   }
