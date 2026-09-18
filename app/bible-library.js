@@ -50,13 +50,7 @@ function renderSummary(){
   const apoc=books.filter(book=>book.section==='apocrypha').length;
   const next=books.filter(book=>book.section==='new').length;
   const web=books.filter(webReadable).length;
-  $('#bible-library-summary').innerHTML=`
-    <span><strong>${books.length}</strong> KJV catalogue books</span>
-    <span><strong>${old}</strong> Old Testament</span>
-    <span><strong>${apoc}</strong> Apocrypha</span>
-    <span><strong>${next}</strong> New Testament</span>
-    <span><strong>${web}</strong> WEB-readable books</span>
-  `;
+  $('#bible-library-summary').innerHTML='<strong>'+books.length+' books</strong> in the 1611 KJV arrangement · '+web+' available in the WEB reader · '+apoc+' Apocrypha books kept distinct';
 }
 
 function renderGroups(){
@@ -185,6 +179,18 @@ async function init(){
     root.querySelector('.bible-library-loading').textContent=`Bible library could not load: ${error.message}`;
   }
 }
+
+window.BibleLibrary={
+  selectBook,
+  selectByName:(name,chapter=1)=>{
+    if(!state.catalog)return false;
+    const book=state.catalog.books.find(item=>item.name===name);
+    if(!book)return false;
+    selectBook(book.id,chapter,true);
+    return true;
+  },
+  selected:()=>state.selected
+};
 
 if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',init);else init();
 })();
