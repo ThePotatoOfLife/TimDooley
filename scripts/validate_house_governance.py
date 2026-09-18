@@ -627,8 +627,7 @@ def validate_placement_matrix(errors):
     if data.get('output_contract',{}).get('unresolved_destination')!='research-lab/open-questions': errors.append('unresolved placements must route to Research Lab/Open Questions')
 
 
-def validate_project_center(errors)
-    validate_crosscutting_lenses(errors):
+def validate_project_center(errors):
     data=load(PROJECT_CENTER,errors)
     if not data: return
     centers=data.get('center_distinctions',{})
