@@ -92,9 +92,15 @@
     },
     "calabi_yau": {
       "fact": "Calabi-Yau manifolds are Ricci-flat Kähler spaces with vanishing first Chern class under standard definitions. In ten-dimensional superstring compactification, a Calabi-Yau threefold supplies six real compact dimensions, leaving an effective four-dimensional spacetime.",
-      "equations": ["Ric(g) = 0", "c_1(X)=0"],
+      "equations": [
+        "Ric(g) = 0",
+        "c_1(X)=0"
+      ],
       "timic_use": "Useful for the distinction between visible macroscopic dimensions and compact internal geometry; not evidence that a Potato, pineal gland, Door or spiritual realm is literally Calabi-Yau shaped.",
-      "sources": ["https://www.scholarpedia.org/article/Calabi-Yau_manifold", "https://inspirehep.net/literature/16270"]
+      "sources": [
+        "https://www.scholarpedia.org/article/Calabi-Yau_manifold",
+        "https://inspirehep.net/literature/16270"
+      ]
     },
     "m_theory_g2_correction": {
       "fact": "For compactifying eleven-dimensional M-theory directly to four dimensions while preserving minimal supersymmetry, the mathematically natural special-holonomy space is seven-dimensional with G2 holonomy. Calabi-Yau threefolds are central to ten-dimensional string compactification and also enter M-theory duality chains, but they are not the generic seven-dimensional 11D-to-4D replacement by themselves.",
@@ -166,6 +172,7 @@
     "Keep a red-team section for every speculative model: what observation would falsify it, what existing physics already explains, and what is merely metaphor."
   ],
   "related_repository_material": [
+    "knowledge/science/potato-biology-ecology-development-canon.json",
     "knowledge/core/axis-world-model.json",
     "knowledge/philosophy/timic-dynamics.json",
     "knowledge/core/potatoverse-master-framework.json",
