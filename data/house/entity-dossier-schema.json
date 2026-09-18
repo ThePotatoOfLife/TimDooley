@@ -1,9 +1,9 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "id": "entity-dossier-schema",
   "title": "Crystallized Entity Dossier Contract",
-  "purpose": "Force the House ontology to operate on real entities. A dossier must connect mission, decision systems, material capacity, history, relationships, operators, outcomes, blind spots and research questions without turning project metaphors into factual labels.",
+  "purpose": "Force the House ontology to operate on real entities across identity, scale, mission, decision systems, material capacity, history, relationships, reproduction/correction, visibility, longitudinal change, operators, outcomes, blind spots and research questions without turning project metaphors into factual labels.",
   "required_sections": [
     "identity",
     "as_of",
@@ -14,6 +14,10 @@
     "body",
     "history",
     "relationships",
+    "scale_profile",
+    "reproduction_and_correction",
+    "visibility_and_access",
+    "longitudinal_indicators",
     "operators",
     "fruit",
     "shadow",
@@ -63,6 +67,30 @@
     ],
     "discovery_questions": [
       "questions whose answer would materially deepen or falsify the synthesis"
+    ],
+    "scale_profile": [
+      "operating_scale — what size of system is being observed",
+      "constituent_layers — person/team/organization/network/infrastructure or equivalent layers actually present",
+      "key_dependencies — external systems/resources without which the entity cannot perform its role",
+      "scope_boundary — what the dossier does not treat as part of the entity"
+    ],
+    "reproduction_and_correction": [
+      "reproduction_mechanisms — how mission, competence, rules or capability survive turnover",
+      "succession_or_training — how new people/units become able to perform the role",
+      "correction_channels — how error, failure or changed conditions can alter practice",
+      "exit_or_appeal — meaningful exit, appeal, review or replacement routes where applicable",
+      "observed_change — at least one dated example of adaptation, refoundation, migration or correction where available"
+    ],
+    "visibility_and_access": [
+      "public_observability — what a reader can inspect directly",
+      "restricted_or_confidential — what is legitimately non-public or aggregated",
+      "structural_missingness — why some desired information is absent",
+      "status_guard — what non-public status must not be inferred to mean"
+    ],
+    "longitudinal_indicators": [
+      "at least two dated observations for one or more relevant indicators where sources permit",
+      "each indicator names source IDs and an interpretation limit",
+      "change is descriptive; causal claims require separate evidence"
     ]
   },
   "evidence_labels": {
@@ -77,6 +105,10 @@
     "At least one material flow or dependency.",
     "At least one explicit evidence gap.",
     "At least one operator test with a failure condition.",
-    "At least one discovery question that cannot be answered by the entity's About page alone."
+    "At least one discovery question that cannot be answered by the entity's About page alone.",
+    "Scale and scope boundaries are explicit.",
+    "Reproduction/correction mechanisms are explicit.",
+    "Visibility/access limits are explicit.",
+    "At least one longitudinal indicator or a documented reason longitudinal comparison is not yet possible."
   ]
 }
