@@ -1,5 +1,5 @@
 {
-  "version": "7.1.0",
+  "version": "7.2.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -147,7 +147,9 @@
       "foundation-door-seed-genealogy",
       "foundation-axis-placement-contract",
       "foundation-placement-wave-003",
-      "foundation-landscape-synthesis"
+      "foundation-landscape-synthesis",
+      "foundation-room-contract",
+      "foundation-room-atlas"
     ]
   },
   "records": [
@@ -2315,6 +2317,32 @@
         "Continuity",
         "Return",
         "Trajectory Archetype"
+      ]
+    },
+    {
+      "id": "foundation-room-contract",
+      "path": "data/house/foundation-room-contract.json",
+      "branch": "house",
+      "kind": "canonical Foundation Room reader contract joining origin Door House placement Today and genealogy",
+      "terms": [
+        "Foundation Room",
+        "Origin Door",
+        "Today Snapshot",
+        "Earth Map",
+        "House Map"
+      ]
+    },
+    {
+      "id": "foundation-room-atlas",
+      "path": "data/house/foundation-room-atlas.json",
+      "branch": "house",
+      "kind": "52-Foundation tangible Room atlas with map-ready origins and dated current snapshots",
+      "terms": [
+        "Foundation Room Atlas",
+        "Door Place",
+        "Current Snapshot",
+        "Magnitude Facets",
+        "Map Ready"
       ]
     }
   ],
