@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "nodes": [
     {
@@ -1086,6 +1086,160 @@
       "name": "Ring",
       "layer": "mythological-philosophical",
       "description": "Recurrence with approximately zero net change in capability or understanding; contrasted with Spiral as return carrying retained change."
+    },
+    {
+      "id": "house",
+      "type": "architectural-archetype",
+      "name": "House",
+      "layer": "mythological-philosophical",
+      "description": "Compositional whole preserving differentiated Dwellings/Rooms, boundaries, inhabitants and passage; the preferred ownership metaphor for the Potato House."
+    },
+    {
+      "id": "dwelling",
+      "type": "architectural-scale",
+      "name": "Dwelling",
+      "layer": "mythological-philosophical",
+      "description": "Major abiding domain inside a House; neutral structural term used to project the ten canonical top-level bounded contexts."
+    },
+    {
+      "id": "mansions",
+      "type": "translation-archetype",
+      "name": "Mansions / Dwelling Places",
+      "layer": "historical-textual-comparative",
+      "description": "Older English John 14:2 bridge for monai; retained as symbolic vocabulary while distinguished from modern luxury-house meaning and literal afterlife geography."
+    },
+    {
+      "id": "chamber",
+      "type": "architectural-scale",
+      "name": "Chamber",
+      "layer": "mythological-philosophical",
+      "description": "Optional smaller specialist/protected cell inside a Room when a stable local task or boundary warrants it."
+    },
+    {
+      "id": "court",
+      "type": "access-archetype",
+      "name": "Court / Courtyard",
+      "layer": "mythological-philosophical",
+      "description": "Shared approach/common space serving several inner destinations before a more selective threshold."
+    },
+    {
+      "id": "gate",
+      "type": "access-archetype",
+      "name": "Gate",
+      "layer": "mythological-philosophical",
+      "description": "Perimeter access regime controlling entry into a larger domain, city, garden or compound; broader than a local Door."
+    },
+    {
+      "id": "foundation",
+      "type": "support-archetype",
+      "name": "Foundation",
+      "layer": "mythological-philosophical",
+      "description": "Load-bearing invariant beneath later construction; used for constitutional, provenance and ownership supports."
+    },
+    {
+      "id": "cornerstone",
+      "type": "support-archetype",
+      "name": "Cornerstone",
+      "layer": "mythological-philosophical",
+      "description": "Alignment/reference element whose placement constrains the geometry of a larger structure; distinct from every other stone or builder role."
+    },
+    {
+      "id": "pillar",
+      "type": "support-archetype",
+      "name": "Pillar",
+      "layer": "mythological-philosophical",
+      "description": "Repeated vertical support that carries load while preserving open differentiated space around it."
+    },
+    {
+      "id": "temple",
+      "type": "integrated-plurality-view",
+      "name": "Temple",
+      "layer": "mythological-theological",
+      "description": "Presence/access architecture joining foundation, building, sanctuary, service and dwelling; an alternate View, not a synonym for House ownership."
+    },
+    {
+      "id": "sanctuary",
+      "type": "access-archetype",
+      "name": "Sanctuary",
+      "layer": "mythological-theological",
+      "description": "Protected presence space with stronger access conditions than ordinary habitation."
+    },
+    {
+      "id": "city",
+      "type": "integrated-plurality-view",
+      "name": "City",
+      "layer": "mythological-philosophical",
+      "description": "Federated plurality at civic scale: many dwellings, gates, roads, institutions and participants sharing infrastructure."
+    },
+    {
+      "id": "body",
+      "type": "integrated-plurality-view",
+      "name": "Body",
+      "layer": "mythological-philosophical",
+      "description": "One coordinated organism composed of differentiated members/functions; emphasizes mutual dependence and functional specialization."
+    },
+    {
+      "id": "vine",
+      "type": "growth-archetype",
+      "name": "Vine",
+      "layer": "mythological-theological",
+      "description": "Living continuity supporting differentiated branches and fruit; an organic participation grammar distinct from House/City/Body."
+    },
+    {
+      "id": "vineyard",
+      "type": "stewardship-archetype",
+      "name": "Vineyard",
+      "layer": "mythological-philosophical",
+      "description": "Bounded productive field whose health is evaluated by fruit and treatment of entrusted life."
+    },
+    {
+      "id": "treasury",
+      "type": "storage-archetype",
+      "name": "Treasury / Storehouse",
+      "layer": "mythological-philosophical",
+      "description": "Stored future capacity/resources retained for later use; distinct from Archive/provenance."
+    },
+    {
+      "id": "archive",
+      "type": "memory-archetype",
+      "name": "Archive",
+      "layer": "philosophical-information",
+      "description": "Preserved records and provenance enabling reconstruction, correction and historical continuity."
+    },
+    {
+      "id": "river",
+      "type": "flow-archetype",
+      "name": "River / Stream",
+      "layer": "mythological-philosophical",
+      "description": "Flow distributing life, resources, information or capability through a larger structure."
+    },
+    {
+      "id": "well",
+      "type": "source-access-archetype",
+      "name": "Well / Spring",
+      "layer": "mythological-philosophical",
+      "description": "Local access point to a deeper or replenishing source."
+    },
+    {
+      "id": "table",
+      "type": "participation-archetype",
+      "name": "Table",
+      "layer": "mythological-philosophical",
+      "description": "Shared place of participation, deliberation, exchange or distribution without collapsing distinct participants."
+    },
+    {
+      "id": "tabernacle",
+      "type": "portable-architecture",
+      "name": "Tent / Tabernacle",
+      "layer": "historical-textual-comparative",
+      "description": "Portable/provisional dwelling or presence architecture; useful project analogue for prototypes and migration layers before permanent promotion."
+    },
+    {
+      "id": "throne",
+      "type": "orientation-archetype",
+      "name": "Throne / Seat",
+      "layer": "mythological-theological",
+      "description": "Orientation, judgment and responsibility point rather than a container; legitimacy is tested by accountable service and return."
     }
   ]
 }
