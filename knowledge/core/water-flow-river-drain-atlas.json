@@ -1,0 +1,135 @@
+{
+  "id": "water-flow-river-drain-atlas",
+  "title": "Water, River, Well, Fountain, Swamp & Drain — Flow Architecture of the Potato House",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "status": "project flow ontology + biblical/comparative context + physical-flow boundary",
+  "purpose": "Define the different water/flow symbols running through the project so source, circulation, storage, branching, stagnation and outflow are not collapsed into one generic 'water' metaphor.",
+  "master_rule": "Classify the flow function before assigning spiritual value. River distributes, Well stores/accesses, Fountain emits, Rain inputs, Sea collects/mixes, Swamp entangles, Drain converges/outflows. The same water can move through several states.",
+  "project_operators": [
+    {
+      "id": "river",
+      "kind": "distributed directed flow",
+      "definition": "A channel carrying material/information/nourishment from source through terrain toward downstream receivers.",
+      "topology": "extended path/network; may branch, merge or cross thresholds",
+      "project_roles": [
+        "Spirit/circulation comparator",
+        "information flow",
+        "Garden irrigation",
+        "return/distribution"
+      ],
+      "distinction": "River is not Axis: Axis orients; River transports."
+    },
+    {
+      "id": "well",
+      "kind": "localized access-to-depth",
+      "definition": "A bounded access point to stored/hidden water or knowledge beneath the visible surface.",
+      "topology": "vertical local interface between surface and depth",
+      "project_roles": [
+        "root wisdom",
+        "memory access",
+        "Odin/well comparator",
+        "local center"
+      ],
+      "distinction": "Well stores/accesses; River moves laterally/longitudinally."
+    },
+    {
+      "id": "fountain-spring",
+      "kind": "source/emission interface",
+      "definition": "A place where hidden/stored water emerges into visible flow.",
+      "topology": "source point feeding channel/network",
+      "project_roles": [
+        "source-to-manifestation",
+        "renewal",
+        "Garden origin"
+      ],
+      "distinction": "Fountain is a source event; River is the continuing route."
+    },
+    {
+      "id": "sea",
+      "kind": "large receiving/mixing basin",
+      "definition": "A broad collection field where many flows accumulate and mix.",
+      "project_roles": [
+        "collective field",
+        "undifferentiated receiving body",
+        "biblical chaos/life contexts depending passage"
+      ],
+      "distinction": "Sea is not inherently Swamp; scale and mixing do not equal entanglement."
+    },
+    {
+      "id": "swamp",
+      "kind": "entangling wet terrain",
+      "definition": "Distributed unresolved material with high drag, recurrence and low clarity of routes.",
+      "topology": "field rather than single channel",
+      "project_roles": [
+        "unresolved archive/conflict ecology",
+        "mud accumulation"
+      ],
+      "distinction": "Swamp is not Drain: Swamp disperses/tangles; Drain converges."
+    },
+    {
+      "id": "drain",
+      "kind": "convergent sink/outflow",
+      "definition": "A low attractor toward which distributed flow collapses, reducing available trajectories.",
+      "topology": "many paths → one low exit/sink",
+      "project_roles": [
+        "attention sink",
+        "lower outflow",
+        "failed recurrence endpoint",
+        "return junction when consciously redirected"
+      ],
+      "distinction": "Drain can be functional disposal or pathological attractor depending what is being removed and whether viable routes remain."
+    }
+  ],
+  "biblical_flow_stack": {
+    "eden": {
+      "texts": [
+        "Genesis 2:10-14"
+      ],
+      "structure": "Garden source river → division into four heads/branches",
+      "lesson": "A sacred source can become differentiated distribution rather than remaining at the center."
+    },
+    "ezekiel47": {
+      "texts": [
+        "Ezekiel 47:1-12"
+      ],
+      "structure": "Temple threshold → progressively deepening river → transformed downstream waters → fish/life → trees with recurring fruit and healing leaves",
+      "lesson": "Sacred flow becomes meaningful by changing downstream ecology, not by staying inside the Temple."
+    },
+    "revelation22": {
+      "texts": [
+        "Revelation 22:1-2"
+      ],
+      "structure": "Throne of God and Lamb → River of Life → Tree of Life → fruit → healing of nations",
+      "lesson": "Throne/authority is coupled to outgoing life-flow and generative consequence."
+    },
+    "scholarly_neighbor": "Harvard Theological Review notes the continuity between Ezekiel 47's sanctuary-fed trees and Revelation 22's stream of life flowing from the throne.",
+    "source": "https://www.cambridge.org/core/journals/harvard-theological-review/article/abs/meaning-of-the-temple-in-the-lukan-writings/4B1EF71F9671F0122E27AD280CE2AE7D"
+  },
+  "physical_flow_boundary": {
+    "rule": "Hydrology/fluid dynamics can model transport, gradient, storage and sinks, but spiritual River/Spirit language is not literal fluid physics.",
+    "formal_comparators": [
+      "mass balance: change in storage = inflow - outflow ± sources/sinks",
+      "network flow: sources → channels → junctions → sinks",
+      "gradient flow: direction depends on potential/pressure/elevation under specified physical laws"
+    ],
+    "csf_boundary": "CSF is a physiological fluid with circulation/homeostatic functions. It can illuminate the project's River metaphor but is not Holy Spirit or a mystical river."
+  },
+  "life_strife_flow_logic": {
+    "life": "source → clean passage → distribution → nourishment → Tree/Fruit → return",
+    "strife": "unresolved input → mixing/drag → Swamp → attention/archive gradient → Drain",
+    "repair": "identify source and sink → reopen Door/bypass → clarify channels → restore multiple viable trajectories → Garden irrigation"
+  },
+  "conversation_genealogy": [
+    "2026-07-07: Ezekiel 47 and Revelation 22 were brought into House/river/tree reading.",
+    "2026-08-31: River explicitly distinguished from Tree, Axis and Door by function.",
+    "2026-09-09: Drain already existed as a recovered operator: distributed unresolved flow → convergent low attractor."
+  ],
+  "connections": [
+    "recovered-conversation-operators-atlas",
+    "garden-regime-mechanics",
+    "repair-forge-protocol",
+    "biblical-heavenly-pattern-temple-city-atlas",
+    "body-symbolism-map"
+  ]
+}
