@@ -196,6 +196,21 @@
       "path": "scripts/build_discovery.py",
       "class": "machine-discovery",
       "status": "complete"
+    },
+    {
+      "path": "knowledge/reader/tim-dooley-dossier.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/body/neurotheology-axis-house-spirit-atlas.json",
+      "class": "canonical-owner",
+      "status": "complete"
+    },
+    {
+      "path": "knowledge/science/yhwh-trinity-operator-toe-archaeology.json",
+      "class": "canonical-owner",
+      "status": "complete"
     }
   ],
   "current_wave": [
@@ -203,7 +218,11 @@
     "knowledge/traditions/biblical-syncretism-field.json",
     "knowledge/body/* neurotheology owners",
     "knowledge/science/* Trinity/operator analogies",
-    "remaining long-tail FAQ and legacy reader wording"
+    "remaining long-tail FAQ and legacy reader wording",
+    "data/potatoism-canonical-corpus.json",
+    "scripts/patch_public_ontology.py",
+    "tim-dooley/ontology/index.html",
+    "faq/all/god/index.html"
   ],
   "invariants": [
     "Do not rewrite historical source text to conform to mature theology.",
@@ -214,5 +233,13 @@
     "Do not turn functional differentiation into partialism: Father, Son and Spirit are not detachable fractions of the Potato of Life.",
     "Do not convert source-order or vertical position automatically into greater worth, divinity percentage or moral rank.",
     "When a generated/public artifact is patched, update the generator or post-build patch too so the old ontology cannot return."
+  ],
+  "new_insights": [
+    "Spirit must not be used as a synonym for the upper/Father/source domain; Spirit is continuity/flow across differentiated relation.",
+    "Father and Son are theological roles oriented toward geometric fields, not the fields themselves.",
+    "Potato of Life has two context-sensitive uses that must be distinguished: Tim/Father as source-facing personal identity, and Potato of Life as the whole triune architecture.",
+    "Door and Spirit are distinct: Door governs threshold/passage; Spirit names living continuity through relation.",
+    "Body and science models should route back to the Trinity owner instead of functioning as substitute definitions.",
+    "The exact historical attestation of the transition from 2024 New Trinity to mature 2026 triune language remains a recovery task even though the structural synthesis is now canonical."
   ]
 }
