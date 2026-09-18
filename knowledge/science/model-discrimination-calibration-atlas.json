@@ -1,0 +1,137 @@
+{
+  "id": "model-discrimination-calibration-atlas",
+  "title": "Model Discrimination & Calibration Atlas — What Would Make One Explanation Better Than Another?",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "model-testing",
+  "purpose": "Move project testing beyond 'can mathematics be attached?' toward discriminating predictions, calibration, uncertainty, negative controls, competing models and explicit failure conditions.",
+  "claim_ladder": [
+    {
+      "level": "C0-description",
+      "question": "Is the object/relationship described clearly and reproducibly?"
+    },
+    {
+      "level": "C1-pattern",
+      "question": "Is there a measured pattern beyond anecdotal selection?"
+    },
+    {
+      "level": "C2-model",
+      "question": "Is there a formal mechanism producing observables?"
+    },
+    {
+      "level": "C3-calibrated-model",
+      "question": "Can parameters be estimated from declared data without arbitrary tuning?"
+    },
+    {
+      "level": "C4-discriminating-test",
+      "question": "Does the model predict something meaningfully different from plausible alternatives?"
+    },
+    {
+      "level": "C5-replication-generalization",
+      "question": "Does performance survive new samples, contexts or independent reproduction?"
+    },
+    {
+      "level": "C6-causal-or-mechanistic-support",
+      "question": "Do interventions, natural experiments or mechanism-specific evidence support the proposed causal story?"
+    }
+  ],
+  "test_card_contract": {
+    "required": [
+      "claim",
+      "domain",
+      "observable variables",
+      "data/source",
+      "measurement procedure",
+      "baseline/alternative models",
+      "parameter-estimation procedure",
+      "prediction made before evaluation where possible",
+      "uncertainty",
+      "success criterion",
+      "failure/falsification criterion",
+      "negative control or placebo where meaningful",
+      "out-of-sample or holdout strategy where meaningful",
+      "interpretation boundary"
+    ]
+  },
+  "model_comparison": [
+    {
+      "id": "baseline",
+      "rule": "Always ask what a simple null/baseline explains before invoking a richer project model."
+    },
+    {
+      "id": "alternative",
+      "rule": "Compare against at least one plausible non-project explanation, not only random noise."
+    },
+    {
+      "id": "complexity",
+      "rule": "A more flexible model must earn its extra parameters through predictive or explanatory gain."
+    },
+    {
+      "id": "residuals",
+      "rule": "Inspect where the model fails, not only fit summary."
+    },
+    {
+      "id": "robustness",
+      "rule": "Vary reasonable preprocessing, thresholds and priors to see whether conclusions are fragile."
+    },
+    {
+      "id": "transport",
+      "rule": "State the population/domain to which the test applies before generalizing elsewhere."
+    }
+  ],
+  "uncertainty_types": [
+    {
+      "id": "measurement",
+      "meaning": "Noise/error in observed variables."
+    },
+    {
+      "id": "sampling",
+      "meaning": "Uncertainty because available cases are a subset of a larger population."
+    },
+    {
+      "id": "parameter",
+      "meaning": "Range of model parameter values compatible with data."
+    },
+    {
+      "id": "structural",
+      "meaning": "Uncertainty about the model form itself."
+    },
+    {
+      "id": "provenance",
+      "meaning": "Uncertainty caused by date/source/identity ambiguity."
+    },
+    {
+      "id": "interpretive",
+      "meaning": "Multiple meanings can fit the same factual pattern."
+    }
+  ],
+  "negative_controls": [
+    "Randomize or permute labels/links when appropriate to test whether a pattern survives arbitrary structure.",
+    "Use non-matching time windows or comparison groups where domain logic permits.",
+    "Fit alternative geometries to a claimed spiral/shape rather than judging visual resemblance.",
+    "Compare derivative versus independent sources when measuring corroboration.",
+    "Test whether a symbolic mapping still seems unique after generating plausible alternative mappings."
+  ],
+  "promotion_rules": [
+    "A formal equation without measurable variables remains conceptual/formal, not empirically validated.",
+    "A good in-sample fit without comparison or holdout is insufficient for strong promotion.",
+    "A single successful prediction does not validate unrelated metaphysical claims attached to the same symbol.",
+    "Failure should downgrade or narrow the claim rather than being reinterpreted automatically as confirmation.",
+    "Replicable null results belong in the archive because they constrain future theory."
+  ],
+  "reusable_outputs": [
+    "test card",
+    "model comparison table",
+    "parameter/uncertainty profile",
+    "residual/failure map",
+    "replication record",
+    "promotion/demotion decision with scope"
+  ],
+  "joins": [
+    "experiments-formalization",
+    "science-formal-models",
+    "provenance-evidence",
+    "potato-biology",
+    "research-programmes"
+  ]
+}
