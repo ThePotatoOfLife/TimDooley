@@ -1,5 +1,5 @@
 {
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "house-data-holdings",
   "principle": "Data holdings are grouped datasets, ledgers, registries or contracts with one primary Room owner. Secondary Rooms may consume them without becoming co-owners. Runtime/render/config artifacts may remain unbundled when they are implementation rather than knowledge.",
@@ -18,7 +18,6 @@
         "data/backend-coverage-map.json",
         "data/repository-spine.json",
         "data/repository-scale.json",
-        "data/root-navigation.json",
         "data/project-workflow.json",
         "data/atlas-checklist.json",
         "data/atlas-entity-trace-contract.json",
@@ -34,7 +33,7 @@
       ],
       "kind": "governance-registry",
       "purpose": "House registries, topology, coverage, manifests, routing and repository-maintenance contracts.",
-      "file_count": 48,
+      "file_count": 47,
       "source_files": [
         "data/house/architectural-vocabulary.json",
         "data/house/collections.json",
@@ -55,7 +54,6 @@
         "data/backend-coverage-map.json",
         "data/repository-spine.json",
         "data/repository-scale.json",
-        "data/root-navigation.json",
         "data/project-workflow.json",
         "data/atlas-checklist.json",
         "data/atlas-entity-trace-contract.json",
@@ -96,6 +94,9 @@
         "data/house/room-dossiers.json",
         "data/house/concept-topology.json",
         "data/house/holdings.json"
+      ],
+      "historical_donors": [
+        "data/root-navigation.json"
       ]
     },
     {
