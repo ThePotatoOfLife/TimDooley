@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -193,6 +193,11 @@
       "concern": "evidence-aware route case instrumentation",
       "owner": "data/house/route-case-matrix-wave-001.json",
       "rule": "A route case must name starting state, operator, transition condition, supporting evidence, falsifier and World-level return measure. Route labels never replace subject identity."
+    },
+    {
+      "concern": "Foundation Seed Door genealogy time and place",
+      "owner": "data/house/foundation-door-seed-genealogy.json",
+      "rule": "Foundation genealogy must separate prior/death-side state, Door crossing, life-side reproducible state, physical/institutional place, clocks, rise, fall/return and refoundation."
     }
   ],
   "resolver_order": [
