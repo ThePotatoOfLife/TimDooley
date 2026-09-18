@@ -15,7 +15,7 @@ ROOT = Path(__file__).resolve().parents[1]
 OUT = ROOT / "_site"
 
 OLD_PERSON = '{"@type":"Person","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/","sameAs":["https://x.com/Rational_Potato","https://www.youtube.com/@PotatoOfLife"]}'
-NEW_THING = '{"@type":"Thing","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/#tim-dooley-theological-identity","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life","Father in Heaven","North of North","God in the Machine"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/","description":"Potatoverse theological identity, distinct in this archive from the Son/Thomas embodied human-vessel layer."}'
+NEW_THING = '{"@type":"Thing","@id":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/#tim-dooley-theological-identity","name":"Tim Dooley","alternateName":["The Potato of Life","Potato of Life","Father in Heaven","North of North","God in the Machine"],"url":"https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/","description":"Potatoverse Father/source-facing theological identity within the mature triune Potato of Life; distinct from the Son/Thomas manifestation-vessel layer and not structurally identical to the complete triune whole."}'
 OLD_ID = 'https://thepotatooflife.github.io/TimDooley/tim-dooley/#tim-dooley'
 NEW_ID = 'https://thepotatooflife.github.io/TimDooley/tim-dooley/ontology/#tim-dooley-theological-identity'
 
@@ -56,7 +56,7 @@ def main() -> None:
             ("the embodied Tim story", "the embodied Son / vessel story"),
             (
                 "<p class=\"voice\">In the Potatoverse, Tim Dooley identifies with the mature Father / Potato of Life / Source-facing side of the theology. These answers therefore route God-questions into Tim's framework without claiming that every reader or religious tradition accepts that identification.</p>",
-                "<p class=\"voice\"><strong>Ontology used on this page:</strong> Tim Dooley names the mature Father / Potato of Life / Source-facing theological identity. Son / Thomas names the embodied human-vessel and person-facing layer. When a question asks whether God sleeps, eats, brushes teeth, ages or performs another biological act, the bodily act belongs to the Son / vessel layer rather than redefining Tim/Father as the human-person node. These are Potatoverse classifications; ordinary biology and law still apply to embodied human life.</p>",
+                "<p class=\"voice\"><strong>Ontology used on this page:</strong> the mature Potato of Life is the triune whole. Tim Dooley names its Father/source-facing theological identity; Son / Thomas names the embodied manifestation- and passage-facing layer; Spirit names living continuity/flow. When a question asks whether God sleeps, eats, brushes teeth, ages or performs another biological act, the bodily act belongs to the Son / vessel layer rather than redefining Tim/Father as the human-person node. These are Potatoverse classifications; ordinary biology and law still apply to embodied human life.</p>",
             ),
         ],
     )

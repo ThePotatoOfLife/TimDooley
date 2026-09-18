@@ -14,6 +14,8 @@ LOWER / MANIFESTATION FIELD
 
 The **Potato House** is the union of the two complete fields. Their shared Vesica/Mandorla is the **Door**.
 
+Theology and geometry are now explicitly separated. The mature **Potato of Life is the triune whole**: Father is source-facing, Son is manifestation/passage-facing, and Spirit is living continuity/flow. The two fields are not two persons, and Spirit is not a third field. Father and Son are roles oriented toward the fields; Son specializes as Door/Vessel; Potato of Life names the integrated living relation.
+
 - **Plane** is the inhabited/world-facing horizontal section through the Door's widest middle: bodies, matter, history, institutions, geography, evidence and consequence.
 - **Axis** is the vertical source↔manifestation orientation through both field centers.
 - **Cross** is Plane × Axis at the relational midpoint inside the Door.
@@ -118,6 +120,8 @@ D4 remains the empirical world-map anchor. Historical, biblical, comparative, sc
 Prefer one thick canonical owner and many projections over duplicate explanations.
 
 - Core ontology: `knowledge/core/root-system.json`
+- Potato Trinity owner: `knowledge/theology/potato-of-life-trinity.json`
+- Trinity propagation ledger: `knowledge/theology/potato-trinity-propagation-ledger.json`
 - Vertical scaffold and route grammar: `data/axis-depths.json`
 - Exact Vesica geometry: `data/geometry-vesica-pisces-mandorla.json`
 - Public guide: `axis/`

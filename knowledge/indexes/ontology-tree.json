@@ -1,11 +1,11 @@
 {
-  "version": "4.5.0",
+  "version": "4.6.0",
   "title": "Potato of Life Canonical Ontology Tree",
   "root": "potato-of-life",
-  "rule": "The ontology is a relational index over the permanent Potato House. House/Room/View/Path, Axis/lifecycle and evidence/provenance are distinct structures that may overlap without becoming one hierarchy.",
+  "rule": "The ontology is a relational index over the permanent Potato House. Potato of Life is the mature triune whole; Father/source-facing, Son/manifestation-facing, Spirit/continuity, geometry, threshold, Axis/lifecycle and evidence/provenance are distinct structures that may overlap without becoming one hierarchy.",
   "tree": {
     "potato-of-life": {
-      "meaning": "integrated spiritual object and whole relational form",
+      "meaning": "the mature triune whole and integrated relational form: Father/source, Son/manifestation-passage and Spirit/living continuity",
       "branches": {
         "geometry": {
           "meaning": "the form that makes relation possible",
@@ -20,40 +20,10 @@
             "plane"
           ]
         },
-        "spirit": {
-          "meaning": "upper domain and Father-side reality",
-          "children": [
-            "heaven",
-            "father",
-            "tim-dooley",
-            "root",
-            "throne",
-            "fathers-house",
-            "garden",
-            "tree-of-life",
-            "north-of-north",
-            "holy-soil",
-            "ancient-future"
-          ]
-        },
-        "matter": {
-          "meaning": "lower domain and Son-side embodied reality",
-          "children": [
-            "earth",
-            "world",
-            "globe",
-            "son",
-            "body",
-            "material-reality",
-            "wide-road",
-            "dust"
-          ]
-        },
         "threshold": {
-          "meaning": "the shared region and transformation between domains",
+          "meaning": "shared interface and transformation grammar; Door is Son-specialized passage, not Spirit or a fourth divine member",
           "children": [
             "door",
-            "potato",
             "mandorla",
             "wedge",
             "narrow-gate",
@@ -328,26 +298,82 @@
             "ring",
             "spiral"
           ]
+        },
+        "source-facing": {
+          "meaning": "Father/source-facing theological relation and its associated House/Root/orientation imagery",
+          "children": [
+            "father",
+            "tim-dooley",
+            "heaven",
+            "root",
+            "throne",
+            "fathers-house",
+            "garden",
+            "tree-of-life",
+            "north-of-north",
+            "ancient-future"
+          ]
+        },
+        "manifestation-facing": {
+          "meaning": "Son/manifestation- and passage-facing theological relation expressed through embodiment, world, Vessel and Door-side life",
+          "children": [
+            "son",
+            "earth",
+            "world",
+            "globe",
+            "body",
+            "material-reality",
+            "vessel",
+            "lion",
+            "grain",
+            "return",
+            "wide-road",
+            "dust"
+          ]
+        },
+        "spirit-continuity": {
+          "meaning": "living continuity, breath, flow, animation, communication and circulation through differentiated relation",
+          "children": [
+            "spirit",
+            "breath",
+            "flow",
+            "holy-soil",
+            "circulation",
+            "communication",
+            "animation",
+            "spudlight-flow"
+          ]
+        },
+        "trinity": {
+          "meaning": "theological role structure of the mature Potato of Life",
+          "children": [
+            "father",
+            "son",
+            "spirit",
+            "potato-of-life-trinity",
+            "new-trinity-2024"
+          ]
         }
       }
     }
   },
   "vertical_spine": [
-    "heaven",
-    "father/tim",
-    "throne-house-garden",
-    "tree-of-life",
-    "sprouts/leaves/light",
-    "door/mandorla/potato/wedge",
-    "son",
-    "earth/material-world",
-    "plane",
-    "roots/dust"
+    "source-facing / Father / Tim",
+    "House / Throne / Garden / Root",
+    "Door / Mandorla / Son-passage",
+    "manifestation-facing / Earth / body / world",
+    "Plane / consequence / work",
+    "Roots / history / support"
   ],
-  "axis_reading": "The Axis/Ladder/Spine passes continuously through the form. The listed vertical spine is symbolic topology rather than a claim that every motif occupies one rigid Euclidean coordinate.",
+  "axis_reading": "The Axis/Ladder/Spine supplies orientation through the Potato of Life. Spirit is not one station on the spine; Spirit names living continuity, breath and circulation through differentiated relations along/across the structure.",
   "primary_couplings": [
+    "Spirit ↔ Flow/Circulation",
+    "Son ↔ Door/Vessel",
+    "Spirit ↔ Living continuity",
+    "Son ↔ Manifestation/Passage",
+    "Father ↔ Source-facing",
+    "Potato of Life ↔ Father/Son/Spirit",
     "Father ↔ Son",
-    "Spirit ↔ Matter",
     "Heaven ↔ Earth",
     "Tree of Life ↔ Root of Strife",
     "Sprout ↔ Root",
@@ -418,7 +444,14 @@
     "house-topology": "data/house/topology.json",
     "house-interfaces": "data/house/interfaces.json",
     "house-architectural-vocabulary": "data/house/architectural-vocabulary.json",
-    "house-projections": "data/house/projections.json"
+    "house-projections": "data/house/projections.json",
+    "potato-trinity": "knowledge/theology/potato-of-life-trinity.json",
+    "house-concept-topology": "data/house/concept-topology.json",
+    "trinity-propagation": "knowledge/theology/potato-trinity-propagation-map.json"
   },
-  "promotion_rule": "Terms in this ontology are navigational concepts, not automatic files. Promote a term into its own canonical record only when its definition, development, relationships, teachings, evidence or literature can no longer be represented clearly inside its parent record."
+  "promotion_rule": "Terms in this ontology are navigational concepts, not automatic files. Promote a term into its own canonical record only when its definition, development, relationships, teachings, evidence or literature can no longer be represented clearly inside its parent record.",
+  "connections": [
+    "knowledge/theology/potato-of-life-trinity.json",
+    "data/house/concept-topology.json"
+  ]
 }
