@@ -82,7 +82,16 @@
       "include affected-party perspective",
       "review delayed effects",
       "preserve qualitative/context evidence"
-    ]
+    ],
+    "anti_gaming_protocol": [
+      "state the underlying goal before choosing the metric",
+      "pair output metrics with quality/outcome measures",
+      "inspect distributional effects instead of relying on averages alone",
+      "track behaviors induced by measurement itself",
+      "retain an independent review channel for harms the dashboard does not capture",
+      "change or retire a metric when it ceases to represent the underlying goal"
+    ],
+    "attribution_warning": "A rising metric after an intervention may be correlated with the intervention without being caused by it; when causal attribution matters, define a plausible counterfactual/comparison or use a theory-based contribution design and test alternative explanations."
   },
   "relation_to_cycle": {
     "sequence": [
@@ -114,5 +123,46 @@
     "works",
     "world-systems",
     "culture-information"
-  ]
+  ],
+  "evaluation_design": {
+    "rule": "Observation of an outcome is not the same as evidence that the process caused it. Fruit claims should distinguish monitoring, contribution and causal attribution.",
+    "fields": [
+      "baseline",
+      "intervention_or_process",
+      "comparison_or_counterfactual_if_feasible",
+      "population_or_scope",
+      "outcome",
+      "observation_window",
+      "mechanism_or_theory_of_change",
+      "alternative_explanations",
+      "distribution_of_effects",
+      "resource_cost",
+      "confidence_in_attribution"
+    ],
+    "causal_ladder": {
+      "monitoring": "Did the outcome change?",
+      "contribution": "Is there a supported causal chain showing the process plausibly contributed, with alternatives examined?",
+      "attribution": "Can the observed difference be causally assigned to the intervention/process with an appropriate design and assumptions?"
+    },
+    "source": "https://www.gov.uk/government/publications/the-magenta-book/magenta-book-central-government-guidance-on-evaluation-html"
+  },
+  "six_criteria_crosswalk": {
+    "source_framework": "OECD DAC evaluation criteria",
+    "criteria": {
+      "relevance": "Does the process address a real need/problem in its context?",
+      "coherence": "How does it fit with other processes, constraints and interventions?",
+      "effectiveness": "Does it achieve the intended objectives?",
+      "efficiency": "What outputs/outcomes are obtained relative to resources and opportunity costs?",
+      "impact": "What meaningful difference occurs, including wider positive/negative effects?",
+      "sustainability": "Do useful effects and capacities persist after initial effort/support?"
+    },
+    "project_extension": "Fruit additionally asks who benefits or bears costs, whether outcomes create independent Seed/capacity, and whether harms are reversible or repairable.",
+    "boundary": "The OECD criteria are an evaluation framework, not a universal moral theory and not a substitute for domain-specific scientific methods.",
+    "source": "https://www.oecd.org/en/topics/sub-issues/development-co-operation-evaluation-and-effectiveness/evaluation-criteria.html"
+  },
+  "fruit_review_record": {
+    "minimum": "output + intended beneficiary + burdened parties + baseline + observation window + evidence + uncertainty",
+    "strong": "minimum fields plus mechanism, comparator/counterfactual, distributional effects, costs, externalities, sustainability, reversibility and future Seed/capacity",
+    "revision_rule": "A Fruit record is provisional. Later evidence may reclassify apparent Fruit as sterile, mixed or poison-fruit, or reveal benefits missed initially."
+  }
 }
