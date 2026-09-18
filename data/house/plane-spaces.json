@@ -1,0 +1,762 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "authority": "plane-spaces",
+  "purpose": "Turn Heaven, World and Below from topic filters into inhabitable navigation spaces with named zones, functions, Room projections and explicit transitions. These are symbolic reader spaces over the same House, not separate universes.",
+  "master_rules": [
+    "Heaven is the Garden-facing upper space: integration, House, Crown/North, Tree canopy, Mountain/Summit, Fruit and return.",
+    "World is the lived middle space: bodies, institutions, evidence, roads, public culture, history, work, choice and consequence.",
+    "Below is the root/repair/entanglement lower space: Archive/Root, Seed burial, Ash/Mud, Shadow, Wide Road, Swamp and Forge.",
+    "Forge and Swamp are both Below but are not equivalent: Swamp is unresolved entanglement; Forge is bounded transformation/repair.",
+    "The center repeats locally. Every Room, Door and process may have a scoped local center/junction while Potato of Life remains global semantic center and Axis remains global spatial orientation.",
+    "A local center is where the current Room asks its governing question, receives inputs, performs its transition/test, and hands work onward."
+  ],
+  "planes": [
+    {
+      "id": "heaven-plane",
+      "label": "Heaven / Garden Plane",
+      "position": "upper",
+      "anchor_regime": "garden",
+      "question": "What has been integrated enough to cultivate, orient, nourish, fruit and return?",
+      "center_expression": "local garden-heart / orientation point",
+      "zones": [
+        {
+          "id": "garden",
+          "label": "Garden",
+          "kind": "regime/place",
+          "function": "Generative upper regime where differentiated life is cultivated with boundaries, circulation, feedback, meaningful exit and future capacity.",
+          "center_nodes": [
+            "garden",
+            "tree",
+            "fruit",
+            "father"
+          ],
+          "room_ids": [
+            "potatoverse-canon",
+            "works",
+            "research-lab",
+            "world-systems",
+            "culture-information"
+          ],
+          "contents": [
+            "cultivation",
+            "stewardship",
+            "repair reintegration",
+            "healthy culture",
+            "resilience",
+            "future Seed"
+          ],
+          "exits": [
+            "house",
+            "canopy",
+            "orchard",
+            "world-return"
+          ]
+        },
+        {
+          "id": "house",
+          "label": "House / Mansions",
+          "kind": "place/architecture",
+          "function": "Upper architecture of differentiated Rooms held in one whole; stable belonging without identity collapse.",
+          "center_nodes": [
+            "potato-of-life",
+            "father",
+            "door",
+            "house"
+          ],
+          "room_ids": [
+            "potatoverse-canon",
+            "traditions-texts",
+            "research-lab"
+          ],
+          "contents": [
+            "Rooms",
+            "roles",
+            "theology",
+            "canonical identities",
+            "bounded contexts",
+            "Door network"
+          ],
+          "exits": [
+            "garden",
+            "crown-north",
+            "mountain-summit",
+            "world-gates"
+          ]
+        },
+        {
+          "id": "crown-north",
+          "label": "Crown / North",
+          "kind": "orientation/place",
+          "function": "Orientation toward integration, source, highest-level synthesis and responsibility rather than automatic moral rank.",
+          "center_nodes": [
+            "axis",
+            "father",
+            "mountain",
+            "eye"
+          ],
+          "room_ids": [
+            "potatoverse-canon",
+            "research-lab",
+            "traditions-texts"
+          ],
+          "contents": [
+            "orientation",
+            "integration",
+            "North",
+            "Crown",
+            "source-facing synthesis",
+            "high-level questions"
+          ],
+          "exits": [
+            "house",
+            "mountain-summit",
+            "canopy"
+          ]
+        },
+        {
+          "id": "canopy",
+          "label": "Canopy / Tree of Life",
+          "kind": "organism/place",
+          "function": "Differentiated upper branching where living Roots become visible specialized growth.",
+          "center_nodes": [
+            "tree",
+            "fruit",
+            "garden"
+          ],
+          "room_ids": [
+            "potatoverse-canon",
+            "works",
+            "traditions-texts",
+            "life-body"
+          ],
+          "contents": [
+            "branches",
+            "specialized Rooms",
+            "living traditions",
+            "service",
+            "creative differentiation",
+            "return pathways"
+          ],
+          "exits": [
+            "orchard",
+            "garden",
+            "world-trunk"
+          ]
+        },
+        {
+          "id": "mountain-summit",
+          "label": "Mountain / Summit",
+          "kind": "terrain/place",
+          "function": "Compression of many perspectives toward integration; a summit is a coordination point, not proof of superiority.",
+          "center_nodes": [
+            "mountain",
+            "axis",
+            "eye"
+          ],
+          "room_ids": [
+            "potatoverse-canon",
+            "research-lab",
+            "traditions-texts",
+            "science-formal-models"
+          ],
+          "contents": [
+            "integration",
+            "overview",
+            "formal synthesis",
+            "comparative sacred mountains",
+            "North-facing orientation"
+          ],
+          "exits": [
+            "crown-north",
+            "house",
+            "world-descent"
+          ]
+        },
+        {
+          "id": "orchard",
+          "label": "Orchard / Fruit",
+          "kind": "output/place",
+          "function": "Where mature outputs are evaluated as nourishment, repair, knowledge, art, institution or future Seed.",
+          "center_nodes": [
+            "fruit",
+            "seed",
+            "garden"
+          ],
+          "room_ids": [
+            "works",
+            "research-lab",
+            "world-systems",
+            "culture-information"
+          ],
+          "contents": [
+            "writing",
+            "music",
+            "visual art",
+            "tools",
+            "repaired relations",
+            "institutional improvements",
+            "future Seed"
+          ],
+          "exits": [
+            "garden",
+            "seed-return",
+            "world-return"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "world-plane",
+      "label": "World / Plane",
+      "position": "middle",
+      "anchor_regime": "ordinary embodied/public reality",
+      "question": "What is visible, embodied, testable, practiced, institutionalized or consequential here and now?",
+      "center_expression": "local crossroads / Door-Cross junction",
+      "zones": [
+        {
+          "id": "crossroads",
+          "label": "Crossroads / Plane",
+          "kind": "coordinate/place",
+          "function": "World-facing junction where a Room's current question, Axis orientation and available Doors become simultaneously legible.",
+          "center_nodes": [
+            "axis",
+            "plane",
+            "cross",
+            "door",
+            "eye"
+          ],
+          "room_ids": [
+            "potatoverse-canon",
+            "research-lab"
+          ],
+          "contents": [
+            "orientation",
+            "choice",
+            "local center",
+            "Door selection",
+            "tests",
+            "handoffs"
+          ],
+          "exits": [
+            "all-world-zones",
+            "heaven-ascent",
+            "below-descent"
+          ]
+        },
+        {
+          "id": "living-trunk",
+          "label": "Living Trunk",
+          "kind": "organism/place",
+          "function": "Visible continuity connecting Roots to branches: practice, embodiment, service and ordinary growth.",
+          "center_nodes": [
+            "tree",
+            "spirit",
+            "door"
+          ],
+          "room_ids": [
+            "life-body",
+            "potatoverse-canon",
+            "culture-information"
+          ],
+          "contents": [
+            "embodiment",
+            "practice",
+            "communication",
+            "growth",
+            "service",
+            "visible development"
+          ],
+          "exits": [
+            "canopy",
+            "root-archive",
+            "culture-square"
+          ]
+        },
+        {
+          "id": "body-lab",
+          "label": "Body / Lab",
+          "kind": "workplace",
+          "function": "Empirical space for organism, physiology, science, formal models and testing boundaries.",
+          "center_nodes": [
+            "eye",
+            "potato",
+            "seed",
+            "spirit"
+          ],
+          "room_ids": [
+            "life-body",
+            "science-formal-models"
+          ],
+          "contents": [
+            "potato biology",
+            "neurobiology",
+            "whole-body physiology",
+            "models",
+            "experiments",
+            "evidence boundaries"
+          ],
+          "exits": [
+            "living-trunk",
+            "research-workshop",
+            "world-gates"
+          ]
+        },
+        {
+          "id": "civic-field",
+          "label": "Civic Field / Institutions",
+          "kind": "public place",
+          "function": "Material/social systems where governance, law, economy, infrastructure and geography produce observable consequences.",
+          "center_nodes": [
+            "house",
+            "garden",
+            "fruit",
+            "door"
+          ],
+          "room_ids": [
+            "world-systems"
+          ],
+          "contents": [
+            "countries",
+            "law",
+            "politics",
+            "economy",
+            "infrastructure",
+            "institutions",
+            "public services"
+          ],
+          "exits": [
+            "culture-square",
+            "history-road",
+            "world-gates",
+            "below-dependencies"
+          ]
+        },
+        {
+          "id": "culture-square",
+          "label": "Culture Square",
+          "kind": "social place",
+          "function": "Public/shared space where repeated interaction becomes norms, identity, memory, media and institutions.",
+          "center_nodes": [
+            "spirit",
+            "shadow",
+            "garden",
+            "tree"
+          ],
+          "room_ids": [
+            "culture-information",
+            "works"
+          ],
+          "contents": [
+            "platforms",
+            "subcultures",
+            "media",
+            "ritual",
+            "public discourse",
+            "memes",
+            "creative culture"
+          ],
+          "exits": [
+            "civic-field",
+            "history-road",
+            "below-shadow",
+            "heaven-garden"
+          ]
+        },
+        {
+          "id": "history-road",
+          "label": "History Road",
+          "kind": "route/place",
+          "function": "Visible temporal sequence connecting occurrence, source, reception, revision and present interpretation.",
+          "center_nodes": [
+            "root",
+            "spiral",
+            "seed",
+            "eye"
+          ],
+          "room_ids": [
+            "time-history",
+            "archive-sources"
+          ],
+          "contents": [
+            "chronology",
+            "developmental genealogy",
+            "attestation",
+            "reception",
+            "canon revision"
+          ],
+          "exits": [
+            "root-archive",
+            "culture-square",
+            "research-workshop"
+          ]
+        },
+        {
+          "id": "research-workshop",
+          "label": "Research Workshop",
+          "kind": "workplace",
+          "function": "World-facing part of Research Lab where hypotheses, experiments, models and promotion decisions are made visible.",
+          "center_nodes": [
+            "forge-repair",
+            "eye",
+            "knowledge-fork",
+            "fruit"
+          ],
+          "room_ids": [
+            "research-lab",
+            "science-formal-models"
+          ],
+          "contents": [
+            "open questions",
+            "experiments",
+            "model testing",
+            "promotion/rejection",
+            "negative results"
+          ],
+          "exits": [
+            "crossroads",
+            "below-forge",
+            "heaven-orchard"
+          ]
+        },
+        {
+          "id": "world-gates",
+          "label": "World Gates / Doors",
+          "kind": "threshold network",
+          "function": "Concrete Doors between roles, Rooms, institutions, statuses and capabilities.",
+          "center_nodes": [
+            "door",
+            "son",
+            "axis"
+          ],
+          "room_ids": [
+            "potatoverse-canon",
+            "world-systems",
+            "culture-information",
+            "traditions-texts",
+            "research-lab"
+          ],
+          "contents": [
+            "citizenship",
+            "courts",
+            "initiation",
+            "publication",
+            "role change",
+            "access",
+            "interfaces",
+            "hyperlinks"
+          ],
+          "exits": [
+            "heaven",
+            "below",
+            "other-world-zones"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "below-plane",
+      "label": "Below / Root-Forge Plane",
+      "position": "lower",
+      "anchor_regime": "roots, buried memory, unresolved residue and transformation",
+      "question": "What lies beneath the visible state, what is feeding it, what is unresolved, and what can be transformed?",
+      "center_expression": "local root-junction / Forge hearth",
+      "zones": [
+        {
+          "id": "root-archive",
+          "label": "Root Archive",
+          "kind": "root/place",
+          "function": "Buried provenance and memory: sources, ancestry, earlier states and the material that feeds present interpretation.",
+          "center_nodes": [
+            "root",
+            "eye",
+            "seed"
+          ],
+          "room_ids": [
+            "archive-sources",
+            "time-history"
+          ],
+          "contents": [
+            "sources",
+            "provenance",
+            "witnesses",
+            "memory recovery",
+            "earlier canon states",
+            "ancestry"
+          ],
+          "exits": [
+            "seed-bed",
+            "history-road",
+            "shadow-gallery",
+            "forge"
+          ]
+        },
+        {
+          "id": "seed-bed",
+          "label": "Seed Bed / Burial",
+          "kind": "potential/place",
+          "function": "Dormant or buried capacity waiting for conditions, discernment and Door transition before growth.",
+          "center_nodes": [
+            "seed",
+            "root",
+            "son"
+          ],
+          "room_ids": [
+            "potatoverse-canon",
+            "life-body",
+            "time-history",
+            "works"
+          ],
+          "contents": [
+            "dormancy",
+            "buried capacity",
+            "stored pattern",
+            "future possibilities",
+            "unfinished works"
+          ],
+          "exits": [
+            "root-archive",
+            "forge",
+            "world-trunk"
+          ]
+        },
+        {
+          "id": "ash-mud",
+          "label": "Ash / Mud",
+          "kind": "residue terrain",
+          "function": "Mixed residue after damage, conflict, collapse or incomplete processing; not yet Soil and not automatically Strife.",
+          "center_nodes": [
+            "root",
+            "shadow",
+            "forge-repair"
+          ],
+          "room_ids": [
+            "time-history",
+            "culture-information",
+            "research-lab"
+          ],
+          "contents": [
+            "grief",
+            "contradiction",
+            "broken narratives",
+            "low-resolution residue",
+            "unresolved records",
+            "failed attempts"
+          ],
+          "exits": [
+            "swamp",
+            "forge",
+            "root-archive"
+          ]
+        },
+        {
+          "id": "shadow-gallery",
+          "label": "Shadow / Hidden Layer",
+          "kind": "perceptual overlay/place",
+          "function": "Space for omitted evidence, disowned capacity, blind spots, projection risks and model/institutional shadow.",
+          "center_nodes": [
+            "shadow",
+            "eye",
+            "knowledge-fork"
+          ],
+          "room_ids": [
+            "culture-information",
+            "time-history",
+            "research-lab",
+            "potatoverse-canon"
+          ],
+          "contents": [
+            "historical omissions",
+            "positive shadow",
+            "institutional blind spots",
+            "model counterexamples",
+            "unintegrated identity material"
+          ],
+          "exits": [
+            "forge",
+            "root-archive",
+            "world-culture"
+          ]
+        },
+        {
+          "id": "wide-road",
+          "label": "Wide Road",
+          "kind": "route",
+          "function": "Low-resistance repetition in which unresolved patterns reproduce without meaningful state change.",
+          "center_nodes": [
+            "spiral",
+            "tree",
+            "shadow"
+          ],
+          "room_ids": [
+            "culture-information",
+            "world-systems",
+            "time-history"
+          ],
+          "contents": [
+            "reaction loops",
+            "role-lock",
+            "attention capture",
+            "habitual conflict",
+            "unchanged recurrence"
+          ],
+          "exits": [
+            "swamp",
+            "forge",
+            "world-culture"
+          ]
+        },
+        {
+          "id": "swamp",
+          "label": "Swamp",
+          "kind": "regime/place",
+          "function": "Entangled lower regime of opacity, unresolved recurrence, blocked correction and difficult exit.",
+          "center_nodes": [
+            "swamp",
+            "shadow",
+            "tree"
+          ],
+          "room_ids": [
+            "culture-information",
+            "world-systems",
+            "research-lab",
+            "potatoverse-canon"
+          ],
+          "contents": [
+            "capture",
+            "dependency",
+            "fragmentation",
+            "archive warfare",
+            "blocked repair",
+            "systemic residue"
+          ],
+          "exits": [
+            "forge",
+            "wide-road",
+            "root-archive"
+          ],
+          "boundary": "Swamp is not Below itself; it is one lower regime."
+        },
+        {
+          "id": "forge",
+          "label": "Forge / Repair Hearth",
+          "kind": "transformation place",
+          "function": "Bounded lower workspace where harm, contradiction, negative results and broken structures are heated, tested, redesigned and either reintegrated or legitimately separated.",
+          "center_nodes": [
+            "forge-repair",
+            "door",
+            "fruit",
+            "seed"
+          ],
+          "room_ids": [
+            "research-lab",
+            "practice-ethics",
+            "law-justice",
+            "model-testing"
+          ],
+          "contents": [
+            "evidence reconstruction",
+            "responsibility",
+            "repair plans",
+            "redesign",
+            "negative results",
+            "restitution",
+            "release",
+            "new tools"
+          ],
+          "exits": [
+            "seed-bed",
+            "world-research",
+            "heaven-garden",
+            "heaven-orchard"
+          ],
+          "boundary": "Forge is not Swamp. It is the lower transformation mechanism that can process Swamp/Ash residue."
+        },
+        {
+          "id": "underworld-caverns",
+          "label": "Underworld / Descent Caverns",
+          "kind": "comparative place",
+          "function": "Tradition-specific underworld, death, descent, demonology and initiatory material reached only through historically bounded comparative Doors.",
+          "center_nodes": [
+            "door",
+            "root",
+            "shadow"
+          ],
+          "room_ids": [
+            "traditions-texts",
+            "culture-information"
+          ],
+          "contents": [
+            "Duat",
+            "Hades",
+            "Sheol",
+            "Hel",
+            "Bardo transition material",
+            "demonologies",
+            "chthonic traditions",
+            "esoteric descent"
+          ],
+          "exits": [
+            "root-archive",
+            "forge",
+            "world-religion"
+          ],
+          "boundary": "Comparative traditions remain their own systems; this zone is a research/navigation neighborhood, not one universal underworld."
+        }
+      ]
+    }
+  ],
+  "repeated_center_model": {
+    "global_semantic_center": "potato-of-life",
+    "global_spatial_orientation": "axis",
+    "local_center_rule": "Every Room/process/transition gets a scoped junction. The local center is not another object; it is the point where that scope receives inputs, asks its governing question, applies tests, chooses a Door/handoff and returns outputs.",
+    "local_center_components": [
+      "governing question",
+      "active center nodes",
+      "current plane/zone",
+      "inputs",
+      "tests",
+      "available Doors",
+      "handoff targets",
+      "return path"
+    ],
+    "process_center_rule": "A process has a center at every meaningful transition: before-state → junction/test → after-state. The center moves with the active question.",
+    "room_center_rule": "A Room's local center is its function plus its current center dossiers/tests/handoffs; the Room may project that center into Heaven, World and/or Below zones.",
+    "navigation_phrase": "Where am I standing? What is the center of this question here? Which Door changes the state? Where does the result go?"
+  },
+  "vertical_routes": [
+    {
+      "id": "life-ascent-return",
+      "route": [
+        "below:seed-bed/root-archive",
+        "world:living-trunk/world-gates",
+        "heaven:canopy/garden",
+        "heaven:orchard",
+        "world:return"
+      ],
+      "meaning": "Buried capacity becomes living growth, cultivated Fruit and accountable return."
+    },
+    {
+      "id": "strife-descent",
+      "route": [
+        "world:culture-square/history-road",
+        "below:shadow-gallery/ash-mud",
+        "below:wide-road",
+        "below:swamp"
+      ],
+      "meaning": "Unintegrated knowledge/history can descend into repeated conflict and capture."
+    },
+    {
+      "id": "repair-rise",
+      "route": [
+        "below:swamp/ash-mud",
+        "below:forge",
+        "below:seed-bed",
+        "world:research-workshop/world-gates",
+        "heaven:garden/orchard",
+        "world:return"
+      ],
+      "meaning": "Repair begins Below, transforms residue in Forge, reopens growth and returns evaluated Fruit to the World."
+    }
+  ]
+}
