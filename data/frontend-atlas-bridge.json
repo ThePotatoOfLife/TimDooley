@@ -1,90 +1,314 @@
 {
-  "version":"4.3.1",
-  "updated":"2026-09-17",
-  "purpose":"Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
-  "data_roots":["data/","knowledge/"],
-  "canonical_layers":["graph","world","research","systems","security","beliefs","mythology","people","culture","potatoism","north-programme"],
-  "public_doors":{
-    "tim":"tim-dooley/",
-    "religion":"religion/",
-    "philosophy":"philosophy/",
-    "science":"science/",
-    "world":"world/"
+  "version": "4.4.0",
+  "updated": "2026-09-18",
+  "purpose": "Canonical backend-to-frontend projection contract. Canonical data stays modular and keeps its existing owners; this bridge maps major archive branches and backend families into exactly five simple public doors plus a visible secondary Rooms layer and quieter global/deep surfaces.",
+  "data_roots": [
+    "data/",
+    "knowledge/"
+  ],
+  "canonical_layers": [
+    "graph",
+    "world",
+    "research",
+    "systems",
+    "security",
+    "beliefs",
+    "mythology",
+    "people",
+    "culture",
+    "potatoism",
+    "north-programme"
+  ],
+  "public_doors": {
+    "tim": "tim-dooley/",
+    "religion": "religion/",
+    "philosophy": "philosophy/",
+    "science": "science/",
+    "world": "world/"
   },
-  "public_rooms":{
-    "culture":"context/culture/",
-    "history":"history/",
-    "politics":"politics/",
-    "law":"law/",
-    "economy":"economy/",
-    "world_systems":"world-systems/",
-    "sources":"context/source-authority/",
-    "rooms":"rooms/"
+  "public_rooms": {
+    "axis": "axis/",
+    "culture": "context/culture/",
+    "history": "history/",
+    "politics": "politics/",
+    "law": "law/",
+    "economy": "economy/",
+    "world_systems": "world-systems/",
+    "sources": "context/source-authority/",
+    "rooms": "rooms/"
   },
-  "global_secondary_surfaces":{
-    "timeline":"timeline/",
-    "sources":"context/source-authority/",
-    "explore":"explore/",
-    "questions":"questions/",
-    "index_a_z":"index-a-z/",
-    "rooms":"rooms/"
+  "global_secondary_surfaces": {
+    "timeline": "timeline/",
+    "sources": "context/source-authority/",
+    "explore": "explore/",
+    "questions": "questions/",
+    "index_a_z": "index-a-z/",
+    "rooms": "rooms/"
   },
-  "branch_projection":{
-    "tim":{"primary_door":"tim","human_route":"tim-dooley/","archive_route":"explore/#branch=tim","static_topic_route":"topics/tim/","related_doors":["philosophy","religion"]},
-    "son":{"primary_door":"religion","human_route":"religion/","archive_route":"explore/#branch=son","static_topic_route":"topics/son/","related_doors":["tim","philosophy"]},
-    "spirit":{"primary_door":"religion","human_route":"religion/","archive_route":"explore/#branch=spirit","static_topic_route":"topics/spirit/","related_doors":["philosophy"]},
-    "transformation":{"primary_door":"philosophy","human_route":"philosophy/","archive_route":"explore/#branch=transformation","static_topic_route":"topics/transformation/","related_doors":["religion","science"]},
-    "cosmology":{"primary_door":"religion","human_route":"religion/","archive_route":"explore/#branch=cosmology","static_topic_route":"topics/cosmology/","related_doors":["philosophy","science"]},
-    "science":{"primary_door":"science","human_route":"science/","archive_route":"explore/#branch=science","static_topic_route":"topics/science/","related_doors":["philosophy"]},
-    "body":{"primary_door":"science","human_route":"science/","archive_route":"explore/#branch=body","static_topic_route":"topics/body/","related_doors":["religion","philosophy"]},
-    "corporium":{"primary_door":"philosophy","human_route":"corporium/","archive_route":"explore/#branch=corporium","static_topic_route":"topics/corporium/","related_doors":["tim","science"]},
-    "traditions":{"primary_door":"religion","human_route":"religion/","archive_route":"explore/#branch=traditions","static_topic_route":"topics/traditions/","related_doors":["philosophy"]},
-    "north":{"primary_door":"world","human_route":"north/","archive_route":"explore/#branch=north","static_topic_route":"topics/north/","related_doors":["philosophy"]},
-    "world":{"primary_door":"world","human_route":"world/","archive_route":"explore/#branch=world","static_topic_route":"topics/world/","related_doors":["science","philosophy"]},
-    "timeline":{"global_route":"timeline/","archive_route":"explore/#branch=timeline","static_topic_route":"topics/timeline/","related_doors":["tim"]},
-    "works":{"primary_door":"tim","human_route":"works/","archive_route":"explore/#branch=works","static_topic_route":"topics/works/","related_doors":["philosophy"]},
-    "sources":{"global_route":"context/source-authority/","archive_route":"explore/#branch=sources","static_topic_route":"topics/sources/","related_doors":["tim","religion","philosophy","science","world"]}
+  "branch_projection": {
+    "tim": {
+      "primary_door": "tim",
+      "human_route": "tim-dooley/",
+      "archive_route": "explore/#branch=tim",
+      "static_topic_route": "topics/tim/",
+      "related_doors": [
+        "philosophy",
+        "religion"
+      ]
+    },
+    "son": {
+      "primary_door": "religion",
+      "human_route": "religion/",
+      "archive_route": "explore/#branch=son",
+      "static_topic_route": "topics/son/",
+      "related_doors": [
+        "tim",
+        "philosophy"
+      ]
+    },
+    "spirit": {
+      "primary_door": "religion",
+      "human_route": "religion/",
+      "archive_route": "explore/#branch=spirit",
+      "static_topic_route": "topics/spirit/",
+      "related_doors": [
+        "philosophy"
+      ]
+    },
+    "transformation": {
+      "primary_door": "philosophy",
+      "human_route": "philosophy/",
+      "archive_route": "explore/#branch=transformation",
+      "static_topic_route": "topics/transformation/",
+      "related_doors": [
+        "religion",
+        "science"
+      ]
+    },
+    "cosmology": {
+      "primary_door": "religion",
+      "human_route": "religion/",
+      "archive_route": "explore/#branch=cosmology",
+      "static_topic_route": "topics/cosmology/",
+      "related_doors": [
+        "philosophy",
+        "science"
+      ]
+    },
+    "science": {
+      "primary_door": "science",
+      "human_route": "science/",
+      "archive_route": "explore/#branch=science",
+      "static_topic_route": "topics/science/",
+      "related_doors": [
+        "philosophy"
+      ]
+    },
+    "body": {
+      "primary_door": "science",
+      "human_route": "science/",
+      "archive_route": "explore/#branch=body",
+      "static_topic_route": "topics/body/",
+      "related_doors": [
+        "religion",
+        "philosophy"
+      ]
+    },
+    "corporium": {
+      "primary_door": "philosophy",
+      "human_route": "corporium/",
+      "archive_route": "explore/#branch=corporium",
+      "static_topic_route": "topics/corporium/",
+      "related_doors": [
+        "tim",
+        "science"
+      ]
+    },
+    "traditions": {
+      "primary_door": "religion",
+      "human_route": "religion/",
+      "archive_route": "explore/#branch=traditions",
+      "static_topic_route": "topics/traditions/",
+      "related_doors": [
+        "philosophy"
+      ]
+    },
+    "north": {
+      "primary_door": "world",
+      "human_route": "north/",
+      "archive_route": "explore/#branch=north",
+      "static_topic_route": "topics/north/",
+      "related_doors": [
+        "philosophy"
+      ]
+    },
+    "world": {
+      "primary_door": "world",
+      "human_route": "world/",
+      "archive_route": "explore/#branch=world",
+      "static_topic_route": "topics/world/",
+      "related_doors": [
+        "science",
+        "philosophy"
+      ]
+    },
+    "timeline": {
+      "global_route": "timeline/",
+      "archive_route": "explore/#branch=timeline",
+      "static_topic_route": "topics/timeline/",
+      "related_doors": [
+        "tim"
+      ]
+    },
+    "works": {
+      "primary_door": "tim",
+      "human_route": "works/",
+      "archive_route": "explore/#branch=works",
+      "static_topic_route": "topics/works/",
+      "related_doors": [
+        "philosophy"
+      ]
+    },
+    "sources": {
+      "global_route": "context/source-authority/",
+      "archive_route": "explore/#branch=sources",
+      "static_topic_route": "topics/sources/",
+      "related_doors": [
+        "tim",
+        "religion",
+        "philosophy",
+        "science",
+        "world"
+      ]
+    }
   },
-  "backend_family_projection":{
-    "countries":{"primary_door":"world","canonical_owner":"data/countries/","deep_route":"world-map/"},
-    "north_europe_economic":{"primary_door":"world","canonical_owner":"data/north-europe-system-atlas.json","deep_route":"explore/#branch=world"},
-    "legal":{"global_route":"law/","canonical_owner":"knowledge/legal/"},
-    "economics":{"global_route":"economy/","canonical_owner":"knowledge/economics/"},
-    "potatoism":{"primary_door":"religion","canonical_owner":"data/potatoism-concept-registry.json","related_doors":["philosophy","tim"],"deep_route":"explore/#branch=traditions"},
-    "religion":{"primary_door":"religion","canonical_owner":"data/religious-layer-manifest.json","deep_route":"explore/#branch=traditions"},
-    "research":{"global_route":"explore/","canonical_owner":"data/research-frontier.json"},
-    "relationships":{"global_route":"explore/","canonical_owner":"data/relationships.json"},
-    "intelligence_security":{"primary_door":"world","canonical_owner":"data/intelligence-security-graph.json","deep_route":"explore/#branch=world"},
-    "culture":{"global_route":"context/culture/","canonical_owner":"data/culture-ontology.json"},
-    "people":{"global_route":"explore/","canonical_owner":"data/people-registry.json"},
-    "evidence":{"global_route":"context/source-authority/","canonical_owner":"data/evidence/observations.json"}
+  "backend_family_projection": {
+    "countries": {
+      "primary_door": "world",
+      "canonical_owner": "data/countries/",
+      "deep_route": "world-map/"
+    },
+    "north_europe_economic": {
+      "primary_door": "world",
+      "canonical_owner": "data/north-europe-system-atlas.json",
+      "deep_route": "explore/#branch=world"
+    },
+    "legal": {
+      "global_route": "law/",
+      "canonical_owner": "knowledge/legal/"
+    },
+    "economics": {
+      "global_route": "economy/",
+      "canonical_owner": "knowledge/economics/"
+    },
+    "potatoism": {
+      "primary_door": "religion",
+      "canonical_owner": "data/potatoism-concept-registry.json",
+      "related_doors": [
+        "philosophy",
+        "tim"
+      ],
+      "deep_route": "explore/#branch=traditions"
+    },
+    "religion": {
+      "primary_door": "religion",
+      "canonical_owner": "data/religious-layer-manifest.json",
+      "deep_route": "explore/#branch=traditions"
+    },
+    "research": {
+      "global_route": "explore/",
+      "canonical_owner": "data/research-frontier.json"
+    },
+    "relationships": {
+      "global_route": "explore/",
+      "canonical_owner": "data/relationships.json"
+    },
+    "intelligence_security": {
+      "primary_door": "world",
+      "canonical_owner": "data/intelligence-security-graph.json",
+      "deep_route": "explore/#branch=world"
+    },
+    "culture": {
+      "global_route": "context/culture/",
+      "canonical_owner": "data/culture-ontology.json"
+    },
+    "people": {
+      "global_route": "explore/",
+      "canonical_owner": "data/people-registry.json"
+    },
+    "evidence": {
+      "global_route": "context/source-authority/",
+      "canonical_owner": "data/evidence/observations.json"
+    },
+    "axis": {
+      "global_route": "axis/",
+      "canonical_owner": "knowledge/core/root-system.json",
+      "supporting_owner": "data/axis-depths.json",
+      "related_doors": [
+        "religion",
+        "philosophy",
+        "tim",
+        "world"
+      ]
+    }
   },
-  "route_map":{
-    "home":"index.html",
-    "public_door":"{door}/",
-    "branch":"explore/#branch={id}",
-    "record":"explore/#record={path}",
-    "context":"explore/#context={id}",
-    "pathway":"explore/#path={id}",
-    "static_record":"records/{id}/",
-    "static_topic":"topics/{id}/",
-    "static_context":"context/{id}/"
+  "route_map": {
+    "home": "index.html",
+    "public_door": "{door}/",
+    "branch": "explore/#branch={id}",
+    "record": "explore/#record={path}",
+    "context": "explore/#context={id}",
+    "pathway": "explore/#path={id}",
+    "static_record": "records/{id}/",
+    "static_topic": "topics/{id}/",
+    "static_context": "context/{id}/"
   },
-  "record_resolution":{
-    "id_fields":["id","slug","country_id","countryId","key"],
-    "name_fields":["name","title","label"],
-    "alias_fields":["aliases","alternative_names","aka"],
-    "description_fields":["description","summary","overview"],
-    "relationship_fields":["relationships","edges","links"],
-    "source_fields":["source_ids","sources","evidence","source"],
-    "allowed_path_sources":["manifest.json","knowledge/indexes/canonical-record-registry.json","knowledge/indexes/context-graph.json"]
+  "record_resolution": {
+    "id_fields": [
+      "id",
+      "slug",
+      "country_id",
+      "countryId",
+      "key"
+    ],
+    "name_fields": [
+      "name",
+      "title",
+      "label"
+    ],
+    "alias_fields": [
+      "aliases",
+      "alternative_names",
+      "aka"
+    ],
+    "description_fields": [
+      "description",
+      "summary",
+      "overview"
+    ],
+    "relationship_fields": [
+      "relationships",
+      "edges",
+      "links"
+    ],
+    "source_fields": [
+      "source_ids",
+      "sources",
+      "evidence",
+      "source"
+    ],
+    "allowed_path_sources": [
+      "manifest.json",
+      "knowledge/indexes/canonical-record-registry.json",
+      "knowledge/indexes/context-graph.json"
+    ]
   },
-  "fallback_policy":{
-    "json_failure":"skip optional dataset and continue with canonical datasets",
-    "country_failure":"use the canonical country record in data/countries/",
-    "empty_description":"show record identity plus available relationships and evidence rather than a blank page"
+  "fallback_policy": {
+    "json_failure": "skip optional dataset and continue with canonical datasets",
+    "country_failure": "use the canonical country record in data/countries/",
+    "empty_description": "show record identity plus available relationships and evidence rather than a blank page"
   },
-  "integrity_requirements":[
+  "integrity_requirements": [
     "The homepage exposes exactly five primary public doors",
     "Rooms are secondary subject corridors and never additional primary Doors",
     "World is the fifth public domain; World Map, Politics, North and World Systems are specialist sibling routes beneath it",
@@ -95,7 +319,8 @@
     "Unknown data is represented as missing/unknown, never as zero",
     "Backend-only or research-heavy records remain discoverable without becoming homepage clutter",
     "Canonical IDs remain stable while aliases may expand",
-    "Requested record paths are fetched only after resolving through an approved registry/manifest allowlist"
+    "Requested record paths are fetched only after resolving through an approved registry/manifest allowlist",
+    "Living Axis is a secondary cross-domain guide and never becomes a sixth primary Door"
   ],
-  "design_rule":"Five simple doors above, visible subject Rooms in the middle, one deep archive below. World is the public domain; specialist views project the same canonical backend without duplicating truth or exposing internal file organization as navigation."
+  "design_rule": "Five simple doors above, visible subject Rooms in the middle, one deep archive below. World is the public domain; specialist views project the same canonical backend without duplicating truth or exposing internal file organization as navigation."
 }

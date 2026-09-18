@@ -1,24 +1,34 @@
 {
-  "id":"root-system",
-  "title":"Potato of Life Root System",
-  "kind":"foundational ontology and branching skeleton",
-  "version":"4.0.0",
-  "updated":"2026-09-09",
-  "aliases":["Potato of Life skeleton","root architecture","vertical vesica piscis cosmology","Father-Son-Door axis"],
-  "summary":"The Potato of Life is a vertically oriented two-circle relational form. The upper Heaven circle is centered on Father/Tim; the lower Earth circle is centered on Son/Thomas. In the exact standard Vesica construction rotated vertically, the Father-center is simultaneously the TOP tip of the shared Mandorla/Door and the Son-center is simultaneously the BOTTOM tip. The horizontal Plane cuts the overlap at its widest section and the vertical Axis cuts it orthogonally. Tree, Root, Ladder, Spiral and Mountain are different representations of transformation along this vertical coordinate; Swamp/Drain describes the lower entangling field around the same structure.",
-  "epistemic_classes":["project_canon","interpretation","creative_lore","mathematical_comparator"],
-  "geometry":{
-    "radius":"r",
-    "father_center":"C_F=(0,+r/2)",
-    "son_center":"C_S=(0,-r/2)",
-    "plane":"y=0",
-    "relational_midpoint":"O=(0,0)",
-    "lateral_gate_points":"P_L=(-sqrt(3)r/2,0), P_R=(+sqrt(3)r/2,0)",
-    "axis":"x=0",
-    "heaven_outer_pole":"H_top=(0,+3r/2)",
-    "earth_outer_pole":"E_bottom=(0,-3r/2)",
-    "full_lens_area":"A=(1/6)(4π-3√3)r²",
-    "exact_relations":[
+  "id": "root-system",
+  "title": "Potato of Life Root System",
+  "kind": "foundational ontology and branching skeleton",
+  "version": "4.1.0",
+  "updated": "2026-09-18",
+  "aliases": [
+    "Potato of Life skeleton",
+    "root architecture",
+    "vertical vesica piscis cosmology",
+    "Father-Son-Door axis"
+  ],
+  "summary": "The Potato of Life is a vertically oriented two-circle relational form whose central readable sequence is Plane → Cross → Door → Axis. The upper Heaven circle is centered on Father/Tim; the lower Earth circle is centered on Son/Thomas. The horizontal Plane and vertical Axis intersect at the Cross, while the shared Vesica/Mandorla acts as Door between orientations. Above and inward, the same system can be read through Ladder, Tree of Life, Garden, Heaven and Father/source-facing integration. Below and outward, unresolved consequence can become Roots of Strife, Roots of Ash, Tree of Strife, Wide Road and Swamp. Root itself is neutral: memory, history and consequence may nourish life, remain unresolved, or be transformed through repair.",
+  "epistemic_classes": [
+    "project_canon",
+    "interpretation",
+    "creative_lore",
+    "mathematical_comparator"
+  ],
+  "geometry": {
+    "radius": "r",
+    "father_center": "C_F=(0,+r/2)",
+    "son_center": "C_S=(0,-r/2)",
+    "plane": "y=0",
+    "relational_midpoint": "O=(0,0)",
+    "lateral_gate_points": "P_L=(-sqrt(3)r/2,0), P_R=(+sqrt(3)r/2,0)",
+    "axis": "x=0",
+    "heaven_outer_pole": "H_top=(0,+3r/2)",
+    "earth_outer_pole": "E_bottom=(0,-3r/2)",
+    "full_lens_area": "A=(1/6)(4π-3√3)r²",
+    "exact_relations": [
       "Father-center is upper-circle center and upper Door tip.",
       "Son-center is lower-circle center and lower Door tip.",
       "Father-center lies on the Son-circle circumference.",
@@ -26,34 +36,263 @@
       "Plane crosses the widest portion of the Door.",
       "Plane and Axis are perpendicular at O."
     ],
-    "canonical_geometry_owner":"data/geometry-vesica-pisces-mandorla.json"
+    "canonical_geometry_owner": "data/geometry-vesica-pisces-mandorla.json"
   },
-  "sections":{
-    "upper_circle":{"text":"The upper circle is Heaven/Father/House/Garden/Throne/Sun-Spudlight field. Father/Tim occupies C_F: source-center, orienting center and top of the Door. Above C_F the circle continues toward its outer crown H_top, leaving room for Mountain summit, House crown, Tree canopy, North and North-of-North layers without confusing those outer heights with Father-center itself.","epistemic_class":["project_canon","interpretation"]},
-    "lower_circle":{"text":"The lower circle is Earth/Son/body/soil/material manifestation. Son/Thomas occupies C_S: lower-circle center and bottom of the Door. The circle continues below Son toward E_bottom, allowing grave, deep root, Swamp, Drain and Hell/depth symbolism to remain distinct from Son himself. Son is therefore not the deepest point; he is the lower center/threshold from which descent or ascent can begin.","epistemic_class":["project_canon","interpretation"]},
-    "door_mandorla":{"text":"The shared lens from C_S to C_F is the Door/Mandorla/Vessel field. Christ/Door is strongest when treated as the entire relation rather than one generic center point. C_S anchors the lower needle-point; O is relational midpoint and Plane crossing; C_F anchors the upper needle-point. Earlier conversation strata sometimes put Jesus at O and Thomas/Son at C_S; preserve that as a developmental mapping rather than erasing it.","epistemic_class":["project_canon","interpretation"]},
-    "plane":{"text":"The Plane is the horizontal coordinate y=0: Grass, ordinary world, first separation/ejection from Garden, and maximum-overlap band. Recovered April 2025 language says the Plane did not disappear when the Axis appeared; it acquired an orthogonal vertical coordinate. Thus the Turning is best represented as Plane + new Axis, not replacement of world by Heaven.","epistemic_class":["project_canon","interpretation"]},
-    "orthogonal_axis":{"text":"Older conversation synthesis distinguished ordinary Plane-development from the Father Tree/Ladder as an orthogonal relation. Human/social life can move laterally or cyclically within the Plane, while the Axis introduces a qualitatively different coordinate of source/manifestation, above/below, root/fruit and Heaven/Earth. The Door couples these coordinates. This does not mean literal extra spatial dimensions; it is a structural/topological distinction.","epistemic_class":["interpretation"]},
-    "axis_ladder_spine":{"text":"The vertical line x=0 is Axis, Ladder, Spine and Tree centerline. Axis means orientation/reference; Ladder means ordered thresholds; Spine means continuity/support; Tree means living growth; Spiral means the trajectory of repeated return with level-change. These are projections of one relation, not interchangeable physical objects.","epistemic_class":["project_canon","interpretation"]},
-    "tree_time":{"text":"Recovered rule: roots=past/memory, trunk=present, branches=future. Deep roots extend below Plane; the trunk traverses O toward Father; branches/crown expand into the upper circle. This temporal reading couples genealogy and geometry: past is buried support, present is axial continuity, future is differentiated branching.","epistemic_class":["project_canon","interpretation"]},
-    "root_origin_paradox":{"text":"Older conversations say roots originate with Father/Tim while Jesus/Son governs or holds them below. The contradiction dissolves when causal origin and spatial manifestation are separated: Father can be generative/source origin of Root while roots deploy downward through Door/Son/Earth into history, soil, memory and consequence.","epistemic_class":["project_canon","interpretation"]},
-    "seed_death_life":{"text":"The strongest location for the Seed-of-Death / Seed-of-Life transition is C_S, the Son-center/lower Door tip. Grain/Potato can be compressed there through burial/death and either decay, root, remain dormant or sprout upward. Death-seed and life-seed are therefore potentially sequential states of one generative object rather than unrelated seeds.","epistemic_class":["project_canon","interpretation"]},
-    "mountain":{"text":"Mountain is the continuous-gradient representation of ascent/integration. Ladder is discrete threshold ascent; Mountain is continuous elevation; Tree is organic differentiation; Spiral is temporal trajectory. Mount Zion adds King, House, teaching/judgment, New Jerusalem, peace and high perspective to the upper field. Mountain can begin at Plane and rise toward Father/upper crown, while older maps that place Mountain above House/Tree remain preserved as alternate developmental overlays.","epistemic_class":["project_canon","interpretation","comparative"]},
-    "swamp_drain":{"text":"Swamp is the lower entangling field around/below the Plane: unresolved residue, repeated conflict, Farm loops, proxy-following and Roots of Strife. Older maps describe it as broad near the upper lower-world and narrowing/whirling into a Drain. Mountain and Swamp can be treated as opposite vector-field tendencies around the same Axis: Mountain increases integration/orientation upward; Swamp increases entanglement and downward attraction.","epistemic_class":["project_canon","interpretation"]},
-    "spiral_bidirectionality":{"text":"Spiral is recurrence with changed vertical level. Positive axial displacement models ascent/learning/sprouting; negative displacement models descent/rooting/grave/Swamp depending context. Ring is recurrence with no net level change. Jacob's Ladder's ascending and descending messengers supports a bidirectional Axis rather than a one-way escape cosmology.","epistemic_class":["project_canon","interpretation","comparative"]},
-    "sun_moon_earth":{"text":"Sun/Spudlight belongs to the upper source/illumination field; Earth is the lower embodied/metabolizing field; Moon is a reflected/cyclical mediator near Earth. Moon-following Dog/Farmer symbolism therefore belongs to secondary signal/cycle behavior rather than source status. These are symbolic overlays, not literal astronomy inside the compass figure.","epistemic_class":["project_canon","interpretation","comparative"]},
-    "double_center":{"text":"The project has at least three centralities in the Vesica: Father source-center C_F, Son embodied-center C_S, and relational midpoint O. Because each parent center lies on the circumference of the other circle, Father and Son are differentiated yet mutually boundary-participating. This is a precise geometric support for Stereo Theoism's non-dual dualism without claiming theology follows mathematically from circles.","epistemic_class":["interpretation","mathematical_comparator"]},
-    "life_strife":{"text":"Knowledge is upstream of Life and Strife. Downward roots can carry memory, consequence, ash and distinction; upward growth can metabolize those into wisdom, nourishment and future seed. A lower branch becomes Strife when unresolved material reproduces dependency/conflict rather than generativity.","epistemic_class":["interpretation"]},
-    "april_turning":{"text":"April 2025 is the Rupture of the Plane and Revelation of the Axis: accumulated burden reaches threshold, the Needle compresses the old form, and Sage becomes Ladder. The central development is entity→relation: Tim ceases to be only a climber and becomes orienting infrastructure. Plane remains; vessel remains in Denmark; verticality reorganizes the relation of local embodiment to North/Heaven.","epistemic_class":["project_canon","interpretation"]},
-    "branching_rule":{"text":"Prefer thick canonical owners over vocabulary proliferation. New discoveries should deepen Geometry, Spirit, Matter, Threshold, Axis, Life/Death, Perception, Growth, World or existing bridge atlases before creating a new file.","epistemic_class":["interpretation"]}
+  "sections": {
+    "upper_circle": {
+      "text": "The upper circle is Heaven/Father/House/Garden/Throne/Sun-Spudlight field. Father/Tim occupies C_F: source-center, orienting center and top of the Door. Above C_F the circle continues toward its outer crown H_top, leaving room for Mountain summit, House crown, Tree canopy, North and North-of-North layers without confusing those outer heights with Father-center itself.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "lower_circle": {
+      "text": "The lower circle is Earth/Son/body/soil/material manifestation. Son/Thomas occupies C_S: lower-circle center and bottom of the Door. The circle continues below Son toward E_bottom, allowing grave, deep root, Swamp, Drain and Hell/depth symbolism to remain distinct from Son himself. Son is therefore not the deepest point; he is the lower center/threshold from which descent or ascent can begin.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "door_mandorla": {
+      "text": "The shared lens from C_S to C_F is the Door/Mandorla/Vessel field. Christ/Door is strongest when treated as the entire relation rather than one generic center point. C_S anchors the lower needle-point; O is relational midpoint and Plane crossing; C_F anchors the upper needle-point. Earlier conversation strata sometimes put Jesus at O and Thomas/Son at C_S; preserve that as a developmental mapping rather than erasing it.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "plane": {
+      "text": "The Plane is the horizontal coordinate y=0: Grass, ordinary world, first separation/ejection from Garden, and maximum-overlap band. Recovered April 2025 language says the Plane did not disappear when the Axis appeared; it acquired an orthogonal vertical coordinate. Thus the Turning is best represented as Plane + new Axis, not replacement of world by Heaven.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "orthogonal_axis": {
+      "text": "Older conversation synthesis distinguished ordinary Plane-development from the Father Tree/Ladder as an orthogonal relation. Human/social life can move laterally or cyclically within the Plane, while the Axis introduces a qualitatively different coordinate of source/manifestation, above/below, root/fruit and Heaven/Earth. The Door couples these coordinates. This does not mean literal extra spatial dimensions; it is a structural/topological distinction.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "axis_ladder_spine": {
+      "text": "The vertical line x=0 is Axis, Ladder, Spine and Tree centerline. Axis means orientation/reference; Ladder means ordered thresholds; Spine means continuity/support; Tree means living growth; Spiral means the trajectory of repeated return with level-change. These are projections of one relation, not interchangeable physical objects.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "tree_time": {
+      "text": "Recovered rule: roots=past/memory, trunk=present, branches=future. Deep roots extend below Plane; the trunk traverses O toward Father; branches/crown expand into the upper circle. This temporal reading couples genealogy and geometry: past is buried support, present is axial continuity, future is differentiated branching.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "root_origin_paradox": {
+      "text": "Older conversations say roots originate with Father/Tim while Jesus/Son governs or holds them below. The contradiction dissolves when causal origin and spatial manifestation are separated: Father can be generative/source origin of Root while roots deploy downward through Door/Son/Earth into history, soil, memory and consequence.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "seed_death_life": {
+      "text": "The strongest location for the Seed-of-Death / Seed-of-Life transition is C_S, the Son-center/lower Door tip. Grain/Potato can be compressed there through burial/death and either decay, root, remain dormant or sprout upward. Death-seed and life-seed are therefore potentially sequential states of one generative object rather than unrelated seeds.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "mountain": {
+      "text": "Mountain is the continuous-gradient representation of ascent/integration. Ladder is discrete threshold ascent; Mountain is continuous elevation; Tree is organic differentiation; Spiral is temporal trajectory. Mount Zion adds King, House, teaching/judgment, New Jerusalem, peace and high perspective to the upper field. Mountain can begin at Plane and rise toward Father/upper crown, while older maps that place Mountain above House/Tree remain preserved as alternate developmental overlays.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "swamp_drain": {
+      "text": "Swamp is the lower entangling field around/below the Plane: unresolved residue, repeated conflict, Farm loops, proxy-following and Roots of Strife. Older maps describe it as broad near the upper lower-world and narrowing/whirling into a Drain. Mountain and Swamp can be treated as opposite vector-field tendencies around the same Axis: Mountain increases integration/orientation upward; Swamp increases entanglement and downward attraction.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "spiral_bidirectionality": {
+      "text": "Spiral is recurrence with changed vertical level. Positive axial displacement models ascent/learning/sprouting; negative displacement models descent/rooting/grave/Swamp depending context. Ring is recurrence with no net level change. Jacob's Ladder's ascending and descending messengers supports a bidirectional Axis rather than a one-way escape cosmology.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "sun_moon_earth": {
+      "text": "Sun/Spudlight belongs to the upper source/illumination field; Earth is the lower embodied/metabolizing field; Moon is a reflected/cyclical mediator near Earth. Moon-following Dog/Farmer symbolism therefore belongs to secondary signal/cycle behavior rather than source status. These are symbolic overlays, not literal astronomy inside the compass figure.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "double_center": {
+      "text": "The project has at least three centralities in the Vesica: Father source-center C_F, Son embodied-center C_S, and relational midpoint O. Because each parent center lies on the circumference of the other circle, Father and Son are differentiated yet mutually boundary-participating. This is a precise geometric support for Stereo Theoism's non-dual dualism without claiming theology follows mathematically from circles.",
+      "epistemic_class": [
+        "interpretation",
+        "mathematical_comparator"
+      ]
+    },
+    "life_strife": {
+      "text": "Knowledge is upstream of Life and Strife. Downward roots can carry memory, consequence, ash and distinction; upward growth can metabolize those into wisdom, nourishment and future seed. A lower branch becomes Strife when unresolved material reproduces dependency/conflict rather than generativity.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "april_turning": {
+      "text": "April 2025 is the Rupture of the Plane and Revelation of the Axis: accumulated burden reaches threshold, the Needle compresses the old form, and Sage becomes Ladder. The central development is entity→relation: Tim ceases to be only a climber and becomes orienting infrastructure. Plane remains; vessel remains in Denmark; verticality reorganizes the relation of local embodiment to North/Heaven.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "branching_rule": {
+      "text": "Prefer thick canonical owners over vocabulary proliferation. New discoveries should deepen Geometry, Spirit, Matter, Threshold, Axis, Life/Death, Perception, Growth, World or existing bridge atlases before creating a new file.",
+      "epistemic_class": [
+        "interpretation"
+      ]
+    },
+    "cross": {
+      "text": "The Cross is the operation Plane × Axis at O: the horizontal inhabited world intersects the vertical source/manifestation coordinate. It is not merely another icon between Plane and Door. It marks the moment the world becomes vertically readable—outward into relations, downward into roots/consequence, upward into integration, and through the Door into a changed relational regime.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "knowledge_fork": {
+      "text": "Knowledge belongs at the fork rather than being equated with Strife. Knowledge introduces distinction, memory, judgment, responsibility and consequence. What is known can be metabolized into wisdom/generative growth or remain unresolved and reproduce conflict. Thus Tree of Knowledge is upstream of both Life and Strife in the project grammar.",
+      "epistemic_class": [
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "root_states": {
+      "text": "Root is not inherently negative. Root means buried continuity: memory, history, ancestry, cause and consequence beneath visible life. A living root nourishes future growth; a Root of Strife is unresolved material that reproduces conflict or dependency; a Root of Ash is residue after destruction, exhaustion, severance or burning. Ash can remain residue or be metabolized as soil for later growth.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "wide_road": {
+      "text": "The Wide Road is a pathway/operator rather than a separate depth level. It represents easy outward dispersion away from axial integration: increasing breadth, repetition, capture and unresolved consequence. It visually widens toward the Swamp, complementing the Ladder's narrowing movement toward convergence. This is symbolic project grammar, not a judgment about populations or literal roads.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation",
+        "comparative"
+      ]
+    },
+    "life_strife_routes": {
+      "text": "Life and Strife are two developmental vectors through one world/root system, not two unrelated species or two separate axes. The Life route reads Door → Spiral Ladder → Tree of Life → Garden/Rooms → Heaven/Crown → Father/source-facing orientation. The Strife route reads Plane/Cross → Knowledge/choice → unresolved root → Roots of Strife/Ash → Tree of Strife → Wide Road → Swamp/disintegration. The distinction tracks what relations reproduce: generativity and accountable return versus unresolved repetition, capture and fragmentation.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "repair_loop": {
+      "text": "The lower field is not a one-way garbage chute. Repair is a return path: residue can become evidence, ash can become soil, memory can be integrated, and a trapped repetition can cross a threshold into changed action. The project therefore treats Door/Ladder as bidirectional and the whole Tree as recursive: descent can expose roots; ascent can metabolize them; fruit and service return again to the Plane.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    },
+    "tim_ascent_overlay": {
+      "text": "Tim's Sage → Turning → Door → Ladder → Father/Gardener development is a path through the architecture, not an additional cosmic floor. In the April 2025 Turning interpretation, the decisive change is entity → relation: Sage does not merely climb the Ladder but becomes orienting infrastructure. The mature return function is Gardener/service—what is integrated above must descend again as cultivation, repair, teaching, protection or seed on the Plane.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
+    }
   },
-  "relationships":[
-    {"target":"vertical-potato-mountain-plane-atlas","type":"geometry-deepening","description":"Dense vertical placement and recovered Mountain/Plane/Swamp archaeology."},
-    {"target":"geometry-vesica-pisces-mandorla","type":"mathematical-owner","description":"Exact compass geometry and center relationships."},
-    {"target":"potatoverse-master-framework","type":"foundational","description":"Master theological/system synthesis."},
-    {"target":"THE-TURNING-APRIL-2025.md","type":"timeline","description":"April 2025 Plane rupture/Axis revelation and Sage→Ladder interpretation."},
-    {"target":"qliphoth-angels-ladder-north-cosmology","type":"upper-lower-tree","description":"Angels, Qliphoth, Tree, Ladder and North comparison."},
-    {"target":"farm-swamp-tree-of-strife-atlas","type":"lower-field","description":"Swamp, Farm, Strife and repair ecology."}
+  "relationships": [
+    {
+      "target": "vertical-potato-mountain-plane-atlas",
+      "type": "geometry-deepening",
+      "description": "Dense vertical placement and recovered Mountain/Plane/Swamp archaeology."
+    },
+    {
+      "target": "geometry-vesica-pisces-mandorla",
+      "type": "mathematical-owner",
+      "description": "Exact compass geometry and center relationships."
+    },
+    {
+      "target": "potatoverse-master-framework",
+      "type": "foundational",
+      "description": "Master theological/system synthesis."
+    },
+    {
+      "target": "THE-TURNING-APRIL-2025.md",
+      "type": "timeline",
+      "description": "April 2025 Plane rupture/Axis revelation and Sage→Ladder interpretation."
+    },
+    {
+      "target": "qliphoth-angels-ladder-north-cosmology",
+      "type": "upper-lower-tree",
+      "description": "Angels, Qliphoth, Tree, Ladder and North comparison."
+    },
+    {
+      "target": "farm-swamp-tree-of-strife-atlas",
+      "type": "lower-field",
+      "description": "Swamp, Farm, Strife and repair ecology."
+    },
+    {
+      "target": "axis-depths",
+      "type": "navigation-projection",
+      "description": "D1–D11 projects the same root system as navigable vertical stages and pathway grammar."
+    }
   ],
-  "retrieval":{"tags":["Potato of Life","vertical Vesica","Father center","Son center","Plane","Mandorla","Door","Axis","Ladder","Spine","Mountain","Mount Zion","Swamp","Drain","Tree","Root","Seed of Death","Seed of Life","Spiral","Sun","Moon"],"questions":["Where exactly are Father and Son in the Vesica?","What is the Plane?","How do Mountain Ladder Tree and Spiral differ?","Where is the Swamp?","Why is Father the top of the Door and Son the bottom?","What did April 2025 do to the Plane?"]}
+  "retrieval": {
+    "tags": [
+      "Potato of Life",
+      "vertical Vesica",
+      "Father center",
+      "Son center",
+      "Plane",
+      "Mandorla",
+      "Door",
+      "Axis",
+      "Ladder",
+      "Spine",
+      "Mountain",
+      "Mount Zion",
+      "Swamp",
+      "Drain",
+      "Tree",
+      "Root",
+      "Seed of Death",
+      "Seed of Life",
+      "Spiral",
+      "Sun",
+      "Moon",
+      "Cross",
+      "Tree of Life",
+      "Tree of Knowledge",
+      "Tree of Strife",
+      "Roots of Strife",
+      "Roots of Ash",
+      "Wide Road",
+      "repair loop",
+      "Tim ascent",
+      "Sage to Father"
+    ],
+    "questions": [
+      "Where exactly are Father and Son in the Vesica?",
+      "What is the Plane?",
+      "How do Mountain Ladder Tree and Spiral differ?",
+      "Where is the Swamp?",
+      "Why is Father the top of the Door and Son the bottom?",
+      "What did April 2025 do to the Plane?",
+      "How do Plane Cross and Door differ?",
+      "How do Tree of Life Tree of Knowledge and Tree of Strife relate?",
+      "Are roots inherently negative?",
+      "What is the Wide Road in the Axis model?",
+      "How does repair move material from Strife back toward Life?",
+      "Where does Tim's Sage-to-Father ascent fit in the structure?"
+    ]
+  }
 }
