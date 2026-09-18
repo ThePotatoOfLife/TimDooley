@@ -1,5 +1,5 @@
 {
-  "version": "6.3.0",
+  "version": "6.4.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -23,7 +23,8 @@
       "planes-routes-metabolism-expanded-atlas",
       "center-living-metabolism-expanded-atlas",
       "foundation-rule-law-ontology",
-      "foundation-reproduction-mechanisms-atlas"
+      "foundation-reproduction-mechanisms-atlas",
+      "foundation-blueprint"
     ],
     "geometry_and_transformation": [
       "vertical-potato-mountain-plane-atlas",
@@ -80,7 +81,8 @@
       "neurotheology-attestation-ledger",
       "tim-god-question",
       "source-index",
-      "inference-ledger"
+      "inference-ledger",
+      "foundation-timeline-wave-001"
     ],
     "north_and_world": [
       "axis-world-model",
@@ -135,7 +137,8 @@
       "foundation-timeline-wave-001",
       "foundation-cross-domain-synthesis",
       "foundations-wave-002",
-      "foundation-larger-purpose-atlas"
+      "foundation-larger-purpose-atlas",
+      "foundation-integration-contract"
     ]
   },
   "records": [
@@ -2136,6 +2139,34 @@
         "Mission Integrity",
         "Refoundation",
         "Reproduction"
+      ]
+    },
+    {
+      "id": "foundation-blueprint",
+      "path": "data/blueprints/foundation-blueprint.json",
+      "branch": "root",
+      "kind": "shared cross-domain Foundation schema",
+      "terms": [
+        "Foundation Blueprint",
+        "F0",
+        "Refoundation",
+        "Reproduction",
+        "Succession",
+        "Supersession"
+      ]
+    },
+    {
+      "id": "foundation-integration-contract",
+      "path": "data/house/foundation-integration-contract.json",
+      "branch": "house",
+      "kind": "whole-project Foundation integration and anti-duplication contract",
+      "terms": [
+        "Foundation Integration",
+        "Graph",
+        "Blueprint",
+        "Rooms",
+        "Timeline",
+        "Domains"
       ]
     }
   ],
