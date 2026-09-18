@@ -44,6 +44,13 @@ def main():
         for root in row.get('knowledge_roots',[]):
             target=ROOT/root.rstrip('/')
             if not target.exists(): errors.append(f'{rid} missing knowledge root {root}')
+        profile=row.get('topology_profile',{})
+        allowed_coords={'within','here','up','down','out','across','through','state'}
+        coords=set(profile.get('primary_coordinates',[]))
+        if not coords: errors.append(f'{rid} missing primary topology coordinates')
+        if coords-allowed_coords: errors.append(f'{rid} invalid topology coordinates: {sorted(coords-allowed_coords)}')
+        if profile.get('macro_band') not in {x.get('id') for x in topo.get('bands',[]) if isinstance(x,dict)}:
+            errors.append(f'{rid} unknown macro band {profile.get("macro_band")}')
 
     if topo.get('room_registry')!='data/house/rooms.json': errors.append('House topology Room registry drift')
     if topo.get('subroom_registry')!='data/house/subrooms.json': errors.append('House topology subroom registry drift')
