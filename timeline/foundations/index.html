@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Foundation Timeline — Tim Dooley & The Potato of Life</title>
+<meta name="description" content="Cross-domain chronology of foundations, refoundations, constitutions, religious formations, schools, protocols, companies and movements.">
+<link rel="stylesheet" href="../../app/site-system.css">
+<style>
+.page{max-width:1180px;margin:auto;padding:38px 20px 96px}.nav{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:36px}.nav a{color:var(--site-muted);text-decoration:none}.lead{max-width:880px;color:#cdd3c8;font:400 20px/1.55 var(--site-font-serif)}
+.controls{display:flex;gap:7px;flex-wrap:wrap;margin:22px 0}.filter{appearance:none;border:1px solid var(--site-line);background:transparent;color:var(--site-muted);border-radius:999px;padding:7px 10px;cursor:pointer}.filter[aria-pressed="true"],.filter:hover{color:var(--site-green);border-color:#647b5d;background:#101710}
+.foundation-years{display:grid;gap:26px}.year-group{border-top:1px solid var(--site-line);padding-top:16px}.year-group h2{font:400 32px var(--site-font-serif);color:var(--site-gold);margin:0 0 10px}.event-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.event{border:1px solid var(--site-line);border-radius:12px;padding:14px;background:var(--site-panel)}.event strong{display:block;font:400 18px var(--site-font-serif);color:var(--site-gold)}.event em{display:block;color:var(--site-green);font-style:normal;font-size:9px;text-transform:uppercase;letter-spacing:.06em;margin:4px 0}.event p{color:var(--site-muted);font-size:11px;line-height:1.5;margin:5px 0}.event small{display:block;color:var(--site-faint);margin-top:8px}.readout{color:var(--site-muted);font-size:12px;margin:0 0 16px}.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}.legend article{border-top:1px solid var(--site-line);padding-top:8px}.legend b{font:400 15px var(--site-font-serif);color:var(--site-gold)}.legend span{display:block;color:var(--site-muted);font-size:10px;margin-top:3px}@media(max-width:760px){.event-grid,.legend{grid-template-columns:1fr}}
+</style>
+</head>
+<body><main class="page">
+<nav class="nav"><a href="../../">← Home</a><a href="../">Timeline</a><a href="../../house/#foundations">House Foundations</a><a href="../../world/">World</a><a href="../../religion/">Religion</a></nav>
+<header><p class="eyebrow">Foundation chronology</p><h1>WHEN WORLDS BECOME REPEATABLE</h1><p class="lead">A cross-domain timeline of Seed, authorization, legal effect, operation, consolidation, refoundation and branching. It does not force every religion, nation, company or philosophy into one false birthday.</p></header>
+<section class="legend">
+<article><b>F₀ / beginning</b><span>The first stable recoverable reference state may be an event, text, practice, legal instrument or interval.</span></article>
+<article><b>Operation</b><span>A thing may be authorized before it actually begins functioning.</span></article>
+<article><b>Refoundation</b><span>Continuity may survive even when the operating platform changes materially.</span></article>
+</section>
+<div class="controls" id="foundationFilters"></div>
+<p class="readout" id="foundationReadout">Loading foundation clocks…</p>
+<div class="foundation-years" id="foundationTimeline"></div>
+</main>
+<script>
+(async()=>{
+ const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+ const r=await fetch('../../data/house/foundation-timeline-wave-001.json');if(!r.ok)return;
+ const data=await r.json(),events=data.events||[];
+ const filters=document.getElementById('foundationFilters'),root=document.getElementById('foundationTimeline'),readout=document.getElementById('foundationReadout');
+ const domains=[...new Set(events.map(x=>x.domain).filter(Boolean))].sort();
+ const types=[...new Set(events.map(x=>x.event_type).filter(Boolean))];
+ let domain='all',type='all';
+ filters.innerHTML='<button class="filter" data-domain="all" aria-pressed="true">All domains</button>'+domains.map(x=>'<button class="filter" data-domain="'+esc(x)+'" aria-pressed="false">'+esc(x)+'</button>').join('')+'<span style="flex-basis:100%"></span><button class="filter" data-type="all" aria-pressed="true">All clocks</button>'+types.map(x=>'<button class="filter" data-type="'+esc(x)+'" aria-pressed="false">'+esc(x.replaceAll('_',' '))+'</button>').join('');
+ function render(){
+   const rows=events.filter(x=>(domain==='all'||x.domain===domain)&&(type==='all'||x.event_type===type));
+   const groups=new Map();
+   for(const e of rows){const y=Number.isFinite(e.year_start)?e.year_start:null;const bucket=y==null?'Undated':y<0?Math.abs(y)+' BCE':String(y);if(!groups.has(bucket))groups.set(bucket,[]);groups.get(bucket).push(e)}
+   root.innerHTML=[...groups.entries()].map(([y,list])=>'<section class="year-group"><h2>'+esc(y)+'</h2><div class="event-grid">'+list.map(e=>'<article class="event"><strong>'+esc(e.name)+'</strong><em>'+esc(e.event_type.replaceAll('_',' '))+' · '+esc(e.domain)+'</em><p>'+esc(e.date_or_range)+' — '+esc(e.label)+'</p><small>'+esc(e.precision)+' · '+esc(e.status)+'</small></article>').join('')+'</div></section>').join('');
+   readout.textContent=rows.length+' foundation-state events visible · '+(domain==='all'?'all domains':domain)+' · '+(type==='all'?'all clocks':type.replaceAll('_',' '));
+   filters.querySelectorAll('[data-domain]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.domain===domain)));
+   filters.querySelectorAll('[data-type]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.type===type)));
+ }
+ filters.addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;if(b.dataset.domain){domain=b.dataset.domain}else if(b.dataset.type){type=b.dataset.type}render()});
+ render();
+})().catch(()=>{});
+</script>
+</body></html>
