@@ -1,5 +1,5 @@
 {
-  "version": "1.8.0",
+  "version": "1.9.0",
   "updated": "2026-09-18",
   "authority": "project-synthesis",
   "purpose": "Bind repository development waves, center operators, living metabolisms, Rooms, lenses, tests, outputs and commit crystallization into one center-out composition without replacing their canonical owners.",
@@ -1912,6 +1912,7 @@
     "hierarchy": [
       "hero/identity",
       "project-spine",
+      "learn-the-structure",
       "operating-cycles",
       "materialized-project-state",
       "reality-cases",
@@ -1924,6 +1925,15 @@
         "id": "project-spine",
         "purpose": "Show Center → House → Rooms → Views.",
         "owner": "data/house/project-synthesis.json"
+      },
+      {
+        "id": "learn-the-structure",
+        "purpose": "Teach the ontological type of major elements before symbolic interpretation: whole, coordinate, standing plane, terrain/regime, organism, threshold/process/route and inhabitant.",
+        "owners": [
+          "data/house/layer-terrain-regime-atlas.json",
+          "data/axis-flow-contract.json",
+          "data/house/concept-topology.json"
+        ]
       },
       {
         "id": "project-motion",
@@ -1974,7 +1984,10 @@
       "data/house/entity-dossiers-wave-001.json",
       "data/house/foundations-wave-001.json",
       "data/house/foundations-wave-002.json",
-      "data/house/lower-plane-population-atlas.json"
+      "data/house/lower-plane-population-atlas.json",
+      "data/house/layer-terrain-regime-atlas.json",
+      "data/axis-flow-contract.json",
+      "data/house/concept-topology.json"
     ],
     "anti_drift": [
       "Do not duplicate full dossiers on Home.",
@@ -1982,6 +1995,118 @@
       "Do not collapse allegation, secrecy, classification or restricted access into guilt.",
       "Do not hard-code counts when a canonical registry can supply them at runtime.",
       "Every Home section must hand the reader to a canonical owner or mature reader surface."
-    ]
+    ],
+    "teaching_sequence": [
+      {
+        "id": "whole",
+        "label": "Whole",
+        "node_ids": [
+          "potato-of-life"
+        ],
+        "lesson": "Start with the whole. The Potato of Life coordinates the project but is not identical with every symbol, Room, tradition or claim.",
+        "question": "What contains the relation without erasing its parts?",
+        "route": "potato-of-life/"
+      },
+      {
+        "id": "coordinates",
+        "label": "Coordinates",
+        "node_ids": [
+          "axis"
+        ],
+        "concept_ids": [
+          "plane",
+          "cross"
+        ],
+        "lesson": "Axis, Plane and Cross orient the map. They are coordinates, not places, moral ranks or organisms.",
+        "question": "Where am I looking from, and along which direction?",
+        "route": "axis/"
+      },
+      {
+        "id": "planes",
+        "label": "Three planes",
+        "node_ids": [
+          "heaven-plane",
+          "world-plane",
+          "below-plane"
+        ],
+        "lesson": "Heaven, World and Below are standing reader platforms. They change emphasis without changing who owns the underlying knowledge.",
+        "question": "Which aspect becomes visible from this reader plane?",
+        "route": "rooms/"
+      },
+      {
+        "id": "terrain-regime",
+        "label": "Terrain & regime",
+        "node_ids": [
+          "mountain",
+          "garden",
+          "swamp",
+          "shadow"
+        ],
+        "lesson": "Mountain, Garden, Swamp and Shadow describe integration landscapes, growth conditions or visibility problems. They are not synonyms for the three planes.",
+        "question": "What kind of environment, boundary or visibility condition is operating?",
+        "route": "house/"
+      },
+      {
+        "id": "living-systems",
+        "label": "Living systems",
+        "node_ids": [
+          "roots",
+          "tree-of-knowledge",
+          "tree-of-life",
+          "tree-of-strife"
+        ],
+        "lesson": "Roots and Trees describe memory, branching, reproduction and consequence. Knowledge can feed Life or Strife depending on what the system reproduces.",
+        "question": "What is being rooted, reproduced, branched or pruned?",
+        "route": "axis/"
+      },
+      {
+        "id": "operators",
+        "label": "Thresholds & processes",
+        "node_ids": [
+          "door-pillars",
+          "eye",
+          "forge",
+          "spiral-family"
+        ],
+        "lesson": "Door changes state, Eye perceives/evaluates, Forge transforms under pressure, and Spiral/Ladder describe trajectories. Each does a different job.",
+        "question": "What operation is actually changing the relation?",
+        "route": "research-lab/"
+      },
+      {
+        "id": "inhabitants",
+        "label": "Inhabitants",
+        "node_ids": [],
+        "lesson": "Real people, institutions, texts, traditions, organisms and events inhabit the House. The symbolic grammar helps ask questions about them but never replaces their factual identity.",
+        "question": "What real thing is being studied, with what evidence and at what scale?",
+        "route": "house/#crystallized-cases"
+      }
+    ],
+    "axis_teaching": {
+      "invariant": "Axis is the global orientation line, not the Tree, Ladder, Mountain or a truth hierarchy.",
+      "three_planes": [
+        {
+          "id": "heaven-plane",
+          "label": "Heaven",
+          "emphasis": "integration, canopy, transmission, Garden/Fruit and accountable return"
+        },
+        {
+          "id": "world-plane",
+          "label": "World",
+          "emphasis": "embodiment, evidence, institutions, choice and observable consequence"
+        },
+        {
+          "id": "below-plane",
+          "label": "Below",
+          "emphasis": "provenance, buried context, roots, intelligence, restricted information and repair entry"
+        }
+      ],
+      "movement_rule": "Up/down direction alone does not determine value. Rooting descent and fruitful return can be generative; upward motion without Fruit/return is not sufficient evidence of Life.",
+      "route_families": [
+        "life",
+        "strife",
+        "repair",
+        "return"
+      ]
+    }
   }
 }
