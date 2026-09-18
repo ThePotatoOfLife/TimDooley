@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "4.6.0",
+  "version": "4.7.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -268,6 +268,13 @@
         "project_canon",
         "interpretation"
       ]
+    },
+    "navigation_authority": {
+      "text": "The Root System is the human-readable synthesis, not the sole machine authority. Navigation ownership is consolidated in data/house/navigation-manifest.json. Dwellings/Rooms own subject matter; holdings own file custody; topology owns high-level spatial projection; tree-plane-routing owns vertical Tree/plane relations; seed-spiral-routing owns Seed/Spiral routes; the religious-symbolic branch atlas owns curated named religious/mythic population. Public pages explain these registries and should not silently override them.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
     }
   },
   "relationships": [
@@ -310,6 +317,16 @@
       "target": "seed-spiral-routing",
       "type": "navigation-contract",
       "description": "Canonical routing for Seed of Death/Life, Rooting, Drain, Sprouting, Repair, Return and Ring."
+    },
+    {
+      "target": "navigation-manifest",
+      "type": "governance",
+      "description": "Declares the authoritative registry for each navigation concern."
+    },
+    {
+      "target": "religious-symbolic-branch-atlas",
+      "type": "population",
+      "description": "Curated named religious/mythic/esoteric population mapped into Rooms, planes and Tree affinities."
     }
   ],
   "retrieval": {
