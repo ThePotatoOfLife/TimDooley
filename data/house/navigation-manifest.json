@@ -1,5 +1,5 @@
 {
-  "version": "1.6.0",
+  "version": "1.7.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -183,6 +183,11 @@
       "concern": "recent commit materialization and crystallization",
       "owner": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
       "rule": "Treat #257–#283 as one convergence sequence. A commit becomes durable only after its result is routed into canonical owners, concrete artifacts/population, interfaces, evidence boundaries, a reader/archive expression and validation or revision."
+    },
+    {
+      "concern": "element materialization and real-world instrumentation",
+      "owner": "knowledge/research/element-materialization-audit-2026-09-18.json",
+      "rule": "When a canonical element already has a strong definition, prefer concrete entities, dated observations, relationships, longitudinal measures, counterexamples and failure conditions over another symbolic definition or parallel atlas."
     }
   ],
   "resolver_order": [
