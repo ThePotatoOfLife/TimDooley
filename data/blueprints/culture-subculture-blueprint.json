@@ -1,20 +1,123 @@
 {
-  "version":"1.0.0",
-  "status":"active-blueprint",
-  "purpose":"Blueprint for cultures, subcultures, scenes and identity communities, emphasizing people, practices, institutions, media and geographic diffusion.",
-  "entity":"culture_or_subculture",
-  "record_schema":{
-    "identity":["culture_id","name","aliases","category","period","status"],
-    "population":["participants","audience","demographics","languages","geography","diaspora"],
-    "practice":["beliefs","rituals","customs","aesthetics","dress","food","music","language","symbols","norms"],
-    "institutions":["families","associations","religious_institutions","schools","businesses","venues","online_communities"],
-    "media":["publications","music","film","games","platforms","influencers","archives"],
-    "economy":["employment","consumer_markets","creative_industries","merchandise","events"],
-    "change":["origins","turning_points","migration","hybridization","commercialization","fragmentation","revival","decline"],
-    "relationships":["influences","borrows_from","splits_from","overlaps_with","opposes","diffuses_through","institutionalized_by"],
-    "evidence":["ethnography","census","survey","historical_source","media_archive","academic_source","date","confidence"]
+  "version": "1.1.0",
+  "status": "active-blueprint",
+  "purpose": "Blueprint for cultures, subcultures, scenes and identity communities, emphasizing people, practices, institutions, media and geographic diffusion.",
+  "entity": "culture_or_subculture",
+  "record_schema": {
+    "identity": [
+      "culture_id",
+      "name",
+      "aliases",
+      "category",
+      "period",
+      "status"
+    ],
+    "population": [
+      "participants",
+      "audience",
+      "demographics",
+      "languages",
+      "geography",
+      "diaspora"
+    ],
+    "practice": [
+      "beliefs",
+      "rituals",
+      "customs",
+      "aesthetics",
+      "dress",
+      "food",
+      "music",
+      "language",
+      "symbols",
+      "norms"
+    ],
+    "institutions": [
+      "families",
+      "associations",
+      "religious_institutions",
+      "schools",
+      "businesses",
+      "venues",
+      "online_communities"
+    ],
+    "media": [
+      "publications",
+      "music",
+      "film",
+      "games",
+      "platforms",
+      "influencers",
+      "archives"
+    ],
+    "economy": [
+      "employment",
+      "consumer_markets",
+      "creative_industries",
+      "merchandise",
+      "events"
+    ],
+    "change": [
+      "origins",
+      "turning_points",
+      "migration",
+      "hybridization",
+      "commercialization",
+      "fragmentation",
+      "revival",
+      "decline"
+    ],
+    "relationships": [
+      "influences",
+      "borrows_from",
+      "splits_from",
+      "overlaps_with",
+      "opposes",
+      "diffuses_through",
+      "institutionalized_by"
+    ],
+    "evidence": [
+      "ethnography",
+      "census",
+      "survey",
+      "historical_source",
+      "media_archive",
+      "academic_source",
+      "date",
+      "confidence"
+    ],
+    "foundation": [
+      "foundation_id",
+      "foundation_type",
+      "foundation_clocks",
+      "load_bearing_rules",
+      "reproduction_mechanism",
+      "refoundation_events",
+      "superseded_foundations"
+    ]
   },
-  "derived_measures":["population_range","geographic_spread","institutional_density","media_reach","historical_duration"],
-  "relationship_templates":["culture-influences-culture","subculture-diffuses-through-platform","community-uses-institution","scene-centers-on-place"],
-  "integrity_rules":["Culture is not synonymous with ethnicity, nationality or ideology.","Self-identification and external classification should be distinguished.","Online visibility is not automatically population size.","Historical continuity claims require period-specific evidence."]
+  "derived_measures": [
+    "population_range",
+    "geographic_spread",
+    "institutional_density",
+    "media_reach",
+    "historical_duration"
+  ],
+  "relationship_templates": [
+    "culture-influences-culture",
+    "subculture-diffuses-through-platform",
+    "community-uses-institution",
+    "scene-centers-on-place",
+    "movement-founded-by-manifesto-or-scene",
+    "movement-branches-into-scene",
+    "movement-refounded-by-revival"
+  ],
+  "integrity_rules": [
+    "Culture is not synonymous with ethnicity, nationality or ideology.",
+    "Self-identification and external classification should be distinguished.",
+    "Online visibility is not automatically population size.",
+    "Historical continuity claims require period-specific evidence."
+  ],
+  "foundation_contract": "data/blueprints/foundation-blueprint.json",
+  "foundation_rule": "When identity, authority, method or operating conditions have a durable founding state, store the generative chronology and reproduction mechanism in a linked Foundation record rather than flattening it into one origin/founded date."
 }
