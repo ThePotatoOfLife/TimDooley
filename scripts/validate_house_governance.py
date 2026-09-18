@@ -7,6 +7,7 @@ ROOT=Path(__file__).resolve().parents[1]
 ROOMS=ROOT/'data/house/rooms.json'; ROOM_SCHEMA=ROOT/'schemas/house-room-registry.schema.json'
 SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/house-public-surface-registry.schema.json'
 TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
+CONCEPT_TOPOLOGY=ROOT/'data/house/concept-topology.json'; CONCEPT_TOPOLOGY_SCHEMA=ROOT/'schemas/house-concept-topology.schema.json'
 ROOM_IDS=('potatoverse-canon','archive-sources','time-history','traditions-texts','science-formal-models','life-body','world-systems','culture-information','works','research-lab')
 GATEWAYS=('tim','religion','philosophy','science','world')
 GATEWAY_ROUTES=('/tim-dooley/','/religion/','/philosophy/','/science/','/world/')
@@ -163,10 +164,48 @@ def validate_surfaces(errors,rooms):
     validate_works_reader(errors); validate_home_corridor(errors); validate_builder_authority(errors)
     return p
 
+
+def validate_concept_topology(errors,rooms,surfaces):
+    data=load(CONCEPT_TOPOLOGY,errors); sch=load(CONCEPT_TOPOLOGY_SCHEMA,errors)
+    if data and sch: schema(data,sch,'concept_topology',errors)
+    if not data: return
+    room_ids={x.get('id') for x in rooms.get('rooms',[]) if isinstance(x,dict)}
+    surface_ids={x.get('id') for x in surfaces.get('surfaces',[]) if isinstance(x,dict)}
+    orientations=set(data.get('field_orientations',[]))
+    roles=set(data.get('topology_roles',[]))
+    regimes=set(data.get('boundary_regimes',[]))
+    ids=[]; by={}
+    for row in data.get('concepts',[]):
+        if not isinstance(row,dict): continue
+        cid=row.get('id'); ids.append(cid); by[cid]=row
+        for value in row.get('field_orientation',[]):
+            if value not in orientations: errors.append(f'concept {cid} unknown field orientation {value}')
+        for value in row.get('topology_roles',[]):
+            if value not in roles: errors.append(f'concept {cid} unknown topology role {value}')
+        regime=row.get('boundary_regime')
+        if regime is not None and regime not in regimes: errors.append(f'concept {cid} unknown boundary regime {regime}')
+        for rid in row.get('room_ids',[]):
+            if rid not in room_ids: errors.append(f'concept {cid} unknown Room {rid}')
+        for sid in row.get('public_surface_ids',[]):
+            if sid not in surface_ids: errors.append(f'concept {cid} unknown public surface {sid}')
+    if len(ids)!=len(set(ids)): errors.append('concept topology ids must be unique')
+    required={'source-field','manifestation-field','door','plane','axis','cross','eye','face','spirit','potato','seed','root','tree','mountain','ladder','spiral','fruit','garden','shell-cube','swamp'}
+    missing=sorted(required-set(ids))
+    if missing: errors.append('concept topology missing core operators: '+', '.join(missing))
+    cross=by.get('cross',{})
+    if 'intersection' not in cross.get('topology_roles',[]) or 'shared' not in cross.get('field_orientation',[]):
+        errors.append('Cross must remain a shared intersection operator')
+    door=by.get('door',{})
+    if 'overlap' not in door.get('topology_roles',[]) or 'shared' not in door.get('field_orientation',[]):
+        errors.append('Door must remain a shared overlap operator')
+    manifestation=by.get('manifestation-field',{})
+    if manifestation.get('boundary_regime')=='shell-cube':
+        errors.append('Manifestation field must not collapse into Shell/Cube regime')
+
 def main():
-    errors=[]; rooms=validate_rooms(errors); validate_surfaces(errors,rooms)
+    errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces)
     if errors:
         print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, topology, reader corridor and route authority converge'); return 0
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, reader corridor and route authority converge'); return 0
 
 if __name__=='__main__': raise SystemExit(main())
