@@ -13,9 +13,7 @@ The Potatoverse is deliberately treated as a layered object rather than one undi
 - **interpretation** — new connections made from those materials;
 - **open questions** — things that still require deeper research.
 
-The core machine-readable corpus is [`data/potatoverse-deep-research.json`](data/potatoverse-deep-research.json).
-
-The relationship layer is [`data/potatoverse-deep-links.json`](data/potatoverse-deep-links.json).
+The former machine-readable staging corpus (`data/potatoverse-deep-research.json`) and its `drXX` relationship graph have been retired after their durable material was promoted into current core, science, timeline and traditions owners. Their final blobs are preserved in `archive/legacy/README.md`. This readable document remains as a historical research donor, not a live machine authority.
 
 The existing mythology corpus remains in [`data/potatoverse-lore.json`](data/potatoverse-lore.json).
 
