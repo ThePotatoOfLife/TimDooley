@@ -1,5 +1,5 @@
 {
-  "version": "3.2.0",
+  "version": "3.3.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -2062,8 +2062,14 @@
       "title": "Research Programmes",
       "dwelling_id": "research-lab",
       "purpose": "Own coordinated multi-Room research programmes, workstreams, source ledgers and promotion plans.",
-      "primary_file_count": 10,
+      "primary_file_count": 11,
       "featured_holdings": [
+        {
+          "path": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
+          "id": "recent-commit-materialization-crystallization-257-283",
+          "kind": "binding whole-project materialization and crystallization convergence ledger",
+          "basis": "commit-crystallization-wave-009"
+        },
         {
           "path": "knowledge/research/recent-commit-depth-audit-2026-09-18.json",
           "id": "recent-commit-depth-audit-2026-09-18",
@@ -6148,6 +6154,11 @@
       "path": "data/house/lower-plane-population-atlas.json",
       "primary_owner_room_id": "world-systems",
       "basis": "below-intelligence-shadow-integration"
+    },
+    {
+      "path": "knowledge/research/recent-commit-materialization-crystallization-257-283.json",
+      "primary_owner_room_id": "research-programmes",
+      "basis": "commit-crystallization-wave-009"
     }
   ],
   "curated_unowned_paths": [
@@ -6286,8 +6297,8 @@
     "knowledge/story/story-registry.json"
   ],
   "summary": {
-    "scoped_files": 873,
-    "primary_owned_files": 740,
+    "scoped_files": 874,
+    "primary_owned_files": 741,
     "curated_or_navigation_files": 133,
     "rooms": 38,
     "rooms_with_zero_primary_files": []
