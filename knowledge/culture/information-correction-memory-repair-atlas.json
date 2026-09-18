@@ -1,0 +1,120 @@
+{
+  "id": "information-correction-memory-repair-atlas",
+  "title": "Information Correction, Memory Repair & Revision Atlas",
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "owner_room": "information-ecology",
+  "purpose": "Model how an information ecosystem discovers error, propagates correction, links revisions to old records and restores context without erasing history.",
+  "correction_pipeline": [
+    "error_or_dispute_detected",
+    "claim_and_source_identified",
+    "evidence_compared",
+    "correction_or_status_change_authored",
+    "original_record_linked",
+    "downstream_derivatives_notified_or_updated_where_possible",
+    "search_and_archive_visibility_checked",
+    "later_recurrence_monitored"
+  ],
+  "correction_types": [
+    {
+      "id": "factual-correction",
+      "meaning": "A stated fact is changed because stronger evidence shows it was wrong."
+    },
+    {
+      "id": "precision-upgrade",
+      "meaning": "Date, amount, identity, wording or scope becomes more exact without reversing the core claim."
+    },
+    {
+      "id": "context-restoration",
+      "meaning": "The original fragment remains accurate but missing context materially changes interpretation."
+    },
+    {
+      "id": "status-change",
+      "meaning": "An allegation, investigation, case, designation or scientific claim changes procedural/evidentiary status."
+    },
+    {
+      "id": "interpretive-revision",
+      "meaning": "The facts remain but the archive's synthesis changes."
+    },
+    {
+      "id": "retraction_or_withdrawal",
+      "meaning": "A source/owner withdraws a claim or analysis."
+    },
+    {
+      "id": "supersession",
+      "meaning": "A newer record replaces an older operational version while preserving historical lineage."
+    }
+  ],
+  "repair_metrics": [
+    {
+      "id": "correction_latency",
+      "definition": "Time from credible error detection to published correction."
+    },
+    {
+      "id": "linkage_rate",
+      "definition": "Share of old public records that visibly link to the correction/revision."
+    },
+    {
+      "id": "audience_overlap",
+      "definition": "Estimated overlap between people exposed to the original and correction."
+    },
+    {
+      "id": "retrieval_parity",
+      "definition": "Whether search/retrieval surfaces expose correction about as readily as the original."
+    },
+    {
+      "id": "archive_integrity",
+      "definition": "Whether both original and corrected states remain reconstructable."
+    },
+    {
+      "id": "derivative_update_rate",
+      "definition": "How many downstream copies/summaries are revised or annotated."
+    },
+    {
+      "id": "recurrence_rate",
+      "definition": "How often the obsolete claim continues appearing after correction."
+    }
+  ],
+  "memory_states": [
+    {
+      "id": "live-current",
+      "meaning": "Current best-supported representation."
+    },
+    {
+      "id": "historical-valid",
+      "meaning": "Accurate description of an earlier state that is no longer current."
+    },
+    {
+      "id": "historical-corrected",
+      "meaning": "Preserved earlier claim known to be wrong/incomplete, clearly annotated."
+    },
+    {
+      "id": "contested",
+      "meaning": "Meaningful dispute remains unresolved."
+    },
+    {
+      "id": "superseded",
+      "meaning": "Operationally replaced by a newer representation."
+    },
+    {
+      "id": "orphaned",
+      "meaning": "Record persists without adequate provenance/context linkage."
+    }
+  ],
+  "repair_design_rules": [
+    "Never delete history merely to make the current version look consistent.",
+    "Corrections should travel through the same discovery surfaces as adverse/original claims where feasible.",
+    "Search results and summaries should prefer current status while exposing historical state.",
+    "A corrected label should not persist indefinitely as unqualified identity.",
+    "Archive annotations should distinguish source correction from project reinterpretation.",
+    "Disputed claims should retain the dispute rather than be silently normalized into certainty."
+  ],
+  "joins": [
+    "information-ecology-mechanics-atlas",
+    "provenance-chain-of-custody-atlas",
+    "memory-recovery",
+    "internet-platforms",
+    "archive-epistemics",
+    "interpretive-justice"
+  ]
+}
