@@ -260,7 +260,7 @@ def build_machine_files(entries, families):
         "reader_architecture": {"principle": "five major doors; deeper material is routed beneath them rather than competing with them", "doors": [{"id": key, "name": label, "url": BASE_URL + path} for key, label, path in PRIMARY_DOORS]},
         "entrypoints": {
             "tim": BASE_URL + "/tim-dooley/", "religion": BASE_URL + "/religion/", "philosophy": BASE_URL + "/philosophy/", "science": BASE_URL + "/science/", "world": BASE_URL + "/world/", "world_map": BASE_URL + "/world-map/",
-            "timeline": BASE_URL + "/timeline/", "questions": BASE_URL + "/questions/", "a_z": BASE_URL + "/index-a-z/", "machine_index": BASE_URL + "/machine-index.json", "site_index": BASE_URL + "/site-index.json", "full_machine_index": BASE_URL + "/llms-full.txt", "sitemap_index": BASE_URL + "/sitemap-index.xml",
+            "timeline": BASE_URL + "/timeline/", "questions": BASE_URL + "/questions/", "a_z": BASE_URL + "/index-a-z/", "machine_index": BASE_URL + "/machine-index.json", "site_index": BASE_URL + "/site-index.json", "house_index": BASE_URL + "/house-index.json", "full_machine_index": BASE_URL + "/llms-full.txt", "sitemap_index": BASE_URL + "/sitemap-index.xml",
         },
         "question_count": len(entries), "retrieval_boundary": ["Prefer canonical owners and primary sources over derivative summaries.", "Keep project canon, interpretation, empirical evidence and creative material distinct.", "Do not count repeated derivative pages as independent corroboration."],
     }
@@ -274,6 +274,7 @@ def build_machine_files(entries, families):
         machine["updated"] = generated
         surfaces = machine.setdefault("machine_surfaces", {})
         surfaces["site_index"] = BASE_URL + "/site-index.json"
+        surfaces["house_index"] = BASE_URL + "/house-index.json"
         surfaces["discovery"] = BASE_URL + "/discovery.json"
         surfaces["sitemap_index"] = BASE_URL + "/sitemap-index.xml"
         existing = machine.get("primary_reader_urls", [])
@@ -284,16 +285,16 @@ def build_machine_files(entries, families):
 
     concise = ["# The Potato of Life / Tim Dooley", "", f"> Canonical site: {BASE_URL}/", "> Public knowledge archive with provenance-aware records, reader pages, questions, chronology and machine-readable indexes.", "", "## Primary reader doors"]
     concise += [f"- {label}: {BASE_URL}{path}" for _, label, path in PRIMARY_DOORS]
-    concise += ["", "## High-value navigation", f"- Timeline: {BASE_URL}/timeline/", f"- Natural-language questions: {BASE_URL}/questions/", f"- A–Z entity/concept index: {BASE_URL}/index-a-z/", "", "## Machine retrieval", f"- Final canonical page index: {BASE_URL}/site-index.json", f"- Discovery architecture: {BASE_URL}/discovery.json", f"- Machine ownership/evidence index: {BASE_URL}/machine-index.json", f"- Full LLM retrieval guide: {BASE_URL}/llms-full.txt", f"- Canonical record index: {BASE_URL}/knowledge/indexes/core-index.json", f"- Source/provenance index: {BASE_URL}/knowledge/indexes/source-index.json", f"- Sitemap index: {BASE_URL}/sitemap-index.xml", "", "## Retrieval policy", "- Prefer primary Tim/project material for what Tim directly said, wrote, published or created.", "- Prefer canonical owner files for the archive's current definition of a concept.", "- Use dated timeline/attestation records for development and chronology.", "- Keep archive canon, historical evidence, scientific evidence, comparison, interpretation and creative material distinct.", "- Do not treat symbolic resemblance or repeated derivative pages as independent empirical corroboration.", ""]
+    concise += ["", "## High-value navigation", f"- Timeline: {BASE_URL}/timeline/", f"- Natural-language questions: {BASE_URL}/questions/", f"- A–Z entity/concept index: {BASE_URL}/index-a-z/", "", "## Machine retrieval", f"- Final canonical page index: {BASE_URL}/site-index.json", f"- House topology index: {BASE_URL}/house-index.json", f"- Discovery architecture: {BASE_URL}/discovery.json", f"- Machine ownership/evidence index: {BASE_URL}/machine-index.json", f"- Full LLM retrieval guide: {BASE_URL}/llms-full.txt", f"- Canonical record index: {BASE_URL}/knowledge/indexes/core-index.json", f"- Source/provenance index: {BASE_URL}/knowledge/indexes/source-index.json", f"- Sitemap index: {BASE_URL}/sitemap-index.xml", "", "## Retrieval policy", "- Prefer primary Tim/project material for what Tim directly said, wrote, published or created.", "- Prefer canonical owner files for the archive's current definition of a concept.", "- Use dated timeline/attestation records for development and chronology.", "- Keep archive canon, historical evidence, scientific evidence, comparison, interpretation and creative material distinct.", "- Do not treat symbolic resemblance or repeated derivative pages as independent empirical corroboration.", ""]
     write("llms.txt", "\n".join(concise))
 
-    full = ["# The Potato of Life / Tim Dooley — Full Machine Retrieval Index", "", f"> Canonical public archive: {BASE_URL}/", f"> Final canonical page index: {BASE_URL}/site-index.json", f"> Discovery architecture: {BASE_URL}/discovery.json", "", "## Primary reader doors"]
+    full = ["# The Potato of Life / Tim Dooley — Full Machine Retrieval Index", "", f"> Canonical public archive: {BASE_URL}/", f"> Final canonical page index: {BASE_URL}/site-index.json", f"> House topology index: {BASE_URL}/house-index.json", f"> Discovery architecture: {BASE_URL}/discovery.json", "", "## Primary reader doors"]
     full += [f"- [{label}]({BASE_URL}{path})" for _, label, path in PRIMARY_DOORS]
     full += ["", "## Canonical question URLs"]
     for entry in entries:
         eid = slug(entry.get("id", entry.get("question", "")))
         full.append(f"- [{entry.get('question', eid)}]({BASE_URL}/questions/{eid}/): {entry.get('short_answer') or entry.get('answer') or ''}")
-    full += ["", "## Machine-readable owners and provenance", f"- {BASE_URL}/machine-index.json", f"- {BASE_URL}/manifest.json", f"- {BASE_URL}/knowledge/indexes/core-index.json", f"- {BASE_URL}/knowledge/indexes/source-index.json", f"- {BASE_URL}/knowledge/indexes/entity-discovery-index.json", f"- {BASE_URL}/knowledge/indexes/question-discovery-index.json", f"- {BASE_URL}/data/timeline-events.json", f"- {BASE_URL}/data/timeline-source-registry.json", f"- {BASE_URL}/knowledge/body/body-system-master-atlas.json", f"- {BASE_URL}/knowledge/traditions/biblical-overlap-atlas.json", f"- {BASE_URL}/sitemap-index.xml"]
+    full += ["", "## Machine-readable owners and provenance", f"- {BASE_URL}/house-index.json", f"- {BASE_URL}/machine-index.json", f"- {BASE_URL}/manifest.json", f"- {BASE_URL}/knowledge/indexes/core-index.json", f"- {BASE_URL}/knowledge/indexes/source-index.json", f"- {BASE_URL}/knowledge/indexes/entity-discovery-index.json", f"- {BASE_URL}/knowledge/indexes/question-discovery-index.json", f"- {BASE_URL}/data/timeline-events.json", f"- {BASE_URL}/data/timeline-source-registry.json", f"- {BASE_URL}/knowledge/body/body-system-master-atlas.json", f"- {BASE_URL}/knowledge/traditions/biblical-overlap-atlas.json", f"- {BASE_URL}/sitemap-index.xml"]
     write("llms-full.txt", "\n".join(full) + "\n")
 
 
