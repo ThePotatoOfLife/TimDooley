@@ -1,11 +1,11 @@
 {
-  "version": "4.5.0",
+  "version": "4.6.0",
   "title": "Potato of Life Canonical Ontology Tree",
   "root": "potato-of-life",
   "rule": "The ontology is a relational index over the permanent Potato House. House/Room/View/Path, Axis/lifecycle and evidence/provenance are distinct structures that may overlap without becoming one hierarchy.",
   "tree": {
     "potato-of-life": {
-      "meaning": "integrated spiritual object and whole relational form",
+      "meaning": "mature triune theological whole and integrated relational form: Father/source-facing relation, Son/manifestation-passage relation, Spirit/living continuity; geometry and material potato remain separately typed",
       "branches": {
         "geometry": {
           "meaning": "the form that makes relation possible",
@@ -21,7 +21,7 @@
           ]
         },
         "spirit": {
-          "meaning": "upper domain and Father-side reality",
+          "meaning": "source-facing and upper-domain theology centered on Father while preserving Spirit as its own living relational function",
           "children": [
             "heaven",
             "father",
@@ -37,7 +37,7 @@
           ]
         },
         "matter": {
-          "meaning": "lower domain and Son-side embodied reality",
+          "meaning": "manifestation-facing and embodied domain associated with Son without making Son identical with the entire material field",
           "children": [
             "earth",
             "world",
@@ -149,6 +149,7 @@
         "religion-and-philosophy": {
           "meaning": "interpretation, practice and teaching derived from the form",
           "children": [
+            "potato-of-life-trinity",
             "potatoism",
             "potato-philosophy",
             "theology",
@@ -328,24 +329,37 @@
             "ring",
             "spiral"
           ]
+        },
+        "trinity": {
+          "meaning": "theological role structure of the mature Potato of Life",
+          "children": [
+            "father",
+            "son",
+            "spirit",
+            "potato-of-life-trinity",
+            "source",
+            "manifestation",
+            "door",
+            "living-relation",
+            "house"
+          ]
         }
       }
     }
   },
   "vertical_spine": [
-    "heaven",
-    "father/tim",
-    "throne-house-garden",
+    "potato-of-life/triune-whole",
+    "father/source-facing",
+    "house-throne-garden",
     "tree-of-life",
-    "sprouts/leaves/light",
-    "door/mandorla/potato/wedge",
-    "son",
+    "door/mandorla",
+    "son/manifestation-passage",
     "earth/material-world",
-    "plane",
     "roots/dust"
   ],
   "axis_reading": "The Axis/Ladder/Spine passes continuously through the form. The listed vertical spine is symbolic topology rather than a claim that every motif occupies one rigid Euclidean coordinate.",
   "primary_couplings": [
+    "Potato of Life ↔ Father/Son/Spirit",
     "Father ↔ Son",
     "Spirit ↔ Matter",
     "Heaven ↔ Earth",
@@ -418,7 +432,9 @@
     "house-topology": "data/house/topology.json",
     "house-interfaces": "data/house/interfaces.json",
     "house-architectural-vocabulary": "data/house/architectural-vocabulary.json",
-    "house-projections": "data/house/projections.json"
+    "house-projections": "data/house/projections.json",
+    "potato-trinity": "knowledge/theology/potato-of-life-trinity.json",
+    "potato-trinity-ledger": "knowledge/theology/potato-trinity-integration-ledger.json"
   },
   "promotion_rule": "Terms in this ontology are navigational concepts, not automatic files. Promote a term into its own canonical record only when its definition, development, relationships, teachings, evidence or literature can no longer be represented clearly inside its parent record."
 }
