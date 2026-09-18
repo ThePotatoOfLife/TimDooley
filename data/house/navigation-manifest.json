@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "2.0.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -198,6 +198,11 @@
       "concern": "Foundation Seed Door genealogy time and place",
       "owner": "data/house/foundation-door-seed-genealogy.json",
       "rule": "Foundation genealogy must separate prior/death-side state, Door crossing, life-side reproducible state, physical/institutional place, clocks, rise, fall/return and refoundation."
+    },
+    {
+      "concern": "Foundation stage placement across Rooms fields plane and Axis",
+      "owner": "data/house/foundation-axis-placement-contract.json",
+      "rule": "Place Foundation stages—not whole entities—by owner, field, plane, direction and route condition. Upper/lower is not moral rank."
     }
   ],
   "resolver_order": [
