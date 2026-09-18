@@ -136,11 +136,9 @@ These remain intentionally because they still have live provenance references or
 - `research.json`
 - `book-research.json`
 - `2026-master-framework.json`
-- `POTATOVERSE-DEEP-RESEARCH.md`
-- `POTATOVERSE-ALTERNATIVE-RESEARCH.md`
 - `TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md`
 
-They are **legacy/source strata, not canonical navigation owners**. Their roles are not identical: `book-research.json` and the life/myth timeline remain source/provenance bridges; `2026-master-framework.json` is a historical synthesis donor; `research.json` is mixed source-derived/comparative research awaiting further promotion; the two POTATOVERSE research documents are readable research donors pending unique-content diff.
+They are **legacy/source strata, not canonical navigation owners**. Their roles are not identical: `book-research.json` and the life/myth timeline remain source/provenance bridges; `2026-master-framework.json` is a historical synthesis donor; `research.json` is mixed source-derived/comparative research awaiting final drain. The two former POTATOVERSE readable research donors have been retired after unique-content promotion and are recoverable through `archive/legacy/README.md`.
 
 Do not delete them merely because a newer owner exists. First migrate live references and unique content; then either archive them as concise provenance artifacts or remove them when genuinely redundant.
 
