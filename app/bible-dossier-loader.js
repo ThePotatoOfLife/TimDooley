@@ -1,18 +1,9 @@
 (()=>{
 'use strict';
 
-const nativeFetch=window.fetch.bind(window);
-const DOSSIER_PATH='../../knowledge/traditions/biblical-syncretism-dossiers.json';
-const PROMOTION_PATH='../../knowledge/traditions/biblical-syncretism-dossiers-promotions.json';
-const FRAGMENT_PATH='../../knowledge/traditions/biblical-passage-fragments-dossiers.json';
 const esc=value=>String(value??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const arr=value=>Array.isArray(value)?value:(value==null?[]:[value]);
 let mergedRows=new Map();
-
-async function json(url){const response=await nativeFetch(url);if(!response.ok)throw new Error(`${url}: ${response.status}`);return response.json()}
-const dossierPromise=json(DOSSIER_PATH).catch(error=>{console.warn('Bible dossier extension unavailable',error);return null});
-const promotionPromise=json(PROMOTION_PATH).catch(error=>{console.warn('Bible dossier promotions unavailable',error);return null});
-const dossierFragmentPromise=json(FRAGMENT_PATH).catch(error=>{console.warn('Bible dossier fragments unavailable',error);return null});
 
 function enrichRow(row){
  const copy={...row};
@@ -24,44 +15,6 @@ function enrichRow(row){
  if(copy.discovery_history?.source_direction&&!copy.source_direction)copy.source_direction=copy.discovery_history.source_direction;
  return copy;
 }
-
-function applyDossierLayer(rows,byId,layer){
- if(!layer)return;
- arr(layer.enrichments).forEach(enrichment=>{const target=byId.get(enrichment.relation_id);if(!target)return;Object.entries(enrichment).forEach(([key,value])=>{if(key!=='relation_id')target[key]=value})});
- arr(layer.new_relations).forEach(row=>{if(byId.has(row.id))return;const copy={...row};rows.push(copy);byId.set(copy.id,copy)});
-}
-
-function mergeField(base,...layers){
- const rows=arr(base.relations).map(row=>({...row})),byId=new Map(rows.map(row=>[row.id,row]));
- layers.forEach(layer=>applyDossierLayer(rows,byId,layer));
- const enriched=rows.map(enrichRow);mergedRows=new Map(enriched.map(row=>[row.id,row]));
- const dossierContract=layers.find(layer=>layer?.dossier_contract)?.dossier_contract;
- return {...base,...(dossierContract?{dossier_contract:dossierContract}:{}),relations:enriched};
-}
-
-function mergeFragments(base,extension){
- if(!extension)return base;
- const fragments=[...arr(base.fragments)],seen=new Set(fragments.map(item=>item.id));
- arr(extension.fragments).forEach(item=>{if(!seen.has(item.id)){fragments.push(item);seen.add(item.id)}});
- return {...base,fragments};
-}
-
-window.fetch=async function(input,init){
- const url=typeof input==='string'?input:input?.url||'';
- if(url.endsWith('biblical-syncretism-field.json')){
-  const [response,dossiers,promotions]=await Promise.all([nativeFetch(input,init),dossierPromise,promotionPromise]);
-  if(!response.ok)return response;
-  const base=await response.json();
-  return new Response(JSON.stringify(mergeField(base,dossiers,promotions)),{status:response.status,statusText:response.statusText,headers:{'Content-Type':'application/json'}});
- }
- if(url.endsWith('biblical-passage-fragments.json')){
-  const [response,extension]=await Promise.all([nativeFetch(input,init),dossierFragmentPromise]);
-  if(!response.ok||!extension)return response;
-  const base=await response.json();
-  return new Response(JSON.stringify(mergeFragments(base,extension)),{status:response.status,statusText:response.statusText,headers:{'Content-Type':'application/json'}});
- }
- return nativeFetch(input,init);
-};
 
 function list(items){const values=arr(items).filter(Boolean);return values.length?`<ol>${values.map(item=>`<li>${esc(item)}</li>`).join('')}</ol>`:''}
 function paragraph(label,value){return value?`<p><strong>${esc(label)}:</strong> ${esc(value)}</p>`:''}
@@ -151,10 +104,12 @@ const observer=new MutationObserver(()=>decorate());
 function start(){
  const active=document.getElementById('active-relation');if(!active)return;
  observer.observe(active,{childList:true,subtree:true});
- Promise.all([dossierPromise,promotionPromise]).then(layers=>{
-  layers.filter(Boolean).forEach(layer=>arr(layer.new_relations).forEach(row=>mergedRows.set(row.id,enrichRow(row))));
+ const ready=window.BibleCorpus?.ready;
+ if(!ready){decorate();return}
+ ready.then(corpus=>{
+  if(corpus)mergedRows=new Map((corpus.relations||[]).map(row=>[row.id,enrichRow(row)]));
   decorate();
- });
+ }).catch(error=>console.warn('Bible dossier presentation unavailable',error));
 }
 document.readyState==='loading'?document.addEventListener('DOMContentLoaded',start):start();
 })();
