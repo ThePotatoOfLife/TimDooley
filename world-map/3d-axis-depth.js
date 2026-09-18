@@ -87,9 +87,10 @@ function renderPanel(data, current) {
       ${below && below.dimension !== current.dimension ? `<div class="row">↓ ${esc(below.label)}</div>` : ''}
     </div>
     <div class="card"><b>Axis traffic</b><div class="row">↑ growth markers · ${upMarkers.slice(0,7).map(esc).join(' · ')}</div><div class="row">↓ descent markers · ${downMarkers.slice(0,7).map(esc).join(' · ')}</div><p class="muted">Markers describe project symbolism, not measurable forces. The same Door/Ladder carries movement in both directions.</p></div>
-    <div class="actions"><button id="axisReturnEarth">D4 · World map</button><button id="axisDoor">D5 · North Door</button><button id="axisFocusNorth">Focus North</button></div>`;
+    <div class="actions"><button id="axisReturnEarth">D4 · World map</button><button id="axisDoor">D5 · North Door</button><button id="axisGuide">Living Axis</button><button id="axisFocusNorth">Focus North</button></div>`;
   document.getElementById('axisReturnEarth')?.addEventListener('click',()=>window.__potatoAxisDepth?.setDimension(4));
   document.getElementById('axisDoor')?.addEventListener('click',()=>window.__potatoAxisDepth?.setDimension(5));
+  document.getElementById('axisGuide')?.addEventListener('click',()=>{const path=current.dimension<4?'strife':current.dimension>5?'life':null;location.href='../axis/'+(path?'?path='+path+'#paths':'#gateway')});
   document.getElementById('axisFocusNorth')?.addEventListener('click',()=>window.__potatoAxisDepth?.focusNorth());
 }
 
