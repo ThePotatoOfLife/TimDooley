@@ -2,7 +2,7 @@
   "id": "root-system",
   "title": "Potato of Life Root System",
   "kind": "foundational ontology and branching skeleton",
-  "version": "5.1.0",
+  "version": "5.2.0",
   "updated": "2026-09-18",
   "aliases": [
     "Potato of Life skeleton",
@@ -305,6 +305,13 @@
         "comparative",
         "interpretation"
       ]
+    },
+    "project_center": {
+      "text": "The semantic center of the project is the Potato of Life as triune relational whole; the spatial center of the navigation geometry is the Axis. These are deliberately distinct. The project now grows center-out in rings: Nucleus (Potato/Father/Son/Spirit) → Core Structure (fields/Door/Axis/Plane/Cross/House) → Living Metabolism (Seed/Root/Knowledge/Life/Strife/Spiral/Garden/Swamp/Fruit/Repair) → Project Rooms/domains → Comparative Mirrors → Deep Archive. External mythologies, religions and esoteric systems illuminate or challenge project-native nodes but do not become co-equal project centers.",
+      "epistemic_class": [
+        "project_canon",
+        "interpretation"
+      ]
     }
   },
   "relationships": [
@@ -377,6 +384,11 @@
       "target": "comparative-cosmography-population-wave-002",
       "type": "population",
       "description": "Research wave for Garden, water, judgment, Bardo, Olympus, Zeus and protective serpent material."
+    },
+    {
+      "target": "project-center",
+      "type": "governance",
+      "description": "Defines semantic center, spatial center distinction and center-out promotion rings."
     }
   ],
   "retrieval": {
