@@ -8,6 +8,7 @@ ROOMS=ROOT/'data/house/rooms.json'; ROOM_SCHEMA=ROOT/'schemas/house-room-registr
 SURFACES=ROOT/'data/house/public-surfaces.json'; SURFACE_SCHEMA=ROOT/'schemas/house-public-surface-registry.schema.json'
 TOPOLOGY=ROOT/'knowledge/research/potato-house-master/public-route-topology.json'
 HOUSE_TOPOLOGY=ROOT/'data/house/topology.json'
+PROJECT_CENTER=ROOT/'data/house/project-center.json'
 ORIENTATION_POPULATION=ROOT/'data/house/orientation-population.json'
 TREE_PLANE_ROUTING=ROOT/'data/house/tree-plane-routing.json'
 SEED_SPIRAL_ROUTING=ROOT/'data/house/seed-spiral-routing.json'
@@ -402,7 +403,7 @@ def validate_symbolic_planes(errors,rooms):
         errors.append('Akashic Tree view must remain an archive metaphor rather than evidence claim')
 
 
-def validate_orientation_population(errors,rooms); validate_tree_plane_routing(errors); validate_seed_spiral_routing(errors); validate_navigation_consolidation(errors); validate_providence_structure(errors); validate_layer_terrain_atlas(errors); validate_placement_matrix(errors):
+def validate_orientation_population(errors,rooms):
     population=load(ORIENTATION_POPULATION,errors); subrooms=load(SUBROOMS,errors)
     if not population or not subrooms: return
     sub_ids=[x.get('id') for x in subrooms.get('subrooms',[]) if isinstance(x,dict)]
@@ -576,10 +577,45 @@ def validate_placement_matrix(errors):
     if not precedence or not precedence[0].startswith('own-tradition'): errors.append('placement precedence must start with own-tradition / primary-source meaning')
     if data.get('output_contract',{}).get('unresolved_destination')!='research-lab/open-questions': errors.append('unresolved placements must route to Research Lab/Open Questions')
 
+
+def validate_project_center(errors):
+    data=load(PROJECT_CENTER,errors)
+    if not data: return
+    centers=data.get('center_distinctions',{})
+    if centers.get('semantic_center',{}).get('id')!='potato-of-life':
+        errors.append('semantic project center must remain Potato of Life')
+    if centers.get('spatial_center',{}).get('id')!='axis':
+        errors.append('spatial navigation center must remain Axis')
+    rings=[x for x in data.get('rings',[]) if isinstance(x,dict)]
+    ids=[x.get('id') for x in rings]
+    expected=['r0-nucleus','r1-core-structure','r2-living-metabolism','r3-project-domains','r4-comparative-mirrors','r5-archive']
+    if ids!=expected: errors.append('project center ring order drifted')
+    nucleus=next((x for x in rings if x.get('id')=='r0-nucleus'),{})
+    if nucleus.get('node_ids')!=['potato-of-life','father','son','spirit']:
+        errors.append('project nucleus must remain Potato of Life / Father / Son / Spirit')
+    rules=' '.join(data.get('promotion_rules',[])).casefold()
+    for token in ('comparative node cannot enter ring 0–2','volume of sources does not determine centrality','semantic center is potato of life','home should explain ring 0–1'):
+        if token not in rules: errors.append(f'project center missing promotion boundary: {token}')
+
 def main():
-    errors=[]; rooms=validate_rooms(errors); surfaces=validate_surfaces(errors,rooms); validate_concept_topology(errors,rooms,surfaces); validate_symbolic_planes(errors,rooms); validate_orientation_population(errors,rooms)
+    errors=[]
+    rooms=validate_rooms(errors)
+    surfaces=validate_surfaces(errors,rooms)
+    validate_concept_topology(errors,rooms,surfaces)
+    validate_project_center(errors)
+    validate_symbolic_planes(errors,rooms)
+    validate_orientation_population(errors,rooms)
+    validate_tree_plane_routing(errors)
+    validate_seed_spiral_routing(errors)
+    validate_navigation_consolidation(errors)
+    validate_providence_structure(errors)
+    validate_layer_terrain_atlas(errors)
+    validate_placement_matrix(errors)
     if errors:
-        print('POTATO HOUSE GOVERNANCE VALIDATION FAILED'); [print('-',e) for e in errors]; return 1
-    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: Rooms, surfaces, semantic topology, three planes, cardinal compass, populated Rooms, reader corridor and route authority converge'); return 0
+        print('POTATO HOUSE GOVERNANCE VALIDATION FAILED')
+        [print('-',e) for e in errors]
+        return 1
+    print('POTATO HOUSE GOVERNANCE VALIDATION PASSED: project center, Rooms, topology, planes, routes, population and comparative layers converge')
+    return 0
 
 if __name__=='__main__': raise SystemExit(main())
