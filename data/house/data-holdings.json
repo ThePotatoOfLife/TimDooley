@@ -1,5 +1,5 @@
 {
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "house-data-holdings",
   "principle": "Data holdings are grouped datasets, ledgers, registries or contracts with one primary Room owner. Secondary Rooms may consume them without becoming co-owners. Runtime/render/config artifacts may remain unbundled when they are implementation rather than knowledge.",
@@ -250,8 +250,6 @@
         "data/potatoism-cosmology.json",
         "data/potatoism-celestial-layer.json",
         "data/potatoism-planetary-cosmology.json",
-        "data/potatoism-deep-architecture.json",
-        "data/potatoism-deep-layers.json",
         "data/potatoism-deep-extrapolation-atlas.json",
         "data/spiritual-architecture.json",
         "data/tim-dooley-cosmology.json",
@@ -259,14 +257,12 @@
         "data/potatoism-vesica-coupling-atlas.json"
       ],
       "kind": "project-cosmology",
-      "purpose": "Internal cosmology and deep symbolic architecture, explicitly separate from empirical physical cosmology.",
-      "file_count": 10,
+      "purpose": "Internal cosmology and symbolic architecture routed through current specialist owners; early all-in-one deep files are retained only as historical donors.",
+      "file_count": 8,
       "source_files": [
         "data/potatoism-cosmology.json",
         "data/potatoism-celestial-layer.json",
         "data/potatoism-planetary-cosmology.json",
-        "data/potatoism-deep-architecture.json",
-        "data/potatoism-deep-layers.json",
         "data/potatoism-deep-extrapolation-atlas.json",
         "data/spiritual-architecture.json",
         "data/tim-dooley-cosmology.json",
@@ -277,11 +273,21 @@
         "data/potatoism-cosmology.json",
         "data/potatoism-celestial-layer.json",
         "data/potatoism-planetary-cosmology.json",
-        "data/potatoism-deep-architecture.json",
-        "data/potatoism-deep-layers.json",
         "data/potatoism-deep-extrapolation-atlas.json",
         "data/spiritual-architecture.json",
         "data/tim-dooley-cosmology.json"
+      ],
+      "historical_donors": [
+        "data/potatoism-deep-architecture.json",
+        "data/potatoism-deep-layers.json"
+      ],
+      "canonical_depth_routes": [
+        "knowledge/core/potatoverse-master-framework.json",
+        "knowledge/core/potato-of-life-deep-structure.json",
+        "knowledge/core/deep-element-definition-atlas.json",
+        "knowledge/core/door-topology-access-and-capability-atlas.json",
+        "knowledge/core/tree-branching-pruning-atlas.json",
+        "knowledge/spirit/spirit-context-atlas.json"
       ]
     },
     {
