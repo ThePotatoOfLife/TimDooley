@@ -1,0 +1,353 @@
+{
+  "id": "recent-commit-depth-audit-2026-09-18",
+  "title": "Recent Commit Depth Audit — What Was Built Deeply vs What Still Needs Carving",
+  "updated": "2026-09-18",
+  "status": "active research programme",
+  "purpose": "Audit the Sep 18 House/center expansion retrospectively for research depth, structural depth and population yield, then prioritize work that deepens many Rooms at once.",
+  "master_finding": "The repository is structurally ahead of its research depth. Ownership, topology, routing and center governance are mature; several central operators and comparative layers were researched only enough to place them correctly. Future yield comes from deepening cross-Room operators before adding more entities.",
+  "audit_dimensions": [
+    "implementation depth — is the concept actually wired into data/UI/governance?",
+    "source depth — are there multiple strong sources and historical layers?",
+    "internal differentiation — are variants/counterexamples/boundaries explicit?",
+    "structural consequence — did the research change the House or only add an example?",
+    "population yield — how many Rooms become easier to fill after this is deepened?"
+  ],
+  "commit_waves": [
+    {
+      "id": "rooms-holdings-dossiers",
+      "commits": [
+        "9918ea12764555c10f155d193884275f611b6022",
+        "fa1c5495613c120bbf94ddc94f6c627d9bb37b00",
+        "0b6275a724cac3b7c994349809252af10567cd81"
+      ],
+      "implementation_depth": "deep",
+      "research_depth": "not-applicable / governance",
+      "finding": "One-owner custody, holdings and dossiers are strong. The remaining weakness was editorial fullness, not architecture.",
+      "action": "Populate every dossier with center contribution, belongs/stays-out, tests and handoffs; this is being implemented in the synthesis branch."
+    },
+    {
+      "id": "three-planes-compass",
+      "commits": [
+        "2e56b015efa7ea1d0b01c14d7f7946b1366fe213",
+        "9d390e2be0c1e93d148b7d2e1e15ed71b26f9d3c",
+        "11ac87ae29eebf46df4a599312f5b36525b77a4d"
+      ],
+      "implementation_depth": "deep",
+      "research_depth": "medium",
+      "finding": "Heaven/World/Below and compass are useful projections, but comparative religion was used mainly to justify verticality. Axis-mundi scholarship adds a missing point: sacred centers are often replicated and multiple rather than one universal geometric center.",
+      "action": "Add global-Axis vs local-axis/center distinction; allow Room-scale replicated centers without creating rival semantic centers."
+    },
+    {
+      "id": "tree-seed-spiral-routing",
+      "commits": [
+        "afb76a7a5159bd7909a1a60fe5c83807db53b8e4",
+        "bae34490d98b83a91803beb2401f646f29b2c6ba"
+      ],
+      "implementation_depth": "deep",
+      "research_depth": "medium",
+      "finding": "Project routing is detailed, but biological branching, root plasticity, liminal transition and formal recurrence were not deeply integrated.",
+      "action": "Deepen Tree as regulated branching, Door as separation→liminality→incorporation, and Spiral as recurrence with measured state displacement."
+    },
+    {
+      "id": "religious-branch-population",
+      "commits": [
+        "33a71e6142653ec899321bf908e4302e606ecba5",
+        "2446db16eedc305c62bbbd0367e55009af34e51c",
+        "8a94941ffd3d376accab67af4a42d148a50baa4d"
+      ],
+      "implementation_depth": "medium-deep",
+      "research_depth": "broad-but-shallow",
+      "finding": "Many entities are correctly bounded and placed, but most entries are one-paragraph summaries rather than full tradition dossiers.",
+      "action": "Do not deepen all entries. Select only structurally productive exemplars: Eden, Yggdrasil, Duat, Meru, Bardo, Gehenna/Hades/Sheol genealogy."
+    },
+    {
+      "id": "providence-pyramid-pillars",
+      "commits": [
+        "f85cc1d5eb5f16e0dd3abd06d4f6e6990ed8c1d9"
+      ],
+      "implementation_depth": "medium",
+      "research_depth": "shallow-medium",
+      "finding": "Enough history was gathered to separate Great Seal facts from later esotericism, but the genealogy remains compressed: 1776 first-committee Eye, 1782 adopted reverse, unfinished pyramid, 13 levels, mottos, later dollar-bill reception, biblical Jachin/Boaz, and later Masonic pillar use deserve separate layers.",
+      "action": "Build a dated genealogy rather than a single symbolic bundle."
+    },
+    {
+      "id": "terrain-regime-shadow",
+      "commits": [
+        "c9f0c001e5a8df38b307b8627671d4aaf4238b0d"
+      ],
+      "implementation_depth": "deep",
+      "research_depth": "medium",
+      "finding": "Terrain/regime classification is strong. Shadow remains underdeveloped as a crosscutting integration/visibility problem; analytical psychology explicitly includes positive as well as negative disowned capacities.",
+      "action": "Separate shadow-content, shadow-process, projection and institutional/cultural shadow; keep Shadow crosscutting rather than Below-only."
+    },
+    {
+      "id": "center-lenses",
+      "commits": [
+        "ce99520b44a1862ce0c41678e5a36229843cad05",
+        "00f23fddbc40f5d6b633185768f4afc66d9d7d33"
+      ],
+      "implementation_depth": "deep",
+      "research_depth": "medium",
+      "finding": "Center refocus is mature. Buddhism/Daoism/Akashic comparisons are intentionally bounded but still introductory.",
+      "action": "Deepen only where the comparison sharpens a native operator: Wheel/Path→practice coordination; Daoist useful void→Door/House; yin-yang→nonmoral polarity; Akashic history→archive metaphor boundary."
+    },
+    {
+      "id": "living-project",
+      "commits": [
+        "6884d6f756c1ce2b54c45ca6a2315ab42aac02b3"
+      ],
+      "implementation_depth": "deep",
+      "research_depth": "uneven",
+      "finding": "Organism/History are relatively grounded; Spirit and Culture remain the largest source-depth gaps.",
+      "action": "Deepen Spirit across biblical breath-language, Stoic pneuma, systems spirituality and body-carrier boundaries; deepen Culture through norms, social identity, network transmission, institutions, coercive control and exit/correction mechanisms."
+    }
+  ],
+  "priority_queue": [
+    {
+      "priority": "P0",
+      "id": "door-liminality",
+      "yield": "very-high",
+      "rooms": [
+        "symbolic-architecture",
+        "practice-ethics",
+        "developmental-genealogy",
+        "subculture-group-formation",
+        "law-justice",
+        "house-architecture"
+      ],
+      "why": "Door is used everywhere but has not yet been deeply carved as a transition grammar.",
+      "research_needed": [
+        "van Gennep separation-transition-incorporation",
+        "Turner liminality/communitas and risks",
+        "state-machine/permission transitions",
+        "biological developmental thresholds"
+      ],
+      "likely_structural_answer": "A strong Door should have BEFORE state, SEPARATION condition, LIMINAL state, GUARD/TEST, AFTER state, and INCORPORATION/RETURN."
+    },
+    {
+      "priority": "P0",
+      "id": "spirit-relation",
+      "yield": "very-high",
+      "rooms": [
+        "theology-god-language",
+        "symbolic-body-comparison",
+        "whole-body",
+        "other-traditions",
+        "practice-ethics",
+        "information-ecology"
+      ],
+      "why": "Spirit is central but externally sourced less deeply than Father/Son/biology/history.",
+      "research_needed": [
+        "biblical ruach/pneuma context",
+        "Stoic pneuma as sustaining relation",
+        "qi/breath-family distinctions",
+        "systems approaches to spirituality",
+        "communication/circulation theory"
+      ],
+      "likely_structural_answer": "Spirit should be modeled as a family of relational functions with carriers, not as one substance or vague synonym for flow."
+    },
+    {
+      "priority": "P0",
+      "id": "culture-formation-control",
+      "yield": "very-high",
+      "rooms": [
+        "subculture-group-formation",
+        "information-ecology",
+        "internet-platforms",
+        "politics-governance",
+        "law-justice",
+        "practice-ethics"
+      ],
+      "why": "Culture page is rich but the research model beneath formation→institution→capture is still thin.",
+      "research_needed": [
+        "norm emergence/persistence/change",
+        "social identity and influence",
+        "network/platform amplification",
+        "institutionalization",
+        "coercive control",
+        "exit/correction mechanisms"
+      ],
+      "likely_structural_answer": "Culture should have state transitions from interaction→norm→identity→institution, with independent axes for cohesion, correction, authority concentration, dependency and exit cost."
+    },
+    {
+      "priority": "P0",
+      "id": "axis-local-centers",
+      "yield": "high",
+      "rooms": [
+        "symbolic-architecture",
+        "house-architecture",
+        "comparative-mythology",
+        "geography-countries",
+        "whole-body"
+      ],
+      "why": "Axis is globally defined but replicated centers inside houses, cities, bodies and Rooms have not been modeled.",
+      "research_needed": [
+        "axis-mundi function and criticism",
+        "multiple centers",
+        "microcosm replication",
+        "house/temple/body/city center analogies"
+      ],
+      "likely_structural_answer": "Keep one project semantic center and one global navigation Axis, but permit scoped local centers/axes as projections with explicit parent scope."
+    },
+    {
+      "priority": "P0",
+      "id": "fruit-consequence",
+      "yield": "high",
+      "rooms": [
+        "practice-ethics",
+        "model-testing",
+        "works",
+        "world-systems",
+        "culture-information",
+        "life-body"
+      ],
+      "why": "Fruit is the project's downstream test but remains more slogan than formal evaluation framework.",
+      "research_needed": [
+        "pragmatist consequence testing",
+        "domain-specific outcome measures",
+        "unintended consequences",
+        "delayed fruit",
+        "Goodhart-like metric failure"
+      ],
+      "likely_structural_answer": "Fruit should record output, beneficiary, timescale, observable effects, externalities, reversibility and whether new independent Seed/capacity is produced."
+    },
+    {
+      "priority": "P0",
+      "id": "tree-branching",
+      "yield": "high",
+      "rooms": [
+        "potato-biology",
+        "symbolic-architecture",
+        "systems-dynamics",
+        "information-ecology",
+        "works"
+      ],
+      "why": "Tree currently means differentiation but biological branching shows that branching is regulated, plastic and resource/environment dependent.",
+      "research_needed": [
+        "root-system architecture",
+        "shoot branching/meristems",
+        "branching mathematical models",
+        "pruning/apical dominance/resource allocation"
+      ],
+      "likely_structural_answer": "Tree should expose branch initiation, suppression, resource cost, pruning, convergence and branch death—not only more branches."
+    },
+    {
+      "priority": "P1",
+      "id": "shadow-integration",
+      "yield": "high",
+      "rooms": [
+        "practice-ethics",
+        "culture-information",
+        "memory-recovery",
+        "canon-identities",
+        "politics-governance"
+      ],
+      "why": "Shadow is still visually associated with Below despite being declared crosscutting.",
+      "research_needed": [
+        "Jung individual/collective shadow",
+        "positive shadow",
+        "projection",
+        "organizational/institutional blind spots"
+      ],
+      "likely_structural_answer": "Shadow becomes an occlusion/integration overlay with source, excluded content, projection target, cost and integration path."
+    },
+    {
+      "priority": "P1",
+      "id": "providence-pillar-genealogy",
+      "yield": "medium-high",
+      "rooms": [
+        "esoteric-sacred-geometry",
+        "developmental-genealogy",
+        "bible-christianity",
+        "comparative-mythology"
+      ],
+      "why": "The symbols are structurally useful but their historical layers remain easy to conflate.",
+      "research_needed": [
+        "1776 seal proposals",
+        "1782 Thomson/adopted reverse",
+        "classical motto sources",
+        "biblical Jachin/Boaz archaeology",
+        "18th-century Masonic adoption",
+        "later occult/Illuminati reception"
+      ],
+      "likely_structural_answer": "Treat Eye, Pyramid, 1776 and Twin Pillars as separate dated genealogies that meet only through typed reception/comparison edges."
+    },
+    {
+      "priority": "P1",
+      "id": "selected-cosmographies",
+      "yield": "medium",
+      "rooms": [
+        "comparative-mythology",
+        "other-traditions",
+        "symbolic-architecture"
+      ],
+      "why": "Population waves are broad but each tradition is thin.",
+      "research_needed": [
+        "one or two primary/academic sources per selected exemplar",
+        "internal variants",
+        "ritual/practice context",
+        "later reception"
+      ],
+      "likely_structural_answer": "Promote only exemplars that teach a unique structural function; leave the rest room-detail/archive."
+    }
+  ],
+  "stop_rule": "Do not add another broad comparative population wave until P0 operators have deeper source/context models and have been propagated into Room dossiers/public pages.",
+  "sources": [
+    {
+      "topic": "axis-mundi",
+      "url": "https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/axis-mundi"
+    },
+    {
+      "topic": "multiple-centers",
+      "url": "https://www.encyclopedia.com/environment/encyclopedias-almanacs-transcripts-and-maps/center-world"
+    },
+    {
+      "topic": "shadow",
+      "url": "https://iaap.org/jung-analytical-psychology/short-articles-on-analytical-psychology/the-shadow/"
+    },
+    {
+      "topic": "rites-of-passage",
+      "url": "https://www.encyclopedia.com/medicine/anatomy-and-physiology/anatomy-and-physiology/rites-passage"
+    },
+    {
+      "topic": "plant-root-branching",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/23801487/"
+    },
+    {
+      "topic": "plant-shoot-branching",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/37896091/"
+    },
+    {
+      "topic": "norm-dynamics",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-033020-013319"
+    },
+    {
+      "topic": "social-influence-group-identity",
+      "url": "https://www.annualreviews.org/content/journals/10.1146/annurev-psych-070620-111818"
+    },
+    {
+      "topic": "coercive-control",
+      "url": "https://pubmed.ncbi.nlm.nih.gov/30803427/"
+    },
+    {
+      "topic": "pragmatism",
+      "url": "https://plato.stanford.edu/entries/pragmatism/"
+    },
+    {
+      "topic": "stoic-pneuma",
+      "url": "https://plato.stanford.edu/entries/ancient-soul/"
+    },
+    {
+      "topic": "systems-spirituality",
+      "url": "https://onlinelibrary.wiley.com/doi/10.1111/zygo.12087"
+    },
+    {
+      "topic": "great-seal",
+      "url": "https://1997-2001.state.gov/publications/great_seal.pdf"
+    },
+    {
+      "topic": "jachin-boaz",
+      "url": "https://www.encyclopedia.com/philosophy-and-religion/bible/biblical-proper-names/jachin-and-boaz"
+    }
+  ]
+}
