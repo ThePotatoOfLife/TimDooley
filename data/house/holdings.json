@@ -1152,22 +1152,22 @@
       "primary_file_count": 3,
       "featured_holdings": [
         {
-          "path": "knowledge/biology/potato-growth-principles.json",
-          "id": "potato-growth-principles",
-          "kind": "room holding",
-          "basis": "exact-owner"
-        },
-        {
           "path": "knowledge/science/potato-biology-ecology-development-canon.json",
           "id": "potato-biology-ecology-development-canon",
-          "kind": "room holding",
-          "basis": "exact-owner"
+          "kind": "canonical science owner",
+          "basis": "canonical-owner"
+        },
+        {
+          "path": "knowledge/biology/potato-growth-principles.json",
+          "id": "potato-growth-principles",
+          "kind": "practice-facing projection",
+          "basis": "derived-projection"
         },
         {
           "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
           "id": "potato-angels-eye-sprout-development-ledger",
-          "kind": "room holding",
-          "basis": "exact-owner"
+          "kind": "development/attestation ledger",
+          "basis": "timeline-owner"
         }
       ],
       "public_surface_ids": [
