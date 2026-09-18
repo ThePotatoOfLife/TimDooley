@@ -569,5 +569,10 @@
       "migration_status": "current",
       "compatibility_routes": []
     }
-  ]
+  ],
+  "authority": "derived-public-route-topology-projection",
+  "canonical_source": "data/house/public-surfaces.json",
+  "lifecycle_status": "compatibility-projection",
+  "generation_rule": "Route identity, canonical route, surface type and primary Room membership must derive from data/house/public-surfaces.json. This file may retain migration/topology-only fields but must not independently redefine public route identity.",
+  "retirement_target": "Become deterministically generated from public-surfaces plus topology-only annotations; do not remain a second hand-authored route registry."
 }
