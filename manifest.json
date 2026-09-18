@@ -669,23 +669,17 @@
       "stale AXIS/WORLD-only navigation doctrine retired",
       "knowledge.json retired from live repository after canonical promotion",
       "POTATOVERSE-DEEP-RESEARCH.md retired after unique-content promotion",
-      "POTATOVERSE-ALTERNATIVE-RESEARCH.md retired after unique-content promotion"
+      "POTATOVERSE-ALTERNATIVE-RESEARCH.md retired after unique-content promotion",
+      "research.json retired after section-level migration and frontier promotion"
     ],
     "legacy_root_files": {
       "files": [
-        "research.json",
         "book-research.json",
         "2026-master-framework.json",
         "TIM-DOOLEY-LIFE-AND-MYTH-TIMELINE.md"
       ],
       "status": "phased legacy/source strata; current authority lives in canonical owners and specialist records",
       "classifications": {
-        "research.json": {
-          "role": "closed historical mixed-research donor",
-          "authority": "provenance/source-lineage only; no current canon ownership",
-          "retirement_condition": "rewire remaining live source references to specialist owners/primary sources or archived provenance, then remove root copy",
-          "closed_for_new_research": true
-        },
         "book-research.json": {
           "role": "retained 2024 Great Book source-extraction bridge",
           "authority": "source/provenance, not current synthesis",
