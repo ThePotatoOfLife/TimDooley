@@ -31,7 +31,7 @@
 <section class="orientation" id="orientation" aria-labelledby="orientation-title">
 <div class="orientation-head"><div><p class="eyebrow">Stand in the center and choose a direction</p><h2 id="orientation-title">One compass across all three planes</h2><p class="boundary">Direction chooses the kind of question. Plane changes the orientation from which you read it. The same eight Doors stay in the same positions on Heaven, World and Below, so you can move vertically without getting lost.</p></div><div class="orientation-tabs" id="orientationTabs" aria-label="Choose navigation plane"><button class="orientation-tab" type="button" data-plane="heaven-plane" aria-pressed="false">Heaven</button><button class="orientation-tab" type="button" data-plane="world-plane" aria-pressed="true">World</button><button class="orientation-tab" type="button" data-plane="below-plane" aria-pressed="false">Below</button></div></div>
 <div class="orientation-layout"><div class="orientation-compass" id="orientationCompass" aria-label="Eight-direction House compass"><span class="plane-loading">Loading compass…</span></div><article class="orientation-detail" id="orientationDetail"><p class="boundary">Choose a direction to inspect what that Door means on the selected plane.</p></article></div>
-<p class="orientation-law">Research Lab stays at the center because unresolved cross-Room questions belong there before promotion. Works / Fruit stays at the outer ring because creative output can grow from every direction. The compass is a reading projection only; it does not change which Room owns a fact.</p>
+<p class="orientation-law">The Axis is the exact center. Research Lab is the inner Forge ring around it, holding unresolved cross-Room questions before promotion. Works / Fruit stays at the outer ring because creative output can grow from every direction. The compass is a reading projection only; it does not change which Room owns a fact.</p>
 </section>
 <section class="room-grid" aria-label="Canonical public Dwellings">
 <a class="room" href="../religion/"><strong>Potatoverse / Canon</strong><span>Project-canon identities, theology, roles, symbolic systems and mature Potatoverse synthesis.</span></a>
@@ -79,7 +79,7 @@
       const routeOf=r=>r?'../'+r:'../';
       root.innerHTML=(model.directions||[]).map(d=>'<span class="compass-spoke" style="transform:rotate('+esc(d.bearing-90)+'deg)"></span>').join('')+
         (model.directions||[]).map(d=>{const rad=(Number(d.bearing)||0)*Math.PI/180,x=50+Math.sin(rad)*42,y=50-Math.cos(rad)*42;return '<button class="compass-door" type="button" style="left:'+x.toFixed(2)+'%;top:'+y.toFixed(2)+'%" data-direction="'+esc(d.id)+'" aria-pressed="false"><small>'+esc(d.label)+'</small><b>'+esc(d.title.replace(' & ',' / '))+'</b></button>';}).join('')+
-        '<a class="compass-center" href="'+esc(routeOf(model.center.route))+'"><span><b>'+esc(model.center.label)+'</b><small>'+esc(model.center.symbol)+'</small></span></a>'+
+        '<a class="compass-center" href="../axis/#routing"><span><b>Axis</b><small>Center · Forge around it</small></span></a>'+
         '<a class="compass-fruit" href="'+esc(routeOf(model.outer_ring.route))+'">'+esc(model.outer_ring.label)+' ↗</a>';
       function show(id){
         const d=model.directions.find(x=>x.id===id)||model.directions[0],focus=d.focus_by_plane?.[plane]||{};
