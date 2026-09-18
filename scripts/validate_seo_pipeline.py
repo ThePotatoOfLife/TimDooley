@@ -91,7 +91,7 @@ def main() -> int:
             '"error_messages": errors',
             '"warning_messages": warnings',
             "seo-report.json",
-            "from house_public_surfaces import (",
+            "from house_public_surfaces import primary_gateway_rows",
             "parent_chain",
             "surface_by_route",
             "surface_rows",
