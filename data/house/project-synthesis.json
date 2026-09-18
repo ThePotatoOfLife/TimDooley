@@ -1,5 +1,5 @@
 {
-  "version": "1.9.0",
+  "version": "2.0.0",
   "updated": "2026-09-18",
   "authority": "project-synthesis",
   "purpose": "Bind repository development waves, center operators, living metabolisms, Rooms, lenses, tests, outputs and commit crystallization into one center-out composition without replacing their canonical owners.",
@@ -1823,7 +1823,6 @@
     "next_p3": [
       "instrument-existing-works-with-fruit-contract",
       "run-first-real-canon-revision-through-protocol",
-      "build-garden-repair-reader-journey",
       "add-shadow-below-overlays-to-culture-history-and-research-pages",
       "populate-more-foundations-with-multiple-clocks-and-reproduction-mechanisms",
       "attach-reproduction-exit-correction-measures-to-formation-cases",
@@ -1860,6 +1859,11 @@
         "id": "instrument-entity-dossiers-with-scale-reproduction-visibility-time",
         "artifact": "data/house/entity-dossiers-wave-001.json",
         "result": "The first four real entity cases now expose operating scale, key dependencies, reproduction/correction mechanisms, visibility/access limits and source-backed longitudinal indicators."
+      },
+      {
+        "id": "materialize-route-case-matrix",
+        "artifact": "data/house/route-case-matrix-wave-001.json",
+        "result": "Life/Strife/Repair/Return now have mechanism contrasts and concrete evidence-aware route cases with falsifiers and World-return measures."
       }
     ]
   },
@@ -1914,6 +1918,7 @@
       "project-spine",
       "learn-the-structure",
       "operating-cycles",
+      "route-comparison",
       "materialized-project-state",
       "reality-cases",
       "working-capabilities",
@@ -1976,6 +1981,11 @@
         "id": "cross-cutting-views",
         "purpose": "Route to Axis, Research Lab, Timeline, Works, History and Sources.",
         "owner": "data/house/public-surfaces.json"
+      },
+      {
+        "id": "route-comparison",
+        "purpose": "Teach route families as evidence-aware state-transition hypotheses using mechanism contrasts and concrete cases with falsifiers.",
+        "owner": "data/house/route-case-matrix-wave-001.json"
       }
     ],
     "runtime_sources": [
@@ -1987,7 +1997,8 @@
       "data/house/lower-plane-population-atlas.json",
       "data/house/layer-terrain-regime-atlas.json",
       "data/axis-flow-contract.json",
-      "data/house/concept-topology.json"
+      "data/house/concept-topology.json",
+      "data/house/route-case-matrix-wave-001.json"
     ],
     "anti_drift": [
       "Do not duplicate full dossiers on Home.",
@@ -2108,5 +2119,26 @@
         "return"
       ]
     }
+  },
+  "route_instrumentation": {
+    "authority": "data/house/route-case-matrix-wave-001.json",
+    "rule": "Life, Strife, Repair and Return are route hypotheses over changing relations, not identities or moral labels for subjects.",
+    "required_case_fields": [
+      "starting_state",
+      "proposed_transition",
+      "operator",
+      "condition_required",
+      "evidence_for_transition",
+      "counterevidence_or_falsifier",
+      "world_return_measure",
+      "status"
+    ],
+    "first_cases": [
+      "project-homepage-governance-repair",
+      "nationalbank-payment-resilience-trace",
+      "wikimedia-capability-growth-trace",
+      "cern-reproduction-return-trace",
+      "icrc-resource-adaptation-trace"
+    ]
   }
 }
