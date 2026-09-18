@@ -1,5 +1,5 @@
 {
-  "version": "5.7.0",
+  "version": "5.8.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -17,7 +17,8 @@
       "tim-role-synthesis",
       "potato-of-life-deep-structure",
       "water-flow-river-drain-atlas",
-      "material-state-stone-clay-dust-ash-atlas"
+      "material-state-stone-clay-dust-ash-atlas",
+      "inhabited-house-society-ontology"
     ],
     "geometry_and_transformation": [
       "vertical-potato-mountain-plane-atlas",
@@ -111,7 +112,8 @@
       "symbol-conversation-archaeology-wave-001",
       "symbol-conversation-archaeology-wave-002",
       "symbol-confusion-registry-wave-004",
-      "symbol-population-matrix-wave-004"
+      "symbol-population-matrix-wave-004",
+      "society-population"
     ]
   },
   "records": [
@@ -1735,6 +1737,42 @@
         "Growth",
         "Celestial",
         "Numbers"
+      ]
+    },
+    {
+      "id": "inhabited-house-society-ontology",
+      "path": "knowledge/core/inhabited-house-society-ontology.json",
+      "branch": "root",
+      "kind": "population ontology connecting Spirit Mind Body to concrete society",
+      "terms": [
+        "Inhabited House",
+        "Spirit Mind Body",
+        "Society",
+        "Institutions",
+        "Governments",
+        "Banks",
+        "Companies",
+        "NGOs",
+        "Families",
+        "Infrastructure"
+      ]
+    },
+    {
+      "id": "society-population",
+      "path": "data/house/society-population.json",
+      "branch": "house",
+      "kind": "public society population projection and verified institutional anchors",
+      "terms": [
+        "Society Population",
+        "UN",
+        "EU",
+        "WHO",
+        "IMF",
+        "BIS",
+        "CERN",
+        "ICRC",
+        "Companies",
+        "Banks"
       ]
     }
   ],
