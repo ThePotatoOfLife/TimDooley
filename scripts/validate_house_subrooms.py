@@ -106,6 +106,12 @@ def main():
     hold_count={x.get('room_id'):x.get('primary_file_count',0) for x in holding_rows}
     for d in dossier_rows:
         if d.get('knowledge_holdings',{}).get('primary_file_count')!=hold_count.get(d.get('room_id')): errors.append(f'Room dossier holding count drift: {d.get("room_id")}')
+        if not d.get('belongs_here'): errors.append(f'Room dossier missing belongs_here: {d.get("room_id")}')
+        if not d.get('stays_out'): errors.append(f'Room dossier missing stays_out: {d.get("room_id")}')
+        pairing=d.get('center_pairing',{})
+        if not pairing.get('contribution'): errors.append(f'Room dossier missing center contribution: {d.get("room_id")}')
+        if not pairing.get('center_nodes'): errors.append(f'Room dossier missing center nodes: {d.get("room_id")}')
+        if not pairing.get('hands_to'): errors.append(f'Room dossier missing mature handoff: {d.get("room_id")}')
     if len(pulse_rows)!=len(rows): errors.append('House population pulse must cover every nested Room')
     if {x.get('room_id') for x in pulse_rows}!={x.get('id') for x in rows}: errors.append('House population pulse Room IDs drifted')
     federation_ids=[x.get('id') for x in federation.get('forms',[]) if isinstance(x,dict)]
