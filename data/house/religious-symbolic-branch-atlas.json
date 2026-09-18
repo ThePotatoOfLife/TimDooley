@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "authority": "religious-symbolic-branch-atlas",
   "purpose": "Populate the Potato House with religious, mythic, angelic, demonic, underworld, esoteric and sacred-architecture subjects already present in the repository while preserving own-tradition meaning before comparison.",
@@ -19,7 +19,13 @@
         "comparative-mythology",
         "other-traditions"
       ],
-      "description": "Messengers, celestial intermediaries, ascent/descent, transmission and Spirit-like mediation."
+      "description": "Messengers, celestial intermediaries, ascent/descent, transmission and Spirit-like mediation.",
+      "center_anchor_ids": [
+        "spirit",
+        "axis",
+        "door",
+        "ladder"
+      ]
     },
     {
       "id": "divine-figures",
@@ -30,7 +36,12 @@
         "bible-christianity",
         "other-traditions"
       ],
-      "description": "Divine figures and sacred-order concepts kept rooted in their own traditions before structural comparison."
+      "description": "Divine figures and sacred-order concepts kept rooted in their own traditions before structural comparison.",
+      "center_anchor_ids": [
+        "house",
+        "mountain",
+        "eye"
+      ]
     },
     {
       "id": "underworld-adversarial",
@@ -41,7 +52,12 @@
         "bible-christianity",
         "esoteric-sacred-geometry"
       ],
-      "description": "Adversarial figures, demonologies, hostile receptions, enclosure/capture symbols and shadow-system comparisons. Neutral death realms move to Death / Underworld / Passage."
+      "description": "Adversarial figures, demonologies, hostile receptions, enclosure/capture symbols and shadow-system comparisons. Neutral death realms move to Death / Underworld / Passage.",
+      "center_anchor_ids": [
+        "tree-of-strife",
+        "swamp",
+        "shadow"
+      ]
     },
     {
       "id": "esoteric-tree",
@@ -51,7 +67,13 @@
         "esoteric-sacred-geometry",
         "comparative-mythology"
       ],
-      "description": "Kabbalistic, esoteric, mandorla, initiation and shell/repair comparators."
+      "description": "Kabbalistic, esoteric, mandorla, initiation and shell/repair comparators.",
+      "center_anchor_ids": [
+        "tree",
+        "door",
+        "axis",
+        "shadow"
+      ]
     },
     {
       "id": "sacred-architecture",
@@ -63,7 +85,13 @@
         "esoteric-sacred-geometry",
         "symbolic-architecture"
       ],
-      "description": "World trees, ladders, mountains, temples, cities and threshold architecture."
+      "description": "World trees, ladders, mountains, temples, cities and threshold architecture.",
+      "center_anchor_ids": [
+        "house",
+        "mountain",
+        "door",
+        "axis"
+      ]
     },
     {
       "id": "potato-route-operators",
@@ -73,7 +101,17 @@
         "symbolic-architecture",
         "theology-god-language"
       ],
-      "description": "Project-owned operators used to route comparative material through Seed, Root, Tree, Spiral, Garden and Swamp."
+      "description": "Project-owned operators used to route comparative material through Seed, Root, Tree, Spiral, Garden and Swamp.",
+      "center_anchor_ids": [
+        "potato-of-life",
+        "door",
+        "axis",
+        "seed",
+        "root",
+        "tree",
+        "spiral",
+        "fruit"
+      ]
     },
     {
       "id": "death-passage",
@@ -84,7 +122,13 @@
         "bible-christianity",
         "other-traditions"
       ],
-      "description": "Realms of the dead, death journeys, judgment thresholds, boundary waters and intermediate states kept distinct from demonology."
+      "description": "Realms of the dead, death journeys, judgment thresholds, boundary waters and intermediate states kept distinct from demonology.",
+      "center_anchor_ids": [
+        "seed",
+        "root",
+        "door",
+        "spiral"
+      ]
     },
     {
       "id": "garden-waters",
@@ -95,7 +139,14 @@
         "comparative-mythology",
         "symbolic-architecture"
       ],
-      "description": "Paradise/garden regimes, source waters, guarded thresholds, Trees and return/distribution motifs."
+      "description": "Paradise/garden regimes, source waters, guarded thresholds, Trees and return/distribution motifs.",
+      "center_anchor_ids": [
+        "garden",
+        "tree-of-life",
+        "door",
+        "fruit",
+        "seed"
+      ]
     }
   ],
   "nodes": [
@@ -2100,5 +2151,6 @@
       "note": "Both concern transitions through states, but Bardo is a Tibetan Buddhist doctrinal/practice framework and the Spiral Ladder is a project operator."
     }
   ],
-  "layer_grammar_authority": "data/house/layer-terrain-regime-atlas.json"
+  "layer_grammar_authority": "data/house/layer-terrain-regime-atlas.json",
+  "center_out_rule": "Comparative branches exist to illuminate, challenge or contextualize project-native nodes. They do not define the Potato of Life from the outside."
 }
