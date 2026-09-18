@@ -1,6 +1,6 @@
 {
   "id": "axis-flow-contract",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "status": "active project-symbolic flow contract",
   "purpose": "Define the bidirectional flow grammar of the D1-D11 Axis so the Atlas can place residue, obligations, recurrence, repair, growth, transmission and integration consistently without confusing project symbolism with empirical physics.",
@@ -928,6 +928,104 @@
         "primary_state": "return",
         "function": "Manifest result by which a claimed integration can be evaluated in the inhabited world.",
         "question": "What observable capacity, nourishment, truth, repair or service was actually produced?"
+      },
+      "mud": {
+        "label": "Mud",
+        "kind": "mixed condition",
+        "primary_state": "unresolved",
+        "function": "Mixed unresolved material and actual conditions before sufficient distinction.",
+        "question": "What is mixed together here that must be separated, sourced or understood before it can grow?"
+      },
+      "burial": {
+        "label": "Burial",
+        "kind": "lifecycle stage",
+        "primary_state": "residue",
+        "function": "Hidden or protected placement below visible expression; may hold loss, storage, incubation or potential.",
+        "question": "Is this disappearance, preservation, incubation, or unresolved burial—and what evidence distinguishes them?"
+      },
+      "eye": {
+        "label": "Eye",
+        "kind": "perception / aperture",
+        "primary_state": "observed",
+        "function": "Perception, discernment and the local opening from which a viable future can be noticed.",
+        "question": "What becomes visible here that was not visible before?"
+      },
+      "sprout": {
+        "label": "Sprout",
+        "kind": "activation",
+        "primary_state": "transformed_recurrence",
+        "function": "Activated early growth moving stored capability toward visible expression.",
+        "question": "What direction has become active, and what support does it need before branching?"
+      },
+      "seed": {
+        "label": "Seed",
+        "kind": "compressed generative pattern",
+        "primary_state": "return",
+        "function": "Transferable learning or capability compressed enough to begin another cycle without permanent dependence.",
+        "question": "Can the useful pattern reproduce without copying the whole original center?"
+      },
+      "return": {
+        "label": "Return",
+        "kind": "cycle operator",
+        "primary_state": "return",
+        "function": "Re-entry carrying retained memory and changed capability rather than reset.",
+        "question": "What is different on return, and what becomes observable now?"
+      },
+      "soil": {
+        "label": "Soil",
+        "kind": "context",
+        "primary_state": "living_root",
+        "function": "The enabling or constraining environment around growth.",
+        "question": "Which condition is missing, supportive, toxic or overloaded?"
+      },
+      "forge": {
+        "label": "Forge",
+        "kind": "system regime",
+        "primary_state": "transformed_recurrence",
+        "function": "Bounded pressure deliberately converted into transferable capability.",
+        "question": "Will the capacity survive after the conflict or pressure is gone?"
+      },
+      "dormancy": {
+        "label": "Dormancy",
+        "kind": "lifecycle regime",
+        "primary_state": "residue",
+        "function": "Viable regulated non-expression rather than absence or death.",
+        "question": "What would distinguish healthy latency from blocked growth or decay?"
+      },
+      "wound": {
+        "label": "Wound",
+        "kind": "damage state",
+        "primary_state": "unresolved",
+        "function": "Broken continuity that calls for containment, truth and restoration.",
+        "question": "What function or boundary was damaged, and what would repair restore?"
+      },
+      "mature": {
+        "label": "Mature",
+        "kind": "capability state",
+        "primary_state": "generative",
+        "function": "Stable developed capability that can persist outside the pressure or center that produced it.",
+        "question": "Can this function autonomously while remaining open to correction?"
+      },
+      "ash": {
+        "label": "Ash",
+        "kind": "residue",
+        "primary_state": "residue",
+        "function": "Residue after rupture, destruction or exhausted form; potential Archive, Mud, Forge input or Soil.",
+        "question": "What should be preserved, metabolized, repaired or released?"
+      },
+      "mountain": {
+        "label": "Mountain",
+        "kind": "integration operator",
+        "primary_state": "integration",
+        "function": "Continuous compression of many relations toward a broader perspective.",
+        "question": "What detail is being compressed, what must be preserved, and what useful return follows?"
+      },
+      "ring": {
+        "label": "Ring",
+        "kind": "trajectory",
+        "primary_state": "unresolved",
+        "function": "Recurrence with little or no net change in capability or understanding.",
+        "question": "What keeps returning unchanged, and what Door would turn repetition into a Spiral?"
       }
     },
     "concept_trace_rule": "Concept traces are entry points into relation states, not claims that a symbol is permanently identical with one state. Operators such as Cross, Wide Road and Repair describe movement; roles such as Gardener describe a return function; domains such as Plane and Heaven describe context.",
@@ -984,5 +1082,94 @@
         ]
       }
     ]
+  },
+  "lifecycle_projection": {
+    "authority": "knowledge/practice/potato-path.json",
+    "status": "canonical practice projection layered onto the Axis; not a replacement for D1-D11",
+    "sequence": [
+      "Mud",
+      "Burial",
+      "Eye",
+      "Root",
+      "Sprout",
+      "Plane",
+      "Door",
+      "Ladder / Mountain",
+      "Tree",
+      "Fruit",
+      "Seed",
+      "Return"
+    ],
+    "meaning": {
+      "Mud": "Start from actual mixed conditions.",
+      "Burial": "Hidden development, protection, loss or incubation before visible expression.",
+      "Eye": "Notice and discern a viable possibility or opening.",
+      "Root": "Build support and understand history, dependencies and constraints.",
+      "Sprout": "Activate a direction into visible growth.",
+      "Plane": "Name the operative frame and observable consequences.",
+      "Door": "Identify the condition whose crossing genuinely changes available futures.",
+      "Ladder / Mountain": "Use Ladder for discrete thresholds and Mountain for continuous integration.",
+      "Tree": "Differentiate and branch without severing continuity.",
+      "Fruit": "Test what the growth gives back.",
+      "Seed": "Compress transferable learning or capacity.",
+      "Return": "Begin another cycle carrying memory and changed capability."
+    },
+    "rule": "The lifecycle can intersect D-levels more than once. It is a developmental path, not a metaphysical altitude scale."
+  },
+  "regime_model": {
+    "status": "orthogonal House-state vocabulary derived from the permanent House constitution and Potato Practice Path",
+    "principle": "Regimes describe the condition of a system or relation and can occur at different D-levels. They must not be confused with identity or location.",
+    "regimes": {
+      "Garden": {
+        "concept": "garden",
+        "meaning": "Viable conditions increase autonomy, correction, nourishment and future capability.",
+        "test": "Can life grow more independently while boundaries and passage remain healthy?"
+      },
+      "Forge": {
+        "concept": "forge",
+        "meaning": "Bounded pressure is deliberately converted into capability.",
+        "test": "Does the capability survive after the pressure is removed?"
+      },
+      "Swamp": {
+        "concept": "swamp",
+        "meaning": "Unresolved entanglement, opacity, feedback and blocked exit reproduce the problem.",
+        "test": "Does interaction keep regenerating the same capture ecology?"
+      },
+      "Dormancy": {
+        "concept": "dormancy",
+        "meaning": "Viable capability is present but not currently expressed.",
+        "test": "Is this latent but viable, or actually blocked/decaying?"
+      },
+      "Wound": {
+        "concept": "wound",
+        "meaning": "Continuity has been damaged and requires protection or repair.",
+        "test": "What was damaged, and what boundary or function must be restored?"
+      },
+      "Repair": {
+        "concept": "repair",
+        "meaning": "Active restoration of truth, agency, boundary, function or relation.",
+        "test": "What concrete capacity is restored or made safer?"
+      },
+      "Mature": {
+        "concept": "mature",
+        "meaning": "Capability is stable enough to function without dependence on the originating pressure or center.",
+        "test": "Can it continue autonomously and remain revisable?"
+      },
+      "Ash": {
+        "concept": "ash",
+        "meaning": "Residue after breakdown or exhausted form.",
+        "test": "Does the residue become Archive, Mud, Forge input or Soil?"
+      },
+      "Mud": {
+        "concept": "mud",
+        "meaning": "Mixed unresolved material that may still be sorted, metabolized or rooted.",
+        "test": "What is mixed together that needs distinction before action?"
+      },
+      "Soil": {
+        "concept": "soil",
+        "meaning": "Enabling context and conditions surrounding growth.",
+        "test": "Which condition is missing, toxic, protective or nourishing?"
+      }
+    }
   }
 }
