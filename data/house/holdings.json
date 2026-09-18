@@ -1,5 +1,5 @@
 {
-  "version": "3.4.0",
+  "version": "3.5.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -1853,8 +1853,14 @@
       "title": "House Architecture",
       "dwelling_id": "research-lab",
       "purpose": "Own active architecture research around Rooms, ownership, topology, interfaces, projections and migration before constitutional promotion.",
-      "primary_file_count": 13,
+      "primary_file_count": 14,
       "featured_holdings": [
+        {
+          "path": "data/house/route-case-matrix-wave-001.json",
+          "id": "route-case-matrix-wave-001",
+          "kind": "evidence-aware Life Strife Repair Return route case matrix",
+          "basis": "route-instrumentation-wave-011"
+        },
         {
           "path": "knowledge/research/house-atlas-systems-theory-2026-09-13.json",
           "id": "house-atlas-systems-theory-2026-09-13",
@@ -6170,6 +6176,11 @@
       "path": "knowledge/research/element-materialization-audit-2026-09-18.json",
       "primary_owner_room_id": "research-programmes",
       "basis": "element-instrumentation-wave-010"
+    },
+    {
+      "path": "data/house/route-case-matrix-wave-001.json",
+      "primary_owner_room_id": "house-architecture",
+      "basis": "route-instrumentation-wave-011"
     }
   ],
   "curated_unowned_paths": [
@@ -6308,8 +6319,8 @@
     "knowledge/story/story-registry.json"
   ],
   "summary": {
-    "scoped_files": 875,
-    "primary_owned_files": 742,
+    "scoped_files": 876,
+    "primary_owned_files": 743,
     "curated_or_navigation_files": 133,
     "rooms": 38,
     "rooms_with_zero_primary_files": []
