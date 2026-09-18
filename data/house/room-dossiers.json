@@ -1,5 +1,5 @@
 {
-  "version": "3.6.0",
+  "version": "3.7.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -124,6 +124,18 @@
           "id": "axis",
           "title": "Living Axis",
           "route": "/axis/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "collection",
+          "title": "Collection",
+          "route": "/corporium/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "trinity",
+          "title": "Potato of Life Trinity",
+          "route": "/religion/trinity/",
           "surface_type": "guide"
         }
       ],
@@ -332,6 +344,18 @@
           "title": "Religion",
           "route": "/religion/",
           "surface_type": "hub"
+        },
+        {
+          "id": "trinity",
+          "title": "Potato of Life Trinity",
+          "route": "/religion/trinity/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "spirit",
+          "title": "Spirit",
+          "route": "/potato-of-life/spirit/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -548,6 +572,12 @@
           "title": "Religion",
           "route": "/religion/",
           "surface_type": "hub"
+        },
+        {
+          "id": "spirit",
+          "title": "Spirit",
+          "route": "/potato-of-life/spirit/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -743,6 +773,12 @@
           "title": "Paths",
           "route": "/paths/",
           "surface_type": "guide"
+        },
+        {
+          "id": "interpretive-justice",
+          "title": "Interpretive Justice",
+          "route": "/philosophy/interpretive-justice.html",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -937,6 +973,12 @@
           "id": "below",
           "title": "Below Observatory",
           "route": "/below/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "interpretive-justice",
+          "title": "Interpretive Justice",
+          "route": "/philosophy/interpretive-justice.html",
           "surface_type": "guide"
         }
       ],
@@ -1288,6 +1330,12 @@
           "title": "Sources",
           "route": "/context/source-authority/",
           "surface_type": "evidence"
+        },
+        {
+          "id": "collection",
+          "title": "Collection",
+          "route": "/corporium/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -1445,6 +1493,12 @@
           "title": "History & Time",
           "route": "/history/",
           "surface_type": "guide"
+        },
+        {
+          "id": "foundation-timeline",
+          "title": "Foundation Timeline",
+          "route": "/timeline/foundations/",
+          "surface_type": "explorer"
         }
       ],
       "next_work": [
@@ -1641,6 +1695,12 @@
           "title": "Paths",
           "route": "/paths/",
           "surface_type": "guide"
+        },
+        {
+          "id": "foundation-timeline",
+          "title": "Foundation Timeline",
+          "route": "/timeline/foundations/",
+          "surface_type": "explorer"
         }
       ],
       "next_work": [
@@ -1973,6 +2033,12 @@
           "title": "Religion",
           "route": "/religion/",
           "surface_type": "hub"
+        },
+        {
+          "id": "trinity",
+          "title": "Potato of Life Trinity",
+          "route": "/religion/trinity/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -2145,6 +2211,12 @@
           "title": "Explore",
           "route": "/explore/",
           "surface_type": "explorer"
+        },
+        {
+          "id": "trinity",
+          "title": "Potato of Life Trinity",
+          "route": "/religion/trinity/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -2965,6 +3037,12 @@
           "title": "Research Lab",
           "route": "/research-lab/",
           "surface_type": "guide"
+        },
+        {
+          "id": "spirit",
+          "title": "Spirit",
+          "route": "/potato-of-life/spirit/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -3617,6 +3695,18 @@
           "title": "Science",
           "route": "/science/",
           "surface_type": "hub"
+        },
+        {
+          "id": "collection",
+          "title": "Collection",
+          "route": "/corporium/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "spirit",
+          "title": "Spirit",
+          "route": "/potato-of-life/spirit/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -3783,6 +3873,12 @@
           "title": "Religion",
           "route": "/religion/",
           "surface_type": "hub"
+        },
+        {
+          "id": "collection",
+          "title": "Collection",
+          "route": "/corporium/",
+          "surface_type": "guide"
         }
       ],
       "next_work": [
@@ -3969,6 +4065,12 @@
           "title": "World Systems",
           "route": "/world-systems/",
           "surface_type": "guide"
+        },
+        {
+          "id": "foundation-timeline",
+          "title": "Foundation Timeline",
+          "route": "/timeline/foundations/",
+          "surface_type": "explorer"
         }
       ],
       "next_work": [
@@ -4166,6 +4268,12 @@
           "id": "below",
           "title": "Below Observatory",
           "route": "/below/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "interpretive-justice",
+          "title": "Interpretive Justice",
+          "route": "/philosophy/interpretive-justice.html",
           "surface_type": "guide"
         }
       ],
@@ -5131,6 +5239,12 @@
           "title": "Farm & Trees of Strife",
           "route": "/shadow-farm/",
           "surface_type": "guide"
+        },
+        {
+          "id": "foundation-timeline",
+          "title": "Foundation Timeline",
+          "route": "/timeline/foundations/",
+          "surface_type": "explorer"
         }
       ],
       "next_work": [
@@ -5344,6 +5458,12 @@
           "id": "shadow-farm",
           "title": "Farm & Trees of Strife",
           "route": "/shadow-farm/",
+          "surface_type": "guide"
+        },
+        {
+          "id": "interpretive-justice",
+          "title": "Interpretive Justice",
+          "route": "/philosophy/interpretive-justice.html",
           "surface_type": "guide"
         }
       ],
@@ -6746,6 +6866,12 @@
           "title": "Below Observatory",
           "route": "/below/",
           "surface_type": "guide"
+        },
+        {
+          "id": "foundation-timeline",
+          "title": "Foundation Timeline",
+          "route": "/timeline/foundations/",
+          "surface_type": "explorer"
         }
       ],
       "next_work": [
