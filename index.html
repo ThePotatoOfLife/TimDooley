@@ -145,7 +145,7 @@
 <div class="home-section-head"><div><p class="eyebrow">Materialized now</p><h2 id="materialized-title">The architecture has inhabitants, evidence and tests</h2></div><p>These numbers come from the canonical project registries. They are a pulse of what has actually been organized and populated—not a second database maintained by the homepage.</p></div>
 <div class="project-pulse">
 <article class="pulse-card"><strong data-home-stat="rooms">38</strong><b>Nested Rooms</b><span>Owned contexts with boundaries, holdings and handoffs.</span></article>
-<article class="pulse-card"><strong data-home-stat="foundations">38</strong><b>Foundation records</b><span>Cross-domain beginnings with clocks, rules and reproduction.</span></article>
+<article class="pulse-card"><strong data-home-stat="foundations">52</strong><b>Foundation records</b><span>Cross-domain beginnings with clocks, rules and reproduction.</span></article>
 <article class="pulse-card"><strong data-home-stat="cases">4</strong><b>Real entity cases</b><span>Source-grounded institutions instrumented across scale, change and evidence.</span></article>
 <article class="pulse-card"><strong data-home-stat="below">9</strong><b>Below / Forge desks</b><span>Evidence-aware intelligence, hidden-system and casework views.</span></article>
 </div>
@@ -200,20 +200,21 @@
 (async()=>{
   const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   try{
-    const [synthRes,roomsRes,casesRes,f1Res,f2Res,belowRes,layerRes,conceptRes,axisRes,routeMatrixRes]=await Promise.all([
+    const [synthRes,roomsRes,casesRes,f1Res,f2Res,f3Res,belowRes,layerRes,conceptRes,axisRes,routeMatrixRes]=await Promise.all([
       fetch('data/house/project-synthesis.json'),
       fetch('data/house/subrooms.json'),
       fetch('data/house/entity-dossiers-wave-001.json'),
       fetch('data/house/foundations-wave-001.json'),
       fetch('data/house/foundations-wave-002.json'),
+      fetch('data/house/foundations-wave-003.json'),
       fetch('data/house/lower-plane-population-atlas.json'),
       fetch('data/house/layer-terrain-regime-atlas.json'),
       fetch('data/house/concept-topology.json'),
       fetch('data/axis-flow-contract.json'),
       fetch('data/house/route-case-matrix-wave-001.json')
     ]);
-    if(![synthRes,roomsRes,casesRes,f1Res,f2Res,belowRes,layerRes,conceptRes,axisRes,routeMatrixRes].every(r=>r.ok))throw new Error('home projection data unavailable');
-    const [synth,rooms,cases,f1,f2,below,layers,concepts,axisFlow,routeMatrix]=await Promise.all([synthRes.json(),roomsRes.json(),casesRes.json(),f1Res.json(),f2Res.json(),belowRes.json(),layerRes.json(),conceptRes.json(),axisRes.json(),routeMatrixRes.json()]);
+    if(![synthRes,roomsRes,casesRes,f1Res,f2Res,f3Res,belowRes,layerRes,conceptRes,axisRes,routeMatrixRes].every(r=>r.ok))throw new Error('home projection data unavailable');
+    const [synth,rooms,cases,f1,f2,f3,below,layers,concepts,axisFlow,routeMatrix]=await Promise.all([synthRes.json(),roomsRes.json(),casesRes.json(),f1Res.json(),f2Res.json(),f3Res.json(),belowRes.json(),layerRes.json(),conceptRes.json(),axisRes.json(),routeMatrixRes.json()]);
     const teaching=synth.homepage_projection?.teaching_sequence||[];
     const layerBy=Object.fromEntries((layers.nodes||[]).map(x=>[x.id,x]));
     const conceptBy=Object.fromEntries((concepts.concepts||[]).map(x=>[x.id,x]));
@@ -272,7 +273,7 @@
     setStat('rooms',(rooms.subrooms||[]).length);
     setStat('cases',(cases.dossiers||[]).length);
     setStat('below',(below.zones||[]).length);
-    const foundationIds=new Set([...(f1.records||[]),...(f2.records||[])].map(x=>x.id).filter(Boolean));
+    const foundationIds=new Set([...(f1.records||[]),...(f2.records||[]),...(f3.records||[])].map(x=>x.id).filter(Boolean));
     setStat('foundations',foundationIds.size);
     const root=document.getElementById('homeRealityCases');
     if(root){
