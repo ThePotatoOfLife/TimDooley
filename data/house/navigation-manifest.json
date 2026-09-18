@@ -1,5 +1,5 @@
 {
-  "version": "1.4.0",
+  "version": "1.5.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -8,6 +8,11 @@
       "concern": "project semantic center / center-out importance",
       "owner": "data/house/project-center.json",
       "rule": "Defines the Potato of Life as semantic center, distinguishes it from Axis as spatial center, and governs center-out importance rings and promotion."
+    },
+    {
+      "concern": "cross-cutting reader lenses",
+      "owner": "data/house/crosscutting-lenses.json",
+      "rule": "Defines non-owning lenses that reinterpret center-native material without creating Rooms, planes or realms."
     },
     {
       "concern": "top-level Dwellings and ownership",
