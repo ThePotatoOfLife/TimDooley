@@ -1,5 +1,5 @@
 {
-  "version": "4.1.0",
+  "version": "4.2.0",
   "updated": "2026-09-18",
   "authority": "house-holdings",
   "room_registry": "data/house/subrooms.json",
@@ -292,7 +292,7 @@
       "title": "Provenance & Evidence",
       "dwelling_id": "archive-sources",
       "purpose": "Own source lineage, evidence class, source authority, extraction lineage and routes back from synthesis to artifacts.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/indexes/context-graph.json",
@@ -317,6 +317,12 @@
           "id": "archive-epistemics",
           "kind": "archive evidence doctrine",
           "basis": "exact-owner"
+        },
+        {
+          "path": "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+          "id": "provenance-chain-of-custody-atlas",
+          "kind": "claim-to-source chain-of-custody and corroboration atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -786,7 +792,7 @@
       "title": "Esoteric & Sacred Geometry",
       "dwelling_id": "traditions-texts",
       "purpose": "Handle historical/esoteric geometry, mandorla, Vesica, cosmological diagrams and source-led comparison.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/traditions/qliphoth-angels-ladder-north-cosmology.json",
@@ -811,6 +817,12 @@
           "id": "providence-pyramid-pillars-atlas",
           "kind": "historical-symbolic comparative atlas",
           "basis": "curated-symbol-architecture"
+        },
+        {
+          "path": "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json",
+          "id": "sacred-geometry-method-and-invariants-atlas",
+          "kind": "exact geometry and historical-symbolic layer method",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1266,7 +1278,7 @@
       "title": "Whole-body Physiology",
       "dwelling_id": "life-body",
       "purpose": "Own body-system integration across nervous, autonomic, cardiovascular, respiratory, gut, immune and fluid interfaces.",
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "path": "knowledge/body/body-science-context-atlas.json",
@@ -1291,6 +1303,12 @@
           "id": "index",
           "kind": "room holding",
           "basis": "body-remainder"
+        },
+        {
+          "path": "knowledge/body/whole-body-regulation-coupling-atlas.json",
+          "id": "whole-body-regulation-coupling-atlas",
+          "kind": "whole-organism regulatory coupling and feedback atlas",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1311,7 +1329,7 @@
       "title": "Symbolic Body Crosswalk",
       "dwelling_id": "life-body",
       "purpose": "Own explicitly comparative mappings between project symbols and anatomy while preserving the empirical/symbolic firewall.",
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "path": "knowledge/body/body-symbolism-map.json",
@@ -1330,6 +1348,12 @@
           "id": "tim-neurobiology-relational-reconciliation",
           "kind": "room holding",
           "basis": "body-topic"
+        },
+        {
+          "path": "knowledge/body/symbolic-body-crosswalk-method-atlas.json",
+          "id": "symbolic-body-crosswalk-method-atlas",
+          "kind": "typed anatomy-symbol comparison method",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -1446,7 +1470,7 @@
       "title": "Economy & Finance",
       "dwelling_id": "world-systems",
       "purpose": "Own observable finance, debt, banking, trade, ownership, production, labour and economic flows.",
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "path": "knowledge/economics/gold-indexed-sovereign-bond-model.json",
@@ -1465,6 +1489,12 @@
           "id": "tim-dooley-inflation-ledger",
           "kind": "room holding",
           "basis": "economics-family"
+        },
+        {
+          "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+          "id": "stock-flow-obligation-network-atlas",
+          "kind": "stock-flow-balance-sheet and obligation network grammar",
+          "basis": "room-deepening"
         }
       ],
       "public_surface_ids": [
@@ -6323,6 +6353,31 @@
     {
       "path": "knowledge/science/model-discrimination-calibration-atlas.json",
       "primary_owner_room_id": "model-testing",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+      "primary_owner_room_id": "provenance-evidence",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/body/whole-body-regulation-coupling-atlas.json",
+      "primary_owner_room_id": "whole-body",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/body/symbolic-body-crosswalk-method-atlas.json",
+      "primary_owner_room_id": "symbolic-body-comparison",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/economics/stock-flow-obligation-network-atlas.json",
+      "primary_owner_room_id": "economy-finance",
+      "basis": "room-deepening"
+    },
+    {
+      "path": "knowledge/traditions/sacred-geometry-method-and-invariants-atlas.json",
+      "primary_owner_room_id": "esoteric-sacred-geometry",
       "basis": "room-deepening"
     }
   ],
