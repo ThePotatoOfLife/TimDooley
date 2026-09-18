@@ -1,5 +1,5 @@
 {
-  "version": "1.3.0",
+  "version": "1.4.0",
   "updated": "2026-09-18",
   "nodes": [
     {
@@ -974,6 +974,41 @@
       "name": "Thomas Textual Corpus",
       "layer": "historical-textual",
       "description": "Grouped textual material relevant to Thomas traditions, including canonical and apocryphal sources, kept distinct by source and date."
+    },
+    {
+      "id": "garden",
+      "type": "mythic-place-system",
+      "name": "Garden",
+      "layer": "mythological-philosophical",
+      "description": "Cultivated field of differentiated life where multiple branches can grow with nourishment, boundaries, passage and stewardship rather than forced sameness."
+    },
+    {
+      "id": "rooms",
+      "type": "structural-metaphor",
+      "name": "Rooms",
+      "layer": "mythological-philosophical",
+      "description": "Differentiated habitable spaces within a larger House/Garden architecture; plurality with relation, boundary and passage."
+    },
+    {
+      "id": "mountain",
+      "type": "symbol",
+      "name": "Mountain",
+      "layer": "mythological-philosophical",
+      "description": "Continuous-gradient image of ascent and integration: broad lower field compressing toward higher perspective, distinct from the Ladder's discrete thresholds."
+    },
+    {
+      "id": "spiral",
+      "type": "symbolic-trajectory",
+      "name": "Spiral",
+      "layer": "mythological-philosophical",
+      "description": "Recurrence with level-change: a return to related material in a changed state rather than a closed loop repeating at the same level."
+    },
+    {
+      "id": "crown",
+      "type": "symbolic-state",
+      "name": "Crown",
+      "layer": "mythological-philosophical",
+      "description": "Integrated summit perspective where many lower relations are evaluated together and are required to return as accountable service."
     }
   ]
 }
