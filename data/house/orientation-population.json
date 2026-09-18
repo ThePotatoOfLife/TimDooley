@@ -1,5 +1,5 @@
 {
-  "version": "1.2.0",
+  "version": "1.3.0",
   "updated": "2026-09-18",
   "authority": "house-orientation-population",
   "purpose": "Populate the three-plane cardinal House from existing governed Rooms and holdings, then add a small curated landmark layer for religious, mythic and project-symbolic wayfinding.",
@@ -300,12 +300,17 @@
         "across",
         "down"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "id": "conversation-recovery-inventory",
           "path": "knowledge/indexes/conversation-recovery-inventory.json",
           "kind": "room holding"
+        },
+        {
+          "id": "memory-recovery-method-atlas",
+          "path": "knowledge/indexes/memory-recovery-method-atlas.json",
+          "kind": "recovery method and temporal-strata atlas"
         }
       ]
     },
@@ -888,7 +893,7 @@
         "up",
         "through"
       ],
-      "primary_file_count": 5,
+      "primary_file_count": 6,
       "featured_holdings": [
         {
           "id": "model-testing-protocol",
@@ -909,6 +914,11 @@
           "id": "2026-09-11-axis-door-observable-dynamics",
           "path": "knowledge/science/research-notes/2026-09-11-axis-door-observable-dynamics.json",
           "kind": "room holding"
+        },
+        {
+          "id": "model-discrimination-calibration-atlas",
+          "path": "knowledge/science/model-discrimination-calibration-atlas.json",
+          "kind": "model comparison, calibration and falsification atlas"
         }
       ]
     },
@@ -939,7 +949,7 @@
         "here",
         "down"
       ],
-      "primary_file_count": 3,
+      "primary_file_count": 4,
       "featured_holdings": [
         {
           "id": "potato-growth-principles",
@@ -955,6 +965,11 @@
           "id": "potato-angels-eye-sprout-development-ledger",
           "path": "knowledge/timeline/potato-angels-eye-sprout-development-ledger.json",
           "kind": "room holding"
+        },
+        {
+          "id": "potato-organism-cycle-atlas",
+          "path": "knowledge/biology/potato-organism-cycle-atlas.json",
+          "kind": "literal potato organism and developmental-cycle atlas"
         }
       ]
     },
@@ -1315,7 +1330,7 @@
         "across",
         "here"
       ],
-      "primary_file_count": 4,
+      "primary_file_count": 5,
       "featured_holdings": [
         {
           "id": "greater-israel-covenant-land-tikkun-atlas",
@@ -1336,6 +1351,11 @@
           "id": "operation-rising-lion-tim-window-2025",
           "path": "knowledge/geopolitics/operation-rising-lion-tim-window-2025.json",
           "kind": "room holding"
+        },
+        {
+          "id": "geography-place-state-boundary-atlas",
+          "path": "knowledge/world/geography-place-state-boundary-atlas.json",
+          "kind": "neutral geographic object and boundary atlas"
         }
       ]
     },
@@ -1364,12 +1384,17 @@
         "across",
         "out"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "id": "digital-witness-livestream-liturgy",
           "path": "knowledge/culture/digital-witness-livestream-liturgy.json",
           "kind": "room holding"
+        },
+        {
+          "id": "platform-mechanics-atlas",
+          "path": "knowledge/culture/platform-mechanics-atlas.json",
+          "kind": "platform mediation and mechanics atlas"
         }
       ]
     },
@@ -1450,12 +1475,17 @@
         "across",
         "out"
       ],
-      "primary_file_count": 1,
+      "primary_file_count": 2,
       "featured_holdings": [
         {
           "id": "digital-memory-forgetting-restoration-atlas",
           "path": "knowledge/world/digital-memory-forgetting-restoration-atlas.json",
           "kind": "room holding"
+        },
+        {
+          "id": "information-ecology-mechanics-atlas",
+          "path": "knowledge/culture/information-ecology-mechanics-atlas.json",
+          "kind": "attention, memory and correction mechanics atlas"
         }
       ]
     },
