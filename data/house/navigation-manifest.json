@@ -1,5 +1,5 @@
 {
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "authority": "house-navigation-manifest",
   "purpose": "Consolidate which registry is authoritative for each part of Potato House navigation so planes, Trees, Rooms, seeds, spirals, entities and pages can grow without duplicating or contradicting one another.",
@@ -13,6 +13,11 @@
       "concern": "cross-cutting reader lenses",
       "owner": "data/house/crosscutting-lenses.json",
       "rule": "Defines non-owning lenses that reinterpret center-native material without creating Rooms, planes or realms."
+    },
+    {
+      "concern": "center-adjacent living-system coordination",
+      "owner": "data/house/living-project-map.json",
+      "rule": "Coordinates organism, Spirit/relation, memory/history and culture/formation across existing Room owners without creating replacement ownership."
     },
     {
       "concern": "top-level Dwellings and ownership",
