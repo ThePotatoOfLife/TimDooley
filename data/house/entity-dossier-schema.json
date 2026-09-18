@@ -1,0 +1,82 @@
+{
+  "version": "1.0.0",
+  "updated": "2026-09-18",
+  "id": "entity-dossier-schema",
+  "title": "Crystallized Entity Dossier Contract",
+  "purpose": "Force the House ontology to operate on real entities. A dossier must connect mission, decision systems, material capacity, history, relationships, operators, outcomes, blind spots and research questions without turning project metaphors into factual labels.",
+  "required_sections": [
+    "identity",
+    "as_of",
+    "primary_rooms",
+    "sources",
+    "spirit",
+    "mind",
+    "body",
+    "history",
+    "relationships",
+    "operators",
+    "fruit",
+    "shadow",
+    "tensions",
+    "discovery_questions",
+    "evidence_boundary"
+  ],
+  "section_contracts": {
+    "identity": [
+      "name",
+      "kind",
+      "jurisdiction_or_scope",
+      "legal_or_institutional_form"
+    ],
+    "spirit": [
+      "documented_mission",
+      "legitimacy_basis",
+      "values_or_norms",
+      "project_interpretation"
+    ],
+    "mind": [
+      "governance",
+      "decision_system",
+      "knowledge_system",
+      "feedback_and_oversight"
+    ],
+    "body": [
+      "people_or_members",
+      "money_or_budget",
+      "infrastructure",
+      "operational_capacity"
+    ],
+    "relationships": [
+      "typed outgoing/incoming relations with evidence where available"
+    ],
+    "operators": [
+      "only mechanisms evidenced by the dossier; each project operator must include why it fits and what would make it fail"
+    ],
+    "fruit": [
+      "documented outputs/outcomes plus omitted externalities or measurement limits"
+    ],
+    "shadow": [
+      "known unknowns, missingness, access limits, counterfactual difficulty and evidence gaps; never insinuation"
+    ],
+    "tensions": [
+      "documented or structurally plausible tensions phrased as questions unless directly evidenced"
+    ],
+    "discovery_questions": [
+      "questions whose answer would materially deepen or falsify the synthesis"
+    ]
+  },
+  "evidence_labels": {
+    "observed": "Direct official/primary or high-quality empirical observation.",
+    "synthesis": "Project interpretation built from independently sourced observations.",
+    "question": "Open research question; not a claim.",
+    "unknown": "Material information not presently established."
+  },
+  "operator_guard": "Door, Garden, Shadow, Fruit, River, House, Forge, Tree, Swamp, Eye and other Potato operators are analytical labels over mechanisms. They must never replace the entity's legal identity or official purpose.",
+  "promotion_gate": [
+    "At least three source-backed factual sections.",
+    "At least one material flow or dependency.",
+    "At least one explicit evidence gap.",
+    "At least one operator test with a failure condition.",
+    "At least one discovery question that cannot be answered by the entity's About page alone."
+  ]
+}

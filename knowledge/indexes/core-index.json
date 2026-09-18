@@ -1,5 +1,5 @@
 {
-  "version": "6.0.0",
+  "version": "6.1.0",
   "updated": "2026-09-18",
   "principle": "One root system, one durable owner per concept, many contextual views. The core index should point to canonical owners and high-value source/reader records rather than reproduce the repository tree.",
   "structural_entry": "knowledge/core/root-system.json",
@@ -124,7 +124,11 @@
       "rare-value-undiscovered-knowledge-protocol",
       "discovery-candidates",
       "concrete-revelations-wave-006",
-      "concrete-revelation-evidence-matrix"
+      "concrete-revelation-evidence-matrix",
+      "entity-dossier-schema",
+      "entity-dossiers-wave-001",
+      "trust-infrastructure-comparison",
+      "public-trust-infrastructure-synthesis"
     ]
   },
   "records": [
@@ -1955,6 +1959,62 @@
         "E3",
         "Discovery Candidate",
         "Synthesis"
+      ]
+    },
+    {
+      "id": "entity-dossier-schema",
+      "path": "data/house/entity-dossier-schema.json",
+      "branch": "house",
+      "kind": "canonical dossier contract for real-world entities",
+      "terms": [
+        "Entity Dossier",
+        "Spirit Mind Body",
+        "Operators",
+        "Fruit",
+        "Shadow",
+        "Discovery Questions"
+      ]
+    },
+    {
+      "id": "entity-dossiers-wave-001",
+      "path": "data/house/entity-dossiers-wave-001.json",
+      "branch": "house",
+      "kind": "first crystallized source-grounded institutional dossiers",
+      "terms": [
+        "Danmarks Nationalbank",
+        "Wikimedia Foundation",
+        "CERN",
+        "ICRC",
+        "Trust Infrastructure"
+      ]
+    },
+    {
+      "id": "trust-infrastructure-comparison",
+      "path": "data/house/trust-infrastructure-comparison.json",
+      "branch": "house",
+      "kind": "cross-dossier trust architecture comparison matrix",
+      "terms": [
+        "Trust",
+        "Door",
+        "Eye",
+        "Fruit",
+        "Shadow",
+        "Capability",
+        "Mission Drift"
+      ]
+    },
+    {
+      "id": "public-trust-infrastructure-synthesis",
+      "path": "knowledge/research/public-trust-infrastructure-synthesis.json",
+      "branch": "research",
+      "kind": "cross-domain synthesis comparing money knowledge science and humanitarian trust",
+      "terms": [
+        "Public Trust Infrastructure",
+        "Money",
+        "Knowledge",
+        "Science",
+        "Humanitarian Access",
+        "Spirit Mind Body"
       ]
     }
   ],
