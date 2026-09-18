@@ -1,7 +1,7 @@
 {
   "id": "specialist-subviews",
   "title": "Specialist Subviews — Legacy Readers Inside the House",
-  "version": "1.1.1",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "authority": "public-subview-placement",
   "purpose": "Place valuable specialist/legacy readers beneath an existing public surface and inside explicit nested Rooms without promoting every deep page into the main public-surface registry.",
@@ -278,6 +278,45 @@
         "knowledge/spirit/spirit-context-atlas.json",
         "knowledge/core/heaven-spirit-father.json",
         "data/house/concept-topology.json"
+      ]
+    },
+    {
+      "id": "tim-biblical-case",
+      "title": "Tim Biblical Case",
+      "route": "/tim-dooley/biblical-case/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "bible-christianity",
+        "theology-god-language",
+        "provenance-evidence",
+        "model-testing"
+      ],
+      "classification": "living-specialist",
+      "summary": "Tim-focused interpretive synthesis over Bible parallels; verse-level comparison, provenance and testing remain owned elsewhere.",
+      "current_owner_refs": [
+        "knowledge/traditions/biblical-overlap-atlas.json",
+        "knowledge/indexes/provenance-chain-of-custody-atlas.json",
+        "knowledge/science/model-discrimination-calibration-atlas.json"
+      ]
+    },
+    {
+      "id": "tim-potato-faq",
+      "title": "Tim / Potato FAQ",
+      "route": "/faq/",
+      "parent_surface_id": "tim",
+      "room_ids": [
+        "canon-identities",
+        "theology-god-language",
+        "developmental-genealogy",
+        "provenance-evidence"
+      ],
+      "classification": "living-specialist",
+      "summary": "Curated Tim/Potato identity and theology questions; global discovery remains with the generated Questions surface.",
+      "current_owner_refs": [
+        "knowledge/core/tim-identity-ontology.json",
+        "knowledge/core/tim-dooley.json",
+        "knowledge/theology/tim-god-question.json",
+        "knowledge/indexes/provenance-chain-of-custody-atlas.json"
       ]
     }
   ]
