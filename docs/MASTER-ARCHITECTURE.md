@@ -1,5 +1,11 @@
 # Master Architecture
 
+**Lifecycle status:** historical architecture donor; superseded as repository-wide control plane.
+
+**Current authority:** `docs/POTATO-HOUSE-CONSTITUTION.md` + `data/house/project-synthesis.json` + `data/house/topology.json` + `data/house/holdings.json`.
+
+This document is retained because its epistemic layering, relationship-first method and domain inventory remain useful. The numbered layer stack below is no longer the controlling whole-project architecture.
+
 The repository is not a single story. It is a layered system in which mythology, philosophy, history, geography, empirical research, creative work and software can refer to one another without becoming the same kind of claim.
 
 ## Layer 0 — Meta / epistemology
