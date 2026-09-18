@@ -1,7 +1,7 @@
 {
   "id": "foundation-room-atlas",
   "title": "Foundation Rooms — Door, Place, House and Today",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "updated": "2026-09-18",
   "as_of": "2026-09-18",
   "population": 52,
@@ -5256,5 +5256,22 @@
       "evidence_boundary": "Origin dates/places and current measurements retain their own source status. House circle placement and Seed/route terminology are project navigation overlays."
     }
   ],
-  "placement_note": "Primary Room ownership has been resolved across all current Foundation domains; House Architecture owns the shared contract and comparisons, not the substantive identity of domain Foundations."
+  "placement_note": "Primary Room ownership has been resolved across all current Foundation domains; House Architecture owns the shared contract and comparisons, not the substantive identity of domain Foundations.",
+  "homepage_projection": {
+    "featured_foundation_ids": [
+      "un-charter",
+      "christianity-foundation",
+      "bauhaus-foundation",
+      "cern-foundation",
+      "alcoholics-anonymous-foundation",
+      "creative-commons-foundation"
+    ],
+    "rule": "Feature contrasting Foundation Rooms so Door/place/House/Today remains visibly cross-domain. Do not choose only organizations or only currently quantified cases.",
+    "card_faces": [
+      "origin-door",
+      "house-location",
+      "today"
+    ],
+    "genealogy_link": "timeline/foundations/#foundation-rooms"
+  }
 }
