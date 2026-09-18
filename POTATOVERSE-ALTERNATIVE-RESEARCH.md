@@ -1,5 +1,7 @@
 # Potato of Life — Alternative Research Layer
 
+**Lifecycle status:** historical readable research donor. Keep this layer for provenance and unique comparative questions while current durable claims migrate into specialist biology, systems, philosophy and Potatoism owners.
+
 This layer deliberately moves outward from the existing mythology. It asks what else the Potato becomes when examined through evolution, genomes, geography, food systems, ecology, history, culture, geometry and systems theory.
 
 ## 1. The Potato begins in deep time
