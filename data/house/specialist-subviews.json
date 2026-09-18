@@ -1,7 +1,7 @@
 {
   "id": "specialist-subviews",
   "title": "Specialist Subviews — Legacy Readers Inside the House",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "updated": "2026-09-18",
   "authority": "public-subview-placement",
   "purpose": "Place valuable specialist/legacy readers beneath an existing public surface and inside explicit nested Rooms without promoting every deep page into the main public-surface registry.",
@@ -259,6 +259,25 @@
       "current_owner_refs": [
         "knowledge/core/potato-of-life-deep-structure.json",
         "knowledge/core/potatoverse-master-framework.json"
+      ]
+    },
+    {
+      "id": "potato-spirit",
+      "title": "Spirit — Living Relation",
+      "route": "/potato-of-life/spirit/",
+      "parent_surface_id": "potato-of-life",
+      "room_ids": [
+        "theology-god-language",
+        "symbolic-architecture",
+        "whole-body",
+        "systems-dynamics"
+      ],
+      "classification": "living-specialist",
+      "summary": "Spirit as project relation/process language with theological, symbolic, physiological-comparison and systems boundaries kept explicit.",
+      "current_owner_refs": [
+        "knowledge/spirit/spirit-context-atlas.json",
+        "knowledge/core/spirit-relation-operational-atlas.json",
+        "data/house/concept-topology.json"
       ]
     }
   ]
