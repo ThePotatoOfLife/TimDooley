@@ -1,5 +1,5 @@
 {
-  "version": "2.8.0",
+  "version": "2.9.0",
   "updated": "2026-09-18",
   "authority": "house-room-dossiers",
   "principle": "A Room dossier is a composed entrance: ownership + holdings + boundaries + center contribution + living-system role + handoffs. It does not create new ownership. Every Room also exposes a scoped local center that organizes attention without competing with the Potato/Axis global centers.",
@@ -6068,6 +6068,12 @@
         "authority": "data/house/foundation-axis-placement-contract.json",
         "population": "data/house/foundation-placement-wave-003.json",
         "guard": "Do not classify a whole tradition, institution or movement as upper/lower, Life/Strife, angel/demon or good/bad."
+      },
+      "foundation_landscape_lens": {
+        "question": "Which recurring trajectory best helps navigate this Foundation—crisis→law, loss→portable community, need→mutual aid, experiment→method, fragmentation→standard, manifesto→movement, migration→community, venture→platform or inquiry→school?",
+        "authority": "data/house/foundation-landscape-synthesis.json",
+        "guard": "Archetypes are comparison aids, not identities. Distributed/gradual formations may resist one Door category.",
+        "return_test": "Always ask what comes back to the World as capability, practice, law, infrastructure, knowledge, service or art."
       }
     },
     {
