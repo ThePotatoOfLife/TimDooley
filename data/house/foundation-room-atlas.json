@@ -1,7 +1,7 @@
 {
   "id": "foundation-room-atlas",
   "title": "Foundation Rooms — Door, Place, House and Today",
-  "version": "1.5.0",
+  "version": "1.6.0",
   "updated": "2026-09-18",
   "as_of": "2026-09-18",
   "population": 52,
@@ -10,8 +10,8 @@
   "summary": {
     "total_rooms": 52,
     "map_ready_origins": 49,
-    "current_quantitative_snapshots": 26,
-    "current_structural_only": 26,
+    "current_quantitative_snapshots": 32,
+    "current_structural_only": 20,
     "circle_counts": {
       "upper-source-circle": 12,
       "middle-plane-overlap": 36,
@@ -32,7 +32,7 @@
       "subculture-group-formation": 4
     },
     "unresolved_owner_count": 0,
-    "current_metric_count": 49,
+    "current_metric_count": 60,
     "first_reproduction_states": {
       "dated consolidation/refoundation": 25,
       "undated structural reproduction": 17,
@@ -41,6 +41,12 @@
       "dated operational reproduction": 2,
       "dated capability reproduction": 1,
       "dated standard reproduction": 1
+    },
+    "earth_geometry_counts": {
+      "virtual": 1,
+      "point-ready": 46,
+      "region-ready": 3,
+      "distributed-network": 2
     }
   },
   "magnitude_rule": "Magnitudes are a vector, not a ranking. Age, clocks, places, branches, reproduction mode, continuity and typed reach answer different questions.",
@@ -1876,9 +1882,53 @@
         "continuity_mode": "living-refounded-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through local/national assemblies, global institutions, educational/community programmes.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "bahais_worldwide",
+            "value": 5000000,
+            "unit": "people",
+            "as_of": "2026-09-18",
+            "scope": "Bahá’í community worldwide",
+            "source_title": "Bahá’í World News Service — Statistics",
+            "source_url": "https://news.bahai.org/media-information/statistics",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "more than"
+          },
+          {
+            "measure": "localities",
+            "value": 100000,
+            "unit": "localities",
+            "as_of": "2026-09-18",
+            "scope": "Bahá’í community worldwide",
+            "source_title": "Bahá’í World News Service — Statistics",
+            "source_url": "https://news.bahai.org/media-information/statistics",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "well over"
+          },
+          {
+            "measure": "national_councils",
+            "value": 188,
+            "unit": "councils",
+            "as_of": "2026-09-18",
+            "scope": "national-level Bahá’í councils",
+            "source_title": "Bahá’í World News Service — Statistics",
+            "source_url": "https://news.bahai.org/media-information/statistics",
+            "retrieved_at": "2026-09-18"
+          },
+          {
+            "measure": "training_institutes",
+            "value": 300,
+            "unit": "institutes",
+            "as_of": "2026-09-18",
+            "scope": "Bahá’í education network",
+            "source_title": "Bahá’í World News Service — Statistics",
+            "source_url": "https://news.bahai.org/media-information/statistics",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "over"
+          }
+        ],
+        "snapshot_coverage": "current/datelined quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -1891,7 +1941,7 @@
         "branch_count": 3,
         "reproduction_family": "community-canon-administration",
         "continuity_mode": "living-refounded-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 4
       },
       "genealogy": {
         "seed_of_death": {
@@ -2908,9 +2958,20 @@
         "continuity_mode": "living-method-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through Montessori schools, teacher training, global adaptations.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "ami_affiliates",
+            "value": 50,
+            "unit": "affiliates",
+            "as_of": "2023",
+            "scope": "AMI global affiliate network",
+            "source_title": "Association Montessori Internationale Annual Report 2023",
+            "source_url": "https://montessori-ami.org/sites/default/files/downloads/news/2023AMIAnnualReport.pdf",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current/datelined quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -2923,7 +2984,7 @@
         "branch_count": 3,
         "reproduction_family": "method-training-school",
         "continuity_mode": "living-method-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 1
       },
       "genealogy": {
         "seed_of_death": {
@@ -3518,9 +3579,32 @@
         "continuity_mode": "living-reorganized-continuity",
         "current_status": null,
         "current_form": "Current or surviving form is carried through shipping, terminals, logistics, warehousing, and additional branches.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "employees",
+            "value": 100000,
+            "unit": "employees",
+            "as_of": "2026-07",
+            "scope": "Maersk global workforce",
+            "source_title": "Maersk Careers — Procurement Manager posting",
+            "source_url": "https://www.maersk.com/careers/vacancies/wd/Procurement-Manager--MGF_R186340-1/jt-procurement-manager-mgf",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "over"
+          },
+          {
+            "measure": "countries",
+            "value": 130,
+            "unit": "countries",
+            "as_of": "2026-07",
+            "scope": "Maersk global presence",
+            "source_title": "Maersk Careers — Procurement Manager posting",
+            "source_url": "https://www.maersk.com/careers/vacancies/wd/Procurement-Manager--MGF_R186340-1/jt-procurement-manager-mgf",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "more than"
+          }
+        ],
+        "snapshot_coverage": "current/datelined quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -3533,7 +3617,7 @@
         "branch_count": 5,
         "reproduction_family": "capital-operations-enterprise",
         "continuity_mode": "living-reorganized-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -4556,9 +4640,32 @@
         "continuity_mode": "living-continuity",
         "current_status": "active",
         "current_form": "Current or surviving form is carried through regional/yearly meetings, global Friends traditions.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "quakers_worldwide",
+            "value": 400000,
+            "unit": "people",
+            "as_of": "2024",
+            "scope": "Friends/Quakers worldwide",
+            "source_title": "FWCC Friends World News + Annual Review 2024",
+            "source_url": "https://fwcc.world/wp-content/uploads/2024/10/fwn2024vol1no194uk-final-for-online-single-pages.pdf",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "around"
+          },
+          {
+            "measure": "countries",
+            "value": 100,
+            "unit": "countries",
+            "as_of": "2024",
+            "scope": "Friends/Quakers worldwide",
+            "source_title": "FWCC Friends World News + Annual Review 2024",
+            "source_url": "https://fwcc.world/wp-content/uploads/2024/10/fwn2024vol1no194uk-final-for-online-single-pages.pdf",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "more than"
+          }
+        ],
+        "snapshot_coverage": "current/datelined quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -4571,7 +4678,7 @@
         "branch_count": 2,
         "reproduction_family": "meeting-community-practice",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 2
       },
       "genealogy": {
         "seed_of_death": {
@@ -5633,9 +5740,21 @@
         "continuity_mode": "living-continuity",
         "current_status": "active",
         "current_form": "Current or surviving form is carried through state/local branches, youth/college units, legal and advocacy programmes.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "units",
+            "value": 2200,
+            "unit": "units",
+            "as_of": "2025-01-01 bylaws/current page",
+            "scope": "NAACP branch/unit network",
+            "source_title": "NAACP — Bylaws for Units",
+            "source_url": "https://naacp.org/resources/bylaws-units",
+            "retrieved_at": "2026-09-18",
+            "qualifier": "more than"
+          }
+        ],
+        "snapshot_coverage": "current/datelined quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -5648,7 +5767,7 @@
         "branch_count": 3,
         "reproduction_family": "membership-branches-legal-strategy",
         "continuity_mode": "living-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 1
       },
       "genealogy": {
         "seed_of_death": {
@@ -6085,9 +6204,20 @@
         "continuity_mode": "living-branched-continuity",
         "current_status": "active",
         "current_form": "Current or surviving form is carried through Linux distributions, embedded/server/mobile uses, kernel subsystems and downstream forks.",
-        "typed_reach": [],
-        "snapshot_coverage": "structural continuity; quantitative current reach not yet populated",
-        "source_count": 0
+        "typed_reach": [
+          {
+            "measure": "contributors_linux_6_8",
+            "value": 1938,
+            "unit": "developers",
+            "as_of": "2024-03",
+            "scope": "Linux kernel 6.8 development cycle",
+            "source_title": "Linux Foundation Newsletter — March 2024",
+            "source_url": "https://www.linuxfoundation.org/blog/linux-foundation-newsletter-march-2024",
+            "retrieved_at": "2026-09-18"
+          }
+        ],
+        "snapshot_coverage": "current/datelined quantitative snapshot + structural continuity",
+        "source_count": 1
       },
       "magnitude_facets": {
         "time_depth": {
@@ -6100,7 +6230,7 @@
         "branch_count": 3,
         "reproduction_family": "code-maintainers-distributions",
         "continuity_mode": "living-branched-continuity",
-        "reach_measure_count": 0
+        "reach_measure_count": 1
       },
       "genealogy": {
         "seed_of_death": {
@@ -6295,5 +6425,6 @@
     "today_target": "Prefer official, dated, domain-native measures. A Foundation may remain structural-only where no honest comparable current measure exists.",
     "earth_target": "Promote city/site/region anchors to map-ready when the canonical Foundation history establishes them; retain virtual/distributed origins as non-point geometry.",
     "first_reproduction_target": "Recover the earliest dated successor/copy/branch/implementation after the Door. Store 'earliest recovered' rather than claiming historical first without evidence."
-  }
+  },
+  "earth_map_note": "Non-point origins are not missing geography. Virtual and distributed-network origins should render as areas/networks/routes rather than invented pins."
 }
